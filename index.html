@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangMap - 多言語語順マップ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-row">
+            <h1><span id="uiTitle">LangMap</span> <span class="subtitle" id="uiSubtitle">多言語語順マップ</span></h1>
+            <div class="ui-lang-picker">
+                <label id="lblUiLang">UI言語:</label>
+                <select id="uiLangSelect"></select>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group" style="flex:2">
+                    <label id="lblSentence" for="sampleSelect">文章選択:</label>
+                    <select id="sampleSelect"></select>
+                </div>
+                <div class="control-group" style="flex:0">
+                    <label>&nbsp;</label>
+                    <div class="btn-group">
+                        <button class="btn" onclick="prevSentence()">◀</button>
+                        <button class="btn" onclick="nextSentence()">▶</button>
+                        <button class="btn btn-accent" id="btnRandom" onclick="randomSentence()">ランダム</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group" style="flex:1">
+                    <label>
+                        <span id="lblLangToggle">表示言語 ON/OFF:</span>
+                        <button class="btn btn-sm btn-inline" id="btnAllOn" onclick="toggleAllLangs(true)">全ON</button>
+                        <button class="btn btn-sm btn-inline" id="btnAllOff" onclick="toggleAllLangs(false)">全OFF</button>
+                    </label>
+                    <div class="lang-toggles" id="langToggles"></div>
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label><span id="lblLangOrder">言語の順序</span> <span class="hint" id="lblDragHint">(ドラッグで並べ替え)</span>:</label>
+                    <div class="lang-order" id="langOrder"></div>
+                </div>
+                <div class="control-group" style="flex:0">
+                    <label>&nbsp;</label>
+                    <div class="btn-group">
+                        <button class="btn btn-sm" id="btnDefaultOrder" onclick="resetOrder()">デフォルト順</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <div class="map-container" id="mapContainer">
+                <svg id="linesSvg" class="lines-svg"></svg>
+                <div id="langRows"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button class="btn btn-sm" id="btnSavePng" onclick="downloadAsPNG()">PNG保存</button>
+            <button class="btn btn-sm" id="btnSaveSvg" onclick="downloadAsSVG()">SVG保存</button>
+            <span class="footer-sep"></span>
+            <button class="btn btn-sm btn-share" id="btnCopyUrl" onclick="copyShareURL()">URLコピー</button>
+            <button class="btn btn-sm btn-share btn-x" onclick="shareToX()">X</button>
+            <button class="btn btn-sm btn-share btn-fb" onclick="shareToFacebook()">Facebook</button>
+            <button class="btn btn-sm btn-share btn-line" onclick="shareToLINE()">LINE</button>
+        </div>
+    </div>
+
+    <div class="copy-toast" id="copyToast">URLをコピーしました</div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
