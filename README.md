@@ -1,6 +1,6 @@
 # LangMap - Multilingual Word Order Map
 
-![LangMap Screenshot](IMG_9302.jpg)
+![LangMap Screenshot](langmap.png)
 
 **LangMap** is an interactive web tool that visualizes how word order differs across languages. Each sentence is broken into color-coded semantic segments, and curved lines connect corresponding segments between languages — making it instantly clear how languages rearrange the same meaning.
 
@@ -103,7 +103,7 @@ MIT
 
 # LangMap - 多言語語順マップ
 
-![LangMap スクリーンショット](IMG_9302.jpg)
+![LangMap スクリーンショット](langmap.png)
 
 **LangMap** は、言語間で語順がどのように異なるかを視覚化するインタラクティブなWebツールです。各文を色分けされた意味セグメントに分割し、言語間で対応するセグメントをベジェ曲線で結びます。
 
