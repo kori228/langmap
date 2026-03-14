@@ -1,2 +1,7 @@
 /.claude
 /IMG_9302.jpg
+/backup/
+*.bak
+*.bak2
+*.rebuilt
+fix_*.py
