@@ -8,29 +8,33 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 18 languages with hand-aligned semantic segments
-- **18 languages**: Japanese, Korean, Chinese (Mandarin), Cantonese, Vietnamese, Thai, Indonesian, Hindi, English, German, French, Italian, Spanish, Portuguese, Russian, Ukrainian, Arabic, Hebrew
+- **100 sample sentences** across 32 languages with hand-aligned semantic segments
+- **32 languages** including dialects and historical variants (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
 - **URL state persistence** — every setting (sentence, languages, order, UI language) is saved in the URL hash for sharing and bookmarking
-- **UI in 18 languages** — switch the entire interface language from the top-right selector
+- **UI in 21 languages** — switch the entire interface language from the top-right selector
 - **RTL support** — Arabic and Hebrew render right-to-left
 - **Export** — save as PNG or SVG
 - **Share** — copy URL, share to X (Twitter), Facebook, LINE
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
+- **Inline editing** — click any segment to edit translations directly in the map
 
-## Languages (ordered by similarity)
+## Languages (32 total, ordered by similarity)
 
-| Group | Languages |
-|---|---|
-| CJK | Japanese, Korean, Chinese, Cantonese |
-| Southeast Asian | Vietnamese, Thai, Indonesian |
-| South Asian | Hindi |
-| Germanic | English, German |
-| Romance | French, Italian, Spanish, Portuguese |
-| Slavic | Russian, Ukrainian |
-| Semitic | Arabic, Hebrew |
+| Group | Languages | Codes |
+|---|---|---|
+| Japanese | Standard, Osaka dialect, Aomori dialect, Okinawan dialect, Edo-period | `ja`, `osa`, `aom`, `oki`, `ja_edo` |
+| Korean | Standard, North Korean, Busan dialect | `ko`, `kp`, `bus` |
+| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Classical Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
+| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Indonesian | `vi`, `vi_nom`, `th`, `id` |
+| South Asian | Hindi | `hi` |
+| Germanic | English, German | `en`, `de` |
+| Romance | French, Italian, Spanish (EU/MX), Portuguese (EU/BR) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| Slavic | Russian, Ukrainian | `ru`, `uk` |
+| Semitic | Arabic (MSA), Arabic (Egyptian), Hebrew | `ar`, `ar_eg`, `he` |
+| African | Swahili | `sw` |
 
 ## Getting Started
 
@@ -65,10 +69,12 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 
 ```
 langmap/
-  index.html   — Main HTML page
-  styles.css   — Styles (including RTL support)
-  app.js       — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js      — 100 sentences × 18 languages with segment alignments
+  index.html        — Main HTML page
+  styles.css         — Styles (including RTL support)
+  app.js             — Rendering engine, controls, drag-and-drop, export, i18n
+  data.js            — 100 sentences × 32 languages with segment alignments
+  validate_data.py   — Data validation script
+  CONTRIBUTING.md    — Data contribution guidelines
 ```
 
 ## Data Format
@@ -78,7 +84,7 @@ Each sentence in `data.js` follows this structure:
 ```javascript
 {
   id: 1,
-  title: "Japanese description",
+  title: "English description",
   segments: {
     A: { color: "#e74c3c" },  // semantic role
     B: { color: "#3498db" },
@@ -94,6 +100,12 @@ Each sentence in `data.js` follows this structure:
 ```
 
 Each language lists the same segment IDs in its own natural word order. The visualization draws colored lines between matching segments to show how order differs.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding sentences or languages.
+
+Run `python3 validate_data.py` before committing to check for common errors.
 
 ## License
 
@@ -111,29 +123,33 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 18言語で意味単位のアラインメント済み
-- **18言語対応**: 日本語、韓国語、中国語、広東語、ベトナム語、タイ語、インドネシア語、ヒンディー語、英語、ドイツ語、フランス語、イタリア語、スペイン語、ポルトガル語、ロシア語、ウクライナ語、アラビア語、ヘブライ語
+- **100のサンプル文** — 32言語で意味単位のアラインメント済み
+- **32言語対応** — 方言・歴史的変種を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
 - **URL状態保持** — 文章、言語、順序、UI言語がすべてURLハッシュに保存され、共有・ブックマーク可能
-- **UIの18言語対応** — 右上のセレクタでインターフェース言語を切替
+- **UIの21言語対応** — 右上のセレクタでインターフェース言語を切替
 - **RTL対応** — アラビア語・ヘブライ語は右から左に表示
 - **エクスポート** — PNG・SVGで保存
 - **シェア** — URLコピー、X (Twitter)、Facebook、LINEへの共有ボタン
 - **キーボードショートカット** — `←`/`→`で文章切替、`r`でランダム
+- **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 
-## 言語一覧（類似言語順）
+## 言語一覧（32言語、類似言語順）
 
-| グループ | 言語 |
-|---|---|
-| CJK | 日本語、韓国語、中国語、広東語 |
-| 東南アジア | ベトナム語、タイ語、インドネシア語 |
-| 南アジア | ヒンディー語 |
-| ゲルマン語派 | 英語、ドイツ語 |
-| ロマンス語派 | フランス語、イタリア語、スペイン語、ポルトガル語 |
-| スラヴ語派 | ロシア語、ウクライナ語 |
-| セム語派 | アラビア語、ヘブライ語 |
+| グループ | 言語 | コード |
+|---|---|---|
+| 日本語 | 標準語、大阪弁、青森弁、沖縄弁、江戸時代語 | `ja`, `osa`, `aom`, `oki`, `ja_edo` |
+| 韓国語 | 標準語、北朝鮮語、釜山弁 | `ko`, `kp`, `bus` |
+| 中国語 | 普通話、広東語、台湾語、上海語、文言 | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
+| 東南アジア | ベトナム語、チューノム、タイ語、インドネシア語 | `vi`, `vi_nom`, `th`, `id` |
+| 南アジア | ヒンディー語 | `hi` |
+| ゲルマン語派 | 英語、ドイツ語 | `en`, `de` |
+| ロマンス語派 | フランス語、イタリア語、スペイン語(欧州/メキシコ)、ポルトガル語(欧州/ブラジル) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| スラヴ語派 | ロシア語、ウクライナ語 | `ru`, `uk` |
+| セム語派 | アラビア語(フスハー)、アラビア語(エジプト方言)、ヘブライ語 | `ar`, `ar_eg`, `he` |
+| アフリカ | スワヒリ語 | `sw` |
 
 ## 使い方
 
@@ -168,10 +184,12 @@ npx serve .
 
 ```
 langmap/
-  index.html   — メインHTMLページ
-  styles.css   — スタイル（RTL対応含む）
-  app.js       — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js      — 100文 × 18言語のセグメントアラインメントデータ
+  index.html        — メインHTMLページ
+  styles.css         — スタイル（RTL対応含む）
+  app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
+  data.js            — 100文 × 32言語のセグメントアラインメントデータ
+  validate_data.py   — データバリデーションスクリプト
+  CONTRIBUTING.md    — データ追加ガイドライン
 ```
 
 ## データ形式
@@ -197,6 +215,12 @@ langmap/
 ```
 
 各言語は同じセグメントIDをその言語固有の語順で並べます。ビジュアライゼーションは一致するセグメント間に色付きの線を描画し、語順の違いを示します。
+
+## コントリビューション
+
+文章や言語の追加については [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
+
+コミット前に `python3 validate_data.py` を実行してエラーチェックを行ってください。
 
 ## ライセンス
 
