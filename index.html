@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LangMap - 多言語語順マップ</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
     <div class="container">
         <div class="header-row">
-            <h1><span id="uiTitle">LangMap</span> <span class="subtitle" id="uiSubtitle">多言語語順マップ</span></h1>
+            <h1><a href="#" onclick="resetToDefaults(); return false;" class="logo-link"><span id="uiTitle">LangMap</span> <span class="subtitle" id="uiSubtitle">多言語語順マップ</span></a></h1>
             <div class="ui-lang-picker">
                 <label id="lblUiLang">UI言語:</label>
                 <select id="uiLangSelect"></select>
@@ -43,20 +43,20 @@
                 </div>
             </div>
 
-            <div class="control-row">
-                <div class="control-group">
-                    <label><span id="lblLangOrder">言語の順序</span> <span class="hint" id="lblDragHint">(ドラッグで並べ替え)</span>:</label>
-                    <div class="lang-order" id="langOrder"></div>
-                </div>
-                <div class="control-group" style="flex:0">
-                    <label>&nbsp;</label>
-                    <div class="btn-group">
-                        <button class="btn btn-sm" id="btnDefaultOrder" onclick="resetOrder()">デフォルト順</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
+        <div class="rtl-note" id="rtlNote" style="display:none">
+            <span id="rtlNoteText"></span>
+            <label class="rtl-switch">
+                <input type="checkbox" id="rtlToggle" onchange="toggleRtlNative(this.checked)">
+                <span class="rtl-switch-slider"></span>
+                <span id="rtlToggleLabel"></span>
+            </label>
+        </div>
+
+        <div class="map-toolbar">
+            <button class="btn btn-sm" id="btnResetOrder" onclick="resetOrder()">↻ <span id="lblResetOrder">順序をリセット</span></button>
+        </div>
         <div class="map-wrapper">
             <div class="map-container" id="mapContainer">
                 <svg id="linesSvg" class="lines-svg"></svg>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="copy-toast" id="copyToast">URLをコピーしました</div>
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="data.js?v=17"></script>
+    <script src="app.js?v=17"></script>
 </body>
 </html>
