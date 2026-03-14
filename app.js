@@ -1,6 +1,6 @@
 // UI translations
 const UI_STRINGS = {
-    ja: { title: 'LangMap', subtitle: '多言語語順マップ', selectSentence: '文章選択:', langToggle: '表示言語 ON/OFF:', langOrder: '言語の順序', dragHint: 'ドラッグで並べ替え', defaultOrder: 'デフォルト順', random: 'ランダム', prev: '◀', next: '▶', allOn: '全ON', allOff: '全OFF', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: 'URLコピー', copied: 'URLをコピーしました', uiLang: 'UI言語:', noLangSelected: '1つ以上の言語を選択してください', showMore: 'もっと表示', showLess: '閉じる', edit: '編集', save: '保存', cancel: 'キャンセル', corrector: '添削者:', correctionSaved: '修正を保存しました', rtlNote: '※ アラビア語・ヘブライ語は比較のため左→右で表示しています（実際は右→左に読みます）', rtlToggle: '元の語順(←)で表示' },
+    ja: { title: 'LangMap', subtitle: '多言語語順マップ', selectSentence: '文章選択:', langToggle: '表示言語 ON/OFF:', langOrder: '言語の順序', dragHint: 'ドラッグで並べ替え', defaultOrder: 'デフォルト順', random: 'ランダム', prev: '◀', next: '▶', allOn: '全ON', allOff: '全OFF', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: 'URLコピー', copied: 'URLをコピーしました', uiLang: 'UI言語:', noLangSelected: '1つ以上の言語を選択してください', showMore: 'もっと表示', showLess: '閉じる', edit: '編集', save: '保存', cancel: 'キャンセル', corrector: '添削者:', correctionSaved: '修正を保存しました', copyText: 'テキストをコピー', copiedText: 'テキストをコピーしました', rtlNote: '※ アラビア語・ヘブライ語は比較のため左→右で表示しています（実際は右→左に読みます）', rtlToggle: '元の語順(←)で表示' },
     ko: { title: 'LangMap', subtitle: '다국어 어순 맵', selectSentence: '문장 선택:', langToggle: '표시 언어 ON/OFF:', langOrder: '언어 순서', dragHint: '드래그하여 정렬', defaultOrder: '기본 순서', random: '랜덤', prev: '◀', next: '▶', allOn: '전체 ON', allOff: '전체 OFF', savePng: 'PNG 저장', saveSvg: 'SVG 저장', copyUrl: 'URL 복사', copied: 'URL을 복사했습니다', uiLang: 'UI 언어:', noLangSelected: '1개 이상의 언어를 선택하세요', showMore: '더 보기', showLess: '닫기', rtlNote: '※ 아랍어·히브리어는 비교를 위해 왼→오른쪽으로 표시합니다 (실제로는 오른→왼쪽으로 읽습니다)', rtlToggle: '원래 방향(←)으로 표시' },
     zh: { title: 'LangMap', subtitle: '多语言语序图', selectSentence: '选择句子:', langToggle: '显示语言 ON/OFF:', langOrder: '语言顺序', dragHint: '拖拽排序', defaultOrder: '默认顺序', random: '随机', prev: '◀', next: '▶', allOn: '全部开', allOff: '全部关', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: '复制链接', copied: '链接已复制', uiLang: 'UI语言:', noLangSelected: '请选择至少一种语言', showMore: '显示更多', showLess: '收起', rtlNote: '※ 阿拉伯语和希伯来语为便于比较从左→右显示（实际从右→左阅读）', rtlToggle: '显示原始方向(←)' },
     yue: { title: 'LangMap', subtitle: '多語言語序圖', selectSentence: '揀句子:', langToggle: '顯示語言 ON/OFF:', langOrder: '語言順序', dragHint: '拖嚟排序', defaultOrder: '預設順序', random: '隨機', prev: '◀', next: '▶', allOn: '全開', allOff: '全關', savePng: 'PNG儲存', saveSvg: 'SVG儲存', copyUrl: '複製連結', copied: '連結已複製', uiLang: 'UI語言:', noLangSelected: '請揀至少一種語言', showMore: '顯示更多', showLess: '收起', rtlNote: '※ 阿拉伯語同希伯來語為咗比較用左→右顯示（實際係右→左讀）', rtlToggle: '顯示原本方向(←)' },
@@ -8,7 +8,7 @@ const UI_STRINGS = {
     th: { title: 'LangMap', subtitle: 'แผนที่ลำดับคำหลายภาษา', selectSentence: 'เลือกประโยค:', langToggle: 'ภาษาที่แสดง ON/OFF:', langOrder: 'ลำดับภาษา', dragHint: 'ลากเพื่อจัดเรียง', defaultOrder: 'ค่าเริ่มต้น', random: 'สุ่ม', prev: '◀', next: '▶', allOn: 'เปิดทั้งหมด', allOff: 'ปิดทั้งหมด', savePng: 'บันทึก PNG', saveSvg: 'บันทึก SVG', copyUrl: 'คัดลอก URL', copied: 'คัดลอก URL แล้ว', uiLang: 'ภาษา UI:', noLangSelected: 'กรุณาเลือกอย่างน้อยหนึ่งภาษา', showMore: 'แสดงเพิ่มเติม', showLess: 'ซ่อน', rtlNote: '※ ภาษาอาหรับและฮีบรูแสดงซ้าย→ขวาเพื่อการเปรียบเทียบ (ปกติอ่านขวา→ซ้าย)', rtlToggle: 'แสดงทิศทางดั้งเดิม (←)' },
     id: { title: 'LangMap', subtitle: 'Peta Urutan Kata Multibahasa', selectSentence: 'Pilih kalimat:', langToggle: 'Bahasa ditampilkan ON/OFF:', langOrder: 'Urutan bahasa', dragHint: 'seret untuk mengurutkan', defaultOrder: 'Urutan default', random: 'Acak', prev: '◀', next: '▶', allOn: 'Semua ON', allOff: 'Semua OFF', savePng: 'Simpan PNG', saveSvg: 'Simpan SVG', copyUrl: 'Salin URL', copied: 'URL disalin', uiLang: 'Bahasa UI:', noLangSelected: 'Pilih setidaknya satu bahasa', showMore: 'Tampilkan lainnya', showLess: 'Tutup', rtlNote: '※ Bahasa Arab dan Ibrani ditampilkan kiri→kanan untuk perbandingan (biasanya dibaca kanan→kiri)', rtlToggle: 'Tampilkan arah asli (←)' },
     hi: { title: 'LangMap', subtitle: 'बहुभाषी शब्द क्रम मानचित्र', selectSentence: 'वाक्य चुनें:', langToggle: 'प्रदर्शन भाषा ON/OFF:', langOrder: 'भाषा क्रम', dragHint: 'क्रम बदलने के लिए खींचें', defaultOrder: 'डिफ़ॉल्ट क्रम', random: 'रैंडम', prev: '◀', next: '▶', allOn: 'सभी ON', allOff: 'सभी OFF', savePng: 'PNG सहेजें', saveSvg: 'SVG सहेजें', copyUrl: 'URL कॉपी', copied: 'URL कॉपी हो गया', uiLang: 'UI भाषा:', noLangSelected: 'कृपया कम से कम एक भाषा चुनें', showMore: 'और दिखाएं', showLess: 'बंद करें', rtlNote: '※ अरबी और हिब्रू तुलना के लिए बाएं→दाएं दिखाए गए हैं (वास्तव में दाएं→बाएं पढ़े जाते हैं)', rtlToggle: 'मूल दिशा में दिखाएं (←)' },
-    en: { title: 'LangMap', subtitle: 'Multilingual Word Order Map', selectSentence: 'Select sentence:', langToggle: 'Display languages ON/OFF:', langOrder: 'Language order', dragHint: 'drag to reorder', defaultOrder: 'Default order', random: 'Random', prev: '◀', next: '▶', allOn: 'All ON', allOff: 'All OFF', savePng: 'Save PNG', saveSvg: 'Save SVG', copyUrl: 'Copy URL', copied: 'URL copied', uiLang: 'UI Language:', noLangSelected: 'Please select at least one language', showMore: 'Show more', showLess: 'Show less', edit: 'Edit', save: 'Save', cancel: 'Cancel', corrector: 'Corrector:', correctionSaved: 'Correction saved', rtlNote: '* Arabic and Hebrew are shown left-to-right for comparison (they are normally read right-to-left)', rtlToggle: 'Show native direction' },
+    en: { title: 'LangMap', subtitle: 'Multilingual Word Order Map', selectSentence: 'Select sentence:', langToggle: 'Display languages ON/OFF:', langOrder: 'Language order', dragHint: 'drag to reorder', defaultOrder: 'Default order', random: 'Random', prev: '◀', next: '▶', allOn: 'All ON', allOff: 'All OFF', savePng: 'Save PNG', saveSvg: 'Save SVG', copyUrl: 'Copy URL', copied: 'URL copied', uiLang: 'UI Language:', noLangSelected: 'Please select at least one language', showMore: 'Show more', showLess: 'Show less', edit: 'Edit', save: 'Save', cancel: 'Cancel', corrector: 'Corrector:', correctionSaved: 'Correction saved', copyText: 'Copy text', copiedText: 'Text copied', rtlNote: '* Arabic and Hebrew are shown left-to-right for comparison (they are normally read right-to-left)', rtlToggle: 'Show native direction' },
     de: { title: 'LangMap', subtitle: 'Mehrsprachige Wortstellungskarte', selectSentence: 'Satz wählen:', langToggle: 'Angezeigte Sprachen ON/OFF:', langOrder: 'Sprachreihenfolge', dragHint: 'ziehen zum Sortieren', defaultOrder: 'Standardreihenfolge', random: 'Zufällig', prev: '◀', next: '▶', allOn: 'Alle AN', allOff: 'Alle AUS', savePng: 'PNG speichern', saveSvg: 'SVG speichern', copyUrl: 'URL kopieren', copied: 'URL kopiert', uiLang: 'UI-Sprache:', noLangSelected: 'Bitte wählen Sie mindestens eine Sprache', showMore: 'Mehr anzeigen', showLess: 'Weniger', rtlNote: '※ Arabisch und Hebräisch werden zum Vergleich links→rechts angezeigt (normalerweise rechts→links gelesen)', rtlToggle: 'Originalrichtung anzeigen (←)' },
     fr: { title: 'LangMap', subtitle: "Carte de l'ordre des mots multilingue", selectSentence: 'Sélectionner une phrase :', langToggle: 'Langues affichées ON/OFF :', langOrder: 'Ordre des langues', dragHint: 'glisser pour réorganiser', defaultOrder: 'Ordre par défaut', random: 'Aléatoire', prev: '◀', next: '▶', allOn: 'Tout ON', allOff: 'Tout OFF', savePng: 'Enregistrer PNG', saveSvg: 'Enregistrer SVG', copyUrl: "Copier l'URL", copied: 'URL copié', uiLang: 'Langue UI :', noLangSelected: 'Veuillez sélectionner au moins une langue', showMore: 'Afficher plus', showLess: 'Réduire', rtlNote: "※ L'arabe et l'hébreu sont affichés gauche→droite pour comparaison (normalement lus droite→gauche)", rtlToggle: 'Afficher la direction originale (←)' },
     it: { title: 'LangMap', subtitle: "Mappa dell'ordine delle parole multilingue", selectSentence: 'Seleziona frase:', langToggle: 'Lingue visualizzate ON/OFF:', langOrder: 'Ordine delle lingue', dragHint: 'trascina per riordinare', defaultOrder: 'Ordine predefinito', random: 'Casuale', prev: '◀', next: '▶', allOn: 'Tutti ON', allOff: 'Tutti OFF', savePng: 'Salva PNG', saveSvg: 'Salva SVG', copyUrl: 'Copia URL', copied: 'URL copiato', uiLang: 'Lingua UI:', noLangSelected: 'Seleziona almeno una lingua', showMore: 'Mostra altro', showLess: 'Chiudi', rtlNote: '※ Arabo ed ebraico sono mostrati sinistra→destra per confronto (normalmente letti destra→sinistra)', rtlToggle: 'Mostra direzione originale (←)' },
@@ -108,6 +108,7 @@ const LANGUAGES = [
 const DEFAULT_ORDER = LANGUAGES.map(l => l.code);
 const EXPERIMENTAL_LANGS = new Set(LANGUAGES.filter(l => l.experimental).map(l => l.code));
 const MAJOR_LANGS = new Set(['ja', 'ko', 'zh', 'en', 'es_mx', 'ar']);
+const NO_SPACE_LANGS = new Set(['ja', 'osa', 'aom', 'oki', 'ja_edo', 'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'th', 'vi_nom']);
 
 // State — only major languages are ON by default
 let enabledLangs = new Set(MAJOR_LANGS);
@@ -746,10 +747,30 @@ function render() {
             row.classList.add('rtl-native');
         }
 
+        // Copy button (appears on hover)
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        copyBtn.title = t('copyText');
+        copyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = langData.map(seg => seg[1]).join(NO_SPACE_LANGS.has(code) ? '' : ' ');
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.textContent = t('copiedText');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.textContent = t('copied');
+                }, 2000);
+            });
+        });
+        row.appendChild(copyBtn);
+
         // Edit button (appears on hover)
         const editBtn = document.createElement('button');
         editBtn.className = 'edit-btn';
-        editBtn.innerHTML = '&#9998;'; // pencil
+        editBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>';
         editBtn.title = t('edit');
         editBtn.addEventListener('click', (e) => {
             e.stopPropagation();

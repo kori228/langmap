@@ -379,10 +379,9 @@ select:focus { border-color: #4a90d9; outline: none; }
     display: inline-block;
 }
 
-/* Edit button */
-.edit-btn {
+/* Copy & Edit buttons */
+.copy-btn, .edit-btn {
     position: absolute;
-    right: 4px;
     top: 50%;
     transform: translateY(-50%);
     background: #fff;
@@ -400,10 +399,13 @@ select:focus { border-color: #4a90d9; outline: none; }
     z-index: 10;
     color: #666;
 }
-.lang-row:hover .edit-btn {
+.edit-btn { right: 4px; }
+.copy-btn { right: 36px; }
+.lang-row:hover .edit-btn,
+.lang-row:hover .copy-btn {
     opacity: 1;
 }
-.edit-btn:hover {
+.edit-btn:hover, .copy-btn:hover {
     background: #e3f0ff;
     border-color: #4a90d9;
     color: #4a90d9;
@@ -449,7 +451,8 @@ select:focus { border-color: #4a90d9; outline: none; }
 .lang-row.editing:active {
     cursor: default;
 }
-.lang-row.editing .edit-btn {
+.lang-row.editing .edit-btn,
+.lang-row.editing .copy-btn {
     display: none;
 }
 .lang-row.editing .lang-label {
