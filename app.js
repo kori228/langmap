@@ -146,13 +146,13 @@ function fromB62(s) {
 }
 
 // Mixed-radix pack: sentence(100) * langBits(2^NUM_LANGS) * uiLang(32) * rtl(2)
-// Max ≈ 3.4e12, fits in JS safe integer, encodes to ≤8 base62 chars
+// Use 2**i instead of 1<<i to avoid 32-bit signed integer overflow at i>=31
 const LANG_BITS_MOD = Math.pow(2, NUM_LANGS);
 function packCore() {
     let langBits = 0;
     for (const c of enabledLangs) {
         const i = LANG_INDEX[c];
-        if (i !== undefined) langBits += (1 << i);
+        if (i !== undefined) langBits += 2 ** i;
     }
     const ui = UI_LANG_INDEX[currentUILang] || 0;
     return currentSentenceIdx
@@ -202,7 +202,7 @@ function loadFromHash() {
 
     const langs = new Set();
     for (let i = 0; i < NUM_LANGS; i++) {
-        if (langBits & (1 << i)) langs.add(INDEX_LANG[i]);
+        if (Math.floor(langBits / 2 ** i) % 2) langs.add(INDEX_LANG[i]);
     }
     if (langs.size > 0) enabledLangs = langs;
 
