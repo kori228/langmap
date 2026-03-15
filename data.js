@@ -167,12 +167,8 @@ const SENTENCES = [
           "bộ vest"
         ],
         [
-          "A",
-          "tôi"
-        ],
-        [
           "D",
-          "đã thấy"
+          "tôi đã thấy"
         ],
         [
           "C",
@@ -224,15 +220,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "yang"
-        ],
-        [
-          "A",
-          "saya"
-        ],
-        [
-          "D",
-          "lihat"
+          "yang saya lihat"
         ],
         [
           "C",
@@ -283,12 +271,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -313,12 +297,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "seen"
+          "I seen"
         ],
         [
           "C",
@@ -343,12 +323,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -373,12 +349,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -403,12 +375,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -433,12 +401,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "seen"
+          "I seen"
         ],
         [
           "C",
@@ -471,12 +435,8 @@ const SENTENCES = [
           "den"
         ],
         [
-          "A",
-          "ich"
-        ],
-        [
           "C",
-          "in einem Geschäft"
+          "ich in einem Geschäft"
         ],
         [
           "B",
@@ -502,15 +462,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "que"
-        ],
-        [
-          "A",
-          "j'"
-        ],
-        [
-          "D",
-          "ai vu"
+          "que j' ai vu"
         ],
         [
           "C",
@@ -562,15 +514,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "который"
-        ],
-        [
-          "A",
-          "я"
-        ],
-        [
-          "D",
-          "увидел"
+          "который я увидел"
         ],
         [
           "C",
@@ -596,15 +540,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "який"
-        ],
-        [
-          "A",
-          "я"
-        ],
-        [
-          "D",
-          "побачив"
+          "який я побачив"
         ],
         [
           "C",
@@ -681,12 +617,8 @@ const SENTENCES = [
           "部𥿭"
         ],
         [
-          "A",
-          "碎"
-        ],
-        [
           "D",
-          "㐌𧡊"
+          "碎㐌𧡊"
         ],
         [
           "C",
@@ -1023,12 +955,8 @@ const SENTENCES = [
           "suti"
         ],
         [
-          "A",
-          "niliyoiona"
-        ],
-        [
           "C",
-          "dukani"
+          "niliyoiona dukani"
         ],
         [
           "B",
@@ -1395,12 +1323,8 @@ const SENTENCES = [
           "die"
         ],
         [
-          "A",
-          "ik"
-        ],
-        [
           "C",
-          "in een winkel"
+          "ik in een winkel"
         ],
         [
           "B",
@@ -1555,12 +1479,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -1585,12 +1505,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "saw"
+          "I saw"
         ],
         [
           "C",
@@ -1772,15 +1688,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "yang"
-        ],
-        [
-          "A",
-          "aku"
-        ],
-        [
-          "D",
-          "lihat"
+          "yang aku lihat"
         ],
         [
           "C",
@@ -2437,12 +2345,8 @@ const SENTENCES = [
           "wo"
         ],
         [
-          "A",
-          "ich"
-        ],
-        [
           "C",
-          "i mene Lade"
+          "ich i mene Lade"
         ],
         [
           "B",
@@ -2468,15 +2372,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "que"
-        ],
-        [
-          "A",
-          "j'"
-        ],
-        [
-          "D",
-          "ai vu"
+          "que j' ai vu"
         ],
         [
           "C",
@@ -2501,12 +2397,8 @@ const SENTENCES = [
           "a suit"
         ],
         [
-          "A",
-          "A"
-        ],
-        [
           "D",
-          "saw"
+          "A saw"
         ],
         [
           "C",
@@ -2531,12 +2423,8 @@ const SENTENCES = [
           "one suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "see"
+          "I see"
         ],
         [
           "C",
@@ -2561,12 +2449,8 @@ const SENTENCES = [
           "one suit"
         ],
         [
-          "A",
-          "I"
-        ],
-        [
           "D",
-          "wen see"
+          "I wen see"
         ],
         [
           "C",
@@ -2591,12 +2475,8 @@ const SENTENCES = [
           "one suit"
         ],
         [
-          "A",
-          "wey I"
-        ],
-        [
           "D",
-          "see"
+          "wey I see"
         ],
         [
           "C",
@@ -2621,12 +2501,8 @@ const SENTENCES = [
           "wanpela sut"
         ],
         [
-          "A",
-          "mi"
-        ],
-        [
           "D",
-          "lukim"
+          "mi lukim"
         ],
         [
           "C",
@@ -2685,12 +2561,8 @@ const SENTENCES = [
           "som"
         ],
         [
-          "A",
-          "jag"
-        ],
-        [
           "C",
-          "i en butik"
+          "jag i en butik"
         ],
         [
           "B",
@@ -2723,12 +2595,8 @@ const SENTENCES = [
           "som"
         ],
         [
-          "A",
-          "jeg"
-        ],
-        [
           "C",
-          "i en butikk"
+          "jeg i en butikk"
         ],
         [
           "B",
@@ -2753,12 +2621,8 @@ const SENTENCES = [
           "ānne wǣfels"
         ],
         [
-          "A",
-          "þe ic"
-        ],
-        [
           "D",
-          "geseah"
+          "þe ic geseah"
         ],
         [
           "C",
@@ -137838,11 +137702,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "सुनता हूँ"
-        ],
-        [
-          "D",
-          "तो खुश महसूस करता हूँ"
+          "सुनता हूँ तो खुश महसूस करता हूँ"
         ]
       ],
       "en": [
@@ -137963,12 +137823,8 @@ const SENTENCES = [
           "wenn"
         ],
         [
-          "D",
-          "ich"
-        ],
-        [
           "A",
-          "Musik"
+          "ich Musik"
         ],
         [
           "B",
@@ -138523,12 +138379,8 @@ const SENTENCES = [
           "als"
         ],
         [
-          "D",
-          "ik"
-        ],
-        [
           "A",
-          "muziek"
+          "ik muziek"
         ],
         [
           "B",
@@ -139197,12 +139049,8 @@ const SENTENCES = [
           "wänn"
         ],
         [
-          "D",
-          "ich"
-        ],
-        [
           "A",
-          "Musig"
+          "ich Musig"
         ],
         [
           "B",
@@ -139345,12 +139193,8 @@ const SENTENCES = [
           "när"
         ],
         [
-          "D",
-          "jag"
-        ],
-        [
           "A",
-          "musik"
+          "jag musik"
         ],
         [
           "B",
@@ -139367,12 +139211,8 @@ const SENTENCES = [
           "når"
         ],
         [
-          "D",
-          "jeg"
-        ],
-        [
           "A",
-          "musikk"
+          "jeg musikk"
         ],
         [
           "B",
