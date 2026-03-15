@@ -1286,6 +1286,106 @@ const SENTENCES = [
           "B",
           "naprzeciwko hotelu"
         ]
+      ],
+      "mg": [
+        [
+          "F",
+          "Te-hitsapa"
+        ],
+        [
+          "E",
+          "ny kostima"
+        ],
+        [
+          "D",
+          "hitako"
+        ],
+        [
+          "C",
+          "tao amin'ny fivarotana"
+        ],
+        [
+          "B",
+          "tandrifin'ny hotely"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "ホテル カシ ウン"
+        ],
+        [
+          "C",
+          "ミセ タ"
+        ],
+        [
+          "D",
+          "ヌカラ"
+        ],
+        [
+          "E",
+          "ルウェ アミプ"
+        ],
+        [
+          "F",
+          "キ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "F",
+          "haluan sovittaa"
+        ],
+        [
+          "E",
+          "pukua"
+        ],
+        [
+          "D",
+          "jonka näin"
+        ],
+        [
+          "C",
+          "kaupassa"
+        ],
+        [
+          "B",
+          "hotellia vastapäätä"
+        ]
+      ],
+      "cy": [
+        [
+          "F",
+          "Rydw i eisiau rhoi cynnig ar"
+        ],
+        [
+          "E",
+          "siwt"
+        ],
+        [
+          "D",
+          "a welais i"
+        ],
+        [
+          "C",
+          "mewn siop"
+        ],
+        [
+          "B",
+          "gyferbyn â'r gwesty"
+        ]
       ]
     }
   },
@@ -2089,6 +2189,78 @@ const SENTENCES = [
         [
           "D",
           "Tanaka"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tanaka"
+        ],
+        [
+          "B",
+          "no anarana"
+        ],
+        [
+          "C",
+          "dia"
+        ],
+        [
+          "A",
+          "ahy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "レヘ"
+        ],
+        [
+          "D",
+          "タナカ"
+        ],
+        [
+          "C",
+          "ネ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minun"
+        ],
+        [
+          "B",
+          "nimeni"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "D",
+          "Tanaka"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Tanaka"
+        ],
+        [
+          "C",
+          "yw"
+        ],
+        [
+          "A",
+          "fy"
+        ],
+        [
+          "B",
+          "enw"
         ]
       ]
     }
@@ -3105,6 +3277,90 @@ const SENTENCES = [
           "E",
           "o 7"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mihinana"
+        ],
+        [
+          "B",
+          "sakafo maraina"
+        ],
+        [
+          "D",
+          "isan'andro maraina"
+        ],
+        [
+          "E",
+          "amin'ny 7"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "D",
+          "ヌマン ネプカ"
+        ],
+        [
+          "E",
+          "アルワン トゥ タ"
+        ],
+        [
+          "B",
+          "トカプ イペ"
+        ],
+        [
+          "C",
+          "イペ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "syön"
+        ],
+        [
+          "B",
+          "aamiaista"
+        ],
+        [
+          "D",
+          "joka aamu"
+        ],
+        [
+          "E",
+          "kello 7"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rwy'n bwyta"
+        ],
+        [
+          "B",
+          "brecwast"
+        ],
+        [
+          "E",
+          "am 7"
+        ],
+        [
+          "D",
+          "bob bore"
+        ]
       ]
     }
   },
@@ -3920,6 +4176,78 @@ const SENTENCES = [
         [
           "B",
           "stacja"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Aiza"
+        ],
+        [
+          "D",
+          "no misy"
+        ],
+        [
+          "A",
+          "ny akaiky indrindra"
+        ],
+        [
+          "B",
+          "ny gara"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "アトゥイカ ウン"
+        ],
+        [
+          "B",
+          "ステーション"
+        ],
+        [
+          "C",
+          "フナク タ"
+        ],
+        [
+          "D",
+          "アン ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "C",
+          "Missä"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "A",
+          "lähin"
+        ],
+        [
+          "B",
+          "asema?"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Ble"
+        ],
+        [
+          "D",
+          "mae"
+        ],
+        [
+          "A",
+          "yr orsaf"
+        ],
+        [
+          "B",
+          "agosaf?"
         ]
       ]
     }
@@ -4813,6 +5141,82 @@ const SENTENCES = [
           "D",
           "smaczna"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tena"
+        ],
+        [
+          "D",
+          "matsiro"
+        ],
+        [
+          "A",
+          "ity"
+        ],
+        [
+          "B",
+          "kafe ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "コーヒー"
+        ],
+        [
+          "C",
+          "ポロンノ"
+        ],
+        [
+          "D",
+          "ピリカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tämä"
+        ],
+        [
+          "B",
+          "kahvi"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "todella"
+        ],
+        [
+          "D",
+          "herkullista"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae'r"
+        ],
+        [
+          "B",
+          "coffi hwn"
+        ],
+        [
+          "C",
+          "yn"
+        ],
+        [
+          "D",
+          "flasus iawn"
+        ]
       ]
     }
   },
@@ -5644,6 +6048,74 @@ const SENTENCES = [
         [
           "B",
           "na uniwersytecie"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mianatra"
+        ],
+        [
+          "C",
+          "teny japoney"
+        ],
+        [
+          "B",
+          "ao amin'ny oniversite"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "ユニバーシティ タ"
+        ],
+        [
+          "C",
+          "ニホン イタク"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "opiskelen"
+        ],
+        [
+          "C",
+          "japania"
+        ],
+        [
+          "B",
+          "yliopistossa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n astudio"
+        ],
+        [
+          "C",
+          "Japaneeg"
+        ],
+        [
+          "B",
+          "yn y brifysgol"
         ]
       ]
     }
@@ -6493,6 +6965,78 @@ const SENTENCES = [
           "D",
           "słoneczna"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Ho"
+        ],
+        [
+          "D",
+          "masoandro"
+        ],
+        [
+          "B",
+          "ny toetr'andro"
+        ],
+        [
+          "A",
+          "rahampitso"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ニサッタ ウン"
+        ],
+        [
+          "B",
+          "シリ"
+        ],
+        [
+          "D",
+          "トカプ チュプ"
+        ],
+        [
+          "C",
+          "ネ クス ネ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Huomisen"
+        ],
+        [
+          "B",
+          "sää"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "D",
+          "aurinkoinen"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Bydd"
+        ],
+        [
+          "A",
+          "tywydd"
+        ],
+        [
+          "B",
+          "yfory yn"
+        ],
+        [
+          "D",
+          "heulog"
+        ]
       ]
     }
   },
@@ -7340,6 +7884,78 @@ const SENTENCES = [
         [
           "D",
           "codziennie"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mahandro"
+        ],
+        [
+          "B",
+          "sakafo hariva"
+        ],
+        [
+          "D",
+          "isan'andro"
+        ],
+        [
+          "A",
+          "ny reniko"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ ハポ"
+        ],
+        [
+          "D",
+          "ヌマン ネプカ"
+        ],
+        [
+          "B",
+          "オンネ イペ"
+        ],
+        [
+          "C",
+          "カラ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Äitini"
+        ],
+        [
+          "C",
+          "laittaa"
+        ],
+        [
+          "B",
+          "illallista"
+        ],
+        [
+          "D",
+          "joka päivä"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "fy mam yn"
+        ],
+        [
+          "B",
+          "coginio cinio"
+        ],
+        [
+          "D",
+          "bob dydd"
         ]
       ]
     }
@@ -8196,6 +8812,74 @@ const SENTENCES = [
         [
           "D",
           "w przyszłym roku"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Te handeha"
+        ],
+        [
+          "B",
+          "any Japana"
+        ],
+        [
+          "D",
+          "amin'ny taona ho avy"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "D",
+          "パイェアン パ タ"
+        ],
+        [
+          "B",
+          "ニホン オルン"
+        ],
+        [
+          "C",
+          "アルキ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "haluan mennä"
+        ],
+        [
+          "B",
+          "Japaniin"
+        ],
+        [
+          "D",
+          "ensi vuonna"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rydw i eisiau"
+        ],
+        [
+          "B",
+          "mynd i Japan"
+        ],
+        [
+          "D",
+          "y flwyddyn nesaf"
         ]
       ]
     }
@@ -9056,6 +9740,74 @@ const SENTENCES = [
         [
           "B",
           "po angielsku"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mahay"
+        ],
+        [
+          "C",
+          "miteny"
+        ],
+        [
+          "B",
+          "anglisy"
+        ],
+        [
+          "A",
+          "ianao ve"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "エアニ"
+        ],
+        [
+          "B",
+          "エンクリス イタク"
+        ],
+        [
+          "C",
+          "イタク エアシカイ"
+        ],
+        [
+          "D",
+          "ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "D",
+          "Osaatko"
+        ],
+        [
+          "A",
+          "sinä"
+        ],
+        [
+          "C",
+          "puhua"
+        ],
+        [
+          "B",
+          "englantia?"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Allwch"
+        ],
+        [
+          "A",
+          "chi"
+        ],
+        [
+          "B",
+          "siarad Saesneg?"
         ]
       ]
     }
@@ -10275,6 +11027,110 @@ const SENTENCES = [
           "B",
           "w księgarni"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Nividy"
+        ],
+        [
+          "D",
+          "boky"
+        ],
+        [
+          "E",
+          "vaovao"
+        ],
+        [
+          "B",
+          "tao amin'ny fivarotam-boky"
+        ],
+        [
+          "F",
+          "omaly"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "F",
+          "ヌマン"
+        ],
+        [
+          "B",
+          "トッカリプ ミセ タ"
+        ],
+        [
+          "D",
+          "アシリ"
+        ],
+        [
+          "E",
+          "カンピ"
+        ],
+        [
+          "C",
+          "ホク"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "ostin"
+        ],
+        [
+          "D",
+          "uuden"
+        ],
+        [
+          "E",
+          "kirjan"
+        ],
+        [
+          "B",
+          "kirjakaupasta"
+        ],
+        [
+          "F",
+          "eilen"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Prynais"
+        ],
+        [
+          "A",
+          "i"
+        ],
+        [
+          "D",
+          "lyfr"
+        ],
+        [
+          "E",
+          "newydd"
+        ],
+        [
+          "B",
+          "yn y siop lyfrau"
+        ],
+        [
+          "F",
+          "ddoe"
+        ]
       ]
     }
   },
@@ -11123,6 +11979,78 @@ const SENTENCES = [
           "D",
           "są piękne"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tsara tarehy"
+        ],
+        [
+          "C",
+          "ny voninkazo sakura"
+        ],
+        [
+          "A",
+          "ato amin'ity"
+        ],
+        [
+          "B",
+          "valan-javaboary ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "パーク ウン"
+        ],
+        [
+          "C",
+          "カニマ ノンノ"
+        ],
+        [
+          "D",
+          "ピリカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tämän"
+        ],
+        [
+          "B",
+          "puiston"
+        ],
+        [
+          "C",
+          "kirsikankukat"
+        ],
+        [
+          "D",
+          "ovat kauniita"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "C",
+          "blodau'r ceirios"
+        ],
+        [
+          "B",
+          "yn y parc hwn yn"
+        ],
+        [
+          "D",
+          "hardd iawn"
+        ]
       ]
     }
   },
@@ -11858,6 +12786,66 @@ const SENTENCES = [
         [
           "B",
           "poproszę"
+        ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Azafady"
+        ],
+        [
+          "D",
+          "omeo"
+        ],
+        [
+          "C",
+          "vera rano iray"
+        ],
+        [
+          "B",
+          "ahy"
+        ]
+      ],
+      "ain": [
+        [
+          "C",
+          "ワッカ"
+        ],
+        [
+          "A",
+          "シネプ"
+        ],
+        [
+          "B",
+          "エンコレ ヤン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Voisinko"
+        ],
+        [
+          "B",
+          "saada"
+        ],
+        [
+          "C",
+          "lasin vettä?"
+        ]
+      ],
+      "cy": [
+        [
+          "A",
+          "Gwydriad"
+        ],
+        [
+          "C",
+          "o ddŵr"
+        ],
+        [
+          "B",
+          "os gwelwch yn dda"
         ]
       ]
     }
@@ -12878,6 +13866,90 @@ const SENTENCES = [
           "E",
           "codziennie"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mandeha"
+        ],
+        [
+          "B",
+          "miasa"
+        ],
+        [
+          "D",
+          "amin'ny lamasinina"
+        ],
+        [
+          "E",
+          "isan'andro"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "E",
+          "ヌマン ネプカ"
+        ],
+        [
+          "D",
+          "キサラ タ"
+        ],
+        [
+          "B",
+          "ミチ オルン"
+        ],
+        [
+          "C",
+          "アルキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "menen"
+        ],
+        [
+          "B",
+          "töihin"
+        ],
+        [
+          "D",
+          "junalla"
+        ],
+        [
+          "E",
+          "joka päivä"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rwy'n mynd"
+        ],
+        [
+          "B",
+          "i'r gwaith"
+        ],
+        [
+          "D",
+          "ar y trên"
+        ],
+        [
+          "E",
+          "bob dydd"
+        ]
       ]
     }
   },
@@ -13718,6 +14790,74 @@ const SENTENCES = [
           "B",
           "we Francji"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Efa"
+        ],
+        [
+          "C",
+          "mianatra any ivelany"
+        ],
+        [
+          "B",
+          "any Frantsa"
+        ],
+        [
+          "A",
+          "ny rahavaviko"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ マチ"
+        ],
+        [
+          "B",
+          "フランス オルン"
+        ],
+        [
+          "C",
+          "ヌイェ"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Pikkusiskoni"
+        ],
+        [
+          "C",
+          "opiskelee ulkomailla"
+        ],
+        [
+          "B",
+          "Ranskassa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "fy chwaer"
+        ],
+        [
+          "C",
+          "yn astudio tramor"
+        ],
+        [
+          "B",
+          "yn Ffrainc"
+        ]
       ]
     }
   },
@@ -14449,6 +15589,74 @@ const SENTENCES = [
         [
           "B",
           "film"
+        ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Amin'ny firy"
+        ],
+        [
+          "C",
+          "no manomboka"
+        ],
+        [
+          "B",
+          "ny sarimihetsika"
+        ],
+        [
+          "D",
+          "?"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "シネマ"
+        ],
+        [
+          "A",
+          "ヘンプアク タ"
+        ],
+        [
+          "C",
+          "ホシキ"
+        ],
+        [
+          "D",
+          "ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Mihin aikaan"
+        ],
+        [
+          "B",
+          "elokuva"
+        ],
+        [
+          "C",
+          "alkaa?"
+        ]
+      ],
+      "cy": [
+        [
+          "A",
+          "Am faint o'r gloch"
+        ],
+        [
+          "D",
+          "mae"
+        ],
+        [
+          "B",
+          "y ffilm yn"
+        ],
+        [
+          "C",
+          "dechrau?"
         ]
       ]
     }
@@ -15453,6 +16661,94 @@ const SENTENCES = [
           "E",
           "dziś po południu"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Manana"
+        ],
+        [
+          "B",
+          "fivoriana"
+        ],
+        [
+          "D",
+          "amin'ny telo"
+        ],
+        [
+          "E",
+          "anio tolakandro"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "E",
+          "タネ オノマン"
+        ],
+        [
+          "D",
+          "レ トゥ タ"
+        ],
+        [
+          "B",
+          "ウコカラ"
+        ],
+        [
+          "C",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minulla"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "B",
+          "kokous"
+        ],
+        [
+          "D",
+          "kello 3"
+        ],
+        [
+          "E",
+          "tänä iltapäivänä"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "B",
+          "cyfarfod"
+        ],
+        [
+          "A",
+          "gyda fi"
+        ],
+        [
+          "D",
+          "am 3"
+        ],
+        [
+          "E",
+          "prynhawn heddiw"
+        ]
       ]
     }
   },
@@ -16349,6 +17645,82 @@ const SENTENCES = [
           "D",
           "za droga"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Lafo"
+        ],
+        [
+          "D",
+          "loatra"
+        ],
+        [
+          "A",
+          "ity"
+        ],
+        [
+          "B",
+          "kitapo ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "プイ"
+        ],
+        [
+          "C",
+          "イヨッペ"
+        ],
+        [
+          "D",
+          "テイネプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tämä"
+        ],
+        [
+          "B",
+          "laukku"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "hieman"
+        ],
+        [
+          "D",
+          "liian kallis"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae'r"
+        ],
+        [
+          "B",
+          "bag hwn"
+        ],
+        [
+          "C",
+          "ychydig yn"
+        ],
+        [
+          "D",
+          "rhy ddrud"
+        ]
       ]
     }
   },
@@ -17193,6 +18565,74 @@ const SENTENCES = [
           "B",
           "muzyki"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tia"
+        ],
+        [
+          "C",
+          "mihaino"
+        ],
+        [
+          "B",
+          "mozika"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "リムセ"
+        ],
+        [
+          "C",
+          "ヌ コロ"
+        ],
+        [
+          "D",
+          "イラマス"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "pidän"
+        ],
+        [
+          "B",
+          "musiikin"
+        ],
+        [
+          "C",
+          "kuuntelemisesta"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n hoffi"
+        ],
+        [
+          "C",
+          "gwrando ar"
+        ],
+        [
+          "B",
+          "gerddoriaeth"
+        ]
       ]
     }
   },
@@ -17996,6 +19436,70 @@ const SENTENCES = [
         [
           "D",
           "pada deszcz"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Efa"
+        ],
+        [
+          "B",
+          "manorana"
+        ],
+        [
+          "A",
+          "hatramin'ny maraina"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タネ クンネ ワ ノ"
+        ],
+        [
+          "B",
+          "シュイ"
+        ],
+        [
+          "D",
+          "アプト"
+        ],
+        [
+          "C",
+          "ラン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Aamusta lähtien"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "B",
+          "satanut"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae hi"
+        ],
+        [
+          "C",
+          "wedi bod yn"
+        ],
+        [
+          "D",
+          "bwrw glaw"
+        ],
+        [
+          "A",
+          "ers y bore"
         ]
       ]
     }
@@ -18971,6 +20475,90 @@ const SENTENCES = [
         [
           "C",
           "z przyjaciółmi"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Hisakafo"
+        ],
+        [
+          "D",
+          "hariva"
+        ],
+        [
+          "C",
+          "miaraka amin'ny namana"
+        ],
+        [
+          "B",
+          "anio alina"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タネ オンネ タ"
+        ],
+        [
+          "C",
+          "ウタリ トゥラノ"
+        ],
+        [
+          "D",
+          "オンネ イペ"
+        ],
+        [
+          "E",
+          "イペ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "syön"
+        ],
+        [
+          "D",
+          "illallista"
+        ],
+        [
+          "C",
+          "ystävien kanssa"
+        ],
+        [
+          "B",
+          "tänä iltana"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Bydda i'n cael"
+        ],
+        [
+          "D",
+          "cinio"
+        ],
+        [
+          "C",
+          "gyda ffrindiau"
+        ],
+        [
+          "B",
+          "heno"
         ]
       ]
     }
@@ -19983,6 +21571,90 @@ const SENTENCES = [
           "C",
           "języka"
         ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Te"
+        ],
+        [
+          "D",
+          "hianatra"
+        ],
+        [
+          "B",
+          "fiteny"
+        ],
+        [
+          "C",
+          "vaovao"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "アシリ"
+        ],
+        [
+          "C",
+          "イタク"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ],
+        [
+          "E",
+          "ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "haluan"
+        ],
+        [
+          "D",
+          "oppia"
+        ],
+        [
+          "B",
+          "uuden"
+        ],
+        [
+          "C",
+          "kielen"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rydw i eisiau"
+        ],
+        [
+          "D",
+          "dysgu"
+        ],
+        [
+          "B",
+          "iaith"
+        ],
+        [
+          "C",
+          "newydd"
+        ]
       ]
     }
   },
@@ -20827,6 +22499,78 @@ const SENTENCES = [
           "A",
           "biblioteki"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Eo"
+        ],
+        [
+          "B",
+          "akaikin'"
+        ],
+        [
+          "C",
+          "ny hopitaly"
+        ],
+        [
+          "A",
+          "ny tranomboky"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "トッカリプ チセ"
+        ],
+        [
+          "C",
+          "トゥシンタ チセ"
+        ],
+        [
+          "B",
+          "テケヘ タ"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Kirjasto"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "sairaalan"
+        ],
+        [
+          "B",
+          "vieressä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "y llyfrgell"
+        ],
+        [
+          "B",
+          "drws nesaf i"
+        ],
+        [
+          "C",
+          "'r ysbyty"
+        ]
       ]
     }
   },
@@ -21574,6 +23318,70 @@ const SENTENCES = [
         [
           "C",
           "menu"
+        ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Azafady"
+        ],
+        [
+          "D",
+          "asehoy"
+        ],
+        [
+          "B",
+          "ahy"
+        ],
+        [
+          "C",
+          "ny lisitry ny sakafo"
+        ]
+      ],
+      "ain": [
+        [
+          "C",
+          "メニュー"
+        ],
+        [
+          "D",
+          "ヌカレ"
+        ],
+        [
+          "A",
+          "ヤン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Voisitteko"
+        ],
+        [
+          "D",
+          "näyttää"
+        ],
+        [
+          "B",
+          "minulle"
+        ],
+        [
+          "C",
+          "ruokalistan?"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Dangoswch"
+        ],
+        [
+          "C",
+          "y fwydlen"
+        ],
+        [
+          "A",
+          "i mi os gwelwch yn dda"
         ]
       ]
     }
@@ -22518,6 +24326,82 @@ const SENTENCES = [
           "D",
           "firmie"
         ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Miasa"
+        ],
+        [
+          "B",
+          "ao amin'ny"
+        ],
+        [
+          "C",
+          "orinasa"
+        ],
+        [
+          "D",
+          "lehibe"
+        ],
+        [
+          "A",
+          "ny raiko"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ ミチ"
+        ],
+        [
+          "C",
+          "ポロ"
+        ],
+        [
+          "D",
+          "ミセ タ"
+        ],
+        [
+          "E",
+          "モノレ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Isäni"
+        ],
+        [
+          "E",
+          "työskentelee"
+        ],
+        [
+          "C",
+          "suuressa"
+        ],
+        [
+          "D",
+          "yrityksessä"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Mae"
+        ],
+        [
+          "A",
+          "fy nhad yn"
+        ],
+        [
+          "D",
+          "gweithio mewn cwmni"
+        ],
+        [
+          "C",
+          "mawr"
+        ]
       ]
     }
   },
@@ -23350,6 +25234,74 @@ const SENTENCES = [
           "B",
           "w parku"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Eo am-"
+        ],
+        [
+          "C",
+          "pilalaovana"
+        ],
+        [
+          "B",
+          "ao amin'ny valan-javaboary"
+        ],
+        [
+          "A",
+          "ny ankizy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ポンペ ウタラ"
+        ],
+        [
+          "B",
+          "パーク タ"
+        ],
+        [
+          "C",
+          "ミナ"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Lapset"
+        ],
+        [
+          "C",
+          "leikkivät"
+        ],
+        [
+          "B",
+          "puistossa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "'r plant yn"
+        ],
+        [
+          "C",
+          "chwarae"
+        ],
+        [
+          "B",
+          "yn y parc"
+        ]
       ]
     }
   },
@@ -24174,6 +26126,74 @@ const SENTENCES = [
           "C",
           "trzy razy"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Efa nandalo"
+        ],
+        [
+          "B",
+          "tany Tokyo"
+        ],
+        [
+          "C",
+          "intelo"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "トーキョー オルン"
+        ],
+        [
+          "C",
+          "レ パ"
+        ],
+        [
+          "D",
+          "アルキ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "olen käynyt"
+        ],
+        [
+          "B",
+          "Tokiossa"
+        ],
+        [
+          "C",
+          "kolme kertaa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rydw i wedi bod"
+        ],
+        [
+          "B",
+          "yn Tokyo"
+        ],
+        [
+          "C",
+          "dair gwaith"
+        ]
       ]
     }
   },
@@ -24941,6 +26961,66 @@ const SENTENCES = [
         [
           "B",
           "dobrą restaurację"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Afaka"
+        ],
+        [
+          "C",
+          "manoro"
+        ],
+        [
+          "B",
+          "toerana fisakafoanana tsara"
+        ],
+        [
+          "A",
+          "ianao ve"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "ピリカ イペ ミセ"
+        ],
+        [
+          "C",
+          "エウレ"
+        ],
+        [
+          "D",
+          "エアシカイ ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "D",
+          "Voisitteko"
+        ],
+        [
+          "C",
+          "suositella"
+        ],
+        [
+          "B",
+          "hyvää ravintolaa?"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Allech chi"
+        ],
+        [
+          "B",
+          "fwyty da"
+        ],
+        [
+          "C",
+          "argymell?"
         ]
       ]
     }
@@ -25781,6 +27861,78 @@ const SENTENCES = [
         [
           "D",
           "w pociągu"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Navelako"
+        ],
+        [
+          "B",
+          "ny elo"
+        ],
+        [
+          "D",
+          "tao anaty lamasinina"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "D",
+          "キサラ タ"
+        ],
+        [
+          "B",
+          "カサ"
+        ],
+        [
+          "C",
+          "ホロカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "unohdin"
+        ],
+        [
+          "B",
+          "sateenvarjoni"
+        ],
+        [
+          "D",
+          "junaan"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Gadewais"
+        ],
+        [
+          "A",
+          "i"
+        ],
+        [
+          "B",
+          "fy ymbarél"
+        ],
+        [
+          "D",
+          "ar y trên"
         ]
       ]
     }
@@ -26801,6 +28953,90 @@ const SENTENCES = [
           "B",
           "pianinie"
         ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Mahay"
+        ],
+        [
+          "C",
+          "mitendry"
+        ],
+        [
+          "B",
+          "piano"
+        ],
+        [
+          "D",
+          "tsara tokoa"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "B",
+          "ピヤノ"
+        ],
+        [
+          "D",
+          "アトゥイ ピリカ ノ"
+        ],
+        [
+          "C",
+          "キ"
+        ],
+        [
+          "E",
+          "エアシカイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "E",
+          "osaa"
+        ],
+        [
+          "C",
+          "soittaa"
+        ],
+        [
+          "B",
+          "pianoa"
+        ],
+        [
+          "D",
+          "erittäin hyvin"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Gall"
+        ],
+        [
+          "A",
+          "hi"
+        ],
+        [
+          "B",
+          "chwarae'r piano yn"
+        ],
+        [
+          "D",
+          "dda iawn"
+        ]
       ]
     }
   },
@@ -27445,6 +29681,62 @@ const SENTENCES = [
         [
           "B",
           "w przyszły poniedziałek"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Amin'ny"
+        ],
+        [
+          "B",
+          "Alatsinainy ho avy"
+        ],
+        [
+          "A",
+          "ny fanadinana"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "テスト"
+        ],
+        [
+          "B",
+          "アルキ シュマ エパフチ"
+        ],
+        [
+          "C",
+          "ネ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tentti"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "B",
+          "ensi maanantaina"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "'r arholiad"
+        ],
+        [
+          "B",
+          "ddydd Llun nesaf"
         ]
       ]
     }
@@ -28377,6 +30669,82 @@ const SENTENCES = [
           "D",
           "na lunch"
         ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Te"
+        ],
+        [
+          "C",
+          "hihinana"
+        ],
+        [
+          "B",
+          "sushi"
+        ],
+        [
+          "D",
+          "ho an'ny sakafo antoandro"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "D",
+          "トーイペ タ"
+        ],
+        [
+          "B",
+          "スシ"
+        ],
+        [
+          "E",
+          "イペ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "haluaisin"
+        ],
+        [
+          "C",
+          "syödä"
+        ],
+        [
+          "B",
+          "sushia"
+        ],
+        [
+          "D",
+          "lounaaksi"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rydw i eisiau"
+        ],
+        [
+          "B",
+          "bwyta swshi"
+        ],
+        [
+          "D",
+          "i ginio"
+        ]
       ]
     }
   },
@@ -29173,6 +31541,78 @@ const SENTENCES = [
           "D",
           "czysty"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tena"
+        ],
+        [
+          "D",
+          "madio"
+        ],
+        [
+          "B",
+          "ny"
+        ],
+        [
+          "A",
+          "efitrano ao amin'ny hotely"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ホテル ヘヤ"
+        ],
+        [
+          "C",
+          "アトゥイ"
+        ],
+        [
+          "D",
+          "ウアシケ"
+        ],
+        [
+          "B",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hotellihuone"
+        ],
+        [
+          "B",
+          "oli"
+        ],
+        [
+          "C",
+          "todella"
+        ],
+        [
+          "D",
+          "siisti"
+        ]
+      ],
+      "cy": [
+        [
+          "B",
+          "Roedd"
+        ],
+        [
+          "A",
+          "ystafell y gwesty yn"
+        ],
+        [
+          "C",
+          "lân"
+        ],
+        [
+          "D",
+          "iawn"
+        ]
       ]
     }
   },
@@ -29833,6 +32273,62 @@ const SENTENCES = [
         [
           "B",
           "wolniej"
+        ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Azafady"
+        ],
+        [
+          "C",
+          "mitenena"
+        ],
+        [
+          "B",
+          "miadana kokoa"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "アトゥイ トゥイマ ノ"
+        ],
+        [
+          "C",
+          "イタク"
+        ],
+        [
+          "A",
+          "ヤン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Olkaa hyvä"
+        ],
+        [
+          "C",
+          "puhukaa"
+        ],
+        [
+          "B",
+          "hitaammin"
+        ]
+      ],
+      "cy": [
+        [
+          "A",
+          "Os gwelwch yn dda"
+        ],
+        [
+          "C",
+          "siaradwch"
+        ],
+        [
+          "B",
+          "yn arafach"
         ]
       ]
     }
@@ -30502,6 +32998,76 @@ const SENTENCES = [
         [
           "C",
           "w zeszłym miesiącu"
+        ]
+      ],
+      "egy": [
+        [
+          "B",
+          "𓎛𓅓𓋴𓏏|ḥmst"
+        ],
+        [
+          "A",
+          "𓋴𓈖𓇋 𓅱𓂋|sn.j wr"
+        ],
+        [
+          "C",
+          "𓅓 𓂝𓃀𓂧𓅱 𓋴𓂝|m ꜣbdw sꜣ"
+        ]
+      ],
+      "mg": [
+        [
+          "B",
+          "Nanambady"
+        ],
+        [
+          "C",
+          "tamin'ny volana lasa"
+        ],
+        [
+          "A",
+          "ny zoky lahy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ ユプ"
+        ],
+        [
+          "C",
+          "ヌマン パ タ"
+        ],
+        [
+          "B",
+          "マチ キ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Isoveljeni"
+        ],
+        [
+          "B",
+          "meni naimisiin"
+        ],
+        [
+          "C",
+          "viime kuussa"
+        ]
+      ],
+      "cy": [
+        [
+          "B",
+          "Priododd"
+        ],
+        [
+          "A",
+          "fy mrawd"
+        ],
+        [
+          "C",
+          "y mis diwethaf"
         ]
       ]
     }
@@ -31338,6 +33904,96 @@ const SENTENCES = [
         [
           "B",
           "ludzi"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅱𓈖𓈖|wnn"
+        ],
+        [
+          "A",
+          "𓂝𓈙𓂝𓅱|ꜥšꜣw"
+        ],
+        [
+          "B",
+          "𓂋𓅓𓍿𓅱|rmṯw"
+        ],
+        [
+          "C",
+          "𓅓 𓋴𓍿𓂝𓏏|m sṯꜣt"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Misy"
+        ],
+        [
+          "A",
+          "olona"
+        ],
+        [
+          "B",
+          "maro"
+        ],
+        [
+          "C",
+          "ao amin'ny gara"
+        ]
+      ],
+      "ain": [
+        [
+          "C",
+          "ステーション タ"
+        ],
+        [
+          "A",
+          "ポロンノ"
+        ],
+        [
+          "B",
+          "クル"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "C",
+          "Asemalla"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "A",
+          "paljon"
+        ],
+        [
+          "B",
+          "ihmisiä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "llawer o"
+        ],
+        [
+          "B",
+          "bobl"
+        ],
+        [
+          "C",
+          "yn yr orsaf"
         ]
       ]
     }
@@ -32334,6 +34990,112 @@ const SENTENCES = [
           "D",
           "urodzinowy"
         ]
+      ],
+      "egy": [
+        [
+          "B",
+          "𓈖𓂧𓂋𓏏|nḏrt"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "E",
+          "𓈙𓅱𓂝|šwꜣ"
+        ],
+        [
+          "D",
+          "𓈙𓂝𓂝 𓈖|šꜣꜥ n"
+        ],
+        [
+          "C",
+          "𓅓𓋴𓅱|msw"
+        ]
+      ],
+      "mg": [
+        [
+          "B",
+          "Mila"
+        ],
+        [
+          "E",
+          "hividy"
+        ],
+        [
+          "C",
+          "fanomezana"
+        ],
+        [
+          "D",
+          "ho an'ny tsingerin-taona"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "C",
+          "トゥレシ ト パ"
+        ],
+        [
+          "D",
+          "プレゼント"
+        ],
+        [
+          "E",
+          "ホク"
+        ],
+        [
+          "B",
+          "エアイカプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minun"
+        ],
+        [
+          "B",
+          "täytyy"
+        ],
+        [
+          "E",
+          "ostaa"
+        ],
+        [
+          "C",
+          "syntymäpäivä"
+        ],
+        [
+          "D",
+          "lahja"
+        ]
+      ],
+      "cy": [
+        [
+          "B",
+          "Rhaid"
+        ],
+        [
+          "A",
+          "i mi"
+        ],
+        [
+          "E",
+          "brynu"
+        ],
+        [
+          "C",
+          "anrheg pen-blwydd"
+        ]
       ]
     }
   },
@@ -33002,6 +35764,80 @@ const SENTENCES = [
         [
           "D",
           "jest piękny"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓄤|nfr"
+        ],
+        [
+          "B",
+          "𓅱𓂝𓂧 𓈖 𓂋𓂝|wꜣḏ n rꜥ"
+        ],
+        [
+          "A",
+          "𓅓 𓋴𓏏 𓏏𓈖|m st tn"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tsara tarehy"
+        ],
+        [
+          "B",
+          "ny filentehan'ny masoandro"
+        ],
+        [
+          "A",
+          "avy eto"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "テダ ワ"
+        ],
+        [
+          "B",
+          "チュプ シリ"
+        ],
+        [
+          "C",
+          "ピリカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Täältä"
+        ],
+        [
+          "B",
+          "auringonlasku"
+        ],
+        [
+          "C",
+          "on kaunis"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "B",
+          "'r machlud"
+        ],
+        [
+          "A",
+          "o fan hyn yn"
+        ],
+        [
+          "C",
+          "hardd"
         ]
       ]
     }
@@ -33974,6 +36810,116 @@ const SENTENCES = [
           "B",
           "jutro"
         ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓈖𓂧𓂋𓏏|nḏrt"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "D",
+          "𓂋𓋴|rs"
+        ],
+        [
+          "B",
+          "𓅓𓎛𓂝𓏏|m-ḥꜣt"
+        ],
+        [
+          "C",
+          "𓂧𓅱𓂝𓅱|dwꜣw"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Tsy maintsy"
+        ],
+        [
+          "D",
+          "mifoha"
+        ],
+        [
+          "B",
+          "maraina"
+        ],
+        [
+          "C",
+          "rahampitso"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "C",
+          "ニサッタ"
+        ],
+        [
+          "B",
+          "テイネ ノ"
+        ],
+        [
+          "D",
+          "エキムネ"
+        ],
+        [
+          "E",
+          "エアイカプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minun"
+        ],
+        [
+          "E",
+          "täytyy"
+        ],
+        [
+          "D",
+          "herätä"
+        ],
+        [
+          "B",
+          "aikaisin"
+        ],
+        [
+          "C",
+          "huomenna"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rhaid"
+        ],
+        [
+          "A",
+          "i mi"
+        ],
+        [
+          "D",
+          "ddeffro"
+        ],
+        [
+          "B",
+          "yn gynnar"
+        ],
+        [
+          "C",
+          "yfory"
+        ]
       ]
     }
   },
@@ -34928,6 +37874,104 @@ const SENTENCES = [
         [
           "B",
           "poczta"
+        ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓇋𓈖 𓂋𓐍|jn rḫ"
+        ],
+        [
+          "A",
+          "𓍿𓅱|ṯw"
+        ],
+        [
+          "C",
+          "𓏏𓈖𓅱|tnw"
+        ],
+        [
+          "B",
+          "𓉐 𓈖 𓈙𓆑𓂧𓅱|pr n šfdw"
+        ],
+        [
+          "D",
+          "𓅱𓈖𓈖|wnn"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Fantatrao ve"
+        ],
+        [
+          "C",
+          "aiza"
+        ],
+        [
+          "D",
+          "no misy"
+        ],
+        [
+          "B",
+          "ny paositra"
+        ],
+        [
+          "A",
+          "?"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "ユーピンキョク"
+        ],
+        [
+          "C",
+          "フナク タ"
+        ],
+        [
+          "D",
+          "アン ワ"
+        ],
+        [
+          "E",
+          "エラムアン ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "E",
+          "Tiedättekö"
+        ],
+        [
+          "C",
+          "missä"
+        ],
+        [
+          "B",
+          "posti"
+        ],
+        [
+          "D",
+          "on?"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Ydych chi'n gwybod"
+        ],
+        [
+          "C",
+          "ble"
+        ],
+        [
+          "D",
+          "mae"
+        ],
+        [
+          "B",
+          "'r swyddfa bost?"
         ]
       ]
     }
@@ -35951,6 +38995,112 @@ const SENTENCES = [
         [
           "D",
           "książkę"
+        ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓈙𓂧𓇋|šdj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "D",
+          "𓅓𓂧𓂝𓏏|mḏꜣt"
+        ],
+        [
+          "C",
+          "𓅓𓈖𓐍𓏏|mnḫt"
+        ],
+        [
+          "B",
+          "𓅓𓂝|m-ꜥ"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Mamaky"
+        ],
+        [
+          "C",
+          "boky"
+        ],
+        [
+          "D",
+          "mahaliana"
+        ],
+        [
+          "B",
+          "ankehitriny"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タネ"
+        ],
+        [
+          "C",
+          "ソンノ"
+        ],
+        [
+          "D",
+          "カンピ"
+        ],
+        [
+          "E",
+          "ヌイェ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "luen"
+        ],
+        [
+          "C",
+          "mielenkiintoista"
+        ],
+        [
+          "D",
+          "kirjaa"
+        ],
+        [
+          "B",
+          "nyt"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rwy'n"
+        ],
+        [
+          "D",
+          "darllen llyfr"
+        ],
+        [
+          "C",
+          "diddorol"
+        ],
+        [
+          "B",
+          "nawr"
         ]
       ]
     }
@@ -36991,6 +40141,116 @@ const SENTENCES = [
           "E",
           "sukienkę"
         ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓎛𓃀𓋴|ḥbs"
+        ],
+        [
+          "A",
+          "𓋴𓏏|st"
+        ],
+        [
+          "B",
+          "𓅓 𓏏𓊪 𓈖𓃀|m tp nb"
+        ],
+        [
+          "D",
+          "𓂧𓈙𓂋𓏏|dšrt"
+        ],
+        [
+          "E",
+          "𓎛𓈖𓎡𓇋𓏏|ḥnkjt"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Manao"
+        ],
+        [
+          "D",
+          "akanjo"
+        ],
+        [
+          "E",
+          "mena"
+        ],
+        [
+          "B",
+          "foana"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "B",
+          "シュイ"
+        ],
+        [
+          "D",
+          "フレ"
+        ],
+        [
+          "E",
+          "ミプ"
+        ],
+        [
+          "C",
+          "ミ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "B",
+          "aina"
+        ],
+        [
+          "C",
+          "käyttää"
+        ],
+        [
+          "D",
+          "punaista"
+        ],
+        [
+          "E",
+          "mekkoa"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "hi"
+        ],
+        [
+          "B",
+          "bob amser yn"
+        ],
+        [
+          "D",
+          "gwisgo ffrog"
+        ],
+        [
+          "E",
+          "goch"
+        ]
       ]
     }
   },
@@ -37643,6 +40903,76 @@ const SENTENCES = [
         [
           "C",
           "jest pyszne"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓈖𓂧𓅓|nḏm"
+        ],
+        [
+          "B",
+          "𓅱𓈖𓅓𓏏|wnmt"
+        ],
+        [
+          "A",
+          "𓈖𓏏 𓉐𓅱𓈖𓅓 𓊪𓈖|nt pr-wnm pn"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Matsiro"
+        ],
+        [
+          "B",
+          "ny sakafo"
+        ],
+        [
+          "A",
+          "ato amin'ity toerana fisakafoanana ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン ミセ ウン"
+        ],
+        [
+          "B",
+          "イペ"
+        ],
+        [
+          "C",
+          "ピリカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tämän ravintolan"
+        ],
+        [
+          "B",
+          "ruoka"
+        ],
+        [
+          "C",
+          "on herkullista"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "bwyd y bwyty hwn yn"
+        ],
+        [
+          "B",
+          "flasus"
         ]
       ]
     }
@@ -38463,6 +41793,88 @@ const SENTENCES = [
         [
           "B",
           "po świecie"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅓𓂋𓇋|mrj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "C",
+          "𓐍𓈖𓏏𓈙|ḫntš"
+        ],
+        [
+          "B",
+          "𓅓 𓏏𓂝 𓂋𓂧𓂋𓆑|m tꜣ r-ḏr.f"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Te"
+        ],
+        [
+          "C",
+          "handeha"
+        ],
+        [
+          "B",
+          "manerana an'izao tontolo izao"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "モシリ パイカイ"
+        ],
+        [
+          "C",
+          "アフンパ"
+        ],
+        [
+          "D",
+          "ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "haluaisin"
+        ],
+        [
+          "C",
+          "matkustaa"
+        ],
+        [
+          "B",
+          "ympäri maailmaa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rydw i eisiau"
+        ],
+        [
+          "B",
+          "teithio o gwmpas y byd"
         ]
       ]
     }
@@ -39287,6 +42699,92 @@ const SENTENCES = [
         [
           "C",
           "zimno"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓐍𓊪𓂋|ḫpr"
+        ],
+        [
+          "C",
+          "𓈎𓃀|qb"
+        ],
+        [
+          "A",
+          "𓅓 𓏏𓂝 𓊪𓈖|m tꜣ pn"
+        ],
+        [
+          "B",
+          "𓅓 𓊪𓂋𓏏|m prt"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mangatsiaka"
+        ],
+        [
+          "C",
+          "ny andro"
+        ],
+        [
+          "B",
+          "amin'ny ririnina"
+        ],
+        [
+          "A",
+          "eto amin'ity firenena ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン モシリ タ"
+        ],
+        [
+          "B",
+          "マタ タ"
+        ],
+        [
+          "C",
+          "メアン"
+        ],
+        [
+          "D",
+          "ネ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tässä maassa"
+        ],
+        [
+          "B",
+          "talvella"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "kylmä"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae'n"
+        ],
+        [
+          "A",
+          "mynd yn oer yn y wlad hon"
+        ],
+        [
+          "B",
+          "yn y gaeaf"
         ]
       ]
     }
@@ -40295,6 +43793,116 @@ const SENTENCES = [
           "D",
           "przez godzinę"
         ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓅓𓂧𓅱|mdw"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "B",
+          "𓎛𓈖𓂝 𓋴𓅓𓂋𓇋|ḥnꜥ smr.j"
+        ],
+        [
+          "C",
+          "𓎛𓂋 𓋴𓍿𓂝𓏏𓅓𓂧𓅱|ḥr sṯꜣt-mdw"
+        ],
+        [
+          "D",
+          "𓅓 𓅱𓈖𓅱𓏏 1|m wnwt 1"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Niresaka"
+        ],
+        [
+          "C",
+          "tamin'ny telefaonina"
+        ],
+        [
+          "B",
+          "tamin'ny namako"
+        ],
+        [
+          "D",
+          "nandritra ny adiny iray"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "ウタリ トゥラノ"
+        ],
+        [
+          "C",
+          "テレホン タ"
+        ],
+        [
+          "D",
+          "シネ トキ"
+        ],
+        [
+          "E",
+          "イタク"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "puhuin"
+        ],
+        [
+          "B",
+          "ystäväni kanssa"
+        ],
+        [
+          "C",
+          "puhelimessa"
+        ],
+        [
+          "D",
+          "tunnin"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Siaradais"
+        ],
+        [
+          "A",
+          "i"
+        ],
+        [
+          "B",
+          "â'm ffrind"
+        ],
+        [
+          "C",
+          "ar y ffôn"
+        ],
+        [
+          "D",
+          "am awr"
+        ]
       ]
     }
   },
@@ -41147,6 +44755,96 @@ const SENTENCES = [
           "B",
           "problem"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅱𓎛𓂝|wḥꜥ"
+        ],
+        [
+          "A",
+          "𓋴𓃀𓂝|sbꜣ"
+        ],
+        [
+          "B",
+          "𓋴𓊪𓂝𓅱𓏏|spꜣwt"
+        ],
+        [
+          "C",
+          "𓅓 𓋴𓍿𓇋|m sṯj"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Nanazava"
+        ],
+        [
+          "B",
+          "ny olana"
+        ],
+        [
+          "C",
+          "mazava tsara"
+        ],
+        [
+          "A",
+          "ny mpampianatra"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "センセイ"
+        ],
+        [
+          "B",
+          "モンダイ"
+        ],
+        [
+          "C",
+          "エランカラプテ ノ"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Opettaja"
+        ],
+        [
+          "D",
+          "selitti"
+        ],
+        [
+          "B",
+          "tehtävän"
+        ],
+        [
+          "C",
+          "selkeästi"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Esboniodd"
+        ],
+        [
+          "A",
+          "yr athro"
+        ],
+        [
+          "B",
+          "y broblem"
+        ],
+        [
+          "C",
+          "yn glir"
+        ]
       ]
     }
   },
@@ -41894,6 +45592,84 @@ const SENTENCES = [
         [
           "B",
           "ten film"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅓𓂋𓇋|mrj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "C",
+          "𓅓𓂝𓂝|mꜣꜣ"
+        ],
+        [
+          "B",
+          "𓇋𓈖𓏏 𓏏𓊪|jnt tp"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Te"
+        ],
+        [
+          "C",
+          "hijery"
+        ],
+        [
+          "B",
+          "ilay sarimihetsika"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タン シネマ"
+        ],
+        [
+          "D",
+          "ヌカラ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "haluan"
+        ],
+        [
+          "C",
+          "katsoa"
+        ],
+        [
+          "B",
+          "sen elokuvan"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rydw i eisiau"
+        ],
+        [
+          "B",
+          "gweld y ffilm honno"
         ]
       ]
     }
@@ -42695,6 +46471,96 @@ const SENTENCES = [
           "C",
           "drogę na lotnisko"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓂧𓂧|ḏd"
+        ],
+        [
+          "A",
+          "𓎛𓈖𓂝|ḥnꜥ"
+        ],
+        [
+          "B",
+          "𓈖𓇋|n.j"
+        ],
+        [
+          "C",
+          "𓅱𓂝𓏏 𓂋 𓅓𓂋𓇋𓏏𓂧𓊪𓅱𓏏|wꜣt r mrjt-dpwt"
+        ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Azafady"
+        ],
+        [
+          "D",
+          "lazao"
+        ],
+        [
+          "B",
+          "ahy"
+        ],
+        [
+          "C",
+          "ny lalana mankany amin'ny seranana fiaramanidina"
+        ]
+      ],
+      "ain": [
+        [
+          "C",
+          "クーコー オルン ル"
+        ],
+        [
+          "B",
+          "エンコレ"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ],
+        [
+          "A",
+          "ヤン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Olkaa hyvä"
+        ],
+        [
+          "D",
+          "kertokaa"
+        ],
+        [
+          "B",
+          "minulle"
+        ],
+        [
+          "C",
+          "tie lentokentälle"
+        ]
+      ],
+      "cy": [
+        [
+          "A",
+          "Os gwelwch yn dda"
+        ],
+        [
+          "D",
+          "dywedwch"
+        ],
+        [
+          "B",
+          "wrthyf"
+        ],
+        [
+          "C",
+          "y ffordd i'r maes awyr"
+        ]
       ]
     }
   },
@@ -43422,6 +47288,84 @@ const SENTENCES = [
         [
           "C",
           "spacery"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅓𓂋𓇋|mrj"
+        ],
+        [
+          "A",
+          "𓇋𓅱𓇋|jw.j"
+        ],
+        [
+          "C",
+          "𓈙𓅓 𓅓 𓅱𓂝𓏏|šm m wꜣt"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tia"
+        ],
+        [
+          "C",
+          "mandehandeha"
+        ],
+        [
+          "B",
+          "mitsangatsangana"
+        ],
+        [
+          "A",
+          "ny aliko"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ セタ"
+        ],
+        [
+          "C",
+          "トゥラ アルキ"
+        ],
+        [
+          "D",
+          "イラマス"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Koirani"
+        ],
+        [
+          "D",
+          "pitää"
+        ],
+        [
+          "C",
+          "lenkillä"
+        ],
+        [
+          "B",
+          "käymisestä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "fy nghi yn hoffi"
+        ],
+        [
+          "C",
+          "mynd am dro"
         ]
       ]
     }
@@ -44271,6 +48215,96 @@ const SENTENCES = [
           "C",
           "historie"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓂧𓂧|ḏd"
+        ],
+        [
+          "A",
+          "𓅓𓅱𓏏𓏏 𓈖 𓇋𓏏𓇋|mwt.t n jt.j"
+        ],
+        [
+          "C",
+          "𓅓𓂧𓅱𓏏|mdwt"
+        ],
+        [
+          "B",
+          "𓈙𓊪𓋴𓅱𓏏|šps.wt"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mitantara"
+        ],
+        [
+          "B",
+          "tantara"
+        ],
+        [
+          "C",
+          "mahaliana"
+        ],
+        [
+          "A",
+          "ny renibe"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ フチ"
+        ],
+        [
+          "B",
+          "ソンノ"
+        ],
+        [
+          "C",
+          "ウエペケレ"
+        ],
+        [
+          "D",
+          "イエ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Isoäitini"
+        ],
+        [
+          "D",
+          "kertoo"
+        ],
+        [
+          "B",
+          "mielenkiintoisia"
+        ],
+        [
+          "C",
+          "tarinoita"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "Mam-gu yn adrodd"
+        ],
+        [
+          "B",
+          "straeon"
+        ],
+        [
+          "C",
+          "diddorol"
+        ]
       ]
     }
   },
@@ -45099,6 +49133,96 @@ const SENTENCES = [
           "D",
           "na targu"
         ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓋴𓈎𓂋|sḳr"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "B",
+          "𓇋𓍿𓂝𓏏𓇋|jṯꜣ.t.j"
+        ],
+        [
+          "D",
+          "𓅓 𓋴𓅱𓈎|m swq"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Namoy"
+        ],
+        [
+          "B",
+          "ny kitapom-bolako"
+        ],
+        [
+          "D",
+          "tany amin'ny tsena"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "チリ プイ"
+        ],
+        [
+          "C",
+          "ライケ"
+        ],
+        [
+          "D",
+          "イチャン タ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "kadotin"
+        ],
+        [
+          "B",
+          "lompakkoni"
+        ],
+        [
+          "D",
+          "torilla"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Collais"
+        ],
+        [
+          "A",
+          "i"
+        ],
+        [
+          "B",
+          "fy waled"
+        ],
+        [
+          "D",
+          "yn y farchnad"
+        ]
       ]
     }
   },
@@ -45763,6 +49887,80 @@ const SENTENCES = [
         [
           "C",
           "kwitną"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓅱𓈖 𓅓 𓅱𓃀𓂝|wn m wbꜣ"
+        ],
+        [
+          "B",
+          "𓎛𓂋𓅱𓏏|ḥr.wt"
+        ],
+        [
+          "A",
+          "𓅓 𓐍𓈖𓅱 𓈙𓂝|m Ḫnw šꜣ"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mamony"
+        ],
+        [
+          "B",
+          "ny voninkazo"
+        ],
+        [
+          "A",
+          "ao amin'ny zaridaina"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "チセ チカラ ウン"
+        ],
+        [
+          "B",
+          "ノンノ"
+        ],
+        [
+          "C",
+          "ニシ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Puutarhassa"
+        ],
+        [
+          "B",
+          "kukat"
+        ],
+        [
+          "C",
+          "kukkivat"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "B",
+          "'r blodau"
+        ],
+        [
+          "A",
+          "yn yr ardd yn"
+        ],
+        [
+          "C",
+          "blodeuo"
         ]
       ]
     }
@@ -46588,6 +50786,92 @@ const SENTENCES = [
           "B",
           "środowisko"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓎛𓂋𓈖𓏏𓏏|ḥr-ntt"
+        ],
+        [
+          "C",
+          "𓐍𓅱𓇋|ḫwj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓈖|jn.n"
+        ],
+        [
+          "B",
+          "𓏏𓂝 𓐍𓈖𓅱𓏏|tꜣ Ḫnw.t"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tsy maintsy"
+        ],
+        [
+          "C",
+          "miaro"
+        ],
+        [
+          "B",
+          "ny tontolo iainana"
+        ],
+        [
+          "A",
+          "isika"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "アオカイ"
+        ],
+        [
+          "B",
+          "キムン コタン"
+        ],
+        [
+          "C",
+          "ウレ"
+        ],
+        [
+          "D",
+          "エアイカプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Meidän"
+        ],
+        [
+          "D",
+          "täytyy"
+        ],
+        [
+          "C",
+          "suojella"
+        ],
+        [
+          "B",
+          "ympäristöä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rhaid"
+        ],
+        [
+          "A",
+          "i ni"
+        ],
+        [
+          "B",
+          "amddiffyn yr amgylchedd"
+        ]
       ]
     }
   },
@@ -47411,6 +51695,92 @@ const SENTENCES = [
         [
           "D",
           "codziennie"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓋴𓅱𓂋|swr"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "B",
+          "𓇋𓆑𓂧𓅱 𓈖 𓎡𓂝𓊪𓅱 𓋴𓈖𓅱𓇋|jfdw n kꜣpw sn.wy"
+        ],
+        [
+          "D",
+          "𓂋𓂝 𓈖𓃀|rꜥ nb"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Misotro"
+        ],
+        [
+          "B",
+          "kafe kaopy roa"
+        ],
+        [
+          "D",
+          "isan'andro"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "D",
+          "ヌマン ネプカ"
+        ],
+        [
+          "B",
+          "コーヒー トゥ パ"
+        ],
+        [
+          "C",
+          "ク"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "juon"
+        ],
+        [
+          "B",
+          "kaksi kuppia kahvia"
+        ],
+        [
+          "D",
+          "joka päivä"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rwy'n yfed"
+        ],
+        [
+          "B",
+          "dwy baned o goffi"
+        ],
+        [
+          "D",
+          "bob dydd"
         ]
       ]
     }
@@ -48260,6 +52630,96 @@ const SENTENCES = [
           "C",
           "dziś wieczorem"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓈙𓋴𓊪|šsp"
+        ],
+        [
+          "A",
+          "𓎛𓃀 𓈖 𓎛𓋴𓇋𓏏|ḥb n ḥsy.t"
+        ],
+        [
+          "B",
+          "𓅓 𓅱𓈖𓅱𓏏 8𓏏|m wnw.t 8.t"
+        ],
+        [
+          "C",
+          "𓅓 𓎼𓂋𓎛 𓊪𓈖|m grḥ pn"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Manomboka"
+        ],
+        [
+          "B",
+          "amin'ny 8"
+        ],
+        [
+          "C",
+          "anio alina"
+        ],
+        [
+          "A",
+          "ny fampisehoana"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "コンサート"
+        ],
+        [
+          "C",
+          "タネ オンネ タ"
+        ],
+        [
+          "B",
+          "アルワン トゥ タ"
+        ],
+        [
+          "D",
+          "ホシキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Konsertti"
+        ],
+        [
+          "D",
+          "alkaa"
+        ],
+        [
+          "B",
+          "kello 8"
+        ],
+        [
+          "C",
+          "tänä iltana"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae'r"
+        ],
+        [
+          "A",
+          "gyngerdd yn dechrau"
+        ],
+        [
+          "B",
+          "am 8"
+        ],
+        [
+          "C",
+          "heno"
+        ]
       ]
     }
   },
@@ -49107,6 +53567,96 @@ const SENTENCES = [
         [
           "B",
           "w trzech językach"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓅓𓂧𓅱|mdw"
+        ],
+        [
+          "A",
+          "𓋴𓏏|s.t"
+        ],
+        [
+          "B",
+          "𓅓𓂧𓅱𓏏 3|mdw.t 3"
+        ],
+        [
+          "C",
+          "𓅓 𓅓𓈖𓐍|m mnḫ"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Miteny"
+        ],
+        [
+          "B",
+          "fiteny telo"
+        ],
+        [
+          "C",
+          "tsara"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "B",
+          "レ イタク"
+        ],
+        [
+          "C",
+          "ピリカ ノ"
+        ],
+        [
+          "D",
+          "イタク"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "D",
+          "puhuu"
+        ],
+        [
+          "B",
+          "kolmea kieltä"
+        ],
+        [
+          "C",
+          "sujuvasti"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "hi'n siarad"
+        ],
+        [
+          "B",
+          "tair iaith"
+        ],
+        [
+          "C",
+          "yn rhugl"
         ]
       ]
     }
@@ -50115,6 +54665,112 @@ const SENTENCES = [
           "B",
           "tej świątyni"
         ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓅓𓂋𓇋|mrj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "D",
+          "𓇋𓂋𓇋|jrj"
+        ],
+        [
+          "C",
+          "𓋴𓈙𓅓|sšm"
+        ],
+        [
+          "B",
+          "𓈖 𓎛𓅱𓏏𓈖𓍿𓂋 𓏏𓈖|n ḥw.t-nṯr tn"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Te"
+        ],
+        [
+          "D",
+          "haka"
+        ],
+        [
+          "C",
+          "sary"
+        ],
+        [
+          "B",
+          "an'ity tempoly ity"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タン テンプル ウン"
+        ],
+        [
+          "C",
+          "シャシン"
+        ],
+        [
+          "D",
+          "ヌカラ"
+        ],
+        [
+          "E",
+          "ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "haluan"
+        ],
+        [
+          "D",
+          "ottaa"
+        ],
+        [
+          "C",
+          "valokuvan"
+        ],
+        [
+          "B",
+          "tästä temppelistä"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rydw i eisiau"
+        ],
+        [
+          "D",
+          "tynnu"
+        ],
+        [
+          "C",
+          "llun"
+        ],
+        [
+          "B",
+          "o'r deml hon"
+        ]
       ]
     }
   },
@@ -50775,6 +55431,76 @@ const SENTENCES = [
         [
           "B",
           "co 15 minut"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓇋𓅱|jw"
+        ],
+        [
+          "A",
+          "𓇋𓅓𓅱|jmw"
+        ],
+        [
+          "B",
+          "𓅓 𓂝𓃀𓂧𓅱 15|m ꜣbd.w 15"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tonga"
+        ],
+        [
+          "B",
+          "isaky ny 15 minitra"
+        ],
+        [
+          "A",
+          "ny fiara fitaterana"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "バス"
+        ],
+        [
+          "B",
+          "シネ ワッ トゥ フンペ パ"
+        ],
+        [
+          "C",
+          "アルキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Bussi"
+        ],
+        [
+          "C",
+          "tulee"
+        ],
+        [
+          "B",
+          "15 minuutin välein"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae'r"
+        ],
+        [
+          "A",
+          "bws yn dod"
+        ],
+        [
+          "B",
+          "bob 15 munud"
         ]
       ]
     }
@@ -51595,6 +56321,92 @@ const SENTENCES = [
         [
           "B",
           "koreańskie jedzenie"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓋴𓃀𓂝|sbꜣ"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "C",
+          "𓊪𓋴𓇋|psj"
+        ],
+        [
+          "B",
+          "𓈙𓈖𓂝 𓈖 𓏏𓂝 𓈖 𓎡𓂝𓂋𓇋|šnꜥ n tꜣ n Kꜣrj"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mianatra"
+        ],
+        [
+          "C",
+          "mahandro"
+        ],
+        [
+          "B",
+          "sakafo koreanina"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "コーリア イペ"
+        ],
+        [
+          "C",
+          "カラ"
+        ],
+        [
+          "D",
+          "コロ ヌイェ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "opettelen"
+        ],
+        [
+          "C",
+          "laittamaan"
+        ],
+        [
+          "B",
+          "korealaista ruokaa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n"
+        ],
+        [
+          "C",
+          "dysgu sut i goginio"
+        ],
+        [
+          "B",
+          "bwyd Corea"
         ]
       ]
     }
@@ -52590,6 +57402,116 @@ const SENTENCES = [
         [
           "D",
           "na spotkania"
+        ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓇋𓅱𓇋|jwj"
+        ],
+        [
+          "A",
+          "𓋴𓅱|sw"
+        ],
+        [
+          "C",
+          "𓅓 𓅱𓎛𓂝|m wḥꜥ"
+        ],
+        [
+          "D",
+          "𓂋 𓇋𓅱𓈖𓇋𓏏|r jwn.yt"
+        ],
+        [
+          "B",
+          "𓈖 𓋴𓊪 𓈖𓃀|n sp nb"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Tonga"
+        ],
+        [
+          "C",
+          "tara"
+        ],
+        [
+          "D",
+          "amin'ny fivoriana"
+        ],
+        [
+          "B",
+          "foana"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シネアン"
+        ],
+        [
+          "B",
+          "シュイ"
+        ],
+        [
+          "D",
+          "ウコカラ オルン"
+        ],
+        [
+          "C",
+          "オクレ ノ"
+        ],
+        [
+          "E",
+          "アルキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "B",
+          "aina"
+        ],
+        [
+          "E",
+          "tulee"
+        ],
+        [
+          "C",
+          "myöhässä"
+        ],
+        [
+          "D",
+          "kokouksiin"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Mae"
+        ],
+        [
+          "A",
+          "e"
+        ],
+        [
+          "B",
+          "bob amser yn"
+        ],
+        [
+          "C",
+          "cyrraedd yn hwyr"
+        ],
+        [
+          "D",
+          "i gyfarfodydd"
         ]
       ]
     }
@@ -53598,6 +58520,112 @@ const SENTENCES = [
           "C",
           "do końca miesiąca"
         ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓅓𓂋𓇋|mrj"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "D",
+          "𓈙𓂧𓇋|šdy"
+        ],
+        [
+          "B",
+          "𓅓𓂧𓂝𓏏 𓏏𓈖|mḏꜣ.t tn"
+        ],
+        [
+          "C",
+          "𓂋 𓊪𓎛𓅱𓇋 𓈖 𓂝𓃀𓂧|r pḥ.wy n ꜣbd"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Te"
+        ],
+        [
+          "D",
+          "hamaky"
+        ],
+        [
+          "B",
+          "ity boky ity"
+        ],
+        [
+          "C",
+          "hatramin'ny faran'ny volana"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タン カンピ"
+        ],
+        [
+          "C",
+          "パ オシマ マデ"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ],
+        [
+          "E",
+          "オシマ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "E",
+          "haluan"
+        ],
+        [
+          "D",
+          "lukea"
+        ],
+        [
+          "B",
+          "tämän kirjan"
+        ],
+        [
+          "C",
+          "kuun loppuun mennessä"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rydw i eisiau"
+        ],
+        [
+          "D",
+          "gorffen darllen"
+        ],
+        [
+          "B",
+          "y llyfr hwn"
+        ],
+        [
+          "C",
+          "erbyn diwedd y mis"
+        ]
       ]
     }
   },
@@ -54262,6 +59290,80 @@ const SENTENCES = [
         [
           "C",
           "śpiewają"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓎛𓋴𓇋|ḥsj"
+        ],
+        [
+          "B",
+          "𓂝𓊪𓂧𓅱|ꜣpd.w"
+        ],
+        [
+          "A",
+          "𓅓 𓐍𓏏𓅱|m ḫt.w"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mihira"
+        ],
+        [
+          "A",
+          "eny amin'ny hazo"
+        ],
+        [
+          "B",
+          "ny vorona"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ニ ウン タ"
+        ],
+        [
+          "B",
+          "チカプ"
+        ],
+        [
+          "C",
+          "リムセ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Puissa"
+        ],
+        [
+          "B",
+          "linnut"
+        ],
+        [
+          "C",
+          "laulavat"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "B",
+          "'r adar"
+        ],
+        [
+          "A",
+          "yn y coed yn"
+        ],
+        [
+          "C",
+          "canu"
         ]
       ]
     }
@@ -55082,6 +60184,96 @@ const SENTENCES = [
         [
           "B",
           "telefon"
+        ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓎛𓂋𓈖𓏏𓏏|ḥr-ntt"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "C",
+          "𓋴𓂋𓅱𓂧|srwḏ"
+        ],
+        [
+          "B",
+          "𓂝𓈎𓏏𓇋 𓈖 𓅓𓂧𓅱𓏏|ꜥḳ.t.j n mdw.t"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mila"
+        ],
+        [
+          "C",
+          "hameno herinaratra"
+        ],
+        [
+          "B",
+          "ny findaiko"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "スマホ"
+        ],
+        [
+          "C",
+          "チャージ"
+        ],
+        [
+          "D",
+          "キ エアイカプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minun"
+        ],
+        [
+          "D",
+          "täytyy"
+        ],
+        [
+          "C",
+          "ladata"
+        ],
+        [
+          "B",
+          "puhelimeni"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rhaid"
+        ],
+        [
+          "A",
+          "i mi"
+        ],
+        [
+          "C",
+          "wefru"
+        ],
+        [
+          "B",
+          "fy ffôn"
         ]
       ]
     }
@@ -56098,6 +61290,116 @@ const SENTENCES = [
           "D",
           "prezent"
         ]
+      ],
+      "egy": [
+        [
+          "E",
+          "𓂋𓂧𓇋|rdj"
+        ],
+        [
+          "A",
+          "𓋴𓏏|s.t"
+        ],
+        [
+          "D",
+          "𓇋𓈖𓎡𓏏 𓄤𓏏|jnk.t nfr.t"
+        ],
+        [
+          "B",
+          "𓈖𓇋|n.j"
+        ],
+        [
+          "C",
+          "𓄤𓏏|nfr.t"
+        ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Nanome"
+        ],
+        [
+          "C",
+          "fanomezana"
+        ],
+        [
+          "D",
+          "tsara tarehy"
+        ],
+        [
+          "B",
+          "ahy"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "B",
+          "エンコレ"
+        ],
+        [
+          "C",
+          "ピリカ"
+        ],
+        [
+          "D",
+          "プレゼント"
+        ],
+        [
+          "E",
+          "コレ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "E",
+          "antoi"
+        ],
+        [
+          "B",
+          "minulle"
+        ],
+        [
+          "C",
+          "kauniin"
+        ],
+        [
+          "D",
+          "lahjan"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rhoddodd"
+        ],
+        [
+          "A",
+          "hi"
+        ],
+        [
+          "C",
+          "anrheg"
+        ],
+        [
+          "D",
+          "hardd"
+        ],
+        [
+          "B",
+          "i mi"
+        ]
       ]
     }
   },
@@ -56774,6 +62076,84 @@ const SENTENCES = [
         [
           "B",
           "pokryta śniegiem"
+        ]
+      ],
+      "egy": [
+        [
+          "C",
+          "𓎛𓃀𓋴|ḥbs"
+        ],
+        [
+          "A",
+          "𓂧𓅱|ḏw"
+        ],
+        [
+          "B",
+          "𓅓 𓍿𓂝𓅱|m ṯꜣw"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Voasaron'ny"
+        ],
+        [
+          "B",
+          "lanezy"
+        ],
+        [
+          "A",
+          "ny tendrombohitra"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ヌプリ"
+        ],
+        [
+          "B",
+          "ウパシ タ"
+        ],
+        [
+          "C",
+          "カシケ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Vuori"
+        ],
+        [
+          "C",
+          "on"
+        ],
+        [
+          "B",
+          "lumen"
+        ],
+        [
+          "C",
+          "peitossa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "'r mynydd wedi'i"
+        ],
+        [
+          "C",
+          "orchuddio"
+        ],
+        [
+          "B",
+          "ag eira"
         ]
       ]
     }
@@ -57603,6 +62983,96 @@ const SENTENCES = [
           "C",
           "trzy razy w tygodniu"
         ]
+      ],
+      "egy": [
+        [
+          "D",
+          "𓋴𓐍𓅓|sḫm"
+        ],
+        [
+          "A",
+          "𓇋𓈖𓎡|jnk"
+        ],
+        [
+          "B",
+          "𓅓 𓉐 𓈖 𓋴𓐍𓅓|m pr n sḫm"
+        ],
+        [
+          "C",
+          "𓋴𓊪 3 𓅓 𓂋𓈖𓊪𓏏|sp 3 m rnp.t"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Manao fanatanjahan-tena"
+        ],
+        [
+          "B",
+          "ao amin'ny trano fanatanjahan-tena"
+        ],
+        [
+          "C",
+          "intelo isan-kerinandro"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "ジム タ"
+        ],
+        [
+          "C",
+          "シュマ レ パ"
+        ],
+        [
+          "D",
+          "ウンデン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "kuntoilen"
+        ],
+        [
+          "B",
+          "kuntosalilla"
+        ],
+        [
+          "C",
+          "kolme kertaa viikossa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n gwneud"
+        ],
+        [
+          "A",
+          "ymarfer corff"
+        ],
+        [
+          "B",
+          "yn y gampfa"
+        ],
+        [
+          "C",
+          "dair gwaith yr wythnos"
+        ]
       ]
     }
   },
@@ -58358,6 +63828,66 @@ const SENTENCES = [
         [
           "C",
           "tu usiąść"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Afaka"
+        ],
+        [
+          "C",
+          "mipetraka"
+        ],
+        [
+          "B",
+          "eto"
+        ],
+        [
+          "A",
+          "aho ve"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "テダ タ"
+        ],
+        [
+          "C",
+          "ロク"
+        ],
+        [
+          "D",
+          "ピリカ ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "D",
+          "Saanko"
+        ],
+        [
+          "C",
+          "istua"
+        ],
+        [
+          "B",
+          "tähän?"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Ga i"
+        ],
+        [
+          "C",
+          "eistedd"
+        ],
+        [
+          "B",
+          "fan hyn?"
         ]
       ]
     }
@@ -59183,6 +64713,78 @@ const SENTENCES = [
           "C",
           "do rodziców"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Nanoratra"
+        ],
+        [
+          "B",
+          "taratasy lava"
+        ],
+        [
+          "C",
+          "ho an'ny ray aman-dreniny"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シネアン"
+        ],
+        [
+          "B",
+          "ポロ カンピ"
+        ],
+        [
+          "C",
+          "オンアロ オルン"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "D",
+          "kirjoitti"
+        ],
+        [
+          "C",
+          "vanhemmilleen"
+        ],
+        [
+          "B",
+          "pitkän kirjeen"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Ysgrifennodd"
+        ],
+        [
+          "A",
+          "e"
+        ],
+        [
+          "B",
+          "lythyr hir"
+        ],
+        [
+          "C",
+          "at ei rieni"
+        ]
       ]
     }
   },
@@ -59843,6 +65445,62 @@ const SENTENCES = [
         [
           "B",
           "o 21"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mikatona"
+        ],
+        [
+          "B",
+          "amin'ny 9 alina"
+        ],
+        [
+          "A",
+          "ny fivarotana"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ミセ"
+        ],
+        [
+          "B",
+          "クンネ ク トゥ タ"
+        ],
+        [
+          "C",
+          "ライケ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Kauppa"
+        ],
+        [
+          "C",
+          "sulkeutuu"
+        ],
+        [
+          "B",
+          "kello 21"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae'r"
+        ],
+        [
+          "A",
+          "siop yn cau"
+        ],
+        [
+          "B",
+          "am 9 yr hwyr"
         ]
       ]
     }
@@ -60663,6 +66321,74 @@ const SENTENCES = [
         [
           "B",
           "swoją wymowę"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Te"
+        ],
+        [
+          "C",
+          "hanatsara"
+        ],
+        [
+          "B",
+          "ny fanononako"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "イタク キ"
+        ],
+        [
+          "C",
+          "ピリカ ノ"
+        ],
+        [
+          "D",
+          "キ ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "haluan"
+        ],
+        [
+          "C",
+          "parantaa"
+        ],
+        [
+          "B",
+          "ääntämistäni"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rydw i eisiau"
+        ],
+        [
+          "C",
+          "gwella"
+        ],
+        [
+          "B",
+          "fy ynganiad"
         ]
       ]
     }
@@ -61499,6 +67225,78 @@ const SENTENCES = [
         [
           "C",
           "nad rzeką"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Nanorina"
+        ],
+        [
+          "B",
+          "tetezana vaovao"
+        ],
+        [
+          "C",
+          "teo ambonin'ny renirano"
+        ],
+        [
+          "A",
+          "izy ireo"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ウタラ"
+        ],
+        [
+          "C",
+          "ペッ タ"
+        ],
+        [
+          "B",
+          "アシリ ルウェ"
+        ],
+        [
+          "D",
+          "カラ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "rakensivat"
+        ],
+        [
+          "B",
+          "uuden sillan"
+        ],
+        [
+          "C",
+          "joen yli"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Adeiladodd"
+        ],
+        [
+          "A",
+          "nhw"
+        ],
+        [
+          "B",
+          "bont newydd"
+        ],
+        [
+          "C",
+          "dros yr afon"
         ]
       ]
     }
@@ -62348,6 +68146,78 @@ const SENTENCES = [
           "B",
           "na moim łóżku"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Matory"
+        ],
+        [
+          "B",
+          "eo ambonin'ny fandriako"
+        ],
+        [
+          "C",
+          "isan-alina"
+        ],
+        [
+          "A",
+          "ny sakako"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ チャペ"
+        ],
+        [
+          "B",
+          "クアニ トペンペ タ"
+        ],
+        [
+          "C",
+          "ヌマン ネプカ"
+        ],
+        [
+          "D",
+          "モコロ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Kissani"
+        ],
+        [
+          "D",
+          "nukkuu"
+        ],
+        [
+          "B",
+          "sängylläni"
+        ],
+        [
+          "C",
+          "joka ilta"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "fy nghath yn"
+        ],
+        [
+          "B",
+          "cysgu ar fy ngwely"
+        ],
+        [
+          "C",
+          "bob nos"
+        ]
       ]
     }
   },
@@ -63004,6 +68874,58 @@ const SENTENCES = [
         [
           "B",
           "już 30 minut"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Efa niandry"
+        ],
+        [
+          "B",
+          "nandritra ny 30 minitra"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "レ ワッ トゥ フンペ"
+        ],
+        [
+          "C",
+          "テレス アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "olen odottanut"
+        ],
+        [
+          "B",
+          "30 minuuttia"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rydw i wedi bod"
+        ],
+        [
+          "B",
+          "yn aros am 30 munud"
         ]
       ]
     }
@@ -63665,6 +69587,62 @@ const SENTENCES = [
         [
           "B",
           "pływać"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mianatra"
+        ],
+        [
+          "B",
+          "milomano"
+        ],
+        [
+          "A",
+          "ny ankizy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ポンペ ウタラ"
+        ],
+        [
+          "B",
+          "ホプニ"
+        ],
+        [
+          "C",
+          "ヌイェ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Lapset"
+        ],
+        [
+          "C",
+          "opettelevat"
+        ],
+        [
+          "B",
+          "uimaan"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "'r plant yn"
+        ],
+        [
+          "B",
+          "dysgu nofio"
         ]
       ]
     }
@@ -64450,6 +70428,66 @@ const SENTENCES = [
           "D",
           "czuję się szczęśliwy"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Mahafaly ahy"
+        ],
+        [
+          "C",
+          "ny"
+        ],
+        [
+          "B",
+          "fihainoana"
+        ],
+        [
+          "A",
+          "mozika"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "リムセ"
+        ],
+        [
+          "B",
+          "ヌ ワ"
+        ],
+        [
+          "D",
+          "ピリカ コロ ヌ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Musiikin"
+        ],
+        [
+          "B",
+          "kuunteleminen"
+        ],
+        [
+          "D",
+          "tekee minut onnelliseksi"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n teimlo'n hapus"
+        ],
+        [
+          "B",
+          "wrth wrando ar"
+        ],
+        [
+          "A",
+          "gerddoriaeth"
+        ]
       ]
     }
   },
@@ -65110,6 +71148,62 @@ const SENTENCES = [
         [
           "B",
           "wynikami testu"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Gaga"
+        ],
+        [
+          "B",
+          "tamin'ny valim-panadinana"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シネアン"
+        ],
+        [
+          "B",
+          "テスト ウン シリ タ"
+        ],
+        [
+          "C",
+          "イコイキプ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "C",
+          "yllättyi"
+        ],
+        [
+          "B",
+          "koetuloksista"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Cafodd"
+        ],
+        [
+          "A",
+          "hi"
+        ],
+        [
+          "B",
+          "ei synnu gan ganlyniadau'r prawf"
         ]
       ]
     }
@@ -65966,6 +72060,82 @@ const SENTENCES = [
         [
           "C",
           "jest dobry"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Heveriko fa"
+        ],
+        [
+          "C",
+          "tsara"
+        ],
+        [
+          "A",
+          "ity"
+        ],
+        [
+          "B",
+          "drafitra ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "プラン"
+        ],
+        [
+          "C",
+          "ピリカ ネ ワ"
+        ],
+        [
+          "D",
+          "エラムアン"
+        ]
+      ],
+      "fi": [
+        [
+          "D",
+          "Minusta"
+        ],
+        [
+          "A",
+          "tämä"
+        ],
+        [
+          "B",
+          "suunnitelma"
+        ],
+        [
+          "C",
+          "on hyvä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n credu"
+        ],
+        [
+          "C",
+          "bod"
+        ],
+        [
+          "A",
+          "y"
+        ],
+        [
+          "B",
+          "cynllun hwn yn"
+        ],
+        [
+          "C",
+          "dda"
         ]
       ]
     }
@@ -66922,6 +73092,90 @@ const SENTENCES = [
           "E",
           "się wyprowadziła"
         ]
+      ],
+      "mg": [
+        [
+          "B",
+          "Malahelo"
+        ],
+        [
+          "A",
+          "izy"
+        ],
+        [
+          "C",
+          "satria"
+        ],
+        [
+          "E",
+          "nifindra"
+        ],
+        [
+          "D",
+          "ny namany"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "D",
+          "ウタリ"
+        ],
+        [
+          "E",
+          "トゥラ ワ"
+        ],
+        [
+          "B",
+          "ケメイキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "B",
+          "on surullinen"
+        ],
+        [
+          "C",
+          "koska"
+        ],
+        [
+          "D",
+          "hänen ystävänsä"
+        ],
+        [
+          "E",
+          "muutti pois"
+        ]
+      ],
+      "cy": [
+        [
+          "B",
+          "Mae"
+        ],
+        [
+          "A",
+          "hi'n"
+        ],
+        [
+          "B",
+          "drist"
+        ],
+        [
+          "D",
+          "oherwydd bod ei ffrind wedi"
+        ],
+        [
+          "E",
+          "symud i ffwrdd"
+        ]
       ]
     }
   },
@@ -67845,6 +74099,82 @@ const SENTENCES = [
           "C",
           "to cenne doświadczenie"
         ]
+      ],
+      "mg": [
+        [
+          "E",
+          "Mino"
+        ],
+        [
+          "A",
+          "aho"
+        ],
+        [
+          "D",
+          "fa"
+        ],
+        [
+          "B",
+          "ny fianarana any ivelany dia"
+        ],
+        [
+          "C",
+          "traikefa sarobidy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "コタン パイカイ ヌイェ"
+        ],
+        [
+          "C",
+          "イヨッペ コロ ウシ ネ ワ"
+        ],
+        [
+          "E",
+          "エラムアン"
+        ]
+      ],
+      "fi": [
+        [
+          "E",
+          "Uskon että"
+        ],
+        [
+          "B",
+          "ulkomailla opiskelu"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "arvokas kokemus"
+        ]
+      ],
+      "cy": [
+        [
+          "E",
+          "Rwy'n credu"
+        ],
+        [
+          "A",
+          "bod"
+        ],
+        [
+          "B",
+          "astudio tramor yn"
+        ],
+        [
+          "C",
+          "brofiad gwerthfawr"
+        ]
       ]
     }
   },
@@ -68609,6 +74939,70 @@ const SENTENCES = [
         [
           "B",
           "ból głowy"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Marary"
+        ],
+        [
+          "B",
+          "loha"
+        ],
+        [
+          "C",
+          "anio"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "C",
+          "タネ ト タ"
+        ],
+        [
+          "B",
+          "サパ"
+        ],
+        [
+          "D",
+          "アラキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minulla"
+        ],
+        [
+          "C",
+          "on tänään"
+        ],
+        [
+          "B",
+          "päänsärkyä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "B",
+          "pen tost"
+        ],
+        [
+          "A",
+          "gyda fi"
+        ],
+        [
+          "C",
+          "heddiw"
         ]
       ]
     }
@@ -69446,6 +75840,78 @@ const SENTENCES = [
           "C",
           "odpoczywać"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Nilaza"
+        ],
+        [
+          "B",
+          "tamiko"
+        ],
+        [
+          "C",
+          "mba hiala sasatra"
+        ],
+        [
+          "A",
+          "ny dokotera"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "トゥシンタ クル"
+        ],
+        [
+          "B",
+          "エンコレ"
+        ],
+        [
+          "C",
+          "シンネ キ ヤン ワ"
+        ],
+        [
+          "D",
+          "イエ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Lääkäri"
+        ],
+        [
+          "D",
+          "käski"
+        ],
+        [
+          "B",
+          "minun"
+        ],
+        [
+          "C",
+          "levätä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Dywedodd"
+        ],
+        [
+          "A",
+          "y meddyg"
+        ],
+        [
+          "B",
+          "wrthyf"
+        ],
+        [
+          "C",
+          "am orffwys"
+        ]
       ]
     }
   },
@@ -70250,6 +76716,74 @@ const SENTENCES = [
           "B",
           "każdego ranka"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Miezaka"
+        ],
+        [
+          "C",
+          "manao fanatanjahan-tena"
+        ],
+        [
+          "B",
+          "isa-maraina"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "ヌマン ネプカ クンネ"
+        ],
+        [
+          "C",
+          "ウンデン キ"
+        ],
+        [
+          "D",
+          "コロ カラ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "yritän"
+        ],
+        [
+          "C",
+          "kuntoilla"
+        ],
+        [
+          "B",
+          "joka aamu"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rwy'n ceisio"
+        ],
+        [
+          "C",
+          "gwneud ymarfer corff"
+        ],
+        [
+          "B",
+          "bob bore"
+        ]
       ]
     }
   },
@@ -71038,6 +77572,74 @@ const SENTENCES = [
           "C",
           "w zeszłym tygodniu"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Voan'ny"
+        ],
+        [
+          "B",
+          "gripa"
+        ],
+        [
+          "D",
+          "tamin'ny herinandro lasa"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シヌタプカ"
+        ],
+        [
+          "D",
+          "ヌマン パ タ"
+        ],
+        [
+          "B",
+          "アラキ"
+        ],
+        [
+          "C",
+          "サンゲ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "C",
+          "vilustui"
+        ],
+        [
+          "D",
+          "viime viikolla"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Daliodd"
+        ],
+        [
+          "A",
+          "hi"
+        ],
+        [
+          "B",
+          "annwyd"
+        ],
+        [
+          "D",
+          "yr wythnos diwethaf"
+        ]
       ]
     }
   },
@@ -71781,6 +78383,70 @@ const SENTENCES = [
         [
           "B",
           "więcej wody"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Tokony"
+        ],
+        [
+          "C",
+          "hisotro"
+        ],
+        [
+          "B",
+          "rano bebe kokoa"
+        ],
+        [
+          "A",
+          "ianao"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "エアニ"
+        ],
+        [
+          "B",
+          "ワッカ ポロンノ"
+        ],
+        [
+          "D",
+          "ク ピリカ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Sinun"
+        ],
+        [
+          "D",
+          "pitäisi"
+        ],
+        [
+          "C",
+          "juoda"
+        ],
+        [
+          "B",
+          "enemmän vettä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Dylech"
+        ],
+        [
+          "A",
+          "chi"
+        ],
+        [
+          "B",
+          "yfed mwy o ddŵr"
         ]
       ]
     }
@@ -72529,6 +79195,66 @@ const SENTENCES = [
         [
           "B",
           "smartfona"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mampiasa"
+        ],
+        [
+          "B",
+          "ny findaiko"
+        ],
+        [
+          "A",
+          "isan'andro"
+        ],
+        [
+          "D",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ヌマン ネプカ"
+        ],
+        [
+          "B",
+          "スマホ"
+        ],
+        [
+          "C",
+          "アエ コロ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Joka päivä"
+        ],
+        [
+          "C",
+          "käytän"
+        ],
+        [
+          "B",
+          "älypuhelintani"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rwy'n defnyddio"
+        ],
+        [
+          "B",
+          "fy ffôn clyfar"
+        ],
+        [
+          "A",
+          "bob dydd"
         ]
       ]
     }
@@ -73382,6 +80108,78 @@ const SENTENCES = [
           "D",
           "wygodna"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tena"
+        ],
+        [
+          "D",
+          "mahasoa"
+        ],
+        [
+          "A",
+          "ity"
+        ],
+        [
+          "B",
+          "rindranasa ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "アプリ"
+        ],
+        [
+          "C",
+          "アトゥイ"
+        ],
+        [
+          "D",
+          "ウシケ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tämä"
+        ],
+        [
+          "B",
+          "sovellus"
+        ],
+        [
+          "C",
+          "on todella"
+        ],
+        [
+          "D",
+          "kätevä"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae'r"
+        ],
+        [
+          "B",
+          "ap hwn yn"
+        ],
+        [
+          "C",
+          "gyfleus"
+        ],
+        [
+          "D",
+          "iawn"
+        ]
       ]
     }
   },
@@ -74043,6 +80841,62 @@ const SENTENCES = [
           "B",
           "świat"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Manova"
+        ],
+        [
+          "B",
+          "an'izao tontolo izao"
+        ],
+        [
+          "A",
+          "ny AI"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "B",
+          "モシリ"
+        ],
+        [
+          "C",
+          "ウエカラ アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tekoäly"
+        ],
+        [
+          "C",
+          "muuttaa"
+        ],
+        [
+          "B",
+          "maailmaa"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "deallusrwydd artiffisial yn"
+        ],
+        [
+          "B",
+          "newid y byd"
+        ]
       ]
     }
   },
@@ -74623,6 +81477,54 @@ const SENTENCES = [
         [
           "B",
           "hasła do Wi-Fi"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Tsy fantatro"
+        ],
+        [
+          "B",
+          "ny tenimiafina Wi-Fi"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "Wi-Fi パスワード"
+        ],
+        [
+          "C",
+          "パイェ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "C",
+          "en tiedä"
+        ],
+        [
+          "B",
+          "Wi-Fi-salasanaa"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Dydw i ddim yn gwybod"
+        ],
+        [
+          "B",
+          "cyfrinair y Wi-Fi"
         ]
       ]
     }
@@ -75444,6 +82346,78 @@ const SENTENCES = [
           "C",
           "sam"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Nianatra"
+        ],
+        [
+          "B",
+          "fandaharana"
+        ],
+        [
+          "C",
+          "samirery"
+        ],
+        [
+          "A",
+          "izy"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "シネアン"
+        ],
+        [
+          "C",
+          "エシカルン ノ"
+        ],
+        [
+          "B",
+          "プログラミング"
+        ],
+        [
+          "D",
+          "ヌイェ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hän"
+        ],
+        [
+          "D",
+          "oppi"
+        ],
+        [
+          "B",
+          "ohjelmoinnin"
+        ],
+        [
+          "C",
+          "itseopiskellen"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Dysgodd"
+        ],
+        [
+          "A",
+          "e"
+        ],
+        [
+          "B",
+          "raglennu"
+        ],
+        [
+          "C",
+          "ar ei ben ei hun"
+        ]
       ]
     }
   },
@@ -76227,6 +83201,74 @@ const SENTENCES = [
         [
           "C",
           "tradycja"
+        ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Dia"
+        ],
+        [
+          "B",
+          "fomba japoney"
+        ],
+        [
+          "C",
+          "nentim-paharazana"
+        ],
+        [
+          "A",
+          "ny fijerena voninkazo sakura"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "ハナミ"
+        ],
+        [
+          "B",
+          "ニホン ウン"
+        ],
+        [
+          "C",
+          "シキ ネ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Hanami"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "B",
+          "japanilainen"
+        ],
+        [
+          "C",
+          "perinne"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "gwylio blodau ceirios yn"
+        ],
+        [
+          "C",
+          "draddodiad"
+        ],
+        [
+          "B",
+          "Japaneaidd"
         ]
       ]
     }
@@ -77043,6 +84085,74 @@ const SENTENCES = [
         [
           "D",
           "na chiński Nowy Rok"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mihinana"
+        ],
+        [
+          "B",
+          "ravioly"
+        ],
+        [
+          "D",
+          "mandritra ny taom-baovao sinoa"
+        ],
+        [
+          "A",
+          "izahay"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "アオカイ"
+        ],
+        [
+          "D",
+          "アシリ パ タ"
+        ],
+        [
+          "B",
+          "ギョーザ"
+        ],
+        [
+          "C",
+          "イペ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Me"
+        ],
+        [
+          "C",
+          "syömme"
+        ],
+        [
+          "B",
+          "nyyttejä"
+        ],
+        [
+          "D",
+          "kiinalaisena uutenavuotena"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rydyn ni'n bwyta"
+        ],
+        [
+          "B",
+          "twmplenni"
+        ],
+        [
+          "D",
+          "yn ystod y Flwyddyn Newydd Leuadol"
         ]
       ]
     }
@@ -77884,6 +84994,78 @@ const SENTENCES = [
           "C",
           "wiele festiwali"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Misy"
+        ],
+        [
+          "C",
+          "fety maro"
+        ],
+        [
+          "B",
+          "amin'ny fahavaratra"
+        ],
+        [
+          "A",
+          "eto amin'ity firenena ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン モシリ タ"
+        ],
+        [
+          "B",
+          "サク タ"
+        ],
+        [
+          "C",
+          "ポロンノ マツリ"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Tässä maassa"
+        ],
+        [
+          "B",
+          "kesällä"
+        ],
+        [
+          "D",
+          "järjestetään"
+        ],
+        [
+          "C",
+          "paljon festivaaleja"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "C",
+          "llawer o wyliau"
+        ],
+        [
+          "A",
+          "yn y wlad hon"
+        ],
+        [
+          "B",
+          "yn yr haf"
+        ]
       ]
     }
   },
@@ -78544,6 +85726,62 @@ const SENTENCES = [
         [
           "B",
           "nowe drzwi"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Manokatra"
+        ],
+        [
+          "B",
+          "varavarana vaovao"
+        ],
+        [
+          "A",
+          "ny fianarana fiteny"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "イタク ヌイェ"
+        ],
+        [
+          "B",
+          "アシリ ルイカ"
+        ],
+        [
+          "C",
+          "マク"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Kielten oppiminen"
+        ],
+        [
+          "C",
+          "avaa"
+        ],
+        [
+          "B",
+          "uusia ovia"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Mae"
+        ],
+        [
+          "A",
+          "dysgu ieithoedd yn"
+        ],
+        [
+          "B",
+          "agor drysau newydd"
         ]
       ]
     }
@@ -79225,6 +86463,62 @@ const SENTENCES = [
         [
           "A",
           "rowerem"
+        ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Mandeha"
+        ],
+        [
+          "B",
+          "any amin'ny birao"
+        ],
+        [
+          "A",
+          "amin'ny bisikileta"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "キクラチ タ"
+        ],
+        [
+          "B",
+          "ミセ オルン"
+        ],
+        [
+          "C",
+          "アルキ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Polkupyörällä"
+        ],
+        [
+          "C",
+          "menen"
+        ],
+        [
+          "B",
+          "toimistolle"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Rwy'n mynd"
+        ],
+        [
+          "B",
+          "i'r swyddfa"
+        ],
+        [
+          "A",
+          "ar feic"
         ]
       ]
     }
@@ -80074,6 +87368,78 @@ const SENTENCES = [
           "B",
           "na następnym skrzyżowaniu"
         ]
+      ],
+      "mg": [
+        [
+          "A",
+          "Azafady"
+        ],
+        [
+          "D",
+          "mivilivily"
+        ],
+        [
+          "C",
+          "miankavanana"
+        ],
+        [
+          "B",
+          "eo amin'ny sampanan-dalana manaraka"
+        ]
+      ],
+      "ain": [
+        [
+          "B",
+          "アルキ ル ウン ペ タ"
+        ],
+        [
+          "C",
+          "シウマム"
+        ],
+        [
+          "D",
+          "コイキ"
+        ],
+        [
+          "A",
+          "ヤン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Olkaa hyvä"
+        ],
+        [
+          "D",
+          "kääntykää"
+        ],
+        [
+          "C",
+          "oikealle"
+        ],
+        [
+          "B",
+          "seuraavassa risteyksessä"
+        ]
+      ],
+      "cy": [
+        [
+          "A",
+          "Os gwelwch yn dda"
+        ],
+        [
+          "D",
+          "trowch"
+        ],
+        [
+          "C",
+          "i'r dde"
+        ],
+        [
+          "B",
+          "wrth y groesffordd nesaf"
+        ]
       ]
     }
   },
@@ -80922,6 +88288,78 @@ const SENTENCES = [
           "C",
           "stacją"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Ao"
+        ],
+        [
+          "B",
+          "aorianan'"
+        ],
+        [
+          "C",
+          "ny gara"
+        ],
+        [
+          "A",
+          "ny fivarotana lehibe"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "スーパー"
+        ],
+        [
+          "C",
+          "ステーション"
+        ],
+        [
+          "B",
+          "オシリ タ"
+        ],
+        [
+          "D",
+          "アン"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Supermarketti"
+        ],
+        [
+          "D",
+          "on"
+        ],
+        [
+          "C",
+          "aseman"
+        ],
+        [
+          "B",
+          "takana"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Mae"
+        ],
+        [
+          "A",
+          "'r archfarchnad"
+        ],
+        [
+          "B",
+          "y tu ôl i"
+        ],
+        [
+          "C",
+          "'r orsaf"
+        ]
       ]
     }
   },
@@ -81678,6 +89116,70 @@ const SENTENCES = [
           "B",
           "to danie"
         ]
+      ],
+      "mg": [
+        [
+          "D",
+          "Te"
+        ],
+        [
+          "C",
+          "hanafatra"
+        ],
+        [
+          "B",
+          "ity sakafo ity"
+        ],
+        [
+          "A",
+          "aho"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "クアニ"
+        ],
+        [
+          "B",
+          "タン イペ"
+        ],
+        [
+          "D",
+          "オーダー ルスイ"
+        ]
+      ],
+      "fi": [
+        [
+          "A",
+          "Minä"
+        ],
+        [
+          "D",
+          "haluaisin"
+        ],
+        [
+          "C",
+          "tilata"
+        ],
+        [
+          "B",
+          "tämän annoksen"
+        ]
+      ],
+      "cy": [
+        [
+          "D",
+          "Rydw i eisiau"
+        ],
+        [
+          "C",
+          "archebu"
+        ],
+        [
+          "B",
+          "y saig hon"
+        ]
       ]
     }
   },
@@ -82426,6 +89928,78 @@ const SENTENCES = [
           "B",
           "pamiątka"
         ]
+      ],
+      "mg": [
+        [
+          "C",
+          "Ohatrinona"
+        ],
+        [
+          "D",
+          "no vidin'"
+        ],
+        [
+          "A",
+          "ity"
+        ],
+        [
+          "B",
+          "fanomezana fahatsiarovana ity"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "タン"
+        ],
+        [
+          "B",
+          "ミヤゲ"
+        ],
+        [
+          "C",
+          "ヘンペラ"
+        ],
+        [
+          "D",
+          "ヤ"
+        ]
+      ],
+      "fi": [
+        [
+          "C",
+          "Paljonko"
+        ],
+        [
+          "A",
+          "tämä"
+        ],
+        [
+          "B",
+          "matkamuisto"
+        ],
+        [
+          "D",
+          "maksaa?"
+        ]
+      ],
+      "cy": [
+        [
+          "C",
+          "Faint"
+        ],
+        [
+          "D",
+          "yw"
+        ],
+        [
+          "A",
+          "y"
+        ],
+        [
+          "B",
+          "swfenîr hwn?"
+        ]
       ]
     }
   },
@@ -82994,6 +90568,50 @@ const SENTENCES = [
         [
           "B",
           "wszystko"
+        ]
+      ],
+      "mg": [
+        [
+          "B",
+          "Misaotra"
+        ],
+        [
+          "C",
+          "noho ny"
+        ],
+        [
+          "A",
+          "zava-drehetra"
+        ]
+      ],
+      "ain": [
+        [
+          "A",
+          "オピッタ"
+        ],
+        [
+          "B",
+          "イヤイライケレ"
+        ]
+      ],
+      "fi": [
+        [
+          "B",
+          "Kiitos"
+        ],
+        [
+          "A",
+          "kaikesta"
+        ]
+      ],
+      "cy": [
+        [
+          "B",
+          "Diolch"
+        ],
+        [
+          "A",
+          "am bopeth"
         ]
       ]
     }
