@@ -109956,8 +109956,12 @@ const SENTENCES = [
       ],
       "fr": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'apprends"
+          "apprends"
         ],
         [
           "C",
@@ -111234,8 +111238,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'apprends"
+          "apprends"
         ],
         [
           "C",
@@ -125857,8 +125865,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'peux"
+          "peux"
         ],
         [
           "A",
@@ -134930,8 +134942,12 @@ const SENTENCES = [
       ],
       "fr": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "C",
-          "J'attends"
+          "attends"
         ],
         [
           "B",
@@ -135952,8 +135968,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "C",
-          "J'attends"
+          "attends"
         ],
         [
           "B",
@@ -139057,8 +139077,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'me sens heureux"
+          "me sens heureux"
         ],
         [
           "C",
@@ -155618,7 +155642,7 @@ const SENTENCES = [
       ],
       "fr": [
         [
-          "D",
+          "A",
           "J'"
         ],
         [
@@ -156812,7 +156836,7 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "D",
+          "A",
           "J'"
         ],
         [
