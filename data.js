@@ -1521,6 +1521,10 @@ const SENTENCES = [
           "Rydw i eisiau rhoi cynnig ar"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "E",
           "siwt"
         ],
@@ -2446,7 +2450,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "gseh han"
+          "gseh ha"
         ]
       ],
       "fr_qc": [
@@ -2486,7 +2490,7 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
           "F",
@@ -2498,7 +2502,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "I"
+          "A"
         ],
         [
           "D",
@@ -5353,7 +5357,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "ar a 7"
+          "ar a 7 a chlog"
         ]
       ],
       "eu": [
@@ -5516,16 +5520,20 @@ const SENTENCES = [
           "Rwy'n bwyta"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "B",
           "brecwast"
         ],
         [
-          "E",
-          "am 7"
-        ],
-        [
           "D",
           "bob bore"
+        ],
+        [
+          "E",
+          "am 7 o'r gloch"
         ]
       ],
       "en_yk": [
@@ -6252,12 +6260,8 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "isse"
-        ],
-        [
           "C",
-          "Zmorge"
+          "iss"
         ],
         [
           "D",
@@ -6265,7 +6269,11 @@ const SENTENCES = [
         ],
         [
           "E",
-          "um sibni"
+          "um 7 Uhr"
+        ],
+        [
+          "B",
+          "Zmorge"
         ]
       ],
       "fr_qc": [
@@ -6293,14 +6301,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "eat"
+          "A"
         ],
         [
           "C",
+          "eat"
+        ],
+        [
+          "B",
           "breakfast"
         ],
         [
@@ -7263,7 +7271,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Hurbileneko"
+          "Hurbilen"
         ],
         [
           "B",
@@ -7275,7 +7283,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dago?"
+          "dago"
         ]
       ],
       "hu": [
@@ -7393,15 +7401,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "mae"
+          "mae'r"
         ],
         [
           "A",
-          "yr orsaf"
+          "agosaf"
         ],
         [
           "B",
-          "agosaf?"
+          "orsaf"
         ]
       ],
       "en_yk": [
@@ -7976,20 +7984,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "C",
           "Wo"
         ],
         [
-          "B",
+          "D",
           "isch"
         ],
         [
-          "C",
-          "di nöchsti"
+          "A",
+          "de nöchscht"
         ],
         [
-          "D",
-          "Station"
+          "B",
+          "Bahnhof"
         ]
       ],
       "fr_qc": [
@@ -8012,19 +8020,19 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "C",
           "Whaur"
         ],
         [
-          "B",
+          "D",
           "is"
         ],
         [
-          "C",
+          "A",
           "the nearest"
         ],
         [
-          "D",
+          "B",
           "station"
         ]
       ],
@@ -9029,11 +9037,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "an-"
-        ],
-        [
-          "D",
-          "blasta"
+          "an-bhlasta"
         ]
       ],
       "eu": [
@@ -9181,15 +9185,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "coffi hwn"
+          "coffi"
+        ],
+        [
+          "A",
+          "hwn"
         ],
         [
           "C",
-          "yn"
-        ],
-        [
-          "D",
-          "flasus iawn"
+          "yn flasus iawn"
         ]
       ],
       "en_yk": [
@@ -9816,12 +9820,16 @@ const SENTENCES = [
           "Kafi"
         ],
         [
-          "C",
+          "D",
           "isch"
         ],
         [
+          "C",
+          "sehr"
+        ],
+        [
           "D",
-          "sehr fein"
+          "fein"
         ]
       ],
       "fr_qc": [
@@ -9856,12 +9864,16 @@ const SENTENCES = [
           "coffee"
         ],
         [
-          "C",
+          "D",
           "is"
         ],
         [
+          "C",
+          "gey"
+        ],
+        [
           "D",
-          "gey braw"
+          "braw"
         ]
       ],
       "en_sg": [
@@ -10812,8 +10824,12 @@ const SENTENCES = [
           "Déanaim staidéar ar"
         ],
         [
+          "A",
+          "mé"
+        ],
+        [
           "C",
-          "Sheapáinis"
+          "an tSeapáinis"
         ],
         [
           "B",
@@ -10950,6 +10966,10 @@ const SENTENCES = [
         [
           "D",
           "Rwy'n astudio"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "C",
@@ -11552,7 +11572,7 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "studiere"
         ],
         [
@@ -11560,7 +11580,7 @@ const SENTENCES = [
           "Japanisch"
         ],
         [
-          "D",
+          "B",
           "a de Uni"
         ]
       ],
@@ -11585,10 +11605,10 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
+          "D",
           "study"
         ],
         [
@@ -11596,7 +11616,7 @@ const SENTENCES = [
           "Japanese"
         ],
         [
-          "D",
+          "B",
           "at the university"
         ]
       ],
@@ -12548,12 +12568,12 @@ const SENTENCES = [
           "Beidh"
         ],
         [
-          "A",
-          "aimsir"
+          "B",
+          "an aimsir"
         ],
         [
-          "B",
-          "an lae amárach"
+          "A",
+          "amárach"
         ],
         [
           "D",
@@ -12688,16 +12708,16 @@ const SENTENCES = [
           "Bydd"
         ],
         [
-          "A",
+          "B",
           "tywydd"
         ],
         [
-          "B",
-          "yfory yn"
+          "A",
+          "yfory"
         ],
         [
           "D",
-          "heulog"
+          "yn heulog"
         ]
       ],
       "en_yk": [
@@ -13281,19 +13301,23 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "S Wätter"
-        ],
-        [
-          "B",
-          "vo morn"
+          "Morn"
         ],
         [
           "C",
           "wird"
         ],
         [
+          "B",
+          "s Wätter"
+        ],
+        [
           "D",
-          "sunnig"
+          "sonnig"
+        ],
+        [
+          "C",
+          "sii"
         ]
       ],
       "fr_qc": [
@@ -14277,11 +14301,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "Mamaí"
+          "mo mháthair"
         ],
         [
           "B",
-          "dinnéar"
+          "an dinnéar"
         ],
         [
           "D",
@@ -14291,7 +14315,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Amak"
+          "Nire amak"
         ],
         [
           "D",
@@ -14421,14 +14445,14 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy mam yn"
-        ],
-        [
-          "B",
-          "coginio cinio"
+          "fy mam"
         ],
         [
           "D",
+          "yn coginio swper"
+        ],
+        [
+          "B",
           "bob dydd"
         ]
       ],
@@ -15025,19 +15049,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Mini"
-        ],
-        [
-          "B",
-          "Mueter"
+          "Mini Mueter"
         ],
         [
           "C",
-          "chochet"
+          "chocht"
         ],
         [
           "D",
-          "s Znacht jede Tag"
+          "jede Tag"
+        ],
+        [
+          "B",
+          "s Znacht"
         ]
       ],
       "fr_qc": [
@@ -15061,19 +15085,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "mither"
+          "Ma mither"
         ],
         [
           "C",
           "cooks"
         ],
         [
+          "B",
+          "dinner"
+        ],
+        [
           "D",
-          "denner ilka day"
+          "ilka day"
         ]
       ],
       "en_sg": [
@@ -16021,15 +16045,15 @@ const SENTENCES = [
       "ga": [
         [
           "C",
-          "Ba mhaith"
+          "Ba mhaith liom dul"
         ],
         [
           "A",
-          "liom"
+          "mé"
         ],
         [
           "B",
-          "dul go dtí an tSeapáin"
+          "go dtí an tSeapáin"
         ],
         [
           "D",
@@ -16169,11 +16193,15 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Rydw i eisiau"
+          "Rydw i eisiau mynd"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "B",
-          "mynd i Japan"
+          "i Japan"
         ],
         [
           "D",
@@ -16772,20 +16800,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "C",
           "wött"
         ],
         [
-          "C",
-          "nach Japan"
+          "D",
+          "nöchschts Jahr"
         ],
         [
           "B",
-          "goh"
+          "uf Japan"
         ],
         [
-          "D",
-          "nöchsts Johr"
+          "C",
+          "ga"
         ]
       ],
       "fr_qc": [
@@ -16809,19 +16837,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "want tae gang"
+          "A"
         ],
         [
           "C",
+          "want tae gang"
+        ],
+        [
+          "B",
           "tae Japan"
         ],
         [
           "D",
-          "neist year"
+          "next year"
         ]
       ],
       "en_sg": [
@@ -17776,7 +17804,7 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "C",
+          "D",
           "An féidir"
         ],
         [
@@ -17784,12 +17812,8 @@ const SENTENCES = [
           "leat"
         ],
         [
-          "B",
-          "Béarla"
-        ],
-        [
-          "D",
-          "a labhairt?"
+          "C",
+          "Béarla a labhairt"
         ]
       ],
       "eu": [
@@ -17799,7 +17823,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ingelesez"
+          "ingelesa"
         ],
         [
           "C",
@@ -17807,7 +17831,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dezakezu?"
+          "dezakezu"
         ]
       ],
       "hu": [
@@ -17920,7 +17944,7 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "C",
+          "D",
           "Allwch"
         ],
         [
@@ -17928,8 +17952,12 @@ const SENTENCES = [
           "chi"
         ],
         [
+          "C",
+          "siarad"
+        ],
+        [
           "B",
-          "siarad Saesneg?"
+          "Saesneg"
         ]
       ],
       "en_yk": [
@@ -18508,16 +18536,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
+          "D",
+          "Chönd"
+        ],
+        [
           "A",
-          "Chasch"
+          "Si"
         ],
         [
           "B",
-          "du"
+          "Englisch"
         ],
         [
           "C",
-          "Änglisch rede"
+          "rede"
         ]
       ],
       "fr_qc": [
@@ -18540,11 +18572,11 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "D",
           "Can"
         ],
         [
-          "B",
+          "A",
           "ye"
         ],
         [
@@ -18552,7 +18584,7 @@ const SENTENCES = [
           "speak"
         ],
         [
-          "D",
+          "B",
           "English"
         ]
       ],
@@ -19905,7 +19937,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "liburu-dendan"
+          "liburudendean"
         ],
         [
           "D",
@@ -19913,7 +19945,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "berria"
+          "berri bat"
         ],
         [
           "C",
@@ -20950,24 +20982,24 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
+          "C",
+          "ha"
         ],
         [
-          "E",
+          "F",
           "geschter"
         ],
         [
-          "C",
-          "es neus Buech"
-        ],
-        [
-          "D",
+          "B",
           "i de Buechhandlig"
         ],
         [
-          "B",
-          "kauft"
+          "D",
+          "es neus"
+        ],
+        [
+          "E",
+          "Buech chauft"
         ]
       ],
       "fr_qc": [
@@ -20998,24 +21030,28 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "E",
-          "Yestreen"
-        ],
-        [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "bocht"
+          "A"
         ],
         [
           "C",
-          "a new buik"
+          "bocht"
         ],
         [
           "D",
+          "a new"
+        ],
+        [
+          "E",
+          "buik"
+        ],
+        [
+          "B",
           "at the buikshop"
+        ],
+        [
+          "F",
+          "yestreen"
         ]
       ],
       "en_sg": [
@@ -22002,20 +22038,20 @@ const SENTENCES = [
           "Tá"
         ],
         [
-          "A",
-          "na"
+          "C",
+          "na bláthannasilíní"
         ],
         [
-          "C",
-          "crainn silíní"
+          "A",
+          "sa"
         ],
         [
           "B",
-          "sa pháirc seo"
+          "pháirc seo"
         ],
         [
           "D",
-          "álainn"
+          "go hálainn"
         ]
       ],
       "eu": [
@@ -22029,7 +22065,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "loreen loreak"
+          "gereziondoen loreak"
         ],
         [
           "D",
@@ -22150,12 +22186,16 @@ const SENTENCES = [
           "blodau'r ceirios"
         ],
         [
+          "A",
+          "yn y"
+        ],
+        [
           "B",
-          "yn y parc hwn yn"
+          "parc hwn"
         ],
         [
           "D",
-          "hardd iawn"
+          "yn brydferth"
         ]
       ],
       "en_yk": [
@@ -22742,20 +22782,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "C",
           "D Chriesiblüete"
         ],
         [
-          "B",
-          "i dem Park"
+          "A",
+          "i dem"
         ],
         [
-          "C",
-          "sind"
+          "B",
+          "Park"
         ],
         [
           "D",
-          "schön"
+          "sind wunderschön"
         ]
       ],
       "fr_qc": [
@@ -22778,20 +22818,20 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "C",
           "The cherry blossoms"
         ],
         [
-          "B",
-          "in this park"
+          "A",
+          "in this"
         ],
         [
-          "C",
-          "are"
+          "B",
+          "park"
         ],
         [
           "D",
-          "bonnie"
+          "are bonnie"
         ]
       ],
       "en_sg": [
@@ -23654,30 +23694,38 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "A",
-          "Gloine"
+          "D",
+          "Tabhair"
         ],
         [
           "C",
-          "uisce"
+          "gloine uisce"
         ],
         [
           "B",
+          "dom"
+        ],
+        [
+          "A",
           "le do thoil"
         ]
       ],
       "eu": [
         [
           "A",
-          "Ur"
-        ],
-        [
-          "C",
-          "baso bat"
+          "Mesedez"
         ],
         [
           "B",
-          "mesedez"
+          "niri"
+        ],
+        [
+          "C",
+          "ur baso bat"
+        ],
+        [
+          "D",
+          "eman"
         ]
       ],
       "hu": [
@@ -23770,15 +23818,19 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "A",
-          "Gwydriad"
+          "D",
+          "Rhowch"
         ],
         [
           "C",
-          "o ddŵr"
+          "wydraid o ddŵr"
         ],
         [
           "B",
+          "i mi"
+        ],
+        [
+          "A",
           "os gwelwch yn dda"
         ]
       ],
@@ -24346,15 +24398,15 @@ const SENTENCES = [
           "Bitte"
         ],
         [
-          "B",
+          "D",
           "gänd"
         ],
         [
-          "C",
-          "mir"
+          "B",
+          "Si mir"
         ],
         [
-          "D",
+          "C",
           "es Glas Wasser"
         ]
       ],
@@ -24382,15 +24434,15 @@ const SENTENCES = [
           "Please"
         ],
         [
-          "B",
+          "D",
           "gie"
         ],
         [
-          "C",
+          "B",
           "me"
         ],
         [
-          "D",
+          "C",
           "a gless o watter"
         ]
       ],
@@ -25525,8 +25577,12 @@ const SENTENCES = [
           "Téim"
         ],
         [
+          "A",
+          "mé"
+        ],
+        [
           "B",
-          "ag obair"
+          "go dtí an obair"
         ],
         [
           "D",
@@ -25540,7 +25596,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Ni"
+          "Nik"
         ],
         [
           "E",
@@ -25695,6 +25751,10 @@ const SENTENCES = [
         [
           "C",
           "Rwy'n mynd"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "B",
@@ -26429,20 +26489,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "gang"
+          "C",
+          "far"
         ],
         [
-          "C",
-          "go schaffe"
+          "E",
+          "jede Tag"
         ],
         [
           "D",
           "mit em Zug"
         ],
         [
-          "E",
-          "jede Tag"
+          "B",
+          "zur Arbet"
         ]
       ],
       "fr_qc": [
@@ -26470,14 +26530,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "gang"
+          "A"
         ],
         [
           "C",
+          "gang"
+        ],
+        [
+          "B",
           "tae work"
         ],
         [
@@ -27454,7 +27514,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "mo dheirfiúr"
+          "mo dheirfiúr óg"
         ],
         [
           "C",
@@ -27468,7 +27528,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Nire ahizpa"
+          "Nire ahizpa txikia"
         ],
         [
           "B",
@@ -27476,7 +27536,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "kanpoan ikasten"
+          "atzerrian ikasten"
         ],
         [
           "D",
@@ -27586,11 +27646,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy chwaer"
+          "fy chwaer fach"
         ],
         [
           "C",
-          "yn astudio tramor"
+          "yn astudio dramor"
         ],
         [
           "B",
@@ -28182,19 +28242,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Mini"
-        ],
-        [
-          "B",
-          "chli Schwöster"
+          "Mini jüngeri Schwöschter"
         ],
         [
           "C",
-          "studiert im Usland"
+          "studiert"
         ],
         [
           "D",
-          "in Frankriich"
+          "grad"
+        ],
+        [
+          "B",
+          "i Frankrich"
         ]
       ],
       "fr_qc": [
@@ -28218,18 +28278,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "wee sister"
-        ],
-        [
-          "C",
-          "is studyin abroad"
+          "Ma wee sister"
         ],
         [
           "D",
+          "is"
+        ],
+        [
+          "C",
+          "studyin abroad"
+        ],
+        [
+          "B",
           "in France"
         ]
       ],
@@ -29082,17 +29142,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "an scannán?"
+          "an scannán"
         ]
       ],
       "eu": [
         [
-          "B",
-          "Filma"
+          "A",
+          "Zer ordutan"
         ],
         [
-          "A",
-          "zer ordutan"
+          "B",
+          "filma"
         ],
         [
           "C",
@@ -29100,7 +29160,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "da?"
+          "da"
         ]
       ],
       "hu": [
@@ -29202,15 +29262,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "mae"
+          "mae'r"
         ],
         [
           "B",
-          "y ffilm yn"
+          "ffilm"
         ],
         [
           "C",
-          "dechrau?"
+          "yn dechrau"
         ]
       ],
       "en_yk": [
@@ -29742,18 +29802,18 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Um weli Ziit"
-        ],
-        [
-          "D",
-          "fangt"
+          "Wänn"
         ],
         [
           "C",
+          "fangt"
+        ],
+        [
+          "B",
           "de Film"
         ],
         [
-          "D",
+          "C",
           "aa"
         ]
       ],
@@ -29777,16 +29837,16 @@ const SENTENCES = [
           "Whit time"
         ],
         [
-          "B",
-          "dis"
+          "D",
+          "does"
         ],
         [
-          "C",
+          "B",
           "the film"
         ],
         [
-          "D",
-          "stairt"
+          "C",
+          "start"
         ]
       ],
       "en_sg": [
@@ -30913,7 +30973,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ar a 3"
+          "ar a 3 a chlog"
         ],
         [
           "E",
@@ -30935,7 +30995,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bilera"
+          "bilera bat"
         ],
         [
           "C",
@@ -31073,23 +31133,23 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Mae"
-        ],
-        [
-          "B",
-          "cyfarfod"
+          "Mae gen"
         ],
         [
           "A",
-          "gyda fi"
+          "i"
+        ],
+        [
+          "B",
+          "gyfarfod"
         ],
         [
           "D",
-          "am 3"
+          "am 3 o'r gloch"
         ],
         [
           "E",
-          "prynhawn heddiw"
+          "y prynhawn yma"
         ]
       ],
       "en_yk": [
@@ -31804,20 +31864,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
-        ],
-        [
           "C",
-          "e Sitzig"
-        ],
-        [
-          "D",
-          "um drüü"
+          "ha"
         ],
         [
           "E",
-          "hüt am Namittag"
+          "hüt Namittag"
+        ],
+        [
+          "D",
+          "um 3 Uhr"
+        ],
+        [
+          "B",
+          "es Meeting"
         ]
       ],
       "fr_qc": [
@@ -31845,14 +31905,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "hae"
+          "A"
         ],
         [
           "C",
+          "hae"
+        ],
+        [
+          "B",
           "a meetin"
         ],
         [
@@ -32889,10 +32949,6 @@ const SENTENCES = [
         ],
         [
           "C",
-          "beagán"
-        ],
-        [
-          "D",
           "ródhaor"
         ]
       ],
@@ -32907,11 +32963,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "pixka bat"
+          "garestiegia"
         ],
         [
           "D",
-          "garestiegia da"
+          "da"
         ]
       ],
       "hu": [
@@ -33041,15 +33097,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bag hwn"
+          "bag"
+        ],
+        [
+          "A",
+          "hwn"
         ],
         [
           "C",
-          "ychydig yn"
-        ],
-        [
-          "D",
-          "rhy ddrud"
+          "yn rhy ddrud"
         ]
       ],
       "en_yk": [
@@ -33660,12 +33716,16 @@ const SENTENCES = [
           "Tasche"
         ],
         [
-          "C",
+          "D",
           "isch"
         ],
         [
+          "C",
+          "z"
+        ],
+        [
           "D",
-          "z tüür"
+          "tüür"
         ]
       ],
       "fr_qc": [
@@ -33700,12 +33760,16 @@ const SENTENCES = [
           "bag"
         ],
         [
-          "C",
+          "D",
           "is"
         ],
         [
+          "C",
+          "ower"
+        ],
+        [
           "D",
-          "ower dear"
+          "dear"
         ]
       ],
       "en_sg": [
@@ -34661,15 +34725,15 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Is maith"
+          "Is maith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
         ],
         [
           "C",
-          "bheith ag éisteacht le"
+          "éisteacht le"
         ],
         [
           "B",
@@ -34679,7 +34743,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Niri"
+          "Nik"
         ],
         [
           "B",
@@ -34802,6 +34866,10 @@ const SENTENCES = [
         [
           "D",
           "Rwy'n hoffi"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "C",
@@ -35404,15 +35472,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "lose"
         ],
         [
           "C",
-          "gärn"
+          "gern"
         ],
         [
-          "D",
+          "B",
           "Musig"
         ]
       ],
@@ -35437,19 +35505,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
+          "D",
           "like"
         ],
         [
           "C",
-          "tae listen"
+          "tae listen tae"
         ],
         [
-          "D",
-          "tae music"
+          "B",
+          "music"
         ]
       ],
       "en_sg": [
@@ -36328,20 +36396,12 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Tá sé"
-        ],
-        [
           "C",
-          "ag cur"
-        ],
-        [
-          "D",
-          "báistí"
+          "Tá sé ag"
         ],
         [
           "B",
-          "gan stad"
+          "cur báistí"
         ],
         [
           "A",
@@ -36351,14 +36411,10 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Goizetik"
+          "Goiz honetatik"
         ],
         [
           "B",
-          "etengabe"
-        ],
-        [
-          "D",
           "euria"
         ],
         [
@@ -36464,20 +36520,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Mae hi"
-        ],
-        [
           "C",
-          "wedi bod yn"
+          "Mae hi wedi bod"
         ],
         [
-          "D",
-          "bwrw glaw"
+          "B",
+          "yn bwrw glaw"
         ],
         [
           "A",
-          "ers y bore"
+          "ers y bore 'ma"
         ]
       ],
       "en_yk": [
@@ -37016,7 +37068,7 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "C",
           "Es"
         ],
         [
@@ -37024,12 +37076,12 @@ const SENTENCES = [
           "rägnet"
         ],
         [
-          "C",
-          "sit"
+          "A",
+          "sit hüt am Morge"
         ],
         [
-          "D",
-          "hüt am Morge"
+          "C",
+          "scho"
         ]
       ],
       "fr_qc": [
@@ -37048,20 +37100,16 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "It"
+          "C",
+          "It has been"
         ],
         [
           "B",
-          "has been rainin"
+          "rainin"
         ],
         [
-          "C",
-          "syne"
-        ],
-        [
-          "D",
-          "this mornin"
+          "A",
+          "since this mornin"
         ]
       ],
       "en_sg": [
@@ -38124,11 +38172,7 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "Íosfaidh"
-        ],
-        [
-          "A",
-          "mé"
+          "Beidh"
         ],
         [
           "D",
@@ -38141,6 +38185,10 @@ const SENTENCES = [
         [
           "B",
           "anocht"
+        ],
+        [
+          "A",
+          "agam"
         ]
       ],
       "eu": [
@@ -38162,7 +38210,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "jango dut"
+          "izango dut"
         ]
       ],
       "hu": [
@@ -38303,8 +38351,12 @@ const SENTENCES = [
           "Bydda i'n cael"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "D",
-          "cinio"
+          "swper"
         ],
         [
           "C",
@@ -39019,19 +39071,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "isse"
+          "E",
+          "iss"
         ],
         [
-          "D",
-          "hüt Aabe"
+          "B",
+          "hüt Abig"
         ],
         [
           "C",
           "mit Fründe"
         ],
         [
-          "B",
+          "D",
           "z Nacht"
         ]
       ],
@@ -39056,18 +39108,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "will hae denner"
+          "E",
+          "will hae"
+        ],
+        [
+          "D",
+          "dinner"
         ],
         [
           "C",
           "wi freends"
         ],
         [
-          "D",
+          "B",
           "the nicht"
         ]
       ],
@@ -40211,22 +40267,22 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
-        ],
-        [
-          "B",
-          "teanga"
-        ],
-        [
-          "C",
-          "nua"
+          "mé"
         ],
         [
           "D",
+          "teanga"
+        ],
+        [
+          "B",
+          "nua"
+        ],
+        [
+          "C",
           "a fhoghlaim"
         ]
       ],
@@ -40384,6 +40440,10 @@ const SENTENCES = [
         [
           "E",
           "Rydw i eisiau"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "D",
@@ -41098,19 +41158,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "E",
           "wött"
         ],
         [
-          "C",
+          "B",
           "e neui"
         ],
         [
-          "D",
+          "C",
           "Sprach"
         ],
         [
-          "B",
+          "D",
           "lerne"
         ]
       ],
@@ -41139,18 +41199,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "want tae learn"
-        ],
-        [
-          "C",
-          "a new"
+          "E",
+          "want tae"
         ],
         [
           "D",
+          "learn"
+        ],
+        [
+          "B",
+          "a new"
+        ],
+        [
+          "C",
           "leid"
         ]
       ],
@@ -42114,26 +42178,26 @@ const SENTENCES = [
           "Tá"
         ],
         [
-          "C",
-          "an t-ospidéal"
+          "A",
+          "an leabharlann"
         ],
         [
           "B",
           "in aice leis"
         ],
         [
-          "A",
-          "an leabharlann"
+          "C",
+          "an ospidéal"
         ]
       ],
       "eu": [
         [
-          "C",
-          "Ospitalea"
+          "A",
+          "Liburutegia"
         ],
         [
-          "A",
-          "liburutegiaren"
+          "C",
+          "ospitalearen"
         ],
         [
           "B",
@@ -42251,19 +42315,19 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Mae"
+          "Mae'r"
         ],
         [
           "A",
-          "y llyfrgell"
+          "llyfrgell"
         ],
         [
           "B",
-          "drws nesaf i"
+          "drws nesaf i'r"
         ],
         [
           "C",
-          "'r ysbyty"
+          "ysbyty"
         ]
       ],
       "en_yk": [
@@ -42854,15 +42918,15 @@ const SENTENCES = [
           "D Bibliothek"
         ],
         [
-          "B",
+          "D",
           "isch"
         ],
         [
-          "C",
+          "B",
           "näbe"
         ],
         [
-          "D",
+          "C",
           "em Spital"
         ]
       ],
@@ -42890,15 +42954,15 @@ const SENTENCES = [
           "The library"
         ],
         [
-          "B",
+          "D",
           "is"
         ],
         [
-          "C",
-          "neist tae"
+          "B",
+          "next tae"
         ],
         [
-          "D",
+          "C",
           "the hospital"
         ]
       ],
@@ -43770,18 +43834,26 @@ const SENTENCES = [
           "an biachlár"
         ],
         [
+          "B",
+          "dom"
+        ],
+        [
           "A",
-          "dom le do thoil"
+          "le do thoil"
         ]
       ],
       "eu": [
         [
-          "C",
-          "Menua"
+          "A",
+          "Mesedez"
         ],
         [
-          "A",
-          "mesedez"
+          "B",
+          "niri"
+        ],
+        [
+          "C",
+          "menua"
         ],
         [
           "D",
@@ -43898,8 +43970,12 @@ const SENTENCES = [
           "y fwydlen"
         ],
         [
+          "B",
+          "i mi"
+        ],
+        [
           "A",
-          "i mi os gwelwch yn dda"
+          "os gwelwch yn dda"
         ]
       ],
       "en_yk": [
@@ -44450,16 +44526,16 @@ const SENTENCES = [
           "Bitte"
         ],
         [
+          "D",
+          "zeiged"
+        ],
+        [
           "B",
-          "zeigend"
+          "Si mir"
         ],
         [
           "C",
-          "mir"
-        ],
-        [
-          "D",
-          "d Chartä"
+          "d Speisecharte"
         ]
       ],
       "fr_qc": [
@@ -44486,15 +44562,15 @@ const SENTENCES = [
           "Please"
         ],
         [
-          "B",
+          "D",
           "shaw"
         ],
         [
-          "C",
+          "B",
           "me"
         ],
         [
-          "D",
+          "C",
           "the menu"
         ]
       ],
@@ -45561,11 +45637,15 @@ const SENTENCES = [
           "m'athair"
         ],
         [
-          "D",
-          "i gcomhlacht"
+          "B",
+          "i"
         ],
         [
           "C",
+          "gcomhlacht"
+        ],
+        [
+          "D",
           "mór"
         ]
       ],
@@ -45575,12 +45655,16 @@ const SENTENCES = [
           "Nire aitak"
         ],
         [
-          "C",
+          "B",
           "enpresa"
         ],
         [
+          "C",
+          "handi"
+        ],
+        [
           "D",
-          "handi batean"
+          "batean"
         ],
         [
           "E",
@@ -45706,14 +45790,18 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy nhad yn"
+          "fy nhad"
         ],
         [
-          "D",
-          "gweithio mewn cwmni"
+          "B",
+          "yn gweithio mewn"
         ],
         [
           "C",
+          "cwmni"
+        ],
+        [
+          "D",
           "mawr"
         ]
       ],
@@ -46398,19 +46486,23 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Min"
+          "Min Vater"
+        ],
+        [
+          "E",
+          "schafft"
         ],
         [
           "B",
-          "Vater"
+          "bi"
         ],
         [
           "C",
-          "schaffet"
+          "ere grosse"
         ],
         [
           "D",
-          "bi ere grosse Firma"
+          "Firma"
         ]
       ],
       "fr_qc": [
@@ -46438,19 +46530,23 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
+          "Ma faither"
         ],
         [
-          "B",
-          "faither"
-        ],
-        [
-          "C",
+          "E",
           "works"
         ],
         [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "a muckle"
+        ],
+        [
           "D",
-          "at a muckle company"
+          "company"
         ]
       ],
       "en_sg": [
@@ -47534,15 +47630,15 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Mae"
+          "Mae'r"
         ],
         [
           "A",
-          "'r plant yn"
+          "plant"
         ],
         [
           "C",
-          "chwarae"
+          "yn chwarae"
         ],
         [
           "B",
@@ -48129,12 +48225,16 @@ const SENTENCES = [
           "D Chind"
         ],
         [
-          "B",
+          "C",
           "spiled"
         ],
         [
-          "C",
+          "B",
           "im Park"
+        ],
+        [
+          "D",
+          "grad"
         ]
       ],
       "fr_qc": [
@@ -48161,11 +48261,15 @@ const SENTENCES = [
           "The bairns"
         ],
         [
-          "B",
-          "are playin"
+          "D",
+          "are"
         ],
         [
           "C",
+          "playin"
+        ],
+        [
+          "B",
           "in the park"
         ]
       ],
@@ -49105,6 +49209,10 @@ const SENTENCES = [
           "Bhí mé"
         ],
         [
+          "A",
+          "mé"
+        ],
+        [
           "B",
           "i dTóiceo"
         ],
@@ -49119,16 +49227,16 @@ const SENTENCES = [
           "Ni"
         ],
         [
-          "B",
-          "Tokion"
-        ],
-        [
           "C",
           "hiru aldiz"
         ],
         [
+          "B",
+          "Tokiora"
+        ],
+        [
           "D",
-          "egon naiz"
+          "joan naiz"
         ]
       ],
       "hu": [
@@ -49245,8 +49353,12 @@ const SENTENCES = [
           "Rydw i wedi bod"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "B",
-          "yn Tokyo"
+          "i Tokyo"
         ],
         [
           "C",
@@ -49833,19 +49945,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "bi"
         ],
         [
-          "D",
-          "drüü Mol"
-        ],
-        [
           "C",
-          "z Tokyo"
+          "scho drümal"
         ],
         [
           "B",
+          "z Tokyo"
+        ],
+        [
+          "D",
           "gsi"
         ]
       ],
@@ -49870,18 +49982,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "hae been"
-        ],
-        [
-          "C",
-          "tae Tokyo"
+          "A"
         ],
         [
           "D",
+          "hae been"
+        ],
+        [
+          "B",
+          "tae Tokyo"
+        ],
+        [
+          "C",
           "three times"
         ]
       ],
@@ -50774,7 +50886,11 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "An bhféadfá"
+          "An féidir"
+        ],
+        [
+          "A",
+          "leat"
         ],
         [
           "B",
@@ -50782,21 +50898,25 @@ const SENTENCES = [
         ],
         [
           "C",
-          "a mholadh?"
+          "a mholadh"
         ]
       ],
       "eu": [
         [
+          "A",
+          "Zuk"
+        ],
+        [
           "B",
-          "Jatetxe on bat"
+          "jatetxe on bat"
         ],
         [
           "C",
-          "gomendatu"
+          "gomenda"
         ],
         [
           "D",
-          "dezakezu?"
+          "dezakezu"
         ]
       ],
       "hu": [
@@ -50890,15 +51010,19 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Allech chi"
+          "Allech"
         ],
         [
-          "B",
-          "fwyty da"
+          "A",
+          "chi"
         ],
         [
           "C",
-          "argymell?"
+          "argymell"
+        ],
+        [
+          "B",
+          "bwyty da"
         ]
       ],
       "en_yk": [
@@ -51461,19 +51585,15 @@ const SENTENCES = [
       ],
       "gsw": [
         [
+          "D",
+          "Chönted"
+        ],
+        [
           "A",
-          "Chönd"
+          "Si"
         ],
         [
           "B",
-          "Sie"
-        ],
-        [
-          "C",
-          "mir"
-        ],
-        [
-          "D",
           "es guets Restaurant"
         ],
         [
@@ -51497,11 +51617,11 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "D",
           "Could"
         ],
         [
-          "B",
+          "A",
           "ye"
         ],
         [
@@ -51509,7 +51629,7 @@ const SENTENCES = [
           "recommend"
         ],
         [
-          "D",
+          "B",
           "a guid restaurant"
         ]
       ],
@@ -52458,7 +52578,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mo scáth fearthainne"
+          "mo scáth báistí"
         ],
         [
           "D",
@@ -52471,16 +52591,16 @@ const SENTENCES = [
           "Nik"
         ],
         [
-          "B",
-          "nire aterki"
-        ],
-        [
           "D",
           "trenean"
         ],
         [
+          "B",
+          "nire aterki"
+        ],
+        [
           "C",
-          "ahaztu dut"
+          "ahaztu nuen"
         ]
       ],
       "hu": [
@@ -53197,11 +53317,11 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
+          "C",
+          "ha"
         ],
         [
-          "C",
+          "B",
           "min Rägeschirm"
         ],
         [
@@ -53209,7 +53329,7 @@ const SENTENCES = [
           "im Zug"
         ],
         [
-          "B",
+          "C",
           "vergässe"
         ]
       ],
@@ -53234,14 +53354,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "left"
+          "A"
         ],
         [
           "C",
+          "forgot"
+        ],
+        [
+          "B",
           "ma umbrella"
         ],
         [
@@ -54364,7 +54484,7 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "C",
+          "E",
           "Is féidir"
         ],
         [
@@ -54376,8 +54496,12 @@ const SENTENCES = [
           "an pianó"
         ],
         [
+          "C",
+          "a sheinm"
+        ],
+        [
           "D",
-          "a sheinm go han-mhaith"
+          "go han-mhaith"
         ]
       ],
       "eu": [
@@ -54386,20 +54510,20 @@ const SENTENCES = [
           "Berak"
         ],
         [
+          "D",
+          "oso ondo"
+        ],
+        [
           "B",
           "pianoa"
         ],
         [
-          "D",
-          "oso ongi"
-        ],
-        [
           "C",
-          "jo"
+          "jotzen"
         ],
         [
           "E",
-          "dezake"
+          "jakin du"
         ]
       ],
       "hu": [
@@ -54536,7 +54660,7 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "C",
+          "E",
           "Gall"
         ],
         [
@@ -54544,12 +54668,16 @@ const SENTENCES = [
           "hi"
         ],
         [
+          "C",
+          "chwarae'r"
+        ],
+        [
           "B",
-          "chwarae'r piano yn"
+          "piano"
         ],
         [
           "D",
-          "dda iawn"
+          "yn dda iawn"
         ]
       ],
       "en_yk": [
@@ -55252,20 +55380,20 @@ const SENTENCES = [
           "Si"
         ],
         [
-          "B",
+          "E",
           "chan"
         ],
         [
-          "C",
-          "Klavier"
-        ],
-        [
           "B",
-          "spile"
+          "Klavier"
         ],
         [
           "D",
           "sehr guet"
+        ],
+        [
+          "C",
+          "spile"
         ]
       ],
       "fr_qc": [
@@ -55296,11 +55424,15 @@ const SENTENCES = [
           "She"
         ],
         [
-          "B",
-          "can play"
+          "E",
+          "can"
         ],
         [
           "C",
+          "play"
+        ],
+        [
+          "B",
           "the piano"
         ],
         [
@@ -56080,7 +56212,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "datorren astelehenean"
+          "datorren astelehena"
         ],
         [
           "C",
@@ -56174,11 +56306,11 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Mae"
+          "Mae'r"
         ],
         [
           "A",
-          "'r arholiad"
+          "arholiad"
         ],
         [
           "B",
@@ -56633,12 +56765,12 @@ const SENTENCES = [
           "D Prüefig"
         ],
         [
-          "B",
+          "C",
           "isch"
         ],
         [
-          "C",
-          "nöchste Mäntig"
+          "B",
+          "nöchschte Mäntig"
         ]
       ],
       "fr_qc": [
@@ -56661,12 +56793,12 @@ const SENTENCES = [
           "The exam"
         ],
         [
-          "B",
+          "C",
           "is"
         ],
         [
-          "C",
-          "neist Monday"
+          "B",
+          "next Monday"
         ]
       ],
       "en_sg": [
@@ -57701,19 +57833,23 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
         ],
         [
           "B",
           "sushi"
         ],
         [
+          "C",
+          "a ithe"
+        ],
+        [
           "D",
-          "a ithe don lón"
+          "don lón"
         ]
       ],
       "eu": [
@@ -57723,14 +57859,14 @@ const SENTENCES = [
         ],
         [
           "D",
-          "bazkaltzeko"
+          "bazkarirako"
         ],
         [
           "B",
           "sushia"
         ],
         [
-          "E",
+          "C",
           "jan nahi dut"
         ]
       ],
@@ -57860,8 +57996,16 @@ const SENTENCES = [
           "Rydw i eisiau"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
+          "C",
+          "bwyta"
+        ],
+        [
           "B",
-          "bwyta swshi"
+          "swshi"
         ],
         [
           "D",
@@ -58536,19 +58680,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "E",
           "wött"
         ],
         [
-          "C",
-          "Sushi"
-        ],
-        [
           "D",
-          "zum Zmittag"
+          "zum Mittagässe"
         ],
         [
           "B",
+          "Sushi"
+        ],
+        [
+          "C",
           "ässe"
         ]
       ],
@@ -58577,14 +58721,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "want tae eat"
+          "E",
+          "want tae"
         ],
         [
           "C",
+          "eat"
+        ],
+        [
+          "B",
           "sushi"
         ],
         [
@@ -59649,15 +59797,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "ystafell y gwesty yn"
+          "ystafell y gwesty"
         ],
         [
           "C",
-          "lân"
+          "yn"
         ],
         [
           "D",
-          "iawn"
+          "lân iawn"
         ]
       ],
       "en_yk": [
@@ -60232,16 +60380,16 @@ const SENTENCES = [
           "S Hotelzimmer"
         ],
         [
+          "B",
+          "isch gsi"
+        ],
+        [
           "C",
-          "isch"
+          "sehr"
         ],
         [
           "D",
-          "sehr suuber"
-        ],
-        [
-          "C",
-          "gsi"
+          "suuber"
         ]
       ],
       "fr_qc": [
@@ -60265,19 +60413,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "The hotel"
+          "The hotel room"
         ],
         [
           "B",
-          "room"
+          "wis"
         ],
         [
           "C",
-          "was"
+          "gey"
         ],
         [
           "D",
-          "gey clean"
+          "clean"
         ]
       ],
       "en_sg": [
@@ -61033,16 +61181,16 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "A",
-          "Le do thoil"
-        ],
-        [
           "C",
-          "labhair"
+          "Labhair"
         ],
         [
           "B",
           "níos moille"
+        ],
+        [
+          "A",
+          "le do thoil"
         ]
       ],
       "eu": [
@@ -61141,16 +61289,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "A",
-          "Os gwelwch yn dda"
-        ],
-        [
           "C",
-          "siaradwch"
+          "Siaradwch"
         ],
         [
           "B",
           "yn arafach"
+        ],
+        [
+          "A",
+          "os gwelwch yn dda"
         ]
       ],
       "en_yk": [
@@ -61613,12 +61761,16 @@ const SENTENCES = [
           "Bitte"
         ],
         [
-          "B",
+          "C",
           "reded"
         ],
         [
-          "C",
-          "chli langsamer"
+          "A",
+          "Si"
+        ],
+        [
+          "B",
+          "langsamer"
         ]
       ],
       "fr_qc": [
@@ -61641,11 +61793,11 @@ const SENTENCES = [
           "Please"
         ],
         [
-          "B",
+          "C",
           "speak"
         ],
         [
-          "C",
+          "B",
           "mair slowly"
         ]
       ],
@@ -62391,7 +62543,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "mo dheartháir"
+          "mo dheartháir mór"
         ],
         [
           "C",
@@ -62401,11 +62553,11 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Nire anaia"
+          "Nire anaia nagusia"
         ],
         [
           "C",
-          "joan den hilean"
+          "aurreko hilean"
         ],
         [
           "B",
@@ -62521,7 +62673,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy mrawd"
+          "fy mrawd hŷn"
         ],
         [
           "C",
@@ -62979,15 +63131,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Min"
+          "Min älter Brüeder"
         ],
         [
           "B",
-          "grosse Brüeder"
+          "hät"
         ],
         [
           "C",
-          "het ghürate letzte Monet"
+          "letschte Monet"
+        ],
+        [
+          "B",
+          "ghürootet"
         ]
       ],
       "fr_qc": [
@@ -63007,15 +63163,15 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
+          "Ma aulder brither"
         ],
         [
           "B",
-          "aulder brither"
+          "got mairrit"
         ],
         [
           "C",
-          "got mairrit last month"
+          "last month"
         ]
       ],
       "en_sg": [
@@ -63944,16 +64100,16 @@ const SENTENCES = [
       ],
       "eu": [
         [
+          "C",
+          "Geltokian"
+        ],
+        [
           "A",
-          "Jende"
+          "jende"
         ],
         [
           "B",
           "asko"
-        ],
-        [
-          "C",
-          "geltokian"
         ],
         [
           "D",
@@ -64670,20 +64826,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
-          "Es het"
-        ],
-        [
-          "B",
-          "vill"
-        ],
-        [
           "C",
-          "Lüüt"
+          "Am Bahnhof"
         ],
         [
           "D",
-          "am Bahnhof"
+          "gits"
+        ],
+        [
+          "A",
+          "vill"
+        ],
+        [
+          "B",
+          "Lüüt"
         ]
       ],
       "fr_qc": [
@@ -64706,19 +64862,19 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "D",
           "There are"
         ],
         [
-          "B",
+          "A",
           "mony"
         ],
         [
-          "C",
-          "fowk"
+          "B",
+          "folk"
         ],
         [
-          "D",
+          "C",
           "at the station"
         ]
       ],
@@ -65853,15 +66009,15 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "E",
+          "C",
           "bronntanas"
         ],
         [
-          "C",
+          "D",
           "breithlae"
         ],
         [
-          "D",
+          "E",
           "a cheannach"
         ]
       ],
@@ -65876,7 +66032,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "opari bat"
+          "oparria"
         ],
         [
           "E",
@@ -66040,11 +66196,11 @@ const SENTENCES = [
       "cy": [
         [
           "B",
-          "Rhaid"
+          "Mae angen i"
         ],
         [
           "A",
-          "i mi"
+          "mi"
         ],
         [
           "E",
@@ -66052,7 +66208,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "anrheg pen-blwydd"
+          "anrheg"
+        ],
+        [
+          "D",
+          "pen-blwydd"
         ]
       ],
       "en_yk": [
@@ -66738,15 +66898,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mues"
+          "muess"
         ],
         [
           "C",
           "es Geburtstagsgeschänk"
         ],
         [
-          "B",
-          "kaufe"
+          "E",
+          "chaufe"
         ]
       ],
       "fr_qc": [
@@ -66774,19 +66934,27 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
           "B",
-          "hae tae buy"
+          "need tae"
         ],
         [
-          "C",
-          "a birthday"
+          "E",
+          "buy"
         ],
         [
           "D",
-          "praisent"
+          "a"
+        ],
+        [
+          "C",
+          "birthday"
+        ],
+        [
+          "D",
+          "present"
         ]
       ],
       "en_sg": [
@@ -67578,16 +67746,20 @@ const SENTENCES = [
       ],
       "ga": [
         [
+          "C",
+          "Tá"
+        ],
+        [
           "B",
-          "Tá an luí gréine"
+          "an ghrian ag dul faoi"
         ],
         [
           "A",
-          "as seo"
+          "ón áit seo"
         ],
         [
           "C",
-          "álainn"
+          "go hálainn"
         ]
       ],
       "eu": [
@@ -67597,11 +67769,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ilunabarrak"
+          "ilunabarreko eguzkia"
         ],
         [
           "C",
-          "ederrak dira"
+          "ederra da"
         ]
       ],
       "hu": [
@@ -67696,16 +67868,20 @@ const SENTENCES = [
       ],
       "cy": [
         [
+          "C",
+          "Mae"
+        ],
+        [
           "B",
-          "Mae 'r machlud"
+          "machlud haul"
         ],
         [
           "A",
-          "o fan hyn yn"
+          "o fan hyn"
         ],
         [
           "C",
-          "hardd"
+          "yn brydferth"
         ]
       ],
       "en_yk": [
@@ -68158,16 +68334,16 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "B",
           "De Sunneundergang"
         ],
         [
-          "B",
+          "A",
           "vo da"
         ],
         [
           "C",
-          "isch schön"
+          "isch wunderschön"
         ]
       ],
       "fr_qc": [
@@ -68186,11 +68362,11 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "B",
           "The sunset"
         ],
         [
-          "B",
+          "A",
           "frae here"
         ],
         [
@@ -69288,7 +69464,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Ni"
+          "Nik"
         ],
         [
           "C",
@@ -69452,11 +69628,11 @@ const SENTENCES = [
       "cy": [
         [
           "E",
-          "Rhaid"
+          "Mae'n rhaid i"
         ],
         [
           "A",
-          "i mi"
+          "mi"
         ],
         [
           "D",
@@ -70141,20 +70317,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "mues"
-        ],
-        [
-          "D",
-          "morn"
+          "E",
+          "muess"
         ],
         [
           "C",
-          "früe"
+          "morn"
         ],
         [
           "B",
-          "ufstoh"
+          "früe"
+        ],
+        [
+          "D",
+          "ufstah"
         ]
       ],
       "fr_qc": [
@@ -70182,18 +70358,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "hae tae wake up"
-        ],
-        [
-          "C",
-          "early"
+          "E",
+          "hae tae"
         ],
         [
           "D",
+          "wake up"
+        ],
+        [
+          "B",
+          "early"
+        ],
+        [
+          "C",
           "the morn"
         ]
       ],
@@ -71309,7 +71489,11 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "An bhfuil a fhios agat"
+          "An bhfuil a fhios"
+        ],
+        [
+          "A",
+          "agat"
         ],
         [
           "C",
@@ -71321,13 +71505,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "an oifig phoist?"
+          "an oifig phoist"
         ]
       ],
       "eu": [
         [
+          "A",
+          "Zuk"
+        ],
+        [
           "B",
-          "Posta bulegoa"
+          "posta bulegoa"
         ],
         [
           "C",
@@ -71339,7 +71527,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "badakizu?"
+          "badakizu"
         ]
       ],
       "hu": [
@@ -71479,7 +71667,15 @@ const SENTENCES = [
       "cy": [
         [
           "E",
-          "Ydych chi'n gwybod"
+          "Ydych"
+        ],
+        [
+          "A",
+          "chi'n"
+        ],
+        [
+          "E",
+          "gwybod"
         ],
         [
           "C",
@@ -71487,11 +71683,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "mae"
+          "mae'r"
         ],
         [
           "B",
-          "'r swyddfa bost?"
+          "swyddfa bost"
         ]
       ],
       "en_yk": [
@@ -72160,15 +72356,19 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
-          "Wüssed Sie"
+          "E",
+          "Wüssed"
         ],
         [
-          "B",
-          "wo"
+          "A",
+          "Si"
         ],
         [
           "C",
+          "wo"
+        ],
+        [
+          "B",
           "d Post"
         ],
         [
@@ -72196,15 +72396,23 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "Dae ye ken"
+          "E",
+          "Dae"
         ],
         [
-          "B",
-          "whaur"
+          "A",
+          "ye"
+        ],
+        [
+          "E",
+          "ken"
         ],
         [
           "C",
+          "whaur"
+        ],
+        [
+          "B",
           "the post office"
         ],
         [
@@ -73379,20 +73587,20 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "E",
-          "Tá"
-        ],
-        [
           "A",
-          "mé"
+          "Tá mé ag"
         ],
         [
-          "D",
-          "ag léamh leabhair"
+          "E",
+          "léamh"
         ],
         [
           "C",
-          "spéisiúil"
+          "leabhar"
+        ],
+        [
+          "D",
+          "suimiúil"
         ],
         [
           "B",
@@ -73402,7 +73610,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Ni"
+          "Nik"
         ],
         [
           "B",
@@ -73410,15 +73618,15 @@ const SENTENCES = [
         ],
         [
           "C",
-          "liburu interesgarri bat"
+          "interesgarria den"
         ],
         [
           "D",
-          "irakurtzen"
+          "liburu bat"
         ],
         [
           "E",
-          "ari naiz"
+          "irakurtzen ari naiz"
         ]
       ],
       "hu": [
@@ -73573,15 +73781,19 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "E",
+          "A",
           "Rwy'n"
         ],
         [
-          "D",
-          "darllen llyfr"
+          "E",
+          "darllen"
         ],
         [
           "C",
+          "llyfr"
+        ],
+        [
+          "D",
           "diddorol"
         ],
         [
@@ -74299,16 +74511,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "E",
           "lise"
         ],
         [
-          "E",
+          "B",
           "grad"
         ],
         [
+          "D",
+          "es"
+        ],
+        [
           "C",
-          "es intressants"
+          "intressants"
         ],
         [
           "D",
@@ -74340,23 +74556,27 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A'm"
         ],
         [
-          "B",
-          "am readin"
+          "E",
+          "readin"
+        ],
+        [
+          "D",
+          "an"
         ],
         [
           "C",
-          "an interestin"
+          "interestin"
         ],
         [
           "D",
           "buik"
         ],
         [
-          "E",
-          "the noo"
+          "B",
+          "noo"
         ]
       ],
       "en_sg": [
@@ -75554,16 +75774,16 @@ const SENTENCES = [
           "sí"
         ],
         [
+          "B",
+          "i gcónaí"
+        ],
+        [
           "D",
           "gúna"
         ],
         [
           "E",
           "dearg"
-        ],
-        [
-          "B",
-          "i gcónaí"
         ]
       ],
       "eu": [
@@ -75581,7 +75801,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "gorria"
+          "gorri bat"
         ],
         [
           "C",
@@ -75753,11 +75973,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bob amser yn"
+          "bob amser"
+        ],
+        [
+          "C",
+          "yn gwisgo"
         ],
         [
           "D",
-          "gwisgo ffrog"
+          "ffrog"
         ],
         [
           "E",
@@ -76479,7 +76703,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "es roots Chleid"
+          "es rots"
+        ],
+        [
+          "E",
+          "Chleid"
         ]
       ],
       "fr_qc": [
@@ -76515,11 +76743,19 @@ const SENTENCES = [
         ],
         [
           "C",
-          "weirs"
+          "wears"
+        ],
+        [
+          "E",
+          "a"
         ],
         [
           "D",
-          "a reid dress"
+          "red"
+        ],
+        [
+          "E",
+          "dress"
         ]
       ],
       "en_sg": [
@@ -77311,12 +77547,20 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "A",
-          "Tá bia an bhialainne seo"
+          "C",
+          "Tá"
         ],
         [
           "B",
-          "blasta"
+          "an bia"
+        ],
+        [
+          "A",
+          "sa bhialann seo"
+        ],
+        [
+          "C",
+          "go blasta"
         ]
       ],
       "eu": [
@@ -77425,12 +77669,20 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "A",
-          "Mae bwyd y bwyty hwn yn"
+          "C",
+          "Mae"
         ],
         [
           "B",
-          "flasus"
+          "bwyd"
+        ],
+        [
+          "A",
+          "y bwyty hwn"
+        ],
+        [
+          "C",
+          "yn flasus"
         ]
       ],
       "en_yk": [
@@ -77883,11 +78135,11 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "B",
           "S Ässe"
         ],
         [
-          "B",
+          "A",
           "i dem Restaurant"
         ],
         [
@@ -77911,11 +78163,11 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "The scran"
+          "B",
+          "The food"
         ],
         [
-          "B",
+          "A",
           "at this restaurant"
         ],
         [
@@ -78832,19 +79084,19 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
-        ],
-        [
-          "B",
-          "an domhan"
+          "mé"
         ],
         [
           "C",
-          "a thaisteal"
+          "taisteal"
+        ],
+        [
+          "B",
+          "ar fud an domhain"
         ]
       ],
       "eu": [
@@ -78854,7 +79106,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "munduan zehar"
+          "mundu osoan zehar"
         ],
         [
           "C",
@@ -78993,8 +79245,16 @@ const SENTENCES = [
           "Rydw i eisiau"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
+          "C",
+          "teithio"
+        ],
+        [
           "B",
-          "teithio o gwmpas y byd"
+          "o gwmpas y byd"
         ]
       ],
       "en_yk": [
@@ -79555,15 +79815,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "wött"
         ],
         [
-          "C",
+          "B",
           "um d Wält"
         ],
         [
-          "B",
+          "C",
           "reise"
         ]
       ],
@@ -79588,14 +79848,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "want tae travel"
+          "D",
+          "want tae"
         ],
         [
           "C",
+          "travel"
+        ],
+        [
+          "B",
           "aroond the warld"
         ]
       ],
@@ -80515,16 +80779,16 @@ const SENTENCES = [
       ],
       "ga": [
         [
+          "D",
+          "Éiríonn sé"
+        ],
+        [
           "C",
-          "Éiríonn"
+          "fuar"
         ],
         [
           "A",
-          "an tír seo"
-        ],
-        [
-          "D",
-          "fuar"
+          "sa tír seo"
         ],
         [
           "B",
@@ -80677,12 +80941,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "C",
+          "D",
           "Mae'n"
         ],
         [
+          "C",
+          "oer"
+        ],
+        [
           "A",
-          "mynd yn oer yn y wlad hon"
+          "yn y wlad hon"
         ],
         [
           "B",
@@ -81251,16 +81519,16 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "D",
+          "A",
           "I dem Land"
         ],
         [
-          "B",
-          "isch"
+          "D",
+          "wirds"
         ],
         [
-          "A",
-          "de Winter"
+          "B",
+          "im Winter"
         ],
         [
           "C",
@@ -81288,19 +81556,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Winters"
+          "In this country"
         ],
         [
-          "B",
-          "are"
+          "D",
+          "it gets"
         ],
         [
           "C",
           "cauld"
         ],
         [
-          "D",
-          "in this kintra"
+          "B",
+          "in winter"
         ]
       ],
       "en_sg": [
@@ -82423,15 +82691,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "le cara"
+          "le mo chara"
         ],
         [
           "C",
-          "ar an bhfón"
+          "ar an nguthán"
         ],
         [
           "D",
-          "ar feadh uair an chloig"
+          "ar feadh uaire"
         ]
       ],
       "eu": [
@@ -82440,16 +82708,16 @@ const SENTENCES = [
           "Nik"
         ],
         [
-          "B",
-          "lagun batekin"
+          "D",
+          "ordubetez"
         ],
         [
           "C",
           "telefonoz"
         ],
         [
-          "D",
-          "ordu batez"
+          "B",
+          "nire lagunarekin"
         ],
         [
           "E",
@@ -82621,7 +82889,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "â'm ffrind"
+          "â fy ffrind"
         ],
         [
           "C",
@@ -83322,24 +83590,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
+          "E",
+          "ha"
         ],
         [
-          "C",
-          "am Telefon"
+          "B",
+          "mit mim Fründ"
         ],
         [
           "D",
-          "mit emene Fründ"
-        ],
-        [
-          "E",
           "e Stund"
         ],
         [
-          "B",
-          "gredt"
+          "E",
+          "telefoniert"
         ]
       ],
       "fr_qc": [
@@ -83367,11 +83631,15 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
+        ],
+        [
+          "E",
+          "talked"
         ],
         [
           "B",
-          "spoke"
+          "wi ma freend"
         ],
         [
           "C",
@@ -83379,11 +83647,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "wi a freend"
-        ],
-        [
-          "E",
-          "for an oor"
+          "for an hour"
         ]
       ],
       "en_sg": [
@@ -84368,12 +84632,12 @@ const SENTENCES = [
           "Irakasleak"
         ],
         [
-          "B",
-          "arazoa"
-        ],
-        [
           "C",
           "argi"
+        ],
+        [
+          "B",
+          "arazoa"
         ],
         [
           "D",
@@ -84513,7 +84777,7 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Esboniodd"
+          "Eglurodd"
         ],
         [
           "A",
@@ -85102,20 +85366,16 @@ const SENTENCES = [
           "De Lehrer"
         ],
         [
-          "B",
-          "het"
+          "D",
+          "hät erklärt"
         ],
         [
-          "C",
+          "B",
           "s Problem"
         ],
         [
-          "D",
-          "verständlich"
-        ],
-        [
-          "B",
-          "erklärt"
+          "C",
+          "dütlich"
         ]
       ],
       "fr_qc": [
@@ -85142,15 +85402,15 @@ const SENTENCES = [
           "The teacher"
         ],
         [
-          "B",
+          "D",
           "explained"
         ],
         [
-          "C",
+          "B",
           "the problem"
         ],
         [
-          "D",
+          "C",
           "clearly"
         ]
       ],
@@ -86019,19 +86279,19 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
+        ],
+        [
+          "C",
+          "féachaint ar"
         ],
         [
           "B",
           "an scannán sin"
-        ],
-        [
-          "D",
-          "a fheiceáil"
         ]
       ],
       "eu": [
@@ -86041,11 +86301,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "film hori"
+          "film hura"
+        ],
+        [
+          "C",
+          "ikusi"
         ],
         [
           "D",
-          "ikusi nahi dut"
+          "nahi dut"
         ]
       ],
       "hu": [
@@ -86168,8 +86432,16 @@ const SENTENCES = [
           "Rydw i eisiau"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
+          "C",
+          "gwylio"
+        ],
+        [
           "B",
-          "gweld y ffilm honno"
+          "y ffilm honno"
         ]
       ],
       "en_yk": [
@@ -86698,19 +86970,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "wött"
         ],
         [
-          "C",
-          "dä"
-        ],
-        [
-          "D",
-          "Film"
-        ],
-        [
           "B",
+          "de Film"
+        ],
+        [
+          "C",
           "luege"
         ]
       ],
@@ -86735,19 +87003,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "want tae see"
-        ],
-        [
-          "C",
-          "yon"
+          "A"
         ],
         [
           "D",
-          "film"
+          "want tae"
+        ],
+        [
+          "C",
+          "watch"
+        ],
+        [
+          "B",
+          "that film"
         ]
       ],
       "en_sg": [
@@ -87650,12 +87918,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "A",
-          "Le do thoil"
-        ],
-        [
           "D",
-          "inis"
+          "Inis"
         ],
         [
           "B",
@@ -87664,6 +87928,10 @@ const SENTENCES = [
         [
           "C",
           "an bealach go dtí an t-aerfort"
+        ],
+        [
+          "A",
+          "le do thoil"
         ]
       ],
       "eu": [
@@ -87812,20 +88080,20 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "A",
-          "Os gwelwch yn dda"
-        ],
-        [
           "D",
-          "dywedwch"
+          "Dywedwch wrth"
         ],
         [
           "B",
-          "wrthyf"
+          "i"
         ],
         [
           "C",
           "y ffordd i'r maes awyr"
+        ],
+        [
+          "A",
+          "os gwelwch yn dda"
         ]
       ],
       "en_yk": [
@@ -88378,16 +88646,16 @@ const SENTENCES = [
           "Bitte"
         ],
         [
+          "D",
+          "säged"
+        ],
+        [
           "B",
-          "säged mir"
+          "Si mir"
         ],
         [
           "C",
-          "de Wäg"
-        ],
-        [
-          "D",
-          "zum Flughafe"
+          "de Wäg zum Flughafe"
         ]
       ],
       "fr_qc": [
@@ -88410,16 +88678,16 @@ const SENTENCES = [
           "Please"
         ],
         [
+          "D",
+          "tell"
+        ],
+        [
           "B",
-          "tell me"
+          "me"
         ],
         [
           "C",
-          "the wey"
-        ],
-        [
-          "D",
-          "tae the airport"
+          "the wey tae the airport"
         ]
       ],
       "en_sg": [
@@ -89263,25 +89531,29 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Is maith"
+          "Is maith le"
         ],
         [
           "A",
-          "le mo mhadra"
+          "mo mhadra"
         ],
         [
           "C",
-          "siúlóidí"
+          "dul ag siúl"
         ]
       ],
       "eu": [
         [
           "A",
-          "Nire txakurrari"
+          "Nire txakurrak"
+        ],
+        [
+          "B",
+          "paseatzen"
         ],
         [
           "C",
-          "paseatzen"
+          "joatea"
         ],
         [
           "D",
@@ -89401,11 +89673,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy nghi yn hoffi"
+          "fy nghi"
         ],
         [
           "C",
-          "mynd am dro"
+          "yn hoffi mynd am"
+        ],
+        [
+          "B",
+          "dro"
         ]
       ],
       "en_yk": [
@@ -89951,19 +90227,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Min"
-        ],
-        [
-          "B",
-          "Hund"
+          "Min Hund"
         ],
         [
           "C",
-          "gaht gärn"
+          "gaht"
         ],
         [
           "D",
-          "go spaziere"
+          "gern"
+        ],
+        [
+          "C",
+          "spaziere"
         ]
       ],
       "fr_qc": [
@@ -89983,18 +90259,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "dug"
-        ],
-        [
-          "C",
-          "likes"
+          "Ma dug"
         ],
         [
           "D",
+          "likes"
+        ],
+        [
+          "C",
+          "tae gang for"
+        ],
+        [
+          "B",
           "walks"
         ]
       ],
@@ -90943,7 +91219,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "Mamó"
+          "mo mhamó"
         ],
         [
           "B",
@@ -90957,19 +91233,19 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Amonak"
+          "Nire amonak"
         ],
         [
           "B",
-          "istorio interesgarriak"
+          "istorio"
         ],
         [
           "C",
-          "kontatzen"
+          "interesgarriak"
         ],
         [
           "D",
-          "ditu"
+          "kontatzen ditu"
         ]
       ],
       "hu": [
@@ -91105,7 +91381,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "Mam-gu yn adrodd"
+          "fy mam-gu"
+        ],
+        [
+          "D",
+          "yn adrodd"
         ],
         [
           "B",
@@ -91683,19 +91963,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Mini"
-        ],
-        [
-          "B",
-          "Grossmueter"
-        ],
-        [
-          "C",
-          "verzellt"
+          "Mini Grossmueter"
         ],
         [
           "D",
-          "intressanti Gschichte"
+          "verzellt"
+        ],
+        [
+          "B",
+          "intressanti"
+        ],
+        [
+          "C",
+          "Gschichte"
         ]
       ],
       "fr_qc": [
@@ -91719,19 +91999,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "granny"
-        ],
-        [
-          "C",
-          "tells"
+          "Ma grannie"
         ],
         [
           "D",
-          "interestin stories"
+          "tells"
+        ],
+        [
+          "B",
+          "interestin"
+        ],
+        [
+          "C",
+          "stories"
         ]
       ],
       "en_sg": [
@@ -92684,16 +92964,16 @@ const SENTENCES = [
           "Nik"
         ],
         [
-          "B",
-          "nire diru-zorroa"
-        ],
-        [
           "D",
           "merkatuan"
         ],
         [
+          "B",
+          "nire zorroa"
+        ],
+        [
           "C",
-          "galdu dut"
+          "galdu nuen"
         ]
       ],
       "hu": [
@@ -93414,19 +93694,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
+          "C",
+          "ha"
         ],
         [
-          "C",
-          "mis Portmonee"
+          "B",
+          "min Geldbüütel"
         ],
         [
           "D",
-          "am Märt"
+          "uf em Märt"
         ],
         [
-          "B",
+          "C",
           "verlore"
         ]
       ],
@@ -93451,14 +93731,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "lost"
+          "A"
         ],
         [
           "C",
+          "lost"
+        ],
+        [
+          "B",
           "ma wallet"
         ],
         [
@@ -94354,15 +94634,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'r blodau"
+          "blodau"
         ],
         [
           "A",
-          "yn yr ardd yn"
+          "yr ardd"
         ],
         [
           "C",
-          "blodeuo"
+          "yn blodeuo"
         ]
       ],
       "en_yk": [
@@ -94815,16 +95095,16 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "B",
           "D Blueme"
         ],
         [
-          "B",
+          "A",
           "im Garte"
         ],
         [
           "C",
-          "blüeied"
+          "blüehed"
         ]
       ],
       "fr_qc": [
@@ -94843,11 +95123,11 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "B",
           "The flouers"
         ],
         [
-          "B",
+          "A",
           "in the gairden"
         ],
         [
@@ -95775,11 +96055,11 @@ const SENTENCES = [
           "muid"
         ],
         [
-          "B",
+          "C",
           "an comhshaol"
         ],
         [
-          "C",
+          "B",
           "a chosaint"
         ]
       ],
@@ -95926,15 +96206,19 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Rhaid"
+          "Rhaid i"
         ],
         [
           "A",
-          "i ni"
+          "ni"
+        ],
+        [
+          "C",
+          "amddiffyn"
         ],
         [
           "B",
-          "amddiffyn yr amgylchedd"
+          "yr amgylchedd"
         ]
       ],
       "en_yk": [
@@ -96507,11 +96791,11 @@ const SENTENCES = [
           "Mir"
         ],
         [
-          "B",
+          "D",
           "müend"
         ],
         [
-          "D",
+          "B",
           "d Umwält"
         ],
         [
@@ -96543,7 +96827,7 @@ const SENTENCES = [
           "We"
         ],
         [
-          "B",
+          "D",
           "maun"
         ],
         [
@@ -96551,7 +96835,7 @@ const SENTENCES = [
           "protect"
         ],
         [
-          "D",
+          "B",
           "the environment"
         ]
       ],
@@ -97495,6 +97779,10 @@ const SENTENCES = [
           "Ólaim"
         ],
         [
+          "A",
+          "mé"
+        ],
+        [
           "B",
           "dhá chupán caife"
         ],
@@ -97649,8 +97937,12 @@ const SENTENCES = [
           "Rwy'n yfed"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "B",
-          "dwy baned o goffi"
+          "dau baned o goffi"
         ],
         [
           "D",
@@ -98235,7 +98527,7 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "C",
           "trinke"
         ],
         [
@@ -98243,8 +98535,8 @@ const SENTENCES = [
           "jede Tag"
         ],
         [
-          "C",
-          "zwei Tasse Kafi"
+          "B",
+          "zwöi Tasse Kafi"
         ]
       ],
       "fr_qc": [
@@ -98268,14 +98560,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "drink"
+          "A"
         ],
         [
           "C",
+          "drink"
+        ],
+        [
+          "B",
           "twa cups o coffee"
         ],
         [
@@ -99224,7 +99516,7 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Tosóidh"
+          "Tosaíonn"
         ],
         [
           "A",
@@ -99232,7 +99524,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ar a 8"
+          "ar a 8 a chlog"
         ],
         [
           "C",
@@ -99242,7 +99534,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Kontzertua"
+          "Kontzertuak"
         ],
         [
           "C",
@@ -99254,7 +99546,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "hasiko da"
+          "hasten da"
         ]
       ],
       "hu": [
@@ -99390,11 +99682,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "gyngerdd yn dechrau"
+          "cyngerdd"
+        ],
+        [
+          "D",
+          "yn dechrau"
         ],
         [
           "B",
-          "am 8"
+          "am 8 o'r gloch"
         ],
         [
           "C",
@@ -99972,23 +100268,19 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "S Konzert"
+          "S Konzärt"
         ],
         [
-          "B",
+          "D",
           "fangt"
         ],
         [
           "C",
-          "um achti"
-        ],
-        [
-          "D",
-          "hüt Aabe"
+          "hüt Abig"
         ],
         [
           "B",
-          "aa"
+          "um 8 Uhr aa"
         ]
       ],
       "fr_qc": [
@@ -100015,15 +100307,15 @@ const SENTENCES = [
           "The concert"
         ],
         [
+          "D",
+          "starts"
+        ],
+        [
           "B",
-          "stairts"
+          "at 8 o'clock"
         ],
         [
           "C",
-          "at 8"
-        ],
-        [
-          "D",
           "the nicht"
         ]
       ],
@@ -100994,7 +101286,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ondo"
+          "jarioz"
         ],
         [
           "D",
@@ -101134,7 +101426,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "hi'n siarad"
+          "hi'n"
+        ],
+        [
+          "D",
+          "siarad"
         ],
         [
           "B",
@@ -101719,15 +102015,15 @@ const SENTENCES = [
           "Si"
         ],
         [
+          "D",
+          "redt"
+        ],
+        [
           "B",
-          "redet"
+          "drü Sprache"
         ],
         [
           "C",
-          "drüü Sprache"
-        ],
-        [
-          "D",
           "fliessend"
         ]
       ],
@@ -101755,15 +102051,15 @@ const SENTENCES = [
           "She"
         ],
         [
-          "B",
+          "D",
           "speaks"
         ],
         [
-          "C",
+          "B",
           "three leids"
         ],
         [
-          "D",
+          "C",
           "fluently"
         ]
       ],
@@ -102883,23 +103179,23 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
+        ],
+        [
+          "D",
+          "grianghraf"
         ],
         [
           "C",
-          "grianghraf"
+          "a ghlacadh"
         ],
         [
           "B",
           "den teampall seo"
-        ],
-        [
-          "D",
-          "a ghlacadh"
         ]
       ],
       "eu": [
@@ -103078,6 +103374,10 @@ const SENTENCES = [
         [
           "E",
           "Rydw i eisiau"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "D",
@@ -103770,19 +104070,19 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "E",
           "wött"
         ],
         [
           "C",
-          "es Foto"
-        ],
-        [
-          "D",
-          "vo dem Tempel"
+          "es Föteli"
         ],
         [
           "B",
+          "vo dem Tempel"
+        ],
+        [
+          "D",
           "mache"
         ]
       ],
@@ -103811,18 +104111,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "want tae tak"
+          "E",
+          "want tae"
+        ],
+        [
+          "D",
+          "tak"
         ],
         [
           "C",
           "a photo"
         ],
         [
-          "D",
+          "B",
           "o this temple"
         ]
       ],
@@ -104622,7 +104926,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "dator"
+          "iristen da"
         ]
       ],
       "hu": [
@@ -104730,7 +105034,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "bws yn dod"
+          "bws"
+        ],
+        [
+          "C",
+          "yn cyrraedd"
         ],
         [
           "B",
@@ -105191,12 +105499,12 @@ const SENTENCES = [
           "De Bus"
         ],
         [
-          "B",
-          "chunnt"
+          "C",
+          "chunt"
         ],
         [
-          "C",
-          "alli füfzäh Minute"
+          "B",
+          "alli 15 Minute"
         ]
       ],
       "fr_qc": [
@@ -105219,11 +105527,11 @@ const SENTENCES = [
           "The bus"
         ],
         [
-          "B",
-          "comes"
+          "C",
+          "arrives"
         ],
         [
-          "C",
+          "B",
           "ilka 15 minutes"
         ]
       ],
@@ -106132,29 +106440,21 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Tá"
-        ],
-        [
-          "A",
-          "mé"
+          "Tá mé ag foghlaim"
         ],
         [
           "C",
-          "ag foghlaim conas"
+          "conas bia"
         ],
         [
           "B",
-          "bia Cóiréach"
-        ],
-        [
-          "D",
-          "a chócaráil"
+          "Cóiréach a chócaráil"
         ]
       ],
       "eu": [
         [
           "A",
-          "Ni"
+          "Nik"
         ],
         [
           "B",
@@ -106294,15 +106594,15 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Rwy'n"
+          "Rwy'n dysgu"
         ],
         [
           "C",
-          "dysgu sut i goginio"
+          "coginio"
         ],
         [
           "B",
-          "bwyd Corea"
+          "bwyd Coreaidd"
         ]
       ],
       "en_yk": [
@@ -106879,20 +107179,16 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "lerne"
         ],
         [
-          "C",
-          "wie mer"
-        ],
-        [
-          "D",
+          "B",
           "koreanisch"
         ],
         [
           "C",
-          "chochet"
+          "z choche"
         ]
       ],
       "fr_qc": [
@@ -106912,19 +107208,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "am learnin"
-        ],
-        [
-          "C",
-          "hou tae cook"
+          "A'm"
         ],
         [
           "D",
-          "Korean scran"
+          "learnin"
+        ],
+        [
+          "C",
+          "tae cook"
+        ],
+        [
+          "B",
+          "Korean food"
         ]
       ],
       "en_sg": [
@@ -108022,16 +108318,16 @@ const SENTENCES = [
           "sé"
         ],
         [
+          "B",
+          "i gcónaí"
+        ],
+        [
           "C",
-          "déanach"
+          "mall"
         ],
         [
           "D",
           "chuig cruinnithe"
-        ],
-        [
-          "B",
-          "i gcónaí"
         ]
       ],
       "eu": [
@@ -108221,11 +108517,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bob amser yn"
+          "bob amser"
         ],
         [
           "C",
-          "cyrraedd yn hwyr"
+          "yn hwyr"
         ],
         [
           "D",
@@ -108918,8 +109214,8 @@ const SENTENCES = [
           "Er"
         ],
         [
-          "C",
-          "chunnt"
+          "E",
+          "chunt"
         ],
         [
           "B",
@@ -108927,11 +109223,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "z spat"
+          "z spät"
         ],
         [
           "D",
-          "a d Sitzig"
+          "zu Sitzig"
         ]
       ],
       "fr_qc": [
@@ -108966,8 +109262,12 @@ const SENTENCES = [
           "aye"
         ],
         [
+          "E",
+          "arrives"
+        ],
+        [
           "C",
-          "comes late"
+          "late"
         ],
         [
           "D",
@@ -110110,18 +110410,18 @@ const SENTENCES = [
       "ga": [
         [
           "E",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
-        ],
-        [
-          "B",
-          "an leabhar seo"
+          "mé"
         ],
         [
           "D",
+          "an leabhar seo"
+        ],
+        [
+          "B",
           "a léamh"
         ],
         [
@@ -110135,12 +110435,12 @@ const SENTENCES = [
           "Nik"
         ],
         [
-          "B",
-          "liburu hau"
-        ],
-        [
           "C",
           "hilabete amaierarako"
+        ],
+        [
+          "B",
+          "liburu hau"
         ],
         [
           "D",
@@ -110307,8 +110607,12 @@ const SENTENCES = [
           "Rydw i eisiau"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "D",
-          "gorffen darllen"
+          "darllen"
         ],
         [
           "B",
@@ -110997,20 +111301,20 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "E",
           "wött"
         ],
         [
-          "C",
+          "B",
           "das Buech"
         ],
         [
-          "D",
+          "C",
           "bis Ändi Monet"
         ],
         [
-          "B",
-          "fertig läse"
+          "D",
+          "läse"
         ]
       ],
       "fr_qc": [
@@ -111038,18 +111342,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "want tae feenish readin"
-        ],
-        [
-          "C",
-          "this buik"
+          "E",
+          "want tae"
         ],
         [
           "D",
+          "read"
+        ],
+        [
+          "B",
+          "this buik"
+        ],
+        [
+          "C",
           "by the end o the month"
         ]
       ],
@@ -111834,12 +112142,12 @@ const SENTENCES = [
           "na héin"
         ],
         [
-          "A",
-          "sna crainn"
-        ],
-        [
           "C",
           "ag canadh"
+        ],
+        [
+          "A",
+          "sna crainn"
         ]
       ],
       "eu": [
@@ -111853,7 +112161,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "kantari ari dira"
+          "kantatzen ari dira"
         ]
       ],
       "hu": [
@@ -111957,19 +112265,19 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Mae"
+          "Mae'r"
         ],
         [
           "B",
-          "'r adar"
-        ],
-        [
-          "A",
-          "yn y coed yn"
+          "adar"
         ],
         [
           "C",
-          "canu"
+          "yn canu"
+        ],
+        [
+          "A",
+          "yn y coed"
         ]
       ],
       "en_yk": [
@@ -112422,15 +112730,15 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "B",
           "D Vögel"
         ],
         [
-          "B",
+          "C",
           "singed"
         ],
         [
-          "C",
+          "A",
           "i de Böim"
         ]
       ],
@@ -112450,15 +112758,15 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "B",
           "The birds"
         ],
         [
-          "B",
+          "C",
           "are singin"
         ],
         [
-          "C",
+          "A",
           "in the trees"
         ]
       ],
@@ -113393,7 +113701,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "nire telefonoa"
+          "nire mugikorra"
         ],
         [
           "C",
@@ -113529,11 +113837,11 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Rhaid"
+          "Mae angen i"
         ],
         [
           "A",
-          "i mi"
+          "mi"
         ],
         [
           "C",
@@ -114094,16 +114402,16 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "mues"
+          "D",
+          "muess"
         ],
         [
-          "C",
+          "B",
           "mis Handy"
         ],
         [
-          "B",
-          "lade"
+          "C",
+          "uflade"
         ]
       ],
       "fr_qc": [
@@ -114127,14 +114435,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
-          "hae tae chairge"
+          "D",
+          "need tae"
         ],
         [
           "C",
+          "charge"
+        ],
+        [
+          "B",
           "ma phone"
         ]
       ],
@@ -115253,11 +115565,11 @@ const SENTENCES = [
           "sí"
         ],
         [
-          "C",
+          "D",
           "bronntanas"
         ],
         [
-          "D",
+          "C",
           "álainn"
         ],
         [
@@ -115455,12 +115767,12 @@ const SENTENCES = [
           "hi"
         ],
         [
-          "C",
+          "D",
           "anrheg"
         ],
         [
-          "D",
-          "hardd"
+          "C",
+          "hyfryd"
         ],
         [
           "B",
@@ -116161,20 +116473,20 @@ const SENTENCES = [
           "Si"
         ],
         [
-          "B",
-          "het"
+          "E",
+          "hät"
         ],
         [
-          "C",
+          "B",
           "mir"
         ],
         [
-          "D",
-          "es schöns Gschänk"
+          "C",
+          "es schöns"
         ],
         [
-          "B",
-          "gäh"
+          "D",
+          "Gschänk gä"
         ]
       ],
       "fr_qc": [
@@ -116201,16 +116513,20 @@ const SENTENCES = [
           "She"
         ],
         [
-          "B",
+          "E",
           "gied"
         ],
         [
-          "C",
+          "B",
           "me"
         ],
         [
+          "C",
+          "a bonnie"
+        ],
+        [
           "D",
-          "a bonnie praisent"
+          "gift"
         ]
       ],
       "en_sg": [
@@ -116994,8 +117310,12 @@ const SENTENCES = [
       ],
       "ga": [
         [
+          "C",
+          "Tá"
+        ],
+        [
           "A",
-          "Tá an sliabh"
+          "an sliabh"
         ],
         [
           "C",
@@ -117128,12 +117448,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
+          "C",
+          "Mae'r"
+        ],
+        [
           "A",
-          "Mae 'r mynydd wedi'i"
+          "mynydd"
         ],
         [
           "C",
-          "orchuddio"
+          "wedi'i orchuddio"
         ],
         [
           "B",
@@ -117594,12 +117918,12 @@ const SENTENCES = [
           "De Bärg"
         ],
         [
-          "B",
-          "isch bedeckt"
+          "C",
+          "isch"
         ],
         [
-          "C",
-          "mit Schnee"
+          "B",
+          "mit Schnee bedeckt"
         ]
       ],
       "fr_qc": [
@@ -117622,11 +117946,11 @@ const SENTENCES = [
           "The mountain"
         ],
         [
-          "B",
-          "is happit"
+          "C",
+          "is covered"
         ],
         [
-          "C",
+          "B",
           "wi snaw"
         ]
       ],
@@ -118547,11 +118871,11 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Déanaim"
+          "Déanaim aclaíocht"
         ],
         [
           "A",
-          "aclaíocht"
+          "mé"
         ],
         [
           "B",
@@ -118568,16 +118892,16 @@ const SENTENCES = [
           "Nik"
         ],
         [
+          "C",
+          "astean hiru aldiz"
+        ],
+        [
           "B",
           "gimnasioan"
         ],
         [
-          "C",
-          "astean 3 aldiz"
-        ],
-        [
           "D",
-          "ariketa egiten dut"
+          "kirola egiten dut"
         ]
       ],
       "hu": [
@@ -118705,11 +119029,11 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Rwy'n gwneud"
+          "Rwy'n ymarfer"
         ],
         [
           "A",
-          "ymarfer corff"
+          "Fi"
         ],
         [
           "B",
@@ -119302,16 +119626,16 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "trainiere"
         ],
         [
-          "C",
-          "im Gym"
+          "B",
+          "im Fitnessclub"
         ],
         [
-          "D",
-          "drüü Mol i de Wuche"
+          "C",
+          "drümal pro Wuche"
         ]
       ],
       "fr_qc": [
@@ -119335,18 +119659,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "exercise"
-        ],
-        [
-          "C",
-          "at the gym"
+          "A"
         ],
         [
           "D",
+          "exercise"
+        ],
+        [
+          "B",
+          "at the gym"
+        ],
+        [
+          "C",
           "three times a week"
         ]
       ],
@@ -120243,13 +120567,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "anseo?"
+          "anseo"
         ]
       ],
       "eu": [
         [
+          "A",
+          "Nik"
+        ],
+        [
           "B",
-          "Hemen"
+          "hemen"
         ],
         [
           "C",
@@ -120257,7 +120585,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "naiteke?"
+          "dezaket"
         ]
       ],
       "hu": [
@@ -120347,7 +120675,11 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Ga i"
+          "Ga"
+        ],
+        [
+          "A",
+          "i"
         ],
         [
           "C",
@@ -120355,7 +120687,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "fan hyn?"
+          "fan hyn"
         ]
       ],
       "en_yk": [
@@ -120914,20 +121246,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
-          "Darf"
+          "D",
+          "Dörf"
         ],
         [
-          "B",
+          "A",
           "ich"
         ],
         [
-          "D",
+          "B",
           "da"
         ],
         [
           "C",
-          "hisitze"
+          "sitze?"
         ]
       ],
       "fr_qc": [
@@ -120946,20 +121278,20 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "D",
           "Can"
         ],
         [
-          "B",
-          "I"
+          "A",
+          "A"
         ],
         [
           "C",
           "sit"
         ],
         [
-          "D",
-          "here"
+          "B",
+          "here?"
         ]
       ],
       "en_sg": [
@@ -121913,7 +122245,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "gurasoei"
+          "bere gurasoei"
         ],
         [
           "B",
@@ -122642,20 +122974,16 @@ const SENTENCES = [
           "Er"
         ],
         [
-          "B",
-          "het"
+          "D",
+          "hät gschribe"
         ],
         [
-          "C",
+          "B",
           "en lange Brief"
         ],
         [
-          "D",
+          "C",
           "a sini Eltere"
-        ],
-        [
-          "B",
-          "gschribe"
         ]
       ],
       "fr_qc": [
@@ -122682,15 +123010,15 @@ const SENTENCES = [
           "He"
         ],
         [
-          "B",
+          "D",
           "wrote"
         ],
         [
-          "C",
+          "B",
           "a lang letter"
         ],
         [
-          "D",
+          "C",
           "tae his parents"
         ]
       ],
@@ -123447,12 +123775,16 @@ const SENTENCES = [
       ],
       "ga": [
         [
+          "C",
+          "Dúnann"
+        ],
+        [
           "A",
-          "Dúnann an siopa"
+          "an siopa"
         ],
         [
           "B",
-          "ar a 9 pm"
+          "ar a 9 san oíche"
         ]
       ],
       "eu": [
@@ -123547,8 +123879,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
+          "C",
+          "Mae'r"
+        ],
+        [
           "A",
-          "Mae'r siop yn cau"
+          "siop"
+        ],
+        [
+          "C",
+          "yn cau"
         ],
         [
           "B",
@@ -124023,16 +124363,12 @@ const SENTENCES = [
           "De Lade"
         ],
         [
-          "B",
-          "macht"
-        ],
-        [
           "C",
-          "um nüüni am Aabe"
+          "schlüsst"
         ],
         [
           "B",
-          "zue"
+          "um 21 Uhr"
         ]
       ],
       "fr_qc": [
@@ -124055,12 +124391,12 @@ const SENTENCES = [
           "The shop"
         ],
         [
-          "B",
+          "C",
           "closes"
         ],
         [
-          "C",
-          "at 9 at nicht"
+          "B",
+          "at 9 PM"
         ]
       ],
       "en_sg": [
@@ -124972,15 +125308,15 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
         ],
         [
           "B",
-          "mo chuid fuaimnithe"
+          "m'fhuaimniú"
         ],
         [
           "C",
@@ -125113,6 +125449,10 @@ const SENTENCES = [
         [
           "D",
           "Rydw i eisiau"
+        ],
+        [
+          "A",
+          "Fi"
         ],
         [
           "C",
@@ -125691,19 +126031,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "wött"
         ],
         [
-          "C",
-          "mini"
-        ],
-        [
-          "D",
-          "Ussprach"
-        ],
-        [
           "B",
+          "mini Ussprach"
+        ],
+        [
+          "C",
           "verbessere"
         ]
       ],
@@ -125728,19 +126064,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "want tae improve"
-        ],
-        [
-          "C",
-          "ma"
+          "A"
         ],
         [
           "D",
-          "pronunciation"
+          "want tae"
+        ],
+        [
+          "C",
+          "improve"
+        ],
+        [
+          "B",
+          "ma pronunciation"
         ]
       ],
       "en_sg": [
@@ -126828,7 +127164,7 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Adeiladodd"
+          "Adeiladon"
         ],
         [
           "A",
@@ -127435,20 +127771,16 @@ const SENTENCES = [
           "Si"
         ],
         [
-          "B",
-          "händ"
+          "D",
+          "händ baut"
         ],
         [
-          "C",
+          "B",
           "e neui Brugg"
         ],
         [
-          "D",
+          "C",
           "über de Fluss"
-        ],
-        [
-          "B",
-          "baut"
         ]
       ],
       "fr_qc": [
@@ -127475,15 +127807,15 @@ const SENTENCES = [
           "They"
         ],
         [
-          "B",
-          "biggit"
+          "D",
+          "built"
         ],
         [
-          "C",
+          "B",
           "a new brig"
         ],
         [
-          "D",
+          "C",
           "ower the river"
         ]
       ],
@@ -128446,11 +128778,11 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Nire katua"
+          "Nire katuak"
         ],
         [
           "C",
-          "gau guztietan"
+          "gauero"
         ],
         [
           "B",
@@ -128576,11 +128908,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "fy nghath yn"
+          "fy nghath"
+        ],
+        [
+          "D",
+          "yn cysgu"
         ],
         [
           "B",
-          "cysgu ar fy ngwely"
+          "ar fy ngwely"
         ],
         [
           "C",
@@ -129184,18 +129520,18 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "D Chatz"
-        ],
-        [
-          "B",
-          "schlaft"
+          "Mini Chatz"
         ],
         [
           "D",
-          "jedi Nacht"
+          "schlaft"
         ],
         [
           "C",
+          "jedi Nacht"
+        ],
+        [
+          "B",
           "uf mim Bett"
         ]
       ],
@@ -129220,18 +129556,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "The cat"
-        ],
-        [
-          "B",
-          "sleeps"
-        ],
-        [
-          "C",
-          "on ma bed"
+          "Ma cat"
         ],
         [
           "D",
+          "sleeps"
+        ],
+        [
+          "B",
+          "on ma bed"
+        ],
+        [
+          "C",
           "ilka nicht"
         ]
       ],
@@ -130001,15 +130337,11 @@ const SENTENCES = [
       "ga": [
         [
           "C",
-          "Tá"
-        ],
-        [
-          "A",
-          "mé"
+          "Tá mé ag fanacht"
         ],
         [
           "B",
-          "ag fanacht le 30 nóiméad"
+          "le 30 nóiméad"
         ]
       ],
       "eu": [
@@ -130109,11 +130441,11 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Rydw i wedi bod"
+          "Rydw i wedi bod yn aros"
         ],
         [
           "B",
-          "yn aros am 30 munud"
+          "am 30 munud"
         ]
       ],
       "en_yk": [
@@ -130584,12 +130916,12 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "C",
           "warte"
         ],
         [
-          "C",
-          "sit drissig Minute"
+          "B",
+          "sit 30 Minute"
         ]
       ],
       "fr_qc": [
@@ -130605,14 +130937,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "hae been waitin"
+          "A've"
         ],
         [
           "C",
+          "been waitin"
+        ],
+        [
+          "B",
           "for 30 minutes"
         ]
       ],
@@ -131357,8 +131689,12 @@ const SENTENCES = [
           "na páistí"
         ],
         [
+          "C",
+          "ag foghlaim"
+        ],
+        [
           "B",
-          "ag foghlaim snámha"
+          "snámh"
         ]
       ],
       "eu": [
@@ -131368,7 +131704,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "igeri egiten"
+          "igerian"
         ],
         [
           "C",
@@ -131462,15 +131798,19 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Mae"
+          "Mae'r"
         ],
         [
           "A",
-          "'r plant yn"
+          "plant"
+        ],
+        [
+          "C",
+          "yn dysgu"
         ],
         [
           "B",
-          "dysgu nofio"
+          "nofio"
         ]
       ],
       "en_yk": [
@@ -131941,11 +132281,11 @@ const SENTENCES = [
           "D Chind"
         ],
         [
-          "B",
-          "lerned"
+          "C",
+          "lörned"
         ],
         [
-          "C",
+          "B",
           "schwümme"
         ]
       ],
@@ -131969,11 +132309,11 @@ const SENTENCES = [
           "The bairns"
         ],
         [
-          "B",
+          "C",
           "are learnin"
         ],
         [
-          "C",
+          "B",
           "tae swim"
         ]
       ],
@@ -132875,8 +133215,12 @@ const SENTENCES = [
           "entzutean"
         ],
         [
+          "C",
+          "zoriontsu"
+        ],
+        [
           "D",
-          "pozik sentitzen naiz"
+          "sentitzen naiz"
         ]
       ],
       "hu": [
@@ -132973,8 +133317,12 @@ const SENTENCES = [
           "Rwy'n teimlo'n hapus"
         ],
         [
+          "C",
+          "pan"
+        ],
+        [
           "B",
-          "wrth wrando ar"
+          "fydda i'n gwrando ar"
         ],
         [
           "A",
@@ -133562,15 +133910,15 @@ const SENTENCES = [
       "gsw": [
         [
           "D",
-          "I füele mi glücklich"
+          "Ich füele mi glücklich"
         ],
         [
           "C",
-          "wenn"
+          "wänn"
         ],
         [
           "D",
-          "i"
+          "ich"
         ],
         [
           "A",
@@ -133606,7 +133954,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "whan"
+          "when"
         ],
         [
           "B",
@@ -134371,7 +134719,7 @@ const SENTENCES = [
       "ga": [
         [
           "C",
-          "Bhí"
+          "Bhí iontas ar"
         ],
         [
           "A",
@@ -134379,7 +134727,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "iontas air faoi thorthaí an scrúdaithe"
+          "faoi thorthaí an scrúdaithe"
         ]
       ],
       "eu": [
@@ -134389,11 +134737,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "azterketa emaitzekin"
+          "azterketaren emaitzekin"
         ],
         [
           "C",
-          "harritu zen"
+          "harrituta geratu zen"
         ]
       ],
       "hu": [
@@ -134487,11 +134835,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "hi"
+          "e"
+        ],
+        [
+          "C",
+          "ei synnu"
         ],
         [
           "B",
-          "ei synnu gan ganlyniadau'r prawf"
+          "gan ganlyniadau'r prawf"
         ]
       ],
       "en_yk": [
@@ -134962,16 +135314,12 @@ const SENTENCES = [
           "Er"
         ],
         [
-          "B",
-          "isch"
-        ],
-        [
           "C",
-          "vom Testergebnis"
+          "isch überrascht gsi"
         ],
         [
           "B",
-          "überrascht gsi"
+          "vo de Teschtresultat"
         ]
       ],
       "fr_qc": [
@@ -134994,11 +135342,11 @@ const SENTENCES = [
           "He"
         ],
         [
-          "B",
-          "was surprised"
+          "C",
+          "wis surprised"
         ],
         [
-          "C",
+          "B",
           "by the test results"
         ]
       ],
@@ -135939,24 +136287,24 @@ const SENTENCES = [
         ],
         [
           "C",
-          "maith"
+          "go maith"
         ]
       ],
       "eu": [
         [
           "A",
-          "Nik"
+          "Plan"
         ],
         [
           "B",
-          "plan"
-        ],
-        [
-          "D",
-          "hau ona dela"
+          "hau"
         ],
         [
           "C",
+          "ona dela"
+        ],
+        [
+          "D",
           "uste dut"
         ]
       ],
@@ -136075,7 +136423,7 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Rwy'n credu"
+          "Rwy'n meddwl"
         ],
         [
           "C",
@@ -136087,11 +136435,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "cynllun hwn yn"
+          "cynllun hwn"
         ],
         [
           "C",
-          "dda"
+          "yn dda"
         ]
       ],
       "en_yk": [
@@ -136678,19 +137026,19 @@ const SENTENCES = [
       ],
       "gsw": [
         [
+          "D",
+          "Ich dänke"
+        ],
+        [
           "A",
-          "Ich"
+          "de"
         ],
         [
           "B",
-          "dänke"
+          "Plan"
         ],
         [
           "C",
-          "de Plan"
-        ],
-        [
-          "D",
           "isch guet"
         ]
       ],
@@ -136714,19 +137062,19 @@ const SENTENCES = [
       ],
       "sco": [
         [
+          "D",
+          "A think"
+        ],
+        [
           "A",
-          "I"
+          "this"
         ],
         [
           "B",
-          "think"
+          "plan"
         ],
         [
           "C",
-          "this plan"
-        ],
-        [
-          "D",
           "is guid"
         ]
       ],
@@ -137805,8 +138153,12 @@ const SENTENCES = [
           "brónach"
         ],
         [
+          "C",
+          "mar"
+        ],
+        [
           "D",
-          "mar d'imigh a cara"
+          "gur bhog a cara"
         ],
         [
           "E",
@@ -137819,16 +138171,16 @@ const SENTENCES = [
           "Bera"
         ],
         [
-          "B",
-          "triste dago"
-        ],
-        [
-          "D",
+          "C",
           "bere laguna"
         ],
         [
           "E",
           "joan delako"
+        ],
+        [
+          "B",
+          "triste dago"
         ]
       ],
       "hu": [
@@ -137961,12 +138313,20 @@ const SENTENCES = [
           "drist"
         ],
         [
-          "D",
-          "oherwydd bod ei ffrind wedi"
+          "C",
+          "oherwydd"
         ],
         [
           "E",
-          "symud i ffwrdd"
+          "bod"
+        ],
+        [
+          "D",
+          "ei ffrind"
+        ],
+        [
+          "E",
+          "wedi symud i ffwrdd"
         ]
       ],
       "en_yk": [
@@ -138666,7 +139026,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "isch truurig"
+          "isch trurig"
         ],
         [
           "C",
@@ -138714,7 +139074,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "acause"
+          "because"
         ],
         [
           "D",
@@ -138722,7 +139082,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "flitted"
+          "moved awa"
         ]
       ],
       "en_sg": [
@@ -139797,7 +140157,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "go bhfuil"
+          "mé"
+        ],
+        [
+          "D",
+          "gur"
         ],
         [
           "B",
@@ -139805,7 +140169,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ina thaithí luachmhar"
+          "taithí luachmhar"
         ]
       ],
       "eu": [
@@ -139815,15 +140179,19 @@ const SENTENCES = [
         ],
         [
           "B",
-          "kanpoan ikastea"
+          "atzerrian ikastea"
         ],
         [
           "C",
           "esperientzia baliotsua"
         ],
         [
+          "D",
+          "dela"
+        ],
+        [
           "E",
-          "dela sinesten dut"
+          "uste dut"
         ]
       ],
       "hu": [
@@ -139945,15 +140313,19 @@ const SENTENCES = [
         ],
         [
           "A",
+          "Fi"
+        ],
+        [
+          "D",
           "bod"
         ],
         [
           "B",
-          "astudio tramor yn"
+          "astudio dramor"
         ],
         [
           "C",
-          "brofiad gwerthfawr"
+          "yn brofiad gwerthfawr"
         ]
       ],
       "en_yk": [
@@ -140641,19 +141013,23 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Ich dänke"
+          "Ich"
+        ],
+        [
+          "E",
+          "glaube"
         ],
         [
           "B",
-          "im Usland studiere"
+          "dass es Uslandstudium"
         ],
         [
           "C",
-          "isch"
+          "e wärtvoli Erfahrig"
         ],
         [
           "D",
-          "e wertvoll Erfahrig"
+          "isch"
         ]
       ],
       "fr_qc": [
@@ -140681,18 +141057,22 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I think"
+          "A"
+        ],
+        [
+          "E",
+          "believe"
         ],
         [
           "B",
           "studyin abroad"
         ],
         [
-          "C",
+          "D",
           "is"
         ],
         [
-          "D",
+          "C",
           "a valuable experience"
         ]
       ],
@@ -141622,8 +142002,12 @@ const SENTENCES = [
       ],
       "eu": [
         [
+          "A",
+          "Nik"
+        ],
+        [
           "C",
-          "Gaur"
+          "gaur"
         ],
         [
           "B",
@@ -141725,15 +142109,15 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Mae"
-        ],
-        [
-          "B",
-          "pen tost"
+          "Mae gen"
         ],
         [
           "A",
-          "gyda fi"
+          "i"
+        ],
+        [
+          "B",
+          "gur pen"
         ],
         [
           "C",
@@ -141801,7 +142185,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "caput dolet"
+          "caput"
+        ],
+        [
+          "D",
+          "dolet"
         ]
       ],
       "egy": [
@@ -142256,15 +142644,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "han"
-        ],
-        [
           "D",
-          "hüt"
+          "ha"
         ],
         [
           "C",
+          "hüt"
+        ],
+        [
+          "B",
           "Chopfweh"
         ]
       ],
@@ -142289,18 +142677,18 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "hae"
-        ],
-        [
-          "C",
-          "a sair heid"
+          "A"
         ],
         [
           "D",
+          "hae"
+        ],
+        [
+          "B",
+          "a sair heid"
+        ],
+        [
+          "C",
           "the day"
         ]
       ],
@@ -143381,15 +143769,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "y meddyg"
+          "y meddyg wrth"
         ],
         [
           "B",
-          "wrthyf"
+          "i"
         ],
         [
           "C",
-          "am orffwys"
+          "orffwys"
         ]
       ],
       "en_yk": [
@@ -143972,16 +144360,16 @@ const SENTENCES = [
           "De Dokter"
         ],
         [
-          "B",
-          "het"
+          "D",
+          "hät gseit"
         ],
         [
-          "C",
+          "B",
           "mir"
         ],
         [
-          "D",
-          "gseit ich söll rueje"
+          "C",
+          "ich söll mi usruehe"
         ]
       ],
       "fr_qc": [
@@ -144004,15 +144392,15 @@ const SENTENCES = [
           "The doctor"
         ],
         [
-          "B",
+          "D",
           "telt"
         ],
         [
-          "C",
+          "B",
           "me"
         ],
         [
-          "D",
+          "C",
           "tae rest"
         ]
       ],
@@ -144936,6 +145324,10 @@ const SENTENCES = [
           "Déanaim iarracht"
         ],
         [
+          "A",
+          "mé"
+        ],
+        [
           "C",
           "aclaíocht a dhéanamh"
         ],
@@ -144947,7 +145339,7 @@ const SENTENCES = [
       "eu": [
         [
           "A",
-          "Ni"
+          "Nik"
         ],
         [
           "B",
@@ -144955,7 +145347,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ariketa egiten"
+          "kirola egitera"
         ],
         [
           "D",
@@ -145072,8 +145464,12 @@ const SENTENCES = [
           "Rwy'n ceisio"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "C",
-          "gwneud ymarfer corff"
+          "ymarfer"
         ],
         [
           "B",
@@ -145660,16 +146056,16 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "versuche"
         ],
         [
-          "D",
+          "B",
           "jede Morge"
         ],
         [
           "C",
-          "z trainiere"
+          "Sport z mache"
         ]
       ],
       "fr_qc": [
@@ -145689,10 +146085,10 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
+          "A"
         ],
         [
-          "B",
+          "D",
           "try tae"
         ],
         [
@@ -145700,7 +146096,7 @@ const SENTENCES = [
           "exercise"
         ],
         [
-          "D",
+          "B",
           "ilka mornin"
         ]
       ],
@@ -146611,7 +147007,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "joan den astean"
+          "aurreko astean"
         ],
         [
           "B",
@@ -147312,8 +147708,8 @@ const SENTENCES = [
           "Si"
         ],
         [
-          "B",
-          "het"
+          "C",
+          "hät sich"
         ],
         [
           "D",
@@ -147321,11 +147717,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "e Erkältig"
-        ],
-        [
-          "B",
-          "übercho"
+          "erkältet"
         ]
       ],
       "fr_qc": [
@@ -147352,11 +147744,11 @@ const SENTENCES = [
           "She"
         ],
         [
-          "B",
+          "C",
           "caught"
         ],
         [
-          "C",
+          "B",
           "a cauld"
         ],
         [
@@ -148221,18 +148613,18 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Ba cheart"
+          "Ba cheart duit"
         ],
         [
           "A",
-          "duit"
+          "tú"
         ],
         [
-          "B",
+          "C",
           "níos mó uisce"
         ],
         [
-          "D",
+          "B",
           "a ól"
         ]
       ],
@@ -148246,8 +148638,12 @@ const SENTENCES = [
           "ur gehiago"
         ],
         [
+          "C",
+          "edan"
+        ],
+        [
           "D",
-          "edan beharko zenuke"
+          "beharko zenuke"
         ]
       ],
       "hu": [
@@ -148360,8 +148756,12 @@ const SENTENCES = [
           "chi"
         ],
         [
+          "C",
+          "yfed"
+        ],
+        [
           "B",
-          "yfed mwy o ddŵr"
+          "mwy o ddŵr"
         ]
       ],
       "en_yk": [
@@ -148924,19 +149324,15 @@ const SENTENCES = [
           "Du"
         ],
         [
-          "B",
+          "D",
           "sötsch"
         ],
         [
-          "C",
-          "meh"
-        ],
-        [
-          "D",
-          "Wasser"
-        ],
-        [
           "B",
+          "meh Wasser"
+        ],
+        [
+          "C",
           "trinke"
         ]
       ],
@@ -148960,16 +149356,16 @@ const SENTENCES = [
           "Ye"
         ],
         [
-          "B",
-          "should drink"
+          "D",
+          "should"
         ],
         [
           "C",
-          "mair"
+          "drink"
         ],
         [
-          "D",
-          "watter"
+          "B",
+          "mair watter"
         ]
       ],
       "en_sg": [
@@ -149849,7 +150245,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "an guthán cliste"
+          "mo ghuthán cliste"
         ],
         [
           "A",
@@ -149862,8 +150258,12 @@ const SENTENCES = [
           "Egunero"
         ],
         [
+          "D",
+          "nik"
+        ],
+        [
           "B",
-          "telefonoa"
+          "nire telefono adimenduna"
         ],
         [
           "C",
@@ -150532,19 +150932,19 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
+          "D",
           "Ich"
         ],
         [
-          "B",
-          "bruche"
-        ],
-        [
           "C",
-          "mis Handy"
+          "bruuche"
         ],
         [
-          "D",
+          "B",
+          "mis Smartphone"
+        ],
+        [
+          "A",
           "jede Tag"
         ]
       ],
@@ -150564,19 +150964,19 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "I"
-        ],
-        [
-          "B",
-          "use"
+          "D",
+          "A"
         ],
         [
           "C",
-          "ma phone"
+          "use"
         ],
         [
-          "D",
+          "B",
+          "ma smartphone"
+        ],
+        [
+          "A",
           "ilka day"
         ]
       ],
@@ -151525,17 +151925,13 @@ const SENTENCES = [
         ],
         [
           "C",
-          "an-"
-        ],
-        [
-          "D",
-          "áisiúil"
+          "an-áisiúil"
         ]
       ],
       "eu": [
         [
           "A",
-          "Aplikazio"
+          "App"
         ],
         [
           "B",
@@ -151547,7 +151943,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "erosoa da"
+          "erabilgarria da"
         ]
       ],
       "hu": [
@@ -151668,20 +152064,24 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
+          "C",
           "Mae'r"
         ],
         [
           "B",
-          "ap hwn yn"
+          "ap"
+        ],
+        [
+          "A",
+          "hwn"
         ],
         [
           "C",
-          "gyfleus"
+          "yn"
         ],
         [
           "D",
-          "iawn"
+          "gyfleus iawn"
         ]
       ],
       "en_yk": [
@@ -152277,11 +152677,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "isch"
+          "isch sehr"
         ],
         [
           "D",
-          "sehr praktisch"
+          "praktisch"
         ]
       ],
       "fr_qc": [
@@ -152313,11 +152713,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "is"
+          "is gey"
         ],
         [
           "D",
-          "gey handy"
+          "handy"
         ]
       ],
       "en_sg": [
@@ -153081,8 +153481,12 @@ const SENTENCES = [
           "an intleacht shaorga"
         ],
         [
+          "C",
+          "ag athrú"
+        ],
+        [
           "B",
-          "ag athrú an domhain"
+          "an domhain"
         ]
       ],
       "eu": [
@@ -153096,7 +153500,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "aldatzen ari du"
+          "aldatzen ari da"
         ]
       ],
       "hu": [
@@ -153190,11 +153594,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "deallusrwydd artiffisial yn"
+          "deallusrwydd artiffisial"
+        ],
+        [
+          "C",
+          "yn newid"
         ],
         [
           "B",
-          "newid y byd"
+          "y byd"
         ]
       ],
       "en_yk": [
@@ -153657,11 +154065,11 @@ const SENTENCES = [
           "KI"
         ],
         [
-          "B",
+          "C",
           "veränderet"
         ],
         [
-          "C",
+          "B",
           "d Wält"
         ]
       ],
@@ -153685,11 +154093,11 @@ const SENTENCES = [
           "AI"
         ],
         [
-          "B",
-          "is chyngin"
+          "C",
+          "is changin"
         ],
         [
-          "C",
+          "B",
           "the warld"
         ]
       ],
@@ -154366,15 +154774,23 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "B",
-          "Ní féidir liom pasfhocal an Wi-Fi"
+          "C",
+          "Ní féidir liom"
         ],
         [
-          "C",
+          "B",
+          "pasfhocal an Wi-Fi"
+        ],
+        [
+          "A",
           "a aimsiú"
         ]
       ],
       "eu": [
+        [
+          "A",
+          "Nik"
+        ],
         [
           "B",
           "Wi-Fi pasahitza"
@@ -154462,8 +154878,16 @@ const SENTENCES = [
       ],
       "cy": [
         [
+          "C",
+          "Alla i ddim dod o hyd i"
+        ],
+        [
+          "A",
+          "Fi"
+        ],
+        [
           "B",
-          "Dydw i ddim yn gwybod cyfrinair y Wi-Fi"
+          "gyfrinair y Wi-Fi"
         ]
       ],
       "en_yk": [
@@ -154902,16 +155326,16 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
-          "finde"
+          "C",
+          "cha"
         ],
         [
-          "C",
+          "B",
           "s WLAN-Passwort"
         ],
         [
-          "B",
-          "nöd"
+          "C",
+          "nöd finde"
         ]
       ],
       "fr_qc": [
@@ -154931,14 +155355,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "cannae find"
+          "A"
         ],
         [
           "C",
+          "cannae find"
+        ],
+        [
+          "B",
           "the Wi-Fi password"
         ]
       ],
@@ -155856,12 +156280,12 @@ const SENTENCES = [
           "Berak"
         ],
         [
-          "B",
-          "programazioa"
-        ],
-        [
           "C",
           "bere kabuz"
+        ],
+        [
+          "B",
+          "programazioa"
         ],
         [
           "D",
@@ -156582,16 +157006,16 @@ const SENTENCES = [
           "Er"
         ],
         [
-          "B",
-          "het sich"
-        ],
-        [
-          "C",
-          "s Programmiere"
+          "D",
+          "hät"
         ],
         [
           "B",
-          "sälber biibracht"
+          "Programmiere"
+        ],
+        [
+          "D",
+          "sälber glehrt"
         ]
       ],
       "fr_qc": [
@@ -156618,12 +157042,16 @@ const SENTENCES = [
           "He"
         ],
         [
+          "D",
+          "learned"
+        ],
+        [
           "B",
-          "taught himsel"
+          "programmin"
         ],
         [
           "C",
-          "programming"
+          "by hissel"
         ]
       ],
       "en_sg": [
@@ -157523,13 +157951,13 @@ const SENTENCES = [
         ],
         [
           "A",
-          "hanami"
+          "féachaint ar bhláthannasilíní"
         ]
       ],
       "eu": [
         [
           "A",
-          "Sakura ikustaldia"
+          "Gereziondoen loreen ikustaldia"
         ],
         [
           "B",
@@ -157537,7 +157965,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "tradizio bat da"
+          "tradizioa"
+        ],
+        [
+          "D",
+          "da"
         ]
       ],
       "hu": [
@@ -157647,14 +158079,18 @@ const SENTENCES = [
         ],
         [
           "A",
-          "gwylio blodau ceirios yn"
+          "gwylio blodau ceirios"
         ],
         [
-          "C",
-          "draddodiad"
+          "D",
+          "yn"
         ],
         [
           "B",
+          "draddodiad"
+        ],
+        [
+          "C",
           "Japaneaidd"
         ]
       ],
@@ -158211,18 +158647,18 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Chriesiblüete luege"
-        ],
-        [
-          "B",
-          "isch"
-        ],
-        [
-          "C",
-          "e japanischi"
+          "D Chriesiblüetebesichtigung"
         ],
         [
           "D",
+          "isch"
+        ],
+        [
+          "B",
+          "e japanischi"
+        ],
+        [
+          "C",
           "Tradition"
         ]
       ],
@@ -158250,15 +158686,15 @@ const SENTENCES = [
           "Cherry blossom viewin"
         ],
         [
-          "B",
+          "D",
           "is"
         ],
         [
-          "C",
+          "B",
           "a Japanese"
         ],
         [
-          "D",
+          "C",
           "tradition"
         ]
       ],
@@ -159195,11 +159631,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "dumplaí"
+          "dumpaí"
         ],
         [
           "D",
-          "ar Bhliain Nua na Síneach"
+          "le linn na Bliana Nua Síneach"
         ]
       ],
       "eu": [
@@ -159209,11 +159645,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Txinatar Urte Berrian"
+          "Txinako Urte Berrian"
         ],
         [
           "B",
-          "dumplingsak"
+          "dumplingak"
         ],
         [
           "C",
@@ -159327,7 +159763,15 @@ const SENTENCES = [
       "cy": [
         [
           "C",
-          "Rydyn ni'n bwyta"
+          "Rydyn"
+        ],
+        [
+          "A",
+          "ni'n"
+        ],
+        [
+          "C",
+          "bwyta"
         ],
         [
           "B",
@@ -159335,7 +159779,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "yn ystod y Flwyddyn Newydd Leuadol"
+          "yn ystod y Flwyddyn Newydd Tsieineaidd"
         ]
       ],
       "en_yk": [
@@ -159914,16 +160358,16 @@ const SENTENCES = [
           "Mir"
         ],
         [
-          "B",
+          "C",
           "ässed"
         ],
         [
-          "C",
+          "B",
           "Teigtäschli"
         ],
         [
           "D",
-          "am chinesische Neujohr"
+          "zum Chinesische Neujahr"
         ]
       ],
       "fr_qc": [
@@ -159950,16 +160394,16 @@ const SENTENCES = [
           "We"
         ],
         [
-          "B",
+          "C",
           "eat"
         ],
         [
-          "C",
+          "B",
           "dumplings"
         ],
         [
           "D",
-          "at Chinese New Year"
+          "durin Chinese New Year"
         ]
       ],
       "en_sg": [
@@ -160891,7 +161335,7 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Bíonn"
+          "Eagraítear"
         ],
         [
           "C",
@@ -160917,11 +161361,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "jaialdi asko"
+          "jaialdia asko"
         ],
         [
           "D",
-          "ospatzen dira"
+          "antolatzen dira"
         ]
       ],
       "hu": [
@@ -161039,7 +161483,7 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Mae"
+          "Cynhelir"
         ],
         [
           "C",
@@ -161650,20 +162094,20 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "D",
-          "Im Summer"
+          "A",
+          "I dem Land"
         ],
         [
           "B",
-          "gits"
+          "im Summer"
         ],
         [
           "C",
-          "i dem Land"
+          "werded vill Fäscht"
         ],
         [
-          "A",
-          "vill Fäscht"
+          "D",
+          "abghalte"
         ]
       ],
       "fr_qc": [
@@ -161687,19 +162131,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Mony festivals"
+          "In this country"
         ],
         [
           "B",
-          "are held"
+          "in summer"
         ],
         [
           "C",
-          "in this kintra"
+          "mony festivals"
         ],
         [
           "D",
-          "in simmer"
+          "are held"
         ]
       ],
       "en_sg": [
@@ -162572,11 +163016,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "dysgu ieithoedd yn"
+          "dysgu ieithoedd"
+        ],
+        [
+          "C",
+          "yn agor"
         ],
         [
           "B",
-          "agor drysau newydd"
+          "drysau newydd"
         ]
       ],
       "en_yk": [
@@ -163036,14 +163484,14 @@ const SENTENCES = [
       "gsw": [
         [
           "A",
-          "Sprache lerne"
-        ],
-        [
-          "B",
-          "öffnet"
+          "Sprachlerne"
         ],
         [
           "C",
+          "öffnet"
+        ],
+        [
+          "B",
           "neui Türe"
         ]
       ],
@@ -163064,14 +163512,14 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "Learnin a leid"
-        ],
-        [
-          "B",
-          "opens"
+          "Leid learnin"
         ],
         [
           "C",
+          "opens"
+        ],
+        [
+          "B",
           "new doors"
         ]
       ],
@@ -164424,16 +164872,16 @@ const SENTENCES = [
       ],
       "gsw": [
         [
+          "C",
+          "Ich far"
+        ],
+        [
           "A",
-          "Ich"
+          "mit em Velo"
         ],
         [
           "B",
-          "gang"
-        ],
-        [
-          "C",
-          "is Büro mit em Velo"
+          "is Büro"
         ]
       ],
       "fr_qc": [
@@ -164452,16 +164900,16 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "I"
+          "C",
+          "A gang"
         ],
         [
           "B",
-          "gang"
+          "tae the office"
         ],
         [
-          "C",
-          "tae the office by bike"
+          "A",
+          "by bicycle"
         ]
       ],
       "en_sg": [
@@ -165384,12 +165832,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "A",
-          "Le do thoil"
-        ],
-        [
           "D",
-          "cas"
+          "Cas"
         ],
         [
           "C",
@@ -165397,7 +165841,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ag an gcéad chrosbhóthar eile"
+          "ag an gcrosbhóthar seo chugainn"
+        ],
+        [
+          "A",
+          "le do thoil"
         ]
       ],
       "eu": [
@@ -165407,7 +165855,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "hurrengo bidegurutzean"
+          "hurrengo gurutzebidean"
         ],
         [
           "C",
@@ -165528,12 +165976,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "A",
-          "Os gwelwch yn dda"
-        ],
-        [
           "D",
-          "trowch"
+          "Trowch"
         ],
         [
           "C",
@@ -165542,6 +165986,10 @@ const SENTENCES = [
         [
           "B",
           "wrth y groesffordd nesaf"
+        ],
+        [
+          "A",
+          "os gwelwch yn dda"
         ]
       ],
       "en_yk": [
@@ -166136,16 +166584,16 @@ const SENTENCES = [
           "Bitte"
         ],
         [
+          "D",
+          "bieged Si"
+        ],
+        [
           "B",
-          "bieged rächt ab"
+          "a de nöchschte Chrüzig"
         ],
         [
           "C",
-          "a de nöchste"
-        ],
-        [
-          "D",
-          "Chrüzig"
+          "rächts ab"
         ]
       ],
       "fr_qc": [
@@ -166172,16 +166620,16 @@ const SENTENCES = [
           "Please"
         ],
         [
-          "B",
-          "turn richt"
+          "D",
+          "turn"
         ],
         [
           "C",
-          "at the neist"
+          "right"
         ],
         [
-          "D",
-          "crossroads"
+          "B",
+          "at the next junction"
         ]
       ],
       "en_sg": [
@@ -167133,17 +167581,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "taobh thiar den"
+          "taobh thiar de"
         ],
         [
           "C",
-          "stáisiún"
+          "an stáisiún"
         ]
       ],
       "eu": [
         [
           "A",
-          "Supermerkatu"
+          "Supermerkatua"
         ],
         [
           "C",
@@ -167269,19 +167717,19 @@ const SENTENCES = [
       "cy": [
         [
           "D",
-          "Mae"
+          "Mae'r"
         ],
         [
           "A",
-          "'r archfarchnad"
+          "archfarchnad"
         ],
         [
           "B",
-          "y tu ôl i"
+          "y tu ôl i'r"
         ],
         [
           "C",
-          "'r orsaf"
+          "orsaf"
         ]
       ],
       "en_yk": [
@@ -167872,15 +168320,15 @@ const SENTENCES = [
           "De Supermarkt"
         ],
         [
-          "B",
+          "D",
           "isch"
         ],
         [
-          "C",
-          "hinder"
+          "B",
+          "hinter"
         ],
         [
-          "D",
+          "C",
           "em Bahnhof"
         ]
       ],
@@ -167908,15 +168356,15 @@ const SENTENCES = [
           "The supermercat"
         ],
         [
-          "B",
+          "D",
           "is"
         ],
         [
-          "C",
+          "B",
           "ahint"
         ],
         [
-          "D",
+          "C",
           "the station"
         ]
       ],
@@ -168793,18 +169241,18 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Ba mhaith"
+          "Ba mhaith liom"
         ],
         [
           "A",
-          "liom"
+          "mé"
         ],
         [
-          "B",
+          "C",
           "an mias seo"
         ],
         [
-          "D",
+          "B",
           "a ordú"
         ]
       ],
@@ -168818,8 +169266,12 @@ const SENTENCES = [
           "plater hau"
         ],
         [
+          "C",
+          "eskatu"
+        ],
+        [
           "D",
-          "eskatu nahi dut"
+          "nahi dut"
         ]
       ],
       "hu": [
@@ -168924,12 +169376,16 @@ const SENTENCES = [
           "Rydw i eisiau"
         ],
         [
+          "A",
+          "Fi"
+        ],
+        [
           "C",
           "archebu"
         ],
         [
           "B",
-          "y saig hon"
+          "y pryd hwn"
         ]
       ],
       "en_yk": [
@@ -169496,19 +169952,15 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "B",
+          "D",
           "wött"
         ],
         [
-          "C",
-          "das"
-        ],
-        [
-          "D",
-          "Gricht"
-        ],
-        [
           "B",
+          "das Gricht"
+        ],
+        [
+          "C",
           "bestelle"
         ]
       ],
@@ -169533,19 +169985,19 @@ const SENTENCES = [
       "sco": [
         [
           "A",
-          "I"
-        ],
-        [
-          "B",
-          "want tae order"
-        ],
-        [
-          "C",
-          "this"
+          "A"
         ],
         [
           "D",
-          "dish"
+          "want tae"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
         ]
       ],
       "en_sg": [
@@ -170396,8 +170848,12 @@ const SENTENCES = [
       ],
       "ga": [
         [
+          "C",
+          "Cé mhéad"
+        ],
+        [
           "D",
-          "Cé mhéad atá ar"
+          "atá"
         ],
         [
           "A",
@@ -170405,7 +170861,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bronntanas cuimhneacháin seo?"
+          "cuimhneachán seo"
         ]
       ],
       "eu": [
@@ -170423,7 +170879,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "da?"
+          "da"
         ]
       ],
       "hu": [
@@ -170537,15 +170993,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "yw"
-        ],
-        [
-          "A",
-          "y"
+          "yw'r"
         ],
         [
           "B",
-          "swfenîr hwn?"
+          "sŵfenir hwn"
         ]
       ],
       "en_yk": [
@@ -171084,19 +171536,19 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
-          "Wievill"
-        ],
-        [
-          "B",
-          "choschtet"
-        ],
-        [
           "C",
-          "das"
+          "Wieviel"
         ],
         [
           "D",
+          "choschtet"
+        ],
+        [
+          "A",
+          "das"
+        ],
+        [
+          "B",
           "Souvenir"
         ]
       ],
@@ -171116,19 +171568,19 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
-          "Hou much"
-        ],
-        [
-          "B",
-          "is"
-        ],
-        [
           "C",
-          "this"
+          "How much"
         ],
         [
           "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
           "souvenir"
         ]
       ],
@@ -171817,8 +172269,12 @@ const SENTENCES = [
           "Go raibh maith agat"
         ],
         [
+          "C",
+          "as"
+        ],
+        [
           "A",
-          "as gach rud"
+          "gach rud"
         ]
       ],
       "eu": [
@@ -171901,8 +172357,12 @@ const SENTENCES = [
           "Diolch"
         ],
         [
+          "C",
+          "am"
+        ],
+        [
           "A",
-          "am bopeth"
+          "bopeth"
         ]
       ],
       "en_yk": [
@@ -172329,15 +172789,15 @@ const SENTENCES = [
       ],
       "gsw": [
         [
-          "A",
-          "Merci"
-        ],
-        [
           "B",
-          "für"
+          "Danke"
         ],
         [
           "C",
+          "für"
+        ],
+        [
+          "A",
           "alles"
         ]
       ],
@@ -172357,16 +172817,16 @@ const SENTENCES = [
       ],
       "sco": [
         [
-          "A",
+          "B",
           "Thank ye"
         ],
         [
-          "B",
+          "C",
           "for"
         ],
         [
-          "C",
-          "awthing"
+          "A",
+          "awthin"
         ]
       ],
       "en_sg": [
