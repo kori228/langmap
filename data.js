@@ -2362,11 +2362,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Io"
+          "Voglio"
         ],
         [
           "F",
-          "voglio pruvà"
+          "pruvà"
         ],
         [
           "E",
@@ -2388,11 +2388,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
+          "Vògghiu"
         ],
         [
           "F",
-          "vògghiu pruvari"
+          "pruvari"
         ],
         [
           "E",
@@ -3150,11 +3150,11 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "我的"
+          "我ê"
         ],
         [
           "B",
-          "名字"
+          "名"
         ],
         [
           "C",
@@ -4076,7 +4076,7 @@ const SENTENCES = [
       "zh_sc": [
         [
           "A",
-          "我的"
+          "我"
         ],
         [
           "B",
@@ -4084,7 +4084,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "是"
+          "叫"
         ],
         [
           "D",
@@ -4094,7 +4094,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "我的"
+          "俺"
         ],
         [
           "B",
@@ -4102,7 +4102,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "是"
+          "叫"
         ],
         [
           "D",
@@ -6121,21 +6121,21 @@ const SENTENCES = [
         ],
         [
           "E",
-          "七点"
+          "七点钟"
         ],
         [
           "C",
-          "吃"
+          "整"
         ],
         [
           "B",
-          "早饭"
+          "早饭嘞"
         ]
       ],
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "D",
@@ -6147,7 +6147,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "吃"
+          "整"
         ],
         [
           "B",
@@ -6157,15 +6157,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Io"
+          "Faccio"
         ],
         [
           "B",
-          "mango"
-        ],
-        [
-          "C",
-          "'a colazione"
+          "colazione"
         ],
         [
           "D",
@@ -6179,15 +6175,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
+          "Fazzu"
         ],
         [
           "B",
-          "manciu"
-        ],
-        [
-          "C",
-          "a culazioni"
+          "culazioni"
         ],
         [
           "D",
@@ -6226,11 +6218,11 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
+          "C",
           "mange"
         ],
         [
-          "C",
+          "B",
           "le déjeuner"
         ],
         [
@@ -7866,38 +7858,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "C",
+          "Addò sta"
+        ],
+        [
           "A",
-          "Addò"
+          "'a stazione"
         ],
         [
           "B",
-          "sta"
-        ],
-        [
-          "C",
-          "'a cchiù vicina"
-        ],
-        [
-          "D",
-          "stazione"
+          "cchiù vicina"
         ]
       ],
       "scn": [
         [
+          "C",
+          "Unni è"
+        ],
+        [
           "A",
-          "Unni"
+          "a stazioni"
         ],
         [
           "B",
-          "è"
-        ],
-        [
-          "C",
-          "a cchiù vicina"
-        ],
-        [
-          "D",
-          "stazioni"
+          "cchiù vicina"
         ]
       ],
       "gsw": [
@@ -7920,20 +7904,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "C",
           "Où"
         ],
         [
-          "B",
+          "D",
           "est"
         ],
         [
-          "C",
-          "la plus proche"
+          "A",
+          "la gare"
         ],
         [
-          "D",
-          "station"
+          "B",
+          "la plus proche"
         ]
       ],
       "sco": [
@@ -9361,11 +9345,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ពិតជា"
-        ],
-        [
-          "E",
-          "ឆ្ងាញ់"
+          "ពិតជា ឆ្ងាញ់"
         ]
       ],
       "yo": [
@@ -9684,15 +9664,15 @@ const SENTENCES = [
           "cafè"
         ],
         [
-          "C",
+          "D",
           "è"
         ],
         [
-          "D",
+          "C",
           "assaje"
         ],
         [
-          "E",
+          "D",
           "buono"
         ]
       ],
@@ -9706,15 +9686,15 @@ const SENTENCES = [
           "cafè"
         ],
         [
-          "C",
+          "D",
           "è"
         ],
         [
-          "D",
+          "C",
           "assà"
         ],
         [
-          "E",
+          "D",
           "bonu"
         ]
       ],
@@ -9733,11 +9713,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "sehr"
-        ],
-        [
-          "E",
-          "fein"
+          "sehr fein"
         ]
       ],
       "fr_qc": [
@@ -9747,18 +9723,18 @@ const SENTENCES = [
         ],
         [
           "B",
-          "café"
-        ],
-        [
-          "C",
-          "est"
+          "café-là"
         ],
         [
           "D",
+          "est"
+        ],
+        [
+          "C",
           "ben"
         ],
         [
-          "E",
+          "D",
           "bon"
         ]
       ],
@@ -9777,11 +9753,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "gey"
-        ],
-        [
-          "E",
-          "braw"
+          "gey braw"
         ]
       ],
       "en_sg": [
@@ -11371,7 +11343,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "在大学"
+          "在学校头"
         ],
         [
           "D",
@@ -11379,13 +11351,13 @@ const SENTENCES = [
         ],
         [
           "C",
-          "日语"
+          "日语嘞"
         ]
       ],
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "B",
@@ -11397,42 +11369,34 @@ const SENTENCES = [
         ],
         [
           "C",
-          "日语"
+          "日语呢"
         ]
       ],
       "nap": [
         [
           "A",
-          "Io"
-        ],
-        [
-          "B",
-          "studio"
+          "Studio"
         ],
         [
           "C",
-          "'o giapponese"
+          "giapponese"
         ],
         [
-          "D",
-          "a ll'università"
+          "B",
+          "a l'università"
         ]
       ],
       "scn": [
         [
           "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "studiu"
+          "Stùdiu"
         ],
         [
           "C",
-          "u giappunisi"
+          "giappunisi"
         ],
         [
-          "D",
+          "B",
           "a l'università"
         ]
       ],
@@ -11460,7 +11424,7 @@ const SENTENCES = [
           "J'"
         ],
         [
-          "B",
+          "D",
           "étudie"
         ],
         [
@@ -11468,7 +11432,7 @@ const SENTENCES = [
           "le japonais"
         ],
         [
-          "D",
+          "B",
           "à l'université"
         ]
       ],
@@ -12129,7 +12093,7 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "明天"
+          "明朝"
         ],
         [
           "B",
@@ -12141,7 +12105,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "晴天"
+          "晴个"
         ]
       ],
       "es_eu": [
@@ -13116,11 +13080,11 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
+          "B",
           "'O tiempo"
         ],
         [
-          "B",
+          "A",
           "'e dimane"
         ],
         [
@@ -13129,16 +13093,16 @@ const SENTENCES = [
         ],
         [
           "D",
-          "bello"
+          "soleggiato"
         ]
       ],
       "scn": [
         [
-          "A",
+          "B",
           "U tempu"
         ],
         [
-          "B",
+          "A",
           "di dumani"
         ],
         [
@@ -13147,7 +13111,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "bellu"
+          "suliggiatu"
         ]
       ],
       "gsw": [
@@ -13170,11 +13134,11 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "B",
           "La météo"
         ],
         [
-          "B",
+          "A",
           "de demain"
         ],
         [
@@ -14839,44 +14803,36 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A mamma"
-        ],
-        [
-          "B",
-          "mia"
-        ],
-        [
-          "C",
-          "cocina"
-        ],
-        [
-          "D",
-          "'a cena"
-        ],
-        [
-          "E",
-          "ogne juorno"
-        ]
-      ],
-      "scn": [
-        [
-          "A",
-          "A me"
-        ],
-        [
-          "B",
-          "matri"
+          "Mamma mia"
         ],
         [
           "C",
           "cucina"
         ],
         [
+          "B",
+          "'a cena"
+        ],
+        [
           "D",
+          "ogne juorno"
+        ]
+      ],
+      "scn": [
+        [
+          "A",
+          "Me matri"
+        ],
+        [
+          "C",
+          "cucina"
+        ],
+        [
+          "B",
           "a cena"
         ],
         [
-          "E",
+          "D",
           "ogni jornu"
         ]
       ],
@@ -14895,33 +14851,25 @@ const SENTENCES = [
         ],
         [
           "D",
-          "s Znacht"
-        ],
-        [
-          "E",
-          "jede Tag"
+          "s Znacht jede Tag"
         ]
       ],
       "fr_qc": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "mère"
+          "Ma mère"
         ],
         [
           "C",
-          "cuisine"
+          "prépare"
         ],
         [
-          "D",
+          "B",
           "le souper"
         ],
         [
-          "E",
-          "chaque jour"
+          "D",
+          "tous les jours"
         ]
       ],
       "sco": [
@@ -14939,11 +14887,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "denner"
-        ],
-        [
-          "E",
-          "ilka day"
+          "denner ilka day"
         ]
       ],
       "en_sg": [
@@ -15099,7 +15043,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "明年"
+          "出年"
         ],
         [
           "C",
@@ -15575,7 +15519,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "想去"
+          "欲去"
         ],
         [
           "B",
@@ -15593,11 +15537,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "想去"
+          "想到"
         ],
         [
           "B",
-          "日本"
+          "日本去"
         ]
       ],
       "es_eu": [
@@ -16567,7 +16511,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "D",
@@ -16575,7 +16519,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "想去"
+          "寻思去"
         ],
         [
           "B",
@@ -16585,15 +16529,15 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio ì"
+          "Voglio"
         ],
         [
           "C",
-          "'n Giappone"
+          "jì"
+        ],
+        [
+          "B",
+          "int'ô Giappone"
         ],
         [
           "D",
@@ -16603,15 +16547,15 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu jiri"
+          "Vògghiu"
         ],
         [
           "C",
-          "'n Giappuni"
+          "jiri"
+        ],
+        [
+          "B",
+          "n Giappuni"
         ],
         [
           "D",
@@ -16646,11 +16590,11 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
+          "C",
           "veux aller"
         ],
         [
-          "C",
+          "B",
           "au Japon"
         ],
         [
@@ -18314,30 +18258,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "B",
-          "Tu"
-        ],
-        [
-          "C",
-          "saje parlà"
-        ],
-        [
           "D",
-          "'ngrese"
+          "Parlate"
+        ],
+        [
+          "A",
+          "vuje"
+        ],
+        [
+          "B",
+          "inglese"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Poi"
-        ],
-        [
-          "C",
-          "parrari"
-        ],
-        [
           "D",
-          "ngrisi"
+          "Parra"
+        ],
+        [
+          "A",
+          "vossia"
+        ],
+        [
+          "B",
+          "nglisi"
         ]
       ],
       "gsw": [
@@ -18357,11 +18301,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Tu parles-tu"
+          "Tu"
+        ],
+        [
+          "C",
+          "parles-tu"
+        ],
+        [
+          "B",
+          "anglais"
         ],
         [
           "D",
-          "anglais"
+          "?"
         ]
       ],
       "sco": [
@@ -20651,11 +20603,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "在书店"
+          "在书店头"
         ],
         [
           "C",
-          "买了"
+          "买到"
         ],
         [
           "D",
@@ -20663,7 +20615,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "新书"
+          "新书嘞"
         ]
       ],
       "zh_db": [
@@ -20673,7 +20625,7 @@ const SENTENCES = [
         ],
         [
           "F",
-          "昨天"
+          "昨个儿"
         ],
         [
           "B",
@@ -20681,7 +20633,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "买了"
+          "整了"
         ],
         [
           "D",
@@ -20694,46 +20646,54 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "E",
-          "Ieri"
-        ],
-        [
           "A",
-          "io"
-        ],
-        [
-          "B",
-          "aggio accattato"
+          "Aggio"
         ],
         [
           "C",
-          "nu libro nuovo"
+          "accattato"
         ],
         [
           "D",
+          "nu libro"
+        ],
+        [
+          "E",
+          "nuovo"
+        ],
+        [
+          "B",
           "a 'a libreria"
+        ],
+        [
+          "F",
+          "ajere"
         ]
       ],
       "scn": [
         [
-          "E",
-          "Aieri"
-        ],
-        [
           "A",
-          "iu"
-        ],
-        [
-          "B",
-          "accattai"
+          "Mi"
         ],
         [
           "C",
-          "un libru novu"
+          "accattai"
         ],
         [
           "D",
-          "a la libreria"
+          "un libbru"
+        ],
+        [
+          "E",
+          "novu"
+        ],
+        [
+          "B",
+          "ntâ librarìa"
+        ],
+        [
+          "F",
+          "aieri"
         ]
       ],
       "gsw": [
@@ -20764,24 +20724,28 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "E",
-          "Hier"
-        ],
-        [
           "A",
-          "j'"
-        ],
-        [
-          "B",
-          "ai acheté"
+          "J'"
         ],
         [
           "C",
-          "un nouveau livre"
+          "ai acheté"
         ],
         [
           "D",
+          "un nouveau"
+        ],
+        [
+          "E",
+          "livre"
+        ],
+        [
+          "B",
           "à la librairie"
+        ],
+        [
+          "F",
+          "hier"
         ]
       ],
       "sco": [
@@ -22472,38 +22436,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "C",
+          "'E sciure 'e ceraso"
+        ],
+        [
           "A",
-          "'E cirase 'n fiore"
+          "int'a chisto"
         ],
         [
           "B",
-          "'e chisto parco"
-        ],
-        [
-          "C",
-          "so"
+          "parco"
         ],
         [
           "D",
-          "belle"
+          "so' bellisseme"
         ]
       ],
       "scn": [
         [
+          "C",
+          "I sciuri di cirasa"
+        ],
+        [
           "A",
-          "I ciuri di cirasa"
+          "nti chistu"
         ],
         [
           "B",
-          "di stu parcu"
-        ],
-        [
-          "C",
-          "sunnu"
+          "parcu"
         ],
         [
           "D",
-          "beddi"
+          "sunnu bellissimi"
         ]
       ],
       "gsw": [
@@ -22526,20 +22490,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "C",
+          "Les cerisiers en fleur"
+        ],
+        [
           "A",
-          "Les cerisiers en fleurs"
+          "dans ce"
         ],
         [
           "B",
-          "dans ce parc"
-        ],
-        [
-          "C",
-          "sont"
+          "parc-là"
         ],
         [
           "D",
-          "beaux"
+          "sont ben beaux"
         ]
       ],
       "sco": [
@@ -23163,7 +23127,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "给"
+          "拨"
         ],
         [
           "B",
@@ -24046,11 +24010,11 @@ const SENTENCES = [
           "Pe piacere"
         ],
         [
-          "B",
-          "dàteme"
+          "D",
+          "me purtate"
         ],
         [
-          "D",
+          "C",
           "nu bicchiere d'acqua"
         ]
       ],
@@ -24060,11 +24024,11 @@ const SENTENCES = [
           "Pi favuri"
         ],
         [
-          "B",
-          "dàtimi"
+          "D",
+          "mi purtassi"
         ],
         [
-          "D",
+          "C",
           "un biccheri d'acqua"
         ]
       ],
@@ -24092,15 +24056,15 @@ const SENTENCES = [
           "S'il vous plaît"
         ],
         [
-          "B",
+          "D",
           "donnez"
         ],
         [
-          "C",
+          "B",
           "-moi"
         ],
         [
-          "D",
+          "C",
           "un verre d'eau"
         ]
       ],
@@ -26058,7 +26022,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "E",
@@ -26074,20 +26038,16 @@ const SENTENCES = [
         ],
         [
           "B",
-          "上班"
+          "上班呗"
         ]
       ],
       "nap": [
         [
           "A",
-          "Io"
+          "Vaco"
         ],
         [
           "B",
-          "vaco"
-        ],
-        [
-          "C",
           "a faticà"
         ],
         [
@@ -26102,19 +26062,15 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
+          "Vaju"
         ],
         [
           "B",
-          "vaiu"
-        ],
-        [
-          "C",
-          "a travagghiari"
+          "ô travàgghiu"
         ],
         [
           "D",
-          "cu u trenu"
+          "cû trenu"
         ],
         [
           "E",
@@ -26149,12 +26105,12 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
+          "C",
           "vais"
         ],
         [
-          "C",
-          "travailler"
+          "B",
+          "à job"
         ],
         [
           "D",
@@ -26162,7 +26118,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "chaque jour"
+          "tous les jours"
         ]
       ],
       "sco": [
@@ -26842,11 +26798,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "正"
+          "勒海"
         ],
         [
           "B",
-          "在法国"
+          "法国"
         ],
         [
           "C",
@@ -27822,37 +27778,37 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A sora"
-        ],
-        [
-          "B",
-          "mia piccerella"
-        ],
-        [
-          "C",
-          "studia fora"
+          "'A sora mia piccerella"
         ],
         [
           "D",
-          "'n Francia"
+          "sta"
+        ],
+        [
+          "C",
+          "studianno fora"
+        ],
+        [
+          "B",
+          "int'â Francia"
         ]
       ],
       "scn": [
         [
           "A",
-          "A me"
-        ],
-        [
-          "B",
-          "soru picciridda"
-        ],
-        [
-          "C",
-          "studia fora"
+          "Me soru nica"
         ],
         [
           "D",
-          "'n Francia"
+          "sta"
+        ],
+        [
+          "C",
+          "studiannu fora"
+        ],
+        [
+          "B",
+          "n Francia"
         ]
       ],
       "gsw": [
@@ -27876,18 +27832,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "petite sœur"
-        ],
-        [
-          "C",
-          "étudie à l'étranger"
+          "Ma p'tite sœur"
         ],
         [
           "D",
+          "est en train d'"
+        ],
+        [
+          "C",
+          "étudier à l'étranger"
+        ],
+        [
+          "B",
           "en France"
         ]
       ],
@@ -28480,7 +28436,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "几点"
+          "几点钟"
         ],
         [
           "C",
@@ -29366,7 +29322,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "几点"
+          "啥时候"
         ],
         [
           "C",
@@ -29379,11 +29335,11 @@ const SENTENCES = [
           "A che ora"
         ],
         [
-          "D",
+          "C",
           "accumencia"
         ],
         [
-          "C",
+          "B",
           "'o film"
         ]
       ],
@@ -29393,11 +29349,11 @@ const SENTENCES = [
           "A chi ura"
         ],
         [
-          "D",
+          "C",
           "accumenza"
         ],
         [
-          "C",
+          "B",
           "u film"
         ]
       ],
@@ -29426,11 +29382,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "le film"
+          "commence"
         ],
         [
-          "D",
-          "commence-tu"
+          "B",
+          "le film"
         ]
       ],
       "sco": [
@@ -31357,11 +31313,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "有"
+          "有个"
         ],
         [
           "B",
-          "会"
+          "会嘞"
         ]
       ],
       "zh_db": [
@@ -31379,24 +31335,20 @@ const SENTENCES = [
         ],
         [
           "C",
-          "有"
+          "有个"
         ],
         [
           "B",
-          "会"
+          "会呢"
         ]
       ],
       "nap": [
         [
           "A",
-          "Io"
+          "Tengo"
         ],
         [
           "B",
-          "tengo"
-        ],
-        [
-          "C",
           "'na riunione"
         ],
         [
@@ -31411,14 +31363,10 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
+          "Haiu"
         ],
         [
           "B",
-          "haiu"
-        ],
-        [
-          "C",
           "na riunioni"
         ],
         [
@@ -31427,7 +31375,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "sta dopumizzijornu"
+          "stu doputranzatu"
         ]
       ],
       "gsw": [
@@ -31458,12 +31406,12 @@ const SENTENCES = [
           "J'"
         ],
         [
-          "B",
+          "C",
           "ai"
         ],
         [
-          "C",
-          "une réunion"
+          "B",
+          "un meeting"
         ],
         [
           "D",
@@ -31471,7 +31419,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "cet après-midi"
+          "à l'après-midi"
         ]
       ],
       "sco": [
@@ -33191,11 +33139,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "太"
+          "硬是"
         ],
         [
           "D",
-          "贵了嘛"
+          "贵得很哦"
         ]
       ],
       "zh_db": [
@@ -33219,22 +33167,22 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Chista"
+          "Chesta"
         ],
         [
           "B",
           "borza"
         ],
         [
-          "C",
+          "D",
           "è"
         ],
         [
-          "D",
+          "C",
           "troppo"
         ],
         [
-          "E",
+          "D",
           "cara"
         ]
       ],
@@ -33245,18 +33193,18 @@ const SENTENCES = [
         ],
         [
           "B",
-          "bùrza"
-        ],
-        [
-          "C",
-          "è"
+          "vurza"
         ],
         [
           "D",
+          "è"
+        ],
+        [
+          "C",
           "troppu"
         ],
         [
-          "E",
+          "D",
           "cara"
         ]
       ],
@@ -33275,11 +33223,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "z"
-        ],
-        [
-          "E",
-          "tüür"
+          "z tüür"
         ]
       ],
       "fr_qc": [
@@ -33289,18 +33233,18 @@ const SENTENCES = [
         ],
         [
           "B",
-          "sac"
-        ],
-        [
-          "C",
-          "est"
+          "sac-là"
         ],
         [
           "D",
-          "ben trop"
+          "est"
         ],
         [
-          "E",
+          "C",
+          "trop"
+        ],
+        [
+          "D",
           "cher"
         ]
       ],
@@ -33319,11 +33263,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ower"
-        ],
-        [
-          "E",
-          "dear"
+          "ower dear"
         ]
       ],
       "en_sg": [
@@ -33977,7 +33917,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "欢喜"
+          "老欢喜"
         ],
         [
           "C",
@@ -33985,7 +33925,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "音乐"
+          "音乐个"
         ]
       ],
       "es_eu": [
@@ -34933,7 +34873,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "喜欢"
+          "好爱"
         ],
         [
           "C",
@@ -34941,7 +34881,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "音乐"
+          "音乐哦"
         ]
       ],
       "zh_db": [
@@ -34964,30 +34904,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "C",
-          "Me piace"
-        ],
-        [
-          "B",
-          "ascultà"
+          "A",
+          "Me"
         ],
         [
           "D",
+          "piace"
+        ],
+        [
+          "C",
+          "ascultà"
+        ],
+        [
+          "B",
           "'a musica"
         ]
       ],
       "scn": [
         [
-          "C",
-          "Mi piaci"
-        ],
-        [
-          "B",
-          "ascutari"
+          "A",
+          "Mi"
         ],
         [
           "D",
-          "a mùsica"
+          "piaci"
+        ],
+        [
+          "C",
+          "ascutari"
+        ],
+        [
+          "B",
+          "mùsica"
         ]
       ],
       "gsw": [
@@ -35014,7 +34962,7 @@ const SENTENCES = [
           "J'"
         ],
         [
-          "B",
+          "D",
           "aime"
         ],
         [
@@ -35022,8 +34970,8 @@ const SENTENCES = [
           "écouter"
         ],
         [
-          "D",
-          "de la musique"
+          "B",
+          "d'la musique"
         ]
       ],
       "sco": [
@@ -36545,7 +36493,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "从今天早上"
+          "从早上"
         ],
         [
           "C",
@@ -36553,39 +36501,39 @@ const SENTENCES = [
         ],
         [
           "B",
-          "一直"
+          "就一直"
         ],
         [
           "D",
-          "下雨呢"
+          "下雨呢哈"
         ]
       ],
       "nap": [
         [
-          "B",
-          "Chiove"
-        ],
-        [
           "C",
-          "da"
+          "Sta"
         ],
         [
-          "D",
-          "stammatina"
+          "B",
+          "chiuvenno"
+        ],
+        [
+          "A",
+          "da stammatina"
         ]
       ],
       "scn": [
         [
-          "B",
-          "Chiovi"
-        ],
-        [
           "C",
-          "di"
+          "Sta"
         ],
         [
-          "D",
-          "stamatina"
+          "B",
+          "chiuvènnu"
+        ],
+        [
+          "A",
+          "di stamattina"
         ]
       ],
       "gsw": [
@@ -36608,20 +36556,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Il"
+          "C",
+          "Y"
         ],
         [
           "B",
           "mouille"
         ],
         [
-          "C",
-          "depuis"
-        ],
-        [
-          "D",
-          "à matin"
+          "A",
+          "depuis à matin"
         ]
       ],
       "sco": [
@@ -38531,38 +38475,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "D",
-          "Stasera"
-        ],
-        [
           "A",
-          "io"
-        ],
-        [
-          "B",
-          "mangio"
+          "Mango"
         ],
         [
           "C",
-          "cu ll'amice"
+          "cu 'e amice"
+        ],
+        [
+          "B",
+          "stasera"
         ]
       ],
       "scn": [
         [
-          "D",
+          "A",
           "Stasira"
         ],
         [
-          "A",
-          "iu"
+          "C",
+          "cû l'amici"
         ],
         [
           "B",
-          "manciu"
-        ],
-        [
-          "C",
-          "cu l'amici"
+          "cenarò"
         ]
       ],
       "gsw": [
@@ -38589,20 +38525,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "D",
-          "À soir"
-        ],
-        [
           "A",
-          "je"
+          "Je"
         ],
         [
-          "B",
-          "soupe"
+          "E",
+          "vais souper"
         ],
         [
           "C",
-          "avec des amis"
+          "avec des chums"
+        ],
+        [
+          "B",
+          "à soir"
         ]
       ],
       "sco": [
@@ -40533,15 +40469,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "学"
+          "学个"
         ],
         [
           "B",
-          "一门新的"
+          "新的"
         ],
         [
           "C",
-          "语言"
+          "语言噻"
         ]
       ],
       "zh_db": [
@@ -40551,54 +40487,54 @@ const SENTENCES = [
         ],
         [
           "E",
-          "想"
+          "寻思"
         ],
         [
           "D",
-          "学"
+          "整个"
         ],
         [
           "B",
-          "一门新的"
+          "新的"
         ],
         [
           "C",
-          "语言"
+          "语言学学"
         ]
       ],
       "nap": [
         [
           "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio 'mparà"
-        ],
-        [
-          "C",
-          "'na nova"
+          "Voglio"
         ],
         [
           "D",
+          "'mparà"
+        ],
+        [
+          "B",
+          "'na nova"
+        ],
+        [
+          "C",
           "lengua"
         ]
       ],
       "scn": [
         [
           "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu 'mparari"
-        ],
-        [
-          "C",
-          "na nova"
+          "Vògghiu"
         ],
         [
           "D",
+          "mparari"
+        ],
+        [
+          "B",
+          "na nova"
+        ],
+        [
+          "C",
           "lingua"
         ]
       ],
@@ -40630,15 +40566,19 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux apprendre"
-        ],
-        [
-          "C",
-          "une nouvelle"
+          "E",
+          "veux"
         ],
         [
           "D",
+          "apprendre"
+        ],
+        [
+          "B",
+          "une nouvelle"
+        ],
+        [
+          "C",
           "langue"
         ]
       ],
@@ -42279,7 +42219,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "旁边"
+          "边边上"
         ]
       ],
       "zh_db": [
@@ -42289,7 +42229,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "在"
+          "搁"
         ],
         [
           "C",
@@ -42297,7 +42237,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "旁边儿"
+          "旁边儿呢"
         ]
       ],
       "nap": [
@@ -42306,34 +42246,34 @@ const SENTENCES = [
           "'A biblioteca"
         ],
         [
-          "B",
+          "D",
           "sta"
         ],
         [
-          "C",
-          "vicino a"
+          "B",
+          "accanto"
         ],
         [
-          "D",
-          "ll'ospedale"
+          "C",
+          "a l'ospedale"
         ]
       ],
       "scn": [
         [
           "A",
-          "A biblioteca"
-        ],
-        [
-          "B",
-          "è"
-        ],
-        [
-          "C",
-          "accantu a"
+          "A bibliuteca"
         ],
         [
           "D",
-          "l'uspidali"
+          "è"
+        ],
+        [
+          "B",
+          "allatu"
+        ],
+        [
+          "C",
+          "ô spitali"
         ]
       ],
       "gsw": [
@@ -42360,15 +42300,15 @@ const SENTENCES = [
           "La bibliothèque"
         ],
         [
-          "B",
+          "D",
           "est"
         ],
         [
-          "C",
+          "B",
           "à côté de"
         ],
         [
-          "D",
+          "C",
           "l'hôpital"
         ]
       ],
@@ -42993,11 +42933,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "给我"
+          "拨我"
         ],
         [
           "B",
-          "看"
+          "看看"
         ],
         [
           "C",
@@ -43876,12 +43816,12 @@ const SENTENCES = [
           "Pe piacere"
         ],
         [
-          "B",
-          "facìteme vedé"
+          "D",
+          "me facite vedé"
         ],
         [
-          "D",
-          "'o menù"
+          "C",
+          "'o menu"
         ]
       ],
       "scn": [
@@ -43890,12 +43830,12 @@ const SENTENCES = [
           "Pi favuri"
         ],
         [
-          "B",
-          "mustrátimi"
+          "D",
+          "mi mustrassi"
         ],
         [
-          "D",
-          "u menù"
+          "C",
+          "u menu"
         ]
       ],
       "gsw": [
@@ -43919,19 +43859,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "S'il vous plaît"
-        ],
-        [
-          "B",
-          "montrez"
-        ],
-        [
-          "C",
-          "-moi"
+          "Pouvez-vous"
         ],
         [
           "D",
-          "le menu"
+          "me montrer"
+        ],
+        [
+          "C",
+          "la carte"
+        ],
+        [
+          "A",
+          "s'il vous plaît"
         ]
       ],
       "sco": [
@@ -45786,37 +45726,45 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O pate"
+          "Patemo"
         ],
         [
-          "B",
-          "mio"
-        ],
-        [
-          "C",
+          "E",
           "fatica"
         ],
         [
+          "B",
+          "int'a"
+        ],
+        [
+          "C",
+          "'na grossa"
+        ],
+        [
           "D",
-          "a 'na grossa ditta"
+          "azienda"
         ]
       ],
       "scn": [
         [
           "A",
-          "U me"
+          "Me patri"
+        ],
+        [
+          "E",
+          "travàgghia"
         ],
         [
           "B",
-          "patri"
+          "nti"
         ],
         [
           "C",
-          "travagghia"
+          "na granni"
         ],
         [
           "D",
-          "nti na granni ditta"
+          "azzienda"
         ]
       ],
       "gsw": [
@@ -45840,19 +45788,23 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Mon"
+          "Mon père"
         ],
         [
-          "B",
-          "père"
-        ],
-        [
-          "C",
+          "E",
           "travaille"
         ],
         [
+          "B",
+          "dans"
+        ],
+        [
+          "C",
+          "une grosse"
+        ],
+        [
           "D",
-          "dans une grosse compagnie"
+          "compagnie"
         ]
       ],
       "sco": [
@@ -47495,11 +47447,15 @@ const SENTENCES = [
           "'E criature"
         ],
         [
-          "B",
-          "jocano"
+          "D",
+          "stanno"
         ],
         [
           "C",
+          "jucanno"
+        ],
+        [
+          "B",
           "int'ô parco"
         ]
       ],
@@ -47509,12 +47465,16 @@ const SENTENCES = [
           "I picciriddi"
         ],
         [
-          "B",
-          "jòcanu"
+          "D",
+          "stannu"
         ],
         [
           "C",
-          "ntu parcu"
+          "jucànnu"
+        ],
+        [
+          "B",
+          "ntô parcu"
         ]
       ],
       "gsw": [
@@ -47537,11 +47497,15 @@ const SENTENCES = [
           "Les enfants"
         ],
         [
-          "B",
-          "jouent"
+          "D",
+          "sont"
         ],
         [
           "C",
+          "en train de jouer"
+        ],
+        [
+          "B",
           "dans le parc"
         ]
       ],
@@ -49148,42 +49112,34 @@ const SENTENCES = [
         ],
         [
           "C",
-          "三回"
+          "三回了"
         ]
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "D",
+          "So' ghiuto"
         ],
         [
           "B",
-          "so' ghiuto"
-        ],
-        [
-          "C",
           "a Tokyo"
         ],
         [
-          "D",
+          "C",
           "tre vote"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "D",
+          "Jivi"
         ],
         [
           "B",
-          "ci fuiiu"
-        ],
-        [
-          "C",
           "a Tokyo"
         ],
         [
-          "D",
+          "C",
           "tri voti"
         ]
       ],
@@ -49212,18 +49168,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Je"
-        ],
-        [
-          "B",
-          "suis allé"
-        ],
-        [
-          "C",
-          "à Tokyo"
+          "J'"
         ],
         [
           "D",
+          "suis allé"
+        ],
+        [
+          "B",
+          "à Tokyo"
+        ],
+        [
+          "C",
           "trois fois"
         ]
       ],
@@ -50759,29 +50715,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Putite"
+          "D",
+          "Me putite"
         ],
         [
           "C",
-          "cunzigliamme"
+          "cunsiglià"
         ],
         [
-          "D",
+          "B",
           "nu buono ristorante"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Putissivu"
+          "D",
+          "Putissi"
         ],
         [
           "C",
-          "raccumannàrimi"
+          "cunsigliarimi"
         ],
         [
-          "D",
+          "B",
           "un bonu ristoranti"
         ]
       ],
@@ -50809,7 +50765,7 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "D",
           "Pourriez-vous"
         ],
         [
@@ -50817,7 +50773,7 @@ const SENTENCES = [
           "me recommander"
         ],
         [
-          "D",
+          "B",
           "un bon restaurant"
         ]
       ],
@@ -52461,16 +52417,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Aggio scurdato"
         ],
         [
           "B",
-          "aggio scurdato"
-        ],
-        [
-          "C",
-          "ll'ombrello mio"
+          "'o paracqua mio"
         ],
         [
           "D",
@@ -52479,20 +52431,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Mi scurdai"
         ],
         [
           "B",
-          "scurdai"
-        ],
-        [
-          "C",
           "u me parapioggia"
         ],
         [
           "D",
-          "ntu trenu"
+          "supra u trenu"
         ]
       ],
       "gsw": [
@@ -52520,14 +52468,14 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'"
-        ],
-        [
-          "B",
-          "ai oublié"
+          "J'ai"
         ],
         [
           "C",
+          "oublié"
+        ],
+        [
+          "B",
           "mon parapluie"
         ],
         [
@@ -54489,7 +54437,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "弹得贼好"
+          "弹得贼拉好"
         ]
       ],
       "nap": [
@@ -54498,12 +54446,16 @@ const SENTENCES = [
           "Essa"
         ],
         [
-          "B",
-          "sape sunà"
+          "E",
+          "sape"
         ],
         [
           "C",
-          "'o piano"
+          "sunà"
+        ],
+        [
+          "B",
+          "'o pianoforte"
         ],
         [
           "D",
@@ -54516,16 +54468,20 @@ const SENTENCES = [
           "Idda"
         ],
         [
-          "B",
-          "sapi sunari"
+          "E",
+          "sapi"
         ],
         [
           "C",
-          "u pianu"
+          "sunari"
+        ],
+        [
+          "B",
+          "u pianoforti"
         ],
         [
           "D",
-          "assà bonu"
+          "assà beni"
         ]
       ],
       "gsw": [
@@ -54553,19 +54509,23 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
+          "A"
         ],
         [
-          "B",
-          "est capable de jouer"
+          "E",
+          "est capable de"
         ],
         [
           "C",
+          "jouer"
+        ],
+        [
+          "B",
           "du piano"
         ],
         [
           "D",
-          "très bien"
+          "ben comme faut"
         ]
       ],
       "sco": [
@@ -55838,7 +55798,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "下周一"
+          "下个礼拜一"
         ]
       ],
       "zh_db": [
@@ -55848,11 +55808,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "是"
+          "搁"
         ],
         [
           "B",
-          "下周一"
+          "下周一呢"
         ]
       ],
       "nap": [
@@ -55861,16 +55821,12 @@ const SENTENCES = [
           "L'esame"
         ],
         [
-          "B",
+          "C",
           "è"
         ],
         [
-          "C",
-          "lunnerì"
-        ],
-        [
-          "D",
-          "ca vene"
+          "B",
+          "lunnerì ca vene"
         ]
       ],
       "scn": [
@@ -55879,16 +55835,12 @@ const SENTENCES = [
           "L'esami"
         ],
         [
-          "B",
+          "C",
           "è"
         ],
         [
-          "C",
-          "lunnidì"
-        ],
-        [
-          "D",
-          "chi veni"
+          "B",
+          "lunnidì chi veni"
         ]
       ],
       "gsw": [
@@ -55902,11 +55854,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "nöchste"
-        ],
-        [
-          "D",
-          "Mäntig"
+          "nöchste Mäntig"
         ]
       ],
       "fr_qc": [
@@ -55915,16 +55863,12 @@ const SENTENCES = [
           "L'examen"
         ],
         [
-          "B",
-          "est"
-        ],
-        [
           "C",
-          "lundi"
+          "c'est"
         ],
         [
-          "D",
-          "prochain"
+          "B",
+          "lundi prochain"
         ]
       ],
       "sco": [
@@ -55938,11 +55882,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "neist"
-        ],
-        [
-          "D",
-          "Monday"
+          "neist Monday"
         ]
       ],
       "en_sg": [
@@ -57729,7 +57669,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "想"
+          "寻思"
         ],
         [
           "D",
@@ -57737,7 +57677,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "吃"
+          "整点儿"
         ],
         [
           "B",
@@ -57746,38 +57686,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio mangià"
+          "E",
+          "Voglio"
         ],
         [
           "C",
+          "mangià"
+        ],
+        [
+          "B",
           "sushi"
         ],
         [
           "D",
-          "pe pranzo"
+          "a merenna"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu manciari"
+          "E",
+          "Vògghiu"
         ],
         [
           "C",
+          "manciari"
+        ],
+        [
+          "B",
           "sushi"
         ],
         [
           "D",
-          "pi pranzu"
+          "a pranzu"
         ]
       ],
       "gsw": [
@@ -57808,12 +57748,16 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux manger"
+          "E",
+          "veux"
         ],
         [
           "C",
-          "du sushi"
+          "manger"
+        ],
+        [
+          "B",
+          "des sushis"
         ],
         [
           "D",
@@ -59417,44 +59361,36 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A cammera"
+          "'A cammera d'ô hotel"
         ],
         [
           "B",
-          "'e ll'hotel"
-        ],
-        [
-          "C",
           "era"
         ],
         [
-          "D",
+          "C",
           "assaje"
         ],
         [
-          "E",
+          "D",
           "pulita"
         ]
       ],
       "scn": [
         [
           "A",
-          "A càmmara"
+          "A stanza dû hotel"
         ],
         [
           "B",
-          "di l'hotel"
-        ],
-        [
-          "C",
           "era"
         ],
         [
-          "D",
+          "C",
           "assà"
         ],
         [
-          "E",
+          "D",
           "pulita"
         ]
       ],
@@ -59469,11 +59405,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "sehr"
-        ],
-        [
-          "E",
-          "suuber"
+          "sehr suuber"
         ],
         [
           "C",
@@ -59483,22 +59415,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "La chambre"
+          "La chambre d'hôtel"
         ],
         [
           "B",
-          "d'hôtel"
-        ],
-        [
-          "C",
           "était"
         ],
         [
-          "D",
+          "C",
           "ben"
         ],
         [
-          "E",
+          "D",
           "propre"
         ]
       ],
@@ -59517,11 +59445,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "gey"
-        ],
-        [
-          "E",
-          "clean"
+          "gey clean"
         ]
       ],
       "en_sg": [
@@ -60811,12 +60735,12 @@ const SENTENCES = [
           "Pe piacere"
         ],
         [
-          "B",
+          "C",
           "parlate"
         ],
         [
-          "C",
-          "cchiù adacio"
+          "B",
+          "cchiù chiano"
         ]
       ],
       "scn": [
@@ -60825,12 +60749,12 @@ const SENTENCES = [
           "Pi favuri"
         ],
         [
-          "B",
-          "parrati"
+          "C",
+          "parrassi"
         ],
         [
-          "C",
-          "cchiù adaciu"
+          "B",
+          "cchiù lentu"
         ]
       ],
       "gsw": [
@@ -60853,11 +60777,11 @@ const SENTENCES = [
           "S'il vous plaît"
         ],
         [
-          "B",
+          "C",
           "parlez"
         ],
         [
-          "C",
+          "B",
           "plus lentement"
         ]
       ],
@@ -61375,7 +61299,7 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "我哥哥"
+          "我阿哥"
         ],
         [
           "C",
@@ -62135,7 +62059,7 @@ const SENTENCES = [
       "zh_sc": [
         [
           "A",
-          "我哥"
+          "我哥老倌"
         ],
         [
           "C",
@@ -62143,13 +62067,13 @@ const SENTENCES = [
         ],
         [
           "B",
-          "结婚了"
+          "结婚嘞"
         ]
       ],
       "zh_db": [
         [
           "A",
-          "我哥"
+          "俺哥"
         ],
         [
           "C",
@@ -62157,42 +62081,34 @@ const SENTENCES = [
         ],
         [
           "B",
-          "结婚了"
+          "结婚了呗"
         ]
       ],
       "nap": [
         [
           "A",
-          "'O frate"
+          "'O frate mio gruosso"
         ],
         [
           "B",
-          "mio gruosso"
+          "s'è spusato"
         ],
         [
           "C",
-          "s'è maritato"
-        ],
-        [
-          "D",
           "'o mese passato"
         ]
       ],
       "scn": [
         [
           "A",
-          "U me"
+          "Me frati granni"
         ],
         [
           "B",
-          "frati granni"
+          "si maritau"
         ],
         [
           "C",
-          "s'accasau"
-        ],
-        [
-          "D",
           "u misi passatu"
         ]
       ],
@@ -62207,28 +62123,20 @@ const SENTENCES = [
         ],
         [
           "C",
-          "het ghürate"
-        ],
-        [
-          "D",
-          "letzte Monet"
+          "het ghürate letzte Monet"
         ]
       ],
       "fr_qc": [
         [
           "A",
-          "Mon"
+          "Mon grand frère"
         ],
         [
           "B",
-          "grand frère"
-        ],
-        [
-          "C",
           "s'est marié"
         ],
         [
-          "D",
+          "C",
           "le mois passé"
         ]
       ],
@@ -62243,11 +62151,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "got mairrit"
-        ],
-        [
-          "D",
-          "last month"
+          "got mairrit last month"
         ]
       ],
       "en_sg": [
@@ -63856,38 +63760,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
+          "D",
           "Ce stanno"
         ],
         [
-          "B",
+          "A",
           "assaje"
         ],
         [
-          "C",
-          "gente"
+          "B",
+          "perzone"
         ],
         [
-          "D",
+          "C",
           "a 'a stazione"
         ]
       ],
       "scn": [
         [
-          "A",
+          "D",
           "Ci sunnu"
         ],
         [
-          "B",
+          "A",
           "assà"
         ],
         [
-          "C",
+          "B",
           "pirsuni"
         ],
         [
-          "D",
-          "a la stazioni"
+          "C",
+          "â stazioni"
         ]
       ],
       "gsw": [
@@ -63910,20 +63814,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Il y a"
+          "D",
+          "Y'a"
         ],
         [
-          "B",
+          "A",
           "ben du"
         ],
         [
-          "C",
+          "B",
           "monde"
         ],
         [
-          "D",
-          "à la station"
+          "C",
+          "à la gare"
         ]
       ],
       "sco": [
@@ -64714,7 +64618,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "需要"
+          "要"
         ],
         [
           "E",
@@ -65881,38 +65785,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
           "B",
-          "aggi'a accattà"
+          "Aggi'a"
         ],
         [
-          "C",
-          "nu riale"
+          "E",
+          "accattà"
         ],
         [
           "D",
-          "pe 'o compleanno"
+          "nu regalio"
+        ],
+        [
+          "C",
+          "'e compleanno"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
           "B",
-          "haiu a accattari"
+          "Haiu a"
         ],
         [
-          "C",
-          "un rigalu"
+          "E",
+          "accattari"
         ],
         [
           "D",
-          "pi u complejannu"
+          "un rigalu"
+        ],
+        [
+          "C",
+          "di cumpliannu"
         ]
       ],
       "gsw": [
@@ -65936,18 +65840,22 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Il faut que j'"
+          "Je"
         ],
         [
           "B",
-          "achète"
+          "dois"
         ],
         [
-          "C",
-          "un cadeau"
+          "E",
+          "acheter"
         ],
         [
           "D",
+          "un cadeau"
+        ],
+        [
+          "C",
           "de fête"
         ]
       ],
@@ -66736,12 +66644,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Tá"
-        ],
-        [
           "B",
-          "an luí gréine"
+          "Tá an luí gréine"
         ],
         [
           "A",
@@ -66783,19 +66687,11 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Vanaf hier"
-        ],
-        [
-          "D",
-          "is"
+          "Vanaf hier is"
         ],
         [
           "B",
-          "de zonsondergang"
-        ],
-        [
-          "D",
-          "prachtig"
+          "de zonsondergang prachtig"
         ]
       ],
       "pl": [
@@ -66805,11 +66701,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "zachód słońca"
-        ],
-        [
-          "D",
-          "jest piękny"
+          "zachód słońca jest piękny"
         ]
       ],
       "egy": [
@@ -66870,12 +66762,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Mae"
-        ],
-        [
           "B",
-          "'r machlud"
+          "Mae 'r machlud"
         ],
         [
           "A",
@@ -67065,11 +66953,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "គឺ"
-        ],
-        [
-          "D",
-          "ស្អាត"
+          "គឺ ស្អាត"
         ]
       ],
       "yo": [
@@ -67312,38 +67196,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
+          "B",
           "'O tramonto"
         ],
         [
-          "B",
-          "'a ccà"
+          "A",
+          "da ccà"
         ],
         [
           "C",
-          "è"
-        ],
-        [
-          "D",
-          "bello"
+          "è bellissemo"
         ]
       ],
       "scn": [
         [
-          "A",
+          "B",
           "U tramontu"
         ],
         [
-          "B",
+          "A",
           "di ccà"
         ],
         [
           "C",
-          "è"
-        ],
-        [
-          "D",
-          "beddu"
+          "è bellissimu"
         ]
       ],
       "gsw": [
@@ -67357,29 +67233,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "isch"
-        ],
-        [
-          "D",
-          "schön"
+          "isch schön"
         ]
       ],
       "fr_qc": [
         [
-          "A",
+          "B",
           "Le coucher de soleil"
         ],
         [
-          "B",
+          "A",
           "d'icitte"
         ],
         [
           "C",
-          "est"
-        ],
-        [
-          "D",
-          "beau"
+          "est ben beau"
         ]
       ],
       "sco": [
@@ -67393,11 +67261,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "is"
-        ],
-        [
-          "D",
-          "bonnie"
+          "is bonnie"
         ]
       ],
       "en_sg": [
@@ -69252,7 +69116,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "C",
@@ -69264,43 +69128,43 @@ const SENTENCES = [
         ],
         [
           "D",
-          "早起"
+          "早点儿起来"
         ]
       ],
       "nap": [
         [
-          "D",
-          "Dimane"
+          "E",
+          "Aggi'a"
         ],
         [
-          "A",
-          "io"
+          "D",
+          "me scetà"
         ],
         [
           "B",
-          "m'aggi'a scetà"
+          "priesto"
         ],
         [
           "C",
-          "presto"
+          "dimane"
         ]
       ],
       "scn": [
         [
-          "D",
-          "Dumani"
+          "E",
+          "Haiu a"
         ],
         [
-          "A",
-          "iu"
+          "D",
+          "scìtarimi"
         ],
         [
           "B",
-          "m'haiu a sciddari"
+          "prestu"
         ],
         [
           "C",
-          "prestu"
+          "dumani"
         ]
       ],
       "gsw": [
@@ -69328,18 +69192,22 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Faut que je"
+          "Je"
         ],
         [
-          "B",
-          "me lève"
-        ],
-        [
-          "C",
-          "de bonne heure"
+          "E",
+          "dois"
         ],
         [
           "D",
+          "me lever"
+        ],
+        [
+          "B",
+          "de bonne heure"
+        ],
+        [
+          "C",
           "demain"
         ]
       ],
@@ -71254,38 +71122,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
+          "E",
           "Sapite"
         ],
         [
-          "B",
+          "C",
           "addò"
         ],
         [
           "D",
-          "sta"
+          "se trova"
         ],
         [
-          "C",
-          "'a posta"
+          "B",
+          "l'ufficio pustale"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Sapiti"
+          "E",
+          "Sapi"
         ],
         [
-          "B",
+          "C",
           "unni"
         ],
         [
           "D",
-          "è"
+          "si trova"
         ],
         [
-          "C",
-          "a posta"
+          "B",
+          "l'uffiziu pustali"
         ]
       ],
       "gsw": [
@@ -71308,20 +71176,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "E",
           "Savez-vous"
         ],
         [
-          "B",
-          "où"
-        ],
-        [
           "C",
-          "le bureau de poste"
+          "où"
         ],
         [
           "D",
           "est"
+        ],
+        [
+          "B",
+          "la poste"
         ]
       ],
       "sco": [
@@ -73348,45 +73216,37 @@ const SENTENCES = [
       "nap": [
         [
           "E",
-          "Mo"
-        ],
-        [
-          "A",
-          "io"
-        ],
-        [
-          "B",
-          "sto leggènno"
-        ],
-        [
-          "C",
-          "nu bello"
+          "Sto leggenno"
         ],
         [
           "D",
-          "libro"
+          "nu libro"
+        ],
+        [
+          "C",
+          "interessante"
+        ],
+        [
+          "B",
+          "mo'"
         ]
       ],
       "scn": [
         [
           "E",
-          "Ora"
-        ],
-        [
-          "A",
-          "iu"
-        ],
-        [
-          "B",
-          "staju liggènnu"
-        ],
-        [
-          "C",
-          "un 'ntirissanti"
+          "Staju liggènnu"
         ],
         [
           "D",
-          "libru"
+          "un libbru"
+        ],
+        [
+          "C",
+          "ntiressanti"
+        ],
+        [
+          "B",
+          "ora"
         ]
       ],
       "gsw": [
@@ -73413,23 +73273,23 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "E",
-          "Là"
+          "A",
+          "Je"
         ],
         [
-          "A",
-          "je"
+          "E",
+          "lis"
         ],
         [
           "B",
-          "suis en train de lire"
-        ],
-        [
-          "C",
-          "un livre"
+          "en ce moment"
         ],
         [
           "D",
+          "un livre"
+        ],
+        [
+          "C",
           "intéressant"
         ]
       ],
@@ -75500,16 +75360,20 @@ const SENTENCES = [
           "Essa"
         ],
         [
+          "C",
+          "se mette"
+        ],
+        [
           "B",
           "sempe"
         ],
         [
-          "C",
-          "porta"
+          "E",
+          "nu vestito"
         ],
         [
           "D",
-          "nu vestito russo"
+          "russo"
         ]
       ],
       "scn": [
@@ -75518,16 +75382,20 @@ const SENTENCES = [
           "Idda"
         ],
         [
-          "B",
-          "sempri"
-        ],
-        [
           "C",
           "porta"
         ],
         [
+          "B",
+          "sempri"
+        ],
+        [
+          "E",
+          "un vistitu"
+        ],
+        [
           "D",
-          "un vistitu russu"
+          "russu"
         ]
       ],
       "gsw": [
@@ -75551,7 +75419,7 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
+          "A"
         ],
         [
           "C",
@@ -75562,8 +75430,12 @@ const SENTENCES = [
           "toujours"
         ],
         [
+          "E",
+          "une robe"
+        ],
+        [
           "D",
-          "une robe rouge"
+          "rouge"
         ]
       ],
       "sco": [
@@ -76351,12 +76223,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Tá"
-        ],
-        [
           "A",
-          "bia an bhialainne seo"
+          "Tá bia an bhialainne seo"
         ],
         [
           "B",
@@ -76469,12 +76337,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Mae"
-        ],
-        [
           "A",
-          "bwyd y bwyty hwn yn"
+          "Mae bwyd y bwyty hwn yn"
         ],
         [
           "B",
@@ -76660,11 +76524,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "គឺ"
-        ],
-        [
-          "D",
-          "ឆ្ងាញ់"
+          "គឺ ឆ្ងាញ់"
         ]
       ],
       "yo": [
@@ -76907,38 +76767,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "'A cucina"
+          "B",
+          "'O mangià"
         ],
         [
-          "B",
-          "'e stu ristorante"
+          "A",
+          "'e chisto ristorante"
         ],
         [
           "C",
-          "è"
-        ],
-        [
-          "D",
-          "bona"
+          "è sapurito"
         ]
       ],
       "scn": [
         [
-          "A",
-          "A cucina"
+          "B",
+          "U manciari"
         ],
         [
-          "B",
-          "di stu ristoranti"
+          "A",
+          "di chistu ristoranti"
         ],
         [
           "C",
-          "è"
-        ],
-        [
-          "D",
-          "bona"
+          "è dilizziusu"
         ]
       ],
       "gsw": [
@@ -76952,29 +76804,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "isch"
-        ],
-        [
-          "D",
-          "fein"
+          "isch fein"
         ]
       ],
       "fr_qc": [
         [
-          "A",
-          "La bouffe"
+          "B",
+          "La nourriture"
         ],
         [
-          "B",
-          "de ce restaurant"
+          "A",
+          "dans ce resto-là"
         ],
         [
           "C",
-          "est"
-        ],
-        [
-          "D",
-          "bonne"
+          "est ben bonne"
         ]
       ],
       "sco": [
@@ -76988,11 +76832,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "is"
-        ],
-        [
-          "D",
-          "braw"
+          "is braw"
         ]
       ],
       "en_sg": [
@@ -78561,29 +78401,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio viaggià"
+          "D",
+          "Voglio"
         ],
         [
           "C",
+          "viaggià"
+        ],
+        [
+          "B",
           "pe tutto 'o munno"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu viaggiari"
+          "D",
+          "Vògghiu"
         ],
         [
           "C",
+          "viaggiari"
+        ],
+        [
+          "B",
           "pi tuttu u munnu"
         ]
       ],
@@ -78611,11 +78451,15 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux voyager"
+          "D",
+          "veux"
         ],
         [
           "C",
+          "voyager"
+        ],
+        [
+          "B",
           "autour du monde"
         ]
       ],
@@ -80214,7 +80058,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "在这个国家"
+          "搁这旮旯"
         ],
         [
           "B",
@@ -80222,47 +80066,47 @@ const SENTENCES = [
         ],
         [
           "D",
-          "得"
+          "贼"
         ],
         [
           "C",
-          "变冷"
+          "冷"
         ]
       ],
       "nap": [
         [
-          "D",
-          "'N chisto paese"
-        ],
-        [
           "A",
-          "ll'inverno"
+          "Int'a chisto paese"
         ],
         [
-          "B",
-          "è"
+          "D",
+          "fa"
         ],
         [
           "C",
           "friddo"
+        ],
+        [
+          "B",
+          "'e vierno"
         ]
       ],
       "scn": [
         [
-          "D",
-          "Nti stu paisi"
-        ],
-        [
           "A",
-          "l'invernu"
+          "Nti chistu paisi"
         ],
         [
-          "B",
-          "è"
+          "D",
+          "fa"
         ],
         [
           "C",
           "friddu"
+        ],
+        [
+          "B",
+          "d'mmernu"
         ]
       ],
       "gsw": [
@@ -80285,20 +80129,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "D",
-          "Dans ce pays"
-        ],
-        [
           "A",
-          "l'hiver"
+          "Dans ce pays-là"
         ],
         [
-          "B",
-          "est"
+          "D",
+          "y fait"
         ],
         [
           "C",
           "frette"
+        ],
+        [
+          "B",
+          "en hiver"
         ]
       ],
       "sco": [
@@ -82260,12 +82104,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "E",
+          "Aggio parlato"
         ],
         [
           "B",
-          "aggio parlato"
+          "cu l'amico mio"
         ],
         [
           "C",
@@ -82273,21 +82117,17 @@ const SENTENCES = [
         ],
         [
           "D",
-          "cu n'amico"
-        ],
-        [
-          "E",
           "pe n'ora"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "E",
+          "Parrai"
         ],
         [
           "B",
-          "parravu"
+          "cû me amicu"
         ],
         [
           "C",
@@ -82295,10 +82135,6 @@ const SENTENCES = [
         ],
         [
           "D",
-          "cu n'amicu"
-        ],
-        [
-          "E",
           "pi n'ura"
         ]
       ],
@@ -82331,11 +82167,15 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'"
+          "J'ai"
+        ],
+        [
+          "E",
+          "parlé"
         ],
         [
           "B",
-          "ai parlé"
+          "avec mon chum"
         ],
         [
           "C",
@@ -82343,10 +82183,6 @@ const SENTENCES = [
         ],
         [
           "D",
-          "avec un ami"
-        ],
-        [
-          "E",
           "pendant une heure"
         ]
       ],
@@ -83023,11 +82859,11 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "老师"
+          "先生"
         ],
         [
           "C",
-          "清清楚楚"
+          "清清爽爽"
         ],
         [
           "D",
@@ -83035,7 +82871,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "这道题"
+          "迭道题"
         ]
       ],
       "es_eu": [
@@ -84027,19 +83863,19 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O maestro"
-        ],
-        [
-          "B",
-          "ha spiegato"
-        ],
-        [
-          "C",
-          "'o problema"
+          "'O professore"
         ],
         [
           "D",
-          "buono"
+          "ha spiegato"
+        ],
+        [
+          "B",
+          "'o probblema"
+        ],
+        [
+          "C",
+          "chiaro chiaro"
         ]
       ],
       "scn": [
@@ -84048,16 +83884,16 @@ const SENTENCES = [
           "U prufissuri"
         ],
         [
-          "B",
+          "D",
           "spiegau"
         ],
         [
-          "C",
+          "B",
           "u prublema"
         ],
         [
-          "D",
-          "bonu"
+          "C",
+          "chiaramenti"
         ]
       ],
       "gsw": [
@@ -84088,15 +83924,15 @@ const SENTENCES = [
           "Le prof"
         ],
         [
-          "B",
+          "D",
           "a expliqué"
         ],
         [
-          "C",
+          "B",
           "le problème"
         ],
         [
-          "D",
+          "C",
           "clairement"
         ]
       ],
@@ -84721,7 +84557,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "那部电影"
+          "搿部电影"
         ]
       ],
       "es_eu": [
@@ -85583,11 +85419,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "想"
+          "寻思"
         ],
         [
           "C",
-          "看"
+          "瞅瞅"
         ],
         [
           "B",
@@ -85596,38 +85432,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio vedé"
+          "D",
+          "Voglio"
         ],
         [
           "C",
-          "chillo"
+          "vedé"
         ],
         [
-          "D",
-          "film"
+          "B",
+          "chillo film"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu vìdiri"
+          "D",
+          "Vògghiu"
         ],
         [
           "C",
-          "chiddu"
+          "vìdiri"
         ],
         [
-          "D",
-          "film"
+          "B",
+          "chiddu film"
         ]
       ],
       "gsw": [
@@ -85658,16 +85486,16 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux voir"
+          "D",
+          "veux"
         ],
         [
           "C",
-          "ce"
+          "regarder"
         ],
         [
-          "D",
-          "film-là"
+          "B",
+          "ce film-là"
         ]
       ],
       "sco": [
@@ -86307,7 +86135,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "告诉"
+          "讲拨"
         ],
         [
           "B",
@@ -86315,7 +86143,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "去机场的路"
+          "到飞机场个路"
         ]
       ],
       "es_eu": [
@@ -86967,11 +86795,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ផ្លូវ"
-        ],
-        [
-          "E",
-          "ទៅព្រលានយន្តហោះ"
+          "ផ្លូវ ទៅព្រលានយន្តហោះ"
         ]
       ],
       "yo": [
@@ -87258,16 +87082,16 @@ const SENTENCES = [
           "Pe piacere"
         ],
         [
+          "D",
+          "dicite"
+        ],
+        [
           "B",
-          "dicìteme"
+          "a me"
         ],
         [
           "C",
-          "'a via"
-        ],
-        [
-          "D",
-          "pe ll'aeroporto"
+          "comme se arriva a l'aeroporto"
         ]
       ],
       "scn": [
@@ -87276,16 +87100,16 @@ const SENTENCES = [
           "Pi favuri"
         ],
         [
+          "D",
+          "mi dicissi"
+        ],
+        [
           "B",
-          "dicìtimi"
+          "a mia"
         ],
         [
           "C",
-          "a strata"
-        ],
-        [
-          "D",
-          "pi l'aeroportu"
+          "comu arrivari ô aeroportu"
         ]
       ],
       "gsw": [
@@ -87308,20 +87132,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "S'il vous plaît"
+          "D",
+          "Dites-moi"
         ],
         [
-          "B",
-          "dites-moi"
+          "A",
+          "s'il vous plaît"
         ],
         [
           "C",
-          "le chemin"
-        ],
-        [
-          "D",
-          "pour l'aéroport"
+          "le chemin de l'aéroport"
         ]
       ],
       "sco": [
@@ -88817,37 +88637,37 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O cane"
-        ],
-        [
-          "B",
-          "mio"
-        ],
-        [
-          "C",
-          "le piace"
+          "'O cane mio"
         ],
         [
           "D",
-          "'a passeggiata"
+          "le piace"
+        ],
+        [
+          "C",
+          "jì a"
+        ],
+        [
+          "B",
+          "fa' 'e passeggiate"
         ]
       ],
       "scn": [
         [
           "A",
-          "U me"
-        ],
-        [
-          "B",
-          "cani"
-        ],
-        [
-          "C",
-          "ci piaci"
+          "U me cani"
         ],
         [
           "D",
-          "a passiata"
+          "ci piaci"
+        ],
+        [
+          "C",
+          "jiri a"
+        ],
+        [
+          "B",
+          "fari passiati"
         ]
       ],
       "gsw": [
@@ -88871,19 +88691,15 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Mon"
-        ],
-        [
-          "B",
-          "chien"
-        ],
-        [
-          "C",
-          "aime"
+          "Mon chien"
         ],
         [
           "D",
-          "les marches"
+          "aime"
+        ],
+        [
+          "C",
+          "se promener"
         ]
       ],
       "sco": [
@@ -90531,37 +90347,37 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A nonna"
-        ],
-        [
-          "B",
-          "mia"
-        ],
-        [
-          "C",
-          "racconta"
+          "'A nonna mia"
         ],
         [
           "D",
-          "storie belle"
+          "racconta"
+        ],
+        [
+          "C",
+          "storie"
+        ],
+        [
+          "B",
+          "interessante"
         ]
       ],
       "scn": [
         [
           "A",
-          "A me"
-        ],
-        [
-          "B",
-          "nanna"
-        ],
-        [
-          "C",
-          "cunta"
+          "Me nanna"
         ],
         [
           "D",
-          "storii beddi"
+          "cunta"
+        ],
+        [
+          "C",
+          "stori"
+        ],
+        [
+          "B",
+          "ntiressanti"
         ]
       ],
       "gsw": [
@@ -90585,19 +90401,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Ma"
-        ],
-        [
-          "B",
-          "grand-mère"
-        ],
-        [
-          "C",
-          "raconte"
+          "Ma grand-mère"
         ],
         [
           "D",
-          "des histoires intéressantes"
+          "conte"
+        ],
+        [
+          "C",
+          "des histoires"
+        ],
+        [
+          "B",
+          "intéressantes"
         ]
       ],
       "sco": [
@@ -92201,7 +92017,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "在市场"
+          "在市场头"
         ],
         [
           "B",
@@ -92209,7 +92025,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "搞丢了"
+          "整丢嘞"
         ]
       ],
       "zh_db": [
@@ -92219,7 +92035,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "在市场"
+          "搁市场"
         ],
         [
           "B",
@@ -92227,21 +92043,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "整丢了"
+          "整丢了呗"
         ]
       ],
       "nap": [
         [
           "A",
-          "Io"
-        ],
-        [
-          "B",
-          "aggio perzo"
+          "Aggio"
         ],
         [
           "C",
-          "'o portafoglio"
+          "perduto"
+        ],
+        [
+          "B",
+          "'o portafoglio mio"
         ],
         [
           "D",
@@ -92251,19 +92067,19 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "persi"
+          "Mi"
         ],
         [
           "C",
-          "u portafògliu"
+          "persi"
+        ],
+        [
+          "B",
+          "u me bursellinu"
         ],
         [
           "D",
-          "ô mircatu"
+          "ô mercatu"
         ]
       ],
       "gsw": [
@@ -92291,14 +92107,14 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'"
-        ],
-        [
-          "B",
-          "ai perdu"
+          "J'ai"
         ],
         [
           "C",
+          "perdu"
+        ],
+        [
+          "B",
           "mon portefeuille"
         ],
         [
@@ -93627,38 +93443,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "'E ciure"
+          "B",
+          "'E sciure"
         ],
         [
-          "B",
-          "d'ô giardino"
+          "A",
+          "int'ô giardino"
         ],
         [
           "C",
-          "stanno"
-        ],
-        [
-          "D",
-          "fiurènno"
+          "stanno sciurenno"
         ]
       ],
       "scn": [
         [
-          "A",
-          "I ciuri"
+          "B",
+          "I sciuri"
         ],
         [
-          "B",
-          "dû jardinu"
+          "A",
+          "ntô jardinu"
         ],
         [
           "C",
-          "stannu"
-        ],
-        [
-          "D",
-          "fiurennu"
+          "stannu sciurènnu"
         ]
       ],
       "gsw": [
@@ -93677,20 +93485,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "B",
           "Les fleurs"
         ],
         [
-          "B",
+          "A",
           "dans le jardin"
         ],
         [
           "C",
-          "sont"
-        ],
-        [
-          "D",
-          "en fleurs"
+          "fleurissent"
         ]
       ],
       "sco": [
@@ -93704,11 +93508,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "are"
-        ],
-        [
-          "D",
-          "bloomin"
+          "are bloomin"
         ]
       ],
       "en_sg": [
@@ -94326,11 +94126,11 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "我们"
+          "阿拉"
         ],
         [
           "D",
-          "必须"
+          "一定要"
         ],
         [
           "C",
@@ -95284,11 +95084,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "必须"
+          "必须得"
         ],
         [
           "C",
-          "保护"
+          "整好"
         ],
         [
           "B",
@@ -95297,37 +95097,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Nuje"
-        ],
-        [
-          "B",
-          "avimm'a"
+          "D",
+          "Avimm'a"
         ],
         [
           "C",
-          "preteggere"
+          "pruteggere"
         ],
         [
-          "D",
-          "ll'ambiente"
+          "B",
+          "l'ambiente"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Nuàutri"
-        ],
-        [
-          "B",
-          "avemu a"
+          "D",
+          "Avemu a"
         ],
         [
           "C",
-          "prutèggiri"
+          "pruteggiri"
         ],
         [
-          "D",
+          "B",
           "l'ambienti"
         ]
       ],
@@ -95355,7 +95147,7 @@ const SENTENCES = [
           "On"
         ],
         [
-          "B",
+          "D",
           "doit"
         ],
         [
@@ -95363,7 +95155,7 @@ const SENTENCES = [
           "protéger"
         ],
         [
-          "D",
+          "B",
           "l'environnement"
         ]
       ],
@@ -96020,11 +95812,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "每天"
+          "每日"
         ],
         [
           "C",
-          "喝"
+          "吃"
         ],
         [
           "B",
@@ -96688,11 +96480,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ពីរកែវ"
-        ],
-        [
-          "E",
-          "រៀងរាល់ថ្ងៃ"
+          "ពីរកែវ រៀងរាល់ថ្ងៃ"
         ]
       ],
       "yo": [
@@ -96968,25 +96756,25 @@ const SENTENCES = [
         ],
         [
           "C",
-          "喝"
+          "要整"
         ],
         [
           "B",
-          "两杯咖啡"
+          "两杯咖啡嘞"
         ]
       ],
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "D",
-          "每天"
+          "每天得"
         ],
         [
           "C",
-          "喝"
+          "整"
         ],
         [
           "B",
@@ -96995,15 +96783,11 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Bevo"
         ],
         [
           "B",
-          "bevo"
-        ],
-        [
-          "C",
           "ddoje tazze 'e cafè"
         ],
         [
@@ -97013,15 +96797,11 @@ const SENTENCES = [
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Vivu"
         ],
         [
           "B",
-          "bivu"
-        ],
-        [
-          "C",
           "dui tazzi di cafè"
         ],
         [
@@ -97053,11 +96833,11 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
+          "C",
           "bois"
         ],
         [
-          "C",
+          "B",
           "deux tasses de café"
         ],
         [
@@ -98686,7 +98466,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "今晚上"
+          "今天黑"
         ],
         [
           "B",
@@ -98694,7 +98474,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "开始"
+          "开始嘞"
         ]
       ],
       "zh_db": [
@@ -98712,7 +98492,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "开始"
+          "开始哈"
         ]
       ],
       "nap": [
@@ -98721,15 +98501,15 @@ const SENTENCES = [
           "'O concerto"
         ],
         [
-          "B",
+          "D",
           "accumencia"
         ],
         [
-          "C",
+          "B",
           "a 'e otto"
         ],
         [
-          "D",
+          "C",
           "stasera"
         ]
       ],
@@ -98739,15 +98519,15 @@ const SENTENCES = [
           "U concertu"
         ],
         [
-          "B",
+          "D",
           "accumenza"
         ],
         [
-          "C",
-          "a li ottu"
+          "B",
+          "a l'ottu"
         ],
         [
-          "D",
+          "C",
           "stasira"
         ]
       ],
@@ -98776,18 +98556,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Le concert"
-        ],
-        [
-          "B",
-          "commence"
-        ],
-        [
-          "C",
-          "à 8 heures"
+          "Le show"
         ],
         [
           "D",
+          "commence"
+        ],
+        [
+          "B",
+          "à 8 heures"
+        ],
+        [
+          "C",
           "à soir"
         ]
       ],
@@ -100140,11 +99920,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "បី"
-        ],
-        [
-          "E",
-          "ស្ទាត់"
+          "បី ស្ទាត់"
         ]
       ],
       "yo": [
@@ -100420,7 +100196,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "说"
+          "摆"
         ],
         [
           "B",
@@ -100451,16 +100227,16 @@ const SENTENCES = [
           "Essa"
         ],
         [
-          "B",
+          "D",
           "parla"
         ],
         [
-          "C",
-          "tre lingue"
+          "B",
+          "tre lengue"
         ],
         [
-          "D",
-          "bbuono"
+          "C",
+          "cu facilità"
         ]
       ],
       "scn": [
@@ -100469,16 +100245,16 @@ const SENTENCES = [
           "Idda"
         ],
         [
-          "B",
+          "D",
           "parra"
         ],
         [
-          "C",
+          "B",
           "tri lingui"
         ],
         [
-          "D",
-          "bonu"
+          "C",
+          "currentemente"
         ]
       ],
       "gsw": [
@@ -100502,18 +100278,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
-        ],
-        [
-          "B",
-          "parle"
-        ],
-        [
-          "C",
-          "trois langues"
+          "A"
         ],
         [
           "D",
+          "parle"
+        ],
+        [
+          "B",
+          "trois langues"
+        ],
+        [
+          "C",
           "couramment"
         ]
       ],
@@ -102460,38 +102236,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "E",
+          "Voglio"
         ],
         [
-          "B",
-          "voglio fa"
+          "D",
+          "fa'"
         ],
         [
           "C",
           "'na foto"
         ],
         [
-          "D",
-          "'e stu tempio"
+          "B",
+          "'e chisto tempio"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "E",
+          "Vògghiu"
         ],
         [
-          "B",
-          "vògghiu fari"
+          "D",
+          "fari"
         ],
         [
           "C",
           "na foto"
         ],
         [
-          "D",
-          "di stu tempiu"
+          "B",
+          "di chistu tempiu"
         ]
       ],
       "gsw": [
@@ -102522,16 +102298,20 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux prendre"
+          "E",
+          "veux"
+        ],
+        [
+          "D",
+          "prendre"
         ],
         [
           "C",
           "une photo"
         ],
         [
-          "D",
-          "de ce temple"
+          "B",
+          "de ce temple-là"
         ]
       ],
       "sco": [
@@ -103858,7 +103638,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "来一趟"
+          "来一趟呗"
         ]
       ],
       "nap": [
@@ -103867,16 +103647,12 @@ const SENTENCES = [
           "'O pullman"
         ],
         [
-          "B",
-          "vene"
-        ],
-        [
           "C",
-          "ogne"
+          "arriva"
         ],
         [
-          "D",
-          "quinnece minute"
+          "B",
+          "ogne 15 minute"
         ]
       ],
       "scn": [
@@ -103885,16 +103661,12 @@ const SENTENCES = [
           "U pullman"
         ],
         [
-          "B",
-          "veni"
-        ],
-        [
           "C",
-          "ogni"
+          "arriva"
         ],
         [
-          "D",
-          "quinnici minuti"
+          "B",
+          "ogni 15 minuti"
         ]
       ],
       "gsw": [
@@ -103908,29 +103680,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "alli"
-        ],
-        [
-          "D",
-          "füfzäh Minute"
+          "alli füfzäh Minute"
         ]
       ],
       "fr_qc": [
         [
           "A",
-          "Le bus"
-        ],
-        [
-          "B",
-          "passe"
+          "L'autobus"
         ],
         [
           "C",
-          "aux"
+          "passe"
         ],
         [
-          "D",
-          "15 minutes"
+          "B",
+          "aux 15 minutes"
         ]
       ],
       "sco": [
@@ -103944,11 +103708,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ilka"
-        ],
-        [
-          "D",
-          "15 minutes"
+          "ilka 15 minutes"
         ]
       ],
       "en_sg": [
@@ -105537,38 +105297,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "sto 'mparànno"
+          "D",
+          "Sto 'mparanno"
         ],
         [
           "C",
           "a cucinà"
         ],
         [
-          "D",
-          "'a cucina coreana"
+          "B",
+          "mangià coreano"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "staju 'mparannu"
+          "D",
+          "Staju mparannu"
         ],
         [
           "C",
           "a cucinari"
         ],
         [
-          "D",
-          "a cucina cureana"
+          "B",
+          "manciari coreanu"
         ]
       ],
       "gsw": [
@@ -105595,20 +105347,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "J'"
-        ],
-        [
-          "B",
-          "apprends"
+          "D",
+          "J'apprends"
         ],
         [
           "C",
           "à cuisiner"
         ],
         [
-          "D",
-          "de la bouffe coréenne"
+          "B",
+          "la cuisine coréenne"
         ]
       ],
       "sco": [
@@ -107541,7 +107289,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "总"
+          "老"
         ],
         [
           "C",
@@ -107549,7 +107297,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "开会"
+          "开会咋的"
         ]
       ],
       "nap": [
@@ -107558,12 +107306,16 @@ const SENTENCES = [
           "Isso"
         ],
         [
+          "E",
+          "arriva"
+        ],
+        [
           "B",
           "sempe"
         ],
         [
           "C",
-          "arriva tardie"
+          "tarde"
         ],
         [
           "D",
@@ -107576,16 +107328,20 @@ const SENTENCES = [
           "Iddu"
         ],
         [
+          "E",
+          "arriva"
+        ],
+        [
           "B",
           "sempri"
         ],
         [
           "C",
-          "arriva tardu"
+          "tardu"
         ],
         [
           "D",
-          "a li riunioni"
+          "â riunioni"
         ]
       ],
       "gsw": [
@@ -107613,10 +107369,10 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Il"
+          "Y"
         ],
         [
-          "C",
+          "E",
           "arrive"
         ],
         [
@@ -108424,7 +108180,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "月底前"
+          "月底之前"
         ],
         [
           "D",
@@ -108432,7 +108188,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "这本书"
+          "迭本书"
         ]
       ],
       "es_eu": [
@@ -109591,38 +109347,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio fernì 'e leggere"
-        ],
-        [
-          "C",
-          "stu libro"
+          "E",
+          "Voglio"
         ],
         [
           "D",
-          "pe 'a fine d'ô mese"
+          "leggere"
+        ],
+        [
+          "B",
+          "chisto libro"
+        ],
+        [
+          "C",
+          "primma ca fernisce 'o mese"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu finiri di lèggiri"
-        ],
-        [
-          "C",
-          "stu libru"
+          "E",
+          "Vògghiu"
         ],
         [
           "D",
-          "pi la fini dû misi"
+          "leggiri"
+        ],
+        [
+          "B",
+          "chistu libbru"
+        ],
+        [
+          "C",
+          "prima dâ fini dû misi"
         ]
       ],
       "gsw": [
@@ -109653,15 +109409,19 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux finir de lire"
-        ],
-        [
-          "C",
-          "ce livre"
+          "E",
+          "veux"
         ],
         [
           "D",
+          "lire"
+        ],
+        [
+          "B",
+          "ce livre-là"
+        ],
+        [
+          "C",
           "avant la fin du mois"
         ]
       ],
@@ -110211,7 +109971,7 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "树上"
+          "树浪向"
         ],
         [
           "B",
@@ -110219,7 +109979,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "在唱歌"
+          "勒海唱歌"
         ]
       ],
       "es_eu": [
@@ -111002,30 +110762,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Ll'aucielle"
-        ],
-        [
           "B",
-          "cantano"
+          "'E aucielle"
         ],
         [
           "C",
-          "dint'ê àrbere"
+          "cantano"
+        ],
+        [
+          "A",
+          "ncopp'ê àrbere"
         ]
       ],
       "scn": [
         [
-          "A",
+          "B",
           "L'aceddi"
         ],
         [
-          "B",
+          "C",
           "càntanu"
         ],
         [
-          "C",
-          "nti l'àrbuli"
+          "A",
+          "supra l'àrbuli"
         ]
       ],
       "gsw": [
@@ -111044,15 +110804,15 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "B",
           "Les oiseaux"
         ],
         [
-          "B",
+          "C",
           "chantent"
         ],
         [
-          "C",
+          "A",
           "dans les arbres"
         ]
       ],
@@ -111685,11 +111445,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "需要"
+          "要"
         ],
         [
           "C",
-          "给"
+          "拨"
         ],
         [
           "B",
@@ -112636,30 +112396,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "aggi'a carricà"
+          "D",
+          "Aggi'a"
         ],
         [
           "C",
-          "'o telefono"
+          "caricà"
+        ],
+        [
+          "B",
+          "'o telefono mio"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "haiu a carricari"
+          "D",
+          "Haiu a"
         ],
         [
           "C",
-          "u telefunu"
+          "caricari"
+        ],
+        [
+          "B",
+          "u me telefunu"
         ]
       ],
       "gsw": [
@@ -112683,14 +112443,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Faut que je"
+          "Je"
         ],
         [
-          "B",
-          "charge"
+          "D",
+          "dois"
         ],
         [
           "C",
+          "charger"
+        ],
+        [
+          "B",
           "mon cell"
         ]
       ],
@@ -114665,12 +114429,16 @@ const SENTENCES = [
           "Essa"
         ],
         [
-          "B",
+          "E",
           "m'ha dato"
         ],
         [
+          "C",
+          "nu bello"
+        ],
+        [
           "D",
-          "nu bello riale"
+          "regalio"
         ]
       ],
       "scn": [
@@ -114679,12 +114447,16 @@ const SENTENCES = [
           "Idda"
         ],
         [
-          "B",
+          "E",
           "mi detti"
         ],
         [
+          "C",
+          "un beddu"
+        ],
+        [
           "D",
-          "un beddu rigalu"
+          "rigalu"
         ]
       ],
       "gsw": [
@@ -114712,15 +114484,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
+          "A"
         ],
         [
-          "B",
+          "E",
           "m'a donné"
         ],
         [
+          "C",
+          "un beau"
+        ],
+        [
           "D",
-          "un beau cadeau"
+          "cadeau"
         ]
       ],
       "sco": [
@@ -115500,12 +115276,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Tá"
-        ],
-        [
           "A",
-          "an sliabh"
+          "Tá an sliabh"
         ],
         [
           "C",
@@ -115638,12 +115410,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Mae"
-        ],
-        [
           "A",
-          "'r mynydd wedi'i"
+          "Mae 'r mynydd wedi'i"
         ],
         [
           "C",
@@ -116077,14 +115845,14 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A montagna"
-        ],
-        [
-          "B",
-          "è cuperta"
+          "'A muntagna"
         ],
         [
           "C",
+          "è cuperta"
+        ],
+        [
+          "B",
           "'e neve"
         ]
       ],
@@ -116094,11 +115862,11 @@ const SENTENCES = [
           "A muntagna"
         ],
         [
-          "B",
-          "è cuverta"
+          "C",
+          "è cuperta"
         ],
         [
-          "C",
+          "B",
           "di nivi"
         ]
       ],
@@ -116122,11 +115890,11 @@ const SENTENCES = [
           "La montagne"
         ],
         [
-          "B",
+          "C",
           "est couverte"
         ],
         [
-          "C",
+          "B",
           "de neige"
         ]
       ],
@@ -117750,38 +117518,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "D",
+          "Me 'ntreno"
         ],
         [
           "B",
-          "faccio ginnastica"
+          "int'â palestra"
         ],
         [
           "C",
-          "a 'a palestra"
-        ],
-        [
-          "D",
-          "tre vote 'a semmana"
+          "tre vote â settimana"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "D",
+          "Mi allenu"
         ],
         [
           "B",
-          "fazzu ginnastica"
+          "ntâ palestra"
         ],
         [
           "C",
-          "a la palestra"
-        ],
-        [
-          "D",
-          "tri voti a simana"
+          "tri voti â simana"
         ]
       ],
       "gsw": [
@@ -117808,15 +117568,15 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "m'entraîne"
+          "D",
+          "fais de l'exercice"
         ],
         [
-          "C",
+          "B",
           "au gym"
         ],
         [
-          "D",
+          "C",
           "trois fois par semaine"
         ]
       ],
@@ -119336,30 +119096,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Posso"
+          "D",
+          "Pozzo"
         ],
         [
           "C",
-          "assettàmme"
+          "m'assettà"
         ],
         [
-          "D",
-          "ccà"
+          "B",
+          "ccà?"
         ]
       ],
       "scn": [
         [
-          "A",
+          "D",
           "Pozzu"
         ],
         [
           "C",
-          "assittàrimi"
+          "assittarimi"
         ],
         [
-          "D",
-          "ccà"
+          "B",
+          "ccà?"
         ]
       ],
       "gsw": [
@@ -119382,24 +119142,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Est-ce que"
-        ],
-        [
-          "B",
-          "je"
-        ],
-        [
-          "A",
-          "peux"
+          "D",
+          "J'peux-tu"
         ],
         [
           "C",
           "m'asseoir"
         ],
         [
-          "D",
-          "icitte"
+          "B",
+          "icitte?"
         ]
       ],
       "sco": [
@@ -120727,11 +120479,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "វែង"
-        ],
-        [
-          "E",
-          "ទៅឪពុកម្ដាយ"
+          "វែង ទៅឪពុកម្ដាយ"
         ]
       ],
       "yo": [
@@ -121034,37 +120782,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Isso"
+          "D",
+          "Ha scritto"
         ],
         [
           "B",
-          "ha scritto"
-        ],
-        [
-          "C",
           "'na lettera longa"
         ],
         [
-          "D",
+          "C",
           "ê geniture suoje"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iddu"
+          "D",
+          "Scrissì"
         ],
         [
           "B",
-          "scrissiu"
+          "na longa littra"
         ],
         [
           "C",
-          "na littra longa"
-        ],
-        [
-          "D",
           "ê so genitùri"
         ]
       ],
@@ -121093,18 +120833,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Il"
-        ],
-        [
-          "B",
-          "a écrit"
-        ],
-        [
-          "C",
-          "une longue lettre"
+          "Y"
         ],
         [
           "D",
+          "a écrit"
+        ],
+        [
+          "B",
+          "une longue lettre"
+        ],
+        [
+          "C",
           "à ses parents"
         ]
       ],
@@ -121861,12 +121601,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Dúnann"
-        ],
-        [
           "A",
-          "an siopa"
+          "Dúnann an siopa"
         ],
         [
           "B",
@@ -121904,11 +121640,7 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "De winkel"
-        ],
-        [
-          "D",
-          "sluit"
+          "De winkel sluit"
         ],
         [
           "B",
@@ -121918,11 +121650,7 @@ const SENTENCES = [
       "pl": [
         [
           "A",
-          "Sklep"
-        ],
-        [
-          "D",
-          "zamyka się"
+          "Sklep zamyka się"
         ],
         [
           "B",
@@ -121973,12 +121701,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Mae'r"
-        ],
-        [
           "A",
-          "siop yn cau"
+          "Mae'r siop yn cau"
         ],
         [
           "B",
@@ -122425,11 +122149,11 @@ const SENTENCES = [
           "'A puteca"
         ],
         [
-          "B",
+          "C",
           "chiude"
         ],
         [
-          "C",
+          "B",
           "a 'e nove 'e sera"
         ]
       ],
@@ -122439,12 +122163,12 @@ const SENTENCES = [
           "A putìa"
         ],
         [
-          "B",
+          "C",
           "chiudi"
         ],
         [
-          "C",
-          "a li novi di sira"
+          "B",
+          "a li novi dâ sira"
         ]
       ],
       "gsw": [
@@ -122471,12 +122195,12 @@ const SENTENCES = [
           "Le magasin"
         ],
         [
-          "B",
+          "C",
           "ferme"
         ],
         [
-          "C",
-          "à 9 heures le soir"
+          "B",
+          "à 9 heures"
         ]
       ],
       "sco": [
@@ -123116,7 +122840,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "发音"
+          "我个发音"
         ]
       ],
       "es_eu": [
@@ -124028,11 +123752,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "提高"
+          "把"
         ],
         [
           "B",
-          "我的发音"
+          "我的发音整好些"
         ]
       ],
       "zh_db": [
@@ -124042,51 +123766,43 @@ const SENTENCES = [
         ],
         [
           "D",
-          "想"
+          "寻思"
         ],
         [
           "C",
-          "提高"
+          "把"
         ],
         [
           "B",
-          "我的发音"
+          "发音整好点儿"
         ]
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio megliurà"
+          "D",
+          "Voglio"
         ],
         [
           "C",
-          "'a"
+          "migliorà"
         ],
         [
-          "D",
-          "pronunzia mia"
+          "B",
+          "'a pronunzia mia"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu migghiurari"
+          "D",
+          "Vògghiu"
         ],
         [
           "C",
-          "a me"
+          "migghiurari"
         ],
         [
-          "D",
-          "pronunzia"
+          "B",
+          "a me pronunzia"
         ]
       ],
       "gsw": [
@@ -124117,16 +123833,16 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux améliorer"
+          "D",
+          "veux"
         ],
         [
           "C",
-          "ma"
+          "améliorer"
         ],
         [
-          "D",
-          "prononciation"
+          "B",
+          "ma prononciation"
         ]
       ],
       "sco": [
@@ -125466,11 +125182,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ថ្មី"
-        ],
-        [
-          "E",
-          "លើទន្លេ"
+          "ថ្មី លើទន្លេ"
         ]
       ],
       "yo": [
@@ -125760,7 +125472,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "在河上"
+          "搁河上"
         ],
         [
           "D",
@@ -125768,42 +125480,34 @@ const SENTENCES = [
         ],
         [
           "B",
-          "一座新桥"
+          "一座新桥呢"
         ]
       ],
       "nap": [
         [
-          "A",
-          "Lore"
+          "D",
+          "Hanno costruito"
         ],
         [
           "B",
-          "hanno costruito"
-        ],
-        [
-          "C",
           "nu ponte nuovo"
         ],
         [
-          "D",
+          "C",
           "ncopp'ô ciume"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iddi"
+          "D",
+          "Custruiru"
         ],
         [
           "B",
-          "custruieru"
-        ],
-        [
-          "C",
           "un ponti novu"
         ],
         [
-          "D",
+          "C",
           "supra u ciumi"
         ]
       ],
@@ -125832,18 +125536,18 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Ils"
-        ],
-        [
-          "B",
-          "ont construit"
-        ],
-        [
-          "C",
-          "un nouveau pont"
+          "Y ont"
         ],
         [
           "D",
+          "construit"
+        ],
+        [
+          "B",
+          "un nouveau pont"
+        ],
+        [
+          "C",
           "sur la rivière"
         ]
       ],
@@ -127472,11 +127176,11 @@ const SENTENCES = [
       "zh_sc": [
         [
           "A",
-          "我的猫"
+          "我的猫儿"
         ],
         [
           "C",
-          "每晚上"
+          "每天黑"
         ],
         [
           "B",
@@ -127490,55 +127194,55 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "我家猫"
+          "俺家猫"
         ],
         [
           "C",
-          "每晚"
+          "每晚儿"
         ],
         [
           "B",
-          "在我床上"
+          "搁我床上"
         ],
         [
           "D",
-          "睡觉"
+          "睡觉呢"
         ]
       ],
       "nap": [
         [
           "A",
-          "'O gatto"
-        ],
-        [
-          "B",
-          "dorme"
-        ],
-        [
-          "C",
-          "ncopp'ô lietto mio"
+          "'O gatto mio"
         ],
         [
           "D",
-          "ogne sera"
+          "dorme"
+        ],
+        [
+          "B",
+          "ncopp'ô lietto mio"
+        ],
+        [
+          "C",
+          "ogne notte"
         ]
       ],
       "scn": [
         [
           "A",
-          "U jattu"
-        ],
-        [
-          "B",
-          "dormi"
-        ],
-        [
-          "C",
-          "ntu me lettu"
+          "U me jattu"
         ],
         [
           "D",
-          "ogni sira"
+          "dormi"
+        ],
+        [
+          "B",
+          "supra u me lettu"
+        ],
+        [
+          "C",
+          "ogni notti"
         ]
       ],
       "gsw": [
@@ -127562,19 +127266,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Le chat"
-        ],
-        [
-          "B",
-          "dort"
-        ],
-        [
-          "C",
-          "sur mon lit"
+          "Mon chat"
         ],
         [
           "D",
-          "chaque soir"
+          "dort"
+        ],
+        [
+          "B",
+          "sur mon lit"
+        ],
+        [
+          "C",
+          "chaque nuit"
         ]
       ],
       "sco": [
@@ -128882,30 +128586,22 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Aspetto"
         ],
         [
           "B",
-          "sto aspettànno"
-        ],
-        [
-          "C",
-          "da trenta minute"
+          "da 30 minute"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Aspettu"
         ],
         [
           "B",
-          "staju aspittannu"
-        ],
-        [
-          "C",
-          "di trenta minuti"
+          "di 30 minuti"
         ]
       ],
       "gsw": [
@@ -128924,20 +128620,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Ça fait"
-        ],
-        [
           "C",
-          "30 minutes"
-        ],
-        [
-          "A",
-          "que"
+          "J'attends"
         ],
         [
           "B",
-          "j'attends"
+          "depuis 30 minutes"
         ]
       ],
       "sco": [
@@ -130237,11 +129925,11 @@ const SENTENCES = [
           "'E criature"
         ],
         [
-          "B",
-          "stanno 'mparànno"
+          "C",
+          "stanno 'mparanno"
         ],
         [
-          "C",
+          "B",
           "a natà"
         ]
       ],
@@ -130251,11 +129939,11 @@ const SENTENCES = [
           "I picciriddi"
         ],
         [
-          "B",
-          "stannu 'mparannu"
+          "C",
+          "stannu mparannu"
         ],
         [
-          "C",
+          "B",
           "a natari"
         ]
       ],
@@ -130279,11 +129967,11 @@ const SENTENCES = [
           "Les enfants"
         ],
         [
-          "B",
+          "C",
           "apprennent"
         ],
         [
-          "C",
+          "B",
           "à nager"
         ]
       ],
@@ -131160,15 +130848,15 @@ const SENTENCES = [
       "ga": [
         [
           "D",
-          "Mothaím"
+          "Mothaím sásta"
         ],
         [
-          "A",
-          "sásta"
+          "C",
+          "nuair a"
         ],
         [
           "B",
-          "agus mé ag éisteacht le"
+          "éistim le"
         ],
         [
           "A",
@@ -131329,38 +131017,38 @@ const SENTENCES = [
       ],
       "sa": [
         [
-          "A",
-          "अहम्"
-        ],
-        [
-          "D",
-          "यदा सङ्गीतं शृणोमि"
-        ],
-        [
           "C",
-          "प्रसन्नः"
+          "यदा"
+        ],
+        [
+          "A",
+          "सङ्गीतम्"
         ],
         [
           "B",
-          "अनुभवामि"
+          "शृणोमि"
+        ],
+        [
+          "D",
+          "प्रसन्नम् अनुभवामि"
         ]
       ],
       "la": [
         [
-          "A",
-          "Ego"
-        ],
-        [
           "D",
-          "cum musicam audio"
+          "Laetum me sentio"
         ],
         [
           "C",
-          "laetum me"
+          "cum"
+        ],
+        [
+          "A",
+          "musicam"
         ],
         [
           "B",
-          "sentio"
+          "audio"
         ]
       ],
       "egy": [
@@ -131392,15 +131080,15 @@ const SENTENCES = [
         ],
         [
           "A",
-          "संगीत"
+          "موسیقی"
         ],
         [
           "B",
-          "सुनता ہوں"
+          "سنتا ہوں"
         ],
         [
           "D",
-          "تو खुश महसूस करता ہوں"
+          "تو خوش محسوس کرتا ہوں"
         ]
       ],
       "ko_jeju": [
@@ -131531,91 +131219,91 @@ const SENTENCES = [
       ],
       "km": [
         [
-          "A",
-          "ខ្ញុំ"
-        ],
-        [
-          "B",
-          "មានអារម្មណ៍"
+          "D",
+          "ខ្ញុំមានអារម្មណ៍រីករាយ"
         ],
         [
           "C",
-          "រីករាយ"
-        ],
-        [
-          "D",
           "នៅពេល"
         ],
         [
-          "E",
-          "ខ្ញុំស្ដាប់"
+          "B",
+          "ស្ដាប់"
         ],
         [
-          "F",
+          "A",
           "តន្ត្រី"
         ]
       ],
       "yo": [
         [
-          "A",
-          "Mo"
-        ],
-        [
-          "B",
-          "ní ayọ̀"
+          "D",
+          "Mo ní ayọ̀"
         ],
         [
           "C",
-          "nígbà tí mo bá ń gbọ́ orin"
+          "nígbà tí"
+        ],
+        [
+          "B",
+          "mo bá ń gbọ́"
+        ],
+        [
+          "A",
+          "orin"
         ]
       ],
       "zu": [
         [
-          "A",
-          "Ngizwa"
-        ],
-        [
-          "B",
-          "ngijabule"
+          "D",
+          "Ngizwa ngijabule"
         ],
         [
           "C",
-          "uma ngilalele umculo"
+          "uma"
+        ],
+        [
+          "B",
+          "ngilalele"
+        ],
+        [
+          "A",
+          "umculo"
         ]
       ],
       "mi": [
         [
-          "C",
-          "Ka hari"
-        ],
-        [
-          "A",
-          "ahau"
-        ],
-        [
           "D",
-          "ina whakarongo"
+          "Ka hari ahau"
+        ],
+        [
+          "C",
+          "ina"
         ],
         [
           "B",
+          "whakarongo"
+        ],
+        [
+          "A",
           "ki te waiata"
         ]
       ],
       "haw": [
         [
-          "C",
-          "Hauʻoli"
-        ],
-        [
-          "A",
-          "au"
-        ],
-        [
           "D",
-          "ke hoʻolohe nei"
+          "Hauʻoli au"
+        ],
+        [
+          "C",
+          "ke"
         ],
         [
           "B",
+          "hoʻolohe nei"
+        ],
+        [
+          "A",
           "i ka mele"
         ]
       ],
@@ -131839,88 +131527,96 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Ascultà"
-        ],
-        [
-          "B",
-          "'a musica"
+          "D",
+          "Me sento cuntento"
         ],
         [
           "C",
-          "me fa sentì"
+          "quanno"
         ],
         [
-          "D",
-          "cuntento"
+          "B",
+          "ascolto"
+        ],
+        [
+          "A",
+          "'a musica"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Ascutari"
-        ],
-        [
-          "B",
-          "a mùsica"
+          "D",
+          "Mi sentu filici"
         ],
         [
           "C",
-          "mi fa sèntiri"
+          "quannu"
         ],
         [
-          "D",
-          "cuntenti"
+          "B",
+          "ascoltu"
+        ],
+        [
+          "A",
+          "mùsica"
         ]
       ],
       "gsw": [
         [
-          "A",
-          "Musig lose"
+          "D",
+          "I füele mi glücklich"
         ],
         [
           "C",
-          "macht mi"
+          "wenn"
         ],
         [
           "D",
-          "glücklich"
+          "i"
+        ],
+        [
+          "A",
+          "Musig"
+        ],
+        [
+          "B",
+          "lose"
         ]
       ],
       "fr_qc": [
         [
-          "A",
-          "Écouter"
-        ],
-        [
-          "B",
-          "de la musique"
+          "D",
+          "J'me sens heureux"
         ],
         [
           "C",
-          "ça me rend"
+          "quand"
         ],
         [
-          "D",
-          "heureux"
+          "B",
+          "j'écoute"
+        ],
+        [
+          "A",
+          "d'la musique"
         ]
       ],
       "sco": [
         [
-          "A",
-          "Listenin tae"
-        ],
-        [
-          "B",
-          "music"
+          "D",
+          "A feel happy"
         ],
         [
           "C",
-          "maks me"
+          "whan"
         ],
         [
-          "D",
-          "happy"
+          "B",
+          "A listen tae"
+        ],
+        [
+          "A",
+          "music"
         ]
       ],
       "en_sg": [
@@ -133222,16 +132918,12 @@ const SENTENCES = [
           "Isso"
         ],
         [
-          "B",
-          "se n'è mmeravigliato"
-        ],
-        [
           "C",
-          "d'ê risultate"
+          "è rimasto surpreso"
         ],
         [
-          "D",
-          "d'ô test"
+          "B",
+          "d'ê risultate d'ô test"
         ]
       ],
       "scn": [
@@ -133240,16 +132932,12 @@ const SENTENCES = [
           "Iddu"
         ],
         [
-          "B",
-          "si maravigghiau"
-        ],
-        [
           "C",
-          "dî risurtati"
+          "ristau surprisu"
         ],
         [
-          "D",
-          "dû test"
+          "B",
+          "dî risultati dû test"
         ]
       ],
       "gsw": [
@@ -133273,19 +132961,15 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Il"
-        ],
-        [
-          "B",
-          "a été surpris"
+          "Y"
         ],
         [
           "C",
-          "par les résultats"
+          "a été surpris"
         ],
         [
-          "D",
-          "du test"
+          "B",
+          "par les résultats du test"
         ]
       ],
       "sco": [
@@ -133299,11 +132983,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "by the test"
-        ],
-        [
-          "D",
-          "results"
+          "by the test results"
         ]
       ],
       "en_sg": [
@@ -134936,37 +134616,37 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "D",
+          "Penzo"
+        ],
+        [
           "A",
-          "Io"
+          "ca chisto"
         ],
         [
           "B",
-          "penzo"
+          "piano"
         ],
         [
           "C",
-          "ca stu piano"
-        ],
-        [
-          "D",
           "è buono"
         ]
       ],
       "scn": [
         [
+          "D",
+          "Penzu"
+        ],
+        [
           "A",
-          "Iu"
+          "ca chistu"
         ],
         [
           "B",
-          "pensu"
+          "pianu"
         ],
         [
           "C",
-          "ca stu pianu"
-        ],
-        [
-          "D",
           "è bonu"
         ]
       ],
@@ -134990,20 +134670,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "D",
+          "Je pense"
+        ],
+        [
           "A",
-          "Je"
+          "que ce"
         ],
         [
           "B",
-          "pense"
+          "plan-là"
         ],
         [
           "C",
-          "que ce plan-là"
-        ],
-        [
-          "D",
-          "est correct"
+          "est bon"
         ]
       ],
       "sco": [
@@ -136880,7 +136560,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "她朋友"
+          "她哥们儿"
         ],
         [
           "E",
@@ -136898,7 +136578,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "è triste"
+          "è trista"
         ],
         [
           "C",
@@ -136906,11 +136586,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ll'amica soja"
+          "l'amica soja"
         ],
         [
           "E",
-          "s'è trasferuta"
+          "se n'è ghiuta"
         ]
       ],
       "scn": [
@@ -136924,7 +136604,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "pirchì"
+          "picchì"
         ],
         [
           "D",
@@ -136932,7 +136612,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "si nni iu"
+          "si nni jiu"
         ]
       ],
       "gsw": [
@@ -136960,7 +136640,7 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
+          "A"
         ],
         [
           "B",
@@ -136976,7 +136656,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "a déménagé"
+          "est partie"
         ]
       ],
       "sco": [
@@ -138495,11 +138175,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "គឺជា"
-        ],
-        [
-          "F",
-          "បទពិសោធន៍"
+          "គឺជា បទពិសោធន៍"
         ],
         [
           "E",
@@ -138846,38 +138522,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io penzo ca"
+          "E",
+          "Crero"
         ],
         [
           "B",
-          "studià fora"
-        ],
-        [
-          "C",
-          "è"
+          "ca studià fora"
         ],
         [
           "D",
-          "n'esperienza 'mportante"
+          "è"
+        ],
+        [
+          "C",
+          "n'esperienza preziosa"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu pensu ca"
+          "E",
+          "Criu"
         ],
         [
           "B",
-          "studiari fora"
-        ],
-        [
-          "C",
-          "è"
+          "ca studiari fora"
         ],
         [
           "D",
-          "n'esperienza 'mpurtanti"
+          "è"
+        ],
+        [
+          "C",
+          "n'esperienza priziusa"
         ]
       ],
       "gsw": [
@@ -138901,18 +138577,22 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Je pense qu'"
+          "Je"
+        ],
+        [
+          "E",
+          "crois"
         ],
         [
           "B",
-          "étudier à l'étranger"
-        ],
-        [
-          "C",
-          "c'est"
+          "qu'étudier à l'étranger"
         ],
         [
           "D",
+          "c'est"
+        ],
+        [
+          "C",
           "une expérience précieuse"
         ]
       ],
@@ -139036,6 +138716,9 @@ const SENTENCES = [
       },
       "C": {
         "color": "#2ecc71"
+      },
+      "D": {
+        "color": "#f39c12"
       }
     },
     "langs": {
@@ -140422,37 +140105,29 @@ const SENTENCES = [
       "nap": [
         [
           "D",
-          "Ogge"
-        ],
-        [
-          "A",
-          "io"
+          "Tengo"
         ],
         [
           "B",
-          "tengo"
+          "male 'e capa"
         ],
         [
           "C",
-          "mal 'e capa"
+          "ogge"
         ]
       ],
       "scn": [
         [
           "D",
-          "Oggi"
-        ],
-        [
-          "A",
-          "iu"
+          "Haiu"
         ],
         [
           "B",
-          "haiu"
+          "mali di testa"
         ],
         [
           "C",
-          "mali di testa"
+          "oggi"
         ]
       ],
       "gsw": [
@@ -140475,20 +140150,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "D",
-          "Aujourd'hui"
-        ],
-        [
           "A",
-          "j'"
+          "J'"
         ],
         [
-          "B",
+          "D",
           "ai"
         ],
         [
-          "C",
+          "B",
           "mal à la tête"
+        ],
+        [
+          "C",
+          "aujourd'hui"
         ]
       ],
       "sco": [
@@ -142120,15 +141795,19 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O dottore"
+          "'O miedeco"
         ],
         [
           "B",
-          "m'ha ditto"
+          "m'"
         ],
         [
           "D",
-          "'e repusà"
+          "ha ditto"
+        ],
+        [
+          "C",
+          "'e me repusà"
         ]
       ],
       "scn": [
@@ -142138,11 +141817,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mi dissi"
+          "mi"
         ],
         [
           "D",
-          "di ripusari"
+          "dissi"
+        ],
+        [
+          "C",
+          "di ripusarimi"
         ]
       ],
       "gsw": [
@@ -142169,11 +141852,11 @@ const SENTENCES = [
           "Le docteur"
         ],
         [
-          "B",
+          "D",
           "m'a dit"
         ],
         [
-          "D",
+          "C",
           "de me reposer"
         ]
       ],
@@ -142822,11 +142505,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "努力"
+          "拼命"
         ],
         [
           "B",
-          "每天早上"
+          "每日早浪向"
         ],
         [
           "C",
@@ -143738,7 +143421,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "努力"
+          "硬是要"
         ],
         [
           "B",
@@ -143746,17 +143429,17 @@ const SENTENCES = [
         ],
         [
           "C",
-          "锻炼"
+          "锻炼哈"
         ]
       ],
       "zh_db": [
         [
           "A",
-          "我"
+          "俺"
         ],
         [
           "D",
-          "努力"
+          "寻思"
         ],
         [
           "B",
@@ -143764,42 +143447,34 @@ const SENTENCES = [
         ],
         [
           "C",
-          "锻炼"
+          "锻炼锻炼"
         ]
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "cerco 'e fa"
+          "D",
+          "Cerco"
         ],
         [
           "C",
-          "ginnastica"
+          "'e fa' esercizio"
         ],
         [
-          "D",
+          "B",
           "ogne matina"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "cercu di fari"
+          "D",
+          "Cercu"
         ],
         [
           "C",
-          "ginnastica"
+          "di fari eserciziu"
         ],
         [
-          "D",
+          "B",
           "ogni matina"
         ]
       ],
@@ -143823,19 +143498,15 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "J'"
-        ],
-        [
-          "B",
-          "essaie de faire"
+          "D",
+          "J'essaie"
         ],
         [
           "C",
-          "de l'exercice"
+          "de faire de l'exercice"
         ],
         [
-          "D",
+          "B",
           "chaque matin"
         ]
       ],
@@ -145384,11 +145055,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "上周"
+          "上个礼拜"
         ],
         [
           "C",
-          "感冒了"
+          "感冒嘞"
         ]
       ],
       "zh_db": [
@@ -145398,11 +145069,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "上周"
+          "上礼拜"
         ],
         [
           "C",
-          "感冒了"
+          "感冒了呗"
         ]
       ],
       "nap": [
@@ -145411,16 +145082,16 @@ const SENTENCES = [
           "Essa"
         ],
         [
-          "B",
-          "s'è pigliata"
+          "C",
+          "s'ha pigliato"
         ],
         [
-          "C",
+          "B",
           "nu raffreddore"
         ],
         [
           "D",
-          "'a semmana passata"
+          "'a settimana passata"
         ]
       ],
       "scn": [
@@ -145429,12 +145100,12 @@ const SENTENCES = [
           "Idda"
         ],
         [
-          "B",
-          "s'appigghiau"
+          "C",
+          "pigghiau"
         ],
         [
-          "C",
-          "un friddu"
+          "B",
+          "un raffridduri"
         ],
         [
           "D",
@@ -145466,14 +145137,14 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Elle"
-        ],
-        [
-          "B",
-          "a pogné"
+          "A"
         ],
         [
           "C",
+          "a pogné"
+        ],
+        [
+          "B",
           "un rhume"
         ],
         [
@@ -146989,38 +146660,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Tu"
-        ],
-        [
-          "B",
-          "avrisse 'a bévere"
+          "D",
+          "Avrisse a"
         ],
         [
           "C",
-          "cchiù"
+          "bevere"
         ],
         [
-          "D",
-          "acqua"
+          "B",
+          "cchiù acqua"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Tu"
-        ],
-        [
-          "B",
-          "avrìssi a bìviri"
+          "D",
+          "Duvissi"
         ],
         [
           "C",
-          "cchiù"
+          "vìviri"
         ],
         [
-          "D",
-          "acqua"
+          "B",
+          "cchiù acqua"
         ]
       ],
       "gsw": [
@@ -147047,20 +146710,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Tu"
-        ],
-        [
-          "B",
-          "devrais boire"
+          "D",
+          "Tu devrais"
         ],
         [
           "C",
-          "plus"
+          "boire"
         ],
         [
-          "D",
-          "d'eau"
+          "B",
+          "plus d'eau"
         ]
       ],
       "sco": [
@@ -147688,7 +147347,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "每天"
+          "每日"
         ],
         [
           "C",
@@ -147696,7 +147355,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "我的智能手机"
+          "我个手机"
         ]
       ],
       "es_eu": [
@@ -148575,37 +148234,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Uso"
         ],
         [
           "B",
-          "uso"
+          "'o smartphone mio"
         ],
         [
-          "C",
-          "'o telefono"
-        ],
-        [
-          "D",
+          "A",
           "ogne juorno"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Usu"
         ],
         [
           "B",
-          "usu"
+          "u me smartphone"
         ],
         [
-          "C",
-          "u telefunu"
-        ],
-        [
-          "D",
+          "A",
           "ogni jornu"
         ]
       ],
@@ -148629,20 +148280,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "J'"
+          "C",
+          "J'utilise"
         ],
         [
           "B",
-          "utilise"
-        ],
-        [
-          "C",
           "mon cell"
         ],
         [
-          "D",
-          "chaque jour"
+          "A",
+          "tous les jours"
         ]
       ],
       "sco": [
@@ -149994,11 +149641,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ពិតជា"
-        ],
-        [
-          "E",
-          "ងាយស្រួល"
+          "ពិតជា ងាយស្រួល"
         ]
       ],
       "yo": [
@@ -150302,7 +149945,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Chist'"
+          "Chest'"
         ],
         [
           "B",
@@ -150310,15 +149953,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "è"
+          "è assaje"
         ],
         [
           "D",
-          "assaje"
-        ],
-        [
-          "E",
-          "cummoda"
+          "commoda"
         ]
       ],
       "scn": [
@@ -150332,14 +149971,10 @@ const SENTENCES = [
         ],
         [
           "C",
-          "è"
+          "è assà"
         ],
         [
           "D",
-          "assà"
-        ],
-        [
-          "E",
           "còmuda"
         ]
       ],
@@ -150358,11 +149993,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "sehr"
-        ],
-        [
-          "E",
-          "praktisch"
+          "sehr praktisch"
         ]
       ],
       "fr_qc": [
@@ -150372,18 +150003,14 @@ const SENTENCES = [
         ],
         [
           "B",
-          "app-là"
+          "application-là"
         ],
         [
           "C",
-          "est"
+          "est ben"
         ],
         [
           "D",
-          "vraiment"
-        ],
-        [
-          "E",
           "pratique"
         ]
       ],
@@ -150402,11 +150029,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "gey"
-        ],
-        [
-          "E",
-          "handy"
+          "gey handy"
         ]
       ],
       "en_sg": [
@@ -150547,7 +150170,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "正在改變"
+          "喺度改變緊"
         ],
         [
           "B",
@@ -150925,7 +150548,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "正在改变"
+          "勒海改变"
         ],
         [
           "B",
@@ -151673,11 +151296,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "在改变"
+          "硬是在改变"
         ],
         [
           "B",
-          "世界"
+          "世界嘞"
         ]
       ],
       "zh_db": [
@@ -151687,11 +151310,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "正改变"
+          "正整改"
         ],
         [
           "B",
-          "世界呢"
+          "世界呢哈"
         ]
       ],
       "nap": [
@@ -151700,11 +151323,11 @@ const SENTENCES = [
           "L'IA"
         ],
         [
-          "B",
+          "C",
           "sta cagnànno"
         ],
         [
-          "C",
+          "B",
           "'o munno"
         ]
       ],
@@ -151714,11 +151337,11 @@ const SENTENCES = [
           "L'IA"
         ],
         [
-          "B",
-          "sta cangiannu"
+          "C",
+          "sta cangiànnu"
         ],
         [
-          "C",
+          "B",
           "u munnu"
         ]
       ],
@@ -151742,11 +151365,11 @@ const SENTENCES = [
           "L'IA"
         ],
         [
-          "B",
+          "C",
           "est en train de changer"
         ],
         [
-          "C",
+          "B",
           "le monde"
         ]
       ],
@@ -152411,12 +152034,8 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "D",
-          "Ní féidir liom"
-        ],
-        [
           "B",
-          "pasfhocal an Wi-Fi"
+          "Ní féidir liom pasfhocal an Wi-Fi"
         ],
         [
           "C",
@@ -152511,12 +152130,8 @@ const SENTENCES = [
       ],
       "cy": [
         [
-          "D",
-          "Dydw i ddim yn gwybod"
-        ],
-        [
           "B",
-          "cyfrinair y Wi-Fi"
+          "Dydw i ddim yn gwybod cyfrinair y Wi-Fi"
         ]
       ],
       "en_yk": [
@@ -152712,11 +152327,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "រកមិនឃើញ"
-        ],
-        [
-          "D",
-          "ពាក្យសម្ងាត់"
+          "រកមិនឃើញ ពាក្យសម្ងាត់"
         ],
         [
           "C",
@@ -152904,11 +152515,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "找不到"
+          "找不倒"
         ],
         [
           "B",
-          "Wi-Fi密码"
+          "Wi-Fi密码嘞"
         ]
       ],
       "zh_db": [
@@ -152922,43 +152533,27 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Wi-Fi密码"
+          "Wi-Fi密码了咋整"
         ]
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Nun riesco a truvà"
         ],
         [
           "B",
-          "nun trovo"
-        ],
-        [
-          "C",
-          "'a password"
-        ],
-        [
-          "D",
-          "d'ô Wi-Fi"
+          "'a password d'ô Wi-Fi"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Nun trovu"
         ],
         [
           "B",
-          "nun trovu"
-        ],
-        [
-          "C",
-          "a password"
-        ],
-        [
-          "D",
-          "dû Wi-Fi"
+          "a password dû Wi-Fi"
         ]
       ],
       "gsw": [
@@ -152985,16 +152580,12 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
+          "C",
           "trouve pas"
         ],
         [
-          "C",
-          "le mot de passe"
-        ],
-        [
-          "D",
-          "du Wi-Fi"
+          "B",
+          "le mot de passe Wi-Fi"
         ]
       ],
       "sco": [
@@ -153008,11 +152599,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "the Wi-Fi"
-        ],
-        [
-          "D",
-          "password"
+          "the Wi-Fi password"
         ]
       ],
       "en_sg": [
@@ -154597,37 +154184,29 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Isso"
+          "D",
+          "Ha 'mparato"
         ],
         [
           "B",
-          "s'è 'mparato"
+          "'a programmazione"
         ],
         [
           "C",
-          "a programmà"
-        ],
-        [
-          "B",
-          "'a sulo"
+          "da sulo"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iddu"
+          "D",
+          "Mparau"
         ],
         [
           "B",
-          "si 'mparau"
+          "a programmazioni"
         ],
         [
           "C",
-          "a pruggrammari"
-        ],
-        [
-          "B",
           "di sulu"
         ]
       ],
@@ -154652,19 +154231,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Il"
+          "Y"
         ],
         [
-          "B",
+          "D",
           "a appris"
         ],
         [
-          "C",
+          "B",
           "la programmation"
         ],
         [
-          "B",
-          "tout seul"
+          "C",
+          "par lui-même"
         ]
       ],
       "sco": [
@@ -155292,7 +154871,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "日本的"
+          "日本个"
         ],
         [
           "C",
@@ -156180,7 +155759,7 @@ const SENTENCES = [
       "zh_sc": [
         [
           "A",
-          "赏樱花"
+          "看樱花"
         ],
         [
           "D",
@@ -156192,7 +155771,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "传统"
+          "传统嘞"
         ]
       ],
       "zh_db": [
@@ -156202,7 +155781,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "是"
+          "那是"
         ],
         [
           "B",
@@ -156210,16 +155789,16 @@ const SENTENCES = [
         ],
         [
           "C",
-          "传统"
+          "老传统了"
         ]
       ],
       "nap": [
         [
           "A",
-          "Guardà 'e cirase 'n fiore"
+          "Guardà 'e sciure 'e ceraso"
         ],
         [
-          "B",
+          "D",
           "è"
         ],
         [
@@ -156227,17 +155806,17 @@ const SENTENCES = [
           "'na tradizione"
         ],
         [
-          "D",
+          "B",
           "giapponese"
         ]
       ],
       "scn": [
         [
           "A",
-          "Taliari i ciuri di cirasa"
+          "A fistina dî sciuri di cirasa"
         ],
         [
-          "B",
+          "D",
           "è"
         ],
         [
@@ -156245,7 +155824,7 @@ const SENTENCES = [
           "na tradizioni"
         ],
         [
-          "D",
+          "B",
           "giappunisa"
         ]
       ],
@@ -156270,10 +155849,10 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Regarder les cerisiers en fleurs"
+          "L'observation des cerisiers en fleur"
         ],
         [
-          "B",
+          "D",
           "c'est"
         ],
         [
@@ -156281,7 +155860,7 @@ const SENTENCES = [
           "une tradition"
         ],
         [
-          "D",
+          "B",
           "japonaise"
         ]
       ],
@@ -157889,16 +157468,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Nuje"
+          "C",
+          "Mangiammo"
         ],
         [
           "B",
-          "mangimmo"
-        ],
-        [
-          "C",
-          "raviole"
+          "'e raviole"
         ],
         [
           "D",
@@ -157907,20 +157482,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
-          "A",
-          "Nuàutri"
+          "C",
+          "Manciamu"
         ],
         [
           "B",
-          "manciamu"
-        ],
-        [
-          "C",
-          "ravioli"
+          "i ravioli"
         ],
         [
           "D",
-          "pi u Capu d'annu cinisi"
+          "duranti u Capudannu cinisi"
         ]
       ],
       "gsw": [
@@ -157947,16 +157518,16 @@ const SENTENCES = [
           "On"
         ],
         [
-          "B",
+          "C",
           "mange"
         ],
         [
-          "C",
-          "des dumplings"
+          "B",
+          "des raviolis"
         ],
         [
           "D",
-          "au Nouvel An chinois"
+          "pendant le Nouvel An chinois"
         ]
       ],
       "sco": [
@@ -158604,7 +158175,7 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "在这个国家"
+          "勒迭个国家"
         ],
         [
           "B",
@@ -158612,11 +158183,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "举办"
+          "办"
         ],
         [
           "C",
-          "好多节日"
+          "交关多节日"
         ]
       ],
       "es_eu": [
@@ -159300,11 +158871,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ត្រូវបានរៀបចំ"
-        ],
-        [
-          "E",
-          "នៅរដូវក្ដៅ"
+          "ត្រូវបានរៀបចំ នៅរដូវក្ដៅ"
         ]
       ],
       "yo": [
@@ -159615,38 +159182,38 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "D",
-          "D'estate"
-        ],
-        [
-          "C",
-          "'n chisto paese"
+          "A",
+          "Int'a chisto paese"
         ],
         [
           "B",
-          "se fanno"
+          "'e state"
         ],
         [
-          "A",
+          "C",
           "assaje feste"
+        ],
+        [
+          "D",
+          "veneno organizzate"
         ]
       ],
       "scn": [
         [
-          "D",
-          "D'estati"
-        ],
-        [
-          "C",
-          "nti stu paisi"
+          "A",
+          "Nti chistu paisi"
         ],
         [
           "B",
-          "si fannu"
+          "d'estati"
         ],
         [
-          "A",
+          "C",
           "assà festi"
+        ],
+        [
+          "D",
+          "vennu urganizzati"
         ]
       ],
       "gsw": [
@@ -159669,20 +159236,20 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "D",
-          "En été"
-        ],
-        [
           "A",
-          "ben des festivals"
+          "Dans ce pays-là"
         ],
         [
           "B",
-          "sont organisés"
+          "en été"
         ],
         [
           "C",
-          "dans ce pays"
+          "ben des festivals"
+        ],
+        [
+          "D",
+          "sont organisés"
         ]
       ],
       "sco": [
@@ -160215,7 +159782,7 @@ const SENTENCES = [
       "wuu": [
         [
           "A",
-          "语言学习"
+          "学言话"
         ],
         [
           "C",
@@ -160223,7 +159790,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "新的大门"
+          "新个大门"
         ]
       ],
       "es_eu": [
@@ -160751,11 +160318,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "បើក"
-        ],
-        [
-          "D",
-          "ទ្វារ"
+          "បើក ទ្វារ"
         ],
         [
           "C",
@@ -160971,11 +160534,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "打开"
+          "要打开"
         ],
         [
           "B",
-          "新的大门"
+          "新的大门嘞"
         ]
       ],
       "zh_db": [
@@ -160985,39 +160548,39 @@ const SENTENCES = [
         ],
         [
           "C",
-          "能打开"
+          "能整开"
         ],
         [
           "B",
-          "新的大门"
+          "新的大门呢"
         ]
       ],
       "nap": [
         [
           "A",
-          "'Mparà 'na lengua"
-        ],
-        [
-          "B",
-          "arape"
+          "'Mparà 'e lengue"
         ],
         [
           "C",
+          "arape"
+        ],
+        [
+          "B",
           "porte nove"
         ]
       ],
       "scn": [
         [
           "A",
-          "'Mparari na lingua"
-        ],
-        [
-          "B",
-          "grapi"
+          "Mparari i lingui"
         ],
         [
           "C",
-          "porti novi"
+          "grapi"
+        ],
+        [
+          "B",
+          "novi porti"
         ]
       ],
       "gsw": [
@@ -161037,14 +160600,14 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "Apprendre une langue"
-        ],
-        [
-          "B",
-          "ouvre"
+          "L'apprentissage des langues"
         ],
         [
           "C",
+          "ouvre"
+        ],
+        [
+          "B",
           "de nouvelles portes"
         ]
       ],
@@ -161578,11 +161141,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "骑自行车"
+          "骑脚踏车"
         ],
         [
           "B",
-          "去办公室"
+          "到办公室去"
         ]
       ],
       "es_eu": [
@@ -162126,11 +161689,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ការិយាល័យ"
-        ],
-        [
-          "D",
-          "ដោយកង់"
+          "ការិយាល័យ ដោយកង់"
         ]
       ],
       "yo": [
@@ -162377,38 +161936,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
+          "C",
+          "Vaco"
         ],
         [
           "B",
-          "vaco"
+          "a l'ufficio"
         ],
         [
-          "C",
-          "all'ufficio"
-        ],
-        [
-          "D",
+          "A",
           "cu 'a bicicletta"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
+          "C",
+          "Vaju"
         ],
         [
           "B",
-          "vaiu"
+          "ô uffiziu"
         ],
         [
-          "C",
-          "ô uffìciu"
-        ],
-        [
-          "D",
-          "cu a bicicletta"
+          "A",
+          "cû bicicletta"
         ]
       ],
       "gsw": [
@@ -162422,29 +161973,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "is Büro"
-        ],
-        [
-          "D",
-          "mit em Velo"
+          "is Büro mit em Velo"
         ]
       ],
       "fr_qc": [
         [
-          "A",
-          "Je"
+          "C",
+          "Je vais"
         ],
         [
           "B",
-          "vais"
-        ],
-        [
-          "C",
           "au bureau"
         ],
         [
-          "D",
-          "en bicycle"
+          "A",
+          "en bécyk"
         ]
       ],
       "sco": [
@@ -162458,11 +162001,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "tae the office"
-        ],
-        [
-          "D",
-          "by bike"
+          "tae the office by bike"
         ]
       ],
       "en_sg": [
@@ -164087,16 +163626,16 @@ const SENTENCES = [
           "Pe piacere"
         ],
         [
-          "B",
-          "girate a destra"
+          "D",
+          "vutate"
         ],
         [
           "C",
-          "ô prossimo"
+          "a dritta"
         ],
         [
-          "D",
-          "incrocio"
+          "B",
+          "ô prossimo 'ncrocio"
         ]
       ],
       "scn": [
@@ -164105,16 +163644,16 @@ const SENTENCES = [
           "Pi favuri"
         ],
         [
-          "B",
-          "vutati a dritta"
+          "D",
+          "girassi"
         ],
         [
           "C",
-          "ô prossimu"
+          "a destra"
         ],
         [
-          "D",
-          "'ncrociu"
+          "B",
+          "ô prossimu ncrociamentu"
         ]
       ],
       "gsw": [
@@ -164138,19 +163677,19 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "S'il vous plaît"
-        ],
-        [
-          "B",
-          "tournez à droite"
-        ],
-        [
-          "C",
-          "à la prochaine"
+          "Veuillez"
         ],
         [
           "D",
-          "intersection"
+          "tourner"
+        ],
+        [
+          "C",
+          "à droite"
+        ],
+        [
+          "B",
+          "au prochain carrefour"
         ]
       ],
       "sco": [
@@ -165792,7 +165331,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "在"
+          "搁"
         ],
         [
           "C",
@@ -165800,7 +165339,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "后头"
+          "后头呢"
         ]
       ],
       "nap": [
@@ -165809,15 +165348,15 @@ const SENTENCES = [
           "'O supermercato"
         ],
         [
-          "B",
+          "D",
           "sta"
         ],
         [
-          "C",
-          "areto a"
+          "B",
+          "areto"
         ],
         [
-          "D",
+          "C",
           "'a stazione"
         ]
       ],
@@ -165827,16 +165366,16 @@ const SENTENCES = [
           "U supermercatu"
         ],
         [
-          "B",
+          "D",
           "è"
         ],
         [
-          "C",
-          "darreri a"
+          "B",
+          "darreri"
         ],
         [
-          "D",
-          "la stazioni"
+          "C",
+          "â stazioni"
         ]
       ],
       "gsw": [
@@ -165863,16 +165402,16 @@ const SENTENCES = [
           "Le supermarché"
         ],
         [
-          "B",
+          "D",
           "est"
         ],
         [
-          "C",
+          "B",
           "en arrière de"
         ],
         [
-          "D",
-          "la station"
+          "C",
+          "la gare"
         ]
       ],
       "sco": [
@@ -166512,7 +166051,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "这道菜"
+          "迭道菜"
         ]
       ],
       "es_eu": [
@@ -167399,38 +166938,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
-          "A",
-          "Io"
-        ],
-        [
-          "B",
-          "voglio ordinà"
+          "D",
+          "Vulesse"
         ],
         [
           "C",
-          "stu"
+          "ordená"
         ],
         [
-          "D",
-          "piatto"
+          "B",
+          "chisto piatto"
         ]
       ],
       "scn": [
         [
-          "A",
-          "Iu"
-        ],
-        [
-          "B",
-          "vògghiu ordinari"
+          "D",
+          "Vurrissi"
         ],
         [
           "C",
-          "stu"
+          "urdinari"
         ],
         [
-          "D",
-          "piattu"
+          "B",
+          "chistu piattu"
         ]
       ],
       "gsw": [
@@ -167461,16 +166992,16 @@ const SENTENCES = [
           "Je"
         ],
         [
-          "B",
-          "veux commander"
+          "D",
+          "voudrais"
         ],
         [
           "C",
-          "ce"
+          "commander"
         ],
         [
-          "D",
-          "plat-là"
+          "B",
+          "ce plat-là"
         ]
       ],
       "sco": [
@@ -168972,51 +168503,43 @@ const SENTENCES = [
       "zh_db": [
         [
           "A",
-          "这个"
+          "这"
         ],
         [
           "B",
-          "纪念品"
+          "玩意儿"
         ],
         [
           "C",
-          "多少钱啊"
+          "多少钱呐"
         ]
       ],
       "nap": [
         [
+          "C",
+          "Quanto costa"
+        ],
+        [
           "A",
-          "Quanto"
+          "chisto"
         ],
         [
           "B",
-          "costa"
-        ],
-        [
-          "C",
-          "stu"
-        ],
-        [
-          "D",
-          "ricuordo"
+          "souvenir"
         ]
       ],
       "scn": [
         [
+          "C",
+          "Quantu costa"
+        ],
+        [
           "A",
-          "Quantu"
+          "chistu"
         ],
         [
           "B",
-          "costa"
-        ],
-        [
-          "C",
-          "stu"
-        ],
-        [
-          "D",
-          "ricordu"
+          "souvenir"
         ]
       ],
       "gsw": [
@@ -169039,20 +168562,16 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "Combien"
-        ],
-        [
-          "B",
-          "ça coûte"
-        ],
-        [
           "C",
+          "Combien ça coûte"
+        ],
+        [
+          "A",
           "ce"
         ],
         [
-          "D",
-          "souvenir"
+          "B",
+          "souvenir-là"
         ]
       ],
       "sco": [
@@ -170197,7 +169716,7 @@ const SENTENCES = [
       "zh_sc": [
         [
           "B",
-          "感谢你"
+          "谢谢你嘞"
         ],
         [
           "C",
@@ -170211,7 +169730,7 @@ const SENTENCES = [
       "zh_db": [
         [
           "B",
-          "谢谢你"
+          "谢谢你啦"
         ],
         [
           "C",
@@ -170219,34 +169738,34 @@ const SENTENCES = [
         ],
         [
           "A",
-          "一切"
+          "这一切呗"
         ]
       ],
       "nap": [
         [
-          "A",
+          "B",
           "Grazie"
         ],
         [
-          "B",
+          "C",
           "pe"
         ],
         [
-          "C",
+          "A",
           "tutto"
         ]
       ],
       "scn": [
         [
-          "A",
+          "B",
           "Grazii"
         ],
         [
-          "B",
+          "C",
           "pi"
         ],
         [
-          "C",
+          "A",
           "tuttu"
         ]
       ],
@@ -170266,15 +169785,15 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "B",
           "Merci"
         ],
         [
-          "B",
+          "C",
           "pour"
         ],
         [
-          "C",
+          "A",
           "toute"
         ]
       ],

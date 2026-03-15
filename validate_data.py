@@ -28,7 +28,7 @@ REQUIRED_LANGS = {
     'sco', 'nl', 'de', 'gsw',
     'ga', 'cy', 'eu',
     'la', 'fr', 'fr_qc', 'it', 'nap', 'scn', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
-    'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'hy',
+    'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'grc', 'hy',
     'nv', 'qu',
     'hwc', 'pcm', 'tpi',
 }
