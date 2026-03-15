@@ -146724,8 +146724,12 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B|D",
-          "두통이 있다"
+          "B",
+          "두통이"
+        ],
+        [
+          "D",
+          "있다"
         ]
       ],
       "zh": [
@@ -146846,7 +146850,7 @@ const SENTENCES = [
           "आज"
         ],
         [
-          "B|D",
+          "B",
           "सिरदर्द"
         ],
         [
@@ -146864,7 +146868,7 @@ const SENTENCES = [
           "have"
         ],
         [
-          "B|D",
+          "B",
           "a headache"
         ],
         [
@@ -146976,7 +146980,7 @@ const SENTENCES = [
           "heute"
         ],
         [
-          "B|D",
+          "B",
           "Kopfschmerzen"
         ]
       ],
@@ -146990,7 +146994,7 @@ const SENTENCES = [
           "ai"
         ],
         [
-          "B|D",
+          "B",
           "mal à la tête"
         ],
         [
@@ -147008,7 +147012,7 @@ const SENTENCES = [
           "ho"
         ],
         [
-          "B|D",
+          "B",
           "mal di testa"
         ],
         [
@@ -147178,8 +147182,12 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B|D",
-          "두통이 있다"
+          "B",
+          "두통이"
+        ],
+        [
+          "D",
+          "있다"
         ]
       ],
       "nan": [
@@ -147228,7 +147236,7 @@ const SENTENCES = [
           "tengo"
         ],
         [
-          "B|D",
+          "B",
           "dolor de cabeza"
         ],
         [
@@ -147246,7 +147254,7 @@ const SENTENCES = [
           "traigo"
         ],
         [
-          "B|D",
+          "B",
           "dolor de cabeza"
         ],
         [
@@ -147724,8 +147732,12 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B|D",
-          "두통이 있다"
+          "B",
+          "두통이"
+        ],
+        [
+          "D",
+          "있다"
         ]
       ],
       "lo": [
@@ -148107,7 +148119,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mala capa"
+          "mal 'e capa"
         ],
         [
           "C",
@@ -148124,7 +148136,7 @@ const SENTENCES = [
           "haiu"
         ],
         [
-          "B|D",
+          "B",
           "mali di testa"
         ],
         [
