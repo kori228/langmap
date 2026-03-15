@@ -146816,38 +146816,38 @@ const SENTENCES = [
       ],
       "th": [
         [
-          "C",
-          "วันนี้"
-        ],
-        [
           "A",
           "ฉัน"
         ],
         [
-          "D",
-          "ปวด"
+          "F",
+          "มี"
         ],
         [
-          "B",
-          "หัว"
+          "E",
+          "อาการปวดหัว"
+        ],
+        [
+          "C",
+          "วันนี้"
         ]
       ],
       "id": [
         [
-          "C",
-          "Hari ini"
-        ],
-        [
           "A",
-          "saya"
+          "Saya"
         ],
         [
-          "D",
-          "sakit"
+          "F",
+          "punya"
         ],
         [
-          "B",
-          "kepala"
+          "E",
+          "sakit kepala"
+        ],
+        [
+          "C",
+          "hari ini"
         ]
       ],
       "hi": [
@@ -146892,11 +146892,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -146910,11 +146910,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "have"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -146928,11 +146928,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "have"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -146946,11 +146946,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -146964,11 +146964,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -147370,11 +147370,11 @@ const SENTENCES = [
           "өнөөдөр"
         ],
         [
-          "B",
+          "E",
           "толгой өвдөж"
         ],
         [
-          "D",
+          "F",
           "байна"
         ]
       ],
@@ -147399,18 +147399,14 @@ const SENTENCES = [
       "am": [
         [
           "A",
-          "እኔ"
-        ],
-        [
-          "C",
           "ዛሬ"
         ],
         [
-          "B",
+          "E",
           "ራስ ምታት"
         ],
         [
-          "D",
+          "F",
           "አለብኝ"
         ]
       ],
@@ -147424,26 +147420,26 @@ const SENTENCES = [
           "இன்று"
         ],
         [
-          "B",
+          "E",
           "தலைவலி"
         ],
         [
-          "D",
+          "F",
           "இருக்கிறது"
         ]
       ],
       "tl": [
         [
-          "D",
-          "Masakit ang"
+          "F",
+          "May"
         ],
         [
-          "B",
-          "ulo"
+          "E",
+          "sakit ng ulo"
         ],
         [
           "A",
-          "ko"
+          "ako"
         ],
         [
           "C",
@@ -147456,12 +147452,12 @@ const SENTENCES = [
           "Saya"
         ],
         [
-          "D",
-          "sakit"
+          "F",
+          "ada"
         ],
         [
-          "B",
-          "kepala"
+          "E",
+          "sakit kepala"
         ],
         [
           "C",
@@ -147470,29 +147466,29 @@ const SENTENCES = [
       ],
       "my": [
         [
-          "C",
-          "ဒီနေ့"
-        ],
-        [
           "A",
           "ကျွန်တော်"
         ],
         [
-          "B",
-          "ခေါင်း"
+          "C",
+          "ဒီနေ့"
         ],
         [
-          "D",
-          "ကိုက်ပါတယ်"
+          "E",
+          "ခေါင်းကိုက်"
+        ],
+        [
+          "F",
+          "နေတယ်"
         ]
       ],
       "ga": [
         [
-          "D",
+          "F",
           "Tá"
         ],
         [
-          "B",
+          "E",
           "tinneas cinn"
         ],
         [
@@ -147514,11 +147510,11 @@ const SENTENCES = [
           "gaur"
         ],
         [
-          "B",
+          "E",
           "buruko mina"
         ],
         [
-          "D",
+          "F",
           "daukat"
         ]
       ],
@@ -147528,8 +147524,12 @@ const SENTENCES = [
           "Ma"
         ],
         [
+          "D",
+          "fáj"
+        ],
+        [
           "B",
-          "fáj a fejem"
+          "a fejem"
         ]
       ],
       "nl": [
@@ -147552,7 +147552,7 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
+          "F",
           "Mam"
         ],
         [
@@ -147560,7 +147560,7 @@ const SENTENCES = [
           "dzisiaj"
         ],
         [
-          "B",
+          "E",
           "ból głowy"
         ]
       ],
@@ -147602,17 +147602,21 @@ const SENTENCES = [
           "Minulla"
         ],
         [
-          "C",
-          "on tänään"
+          "F",
+          "on"
         ],
         [
-          "B",
+          "C",
+          "tänään"
+        ],
+        [
+          "E",
           "päänsärkyä"
         ]
       ],
       "cy": [
         [
-          "D",
+          "F",
           "Mae gen"
         ],
         [
@@ -147620,7 +147624,7 @@ const SENTENCES = [
           "i"
         ],
         [
-          "B",
+          "E",
           "gur pen"
         ],
         [
@@ -147634,11 +147638,11 @@ const SENTENCES = [
           "I've"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "a bad 'ead"
         ],
         [
@@ -147652,11 +147656,11 @@ const SENTENCES = [
           "I've"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "a 'eadache"
         ],
         [
@@ -147674,8 +147678,12 @@ const SENTENCES = [
           "मम"
         ],
         [
-          "B",
-          "शिरोवेदना अस्ति"
+          "E",
+          "शिरोवेदना"
+        ],
+        [
+          "F",
+          "अस्ति"
         ]
       ],
       "la": [
@@ -147713,15 +147721,19 @@ const SENTENCES = [
       "ur": [
         [
           "A",
-          "آج"
-        ],
-        [
-          "B",
-          "میرے"
+          "مجھے"
         ],
         [
           "C",
-          "سر میں درد ہے"
+          "آج"
+        ],
+        [
+          "E",
+          "سر درد"
+        ],
+        [
+          "F",
+          "ہے"
         ]
       ],
       "ko_jeju": [
@@ -147784,8 +147796,12 @@ const SENTENCES = [
           "আজ"
         ],
         [
-          "B",
-          "মাথা ব্যথা"
+          "E",
+          "মাথাব্যথা"
+        ],
+        [
+          "F",
+          "আছে"
         ]
       ],
       "te": [
@@ -147798,8 +147814,12 @@ const SENTENCES = [
           "ఈ రోజు"
         ],
         [
-          "B",
-          "తలనొప్పిగా ఉంది"
+          "E",
+          "తలనొప్పి"
+        ],
+        [
+          "F",
+          "ఉంది"
         ]
       ],
       "el": [
@@ -147808,11 +147828,11 @@ const SENTENCES = [
           "Εγώ"
         ],
         [
-          "D",
+          "F",
           "έχω"
         ],
         [
-          "B",
+          "E",
           "πονοκέφαλο"
         ],
         [
@@ -147933,11 +147953,15 @@ const SENTENCES = [
         ],
         [
           "C",
-          "այսօր"
+          "այunem"
         ],
         [
-          "B",
-          "գլխացավ"
+          "E",
+          "գlxacav"
+        ],
+        [
+          "F",
+          "ounm"
         ]
       ],
       "nv": [
@@ -148142,35 +148166,17 @@ const SENTENCES = [
           "oggi"
         ]
       ],
-      "de_gsw": [
-        [
-          "A",
-          "Ich"
-        ],
-        [
-          "D",
-          "ha"
-        ],
-        [
-          "C",
-          "hüt"
-        ],
-        [
-          "B",
-          "Chopfweh"
-        ]
-      ],
       "fr_qc": [
         [
           "A",
           "J'"
         ],
         [
-          "D",
+          "F",
           "ai"
         ],
         [
-          "B",
+          "E",
           "mal à la tête"
         ],
         [
@@ -148184,11 +148190,11 @@ const SENTENCES = [
           "A"
         ],
         [
-          "D",
+          "F",
           "hae"
         ],
         [
-          "B",
+          "E",
           "a sair heid"
         ],
         [
@@ -148206,11 +148212,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "got"
         ],
         [
-          "B",
+          "E",
           "headache lah"
         ]
       ],
@@ -148220,12 +148226,12 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "get"
         ],
         [
-          "B",
-          "one headache"
+          "E",
+          "headache"
         ],
         [
           "C",
@@ -148234,20 +148240,20 @@ const SENTENCES = [
       ],
       "pcm": [
         [
-          "C",
-          "Today"
-        ],
-        [
           "A",
-          "my"
+          "I"
         ],
         [
-          "B",
-          "head"
+          "F",
+          "get"
         ],
         [
-          "D",
-          "dey pain me"
+          "E",
+          "headache"
+        ],
+        [
+          "C",
+          "today"
         ]
       ],
       "tpi": [
@@ -148256,12 +148262,12 @@ const SENTENCES = [
           "Mi"
         ],
         [
-          "D",
+          "F",
           "gat"
         ],
         [
-          "B",
-          "het i pen"
+          "E",
+          "hetpain"
         ],
         [
           "C",
@@ -148278,11 +148284,11 @@ const SENTENCES = [
           "τήμερον"
         ],
         [
-          "B",
+          "E",
           "κεφαλαλγίαν"
         ],
         [
-          "D",
+          "F",
           "ἔχω"
         ]
       ],
@@ -148292,7 +148298,7 @@ const SENTENCES = [
           "Jag"
         ],
         [
-          "D",
+          "F",
           "har"
         ],
         [
@@ -148300,7 +148306,7 @@ const SENTENCES = [
           "i dag"
         ],
         [
-          "B",
+          "E",
           "huvudvärk"
         ]
       ],
@@ -148310,7 +148316,7 @@ const SENTENCES = [
           "Jeg"
         ],
         [
-          "D",
+          "F",
           "har"
         ],
         [
@@ -148318,7 +148324,7 @@ const SENTENCES = [
           "i dag"
         ],
         [
-          "B",
+          "E",
           "hodepine"
         ]
       ],
@@ -148328,11 +148334,11 @@ const SENTENCES = [
           "Ic"
         ],
         [
-          "D",
+          "F",
           "hæbbe"
         ],
         [
-          "B",
+          "E",
           "hēafodece"
         ],
         [
@@ -148350,12 +148356,30 @@ const SENTENCES = [
           "අද"
         ],
         [
-          "B",
+          "E",
           "හිසරදයක්"
         ],
         [
-          "D",
+          "F",
           "තියෙනවා"
+        ]
+      ],
+      "de_gsw": [
+        [
+          "A",
+          "Ich"
+        ],
+        [
+          "F",
+          "ha"
+        ],
+        [
+          "C",
+          "hüt"
+        ],
+        [
+          "E",
+          "Chopfweh"
         ]
       ]
     }
