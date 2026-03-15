@@ -20,6 +20,9 @@ const SENTENCES = [
       },
       "F": {
         "color": "#1abc9c"
+      },
+      "G": {
+        "color": "#f39c12"
       }
     },
     "langs": {
@@ -431,7 +434,7 @@ const SENTENCES = [
           "anprobieren"
         ],
         [
-          "D",
+          "G",
           "den"
         ],
         [
@@ -461,8 +464,12 @@ const SENTENCES = [
           "un costume"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que j' ai vu"
+          "j'ai vu"
         ],
         [
           "C",
@@ -487,8 +494,12 @@ const SENTENCES = [
           "un abito"
         ],
         [
+          "G",
+          "che"
+        ],
+        [
           "D",
-          "che ho visto"
+          "ho visto"
         ],
         [
           "C",
@@ -513,8 +524,12 @@ const SENTENCES = [
           "костюм"
         ],
         [
+          "G",
+          "который"
+        ],
+        [
           "D",
-          "который я увидел"
+          "я увидел"
         ],
         [
           "C",
@@ -539,8 +554,12 @@ const SENTENCES = [
           "костюм"
         ],
         [
+          "G",
+          "який"
+        ],
+        [
           "D",
-          "який я побачив"
+          "я побачив"
         ],
         [
           "C",
@@ -851,8 +870,12 @@ const SENTENCES = [
           "un traje"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -877,8 +900,12 @@ const SENTENCES = [
           "un traje"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -903,8 +930,12 @@ const SENTENCES = [
           "um fato"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -929,8 +960,12 @@ const SENTENCES = [
           "um terno"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -1319,7 +1354,7 @@ const SENTENCES = [
           "passen"
         ],
         [
-          "D",
+          "G",
           "die"
         ],
         [
@@ -1553,6 +1588,10 @@ const SENTENCES = [
           "vestem"
         ],
         [
+          "G",
+          "quam"
+        ],
+        [
           "C",
           "in taberna"
         ],
@@ -1562,7 +1601,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "visam"
+          "vidi"
         ],
         [
           "F",
@@ -2285,8 +2324,12 @@ const SENTENCES = [
           "nu vestito"
         ],
         [
+          "G",
+          "ca"
+        ],
+        [
           "D",
-          "ca aggio visto"
+          "aggio visto"
         ],
         [
           "C",
@@ -2311,8 +2354,12 @@ const SENTENCES = [
           "un vistitu"
         ],
         [
+          "G",
+          "ca"
+        ],
+        [
           "D",
-          "ca vitti"
+          "vitti"
         ],
         [
           "C",
@@ -2371,8 +2418,12 @@ const SENTENCES = [
           "un complet"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que j' ai vu"
+          "j'ai vu"
         ],
         [
           "C",
@@ -2557,7 +2608,7 @@ const SENTENCES = [
           "prova"
         ],
         [
-          "D",
+          "G",
           "som"
         ],
         [
@@ -2591,7 +2642,7 @@ const SENTENCES = [
           "prøve"
         ],
         [
-          "D",
+          "G",
           "som"
         ],
         [
