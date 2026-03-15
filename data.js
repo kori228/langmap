@@ -16036,11 +16036,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Voglio"
+          "Io"
         ],
         [
           "C",
-          "andare"
+          "voglio andare"
         ],
         [
           "B",
@@ -16288,11 +16288,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Quiero"
+          "Yo"
         ],
         [
           "C",
-          "ir"
+          "quiero ir"
         ],
         [
           "B",
@@ -16306,11 +16306,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Quiero"
+          "Yo"
         ],
         [
           "C",
-          "ir"
+          "quiero ir"
         ],
         [
           "B",
@@ -17274,11 +17274,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Voglio"
+          "Io"
         ],
         [
           "C",
-          "jì"
+          "voglio jì"
         ],
         [
           "B",
@@ -17292,11 +17292,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Vògghiu"
+          "Iu"
         ],
         [
           "C",
-          "iri"
+          "vògghiu iri"
         ],
         [
           "B",
@@ -19787,11 +19787,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Ho"
+          "Io"
         ],
         [
           "C",
-          "comprato"
+          "ho comprato"
         ],
         [
           "D",
@@ -21553,11 +21553,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Aggio"
+          "Io"
         ],
         [
           "C",
-          "accattato"
+          "aggio accattato"
         ],
         [
           "D",
@@ -21579,11 +21579,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Haiu"
+          "Iu"
         ],
         [
           "C",
-          "accattatu"
+          "haiu accattatu"
         ],
         [
           "D",
@@ -35422,11 +35422,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Mi"
+          "A me"
         ],
         [
           "D",
-          "piace"
+          "mi piace"
         ],
         [
           "C",
@@ -35434,7 +35434,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "musica"
+          "la musica"
         ]
       ],
       "ru": [
@@ -35674,11 +35674,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Me"
+          "A mí"
         ],
         [
           "D",
-          "gusta"
+          "me gusta"
         ],
         [
           "C",
@@ -35692,11 +35692,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Me"
+          "A mí"
         ],
         [
           "D",
-          "gusta"
+          "me gusta"
         ],
         [
           "C",
@@ -36652,11 +36652,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Me"
+          "A me"
         ],
         [
           "D",
-          "piace"
+          "me piace"
         ],
         [
           "C",
@@ -36670,11 +36670,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Mi"
+          "A mia"
         ],
         [
           "D",
-          "piaci"
+          "mi piaci"
         ],
         [
           "C",
@@ -54192,11 +54192,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Me"
+          "Yo"
         ],
         [
           "C",
-          "olvidé"
+          "me olvidé"
         ],
         [
           "B",
@@ -54210,11 +54210,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Se me"
+          "Yo"
         ],
         [
           "C",
-          "olvidó"
+          "se me olvidó"
         ],
         [
           "B",
@@ -95938,15 +95938,15 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Ho"
+          "Io"
         ],
         [
           "C",
-          "perso"
+          "ho perso"
         ],
         [
           "B",
-          "il mio portafoglio"
+          "il portafoglio"
         ],
         [
           "D",
@@ -97156,15 +97156,15 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Aggio"
+          "Io"
         ],
         [
           "C",
-          "perduto"
+          "aggio perduto"
         ],
         [
           "B",
-          "'o puortafoglio mio"
+          "'o puortafoglio"
         ],
         [
           "D",
@@ -97174,15 +97174,15 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Haiu"
+          "Iu"
         ],
         [
           "C",
-          "persu"
+          "haiu persu"
         ],
         [
           "B",
-          "u me purtafogghiu"
+          "u purtafogghiu"
         ],
         [
           "D",
