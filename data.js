@@ -2680,8 +2680,12 @@ const SENTENCES = [
           "ānne wǣfels"
         ],
         [
+          "G",
+          "þe"
+        ],
+        [
           "D",
-          "þe ic geseah"
+          "ic geseah"
         ],
         [
           "C",
