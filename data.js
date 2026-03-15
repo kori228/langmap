@@ -2632,6 +2632,32 @@ const SENTENCES = [
           "B",
           "long hapsait bilong hotel"
         ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "E",
+          "ἱμάτιον"
+        ],
+        [
+          "D",
+          "ὃ εἶδον"
+        ],
+        [
+          "C",
+          "ἐν τῷ καπηλείῳ"
+        ],
+        [
+          "B",
+          "τῷ ἀπέναντι τοῦ πανδοχείου"
+        ],
+        [
+          "F",
+          "ἐνδύσασθαι βούλομαι"
+        ]
       ]
     }
   },
@@ -4270,6 +4296,24 @@ const SENTENCES = [
           "D",
           "Tanaka"
         ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐμὸν"
+        ],
+        [
+          "B",
+          "ὄνομα"
+        ],
+        [
+          "D",
+          "Τανάκα"
+        ],
+        [
+          "C",
+          "ἐστίν"
+        ]
       ]
     }
   },
@@ -4671,7 +4715,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Faccio"
+          "Io"
+        ],
+        [
+          "C",
+          "faccio"
         ],
         [
           "B",
@@ -6157,7 +6205,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Faccio"
+          "Io"
+        ],
+        [
+          "C",
+          "faccio"
         ],
         [
           "B",
@@ -6175,7 +6227,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Fazzu"
+          "Iu"
+        ],
+        [
+          "C",
+          "faccio"
         ],
         [
           "B",
@@ -6342,6 +6398,28 @@ const SENTENCES = [
         [
           "E",
           "long seven kilok"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἀκράτισμα"
+        ],
+        [
+          "C",
+          "ἐσθίω"
+        ],
+        [
+          "D",
+          "ἑκάστης ἕω"
+        ],
+        [
+          "E",
+          "τῇ ἑβδόμῃ ὥρᾳ"
         ]
       ]
     }
@@ -6661,7 +6739,11 @@ const SENTENCES = [
       "it": [
         [
           "C",
-          "Dov'è"
+          "Dove"
+        ],
+        [
+          "D",
+          "è"
         ],
         [
           "A",
@@ -7378,19 +7460,19 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "C",
           "Ubi"
         ],
         [
-          "C",
+          "A",
           "proxima"
         ],
         [
-          "D",
+          "B",
           "statio"
         ],
         [
-          "B",
+          "D",
           "est"
         ]
       ],
@@ -7862,8 +7944,12 @@ const SENTENCES = [
           "Addò sta"
         ],
         [
+          "D",
+          "è"
+        ],
+        [
           "A",
-          "'a stazione"
+          "la stazione"
         ],
         [
           "B",
@@ -7876,8 +7962,12 @@ const SENTENCES = [
           "Unni è"
         ],
         [
+          "D",
+          "è"
+        ],
+        [
           "A",
-          "a stazioni"
+          "la stazione"
         ],
         [
           "B",
@@ -8008,6 +8098,24 @@ const SENTENCES = [
         [
           "D",
           "we?"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "ποῦ"
+        ],
+        [
+          "D",
+          "ἐστὶν"
+        ],
+        [
+          "A",
+          "ὁ ἐγγύτατος"
+        ],
+        [
+          "B",
+          "σταθμός;"
         ]
       ]
     }
@@ -9831,6 +9939,24 @@ const SENTENCES = [
           "D",
           "tru"
         ]
+      ],
+      "grc": [
+        [
+          "A",
+          "οὗτος"
+        ],
+        [
+          "B",
+          "ὁ καφφές"
+        ],
+        [
+          "C",
+          "λίαν"
+        ],
+        [
+          "D",
+          "ἡδύς ἐστιν"
+        ]
       ]
     }
   },
@@ -10161,7 +10287,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Studio"
+          "Io"
+        ],
+        [
+          "D",
+          "studio"
         ],
         [
           "C",
@@ -10409,7 +10539,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Estudio"
+          "Yo"
+        ],
+        [
+          "D",
+          "estudio"
         ],
         [
           "C",
@@ -10423,7 +10557,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Estudio"
+          "Yo"
+        ],
+        [
+          "D",
+          "estudio"
         ],
         [
           "C",
@@ -10886,11 +11024,11 @@ const SENTENCES = [
           "linguam Iaponicam"
         ],
         [
-          "D",
+          "B",
           "in universitate"
         ],
         [
-          "B",
+          "D",
           "studeo"
         ]
       ],
@@ -11375,7 +11513,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Studio"
+          "Io"
+        ],
+        [
+          "D",
+          "studio"
         ],
         [
           "C",
@@ -11389,7 +11531,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Stùdiu"
+          "Iu"
+        ],
+        [
+          "D",
+          "studio"
         ],
         [
           "C",
@@ -11524,6 +11670,24 @@ const SENTENCES = [
         [
           "B",
           "long yunivesiti"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "C",
+          "τὴν Ἰαπωνικὴν γλῶτταν"
+        ],
+        [
+          "B",
+          "ἐν τῇ ἀκαδημίᾳ"
+        ],
+        [
+          "D",
+          "μανθάνω"
         ]
       ]
     }
@@ -13093,7 +13257,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "soleggiato"
+          "suleato"
         ]
       ],
       "scn": [
@@ -13238,6 +13402,24 @@ const SENTENCES = [
         [
           "D",
           "san i kam"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ αὔριον"
+        ],
+        [
+          "B",
+          "οὐρανὸς"
+        ],
+        [
+          "D",
+          "αἴθριος"
+        ],
+        [
+          "C",
+          "ἔσται"
         ]
       ]
     }
@@ -14807,7 +14989,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "cucina"
+          "cocina"
         ],
         [
           "B",
@@ -14960,6 +15142,24 @@ const SENTENCES = [
         [
           "D",
           "olgeta de"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ μήτηρ μου"
+        ],
+        [
+          "B",
+          "δεῖπνον"
+        ],
+        [
+          "C",
+          "σκευάζει"
+        ],
+        [
+          "D",
+          "καθ᾽ ἡμέραν"
         ]
       ]
     }
@@ -16040,11 +16240,11 @@ const SENTENCES = [
           "proximo anno"
         ],
         [
-          "C",
+          "B",
           "in Iaponiam"
         ],
         [
-          "B",
+          "C",
           "ire volo"
         ]
       ],
@@ -16551,11 +16751,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "jiri"
+          "iri"
         ],
         [
           "B",
-          "n Giappuni"
+          "n Giapponi"
         ],
         [
           "D",
@@ -16690,6 +16890,24 @@ const SENTENCES = [
         [
           "D",
           "long narapela yia"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "εἰς τὴν Ἰαπωνίαν"
+        ],
+        [
+          "C",
+          "πορεύεσθαι βούλομαι"
+        ],
+        [
+          "D",
+          "τῷ ἐπιόντι ἔτει"
         ]
       ]
     }
@@ -17766,11 +17984,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Potesne"
         ],
         [
-          "B",
+          "A",
           "tu"
         ],
         [
@@ -18259,11 +18477,11 @@ const SENTENCES = [
       "nap": [
         [
           "D",
-          "Parlate"
+          "Parla"
         ],
         [
           "A",
-          "vuje"
+          "essa"
         ],
         [
           "B",
@@ -18277,11 +18495,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "vossia"
+          "idda"
         ],
         [
           "B",
-          "nglisi"
+          "ngrisi"
         ]
       ],
       "gsw": [
@@ -18404,6 +18622,24 @@ const SENTENCES = [
         [
           "B",
           "Inglis?"
+        ]
+      ],
+      "grc": [
+        [
+          "D",
+          "ἆρα"
+        ],
+        [
+          "A",
+          "σὺ"
+        ],
+        [
+          "B",
+          "Ἀγγλιστὶ"
+        ],
+        [
+          "C",
+          "λέγειν δύνασαι;"
         ]
       ]
     }
@@ -19241,7 +19477,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Compré"
+          "Yo"
+        ],
+        [
+          "C",
+          "compré"
         ],
         [
           "D",
@@ -19263,7 +19503,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Compré"
+          "Yo"
+        ],
+        [
+          "C",
+          "compré"
         ],
         [
           "D",
@@ -19946,7 +20190,7 @@ const SENTENCES = [
           "heri"
         ],
         [
-          "E",
+          "B",
           "in bibliopolio"
         ],
         [
@@ -19954,11 +20198,11 @@ const SENTENCES = [
           "novum"
         ],
         [
-          "D",
+          "E",
           "librum"
         ],
         [
-          "B",
+          "D",
           "emi"
         ]
       ],
@@ -20655,7 +20899,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "nu libro"
+          "nu libbro"
         ],
         [
           "E",
@@ -20663,7 +20907,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a 'a libreria"
+          "int'â libreria"
         ],
         [
           "F",
@@ -20673,11 +20917,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Mi"
+          "Haiu"
         ],
         [
           "C",
-          "accattai"
+          "accattatu"
         ],
         [
           "D",
@@ -20689,7 +20933,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ntâ librarìa"
+          "ntâ libbirìa"
         ],
         [
           "F",
@@ -20872,6 +21116,32 @@ const SENTENCES = [
         [
           "B",
           "long stoa bilong buk"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "D",
+          "καινὸν"
+        ],
+        [
+          "E",
+          "βιβλίον"
+        ],
+        [
+          "B",
+          "ἐν τῷ βιβλιοπωλείῳ"
+        ],
+        [
+          "F",
+          "χθὲς"
+        ],
+        [
+          "C",
+          "ἐπριάμην"
         ]
       ]
     }
@@ -21940,19 +22210,19 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Flores cerasi"
         ],
         [
-          "B",
+          "A",
           "in hoc horto"
         ],
         [
-          "D",
+          "C",
           "pulchri"
         ],
         [
-          "C",
+          "D",
           "sunt"
         ]
       ],
@@ -22437,7 +22707,7 @@ const SENTENCES = [
       "nap": [
         [
           "C",
-          "'E sciure 'e ceraso"
+          "'E ciure 'e cerasa"
         ],
         [
           "A",
@@ -22449,13 +22719,13 @@ const SENTENCES = [
         ],
         [
           "D",
-          "so' bellisseme"
+          "so' bellissime"
         ]
       ],
       "scn": [
         [
           "C",
-          "I sciuri di cirasa"
+          "I ciuri di cirasa"
         ],
         [
           "A",
@@ -22467,7 +22737,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "sunnu bellissimi"
+          "sunnu beddissimi"
         ]
       ],
       "gsw": [
@@ -22594,6 +22864,24 @@ const SENTENCES = [
         [
           "D",
           "i naispela tru"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "τὰ ἄνθη τῶν κερασέων"
+        ],
+        [
+          "A",
+          "ἐν τούτῳ"
+        ],
+        [
+          "B",
+          "τῷ κήπῳ"
+        ],
+        [
+          "D",
+          "καλά ἐστιν"
         ]
       ]
     }
@@ -22924,8 +23212,12 @@ const SENTENCES = [
           "Per favore"
         ],
         [
+          "B",
+          "mi"
+        ],
+        [
           "D",
-          "mi porti"
+          "porti"
         ],
         [
           "C",
@@ -23145,7 +23437,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "deme"
+          "de"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -23159,7 +23455,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "deme"
+          "de"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -24007,7 +24307,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Pe piacere"
+          "Per favore"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "D",
@@ -24021,15 +24325,19 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Pi favuri"
+          "Per favore"
+        ],
+        [
+          "B",
+          "mi"
         ],
         [
           "D",
-          "mi purtassi"
+          "mi purtati"
         ],
         [
           "C",
-          "un biccheri d'acqua"
+          "un bicchieri d'acqua"
         ]
       ],
       "gsw": [
@@ -24156,6 +24464,24 @@ const SENTENCES = [
         [
           "C",
           "wanpela glas wara"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "ποτήριον ὕδατος"
+        ],
+        [
+          "B",
+          "μοι"
+        ],
+        [
+          "D",
+          "δός"
+        ],
+        [
+          "A",
+          "εἰ δοκεῖ"
         ]
       ]
     }
@@ -24558,7 +24884,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Vado"
+          "Io"
+        ],
+        [
+          "C",
+          "vado"
         ],
         [
           "B",
@@ -24862,7 +25192,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Voy"
+          "Yo"
+        ],
+        [
+          "C",
+          "voy"
         ],
         [
           "B",
@@ -24880,7 +25214,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Voy"
+          "Yo"
+        ],
+        [
+          "C",
+          "voy"
         ],
         [
           "B",
@@ -25451,11 +25789,11 @@ const SENTENCES = [
           "tramine"
         ],
         [
-          "C",
+          "B",
           "ad laborem"
         ],
         [
-          "B",
+          "C",
           "eo"
         ]
       ],
@@ -26044,7 +26382,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Vaco"
+          "Io"
+        ],
+        [
+          "C",
+          "vado"
         ],
         [
           "B",
@@ -26062,15 +26404,19 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Vaju"
+          "Iu"
+        ],
+        [
+          "C",
+          "vado"
         ],
         [
           "B",
-          "ô travàgghiu"
+          "a travagghiari"
         ],
         [
           "D",
-          "cû trenu"
+          "cu u trenu"
         ],
         [
           "E",
@@ -26233,6 +26579,28 @@ const SENTENCES = [
         [
           "E",
           "olgeta de"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "εἰς τὸ ἔργον"
+        ],
+        [
+          "D",
+          "τῇ ἁμάξῃ"
+        ],
+        [
+          "C",
+          "πορεύομαι"
+        ],
+        [
+          "E",
+          "καθ᾽ ἡμέραν"
         ]
       ]
     }
@@ -27289,7 +27657,7 @@ const SENTENCES = [
           "Soror mea minor"
         ],
         [
-          "C",
+          "B",
           "in"
         ],
         [
@@ -27297,7 +27665,7 @@ const SENTENCES = [
           "Gallia"
         ],
         [
-          "B",
+          "C",
           "peregre studet"
         ]
       ],
@@ -27778,7 +28146,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A sora mia piccerella"
+          "'A sora mia cchiù piccola"
         ],
         [
           "D",
@@ -27796,7 +28164,7 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Me soru nica"
+          "Me soru cchiù nìchina"
         ],
         [
           "D",
@@ -27804,7 +28172,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "studiannu fora"
+          "studiànnu fora"
         ],
         [
           "B",
@@ -27935,6 +28303,24 @@ const SENTENCES = [
         [
           "B",
           "long France"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ ἀδελφή μου"
+        ],
+        [
+          "B",
+          "ἐν τῇ Γαλατίᾳ"
+        ],
+        [
+          "C",
+          "ξενιτεύουσα μανθάνει"
+        ],
+        [
+          "D",
+          ""
         ]
       ]
     }
@@ -29350,7 +29736,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "accumenza"
+          "accumìncia"
         ],
         [
           "B",
@@ -29477,6 +29863,24 @@ const SENTENCES = [
         [
           "A",
           "long wanem taim?"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "πηνίκα"
+        ],
+        [
+          "B",
+          "τὸ θέαμα"
+        ],
+        [
+          "C",
+          "ἄρχεται;"
+        ],
+        [
+          "D",
+          ""
         ]
       ]
     }
@@ -29879,7 +30283,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Ho"
+          "Io"
+        ],
+        [
+          "C",
+          "ho"
         ],
         [
           "B",
@@ -30175,7 +30583,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Tengo"
+          "Yo"
+        ],
+        [
+          "C",
+          "tengo"
         ],
         [
           "B",
@@ -30193,7 +30605,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Tengo"
+          "Yo"
+        ],
+        [
+          "C",
+          "tengo"
         ],
         [
           "B",
@@ -30748,7 +31164,7 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "C",
           "Habeo"
         ],
         [
@@ -30756,7 +31172,7 @@ const SENTENCES = [
           "conventum"
         ],
         [
-          "C",
+          "A",
           "hora tertia"
         ],
         [
@@ -31345,7 +31761,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Tengo"
+          "Io"
+        ],
+        [
+          "C",
+          "ho"
         ],
         [
           "B",
@@ -31357,13 +31777,17 @@ const SENTENCES = [
         ],
         [
           "E",
-          "stu dopomiezojuorno"
+          "stu doppomiezojuorno"
         ]
       ],
       "scn": [
         [
           "A",
-          "Haiu"
+          "Iu"
+        ],
+        [
+          "C",
+          "ho"
         ],
         [
           "B",
@@ -31375,7 +31799,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "stu doputranzatu"
+          "stu dopumìzuiornu"
         ]
       ],
       "gsw": [
@@ -31530,6 +31954,28 @@ const SENTENCES = [
         [
           "E",
           "long apinun"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "σύνοδον"
+        ],
+        [
+          "C",
+          "ἔχω"
+        ],
+        [
+          "D",
+          "τῇ τρίτῃ ὥρᾳ"
+        ],
+        [
+          "E",
+          "τήμερον μετὰ μεσημβρίαν"
         ]
       ]
     }
@@ -33171,7 +33617,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "borza"
+          "borsa"
         ],
         [
           "D",
@@ -33193,7 +33639,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "vurza"
+          "burza"
         ],
         [
           "D",
@@ -33348,6 +33794,24 @@ const SENTENCES = [
         [
           "D",
           "tumas"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "αὕτη"
+        ],
+        [
+          "B",
+          "ἡ πήρα"
+        ],
+        [
+          "C",
+          "λίαν"
+        ],
+        [
+          "D",
+          "πολυτελής ἐστιν"
         ]
       ]
     }
@@ -34412,7 +34876,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "musicam"
         ],
         [
@@ -34420,7 +34884,7 @@ const SENTENCES = [
           "audire"
         ],
         [
-          "B",
+          "D",
           "amo"
         ]
       ],
@@ -34913,7 +35377,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ascultà"
+          "sentì"
         ],
         [
           "B",
@@ -34935,7 +35399,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mùsica"
+          "a mùsica"
         ]
       ],
       "gsw": [
@@ -35062,6 +35526,24 @@ const SENTENCES = [
         [
           "B",
           "musik"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "μουσικῆς"
+        ],
+        [
+          "C",
+          "ἀκούειν"
+        ],
+        [
+          "D",
+          "φιλῶ"
         ]
       ]
     }
@@ -36515,7 +36997,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "chiuvenno"
+          "chiovenno"
         ],
         [
           "A",
@@ -36533,7 +37015,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "di stamattina"
+          "di stamatina"
         ]
       ],
       "gsw": [
@@ -36640,6 +37122,20 @@ const SENTENCES = [
         [
           "A",
           "stat long dispela moning"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκ τῆς ἕω"
+        ],
+        [
+          "C",
+          "οὐ παύεται"
+        ],
+        [
+          "B",
+          "ὕων"
         ]
       ]
     }
@@ -37042,7 +37538,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Cenerò"
+          "Io"
+        ],
+        [
+          "E",
+          "cenerò"
         ],
         [
           "C",
@@ -37330,7 +37830,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Cenaré"
+          "Yo"
+        ],
+        [
+          "E",
+          "cenaré"
         ],
         [
           "C",
@@ -37344,7 +37848,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Cenaré"
+          "Yo"
+        ],
+        [
+          "E",
+          "cenaré"
         ],
         [
           "C",
@@ -37883,19 +38391,19 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "E",
+          "B",
           "hac nocte"
         ],
         [
-          "D",
+          "C",
           "cum amicis"
         ],
         [
-          "C",
+          "D",
           "cenam"
         ],
         [
-          "B",
+          "E",
           "habebo"
         ]
       ],
@@ -38476,11 +38984,15 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Mango"
+          "Io"
+        ],
+        [
+          "E",
+          "cenerò"
         ],
         [
           "C",
-          "cu 'e amice"
+          "cu ll'amice"
         ],
         [
           "B",
@@ -38490,15 +39002,19 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Stasira"
+          "Iu"
+        ],
+        [
+          "E",
+          "cenerò"
         ],
         [
           "C",
-          "cû l'amici"
+          "cu l'amici"
         ],
         [
           "B",
-          "cenarò"
+          "stasìra"
         ]
       ],
       "gsw": [
@@ -38645,6 +39161,28 @@ const SENTENCES = [
         [
           "C",
           "wantaim ol pren"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τῇδε τῇ ἑσπέρᾳ"
+        ],
+        [
+          "C",
+          "μετὰ φίλων"
+        ],
+        [
+          "D",
+          "δεῖπνον"
+        ],
+        [
+          "E",
+          "δειπνήσω"
         ]
       ]
     }
@@ -39047,7 +39585,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Voglio"
+          "Io"
+        ],
+        [
+          "E",
+          "voglio"
         ],
         [
           "D",
@@ -39347,7 +39889,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Quiero"
+          "Yo"
+        ],
+        [
+          "E",
+          "quiero"
         ],
         [
           "D",
@@ -39365,7 +39911,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Quiero"
+          "Yo"
+        ],
+        [
+          "E",
+          "quiero"
         ],
         [
           "D",
@@ -39928,7 +40478,7 @@ const SENTENCES = [
           "novam"
         ],
         [
-          "E",
+          "B",
           "linguam"
         ],
         [
@@ -39936,7 +40486,7 @@ const SENTENCES = [
           "discere"
         ],
         [
-          "B",
+          "E",
           "volo"
         ]
       ],
@@ -40505,11 +41055,15 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Voglio"
+          "Io"
+        ],
+        [
+          "E",
+          "voglio"
         ],
         [
           "D",
-          "'mparà"
+          "mparà"
         ],
         [
           "B",
@@ -40523,7 +41077,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Vògghiu"
+          "Iu"
+        ],
+        [
+          "E",
+          "voglio"
         ],
         [
           "D",
@@ -40686,6 +41244,28 @@ const SENTENCES = [
         [
           "C",
           "tok ples"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "καινὴν"
+        ],
+        [
+          "C",
+          "γλῶτταν"
+        ],
+        [
+          "D",
+          "μαθεῖν"
+        ],
+        [
+          "E",
+          "βούλομαι"
         ]
       ]
     }
@@ -41750,15 +42330,15 @@ const SENTENCES = [
           "Bibliotheca"
         ],
         [
-          "C",
+          "B",
           "iuxta"
         ],
         [
-          "D",
+          "C",
           "valetudinarium"
         ],
         [
-          "B",
+          "D",
           "est"
         ]
       ],
@@ -42247,7 +42827,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "sta"
+          "è"
         ],
         [
           "B",
@@ -42255,13 +42835,13 @@ const SENTENCES = [
         ],
         [
           "C",
-          "a l'ospedale"
+          "a l'uspedale"
         ]
       ],
       "scn": [
         [
           "A",
-          "A bibliuteca"
+          "A bibliteca"
         ],
         [
           "D",
@@ -42273,7 +42853,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ô spitali"
+          "a l'uspidali"
         ]
       ],
       "gsw": [
@@ -42400,6 +42980,24 @@ const SENTENCES = [
         [
           "C",
           "haus sik"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ βιβλιοθήκη"
+        ],
+        [
+          "B",
+          "πλησίον"
+        ],
+        [
+          "C",
+          "τοῦ ἰατρείου"
+        ],
+        [
+          "D",
+          "ἐστίν"
         ]
       ]
     }
@@ -42726,8 +43324,12 @@ const SENTENCES = [
           "Per favore"
         ],
         [
+          "B",
+          "mi"
+        ],
+        [
           "D",
-          "mi mostri"
+          "mostri"
         ],
         [
           "C",
@@ -42951,7 +43553,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "muéstreme"
+          "muéstre"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -42965,7 +43571,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "muéstreme"
+          "muéstre"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -43813,7 +44423,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Pe piacere"
+          "Per favore"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "D",
@@ -43821,21 +44435,25 @@ const SENTENCES = [
         ],
         [
           "C",
-          "'o menu"
+          "'o menù"
         ]
       ],
       "scn": [
         [
           "A",
-          "Pi favuri"
+          "Per favore"
+        ],
+        [
+          "B",
+          "mi"
         ],
         [
           "D",
-          "mi mustrassi"
+          "mi fati vìdiri"
         ],
         [
           "C",
-          "u menu"
+          "u menù"
         ]
       ],
       "gsw": [
@@ -43962,6 +44580,24 @@ const SENTENCES = [
         [
           "C",
           "menu"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "τὸν κατάλογον"
+        ],
+        [
+          "B",
+          "μοι"
+        ],
+        [
+          "D",
+          "δεῖξον"
+        ],
+        [
+          "A",
+          "εἰ δοκεῖ"
         ]
       ]
     }
@@ -45764,7 +46400,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "azzienda"
+          "azienda"
         ]
       ],
       "gsw": [
@@ -45911,6 +46547,28 @@ const SENTENCES = [
         [
           "D",
           "kampani"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ πατήρ μου"
+        ],
+        [
+          "B",
+          "ἐν"
+        ],
+        [
+          "C",
+          "μεγάλῃ"
+        ],
+        [
+          "D",
+          "ἐργασίᾳ"
+        ],
+        [
+          "E",
+          "ἐργάζεται"
         ]
       ]
     }
@@ -47452,7 +48110,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "jucanno"
+          "giocanno"
         ],
         [
           "B",
@@ -47593,6 +48251,24 @@ const SENTENCES = [
         [
           "B",
           "long pak"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "οἱ παῖδες"
+        ],
+        [
+          "B",
+          "ἐν τῷ κήπῳ"
+        ],
+        [
+          "C",
+          "παίζουσιν"
+        ],
+        [
+          "D",
+          ""
         ]
       ]
     }
@@ -47927,6 +48603,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Sono andato"
         ],
@@ -48167,6 +48847,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "He estado"
         ],
@@ -48180,6 +48864,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "He ido"
@@ -49117,6 +49805,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "So' ghiuto"
         ],
@@ -49131,8 +49823,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
-          "Jivi"
+          "Sû jutu"
         ],
         [
           "B",
@@ -49271,6 +49967,24 @@ const SENTENCES = [
         [
           "C",
           "tripela taim"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "εἰς Τόκιον"
+        ],
+        [
+          "C",
+          "τρίς"
+        ],
+        [
+          "D",
+          "ἐπορεύθην"
         ]
       ]
     }
@@ -49609,6 +50323,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "D",
           "Potrebbe"
         ],
@@ -49854,6 +50572,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "tú"
+        ],
         [
           "D",
           "¿Me podrías"
@@ -50247,11 +50969,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Potesne"
         ],
         [
-          "B",
+          "A",
           "tu"
         ],
         [
@@ -50715,12 +51437,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "D",
-          "Me putite"
+          "Putesse"
         ],
         [
           "C",
-          "cunsiglià"
+          "cunsigliarme"
         ],
         [
           "B",
@@ -50729,16 +51455,20 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "D",
           "Putissi"
         ],
         [
           "C",
-          "cunsigliarimi"
+          "cunsigghjàrimi"
         ],
         [
           "B",
-          "un bonu ristoranti"
+          "un bonu risturanti"
         ]
       ],
       "gsw": [
@@ -50865,6 +51595,24 @@ const SENTENCES = [
         [
           "B",
           "wanpela gutpela ples kaikai?"
+        ]
+      ],
+      "grc": [
+        [
+          "D",
+          "ἆρα δύνασαι"
+        ],
+        [
+          "A",
+          "σύ"
+        ],
+        [
+          "B",
+          "ἀγαθὸν ἑστιατόριον"
+        ],
+        [
+          "C",
+          "συμβουλεῦσαι;"
         ]
       ]
     }
@@ -51206,6 +51954,10 @@ const SENTENCES = [
         ]
       ],
       "it": [
+        [
+          "A",
+          "Io"
+        ],
         [
           "C",
           "Ho dimenticato"
@@ -52417,6 +53169,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Aggio scurdato"
         ],
@@ -52431,12 +53187,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "C",
-          "Mi scurdai"
+          "Scurdai"
         ],
         [
           "B",
-          "u me parapioggia"
+          "u me paracqua"
         ],
         [
           "D",
@@ -52571,6 +53331,24 @@ const SENTENCES = [
         [
           "D",
           "long tren"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τὴν σκιάδα μου"
+        ],
+        [
+          "D",
+          "ἐν τῇ ἁμάξῃ"
+        ],
+        [
+          "C",
+          "ἐπελαθόμην"
         ]
       ]
     }
@@ -53866,11 +54644,11 @@ const SENTENCES = [
           "valde"
         ],
         [
-          "E",
+          "B",
           "bene"
         ],
         [
-          "B",
+          "E",
           "pulsare potest"
         ]
       ],
@@ -54477,11 +55255,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "u pianoforti"
+          "u pianuforti"
         ],
         [
           "D",
-          "assà beni"
+          "assà bonu"
         ]
       ],
       "gsw": [
@@ -54632,6 +55410,28 @@ const SENTENCES = [
         [
           "D",
           "gutpela tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "τὸ ψαλτήριον"
+        ],
+        [
+          "D",
+          "ἄριστα"
+        ],
+        [
+          "C",
+          "κρούειν"
+        ],
+        [
+          "E",
+          "δύναται"
         ]
       ]
     }
@@ -55449,11 +56249,11 @@ const SENTENCES = [
           "Examen"
         ],
         [
-          "C",
+          "B",
           "proximo die Lunae"
         ],
         [
-          "B",
+          "C",
           "est"
         ]
       ],
@@ -55826,7 +56626,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "lunnerì ca vene"
+          "lunedì ca vene"
         ]
       ],
       "scn": [
@@ -55840,7 +56640,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "lunnidì chi veni"
+          "lunidì chi veni"
         ]
       ],
       "gsw": [
@@ -55939,6 +56739,20 @@ const SENTENCES = [
         [
           "B",
           "neks Mande"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ ἐξέτασις"
+        ],
+        [
+          "B",
+          "τῇ ἐπιούσῃ δευτέρᾳ ἡμέρᾳ"
+        ],
+        [
+          "C",
+          "ἐστίν"
         ]
       ]
     }
@@ -56328,6 +57142,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -56604,6 +57422,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Quiero"
         ],
@@ -56621,6 +57443,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Quiero"
@@ -57130,11 +57956,11 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "sushi"
         ],
         [
-          "E",
+          "D",
           "pro prandio"
         ],
         [
@@ -57142,7 +57968,7 @@ const SENTENCES = [
           "edere"
         ],
         [
-          "B",
+          "E",
           "volo"
         ]
       ],
@@ -57686,6 +58512,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -57703,6 +58533,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "E",
           "Vògghiu"
@@ -57868,6 +58702,28 @@ const SENTENCES = [
         [
           "D",
           "long belo kaikai"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "σοῦσι"
+        ],
+        [
+          "D",
+          "πρὸς ἄριστον"
+        ],
+        [
+          "C",
+          "φαγεῖν"
+        ],
+        [
+          "E",
+          "βούλομαι"
         ]
       ]
     }
@@ -58888,7 +59744,7 @@ const SENTENCES = [
           "Deversorii"
         ],
         [
-          "B",
+          "D",
           "conclave"
         ],
         [
@@ -58896,7 +59752,7 @@ const SENTENCES = [
           "valde"
         ],
         [
-          "D",
+          "B",
           "mundum erat"
         ]
       ],
@@ -59361,7 +60217,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A cammera d'ô hotel"
+          "'A stanza d'ô hotel"
         ],
         [
           "B",
@@ -59514,6 +60370,24 @@ const SENTENCES = [
         [
           "D",
           "tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "τὸ δωμάτιον τοῦ πανδοχείου"
+        ],
+        [
+          "C",
+          "λίαν"
+        ],
+        [
+          "D",
+          "καθαρὸν"
+        ],
+        [
+          "B",
+          "ἦν"
         ]
       ]
     }
@@ -60750,11 +61624,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "parrassi"
+          "parrati"
         ],
         [
           "B",
-          "cchiù lentu"
+          "cchiù chianu"
         ]
       ],
       "gsw": [
@@ -60853,6 +61727,20 @@ const SENTENCES = [
         [
           "B",
           "isi isi"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "εἰ δοκεῖ"
+        ],
+        [
+          "B",
+          "βραδύτερον"
+        ],
+        [
+          "C",
+          "λέγε"
         ]
       ]
     }
@@ -62087,7 +62975,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O frate mio gruosso"
+          "'O frate mio cchiù gruosso"
         ],
         [
           "B",
@@ -62101,11 +62989,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Me frati granni"
+          "U me frati cchiù granni"
         ],
         [
           "B",
-          "si maritau"
+          "si maritò"
         ],
         [
           "C",
@@ -62208,6 +63096,20 @@ const SENTENCES = [
         [
           "C",
           "long las mun"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ ἀδελφός μου"
+        ],
+        [
+          "C",
+          "τῷ παρελθόντι μηνί"
+        ],
+        [
+          "B",
+          "ἐγάμησεν"
         ]
       ]
     }
@@ -63282,19 +64184,19 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "D",
+          "C",
           "Ad stationem"
         ],
         [
-          "B",
+          "A",
           "multi"
         ],
         [
-          "C",
+          "B",
           "homines"
         ],
         [
-          "A",
+          "D",
           "sunt"
         ]
       ],
@@ -63773,7 +64675,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "a 'a stazione"
+          "â stazione"
         ]
       ],
       "scn": [
@@ -63918,6 +64820,24 @@ const SENTENCES = [
         [
           "C",
           "long stesen"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "ἐν τῷ σταθμῷ"
+        ],
+        [
+          "A",
+          "πολλοὶ"
+        ],
+        [
+          "B",
+          "ἄνθρωποι"
+        ],
+        [
+          "D",
+          "εἰσίν"
         ]
       ]
     }
@@ -64335,6 +65255,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "B",
           "Devo"
         ],
@@ -64635,6 +65559,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "B",
           "Necesito"
         ],
@@ -64652,6 +65580,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "B",
           "Necesito"
@@ -65785,8 +66717,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "B",
-          "Aggi'a"
+          "Aggia"
         ],
         [
           "E",
@@ -65794,17 +66730,21 @@ const SENTENCES = [
         ],
         [
           "D",
-          "nu regalio"
+          "nu riale"
         ],
         [
           "C",
-          "'e compleanno"
+          "p'ô compleanno"
         ]
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "B",
-          "Haiu a"
+          "Hâiu a"
         ],
         [
           "E",
@@ -65979,6 +66919,28 @@ const SENTENCES = [
         [
           "D",
           "presen"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "C",
+          "γενεθλίων"
+        ],
+        [
+          "D",
+          "δῶρον"
+        ],
+        [
+          "E",
+          "πρίασθαι"
+        ],
+        [
+          "B",
+          "δεῖ με"
         ]
       ]
     }
@@ -67205,7 +68167,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "è bellissemo"
+          "è bellissimo"
         ]
       ],
       "scn": [
@@ -67219,7 +68181,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "è bellissimu"
+          "è beddìssimu"
         ]
       ],
       "gsw": [
@@ -67318,6 +68280,20 @@ const SENTENCES = [
         [
           "C",
           "i naispela tru"
+        ]
+      ],
+      "grc": [
+        [
+          "B",
+          "ἡ δύσις τοῦ ἡλίου"
+        ],
+        [
+          "A",
+          "ἐντεῦθεν"
+        ],
+        [
+          "C",
+          "καλή ἐστιν"
         ]
       ]
     }
@@ -67707,6 +68683,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Devo"
         ],
@@ -68003,6 +68983,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Tengo que"
         ],
@@ -68020,6 +69004,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Tengo que"
@@ -68583,7 +69571,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "E",
+          "C",
           "cras"
         ],
         [
@@ -68591,11 +69579,11 @@ const SENTENCES = [
           "mane"
         ],
         [
-          "C",
+          "B",
           "expergisci"
         ],
         [
-          "B",
+          "E",
           "debeo"
         ]
       ],
@@ -69133,12 +70121,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
-          "Aggi'a"
+          "Aggia"
         ],
         [
           "D",
-          "me scetà"
+          "scetarme"
         ],
         [
           "B",
@@ -69151,12 +70143,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "E",
-          "Haiu a"
+          "Hâiu a"
         ],
         [
           "D",
-          "scìtarimi"
+          "sciarriàrimi"
         ],
         [
           "B",
@@ -69315,6 +70311,28 @@ const SENTENCES = [
         [
           "B",
           "kwiktaim"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐμὲ"
+        ],
+        [
+          "C",
+          "αὔριον"
+        ],
+        [
+          "B",
+          "πρωΐ"
+        ],
+        [
+          "D",
+          "ἐγερθῆναι"
+        ],
+        [
+          "E",
+          "δεῖ"
         ]
       ]
     }
@@ -69744,6 +70762,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "E",
           "Sa"
         ],
@@ -70053,6 +71075,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "tú"
+        ],
         [
           "E",
           "¿Sabes"
@@ -70572,19 +71598,19 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Num"
         ],
         [
-          "B",
+          "A",
           "tu"
         ],
         [
-          "C",
+          "D",
           "scis"
         ],
         [
-          "D",
+          "C",
           "ubi"
         ],
         [
@@ -71122,8 +72148,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "E",
-          "Sapite"
+          "Saje"
         ],
         [
           "C",
@@ -71135,13 +72165,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "l'ufficio pustale"
+          "ll'ufficio pustale"
         ]
       ],
       "scn": [
         [
+          "A",
+          "tu"
+        ],
+        [
           "E",
-          "Sapi"
+          "Sai"
         ],
         [
           "C",
@@ -71153,7 +72187,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "l'uffiziu pustali"
+          "l'ufficiu pustali"
         ]
       ],
       "gsw": [
@@ -71292,6 +72326,28 @@ const SENTENCES = [
         [
           "C",
           "we?"
+        ]
+      ],
+      "grc": [
+        [
+          "E",
+          "ἆρα οἶσθα"
+        ],
+        [
+          "A",
+          "σύ"
+        ],
+        [
+          "C",
+          "ποῦ"
+        ],
+        [
+          "B",
+          "τὸ ταχυδρομεῖον"
+        ],
+        [
+          "D",
+          "ἐστίν;"
         ]
       ]
     }
@@ -71733,6 +72789,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Sto leggendo"
         ],
@@ -72037,6 +73097,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Estoy leyendo"
         ],
@@ -72054,6 +73118,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Estoy leyendo"
@@ -72633,7 +73701,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "E",
+          "B",
           "nunc"
         ],
         [
@@ -72645,7 +73713,7 @@ const SENTENCES = [
           "librum"
         ],
         [
-          "B",
+          "E",
           "lego"
         ]
       ],
@@ -73215,12 +74283,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Sto leggenno"
         ],
         [
           "D",
-          "nu libro"
+          "nu libbro"
         ],
         [
           "C",
@@ -73228,13 +74300,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mo'"
+          "mo"
         ]
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "E",
-          "Staju liggènnu"
+          "Stâiu liggènnu"
         ],
         [
           "D",
@@ -73242,7 +74318,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ntiressanti"
+          "ntirissanti"
         ],
         [
           "B",
@@ -73417,6 +74493,28 @@ const SENTENCES = [
         [
           "B",
           "nau"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "νῦν"
+        ],
+        [
+          "C",
+          "ἐνδιαφέρον"
+        ],
+        [
+          "D",
+          "βιβλίον"
+        ],
+        [
+          "E",
+          "ἀναγιγνώσκω"
         ]
       ]
     }
@@ -75383,7 +76481,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "porta"
+          "si metti"
         ],
         [
           "B",
@@ -75558,6 +76656,28 @@ const SENTENCES = [
         [
           "E",
           "klos"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "ἀεὶ"
+        ],
+        [
+          "D",
+          "ἐρυθρὸν"
+        ],
+        [
+          "E",
+          "χιτῶνα"
+        ],
+        [
+          "C",
+          "φορεῖ"
         ]
       ]
     }
@@ -76389,11 +77509,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Cibus"
         ],
         [
-          "B",
+          "A",
           "huius cauponae"
         ],
         [
@@ -76768,7 +77888,7 @@ const SENTENCES = [
       "nap": [
         [
           "B",
-          "'O mangià"
+          "'O mangiare"
         ],
         [
           "A",
@@ -76776,7 +77896,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "è sapurito"
+          "è saporito"
         ]
       ],
       "scn": [
@@ -76786,11 +77906,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "di chistu ristoranti"
+          "di chistu risturanti"
         ],
         [
           "C",
-          "è dilizziusu"
+          "è sapuritu"
         ]
       ],
       "gsw": [
@@ -76889,6 +78009,20 @@ const SENTENCES = [
         [
           "C",
           "i suwit tru"
+        ]
+      ],
+      "grc": [
+        [
+          "B",
+          "τὰ σιτία"
+        ],
+        [
+          "A",
+          "ἐν τούτῳ τῷ ἑστιατορίῳ"
+        ],
+        [
+          "C",
+          "ἡδέα ἐστίν"
         ]
       ]
     }
@@ -77219,6 +78353,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -77463,6 +78601,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Quiero"
         ],
@@ -77476,6 +78618,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Quiero"
@@ -77947,11 +79093,11 @@ const SENTENCES = [
           "per"
         ],
         [
-          "D",
+          "B",
           "orbem terrarum"
         ],
         [
-          "B",
+          "D",
           "peregrinari volo"
         ]
       ],
@@ -78401,6 +79547,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -78414,6 +79564,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "D",
           "Vògghiu"
@@ -78547,6 +79701,24 @@ const SENTENCES = [
         [
           "B",
           "long olgeta hap bilong graun"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "περὶ πᾶσαν τὴν οἰκουμένην"
+        ],
+        [
+          "C",
+          "ὁδοιπορεῖν"
+        ],
+        [
+          "D",
+          "βούλομαι"
         ]
       ]
     }
@@ -80088,7 +81260,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'e vierno"
+          "d'inverno"
         ]
       ],
       "scn": [
@@ -80106,7 +81278,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "d'mmernu"
+          "d'invernu"
         ]
       ],
       "gsw": [
@@ -80233,6 +81405,24 @@ const SENTENCES = [
         [
           "B",
           "long taim bilong kol"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐν ταύτῃ τῇ χώρᾳ"
+        ],
+        [
+          "B",
+          "ἐν χειμῶνι"
+        ],
+        [
+          "C",
+          "ψυχρὸν"
+        ],
+        [
+          "D",
+          "γίγνεται"
         ]
       ]
     }
@@ -80634,6 +81824,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Ho parlato"
         ],
@@ -80930,6 +82124,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Hablé"
         ],
@@ -80947,6 +82145,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Estuve hablando"
@@ -81534,7 +82736,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "cum amico meo"
         ],
         [
@@ -81546,7 +82748,7 @@ const SENTENCES = [
           "per horam"
         ],
         [
-          "B",
+          "C",
           "collocutus sum"
         ]
       ],
@@ -82104,12 +83306,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Aggio parlato"
         ],
         [
           "B",
-          "cu l'amico mio"
+          "cu ll'amico mio"
         ],
         [
           "C",
@@ -82122,12 +83328,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "E",
           "Parrai"
         ],
         [
           "B",
-          "cû me amicu"
+          "cu u me amicu"
         ],
         [
           "C",
@@ -82294,6 +83504,28 @@ const SENTENCES = [
         [
           "D",
           "wanpela aua"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "μετὰ τοῦ φίλου μου"
+        ],
+        [
+          "C",
+          "διὰ τοῦ τηλεφώνου"
+        ],
+        [
+          "D",
+          "ἐπὶ μίαν ὥραν"
+        ],
+        [
+          "E",
+          "διελέχθην"
         ]
       ]
     }
@@ -83392,11 +84624,11 @@ const SENTENCES = [
           "quaestionem"
         ],
         [
-          "D",
+          "B",
           "clare"
         ],
         [
-          "B",
+          "D",
           "explicavit"
         ]
       ],
@@ -83863,7 +85095,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'O professore"
+          "'O prufessore"
         ],
         [
           "D",
@@ -83871,11 +85103,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'o probblema"
+          "'o problema"
         ],
         [
           "C",
-          "chiaro chiaro"
+          "chiaramente"
         ]
       ],
       "scn": [
@@ -83885,7 +85117,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "spiegau"
+          "spiegò"
         ],
         [
           "B",
@@ -84024,6 +85256,24 @@ const SENTENCES = [
         [
           "C",
           "gut tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ διδάσκαλος"
+        ],
+        [
+          "B",
+          "τὸ πρόβλημα"
+        ],
+        [
+          "C",
+          "σαφῶς"
+        ],
+        [
+          "D",
+          "ἐξηγήσατο"
         ]
       ]
     }
@@ -84342,6 +85592,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -84562,6 +85816,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Quiero"
         ],
@@ -84575,6 +85833,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Quiero"
@@ -85002,7 +86264,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "illam pelliculam"
         ],
         [
@@ -85010,7 +86272,7 @@ const SENTENCES = [
           "spectare"
         ],
         [
-          "B",
+          "D",
           "volo"
         ]
       ],
@@ -85432,6 +86694,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -85445,6 +86711,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "D",
           "Vògghiu"
@@ -85586,6 +86856,24 @@ const SENTENCES = [
         [
           "B",
           "dispela muvi"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἐκεῖνο τὸ θέαμα"
+        ],
+        [
+          "C",
+          "θεάσασθαι"
+        ],
+        [
+          "D",
+          "βούλομαι"
         ]
       ]
     }
@@ -86153,7 +87441,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dígame"
+          "díga"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -86167,7 +87459,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dígame"
+          "díga"
+        ],
+        [
+          "B",
+          "me"
         ],
         [
           "C",
@@ -86628,11 +87924,11 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "C",
+          "D",
           "mihi"
         ],
         [
-          "D",
+          "C",
           "viam ad aeroportum"
         ],
         [
@@ -87091,7 +88387,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "comme se arriva a l'aeroporto"
+          "comme arrivà a l'aeroporto"
         ]
       ],
       "scn": [
@@ -87101,15 +88397,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "mi dicissi"
+          "dicìti"
         ],
         [
           "B",
-          "a mia"
+          "a mìa"
         ],
         [
           "C",
-          "comu arrivari ô aeroportu"
+          "comu arrivari a l'aeroportu"
         ]
       ],
       "gsw": [
@@ -87232,6 +88528,24 @@ const SENTENCES = [
         [
           "C",
           "rot bilong go long ples balus"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "τὴν ὁδὸν πρὸς τὸν λιμένα τῶν ἀερονηῶν"
+        ],
+        [
+          "B",
+          "μοι"
+        ],
+        [
+          "D",
+          "εἰπέ"
+        ],
+        [
+          "A",
+          "εἰ δοκεῖ"
         ]
       ]
     }
@@ -88649,7 +89963,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "fa' 'e passeggiate"
+          "fa' 'na cammenata"
         ]
       ],
       "scn": [
@@ -88663,7 +89977,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "jiri a"
+          "iri a"
         ],
         [
           "B",
@@ -88790,6 +90104,24 @@ const SENTENCES = [
         [
           "B",
           "wokabaut"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ κύων μου"
+        ],
+        [
+          "B",
+          "περιπάτους"
+        ],
+        [
+          "C",
+          "ποιεῖσθαι"
+        ],
+        [
+          "D",
+          "φιλεῖ"
         ]
       ]
     }
@@ -90347,7 +91679,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A nonna mia"
+          "'A nonnema"
         ],
         [
           "D",
@@ -90373,11 +91705,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "stori"
+          "storii"
         ],
         [
           "B",
-          "ntiressanti"
+          "ntirissanti"
         ]
       ],
       "gsw": [
@@ -90504,6 +91836,24 @@ const SENTENCES = [
         [
           "C",
           "stori"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ μάμμη μου"
+        ],
+        [
+          "B",
+          "ἐνδιαφέροντας"
+        ],
+        [
+          "C",
+          "μύθους"
+        ],
+        [
+          "D",
+          "λέγει"
         ]
       ]
     }
@@ -91087,7 +92437,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Perdí"
+          "Yo"
+        ],
+        [
+          "C",
+          "perdí"
         ],
         [
           "B",
@@ -91101,7 +92455,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Perdí"
+          "Yo"
+        ],
+        [
+          "C",
+          "perdí"
         ],
         [
           "B",
@@ -92057,7 +93415,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'o portafoglio mio"
+          "'o puortafoglio mio"
         ],
         [
           "D",
@@ -92067,19 +93425,19 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Mi"
+          "Haiu"
         ],
         [
           "C",
-          "persi"
+          "persu"
         ],
         [
           "B",
-          "u me bursellinu"
+          "u me purtafogghiu"
         ],
         [
           "D",
-          "ô mercatu"
+          "ô mircatu"
         ]
       ],
       "gsw": [
@@ -92210,6 +93568,24 @@ const SENTENCES = [
         [
           "D",
           "long maket"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τὸ βαλλάντιόν μου"
+        ],
+        [
+          "D",
+          "ἐν τῇ ἀγορᾷ"
+        ],
+        [
+          "C",
+          "ἀπώλεσα"
         ]
       ]
     }
@@ -93065,11 +94441,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Flores"
         ],
         [
-          "B",
+          "A",
           "in horto"
         ],
         [
@@ -93444,7 +94820,7 @@ const SENTENCES = [
       "nap": [
         [
           "B",
-          "'E sciure"
+          "'E ciure"
         ],
         [
           "A",
@@ -93452,21 +94828,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "stanno sciurenno"
+          "stanno fiorenno"
         ]
       ],
       "scn": [
         [
           "B",
-          "I sciuri"
+          "I ciuri"
         ],
         [
           "A",
-          "ntô jardinu"
+          "ntô giardinu"
         ],
         [
           "C",
-          "stannu sciurènnu"
+          "stannu fiurènnu"
         ]
       ],
       "gsw": [
@@ -93565,6 +94941,20 @@ const SENTENCES = [
         [
           "C",
           "i kamap pinis"
+        ]
+      ],
+      "grc": [
+        [
+          "B",
+          "τὰ ἄνθη"
+        ],
+        [
+          "A",
+          "ἐν τῷ κήπῳ"
+        ],
+        [
+          "C",
+          "ἀνθεῖ"
         ]
       ]
     }
@@ -93895,6 +95285,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Noi"
+        ],
+        [
           "D",
           "Dobbiamo"
         ],
@@ -94143,6 +95537,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Nosotros"
+        ],
+        [
           "D",
           "Debemos"
         ],
@@ -94156,6 +95554,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Nosotros"
+        ],
         [
           "D",
           "Debemos"
@@ -94627,7 +96029,7 @@ const SENTENCES = [
           "Nos"
         ],
         [
-          "D",
+          "B",
           "naturam"
         ],
         [
@@ -94635,7 +96037,7 @@ const SENTENCES = [
           "protegere"
         ],
         [
-          "B",
+          "D",
           "debemus"
         ]
       ],
@@ -95097,12 +96499,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Nuie"
+        ],
+        [
           "D",
-          "Avimm'a"
+          "Avimma"
         ],
         [
           "C",
-          "pruteggere"
+          "proteggere"
         ],
         [
           "B",
@@ -95111,8 +96517,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Nuàutri"
+        ],
+        [
           "D",
-          "Avemu a"
+          "Avìmu a"
         ],
         [
           "C",
@@ -95247,6 +96657,24 @@ const SENTENCES = [
         [
           "B",
           "graun na bus"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡμᾶς"
+        ],
+        [
+          "B",
+          "τὴν φύσιν"
+        ],
+        [
+          "C",
+          "φυλάττειν"
+        ],
+        [
+          "D",
+          "δεῖ"
         ]
       ]
     }
@@ -95577,6 +97005,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Bevo"
         ],
@@ -95825,6 +97257,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "C",
           "Bebo"
         ],
@@ -95838,6 +97274,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "C",
           "Tomo"
@@ -96313,11 +97753,11 @@ const SENTENCES = [
           "cotidie"
         ],
         [
-          "C",
+          "B",
           "duas tazas coffeae"
         ],
         [
-          "B",
+          "C",
           "bibo"
         ]
       ],
@@ -96783,6 +98223,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Bevo"
         ],
@@ -96797,8 +98241,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "C",
-          "Vivu"
+          "Bivu"
         ],
         [
           "B",
@@ -96933,6 +98381,24 @@ const SENTENCES = [
         [
           "D",
           "olgeta de"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "δύο κύλικας καφφέος"
+        ],
+        [
+          "D",
+          "καθ᾽ ἡμέραν"
+        ],
+        [
+          "C",
+          "πίνω"
         ]
       ]
     }
@@ -98023,11 +99489,11 @@ const SENTENCES = [
           "Concentus"
         ],
         [
-          "D",
+          "C",
           "hac nocte"
         ],
         [
-          "C",
+          "D",
           "hora octava"
         ],
         [
@@ -98520,7 +99986,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "accumenza"
+          "accumìncia"
         ],
         [
           "B",
@@ -98528,7 +99994,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "stasira"
+          "stasìra"
         ]
       ],
       "gsw": [
@@ -98659,6 +100125,24 @@ const SENTENCES = [
         [
           "C",
           "long nait"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ μουσικὴ ἀκρόασις"
+        ],
+        [
+          "C",
+          "τῇδε τῇ ἑσπέρᾳ"
+        ],
+        [
+          "B",
+          "τῇ ὀγδόῃ ὥρᾳ"
+        ],
+        [
+          "D",
+          "ἄρχεται"
         ]
       ]
     }
@@ -100236,7 +101720,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "cu facilità"
+          "bbuono"
         ]
       ],
       "scn": [
@@ -100254,7 +101738,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "currentemente"
+          "bonu"
         ]
       ],
       "gsw": [
@@ -100381,6 +101865,24 @@ const SENTENCES = [
         [
           "C",
           "gut tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "τρεῖς γλώττας"
+        ],
+        [
+          "C",
+          "ῥᾳδίως"
+        ],
+        [
+          "D",
+          "λέγει"
         ]
       ]
     }
@@ -100782,6 +102284,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -101082,6 +102588,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Quiero"
         ],
@@ -101099,6 +102609,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Quiero"
@@ -101678,7 +103192,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "E",
+          "B",
           "huius templi"
         ],
         [
@@ -101690,7 +103204,7 @@ const SENTENCES = [
           "capere"
         ],
         [
-          "B",
+          "E",
           "volo"
         ]
       ],
@@ -102236,6 +103750,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -102253,6 +103771,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "E",
           "Vògghiu"
@@ -102418,6 +103940,28 @@ const SENTENCES = [
         [
           "B",
           "bilong dispela tempel"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τοῦδε τοῦ ἱεροῦ"
+        ],
+        [
+          "C",
+          "εἰκόνα"
+        ],
+        [
+          "D",
+          "λαβεῖν"
+        ],
+        [
+          "E",
+          "βούλομαι"
         ]
       ]
     }
@@ -103269,11 +104813,11 @@ const SENTENCES = [
           "Currus publicus"
         ],
         [
-          "C",
+          "B",
           "quindecim minutis"
         ],
         [
-          "B",
+          "C",
           "advenit"
         ]
       ],
@@ -103766,6 +105310,20 @@ const SENTENCES = [
           "B",
           "olgeta fiftin minit"
         ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ ἅμαξα"
+        ],
+        [
+          "B",
+          "ἀνὰ πεντεκαίδεκα λεπτά"
+        ],
+        [
+          "C",
+          "ἀφικνεῖται"
+        ]
       ]
     }
   },
@@ -104091,6 +105649,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Sto imparando"
         ],
@@ -104339,6 +105901,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Estoy aprendiendo"
         ],
@@ -104352,6 +105918,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Estoy aprendiendo"
@@ -104823,7 +106393,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "cibum Coreanum"
         ],
         [
@@ -104831,7 +106401,7 @@ const SENTENCES = [
           "coquere"
         ],
         [
-          "B",
+          "D",
           "disco"
         ]
       ],
@@ -105297,8 +106867,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
-          "Sto 'mparanno"
+          "Sto mparanno"
         ],
         [
           "C",
@@ -105306,13 +106880,17 @@ const SENTENCES = [
         ],
         [
           "B",
-          "mangià coreano"
+          "mangiare coreano"
         ]
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
-          "Staju mparannu"
+          "Stâiu mparànnu"
         ],
         [
           "C",
@@ -105320,7 +106898,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "manciari coreanu"
+          "manciari corianu"
         ]
       ],
       "gsw": [
@@ -105447,6 +107025,24 @@ const SENTENCES = [
         [
           "B",
           "kaikai bilong Korea"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "Κορεϊκὰ σιτία"
+        ],
+        [
+          "C",
+          "σκευάζειν"
+        ],
+        [
+          "D",
+          "μανθάνω"
         ]
       ]
     }
@@ -106740,7 +108336,7 @@ const SENTENCES = [
           "semper"
         ],
         [
-          "E",
+          "C",
           "ad conventus"
         ],
         [
@@ -106748,7 +108344,7 @@ const SENTENCES = [
           "sero"
         ],
         [
-          "C",
+          "E",
           "advenit"
         ]
       ],
@@ -107319,7 +108915,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "a 'e riunione"
+          "â riunione"
         ]
       ],
       "scn": [
@@ -107341,7 +108937,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "â riunioni"
+          "a li riunioni"
         ]
       ],
       "gsw": [
@@ -107492,6 +109088,28 @@ const SENTENCES = [
         [
           "D",
           "long ol miting"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκεῖνος"
+        ],
+        [
+          "B",
+          "ἀεὶ"
+        ],
+        [
+          "D",
+          "εἰς τὰς συνόδους"
+        ],
+        [
+          "C",
+          "ὀψέ"
+        ],
+        [
+          "E",
+          "ἀφικνεῖται"
         ]
       ]
     }
@@ -107893,6 +109511,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -108193,6 +109815,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Quiero"
         ],
@@ -108210,6 +109836,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Quiero"
@@ -108789,19 +110419,19 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "hunc librum"
         ],
         [
-          "E",
+          "C",
           "ante finem mensis"
         ],
         [
-          "C",
+          "D",
           "legere"
         ],
         [
-          "B",
+          "E",
           "volo"
         ]
       ],
@@ -109347,6 +110977,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Voglio"
         ],
@@ -109356,21 +110990,25 @@ const SENTENCES = [
         ],
         [
           "B",
-          "chisto libro"
+          "chisto libbro"
         ],
         [
           "C",
-          "primma ca fernisce 'o mese"
+          "dinto â fine d'ô mese"
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "E",
           "Vògghiu"
         ],
         [
           "D",
-          "leggiri"
+          "lèggiri"
         ],
         [
           "B",
@@ -109378,7 +111016,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "prima dâ fini dû misi"
+          "ntâ fini dû misi"
         ]
       ],
       "gsw": [
@@ -109529,6 +111167,28 @@ const SENTENCES = [
         [
           "C",
           "long pinis bilong mun"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τοῦτο τὸ βιβλίον"
+        ],
+        [
+          "C",
+          "πρὸ τοῦ τέλους τοῦ μηνός"
+        ],
+        [
+          "D",
+          "ἀναγνῶναι"
+        ],
+        [
+          "E",
+          "βούλομαι"
         ]
       ]
     }
@@ -110885,6 +112545,20 @@ const SENTENCES = [
           "A",
           "long ol diwai"
         ]
+      ],
+      "grc": [
+        [
+          "B",
+          "οἱ ὄρνιθες"
+        ],
+        [
+          "A",
+          "ἐν τοῖς δένδρεσιν"
+        ],
+        [
+          "C",
+          "ᾄδουσιν"
+        ]
       ]
     }
   },
@@ -111214,6 +112888,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Devo"
         ],
@@ -111458,6 +113136,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Necesito"
         ],
@@ -111471,6 +113153,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Necesito"
@@ -111946,7 +113632,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "telephonum meum"
         ],
         [
@@ -111954,7 +113640,7 @@ const SENTENCES = [
           "implere"
         ],
         [
-          "B",
+          "D",
           "debeo"
         ]
       ],
@@ -112396,8 +114082,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
-          "Aggi'a"
+          "Aggia"
         ],
         [
           "C",
@@ -112410,8 +114100,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
-          "Haiu a"
+          "Hâiu a"
         ],
         [
           "C",
@@ -112542,6 +114236,24 @@ const SENTENCES = [
         [
           "B",
           "fon bilong mi"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐμὲ"
+        ],
+        [
+          "B",
+          "τὸ τηλέφωνόν μου"
+        ],
+        [
+          "C",
+          "ἐμπλῆσαι"
+        ],
+        [
+          "D",
+          "δεῖ"
         ]
       ]
     }
@@ -112943,8 +114655,12 @@ const SENTENCES = [
           "Lei"
         ],
         [
+          "B",
+          "mi"
+        ],
+        [
           "E",
-          "mi ha dato"
+          "ha dato"
         ],
         [
           "C",
@@ -114429,6 +116145,10 @@ const SENTENCES = [
           "Essa"
         ],
         [
+          "B",
+          "me"
+        ],
+        [
           "E",
           "m'ha dato"
         ],
@@ -114438,13 +116158,17 @@ const SENTENCES = [
         ],
         [
           "D",
-          "regalio"
+          "riale"
         ]
       ],
       "scn": [
         [
           "A",
           "Idda"
+        ],
+        [
+          "B",
+          "mi"
         ],
         [
           "E",
@@ -114603,6 +116327,28 @@ const SENTENCES = [
         [
           "D",
           "presen"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "μοι"
+        ],
+        [
+          "C",
+          "καλὸν"
+        ],
+        [
+          "D",
+          "δῶρον"
+        ],
+        [
+          "E",
+          "ἔδωκεν"
         ]
       ]
     }
@@ -115470,11 +117216,11 @@ const SENTENCES = [
           "Mons"
         ],
         [
-          "C",
+          "B",
           "nive"
         ],
         [
-          "B",
+          "C",
           "tectus est"
         ]
       ],
@@ -115845,7 +117591,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'A muntagna"
+          "'A montagna"
         ],
         [
           "C",
@@ -115966,6 +117712,20 @@ const SENTENCES = [
         [
           "B",
           "long sno"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "τὸ ὄρος"
+        ],
+        [
+          "B",
+          "χιόνι"
+        ],
+        [
+          "C",
+          "κεκάλυπται"
         ]
       ]
     }
@@ -116296,6 +118056,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Mi alleno"
         ],
@@ -116544,6 +118308,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Hago ejercicio"
         ],
@@ -116557,6 +118325,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Hago ejercicio"
@@ -117036,15 +118808,15 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "C",
           "ter in hebdomade"
         ],
         [
-          "C",
+          "B",
           "in gymnasio"
         ],
         [
-          "B",
+          "D",
           "exerceo"
         ]
       ],
@@ -117518,8 +119290,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
-          "Me 'ntreno"
+          "Me alleno"
         ],
         [
           "B",
@@ -117532,8 +119308,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
-          "Mi allenu"
+          "Mi allénu"
         ],
         [
           "B",
@@ -117668,6 +119448,24 @@ const SENTENCES = [
         [
           "C",
           "tripela taim long wanpela wik"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἐν τῷ γυμνασίῳ"
+        ],
+        [
+          "C",
+          "τρὶς τῆς ἑβδομάδος"
+        ],
+        [
+          "D",
+          "γυμνάζομαι"
         ]
       ]
     }
@@ -118002,6 +119800,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Posso"
         ],
@@ -118230,6 +120032,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "¿Puedo"
         ],
@@ -118243,6 +120049,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "¿Me puedo"
@@ -118636,11 +120446,11 @@ const SENTENCES = [
           "Licetne"
         ],
         [
-          "B",
+          "D",
           "mihi"
         ],
         [
-          "D",
+          "B",
           "hic"
         ],
         [
@@ -119096,12 +120906,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Pozzo"
         ],
         [
           "C",
-          "m'assettà"
+          "assettarme"
         ],
         [
           "B",
@@ -119110,12 +120924,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
           "Pozzu"
         ],
         [
           "C",
-          "assittarimi"
+          "assittàrimi"
         ],
         [
           "B",
@@ -119242,6 +121060,24 @@ const SENTENCES = [
         [
           "B",
           "hia?"
+        ]
+      ],
+      "grc": [
+        [
+          "D",
+          "ἆρα"
+        ],
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἐνταῦθα"
+        ],
+        [
+          "C",
+          "καθίζεσθαι δύναμαι;"
         ]
       ]
     }
@@ -119572,6 +121408,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Lui"
+        ],
+        [
           "D",
           "Ha scritto"
         ],
@@ -119820,6 +121660,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Él"
+        ],
+        [
           "D",
           "Escribió"
         ],
@@ -119833,6 +121677,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Él"
+        ],
         [
           "D",
           "Le escribió"
@@ -120290,15 +122138,15 @@ const SENTENCES = [
           "Ille"
         ],
         [
-          "D",
+          "C",
           "parentibus suis"
         ],
         [
-          "C",
+          "B",
           "longam epistulam"
         ],
         [
-          "B",
+          "D",
           "scripsit"
         ]
       ],
@@ -120782,6 +122630,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Isso"
+        ],
+        [
           "D",
           "Ha scritto"
         ],
@@ -120791,21 +122643,25 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ê geniture suoje"
+          "ê geniture suoie"
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iddu"
+        ],
         [
           "D",
           "Scrissì"
         ],
         [
           "B",
-          "na longa littra"
+          "na longa lèttra"
         ],
         [
           "C",
-          "ê so genitùri"
+          "ê so' genituri"
         ]
       ],
       "gsw": [
@@ -120936,6 +122792,24 @@ const SENTENCES = [
         [
           "C",
           "long papamama bilong em"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκεῖνος"
+        ],
+        [
+          "B",
+          "μακρὰν ἐπιστολὴν"
+        ],
+        [
+          "C",
+          "τοῖς γονεῦσιν αὐτοῦ"
+        ],
+        [
+          "D",
+          "ἔγραψεν"
         ]
       ]
     }
@@ -122168,7 +124042,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a li novi dâ sira"
+          "a li novi di sira"
         ]
       ],
       "gsw": [
@@ -122271,6 +124145,20 @@ const SENTENCES = [
         [
           "B",
           "long nain kilok long nait"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "τὸ καπηλεῖον"
+        ],
+        [
+          "B",
+          "τῇ ἐνάτῃ ὥρᾳ ἑσπέρας"
+        ],
+        [
+          "C",
+          "κλείεται"
         ]
       ]
     }
@@ -122601,6 +124489,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -122845,6 +124737,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Quiero"
         ],
@@ -122858,6 +124754,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Quiero"
@@ -123311,7 +125211,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "pronuntiationem meam"
         ],
         [
@@ -123319,7 +125219,7 @@ const SENTENCES = [
           "meliorare"
         ],
         [
-          "B",
+          "D",
           "volo"
         ]
       ],
@@ -123779,6 +125679,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Voglio"
         ],
@@ -123788,10 +125692,14 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'a pronunzia mia"
+          "'a pronuncia mia"
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "D",
           "Vògghiu"
@@ -123802,7 +125710,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a me pronunzia"
+          "a me pronùncia"
         ]
       ],
       "gsw": [
@@ -123933,6 +125841,24 @@ const SENTENCES = [
         [
           "B",
           "pasin bilong toktok"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τὴν προφορὰν μου"
+        ],
+        [
+          "C",
+          "βελτιῶσαι"
+        ],
+        [
+          "D",
+          "βούλομαι"
         ]
       ]
     }
@@ -124263,6 +126189,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Loro"
+        ],
+        [
           "D",
           "Hanno costruito"
         ],
@@ -124519,6 +126449,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Ellos"
+        ],
+        [
           "D",
           "Construyeron"
         ],
@@ -124532,6 +126466,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Ellos"
+        ],
         [
           "D",
           "Construyeron"
@@ -125485,6 +127423,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Lloro"
+        ],
+        [
           "D",
           "Hanno costruito"
         ],
@@ -125494,13 +127436,17 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ncopp'ô ciume"
+          "ncopp'ô fiume"
         ]
       ],
       "scn": [
         [
+          "A",
+          "Iddi"
+        ],
+        [
           "D",
-          "Custruiru"
+          "Custruieru"
         ],
         [
           "B",
@@ -125639,6 +127585,24 @@ const SENTENCES = [
         [
           "C",
           "antap long wara"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκεῖνοι"
+        ],
+        [
+          "B",
+          "καινὴν γέφυραν"
+        ],
+        [
+          "C",
+          "ἐπὶ τοῦ ποταμοῦ"
+        ],
+        [
+          "D",
+          "ᾠκοδόμησαν"
         ]
       ]
     }
@@ -127230,7 +129194,7 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "U me jattu"
+          "U me gattu"
         ],
         [
           "D",
@@ -127369,6 +129333,24 @@ const SENTENCES = [
         [
           "C",
           "olgeta nait"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ αἴλουρός μου"
+        ],
+        [
+          "B",
+          "ἐπὶ τῆς κλίνης μου"
+        ],
+        [
+          "C",
+          "ἑκάστης νυκτός"
+        ],
+        [
+          "D",
+          "καθεύδει"
         ]
       ]
     }
@@ -127624,6 +129606,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Aspetto"
         ],
@@ -127824,6 +129810,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "C",
           "Llevo"
         ],
@@ -127837,6 +129827,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "C",
           "Llevo"
@@ -128198,11 +130192,11 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "triginta minutas"
         ],
         [
-          "B",
+          "C",
           "exspectavi"
         ]
       ],
@@ -128586,6 +130580,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Aspetto"
         ],
@@ -128595,6 +130593,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "C",
           "Aspettu"
@@ -128696,6 +130698,20 @@ const SENTENCES = [
         [
           "B",
           "inap teti minit pinis"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἐπὶ τριάκοντα λεπτά"
+        ],
+        [
+          "C",
+          "μένω"
         ]
       ]
     }
@@ -129926,7 +131942,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "stanno 'mparanno"
+          "stanno mparanno"
         ],
         [
           "B",
@@ -129940,7 +131956,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "stannu mparannu"
+          "stannu mparànnu"
         ],
         [
           "B",
@@ -130043,6 +132059,20 @@ const SENTENCES = [
         [
           "B",
           "long swim"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "οἱ παῖδες"
+        ],
+        [
+          "B",
+          "νεῖν"
+        ],
+        [
+          "C",
+          "μανθάνουσιν"
         ]
       ]
     }
@@ -131528,7 +133558,7 @@ const SENTENCES = [
       "nap": [
         [
           "D",
-          "Me sento cuntento"
+          "Me sento felice"
         ],
         [
           "C",
@@ -131536,7 +133566,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ascolto"
+          "sento"
         ],
         [
           "A",
@@ -131554,11 +133584,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ascoltu"
+          "ascutu"
         ],
         [
           "A",
-          "mùsica"
+          "a mùsica"
         ]
       ],
       "gsw": [
@@ -131689,6 +133719,24 @@ const SENTENCES = [
         [
           "A",
           "musik"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "ὅταν"
+        ],
+        [
+          "A",
+          "μουσικῆς"
+        ],
+        [
+          "B",
+          "ἀκούω"
+        ],
+        [
+          "D",
+          "εὐδαίμων γίγνομαι"
         ]
       ]
     }
@@ -132526,11 +134574,11 @@ const SENTENCES = [
           "Ille"
         ],
         [
-          "C",
+          "B",
           "eventis examinis"
         ],
         [
-          "B",
+          "C",
           "obstupefactus est"
         ]
       ],
@@ -132933,7 +134981,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ristau surprisu"
+          "ristò surprisu"
         ],
         [
           "B",
@@ -133040,6 +135088,20 @@ const SENTENCES = [
         [
           "B",
           "long mak bilong tes"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκεῖνος"
+        ],
+        [
+          "B",
+          "ὑπὸ τῶν ἀποτελεσμάτων τῆς ἐξετάσεως"
+        ],
+        [
+          "C",
+          "ἐθαύμασεν"
         ]
       ]
     }
@@ -134120,11 +136182,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "C",
           "Ego"
         ],
         [
-          "C",
+          "A",
           "hoc consilium"
         ],
         [
@@ -134635,7 +136697,7 @@ const SENTENCES = [
       "scn": [
         [
           "D",
-          "Penzu"
+          "Pensu"
         ],
         [
           "A",
@@ -134774,6 +136836,24 @@ const SENTENCES = [
         [
           "C",
           "i gutpela"
+        ]
+      ],
+      "grc": [
+        [
+          "D",
+          "νομίζω"
+        ],
+        [
+          "A",
+          "τοῦτο"
+        ],
+        [
+          "B",
+          "τὸ βούλευμα"
+        ],
+        [
+          "C",
+          "ἀγαθὸν εἶναι"
         ]
       ]
     }
@@ -136578,7 +138658,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "è trista"
+          "è triste"
         ],
         [
           "C",
@@ -136590,7 +138670,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "se n'è ghiuta"
+          "s'è trasferuta"
         ]
       ],
       "scn": [
@@ -136608,11 +138688,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "a so amica"
+          "a so' amica"
         ],
         [
           "E",
-          "si nni jiu"
+          "si nni ìu"
         ]
       ],
       "gsw": [
@@ -136767,6 +138847,28 @@ const SENTENCES = [
         [
           "E",
           "i go pinis"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "λυπεῖται"
+        ],
+        [
+          "C",
+          "ὅτι"
+        ],
+        [
+          "D",
+          "ἡ φίλη αὐτῆς"
+        ],
+        [
+          "E",
+          "ἀπῴκησεν"
         ]
       ]
     }
@@ -137160,6 +139262,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
           "Credo"
         ],
@@ -137436,6 +139542,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "E",
           "Creo"
         ],
@@ -137453,6 +139563,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "E",
           "Creo"
@@ -137950,7 +140064,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "peregre studere"
         ],
         [
@@ -137958,11 +140072,11 @@ const SENTENCES = [
           "pretiosam"
         ],
         [
-          "E",
+          "C",
           "experientiam"
         ],
         [
-          "B",
+          "E",
           "esse credo"
         ]
       ],
@@ -138522,8 +140636,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "E",
-          "Crero"
+          "Credo"
         ],
         [
           "B",
@@ -138540,6 +140658,10 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "E",
           "Criu"
         ],
@@ -138553,7 +140675,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "n'esperienza priziusa"
+          "n'esperiènza priziusa"
         ]
       ],
       "gsw": [
@@ -138700,6 +140822,28 @@ const SENTENCES = [
         [
           "C",
           "gutpela ekspiriens tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "E",
+          "νομίζω"
+        ],
+        [
+          "B",
+          "τὸ ξένῃ μανθάνειν"
+        ],
+        [
+          "C",
+          "τιμίαν ἐμπειρίαν"
+        ],
+        [
+          "D",
+          "εἶναι"
         ]
       ]
     }
@@ -139022,6 +141166,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Ho"
         ],
@@ -139242,6 +141390,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Tengo"
         ],
@@ -139255,6 +141407,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Traigo"
@@ -140104,12 +142260,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Tengo"
         ],
         [
           "B",
-          "male 'e capa"
+          "mala capa"
         ],
         [
           "C",
@@ -140117,6 +142277,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "D",
           "Haiu"
@@ -140254,6 +142418,24 @@ const SENTENCES = [
         [
           "C",
           "tude"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "C",
+          "τήμερον"
+        ],
+        [
+          "B",
+          "κεφαλαλγίαν"
+        ],
+        [
+          "D",
+          "ἔχω"
         ]
       ]
     }
@@ -141799,7 +143981,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "m'"
+          "me"
         ],
         [
           "D",
@@ -141807,13 +143989,13 @@ const SENTENCES = [
         ],
         [
           "C",
-          "'e me repusà"
+          "'e me ripusà"
         ]
       ],
       "scn": [
         [
           "A",
-          "U dutturi"
+          "U mèdicu"
         ],
         [
           "B",
@@ -141825,7 +144007,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "di ripusarimi"
+          "di ripusàrimi"
         ]
       ],
       "gsw": [
@@ -141948,6 +144130,24 @@ const SENTENCES = [
         [
           "C",
           "long malolo"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ὁ ἰατρός"
+        ],
+        [
+          "B",
+          "μοι"
+        ],
+        [
+          "C",
+          "ἀναπαύεσθαι"
+        ],
+        [
+          "D",
+          "ἐκέλευσεν"
         ]
       ]
     }
@@ -142274,6 +144474,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Cerco"
         ],
@@ -142518,6 +144722,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Intento"
         ],
@@ -142531,6 +144739,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Trato de"
@@ -142972,7 +145184,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "omni mane"
         ],
         [
@@ -142980,7 +145192,7 @@ const SENTENCES = [
           "exercere"
         ],
         [
-          "B",
+          "D",
           "conor"
         ]
       ],
@@ -143452,6 +145664,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Cerco"
         ],
@@ -143466,12 +145682,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
           "Cercu"
         ],
         [
           "C",
-          "di fari eserciziu"
+          "di fari esercìziu"
         ],
         [
           "B",
@@ -143598,6 +145818,24 @@ const SENTENCES = [
         [
           "B",
           "olgeta moning"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "ἑκάστης ἕω"
+        ],
+        [
+          "C",
+          "γυμνάζεσθαι"
+        ],
+        [
+          "D",
+          "πειρῶμαι"
         ]
       ]
     }
@@ -145083,7 +147321,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "s'ha pigliato"
+          "ha pigliato"
         ],
         [
           "B",
@@ -145101,7 +147339,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "pigghiau"
+          "pigghiò"
         ],
         [
           "B",
@@ -145240,6 +147478,24 @@ const SENTENCES = [
         [
           "D",
           "long las wik"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκείνη"
+        ],
+        [
+          "B",
+          "κατάρρουν"
+        ],
+        [
+          "D",
+          "τῇ παρελθούσῃ ἑβδομάδι"
+        ],
+        [
+          "C",
+          "ἔλαβεν"
         ]
       ]
     }
@@ -145562,6 +147818,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Tu"
+        ],
+        [
           "D",
           "Dovresti"
         ],
@@ -145778,6 +148038,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Tú"
+        ],
+        [
           "D",
           "Deberías"
         ],
@@ -145791,6 +148055,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Tú"
+        ],
         [
           "D",
           "Deberías"
@@ -146660,8 +148928,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Tu"
+        ],
+        [
           "D",
-          "Avrisse a"
+          "Avrisse"
         ],
         [
           "C",
@@ -146674,12 +148946,16 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Tu"
+        ],
+        [
           "D",
-          "Duvissi"
+          "Avrìssi a"
         ],
         [
           "C",
-          "vìviri"
+          "bìviri"
         ],
         [
           "B",
@@ -146810,6 +149086,24 @@ const SENTENCES = [
         [
           "B",
           "planti wara moa"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "σὲ"
+        ],
+        [
+          "B",
+          "πλεῖον ὕδωρ"
+        ],
+        [
+          "C",
+          "πίνειν"
+        ],
+        [
+          "D",
+          "χρή"
         ]
       ]
     }
@@ -147132,6 +149426,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "D",
+          "Io"
+        ],
+        [
           "C",
           "Uso"
         ],
@@ -147360,6 +149658,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "D",
+          "Yo"
+        ],
+        [
           "C",
           "Uso"
         ],
@@ -147373,6 +149675,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "D",
+          "Yo"
+        ],
         [
           "C",
           "Uso"
@@ -147766,19 +150072,19 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "D",
           "Ego"
         ],
         [
-          "D",
+          "A",
           "cotidie"
         ],
         [
-          "C",
+          "B",
           "telephonum meum gestabile"
         ],
         [
-          "B",
+          "C",
           "utor"
         ]
       ],
@@ -148234,6 +150540,10 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "D",
+          "Io"
+        ],
+        [
           "C",
           "Uso"
         ],
@@ -148247,6 +150557,10 @@ const SENTENCES = [
         ]
       ],
       "scn": [
+        [
+          "D",
+          "Iu"
+        ],
         [
           "C",
           "Usu"
@@ -148380,6 +150694,24 @@ const SENTENCES = [
         [
           "A",
           "olgeta de"
+        ]
+      ],
+      "grc": [
+        [
+          "D",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τῇ σοφῇ μηχανῇ μου"
+        ],
+        [
+          "A",
+          "καθ᾽ ἡμέραν"
+        ],
+        [
+          "C",
+          "χρῶμαι"
         ]
       ]
     }
@@ -149957,7 +152289,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "commoda"
+          "cummoda"
         ]
       ],
       "scn": [
@@ -150102,6 +152434,24 @@ const SENTENCES = [
         [
           "D",
           "gutpela tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "τοῦτο"
+        ],
+        [
+          "B",
+          "τὸ μηχάνημα"
+        ],
+        [
+          "C",
+          "λίαν"
+        ],
+        [
+          "D",
+          "χρήσιμόν ἐστιν"
         ]
       ]
     }
@@ -151338,7 +153688,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "sta cangiànnu"
+          "sta canciànnu"
         ],
         [
           "B",
@@ -151441,6 +153791,20 @@ const SENTENCES = [
         [
           "B",
           "graun"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ τεχνητὴ νόησις"
+        ],
+        [
+          "B",
+          "τὸν κόσμον"
+        ],
+        [
+          "C",
+          "μεταβάλλει"
         ]
       ]
     }
@@ -151704,6 +154068,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
           "Non riesco a trovare"
         ],
@@ -151876,6 +154244,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "C",
           "No puedo encontrar"
         ],
@@ -151885,6 +154257,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "C",
           "No encuentro"
@@ -152182,11 +154558,11 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "tesseram Wi-Fi"
         ],
         [
-          "B",
+          "C",
           "invenire non possum"
         ]
       ],
@@ -152538,22 +154914,30 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "C",
-          "Nun riesco a truvà"
+          "Nun trovo"
         ],
         [
           "B",
-          "'a password d'ô Wi-Fi"
+          "'a password Wi-Fi"
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Iu"
+        ],
         [
           "C",
           "Nun trovu"
         ],
         [
           "B",
-          "a password dû Wi-Fi"
+          "a password Wi-Fi"
         ]
       ],
       "gsw": [
@@ -152656,6 +155040,20 @@ const SENTENCES = [
         [
           "B",
           "pasword bilong Wi-Fi"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τὸ σύνθημα τοῦ ἀσυρμάτου δικτύου"
+        ],
+        [
+          "C",
+          "εὑρεῖν οὐ δύναμαι"
         ]
       ]
     }
@@ -152969,6 +155367,10 @@ const SENTENCES = [
         ]
       ],
       "it": [
+        [
+          "A",
+          "Lui"
+        ],
         [
           "D",
           "Ha imparato"
@@ -153700,15 +156102,15 @@ const SENTENCES = [
           "Ille"
         ],
         [
-          "C",
+          "B",
           "artem programmandi"
         ],
         [
-          "D",
+          "C",
           "per se"
         ],
         [
-          "B",
+          "D",
           "didicit"
         ]
       ],
@@ -154184,8 +156586,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Isso"
+        ],
+        [
           "D",
-          "Ha 'mparato"
+          "Ha mparato"
         ],
         [
           "B",
@@ -154193,17 +156599,21 @@ const SENTENCES = [
         ],
         [
           "C",
-          "da sulo"
+          "pe cunto suoio"
         ]
       ],
       "scn": [
         [
+          "A",
+          "Iddu"
+        ],
+        [
           "D",
-          "Mparau"
+          "Mparò"
         ],
         [
           "B",
-          "a programmazioni"
+          "a prugammazioni"
         ],
         [
           "C",
@@ -154330,6 +156740,24 @@ const SENTENCES = [
         [
           "C",
           "long em yet"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐκεῖνος"
+        ],
+        [
+          "B",
+          "τὴν μηχανογραφίαν"
+        ],
+        [
+          "C",
+          "αὐτοδίδακτος"
+        ],
+        [
+          "D",
+          "ἔμαθεν"
         ]
       ]
     }
@@ -155334,15 +157762,15 @@ const SENTENCES = [
           "Florum cerasi contemplatio"
         ],
         [
-          "C",
+          "B",
           "Iaponica"
         ],
         [
-          "D",
+          "C",
           "traditio"
         ],
         [
-          "B",
+          "D",
           "est"
         ]
       ],
@@ -155795,7 +158223,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Guardà 'e sciure 'e ceraso"
+          "'A osservazione d'ê ciure 'e cerasa"
         ],
         [
           "D",
@@ -155813,7 +158241,7 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "A fistina dî sciuri di cirasa"
+          "L'osservazioni dî ciuri di cirasa"
         ],
         [
           "D",
@@ -155825,7 +158253,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "giappunisa"
+          "giappunisi"
         ]
       ],
       "gsw": [
@@ -155952,6 +158380,24 @@ const SENTENCES = [
         [
           "C",
           "tru"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ θέα τῶν κερασέων ἀνθῶν"
+        ],
+        [
+          "B",
+          "Ἰαπωνικὴ"
+        ],
+        [
+          "C",
+          "παράδοσις"
+        ],
+        [
+          "D",
+          "ἐστίν"
         ]
       ]
     }
@@ -156282,6 +158728,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Noi"
+        ],
+        [
           "C",
           "Mangiamo"
         ],
@@ -156526,6 +158976,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Nosotros"
+        ],
+        [
           "C",
           "Comemos"
         ],
@@ -156539,6 +158993,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Nosotros"
+        ],
         [
           "C",
           "Comemos"
@@ -157468,8 +159926,12 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Nuie"
+        ],
+        [
           "C",
-          "Mangiammo"
+          "Mangimmo"
         ],
         [
           "B",
@@ -157477,10 +159939,14 @@ const SENTENCES = [
         ],
         [
           "D",
-          "pe 'o Capodanno cinese"
+          "durannte 'o Capodanno cinese"
         ]
       ],
       "scn": [
+        [
+          "A",
+          "Nuàutri"
+        ],
         [
           "C",
           "Manciamu"
@@ -157618,6 +160084,24 @@ const SENTENCES = [
         [
           "D",
           "long Nupela Yia bilong China"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡμεῖς"
+        ],
+        [
+          "B",
+          "ἐγκρυφίας"
+        ],
+        [
+          "D",
+          "κατὰ τὴν Σινικὴν νέαν ἑορτήν"
+        ],
+        [
+          "C",
+          "ἐσθίομεν"
         ]
       ]
     }
@@ -159187,7 +161671,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'e state"
+          "d'estate"
         ],
         [
           "C",
@@ -159195,7 +161679,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "veneno organizzate"
+          "venono organizzate"
         ]
       ],
       "scn": [
@@ -159213,7 +161697,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "vennu urganizzati"
+          "vèninu organizzati"
         ]
       ],
       "gsw": [
@@ -159340,6 +161824,24 @@ const SENTENCES = [
         [
           "D",
           "i kamap"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐν ταύτῃ τῇ χώρᾳ"
+        ],
+        [
+          "B",
+          "ἐν θέρει"
+        ],
+        [
+          "C",
+          "πολλαὶ ἑορταὶ"
+        ],
+        [
+          "D",
+          "ἄγονται"
         ]
       ]
     }
@@ -160558,7 +163060,7 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "'Mparà 'e lengue"
+          "Mparà 'e lengue"
         ],
         [
           "C",
@@ -160576,11 +163078,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "grapi"
+          "rapi"
         ],
         [
           "B",
-          "novi porti"
+          "porti novi"
         ]
       ],
       "gsw": [
@@ -160679,6 +163181,20 @@ const SENTENCES = [
         [
           "B",
           "nupela dua"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ τῶν γλωττῶν μάθησις"
+        ],
+        [
+          "B",
+          "καινὰς θύρας"
+        ],
+        [
+          "C",
+          "ἀνοίγει"
         ]
       ]
     }
@@ -161941,7 +164457,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a l'ufficio"
+          "ô ufficio"
         ],
         [
           "A",
@@ -161951,15 +164467,15 @@ const SENTENCES = [
       "scn": [
         [
           "C",
-          "Vaju"
+          "Vaiu"
         ],
         [
           "B",
-          "ô uffiziu"
+          "ô ufficiu"
         ],
         [
           "A",
-          "cû bicicletta"
+          "cu a bicicletta"
         ]
       ],
       "gsw": [
@@ -162058,6 +164574,20 @@ const SENTENCES = [
         [
           "A",
           "long baisikel"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ποδηλάτῳ"
+        ],
+        [
+          "B",
+          "εἰς τὸ γραφεῖον"
+        ],
+        [
+          "C",
+          "πορεύομαι"
         ]
       ]
     }
@@ -163130,7 +165660,7 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "C",
+          "B",
           "ad proximum"
         ],
         [
@@ -163138,7 +165668,7 @@ const SENTENCES = [
           "bivium"
         ],
         [
-          "B",
+          "C",
           "dextra flecte"
         ]
       ],
@@ -163635,7 +166165,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ô prossimo 'ncrocio"
+          "ô prossimo incrocio"
         ]
       ],
       "scn": [
@@ -163645,15 +166175,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "girassi"
+          "vutati"
         ],
         [
           "C",
-          "a destra"
+          "a dritta"
         ],
         [
           "B",
-          "ô prossimu ncrociamentu"
+          "ô prossimu ncrociu"
         ]
       ],
       "gsw": [
@@ -163780,6 +166310,24 @@ const SENTENCES = [
         [
           "B",
           "long neks rot miting"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "εἰ δοκεῖ"
+        ],
+        [
+          "B",
+          "ἐν τῇ ἐπιούσῃ ὁδῷ σταυρωτῇ"
+        ],
+        [
+          "C",
+          "δεξιὰ"
+        ],
+        [
+          "D",
+          "τρέψον"
         ]
       ]
     }
@@ -164852,15 +167400,15 @@ const SENTENCES = [
           "Macellum"
         ],
         [
-          "C",
+          "B",
           "post"
         ],
         [
-          "D",
+          "C",
           "stationem"
         ],
         [
-          "B",
+          "D",
           "est"
         ]
       ],
@@ -165363,7 +167911,7 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "U supermercatu"
+          "U supermircatu"
         ],
         [
           "D",
@@ -165375,7 +167923,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "â stazioni"
+          "a stazioni"
         ]
       ],
       "gsw": [
@@ -165502,6 +168050,24 @@ const SENTENCES = [
         [
           "C",
           "stesen"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἡ μεγάλη ἀγορὰ"
+        ],
+        [
+          "B",
+          "ὄπισθεν"
+        ],
+        [
+          "C",
+          "τοῦ σταθμοῦ"
+        ],
+        [
+          "D",
+          "ἐστίν"
         ]
       ]
     }
@@ -165828,6 +168394,10 @@ const SENTENCES = [
       ],
       "it": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Vorrei"
         ],
@@ -166056,6 +168626,10 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
+          "A",
+          "Yo"
+        ],
+        [
           "D",
           "Quiero"
         ],
@@ -166069,6 +168643,10 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
+        [
+          "A",
+          "Yo"
+        ],
         [
           "D",
           "Quiero"
@@ -166474,7 +169052,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "hunc cibum"
         ],
         [
@@ -166482,7 +169060,7 @@ const SENTENCES = [
           "iubere"
         ],
         [
-          "B",
+          "D",
           "volo"
         ]
       ],
@@ -166938,12 +169516,16 @@ const SENTENCES = [
       ],
       "nap": [
         [
+          "A",
+          "Io"
+        ],
+        [
           "D",
           "Vulesse"
         ],
         [
           "C",
-          "ordená"
+          "ordinà"
         ],
         [
           "B",
@@ -166952,8 +169534,12 @@ const SENTENCES = [
       ],
       "scn": [
         [
+          "A",
+          "Iu"
+        ],
+        [
           "D",
-          "Vurrissi"
+          "Vurrìssi"
         ],
         [
           "C",
@@ -167092,6 +169678,24 @@ const SENTENCES = [
         [
           "B",
           "dispela kaikai"
+        ]
+      ],
+      "grc": [
+        [
+          "A",
+          "ἐγὼ"
+        ],
+        [
+          "B",
+          "τοῦτο τὸ ὄψον"
+        ],
+        [
+          "C",
+          "κελεῦσαι"
+        ],
+        [
+          "D",
+          "βούλομαι"
         ]
       ]
     }
@@ -168060,11 +170664,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "C",
           "Quanti"
         ],
         [
-          "C",
+          "A",
           "hoc"
         ],
         [
@@ -168662,6 +171266,24 @@ const SENTENCES = [
         [
           "D",
           "mani?"
+        ]
+      ],
+      "grc": [
+        [
+          "C",
+          "πόσου"
+        ],
+        [
+          "A",
+          "τοῦτο"
+        ],
+        [
+          "B",
+          "τὸ μνημεῖον"
+        ],
+        [
+          "D",
+          "ἐστίν;"
         ]
       ]
     }
@@ -169395,11 +172017,11 @@ const SENTENCES = [
           "Gratias tibi ago"
         ],
         [
-          "B",
+          "C",
           "pro"
         ],
         [
-          "C",
+          "B",
           "omnibus rebus"
         ]
       ],
@@ -169865,6 +172487,20 @@ const SENTENCES = [
         [
           "A",
           "olgeta samting"
+        ]
+      ],
+      "grc": [
+        [
+          "B",
+          "χάριν σοι ἔχω"
+        ],
+        [
+          "C",
+          "ὑπὲρ"
+        ],
+        [
+          "A",
+          "πάντων"
         ]
       ]
     }
