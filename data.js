@@ -53926,11 +53926,11 @@ const SENTENCES = [
       "fr": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "C",
-          "oublié"
+          "ai oublié"
         ],
         [
           "B",
@@ -55216,11 +55216,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "C",
-          "oublié"
+          "ai oublié"
         ],
         [
           "B",
@@ -85124,11 +85124,11 @@ const SENTENCES = [
       "fr": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "E",
-          "parlé"
+          "ai parlé"
         ],
         [
           "B",
@@ -86690,11 +86690,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "E",
-          "parlé"
+          "ai parlé"
         ],
         [
           "B",
@@ -95920,11 +95920,11 @@ const SENTENCES = [
       "fr": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "C",
-          "perdu"
+          "ai perdu"
         ],
         [
           "B",
@@ -97214,11 +97214,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "A",
-          "J'ai"
+          "J'"
         ],
         [
           "C",
-          "perdu"
+          "ai perdu"
         ],
         [
           "B",
