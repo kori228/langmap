@@ -52213,7 +52213,11 @@ const SENTENCES = [
       "fr": [
         [
           "D",
-          "Pourriez-vous"
+          "Pourriez"
+        ],
+        [
+          "A",
+          "-vous"
         ],
         [
           "C",
@@ -52493,6 +52497,10 @@ const SENTENCES = [
         ]
       ],
       "pt_eu": [
+        [
+          "A",
+          "Você"
+        ],
         [
           "D",
           "Pode"
@@ -53403,7 +53411,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "D",
-          "Pourriez-vous"
+          "Pourriez"
+        ],
+        [
+          "A",
+          "-vous"
         ],
         [
           "C",
@@ -73525,7 +73537,11 @@ const SENTENCES = [
       "fr": [
         [
           "E",
-          "Savez-vous"
+          "Savez"
+        ],
+        [
+          "A",
+          "-vous"
         ],
         [
           "C",
@@ -74975,7 +74991,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "E",
-          "Savez-vous"
+          "Savez"
+        ],
+        [
+          "A",
+          "-vous"
         ],
         [
           "C",
@@ -99438,8 +99458,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Nós"
+        ],
+        [
           "D",
-          "Devemos"
+          "devemos"
         ],
         [
           "C",
@@ -99452,8 +99476,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Nós"
+        ],
+        [
           "D",
-          "Devemos"
+          "devemos"
         ],
         [
           "C",
@@ -124644,7 +124672,11 @@ const SENTENCES = [
       "fr": [
         [
           "D",
-          "Puis-je"
+          "Puis"
+        ],
+        [
+          "A",
+          "je"
         ],
         [
           "C",
@@ -124925,8 +124957,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Posso"
+          "posso"
         ],
         [
           "C",
@@ -124939,8 +124975,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Posso"
+          "posso"
         ],
         [
           "C",
@@ -125818,7 +125858,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "D",
-          "J'peux-tu"
+          "J'peux"
+        ],
+        [
+          "A",
+          "tu"
         ],
         [
           "C",
@@ -126622,8 +126666,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Ele"
+        ],
+        [
           "D",
-          "Escreveu"
+          "escreveu"
         ],
         [
           "B",
@@ -126636,8 +126684,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Ele"
+        ],
+        [
           "D",
-          "Escreveu"
+          "escreveu"
         ],
         [
           "B",
@@ -131619,8 +131671,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eles"
+        ],
+        [
           "D",
-          "Construíram"
+          "construíram"
         ],
         [
           "B",
@@ -131633,8 +131689,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eles"
+        ],
+        [
           "D",
-          "Construíram"
+          "construíram"
         ],
         [
           "B",
@@ -145264,8 +145324,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "E",
-          "Acredito"
+          "acredito"
         ],
         [
           "B",
@@ -145282,8 +145346,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "E",
-          "Acredito"
+          "acredito"
         ],
         [
           "B",
@@ -147176,8 +147244,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Tenho"
+          "tenho"
         ],
         [
           "B",
@@ -147190,8 +147262,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Estou com"
+          "estou com"
         ],
         [
           "B",
@@ -150350,8 +150426,12 @@ const SENTENCES = [
       ],
       "fr": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'essaie"
+          "essaie"
         ],
         [
           "C",
@@ -150648,8 +150728,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Tento"
+          "tento"
         ],
         [
           "C",
@@ -150662,8 +150746,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Tento"
+          "tento"
         ],
         [
           "C",
@@ -151616,8 +151704,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "J'"
+        ],
+        [
           "D",
-          "J'essaie"
+          "essaie"
         ],
         [
           "C",
@@ -153830,8 +153922,12 @@ const SENTENCES = [
       ],
       "fr": [
         [
+          "A",
+          "Vous"
+        ],
+        [
           "D",
-          "Vous devriez"
+          "devriez"
         ],
         [
           "C",
@@ -154100,8 +154196,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Você"
+        ],
+        [
           "D",
-          "Devias"
+          "devias"
         ],
         [
           "C",
@@ -154114,8 +154214,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Você"
+        ],
+        [
           "D",
-          "Você deveria"
+          "deveria"
         ],
         [
           "C",
@@ -155012,8 +155116,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "A",
+          "Tu"
+        ],
+        [
           "D",
-          "Tu devrais"
+          "devrais"
         ],
         [
           "C",
@@ -155510,8 +155618,12 @@ const SENTENCES = [
       ],
       "fr": [
         [
+          "D",
+          "J'"
+        ],
+        [
           "C",
-          "J'utilise"
+          "utilise"
         ],
         [
           "B",
@@ -156700,8 +156812,12 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
+          "D",
+          "J'"
+        ],
+        [
           "C",
-          "J'utilise"
+          "utilise"
         ],
         [
           "B",
@@ -160550,8 +160666,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "C",
-          "Não consigo encontrar"
+          "não consigo encontrar"
         ],
         [
           "B",
@@ -160560,8 +160680,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "C",
-          "Não consigo encontrar"
+          "não consigo encontrar"
         ],
         [
           "B",
@@ -165494,8 +165618,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Nós"
+        ],
+        [
           "C",
-          "Comemos"
+          "comemos"
         ],
         [
           "B",
@@ -165508,8 +165636,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Nós"
+        ],
+        [
           "C",
-          "Comemos"
+          "comemos"
         ],
         [
           "B",
@@ -175520,8 +175652,12 @@ const SENTENCES = [
       ],
       "pt_eu": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Quero"
+          "quero"
         ],
         [
           "C",
@@ -175534,8 +175670,12 @@ const SENTENCES = [
       ],
       "pt_br": [
         [
+          "A",
+          "Eu"
+        ],
+        [
           "D",
-          "Quero"
+          "quero"
         ],
         [
           "C",
@@ -176919,7 +177059,11 @@ const SENTENCES = [
       "fr": [
         [
           "C",
-          "Combien coûte"
+          "Combien"
+        ],
+        [
+          "D",
+          "coûte"
         ],
         [
           "A",
@@ -177193,7 +177337,11 @@ const SENTENCES = [
       "pt_eu": [
         [
           "C",
-          "Quanto custa"
+          "Quanto"
+        ],
+        [
+          "D",
+          "custa"
         ],
         [
           "A",
@@ -177207,7 +177355,11 @@ const SENTENCES = [
       "pt_br": [
         [
           "C",
-          "Quanto custa"
+          "Quanto"
+        ],
+        [
+          "D",
+          "custa"
         ],
         [
           "A",
@@ -178093,7 +178245,11 @@ const SENTENCES = [
       "fr_qc": [
         [
           "C",
-          "Combien ça coûte"
+          "Combien ça"
+        ],
+        [
+          "D",
+          "coûte"
         ],
         [
           "A",
