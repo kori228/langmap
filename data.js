@@ -170,6 +170,10 @@ const SENTENCES = [
           "bộ vest"
         ],
         [
+          "G",
+          "mà"
+        ],
+        [
           "D",
           "tôi đã thấy"
         ],
