@@ -50431,7 +50431,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Sono andato"
+          "sono andato"
         ],
         [
           "B",
@@ -50675,7 +50675,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "He estado"
+          "he estado"
         ],
         [
           "B",
@@ -50693,7 +50693,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "He ido"
+          "he ido"
         ],
         [
           "B",
@@ -51641,7 +51641,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "So' ghiuto"
+          "so' ghiuto"
         ],
         [
           "B",
@@ -51659,7 +51659,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Sû jutu"
+          "sû jutu"
         ],
         [
           "B",
@@ -52503,7 +52503,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Pode"
+          "pode"
         ],
         [
           "C",
@@ -53361,7 +53361,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Putesse"
+          "putesse"
         ],
         [
           "C",
@@ -53379,7 +53379,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Putissi"
+          "putissi"
         ],
         [
           "C",
@@ -53948,7 +53948,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Ho dimenticato"
+          "ho dimenticato"
         ],
         [
           "B",
@@ -55162,7 +55162,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Aggio scurdato"
+          "aggio scurdato"
         ],
         [
           "B",
@@ -55180,7 +55180,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Scurdai"
+          "scurdai"
         ],
         [
           "B",
@@ -59347,7 +59347,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -59627,7 +59627,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -59649,7 +59649,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -60717,7 +60717,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -60739,7 +60739,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "C",
@@ -67804,7 +67804,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Devo"
+          "devo"
         ],
         [
           "E",
@@ -68108,7 +68108,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Necesito"
+          "necesito"
         ],
         [
           "E",
@@ -68130,7 +68130,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Necesito"
+          "necesito"
         ],
         [
           "E",
@@ -69266,7 +69266,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Aggia"
+          "aggia"
         ],
         [
           "E",
@@ -69288,7 +69288,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Hâiu a"
+          "hâiu a"
         ],
         [
           "E",
@@ -71392,7 +71392,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Devo"
+          "devo"
         ],
         [
           "D",
@@ -71692,7 +71692,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Tengo que"
+          "tengo que"
         ],
         [
           "D",
@@ -71714,7 +71714,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Tengo que"
+          "tengo que"
         ],
         [
           "D",
@@ -72826,7 +72826,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Aggia"
+          "aggia"
         ],
         [
           "D",
@@ -72848,7 +72848,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Hâiu a"
+          "hâiu a"
         ],
         [
           "D",
@@ -74929,7 +74929,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Saje"
+          "saje"
         ],
         [
           "C",
@@ -74951,7 +74951,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Sai"
+          "sai"
         ],
         [
           "C",
@@ -75671,7 +75671,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Sto leggendo"
+          "sto leggendo"
         ],
         [
           "D",
@@ -75979,7 +75979,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Estoy leyendo"
+          "estoy leyendo"
         ],
         [
           "D",
@@ -76001,7 +76001,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Estoy leyendo"
+          "estoy leyendo"
         ],
         [
           "D",
@@ -77165,7 +77165,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Sto leggenno"
+          "sto leggenno"
         ],
         [
           "D",
@@ -77187,7 +77187,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Stâiu liggènnu"
+          "stâiu liggènnu"
         ],
         [
           "D",
@@ -81519,7 +81519,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -81767,7 +81767,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -81785,7 +81785,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -82721,7 +82721,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -82739,7 +82739,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "C",
@@ -85150,7 +85150,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Ho parlato"
+          "ho parlato"
         ],
         [
           "B",
@@ -85450,7 +85450,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Hablé"
+          "hablé"
         ],
         [
           "B",
@@ -85472,7 +85472,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Estuve hablando"
+          "estuve hablando"
         ],
         [
           "B",
@@ -86628,7 +86628,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Aggio parlato"
+          "aggio parlato"
         ],
         [
           "B",
@@ -86650,7 +86650,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Parrai"
+          "parrai"
         ],
         [
           "B",
@@ -89062,7 +89062,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -89286,7 +89286,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -89304,7 +89304,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -90172,7 +90172,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -90190,7 +90190,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "C",
@@ -99175,7 +99175,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Dobbiamo"
+          "dobbiamo"
         ],
         [
           "C",
@@ -99427,7 +99427,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Debemos"
+          "debemos"
         ],
         [
           "C",
@@ -99445,7 +99445,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Debemos"
+          "debemos"
         ],
         [
           "C",
@@ -100389,7 +100389,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Avimma"
+          "avimma"
         ],
         [
           "C",
@@ -100407,7 +100407,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Avìmu a"
+          "avìmu a"
         ],
         [
           "C",
@@ -100967,7 +100967,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Bevo"
+          "bevo"
         ],
         [
           "B",
@@ -101219,7 +101219,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Bebo"
+          "bebo"
         ],
         [
           "B",
@@ -101237,7 +101237,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Tomo"
+          "tomo"
         ],
         [
           "B",
@@ -102197,7 +102197,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Bevo"
+          "bevo"
         ],
         [
           "B",
@@ -102215,7 +102215,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Bivu"
+          "bivu"
         ],
         [
           "B",
@@ -106470,7 +106470,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "D",
@@ -106774,7 +106774,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "D",
@@ -106796,7 +106796,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "D",
@@ -107932,7 +107932,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "D",
@@ -107954,7 +107954,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "D",
@@ -109975,7 +109975,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Sto imparando"
+          "sto imparando"
         ],
         [
           "C",
@@ -110227,7 +110227,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Estoy aprendiendo"
+          "estoy aprendiendo"
         ],
         [
           "C",
@@ -110245,7 +110245,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Estoy aprendiendo"
+          "estoy aprendiendo"
         ],
         [
           "C",
@@ -111185,7 +111185,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Sto mparanno"
+          "sto mparanno"
         ],
         [
           "C",
@@ -111203,7 +111203,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Stâiu mparànnu"
+          "stâiu mparànnu"
         ],
         [
           "C",
@@ -113981,7 +113981,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "D",
@@ -114285,7 +114285,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "D",
@@ -114307,7 +114307,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Quiero"
+          "quiero"
         ],
         [
           "D",
@@ -115451,7 +115451,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Voglio"
+          "voglio"
         ],
         [
           "D",
@@ -115473,7 +115473,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "D",
@@ -117510,7 +117510,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Devo"
+          "devo"
         ],
         [
           "C",
@@ -117758,7 +117758,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Necesito"
+          "necesito"
         ],
         [
           "C",
@@ -117776,7 +117776,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Necesito"
+          "necesito"
         ],
         [
           "C",
@@ -118704,7 +118704,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Aggia"
+          "aggia"
         ],
         [
           "C",
@@ -118722,7 +118722,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Hâiu a"
+          "hâiu a"
         ],
         [
           "C",
@@ -123126,7 +123126,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Hago ejercicio"
+          "hago ejercicio"
         ],
         [
           "B",
@@ -123144,7 +123144,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Hago ejercicio"
+          "hago ejercicio"
         ],
         [
           "B",
@@ -124108,7 +124108,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Me alleno"
+          "me alleno"
         ],
         [
           "B",
@@ -124694,7 +124694,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Posso"
+          "posso"
         ],
         [
           "C",
@@ -124926,7 +124926,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Puedo"
+          "puedo"
         ],
         [
           "C",
@@ -124944,7 +124944,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Me puedo"
+          "me puedo"
         ],
         [
           "C",
@@ -125808,7 +125808,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Pozzo"
+          "pozzo"
         ],
         [
           "C",
@@ -125826,7 +125826,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Pozzu"
+          "pozzu"
         ],
         [
           "C",
@@ -126383,7 +126383,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Ha scritto"
+          "ha scritto"
         ],
         [
           "B",
@@ -126635,7 +126635,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Escribió"
+          "escribió"
         ],
         [
           "B",
@@ -126653,7 +126653,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Le escribió"
+          "le escribió"
         ],
         [
           "B",
@@ -127613,7 +127613,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Ha scritto"
+          "ha scritto"
         ],
         [
           "B",
@@ -127631,7 +127631,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Scrissì"
+          "scrissì"
         ],
         [
           "B",
@@ -129608,7 +129608,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -129856,7 +129856,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -129874,7 +129874,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -130802,7 +130802,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Voglio"
+          "voglio"
         ],
         [
           "C",
@@ -130820,7 +130820,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vògghiu"
+          "vògghiu"
         ],
         [
           "C",
@@ -131380,7 +131380,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Hanno costruito"
+          "hanno costruito"
         ],
         [
           "B",
@@ -131640,7 +131640,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Construyeron"
+          "construyeron"
         ],
         [
           "B",
@@ -131658,7 +131658,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Construyeron"
+          "construyeron"
         ],
         [
           "B",
@@ -132618,7 +132618,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Hanno costruito"
+          "hanno costruito"
         ],
         [
           "B",
@@ -132636,7 +132636,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Custruieru"
+          "custruieru"
         ],
         [
           "B",
@@ -134945,7 +134945,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Aspetto"
+          "aspetto"
         ],
         [
           "B",
@@ -135149,7 +135149,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Llevo"
+          "llevo"
         ],
         [
           "B",
@@ -135167,7 +135167,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Llevo"
+          "llevo"
         ],
         [
           "B",
@@ -135915,7 +135915,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Aspetto"
+          "aspetto"
         ],
         [
           "B",
@@ -135929,7 +135929,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Aspettu"
+          "aspettu"
         ],
         [
           "B",
@@ -145005,7 +145005,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Credo"
+          "credo"
         ],
         [
           "B",
@@ -145285,7 +145285,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Creo"
+          "creo"
         ],
         [
           "B",
@@ -145307,7 +145307,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Creo"
+          "creo"
         ],
         [
           "B",
@@ -146371,7 +146371,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Credo"
+          "credo"
         ],
         [
           "B",
@@ -146393,7 +146393,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "Criu"
+          "criu"
         ],
         [
           "B",
@@ -146989,7 +146989,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Ho"
+          "ho"
         ],
         [
           "B",
@@ -147213,7 +147213,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Tengo"
+          "tengo"
         ],
         [
           "B",
@@ -147231,7 +147231,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Traigo"
+          "traigo"
         ],
         [
           "B",
@@ -148095,7 +148095,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Tengo"
+          "tengo"
         ],
         [
           "B",
@@ -148113,7 +148113,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Haiu"
+          "haiu"
         ],
         [
           "B",
@@ -150449,7 +150449,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Cerco"
+          "cerco"
         ],
         [
           "C",
@@ -150697,7 +150697,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Intento"
+          "intento"
         ],
         [
           "C",
@@ -150715,7 +150715,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Trato de"
+          "trato de"
         ],
         [
           "C",
@@ -151655,7 +151655,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Cerco"
+          "cerco"
         ],
         [
           "C",
@@ -151673,7 +151673,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Cercu"
+          "cercu"
         ],
         [
           "C",
@@ -153945,7 +153945,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Dovresti"
+          "dovresti"
         ],
         [
           "C",
@@ -154165,7 +154165,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Deberías"
+          "deberías"
         ],
         [
           "C",
@@ -154183,7 +154183,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Deberías"
+          "deberías"
         ],
         [
           "C",
@@ -155067,7 +155067,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Avrisse"
+          "avrisse"
         ],
         [
           "C",
@@ -155085,7 +155085,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Avrìssi a"
+          "avrìssi a"
         ],
         [
           "C",
@@ -155641,7 +155641,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Uso"
+          "uso"
         ],
         [
           "B",
@@ -155873,7 +155873,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Uso"
+          "uso"
         ],
         [
           "B",
@@ -155891,7 +155891,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Uso"
+          "uso"
         ],
         [
           "B",
@@ -156763,7 +156763,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Uso"
+          "uso"
         ],
         [
           "B",
@@ -156781,7 +156781,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Usu"
+          "usu"
         ],
         [
           "B",
@@ -160467,7 +160467,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Non riesco a trovare"
+          "non riesco a trovare"
         ],
         [
           "B",
@@ -160643,7 +160643,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "No puedo encontrar"
+          "no puedo encontrar"
         ],
         [
           "B",
@@ -160657,7 +160657,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "No encuentro"
+          "no encuentro"
         ],
         [
           "B",
@@ -161337,7 +161337,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Nun trovo"
+          "nun trovo"
         ],
         [
           "B",
@@ -161351,7 +161351,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Nun trovu"
+          "nun trovu"
         ],
         [
           "B",
@@ -161855,7 +161855,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Ha imparato"
+          "ha imparato"
         ],
         [
           "B",
@@ -163069,7 +163069,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Ha mparato"
+          "ha mparato"
         ],
         [
           "B",
@@ -163087,7 +163087,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Mparò"
+          "mparò"
         ],
         [
           "B",
@@ -165339,7 +165339,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Mangiamo"
+          "mangiamo"
         ],
         [
           "B",
@@ -165587,7 +165587,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Comemos"
+          "comemos"
         ],
         [
           "B",
@@ -165605,7 +165605,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Comemos"
+          "comemos"
         ],
         [
           "B",
@@ -166549,7 +166549,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Mangimmo"
+          "mangimmo"
         ],
         [
           "B",
@@ -166567,7 +166567,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "Manciamu"
+          "manciamu"
         ],
         [
           "B",
@@ -175389,7 +175389,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vorrei"
+          "vorrei"
         ],
         [
           "C",
@@ -175621,7 +175621,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -175639,7 +175639,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Quiero"
+          "quiero"
         ],
         [
           "C",
@@ -176527,7 +176527,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vulesse"
+          "vulesse"
         ],
         [
           "C",
@@ -176545,7 +176545,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "Vurrìssi"
+          "vurrìssi"
         ],
         [
           "C",
