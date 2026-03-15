@@ -2415,7 +2415,7 @@ const SENTENCES = [
           "davanti a l'hotel"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -2637,7 +2637,7 @@ const SENTENCES = [
           "long hapsait bilong hotel"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -2739,7 +2739,7 @@ const SENTENCES = [
           "så"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -4295,7 +4295,7 @@ const SENTENCES = [
           "Tanaka"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Min"
@@ -4421,7 +4421,7 @@ const SENTENCES = [
           "Tanaka"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐμὸν"
@@ -4475,7 +4475,7 @@ const SENTENCES = [
           "Tanaka"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn"
@@ -6446,7 +6446,7 @@ const SENTENCES = [
           "a li setti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -6600,7 +6600,7 @@ const SENTENCES = [
           "long seven kilok"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -6666,7 +6666,7 @@ const SENTENCES = [
           "frokost"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -8254,7 +8254,7 @@ const SENTENCES = [
           "cchiù vicina"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "Wo"
@@ -8380,7 +8380,7 @@ const SENTENCES = [
           "we?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "ποῦ"
@@ -8434,7 +8434,7 @@ const SENTENCES = [
           "stasjonen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "C",
           "Hwǣr"
@@ -10146,7 +10146,7 @@ const SENTENCES = [
           "bonu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De"
@@ -10288,7 +10288,7 @@ const SENTENCES = [
           "tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "οὗτος"
@@ -10350,7 +10350,7 @@ const SENTENCES = [
           "god"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þēos"
@@ -11986,7 +11986,7 @@ const SENTENCES = [
           "a l'università"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -12112,7 +12112,7 @@ const SENTENCES = [
           "long yunivesiti"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -12166,7 +12166,7 @@ const SENTENCES = [
           "på universitetet"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -13798,7 +13798,7 @@ const SENTENCES = [
           "suliggiatu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Morn"
@@ -13928,7 +13928,7 @@ const SENTENCES = [
           "san i kam"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ αὔριον"
@@ -13982,7 +13982,7 @@ const SENTENCES = [
           "solfylt"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Tō morgenne"
@@ -15618,7 +15618,7 @@ const SENTENCES = [
           "ogni jornu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mini Mueter"
@@ -15744,7 +15744,7 @@ const SENTENCES = [
           "olgeta de"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ μήτηρ μου"
@@ -15798,7 +15798,7 @@ const SENTENCES = [
           "middag"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn mōdor"
@@ -17438,7 +17438,7 @@ const SENTENCES = [
           "l'annu chi veni"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -17568,7 +17568,7 @@ const SENTENCES = [
           "long narapela yia"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -17622,7 +17622,7 @@ const SENTENCES = [
           "reise til Japan"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -19238,7 +19238,7 @@ const SENTENCES = [
           "ngrisi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Chönd"
@@ -19364,7 +19364,7 @@ const SENTENCES = [
           "Inglis?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "D",
           "ἆρα"
@@ -19418,7 +19418,7 @@ const SENTENCES = [
           "snakke"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Canst"
@@ -21740,7 +21740,7 @@ const SENTENCES = [
           "aieri"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -21922,7 +21922,7 @@ const SENTENCES = [
           "long stoa bilong buk"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -22000,7 +22000,7 @@ const SENTENCES = [
           "bok"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -23648,7 +23648,7 @@ const SENTENCES = [
           "sunnu beddissimi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "D Chriesiblüete"
@@ -23774,7 +23774,7 @@ const SENTENCES = [
           "i naispela tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "τὰ ἄνθη τῶν κερασέων"
@@ -23828,7 +23828,7 @@ const SENTENCES = [
           "er vakre"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "C",
           "Þā cirsblōstman"
@@ -25336,7 +25336,7 @@ const SENTENCES = [
           "un bicchieri d'acqua"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Bitte"
@@ -25462,7 +25462,7 @@ const SENTENCES = [
           "wanpela glas wara"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "ποτήριον ὕδατος"
@@ -25516,7 +25516,7 @@ const SENTENCES = [
           "et glass vann"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic bidde þē"
@@ -27499,7 +27499,7 @@ const SENTENCES = [
           "ogni jornu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -27657,7 +27657,7 @@ const SENTENCES = [
           "olgeta de"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -27723,7 +27723,7 @@ const SENTENCES = [
           "til jobben"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -29335,7 +29335,7 @@ const SENTENCES = [
           "n Francia"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mini jüngeri Schwöschter"
@@ -29461,7 +29461,7 @@ const SENTENCES = [
           "long France"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ ἀδελφή μου"
@@ -29511,7 +29511,7 @@ const SENTENCES = [
           "i Frankrike"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn gingre sweostor"
@@ -30963,7 +30963,7 @@ const SENTENCES = [
           "u film"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Wänn"
@@ -31085,7 +31085,7 @@ const SENTENCES = [
           "long wanem taim?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "πηνίκα"
@@ -31127,7 +31127,7 @@ const SENTENCES = [
           "filmen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hwænne"
@@ -33070,7 +33070,7 @@ const SENTENCES = [
           "stu dopumìzuiornu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -33224,7 +33224,7 @@ const SENTENCES = [
           "long apinun"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -33290,7 +33290,7 @@ const SENTENCES = [
           "et møte"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -35002,7 +35002,7 @@ const SENTENCES = [
           "cara"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Die"
@@ -35152,7 +35152,7 @@ const SENTENCES = [
           "tumas"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "αὕτη"
@@ -35214,7 +35214,7 @@ const SENTENCES = [
           "dyr"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þēos"
@@ -36846,7 +36846,7 @@ const SENTENCES = [
           "a mùsica"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -36972,7 +36972,7 @@ const SENTENCES = [
           "musik"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -37026,7 +37026,7 @@ const SENTENCES = [
           "musikk"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -38510,7 +38510,7 @@ const SENTENCES = [
           "di stamatina"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "Es"
@@ -38612,7 +38612,7 @@ const SENTENCES = [
           "stat long dispela moning"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκ τῆς ἕω"
@@ -38662,7 +38662,7 @@ const SENTENCES = [
           "allerede"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "C",
           "Hit hæfþ bēon"
@@ -40557,7 +40557,7 @@ const SENTENCES = [
           "stasìra"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -40707,7 +40707,7 @@ const SENTENCES = [
           "wantaim ol pren"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -40773,7 +40773,7 @@ const SENTENCES = [
           "middag"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -42724,7 +42724,7 @@ const SENTENCES = [
           "lingua"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -42878,7 +42878,7 @@ const SENTENCES = [
           "tok ples"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -42944,7 +42944,7 @@ const SENTENCES = [
           "lære"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -44556,7 +44556,7 @@ const SENTENCES = [
           "a l'uspidali"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "D Bibliothek"
@@ -44682,7 +44682,7 @@ const SENTENCES = [
           "haus sik"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ βιβλιοθήκη"
@@ -44736,7 +44736,7 @@ const SENTENCES = [
           "sykehuset"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Sēo bōchord"
@@ -46236,7 +46236,7 @@ const SENTENCES = [
           "u menù"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Bitte"
@@ -46362,7 +46362,7 @@ const SENTENCES = [
           "menu"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "τὸν κατάλογον"
@@ -46416,7 +46416,7 @@ const SENTENCES = [
           "menyen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic bidde þē"
@@ -48259,7 +48259,7 @@ const SENTENCES = [
           "azienda"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Min Vater"
@@ -48413,7 +48413,7 @@ const SENTENCES = [
           "kampani"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ πατήρ μου"
@@ -48479,7 +48479,7 @@ const SENTENCES = [
           "selskap"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn fæder"
@@ -50059,7 +50059,7 @@ const SENTENCES = [
           "ntô parcu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "D Chind"
@@ -50185,7 +50185,7 @@ const SENTENCES = [
           "long pak"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "οἱ παῖδες"
@@ -50235,7 +50235,7 @@ const SENTENCES = [
           "nå"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þā cild"
@@ -51847,7 +51847,7 @@ const SENTENCES = [
           "tri voti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -51977,7 +51977,7 @@ const SENTENCES = [
           "tripela taim"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -52031,7 +52031,7 @@ const SENTENCES = [
           "vært i Tokyo"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -53567,7 +53567,7 @@ const SENTENCES = [
           "un bonu risturanti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Chönted"
@@ -53689,7 +53689,7 @@ const SENTENCES = [
           "wanpela gutpela ples kaikai?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "D",
           "ἆρα δύνασαι"
@@ -53743,7 +53743,7 @@ const SENTENCES = [
           "anbefale"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Canst"
@@ -55363,7 +55363,7 @@ const SENTENCES = [
           "supra u trenu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -55493,7 +55493,7 @@ const SENTENCES = [
           "long tren"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -55555,7 +55555,7 @@ const SENTENCES = [
           "glemt"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -57494,7 +57494,7 @@ const SENTENCES = [
           "assà bonu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -57648,7 +57648,7 @@ const SENTENCES = [
           "gutpela tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -57714,7 +57714,7 @@ const SENTENCES = [
           "spille"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -58959,7 +58959,7 @@ const SENTENCES = [
           "lunidì chi veni"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "D Prüefig"
@@ -59057,7 +59057,7 @@ const SENTENCES = [
           "neks Mande"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ ἐξέτασις"
@@ -59099,7 +59099,7 @@ const SENTENCES = [
           "neste mandag"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Sēo costnung"
@@ -60926,7 +60926,7 @@ const SENTENCES = [
           "a pranzu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -61080,7 +61080,7 @@ const SENTENCES = [
           "long belo kaikai"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -61146,7 +61146,7 @@ const SENTENCES = [
           "spise"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -62714,7 +62714,7 @@ const SENTENCES = [
           "pulita"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "S Hotelzimmer"
@@ -62836,7 +62836,7 @@ const SENTENCES = [
           "tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "τὸ δωμάτιον τοῦ πανδοχείου"
@@ -62890,7 +62890,7 @@ const SENTENCES = [
           "rent"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þæt gesthūsrūm"
@@ -64175,7 +64175,7 @@ const SENTENCES = [
           "cchiù chianu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Bitte"
@@ -64277,7 +64277,7 @@ const SENTENCES = [
           "isi isi"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "εἰ δοκεῖ"
@@ -64319,7 +64319,7 @@ const SENTENCES = [
           "saktere"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic bidde þē"
@@ -65600,7 +65600,7 @@ const SENTENCES = [
           "u misi passatu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Min älter Brüeder"
@@ -65702,7 +65702,7 @@ const SENTENCES = [
           "long las mun"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ ἀδελφός μου"
@@ -65752,7 +65752,7 @@ const SENTENCES = [
           "seg"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn ieldra brōðor"
@@ -67340,7 +67340,7 @@ const SENTENCES = [
           "â stazioni"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "Am Bahnhof"
@@ -67466,7 +67466,7 @@ const SENTENCES = [
           "long stesen"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "ἐν τῷ σταθμῷ"
@@ -67520,7 +67520,7 @@ const SENTENCES = [
           "mennesker"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Þǣr sind"
@@ -69475,7 +69475,7 @@ const SENTENCES = [
           "di cumpliannu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -69645,7 +69645,7 @@ const SENTENCES = [
           "presen"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -69703,7 +69703,7 @@ const SENTENCES = [
           "kjøpe"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -71004,7 +71004,7 @@ const SENTENCES = [
           "è beddìssimu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "B",
           "De Sunneundergang"
@@ -71102,7 +71102,7 @@ const SENTENCES = [
           "i naispela tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "B",
           "ἡ δύσις τοῦ ἡλίου"
@@ -71144,7 +71144,7 @@ const SENTENCES = [
           "er vakker"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "B",
           "Sēo sunnansetlung"
@@ -73035,7 +73035,7 @@ const SENTENCES = [
           "dumani"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -73189,7 +73189,7 @@ const SENTENCES = [
           "kwiktaim"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐμὲ"
@@ -73255,7 +73255,7 @@ const SENTENCES = [
           "stå opp"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -75138,7 +75138,7 @@ const SENTENCES = [
           "l'ufficiu pustali"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "E",
           "Wüssed"
@@ -75288,7 +75288,7 @@ const SENTENCES = [
           "we?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "E",
           "ἆρα οἶσθα"
@@ -75354,7 +75354,7 @@ const SENTENCES = [
           "er"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "E",
           "Wāst"
@@ -77369,7 +77369,7 @@ const SENTENCES = [
           "ora"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -77547,7 +77547,7 @@ const SENTENCES = [
           "nau"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -77621,7 +77621,7 @@ const SENTENCES = [
           "bok"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -79644,7 +79644,7 @@ const SENTENCES = [
           "russu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -79818,7 +79818,7 @@ const SENTENCES = [
           "klos"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -79884,7 +79884,7 @@ const SENTENCES = [
           "kjole"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -81185,7 +81185,7 @@ const SENTENCES = [
           "è sapuritu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "B",
           "S Ässe"
@@ -81283,7 +81283,7 @@ const SENTENCES = [
           "i suwit tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "B",
           "τὰ σιτία"
@@ -81325,7 +81325,7 @@ const SENTENCES = [
           "er deilig"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "B",
           "Þæt mete"
@@ -82917,7 +82917,7 @@ const SENTENCES = [
           "pi tuttu u munnu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -83043,7 +83043,7 @@ const SENTENCES = [
           "long olgeta hap bilong graun"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -83097,7 +83097,7 @@ const SENTENCES = [
           "reise"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -84697,7 +84697,7 @@ const SENTENCES = [
           "d'invernu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "I dem Land"
@@ -84823,7 +84823,7 @@ const SENTENCES = [
           "long taim bilong kol"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐν ταύτῃ τῇ χώρᾳ"
@@ -84877,7 +84877,7 @@ const SENTENCES = [
           "kaldt"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "On þissum lande"
@@ -86832,7 +86832,7 @@ const SENTENCES = [
           "pi n'ura"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -86986,7 +86986,7 @@ const SENTENCES = [
           "wanpela aua"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -87052,7 +87052,7 @@ const SENTENCES = [
           "snakket i telefonen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -88692,7 +88692,7 @@ const SENTENCES = [
           "chiaramenti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Lehrer"
@@ -88818,7 +88818,7 @@ const SENTENCES = [
           "gut tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ διδάσκαλος"
@@ -88872,7 +88872,7 @@ const SENTENCES = [
           "tydelig"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Se lārēow"
@@ -90368,7 +90368,7 @@ const SENTENCES = [
           "chiddu film"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -90494,7 +90494,7 @@ const SENTENCES = [
           "dispela muvi"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -90548,7 +90548,7 @@ const SENTENCES = [
           "se"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -92116,7 +92116,7 @@ const SENTENCES = [
           "comu arrivari a l'aeroportu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Bitte"
@@ -92238,7 +92238,7 @@ const SENTENCES = [
           "rot bilong go long ples balus"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "τὴν ὁδὸν πρὸς τὸν λιμένα τῶν ἀερονηῶν"
@@ -92292,7 +92292,7 @@ const SENTENCES = [
           "veien til flyplassen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic bidde þē"
@@ -93760,7 +93760,7 @@ const SENTENCES = [
           "fari passiati"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Min Hund"
@@ -93882,7 +93882,7 @@ const SENTENCES = [
           "wokabaut"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ κύων μου"
@@ -93936,7 +93936,7 @@ const SENTENCES = [
           "tur"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn hund"
@@ -95560,7 +95560,7 @@ const SENTENCES = [
           "ntirissanti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mini Grossmueter"
@@ -95686,7 +95686,7 @@ const SENTENCES = [
           "stori"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ μάμμη μου"
@@ -95740,7 +95740,7 @@ const SENTENCES = [
           "historier"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn ealdemōdor"
@@ -97360,7 +97360,7 @@ const SENTENCES = [
           "ô mircatu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -97490,7 +97490,7 @@ const SENTENCES = [
           "long maket"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -97552,7 +97552,7 @@ const SENTENCES = [
           "mistet"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -98845,7 +98845,7 @@ const SENTENCES = [
           "stannu fiurènnu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "B",
           "D Blueme"
@@ -98943,7 +98943,7 @@ const SENTENCES = [
           "i kamap pinis"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "B",
           "τὰ ἄνθη"
@@ -98985,7 +98985,7 @@ const SENTENCES = [
           "blomstrer"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "B",
           "Þā blōstman"
@@ -100581,7 +100581,7 @@ const SENTENCES = [
           "l'ambienti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mir"
@@ -100707,7 +100707,7 @@ const SENTENCES = [
           "graun na bus"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡμᾶς"
@@ -100761,7 +100761,7 @@ const SENTENCES = [
           "beskytte"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Wē"
@@ -102389,7 +102389,7 @@ const SENTENCES = [
           "ogni jornu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -102515,7 +102515,7 @@ const SENTENCES = [
           "olgeta de"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -102569,7 +102569,7 @@ const SENTENCES = [
           "to kopper kaffe"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -104205,7 +104205,7 @@ const SENTENCES = [
           "stasìra"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "S Konzärt"
@@ -104331,7 +104331,7 @@ const SENTENCES = [
           "long nait"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ μουσικὴ ἀκρόασις"
@@ -104385,7 +104385,7 @@ const SENTENCES = [
           "klokken 8"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þæt sanggemōt"
@@ -106013,7 +106013,7 @@ const SENTENCES = [
           "bonu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -106139,7 +106139,7 @@ const SENTENCES = [
           "gut tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -106193,7 +106193,7 @@ const SENTENCES = [
           "flytende"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -108132,7 +108132,7 @@ const SENTENCES = [
           "di chistu tempiu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -108286,7 +108286,7 @@ const SENTENCES = [
           "bilong dispela tempel"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -108344,7 +108344,7 @@ const SENTENCES = [
           "av dette tempelet"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -109641,7 +109641,7 @@ const SENTENCES = [
           "ogni 15 minuti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Bus"
@@ -109739,7 +109739,7 @@ const SENTENCES = [
           "olgeta fiftin minit"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ ἅμαξα"
@@ -109781,7 +109781,7 @@ const SENTENCES = [
           "hvert kvarter"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Se wægn"
@@ -111377,7 +111377,7 @@ const SENTENCES = [
           "manciari corianu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -111499,7 +111499,7 @@ const SENTENCES = [
           "kaikai bilong Korea"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -111553,7 +111553,7 @@ const SENTENCES = [
           "matlaging"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -113476,7 +113476,7 @@ const SENTENCES = [
           "a li riunioni"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Er"
@@ -113630,7 +113630,7 @@ const SENTENCES = [
           "long ol miting"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκεῖνος"
@@ -113696,7 +113696,7 @@ const SENTENCES = [
           "til møter"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hē"
@@ -115651,7 +115651,7 @@ const SENTENCES = [
           "ntâ fini dû misi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -115805,7 +115805,7 @@ const SENTENCES = [
           "long pinis bilong mun"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -115871,7 +115871,7 @@ const SENTENCES = [
           "lese"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -117172,7 +117172,7 @@ const SENTENCES = [
           "supra l'àrbuli"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "B",
           "D Vögel"
@@ -117270,7 +117270,7 @@ const SENTENCES = [
           "long ol diwai"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "B",
           "οἱ ὄρνιθες"
@@ -117312,7 +117312,7 @@ const SENTENCES = [
           "i trærne"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "B",
           "Þā fuglas"
@@ -118896,7 +118896,7 @@ const SENTENCES = [
           "u me telefunu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -119022,7 +119022,7 @@ const SENTENCES = [
           "fon bilong mi"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐμὲ"
@@ -119076,7 +119076,7 @@ const SENTENCES = [
           "lade"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -121007,7 +121007,7 @@ const SENTENCES = [
           "rigalu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -121157,7 +121157,7 @@ const SENTENCES = [
           "presen"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -121223,7 +121223,7 @@ const SENTENCES = [
           "gave"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -122536,7 +122536,7 @@ const SENTENCES = [
           "di nivi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Bärg"
@@ -122634,7 +122634,7 @@ const SENTENCES = [
           "long sno"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "τὸ ὄρος"
@@ -122676,7 +122676,7 @@ const SENTENCES = [
           "dekket av snø"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Se beorg"
@@ -124300,7 +124300,7 @@ const SENTENCES = [
           "tri voti â simana"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -124426,7 +124426,7 @@ const SENTENCES = [
           "tripela taim long wanpela wik"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -124480,7 +124480,7 @@ const SENTENCES = [
           "tre ganger i uken"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -125996,7 +125996,7 @@ const SENTENCES = [
           "ccà?"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Dörf"
@@ -126118,7 +126118,7 @@ const SENTENCES = [
           "hia?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "D",
           "ἆρα"
@@ -126172,7 +126172,7 @@ const SENTENCES = [
           "sitte?"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Mōt"
@@ -127788,7 +127788,7 @@ const SENTENCES = [
           "ê so' genituri"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Er"
@@ -127914,7 +127914,7 @@ const SENTENCES = [
           "long papamama bilong em"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκεῖνος"
@@ -127968,7 +127968,7 @@ const SENTENCES = [
           "til foreldrene sine"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hē"
@@ -129253,7 +129253,7 @@ const SENTENCES = [
           "a li novi di sira"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Lade"
@@ -129351,7 +129351,7 @@ const SENTENCES = [
           "long nain kilok long nait"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "τὸ καπηλεῖον"
@@ -129393,7 +129393,7 @@ const SENTENCES = [
           "klokken 21"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Sēo ceapstōw"
@@ -130977,7 +130977,7 @@ const SENTENCES = [
           "a me pronùncia"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -131103,7 +131103,7 @@ const SENTENCES = [
           "pasin bilong toktok"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -131157,7 +131157,7 @@ const SENTENCES = [
           "forbedre"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -132785,7 +132785,7 @@ const SENTENCES = [
           "supra u ciumi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -132911,7 +132911,7 @@ const SENTENCES = [
           "antap long wara"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκεῖνοι"
@@ -132965,7 +132965,7 @@ const SENTENCES = [
           "over elven"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hīe"
@@ -134609,7 +134609,7 @@ const SENTENCES = [
           "ogni notti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mini Chatz"
@@ -134735,7 +134735,7 @@ const SENTENCES = [
           "olgeta nait"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ αἴλουρός μου"
@@ -134789,7 +134789,7 @@ const SENTENCES = [
           "i sengen min"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Mīn catt"
@@ -136074,7 +136074,7 @@ const SENTENCES = [
           "di 30 minuti"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -136168,7 +136168,7 @@ const SENTENCES = [
           "inap teti minit pinis"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -136210,7 +136210,7 @@ const SENTENCES = [
           "i 30 minutter"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -137495,7 +137495,7 @@ const SENTENCES = [
           "a natari"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "D Chind"
@@ -137593,7 +137593,7 @@ const SENTENCES = [
           "long swim"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "οἱ παῖδες"
@@ -137635,7 +137635,7 @@ const SENTENCES = [
           "å svømme"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þā cild"
@@ -139187,7 +139187,7 @@ const SENTENCES = [
           "a mùsica"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Ich füele mi glücklich"
@@ -139317,7 +139317,7 @@ const SENTENCES = [
           "musik"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "ὅταν"
@@ -139379,7 +139379,7 @@ const SENTENCES = [
           "hører på"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Ic fēle mē glæd"
@@ -140668,7 +140668,7 @@ const SENTENCES = [
           "dî risultati dû test"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Er"
@@ -140766,7 +140766,7 @@ const SENTENCES = [
           "long mak bilong tes"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκεῖνος"
@@ -140808,7 +140808,7 @@ const SENTENCES = [
           "over prøveresultatene"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hē"
@@ -142436,7 +142436,7 @@ const SENTENCES = [
           "è bonu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Ich dänke"
@@ -142562,7 +142562,7 @@ const SENTENCES = [
           "i gutpela"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "D",
           "νομίζω"
@@ -142616,7 +142616,7 @@ const SENTENCES = [
           "er god"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Ic þence"
@@ -144507,7 +144507,7 @@ const SENTENCES = [
           "si nni ìu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -144661,7 +144661,7 @@ const SENTENCES = [
           "i go pinis"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -144727,7 +144727,7 @@ const SENTENCES = [
           "flyttet"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -146562,7 +146562,7 @@ const SENTENCES = [
           "n'esperiènza priziusa"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -146716,7 +146716,7 @@ const SENTENCES = [
           "gutpela ekspiriens tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -146774,7 +146774,7 @@ const SENTENCES = [
           "er en verdifull erfaring"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -148270,7 +148270,7 @@ const SENTENCES = [
           "oggi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -148396,7 +148396,7 @@ const SENTENCES = [
           "tude"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -148450,7 +148450,7 @@ const SENTENCES = [
           "hodepine"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -150050,7 +150050,7 @@ const SENTENCES = [
           "di ripusàrimi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Dokter"
@@ -150172,7 +150172,7 @@ const SENTENCES = [
           "long malolo"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ὁ ἰατρός"
@@ -150226,7 +150226,7 @@ const SENTENCES = [
           "at jeg burde hvile"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Se lǣce"
@@ -151818,7 +151818,7 @@ const SENTENCES = [
           "ogni matina"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -151940,7 +151940,7 @@ const SENTENCES = [
           "olgeta moning"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -151994,7 +151994,7 @@ const SENTENCES = [
           "å trene"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -153522,7 +153522,7 @@ const SENTENCES = [
           "a simana passata"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Si"
@@ -153648,7 +153648,7 @@ const SENTENCES = [
           "long las wik"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκείνη"
@@ -153702,7 +153702,7 @@ const SENTENCES = [
           "forkjølet"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hēo"
@@ -155206,7 +155206,7 @@ const SENTENCES = [
           "cchiù acqua"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Du"
@@ -155328,7 +155328,7 @@ const SENTENCES = [
           "planti wara moa"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "σὲ"
@@ -155382,7 +155382,7 @@ const SENTENCES = [
           "drikke"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þū"
@@ -156894,7 +156894,7 @@ const SENTENCES = [
           "ogni jornu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "D",
           "Ich"
@@ -157016,7 +157016,7 @@ const SENTENCES = [
           "olgeta de"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "D",
           "ἐγὼ"
@@ -157070,7 +157070,7 @@ const SENTENCES = [
           "hver dag"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "D",
           "Ic"
@@ -158666,7 +158666,7 @@ const SENTENCES = [
           "còmuda"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Die"
@@ -158792,7 +158792,7 @@ const SENTENCES = [
           "gutpela tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "τοῦτο"
@@ -158846,7 +158846,7 @@ const SENTENCES = [
           "praktisk"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Þēos"
@@ -160131,7 +160131,7 @@ const SENTENCES = [
           "u munnu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "KI"
@@ -160229,7 +160229,7 @@ const SENTENCES = [
           "graun"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ τεχνητὴ νόησις"
@@ -160271,7 +160271,7 @@ const SENTENCES = [
           "verden"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Searocræft"
@@ -161448,7 +161448,7 @@ const SENTENCES = [
           "a password Wi-Fi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -161550,7 +161550,7 @@ const SENTENCES = [
           "pasword bilong Wi-Fi"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -161600,7 +161600,7 @@ const SENTENCES = [
           "ikke finne"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -163188,7 +163188,7 @@ const SENTENCES = [
           "di sulu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Er"
@@ -163314,7 +163314,7 @@ const SENTENCES = [
           "long em yet"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐκεῖνος"
@@ -163368,7 +163368,7 @@ const SENTENCES = [
           "lært seg selv"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Hē"
@@ -164880,7 +164880,7 @@ const SENTENCES = [
           "giappunisi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "D Chriesiblüetebesichtigung"
@@ -165006,7 +165006,7 @@ const SENTENCES = [
           "tru"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ θέα τῶν κερασέων ἀνθῶν"
@@ -165060,7 +165060,7 @@ const SENTENCES = [
           "tradisjon"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Cirsblōstmascēawung"
@@ -166660,7 +166660,7 @@ const SENTENCES = [
           "duranti u Capudannu cinisi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Mir"
@@ -166786,7 +166786,7 @@ const SENTENCES = [
           "long Nupela Yia bilong China"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡμεῖς"
@@ -166840,7 +166840,7 @@ const SENTENCES = [
           "under kinesisk nyttår"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Wē"
@@ -168468,7 +168468,7 @@ const SENTENCES = [
           "vèninu organizzati"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "I dem Land"
@@ -168594,7 +168594,7 @@ const SENTENCES = [
           "i kamap"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐν ταύτῃ τῇ χώρᾳ"
@@ -168640,7 +168640,7 @@ const SENTENCES = [
           "holdes mange festivaler"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "On þissum lande"
@@ -169921,7 +169921,7 @@ const SENTENCES = [
           "porti novi"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Sprachlerne"
@@ -170019,7 +170019,7 @@ const SENTENCES = [
           "nupela dua"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ τῶν γλωττῶν μάθησις"
@@ -170061,7 +170061,7 @@ const SENTENCES = [
           "nye dører"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Sprǣcleornung"
@@ -171362,7 +171362,7 @@ const SENTENCES = [
           "cu a bicicletta"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "Ich far"
@@ -171460,7 +171460,7 @@ const SENTENCES = [
           "long baisikel"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ποδηλάτῳ"
@@ -171502,7 +171502,7 @@ const SENTENCES = [
           "til kontoret"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "C",
           "Ic rīde"
@@ -173130,7 +173130,7 @@ const SENTENCES = [
           "ô prossimu ncrociu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Bitte"
@@ -173256,7 +173256,7 @@ const SENTENCES = [
           "long neks rot miting"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "εἰ δοκεῖ"
@@ -173310,7 +173310,7 @@ const SENTENCES = [
           "til høyre"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic bidde þē"
@@ -174922,7 +174922,7 @@ const SENTENCES = [
           "a stazioni"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "De Supermarkt"
@@ -175048,7 +175048,7 @@ const SENTENCES = [
           "stesen"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἡ μεγάλη ἀγορὰ"
@@ -175102,7 +175102,7 @@ const SENTENCES = [
           "stasjonen"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Sēo cēapstōw"
@@ -176626,7 +176626,7 @@ const SENTENCES = [
           "chistu piattu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "A",
           "Ich"
@@ -176752,7 +176752,7 @@ const SENTENCES = [
           "dispela kaikai"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "A",
           "ἐγὼ"
@@ -176806,7 +176806,7 @@ const SENTENCES = [
           "bestille"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "A",
           "Ic"
@@ -178274,7 +178274,7 @@ const SENTENCES = [
           "souvenir"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "C",
           "Wieviel"
@@ -178396,7 +178396,7 @@ const SENTENCES = [
           "mani?"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "C",
           "πόσου"
@@ -178450,7 +178450,7 @@ const SENTENCES = [
           "suveniren"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "C",
           "Hū micel"
@@ -179599,7 +179599,7 @@ const SENTENCES = [
           "tuttu"
         ]
       ],
-      "gsw": [
+      "de_gsw": [
         [
           "B",
           "Danke"
@@ -179697,7 +179697,7 @@ const SENTENCES = [
           "olgeta samting"
         ]
       ],
-      "grc": [
+      "el_grc": [
         [
           "B",
           "χάριν σοι ἔχω"
@@ -179739,7 +179739,7 @@ const SENTENCES = [
           "alt"
         ]
       ],
-      "ang": [
+      "en_ang": [
         [
           "B",
           "Þancas"

@@ -25,10 +25,10 @@ REQUIRED_LANGS = {
     'sa', 'hi', 'ta', 'fa', 'mn', 'tr', 'bn', 'si', 'ur', 'te', 'ka',
     'ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'he', 'am', 'egy', 'sw', 'yo', 'zu',
     'en', 'en_aave', 'en_south', 'en_app', 'en_ie', 'en_sco', 'en_yk', 'en_ck', 'en_sg',
-    'ang', 'sco', 'nl', 'de', 'gsw', 'sv', 'no',
+    'en_ang', 'sco', 'nl', 'de', 'de_gsw', 'sv', 'no',
     'ga', 'cy', 'eu',
     'la', 'fr', 'fr_qc', 'it', 'nap', 'scn', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
-    'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'grc', 'hy',
+    'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'el_grc', 'hy',
     'nv', 'qu',
     'hwc', 'pcm', 'tpi',
 }
