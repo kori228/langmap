@@ -425,7 +425,7 @@ select:focus { border-color: #4a90d9; outline: none; }
     cursor: grab;
     touch-action: none;
     user-select: none;
-    text-align: right;
+    text-align: left;
 }
 
 .lang-row.dragging .lang-label {
