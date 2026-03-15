@@ -78249,11 +78249,11 @@ const SENTENCES = [
           "lleva"
         ],
         [
-          "D",
+          "E",
           "un vestido"
         ],
         [
-          "E",
+          "D",
           "rojo"
         ]
       ],
@@ -78271,11 +78271,11 @@ const SENTENCES = [
           "usa"
         ],
         [
-          "D",
+          "E",
           "un vestido"
         ],
         [
-          "E",
+          "D",
           "rojo"
         ]
       ],
