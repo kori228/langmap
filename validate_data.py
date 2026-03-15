@@ -16,9 +16,9 @@ import json
 
 # All language codes
 REQUIRED_LANGS = {
-    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ja_kyo', 'ja_hir', 'ain',
-    'mvi', 'rys',
-    'ko', 'kp', 'bus', 'jeju',
+    'ja', 'ja_osa', 'ja_aom', 'ja_oki', 'ja_hak', 'ja_edo', 'ja_kyo', 'ja_hir', 'ain',
+    'ja_mvi', 'ja_rys',
+    'ko', 'ko_kp', 'ko_bus', 'ko_jeju',
     'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'zh_sc', 'zh_db', 'bo',
     'vi', 'vi_nom',
     'th', 'id', 'ms', 'tl', 'mg', 'my', 'jv', 'km', 'lo', 'mi', 'haw',
@@ -35,9 +35,9 @@ REQUIRED_LANGS = {
 
 # Languages that do NOT use spaces between words
 NO_SPACE_LANGS = {
-    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ja_kyo', 'ja_hir',
-    'mvi', 'rys',
-    'ko', 'kp', 'bus',
+    'ja', 'ja_osa', 'ja_aom', 'ja_oki', 'ja_hak', 'ja_edo', 'ja_kyo', 'ja_hir',
+    'ja_mvi', 'ja_rys',
+    'ko', 'ko_kp', 'ko_bus',
     'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'zh_sc', 'zh_db',
     'th',
     'vi_nom',

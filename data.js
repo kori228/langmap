@@ -697,7 +697,7 @@ const SENTENCES = [
           "對面客棧"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -723,7 +723,7 @@ const SENTENCES = [
           "試着してみたいねんけど"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わ"
@@ -749,7 +749,7 @@ const SENTENCES = [
           "きでみでぐなぁ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -775,7 +775,7 @@ const SENTENCES = [
           "試着してみたいさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -801,7 +801,7 @@ const SENTENCES = [
           "試着したいっちゃけど"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -827,7 +827,7 @@ const SENTENCES = [
           "입어보고 싶습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -1701,7 +1701,7 @@ const SENTENCES = [
           "پہن کر دیکھنا چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -2177,7 +2177,7 @@ const SENTENCES = [
           "試着したいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -2203,7 +2203,7 @@ const SENTENCES = [
           "きーぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -3039,7 +3039,7 @@ const SENTENCES = [
           "田中"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちの"
@@ -3057,7 +3057,7 @@ const SENTENCES = [
           "やねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わの"
@@ -3075,7 +3075,7 @@ const SENTENCES = [
           "だんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんぬ"
@@ -3093,7 +3093,7 @@ const SENTENCES = [
           "やさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちの"
@@ -3111,7 +3111,7 @@ const SENTENCES = [
           "たい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나의"
@@ -3129,7 +3129,7 @@ const SENTENCES = [
           "입니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "내"
@@ -3703,7 +3703,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "제"
@@ -3995,7 +3995,7 @@ const SENTENCES = [
           "じゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんぬ"
@@ -4013,7 +4013,7 @@ const SENTENCES = [
           "どぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんぬ"
@@ -4788,7 +4788,7 @@ const SENTENCES = [
           "𣅶𦉱𣇞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -4810,7 +4810,7 @@ const SENTENCES = [
           "食べんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わ"
@@ -4832,7 +4832,7 @@ const SENTENCES = [
           "くうだばって"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -4854,7 +4854,7 @@ const SENTENCES = [
           "かむんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -4876,7 +4876,7 @@ const SENTENCES = [
           "食べよるよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -4898,7 +4898,7 @@ const SENTENCES = [
           "먹습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -5612,7 +5612,7 @@ const SENTENCES = [
           "करता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -6000,7 +6000,7 @@ const SENTENCES = [
           "食べるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -6022,7 +6022,7 @@ const SENTENCES = [
           "かむい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -6770,7 +6770,7 @@ const SENTENCES = [
           "兜"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "一番近い"
@@ -6788,7 +6788,7 @@ const SENTENCES = [
           "やの"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "いっちゃんちけぇ"
@@ -6806,7 +6806,7 @@ const SENTENCES = [
           "あるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "一番近い"
@@ -6824,7 +6824,7 @@ const SENTENCES = [
           "がやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "一番近い"
@@ -6842,7 +6842,7 @@ const SENTENCES = [
           "と?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "제일 가까운"
@@ -6860,7 +6860,7 @@ const SENTENCES = [
           "있습니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "제일 가까운"
@@ -7438,7 +7438,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "가장 가까운"
@@ -7746,7 +7746,7 @@ const SENTENCES = [
           "かいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "いちばんちかさる"
@@ -7764,7 +7764,7 @@ const SENTENCES = [
           "が"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "いちばんちかさる"
@@ -8492,7 +8492,7 @@ const SENTENCES = [
           "𤆐"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -8510,7 +8510,7 @@ const SENTENCES = [
           "うまいわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -8528,7 +8528,7 @@ const SENTENCES = [
           "めぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -8546,7 +8546,7 @@ const SENTENCES = [
           "まーさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -8564,7 +8564,7 @@ const SENTENCES = [
           "うまいばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -8582,7 +8582,7 @@ const SENTENCES = [
           "맛있습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -9216,7 +9216,7 @@ const SENTENCES = [
           "स्वादिष्ट ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -9548,7 +9548,7 @@ const SENTENCES = [
           "うまいのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くり"
@@ -9566,7 +9566,7 @@ const SENTENCES = [
           "まーさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くり"
@@ -10290,7 +10290,7 @@ const SENTENCES = [
           "𨚗場大學"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -10308,7 +10308,7 @@ const SENTENCES = [
           "勉強しとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わ"
@@ -10326,7 +10326,7 @@ const SENTENCES = [
           "べんきょうすてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -10344,7 +10344,7 @@ const SENTENCES = [
           "勉強しとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -10362,7 +10362,7 @@ const SENTENCES = [
           "勉強しとうよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -10380,7 +10380,7 @@ const SENTENCES = [
           "공부합니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -10958,7 +10958,7 @@ const SENTENCES = [
           "पढ़ता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -11274,7 +11274,7 @@ const SENTENCES = [
           "勉強しとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -11292,7 +11292,7 @@ const SENTENCES = [
           "ならいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -12000,7 +12000,7 @@ const SENTENCES = [
           "𣌝"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "明日の"
@@ -12018,7 +12018,7 @@ const SENTENCES = [
           "やろな"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あすたの"
@@ -12036,7 +12036,7 @@ const SENTENCES = [
           "だんべな"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あちゃーぬ"
@@ -12054,7 +12054,7 @@ const SENTENCES = [
           "やんでー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "明日の"
@@ -12072,7 +12072,7 @@ const SENTENCES = [
           "やろう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "래일"
@@ -12090,7 +12090,7 @@ const SENTENCES = [
           "것입니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "내일"
@@ -12680,7 +12680,7 @@ const SENTENCES = [
           "होगा"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "내일"
@@ -12988,7 +12988,7 @@ const SENTENCES = [
           "じゃろう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "あちゃぬ"
@@ -13006,7 +13006,7 @@ const SENTENCES = [
           "やらー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "あちゃぬ"
@@ -13710,7 +13710,7 @@ const SENTENCES = [
           "每𣈜"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "おかんが"
@@ -13728,7 +13728,7 @@ const SENTENCES = [
           "作ってくれんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あばは"
@@ -13746,7 +13746,7 @@ const SENTENCES = [
           "つぐるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あんまーや"
@@ -13764,7 +13764,7 @@ const SENTENCES = [
           "作ゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "お母さんは"
@@ -13782,7 +13782,7 @@ const SENTENCES = [
           "作りようよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "어머니는"
@@ -13800,7 +13800,7 @@ const SENTENCES = [
           "만듭니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리 엄마는"
@@ -14394,7 +14394,7 @@ const SENTENCES = [
           "बनाती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "어머니는"
@@ -14710,7 +14710,7 @@ const SENTENCES = [
           "作るんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "あんまーや"
@@ -14728,7 +14728,7 @@ const SENTENCES = [
           "つぃくいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "あんまーや"
@@ -15456,7 +15456,7 @@ const SENTENCES = [
           "𢆥𡢐"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -15474,7 +15474,7 @@ const SENTENCES = [
           "行きたいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わ"
@@ -15492,7 +15492,7 @@ const SENTENCES = [
           "いぎでぐなぁ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -15510,7 +15510,7 @@ const SENTENCES = [
           "行ちぶさんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -15528,7 +15528,7 @@ const SENTENCES = [
           "行きたいっちゃんね"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -15546,7 +15546,7 @@ const SENTENCES = [
           "가고 싶습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -16140,7 +16140,7 @@ const SENTENCES = [
           "جانا چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -16456,7 +16456,7 @@ const SENTENCES = [
           "行きたいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -16474,7 +16474,7 @@ const SENTENCES = [
           "いきぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -17190,7 +17190,7 @@ const SENTENCES = [
           "空"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あんた"
@@ -17208,7 +17208,7 @@ const SENTENCES = [
           "るん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "な"
@@ -17226,7 +17226,7 @@ const SENTENCES = [
           "るんだがや"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "うんじゅや"
@@ -17244,7 +17244,7 @@ const SENTENCES = [
           "んがやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あんた"
@@ -17262,7 +17262,7 @@ const SENTENCES = [
           "ると?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "당신은"
@@ -17280,7 +17280,7 @@ const SENTENCES = [
           "있습니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "니는"
@@ -17874,7 +17874,7 @@ const SENTENCES = [
           "सकते ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "당신은"
@@ -18186,7 +18186,7 @@ const SENTENCES = [
           "るんかいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "うぅがや"
@@ -18204,7 +18204,7 @@ const SENTENCES = [
           "くとぅありゅーが"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "どぅるや"
@@ -19078,7 +19078,7 @@ const SENTENCES = [
           "𣋚過"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うち"
@@ -19104,7 +19104,7 @@ const SENTENCES = [
           "こうてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わ"
@@ -19130,7 +19130,7 @@ const SENTENCES = [
           "かっただばって"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -19156,7 +19156,7 @@ const SENTENCES = [
           "買ったさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -19182,7 +19182,7 @@ const SENTENCES = [
           "買ったったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -19208,7 +19208,7 @@ const SENTENCES = [
           "샀습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -20062,7 +20062,7 @@ const SENTENCES = [
           "खरीदी"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -20510,7 +20510,7 @@ const SENTENCES = [
           "買うたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -20536,7 +20536,7 @@ const SENTENCES = [
           "こーたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -21344,7 +21344,7 @@ const SENTENCES = [
           "慄𢢲"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -21362,7 +21362,7 @@ const SENTENCES = [
           "めっちゃきれいやん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -21380,7 +21380,7 @@ const SENTENCES = [
           "めぇじゃのぉ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -21398,7 +21398,7 @@ const SENTENCES = [
           "でーじちゅらさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -21416,7 +21416,7 @@ const SENTENCES = [
           "きれいかよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -21434,7 +21434,7 @@ const SENTENCES = [
           "아름답습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -22028,7 +22028,7 @@ const SENTENCES = [
           "بہت सुंदर ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -22344,7 +22344,7 @@ const SENTENCES = [
           "きれいじゃのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬ"
@@ -22362,7 +22362,7 @@ const SENTENCES = [
           "ちゅらさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬ"
@@ -23054,7 +23054,7 @@ const SENTENCES = [
           "𠬠離渃"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "C",
           "お水"
@@ -23068,7 +23068,7 @@ const SENTENCES = [
           "ちょうだい"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "C",
           "みずを"
@@ -23082,7 +23082,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "C",
           "水"
@@ -23096,7 +23096,7 @@ const SENTENCES = [
           "くぃみそーれー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "C",
           "水ば"
@@ -23110,7 +23110,7 @@ const SENTENCES = [
           "ください"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "물"
@@ -23124,7 +23124,7 @@ const SENTENCES = [
           "주십시오"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "물"
@@ -23626,7 +23626,7 @@ const SENTENCES = [
           "कृपया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "물"
@@ -23930,7 +23930,7 @@ const SENTENCES = [
           "くれんさい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "C",
           "みずぃば"
@@ -23944,7 +23944,7 @@ const SENTENCES = [
           "くぃりょー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "C",
           "みずぃば"
@@ -24715,7 +24715,7 @@ const SENTENCES = [
           "每𣈜"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -24737,7 +24737,7 @@ const SENTENCES = [
           "行ってんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -24759,7 +24759,7 @@ const SENTENCES = [
           "いぐんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -24781,7 +24781,7 @@ const SENTENCES = [
           "行ちゅんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -24803,7 +24803,7 @@ const SENTENCES = [
           "行きようよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -24825,7 +24825,7 @@ const SENTENCES = [
           "갑니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -25535,7 +25535,7 @@ const SENTENCES = [
           "जाता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -25919,7 +25919,7 @@ const SENTENCES = [
           "行くんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -25941,7 +25941,7 @@ const SENTENCES = [
           "いくい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -26705,7 +26705,7 @@ const SENTENCES = [
           "𨚗法"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "妹が"
@@ -26723,7 +26723,7 @@ const SENTENCES = [
           "しとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "いもどは"
@@ -26741,7 +26741,7 @@ const SENTENCES = [
           "すてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "いもーとぅや"
@@ -26759,7 +26759,7 @@ const SENTENCES = [
           "しとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "妹は"
@@ -26777,7 +26777,7 @@ const SENTENCES = [
           "しとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "녀동생은"
@@ -26795,7 +26795,7 @@ const SENTENCES = [
           "있습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "여동생이"
@@ -27377,7 +27377,7 @@ const SENTENCES = [
           "कर रही ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "여동생은"
@@ -27689,7 +27689,7 @@ const SENTENCES = [
           "しとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "うっとぅや"
@@ -27707,7 +27707,7 @@ const SENTENCES = [
           "すうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "うっとぅや"
@@ -28355,7 +28355,7 @@ const SENTENCES = [
           "𣅶𡮣𣇞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "映画"
@@ -28373,7 +28373,7 @@ const SENTENCES = [
           "んの"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "映画は"
@@ -28391,7 +28391,7 @@ const SENTENCES = [
           "んだがや"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "映画は"
@@ -28409,7 +28409,7 @@ const SENTENCES = [
           "がやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "映画は"
@@ -28427,7 +28427,7 @@ const SENTENCES = [
           "と?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "B",
           "영화가"
@@ -28441,7 +28441,7 @@ const SENTENCES = [
           "시작합니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "B",
           "영화가"
@@ -28975,7 +28975,7 @@ const SENTENCES = [
           "ہوتی ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "B",
           "영화가"
@@ -29263,7 +29263,7 @@ const SENTENCES = [
           "んかいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "いーがや"
@@ -29281,7 +29281,7 @@ const SENTENCES = [
           "が"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "いーがや"
@@ -30036,7 +30036,7 @@ const SENTENCES = [
           "朝𫅞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -30058,7 +30058,7 @@ const SENTENCES = [
           "あんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -30080,7 +30080,7 @@ const SENTENCES = [
           "あるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -30102,7 +30102,7 @@ const SENTENCES = [
           "あんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -30124,7 +30124,7 @@ const SENTENCES = [
           "あるっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -30146,7 +30146,7 @@ const SENTENCES = [
           "있습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -30852,7 +30852,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -31240,7 +31240,7 @@ const SENTENCES = [
           "あるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -31262,7 +31262,7 @@ const SENTENCES = [
           "あり"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -32046,7 +32046,7 @@ const SENTENCES = [
           "𧶄"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -32064,7 +32064,7 @@ const SENTENCES = [
           "高すぎるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -32082,7 +32082,7 @@ const SENTENCES = [
           "高すぎるじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -32100,7 +32100,7 @@ const SENTENCES = [
           "高すぎやさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -32118,7 +32118,7 @@ const SENTENCES = [
           "高すぎるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -32136,7 +32136,7 @@ const SENTENCES = [
           "비쌉니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -32774,7 +32774,7 @@ const SENTENCES = [
           "महंगा ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -33086,7 +33086,7 @@ const SENTENCES = [
           "高すぎるわい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬ"
@@ -33104,7 +33104,7 @@ const SENTENCES = [
           "たかさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬ"
@@ -33840,7 +33840,7 @@ const SENTENCES = [
           "樂"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -33858,7 +33858,7 @@ const SENTENCES = [
           "好きやねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -33876,7 +33876,7 @@ const SENTENCES = [
           "好ぎだじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -33894,7 +33894,7 @@ const SENTENCES = [
           "好ちやさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -33912,7 +33912,7 @@ const SENTENCES = [
           "好きったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -33930,7 +33930,7 @@ const SENTENCES = [
           "좋아합니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -34516,7 +34516,7 @@ const SENTENCES = [
           "पसंद ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -34832,7 +34832,7 @@ const SENTENCES = [
           "好きじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -34850,7 +34850,7 @@ const SENTENCES = [
           "すきどぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -35502,7 +35502,7 @@ const SENTENCES = [
           "自𤏬𦤾𣇞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "今朝から"
@@ -35520,7 +35520,7 @@ const SENTENCES = [
           "降っとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "今朝がら"
@@ -35538,7 +35538,7 @@ const SENTENCES = [
           "降ってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "今朝から"
@@ -35556,7 +35556,7 @@ const SENTENCES = [
           "降とーんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "今朝から"
@@ -35574,7 +35574,7 @@ const SENTENCES = [
           "降りようばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "오늘 아침부터"
@@ -35592,7 +35592,7 @@ const SENTENCES = [
           "오고 있습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "오늘 아침부터"
@@ -36150,7 +36150,7 @@ const SENTENCES = [
           "रही ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "오늘 아침부터"
@@ -36438,7 +36438,7 @@ const SENTENCES = [
           "降りよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "きゅーぬすぃとぅからー"
@@ -36456,7 +36456,7 @@ const SENTENCES = [
           "ふいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "きゅーぬすとぅから"
@@ -37211,7 +37211,7 @@ const SENTENCES = [
           "𣎏𫅞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -37233,7 +37233,7 @@ const SENTENCES = [
           "食べんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -37255,7 +37255,7 @@ const SENTENCES = [
           "くうんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -37277,7 +37277,7 @@ const SENTENCES = [
           "かむんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -37299,7 +37299,7 @@ const SENTENCES = [
           "食べるったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -37321,7 +37321,7 @@ const SENTENCES = [
           "먹을 것입니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -38003,7 +38003,7 @@ const SENTENCES = [
           "खाऊँगा"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -38383,7 +38383,7 @@ const SENTENCES = [
           "食べるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -38405,7 +38405,7 @@ const SENTENCES = [
           "かむい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -39236,7 +39236,7 @@ const SENTENCES = [
           "言語𪦲"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -39258,7 +39258,7 @@ const SENTENCES = [
           "たいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -39280,7 +39280,7 @@ const SENTENCES = [
           "てぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -39302,7 +39302,7 @@ const SENTENCES = [
           "ぶさんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -39324,7 +39324,7 @@ const SENTENCES = [
           "たいっちゃんね"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -39346,7 +39346,7 @@ const SENTENCES = [
           "싶습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -40052,7 +40052,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -40428,7 +40428,7 @@ const SENTENCES = [
           "たいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -40450,7 +40450,7 @@ const SENTENCES = [
           "いぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -41182,7 +41182,7 @@ const SENTENCES = [
           "病院"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "図書館は"
@@ -41200,7 +41200,7 @@ const SENTENCES = [
           "あんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "図書館は"
@@ -41218,7 +41218,7 @@ const SENTENCES = [
           "あるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "図書館は"
@@ -41236,7 +41236,7 @@ const SENTENCES = [
           "あんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "図書館は"
@@ -41254,7 +41254,7 @@ const SENTENCES = [
           "あるよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "도서관은"
@@ -41272,7 +41272,7 @@ const SENTENCES = [
           "있습니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "도서관은"
@@ -41862,7 +41862,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "도서관은"
@@ -42178,7 +42178,7 @@ const SENTENCES = [
           "あるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "としょかんや"
@@ -42196,7 +42196,7 @@ const SENTENCES = [
           "あり"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "としょかんや"
@@ -42888,7 +42888,7 @@ const SENTENCES = [
           "食單"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "C",
           "メニュー"
@@ -42902,7 +42902,7 @@ const SENTENCES = [
           "ちょうだい"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "C",
           "メニューを"
@@ -42916,7 +42916,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "C",
           "メニュー"
@@ -42930,7 +42930,7 @@ const SENTENCES = [
           "くぃみそーれー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "C",
           "メニューば"
@@ -42944,7 +42944,7 @@ const SENTENCES = [
           "ください"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "메뉴를"
@@ -42958,7 +42958,7 @@ const SENTENCES = [
           "주십시오"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "메뉴 좀"
@@ -43472,7 +43472,7 @@ const SENTENCES = [
           "दिखाइए"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "메뉴를"
@@ -43768,7 +43768,7 @@ const SENTENCES = [
           "くれんさい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "C",
           "メニューば"
@@ -43782,7 +43782,7 @@ const SENTENCES = [
           "くぃりょー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "C",
           "メニューば"
@@ -44545,7 +44545,7 @@ const SENTENCES = [
           "𡘯"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "おとんは"
@@ -44563,7 +44563,7 @@ const SENTENCES = [
           "勤めとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "おどは"
@@ -44581,7 +44581,7 @@ const SENTENCES = [
           "勤めてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "すーや"
@@ -44599,7 +44599,7 @@ const SENTENCES = [
           "勤めとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "父は"
@@ -44617,7 +44617,7 @@ const SENTENCES = [
           "勤めとうよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "아버지는"
@@ -44635,7 +44635,7 @@ const SENTENCES = [
           "다닙니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "아버지는"
@@ -45285,7 +45285,7 @@ const SENTENCES = [
           "کام करते ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "아버지는"
@@ -45633,7 +45633,7 @@ const SENTENCES = [
           "勤めとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "すぅーや"
@@ -45651,7 +45651,7 @@ const SENTENCES = [
           "つぃとぅみうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "すーや"
@@ -46387,7 +46387,7 @@ const SENTENCES = [
           "𥪝公園"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "子供らが"
@@ -46405,7 +46405,7 @@ const SENTENCES = [
           "おるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わらすたちが"
@@ -46423,7 +46423,7 @@ const SENTENCES = [
           "らじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わらびんちゃーが"
@@ -46441,7 +46441,7 @@ const SENTENCES = [
           "どーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "子供たちが"
@@ -46459,7 +46459,7 @@ const SENTENCES = [
           "ようよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "아이들이"
@@ -46477,7 +46477,7 @@ const SENTENCES = [
           "있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "아이들이"
@@ -47051,7 +47051,7 @@ const SENTENCES = [
           "रहे ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "아이들이"
@@ -47359,7 +47359,7 @@ const SENTENCES = [
           "おるわい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "わらびんきゃーが"
@@ -47377,7 +47377,7 @@ const SENTENCES = [
           "うー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "わらびんきゃーが"
@@ -48053,7 +48053,7 @@ const SENTENCES = [
           "𠀧吝"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -48071,7 +48071,7 @@ const SENTENCES = [
           "行ったことあるで"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -48089,7 +48089,7 @@ const SENTENCES = [
           "行っだごどあるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -48107,7 +48107,7 @@ const SENTENCES = [
           "行ちゃることあんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -48125,7 +48125,7 @@ const SENTENCES = [
           "行ったことがあるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -48143,7 +48143,7 @@ const SENTENCES = [
           "가본 적이 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -48717,7 +48717,7 @@ const SENTENCES = [
           "जा चुका ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -49033,7 +49033,7 @@ const SENTENCES = [
           "行ったことがあるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -49051,7 +49051,7 @@ const SENTENCES = [
           "いじゃーくとぅぬあり"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -49751,7 +49751,7 @@ const SENTENCES = [
           "空"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "ええレストラン"
@@ -49765,7 +49765,7 @@ const SENTENCES = [
           "もらえへん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "めぇレストラン"
@@ -49779,7 +49779,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "いーレストラン"
@@ -49793,7 +49793,7 @@ const SENTENCES = [
           "くぃみそーりんがやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "よかレストランば"
@@ -49807,7 +49807,7 @@ const SENTENCES = [
           "もらえんと?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "B",
           "좋은 식당을"
@@ -49821,7 +49821,7 @@ const SENTENCES = [
           "주실 수 있습니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "B",
           "좋은 식당 좀"
@@ -50339,7 +50339,7 @@ const SENTENCES = [
           "सुझा सकते ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "B",
           "좋은 식당을"
@@ -50635,7 +50635,7 @@ const SENTENCES = [
           "もらえんかいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "まーさるれすとらんば"
@@ -50649,7 +50649,7 @@ const SENTENCES = [
           "くぃりょーが"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "まーさるれすとらんば"
@@ -51337,7 +51337,7 @@ const SENTENCES = [
           "𨕥𨈚"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -51355,7 +51355,7 @@ const SENTENCES = [
           "忘れてもうてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -51373,7 +51373,7 @@ const SENTENCES = [
           "忘れでまっただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -51391,7 +51391,7 @@ const SENTENCES = [
           "忘りてぃなたん"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -51409,7 +51409,7 @@ const SENTENCES = [
           "忘れてしもうた"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -51427,7 +51427,7 @@ const SENTENCES = [
           "두고 왔다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -52013,7 +52013,7 @@ const SENTENCES = [
           "भूल गया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -52329,7 +52329,7 @@ const SENTENCES = [
           "忘れてしもうたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -52347,7 +52347,7 @@ const SENTENCES = [
           "わすぃりたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -53142,7 +53142,7 @@ const SENTENCES = [
           "慄𠺥"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子は"
@@ -53164,7 +53164,7 @@ const SENTENCES = [
           "ことできんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -53186,7 +53186,7 @@ const SENTENCES = [
           "ごどでぎるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -53208,7 +53208,7 @@ const SENTENCES = [
           "ことできるさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -53230,7 +53230,7 @@ const SENTENCES = [
           "ことができるったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -53248,7 +53248,7 @@ const SENTENCES = [
           "칠 수 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람은"
@@ -53962,7 +53962,7 @@ const SENTENCES = [
           "सकती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -54330,7 +54330,7 @@ const SENTENCES = [
           "ことができるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -54352,7 +54352,7 @@ const SENTENCES = [
           "くとぅがなりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -54989,7 +54989,7 @@ const SENTENCES = [
           "次𠄞旬𦤾"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "試験は"
@@ -55003,7 +55003,7 @@ const SENTENCES = [
           "やねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "試験は"
@@ -55017,7 +55017,7 @@ const SENTENCES = [
           "だじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "試験は"
@@ -55031,7 +55031,7 @@ const SENTENCES = [
           "やさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "試験は"
@@ -55045,7 +55045,7 @@ const SENTENCES = [
           "ばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "시험은"
@@ -55059,7 +55059,7 @@ const SENTENCES = [
           "이다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "시험은"
@@ -55517,7 +55517,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "시험은"
@@ -55761,7 +55761,7 @@ const SENTENCES = [
           "じゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "しきんや"
@@ -55775,7 +55775,7 @@ const SENTENCES = [
           "どぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "しきんや"
@@ -56502,7 +56502,7 @@ const SENTENCES = [
           "𠓨𩛷晝"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -56520,7 +56520,7 @@ const SENTENCES = [
           "食べたいわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -56538,7 +56538,7 @@ const SENTENCES = [
           "くいでぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -56556,7 +56556,7 @@ const SENTENCES = [
           "かみぶさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -56574,7 +56574,7 @@ const SENTENCES = [
           "食べたいっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -56592,7 +56592,7 @@ const SENTENCES = [
           "먹고 싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -57242,7 +57242,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -57598,7 +57598,7 @@ const SENTENCES = [
           "食べたいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -57616,7 +57616,7 @@ const SENTENCES = [
           "かみぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -58316,7 +58316,7 @@ const SENTENCES = [
           "潔𠱊"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "ホテルの部屋"
@@ -58334,7 +58334,7 @@ const SENTENCES = [
           "やってん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "ホテルの部屋は"
@@ -58352,7 +58352,7 @@ const SENTENCES = [
           "だっただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "ホテルぬ部屋は"
@@ -58370,7 +58370,7 @@ const SENTENCES = [
           "やたんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "ホテルの部屋は"
@@ -58388,7 +58388,7 @@ const SENTENCES = [
           "やったよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "려관 방은"
@@ -58402,7 +58402,7 @@ const SENTENCES = [
           "깨끗하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "호텔 방은"
@@ -58980,7 +58980,7 @@ const SENTENCES = [
           "تھا"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "호텔 방은"
@@ -59284,7 +59284,7 @@ const SENTENCES = [
           "じゃったのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "やどぅぬまやー"
@@ -59302,7 +59302,7 @@ const SENTENCES = [
           "やたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "やどぅぬまやー"
@@ -59923,7 +59923,7 @@ const SENTENCES = [
           "𨃼欣"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "もっとゆっくり"
@@ -59937,7 +59937,7 @@ const SENTENCES = [
           "ちょうだい"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "もっとゆっくり"
@@ -59951,7 +59951,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "もっとゆっくり"
@@ -59965,7 +59965,7 @@ const SENTENCES = [
           "くぃみそーれー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "もうちょっとゆっくり"
@@ -59979,7 +59979,7 @@ const SENTENCES = [
           "ください"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "제발"
@@ -59993,7 +59993,7 @@ const SENTENCES = [
           "말씀해 주십시오"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "제발"
@@ -60451,7 +60451,7 @@ const SENTENCES = [
           "बोलें"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "제발"
@@ -60695,7 +60695,7 @@ const SENTENCES = [
           "くれんさい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "なーふぃーゆっくり"
@@ -60709,7 +60709,7 @@ const SENTENCES = [
           "くぃりょー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "なーふぃーゆっくり"
@@ -61262,7 +61262,7 @@ const SENTENCES = [
           "𣎃𢀨"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "兄ちゃんが"
@@ -61276,7 +61276,7 @@ const SENTENCES = [
           "結婚してん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "兄は"
@@ -61290,7 +61290,7 @@ const SENTENCES = [
           "結婚すただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "にーにーや"
@@ -61304,7 +61304,7 @@ const SENTENCES = [
           "結婚したさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "兄ちゃんは"
@@ -61318,7 +61318,7 @@ const SENTENCES = [
           "結婚したったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "내 오빠는"
@@ -61332,7 +61332,7 @@ const SENTENCES = [
           "결혼하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리 오빠는"
@@ -61798,7 +61798,7 @@ const SENTENCES = [
           "शादी हो गई"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "내 오빠는"
@@ -62050,7 +62050,7 @@ const SENTENCES = [
           "結婚したんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "あじゃや"
@@ -62064,7 +62064,7 @@ const SENTENCES = [
           "にーびちすぅたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "あじゃや"
@@ -62720,7 +62720,7 @@ const SENTENCES = [
           "𨚗牙"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "C",
           "駅に"
@@ -62738,7 +62738,7 @@ const SENTENCES = [
           "おんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "C",
           "えぎには"
@@ -62756,7 +62756,7 @@ const SENTENCES = [
           "いるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "C",
           "駅にや"
@@ -62774,7 +62774,7 @@ const SENTENCES = [
           "をぅんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "C",
           "駅には"
@@ -62792,7 +62792,7 @@ const SENTENCES = [
           "おるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "역에는"
@@ -62810,7 +62810,7 @@ const SENTENCES = [
           "있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "역에는"
@@ -63400,7 +63400,7 @@ const SENTENCES = [
           "ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "역에는"
@@ -63716,7 +63716,7 @@ const SENTENCES = [
           "おるわい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "C",
           "いきんかいや"
@@ -63734,7 +63734,7 @@ const SENTENCES = [
           "うー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "C",
           "いきにや"
@@ -64541,7 +64541,7 @@ const SENTENCES = [
           "生日"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -64563,7 +64563,7 @@ const SENTENCES = [
           "あかんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -64585,7 +64585,7 @@ const SENTENCES = [
           "まいねじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -64607,7 +64607,7 @@ const SENTENCES = [
           "ならんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -64629,7 +64629,7 @@ const SENTENCES = [
           "いかんっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -64651,7 +64651,7 @@ const SENTENCES = [
           "한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -65353,7 +65353,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -65721,7 +65721,7 @@ const SENTENCES = [
           "いけんのじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -65743,7 +65743,7 @@ const SENTENCES = [
           "ならん"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -66396,7 +66396,7 @@ const SENTENCES = [
           "慄𢢲"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "ここからの"
@@ -66410,7 +66410,7 @@ const SENTENCES = [
           "きれいやで"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "ここから"
@@ -66424,7 +66424,7 @@ const SENTENCES = [
           "めぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くまからぬ"
@@ -66438,7 +66438,7 @@ const SENTENCES = [
           "ちゅらさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "ここから"
@@ -66452,7 +66452,7 @@ const SENTENCES = [
           "きれいかよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "여기서 보는"
@@ -66466,7 +66466,7 @@ const SENTENCES = [
           "아름답다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "여기서 보는"
@@ -66940,7 +66940,7 @@ const SENTENCES = [
           "بہت सुंदर ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "여기서 보는"
@@ -67196,7 +67196,7 @@ const SENTENCES = [
           "きれいじゃのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くまから"
@@ -67210,7 +67210,7 @@ const SENTENCES = [
           "ちゅらさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くまから"
@@ -67945,7 +67945,7 @@ const SENTENCES = [
           "𠓨𣈜𦹵"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -67967,7 +67967,7 @@ const SENTENCES = [
           "あかんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -67989,7 +67989,7 @@ const SENTENCES = [
           "まいねじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -68011,7 +68011,7 @@ const SENTENCES = [
           "ならんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -68033,7 +68033,7 @@ const SENTENCES = [
           "いかんばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -68055,7 +68055,7 @@ const SENTENCES = [
           "한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -68741,7 +68741,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -69113,7 +69113,7 @@ const SENTENCES = [
           "いけんのじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -69135,7 +69135,7 @@ const SENTENCES = [
           "ならん"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -69982,7 +69982,7 @@ const SENTENCES = [
           "空"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "郵便局"
@@ -70000,7 +70000,7 @@ const SENTENCES = [
           "知っとる"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "郵便局が"
@@ -70018,7 +70018,7 @@ const SENTENCES = [
           "知ってらがや"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "郵便局が"
@@ -70036,7 +70036,7 @@ const SENTENCES = [
           "知っとーがやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "郵便局が"
@@ -70054,7 +70054,7 @@ const SENTENCES = [
           "知っとう?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "B",
           "우체국이"
@@ -70072,7 +70072,7 @@ const SENTENCES = [
           "알고 있습니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "B",
           "우체국이"
@@ -70730,7 +70730,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "B",
           "우체국이"
@@ -71090,7 +71090,7 @@ const SENTENCES = [
           "知っとるかいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "ゆうびんきょくが"
@@ -71108,7 +71108,7 @@ const SENTENCES = [
           "しっちゅーが"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "ゆーびんきょくぬ"
@@ -71971,7 +71971,7 @@ const SENTENCES = [
           "𣇜𣇞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -71993,7 +71993,7 @@ const SENTENCES = [
           "読んどんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -72015,7 +72015,7 @@ const SENTENCES = [
           "読んでらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -72037,7 +72037,7 @@ const SENTENCES = [
           "読んどーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -72059,7 +72059,7 @@ const SENTENCES = [
           "読みようよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -72081,7 +72081,7 @@ const SENTENCES = [
           "읽고 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -72783,7 +72783,7 @@ const SENTENCES = [
           "पढ़ रहा ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -73163,7 +73163,7 @@ const SENTENCES = [
           "読みよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -73185,7 +73185,7 @@ const SENTENCES = [
           "ゆみうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -74096,7 +74096,7 @@ const SENTENCES = [
           "𣠶"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子は"
@@ -74118,7 +74118,7 @@ const SENTENCES = [
           "着とんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -74140,7 +74140,7 @@ const SENTENCES = [
           "着てらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -74162,7 +74162,7 @@ const SENTENCES = [
           "着とーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -74184,7 +74184,7 @@ const SENTENCES = [
           "着とうよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -74206,7 +74206,7 @@ const SENTENCES = [
           "입는다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람은"
@@ -74936,7 +74936,7 @@ const SENTENCES = [
           "पहनती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -75320,7 +75320,7 @@ const SENTENCES = [
           "着とるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -75342,7 +75342,7 @@ const SENTENCES = [
           "きすうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -76007,7 +76007,7 @@ const SENTENCES = [
           "慄𤆐"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "このレストランの"
@@ -76021,7 +76021,7 @@ const SENTENCES = [
           "うまいわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "このレストランの"
@@ -76035,7 +76035,7 @@ const SENTENCES = [
           "めぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬレストランぬ"
@@ -76049,7 +76049,7 @@ const SENTENCES = [
           "まーさんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "このレストランの"
@@ -76063,7 +76063,7 @@ const SENTENCES = [
           "うまいばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이 식당의"
@@ -76077,7 +76077,7 @@ const SENTENCES = [
           "맛있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이 식당"
@@ -76531,7 +76531,7 @@ const SENTENCES = [
           "स्वादिष्ट ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이 식당의"
@@ -76787,7 +76787,7 @@ const SENTENCES = [
           "うまいのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬれすとらんぬ"
@@ -76801,7 +76801,7 @@ const SENTENCES = [
           "まーさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬれすとらんぬ"
@@ -77457,7 +77457,7 @@ const SENTENCES = [
           "恰世界"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -77475,7 +77475,7 @@ const SENTENCES = [
           "したいわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -77493,7 +77493,7 @@ const SENTENCES = [
           "してぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -77511,7 +77511,7 @@ const SENTENCES = [
           "したいさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -77529,7 +77529,7 @@ const SENTENCES = [
           "したいっちゃんね"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -77547,7 +77547,7 @@ const SENTENCES = [
           "하고 싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -78113,7 +78113,7 @@ const SENTENCES = [
           "کرنا چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -78425,7 +78425,7 @@ const SENTENCES = [
           "したいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -78443,7 +78443,7 @@ const SENTENCES = [
           "すぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -79103,7 +79103,7 @@ const SENTENCES = [
           "𡗶𢷮冷"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この国は"
@@ -79121,7 +79121,7 @@ const SENTENCES = [
           "なんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この国では"
@@ -79139,7 +79139,7 @@ const SENTENCES = [
           "なるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ国でぃは"
@@ -79157,7 +79157,7 @@ const SENTENCES = [
           "なゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この国では"
@@ -79175,7 +79175,7 @@ const SENTENCES = [
           "なるったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이 나라에서는"
@@ -79189,7 +79189,7 @@ const SENTENCES = [
           "추워진다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이 나라에서는"
@@ -79775,7 +79775,7 @@ const SENTENCES = [
           "हो जाती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이 나라에서는"
@@ -80083,7 +80083,7 @@ const SENTENCES = [
           "なるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬくにんかいや"
@@ -80101,7 +80101,7 @@ const SENTENCES = [
           "ない"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬくにや"
@@ -80888,7 +80888,7 @@ const SENTENCES = [
           "𥪝𠬠𣇞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -80910,7 +80910,7 @@ const SENTENCES = [
           "しゃべってん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -80932,7 +80932,7 @@ const SENTENCES = [
           "すゃべったじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -80954,7 +80954,7 @@ const SENTENCES = [
           "話したさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -80976,7 +80976,7 @@ const SENTENCES = [
           "話したったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -80998,7 +80998,7 @@ const SENTENCES = [
           "이야기하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -81708,7 +81708,7 @@ const SENTENCES = [
           "बात کی"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -82096,7 +82096,7 @@ const SENTENCES = [
           "話したんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -82118,7 +82118,7 @@ const SENTENCES = [
           "ぱなすぅたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -82874,7 +82874,7 @@ const SENTENCES = [
           "𡗉𥪝"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "先生が"
@@ -82892,7 +82892,7 @@ const SENTENCES = [
           "説明してくれてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "先生は"
@@ -82910,7 +82910,7 @@ const SENTENCES = [
           "せづめいすただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "先生は"
@@ -82928,7 +82928,7 @@ const SENTENCES = [
           "説明してくりたんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "先生は"
@@ -82946,7 +82946,7 @@ const SENTENCES = [
           "説明してくれたばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "선생님은"
@@ -82964,7 +82964,7 @@ const SENTENCES = [
           "설명하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "선생님이"
@@ -83562,7 +83562,7 @@ const SENTENCES = [
           "समझाया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "선생님은"
@@ -83878,7 +83878,7 @@ const SENTENCES = [
           "説明してくれたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "しんしーや"
@@ -83896,7 +83896,7 @@ const SENTENCES = [
           "しつぃみーすぅたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "しんしーや"
@@ -84584,7 +84584,7 @@ const SENTENCES = [
           "部𢻨朵"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -84598,7 +84598,7 @@ const SENTENCES = [
           "見たいわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -84612,7 +84612,7 @@ const SENTENCES = [
           "みでぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -84626,7 +84626,7 @@ const SENTENCES = [
           "見ーぶさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -84640,7 +84640,7 @@ const SENTENCES = [
           "見たいっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -84654,7 +84654,7 @@ const SENTENCES = [
           "관람하고 싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -85176,7 +85176,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -85464,7 +85464,7 @@ const SENTENCES = [
           "見たいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -85478,7 +85478,7 @@ const SENTENCES = [
           "みーぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -86158,7 +86158,7 @@ const SENTENCES = [
           "塘𦤾𡈢𩗑"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "C",
           "空港への道"
@@ -86176,7 +86176,7 @@ const SENTENCES = [
           "ちょうだい"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "C",
           "空港さの道を"
@@ -86194,7 +86194,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "C",
           "空港ぬ道"
@@ -86212,7 +86212,7 @@ const SENTENCES = [
           "くぃみそーれー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "C",
           "空港への道ば"
@@ -86230,7 +86230,7 @@ const SENTENCES = [
           "ください"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "공항까지 가는 길을"
@@ -86244,7 +86244,7 @@ const SENTENCES = [
           "알려주십시오"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "공항까지 가는 길을"
@@ -86806,7 +86806,7 @@ const SENTENCES = [
           "बताइए"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "공항까지 가는 길을"
@@ -87114,7 +87114,7 @@ const SENTENCES = [
           "くれんさい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "C",
           "くうこうぬみちば"
@@ -87132,7 +87132,7 @@ const SENTENCES = [
           "くぃりょー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "C",
           "くうこうぬみちば"
@@ -87792,7 +87792,7 @@ const SENTENCES = [
           "𠫾𨁥"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちの犬は"
@@ -87806,7 +87806,7 @@ const SENTENCES = [
           "好きやねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わの犬は"
@@ -87820,7 +87820,7 @@ const SENTENCES = [
           "好ぎだじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんぬ犬は"
@@ -87834,7 +87834,7 @@ const SENTENCES = [
           "好ちやさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちの犬は"
@@ -87848,7 +87848,7 @@ const SENTENCES = [
           "好きったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "내 강아지는"
@@ -87862,7 +87862,7 @@ const SENTENCES = [
           "좋아한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리 강아지는"
@@ -88376,7 +88376,7 @@ const SENTENCES = [
           "पसंद करता ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "내 강아지는"
@@ -88668,7 +88668,7 @@ const SENTENCES = [
           "好きじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんぬいんぬや"
@@ -88682,7 +88682,7 @@ const SENTENCES = [
           "すきどぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんぬいんぬや"
@@ -89382,7 +89382,7 @@ const SENTENCES = [
           "趣味"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "おばあちゃんが"
@@ -89400,7 +89400,7 @@ const SENTENCES = [
           "してくれんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "おばあちゃんは"
@@ -89418,7 +89418,7 @@ const SENTENCES = [
           "してくれるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "おばーは"
@@ -89436,7 +89436,7 @@ const SENTENCES = [
           "してくりゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちのばあちゃんは"
@@ -89454,7 +89454,7 @@ const SENTENCES = [
           "してくれるったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "할머니는"
@@ -89472,7 +89472,7 @@ const SENTENCES = [
           "해주시군 한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리 할매는"
@@ -90066,7 +90066,7 @@ const SENTENCES = [
           "सुनाती ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나의 할머니는"
@@ -90374,7 +90374,7 @@ const SENTENCES = [
           "してくれるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんぬんめーや"
@@ -90392,7 +90392,7 @@ const SENTENCES = [
           "すぅーたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんぬんめーや"
@@ -91096,7 +91096,7 @@ const SENTENCES = [
           "𨚗𢄂"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -91114,7 +91114,7 @@ const SENTENCES = [
           "市場で"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -91132,7 +91132,7 @@ const SENTENCES = [
           "なぐすただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -91150,7 +91150,7 @@ const SENTENCES = [
           "市場で"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -91168,7 +91168,7 @@ const SENTENCES = [
           "市場で"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -91186,7 +91186,7 @@ const SENTENCES = [
           "잃어버리였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -91760,7 +91760,7 @@ const SENTENCES = [
           "खो दिया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -92076,7 +92076,7 @@ const SENTENCES = [
           "市場で"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -92094,7 +92094,7 @@ const SENTENCES = [
           "いちばんかい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -92707,7 +92707,7 @@ const SENTENCES = [
           "當𨷯"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "庭の"
@@ -92721,7 +92721,7 @@ const SENTENCES = [
           "咲いとるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "庭の"
@@ -92735,7 +92735,7 @@ const SENTENCES = [
           "咲いてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "庭ぬ"
@@ -92749,7 +92749,7 @@ const SENTENCES = [
           "咲ちょーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "庭の"
@@ -92763,7 +92763,7 @@ const SENTENCES = [
           "咲いとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "정원에"
@@ -92777,7 +92777,7 @@ const SENTENCES = [
           "피여 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "정원에"
@@ -93247,7 +93247,7 @@ const SENTENCES = [
           "खिल रहे ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "정원의"
@@ -93499,7 +93499,7 @@ const SENTENCES = [
           "咲いとるのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "みーぬ"
@@ -93513,7 +93513,7 @@ const SENTENCES = [
           "さちうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "みーぬ"
@@ -94169,7 +94169,7 @@ const SENTENCES = [
           "梅場"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちらは"
@@ -94187,7 +94187,7 @@ const SENTENCES = [
           "なあかん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わだぢは"
@@ -94205,7 +94205,7 @@ const SENTENCES = [
           "ねばまいねじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わったーや"
@@ -94223,7 +94223,7 @@ const SENTENCES = [
           "んでーならんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちらは"
@@ -94241,7 +94241,7 @@ const SENTENCES = [
           "んといかん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "우리는"
@@ -94259,7 +94259,7 @@ const SENTENCES = [
           "한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리는"
@@ -94829,7 +94829,7 @@ const SENTENCES = [
           "کرنا चाहिए"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "우리는"
@@ -95141,7 +95141,7 @@ const SENTENCES = [
           "にゃいけんのじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんたーや"
@@ -95159,7 +95159,7 @@ const SENTENCES = [
           "んばならん"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんたーや"
@@ -95859,7 +95859,7 @@ const SENTENCES = [
           "每𣈜"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -95877,7 +95877,7 @@ const SENTENCES = [
           "飲むねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -95895,7 +95895,7 @@ const SENTENCES = [
           "飲むんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -95913,7 +95913,7 @@ const SENTENCES = [
           "飲むんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -95931,7 +95931,7 @@ const SENTENCES = [
           "飲むと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -95949,7 +95949,7 @@ const SENTENCES = [
           "마신다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -96519,7 +96519,7 @@ const SENTENCES = [
           "पीता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -96839,7 +96839,7 @@ const SENTENCES = [
           "飲むんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -96857,7 +96857,7 @@ const SENTENCES = [
           "ぬむい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -97561,7 +97561,7 @@ const SENTENCES = [
           "𣎏𫅞"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "コンサートは"
@@ -97579,7 +97579,7 @@ const SENTENCES = [
           "始まんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "コンサートは"
@@ -97597,7 +97597,7 @@ const SENTENCES = [
           "始まるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "コンサートは"
@@ -97615,7 +97615,7 @@ const SENTENCES = [
           "始まゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "コンサートは"
@@ -97633,7 +97633,7 @@ const SENTENCES = [
           "始まるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "음악회는"
@@ -97651,7 +97651,7 @@ const SENTENCES = [
           "시작한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "콘서트는"
@@ -98245,7 +98245,7 @@ const SENTENCES = [
           "शुरू ہوتا ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "콘서트는"
@@ -98561,7 +98561,7 @@ const SENTENCES = [
           "始まるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "こんさーとぅや"
@@ -98579,7 +98579,7 @@ const SENTENCES = [
           "はじまい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "こんさーとぅや"
@@ -99287,7 +99287,7 @@ const SENTENCES = [
           "成熟"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子は"
@@ -99305,7 +99305,7 @@ const SENTENCES = [
           "しゃべれんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -99323,7 +99323,7 @@ const SENTENCES = [
           "すゃべれるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -99341,7 +99341,7 @@ const SENTENCES = [
           "話せるさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -99359,7 +99359,7 @@ const SENTENCES = [
           "話すっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -99377,7 +99377,7 @@ const SENTENCES = [
           "말한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람은"
@@ -99971,7 +99971,7 @@ const SENTENCES = [
           "बोलती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -100291,7 +100291,7 @@ const SENTENCES = [
           "話すんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -100309,7 +100309,7 @@ const SENTENCES = [
           "ぱなすい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -101100,7 +101100,7 @@ const SENTENCES = [
           "𧶮𣉹寺尼"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -101122,7 +101122,7 @@ const SENTENCES = [
           "たいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -101144,7 +101144,7 @@ const SENTENCES = [
           "てぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -101166,7 +101166,7 @@ const SENTENCES = [
           "ぶさんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -101188,7 +101188,7 @@ const SENTENCES = [
           "たかと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -101210,7 +101210,7 @@ const SENTENCES = [
           "싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -101912,7 +101912,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -102288,7 +102288,7 @@ const SENTENCES = [
           "たいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -102310,7 +102310,7 @@ const SENTENCES = [
           "いぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -102951,7 +102951,7 @@ const SENTENCES = [
           "每𨒒𠄡分"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "バスは"
@@ -102965,7 +102965,7 @@ const SENTENCES = [
           "来んねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "バスは"
@@ -102979,7 +102979,7 @@ const SENTENCES = [
           "くるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "バスは"
@@ -102993,7 +102993,7 @@ const SENTENCES = [
           "ちゅーんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "バスは"
@@ -103007,7 +103007,7 @@ const SENTENCES = [
           "来るばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "뻐스는"
@@ -103021,7 +103021,7 @@ const SENTENCES = [
           "온다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "버스는"
@@ -103483,7 +103483,7 @@ const SENTENCES = [
           "आती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "버스는"
@@ -103735,7 +103735,7 @@ const SENTENCES = [
           "来るんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばすや"
@@ -103749,7 +103749,7 @@ const SENTENCES = [
           "くーい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばすや"
@@ -104405,7 +104405,7 @@ const SENTENCES = [
           "悶咹韓國"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -104423,7 +104423,7 @@ const SENTENCES = [
           "習っとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -104441,7 +104441,7 @@ const SENTENCES = [
           "習ってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -104459,7 +104459,7 @@ const SENTENCES = [
           "習っとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -104477,7 +104477,7 @@ const SENTENCES = [
           "習いよると"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -104495,7 +104495,7 @@ const SENTENCES = [
           "배우고 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -105065,7 +105065,7 @@ const SENTENCES = [
           "सीख रहा ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -105381,7 +105381,7 @@ const SENTENCES = [
           "習いよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -105399,7 +105399,7 @@ const SENTENCES = [
           "ならいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -106182,7 +106182,7 @@ const SENTENCES = [
           "各局合"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの人は"
@@ -106204,7 +106204,7 @@ const SENTENCES = [
           "来んねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -106226,7 +106226,7 @@ const SENTENCES = [
           "くるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -106248,7 +106248,7 @@ const SENTENCES = [
           "ちゅーんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あいつは"
@@ -106270,7 +106270,7 @@ const SENTENCES = [
           "来るったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그는"
@@ -106292,7 +106292,7 @@ const SENTENCES = [
           "온다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그는"
@@ -106998,7 +106998,7 @@ const SENTENCES = [
           "आता ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그는"
@@ -107378,7 +107378,7 @@ const SENTENCES = [
           "来るんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かりや"
@@ -107400,7 +107400,7 @@ const SENTENCES = [
           "くーい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かりや"
@@ -108231,7 +108231,7 @@ const SENTENCES = [
           "𢀨𡎝𣎃"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -108253,7 +108253,7 @@ const SENTENCES = [
           "たいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -108275,7 +108275,7 @@ const SENTENCES = [
           "でぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -108297,7 +108297,7 @@ const SENTENCES = [
           "ぶさんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -108319,7 +108319,7 @@ const SENTENCES = [
           "終えたかと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -108341,7 +108341,7 @@ const SENTENCES = [
           "싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -109043,7 +109043,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -109419,7 +109419,7 @@ const SENTENCES = [
           "終えたいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -109441,7 +109441,7 @@ const SENTENCES = [
           "うわいぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -110082,7 +110082,7 @@ const SENTENCES = [
           "𨕥𣘃"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "木の上で"
@@ -110096,7 +110096,7 @@ const SENTENCES = [
           "さえずっとるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "木の中で"
@@ -110110,7 +110110,7 @@ const SENTENCES = [
           "さえずってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "木ぬ上で"
@@ -110124,7 +110124,7 @@ const SENTENCES = [
           "鳴ちょーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "木ん中で"
@@ -110138,7 +110138,7 @@ const SENTENCES = [
           "歌いよう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나무 우에서"
@@ -110152,7 +110152,7 @@ const SENTENCES = [
           "노래하고 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나무에서"
@@ -110622,7 +110622,7 @@ const SENTENCES = [
           "गा रहे ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나무에서"
@@ -110874,7 +110874,7 @@ const SENTENCES = [
           "歌いよるのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "きーぬなかんかい"
@@ -110888,7 +110888,7 @@ const SENTENCES = [
           "うたいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "きーぬなかなーち"
@@ -111524,7 +111524,7 @@ const SENTENCES = [
           "電話𧶮碎"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -111542,7 +111542,7 @@ const SENTENCES = [
           "せなあかん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -111560,7 +111560,7 @@ const SENTENCES = [
           "ねばまいねじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -111578,7 +111578,7 @@ const SENTENCES = [
           "さんでーならんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -111596,7 +111596,7 @@ const SENTENCES = [
           "せないかん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -111614,7 +111614,7 @@ const SENTENCES = [
           "하여야 한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -112188,7 +112188,7 @@ const SENTENCES = [
           "کرنا ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -112492,7 +112492,7 @@ const SENTENCES = [
           "せにゃいけんのじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -112510,7 +112510,7 @@ const SENTENCES = [
           "さんばならん"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -113273,7 +113273,7 @@ const SENTENCES = [
           "𢢲"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子が"
@@ -113295,7 +113295,7 @@ const SENTENCES = [
           "くれてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あの人は"
@@ -113317,7 +113317,7 @@ const SENTENCES = [
           "くれただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人が"
@@ -113339,7 +113339,7 @@ const SENTENCES = [
           "くりたんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -113361,7 +113361,7 @@ const SENTENCES = [
           "くれたと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -113383,7 +113383,7 @@ const SENTENCES = [
           "주었다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람이"
@@ -114097,7 +114097,7 @@ const SENTENCES = [
           "दिया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -114477,7 +114477,7 @@ const SENTENCES = [
           "くれたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -114499,7 +114499,7 @@ const SENTENCES = [
           "くぃりたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -115140,7 +115140,7 @@ const SENTENCES = [
           "被雪"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "山が"
@@ -115154,7 +115154,7 @@ const SENTENCES = [
           "覆われとるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "山は"
@@ -115168,7 +115168,7 @@ const SENTENCES = [
           "おおわれてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "山は"
@@ -115182,7 +115182,7 @@ const SENTENCES = [
           "覆われとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "山は"
@@ -115196,7 +115196,7 @@ const SENTENCES = [
           "覆われとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "산이"
@@ -115210,7 +115210,7 @@ const SENTENCES = [
           "덮여 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "산이"
@@ -115696,7 +115696,7 @@ const SENTENCES = [
           "ढका हुआ ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "산이"
@@ -115948,7 +115948,7 @@ const SENTENCES = [
           "覆われとるのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "やまや"
@@ -115962,7 +115962,7 @@ const SENTENCES = [
           "うーわりうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "やまや"
@@ -116602,7 +116602,7 @@ const SENTENCES = [
           "𠀧吝𠬠旬"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -116620,7 +116620,7 @@ const SENTENCES = [
           "運動しとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -116638,7 +116638,7 @@ const SENTENCES = [
           "運動するんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -116656,7 +116656,7 @@ const SENTENCES = [
           "運動すんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -116674,7 +116674,7 @@ const SENTENCES = [
           "運動しよると"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -116692,7 +116692,7 @@ const SENTENCES = [
           "운동한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -117270,7 +117270,7 @@ const SENTENCES = [
           "व्यायाम करता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -117594,7 +117594,7 @@ const SENTENCES = [
           "運動するんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -117612,7 +117612,7 @@ const SENTENCES = [
           "うんどうすい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -118312,7 +118312,7 @@ const SENTENCES = [
           "空？"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "ここ"
@@ -118326,7 +118326,7 @@ const SENTENCES = [
           "ええかな"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "ここさ"
@@ -118340,7 +118340,7 @@ const SENTENCES = [
           "えぇだがや"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "くまに"
@@ -118354,7 +118354,7 @@ const SENTENCES = [
           "いいがやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "ここに"
@@ -118368,7 +118368,7 @@ const SENTENCES = [
           "よかですか"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "B",
           "여기"
@@ -118382,7 +118382,7 @@ const SENTENCES = [
           "되겠습니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "B",
           "여기"
@@ -118896,7 +118896,7 @@ const SENTENCES = [
           "बैठ सकता हूँ?"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "B",
           "여기에"
@@ -119188,7 +119188,7 @@ const SENTENCES = [
           "もええかいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "くまんかい"
@@ -119202,7 +119202,7 @@ const SENTENCES = [
           "ゆたさりゅーが"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "くまに"
@@ -119890,7 +119890,7 @@ const SENTENCES = [
           "朱布𡞕"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの人が"
@@ -119908,7 +119908,7 @@ const SENTENCES = [
           "書いてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -119926,7 +119926,7 @@ const SENTENCES = [
           "かいだじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -119944,7 +119944,7 @@ const SENTENCES = [
           "書ちゃんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あいつは"
@@ -119962,7 +119962,7 @@ const SENTENCES = [
           "書いたばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그는"
@@ -119980,7 +119980,7 @@ const SENTENCES = [
           "썼다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그는"
@@ -120554,7 +120554,7 @@ const SENTENCES = [
           "लिखा"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그는"
@@ -120874,7 +120874,7 @@ const SENTENCES = [
           "書いたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かりや"
@@ -120892,7 +120892,7 @@ const SENTENCES = [
           "かちゃたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かりや"
@@ -121505,7 +121505,7 @@ const SENTENCES = [
           "𣅶𠃩𣇞𣎏"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "お店は"
@@ -121519,7 +121519,7 @@ const SENTENCES = [
           "閉まんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "みせは"
@@ -121533,7 +121533,7 @@ const SENTENCES = [
           "閉まるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "店は"
@@ -121547,7 +121547,7 @@ const SENTENCES = [
           "閉まゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "店は"
@@ -121561,7 +121561,7 @@ const SENTENCES = [
           "閉まるっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "상점은"
@@ -121575,7 +121575,7 @@ const SENTENCES = [
           "닫는다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "가게는"
@@ -122037,7 +122037,7 @@ const SENTENCES = [
           "बंद ہوتی ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "가게는"
@@ -122289,7 +122289,7 @@ const SENTENCES = [
           "閉まるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "まちやや"
@@ -122303,7 +122303,7 @@ const SENTENCES = [
           "しまい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "まちやや"
@@ -122943,7 +122943,7 @@ const SENTENCES = [
           "發音𧶮𠱌"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -122961,7 +122961,7 @@ const SENTENCES = [
           "なりたいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -122979,7 +122979,7 @@ const SENTENCES = [
           "てぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -122997,7 +122997,7 @@ const SENTENCES = [
           "ぶさんやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -123015,7 +123015,7 @@ const SENTENCES = [
           "せたかと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -123033,7 +123033,7 @@ const SENTENCES = [
           "싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -123603,7 +123603,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -123907,7 +123907,7 @@ const SENTENCES = [
           "せたいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -123925,7 +123925,7 @@ const SENTENCES = [
           "しぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -124617,7 +124617,7 @@ const SENTENCES = [
           "過瀧"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの人らが"
@@ -124635,7 +124635,7 @@ const SENTENCES = [
           "架けてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづらは"
@@ -124653,7 +124653,7 @@ const SENTENCES = [
           "架けただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人たちは"
@@ -124671,7 +124671,7 @@ const SENTENCES = [
           "架きたんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あいつらは"
@@ -124689,7 +124689,7 @@ const SENTENCES = [
           "建てたったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그들은"
@@ -124707,7 +124707,7 @@ const SENTENCES = [
           "건설하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람들이"
@@ -125293,7 +125293,7 @@ const SENTENCES = [
           "बनाया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그들은"
@@ -125613,7 +125613,7 @@ const SENTENCES = [
           "建てたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かんたーや"
@@ -125631,7 +125631,7 @@ const SENTENCES = [
           "たてぃたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かんたーや"
@@ -126339,7 +126339,7 @@ const SENTENCES = [
           "每𣎏"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちの猫は"
@@ -126357,7 +126357,7 @@ const SENTENCES = [
           "寝んねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "猫は"
@@ -126375,7 +126375,7 @@ const SENTENCES = [
           "寝るんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんぬ猫は"
@@ -126393,7 +126393,7 @@ const SENTENCES = [
           "にんとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちの猫は"
@@ -126411,7 +126411,7 @@ const SENTENCES = [
           "寝るとよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "고양이는"
@@ -126429,7 +126429,7 @@ const SENTENCES = [
           "잔다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리 고양이는"
@@ -127023,7 +127023,7 @@ const SENTENCES = [
           "सोती ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "내 고양이는"
@@ -127347,7 +127347,7 @@ const SENTENCES = [
           "寝るんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんぬまやーや"
@@ -127365,7 +127365,7 @@ const SENTENCES = [
           "にんじゅい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんぬまやーや"
@@ -127966,7 +127966,7 @@ const SENTENCES = [
           "𠀧𨒒分𠶢"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -127980,7 +127980,7 @@ const SENTENCES = [
           "待っとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -127994,7 +127994,7 @@ const SENTENCES = [
           "待ってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -128008,7 +128008,7 @@ const SENTENCES = [
           "待っちょーんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -128022,7 +128022,7 @@ const SENTENCES = [
           "待っとうと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -128036,7 +128036,7 @@ const SENTENCES = [
           "기다리고 있었다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -128498,7 +128498,7 @@ const SENTENCES = [
           "इंतज़ार कर रहा ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -128750,7 +128750,7 @@ const SENTENCES = [
           "待っとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -128764,7 +128764,7 @@ const SENTENCES = [
           "まちうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -129317,7 +129317,7 @@ const SENTENCES = [
           "𣺽"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "子供らが"
@@ -129331,7 +129331,7 @@ const SENTENCES = [
           "習っとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わらすたちは"
@@ -129345,7 +129345,7 @@ const SENTENCES = [
           "習ってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わらびんちゃーは"
@@ -129359,7 +129359,7 @@ const SENTENCES = [
           "習っとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "子どもたちは"
@@ -129373,7 +129373,7 @@ const SENTENCES = [
           "習いよう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "아이들은"
@@ -129387,7 +129387,7 @@ const SENTENCES = [
           "배우고 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "아이들이"
@@ -129849,7 +129849,7 @@ const SENTENCES = [
           "सीख रहे ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "아이들은"
@@ -130101,7 +130101,7 @@ const SENTENCES = [
           "習いよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "わらびんきゃーや"
@@ -130115,7 +130115,7 @@ const SENTENCES = [
           "ならいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "わらびんきゃーや"
@@ -130763,7 +130763,7 @@ const SENTENCES = [
           "碎感𥙩幸福"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "音楽"
@@ -130777,7 +130777,7 @@ const SENTENCES = [
           "幸せな気持ちになるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "音楽"
@@ -130791,7 +130791,7 @@ const SENTENCES = [
           "えぇ気持ぢになるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "音楽"
@@ -130805,7 +130805,7 @@ const SENTENCES = [
           "幸せな気持ちになゆさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "音楽ば"
@@ -130819,7 +130819,7 @@ const SENTENCES = [
           "幸せな気持ちになるったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "음악을"
@@ -130837,7 +130837,7 @@ const SENTENCES = [
           "행복감을 느낀다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "음악을"
@@ -131371,7 +131371,7 @@ const SENTENCES = [
           "تو खुश महसूस करता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "음악을"
@@ -131687,7 +131687,7 @@ const SENTENCES = [
           "幸せな気持ちになるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "うたば"
@@ -131701,7 +131701,7 @@ const SENTENCES = [
           "しあわしくない"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "うたば"
@@ -132302,7 +132302,7 @@ const SENTENCES = [
           "被結果排檢查"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの人は"
@@ -132316,7 +132316,7 @@ const SENTENCES = [
           "びっくりしてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -132330,7 +132330,7 @@ const SENTENCES = [
           "たまげだじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -132344,7 +132344,7 @@ const SENTENCES = [
           "驚ちゃんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あいつは"
@@ -132358,7 +132358,7 @@ const SENTENCES = [
           "びっくりしとった"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그는"
@@ -132372,7 +132372,7 @@ const SENTENCES = [
           "놀라였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그는"
@@ -132834,7 +132834,7 @@ const SENTENCES = [
           "चौंक गया"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그는"
@@ -133086,7 +133086,7 @@ const SENTENCES = [
           "びっくりしたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かりや"
@@ -133100,7 +133100,7 @@ const SENTENCES = [
           "うどぅるちゃたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かりや"
@@ -133764,7 +133764,7 @@ const SENTENCES = [
           "慄𧢌"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -133782,7 +133782,7 @@ const SENTENCES = [
           "思うわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -133800,7 +133800,7 @@ const SENTENCES = [
           "思うんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -133818,7 +133818,7 @@ const SENTENCES = [
           "思ゆんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -133836,7 +133836,7 @@ const SENTENCES = [
           "思うばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -133854,7 +133854,7 @@ const SENTENCES = [
           "생각한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -134460,7 +134460,7 @@ const SENTENCES = [
           "अच्छी ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -134776,7 +134776,7 @@ const SENTENCES = [
           "思うんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬ"
@@ -134794,7 +134794,7 @@ const SENTENCES = [
           "うむい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬ"
@@ -135585,7 +135585,7 @@ const SENTENCES = [
           "㐌轉𠫾"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子は"
@@ -135603,7 +135603,7 @@ const SENTENCES = [
           "悲しいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あの人は"
@@ -135621,7 +135621,7 @@ const SENTENCES = [
           "かなすぃじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -135639,7 +135639,7 @@ const SENTENCES = [
           "ちむぐりさんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -135657,7 +135657,7 @@ const SENTENCES = [
           "寂しかと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -135675,7 +135675,7 @@ const SENTENCES = [
           "슬프다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람은"
@@ -136345,7 +136345,7 @@ const SENTENCES = [
           "चली गई"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -136709,7 +136709,7 @@ const SENTENCES = [
           "悲しいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -136727,7 +136727,7 @@ const SENTENCES = [
           "かなさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -137566,7 +137566,7 @@ const SENTENCES = [
           "𠬠𡃏驗貴價"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -137584,7 +137584,7 @@ const SENTENCES = [
           "信じとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -137602,7 +137602,7 @@ const SENTENCES = [
           "信じてらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -137620,7 +137620,7 @@ const SENTENCES = [
           "信じとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -137638,7 +137638,7 @@ const SENTENCES = [
           "信じとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -137656,7 +137656,7 @@ const SENTENCES = [
           "믿는다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -138294,7 +138294,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -138670,7 +138670,7 @@ const SENTENCES = [
           "信じとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -138688,7 +138688,7 @@ const SENTENCES = [
           "しんじうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -139397,7 +139397,7 @@ const SENTENCES = [
           "𤺇頭"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "C",
           "今日"
@@ -139411,7 +139411,7 @@ const SENTENCES = [
           "痛いねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "C",
           "今日"
@@ -139425,7 +139425,7 @@ const SENTENCES = [
           "いでぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "C",
           "ちゅーや"
@@ -139439,7 +139439,7 @@ const SENTENCES = [
           "やむんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "C",
           "今日"
@@ -139453,7 +139453,7 @@ const SENTENCES = [
           "痛かと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "오늘"
@@ -139467,7 +139467,7 @@ const SENTENCES = [
           "아프다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "오늘"
@@ -139997,7 +139997,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "오늘"
@@ -140277,7 +140277,7 @@ const SENTENCES = [
           "痛いんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "C",
           "きゅーや"
@@ -140291,7 +140291,7 @@ const SENTENCES = [
           "やみゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "C",
           "きゅーや"
@@ -140971,7 +140971,7 @@ const SENTENCES = [
           "𥄈𥄈"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "お医者さんが"
@@ -140989,7 +140989,7 @@ const SENTENCES = [
           "くれてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "医者が"
@@ -141007,7 +141007,7 @@ const SENTENCES = [
           "言っただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "医者は"
@@ -141025,7 +141025,7 @@ const SENTENCES = [
           "言ちゃんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "医者は"
@@ -141043,7 +141043,7 @@ const SENTENCES = [
           "言うたばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "의사는"
@@ -141061,7 +141061,7 @@ const SENTENCES = [
           "말하였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "의사가"
@@ -141651,7 +141651,7 @@ const SENTENCES = [
           "कहा"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "의사는"
@@ -141967,7 +141967,7 @@ const SENTENCES = [
           "言うたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "いしゃや"
@@ -141985,7 +141985,7 @@ const SENTENCES = [
           "いーたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "いしゃや"
@@ -142653,7 +142653,7 @@ const SENTENCES = [
           "每𤏬"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -142671,7 +142671,7 @@ const SENTENCES = [
           "頑張っとんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -142689,7 +142689,7 @@ const SENTENCES = [
           "してらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -142707,7 +142707,7 @@ const SENTENCES = [
           "頑張っとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -142725,7 +142725,7 @@ const SENTENCES = [
           "しとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -142743,7 +142743,7 @@ const SENTENCES = [
           "로력한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -143301,7 +143301,7 @@ const SENTENCES = [
           "कोशिश करता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -143617,7 +143617,7 @@ const SENTENCES = [
           "しとるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -143635,7 +143635,7 @@ const SENTENCES = [
           "すうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -144295,7 +144295,7 @@ const SENTENCES = [
           "旬𢀨"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの子"
@@ -144313,7 +144313,7 @@ const SENTENCES = [
           "ひいてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -144331,7 +144331,7 @@ const SENTENCES = [
           "ひいただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -144349,7 +144349,7 @@ const SENTENCES = [
           "ひちゃんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あの子は"
@@ -144367,7 +144367,7 @@ const SENTENCES = [
           "ひいたっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그녀는"
@@ -144385,7 +144385,7 @@ const SENTENCES = [
           "걸리였다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그 사람은"
@@ -144947,7 +144947,7 @@ const SENTENCES = [
           "लग गई"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그녀는"
@@ -145251,7 +145251,7 @@ const SENTENCES = [
           "ひいたんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かにや"
@@ -145269,7 +145269,7 @@ const SENTENCES = [
           "ふちゃたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かにや"
@@ -145941,7 +145941,7 @@ const SENTENCES = [
           "饒渃欣"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あんたは"
@@ -145955,7 +145955,7 @@ const SENTENCES = [
           "飲んだほうがええで"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "なは"
@@ -145969,7 +145969,7 @@ const SENTENCES = [
           "飲んだほうがえぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "うんじゅや"
@@ -145983,7 +145983,7 @@ const SENTENCES = [
           "飲んだほうがいいさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あんたは"
@@ -145997,7 +145997,7 @@ const SENTENCES = [
           "飲んだがよかよ"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "당신은"
@@ -146015,7 +146015,7 @@ const SENTENCES = [
           "한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "니는"
@@ -146541,7 +146541,7 @@ const SENTENCES = [
           "चाहिए"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "당신은"
@@ -146841,7 +146841,7 @@ const SENTENCES = [
           "飲んだほうがええんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "うぅがや"
@@ -146855,7 +146855,7 @@ const SENTENCES = [
           "ぬだーぬゆたさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "どぅるや"
@@ -147531,7 +147531,7 @@ const SENTENCES = [
           "每𣈜"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "毎日"
@@ -147545,7 +147545,7 @@ const SENTENCES = [
           "使っとるわ"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "めにづ"
@@ -147559,7 +147559,7 @@ const SENTENCES = [
           "使ってらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "毎日"
@@ -147573,7 +147573,7 @@ const SENTENCES = [
           "使っとーさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "毎日"
@@ -147587,7 +147587,7 @@ const SENTENCES = [
           "使いよう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "D",
           "나는"
@@ -147605,7 +147605,7 @@ const SENTENCES = [
           "사용한다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "D",
           "나는"
@@ -148119,7 +148119,7 @@ const SENTENCES = [
           "इस्तेमाल करता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "D",
           "나는"
@@ -148423,7 +148423,7 @@ const SENTENCES = [
           "使いよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "まいにつぃ"
@@ -148437,7 +148437,7 @@ const SENTENCES = [
           "つぃかいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "めーにち"
@@ -149117,7 +149117,7 @@ const SENTENCES = [
           "便利"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -149135,7 +149135,7 @@ const SENTENCES = [
           "便利やねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -149153,7 +149153,7 @@ const SENTENCES = [
           "便利だじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -149171,7 +149171,7 @@ const SENTENCES = [
           "便利やさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -149189,7 +149189,7 @@ const SENTENCES = [
           "便利ばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -149207,7 +149207,7 @@ const SENTENCES = [
           "편리하다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -149813,7 +149813,7 @@ const SENTENCES = [
           "सुविधाजनक ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -150129,7 +150129,7 @@ const SENTENCES = [
           "便利じゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬ"
@@ -150147,7 +150147,7 @@ const SENTENCES = [
           "びんりどぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬ"
@@ -150776,7 +150776,7 @@ const SENTENCES = [
           "世界"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "AIが"
@@ -150790,7 +150790,7 @@ const SENTENCES = [
           "変えつつあんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "AIは"
@@ -150804,7 +150804,7 @@ const SENTENCES = [
           "変えでらじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "AIは"
@@ -150818,7 +150818,7 @@ const SENTENCES = [
           "変えつつあんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "AIは"
@@ -150832,7 +150832,7 @@ const SENTENCES = [
           "変えよう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "인공지능은"
@@ -150846,7 +150846,7 @@ const SENTENCES = [
           "변화시키고 있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "AI가"
@@ -151308,7 +151308,7 @@ const SENTENCES = [
           "बदल रहा ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "AI는"
@@ -151552,7 +151552,7 @@ const SENTENCES = [
           "変えよるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "AIや"
@@ -151566,7 +151566,7 @@ const SENTENCES = [
           "かいうー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "AIや"
@@ -152111,7 +152111,7 @@ const SENTENCES = [
           "密口無線"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "Wi-Fiのパスワードが"
@@ -152121,7 +152121,7 @@ const SENTENCES = [
           "わからへんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "Wi-Fiのパスワードが"
@@ -152131,7 +152131,7 @@ const SENTENCES = [
           "見つからねぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "Wi-Fiぬパスワードが"
@@ -152141,7 +152141,7 @@ const SENTENCES = [
           "わからんさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "Wi-Fiのパスワードが"
@@ -152151,7 +152151,7 @@ const SENTENCES = [
           "見つからんと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -152165,7 +152165,7 @@ const SENTENCES = [
           "찾을 수 없다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -152559,7 +152559,7 @@ const SENTENCES = [
           "نہیں मिल रहा"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -152799,7 +152799,7 @@ const SENTENCES = [
           "見つからんのじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "Wi-Fiぬぱすわーどぅが"
@@ -152809,7 +152809,7 @@ const SENTENCES = [
           "みーつぃからん"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "Wi-Fiぬぱすわーどぅが"
@@ -153433,7 +153433,7 @@ const SENTENCES = [
           "立程"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "あの人は"
@@ -153451,7 +153451,7 @@ const SENTENCES = [
           "覚えてん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "あいづは"
@@ -153469,7 +153469,7 @@ const SENTENCES = [
           "覚えただじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "あぬ人は"
@@ -153487,7 +153487,7 @@ const SENTENCES = [
           "習たんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "あいつは"
@@ -153505,7 +153505,7 @@ const SENTENCES = [
           "学んだったい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "그는"
@@ -153523,7 +153523,7 @@ const SENTENCES = [
           "배웠다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "그는"
@@ -154113,7 +154113,7 @@ const SENTENCES = [
           "सीखी"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "그는"
@@ -154429,7 +154429,7 @@ const SENTENCES = [
           "学んだんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "かりや"
@@ -154447,7 +154447,7 @@ const SENTENCES = [
           "ならたー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "かりや"
@@ -155131,7 +155131,7 @@ const SENTENCES = [
           "日本"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "花見は"
@@ -155145,7 +155145,7 @@ const SENTENCES = [
           "伝統やねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "花見は"
@@ -155159,7 +155159,7 @@ const SENTENCES = [
           "伝統だじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "花見は"
@@ -155173,7 +155173,7 @@ const SENTENCES = [
           "伝統やさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "花見は"
@@ -155187,7 +155187,7 @@ const SENTENCES = [
           "伝統っちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "꽃구경은"
@@ -155201,7 +155201,7 @@ const SENTENCES = [
           "전통이다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "꽃구경은"
@@ -155755,7 +155755,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "꽃구경은"
@@ -156043,7 +156043,7 @@ const SENTENCES = [
           "伝統じゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "はなみや"
@@ -156057,7 +156057,7 @@ const SENTENCES = [
           "でんとうどぅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "はなみや"
@@ -156749,7 +156749,7 @@ const SENTENCES = [
           "𥪝侄節中國"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちらは"
@@ -156767,7 +156767,7 @@ const SENTENCES = [
           "食べんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わんどは"
@@ -156785,7 +156785,7 @@ const SENTENCES = [
           "くうんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わったーは"
@@ -156803,7 +156803,7 @@ const SENTENCES = [
           "かむんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちらは"
@@ -156821,7 +156821,7 @@ const SENTENCES = [
           "食べるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "우리는"
@@ -156839,7 +156839,7 @@ const SENTENCES = [
           "먹는다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "우리는"
@@ -157405,7 +157405,7 @@ const SENTENCES = [
           "खाते ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "우리는"
@@ -157721,7 +157721,7 @@ const SENTENCES = [
           "食べるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんたーや"
@@ -157739,7 +157739,7 @@ const SENTENCES = [
           "かむい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんたーや"
@@ -158423,7 +158423,7 @@ const SENTENCES = [
           "得組織"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この国は"
@@ -158441,7 +158441,7 @@ const SENTENCES = [
           "あんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この国さは"
@@ -158459,7 +158459,7 @@ const SENTENCES = [
           "開催されるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ国でぃは"
@@ -158477,7 +158477,7 @@ const SENTENCES = [
           "あんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この国じゃ"
@@ -158495,7 +158495,7 @@ const SENTENCES = [
           "開催されるっちゃん"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이 나라에서는"
@@ -158513,7 +158513,7 @@ const SENTENCES = [
           "열린다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이 나라에서는"
@@ -159107,7 +159107,7 @@ const SENTENCES = [
           "आयोजित होते ہیں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이 나라에서는"
@@ -159435,7 +159435,7 @@ const SENTENCES = [
           "開催されるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬくにんかいや"
@@ -159453,7 +159453,7 @@ const SENTENCES = [
           "あり"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬくにや"
@@ -160062,7 +160062,7 @@ const SENTENCES = [
           "仍𣴖𨷲𪦲"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "語学やると"
@@ -160076,7 +160076,7 @@ const SENTENCES = [
           "開くねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "語学やれば"
@@ -160090,7 +160090,7 @@ const SENTENCES = [
           "開ぐんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "語学学習は"
@@ -160104,7 +160104,7 @@ const SENTENCES = [
           "開ちゅんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "語学学習は"
@@ -160118,7 +160118,7 @@ const SENTENCES = [
           "開くばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "언어 학습은"
@@ -160132,7 +160132,7 @@ const SENTENCES = [
           "열어준다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "언어 공부는"
@@ -160594,7 +160594,7 @@ const SENTENCES = [
           "खोलता ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "언어 학습은"
@@ -160842,7 +160842,7 @@ const SENTENCES = [
           "開くんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ぐがくがくしゅうや"
@@ -160856,7 +160856,7 @@ const SENTENCES = [
           "あきゅい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ぐがくがくしゅーや"
@@ -161413,7 +161413,7 @@ const SENTENCES = [
           "平車踏"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "自転車で"
@@ -161427,7 +161427,7 @@ const SENTENCES = [
           "行くねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "自転車で"
@@ -161441,7 +161441,7 @@ const SENTENCES = [
           "いぐんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "自転車で"
@@ -161455,7 +161455,7 @@ const SENTENCES = [
           "行ちゅんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "自転車で"
@@ -161469,7 +161469,7 @@ const SENTENCES = [
           "行くと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "C",
           "나는"
@@ -161487,7 +161487,7 @@ const SENTENCES = [
           "간다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "C",
           "나는"
@@ -161961,7 +161961,7 @@ const SENTENCES = [
           "जाता ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "C",
           "나는"
@@ -162229,7 +162229,7 @@ const SENTENCES = [
           "行くんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "じてんしゃんかい"
@@ -162243,7 +162243,7 @@ const SENTENCES = [
           "いくい"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "じてんしゃーし"
@@ -162907,7 +162907,7 @@ const SENTENCES = [
           "在𫄵四接調"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "B",
           "次の交差点"
@@ -162925,7 +162925,7 @@ const SENTENCES = [
           "な"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "B",
           "次の交差点で"
@@ -162943,7 +162943,7 @@ const SENTENCES = [
           "けれじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "B",
           "次ぬ交差点で"
@@ -162961,7 +162961,7 @@ const SENTENCES = [
           "くぃみそーれー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "B",
           "次の交差点で"
@@ -162979,7 +162979,7 @@ const SENTENCES = [
           "くれんね"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "B",
           "다음 교차로에서"
@@ -162997,7 +162997,7 @@ const SENTENCES = [
           "주십시오"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "B",
           "다음 교차로에서"
@@ -163591,7 +163591,7 @@ const SENTENCES = [
           "मुड़ें"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "B",
           "다음 교차로에서"
@@ -163907,7 +163907,7 @@ const SENTENCES = [
           "くれんさい"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "B",
           "つぃぎぬつぃずぃんかい"
@@ -163925,7 +163925,7 @@ const SENTENCES = [
           "くぃりょー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "B",
           "つぎぬつじなーち"
@@ -164629,7 +164629,7 @@ const SENTENCES = [
           "牙𨈚"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "スーパーは"
@@ -164647,7 +164647,7 @@ const SENTENCES = [
           "あんねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "スーパーは"
@@ -164665,7 +164665,7 @@ const SENTENCES = [
           "あるんず"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "スーパーは"
@@ -164683,7 +164683,7 @@ const SENTENCES = [
           "あんどー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "スーパーは"
@@ -164701,7 +164701,7 @@ const SENTENCES = [
           "あるばい"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "식료품상점은"
@@ -164719,7 +164719,7 @@ const SENTENCES = [
           "있다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "슈퍼는"
@@ -165313,7 +165313,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "슈퍼마켓은"
@@ -165629,7 +165629,7 @@ const SENTENCES = [
           "あるんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "すーぱーや"
@@ -165647,7 +165647,7 @@ const SENTENCES = [
           "あり"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "すーぱーや"
@@ -166339,7 +166339,7 @@ const SENTENCES = [
           "悶尼"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "うちは"
@@ -166353,7 +166353,7 @@ const SENTENCES = [
           "注文したいねん"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "わは"
@@ -166367,7 +166367,7 @@ const SENTENCES = [
           "注文してぇじゃ"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "わんや"
@@ -166381,7 +166381,7 @@ const SENTENCES = [
           "注文したいさー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "うちは"
@@ -166395,7 +166395,7 @@ const SENTENCES = [
           "注文したかと"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "나는"
@@ -166413,7 +166413,7 @@ const SENTENCES = [
           "싶다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "나는"
@@ -166935,7 +166935,7 @@ const SENTENCES = [
           "چاہتا ہوں"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "나는"
@@ -167239,7 +167239,7 @@ const SENTENCES = [
           "注文したいんじゃ"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ばんや"
@@ -167253,7 +167253,7 @@ const SENTENCES = [
           "ちゅうもんすぶさりゅー"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ばんや"
@@ -167893,7 +167893,7 @@ const SENTENCES = [
           "價包饒"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "この"
@@ -167911,7 +167911,7 @@ const SENTENCES = [
           "やの"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "この"
@@ -167929,7 +167929,7 @@ const SENTENCES = [
           "だがや"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "くぬ"
@@ -167947,7 +167947,7 @@ const SENTENCES = [
           "がやー"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "この"
@@ -167965,7 +167965,7 @@ const SENTENCES = [
           "すると?"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "이"
@@ -167983,7 +167983,7 @@ const SENTENCES = [
           "입니까"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "이"
@@ -168529,7 +168529,7 @@ const SENTENCES = [
           "ہے"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "이"
@@ -168825,7 +168825,7 @@ const SENTENCES = [
           "かいの"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "くぬ"
@@ -168843,7 +168843,7 @@ const SENTENCES = [
           "が"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "くぬ"
@@ -169420,7 +169420,7 @@ const SENTENCES = [
           "悉𠸗每序"
         ]
       ],
-      "osa": [
+      "ja_osa": [
         [
           "A",
           "ほんま"
@@ -169430,7 +169430,7 @@ const SENTENCES = [
           "おおきに"
         ]
       ],
-      "aom": [
+      "ja_aom": [
         [
           "A",
           "何もかも"
@@ -169440,7 +169440,7 @@ const SENTENCES = [
           "ありがどさん"
         ]
       ],
-      "oki": [
+      "ja_oki": [
         [
           "A",
           "何もかも"
@@ -169450,7 +169450,7 @@ const SENTENCES = [
           "にふぇーでーびる"
         ]
       ],
-      "hak": [
+      "ja_hak": [
         [
           "A",
           "何もかも"
@@ -169460,7 +169460,7 @@ const SENTENCES = [
           "ありがとう"
         ]
       ],
-      "kp": [
+      "ko_kp": [
         [
           "A",
           "모든 것에"
@@ -169470,7 +169470,7 @@ const SENTENCES = [
           "감사드립니다"
         ]
       ],
-      "bus": [
+      "ko_bus": [
         [
           "A",
           "전부 다"
@@ -169856,7 +169856,7 @@ const SENTENCES = [
           "धन्यवाद"
         ]
       ],
-      "jeju": [
+      "ko_jeju": [
         [
           "A",
           "모든 것에"
@@ -170072,7 +170072,7 @@ const SENTENCES = [
           "ありがとうのう"
         ]
       ],
-      "mvi": [
+      "ja_mvi": [
         [
           "A",
           "ぬーまーかーま"
@@ -170082,7 +170082,7 @@ const SENTENCES = [
           "たんでぃがーたんでぃ"
         ]
       ],
-      "rys": [
+      "ja_rys": [
         [
           "A",
           "ぬーまーかーま"
