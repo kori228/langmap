@@ -18589,7 +18589,7 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "B",
+          "D",
           "Potesne"
         ],
         [
@@ -18597,7 +18597,7 @@ const SENTENCES = [
           "tu"
         ],
         [
-          "D",
+          "B",
           "Anglice"
         ],
         [
