@@ -163,15 +163,33 @@ select:focus { border-color: #4a90d9; outline: none; }
 }
 .btn-open-modal:hover { background: #f0f2f5; color: #333; }
 .exp-badge {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 700;
     color: #fff;
     background: #e67e22;
     border-radius: 3px;
-    padding: 1px 3px;
-    margin-left: 3px;
+    padding: 2px 5px;
+    margin-left: 4px;
     vertical-align: middle;
     letter-spacing: 0.5px;
+}
+.hist-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: #8e44ad;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+.lang-label .hist-badge,
+.lang-label .exp-badge {
+    font-size: 9px;
+    color: #999;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 1px 3px;
 }
 
 /* Language selector modal */

@@ -82,7 +82,7 @@ const LANGUAGES = [
     { code: 'hak', name: '博多弁', group: 'JPN', experimental: true },
     { code: 'oki', name: '沖縄弁', group: 'JPN', experimental: true },
     { code: 'aom', name: '青森弁', group: 'JPN', experimental: true },
-    { code: 'ja_edo', name: '江戸時代語', group: 'JPN', experimental: true },
+    { code: 'ja_edo', name: '江戸時代語', group: 'JPN', experimental: true, historical: true },
     { code: 'ain', name: 'アイヌ語', group: 'JPN' },
     // Korean & variants
     { code: 'ko', name: '韓国語(標準)', group: 'KOR' },
@@ -93,10 +93,10 @@ const LANGUAGES = [
     { code: 'yue', name: '広東語', group: 'CHN' },
     { code: 'nan', name: '台湾語', group: 'CHN' },
     { code: 'wuu', name: '上海語', group: 'CHN' },
-    { code: 'zh_classical', name: '文言', group: 'CHN', experimental: true },
+    { code: 'zh_classical', name: '文言', group: 'CHN', experimental: true, historical: true },
     // Southeast Asian & Austronesian
     { code: 'vi', name: 'ベトナム語', group: 'SEA' },
-    { code: 'vi_nom', name: 'チューノム', group: 'SEA', experimental: true },
+    { code: 'vi_nom', name: 'チューノム', group: 'SEA', experimental: true, historical: true },
     { code: 'th', name: 'タイ語', group: 'SEA' },
     { code: 'my', name: 'ミャンマー語', group: 'SEA' },
     { code: 'id', name: 'インドネシア語', group: 'SEA' },
@@ -104,7 +104,7 @@ const LANGUAGES = [
     { code: 'tl', name: 'タガログ語', group: 'SEA' },
     { code: 'mg', name: 'マダガスカル語', group: 'SEA' },
     // South & Central Asian (Indo-Iranian, Dravidian, Altaic)
-    { code: 'sa', name: 'サンスクリット語', group: 'SAS', experimental: true },
+    { code: 'sa', name: 'サンスクリット語', group: 'SAS', experimental: true, historical: true },
     { code: 'hi', name: 'ヒンディー語', group: 'SAS' },
     { code: 'ta', name: 'タミル語', group: 'SAS' },
     { code: 'fa', name: 'ペルシャ語', group: 'SAS' },
@@ -115,7 +115,7 @@ const LANGUAGES = [
     { code: 'ar_eg', name: 'アラビア語(エジプト方言)', group: 'SEM', experimental: true },
     { code: 'he', name: 'ヘブライ語', group: 'SEM' },
     { code: 'am', name: 'アムハラ語', group: 'SEM' },
-    { code: 'egy', name: '古代エジプト語', group: 'SEM', experimental: true },
+    { code: 'egy', name: '古代エジプト語', group: 'SEM', experimental: true, historical: true },
     { code: 'sw', name: 'スワヒリ語', group: 'SEM' },
     // Germanic
     { code: 'en', name: '英語', group: 'EUR' },
@@ -133,7 +133,7 @@ const LANGUAGES = [
     { code: 'cy', name: 'ウェールズ語', group: 'CEL' },
     { code: 'eu', name: 'バスク語', group: 'CEL' },
     // Romance
-    { code: 'la', name: 'ラテン語', group: 'ROM', experimental: true },
+    { code: 'la', name: 'ラテン語', group: 'ROM', experimental: true, historical: true },
     { code: 'fr', name: 'フランス語', group: 'ROM' },
     { code: 'it', name: 'イタリア語', group: 'ROM' },
     { code: 'es_eu', name: 'スペイン語(欧州)', group: 'ROM' },
@@ -150,6 +150,7 @@ const LANGUAGES = [
 
 const DEFAULT_ORDER = LANGUAGES.map(l => l.code);
 const EXPERIMENTAL_LANGS = new Set(LANGUAGES.filter(l => l.experimental).map(l => l.code));
+const HISTORICAL_LANGS = new Set(LANGUAGES.filter(l => l.historical).map(l => l.code));
 const MAJOR_LANGS = new Set(['ja', 'ko', 'zh', 'en', 'es_mx', 'ar']);
 const NO_SPACE_LANGS = new Set(['ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'th', 'vi_nom']);
 
@@ -497,11 +498,12 @@ function createModalToggle(lang) {
     const label = document.createElement('label');
     label.className = 'lang-toggle' + (isOn ? ' active' : '');
     if (lang.experimental) label.classList.add('experimental');
-    const expBadge = lang.experimental ? '<span class="exp-badge">Exp</span>' : '';
+    const badge = lang.historical ? '<span class="hist-badge">Hist</span>'
+        : lang.experimental ? '<span class="exp-badge">Exp</span>' : '';
     label.innerHTML = `
         <span class="dot"></span>
         <input type="checkbox" ${isOn ? 'checked' : ''} data-lang="${lang.code}">
-        <span>${langName(lang.code)}</span>${expBadge}
+        <span>${langName(lang.code)}</span>${badge}
     `;
     label.addEventListener('click', (e) => {
         e.preventDefault();
@@ -789,7 +791,11 @@ function render() {
 
         const label = document.createElement('div');
         label.className = 'lang-label';
-        label.textContent = langName(code);
+        if (HISTORICAL_LANGS.has(code)) {
+            label.innerHTML = langName(code) + '<span class="hist-badge">Hist</span>';
+        } else {
+            label.textContent = langName(code);
+        }
         row.appendChild(label);
 
         const textDiv = document.createElement('div');
