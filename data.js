@@ -329,6 +329,36 @@ const SENTENCES = [
           "across from the hotel"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "F",
+          "want to try on"
+        ],
+        [
+          "E",
+          "a suit"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "saw"
+        ],
+        [
+          "C",
+          "in a shop"
+        ],
+        [
+          "B",
+          "across from the hotel"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -1769,6 +1799,24 @@ const SENTENCES = [
           "Tanaka"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "My"
+        ],
+        [
+          "B",
+          "name"
+        ],
+        [
+          "C",
+          "is"
+        ],
+        [
+          "D",
+          "Tanaka"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -2791,6 +2839,28 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "breakfast"
+        ],
+        [
+          "D",
+          "every mornin'"
+        ],
+        [
+          "E",
+          "at 7 o'clock"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -3984,6 +4054,24 @@ const SENTENCES = [
           "at"
         ]
       ],
+      "en_south": [
+        [
+          "C",
+          "Where"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "A",
+          "the nearest"
+        ],
+        [
+          "B",
+          "station"
+        ]
+      ],
       "en_ie": [
         [
           "C",
@@ -4994,6 +5082,28 @@ const SENTENCES = [
         [
           "D",
           "delicious"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "coffee"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "D",
+          "good"
         ]
       ],
       "en_ie": [
@@ -6088,6 +6198,24 @@ const SENTENCES = [
           "at the university"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "study"
+        ],
+        [
+          "C",
+          "Japanese"
+        ],
+        [
+          "B",
+          "at the university"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -7090,6 +7218,24 @@ const SENTENCES = [
         [
           "C",
           "gon' be"
+        ],
+        [
+          "D",
+          "sunny"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Tomorrow's"
+        ],
+        [
+          "B",
+          "weather"
+        ],
+        [
+          "C",
+          "is fixin' to be"
         ],
         [
           "D",
@@ -8124,6 +8270,24 @@ const SENTENCES = [
           "every day"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "My mama"
+        ],
+        [
+          "C",
+          "cooks"
+        ],
+        [
+          "B",
+          "supper"
+        ],
+        [
+          "D",
+          "every day"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -9142,6 +9306,24 @@ const SENTENCES = [
         [
           "C",
           "wanna go"
+        ],
+        [
+          "B",
+          "to Japan"
+        ],
+        [
+          "D",
+          "next year"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "C",
+          "fixin' to go"
         ],
         [
           "B",
@@ -10182,6 +10364,24 @@ const SENTENCES = [
         [
           "A",
           "you"
+        ],
+        [
+          "C",
+          "speak"
+        ],
+        [
+          "B",
+          "English"
+        ]
+      ],
+      "en_south": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "y'all"
         ],
         [
           "C",
@@ -11289,6 +11489,32 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "bought"
+        ],
+        [
+          "D",
+          "a new"
+        ],
+        [
+          "E",
+          "book"
+        ],
+        [
+          "B",
+          "at the bookstore"
+        ],
+        [
+          "F",
+          "yesterday"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -12698,6 +12924,24 @@ const SENTENCES = [
           "is beautiful"
         ]
       ],
+      "en_south": [
+        [
+          "C",
+          "The cherry blossoms"
+        ],
+        [
+          "A",
+          "in this"
+        ],
+        [
+          "B",
+          "park"
+        ],
+        [
+          "D",
+          "are right pretty"
+        ]
+      ],
       "en_ie": [
         [
           "C",
@@ -13722,6 +13966,24 @@ const SENTENCES = [
           "please"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "Would y'all"
+        ],
+        [
+          "D",
+          "get"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a glass of water"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -14656,6 +14918,28 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "go"
+        ],
+        [
+          "B",
+          "to work"
+        ],
+        [
+          "D",
+          "by train"
+        ],
+        [
+          "E",
+          "every day"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -15861,6 +16145,24 @@ const SENTENCES = [
           "in France"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "My little sister"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "studyin' abroad"
+        ],
+        [
+          "B",
+          "in France"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -16849,6 +17151,24 @@ const SENTENCES = [
           "start"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "What time"
+        ],
+        [
+          "D",
+          "does"
+        ],
+        [
+          "B",
+          "the movie"
+        ],
+        [
+          "C",
+          "start"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -17811,6 +18131,28 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "got"
+        ],
+        [
+          "B",
+          "a meetin'"
+        ],
+        [
+          "D",
+          "at 3 o'clock"
+        ],
+        [
+          "E",
+          "this afternoon"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -19012,6 +19354,28 @@ const SENTENCES = [
           "expensive"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "bag"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "way too"
+        ],
+        [
+          "D",
+          "expensive"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -20108,6 +20472,24 @@ const SENTENCES = [
           "music"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "like"
+        ],
+        [
+          "C",
+          "listenin' to"
+        ],
+        [
+          "B",
+          "music"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -21110,6 +21492,20 @@ const SENTENCES = [
         [
           "C",
           "It been"
+        ],
+        [
+          "B",
+          "rainin'"
+        ],
+        [
+          "A",
+          "since this mornin'"
+        ]
+      ],
+      "en_south": [
+        [
+          "C",
+          "It's been"
         ],
         [
           "B",
@@ -22125,6 +22521,28 @@ const SENTENCES = [
         [
           "C",
           "with my folks"
+        ],
+        [
+          "B",
+          "tonight"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "fixin' to have"
+        ],
+        [
+          "D",
+          "supper"
+        ],
+        [
+          "C",
+          "with friends"
         ],
         [
           "B",
@@ -23318,6 +23736,28 @@ const SENTENCES = [
           "language"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "learn"
+        ],
+        [
+          "B",
+          "a new"
+        ],
+        [
+          "C",
+          "language"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -24494,6 +24934,24 @@ const SENTENCES = [
           "the hospital"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "The library"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "right next to"
+        ],
+        [
+          "C",
+          "the hospital"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -25510,6 +25968,24 @@ const SENTENCES = [
           "the menu"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "Could y'all"
+        ],
+        [
+          "D",
+          "show"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "the menu"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -26455,6 +26931,28 @@ const SENTENCES = [
         [
           "E",
           "work"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "a big"
+        ],
+        [
+          "D",
+          "company"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "My daddy"
+        ],
+        [
+          "E",
+          "works"
         ],
         [
           "B",
@@ -27581,6 +28079,24 @@ const SENTENCES = [
           "in the park"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "The young'uns"
+        ],
+        [
+          "D",
+          "are"
+        ],
+        [
+          "C",
+          "playin'"
+        ],
+        [
+          "B",
+          "in the park"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -28583,6 +29099,24 @@ const SENTENCES = [
         [
           "B",
           "Tokyo"
+        ],
+        [
+          "C",
+          "three times"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "done been"
+        ],
+        [
+          "B",
+          "to Tokyo"
         ],
         [
           "C",
@@ -29601,6 +30135,24 @@ const SENTENCES = [
           "a good restaurant"
         ]
       ],
+      "en_south": [
+        [
+          "D",
+          "Could"
+        ],
+        [
+          "A",
+          "y'all"
+        ],
+        [
+          "C",
+          "recommend"
+        ],
+        [
+          "B",
+          "a good restaurant"
+        ]
+      ],
       "en_ie": [
         [
           "D",
@@ -30516,6 +31068,24 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "done left"
+        ],
+        [
+          "B",
+          "my umbrella"
+        ],
+        [
+          "D",
+          "on the train"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -31586,6 +32156,28 @@ const SENTENCES = [
         [
           "D",
           "real good"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "sure can"
+        ],
+        [
+          "C",
+          "play"
+        ],
+        [
+          "B",
+          "the piano"
+        ],
+        [
+          "D",
+          "right well"
         ]
       ],
       "en_ie": [
@@ -32729,6 +33321,20 @@ const SENTENCES = [
           "next Monday"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "The exam"
+        ],
+        [
+          "C",
+          "is"
+        ],
+        [
+          "B",
+          "next Monday"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -33582,6 +34188,28 @@ const SENTENCES = [
         [
           "E",
           "wanna"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "sushi"
+        ],
+        [
+          "D",
+          "for lunch"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
         ],
         [
           "C",
@@ -34672,6 +35300,24 @@ const SENTENCES = [
           "clean"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "The hotel room"
+        ],
+        [
+          "B",
+          "was"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "D",
+          "clean"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -35629,6 +36275,20 @@ const SENTENCES = [
           "a lil' slower"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "Would y'all"
+        ],
+        [
+          "C",
+          "speak"
+        ],
+        [
+          "B",
+          "a little slower"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -36420,6 +37080,20 @@ const SENTENCES = [
         [
           "A",
           "My big brother"
+        ],
+        [
+          "B",
+          "got married"
+        ],
+        [
+          "C",
+          "last month"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "My older brother"
         ],
         [
           "B",
@@ -37294,6 +37968,24 @@ const SENTENCES = [
         [
           "B",
           "people"
+        ],
+        [
+          "C",
+          "at the station"
+        ]
+      ],
+      "en_south": [
+        [
+          "D",
+          "There's"
+        ],
+        [
+          "A",
+          "a whole lot of"
+        ],
+        [
+          "B",
+          "folks"
         ],
         [
           "C",
@@ -38367,6 +39059,32 @@ const SENTENCES = [
         [
           "B",
           "gotta"
+        ],
+        [
+          "E",
+          "buy"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "birthday"
+        ],
+        [
+          "D",
+          "present"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "B",
+          "need to"
         ],
         [
           "E",
@@ -39544,6 +40262,20 @@ const SENTENCES = [
           "look real nice"
         ]
       ],
+      "en_south": [
+        [
+          "B",
+          "The sunset"
+        ],
+        [
+          "A",
+          "from here"
+        ],
+        [
+          "C",
+          "is right pretty"
+        ]
+      ],
       "en_ie": [
         [
           "B",
@@ -40443,6 +41175,28 @@ const SENTENCES = [
         [
           "D",
           "wake up"
+        ],
+        [
+          "B",
+          "early"
+        ],
+        [
+          "C",
+          "tomorrow"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "gotta"
+        ],
+        [
+          "D",
+          "get up"
         ],
         [
           "B",
@@ -41694,6 +42448,32 @@ const SENTENCES = [
           "at"
         ]
       ],
+      "en_south": [
+        [
+          "E",
+          "Do"
+        ],
+        [
+          "A",
+          "y'all"
+        ],
+        [
+          "E",
+          "know"
+        ],
+        [
+          "C",
+          "where"
+        ],
+        [
+          "B",
+          "the post office"
+        ],
+        [
+          "D",
+          "is"
+        ]
+      ],
       "en_ie": [
         [
           "E",
@@ -42878,6 +43658,32 @@ const SENTENCES = [
         ]
       ],
       "en_aave": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "readin'"
+        ],
+        [
+          "D",
+          "an"
+        ],
+        [
+          "C",
+          "interestin'"
+        ],
+        [
+          "D",
+          "book"
+        ],
+        [
+          "B",
+          "right now"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I'm"
@@ -44180,6 +44986,32 @@ const SENTENCES = [
           "dress"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "C",
+          "wears"
+        ],
+        [
+          "E",
+          "a"
+        ],
+        [
+          "D",
+          "red"
+        ],
+        [
+          "E",
+          "dress"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -45379,6 +46211,20 @@ const SENTENCES = [
           "be hittin'"
         ]
       ],
+      "en_south": [
+        [
+          "B",
+          "The food"
+        ],
+        [
+          "A",
+          "at this restaurant"
+        ],
+        [
+          "C",
+          "is right good"
+        ]
+      ],
       "en_ie": [
         [
           "B",
@@ -46231,6 +47077,24 @@ const SENTENCES = [
         [
           "B",
           "around the world"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "travel"
+        ],
+        [
+          "B",
+          "all over the world"
         ]
       ],
       "en_ie": [
@@ -47233,6 +48097,24 @@ const SENTENCES = [
         [
           "B",
           "in the winter"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "D",
+          "it gets"
+        ],
+        [
+          "C",
+          "cold"
+        ],
+        [
+          "B",
+          "in winter"
         ]
       ],
       "en_ie": [
@@ -48298,6 +49180,28 @@ const SENTENCES = [
         [
           "B",
           "with my homie"
+        ],
+        [
+          "C",
+          "on the phone"
+        ],
+        [
+          "D",
+          "for an hour"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "talked"
+        ],
+        [
+          "B",
+          "with my friend"
         ],
         [
           "C",
@@ -49510,6 +50414,24 @@ const SENTENCES = [
           "real clear"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "The teacher"
+        ],
+        [
+          "D",
+          "explained"
+        ],
+        [
+          "B",
+          "the problem"
+        ],
+        [
+          "C",
+          "real clear"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -50548,6 +51470,24 @@ const SENTENCES = [
           "that movie"
         ]
       ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "fixin' to"
+        ],
+        [
+          "C",
+          "watch"
+        ],
+        [
+          "B",
+          "that movie"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -51488,6 +52428,24 @@ const SENTENCES = [
         [
           "C",
           "how to get to the airport"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Would y'all"
+        ],
+        [
+          "D",
+          "tell"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "the way to the airport"
         ]
       ],
       "en_ie": [
@@ -52470,6 +53428,24 @@ const SENTENCES = [
         [
           "C",
           "goin' on"
+        ],
+        [
+          "B",
+          "walks"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "My dog"
+        ],
+        [
+          "D",
+          "loves"
+        ],
+        [
+          "C",
+          "goin' for"
         ],
         [
           "B",
