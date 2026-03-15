@@ -10,34 +10,40 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 33 languages with hand-aligned semantic segments
-- **33 languages** including dialects and historical variants (see below)
+- **100 sample sentences** across 46 languages with hand-aligned semantic segments
+- **46 languages** including dialects and historical variants (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
 - **URL state persistence** — every setting (sentence, languages, order, UI language) is saved in the URL hash for sharing and bookmarking
 - **UI in 21 languages** — switch the entire interface language from the top-right selector
-- **RTL support** — Arabic and Hebrew render right-to-left
+- **RTL support** — Arabic, Hebrew, and Persian render right-to-left
 - **Export** — save as PNG or SVG
 - **Share** — copy URL, share to X (Twitter), Facebook, LINE
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
 
-## Languages (33 total, ordered by similarity)
+## Languages (46 total, ordered by similarity)
 
 | Group | Languages | Codes |
 |---|---|---|
 | Japanese | Standard, Osaka, Hakata, Okinawan, Aomori, Edo-period | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` |
 | Korean | Standard, North Korean, Busan dialect | `ko`, `kp`, `bus` |
+| Mongolic | Mongolian | `mn` |
+| Turkic | Turkish | `tr` |
 | Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Classical Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
-| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Indonesian | `vi`, `vi_nom`, `th`, `id` |
-| South Asian | Hindi | `hi` |
-| Germanic | English, German | `en`, `de` |
-| Romance | French, Italian, Spanish (EU/MX), Portuguese (EU/BR) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
-| Slavic | Russian, Ukrainian | `ru`, `uk` |
-| Semitic | Arabic (MSA), Arabic (Egyptian), Hebrew | `ar`, `ar_eg`, `he` |
+| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Burmese, Indonesian, Malay, Tagalog | `vi`, `vi_nom`, `th`, `my`, `id`, `ms`, `tl` |
+| South Asian | Hindi, Tamil | `hi`, `ta` |
+| Iranian | Persian | `fa` |
+| Semitic | Arabic (MSA), Arabic (Egyptian), Hebrew, Amharic | `ar`, `ar_eg`, `he`, `am` |
 | African | Swahili | `sw` |
+| Germanic | English, Dutch, German | `en`, `nl`, `de` |
+| Celtic | Irish | `ga` |
+| Romance | French, Italian, Spanish (EU/MX), Portuguese (EU/BR) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| Basque | Basque | `eu` |
+| Slavic | Russian, Ukrainian, Polish | `ru`, `uk`, `pl` |
+| Uralic | Hungarian | `hu` |
 
 ## Getting Started
 
@@ -75,7 +81,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 33 languages with segment alignments
+  data.js            — 100 sentences × 46 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -139,34 +145,40 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 33言語で意味単位のアラインメント済み
-- **33言語対応** — 方言・歴史的変種を含む（下表参照）
+- **100のサンプル文** — 46言語で意味単位のアラインメント済み
+- **46言語対応** — 方言・歴史的変種を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
 - **URL状態保持** — 文章、言語、順序、UI言語がすべてURLハッシュに保存され、共有・ブックマーク可能
 - **UIの21言語対応** — 右上のセレクタでインターフェース言語を切替
-- **RTL対応** — アラビア語・ヘブライ語は右から左に表示
+- **RTL対応** — アラビア語・ヘブライ語・ペルシャ語は右から左に表示
 - **エクスポート** — PNG・SVGで保存
 - **シェア** — URLコピー、X (Twitter)、Facebook、LINEへの共有ボタン
 - **キーボードショートカット** — `←`/`→`で文章切替、`r`でランダム
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（33言語、類似言語順）
+## 言語一覧（46言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
 | 日本語 | 標準語、大阪弁、博多弁、沖縄弁、青森弁、江戸時代語 | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` |
 | 韓国語 | 標準語、北朝鮮語、釜山弁 | `ko`, `kp`, `bus` |
+| モンゴル語派 | モンゴル語 | `mn` |
+| テュルク語派 | トルコ語 | `tr` |
 | 中国語 | 普通話、広東語、台湾語、上海語、文言 | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
-| 東南アジア | ベトナム語、チューノム、タイ語、インドネシア語 | `vi`, `vi_nom`, `th`, `id` |
-| 南アジア | ヒンディー語 | `hi` |
-| ゲルマン語派 | 英語、ドイツ語 | `en`, `de` |
-| ロマンス語派 | フランス語、イタリア語、スペイン語(欧州/メキシコ)、ポルトガル語(欧州/ブラジル) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
-| スラヴ語派 | ロシア語、ウクライナ語 | `ru`, `uk` |
-| セム語派 | アラビア語(フスハー)、アラビア語(エジプト方言)、ヘブライ語 | `ar`, `ar_eg`, `he` |
+| 東南アジア | ベトナム語、チューノム、タイ語、ミャンマー語、インドネシア語、マレー語、タガログ語 | `vi`, `vi_nom`, `th`, `my`, `id`, `ms`, `tl` |
+| 南アジア | ヒンディー語、タミル語 | `hi`, `ta` |
+| イラン語派 | ペルシャ語 | `fa` |
+| セム語派 | アラビア語(フスハー)、アラビア語(エジプト方言)、ヘブライ語、アムハラ語 | `ar`, `ar_eg`, `he`, `am` |
 | アフリカ | スワヒリ語 | `sw` |
+| ゲルマン語派 | 英語、オランダ語、ドイツ語 | `en`, `nl`, `de` |
+| ケルト語派 | アイルランド語 | `ga` |
+| ロマンス語派 | フランス語、イタリア語、スペイン語(欧州/メキシコ)、ポルトガル語(欧州/ブラジル) | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| バスク語 | バスク語 | `eu` |
+| スラヴ語派 | ロシア語、ウクライナ語、ポーランド語 | `ru`, `uk`, `pl` |
+| ウラル語派 | ハンガリー語 | `hu` |
 
 ## 使い方
 
@@ -204,7 +216,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 33言語のセグメントアラインメントデータ
+  data.js            — 100文 × 46言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```

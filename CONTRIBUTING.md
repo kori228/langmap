@@ -65,23 +65,29 @@ Segments must be listed in the natural word order of that language. Example:
 - Arabic/Hebrew: VSO order, verb typically first
 - Korean: SOV order like Japanese
 
-#### 4. All 33 languages must be included / 全33言語を含めること
+#### 4. All 46 languages must be included / 全46言語を含めること
 
-Every sentence must have entries for all 33 language codes:
+Every sentence must have entries for all 46 language codes:
 
 | Group | Codes | Notes |
 |---|---|---|
 | Japanese | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` | ja_edo uses Edo-period vocabulary |
 | Korean | `ko`, `kp`, `bus` | kp uses North Korean style |
+| Mongolic | `mn` | |
+| Turkic | `tr` | |
 | Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` | yue must use **Traditional Chinese (繁体字)** only |
 | Vietnamese | `vi`, `vi_nom` | vi_nom uses Chữ Nôm (字喃) characters, NOT quốc ngữ (Latin) |
-| SEA | `th`, `id` | |
-| South Asian | `hi` | |
-| Germanic | `en`, `de` | |
-| Romance | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` | |
-| Slavic | `ru`, `uk` | |
-| Semitic | `ar`, `ar_eg`, `he` | ar_eg uses Egyptian dialect |
+| SEA | `th`, `my`, `id`, `ms`, `tl` | |
+| South Asian | `hi`, `ta` | |
+| Iranian | `fa` | RTL |
+| Semitic | `ar`, `ar_eg`, `he`, `am` | ar_eg uses Egyptian dialect; ar/he are RTL |
 | African | `sw` | |
+| Germanic | `en`, `nl`, `de` | |
+| Celtic | `ga` | VSO order |
+| Romance | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` | |
+| Basque | `eu` | SOV order |
+| Slavic | `ru`, `uk`, `pl` | |
+| Uralic | `hu` | |
 
 #### 5. Cantonese (yue) must use Traditional Chinese / 広東語は繁体字のみ
 
@@ -222,6 +228,6 @@ This script checks:
 1. Choose a sentence that shows interesting word order differences
 2. Assign an `id` (next available number)
 3. Define semantic segments (A, B, C, ...)
-4. Translate and align all 33 languages
+4. Translate and align all 46 languages
 5. Run `validate_data.py` to verify
 6. Update cache buster version in `index.html` (`?v=N`)
