@@ -6,10 +6,12 @@
 
 Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_kim).
 
+**GitHub:** [github.com/jounlai/langmap](https://github.com/jounlai/langmap)
+
 ## Features
 
-- **100 sample sentences** across 32 languages with hand-aligned semantic segments
-- **32 languages** including dialects and historical variants (see below)
+- **100 sample sentences** across 33 languages with hand-aligned semantic segments
+- **33 languages** including dialects and historical variants (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -20,12 +22,13 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Share** — copy URL, share to X (Twitter), Facebook, LINE
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
+- **Copy text** — copy any language row's text with one click
 
-## Languages (32 total, ordered by similarity)
+## Languages (33 total, ordered by similarity)
 
 | Group | Languages | Codes |
 |---|---|---|
-| Japanese | Standard, Osaka dialect, Aomori dialect, Okinawan dialect, Edo-period | `ja`, `osa`, `aom`, `oki`, `ja_edo` |
+| Japanese | Standard, Osaka, Hakata, Okinawan, Aomori, Edo-period | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` |
 | Korean | Standard, North Korean, Busan dialect | `ko`, `kp`, `bus` |
 | Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Classical Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
 | Southeast Asian | Vietnamese, Chữ Nôm, Thai, Indonesian | `vi`, `vi_nom`, `th`, `id` |
@@ -72,7 +75,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 32 languages with segment alignments
+  data.js            — 100 sentences × 33 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -107,6 +110,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding sentences or lan
 
 Run `python3 validate_data.py` before committing to check for common errors.
 
+### Chữ Nôm Standardization
+
+Chữ Nôm characters in `vi_nom` follow these standardization references:
+- [ChuNomStandardization](https://github.com/valestanov/ChuNomStandardization) — primary character mapping
+- [chunom.org Standard 750](https://chunom.org/pages/standard/) — frequency-ranked standard characters
+
+## Author
+
+**趙 俊来** (Jounlai Cho) — [ヒューロン株式会社](https://heuron.com)
+Contact: cho@heuron.com | X: [@jounlai](https://x.com/jounlai)
+
 ## License
 
 MIT
@@ -121,10 +135,12 @@ MIT
 
 [sunjun_kim氏の言語マッピング画像](https://twitter.com/sunjun_kim)にインスパイアされています。
 
+**GitHub:** [github.com/jounlai/langmap](https://github.com/jounlai/langmap)
+
 ## 機能
 
-- **100のサンプル文** — 32言語で意味単位のアラインメント済み
-- **32言語対応** — 方言・歴史的変種を含む（下表参照）
+- **100のサンプル文** — 33言語で意味単位のアラインメント済み
+- **33言語対応** — 方言・歴史的変種を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -135,12 +151,13 @@ MIT
 - **シェア** — URLコピー、X (Twitter)、Facebook、LINEへの共有ボタン
 - **キーボードショートカット** — `←`/`→`で文章切替、`r`でランダム
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
+- **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（32言語、類似言語順）
+## 言語一覧（33言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
-| 日本語 | 標準語、大阪弁、青森弁、沖縄弁、江戸時代語 | `ja`, `osa`, `aom`, `oki`, `ja_edo` |
+| 日本語 | 標準語、大阪弁、博多弁、沖縄弁、青森弁、江戸時代語 | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` |
 | 韓国語 | 標準語、北朝鮮語、釜山弁 | `ko`, `kp`, `bus` |
 | 中国語 | 普通話、広東語、台湾語、上海語、文言 | `zh`, `yue`, `nan`, `wuu`, `zh_classical` |
 | 東南アジア | ベトナム語、チューノム、タイ語、インドネシア語 | `vi`, `vi_nom`, `th`, `id` |
@@ -187,7 +204,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 32言語のセグメントアラインメントデータ
+  data.js            — 100文 × 33言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
@@ -221,6 +238,17 @@ langmap/
 文章や言語の追加については [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 コミット前に `python3 validate_data.py` を実行してエラーチェックを行ってください。
+
+### チューノム標準化
+
+`vi_nom` のチューノム文字は以下の標準化リファレンスに基づいています：
+- [ChuNomStandardization](https://github.com/valestanov/ChuNomStandardization) — 主要な文字マッピング
+- [chunom.org 標準750字](https://chunom.org/pages/standard/) — 出現頻度順の標準文字
+
+## 制作
+
+**趙 俊来**（Jounlai Cho） — [ヒューロン株式会社](https://heuron.com)
+連絡先: cho@heuron.com | X: [@jounlai](https://x.com/jounlai)
 
 ## ライセンス
 

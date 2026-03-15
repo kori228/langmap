@@ -65,13 +65,13 @@ Segments must be listed in the natural word order of that language. Example:
 - Arabic/Hebrew: VSO order, verb typically first
 - Korean: SOV order like Japanese
 
-#### 4. All 32 languages must be included / 全32言語を含めること
+#### 4. All 33 languages must be included / 全33言語を含めること
 
-Every sentence must have entries for all 32 language codes:
+Every sentence must have entries for all 33 language codes:
 
 | Group | Codes | Notes |
 |---|---|---|
-| Japanese | `ja`, `osa`, `aom`, `oki`, `ja_edo` | ja_edo uses Edo-period vocabulary |
+| Japanese | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` | ja_edo uses Edo-period vocabulary |
 | Korean | `ko`, `kp`, `bus` | kp uses North Korean style |
 | Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` | yue must use **Traditional Chinese (繁体字)** only |
 | Vietnamese | `vi`, `vi_nom` | vi_nom uses Chữ Nôm (字喃) characters, NOT quốc ngữ (Latin) |
@@ -90,24 +90,43 @@ Every sentence must have entries for all 32 language codes:
 
 Never use simplified Chinese characters (简体字) for Cantonese entries.
 
-#### 6. Chữ Nôm (vi_nom) must use Hán-Nôm characters / チューノムは漢字・字喃を使用
+#### 6. Chữ Nôm (vi_nom) must use standardized Hán-Nôm characters / チューノムは標準化された漢字・字喃を使用
 
 **BAD:** `"Tôi đi"` (quốc ngữ / Latin script)
-**GOOD:** `"碎𨕭"` (Chữ Nôm)
+**GOOD:** `"碎𠫾"` (Chữ Nôm)
 
-Key Chữ Nôm characters:
-| Vietnamese | Chữ Nôm | Meaning |
-|---|---|---|
-| tôi | 碎 | I |
-| ăn | 𫗒 | eat |
-| đi | 𨕭 | go |
-| muốn | 𨷈 | want |
-| là | 羅 | is |
-| có | 固 | have |
-| không | 空 | no/not |
-| mở ra | 𨷯𧡊 | open |
-| đẹp | 𢶹 | beautiful |
-| rất | 慄 | very |
+Character selection must follow the standardization references:
+- **Primary:** [ChuNomStandardization](https://github.com/valestanov/ChuNomStandardization) (`NomStandardization.csv`)
+- **Secondary:** [chunom.org Standard 750](https://chunom.org/pages/standard/)
+
+Key standardized Chữ Nôm characters:
+| Vietnamese | Chữ Nôm | Unicode | Meaning |
+|---|---|---|---|
+| tôi | 碎 | U+788E | I |
+| ăn | 咹 | U+54B9 | eat |
+| đi | 𠫾 | U+20AFE | go |
+| muốn | 㦖 | U+3996 | want |
+| là | 羅 | U+7F85 | is |
+| có | 固 | U+56FA | have |
+| không | 空 | U+7A7A | no/not |
+| thấy | 𧡊 | U+2784A | see |
+| đẹp | 𢢲 | U+228B2 | beautiful |
+| rất | 慄 | U+6144 | very |
+| mới | 𪦲 | U+2A9B2 | new |
+| bữa | 𩛷 | U+296F7 | meal |
+| sáng | 𤏬 | U+243EC | morning |
+| giờ | 𣇞 | U+231DE | hour |
+| lúc | 𣅶 | U+23176 | moment |
+| bảy | 𦉱 | U+26271 | seven |
+| chín | 𠃩 | U+200E9 | nine |
+| nấu | 𤍇 | U+24347 | cook |
+| nắng | 𣌝 | U+2331D | sunny |
+| mưa | 𩄎 | U+2910E | rain |
+| mua | 𧷸 | U+27DF8 | buy |
+| đang | 當 | U+7576 | -ing |
+| mỗi | 每 | U+6BCF | each |
+
+**Important:** When adding new vi_nom entries, always look up characters in the standardization references above. Do NOT use non-standard variant characters even if they look similar.
 
 #### 7. Classical Chinese (zh_classical) uses literary style / 文言は文語体を使用
 
@@ -193,7 +212,7 @@ This script checks:
 
 1. Add to `LANGUAGES` array in `app.js`
 2. Add to `LANG_NAMES` in `app.js` (all 21 UI language entries)
-3. Add data for all 100 sentences in `data.js`
+3. Add data for all 100 sentences in `data.js` (33 languages)
 4. If RTL, add to `RTL_LANGS` set in `app.js`
 5. Run `validate_data.py` to verify
 6. Update cache buster version in `index.html` (`?v=N`)
@@ -203,6 +222,6 @@ This script checks:
 1. Choose a sentence that shows interesting word order differences
 2. Assign an `id` (next available number)
 3. Define semantic segments (A, B, C, ...)
-4. Translate and align all 32 languages
+4. Translate and align all 33 languages
 5. Run `validate_data.py` to verify
 6. Update cache buster version in `index.html` (`?v=N`)

@@ -644,6 +644,26 @@ select:focus { border-color: #4a90d9; outline: none; }
 .btn-fb:hover { background: #1565c0; }
 .btn-line { background: #06c755; color: #fff; }
 .btn-line:hover { background: #05a847; }
+.site-footer {
+    margin-top: 20px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #888;
+    border-top: 1px solid #ddd;
+}
+.site-footer a {
+    color: #666;
+    text-decoration: none;
+}
+.site-footer a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.footer-dot {
+    margin: 0 6px;
+    color: #ccc;
+}
 .copy-toast {
     position: fixed;
     bottom: 30px;
