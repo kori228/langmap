@@ -76,52 +76,48 @@ function langName(code) {
 
 // Language definitions - ordered geographically from Japan outward
 const LANGUAGES = [
-    // Japanese & dialects (SOV)
+    // Japanese, Ainu & dialects
     { code: 'ja', name: '日本語(標準)', group: 'JPN' },
     { code: 'osa', name: '大阪弁', group: 'JPN', experimental: true },
     { code: 'hak', name: '博多弁', group: 'JPN', experimental: true },
     { code: 'oki', name: '沖縄弁', group: 'JPN', experimental: true },
     { code: 'aom', name: '青森弁', group: 'JPN', experimental: true },
     { code: 'ja_edo', name: '江戸時代語', group: 'JPN', experimental: true },
-    // Korean & variants (SOV)
+    { code: 'ain', name: 'アイヌ語', group: 'JPN' },
+    // Korean & variants
     { code: 'ko', name: '韓国語(標準)', group: 'KOR' },
     { code: 'kp', name: '北朝鮮語', group: 'KOR', experimental: true },
     { code: 'bus', name: '釜山弁', group: 'KOR', experimental: true },
-    // Mongolic & Turkic (SOV, agglutinative)
-    { code: 'mn', name: 'モンゴル語', group: 'MON' },
-    { code: 'tr', name: 'トルコ語', group: 'TRK' },
-    // Chinese & variants (SVO)
+    // Chinese & variants
     { code: 'zh', name: '中国語(普通話)', group: 'CHN' },
     { code: 'yue', name: '広東語', group: 'CHN' },
     { code: 'nan', name: '台湾語', group: 'CHN' },
     { code: 'wuu', name: '上海語', group: 'CHN' },
     { code: 'zh_classical', name: '文言', group: 'CHN', experimental: true },
-    // Mainland Southeast Asian
+    // Southeast Asian & Austronesian
     { code: 'vi', name: 'ベトナム語', group: 'SEA' },
     { code: 'vi_nom', name: 'チューノム', group: 'SEA', experimental: true },
     { code: 'th', name: 'タイ語', group: 'SEA' },
     { code: 'my', name: 'ミャンマー語', group: 'SEA' },
-    // Maritime Southeast Asian (Austronesian)
     { code: 'id', name: 'インドネシア語', group: 'SEA' },
     { code: 'ms', name: 'マレー語', group: 'SEA' },
     { code: 'tl', name: 'タガログ語', group: 'SEA' },
     { code: 'mg', name: 'マダガスカル語', group: 'SEA' },
-    // South Asian
+    // South & Central Asian (Indo-Iranian, Dravidian, Altaic)
     { code: 'sa', name: 'サンスクリット語', group: 'SAS', experimental: true },
     { code: 'hi', name: 'ヒンディー語', group: 'SAS' },
     { code: 'ta', name: 'タミル語', group: 'SAS' },
-    // Iranian (SOV)
-    { code: 'fa', name: 'ペルシャ語', group: 'IRN' },
-    // Semitic
+    { code: 'fa', name: 'ペルシャ語', group: 'SAS' },
+    { code: 'mn', name: 'モンゴル語', group: 'SAS' },
+    { code: 'tr', name: 'トルコ語', group: 'SAS' },
+    // Semitic & African
     { code: 'ar', name: 'アラビア語(フスハー)', group: 'SEM' },
     { code: 'ar_eg', name: 'アラビア語(エジプト方言)', group: 'SEM', experimental: true },
     { code: 'he', name: 'ヘブライ語', group: 'SEM' },
     { code: 'am', name: 'アムハラ語', group: 'SEM' },
-    // Ancient Egyptian (VSO)
-    { code: 'egy', name: '古代エジプト語', group: 'EGY', experimental: true },
-    // African
-    { code: 'sw', name: 'スワヒリ語', group: 'AFR' },
-    // Germanic (SVO/V2)
+    { code: 'egy', name: '古代エジプト語', group: 'SEM', experimental: true },
+    { code: 'sw', name: 'スワヒリ語', group: 'SEM' },
+    // Germanic
     { code: 'en', name: '英語', group: 'EUR' },
     { code: 'en_aave', name: 'AAVE', group: 'EUR', experimental: true },
     { code: 'en_south', name: '英語(南部)', group: 'EUR', experimental: true },
@@ -132,10 +128,11 @@ const LANGUAGES = [
     { code: 'en_ck', name: '英語(コックニー)', group: 'EUR', experimental: true },
     { code: 'nl', name: 'オランダ語', group: 'EUR' },
     { code: 'de', name: 'ドイツ語', group: 'EUR' },
-    // Celtic (VSO)
+    // Celtic & Basque (Western European minorities)
     { code: 'ga', name: 'アイルランド語', group: 'CEL' },
     { code: 'cy', name: 'ウェールズ語', group: 'CEL' },
-    // Romance (SVO) & Latin (SOV)
+    { code: 'eu', name: 'バスク語', group: 'CEL' },
+    // Romance
     { code: 'la', name: 'ラテン語', group: 'ROM', experimental: true },
     { code: 'fr', name: 'フランス語', group: 'ROM' },
     { code: 'it', name: 'イタリア語', group: 'ROM' },
@@ -143,17 +140,12 @@ const LANGUAGES = [
     { code: 'es_mx', name: 'スペイン語(メキシコ)', group: 'ROM' },
     { code: 'pt_eu', name: 'ポルトガル語(欧州)', group: 'ROM' },
     { code: 'pt_br', name: 'ポルトガル語(ブラジル)', group: 'ROM' },
-    // Basque (SOV, isolate)
-    { code: 'eu', name: 'バスク語', group: 'ISO' },
-    // Slavic (SVO)
+    // Slavic & Uralic (Eastern & Northern Europe)
     { code: 'ru', name: 'ロシア語', group: 'SLV' },
     { code: 'uk', name: 'ウクライナ語', group: 'SLV' },
     { code: 'pl', name: 'ポーランド語', group: 'SLV' },
-    // Uralic
-    { code: 'fi', name: 'フィンランド語', group: 'URA' },
-    { code: 'hu', name: 'ハンガリー語', group: 'URA' },
-    // Ainu (isolate, SOV)
-    { code: 'ain', name: 'アイヌ語', group: 'AIN' },
+    { code: 'fi', name: 'フィンランド語', group: 'SLV' },
+    { code: 'hu', name: 'ハンガリー語', group: 'SLV' },
 ];
 
 const DEFAULT_ORDER = LANGUAGES.map(l => l.code);
@@ -527,8 +519,8 @@ function createModalToggle(lang) {
 }
 
 const GROUP_NAMES = {
-    ja: { JPN:'日本語', KOR:'韓国語', CHN:'中国語', SEA:'東南アジア', SAS:'南アジア', EUR:'ゲルマン', ROM:'ロマンス', SLV:'スラヴ', SEM:'セム', IRN:'イラン', EGY:'古代エジプト', AFR:'アフリカ', TRK:'テュルク', MON:'モンゴル', URA:'ウラル', CEL:'ケルト', ISO:'孤立', AIN:'アイヌ' },
-    en: { JPN:'Japanese', KOR:'Korean', CHN:'Chinese', SEA:'SE Asian', SAS:'S Asian', EUR:'Germanic', ROM:'Romance', SLV:'Slavic', SEM:'Semitic', IRN:'Iranian', EGY:'Ancient Egyptian', AFR:'African', TRK:'Turkic', MON:'Mongolic', URA:'Uralic', CEL:'Celtic', ISO:'Isolate', AIN:'Ainu' },
+    ja: { JPN:'日本語', KOR:'韓国語', CHN:'中国語', SEA:'東南アジア', SAS:'南・中央アジア', EUR:'ゲルマン', ROM:'ロマンス', SLV:'スラヴ・ウラル', SEM:'セム・アフリカ', CEL:'ケルト・バスク' },
+    en: { JPN:'Japanese', KOR:'Korean', CHN:'Chinese', SEA:'SE Asian', SAS:'S & Central Asian', EUR:'Germanic', ROM:'Romance', SLV:'Slavic & Uralic', SEM:'Semitic & African', CEL:'Celtic & Basque' },
 };
 
 function groupLabel(groupCode) {

@@ -389,6 +389,36 @@ const SENTENCES = [
           "across frae the hotel"
         ]
       ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "F",
+          "want to try on"
+        ],
+        [
+          "E",
+          "a suit"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "seen"
+        ],
+        [
+          "C",
+          "in a shop"
+        ],
+        [
+          "B",
+          "across from the hotel"
+        ]
+      ],
       "de": [
         [
           "A",
@@ -1476,6 +1506,66 @@ const SENTENCES = [
           "B",
           "gyferbyn â'r gwesty"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "F",
+          "want to try on"
+        ],
+        [
+          "E",
+          "a suit"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "saw"
+        ],
+        [
+          "C",
+          "in t'shop"
+        ],
+        [
+          "B",
+          "across from t'hotel"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "F",
+          "wanna try on"
+        ],
+        [
+          "E",
+          "a suit"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "saw"
+        ],
+        [
+          "C",
+          "in a shop"
+        ],
+        [
+          "B",
+          "across from the 'otel"
+        ]
       ]
     }
   },
@@ -1698,6 +1788,24 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "My"
+        ],
+        [
+          "B",
+          "name"
+        ],
+        [
+          "C",
+          "is"
+        ],
+        [
+          "D",
+          "Tanaka"
+        ]
+      ],
+      "en_app": [
         [
           "A",
           "My"
@@ -2402,6 +2510,42 @@ const SENTENCES = [
           "B",
           "enw"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me"
+        ],
+        [
+          "B",
+          "name"
+        ],
+        [
+          "C",
+          "'s"
+        ],
+        [
+          "D",
+          "Tanaka"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My"
+        ],
+        [
+          "B",
+          "name"
+        ],
+        [
+          "C",
+          "'s"
+        ],
+        [
+          "D",
+          "Tanaka"
+        ]
       ]
     }
   },
@@ -2706,6 +2850,28 @@ const SENTENCES = [
         [
           "D",
           "every morning"
+        ],
+        [
+          "E",
+          "at 7 o'clock"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "breakfast"
+        ],
+        [
+          "D",
+          "ever' mornin'"
         ],
         [
           "E",
@@ -3567,6 +3733,50 @@ const SENTENCES = [
           "D",
           "bob bore"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "'ave"
+        ],
+        [
+          "B",
+          "breakfast"
+        ],
+        [
+          "D",
+          "every mornin'"
+        ],
+        [
+          "E",
+          "at 7 o'clock"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "'ave"
+        ],
+        [
+          "B",
+          "breakfast"
+        ],
+        [
+          "D",
+          "every mornin'"
+        ],
+        [
+          "E",
+          "at 7 o'clock"
+        ]
       ]
     }
   },
@@ -3796,6 +4006,24 @@ const SENTENCES = [
         [
           "C",
           "Whaur"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "the nearest"
+        ],
+        [
+          "B",
+          "station"
+        ]
+      ],
+      "en_app": [
+        [
+          "C",
+          "Where"
         ],
         [
           "D",
@@ -4509,6 +4737,42 @@ const SENTENCES = [
           "B",
           "agosaf?"
         ]
+      ],
+      "en_yk": [
+        [
+          "C",
+          "Where"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "A",
+          "t'nearest"
+        ],
+        [
+          "B",
+          "station"
+        ]
+      ],
+      "en_ck": [
+        [
+          "C",
+          "Where"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "A",
+          "the nearest"
+        ],
+        [
+          "B",
+          "station"
+        ]
       ]
     }
   },
@@ -4774,6 +5038,28 @@ const SENTENCES = [
         [
           "D",
           "braw"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "coffee"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "D",
+          "good"
         ]
       ],
       "de": [
@@ -5539,6 +5825,50 @@ const SENTENCES = [
           "D",
           "flasus iawn"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "coffee"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "reight"
+        ],
+        [
+          "D",
+          "good"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "coffee"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "proper"
+        ],
+        [
+          "D",
+          "nice"
+        ]
       ]
     }
   },
@@ -5777,6 +6107,24 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "study"
+        ],
+        [
+          "C",
+          "Japanese"
+        ],
+        [
+          "B",
+          "at the university"
+        ]
+      ],
+      "en_app": [
         [
           "A",
           "I"
@@ -6493,6 +6841,42 @@ const SENTENCES = [
           "B",
           "yn y brifysgol"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "study"
+        ],
+        [
+          "C",
+          "Japanese"
+        ],
+        [
+          "B",
+          "at t'university"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "study"
+        ],
+        [
+          "C",
+          "Japanese"
+        ],
+        [
+          "B",
+          "at uni"
+        ]
       ]
     }
   },
@@ -6742,6 +7126,24 @@ const SENTENCES = [
         [
           "C",
           "will be"
+        ],
+        [
+          "D",
+          "sunny"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Tomorrow's"
+        ],
+        [
+          "B",
+          "weather"
+        ],
+        [
+          "C",
+          "is fixin' to be"
         ],
         [
           "D",
@@ -7467,6 +7869,42 @@ const SENTENCES = [
           "D",
           "heulog"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Tomorrow's"
+        ],
+        [
+          "B",
+          "weather"
+        ],
+        [
+          "C",
+          "'ll be"
+        ],
+        [
+          "D",
+          "sunny"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Tomorrow's"
+        ],
+        [
+          "B",
+          "wevver"
+        ],
+        [
+          "C",
+          "'ll be"
+        ],
+        [
+          "D",
+          "sunny"
+        ]
       ]
     }
   },
@@ -7720,6 +8158,24 @@ const SENTENCES = [
         [
           "D",
           "every day"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My mama"
+        ],
+        [
+          "C",
+          "cooks"
+        ],
+        [
+          "B",
+          "supper"
+        ],
+        [
+          "D",
+          "ever' day"
         ]
       ],
       "de": [
@@ -8441,6 +8897,42 @@ const SENTENCES = [
           "D",
           "bob dydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me mam"
+        ],
+        [
+          "C",
+          "cooks"
+        ],
+        [
+          "B",
+          "tea"
+        ],
+        [
+          "D",
+          "every day"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My mum"
+        ],
+        [
+          "C",
+          "cooks"
+        ],
+        [
+          "B",
+          "dinner"
+        ],
+        [
+          "D",
+          "every day"
+        ]
       ]
     }
   },
@@ -8690,6 +9182,24 @@ const SENTENCES = [
         [
           "B",
           "tae Japan"
+        ],
+        [
+          "D",
+          "next year"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "C",
+          "fixin' to go"
+        ],
+        [
+          "B",
+          "to Japan"
         ],
         [
           "D",
@@ -9419,6 +9929,42 @@ const SENTENCES = [
           "D",
           "y flwyddyn nesaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "want to go"
+        ],
+        [
+          "B",
+          "to Japan"
+        ],
+        [
+          "D",
+          "next year"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "wanna go"
+        ],
+        [
+          "B",
+          "to Japan"
+        ],
+        [
+          "D",
+          "next year"
+        ]
       ]
     }
   },
@@ -9672,6 +10218,24 @@ const SENTENCES = [
         [
           "A",
           "ye"
+        ],
+        [
+          "C",
+          "speak"
+        ],
+        [
+          "B",
+          "English"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "you"
         ],
         [
           "C",
@@ -10401,6 +10965,42 @@ const SENTENCES = [
           "B",
           "siarad Saesneg?"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "tha"
+        ],
+        [
+          "C",
+          "speak"
+        ],
+        [
+          "B",
+          "English"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "ya"
+        ],
+        [
+          "C",
+          "speak"
+        ],
+        [
+          "B",
+          "English"
+        ]
       ]
     }
   },
@@ -10760,6 +11360,32 @@ const SENTENCES = [
         [
           "B",
           "at the bookshop"
+        ],
+        [
+          "F",
+          "yesterday"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "bought"
+        ],
+        [
+          "D",
+          "a new"
+        ],
+        [
+          "E",
+          "book"
+        ],
+        [
+          "B",
+          "at the bookstore"
         ],
         [
           "F",
@@ -11801,6 +12427,58 @@ const SENTENCES = [
           "F",
           "ddoe"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "bought"
+        ],
+        [
+          "D",
+          "a new"
+        ],
+        [
+          "E",
+          "book"
+        ],
+        [
+          "B",
+          "at t'bookshop"
+        ],
+        [
+          "F",
+          "yesterday"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "bought"
+        ],
+        [
+          "D",
+          "a new"
+        ],
+        [
+          "E",
+          "book"
+        ],
+        [
+          "B",
+          "at the bookshop"
+        ],
+        [
+          "F",
+          "yesterday"
+        ]
       ]
     }
   },
@@ -12054,6 +12732,24 @@ const SENTENCES = [
         [
           "D",
           "are bonnie"
+        ]
+      ],
+      "en_app": [
+        [
+          "C",
+          "The cherry blossoms"
+        ],
+        [
+          "A",
+          "in this"
+        ],
+        [
+          "B",
+          "park"
+        ],
+        [
+          "D",
+          "are right purty"
         ]
       ],
       "de": [
@@ -12775,6 +13471,42 @@ const SENTENCES = [
           "D",
           "hardd iawn"
         ]
+      ],
+      "en_yk": [
+        [
+          "C",
+          "T'cherry blossoms"
+        ],
+        [
+          "A",
+          "in this"
+        ],
+        [
+          "B",
+          "park"
+        ],
+        [
+          "D",
+          "are reight bonny"
+        ]
+      ],
+      "en_ck": [
+        [
+          "C",
+          "The cherry blossoms"
+        ],
+        [
+          "A",
+          "in this"
+        ],
+        [
+          "B",
+          "park"
+        ],
+        [
+          "D",
+          "are well lovely"
+        ]
       ]
     }
   },
@@ -13016,6 +13748,24 @@ const SENTENCES = [
         [
           "D",
           "gie"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a glass of water"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Please"
+        ],
+        [
+          "D",
+          "give"
         ],
         [
           "B",
@@ -13625,6 +14375,42 @@ const SENTENCES = [
           "B",
           "os gwelwch yn dda"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Gi'"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "a"
+        ],
+        [
+          "C",
+          "glass o' water"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Give"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "a"
+        ],
+        [
+          "C",
+          "glass of water"
+        ]
       ]
     }
   },
@@ -13933,6 +14719,28 @@ const SENTENCES = [
         [
           "E",
           "every day"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "go"
+        ],
+        [
+          "B",
+          "to work"
+        ],
+        [
+          "D",
+          "by train"
+        ],
+        [
+          "E",
+          "ever' day"
         ]
       ],
       "de": [
@@ -14794,6 +15602,50 @@ const SENTENCES = [
           "E",
           "bob dydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "go"
+        ],
+        [
+          "B",
+          "to work"
+        ],
+        [
+          "D",
+          "by train"
+        ],
+        [
+          "E",
+          "every day"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "go"
+        ],
+        [
+          "B",
+          "to work"
+        ],
+        [
+          "D",
+          "by train"
+        ],
+        [
+          "E",
+          "every day"
+        ]
       ]
     }
   },
@@ -15043,6 +15895,24 @@ const SENTENCES = [
         [
           "B",
           "in France"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My little sister"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "studyin' abroad"
+        ],
+        [
+          "B",
+          "over in France"
         ]
       ],
       "de": [
@@ -15752,6 +16622,42 @@ const SENTENCES = [
           "B",
           "yn Ffrainc"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Our lass"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "studyin' abroad"
+        ],
+        [
+          "B",
+          "in France"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My li'le sister"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "studyin' abroad"
+        ],
+        [
+          "B",
+          "in France"
+        ]
       ]
     }
   },
@@ -15973,6 +16879,24 @@ const SENTENCES = [
         [
           "B",
           "the film"
+        ],
+        [
+          "C",
+          "start"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "What time"
+        ],
+        [
+          "D",
+          "does"
+        ],
+        [
+          "B",
+          "the picture show"
         ],
         [
           "C",
@@ -16606,6 +17530,42 @@ const SENTENCES = [
           "C",
           "dechrau?"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "What time"
+        ],
+        [
+          "D",
+          "does"
+        ],
+        [
+          "B",
+          "t'film"
+        ],
+        [
+          "C",
+          "start"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "What time"
+        ],
+        [
+          "D",
+          "does"
+        ],
+        [
+          "B",
+          "the film"
+        ],
+        [
+          "C",
+          "start"
+        ]
       ]
     }
   },
@@ -16914,6 +17874,28 @@ const SENTENCES = [
         [
           "E",
           "this afternoon"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "got"
+        ],
+        [
+          "B",
+          "a meetin'"
+        ],
+        [
+          "D",
+          "at 3 o'clock"
+        ],
+        [
+          "E",
+          "this evenin'"
         ]
       ],
       "de": [
@@ -17763,6 +18745,50 @@ const SENTENCES = [
           "E",
           "prynhawn heddiw"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "C",
+          "got"
+        ],
+        [
+          "B",
+          "a meetin'"
+        ],
+        [
+          "D",
+          "at 3 o'clock"
+        ],
+        [
+          "E",
+          "this afternoon"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "C",
+          "got"
+        ],
+        [
+          "B",
+          "a meetin'"
+        ],
+        [
+          "D",
+          "at 3 o'clock"
+        ],
+        [
+          "E",
+          "this afternoon"
+        ]
       ]
     }
   },
@@ -18028,6 +19054,28 @@ const SENTENCES = [
         [
           "D",
           "dear"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "bag"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "too"
+        ],
+        [
+          "D",
+          "pricey"
         ]
       ],
       "de": [
@@ -18797,6 +19845,50 @@ const SENTENCES = [
           "D",
           "rhy ddrud"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "bag"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "too"
+        ],
+        [
+          "D",
+          "dear"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "bag"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "well"
+        ],
+        [
+          "D",
+          "pricey"
+        ]
       ]
     }
   },
@@ -19046,6 +20138,24 @@ const SENTENCES = [
         [
           "C",
           "tae listen tae"
+        ],
+        [
+          "B",
+          "music"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "like"
+        ],
+        [
+          "C",
+          "listenin' to"
         ],
         [
           "B",
@@ -19763,6 +20873,42 @@ const SENTENCES = [
           "B",
           "gerddoriaeth"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "like"
+        ],
+        [
+          "C",
+          "listenin' to"
+        ],
+        [
+          "B",
+          "music"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "like"
+        ],
+        [
+          "C",
+          "listenin' to"
+        ],
+        [
+          "B",
+          "music"
+        ]
       ]
     }
   },
@@ -20000,6 +21146,20 @@ const SENTENCES = [
         [
           "A",
           "since this morning"
+        ]
+      ],
+      "en_app": [
+        [
+          "C",
+          "Hit's been"
+        ],
+        [
+          "B",
+          "a-rainin'"
+        ],
+        [
+          "A",
+          "since this mornin'"
         ]
       ],
       "de": [
@@ -20673,6 +21833,34 @@ const SENTENCES = [
           "A",
           "ers y bore"
         ]
+      ],
+      "en_yk": [
+        [
+          "C",
+          "It's been"
+        ],
+        [
+          "B",
+          "rainin'"
+        ],
+        [
+          "A",
+          "since this mornin'"
+        ]
+      ],
+      "en_ck": [
+        [
+          "C",
+          "It's been"
+        ],
+        [
+          "B",
+          "rainin'"
+        ],
+        [
+          "A",
+          "since this mornin'"
+        ]
       ]
     }
   },
@@ -20985,6 +22173,28 @@ const SENTENCES = [
         [
           "B",
           "the night"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "fixin' to have"
+        ],
+        [
+          "D",
+          "supper"
+        ],
+        [
+          "C",
+          "with friends"
+        ],
+        [
+          "B",
+          "tonight"
         ]
       ],
       "de": [
@@ -21798,6 +23008,50 @@ const SENTENCES = [
           "B",
           "heno"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "'ll 'ave"
+        ],
+        [
+          "D",
+          "tea"
+        ],
+        [
+          "C",
+          "wi' me mates"
+        ],
+        [
+          "B",
+          "tonight"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "'ll 'ave"
+        ],
+        [
+          "D",
+          "dinner"
+        ],
+        [
+          "C",
+          "wiv me mates"
+        ],
+        [
+          "B",
+          "tonight"
+        ]
       ]
     }
   },
@@ -22094,6 +23348,28 @@ const SENTENCES = [
         [
           "E",
           "want tae"
+        ],
+        [
+          "D",
+          "learn"
+        ],
+        [
+          "B",
+          "a new"
+        ],
+        [
+          "C",
+          "language"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
         ],
         [
           "D",
@@ -22959,6 +24235,50 @@ const SENTENCES = [
           "C",
           "newydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "learn"
+        ],
+        [
+          "B",
+          "a new"
+        ],
+        [
+          "C",
+          "language"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "wanna"
+        ],
+        [
+          "D",
+          "learn"
+        ],
+        [
+          "B",
+          "a new"
+        ],
+        [
+          "C",
+          "language"
+        ]
       ]
     }
   },
@@ -23204,6 +24524,24 @@ const SENTENCES = [
         [
           "B",
           "next tae"
+        ],
+        [
+          "C",
+          "the hospital"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The library"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "right next to"
         ],
         [
           "C",
@@ -23925,6 +25263,42 @@ const SENTENCES = [
           "C",
           "'r ysbyty"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'library"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "next to"
+        ],
+        [
+          "C",
+          "t'hospital"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The library"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "next to"
+        ],
+        [
+          "C",
+          "the 'ospital"
+        ]
       ]
     }
   },
@@ -24158,6 +25532,24 @@ const SENTENCES = [
         [
           "A",
           "Would ye"
+        ],
+        [
+          "D",
+          "show"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "the menu"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Please"
         ],
         [
           "D",
@@ -24787,6 +26179,42 @@ const SENTENCES = [
           "A",
           "i mi os gwelwch yn dda"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Show"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "t'"
+        ],
+        [
+          "C",
+          "menu"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Show"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "the"
+        ],
+        [
+          "C",
+          "menu"
+        ]
       ]
     }
   },
@@ -25067,6 +26495,28 @@ const SENTENCES = [
         [
           "A",
           "My faither"
+        ],
+        [
+          "E",
+          "works"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "a big"
+        ],
+        [
+          "D",
+          "company"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My daddy"
         ],
         [
           "E",
@@ -25872,6 +27322,50 @@ const SENTENCES = [
           "C",
           "mawr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me dad"
+        ],
+        [
+          "E",
+          "works"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "a big"
+        ],
+        [
+          "D",
+          "company"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My old man"
+        ],
+        [
+          "E",
+          "works"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "a big"
+        ],
+        [
+          "D",
+          "company"
+        ]
       ]
     }
   },
@@ -26117,6 +27611,24 @@ const SENTENCES = [
         [
           "C",
           "playing"
+        ],
+        [
+          "B",
+          "in the park"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The young'uns"
+        ],
+        [
+          "D",
+          "are"
+        ],
+        [
+          "C",
+          "a-playin'"
         ],
         [
           "B",
@@ -26822,6 +28334,42 @@ const SENTENCES = [
           "B",
           "yn y parc"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'bairns"
+        ],
+        [
+          "D",
+          "are"
+        ],
+        [
+          "C",
+          "playin'"
+        ],
+        [
+          "B",
+          "in t'park"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The kids"
+        ],
+        [
+          "D",
+          "are"
+        ],
+        [
+          "C",
+          "playin'"
+        ],
+        [
+          "B",
+          "in the park"
+        ]
       ]
     }
   },
@@ -27071,6 +28619,24 @@ const SENTENCES = [
         [
           "B",
           "tae Tokyo"
+        ],
+        [
+          "C",
+          "three times"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "been"
+        ],
+        [
+          "B",
+          "to Tokyo"
         ],
         [
           "C",
@@ -27768,6 +29334,42 @@ const SENTENCES = [
           "C",
           "dair gwaith"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "D",
+          "been"
+        ],
+        [
+          "B",
+          "to Tokyo"
+        ],
+        [
+          "C",
+          "three times"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "D",
+          "been"
+        ],
+        [
+          "B",
+          "to Tokyo"
+        ],
+        [
+          "C",
+          "free times"
+        ]
       ]
     }
   },
@@ -28033,6 +29635,24 @@ const SENTENCES = [
         [
           "B",
           "a good restaurant"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "Could"
+        ],
+        [
+          "A",
+          "you"
+        ],
+        [
+          "C",
+          "tell me about"
+        ],
+        [
+          "B",
+          "a good place to eat"
         ]
       ],
       "de": [
@@ -28650,6 +30270,42 @@ const SENTENCES = [
           "C",
           "argymell?"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "Could"
+        ],
+        [
+          "A",
+          "tha"
+        ],
+        [
+          "C",
+          "recommend"
+        ],
+        [
+          "B",
+          "a good place to eat"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "Could"
+        ],
+        [
+          "A",
+          "ya"
+        ],
+        [
+          "C",
+          "recommend"
+        ],
+        [
+          "B",
+          "a good restaurant"
+        ]
       ]
     }
   },
@@ -28903,6 +30559,24 @@ const SENTENCES = [
         [
           "C",
           "forgot"
+        ],
+        [
+          "B",
+          "my umbrella"
+        ],
+        [
+          "D",
+          "on the train"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "left"
         ],
         [
           "B",
@@ -29616,6 +31290,42 @@ const SENTENCES = [
           "D",
           "ar y trên"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "left"
+        ],
+        [
+          "B",
+          "me brolly"
+        ],
+        [
+          "D",
+          "on t'train"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "left"
+        ],
+        [
+          "B",
+          "me brolly"
+        ],
+        [
+          "D",
+          "on the train"
+        ]
       ]
     }
   },
@@ -29920,6 +31630,28 @@ const SENTENCES = [
         [
           "D",
           "awfy well"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "can"
+        ],
+        [
+          "C",
+          "play"
+        ],
+        [
+          "B",
+          "the piano"
+        ],
+        [
+          "D",
+          "right good"
         ]
       ],
       "de": [
@@ -30785,6 +32517,50 @@ const SENTENCES = [
           "D",
           "dda iawn"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "can"
+        ],
+        [
+          "C",
+          "play"
+        ],
+        [
+          "B",
+          "t'piano"
+        ],
+        [
+          "D",
+          "reight well"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "can"
+        ],
+        [
+          "C",
+          "play"
+        ],
+        [
+          "B",
+          "the piano"
+        ],
+        [
+          "D",
+          "proper well"
+        ]
       ]
     }
   },
@@ -30971,6 +32747,20 @@ const SENTENCES = [
         [
           "A",
           "The exam"
+        ],
+        [
+          "C",
+          "is"
+        ],
+        [
+          "B",
+          "next Monday"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The test"
         ],
         [
           "C",
@@ -31524,6 +33314,34 @@ const SENTENCES = [
           "B",
           "ddydd Llun nesaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'exam"
+        ],
+        [
+          "C",
+          "'s"
+        ],
+        [
+          "B",
+          "next Monday"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The exam"
+        ],
+        [
+          "C",
+          "'s"
+        ],
+        [
+          "B",
+          "next Monday"
+        ]
       ]
     }
   },
@@ -31820,6 +33638,28 @@ const SENTENCES = [
         [
           "D",
           "for lunch"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "sushi"
+        ],
+        [
+          "D",
+          "for dinner"
         ]
       ],
       "de": [
@@ -32597,6 +34437,50 @@ const SENTENCES = [
           "D",
           "i ginio"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want"
+        ],
+        [
+          "C",
+          "to 'ave"
+        ],
+        [
+          "B",
+          "sushi"
+        ],
+        [
+          "D",
+          "for dinner"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want"
+        ],
+        [
+          "C",
+          "to 'ave"
+        ],
+        [
+          "B",
+          "sushi"
+        ],
+        [
+          "D",
+          "for lunch"
+        ]
       ]
     }
   },
@@ -32818,6 +34702,24 @@ const SENTENCES = [
         [
           "C",
           "awfy"
+        ],
+        [
+          "D",
+          "clean"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The hotel room"
+        ],
+        [
+          "B",
+          "was"
+        ],
+        [
+          "C",
+          "right"
         ],
         [
           "D",
@@ -33519,6 +35421,42 @@ const SENTENCES = [
           "D",
           "iawn"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'hotel room"
+        ],
+        [
+          "B",
+          "were"
+        ],
+        [
+          "C",
+          "reight"
+        ],
+        [
+          "D",
+          "clean"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The 'otel room"
+        ],
+        [
+          "B",
+          "was"
+        ],
+        [
+          "C",
+          "well"
+        ],
+        [
+          "D",
+          "clean"
+        ]
       ]
     }
   },
@@ -33717,6 +35655,20 @@ const SENTENCES = [
         [
           "B",
           "mair slowly"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Please"
+        ],
+        [
+          "C",
+          "talk"
+        ],
+        [
+          "B",
+          "a little slower"
         ]
       ],
       "de": [
@@ -34278,6 +36230,34 @@ const SENTENCES = [
           "B",
           "yn arafach"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Talk"
+        ],
+        [
+          "C",
+          "a bit"
+        ],
+        [
+          "B",
+          "slower"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Speak"
+        ],
+        [
+          "C",
+          "a bi'"
+        ],
+        [
+          "B",
+          "slower"
+        ]
       ]
     }
   },
@@ -34472,6 +36452,20 @@ const SENTENCES = [
         [
           "B",
           "got married"
+        ],
+        [
+          "C",
+          "last month"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My older brother"
+        ],
+        [
+          "B",
+          "got hitched"
         ],
         [
           "C",
@@ -35059,6 +37053,34 @@ const SENTENCES = [
           "C",
           "y mis diwethaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Our kid"
+        ],
+        [
+          "B",
+          "got wed"
+        ],
+        [
+          "C",
+          "last month"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My bruvver"
+        ],
+        [
+          "B",
+          "got married"
+        ],
+        [
+          "C",
+          "last month"
+        ]
       ]
     }
   },
@@ -35308,6 +37330,24 @@ const SENTENCES = [
         [
           "B",
           "folk"
+        ],
+        [
+          "C",
+          "at the station"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "There's"
+        ],
+        [
+          "A",
+          "a whole mess of"
+        ],
+        [
+          "B",
+          "folks"
         ],
         [
           "C",
@@ -36039,6 +38079,42 @@ const SENTENCES = [
           "C",
           "yn yr orsaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "There's"
+        ],
+        [
+          "A",
+          "loads of"
+        ],
+        [
+          "B",
+          "folk"
+        ],
+        [
+          "C",
+          "at t'station"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "There's"
+        ],
+        [
+          "A",
+          "loads of"
+        ],
+        [
+          "B",
+          "people"
+        ],
+        [
+          "C",
+          "at the station"
+        ]
       ]
     }
   },
@@ -36343,6 +38419,32 @@ const SENTENCES = [
         [
           "B",
           "need tae"
+        ],
+        [
+          "E",
+          "buy"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "birthday"
+        ],
+        [
+          "D",
+          "present"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "B",
+          "need to"
         ],
         [
           "E",
@@ -37218,6 +39320,58 @@ const SENTENCES = [
           "C",
           "anrheg pen-blwydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "B",
+          "need to"
+        ],
+        [
+          "E",
+          "buy"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "birthday"
+        ],
+        [
+          "D",
+          "present"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "B",
+          "need to"
+        ],
+        [
+          "E",
+          "buy"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "birfday"
+        ],
+        [
+          "D",
+          "present"
+        ]
       ]
     }
   },
@@ -37416,6 +39570,20 @@ const SENTENCES = [
         [
           "C",
           "is bonnie"
+        ]
+      ],
+      "en_app": [
+        [
+          "B",
+          "The sunset"
+        ],
+        [
+          "A",
+          "from up here"
+        ],
+        [
+          "C",
+          "is right purty"
         ]
       ],
       "de": [
@@ -38003,6 +40171,34 @@ const SENTENCES = [
           "C",
           "hardd"
         ]
+      ],
+      "en_yk": [
+        [
+          "B",
+          "T'sunset"
+        ],
+        [
+          "A",
+          "from 'ere"
+        ],
+        [
+          "C",
+          "is reight bonny"
+        ]
+      ],
+      "en_ck": [
+        [
+          "B",
+          "The sunset"
+        ],
+        [
+          "A",
+          "from 'ere"
+        ],
+        [
+          "C",
+          "is well lovely"
+        ]
       ]
     }
   },
@@ -38299,6 +40495,28 @@ const SENTENCES = [
         [
           "C",
           "the morn"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "gotta"
+        ],
+        [
+          "D",
+          "get up"
+        ],
+        [
+          "B",
+          "early"
+        ],
+        [
+          "C",
+          "tomorrow"
         ]
       ],
       "de": [
@@ -39150,6 +41368,50 @@ const SENTENCES = [
           "C",
           "yfory"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "E",
+          "got to"
+        ],
+        [
+          "D",
+          "get up"
+        ],
+        [
+          "B",
+          "early"
+        ],
+        [
+          "C",
+          "tomorrow"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "E",
+          "gotta"
+        ],
+        [
+          "D",
+          "get up"
+        ],
+        [
+          "B",
+          "early"
+        ],
+        [
+          "C",
+          "tomorrow"
+        ]
       ]
     }
   },
@@ -39474,6 +41736,32 @@ const SENTENCES = [
         [
           "C",
           "whaur"
+        ],
+        [
+          "B",
+          "the post office"
+        ],
+        [
+          "D",
+          "is"
+        ]
+      ],
+      "en_app": [
+        [
+          "E",
+          "Do"
+        ],
+        [
+          "A",
+          "you"
+        ],
+        [
+          "E",
+          "know"
+        ],
+        [
+          "C",
+          "where"
         ],
         [
           "B",
@@ -40277,6 +42565,58 @@ const SENTENCES = [
           "B",
           "'r swyddfa bost?"
         ]
+      ],
+      "en_yk": [
+        [
+          "E",
+          "Does"
+        ],
+        [
+          "A",
+          "tha"
+        ],
+        [
+          "E",
+          "know"
+        ],
+        [
+          "C",
+          "where"
+        ],
+        [
+          "B",
+          "t'post office"
+        ],
+        [
+          "D",
+          "is"
+        ]
+      ],
+      "en_ck": [
+        [
+          "E",
+          "D'ya"
+        ],
+        [
+          "A",
+          ""
+        ],
+        [
+          "E",
+          "know"
+        ],
+        [
+          "C",
+          "where"
+        ],
+        [
+          "B",
+          "the post office"
+        ],
+        [
+          "D",
+          "is"
+        ]
       ]
     }
   },
@@ -40613,6 +42953,32 @@ const SENTENCES = [
         [
           "B",
           "the now"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "a-readin'"
+        ],
+        [
+          "D",
+          "an"
+        ],
+        [
+          "C",
+          "interestin'"
+        ],
+        [
+          "D",
+          "book"
+        ],
+        [
+          "B",
+          "right now"
         ]
       ],
       "de": [
@@ -41484,6 +43850,58 @@ const SENTENCES = [
           "B",
           "nawr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "readin'"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "reight good"
+        ],
+        [
+          "D",
+          "book"
+        ],
+        [
+          "B",
+          "just now"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "readin'"
+        ],
+        [
+          "D",
+          "a"
+        ],
+        [
+          "C",
+          "proper interestin'"
+        ],
+        [
+          "D",
+          "book"
+        ],
+        [
+          "B",
+          "right now"
+        ]
       ]
     }
   },
@@ -41789,6 +44207,32 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "C",
+          "wears"
+        ],
+        [
+          "E",
+          "a"
+        ],
+        [
+          "D",
+          "red"
+        ],
+        [
+          "E",
+          "dress"
+        ]
+      ],
+      "en_app": [
         [
           "A",
           "She"
@@ -42711,6 +45155,58 @@ const SENTENCES = [
           "E",
           "goch"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "allus"
+        ],
+        [
+          "C",
+          "wears"
+        ],
+        [
+          "E",
+          "a"
+        ],
+        [
+          "D",
+          "red"
+        ],
+        [
+          "E",
+          "frock"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "C",
+          "wears"
+        ],
+        [
+          "E",
+          "a"
+        ],
+        [
+          "D",
+          "red"
+        ],
+        [
+          "E",
+          "dress"
+        ]
       ]
     }
   },
@@ -42909,6 +45405,20 @@ const SENTENCES = [
         [
           "C",
           "is braw"
+        ]
+      ],
+      "en_app": [
+        [
+          "B",
+          "The food"
+        ],
+        [
+          "A",
+          "at this restaurant"
+        ],
+        [
+          "C",
+          "is right good"
         ]
       ],
       "de": [
@@ -43476,6 +45986,34 @@ const SENTENCES = [
           "B",
           "flasus"
         ]
+      ],
+      "en_yk": [
+        [
+          "B",
+          "T'grub"
+        ],
+        [
+          "A",
+          "at this place"
+        ],
+        [
+          "C",
+          "is champion"
+        ]
+      ],
+      "en_ck": [
+        [
+          "B",
+          "The food"
+        ],
+        [
+          "A",
+          "at this restaurant"
+        ],
+        [
+          "C",
+          "is proper good"
+        ]
       ]
     }
   },
@@ -43729,6 +46267,24 @@ const SENTENCES = [
         [
           "B",
           "around the world"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "travel"
+        ],
+        [
+          "B",
+          "all over the world"
         ]
       ],
       "de": [
@@ -44432,6 +46988,42 @@ const SENTENCES = [
           "B",
           "teithio o gwmpas y byd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "travel"
+        ],
+        [
+          "B",
+          "round t'world"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "travel"
+        ],
+        [
+          "B",
+          "round the world"
+        ]
       ]
     }
   },
@@ -44677,6 +47269,24 @@ const SENTENCES = [
         [
           "B",
           "in winter"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "D",
+          "hit gets"
+        ],
+        [
+          "C",
+          "cold"
+        ],
+        [
+          "B",
+          "of a winter"
         ]
       ],
       "de": [
@@ -45396,6 +48006,42 @@ const SENTENCES = [
           "B",
           "yn y gaeaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "D",
+          "it gets"
+        ],
+        [
+          "C",
+          "nithered"
+        ],
+        [
+          "B",
+          "in winter"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "D",
+          "it gets"
+        ],
+        [
+          "C",
+          "proper cold"
+        ],
+        [
+          "B",
+          "in winter"
+        ]
       ]
     }
   },
@@ -45696,6 +48342,28 @@ const SENTENCES = [
         [
           "B",
           "wi my friend"
+        ],
+        [
+          "C",
+          "on the phone"
+        ],
+        [
+          "D",
+          "for an hour"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "talked"
+        ],
+        [
+          "B",
+          "with my friend"
         ],
         [
           "C",
@@ -46579,6 +49247,50 @@ const SENTENCES = [
           "D",
           "am awr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "had a natter"
+        ],
+        [
+          "B",
+          "wi' me mate"
+        ],
+        [
+          "C",
+          "on t'phone"
+        ],
+        [
+          "D",
+          "for an hour"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "'ad a chat"
+        ],
+        [
+          "B",
+          "wiv me mate"
+        ],
+        [
+          "C",
+          "on the phone"
+        ],
+        [
+          "D",
+          "for an hour"
+        ]
       ]
     }
   },
@@ -46832,6 +49544,24 @@ const SENTENCES = [
         [
           "C",
           "clearly"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The teacher"
+        ],
+        [
+          "D",
+          "explained"
+        ],
+        [
+          "B",
+          "the problem"
+        ],
+        [
+          "C",
+          "right clear"
         ]
       ],
       "de": [
@@ -47575,6 +50305,42 @@ const SENTENCES = [
           "C",
           "yn glir"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'teacher"
+        ],
+        [
+          "D",
+          "explained"
+        ],
+        [
+          "B",
+          "t'problem"
+        ],
+        [
+          "C",
+          "proper"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The teacher"
+        ],
+        [
+          "D",
+          "explained"
+        ],
+        [
+          "B",
+          "the problem"
+        ],
+        [
+          "C",
+          "proper clear"
+        ]
       ]
     }
   },
@@ -47816,6 +50582,24 @@ const SENTENCES = [
         [
           "B",
           "that film"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "watch"
+        ],
+        [
+          "B",
+          "that picture show"
         ]
       ],
       "de": [
@@ -48455,6 +51239,42 @@ const SENTENCES = [
           "B",
           "gweld y ffilm honno"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "watch"
+        ],
+        [
+          "B",
+          "that film"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "watch"
+        ],
+        [
+          "B",
+          "that film"
+        ]
       ]
     }
   },
@@ -48704,6 +51524,24 @@ const SENTENCES = [
         [
           "C",
           "the way tae the airport"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Please"
+        ],
+        [
+          "D",
+          "tell"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "the way to the airport"
         ]
       ],
       "de": [
@@ -49399,6 +52237,42 @@ const SENTENCES = [
           "C",
           "y ffordd i'r maes awyr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Tell"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "t'"
+        ],
+        [
+          "C",
+          "way to t'airport"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Tell"
+        ],
+        [
+          "D",
+          "us"
+        ],
+        [
+          "B",
+          "the"
+        ],
+        [
+          "C",
+          "way to the airport"
+        ]
       ]
     }
   },
@@ -49632,6 +52506,24 @@ const SENTENCES = [
         [
           "C",
           "tae go for"
+        ],
+        [
+          "B",
+          "walks"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My dog"
+        ],
+        [
+          "D",
+          "likes"
+        ],
+        [
+          "C",
+          "goin' for"
         ],
         [
           "B",
@@ -50259,6 +53151,42 @@ const SENTENCES = [
           "C",
           "mynd am dro"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me dog"
+        ],
+        [
+          "D",
+          "likes"
+        ],
+        [
+          "C",
+          "goin' for"
+        ],
+        [
+          "B",
+          "walks"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My dog"
+        ],
+        [
+          "D",
+          "likes"
+        ],
+        [
+          "C",
+          "goin' for"
+        ],
+        [
+          "B",
+          "walks"
+        ]
       ]
     }
   },
@@ -50460,6 +53388,24 @@ const SENTENCES = [
           "stories"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "My grandmama"
+        ],
+        [
+          "D",
+          "be tellin'"
+        ],
+        [
+          "B",
+          "interesting"
+        ],
+        [
+          "C",
+          "stories"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -50490,6 +53436,42 @@ const SENTENCES = [
         [
           "B",
           "interesting"
+        ],
+        [
+          "C",
+          "stories"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My granny"
+        ],
+        [
+          "D",
+          "tells"
+        ],
+        [
+          "B",
+          "interestin'"
+        ],
+        [
+          "C",
+          "stories"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "My granny"
+        ],
+        [
+          "D",
+          "tells"
+        ],
+        [
+          "B",
+          "right interestin'"
         ],
         [
           "C",
@@ -51233,6 +54215,42 @@ const SENTENCES = [
           "C",
           "diddorol"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me gran"
+        ],
+        [
+          "D",
+          "tells"
+        ],
+        [
+          "B",
+          "reight good"
+        ],
+        [
+          "C",
+          "stories"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My nan"
+        ],
+        [
+          "D",
+          "tells"
+        ],
+        [
+          "B",
+          "proper interestin'"
+        ],
+        [
+          "C",
+          "stories"
+        ]
       ]
     }
   },
@@ -51434,6 +54452,24 @@ const SENTENCES = [
           "at the market"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "lost"
+        ],
+        [
+          "B",
+          "my wallet"
+        ],
+        [
+          "D",
+          "at the market"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -51460,6 +54496,42 @@ const SENTENCES = [
         [
           "C",
           "lost"
+        ],
+        [
+          "B",
+          "my wallet"
+        ],
+        [
+          "D",
+          "at the market"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "lost"
+        ],
+        [
+          "B",
+          "my wallet"
+        ],
+        [
+          "D",
+          "at the market"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "done lost"
         ],
         [
           "B",
@@ -52187,6 +55259,42 @@ const SENTENCES = [
           "D",
           "yn y farchnad"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "lost"
+        ],
+        [
+          "B",
+          "me wallet"
+        ],
+        [
+          "D",
+          "at t'market"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "lost"
+        ],
+        [
+          "B",
+          "me wallet"
+        ],
+        [
+          "D",
+          "at the market"
+        ]
       ]
     }
   },
@@ -52345,6 +55453,20 @@ const SENTENCES = [
           "are blooming"
         ]
       ],
+      "en_aave": [
+        [
+          "B",
+          "The flowers"
+        ],
+        [
+          "A",
+          "in the garden"
+        ],
+        [
+          "C",
+          "bloomin'"
+        ]
+      ],
       "en_ie": [
         [
           "B",
@@ -52371,6 +55493,34 @@ const SENTENCES = [
         [
           "C",
           "are blooming"
+        ]
+      ],
+      "en_app": [
+        [
+          "B",
+          "The flowers"
+        ],
+        [
+          "A",
+          "in the garden"
+        ],
+        [
+          "C",
+          "are a-bloomin'"
+        ]
+      ],
+      "en_south": [
+        [
+          "B",
+          "The flowers"
+        ],
+        [
+          "A",
+          "in the garden"
+        ],
+        [
+          "C",
+          "are bloomin'"
         ]
       ],
       "de": [
@@ -52954,6 +56104,34 @@ const SENTENCES = [
           "C",
           "blodeuo"
         ]
+      ],
+      "en_yk": [
+        [
+          "B",
+          "T'flowers"
+        ],
+        [
+          "A",
+          "in t'garden"
+        ],
+        [
+          "C",
+          "are bloomin'"
+        ]
+      ],
+      "en_ck": [
+        [
+          "B",
+          "The flowers"
+        ],
+        [
+          "A",
+          "in the garden"
+        ],
+        [
+          "C",
+          "are bloomin'"
+        ]
       ]
     }
   },
@@ -53155,6 +56333,24 @@ const SENTENCES = [
           "the environment"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "D",
+          "gotta"
+        ],
+        [
+          "C",
+          "protect"
+        ],
+        [
+          "B",
+          "the environment"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -53185,6 +56381,42 @@ const SENTENCES = [
         [
           "C",
           "protect"
+        ],
+        [
+          "B",
+          "the environment"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "D",
+          "ought to"
+        ],
+        [
+          "C",
+          "protect"
+        ],
+        [
+          "B",
+          "the environment"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "D",
+          "ought to"
+        ],
+        [
+          "C",
+          "look after"
         ],
         [
           "B",
@@ -53900,6 +57132,42 @@ const SENTENCES = [
           "B",
           "amddiffyn yr amgylchedd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "D",
+          "mun"
+        ],
+        [
+          "C",
+          "look after"
+        ],
+        [
+          "B",
+          "t'environment"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "D",
+          "gotta"
+        ],
+        [
+          "C",
+          "protect"
+        ],
+        [
+          "B",
+          "the environment"
+        ]
       ]
     }
   },
@@ -54101,6 +57369,24 @@ const SENTENCES = [
           "every day"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "two cups of coffee"
+        ],
+        [
+          "D",
+          "every day"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -54120,6 +57406,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "two cups of coffee"
+        ],
+        [
+          "D",
+          "every day"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "two cups of coffee"
+        ],
+        [
+          "D",
+          "ever' day"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "I"
@@ -54846,6 +58168,42 @@ const SENTENCES = [
           "D",
           "bob dydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "two cups o' coffee"
+        ],
+        [
+          "D",
+          "every day"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "two cups of coffee"
+        ],
+        [
+          "D",
+          "every day"
+        ]
       ]
     }
   },
@@ -55047,6 +58405,24 @@ const SENTENCES = [
           "tonight"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The concert"
+        ],
+        [
+          "D",
+          "start"
+        ],
+        [
+          "B",
+          "at 8 o'clock"
+        ],
+        [
+          "C",
+          "tonight"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -55081,6 +58457,42 @@ const SENTENCES = [
         [
           "C",
           "the night"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The concert"
+        ],
+        [
+          "D",
+          "starts"
+        ],
+        [
+          "B",
+          "at 8 o'clock"
+        ],
+        [
+          "C",
+          "tonight"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The concert"
+        ],
+        [
+          "D",
+          "fixin' to start"
+        ],
+        [
+          "B",
+          "at 8 o'clock"
+        ],
+        [
+          "C",
+          "tonight"
         ]
       ],
       "de": [
@@ -55820,6 +59232,42 @@ const SENTENCES = [
           "C",
           "heno"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'concert"
+        ],
+        [
+          "D",
+          "starts"
+        ],
+        [
+          "B",
+          "at 8 o'clock"
+        ],
+        [
+          "C",
+          "tonight"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The concert"
+        ],
+        [
+          "D",
+          "starts"
+        ],
+        [
+          "B",
+          "at 8 o'clock"
+        ],
+        [
+          "C",
+          "tonight"
+        ]
       ]
     }
   },
@@ -56021,6 +59469,24 @@ const SENTENCES = [
           "fluently"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "D",
+          "speak"
+        ],
+        [
+          "B",
+          "three languages"
+        ],
+        [
+          "C",
+          "real fluent"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -56055,6 +59521,42 @@ const SENTENCES = [
         [
           "C",
           "fluently"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "D",
+          "speaks"
+        ],
+        [
+          "B",
+          "three languages"
+        ],
+        [
+          "C",
+          "right good"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "D",
+          "speaks"
+        ],
+        [
+          "B",
+          "three languages"
+        ],
+        [
+          "C",
+          "right fluently"
         ]
       ],
       "de": [
@@ -56794,6 +60296,42 @@ const SENTENCES = [
           "C",
           "yn rhugl"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "D",
+          "speaks"
+        ],
+        [
+          "B",
+          "three languages"
+        ],
+        [
+          "C",
+          "reight well"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "D",
+          "speaks"
+        ],
+        [
+          "B",
+          "free languages"
+        ],
+        [
+          "C",
+          "proper well"
+        ]
       ]
     }
   },
@@ -57038,6 +60576,28 @@ const SENTENCES = [
           "of this temple"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "wanna"
+        ],
+        [
+          "D",
+          "take"
+        ],
+        [
+          "C",
+          "a photo"
+        ],
+        [
+          "B",
+          "of this temple"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -57076,6 +60636,50 @@ const SENTENCES = [
         [
           "C",
           "a photo"
+        ],
+        [
+          "B",
+          "of this temple"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "take"
+        ],
+        [
+          "C",
+          "a picture"
+        ],
+        [
+          "B",
+          "of this temple"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "fixin' to"
+        ],
+        [
+          "D",
+          "take"
+        ],
+        [
+          "C",
+          "a picture"
         ],
         [
           "B",
@@ -57951,6 +61555,50 @@ const SENTENCES = [
           "B",
           "o'r deml hon"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "take"
+        ],
+        [
+          "C",
+          "a photo"
+        ],
+        [
+          "B",
+          "of this temple"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "wanna"
+        ],
+        [
+          "D",
+          "take"
+        ],
+        [
+          "C",
+          "a photo"
+        ],
+        [
+          "B",
+          "of this temple"
+        ]
       ]
     }
   },
@@ -58109,6 +61757,20 @@ const SENTENCES = [
           "every 15 minutes"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The bus"
+        ],
+        [
+          "C",
+          "come"
+        ],
+        [
+          "B",
+          "every 15 minutes"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -58131,6 +61793,34 @@ const SENTENCES = [
         [
           "C",
           "arrives"
+        ],
+        [
+          "B",
+          "every 15 minutes"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The bus"
+        ],
+        [
+          "C",
+          "comes"
+        ],
+        [
+          "B",
+          "ever' 15 minutes"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The bus"
+        ],
+        [
+          "C",
+          "comes"
         ],
         [
           "B",
@@ -58710,6 +62400,34 @@ const SENTENCES = [
           "B",
           "bob 15 munud"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'bus"
+        ],
+        [
+          "C",
+          "comes"
+        ],
+        [
+          "B",
+          "every 15 minutes"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The bus"
+        ],
+        [
+          "C",
+          "comes"
+        ],
+        [
+          "B",
+          "every 15 minutes"
+        ]
       ]
     }
   },
@@ -58911,6 +62629,24 @@ const SENTENCES = [
           "Korean food"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "learnin'"
+        ],
+        [
+          "C",
+          "to cook"
+        ],
+        [
+          "B",
+          "Korean food"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -58941,6 +62677,42 @@ const SENTENCES = [
         [
           "C",
           "tae cook"
+        ],
+        [
+          "B",
+          "Korean food"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "learnin'"
+        ],
+        [
+          "C",
+          "to cook"
+        ],
+        [
+          "B",
+          "Korean food"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "learnin'"
+        ],
+        [
+          "C",
+          "to cook"
         ],
         [
           "B",
@@ -59652,6 +63424,42 @@ const SENTENCES = [
           "B",
           "bwyd Corea"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "learnin'"
+        ],
+        [
+          "C",
+          "to cook"
+        ],
+        [
+          "B",
+          "Korean food"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "learnin'"
+        ],
+        [
+          "C",
+          "to cook"
+        ],
+        [
+          "B",
+          "Korean food"
+        ]
       ]
     }
   },
@@ -59880,6 +63688,28 @@ const SENTENCES = [
           "to meetings"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "E",
+          "be comin'"
+        ],
+        [
+          "C",
+          "late"
+        ],
+        [
+          "D",
+          "to meetings"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -59922,6 +63752,50 @@ const SENTENCES = [
         [
           "D",
           "tae meetings"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "E",
+          "shows up"
+        ],
+        [
+          "C",
+          "late"
+        ],
+        [
+          "D",
+          "to meetin's"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "E",
+          "shows up"
+        ],
+        [
+          "C",
+          "late"
+        ],
+        [
+          "D",
+          "to meetin's"
         ]
       ],
       "de": [
@@ -60801,6 +64675,50 @@ const SENTENCES = [
           "D",
           "i gyfarfodydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "B",
+          "allus"
+        ],
+        [
+          "E",
+          "turns up"
+        ],
+        [
+          "C",
+          "late"
+        ],
+        [
+          "D",
+          "to meetin's"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "'E"
+        ],
+        [
+          "B",
+          "always"
+        ],
+        [
+          "E",
+          "turns up"
+        ],
+        [
+          "C",
+          "late"
+        ],
+        [
+          "D",
+          "to meetin's"
+        ]
       ]
     }
   },
@@ -61045,6 +64963,28 @@ const SENTENCES = [
           "by the end of the month"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "wanna"
+        ],
+        [
+          "D",
+          "read"
+        ],
+        [
+          "B",
+          "this book"
+        ],
+        [
+          "C",
+          "by the end of the month"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -61075,6 +65015,50 @@ const SENTENCES = [
         [
           "E",
           "want tae"
+        ],
+        [
+          "D",
+          "read"
+        ],
+        [
+          "B",
+          "this book"
+        ],
+        [
+          "C",
+          "by the end of the month"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "read"
+        ],
+        [
+          "B",
+          "this book"
+        ],
+        [
+          "C",
+          "by the end of the month"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "E",
+          "fixin' to"
         ],
         [
           "D",
@@ -61958,6 +65942,50 @@ const SENTENCES = [
           "C",
           "erbyn diwedd y mis"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "want to"
+        ],
+        [
+          "D",
+          "read"
+        ],
+        [
+          "B",
+          "this book"
+        ],
+        [
+          "C",
+          "by t'end o' t'month"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "wanna"
+        ],
+        [
+          "D",
+          "read"
+        ],
+        [
+          "B",
+          "this book"
+        ],
+        [
+          "C",
+          "by the end of the month"
+        ]
       ]
     }
   },
@@ -62116,6 +66144,20 @@ const SENTENCES = [
           "in the trees"
         ]
       ],
+      "en_aave": [
+        [
+          "B",
+          "The birds"
+        ],
+        [
+          "C",
+          "singin'"
+        ],
+        [
+          "A",
+          "in the trees"
+        ]
+      ],
       "en_ie": [
         [
           "B",
@@ -62138,6 +66180,34 @@ const SENTENCES = [
         [
           "C",
           "are singing"
+        ],
+        [
+          "A",
+          "in the trees"
+        ]
+      ],
+      "en_app": [
+        [
+          "B",
+          "The birds"
+        ],
+        [
+          "C",
+          "are a-singin'"
+        ],
+        [
+          "A",
+          "in the trees"
+        ]
+      ],
+      "en_south": [
+        [
+          "B",
+          "The birds"
+        ],
+        [
+          "C",
+          "are singin'"
         ],
         [
           "A",
@@ -62725,6 +66795,34 @@ const SENTENCES = [
           "C",
           "canu"
         ]
+      ],
+      "en_yk": [
+        [
+          "B",
+          "T'birds"
+        ],
+        [
+          "C",
+          "are singin'"
+        ],
+        [
+          "A",
+          "in t'trees"
+        ]
+      ],
+      "en_ck": [
+        [
+          "B",
+          "The birds"
+        ],
+        [
+          "C",
+          "are singin'"
+        ],
+        [
+          "A",
+          "in the trees"
+        ]
       ]
     }
   },
@@ -62926,6 +67024,24 @@ const SENTENCES = [
           "my phone"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "need to"
+        ],
+        [
+          "C",
+          "charge"
+        ],
+        [
+          "B",
+          "my phone"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -62952,6 +67068,42 @@ const SENTENCES = [
         [
           "D",
           "need tae"
+        ],
+        [
+          "C",
+          "charge"
+        ],
+        [
+          "B",
+          "my phone"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "need to"
+        ],
+        [
+          "C",
+          "charge"
+        ],
+        [
+          "B",
+          "my phone"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "need to"
         ],
         [
           "C",
@@ -63671,6 +67823,42 @@ const SENTENCES = [
           "B",
           "fy ffôn"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "need to"
+        ],
+        [
+          "C",
+          "charge"
+        ],
+        [
+          "B",
+          "me phone"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "need to"
+        ],
+        [
+          "C",
+          "charge"
+        ],
+        [
+          "B",
+          "me phone"
+        ]
       ]
     }
   },
@@ -63915,6 +68103,28 @@ const SENTENCES = [
           "gift"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "gave"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a real nice"
+        ],
+        [
+          "D",
+          "gift"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -63953,6 +68163,50 @@ const SENTENCES = [
         [
           "C",
           "a bonnie"
+        ],
+        [
+          "D",
+          "gift"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "gave"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a right purty"
+        ],
+        [
+          "D",
+          "gift"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "gave"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a right pretty"
         ],
         [
           "D",
@@ -64840,6 +69094,50 @@ const SENTENCES = [
           "B",
           "i mi"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "gave"
+        ],
+        [
+          "B",
+          "us"
+        ],
+        [
+          "C",
+          "a reight bonny"
+        ],
+        [
+          "D",
+          "gift"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "E",
+          "gave"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "a well nice"
+        ],
+        [
+          "D",
+          "gift"
+        ]
       ]
     }
   },
@@ -64998,6 +69296,20 @@ const SENTENCES = [
           "with snow"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The mountain"
+        ],
+        [
+          "C",
+          "covered"
+        ],
+        [
+          "B",
+          "with snow"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -65024,6 +69336,34 @@ const SENTENCES = [
         [
           "B",
           "wi snow"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The mountain"
+        ],
+        [
+          "C",
+          "is covered"
+        ],
+        [
+          "B",
+          "with snow"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The mountain"
+        ],
+        [
+          "C",
+          "is covered"
+        ],
+        [
+          "B",
+          "with snow"
         ]
       ],
       "de": [
@@ -65623,6 +69963,34 @@ const SENTENCES = [
           "B",
           "ag eira"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'mountain"
+        ],
+        [
+          "C",
+          "'s covered"
+        ],
+        [
+          "B",
+          "wi' snow"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The mountain"
+        ],
+        [
+          "C",
+          "'s covered"
+        ],
+        [
+          "B",
+          "wiv snow"
+        ]
       ]
     }
   },
@@ -65824,6 +70192,24 @@ const SENTENCES = [
           "three times a week"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "work out"
+        ],
+        [
+          "B",
+          "at the gym"
+        ],
+        [
+          "C",
+          "three times a week"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -65850,6 +70236,42 @@ const SENTENCES = [
         [
           "D",
           "exercise"
+        ],
+        [
+          "B",
+          "at the gym"
+        ],
+        [
+          "C",
+          "three times a week"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "work out"
+        ],
+        [
+          "B",
+          "at the gym"
+        ],
+        [
+          "C",
+          "three times a week"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "work out"
         ],
         [
           "B",
@@ -66577,6 +70999,42 @@ const SENTENCES = [
           "C",
           "dair gwaith yr wythnos"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "do me exercise"
+        ],
+        [
+          "B",
+          "at t'gym"
+        ],
+        [
+          "C",
+          "three times a week"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "exercise"
+        ],
+        [
+          "B",
+          "at the gym"
+        ],
+        [
+          "C",
+          "free times a week"
+        ]
       ]
     }
   },
@@ -66786,6 +71244,24 @@ const SENTENCES = [
           "here?"
         ]
       ],
+      "en_aave": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "sit"
+        ],
+        [
+          "B",
+          "here?"
+        ]
+      ],
       "en_ie": [
         [
           "D",
@@ -66805,6 +71281,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "sit"
+        ],
+        [
+          "B",
+          "here?"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "sit"
+        ],
+        [
+          "B",
+          "here?"
+        ]
+      ],
+      "en_south": [
         [
           "D",
           "Can"
@@ -67429,6 +71941,42 @@ const SENTENCES = [
           "B",
           "fan hyn?"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "sit"
+        ],
+        [
+          "B",
+          "'ere?"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "Can"
+        ],
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "sit"
+        ],
+        [
+          "B",
+          "'ere?"
+        ]
       ]
     }
   },
@@ -67630,6 +72178,24 @@ const SENTENCES = [
           "to his parents"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "wrote"
+        ],
+        [
+          "B",
+          "a long letter"
+        ],
+        [
+          "C",
+          "to his folks"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -67664,6 +72230,42 @@ const SENTENCES = [
         [
           "C",
           "tae his parents"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "wrote"
+        ],
+        [
+          "B",
+          "a long letter"
+        ],
+        [
+          "C",
+          "to his folks"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "wrote"
+        ],
+        [
+          "B",
+          "a long letter"
+        ],
+        [
+          "C",
+          "to his mama and daddy"
         ]
       ],
       "de": [
@@ -68361,6 +72963,42 @@ const SENTENCES = [
           "C",
           "at ei rieni"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "wrote"
+        ],
+        [
+          "B",
+          "a long letter"
+        ],
+        [
+          "C",
+          "to 'is mam and dad"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "'E"
+        ],
+        [
+          "D",
+          "wrote"
+        ],
+        [
+          "B",
+          "a long le'er"
+        ],
+        [
+          "C",
+          "to 'is mum and dad"
+        ]
       ]
     }
   },
@@ -68519,6 +73157,20 @@ const SENTENCES = [
           "at 9 PM"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The store"
+        ],
+        [
+          "C",
+          "close"
+        ],
+        [
+          "B",
+          "at 9 PM"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -68537,6 +73189,34 @@ const SENTENCES = [
         [
           "A",
           "The shop"
+        ],
+        [
+          "C",
+          "closes"
+        ],
+        [
+          "B",
+          "at 9 PM"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The store"
+        ],
+        [
+          "C",
+          "closes"
+        ],
+        [
+          "B",
+          "at 9 of an evenin'"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The store"
         ],
         [
           "C",
@@ -69106,6 +73786,34 @@ const SENTENCES = [
           "B",
           "am 9 yr hwyr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'shop"
+        ],
+        [
+          "C",
+          "shuts"
+        ],
+        [
+          "B",
+          "at 9 o'clock"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The shop"
+        ],
+        [
+          "C",
+          "shuts"
+        ],
+        [
+          "B",
+          "at 9"
+        ]
       ]
     }
   },
@@ -69307,6 +74015,24 @@ const SENTENCES = [
           "my pronunciation"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "get better at"
+        ],
+        [
+          "B",
+          "my pronunciation"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -69337,6 +74063,42 @@ const SENTENCES = [
         [
           "C",
           "improve"
+        ],
+        [
+          "B",
+          "my pronunciation"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "get better at"
+        ],
+        [
+          "B",
+          "how I talk"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "wantin' to"
+        ],
+        [
+          "C",
+          "work on"
         ],
         [
           "B",
@@ -70030,6 +74792,42 @@ const SENTENCES = [
           "B",
           "fy ynganiad"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "get better at"
+        ],
+        [
+          "B",
+          "me pronunciation"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "improve"
+        ],
+        [
+          "B",
+          "my pronunciation"
+        ]
       ]
     }
   },
@@ -70231,6 +75029,24 @@ const SENTENCES = [
           "over the river"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "They"
+        ],
+        [
+          "D",
+          "built"
+        ],
+        [
+          "B",
+          "a new bridge"
+        ],
+        [
+          "C",
+          "over the river"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -70250,6 +75066,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "They"
+        ],
+        [
+          "D",
+          "built"
+        ],
+        [
+          "B",
+          "a new bridge"
+        ],
+        [
+          "C",
+          "over the river"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "They"
+        ],
+        [
+          "D",
+          "built"
+        ],
+        [
+          "B",
+          "a new bridge"
+        ],
+        [
+          "C",
+          "over the river"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "They"
@@ -70974,6 +75826,42 @@ const SENTENCES = [
           "C",
           "dros yr afon"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "They"
+        ],
+        [
+          "D",
+          "built"
+        ],
+        [
+          "B",
+          "a new bridge"
+        ],
+        [
+          "C",
+          "over t'river"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "They"
+        ],
+        [
+          "D",
+          "built"
+        ],
+        [
+          "B",
+          "a new bridge"
+        ],
+        [
+          "C",
+          "over the river"
+        ]
       ]
     }
   },
@@ -71175,6 +76063,24 @@ const SENTENCES = [
           "every night"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "My cat"
+        ],
+        [
+          "D",
+          "be sleepin'"
+        ],
+        [
+          "B",
+          "on my bed"
+        ],
+        [
+          "C",
+          "every night"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -71194,6 +76100,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "My cat"
+        ],
+        [
+          "D",
+          "sleeps"
+        ],
+        [
+          "B",
+          "on my bed"
+        ],
+        [
+          "C",
+          "every night"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "My cat"
+        ],
+        [
+          "D",
+          "sleeps"
+        ],
+        [
+          "B",
+          "on my bed"
+        ],
+        [
+          "C",
+          "ever' night"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "My cat"
@@ -71930,6 +76872,42 @@ const SENTENCES = [
           "C",
           "bob nos"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Me cat"
+        ],
+        [
+          "D",
+          "sleeps"
+        ],
+        [
+          "B",
+          "on me bed"
+        ],
+        [
+          "C",
+          "every neet"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "My cat"
+        ],
+        [
+          "D",
+          "sleeps"
+        ],
+        [
+          "B",
+          "on my bed"
+        ],
+        [
+          "C",
+          "every night"
+        ]
       ]
     }
   },
@@ -72088,6 +77066,20 @@ const SENTENCES = [
           "for 30 minutes"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "been waitin'"
+        ],
+        [
+          "B",
+          "for 30 minutes"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -72110,6 +77102,34 @@ const SENTENCES = [
         [
           "C",
           "been waiting"
+        ],
+        [
+          "B",
+          "for 30 minutes"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "been a-waitin'"
+        ],
+        [
+          "B",
+          "for 30 minutes"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "been waitin'"
         ],
         [
           "B",
@@ -72667,6 +77687,34 @@ const SENTENCES = [
           "B",
           "yn aros am 30 munud"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "C",
+          "been waitin'"
+        ],
+        [
+          "B",
+          "for 'alf an hour"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "C",
+          "been waitin'"
+        ],
+        [
+          "B",
+          "for 'alf an hour"
+        ]
       ]
     }
   },
@@ -72825,6 +77873,20 @@ const SENTENCES = [
           "to swim"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The kids"
+        ],
+        [
+          "C",
+          "learnin'"
+        ],
+        [
+          "B",
+          "to swim"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -72851,6 +77913,34 @@ const SENTENCES = [
         [
           "B",
           "tae swim"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The young'uns"
+        ],
+        [
+          "C",
+          "are learnin'"
+        ],
+        [
+          "B",
+          "to swim"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The young'uns"
+        ],
+        [
+          "C",
+          "are learnin'"
+        ],
+        [
+          "B",
+          "to swim"
         ]
       ],
       "de": [
@@ -73412,6 +78502,34 @@ const SENTENCES = [
           "B",
           "dysgu nofio"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'bairns"
+        ],
+        [
+          "C",
+          "are learnin'"
+        ],
+        [
+          "B",
+          "to swim"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The kids"
+        ],
+        [
+          "C",
+          "are learnin'"
+        ],
+        [
+          "B",
+          "to swim"
+        ]
       ]
     }
   },
@@ -73613,6 +78731,24 @@ const SENTENCES = [
           "music"
         ]
       ],
+      "en_aave": [
+        [
+          "D",
+          "I feel happy"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "B",
+          "I listen to"
+        ],
+        [
+          "A",
+          "music"
+        ]
+      ],
       "en_ie": [
         [
           "D",
@@ -73643,6 +78779,42 @@ const SENTENCES = [
         [
           "B",
           "I listen tae"
+        ],
+        [
+          "A",
+          "music"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "I feel right happy"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "B",
+          "I listen to"
+        ],
+        [
+          "A",
+          "music"
+        ]
+      ],
+      "en_south": [
+        [
+          "D",
+          "I feel right happy"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "B",
+          "I listen to"
         ],
         [
           "A",
@@ -74292,6 +79464,42 @@ const SENTENCES = [
           "A",
           "gerddoriaeth"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "I feel 'appy"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "B",
+          "I listen to"
+        ],
+        [
+          "A",
+          "music"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "I feel 'appy"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "B",
+          "I listen to"
+        ],
+        [
+          "A",
+          "music"
+        ]
       ]
     }
   },
@@ -74450,6 +79658,20 @@ const SENTENCES = [
           "by the test results"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "C",
+          "was surprised"
+        ],
+        [
+          "B",
+          "by the test results"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -74472,6 +79694,34 @@ const SENTENCES = [
         [
           "C",
           "was surprised"
+        ],
+        [
+          "B",
+          "by the test results"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "C",
+          "was plumb surprised"
+        ],
+        [
+          "B",
+          "by the test results"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "C",
+          "was right surprised"
         ],
         [
           "B",
@@ -75037,6 +80287,34 @@ const SENTENCES = [
           "B",
           "ei synnu gan ganlyniadau'r prawf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "C",
+          "were right surprised"
+        ],
+        [
+          "B",
+          "by t'test results"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "'E"
+        ],
+        [
+          "C",
+          "was well surprised"
+        ],
+        [
+          "B",
+          "by the test results"
+        ]
       ]
     }
   },
@@ -75238,6 +80516,24 @@ const SENTENCES = [
           "is good"
         ]
       ],
+      "en_aave": [
+        [
+          "D",
+          "I think"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "plan"
+        ],
+        [
+          "C",
+          "good"
+        ]
+      ],
       "en_ie": [
         [
           "D",
@@ -75272,6 +80568,42 @@ const SENTENCES = [
         [
           "C",
           "is braw"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "I reckon"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "plan"
+        ],
+        [
+          "C",
+          "is good"
+        ]
+      ],
+      "en_south": [
+        [
+          "D",
+          "I reckon"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "plan"
+        ],
+        [
+          "C",
+          "is good"
         ]
       ],
       "de": [
@@ -76005,6 +81337,42 @@ const SENTENCES = [
           "C",
           "dda"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "I reckon"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "plan"
+        ],
+        [
+          "C",
+          "'s good"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "I fink"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "plan"
+        ],
+        [
+          "C",
+          "'s good"
+        ]
       ]
     }
   },
@@ -76241,6 +81609,28 @@ const SENTENCES = [
           "moved away"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "sad"
+        ],
+        [
+          "C",
+          "'cause"
+        ],
+        [
+          "D",
+          "her friend"
+        ],
+        [
+          "E",
+          "moved away"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -76283,6 +81673,50 @@ const SENTENCES = [
         [
           "E",
           "moved away"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "is sad"
+        ],
+        [
+          "C",
+          "on account of"
+        ],
+        [
+          "D",
+          "her friend"
+        ],
+        [
+          "E",
+          "moved away"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "is sad"
+        ],
+        [
+          "C",
+          "on account of"
+        ],
+        [
+          "D",
+          "her friend"
+        ],
+        [
+          "E",
+          "done moved away"
         ]
       ],
       "de": [
@@ -77088,6 +82522,50 @@ const SENTENCES = [
           "E",
           "symud i ffwrdd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "'s upset"
+        ],
+        [
+          "C",
+          "because"
+        ],
+        [
+          "D",
+          "'er mate"
+        ],
+        [
+          "E",
+          "moved away"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "B",
+          "'s sad"
+        ],
+        [
+          "C",
+          "'cos"
+        ],
+        [
+          "D",
+          "'er mate"
+        ],
+        [
+          "E",
+          "moved away"
+        ]
       ]
     }
   },
@@ -77324,6 +82802,28 @@ const SENTENCES = [
           "a valuable experience"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "believe"
+        ],
+        [
+          "B",
+          "studyin' abroad"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "a real valuable experience"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -77366,6 +82866,50 @@ const SENTENCES = [
         [
           "C",
           "a valuable experience"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "reckon"
+        ],
+        [
+          "B",
+          "studyin' abroad"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "a right good experience"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "reckon"
+        ],
+        [
+          "B",
+          "studyin' abroad"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "C",
+          "a right valuable experience"
         ]
       ],
       "de": [
@@ -78131,6 +83675,50 @@ const SENTENCES = [
           "C",
           "brofiad gwerthfawr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "reckon"
+        ],
+        [
+          "B",
+          "studyin' abroad"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "a reight good experience"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "E",
+          "reckon"
+        ],
+        [
+          "B",
+          "studyin' abroad"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "C",
+          "a proper valuable experience"
+        ]
       ]
     }
   },
@@ -78321,6 +83909,24 @@ const SENTENCES = [
           "today"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "got"
+        ],
+        [
+          "B",
+          "a headache"
+        ],
+        [
+          "C",
+          "today"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -78355,6 +83961,42 @@ const SENTENCES = [
         [
           "C",
           "the day"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "got"
+        ],
+        [
+          "B",
+          "a headache"
+        ],
+        [
+          "C",
+          "today"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "got"
+        ],
+        [
+          "B",
+          "a headache"
+        ],
+        [
+          "C",
+          "today"
         ]
       ],
       "de": [
@@ -78996,6 +84638,42 @@ const SENTENCES = [
           "C",
           "heddiw"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "D",
+          "got"
+        ],
+        [
+          "B",
+          "a bad 'ead"
+        ],
+        [
+          "C",
+          "today"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I've"
+        ],
+        [
+          "D",
+          "got"
+        ],
+        [
+          "B",
+          "a 'eadache"
+        ],
+        [
+          "C",
+          "today"
+        ]
       ]
     }
   },
@@ -79197,6 +84875,24 @@ const SENTENCES = [
           "to rest"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The doctor"
+        ],
+        [
+          "D",
+          "told"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "to rest"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -79231,6 +84927,42 @@ const SENTENCES = [
         [
           "C",
           "tae rest"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The doctor"
+        ],
+        [
+          "D",
+          "told"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "to rest up"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The doctor"
+        ],
+        [
+          "D",
+          "told"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "to rest up"
         ]
       ],
       "de": [
@@ -79940,6 +85672,42 @@ const SENTENCES = [
           "C",
           "am orffwys"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'doctor"
+        ],
+        [
+          "D",
+          "told"
+        ],
+        [
+          "B",
+          "us"
+        ],
+        [
+          "C",
+          "to rest"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The doctor"
+        ],
+        [
+          "D",
+          "told"
+        ],
+        [
+          "B",
+          "me"
+        ],
+        [
+          "C",
+          "to rest"
+        ]
       ]
     }
   },
@@ -80141,6 +85909,24 @@ const SENTENCES = [
           "every morning"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "try to"
+        ],
+        [
+          "C",
+          "exercise"
+        ],
+        [
+          "B",
+          "every mornin'"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -80175,6 +85961,42 @@ const SENTENCES = [
         [
           "B",
           "every morning"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "try to"
+        ],
+        [
+          "C",
+          "exercise"
+        ],
+        [
+          "B",
+          "ever' mornin'"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "try to"
+        ],
+        [
+          "C",
+          "get some exercise"
+        ],
+        [
+          "B",
+          "every mornin'"
         ]
       ],
       "de": [
@@ -80848,6 +86670,42 @@ const SENTENCES = [
           "B",
           "bob bore"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "try to"
+        ],
+        [
+          "C",
+          "do some exercise"
+        ],
+        [
+          "B",
+          "every mornin'"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "try to"
+        ],
+        [
+          "C",
+          "exercise"
+        ],
+        [
+          "B",
+          "every mornin'"
+        ]
       ]
     }
   },
@@ -81025,6 +86883,24 @@ const SENTENCES = [
           "last week"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "C",
+          "caught"
+        ],
+        [
+          "B",
+          "a cold"
+        ],
+        [
+          "D",
+          "last week"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -81044,6 +86920,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "C",
+          "caught"
+        ],
+        [
+          "B",
+          "a cold"
+        ],
+        [
+          "D",
+          "last week"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "C",
+          "caught"
+        ],
+        [
+          "B",
+          "a cold"
+        ],
+        [
+          "D",
+          "last week"
+        ]
+      ],
+      "en_south": [
         [
           "A",
           "She"
@@ -81740,6 +87652,42 @@ const SENTENCES = [
           "D",
           "yr wythnos diwethaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "C",
+          "caught"
+        ],
+        [
+          "B",
+          "a cold"
+        ],
+        [
+          "D",
+          "last week"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "She"
+        ],
+        [
+          "C",
+          "caught"
+        ],
+        [
+          "B",
+          "a cold"
+        ],
+        [
+          "D",
+          "last week"
+        ]
       ]
     }
   },
@@ -81937,6 +87885,24 @@ const SENTENCES = [
           "more water"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "You"
+        ],
+        [
+          "D",
+          "should"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "more water"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -81971,6 +87937,42 @@ const SENTENCES = [
         [
           "B",
           "mair water"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "You"
+        ],
+        [
+          "D",
+          "ought to"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "more water"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Y'all"
+        ],
+        [
+          "D",
+          "ought to"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "more water"
         ]
       ],
       "de": [
@@ -82584,6 +88586,42 @@ const SENTENCES = [
           "B",
           "yfed mwy o ddŵr"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Tha"
+        ],
+        [
+          "D",
+          "should"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "more water"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Ya"
+        ],
+        [
+          "D",
+          "should"
+        ],
+        [
+          "C",
+          "drink"
+        ],
+        [
+          "B",
+          "more water"
+        ]
       ]
     }
   },
@@ -82781,6 +88819,24 @@ const SENTENCES = [
           "every day"
         ]
       ],
+      "en_aave": [
+        [
+          "D",
+          "I"
+        ],
+        [
+          "C",
+          "be on"
+        ],
+        [
+          "B",
+          "my phone"
+        ],
+        [
+          "A",
+          "every day"
+        ]
+      ],
       "en_ie": [
         [
           "D",
@@ -82800,6 +88856,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "D",
+          "I"
+        ],
+        [
+          "C",
+          "use"
+        ],
+        [
+          "B",
+          "my smartphone"
+        ],
+        [
+          "A",
+          "every day"
+        ]
+      ],
+      "en_app": [
+        [
+          "D",
+          "I"
+        ],
+        [
+          "C",
+          "use"
+        ],
+        [
+          "B",
+          "my phone"
+        ],
+        [
+          "A",
+          "ever' day"
+        ]
+      ],
+      "en_south": [
         [
           "D",
           "I"
@@ -83428,6 +89520,42 @@ const SENTENCES = [
           "A",
           "bob dydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "D",
+          "I"
+        ],
+        [
+          "C",
+          "use"
+        ],
+        [
+          "B",
+          "me phone"
+        ],
+        [
+          "A",
+          "every day"
+        ]
+      ],
+      "en_ck": [
+        [
+          "D",
+          "I"
+        ],
+        [
+          "C",
+          "use"
+        ],
+        [
+          "B",
+          "me phone"
+        ],
+        [
+          "A",
+          "every day"
+        ]
       ]
     }
   },
@@ -83625,6 +89753,24 @@ const SENTENCES = [
           "convenient"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "app"
+        ],
+        [
+          "C",
+          "real"
+        ],
+        [
+          "D",
+          "convenient"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -83655,6 +89801,42 @@ const SENTENCES = [
         [
           "C",
           "is awfy"
+        ],
+        [
+          "D",
+          "handy"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "app"
+        ],
+        [
+          "C",
+          "is right"
+        ],
+        [
+          "D",
+          "handy"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "app"
+        ],
+        [
+          "C",
+          "is right"
         ],
         [
           "D",
@@ -84388,6 +90570,42 @@ const SENTENCES = [
           "D",
           "iawn"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "app"
+        ],
+        [
+          "C",
+          "'s reight"
+        ],
+        [
+          "D",
+          "handy"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "This"
+        ],
+        [
+          "B",
+          "app"
+        ],
+        [
+          "C",
+          "'s proper"
+        ],
+        [
+          "D",
+          "useful"
+        ]
       ]
     }
   },
@@ -84546,6 +90764,20 @@ const SENTENCES = [
           "the world"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "C",
+          "changin'"
+        ],
+        [
+          "B",
+          "the world"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -84568,6 +90800,34 @@ const SENTENCES = [
         [
           "C",
           "is changing"
+        ],
+        [
+          "B",
+          "the world"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "C",
+          "is a-changin'"
+        ],
+        [
+          "B",
+          "the world"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "C",
+          "is changin'"
         ],
         [
           "B",
@@ -85133,6 +91393,34 @@ const SENTENCES = [
           "B",
           "newid y byd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "C",
+          "'s changin'"
+        ],
+        [
+          "B",
+          "t'world"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "AI"
+        ],
+        [
+          "C",
+          "'s changin'"
+        ],
+        [
+          "B",
+          "the world"
+        ]
       ]
     }
   },
@@ -85291,6 +91579,20 @@ const SENTENCES = [
           "the Wi-Fi password"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "can't find"
+        ],
+        [
+          "B",
+          "the Wi-Fi password"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -85313,6 +91615,34 @@ const SENTENCES = [
         [
           "C",
           "cannae find"
+        ],
+        [
+          "B",
+          "the Wi-Fi password"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "cain't find"
+        ],
+        [
+          "B",
+          "the Wi-Fi password"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "can't find"
         ],
         [
           "B",
@@ -85790,6 +92120,34 @@ const SENTENCES = [
           "B",
           "cyfrinair y Wi-Fi"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "can't find"
+        ],
+        [
+          "B",
+          "t'Wi-Fi password"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "C",
+          "can't find"
+        ],
+        [
+          "B",
+          "the Wi-Fi password"
+        ]
       ]
     }
   },
@@ -85975,6 +92333,24 @@ const SENTENCES = [
           "by himself"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "learned"
+        ],
+        [
+          "B",
+          "programming"
+        ],
+        [
+          "C",
+          "by himself"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -86005,6 +92381,42 @@ const SENTENCES = [
         [
           "B",
           "programming"
+        ],
+        [
+          "C",
+          "by himself"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "learned"
+        ],
+        [
+          "B",
+          "programmin'"
+        ],
+        [
+          "C",
+          "all by hisself"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "done learned"
+        ],
+        [
+          "B",
+          "programmin'"
         ],
         [
           "C",
@@ -86718,6 +93130,42 @@ const SENTENCES = [
           "C",
           "ar ei ben ei hun"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "He"
+        ],
+        [
+          "D",
+          "learned"
+        ],
+        [
+          "B",
+          "programmin'"
+        ],
+        [
+          "C",
+          "by 'is sen"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "'E"
+        ],
+        [
+          "D",
+          "learned"
+        ],
+        [
+          "B",
+          "programmin'"
+        ],
+        [
+          "C",
+          "by 'imself"
+        ]
       ]
     }
   },
@@ -86911,6 +93359,24 @@ const SENTENCES = [
           "tradition"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "Cherry blossom viewin'"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "a Japanese"
+        ],
+        [
+          "C",
+          "tradition"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -86933,6 +93399,42 @@ const SENTENCES = [
         [
           "A",
           "Cherry blossom viewing"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "a Japanese"
+        ],
+        [
+          "C",
+          "tradition"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Cherry blossom viewin'"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "a Japanese"
+        ],
+        [
+          "C",
+          "tradition"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Cherry blossom viewin'"
         ],
         [
           "D",
@@ -87606,6 +94108,42 @@ const SENTENCES = [
           "B",
           "Japaneaidd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Cherry blossom viewin'"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "a Japanese"
+        ],
+        [
+          "C",
+          "tradition"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Cherry blossom viewin'"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "a Japanese"
+        ],
+        [
+          "C",
+          "tradition"
+        ]
       ]
     }
   },
@@ -87807,6 +94345,24 @@ const SENTENCES = [
           "during Chinese New Year"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "dumplings"
+        ],
+        [
+          "D",
+          "durin' Chinese New Year"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -87841,6 +94397,42 @@ const SENTENCES = [
         [
           "D",
           "during Chinese New Year"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "dumplin's"
+        ],
+        [
+          "D",
+          "durin' Chinese New Year"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "C",
+          "eat"
+        ],
+        [
+          "B",
+          "dumplin's"
+        ],
+        [
+          "D",
+          "durin' Chinese New Year"
         ]
       ],
       "de": [
@@ -88526,6 +95118,42 @@ const SENTENCES = [
           "D",
           "yn ystod y Flwyddyn Newydd Leuadol"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "C",
+          "'ave"
+        ],
+        [
+          "B",
+          "dumplin's"
+        ],
+        [
+          "D",
+          "durin' Chinese New Year"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "We"
+        ],
+        [
+          "C",
+          "'ave"
+        ],
+        [
+          "B",
+          "dumplin's"
+        ],
+        [
+          "D",
+          "durin' Chinese New Year"
+        ]
       ]
     }
   },
@@ -88727,6 +95355,24 @@ const SENTENCES = [
           "are held"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "B",
+          "in summer"
+        ],
+        [
+          "C",
+          "a lot of festivals"
+        ],
+        [
+          "D",
+          "be goin' on"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -88757,6 +95403,42 @@ const SENTENCES = [
         [
           "C",
           "many festivals"
+        ],
+        [
+          "D",
+          "are held"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "B",
+          "of a summer"
+        ],
+        [
+          "C",
+          "a whole lot of festivals"
+        ],
+        [
+          "D",
+          "are held"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "B",
+          "in the summer"
+        ],
+        [
+          "C",
+          "a whole mess of festivals"
         ],
         [
           "D",
@@ -89474,6 +96156,42 @@ const SENTENCES = [
           "B",
           "yn yr haf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "B",
+          "in summer"
+        ],
+        [
+          "C",
+          "loads o' festivals"
+        ],
+        [
+          "D",
+          "are 'eld"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "In this country"
+        ],
+        [
+          "B",
+          "in summer"
+        ],
+        [
+          "C",
+          "loads of festivals"
+        ],
+        [
+          "D",
+          "are 'eld"
+        ]
       ]
     }
   },
@@ -89632,6 +96350,20 @@ const SENTENCES = [
           "new doors"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "Learnin' a language"
+        ],
+        [
+          "C",
+          "open up"
+        ],
+        [
+          "B",
+          "new doors"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -89650,6 +96382,34 @@ const SENTENCES = [
         [
           "A",
           "Language learning"
+        ],
+        [
+          "C",
+          "opens"
+        ],
+        [
+          "B",
+          "new doors"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Learnin' a language"
+        ],
+        [
+          "C",
+          "opens"
+        ],
+        [
+          "B",
+          "new doors"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Learnin' a language"
         ],
         [
           "C",
@@ -90219,6 +96979,34 @@ const SENTENCES = [
           "B",
           "agor drysau newydd"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Learnin' a language"
+        ],
+        [
+          "C",
+          "opens"
+        ],
+        [
+          "B",
+          "new doors"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Learnin' a language"
+        ],
+        [
+          "C",
+          "opens"
+        ],
+        [
+          "B",
+          "new doors"
+        ]
       ]
     }
   },
@@ -90385,6 +97173,20 @@ const SENTENCES = [
           "by bicycle"
         ]
       ],
+      "en_aave": [
+        [
+          "C",
+          "I ride"
+        ],
+        [
+          "B",
+          "to the office"
+        ],
+        [
+          "A",
+          "on my bike"
+        ]
+      ],
       "en_ie": [
         [
           "C",
@@ -90411,6 +97213,34 @@ const SENTENCES = [
         [
           "A",
           "by bicycle"
+        ]
+      ],
+      "en_app": [
+        [
+          "C",
+          "I ride"
+        ],
+        [
+          "B",
+          "to the office"
+        ],
+        [
+          "A",
+          "on my bicycle"
+        ]
+      ],
+      "en_south": [
+        [
+          "C",
+          "I ride"
+        ],
+        [
+          "B",
+          "to the office"
+        ],
+        [
+          "A",
+          "on my bicycle"
         ]
       ],
       "de": [
@@ -90984,6 +97814,34 @@ const SENTENCES = [
           "A",
           "ar feic"
         ]
+      ],
+      "en_yk": [
+        [
+          "C",
+          "I go"
+        ],
+        [
+          "B",
+          "to t'office"
+        ],
+        [
+          "A",
+          "on me bike"
+        ]
+      ],
+      "en_ck": [
+        [
+          "C",
+          "I go"
+        ],
+        [
+          "B",
+          "to the office"
+        ],
+        [
+          "A",
+          "by bike"
+        ]
       ]
     }
   },
@@ -91185,6 +98043,24 @@ const SENTENCES = [
           "at the next intersection"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "Ay"
+        ],
+        [
+          "D",
+          "turn"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "B",
+          "at the next intersection"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -91207,6 +98083,42 @@ const SENTENCES = [
         [
           "A",
           "Would ye"
+        ],
+        [
+          "D",
+          "turn"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "B",
+          "at the next intersection"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "Please"
+        ],
+        [
+          "D",
+          "turn"
+        ],
+        [
+          "C",
+          "right"
+        ],
+        [
+          "B",
+          "at the next intersection"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "Go on and"
         ],
         [
           "D",
@@ -91940,6 +98852,42 @@ const SENTENCES = [
           "B",
           "wrth y groesffordd nesaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "Turn"
+        ],
+        [
+          "D",
+          "reight"
+        ],
+        [
+          "C",
+          "at"
+        ],
+        [
+          "B",
+          "t'next junction"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "Turn"
+        ],
+        [
+          "D",
+          "right"
+        ],
+        [
+          "C",
+          "at"
+        ],
+        [
+          "B",
+          "the next junction"
+        ]
       ]
     }
   },
@@ -92141,6 +99089,24 @@ const SENTENCES = [
           "the station"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "The supermarket"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "behind"
+        ],
+        [
+          "C",
+          "the station"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -92163,6 +99129,42 @@ const SENTENCES = [
         [
           "A",
           "The supermarket"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "behind"
+        ],
+        [
+          "C",
+          "the station"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "The supermarket"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "B",
+          "behind"
+        ],
+        [
+          "C",
+          "the station"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "The grocery store"
         ],
         [
           "D",
@@ -92896,6 +99898,42 @@ const SENTENCES = [
           "C",
           "'r orsaf"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "T'supermarket"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "behind"
+        ],
+        [
+          "C",
+          "t'station"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "The supermarket"
+        ],
+        [
+          "D",
+          "'s"
+        ],
+        [
+          "B",
+          "be'ind"
+        ],
+        [
+          "C",
+          "the station"
+        ]
       ]
     }
   },
@@ -93093,6 +100131,24 @@ const SENTENCES = [
           "this dish"
         ]
       ],
+      "en_aave": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
+        ]
+      ],
       "en_ie": [
         [
           "A",
@@ -93119,6 +100175,42 @@ const SENTENCES = [
         [
           "D",
           "want tae"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
+        ]
+      ],
+      "en_app": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "fixin' to"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
+        ]
+      ],
+      "en_south": [
+        [
+          "A",
+          "I'm"
+        ],
+        [
+          "D",
+          "fixin' to"
         ],
         [
           "C",
@@ -93752,6 +100844,42 @@ const SENTENCES = [
           "B",
           "y saig hon"
         ]
+      ],
+      "en_yk": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "want to"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
+        ]
+      ],
+      "en_ck": [
+        [
+          "A",
+          "I"
+        ],
+        [
+          "D",
+          "wanna"
+        ],
+        [
+          "C",
+          "order"
+        ],
+        [
+          "B",
+          "this dish"
+        ]
       ]
     }
   },
@@ -93929,6 +101057,24 @@ const SENTENCES = [
           "souvenir"
         ]
       ],
+      "en_aave": [
+        [
+          "C",
+          "How much"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "souvenir"
+        ]
+      ],
       "en_ie": [
         [
           "C",
@@ -93948,6 +101094,42 @@ const SENTENCES = [
         ]
       ],
       "en_sco": [
+        [
+          "C",
+          "How much"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "souvenir"
+        ]
+      ],
+      "en_app": [
+        [
+          "C",
+          "How much"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "souvenir"
+        ]
+      ],
+      "en_south": [
         [
           "C",
           "How much"
@@ -94608,6 +101790,42 @@ const SENTENCES = [
           "B",
           "swfenîr hwn?"
         ]
+      ],
+      "en_yk": [
+        [
+          "C",
+          "'Ow much"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "souvenir"
+        ]
+      ],
+      "en_ck": [
+        [
+          "C",
+          "'Ow much"
+        ],
+        [
+          "D",
+          "is"
+        ],
+        [
+          "A",
+          "this"
+        ],
+        [
+          "B",
+          "souvenir"
+        ]
       ]
     }
   },
@@ -94754,6 +101972,20 @@ const SENTENCES = [
           "everything"
         ]
       ],
+      "en_aave": [
+        [
+          "B",
+          "Thank you"
+        ],
+        [
+          "C",
+          "for"
+        ],
+        [
+          "A",
+          "everything"
+        ]
+      ],
       "en_ie": [
         [
           "B",
@@ -94772,6 +102004,34 @@ const SENTENCES = [
         [
           "B",
           "Cheers"
+        ],
+        [
+          "C",
+          "for"
+        ],
+        [
+          "A",
+          "everything"
+        ]
+      ],
+      "en_app": [
+        [
+          "B",
+          "Much obliged"
+        ],
+        [
+          "C",
+          "for"
+        ],
+        [
+          "A",
+          "everything"
+        ]
+      ],
+      "en_south": [
+        [
+          "B",
+          "Much obliged"
         ],
         [
           "C",
@@ -95248,6 +102508,34 @@ const SENTENCES = [
         [
           "A",
           "am bopeth"
+        ]
+      ],
+      "en_yk": [
+        [
+          "B",
+          "Ta very much"
+        ],
+        [
+          "C",
+          "for"
+        ],
+        [
+          "A",
+          "everythin'"
+        ]
+      ],
+      "en_ck": [
+        [
+          "B",
+          "Cheers"
+        ],
+        [
+          "C",
+          "for"
+        ],
+        [
+          "A",
+          "everyfin'"
         ]
       ]
     }
