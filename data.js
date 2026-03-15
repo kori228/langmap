@@ -22988,20 +22988,20 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "B",
+          "C",
           "Flores cerasi"
         ],
         [
           "A",
-          "in hoc horto"
+          "in hoc"
         ],
         [
-          "C",
-          "pulchri"
+          "B",
+          "horto"
         ],
         [
           "D",
-          "sunt"
+          "pulchri sunt"
         ]
       ],
       "egy": [
