@@ -4,25 +4,25 @@ const SENTENCES = [
     "title": "I want to try on a suit I saw in a shop across from the hotel",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#0891b2"
       },
       "G": {
-        "color": "#f39c12"
+        "color": "#be185d"
       }
     },
     "langs": {
@@ -2761,16 +2761,16 @@ const SENTENCES = [
     "title": "My name is Tanaka",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -4477,19 +4477,19 @@ const SENTENCES = [
     "title": "I eat breakfast every morning at 7 o'clock",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -6684,16 +6684,16 @@ const SENTENCES = [
     "title": "Where is the nearest station?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -8441,16 +8441,16 @@ const SENTENCES = [
     "title": "This coffee is very delicious",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -10361,16 +10361,16 @@ const SENTENCES = [
     "title": "I study Japanese at university",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -12173,16 +12173,16 @@ const SENTENCES = [
     "title": "Tomorrow's weather will be sunny",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -13989,16 +13989,16 @@ const SENTENCES = [
     "title": "My mother cooks dinner every day",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -15805,16 +15805,16 @@ const SENTENCES = [
     "title": "I want to go to Japan next year",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -17629,16 +17629,16 @@ const SENTENCES = [
     "title": "Can you speak English?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -19418,22 +19418,22 @@ const SENTENCES = [
     "title": "I bought a new book at the bookstore yesterday",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#0891b2"
       }
     },
     "langs": {
@@ -22016,16 +22016,16 @@ const SENTENCES = [
     "title": "The cherry blossoms in this park are beautiful",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -23828,16 +23828,16 @@ const SENTENCES = [
     "title": "Please give me a glass of water",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -25516,19 +25516,19 @@ const SENTENCES = [
     "title": "I go to work by train every day",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -27731,16 +27731,16 @@ const SENTENCES = [
     "title": "My younger sister is studying abroad in France",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -29507,16 +29507,16 @@ const SENTENCES = [
     "title": "What time does the movie start?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -31092,19 +31092,19 @@ const SENTENCES = [
     "title": "I have a meeting at 3 o'clock this afternoon",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -33267,16 +33267,16 @@ const SENTENCES = [
     "title": "This bag is too expensive",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -35187,16 +35187,16 @@ const SENTENCES = [
     "title": "I like to listen to music",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -36995,16 +36995,16 @@ const SENTENCES = [
     "title": "It has been raining since this morning",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -38623,19 +38623,19 @@ const SENTENCES = [
     "title": "I will have dinner with friends tonight",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -40746,19 +40746,19 @@ const SENTENCES = [
     "title": "I want to learn a new language",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -42917,16 +42917,16 @@ const SENTENCES = [
     "title": "The library is next to the hospital",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -44701,16 +44701,16 @@ const SENTENCES = [
     "title": "Please show me the menu",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -46381,19 +46381,19 @@ const SENTENCES = [
     "title": "My father works at a big company",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -48448,16 +48448,16 @@ const SENTENCES = [
     "title": "子供たちが公園で遊んでいる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -50196,16 +50196,16 @@ const SENTENCES = [
     "title": "私は東京に三回行ったことがある",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#d35400"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -51992,16 +51992,16 @@ const SENTENCES = [
     "title": "良いレストランを教えていただけますか？",
     "segments": {
       "A": {
-        "color": "#8e44ad"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#16a085"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#c0392b"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#2980b9"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -53705,16 +53705,16 @@ const SENTENCES = [
     "title": "電車に傘を忘れてしまった",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#00bcd4"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -55521,19 +55521,19 @@ const SENTENCES = [
     "title": "彼女はピアノをとても上手に弾くことができる",
     "segments": {
       "A": {
-        "color": "#ff5722"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#795548"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#2ecc71"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -57688,13 +57688,13 @@ const SENTENCES = [
     "title": "試験は来週の月曜日だ",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -59057,19 +59057,19 @@ const SENTENCES = [
     "title": "昼食に寿司を食べたい",
     "segments": {
       "A": {
-        "color": "#f39c12"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#d35400"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#8e44ad"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#16a085"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#c0392b"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -61120,16 +61120,16 @@ const SENTENCES = [
     "title": "ホテルの部屋はとても清潔だった",
     "segments": {
       "A": {
-        "color": "#2980b9"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#27ae60"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f1c40f"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e91e63"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -62856,13 +62856,13 @@ const SENTENCES = [
     "title": "もっとゆっくり話してください",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#795548"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -64277,13 +64277,13 @@ const SENTENCES = [
     "title": "兄は先月結婚した",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -65710,16 +65710,16 @@ const SENTENCES = [
     "title": "駅にはたくさんの人がいる",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -67486,19 +67486,19 @@ const SENTENCES = [
     "title": "誕生日プレゼントを買わなければならない",
     "segments": {
       "A": {
-        "color": "#d35400"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#8e44ad"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#16a085"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#c0392b"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#2980b9"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -69681,13 +69681,13 @@ const SENTENCES = [
     "title": "ここから見る夕日はきれいだ",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -71102,19 +71102,19 @@ const SENTENCES = [
     "title": "明日は早く起きなければならない",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#795548"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#3498db"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -73229,19 +73229,19 @@ const SENTENCES = [
     "title": "郵便局がどこにあるか知っていますか？",
     "segments": {
       "A": {
-        "color": "#2ecc71"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#9b59b6"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e67e22"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#1abc9c"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#f39c12"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -75329,19 +75329,19 @@ const SENTENCES = [
     "title": "今、面白い本を読んでいる",
     "segments": {
       "A": {
-        "color": "#d35400"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#8e44ad"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#16a085"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#c0392b"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#2980b9"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -77604,19 +77604,19 @@ const SENTENCES = [
     "title": "彼女はいつも赤いドレスを着ている",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#00bcd4"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#ff5722"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -79867,13 +79867,13 @@ const SENTENCES = [
     "title": "このレストランの料理はおいしい",
     "segments": {
       "A": {
-        "color": "#795548"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#3498db"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -81288,16 +81288,16 @@ const SENTENCES = [
     "title": "世界中を旅したい",
     "segments": {
       "A": {
-        "color": "#2ecc71"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#9b59b6"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e67e22"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#1abc9c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -83068,16 +83068,16 @@ const SENTENCES = [
     "title": "この国では冬は寒くなる",
     "segments": {
       "A": {
-        "color": "#f39c12"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#d35400"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#8e44ad"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#16a085"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -84848,19 +84848,19 @@ const SENTENCES = [
     "title": "友達と電話で一時間話した",
     "segments": {
       "A": {
-        "color": "#c0392b"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#2980b9"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#27ae60"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f1c40f"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e91e63"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -87031,16 +87031,16 @@ const SENTENCES = [
     "title": "先生は問題をわかりやすく説明した",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#795548"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -88843,16 +88843,16 @@ const SENTENCES = [
     "title": "あの映画を見たい",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#9b59b6"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e67e22"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -90519,16 +90519,16 @@ const SENTENCES = [
     "title": "空港までの道を教えてください",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#f39c12"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#d35400"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#8e44ad"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -92263,16 +92263,16 @@ const SENTENCES = [
     "title": "私の犬は散歩が好きだ",
     "segments": {
       "A": {
-        "color": "#16a085"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#c0392b"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2980b9"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#27ae60"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -93903,16 +93903,16 @@ const SENTENCES = [
     "title": "祖母が面白い話をしてくれる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -95707,16 +95707,16 @@ const SENTENCES = [
     "title": "市場で財布をなくした",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -97519,13 +97519,13 @@ const SENTENCES = [
     "title": "庭の花が咲いている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -98944,16 +98944,16 @@ const SENTENCES = [
     "title": "環境を守らなければならない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -100736,16 +100736,16 @@ const SENTENCES = [
     "title": "毎日コーヒーを2杯飲む",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -102544,16 +102544,16 @@ const SENTENCES = [
     "title": "コンサートは今夜8時に始まる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -104360,16 +104360,16 @@ const SENTENCES = [
     "title": "彼女は3つの言語を流暢に話す",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -106168,19 +106168,19 @@ const SENTENCES = [
     "title": "このお寺の写真を撮りたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -108327,13 +108327,13 @@ const SENTENCES = [
     "title": "バスは15分おきに来る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -109748,16 +109748,16 @@ const SENTENCES = [
     "title": "韓国料理の作り方を学んでいる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -111536,19 +111536,19 @@ const SENTENCES = [
     "title": "彼はいつも会議に遅れて来る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -113687,19 +113687,19 @@ const SENTENCES = [
     "title": "月末までにこの本を読み終えたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -115862,13 +115862,13 @@ const SENTENCES = [
     "title": "鳥たちが木の中で歌っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -117287,16 +117287,16 @@ const SENTENCES = [
     "title": "スマホを充電しなければならない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -119059,19 +119059,19 @@ const SENTENCES = [
     "title": "彼女は私に美しいプレゼントをくれた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -121214,13 +121214,13 @@ const SENTENCES = [
     "title": "山は雪で覆われている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -122651,16 +122651,16 @@ const SENTENCES = [
     "title": "週に3回ジムで運動する",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -124463,16 +124463,16 @@ const SENTENCES = [
     "title": "ここに座ってもいいですか？",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -126164,16 +126164,16 @@ const SENTENCES = [
     "title": "彼は両親に長い手紙を書いた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -127972,13 +127972,13 @@ const SENTENCES = [
     "title": "店は午後9時に閉まる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -129389,16 +129389,16 @@ const SENTENCES = [
     "title": "発音を上達させたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -131161,16 +131161,16 @@ const SENTENCES = [
     "title": "彼らは川に新しい橋を建てた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -132977,16 +132977,16 @@ const SENTENCES = [
     "title": "猫は毎晩私のベッドで寝る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -134801,13 +134801,13 @@ const SENTENCES = [
     "title": "30分も待っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -136222,13 +136222,13 @@ const SENTENCES = [
     "title": "子どもたちは泳ぎを習っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -137647,16 +137647,16 @@ const SENTENCES = [
     "title": "音楽を聴くと幸せな気持ちになる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -139375,13 +139375,13 @@ const SENTENCES = [
     "title": "彼はテストの結果に驚いた",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -140796,16 +140796,16 @@ const SENTENCES = [
     "title": "この計画は良いと思う",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -142612,19 +142612,19 @@ const SENTENCES = [
     "title": "友達が引っ越したので彼女は悲しい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -144731,19 +144731,19 @@ const SENTENCES = [
     "title": "留学は貴重な経験だと思う",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#9b59b6"
+        "color": "#d97706"
       }
     },
     "langs": {
@@ -146786,22 +146786,22 @@ const SENTENCES = [
     "title": "今日は頭が痛い",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d97706"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#0891b2"
       }
     },
     "langs": {
@@ -148484,16 +148484,16 @@ const SENTENCES = [
     "title": "医者は私に休むよう言った",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -150260,16 +150260,16 @@ const SENTENCES = [
     "title": "毎朝運動しようとしている",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#f39c12"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -152044,16 +152044,16 @@ const SENTENCES = [
     "title": "彼女は先週風邪をひいた",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -153760,16 +153760,16 @@ const SENTENCES = [
     "title": "もっと水を飲んだほうがいい",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -155456,16 +155456,16 @@ const SENTENCES = [
     "title": "毎日スマートフォンを使っている",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -157152,16 +157152,16 @@ const SENTENCES = [
     "title": "このアプリはとても便利だ",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -158928,13 +158928,13 @@ const SENTENCES = [
     "title": "AIは世界を変えつつある",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -160345,13 +160345,13 @@ const SENTENCES = [
     "title": "Wi-Fiのパスワードが見つからない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -161682,16 +161682,16 @@ const SENTENCES = [
     "title": "彼は独学でプログラミングを学んだ",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -163458,16 +163458,16 @@ const SENTENCES = [
     "title": "花見は日本の伝統である",
     "segments": {
       "A": {
-        "color": "#e91e63"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -165150,16 +165150,16 @@ const SENTENCES = [
     "title": "旧正月に餃子を食べる",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -166938,16 +166938,16 @@ const SENTENCES = [
     "title": "この国では夏に多くの祭りが開催される",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -168742,13 +168742,13 @@ const SENTENCES = [
     "title": "語学学習は新しい扉を開く",
     "segments": {
       "A": {
-        "color": "#e91e63"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#00bcd4"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#ff5722"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -170155,13 +170155,13 @@ const SENTENCES = [
     "title": "自転車でオフィスに行く",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#16a34a"
       }
     },
     "langs": {
@@ -171600,16 +171600,16 @@ const SENTENCES = [
     "title": "次の交差点を右に曲がってください",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -173412,16 +173412,16 @@ const SENTENCES = [
     "title": "スーパーは駅の後ろにある",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -175204,16 +175204,16 @@ const SENTENCES = [
     "title": "この料理を注文したい",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -176916,16 +176916,16 @@ const SENTENCES = [
     "title": "このお土産はいくらですか？",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#16a34a"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#9333ea"
       }
     },
     "langs": {
@@ -178585,13 +178585,13 @@ const SENTENCES = [
     "title": "何もかもありがとう",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#dc2626"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#2563eb"
       },
       "C": {
-        "color": "#9b59b6"
+        "color": "#16a34a"
       }
     },
     "langs": {
