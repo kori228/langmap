@@ -14954,15 +14954,15 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Mea"
+          "Mea mater"
         ],
         [
           "B",
-          "mater"
+          "cenam"
         ],
         [
           "D",
-          "cenam cotidie"
+          "cotidie"
         ],
         [
           "C",
@@ -20864,7 +20864,7 @@ const SENTENCES = [
           "in bibliopolio"
         ],
         [
-          "C",
+          "D",
           "novum"
         ],
         [
@@ -20872,7 +20872,7 @@ const SENTENCES = [
           "librum"
         ],
         [
-          "D",
+          "C",
           "emi"
         ]
       ],
@@ -24700,15 +24700,15 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "C",
+          "B",
           "mihi"
         ],
         [
-          "D",
+          "C",
           "poculum aquae"
         ],
         [
-          "B",
+          "D",
           "da"
         ]
       ],
@@ -28684,11 +28684,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "in"
-        ],
-        [
-          "D",
-          "Gallia"
+          "in Gallia"
         ],
         [
           "C",
@@ -30347,16 +30343,12 @@ const SENTENCES = [
           "Quota hora"
         ],
         [
-          "C",
-          "pelliculam"
-        ],
-        [
           "B",
-          "incipit"
+          "pellicula"
         ],
         [
-          "D",
-          "spectare"
+          "C",
+          "incipit"
         ]
       ],
       "egy": [
@@ -32279,24 +32271,24 @@ const SENTENCES = [
       ],
       "la": [
         [
+          "A",
+          "Ego"
+        ],
+        [
           "C",
-          "Habeo"
+          "habeo"
         ],
         [
           "B",
           "conventum"
         ],
         [
-          "A",
+          "D",
           "hora tertia"
         ],
         [
-          "D",
-          "hodie"
-        ],
-        [
           "E",
-          "post meridiem"
+          "hodie post meridiem"
         ]
       ],
       "egy": [
@@ -37871,20 +37863,16 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "D",
+          "A",
           "Ab hoc mane"
         ],
         [
-          "A",
+          "C",
           "iam"
         ],
         [
           "B",
           "pluit"
-        ],
-        [
-          "C",
-          "usque"
         ]
       ],
       "egy": [
@@ -41949,15 +41937,15 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "B",
           "novam"
         ],
         [
-          "B",
+          "C",
           "linguam"
         ],
         [
-          "C",
+          "D",
           "discere"
         ],
         [
@@ -45593,15 +45581,15 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "C",
+          "B",
           "mihi"
         ],
         [
-          "D",
+          "C",
           "indicem ciborum"
         ],
         [
-          "B",
+          "D",
           "ostende"
         ]
       ],
@@ -47505,22 +47493,22 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Meus"
+          "Meus pater"
         ],
         [
           "B",
-          "pater"
-        ],
-        [
-          "D",
-          "in magna"
-        ],
-        [
-          "E",
-          "societate"
+          "in"
         ],
         [
           "C",
+          "magna"
+        ],
+        [
+          "D",
+          "societate"
+        ],
+        [
+          "E",
           "laborat"
         ]
       ],
@@ -49404,15 +49392,11 @@ const SENTENCES = [
           "Liberi"
         ],
         [
-          "C",
-          "in"
-        ],
-        [
-          "D",
-          "horto"
-        ],
-        [
           "B",
+          "in horto"
+        ],
+        [
+          "C",
           "ludunt"
         ]
       ],
@@ -51172,15 +51156,15 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "Tokium"
         ],
         [
-          "D",
+          "C",
           "ter"
         ],
         [
-          "B",
+          "D",
           "visitavi"
         ]
       ],
@@ -52900,7 +52884,7 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "B",
+          "D",
           "Potesne"
         ],
         [
@@ -52908,8 +52892,8 @@ const SENTENCES = [
           "tu"
         ],
         [
-          "D",
-          "bonum cauponam"
+          "B",
+          "bonam cauponam"
         ],
         [
           "C",
@@ -54673,7 +54657,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "umbellam meam"
         ],
         [
@@ -54681,7 +54665,7 @@ const SENTENCES = [
           "in tramine"
         ],
         [
-          "B",
+          "C",
           "oblitus sum"
         ]
       ],
@@ -56716,20 +56700,20 @@ const SENTENCES = [
           "Illa"
         ],
         [
-          "C",
+          "B",
           "clavicymbalum"
         ],
         [
           "D",
-          "valde"
+          "valde bene"
         ],
         [
-          "B",
-          "bene"
+          "C",
+          "pulsare"
         ],
         [
           "E",
-          "pulsare potest"
+          "potest"
         ]
       ],
       "egy": [
@@ -62037,19 +62021,19 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Deversorii"
+          "Conclave deversorii"
         ],
         [
-          "D",
-          "conclave"
+          "B",
+          "erat"
         ],
         [
           "C",
           "valde"
         ],
         [
-          "B",
-          "mundum erat"
+          "D",
+          "mundum"
         ]
       ],
       "egy": [
@@ -63601,11 +63585,11 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "C",
+          "B",
           "lentius"
         ],
         [
-          "B",
+          "C",
           "loquere"
         ]
       ],
@@ -68711,15 +68695,15 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "D",
+          "C",
           "natalicium"
         ],
         [
-          "E",
+          "D",
           "donum"
         ],
         [
-          "C",
+          "E",
           "emere"
         ],
         [
@@ -70432,11 +70416,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "B",
+          "A",
           "Hinc"
         ],
         [
-          "A",
+          "B",
           "solis occasus"
         ],
         [
@@ -72287,11 +72271,11 @@ const SENTENCES = [
           "cras"
         ],
         [
-          "D",
+          "B",
           "mane"
         ],
         [
-          "B",
+          "D",
           "expergisci"
         ],
         [
@@ -74398,24 +74382,24 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "B",
-          "Num"
+          "E",
+          "Num scis"
         ],
         [
           "A",
           "tu"
         ],
         [
-          "D",
-          "scis"
-        ],
-        [
           "C",
           "ubi"
         ],
         [
-          "E",
-          "tabellarium sit"
+          "B",
+          "tabellarium"
+        ],
+        [
+          "D",
+          "sit"
         ]
       ],
       "ur": [
@@ -82254,16 +82238,16 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
-          "per"
+          "B",
+          "per orbem terrarum"
         ],
         [
-          "B",
-          "orbem terrarum"
+          "C",
+          "peregrinari"
         ],
         [
           "D",
-          "peregrinari volo"
+          "volo"
         ]
       ],
       "ur": [
@@ -84026,7 +84010,7 @@ const SENTENCES = [
           "In hac terra"
         ],
         [
-          "D",
+          "B",
           "hieme"
         ],
         [
@@ -84034,7 +84018,7 @@ const SENTENCES = [
           "frigus"
         ],
         [
-          "B",
+          "D",
           "fit"
         ]
       ],
@@ -86053,15 +86037,15 @@ const SENTENCES = [
           "cum amico meo"
         ],
         [
-          "D",
+          "C",
           "per telephonum"
         ],
         [
-          "E",
+          "D",
           "per horam"
         ],
         [
-          "C",
+          "E",
           "collocutus sum"
         ]
       ],
@@ -88013,11 +87997,11 @@ const SENTENCES = [
           "Magister"
         ],
         [
-          "C",
+          "B",
           "quaestionem"
         ],
         [
-          "B",
+          "C",
           "clare"
         ],
         [
@@ -91461,7 +91445,7 @@ const SENTENCES = [
           "Quaeso"
         ],
         [
-          "D",
+          "B",
           "mihi"
         ],
         [
@@ -91469,7 +91453,7 @@ const SENTENCES = [
           "viam ad aeroportum"
         ],
         [
-          "B",
+          "D",
           "indica"
         ]
       ],
@@ -93118,18 +93102,14 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Meus"
-        ],
-        [
-          "B",
-          "canis"
-        ],
-        [
-          "D",
-          "ambulare"
+          "Meus canis"
         ],
         [
           "C",
+          "ambulare"
+        ],
+        [
+          "D",
           "amat"
         ]
       ],
@@ -94893,15 +94873,15 @@ const SENTENCES = [
           "Avia mea"
         ],
         [
-          "C",
+          "B",
           "iucundas"
         ],
         [
-          "D",
+          "C",
           "fabulas"
         ],
         [
-          "B",
+          "D",
           "narrat"
         ]
       ],
@@ -96681,7 +96661,7 @@ const SENTENCES = [
           "Ego"
         ],
         [
-          "C",
+          "B",
           "crumenam meam"
         ],
         [
@@ -96689,7 +96669,7 @@ const SENTENCES = [
           "in foro"
         ],
         [
-          "B",
+          "C",
           "amisi"
         ]
       ],
@@ -103530,11 +103510,11 @@ const SENTENCES = [
           "hac nocte"
         ],
         [
-          "D",
+          "B",
           "hora octava"
         ],
         [
-          "B",
+          "D",
           "incipit"
         ]
       ],
@@ -105342,15 +105322,15 @@ const SENTENCES = [
           "Illa"
         ],
         [
-          "C",
+          "B",
           "tres linguas"
         ],
         [
-          "D",
+          "C",
           "expedite"
         ],
         [
-          "B",
+          "D",
           "loquitur"
         ]
       ],
@@ -107373,11 +107353,11 @@ const SENTENCES = [
           "huius templi"
         ],
         [
-          "D",
+          "C",
           "imaginem"
         ],
         [
-          "C",
+          "D",
           "capere"
         ],
         [
@@ -112709,11 +112689,11 @@ const SENTENCES = [
           "semper"
         ],
         [
-          "C",
+          "D",
           "ad conventus"
         ],
         [
-          "D",
+          "C",
           "sero"
         ],
         [
@@ -116597,15 +116577,15 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Aves"
         ],
         [
-          "C",
+          "A",
           "in arboribus"
         ],
         [
-          "B",
+          "C",
           "cantant"
         ]
       ],
@@ -120244,19 +120224,19 @@ const SENTENCES = [
           "Illa"
         ],
         [
-          "C",
+          "B",
           "mihi"
         ],
         [
-          "D",
+          "C",
           "pulchrum"
         ],
         [
-          "E",
+          "D",
           "donum"
         ],
         [
-          "B",
+          "E",
           "dedit"
         ]
       ],
@@ -125327,11 +125307,11 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "D",
           "Licetne"
         ],
         [
-          "D",
+          "A",
           "mihi"
         ],
         [
@@ -128661,11 +128641,11 @@ const SENTENCES = [
           "Taberna"
         ],
         [
-          "C",
+          "B",
           "hora nona vespertina"
         ],
         [
-          "B",
+          "C",
           "clauditur"
         ]
       ],
@@ -132081,15 +132061,15 @@ const SENTENCES = [
           "Illi"
         ],
         [
-          "C",
+          "B",
           "novum pontem"
         ],
         [
-          "D",
+          "C",
           "trans flumen"
         ],
         [
-          "B",
+          "D",
           "exstruxerunt"
         ]
       ],
@@ -133894,18 +133874,18 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Mea"
+          "Mea feles"
         ],
         [
           "B",
-          "feles"
-        ],
-        [
-          "D",
-          "in lecto meo omni nocte"
+          "in lecto meo"
         ],
         [
           "C",
+          "omni nocte"
+        ],
+        [
+          "D",
           "dormit"
         ]
       ],
@@ -136903,11 +136883,11 @@ const SENTENCES = [
           "Liberi"
         ],
         [
-          "C",
+          "B",
           "natare"
         ],
         [
-          "B",
+          "C",
           "discunt"
         ]
       ],
@@ -141708,20 +141688,20 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "C",
-          "Ego"
+          "D",
+          "Ego puto"
         ],
         [
           "A",
-          "hoc consilium"
-        ],
-        [
-          "D",
-          "bonum esse"
+          "hoc"
         ],
         [
           "B",
-          "puto"
+          "consilium"
+        ],
+        [
+          "C",
+          "bonum esse"
         ]
       ],
       "egy": [
@@ -143687,20 +143667,20 @@ const SENTENCES = [
           "Illa"
         ],
         [
+          "C",
+          "quod"
+        ],
+        [
           "D",
-          "quod amica eius"
+          "amica eius"
         ],
         [
           "E",
           "discessit"
         ],
         [
-          "C",
-          "tristis"
-        ],
-        [
           "B",
-          "est"
+          "tristis est"
         ]
       ],
       "egy": [
@@ -145774,16 +145754,16 @@ const SENTENCES = [
           "peregre studere"
         ],
         [
-          "D",
-          "pretiosam"
+          "C",
+          "pretiosam experientiam"
         ],
         [
-          "C",
-          "experientiam"
+          "D",
+          "esse"
         ],
         [
           "E",
-          "esse credo"
+          "credo"
         ]
       ],
       "egy": [
@@ -149338,15 +149318,15 @@ const SENTENCES = [
           "Medicus"
         ],
         [
-          "C",
+          "B",
           "mihi"
         ],
         [
-          "D",
+          "C",
           "quiescere"
         ],
         [
-          "B",
+          "D",
           "iussit"
         ]
       ],
@@ -152842,11 +152822,11 @@ const SENTENCES = [
           "praeterita hebdomade"
         ],
         [
-          "C",
+          "B",
           "morbum frigidum"
         ],
         [
-          "B",
+          "C",
           "contraxit"
         ]
       ],
@@ -154522,7 +154502,7 @@ const SENTENCES = [
           "Tu"
         ],
         [
-          "D",
+          "B",
           "plus aquae"
         ],
         [
@@ -154530,7 +154510,7 @@ const SENTENCES = [
           "bibere"
         ],
         [
-          "B",
+          "D",
           "debes"
         ]
       ],
@@ -159531,11 +159511,11 @@ const SENTENCES = [
           "Intellegentia artificialis"
         ],
         [
-          "C",
+          "B",
           "mundum"
         ],
         [
-          "B",
+          "C",
           "mutat"
         ]
       ],
@@ -165960,11 +165940,11 @@ const SENTENCES = [
           "in Novo Anno Sinensi"
         ],
         [
-          "C",
+          "B",
           "crustula farta"
         ],
         [
-          "B",
+          "C",
           "edimus"
         ]
       ],
@@ -169325,11 +169305,11 @@ const SENTENCES = [
           "Linguarum studium"
         ],
         [
-          "C",
+          "B",
           "novas portas"
         ],
         [
-          "B",
+          "C",
           "aperit"
         ]
       ],
@@ -170747,15 +170727,15 @@ const SENTENCES = [
       "la": [
         [
           "A",
-          "Ego"
-        ],
-        [
-          "C",
-          "birota"
+          "Birota"
         ],
         [
           "B",
-          "ad officium eo"
+          "ad officium"
+        ],
+        [
+          "C",
+          "eo"
         ]
       ],
       "egy": [
@@ -172415,15 +172395,15 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ad proximum"
-        ],
-        [
-          "D",
-          "bivium"
+          "ad proximum bivium"
         ],
         [
           "C",
-          "dextra flecte"
+          "dextra"
+        ],
+        [
+          "D",
+          "flecte"
         ]
       ],
       "egy": [
@@ -177634,11 +177614,11 @@ const SENTENCES = [
           "hoc"
         ],
         [
-          "D",
+          "B",
           "apophoretum"
         ],
         [
-          "B",
+          "D",
           "constat"
         ]
       ],
@@ -179044,7 +179024,7 @@ const SENTENCES = [
       ],
       "la": [
         [
-          "A",
+          "B",
           "Gratias tibi ago"
         ],
         [
@@ -179052,7 +179032,7 @@ const SENTENCES = [
           "pro"
         ],
         [
-          "B",
+          "A",
           "omnibus rebus"
         ]
       ],
