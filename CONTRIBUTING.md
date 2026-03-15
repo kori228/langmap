@@ -165,15 +165,15 @@ Uses بـ prefix for present habitual, هـ prefix for future.
 
 ### Segment colors
 
-Each segment ID has a fixed color. Do not change these — they are designed for maximum contrast and readability on white backgrounds:
+Each segment ID has a fixed color. Do not change these — they are designed for maximum contrast, readability, and visual harmony:
 ```json
-"A": { "color": "#dc2626" }  // Red
-"B": { "color": "#2563eb" }  // Blue
-"C": { "color": "#16a34a" }  // Green
-"D": { "color": "#9333ea" }  // Purple
-"E": { "color": "#d97706" }  // Amber
-"F": { "color": "#0891b2" }  // Teal
-"G": { "color": "#be185d" }  // Pink
+"A": { "color": "#e8384f" }  // Rose Red
+"B": { "color": "#4178bc" }  // Steel Blue
+"C": { "color": "#0d9f6e" }  // Jade Green
+"D": { "color": "#8338ec" }  // Electric Violet
+"E": { "color": "#d4790e" }  // Dark Amber
+"F": { "color": "#1098ad" }  // Ocean Teal
+"G": { "color": "#c2255c" }  // Ruby
 ```
 
 ### Segment Mapping Rules / セグメントマッピングルール
