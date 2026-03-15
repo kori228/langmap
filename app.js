@@ -1259,9 +1259,23 @@ function createSegmentWrapper(seg, langCode) {
     input.value = seg.textContent;
     input.dataset.seg = seg.dataset.seg;
     input.dataset.lang = seg.dataset.lang || langCode;
-    const segColor = seg.style.color || sentence.segments[seg.dataset.seg]?.color || '#666';
-    input.style.color = segColor;
-    input.style.borderColor = segColor;
+    // Handle compound segments (e.g. "B|D")
+    const segSubIds = seg.dataset.seg.split('|');
+    const isCompound = segSubIds.length > 1;
+    let segColor;
+    if (isCompound) {
+        const colors = segSubIds.map(id => sentence.segments[id]?.color || '#666');
+        segColor = colors[0]; // use first color for border
+        input.style.backgroundImage = `linear-gradient(90deg, ${colors.join(', ')})`;
+        input.style.webkitBackgroundClip = 'text';
+        input.style.backgroundClip = 'text';
+        input.style.color = 'transparent';
+        input.style.borderColor = segColor;
+    } else {
+        segColor = seg.style.color || sentence.segments[seg.dataset.seg]?.color || '#666';
+        input.style.color = segColor;
+        input.style.borderColor = segColor;
+    }
     // Auto-size: use character count as initial estimate, then refine after render
     const charWidth = seg.textContent.length * 14 + 24;
     input.style.width = Math.max(charWidth, 50) + 'px';
@@ -1287,7 +1301,12 @@ function createSegmentWrapper(seg, langCode) {
     const badge = document.createElement('span');
     badge.className = 'seg-id-badge';
     badge.textContent = seg.dataset.seg;
-    badge.style.background = segColor;
+    if (isCompound) {
+        const colors = segSubIds.map(id => sentence.segments[id]?.color || '#666');
+        badge.style.background = `linear-gradient(90deg, ${colors.join(', ')})`;
+    } else {
+        badge.style.background = segColor;
+    }
 
     wrapper.appendChild(handle);
     wrapper.appendChild(badge);
@@ -1417,6 +1436,34 @@ function showAddSegmentMenu(anchorBtn, textDiv, langCode, sentence) {
         menu.appendChild(item);
     });
 
+    // Compound segment options (e.g. "A|B", "B|C", etc.)
+    if (allSegs.length >= 2) {
+        const compSep = document.createElement('div');
+        compSep.style.cssText = 'border-top:1px solid #e0e0e0; margin:4px 0;';
+        menu.appendChild(compSep);
+        for (let a = 0; a < allSegs.length; a++) {
+            for (let b = a + 1; b < allSegs.length; b++) {
+                const compId = allSegs[a] + '|' + allSegs[b];
+                const item = document.createElement('div');
+                item.className = 'add-segment-menu-item';
+                const dot = document.createElement('span');
+                dot.className = 'seg-dot';
+                const c1 = sentence.segments[allSegs[a]].color;
+                const c2 = sentence.segments[allSegs[b]].color;
+                dot.style.background = `linear-gradient(90deg, ${c1}, ${c2})`;
+                item.appendChild(dot);
+                const label = document.createElement('span');
+                label.textContent = compId;
+                item.appendChild(label);
+                item.addEventListener('click', () => {
+                    menu.remove();
+                    addNewSegment(textDiv, langCode, compId, sentence);
+                });
+                menu.appendChild(item);
+            }
+        }
+    }
+
     // Separator
     const sep = document.createElement('div');
     sep.style.cssText = 'border-top:1px solid #e0e0e0; margin:4px 0;';
@@ -1466,7 +1513,16 @@ function addNewSegment(textDiv, langCode, segId, sentence) {
     seg.className = 'segment';
     seg.dataset.seg = segId;
     seg.dataset.lang = langCode;
-    seg.style.color = sentence.segments[segId].color;
+    const subIds = segId.split('|');
+    if (subIds.length > 1) {
+        const colors = subIds.map(id => sentence.segments[id]?.color || '#666');
+        seg.style.backgroundImage = `linear-gradient(90deg, ${colors.join(', ')})`;
+        seg.style.webkitBackgroundClip = 'text';
+        seg.style.backgroundClip = 'text';
+        seg.style.color = 'transparent';
+    } else {
+        seg.style.color = sentence.segments[segId]?.color || '#666';
+    }
     seg.textContent = '';
     seg.offsetWidth = 0; // will default to min-width
 
