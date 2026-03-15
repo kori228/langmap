@@ -805,12 +805,13 @@ select:focus { border-color: #4a90d9; outline: none; }
 
 /* Responsive */
 @media (max-width: 768px) {
-    body { padding: 10px; }
+    body { padding: 10px; overflow-x: hidden; }
+    .container { max-width: 100vw; overflow: hidden; }
     .control-row { flex-direction: column; align-items: stretch; }
-    .map-container { padding: 15px 10px; }
-    .lang-label { min-width: 80px; font-size: 13px; }
+    .map-container { padding: 15px 10px; display: block; min-width: 0; }
+    .lang-label { min-width: 60px; width: auto; max-width: 100px; font-size: 13px; overflow: hidden; text-overflow: ellipsis; }
     .segment { font-size: 16px; }
-    .lang-row { margin-bottom: 40px; }
+    .lang-row { margin-bottom: 40px; flex-wrap: wrap; white-space: normal; }
 
     /* Compact language summary pills for mobile */
     .lang-summary { gap: 3px; }
