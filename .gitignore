@@ -5,3 +5,6 @@
 *.bak2
 *.rebuilt
 fix_*.py
+add_languages.py
+data_*.py
+__pycache__/
