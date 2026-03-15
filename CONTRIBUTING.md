@@ -65,29 +65,10 @@ Segments must be listed in the natural word order of that language. Example:
 - Arabic/Hebrew: VSO order, verb typically first
 - Korean: SOV order like Japanese
 
-#### 4. All 46 languages must be included / 全46言語を含めること
+#### 4. All languages must be included / 全言語を含めること
 
-Every sentence must have entries for all 46 language codes:
-
-| Group | Codes | Notes |
-|---|---|---|
-| Japanese | `ja`, `osa`, `hak`, `oki`, `aom`, `ja_edo` | ja_edo uses Edo-period vocabulary |
-| Korean | `ko`, `kp`, `bus` | kp uses North Korean style |
-| Mongolic | `mn` | |
-| Turkic | `tr` | |
-| Chinese | `zh`, `yue`, `nan`, `wuu`, `zh_classical` | yue must use **Traditional Chinese (繁体字)** only |
-| Vietnamese | `vi`, `vi_nom` | vi_nom uses Chữ Nôm (字喃) characters, NOT quốc ngữ (Latin) |
-| SEA | `th`, `my`, `id`, `ms`, `tl` | |
-| South Asian | `hi`, `ta` | |
-| Iranian | `fa` | RTL |
-| Semitic | `ar`, `ar_eg`, `he`, `am` | ar_eg uses Egyptian dialect; ar/he are RTL |
-| African | `sw` | |
-| Germanic | `en`, `nl`, `de` | |
-| Celtic | `ga` | VSO order |
-| Romance | `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` | |
-| Basque | `eu` | SOV order |
-| Slavic | `ru`, `uk`, `pl` | |
-| Uralic | `hu` | |
+Every sentence must have entries for all language codes listed in `validate_data.py` `REQUIRED_LANGS`.
+Run `python3 validate_data.py` to check for missing languages.
 
 #### 5. Cantonese (yue) must use Traditional Chinese / 広東語は繁体字のみ
 
@@ -194,6 +175,157 @@ Use these predefined colors (add more if needed):
 "F": { "color": "#1abc9c" }  // Teal
 ```
 
+### Segment Mapping Rules / セグメントマッピングルール
+
+以下のルールは、過去の修正事例から得られた教訓をまとめたものです。
+
+#### Rule 1: セグメントIDは意味単位に紐づく（語順ではなく意味で決まる）
+
+各セグメントIDは、全言語で同じ意味概念を表す必要があります。語順は言語ごとに異なって構いませんが、IDの割り当ては全言語で統一してください。
+
+```
+✅ 正しい例（S6: "I study Japanese at university"）:
+  en: [A]I [D]study [C]Japanese [B]at university
+  ja: [A]私は [B]大学で [C]日本語を [D]勉強しています
+  la: [A]Ego [C]linguam Iaponicam [B]in universitate [D]studeo
+  → A=主語, B=場所, C=目的語, D=動詞 が全言語で一致
+
+❌ 間違い例:
+  la: [A]Ego [C]linguam Iaponicam [D]in universitate [B]studeo
+  → BとDが逆。B=場所なのにstudeo(動詞)が入っている
+```
+
+#### Rule 2: Pro-drop言語でも主語代名詞を明示する
+
+イタリア語・スペイン語など主語代名詞を省略する言語でも、セグメント対応のために明示的に代名詞を含めてください。
+
+```
+❌ BAD:  it: [A]Studio [C]giapponese [B]all'università
+  → AにI+studyが結合。Dが欠落。
+
+✅ GOOD: it: [A]Io [D]studio [C]giapponese [B]all'università
+  → A=Io(主語), D=studio(動詞) が分離されている
+```
+
+同様に、ウェールズ語・アイルランド語（VSO語順）でも主語代名詞を含めてください：
+```
+✅ GOOD: cy: [D]Rwy'n astudio [A]fi [C]Japanëeg [B]yn y brifysgol
+  → VSO語順だが、A=fi(主語) が明示されている
+```
+
+#### Rule 3: クリティック代名詞は独立セグメントにする
+
+イタリア語・スペイン語の目的格代名詞（mi, me）が動詞に付着する場合、分離してください。
+
+```
+❌ BAD:  it: [D]mi porti [C]un bicchiere d'acqua
+  → B(me)がDの動詞に吸収されている
+
+✅ GOOD: it: [B]mi [D]porti [C]un bicchiere d'acqua
+  → B=mi が独立セグメント
+
+❌ BAD:  es: [D]deme [C]un vaso de agua
+✅ GOOD: es: [D]dé [B]me [C]un vaso de agua
+```
+
+#### Rule 4: 全言語で同じ文構造を使う（意訳による構造変更禁止）
+
+方言や関連言語で「自然な表現」を追求するあまり、文の構造自体を変えてはいけません。セグメントの意味対応が崩れます。
+
+```
+❌ BAD（S76: "音楽を聴くと幸せな気持ちになる"）:
+  fr:    [D]Je me sens heureux [C]quand [B]j'écoute [A]de la musique
+  fr_qc: [A]Écouter [B]de la musique [C]ça me rend [D]heureux
+  → fr_qcは「Écouter...ça me rend」構文を使い、A=聴く, B=音楽 になっている
+  → frではA=音楽, B=聴く で、意味が逆転している
+
+✅ GOOD:
+  fr_qc: [D]Je me sens heureux [C]quand [B]j'écoute [A]d'la musique
+  → frと同じ「when I listen」構文で、語彙だけケベック風にする
+```
+
+#### Rule 5: 定義されたセグメントIDのみ使用する
+
+各文の `segments` オブジェクトで定義されたID（A, B, C, ...）のみ使用してください。定義にないIDを使うとバリデーションエラーになります。
+
+```
+❌ BAD（segmentsにA,B,Cのみ定義）:
+  nap: [A]L'esame [B]è [C]lunnerì [D]ca vene
+  → Dは未定義
+
+✅ GOOD:
+  nap: [A]L'esame [B]è [C]lunnerì ca vene
+  → 「lunnerì ca vene」をCに統合
+```
+
+#### Rule 6: 空テキストのセグメントを作らない
+
+テキストが空のセグメントは禁止です。参照言語にあるセグメントが訳語で不要な場合は、そのセグメントを省略してください。
+
+```
+❌ BAD:  sv: [A]Morgen [B]" [C]blir [D]soligt
+  → Bが空文字
+
+✅ GOOD: sv: [A]I morgon [C]blir det [D]soligt
+  → 不要なBは省略
+```
+
+#### Rule 7: 方言は親言語ベースで生成する
+
+方言データを追加する際は、親言語のセグメント構造をコピーし、テキストのみ方言表現に変換してください。これにより、セグメントIDと順序が自動的に一致します。
+
+| 方言 | 親言語 | 手順 |
+|---|---|---|
+| nap, scn | it | itのセグメント構造をコピー → テキストをナポリ語/シチリア語に変換 |
+| fr_qc | fr | frのセグメント構造をコピー → テキストをケベック表現に変換 |
+| de_gsw | de | deのセグメント構造をコピー → テキストをスイスドイツ語に変換 |
+| sv, no | de | deのセグメント構造をコピー → テキストをスウェーデン語/ノルウェー語に変換 |
+| nl | de | deのセグメント構造をコピー → テキストをオランダ語に変換 |
+| en_ang | en | enのセグメント構造をコピー → テキストを古英語に変換 |
+| sco | en | enのセグメント構造をコピー → テキストをスコットランド語に変換 |
+| si | hi | hiのセグメント構造をコピー → テキストをシンハラ語に変換 |
+
+#### Rule 8: 中国語方言は方言らしい表現を使う
+
+普通話（zh）の文をそのままコピーしないでください。各方言の特徴的な語彙・文法を使ってください。
+
+| 方言 | 使うべき特徴的表現 |
+|---|---|
+| wuu（上海語） | 阿拉(we), 侬(you), 勿(not), 交关(very), 辰光(time), 伊(he/she) |
+| zh_sc（四川話） | 啥子(what), 要得(OK), 莫(don't), 巴适(good), 嘞/哈(particle) |
+| zh_db（東北話） | 贼(very), 整(do), 寻思(think), 啥(what), 咋(how), 儿化音 |
+
+```
+❌ BAD:  zh_sc: [B]听 [A]音乐 [C]的时候 [D]我感到很开心
+  → 普通話そのまま（100%一致）
+
+✅ GOOD: zh_sc: [B]听 [A]音乐 [C]的时候 [D]我硬是高兴得很
+  → 四川話の特徴（硬是, 得很）が入っている
+```
+
+#### Rule 9: 各言語の正しい文字体系を使う
+
+| 言語 | 正しい文字 | よくある間違い |
+|---|---|---|
+| ur（ウルドゥー語）| ナスタアリーク体 `موسیقی` | デーヴァナーガリー `संगीत` |
+| yue（広東語）| 繁体字 `車站` | 簡体字 `车站` |
+| vi_nom（チューノム）| 漢字・字喃 `碎𠫾` | ラテン文字 `Tôi đi` |
+| si（シンハラ語）| シンハラ文字 `මම` | ラテン文字 `mama` |
+
+#### Rule 10: 言語コードは `親言語_方言` 形式を使う
+
+新しい方言を追加する際は、親言語のコードをプレフィックスとして使ってください。
+
+```
+✅ GOOD: ja_osa, ko_bus, en_aave, ar_eg, zh_sc, de_gsw, fr_qc, el_grc
+❌ BAD:  osa, bus, aave, gsw, grc
+```
+
+独立した言語（ISO 639コードを持つもの）はプレフィックス不要です：
+```
+sco（スコットランド語）, nap（ナポリ語）, ain（アイヌ語）, yue（広東語）
+```
+
 ---
 
 ## Validation Script / バリデーションスクリプト
@@ -218,16 +350,18 @@ This script checks:
 
 1. Add to `LANGUAGES` array in `app.js`
 2. Add to `LANG_NAMES` in `app.js` (all 21 UI language entries)
-3. Add data for all 100 sentences in `data.js` (33 languages)
-4. If RTL, add to `RTL_LANGS` set in `app.js`
-5. Run `validate_data.py` to verify
-6. Update cache buster version in `index.html` (`?v=N`)
+3. Add data for all 100 sentences in `data.js`
+4. **方言の場合**: 親言語のセグメント構造をコピーし、テキストのみ変換（Rule 7参照）
+5. If RTL, add to `RTL_LANGS` set in `app.js`
+6. Add to `REQUIRED_LANGS` in `validate_data.py`
+7. Run `validate_data.py` to verify
+8. Update cache buster version in `index.html` (`?v=N`)
 
 ## Adding a New Sentence / 新しい文章の追加
 
 1. Choose a sentence that shows interesting word order differences
 2. Assign an `id` (next available number)
 3. Define semantic segments (A, B, C, ...)
-4. Translate and align all 46 languages
+4. Translate and align all languages (see `REQUIRED_LANGS` in `validate_data.py`)
 5. Run `validate_data.py` to verify
 6. Update cache buster version in `index.html` (`?v=N`)
