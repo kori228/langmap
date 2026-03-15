@@ -264,7 +264,10 @@ function unpackCompact(n) {
 
 function updateURL() {
     if (suppressHashUpdate) return;
-    history.replaceState(null, '', '#' + stateToHash());
+    const newHash = '#' + stateToHash();
+    if (location.hash !== newHash) {
+        history.pushState(null, '', newHash);
+    }
 }
 
 function loadFromHash() {
@@ -355,7 +358,7 @@ function resetToDefaults() {
     langOrder = [...DEFAULT_ORDER];
     currentUILang = detectBrowserLang();
     rtlNative = false;
-    history.replaceState(null, '', location.pathname);
+    history.pushState(null, '', location.pathname);
     syncUIFromState();
     applyUILang();
 }
@@ -393,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle browser back/forward
-    window.addEventListener('hashchange', () => {
+    window.addEventListener('popstate', () => {
         suppressHashUpdate = true;
         loadFromHash();
         syncUIFromState();
