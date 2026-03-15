@@ -1392,15 +1392,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dat"
+          "die"
         ],
         [
           "A",
           "ik"
-        ],
-        [
-          "D",
-          "zag"
         ],
         [
           "C",
@@ -1409,6 +1405,10 @@ const SENTENCES = [
         [
           "B",
           "tegenover het hotel"
+        ],
+        [
+          "D",
+          "gezien heb"
         ]
       ],
       "pl": [
@@ -9091,7 +9091,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "erg"
+          "heel"
         ],
         [
           "D",
@@ -12619,15 +12619,23 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Het weer van morgen"
+          "Morgen"
         ],
         [
           "C",
           "wordt"
         ],
         [
+          "B",
+          "het weer"
+        ],
+        [
           "D",
           "zonnig"
+        ],
+        [
+          "C",
+          "zijn"
         ]
       ],
       "pl": [
@@ -14351,7 +14359,7 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Moeder"
+          "Mijn moeder"
         ],
         [
           "C",
@@ -14363,7 +14371,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "het avondeten"
+          "avondeten"
         ]
       ],
       "pl": [
@@ -16115,7 +16123,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "gaan"
+          "rijden"
         ]
       ],
       "pl": [
@@ -17859,7 +17867,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "u"
+          "Zij"
         ],
         [
           "B",
@@ -19985,11 +19993,15 @@ const SENTENCES = [
         ],
         [
           "C",
-          "heb"
+          "kocht"
         ],
         [
           "F",
           "gisteren"
+        ],
+        [
+          "B",
+          "in de boekhandel"
         ],
         [
           "D",
@@ -19998,14 +20010,6 @@ const SENTENCES = [
         [
           "E",
           "boek"
-        ],
-        [
-          "C",
-          "gekocht"
-        ],
-        [
-          "B",
-          "in de boekwinkel"
         ]
       ],
       "pl": [
@@ -22092,16 +22096,20 @@ const SENTENCES = [
       ],
       "nl": [
         [
+          "C",
+          "De kersenbloesems"
+        ],
+        [
           "A",
-          "De"
+          "in dit"
         ],
         [
           "B",
-          "kersenbloesems in dit park"
+          "park"
         ],
         [
           "D",
-          "zijn mooi"
+          "zijn prachtig"
         ]
       ],
       "pl": [
@@ -23745,15 +23753,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Een glas"
+          "Alstublieft"
         ],
         [
-          "C",
-          "water"
+          "D",
+          "geven"
         ],
         [
           "B",
-          "alstublieft"
+          "u mij"
+        ],
+        [
+          "C",
+          "een glas water"
         ]
       ],
       "pl": [
@@ -25644,7 +25656,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ga"
+          "rijd"
         ],
         [
           "E",
@@ -27560,15 +27572,15 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Mijn zus"
-        ],
-        [
-          "D",
-          "studeert"
+          "Mijn jongere zus"
         ],
         [
           "C",
-          "in het buitenland"
+          "studeert"
+        ],
+        [
+          "D",
+          "nu"
         ],
         [
           "B",
@@ -29180,15 +29192,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Hoe laat"
+          "Wanneer"
         ],
         [
-          "D",
+          "C",
           "begint"
         ],
         [
           "B",
           "de film"
+        ],
+        [
+          "C",
+          "aan"
         ]
       ],
       "pl": [
@@ -33003,11 +33019,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "een beetje"
+          "naar"
         ],
         [
           "D",
-          "te duur"
+          "duur"
         ]
       ],
       "pl": [
@@ -34783,11 +34799,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "luister"
+          "luister naar"
         ],
         [
           "C",
-          "graag naar"
+          "graag"
         ],
         [
           "B",
@@ -36442,20 +36458,20 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
+          "C",
           "Het"
         ],
         [
-          "D",
-          "regent"
-        ],
-        [
           "B",
-          "onophoudelijk"
+          "regent"
         ],
         [
           "A",
           "sinds vanochtend"
+        ],
+        [
+          "C",
+          "al"
         ]
       ],
       "pl": [
@@ -38242,7 +38258,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "ga"
+          "eet"
         ],
         [
           "B",
@@ -38254,7 +38270,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "eten"
+          "'s avonds"
         ]
       ],
       "pl": [
@@ -42225,11 +42241,11 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Het ziekenhuis"
+          "De bibliotheek"
         ],
         [
           "D",
-          "is"
+          "ligt"
         ],
         [
           "B",
@@ -42237,7 +42253,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "de bibliotheek"
+          "het ziekenhuis"
         ]
       ],
       "pl": [
@@ -43877,19 +43893,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Kunt u"
-        ],
-        [
-          "D",
-          "mij"
-        ],
-        [
-          "C",
-          "het menu"
+          "Alstublieft"
         ],
         [
           "D",
           "laten zien"
+        ],
+        [
+          "B",
+          "u mij"
+        ],
+        [
+          "C",
+          "het menu"
         ]
       ],
       "pl": [
@@ -45696,7 +45712,11 @@ const SENTENCES = [
         ],
         [
           "E",
-          "werkt bij"
+          "werkt"
+        ],
+        [
+          "B",
+          "bij"
         ],
         [
           "C",
@@ -47551,16 +47571,16 @@ const SENTENCES = [
           "De kinderen"
         ],
         [
-          "D",
-          "zijn"
-        ],
-        [
           "C",
-          "aan het spelen"
+          "spelen"
         ],
         [
           "B",
           "in het park"
+        ],
+        [
+          "D",
+          "nu"
         ]
       ],
       "pl": [
@@ -49268,7 +49288,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "drie keer"
+          "al drie keer"
         ],
         [
           "B",
@@ -50936,7 +50956,11 @@ const SENTENCES = [
       "nl": [
         [
           "D",
-          "Kunt u"
+          "Zou"
+        ],
+        [
+          "A",
+          "Zij"
         ],
         [
           "B",
@@ -52628,19 +52652,19 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ben"
+          "heb"
         ],
         [
           "B",
           "mijn paraplu"
         ],
         [
-          "C",
-          "vergeten"
-        ],
-        [
           "D",
           "in de trein"
+        ],
+        [
+          "C",
+          "vergeten"
         ]
       ],
       "pl": [
@@ -54558,12 +54582,12 @@ const SENTENCES = [
           "kan"
         ],
         [
-          "D",
-          "heel goed"
-        ],
-        [
           "B",
           "piano"
+        ],
+        [
+          "D",
+          "heel goed"
         ],
         [
           "C",
@@ -57906,7 +57930,7 @@ const SENTENCES = [
           "sushi"
         ],
         [
-          "E",
+          "C",
           "eten"
         ]
       ],
@@ -59711,7 +59735,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "erg"
+          "heel"
         ],
         [
           "D",
@@ -61224,11 +61248,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Spreek"
+          "Alstublieft"
+        ],
+        [
+          "C",
+          "spreken"
+        ],
+        [
+          "A",
+          "Zij"
         ],
         [
           "B",
-          "alstublieft langzamer"
+          "langzamer"
         ]
       ],
       "pl": [
@@ -62581,11 +62613,11 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Mijn broer"
+          "Mijn oudere broer"
         ],
         [
           "B",
-          "is"
+          "heeft"
         ],
         [
           "C",
@@ -64136,8 +64168,12 @@ const SENTENCES = [
       ],
       "nl": [
         [
+          "C",
+          "Op het station"
+        ],
+        [
           "D",
-          "Er zijn"
+          "zijn er"
         ],
         [
           "A",
@@ -64146,10 +64182,6 @@ const SENTENCES = [
         [
           "B",
           "mensen"
-        ],
-        [
-          "C",
-          "op het station"
         ]
       ],
       "pl": [
@@ -66076,11 +66108,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "een verjaardags"
-        ],
-        [
-          "D",
-          "cadeau"
+          "een verjaardagscadeau"
         ],
         [
           "E",
@@ -67792,12 +67820,16 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "Vanaf hier is"
+          "B",
+          "De zonsondergang"
         ],
         [
-          "B",
-          "de zonsondergang prachtig"
+          "A",
+          "vanaf hier"
+        ],
+        [
+          "C",
+          "is prachtig"
         ]
       ],
       "pl": [
@@ -69515,12 +69547,16 @@ const SENTENCES = [
           "moet"
         ],
         [
-          "B",
+          "C",
           "morgen"
         ],
         [
+          "B",
+          "vroeg"
+        ],
+        [
           "D",
-          "vroeg opstaan"
+          "opstaan"
         ]
       ],
       "pl": [
@@ -71551,7 +71587,11 @@ const SENTENCES = [
       "nl": [
         [
           "E",
-          "Weet u"
+          "kennis"
+        ],
+        [
+          "A",
+          "Zij"
         ],
         [
           "C",
@@ -73665,8 +73705,12 @@ const SENTENCES = [
           "nu"
         ],
         [
+          "D",
+          "een"
+        ],
+        [
           "C",
-          "een interessant"
+          "interessant"
         ],
         [
           "D",
@@ -77593,8 +77637,12 @@ const SENTENCES = [
       ],
       "nl": [
         [
+          "B",
+          "Het eten"
+        ],
+        [
           "A",
-          "Het eten van dit restaurant"
+          "in dit restaurant"
         ],
         [
           "C",
@@ -79146,11 +79194,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "de wereld"
+          "de wereld rond"
         ],
         [
           "C",
-          "rondreizen"
+          "reizen"
         ]
       ],
       "pl": [
@@ -80838,11 +80886,11 @@ const SENTENCES = [
         ],
         [
           "D",
-          "wordt"
+          "zal het"
         ],
         [
           "B",
-          "het in de winter"
+          "in de winter"
         ],
         [
           "C",
@@ -82756,20 +82804,16 @@ const SENTENCES = [
           "heb"
         ],
         [
+          "B",
+          "met mijn vriend"
+        ],
+        [
           "D",
           "een uur"
         ],
         [
-          "C",
-          "aan de telefoon"
-        ],
-        [
-          "B",
-          "met een vriend"
-        ],
-        [
           "E",
-          "gepraat"
+          "telefoneert"
         ]
       ],
       "pl": [
@@ -84669,7 +84713,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "heeft"
+          "legde uit"
         ],
         [
           "B",
@@ -84678,10 +84722,6 @@ const SENTENCES = [
         [
           "C",
           "duidelijk"
-        ],
-        [
-          "D",
-          "uitgelegd"
         ]
       ],
       "pl": [
@@ -86337,10 +86377,10 @@ const SENTENCES = [
         ],
         [
           "B",
-          "die film"
+          "deze film"
         ],
         [
-          "D",
+          "C",
           "zien"
         ]
       ],
@@ -87973,19 +88013,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Kunt u"
+          "Alstublieft"
+        ],
+        [
+          "D",
+          "zeggen"
         ],
         [
           "B",
-          "mij"
+          "u mij"
         ],
         [
           "C",
           "de weg naar het vliegveld"
-        ],
-        [
-          "D",
-          "vertellen"
         ]
       ],
       "pl": [
@@ -89580,8 +89620,12 @@ const SENTENCES = [
           "Mijn hond"
         ],
         [
+          "C",
+          "gaat"
+        ],
+        [
           "D",
-          "houdt van"
+          "graag"
         ],
         [
           "C",
@@ -91269,7 +91313,7 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Oma"
+          "Mijn grootmoeder"
         ],
         [
           "D",
@@ -93001,19 +93045,19 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ben"
+          "heb"
         ],
         [
           "B",
           "mijn portemonnee"
         ],
         [
-          "C",
-          "verloren"
-        ],
-        [
           "D",
           "op de markt"
+        ],
+        [
+          "C",
+          "verloren"
         ]
       ],
       "pl": [
@@ -94549,12 +94593,12 @@ const SENTENCES = [
           "De bloemen"
         ],
         [
-          "C",
-          "bloeien"
-        ],
-        [
           "A",
           "in de tuin"
+        ],
+        [
+          "C",
+          "bloeien"
         ]
       ],
       "pl": [
@@ -99577,12 +99621,12 @@ const SENTENCES = [
           "begint"
         ],
         [
-          "B",
-          "om 8 uur"
-        ],
-        [
           "C",
           "vanavond"
+        ],
+        [
+          "B",
+          "om 8 uur"
         ]
       ],
       "pl": [
@@ -101321,12 +101365,12 @@ const SENTENCES = [
           "spreekt"
         ],
         [
-          "C",
-          "vloeiend"
-        ],
-        [
           "B",
           "drie talen"
+        ],
+        [
+          "C",
+          "vloeiend"
         ]
       ],
       "pl": [
@@ -103256,12 +103300,12 @@ const SENTENCES = [
           "een foto"
         ],
         [
-          "D",
-          "maken"
-        ],
-        [
           "B",
           "van deze tempel"
+        ],
+        [
+          "D",
+          "maken"
         ]
       ],
       "pl": [
@@ -106494,15 +106538,15 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ben"
+          "leer"
         ],
         [
           "B",
-          "Koreaans eten"
+          "Koreaans"
         ],
         [
           "C",
-          "leren koken"
+          "te koken"
         ]
       ],
       "pl": [
@@ -108393,7 +108437,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "op vergaderingen"
+          "naar vergaderingen"
         ]
       ],
       "pl": [
@@ -110488,11 +110532,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "voor het einde van de maand"
+          "tot het einde van de maand"
         ],
         [
           "D",
-          "uitlezen"
+          "lezen"
         ]
       ],
       "pl": [
@@ -112180,16 +112224,16 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "In de bomen"
+          "B",
+          "De vogels"
         ],
         [
           "C",
           "zingen"
         ],
         [
-          "B",
-          "de vogels"
+          "A",
+          "in de bomen"
         ]
       ],
       "pl": [
@@ -115628,7 +115672,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "heeft"
+          "gaf"
         ],
         [
           "B",
@@ -115641,10 +115685,6 @@ const SENTENCES = [
         [
           "D",
           "cadeau"
-        ],
-        [
-          "E",
-          "gegeven"
         ]
       ],
       "pl": [
@@ -117365,11 +117405,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "met sneeuw"
-        ],
-        [
-          "C",
-          "bedekt"
+          "bedekt met sneeuw"
         ]
       ],
       "pl": [
@@ -118932,12 +118968,12 @@ const SENTENCES = [
           "train"
         ],
         [
-          "C",
-          "drie keer per week"
-        ],
-        [
           "B",
           "in de sportschool"
+        ],
+        [
+          "C",
+          "drie keer per week"
         ]
       ],
       "pl": [
@@ -120612,8 +120648,12 @@ const SENTENCES = [
           "ik"
         ],
         [
+          "B",
+          "hier"
+        ],
+        [
           "C",
-          "hier zitten"
+          "zitten?"
         ]
       ],
       "pl": [
@@ -123818,11 +123858,15 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "De winkel sluit"
+          "De winkel"
+        ],
+        [
+          "C",
+          "sluit"
         ],
         [
           "B",
-          "om 9 uur 's avonds"
+          "om 21 uur"
         ]
       ],
       "pl": [
@@ -127074,7 +127118,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "hebben"
+          "bouwden"
         ],
         [
           "B",
@@ -127083,10 +127127,6 @@ const SENTENCES = [
         [
           "C",
           "over de rivier"
-        ],
-        [
-          "D",
-          "gebouwd"
         ]
       ],
       "pl": [
@@ -133239,16 +133279,24 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "Als ik naar muziek"
+          "D",
+          "Ik voel me gelukkig"
         ],
         [
-          "B",
-          "luister"
+          "C",
+          "als"
         ],
         [
           "D",
-          "voel ik me blij"
+          "ik"
+        ],
+        [
+          "A",
+          "muziek"
+        ],
+        [
+          "B",
+          "luister naar"
         ]
       ],
       "pl": [
@@ -136328,24 +136376,20 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "Ik"
+          "D",
+          "Ik denk"
         ],
         [
-          "D",
-          "denk dat"
+          "A",
+          "dit"
         ],
         [
           "B",
-          "dit plan"
+          "plan"
         ],
         [
           "C",
-          "goed"
-        ],
-        [
-          "D",
-          "is"
+          "is goed"
         ]
       ],
       "pl": [
@@ -138211,8 +138255,12 @@ const SENTENCES = [
           "is verdrietig"
         ],
         [
+          "C",
+          "omdat"
+        ],
+        [
           "D",
-          "omdat haar vriendin"
+          "haar vriendin"
         ],
         [
           "E",
@@ -140215,18 +140263,18 @@ const SENTENCES = [
         ],
         [
           "E",
-          "geloof dat"
+          "geloof"
         ],
         [
           "B",
-          "studeren in het buitenland"
+          "dat studeren in het buitenland"
         ],
         [
           "C",
           "een waardevolle ervaring"
         ],
         [
-          "E",
+          "D",
           "is"
         ]
       ],
@@ -143675,7 +143723,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "heeft"
+          "zei"
         ],
         [
           "B",
@@ -143683,11 +143731,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "rust"
-        ],
-        [
-          "D",
-          "voorgeschreven"
+          "ik moest rusten"
         ]
       ],
       "pl": [
@@ -147038,20 +147082,16 @@ const SENTENCES = [
           "Zij"
         ],
         [
-          "D",
-          "heeft"
+          "C",
+          "heeft zich"
         ],
         [
-          "C",
+          "D",
           "vorige week"
         ],
         [
-          "B",
-          "een verkoudheid"
-        ],
-        [
-          "D",
-          "opgelopen"
+          "C",
+          "verkouden"
         ]
       ],
       "pl": [
@@ -148667,19 +148707,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "U"
+          "Jij"
         ],
         [
           "D",
-          "zou"
+          "zou moeten"
         ],
         [
           "B",
           "meer water"
         ],
         [
-          "D",
-          "moeten drinken"
+          "C",
+          "drinken"
         ]
       ],
       "pl": [
@@ -150286,7 +150326,7 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
+          "D",
           "Ik"
         ],
         [
@@ -150295,7 +150335,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "elke dag mijn smartphone"
+          "mijn smartphone"
+        ],
+        [
+          "A",
+          "elke dag"
         ]
       ],
       "pl": [
@@ -151974,16 +152018,12 @@ const SENTENCES = [
           "app"
         ],
         [
-          "D",
-          "is"
-        ],
-        [
           "C",
-          "erg"
+          "is heel"
         ],
         [
           "D",
-          "handig"
+          "praktisch"
         ]
       ],
       "pl": [
@@ -153524,7 +153564,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "verandert"
+          "veranderd"
         ],
         [
           "B",
@@ -156324,12 +156364,8 @@ const SENTENCES = [
           "programmeren"
         ],
         [
-          "C",
-          "zelf"
-        ],
-        [
           "D",
-          "geleerd"
+          "zelf geleerd"
         ]
       ],
       "pl": [
@@ -157989,10 +158025,10 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Kersenbloesem kijken"
+          "Het kersenbloesems bekijken"
         ],
         [
-          "C",
+          "D",
           "is"
         ],
         [
@@ -161392,16 +161428,12 @@ const SENTENCES = [
           "In dit land"
         ],
         [
-          "D",
-          "worden"
-        ],
-        [
           "B",
           "in de zomer"
         ],
         [
           "C",
-          "veel festivals"
+          "worden veel festivals"
         ],
         [
           "D",
@@ -162942,7 +162974,7 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Talen leren"
+          "talen leren"
         ],
         [
           "C",
@@ -164314,12 +164346,8 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "Ik"
-        ],
-        [
-          "B",
-          "ga"
+          "C",
+          "Ik rijd"
         ],
         [
           "A",
@@ -165887,19 +165915,19 @@ const SENTENCES = [
       "nl": [
         [
           "A",
-          "Sla"
-        ],
-        [
-          "B",
-          "bij het volgende kruispunt"
-        ],
-        [
-          "C",
-          "rechts"
+          "Alstublieft"
         ],
         [
           "D",
-          "af alstublieft"
+          "slaat u"
+        ],
+        [
+          "B",
+          "bij de volgende kruising"
+        ],
+        [
+          "C",
+          "rechtsaf"
         ]
       ],
       "pl": [
@@ -167631,7 +167659,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "is"
+          "ligt"
         ],
         [
           "B",
@@ -169302,7 +169330,7 @@ const SENTENCES = [
           "dit gerecht"
         ],
         [
-          "D",
+          "C",
           "bestellen"
         ]
       ],
@@ -170902,7 +170930,7 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
+          "C",
           "Hoeveel"
         ],
         [
@@ -170910,8 +170938,12 @@ const SENTENCES = [
           "kost"
         ],
         [
+          "A",
+          "dit"
+        ],
+        [
           "B",
-          "dit souvenir"
+          "souvenir"
         ]
       ],
       "pl": [
@@ -172299,11 +172331,15 @@ const SENTENCES = [
       ],
       "nl": [
         [
-          "A",
-          "Bedankt voor"
+          "B",
+          "Dank u"
         ],
         [
-          "B",
+          "C",
+          "voor"
+        ],
+        [
+          "A",
           "alles"
         ]
       ],
