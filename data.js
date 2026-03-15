@@ -146724,7 +146724,7 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B",
+          "B|D",
           "두통이"
         ],
         [
@@ -146850,7 +146850,7 @@ const SENTENCES = [
           "आज"
         ],
         [
-          "B",
+          "B|D",
           "सिरदर्द"
         ],
         [
@@ -146868,7 +146868,7 @@ const SENTENCES = [
           "have"
         ],
         [
-          "B",
+          "B|D",
           "a headache"
         ],
         [
@@ -146980,7 +146980,7 @@ const SENTENCES = [
           "heute"
         ],
         [
-          "B",
+          "B|D",
           "Kopfschmerzen"
         ]
       ],
@@ -146994,7 +146994,7 @@ const SENTENCES = [
           "ai"
         ],
         [
-          "B",
+          "B|D",
           "mal à la tête"
         ],
         [
@@ -147012,7 +147012,7 @@ const SENTENCES = [
           "ho"
         ],
         [
-          "B",
+          "B|D",
           "mal di testa"
         ],
         [
@@ -147236,7 +147236,7 @@ const SENTENCES = [
           "tengo"
         ],
         [
-          "B",
+          "B|D",
           "dolor de cabeza"
         ],
         [
@@ -147254,7 +147254,7 @@ const SENTENCES = [
           "traigo"
         ],
         [
-          "B",
+          "B|D",
           "dolor de cabeza"
         ],
         [
@@ -148136,7 +148136,7 @@ const SENTENCES = [
           "haiu"
         ],
         [
-          "B",
+          "B|D",
           "mali di testa"
         ],
         [

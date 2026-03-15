@@ -110,8 +110,12 @@ def check_flipped_segments(sentence, lang_code, segments, defined_ids):
             errors.append(f"  [{lang_code}] Invalid segment length: {seg}")
             continue
         seg_id, text = seg[0], seg[1]
+        # Support compound segment IDs (e.g. "B|D")
+        sub_ids = set(seg_id.split('|'))
+        is_compound = '|' in seg_id
+        is_valid = sub_ids <= VALID_SEGMENT_IDS if is_compound else seg_id in VALID_SEGMENT_IDS
         # If first element is NOT a valid segment ID but second element IS
-        if seg_id not in defined_ids and text in defined_ids:
+        if not is_valid and not is_compound and text in defined_ids:
             # Exception: English "I" looks like a segment ID
             if seg_id == 'I' and lang_code == 'en':
                 continue
@@ -120,8 +124,7 @@ def check_flipped_segments(sentence, lang_code, segments, defined_ids):
                 f"→ should be [\"{text}\", \"{seg_id}\"]?"
             )
         # Check if segment ID is valid
-        if seg_id not in VALID_SEGMENT_IDS:
-            # Could be a flipped English "I"
+        if not is_valid:
             if seg_id == 'I' and lang_code == 'en':
                 continue
             errors.append(

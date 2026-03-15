@@ -804,7 +804,8 @@ function buildSegmentTooltip(sentence, segId) {
     for (const lang of refLangs) {
         const segs = sentence.langs[lang];
         if (!segs) continue;
-        const texts = segs.filter(s => s[0] === segId).map(s => s[1]);
+        const subIds = segId.split('|');
+        const texts = segs.filter(s => subIds.some(id => s[0] === id || s[0].split('|').includes(id))).map(s => s[1]);
         if (texts.length > 0) {
             lines.push(`${labels[lang]}: ${texts.join(' ')}`);
         }
@@ -870,8 +871,21 @@ function render() {
             seg.className = 'segment';
             seg.dataset.seg = segId;
             seg.dataset.lang = code;
-            const segColor = sentence.segments[segId]?.color || '#666';
-            seg.style.color = segColor;
+            // Handle compound segments (e.g. "B|D")
+            const subIds = segId.split('|');
+            const segColor = subIds.length > 1
+                ? null  // handled via gradient below
+                : (sentence.segments[segId]?.color || '#666');
+            if (subIds.length > 1) {
+                const colors = subIds.map(id => sentence.segments[id]?.color || '#666');
+                seg.style.backgroundImage = `linear-gradient(90deg, ${colors.join(', ')})`;
+                seg.style.webkitBackgroundClip = 'text';
+                seg.style.backgroundClip = 'text';
+                seg.style.color = 'transparent';
+                seg.classList.add('segment-compound');
+            } else {
+                seg.style.color = segColor;
+            }
             if (code === 'egy' && text.includes('|')) {
                 const [hiero, translit] = text.split('|');
                 seg.classList.add('segment-dual');
@@ -993,9 +1007,14 @@ function drawLines(sentence, activeLangs) {
         const elRect = el.getBoundingClientRect();
         const x = elRect.left + elRect.width / 2 - rect.left;
         const y = elRect.top + elRect.height - rect.top + 2;
+        const pos = { lang: el.dataset.lang, x, y, top: elRect.top - rect.top - 2 };
 
-        if (!segPositions[segId]) segPositions[segId] = [];
-        segPositions[segId].push({ lang: el.dataset.lang, x, y, top: elRect.top - rect.top - 2 });
+        // Register compound segments (e.g. "B|D") under each sub-ID
+        const subIds = segId.split('|');
+        for (const id of subIds) {
+            if (!segPositions[id]) segPositions[id] = [];
+            segPositions[id].push(pos);
+        }
     });
 
     // Draw lines between consecutive language pairs
