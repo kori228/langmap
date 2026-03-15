@@ -14,19 +14,21 @@ import re
 import sys
 import json
 
-# All 32 language codes
+# All language codes
 REQUIRED_LANGS = {
-    'ja', 'osa', 'aom', 'oki', 'ja_edo',
-    'ko', 'kp', 'bus',
-    'zh', 'yue', 'nan', 'wuu', 'zh_classical',
+    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ain',
+    'ko', 'kp', 'bus', 'jeju',
+    'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'bo',
     'vi', 'vi_nom',
-    'th', 'id',
-    'hi',
-    'en', 'de',
-    'fr', 'it', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
-    'ru', 'uk',
-    'ar', 'ar_eg', 'he',
-    'sw',
+    'th', 'id', 'ms', 'tl', 'mg', 'my', 'jv', 'km', 'lo', 'mi', 'haw',
+    'sa', 'hi', 'ta', 'fa', 'mn', 'tr', 'bn', 'ur', 'te', 'ka',
+    'ar', 'ar_eg', 'he', 'am', 'egy', 'sw', 'yo', 'zu',
+    'en', 'en_aave', 'en_south', 'en_app', 'en_ie', 'en_sco', 'en_yk', 'en_ck',
+    'nl', 'de',
+    'ga', 'cy', 'eu',
+    'la', 'fr', 'it', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
+    'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'hy',
+    'nv', 'qu',
 }
 
 # Languages that do NOT use spaces between words
