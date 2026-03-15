@@ -196,8 +196,12 @@ const SENTENCES = [
           "สูท"
         ],
         [
+          "G",
+          "ที่"
+        ],
+        [
           "D",
-          "ที่เห็น"
+          "เห็น"
         ],
         [
           "C",
@@ -222,8 +226,12 @@ const SENTENCES = [
           "jas"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang saya lihat"
+          "saya lihat"
         ],
         [
           "C",
@@ -1220,8 +1228,12 @@ const SENTENCES = [
           "sut"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang saya lihat"
+          "saya lihat"
         ],
         [
           "C",
@@ -1708,8 +1720,12 @@ const SENTENCES = [
           "ສູທ"
         ],
         [
+          "G",
+          "ທີ່"
+        ],
+        [
           "D",
-          "ທີ່ເຫ໌ນ"
+          "ເຫ໌ນ"
         ],
         [
           "C",
@@ -1734,8 +1750,12 @@ const SENTENCES = [
           "jas"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang aku lihat"
+          "aku lihat"
         ],
         [
           "C",
@@ -1864,8 +1884,12 @@ const SENTENCES = [
           "ឈុតខោអាវ"
         ],
         [
+          "G",
+          "ដែល"
+        ],
+        [
           "D",
-          "ដែលខ្ញុំបានឃើញ"
+          "ខ្ញុំបានឃើញ"
         ],
         [
           "C",
