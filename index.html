@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LangMap - 多言語語順マップ</title>
-    <link rel="stylesheet" href="styles.css?v=18">
+    <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
     <div class="container">
@@ -35,23 +35,12 @@
             <div class="control-row">
                 <div class="control-group" style="flex:1">
                     <label>
-                        <span id="lblLangToggle">表示言語 ON/OFF:</span>
-                        <button class="btn btn-sm btn-inline" id="btnAllOn" onclick="toggleAllLangs(true)">全ON</button>
-                        <button class="btn btn-sm btn-inline" id="btnAllOff" onclick="toggleAllLangs(false)">全OFF</button>
+                        <span id="lblLangToggle">表示言語:</span>
                     </label>
-                    <div class="lang-toggles" id="langToggles"></div>
+                    <div class="lang-summary" id="langSummary"></div>
                 </div>
             </div>
 
-        </div>
-
-        <div class="rtl-note" id="rtlNote" style="display:none">
-            <span id="rtlNoteText"></span>
-            <label class="rtl-switch">
-                <input type="checkbox" id="rtlToggle" onchange="toggleRtlNative(this.checked)">
-                <span class="rtl-switch-slider"></span>
-                <span id="rtlToggleLabel"></span>
-            </label>
         </div>
 
         <div class="map-toolbar">
@@ -62,6 +51,15 @@
                 <svg id="linesSvg" class="lines-svg"></svg>
                 <div id="langRows"></div>
             </div>
+        </div>
+
+        <div class="rtl-note" id="rtlNote" style="display:none">
+            <span id="rtlNoteText"></span>
+            <label class="rtl-switch">
+                <input type="checkbox" id="rtlToggle" onchange="toggleRtlNative(this.checked)">
+                <span class="rtl-switch-slider"></span>
+                <span id="rtlToggleLabel"></span>
+            </label>
         </div>
 
         <div class="footer">
@@ -85,7 +83,26 @@
     </div>
 
     <div class="copy-toast" id="copyToast">URLをコピーしました</div>
-    <script src="data.js?v=18"></script>
-    <script src="app.js?v=18"></script>
+
+    <!-- Language selector modal -->
+    <div class="lang-modal-overlay" id="langModalOverlay">
+        <div class="lang-modal">
+            <div class="lang-modal-header">
+                <span class="lang-modal-title" id="langModalTitle">言語選択</span>
+                <div class="lang-modal-actions-top">
+                    <button class="btn btn-sm btn-inline" id="btnModalAllOn" onclick="modalToggleAll(true)">全ON</button>
+                    <button class="btn btn-sm btn-inline" id="btnModalAllOff" onclick="modalToggleAll(false)">全OFF</button>
+                </div>
+            </div>
+            <div class="lang-modal-body" id="langModalBody"></div>
+            <div class="lang-modal-footer">
+                <button class="btn" id="btnModalCancel" onclick="closeLangModal(false)">キャンセル</button>
+                <button class="btn btn-accent" id="btnModalConfirm" onclick="closeLangModal(true)">選択</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js?v=19"></script>
+    <script src="app.js?v=19"></script>
 </body>
 </html>

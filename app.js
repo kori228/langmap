@@ -1,26 +1,26 @@
 // UI translations
 const UI_STRINGS = {
-    ja: { title: 'LangMap', subtitle: '多言語語順マップ', selectSentence: '文章選択:', langToggle: '表示言語 ON/OFF:', langOrder: '言語の順序', dragHint: 'ドラッグで並べ替え', defaultOrder: 'デフォルト順', random: 'ランダム', prev: '◀', next: '▶', allOn: '全ON', allOff: '全OFF', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: 'URLコピー', copied: 'URLをコピーしました', uiLang: 'UI言語:', noLangSelected: '1つ以上の言語を選択してください', showMore: 'もっと表示', showLess: '閉じる', edit: '編集', save: '保存', cancel: 'キャンセル', corrector: '添削者:', correctionSaved: '修正を保存しました', copyText: 'テキストをコピー', copiedText: 'テキストをコピーしました', rtlNote: '※ アラビア語・ヘブライ語は比較のため左→右で表示しています（実際は右→左に読みます）', rtlToggle: '元の語順(←)で表示' },
-    ko: { title: 'LangMap', subtitle: '다국어 어순 맵', selectSentence: '문장 선택:', langToggle: '표시 언어 ON/OFF:', langOrder: '언어 순서', dragHint: '드래그하여 정렬', defaultOrder: '기본 순서', random: '랜덤', prev: '◀', next: '▶', allOn: '전체 ON', allOff: '전체 OFF', savePng: 'PNG 저장', saveSvg: 'SVG 저장', copyUrl: 'URL 복사', copied: 'URL을 복사했습니다', uiLang: 'UI 언어:', noLangSelected: '1개 이상의 언어를 선택하세요', showMore: '더 보기', showLess: '닫기', rtlNote: '※ 아랍어·히브리어는 비교를 위해 왼→오른쪽으로 표시합니다 (실제로는 오른→왼쪽으로 읽습니다)', rtlToggle: '원래 방향(←)으로 표시' },
-    zh: { title: 'LangMap', subtitle: '多语言语序图', selectSentence: '选择句子:', langToggle: '显示语言 ON/OFF:', langOrder: '语言顺序', dragHint: '拖拽排序', defaultOrder: '默认顺序', random: '随机', prev: '◀', next: '▶', allOn: '全部开', allOff: '全部关', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: '复制链接', copied: '链接已复制', uiLang: 'UI语言:', noLangSelected: '请选择至少一种语言', showMore: '显示更多', showLess: '收起', rtlNote: '※ 阿拉伯语和希伯来语为便于比较从左→右显示（实际从右→左阅读）', rtlToggle: '显示原始方向(←)' },
-    yue: { title: 'LangMap', subtitle: '多語言語序圖', selectSentence: '揀句子:', langToggle: '顯示語言 ON/OFF:', langOrder: '語言順序', dragHint: '拖嚟排序', defaultOrder: '預設順序', random: '隨機', prev: '◀', next: '▶', allOn: '全開', allOff: '全關', savePng: 'PNG儲存', saveSvg: 'SVG儲存', copyUrl: '複製連結', copied: '連結已複製', uiLang: 'UI語言:', noLangSelected: '請揀至少一種語言', showMore: '顯示更多', showLess: '收起', rtlNote: '※ 阿拉伯語同希伯來語為咗比較用左→右顯示（實際係右→左讀）', rtlToggle: '顯示原本方向(←)' },
-    vi: { title: 'LangMap', subtitle: 'Bản đồ trật tự từ đa ngôn ngữ', selectSentence: 'Chọn câu:', langToggle: 'Ngôn ngữ hiển thị ON/OFF:', langOrder: 'Thứ tự ngôn ngữ', dragHint: 'kéo để sắp xếp', defaultOrder: 'Mặc định', random: 'Ngẫu nhiên', prev: '◀', next: '▶', allOn: 'Bật tất cả', allOff: 'Tắt tất cả', savePng: 'Lưu PNG', saveSvg: 'Lưu SVG', copyUrl: 'Sao chép URL', copied: 'Đã sao chép URL', uiLang: 'Ngôn ngữ UI:', noLangSelected: 'Vui lòng chọn ít nhất một ngôn ngữ', showMore: 'Xem thêm', showLess: 'Thu gọn', rtlNote: '※ Tiếng Ả Rập và tiếng Do Thái được hiển thị trái→phải để so sánh (thực tế đọc phải→trái)', rtlToggle: 'Hiển thị hướng gốc (←)' },
-    th: { title: 'LangMap', subtitle: 'แผนที่ลำดับคำหลายภาษา', selectSentence: 'เลือกประโยค:', langToggle: 'ภาษาที่แสดง ON/OFF:', langOrder: 'ลำดับภาษา', dragHint: 'ลากเพื่อจัดเรียง', defaultOrder: 'ค่าเริ่มต้น', random: 'สุ่ม', prev: '◀', next: '▶', allOn: 'เปิดทั้งหมด', allOff: 'ปิดทั้งหมด', savePng: 'บันทึก PNG', saveSvg: 'บันทึก SVG', copyUrl: 'คัดลอก URL', copied: 'คัดลอก URL แล้ว', uiLang: 'ภาษา UI:', noLangSelected: 'กรุณาเลือกอย่างน้อยหนึ่งภาษา', showMore: 'แสดงเพิ่มเติม', showLess: 'ซ่อน', rtlNote: '※ ภาษาอาหรับและฮีบรูแสดงซ้าย→ขวาเพื่อการเปรียบเทียบ (ปกติอ่านขวา→ซ้าย)', rtlToggle: 'แสดงทิศทางดั้งเดิม (←)' },
-    id: { title: 'LangMap', subtitle: 'Peta Urutan Kata Multibahasa', selectSentence: 'Pilih kalimat:', langToggle: 'Bahasa ditampilkan ON/OFF:', langOrder: 'Urutan bahasa', dragHint: 'seret untuk mengurutkan', defaultOrder: 'Urutan default', random: 'Acak', prev: '◀', next: '▶', allOn: 'Semua ON', allOff: 'Semua OFF', savePng: 'Simpan PNG', saveSvg: 'Simpan SVG', copyUrl: 'Salin URL', copied: 'URL disalin', uiLang: 'Bahasa UI:', noLangSelected: 'Pilih setidaknya satu bahasa', showMore: 'Tampilkan lainnya', showLess: 'Tutup', rtlNote: '※ Bahasa Arab dan Ibrani ditampilkan kiri→kanan untuk perbandingan (biasanya dibaca kanan→kiri)', rtlToggle: 'Tampilkan arah asli (←)' },
-    hi: { title: 'LangMap', subtitle: 'बहुभाषी शब्द क्रम मानचित्र', selectSentence: 'वाक्य चुनें:', langToggle: 'प्रदर्शन भाषा ON/OFF:', langOrder: 'भाषा क्रम', dragHint: 'क्रम बदलने के लिए खींचें', defaultOrder: 'डिफ़ॉल्ट क्रम', random: 'रैंडम', prev: '◀', next: '▶', allOn: 'सभी ON', allOff: 'सभी OFF', savePng: 'PNG सहेजें', saveSvg: 'SVG सहेजें', copyUrl: 'URL कॉपी', copied: 'URL कॉपी हो गया', uiLang: 'UI भाषा:', noLangSelected: 'कृपया कम से कम एक भाषा चुनें', showMore: 'और दिखाएं', showLess: 'बंद करें', rtlNote: '※ अरबी और हिब्रू तुलना के लिए बाएं→दाएं दिखाए गए हैं (वास्तव में दाएं→बाएं पढ़े जाते हैं)', rtlToggle: 'मूल दिशा में दिखाएं (←)' },
-    en: { title: 'LangMap', subtitle: 'Multilingual Word Order Map', selectSentence: 'Select sentence:', langToggle: 'Display languages ON/OFF:', langOrder: 'Language order', dragHint: 'drag to reorder', defaultOrder: 'Default order', random: 'Random', prev: '◀', next: '▶', allOn: 'All ON', allOff: 'All OFF', savePng: 'Save PNG', saveSvg: 'Save SVG', copyUrl: 'Copy URL', copied: 'URL copied', uiLang: 'UI Language:', noLangSelected: 'Please select at least one language', showMore: 'Show more', showLess: 'Show less', edit: 'Edit', save: 'Save', cancel: 'Cancel', corrector: 'Corrector:', correctionSaved: 'Correction saved', copyText: 'Copy text', copiedText: 'Text copied', rtlNote: '* Arabic and Hebrew are shown left-to-right for comparison (they are normally read right-to-left)', rtlToggle: 'Show native direction' },
-    de: { title: 'LangMap', subtitle: 'Mehrsprachige Wortstellungskarte', selectSentence: 'Satz wählen:', langToggle: 'Angezeigte Sprachen ON/OFF:', langOrder: 'Sprachreihenfolge', dragHint: 'ziehen zum Sortieren', defaultOrder: 'Standardreihenfolge', random: 'Zufällig', prev: '◀', next: '▶', allOn: 'Alle AN', allOff: 'Alle AUS', savePng: 'PNG speichern', saveSvg: 'SVG speichern', copyUrl: 'URL kopieren', copied: 'URL kopiert', uiLang: 'UI-Sprache:', noLangSelected: 'Bitte wählen Sie mindestens eine Sprache', showMore: 'Mehr anzeigen', showLess: 'Weniger', rtlNote: '※ Arabisch und Hebräisch werden zum Vergleich links→rechts angezeigt (normalerweise rechts→links gelesen)', rtlToggle: 'Originalrichtung anzeigen (←)' },
-    fr: { title: 'LangMap', subtitle: "Carte de l'ordre des mots multilingue", selectSentence: 'Sélectionner une phrase :', langToggle: 'Langues affichées ON/OFF :', langOrder: 'Ordre des langues', dragHint: 'glisser pour réorganiser', defaultOrder: 'Ordre par défaut', random: 'Aléatoire', prev: '◀', next: '▶', allOn: 'Tout ON', allOff: 'Tout OFF', savePng: 'Enregistrer PNG', saveSvg: 'Enregistrer SVG', copyUrl: "Copier l'URL", copied: 'URL copié', uiLang: 'Langue UI :', noLangSelected: 'Veuillez sélectionner au moins une langue', showMore: 'Afficher plus', showLess: 'Réduire', rtlNote: "※ L'arabe et l'hébreu sont affichés gauche→droite pour comparaison (normalement lus droite→gauche)", rtlToggle: 'Afficher la direction originale (←)' },
-    it: { title: 'LangMap', subtitle: "Mappa dell'ordine delle parole multilingue", selectSentence: 'Seleziona frase:', langToggle: 'Lingue visualizzate ON/OFF:', langOrder: 'Ordine delle lingue', dragHint: 'trascina per riordinare', defaultOrder: 'Ordine predefinito', random: 'Casuale', prev: '◀', next: '▶', allOn: 'Tutti ON', allOff: 'Tutti OFF', savePng: 'Salva PNG', saveSvg: 'Salva SVG', copyUrl: 'Copia URL', copied: 'URL copiato', uiLang: 'Lingua UI:', noLangSelected: 'Seleziona almeno una lingua', showMore: 'Mostra altro', showLess: 'Chiudi', rtlNote: '※ Arabo ed ebraico sono mostrati sinistra→destra per confronto (normalmente letti destra→sinistra)', rtlToggle: 'Mostra direzione originale (←)' },
-    es_eu: { title: 'LangMap', subtitle: 'Mapa de orden de palabras multilingüe', selectSentence: 'Seleccionar oración:', langToggle: 'Idiomas mostrados ON/OFF:', langOrder: 'Orden de idiomas', dragHint: 'arrastrar para reordenar', defaultOrder: 'Orden predeterminado', random: 'Aleatorio', prev: '◀', next: '▶', allOn: 'Todo ON', allOff: 'Todo OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Seleccione al menos un idioma', showMore: 'Mostrar más', showLess: 'Cerrar', rtlNote: '※ El árabe y el hebreo se muestran de izquierda→derecha para comparación (normalmente se leen de derecha→izquierda)', rtlToggle: 'Mostrar dirección original (←)' },
-    es_mx: { title: 'LangMap', subtitle: 'Mapa de orden de palabras multilingüe', selectSentence: 'Seleccionar oración:', langToggle: 'Idiomas mostrados ON/OFF:', langOrder: 'Orden de idiomas', dragHint: 'arrastrar para reordenar', defaultOrder: 'Orden predeterminado', random: 'Aleatorio', prev: '◀', next: '▶', allOn: 'Todo ON', allOff: 'Todo OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Seleccione al menos un idioma', showMore: 'Mostrar más', showLess: 'Cerrar', rtlNote: '※ El árabe y el hebreo se muestran de izquierda→derecha para comparación (normalmente se leen de derecha→izquierda)', rtlToggle: 'Mostrar dirección original (←)' },
-    pt_eu: { title: 'LangMap', subtitle: 'Mapa de ordem de palavras multilíngue', selectSentence: 'Selecionar frase:', langToggle: 'Idiomas exibidos ON/OFF:', langOrder: 'Ordem dos idiomas', dragHint: 'arraste para reordenar', defaultOrder: 'Ordem padrão', random: 'Aleatório', prev: '◀', next: '▶', allOn: 'Todos ON', allOff: 'Todos OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Selecione pelo menos um idioma', showMore: 'Mostrar mais', showLess: 'Fechar', rtlNote: '※ O árabe e o hebraico são exibidos da esquerda→direita para comparação (normalmente lidos da direita→esquerda)', rtlToggle: 'Mostrar direção original (←)' },
-    pt_br: { title: 'LangMap', subtitle: 'Mapa de ordem de palavras multilíngue', selectSentence: 'Selecionar frase:', langToggle: 'Idiomas exibidos ON/OFF:', langOrder: 'Ordem dos idiomas', dragHint: 'arraste para reordenar', defaultOrder: 'Ordem padrão', random: 'Aleatório', prev: '◀', next: '▶', allOn: 'Todos ON', allOff: 'Todos OFF', savePng: 'Salvar PNG', saveSvg: 'Salvar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Selecione pelo menos um idioma', showMore: 'Mostrar mais', showLess: 'Fechar', rtlNote: '※ O árabe e o hebraico são exibidos da esquerda→direita para comparação (normalmente lidos da direita→esquerda)', rtlToggle: 'Mostrar direção original (←)' },
-    ru: { title: 'LangMap', subtitle: 'Многоязычная карта порядка слов', selectSentence: 'Выбрать предложение:', langToggle: 'Отображаемые языки ON/OFF:', langOrder: 'Порядок языков', dragHint: 'перетащите для сортировки', defaultOrder: 'По умолчанию', random: 'Случайное', prev: '◀', next: '▶', allOn: 'Все ВКЛ', allOff: 'Все ВЫКЛ', savePng: 'Сохранить PNG', saveSvg: 'Сохранить SVG', copyUrl: 'Копировать URL', copied: 'URL скопирован', uiLang: 'Язык UI:', noLangSelected: 'Выберите хотя бы один язык', showMore: 'Показать ещё', showLess: 'Свернуть', rtlNote: '※ Арабский и иврит отображаются слева→направо для сравнения (обычно читаются справа→налево)', rtlToggle: 'Показать исходное направление (←)' },
-    uk: { title: 'LangMap', subtitle: 'Багатомовна карта порядку слів', selectSentence: 'Обрати речення:', langToggle: 'Мови відображення ON/OFF:', langOrder: 'Порядок мов', dragHint: 'перетягніть для сортування', defaultOrder: 'За замовчуванням', random: 'Випадкове', prev: '◀', next: '▶', allOn: 'Усі УВІМК', allOff: 'Усі ВИМК', savePng: 'Зберегти PNG', saveSvg: 'Зберегти SVG', copyUrl: 'Копіювати URL', copied: 'URL скопійовано', uiLang: 'Мова UI:', noLangSelected: 'Будь ласка, оберіть хоча б одну мову', showMore: 'Показати більше', showLess: 'Згорнути', rtlNote: '※ Арабська та іврит відображаються зліва→направо для порівняння (зазвичай читаються справа→наліво)', rtlToggle: 'Показати оригінальний напрямок (←)' },
-    ar: { title: 'LangMap', subtitle: 'خريطة ترتيب الكلمات متعددة اللغات', selectSentence: 'اختر جملة:', langToggle: 'اللغات المعروضة ON/OFF:', langOrder: 'ترتيب اللغات', dragHint: 'اسحب لإعادة الترتيب', defaultOrder: 'الترتيب الافتراضي', random: 'عشوائي', prev: '◀', next: '▶', allOn: 'تشغيل الكل', allOff: 'إيقاف الكل', savePng: 'حفظ PNG', saveSvg: 'حفظ SVG', copyUrl: 'نسخ الرابط', copied: 'تم نسخ الرابط', uiLang: 'لغة الواجهة:', noLangSelected: 'يرجى اختيار لغة واحدة على الأقل', showMore: 'عرض المزيد', showLess: 'إغلاق', rtlNote: '※ العربية والعبرية معروضة من اليسار إلى اليمين للمقارنة (تُقرأ عادةً من اليمين إلى اليسار)', rtlToggle: 'عرض بالاتجاه الأصلي (←)' },
-    he: { title: 'LangMap', subtitle: 'מפת סדר מילים רב-לשונית', selectSentence: 'בחר משפט:', langToggle: 'שפות תצוגה ON/OFF:', langOrder: 'סדר שפות', dragHint: 'גרור לשינוי סדר', defaultOrder: 'סדר ברירת מחדל', random: 'אקראי', prev: '◀', next: '▶', allOn: 'הכל ON', allOff: 'הכל OFF', savePng: 'שמור PNG', saveSvg: 'שמור SVG', copyUrl: 'העתק URL', copied: 'URL הועתק', uiLang: 'שפת ממשק:', noLangSelected: 'אנא בחר לפחות שפה אחת', showMore: 'הצג עוד', showLess: 'סגור', rtlNote: '※ ערבית ועברית מוצגות משמאל לימין להשוואה (בפועל נקראות מימין לשמאל)', rtlToggle: 'הצג בכיוון המקורי (←)' },
-    sw: { title: 'LangMap', subtitle: 'Ramani ya Mpangilio wa Maneno', selectSentence: 'Chagua sentensi:', langToggle: 'Lugha zinazoonyeshwa ON/OFF:', langOrder: 'Mpangilio wa lugha', dragHint: 'buruta ili kupanga upya', defaultOrder: 'Mpangilio chaguo-msingi', random: 'Nasibu', prev: '◀', next: '▶', allOn: 'Zote ON', allOff: 'Zote OFF', savePng: 'Hifadhi PNG', saveSvg: 'Hifadhi SVG', copyUrl: 'Nakili URL', copied: 'URL imenakiliwa', uiLang: 'Lugha ya UI:', noLangSelected: 'Tafadhali chagua lugha angalau moja', showMore: 'Onyesha zaidi', showLess: 'Funga', rtlNote: '※ Kiarabu na Kiebrania zinaonyeshwa kushoto→kulia kwa kulinganisha (kawaida zinasomwa kulia→kushoto)', rtlToggle: 'Onyesha mwelekeo asili (←)' },
+    ja: { title: 'LangMap', subtitle: '多言語語順マップ', selectSentence: '文章選択:', langToggle: '表示言語:', langOrder: '言語の順序', dragHint: 'ドラッグで並べ替え', defaultOrder: 'デフォルト順', random: 'ランダム', prev: '◀', next: '▶', allOn: '全ON', allOff: '全OFF', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: 'URLコピー', copied: 'URLをコピーしました', uiLang: 'UI言語:', noLangSelected: '1つ以上の言語を選択してください', selectLangs: '言語選択（全{n}言語）', selectLangsTitle: '言語選択', modalConfirm: '選択', modalCancel: 'キャンセル', edit: '編集', save: '保存', cancel: 'キャンセル', corrector: '添削者:', correctionSaved: '修正を保存しました', copyText: 'テキストをコピー', copiedText: 'テキストをコピーしました', rtlNote: '※ アラビア語・ヘブライ語は比較のため左→右で表示しています（実際は右→左に読みます）', rtlToggle: '元の語順(←)で表示' },
+    ko: { title: 'LangMap', subtitle: '다국어 어순 맵', selectSentence: '문장 선택:', langToggle: '표시 언어:', langOrder: '언어 순서', dragHint: '드래그하여 정렬', defaultOrder: '기본 순서', random: '랜덤', prev: '◀', next: '▶', allOn: '전체 ON', allOff: '전체 OFF', savePng: 'PNG 저장', saveSvg: 'SVG 저장', copyUrl: 'URL 복사', copied: 'URL을 복사했습니다', uiLang: 'UI 언어:', noLangSelected: '1개 이상의 언어를 선택하세요', selectLangs: '언어 선택 (전체 {n}개)', selectLangsTitle: '언어 선택', modalConfirm: '선택', modalCancel: '취소', rtlNote: '※ 아랍어·히브리어는 비교를 위해 왼→오른쪽으로 표시합니다 (실제로는 오른→왼쪽으로 읽습니다)', rtlToggle: '원래 방향(←)으로 표시' },
+    zh: { title: 'LangMap', subtitle: '多语言语序图', selectSentence: '选择句子:', langToggle: '显示语言:', langOrder: '语言顺序', dragHint: '拖拽排序', defaultOrder: '默认顺序', random: '随机', prev: '◀', next: '▶', allOn: '全部开', allOff: '全部关', savePng: 'PNG保存', saveSvg: 'SVG保存', copyUrl: '复制链接', copied: '链接已复制', uiLang: 'UI语言:', noLangSelected: '请选择至少一种语言', selectLangs: '语言选择（共{n}种）', selectLangsTitle: '语言选择', modalConfirm: '确定', modalCancel: '取消', rtlNote: '※ 阿拉伯语和希伯来语为便于比较从左→右显示（实际从右→左阅读）', rtlToggle: '显示原始方向(←)' },
+    yue: { title: 'LangMap', subtitle: '多語言語序圖', selectSentence: '揀句子:', langToggle: '顯示語言:', langOrder: '語言順序', dragHint: '拖嚟排序', defaultOrder: '預設順序', random: '隨機', prev: '◀', next: '▶', allOn: '全開', allOff: '全關', savePng: 'PNG儲存', saveSvg: 'SVG儲存', copyUrl: '複製連結', copied: '連結已複製', uiLang: 'UI語言:', noLangSelected: '請揀至少一種語言', selectLangs: '語言選擇（共{n}種）', selectLangsTitle: '語言選擇', modalConfirm: '確定', modalCancel: '取消', rtlNote: '※ 阿拉伯語同希伯來語為咗比較用左→右顯示（實際係右→左讀）', rtlToggle: '顯示原本方向(←)' },
+    vi: { title: 'LangMap', subtitle: 'Bản đồ trật tự từ đa ngôn ngữ', selectSentence: 'Chọn câu:', langToggle: 'Ngôn ngữ hiển thị:', langOrder: 'Thứ tự ngôn ngữ', dragHint: 'kéo để sắp xếp', defaultOrder: 'Mặc định', random: 'Ngẫu nhiên', prev: '◀', next: '▶', allOn: 'Bật tất cả', allOff: 'Tắt tất cả', savePng: 'Lưu PNG', saveSvg: 'Lưu SVG', copyUrl: 'Sao chép URL', copied: 'Đã sao chép URL', uiLang: 'Ngôn ngữ UI:', noLangSelected: 'Vui lòng chọn ít nhất một ngôn ngữ', selectLangs: 'Chọn ngôn ngữ ({n})', selectLangsTitle: 'Chọn ngôn ngữ', modalConfirm: 'Chọn', modalCancel: 'Hủy', rtlNote: '※ Tiếng Ả Rập và tiếng Do Thái được hiển thị trái→phải để so sánh (thực tế đọc phải→trái)', rtlToggle: 'Hiển thị hướng gốc (←)' },
+    th: { title: 'LangMap', subtitle: 'แผนที่ลำดับคำหลายภาษา', selectSentence: 'เลือกประโยค:', langToggle: 'ภาษาที่แสดง:', langOrder: 'ลำดับภาษา', dragHint: 'ลากเพื่อจัดเรียง', defaultOrder: 'ค่าเริ่มต้น', random: 'สุ่ม', prev: '◀', next: '▶', allOn: 'เปิดทั้งหมด', allOff: 'ปิดทั้งหมด', savePng: 'บันทึก PNG', saveSvg: 'บันทึก SVG', copyUrl: 'คัดลอก URL', copied: 'คัดลอก URL แล้ว', uiLang: 'ภาษา UI:', noLangSelected: 'กรุณาเลือกอย่างน้อยหนึ่งภาษา', selectLangs: 'เลือกภาษา ({n} ภาษา)', selectLangsTitle: 'เลือกภาษา', modalConfirm: 'เลือก', modalCancel: 'ยกเลิก', rtlNote: '※ ภาษาอาหรับและฮีบรูแสดงซ้าย→ขวาเพื่อการเปรียบเทียบ (ปกติอ่านขวา→ซ้าย)', rtlToggle: 'แสดงทิศทางดั้งเดิม (←)' },
+    id: { title: 'LangMap', subtitle: 'Peta Urutan Kata Multibahasa', selectSentence: 'Pilih kalimat:', langToggle: 'Bahasa ditampilkan:', langOrder: 'Urutan bahasa', dragHint: 'seret untuk mengurutkan', defaultOrder: 'Urutan default', random: 'Acak', prev: '◀', next: '▶', allOn: 'Semua ON', allOff: 'Semua OFF', savePng: 'Simpan PNG', saveSvg: 'Simpan SVG', copyUrl: 'Salin URL', copied: 'URL disalin', uiLang: 'Bahasa UI:', noLangSelected: 'Pilih setidaknya satu bahasa', selectLangs: 'Pilih bahasa ({n})', selectLangsTitle: 'Pilih bahasa', modalConfirm: 'Pilih', modalCancel: 'Batal', rtlNote: '※ Bahasa Arab dan Ibrani ditampilkan kiri→kanan untuk perbandingan (biasanya dibaca kanan→kiri)', rtlToggle: 'Tampilkan arah asli (←)' },
+    hi: { title: 'LangMap', subtitle: 'बहुभाषी शब्द क्रम मानचित्र', selectSentence: 'वाक्य चुनें:', langToggle: 'प्रदर्शन भाषा:', langOrder: 'भाषा क्रम', dragHint: 'क्रम बदलने के लिए खींचें', defaultOrder: 'डिफ़ॉल्ट क्रम', random: 'रैंडम', prev: '◀', next: '▶', allOn: 'सभी ON', allOff: 'सभी OFF', savePng: 'PNG सहेजें', saveSvg: 'SVG सहेजें', copyUrl: 'URL कॉपी', copied: 'URL कॉपी हो गया', uiLang: 'UI भाषा:', noLangSelected: 'कृपया कम से कम एक भाषा चुनें', selectLangs: 'भाषा चुनें ({n})', selectLangsTitle: 'भाषा चुनें', modalConfirm: 'चुनें', modalCancel: 'रद्द', rtlNote: '※ अरबी और हिब्रू तुलना के लिए बाएं→दाएं दिखाए गए हैं (वास्तव में दाएं→बाएं पढ़े जाते हैं)', rtlToggle: 'मूल दिशा में दिखाएं (←)' },
+    en: { title: 'LangMap', subtitle: 'Multilingual Word Order Map', selectSentence: 'Select sentence:', langToggle: 'Languages:', langOrder: 'Language order', dragHint: 'drag to reorder', defaultOrder: 'Default order', random: 'Random', prev: '◀', next: '▶', allOn: 'All ON', allOff: 'All OFF', savePng: 'Save PNG', saveSvg: 'Save SVG', copyUrl: 'Copy URL', copied: 'URL copied', uiLang: 'UI Language:', noLangSelected: 'Please select at least one language', selectLangs: 'Select languages ({n})', selectLangsTitle: 'Select languages', modalConfirm: 'Apply', modalCancel: 'Cancel', edit: 'Edit', save: 'Save', cancel: 'Cancel', corrector: 'Corrector:', correctionSaved: 'Correction saved', copyText: 'Copy text', copiedText: 'Text copied', rtlNote: '* Arabic and Hebrew are shown left-to-right for comparison (they are normally read right-to-left)', rtlToggle: 'Show native direction' },
+    de: { title: 'LangMap', subtitle: 'Mehrsprachige Wortstellungskarte', selectSentence: 'Satz wählen:', langToggle: 'Sprachen:', langOrder: 'Sprachreihenfolge', dragHint: 'ziehen zum Sortieren', defaultOrder: 'Standardreihenfolge', random: 'Zufällig', prev: '◀', next: '▶', allOn: 'Alle AN', allOff: 'Alle AUS', savePng: 'PNG speichern', saveSvg: 'SVG speichern', copyUrl: 'URL kopieren', copied: 'URL kopiert', uiLang: 'UI-Sprache:', noLangSelected: 'Bitte wählen Sie mindestens eine Sprache', selectLangs: 'Sprachen wählen ({n})', selectLangsTitle: 'Sprachen wählen', modalConfirm: 'Anwenden', modalCancel: 'Abbrechen', rtlNote: '※ Arabisch und Hebräisch werden zum Vergleich links→rechts angezeigt (normalerweise rechts→links gelesen)', rtlToggle: 'Originalrichtung anzeigen (←)' },
+    fr: { title: 'LangMap', subtitle: "Carte de l'ordre des mots multilingue", selectSentence: 'Sélectionner une phrase :', langToggle: 'Langues :', langOrder: 'Ordre des langues', dragHint: 'glisser pour réorganiser', defaultOrder: 'Ordre par défaut', random: 'Aléatoire', prev: '◀', next: '▶', allOn: 'Tout ON', allOff: 'Tout OFF', savePng: 'Enregistrer PNG', saveSvg: 'Enregistrer SVG', copyUrl: "Copier l'URL", copied: 'URL copié', uiLang: 'Langue UI :', noLangSelected: 'Veuillez sélectionner au moins une langue', selectLangs: 'Choisir les langues ({n})', selectLangsTitle: 'Choisir les langues', modalConfirm: 'Appliquer', modalCancel: 'Annuler', rtlNote: "※ L'arabe et l'hébreu sont affichés gauche→droite pour comparaison (normalement lus droite→gauche)", rtlToggle: 'Afficher la direction originale (←)' },
+    it: { title: 'LangMap', subtitle: "Mappa dell'ordine delle parole multilingue", selectSentence: 'Seleziona frase:', langToggle: 'Lingue:', langOrder: 'Ordine delle lingue', dragHint: 'trascina per riordinare', defaultOrder: 'Ordine predefinito', random: 'Casuale', prev: '◀', next: '▶', allOn: 'Tutti ON', allOff: 'Tutti OFF', savePng: 'Salva PNG', saveSvg: 'Salva SVG', copyUrl: 'Copia URL', copied: 'URL copiato', uiLang: 'Lingua UI:', noLangSelected: 'Seleziona almeno una lingua', selectLangs: 'Seleziona lingue ({n})', selectLangsTitle: 'Seleziona lingue', modalConfirm: 'Applica', modalCancel: 'Annulla', rtlNote: '※ Arabo ed ebraico sono mostrati sinistra→destra per confronto (normalmente letti destra→sinistra)', rtlToggle: 'Mostra direzione originale (←)' },
+    es_eu: { title: 'LangMap', subtitle: 'Mapa de orden de palabras multilingüe', selectSentence: 'Seleccionar oración:', langToggle: 'Idiomas:', langOrder: 'Orden de idiomas', dragHint: 'arrastrar para reordenar', defaultOrder: 'Orden predeterminado', random: 'Aleatorio', prev: '◀', next: '▶', allOn: 'Todo ON', allOff: 'Todo OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Seleccione al menos un idioma', selectLangs: 'Seleccionar idiomas ({n})', selectLangsTitle: 'Seleccionar idiomas', modalConfirm: 'Aplicar', modalCancel: 'Cancelar', rtlNote: '※ El árabe y el hebreo se muestran de izquierda→derecha para comparación (normalmente se leen de derecha→izquierda)', rtlToggle: 'Mostrar dirección original (←)' },
+    es_mx: { title: 'LangMap', subtitle: 'Mapa de orden de palabras multilingüe', selectSentence: 'Seleccionar oración:', langToggle: 'Idiomas:', langOrder: 'Orden de idiomas', dragHint: 'arrastrar para reordenar', defaultOrder: 'Orden predeterminado', random: 'Aleatorio', prev: '◀', next: '▶', allOn: 'Todo ON', allOff: 'Todo OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Seleccione al menos un idioma', selectLangs: 'Seleccionar idiomas ({n})', selectLangsTitle: 'Seleccionar idiomas', modalConfirm: 'Aplicar', modalCancel: 'Cancelar', rtlNote: '※ El árabe y el hebreo se muestran de izquierda→derecha para comparación (normalmente se leen de derecha→izquierda)', rtlToggle: 'Mostrar dirección original (←)' },
+    pt_eu: { title: 'LangMap', subtitle: 'Mapa de ordem de palavras multilíngue', selectSentence: 'Selecionar frase:', langToggle: 'Idiomas:', langOrder: 'Ordem dos idiomas', dragHint: 'arraste para reordenar', defaultOrder: 'Ordem padrão', random: 'Aleatório', prev: '◀', next: '▶', allOn: 'Todos ON', allOff: 'Todos OFF', savePng: 'Guardar PNG', saveSvg: 'Guardar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Selecione pelo menos um idioma', selectLangs: 'Selecionar idiomas ({n})', selectLangsTitle: 'Selecionar idiomas', modalConfirm: 'Aplicar', modalCancel: 'Cancelar', rtlNote: '※ O árabe e o hebraico são exibidos da esquerda→direita para comparação (normalmente lidos da direita→esquerda)', rtlToggle: 'Mostrar direção original (←)' },
+    pt_br: { title: 'LangMap', subtitle: 'Mapa de ordem de palavras multilíngue', selectSentence: 'Selecionar frase:', langToggle: 'Idiomas:', langOrder: 'Ordem dos idiomas', dragHint: 'arraste para reordenar', defaultOrder: 'Ordem padrão', random: 'Aleatório', prev: '◀', next: '▶', allOn: 'Todos ON', allOff: 'Todos OFF', savePng: 'Salvar PNG', saveSvg: 'Salvar SVG', copyUrl: 'Copiar URL', copied: 'URL copiado', uiLang: 'Idioma UI:', noLangSelected: 'Selecione pelo menos um idioma', selectLangs: 'Selecionar idiomas ({n})', selectLangsTitle: 'Selecionar idiomas', modalConfirm: 'Aplicar', modalCancel: 'Cancelar', rtlNote: '※ O árabe e o hebraico são exibidos da esquerda→direita para comparação (normalmente lidos da direita→esquerda)', rtlToggle: 'Mostrar direção original (←)' },
+    ru: { title: 'LangMap', subtitle: 'Многоязычная карта порядка слов', selectSentence: 'Выбрать предложение:', langToggle: 'Языки:', langOrder: 'Порядок языков', dragHint: 'перетащите для сортировки', defaultOrder: 'По умолчанию', random: 'Случайное', prev: '◀', next: '▶', allOn: 'Все ВКЛ', allOff: 'Все ВЫКЛ', savePng: 'Сохранить PNG', saveSvg: 'Сохранить SVG', copyUrl: 'Копировать URL', copied: 'URL скопирован', uiLang: 'Язык UI:', noLangSelected: 'Выберите хотя бы один язык', selectLangs: 'Выбор языков ({n})', selectLangsTitle: 'Выбор языков', modalConfirm: 'Применить', modalCancel: 'Отмена', rtlNote: '※ Арабский и иврит отображаются слева→направо для сравнения (обычно читаются справа→налево)', rtlToggle: 'Показать исходное направление (←)' },
+    uk: { title: 'LangMap', subtitle: 'Багатомовна карта порядку слів', selectSentence: 'Обрати речення:', langToggle: 'Мови:', langOrder: 'Порядок мов', dragHint: 'перетягніть для сортування', defaultOrder: 'За замовчуванням', random: 'Випадкове', prev: '◀', next: '▶', allOn: 'Усі УВІМК', allOff: 'Усі ВИМК', savePng: 'Зберегти PNG', saveSvg: 'Зберегти SVG', copyUrl: 'Копіювати URL', copied: 'URL скопійовано', uiLang: 'Мова UI:', noLangSelected: 'Будь ласка, оберіть хоча б одну мову', selectLangs: 'Вибір мов ({n})', selectLangsTitle: 'Вибір мов', modalConfirm: 'Застосувати', modalCancel: 'Скасувати', rtlNote: '※ Арабська та іврит відображаються зліва→направо для порівняння (зазвичай читаються справа→наліво)', rtlToggle: 'Показати оригінальний напрямок (←)' },
+    ar: { title: 'LangMap', subtitle: 'خريطة ترتيب الكلمات متعددة اللغات', selectSentence: 'اختر جملة:', langToggle: 'اللغات:', langOrder: 'ترتيب اللغات', dragHint: 'اسحب لإعادة الترتيب', defaultOrder: 'الترتيب الافتراضي', random: 'عشوائي', prev: '◀', next: '▶', allOn: 'تشغيل الكل', allOff: 'إيقاف الكل', savePng: 'حفظ PNG', saveSvg: 'حفظ SVG', copyUrl: 'نسخ الرابط', copied: 'تم نسخ الرابط', uiLang: 'لغة الواجهة:', noLangSelected: 'يرجى اختيار لغة واحدة على الأقل', selectLangs: 'اختيار اللغات ({n})', selectLangsTitle: 'اختيار اللغات', modalConfirm: 'تطبيق', modalCancel: 'إلغاء', rtlNote: '※ العربية والعبرية معروضة من اليسار إلى اليمين للمقارنة (تُقرأ عادةً من اليمين إلى اليسار)', rtlToggle: 'عرض بالاتجاه الأصلي (←)' },
+    he: { title: 'LangMap', subtitle: 'מפת סדר מילים רב-לשונית', selectSentence: 'בחר משפט:', langToggle: 'שפות:', langOrder: 'סדר שפות', dragHint: 'גרור לשינוי סדר', defaultOrder: 'סדר ברירת מחדל', random: 'אקראי', prev: '◀', next: '▶', allOn: 'הכל ON', allOff: 'הכל OFF', savePng: 'שמור PNG', saveSvg: 'שמור SVG', copyUrl: 'העתק URL', copied: 'URL הועתק', uiLang: 'שפת ממשק:', noLangSelected: 'אנא בחר לפחות שפה אחת', selectLangs: 'בחירת שפות ({n})', selectLangsTitle: 'בחירת שפות', modalConfirm: 'החל', modalCancel: 'ביטול', rtlNote: '※ ערבית ועברית מוצגות משמאל לימין להשוואה (בפועל נקראות מימין לשמאל)', rtlToggle: 'הצג בכיוון המקורי (←)' },
+    sw: { title: 'LangMap', subtitle: 'Ramani ya Mpangilio wa Maneno', selectSentence: 'Chagua sentensi:', langToggle: 'Lugha:', langOrder: 'Mpangilio wa lugha', dragHint: 'buruta ili kupanga upya', defaultOrder: 'Mpangilio chaguo-msingi', random: 'Nasibu', prev: '◀', next: '▶', allOn: 'Zote ON', allOff: 'Zote OFF', savePng: 'Hifadhi PNG', saveSvg: 'Hifadhi SVG', copyUrl: 'Nakili URL', copied: 'URL imenakiliwa', uiLang: 'Lugha ya UI:', noLangSelected: 'Tafadhali chagua lugha angalau moja', selectLangs: 'Chagua lugha ({n})', selectLangsTitle: 'Chagua lugha', modalConfirm: 'Chagua', modalCancel: 'Ghairi', rtlNote: '※ Kiarabu na Kiebrania zinaonyeshwa kushoto→kulia kwa kulinganisha (kawaida zinasomwa kulia→kushoto)', rtlToggle: 'Onyesha mwelekeo asili (←)' },
 };
 
 let currentUILang = 'ja';
@@ -31,27 +31,27 @@ function t(key) {
 
 // Language names per UI language
 const LANG_NAMES = {
-    ja: { ja:'日本語(標準)', osa:'大阪弁', aom:'青森弁', oki:'沖縄弁', hak:'博多弁', ja_edo:'江戸時代語', ko:'韓国語(標準)', kp:'北朝鮮語', bus:'釜山弁', zh:'中国語(普通話)', yue:'広東語', nan:'台湾語', wuu:'上海語', zh_classical:'文言', vi:'ベトナム語', vi_nom:'チューノム', th:'タイ語', id:'インドネシア語', hi:'ヒンディー語', en:'英語', de:'ドイツ語', fr:'フランス語', it:'イタリア語', es_eu:'スペイン語(欧州)', es_mx:'スペイン語(メキシコ)', pt_eu:'ポルトガル語(欧州)', pt_br:'ポルトガル語(ブラジル)', ru:'ロシア語', uk:'ウクライナ語', ar:'アラビア語(フスハー)', ar_eg:'アラビア語(エジプト方言)', he:'ヘブライ語', sw:'スワヒリ語' },
-    en: { ja:'Japanese', osa:'Osaka dialect', aom:'Aomori dialect', oki:'Okinawan', hak:'Hakata dialect', ja_edo:'Edo-period Japanese', ko:'Korean', kp:'North Korean', bus:'Busan dialect', zh:'Chinese (Mandarin)', yue:'Cantonese', nan:'Taiwanese', wuu:'Shanghainese', zh_classical:'Classical Chinese', vi:'Vietnamese', vi_nom:'Chữ Nôm', th:'Thai', id:'Indonesian', hi:'Hindi', en:'English', de:'German', fr:'French', it:'Italian', es_eu:'Spanish (Europe)', es_mx:'Spanish (Mexico)', pt_eu:'Portuguese (Europe)', pt_br:'Portuguese (Brazil)', ru:'Russian', uk:'Ukrainian', ar:'Arabic (MSA)', ar_eg:'Arabic (Egyptian)', he:'Hebrew', sw:'Swahili' },
-    ko: { ja:'일본어(표준)', osa:'오사카 사투리', aom:'아오모리 사투리', oki:'오키나와 사투리', hak:'하카타 사투리', ja_edo:'에도시대 일본어', ko:'한국어(표준)', kp:'북한어', bus:'부산 사투리', zh:'중국어(보통화)', yue:'광둥어', nan:'대만어', wuu:'상하이어', zh_classical:'문언(文言)', vi:'베트남어', vi_nom:'쯔놈', th:'태국어', id:'인도네시아어', hi:'힌디어', en:'영어', de:'독일어', fr:'프랑스어', it:'이탈리아어', es_eu:'스페인어(유럽)', es_mx:'스페인어(멕시코)', pt_eu:'포르투갈어(유럽)', pt_br:'포르투갈어(브라질)', ru:'러시아어', uk:'우크라이나어', ar:'아랍어(푸스하)', ar_eg:'아랍어(이집트 방언)', he:'히브리어', sw:'스와힐리어' },
-    zh: { ja:'日语(标准)', osa:'大阪方言', aom:'青森方言', oki:'冲绳方言', hak:'博多方言', ja_edo:'江户时代日语', ko:'韩语(标准)', kp:'朝鲜语', bus:'釜山方言', zh:'中文(普通话)', yue:'粤语', nan:'台湾话', wuu:'上海话', zh_classical:'文言', vi:'越南语', vi_nom:'字喃', th:'泰语', id:'印尼语', hi:'印地语', en:'英语', de:'德语', fr:'法语', it:'意大利语', es_eu:'西班牙语(欧洲)', es_mx:'西班牙语(墨西哥)', pt_eu:'葡萄牙语(欧洲)', pt_br:'葡萄牙语(巴西)', ru:'俄语', uk:'乌克兰语', ar:'阿拉伯语(标准)', ar_eg:'阿拉伯语(埃及方言)', he:'希伯来语', sw:'斯瓦希里语' },
-    fr: { ja:'Japonais', osa:'Dialecte d\'Osaka', aom:'Dialecte d\'Aomori', oki:'Okinawaïen', hak:'Dialecte de Hakata', ja_edo:'Japonais d\'Edo', ko:'Coréen', kp:'Nord-coréen', bus:'Dialecte de Busan', zh:'Chinois (mandarin)', yue:'Cantonais', nan:'Taïwanais', wuu:'Shanghaïen', zh_classical:'Chinois classique', vi:'Vietnamien', vi_nom:'Chữ Nôm', th:'Thaï', id:'Indonésien', hi:'Hindi', en:'Anglais', de:'Allemand', fr:'Français', it:'Italien', es_eu:'Espagnol (Europe)', es_mx:'Espagnol (Mexique)', pt_eu:'Portugais (Europe)', pt_br:'Portugais (Brésil)', ru:'Russe', uk:'Ukrainien', ar:'Arabe (standard)', ar_eg:'Arabe (égyptien)', he:'Hébreu', sw:'Swahili' },
-    de: { ja:'Japanisch', osa:'Osaka-Dialekt', aom:'Aomori-Dialekt', oki:'Okinawanisch', hak:'Hakata-Dialekt', ja_edo:'Edo-Japanisch', ko:'Koreanisch', kp:'Nordkoreanisch', bus:'Busan-Dialekt', zh:'Chinesisch (Mandarin)', yue:'Kantonesisch', nan:'Taiwanisch', wuu:'Shanghainesisch', zh_classical:'Klassisches Chinesisch', vi:'Vietnamesisch', vi_nom:'Chữ Nôm', th:'Thai', id:'Indonesisch', hi:'Hindi', en:'Englisch', de:'Deutsch', fr:'Französisch', it:'Italienisch', es_eu:'Spanisch (Europa)', es_mx:'Spanisch (Mexiko)', pt_eu:'Portugiesisch (Europa)', pt_br:'Portugiesisch (Brasilien)', ru:'Russisch', uk:'Ukrainisch', ar:'Arabisch (Standard)', ar_eg:'Arabisch (ägyptisch)', he:'Hebräisch', sw:'Swahili' },
-    es_eu: { ja:'Japonés', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawense', hak:'Dialecto de Hakata', ja_edo:'Japonés de Edo', ko:'Coreano', kp:'Norcoreano', bus:'Dialecto de Busan', zh:'Chino (mandarín)', yue:'Cantonés', nan:'Taiwanés', wuu:'Shanghainés', zh_classical:'Chino clásico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandés', id:'Indonesio', hi:'Hindi', en:'Inglés', de:'Alemán', fr:'Francés', it:'Italiano', es_eu:'Español (Europa)', es_mx:'Español (México)', pt_eu:'Portugués (Europa)', pt_br:'Portugués (Brasil)', ru:'Ruso', uk:'Ucraniano', ar:'Árabe (estándar)', ar_eg:'Árabe (egipcio)', he:'Hebreo', sw:'Suajili' },
-    ru: { ja:'Японский', osa:'Осакский диалект', aom:'Аомори диалект', oki:'Окинавский', hak:'Хакатский диалект', ja_edo:'Японский эпохи Эдо', ko:'Корейский', kp:'Северокорейский', bus:'Пусанский диалект', zh:'Китайский (путунхуа)', yue:'Кантонский', nan:'Тайваньский', wuu:'Шанхайский', zh_classical:'Вэньянь', vi:'Вьетнамский', vi_nom:'Тьы-ном', th:'Тайский', id:'Индонезийский', hi:'Хинди', en:'Английский', de:'Немецкий', fr:'Французский', it:'Итальянский', es_eu:'Испанский (Европа)', es_mx:'Испанский (Мексика)', pt_eu:'Португальский (Европа)', pt_br:'Португальский (Бразилия)', ru:'Русский', uk:'Украинский', ar:'Арабский (стандарт)', ar_eg:'Арабский (египетский)', he:'Иврит', sw:'Суахили' },
-    ar: { ja:'يابانية', osa:'لهجة أوساكا', aom:'لهجة أوموري', oki:'أوكيناوية', hak:'لهجة هاكاتا', ja_edo:'يابانية عصر إيدو', ko:'كورية', kp:'كورية شمالية', bus:'لهجة بوسان', zh:'صينية (ماندرين)', yue:'كانتونية', nan:'تايوانية', wuu:'شنغهاية', zh_classical:'الصينية الكلاسيكية', vi:'فيتنامية', vi_nom:'تشو نوم', th:'تايلاندية', id:'إندونيسية', hi:'هندية', en:'إنجليزية', de:'ألمانية', fr:'فرنسية', it:'إيطالية', es_eu:'إسبانية (أوروبا)', es_mx:'إسبانية (المكسيك)', pt_eu:'برتغالية (أوروبا)', pt_br:'برتغالية (البرازيل)', ru:'روسية', uk:'أوكرانية', ar:'عربية (فصحى)', ar_eg:'عربية (مصرية)', he:'عبرية', sw:'سواحيلية' },
-    he: { ja:'יפנית', osa:'ניב אוסקה', aom:'ניב אאומורי', oki:'אוקינאווית', hak:'ניב הקאטה', ja_edo:'יפנית תקופת אדו', ko:'קוריאנית', kp:'צפון קוריאנית', bus:'ניב בוסאן', zh:'סינית (מנדרינית)', yue:'קנטונזית', nan:'טייוואנית', wuu:'שנגחאית', zh_classical:'סינית קלאסית', vi:'וייטנאמית', vi_nom:"צ'ו נום", th:'תאית', id:'אינדונזית', hi:'הינדי', en:'אנגלית', de:'גרמנית', fr:'צרפתית', it:'איטלקית', es_eu:'ספרדית (אירופה)', es_mx:'ספרדית (מקסיקו)', pt_eu:'פורטוגזית (אירופה)', pt_br:'פורטוגזית (ברזיל)', ru:'רוסית', uk:'אוקראינית', ar:'ערבית (ספרותית)', ar_eg:'ערבית (מצרית)', he:'עברית', sw:'סווהילי' },
-    sw: { ja:'Kijapani', osa:'Lahaja ya Osaka', aom:'Lahaja ya Aomori', oki:'Kiokinawa', hak:'Lahaja ya Hakata', ja_edo:'Kijapani cha Edo', ko:'Kikorea', kp:'Kikorea Kaskazini', bus:'Lahaja ya Busan', zh:'Kichina (Mandarin)', yue:'Kikantoni', nan:'Kitaiwani', wuu:'Kishanghai', zh_classical:'Kichina cha kale', vi:'Kivietinamu', vi_nom:'Chữ Nôm', th:'Kithai', id:'Kiindonesia', hi:'Kihindi', en:'Kiingereza', de:'Kijerumani', fr:'Kifaransa', it:'Kiitaliano', es_eu:'Kihispania (Ulaya)', es_mx:'Kihispania (Meksiko)', pt_eu:'Kireno (Ulaya)', pt_br:'Kireno (Brazili)', ru:'Kirusi', uk:'Kiukraini', ar:'Kiarabu (sanifu)', ar_eg:'Kiarabu (Misri)', he:'Kiebrania', sw:'Kiswahili' },
-    yue: { ja:'日本語(標準)', osa:'大阪話', aom:'青森話', oki:'沖繩話', hak:'博多話', ja_edo:'江戶時代話', ko:'韓文(標準)', kp:'北韓話', bus:'釜山話', zh:'普通話', yue:'廣東話', nan:'台灣話', wuu:'上海話', zh_classical:'文言', vi:'越南話', vi_nom:'字喃', th:'泰文', id:'印尼話', hi:'印地話', en:'英文', de:'德文', fr:'法文', it:'意大利文', es_eu:'西班牙文(歐洲)', es_mx:'西班牙文(墨西哥)', pt_eu:'葡萄牙文(歐洲)', pt_br:'葡萄牙文(巴西)', ru:'俄文', uk:'烏克蘭文', ar:'阿拉伯文(標準)', ar_eg:'阿拉伯文(埃及方言)', he:'希伯來文', sw:'斯瓦希里文' },
-    vi: { ja:'Tiếng Nhật', osa:'Phương ngữ Osaka', aom:'Phương ngữ Aomori', oki:'Tiếng Okinawa', hak:'Phương ngữ Hakata', ja_edo:'Tiếng Nhật thời Edo', ko:'Tiếng Hàn', kp:'Tiếng Triều Tiên', bus:'Phương ngữ Busan', zh:'Tiếng Trung (Phổ thông)', yue:'Tiếng Quảng Đông', nan:'Tiếng Đài Loan', wuu:'Tiếng Thượng Hải', zh_classical:'Văn ngôn', vi:'Tiếng Việt', vi_nom:'Chữ Nôm', th:'Tiếng Thái', id:'Tiếng Indonesia', hi:'Tiếng Hindi', en:'Tiếng Anh', de:'Tiếng Đức', fr:'Tiếng Pháp', it:'Tiếng Ý', es_eu:'Tiếng Tây Ban Nha (châu Âu)', es_mx:'Tiếng Tây Ban Nha (Mexico)', pt_eu:'Tiếng Bồ Đào Nha (châu Âu)', pt_br:'Tiếng Bồ Đào Nha (Brazil)', ru:'Tiếng Nga', uk:'Tiếng Ukraina', ar:'Tiếng Ả Rập (chuẩn)', ar_eg:'Tiếng Ả Rập (Ai Cập)', he:'Tiếng Do Thái', sw:'Tiếng Swahili' },
-    th: { ja:'ภาษาญี่ปุ่น', osa:'สำเนียงโอซากะ', aom:'สำเนียงอาโอโมริ', oki:'ภาษาโอกินาวา', hak:'สำเนียงฮากาตะ', ja_edo:'ภาษาญี่ปุ่นสมัยเอโดะ', ko:'ภาษาเกาหลี', kp:'ภาษาเกาหลีเหนือ', bus:'สำเนียงปูซาน', zh:'ภาษาจีน (กลาง)', yue:'ภาษากวางตุ้ง', nan:'ภาษาไต้หวัน', wuu:'ภาษาเซี่ยงไฮ้', zh_classical:'ภาษาจีนคลาสสิก', vi:'ภาษาเวียดนาม', vi_nom:'จื๋อโนม', th:'ภาษาไทย', id:'ภาษาอินโดนีเซีย', hi:'ภาษาฮินดี', en:'ภาษาอังกฤษ', de:'ภาษาเยอรมัน', fr:'ภาษาฝรั่งเศส', it:'ภาษาอิตาลี', es_eu:'ภาษาสเปน (ยุโรป)', es_mx:'ภาษาสเปน (เม็กซิโก)', pt_eu:'ภาษาโปรตุเกส (ยุโรป)', pt_br:'ภาษาโปรตุเกส (บราซิล)', ru:'ภาษารัสเซีย', uk:'ภาษายูเครน', ar:'ภาษาอาหรับ (มาตรฐาน)', ar_eg:'ภาษาอาหรับ(อียิปต์)', he:'ภาษาฮีบรู', sw:'ภาษาสวาฮีลี' },
-    id: { ja:'Bahasa Jepang', osa:'Dialek Osaka', aom:'Dialek Aomori', oki:'Bahasa Okinawa', hak:'Dialek Hakata', ja_edo:'Bahasa Jepang Edo', ko:'Bahasa Korea', kp:'Bahasa Korea Utara', bus:'Dialek Busan', zh:'Bahasa Mandarin', yue:'Bahasa Kanton', nan:'Bahasa Taiwan', wuu:'Bahasa Shanghai', zh_classical:'Bahasa Tionghoa Klasik', vi:'Bahasa Vietnam', vi_nom:'Chữ Nôm', th:'Bahasa Thai', id:'Bahasa Indonesia', hi:'Bahasa Hindi', en:'Bahasa Inggris', de:'Bahasa Jerman', fr:'Bahasa Prancis', it:'Bahasa Italia', es_eu:'Bahasa Spanyol (Eropa)', es_mx:'Bahasa Spanyol (Meksiko)', pt_eu:'Bahasa Portugis (Eropa)', pt_br:'Bahasa Portugis (Brasil)', ru:'Bahasa Rusia', uk:'Bahasa Ukraina', ar:'Bahasa Arab (standar)', ar_eg:'Bahasa Arab (Mesir)', he:'Bahasa Ibrani', sw:'Bahasa Swahili' },
-    hi: { ja:'जापानी', osa:'ओसाका बोली', aom:'आओमोरी बोली', oki:'ओकिनावा बोली', hak:'हकाता बोली', ja_edo:'एदो काल जापानी', ko:'कोरियाई', kp:'उत्तर कोरियाई', bus:'बुसान बोली', zh:'चीनी (मंदारिन)', yue:'कैंटोनीज़', nan:'ताइवानी', wuu:'शंघाई भाषा', zh_classical:'शास्त्रीय चीनी', vi:'वियतनामी', vi_nom:'चू नोम', th:'थाई', id:'इंडोनेशियाई', hi:'हिन्दी', en:'अंग्रेज़ी', de:'जर्मन', fr:'फ़्रेंच', it:'इतालवी', es_eu:'स्पेनिश (यूरोप)', es_mx:'स्पेनिश (मेक्सिको)', pt_eu:'पुर्तगाली (यूरोप)', pt_br:'पुर्तगाली (ब्राज़ील)', ru:'रूसी', uk:'यूक्रेनी', ar:'अरबी (मानक)', ar_eg:'अरबी (मिस्री)', he:'हिब्रू', sw:'स्वाहिली' },
-    it: { ja:'Giapponese', osa:'Dialetto di Osaka', aom:'Dialetto di Aomori', oki:'Okinawano', hak:'Dialetto di Hakata', ja_edo:'Giapponese di Edo', ko:'Coreano', kp:'Nordcoreano', bus:'Dialetto di Busan', zh:'Cinese (mandarino)', yue:'Cantonese', nan:'Taiwanese', wuu:'Shangaiese', zh_classical:'Cinese classico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandese', id:'Indonesiano', hi:'Hindi', en:'Inglese', de:'Tedesco', fr:'Francese', it:'Italiano', es_eu:'Spagnolo (Europa)', es_mx:'Spagnolo (Messico)', pt_eu:'Portoghese (Europa)', pt_br:'Portoghese (Brasile)', ru:'Russo', uk:'Ucraino', ar:'Arabo (standard)', ar_eg:'Arabo (egiziano)', he:'Ebraico', sw:'Swahili' },
-    es_mx: { ja:'Japonés', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawense', hak:'Dialecto de Hakata', ja_edo:'Japonés de Edo', ko:'Coreano', kp:'Norcoreano', bus:'Dialecto de Busan', zh:'Chino (mandarín)', yue:'Cantonés', nan:'Taiwanés', wuu:'Shanghainés', zh_classical:'Chino clásico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandés', id:'Indonesio', hi:'Hindi', en:'Inglés', de:'Alemán', fr:'Francés', it:'Italiano', es_eu:'Español (Europa)', es_mx:'Español (México)', pt_eu:'Portugués (Europa)', pt_br:'Portugués (Brasil)', ru:'Ruso', uk:'Ucraniano', ar:'Árabe (estándar)', ar_eg:'Árabe (egipcio)', he:'Hebreo', sw:'Suajili' },
-    pt_eu: { ja:'Japonês', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawano', hak:'Dialeto de Hakata', ja_edo:'Japonês de Edo', ko:'Coreano', kp:'Norte-coreano', bus:'Dialecto de Busan', zh:'Chinês (mandarim)', yue:'Cantonês', nan:'Taiwanês', wuu:'Xangaiês', zh_classical:'Chinês clássico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandês', id:'Indonésio', hi:'Hindi', en:'Inglês', de:'Alemão', fr:'Francês', it:'Italiano', es_eu:'Espanhol (Europa)', es_mx:'Espanhol (México)', pt_eu:'Português (Europa)', pt_br:'Português (Brasil)', ru:'Russo', uk:'Ucraniano', ar:'Árabe (padrão)', ar_eg:'Árabe (egípcio)', he:'Hebraico', sw:'Suaíli' },
-    pt_br: { ja:'Japonês', osa:'Dialeto de Osaka', aom:'Dialeto de Aomori', oki:'Okinawano', hak:'Dialeto de Hakata', ja_edo:'Japonês de Edo', ko:'Coreano', kp:'Norte-coreano', bus:'Dialeto de Busan', zh:'Chinês (mandarim)', yue:'Cantonês', nan:'Taiwanês', wuu:'Xangainês', zh_classical:'Chinês clássico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandês', id:'Indonésio', hi:'Hindi', en:'Inglês', de:'Alemão', fr:'Francês', it:'Italiano', es_eu:'Espanhol (Europa)', es_mx:'Espanhol (México)', pt_eu:'Português (Europa)', pt_br:'Português (Brasil)', ru:'Russo', uk:'Ucraniano', ar:'Árabe (padrão)', ar_eg:'Árabe (egípcio)', he:'Hebraico', sw:'Suaíli' },
-    uk: { ja:'Японська', osa:'Осакський діалект', aom:'Аоморійський діалект', oki:'Окінавська', hak:'Хакатський діалект', ja_edo:'Японська доби Едо', ko:'Корейська', kp:'Північнокорейська', bus:'Пусанський діалект', zh:'Китайська (путунхуа)', yue:'Кантонська', nan:'Тайванська', wuu:'Шанхайська', zh_classical:'Веньянь', vi:'В\'єтнамська', vi_nom:'Тьи-ном', th:'Тайська', id:'Індонезійська', hi:'Гінді', en:'Англійська', de:'Німецька', fr:'Французька', it:'Італійська', es_eu:'Іспанська (Європа)', es_mx:'Іспанська (Мексика)', pt_eu:'Португальська (Європа)', pt_br:'Португальська (Бразилія)', ru:'Російська', uk:'Українська', ar:'Арабська (стандарт)', ar_eg:'Арабська (єгипетська)', he:'Іврит', sw:'Суахілі' },
+    ja: { ja:'日本語(標準)', osa:'大阪弁', aom:'青森弁', oki:'沖縄弁', hak:'博多弁', ja_edo:'江戸時代語', ko:'韓国語(標準)', kp:'北朝鮮語', bus:'釜山弁', zh:'中国語(普通話)', yue:'広東語', nan:'台湾語', wuu:'上海語', zh_classical:'文言', vi:'ベトナム語', vi_nom:'チューノム', th:'タイ語', id:'インドネシア語', hi:'ヒンディー語', en:'英語', de:'ドイツ語', fr:'フランス語', it:'イタリア語', es_eu:'スペイン語(欧州)', es_mx:'スペイン語(メキシコ)', pt_eu:'ポルトガル語(欧州)', pt_br:'ポルトガル語(ブラジル)', ru:'ロシア語', uk:'ウクライナ語', ar:'アラビア語(フスハー)', ar_eg:'アラビア語(エジプト方言)', he:'ヘブライ語', sw:'スワヒリ語', tr:'トルコ語', fa:'ペルシャ語', tl:'タガログ語', ga:'アイルランド語', eu:'バスク語', mn:'モンゴル語', my:'ミャンマー語', am:'アムハラ語', ta:'タミル語', hu:'ハンガリー語', nl:'オランダ語', pl:'ポーランド語', ms:'マレー語' },
+    en: { ja:'Japanese', osa:'Osaka dialect', aom:'Aomori dialect', oki:'Okinawan', hak:'Hakata dialect', ja_edo:'Edo-period Japanese', ko:'Korean', kp:'North Korean', bus:'Busan dialect', zh:'Chinese (Mandarin)', yue:'Cantonese', nan:'Taiwanese', wuu:'Shanghainese', zh_classical:'Classical Chinese', vi:'Vietnamese', vi_nom:'Chữ Nôm', th:'Thai', id:'Indonesian', hi:'Hindi', en:'English', de:'German', fr:'French', it:'Italian', es_eu:'Spanish (Europe)', es_mx:'Spanish (Mexico)', pt_eu:'Portuguese (Europe)', pt_br:'Portuguese (Brazil)', ru:'Russian', uk:'Ukrainian', ar:'Arabic (MSA)', ar_eg:'Arabic (Egyptian)', he:'Hebrew', sw:'Swahili', tr:'Turkish', fa:'Persian', tl:'Tagalog', ga:'Irish', eu:'Basque', mn:'Mongolian', my:'Burmese', am:'Amharic', ta:'Tamil', hu:'Hungarian', nl:'Dutch', pl:'Polish', ms:'Malay' },
+    ko: { ja:'일본어(표준)', osa:'오사카 사투리', aom:'아오모리 사투리', oki:'오키나와 사투리', hak:'하카타 사투리', ja_edo:'에도시대 일본어', ko:'한국어(표준)', kp:'북한어', bus:'부산 사투리', zh:'중국어(보통화)', yue:'광둥어', nan:'대만어', wuu:'상하이어', zh_classical:'문언(文言)', vi:'베트남어', vi_nom:'쯔놈', th:'태국어', id:'인도네시아어', hi:'힌디어', en:'영어', de:'독일어', fr:'프랑스어', it:'이탈리아어', es_eu:'스페인어(유럽)', es_mx:'스페인어(멕시코)', pt_eu:'포르투갈어(유럽)', pt_br:'포르투갈어(브라질)', ru:'러시아어', uk:'우크라이나어', ar:'아랍어(푸스하)', ar_eg:'아랍어(이집트 방언)', he:'히브리어', sw:'스와힐리어', tr:'터키어', fa:'페르시아어', tl:'타갈로그어', ga:'아일랜드어', eu:'바스크어', mn:'몽골어', my:'미얀마어', am:'암하라어', ta:'타밀어', hu:'헝가리어', nl:'네덜란드어', pl:'폴란드어', ms:'말레이어' },
+    zh: { ja:'日语(标准)', osa:'大阪方言', aom:'青森方言', oki:'冲绳方言', hak:'博多方言', ja_edo:'江户时代日语', ko:'韩语(标准)', kp:'朝鲜语', bus:'釜山方言', zh:'中文(普通话)', yue:'粤语', nan:'台湾话', wuu:'上海话', zh_classical:'文言', vi:'越南语', vi_nom:'字喃', th:'泰语', id:'印尼语', hi:'印地语', en:'英语', de:'德语', fr:'法语', it:'意大利语', es_eu:'西班牙语(欧洲)', es_mx:'西班牙语(墨西哥)', pt_eu:'葡萄牙语(欧洲)', pt_br:'葡萄牙语(巴西)', ru:'俄语', uk:'乌克兰语', ar:'阿拉伯语(标准)', ar_eg:'阿拉伯语(埃及方言)', he:'希伯来语', sw:'斯瓦希里语', tr:'土耳其语', fa:'波斯语', tl:'他加禄语', ga:'爱尔兰语', eu:'巴斯克语', mn:'蒙古语', my:'缅甸语', am:'阿姆哈拉语', ta:'泰米尔语', hu:'匈牙利语', nl:'荷兰语', pl:'波兰语', ms:'马来语' },
+    fr: { ja:'Japonais', osa:'Dialecte d\'Osaka', aom:'Dialecte d\'Aomori', oki:'Okinawaïen', hak:'Dialecte de Hakata', ja_edo:'Japonais d\'Edo', ko:'Coréen', kp:'Nord-coréen', bus:'Dialecte de Busan', zh:'Chinois (mandarin)', yue:'Cantonais', nan:'Taïwanais', wuu:'Shanghaïen', zh_classical:'Chinois classique', vi:'Vietnamien', vi_nom:'Chữ Nôm', th:'Thaï', id:'Indonésien', hi:'Hindi', en:'Anglais', de:'Allemand', fr:'Français', it:'Italien', es_eu:'Espagnol (Europe)', es_mx:'Espagnol (Mexique)', pt_eu:'Portugais (Europe)', pt_br:'Portugais (Brésil)', ru:'Russe', uk:'Ukrainien', ar:'Arabe (standard)', ar_eg:'Arabe (égyptien)', he:'Hébreu', sw:'Swahili', tr:'Turc', fa:'Persan', tl:'Tagalog', ga:'Irlandais', eu:'Basque', mn:'Mongol', my:'Birman', am:'Amharique', ta:'Tamoul', hu:'Hongrois', nl:'Néerlandais', pl:'Polonais', ms:'Malais' },
+    de: { ja:'Japanisch', osa:'Osaka-Dialekt', aom:'Aomori-Dialekt', oki:'Okinawanisch', hak:'Hakata-Dialekt', ja_edo:'Edo-Japanisch', ko:'Koreanisch', kp:'Nordkoreanisch', bus:'Busan-Dialekt', zh:'Chinesisch (Mandarin)', yue:'Kantonesisch', nan:'Taiwanisch', wuu:'Shanghainesisch', zh_classical:'Klassisches Chinesisch', vi:'Vietnamesisch', vi_nom:'Chữ Nôm', th:'Thai', id:'Indonesisch', hi:'Hindi', en:'Englisch', de:'Deutsch', fr:'Französisch', it:'Italienisch', es_eu:'Spanisch (Europa)', es_mx:'Spanisch (Mexiko)', pt_eu:'Portugiesisch (Europa)', pt_br:'Portugiesisch (Brasilien)', ru:'Russisch', uk:'Ukrainisch', ar:'Arabisch (Standard)', ar_eg:'Arabisch (ägyptisch)', he:'Hebräisch', sw:'Swahili', tr:'Türkisch', fa:'Persisch', tl:'Tagalog', ga:'Irisch', eu:'Baskisch', mn:'Mongolisch', my:'Birmanisch', am:'Amharisch', ta:'Tamilisch', hu:'Ungarisch', nl:'Niederländisch', pl:'Polnisch', ms:'Malaiisch' },
+    es_eu: { ja:'Japonés', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawense', hak:'Dialecto de Hakata', ja_edo:'Japonés de Edo', ko:'Coreano', kp:'Norcoreano', bus:'Dialecto de Busan', zh:'Chino (mandarín)', yue:'Cantonés', nan:'Taiwanés', wuu:'Shanghainés', zh_classical:'Chino clásico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandés', id:'Indonesio', hi:'Hindi', en:'Inglés', de:'Alemán', fr:'Francés', it:'Italiano', es_eu:'Español (Europa)', es_mx:'Español (México)', pt_eu:'Portugués (Europa)', pt_br:'Portugués (Brasil)', ru:'Ruso', uk:'Ucraniano', ar:'Árabe (estándar)', ar_eg:'Árabe (egipcio)', he:'Hebreo', sw:'Suajili', tr:'Turco', fa:'Persa', tl:'Tagalo', ga:'Irlandés', eu:'Vasco', mn:'Mongol', my:'Birmano', am:'Amárico', ta:'Tamil', hu:'Húngaro', nl:'Neerlandés', pl:'Polaco', ms:'Malayo' },
+    ru: { ja:'Японский', osa:'Осакский диалект', aom:'Аомори диалект', oki:'Окинавский', hak:'Хакатский диалект', ja_edo:'Японский эпохи Эдо', ko:'Корейский', kp:'Северокорейский', bus:'Пусанский диалект', zh:'Китайский (путунхуа)', yue:'Кантонский', nan:'Тайваньский', wuu:'Шанхайский', zh_classical:'Вэньянь', vi:'Вьетнамский', vi_nom:'Тьы-ном', th:'Тайский', id:'Индонезийский', hi:'Хинди', en:'Английский', de:'Немецкий', fr:'Французский', it:'Итальянский', es_eu:'Испанский (Европа)', es_mx:'Испанский (Мексика)', pt_eu:'Португальский (Европа)', pt_br:'Португальский (Бразилия)', ru:'Русский', uk:'Украинский', ar:'Арабский (стандарт)', ar_eg:'Арабский (египетский)', he:'Иврит', sw:'Суахили', tr:'Турецкий', fa:'Персидский', tl:'Тагальский', ga:'Ирландский', eu:'Баскский', mn:'Монгольский', my:'Бирманский', am:'Амхарский', ta:'Тамильский', hu:'Венгерский', nl:'Нидерландский', pl:'Польский', ms:'Малайский' },
+    ar: { ja:'يابانية', osa:'لهجة أوساكا', aom:'لهجة أوموري', oki:'أوكيناوية', hak:'لهجة هاكاتا', ja_edo:'يابانية عصر إيدو', ko:'كورية', kp:'كورية شمالية', bus:'لهجة بوسان', zh:'صينية (ماندرين)', yue:'كانتونية', nan:'تايوانية', wuu:'شنغهاية', zh_classical:'الصينية الكلاسيكية', vi:'فيتنامية', vi_nom:'تشو نوم', th:'تايلاندية', id:'إندونيسية', hi:'هندية', en:'إنجليزية', de:'ألمانية', fr:'فرنسية', it:'إيطالية', es_eu:'إسبانية (أوروبا)', es_mx:'إسبانية (المكسيك)', pt_eu:'برتغالية (أوروبا)', pt_br:'برتغالية (البرازيل)', ru:'روسية', uk:'أوكرانية', ar:'عربية (فصحى)', ar_eg:'عربية (مصرية)', he:'عبرية', sw:'سواحيلية', tr:'تركية', fa:'فارسية', tl:'تاغالوغية', ga:'أيرلندية', eu:'باسكية', mn:'منغولية', my:'بورمية', am:'أمهرية', ta:'تاميلية', hu:'مجرية', nl:'هولندية', pl:'بولندية', ms:'ملايوية' },
+    he: { ja:'יפנית', osa:'ניב אוסקה', aom:'ניב אאומורי', oki:'אוקינאווית', hak:'ניב הקאטה', ja_edo:'יפנית תקופת אדו', ko:'קוריאנית', kp:'צפון קוריאנית', bus:'ניב בוסאן', zh:'סינית (מנדרינית)', yue:'קנטונזית', nan:'טייוואנית', wuu:'שנגחאית', zh_classical:'סינית קלאסית', vi:'וייטנאמית', vi_nom:"צ'ו נום", th:'תאית', id:'אינדונזית', hi:'הינדי', en:'אנגלית', de:'גרמנית', fr:'צרפתית', it:'איטלקית', es_eu:'ספרדית (אירופה)', es_mx:'ספרדית (מקסיקו)', pt_eu:'פורטוגזית (אירופה)', pt_br:'פורטוגזית (ברזיל)', ru:'רוסית', uk:'אוקראינית', ar:'ערבית (ספרותית)', ar_eg:'ערבית (מצרית)', he:'עברית', sw:'סווהילי', tr:'טורקית', fa:'פרסית', tl:'טגלוג', ga:'אירית', eu:'בסקית', mn:'מונגולית', my:'בורמזית', am:'אמהרית', ta:'טמילית', hu:'הונגרית', nl:'הולנדית', pl:'פולנית', ms:'מלאית' },
+    sw: { ja:'Kijapani', osa:'Lahaja ya Osaka', aom:'Lahaja ya Aomori', oki:'Kiokinawa', hak:'Lahaja ya Hakata', ja_edo:'Kijapani cha Edo', ko:'Kikorea', kp:'Kikorea Kaskazini', bus:'Lahaja ya Busan', zh:'Kichina (Mandarin)', yue:'Kikantoni', nan:'Kitaiwani', wuu:'Kishanghai', zh_classical:'Kichina cha kale', vi:'Kivietinamu', vi_nom:'Chữ Nôm', th:'Kithai', id:'Kiindonesia', hi:'Kihindi', en:'Kiingereza', de:'Kijerumani', fr:'Kifaransa', it:'Kiitaliano', es_eu:'Kihispania (Ulaya)', es_mx:'Kihispania (Meksiko)', pt_eu:'Kireno (Ulaya)', pt_br:'Kireno (Brazili)', ru:'Kirusi', uk:'Kiukraini', ar:'Kiarabu (sanifu)', ar_eg:'Kiarabu (Misri)', he:'Kiebrania', sw:'Kiswahili', tr:'Kituruki', fa:'Kiajemi', tl:'Kitagalog', ga:'Kiayalandi', eu:'Kibasque', mn:'Kimongolia', my:'Kiburma', am:'Kiamhari', ta:'Kitamil', hu:'Kihungari', nl:'Kiholanzi', pl:'Kipolandi', ms:'Kimalei' },
+    yue: { ja:'日本語(標準)', osa:'大阪話', aom:'青森話', oki:'沖繩話', hak:'博多話', ja_edo:'江戶時代話', ko:'韓文(標準)', kp:'北韓話', bus:'釜山話', zh:'普通話', yue:'廣東話', nan:'台灣話', wuu:'上海話', zh_classical:'文言', vi:'越南話', vi_nom:'字喃', th:'泰文', id:'印尼話', hi:'印地話', en:'英文', de:'德文', fr:'法文', it:'意大利文', es_eu:'西班牙文(歐洲)', es_mx:'西班牙文(墨西哥)', pt_eu:'葡萄牙文(歐洲)', pt_br:'葡萄牙文(巴西)', ru:'俄文', uk:'烏克蘭文', ar:'阿拉伯文(標準)', ar_eg:'阿拉伯文(埃及方言)', he:'希伯來文', sw:'斯瓦希里文', tr:'土耳其文', fa:'波斯文', tl:'他加祿文', ga:'愛爾蘭文', eu:'巴斯克文', mn:'蒙古文', my:'緬甸文', am:'阿姆哈拉文', ta:'泰米爾文', hu:'匈牙利文', nl:'荷蘭文', pl:'波蘭文', ms:'馬來文' },
+    vi: { ja:'Tiếng Nhật', osa:'Phương ngữ Osaka', aom:'Phương ngữ Aomori', oki:'Tiếng Okinawa', hak:'Phương ngữ Hakata', ja_edo:'Tiếng Nhật thời Edo', ko:'Tiếng Hàn', kp:'Tiếng Triều Tiên', bus:'Phương ngữ Busan', zh:'Tiếng Trung (Phổ thông)', yue:'Tiếng Quảng Đông', nan:'Tiếng Đài Loan', wuu:'Tiếng Thượng Hải', zh_classical:'Văn ngôn', vi:'Tiếng Việt', vi_nom:'Chữ Nôm', th:'Tiếng Thái', id:'Tiếng Indonesia', hi:'Tiếng Hindi', en:'Tiếng Anh', de:'Tiếng Đức', fr:'Tiếng Pháp', it:'Tiếng Ý', es_eu:'Tiếng Tây Ban Nha (châu Âu)', es_mx:'Tiếng Tây Ban Nha (Mexico)', pt_eu:'Tiếng Bồ Đào Nha (châu Âu)', pt_br:'Tiếng Bồ Đào Nha (Brazil)', ru:'Tiếng Nga', uk:'Tiếng Ukraina', ar:'Tiếng Ả Rập (chuẩn)', ar_eg:'Tiếng Ả Rập (Ai Cập)', he:'Tiếng Do Thái', sw:'Tiếng Swahili', tr:'Tiếng Thổ Nhĩ Kỳ', fa:'Tiếng Ba Tư', tl:'Tiếng Tagalog', ga:'Tiếng Ireland', eu:'Tiếng Basque', mn:'Tiếng Mông Cổ', my:'Tiếng Miến Điện', am:'Tiếng Amhara', ta:'Tiếng Tamil', hu:'Tiếng Hungary', nl:'Tiếng Hà Lan', pl:'Tiếng Ba Lan', ms:'Tiếng Mã Lai' },
+    th: { ja:'ภาษาญี่ปุ่น', osa:'สำเนียงโอซากะ', aom:'สำเนียงอาโอโมริ', oki:'ภาษาโอกินาวา', hak:'สำเนียงฮากาตะ', ja_edo:'ภาษาญี่ปุ่นสมัยเอโดะ', ko:'ภาษาเกาหลี', kp:'ภาษาเกาหลีเหนือ', bus:'สำเนียงปูซาน', zh:'ภาษาจีน (กลาง)', yue:'ภาษากวางตุ้ง', nan:'ภาษาไต้หวัน', wuu:'ภาษาเซี่ยงไฮ้', zh_classical:'ภาษาจีนคลาสสิก', vi:'ภาษาเวียดนาม', vi_nom:'จื๋อโนม', th:'ภาษาไทย', id:'ภาษาอินโดนีเซีย', hi:'ภาษาฮินดี', en:'ภาษาอังกฤษ', de:'ภาษาเยอรมัน', fr:'ภาษาฝรั่งเศส', it:'ภาษาอิตาลี', es_eu:'ภาษาสเปน (ยุโรป)', es_mx:'ภาษาสเปน (เม็กซิโก)', pt_eu:'ภาษาโปรตุเกส (ยุโรป)', pt_br:'ภาษาโปรตุเกส (บราซิล)', ru:'ภาษารัสเซีย', uk:'ภาษายูเครน', ar:'ภาษาอาหรับ (มาตรฐาน)', ar_eg:'ภาษาอาหรับ(อียิปต์)', he:'ภาษาฮีบรู', sw:'ภาษาสวาฮีลี', tr:'ภาษาตุรกี', fa:'ภาษาเปอร์เซีย', tl:'ภาษาตากาล็อก', ga:'ภาษาไอริช', eu:'ภาษาบาสก์', mn:'ภาษามองโกล', my:'ภาษาพม่า', am:'ภาษาอัมฮาริก', ta:'ภาษาทมิฬ', hu:'ภาษาฮังการี', nl:'ภาษาดัตช์', pl:'ภาษาโปแลนด์', ms:'ภาษามลายู' },
+    id: { ja:'Bahasa Jepang', osa:'Dialek Osaka', aom:'Dialek Aomori', oki:'Bahasa Okinawa', hak:'Dialek Hakata', ja_edo:'Bahasa Jepang Edo', ko:'Bahasa Korea', kp:'Bahasa Korea Utara', bus:'Dialek Busan', zh:'Bahasa Mandarin', yue:'Bahasa Kanton', nan:'Bahasa Taiwan', wuu:'Bahasa Shanghai', zh_classical:'Bahasa Tionghoa Klasik', vi:'Bahasa Vietnam', vi_nom:'Chữ Nôm', th:'Bahasa Thai', id:'Bahasa Indonesia', hi:'Bahasa Hindi', en:'Bahasa Inggris', de:'Bahasa Jerman', fr:'Bahasa Prancis', it:'Bahasa Italia', es_eu:'Bahasa Spanyol (Eropa)', es_mx:'Bahasa Spanyol (Meksiko)', pt_eu:'Bahasa Portugis (Eropa)', pt_br:'Bahasa Portugis (Brasil)', ru:'Bahasa Rusia', uk:'Bahasa Ukraina', ar:'Bahasa Arab (standar)', ar_eg:'Bahasa Arab (Mesir)', he:'Bahasa Ibrani', sw:'Bahasa Swahili', tr:'Bahasa Turki', fa:'Bahasa Persia', tl:'Bahasa Tagalog', ga:'Bahasa Irlandia', eu:'Bahasa Basque', mn:'Bahasa Mongolia', my:'Bahasa Myanmar', am:'Bahasa Amhara', ta:'Bahasa Tamil', hu:'Bahasa Hungaria', nl:'Bahasa Belanda', pl:'Bahasa Polandia', ms:'Bahasa Melayu' },
+    hi: { ja:'जापानी', osa:'ओसाका बोली', aom:'आओमोरी बोली', oki:'ओकिनावा बोली', hak:'हकाता बोली', ja_edo:'एदो काल जापानी', ko:'कोरियाई', kp:'उत्तर कोरियाई', bus:'बुसान बोली', zh:'चीनी (मंदारिन)', yue:'कैंटोनीज़', nan:'ताइवानी', wuu:'शंघाई भाषा', zh_classical:'शास्त्रीय चीनी', vi:'वियतनामी', vi_nom:'चू नोम', th:'थाई', id:'इंडोनेशियाई', hi:'हिन्दी', en:'अंग्रेज़ी', de:'जर्मन', fr:'फ़्रेंच', it:'इतालवी', es_eu:'स्पेनिश (यूरोप)', es_mx:'स्पेनिश (मेक्सिको)', pt_eu:'पुर्तगाली (यूरोप)', pt_br:'पुर्तगाली (ब्राज़ील)', ru:'रूसी', uk:'यूक्रेनी', ar:'अरबी (मानक)', ar_eg:'अरबी (मिस्री)', he:'हिब्रू', sw:'स्वाहिली', tr:'तुर्की', fa:'फ़ारसी', tl:'तागालोग', ga:'आयरिश', eu:'बास्क', mn:'मंगोलियाई', my:'बर्मी', am:'अम्हारी', ta:'तमिल', hu:'हंगेरियन', nl:'डच', pl:'पोलिश', ms:'मलय' },
+    it: { ja:'Giapponese', osa:'Dialetto di Osaka', aom:'Dialetto di Aomori', oki:'Okinawano', hak:'Dialetto di Hakata', ja_edo:'Giapponese di Edo', ko:'Coreano', kp:'Nordcoreano', bus:'Dialetto di Busan', zh:'Cinese (mandarino)', yue:'Cantonese', nan:'Taiwanese', wuu:'Shangaiese', zh_classical:'Cinese classico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandese', id:'Indonesiano', hi:'Hindi', en:'Inglese', de:'Tedesco', fr:'Francese', it:'Italiano', es_eu:'Spagnolo (Europa)', es_mx:'Spagnolo (Messico)', pt_eu:'Portoghese (Europa)', pt_br:'Portoghese (Brasile)', ru:'Russo', uk:'Ucraino', ar:'Arabo (standard)', ar_eg:'Arabo (egiziano)', he:'Ebraico', sw:'Swahili', tr:'Turco', fa:'Persiano', tl:'Tagalog', ga:'Irlandese', eu:'Basco', mn:'Mongolo', my:'Birmano', am:'Amarico', ta:'Tamil', hu:'Ungherese', nl:'Olandese', pl:'Polacco', ms:'Malese' },
+    es_mx: { ja:'Japonés', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawense', hak:'Dialecto de Hakata', ja_edo:'Japonés de Edo', ko:'Coreano', kp:'Norcoreano', bus:'Dialecto de Busan', zh:'Chino (mandarín)', yue:'Cantonés', nan:'Taiwanés', wuu:'Shanghainés', zh_classical:'Chino clásico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandés', id:'Indonesio', hi:'Hindi', en:'Inglés', de:'Alemán', fr:'Francés', it:'Italiano', es_eu:'Español (Europa)', es_mx:'Español (México)', pt_eu:'Portugués (Europa)', pt_br:'Portugués (Brasil)', ru:'Ruso', uk:'Ucraniano', ar:'Árabe (estándar)', ar_eg:'Árabe (egipcio)', he:'Hebreo', sw:'Suajili', tr:'Turco', fa:'Persa', tl:'Tagalo', ga:'Irlandés', eu:'Vasco', mn:'Mongol', my:'Birmano', am:'Amárico', ta:'Tamil', hu:'Húngaro', nl:'Neerlandés', pl:'Polaco', ms:'Malayo' },
+    pt_eu: { ja:'Japonês', osa:'Dialecto de Osaka', aom:'Dialecto de Aomori', oki:'Okinawano', hak:'Dialeto de Hakata', ja_edo:'Japonês de Edo', ko:'Coreano', kp:'Norte-coreano', bus:'Dialecto de Busan', zh:'Chinês (mandarim)', yue:'Cantonês', nan:'Taiwanês', wuu:'Xangaiês', zh_classical:'Chinês clássico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandês', id:'Indonésio', hi:'Hindi', en:'Inglês', de:'Alemão', fr:'Francês', it:'Italiano', es_eu:'Espanhol (Europa)', es_mx:'Espanhol (México)', pt_eu:'Português (Europa)', pt_br:'Português (Brasil)', ru:'Russo', uk:'Ucraniano', ar:'Árabe (padrão)', ar_eg:'Árabe (egípcio)', he:'Hebraico', sw:'Suaíli', tr:'Turco', fa:'Persa', tl:'Tagalo', ga:'Irlandês', eu:'Basco', mn:'Mongol', my:'Birmanês', am:'Amárico', ta:'Tâmil', hu:'Húngaro', nl:'Neerlandês', pl:'Polaco', ms:'Malaio' },
+    pt_br: { ja:'Japonês', osa:'Dialeto de Osaka', aom:'Dialeto de Aomori', oki:'Okinawano', hak:'Dialeto de Hakata', ja_edo:'Japonês de Edo', ko:'Coreano', kp:'Norte-coreano', bus:'Dialeto de Busan', zh:'Chinês (mandarim)', yue:'Cantonês', nan:'Taiwanês', wuu:'Xangainês', zh_classical:'Chinês clássico', vi:'Vietnamita', vi_nom:'Chữ Nôm', th:'Tailandês', id:'Indonésio', hi:'Hindi', en:'Inglês', de:'Alemão', fr:'Francês', it:'Italiano', es_eu:'Espanhol (Europa)', es_mx:'Espanhol (México)', pt_eu:'Português (Europa)', pt_br:'Português (Brasil)', ru:'Russo', uk:'Ucraniano', ar:'Árabe (padrão)', ar_eg:'Árabe (egípcio)', he:'Hebraico', sw:'Suaíli', tr:'Turco', fa:'Persa', tl:'Tagalo', ga:'Irlandês', eu:'Basco', mn:'Mongol', my:'Birmanês', am:'Amárico', ta:'Tâmil', hu:'Húngaro', nl:'Neerlandês', pl:'Polonês', ms:'Malaio' },
+    uk: { ja:'Японська', osa:'Осакський діалект', aom:'Аоморійський діалект', oki:'Окінавська', hak:'Хакатський діалект', ja_edo:'Японська доби Едо', ko:'Корейська', kp:'Північнокорейська', bus:'Пусанський діалект', zh:'Китайська (путунхуа)', yue:'Кантонська', nan:'Тайванська', wuu:'Шанхайська', zh_classical:'Веньянь', vi:'В\'єтнамська', vi_nom:'Тьи-ном', th:'Тайська', id:'Індонезійська', hi:'Гінді', en:'Англійська', de:'Німецька', fr:'Французька', it:'Італійська', es_eu:'Іспанська (Європа)', es_mx:'Іспанська (Мексика)', pt_eu:'Португальська (Європа)', pt_br:'Португальська (Бразилія)', ru:'Російська', uk:'Українська', ar:'Арабська (стандарт)', ar_eg:'Арабська (єгипетська)', he:'Іврит', sw:'Суахілі', tr:'Турецька', fa:'Перська', tl:'Тагальська', ga:'Ірландська', eu:'Баскська', mn:'Монгольська', my:'Бірманська', am:'Амхарська', ta:'Тамільська', hu:'Угорська', nl:'Нідерландська', pl:'Польська', ms:'Малайська' },
 };
 
 function langName(code) {
@@ -59,51 +59,70 @@ function langName(code) {
     return names[code] || LANG_NAMES.ja[code] || code;
 }
 
-// Language definitions - ordered by similarity
+// Language definitions - ordered geographically from Japan outward
 const LANGUAGES = [
-    // Japanese & dialects
+    // Japanese & dialects (SOV)
     { code: 'ja', name: '日本語(標準)', group: 'JPN' },
     { code: 'osa', name: '大阪弁', group: 'JPN', experimental: true },
     { code: 'hak', name: '博多弁', group: 'JPN', experimental: true },
     { code: 'oki', name: '沖縄弁', group: 'JPN', experimental: true },
     { code: 'aom', name: '青森弁', group: 'JPN', experimental: true },
     { code: 'ja_edo', name: '江戸時代語', group: 'JPN', experimental: true },
-    // Korean & variants
+    // Korean & variants (SOV)
     { code: 'ko', name: '韓国語(標準)', group: 'KOR' },
     { code: 'kp', name: '北朝鮮語', group: 'KOR', experimental: true },
     { code: 'bus', name: '釜山弁', group: 'KOR', experimental: true },
-    // Chinese & variants
+    // Mongolic & Turkic (SOV, agglutinative)
+    { code: 'mn', name: 'モンゴル語', group: 'MON' },
+    { code: 'tr', name: 'トルコ語', group: 'TRK' },
+    // Chinese & variants (SVO)
     { code: 'zh', name: '中国語(普通話)', group: 'CHN' },
     { code: 'yue', name: '広東語', group: 'CHN' },
     { code: 'nan', name: '台湾語', group: 'CHN' },
     { code: 'wuu', name: '上海語', group: 'CHN' },
     { code: 'zh_classical', name: '文言', group: 'CHN', experimental: true },
-    // Southeast Asian
+    // Mainland Southeast Asian
     { code: 'vi', name: 'ベトナム語', group: 'SEA' },
     { code: 'vi_nom', name: 'チューノム', group: 'SEA', experimental: true },
     { code: 'th', name: 'タイ語', group: 'SEA' },
+    { code: 'my', name: 'ミャンマー語', group: 'SEA' },
+    // Maritime Southeast Asian (Austronesian)
     { code: 'id', name: 'インドネシア語', group: 'SEA' },
+    { code: 'ms', name: 'マレー語', group: 'SEA' },
+    { code: 'tl', name: 'タガログ語', group: 'SEA' },
     // South Asian
     { code: 'hi', name: 'ヒンディー語', group: 'SAS' },
-    // Germanic
+    { code: 'ta', name: 'タミル語', group: 'SAS' },
+    // Iranian (SOV)
+    { code: 'fa', name: 'ペルシャ語', group: 'IRN' },
+    // Semitic
+    { code: 'ar', name: 'アラビア語(フスハー)', group: 'SEM' },
+    { code: 'ar_eg', name: 'アラビア語(エジプト方言)', group: 'SEM', experimental: true },
+    { code: 'he', name: 'ヘブライ語', group: 'SEM' },
+    { code: 'am', name: 'アムハラ語', group: 'SEM' },
+    // African
+    { code: 'sw', name: 'スワヒリ語', group: 'AFR' },
+    // Germanic (SVO/V2)
     { code: 'en', name: '英語', group: 'EUR' },
+    { code: 'nl', name: 'オランダ語', group: 'EUR' },
     { code: 'de', name: 'ドイツ語', group: 'EUR' },
-    // Romance
+    // Celtic (VSO)
+    { code: 'ga', name: 'アイルランド語', group: 'CEL' },
+    // Romance (SVO)
     { code: 'fr', name: 'フランス語', group: 'ROM' },
     { code: 'it', name: 'イタリア語', group: 'ROM' },
     { code: 'es_eu', name: 'スペイン語(欧州)', group: 'ROM' },
     { code: 'es_mx', name: 'スペイン語(メキシコ)', group: 'ROM' },
     { code: 'pt_eu', name: 'ポルトガル語(欧州)', group: 'ROM' },
     { code: 'pt_br', name: 'ポルトガル語(ブラジル)', group: 'ROM' },
-    // Slavic
+    // Basque (SOV, isolate)
+    { code: 'eu', name: 'バスク語', group: 'ISO' },
+    // Slavic (SVO)
     { code: 'ru', name: 'ロシア語', group: 'SLV' },
     { code: 'uk', name: 'ウクライナ語', group: 'SLV' },
-    // Semitic
-    { code: 'ar', name: 'アラビア語(フスハー)', group: 'SEM' },
-    { code: 'ar_eg', name: 'アラビア語(エジプト方言)', group: 'SEM', experimental: true },
-    { code: 'he', name: 'ヘブライ語', group: 'SEM' },
-    // African
-    { code: 'sw', name: 'スワヒリ語', group: 'AFR' },
+    { code: 'pl', name: 'ポーランド語', group: 'SLV' },
+    // Uralic
+    { code: 'hu', name: 'ハンガリー語', group: 'URA' },
 ];
 
 const DEFAULT_ORDER = LANGUAGES.map(l => l.code);
@@ -117,10 +136,9 @@ let langOrder = [...DEFAULT_ORDER];
 let currentSentenceIdx = 0;
 let redrawTimer = null;
 let suppressHashUpdate = false;
-let langTogglesExpanded = false;
 let rtlNative = false; // true = show RTL languages in native reading direction
 
-const RTL_LANGS = new Set(['ar', 'ar_eg', 'he']);
+const RTL_LANGS = new Set(['ar', 'ar_eg', 'he', 'fa']);
 
 // --- URL hash state management (ultra-compact encoding) ---
 const DEFAULT_ENABLED = new Set(MAJOR_LANGS);
@@ -251,9 +269,6 @@ function loadFromHash() {
         }
     }
 
-    if ([...enabledLangs].some(c => !MAJOR_LANGS.has(c))) {
-        langTogglesExpanded = true;
-    }
 }
 
 // Backward compat: old key=value format
@@ -274,7 +289,6 @@ function loadFromLegacyHash(hash) {
     }
     if (params.has('ui') && UI_STRINGS[params.get('ui')]) currentUILang = params.get('ui');
     if (params.has('rtl')) rtlNative = params.get('rtl') === '1';
-    if ([...enabledLangs].some(c => !MAJOR_LANGS.has(c))) langTogglesExpanded = true;
 }
 
 // Reset all state to defaults
@@ -284,7 +298,6 @@ function resetToDefaults() {
     langOrder = [...DEFAULT_ORDER];
     currentUILang = 'ja';
     rtlNative = false;
-    langTogglesExpanded = false;
     history.replaceState(null, '', location.pathname);
     syncUIFromState();
     applyUILang();
@@ -311,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initUILangSelect();
     initSampleSelect();
-    initLangToggles();
+    updateLangSummary();
     syncUIFromState();
     applyUILang();
 
@@ -337,15 +350,8 @@ function syncUIFromState() {
     // Sentence select
     document.getElementById('sampleSelect').value = currentSentenceIdx;
 
-    // Language toggles
-    document.querySelectorAll('.lang-toggle').forEach(label => {
-        const cb = label.querySelector('input');
-        if (!cb) return; // skip "show more" button
-        const code = cb.dataset.lang;
-        cb.checked = enabledLangs.has(code);
-        label.classList.toggle('active', enabledLangs.has(code));
-    });
-
+    // Update language summary pills
+    updateLangSummary();
 }
 
 function initUILangSelect() {
@@ -369,8 +375,8 @@ function initUILangSelect() {
 function applyUILang() {
     const ids = {
         uiTitle: 'title', uiSubtitle: 'subtitle', lblSentence: 'selectSentence',
-        lblLangToggle: 'langToggle', btnRandom: 'random', btnAllOn: 'allOn',
-        btnAllOff: 'allOff', btnSavePng: 'savePng', btnSaveSvg: 'saveSvg',
+        lblLangToggle: 'langToggle', btnRandom: 'random',
+        btnSavePng: 'savePng', btnSaveSvg: 'saveSvg',
         btnCopyUrl: 'copyUrl', copyToast: 'copied', lblUiLang: 'uiLang',
         lblResetOrder: 'defaultOrder'
     };
@@ -387,16 +393,19 @@ function applyUILang() {
     document.body.dir = (currentUILang === 'ar' || currentUILang === 'he') ? 'rtl' : 'ltr';
     // Update sentence select labels
     updateSampleSelectLabels();
-    // Update language toggle labels
-    document.querySelectorAll('.lang-toggle').forEach(label => {
-        const cb = label.querySelector('input');
-        if (!cb) return; // skip "show more" button
-        const nameSpan = label.querySelector('span:nth-child(3)');
-        if (nameSpan) nameSpan.textContent = langName(cb.dataset.lang);
-    });
-    // Update "more" button text
-    const moreBtn = document.getElementById('btnMoreLangs');
-    if (moreBtn) moreBtn.innerHTML = '<span>' + t(langTogglesExpanded ? 'showLess' : 'showMore') + '</span>';
+    // Update language summary pills and modal button
+    updateLangSummary();
+    // Update modal button labels
+    const modalTitle = document.getElementById('langModalTitle');
+    if (modalTitle) modalTitle.textContent = t('selectLangsTitle');
+    const modalConfirm = document.getElementById('btnModalConfirm');
+    if (modalConfirm) modalConfirm.textContent = t('modalConfirm');
+    const modalCancel = document.getElementById('btnModalCancel');
+    if (modalCancel) modalCancel.textContent = t('modalCancel');
+    const modalAllOn = document.getElementById('btnModalAllOn');
+    if (modalAllOn) modalAllOn.textContent = t('allOn');
+    const modalAllOff = document.getElementById('btnModalAllOff');
+    if (modalAllOff) modalAllOff.textContent = t('allOff');
     // Re-render map to update row labels
     render();
 }
@@ -407,17 +416,7 @@ function toggleRtlNative(on) {
 }
 
 function toggleAllLangs(on) {
-    if (on) {
-        if (langTogglesExpanded) {
-            // All languages visible — enable all
-            enabledLangs = new Set(DEFAULT_ORDER);
-        } else {
-            // Only major languages visible — enable only major
-            enabledLangs = new Set(MAJOR_LANGS);
-        }
-    } else {
-        enabledLangs.clear();
-    }
+    enabledLangs = on ? new Set(DEFAULT_ORDER) : new Set();
     syncUIFromState();
     render();
 }
@@ -480,8 +479,11 @@ function insertLangInOrder(code) {
     }
 }
 
-function createLangToggle(lang) {
-    const isOn = enabledLangs.has(lang.code);
+// Temporary set for modal editing (committed on confirm)
+let modalPendingLangs = null;
+
+function createModalToggle(lang) {
+    const isOn = modalPendingLangs.has(lang.code);
     const label = document.createElement('label');
     label.className = 'lang-toggle' + (isOn ? ' active' : '');
     if (lang.experimental) label.classList.add('experimental');
@@ -496,53 +498,114 @@ function createLangToggle(lang) {
         const cb = label.querySelector('input');
         cb.checked = !cb.checked;
         if (cb.checked) {
-            enabledLangs.add(lang.code);
+            modalPendingLangs.add(lang.code);
             label.classList.add('active');
-            insertLangInOrder(lang.code);
         } else {
-            enabledLangs.delete(lang.code);
+            modalPendingLangs.delete(lang.code);
             label.classList.remove('active');
         }
-        render();
     });
     return label;
 }
 
-function initLangToggles() {
-    const container = document.getElementById('langToggles');
+const GROUP_NAMES = {
+    ja: { JPN:'日本語', KOR:'韓国語', CHN:'中国語', SEA:'東南アジア', SAS:'南アジア', EUR:'ゲルマン', ROM:'ロマンス', SLV:'スラヴ', SEM:'セム', IRN:'イラン', AFR:'アフリカ', TRK:'テュルク', MON:'モンゴル', URA:'ウラル', CEL:'ケルト', ISO:'孤立' },
+    en: { JPN:'Japanese', KOR:'Korean', CHN:'Chinese', SEA:'SE Asian', SAS:'S Asian', EUR:'Germanic', ROM:'Romance', SLV:'Slavic', SEM:'Semitic', IRN:'Iranian', AFR:'African', TRK:'Turkic', MON:'Mongolic', URA:'Uralic', CEL:'Celtic', ISO:'Isolate' },
+};
+
+function groupLabel(groupCode) {
+    const names = GROUP_NAMES[currentUILang] || GROUP_NAMES.en;
+    return names[groupCode] || GROUP_NAMES.en[groupCode] || groupCode;
+}
+
+function updateLangSummary() {
+    const container = document.getElementById('langSummary');
     container.innerHTML = '';
-
-    const majorLangs = LANGUAGES.filter(l => MAJOR_LANGS.has(l.code));
-    const otherLangs = LANGUAGES.filter(l => !MAJOR_LANGS.has(l.code) && !l.experimental);
-    const expLangs = LANGUAGES.filter(l => l.experimental);
-
-    majorLangs.forEach(lang => container.appendChild(createLangToggle(lang)));
-
-    // "More" toggle
-    const moreBtn = document.createElement('label');
-    moreBtn.className = 'lang-toggle btn-more-langs';
-    moreBtn.id = 'btnMoreLangs';
-    moreBtn.innerHTML = '<span>' + (langTogglesExpanded ? t('showLess') : t('showMore')) + '</span>';
-    container.appendChild(moreBtn);
-
-    // Extra languages container (non-experimental, then experimental at bottom)
-    const extraContainer = document.createElement('div');
-    extraContainer.className = 'lang-toggles-extra';
-    extraContainer.id = 'langTogglesExtra';
-    extraContainer.style.display = langTogglesExpanded ? '' : 'none';
-    otherLangs.forEach(lang => extraContainer.appendChild(createLangToggle(lang)));
-    if (expLangs.length > 0) {
-        const expSection = document.createElement('div');
-        expSection.className = 'lang-toggles-experimental';
-        expLangs.forEach(lang => expSection.appendChild(createLangToggle(lang)));
-        extraContainer.appendChild(expSection);
+    // Show pills for enabled languages in LANGUAGES order
+    for (const lang of LANGUAGES) {
+        if (!enabledLangs.has(lang.code)) continue;
+        const pill = document.createElement('span');
+        pill.className = 'lang-pill' + (lang.experimental ? ' experimental' : '');
+        pill.textContent = langName(lang.code);
+        container.appendChild(pill);
     }
-    container.appendChild(extraContainer);
+    // "言語選択（全N言語）" button
+    const btn = document.createElement('button');
+    btn.className = 'btn-open-modal';
+    btn.id = 'btnOpenLangModal';
+    btn.textContent = t('selectLangs').replace('{n}', LANGUAGES.length);
+    btn.addEventListener('click', () => openLangModal());
+    container.appendChild(btn);
+}
 
-    moreBtn.addEventListener('click', () => {
-        langTogglesExpanded = !langTogglesExpanded;
-        extraContainer.style.display = langTogglesExpanded ? '' : 'none';
-        moreBtn.innerHTML = '<span>' + t(langTogglesExpanded ? 'showLess' : 'showMore') + '</span>';
+function openLangModal() {
+    modalPendingLangs = new Set(enabledLangs);
+    const body = document.getElementById('langModalBody');
+    body.innerHTML = '';
+
+    // Build groups preserving LANGUAGES order
+    const groups = [];
+    const groupMap = {};
+    for (const lang of LANGUAGES) {
+        if (!groupMap[lang.group]) {
+            groupMap[lang.group] = [];
+            groups.push(lang.group);
+        }
+        groupMap[lang.group].push(lang);
+    }
+    for (const groupCode of groups) {
+        const langs = groupMap[groupCode];
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'lang-group';
+
+        const header = document.createElement('span');
+        header.className = 'lang-group-label';
+        header.textContent = groupLabel(groupCode);
+        groupDiv.appendChild(header);
+
+        const toggles = document.createElement('div');
+        toggles.className = 'lang-group-toggles';
+        langs.forEach(lang => toggles.appendChild(createModalToggle(lang)));
+        groupDiv.appendChild(toggles);
+
+        body.appendChild(groupDiv);
+    }
+
+    const overlay = document.getElementById('langModalOverlay');
+    overlay.classList.add('open');
+    // Close on overlay background click
+    overlay.onclick = (e) => { if (e.target === overlay) closeLangModal(false); };
+}
+
+function closeLangModal(confirm) {
+    if (confirm && modalPendingLangs) {
+        // Find newly added languages
+        const added = [...modalPendingLangs].filter(c => !enabledLangs.has(c));
+        enabledLangs = modalPendingLangs;
+        // Insert newly enabled languages in default order
+        for (const code of added) {
+            insertLangInOrder(code);
+        }
+        updateLangSummary();
+        render();
+    }
+    modalPendingLangs = null;
+    document.getElementById('langModalOverlay').classList.remove('open');
+}
+
+function modalToggleAll(on) {
+    const body = document.getElementById('langModalBody');
+    if (on) {
+        modalPendingLangs = new Set(DEFAULT_ORDER);
+    } else {
+        modalPendingLangs = new Set();
+    }
+    body.querySelectorAll('.lang-toggle').forEach(label => {
+        const cb = label.querySelector('input');
+        if (!cb) return;
+        const code = cb.dataset.lang;
+        cb.checked = modalPendingLangs.has(code);
+        label.classList.toggle('active', modalPendingLangs.has(code));
     });
 }
 
