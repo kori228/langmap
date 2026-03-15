@@ -797,6 +797,21 @@ function resetOrder() {
 }
 
 // Main render
+function buildSegmentTooltip(sentence, segId) {
+    const refLangs = ['ja', 'zh', 'en', 'es_mx', 'ar'];
+    const labels = { ja: '日', zh: '中', en: '英', es_mx: '西', ar: '阿' };
+    const lines = [];
+    for (const lang of refLangs) {
+        const segs = sentence.langs[lang];
+        if (!segs) continue;
+        const texts = segs.filter(s => s[0] === segId).map(s => s[1]);
+        if (texts.length > 0) {
+            lines.push(`${labels[lang]}: ${texts.join(' ')}`);
+        }
+    }
+    return lines.join('\n');
+}
+
 function render() {
     const sentence = SENTENCES[currentSentenceIdx];
     if (!sentence) return;
@@ -875,11 +890,10 @@ function render() {
                     pair.appendChild(translitSpan);
                     seg.appendChild(pair);
                 });
-                seg.title = `${segId}: ${hiero} (${translit})`;
             } else {
                 seg.textContent = text;
-                seg.title = `${segId}: ${text}`;
             }
+            seg.title = buildSegmentTooltip(sentence, segId);
             textDiv.appendChild(seg);
 
             // Add space between segments
