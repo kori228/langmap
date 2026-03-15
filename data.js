@@ -139077,12 +139077,8 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
-          "J'"
-        ],
-        [
           "D",
-          "me sens heureux"
+          "J'me sens heureux"
         ],
         [
           "C",
