@@ -326,6 +326,94 @@ Use these predefined colors (add more if needed):
 sco（スコットランド語）, nap（ナポリ語）, ain（アイヌ語）, yue（広東語）
 ```
 
+#### Rule 11: 句読点はデータに含めず、レンダリングで処理する
+
+疑問符`?`、逆疑問符`¿`、感嘆符`!`等の句読点はセグメントデータに入れないでください。代わりに、文オブジェクトに `"type": "question"` 等を追加し、レンダリング側で自動付与します。
+
+```json
+❌ BAD:
+  "es_eu": [["C", "¿Dónde"], ["D", "está"], ...]
+
+✅ GOOD:
+  sentence: { "type": "question", ... }
+  "es_eu": [["C", "Dónde"], ["D", "está"], ...]
+```
+
+#### Rule 12: フランス語のJ'結合を分離する
+
+フランス語の `J'` (je の省略形) が動詞と結合している場合、`J'` をAセグメント（主語）として分離し、残りを動詞セグメントに入れてください。
+
+```
+❌ BAD:  [A]J'ai [C]perdu [B]mon portefeuille
+  → "J'ai" にI+have(助動詞)が結合
+
+✅ GOOD: [A]J' [C]ai perdu [B]mon portefeuille
+  → A=J'(主語), C=ai perdu(動詞)
+
+❌ BAD:  [D]J'apprends [C]à cuisiner
+✅ GOOD: [A]J' [D]apprends [C]à cuisiner
+```
+
+フランス語の倒置疑問文も分離してください:
+```
+❌ BAD:  [D]Pourriez-vous [C]me recommander
+✅ GOOD: [D]Pourriez [A]-vous [C]me recommander
+```
+
+#### Rule 13: 大文字は文頭セグメントのみ
+
+主語代名詞を追加した結果、動詞が2番目のセグメントになった場合、動詞の先頭を小文字にしてください。
+
+```
+❌ BAD:  [A]Yo [D]Tengo que [C]levantarme
+✅ GOOD: [A]Yo [D]tengo que [C]levantarme
+```
+
+#### Rule 14: 関係代名詞は独立セグメントにする
+
+関係節を含む文では、関係代名詞（which/that/den/que/yang/ที่等）を独立したセグメント（通常G）にしてください。ただし英語で省略されている場合（ゼロ関係代名詞）は追加不要です。
+
+```
+en:     [E]a suit [D]I saw          ← "which" 省略、Gなし
+de:     [E]einen Anzug [G]den [D]gesehen habe  ← den=関係代名詞
+fr:     [E]un costume [G]que [D]j'ai vu        ← que=関係代名詞
+id:     [E]jas [G]yang [D]saya lihat           ← yang=関係化辞
+th:     [E]สูท [G]ที่ [D]เห็น                    ← ที่=関係化辞
+ja:     [D]見た [E]スーツ                         ← 前置修飾、Gなし
+ko:     [D]본 [E]양복                             ← 前置修飾、Gなし
+```
+
+関係代名詞を持たない言語（日本語・韓国語・中国語等は前置修飾を使用）ではGセグメントは不要です。
+
+#### Rule 15: 構造が異なる概念は別セグメントで表現する
+
+同じ意味でも言語によって構造が異なる場合、構造ごとに異なるセグメントを割り当ててください。
+
+```
+S81 "今日は頭が痛い":
+  Segments: A=主語, B=頭, C=今日, D=痛い, E=頭痛, F=ある
+
+  「頭が痛い」構文 → B + D を使用:
+    ja: [A]私は [C]今日 [B]頭が [D]痛い
+    zh: [A]我 [C]今天 [B]头 [D]很痛
+    ru: [A]У меня [D]болит [B]голова [C]сегодня
+
+  「頭痛がある」構文 → E + F を使用:
+    en: [A]I [F]have [E]a headache [C]today
+    de: [A]Ich [F]habe [C]heute [E]Kopfschmerzen
+    ko: [C]오늘 [E]두통이 [F]있다
+```
+
+#### Rule 16: 複合セグメント（B|D形式）
+
+1つのテキストが複数のセグメント概念に対応する場合、`B|D` のようにパイプで区切ったIDを使用できます。レンダリングでは両色のグラデーションが表示され、線は両方のセグメント位置に接続されます。
+
+```json
+["B|D", "headache"]  // BとDの両方に対応
+```
+
+ただし、Rule 15のように構造ごとに別セグメントを割り当てる方が明確な場合は、そちらを優先してください。
+
 ---
 
 ## よくあるセグメントミスと修正事例
