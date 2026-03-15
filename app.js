@@ -1052,8 +1052,11 @@ function createCurvedLine(x1, y1, x2, y2, color) {
 function buildExportSVG() {
     const container = document.getElementById('mapContainer');
     const containerRect = container.getBoundingClientRect();
+    const langRows = document.getElementById('langRows');
     const w = container.scrollWidth;
-    const h = container.scrollHeight;
+    // Use actual content height (langRows) + padding, not scrollHeight which may include SVG overflow
+    const padding = 30; // matches CSS padding
+    const h = langRows ? langRows.offsetHeight + padding * 2 : container.scrollHeight;
 
     let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
     svgContent += `<rect width="${w}" height="${h}" fill="white"/>`;
@@ -1095,10 +1098,12 @@ function escapeXml(s) {
 function downloadAsPNG() {
     const svgData = buildExportSVG();
     const container = document.getElementById('mapContainer');
+    const langRows = document.getElementById('langRows');
+    const padding = 30;
     const scale = 2;
     const canvas = document.createElement('canvas');
     canvas.width = container.scrollWidth * scale;
-    canvas.height = container.scrollHeight * scale;
+    canvas.height = (langRows ? langRows.offsetHeight + padding * 2 : container.scrollHeight) * scale;
     const ctx = canvas.getContext('2d');
     ctx.scale(scale, scale);
 
