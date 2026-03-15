@@ -23,7 +23,22 @@ const UI_STRINGS = {
     sw: { title: 'LangMap', subtitle: 'Ramani ya Mpangilio wa Maneno', selectSentence: 'Chagua sentensi:', langToggle: 'Lugha:', langOrder: 'Mpangilio wa lugha', dragHint: 'buruta ili kupanga upya', defaultOrder: 'Mpangilio chaguo-msingi', random: 'Nasibu', prev: '◀', next: '▶', allOn: 'Zote ON', allOff: 'Zote OFF', savePng: 'Hifadhi PNG', saveSvg: 'Hifadhi SVG', copyUrl: 'Nakili URL', copied: 'URL imenakiliwa', uiLang: 'Lugha ya UI:', noLangSelected: 'Tafadhali chagua lugha angalau moja', selectLangs: 'Chagua lugha ({n})', selectLangsTitle: 'Chagua lugha', modalConfirm: 'Chagua', modalCancel: 'Ghairi', rtlNote: '※ Kiarabu na Kiebrania zinaonyeshwa kushoto→kulia kwa kulinganisha (kawaida zinasomwa kulia→kushoto)', rtlToggle: 'Onyesha mwelekeo asili (←)' },
 };
 
-let currentUILang = 'ja';
+function detectBrowserLang() {
+    const langs = navigator.languages || [navigator.language || 'ja'];
+    for (const lang of langs) {
+        const code = lang.toLowerCase().replace('-', '_');
+        if (UI_STRINGS[code]) return code;
+        const base = code.split('_')[0];
+        if (UI_STRINGS[base]) return base;
+        // Map common browser codes to our UI codes
+        for (const uiCode of Object.keys(UI_STRINGS)) {
+            if (uiCode.startsWith(base)) return uiCode;
+        }
+    }
+    return 'en';
+}
+
+let currentUILang = detectBrowserLang();
 
 function t(key) {
     return (UI_STRINGS[currentUILang] || UI_STRINGS.ja)[key] || UI_STRINGS.ja[key] || key;
@@ -156,63 +171,54 @@ let rtlNative = false; // true = show RTL languages in native reading direction
 
 const RTL_LANGS = new Set(['ar', 'ar_eg', 'he', 'fa']);
 
-// --- URL hash state management (ultra-compact encoding) ---
+// --- URL hash state management ---
+// New URLs use explicit key=value format for stability across language additions.
+// Old compact format (base62) is still decoded for backward compatibility.
+
 const DEFAULT_ENABLED = new Set(MAJOR_LANGS);
-
-const LANG_INDEX = Object.fromEntries(DEFAULT_ORDER.map((c, i) => [c, i]));
-const INDEX_LANG = DEFAULT_ORDER;
 const UI_LANG_CODES = Object.keys(UI_STRINGS);
-const UI_LANG_INDEX = Object.fromEntries(UI_LANG_CODES.map((c, i) => [c, i]));
-const NUM_LANGS = DEFAULT_ORDER.length;
 
-// Base62 encoding
-const B62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-function toB62(n) {
-    if (n === 0) return '0';
-    let s = '';
-    while (n > 0) { s = B62[n % 62] + s; n = Math.floor(n / 62); }
-    return s;
+// --- Stable URL generation (key=value format) ---
+function stateToHash() {
+    const parts = [];
+    parts.push('s=' + currentSentenceIdx);
+
+    // Always include enabled langs and their order for URL stability
+    const enabledOrder = langOrder.filter(c => enabledLangs.has(c));
+    parts.push('l=' + enabledOrder.join(','));
+
+    // Only include UI lang if not browser default
+    if (currentUILang !== detectBrowserLang()) {
+        parts.push('ui=' + currentUILang);
+    }
+
+    if (rtlNative) parts.push('rtl=1');
+
+    return parts.join('&');
 }
+
+// --- Frozen compact format decoder (backward compat for old URLs) ---
+// These indices were valid when compact URLs were generated.
+// NEVER modify this list — it exists solely to decode old URLs.
+const FROZEN_INDEX_LANG = ['ja','osa','hak','oki','aom','ja_edo','ko','kp','bus','mn','tr','zh','yue','nan','wuu','zh_classical','vi','vi_nom','th','my','id','ms','tl','sa','hi','ta','fa','ar','ar_eg','he','am','egy','sw','en','nl','de','ga','la','fr','it','es_eu','es_mx','pt_eu','pt_br','eu','ru','uk','pl','hu'];
+const FROZEN_LANG_INDEX = Object.fromEntries(FROZEN_INDEX_LANG.map((c, i) => [c, i]));
+const FROZEN_NUM_LANGS = FROZEN_INDEX_LANG.length;
+const FROZEN_UI_LANG_CODES = ['ja','ko','zh','yue','vi','th','id','hi','en','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+const FROZEN_LANG_BITS_MOD = Math.pow(2, FROZEN_NUM_LANGS);
+
+const B62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 function fromB62(s) {
     let n = 0;
     for (const c of s) { n = n * 62 + B62.indexOf(c); }
     return n;
 }
 
-// Mixed-radix pack: sentence(100) * langBits(2^NUM_LANGS) * uiLang(32) * rtl(2)
-// Use 2**i instead of 1<<i to avoid 32-bit signed integer overflow at i>=31
-const LANG_BITS_MOD = Math.pow(2, NUM_LANGS);
-function packCore() {
-    let langBits = 0;
-    for (const c of enabledLangs) {
-        const i = LANG_INDEX[c];
-        if (i !== undefined) langBits += 2 ** i;
-    }
-    const ui = UI_LANG_INDEX[currentUILang] || 0;
-    return currentSentenceIdx
-        + 100 * langBits
-        + 100 * LANG_BITS_MOD * ui
-        + 100 * LANG_BITS_MOD * 32 * (rtlNative ? 1 : 0);
-}
-
-function unpackCore(n) {
+function unpackCompact(n) {
     const s = n % 100; n = Math.floor(n / 100);
-    const langBits = n % LANG_BITS_MOD; n = Math.floor(n / LANG_BITS_MOD);
+    const langBits = n % FROZEN_LANG_BITS_MOD; n = Math.floor(n / FROZEN_LANG_BITS_MOD);
     const ui = n % 32; n = Math.floor(n / 32);
     const rtl = n % 2;
     return { s, langBits, ui, rtl };
-}
-
-function stateToHash() {
-    let hash = toB62(packCore());
-    // Only encode enabled languages' order (much shorter than full 28)
-    const enabledOrder = langOrder.filter(c => enabledLangs.has(c));
-    const defaultEnabledOrder = DEFAULT_ORDER.filter(c => enabledLangs.has(c));
-    const orderChanged = enabledOrder.join(',') !== defaultEnabledOrder.join(',');
-    if (orderChanged) {
-        hash += '-' + enabledOrder.map(c => B62[LANG_INDEX[c]]).join('');
-    }
-    return hash;
 }
 
 function updateURL() {
@@ -224,51 +230,69 @@ function loadFromHash() {
     const hash = location.hash.slice(1);
     if (!hash) return;
 
-    // Legacy format: key=value pairs
-    if (hash.includes('=')) { loadFromLegacyHash(hash); return; }
+    // Key=value format (stable, current): s=0&l=ja,ko&ui=en
+    if (hash.includes('=')) { loadFromKeyValue(hash); return; }
 
-    // Compact format: <base62packed>[-<order>]
+    // Old compact format (base62): decode with frozen indices for backward compat
+    loadFromCompact(hash);
+}
+
+function loadFromKeyValue(hash) {
+    const params = new URLSearchParams(hash);
+    if (params.has('s')) {
+        const idx = parseInt(params.get('s'));
+        if (idx >= 0 && idx < SENTENCES.length) currentSentenceIdx = idx;
+    }
+    if (params.has('l')) {
+        const codes = params.get('l').split(',').filter(c => DEFAULT_ORDER.includes(c));
+        if (codes.length > 0) enabledLangs = new Set(codes);
+    }
+    if (params.has('o')) {
+        const codes = params.get('o').split(',').filter(c => DEFAULT_ORDER.includes(c));
+        if (codes.length > 0) {
+            const orderedSet = new Set(codes);
+            const rest = DEFAULT_ORDER.filter(c => !orderedSet.has(c));
+            langOrder = [...codes, ...rest];
+        }
+    }
+    if (params.has('ui') && UI_STRINGS[params.get('ui')]) currentUILang = params.get('ui');
+    if (params.has('rtl')) rtlNative = params.get('rtl') === '1';
+}
+
+function loadFromCompact(hash) {
     const [packed, orderStr] = hash.split('-');
     const n = fromB62(packed);
-    const { s, langBits, ui, rtl } = unpackCore(n);
+    const { s, langBits, ui, rtl } = unpackCompact(n);
 
     if (s >= 0 && s < SENTENCES.length) currentSentenceIdx = s;
 
     const langs = new Set();
-    for (let i = 0; i < NUM_LANGS; i++) {
-        if (Math.floor(langBits / 2 ** i) % 2) langs.add(INDEX_LANG[i]);
+    for (let i = 0; i < FROZEN_NUM_LANGS; i++) {
+        if (Math.floor(langBits / 2 ** i) % 2) {
+            const code = FROZEN_INDEX_LANG[i];
+            if (DEFAULT_ORDER.includes(code)) langs.add(code);
+        }
     }
     if (langs.size > 0) enabledLangs = langs;
 
-    if (ui < UI_LANG_CODES.length) currentUILang = UI_LANG_CODES[ui];
+    if (ui < FROZEN_UI_LANG_CODES.length) {
+        const uiCode = FROZEN_UI_LANG_CODES[ui];
+        if (UI_STRINGS[uiCode]) currentUILang = uiCode;
+    }
     rtlNative = rtl === 1;
 
     if (orderStr) {
-        // Order string contains only enabled languages' order
         const orderedEnabled = [];
         for (const ch of orderStr) {
             const idx = B62.indexOf(ch);
-            if (idx >= 0 && idx < NUM_LANGS) orderedEnabled.push(INDEX_LANG[idx]);
+            if (idx >= 0 && idx < FROZEN_NUM_LANGS) {
+                const code = FROZEN_INDEX_LANG[idx];
+                if (DEFAULT_ORDER.includes(code)) orderedEnabled.push(code);
+            }
         }
         if (orderedEnabled.length > 0) {
-            // Rebuild full langOrder: place ordered enabled langs among disabled in default positions
-            const orderedSet = new Set(orderedEnabled);
             langOrder = [];
             let oi = 0;
-            for (const c of DEFAULT_ORDER) {
-                if (orderedSet.has(c)) {
-                    // Skip — will be inserted by enabled order
-                } else if (enabledLangs.has(c) && !orderedSet.has(c)) {
-                    // Enabled but not in order string — append at default position
-                    langOrder.push(c);
-                } else {
-                    langOrder.push(c);
-                }
-            }
-            // Now insert ordered enabled langs at correct positions
-            // Strategy: walk default order, replace enabled slots with orderedEnabled in sequence
-            langOrder = [];
-            oi = 0;
             for (const c of DEFAULT_ORDER) {
                 if (enabledLangs.has(c)) {
                     if (oi < orderedEnabled.length) {
@@ -278,33 +302,11 @@ function loadFromHash() {
                     langOrder.push(c);
                 }
             }
-            // Append any remaining
             while (oi < orderedEnabled.length) {
                 langOrder.push(orderedEnabled[oi++]);
             }
         }
     }
-
-}
-
-// Backward compat: old key=value format
-function loadFromLegacyHash(hash) {
-    const params = new URLSearchParams(hash);
-    if (params.has('s')) {
-        const idx = parseInt(params.get('s'));
-        if (!isNaN(idx) && idx >= 0 && idx < SENTENCES.length) currentSentenceIdx = idx;
-    }
-    if (params.has('l')) {
-        const val = params.get('l');
-        enabledLangs = val === '' ? new Set() : new Set(val.split(',').filter(c => DEFAULT_ORDER.includes(c)));
-    }
-    if (params.has('o')) {
-        const codes = params.get('o').split(',').filter(c => DEFAULT_ORDER.includes(c));
-        const missing = DEFAULT_ORDER.filter(c => !codes.includes(c));
-        if (codes.length > 0) langOrder = [...codes, ...missing];
-    }
-    if (params.has('ui') && UI_STRINGS[params.get('ui')]) currentUILang = params.get('ui');
-    if (params.has('rtl')) rtlNative = params.get('rtl') === '1';
 }
 
 // Reset all state to defaults
@@ -312,7 +314,7 @@ function resetToDefaults() {
     currentSentenceIdx = 0;
     enabledLangs = new Set(MAJOR_LANGS);
     langOrder = [...DEFAULT_ORDER];
-    currentUILang = 'ja';
+    currentUILang = detectBrowserLang();
     rtlNative = false;
     history.replaceState(null, '', location.pathname);
     syncUIFromState();
