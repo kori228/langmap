@@ -7073,7 +7073,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "と?"
+          "と"
         ]
       ],
       "ko_kp": [
@@ -7143,7 +7143,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "C",
-          "¿Dónde"
+          "Dónde"
         ],
         [
           "D",
@@ -7161,7 +7161,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "C",
-          "¿Dónde"
+          "Dónde"
         ],
         [
           "D",
@@ -7277,7 +7277,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dir?"
+          "dir"
         ]
       ],
       "mn": [
@@ -7295,7 +7295,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "байдаг вэ?"
+          "байдаг вэ"
         ]
       ],
       "fa": [
@@ -7453,7 +7453,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "van?"
+          "van"
         ]
       ],
       "nl": [
@@ -7543,7 +7543,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "asema?"
+          "asema"
         ]
       ],
       "cy": [
@@ -7738,10 +7738,6 @@ const SENTENCES = [
         [
           "C",
           "কোথায়"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "te": [
@@ -7795,7 +7791,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "არის?"
+          "არის"
         ]
       ],
       "km": [
@@ -7923,7 +7919,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "hólǫ́?"
+          "hólǫ́"
         ]
       ],
       "qu": [
@@ -7941,7 +7937,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "kashan?"
+          "kashan"
         ]
       ],
       "ja_kyo": [
@@ -8195,7 +8191,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ah?"
+          "ah"
         ]
       ],
       "hwc": [
@@ -8213,7 +8209,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "station?"
+          "station"
         ]
       ],
       "pcm": [
@@ -8231,7 +8227,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "station?"
+          "station"
         ]
       ],
       "tpi": [
@@ -8249,7 +8245,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "we?"
+          "we"
         ]
       ],
       "el_grc": [
@@ -8342,7 +8338,8 @@ const SENTENCES = [
           "තියෙන්නේ"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 5,
@@ -10099,7 +10096,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "shiok lah!"
+          "shiok lah"
         ]
       ],
       "hwc": [
@@ -17858,10 +17855,6 @@ const SENTENCES = [
         [
           "B",
           "anglais"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "it": [
@@ -18045,7 +18038,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ると?"
+          "ると"
         ]
       ],
       "ko_kp": [
@@ -18122,10 +18115,6 @@ const SENTENCES = [
       ],
       "es_eu": [
         [
-          "D",
-          "¿"
-        ],
-        [
           "A",
           "Usted"
         ],
@@ -18143,10 +18132,6 @@ const SENTENCES = [
         ]
       ],
       "es_mx": [
-        [
-          "D",
-          "¿"
-        ],
         [
           "A",
           "Usted"
@@ -18261,7 +18246,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "musun?"
+          "musun"
         ]
       ],
       "mn": [
@@ -18279,7 +18264,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "уу?"
+          "уу"
         ]
       ],
       "fa": [
@@ -18315,7 +18300,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ትችላለህ?"
+          "ትችላለህ"
         ]
       ],
       "ta": [
@@ -18333,7 +18318,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "முடியுமா?"
+          "முடியுமா"
         ]
       ],
       "tl": [
@@ -18437,7 +18422,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "beszélni?"
+          "beszélni"
         ]
       ],
       "nl": [
@@ -18527,7 +18512,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "englantia?"
+          "englantia"
         ]
       ],
       "cy": [
@@ -18744,10 +18729,6 @@ const SENTENCES = [
         [
           "C",
           "మాట్లాడగలరా"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "el": [
@@ -18783,7 +18764,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "შეგიძლიათ?"
+          "შეგიძლიათ"
         ]
       ],
       "km": [
@@ -18911,7 +18892,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "daʼ?"
+          "daʼ"
         ]
       ],
       "qu": [
@@ -18929,7 +18910,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "atinkichu?"
+          "atinkichu"
         ]
       ],
       "ja_kyo": [
@@ -19152,10 +19133,6 @@ const SENTENCES = [
         [
           "B",
           "anglais"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "sco": [
@@ -19191,7 +19168,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "or not?"
+          "or not"
         ]
       ],
       "hwc": [
@@ -19209,7 +19186,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "English?"
+          "English"
         ]
       ],
       "pcm": [
@@ -19227,7 +19204,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "English?"
+          "English"
         ]
       ],
       "tpi": [
@@ -19245,7 +19222,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "Inglis?"
+          "Inglis"
         ]
       ],
       "el_grc": [
@@ -19338,7 +19315,8 @@ const SENTENCES = [
           "පුළුවන්ද"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 11,
@@ -24641,7 +24619,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "lasin vettä?"
+          "lasin vettä"
         ]
       ],
       "cy": [
@@ -25289,7 +25267,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "can?"
+          "can"
         ]
       ],
       "hwc": [
@@ -29878,7 +29856,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "と?"
+          "と"
         ]
       ],
       "ko_kp": [
@@ -29940,7 +29918,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "¿A qué hora"
+          "A qué hora"
         ],
         [
           "C",
@@ -29954,7 +29932,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "¿A qué hora"
+          "A qué hora"
         ],
         [
           "C",
@@ -30051,10 +30029,6 @@ const SENTENCES = [
         [
           "C",
           "başlıyor"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "mn": [
@@ -30072,7 +30046,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "вэ?"
+          "вэ"
         ]
       ],
       "fa": [
@@ -30105,10 +30079,6 @@ const SENTENCES = [
         [
           "C",
           "ይጀምራል"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "ta": [
@@ -30123,10 +30093,6 @@ const SENTENCES = [
         [
           "C",
           "தொடங்கும்"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "tl": [
@@ -30222,7 +30188,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a film?"
+          "a film"
         ]
       ],
       "nl": [
@@ -30269,10 +30235,6 @@ const SENTENCES = [
         [
           "B",
           "ny sarimihetsika"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "ain": [
@@ -30304,7 +30266,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "alkaa?"
+          "alkaa"
         ]
       ],
       "cy": [
@@ -30483,10 +30445,6 @@ const SENTENCES = [
         [
           "C",
           "শুরু হয়"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "te": [
@@ -30501,10 +30459,6 @@ const SENTENCES = [
         [
           "C",
           "మొదలవుతుంది"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "el": [
@@ -30532,7 +30486,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "იწყება?"
+          "იწყება"
         ]
       ],
       "km": [
@@ -30656,7 +30610,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "daʼ?"
+          "daʼ"
         ]
       ],
       "qu": [
@@ -30674,7 +30628,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "kasqa?"
+          "kasqa"
         ]
       ],
       "ja_kyo": [
@@ -30912,7 +30866,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ah?"
+          "ah"
         ]
       ],
       "hwc": [
@@ -30930,7 +30884,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "start?"
+          "start"
         ]
       ],
       "pcm": [
@@ -30948,7 +30902,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "start?"
+          "start"
         ]
       ],
       "tpi": [
@@ -30966,7 +30920,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "long wanem taim?"
+          "long wanem taim"
         ]
       ],
       "el_grc": [
@@ -31043,7 +30997,8 @@ const SENTENCES = [
           "ගන්නේ"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 17,
@@ -45557,7 +45512,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ruokalistan?"
+          "ruokalistan"
         ]
       ],
       "cy": [
@@ -46189,7 +46144,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "can?"
+          "can"
         ]
       ],
       "hwc": [
@@ -52446,7 +52401,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "もらえんと?"
+          "もらえんと"
         ]
       ],
       "ko_kp": [
@@ -52520,7 +52475,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "D",
-          "¿Podría"
+          "Podría"
         ],
         [
           "A",
@@ -52542,7 +52497,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "¿Me podrías"
+          "Me podrías"
         ],
         [
           "C",
@@ -52597,10 +52552,6 @@ const SENTENCES = [
         [
           "B",
           "mkahawa mzuri"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "ja_edo": [
@@ -52642,7 +52593,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "misiniz?"
+          "misiniz"
         ]
       ],
       "mn": [
@@ -52656,7 +52607,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "чадах уу?"
+          "чадах уу"
         ]
       ],
       "fa": [
@@ -52684,7 +52635,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ይችላሉ?"
+          "ይችላሉ"
         ]
       ],
       "ta": [
@@ -52698,7 +52649,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "முடியுமா?"
+          "முடியுமா"
         ]
       ],
       "tl": [
@@ -52794,7 +52745,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ajánlani?"
+          "ajánlani"
         ]
       ],
       "nl": [
@@ -52872,7 +52823,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "hyvää ravintolaa?"
+          "hyvää ravintolaa"
         ]
       ],
       "cy": [
@@ -53085,10 +53036,6 @@ const SENTENCES = [
         [
           "C",
           "సిఫార్సు చేయగలరా"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "el": [
@@ -53124,7 +53071,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "შეგიძლიათ?"
+          "შეგიძლიათ"
         ]
       ],
       "km": [
@@ -53252,7 +53199,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "lá?"
+          "lá"
         ]
       ],
       "qu": [
@@ -53270,7 +53217,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "atiwaqchu?"
+          "atiwaqchu"
         ]
       ],
       "ja_kyo": [
@@ -53516,7 +53463,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "good restaurant or not?"
+          "good restaurant or not"
         ]
       ],
       "hwc": [
@@ -53534,7 +53481,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "one good restaurant?"
+          "one good restaurant"
         ]
       ],
       "pcm": [
@@ -53552,7 +53499,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "one good restaurant?"
+          "one good restaurant"
         ]
       ],
       "tpi": [
@@ -53570,7 +53517,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "wanpela gutpela ples kaikai?"
+          "wanpela gutpela ples kaikai"
         ]
       ],
       "el_grc": [
@@ -53659,7 +53606,8 @@ const SENTENCES = [
           "නිර්දේශ කරන්න පුළුවන්ද"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 29,
@@ -64116,7 +64064,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "slower a bit can?"
+          "slower a bit can"
         ]
       ],
       "hwc": [
@@ -73809,7 +73757,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "知っとう?"
+          "知っとう"
         ]
       ],
       "ko_kp": [
@@ -73903,7 +73851,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "E",
-          "¿Sabe"
+          "Sabe"
         ],
         [
           "A",
@@ -73929,7 +73877,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "¿Sabes"
+          "Sabes"
         ],
         [
           "C",
@@ -74049,7 +73997,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "musunuz?"
+          "musunuz"
         ]
       ],
       "mn": [
@@ -74067,7 +74015,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "мэдэх үү?"
+          "мэдэх үү"
         ]
       ],
       "fa": [
@@ -74103,7 +74051,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "ያውቃሉ?"
+          "ያውቃሉ"
         ]
       ],
       "ta": [
@@ -74121,7 +74069,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "தெரியுமா?"
+          "தெரியுமா"
         ]
       ],
       "tl": [
@@ -74237,7 +74185,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "a posta?"
+          "a posta"
         ]
       ],
       "nl": [
@@ -74318,10 +74266,6 @@ const SENTENCES = [
         [
           "B",
           "ny paositra"
-        ],
-        [
-          "A",
-          "?"
         ]
       ],
       "ain": [
@@ -74357,7 +74301,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "on?"
+          "on"
         ]
       ],
       "cy": [
@@ -74643,7 +74587,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "იცით?"
+          "იცით"
         ]
       ],
       "km": [
@@ -74783,7 +74727,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "béénízin daʼ?"
+          "béénízin daʼ"
         ]
       ],
       "qu": [
@@ -74805,7 +74749,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "yachankichu?"
+          "yachankichu"
         ]
       ],
       "ja_kyo": [
@@ -75107,7 +75051,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "or not?"
+          "or not"
         ]
       ],
       "hwc": [
@@ -75125,7 +75069,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "stay?"
+          "stay"
         ]
       ],
       "pcm": [
@@ -75147,7 +75091,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dey?"
+          "dey"
         ]
       ],
       "tpi": [
@@ -75169,7 +75113,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "we?"
+          "we"
         ]
       ],
       "el_grc": [
@@ -75278,7 +75222,8 @@ const SENTENCES = [
           "තියෙන්නේ"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 41,
@@ -92065,7 +92010,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "how to go airport?"
+          "how to go airport"
         ]
       ],
       "hwc": [
@@ -124467,7 +124412,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "吗？"
+          "吗"
         ]
       ],
       "yue": [
@@ -124489,7 +124434,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "嗎？"
+          "嗎"
         ]
       ],
       "zh_classical": [
@@ -124511,7 +124456,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "乎？"
+          "乎"
         ]
       ],
       "vi": [
@@ -124533,7 +124478,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "không?"
+          "không"
         ]
       ],
       "th": [
@@ -124569,7 +124514,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "di sini?"
+          "di sini"
         ]
       ],
       "hi": [
@@ -124587,7 +124532,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "बैठ सकता हूँ?"
+          "बैठ सकता हूँ"
         ]
       ],
       "en": [
@@ -124605,7 +124550,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_aave": [
@@ -124623,7 +124568,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_ie": [
@@ -124641,7 +124586,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_sco": [
@@ -124659,7 +124604,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_app": [
@@ -124677,7 +124622,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_south": [
@@ -124695,7 +124640,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "de": [
@@ -124713,7 +124658,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "sitzen?"
+          "sitzen"
         ]
       ],
       "fr": [
@@ -124727,7 +124672,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ici?"
+          "ici"
         ]
       ],
       "it": [
@@ -124745,7 +124690,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "qui?"
+          "qui"
         ]
       ],
       "ru": [
@@ -124763,7 +124708,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "здесь?"
+          "здесь"
         ]
       ],
       "uk": [
@@ -124781,7 +124726,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "тут?"
+          "тут"
         ]
       ],
       "ar": [
@@ -124809,7 +124754,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "כאן?"
+          "כאן"
         ]
       ],
       "vi_nom": [
@@ -124831,7 +124776,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "空？"
+          "空"
         ]
       ],
       "ja_osa": [
@@ -124969,7 +124914,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "¿Puedo"
+          "Puedo"
         ],
         [
           "C",
@@ -124987,7 +124932,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "¿Me puedo"
+          "Me puedo"
         ],
         [
           "C",
@@ -125079,7 +125024,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "miyim?"
+          "miyim"
         ]
       ],
       "mn": [
@@ -125093,7 +125038,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "болох уу?"
+          "болох уу"
         ]
       ],
       "fa": [
@@ -125121,7 +125066,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "እችላለሁ?"
+          "እችላለሁ"
         ]
       ],
       "ta": [
@@ -125132,10 +125077,6 @@ const SENTENCES = [
         [
           "C",
           "உட்காரலாமா"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "tl": [
@@ -125235,7 +125176,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "leülni?"
+          "leülni"
         ]
       ],
       "nl": [
@@ -125253,7 +125194,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "zitten?"
+          "zitten"
         ]
       ],
       "pl": [
@@ -125309,7 +125250,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "tähän?"
+          "tähän"
         ]
       ],
       "cy": [
@@ -125345,7 +125286,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'ere?"
+          "'ere"
         ]
       ],
       "en_ck": [
@@ -125363,7 +125304,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "'ere?"
+          "'ere"
         ]
       ],
       "sa": [
@@ -125485,7 +125426,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ing siki?"
+          "ing siki"
         ]
       ],
       "bn": [
@@ -125518,10 +125459,6 @@ const SENTENCES = [
         [
           "C",
           "కూర్చోవచ్చా"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "el": [
@@ -125553,7 +125490,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "შეიძლება?"
+          "შეიძლება"
         ]
       ],
       "km": [
@@ -125681,7 +125618,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "yáʼátsʼééh daʼ?"
+          "yáʼátsʼééh daʼ"
         ]
       ],
       "qu": [
@@ -125699,7 +125636,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "atiymanchu?"
+          "atiymanchu"
         ]
       ],
       "ja_kyo": [
@@ -125859,7 +125796,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ccà?"
+          "ccà"
         ]
       ],
       "scn": [
@@ -125877,7 +125814,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ccà?"
+          "ccà"
         ]
       ],
       "de_gsw": [
@@ -125895,7 +125832,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "sitze?"
+          "sitze"
         ]
       ],
       "fr_qc": [
@@ -125909,7 +125846,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "icitte?"
+          "icitte"
         ]
       ],
       "sco": [
@@ -125927,7 +125864,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "en_sg": [
@@ -125945,7 +125882,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "can or not?"
+          "can or not"
         ]
       ],
       "hwc": [
@@ -125963,7 +125900,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "hea?"
+          "hea"
         ]
       ],
       "pcm": [
@@ -125981,7 +125918,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "here?"
+          "here"
         ]
       ],
       "tpi": [
@@ -125999,7 +125936,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "hia?"
+          "hia"
         ]
       ],
       "el_grc": [
@@ -126035,7 +125972,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "sitta?"
+          "sitta"
         ]
       ],
       "no": [
@@ -126053,7 +125990,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "sitte?"
+          "sitte"
         ]
       ],
       "en_ang": [
@@ -126071,7 +126008,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "hēr?"
+          "hēr"
         ]
       ],
       "si": [
@@ -126085,10 +126022,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "වාඩි වෙන්න පුළුවන්ද?"
+          "වාඩි වෙන්න පුළුවන්ද"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 69,
@@ -177169,7 +177107,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "すると?"
+          "すると"
         ]
       ],
       "ko_kp": [
@@ -177239,7 +177177,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "C",
-          "¿Cuánto"
+          "Cuánto"
         ],
         [
           "D",
@@ -177257,7 +177195,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "C",
-          "¿Cuánto"
+          "Cuánto"
         ],
         [
           "D",
@@ -177354,10 +177292,6 @@ const SENTENCES = [
         [
           "C",
           "ne kadar"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "mn": [
@@ -177375,7 +177309,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "вэ?"
+          "вэ"
         ]
       ],
       "fa": [
@@ -177411,7 +177345,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ነው?"
+          "ነው"
         ]
       ],
       "ta": [
@@ -177429,7 +177363,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ஆகும்?"
+          "ஆகும்"
         ]
       ],
       "tl": [
@@ -177529,7 +177463,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "kerül?"
+          "kerül"
         ]
       ],
       "nl": [
@@ -177619,7 +177553,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "maksaa?"
+          "maksaa"
         ]
       ],
       "cy": [
@@ -177798,10 +177732,6 @@ const SENTENCES = [
         [
           "C",
           "কত"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "te": [
@@ -177816,10 +177746,6 @@ const SENTENCES = [
         [
           "C",
           "ఎంత"
-        ],
-        [
-          "D",
-          "?"
         ]
       ],
       "el": [
@@ -177851,7 +177777,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "რა ღირს?"
+          "რა ღირს"
         ]
       ],
       "km": [
@@ -177979,7 +177905,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "bééso bááh ályaa?"
+          "bééso bááh ályaa"
         ]
       ],
       "qu": [
@@ -177997,7 +177923,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "chanin?"
+          "chanin"
         ]
       ],
       "ja_kyo": [
@@ -178231,7 +178157,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ah?"
+          "ah"
         ]
       ],
       "hwc": [
@@ -178249,7 +178175,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "souvenir?"
+          "souvenir"
         ]
       ],
       "pcm": [
@@ -178267,7 +178193,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "souvenir?"
+          "souvenir"
         ]
       ],
       "tpi": [
@@ -178285,7 +178211,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "mani?"
+          "mani"
         ]
       ],
       "el_grc": [
@@ -178378,7 +178304,8 @@ const SENTENCES = [
           "වටින්නේ"
         ]
       ]
-    }
+    },
+    "type": "question"
   },
   {
     "id": 100,

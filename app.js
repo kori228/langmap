@@ -890,6 +890,14 @@ function render() {
             }
         });
 
+        // Add sentence-ending punctuation if applicable
+        if (sentence.type === 'question') {
+            const punct = document.createElement('span');
+            punct.className = 'segment-punct';
+            punct.textContent = '?';
+            textDiv.appendChild(punct);
+        }
+
         row.appendChild(textDiv);
 
         // Apply RTL native direction if toggled
@@ -904,7 +912,8 @@ function render() {
         copyBtn.title = t('copyText');
         copyBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const text = langData.map(seg => { const t = seg[1]; return t.includes('|') ? t.split('|')[0] : t; }).join(NO_SPACE_LANGS.has(code) ? '' : ' ');
+            let text = langData.map(seg => { const t = seg[1]; return t.includes('|') ? t.split('|')[0] : t; }).join(NO_SPACE_LANGS.has(code) ? '' : ' ');
+            if (sentence.type === 'question') text += '?';
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('copyToast');
                 toast.textContent = t('copiedText');
