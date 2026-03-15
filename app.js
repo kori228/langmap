@@ -1624,6 +1624,7 @@ function exitEditMode() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && editingRow) { exitEditMode(); return; }
     if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
+    if (document.getElementById('langModalOverlay')?.classList.contains('open')) return;
     if (e.key === 'ArrowLeft') prevSentence();
     if (e.key === 'ArrowRight') nextSentence();
     if (e.key === 'r' && !e.ctrlKey && !e.metaKey) randomSentence();
