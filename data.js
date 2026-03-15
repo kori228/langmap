@@ -7143,7 +7143,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "C",
-          "Dónde"
+          "¿Dónde"
         ],
         [
           "D",
@@ -7161,7 +7161,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "C",
-          "Dónde"
+          "¿Dónde"
         ],
         [
           "D",
@@ -18116,7 +18116,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Usted"
+          "¿Usted"
         ],
         [
           "D",
@@ -18134,7 +18134,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Usted"
+          "¿Usted"
         ],
         [
           "D",
@@ -29914,7 +29914,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "A qué hora"
+          "¿A qué hora"
         ],
         [
           "C",
@@ -29928,7 +29928,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "A qué hora"
+          "¿A qué hora"
         ],
         [
           "C",
@@ -52463,7 +52463,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "D",
-          "Podría"
+          "¿Podría"
         ],
         [
           "A",
@@ -52481,7 +52481,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "D",
-          "Podrías"
+          "¿Podrías"
         ],
         [
           "A",
@@ -73851,7 +73851,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "E",
-          "Sabe"
+          "¿Sabe"
         ],
         [
           "A",
@@ -73873,7 +73873,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "E",
-          "Sabes"
+          "¿Sabes"
         ],
         [
           "A",
@@ -124922,7 +124922,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Yo"
+          "¿Yo"
         ],
         [
           "D",
@@ -124940,7 +124940,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Yo"
+          "¿Yo"
         ],
         [
           "D",
@@ -177301,7 +177301,7 @@ const SENTENCES = [
       "es_eu": [
         [
           "C",
-          "Cuánto"
+          "¿Cuánto"
         ],
         [
           "D",
@@ -177319,7 +177319,7 @@ const SENTENCES = [
       "es_mx": [
         [
           "C",
-          "Cuánto"
+          "¿Cuánto"
         ],
         [
           "D",
