@@ -476,11 +476,11 @@ const SENTENCES = [
       "it": [
         [
           "A",
-          "Voglio"
+          "Io"
         ],
         [
           "F",
-          "provare"
+          "voglio provare"
         ],
         [
           "E",
@@ -840,11 +840,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "A",
-          "Quiero"
+          "Yo"
         ],
         [
           "F",
-          "probarme"
+          "quiero probarme"
         ],
         [
           "E",
@@ -866,11 +866,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "A",
-          "Quiero"
+          "Yo"
         ],
         [
           "F",
-          "probarme"
+          "quiero probarme"
         ],
         [
           "E",
@@ -2274,11 +2274,11 @@ const SENTENCES = [
       "nap": [
         [
           "A",
-          "Voglio"
+          "Io"
         ],
         [
           "F",
-          "pruvà"
+          "voglio pruvà"
         ],
         [
           "E",
@@ -2300,11 +2300,11 @@ const SENTENCES = [
       "scn": [
         [
           "A",
-          "Vògghiu"
+          "Iu"
         ],
         [
           "F",
-          "pruvari"
+          "vògghiu pruvari"
         ],
         [
           "E",
@@ -5079,7 +5079,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "desayuno"
+          "tomo"
+        ],
+        [
+          "B",
+          "el desayuno"
         ],
         [
           "D",
@@ -5097,7 +5101,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "desayuno"
+          "tomo"
+        ],
+        [
+          "B",
+          "el desayuno"
         ],
         [
           "D",
@@ -17859,11 +17867,15 @@ const SENTENCES = [
       "it": [
         [
           "D",
-          "Parla"
+          "Può"
         ],
         [
           "A",
           "lei"
+        ],
+        [
+          "C",
+          "parlare"
         ],
         [
           "B",
@@ -19077,11 +19089,15 @@ const SENTENCES = [
       "nap": [
         [
           "D",
-          "Parla"
+          "Putite"
         ],
         [
           "A",
-          "essa"
+          "vuje"
+        ],
+        [
+          "C",
+          "parlà"
         ],
         [
           "B",
@@ -19091,11 +19107,15 @@ const SENTENCES = [
       "scn": [
         [
           "D",
-          "Parra"
+          "Putiti"
         ],
         [
           "A",
-          "idda"
+          "vossia"
+        ],
+        [
+          "C",
+          "parrari"
         ],
         [
           "B",
@@ -40410,7 +40430,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "cenerò"
+          "cinirò"
         ],
         [
           "C",
@@ -152415,7 +152435,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "se resfrió"
+          "cogió"
+        ],
+        [
+          "B",
+          "un resfriado"
         ],
         [
           "D",
@@ -152429,7 +152453,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "se resfriO"
+          "se agarró"
+        ],
+        [
+          "B",
+          "un resfriado"
         ],
         [
           "D",
@@ -167315,7 +167343,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "se celebran muchos festivales"
+          "muchos festivales"
+        ],
+        [
+          "D",
+          "se celebran"
         ]
       ],
       "pt_eu": [
@@ -176983,7 +177015,11 @@ const SENTENCES = [
       "it": [
         [
           "C",
-          "Quanto costa"
+          "Quanto"
+        ],
+        [
+          "D",
+          "costa"
         ],
         [
           "A",
@@ -177203,7 +177239,11 @@ const SENTENCES = [
       "es_eu": [
         [
           "C",
-          "¿Cuánto cuesta"
+          "¿Cuánto"
+        ],
+        [
+          "D",
+          "cuesta"
         ],
         [
           "A",
@@ -177217,7 +177257,11 @@ const SENTENCES = [
       "es_mx": [
         [
           "C",
-          "¿Cuánto cuesta"
+          "¿Cuánto"
+        ],
+        [
+          "D",
+          "cuesta"
         ],
         [
           "A",
@@ -178089,7 +178133,11 @@ const SENTENCES = [
       "nap": [
         [
           "C",
-          "Quanto costa"
+          "Quanto"
+        ],
+        [
+          "D",
+          "costa"
         ],
         [
           "A",
@@ -178103,7 +178151,11 @@ const SENTENCES = [
       "scn": [
         [
           "C",
-          "Quantu costa"
+          "Quantu"
+        ],
+        [
+          "D",
+          "costa"
         ],
         [
           "A",
