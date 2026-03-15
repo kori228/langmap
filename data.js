@@ -146701,10 +146701,20 @@ const SENTENCES = [
       },
       "D": {
         "color": "#f39c12"
+      },
+      "E": {
+        "color": "#e67e22"
+      },
+      "F": {
+        "color": "#1abc9c"
       }
     },
     "langs": {
       "ja": [
+        [
+          "A",
+          "私は"
+        ],
         [
           "C",
           "今日"
@@ -146724,11 +146734,11 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B",
+          "E",
           "두통이"
         ],
         [
-          "D",
+          "F",
           "있다"
         ]
       ],
@@ -146850,11 +146860,11 @@ const SENTENCES = [
           "आज"
         ],
         [
-          "B",
+          "E",
           "सिरदर्द"
         ],
         [
-          "D",
+          "F",
           "है"
         ]
       ],
@@ -146864,11 +146874,11 @@ const SENTENCES = [
           "I"
         ],
         [
-          "D",
+          "F",
           "have"
         ],
         [
-          "B",
+          "E",
           "a headache"
         ],
         [
@@ -146972,7 +146982,7 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "D",
+          "F",
           "habe"
         ],
         [
@@ -146980,7 +146990,7 @@ const SENTENCES = [
           "heute"
         ],
         [
-          "B",
+          "E",
           "Kopfschmerzen"
         ]
       ],
@@ -146990,11 +147000,11 @@ const SENTENCES = [
           "J'"
         ],
         [
-          "D",
+          "F",
           "ai"
         ],
         [
-          "B",
+          "E",
           "mal à la tête"
         ],
         [
@@ -147008,11 +147018,11 @@ const SENTENCES = [
           "Io"
         ],
         [
-          "D",
+          "F",
           "ho"
         ],
         [
-          "B",
+          "E",
           "mal di testa"
         ],
         [
@@ -147058,11 +147068,11 @@ const SENTENCES = [
       ],
       "ar": [
         [
-          "D",
+          "F",
           "أعاني من"
         ],
         [
-          "B",
+          "E",
           "صداع"
         ],
         [
@@ -147072,15 +147082,11 @@ const SENTENCES = [
       ],
       "he": [
         [
-          "D",
-          "יש"
+          "F",
+          "יש לי"
         ],
         [
-          "A",
-          "לי"
-        ],
-        [
-          "B",
+          "E",
           "כאב ראש"
         ],
         [
@@ -147182,11 +147188,11 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B",
+          "E",
           "두통이"
         ],
         [
-          "D",
+          "F",
           "있다"
         ]
       ],
@@ -147232,11 +147238,11 @@ const SENTENCES = [
           "Yo"
         ],
         [
-          "D",
+          "F",
           "tengo"
         ],
         [
-          "B",
+          "E",
           "dolor de cabeza"
         ],
         [
@@ -147250,11 +147256,11 @@ const SENTENCES = [
           "Yo"
         ],
         [
-          "D",
+          "F",
           "traigo"
         ],
         [
-          "B",
+          "E",
           "dolor de cabeza"
         ],
         [
@@ -147268,11 +147274,11 @@ const SENTENCES = [
           "Eu"
         ],
         [
-          "D",
+          "F",
           "tenho"
         ],
         [
-          "B",
+          "E",
           "dor de cabeça"
         ],
         [
@@ -147286,11 +147292,11 @@ const SENTENCES = [
           "Eu"
         ],
         [
-          "D",
+          "F",
           "estou com"
         ],
         [
-          "B",
+          "E",
           "dor de cabeça"
         ],
         [
@@ -147301,14 +147307,10 @@ const SENTENCES = [
       "sw": [
         [
           "A",
-          "Ni"
+          "Nina"
         ],
         [
-          "D",
-          "na"
-        ],
-        [
-          "B",
+          "E",
           "maumivu ya kichwa"
         ],
         [
@@ -147332,33 +147334,29 @@ const SENTENCES = [
       ],
       "ar_eg": [
         [
-          "B",
-          "راسي"
+          "F",
+          "عندي"
         ],
         [
-          "D",
-          "بتوجعني"
+          "E",
+          "صداع"
         ],
         [
           "C",
-          "النهاردة"
+          "النهارده"
         ]
       ],
       "tr": [
         [
-          "A",
-          "Ben"
-        ],
-        [
           "C",
-          "bugün"
+          "Bugün"
         ],
         [
-          "B",
+          "E",
           "başım"
         ],
         [
-          "D",
+          "F",
           "ağrıyor"
         ]
       ],
@@ -147390,11 +147388,11 @@ const SENTENCES = [
           "امروز"
         ],
         [
-          "B",
+          "E",
           "سردرد"
         ],
         [
-          "D",
+          "F",
           "دارم"
         ]
       ],
@@ -147540,7 +147538,7 @@ const SENTENCES = [
           "Ik"
         ],
         [
-          "D",
+          "F",
           "heb"
         ],
         [
@@ -147548,7 +147546,7 @@ const SENTENCES = [
           "vandaag"
         ],
         [
-          "B",
+          "E",
           "hoofdpijn"
         ]
       ],
@@ -147732,11 +147730,11 @@ const SENTENCES = [
           "오늘"
         ],
         [
-          "B",
+          "E",
           "두통이"
         ],
         [
-          "D",
+          "F",
           "있다"
         ]
       ],
@@ -148114,11 +148112,11 @@ const SENTENCES = [
           "Io"
         ],
         [
-          "D",
+          "F",
           "tengo"
         ],
         [
-          "B",
+          "E",
           "mal 'e capa"
         ],
         [
@@ -148132,11 +148130,11 @@ const SENTENCES = [
           "Iu"
         ],
         [
-          "D",
+          "F",
           "haiu"
         ],
         [
-          "B",
+          "E",
           "mali di testa"
         ],
         [
