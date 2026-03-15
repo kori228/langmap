@@ -16,26 +16,29 @@ import json
 
 # All language codes
 REQUIRED_LANGS = {
-    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ain',
+    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ja_kyo', 'ja_hir', 'ain',
+    'mvi', 'rys',
     'ko', 'kp', 'bus', 'jeju',
-    'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'bo',
+    'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'zh_sc', 'zh_db', 'bo',
     'vi', 'vi_nom',
     'th', 'id', 'ms', 'tl', 'mg', 'my', 'jv', 'km', 'lo', 'mi', 'haw',
     'sa', 'hi', 'ta', 'fa', 'mn', 'tr', 'bn', 'ur', 'te', 'ka',
-    'ar', 'ar_eg', 'he', 'am', 'egy', 'sw', 'yo', 'zu',
-    'en', 'en_aave', 'en_south', 'en_app', 'en_ie', 'en_sco', 'en_yk', 'en_ck',
-    'nl', 'de',
+    'ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'he', 'am', 'egy', 'sw', 'yo', 'zu',
+    'en', 'en_aave', 'en_south', 'en_app', 'en_ie', 'en_sco', 'en_yk', 'en_ck', 'en_sg',
+    'sco', 'nl', 'de', 'gsw',
     'ga', 'cy', 'eu',
-    'la', 'fr', 'it', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
+    'la', 'fr', 'fr_qc', 'it', 'nap', 'scn', 'es_eu', 'es_mx', 'pt_eu', 'pt_br',
     'ru', 'uk', 'pl', 'fi', 'hu', 'el', 'hy',
     'nv', 'qu',
+    'hwc', 'pcm', 'tpi',
 }
 
 # Languages that do NOT use spaces between words
 NO_SPACE_LANGS = {
-    'ja', 'osa', 'aom', 'oki', 'ja_edo',
+    'ja', 'osa', 'aom', 'oki', 'hak', 'ja_edo', 'ja_kyo', 'ja_hir',
+    'mvi', 'rys',
     'ko', 'kp', 'bus',
-    'zh', 'yue', 'nan', 'wuu', 'zh_classical',
+    'zh', 'yue', 'nan', 'wuu', 'zh_classical', 'zh_sc', 'zh_db',
     'th',
     'vi_nom',
 }
