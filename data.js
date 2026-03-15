@@ -52226,12 +52226,12 @@ const SENTENCES = [
       ],
       "it": [
         [
-          "A",
-          "tu"
-        ],
-        [
           "D",
           "Potrebbe"
+        ],
+        [
+          "A",
+          "Lei"
         ],
         [
           "C",
@@ -52476,16 +52476,16 @@ const SENTENCES = [
       ],
       "es_mx": [
         [
+          "D",
+          "Podrías"
+        ],
+        [
           "A",
           "tú"
         ],
         [
-          "D",
-          "Me podrías"
-        ],
-        [
           "C",
-          "recomendar"
+          "recomendarme"
         ],
         [
           "B",
@@ -73542,12 +73542,12 @@ const SENTENCES = [
       ],
       "it": [
         [
-          "A",
-          "tu"
-        ],
-        [
           "E",
           "Sa"
+        ],
+        [
+          "A",
+          "Lei"
         ],
         [
           "C",
@@ -73856,12 +73856,12 @@ const SENTENCES = [
       ],
       "es_mx": [
         [
-          "A",
-          "tú"
-        ],
-        [
           "E",
           "Sabes"
+        ],
+        [
+          "A",
+          "tú"
         ],
         [
           "C",
