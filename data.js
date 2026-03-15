@@ -1268,8 +1268,12 @@ const SENTENCES = [
           "culaith"
         ],
         [
+          "G",
+          "a"
+        ],
+        [
           "D",
-          "a chonaic mé"
+          "chonaic mé"
         ],
         [
           "C",
@@ -1481,15 +1485,19 @@ const SENTENCES = [
         ],
         [
           "A",
-          "Fi"
+          "fi"
         ],
         [
           "E",
           "siwt"
         ],
         [
+          "G",
+          "a"
+        ],
+        [
           "D",
-          "a welais i"
+          "welais i"
         ],
         [
           "C",
@@ -2388,7 +2396,7 @@ const SENTENCES = [
           "aprobiere"
         ],
         [
-          "D",
+          "G",
           "wo"
         ],
         [
