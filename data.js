@@ -156485,7 +156485,7 @@ const SENTENCES = [
       ],
       "yo": [
         [
-          "A",
+          "D",
           "Mo"
         ],
         [
@@ -156493,7 +156493,7 @@ const SENTENCES = [
           "máa ń lo fóònù mi aláìlowó"
         ],
         [
-          "C",
+          "A",
           "ní gbogbo ọjọ́"
         ]
       ],
@@ -158257,7 +158257,7 @@ const SENTENCES = [
           "Àpù yìí"
         ],
         [
-          "B",
+          "D",
           "rọrùn"
         ],
         [
@@ -166279,7 +166279,7 @@ const SENTENCES = [
           "máa ń jẹ ààmàlà"
         ],
         [
-          "C",
+          "D",
           "ní àkókò ọdún tuntun Ṣáínà"
         ]
       ],
@@ -168063,15 +168063,15 @@ const SENTENCES = [
           "Ní orílẹ̀ èdè yìí"
         ],
         [
-          "B",
+          "C",
           "ọ̀pọ̀lọpọ̀ àjọyọ̀"
         ],
         [
-          "C",
+          "D",
           "máa ń wáyé"
         ],
         [
-          "D",
+          "B",
           "ní ìgbà ẹ̀rùn"
         ]
       ],
@@ -171017,7 +171017,7 @@ const SENTENCES = [
       ],
       "yo": [
         [
-          "A",
+          "C",
           "Mo"
         ],
         [
@@ -171025,7 +171025,7 @@ const SENTENCES = [
           "máa ń lọ sí ọ́fíìsì"
         ],
         [
-          "C",
+          "A",
           "lórí kẹ̀kẹ́"
         ]
       ],
@@ -172718,11 +172718,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "yà sí apá ọ̀tún"
-        ],
-        [
-          "C",
-          "ní ibi ìkọjá tó kàn"
+          "yà sí apá ọ̀tún ní ibi ìkọjá tó kàn"
         ]
       ],
       "zu": [
@@ -176234,11 +176230,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "fẹ́ pàṣẹ"
-        ],
-        [
-          "C",
-          "oúnjẹ yìí"
+          "fẹ́ pàṣẹ oúnjẹ yìí"
         ]
       ],
       "zu": [
@@ -179291,12 +179283,8 @@ const SENTENCES = [
       ],
       "yo": [
         [
-          "A",
-          "Ó ṣeun"
-        ],
-        [
           "B",
-          "fún gbogbo nǹkan"
+          "Ó ṣeun fún gbogbo nǹkan"
         ]
       ],
       "zu": [
