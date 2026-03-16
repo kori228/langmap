@@ -6039,11 +6039,11 @@ const SENTENCES = [
           "isidlo sasekuseni"
         ],
         [
-          "C",
+          "D",
           "njalo ekuseni"
         ],
         [
-          "D",
+          "E",
           "ngo-7"
         ]
       ],
@@ -7927,7 +7927,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "C",
           "Siphi"
         ],
         [
@@ -9796,7 +9796,7 @@ const SENTENCES = [
           "Leli khofi"
         ],
         [
-          "B",
+          "D",
           "limnandi"
         ],
         [
@@ -11644,11 +11644,11 @@ const SENTENCES = [
           "Ngifunda"
         ],
         [
-          "B",
+          "C",
           "isiJapane"
         ],
         [
-          "C",
+          "B",
           "enyuvesi"
         ]
       ],
@@ -11680,11 +11680,11 @@ const SENTENCES = [
           "au"
         ],
         [
-          "B",
+          "C",
           "i ka ʻōlelo Kepanī"
         ],
         [
-          "D",
+          "B",
           "ma ke kulanui"
         ]
       ],
@@ -13492,11 +13492,11 @@ const SENTENCES = [
           "lā"
         ],
         [
-          "A",
+          "B",
           "ka ʻāina o"
         ],
         [
-          "B",
+          "A",
           "ʻapōpō"
         ]
       ],
@@ -15280,7 +15280,7 @@ const SENTENCES = [
           "upheka isidlo sakusihlwa"
         ],
         [
-          "C",
+          "D",
           "nsuku zonke"
         ]
       ],
@@ -17100,7 +17100,7 @@ const SENTENCES = [
           "ukuya eJapani"
         ],
         [
-          "C",
+          "D",
           "ngonyaka ozayo"
         ]
       ],
@@ -17132,11 +17132,11 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "B",
           "e hele i Iāpana"
         ],
         [
-          "B",
+          "D",
           "i ka makahiki aʻe"
         ]
       ],
@@ -21260,14 +21260,10 @@ const SENTENCES = [
         ],
         [
           "B",
-          "incwadi entsha"
+          "incwadi entsha esitolo sezincwadi"
         ],
         [
-          "C",
-          "esitolo sezincwadi"
-        ],
-        [
-          "D",
+          "F",
           "izolo"
         ]
       ],
@@ -23299,7 +23295,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "C",
           "Izimbali ze-cherry"
         ],
         [
@@ -23307,7 +23303,7 @@ const SENTENCES = [
           "kule paki"
         ],
         [
-          "C",
+          "D",
           "zinhle"
         ]
       ],
@@ -23331,7 +23327,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "He nani"
         ],
         [
@@ -23339,7 +23335,7 @@ const SENTENCES = [
           "nā"
         ],
         [
-          "D",
+          "C",
           "pua sakura"
         ],
         [
@@ -25039,7 +25035,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "E ʻoluʻolu"
         ],
         [
@@ -25047,7 +25043,7 @@ const SENTENCES = [
           "e hāʻawi mai"
         ],
         [
-          "A",
+          "C",
           "i kekahi kīʻaha"
         ],
         [
@@ -27078,11 +27074,11 @@ const SENTENCES = [
           "emsebenzini"
         ],
         [
-          "C",
+          "D",
           "ngesitimela"
         ],
         [
-          "D",
+          "E",
           "nsuku zonke"
         ]
       ],
@@ -27118,11 +27114,11 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "B",
           "i ka hana"
         ],
         [
-          "B",
+          "D",
           "ma ke kaʻa ahi"
         ],
         [
@@ -28978,11 +28974,11 @@ const SENTENCES = [
           "Udadewethu omncane"
         ],
         [
-          "B",
+          "C",
           "ufunda"
         ],
         [
-          "C",
+          "B",
           "eFransi"
         ]
       ],
@@ -29014,11 +29010,11 @@ const SENTENCES = [
           "koʻu kaikaina"
         ],
         [
-          "B",
+          "C",
           "ma ka ʻāina ʻē"
         ],
         [
-          "D",
+          "B",
           "ma Palani"
         ]
       ],
@@ -30646,7 +30642,7 @@ const SENTENCES = [
           "kiʻiʻoniʻoni"
         ],
         [
-          "D",
+          "A",
           "i ka hola ʻehia"
         ]
       ],
@@ -36458,11 +36454,11 @@ const SENTENCES = [
           "Ngithanda"
         ],
         [
-          "B",
+          "C",
           "ukulalela"
         ],
         [
-          "C",
+          "B",
           "umculo"
         ]
       ],
@@ -36486,7 +36482,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -36494,7 +36490,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e hoʻolohe"
         ],
         [
@@ -38138,15 +38134,15 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "B",
           "Imvula"
         ],
         [
-          "B",
+          "C",
           "ilokhu ina"
         ],
         [
-          "C",
+          "A",
           "kusukela ekuseni namuhla"
         ]
       ],
@@ -40117,7 +40113,7 @@ const SENTENCES = [
           "Ngizodla"
         ],
         [
-          "B",
+          "D",
           "isidlo sakusihlwa"
         ],
         [
@@ -40125,7 +40121,7 @@ const SENTENCES = [
           "nabangani"
         ],
         [
-          "D",
+          "B",
           "namhlanje ebusuku"
         ]
       ],
@@ -40153,7 +40149,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "E ʻai"
         ],
         [
@@ -40165,11 +40161,11 @@ const SENTENCES = [
           "i ka ʻaina ahiahi"
         ],
         [
-          "B",
+          "C",
           "me nā hoaaloha"
         ],
         [
-          "E",
+          "B",
           "i kēia pō"
         ]
       ],
@@ -44204,15 +44200,15 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Aia"
         ],
         [
-          "D",
+          "B",
           "ma ka ʻaoʻao"
         ],
         [
-          "B",
+          "C",
           "o ka haukapila"
         ],
         [
@@ -45900,7 +45896,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "E ʻoluʻolu"
         ],
         [
@@ -45908,12 +45904,8 @@ const SENTENCES = [
           "e hōʻike mai"
         ],
         [
-          "A",
-          "i ka"
-        ],
-        [
-          "B",
-          "papa kaukau"
+          "C",
+          "i ka papa kaukau"
         ]
       ],
       "bo": [
@@ -49667,11 +49659,11 @@ const SENTENCES = [
           "Izingane"
         ],
         [
-          "B",
+          "C",
           "zidlala"
         ],
         [
-          "C",
+          "B",
           "epaki"
         ]
       ],
@@ -51487,7 +51479,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua hele"
         ],
         [
@@ -51499,7 +51491,7 @@ const SENTENCES = [
           "i Tōkiō"
         ],
         [
-          "D",
+          "C",
           "ʻekolu manawa"
         ]
       ],
@@ -53215,11 +53207,11 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Hiki iā ʻoe"
         ],
         [
-          "D",
+          "C",
           "ke paipai mai"
         ],
         [
@@ -55008,11 +55000,11 @@ const SENTENCES = [
           "iaʻu"
         ],
         [
-          "D",
+          "B",
           "koʻu māmalu"
         ],
         [
-          "B",
+          "D",
           "ma ke kaʻa ahi"
         ]
       ],
@@ -57068,18 +57060,14 @@ const SENTENCES = [
       "haw": [
         [
           "C",
-          "Hiki iā ia"
+          "Hiki iā ia ke hoʻokani"
         ],
         [
-          "D",
-          "ke hoʻokani"
-        ],
-        [
-          "A",
+          "B",
           "i ka piano"
         ],
         [
-          "E",
+          "D",
           "he maikaʻi loa"
         ]
       ],
@@ -58668,12 +58656,8 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
-          "ʻO ka hoʻokolokolo"
-        ],
-        [
           "A",
-          "ma ka"
+          "ʻO ka hoʻokolokolo ma ka"
         ],
         [
           "B",
@@ -60523,7 +60507,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Makemake"
         ],
         [
@@ -62355,20 +62339,16 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "He maʻemaʻe"
         ],
         [
-          "D",
+          "C",
           "loa"
         ],
         [
           "A",
-          "ka lumi"
-        ],
-        [
-          "B",
-          "o ka hōkele"
+          "ka lumi o ka hōkele"
         ]
       ],
       "bo": [
@@ -63872,11 +63852,11 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "E ʻoluʻolu"
         ],
         [
-          "A",
+          "C",
           "e ʻōlelo"
         ],
         [
@@ -65297,7 +65277,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "B",
           "Ua male"
         ],
         [
@@ -65305,7 +65285,7 @@ const SENTENCES = [
           "koʻu kaikunāne"
         ],
         [
-          "B",
+          "C",
           "i ka mahina i hala"
         ]
       ],
@@ -66965,7 +66945,7 @@ const SENTENCES = [
           "Abantu abaningi"
         ],
         [
-          "B",
+          "D",
           "bakhona"
         ],
         [
@@ -66993,11 +66973,11 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "He nui"
         ],
         [
-          "D",
+          "B",
           "nā kānaka"
         ],
         [
@@ -70673,11 +70653,11 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "B",
           "Ukushona kwelanga"
         ],
         [
-          "B",
+          "A",
           "kusukela lapha"
         ],
         [
@@ -70705,11 +70685,11 @@ const SENTENCES = [
           "He nani"
         ],
         [
-          "A",
+          "B",
           "ka napanapa o ka lā"
         ],
         [
-          "B",
+          "A",
           "mai ʻaneʻi"
         ]
       ],
@@ -72596,7 +72576,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "E",
           "Kumele"
         ],
         [
@@ -72628,7 +72608,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Pono"
         ],
         [
@@ -72644,7 +72624,7 @@ const SENTENCES = [
           "i kakahiaka nui"
         ],
         [
-          "E",
+          "C",
           "ʻapōpō"
         ]
       ],
@@ -74743,7 +74723,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Ua ʻike"
         ],
         [
@@ -79199,11 +79179,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "egqoke ingubo ebomvu"
-        ],
-        [
-          "C",
-          "njalo"
+          "egqoke ingubo ebomvu njalo"
         ]
       ],
       "mi": [
@@ -79234,7 +79210,7 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "E",
           "i kekahi lole ʻulaʻula"
         ],
         [
@@ -80863,11 +80839,11 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "B",
           "Ukudla"
         ],
         [
-          "B",
+          "A",
           "kule ndawo yokudlela"
         ],
         [
@@ -80895,11 +80871,11 @@ const SENTENCES = [
           "He ʻono"
         ],
         [
-          "A",
+          "B",
           "ka ʻai"
         ],
         [
-          "B",
+          "A",
           "o kēia hale ʻaina"
         ]
       ],
@@ -82543,11 +82519,11 @@ const SENTENCES = [
           "Ngifuna"
         ],
         [
-          "B",
+          "C",
           "ukuhamba"
         ],
         [
-          "C",
+          "B",
           "umhlaba wonke"
         ]
       ],
@@ -82571,7 +82547,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -82579,7 +82555,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e huakaʻi"
         ],
         [
@@ -84312,11 +84288,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "kuyabanda"
-        ],
-        [
-          "C",
-          "ebusika"
+          "kuyabanda ebusika"
         ]
       ],
       "mi": [
@@ -86422,7 +86394,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Ua kamaʻilio"
         ],
         [
@@ -86430,15 +86402,15 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "B",
           "me koʻu hoaaloha"
         ],
         [
-          "B",
+          "C",
           "ma ke kelepona"
         ],
         [
-          "E",
+          "D",
           "no hoʻokahi hola"
         ]
       ],
@@ -88334,7 +88306,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua wehewehe"
         ],
         [
@@ -88342,11 +88314,11 @@ const SENTENCES = [
           "ke kumu"
         ],
         [
-          "D",
+          "B",
           "i ka pilikia"
         ],
         [
-          "B",
+          "C",
           "me ka maopopo"
         ]
       ],
@@ -91770,7 +91742,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "E ʻoluʻolu"
         ],
         [
@@ -91778,7 +91750,7 @@ const SENTENCES = [
           "e haʻi mai"
         ],
         [
-          "A",
+          "C",
           "ke ala"
         ],
         [
@@ -93394,7 +93366,7 @@ const SENTENCES = [
           "Inja yami"
         ],
         [
-          "B",
+          "D",
           "ithanda"
         ],
         [
@@ -96970,7 +96942,7 @@ const SENTENCES = [
           "yisikhwama sami semali"
         ],
         [
-          "C",
+          "D",
           "emakethe"
         ]
       ],
@@ -96999,11 +96971,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ma ka"
-        ],
-        [
-          "A",
-          "mākeke"
+          "ma ka mākeke"
         ]
       ],
       "bo": [
@@ -98511,11 +98479,11 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "B",
           "Izimbali"
         ],
         [
-          "B",
+          "A",
           "engadini"
         ],
         [
@@ -100191,16 +100159,12 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "D",
           "Kumele"
         ],
         [
           "B",
-          "sivikele"
-        ],
-        [
-          "C",
-          "imvelo"
+          "sivikele imvelo"
         ]
       ],
       "mi": [
@@ -101995,7 +101959,7 @@ const SENTENCES = [
           "izinkomishi ezimbili zekhofi"
         ],
         [
-          "C",
+          "D",
           "nsuku zonke"
         ]
       ],
@@ -103807,7 +103771,7 @@ const SENTENCES = [
           "Ikhonsathi"
         ],
         [
-          "B",
+          "D",
           "iqala"
         ],
         [
@@ -105647,7 +105611,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "ʻŌlelo mākaukau"
         ],
         [
@@ -107687,11 +107651,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ukuthatha isithombe"
-        ],
-        [
-          "C",
-          "saleli thempeli"
+          "ukuthatha isithombe saleli thempeli"
         ]
       ],
       "mi": [
@@ -109311,11 +109271,11 @@ const SENTENCES = [
           "Ibhasi"
         ],
         [
-          "B",
+          "C",
           "lifika"
         ],
         [
-          "C",
+          "B",
           "njalo ngemizuzu eyi-15"
         ]
       ],
@@ -110983,11 +110943,11 @@ const SENTENCES = [
           "Ngifunda"
         ],
         [
-          "B",
+          "C",
           "ukupheka"
         ],
         [
-          "C",
+          "B",
           "ukudla kwaseKorea"
         ]
       ],
@@ -113034,11 +112994,11 @@ const SENTENCES = [
           "efika sekwephuzile"
         ],
         [
-          "C",
+          "D",
           "emihlanganweni"
         ],
         [
-          "D",
+          "B",
           "njalo"
         ]
       ],
@@ -116842,15 +116802,15 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "B",
           "Izinyoni"
         ],
         [
-          "B",
+          "C",
           "ziyacula"
         ],
         [
-          "C",
+          "A",
           "ezihlahleni"
         ]
       ],
@@ -120561,7 +120521,7 @@ const SENTENCES = [
           "Unginike"
         ],
         [
-          "B",
+          "D",
           "isipho"
         ],
         [
@@ -122206,11 +122166,11 @@ const SENTENCES = [
           "Intaba"
         ],
         [
-          "B",
+          "C",
           "imbozwe"
         ],
         [
-          "C",
+          "B",
           "ngungqoqwane"
         ]
       ],
@@ -128948,11 +128908,11 @@ const SENTENCES = [
           "Isitolo"
         ],
         [
-          "B",
+          "C",
           "sivala"
         ],
         [
-          "C",
+          "B",
           "ngo-9 ebusuku"
         ]
       ],
@@ -134240,15 +134200,15 @@ const SENTENCES = [
           "Ikati lami"
         ],
         [
-          "B",
+          "D",
           "lilala"
         ],
         [
-          "C",
+          "B",
           "embhedeni wami"
         ],
         [
-          "D",
+          "C",
           "njalo ebusuku"
         ]
       ],
@@ -137206,11 +137166,11 @@ const SENTENCES = [
           "Izingane"
         ],
         [
-          "B",
+          "C",
           "zifunda"
         ],
         [
-          "C",
+          "B",
           "ukubhukuda"
         ]
       ],
@@ -142051,7 +142011,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "D",
           "Ngicabanga"
         ],
         [
@@ -144074,12 +144034,8 @@ const SENTENCES = [
           "Udabukile"
         ],
         [
-          "B",
-          "ngoba"
-        ],
-        [
           "C",
-          "umngani wakhe uhambile"
+          "ngoba umngani wakhe uhambile"
         ]
       ],
       "mi": [
@@ -146201,7 +146157,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "he waiwai"
         ],
         [
@@ -151495,11 +151451,11 @@ const SENTENCES = [
           "Ngizama"
         ],
         [
-          "B",
+          "C",
           "ukuzivocavoca"
         ],
         [
-          "C",
+          "B",
           "njalo ekuseni"
         ]
       ],
@@ -153223,7 +153179,7 @@ const SENTENCES = [
           "umkhuhlane"
         ],
         [
-          "C",
+          "D",
           "ngesonto eledlule"
         ]
       ],
@@ -154919,7 +154875,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "D",
           "Kufanele"
         ],
         [
@@ -156623,7 +156579,7 @@ const SENTENCES = [
           "i-smartphone yami"
         ],
         [
-          "C",
+          "A",
           "nsuku zonke"
         ]
       ],
@@ -158387,7 +158343,7 @@ const SENTENCES = [
           "Leli app"
         ],
         [
-          "B",
+          "D",
           "lilula"
         ],
         [
@@ -166409,7 +166365,7 @@ const SENTENCES = [
           "amadombolo"
         ],
         [
-          "C",
+          "D",
           "ngonyaka omusha wamaShayina"
         ]
       ],
@@ -168201,15 +168157,15 @@ const SENTENCES = [
           "Kuleli zwe"
         ],
         [
-          "B",
+          "C",
           "imigubho eminingi"
         ],
         [
-          "C",
+          "D",
           "ibanjelwa"
         ],
         [
-          "D",
+          "B",
           "ehlobo"
         ]
       ],
@@ -171151,7 +171107,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "C",
           "Ngiya"
         ],
         [
@@ -171159,7 +171115,7 @@ const SENTENCES = [
           "ehhovisi"
         ],
         [
-          "C",
+          "A",
           "ngebhayisikili"
         ]
       ],
@@ -172856,11 +172812,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "uphenduke ngakwesokudla"
-        ],
-        [
-          "C",
-          "esiphambanweni esilandelayo"
+          "uphenduke ngakwesokudla esiphambanweni esilandelayo"
         ]
       ],
       "mi": [
@@ -176379,11 +176331,11 @@ const SENTENCES = [
           "Ngifuna"
         ],
         [
-          "B",
+          "C",
           "uku-oda"
         ],
         [
-          "C",
+          "B",
           "lesi sidlo"
         ]
       ],
@@ -178055,7 +178007,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "C",
           "Malini"
         ],
         [
@@ -179437,12 +179389,8 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
-          "Ngiyabonga"
-        ],
-        [
           "B",
-          "ngakho konke"
+          "Ngiyabonga ngakho konke"
         ]
       ],
       "mi": [
