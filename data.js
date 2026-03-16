@@ -6991,11 +6991,11 @@ const SENTENCES = [
           "est"
         ],
         [
-          "A",
+          "B",
           "la gare"
         ],
         [
-          "B",
+          "A",
           "la plus proche"
         ]
       ],
@@ -7009,11 +7009,11 @@ const SENTENCES = [
           "è"
         ],
         [
-          "A",
+          "B",
           "la stazione"
         ],
         [
-          "B",
+          "A",
           "più vicina"
         ]
       ],
@@ -7081,11 +7081,11 @@ const SENTENCES = [
           "נמצאת"
         ],
         [
-          "A",
+          "B",
           "התחנה"
         ],
         [
-          "B",
+          "A",
           "הקרובה ביותר"
         ]
       ],
@@ -7253,11 +7253,11 @@ const SENTENCES = [
           "está"
         ],
         [
-          "A",
+          "B",
           "la estación"
         ],
         [
-          "B",
+          "A",
           "más cercana"
         ]
       ],
@@ -7271,11 +7271,11 @@ const SENTENCES = [
           "está"
         ],
         [
-          "A",
+          "B",
           "la estación"
         ],
         [
-          "B",
+          "A",
           "más cercana"
         ]
       ],
@@ -7289,11 +7289,11 @@ const SENTENCES = [
           "fica"
         ],
         [
-          "A",
+          "B",
           "a estação"
         ],
         [
-          "B",
+          "A",
           "mais próxima"
         ]
       ],
@@ -7307,11 +7307,11 @@ const SENTENCES = [
           "fica"
         ],
         [
-          "A",
+          "B",
           "a estação"
         ],
         [
-          "B",
+          "A",
           "mais próxima"
         ]
       ],
@@ -7351,10 +7351,6 @@ const SENTENCES = [
         [
           "C",
           "فين"
-        ],
-        [
-          "D",
-          "أقرب"
         ],
         [
           "A",
@@ -7917,7 +7913,7 @@ const SENTENCES = [
       ],
       "yo": [
         [
-          "A",
+          "C",
           "Níbo"
         ],
         [
@@ -8199,11 +8195,11 @@ const SENTENCES = [
           "è"
         ],
         [
-          "A",
+          "B",
           "la stazione"
         ],
         [
-          "B",
+          "A",
           "cchiù vicina"
         ]
       ],
@@ -8217,11 +8213,11 @@ const SENTENCES = [
           "è"
         ],
         [
-          "A",
+          "B",
           "la stazione"
         ],
         [
-          "B",
+          "A",
           "cchiù vicina"
         ]
       ],
@@ -8253,11 +8249,11 @@ const SENTENCES = [
           "est"
         ],
         [
-          "A",
+          "B",
           "la gare"
         ],
         [
-          "B",
+          "A",
           "la plus proche"
         ]
       ],
@@ -9186,11 +9182,11 @@ const SENTENCES = [
           "القهوة"
         ],
         [
-          "C",
+          "D",
           "حلوة"
         ],
         [
-          "D",
+          "C",
           "أوي"
         ]
       ],
@@ -20413,11 +20409,11 @@ const SENTENCES = [
           "أنا"
         ],
         [
-          "D",
+          "E",
           "كتاب"
         ],
         [
-          "E",
+          "D",
           "جديد"
         ],
         [
@@ -30080,16 +30076,12 @@ const SENTENCES = [
       ],
       "ar_eg": [
         [
-          "A",
+          "B",
           "الفيلم بيبدأ"
         ],
         [
-          "C",
-          "الساعة"
-        ],
-        [
-          "B",
-          "كام؟"
+          "A",
+          "الساعة كام؟"
         ]
       ],
       "tr": [
@@ -33980,19 +33972,19 @@ const SENTENCES = [
       ],
       "ar_eg": [
         [
-          "A",
+          "B",
           "الشنطة"
         ],
         [
-          "B",
+          "A",
           "دي"
         ],
         [
-          "C",
+          "D",
           "غالية"
         ],
         [
-          "D",
+          "C",
           "أوي"
         ]
       ],
@@ -40075,7 +40067,7 @@ const SENTENCES = [
           "Mo"
         ],
         [
-          "B",
+          "E",
           "máa jẹ oúnjẹ alẹ́"
         ],
         [
@@ -43574,7 +43566,7 @@ const SENTENCES = [
           "المكتبة"
         ],
         [
-          "D",
+          "B",
           "جنب"
         ],
         [
@@ -47157,11 +47149,11 @@ const SENTENCES = [
           "في"
         ],
         [
-          "C",
+          "D",
           "شركة"
         ],
         [
-          "D",
+          "C",
           "كبيرة"
         ]
       ],
@@ -119751,11 +119743,11 @@ const SENTENCES = [
       ],
       "ar_eg": [
         [
-          "E",
+          "A",
           "هي"
         ],
         [
-          "A",
+          "E",
           "ادّتني"
         ],
         [
@@ -141933,12 +141925,8 @@ const SENTENCES = [
       ],
       "yo": [
         [
-          "A",
-          "Mo"
-        ],
-        [
-          "B",
-          "rò pé"
+          "D",
+          "Mo rò pé"
         ],
         [
           "C",
@@ -147841,7 +147829,7 @@ const SENTENCES = [
           "Orí"
         ],
         [
-          "B",
+          "F",
           "ń fọ́ mi"
         ],
         [
@@ -154793,11 +154781,11 @@ const SENTENCES = [
           "O"
         ],
         [
-          "B",
+          "D",
           "yẹ kí o mu omi"
         ],
         [
-          "C",
+          "B",
           "sí i"
         ]
       ],
@@ -173937,7 +173925,7 @@ const SENTENCES = [
           "السوبر ماركت"
         ],
         [
-          "D",
+          "B",
           "ورا"
         ],
         [
@@ -177905,7 +177893,7 @@ const SENTENCES = [
           "Ẹ̀yà ìrántí yìí"
         ],
         [
-          "B",
+          "C",
           "jẹ́ ẹlọ́"
         ]
       ],
