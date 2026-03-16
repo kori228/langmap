@@ -4,22 +4,25 @@ const SENTENCES = [
     "title": "I want to try on a suit I saw in a shop across from the hotel",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#1098ad"
+      },
+      "G": {
+        "color": "#c2255c"
       }
     },
     "langs": {
@@ -167,6 +170,10 @@ const SENTENCES = [
           "bộ vest"
         ],
         [
+          "G",
+          "mà"
+        ],
+        [
           "D",
           "tôi đã thấy"
         ],
@@ -193,8 +200,12 @@ const SENTENCES = [
           "สูท"
         ],
         [
+          "G",
+          "ที่"
+        ],
+        [
           "D",
-          "ที่เห็น"
+          "เห็น"
         ],
         [
           "C",
@@ -219,8 +230,12 @@ const SENTENCES = [
           "jas"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang saya lihat"
+          "saya lihat"
         ],
         [
           "C",
@@ -431,7 +446,7 @@ const SENTENCES = [
           "anprobieren"
         ],
         [
-          "D",
+          "G",
           "den"
         ],
         [
@@ -461,8 +476,12 @@ const SENTENCES = [
           "un costume"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que j' ai vu"
+          "j'ai vu"
         ],
         [
           "C",
@@ -487,8 +506,12 @@ const SENTENCES = [
           "un abito"
         ],
         [
+          "G",
+          "che"
+        ],
+        [
           "D",
-          "che ho visto"
+          "ho visto"
         ],
         [
           "C",
@@ -513,8 +536,12 @@ const SENTENCES = [
           "костюм"
         ],
         [
+          "G",
+          "который"
+        ],
+        [
           "D",
-          "который я увидел"
+          "я увидел"
         ],
         [
           "C",
@@ -539,8 +566,12 @@ const SENTENCES = [
           "костюм"
         ],
         [
+          "G",
+          "який"
+        ],
+        [
           "D",
-          "який я побачив"
+          "я побачив"
         ],
         [
           "C",
@@ -617,12 +648,16 @@ const SENTENCES = [
           "部𥿭"
         ],
         [
+          "G",
+          "𡃖"
+        ],
+        [
           "D",
           "碎㐌𧡊"
         ],
         [
           "C",
-          "𥪝𠬠𨷲行"
+          "𥪞𠬠𨷲行"
         ],
         [
           "B",
@@ -851,8 +886,12 @@ const SENTENCES = [
           "un traje"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -877,8 +916,12 @@ const SENTENCES = [
           "un traje"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -903,8 +946,12 @@ const SENTENCES = [
           "um fato"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -929,8 +976,12 @@ const SENTENCES = [
           "um terno"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que vi"
+          "vi"
         ],
         [
           "C",
@@ -1185,8 +1236,12 @@ const SENTENCES = [
           "sut"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang saya lihat"
+          "saya lihat"
         ],
         [
           "C",
@@ -1233,8 +1288,12 @@ const SENTENCES = [
           "culaith"
         ],
         [
+          "G",
+          "a"
+        ],
+        [
           "D",
-          "a chonaic mé"
+          "chonaic mé"
         ],
         [
           "C",
@@ -1319,7 +1378,7 @@ const SENTENCES = [
           "passen"
         ],
         [
-          "D",
+          "G",
           "die"
         ],
         [
@@ -1446,15 +1505,19 @@ const SENTENCES = [
         ],
         [
           "A",
-          "Fi"
+          "fi"
         ],
         [
           "E",
           "siwt"
         ],
         [
+          "G",
+          "a"
+        ],
+        [
           "D",
-          "a welais i"
+          "welais i"
         ],
         [
           "C",
@@ -1553,6 +1616,10 @@ const SENTENCES = [
           "vestem"
         ],
         [
+          "G",
+          "quam"
+        ],
+        [
           "C",
           "in taberna"
         ],
@@ -1562,7 +1629,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "visam"
+          "vidi"
         ],
         [
           "F",
@@ -1661,8 +1728,12 @@ const SENTENCES = [
           "ສູທ"
         ],
         [
+          "G",
+          "ທີ່"
+        ],
+        [
           "D",
-          "ທີ່ເຫ໌ນ"
+          "ເຫ໌ນ"
         ],
         [
           "C",
@@ -1687,8 +1758,12 @@ const SENTENCES = [
           "jas"
         ],
         [
+          "G",
+          "yang"
+        ],
+        [
           "D",
-          "yang aku lihat"
+          "aku lihat"
         ],
         [
           "C",
@@ -1817,8 +1892,12 @@ const SENTENCES = [
           "ឈុតខោអាវ"
         ],
         [
+          "G",
+          "ដែល"
+        ],
+        [
           "D",
-          "ដែលខ្ញុំបានឃើញ"
+          "ខ្ញុំបានឃើញ"
         ],
         [
           "C",
@@ -2285,8 +2364,12 @@ const SENTENCES = [
           "nu vestito"
         ],
         [
+          "G",
+          "ca"
+        ],
+        [
           "D",
-          "ca aggio visto"
+          "aggio visto"
         ],
         [
           "C",
@@ -2311,8 +2394,12 @@ const SENTENCES = [
           "un vistitu"
         ],
         [
+          "G",
+          "ca"
+        ],
+        [
           "D",
-          "ca vitti"
+          "vitti"
         ],
         [
           "C",
@@ -2341,7 +2428,7 @@ const SENTENCES = [
           "aprobiere"
         ],
         [
-          "D",
+          "G",
           "wo"
         ],
         [
@@ -2371,8 +2458,12 @@ const SENTENCES = [
           "un complet"
         ],
         [
+          "G",
+          "que"
+        ],
+        [
           "D",
-          "que j' ai vu"
+          "j'ai vu"
         ],
         [
           "C",
@@ -2557,7 +2648,7 @@ const SENTENCES = [
           "prova"
         ],
         [
-          "D",
+          "G",
           "som"
         ],
         [
@@ -2591,7 +2682,7 @@ const SENTENCES = [
           "prøve"
         ],
         [
-          "D",
+          "G",
           "som"
         ],
         [
@@ -2621,8 +2712,12 @@ const SENTENCES = [
           "ānne wǣfels"
         ],
         [
+          "G",
+          "þe"
+        ],
+        [
           "D",
-          "þe ic geseah"
+          "ic geseah"
         ],
         [
           "C",
@@ -2666,16 +2761,16 @@ const SENTENCES = [
     "title": "My name is Tanaka",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -2771,8 +2866,12 @@ const SENTENCES = [
       ],
       "vi": [
         [
+          "B",
+          "Tên"
+        ],
+        [
           "A",
-          "Tên của tôi"
+          "của tôi"
         ],
         [
           "C",
@@ -3053,8 +3152,12 @@ const SENTENCES = [
       ],
       "vi_nom": [
         [
+          "B",
+          "𠸜"
+        ],
+        [
           "A",
-          "𠸜𧶮碎"
+          "𧵑碎"
         ],
         [
           "C",
@@ -3176,7 +3279,7 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "我ê"
+          "我的"
         ],
         [
           "B",
@@ -4382,19 +4485,19 @@ const SENTENCES = [
     "title": "I eat breakfast every morning at 7 o'clock",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -6095,7 +6198,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "食べてはります"
+          "食べてますえ"
         ]
       ],
       "ja_hir": [
@@ -6589,16 +6692,16 @@ const SENTENCES = [
     "title": "Where is the nearest station?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -6997,7 +7100,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𨚗"
+          "於"
         ],
         [
           "C",
@@ -8346,16 +8449,16 @@ const SENTENCES = [
     "title": "This coffee is very delicious",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -10266,16 +10369,16 @@ const SENTENCES = [
     "title": "I study Japanese at university",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -10690,7 +10793,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𨚗場大學"
+          "於場大學"
         ]
       ],
       "ja_osa": [
@@ -11672,7 +11775,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "勉強してはります"
+          "勉強してますえ"
         ]
       ],
       "ja_hir": [
@@ -12078,16 +12181,16 @@ const SENTENCES = [
     "title": "Tomorrow's weather will be sunny",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -12498,11 +12601,11 @@ const SENTENCES = [
         ],
         [
           "A",
-          "𣈜𦹵"
+          "𣈗𦹵"
         ],
         [
           "C",
-          "𠱊"
+          "𡂐"
         ],
         [
           "D",
@@ -13894,16 +13997,16 @@ const SENTENCES = [
     "title": "My mother cooks dinner every day",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -14306,7 +14409,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "𡞕碎"
+          "媄碎"
         ],
         [
           "C",
@@ -14318,7 +14421,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "每𣈜"
+          "每𣈗"
         ]
       ],
       "ja_osa": [
@@ -15304,7 +15407,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "作らはります"
+          "作ってますえ"
         ]
       ],
       "ja_hir": [
@@ -15710,16 +15813,16 @@ const SENTENCES = [
     "title": "I want to go to Japan next year",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -16130,7 +16233,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "㦖𦤾"
+          "㦖典"
         ],
         [
           "B",
@@ -17534,16 +17637,16 @@ const SENTENCES = [
     "title": "Can you speak English?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -18084,7 +18187,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ē-hiáu"
+          "會曉"
         ],
         [
           "C",
@@ -19323,22 +19426,22 @@ const SENTENCES = [
     "title": "I bought a new book at the bookstore yesterday",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#1098ad"
       }
     },
     "langs": {
@@ -19933,11 +20036,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𨚗效冊"
+          "於效冊"
         ],
         [
           "F",
-          "𣋚過"
+          "噁過"
         ]
       ],
       "ja_osa": [
@@ -21921,16 +22024,16 @@ const SENTENCES = [
     "title": "The cherry blossoms in this park are beautiful",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -22337,7 +22440,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "𥪝"
+          "𥪞"
         ],
         [
           "B",
@@ -22471,7 +22574,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "真súi"
+          "真媠"
         ]
       ],
       "wuu": [
@@ -23733,16 +23836,16 @@ const SENTENCES = [
     "title": "Please give me a glass of water",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -24243,7 +24346,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "hō͘"
+          "予"
         ],
         [
           "B",
@@ -25421,19 +25524,19 @@ const SENTENCES = [
     "title": "I go to work by train every day",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -25940,7 +26043,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "每𣈜"
+          "每𣈗"
         ]
       ],
       "ja_osa": [
@@ -27138,7 +27241,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "行かはります"
+          "行ってますえ"
         ]
       ],
       "ja_hir": [
@@ -27636,16 +27739,16 @@ const SENTENCES = [
     "title": "My younger sister is studying abroad in France",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -28056,7 +28159,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𨚗法"
+          "於法"
         ]
       ],
       "ja_osa": [
@@ -28174,7 +28277,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "teh"
+          "咧"
         ],
         [
           "B",
@@ -29010,7 +29113,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "してはります"
+          "しとりますえ"
         ]
       ],
       "ja_hir": [
@@ -29412,16 +29515,16 @@ const SENTENCES = [
     "title": "What time does the movie start?",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -30997,19 +31100,19 @@ const SENTENCES = [
     "title": "I have a meeting at 3 o'clock this afternoon",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -33172,16 +33275,16 @@ const SENTENCES = [
     "title": "This bag is too expensive",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -35092,16 +35195,16 @@ const SENTENCES = [
     "title": "I like to listen to music",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -36900,16 +37003,16 @@ const SENTENCES = [
     "title": "It has been raining since this morning",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -37280,7 +37383,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "自𤏬𦤾𣇞"
+          "自𤏬典𣇞"
         ]
       ],
       "ja_osa": [
@@ -38528,19 +38631,19 @@ const SENTENCES = [
     "title": "I will have dinner with friends tonight",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -39019,7 +39122,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "𠱊咹"
+          "𡂐咹"
         ],
         [
           "D",
@@ -39177,7 +39280,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "kap朋友"
+          "佮朋友"
         ],
         [
           "E",
@@ -40651,19 +40754,19 @@ const SENTENCES = [
     "title": "I want to learn a new language",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -41316,7 +41419,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "一種新ê"
+          "一種新的"
         ],
         [
           "C",
@@ -42822,16 +42925,16 @@ const SENTENCES = [
     "title": "The library is next to the hospital",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -43234,7 +43337,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𨚗"
+          "於"
         ],
         [
           "B",
@@ -43360,7 +43463,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "tī"
+          "佇"
         ],
         [
           "C",
@@ -44606,16 +44709,16 @@ const SENTENCES = [
     "title": "Please show me the menu",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -45116,7 +45219,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "hō͘我"
+          "予我"
         ],
         [
           "C",
@@ -46286,19 +46389,19 @@ const SENTENCES = [
     "title": "My father works at a big company",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -46777,7 +46880,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "布碎"
+          "爸碎"
         ],
         [
           "E",
@@ -47871,7 +47974,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "勤めてはります"
+          "勤めとりますえ"
         ]
       ],
       "ja_hir": [
@@ -48349,16 +48452,16 @@ const SENTENCES = [
     "title": "子供たちが公園で遊んでいる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -48769,7 +48872,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𥪝公園"
+          "𥪞公園"
         ]
       ],
       "ja_osa": [
@@ -50097,16 +50200,16 @@ const SENTENCES = [
     "title": "私は東京に三回行ったことがある",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#d35400"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -50509,7 +50612,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "㐌𦤾"
+          "㐌典"
         ],
         [
           "B",
@@ -51893,16 +51996,16 @@ const SENTENCES = [
     "title": "良いレストランを教えていただけますか？",
     "segments": {
       "A": {
-        "color": "#8e44ad"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#16a085"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#c0392b"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#2980b9"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -52423,7 +52526,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ē-tàng"
+          "會當"
         ],
         [
           "C",
@@ -53606,16 +53709,16 @@ const SENTENCES = [
     "title": "電車に傘を忘れてしまった",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#00bcd4"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -54156,7 +54259,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "phòng-bōng"
+          "放袂記"
         ],
         [
           "D",
@@ -55422,19 +55525,19 @@ const SENTENCES = [
     "title": "彼女はピアノをとても上手に弾くことができる",
     "segments": {
       "A": {
-        "color": "#ff5722"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#795548"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#2ecc71"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -56071,11 +56174,11 @@ const SENTENCES = [
         ],
         [
           "E",
-          "ē-hiáu"
+          "會曉"
         ],
         [
           "C",
-          "thàn"
+          "彈"
         ],
         [
           "B",
@@ -56083,7 +56186,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "thàn-tit chin súi"
+          "彈甲真媠"
         ]
       ],
       "wuu": [
@@ -57589,13 +57692,13 @@ const SENTENCES = [
     "title": "試験は来週の月曜日だ",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -57902,7 +58005,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "次𠄞旬𦤾"
+          "次𠄩旬典"
         ]
       ],
       "ja_osa": [
@@ -58958,19 +59061,19 @@ const SENTENCES = [
     "title": "昼食に寿司を食べたい",
     "segments": {
       "A": {
-        "color": "#f39c12"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#d35400"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#8e44ad"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#16a085"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#c0392b"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -59461,7 +59564,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𠓨𩛷晝"
+          "𠓇𩛷晝"
         ]
       ],
       "ja_osa": [
@@ -59579,11 +59682,11 @@ const SENTENCES = [
         ],
         [
           "E",
-          "siūnn"
+          "想"
         ],
         [
           "C",
-          "tsia̍h"
+          "食"
         ],
         [
           "B",
@@ -61021,16 +61124,16 @@ const SENTENCES = [
     "title": "ホテルの部屋はとても清潔だった",
     "segments": {
       "A": {
-        "color": "#2980b9"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#27ae60"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f1c40f"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e91e63"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -61413,7 +61516,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "潔𠱊"
+          "潔𡂐"
         ]
       ],
       "ja_osa": [
@@ -61519,7 +61622,7 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "飯店ê房間"
+          "飯店的房間"
         ],
         [
           "C",
@@ -62757,13 +62860,13 @@ const SENTENCES = [
     "title": "もっとゆっくり話してください",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#795548"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -63188,7 +63291,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "khah-bān-á"
+          "較慢仔"
         ]
       ],
       "wuu": [
@@ -64178,13 +64281,13 @@ const SENTENCES = [
     "title": "兄は先月結婚した",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -65281,7 +65384,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "結婚しはりました"
+          "結婚しましたえ"
         ]
       ],
       "ja_hir": [
@@ -65611,16 +65714,16 @@ const SENTENCES = [
     "title": "駅にはたくさんの人がいる",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -66027,7 +66130,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "𨚗牙"
+          "於牙"
         ]
       ],
       "ja_osa": [
@@ -67387,19 +67490,19 @@ const SENTENCES = [
     "title": "誕生日プレゼントを買わなければならない",
     "segments": {
       "A": {
-        "color": "#d35400"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#8e44ad"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#16a085"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#c0392b"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#2980b9"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -68060,7 +68163,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ài"
+          "愛"
         ],
         [
           "E",
@@ -69582,13 +69685,13 @@ const SENTENCES = [
     "title": "ここから見る夕日はきれいだ",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -70009,7 +70112,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "真súi"
+          "真媠"
         ]
       ],
       "wuu": [
@@ -71003,19 +71106,19 @@ const SENTENCES = [
     "title": "明日は早く起きなければならない",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#795548"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#3498db"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -71502,7 +71605,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "𠓨𣈜𦹵"
+          "𠓇𣈗𦹵"
         ]
       ],
       "ja_osa": [
@@ -71648,7 +71751,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "ài"
+          "愛"
         ],
         [
           "B",
@@ -73130,19 +73233,19 @@ const SENTENCES = [
     "title": "郵便局がどこにあるか知っていますか？",
     "segments": {
       "A": {
-        "color": "#2ecc71"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#9b59b6"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e67e22"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#1abc9c"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#f39c12"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -73673,7 +73776,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𨚗"
+          "於"
         ],
         [
           "C",
@@ -75230,19 +75333,19 @@ const SENTENCES = [
     "title": "今、面白い本を読んでいる",
     "segments": {
       "A": {
-        "color": "#d35400"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#8e44ad"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#16a085"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#c0392b"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#2980b9"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -75935,11 +76038,11 @@ const SENTENCES = [
         ],
         [
           "E",
-          "teh-teh"
+          "咧讀"
         ],
         [
           "C",
-          "有趣ê"
+          "有趣的"
         ],
         [
           "D",
@@ -76967,7 +77070,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "読んではります"
+          "読んでますえ"
         ]
       ],
       "ja_hir": [
@@ -77505,19 +77608,19 @@ const SENTENCES = [
     "title": "彼女はいつも赤いドレスを着ている",
     "segments": {
       "A": {
-        "color": "#27ae60"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#f1c40f"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e91e63"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#00bcd4"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#ff5722"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -78040,7 +78143,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "論論"
+          "𨖅𨖅"
         ],
         [
           "C",
@@ -79768,13 +79871,13 @@ const SENTENCES = [
     "title": "このレストランの料理はおいしい",
     "segments": {
       "A": {
-        "color": "#795548"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#3498db"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -80093,7 +80196,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "𨚗茹行尼"
+          "於茹行尼"
         ],
         [
           "C",
@@ -80187,11 +80290,11 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "Chit間食堂"
+          "這間食堂"
         ],
         [
           "B",
-          "ê物件"
+          "的物件"
         ],
         [
           "C",
@@ -81189,16 +81292,16 @@ const SENTENCES = [
     "title": "世界中を旅したい",
     "segments": {
       "A": {
-        "color": "#2ecc71"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#9b59b6"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e67e22"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#1abc9c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -81727,7 +81830,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "siūnn"
+          "想"
         ],
         [
           "C",
@@ -82969,16 +83072,16 @@ const SENTENCES = [
     "title": "この国では冬は寒くなる",
     "segments": {
       "A": {
-        "color": "#f39c12"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#d35400"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#8e44ad"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#16a085"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -83369,7 +83472,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "𨚗𡐙渃尼"
+          "於𡐙渃尼"
         ],
         [
           "B",
@@ -83483,7 +83586,7 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "Chit-ê國家"
+          "這个國家"
         ],
         [
           "B",
@@ -84749,19 +84852,19 @@ const SENTENCES = [
     "title": "友達と電話で一時間話した",
     "segments": {
       "A": {
-        "color": "#c0392b"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#2980b9"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#27ae60"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f1c40f"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e91e63"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -85260,7 +85363,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𥪝𠬠𣇞"
+          "𥪞𠬠𣇞"
         ]
       ],
       "ja_osa": [
@@ -85402,7 +85505,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "kap朋友"
+          "佮朋友"
         ],
         [
           "C",
@@ -86932,16 +87035,16 @@ const SENTENCES = [
     "title": "先生は問題をわかりやすく説明した",
     "segments": {
       "A": {
-        "color": "#00bcd4"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#ff5722"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#795548"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -87356,7 +87459,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "𡗉𥪝"
+          "𡗉𥪞"
         ]
       ],
       "ja_osa": [
@@ -88744,16 +88847,16 @@ const SENTENCES = [
     "title": "あの映画を見たい",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#9b59b6"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e67e22"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -89152,7 +89255,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "部𢻨朵"
+          "部𢻨都"
         ]
       ],
       "ja_osa": [
@@ -89246,7 +89349,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "siūnn"
+          "想"
         ],
         [
           "C",
@@ -90420,16 +90523,16 @@ const SENTENCES = [
     "title": "空港までの道を教えてください",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#f39c12"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#d35400"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#8e44ad"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -90832,7 +90935,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "塘𦤾𡈢𩗑"
+          "塘典𡈢𩗑"
         ]
       ],
       "ja_osa": [
@@ -90950,7 +91053,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "去機場ê路"
+          "去機場的路"
         ]
       ],
       "wuu": [
@@ -92164,16 +92267,16 @@ const SENTENCES = [
     "title": "私の犬は散歩が好きだ",
     "segments": {
       "A": {
-        "color": "#16a085"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#c0392b"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2980b9"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#27ae60"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -92548,7 +92651,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "𡥵㹥𧶮碎"
+          "𡥵㹥𧵑碎"
         ],
         [
           "D",
@@ -93800,16 +93903,16 @@ const SENTENCES = [
     "title": "祖母が面白い話をしてくれる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -94346,7 +94449,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "有趣ê"
+          "有趣的"
         ],
         [
           "C",
@@ -95198,7 +95301,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "してくれはります"
+          "してくれますえ"
         ]
       ],
       "ja_hir": [
@@ -95604,16 +95707,16 @@ const SENTENCES = [
     "title": "市場で財布をなくした",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -96028,7 +96131,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𨚗𢄂"
+          "於𢄂"
         ]
       ],
       "ja_osa": [
@@ -97416,13 +97519,13 @@ const SENTENCES = [
     "title": "庭の花が咲いている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -97741,7 +97844,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "𥪝園"
+          "𥪞園"
         ],
         [
           "C",
@@ -97839,7 +97942,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ê花"
+          "的花"
         ],
         [
           "C",
@@ -98841,16 +98944,16 @@ const SENTENCES = [
     "title": "環境を守らなければならない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -100633,16 +100736,16 @@ const SENTENCES = [
     "title": "毎日コーヒーを2杯飲む",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -101057,7 +101160,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "每𣈜"
+          "每𣈗"
         ]
       ],
       "ja_osa": [
@@ -102441,16 +102544,16 @@ const SENTENCES = [
     "title": "コンサートは今夜8時に始まる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -104257,16 +104360,16 @@ const SENTENCES = [
     "title": "彼女は3つの言語を流暢に話す",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -106065,19 +106168,19 @@ const SENTENCES = [
     "title": "このお寺の写真を撮りたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -106580,7 +106683,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𧶮𣉹寺尼"
+          "𧵑𣉹寺尼"
         ]
       ],
       "ja_osa": [
@@ -106722,7 +106825,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "siūnn"
+          "想"
         ],
         [
           "D",
@@ -106730,7 +106833,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "廟宇ê"
+          "廟宇的"
         ],
         [
           "C",
@@ -108224,13 +108327,13 @@ const SENTENCES = [
     "title": "バスは15分おきに来る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -108545,11 +108648,11 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "車公"
+          "𨋍公"
         ],
         [
           "C",
-          "𦤾"
+          "典"
         ],
         [
           "B",
@@ -109645,16 +109748,16 @@ const SENTENCES = [
     "title": "韓国料理の作り方を学んでいる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -111027,7 +111130,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "習うてはります"
+          "習うてますえ"
         ]
       ],
       "ja_hir": [
@@ -111433,19 +111536,19 @@ const SENTENCES = [
     "title": "彼はいつも会議に遅れて来る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -111920,11 +112023,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "論"
+          "𨖅"
         ],
         [
           "E",
-          "𦤾"
+          "典"
         ],
         [
           "C",
@@ -113584,19 +113687,19 @@ const SENTENCES = [
     "title": "月末までにこの本を読み終えたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -114241,7 +114344,7 @@ const SENTENCES = [
         ],
         [
           "E",
-          "siūnn"
+          "想"
         ],
         [
           "C",
@@ -115759,13 +115862,13 @@ const SENTENCES = [
     "title": "鳥たちが木の中で歌っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -117184,16 +117287,16 @@ const SENTENCES = [
     "title": "スマホを充電しなければならない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -117604,7 +117707,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "電話𧶮碎"
+          "電話𧵑碎"
         ]
       ],
       "ja_osa": [
@@ -117722,7 +117825,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ài"
+          "愛"
         ],
         [
           "C",
@@ -118956,19 +119059,19 @@ const SENTENCES = [
     "title": "彼女は私に美しいプレゼントをくれた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -119621,7 +119724,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "一個美麗ê"
+          "一個美麗的"
         ],
         [
           "D",
@@ -121111,13 +121214,13 @@ const SENTENCES = [
     "title": "山は雪で覆われている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -122548,16 +122651,16 @@ const SENTENCES = [
     "title": "週に3回ジムで運動する",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -122968,7 +123071,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "在練武房"
+          "在房𨔿武"
         ],
         [
           "C",
@@ -123954,7 +124057,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "運動してはります"
+          "運動してますえ"
         ]
       ],
       "ja_hir": [
@@ -124360,16 +124463,16 @@ const SENTENCES = [
     "title": "ここに座ってもいいですか？",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -124882,7 +124985,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ē-sái"
+          "會使"
         ],
         [
           "C",
@@ -126061,16 +126164,16 @@ const SENTENCES = [
     "title": "彼は両親に長い手紙を書いた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -126477,7 +126580,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "㐌曰"
+          "㐌𡨸"
         ],
         [
           "B",
@@ -126485,7 +126588,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "朱布𡞕"
+          "朱爸媄"
         ]
       ],
       "ja_osa": [
@@ -127869,13 +127972,13 @@ const SENTENCES = [
     "title": "店は午後9時に閉まる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -129286,16 +129389,16 @@ const SENTENCES = [
     "title": "発音を上達させたい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -129706,7 +129809,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "發音𧶮𠱌"
+          "發音𧵑𠱌"
         ]
       ],
       "ja_osa": [
@@ -129824,7 +129927,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "siūnn"
+          "想"
         ],
         [
           "C",
@@ -131058,16 +131161,16 @@ const SENTENCES = [
     "title": "彼らは川に新しい橋を建てた",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -131596,7 +131699,7 @@ const SENTENCES = [
       "nan": [
         [
           "A",
-          "In"
+          "𪜶"
         ],
         [
           "D",
@@ -132874,16 +132977,16 @@ const SENTENCES = [
     "title": "猫は毎晩私のベッドで寝る",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -133286,7 +133389,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "𡥵猫𧶮碎"
+          "𡥵猫𧵑碎"
         ],
         [
           "D",
@@ -133298,7 +133401,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "每𣎏"
+          "每𣊺"
         ]
       ],
       "ja_osa": [
@@ -134292,7 +134395,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "寝はりますえ"
+          "寝てますえ"
         ]
       ],
       "ja_hir": [
@@ -134698,13 +134801,13 @@ const SENTENCES = [
     "title": "30分も待っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -136119,13 +136222,13 @@ const SENTENCES = [
     "title": "子どもたちは泳ぎを習っている",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -137544,16 +137647,16 @@ const SENTENCES = [
     "title": "音楽を聴くと幸せな気持ちになる",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -137952,7 +138055,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "C",
-          "期"
+          "欺"
         ],
         [
           "B",
@@ -137964,7 +138067,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "碎感𥙩幸福"
+          "碎感𧡊幸福"
         ]
       ],
       "ja_osa": [
@@ -139272,13 +139375,13 @@ const SENTENCES = [
     "title": "彼はテストの結果に驚いた",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -140693,16 +140796,16 @@ const SENTENCES = [
     "title": "この計画は良いと思う",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -141117,7 +141220,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "慄𧢌"
+          "慄卒"
         ]
       ],
       "ja_osa": [
@@ -142509,19 +142612,19 @@ const SENTENCES = [
     "title": "友達が引っ越したので彼女は悲しい",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -144628,19 +144731,19 @@ const SENTENCES = [
     "title": "留学は貴重な経験だと思う",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#9b59b6"
+        "color": "#d4790e"
       }
     },
     "langs": {
@@ -146683,22 +146786,22 @@ const SENTENCES = [
     "title": "今日は頭が痛い",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       },
       "E": {
-        "color": "#e67e22"
+        "color": "#d4790e"
       },
       "F": {
-        "color": "#1abc9c"
+        "color": "#1098ad"
       }
     },
     "langs": {
@@ -147089,7 +147192,7 @@ const SENTENCES = [
       "vi_nom": [
         [
           "C",
-          "𣋚𫅞"
+          "噁𫅞"
         ],
         [
           "A",
@@ -148381,16 +148484,16 @@ const SENTENCES = [
     "title": "医者は私に休むよう言った",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -150157,16 +150260,16 @@ const SENTENCES = [
     "title": "毎朝運動しようとしている",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#f39c12"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -151941,16 +152044,16 @@ const SENTENCES = [
     "title": "彼女は先週風邪をひいた",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -153657,16 +153760,16 @@ const SENTENCES = [
     "title": "もっと水を飲んだほうがいい",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -155353,16 +155456,16 @@ const SENTENCES = [
     "title": "毎日スマートフォンを使っている",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -155769,7 +155872,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "每𣈜"
+          "每𣈗"
         ]
       ],
       "ja_osa": [
@@ -156667,7 +156770,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "使ってはります"
+          "使ってますえ"
         ]
       ],
       "ja_hir": [
@@ -157049,16 +157152,16 @@ const SENTENCES = [
     "title": "このアプリはとても便利だ",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#2ecc71"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -158825,13 +158928,13 @@ const SENTENCES = [
     "title": "AIは世界を変えつつある",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -160242,13 +160345,13 @@ const SENTENCES = [
     "title": "Wi-Fiのパスワードが見つからない",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -161579,16 +161682,16 @@ const SENTENCES = [
     "title": "彼は独学でプログラミングを学んだ",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#e74c3c"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -161634,8 +161737,12 @@ const SENTENCES = [
           "他"
         ],
         [
+          "C",
+          "自己"
+        ],
+        [
           "D",
-          "自学了"
+          "学了"
         ],
         [
           "B",
@@ -161648,8 +161755,12 @@ const SENTENCES = [
           "佢"
         ],
         [
+          "C",
+          "自己"
+        ],
+        [
           "D",
-          "自學咗"
+          "學咗"
         ],
         [
           "B",
@@ -161662,8 +161773,12 @@ const SENTENCES = [
           "其"
         ],
         [
+          "C",
+          "自"
+        ],
+        [
           "D",
-          "自習"
+          "習"
         ],
         [
           "B",
@@ -161677,7 +161792,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "tự học"
+          "tự"
+        ],
+        [
+          "D",
+          "học"
         ],
         [
           "B",
@@ -161979,7 +162098,11 @@ const SENTENCES = [
         ],
         [
           "C",
-          "自學"
+          "自"
+        ],
+        [
+          "D",
+          "學"
         ],
         [
           "B",
@@ -162100,8 +162223,12 @@ const SENTENCES = [
           "伊"
         ],
         [
+          "C",
+          "家己"
+        ],
+        [
           "D",
-          "自學了"
+          "學了"
         ],
         [
           "B",
@@ -162114,8 +162241,12 @@ const SENTENCES = [
           "伊"
         ],
         [
+          "C",
+          "自家"
+        ],
+        [
           "D",
-          "自学脱"
+          "学脱"
         ],
         [
           "B",
@@ -163074,8 +163205,12 @@ const SENTENCES = [
           "他"
         ],
         [
+          "C",
+          "自己"
+        ],
+        [
           "D",
-          "自己学的"
+          "学的"
         ],
         [
           "B",
@@ -163088,8 +163223,12 @@ const SENTENCES = [
           "他"
         ],
         [
+          "C",
+          "自个儿"
+        ],
+        [
           "D",
-          "自个儿学的"
+          "学的"
         ],
         [
           "B",
@@ -163355,16 +163494,16 @@ const SENTENCES = [
     "title": "花見は日本の伝統である",
     "segments": {
       "A": {
-        "color": "#e91e63"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -165047,16 +165186,16 @@ const SENTENCES = [
     "title": "旧正月に餃子を食べる",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -165467,7 +165606,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "𥪝侄節中國"
+          "𥪞侄節中國"
         ]
       ],
       "ja_osa": [
@@ -166835,16 +166974,16 @@ const SENTENCES = [
     "title": "この国では夏に多くの祭りが開催される",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#e74c3c"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#3498db"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -167239,11 +167378,11 @@ const SENTENCES = [
       "vi_nom": [
         [
           "A",
-          "𨚗𡐙渃尼"
+          "於𡐙渃尼"
         ],
         [
           "B",
-          "𠓨務夏"
+          "𠓇務夏"
         ],
         [
           "C",
@@ -168639,13 +168778,13 @@ const SENTENCES = [
     "title": "語学学習は新しい扉を開く",
     "segments": {
       "A": {
-        "color": "#e91e63"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#00bcd4"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#ff5722"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -168964,7 +169103,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "𨷯𧡊"
+          "𨷯𨖲"
         ],
         [
           "B",
@@ -170052,13 +170191,13 @@ const SENTENCES = [
     "title": "自転車でオフィスに行く",
     "segments": {
       "A": {
-        "color": "#9b59b6"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e67e22"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#1abc9c"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
@@ -170385,11 +170524,11 @@ const SENTENCES = [
         ],
         [
           "B",
-          "𦤾文房"
+          "典文房"
         ],
         [
           "A",
-          "平車踏"
+          "平𨋍踏"
         ]
       ],
       "ja_osa": [
@@ -171497,16 +171636,16 @@ const SENTENCES = [
     "title": "次の交差点を右に曲がってください",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -173309,16 +173448,16 @@ const SENTENCES = [
     "title": "スーパーは駅の後ろにある",
     "segments": {
       "A": {
-        "color": "#e74c3c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#3498db"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -175101,16 +175240,16 @@ const SENTENCES = [
     "title": "この料理を注文したい",
     "segments": {
       "A": {
-        "color": "#1abc9c"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#f39c12"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#9b59b6"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -176813,16 +176952,16 @@ const SENTENCES = [
     "title": "このお土産はいくらですか？",
     "segments": {
       "A": {
-        "color": "#3498db"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#e74c3c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#2ecc71"
+        "color": "#0d9f6e"
       },
       "D": {
-        "color": "#f39c12"
+        "color": "#8338ec"
       }
     },
     "langs": {
@@ -178482,13 +178621,13 @@ const SENTENCES = [
     "title": "何もかもありがとう",
     "segments": {
       "A": {
-        "color": "#e67e22"
+        "color": "#e8384f"
       },
       "B": {
-        "color": "#1abc9c"
+        "color": "#4178bc"
       },
       "C": {
-        "color": "#9b59b6"
+        "color": "#0d9f6e"
       }
     },
     "langs": {
