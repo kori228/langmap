@@ -23932,11 +23932,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "น้ำ"
-        ],
-        [
-          "A",
-          "หนึ่งแก้ว"
+          "น้ำ หนึ่งแก้ว"
         ],
         [
           "B",
@@ -24713,16 +24709,12 @@ const SENTENCES = [
       ],
       "en_yk": [
         [
-          "A",
+          "D",
           "Gi'"
         ],
         [
-          "D",
-          "us"
-        ],
-        [
           "B",
-          "a"
+          "us a"
         ],
         [
           "C",
@@ -24731,16 +24723,12 @@ const SENTENCES = [
       ],
       "en_ck": [
         [
-          "A",
+          "D",
           "Give"
         ],
         [
-          "D",
-          "us"
-        ],
-        [
           "B",
-          "a"
+          "us a"
         ],
         [
           "C",
@@ -24840,11 +24828,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "ນ້ໍາ"
-        ],
-        [
-          "A",
-          "ຫນຶ່ງແກ້ວ"
+          "ນ້ໍາ ຫນຶ່ງແກ້ວ"
         ],
         [
           "B",
@@ -24989,7 +24973,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "A",
           "Tēnā"
         ],
         [
@@ -24997,12 +24981,8 @@ const SENTENCES = [
           "homai"
         ],
         [
-          "A",
-          "he karaehe"
-        ],
-        [
-          "B",
-          "wai"
+          "C",
+          "he karaehe wai"
         ]
       ],
       "haw": [
@@ -25016,11 +24996,7 @@ const SENTENCES = [
         ],
         [
           "C",
-          "i kekahi kīʻaha"
-        ],
-        [
-          "B",
-          "wai"
+          "i kekahi kīʻaha wai"
         ]
       ],
       "bo": [
@@ -25213,15 +25189,15 @@ const SENTENCES = [
       ],
       "zh_db": [
         [
-          "A",
+          "D",
           "给"
         ],
         [
-          "D",
+          "B",
           "我"
         ],
         [
-          "B",
+          "D",
           "来"
         ],
         [
@@ -46795,11 +46771,11 @@ const SENTENCES = [
           "在"
         ],
         [
-          "C",
+          "D",
           "𠬠公司"
         ],
         [
-          "D",
+          "C",
           "𡘯"
         ]
       ],
@@ -47223,11 +47199,11 @@ const SENTENCES = [
           "bekerja"
         ],
         [
-          "C",
+          "D",
           "di syarikat"
         ],
         [
-          "D",
+          "C",
           "besar"
         ]
       ],
@@ -47237,11 +47213,11 @@ const SENTENCES = [
           "အဖေ"
         ],
         [
-          "C",
+          "D",
           "ကုမ္ပဏီ"
         ],
         [
-          "D",
+          "C",
           "ကြီးမှာ"
         ],
         [
@@ -47423,11 +47399,11 @@ const SENTENCES = [
           "yn gweithio mewn"
         ],
         [
-          "C",
+          "D",
           "cwmni"
         ],
         [
-          "D",
+          "C",
           "mawr"
         ]
       ],
@@ -47739,7 +47715,7 @@ const SENTENCES = [
           "Ubaba wami"
         ],
         [
-          "B",
+          "E",
           "usebenza"
         ],
         [
@@ -51377,7 +51353,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Kua haere"
         ],
         [
@@ -51389,7 +51365,7 @@ const SENTENCES = [
           "ki Tōkio"
         ],
         [
-          "D",
+          "C",
           "e toru ngā wā"
         ]
       ],
@@ -56943,7 +56919,7 @@ const SENTENCES = [
           "ukudlala upiyano"
         ],
         [
-          "C",
+          "D",
           "kahle kakhulu"
         ]
       ],
@@ -72474,11 +72450,11 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "i te ata"
         ],
         [
-          "B",
+          "C",
           "āpōpō"
         ]
       ],
@@ -76119,12 +76095,8 @@ const SENTENCES = [
           "الان"
         ],
         [
-          "C",
-          "یک"
-        ],
-        [
           "D",
-          "کتاب جالب"
+          "یک کتاب جالب"
         ],
         [
           "E",
@@ -76375,11 +76347,11 @@ const SENTENCES = [
           "Mamaky"
         ],
         [
-          "C",
+          "D",
           "boky"
         ],
         [
-          "D",
+          "C",
           "mahaliana"
         ],
         [
@@ -76445,11 +76417,11 @@ const SENTENCES = [
           "darllen"
         ],
         [
-          "C",
+          "D",
           "llyfr"
         ],
         [
-          "D",
+          "C",
           "diddorol"
         ],
         [
@@ -78236,7 +78208,7 @@ const SENTENCES = [
           "usa sempre"
         ],
         [
-          "C",
+          "E",
           "um vestido"
         ],
         [
@@ -86228,7 +86200,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "I kōrero"
         ],
         [
@@ -86236,15 +86208,15 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "ki tōku hoa"
         ],
         [
-          "B",
+          "C",
           "i te waea"
         ],
         [
-          "E",
+          "D",
           "mō te hāora kotahi"
         ]
       ],
@@ -91326,16 +91298,12 @@ const SENTENCES = [
       ],
       "en_yk": [
         [
-          "A",
+          "D",
           "Tell"
         ],
         [
-          "D",
-          "us"
-        ],
-        [
           "B",
-          "t'"
+          "us t'"
         ],
         [
           "C",
@@ -91344,16 +91312,12 @@ const SENTENCES = [
       ],
       "en_ck": [
         [
-          "A",
+          "D",
           "Tell"
         ],
         [
-          "D",
-          "us"
-        ],
-        [
           "B",
-          "the"
+          "us the"
         ],
         [
           "C",
@@ -91542,15 +91506,15 @@ const SENTENCES = [
           "សូម"
         ],
         [
-          "B",
+          "D",
           "ប្រាប់"
         ],
         [
-          "C",
+          "B",
           "ខ្ញុំ"
         ],
         [
-          "D",
+          "C",
           "ផ្លូវ ទៅព្រលានយន្តហោះ"
         ]
       ],
@@ -94534,11 +94498,11 @@ const SENTENCES = [
           "menceritakan"
         ],
         [
-          "B",
+          "C",
           "kisah"
         ],
         [
-          "C",
+          "B",
           "yang menarik"
         ]
       ],
@@ -94584,11 +94548,11 @@ const SENTENCES = [
           "Nire amonak"
         ],
         [
-          "B",
+          "C",
           "istorio"
         ],
         [
-          "C",
+          "B",
           "interesgarriak"
         ],
         [
@@ -98295,11 +98259,11 @@ const SENTENCES = [
       ],
       "km": [
         [
-          "A",
+          "B",
           "ផ្កា"
         ],
         [
-          "B",
+          "A",
           "នៅក្នុងសួន"
         ],
         [
