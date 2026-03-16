@@ -14984,11 +14984,11 @@ const SENTENCES = [
           "fy mam"
         ],
         [
-          "D",
+          "B",
           "yn coginio swper"
         ],
         [
-          "B",
+          "D",
           "bob dydd"
         ]
       ],
@@ -17102,11 +17102,11 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "ki te haere ki Hapani"
         ],
         [
-          "B",
+          "D",
           "ā tērā tau"
         ]
       ],
@@ -18264,7 +18264,7 @@ const SENTENCES = [
           "Você"
         ],
         [
-          "D",
+          "C",
           "fala"
         ],
         [
@@ -18902,12 +18902,8 @@ const SENTENCES = [
           "Ka taea"
         ],
         [
-          "D",
-          "e koe"
-        ],
-        [
           "A",
-          "te"
+          "e koe te"
         ],
         [
           "B",
@@ -19625,11 +19621,11 @@ const SENTENCES = [
           "membeli"
         ],
         [
-          "D",
+          "E",
           "buku"
         ],
         [
-          "E",
+          "D",
           "baru"
         ],
         [
@@ -19885,11 +19881,11 @@ const SENTENCES = [
           "ho comprato"
         ],
         [
-          "D",
+          "E",
           "un libro"
         ],
         [
-          "E",
+          "D",
           "nuovo"
         ],
         [
@@ -20249,11 +20245,11 @@ const SENTENCES = [
           "compré"
         ],
         [
-          "D",
+          "E",
           "un libro"
         ],
         [
-          "E",
+          "D",
           "nuevo"
         ],
         [
@@ -20275,11 +20271,11 @@ const SENTENCES = [
           "compré"
         ],
         [
-          "D",
+          "E",
           "un libro"
         ],
         [
-          "E",
+          "D",
           "nuevo"
         ],
         [
@@ -20301,11 +20297,11 @@ const SENTENCES = [
           "comprei"
         ],
         [
-          "D",
+          "E",
           "um livro"
         ],
         [
-          "E",
+          "D",
           "novo"
         ],
         [
@@ -20327,11 +20323,11 @@ const SENTENCES = [
           "comprei"
         ],
         [
-          "D",
+          "E",
           "um livro"
         ],
         [
-          "E",
+          "D",
           "novo"
         ],
         [
@@ -20587,11 +20583,11 @@ const SENTENCES = [
           "membeli"
         ],
         [
-          "D",
+          "E",
           "buku"
         ],
         [
-          "E",
+          "D",
           "baharu"
         ],
         [
@@ -20669,11 +20665,11 @@ const SENTENCES = [
           "liburudendean"
         ],
         [
-          "D",
+          "E",
           "liburu"
         ],
         [
-          "E",
+          "D",
           "berri bat"
         ],
         [
@@ -20765,11 +20761,11 @@ const SENTENCES = [
           "Nividy"
         ],
         [
-          "D",
+          "E",
           "boky"
         ],
         [
-          "E",
+          "D",
           "vaovao"
         ],
         [
@@ -20847,11 +20843,11 @@ const SENTENCES = [
           "i"
         ],
         [
-          "D",
+          "E",
           "lyfr"
         ],
         [
-          "E",
+          "D",
           "newydd"
         ],
         [
@@ -21081,11 +21077,11 @@ const SENTENCES = [
           "membeli"
         ],
         [
-          "D",
+          "E",
           "buku"
         ],
         [
-          "E",
+          "D",
           "anyar"
         ],
         [
@@ -21643,11 +21639,11 @@ const SENTENCES = [
           "aggio accattato"
         ],
         [
-          "D",
+          "E",
           "nu libbro"
         ],
         [
-          "E",
+          "D",
           "nuovo"
         ],
         [
@@ -21669,11 +21665,11 @@ const SENTENCES = [
           "haiu accattatu"
         ],
         [
-          "D",
+          "E",
           "un libbru"
         ],
         [
-          "E",
+          "D",
           "novu"
         ],
         [
@@ -23289,7 +23285,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "He ātaahua"
         ],
         [
@@ -23297,7 +23293,7 @@ const SENTENCES = [
           "ngā"
         ],
         [
-          "D",
+          "C",
           "pua tiere"
         ],
         [
@@ -27014,11 +27010,11 @@ const SENTENCES = [
           "ទៅធ្វើការ"
         ],
         [
-          "C",
+          "D",
           "ដោយរថភ្លើង"
         ],
         [
-          "D",
+          "E",
           "រៀងរាល់ថ្ងៃ"
         ]
       ],
@@ -27068,11 +27064,11 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "ki te mahi"
         ],
         [
-          "B",
+          "D",
           "mā te tereina"
         ],
         [
@@ -28918,11 +28914,11 @@ const SENTENCES = [
           "ប្អូនស្រីខ្ញុំ"
         ],
         [
-          "B",
+          "C",
           "កំពុងសិក្សានៅក្រៅប្រទេស"
         ],
         [
-          "C",
+          "B",
           "នៅបារាំង"
         ]
       ],
@@ -28960,11 +28956,11 @@ const SENTENCES = [
           "tōku teina"
         ],
         [
-          "B",
+          "C",
           "ki tāwāhi"
         ],
         [
-          "D",
+          "B",
           "i Wīwī"
         ]
       ],
@@ -30156,7 +30152,7 @@ const SENTENCES = [
           "Anong oras"
         ],
         [
-          "D",
+          "C",
           "magsisimula"
         ],
         [
@@ -30580,15 +30576,11 @@ const SENTENCES = [
           "Ka tīmata"
         ],
         [
-          "A",
-          "te"
-        ],
-        [
           "B",
-          "kiriata"
+          "te kiriata"
         ],
         [
-          "D",
+          "A",
           "ā te aha o te wā"
         ]
       ],
@@ -31022,7 +31014,7 @@ const SENTENCES = [
           "Hwænne"
         ],
         [
-          "D",
+          "C",
           "onginþ"
         ],
         [
@@ -32590,16 +32582,12 @@ const SENTENCES = [
           "Nginomhlangano"
         ],
         [
-          "B",
+          "D",
           "ngo-3"
         ],
         [
-          "C",
-          "ntambama"
-        ],
-        [
-          "D",
-          "namuhla"
+          "E",
+          "ntambama namuhla"
         ]
       ],
       "mi": [
@@ -34560,7 +34548,7 @@ const SENTENCES = [
           "Àpò yìí"
         ],
         [
-          "B",
+          "D",
           "wọ́n jù"
         ]
       ],
@@ -34570,7 +34558,7 @@ const SENTENCES = [
           "Le sikhwama"
         ],
         [
-          "B",
+          "D",
           "sibiza kakhulu"
         ]
       ],
@@ -35432,11 +35420,11 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "D",
+          "C",
           "höre"
         ],
         [
-          "C",
+          "D",
           "gern"
         ],
         [
@@ -36044,11 +36032,11 @@ const SENTENCES = [
           "Ik"
         ],
         [
-          "D",
+          "C",
           "luister naar"
         ],
         [
-          "C",
+          "D",
           "graag"
         ],
         [
@@ -36734,11 +36722,11 @@ const SENTENCES = [
           "Ich"
         ],
         [
-          "D",
+          "C",
           "lose"
         ],
         [
-          "C",
+          "D",
           "gern"
         ],
         [
@@ -36878,11 +36866,11 @@ const SENTENCES = [
           "Jag"
         ],
         [
-          "D",
+          "C",
           "lyssnar"
         ],
         [
-          "C",
+          "D",
           "gärna på"
         ],
         [
@@ -36992,11 +36980,11 @@ const SENTENCES = [
           "비가"
         ],
         [
-          "C",
+          "B",
           "계속"
         ],
         [
-          "B",
+          "C",
           "오고 있어요"
         ]
       ],
@@ -37412,11 +37400,11 @@ const SENTENCES = [
           "비가"
         ],
         [
-          "C",
+          "B",
           "계속"
         ],
         [
-          "B",
+          "C",
           "오고 있습니다"
         ]
       ],
@@ -37430,11 +37418,11 @@ const SENTENCES = [
           "비가"
         ],
         [
-          "C",
+          "B",
           "계속"
         ],
         [
-          "B",
+          "C",
           "오고 있다"
         ]
       ],
@@ -37744,7 +37732,7 @@ const SENTENCES = [
           "Goiz honetatik"
         ],
         [
-          "B",
+          "D",
           "euria"
         ],
         [
@@ -37892,19 +37880,15 @@ const SENTENCES = [
       ],
       "sa": [
         [
-          "D",
-          "अद्य प्रभातात्"
-        ],
-        [
-          "C",
-          "यावत्"
+          "A",
+          "अद्य प्रभातात् यावत्"
         ],
         [
           "B",
           "वर्षा"
         ],
         [
-          "A",
+          "C",
           "भवति"
         ]
       ],
@@ -37960,11 +37944,11 @@ const SENTENCES = [
           "비가"
         ],
         [
-          "C",
+          "B",
           "계속"
         ],
         [
-          "B",
+          "C",
           "오고 있어수다"
         ]
       ],
@@ -40063,7 +40047,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "Ka kai"
         ],
         [
@@ -40075,11 +40059,11 @@ const SENTENCES = [
           "i te kai o te pō"
         ],
         [
-          "B",
+          "C",
           "me ōku hoa"
         ],
         [
-          "E",
+          "B",
           "ā tēnei pō"
         ]
       ],
