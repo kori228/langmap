@@ -47309,11 +47309,11 @@ const SENTENCES = [
           "ao amin'ny"
         ],
         [
-          "C",
+          "D",
           "orinasa"
         ],
         [
-          "D",
+          "C",
           "lehibe"
         ],
         [
@@ -66041,11 +66041,11 @@ const SENTENCES = [
           "역에는"
         ],
         [
-          "A",
+          "B",
           "사람이"
         ],
         [
-          "B",
+          "A",
           "억수로"
         ],
         [
@@ -138378,16 +138378,8 @@ const SENTENCES = [
           "موسیقی سننے سے"
         ],
         [
-          "B",
-          "مجھے"
-        ],
-        [
-          "C",
-          "خوشی"
-        ],
-        [
           "D",
-          "ہوتی ہے"
+          "مجھے خوشی ہوتی ہے"
         ]
       ],
       "ko_jeju": [
@@ -138454,12 +138446,8 @@ const SENTENCES = [
           "শুনলে"
         ],
         [
-          "C",
-          "আমি"
-        ],
-        [
           "D",
-          "খুশি লাগে"
+          "আমি খুশি লাগে"
         ]
       ],
       "te": [
@@ -138472,12 +138460,8 @@ const SENTENCES = [
           "వింటే"
         ],
         [
-          "C",
-          "నాకు"
-        ],
-        [
           "D",
-          "సంతోషంగా అనిపిస్తుంది"
+          "నాకు సంతోషంగా అనిపిస్తుంది"
         ]
       ],
       "el": [
@@ -139056,7 +139040,7 @@ const SENTENCES = [
       ],
       "si": [
         [
-          "C",
+          "D",
           "මම"
         ],
         [
@@ -140080,11 +140064,7 @@ const SENTENCES = [
         ],
         [
           "B",
-          "ngemiphumela"
-        ],
-        [
-          "C",
-          "yokuhlolwa"
+          "ngemiphumela yokuhlolwa"
         ]
       ],
       "mi": [
@@ -141796,11 +141776,7 @@ const SENTENCES = [
       "haw": [
         [
           "D",
-          "Manaʻo"
-        ],
-        [
-          "A",
-          "au"
+          "Manaʻo au"
         ],
         [
           "C",
@@ -143221,11 +143197,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "dahil lumipat ang kaibigan"
-        ],
-        [
-          "E",
-          "niya"
+          "dahil lumipat ang kaibigan niya"
         ]
       ],
       "ms": [
