@@ -392,6 +392,8 @@ select:focus { border-color: #4a90d9; outline: none; }
 #langRows {
     position: relative;
     z-index: 2;
+    display: inline-block;
+    min-width: 100%;
 }
 
 /* Language row */

@@ -815,6 +815,16 @@ function render() {
 
     editingRow = null;
 
+    // Reset SVG lines to prevent stale width from previous sentence causing right margin
+    const svg = document.getElementById('linesSvg');
+    if (svg) {
+        svg.innerHTML = '';
+        svg.setAttribute('width', 0);
+        svg.setAttribute('height', 0);
+        svg.style.width = '0';
+        svg.style.height = '0';
+    }
+
     const rowsContainer = document.getElementById('langRows');
     rowsContainer.innerHTML = '';
 

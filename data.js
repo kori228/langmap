@@ -1006,8 +1006,12 @@ const SENTENCES = [
           "suti"
         ],
         [
+          "D",
+          "niliyoiona"
+        ],
+        [
           "C",
-          "niliyoiona dukani"
+          "dukani"
         ],
         [
           "B",
@@ -1280,7 +1284,7 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "F",
+          "A",
           "Ba mhaith liom"
         ],
         [
@@ -1304,7 +1308,7 @@ const SENTENCES = [
           "trasna ón óstán"
         ],
         [
-          "A",
+          "F",
           "a thriail"
         ]
       ],
@@ -1396,12 +1400,8 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
-          "Chcę"
-        ],
-        [
           "F",
-          "przymierzyć"
+          "Chcę przymierzyć"
         ],
         [
           "E",
@@ -1982,7 +1982,7 @@ const SENTENCES = [
           "i tērā taha o te hōtera"
         ],
         [
-          "A",
+          "F",
           "ki te whakamātau"
         ]
       ],
@@ -2008,7 +2008,7 @@ const SENTENCES = [
           "ma ka ʻaoʻao o ka hōkele"
         ],
         [
-          "A",
+          "F",
           "e hoʻāʻo"
         ]
       ],
@@ -7515,11 +7515,11 @@ const SENTENCES = [
           "bhfuil"
         ],
         [
-          "A",
+          "B",
           "an stáisiún"
         ],
         [
-          "B",
+          "A",
           "is cóngaraí"
         ]
       ],
@@ -7941,11 +7941,11 @@ const SENTENCES = [
           "Kei hea"
         ],
         [
-          "A",
+          "B",
           "te tūranga"
         ],
         [
-          "B",
+          "A",
           "tata"
         ],
         [
@@ -7959,11 +7959,11 @@ const SENTENCES = [
           "Aia i hea"
         ],
         [
-          "A",
+          "B",
           "ka hale kaʻa"
         ],
         [
-          "B",
+          "A",
           "kokoke"
         ],
         [
@@ -9150,12 +9150,12 @@ const SENTENCES = [
           "hii"
         ],
         [
-          "C",
-          "ni"
+          "D",
+          "ni nzuri"
         ],
         [
-          "D",
-          "nzuri sana"
+          "C",
+          "sana"
         ]
       ],
       "ja_edo": [
@@ -20365,11 +20365,11 @@ const SENTENCES = [
           "nilinunua"
         ],
         [
-          "D",
+          "E",
           "kitabu"
         ],
         [
-          "E",
+          "D",
           "kipya"
         ],
         [
@@ -20651,11 +20651,11 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "D",
+          "E",
           "leabhar"
         ],
         [
-          "E",
+          "D",
           "nua"
         ],
         [
@@ -21273,7 +21273,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "D",
+          "C",
           "I hoko"
         ],
         [
@@ -21281,7 +21281,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "C",
+          "E",
           "i tētahi pukapuka hou"
         ],
         [
@@ -21289,13 +21289,13 @@ const SENTENCES = [
           "i te toa pukapuka"
         ],
         [
-          "E",
+          "F",
           "inanahi"
         ]
       ],
       "haw": [
         [
-          "D",
+          "C",
           "Ua kūʻai"
         ],
         [
@@ -21303,7 +21303,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "C",
+          "D",
           "i kekahi puke hou"
         ],
         [
@@ -21311,7 +21311,7 @@ const SENTENCES = [
           "ma ka hale kūʻai puke"
         ],
         [
-          "E",
+          "F",
           "i nehinei"
         ]
       ],
@@ -24667,12 +24667,8 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
-          "Szklankę"
-        ],
-        [
           "C",
-          "wody"
+          "Szklankę wody"
         ],
         [
           "B",
@@ -33977,14 +33973,10 @@ const SENTENCES = [
         ],
         [
           "D",
-          "ni"
+          "ni ghali"
         ],
         [
           "C",
-          "ghali"
-        ],
-        [
-          "D",
           "sana"
         ]
       ],
@@ -37588,7 +37580,7 @@ const SENTENCES = [
       ],
       "sw": [
         [
-          "B",
+          "D",
           "Mvua"
         ],
         [
@@ -37596,7 +37588,7 @@ const SENTENCES = [
           "imekuwa"
         ],
         [
-          "D",
+          "B",
           "ikinyesha"
         ],
         [
@@ -41784,7 +41776,7 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "D",
+          "C",
           "teanga"
         ],
         [
@@ -41792,7 +41784,7 @@ const SENTENCES = [
           "nua"
         ],
         [
-          "C",
+          "D",
           "a fhoghlaim"
         ]
       ],
@@ -42302,7 +42294,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "E hiahia ana"
         ],
         [
@@ -42314,13 +42306,13 @@ const SENTENCES = [
           "ki te ako"
         ],
         [
-          "B",
+          "C",
           "i tētahi reo hou"
         ]
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Makemake"
         ],
         [
@@ -47359,11 +47351,11 @@ const SENTENCES = [
           "i"
         ],
         [
-          "C",
+          "D",
           "gcomhlacht"
         ],
         [
-          "D",
+          "C",
           "mór"
         ]
       ],
@@ -47859,7 +47851,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Ke hana nei"
         ],
         [
@@ -49097,7 +49089,7 @@ const SENTENCES = [
           "Watoto"
         ],
         [
-          "D",
+          "C",
           "wanacheza"
         ],
         [
@@ -60099,7 +60091,7 @@ const SENTENCES = [
           "Chcę"
         ],
         [
-          "E",
+          "C",
           "zjeść"
         ],
         [
@@ -66355,8 +66347,12 @@ const SENTENCES = [
           "Kuna"
         ],
         [
+          "B",
+          "watu"
+        ],
+        [
           "A",
-          "watu wengi"
+          "wengi"
         ],
         [
           "C",
@@ -68524,11 +68520,11 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "C",
+          "D",
           "bronntanas"
         ],
         [
-          "D",
+          "C",
           "breithlae"
         ],
         [
@@ -68608,11 +68604,11 @@ const SENTENCES = [
           "kupić"
         ],
         [
-          "C",
+          "D",
           "prezent"
         ],
         [
-          "D",
+          "C",
           "urodzinowy"
         ]
       ],
@@ -69042,7 +69038,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "Me hoko"
         ],
         [
@@ -69054,17 +69050,13 @@ const SENTENCES = [
           "i tētahi taonga"
         ],
         [
-          "B",
-          "mō te"
-        ],
-        [
-          "E",
-          "rā whānau"
+          "C",
+          "mō te rā whānau"
         ]
       ],
       "haw": [
         [
-          "C",
+          "B",
           "Pono"
         ],
         [
@@ -69072,15 +69064,15 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "E",
           "e kūʻai i kekahi makana"
         ],
         [
-          "B",
+          "D",
           "no ka"
         ],
         [
-          "E",
+          "C",
           "lā hānau"
         ]
       ],
@@ -70699,11 +70691,11 @@ const SENTENCES = [
           "He ātaahua"
         ],
         [
-          "A",
+          "B",
           "te tōnga rā"
         ],
         [
-          "B",
+          "A",
           "mai i konei"
         ]
       ],
@@ -72189,10 +72181,14 @@ const SENTENCES = [
         ],
         [
           "D",
-          "wstać wcześnie"
+          "wstać"
         ],
         [
           "B",
+          "wcześnie"
+        ],
+        [
+          "C",
           "jutro"
         ]
       ],
@@ -76395,11 +76391,11 @@ const SENTENCES = [
           "léamh"
         ],
         [
-          "C",
+          "D",
           "leabhar"
         ],
         [
-          "D",
+          "C",
           "suimiúil"
         ],
         [
@@ -76479,7 +76475,7 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
+          "B",
           "Teraz"
         ],
         [
@@ -76929,7 +76925,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "Kei te pānui"
         ],
         [
@@ -76947,7 +76943,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Ke heluhelu nei"
         ],
         [
@@ -78674,11 +78670,11 @@ const SENTENCES = [
           "i gcónaí"
         ],
         [
-          "D",
+          "E",
           "gúna"
         ],
         [
-          "E",
+          "D",
           "dearg"
         ]
       ],
@@ -79220,7 +79216,7 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "E",
           "i tētahi kākahu whero"
         ],
         [
@@ -80885,11 +80881,11 @@ const SENTENCES = [
           "He reka"
         ],
         [
-          "A",
+          "B",
           "te kai"
         ],
         [
-          "B",
+          "A",
           "o tēnei wharekai"
         ]
       ],
@@ -89686,7 +89682,7 @@ const SENTENCES = [
           "Chcę"
         ],
         [
-          "D",
+          "C",
           "zobaczyć"
         ],
         [
@@ -90024,7 +90020,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "E hiahia ana"
         ],
         [
@@ -90032,7 +90028,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "ki te mātaki"
         ],
         [
@@ -90042,7 +90038,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -90050,7 +90046,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e nānā"
         ],
         [
@@ -94754,11 +94750,11 @@ const SENTENCES = [
           "mo mhamó"
         ],
         [
-          "B",
+          "C",
           "scéalta"
         ],
         [
-          "C",
+          "B",
           "suimiúla"
         ]
       ],
@@ -95188,7 +95184,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka kōrero"
         ],
         [
@@ -95196,13 +95192,13 @@ const SENTENCES = [
           "tōku kuia"
         ],
         [
-          "D",
+          "C",
           "i ngā kōrero whakamīharo"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ke haʻi nei"
         ],
         [
@@ -95210,7 +95206,7 @@ const SENTENCES = [
           "koʻu kupuna wahine"
         ],
         [
-          "D",
+          "B",
           "i nā moʻolelo hoihoi"
         ]
       ],
@@ -96984,16 +96980,12 @@ const SENTENCES = [
           "I ngaro"
         ],
         [
-          "A",
+          "B",
           "tōku pūkoro moni"
         ],
         [
           "D",
-          "i te"
-        ],
-        [
-          "B",
-          "mākete"
+          "i te mākete"
         ]
       ],
       "haw": [
@@ -97002,7 +96994,7 @@ const SENTENCES = [
           "Ua nalowale"
         ],
         [
-          "A",
+          "B",
           "koʻu ʻeke kālā"
         ],
         [
@@ -97010,7 +97002,7 @@ const SENTENCES = [
           "ma ka"
         ],
         [
-          "B",
+          "A",
           "mākeke"
         ]
       ],
@@ -98537,11 +98529,11 @@ const SENTENCES = [
           "Kei te puāwai"
         ],
         [
-          "A",
+          "B",
           "ngā putiputi"
         ],
         [
-          "B",
+          "A",
           "i te māra"
         ]
       ],
@@ -98551,11 +98543,11 @@ const SENTENCES = [
           "Ke mohala nei"
         ],
         [
-          "A",
+          "B",
           "nā pua"
         ],
         [
-          "B",
+          "A",
           "ma ke kīhāpai"
         ]
       ],
@@ -99593,10 +99585,6 @@ const SENTENCES = [
           "Tunahitaji"
         ],
         [
-          "D",
-          "lazima"
-        ],
-        [
           "C",
           "kulinda"
         ],
@@ -99795,11 +99783,11 @@ const SENTENCES = [
           "muid"
         ],
         [
-          "C",
+          "B",
           "an comhshaol"
         ],
         [
-          "B",
+          "C",
           "a chosaint"
         ]
       ],
@@ -100225,17 +100213,13 @@ const SENTENCES = [
           "tātou"
         ],
         [
-          "D",
-          "i te"
-        ],
-        [
           "B",
-          "taiao"
+          "i te taiao"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Pono"
         ],
         [
@@ -100243,7 +100227,7 @@ const SENTENCES = [
           "kākou"
         ],
         [
-          "D",
+          "C",
           "e mālama"
         ],
         [
@@ -102025,11 +102009,11 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "e rua ngā kapu kawhe"
         ],
         [
-          "B",
+          "D",
           "ia rā"
         ]
       ],
@@ -102043,11 +102027,11 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "B",
           "i ʻelua kīʻaha kope"
         ],
         [
-          "B",
+          "D",
           "i kēlā me kēia lā"
         ]
       ],
@@ -103833,7 +103817,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka tīmata"
         ],
         [
@@ -103841,17 +103825,17 @@ const SENTENCES = [
           "te konohete"
         ],
         [
-          "D",
+          "B",
           "ā te 8 karaka"
         ],
         [
-          "B",
+          "C",
           "i tēnei pō"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "E hoʻomaka"
         ],
         [
@@ -103859,11 +103843,11 @@ const SENTENCES = [
           "ka ʻaha mele"
         ],
         [
-          "D",
+          "B",
           "i ka hola 8"
         ],
         [
-          "B",
+          "C",
           "i kēia pō"
         ]
       ],
@@ -105649,7 +105633,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka kōrero matatau"
         ],
         [
@@ -105657,7 +105641,7 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "B",
           "i ngā reo e toru"
         ]
       ],
@@ -105671,7 +105655,7 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "B",
           "i ʻekolu ʻōlelo"
         ]
       ],
@@ -107194,11 +107178,11 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "D",
+          "C",
           "grianghraf"
         ],
         [
-          "C",
+          "D",
           "a ghlacadh"
         ],
         [
@@ -107712,7 +107696,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "E hiahia ana"
         ],
         [
@@ -107730,7 +107714,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Makemake"
         ],
         [
@@ -110651,7 +110635,7 @@ const SENTENCES = [
           "Uczę się"
         ],
         [
-          "D",
+          "C",
           "gotować"
         ],
         [
@@ -111009,7 +110993,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Kei te ako"
         ],
         [
@@ -111017,7 +111001,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "ki te tunu kai"
         ],
         [
@@ -111027,7 +111011,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ke aʻo nei"
         ],
         [
@@ -111035,7 +111019,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e kuke i ka meaʻai"
         ],
         [
@@ -114713,11 +114697,11 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "D",
+          "B",
           "an leabhar seo"
         ],
         [
-          "B",
+          "D",
           "a léamh"
         ],
         [
@@ -115231,7 +115215,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "E hiahia ana"
         ],
         [
@@ -115243,17 +115227,13 @@ const SENTENCES = [
           "ki te pānui i tēnei pukapuka"
         ],
         [
-          "B",
-          "i mua i te mutunga"
-        ],
-        [
-          "E",
-          "o te marama"
+          "C",
+          "i mua i te mutunga o te marama"
         ]
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Makemake"
         ],
         [
@@ -115265,11 +115245,11 @@ const SENTENCES = [
           "e heluhelu i kēia puke"
         ],
         [
-          "B",
+          "C",
           "ma mua o ka pau ʻana"
         ],
         [
-          "E",
+          "B",
           "o ka mahina"
         ]
       ],
@@ -116880,11 +116860,11 @@ const SENTENCES = [
           "Kei te waiata"
         ],
         [
-          "A",
+          "B",
           "ngā manu"
         ],
         [
-          "B",
+          "A",
           "i ngā rākau"
         ]
       ],
@@ -116894,11 +116874,11 @@ const SENTENCES = [
           "Ke mele nei"
         ],
         [
-          "A",
+          "B",
           "nā manu"
         ],
         [
-          "B",
+          "A",
           "ma nā kumulāʻau"
         ]
       ],
@@ -118552,17 +118532,13 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
-          "i tōku"
-        ],
-        [
           "B",
-          "waea"
+          "i tōku waea"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Pono"
         ],
         [
@@ -118570,7 +118546,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e hoʻopiha"
         ],
         [
@@ -120595,7 +120571,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "I homai"
         ],
         [
@@ -120613,7 +120589,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Ua hāʻawi"
         ],
         [
@@ -123936,7 +123912,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka korikori tinana"
         ],
         [
@@ -123944,17 +123920,17 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "B",
           "i te whare korikori"
         ],
         [
-          "B",
+          "C",
           "e toru ngā wā ia wiki"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Hoʻoikaika kino"
         ],
         [
@@ -123962,11 +123938,11 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "B",
           "ma ka hale hoʻoikaika"
         ],
         [
-          "B",
+          "C",
           "ʻekolu manawa i ka pule"
         ]
       ],
@@ -125656,7 +125632,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka taea"
         ],
         [
@@ -125664,7 +125640,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "te noho"
         ],
         [
@@ -125674,15 +125650,15 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Hiki iaʻu"
         ],
         [
-          "A",
+          "C",
           "ke noho"
         ],
         [
-          "D",
+          "A",
           "ma"
         ],
         [
@@ -127445,7 +127421,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "I tuhi"
         ],
         [
@@ -127453,17 +127429,17 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "B",
           "he reta roa"
         ],
         [
-          "B",
+          "C",
           "ki ōna mātua"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua kākau"
         ],
         [
@@ -127471,11 +127447,11 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "B",
           "i kekahi leka lōʻihi"
         ],
         [
-          "B",
+          "C",
           "i kona mau mākua"
         ]
       ],
@@ -128685,7 +128661,11 @@ const SENTENCES = [
       "pl": [
         [
           "A",
-          "Sklep zamyka się"
+          "Sklep"
+        ],
+        [
+          "C",
+          "zamyka się"
         ],
         [
           "B",
@@ -130646,7 +130626,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "E hiahia ana"
         ],
         [
@@ -130654,7 +130634,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "ki te whakapai ake"
         ],
         [
@@ -130664,7 +130644,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -130672,7 +130652,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e hoʻomaikaʻi"
         ],
         [
@@ -132450,7 +132430,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "I hanga"
         ],
         [
@@ -132458,17 +132438,17 @@ const SENTENCES = [
           "rātou"
         ],
         [
-          "D",
+          "B",
           "he arawhata hou"
         ],
         [
-          "B",
+          "C",
           "i runga i te awa"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua kūkulu"
         ],
         [
@@ -132476,11 +132456,11 @@ const SENTENCES = [
           "lākou"
         ],
         [
-          "D",
+          "B",
           "i kekahi alahaka hou"
         ],
         [
-          "B",
+          "C",
           "ma luna o ka muliwai"
         ]
       ],
@@ -134274,7 +134254,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka moe"
         ],
         [
@@ -134282,17 +134262,17 @@ const SENTENCES = [
           "tōku ngeru"
         ],
         [
-          "D",
+          "B",
           "i runga i tōku moenga"
         ],
         [
-          "B",
+          "C",
           "ia pō"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Hiamoe"
         ],
         [
@@ -134300,11 +134280,11 @@ const SENTENCES = [
           "koʻu pōpoki"
         ],
         [
-          "D",
+          "B",
           "ma koʻu wahi moe"
         ],
         [
-          "B",
+          "C",
           "i kēlā me kēia pō"
         ]
       ],
@@ -141445,11 +141425,11 @@ const SENTENCES = [
           "Nadhani"
         ],
         [
-          "A",
+          "B",
           "mpango"
         ],
         [
-          "B",
+          "A",
           "huu"
         ],
         [
@@ -142085,15 +142065,15 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ki tōku whakaaro"
         ],
         [
-          "A",
+          "C",
           "he pai"
         ],
         [
-          "D",
+          "A",
           "tēnei"
         ],
         [
@@ -142103,7 +142083,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Manaʻo"
         ],
         [
@@ -142111,7 +142091,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "he maikaʻi"
         ],
         [
@@ -144104,7 +144084,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "B",
           "Kei te pōuri"
         ],
         [
@@ -144112,21 +144092,21 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "C",
           "nā te mea"
         ],
         [
-          "B",
+          "E",
           "kua nuku"
         ],
         [
-          "E",
+          "D",
           "tōna hoa"
         ]
       ],
       "haw": [
         [
-          "C",
+          "B",
           "Kaumaha"
         ],
         [
@@ -144134,15 +144114,15 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "C",
           "no ka mea"
         ],
         [
-          "B",
+          "E",
           "ua neʻe aku"
         ],
         [
-          "E",
+          "D",
           "kona hoaaloha"
         ]
       ],
@@ -145765,12 +145745,8 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
-          "Wierzę"
-        ],
-        [
           "E",
-          "że"
+          "Wierzę, że"
         ],
         [
           "B",
@@ -146199,16 +146175,16 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "E",
           "Ki tōku whakapono"
         ],
         [
-          "A",
-          "he wheako"
+          "C",
+          "he wheako nui"
         ],
         [
           "D",
-          "nui te"
+          "te"
         ],
         [
           "B",
@@ -146217,7 +146193,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "E",
           "Manaʻo"
         ],
         [
@@ -149749,7 +149725,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "I kī mai"
         ],
         [
@@ -149757,7 +149733,7 @@ const SENTENCES = [
           "te rata"
         ],
         [
-          "D",
+          "C",
           "kia whakatā"
         ],
         [
@@ -149767,7 +149743,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua ʻōlelo"
         ],
         [
@@ -149775,7 +149751,7 @@ const SENTENCES = [
           "ke kauka"
         ],
         [
-          "D",
+          "C",
           "e hoʻomaha"
         ],
         [
@@ -151529,7 +151505,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Ka ngana"
         ],
         [
@@ -151537,7 +151513,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "ki te korikori tinana"
         ],
         [
@@ -151547,7 +151523,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Hoʻāʻo"
         ],
         [
@@ -151555,7 +151531,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e hoʻoikaika kino"
         ],
         [
@@ -152911,11 +152887,11 @@ const SENTENCES = [
           "Ona"
         ],
         [
-          "D",
+          "C",
           "przeziębiła się"
         ],
         [
-          "C",
+          "D",
           "w zeszłym tygodniu"
         ]
       ],
@@ -153261,11 +153237,11 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "B",
           "e te marangai mātao"
         ],
         [
-          "B",
+          "D",
           "i te wiki kua hori"
         ]
       ],
@@ -153279,11 +153255,11 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "B",
           "i ka anu"
         ],
         [
-          "B",
+          "D",
           "i ka pule i hala"
         ]
       ],
@@ -154539,11 +154515,11 @@ const SENTENCES = [
           "tú"
         ],
         [
-          "C",
+          "B",
           "níos mó uisce"
         ],
         [
-          "B",
+          "C",
           "a ól"
         ]
       ],
@@ -154607,7 +154583,7 @@ const SENTENCES = [
           "Powinieneś"
         ],
         [
-          "D",
+          "C",
           "pić"
         ],
         [
@@ -154975,7 +154951,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Pono"
         ],
         [
@@ -154983,7 +154959,7 @@ const SENTENCES = [
           "ʻoe"
         ],
         [
-          "D",
+          "C",
           "e inu"
         ],
         [
@@ -156657,15 +156633,15 @@ const SENTENCES = [
           "Ka whakamahi"
         ],
         [
-          "A",
+          "D",
           "ahau"
         ],
         [
-          "D",
+          "B",
           "i tōku waea atamai"
         ],
         [
-          "B",
+          "A",
           "ia rā"
         ]
       ],
@@ -156675,15 +156651,15 @@ const SENTENCES = [
           "Hoʻohana"
         ],
         [
-          "A",
+          "D",
           "au"
         ],
         [
-          "D",
+          "B",
           "i koʻu kelepona akamai"
         ],
         [
-          "B",
+          "A",
           "i kēlā me kēia lā"
         ]
       ],
@@ -158059,12 +158035,8 @@ const SENTENCES = [
           "aplikacja"
         ],
         [
-          "D",
-          "jest"
-        ],
-        [
           "C",
-          "bardzo"
+          "jest bardzo"
         ],
         [
           "D",
@@ -158429,11 +158401,11 @@ const SENTENCES = [
           "He tino"
         ],
         [
-          "A",
+          "D",
           "pai"
         ],
         [
-          "D",
+          "A",
           "tēnei"
         ],
         [
@@ -158443,15 +158415,15 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "He kūpono"
         ],
         [
-          "A",
+          "C",
           "loa"
         ],
         [
-          "D",
+          "A",
           "kēia"
         ],
         [
@@ -160949,7 +160921,7 @@ const SENTENCES = [
       ],
       "ga": [
         [
-          "C",
+          "A",
           "Ní féidir liom"
         ],
         [
@@ -160957,7 +160929,7 @@ const SENTENCES = [
           "pasfhocal an Wi-Fi"
         ],
         [
-          "A",
+          "C",
           "a aimsiú"
         ]
       ],
@@ -161301,11 +161273,11 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "A",
           "ʻAʻole hiki iaʻu"
         ],
         [
-          "A",
+          "C",
           "ke loaʻa"
         ],
         [
@@ -162967,7 +162939,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "I ako"
         ],
         [
@@ -162975,17 +162947,17 @@ const SENTENCES = [
           "ia"
         ],
         [
-          "D",
+          "B",
           "i te papatono"
         ],
         [
-          "B",
+          "C",
           "mā ia anō"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Ua aʻo"
         ],
         [
@@ -162993,11 +162965,11 @@ const SENTENCES = [
           "ʻo ia"
         ],
         [
-          "D",
+          "B",
           "i ka papahana"
         ],
         [
-          "B",
+          "C",
           "ma kona iho"
         ]
       ],
@@ -164349,7 +164321,7 @@ const SENTENCES = [
           "Oglądanie kwitnących wiśni"
         ],
         [
-          "C",
+          "D",
           "to"
         ],
         [
@@ -164692,15 +164664,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "te"
-        ],
-        [
-          "D",
-          "mātakitaki"
-        ],
-        [
-          "B",
-          "pua tiere"
+          "te mātakitaki pua tiere"
         ]
       ],
       "haw": [
@@ -164710,15 +164674,7 @@ const SENTENCES = [
         ],
         [
           "A",
-          "ka"
-        ],
-        [
-          "D",
-          "nānā"
-        ],
-        [
-          "B",
-          "pua sakura"
+          "ka nānā pua sakura"
         ]
       ],
       "bo": [
@@ -166467,11 +166423,11 @@ const SENTENCES = [
           "mātou"
         ],
         [
-          "D",
+          "B",
           "i ngā tōtiti"
         ],
         [
-          "B",
+          "D",
           "i te Tau Hou Hainamana"
         ]
       ],
@@ -166485,11 +166441,11 @@ const SENTENCES = [
           "mākou"
         ],
         [
-          "D",
+          "B",
           "i nā pepeiao"
         ],
         [
-          "B",
+          "D",
           "i ka Makahiki Hou Pākē"
         ]
       ],
@@ -168260,11 +168216,7 @@ const SENTENCES = [
       "mi": [
         [
           "C",
-          "He nui"
-        ],
-        [
-          "A",
-          "ngā whakangahau"
+          "He nui ngā whakangahau"
         ],
         [
           "D",
@@ -168278,11 +168230,7 @@ const SENTENCES = [
       "haw": [
         [
           "C",
-          "He nui"
-        ],
-        [
-          "A",
-          "nā ʻahaʻaina"
+          "He nui nā ʻahaʻaina"
         ],
         [
           "D",
@@ -170919,7 +170867,7 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
+          "C",
           "Jeżdżę"
         ],
         [
@@ -171218,25 +171166,21 @@ const SENTENCES = [
       "mi": [
         [
           "C",
-          "Ka haere"
-        ],
-        [
-          "A",
-          "ahau"
+          "Ka haere ahau"
         ],
         [
           "B",
-          "ki te tari mā te paihikara"
+          "ki te tari"
+        ],
+        [
+          "A",
+          "mā te paihikara"
         ]
       ],
       "haw": [
         [
           "C",
-          "Hele"
-        ],
-        [
-          "A",
-          "au"
+          "Hele au"
         ],
         [
           "B",
@@ -172921,38 +172865,30 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "A",
           "Tēnā"
         ],
         [
-          "A",
+          "D",
           "huri ki te matau"
         ],
         [
-          "D",
-          "i te"
-        ],
-        [
           "B",
-          "pūtahitanga e heke mai nei"
+          "i te pūtahitanga e heke mai nei"
         ]
       ],
       "haw": [
         [
-          "C",
+          "A",
           "E ʻoluʻolu"
         ],
         [
-          "A",
+          "D",
           "e huli i ka ʻākau"
         ],
         [
-          "D",
-          "ma ka"
-        ],
-        [
           "B",
-          "huina alanui aʻe"
+          "ma ka huina alanui aʻe"
         ]
       ],
       "bo": [
@@ -174725,37 +174661,37 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "Kei"
         ],
         [
-          "D",
+          "B",
           "muri"
         ],
         [
-          "A",
+          "C",
           "i te tūranga"
         ],
         [
-          "B",
+          "A",
           "te hūpāmākete"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Aia"
         ],
         [
-          "D",
+          "B",
           "ma hope"
         ],
         [
-          "A",
+          "C",
           "o ka hale kaʻa"
         ],
         [
-          "B",
+          "A",
           "ka hale kūʻai meaʻai"
         ]
       ],
@@ -176031,11 +175967,11 @@ const SENTENCES = [
           "mé"
         ],
         [
-          "C",
+          "B",
           "an mias seo"
         ],
         [
-          "B",
+          "C",
           "a ordú"
         ]
       ],
@@ -176453,7 +176389,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "E hiahia ana"
         ],
         [
@@ -176461,7 +176397,7 @@ const SENTENCES = [
           "ahau"
         ],
         [
-          "D",
+          "C",
           "ki te tono"
         ],
         [
@@ -176471,7 +176407,7 @@ const SENTENCES = [
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -176479,7 +176415,7 @@ const SENTENCES = [
           "au"
         ],
         [
-          "D",
+          "C",
           "e kauoha"
         ],
         [
@@ -177549,12 +177485,16 @@ const SENTENCES = [
           "Bei gani"
         ],
         [
-          "A",
+          "D",
           "kwa"
         ],
         [
           "B",
-          "zawadi hii"
+          "zawadi"
+        ],
+        [
+          "A",
+          "hii"
         ]
       ],
       "ja_edo": [
@@ -179253,11 +179193,15 @@ const SENTENCES = [
       ],
       "pl": [
         [
-          "A",
-          "Dziękuję za"
+          "B",
+          "Dziękuję"
         ],
         [
-          "B",
+          "C",
+          "za"
+        ],
+        [
+          "A",
           "wszystko"
         ]
       ],
@@ -179503,29 +179447,25 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
-          "Ngā mihi"
+          "B",
+          "Ngā mihi ki a koe"
         ],
         [
           "A",
-          "ki a koe"
-        ],
-        [
-          "B",
           "mō ngā mea katoa"
         ]
       ],
       "haw": [
         [
-          "C",
+          "B",
           "Mahalo"
         ],
         [
-          "A",
+          "C",
           "iā ʻoe"
         ],
         [
-          "B",
+          "A",
           "no nā mea a pau"
         ]
       ],
