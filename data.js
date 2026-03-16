@@ -3990,11 +3990,11 @@ const SENTENCES = [
           "Tanaka"
         ],
         [
-          "B",
+          "A",
           "tōku"
         ],
         [
-          "A",
+          "B",
           "ingoa"
         ]
       ],
@@ -4008,11 +4008,11 @@ const SENTENCES = [
           "Tanaka"
         ],
         [
-          "B",
+          "A",
           "koʻu"
         ],
         [
-          "A",
+          "B",
           "inoa"
         ]
       ],
@@ -125653,11 +125653,7 @@ const SENTENCES = [
         ],
         [
           "D",
-          "peux"
-        ],
-        [
-          "A",
-          "tu"
+          "peux-tu"
         ],
         [
           "C",
