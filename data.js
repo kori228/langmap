@@ -93164,7 +93164,7 @@ const SENTENCES = [
       ],
       "mi": [
         [
-          "C",
+          "D",
           "He pai"
         ],
         [
@@ -93172,17 +93172,17 @@ const SENTENCES = [
           "ki tāku kurī"
         ],
         [
-          "D",
+          "B",
           "te hīkoi"
         ],
         [
-          "B",
+          "C",
           "haere"
         ]
       ],
       "haw": [
         [
-          "C",
+          "D",
           "Makemake"
         ],
         [
@@ -93190,7 +93190,7 @@ const SENTENCES = [
           "koʻu ʻīlio"
         ],
         [
-          "D",
+          "C",
           "e hele"
         ],
         [
@@ -94394,11 +94394,11 @@ const SENTENCES = [
           "مادربزرگ"
         ],
         [
-          "B",
+          "C",
           "داستان‌های"
         ],
         [
-          "C",
+          "B",
           "جالبی"
         ],
         [
@@ -94610,11 +94610,11 @@ const SENTENCES = [
           "Mitantara"
         ],
         [
-          "B",
+          "C",
           "tantara"
         ],
         [
-          "C",
+          "B",
           "mahaliana"
         ],
         [
@@ -94672,11 +94672,11 @@ const SENTENCES = [
           "yn adrodd"
         ],
         [
-          "B",
+          "C",
           "straeon"
         ],
         [
-          "C",
+          "B",
           "diddorol"
         ]
       ],
@@ -155399,7 +155399,7 @@ const SENTENCES = [
       ],
       "fr": [
         [
-          "A",
+          "D",
           "J'"
         ],
         [
@@ -156283,7 +156283,7 @@ const SENTENCES = [
       ],
       "zu": [
         [
-          "A",
+          "C",
           "Ngisebenzisa"
         ],
         [
@@ -156593,7 +156593,7 @@ const SENTENCES = [
       ],
       "fr_qc": [
         [
-          "A",
+          "D",
           "J'"
         ],
         [
