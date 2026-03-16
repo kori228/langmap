@@ -857,6 +857,11 @@ select:focus { border-color: #4a90d9; outline: none; }
     .lang-label { min-width: 80px; width: 80px; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 0; margin-right: 8px; }
     .segment { font-size: 16px; }
     .lang-row { margin-bottom: 40px; flex-wrap: nowrap; white-space: nowrap; }
+    /* Export mode: override mobile constraints for full-width export */
+    .export-mode .lang-label { min-width: 160px; width: 240px; font-size: 16px; overflow: visible; text-overflow: unset; margin-right: 20px; }
+    .export-mode .segment { font-size: 20px; }
+    .export-mode .lang-row { margin-bottom: 60px; }
+    .export-mode { padding: 30px 40px; }
 
     /* Compact language summary pills for mobile */
     .lang-summary { gap: 3px; }

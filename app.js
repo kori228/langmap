@@ -1088,6 +1088,12 @@ async function fetchHieroFontBase64() {
 
 async function buildExportSVG() {
     const container = document.getElementById('mapContainer');
+
+    // Temporarily force desktop layout for export (remove mobile constraints)
+    container.classList.add('export-mode');
+    // Force reflow so getBoundingClientRect reflects the new layout
+    container.offsetHeight;
+
     const containerRect = container.getBoundingClientRect();
     const langRows = document.getElementById('langRows');
     const w = container.scrollWidth;
@@ -1117,6 +1123,15 @@ async function buildExportSVG() {
         });
     }
 
+    // Helper to get computed styles for SVG text rendering
+    function getSvgTextAttrs(el) {
+        const cs = getComputedStyle(el);
+        const fontSize = cs.fontSize; // e.g. "16px"
+        const fontWeight = cs.fontWeight;
+        const fontFamily = cs.fontFamily;
+        return { fontSize, fontWeight, fontFamily: escapeXml(fontFamily) };
+    }
+
     // Render text elements
     const rows = container.querySelectorAll('.lang-row');
     rows.forEach(row => {
@@ -1125,7 +1140,8 @@ async function buildExportSVG() {
             const r = label.getBoundingClientRect();
             const x = r.left - containerRect.left;
             const y = r.top - containerRect.top + r.height * 0.75;
-            svgContent += `<text x="${x}" y="${y}" font-family="sans-serif" font-size="16" font-weight="700" fill="#333">${escapeXml(label.textContent)}</text>`;
+            const a = getSvgTextAttrs(label);
+            svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="#333">${escapeXml(label.textContent)}</text>`;
         }
         row.querySelectorAll('.segment').forEach(seg => {
             const color = seg.style.color;
@@ -1138,25 +1154,32 @@ async function buildExportSVG() {
                         const r = hieroEl.getBoundingClientRect();
                         const x = r.left - containerRect.left;
                         const y = r.top - containerRect.top + r.height * 0.75;
-                        svgContent += `<text x="${x}" y="${y}" font-family="'Noto Sans Egyptian Hieroglyphs', sans-serif" font-size="24" font-weight="700" fill="${color}">${escapeXml(hieroEl.textContent)}</text>`;
+                        const a = getSvgTextAttrs(hieroEl);
+                        svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="${color}">${escapeXml(hieroEl.textContent)}</text>`;
                     }
                     if (translitEl) {
                         const r = translitEl.getBoundingClientRect();
                         const x = r.left - containerRect.left;
                         const y = r.top - containerRect.top + r.height * 0.75;
-                        svgContent += `<text x="${x}" y="${y}" font-family="sans-serif" font-size="14" font-weight="400" fill="${color}" opacity="0.65">${escapeXml(translitEl.textContent)}</text>`;
+                        const a = getSvgTextAttrs(translitEl);
+                        svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="${color}" opacity="0.65">${escapeXml(translitEl.textContent)}</text>`;
                     }
                 });
             } else {
                 const r = seg.getBoundingClientRect();
                 const x = r.left - containerRect.left;
                 const y = r.top - containerRect.top + r.height * 0.75;
-                svgContent += `<text x="${x}" y="${y}" font-family="sans-serif" font-size="20" font-weight="600" fill="${color}">${escapeXml(seg.textContent)}</text>`;
+                const a = getSvgTextAttrs(seg);
+                svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="${color}">${escapeXml(seg.textContent)}</text>`;
             }
         });
     });
 
     svgContent += `</svg>`;
+
+    // Restore mobile layout
+    container.classList.remove('export-mode');
+
     return svgContent;
 }
 
