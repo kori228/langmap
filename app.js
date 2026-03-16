@@ -886,6 +886,7 @@ function render() {
             } else {
                 seg.style.color = segColor;
             }
+            seg.dataset.rawText = text;
             if (code === 'egy' && text.includes('|')) {
                 const [hiero, translit] = text.split('|');
                 seg.classList.add('segment-dual');
@@ -1256,7 +1257,7 @@ function createSegmentWrapper(seg, langCode) {
     input.type = 'text';
     input.className = 'segment-input';
     input.draggable = false; // prevent native text drag
-    input.value = seg.textContent;
+    input.value = seg.dataset.rawText || seg.textContent;
     input.dataset.seg = seg.dataset.seg;
     input.dataset.lang = seg.dataset.lang || langCode;
     // Handle compound segments (e.g. "B|D")
@@ -1297,21 +1298,29 @@ function createSegmentWrapper(seg, langCode) {
         scheduleRedrawLines();
     });
 
-    // Segment ID badge
+    // Segment ID badge (clickable to change segment type)
     const badge = document.createElement('span');
     badge.className = 'seg-id-badge';
     badge.textContent = seg.dataset.seg;
+    badge.title = 'Change segment type';
     if (isCompound) {
         const colors = segSubIds.map(id => sentence.segments[id]?.color || '#666');
         badge.style.background = `linear-gradient(90deg, ${colors.join(', ')})`;
     } else {
         badge.style.background = segColor;
     }
+    badge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showChangeSegMenu(badge, wrapper, input, sentence);
+    });
 
     wrapper.appendChild(handle);
     wrapper.appendChild(badge);
     wrapper.appendChild(input);
     wrapper.appendChild(deleteBtn);
+
+    // Touch reorder support
+    setupTouchReorder(handle, wrapper);
 
     // Only the handle initiates drag (not the input)
     handle.addEventListener('dragstart', (e) => {
@@ -1537,6 +1546,181 @@ function addNewSegment(textDiv, langCode, segId, sentence) {
     input.focus();
 
     scheduleRedrawLines();
+}
+
+function showChangeSegMenu(badge, wrapper, input, sentence) {
+    const existing = document.querySelector('.add-segment-menu');
+    if (existing) { existing.remove(); return; }
+
+    const currentSeg = input.dataset.seg;
+    const allSegs = Object.keys(sentence.segments);
+    const menu = document.createElement('div');
+    menu.className = 'add-segment-menu';
+
+    allSegs.forEach(segId => {
+        const item = document.createElement('div');
+        item.className = 'add-segment-menu-item' + (segId === currentSeg ? ' active' : '');
+        const dot = document.createElement('span');
+        dot.className = 'seg-dot';
+        dot.style.background = sentence.segments[segId].color;
+        item.appendChild(dot);
+        const label = document.createElement('span');
+        label.textContent = segId;
+        item.appendChild(label);
+        item.addEventListener('click', () => {
+            menu.remove();
+            applySegChange(badge, input, segId, sentence);
+        });
+        menu.appendChild(item);
+    });
+
+    // Compound options
+    if (allSegs.length >= 2) {
+        const sep = document.createElement('div');
+        sep.style.cssText = 'border-top:1px solid #e0e0e0; margin:4px 0;';
+        menu.appendChild(sep);
+        for (let a = 0; a < allSegs.length; a++) {
+            for (let b = a + 1; b < allSegs.length; b++) {
+                const compId = allSegs[a] + '|' + allSegs[b];
+                const item = document.createElement('div');
+                item.className = 'add-segment-menu-item' + (compId === currentSeg ? ' active' : '');
+                const dot = document.createElement('span');
+                dot.className = 'seg-dot';
+                dot.style.background = `linear-gradient(90deg, ${sentence.segments[allSegs[a]].color}, ${sentence.segments[allSegs[b]].color})`;
+                item.appendChild(dot);
+                const label = document.createElement('span');
+                label.textContent = compId;
+                item.appendChild(label);
+                item.addEventListener('click', () => {
+                    menu.remove();
+                    applySegChange(badge, input, compId, sentence);
+                });
+                menu.appendChild(item);
+            }
+        }
+    }
+
+    const rect = badge.getBoundingClientRect();
+    menu.style.position = 'fixed';
+    menu.style.left = Math.min(rect.left, window.innerWidth - 120) + 'px';
+    menu.style.top = rect.bottom + 4 + 'px';
+    menu.style.zIndex = '200';
+    document.body.appendChild(menu);
+
+    const closeHandler = (e) => {
+        if (!menu.contains(e.target) && e.target !== badge) {
+            menu.remove();
+            document.removeEventListener('click', closeHandler, true);
+        }
+    };
+    setTimeout(() => document.addEventListener('click', closeHandler, true), 0);
+}
+
+function applySegChange(badge, input, newSegId, sentence) {
+    input.dataset.seg = newSegId;
+    badge.textContent = newSegId;
+    const subIds = newSegId.split('|');
+    if (subIds.length > 1) {
+        const colors = subIds.map(id => sentence.segments[id]?.color || '#666');
+        badge.style.background = `linear-gradient(90deg, ${colors.join(', ')})`;
+        input.style.backgroundImage = `linear-gradient(90deg, ${colors.join(', ')})`;
+        input.style.webkitBackgroundClip = 'text';
+        input.style.backgroundClip = 'text';
+        input.style.color = 'transparent';
+        input.style.borderColor = colors[0];
+    } else {
+        const color = sentence.segments[newSegId]?.color || '#666';
+        badge.style.background = color;
+        input.style.backgroundImage = '';
+        input.style.webkitBackgroundClip = '';
+        input.style.backgroundClip = '';
+        input.style.color = color;
+        input.style.borderColor = color;
+    }
+    scheduleRedrawLines();
+}
+
+// Touch reorder for mobile
+function setupTouchReorder(handle, wrapper) {
+    let touchStartY = 0;
+    let touchStartX = 0;
+    let placeholder = null;
+    let isDragging = false;
+
+    handle.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        isDragging = true;
+
+        placeholder = document.createElement('span');
+        placeholder.className = 'segment-input-wrapper touch-placeholder';
+        placeholder.style.width = wrapper.offsetWidth + 'px';
+        placeholder.style.height = wrapper.offsetHeight + 'px';
+
+        wrapper.parentElement.insertBefore(placeholder, wrapper);
+        wrapper.classList.add('touch-dragging');
+        wrapper.style.position = 'fixed';
+        wrapper.style.zIndex = '300';
+        wrapper.style.width = wrapper.offsetWidth + 'px';
+        wrapper.style.left = (touch.clientX - wrapper.offsetWidth / 2) + 'px';
+        wrapper.style.top = (touch.clientY - wrapper.offsetHeight / 2) + 'px';
+    }, { passive: false });
+
+    handle.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const touch = e.touches[0];
+        wrapper.style.left = (touch.clientX - wrapper.offsetWidth / 2) + 'px';
+        wrapper.style.top = (touch.clientY - wrapper.offsetHeight / 2) + 'px';
+
+        // Find drop target
+        wrapper.style.pointerEvents = 'none';
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        wrapper.style.pointerEvents = '';
+        const target = el ? findClosestWrapper(el) : null;
+        clearSegDropIndicators();
+        if (target && target !== placeholder && target.classList.contains('segment-input-wrapper') && !target.classList.contains('touch-placeholder')) {
+            const rect = target.getBoundingClientRect();
+            const midX = rect.left + rect.width / 2;
+            target.classList.add(touch.clientX < midX ? 'drag-over-left' : 'drag-over-right');
+        }
+    }, { passive: false });
+
+    handle.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const touch = e.changedTouches[0];
+        wrapper.classList.remove('touch-dragging');
+        wrapper.style.position = '';
+        wrapper.style.zIndex = '';
+        wrapper.style.width = '';
+        wrapper.style.left = '';
+        wrapper.style.top = '';
+
+        wrapper.style.pointerEvents = 'none';
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        wrapper.style.pointerEvents = '';
+        const target = el ? findClosestWrapper(el) : null;
+        clearSegDropIndicators();
+
+        if (target && target !== placeholder && target.classList.contains('segment-input-wrapper') && !target.classList.contains('touch-placeholder')) {
+            const rect = target.getBoundingClientRect();
+            const midX = rect.left + rect.width / 2;
+            const textDiv = placeholder.parentElement;
+            if (touch.clientX < midX) {
+                textDiv.insertBefore(wrapper, target);
+            } else {
+                textDiv.insertBefore(wrapper, target.nextSibling);
+            }
+        } else {
+            placeholder.parentElement.insertBefore(wrapper, placeholder);
+        }
+        if (placeholder) { placeholder.remove(); placeholder = null; }
+        scheduleRedrawLines();
+    });
 }
 
 function saveEdit(row, langCode) {

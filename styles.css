@@ -743,6 +743,36 @@ select:focus { border-color: #4a90d9; outline: none; }
     color: #666;
 }
 
+/* Clickable seg-id-badge in edit mode */
+.segment-input-wrapper .seg-id-badge {
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.segment-input-wrapper .seg-id-badge:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Active item in segment type menu */
+.add-segment-menu-item.active {
+    background: #e8f0fe;
+    font-weight: 600;
+}
+
+/* Touch dragging */
+.touch-dragging {
+    opacity: 0.85;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    background: #fff;
+}
+.touch-placeholder {
+    border: 2px dashed #4a90d9;
+    border-radius: 8px;
+    background: rgba(74, 144, 217, 0.05);
+    min-height: 40px;
+}
+
 /* Footer */
 .footer {
     margin-top: 15px;
@@ -842,5 +872,60 @@ select:focus { border-color: #4a90d9; outline: none; }
     .map-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile editing improvements */
+    .lang-row.editing {
+        width: 95vw;
+        padding: 16px 12px 12px;
+        max-height: 90vh;
+    }
+    .lang-row.editing .lang-label {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+    .lang-row.editing .lang-text {
+        gap: 6px;
+    }
+    .segment-input {
+        font-size: 16px;
+        padding: 5px 6px;
+        min-width: 36px;
+    }
+    .segment-input-wrapper {
+        padding: 3px 1px;
+    }
+    .drag-handle {
+        font-size: 18px;
+        padding: 4px 8px;
+    }
+    .seg-delete-btn {
+        font-size: 18px;
+        padding: 4px 8px;
+    }
+    .seg-id-badge {
+        font-size: 9px;
+        padding: 2px 4px;
+    }
+    .save-bar {
+        margin-top: 12px;
+        padding-top: 10px;
+    }
+    .save-bar .btn {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+    .add-segment-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+    .add-segment-menu {
+        max-height: 50vh;
+    }
+
+    /* Edit button always visible on mobile */
+    .edit-btn {
+        opacity: 1 !important;
     }
 }
