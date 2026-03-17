@@ -10,8 +10,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 100 languages/dialects with hand-aligned semantic segments
-- **100 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 119 languages/dialects with hand-aligned semantic segments
+- **119 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -24,7 +24,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
 
-## Languages (100 total, ordered by similarity)
+## Languages (119 total, ordered by similarity)
 
 | Group | Languages | Codes |
 |---|---|---|
@@ -32,27 +32,30 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Ainu | Ainu | `ain` |
 | Korean | Standard, North Korean, Busan, Jeju | `ko`, `ko_kp`, `ko_bus`, `ko_jeju` |
 | Mongolic | Mongolian | `mn` |
-| Turkic | Turkish | `tr` |
+| Turkic | Turkish, Kazakh, Uyghur | `tr`, `kk`, `ug` |
 | Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Classical Chinese, Sichuan, Dongbei | `zh`, `yue`, `nan`, `wuu`, `zh_classical`, `zh_sc`, `zh_db` |
 | Southeast Asian | Vietnamese, Chữ Nôm, Thai, Lao, Burmese, Khmer, Indonesian, Malay, Javanese, Tagalog | `vi`, `vi_nom`, `th`, `lo`, `my`, `km`, `id`, `ms`, `jv`, `tl` |
-| South Asian | Hindi, Bengali, Tamil, Telugu, Sinhala, Urdu, Sanskrit | `hi`, `bn`, `ta`, `te`, `si`, `ur`, `sa` |
-| Iranian | Persian | `fa` |
-| Semitic | Arabic (MSA), Arabic (Egyptian/Levantine/Moroccan/Gulf), Hebrew, Amharic | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `he`, `am` |
-| African | Swahili, Yoruba, Zulu, Malagasy | `sw`, `yo`, `zu`, `mg` |
-| Germanic | English, English dialects (AAVE/Southern/Irish/Scots/Yorkshire/Cockney/Appalachian/Singaporean), Dutch, German, Swiss German, Swedish, Norwegian | `en`, `en_aave`, `en_south`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_app`, `en_sg`, `nl`, `de`, `de_gsw`, `sv`, `no` |
+| South Asian | Hindi, Bengali, Tamil, Telugu, Malayalam, Sinhala, Urdu, Punjabi, Sanskrit | `hi`, `bn`, `ta`, `te`, `ml`, `si`, `ur`, `pa`, `sa` |
+| Iranian | Persian, Kurdish (Kurmanji) | `fa`, `ku` |
+| Semitic | Arabic (MSA), Arabic (Egyptian/Levantine/Moroccan/Gulf), Hebrew, Amharic, Maltese | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `he`, `am`, `mt` |
+| African | Swahili, Yoruba, Zulu, Malagasy, Hausa, Igbo, Somali | `sw`, `yo`, `zu`, `mg`, `ha`, `ig`, `so` |
+| Germanic | English, English dialects (AAVE/Southern/Irish/Scots/Yorkshire/Cockney/Appalachian/Singaporean), Dutch, German, Swiss German, Swedish, Norwegian, Danish, Icelandic | `en`, `en_aave`, `en_south`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_app`, `en_sg`, `nl`, `de`, `de_gsw`, `sv`, `no`, `da`, `is` |
 | Celtic | Irish, Welsh | `ga`, `cy` |
-| Romance | French, French (Quebec), Italian, Neapolitan, Sicilian, Spanish (EU/MX), Portuguese (EU/BR) | `fr`, `fr_qc`, `it`, `nap`, `scn`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| Romance | French, French (Quebec), Italian, Neapolitan, Sicilian, Spanish (EU/MX), Portuguese (EU/BR), Romanian, Catalan | `fr`, `fr_qc`, `it`, `nap`, `scn`, `es_eu`, `es_mx`, `pt_eu`, `pt_br`, `ro`, `ca` |
+| Baltic | Lithuanian | `lt` |
 | Basque | Basque | `eu` |
-| Slavic | Russian, Ukrainian, Polish | `ru`, `uk`, `pl` |
+| Slavic | Russian, Ukrainian, Polish, Czech | `ru`, `uk`, `pl`, `cs` |
 | Uralic | Hungarian, Finnish | `hu`, `fi` |
+| Albanian | Albanian | `sq` |
 | Kartvelian | Georgian | `ka` |
 | Hellenic | Greek, Ancient Greek | `el`, `el_grc` |
 | Armenian | Armenian | `hy` |
 | Tibeto-Burman | Tibetan | `bo` |
 | Austronesian | Hawaiian, Maori | `haw`, `mi` |
 | Indigenous Americas | Navajo, Quechua | `nv`, `qu` |
+| Constructed | Esperanto, Toki Pona | `eo`, `tok` |
 | Historical | Old English, Ancient Egyptian, Latin, Ancient Greek, Classical Chinese, Edo-period Japanese | `en_ang`, `egy`, `la`, `el_grc`, `zh_classical`, `ja_edo` |
-| Creoles & Pidgins | Tok Pisin, Nigerian Pidgin, Hawaiian Creole, Scots | `tpi`, `pcm`, `hwc`, `sco` |
+| Creoles & Pidgins | Tok Pisin, Nigerian Pidgin, Hawaiian Creole, Haitian Creole, Scots | `tpi`, `pcm`, `hwc`, `ht`, `sco` |
 
 ## Getting Started
 
@@ -90,7 +93,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 100 languages with segment alignments
+  data.js            — 100 sentences × 119 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -154,8 +157,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 100言語・方言で意味単位のアラインメント済み
-- **100言語対応** — 方言・歴史的変種・クレオール語を含む（下表参照）
+- **100のサンプル文** — 119言語・方言で意味単位のアラインメント済み
+- **119言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -168,7 +171,7 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（100言語、類似言語順）
+## 言語一覧（119言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
@@ -176,27 +179,30 @@ MIT
 | アイヌ語 | アイヌ語 | `ain` |
 | 韓国語 | 標準語、北朝鮮語、釜山弁、済州語 | `ko`, `ko_kp`, `ko_bus`, `ko_jeju` |
 | モンゴル語派 | モンゴル語 | `mn` |
-| テュルク語派 | トルコ語 | `tr` |
+| テュルク語派 | トルコ語、カザフ語、ウイグル語 | `tr`, `kk`, `ug` |
 | 中国語 | 普通話、広東語、台湾語、上海語、文言、四川語、東北語 | `zh`, `yue`, `nan`, `wuu`, `zh_classical`, `zh_sc`, `zh_db` |
 | 東南アジア | ベトナム語、チューノム、タイ語、ラオ語、ミャンマー語、クメール語、インドネシア語、マレー語、ジャワ語、タガログ語 | `vi`, `vi_nom`, `th`, `lo`, `my`, `km`, `id`, `ms`, `jv`, `tl` |
-| 南アジア | ヒンディー語、ベンガル語、タミル語、テルグ語、シンハラ語、ウルドゥー語、サンスクリット語 | `hi`, `bn`, `ta`, `te`, `si`, `ur`, `sa` |
-| イラン語派 | ペルシャ語 | `fa` |
-| セム語派 | アラビア語(フスハー)、アラビア語(エジプト/レバント/モロッコ/湾岸方言)、ヘブライ語、アムハラ語 | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `he`, `am` |
-| アフリカ | スワヒリ語、ヨルバ語、ズールー語、マダガスカル語 | `sw`, `yo`, `zu`, `mg` |
-| ゲルマン語派 | 英語、英語方言(AAVE/南部/アイルランド/スコットランド/ヨークシャー/コックニー/アパラチア/シンガポール)、オランダ語、ドイツ語、スイスドイツ語、スウェーデン語、ノルウェー語 | `en`, `en_aave`, `en_south`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_app`, `en_sg`, `nl`, `de`, `de_gsw`, `sv`, `no` |
+| 南アジア | ヒンディー語、ベンガル語、タミル語、テルグ語、マラヤーラム語、シンハラ語、ウルドゥー語、パンジャーブ語、サンスクリット語 | `hi`, `bn`, `ta`, `te`, `ml`, `si`, `ur`, `pa`, `sa` |
+| イラン語派 | ペルシャ語、クルド語（クルマンジー） | `fa`, `ku` |
+| セム語派 | アラビア語(フスハー)、アラビア語(エジプト/レバント/モロッコ/湾岸方言)、ヘブライ語、アムハラ語、マルタ語 | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `he`, `am`, `mt` |
+| アフリカ | スワヒリ語、ヨルバ語、ズールー語、マダガスカル語、ハウサ語、イグボ語、ソマリ語 | `sw`, `yo`, `zu`, `mg`, `ha`, `ig`, `so` |
+| ゲルマン語派 | 英語、英語方言(AAVE/南部/アイルランド/スコットランド/ヨークシャー/コックニー/アパラチア/シンガポール)、オランダ語、ドイツ語、スイスドイツ語、スウェーデン語、ノルウェー語、デンマーク語、アイスランド語 | `en`, `en_aave`, `en_south`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_app`, `en_sg`, `nl`, `de`, `de_gsw`, `sv`, `no`, `da`, `is` |
 | ケルト語派 | アイルランド語、ウェールズ語 | `ga`, `cy` |
-| ロマンス語派 | フランス語、フランス語(ケベック)、イタリア語、ナポリ語、シチリア語、スペイン語(欧州/メキシコ)、ポルトガル語(欧州/ブラジル) | `fr`, `fr_qc`, `it`, `nap`, `scn`, `es_eu`, `es_mx`, `pt_eu`, `pt_br` |
+| ロマンス語派 | フランス語、フランス語(ケベック)、イタリア語、ナポリ語、シチリア語、スペイン語(欧州/メキシコ)、ポルトガル語(欧州/ブラジル)、ルーマニア語、カタルーニャ語 | `fr`, `fr_qc`, `it`, `nap`, `scn`, `es_eu`, `es_mx`, `pt_eu`, `pt_br`, `ro`, `ca` |
+| バルト語派 | リトアニア語 | `lt` |
 | バスク語 | バスク語 | `eu` |
-| スラヴ語派 | ロシア語、ウクライナ語、ポーランド語 | `ru`, `uk`, `pl` |
+| スラヴ語派 | ロシア語、ウクライナ語、ポーランド語、チェコ語 | `ru`, `uk`, `pl`, `cs` |
 | ウラル語派 | ハンガリー語、フィンランド語 | `hu`, `fi` |
+| アルバニア語派 | アルバニア語 | `sq` |
 | カルトヴェリ語族 | ジョージア語 | `ka` |
 | ギリシャ語派 | ギリシャ語、古代ギリシャ語 | `el`, `el_grc` |
 | アルメニア語派 | アルメニア語 | `hy` |
 | チベット・ビルマ語派 | チベット語 | `bo` |
 | オーストロネシア語族 | ハワイ語、マオリ語 | `haw`, `mi` |
 | アメリカ先住民語 | ナバホ語、ケチュア語 | `nv`, `qu` |
+| 人工言語 | エスペラント、トキポナ | `eo`, `tok` |
 | 歴史的言語 | 古英語、古代エジプト語、ラテン語、古代ギリシャ語、文言、江戸時代語 | `en_ang`, `egy`, `la`, `el_grc`, `zh_classical`, `ja_edo` |
-| クレオール・ピジン | トクピシン、ナイジェリアピジン、ハワイクレオール、スコットランド語 | `tpi`, `pcm`, `hwc`, `sco` |
+| クレオール・ピジン | トクピシン、ナイジェリアピジン、ハワイクレオール、ハイチクレオール、スコットランド語 | `tpi`, `pcm`, `hwc`, `ht`, `sco` |
 
 ## 使い方
 
