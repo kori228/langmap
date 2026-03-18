@@ -10,8 +10,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 180 languages/dialects with hand-aligned semantic segments
-- **180 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 210 languages/dialects with hand-aligned semantic segments
+- **210 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -96,7 +96,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 180 languages with segment alignments
+  data.js            — 100 sentences × 210 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -160,8 +160,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 180言語・方言で意味単位のアラインメント済み
-- **180言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
+- **100のサンプル文** — 210言語・方言で意味単位のアラインメント済み
+- **210言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -174,7 +174,7 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（180言語、類似言語順）
+## 言語一覧（210言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
@@ -244,7 +244,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 180言語のセグメントアラインメントデータ
+  data.js            — 100文 × 210言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
