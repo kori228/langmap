@@ -10,8 +10,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 159 languages/dialects with hand-aligned semantic segments
-- **159 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 174 languages/dialects with hand-aligned semantic segments
+- **174 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -24,39 +24,39 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
 
-## Languages (159 total, ordered by similarity)
+## Languages (174 total, ordered by similarity)
 
 | Group | Languages | Codes |
 |---|---|---|
-| Japanese | Standard, Osaka, Hakata, Okinawan, Aomori, Edo-period, Kyoto, Hiroshima, Miyako, Yaeyama | `ja`, `ja_osa`, `ja_hak`, `ja_oki`, `ja_aom`, `ja_edo`, `ja_kyo`, `ja_hir`, `ja_mvi`, `ja_rys` |
+| Japanese | Standard, Kyoto, Osaka, Hiroshima, Hakata, Aomori, Okinawan, Miyako, Yaeyama, Heian-period, Edo-period | `ja`, `ja_kyo`, `ja_osa`, `ja_hir`, `ja_hak`, `ja_aom`, `ja_oki`, `ja_mvi`, `ja_rys`, `ja_heian`, `ja_edo` |
 | Ainu | Ainu | `ain` |
-| Korean | Standard, North Korean, Busan, Jeju | `ko`, `ko_kp`, `ko_bus`, `ko_jeju` |
+| Korean | Standard, North Korean, Busan, Jeju, Middle Korean, Early Modern Korean | `ko`, `ko_kp`, `ko_bus`, `ko_jeju`, `ko_mid`, `ko_em` |
 | Mongolic | Mongolian | `mn` |
 | Turkic | Turkish, Kazakh, Uyghur, Uzbek | `tr`, `kk`, `ug`, `uz` |
-| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Classical Chinese, Sichuan, Dongbei | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_classical`, `zh_sc`, `zh_db` |
-| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Lao, Burmese, Khmer, Indonesian, Malay, Javanese, Tagalog | `vi`, `vi_nom`, `th`, `lo`, `my`, `km`, `id`, `ms`, `jv`, `tl` |
+| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Sichuan, Dongbei, Han-dynasty Classical, Tang-dynasty Classical, General Classical | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_sc`, `zh_db`, `zh_han`, `zh_tang`, `zh_classical` |
+| Tibeto-Burman | Tibetan, Burmese | `bo`, `my` |
+| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Thai (Isan), Lao, Khmer, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano | `vi`, `vi_nom`, `th`, `th_isan`, `lo`, `km`, `id`, `su`, `ms`, `jv`, `tl`, `ceb` |
 | Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan | `mg`, `mi`, `haw`, `fj`, `sm` |
-| South Asian | Hindi, Marathi, Gujarati, Bengali, Tamil, Telugu, Kannada, Malayalam, Sinhala, Urdu, Punjabi, Nepali, Sanskrit | `hi`, `mr`, `gu`, `bn`, `ta`, `te`, `kn`, `ml`, `si`, `ur`, `pa`, `ne`, `sa` |
+| South Asian | Hindi, Marathi, Gujarati, Bengali, Tamil, Telugu, Kannada, Malayalam, Sinhala, Urdu, Punjabi, Nepali, Sanskrit, Romani | `hi`, `mr`, `gu`, `bn`, `ta`, `te`, `kn`, `ml`, `si`, `ur`, `pa`, `ne`, `sa`, `rom` |
 | Iranian | Persian, Kurdish (Kurmanji), Pashto | `fa`, `ku`, `ps` |
-| Semitic & Ancient Near East | Arabic (MSA), Arabic (Egyptian/Levantine/Moroccan/Gulf/Iraqi), Hebrew, Amharic, Maltese, Aramaic, Sumerian, Akkadian | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `ar_iq`, `he`, `am`, `mt`, `arc`, `sux`, `akk` |
-| African | Swahili, Yoruba, Zulu, Xhosa, Hausa, Igbo, Somali, Oromo, Tigrinya, Wolof, Lingala, Shona | `sw`, `yo`, `zu`, `xh`, `ha`, `ig`, `so`, `om`, `ti`, `wo`, `ln`, `sn` |
-| Germanic | English, English dialects (AAVE/Southern/Irish/Scots/Yorkshire/Cockney/Appalachian/Singaporean/Australian/Indian), Dutch, German, Swiss German, Swedish, Norwegian, Danish, Icelandic, Yiddish | `en`, `en_aave`, `en_south`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_app`, `en_sg`, `en_au`, `en_in`, `nl`, `de`, `de_gsw`, `sv`, `no`, `da`, `is`, `yi` |
+| Semitic & Ancient Near East | Arabic (MSA), Arabic (Egyptian/Levantine/Moroccan/Gulf/Iraqi), Hebrew, Aramaic, Akkadian, Amharic, Tigrinya, Maltese, Ancient Egyptian, Coptic, Sumerian | `ar`, `ar_eg`, `ar_lev`, `ar_ma`, `ar_gulf`, `ar_iq`, `he`, `arc`, `akk`, `am`, `ti`, `mt`, `egy`, `cop`, `sux` |
+| African | Swahili, Lingala, Shona, Zulu, Xhosa, Yoruba, Igbo, Hausa, Wolof, Somali, Oromo | `sw`, `ln`, `sn`, `zu`, `xh`, `yo`, `ig`, `ha`, `wo`, `so`, `om` |
+| Proto-Indo-European | Proto-Indo-European, Hittite | `ine`, `hit` |
+| Germanic | English, English dialects (AAVE/Southern/Appalachian/Australian/Indian/Irish/Scots/Yorkshire/Cockney/Singaporean), Scots, Dutch, German, Swiss German, Yiddish, Swedish, Norwegian, Danish, Icelandic, Faroese, Old English, Old Norse | `en`, `en_aave`, `en_south`, `en_app`, `en_au`, `en_in`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_sg`, `sco`, `nl`, `de`, `de_gsw`, `yi`, `sv`, `no`, `da`, `is`, `fo`, `en_ang`, `non` |
 | Celtic | Irish, Welsh, Breton | `ga`, `cy`, `br` |
-| Romance | French, French (Quebec), Italian, Neapolitan, Sicilian, Spanish (EU/MX/AR), Portuguese (EU/BR), Romanian, Catalan, Ladino | `fr`, `fr_qc`, `it`, `nap`, `scn`, `es_eu`, `es_mx`, `es_ar`, `pt_eu`, `pt_br`, `ro`, `ca`, `lad` |
+| Romance | Latin, Italian, Neapolitan, Sicilian, French, French (Quebec), Catalan, Spanish (EU/MX/AR/CO/CL), Ladino, Galician, Occitan, Portuguese (EU/BR), Romanian | `la`, `it`, `nap`, `scn`, `fr`, `fr_qc`, `ca`, `es_eu`, `es_mx`, `es_ar`, `es_co`, `es_cl`, `lad`, `gl`, `oc`, `pt_eu`, `pt_br`, `ro` |
+| Slavic | Russian, Ukrainian, Belarusian, Polish, Czech, Slovak, Serbian, Bulgarian | `ru`, `uk`, `be`, `pl`, `cs`, `sk`, `sr`, `bg` |
 | Baltic | Lithuanian, Latvian | `lt`, `lv` |
-| Basque | Basque | `eu` |
-| Slavic | Russian, Ukrainian, Polish, Czech, Serbian, Bulgarian, Slovak, Belarusian | `ru`, `uk`, `pl`, `cs`, `sr`, `bg`, `sk`, `be` |
-| Uralic | Hungarian, Finnish, Estonian | `hu`, `fi`, `et` |
+| Hellenic | Greek, Ancient Greek | `el`, `el_grc` |
 | Albanian | Albanian | `sq` |
-| Kartvelian | Georgian | `ka` |
-| Hellenic & Ancient IE | Greek, Ancient Greek, Hittite, Proto-Indo-European | `el`, `el_grc`, `hit`, `ine` |
 | Armenian | Armenian | `hy` |
-| Indo-Aryan (diaspora) | Romani | `rom` |
-| Tibeto-Burman | Tibetan | `bo` |
+| Uralic | Finnish, Estonian, Hungarian | `fi`, `et`, `hu` |
+| Basque | Basque | `eu` |
+| Kartvelian | Georgian | `ka` |
 | Indigenous Americas | Navajo, Quechua, Classical Nahuatl, Classical Maya | `nv`, `qu`, `nci`, `myn` |
+| Creoles & Pidgins | Hawaiian Creole, Nigerian Pidgin, Tok Pisin, Haitian Creole, Jamaican Patois, Papiamento | `hwc`, `pcm`, `tpi`, `ht`, `jam`, `pap` |
 | Constructed | Esperanto, Toki Pona, Lojban, Klingon | `eo`, `tok`, `jbo`, `tlh` |
-| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Classical Chinese, Edo-period Japanese, Classical Nahuatl, Classical Maya, Ladino | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_classical`, `ja_edo`, `nci`, `myn`, `lad` |
-| Creoles & Pidgins | Tok Pisin, Nigerian Pidgin, Hawaiian Creole, Haitian Creole, Scots | `tpi`, `pcm`, `hwc`, `ht`, `sco` |
+| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Han Classical Chinese, Tang Classical Chinese, General Classical Chinese, Heian Japanese, Edo Japanese, Middle Korean, Early Modern Korean, Classical Nahuatl, Classical Maya, Ladino, Sanskrit | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_han`, `zh_tang`, `zh_classical`, `ja_heian`, `ja_edo`, `ko_mid`, `ko_em`, `nci`, `myn`, `lad`, `sa` |
 
 ## Getting Started
 
@@ -94,7 +94,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 159 languages with segment alignments
+  data.js            — 100 sentences × 174 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -158,8 +158,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 159言語・方言で意味単位のアラインメント済み
-- **159言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
+- **100のサンプル文** — 174言語・方言で意味単位のアラインメント済み
+- **174言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -172,7 +172,7 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（159言語、類似言語順）
+## 言語一覧（174言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
@@ -242,7 +242,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 159言語のセグメントアラインメントデータ
+  data.js            — 100文 × 174言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
