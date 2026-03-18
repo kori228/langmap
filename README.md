@@ -10,8 +10,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 174 languages/dialects with hand-aligned semantic segments
-- **174 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 180 languages/dialects with hand-aligned semantic segments
+- **180 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -30,12 +30,13 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 |---|---|---|
 | Japanese | Standard, Kyoto, Osaka, Hiroshima, Hakata, Aomori, Okinawan, Miyako, Yaeyama, Heian-period, Edo-period | `ja`, `ja_kyo`, `ja_osa`, `ja_hir`, `ja_hak`, `ja_aom`, `ja_oki`, `ja_mvi`, `ja_rys`, `ja_heian`, `ja_edo` |
 | Ainu | Ainu | `ain` |
-| Korean | Standard, North Korean, Busan, Jeju, Middle Korean, Early Modern Korean | `ko`, `ko_kp`, `ko_bus`, `ko_jeju`, `ko_mid`, `ko_em` |
-| Mongolic | Mongolian | `mn` |
+| Korean | Standard, North Korean, Busan, Jeju, Yanbian, Middle Korean, Early Modern Korean | `ko`, `ko_kp`, `ko_bus`, `ko_jeju`, `ko_yb`, `ko_mid`, `ko_em` |
+| Mongolic | Mongolian, Inner Mongolian | `mn`, `mn_cn` |
 | Turkic | Turkish, Kazakh, Uyghur, Uzbek | `tr`, `kk`, `ug`, `uz` |
-| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Sichuan, Dongbei, Han-dynasty Classical, Tang-dynasty Classical, General Classical | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_sc`, `zh_db`, `zh_han`, `zh_tang`, `zh_song` |
-| Tibeto-Burman | Tibetan, Burmese | `bo`, `my` |
-| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Thai (Isan), Lao, Khmer, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano | `vi`, `vi_nom`, `th`, `th_isan`, `lo`, `km`, `id`, `su`, `ms`, `jv`, `tl`, `ceb` |
+| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Sichuan, Dongbei, Han-dynasty Classical, Tang-dynasty Classical, Song-Ming Classical | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_sc`, `zh_db`, `zh_han`, `zh_tang`, `zh_song` |
+| Tibeto-Burman | Tibetan, Burmese, Yi (Nuosu) | `bo`, `my`, `ii` |
+| Hmong-Mien | Hmong (Miao) | `hmn` |
+| Southeast Asian | Vietnamese, Chữ Nôm, Thai, Thai (Isan), Lao, Khmer, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano, Zhuang | `vi`, `vi_nom`, `th`, `th_isan`, `lo`, `km`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `za` |
 | Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan | `mg`, `mi`, `haw`, `fj`, `sm` |
 | South Asian | Hindi, Marathi, Gujarati, Bengali, Tamil, Telugu, Kannada, Malayalam, Sinhala, Urdu, Punjabi, Nepali, Sanskrit, Romani | `hi`, `mr`, `gu`, `bn`, `ta`, `te`, `kn`, `ml`, `si`, `ur`, `pa`, `ne`, `sa`, `rom` |
 | Iranian | Persian, Kurdish (Kurmanji), Pashto | `fa`, `ku`, `ps` |
@@ -56,7 +57,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Indigenous Americas | Navajo, Quechua, Classical Nahuatl, Classical Maya | `nv`, `qu`, `nci`, `myn` |
 | Creoles & Pidgins | Hawaiian Creole, Nigerian Pidgin, Tok Pisin, Haitian Creole, Jamaican Patois, Papiamento | `hwc`, `pcm`, `tpi`, `ht`, `jam`, `pap` |
 | Constructed | Esperanto, Toki Pona, Lojban, Klingon | `eo`, `tok`, `jbo`, `tlh` |
-| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Han Classical Chinese, Tang Classical Chinese, General Classical Chinese, Heian Japanese, Edo Japanese, Middle Korean, Early Modern Korean, Classical Nahuatl, Classical Maya, Ladino, Sanskrit | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_han`, `zh_tang`, `zh_song`, `ja_heian`, `ja_edo`, `ko_mid`, `ko_em`, `nci`, `myn`, `lad`, `sa` |
+| Tungusic | Manchu | `mnc` |
+| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Han Classical Chinese, Tang Classical Chinese, Song-Ming Classical Chinese, Heian Japanese, Edo Japanese, Middle Korean, Early Modern Korean, Classical Nahuatl, Classical Maya, Manchu, Ladino, Sanskrit | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_han`, `zh_tang`, `zh_song`, `ja_heian`, `ja_edo`, `ko_mid`, `ko_em`, `nci`, `myn`, `mnc`, `lad`, `sa` |
 
 ## Getting Started
 
@@ -94,7 +96,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 174 languages with segment alignments
+  data.js            — 100 sentences × 180 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -158,8 +160,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 174言語・方言で意味単位のアラインメント済み
-- **174言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
+- **100のサンプル文** — 180言語・方言で意味単位のアラインメント済み
+- **180言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -172,7 +174,7 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（174言語、類似言語順）
+## 言語一覧（180言語、類似言語順）
 
 | グループ | 言語 | コード |
 |---|---|---|
@@ -242,7 +244,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 174言語のセグメントアラインメントデータ
+  data.js            — 100文 × 180言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
