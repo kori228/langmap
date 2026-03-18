@@ -33,7 +33,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Korean | Standard, North Korean, Busan, Jeju, Middle Korean, Early Modern Korean | `ko`, `ko_kp`, `ko_bus`, `ko_jeju`, `ko_mid`, `ko_em` |
 | Mongolic | Mongolian | `mn` |
 | Turkic | Turkish, Kazakh, Uyghur, Uzbek | `tr`, `kk`, `ug`, `uz` |
-| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Sichuan, Dongbei, Han-dynasty Classical, Tang-dynasty Classical, General Classical | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_sc`, `zh_db`, `zh_han`, `zh_tang`, `zh_classical` |
+| Chinese | Mandarin, Cantonese, Taiwanese, Shanghainese, Hakka, Sichuan, Dongbei, Han-dynasty Classical, Tang-dynasty Classical, General Classical | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_sc`, `zh_db`, `zh_han`, `zh_tang`, `zh_song` |
 | Tibeto-Burman | Tibetan, Burmese | `bo`, `my` |
 | Southeast Asian | Vietnamese, Chữ Nôm, Thai, Thai (Isan), Lao, Khmer, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano | `vi`, `vi_nom`, `th`, `th_isan`, `lo`, `km`, `id`, `su`, `ms`, `jv`, `tl`, `ceb` |
 | Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan | `mg`, `mi`, `haw`, `fj`, `sm` |
@@ -56,7 +56,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Indigenous Americas | Navajo, Quechua, Classical Nahuatl, Classical Maya | `nv`, `qu`, `nci`, `myn` |
 | Creoles & Pidgins | Hawaiian Creole, Nigerian Pidgin, Tok Pisin, Haitian Creole, Jamaican Patois, Papiamento | `hwc`, `pcm`, `tpi`, `ht`, `jam`, `pap` |
 | Constructed | Esperanto, Toki Pona, Lojban, Klingon | `eo`, `tok`, `jbo`, `tlh` |
-| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Han Classical Chinese, Tang Classical Chinese, General Classical Chinese, Heian Japanese, Edo Japanese, Middle Korean, Early Modern Korean, Classical Nahuatl, Classical Maya, Ladino, Sanskrit | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_han`, `zh_tang`, `zh_classical`, `ja_heian`, `ja_edo`, `ko_mid`, `ko_em`, `nci`, `myn`, `lad`, `sa` |
+| Historical | Old English, Old Norse, Ancient Egyptian, Coptic, Latin, Ancient Greek, Aramaic, Sumerian, Akkadian, Hittite, Proto-Indo-European, Han Classical Chinese, Tang Classical Chinese, General Classical Chinese, Heian Japanese, Edo Japanese, Middle Korean, Early Modern Korean, Classical Nahuatl, Classical Maya, Ladino, Sanskrit | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_han`, `zh_tang`, `zh_song`, `ja_heian`, `ja_edo`, `ko_mid`, `ko_em`, `nci`, `myn`, `lad`, `sa` |
 
 ## Getting Started
 
@@ -181,7 +181,7 @@ MIT
 | 韓国語 | 標準語、北朝鮮語、釜山弁、済州語 | `ko`, `ko_kp`, `ko_bus`, `ko_jeju` |
 | モンゴル語派 | モンゴル語 | `mn` |
 | テュルク語派 | トルコ語、カザフ語、ウイグル語、ウズベク語 | `tr`, `kk`, `ug`, `uz` |
-| 中国語 | 普通話、広東語、台湾語、上海語、客家語、文言、四川語、東北語 | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_classical`, `zh_sc`, `zh_db` |
+| 中国語 | 普通話、広東語、台湾語、上海語、客家語、文言、四川語、東北語 | `zh`, `yue`, `nan`, `wuu`, `hak_cn`, `zh_song`, `zh_sc`, `zh_db` |
 | 東南アジア | ベトナム語、チューノム、タイ語、ラオ語、ミャンマー語、クメール語、インドネシア語、マレー語、ジャワ語、タガログ語 | `vi`, `vi_nom`, `th`, `lo`, `my`, `km`, `id`, `ms`, `jv`, `tl` |
 | オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語 | `mg`, `mi`, `haw`, `fj`, `sm` |
 | 南アジア | ヒンディー語、マラーティー語、グジャラート語、ベンガル語、タミル語、テルグ語、カンナダ語、マラヤーラム語、シンハラ語、ウルドゥー語、パンジャーブ語、ネパール語、サンスクリット語 | `hi`, `mr`, `gu`, `bn`, `ta`, `te`, `kn`, `ml`, `si`, `ur`, `pa`, `ne`, `sa` |
@@ -203,7 +203,7 @@ MIT
 | チベット・ビルマ語派 | チベット語 | `bo` |
 | アメリカ先住民語 | ナバホ語、ケチュア語、古典ナワトル語、古典マヤ語 | `nv`, `qu`, `nci`, `myn` |
 | 人工言語 | エスペラント、トキポナ、ロジバン、クリンゴン語 | `eo`, `tok`, `jbo`, `tlh` |
-| 歴史的言語 | 古英語、古ノルド語、古代エジプト語、コプト語、ラテン語、古代ギリシャ語、アラム語、シュメール語、アッカド語、ヒッタイト語、印欧祖語、文言、江戸時代語、古典ナワトル語、古典マヤ語、ラディーノ語 | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_classical`, `ja_edo`, `nci`, `myn`, `lad` |
+| 歴史的言語 | 古英語、古ノルド語、古代エジプト語、コプト語、ラテン語、古代ギリシャ語、アラム語、シュメール語、アッカド語、ヒッタイト語、印欧祖語、文言、江戸時代語、古典ナワトル語、古典マヤ語、ラディーノ語 | `en_ang`, `non`, `egy`, `cop`, `la`, `el_grc`, `arc`, `sux`, `akk`, `hit`, `ine`, `zh_song`, `ja_edo`, `nci`, `myn`, `lad` |
 | クレオール・ピジン | トクピシン、ナイジェリアピジン、ハワイクレオール、ハイチクレオール、スコットランド語 | `tpi`, `pcm`, `hwc`, `ht`, `sco` |
 
 ## 使い方
