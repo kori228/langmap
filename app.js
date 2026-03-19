@@ -517,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initUILangSelect();
     initSampleSelect();
+    initCSVLangSelect();
     updateLangSummary();
     syncUIFromState();
     applyUILang();
@@ -1359,6 +1360,87 @@ async function downloadAsSVG() {
     link.click();
 }
 
+// CSV export
+function initCSVLangSelect() {
+    const sel = document.getElementById('csvLangSelect');
+    if (!sel) return;
+    sel.innerHTML = '';
+    let currentGroup = '';
+    let optgroup = null;
+    LANGUAGES.forEach(lang => {
+        if (lang.group !== currentGroup) {
+            currentGroup = lang.group;
+            optgroup = document.createElement('optgroup');
+            optgroup.label = groupLabel(currentGroup);
+            sel.appendChild(optgroup);
+        }
+        const opt = document.createElement('option');
+        opt.value = lang.code;
+        opt.textContent = langName(lang.code);
+        (optgroup || sel).appendChild(opt);
+    });
+}
+
+function downloadAsCSV() {
+    const sel = document.getElementById('csvLangSelect');
+    if (!sel) return;
+    const langCode = sel.value;
+    const rows = [];
+    // Check if this language uses transliteration (| separator)
+    const hasTranslit = SENTENCES.some(s => s.langs[langCode]?.some(([, t]) => t.includes('|')));
+    // Find max segment count
+    let maxSegs = 0;
+    SENTENCES.forEach(s => {
+        const langData = s.langs[langCode];
+        if (langData && langData.length > maxSegs) maxSegs = langData.length;
+    });
+    // Header: No., English, FullText, then (SegID, SegText, SegTranslit) × maxSegs
+    const header = ['No.', 'English', 'FullText'];
+    for (let i = 0; i < maxSegs; i++) {
+        header.push('Seg' + (i + 1) + '_ID');
+        header.push('Seg' + (i + 1) + '_Text');
+        if (hasTranslit) header.push('Seg' + (i + 1) + '_Translit');
+    }
+    rows.push(header);
+    // Data rows
+    SENTENCES.forEach((s, idx) => {
+        const langData = s.langs[langCode];
+        if (!langData) return;
+        // Build full text
+        const joiner = NO_SPACE_LANGS.has(langCode) ? '' : ' ';
+        const fullText = langData.map(([, t]) => t.includes('|') ? t.split('|')[0] : t).join(joiner);
+        const enText = s.langs.en ? s.langs.en.map(([, t]) => t).join(' ') : (s.title || '');
+        const row = [idx + 1, csvQuote(enText), csvQuote(fullText)];
+        langData.forEach(([segId, segText]) => {
+            row.push(segId);
+            if (segText.includes('|')) {
+                const [text, translit] = segText.split('|');
+                row.push(csvQuote(text));
+                if (hasTranslit) row.push(csvQuote(translit));
+            } else {
+                row.push(csvQuote(segText));
+                if (hasTranslit) row.push('');
+            }
+        });
+        // Pad remaining columns
+        const colsPerSeg = hasTranslit ? 3 : 2;
+        for (let i = langData.length; i < maxSegs; i++) {
+            for (let j = 0; j < colsPerSeg; j++) row.push('');
+        }
+        rows.push(row);
+    });
+    const csv = rows.map(r => r.join(',')).join('\n');
+    const bom = '\uFEFF';
+    const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a');
+    const now = new Date();
+    const dateStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+    link.download = langCode + '-' + dateStr + '.csv';
+    link.href = URL.createObjectURL(blob);
+    link.click();
+}
+function csvQuote(s) { return '"' + (s || '').replace(/"/g, '""') + '"'; }
+
 // Share functions
 function getShareURL() {
     return location.href;
@@ -1478,13 +1560,28 @@ function createSegmentWrapper(seg, langCode) {
     handle.textContent = '⠿';
     handle.draggable = true;
 
+    const rawText = seg.dataset.rawText || seg.textContent;
+    const hasDualText = rawText.includes('|');
     const input = document.createElement('input');
     input.type = 'text';
     input.className = 'segment-input';
-    input.draggable = false; // prevent native text drag
-    input.value = seg.dataset.rawText || seg.textContent;
+    input.draggable = false;
+    input.value = hasDualText ? rawText.split('|')[0] : rawText;
     input.dataset.seg = seg.dataset.seg;
     input.dataset.lang = seg.dataset.lang || langCode;
+    input.placeholder = hasDualText ? 'Text' : '';
+    let translitInput = null;
+    if (hasDualText) {
+        translitInput = document.createElement('input');
+        translitInput.type = 'text';
+        translitInput.className = 'segment-input segment-input-translit';
+        translitInput.draggable = false;
+        translitInput.value = rawText.split('|')[1] || '';
+        translitInput.dataset.seg = seg.dataset.seg;
+        translitInput.dataset.lang = seg.dataset.lang || langCode;
+        translitInput.placeholder = 'Transliteration';
+        translitInput.style.fontSize = '11px';
+    }
     // Handle compound segments (e.g. "B|D")
     const segSubIds = seg.dataset.seg.split('|');
     const isCompound = segSubIds.length > 1;
@@ -1541,7 +1638,30 @@ function createSegmentWrapper(seg, langCode) {
 
     wrapper.appendChild(handle);
     wrapper.appendChild(badge);
-    wrapper.appendChild(input);
+    if (hasDualText) {
+        const dualContainer = document.createElement('span');
+        dualContainer.className = 'segment-dual-inputs';
+        dualContainer.style.display = 'inline-flex';
+        dualContainer.style.flexDirection = 'column';
+        dualContainer.style.gap = '2px';
+        dualContainer.style.verticalAlign = 'middle';
+        dualContainer.appendChild(input);
+        dualContainer.appendChild(translitInput);
+        wrapper.appendChild(dualContainer);
+        wrapper.dataset.dual = '1';
+        // Auto-size translitInput
+        const translitCharWidth = translitInput.value.length * 8 + 24;
+        translitInput.style.width = Math.max(translitCharWidth, 50) + 'px';
+        requestAnimationFrame(() => {
+            translitInput.style.width = Math.max(translitInput.scrollWidth + 16, 50) + 'px';
+        });
+        translitInput.addEventListener('input', () => {
+            translitInput.style.width = '0';
+            translitInput.style.width = Math.max(translitInput.scrollWidth + 16, 50) + 'px';
+        });
+    } else {
+        wrapper.appendChild(input);
+    }
     wrapper.appendChild(deleteBtn);
 
     // Touch reorder support
@@ -1956,9 +2076,13 @@ function saveEdit(row, langCode) {
     // Build new segment order from current wrapper positions
     const newLangData = [];
     wrappers.forEach(wrapper => {
-        const input = wrapper.querySelector('.segment-input');
+        const input = wrapper.querySelector('.segment-input:not(.segment-input-translit)');
+        const translitInput = wrapper.querySelector('.segment-input-translit');
         const segId = input.dataset.seg;
-        const text = input.value;
+        let text = input.value;
+        if (translitInput && translitInput.value.trim()) {
+            text = text + '|' + translitInput.value;
+        }
         newLangData.push([segId, text]);
     });
 
