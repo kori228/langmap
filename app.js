@@ -1339,7 +1339,7 @@ async function downloadAsPNG() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
         const link = document.createElement('a');
-        link.download = 'langmap.png';
+        link.download = 'langmap-s' + currentSentenceIdx + '-' + fileTimestamp() + '.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
     };
@@ -1355,7 +1355,7 @@ async function downloadAsSVG() {
     const svgData = await buildExportSVG();
     const blob = new Blob([svgData], { type: 'image/svg+xml' });
     const link = document.createElement('a');
-    link.download = 'langmap.svg';
+    link.download = 'langmap-s' + currentSentenceIdx + '-' + fileTimestamp() + '.svg';
     link.href = URL.createObjectURL(blob);
     link.click();
 }
@@ -1435,11 +1435,80 @@ function downloadAsCSV() {
     const link = document.createElement('a');
     const now = new Date();
     const dateStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
-    link.download = langCode + '-' + dateStr + '.csv';
+    link.download = 'langmap-' + langCode + '-' + fileTimestamp() + '.csv';
     link.href = URL.createObjectURL(blob);
     link.click();
 }
 function csvQuote(s) { return '"' + (s || '').replace(/"/g, '""') + '"'; }
+function fileTimestamp() {
+    const n = new Date();
+    return n.getFullYear() + String(n.getMonth()+1).padStart(2,'0') + String(n.getDate()).padStart(2,'0')
+         + String(n.getHours()).padStart(2,'0') + String(n.getMinutes()).padStart(2,'0') + String(n.getSeconds()).padStart(2,'0');
+}
+
+function downloadViewAsCSV() {
+    const sentence = SENTENCES[currentSentenceIdx];
+    if (!sentence) return;
+    // Collect displayed languages
+    const container = document.getElementById('langRows');
+    const displayedLangs = [];
+    container.querySelectorAll('.lang-row').forEach(row => {
+        const code = row.dataset.lang;
+        if (code && sentence.langs[code]) displayedLangs.push(code);
+    });
+    if (!displayedLangs.length) return;
+    // Check if any displayed language uses transliteration
+    const hasTranslit = displayedLangs.some(code =>
+        sentence.langs[code].some(([, t]) => t.includes('|'))
+    );
+    // Find max segment count across displayed languages
+    let maxSegs = 0;
+    displayedLangs.forEach(code => {
+        const len = sentence.langs[code].length;
+        if (len > maxSegs) maxSegs = len;
+    });
+    const rows = [];
+    // Header
+    const header = ['Lang', 'FullText'];
+    for (let i = 0; i < maxSegs; i++) {
+        header.push('Seg' + (i + 1) + '_ID');
+        header.push('Seg' + (i + 1) + '_Text');
+        if (hasTranslit) header.push('Seg' + (i + 1) + '_Translit');
+    }
+    rows.push(header.join(','));
+    // Data rows
+    displayedLangs.forEach(code => {
+        const langData = sentence.langs[code];
+        const joiner = NO_SPACE_LANGS.has(code) ? '' : ' ';
+        const fullText = langData.map(([, t]) => t.includes('|') ? t.split('|')[0] : t).join(joiner);
+        const row = [csvQuote(langName(code)), csvQuote(fullText)];
+        langData.forEach(([segId, segText]) => {
+            row.push(segId);
+            if (segText.includes('|')) {
+                const [text, translit] = segText.split('|');
+                row.push(csvQuote(text));
+                if (hasTranslit) row.push(csvQuote(translit));
+            } else {
+                row.push(csvQuote(segText));
+                if (hasTranslit) row.push('');
+            }
+        });
+        const colsPerSeg = hasTranslit ? 3 : 2;
+        for (let i = langData.length; i < maxSegs; i++) {
+            for (let j = 0; j < colsPerSeg; j++) row.push('');
+        }
+        rows.push(row.join(','));
+    });
+    const csv = rows.join('\n');
+    const bom = '\uFEFF';
+    const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a');
+    const now = new Date();
+    const dateStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+    link.download = 'langmap-s' + currentSentenceIdx + '-' + fileTimestamp() + '.csv';
+    link.href = URL.createObjectURL(blob);
+    link.click();
+}
 
 // Share functions
 function getShareURL() {
