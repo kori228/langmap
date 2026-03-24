@@ -1061,10 +1061,47 @@ function render() {
 
         // Add sentence-ending punctuation if applicable
         if (sentence.type === 'question') {
-            const punct = document.createElement('span');
-            punct.className = 'segment-punct';
-            punct.textContent = '?';
-            textDiv.appendChild(punct);
+            // Language-specific question marks
+            const SPANISH_LANGS = new Set(['es_eu','es_mx','es_ar','es_co','es_cl','es_cu','es_pe','es_an','lad','gl','ca']);
+            const ARABIC_QM_LANGS = new Set(['ar','ar_eg','ar_lev','ar_ma','ar_gulf','ar_iq','ar_tn','ar_sd','fa','ur','sd','ps','ckb']);
+            const GREEK_LANGS = new Set(['el','el_grc']);
+            const ETHIOPIC_LANGS = new Set(['am','ti']);
+            const NO_QM_LANGS = new Set(['th','th_isan','th_n','th_s','lo','km']); // question particles, no mark needed
+            if (SPANISH_LANGS.has(code)) {
+                const openPunct = document.createElement('span');
+                openPunct.className = 'segment-punct';
+                openPunct.textContent = '¿';
+                textDiv.insertBefore(openPunct, textDiv.firstChild);
+                const closePunct = document.createElement('span');
+                closePunct.className = 'segment-punct';
+                closePunct.textContent = '?';
+                textDiv.appendChild(closePunct);
+            } else if (ARABIC_QM_LANGS.has(code)) {
+                const punct = document.createElement('span');
+                punct.className = 'segment-punct';
+                punct.textContent = '؟';
+                textDiv.appendChild(punct);
+            } else if (GREEK_LANGS.has(code)) {
+                const punct = document.createElement('span');
+                punct.className = 'segment-punct';
+                punct.textContent = ';';
+                textDiv.appendChild(punct);
+            } else if (ETHIOPIC_LANGS.has(code)) {
+                const punct = document.createElement('span');
+                punct.className = 'segment-punct';
+                punct.textContent = '፧';
+                textDiv.appendChild(punct);
+            } else if (code === 'hy') {
+                const punct = document.createElement('span');
+                punct.className = 'segment-punct';
+                punct.textContent = '՞';
+                textDiv.appendChild(punct);
+            } else if (!NO_QM_LANGS.has(code)) {
+                const punct = document.createElement('span');
+                punct.className = 'segment-punct';
+                punct.textContent = '?';
+                textDiv.appendChild(punct);
+            }
         }
 
         row.appendChild(textDiv);
@@ -1082,7 +1119,19 @@ function render() {
         copyBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             let text = langData.map(seg => { const t = seg[1]; return t.includes('|') ? t.split('|')[0] : t; }).join(NO_SPACE_LANGS.has(code) ? '' : ' ');
-            if (sentence.type === 'question') text += '?';
+            if (sentence.type === 'question') {
+                const SPANISH_LANGS = new Set(['es_eu','es_mx','es_ar','es_co','es_cl','es_cu','es_pe','es_an','lad','gl','ca']);
+                const ARABIC_QM_LANGS = new Set(['ar','ar_eg','ar_lev','ar_ma','ar_gulf','ar_iq','ar_tn','ar_sd','fa','ur','sd','ps','ckb']);
+                const GREEK_LANGS = new Set(['el','el_grc']);
+                const ETHIOPIC_LANGS = new Set(['am','ti']);
+                const NO_QM_LANGS = new Set(['th','th_isan','th_n','th_s','lo','km']);
+                if (SPANISH_LANGS.has(code)) { text = '¿' + text + '?'; }
+                else if (ARABIC_QM_LANGS.has(code)) { text += '؟'; }
+                else if (GREEK_LANGS.has(code)) { text += ';'; }
+                else if (ETHIOPIC_LANGS.has(code)) { text += '፧'; }
+                else if (code === 'hy') { text += '՞'; }
+                else if (!NO_QM_LANGS.has(code)) { text += '?'; }
+            }
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('copyToast');
                 toast.textContent = t('copiedText');
