@@ -181,6 +181,22 @@ select:focus { border-color: #4a90d9; outline: none; }
     margin-left: 4px;
     vertical-align: middle;
 }
+.pending-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: #95a5a6;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+.lang-toggle.pending {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: auto;
+}
+.lang-toggle.pending:hover { background: inherit; }
 .lang-label .hist-badge,
 .lang-label .exp-badge {
     font-size: 9px;
