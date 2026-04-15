@@ -352,8 +352,8 @@ function stateToHash() {
     const enabledOrder = langOrder.filter(c => enabledLangs.has(c));
     parts.push('l=' + enabledOrder.join(','));
 
-    // Only include UI lang if not browser default
-    if (currentUILang !== detectBrowserLang()) {
+    // Only include UI lang if not the default (English)
+    if (currentUILang !== 'en') {
         parts.push('ui=' + currentUILang);
     }
 
