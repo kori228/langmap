@@ -69,6 +69,11 @@
                 <li>Languages without sentence data (Scottish Gaelic, Tongan, Northern Sami) are now shown as "Pending" in the language selector: they can't be toggled on, and they're excluded from the total count. The button also shows how many are pending.</li>
                 <li>Default UI language is now English (previously auto-detected from the browser, which made the initial impression inconsistent for the site's primary audience).</li>
                 <li>Full UI translations for the new strings (Pending badge, CSV buttons, footer credit, disclaimer) and the six newly added language names across all 21 UI languages. Missing-string fallback order is now current UI → English → Japanese → key.</li>
+                <li>Translated every editor-related UI string (Edit, Save, Cancel, Corrector, Text Copied, etc.) into all 21 UI languages — these had silently fallen back to English for 19 languages since the inline-editing feature shipped.</li>
+                <li>Translated all 223 language names into every UI language. Before this, 17 UI languages were missing ~55 of the more recently added languages (historical, dialectal, minor-language entries) and fell back to English or Japanese for those names; now every UI language has native-language names for every entry.</li>
+                <li>Fixed URL hash updates that had silently broken when English became the default UI language — a leftover reference to the removed <code>detectBrowserLang()</code> helper was throwing a <code>ReferenceError</code> every time state was serialized, so UI-language switches, sentence changes, and language toggles weren't making it into the URL.</li>
+                <li>CSV-export language dropdown now rebuilds when the UI language changes, so its option labels and optgroup headers localize immediately instead of staying stuck on the UI language that was active at first load.</li>
+                <li>Chinese (zh) and Cantonese (yue) save buttons now use natural verb-first word order (保存PNG / 保存SVG / 保存CSV, 儲存PNG / 儲存SVG / 儲存CSV) instead of a calque of Japanese noun-first order.</li>
             </ul>
         </div>
 
