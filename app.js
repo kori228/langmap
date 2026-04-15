@@ -26,7 +26,7 @@ const UI_STRINGS = {
 let currentUILang = 'en';
 
 function t(key) {
-    return (UI_STRINGS[currentUILang] || UI_STRINGS.ja)[key] || UI_STRINGS.ja[key] || key;
+    return (UI_STRINGS[currentUILang] || UI_STRINGS.en)[key] || UI_STRINGS.en[key] || UI_STRINGS.ja[key] || key;
 }
 
 // Language names per UI language
