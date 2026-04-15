@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangMap - Changelog</title>
+    <link rel="stylesheet" href="styles.css?v=25">
+    <style>
+        .changelog {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .changelog h1 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        .changelog .lead {
+            color: #666;
+            margin-bottom: 24px;
+        }
+        .changelog .entry {
+            border-left: 3px solid #e0e0e0;
+            padding: 4px 0 4px 16px;
+            margin-bottom: 20px;
+        }
+        .changelog .entry .date {
+            font-weight: 600;
+            color: #333;
+        }
+        .changelog .entry ul {
+            margin: 6px 0 0;
+            padding-left: 20px;
+        }
+        .changelog .entry li {
+            margin-bottom: 4px;
+        }
+        .changelog .contributor {
+            color: #666;
+            font-size: 12px;
+        }
+        .changelog .back {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .changelog .back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="changelog">
+        <a href="index.html" class="back">&larr; Back to LangMap</a>
+        <h1>Changelog</h1>
+        <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
+
+        <div class="entry">
+            <div class="date">2026-04-16</div>
+            <ul>
+                <li>Fixed Malagasy (mg) for sentence 3 ("I eat breakfast every morning at 7 o'clock"): switched to the more natural phrasing "Misakafo maraina amin'ny 7 ora aho isan'andro", avoiding the redundancy with "maraina" by using "isan'andro" (every day) instead of "isan'andro maraina" (every morning). <span class="contributor">— reported by Vony Rand</span></li>
+                <li>Fixed Mexican and European Spanish (es_mx, es_eu) for sentence 3: replaced "tomo el desayuno" with the more natural single-verb form "desayuno". <span class="contributor">— reported by Victor Amir Ez and Manuel Cisneros Castro</span></li>
+                <li>Fixed Standard German (de) for sentence 3: replaced "Ich esse ... Frühstück" with the more natural single-verb form "Ich frühstücke jeden Morgen um 7 Uhr". German has a dedicated verb ("frühstücken") for having breakfast. <span class="contributor">— reported by Sonja Bausch, Manuel Cisneros Castro, and Armas Ukko Markkula Hanke</span></li>
+                <li>Fixed French (fr, fr_ch) for sentence 3: fronted the time expression ("Chaque matin, je prends..."), which is more natural in French. <span class="contributor">— reported by Misa Tsuruta</span></li>
+                <li>Fixed Japanese (ja) for sentence 3: dropped the explicit subject "私は", since Japanese typically omits the subject when context makes it clear. <span class="contributor">— reported by Misa Tsuruta</span></li>
+                <li>Fixed Irish (ga) and Welsh (cy) segmentation for sentences 1, 3, and 5. Irish s1: "Ba mhaith liom" (lit. "it would be good with me") is now mapped to F (want) rather than A (I), since there is no standalone "I" pronoun in this Irish construction. Welsh s1: dropped the standalone "fi" pronoun since the subject is already contained inside the F segment ("Rydw i eisiau..."). Irish s3: replaced "Itheann mé" with the correct synthetic form "Ithim" ("I eat" is a single word). Irish s5: corrected "an" (mistakenly mapped to "this"; it's the definite article) and split the compound intensifier "an-bhlasta" so that C ("very") and D ("delicious") are both represented. Welsh s5: similarly split "yn flasus iawn" so that D and C are both represented. <span class="contributor">— reported by Seán Ó Séaghdha</span></li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-04-15</div>
+            <ul>
+                <li>Fixed classification of Manchu (mnc): moved from Turkic to the newly added Tungusic group. <span class="contributor">— reported by Girik Sehgal and Benjamin Hassan</span></li>
+                <li>Registered six new languages (data coming soon): Scottish Gaelic (gd), Slovenian (sl), Middle English (enm), Swiss French (fr_ch), Tongan (to), Northern Sami (se). <span class="contributor">— suggested by Girik Sehgal</span></li>
+                <li>Added full sentence data (all 100 sentences) for Middle English (enm), Swiss French (fr_ch), and Slovenian (sl). Middle English uses period-flavoured coinages for modern concepts (e.g. "machyn-witte" for AI, "eyre-wyre" for Wi-Fi, "speke-engyn" for phone), in the same spirit as other historical languages in the dataset. Scottish Gaelic, Tongan, and Northern Sami data still pending. <span class="contributor">— suggested by Girik Sehgal</span></li>
+            </ul>
+        </div>
+
+        <h2 style="font-size:16px;margin-top:32px;">Contributors</h2>
+        <p>Huge thanks to everyone who has taken the time to report issues, suggest languages, or offer corrections:</p>
+        <ul>
+            <li>Girik Sehgal</li>
+            <li>Vony Rand</li>
+            <li>Victor Amir Ez</li>
+            <li>Sonja Bausch</li>
+            <li>Misa Tsuruta</li>
+            <li>Manuel Cisneros Castro</li>
+            <li>Mark Bünger</li>
+            <li>Seán Ó Séaghdha</li>
+            <li>Armas Ukko Markkula Hanke</li>
+            <li>Benjamin Hassan</li>
+        </ul>
+    </div>
+</body>
+</html>
