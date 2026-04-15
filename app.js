@@ -179,7 +179,7 @@ const LANGUAGES = [
     { code: 'mn', name: 'モンゴル語', group: 'MON' },
     { code: 'mn_cn', name: '内モンゴルモンゴル語', group: 'MON', experimental: true },
     // Tungusic
-    { code: 'mnc', name: '満州語', group: 'TRK', experimental: true, historical: true },
+    { code: 'mnc', name: '満州語', group: 'TNG', experimental: true, historical: true },
     // Kartvelian
     { code: 'ka', name: 'グルジア語', group: 'KAR' },
     // Semitic: Arabic → Hebrew → Aramaic → Akkadian → Ethiopic → Maltese
@@ -704,8 +704,8 @@ function createModalToggle(lang) {
 }
 
 const GROUP_NAMES = {
-    ja: { JPN:'日本語', KOR:'韓国語', CHN:'中国語', TIB:'チベット・ビルマ語', SEA:'東南アジア', AUS:'オーストロネシア(大洋州)', SAS:'南アジア', TRK:'テュルク語族', MON:'モンゴル語族', KAR:'カルトヴェリ語族', SEM:'セム語', ANE:'古代近東', AFR:'アフリカ', PIE:'印欧祖語', GER:'ゲルマン語', CEL:'ケルト語', ROM:'ロマンス語', SLV:'スラヴ語', OEU:'バルト・ギリシャ・ウラル他', AMR:'アメリカ先住民', CRL:'クレオール・ピジン', CON:'人工言語' },
-    en: { JPN:'Japanese', KOR:'Korean', CHN:'Sinitic', TIB:'Tibeto-Burman', SEA:'SE Asian & Austronesian', AUS:'Austronesian (Oceanic)', SAS:'South Asian', TRK:'Turkic', MON:'Mongolic', KAR:'Kartvelian', SEM:'Semitic', ANE:'Ancient Near East', AFR:'African', PIE:'Proto-Indo-European', GER:'Germanic', CEL:'Celtic', ROM:'Romance', SLV:'Slavic', OEU:'Baltic, Hellenic, Uralic & more', AMR:'Americas', CRL:'Creoles & Pidgins', CON:'Constructed' },
+    ja: { JPN:'日本語', KOR:'韓国語', CHN:'中国語', TIB:'チベット・ビルマ語', SEA:'東南アジア', AUS:'オーストロネシア(大洋州)', SAS:'南アジア', TRK:'テュルク語族', MON:'モンゴル語族', TNG:'ツングース語族', KAR:'カルトヴェリ語族', SEM:'セム語', ANE:'古代近東', AFR:'アフリカ', PIE:'印欧祖語', GER:'ゲルマン語', CEL:'ケルト語', ROM:'ロマンス語', SLV:'スラヴ語', OEU:'バルト・ギリシャ・ウラル他', AMR:'アメリカ先住民', CRL:'クレオール・ピジン', CON:'人工言語' },
+    en: { JPN:'Japanese', KOR:'Korean', CHN:'Sinitic', TIB:'Tibeto-Burman', SEA:'SE Asian & Austronesian', AUS:'Austronesian (Oceanic)', SAS:'South Asian', TRK:'Turkic', MON:'Mongolic', TNG:'Tungusic', KAR:'Kartvelian', SEM:'Semitic', ANE:'Ancient Near East', AFR:'African', PIE:'Proto-Indo-European', GER:'Germanic', CEL:'Celtic', ROM:'Romance', SLV:'Slavic', OEU:'Baltic, Hellenic, Uralic & more', AMR:'Americas', CRL:'Creoles & Pidgins', CON:'Constructed' },
 };
 
 function groupLabel(groupCode) {
