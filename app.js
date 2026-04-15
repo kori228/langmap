@@ -23,22 +23,7 @@ const UI_STRINGS = {
     sw: { title: 'LangMap', subtitle: 'Ramani ya Mpangilio wa Maneno', selectSentence: 'Chagua sentensi', langToggle: 'Lugha', langOrder: 'Mpangilio wa lugha', dragHint: 'buruta ili kupanga upya', defaultOrder: 'Mpangilio chaguo-msingi', random: 'Nasibu', prev: '◀', next: '▶', allOn: 'Zote ON', allOff: 'Zote OFF', savePng: 'Hifadhi PNG', saveSvg: 'Hifadhi SVG', copyUrl: 'Nakili URL', copied: 'URL imenakiliwa', uiLang: 'Lugha ya UI:', noLangSelected: 'Tafadhali chagua lugha angalau moja', selectLangs: 'Chagua lugha ({n})', selectLangsTitle: 'Chagua lugha', modalConfirm: 'Chagua', modalCancel: 'Ghairi', rtlNote: '※ Maandishi ya Kiarabu na Kiebrania yanaonyeshwa kushoto→kulia kwa kulinganisha (kawaida yanasomwa kulia→kushoto)', rtlToggle: 'Onyesha mwelekeo asili (←)' , en_au:"Kiingereza (Australia)", en_in:"Kiingereza (India)", es_ar:"Kihispania (Argentina)", ar_iq:"Kiarabu (Iraq)", hak_cn:"Kihakka"},
 };
 
-function detectBrowserLang() {
-    const langs = navigator.languages || [navigator.language || 'ja'];
-    for (const lang of langs) {
-        const code = lang.toLowerCase().replace('-', '_');
-        if (UI_STRINGS[code]) return code;
-        const base = code.split('_')[0];
-        if (UI_STRINGS[base]) return base;
-        // Map common browser codes to our UI codes
-        for (const uiCode of Object.keys(UI_STRINGS)) {
-            if (uiCode.startsWith(base)) return uiCode;
-        }
-    }
-    return 'en';
-}
-
-let currentUILang = detectBrowserLang();
+let currentUILang = 'en';
 
 function t(key) {
     return (UI_STRINGS[currentUILang] || UI_STRINGS.ja)[key] || UI_STRINGS.ja[key] || key;
@@ -495,7 +480,7 @@ function resetToDefaults() {
     currentSentenceIdx = 0;
     enabledLangs = new Set(MAJOR_LANGS);
     langOrder = [...DEFAULT_ORDER];
-    currentUILang = detectBrowserLang();
+    currentUILang = 'en';
     rtlNative = false;
     history.pushState(null, '', location.pathname);
     syncUIFromState();
