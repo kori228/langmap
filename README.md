@@ -10,8 +10,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 217 languages/dialects with hand-aligned semantic segments
-- **217 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 220 languages/dialects with hand-aligned semantic segments
+- **220 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -24,7 +24,9 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
 
-## Languages (217 total, ordered by similarity)
+## Languages (220 total, ordered by similarity)
+
+> Entries marked with `*` are registered but pending sentence data (can't be toggled on in the UI yet).
 
 | Group | Languages | Codes |
 |---|---|---|
@@ -37,21 +39,21 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Tibeto-Burman | Tibetan, Burmese, Yi (Nuosu) | `bo`, `my`, `ii` |
 | Hmong-Mien | Hmong (Miao) | `hmn` |
 | Southeast Asian | Vietnamese, Chữ Nôm, Khmer, Thai, Thai (Northern/Southern/Isan), Lao, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano, Ilocano, Zhuang | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
-| Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan | `mg`, `mi`, `haw`, `fj`, `sm` |
+| Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan, Tongan* | `mg`, `mi`, `haw`, `fj`, `sm`, `to` |
 | South Asian | Sanskrit, Pali, Hindi, Urdu, Punjabi, Sindhi, Bengali, Assamese, Odia, Bhojpuri, Nepali, Marathi, Gujarati, Sinhala, Romani, Tamil, Telugu, Kannada, Malayalam | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | Iranian | Persian, Tajik, Kurdish (Kurmanji), Kurdish (Sorani), Pashto | `fa`, `tg`, `ku`, `ckb`, `ps` |
 | Semitic & Ancient Near East | Arabic (MSA, Egyptian, Levantine, Gulf, Iraqi, Moroccan, Tunisian, Sudanese), Hebrew, Aramaic, Akkadian, Amharic, Tigrinya, Maltese, Ancient Egyptian, Coptic, Sumerian | `ar`, `ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_ma`, `ar_tn`, `ar_sd`, `he`, `arc`, `akk`, `am`, `ti`, `mt`, `egy`, `cop`, `sux` |
 | African | Swahili, Lingala, Shona, Zulu, Xhosa, Yoruba, Igbo, Hausa, Wolof, Somali, Oromo, Kinyarwanda, Chichewa, Afrikaans | `sw`, `ln`, `sn`, `zu`, `xh`, `yo`, `ig`, `ha`, `wo`, `so`, `om`, `rw`, `ny`, `af` |
 | Proto-Indo-European | Proto-Indo-European, Hittite | `ine`, `hit` |
-| Germanic | English, English dialects (AAVE/Southern/Appalachian/Australian/Indian/Irish/Scots/Yorkshire/Cockney/Singaporean), Scots, Dutch, Frisian, German, Swiss German, Austrian German, Bavarian, Low German, Yiddish, Swedish, Norwegian (Bokmål/Nynorsk), Danish, Icelandic, Faroese, Old English, Old Norse, Gothic | `en`, `en_aave`, `en_south`, `en_app`, `en_au`, `en_in`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_sg`, `sco`, `nl`, `fy`, `de`, `de_gsw`, `de_at`, `de_by`, `nds`, `yi`, `sv`, `no`, `nn`, `da`, `is`, `fo`, `en_ang`, `non`, `got` |
-| Celtic | Irish, Welsh, Breton | `ga`, `cy`, `br` |
-| Romance | Latin, Italian, Venetian, Neapolitan, Sicilian, Sardinian, French, French (Quebec/African/Belgian), Occitan, Catalan, Spanish (EU/MX/CO/CL/AR/Cuban/Peruvian/Andalusian), Ladino, Galician, Romansh, Portuguese (EU/BR), Romanian, Old Church Slavonic | `la`, `it`, `vec`, `nap`, `scn`, `sc`, `fr`, `fr_qc`, `fr_af`, `fr_be`, `oc`, `ca`, `es_eu`, `es_mx`, `es_co`, `es_cl`, `es_ar`, `es_cu`, `es_pe`, `es_an`, `lad`, `gl`, `rm`, `pt_eu`, `pt_br`, `ro`, `cu` |
-| Slavic | Russian, Ukrainian, Belarusian, Polish, Czech, Slovak, Serbian, Bulgarian | `ru`, `uk`, `be`, `pl`, `cs`, `sk`, `sr`, `bg` |
+| Germanic | English, English dialects (AAVE/Southern/Appalachian/Australian/Indian/Irish/Scots/Yorkshire/Cockney/Singaporean), Scots, Dutch, Frisian, German, Swiss German, Austrian German, Bavarian, Low German, Yiddish, Swedish, Norwegian (Bokmål/Nynorsk), Danish, Icelandic, Faroese, Middle English, Old English, Old Norse, Gothic | `en`, `en_aave`, `en_south`, `en_app`, `en_au`, `en_in`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_sg`, `sco`, `nl`, `fy`, `de`, `de_gsw`, `de_at`, `de_by`, `nds`, `yi`, `sv`, `no`, `nn`, `da`, `is`, `fo`, `enm`, `en_ang`, `non`, `got` |
+| Celtic | Irish, Scottish Gaelic*, Welsh, Breton | `ga`, `gd`, `cy`, `br` |
+| Romance | Latin, Italian, Venetian, Neapolitan, Sicilian, Sardinian, French, French (Quebec/African/Belgian/Swiss), Occitan, Catalan, Spanish (EU/MX/CO/CL/AR/Cuban/Peruvian/Andalusian), Ladino, Galician, Romansh, Portuguese (EU/BR), Romanian, Old Church Slavonic | `la`, `it`, `vec`, `nap`, `scn`, `sc`, `fr`, `fr_qc`, `fr_af`, `fr_be`, `fr_ch`, `oc`, `ca`, `es_eu`, `es_mx`, `es_co`, `es_cl`, `es_ar`, `es_cu`, `es_pe`, `es_an`, `lad`, `gl`, `rm`, `pt_eu`, `pt_br`, `ro`, `cu` |
+| Slavic | Russian, Ukrainian, Belarusian, Polish, Czech, Slovak, Slovenian, Serbian, Bulgarian | `ru`, `uk`, `be`, `pl`, `cs`, `sk`, `sl`, `sr`, `bg` |
 | Baltic | Lithuanian, Latvian | `lt`, `lv` |
 | Hellenic | Greek, Ancient Greek | `el`, `el_grc` |
 | Albanian | Albanian | `sq` |
 | Armenian | Armenian | `hy` |
-| Uralic | Finnish, Estonian, Hungarian | `fi`, `et`, `hu` |
+| Uralic | Finnish, Estonian, Northern Sami*, Hungarian | `fi`, `et`, `se`, `hu` |
 | Basque | Basque | `eu` |
 | Kartvelian | Georgian | `ka` |
 | Indigenous Americas | Navajo, Quechua, Guarani, Inuktitut, Cherokee, Classical Nahuatl, Classical Maya | `nv`, `qu`, `gn`, `iu`, `chr`, `nci`, `myn` |
@@ -95,7 +97,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 217 languages with segment alignments
+  data.js            — 100 sentences × 220 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -159,8 +161,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 217言語・方言で意味単位のアラインメント済み
-- **217言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
+- **100のサンプル文** — 220言語・方言で意味単位のアラインメント済み
+- **220言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -173,7 +175,9 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（217言語、類似言語順）
+## 言語一覧（220言語、類似言語順）
+
+> `*` 付きの言語は登録済みですが、例文データが準備中のため UI ではまだ選択できません。
 
 | グループ | 言語 | コード |
 |---|---|---|
@@ -186,21 +190,21 @@ MIT
 | チベット・ビルマ語派 | チベット語、ミャンマー語、彝語(ヌス) | `bo`, `my`, `ii` |
 | ミャオ・ヤオ語族 | ミャオ語(苗語) | `hmn` |
 | 東南アジア | ベトナム語、チューノム、クメール語、タイ語、タイ語(北部/南部/イサーン)、ラオ語、インドネシア語、スンダ語、マレー語、ジャワ語、タガログ語、セブアノ語、イロカノ語、チワン語 | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
-| オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語 | `mg`, `mi`, `haw`, `fj`, `sm` |
+| オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語、トンガ語* | `mg`, `mi`, `haw`, `fj`, `sm`, `to` |
 | 南アジア | サンスクリット語、パーリ語、ヒンディー語、ウルドゥー語、パンジャーブ語、シンド語、ベンガル語、アッサム語、オリヤー語、ボージュプリー語、ネパール語、マラーティー語、グジャラート語、シンハラ語、ロマニ語、タミル語、テルグ語、カンナダ語、マラヤーラム語 | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | イラン語派 | ペルシャ語、タジク語、クルド語(クルマンジー)、クルド語(ソラニー)、パシュトー語 | `fa`, `tg`, `ku`, `ckb`, `ps` |
 | セム語派・古代近東 | アラビア語(フスハー/エジプト/レバント/湾岸/イラク/モロッコ/チュニジア/スーダン方言)、ヘブライ語、アラム語、アッカド語、アムハラ語、ティグリニャ語、マルタ語、古代エジプト語、コプト語、シュメール語 | `ar`, `ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_ma`, `ar_tn`, `ar_sd`, `he`, `arc`, `akk`, `am`, `ti`, `mt`, `egy`, `cop`, `sux` |
 | アフリカ | スワヒリ語、リンガラ語、ショナ語、ズールー語、コサ語、ヨルバ語、イグボ語、ハウサ語、ウォロフ語、ソマリ語、オロモ語、ルワンダ語、チェワ語、アフリカーンス語 | `sw`, `ln`, `sn`, `zu`, `xh`, `yo`, `ig`, `ha`, `wo`, `so`, `om`, `rw`, `ny`, `af` |
 | 印欧祖語・アナトリア | 印欧祖語、ヒッタイト語 | `ine`, `hit` |
-| ゲルマン語派 | 英語、英語方言(AAVE/南部/アパラチア/オーストラリア/インド/アイルランド/スコットランド/ヨークシャー/コックニー/シンガポール)、スコットランド語、オランダ語、フリジア語、ドイツ語、スイスドイツ語、オーストリアドイツ語、バイエルンドイツ語、低地ドイツ語、イディッシュ語、スウェーデン語、ノルウェー語(ブークモール/ニーノシュク)、デンマーク語、アイスランド語、フェロー語、古英語、古ノルド語、ゴート語 | `en`, `en_aave`, `en_south`, `en_app`, `en_au`, `en_in`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_sg`, `sco`, `nl`, `fy`, `de`, `de_gsw`, `de_at`, `de_by`, `nds`, `yi`, `sv`, `no`, `nn`, `da`, `is`, `fo`, `en_ang`, `non`, `got` |
-| ケルト語派 | アイルランド語、ウェールズ語、ブルトン語 | `ga`, `cy`, `br` |
-| ロマンス語派 | ラテン語、イタリア語、ヴェネト語、ナポリ語、シチリア語、サルデーニャ語、フランス語、フランス語(ケベック/アフリカ/ベルギー)、オック語、カタルーニャ語、スペイン語(欧州/メキシコ/コロンビア/チリ/アルゼンチン/キューバ/ペルー/アンダルシア)、ラディーノ語、ガリシア語、ロマンシュ語、ポルトガル語(欧州/ブラジル)、ルーマニア語、古教会スラヴ語 | `la`, `it`, `vec`, `nap`, `scn`, `sc`, `fr`, `fr_qc`, `fr_af`, `fr_be`, `oc`, `ca`, `es_eu`, `es_mx`, `es_co`, `es_cl`, `es_ar`, `es_cu`, `es_pe`, `es_an`, `lad`, `gl`, `rm`, `pt_eu`, `pt_br`, `ro`, `cu` |
-| スラヴ語派 | ロシア語、ウクライナ語、ベラルーシ語、ポーランド語、チェコ語、スロバキア語、セルビア語、ブルガリア語 | `ru`, `uk`, `be`, `pl`, `cs`, `sk`, `sr`, `bg` |
+| ゲルマン語派 | 英語、英語方言(AAVE/南部/アパラチア/オーストラリア/インド/アイルランド/スコットランド/ヨークシャー/コックニー/シンガポール)、スコットランド語、オランダ語、フリジア語、ドイツ語、スイスドイツ語、オーストリアドイツ語、バイエルンドイツ語、低地ドイツ語、イディッシュ語、スウェーデン語、ノルウェー語(ブークモール/ニーノシュク)、デンマーク語、アイスランド語、フェロー語、中英語、古英語、古ノルド語、ゴート語 | `en`, `en_aave`, `en_south`, `en_app`, `en_au`, `en_in`, `en_ie`, `en_sco`, `en_yk`, `en_ck`, `en_sg`, `sco`, `nl`, `fy`, `de`, `de_gsw`, `de_at`, `de_by`, `nds`, `yi`, `sv`, `no`, `nn`, `da`, `is`, `fo`, `enm`, `en_ang`, `non`, `got` |
+| ケルト語派 | アイルランド語、スコットランド・ゲール語*、ウェールズ語、ブルトン語 | `ga`, `gd`, `cy`, `br` |
+| ロマンス語派 | ラテン語、イタリア語、ヴェネト語、ナポリ語、シチリア語、サルデーニャ語、フランス語、フランス語(ケベック/アフリカ/ベルギー/スイス)、オック語、カタルーニャ語、スペイン語(欧州/メキシコ/コロンビア/チリ/アルゼンチン/キューバ/ペルー/アンダルシア)、ラディーノ語、ガリシア語、ロマンシュ語、ポルトガル語(欧州/ブラジル)、ルーマニア語、古教会スラヴ語 | `la`, `it`, `vec`, `nap`, `scn`, `sc`, `fr`, `fr_qc`, `fr_af`, `fr_be`, `fr_ch`, `oc`, `ca`, `es_eu`, `es_mx`, `es_co`, `es_cl`, `es_ar`, `es_cu`, `es_pe`, `es_an`, `lad`, `gl`, `rm`, `pt_eu`, `pt_br`, `ro`, `cu` |
+| スラヴ語派 | ロシア語、ウクライナ語、ベラルーシ語、ポーランド語、チェコ語、スロバキア語、スロベニア語、セルビア語、ブルガリア語 | `ru`, `uk`, `be`, `pl`, `cs`, `sk`, `sl`, `sr`, `bg` |
 | バルト語派 | リトアニア語、ラトビア語 | `lt`, `lv` |
 | ギリシャ語派 | ギリシャ語、古代ギリシャ語 | `el`, `el_grc` |
 | アルバニア語派 | アルバニア語 | `sq` |
 | アルメニア語派 | アルメニア語 | `hy` |
-| ウラル語派 | フィンランド語、エストニア語、ハンガリー語 | `fi`, `et`, `hu` |
+| ウラル語派 | フィンランド語、エストニア語、北サーミ語*、ハンガリー語 | `fi`, `et`, `se`, `hu` |
 | バスク語 | バスク語 | `eu` |
 | カルトヴェリ語族 | ジョージア語 | `ka` |
 | アメリカ先住民語 | ナバホ語、ケチュア語、グアラニー語、イヌクティトゥット語、チェロキー語、古典ナワトル語、古典マヤ語 | `nv`, `qu`, `gn`, `iu`, `chr`, `nci`, `myn` |
@@ -244,7 +248,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 217言語のセグメントアラインメントデータ
+  data.js            — 100文 × 220言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
