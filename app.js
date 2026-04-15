@@ -574,6 +574,11 @@ function applyUILang() {
     if (creditEl) creditEl.innerHTML = t('creditText');
     const disclaimerEl = document.getElementById('disclaimer');
     if (disclaimerEl) disclaimerEl.innerHTML = t('disclaimer');
+    // Rebuild CSV language dropdown so option labels match the UI language
+    const csvSel = document.getElementById('csvLangSelect');
+    const csvPrev = csvSel && csvSel.value;
+    initCSVLangSelect();
+    if (csvSel && csvPrev) csvSel.value = csvPrev;
     const uiSel = document.getElementById('uiLangSelect');
     if (uiSel) {
         uiSel.value = currentUILang;
