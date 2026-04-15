@@ -55,8 +55,8 @@ const LANG_NAMES = {
 };
 
 function langName(code) {
-    const names = LANG_NAMES[currentUILang] || LANG_NAMES.ja;
-    return names[code] || LANG_NAMES.ja[code] || code;
+    const names = LANG_NAMES[currentUILang] || LANG_NAMES.en;
+    return names[code] || LANG_NAMES.en[code] || LANG_NAMES.ja[code] || code;
 }
 
 // Language definitions - ordered by linguistic similarity within groups
