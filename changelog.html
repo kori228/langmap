@@ -74,6 +74,7 @@
                 <li>Fixed URL hash updates that had silently broken when English became the default UI language — a leftover reference to the removed <code>detectBrowserLang()</code> helper was throwing a <code>ReferenceError</code> every time state was serialized, so UI-language switches, sentence changes, and language toggles weren't making it into the URL.</li>
                 <li>CSV-export language dropdown now rebuilds when the UI language changes, so its option labels and optgroup headers localize immediately instead of staying stuck on the UI language that was active at first load.</li>
                 <li>Chinese (zh) and Cantonese (yue) save buttons now use natural verb-first word order (保存PNG / 保存SVG / 保存CSV, 儲存PNG / 儲存SVG / 儲存CSV) instead of a calque of Japanese noun-first order.</li>
+                <li>Sentence 13 ("Please give me a glass of water"): marked single-word "give me" forms across 26 languages/dialects as <code>B|D</code> compound segments — Japanese <em>ください</em>, Korean <em>주세요</em>, Arabic <em>أعطني</em> (and all dialectal variants), Spanish <em>deme/dame/regáleme</em> (all variants), Portuguese <em>dê-me / me dê</em>, Galician <em>déame</em>, Ladino, Venetian, Maltese, Neapolitan, Sicilian. Also fixed Japanese/Korean mis-segmentation where "一杯" / "한 잔" were wrongly mapped to A (Please) instead of C (a glass of water).</li>
             </ul>
         </div>
 

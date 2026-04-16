@@ -1340,7 +1340,21 @@ async function buildExportSVG() {
             svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="#333">${escapeXml(label.textContent)}</text>`;
         }
         row.querySelectorAll('.segment').forEach(seg => {
-            const color = seg.style.color;
+            let color = seg.style.color;
+            // Compound segments (e.g. "B|D") use background-clip:text in the
+            // DOM, which makes seg.style.color 'transparent'. For export, emit
+            // a linearGradient def and fill the text with it so the text is
+            // visible and keeps the multi-colour effect.
+            if (seg.classList.contains('segment-compound')) {
+                const segId = seg.dataset.seg || '';
+                const subIds = segId.split('|');
+                const curSentence = SENTENCES[currentSentenceIdx];
+                const colors = subIds.map(id => curSentence.segments[id]?.color || '#666');
+                const gradId = `grad-${row.dataset.lang || ''}-${segId.replace(/\|/g,'_')}-${Math.floor(Math.random()*1e6)}`;
+                const stops = colors.map((c, i) => `<stop offset="${(i/(colors.length-1))*100}%" stop-color="${c}"/>`).join('');
+                svgContent += `<defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">${stops}</linearGradient></defs>`;
+                color = `url(#${gradId})`;
+            }
             if (seg.classList.contains('segment-dual')) {
                 // Render each hiero-pair: hieroglyph above, transliteration below
                 seg.querySelectorAll('.hiero-pair').forEach(pair => {
@@ -1370,6 +1384,10 @@ async function buildExportSVG() {
             }
         });
     });
+
+    // Watermark: site URL in the bottom-right corner
+    const watermark = 'https://langmap.heuron.com';
+    svgContent += `<text x="${w - 12}" y="${h - 12}" font-family="sans-serif" font-size="12" font-weight="500" fill="#999" text-anchor="end">${watermark}</text>`;
 
     svgContent += `</svg>`;
 
