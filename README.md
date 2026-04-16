@@ -6,6 +6,7 @@
 
 Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_kim).
 
+**Live site:** [langmap.heuron.com](https://langmap.heuron.com)  
 **GitHub:** [github.com/jounlai/langmap](https://github.com/jounlai/langmap)
 
 ## Features
@@ -157,6 +158,7 @@ MIT
 
 [sunjun_kim氏の言語マッピング画像](https://twitter.com/sunjun_kim)にインスパイアされています。
 
+**公開サイト:** [langmap.heuron.com](https://langmap.heuron.com)  
 **GitHub:** [github.com/jounlai/langmap](https://github.com/jounlai/langmap)
 
 ## 機能
