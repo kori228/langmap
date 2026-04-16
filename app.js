@@ -1348,7 +1348,8 @@ async function buildExportSVG() {
             if (seg.classList.contains('segment-compound')) {
                 const segId = seg.dataset.seg || '';
                 const subIds = segId.split('|');
-                const colors = subIds.map(id => sentence.segments[id]?.color || '#666');
+                const curSentence = SENTENCES[currentSentenceIdx];
+                const colors = subIds.map(id => curSentence.segments[id]?.color || '#666');
                 const gradId = `grad-${row.dataset.lang || ''}-${segId.replace(/\|/g,'_')}-${Math.floor(Math.random()*1e6)}`;
                 const stops = colors.map((c, i) => `<stop offset="${(i/(colors.length-1))*100}%" stop-color="${c}"/>`).join('');
                 svgContent += `<defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">${stops}</linearGradient></defs>`;
