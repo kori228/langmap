@@ -81,6 +81,14 @@
                 <li>Site header: added a small <code>langmap.heuron.com</code> link in the top-right corner.</li>
                 <li>Added OGP and Twitter Card meta tags with localized title and description for all 21 UI languages. <code>document.title</code> and all meta tags update dynamically when the UI language changes.</li>
                 <li>Language selector: clicking a group header (e.g. "Japanese", "Romance") now toggles all selectable languages in that group — all ON if any are OFF, all OFF if all are already ON.</li>
+                <li>Renamed チューノム to 字喃 (Chữ Nôm) — using the standard Kanji form.</li>
+                <li>Renamed ko_kp from '韓国語(北朝鮮)' to the DPRK self-designation: 朝鮮語(文化語) / 조선말(문화어) for CJK UIs; Korean (DPRK) for others.</li>
+                <li>Sentence 13 re-segmented from 4 to 6 segments across all 221 languages: added E (You) and F (a glass of), splitting the quantifier from the substance. All compound B|D segments preserved. Clitic pronouns (French -moi, Italian mi, Catalan -me, Romanian -mi, etc.) split into separate B/D segments; truly fused single-word forms (Spanish deme, Arabic أعطني, Japanese ください, Korean 주세요) remain as B|D.</li>
+                <li>Added Palauan (pau) — an Austronesian language (VOS word order) with many Japanese loanwords (kohi, sushi, sakura, sensei). Experimental, 100 sentences.</li>
+                <li>Standardized Edo/Heian period naming to 'Language (Period)' format across all 20 non-ja UI languages.</li>
+                <li>Standardized all dialect/variant names across vi, th, id, yue, ko, ar — enforced consistent 'Language (Qualifier)' parenthetical format (128 fixes).</li>
+                <li>Translated all language group names (23 groups) into all 21 UI languages.</li>
+                <li>Fixed 16 untranslated English language names leaking into non-English UIs (e.g. 'Vietnamese (Chữ Nôm)' appearing in the Vietnamese UI itself).</li>
             </ul>
         </div>
 
