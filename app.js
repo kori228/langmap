@@ -1333,11 +1333,24 @@ async function buildExportSVG() {
     rows.forEach(row => {
         const label = row.querySelector('.lang-label');
         if (label) {
+            const badge = label.querySelector('.hist-badge') || label.querySelector('.exp-badge');
+            // Render the lang name text (excluding badge)
+            const nameOnly = badge ? label.textContent.replace(badge.textContent, '').trim() : label.textContent;
             const r = label.getBoundingClientRect();
             const x = r.left - containerRect.left;
             const y = r.top - containerRect.top + r.height * 0.75;
             const a = getSvgTextAttrs(label);
-            svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="#333">${escapeXml(label.textContent)}</text>`;
+            svgContent += `<text x="${x}" y="${y}" font-family="${a.fontFamily}" font-size="${a.fontSize}" font-weight="${a.fontWeight}" fill="#333">${escapeXml(nameOnly)}</text>`;
+            // Render badge as a rounded rect + text
+            if (badge) {
+                const br = badge.getBoundingClientRect();
+                const bx = br.left - containerRect.left;
+                const by = br.top - containerRect.top;
+                const isHist = badge.classList.contains('hist-badge');
+                const bgColor = isHist ? '#8e44ad' : '#e67e22';
+                svgContent += `<rect x="${bx}" y="${by}" width="${br.width}" height="${br.height}" rx="3" fill="${bgColor}"/>`;
+                svgContent += `<text x="${bx + br.width/2}" y="${by + br.height * 0.75}" font-family="sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">${escapeXml(badge.textContent)}</text>`;
+            }
         }
         row.querySelectorAll('.segment').forEach(seg => {
             let color = seg.style.color;
