@@ -777,12 +777,34 @@ function openLangModal() {
         const header = document.createElement('span');
         header.className = 'lang-group-label';
         header.textContent = groupLabel(groupCode);
+        header.style.cursor = 'pointer';
         groupDiv.appendChild(header);
 
         const toggles = document.createElement('div');
         toggles.className = 'lang-group-toggles';
+        const selectableLangs = langs.filter(l => hasLangData(l.code));
         langs.forEach(lang => toggles.appendChild(createModalToggle(lang)));
         groupDiv.appendChild(toggles);
+
+        // Click group label to toggle all selectable languages in this group
+        header.addEventListener('click', () => {
+            const allOn = selectableLangs.every(l => modalPendingLangs.has(l.code));
+            for (const l of selectableLangs) {
+                if (allOn) {
+                    modalPendingLangs.delete(l.code);
+                } else {
+                    modalPendingLangs.add(l.code);
+                }
+            }
+            // Update toggle UI
+            toggles.querySelectorAll('.lang-toggle').forEach(label => {
+                const cb = label.querySelector('input');
+                if (!cb || cb.disabled) return;
+                const code = cb.dataset.lang;
+                cb.checked = modalPendingLangs.has(code);
+                label.classList.toggle('active', cb.checked);
+            });
+        });
 
         body.appendChild(groupDiv);
     }
