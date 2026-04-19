@@ -328,6 +328,22 @@ const EXPERIMENTAL_LANGS = new Set(LANGUAGES.filter(l => l.experimental).map(l =
 const HISTORICAL_LANGS = new Set(LANGUAGES.filter(l => l.historical).map(l => l.code));
 const MAJOR_LANGS = new Set(['ja', 'ko', 'zh', 'en', 'es_mx', 'ar']);
 const NO_SPACE_LANGS = new Set(['ja', 'ja_kyo', 'ja_osa', 'ja_hir', 'ja_hak', 'ja_aom', 'ja_oki', 'ja_mvi', 'ja_rys', 'ja_edo', 'ja_heian', 'zh', 'zh_db', 'zh_sc', 'yue', 'nan', 'wuu', 'hak_cn', 'cdo', 'zh_song', 'zh_tang', 'zh_han', 'th', 'th_isan', 'th_n', 'th_s', 'lo', 'my', 'km', 'vi_nom', 'ii', 'egy']);
+const GLUE = '\u200C'; // ZWNJ prefix = join to previous segment without space
+function buildFullText(langData, langCode) {
+    const noSpace = NO_SPACE_LANGS.has(langCode);
+    let result = '';
+    for (const [, rawText] of langData) {
+        const t = rawText.includes('|') ? rawText.split('|')[0] : rawText;
+        if (t.startsWith(GLUE)) {
+            result += t.slice(1); // strip GLUE, no space
+        } else if (result && !noSpace) {
+            result += ' ' + t;
+        } else {
+            result += t;
+        }
+    }
+    return result;
+}
 
 // State — only major languages are ON by default
 let enabledLangs = new Set(MAJOR_LANGS);
@@ -1187,7 +1203,7 @@ function render() {
         copyBtn.title = t('copyText');
         copyBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            let text = langData.map(seg => { const t = seg[1]; return t.includes('|') ? t.split('|')[0] : t; }).join(NO_SPACE_LANGS.has(code) ? '' : ' ');
+            let text = buildFullText(langData, code);
             if (sentence.type === 'question') {
                 const SPANISH_LANGS = new Set(['es_eu','es_mx','es_ar','es_co','es_cl','es_cu','es_pe','es_an','lad','gl','ca']);
                 const ARABIC_QM_LANGS = new Set(['ar','ar_eg','ar_lev','ar_ma','ar_gulf','ar_iq','ar_tn','ar_sd','fa','ur','sd','ps','ckb']);
@@ -1554,9 +1570,8 @@ function downloadAsCSV() {
         const langData = s.langs[langCode];
         if (!langData) return;
         // Build full text
-        const joiner = NO_SPACE_LANGS.has(langCode) ? '' : ' ';
-        const fullText = langData.map(([, t]) => t.includes('|') ? t.split('|')[0] : t).join(joiner);
-        const enText = s.langs.en ? s.langs.en.map(([, t]) => t).join(' ') : (s.title || '');
+        const fullText = buildFullText(langData, langCode);
+        const enText = s.langs.en ? buildFullText(s.langs.en, 'en') : (s.title || '');
         const row = [idx + 1, csvQuote(enText), csvQuote(fullText)];
         langData.forEach(([segId, segText]) => {
             row.push(segId);
@@ -1626,8 +1641,7 @@ function downloadViewAsCSV() {
     // Data rows
     displayedLangs.forEach(code => {
         const langData = sentence.langs[code];
-        const joiner = NO_SPACE_LANGS.has(code) ? '' : ' ';
-        const fullText = langData.map(([, t]) => t.includes('|') ? t.split('|')[0] : t).join(joiner);
+        const fullText = buildFullText(langData, code);
         const row = [csvQuote(langName(code)), csvQuote(fullText)];
         langData.forEach(([segId, segText]) => {
             row.push(segId);
