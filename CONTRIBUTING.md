@@ -584,3 +584,73 @@ This script checks:
 4. Translate and align all languages (see `REQUIRED_LANGS` in `validate_data.py`)
 5. Run `validate_data.py` to verify
 6. Update cache buster version in `index.html` (`?v=N`)
+
+---
+
+## i18n Naming Conventions / 多言語名称のルール
+
+When adding or updating language names across UI languages, follow these conventions to maintain consistency.
+
+### 1. Parenthetical format / 括弧形式
+
+All dialect/variant/period qualifiers MUST use parenthetical format:
+
+```
+✅ Language (Qualifier)     — Japanese (Osaka), Korean (Medieval)
+✗  Qualifier + Language     — Middle Korean, 大阪話, Dialek Osaka
+✗  Language + Qualifier     — Tiếng Đức Thụy Sĩ, Norte-coreano
+```
+
+### 2. Self-designation for politically sensitive names / 政治的配慮
+
+Use the self-designation where the generic language name is politically loaded:
+
+| Code | CJK UIs | Other UIs |
+|------|---------|-----------|
+| ko_kp | 朝鮮語(文化語) / 조선말(문화어) | Korean (DPRK) |
+
+Rationale: "韓国語(北朝鮮)" is contradictory — 韓国語 literally means "language of South Korea".
+
+### 3. No English leakage / 英語の混入禁止
+
+Every non-English UI language must have a native translation. Never leave English words like "Vietnamese", "English", "Middle" in non-English UIs. Run the following check before committing:
+
+```bash
+node -e "
+const fs=require('fs'), src=fs.readFileSync('app.js','utf8');
+const m=src.match(/const LANG_NAMES = (\{[\s\S]*?\n\});/);
+const LN=new Function('return '+m[1])();
+const words=['Vietnamese','English','French','German','Spanish','Chinese','Korean','Japanese','Middle','Old','Ancient','Classical'];
+for(const ui of Object.keys(LN)){if(ui==='en')continue;for(const[c,n]of Object.entries(LN[ui])){const w=n.split(/[\s(]/)[0];if(words.includes(w))console.log(ui,c,n)}}
+"
+```
+
+### 4. Consistent prefixes per UI language / 言語ごとの接頭辞統一
+
+| UI | Rule | Example |
+|----|------|---------|
+| vi | Always use `Tiếng` prefix | `Tiếng Nhật (Osaka)` not `Phương ngữ Osaka` |
+| th | Use short form (no `ภาษา`) for variants | `ญี่ปุ่น (โอซากะ)` not `สำเนียงโอซากะ` |
+| id | Use short form (no `Bahasa`/`Dialek`) for variants | `Jepang (Osaka)` not `Dialek Osaka` |
+| yue | Use `語` consistently for all entries | `韓語(標準)` not `韓文(標準)` |
+| ko | No space before parenthesis | `영어(호주)` not `영어 (호주)` |
+| ar | Use definite article `ال` consistently | `العربية (المصرية)` not `عربية (مصرية)` |
+
+### 5. Compound segments / 複合セグメント
+
+When a single word fuses two segment roles, use `X|Y` notation:
+
+```
+✅ B|D for fused give+me: ください, 주세요, deme, أعطني
+✅ B|C for fused eat+breakfast: frühstücke, desayuno, завтракаю
+✗  Hyphenated clitics should be SPLIT: donnez / -moi (not B|D)
+```
+
+Rule of thumb: if it's **one orthographic word** → compound. If separated by space or hyphen → split.
+
+### 6. Crediting contributors / 貢献者のクレジット
+
+When applying a fix based on external feedback:
+1. Include the contributor's name in the git commit message
+2. Add a dated entry in `changelog.html` with `<span class="contributor">— reported by Name</span>`
+3. Add the contributor's name to the Contributors list at the bottom of `changelog.html`

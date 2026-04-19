@@ -11,8 +11,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 220 languages/dialects with hand-aligned semantic segments
-- **220 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 221 languages/dialects with hand-aligned semantic segments
+- **221 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -40,7 +40,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Tibeto-Burman | Tibetan, Burmese, Yi (Nuosu) | `bo`, `my`, `ii` |
 | Hmong-Mien | Hmong (Miao) | `hmn` |
 | Southeast Asian | Vietnamese, Chữ Nôm, Khmer, Thai, Thai (Northern/Southern/Isan), Lao, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano, Ilocano, Zhuang | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
-| Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan, Tongan* | `mg`, `mi`, `haw`, `fj`, `sm`, `to` |
+| Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan, Tongan*, Palauan | `mg`, `mi`, `haw`, `fj`, `sm`, `to`, `pau` |
 | South Asian | Sanskrit, Pali, Hindi, Urdu, Punjabi, Sindhi, Bengali, Assamese, Odia, Bhojpuri, Nepali, Marathi, Gujarati, Sinhala, Romani, Tamil, Telugu, Kannada, Malayalam | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | Iranian | Persian, Tajik, Kurdish (Kurmanji), Kurdish (Sorani), Pashto | `fa`, `tg`, `ku`, `ckb`, `ps` |
 | Semitic & Ancient Near East | Arabic (MSA, Egyptian, Levantine, Gulf, Iraqi, Moroccan, Tunisian, Sudanese), Hebrew, Aramaic, Akkadian, Amharic, Tigrinya, Maltese, Ancient Egyptian, Coptic, Sumerian | `ar`, `ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_ma`, `ar_tn`, `ar_sd`, `he`, `arc`, `akk`, `am`, `ti`, `mt`, `egy`, `cop`, `sux` |
@@ -98,7 +98,7 @@ langmap/
   index.html        — Main HTML page
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 220 languages with segment alignments
+  data.js            — 100 sentences × 221 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -192,7 +192,7 @@ MIT
 | チベット・ビルマ語派 | チベット語、ミャンマー語、彝語(ヌス) | `bo`, `my`, `ii` |
 | ミャオ・ヤオ語族 | ミャオ語(苗語) | `hmn` |
 | 東南アジア | ベトナム語、チューノム、クメール語、タイ語、タイ語(北部/南部/イサーン)、ラオ語、インドネシア語、スンダ語、マレー語、ジャワ語、タガログ語、セブアノ語、イロカノ語、チワン語 | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
-| オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語、トンガ語* | `mg`, `mi`, `haw`, `fj`, `sm`, `to` |
+| オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語、トンガ語*、パラオ語 | `mg`, `mi`, `haw`, `fj`, `sm`, `to`, `pau` |
 | 南アジア | サンスクリット語、パーリ語、ヒンディー語、ウルドゥー語、パンジャーブ語、シンド語、ベンガル語、アッサム語、オリヤー語、ボージュプリー語、ネパール語、マラーティー語、グジャラート語、シンハラ語、ロマニ語、タミル語、テルグ語、カンナダ語、マラヤーラム語 | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | イラン語派 | ペルシャ語、タジク語、クルド語(クルマンジー)、クルド語(ソラニー)、パシュトー語 | `fa`, `tg`, `ku`, `ckb`, `ps` |
 | セム語派・古代近東 | アラビア語(フスハー/エジプト/レバント/湾岸/イラク/モロッコ/チュニジア/スーダン方言)、ヘブライ語、アラム語、アッカド語、アムハラ語、ティグリニャ語、マルタ語、古代エジプト語、コプト語、シュメール語 | `ar`, `ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_ma`, `ar_tn`, `ar_sd`, `he`, `arc`, `akk`, `am`, `ti`, `mt`, `egy`, `cop`, `sux` |
