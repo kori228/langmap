@@ -79,9 +79,7 @@
 <body>
     <div class="controls">
         <a href="index.html" class="back-link">&larr; LangMap</a>
-        <label for="word-select">Word:</label>
         <select id="word-select"></select>
-        <span class="word-en" id="word-en-label"></span>
         <div class="sep"></div>
         <button class="toggle-btn active" id="toggle-word">Word</button>
         <button class="toggle-btn active" id="toggle-ipa">IPA</button>
@@ -90,6 +88,9 @@
             <option value="native">現地名</option>
             <option value="en">English</option>
         </select>
+        <div class="sep"></div>
+        <label style="font-size:11px;color:#555">Size</label>
+        <input type="range" id="font-size" min="50" max="200" value="100" style="width:80px;vertical-align:middle">
     </div>
     <div id="lang-info" class="lang-info-panel">
         <button class="close-btn" id="info-close">&times;</button>
@@ -156,7 +157,7 @@
 
         // --- Word selector ---
         const select = document.getElementById('word-select');
-        const enLabel = document.getElementById('word-en-label');
+        // (word-en label removed from UI)
 
         WORD_LIST.forEach(w => {
             const opt = document.createElement('option');
@@ -183,6 +184,13 @@
             updateMarkers(currentWord);
         });
 
+        let fontScale = 1.0;
+        const fontSizeSlider = document.getElementById('font-size');
+        fontSizeSlider.addEventListener('input', () => {
+            fontScale = parseInt(fontSizeSlider.value) / 100;
+            updateMarkers(currentWord);
+        });
+
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
                 setter(!getter());
@@ -204,7 +212,7 @@
         function updateMarkers(wordId) {
             currentWord = wordId;
             const wordInfo = WORD_LIST.find(w => w.id === wordId);
-            enLabel.textContent = wordInfo ? wordInfo.en : '';
+            // (word-en label removed)
 
             // Remove existing markers
             markers.forEach(m => map.removeLayer(m));
@@ -235,19 +243,19 @@
                 const group = coordGroups[key];
                 let yOffset = 0;
                 if (group.length > 1) {
-                    // Dynamic spacing based on visible text lines
+                    // Dynamic spacing based on visible text lines and font scale
                     let lineHeight = 0;
                     if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
                     if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
                     if (showName) lineHeight += (zoom <= 3 ? 9 : zoom <= 5 ? 10 : 11);
-                    const spacing = Math.max(lineHeight + 4, 16);
+                    const spacing = Math.max((lineHeight + 4) * fontScale, 16);
                     const idx = group.indexOf(code);
                     const center = (group.length - 1) / 2;
                     yOffset = (idx - center) * spacing;
                 }
 
                 const displayName = nameLang === 'en' ? lang.name : lang.native;
-                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
+                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px));font-size:${fontScale * 100}%">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
                 if (showName) html += `<div class="name">${displayName}</div>`;
