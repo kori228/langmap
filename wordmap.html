@@ -457,12 +457,12 @@
                 // In historical mode, style modern descendants differently
                 const isModernInHistMode = showHistorical && !EXCLUDED_CODES.has(code) && !HIST_DESCENDANT.hasOwnProperty(code);
                 const isDescendant = showHistorical && descendantCodes && descendantCodes.has(code);
-                const italicStyle = isDescendant ? 'color:#c0392b' : '';
+                const descColor = isDescendant ? '#c0392b' : '';
 
-                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px));${italicStyle}">`;
-                if (showWord) html += `<div class="word">${word}</div>`;
-                if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
-                if (showName) html += `<div class="name">${displayName}</div>`;
+                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
+                if (showWord) html += `<div class="word" ${descColor ? `style="color:${descColor}"` : ''}>${word}</div>`;
+                if (showIpa) html += `<div class="ipa" ${descColor ? `style="color:${descColor}"` : ''}>${descColor ? '' : '/'}${ipa}${descColor ? '' : '/'}</div>`;
+                if (showName) html += `<div class="name" ${descColor ? `style="color:${descColor}"` : ''}>${displayName}</div>`;
                 html += '</div>';
 
                 const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
