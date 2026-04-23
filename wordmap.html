@@ -86,6 +86,10 @@
         <button class="toggle-btn active" id="toggle-word">Word</button>
         <button class="toggle-btn active" id="toggle-ipa">IPA</button>
         <button class="toggle-btn active" id="toggle-name">Name</button>
+        <select id="name-lang" style="font-size:11px;padding:2px 6px;border:1px solid #ccc;border-radius:4px">
+            <option value="native">現地名</option>
+            <option value="en">English</option>
+        </select>
     </div>
     <div id="lang-info" class="lang-info-panel">
         <button class="close-btn" id="info-close">&times;</button>
@@ -168,9 +172,16 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true;
+        let nameLang = 'native'; // 'native' or 'en'
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
+        const nameLangSelect = document.getElementById('name-lang');
+
+        nameLangSelect.addEventListener('change', () => {
+            nameLang = nameLangSelect.value;
+            updateMarkers(currentWord);
+        });
 
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -211,10 +222,11 @@
                 // Zoom-dependent visibility
                 if (zoom < 4 && !MAJOR.has(code)) continue;
 
+                const displayName = nameLang === 'en' ? lang.name : lang.native;
                 let html = '<div class="lang-label">';
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
-                if (showName) html += `<div class="name">${lang.native}</div>`;
+                if (showName) html += `<div class="name">${displayName}</div>`;
                 html += '</div>';
 
                 const icon = L.divIcon({
