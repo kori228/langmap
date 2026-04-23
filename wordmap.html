@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangMap — Word Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        #map { width: 100vw; height: 100vh; }
+        .controls {
+            position: absolute; top: 12px; left: 56px; z-index: 1000;
+            background: rgba(255,255,255,0.95); border-radius: 8px;
+            padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .controls label { font-size: 13px; font-weight: 600; color: #333; white-space: nowrap; }
+        .controls select {
+            font-size: 14px; padding: 5px 10px; border: 1px solid #ccc;
+            border-radius: 4px; background: #fff; cursor: pointer;
+        }
+        .controls .word-en { font-size: 12px; color: #666; margin-left: 4px; }
+        .controls .back-link { font-size: 12px; color: #0366d6; text-decoration: none; margin-left: 8px; }
+        .controls .back-link:hover { text-decoration: underline; }
+        .lang-label {
+            text-align: center; white-space: nowrap; cursor: default;
+            pointer-events: none; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+        }
+        .lang-label .word {
+            font-size: 15px; font-weight: 700; color: #1a1a2e;
+            line-height: 1.2;
+        }
+        .lang-label .ipa {
+            font-size: 10px; color: #555; font-style: italic;
+            line-height: 1.2;
+        }
+        .lang-label .name {
+            font-size: 9px; color: #888; line-height: 1.3;
+        }
+        /* Zoom-dependent sizing */
+        .zoom-far .lang-label .word { font-size: 11px; }
+        .zoom-far .lang-label .ipa { font-size: 8px; }
+        .zoom-far .lang-label .name { font-size: 7px; }
+        .zoom-mid .lang-label .word { font-size: 13px; }
+        .zoom-mid .lang-label .ipa { font-size: 9px; }
+        .zoom-mid .lang-label .name { font-size: 8px; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <a href="index.html" class="back-link">&larr; LangMap</a>
+        <label for="word-select">Word:</label>
+        <select id="word-select"></select>
+        <span class="word-en" id="word-en-label"></span>
+    </div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="wordmap_data.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        // --- Map setup ---
+        const map = L.map('map', {
+            center: [25, 20],
+            zoom: 3,
+            minZoom: 2,
+            maxZoom: 10,
+            worldCopyJump: true,
+        });
+
+        // Terrain tiles (ESRI World Physical - no labels)
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri',
+            maxZoom: 18,
+        }).addTo(map);
+
+        // --- Country borders (load GeoJSON) ---
+        fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
+            .then(r => r.json())
+            .then(geojson => {
+                // Simple 6-color assignment by index (not perfect adjacency but good enough)
+                const features = geojson.features;
+                // Sort by longitude for rough adjacency coloring
+                features.sort((a, b) => {
+                    const ca = a.properties.ADMIN || '';
+                    const cb = b.properties.ADMIN || '';
+                    return ca.localeCompare(cb);
+                });
+                L.geoJSON(geojson, {
+                    style: (feature) => {
+                        // Hash country name to get color index
+                        const name = feature.properties.ADMIN || feature.properties.name || '';
+                        let hash = 0;
+                        for (let i = 0; i < name.length; i++) {
+                            hash = ((hash << 5) - hash + name.charCodeAt(i)) | 0;
+                        }
+                        const colorIdx = Math.abs(hash) % COUNTRY_PALETTE.length;
+                        return {
+                            fillColor: COUNTRY_PALETTE[colorIdx].replace(/[\d.]+\)$/, '0.18)'),
+                            fillOpacity: 1,
+                            color: '#999',
+                            weight: 0.8,
+                            opacity: 0.5,
+                        };
+                    },
+                    onEachFeature: (feature, layer) => {
+                        // No click events on countries
+                    }
+                }).addTo(map);
+            })
+            .catch(err => console.warn('Could not load country borders:', err));
+
+        // --- Word selector ---
+        const select = document.getElementById('word-select');
+        const enLabel = document.getElementById('word-en-label');
+
+        WORD_LIST.forEach(w => {
+            const opt = document.createElement('option');
+            opt.value = w.id;
+            opt.textContent = w.ja + ' / ' + w.en;
+            select.appendChild(opt);
+        });
+
+        select.addEventListener('change', () => {
+            updateMarkers(select.value);
+        });
+
+        // --- Language markers ---
+        const markers = [];
+        let currentWord = WORD_LIST[0].id;
+
+        // Major languages shown at all zoom levels
+        const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa']);
+
+        function updateMarkers(wordId) {
+            currentWord = wordId;
+            const wordInfo = WORD_LIST.find(w => w.id === wordId);
+            enLabel.textContent = wordInfo ? wordInfo.en : '';
+
+            // Remove existing markers
+            markers.forEach(m => map.removeLayer(m));
+            markers.length = 0;
+
+            const zoom = map.getZoom();
+
+            for (const [code, lang] of Object.entries(LANG_DATA)) {
+                if (EXCLUDED_CODES.has(code)) continue;
+                const entry = lang.words[wordId];
+                if (!entry) continue;
+
+                const [word, ipa] = entry;
+
+                // Zoom-dependent visibility
+                if (zoom < 4 && !MAJOR.has(code)) continue;
+
+                const icon = L.divIcon({
+                    className: 'lang-label',
+                    html: `<div class="word">${word}</div><div class="ipa">/${ipa}/</div><div class="name">${lang.native}</div>`,
+                    iconSize: null,
+                    iconAnchor: [0, 0],
+                });
+
+                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: false });
+                marker._langCode = code;
+                marker.addTo(map);
+                markers.push(marker);
+            }
+        }
+
+        // Update on zoom
+        map.on('zoomend', () => updateMarkers(currentWord));
+
+        // Initial render
+        updateMarkers(currentWord);
+
+        // Zoom class for font sizing
+        function updateZoomClass() {
+            const z = map.getZoom();
+            const container = map.getContainer();
+            container.classList.remove('zoom-far', 'zoom-mid', 'zoom-close');
+            if (z <= 3) container.classList.add('zoom-far');
+            else if (z <= 5) container.classList.add('zoom-mid');
+            else container.classList.add('zoom-close');
+        }
+        map.on('zoomend', updateZoomClass);
+        updateZoomClass();
+
+    })();
+    </script>
+</body>
+</html>
