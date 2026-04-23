@@ -145,7 +145,7 @@
             <button class="toggle-btn active" id="toggle-word">Word</button>
             <button class="toggle-btn active" id="toggle-ipa">IPA</button>
             <button class="toggle-btn active" id="toggle-name">Name</button>
-            <button class="toggle-btn active" id="toggle-native">Native</button>
+            <button class="toggle-btn" id="toggle-native">Native</button>
         </div>
         <div class="ctrl-row">
             <span class="ctrl-label" id="size-label">Size</span>
@@ -221,8 +221,27 @@
             })
             .catch(err => console.warn('Could not load country borders:', err));
 
-        // --- UI language ---
-        let uiLang = 'en';
+        // --- UI language (detect from browser) ---
+        function detectBrowserLang() {
+            const langs = navigator.languages || [navigator.language || 'en'];
+            for (const l of langs) {
+                const code = l.replace('-', '_').toLowerCase();
+                if (WM_UI[code]) return code;
+                const base = code.split('_')[0];
+                // Map browser codes to our UI codes
+                const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
+                    en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
+                    sw:'sw', pt:'pt_br', es:'es_mx', da:'en', sv:'en', no:'en', nl:'en' };
+                if (map[base] && WM_UI[map[base]]) return map[base];
+                // Chinese variants
+                if (base === 'zh') {
+                    if (code.includes('hk') || code.includes('tw') || code.includes('hant')) return 'yue';
+                    return 'zh';
+                }
+            }
+            return 'en';
+        }
+        let uiLang = detectBrowserLang();
         const uiLangSelect = document.getElementById('ui-lang');
         for (const [code, label] of Object.entries(WM_UI_LABELS)) {
             const opt = document.createElement('option');
@@ -230,7 +249,7 @@
             opt.textContent = label;
             uiLangSelect.appendChild(opt);
         }
-        uiLangSelect.value = 'en';
+        uiLangSelect.value = uiLang;
 
         function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
 
@@ -305,7 +324,7 @@
         });
 
         // --- Toggle buttons ---
-        let showWord = true, showIpa = true, showName = true, showNative = true;
+        let showWord = true, showIpa = true, showName = true, showNative = false;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
@@ -435,6 +454,7 @@
             }
         }
         loadHash();
+        applyUILang(); // Apply detected/loaded UI language
 
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
         map.on('moveend', () => { updateHash(); });
@@ -474,7 +494,10 @@
             if (m.official) html += `<tr><td>${wt('official')}</td><td>${m.official}</td></tr>`;
             if (m.script) html += `<tr><td>${wt('script')}</td><td>${m.script}</td></tr>`;
             html += '</table>';
-            if (m.description) html += `<div class="desc">${m.description}</div>`;
+            if (m.description) {
+                const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
+                html += `<div class="desc">${desc}</div>`;
+            }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
