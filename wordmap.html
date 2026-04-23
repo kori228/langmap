@@ -33,9 +33,29 @@
             position: absolute;
             left: 50%; top: 50%;
             transform: translate(-50%, -50%);
-            text-align: center; white-space: nowrap; cursor: default;
-            pointer-events: none; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+            text-align: center; white-space: nowrap; cursor: pointer;
+            pointer-events: auto; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
         }
+        .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; padding: 1px 4px; }
+        .lang-info-panel {
+            position: absolute; top: 60px; right: 12px; z-index: 1001;
+            width: 340px; max-height: calc(100vh - 80px); overflow-y: auto;
+            background: rgba(255,255,255,0.97); border-radius: 10px;
+            padding: 16px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            font-size: 13px; line-height: 1.6; display: none;
+        }
+        .lang-info-panel.visible { display: block; }
+        .lang-info-panel .close-btn {
+            position: absolute; top: 8px; right: 12px;
+            background: none; border: none; font-size: 18px; cursor: pointer; color: #999;
+        }
+        .lang-info-panel .close-btn:hover { color: #333; }
+        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; }
+        .lang-info-panel .native-name { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .lang-info-panel table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        .lang-info-panel td { padding: 3px 0; vertical-align: top; }
+        .lang-info-panel td:first-child { font-weight: 600; color: #555; width: 90px; white-space: nowrap; }
+        .lang-info-panel .desc { color: #444; font-size: 12px; line-height: 1.5; }
         .lang-label .word {
             font-size: 15px; font-weight: 700; color: #1a1a2e;
             line-height: 1.2;
@@ -66,6 +86,10 @@
         <button class="toggle-btn active" id="toggle-word">Word</button>
         <button class="toggle-btn active" id="toggle-ipa">IPA</button>
         <button class="toggle-btn active" id="toggle-name">Name</button>
+    </div>
+    <div id="lang-info" class="lang-info-panel">
+        <button class="close-btn" id="info-close">&times;</button>
+        <div id="info-content"></div>
     </div>
     <div id="map"></div>
 
@@ -200,8 +224,9 @@
                     iconAnchor: [0, 0],
                 });
 
-                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: false });
+                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
+                marker.on('click', () => showLangInfo(code));
                 marker.addTo(map);
                 markers.push(marker);
             }
@@ -231,6 +256,40 @@
         // Update on zoom/move
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
         map.on('moveend', () => { updateHash(); });
+
+        // --- Language info panel ---
+        const infoPanel = document.getElementById('lang-info');
+        const infoContent = document.getElementById('info-content');
+        document.getElementById('info-close').addEventListener('click', () => {
+            infoPanel.classList.remove('visible');
+        });
+
+        function showLangInfo(code) {
+            const lang = LANG_DATA[code];
+            if (!lang) return;
+            const m = lang.meta || {};
+            let html = `<h2>${lang.name}</h2>`;
+            html += `<div class="native-name">${lang.native} [${code}]</div>`;
+            html += '<table>';
+            if (m.family) html += `<tr><td>Language family</td><td>${m.family}</td></tr>`;
+            if (m.speakers) html += `<tr><td>Speakers</td><td>${m.speakers}</td></tr>`;
+            if (m.countries) html += `<tr><td>Countries</td><td>${m.countries}</td></tr>`;
+            if (m.official) html += `<tr><td>Official in</td><td>${m.official}</td></tr>`;
+            if (m.script) html += `<tr><td>Script</td><td>${m.script}</td></tr>`;
+            html += '</table>';
+            if (m.description) html += `<div class="desc">${m.description}</div>`;
+            // Show all 20 words for this language
+            html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
+            for (const w of WORD_LIST) {
+                const entry = lang.words[w.id];
+                if (entry) {
+                    html += `<tr><td>${w.en}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                }
+            }
+            html += '</table>';
+            infoContent.innerHTML = html;
+            infoPanel.classList.add('visible');
+        }
 
         // Initial render
         updateMarkers(currentWord);
