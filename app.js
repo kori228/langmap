@@ -353,7 +353,7 @@ let redrawTimer = null;
 let suppressHashUpdate = false;
 let rtlNative = false; // true = show RTL languages in native reading direction
 
-const RTL_LANGS = new Set(['ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'he', 'fa', 'ur', 'sd']);
+const RTL_LANGS = new Set(['ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'ar_iq', 'ar_tn', 'ar_sd', 'he', 'arc', 'fa', 'ur', 'sd', 'ps', 'ckb', 'ug', 'yi']);
 
 // --- URL hash state management ---
 // New URLs use explicit key=value format for stability across language additions.
