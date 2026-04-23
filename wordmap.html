@@ -457,7 +457,7 @@
                 // In historical mode, style modern descendants differently
                 const isModernInHistMode = showHistorical && !EXCLUDED_CODES.has(code) && !HIST_DESCENDANT.hasOwnProperty(code);
                 const isDescendant = showHistorical && descendantCodes && descendantCodes.has(code);
-                const italicStyle = isDescendant ? 'font-style:italic;opacity:0.7' : '';
+                const italicStyle = isDescendant ? 'color:#c0392b' : '';
 
                 let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px));${italicStyle}">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
