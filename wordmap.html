@@ -377,12 +377,11 @@
         // Historical → representative modern descendant
         const HIST_DESCENDANT = {
             la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
-            got:'de', cu:'bg', pi:'si', cop:'ar_eg', arc:'he',
+            got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
             sa:'hi', mnc:'zh',
             sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
             ine:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
             ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
-            eo:null, tok:null, tlh:null, jbo:null,
         };
 
         function updateMarkers(wordId) {
@@ -394,10 +393,10 @@
             // Determine which languages to show
             const coordGroups = {};
             const visibleLangs = [];
+            const descendantCodes = new Set();
 
             if (showHistorical) {
                 // Historical mode: show historical langs + their modern descendants only
-                const descendantCodes = new Set();
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
                     if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId]) {
                         visibleLangs.push(hist);
@@ -455,7 +454,12 @@
                     displayName = names[code] || lang.name;
                 }
 
-                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
+                // In historical mode, style modern descendants differently
+                const isModernInHistMode = showHistorical && !EXCLUDED_CODES.has(code) && !HIST_DESCENDANT.hasOwnProperty(code);
+                const isDescendant = showHistorical && descendantCodes && descendantCodes.has(code);
+                const italicStyle = isDescendant ? 'font-style:italic;opacity:0.7' : '';
+
+                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px));${italicStyle}">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
                 if (showName) html += `<div class="name">${displayName}</div>`;
