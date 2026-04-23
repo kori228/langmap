@@ -23,7 +23,16 @@
         .controls .word-en { font-size: 12px; color: #666; margin-left: 4px; }
         .controls .back-link { font-size: 12px; color: #0366d6; text-decoration: none; margin-left: 8px; }
         .controls .back-link:hover { text-decoration: underline; }
+        .controls .toggle-btn {
+            font-size: 11px; padding: 3px 8px; border: 1px solid #ccc;
+            border-radius: 4px; background: #fff; cursor: pointer; white-space: nowrap;
+        }
+        .controls .toggle-btn.active { background: #e0e7ff; border-color: #7c8cc4; }
+        .controls .sep { width: 1px; height: 20px; background: #ddd; }
         .lang-label {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
             text-align: center; white-space: nowrap; cursor: default;
             pointer-events: none; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
         }
@@ -53,6 +62,10 @@
         <label for="word-select">Word:</label>
         <select id="word-select"></select>
         <span class="word-en" id="word-en-label"></span>
+        <div class="sep"></div>
+        <button class="toggle-btn active" id="toggle-word">Word</button>
+        <button class="toggle-btn active" id="toggle-ipa">IPA</button>
+        <button class="toggle-btn active" id="toggle-name">Name</button>
     </div>
     <div id="map"></div>
 
@@ -71,9 +84,9 @@
             worldCopyJump: true,
         });
 
-        // Terrain tiles (ESRI World Physical - no labels)
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri',
+        // Light flat map (CartoDB Positron - no terrain, no labels)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
             maxZoom: 18,
         }).addTo(map);
 
@@ -126,7 +139,25 @@
 
         select.addEventListener('change', () => {
             updateMarkers(select.value);
+            updateHash();
         });
+
+        // --- Toggle buttons ---
+        let showWord = true, showIpa = true, showName = true;
+        const btnWord = document.getElementById('toggle-word');
+        const btnIpa = document.getElementById('toggle-ipa');
+        const btnName = document.getElementById('toggle-name');
+
+        function setupToggle(btn, getter, setter) {
+            btn.addEventListener('click', () => {
+                setter(!getter());
+                btn.classList.toggle('active', getter());
+                updateMarkers(currentWord);
+            });
+        }
+        setupToggle(btnWord, () => showWord, v => showWord = v);
+        setupToggle(btnIpa, () => showIpa, v => showIpa = v);
+        setupToggle(btnName, () => showName, v => showName = v);
 
         // --- Language markers ---
         const markers = [];
@@ -156,10 +187,16 @@
                 // Zoom-dependent visibility
                 if (zoom < 4 && !MAJOR.has(code)) continue;
 
+                let html = '<div class="lang-label">';
+                if (showWord) html += `<div class="word">${word}</div>`;
+                if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
+                if (showName) html += `<div class="name">${lang.native}</div>`;
+                html += '</div>';
+
                 const icon = L.divIcon({
-                    className: 'lang-label',
-                    html: `<div class="word">${word}</div><div class="ipa">/${ipa}/</div><div class="name">${lang.native}</div>`,
-                    iconSize: null,
+                    className: '',
+                    html,
+                    iconSize: [0, 0],
                     iconAnchor: [0, 0],
                 });
 
@@ -170,8 +207,30 @@
             }
         }
 
-        // Update on zoom
-        map.on('zoomend', () => updateMarkers(currentWord));
+        // --- URL hash state ---
+        function updateHash() {
+            const c = map.getCenter();
+            const z = map.getZoom();
+            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}`;
+        }
+
+        function loadHash() {
+            const h = location.hash.slice(1);
+            const params = Object.fromEntries(h.split('&').map(s => s.split('=')));
+            if (params.w && WORD_LIST.find(w => w.id === params.w)) {
+                select.value = params.w;
+                currentWord = params.w;
+            }
+            if (params.z && params.lat && params.lng) {
+                map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z));
+            }
+        }
+
+        loadHash();
+
+        // Update on zoom/move
+        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
+        map.on('moveend', () => { updateHash(); });
 
         // Initial render
         updateMarkers(currentWord);
