@@ -136,6 +136,7 @@
         <div class="word-select-wrap">
             <select id="word-select"></select>
         </div>
+        <button class="toggle-btn" id="toggle-historical" style="font-size:11px">Historical</button>
         <select id="ui-lang" class="ui-lang-select"></select>
     </div>
 
@@ -169,9 +170,13 @@
     <script>
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
+    let langNamesReady = false;
     fetch('app.js').then(r => r.text()).then(code => {
         const m = code.match(/const LANG_NAMES = \{([\s\S]*?)\n\};/);
         if (m) { try { LANG_NAMES = new Function('return {' + m[1] + '\n};')(); } catch(e) {} }
+        langNamesReady = true;
+        // Re-render markers now that LANG_NAMES is loaded
+        if (typeof _refreshMarkers === 'function') _refreshMarkers();
     });
     </script>
     <script>
@@ -291,6 +296,7 @@
             document.getElementById('toggle-ipa').textContent = wt('ipa');
             document.getElementById('toggle-name').textContent = wt('name');
             document.getElementById('toggle-native').textContent = wt('native');
+            document.getElementById('toggle-historical').textContent = wt('historical') || 'Historical';
             document.getElementById('size-label').textContent = wt('size');
             rebuildWordSelect();
         }
@@ -325,10 +331,19 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
+        let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
         const btnNative = document.getElementById('toggle-native');
+        const btnHistorical = document.getElementById('toggle-historical');
+
+        btnHistorical.addEventListener('click', () => {
+            showHistorical = !showHistorical;
+            btnHistorical.classList.toggle('active', showHistorical);
+            updateMarkers(currentWord);
+            updateHash();
+        });
 
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -369,7 +384,7 @@
             const coordGroups = {};
             const visibleLangs = [];
             for (const [code, lang] of Object.entries(LANG_DATA)) {
-                if (EXCLUDED_CODES.has(code)) continue;
+                if (!showHistorical && EXCLUDED_CODES.has(code)) continue;
                 if (!lang.words[wordId]) continue;
                 if (zoom < 4 && !MAJOR.has(code)) continue;
                 const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
@@ -426,7 +441,7 @@
             const c = map.getCenter();
             const z = map.getZoom();
             const s = fontSizeSlider.value;
-            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nat=${showNative?1:0}&fs=${s}&ui=${uiLang}`;
+            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nat=${showNative?1:0}&hist=${showHistorical?1:0}&fs=${s}&ui=${uiLang}`;
         }
 
         function loadHash() {
@@ -443,6 +458,10 @@
                 showNative = params.nat === '1';
                 btnNative.classList.toggle('active', showNative);
             }
+            if (params.hist !== undefined) {
+                showHistorical = params.hist === '1';
+                btnHistorical.classList.toggle('active', showHistorical);
+            }
             if (params.fs) {
                 fontSizeSlider.value = params.fs;
                 document.documentElement.style.setProperty('--label-scale', parseInt(params.fs) / 100);
@@ -458,6 +477,9 @@
 
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
         map.on('moveend', () => { updateHash(); });
+
+        // Expose refresh for async LANG_NAMES load
+        window._refreshMarkers = () => updateMarkers(currentWord);
 
         // Initial render
         updateMarkers(currentWord);

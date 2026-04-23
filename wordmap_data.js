@@ -649,7 +649,7 @@ LANG_DATA['eu'].meta = { family:'Language isolate', speakers:'~750K', countries:
 
 // === UI translations for Word Map ===
 const WM_UI = {
-  ja: { native:'現地名', english:'English', size:'サイズ', word:'原文', ipa:'発音', name:'言語名', back:'← LangMap', family:'語族', speakers:'話者数', countries:'使用国', official:'公用語', script:'文字', url:'langmap.heuron.com/wordmap.html' },
+  ja: { native:'現地名', english:'English', size:'サイズ', word:'原文', ipa:'発音', name:'言語名', back:'← LangMap', family:'語族', speakers:'話者数', countries:'使用国', official:'公用語', script:'文字', url:'langmap.heuron.com/wordmap.html', historical:'歴史言語' },
   ko: { native:'현지어', english:'English', size:'크기', word:'원문', ipa:'발음', name:'언어명', back:'← LangMap', family:'어족', speakers:'화자 수', countries:'사용 국가', official:'공용어', script:'문자', url:'langmap.heuron.com/wordmap.html' },
   zh: { native:'当地语', english:'English', size:'大小', word:'原文', ipa:'发音', name:'语言名', back:'← LangMap', family:'语族', speakers:'使用人数', countries:'使用国家', official:'官方语言', script:'文字', url:'langmap.heuron.com/wordmap.html' },
   yue: { native:'當地語', english:'English', size:'大細', word:'原文', ipa:'發音', name:'語言名', back:'← LangMap', family:'語族', speakers:'使用人數', countries:'使用國家', official:'官方語言', script:'文字', url:'langmap.heuron.com/wordmap.html' },
