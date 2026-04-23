@@ -9,37 +9,97 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         #map { width: 100vw; height: 100vh; }
-        .controls {
-            position: absolute; top: 12px; left: 56px; z-index: 1000;
-            background: rgba(255,255,255,0.95); border-radius: 8px;
-            padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex; align-items: center; gap: 10px;
+
+        /* --- Header --- */
+        .site-header {
+            position: absolute; top: 0; left: 0; right: 0; z-index: 1001;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 6px 16px; display: flex; align-items: center; gap: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
-        .controls label { font-size: 13px; font-weight: 600; color: #333; white-space: nowrap; }
-        .controls select {
-            font-size: 14px; padding: 5px 10px; border: 1px solid #ccc;
-            border-radius: 4px; background: #fff; cursor: pointer;
+        .site-header .logo {
+            font-size: 20px; font-weight: 800; color: #1a1a2e; text-decoration: none;
+            letter-spacing: -0.5px; white-space: nowrap;
         }
-        .controls .word-en { font-size: 12px; color: #666; margin-left: 4px; }
-        .controls .back-link { font-size: 12px; color: #0366d6; text-decoration: none; margin-left: 8px; }
-        .controls .back-link:hover { text-decoration: underline; }
-        .controls .toggle-btn {
+        .site-header .logo:hover { color: #333; }
+        .site-header .subtitle {
+            font-size: 12px; font-weight: 400; color: #888; margin-left: 4px;
+        }
+        .site-header .nav-tabs {
+            display: flex; gap: 2px; background: #f0f0f0; border-radius: 6px; padding: 2px;
+        }
+        .site-header .nav-tab {
+            font-size: 11px; padding: 4px 12px; border: none; border-radius: 4px;
+            background: transparent; color: #666; cursor: pointer; text-decoration: none;
+            white-space: nowrap; font-weight: 500;
+        }
+        .site-header .nav-tab:hover { background: rgba(0,0,0,0.05); color: #333; }
+        .site-header .nav-tab.active {
+            background: #fff; color: #1a1a2e; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+        .site-header .word-select-wrap {
+            flex: 1; display: flex; align-items: center; gap: 6px;
+        }
+        .site-header select {
+            font-size: 13px; padding: 4px 8px; border: 1px solid #ccc;
+            border-radius: 5px; background: #fff; cursor: pointer; max-width: 240px;
+        }
+        .site-header .ui-lang-select {
+            font-size: 11px; padding: 3px 6px; border: 1px solid #ddd;
+            border-radius: 4px; background: #fafafa; cursor: pointer;
+        }
+
+        /* --- Bottom-left controls --- */
+        .map-controls {
+            position: absolute; bottom: 24px; left: 12px; z-index: 1000;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+            border-radius: 8px; padding: 8px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .map-controls .ctrl-row {
+            display: flex; align-items: center; gap: 6px;
+        }
+        .toggle-btn {
             font-size: 11px; padding: 3px 8px; border: 1px solid #ccc;
             border-radius: 4px; background: #fff; cursor: pointer; white-space: nowrap;
         }
-        .controls .toggle-btn.active { background: #e0e7ff; border-color: #7c8cc4; }
-        .controls .sep { width: 1px; height: 20px; background: #ddd; }
+        .toggle-btn.active { background: #e0e7ff; border-color: #7c8cc4; }
+        .ctrl-label { font-size: 11px; color: #555; }
+
+        /* --- Language labels on map --- */
+        :root { --label-scale: 1; }
         .lang-label {
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
+            position: absolute; left: 50%; top: 50%;
             text-align: center; white-space: nowrap; cursor: pointer;
-            pointer-events: auto; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+            pointer-events: auto;
+            text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 6px rgba(255,255,255,0.5);
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; padding: 1px 4px; }
+        .lang-label .word {
+            font-size: calc(15px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
+            line-height: 1.2;
+        }
+        .lang-label .ipa {
+            font-size: calc(10px * var(--label-scale)); color: #555; font-style: italic;
+            line-height: 1.2;
+        }
+        .lang-label .name {
+            font-size: calc(9px * var(--label-scale)); color: #888; line-height: 1.3;
+        }
+        .zoom-far .lang-label .word { font-size: calc(11px * var(--label-scale)); }
+        .zoom-far .lang-label .ipa { font-size: calc(8px * var(--label-scale)); }
+        .zoom-far .lang-label .name { font-size: calc(7px * var(--label-scale)); }
+        .zoom-mid .lang-label .word { font-size: calc(13px * var(--label-scale)); }
+        .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
+        .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
+
+        /* --- Language info panel --- */
         .lang-info-panel {
-            position: absolute; top: 60px; right: 12px; z-index: 1001;
-            width: 340px; max-height: calc(100vh - 80px); overflow-y: auto;
+            position: absolute; top: 50px; right: 12px; z-index: 1001;
+            width: 340px; max-height: calc(100vh - 70px); overflow-y: auto;
             background: rgba(255,255,255,0.97); border-radius: 10px;
             padding: 16px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
             font-size: 13px; line-height: 1.6; display: none;
@@ -56,52 +116,52 @@
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
         .lang-info-panel td:first-child { font-weight: 600; color: #555; width: 90px; white-space: nowrap; }
         .lang-info-panel .desc { color: #444; font-size: 12px; line-height: 1.5; }
-        :root { --label-scale: 1; }
-        .lang-label .word {
-            font-size: calc(15px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
-            line-height: 1.2;
-        }
-        .lang-label .ipa {
-            font-size: calc(10px * var(--label-scale)); color: #555; font-style: italic;
-            line-height: 1.2;
-        }
-        .lang-label .name {
-            font-size: calc(9px * var(--label-scale)); color: #888; line-height: 1.3;
-        }
-        /* Zoom-dependent sizing */
-        .zoom-far .lang-label .word { font-size: calc(11px * var(--label-scale)); }
-        .zoom-far .lang-label .ipa { font-size: calc(8px * var(--label-scale)); }
-        .zoom-far .lang-label .name { font-size: calc(7px * var(--label-scale)); }
-        .zoom-mid .lang-label .word { font-size: calc(13px * var(--label-scale)); }
-        .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
-        .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
+
+        /* --- URL watermark --- */
         .url-watermark {
             position: absolute; bottom: 8px; right: 8px; z-index: 1000;
-            font-size: 11px; color: rgba(0,0,0,0.35); pointer-events: none;
+            font-size: 11px; color: rgba(0,0,0,0.3); pointer-events: none;
             font-family: monospace;
         }
     </style>
 </head>
 <body>
-    <div class="controls">
-        <a href="index.html" class="back-link" id="back-link">&larr; LangMap</a>
-        <select id="word-select"></select>
-        <div class="sep"></div>
-        <button class="toggle-btn active" id="toggle-word">Word</button>
-        <button class="toggle-btn active" id="toggle-ipa">IPA</button>
-        <button class="toggle-btn active" id="toggle-name">Name</button>
-        <button class="toggle-btn active" id="toggle-native">Native</button>
-        <div class="sep"></div>
-        <span id="size-label" style="font-size:11px;color:#555">Size</span>
-        <input type="range" id="font-size" min="50" max="200" value="100" style="width:80px;vertical-align:middle">
-        <div class="sep"></div>
-        <select id="ui-lang" style="font-size:11px;padding:2px 6px;border:1px solid #ccc;border-radius:4px"></select>
+    <!-- Header -->
+    <div class="site-header">
+        <a href="index.html" class="logo">LangMap <span class="subtitle" id="ui-subtitle">Multilingual Word Atlas</span></a>
+        <div class="nav-tabs">
+            <a href="index.html" class="nav-tab" id="nav-order">Word Order</a>
+            <a href="wordmap.html" class="nav-tab active" id="nav-map">Word Map</a>
+        </div>
+        <div class="word-select-wrap">
+            <select id="word-select"></select>
+        </div>
+        <select id="ui-lang" class="ui-lang-select"></select>
     </div>
-    <div class="url-watermark" id="url-watermark">langmap.heuron.com/wordmap.html</div>
+
+    <!-- Bottom-left controls -->
+    <div class="map-controls">
+        <div class="ctrl-row">
+            <button class="toggle-btn active" id="toggle-word">Word</button>
+            <button class="toggle-btn active" id="toggle-ipa">IPA</button>
+            <button class="toggle-btn active" id="toggle-name">Name</button>
+            <button class="toggle-btn active" id="toggle-native">Native</button>
+        </div>
+        <div class="ctrl-row">
+            <span class="ctrl-label" id="size-label">Size</span>
+            <input type="range" id="font-size" min="50" max="200" value="100" style="width:90px">
+        </div>
+    </div>
+
+    <!-- URL watermark -->
+    <div class="url-watermark">langmap.heuron.com/wordmap.html</div>
+
+    <!-- Language info panel -->
     <div id="lang-info" class="lang-info-panel">
         <button class="close-btn" id="info-close">&times;</button>
         <div id="info-content"></div>
     </div>
+
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -125,29 +185,24 @@
             minZoom: 2,
             maxZoom: 10,
             worldCopyJump: true,
+            zoomControl: false, // we'll position it ourselves
         });
 
-        // Light flat map (CartoDB Positron - no terrain, no labels)
+        // Zoom control at top-right (below header)
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        // Flat tiles (CartoDB Positron, no labels)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
             maxZoom: 18,
         }).addTo(map);
 
-        // --- Country borders (load GeoJSON) ---
+        // Country borders
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
             .then(r => r.json())
             .then(geojson => {
-                // Simple 6-color assignment by index (not perfect adjacency but good enough)
-                const features = geojson.features;
-                // Sort by longitude for rough adjacency coloring
-                features.sort((a, b) => {
-                    const ca = a.properties.ADMIN || '';
-                    const cb = b.properties.ADMIN || '';
-                    return ca.localeCompare(cb);
-                });
                 L.geoJSON(geojson, {
                     style: (feature) => {
-                        // Hash country name to get color index
                         const name = feature.properties.ADMIN || feature.properties.name || '';
                         let hash = 0;
                         for (let i = 0; i < name.length; i++) {
@@ -155,16 +210,13 @@
                         }
                         const colorIdx = Math.abs(hash) % COUNTRY_PALETTE.length;
                         return {
-                            fillColor: COUNTRY_PALETTE[colorIdx].replace(/[\d.]+\)$/, '0.18)'),
+                            fillColor: COUNTRY_PALETTE[colorIdx],
                             fillOpacity: 1,
                             color: '#999',
                             weight: 0.8,
                             opacity: 0.5,
                         };
                     },
-                    onEachFeature: (feature, layer) => {
-                        // No click events on countries
-                    }
                 }).addTo(map);
             })
             .catch(err => console.warn('Could not load country borders:', err));
@@ -182,14 +234,45 @@
 
         function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
 
+        // UI subtitle translations
+        const SUBTITLES = {
+            ja:'多言語ワールドアトラス', ko:'다국어 세계 지도', zh:'多语言世界地图', yue:'多語言世界地圖',
+            vi:'Bản đồ từ vựng thế giới', th:'แผนที่คำศัพท์โลก', id:'Atlas Kata Dunia',
+            hi:'बहुभाषी विश्व मानचित्र', en:'Multilingual Word Atlas', de:'Mehrsprachiger Weltatlas',
+            fr:'Atlas mondial des mots', it:'Atlante mondiale delle parole',
+            es_eu:'Atlas mundial de palabras', es_mx:'Atlas mundial de palabras',
+            pt_eu:'Atlas mundial de palavras', pt_br:'Atlas mundial de palavras',
+            ru:'Многоязычный атлас слов', uk:'Багатомовний атлас слів',
+            ar:'أطلس الكلمات العالمي', he:'אטלס מילים עולמי', sw:'Atlasi ya Maneno ya Dunia',
+        };
+        const NAV_ORDER = {
+            ja:'語順マップ', ko:'어순 맵', zh:'语序图', yue:'語序圖', vi:'Trật tự từ',
+            th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', en:'Word Order',
+            de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole',
+            es_eu:'Orden de palabras', es_mx:'Orden de palabras',
+            pt_eu:'Ordem das palavras', pt_br:'Ordem das palavras',
+            ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات',
+            he:'סדר מילים', sw:'Mpangilio wa maneno',
+        };
+        const NAV_MAP = {
+            ja:'単語マップ', ko:'단어 맵', zh:'词汇地图', yue:'詞彙地圖', vi:'Bản đồ từ',
+            th:'แผนที่คำ', id:'Peta Kata', hi:'शब्द मानचित्र', en:'Word Map',
+            de:'Wortkarte', fr:'Carte des mots', it:'Mappa parole',
+            es_eu:'Mapa de palabras', es_mx:'Mapa de palabras',
+            pt_eu:'Mapa de palavras', pt_br:'Mapa de palavras',
+            ru:'Карта слов', uk:'Карта слів', ar:'خريطة الكلمات',
+            he:'מפת מילים', sw:'Ramani ya maneno',
+        };
+
         function applyUILang() {
-            document.getElementById('back-link').textContent = wt('back');
+            document.getElementById('ui-subtitle').textContent = SUBTITLES[uiLang] || SUBTITLES.en;
+            document.getElementById('nav-order').textContent = NAV_ORDER[uiLang] || NAV_ORDER.en;
+            document.getElementById('nav-map').textContent = NAV_MAP[uiLang] || NAV_MAP.en;
             document.getElementById('toggle-word').textContent = wt('word');
             document.getElementById('toggle-ipa').textContent = wt('ipa');
             document.getElementById('toggle-name').textContent = wt('name');
             document.getElementById('toggle-native').textContent = wt('native');
             document.getElementById('size-label').textContent = wt('size');
-            // Rebuild word select with current UI lang
             rebuildWordSelect();
         }
 
@@ -222,12 +305,22 @@
         });
 
         // --- Toggle buttons ---
-        let showWord = true, showIpa = true, showName = true;
-        let showNative = true;
+        let showWord = true, showIpa = true, showName = true, showNative = true;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
         const btnNative = document.getElementById('toggle-native');
+
+        function setupToggle(btn, getter, setter) {
+            btn.addEventListener('click', () => {
+                setter(!getter());
+                btn.classList.toggle('active', getter());
+                updateMarkers(currentWord);
+            });
+        }
+        setupToggle(btnWord, () => showWord, v => showWord = v);
+        setupToggle(btnIpa, () => showIpa, v => showIpa = v);
+        setupToggle(btnName, () => showName, v => showName = v);
 
         btnNative.addEventListener('click', () => {
             showNative = !showNative;
@@ -242,36 +335,18 @@
         });
         fontSizeSlider.addEventListener('change', () => { updateHash(); });
 
-        function setupToggle(btn, getter, setter) {
-            btn.addEventListener('click', () => {
-                setter(!getter());
-                btn.classList.toggle('active', getter());
-                updateMarkers(currentWord);
-            });
-        }
-        setupToggle(btnWord, () => showWord, v => showWord = v);
-        setupToggle(btnIpa, () => showIpa, v => showIpa = v);
-        setupToggle(btnName, () => showName, v => showName = v);
-
         // --- Language markers ---
         const markers = [];
         let currentWord = WORD_LIST[0].id;
-
-        // Major languages shown at all zoom levels
         const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa']);
 
         function updateMarkers(wordId) {
             currentWord = wordId;
-            const wordInfo = WORD_LIST.find(w => w.id === wordId);
-            // (word-en label removed)
-
-            // Remove existing markers
             markers.forEach(m => map.removeLayer(m));
             markers.length = 0;
-
             const zoom = map.getZoom();
 
-            // Group languages by rounded coordinates to detect overlaps
+            // Group by coordinates
             const coordGroups = {};
             const visibleLangs = [];
             for (const [code, lang] of Object.entries(LANG_DATA)) {
@@ -289,12 +364,11 @@
                 const entry = lang.words[wordId];
                 const [word, ipa] = entry;
 
-                // Calculate vertical offset for co-located languages
+                // Vertical offset for co-located
                 const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
                 const group = coordGroups[key];
                 let yOffset = 0;
                 if (group.length > 1) {
-                    // Dynamic spacing based on visible text lines and font scale
                     let lineHeight = 0;
                     if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
                     if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
@@ -305,7 +379,6 @@
                     yOffset = (idx - center) * spacing;
                 }
 
-                // Native toggle: ON=native name, OFF=UI language translated name
                 let displayName;
                 if (showNative) {
                     displayName = lang.native;
@@ -313,19 +386,14 @@
                     const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
                     displayName = names[code] || lang.name;
                 }
+
                 let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
                 if (showName) html += `<div class="name">${displayName}</div>`;
                 html += '</div>';
 
-                const icon = L.divIcon({
-                    className: '',
-                    html,
-                    iconSize: [0, 0],
-                    iconAnchor: [0, 0],
-                });
-
+                const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
@@ -334,7 +402,7 @@
             }
         }
 
-        // --- URL hash state ---
+        // --- URL hash ---
         function updateHash() {
             const c = map.getCenter();
             const z = map.getZoom();
@@ -366,12 +434,25 @@
                 applyUILang();
             }
         }
-
         loadHash();
 
-        // Update on zoom/move
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
         map.on('moveend', () => { updateHash(); });
+
+        // Initial render
+        updateMarkers(currentWord);
+
+        // Zoom class
+        function updateZoomClass() {
+            const z = map.getZoom();
+            const c = map.getContainer();
+            c.classList.remove('zoom-far', 'zoom-mid', 'zoom-close');
+            if (z <= 3) c.classList.add('zoom-far');
+            else if (z <= 5) c.classList.add('zoom-mid');
+            else c.classList.add('zoom-close');
+        }
+        map.on('zoomend', updateZoomClass);
+        updateZoomClass();
 
         // --- Language info panel ---
         const infoPanel = document.getElementById('lang-info');
@@ -394,7 +475,6 @@
             if (m.script) html += `<tr><td>${wt('script')}</td><td>${m.script}</td></tr>`;
             html += '</table>';
             if (m.description) html += `<div class="desc">${m.description}</div>`;
-            // Show all 20 words for this language
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
@@ -406,21 +486,6 @@
             infoContent.innerHTML = html;
             infoPanel.classList.add('visible');
         }
-
-        // Initial render
-        updateMarkers(currentWord);
-
-        // Zoom class for font sizing
-        function updateZoomClass() {
-            const z = map.getZoom();
-            const container = map.getContainer();
-            container.classList.remove('zoom-far', 'zoom-mid', 'zoom-close');
-            if (z <= 3) container.classList.add('zoom-far');
-            else if (z <= 5) container.classList.add('zoom-mid');
-            else container.classList.add('zoom-close');
-        }
-        map.on('zoomend', updateZoomClass);
-        updateZoomClass();
 
     })();
     </script>
