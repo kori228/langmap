@@ -183,12 +183,14 @@
         nameLangSelect.addEventListener('change', () => {
             nameLang = nameLangSelect.value;
             updateMarkers(currentWord);
+            updateHash();
         });
 
         const fontSizeSlider = document.getElementById('font-size');
         fontSizeSlider.addEventListener('input', () => {
             document.documentElement.style.setProperty('--label-scale', parseInt(fontSizeSlider.value) / 100);
         });
+        fontSizeSlider.addEventListener('change', () => { updateHash(); });
 
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -279,7 +281,8 @@
         function updateHash() {
             const c = map.getCenter();
             const z = map.getZoom();
-            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}`;
+            const s = fontSizeSlider.value;
+            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nl=${nameLang}&fs=${s}`;
         }
 
         function loadHash() {
@@ -291,6 +294,14 @@
             }
             if (params.z && params.lat && params.lng) {
                 map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z));
+            }
+            if (params.nl && (params.nl === 'native' || params.nl === 'en')) {
+                nameLang = params.nl;
+                nameLangSelect.value = params.nl;
+            }
+            if (params.fs) {
+                fontSizeSlider.value = params.fs;
+                document.documentElement.style.setProperty('--label-scale', parseInt(params.fs) / 100);
             }
         }
 
