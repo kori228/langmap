@@ -235,9 +235,15 @@
                 const group = coordGroups[key];
                 let yOffset = 0;
                 if (group.length > 1) {
+                    // Dynamic spacing based on visible text lines
+                    let lineHeight = 0;
+                    if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
+                    if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
+                    if (showName) lineHeight += (zoom <= 3 ? 9 : zoom <= 5 ? 10 : 11);
+                    const spacing = Math.max(lineHeight + 4, 16);
                     const idx = group.indexOf(code);
                     const center = (group.length - 1) / 2;
-                    yOffset = (idx - center) * 20; // pixels
+                    yOffset = (idx - center) * spacing;
                 }
 
                 const displayName = nameLang === 'en' ? lang.name : lang.native;
