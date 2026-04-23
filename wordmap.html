@@ -212,18 +212,36 @@
 
             const zoom = map.getZoom();
 
+            // Group languages by rounded coordinates to detect overlaps
+            const coordGroups = {};
+            const visibleLangs = [];
             for (const [code, lang] of Object.entries(LANG_DATA)) {
                 if (EXCLUDED_CODES.has(code)) continue;
-                const entry = lang.words[wordId];
-                if (!entry) continue;
+                if (!lang.words[wordId]) continue;
+                if (zoom < 4 && !MAJOR.has(code)) continue;
+                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
+                if (!coordGroups[key]) coordGroups[key] = [];
+                coordGroups[key].push(code);
+                visibleLangs.push(code);
+            }
 
+            for (const code of visibleLangs) {
+                const lang = LANG_DATA[code];
+                const entry = lang.words[wordId];
                 const [word, ipa] = entry;
 
-                // Zoom-dependent visibility
-                if (zoom < 4 && !MAJOR.has(code)) continue;
+                // Calculate vertical offset for co-located languages
+                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
+                const group = coordGroups[key];
+                let yOffset = 0;
+                if (group.length > 1) {
+                    const idx = group.indexOf(code);
+                    const center = (group.length - 1) / 2;
+                    yOffset = (idx - center) * 20; // pixels
+                }
 
                 const displayName = nameLang === 'en' ? lang.name : lang.native;
-                let html = '<div class="lang-label">';
+                let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
                 if (showName) html += `<div class="name">${displayName}</div>`;
