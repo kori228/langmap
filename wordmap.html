@@ -75,24 +75,32 @@
         .zoom-mid .lang-label .word { font-size: calc(13px * var(--label-scale)); }
         .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
         .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
+        .url-watermark {
+            position: absolute; bottom: 8px; right: 8px; z-index: 1000;
+            font-size: 11px; color: rgba(0,0,0,0.35); pointer-events: none;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
     <div class="controls">
-        <a href="index.html" class="back-link">&larr; LangMap</a>
+        <a href="index.html" class="back-link" id="back-link">&larr; LangMap</a>
         <select id="word-select"></select>
         <div class="sep"></div>
         <button class="toggle-btn active" id="toggle-word">Word</button>
         <button class="toggle-btn active" id="toggle-ipa">IPA</button>
         <button class="toggle-btn active" id="toggle-name">Name</button>
         <select id="name-lang" style="font-size:11px;padding:2px 6px;border:1px solid #ccc;border-radius:4px">
-            <option value="native">現地名</option>
+            <option value="native">Native</option>
             <option value="en">English</option>
         </select>
         <div class="sep"></div>
-        <label style="font-size:11px;color:#555">Size</label>
+        <span id="size-label" style="font-size:11px;color:#555">Size</span>
         <input type="range" id="font-size" min="50" max="200" value="100" style="width:80px;vertical-align:middle">
+        <div class="sep"></div>
+        <select id="ui-lang" style="font-size:11px;padding:2px 6px;border:1px solid #ccc;border-radius:4px"></select>
     </div>
+    <div class="url-watermark" id="url-watermark">langmap.heuron.com/wordmap.html</div>
     <div id="lang-info" class="lang-info-panel">
         <button class="close-btn" id="info-close">&times;</button>
         <div id="info-content"></div>
@@ -156,16 +164,55 @@
             })
             .catch(err => console.warn('Could not load country borders:', err));
 
+        // --- UI language ---
+        let uiLang = 'en';
+        const uiLangSelect = document.getElementById('ui-lang');
+        for (const [code, label] of Object.entries(WM_UI_LABELS)) {
+            const opt = document.createElement('option');
+            opt.value = code;
+            opt.textContent = label;
+            uiLangSelect.appendChild(opt);
+        }
+        uiLangSelect.value = 'en';
+
+        function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
+
+        function applyUILang() {
+            document.getElementById('back-link').textContent = wt('back');
+            document.getElementById('toggle-word').textContent = wt('word');
+            document.getElementById('toggle-ipa').textContent = wt('ipa');
+            document.getElementById('toggle-name').textContent = wt('name');
+            document.getElementById('size-label').textContent = wt('size');
+            // Name lang dropdown
+            const nlSel = document.getElementById('name-lang');
+            nlSel.options[0].textContent = wt('native');
+            nlSel.options[1].textContent = wt('english');
+            // Rebuild word select with current UI lang
+            rebuildWordSelect();
+        }
+
+        uiLangSelect.addEventListener('change', () => {
+            uiLang = uiLangSelect.value;
+            applyUILang();
+            updateMarkers(currentWord);
+            updateHash();
+        });
+
         // --- Word selector ---
         const select = document.getElementById('word-select');
-        // (word-en label removed from UI)
 
-        WORD_LIST.forEach(w => {
-            const opt = document.createElement('option');
-            opt.value = w.id;
-            opt.textContent = w.ja + ' / ' + w.en;
-            select.appendChild(opt);
-        });
+        function rebuildWordSelect() {
+            const curVal = select.value;
+            select.innerHTML = '';
+            WORD_LIST.forEach(w => {
+                const opt = document.createElement('option');
+                opt.value = w.id;
+                opt.textContent = (uiLang === 'en' ? '' : w.ja + ' / ') + w.en;
+                select.appendChild(opt);
+            });
+            if (curVal) select.value = curVal;
+        }
+        rebuildWordSelect();
 
         select.addEventListener('change', () => {
             updateMarkers(select.value);
@@ -282,7 +329,7 @@
             const c = map.getCenter();
             const z = map.getZoom();
             const s = fontSizeSlider.value;
-            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nl=${nameLang}&fs=${s}`;
+            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nl=${nameLang}&fs=${s}&ui=${uiLang}`;
         }
 
         function loadHash() {
@@ -302,6 +349,11 @@
             if (params.fs) {
                 fontSizeSlider.value = params.fs;
                 document.documentElement.style.setProperty('--label-scale', parseInt(params.fs) / 100);
+            }
+            if (params.ui && WM_UI[params.ui]) {
+                uiLang = params.ui;
+                uiLangSelect.value = params.ui;
+                applyUILang();
             }
         }
 
@@ -325,11 +377,11 @@
             let html = `<h2>${lang.name}</h2>`;
             html += `<div class="native-name">${lang.native} [${code}]</div>`;
             html += '<table>';
-            if (m.family) html += `<tr><td>Language family</td><td>${m.family}</td></tr>`;
-            if (m.speakers) html += `<tr><td>Speakers</td><td>${m.speakers}</td></tr>`;
-            if (m.countries) html += `<tr><td>Countries</td><td>${m.countries}</td></tr>`;
-            if (m.official) html += `<tr><td>Official in</td><td>${m.official}</td></tr>`;
-            if (m.script) html += `<tr><td>Script</td><td>${m.script}</td></tr>`;
+            if (m.family) html += `<tr><td>${wt('family')}</td><td>${m.family}</td></tr>`;
+            if (m.speakers) html += `<tr><td>${wt('speakers')}</td><td>${m.speakers}</td></tr>`;
+            if (m.countries) html += `<tr><td>${wt('countries')}</td><td>${m.countries}</td></tr>`;
+            if (m.official) html += `<tr><td>${wt('official')}</td><td>${m.official}</td></tr>`;
+            if (m.script) html += `<tr><td>${wt('script')}</td><td>${m.script}</td></tr>`;
             html += '</table>';
             if (m.description) html += `<div class="desc">${m.description}</div>`;
             // Show all 20 words for this language
