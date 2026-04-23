@@ -30,7 +30,7 @@ const WORD_LIST = [
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
   'non','en_ang','enm','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
-  'tlh','jbo','tok','eo','vi_nom'
+  'tlh','jbo','tok','eo','vi_nom','sa','mnc'
 ]);
 
 const LANG_DATA = {
