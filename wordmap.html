@@ -90,10 +90,7 @@
         <button class="toggle-btn active" id="toggle-word">Word</button>
         <button class="toggle-btn active" id="toggle-ipa">IPA</button>
         <button class="toggle-btn active" id="toggle-name">Name</button>
-        <select id="name-lang" style="font-size:11px;padding:2px 6px;border:1px solid #ccc;border-radius:4px">
-            <option value="native">Native</option>
-            <option value="en">English</option>
-        </select>
+        <button class="toggle-btn active" id="toggle-native">Native</button>
         <div class="sep"></div>
         <span id="size-label" style="font-size:11px;color:#555">Size</span>
         <input type="range" id="font-size" min="50" max="200" value="100" style="width:80px;vertical-align:middle">
@@ -109,6 +106,14 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="wordmap_data.js"></script>
+    <script>
+    // Load LANG_NAMES from app.js for translated language names
+    let LANG_NAMES = {};
+    fetch('app.js').then(r => r.text()).then(code => {
+        const m = code.match(/const LANG_NAMES = \{([\s\S]*?)\n\};/);
+        if (m) { try { LANG_NAMES = new Function('return {' + m[1] + '\n};')(); } catch(e) {} }
+    });
+    </script>
     <script>
     (function() {
         'use strict';
@@ -182,11 +187,8 @@
             document.getElementById('toggle-word').textContent = wt('word');
             document.getElementById('toggle-ipa').textContent = wt('ipa');
             document.getElementById('toggle-name').textContent = wt('name');
+            document.getElementById('toggle-native').textContent = wt('native');
             document.getElementById('size-label').textContent = wt('size');
-            // Name lang dropdown
-            const nlSel = document.getElementById('name-lang');
-            nlSel.options[0].textContent = wt('native');
-            nlSel.options[1].textContent = wt('english');
             // Rebuild word select with current UI lang
             rebuildWordSelect();
         }
@@ -221,14 +223,15 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true;
-        let nameLang = 'native'; // 'native' or 'en'
+        let showNative = true;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
-        const nameLangSelect = document.getElementById('name-lang');
+        const btnNative = document.getElementById('toggle-native');
 
-        nameLangSelect.addEventListener('change', () => {
-            nameLang = nameLangSelect.value;
+        btnNative.addEventListener('click', () => {
+            showNative = !showNative;
+            btnNative.classList.toggle('active', showNative);
             updateMarkers(currentWord);
             updateHash();
         });
@@ -302,7 +305,14 @@
                     yOffset = (idx - center) * spacing;
                 }
 
-                const displayName = nameLang === 'en' ? lang.name : lang.native;
+                // Native toggle: ON=native name, OFF=UI language translated name
+                let displayName;
+                if (showNative) {
+                    displayName = lang.native;
+                } else {
+                    const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+                    displayName = names[code] || lang.name;
+                }
                 let html = `<div class="lang-label" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
                 if (showWord) html += `<div class="word">${word}</div>`;
                 if (showIpa) html += `<div class="ipa">/${ipa}/</div>`;
@@ -329,7 +339,7 @@
             const c = map.getCenter();
             const z = map.getZoom();
             const s = fontSizeSlider.value;
-            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nl=${nameLang}&fs=${s}&ui=${uiLang}`;
+            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nat=${showNative?1:0}&fs=${s}&ui=${uiLang}`;
         }
 
         function loadHash() {
@@ -342,9 +352,9 @@
             if (params.z && params.lat && params.lng) {
                 map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z));
             }
-            if (params.nl && (params.nl === 'native' || params.nl === 'en')) {
-                nameLang = params.nl;
-                nameLangSelect.value = params.nl;
+            if (params.nat !== undefined) {
+                showNative = params.nat === '1';
+                btnNative.classList.toggle('active', showNative);
             }
             if (params.fs) {
                 fontSizeSlider.value = params.fs;
