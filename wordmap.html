@@ -75,10 +75,39 @@
             display: flex; align-items: center; gap: 6px;
         }
         .toggle-btn {
-            font-size: 11px; padding: 3px 8px; border: 1px solid #ccc;
-            border-radius: 4px; background: #fff; cursor: pointer; white-space: nowrap;
+            font-size: 11px; padding: 4px 10px; border: 1px solid #d0d0d0;
+            border-radius: 20px; background: #f0f0f0; cursor: pointer; white-space: nowrap;
+            color: #777; font-weight: 500;
+            transition: all 0.25s ease;
+            user-select: none;
         }
-        .toggle-btn.active { background: #e0e7ff; border-color: #7c8cc4; }
+        .toggle-btn:hover { background: #e8e8e8; border-color: #bbb; }
+        .toggle-btn.active {
+            background: #4a6cf7; border-color: #3a5ce5; color: #fff;
+            box-shadow: 0 1px 4px rgba(74,108,247,0.35);
+        }
+        .toggle-btn.active:hover { background: #3a5ce5; }
+
+        /* --- Radio switch (Modern / Historical) --- */
+        .radio-switch {
+            display: inline-flex; border-radius: 20px; overflow: hidden;
+            border: 1px solid #d0d0d0; background: #f0f0f0;
+        }
+        .radio-switch .radio-opt {
+            font-size: 11px; padding: 4px 12px; border: none; background: transparent;
+            color: #777; cursor: pointer; font-weight: 500; white-space: nowrap;
+            transition: all 0.25s ease; position: relative;
+        }
+        .radio-switch .radio-opt:not(:last-child)::after {
+            content: ''; position: absolute; right: 0; top: 20%; height: 60%;
+            border-right: 1px solid #ccc;
+        }
+        .radio-switch .radio-opt.active {
+            background: #4a6cf7; color: #fff;
+            box-shadow: 0 1px 4px rgba(74,108,247,0.35);
+        }
+        .radio-switch .radio-opt.active::after { border-right: none; }
+        .radio-switch .radio-opt:hover:not(.active) { background: #e8e8e8; }
         .ctrl-label { font-size: 11px; color: #555; }
 
         /* --- Language labels on map --- */
@@ -145,22 +174,22 @@
             font-family: monospace;
         }
 
-        /* Push zoom control below header */
-        .leaflet-top.leaflet-right { top: 46px; }
+        /* Hide default Leaflet zoom (we use unified buttons) */
+        .leaflet-control-zoom { display: none !important; }
 
         /* --- 3D Globe --- */
         #globe { width: 100vw; height: 100vh; display: none; background: #0a1628; }
-        .globe-zoom-controls {
-            position: fixed; top: 52px; right: 10px; z-index: 1002;
-            display: flex; flex-direction: column; gap: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;
+        .map-zoom-controls {
+            position: fixed; top: 46px; right: 10px; z-index: 1002;
+            display: flex; flex-direction: column;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden;
         }
-        .globe-zoom-controls button {
-            width: 30px; height: 30px; border: none; background: rgba(255,255,255,0.9);
-            font-size: 18px; font-weight: 700; cursor: pointer; color: #333; line-height: 1;
+        .map-zoom-controls button {
+            width: 32px; height: 32px; border: none; background: rgba(255,255,255,0.92);
+            font-size: 18px; font-weight: 700; cursor: pointer; color: #333; line-height: 32px;
         }
-        .globe-zoom-controls button:hover { background: #fff; }
-        .globe-zoom-controls button + button { border-top: 1px solid #ccc; }
+        .map-zoom-controls button:hover { background: #fff; }
+        .map-zoom-controls button + button { border-top: 1px solid #ddd; }
         #globe canvas { outline: none; }
         .globe-label {
             text-align: center; white-space: nowrap; cursor: pointer; pointer-events: auto;
@@ -192,7 +221,8 @@
             .site-header select { font-size: 11px; padding: 3px 5px; max-width: 130px; }
             .site-header .word-select-wrap { flex: 1; min-width: 0; }
             .site-header .ui-lang-select { font-size: 10px; padding: 2px 4px; }
-            .toggle-btn { font-size: 10px; padding: 2px 6px; }
+            .toggle-btn { font-size: 10px; padding: 3px 7px; }
+            .radio-switch .radio-opt { font-size: 10px; padding: 3px 8px; }
 
             .map-controls {
                 bottom: 12px; left: 6px; padding: 6px 8px;
@@ -207,7 +237,8 @@
             .url-watermark { font-size: 9px; }
 
             .leaflet-top.leaflet-right { top: 40px; }
-            .globe-zoom-controls { top: 44px; }
+            .map-zoom-controls { top: 40px; }
+            #toggle-3d { top: 110px !important; }
         }
 
         @media (max-width: 480px) {
@@ -228,17 +259,14 @@
 <body>
     <!-- Header -->
     <div class="site-header">
-        <a href="index.html" class="logo">LangMap <span class="subtitle" id="ui-subtitle">Multilingual Word Atlas</span></a>
-        <div class="nav-tabs">
-            <a href="index.html" class="nav-tab" id="nav-order">Word Order</a>
-            <a href="wordmap.html" class="nav-tab active" id="nav-map">Word Map</a>
-        </div>
+        <a href="wordmap.html" class="logo">LangMap <span class="subtitle" id="ui-subtitle">Multilingual Word Atlas</span></a>
         <div class="word-select-wrap">
             <select id="word-select"></select>
         </div>
-        <button class="toggle-btn" id="toggle-historical" style="font-size:11px">Historical</button>
-        <button class="toggle-btn" id="toggle-3d" style="font-size:11px">3D</button>
-        <select id="ui-lang" class="ui-lang-select"></select>
+        <div class="radio-switch" id="era-switch">
+            <button class="radio-opt active" id="era-modern" data-val="modern"></button>
+            <button class="radio-opt" id="era-historical" data-val="historical"></button>
+        </div>
     </div>
 
     <!-- Bottom-left controls -->
@@ -253,10 +281,21 @@
             <span class="ctrl-label" id="size-label">Size</span>
             <input type="range" id="font-size" min="50" max="200" value="100" style="width:90px">
         </div>
+        <div class="ctrl-row">
+            <select id="ui-lang" class="ui-lang-select"></select>
+        </div>
     </div>
 
-    <!-- URL watermark -->
-    <div class="url-watermark">langmap.heuron.com/wordmap.html</div>
+    <!-- 3D toggle button (below zoom controls) -->
+    <button class="toggle-btn" id="toggle-3d" style="position:absolute;top:116px;right:10px;z-index:1001;font-size:0;padding:5px 7px;line-height:0;" title="2D / 3D">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20"/></svg>
+    </button>
+
+    <!-- URL watermark & footer link -->
+    <div class="url-watermark">
+        <a href="index.html" id="nav-order" style="color:rgba(0,0,0,0.4);text-decoration:none;pointer-events:auto;">Word Order Map</a>
+        &middot; langmap.heuron.com
+    </div>
 
     <!-- Language info panel -->
     <div id="lang-info" class="lang-info-panel">
@@ -266,9 +305,9 @@
 
     <div id="map"></div>
     <div id="globe"></div>
-    <div class="globe-zoom-controls" id="globe-zoom" style="display:none">
-        <button id="globe-zoom-in">+</button>
-        <button id="globe-zoom-out">&minus;</button>
+    <div class="map-zoom-controls" id="map-zoom">
+        <button id="map-zoom-in">+</button>
+        <button id="map-zoom-out">&minus;</button>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -300,8 +339,7 @@
             zoomControl: false, // we'll position it ourselves
         });
 
-        // Zoom control at top-right (below header)
-        L.control.zoom({ position: 'topright' }).addTo(map);
+        // No Leaflet zoom control — we use our own unified buttons
 
         // Flat tiles (CartoDB Positron, no labels)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
@@ -398,12 +436,12 @@
         function applyUILang() {
             document.getElementById('ui-subtitle').textContent = SUBTITLES[uiLang] || SUBTITLES.en;
             document.getElementById('nav-order').textContent = NAV_ORDER[uiLang] || NAV_ORDER.en;
-            document.getElementById('nav-map').textContent = NAV_MAP[uiLang] || NAV_MAP.en;
             document.getElementById('toggle-word').textContent = wt('word');
             document.getElementById('toggle-ipa').textContent = wt('ipa');
             document.getElementById('toggle-name').textContent = wt('name');
             document.getElementById('toggle-native').textContent = wt('native');
-            document.getElementById('toggle-historical').textContent = wt('historical') || 'Historical';
+            document.getElementById('era-modern').textContent = wt('modern') || 'Modern';
+            document.getElementById('era-historical').textContent = wt('historical') || 'Historical';
             document.getElementById('size-label').textContent = wt('size');
             rebuildWordSelect();
         }
@@ -450,14 +488,18 @@
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
         const btnNative = document.getElementById('toggle-native');
-        const btnHistorical = document.getElementById('toggle-historical');
+        const eraModern = document.getElementById('era-modern');
+        const eraHistorical = document.getElementById('era-historical');
 
-        btnHistorical.addEventListener('click', () => {
-            showHistorical = !showHistorical;
-            btnHistorical.classList.toggle('active', showHistorical);
+        function setEra(historical) {
+            showHistorical = historical;
+            eraModern.classList.toggle('active', !historical);
+            eraHistorical.classList.toggle('active', historical);
             updateMarkers(currentWord);
             updateHash();
-        });
+        }
+        eraModern.addEventListener('click', () => setEra(false));
+        eraHistorical.addEventListener('click', () => setEra(true));
 
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -564,18 +606,24 @@
             }
         }
 
-        // Globe zoom buttons
-        document.getElementById('globe-zoom-in').addEventListener('click', () => {
-            if (!globe) return;
-            const pov = globe.pointOfView();
-            globe.pointOfView({ altitude: Math.max(0.1, pov.altitude * 0.6) }, 300);
-            setTimeout(updateHash, 350);
+        // Unified zoom buttons (work for both 2D and 3D)
+        document.getElementById('map-zoom-in').addEventListener('click', () => {
+            if (is3D && globe) {
+                const pov = globe.pointOfView();
+                globe.pointOfView({ altitude: Math.max(0.1, pov.altitude * 0.6) }, 300);
+                setTimeout(updateHash, 350);
+            } else {
+                map.zoomIn();
+            }
         });
-        document.getElementById('globe-zoom-out').addEventListener('click', () => {
-            if (!globe) return;
-            const pov = globe.pointOfView();
-            globe.pointOfView({ altitude: Math.min(6, pov.altitude / 0.6) }, 300);
-            setTimeout(updateHash, 350);
+        document.getElementById('map-zoom-out').addEventListener('click', () => {
+            if (is3D && globe) {
+                const pov = globe.pointOfView();
+                globe.pointOfView({ altitude: Math.min(6, pov.altitude / 0.6) }, 300);
+                setTimeout(updateHash, 350);
+            } else {
+                map.zoomOut();
+            }
         });
 
         function zoomToAltitude(z) {
@@ -584,20 +632,17 @@
         }
 
         const btn3D = document.getElementById('toggle-3d');
-        const globeZoomEl = document.getElementById('globe-zoom');
         btn3D.addEventListener('click', () => {
             is3D = !is3D;
             btn3D.classList.toggle('active', is3D);
             if (is3D) {
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
-                globeZoomEl.style.display = 'flex';
                 initGlobe();
                 const c = map.getCenter();
                 globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: zoomToAltitude(map.getZoom()) });
             } else {
                 globeEl.style.display = 'none';
-                globeZoomEl.style.display = 'none';
                 mapEl.style.display = 'block';
                 map.invalidateSize();
             }
@@ -804,7 +849,8 @@
             }
             if (params.hist !== undefined) {
                 showHistorical = params.hist === '1';
-                btnHistorical.classList.toggle('active', showHistorical);
+                eraModern.classList.toggle('active', !showHistorical);
+                eraHistorical.classList.toggle('active', showHistorical);
             }
             if (params.fs) {
                 fontSizeSlider.value = params.fs;
@@ -820,7 +866,6 @@
                 btn3D.classList.add('active');
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
-                globeZoomEl.style.display = 'flex';
                 initGlobe();
                 if (params.lat && params.lng) {
                     const alt = params.alt ? parseFloat(params.alt) : zoomToAltitude(parseInt(params.z) || 3);
