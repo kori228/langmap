@@ -63,9 +63,27 @@
             position: absolute; top: 52px; right: 10px; z-index: 1001;
             display: flex; flex-direction: column; gap: 6px; align-items: center;
         }
-        .right-controls .toggle-btn {
+        .right-controls .toggle-btn:not(.toggle-3d-btn) {
             min-width: 56px; max-width: 56px; text-align: center; font-size: 8px;
             overflow: hidden; text-overflow: ellipsis;
+            display: flex; flex-direction: column; align-items: center;
+            line-height: 1.2; padding: 3px 6px;
+        }
+        .right-controls .toggle-btn .onoff {
+            font-size: 7px; opacity: 0.6; margin-top: 1px;
+        }
+        .radio-switch-v {
+            flex-direction: column; border-radius: 8px; max-width: 56px;
+        }
+        .radio-switch-v .radio-opt {
+            font-size: 8px; padding: 3px 6px; text-align: center;
+            overflow: hidden; text-overflow: ellipsis;
+        }
+        .radio-switch-v .radio-opt:not(:last-child)::after {
+            content: none;
+        }
+        .radio-switch-v .radio-opt + .radio-opt {
+            border-top: 1px solid #ccc;
         }
         .size-slider-wrap {
             display: flex; justify-content: center;
@@ -75,7 +93,7 @@
             direction: rtl;
             width: 28px; height: 80px;
             cursor: pointer;
-            accent-color: #4a6cf7;
+            accent-color: #333;
         }
         .toggle-btn {
             font-size: 11px; padding: 4px 10px; border: 1px solid #d0d0d0;
@@ -86,10 +104,21 @@
         }
         .toggle-btn:hover { background: #e8e8e8; border-color: #bbb; }
         .toggle-btn.active {
-            background: #4a6cf7; border-color: #3a5ce5; color: #fff;
+            background: #333; border-color: #222; color: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+        }
+        .toggle-btn.active:hover { background: #444; }
+        .toggle-3d-btn {
+            width: 40px; height: 40px; min-width: 40px; max-width: 40px;
+            border-radius: 50%; font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            padding: 0;
+        }
+        .toggle-3d-btn.active {
+            background: #4a6cf7; border-color: #3a5ce5;
             box-shadow: 0 1px 4px rgba(74,108,247,0.35);
         }
-        .toggle-btn.active:hover { background: #3a5ce5; }
+        .toggle-3d-btn.active:hover { background: #3a5ce5; }
 
         /* --- Radio switch (Modern / Historical) --- */
         .radio-switch {
@@ -121,6 +150,7 @@
             text-align: center; white-space: nowrap; cursor: pointer;
             pointer-events: auto;
             text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 6px rgba(255,255,255,0.5);
+            width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
         .lang-label .word {
@@ -175,8 +205,8 @@
         .url-watermark {
             position: absolute; bottom: 28px; right: 8px; z-index: 1000;
             font-size: 11px; color: rgba(0,0,0,0.5);
-            font-family: monospace;
             background: rgba(255,255,255,0.75); padding: 2px 6px; border-radius: 4px;
+            display: flex; align-items: center; gap: 3px;
         }
         .url-watermark a { pointer-events: auto; }
 
@@ -278,21 +308,24 @@
             <button id="map-zoom-in">+</button>
             <button id="map-zoom-out">&minus;</button>
         </div>
-        <button class="toggle-btn" id="toggle-3d" style="font-size:0;padding:5px 7px;line-height:0;" title="2D / 3D">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20"/></svg>
-        </button>
-        <button class="toggle-btn active" id="toggle-word">Word</button>
-        <button class="toggle-btn active" id="toggle-ipa">IPA</button>
-        <button class="toggle-btn active" id="toggle-name">Name</button>
-        <button class="toggle-btn" id="toggle-native">Native</button>
-        <div class="size-slider-wrap">
+        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D">2D</button>
+        <div style="height:8px"></div>
+        <button class="toggle-btn active" id="toggle-word"><span class="label">Word</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-ipa"><span class="label">IPA</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-name"><span class="label">Name</span><span class="onoff">ON</span></button>
+        <div class="radio-switch radio-switch-v" id="name-switch">
+            <button class="radio-opt" id="name-native"></button>
+            <button class="radio-opt active" id="name-translated"></button>
+        </div>
+        <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
+            <span class="ctrl-label" id="size-label" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</span>
             <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider">
         </div>
     </div>
 
     <!-- Credit watermark -->
     <div class="url-watermark">
-        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:2px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
     </div>
 
     <!-- Language info panel -->
@@ -438,15 +471,19 @@
             }
             setNavText(document.getElementById('nav-order-label'), NAV_ORDER[uiLang] || NAV_ORDER.en);
             setNavText(document.getElementById('navWordMap'), NAV_MAP[uiLang] || NAV_MAP.en);
-            ['toggle-word','toggle-ipa','toggle-name','toggle-native'].forEach(id => {
+            const sizeEl = document.getElementById('size-label');
+            if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
+            ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
                 const key = id.replace('toggle-','');
                 const el = document.getElementById(id);
                 const text = wt(key);
-                el.textContent = text;
+                const lbl = el.querySelector('.label');
+                if (lbl) lbl.textContent = text;
                 el.title = text;
             });
             document.getElementById('era-modern').textContent = wt('modern') || 'Modern';
             document.getElementById('era-historical').textContent = wt('historical') || 'Historical';
+            if (typeof updateNameSwitch === 'function') updateNameSwitch();
             rebuildWordSelect();
         }
 
@@ -491,7 +528,8 @@
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
-        const btnNative = document.getElementById('toggle-native');
+        const nameNative = document.getElementById('name-native');
+        const nameTranslated = document.getElementById('name-translated');
         const eraModern = document.getElementById('era-modern');
         const eraHistorical = document.getElementById('era-historical');
 
@@ -505,10 +543,15 @@
         eraModern.addEventListener('click', () => setEra(false));
         eraHistorical.addEventListener('click', () => setEra(true));
 
+        function updateOnOff(btn, on) {
+            const oo = btn.querySelector('.onoff');
+            if (oo) oo.textContent = on ? 'ON' : 'OFF';
+        }
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
                 setter(!getter());
                 btn.classList.toggle('active', getter());
+                updateOnOff(btn, getter());
                 updateMarkers(currentWord);
             });
         }
@@ -516,12 +559,28 @@
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
 
-        btnNative.addEventListener('click', () => {
-            showNative = !showNative;
-            btnNative.classList.toggle('active', showNative);
+        function updateNameSwitch() {
+            nameNative.classList.toggle('active', showNative);
+            nameTranslated.classList.toggle('active', !showNative);
+            nameNative.textContent = wt('native') || 'Native';
+            const uiName = WM_UI_LABELS[uiLang] || 'English';
+            nameTranslated.textContent = uiName;
+        }
+        nameNative.addEventListener('click', () => {
+            if (showNative) return;
+            showNative = true;
+            updateNameSwitch();
             updateMarkers(currentWord);
             updateHash();
         });
+        nameTranslated.addEventListener('click', () => {
+            if (!showNative) return;
+            showNative = false;
+            updateNameSwitch();
+            updateMarkers(currentWord);
+            updateHash();
+        });
+        updateNameSwitch();
 
         const fontSizeSlider = document.getElementById('font-size');
         fontSizeSlider.addEventListener('input', () => {
@@ -639,6 +698,7 @@
         btn3D.addEventListener('click', () => {
             is3D = !is3D;
             btn3D.classList.toggle('active', is3D);
+            btn3D.textContent = is3D ? '3D' : '2D';
             if (is3D) {
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
@@ -849,7 +909,7 @@
             }
             if (params.nat !== undefined) {
                 showNative = params.nat === '1';
-                btnNative.classList.toggle('active', showNative);
+                updateNameSwitch();
             }
             if (params.hist !== undefined) {
                 showHistorical = params.hist === '1';
@@ -868,6 +928,7 @@
             if (params.g3d === '1') {
                 is3D = true;
                 btn3D.classList.add('active');
+                btn3D.textContent = '3D';
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
                 initGlobe();
