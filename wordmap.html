@@ -135,6 +135,39 @@
 
         /* Push zoom control below header */
         .leaflet-top.leaflet-right { top: 46px; }
+
+        /* --- 3D Globe --- */
+        #globe { width: 100vw; height: 100vh; display: none; background: #0a1628; }
+        .globe-zoom-controls {
+            position: fixed; top: 52px; right: 10px; z-index: 1002;
+            display: flex; flex-direction: column; gap: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;
+        }
+        .globe-zoom-controls button {
+            width: 30px; height: 30px; border: none; background: rgba(255,255,255,0.9);
+            font-size: 18px; font-weight: 700; cursor: pointer; color: #333; line-height: 1;
+        }
+        .globe-zoom-controls button:hover { background: #fff; }
+        .globe-zoom-controls button + button { border-top: 1px solid #ccc; }
+        #globe canvas { outline: none; }
+        .globe-label {
+            text-align: center; white-space: nowrap; cursor: pointer; pointer-events: auto;
+            text-shadow: 0 0 4px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.8);
+        }
+        .globe-label:hover { background: rgba(255,255,255,0.15); border-radius: 4px; padding: 1px 4px; }
+        .globe-label .word {
+            font-size: calc(13px * var(--label-scale)); font-weight: 700; color: #fff; line-height: 1.2;
+        }
+        .globe-label .ipa {
+            font-size: calc(9px * var(--label-scale)); color: #aab; font-style: italic; line-height: 1.2;
+        }
+        .globe-label .name {
+            font-size: calc(8px * var(--label-scale)); color: #889; line-height: 1.3;
+        }
+        .globe-label.vertical .word {
+            writing-mode: vertical-lr; text-orientation: mixed;
+            display: inline-block; line-height: 1.4; min-height: 2em;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +182,7 @@
             <select id="word-select"></select>
         </div>
         <button class="toggle-btn" id="toggle-historical" style="font-size:11px">Historical</button>
+        <button class="toggle-btn" id="toggle-3d" style="font-size:11px">3D</button>
         <select id="ui-lang" class="ui-lang-select"></select>
     </div>
 
@@ -176,8 +210,14 @@
     </div>
 
     <div id="map"></div>
+    <div id="globe"></div>
+    <div class="globe-zoom-controls" id="globe-zoom" style="display:none">
+        <button id="globe-zoom-in">+</button>
+        <button id="globe-zoom-out">&minus;</button>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
@@ -318,6 +358,11 @@
             applyUILang();
             updateMarkers(currentWord);
             updateHash();
+            // Refresh open modal
+            const panel = document.getElementById('lang-info');
+            if (panel.classList.contains('visible') && panel.dataset.code) {
+                showLangInfo(panel.dataset.code);
+            }
         });
 
         // --- Word selector ---
@@ -329,7 +374,9 @@
             WORD_LIST.forEach(w => {
                 const opt = document.createElement('option');
                 opt.value = w.id;
-                opt.textContent = (uiLang === 'en' ? '' : w.ja + ' / ') + w.en;
+                const wKey = uiLang === 'id' ? 'ind' : uiLang;
+                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
+                opt.textContent = (uiLang === 'en' ? w.en : localWord + ' / ' + w.en);
                 select.appendChild(opt);
             });
             if (curVal) select.value = curVal;
@@ -381,6 +428,128 @@
         });
         fontSizeSlider.addEventListener('change', () => { updateHash(); });
 
+        // --- 3D Globe setup ---
+        let is3D = false;
+        let _labelClickedAt = 0;
+        const globeEl = document.getElementById('globe');
+        const mapEl = document.getElementById('map');
+        let globe = null;
+
+        function initGlobe() {
+            if (globe) return;
+            globe = Globe()(globeEl)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+                .showAtmosphere(true)
+                .atmosphereColor('#4488ff')
+                .atmosphereAltitude(0.2)
+                .htmlElementsData([])
+                .htmlElement(d => d.el)
+                .htmlLat(d => d.lat)
+                .htmlLng(d => d.lng)
+                .htmlAltitude(0.01)
+                .onGlobeClick(() => {
+                    if (_labelClickedAt && Date.now() - _labelClickedAt < 500) return;
+                    document.getElementById('lang-info').classList.remove('visible');
+                });
+
+            // Double-click to zoom in
+            globeEl.addEventListener('dblclick', (e) => {
+                e.preventDefault();
+                const pov = globe.pointOfView();
+                globe.pointOfView({ altitude: Math.max(0.1, pov.altitude * 0.5) }, 500);
+                setTimeout(updateHash, 550);
+            });
+
+            // Event delegation for globe labels
+            globeEl.addEventListener('pointerdown', (e) => {
+                if (e.target.closest('.globe-label')) {
+                    _labelClickedAt = Date.now();
+                }
+            });
+            globeEl.addEventListener('click', (e) => {
+                const label = e.target.closest('.globe-label');
+                if (label && label.dataset.code) {
+                    e.stopPropagation();
+                    _labelClickedAt = Date.now();
+                    const panel = document.getElementById('lang-info');
+                    // Toggle: if same language is already showing, close it
+                    if (panel.classList.contains('visible') && panel.dataset.code === label.dataset.code) {
+                        panel.classList.remove('visible');
+                        panel.dataset.code = '';
+                    } else {
+                        showLangInfo(label.dataset.code);
+                        panel.dataset.code = label.dataset.code;
+                    }
+                }
+            });
+
+            // Sync globe size
+            function resizeGlobe() {
+                globe.width(window.innerWidth);
+                globe.height(window.innerHeight);
+            }
+            window.addEventListener('resize', resizeGlobe);
+            resizeGlobe();
+
+            // Set initial POV from 2D map state
+            const c = map.getCenter();
+            globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: zoomToAltitude(map.getZoom()) });
+
+            // Update hash when globe is rotated/zoomed
+            let hashTimer = null;
+            const scene = globe.scene();
+            const controls = globe.controls();
+            if (controls) {
+                controls.addEventListener('end', () => {
+                    clearTimeout(hashTimer);
+                    hashTimer = setTimeout(updateHash, 300);
+                });
+            }
+        }
+
+        // Globe zoom buttons
+        document.getElementById('globe-zoom-in').addEventListener('click', () => {
+            if (!globe) return;
+            const pov = globe.pointOfView();
+            globe.pointOfView({ altitude: Math.max(0.1, pov.altitude * 0.6) }, 300);
+            setTimeout(updateHash, 350);
+        });
+        document.getElementById('globe-zoom-out').addEventListener('click', () => {
+            if (!globe) return;
+            const pov = globe.pointOfView();
+            globe.pointOfView({ altitude: Math.min(6, pov.altitude / 0.6) }, 300);
+            setTimeout(updateHash, 350);
+        });
+
+        function zoomToAltitude(z) {
+            // Map Leaflet zoom (2-10) to globe altitude (4.0-0.2)
+            return Math.max(0.2, 4.0 * Math.pow(0.55, z - 2));
+        }
+
+        const btn3D = document.getElementById('toggle-3d');
+        const globeZoomEl = document.getElementById('globe-zoom');
+        btn3D.addEventListener('click', () => {
+            is3D = !is3D;
+            btn3D.classList.toggle('active', is3D);
+            if (is3D) {
+                mapEl.style.display = 'none';
+                globeEl.style.display = 'block';
+                globeZoomEl.style.display = 'flex';
+                initGlobe();
+                const c = map.getCenter();
+                globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: zoomToAltitude(map.getZoom()) });
+            } else {
+                globeEl.style.display = 'none';
+                globeZoomEl.style.display = 'none';
+                mapEl.style.display = 'block';
+                map.invalidateSize();
+            }
+            updateMarkers(currentWord);
+            updateHash();
+        });
+
         // --- Language markers ---
         const markers = [];
         let currentWord = WORD_LIST[0].id;
@@ -396,19 +565,12 @@
             ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
         };
 
-        function updateMarkers(wordId) {
-            currentWord = wordId;
-            markers.forEach(m => map.removeLayer(m));
-            markers.length = 0;
-            const zoom = map.getZoom();
+        const VERTICAL_LANGS = new Set(['mnc', 'mn_cn']);
 
-            // Determine which languages to show
-            const coordGroups = {};
+        function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
             const descendantCodes = new Set();
-
             if (showHistorical) {
-                // Historical mode: show historical langs + their modern descendants only
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
                     if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId]) {
                         visibleLangs.push(hist);
@@ -417,11 +579,8 @@
                         }
                     }
                 }
-                for (const code of descendantCodes) {
-                    visibleLangs.push(code);
-                }
+                for (const code of descendantCodes) visibleLangs.push(code);
             } else {
-                // Normal mode: current languages only
                 for (const [code, lang] of Object.entries(LANG_DATA)) {
                     if (EXCLUDED_CODES.has(code)) continue;
                     if (!lang.words[wordId]) continue;
@@ -429,8 +588,41 @@
                     visibleLangs.push(code);
                 }
             }
+            return { visibleLangs, descendantCodes };
+        }
+
+        function buildLabelHtml(code, word, ipa, displayName, descColor, cssClass) {
+            const isVertical = VERTICAL_LANGS.has(code);
+            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}">`;
+            if (showWord) html += `<div class="word" ${descColor ? `style="color:${descColor}"` : ''}>${word}</div>`;
+            if (showIpa) html += `<div class="ipa" ${descColor ? `style="color:${descColor}"` : ''}>/${ipa}/</div>`;
+            if (showName) html += `<div class="name" ${descColor ? `style="color:${descColor}"` : ''}>${displayName}</div>`;
+            html += '</div>';
+            return html;
+        }
+
+        function getDisplayName(code, lang) {
+            if (showNative) return lang.native;
+            const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+            return names[code] || lang.name;
+        }
+
+        function updateMarkers(wordId) {
+            currentWord = wordId;
+
+            if (is3D) {
+                updateGlobeLabels(wordId);
+                return;
+            }
+
+            markers.forEach(m => map.removeLayer(m));
+            markers.length = 0;
+            const zoom = map.getZoom();
+
+            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
 
             // Group by coordinates
+            const coordGroups = {};
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
                 const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
@@ -443,7 +635,6 @@
                 const entry = lang.words[wordId];
                 const [word, ipa] = entry;
 
-                // Vertical offset for co-located
                 const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
                 const group = coordGroups[key];
                 let yOffset = 0;
@@ -458,28 +649,15 @@
                     yOffset = (idx - center) * spacing;
                 }
 
-                let displayName;
-                if (showNative) {
-                    displayName = lang.native;
-                } else {
-                    const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
-                    displayName = names[code] || lang.name;
-                }
-
-                // In historical mode, style modern descendants differently
-                const isModernInHistMode = showHistorical && !EXCLUDED_CODES.has(code) && !HIST_DESCENDANT.hasOwnProperty(code);
-                const isDescendant = showHistorical && descendantCodes && descendantCodes.has(code);
+                const displayName = getDisplayName(code, lang);
+                const isDescendant = showHistorical && descendantCodes.has(code);
                 const descColor = isDescendant ? '#c0392b' : '';
 
-                const VERTICAL_LANGS = new Set(['mnc', 'mn_cn']);
-                const isVertical = VERTICAL_LANGS.has(code);
-                let html = `<div class="lang-label${isVertical ? ' vertical' : ''}" style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`;
-                if (showWord) html += `<div class="word" ${descColor ? `style="color:${descColor}"` : ''}>${word}</div>`;
-                if (showIpa) html += `<div class="ipa" ${descColor ? `style="color:${descColor}"` : ''}>/${ipa}/</div>`;
-                if (showName) html += `<div class="name" ${descColor ? `style="color:${descColor}"` : ''}>${displayName}</div>`;
-                html += '</div>';
+                const html = buildLabelHtml(code, word, ipa, displayName, descColor, 'lang-label');
+                const wrappedHtml = `<div style="transform:translate(-50%,calc(-50% + ${yOffset}px))">${html.slice(html.indexOf('>') + 1)}`; // re-wrap with offset
+                const labelHtml = html.replace('>', ` style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`);
 
-                const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
+                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
@@ -488,12 +666,71 @@
             }
         }
 
+        function updateGlobeLabels(wordId) {
+            if (!globe) return;
+            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+
+            // Group by coordinates (same as 2D)
+            const coordGroups = {};
+            for (const code of visibleLangs) {
+                const lang = LANG_DATA[code];
+                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
+                if (!coordGroups[key]) coordGroups[key] = [];
+                coordGroups[key].push(code);
+            }
+
+            const elements = [];
+            for (const code of visibleLangs) {
+                const lang = LANG_DATA[code];
+                const entry = lang.words[wordId];
+                if (!entry) continue;
+                const [word, ipa] = entry;
+                const displayName = getDisplayName(code, lang);
+                const isDescendant = showHistorical && descendantCodes.has(code);
+                const descColor = isDescendant ? '#ff6b6b' : '';
+
+                // Offset co-located labels by shifting latitude
+                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
+                const group = coordGroups[key];
+                let latOffset = 0;
+                if (group.length > 1) {
+                    const idx = group.indexOf(code);
+                    const center = (group.length - 1) / 2;
+                    // Wider spacing: scale by how many lines are visible
+                    let lines = 0;
+                    if (showWord) lines++;
+                    if (showIpa) lines++;
+                    if (showName) lines++;
+                    latOffset = (idx - center) * (0.4 + lines * 0.3);
+                }
+
+                const el = document.createElement('div');
+                el.innerHTML = buildLabelHtml(code, word, ipa, displayName, descColor, 'globe-label');
+                el.firstChild.dataset.code = code;
+
+                elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
+            }
+            globe.htmlElementsData(elements);
+        }
+
         // --- URL hash ---
         function updateHash() {
-            const c = map.getCenter();
-            const z = map.getZoom();
+            let lat, lng, z;
+            if (is3D && globe) {
+                const pov = globe.pointOfView();
+                lat = pov.lat; lng = pov.lng;
+                // Convert altitude back to approximate zoom
+                z = Math.round(2 + Math.log(4.0 / Math.max(0.2, pov.altitude)) / Math.log(1 / 0.55));
+            } else {
+                const c = map.getCenter();
+                lat = c.lat; lng = c.lng;
+                z = map.getZoom();
+            }
             const s = fontSizeSlider.value;
-            location.hash = `w=${currentWord}&z=${z}&lat=${c.lat.toFixed(2)}&lng=${c.lng.toFixed(2)}&nat=${showNative?1:0}&hist=${showHistorical?1:0}&fs=${s}&ui=${uiLang}`;
+            const alt = (is3D && globe) ? globe.pointOfView().altitude.toFixed(2) : '';
+            let hash = `w=${currentWord}&z=${z}&lat=${lat.toFixed(2)}&lng=${lng.toFixed(2)}&nat=${showNative?1:0}&hist=${showHistorical?1:0}&fs=${s}&ui=${uiLang}&g3d=${is3D?1:0}`;
+            if (alt) hash += `&alt=${alt}`;
+            location.hash = hash;
         }
 
         function loadHash() {
@@ -522,6 +759,18 @@
                 uiLang = params.ui;
                 uiLangSelect.value = params.ui;
                 applyUILang();
+            }
+            if (params.g3d === '1') {
+                is3D = true;
+                btn3D.classList.add('active');
+                mapEl.style.display = 'none';
+                globeEl.style.display = 'block';
+                globeZoomEl.style.display = 'flex';
+                initGlobe();
+                if (params.lat && params.lng) {
+                    const alt = params.alt ? parseFloat(params.alt) : zoomToAltitude(parseInt(params.z) || 3);
+                    globe.pointOfView({ lat: parseFloat(params.lat), lng: parseFloat(params.lng), altitude: alt });
+                }
             }
         }
         loadHash();
@@ -555,18 +804,28 @@
             infoPanel.classList.remove('visible');
         });
 
+        function translateMeta(val) {
+            if (!val || uiLang === 'en') return val;
+            const dict = (typeof META_I18N !== 'undefined') ? META_I18N[uiLang] : null;
+            if (!dict) return val;
+            return dict[val] || val;
+        }
+
         function showLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
             const m = lang.meta || {};
-            let html = `<h2>${lang.name}</h2>`;
+            // Use translated language name
+            const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+            const displayName = names[code] || lang.name;
+            let html = `<h2>${displayName}</h2>`;
             html += `<div class="native-name">${lang.native} [${code}]</div>`;
             html += '<table>';
-            if (m.family) html += `<tr><td>${wt('family')}</td><td>${m.family}</td></tr>`;
+            if (m.family) html += `<tr><td>${wt('family')}</td><td>${translateMeta(m.family)}</td></tr>`;
             if (m.speakers) html += `<tr><td>${wt('speakers')}</td><td>${m.speakers}</td></tr>`;
-            if (m.countries) html += `<tr><td>${wt('countries')}</td><td>${m.countries}</td></tr>`;
-            if (m.official) html += `<tr><td>${wt('official')}</td><td>${m.official}</td></tr>`;
-            if (m.script) html += `<tr><td>${wt('script')}</td><td>${m.script}</td></tr>`;
+            if (m.countries) html += `<tr><td>${wt('countries')}</td><td>${translateMeta(m.countries)}</td></tr>`;
+            if (m.official) html += `<tr><td>${wt('official')}</td><td>${translateMeta(m.official)}</td></tr>`;
+            if (m.script) html += `<tr><td>${wt('script')}</td><td>${translateMeta(m.script)}</td></tr>`;
             html += '</table>';
             if (m.description) {
                 const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
@@ -576,7 +835,10 @@
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
-                    html += `<tr><td>${w.en}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                    const wKey = uiLang === 'id' ? 'ind' : uiLang;
+                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
+                    const wLabel = (uiLang === 'en' ? w.en : localWord);
+                    html += `<tr><td>${wLabel}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
                 }
             }
             html += '</table>';
