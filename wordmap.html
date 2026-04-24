@@ -2,8 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LangMap — Word Map: 226 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 226 languages with IPA pronunciations. 2D map and 3D globe views.">
+    <meta property="og:title" content="LangMap — Word Map">
+    <meta property="og:description" content="Explore 20 words in 226 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
+    <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
+    <meta property="og:site_name" content="LangMap">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LangMap — Word Map">
+    <meta name="twitter:description" content="Explore 20 words in 226 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
+    <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -167,6 +179,49 @@
         .globe-label.vertical .word {
             writing-mode: vertical-lr; text-orientation: mixed;
             display: inline-block; line-height: 1.4; min-height: 2em;
+        }
+
+        /* --- Mobile responsive --- */
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 4px 8px; gap: 6px; flex-wrap: wrap;
+            }
+            .site-header .logo { font-size: 16px; }
+            .site-header .subtitle { display: none; }
+            .site-header .nav-tab { font-size: 10px; padding: 3px 8px; }
+            .site-header select { font-size: 11px; padding: 3px 5px; max-width: 130px; }
+            .site-header .word-select-wrap { flex: 1; min-width: 0; }
+            .site-header .ui-lang-select { font-size: 10px; padding: 2px 4px; }
+            .toggle-btn { font-size: 10px; padding: 2px 6px; }
+
+            .map-controls {
+                bottom: 12px; left: 6px; padding: 6px 8px;
+            }
+
+            .lang-info-panel {
+                top: auto; bottom: 0; right: 0; left: 0;
+                width: 100%; max-width: 100%; max-height: 50vh;
+                border-radius: 12px 12px 0 0;
+            }
+
+            .url-watermark { font-size: 9px; }
+
+            .leaflet-top.leaflet-right { top: 40px; }
+            .globe-zoom-controls { top: 44px; }
+        }
+
+        @media (max-width: 480px) {
+            .site-header {
+                padding: 3px 6px; gap: 4px;
+            }
+            .site-header .logo { font-size: 14px; }
+            .site-header .nav-tabs { gap: 1px; }
+            .site-header .nav-tab { font-size: 9px; padding: 2px 6px; }
+            .site-header select { font-size: 10px; max-width: 100px; }
+
+            .lang-info-panel { max-height: 60vh; padding: 12px 14px; }
+            .lang-info-panel h2 { font-size: 16px; }
+            .lang-info-panel td:first-child { width: 70px; font-size: 11px; }
         }
     </style>
 </head>
@@ -643,7 +698,7 @@
                     if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
                     if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
                     if (showName) lineHeight += (zoom <= 3 ? 9 : zoom <= 5 ? 10 : 11);
-                    const spacing = Math.max(lineHeight + 4, 16);
+                    const spacing = Math.max(lineHeight + 10, 20);
                     const idx = group.indexOf(code);
                     const center = (group.length - 1) / 2;
                     yOffset = (idx - center) * spacing;
