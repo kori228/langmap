@@ -428,7 +428,8 @@
         };
 
         function applyUILang() {
-            document.getElementById('ui-subtitle').textContent = SUBTITLES[uiLang] || SUBTITLES.en;
+            const subtitleEl = document.getElementById('ui-subtitle');
+            if (subtitleEl) subtitleEl.textContent = SUBTITLES[uiLang] || SUBTITLES.en;
             function setNavText(el, text) {
                 if (!el) return;
                 const last = el.lastChild;
