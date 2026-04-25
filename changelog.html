@@ -57,6 +57,30 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-04-21 – 2026-04-24</div>
+            <ul>
+                <li>New: <strong>Word Map</strong> (<a href="wordmap.html">wordmap.html</a>) — an interactive world map showing 20 key words (water, fire, sun, mother, hello, etc.) in 226 languages with IPA pronunciations.</li>
+                <li>Zoomable/pannable 2D map using Leaflet with CartoDB Positron tiles and colored country fills.</li>
+                <li><strong>3D Globe mode</strong> — toggle between 2D map and an interactive 3D globe (globe.gl) with satellite imagery, atmosphere effects, and drag rotation.</li>
+                <li>Language info panel: click any label to see language family, speakers, countries, official status, script, description, and all 20 words.</li>
+                <li><strong>Full i18n</strong>: language descriptions translated into all 21 UI languages for all 226 languages. Meta attributes (family, countries, official, script) also translated for all UI languages. Word labels (20 words) translated for all UI languages.</li>
+                <li>Unified header across both pages with navigation (Word Order / Word Map) with icons, current page shown as bold text.</li>
+                <li>Unified zoom controls for 2D/3D, pill-style toggle buttons with animation, Modern/Historical radio switch.</li>
+                <li>Right-side control panel: Word/IPA/Name/Native toggles, vertical font size slider.</li>
+                <li>Mobile responsive: header, controls, info panel adapt to small screens.</li>
+                <li>SEO: OGP/Twitter Card meta tags, descriptive title, canonical URL.</li>
+                <li>Co-located languages (same coordinates) automatically stack vertically without overlap.</li>
+                <li>Vertical writing mode for Manchu (mnc) and Inner Mongolian (mn_cn) traditional scripts.</li>
+                <li>Constructed languages (Esperanto, Toki Pona, Klingon, Lojban) placed in the mid-Atlantic Ocean.</li>
+                <li>URL hash persistence for all settings (word, zoom, position, UI language, native/historical toggles, font size, 2D/3D mode).</li>
+                <li>Browser language auto-detection for UI language on first visit.</li>
+                <li>Converted Sumerian, Akkadian, Ancient Egyptian, and Gothic words from romanization to native scripts (cuneiform, hieroglyphs, Gothic alphabet).</li>
+                <li>Fixed Vietnamese word truncation in Word Map: heart→trái tim, sun→mặt trời, moon→mặt trăng. Vietnamese dialect pronunciations now reflect Northern/Central/Southern differences (final consonants, retroflex initials, vowel length).</li>
+                <li>Added Medieval and Early Modern Korean greetings (hello/thanks).</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-04-19 – 2026-04-21</div>
             <ul>
                 <li>Added <strong>Vietnamese Central (vi_c / Huế)</strong> and <strong>Vietnamese Southern (vi_s / Sài Gòn)</strong> dialects with all 100 sentences. Central features: tui, mô (where), ni (this), o nớ/eng nớ (she/he), phiền (please), bọ/mạ (parents), chừ (now), bựa qua (yesterday), lắm (very, postposed). Southern features: tui, thiệt (very), hông (not), nầy (this), cổ/ảnh (she/he), ba/má (parents), tiệm (shop), xe lửa (train), bóp (wallet), xài (use), coi (watch). Southern Vietnamese also shifts time expressions to the front of the sentence in 12 sentences.</li>

@@ -11,8 +11,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 221 languages/dialects with hand-aligned semantic segments
-- **221 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 226 languages/dialects with hand-aligned semantic segments
+- **226 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -24,6 +24,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in all 226 languages with IPA, 2D/3D globe toggle, language info panel, full i18n
 
 ## Languages (226 total, ordered by similarity)
 
@@ -95,10 +96,12 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 
 ```
 langmap/
-  index.html        — Main HTML page
+  index.html         — Main HTML page (Word Order Map)
+  wordmap.html       — Word Map page (20 words × 226 languages on a world map)
+  wordmap_data.js    — Word Map data (words, IPA, coordinates, meta, i18n descriptions)
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 221 languages with segment alignments
+  data.js            — 100 sentences × 226 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
