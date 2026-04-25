@@ -11,8 +11,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 
 ## Features
 
-- **100 sample sentences** across 221 languages/dialects with hand-aligned semantic segments
-- **221 languages** including dialects, historical variants, and creoles (see below)
+- **100 sample sentences** across 226 languages/dialects with hand-aligned semantic segments
+- **226 languages** including dialects, historical variants, and creoles (see below)
 - **Toggle languages ON/OFF** — show only the languages you want to compare
 - **Drag-to-reorder** — reorder languages both from the control panel and directly in the map display
 - **Color-coded segments** with SVG bezier curves connecting corresponding parts
@@ -24,8 +24,9 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in all 226 languages with IPA, 2D/3D globe toggle, language info panel, full i18n
 
-## Languages (220 total, ordered by similarity)
+## Languages (226 total, ordered by similarity)
 
 > Entries marked with `*` are registered but pending sentence data (can't be toggled on in the UI yet).
 
@@ -39,7 +40,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 | Chinese | Mandarin, Dongbei, Sichuan, Cantonese, Taiwanese, Shanghainese, Hakka, Min Dong, Han Classical, Tang Classical, Song-Ming Classical | `zh`, `zh_db`, `zh_sc`, `yue`, `nan`, `wuu`, `hak_cn`, `cdo`, `zh_han`, `zh_tang`, `zh_song` |
 | Tibeto-Burman | Tibetan, Burmese, Yi (Nuosu) | `bo`, `my`, `ii` |
 | Hmong-Mien | Hmong (Miao) | `hmn` |
-| Southeast Asian | Vietnamese, Chữ Nôm, Khmer, Thai, Thai (Northern/Southern/Isan), Lao, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano, Ilocano, Zhuang | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
+| Southeast Asian | Vietnamese, Vietnamese (Central), Vietnamese (Southern), Chữ Nôm, Khmer, Thai, Thai (Northern/Southern/Isan), Lao, Indonesian, Sundanese, Malay, Javanese, Tagalog, Cebuano, Ilocano, Zhuang | `vi`, `vi_c`, `vi_s`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
 | Austronesian (Oceanic) | Malagasy, Maori, Hawaiian, Fijian, Samoan, Tongan*, Palauan | `mg`, `mi`, `haw`, `fj`, `sm`, `to`, `pau` |
 | South Asian | Sanskrit, Pali, Hindi, Urdu, Punjabi, Sindhi, Bengali, Assamese, Odia, Bhojpuri, Nepali, Marathi, Gujarati, Sinhala, Romani, Tamil, Telugu, Kannada, Malayalam | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | Iranian | Persian, Tajik, Kurdish (Kurmanji), Kurdish (Sorani), Pashto | `fa`, `tg`, `ku`, `ckb`, `ps` |
@@ -95,10 +96,12 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 
 ```
 langmap/
-  index.html        — Main HTML page
+  index.html         — Main HTML page (Word Order Map)
+  wordmap.html       — Word Map page (20 words × 226 languages on a world map)
+  wordmap_data.js    — Word Map data (words, IPA, coordinates, meta, i18n descriptions)
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 221 languages with segment alignments
+  data.js            — 100 sentences × 226 languages with segment alignments
   validate_data.py   — Data validation script
   CONTRIBUTING.md    — Data contribution guidelines
 ```
@@ -163,8 +166,8 @@ MIT
 
 ## 機能
 
-- **100のサンプル文** — 220言語・方言で意味単位のアラインメント済み
-- **220言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
+- **100のサンプル文** — 226言語・方言で意味単位のアラインメント済み
+- **226言語対応** — 方言・歴史的変種・クレオール語・人工言語を含む（下表参照）
 - **言語のON/OFF切替** — 比較したい言語だけを表示
 - **ドラッグで並べ替え** — コントロールパネルからも、マップ表示内から直接でも言語の順番を変更可能
 - **色分けセグメント** — SVGベジェ曲線で対応部分を接続
@@ -177,7 +180,7 @@ MIT
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
 
-## 言語一覧（220言語、類似言語順）
+## 言語一覧（226言語、類似言語順）
 
 > `*` 付きの言語は登録済みですが、例文データが準備中のため UI ではまだ選択できません。
 
@@ -191,7 +194,7 @@ MIT
 | 中国語 | 普通話、東北話、四川話、広東語、台湾語、上海語、客家語、閩東語、漢代漢文、唐代漢文、宋明文言 | `zh`, `zh_db`, `zh_sc`, `yue`, `nan`, `wuu`, `hak_cn`, `cdo`, `zh_han`, `zh_tang`, `zh_song` |
 | チベット・ビルマ語派 | チベット語、ミャンマー語、彝語(ヌス) | `bo`, `my`, `ii` |
 | ミャオ・ヤオ語族 | ミャオ語(苗語) | `hmn` |
-| 東南アジア | ベトナム語、チューノム、クメール語、タイ語、タイ語(北部/南部/イサーン)、ラオ語、インドネシア語、スンダ語、マレー語、ジャワ語、タガログ語、セブアノ語、イロカノ語、チワン語 | `vi`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
+| 東南アジア | ベトナム語、ベトナム語(中部)、ベトナム語(南部)、チューノム、クメール語、タイ語、タイ語(北部/南部/イサーン)、ラオ語、インドネシア語、スンダ語、マレー語、ジャワ語、タガログ語、セブアノ語、イロカノ語、チワン語 | `vi`, `vi_c`, `vi_s`, `vi_nom`, `km`, `th`, `th_n`, `th_s`, `th_isan`, `lo`, `id`, `su`, `ms`, `jv`, `tl`, `ceb`, `ilo`, `za` |
 | オーストロネシア語族（大洋州） | マダガスカル語、マオリ語、ハワイ語、フィジー語、サモア語、トンガ語*、パラオ語 | `mg`, `mi`, `haw`, `fj`, `sm`, `to`, `pau` |
 | 南アジア | サンスクリット語、パーリ語、ヒンディー語、ウルドゥー語、パンジャーブ語、シンド語、ベンガル語、アッサム語、オリヤー語、ボージュプリー語、ネパール語、マラーティー語、グジャラート語、シンハラ語、ロマニ語、タミル語、テルグ語、カンナダ語、マラヤーラム語 | `sa`, `pi`, `hi`, `ur`, `pa`, `sd`, `bn`, `as`, `or`, `bho`, `ne`, `mr`, `gu`, `si`, `rom`, `ta`, `te`, `kn`, `ml` |
 | イラン語派 | ペルシャ語、タジク語、クルド語(クルマンジー)、クルド語(ソラニー)、パシュトー語 | `fa`, `tg`, `ku`, `ckb`, `ps` |
@@ -250,7 +253,7 @@ langmap/
   index.html        — メインHTMLページ
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 220言語のセグメントアラインメントデータ
+  data.js            — 100文 × 226言語のセグメントアラインメントデータ
   validate_data.py   — データバリデーションスクリプト
   CONTRIBUTING.md    — データ追加ガイドライン
 ```

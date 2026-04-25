@@ -8,3 +8,4 @@ fix_*.py
 add_languages.py
 data_*.py
 __pycache__/
+submissions/*.json

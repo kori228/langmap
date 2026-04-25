@@ -353,7 +353,7 @@ let redrawTimer = null;
 let suppressHashUpdate = false;
 let rtlNative = false; // true = show RTL languages in native reading direction
 
-const RTL_LANGS = new Set(['ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'he', 'fa', 'ur', 'sd']);
+const RTL_LANGS = new Set(['ar', 'ar_eg', 'ar_lev', 'ar_ma', 'ar_gulf', 'ar_iq', 'ar_tn', 'ar_sd', 'he', 'arc', 'fa', 'ur', 'sd', 'ps', 'ckb', 'ug', 'yi']);
 
 // --- URL hash state management ---
 // New URLs use explicit key=value format for stability across language additions.
@@ -589,6 +589,21 @@ function applyUILang() {
         const el = document.getElementById(id);
         if (el) el.textContent = t(key);
     }
+    // Nav labels
+    const woLabels = {ja:'語順マップ',ko:'어순 맵',zh:'语序图',yue:'語序圖',vi:'Trật tự từ',th:'ลำดับคำ',id:'Urutan Kata',hi:'शब्द क्रम',en:'Word Order',de:'Wortstellung',fr:'Ordre des mots',it:'Ordine parole',es_eu:'Orden de palabras',es_mx:'Orden de palabras',pt_eu:'Ordem das palavras',pt_br:'Ordem das palavras',ru:'Порядок слов',uk:'Порядок слів',ar:'ترتيب الكلمات',he:'סדר מילים',sw:'Mpangilio wa maneno'};
+    const wmLabels = {ja:'単語マップ',ko:'단어 맵',zh:'词汇地图',yue:'詞彙地圖',vi:'Bản đồ từ',th:'แผนที่คำ',id:'Peta Kata',hi:'शब्द मानचित्र',en:'Word Map',de:'Wortkarte',fr:'Carte des mots',it:'Mappa parole',es_eu:'Mapa de palabras',es_mx:'Mapa de palabras',pt_eu:'Mapa de palavras',pt_br:'Mapa de palavras',ru:'Карта слов',uk:'Карта слів',ar:'خريطة الكلمات',he:'מפת מילים',sw:'Ramani ya maneno'};
+    function setNavText(el, text) {
+        if (!el) return;
+        // Preserve SVG icon, update only the text node after it
+        const lastChild = el.lastChild;
+        if (lastChild && lastChild.nodeType === 3) {
+            lastChild.textContent = text;
+        } else {
+            el.appendChild(document.createTextNode(text));
+        }
+    }
+    setNavText(document.getElementById('navWordOrder'), woLabels[currentUILang] || woLabels.en);
+    setNavText(document.getElementById('navToWordMap'), wmLabels[currentUILang] || wmLabels.en);
     const creditEl = document.getElementById('siteCredit');
     if (creditEl) creditEl.innerHTML = t('creditText');
     const disclaimerEl = document.getElementById('disclaimer');
