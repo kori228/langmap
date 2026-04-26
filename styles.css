@@ -1018,28 +1018,37 @@ select:focus { border-color: #4a90d9; outline: none; }
         max-height: 50vh;
     }
 
-    /* Mobile: hide copy/edit buttons, show on tap */
+    /* Mobile: hide copy/edit buttons, show on tap below text */
     .edit-btn, .copy-btn {
         display: none !important;
     }
-    .lang-row.show-actions .edit-btn,
-    .lang-row.show-actions .copy-btn {
-        display: inline-flex !important;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-        background: rgba(255,255,255,0.95);
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 6px 12px;
-        font-size: 12px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    .lang-row.show-actions .edit-btn { transform: translate(-110%, -50%); }
-    .lang-row.show-actions .copy-btn { transform: translate(10%, -50%); }
     .lang-row { position: relative; }
+    .lang-row.show-actions .mobile-action-bar {
+        display: flex !important;
+    }
+    .mobile-action-bar {
+        display: none;
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        gap: 8px;
+    }
+    .mobile-action-bar button {
+        background: rgba(255,255,255,0.97);
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 6px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        white-space: nowrap;
+    }
+    .mobile-action-bar button:active { background: #f0f0f0; }
 
     /* Sentence row compact on mobile */
     .sentence-row { flex-direction: column; align-items: stretch; gap: 4px; }

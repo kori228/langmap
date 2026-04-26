@@ -1253,11 +1253,32 @@ function render() {
         });
         row.appendChild(editBtn);
 
-        // Mobile: tap row to show/hide action buttons
+        // Mobile action bar (shown on tap)
+        const mobileBar = document.createElement('div');
+        mobileBar.className = 'mobile-action-bar';
+        const mEditBtn = document.createElement('button');
+        mEditBtn.innerHTML = '✏️ ' + t('edit');
+        mEditBtn.addEventListener('click', (e) => { e.stopPropagation(); enterEditMode(row, code); });
+        const mCopyBtn = document.createElement('button');
+        mCopyBtn.innerHTML = '📋 ' + t('copyText');
+        mCopyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = buildFullText(sentence, code);
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.textContent = t('copiedText');
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); toast.textContent = t('copied'); }, 2000);
+            });
+        });
+        mobileBar.appendChild(mEditBtn);
+        mobileBar.appendChild(mCopyBtn);
+        row.appendChild(mobileBar);
+
+        // Mobile: tap row to show/hide action bar
         row.addEventListener('click', (e) => {
             if (window.innerWidth > 768) return;
-            if (e.target.closest('.edit-btn') || e.target.closest('.copy-btn')) return;
-            // Toggle show-actions on this row, remove from others
+            if (e.target.closest('.mobile-action-bar') || e.target.closest('.edit-btn') || e.target.closest('.copy-btn')) return;
             const wasActive = row.classList.contains('show-actions');
             document.querySelectorAll('.lang-row.show-actions').forEach(r => r.classList.remove('show-actions'));
             if (!wasActive) row.classList.add('show-actions');
