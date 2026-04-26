@@ -579,7 +579,7 @@ function initUILangSelect() {
 function applyUILang() {
     const ids = {
         uiTitle: 'title', uiSubtitle: 'subtitle', lblSentence: 'selectSentence',
-        lblLangToggle: 'langToggle', btnRandom: 'random',
+        lblLangToggle: 'langToggle', lblRandom: 'random',
         btnSavePng: 'savePng', btnSaveSvg: 'saveSvg',
         btnCopyUrl: 'copyUrl', copyToast: 'copied', lblUiLang: 'uiLang',
         lblResetOrder: 'defaultOrder',
