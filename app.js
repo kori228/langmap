@@ -802,8 +802,7 @@ function updateLangSummary() {
     const btn = document.getElementById('btnOpenLangModal');
     if (btn) {
         const ready = LANGUAGES.filter(l => hasLangData(l.code)).length;
-        const pending = LANGUAGES.length - ready;
-        btn.textContent = t('selectLangs').replace('{n}', ready).replace('{p}', pending);
+        btn.textContent = t('selectLangs').replace('{n}', ready).replace('{p}', '');
     }
 }
 
@@ -1254,6 +1253,16 @@ function render() {
             enterEditMode(row, code);
         });
         row.appendChild(editBtn);
+
+        // Mobile: tap row to show/hide action buttons
+        row.addEventListener('click', (e) => {
+            if (window.innerWidth > 768) return;
+            if (e.target.closest('.edit-btn') || e.target.closest('.copy-btn')) return;
+            // Toggle show-actions on this row, remove from others
+            const wasActive = row.classList.contains('show-actions');
+            document.querySelectorAll('.lang-row.show-actions').forEach(r => r.classList.remove('show-actions'));
+            if (!wasActive) row.classList.add('show-actions');
+        });
 
         rowsContainer.appendChild(row);
     });
@@ -1881,6 +1890,37 @@ function createSegmentWrapper(seg, langCode) {
         showChangeSegMenu(badge, wrapper, input, sentence);
     });
 
+    // Move buttons (for mobile — hidden on desktop via CSS)
+    const moveBtns = document.createElement('span');
+    moveBtns.className = 'seg-move-btns';
+    const moveLeft = document.createElement('button');
+    moveLeft.type = 'button';
+    moveLeft.className = 'seg-move-btn';
+    moveLeft.textContent = '◀';
+    moveLeft.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const prev = wrapper.previousElementSibling;
+        if (prev && prev.classList.contains('segment-input-wrapper')) {
+            wrapper.parentNode.insertBefore(wrapper, prev);
+            scheduleRedrawLines();
+        }
+    });
+    const moveRight = document.createElement('button');
+    moveRight.type = 'button';
+    moveRight.className = 'seg-move-btn';
+    moveRight.textContent = '▶';
+    moveRight.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const next = wrapper.nextElementSibling;
+        if (next && next.classList.contains('segment-input-wrapper')) {
+            wrapper.parentNode.insertBefore(next, wrapper);
+            scheduleRedrawLines();
+        }
+    });
+    moveBtns.appendChild(moveLeft);
+    moveBtns.appendChild(moveRight);
+
+    wrapper.appendChild(moveBtns);
     wrapper.appendChild(handle);
     wrapper.appendChild(badge);
     if (hasDualText) {

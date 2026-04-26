@@ -31,31 +31,20 @@
     <div class="container">
 
         <div class="controls">
-            <div class="control-row">
-                <div class="control-group" style="flex:2">
-                    <label id="lblSentence" for="sampleSelect">文章選択</label>
+            <div class="control-row sentence-row">
+                <label id="lblSentence" for="sampleSelect" class="sentence-label">文章選択</label>
+                <div class="sentence-nav">
+                    <button class="nav-btn" onclick="prevSentence()" title="Previous">◀</button>
                     <select id="sampleSelect"></select>
-                </div>
-                <div class="control-group" style="flex:0">
-                    <label>&nbsp;</label>
-                    <div class="btn-group">
-                        <button class="btn" onclick="prevSentence()">◀</button>
-                        <button class="btn" onclick="nextSentence()">▶</button>
-                        <button class="btn btn-accent" id="btnRandom" onclick="randomSentence()">ランダム</button>
-                    </div>
+                    <button class="nav-btn" onclick="nextSentence()" title="Next">▶</button>
+                    <button class="nav-btn nav-random" id="btnRandom" onclick="randomSentence()" title="Random">↻</button>
                 </div>
             </div>
 
-            <div class="control-row">
-                <div class="control-group" style="flex:1">
-                    <label>
-                        <span id="lblLangToggle">表示言語</span>
-                        <button class="btn-open-modal" id="btnOpenLangModal" onclick="openLangModal()">言語選択</button>
-                    </label>
-                    <div class="lang-summary" id="langSummary"></div>
-                </div>
+            <div class="control-row lang-row-ctrl">
+                <button class="btn-lang-select" id="btnOpenLangModal" onclick="openLangModal()">言語選択</button>
+                <div class="lang-summary" id="langSummary"></div>
             </div>
-
         </div>
 
         <div class="map-toolbar">
