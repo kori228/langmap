@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × ~190 current languages
+ * Word Map Data — 20 key words × 454 languages
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
