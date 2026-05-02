@@ -920,6 +920,42 @@ const LANG_DATA = {
   // Bantu Eastern (Mozambique)
   vmw: { name: 'Makhuwa', native: 'eMakhuwa', lat: -15.12, lng: 39.27, // Nampula
     words: { water:['maasi','maːsi'], fire:['moro','moɾo'], sun:['ettsuwa','etsuwa'], moon:['mweri','mweɾi'], mother:['maama','maːma'], father:['paapa','paːpa'], eat:['ohuula','ohuːla'], drink:['ohwèwa','ohwɛwa'], love:['ophenta','opʰenta'], heart:['murima','muɾima'], tree:['muri','muɾi'], house:['empa','empa'], dog:['mphwa','mpʰwa'], cat:['paaka','paːka'], hand:['nikhono','nikʰono'], eye:['nittho','nitːo'], hello:['salaama','salaːma'], thanks:['kosheni','koʃeni'], one:['mosa','mosa'], good:['ratteene','ɾatːeːne'] }},
+  // === Phase 3N: rare/iconic — small Slavic, Celtic revival, isolates, S American ===
+  // Slavic minor (Lower Sorbian)
+  dsb: { name: 'Lower Sorbian', native: 'Dolnoserbšćina', lat: 51.76, lng: 14.33, // Cottbus
+    words: { water:['woda','ˈvɔda'], fire:['wogeń','ˈvɔɡɛɲ'], sun:['słyńco','ˈswɨnt͡sɔ'], moon:['mjasec','ˈmʲasɛt͡s'], mother:['maś','maɕ'], father:['nano','ˈnano'], eat:['jěsć','jɛst͡ɕ'], drink:['piś','piɕ'], love:['lubosć','ˈlubɔɕt͡ɕ'], heart:['wutšoba','ˈvut͡ʃɔba'], tree:['bom','bɔm'], house:['dom','dɔm'], dog:['pjas','pʲas'], cat:['kócka','ˈkʊt͡ska'], hand:['ruka','ˈruka'], eye:['woko','ˈvɔkɔ'], hello:['witaj','ˈvitaj'], thanks:['źěkujom se','ˈd͡ʑɛkujɔm sɛ'], one:['jaden','ˈjadɛn'], good:['dobry','ˈdɔbrɨ'] }},
+  // Celtic revival
+  gv: { name: 'Manx', native: 'Gaelg', lat: 54.15, lng: -4.49, // Douglas, IoM
+    words: { water:['ushtey','ˈuʃtʲə'], fire:['aile','ailʲ'], sun:['grian','ɡrʲan'], moon:['eayst','eːst'], mother:['moir','mɔːɾ'], father:['ayr','ɛːr'], eat:['gee','ɡʲiː'], drink:['iu','ʲuː'], love:['graih','ɡraːx'], heart:['cree','kɾiː'], tree:['billey','ˈbʲilʲə'], house:['thie','θai'], dog:['moddey','ˈmɔðə'], cat:['kayt','kʲat'], hand:['laue','lɛːu'], eye:['sooill','sɔːlʲ'], hello:['moghrey mie','ˈmɔɣrə maː'], thanks:['gura mie ayd','ˈɡura miː eːd'], one:['nane','næn'], good:['mie','maː'] }},
+  kw: { name: 'Cornish', native: 'Kernewek', lat: 50.27, lng: -5.05, // Truro
+    words: { water:['dowr','dɔuɾ'], fire:['tan','tan'], sun:['howl','haʊl'], moon:['loor','loːɾ'], mother:['mamm','mam'], father:['tas','taːs'], eat:['dybri','ˈdɨbɾi'], drink:['eva','ˈɛva'], love:['kerensa','kɛˈɾɛnsa'], heart:['kolon','ˈkolon'], tree:['gwedhen','ˈɡwɛðən'], house:['chi','tʃiː'], dog:['ki','kiː'], cat:['kath','kaːθ'], hand:['leuv','lœv'], eye:['lagas','ˈlaɡas'], hello:['dydh da','dɪð daː'], thanks:['meur ras','mœːɾ ɾaːs'], one:['onen','ˈɔnən'], good:['da','daː'] }},
+  // Iranian (Zaza-Gorani branch)
+  zza: { name: 'Zaza', native: 'Zazakî', lat: 39.11, lng: 39.55, // Tunceli (Dersim)
+    words: { water:['aw','aw'], fire:['adır','aˈdɯɾ'], sun:['tîj','tiːʒ'], moon:['aşmî','aʃˈmiː'], mother:['maye','ˈmajɛ'], father:['pî','piː'], eat:['werdiş','ˈweɾdiʃ'], drink:['şimitiş','ʃiˈmitiʃ'], love:['hes','hɛs'], heart:['zerre','ˈzɛrːe'], tree:['dare','ˈdaɾɛ'], house:['keye','ˈkɛjɛ'], dog:['kuçeg','kuˈt͡ʃɛɡ'], cat:['pisîk','piˈsiːk'], hand:['dest','dɛst'], eye:['çim','t͡ʃim'], hello:['silam','silam'], thanks:['sıpas','sɯpas'], one:['jew','d͡ʒɛw'], good:['rind','ɾind'] }},
+  // Dravidian (Pakistan outlier)
+  brh: { name: 'Brahui', native: 'براہوئی', lat: 30.18, lng: 67.00, // Quetta
+    words: { water:['دیر','diːɾ'], fire:['کاہا','kaha'], sun:['دے','deː'], moon:['ماہ','mah'], mother:['لمّا','lummaː'], father:['باوا','baːwaː'], eat:['کنّا','kunːa'], drink:['پنّنگ','pinːinɡ'], love:['عزّت','izzat'], heart:['دل','dil'], tree:['پنتل','pantal'], house:['اولا','ulaː'], dog:['کچک','kut͡ʃik'], cat:['پسی','pisi'], hand:['ہت','hatʰ'], eye:['کن','kann'], hello:['سلام','sælaːm'], thanks:['شکریہ','ʃukɾijaː'], one:['اسٹ','asit'], good:['کشی','kaʃi'] }},
+  // Polynesian (Marquesan)
+  mrq: { name: 'Marquesan', native: 'ʻEo Enana', lat: -8.85, lng: -140.10, // Nuku Hiva
+    words: { water:['vai','vai'], fire:['ahi','ahi'], sun:['ʻoumati','ʔoumati'], moon:['mahina','mahina'], mother:['kuʻa','kuʔa'], father:['motua','motua'], eat:['kai','kai'], drink:['inu','inu'], love:['hanahana','hanahana'], heart:['fatu','fatu'], tree:['tumu kahi','tumu kahi'], house:['hae','hae'], dog:['peko','peko'], cat:['piki','piki'], hand:['ʻima','ʔima'], eye:['mata','mata'], hello:['kaoha','kaoha'], thanks:['mauruuru','mauɾuʔuɾu'], one:['tahi','tahi'], good:['maitaʻi','maitaʔi'] }},
+  // Australian Aboriginal (more)
+  tiw: { name: 'Tiwi', native: 'Tiwi', lat: -11.77, lng: 130.62, // Bathurst Island
+    words: { water:['kukuni','kukuni'], fire:['yikwani','jikwani'], sun:['pumarli','pumarli'], moon:['japarra','japaɾa'], mother:['ngiya','ŋija'], father:['rringani','ɾiŋani'], eat:['ngarini','ŋaɾini'], drink:['pirninkili','piɾninkili'], love:['payinti','pajinti'], heart:['miringa','miɾiŋa'], tree:['pirntali','piɾntali'], house:['pumpuni','pumpuni'], dog:['marlapwawa','marlapʷawa'], cat:['pussycat','pusikat'], hand:['punga','puŋa'], eye:['pwoja','pʷodʒa'], hello:['ngirramini','ŋiɾamini'], thanks:['wuta-wani','wutawani'], one:['kanyili','kaɲili'], good:['kwati','kʷati'] }},
+  // Arawakan (Caribbean coast)
+  guc: { name: 'Wayuu', native: 'Wayuunaiki', lat: 11.54, lng: -72.91, // Riohacha
+    words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
+  // Mura (linguistic isolate, Amazonia)
+  myp: { name: 'Pirahã', native: 'Xapagí', lat: -7.70, lng: -62.30, // Maici River
+    words: { water:['piigi','piiɡi'], fire:['hoa','hoa'], sun:['hisi','hisi'], moon:['kapiigaísao','kapiːɡaísao'], mother:['ʔaaí','ʔaaí'], father:['baíxi','baíʃi'], eat:['ʔaʔaí','ʔaʔaí'], drink:['gao','ɡao'], love:['gí','ɡí'], heart:['aoʔaago','aoʔaaɡo'], tree:['hoí','hoí'], house:['kaiʔii','kaiʔii'], dog:['kobaí','kobaí'], cat:['xowí','ʃowí'], hand:['piíʔai','piíʔai'], eye:['ʔai','ʔai'], hello:['gaíhií','ɡaíhií'], thanks:['kapiíhií','kapiíhií'], one:['hói','hói'], good:['aoʔaago','aoʔaaɡo'] }},
+  // Chocoan (NW South America)
+  emp: { name: 'Northern Embera', native: 'Eperã pedea', lat: 5.69, lng: -76.66, // Quibdó
+    words: { water:['do','do'], fire:['tu','tu'], sun:['hewa','hewa'], moon:['ahuru','ahuɾu'], mother:['papa','papa'], father:['apa','apa'], eat:['ko','ko'], drink:['dorrare','doraɾe'], love:['ãỹba','ãɨba'], heart:['ƀakhuru','ɓakuɾu'], tree:['bakuru','bakuɾu'], house:['te','te'], dog:['usa','usa'], cat:['misu','misu'], hand:['jua','xua'], eye:['tau','tau'], hello:['sake bia','sake bia'], thanks:['bia bara','bia baɾa'], one:['aba','aba'], good:['bia','bia'] }},
+  // Niger-Congo (Mande, Liberia/Guinea)
+  kpe: { name: 'Kpelle', native: 'Kpɛlɛɛ', lat: 7.07, lng: -9.50, // Liberian-Guinean border
+    words: { water:['ya','ja'], fire:['kɔ̃a','kõa'], sun:['pelei','pelei'], moon:['kɔŋɔ','kɔŋɔ'], mother:['ngaa','ŋaː'], father:['laai','laai'], eat:['nyii','ɲiː'], drink:['yiti','jiti'], love:['gboma','ɡboma'], heart:['lii','liː'], tree:['woo','woː'], house:['pere','pere'], dog:['nyila','ɲila'], cat:['gbele','ɡbele'], hand:['yee','jeː'], eye:['ŋɛ','ŋɛ'], hello:['halee','haleː'], thanks:['balika','balika'], one:['taa','taː'], good:['nyaŋa','ɲaŋa'] }},
+  // Bantu (Zambia, Lozi)
+  loz: { name: 'Lozi', native: 'siLozi', lat: -15.25, lng: 23.14, // Mongu
+    words: { water:['mezi','mezi'], fire:['mulilo','mulilo'], sun:['lizazi','lizazi'], moon:['kweli','kweli'], mother:['ma','ma'], father:['ndate','ndate'], eat:['kuca','kut͡sa'], drink:['kunwa','kunwa'], love:['lilato','lilato'], heart:['pilu','pilu'], tree:['kota','kota'], house:['ndu','ndu'], dog:['nja','ndʒa'], cat:['kaze','kaze'], hand:['lizoho','lizoho'], eye:['liito','liːto'], hello:['eni sha','ɛni ʃa'], thanks:['nitumezi','nitumezi'], one:['nyinwi','ɲiŋʷi'], good:['nde','nde'] }},
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
