@@ -98,7 +98,8 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 langmap/
   index.html         — Main HTML page (Word Order Map)
   wordmap.html       — Word Map page (20 words × 226 languages on a world map)
-  wordmap_data.js    — Word Map data (words, IPA, coordinates, meta, i18n descriptions)
+  wordmap_data.js    — Word Map core data (words, IPA, coordinates, native names, UI strings)
+  wordmap_meta.js    — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
   data.js            — 100 sentences × 226 languages with segment alignments
@@ -250,7 +251,10 @@ npx serve .
 
 ```
 langmap/
-  index.html        — メインHTMLページ
+  index.html         — メインHTMLページ（語順マップ）
+  wordmap.html       — 単語マップページ（20語 × 226言語の世界地図）
+  wordmap_data.js    — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
+  wordmap_meta.js    — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
   data.js            — 100文 × 226言語のセグメントアラインメントデータ
