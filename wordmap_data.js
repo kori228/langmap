@@ -38,7 +38,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 5 historical
   'xpr','xqa','sga',
   // Phase 6 historical
-  'mga','hbo'
+  'mga','hbo',
+  // Phase 8 historical
+  'xng'
 ]);
 
 const LANG_DATA = {
@@ -2511,6 +2513,41 @@ const LANG_DATA = {
     words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceng','tʃeŋ'], moon:['dwe','dwe'], mother:['mego','meɡo'], father:['baba','baba'], eat:['cam','tʃam'], drink:['mat','mat'], love:['mar','mar'], heart:['cwiny','tʃwiɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['gwok','ɡʷok'], cat:['ngabu','ŋabu'], hand:['cing','tʃiŋ'], eye:['wang','waŋ'], hello:['itye nining','itje niniŋ'], thanks:['apwoyo','apʷojo'], one:['acel','atʃel'], good:['ber','ber'] }},
   lag: { name: 'Lango', native: 'Lëblaŋo', lat: 2.25, lng: 32.90, // Lira
     words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceŋ','tʃeŋ'], moon:['dwe','dwe'], mother:['maa','maː'], father:['papa','papa'], eat:['cam','tʃam'], drink:['mat','mat'], love:['mar','mar'], heart:['cwiny','tʃwiɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['gwok','ɡʷok'], cat:['ngao','ŋao'], hand:['ciŋ','tʃiŋ'], eye:['waŋ','waŋ'], hello:['itye nining','itje niniŋ'], thanks:['apwoyo','apʷojo'], one:['acel','atʃel'], good:['ber','ber'] }},
+  // === Phase 8: East / SE Asian major dialects ===
+  // Burmese variety
+  rki: { name: 'Rakhine', native: 'ရခိုင်ဘာသာ', lat: 20.15, lng: 92.90, // Sittwe
+    words: { water:['ရေ','ɹeː'], fire:['မီး','miː'], sun:['နေ','neː'], moon:['လ','la'], mother:['အမေ','ʔəmeː'], father:['အဖေ','ʔəpʰeː'], eat:['စား','sa'], drink:['သာက်','θaˀ'], love:['အချစ်','ʔəkʰjiˀ'], heart:['နှလုံး','n̥əlóuN'], tree:['သစ်ပင်','θiˀpìN'], house:['အိမ်','ʔèiN'], dog:['ခွေး','kʰwé'], cat:['ကြောင်','tɕàuN'], hand:['လက်','lɛˀ'], eye:['မျက်စိ','mjɛˀsì'], hello:['မဂႝလာပါ','mìNɡəlà pà'], thanks:['ကျေးဇူးတင်ပါတယ်','tɕézú tìN pà dɛ̀'], one:['တစ်','tiˀ'], good:['ကောင်း','káuN'] }},
+  // Khmer variety (Thailand-Cambodia border)
+  kxm: { name: 'Northern Khmer', native: 'ភាសាខ្មែរ (Surin)', lat: 14.88, lng: 103.49, // Surin
+    words: { water:['ទឹក','tək'], fire:['ភ្លើង','pʰlɤːŋ'], sun:['ថ្ងៃ','tŋai'], moon:['ខែ','kʰae'], mother:['ម៉ែ','maɛ'], father:['ប៉ា','paː'], eat:['ស៊ី','siː'], drink:['ផឹក','pʰək'], love:['ស្រឡាញ់','sralaɲ'], heart:['ចិត្ត','tɕit'], tree:['ដើមឈើ','daəm tʃʰəː'], house:['ផ្ទះ','ptʰeah'], dog:['ឆ្កែ','tʃʰkae'], cat:['ឆ្មា','tʃʰmaː'], hand:['ដៃ','daj'], eye:['ភ្នែក','pʰnɛːk'], hello:['សួស្តី','suːəsdəj'], thanks:['អរគុណ','ʔɔːkun'], one:['មួយ','muːj'], good:['ល្អ','lʔɑː'] }},
+  // Mongolian (historical)
+  xng: { name: 'Middle Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ', lat: 47.20, lng: 102.83, // Karakorum
+    words: { water:['usun','usun'], fire:['ɣal','ɣal'], sun:['naran','naran'], moon:['sara','sara'], mother:['eke','eke'], father:['ecige','etʃiɡe'], eat:['ide-','ide'], drink:['oɣu-','oɣu'], love:['dura','dura'], heart:['jirüke','dʒirüke'], tree:['modun','modun'], house:['ger','ɡer'], dog:['nokai','nokai'], cat:['miɣui','miɣui'], hand:['ɣar','ɣar'], eye:['nidün','nidün'], hello:['amur','amur'], thanks:['bayarlaba','bajarlaba'], one:['nigen','niɡen'], good:['sain','sain'] }},
+  // Japanese dialects (additional)
+  ja_kg: { name: 'Japanese (Kagoshima)', native: '日本語(鹿児島)', lat: 31.59, lng: 130.55, // Kagoshima
+    words: { water:['みず','miʣɯ'], fire:['ひっ','hiʔ'], sun:['お日さん','ohisaN'], moon:['つき','tsɯki'], mother:['かか','kaka'], father:['とと','toto'], eat:['たぼっか','tabokːa'], drink:['のんで','nondeː'], love:['あい','ai'], heart:['こころ','kokoɾo'], tree:['き','ki'], house:['えい','eː'], dog:['いん','iN'], cat:['ねこ','neko'], hand:['て','te'], eye:['め','me'], hello:['おやっとさあ','ojattosaː'], thanks:['ありがとさげもす','aɾiɡatosaɡemosɯ'], one:['ひとつ','hitotsɯ'], good:['よか','joka'] }},
+  ja_sd: { name: 'Japanese (Sendai)', native: '日本語(仙台)', lat: 38.27, lng: 140.87, // Sendai
+    words: { water:['みず','mizɯ'], fire:['ひ','hi'], sun:['お日さま','ohisama'], moon:['つき','tsɯki'], mother:['おっかさん','okːasaN'], father:['おっとさん','otːosaN'], eat:['くう','kuː'], drink:['のむ','nomɯ'], love:['めごい','meɡoi'], heart:['こころ','kokoɾo'], tree:['き','ki'], house:['いえ','ie'], dog:['いぬ','inɯ'], cat:['ねこ','neko'], hand:['て','te'], eye:['め','me'], hello:['おばんでがす','obandeɡasɯ'], thanks:['ありがとがんす','aɾiɡataɡansɯ'], one:['ひとっつ','hitottsɯ'], good:['いいでがす','iːdeɡasɯ'] }},
+  // Korean dialects (additional)
+  ko_hg: { name: 'Korean (Hamgyong)', native: '함경방언', lat: 39.92, lng: 127.54, // Hamhung
+    words: { water:['물','mul'], fire:['불','pul'], sun:['해','hɛ'], moon:['달','tal'], mother:['어머이','ʌmʌi'], father:['아바이','abai'], eat:['먹다','mʌk̚t͈a'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip̚'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하시꼬마','annjʌŋhaɕikːoma'], thanks:['고마와','komawa'], one:['한나','hanːa'], good:['좋다','tɕot̚t͈a'] }},
+  ko_jl: { name: 'Korean (Jeolla)', native: '전라방언', lat: 35.16, lng: 126.85, // Gwangju
+    words: { water:['물','mul'], fire:['불','pul'], sun:['해','hɛ'], moon:['달','tal'], mother:['어매','ʌmɛ'], father:['아베','abe'], eat:['먹어','mʌɡʌ'], drink:['마셔','maɕjʌ'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip̚'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['어이','ʌi'], thanks:['고맙당께','komap̚t͈aŋkːe'], one:['하나','hana'], good:['좋아부러','tɕoabuɾʌ'] }},
+  // Chinese diaspora variant
+  nan_pn: { name: 'Penang Hokkien', native: '庇能福建話', lat: 5.41, lng: 100.34, // George Town
+    words: { water:['水','tsui53'], fire:['火','hue53'], sun:['日頭','lit5tʰau22'], moon:['月娘','gueh5niũ'], mother:['阿媽','a33ma33'], father:['阿爸','a33pa55'], eat:['食','tsiaʔ5'], drink:['啉','lim33'], love:['愛','ai213'], heart:['心','sim33'], tree:['樹','tsʰiu11'], house:['厝','tsʰu213'], dog:['狗','kau53'], cat:['貓','niau33'], hand:['手','tsʰiu53'], eye:['目','bak5'], hello:['你好','li53ho53'], thanks:['多謝','to55sia11'], one:['一','tsit5'], good:['好','ho53'] }},
+  // Mlabri (Northern Thailand hunter-gatherer)
+  mra: { name: 'Mlabri', native: 'Mlabri', lat: 19.46, lng: 100.86, // Nan
+    words: { water:['om','om'], fire:['ʔus','ʔus'], sun:['ŋay','ŋai'], moon:['thel','tʰel'], mother:['mɛʔ','mɛʔ'], father:['paʔ','paʔ'], eat:['ʔiʔ','ʔiʔ'], drink:['ʔaa','ʔaː'], love:['kraʔ','kraʔ'], heart:['kɛm','kɛm'], tree:['tɔn','tɔn'], house:['tu','tu'], dog:['cɛn','tɕɛn'], cat:['meo','meo'], hand:['tiʔ','tiʔ'], eye:['mɔt','mɔt'], hello:['hahɔ','haho'], thanks:['knɔŋ','knoŋ'], one:['mɔy','mɔi'], good:['laʔ','laʔ'] }},
+  // Wu Chinese (Ningbo)
+  wuu_nb: { name: 'Ningbo Wu', native: '寧波話', lat: 29.87, lng: 121.55, // Ningbo
+    words: { water:['水','sɿ214'], fire:['火','hu214'], sun:['太陽','tʰa53iaŋ'], moon:['月亮','ɲyəʔ12liaŋ'], mother:['阿媽','aʔ44ma'], father:['阿爸','aʔ44pa'], eat:['喫','tɕʰiʔ12'], drink:['喝','hoʔ12'], love:['愛','ai53'], heart:['心','siN44'], tree:['樹','zɿ23'], house:['屋裏','oʔ55li'], dog:['狗','kəu214'], cat:['貓','mɔ44'], hand:['手','sɤu214'], eye:['眼睛','ŋɛ23tɕiN44'], hello:['儂好','noŋ44hɔ214'], thanks:['謝謝','ɕia23ɕia'], one:['一','iʔ12'], good:['好','hɔ214'] }},
+  // Yue Chinese (Western Guangdong)
+  yue_gz: { name: 'Gaozhou Yue', native: '高州話', lat: 21.92, lng: 110.85, // Gaozhou
+    words: { water:['水','sɵi35'], fire:['火','fɔ35'], sun:['日頭','jɐt5tʰɐu33'], moon:['月光','jyt5kwɔŋ55'], mother:['媽媽','maː55maː55'], father:['爸爸','paː21paː21'], eat:['食','sɪk22'], drink:['飲','jɐm35'], love:['愛','ɔi33'], heart:['心','sɐm55'], tree:['樹','sy22'], house:['屋','ʊk5'], dog:['狗','kɐu35'], cat:['貓','maːu55'], hand:['手','sɐu35'], eye:['眼','ŋaːn35'], hello:['你好','nei35hɔu35'], thanks:['多謝','tɔ55tsɛ22'], one:['一','jɐt5'], good:['好','hɔu35'] }},
+  // Tai Lue (Sipsongpanna)
+  khb: { name: 'Tai Lue', native: 'ᦅᧄᦺᦑᦟᦹᧉ', lat: 22.01, lng: 100.80, // Jinghong, Sipsongpanna
+    words: { water:['ᦓᧄᧉ','nam'], fire:['ᦺᦝ','fai'], sun:['ᦋᧁᧉ','tsau'], moon:['ᦟᦲᧃ','liːn'], mother:['ᦡᦲᧈ','meː'], father:['ᦗᦸᧈ','pɔː'], eat:['ᦂᦲᧃ','kin'], drink:['ᦂᦲᧃᦓᧄᧉ','kin nam'], love:['ᦣᧅ','hak'], heart:['ᦗᦸ','pɔ'], tree:['ᦷᦎᧃᦺᦙᧉ','ton mai'], house:['ᦠᦴᧃᧉ','huːn'], dog:['ᦙᦱ','maː'], cat:['ᦙᦦᧁ','mɛw'], hand:['ᦙᦹ','muː'], eye:['ᦎᦱ','taː'], hello:['ᦷᦡᧃᦟᦲ','dɔn liː'], thanks:['ᦀᦸᧃᦷᦓᧁ','ʔɔn nau'], one:['ᦓᦹᧂᧈ','nuŋ'], good:['ᦡᦲ','diː'] }},
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
