@@ -30,7 +30,11 @@ const WORD_LIST = [
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
   'non','en_ang','enm','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
-  'vi_nom','sa','mnc'
+  'vi_nom','sa','mnc',
+  // Phase 4: historical / ancient
+  'peo','ave','xto','txb','phn','uga','xlu','pal','syc','fro','goh','gez',
+  // Phase 4B: more historical
+  'gmy','xct','xpu','xhu','elx','xsa','kaw','kho','gmh','osp','okz','osx'
 ]);
 
 const LANG_DATA = {
