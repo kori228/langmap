@@ -477,8 +477,94 @@ const LANG_DATA = {
     words: { water:['aqua','akʷa'], fire:['ignis','iŋnis'], sun:['sōl','soːl'], moon:['lūna','luːna'], mother:['māter','maːter'], father:['pater','pater'], eat:['edere','edere'], drink:['bibere','bibere'], love:['amor','amor'], heart:['cor','kor'], tree:['arbor','arbor'], house:['domus','domʊs'], dog:['canis','kanis'], cat:['fēlēs','feːleːs'], hand:['manus','manʊs'], eye:['oculus','okulʊs'], hello:['salvē','salweː'], thanks:['grātiās','ɡraːtiaːs'], one:['ūnus','uːnʊs'], good:['bonus','bonʊs'] }},
   el_grc: { name: 'Ancient Greek', native: 'Ἑλληνική', lat: 37.97, lng: 23.73,
     words: { water:['ὕδωρ','hýdɔːr'], fire:['πῦρ','pŷːr'], sun:['ἥλιος','hɛ̌ːlios'], moon:['σελήνη','selɛ̌ːnɛː'], mother:['μήτηρ','mɛ̌ːtɛːr'], father:['πατήρ','patɛ̌ːr'], eat:['ἐσθίειν','estʰíeːn'], drink:['πίνειν','píneːn'], love:['ἔρως','érɔːs'], heart:['καρδία','kardía'], tree:['δένδρον','déndron'], house:['οἶκος','oîkos'], dog:['κύων','kýɔːn'], cat:['αἴλουρος','aíluːros'], hand:['χείρ','kʰéːr'], eye:['ὀφθαλμός','optʰalmós'], hello:['χαῖρε','kʰâire'], thanks:['εὐχαριστῶ','eukʰaristɔ̂ː'], one:['εἷς','hêːs'], good:['ἀγαθός','aɡatʰós'] }},
-  egy: { name: 'Ancient Egyptian', native: 'r n km.t', lat: 25.69, lng: 32.64,
-    words: { water:['𓈗','muː'], fire:['𓊮','sedet'], sun:['𓇳','riːʕa'], moon:['𓇹','jaʕaħ'], mother:['𓅐𓏏','muːt'], father:['𓇋𓏏','jit'], eat:['𓅱𓈖𓏌','wenem'], drink:['𓋴𓅱𓂋','seweɾ'], love:['𓅓𓂋','meɾ'], heart:['𓇋𓃀','jib'], tree:['𓇋𓈎𓏌𓆭','ʕaːʃ'], house:['𓉐','peɾ'], dog:['𓃡','juːjuː'], cat:['𓏇𓇋𓅱𓃠','miːw'], hand:['𓂝𓂋𓏏','dʒeɾet'], eye:['𓁹','iːɾet'], hello:['𓇋𓈖𓂧𓉔𓂋𓎡','jined-ħeɾek'], thanks:['𓂧𓅱𓂝𓎡','duːʕak'], one:['𓏤','waːʕ'], good:['𓄤','nefeɾ'] }},
+  egy: {
+    "name": "Ancient Egyptian",
+    "native": "𓂋 𓈖 𓆎𓅓𓏏",
+    "lat": 25.69,
+    "lng": 32.64,
+    "words": {
+      "water": [
+        "𓈗",
+        "muː"
+      ],
+      "fire": [
+        "𓊮",
+        "sedet"
+      ],
+      "sun": [
+        "𓇳",
+        "riːʕa"
+      ],
+      "moon": [
+        "𓇹",
+        "jaʕaħ"
+      ],
+      "mother": [
+        "𓅐𓏏",
+        "muːt"
+      ],
+      "father": [
+        "𓇋𓏏",
+        "jit"
+      ],
+      "eat": [
+        "𓅱𓈖𓏌",
+        "wenem"
+      ],
+      "drink": [
+        "𓋴𓅱𓂋",
+        "seweɾ"
+      ],
+      "love": [
+        "𓅓𓂋",
+        "meɾ"
+      ],
+      "heart": [
+        "𓇋𓃀",
+        "jib"
+      ],
+      "tree": [
+        "𓇋𓈎𓏌𓆭",
+        "ʕaːʃ"
+      ],
+      "house": [
+        "𓉐",
+        "peɾ"
+      ],
+      "dog": [
+        "𓃡",
+        "juːjuː"
+      ],
+      "cat": [
+        "𓏇𓇋𓅱𓃠",
+        "miːw"
+      ],
+      "hand": [
+        "𓂝𓂋𓏏",
+        "dʒeɾet"
+      ],
+      "eye": [
+        "𓁹",
+        "iːɾet"
+      ],
+      "hello": [
+        "𓇋𓈖𓂧𓉔𓂋𓎡",
+        "jined-ħeɾek"
+      ],
+      "thanks": [
+        "𓂧𓅱𓂝𓎡",
+        "duːʕak"
+      ],
+      "one": [
+        "𓏤",
+        "waːʕ"
+      ],
+      "good": [
+        "𓄤",
+        "nefeɾ"
+      ]
+    }
+  },
   en_ang: { name: 'Old English', native: 'Englisc', lat: 51.51, lng: -0.13,
     words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufu','luvu'], heart:['heorte','heorte'], tree:['trēow','treːow'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','kɑtː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['hāl','hɑːl'], thanks:['þancas','θɑnkɑs'], one:['ān','ɑːn'], good:['gōd','ɡoːd'] }},
   enm: { name: 'Middle English', native: 'Englisch', lat: 51.51, lng: -0.13,
@@ -489,18 +575,362 @@ const LANG_DATA = {
     words: { water:['𐍅𐌰𐍄𐍉','wɑtoː'], fire:['𐍆𐍉𐌽','foːn'], sun:['𐍃𐌿𐌽𐌽𐍉','sunːoː'], moon:['𐌼𐌴𐌽𐌰','meːnɑ'], mother:['𐌰𐌹𐌸𐌴𐌹','ɛːθiː'], father:['𐌰𐍄𐍄𐌰','ɑtːɑ'], eat:['𐌼𐌰𐍄𐌾𐌰𐌽','mɑtjɑn'], drink:['𐌳𐍂𐌹𐌲𐌺𐌰𐌽','driŋkɑn'], love:['𐍆𐍂𐌹𐌰𐌸𐍅𐌰','friɑθwɑ'], heart:['𐌷𐌰𐌹𐍂𐍄𐍉','hɛːrtoː'], tree:['𐌱𐌰𐌲𐌼𐍃','bɑɣms'], house:['𐍂𐌰𐌶𐌽','rɑzn'], dog:['𐌷𐌿𐌽𐌳𐍃','hunds'], cat:['𐌺𐌰𐍄𐍄𐍃','kɑtːs'], hand:['𐌷𐌰𐌽𐌳𐌿𐍃','hɑndus'], eye:['𐌰𐌿𐌲𐍉','ɑuɣoː'], hello:['𐌷𐌰𐌹𐌻𐍃','hɛːls'], thanks:['𐌸𐌰𐌲𐌺𐍃','θɑŋks'], one:['𐌰𐌹𐌽𐍃','ɛːns'], good:['𐌲𐍉𐌸𐍃','ɡoːθs'] }},
   cu: { name: 'Old Church Slavonic', native: 'Словѣньскъ', lat: 42.70, lng: 23.32,
     words: { water:['вода','vodɑ'], fire:['огнь','oɡnʲ'], sun:['слъньце','slɤnʲtse'], moon:['лоуна','lunɑ'], mother:['мати','mɑti'], father:['отьць','otʲɪtsʲ'], eat:['ꙗсти','jɑsti'], drink:['пити','piti'], love:['любъвь','lʲubɤvʲ'], heart:['срьдьце','srʲdʲtse'], tree:['дрѣво','drěvo'], house:['домъ','domɤ'], dog:['пьсъ','pʲsɤ'], cat:['котъка','kotɤkɑ'], hand:['рѫка','rõkɑ'], eye:['око','oko'], hello:['радоуисѧ','rɑdujisẽ'], thanks:['благодарьствоую','blɑɡodɑrʲstvuju'], one:['ѥдинъ','jedinɤ'], good:['добръ','dobrɤ'] }},
-  pi: { name: 'Pali', native: 'पालि', lat: 25.28, lng: 83.00,
-    words: { water:['udaka','udaka'], fire:['aggi','aɡɡi'], sun:['suriya','surija'], moon:['canda','tʃanda'], mother:['mātā','maːtaː'], father:['pitā','pitaː'], eat:['khādati','kʰaːdati'], drink:['pivati','pivati'], love:['pema','pema'], heart:['hadaya','hadaja'], tree:['rukkha','rukkʰa'], house:['ghara','ɡʰara'], dog:['sunakha','sunakʰa'], cat:['biḷāla','biɭaːla'], hand:['hattha','hatːʰa'], eye:['cakkhu','tʃakkʰu'], hello:['namo','namo'], thanks:['anumodāmi','anumodaːmi'], one:['eka','eka'], good:['sundara','sundara'] }},
+  pi: {
+    "name": "Pali",
+    "native": "पालि",
+    "lat": 25.28,
+    "lng": 83,
+    "words": {
+      "water": [
+        "उदक",
+        "udaka"
+      ],
+      "fire": [
+        "अग्गि",
+        "aɡɡi"
+      ],
+      "sun": [
+        "सुरिय",
+        "surija"
+      ],
+      "moon": [
+        "चन्द",
+        "tʃanda"
+      ],
+      "mother": [
+        "माता",
+        "maːtaː"
+      ],
+      "father": [
+        "पिता",
+        "pitaː"
+      ],
+      "eat": [
+        "खादति",
+        "kʰaːdati"
+      ],
+      "drink": [
+        "पिवति",
+        "pivati"
+      ],
+      "love": [
+        "पेम",
+        "pema"
+      ],
+      "heart": [
+        "हदय",
+        "hadaja"
+      ],
+      "tree": [
+        "रुक्ख",
+        "rukkʰa"
+      ],
+      "house": [
+        "घर",
+        "ɡʰara"
+      ],
+      "dog": [
+        "सुनख",
+        "sunakʰa"
+      ],
+      "cat": [
+        "बिळाल",
+        "biɭaːla"
+      ],
+      "hand": [
+        "हत्थ",
+        "hatːʰa"
+      ],
+      "eye": [
+        "चक्खु",
+        "tʃakkʰu"
+      ],
+      "hello": [
+        "नमो",
+        "namo"
+      ],
+      "thanks": [
+        "अनुमोदामि",
+        "anumodaːmi"
+      ],
+      "one": [
+        "एक",
+        "eka"
+      ],
+      "good": [
+        "सुन्दर",
+        "sundara"
+      ]
+    }
+  },
   cop: { name: 'Coptic', native: 'ⲙⲉⲧⲣⲉⲙⲛⲕⲏⲙⲉ', lat: 31.20, lng: 29.92,
     words: { water:['ⲙⲟⲟⲩ','moːu'], fire:['ⲕⲣⲱⲙ','krɔːm'], sun:['ⲣⲏ','reː'], moon:['ⲓⲟϩ','joːh'], mother:['ⲙⲁⲁⲩ','maːu'], father:['ⲉⲓⲱⲧ','ejɔːt'], eat:['ⲟⲩⲱⲙ','uɔːm'], drink:['ⲥⲱ','sɔː'], love:['ⲙⲉ','me'], heart:['ϩⲏⲧ','heːt'], tree:['ϣⲏⲛ','ʃeːn'], house:['ⲏⲓ','eːj'], dog:['ⲟⲩϩⲟⲣ','uhɔr'], cat:['ⲉⲙⲟⲩ','emu'], hand:['ϭⲓϫ','tʃidʒ'], eye:['ⲃⲁⲗ','bal'], hello:['ⲛⲟⲩϥⲣⲓ','nufri'], thanks:['ϣⲉⲡϩⲙⲟⲧ','ʃephmot'], one:['ⲟⲩⲁ','ua'], good:['ⲛⲁⲛⲟⲩ','nanu'] }},
   arc: { name: 'Aramaic', native: 'ܐܪܡܝܐ', lat: 33.51, lng: 36.29,
     words: { water:['ܡܝܐ','majaː'], fire:['ܢܘܪܐ','nuːraː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emːaː'], father:['ܐܒܐ','abːaː'], eat:['ܐܟܠ','aːχel'], drink:['ܫܬܐ','ʃtaː'], love:['ܚܘܒܐ','ħubːaː'], heart:['ܠܒܐ','lebːaː'], tree:['ܐܝܠܢܐ','iːlaːnaː'], house:['ܒܝܬܐ','bajtaː'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܫܘܢܪܐ','ʃuːnaːraː'], hand:['ܐܝܕܐ','iːðaː'], eye:['ܥܝܢܐ','ʕajnaː'], hello:['ܫܠܡܐ','ʃlaːmaː'], thanks:['ܬܘܕܝ','tawdiː'], one:['ܚܕ','ħað'], good:['ܛܒܐ','tˤaːβaː'] }},
-  sux: { name: 'Sumerian', native: 'emeg̃ir', lat: 30.96, lng: 46.10,
-    words: { water:['𒀀','a'], fire:['𒉈','izi'], sun:['𒌓','utu'], moon:['𒀭𒋀𒆠','nanːa'], mother:['𒂼','ama'], father:['𒀀𒁀','abːa'], eat:['𒅥','ɡu'], drink:['𒅘','naŋ'], love:['𒆠𒀀𒄀','ki.aŋ'], heart:['𒊮','ʃa'], tree:['𒄑','ŋeʃ'], house:['𒂍','e'], dog:['𒌨','ur'], cat:['𒌓𒊬','ʃa.tur'], hand:['𒋗','ʃu'], eye:['𒅊','iɡi'], hello:['𒁲','silim'], thanks:['𒋗𒇲','ʃulaː'], one:['𒀸','diʃ'], good:['𒊩𒌆','saŋ'] }},
-  akk: { name: 'Akkadian', native: 'akkadûm', lat: 33.34, lng: 44.40,
-    words: { water:['𒈬','muː'], fire:['𒉈𒌋','iʃaːtu'], sun:['𒀭𒌓','ʃamʃu'], moon:['𒀭𒌍','siːnu'], mother:['𒌝𒈬','umːu'], father:['𒀊','abu'], eat:['𒀀𒅗𒇻','akaːlu'], drink:['𒊮𒌅','ʃatuː'], love:['𒊏𒄠','raːmu'], heart:['𒇷𒅁','libːu'], tree:['𒄑','isˤu'], house:['𒂍','biːtu'], dog:['𒌨𒁇','kalbu'], cat:['𒋗𒊏𒉡','ʃuraːnu'], hand:['𒋗','qaːtu'], eye:['𒅆','iːnu'], hello:['𒁲','ʃulmu'], thanks:['𒁲𒌅','taʃlimtu'], one:['𒁹','iʃteːn'], good:['𒄭𒄀','damqu'] }},
-  hit: { name: 'Hittite', native: 'nešili', lat: 39.93, lng: 32.86,
-    words: { water:['wātar','waːtar'], fire:['paḫḫur','paxːur'], sun:['šiwatt-','ʃiwatː'], moon:['arma-','arma'], mother:['anna-','anːa'], father:['atta-','atːa'], eat:['ed-/ad-','ed'], drink:['eku-','eku'], love:['aš(š)iyant-','asːijant'], heart:['kard-','kard'], tree:['taru','taru'], house:['pir/per','per'], dog:['kuwan-','kuwan'], cat:['—','—'], hand:['keššar','kesːar'], eye:['šakuwa-','ʃakuwa'], hello:['aššu','asːu'], thanks:['—','—'], one:['1-aš','aʃ'], good:['aššu-','asːu'] }},
+  sux: {
+    "name": "Sumerian",
+    "native": "𒅴𒂠",
+    "lat": 30.96,
+    "lng": 46.1,
+    "words": {
+      "water": [
+        "𒀀",
+        "a"
+      ],
+      "fire": [
+        "𒉈",
+        "izi"
+      ],
+      "sun": [
+        "𒌓",
+        "utu"
+      ],
+      "moon": [
+        "𒀭𒋀𒆠",
+        "nanːa"
+      ],
+      "mother": [
+        "𒂼",
+        "ama"
+      ],
+      "father": [
+        "𒀀𒁀",
+        "abːa"
+      ],
+      "eat": [
+        "𒅥",
+        "ɡu"
+      ],
+      "drink": [
+        "𒅘",
+        "naŋ"
+      ],
+      "love": [
+        "𒆠𒀀𒄀",
+        "ki.aŋ"
+      ],
+      "heart": [
+        "𒊮",
+        "ʃa"
+      ],
+      "tree": [
+        "𒄑",
+        "ŋeʃ"
+      ],
+      "house": [
+        "𒂍",
+        "e"
+      ],
+      "dog": [
+        "𒌨",
+        "ur"
+      ],
+      "cat": [
+        "𒌓𒊬",
+        "ʃa.tur"
+      ],
+      "hand": [
+        "𒋗",
+        "ʃu"
+      ],
+      "eye": [
+        "𒅊",
+        "iɡi"
+      ],
+      "hello": [
+        "𒁲",
+        "silim"
+      ],
+      "thanks": [
+        "𒋗𒇲",
+        "ʃulaː"
+      ],
+      "one": [
+        "𒀸",
+        "diʃ"
+      ],
+      "good": [
+        "𒊩𒌆",
+        "saŋ"
+      ]
+    }
+  },
+  akk: {
+    "name": "Akkadian",
+    "native": "𒀝𒅗𒁺𒌝",
+    "lat": 33.34,
+    "lng": 44.4,
+    "words": {
+      "water": [
+        "𒈬",
+        "muː"
+      ],
+      "fire": [
+        "𒉈𒌋",
+        "iʃaːtu"
+      ],
+      "sun": [
+        "𒀭𒌓",
+        "ʃamʃu"
+      ],
+      "moon": [
+        "𒀭𒌍",
+        "siːnu"
+      ],
+      "mother": [
+        "𒌝𒈬",
+        "umːu"
+      ],
+      "father": [
+        "𒀊",
+        "abu"
+      ],
+      "eat": [
+        "𒀀𒅗𒇻",
+        "akaːlu"
+      ],
+      "drink": [
+        "𒊮𒌅",
+        "ʃatuː"
+      ],
+      "love": [
+        "𒊏𒄠",
+        "raːmu"
+      ],
+      "heart": [
+        "𒇷𒅁",
+        "libːu"
+      ],
+      "tree": [
+        "𒄑",
+        "isˤu"
+      ],
+      "house": [
+        "𒂍",
+        "biːtu"
+      ],
+      "dog": [
+        "𒌨𒁇",
+        "kalbu"
+      ],
+      "cat": [
+        "𒋗𒊏𒉡",
+        "ʃuraːnu"
+      ],
+      "hand": [
+        "𒋗",
+        "qaːtu"
+      ],
+      "eye": [
+        "𒅆",
+        "iːnu"
+      ],
+      "hello": [
+        "𒁲",
+        "ʃulmu"
+      ],
+      "thanks": [
+        "𒁲𒌅",
+        "taʃlimtu"
+      ],
+      "one": [
+        "𒁹",
+        "iʃteːn"
+      ],
+      "good": [
+        "𒄭𒄀",
+        "damqu"
+      ]
+    }
+  },
+  hit: {
+    "name": "Hittite",
+    "native": "𒉈𒅆𒇷",
+    "lat": 39.93,
+    "lng": 32.86,
+    "words": {
+      "water": [
+        "𒉿𒀀𒋻",
+        "waːtar"
+      ],
+      "fire": [
+        "𒉺𒄩𒄴𒄯",
+        "paxːur"
+      ],
+      "sun": [
+        "𒅆𒉿𒀜",
+        "ʃiwatː"
+      ],
+      "moon": [
+        "𒀀𒅈𒈠",
+        "arma"
+      ],
+      "mother": [
+        "𒀭𒈾",
+        "anːa"
+      ],
+      "father": [
+        "𒀜𒋫",
+        "atːa"
+      ],
+      "eat": [
+        "𒅕𒀀𒀜",
+        "ed"
+      ],
+      "drink": [
+        "𒅔𒆪",
+        "eku"
+      ],
+      "love": [
+        "𒀸𒅆𒅀𒀭",
+        "asːijant"
+      ],
+      "heart": [
+        "𒆗𒁕",
+        "kard"
+      ],
+      "tree": [
+        "𒋫𒊒",
+        "taru"
+      ],
+      "house": [
+        "𒉺𒅕",
+        "per"
+      ],
+      "dog": [
+        "𒆪𒉿𒀭",
+        "kuwan"
+      ],
+      "cat": [
+        "—",
+        "—"
+      ],
+      "hand": [
+        "𒆠𒅖𒊭𒅈",
+        "kesːar"
+      ],
+      "eye": [
+        "𒊭𒆪𒉿",
+        "ʃakuwa"
+      ],
+      "hello": [
+        "𒀸𒋗",
+        "asːu"
+      ],
+      "thanks": [
+        "—",
+        "—"
+      ],
+      "one": [
+        "𒁹",
+        "aʃ"
+      ],
+      "good": [
+        "𒀸𒋗",
+        "asːu"
+      ]
+    }
+  },
   nci: { name: 'Classical Nahuatl', native: 'Nāhuatl', lat: 19.43, lng: -99.13,
     words: { water:['ātl','aːtɬ'], fire:['tlētl','tɬeːtɬ'], sun:['tōnatiuh','toːnatiw'], moon:['mētztli','meːtstɬi'], mother:['nāntli','naːntɬi'], father:['tāhtli','taːtɬi'], eat:['tlacua','tɬakʷa'], drink:['ātli','aːtɬi'], love:['tlazōhtla','tɬasoːtɬa'], heart:['yōllōtl','joːlːoːtɬ'], tree:['cuahuitl','kʷawitɬ'], house:['calli','kalːi'], dog:['itzcuīntli','itskʷiːntɬi'], cat:['mīztōn','miːstoːn'], hand:['māitl','maːitɬ'], eye:['īxtli','iːʃtɬi'], hello:['niltze','niltse'], thanks:['tlazōhcāmati','tɬasoːʰkaːmati'], one:['cē','seː'], good:['cualli','kʷalːi'] }},
   myn: { name: 'Classical Maya', native: 'Maaya Tzij', lat: 14.63, lng: -90.51,
@@ -1025,27 +1455,479 @@ const LANG_DATA = {
     words: { water:['meenda','meːnda'], fire:['mulilo','mulilo'], sun:['zuba','zuba'], moon:['mwezi','mwezi'], mother:['bama','bama'], father:['bataata','bataːta'], eat:['kulya','kulja'], drink:['kunywa','kuɲwa'], love:['luyando','lujando'], heart:['moyo','mojo'], tree:['cisamu','tʃisamu'], house:['ng\'anda','ŋanda'], dog:['muvwa','muvwa'], cat:['kaaze','kaːze'], hand:['kuboko','kuboko'], eye:['liso','liso'], hello:['mwabuka buti','mwabuka buti'], thanks:['twalumba','twalumba'], one:['-mwi','mwi'], good:['kabotu','kabotu'] }},
   // === Phase 4: Historical / Ancient Languages ===
   // Indo-European (Old Iranian)
-  peo: { name: 'Old Persian', native: '𐎠𐎼𐎹', lat: 29.94, lng: 52.89, // Persepolis
-    words: { water:['āpa','aːpa'], fire:['ātar','aːtar'], sun:['huvar','huwar'], moon:['māha','maːha'], mother:['mātar','maːtar'], father:['pitā','pitaː'], eat:['xar-','xar'], drink:['pā-','paː'], love:['friya-','frija'], heart:['*zərd','zərd'], tree:['druma','druma'], house:['māniya','maːnija'], dog:['spaka','spaka'], cat:['*pišī','piʃiː'], hand:['dasta','dasta'], eye:['čašman','tʃaʃman'], hello:['*duruva','duruwa'], thanks:['*vahmaiy','wahmaij'], one:['aiwa','aiwa'], good:['naiba','naiba'] }},
-  ave: { name: 'Avestan', native: '𐬀𐬬𐬈𐬯𐬙𐬁', lat: 32.5, lng: 60.0, // east Iran / central Asia
-    words: { water:['ap','ap'], fire:['ātar','aːtar'], sun:['huuarə','huwarə'], moon:['māh','maːh'], mother:['mātar','maːtar'], father:['pitar','pitar'], eat:['xvar-','xwar'], drink:['pā-','paː'], love:['friia-','frija'], heart:['zərəd','zərəd'], tree:['vaesa','waesa'], house:['nmāna','nmaːna'], dog:['spā','spaː'], cat:['*pišī','piʃiː'], hand:['zasta','zasta'], eye:['čašman','tʃaʃman'], hello:['huš','huʃ'], thanks:['yasna','jasna'], one:['aēva','aewa'], good:['vohu','wohu'] }},
-  // Indo-European (Tocharian — Tarim Basin)
-  xto: { name: 'Tocharian A', native: 'ārśi käntwo', lat: 41.6, lng: 84.9, // Karashahr area
-    words: { water:['wär','wær'], fire:['por','por'], sun:['kontu','kontu'], moon:['mañ','mæɲ'], mother:['mācar','maːtsar'], father:['pācar','paːtsar'], eat:['śäw-','ɕæw'], drink:['yok-','jok'], love:['kāyu-','kaːju'], heart:['arāñc','araːɲts'], tree:['stām','staːm'], house:['waṣt','waʂt'], dog:['ku','ku'], cat:['*ku-mūṣ','kumuːʂ'], hand:['tsar','tsar'], eye:['ak','ak'], hello:['*ñom','ɲom'], thanks:['*kāsu','kaːsu'], one:['sas','sas'], good:['kāsu','kaːsu'] }},
-  txb: { name: 'Tocharian B', native: 'kuśiññe känte', lat: 41.7, lng: 82.95, // Kucha area
-    words: { water:['war','war'], fire:['puwar','puwar'], sun:['kauṃ','kauŋ'], moon:['meñe','meɲe'], mother:['mācer','maːtser'], father:['pācer','paːtser'], eat:['śuwa-','ɕuwa'], drink:['yok-','jok'], love:['kāwā-','kaːwaː'], heart:['aräñce','aɾæɲtse'], tree:['stām','staːm'], house:['ost','ost'], dog:['ku','ku'], cat:['*kweṃ','kweŋ'], hand:['ṣar','ʂar'], eye:['ek','ek'], hello:['*kartse','kartse'], thanks:['*kartsene','kartsene'], one:['ṣe','ʂe'], good:['kartse','kartse'] }},
-  // Northwest Semitic (Bronze/Iron Age Levant)
+  peo: {
+    "name": "Old Persian",
+    "native": "𐎠𐎼𐎹",
+    "lat": 29.94,
+    "lng": 52.89,
+    "words": {
+      "water": [
+        "𐎠𐎱",
+        "aːpa"
+      ],
+      "fire": [
+        "𐎠𐎫𐎼",
+        "aːtar"
+      ],
+      "sun": [
+        "𐏃𐎢𐎺𐎼",
+        "huwar"
+      ],
+      "moon": [
+        "𐎶𐎠𐏃",
+        "maːha"
+      ],
+      "mother": [
+        "𐎶𐎠𐎫𐎼",
+        "maːtar"
+      ],
+      "father": [
+        "𐎱𐎡𐎫𐎠",
+        "pitaː"
+      ],
+      "eat": [
+        "𐎧𐎼",
+        "xar"
+      ],
+      "drink": [
+        "𐎱𐎠",
+        "paː"
+      ],
+      "love": [
+        "𐎳𐎼𐎡𐎹",
+        "frija"
+      ],
+      "heart": [
+        "𐏀𐎼𐎭",
+        "zərd"
+      ],
+      "tree": [
+        "𐎭𐎼𐎢𐎶",
+        "druma"
+      ],
+      "house": [
+        "𐎶𐎠𐎴𐎡𐎹",
+        "maːnija"
+      ],
+      "dog": [
+        "𐎿𐎱𐎣",
+        "spaka"
+      ],
+      "cat": [
+        "𐎱𐎡𐏁𐎡",
+        "piʃiː"
+      ],
+      "hand": [
+        "𐎭𐎿𐎫",
+        "dasta"
+      ],
+      "eye": [
+        "𐏂𐏁𐎶𐎴",
+        "tʃaʃman"
+      ],
+      "hello": [
+        "𐎭𐎢𐎼𐎢𐎺",
+        "duruwa"
+      ],
+      "thanks": [
+        "𐎺𐏃𐎶𐎡𐎹",
+        "wahmaij"
+      ],
+      "one": [
+        "𐎠𐎡𐎺",
+        "aiwa"
+      ],
+      "good": [
+        "𐎴𐎡𐎲",
+        "naiba"
+      ]
+    }
+  },
+  ave: {
+    "name": "Avestan",
+    "native": "𐬀𐬬𐬈𐬯𐬙𐬁",
+    "lat": 32.5,
+    "lng": 60,
+    "words": {
+      "water": [
+        "𐬀𐬞",
+        "ap"
+      ],
+      "fire": [
+        "𐬁𐬙𐬀𐬭",
+        "aːtar"
+      ],
+      "sun": [
+        "𐬵𐬎𐬎𐬀𐬭𐬆",
+        "huwarə"
+      ],
+      "moon": [
+        "𐬨𐬁𐬵",
+        "maːh"
+      ],
+      "mother": [
+        "𐬨𐬁𐬙𐬀𐬭",
+        "maːtar"
+      ],
+      "father": [
+        "𐬞𐬌𐬙𐬀𐬭",
+        "pitar"
+      ],
+      "eat": [
+        "𐬑𐬬𐬀𐬭",
+        "xwar"
+      ],
+      "drink": [
+        "𐬞𐬁",
+        "paː"
+      ],
+      "love": [
+        "𐬟𐬭𐬌𐬌𐬀",
+        "frija"
+      ],
+      "heart": [
+        "𐬰𐬆𐬭𐬆𐬛",
+        "zərəd"
+      ],
+      "tree": [
+        "𐬬𐬀𐬉𐬯𐬀",
+        "waesa"
+      ],
+      "house": [
+        "𐬥𐬨𐬁𐬥𐬀",
+        "nmaːna"
+      ],
+      "dog": [
+        "𐬯𐬞𐬁",
+        "spaː"
+      ],
+      "cat": [
+        "𐬞𐬌𐬱𐬌",
+        "piʃiː"
+      ],
+      "hand": [
+        "𐬰𐬀𐬯𐬙𐬀",
+        "zasta"
+      ],
+      "eye": [
+        "𐬗𐬀𐬱𐬨𐬀𐬥",
+        "tʃaʃman"
+      ],
+      "hello": [
+        "𐬵𐬎𐬱",
+        "huʃ"
+      ],
+      "thanks": [
+        "𐬫𐬀𐬯𐬥𐬀",
+        "jasna"
+      ],
+      "one": [
+        "𐬀𐬉𐬬𐬀",
+        "aewa"
+      ],
+      "good": [
+        "𐬬𐬊𐬵𐬎",
+        "wohu"
+      ]
+    }
+  },
+  xto: {
+    "name": "Tocharian A",
+    "native": "𑀆𑀭𑁆𑀰𑀺 𑀓𑀾𑀦𑁆𑀢𑁆𑀯𑁄",
+    "lat": 41.6,
+    "lng": 84.9,
+    "words": {
+      "water": [
+        "𑀯𑀭𑁆",
+        "wær"
+      ],
+      "fire": [
+        "𑀧𑁄𑀭𑁆",
+        "por"
+      ],
+      "sun": [
+        "𑀓𑁄𑀦𑁆𑀢𑀼",
+        "kontu"
+      ],
+      "moon": [
+        "𑀫𑀜𑁆",
+        "mæɲ"
+      ],
+      "mother": [
+        "𑀫𑀸𑀘𑀭𑁆",
+        "maːtsar"
+      ],
+      "father": [
+        "𑀧𑀸𑀘𑀭𑁆",
+        "paːtsar"
+      ],
+      "eat": [
+        "𑀰𑀯𑁆",
+        "ɕæw"
+      ],
+      "drink": [
+        "𑀬𑁄𑀓𑁆",
+        "jok"
+      ],
+      "love": [
+        "𑀓𑀸𑀬𑀼",
+        "kaːju"
+      ],
+      "heart": [
+        "𑀅𑀭𑀸𑀜𑁆𑀘𑁆",
+        "araːɲts"
+      ],
+      "tree": [
+        "𑀲𑁆𑀢𑀸𑀫𑁆",
+        "staːm"
+      ],
+      "house": [
+        "𑀯𑀱𑁆𑀢𑁆",
+        "waʂt"
+      ],
+      "dog": [
+        "𑀓𑀼",
+        "ku"
+      ],
+      "cat": [
+        "𑀓𑀼𑀫𑀽𑀱𑁆",
+        "kumuːʂ"
+      ],
+      "hand": [
+        "𑀢𑁆𑀲𑀭𑁆",
+        "tsar"
+      ],
+      "eye": [
+        "𑀅𑀓𑁆",
+        "ak"
+      ],
+      "hello": [
+        "𑀜𑁄𑀫𑁆",
+        "ɲom"
+      ],
+      "thanks": [
+        "𑀓𑀸𑀲𑀼",
+        "kaːsu"
+      ],
+      "one": [
+        "𑀲𑀲𑁆",
+        "sas"
+      ],
+      "good": [
+        "𑀓𑀸𑀲𑀼",
+        "kaːsu"
+      ]
+    }
+  },
+  txb: {
+    "name": "Tocharian B",
+    "native": "𑀓𑀼𑀰𑀺𑀜𑁆𑀜𑁂 𑀓𑀾𑀦𑁆𑀢𑁂",
+    "lat": 41.7,
+    "lng": 82.95,
+    "words": {
+      "water": [
+        "𑀯𑀭𑁆",
+        "war"
+      ],
+      "fire": [
+        "𑀧𑀼𑀯𑀭𑁆",
+        "puwar"
+      ],
+      "sun": [
+        "𑀓𑁅𑀁",
+        "kauŋ"
+      ],
+      "moon": [
+        "𑀫𑁂𑀜𑁂",
+        "meɲe"
+      ],
+      "mother": [
+        "𑀫𑀸𑀘𑁂𑀭𑁆",
+        "maːtser"
+      ],
+      "father": [
+        "𑀧𑀸𑀘𑁂𑀭𑁆",
+        "paːtser"
+      ],
+      "eat": [
+        "𑀰𑀼𑀯",
+        "ɕuwa"
+      ],
+      "drink": [
+        "𑀬𑁄𑀓𑁆",
+        "jok"
+      ],
+      "love": [
+        "𑀓𑀸𑀯𑀸",
+        "kaːwaː"
+      ],
+      "heart": [
+        "𑀅𑀭𑀾𑀜𑁆𑀘𑁂",
+        "aɾæɲtse"
+      ],
+      "tree": [
+        "𑀲𑁆𑀢𑀸𑀫𑁆",
+        "staːm"
+      ],
+      "house": [
+        "𑁄𑀲𑁆𑀢𑁆",
+        "ost"
+      ],
+      "dog": [
+        "𑀓𑀼",
+        "ku"
+      ],
+      "cat": [
+        "𑀓𑁆𑀯𑁂𑀁",
+        "kweŋ"
+      ],
+      "hand": [
+        "𑀱𑀭𑁆",
+        "ʂar"
+      ],
+      "eye": [
+        "𑁂𑀓𑁆",
+        "ek"
+      ],
+      "hello": [
+        "𑀓𑀭𑁆𑀢𑁆𑀲𑁂",
+        "kartse"
+      ],
+      "thanks": [
+        "𑀓𑀭𑁆𑀢𑁆𑀲𑁂𑀦𑁂",
+        "kartsene"
+      ],
+      "one": [
+        "𑀱𑁂",
+        "ʂe"
+      ],
+      "good": [
+        "𑀓𑀭𑁆𑀢𑁆𑀲𑁂",
+        "kartse"
+      ]
+    }
+  },
   phn: { name: 'Phoenician', native: '𐤃𐤁𐤓𐤉𐤌 𐤊𐤍𐤏𐤍𐤉𐤌', lat: 33.27, lng: 35.20, // Tyre
     words: { water:['𐤌𐤌','majim'], fire:['𐤀𐤔','ʔeʃ'], sun:['𐤔𐤌𐤔','ʃameʃ'], moon:['𐤉𐤓𐤇','jaræħ'], mother:['𐤀𐤌','ʔem'], father:['𐤀𐤁','ʔab'], eat:['𐤀𐤊𐤋','ʔakal'], drink:['𐤔𐤕','ʃat'], love:['𐤀𐤇𐤁','ʔaheb'], heart:['𐤋𐤁','lib'], tree:['𐤏𐤑','ʕeʦʕ'], house:['𐤁𐤕','bajit'], dog:['𐤊𐤋𐤁','kalb'], cat:['𐤔𐤍𐤓','ʃunaːr'], hand:['𐤉𐤃','jad'], eye:['𐤏𐤍','ʕajin'], hello:['𐤔𐤋𐤌','ʃalom'], thanks:['𐤁𐤓𐤊','barak'], one:['𐤀𐤇𐤃','ʔeħad'], good:['𐤈𐤁','tˤob'] }},
   uga: { name: 'Ugaritic', native: '𐎜𐎂𐎗𐎚', lat: 35.60, lng: 35.78, // Ras Shamra
     words: { water:['𐎎𐎊','maju'], fire:['𐎛𐎌𐎚','ʔiʃt'], sun:['𐎌𐎔𐎌','ʃapʃ'], moon:['𐎊𐎗𐎈','jaːriχ'], mother:['𐎜𐎎','ʔumm'], father:['𐎜𐎁','ʔabu'], eat:['𐎍𐎈𐎎','laħam'], drink:['𐎌𐎚𐎊','ʃataju'], love:['𐎜𐎈𐎁','ʔaːhab'], heart:['𐎍𐎁','libbu'], tree:['𐎓𐎕','ʕaʦʕu'], house:['𐎁𐎚','bajtu'], dog:['𐎋𐎍𐎁','kalbu'], cat:['*𐎌𐎐𐎗','ʃunaːru'], hand:['𐎊𐎄','jadu'], eye:['𐎓𐎐','ʕajnu'], hello:['𐎌𐎍𐎎','ʃalaːmu'], thanks:['𐎁𐎗𐎋','baːriku'], one:['𐎀𐎈𐎄','ʔaːħadu'], good:['𐎉𐎁','tˤaːbu'] }},
   // Indo-European (Anatolian, Hittite-cousin)
-  xlu: { name: 'Luwian', native: 'lūwili', lat: 38.40, lng: 33.50, // central Anatolia
-    words: { water:['wadar','wadar'], fire:['paḫḫur','paːhːur'], sun:['Tiwad','tiwad'], moon:['Arma','arma'], mother:['anna','anna'], father:['tati','tati'], eat:['ad-','ad'], drink:['aku-','aku'], love:['*walāhi','walaːhi'], heart:['*kard-','kard'], tree:['alana','alana'], house:['parna','parna'], dog:['zuwana','zuwana'], cat:['*marwāra','marwaːra'], hand:['išša','iʃʃa'], eye:['hidu','hidu'], hello:['*ḫalzai','halzai'], thanks:['*wala','wala'], one:['as','as'], good:['walwa-','walwa'] }},
-  // Iranian (Sasanian)
-  pal: { name: 'Middle Persian', native: 'pārsīg', lat: 32.65, lng: 51.67, // central Iran
-    words: { water:['āb','aːb'], fire:['ātaš','aːtaʃ'], sun:['xwaršēd','xwarʃeːd'], moon:['māh','maːh'], mother:['mādar','maːdar'], father:['pidar','pidar'], eat:['xwardan','xwardan'], drink:['nōšīdan','noːʃiːdan'], love:['dōšī','doːʃiː'], heart:['dil','dil'], tree:['draxt','draxt'], house:['xānag','xaːnaɡ'], dog:['sag','saɡ'], cat:['gurbag','ɡurbaɡ'], hand:['dast','dast'], eye:['čašm','tʃaʃm'], hello:['drōd','droːd'], thanks:['spās','spaːs'], one:['ēk','eːk'], good:['weh','weh'] }},
-  // Aramaic (Classical/literary)
+  xlu: {
+    "name": "Luwian",
+    "native": "𔖻𔑯𔗬𔖻𔓯",
+    "lat": 38.4,
+    "lng": 33.5,
+    "words": {
+      "water": [
+        "𔓷𔗬𔖻𔑯",
+        "wadar"
+      ],
+      "fire": [
+        "𔑭𔖖𔖖𔗬",
+        "paːhːur"
+      ],
+      "sun": [
+        "𔖻𔗬𔑯",
+        "tiwad"
+      ],
+      "moon": [
+        "𔓯𔗬",
+        "arma"
+      ],
+      "mother": [
+        "𔑯𔑯",
+        "anna"
+      ],
+      "father": [
+        "𔑯𔑯𔗬",
+        "tati"
+      ],
+      "eat": [
+        "𔑯𔗬",
+        "ad"
+      ],
+      "drink": [
+        "𔑯𔓷",
+        "aku"
+      ],
+      "love": [
+        "𔓷𔗬𔓯",
+        "walaːhi"
+      ],
+      "heart": [
+        "𔓷𔗬𔖻",
+        "kard"
+      ],
+      "tree": [
+        "𔑯𔓯",
+        "alana"
+      ],
+      "house": [
+        "𔑭𔗬𔑯",
+        "parna"
+      ],
+      "dog": [
+        "𔖻𔓷𔑯",
+        "zuwana"
+      ],
+      "cat": [
+        "𔓯𔗬𔑯",
+        "marwaːra"
+      ],
+      "hand": [
+        "𔖻𔑯",
+        "iʃʃa"
+      ],
+      "eye": [
+        "𔖖𔗬",
+        "hidu"
+      ],
+      "hello": [
+        "𔖖𔓯",
+        "halzai"
+      ],
+      "thanks": [
+        "𔓷𔗬",
+        "wala"
+      ],
+      "one": [
+        "𔑯",
+        "as"
+      ],
+      "good": [
+        "𔓷𔓷",
+        "walwa"
+      ]
+    }
+  },
+  pal: {
+    "name": "Middle Persian",
+    "native": "𐭯𐭠𐭫𐭮𐭩𐭪",
+    "lat": 32.65,
+    "lng": 51.67,
+    "words": {
+      "water": ["𐭠𐭯", "aːb"],
+      "fire": ["𐭠𐭲𐭱", "aːtaʃ"],
+      "sun": ["𐭧𐭥𐭫𐭱𐭩𐭲", "xwarʃeːd"],
+      "moon": ["𐭬𐭠𐭧", "maːh"],
+      "mother": ["𐭬𐭠𐭲𐭫", "maːdar"],
+      "father": ["𐭯𐭩𐭲𐭫", "pidar"],
+      "eat": ["𐭧𐭥𐭫𐭲𐭭", "xwardan"],
+      "drink": ["𐭭𐭥𐭱𐭩𐭲𐭭", "noːʃiːdan"],
+      "love": ["𐭲𐭥𐭱𐭩", "doːʃiː"],
+      "heart": ["𐭣𐭩𐭫", "dil"],
+      "tree": ["𐭣𐭫𐭧𐭲", "draxt"],
+      "house": ["𐭧𐭠𐭭𐭪", "xaːnaɡ"],
+      "dog": ["𐭮𐭢", "saɡ"],
+      "cat": ["𐭢𐭥𐭫𐭡𐭢", "ɡurbaɡ"],
+      "hand": ["𐭣𐭮𐭲", "dast"],
+      "eye": ["𐭰𐭱𐭬", "tʃaʃm"],
+      "hello": ["𐭣𐭫𐭥𐭲", "droːd"],
+      "thanks": ["𐭮𐭯𐭠𐭮", "spaːs"],
+      "one": ["𐭠𐭩𐭪", "eːk"],
+      "good": ["𐭥𐭩𐭧", "weh"]
+    }
+  },
   syc: { name: 'Classical Syriac', native: 'ܠܫܢܐ ܣܘܪܝܝܐ', lat: 37.16, lng: 38.78, // Edessa
     words: { water:['ܡܝܐ','majjaː'], fire:['ܢܘܪܐ','nuːraː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emmaː'], father:['ܐܒܐ','abbaː'], eat:['ܐܟܠ','ʔeχal'], drink:['ܐܫܬܝ','ʔeʃtiː'], love:['ܚܘܒܐ','ħuːbbaː'], heart:['ܠܒܐ','lebbaː'], tree:['ܐܝܠܢܐ','ʔiːlaːnaː'], house:['ܒܝܬܐ','bajtaː'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܫܘܢܪܐ','ʃuːnaːraː'], hand:['ܐܝܕܐ','ʔiːdaː'], eye:['ܥܝܢܐ','ʕajnaː'], hello:['ܫܠܡܐ','ʃlaːmaː'], thanks:['ܫܘܒܚܐ','ʃubħaː'], one:['ܚܕ','ħad'], good:['ܛܒܐ','tˤaːbaː'] }},
   // Old Romance / Old Germanic
@@ -1058,29 +1940,455 @@ const LANG_DATA = {
     words: { water:['ማይ','maːj'], fire:['እሳት','əsaːt'], sun:['ፀሐይ','sˤaħaj'], moon:['ወርኅ','warχ'], mother:['እም','əmm'], father:['አብ','ʔab'], eat:['በልዐ','balʕa'], drink:['ሰትየ','satja'], love:['አፍቀረ','ʔafqara'], heart:['ልብ','ləbb'], tree:['ዕፅ','ʕəsˤ'], house:['ቤት','beːt'], dog:['ከልብ','kalb'], cat:['ድሙ','dəmmu'], hand:['እድ','ʔəd'], eye:['ዐይን','ʕajn'], hello:['ሰላም','salaːm'], thanks:['ምስጋና','məsgaːnaː'], one:['አሐዱ','ʔaħadu'], good:['ሠናይ','sˤannaːj'] }},
   // === Phase 4B: more Historical / Ancient Languages ===
   // Pre-Greek
-  gmy: { name: 'Mycenaean Greek', native: '𐀀𐀐𐀊', lat: 37.73, lng: 22.76, // Mycenae
-    words: { water:['u-do','hudɔːr'], fire:['*pur','pyːr'], sun:['*hāwelios','haːwelios'], moon:['*mēn','mɛːn'], mother:['ma-te','maːtɛːr'], father:['pa-te','patɛːr'], eat:['*edmenai','edmenai'], drink:['*pinō','piːnɔː'], love:['*philos','pʰilos'], heart:['*kardia','kardia'], tree:['*do-ka','dorka'], house:['wo-i-ko','woikos'], dog:['*kuwōn','kuwɔːn'], cat:['*ailouros','ailuros'], hand:['*kheir','kʰɛːr'], eye:['*ophthalmos','opʰtʰalmos'], hello:['*khaire','kʰaire'], thanks:['*kharis','kʰaris'], one:['*hen','hen'], good:['*agathos','agatʰos'] }},
-  // Sino-Tibetan (Classical)
+  gmy: {
+    "name": "Mycenaean Greek",
+    "native": "𐀀𐀐𐀊",
+    "lat": 37.73,
+    "lng": 22.76,
+    "words": {
+      "water": [
+        "𐀓𐀈",
+        "hudɔːr"
+      ],
+      "fire": [
+        "𐀢",
+        "pyːr"
+      ],
+      "sun": [
+        "𐀀𐀺𐀂𐀍",
+        "haːwelios"
+      ],
+      "moon": [
+        "𐀕",
+        "mɛːn"
+      ],
+      "mother": [
+        "𐀔𐀳",
+        "maːtɛːr"
+      ],
+      "father": [
+        "𐀞𐀳",
+        "patɛːr"
+      ],
+      "eat": [
+        "𐀁𐀈𐀕𐀙",
+        "edmenai"
+      ],
+      "drink": [
+        "𐀡𐀜",
+        "piːnɔː"
+      ],
+      "love": [
+        "𐀠𐀩𐀍",
+        "pʰilos"
+      ],
+      "heart": [
+        "𐀒𐀵𐀆",
+        "kardia"
+      ],
+      "tree": [
+        "𐀈𐀏",
+        "dorka"
+      ],
+      "house": [
+        "𐀺𐀂𐀒",
+        "woikos"
+      ],
+      "dog": [
+        "𐀓𐀺",
+        "kuwɔːn"
+      ],
+      "cat": [
+        "𐀀𐀂𐀨𐀫",
+        "ailuros"
+      ],
+      "hand": [
+        "𐀐𐀁",
+        "kʰɛːr"
+      ],
+      "eye": [
+        "𐀀𐀡𐀰𐀗𐀳",
+        "opʰtʰalmos"
+      ],
+      "hello": [
+        "𐀐𐀂𐀩",
+        "kʰaire"
+      ],
+      "thanks": [
+        "𐀐𐀩",
+        "kʰaris"
+      ],
+      "one": [
+        "𐀁",
+        "hen"
+      ],
+      "good": [
+        "𐀀𐀏𐀳",
+        "agatʰos"
+      ]
+    }
+  },
   xct: { name: 'Classical Tibetan', native: 'ཆོས་སྐད', lat: 29.65, lng: 91.10, // Lhasa area
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཕ','pʰa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['བཀྲ་ཤིས་བདེ་ལེགས','tʂaʃi deleks'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʒe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   // Late Phoenician (Carthage)
   xpu: { name: 'Punic', native: '𐤐𐤍𐤊', lat: 36.87, lng: 10.32, // Carthage
     words: { water:['𐤌𐤉𐤌','majim'], fire:['𐤀𐤔','ʔeʃ'], sun:['𐤔𐤌𐤔','ʃameʃ'], moon:['𐤉𐤓𐤇','jeraħ'], mother:['𐤀𐤌','ʔem'], father:['𐤀𐤁','ʔav'], eat:['𐤀𐤊𐤋','ʔakal'], drink:['𐤔𐤕','ʃat'], love:['𐤀𐤇𐤁','ʔaheb'], heart:['𐤋𐤁','lib'], tree:['𐤏𐤑','ʕeʦʕ'], house:['𐤁𐤕','bajit'], dog:['𐤊𐤋𐤁','kalb'], cat:['*𐤔𐤍𐤓','ʃunaːr'], hand:['𐤉𐤃','jad'], eye:['𐤏𐤍','ʕajin'], hello:['𐤔𐤋𐤌','ʃalom'], thanks:['𐤁𐤓𐤊','barak'], one:['𐤀𐤇𐤃','ʔeħad'], good:['𐤈𐤁','tˤob'] }},
   // Ancient Near East (isolates / poorly classified)
-  xhu: { name: 'Hurrian', native: 'Ḫurrili', lat: 36.86, lng: 40.04, // Mitanni / Tell Brak
-    words: { water:['šie','ʃie'], fire:['*tatu','tatu'], sun:['Šimegi','ʃimeɡi'], moon:['Kušuh','kuʃuh'], mother:['*ena','ena'], father:['attai','attai'], eat:['*am-','am'], drink:['*nahw-','nahw'], love:['*tadu-','tadu'], heart:['*šuni','ʃuni'], tree:['tappi','tappi'], house:['*ipri','ipri'], dog:['*irma','irma'], cat:['*šawazi','ʃawazi'], hand:['*šuni','ʃuni'], eye:['*šini','ʃini'], hello:['*ḫillu','hilːu'], thanks:['*aši','aʃi'], one:['ša','ʃa'], good:['*aşi','aʦi'] }},
-  elx: { name: 'Elamite', native: 'Hatamtam', lat: 32.19, lng: 48.26, // Susa
-    words: { water:['*hi','hi'], fire:['*par','par'], sun:['Nahhunte','nahhunte'], moon:['Napir','napir'], mother:['amma','amma'], father:['atta','atta'], eat:['*haš-','haʃ'], drink:['*nu-','nu'], love:['*lik-','lik'], heart:['*ulhi','ulhi'], tree:['*hutk','hutk'], house:['hal','hal'], dog:['*kut-','kut'], cat:['*tigra','tiɡra'], hand:['kušu','kuʃu'], eye:['*tukki','tukːi'], hello:['*šilha','ʃilha'], thanks:['*lihari','lihari'], one:['kir','kir'], good:['rūhū','ruːhuː'] }},
-  // Ancient South Arabia
+  xhu: {
+    "name": "Hurrian",
+    "native": "𒄩𒌨𒊑𒇷",
+    "lat": 36.86,
+    "lng": 40.04,
+    "words": {
+      "water": [
+        "𒅆𒂊",
+        "ʃie"
+      ],
+      "fire": [
+        "𒋫𒌅",
+        "tatu"
+      ],
+      "sun": [
+        "𒅆𒈨𒄀",
+        "ʃimeɡi"
+      ],
+      "moon": [
+        "𒆪𒋢𒄴",
+        "kuʃuh"
+      ],
+      "mother": [
+        "𒂊𒈾",
+        "ena"
+      ],
+      "father": [
+        "𒀜𒋫𒀀𒄿",
+        "attai"
+      ],
+      "eat": [
+        "𒄠",
+        "am"
+      ],
+      "drink": [
+        "𒈾𒄴𒉿",
+        "nahw"
+      ],
+      "love": [
+        "𒋫𒁺",
+        "tadu"
+      ],
+      "heart": [
+        "𒋗𒉌",
+        "ʃuni"
+      ],
+      "tree": [
+        "𒋫𒁉",
+        "tappi"
+      ],
+      "house": [
+        "𒅁𒊑",
+        "ipri"
+      ],
+      "dog": [
+        "𒅕𒈠",
+        "irma"
+      ],
+      "cat": [
+        "𒊭𒉿𒍣",
+        "ʃawazi"
+      ],
+      "hand": [
+        "𒋗𒉌",
+        "ʃuni"
+      ],
+      "eye": [
+        "𒅆𒉌",
+        "ʃini"
+      ],
+      "hello": [
+        "𒄭𒇻",
+        "hilːu"
+      ],
+      "thanks": [
+        "𒀀𒅆",
+        "aʃi"
+      ],
+      "one": [
+        "𒊭",
+        "ʃa"
+      ],
+      "good": [
+        "𒀀𒍣",
+        "aʦi"
+      ]
+    }
+  },
+  elx: {
+    "name": "Elamite",
+    "native": "𒁹𒋾𒈠𒋾",
+    "lat": 32.19,
+    "lng": 48.26,
+    "words": {
+      "water": [
+        "𒄭",
+        "hi"
+      ],
+      "fire": [
+        "𒉺𒅈",
+        "par"
+      ],
+      "sun": [
+        "𒀭𒈾𒄴𒄭𒌅",
+        "nahhunte"
+      ],
+      "moon": [
+        "𒀭𒈾𒁉𒅕",
+        "napir"
+      ],
+      "mother": [
+        "𒀀𒈠",
+        "amma"
+      ],
+      "father": [
+        "𒀜𒋫",
+        "atta"
+      ],
+      "eat": [
+        "𒄩𒊭",
+        "haʃ"
+      ],
+      "drink": [
+        "𒉡",
+        "nu"
+      ],
+      "love": [
+        "𒇷𒅗",
+        "lik"
+      ],
+      "heart": [
+        "𒌋𒄭",
+        "ulhi"
+      ],
+      "tree": [
+        "𒄷𒌅𒆪",
+        "hutk"
+      ],
+      "house": [
+        "𒄩𒀠",
+        "hal"
+      ],
+      "dog": [
+        "𒆪𒌅",
+        "kut"
+      ],
+      "cat": [
+        "𒋾𒅗𒊏",
+        "tiɡra"
+      ],
+      "hand": [
+        "𒆪𒋗",
+        "kuʃu"
+      ],
+      "eye": [
+        "𒌅𒆠",
+        "tukːi"
+      ],
+      "hello": [
+        "𒅆𒅋𒄩",
+        "ʃilha"
+      ],
+      "thanks": [
+        "𒇷𒄩𒊑",
+        "lihari"
+      ],
+      "one": [
+        "𒆠𒅕",
+        "kir"
+      ],
+      "good": [
+        "𒊒𒄷",
+        "ruːhuː"
+      ]
+    }
+  },
   xsa: { name: 'Sabaean', native: '𐩪𐩨𐩱', lat: 15.45, lng: 45.35, // Marib
     words: { water:['𐩣𐩺','maːʔ'], fire:['𐩱𐩪','ʔas'], sun:['𐩦𐩣𐩪','ʃams'], moon:['𐩥𐩧𐩭','warkʰ'], mother:['𐩱𐩣','ʔumm'], father:['𐩱𐩨','ʔab'], eat:['𐩱𐩫𐩡','ʔakal'], drink:['𐩪𐩩𐩺','ʃataja'], love:['𐩥𐩵𐩵','wadda'], heart:['𐩡𐩨','lubb'], tree:['𐩲𐩳','ʕaːð'], house:['𐩨𐩺𐩩','bajt'], dog:['𐩫𐩡𐩨','kalb'], cat:['*𐩪𐩬𐩬𐩥𐩧','sannawːar'], hand:['𐩺𐩵','jad'], eye:['𐩲𐩺𐩬','ʕajn'], hello:['𐩪𐩡𐩣','salaːm'], thanks:['𐩦𐩫𐩧','ʃakar'], one:['𐩱𐩢𐩵','ʔaħad'], good:['𐩷𐩨','tˤajjib'] }},
   // Old Javanese
-  kaw: { name: 'Old Javanese (Kawi)', native: 'Bhāṣa Kawi', lat: -7.79, lng: 110.36, // Yogyakarta
-    words: { water:['warih','warih'], fire:['agni','aɡni'], sun:['surya','suɾja'], moon:['candra','tʃandra'], mother:['ibu','ibu'], father:['rama','rama'], eat:['amangan','amaŋan'], drink:['aminum','aminum'], love:['sih','sih'], heart:['hati','hati'], tree:['kayu','kaju'], house:['umah','umah'], dog:['asu','asu'], cat:['mong','moŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['rahayu','rahaju'], thanks:['nuwun','nuwun'], one:['eka','eka'], good:['hayu','haju'] }},
-  // Iranian (Silk Road)
-  kho: { name: 'Khotanese', native: 'hvatanau', lat: 37.11, lng: 79.93, // Khotan
-    words: { water:['ūdā','uːdaː'], fire:['ātar','aːtar'], sun:['urma','urma'], moon:['māsta','maːsta'], mother:['māta','maːta'], father:['pita','pita'], eat:['parätä','parætæ'], drink:['pīa-','piːa'], love:['arrū','arːuː'], heart:['*ysī','ðiː'], tree:['drru','drːu'], house:['byāha','bjaːha'], dog:['śu','ɕu'], cat:['*śśrau','ɕːrau'], hand:['dasta','dasta'], eye:['tcheśman','tʃʰeʃman'], hello:['*drrūdī','drːuːdiː'], thanks:['*pyaśta','pjaʃta'], one:['śśau','ɕːau'], good:['viratta','viratːa'] }},
-  // Middle High German
+  kaw: {
+    "name": "Old Javanese (Kawi)",
+    "native": "ꦨꦴꦰꦏꦮꦶ",
+    "lat": -7.79,
+    "lng": 110.36,
+    "words": {
+      "water": [
+        "ꦮꦫꦶꦃ",
+        "warih"
+      ],
+      "fire": [
+        "ꦄꦒ꧀ꦤꦶ",
+        "aɡni"
+      ],
+      "sun": [
+        "ꦱꦸꦂꦪ",
+        "suɾja"
+      ],
+      "moon": [
+        "ꦕꦤ꧀ꦢꦿ",
+        "tʃandra"
+      ],
+      "mother": [
+        "ꦆꦧꦸ",
+        "ibu"
+      ],
+      "father": [
+        "ꦫꦩ",
+        "rama"
+      ],
+      "eat": [
+        "ꦄꦩꦔꦤ꧀",
+        "amaŋan"
+      ],
+      "drink": [
+        "ꦄꦩꦶꦤꦸꦩ꧀",
+        "aminum"
+      ],
+      "love": [
+        "ꦱꦶꦃ",
+        "sih"
+      ],
+      "heart": [
+        "ꦲꦠꦶ",
+        "hati"
+      ],
+      "tree": [
+        "ꦏꦪꦸ",
+        "kaju"
+      ],
+      "house": [
+        "ꦈꦩꦃ",
+        "umah"
+      ],
+      "dog": [
+        "ꦄꦱꦸ",
+        "asu"
+      ],
+      "cat": [
+        "ꦩꦺꦴꦁ",
+        "moŋ"
+      ],
+      "hand": [
+        "ꦠꦔꦤ꧀",
+        "taŋan"
+      ],
+      "eye": [
+        "ꦩꦠ",
+        "mata"
+      ],
+      "hello": [
+        "ꦫꦲꦪꦸ",
+        "rahaju"
+      ],
+      "thanks": [
+        "ꦤꦸꦮꦸꦤ꧀",
+        "nuwun"
+      ],
+      "one": [
+        "ꦌꦏ",
+        "eka"
+      ],
+      "good": [
+        "ꦲꦪꦸ",
+        "haju"
+      ]
+    }
+  },
+  kho: {
+    "name": "Khotanese",
+    "native": "𑀳𑁆𑀯𑀢𑀦𑀽",
+    "lat": 37.11,
+    "lng": 79.93,
+    "words": {
+      "water": [
+        "𑀊𑀤𑀸",
+        "uːdaː"
+      ],
+      "fire": [
+        "𑀆𑀢𑀭",
+        "aːtar"
+      ],
+      "sun": [
+        "𑀉𑀭𑁆𑀫",
+        "urma"
+      ],
+      "moon": [
+        "𑀫𑀸𑀲𑁆𑀢",
+        "maːsta"
+      ],
+      "mother": [
+        "𑀫𑀸𑀢",
+        "maːta"
+      ],
+      "father": [
+        "𑀧𑀺𑀢",
+        "pita"
+      ],
+      "eat": [
+        "𑀧𑀭𑀢",
+        "parætæ"
+      ],
+      "drink": [
+        "𑀧𑀻𑀅",
+        "piːa"
+      ],
+      "love": [
+        "𑀅𑀭𑁆𑀭𑀽",
+        "arːuː"
+      ],
+      "heart": [
+        "𑀬𑀲𑀻",
+        "ðiː"
+      ],
+      "tree": [
+        "𑀤𑁆𑀭𑀼",
+        "drːu"
+      ],
+      "house": [
+        "𑀩𑁆𑀬𑀸𑀳",
+        "bjaːha"
+      ],
+      "dog": [
+        "𑀰𑀼",
+        "ɕu"
+      ],
+      "cat": [
+        "𑀰𑁆𑀰𑁆𑀭𑀅𑀼",
+        "ɕːrau"
+      ],
+      "hand": [
+        "𑀤𑀲𑁆𑀢",
+        "dasta"
+      ],
+      "eye": [
+        "𑀘𑁂𑀰𑁆𑀫𑀦𑁆",
+        "tʃʰeʃman"
+      ],
+      "hello": [
+        "𑀤𑁆𑀭𑀽𑀤𑀻",
+        "drːuːdiː"
+      ],
+      "thanks": [
+        "𑀧𑁆𑀬𑀰𑁆𑀢",
+        "pjaʃta"
+      ],
+      "one": [
+        "𑀰𑁆𑀰𑀅𑀼",
+        "ɕːau"
+      ],
+      "good": [
+        "𑀯𑀺𑀭𑀢𑁆𑀢",
+        "viratːa"
+      ]
+    }
+  },
   gmh: { name: 'Middle High German', native: 'diutsch', lat: 50.00, lng: 8.27, // Mainz / Rhine
     words: { water:['wazzer','watsːer'], fire:['viur','viur'], sun:['sunne','ˈzunːə'], moon:['mâne','ˈmaːnə'], mother:['muoter','ˈmuoːtər'], father:['vater','ˈfatər'], eat:['ezzen','ˈetsːən'], drink:['trinken','ˈtrinkən'], love:['minne','ˈminːə'], heart:['herze','ˈhertsə'], tree:['boum','boum'], house:['hûs','huːs'], dog:['hunt','hunt'], cat:['katze','ˈkatsːə'], hand:['hant','hant'], eye:['ouge','ˈougə'], hello:['gegrüezet','ɡəˈɡryːətsət'], thanks:['danc','dank'], one:['ein','ein'], good:['guot','ɡuoːt'] }},
   // Old Spanish (Castilian)
