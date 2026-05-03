@@ -57,6 +57,18 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-03</div>
+            <ul>
+                <li><strong>Word Map: Linguistic filter panel</strong> — new "フィルター" button in the top-left controls opens a multi-select chip panel for typologically-meaningful categories: <em>語族 (family), 文字 (script), 語順 (word order), 声調 (tonal), 形態論 (morphology), 話者数 (speaker tier)</em>. AND across categories, OR within. Non-matching languages dim to 0.12 opacity so the spatial context is preserved.</li>
+                <li>All 526 languages are covered via a two-tier resolution: <strong>FAMILY_DEFAULTS</strong> per language family (e.g. all Sinitic varieties default to SVO + tonal + isolating; all Uralic Finnic to SVO + agglutinative) plus per-language overrides for outliers. Word order, tone, and morphology now have 100% coverage.</li>
+                <li>Family and script chip lists collapse to the top entries with a <em>"+ もっと表示 (N件)"</em> toggle so the long tail of small families doesn't overwhelm the panel on first open.</li>
+                <li>Filter eagerly loads <code>wordmap_meta.js</code> on init so chip counts and feature data are available immediately rather than waiting for the user to first open a language detail panel.</li>
+                <li><strong>Word Map: compound metadata translations</strong> — the language detail panel's <em>family / countries / official / script</em> fields no longer fall through to English for compound strings like "Niger-Congo (Bantu, Nguni)" or "Russia (Sakha Republic), Mongolia, China". A smart composite translator decomposes commas / slashes / parentheses, translates each piece via <code>META_I18N</code> exact match → per-UI-lang atom dictionary, and recombines with locale-appropriate separators (CJK 「（）／、」, others ASCII). Coverage: ja 100%, ko/zh/yue 92–95%, others 86–92% across all 22 UI languages.</li>
+                <li><strong>Word Map: IPA tone notation unified</strong> — 278 IPA entries across 14 Chinese dialects (Min Bei, Pu-Xian Min, Teochew, Wenzhounese, Suzhou Wu, Ningbo Wu, Hui, Pinghua, Sze Yap Yue, Cantonese, Pinghua, three Mandarin sub-varieties) converted from digit-pair notation (e.g. <code>sui33</code>, <code>tsuy213</code>) to Chao tone letters (<code>sui˧˧</code>, <code>tsuy˨˩˧</code>) for consistency with the other 22 tonal-language entries.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-04-21 – 2026-04-24</div>
             <ul>
                 <li>New: <strong>Word Map</strong> (<a href="wordmap.html">wordmap.html</a>) — an interactive world map showing 20 key words (water, fire, sun, mother, hello, etc.) in 226 languages with IPA pronunciations.</li>
