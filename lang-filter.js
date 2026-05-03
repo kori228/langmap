@@ -363,6 +363,16 @@
 
     // ----- Speaker tier parsing -------------------------------------------
 
+    function tierFor(count) {
+        if (count >= 100_000_000) return '100M+';
+        if (count >= 10_000_000)  return '10M+';
+        if (count >= 1_000_000)   return '1M+';
+        if (count >= 100_000)     return '100K+';
+        if (count >= 10_000)      return '10K+';
+        if (count >= 1_000)       return '1K+';
+        return '<1K';
+    }
+
     function parseSpeakerTier(spkStr) {
         if (!spkStr) return null;
         const s = String(spkStr);
@@ -370,15 +380,8 @@
         const m = s.match(/(\d+(?:\.\d+)?)\s*([KMB])/i)
               || s.match(/(\d+(?:\.\d+)?)\s*(?:billion|million|thousand)/i);
         if (!m) {
-            // Look for plain numbers
             const n = parseInt(s.replace(/[^\d]/g, ''), 10);
-            if (!isNaN(n)) {
-                if (n >= 100_000_000) return '100M+';
-                if (n >= 10_000_000)  return '10M+';
-                if (n >= 1_000_000)   return '1M+';
-                if (n >= 100_000)     return '100K+';
-                return '<100K';
-            }
+            if (!isNaN(n) && n > 0) return tierFor(n);
             return null;
         }
         const num = parseFloat(m[1]);
@@ -388,14 +391,10 @@
         else if (unit === 'M' || unit === 'MILLION') count = num * 1_000_000;
         else if (unit === 'K' || unit === 'THOUSAND')count = num * 1_000;
         else count = num;
-        if (count >= 100_000_000) return '100M+';
-        if (count >= 10_000_000)  return '10M+';
-        if (count >= 1_000_000)   return '1M+';
-        if (count >= 100_000)     return '100K+';
-        return '<100K';
+        return tierFor(count);
     }
 
-    const SPEAKER_TIERS = ['100M+', '10M+', '1M+', '100K+', '<100K'];
+    const SPEAKER_TIERS = ['100M+', '10M+', '1M+', '100K+', '10K+', '1K+', '<1K'];
 
     // ----- Family aggregation (top-level only, drop parens) ---------------
 

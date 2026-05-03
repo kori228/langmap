@@ -57,6 +57,14 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-03 (cont.)</div>
+            <ul>
+                <li><strong>Word Map: Vietnamese dialect tones differentiated</strong> — 18 IPA entries across vi_c (Huế) and vi_s (Sài Gòn) now use dialect-specific tone realizations instead of copying the Hà Nội values. Examples: <code>fire lửa</code> (hỏi tone) vi <code>˧˩˧</code> → vi_c <code>˧˩</code> (Huế falling, no rise back) → vi_s <code>˨˩˥</code> (Saigon merger of hỏi/ngã, low-rising); <code>one một</code> (nặng-checked) vi <code>˨˩</code> → vi_c <code>˨˨</code> (Huế low level, no glottal) → vi_s <code>˨˩˨</code> (Saigon low-rising). Differentiation rules: vi_c shifts huyền to <code>˧˨</code>, sắc to <code>˩˧</code>, hỏi to <code>˧˩</code>, nặng to <code>˨˨</code>; vi_s merges hỏi/ngã to <code>˨˩˥</code> and shifts nặng to <code>˨˩˨</code>. Ngang (no diacritic) is preserved unchanged since the existing transcription is inconsistent and ngang doesn't differ across the three dialects.</li>
+                <li><strong>Word Map: speaker-tier filter subdivided</strong> — the <em>話者数 Speakers</em> filter, previously bottoming out at "&lt;100K", now adds three finer buckets: <code>10K+</code> (41 languages), <code>1K+</code> (27), <code>&lt;1K</code> (21). The 89 endangered / minority languages that were previously lumped together can now be individually filtered.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-03</div>
             <ul>
                 <li><strong>Word Map: Linguistic filter panel</strong> — new "フィルター" button in the top-left controls opens a multi-select chip panel for typologically-meaningful categories: <em>語族 (family), 文字 (script), 語順 (word order), 声調 (tonal), 形態論 (morphology), 話者数 (speaker tier)</em>. AND across categories, OR within. Non-matching languages dim to 0.12 opacity so the spatial context is preserved.</li>
