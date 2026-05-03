@@ -57,6 +57,24 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04</div>
+            <ul>
+                <li><strong>Word Map: filter classification fixes</strong> — pass over <code>lang-filter.js</code> based on a Codex review plus additional manual cross-check:
+                    <ul>
+                        <li><strong>Speaker-tier parser</strong> — strings with ranges or BCE/CE date spans (e.g. <code>~5,000–10,000</code>, <code>~20–200</code>, <code>Extinct (~550-330 BCE)</code>) were being concatenated into a giant integer (<code>500010000</code>) and bucketed as <code>100M+</code>. Rewrite to take only the first numeric group, treat ranges as their lower bound, and return null for extinct entries without an explicit speaker count. Knock-on effects: Jeju (~5–10K) drops from 100M+ to 1K+; Ket (~20–200) from 10K+ to &lt;1K; Klingon (~20–30 fluent) from 1K+ to &lt;1K; ~50 extinct languages no longer appear in any speaker tier.</li>
+                        <li><strong>Punjabi (pa)</strong> — was <code>SVO + non-tonal</code> due to a duplicate F-set assignment. Now <code>SOV + tonal + fusional</code> (Punjabi is the only major tonal Indo-Aryan).</li>
+                        <li><strong>Sino-Tibetan (Min Nan / Wu / Yue)</strong> — these family strings exist in the data but had no <code>FAMILY_DEFAULTS</code> entry, so <code>nan_pn</code>, <code>wuu_nb</code>, <code>yue_gz</code> fell back to plain <code>Sino-Tibetan</code> (SOV+agglutinative). Add Sinitic-style defaults: <code>SVO + tonal + isolating</code>.</li>
+                        <li><strong>Swahili / Wolof / Amharic</strong> — were inheriting Niger-Congo / Bantu / Semitic tonal defaults, but per WALS all three are non-tonal. Override.</li>
+                        <li><strong>Finnish / Estonian</strong> — were bundled in a Uralic SOV F-set together with Hungarian, masking the correct <code>Uralic (Finnic)</code> SVO family default. Removed; both now correctly resolve to SVO.</li>
+                        <li><strong>Polynesian / Philippine languages</strong> — Tagalog, Cebuano, Ilocano, Hawaiian, Maori, Samoan, Tongan, Fijian, Palauan were all bundled into an Austronesian SVO override. These are predicate-initial (VSO/VOS); split out and reassigned to <code>VSO</code>.</li>
+                        <li><strong>Klingon (tlh)</strong> — was SVO; now <code>OVS</code> (the language's defining typological feature by Marc Okrand's design).</li>
+                    </ul>
+                </li>
+                <li>Pitch-accent languages (Japanese, Norwegian, Ainu, Korean Busan/Gyeongsang) remain in the non-tonal bucket pending a UI design decision on whether to add a pitch-accent / lexical-tone three-way split.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-03 (cont.)</div>
             <ul>
                 <li><strong>Word Map: Vietnamese dialect tones differentiated</strong> — 18 IPA entries across vi_c (Huế) and vi_s (Sài Gòn) now use dialect-specific tone realizations instead of copying the Hà Nội values. Examples: <code>fire lửa</code> (hỏi tone) vi <code>˧˩˧</code> → vi_c <code>˧˩</code> (Huế falling, no rise back) → vi_s <code>˨˩˥</code> (Saigon merger of hỏi/ngã, low-rising); <code>one một</code> (nặng-checked) vi <code>˨˩</code> → vi_c <code>˨˨</code> (Huế low level, no glottal) → vi_s <code>˨˩˨</code> (Saigon low-rising). Differentiation rules: vi_c shifts huyền to <code>˧˨</code>, sắc to <code>˩˧</code>, hỏi to <code>˧˩</code>, nặng to <code>˨˨</code>; vi_s merges hỏi/ngã to <code>˨˩˥</code> and shifts nặng to <code>˨˩˨</code>. Ngang (no diacritic) is preserved unchanged since the existing transcription is inconsistent and ngang doesn't differ across the three dialects.</li>

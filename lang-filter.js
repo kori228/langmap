@@ -78,6 +78,13 @@
         'Sino-Tibetan (Karenic)':       { wo: 'SVO', tone: true,  morph: 'isolating' },
         'Sino-Tibetan (Naic/Loloish)':  { wo: 'SOV', tone: true,  morph: 'isolating' },
         // All Sinitic sub-variants explicitly tonal SVO
+        // Some entries in the data list these as `Sino-Tibetan (Min Nan)`
+        // etc. (parent name) rather than `Sinitic (...)`. Without these
+        // explicit aliases the lookup falls back to plain `Sino-Tibetan`
+        // (SOV+tonal+agglutinative) which is wrong for Sinitic varieties.
+        'Sino-Tibetan (Min Nan)':       { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sino-Tibetan (Wu)':            { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sino-Tibetan (Yue)':           { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin)':           { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin, Jianghuai)':{ wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin, Ji-Lu)':    { wo: 'SVO', tone: true, morph: 'isolating' },
@@ -266,12 +273,23 @@
         { wo: 'SVO', tone: true, morph: 'isolating' });
     set(['vi','vi_c','vi_s','vi_nom'], { wo: 'SVO', tone: true, morph: 'isolating' });
     set(['th','th_isan','th_n','th_s','lo','za'], { wo: 'SVO', tone: true, morph: 'isolating' });
-    set(['id','ms','jv','su','ceb','tl','ilo','tpi','fj','sm','mi','haw','to','pau'],
+    // Western Malayo-Polynesian + creoles: SVO
+    set(['id','ms','jv','su','tpi'],
         { wo: 'SVO', tone: false, morph: 'agglutinative' });
-    set(['sw','zu','xh','sn','ig','yo','wo','ha','ln','ny','rw','om','so','ti','am','tig','tir'],
+    // Polynesian and Philippine languages: VSO/VOS predicate-initial
+    set(['tl','ceb','ilo','fj','sm','mi','haw','to','pau'],
+        { wo: 'VSO', tone: false, morph: 'agglutinative' });
+    set(['zu','xh','sn','ig','yo','ha','ln','ny','rw','om','so','ti','tig','tir'],
         { wo: 'SVO', tone: true, morph: 'agglutinative' });
-    set(['eo','tok','jbo','tlh','ht','pap'],
+    // Notable Niger-Congo / Semitic exceptions to the family tonal default:
+    // Swahili, Wolof, and Amharic are non-tonal (per WALS).
+    set(['sw'], { wo: 'SVO', tone: false, morph: 'agglutinative' });
+    set(['wo'], { wo: 'SVO', tone: false, morph: 'agglutinative' });
+    set(['am'], { wo: 'SOV', tone: false, morph: 'fusional' });
+    set(['eo','tok','jbo','ht','pap'],
         { wo: 'SVO', tone: false, morph: 'isolating' });
+    // Klingon: famously OVS by design.
+    set(['tlh'], { wo: 'OVS', tone: false, morph: 'agglutinative' });
     set(['el','el_grc','sq','arc','akk','phn','egy','el_med','grc','cop'],
         { wo: 'SVO', tone: false, morph: 'fusional' });
     set(['mt','tig'], { wo: 'SVO', tone: false, morph: 'fusional' });
@@ -284,10 +302,14 @@
         { wo: 'SOV', tone: false, morph: 'agglutinative' });
     set(['tr','az','tk','kk','ky','uz','mn','mn_cn','mnc','ug','sah'],
         { wo: 'SOV', tone: false, morph: 'agglutinative' });
-    set(['hu','fi','et','se'],
-        { wo: 'SOV', tone: false, morph: 'agglutinative' });
-    set(['hi','ur','bn','pa','gu','mr','ne','si','sa','pi','as','or','sd','ks','sd'],
+    // Hungarian is Ugric (SOV-leaning). Finnish, Estonian, and Northern Sámi
+    // are Finnic/Sámi (SVO) — leave them to fall back to the family default
+    // rather than wrongly bundling them in.
+    set(['hu'], { wo: 'SOV', tone: false, morph: 'agglutinative' });
+    set(['hi','ur','bn','gu','mr','ne','si','sa','pi','as','or','sd','ks'],
         { wo: 'SOV', tone: false, morph: 'fusional' });
+    // Punjabi is Indo-Aryan SOV but uniquely tonal among major Indo-Aryans.
+    set(['pa'], { wo: 'SOV', tone: true, morph: 'fusional' });
     set(['fa','ckb','ku','ps','tg'],
         { wo: 'SOV', tone: false, morph: 'fusional' });
     set(['hy','ka','eu','tr_ott'],
@@ -323,7 +345,7 @@
     // Other tonal-language overrides (in case wo not yet covered)
     set(['hmn','ii','hak_cn','wuu','yue','cdo','nan','zh_db','zh_sc'],
         { tone: true });
-    set(['pa','sgs','lt','lv'],
+    set(['sgs','lt','lv'],
         { wo: 'SVO', tone: false, morph: 'fusional' });
     set(['lt','lv','lt_old'], { wo: 'SVO' });
 
@@ -376,22 +398,41 @@
     function parseSpeakerTier(spkStr) {
         if (!spkStr) return null;
         const s = String(spkStr);
-        // Match "~125M", "1.5B", "300K", "12 million", etc.
-        const m = s.match(/(\d+(?:\.\d+)?)\s*([KMB])/i)
-              || s.match(/(\d+(?:\.\d+)?)\s*(?:billion|million|thousand)/i);
-        if (!m) {
-            const n = parseInt(s.replace(/[^\d]/g, ''), 10);
-            if (!isNaN(n) && n > 0) return tierFor(n);
-            return null;
+
+        // Skip year-range strings like "Extinct (~550-330 BCE)" — those are
+        // historical date ranges, not speaker counts. Without this guard the
+        // generic digit-stripping path would concat the digits and report
+        // 100M+ for an extinct language.
+        if (/extinct/i.test(s)) {
+            // Allow only if there's an explicit speaker-count phrase
+            // (e.g. "Extinct, 100 fluent speakers")
+            if (!/(\d+(?:[.,]\d+)?)\s*(?:[KMB]\b|million|billion|thousand|speaker)/i.test(s)) {
+                return null;
+            }
         }
-        const num = parseFloat(m[1]);
-        const unit = (m[2] || s.match(/(billion|million|thousand)/i)[1]).toUpperCase();
-        let count;
-        if (unit === 'B' || unit === 'BILLION')      count = num * 1_000_000_000;
-        else if (unit === 'M' || unit === 'MILLION') count = num * 1_000_000;
-        else if (unit === 'K' || unit === 'THOUSAND')count = num * 1_000;
-        else count = num;
-        return tierFor(count);
+
+        // Try B/M/K (or word forms) — match the FIRST occurrence so ranges
+        // like "~5,000–10,000" or "~30-50M" use the lower bound.
+        const unitRe = /(\d+(?:[.,]\d+)?)\s*(B\b|M\b|K\b|billion|million|thousand)/i;
+        const m = s.match(unitRe);
+        if (m) {
+            const num = parseFloat(m[1].replace(/,/g, ''));
+            const u = m[2].toUpperCase();
+            let count;
+            if (u === 'B' || u === 'BILLION')       count = num * 1_000_000_000;
+            else if (u === 'M' || u === 'MILLION')  count = num * 1_000_000;
+            else                                    count = num * 1_000;
+            return tierFor(count);
+        }
+
+        // Plain numeric (with optional commas), take FIRST number group only.
+        // "~5,000–10,000" → "5,000" → 5000. "~20–200" → "20" → 20.
+        const plain = s.match(/(\d{1,3}(?:,\d{3})+|\d+)/);
+        if (plain) {
+            const n = parseInt(plain[1].replace(/,/g, ''), 10);
+            if (!isNaN(n) && n > 0) return tierFor(n);
+        }
+        return null;
     }
 
     const SPEAKER_TIERS = ['100M+', '10M+', '1M+', '100K+', '10K+', '1K+', '<1K'];
