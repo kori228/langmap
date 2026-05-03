@@ -44,7 +44,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 13: ancient Asian additions
   'och','ojp','vsa','txg','sog','otk',
   // Phase 13b: NE Asian + SE Asian ancient
-  'zkt','juc','omx','pyx','obr','occ'
+  'zkt','juc','omx','pyx','obr','occ',
+  // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
+  'orv','xsc','sukh','xmr','onw','cqu','omc','chb','oma','osu','otl'
 ]);
 
 const LANG_DATA = {
@@ -2525,10 +2527,12 @@ const LANG_DATA = {
   kxm: { name: 'Northern Khmer', native: 'ភាសាខ្មែរ (Surin)', lat: 14.88, lng: 103.49, // Surin
     words: { water:['ទឹក','tək'], fire:['ភ្លើង','pʰlɤːŋ'], sun:['ថ្ងៃ','tŋai'], moon:['ខែ','kʰae'], mother:['ម៉ែ','maɛ'], father:['ប៉ា','paː'], eat:['ស៊ី','siː'], drink:['ផឹក','pʰək'], love:['ស្រឡាញ់','sralaɲ'], heart:['ចិត្ត','tɕit'], tree:['ដើមឈើ','daəm tʃʰəː'], house:['ផ្ទះ','ptʰeah'], dog:['ឆ្កែ','tʃʰkae'], cat:['ឆ្មា','tʃʰmaː'], hand:['ដៃ','daj'], eye:['ភ្នែក','pʰnɛːk'], hello:['សួស្តី','suːəsdəj'], thanks:['អរគុណ','ʔɔːkun'], one:['មួយ','muːj'], good:['ល្អ','lʔɑː'] }},
   // Mongolian (historical)
-  // Middle Mongolian — moved south to avoid overlap with Old Turkic at Orkhon.
-  // Now uses Traditional Mongolian script (vertical) for word forms with
-  // Latin transliteration in the IPA field.
-  xng: { name: 'Middle Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ', lat: 43.50, lng: 107.00, // central Mongolia / Yuan-era
+  // Middle Mongolian. Co-located with Old Turkic at the Orkhon valley
+  // (Karakorum area) — the wordmap's coordGroup logic auto-stacks labels
+  // sharing the same lat/lng so they don't overlap visually.
+  // Word forms use Traditional Mongolian script (vertical) with Latin
+  // transliteration in the IPA field.
+  xng: { name: 'Middle Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ', lat: 47.20, lng: 102.83, // Karakorum / Orkhon valley
     words: { water:['ᠤᠰᠤᠨ','usun'], fire:['ᠭᠠᠯ','ɣal'], sun:['ᠨᠠᠷᠠᠨ','naran'], moon:['ᠰᠠᠷᠠ','sara'], mother:['ᠡᠭᠡ','eke'], father:['ᠡᠴᠢᠭᠡ','etʃiɡe'], eat:['ᠢᠳᠡ','ide'], drink:['ᠤᠭᠤ','oɣu'], love:['ᠳᠤᠷᠠ','dura'], heart:['ᠵᠢᠷᠦᠭᠡ','dʒirüke'], tree:['ᠮᠣᠳᠤᠨ','modun'], house:['ᠭᠡᠷ','ɡer'], dog:['ᠨᠣᠬᠠᠢ','nokai'], cat:['ᠮᠢᠭᠤᠢ','miɣui'], hand:['ᠭᠠᠷ','ɣar'], eye:['ᠨᠢᠳᠦᠨ','nidün'], hello:['ᠠᠮᠤᠷ','amur'], thanks:['ᠪᠠᠶᠠᠷᠯᠠᠪᠠ','bajarlaba'], one:['ᠨᠢᠭᠡᠨ','niɡen'], good:['ᠰᠠᠶᠢᠨ','sain'] }},
   // Japanese dialects (additional)
   ja_kg: { name: 'Japanese (Kagoshima)', native: '日本語(鹿児島)', lat: 31.59, lng: 130.55, // Kagoshima
@@ -2606,6 +2610,57 @@ const LANG_DATA = {
   tar: { name: 'Tarahumara', native: 'Rarámuri', lat: 27.75, lng: -107.63, // Creel
     words: { water:['bawí','bawi'], fire:['nahí','nahi'], sun:['rayó','ɾajo'], moon:['mecá','metʃa'], mother:['iyé','ije'], father:['onó','ono'], eat:['ko\'a','koʔa'], drink:['bahí','bahi'], love:['nakí','naki'], heart:['surí','suɾi'], tree:['gokó','ɡoko'], house:['kalí','kali'], dog:['kochí','kotʃi'], cat:['misí','misi'], hand:['sekuá','sekwa'], eye:['pusí','pusi'], hello:['kuira','kuiɾa'], thanks:['matéterabá','mateteɾaba'], one:['bilé','bile'], good:['galá','ɡala'] }},
 
+  // === Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient ===
+  // Old East Slavic — Kievan Rus' (10-15c.), ancestor of Russian/Ukrainian/Belarusian.
+  // Old Cyrillic with archaic letters (yus, yer, yat).
+  orv: { name: 'Old East Slavic', native: 'рꙋсьскъ ꙗꙁꙑкъ', lat: 50.45, lng: 30.52, // Kyiv
+    words: { water:['вода','voda'], fire:['огнь','ogonu'], sun:['сълньце','sŭlnĭtse'], moon:['мѣсѧць','měsętsĭ'], mother:['мати','mati'], father:['отьць','otĭtsĭ'], eat:['ѣсти','ěsti'], drink:['пити','piti'], love:['любити','ljubiti'], heart:['сьрдьце','sĭrdĭtse'], tree:['дрѣво','drěvo'], house:['домъ','domŭ'], dog:['пьсъ','pĭsŭ'], cat:['котъка','kotŭka'], hand:['рѫка','rǫka'], eye:['око','oko'], hello:['здравъ','zdravŭ'], thanks:['благодарю','blagodarju'], one:['одинъ','odinŭ'], good:['добръ','dobrŭ'] }},
+  // Scythian — Iranian, NE/SE European steppes (~7c. BCE - 4c. CE). Very fragmentary;
+  // mostly known through Greek transcriptions of names + Ossetian cognates. Many entries
+  // are reconstructed proxies based on Avestan/Old Iranian.
+  xsc: { name: 'Scythian', native: 'Skuda', lat: 47.00, lng: 35.00, // Pontic steppe
+    words: { water:['ap','ap'], fire:['ātar','aːtar'], sun:['hvar','xʷar'], moon:['māh','maːh'], mother:['mātar','maːtar'], father:['pitar','pitar'], eat:['xwartan','xʷartan'], drink:['—','—'], love:['—','—'], heart:['zard-','zard'], tree:['—','—'], house:['—','—'], dog:['spaka','spaka'], cat:['—','—'], hand:['zasta','zasta'], eye:['čašm','tʃaʃm'], hello:['—','—'], thanks:['—','—'], one:['aiwa','aiwa'], good:['vohu','wohu'] }},
+  // Old Thai (Sukhothai era) — 13c. Ramkhamhaeng inscription (1283), the earliest
+  // attested Thai. Sukhothai script, ancestor of modern Thai. Many words cognate
+  // with modern Thai.
+  sukh: { name: 'Old Thai (Sukhothai)', native: 'ภาสาไทย (สุโขทัย)', lat: 17.02, lng: 99.82,
+    words: { water:['น้ำ','naːm'], fire:['ไฟ','faj'], sun:['ตะวัน','tawan'], moon:['เดือน','dɯːan'], mother:['แม่','mɛː'], father:['พ่อ','pʰɔː'], eat:['กิน','kin'], drink:['กิน','kin'], love:['รัก','rak'], heart:['ใจ','tɕaj'], tree:['ไม้','maːj'], house:['เรือน','rɯːan'], dog:['หมา','maː'], cat:['แมว','mɛːw'], hand:['มือ','mɯː'], eye:['ตา','taː'], hello:['สวัสดี','sawatdiː'], thanks:['ขอบใจ','kʰɔːp tɕaj'], one:['หนึ่ง','nɯŋ'], good:['ดี','diː'] }},
+  // Meroitic — Kingdom of Kush / Meroe (Sudan, ~3c. BCE - 4c. CE). Two scripts
+  // (Hieroglyphic U+10980, Cursive U+109A0). Script deciphered (Griffith), but
+  // language still poorly understood; many entries are titles, names, or unknown.
+  xmr: { name: 'Meroitic', native: '𐦨𐦫𐦡𐦴𐦢𐦤', lat: 16.94, lng: 33.72, // Meroe
+    words: { water:['𐦠𐦴','at'], fire:['—','—'], sun:['𐦨𐦬','ms'], moon:['—','—'], mother:['𐦢𐦫𐦡𐦡','kdke'], father:['𐦡𐦢','qor'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['𐦞𐦢𐦮𐦤','akheniska'] }},
+  // Old Nubian — Christian Nubian kingdoms (Makuria, Alodia; 8-15c.). Coptic-derived
+  // alphabet with extra Nubian letters; well-attested via translations of biblical and
+  // liturgical texts.
+  onw: { name: 'Old Nubian', native: 'ⲛⲟⲩⲃⲓⲁ ⲡⲁⲡⲁⲗⲁ', lat: 18.70, lng: 30.80, // Old Dongola
+    words: { water:['ⲁⲙ','am'], fire:['ⲓⲕ','ik'], sun:['ⲙⲁⲥⲁⲗ','masal'], moon:['ⲟⲩⲣⲟⲛ','uron'], mother:['ⲉⲛ','en'], father:['ⲁⲃ','ab'], eat:['ⲕⲁⲃ','kab'], drink:['ϫⲓ','dʒi'], love:['ⲇⲟⲩⲗⲗ','dull'], heart:['ⲉⲓⲡ','eip'], tree:['ⲕⲟ','ko'], house:['ⲇⲟⲩⲗ','dul'], dog:['ⲡⲱⲗ','poːl'], cat:['—','—'], hand:['ⲇⲉⲥⲥⲓ','dessi'], eye:['ⲙⲁⲥⲥⲓ','massi'], hello:['ⲉⲓⲗⲗⲉ','ille'], thanks:['ⲡⲓⲥⲧⲁ','pista'], one:['ⲱⲉⲣ','wer'], good:['ⲇⲱⲗⲗⲉ','dolle'] }},
+  // Classical Quechua — lingua franca of the Inca Empire (~15-16c.). Latin script
+  // (Spanish friars). Well-attested; Cuzco Quechua is the closest modern descendant.
+  cqu: { name: 'Classical Quechua', native: 'Runa simi', lat: -13.53, lng: -71.97, // Cuzco
+    words: { water:['yaku','jaku'], fire:['nina','nina'], sun:['inti','inti'], moon:['killa','killa'], mother:['mama','mama'], father:['tayta','tajta'], eat:['mikhuy','mikʰuj'], drink:['upyay','upjaj'], love:['munay','munaj'], heart:['sunqu','suŋqu'], tree:["sach'a","satʃʼa"], house:['wasi','wasi'], dog:['allqu','aʎqu'], cat:['misi','misi'], hand:['maki','maki'], eye:['ñawi','ɲawi'], hello:['rimaykullayki','rimajkuʎajki'], thanks:['añay','aɲaj'], one:['huk','huk'], good:['allin','aʎin'] }},
+  // Mochica / Yunga — pre-Columbian Pacific coast Peru. No native script; vocabulary
+  // recorded by Carrera Daza (1644). Limited attestation; many entries are tentative.
+  omc: { name: 'Mochica', native: 'Yunga', lat: -8.11, lng: -79.03, // Trujillo / Chan Chan
+    words: { water:['lā','laː'], fire:['oc','ok'], sun:['jiang','dʒiaŋ'], moon:['si','si'], mother:['eng','eŋ'], father:['ef','ef'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['polæng','polæŋ'], tree:['—','—'], house:['æn','æn'], dog:['fanu','fanu'], cat:['—','—'], hand:['mæcæc','mætʃætʃ'], eye:['lecɥ','letʃ'], hello:['—','—'], thanks:['—','—'], one:['onæc','onæk'], good:['peñaeñ','peɲaeɲ'] }},
+  // Chibcha / Muisca — pre-Columbian Andean Colombia. Recorded in Lugo's grammar
+  // (1619) and the Anonymous grammar (early 17c.). Latin transcription.
+  chb: { name: 'Chibcha', native: 'Muysccubun', lat: 5.00, lng: -73.10, // Bogotá highlands
+    words: { water:['sié','sje'], fire:['gata','gata'], sun:['súa','sua'], moon:['chía','tʃia'], mother:['waia','waia'], father:['paba','paba'], eat:['quychua','kʷitʃwa'], drink:['biohotysuca','bjohoty'], love:['chihizagosqua','tʃihizagoskwa'], heart:['puyquy','pujkʷy'], tree:['quye','kʷye'], house:['gué','gwe'], dog:['to','to'], cat:['—','—'], hand:['ytaca','ytaka'], eye:['upcua','upkʷa'], hello:['chibu','tʃibu'], thanks:['chibchachoa','tʃibtʃatʃoa'], one:['ata','ata'], good:['choin','tʃoin'] }},
+  // Old Malay — Srivijaya inscriptions (7c. CE+); the Kedukan Bukit (683) is the
+  // earliest. Pallava-derived Brahmi script; many words cognate with modern Malay.
+  oma: { name: 'Old Malay', native: 'bhāṣā Mlayu kuna', lat: -2.99, lng: 104.76, // Palembang
+    words: { water:['ayar','ajar'], fire:['api','api'], sun:['matari','matari'], moon:['bulan','bulan'], mother:['ibu','ibu'], father:['bapa','bapa'], eat:['makan','makan'], drink:['minum','minum'], love:['sayang','sajaŋ'], heart:['hati','hati'], tree:['kayu','kaju'], house:['rumah','rumah'], dog:['anjing','andʒiŋ'], cat:['kucing','kutʃiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['salam','salam'], thanks:['tarima kasih','tarima kasih'], one:['sa','sa'], good:['baik','baik'] }},
+  // Old Sundanese — Sunda Kingdom / Pajajaran (14-16c.). Old Sundanese script
+  // (Brahmic; ancestor of modern Sundanese script).
+  osu: { name: 'Old Sundanese', native: 'basa Sunda buhun', lat: -6.59, lng: 106.80, // Pakuan Pajajaran
+    words: { water:['cai','tʃai'], fire:['seuneu','sɯnɯ'], sun:['poé','poe'], moon:['bulan','bulan'], mother:['indung','induŋ'], father:['bapa','bapa'], eat:['dahar','dahar'], drink:['nginum','ŋinum'], love:['nyaah','ɲaːh'], heart:['hate','hate'], tree:['tangkal','taŋkal'], house:['imah','imah'], dog:['anjing','andʒiŋ'], cat:['ucing','utʃiŋ'], hand:['leungeun','lɯŋɯn'], eye:['panon','panon'], hello:['wilujeng','wiludʒəŋ'], thanks:['nuhun','nuhun'], one:['hiji','hidʒi'], good:['hade','hade'] }},
+  // Old Tagalog (pre-Hispanic) — used Baybayin script (Tagalog block U+1700).
+  // Vocabulary attested via early Spanish-era dictionaries (Pedro de San Buenaventura,
+  // 1613). Many words still in modern Tagalog.
+  otl: { name: 'Old Tagalog', native: 'ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔', lat: 14.60, lng: 120.98, // Manila / Tondo
+    words: { water:['ᜆᜓᜊᜒᜄ᜔','tubig'], fire:['ᜀᜉᜓᜌ᜔','apuj'], sun:['ᜀᜇᜏ᜔','araw'], moon:['ᜊᜓᜏᜈ᜔','buwan'], mother:['ᜁᜈ','ina'], father:['ᜀᜋ','ama'], eat:['ᜃᜁᜈ᜔','kain'], drink:['ᜁᜈᜓᜋ᜔','inom'], love:['ᜁᜊᜒᜄ᜔','ibig'], heart:['ᜉᜓᜐᜓ','puso'], tree:['ᜃᜑᜓᜌ᜔','kahoj'], house:['ᜊᜑᜌ᜔','bahaj'], dog:['ᜀᜐᜓ','aso'], cat:['ᜉᜓᜐ','pusa'], hand:['ᜃᜋᜌ᜔','kamaj'], eye:['ᜋᜆ','mata'], hello:['ᜋᜊᜓᜑᜌ᜔','mabuhaj'], thanks:['ᜐᜎᜋᜆ᜔','salamat'], one:['ᜁᜐ','isa'], good:['ᜋᜊᜓᜆᜒ','mabuti'] }},
+
   // === Phase 13b: Northeast Asian + SE Asian ancient languages ===
   // Khitan — Liao dynasty (907-1125). Khitan Small Script (U+18B00-U+18CFF)
   // is partially deciphered; many words use Latin transliteration based on
@@ -2651,9 +2706,11 @@ const LANG_DATA = {
   // Latin transliteration shown; native Sogdian script (Aramaic-derived) is U+10F30.
   sog: { name: 'Sogdian', native: 'sγwδyk', lat: 39.65, lng: 66.97,
     words: { water:['ʾāp','aːp'], fire:['ʾātar','aːtar'], sun:['xwr','xwar'], moon:['mʾx','maːx'], mother:['mʾtr','maːtar'], father:['ptr','pitar'], eat:['xwartan','xwartan'], drink:['pi-','pi'], love:['frytk','friːtak'], heart:['dyl','dil'], tree:['drxt','draxt'], house:['kṯʾk','katʰaːk'], dog:['ʾkw','aːkuː'], cat:['—','—'], hand:['dst','dast'], eye:['cšm','tʃaʃm'], hello:['drwd','druːd'], thanks:['—','—'], one:['yw','jɛw'], good:['nyk','neːk'] }},
-  // Old Turkic — Orkhon inscriptions (8c.). Earliest Turkic written record. Orkhon valley, Mongolia.
+  // Old Turkic — Orkhon inscriptions (8c.). Earliest Turkic written record.
+  // Co-located with Middle Mongolian at Karakorum/Orkhon (47.20, 102.83);
+  // the wordmap auto-stacks shared-coord labels.
   // Orthography in Old Turkic script (U+10C00-U+10C4F) where attested; Latin in IPA field.
-  otk: { name: 'Old Turkic', native: '𐱅𐰇𐰼𐰰', lat: 47.56, lng: 102.83,
+  otk: { name: 'Old Turkic', native: '𐱅𐰇𐰼𐰰', lat: 47.20, lng: 102.83,
     words: { water:['𐰽𐰆𐰉','sub'], fire:['𐰆𐱃','ot'], sun:['𐰚𐰰𐰣','kyn'], moon:['𐰀𐰖','aj'], mother:['𐰆𐰍','oɣ'], father:['𐰴𐰭','qaŋ'], eat:['𐰘𐰃-','je'], drink:['𐰃𐰲-','itʃ'], love:['𐰽𐰋-','sæb'], heart:['𐰚𐰭𐰠','køŋyl'], tree:['𐰃𐰍𐰲','ɯɣatʃ'], house:['𐰋','æb'], dog:['𐰃𐱃','it'], cat:['—','—'], hand:['𐰘𐰠𐰏','elig'], eye:['𐰚𐰕','køz'], hello:['𐰰𐰠𐰢','esænmy'], thanks:['—','—'], one:['𐰋𐰃𐰼','bir'], good:['𐰓𐰏𐰢','ædɡy'] }},
 };
 

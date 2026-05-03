@@ -196,6 +196,11 @@
         'Mayan (Cholan-Tseltalan)':{ wo: 'VOS', tone: false, morph: 'agglutinative' },
         'Quechuan':                { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Aymaran':                 { wo: 'SOV', tone: false, morph: 'agglutinative' },
+        'Chibchan':                { wo: 'SOV', tone: false, morph: 'agglutinative' },
+        // Meroitic — language isolate / debated affiliation
+        'Meroitic':                { wo: 'SVO', tone: false, morph: 'agglutinative' },
+        // Old Nubian — Eastern Sudanic (Nilo-Saharan)
+        'Nilo-Saharan (Eastern Sudanic)': { wo: 'SOV', tone: true,  morph: 'agglutinative' },
         'Tupian':                  { wo: 'SVO', tone: false, morph: 'polysynthetic' },
         'Eskimo-Aleut':            { wo: 'SOV', tone: false, morph: 'polysynthetic' },
         'Eskimo-Aleut (Inuit)':    { wo: 'SOV', tone: false, morph: 'polysynthetic' },

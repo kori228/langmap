@@ -23,7 +23,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -167,14 +167,16 @@
                 "Noto Sans Old Turkic", "Noto Sans Mongolian", "Noto Sans Sogdian",
                 "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
-                sans-serif;
+                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
+                "Noto Sans Coptic", sans-serif;
         }
         .globe-label .word, .lang-label .ipa, .globe-label .ipa {
             font-family: system-ui, -apple-system, "Segoe UI", "Noto Serif Tangut",
                 "Noto Sans Old Turkic", "Noto Sans Mongolian", "Noto Sans Sogdian",
                 "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
-                sans-serif;
+                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
+                "Noto Sans Coptic", sans-serif;
         }
         .lang-label .ipa {
             font-size: calc(10px * var(--label-scale)); color: #555; font-style: italic;
@@ -358,8 +360,8 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=8"></script>
-    <script src="meta_i18n_ext.js?v=2"></script>
+    <script src="wordmap_data.js?v=10"></script>
+    <script src="meta_i18n_ext.js?v=3"></script>
     <script src="lang-filter.js?v=10"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
@@ -659,6 +661,8 @@
         const fontSizeSlider = document.getElementById('font-size');
         fontSizeSlider.addEventListener('input', () => {
             document.documentElement.style.setProperty('--label-scale', parseInt(fontSizeSlider.value) / 100);
+            // Re-layout collision groups since label box size depends on scale.
+            updateMarkers(currentWord);
         });
         fontSizeSlider.addEventListener('change', () => { updateHash(); });
 
@@ -739,6 +743,8 @@
                 controls.addEventListener('end', () => {
                     clearTimeout(hashTimer);
                     hashTimer = setTimeout(updateHash, 300);
+                    // Re-layout label collisions; degree-spacing depends on altitude.
+                    updateMarkers(currentWord);
                 });
             }
         }
@@ -817,6 +823,9 @@
             och:'zh', ojp:'ja', vsa:'hi', txg:null, sog:'tg', otk:'tr',
             // Phase 13b: NE Asian + SE Asian ancient
             zkt:null, juc:'mnc', omx:'mon', pyx:'my', obr:'my', occ:'cja',
+            // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
+            orv:'ru', xsc:null, sukh:'th', xmr:null, onw:null, cqu:'qu',
+            omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
         };
 
         const VERTICAL_LANGS = new Set(['mnc', 'mn_cn', 'xng']);
@@ -872,16 +881,32 @@
             markers.forEach(m => map.removeLayer(m));
             markers.length = 0;
             const zoom = map.getZoom();
+            const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
 
             const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
 
-            // Group by coordinates
-            const coordGroups = {};
+            // --- Pixel-grid-based grouping ---
+            // Project every visible marker to container pixel coords at the
+            // current zoom, then bucket into a coarse grid whose cell size
+            // matches the estimated label box. Markers in the same cell get
+            // stacked vertically. Grid bucketing avoids chain-expansion of
+            // overlapping pairs into huge groups across the map.
+            let baseLineH = 0;
+            if (showWord) baseLineH += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
+            if (showIpa)  baseLineH += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
+            if (showName) baseLineH += (zoom <= 3 ? 9  : zoom <= 5 ? 10 : 11);
+            const labelH = (baseLineH * labelScale) + 4;
+            const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
+
+            const ppx = {};
+            const cellGroups = {};
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                if (!coordGroups[key]) coordGroups[key] = [];
-                coordGroups[key].push(code);
+                const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
+                ppx[code] = pt;
+                const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
+                if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
+                cellGroups[cellKey].push(code);
             }
 
             for (const code of visibleLangs) {
@@ -889,18 +914,14 @@
                 const entry = lang.words[wordId];
                 const [word, ipa] = entry;
 
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                const group = coordGroups[key];
+                const pt = ppx[code];
+                const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
+                const group = cellGroups[cellKey];
                 let yOffset = 0;
                 if (group.length > 1) {
-                    let lineHeight = 0;
-                    if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
-                    if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
-                    if (showName) lineHeight += (zoom <= 3 ? 9 : zoom <= 5 ? 10 : 11);
-                    const spacing = Math.max(lineHeight + 10, 20);
                     const idx = group.indexOf(code);
                     const center = (group.length - 1) / 2;
-                    yOffset = (idx - center) * spacing;
+                    yOffset = (idx - center) * (labelH + 4);
                 }
 
                 const displayName = getDisplayName(code, lang);
@@ -923,14 +944,29 @@
         function updateGlobeLabels(wordId) {
             if (!globe) return;
             const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+            const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
+            // Globe altitude in [0.1, 6]; lower = zoomed-in, labels appear
+            // larger relative to globe, so they need MORE degree separation.
+            // Higher altitude = labels appear small, need LESS separation.
+            const pov = globe.pointOfView();
+            const altScale = Math.max(0.4, Math.min(2.5, 1 / Math.sqrt(pov.altitude)));
 
-            // Group by coordinates (same as 2D)
-            const coordGroups = {};
+            // --- Lat/lng grid bucketing (degree cells scale with altitude and font) ---
+            // Avoid chain-expansion: bucket by fixed cell size; only labels
+            // landing in the same cell get stacked.
+            let lines = 0;
+            if (showWord) lines++;
+            if (showIpa) lines++;
+            if (showName) lines++;
+            const baseSpacingDeg = (0.4 + lines * 0.3) * labelScale * altScale;
+            const cellSizeDeg = baseSpacingDeg * 1.2;
+
+            const cellGroups = {};
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                if (!coordGroups[key]) coordGroups[key] = [];
-                coordGroups[key].push(code);
+                const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
+                if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
+                cellGroups[cellKey].push(code);
             }
 
             const elements = [];
@@ -943,19 +979,14 @@
                 const isDescendant = showHistorical && descendantCodes.has(code);
                 const descColor = isDescendant ? '#ff6b6b' : '';
 
-                // Offset co-located labels by shifting latitude
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                const group = coordGroups[key];
+                // Offset co-located labels by shifting latitude (zoom + scale aware)
+                const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
+                const group = cellGroups[cellKey];
                 let latOffset = 0;
                 if (group.length > 1) {
                     const idx = group.indexOf(code);
                     const center = (group.length - 1) / 2;
-                    // Wider spacing: scale by how many lines are visible
-                    let lines = 0;
-                    if (showWord) lines++;
-                    if (showIpa) lines++;
-                    if (showName) lines++;
-                    latOffset = (idx - center) * (0.4 + lines * 0.3);
+                    latOffset = (idx - center) * baseSpacingDeg;
                 }
 
                 const el = document.createElement('div');
@@ -1079,7 +1110,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=5';
+                s.src = 'wordmap_meta.js?v=6';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
