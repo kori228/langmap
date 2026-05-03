@@ -16,7 +16,7 @@
     <meta name="twitter:description" content="Explore 20 words in 526 languages on an interactive world map with IPA pronunciations and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
-    <link rel="stylesheet" href="styles.css?v=53">
+    <link rel="stylesheet" href="styles.css?v=54">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -179,7 +179,7 @@
                 "Noto Sans Coptic", sans-serif;
         }
         .lang-label .ipa {
-            font-size: calc(10px * var(--label-scale)); color: #555; font-style: italic;
+            font-size: calc(10px * var(--label-scale)); color: #555;
             line-height: 1.2;
         }
         .lang-label .name {
@@ -257,7 +257,7 @@
             font-size: calc(13px * var(--label-scale)); font-weight: 700; color: #fff; line-height: 1.2;
         }
         .globe-label .ipa {
-            font-size: calc(9px * var(--label-scale)); color: #aab; font-style: italic; line-height: 1.2;
+            font-size: calc(9px * var(--label-scale)); color: #aab; line-height: 1.2;
         }
         .globe-label .name {
             font-size: calc(8px * var(--label-scale)); color: #889; line-height: 1.3;
@@ -367,7 +367,7 @@
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
     let langNamesReady = false;
-    fetch('app.js').then(r => r.text()).then(code => {
+    fetch('app.js?v=54').then(r => r.text()).then(code => {
         const m = code.match(/const LANG_NAMES = \{([\s\S]*?)\n\};/);
         if (m) { try { LANG_NAMES = new Function('return {' + m[1] + '\n};')(); } catch(e) {} }
         langNamesReady = true;
@@ -1110,7 +1110,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=6';
+                s.src = 'wordmap_meta.js?v=7';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
