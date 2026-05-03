@@ -57,6 +57,19 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 4)</div>
+            <ul>
+                <li><strong>Word Map: speaker-count annotations (Codex check-2 §12)</strong> — clarified the basis ("L1 / total / regional / aggregate") for entries where the bare speaker number was misleading on the 100M+ tier.
+                    <ul>
+                        <li><strong>Wu Chinese (wuu)</strong> — renamed from "Shanghainese" to "Wu Chinese (Shanghainese)" since the previous ~80M figure was the Wu family total, not Shanghainese alone (~15-20M). Display name and 20 UI-language translations updated.</li>
+                        <li>Annotated speaker strings: <code>id</code> "<em>~200M (total; L1 ≈ 25-40M, mostly L2/national)</em>", <code>sw</code> "<em>~100M (total; L2 lingua franca, L1 ≈ 15-20M)</em>", <code>ar_eg</code> "<em>~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)</em>", <code>en_in</code> "<em>~130M (L2/educational; not L1)</em>", <code>fr_af</code> "<em>~140M (regional aggregate across African Francophone countries)</em>", <code>en_south</code> "<em>~100M (regional population; active dialect speakers fewer)</em>", <code>pt_br</code> "<em>~215M (Brazilian population; overlaps with Portuguese pt)</em>", <code>es_mx</code> "<em>~130M (Mexican population; overlaps with Spanish es)</em>", <code>fa</code> "<em>~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)</em>", <code>zh_sc</code> "<em>~120M (Mandarin variety; overlaps with Chinese zh)</em>".</li>
+                        <li>The speaker-tier filter (<code>parseSpeakerTier</code>) takes the first numeric value in the string and is therefore unaffected by the appended notes — tiers stay the same; only the language detail panel now exposes the basis.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 3)</div>
             <ul>
                 <li><strong>Word Map: 11 more historical languages added</strong> (538 → <strong>549</strong>) covering Russia, Thailand, Africa, the Americas, Indonesia, and the Philippines:
