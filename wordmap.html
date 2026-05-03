@@ -339,9 +339,9 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=6"></script>
+    <script src="wordmap_data.js?v=7"></script>
     <script src="meta_i18n_ext.js?v=2"></script>
-    <script src="lang-filter.js?v=7"></script>
+    <script src="lang-filter.js?v=9"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
@@ -794,6 +794,8 @@
             mga:'ga', hbo:'he',
             // Phase 8 historical
             xng:'mn',
+            // Phase 13: ancient Asian additions
+            och:'zh', ojp:'ja', vsa:'hi', txg:null, sog:'tg', otk:'tr',
         };
 
         const VERTICAL_LANGS = new Set(['mnc', 'mn_cn']);
@@ -1056,7 +1058,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=3';
+                s.src = 'wordmap_meta.js?v=4';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });

@@ -77,6 +77,7 @@
         'Sino-Tibetan (Tibeto-Burman, Bodish)':    { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Sino-Tibetan (Karenic)':       { wo: 'SVO', tone: true,  morph: 'isolating' },
         'Sino-Tibetan (Naic/Loloish)':  { wo: 'SOV', tone: true,  morph: 'isolating' },
+        'Sino-Tibetan (Tangut)':        { wo: 'SOV', tone: true,  morph: 'isolating' },
         // All Sinitic sub-variants explicitly tonal SVO
         // Some entries in the data list these as `Sino-Tibetan (Min Nan)`
         // etc. (parent name) rather than `Sinitic (...)`. Without these
@@ -272,6 +273,9 @@
     set(['zh','zh_sc','zh_db','wuu','nan','yue','cdo','hak_cn','zh_song','zh_han','zh_tang'],
         { wo: 'SVO', tone: true, morph: 'isolating' });
     set(['vi','vi_c','vi_s','vi_nom'], { wo: 'SVO', tone: true, morph: 'isolating' });
+    // Old Chinese predates tonogenesis (tones developed in Middle Chinese);
+    // the Sinitic family default (SVO+tonal) needs an override.
+    set(['och'], { wo: 'SVO', tone: false, morph: 'isolating' });
     set(['th','th_isan','th_n','th_s','lo','za'], { wo: 'SVO', tone: true, morph: 'isolating' });
     // Western Malayo-Polynesian + creoles: SVO
     set(['id','ms','jv','su','tpi'],
@@ -354,33 +358,72 @@
 
     // ----- Script type auto-detection from meta.script --------------------
 
+    // Returns an Array<string> of script categories. A language with multiple
+    // writing systems (Punjabi: Gurmukhi+Shahmukhi, Malay: Latin+Jawi, Hausa:
+    // Latin+Ajami, etc.) gets every applicable tag. Patterns are anchored so
+    // bare "Han" doesn't match "Shan"/"Hanacaraka" and bare "Traditional"
+    // doesn't match "Traditional Mongolian".
     function detectScript(scriptStr) {
-        if (!scriptStr) return null;
+        if (!scriptStr) return [];
         const s = String(scriptStr);
-        // Order matters: most specific first.
-        if (/Hangul/i.test(s)) return 'Hangul';
-        if (/Kanji|Hiragana|Katakana|Kana/i.test(s)) return 'Japanese';
-        if (/Han|Chinese|Simplified|Traditional|Chữ Nôm/i.test(s)) return 'Han';
-        if (/Cyrillic/i.test(s)) return 'Cyrillic';
-        if (/Devanagari/i.test(s)) return 'Brahmic';
-        if (/Bengali|Tamil|Telugu|Kannada|Malayalam|Gujarati|Gurmukhi|Oriya|Odia|Sinhala|Thai|Lao|Khmer|Burmese|Tibetan|Brahmi|Kawi|Balinese|Javanese|Pegon|Carakan|Saraiki|Sharada|Mithilakshar|Tirhuta|Sylheti|Kaithi|Ranjana|Bodo|Meitei|Tigalari/i.test(s)) return 'Brahmic';
-        if (/Arabic|Nastaliq|Naskh|Jawi|Perso-Arabic|Ajami|Adlam/i.test(s)) return 'Arabic-derived';
-        if (/Hebrew/i.test(s)) return 'Hebrew';
-        if (/Greek/i.test(s)) return 'Greek';
-        if (/Armenian/i.test(s)) return 'Armenian';
-        if (/Georgian/i.test(s)) return 'Georgian';
-        if (/Ethiopic|Ge.?ez/i.test(s)) return 'Ethiopic';
-        if (/Coptic/i.test(s)) return 'Coptic';
-        if (/Cherokee/i.test(s)) return 'Cherokee';
-        if (/Mongolian|Phags-pa|Manchu|Uyghur-Mongolian/i.test(s)) return 'Mongolic';
-        if (/Cuneiform/i.test(s)) return 'Cuneiform';
-        if (/Hieroglyph/i.test(s)) return 'Hieroglyphs';
-        if (/Linear B|Linear A|Mayan|Egyptian/i.test(s)) return 'Logographic-other';
-        if (/Syriac/i.test(s)) return 'Syriac';
-        if (/Tifinagh/i.test(s)) return 'Tifinagh';
-        if (/N.Ko/i.test(s)) return "N'Ko";
-        if (/Latin/i.test(s)) return 'Latin'; // catch-all (most common)
-        return 'Other';
+        const tags = new Set();
+
+        // Han (Chinese characters and derivatives — Hanzi, Kanji, Hanja,
+        // Chữ Nôm, Sawndip). Avoid matching "Shan" / "Hanacaraka" /
+        // "Traditional Mongolian" by requiring specific compound phrases.
+        if (/Chinese characters|Han characters|Hanzi|Simplified Chinese|Traditional Chinese|Simplified\/Traditional Chinese|Chinese\/Peng|Chữ Nôm|Hanja|Kanji|Sawndip|Hing-hua romanization|Peng'im/i.test(s)) tags.add('Han');
+
+        // Kana (Japanese syllabaries, distinct from Han kanji)
+        if (/Hiragana|Katakana|\bkana\b/i.test(s)) tags.add('Kana');
+
+        if (/Hangul/i.test(s)) tags.add('Hangul');
+        if (/Cyrillic/i.test(s)) tags.add('Cyrillic');
+
+        // Arabic-derived (Naskh, Nastaliq, Jawi, Perso-Arabic, Ajami, Adlam,
+        // Shahmukhi, Saraiki Naskh, etc.)
+        if (/Arabic|Nastaliq|Naskh|Jawi|Perso-Arabic|Pegon|Ajami|Adlam|Shahmukhi/i.test(s)) tags.add('Arabic-derived');
+
+        // Brahmic (Indic + SE Asian Brahmi descendants). Includes Mon,
+        // Shan, Karen, Eastern Nagari/Assamese, Cham, Lontara, etc.
+        if (/Devanagari|Bengali|Eastern Nagari|Tamil|Telugu|Kannada|Malayalam|Gujarati|Gurmukhi|Oriya|Odia|Sinhala|\bThai\b|\bLao\b|Khmer|Burmese|Tibetan|Brahmi|Brāhmī|Brahmic|Kawi|Balinese|Javanese script|Carakan|Sharada|Mithilakshar|Tirhuta|Sylheti|Kaithi|Ranjana|Bodo Devanagari|Meitei|Tigalari|Mon script|Shan script|Karen script|Cham|Lontara|Aksara Bugis|Hanacaraka|Batak|Surat Batak|Aksara Sasak|Lampung script|Limbu|Takri|Multani|Old Khmer|Brahmi-derived/i.test(s)) tags.add('Brahmic');
+
+        if (/Hebrew/i.test(s)) tags.add('Hebrew');
+        if (/Greek/i.test(s)) tags.add('Greek');
+        if (/Armenian/i.test(s)) tags.add('Armenian');
+        if (/Georgian/i.test(s)) tags.add('Georgian');
+        if (/Ethiopic|Ge.?ez|Ge'ez/i.test(s)) tags.add('Ethiopic');
+        if (/Coptic/i.test(s)) tags.add('Coptic');
+        if (/Cherokee/i.test(s)) tags.add('Cherokee');
+        if (/Syriac/i.test(s)) tags.add('Syriac');
+        if (/Tifinagh/i.test(s)) tags.add('Tifinagh');
+        if (/N'Ko|N.Ko/i.test(s)) tags.add("N'Ko");
+        if (/Yi syllabary|Yi script/i.test(s)) tags.add('Yi');
+        if (/Cree syllabics|Inuktitut syllabics|Canadian Aboriginal Syllabics/i.test(s)) tags.add('Canadian Aboriginal Syllabics');
+
+        // Vertical Mongolian script family (Old Uyghur → Mongolian → Manchu
+        // → Phags-pa). Manchu the language is Tungusic but its script is
+        // Mongolic-derived; tag the script, not the language family.
+        if (/Mongolian script|Traditional Mongolian|Mongolian alphabet|Phags-pa|\bManchu\b|Uyghur-Mongolian|Old Uyghur|Clear Script/i.test(s)) tags.add('Mongolian-derived');
+
+        if (/Cuneiform/i.test(s)) tags.add('Cuneiform');
+        if (/Egyptian hieroglyph|Anatolian hieroglyph|\bHieroglyph/i.test(s)) tags.add('Hieroglyphs');
+        if (/Linear B|Linear A|Linear Elamite/i.test(s)) tags.add('Aegean syllabary');
+        if (/Maya hieroglyph|Mayan glyphs|Maya script/i.test(s)) tags.add('Mayan');
+        if (/Old Turkic|Orkhon|runiform/i.test(s)) tags.add('Old Turkic');
+        if (/Tangut/i.test(s)) tags.add('Tangut');
+
+        // Aramaic-derived (Sogdian, Pahlavi, Parthian, Manichaean) — distinct
+        // from Arabic-derived and Mongolian-derived branches of the same root.
+        if (/Sogdian alphabet|Sogdian script|Manichaean|Pahlavi|Parthian script|Aramaic-derived/i.test(s)) tags.add('Aramaic-derived');
+
+        // Other ancient / specialized scripts
+        if (/Phoenician|Punic alphabet|Old South Arabian|Musnad|Avestan|Old Persian cuneiform|Ugaritic|Warang Citi|Meroitic|Ogham|Runic|Gothic alphabet|Kpelle script|Mende script|Kikakui|Pollard|Fraser|Lisu script|Dongba|Old Bouyei script|Old Khmer script/i.test(s)) tags.add('Other historical');
+
+        // Latin (catch-all). Word boundary so "Latinised" etc. still match.
+        if (/\bLatin\b|\bRumi\b|Modified Roman/i.test(s)) tags.add('Latin');
+
+        if (tags.size === 0) tags.add('Other');
+        return [...tags];
     }
 
     // ----- Speaker tier parsing -------------------------------------------
@@ -462,7 +505,8 @@
         const fam = meta.family || null;
         const fd = familyDefault(fam);
         const curated = F[code] || {};
-        // Cascade: per-language override > family default > null
+        // Cascade: per-language override > family default > null.
+        // `script` is now an Array<string> (a language can have multiple).
         const rec = {
             family:  topFamily(fam),
             script:  detectScript(meta.script),
@@ -496,6 +540,14 @@
         for (const cat of Object.keys(filterState)) {
             const allowed = filterState[cat];
             if (allowed.size === 0) continue;
+            // Script is multi-valued: a language passes if ANY of its scripts
+            // matches the allowed set (e.g. Punjabi has both Brahmic and
+            // Arabic-derived; selecting either should highlight Punjabi).
+            if (cat === 'script') {
+                if (!Array.isArray(f.script) || f.script.length === 0) return false;
+                if (!f.script.some(s => allowed.has(s))) return false;
+                continue;
+            }
             let v;
             if (cat === 'tone') {
                 if (f.tone == null) return false;
@@ -645,7 +697,10 @@
             const f = featuresFor(code);
             if (!f) continue;
             if (f.family)  families.set(f.family,  (families.get(f.family) || 0) + 1);
-            if (f.script)  scripts.set(f.script,   (scripts.get(f.script) || 0) + 1);
+            // Script is an array — count each tag separately
+            if (Array.isArray(f.script)) {
+                for (const s of f.script) scripts.set(s, (scripts.get(s) || 0) + 1);
+            }
             if (f.wo)      wos.set(f.wo,           (wos.get(f.wo) || 0) + 1);
             if (f.morph)   morphs.set(f.morph,     (morphs.get(f.morph) || 0) + 1);
             if (f.speaker) speakers.set(f.speaker, (speakers.get(f.speaker) || 0) + 1);

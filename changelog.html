@@ -57,6 +57,33 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont.)</div>
+            <ul>
+                <li><strong>Word Map: 6 ancient Asian languages added</strong> — total now <strong>532 languages</strong>. New entries:
+                    <ul>
+                        <li><strong>Old Chinese (och)</strong> 上古漢語 — Shang/Zhou period (~1250-200 BCE), Baxter-Sagart 2014 reconstructions, oracle bone / bronze / seal scripts. Anyang area.</li>
+                        <li><strong>Old Japanese (ojp)</strong> 上代日本語 — Asuka-Nara (7-8c.), Manyōgana, eight-vowel system. Heijō-kyō (Nara).</li>
+                        <li><strong>Vedic Sanskrit (vsa)</strong> वैदिक संस्कृतम् — Rigveda (~1500-500 BCE), distinct from Classical Sanskrit (preserves pitch accent, subjunctive). Sapta Sindhu basin.</li>
+                        <li><strong>Tangut (txg)</strong> 𗼇𗟲 — Western Xia (1038-1227), unique logographic script (~6,000 chars, 1036 CE). Yinchuan. Reconstructions tentative (Sofronov / Gong / Jacques).</li>
+                        <li><strong>Sogdian (sog)</strong> sγwδyk — Eastern Iranian Silk Road lingua franca (5-9c.). Samarkand.</li>
+                        <li><strong>Old Turkic (otk)</strong> 𐱅𐰇𐰼𐰰 — Orkhon inscriptions (732 CE), earliest Turkic written record. Orkhon valley.</li>
+                    </ul>
+                    Each entry includes 20 words with IPA reconstructions, English+Japanese descriptions, family/script/period meta. All 6 marked historical (excluded from default modern view; appear with the Historical era toggle, paired with their representative descendants: zh, ja, hi, —, tg, tr).
+                </li>
+                <li><strong>Word Map: script filter — multi-tag &amp; classification fixes</strong> (Codex review):
+                    <ul>
+                        <li><strong>Multi-tag scripts</strong> — a language can now have multiple script tags. Punjabi (Gurmukhi+Shahmukhi), Malay (Latin+Jawi), Hausa (Latin+Ajami), Sindhi (Arabic+Devanagari), Kashmiri (Perso-Arabic+Devanagari+Sharada), Zhuang (Latin+Sawndip) etc. now match either filter. 94 languages have multiple tags.</li>
+                        <li><strong>False positives fixed</strong> — Mongolian (mn, mn_cn) was being tagged as <em>Han</em> because the regex matched the bare word "Traditional" in "Traditional Mongolian"; now correctly tagged <em>Mongolian-derived</em>. Shan was matching <em>Han</em> via the substring "Han" inside "Shan"; now <em>Brahmic</em>. Balinese (Hanacaraka) similarly. All regex patterns now use word boundaries or specific compound phrases.</li>
+                        <li><strong>Saraiki (skr)</strong> was tagged <em>Brahmic</em> because the language name appeared in the Brahmic regex; removed. Saraiki Naskh is correctly <em>Arabic-derived</em>.</li>
+                        <li><strong>New tags</strong>: <em>Yi</em> (was Other), <em>Tangut</em>, <em>Old Turkic</em>, <em>Aramaic-derived</em> (Sogdian / Pahlavi separate from Arabic), <em>Mongolian-derived</em> (renamed from "Mongolic" — clearer that it refers to script ancestry, not language family). Manchu language (Tungusic) is now correctly tagged for its Mongolian-derived script.</li>
+                        <li><strong>Brahmic completeness</strong> — Assamese (Eastern Nagari), Mon, Shan, Karen are now correctly Brahmic; previously fell to <em>Other</em>.</li>
+                    </ul>
+                    Coverage: 532/532 languages have at least one script tag (was: 4 → "Other"). 29 distinct script categories.
+                </li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04</div>
             <ul>
                 <li><strong>Word Map: filter classification fixes</strong> — pass over <code>lang-filter.js</code> based on a Codex review plus additional manual cross-check:

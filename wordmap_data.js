@@ -40,7 +40,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 6 historical
   'mga','hbo',
   // Phase 8 historical
-  'xng'
+  'xng',
+  // Phase 13: ancient Asian additions
+  'och','ojp','vsa','txg','sog','otk'
 ]);
 
 const LANG_DATA = {
@@ -2598,6 +2600,29 @@ const LANG_DATA = {
     words: { water:['dehe','tehe'], fire:['tsibi','tsʼibi'], sun:['hyadi','hjadi'], moon:['zänä','zãnã'], mother:['nänä','nãnã'], father:['tada','tada'], eat:['ñuni','ɲuni'], drink:['tsi','tsi'], love:['mädi','mãdi'], heart:['mui','mui'], tree:['za','za'], house:['ngu','ŋɡu'], dog:['yo','jo'], cat:['mixi','miʃi'], hand:['\'ye','ʔje'], eye:['da','da'], hello:['hatsi','hatsi'], thanks:['jamädi','hamãdi'], one:['\'ra','ʔɾa'], good:['hño','hɲo'] }},
   tar: { name: 'Tarahumara', native: 'Rarámuri', lat: 27.75, lng: -107.63, // Creel
     words: { water:['bawí','bawi'], fire:['nahí','nahi'], sun:['rayó','ɾajo'], moon:['mecá','metʃa'], mother:['iyé','ije'], father:['onó','ono'], eat:['ko\'a','koʔa'], drink:['bahí','bahi'], love:['nakí','naki'], heart:['surí','suɾi'], tree:['gokó','ɡoko'], house:['kalí','kali'], dog:['kochí','kotʃi'], cat:['misí','misi'], hand:['sekuá','sekwa'], eye:['pusí','pusi'], hello:['kuira','kuiɾa'], thanks:['matéterabá','mateteɾaba'], one:['bilé','bile'], good:['galá','ɡala'] }},
+
+  // === Ancient Asian languages (Phase 13) ===
+  // Old Chinese — Baxter-Sagart 2014 reconstructions. Anyang (Shang capital area).
+  och: { name: 'Old Chinese', native: '上古漢語', lat: 36.10, lng: 114.40,
+    words: { water:['水','*s.turʔ'], fire:['火','*qʷʰəjʔ'], sun:['日','*C.nik'], moon:['月','*ŋʷat'], mother:['母','*məʔ'], father:['父','*paʔ'], eat:['食','*mə.lək'], drink:['飲','*qrəmʔ'], love:['愛','*qˤəts'], heart:['心','*səm'], tree:['木','*C.mˤok'], house:['室','*l̥ik'], dog:['犬','*kʷʰˤinʔ'], cat:['貓','*mˤraw'], hand:['手','*n̥uʔ'], eye:['目','*C.muk'], hello:['拜','*pˤret-s'], thanks:['謝','*s.ɢAk-s'], one:['一','*ʔit'], good:['好','*qʰˤuʔ'] }},
+  // Old Japanese (Asuka-Nara, 7-8c.) — Manyōshū / Kojiki period. Heijō-kyō (Nara).
+  ojp: { name: 'Old Japanese', native: '上代日本語', lat: 34.69, lng: 135.83,
+    words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','ta'], eye:['目','ma'], hello:['安し','yasusi'], thanks:['忝し','katadʑike₁nasi'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
+  // Vedic Sanskrit — Rigveda period (~1500-500 BCE). Sapta Sindhu (Punjab/Saraswati basin).
+  vsa: { name: 'Vedic Sanskrit', native: 'वैदिक संस्कृतम्', lat: 30.50, lng: 75.00,
+    words: { water:['आपः','aːpaɦ'], fire:['अग्निः','agniɦ'], sun:['सूर्यः','suːrjaɦ'], moon:['चन्द्रमाः','tɕandramaːɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['अद्मि','admi'], drink:['पिबति','pibati'], love:['स्निह्यति','snihjati'], heart:['हृदयम्','hr̩dajam'], tree:['वृक्षः','wr̩kʂaɦ'], house:['गृहम्','gr̩ham'], dog:['श्वा','ɕwaː'], cat:['मार्जारः','maːrdʑaːraɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['स्वस्ति','swasti'], thanks:['सुप्रियम्','supriːjam'], one:['एकम्','eːkam'], good:['साधु','saːdhu'] }},
+  // Tangut (Western Xia, 11-13c.) — Sofronov / Gong reconstructions; tones 1=level (˧), 2=rising (˧˥).
+  // Tangut script chars are Unicode block U+17000-U+187FF; some readings are scholarly approximations.
+  txg: { name: 'Tangut', native: '𗼇𗟲', lat: 38.50, lng: 106.27,
+    words: { water:['𗀚','tjɨ˧'], fire:['𘎩','me˧'], sun:['𘂴','pjij˧˥'], moon:['𗏯','lja˧˥'], mother:['𘎒','ma˧˥'], father:['𗥃','pa˧'], eat:['𗅋','dzjij˧˥'], drink:['𘉞','tʰjij˧˥'], love:['𗙊','lhjij˧˥'], heart:['𘃠','njij˧˥'], tree:['𘀇','sji˧'], house:['𗩴','kʰjwa˧˥'], dog:['𗋒','kʰwjɨ˧'], cat:['𗦷','mji˧˥'], hand:['𘀔','lje˧'], eye:['𗞴','mjij˧'], hello:['—','—'], thanks:['—','—'], one:['𘈩','lew˧˥'], good:['𗏁','tsji˧'] }},
+  // Sogdian — Silk Road lingua franca (5-9c.). Manichaean / Buddhist Sogdian. Samarkand.
+  // Latin transliteration shown; native Sogdian script (Aramaic-derived) is U+10F30.
+  sog: { name: 'Sogdian', native: 'sγwδyk', lat: 39.65, lng: 66.97,
+    words: { water:['ʾāp','aːp'], fire:['ʾātar','aːtar'], sun:['xwr','xwar'], moon:['mʾx','maːx'], mother:['mʾtr','maːtar'], father:['ptr','pitar'], eat:['xwartan','xwartan'], drink:['pi-','pi'], love:['frytk','friːtak'], heart:['dyl','dil'], tree:['drxt','draxt'], house:['kṯʾk','katʰaːk'], dog:['ʾkw','aːkuː'], cat:['—','—'], hand:['dst','dast'], eye:['cšm','tʃaʃm'], hello:['drwd','druːd'], thanks:['—','—'], one:['yw','jɛw'], good:['nyk','neːk'] }},
+  // Old Turkic — Orkhon inscriptions (8c.). Earliest Turkic written record. Orkhon valley, Mongolia.
+  // Orthography in Old Turkic script (U+10C00-U+10C4F) where attested; Latin in IPA field.
+  otk: { name: 'Old Turkic', native: '𐱅𐰇𐰼𐰰', lat: 47.56, lng: 102.83,
+    words: { water:['𐰽𐰆𐰉','sub'], fire:['𐰆𐱃','ot'], sun:['𐰚𐰰𐰣','kyn'], moon:['𐰀𐰖','aj'], mother:['𐰆𐰍','oɣ'], father:['𐰴𐰭','qaŋ'], eat:['𐰘𐰃-','je'], drink:['𐰃𐰲-','itʃ'], love:['𐰽𐰋-','sæb'], heart:['𐰚𐰭𐰠','køŋyl'], tree:['𐰃𐰍𐰲','ɯɣatʃ'], house:['𐰋','æb'], dog:['𐰃𐱃','it'], cat:['—','—'], hand:['𐰘𐰠𐰏','elig'], eye:['𐰚𐰕','køz'], hello:['𐰰𐰠𐰢','esænmy'], thanks:['—','—'], one:['𐰋𐰃𐰼','bir'], good:['𐰓𐰏𐰢','ædɡy'] }},
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
