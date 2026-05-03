@@ -42,7 +42,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 8 historical
   'xng',
   // Phase 13: ancient Asian additions
-  'och','ojp','vsa','txg','sog','otk'
+  'och','ojp','vsa','txg','sog','otk',
+  // Phase 13b: NE Asian + SE Asian ancient
+  'zkt','juc','omx','pyx','obr','occ'
 ]);
 
 const LANG_DATA = {
@@ -2523,8 +2525,11 @@ const LANG_DATA = {
   kxm: { name: 'Northern Khmer', native: 'ភាសាខ្មែរ (Surin)', lat: 14.88, lng: 103.49, // Surin
     words: { water:['ទឹក','tək'], fire:['ភ្លើង','pʰlɤːŋ'], sun:['ថ្ងៃ','tŋai'], moon:['ខែ','kʰae'], mother:['ម៉ែ','maɛ'], father:['ប៉ា','paː'], eat:['ស៊ី','siː'], drink:['ផឹក','pʰək'], love:['ស្រឡាញ់','sralaɲ'], heart:['ចិត្ត','tɕit'], tree:['ដើមឈើ','daəm tʃʰəː'], house:['ផ្ទះ','ptʰeah'], dog:['ឆ្កែ','tʃʰkae'], cat:['ឆ្មា','tʃʰmaː'], hand:['ដៃ','daj'], eye:['ភ្នែក','pʰnɛːk'], hello:['សួស្តី','suːəsdəj'], thanks:['អរគុណ','ʔɔːkun'], one:['មួយ','muːj'], good:['ល្អ','lʔɑː'] }},
   // Mongolian (historical)
-  xng: { name: 'Middle Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ', lat: 47.20, lng: 102.83, // Karakorum
-    words: { water:['usun','usun'], fire:['ɣal','ɣal'], sun:['naran','naran'], moon:['sara','sara'], mother:['eke','eke'], father:['ecige','etʃiɡe'], eat:['ide-','ide'], drink:['oɣu-','oɣu'], love:['dura','dura'], heart:['jirüke','dʒirüke'], tree:['modun','modun'], house:['ger','ɡer'], dog:['nokai','nokai'], cat:['miɣui','miɣui'], hand:['ɣar','ɣar'], eye:['nidün','nidün'], hello:['amur','amur'], thanks:['bayarlaba','bajarlaba'], one:['nigen','niɡen'], good:['sain','sain'] }},
+  // Middle Mongolian — moved south to avoid overlap with Old Turkic at Orkhon.
+  // Now uses Traditional Mongolian script (vertical) for word forms with
+  // Latin transliteration in the IPA field.
+  xng: { name: 'Middle Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ', lat: 43.50, lng: 107.00, // central Mongolia / Yuan-era
+    words: { water:['ᠤᠰᠤᠨ','usun'], fire:['ᠭᠠᠯ','ɣal'], sun:['ᠨᠠᠷᠠᠨ','naran'], moon:['ᠰᠠᠷᠠ','sara'], mother:['ᠡᠭᠡ','eke'], father:['ᠡᠴᠢᠭᠡ','etʃiɡe'], eat:['ᠢᠳᠡ','ide'], drink:['ᠤᠭᠤ','oɣu'], love:['ᠳᠤᠷᠠ','dura'], heart:['ᠵᠢᠷᠦᠭᠡ','dʒirüke'], tree:['ᠮᠣᠳᠤᠨ','modun'], house:['ᠭᠡᠷ','ɡer'], dog:['ᠨᠣᠬᠠᠢ','nokai'], cat:['ᠮᠢᠭᠤᠢ','miɣui'], hand:['ᠭᠠᠷ','ɣar'], eye:['ᠨᠢᠳᠦᠨ','nidün'], hello:['ᠠᠮᠤᠷ','amur'], thanks:['ᠪᠠᠶᠠᠷᠯᠠᠪᠠ','bajarlaba'], one:['ᠨᠢᠭᠡᠨ','niɡen'], good:['ᠰᠠᠶᠢᠨ','sain'] }},
   // Japanese dialects (additional)
   ja_kg: { name: 'Japanese (Kagoshima)', native: '日本語(鹿児島)', lat: 31.59, lng: 130.55, // Kagoshima
     words: { water:['水','mid̥zɯ̥'], fire:['火っ','çiʔ'], sun:['お日さん','ohisaN'], moon:['月','tsɯki'], mother:['かか','kaka'], father:['とと','toto'], eat:['食ぼっか','tabokːa'], drink:['飲んで','nondeː'], love:['愛','ai'], heart:['心','kokoɾo'], tree:['木','ki'], house:['家','eː'], dog:['犬','iN'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['おやっとさあ','ojattosaː'], thanks:['ありがとさげもす','aɾiɡatosaɡemosɯ'], one:['一つ','çitotsɯ'], good:['良か','joka'] }},
@@ -2600,6 +2605,33 @@ const LANG_DATA = {
     words: { water:['dehe','tehe'], fire:['tsibi','tsʼibi'], sun:['hyadi','hjadi'], moon:['zänä','zãnã'], mother:['nänä','nãnã'], father:['tada','tada'], eat:['ñuni','ɲuni'], drink:['tsi','tsi'], love:['mädi','mãdi'], heart:['mui','mui'], tree:['za','za'], house:['ngu','ŋɡu'], dog:['yo','jo'], cat:['mixi','miʃi'], hand:['\'ye','ʔje'], eye:['da','da'], hello:['hatsi','hatsi'], thanks:['jamädi','hamãdi'], one:['\'ra','ʔɾa'], good:['hño','hɲo'] }},
   tar: { name: 'Tarahumara', native: 'Rarámuri', lat: 27.75, lng: -107.63, // Creel
     words: { water:['bawí','bawi'], fire:['nahí','nahi'], sun:['rayó','ɾajo'], moon:['mecá','metʃa'], mother:['iyé','ije'], father:['onó','ono'], eat:['ko\'a','koʔa'], drink:['bahí','bahi'], love:['nakí','naki'], heart:['surí','suɾi'], tree:['gokó','ɡoko'], house:['kalí','kali'], dog:['kochí','kotʃi'], cat:['misí','misi'], hand:['sekuá','sekwa'], eye:['pusí','pusi'], hello:['kuira','kuiɾa'], thanks:['matéterabá','mateteɾaba'], one:['bilé','bile'], good:['galá','ɡala'] }},
+
+  // === Phase 13b: Northeast Asian + SE Asian ancient languages ===
+  // Khitan — Liao dynasty (907-1125). Khitan Small Script (U+18B00-U+18CFF)
+  // is partially deciphered; many words use Latin transliteration based on
+  // Kane (2009) and Aisin Gioro reconstructions.
+  zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
+    words: { water:['muri','muri'], fire:['niár','niar'], sun:['nair','nair'], moon:['sair','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['nïaqan','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['omsu','omsu'], good:['sayïn','sajin'] }},
+  // Jurchen — Jin dynasty (1115-1234), ancestor of Manchu. Jurchen script is
+  // not in Unicode; Latin transliteration after Kane (1989), Jin (1984).
+  juc: { name: 'Jurchen', native: 'jušen gisun', lat: 45.55, lng: 126.97,
+    words: { water:['muke','muke'], fire:['tuwa','tuwa'], sun:['šun','ʃun'], moon:['biya','bija'], mother:['eme','eme'], father:['ama','ama'], eat:['jefu','dʒefu'], drink:['omi','omi'], love:['gosi','ɡosi'], heart:['niyaman','niaman'], tree:['mo','mo'], house:['boo','boː'], dog:['indahǔn','indahuːn'], cat:['kesike','kesike'], hand:['gala','ɡala'], eye:['yasa','jasa'], hello:['saiyūn','sajuːn'], thanks:['baniha','baniha'], one:['emu','emu'], good:['sain','sain'] }},
+  // Old Mon — Dvaravati / Pagan-era Mon (6-11c.). Mon script (Brahmic).
+  // Reconstructions follow Shorto (1971) and Diffloth.
+  omx: { name: 'Old Mon', native: 'ဘာသာ မန်', lat: 16.92, lng: 97.36, // Thaton
+    words: { water:['ဍာ်','ɗaːk'], fire:['ပ်ၟ','pmaʔ'], sun:['တ္ၚဲ','tŋai'], moon:['ဂျိုၚ်','klɔŋ'], mother:['ၚာ','ŋaː'], father:['ဖ','pʰɛʔ'], eat:['စိ','tɕiʔ'], drink:['သုက်','sok'], love:['ဖျုန်','pʰyon'], heart:['လုပ်','lup'], tree:['ဆု','tɕu'], house:['သ္ၚိ','sŋiʔ'], dog:['ခၠဵု','kʰlou'], cat:['ဂျိ','kluj'], hand:['တၟုိ','toi'], eye:['မတ်','mat'], hello:['—','—'], thanks:['—','—'], one:['မွဲ','mwɛ'], good:['ခိုဟ်','kʰɔh'] }},
+  // Pyu — ancient Burma (4-12c.), Sino-Tibetan. Pyu script (Brahmic-derived,
+  // incompletely deciphered). Most words tentative; many entries marked '—'.
+  pyx: { name: 'Pyu', native: 'Pyu', lat: 18.81, lng: 95.21, // Sri Ksetra (Pyay)
+    words: { water:['ʔuy','uj'], fire:['vyaŋ','wjaŋ'], sun:['ño','ɲo'], moon:['hla','hla'], mother:['na','na'], father:['paʔ','paʔ'], eat:['cyaʔ','tɕaʔ'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['siŋ','siŋ'], house:['vaiŋ','waiŋ'], dog:['kwiy','kwij'], cat:['—','—'], hand:['lak','lak'], eye:['mik','mik'], hello:['—','—'], thanks:['—','—'], one:['te','te'], good:['—','—'] }},
+  // Old Burmese — Pagan period (11-16c.). Pagan-era Burmese script, ancestor
+  // of modern Burmese script.
+  obr: { name: 'Old Burmese', native: 'ပုဂံ ဘာသာ', lat: 21.17, lng: 94.86, // Bagan
+    words: { water:['ရိ','riy'], fire:['မိး','miːʔ'], sun:['နိ','niy'], moon:['လ','lat'], mother:['အဝ','ʔaw'], father:['အဖ','ʔap'], eat:['စား','tsaːʔ'], drink:['ၐုက်','suk'], love:['ချစ်','klyit'], heart:['နှလုံး','hnaluːŋ'], tree:['သစ်','sit'], house:['အိမ်','ʔim'], dog:['ခွၞး','kʰwiː'], cat:['ကြောင်','klyaŋ'], hand:['လက်','lak'], eye:['မ္ယက်','mlak'], hello:['—','—'], thanks:['—','—'], one:['တ','tac'], good:['ကောင်း','kawŋ'] }},
+  // Old Cham — Champa kingdom inscriptions (~4c. CE+). Cham script (Brahmic);
+  // Latin transliteration used for portability. Mỹ Sơn sanctuary area.
+  occ: { name: 'Old Cham', native: 'aksara cam', lat: 15.76, lng: 108.12,
+    words: { water:['ie','ʔiə'], fire:['apuy','ʔapuj'], sun:['aṇdaw','ʔadaw'], moon:['bulan','bulan'], mother:['amɛ','amɛ'], father:['amaŋ','amaŋ'], eat:['bɔh','bɔh'], drink:['mɛnum','mɛnum'], love:['klɛn','klɛn'], heart:['hatai','hatai'], tree:['phuəŋ','pʰuəŋ'], house:['sɔŋ','sɔŋ'], dog:['asɔ','asɔ'], cat:['mɛw','mɛw'], hand:['taŋin','taŋin'], eye:['mata','mata'], hello:['—','—'], thanks:['—','—'], one:['sa','sa'], good:['siam','siam'] }},
 
   // === Ancient Asian languages (Phase 13) ===
   // Old Chinese — Baxter-Sagart 2014 reconstructions. Anyang (Shang capital area).

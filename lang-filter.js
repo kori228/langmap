@@ -78,6 +78,8 @@
         'Sino-Tibetan (Karenic)':       { wo: 'SVO', tone: true,  morph: 'isolating' },
         'Sino-Tibetan (Naic/Loloish)':  { wo: 'SOV', tone: true,  morph: 'isolating' },
         'Sino-Tibetan (Tangut)':        { wo: 'SOV', tone: true,  morph: 'isolating' },
+        'Sino-Tibetan (Pyu)':           { wo: 'SOV', tone: false, morph: 'agglutinative' },
+        'Sino-Tibetan (Tibeto-Burman, Burmish)': { wo: 'SOV', tone: true,  morph: 'isolating' },
         // All Sinitic sub-variants explicitly tonal SVO
         // Some entries in the data list these as `Sino-Tibetan (Min Nan)`
         // etc. (parent name) rather than `Sinitic (...)`. Without these
@@ -159,6 +161,7 @@
         'Turkic (Kipchak, Caucasus)': { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Mongolic':                { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Mongolic (Western/Oirat)':{ wo: 'SOV', tone: false, morph: 'agglutinative' },
+        'Mongolic (Para-Mongolic)':{ wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Tungusic':                { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Tungusic (Northern)':     { wo: 'SOV', tone: false, morph: 'agglutinative' },
         // Uralic
