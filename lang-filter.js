@@ -115,6 +115,14 @@
         'Sino-Tibetan (Loloish, Hani)': { wo: 'SOV', tone: true, morph: 'isolating' }, // Akha
         'Kra-Dai (Tai, Central)':       { wo: 'SVO', tone: true, morph: 'isolating' }, // Tày, Nung
         'Austronesian (Sabahan)':       { wo: 'VSO', tone: false, morph: 'agglutinative' }, // Kadazan-Dusun
+        // Phase 17 — additional 100K+ minority lang families
+        'Sino-Tibetan (Tibeto-Burman, Bodo-Garo)': { wo: 'SOV', tone: true, morph: 'agglutinative' }, // Garo, Bodo
+        'Sino-Tibetan (Tibeto-Burman, Tujia)':     { wo: 'SOV', tone: true, morph: 'isolating' },     // Tujia
+        'Mayan (Quichean)':                        { wo: 'VSO', tone: false, morph: 'agglutinative' },// K'iche', Q'eqchi', Mam — Mayan
+        'Afro-Asiatic (Omotic)':                   { wo: 'SOV', tone: true, morph: 'agglutinative' }, // Wolaytta
+        'Afro-Asiatic (Cushitic, Highland East)':  { wo: 'SOV', tone: true, morph: 'agglutinative' }, // Sidama
+        'Austronesian (West Barito)':              { wo: 'SVO', tone: false, morph: 'agglutinative' },// Ngaju Dayak
+        'Austronesian (South Sulawesi, Toraja-Sa\'dan)': { wo: 'SVO', tone: false, morph: 'agglutinative' }, // Toraja
         // Niger-Congo / Bantu
         'Niger-Congo':            { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Niger-Congo (Bantu)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },
