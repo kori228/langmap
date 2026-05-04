@@ -167,14 +167,22 @@
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 Georgia, "Times New Roman", serif;
         }
-        /* Selected language (info panel open) — refined highlight */
+        /* Selected language (info panel open) — looks like a miniature
+           version of the info modal: same translucent white card,
+           same shadow style, scaled-down padding/radius. The connector
+           line (#4a6cf7) joins two visually-coherent cards. */
         .lang-label.selected, .globe-label.selected {
-            background: rgba(74,108,247,0.10); border-radius: 5px;
-            box-shadow: 0 0 0 1.5px #4a6cf7, 0 1px 6px rgba(74,108,247,0.4);
+            background: rgba(255,255,255,0.97);
+            border-radius: 7px;
+            padding: 6px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.22),
+                        0 0 0 1px rgba(74,108,247,0.6);
             outline: none;
             z-index: 10;
         }
-        .lang-label.selected .word, .globe-label.selected .word { color: #2945c0 !important; }
+        .lang-label.selected .word, .globe-label.selected .word { color: #1a1a2e !important; }
+        .lang-label.selected .ipa, .globe-label.selected .ipa { color: #555 !important; }
+        .lang-label.selected .name, .globe-label.selected .name { color: #888 !important; }
         /* Connector — smooth bezier curve from label to panel */
         #connector-line {
             position: absolute; top: 0; left: 0;
