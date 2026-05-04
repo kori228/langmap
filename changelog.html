@@ -57,9 +57,16 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 9b)</div>
+            <ul>
+                <li><strong>Language-count correction</strong> — re-counted <code>LANG_DATA</code> from the 549-language milestone commit (80d54c6) forward. Six codes added in Phases 15 and 17 turned out to already exist in <code>LANG_DATA</code> at the milestone: <code>wuu_sz</code>, <code>wuu_wz</code>, <code>cpx</code> (existed pre-Phase 15) and <code>quc</code>, <code>kek</code>, <code>sid</code> (existed pre-Phase 17). My recent commits treated them as new entries, inflating the running count. Corrected sequence: 549 → 557 (Phase 14, all new) → <strong>562</strong> (Phase 15, 5 new + 3 overwrites) → <strong>570</strong> (Phase 16, all new) → <strong>579</strong> (Phase 17, 9 new + 3 overwrites). Era counts in the toggle buttons (499 modern + 80 historical = 579) are correct; the changelog headlines were wrong. README updated.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 9)</div>
             <ul>
-                <li><strong>Word Map: 12 more 100K+ minority languages added</strong> (573 → <strong>585</strong>) — broad regional coverage:
+                <li><strong>Word Map: 12 more 100K+ minority languages added</strong> (573 → <strong>585</strong>, but see correction above — actual was 570 → 579 because <code>quc</code>, <code>kek</code>, <code>sid</code> already existed) — broad regional coverage:
                     <ul>
                         <li><strong>Chhattisgarhi (hne)</strong> छत्तीसगढ़ी — Indo-Aryan, ~16M, central India (state language of Chhattisgarh).</li>
                         <li><strong>Mon (mnw)</strong> ဘာသာ မန် — Austroasiatic Monic, ~1M, Myanmar/Thailand. One of the oldest written languages of mainland SE Asia; Mon script is the direct ancestor of modern Burmese script.</li>
