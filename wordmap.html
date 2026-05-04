@@ -23,7 +23,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -151,6 +151,22 @@
 
         /* --- Language labels on map --- */
         :root { --label-scale: 1; }
+        /* Map-label font chain (formal serif).
+           "Gentium Plus" leads — SIL's scholarly Latin/IPA serif with full
+           combining-mark coverage, so ɨ̂ etc. stay in one font run. Noto
+           Serif (+ JP/SC/TC/KR) backs it for CJK. Charis SIL is a
+           diacritic safety net. Ancient-script Noto fonts last. Setting
+           font-family on the parent so .word, .ipa, .name all inherit. */
+        .lang-label, .globe-label {
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
+                "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
+                "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
+                "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
+                "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
+                Georgia, "Times New Roman", serif;
+        }
         .lang-label {
             position: absolute; left: 50%; top: 50%;
             text-align: center; white-space: nowrap; cursor: pointer;
@@ -162,24 +178,7 @@
         .lang-label .word {
             font-size: calc(15px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
             line-height: 1.2;
-            /* "Charis SIL" first: it has comprehensive Latin Extended + IPA
-               + combining-marks coverage. Without this, characters like ɨ̂
-               (i-with-stroke + combining circumflex) split across font runs
-               on map labels and the diacritic detaches from its base. */
-            font-family: "Charis SIL", system-ui, -apple-system, "Segoe UI",
-                "Noto Serif Tangut", "Noto Sans Old Turkic", "Noto Sans Mongolian",
-                "Noto Sans Sogdian", "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
-                "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
-                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
-                "Noto Sans Coptic", sans-serif;
-        }
-        .globe-label .word, .lang-label .ipa, .globe-label .ipa {
-            font-family: "Charis SIL", system-ui, -apple-system, "Segoe UI",
-                "Noto Serif Tangut", "Noto Sans Old Turkic", "Noto Sans Mongolian",
-                "Noto Sans Sogdian", "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
-                "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
-                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
-                "Noto Sans Coptic", sans-serif;
+            /* font-family inherited from .lang-label parent */
         }
         .lang-label .ipa {
             font-size: calc(10px * var(--label-scale)); color: #555;
