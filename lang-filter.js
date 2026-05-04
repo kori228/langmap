@@ -542,6 +542,65 @@
         speaker: new Set(),
     };
 
+    // ----- URL-hash persistence ------------------------------------------
+    // Encoded as a single hash param `f=cat:val,val|cat:val|…`.
+    // Section/value separators (|, :, ,) chosen to avoid collision with the
+    // top-level & separator app.js uses for its own hash params.
+
+    function encodeFilterState() {
+        const parts = [];
+        for (const cat of Object.keys(filterState)) {
+            const set = filterState[cat];
+            if (set.size === 0) continue;
+            const vals = [...set].map(v => encodeURIComponent(v)).join(',');
+            parts.push(cat + ':' + vals);
+        }
+        return parts.join('|');
+    }
+    function decodeFilterParam(s) {
+        const out = {};
+        if (!s) return out;
+        for (const part of s.split('|')) {
+            const idx = part.indexOf(':');
+            if (idx < 0) continue;
+            const cat = part.slice(0, idx);
+            const vals = part.slice(idx + 1);
+            if (!filterState[cat]) continue;
+            out[cat] = vals.split(',').map(v => { try { return decodeURIComponent(v); } catch (e) { return v; } });
+        }
+        return out;
+    }
+    function syncHash() {
+        const enc = encodeFilterState();
+        const h = location.hash.slice(1);
+        const others = h ? h.split('&').filter(p => p && !p.startsWith('f=')) : [];
+        if (enc) others.push('f=' + enc);
+        const newHash = others.join('&');
+        if (newHash !== h) {
+            // replaceState avoids growing the back-button history per click
+            try { history.replaceState(null, '', newHash ? '#' + newHash : location.pathname + location.search); }
+            catch (e) { location.hash = newHash; }
+        }
+    }
+    function loadFilterFromHash() {
+        const h = location.hash.slice(1);
+        if (!h) return;
+        const fParam = h.split('&').find(p => p.startsWith('f='));
+        if (!fParam) return;
+        const decoded = decodeFilterParam(fParam.slice(2));
+        for (const cat of Object.keys(decoded)) {
+            filterState[cat].clear();
+            for (const v of decoded[cat]) filterState[cat].add(v);
+        }
+    }
+    // Expose so app.js's updateHash can preserve the f= param when it
+    // rewrites location.hash (otherwise our state gets clobbered).
+    window.__langmap = window.__langmap || {};
+    window.__langmap.getFilterHashParam = function () {
+        const enc = encodeFilterState();
+        return enc ? 'f=' + enc : '';
+    };
+
     function passesFilter(code) {
         const f = featuresFor(code);
         if (!f) return false;
@@ -945,6 +1004,9 @@
             // Clear feature cache (placeholder may have polled before meta)
             _featCache.clear();
             metaReady = true;
+            // Restore filter state from URL hash (if any) before first render
+            // so chips render with the right `on` markers.
+            loadFilterFromHash();
 
             function rebuildPanel() {
                 const built = buildPanel();
@@ -979,6 +1041,7 @@
             function refresh() {
                 applyFilter();
                 updateBadge();
+                syncHash();
                 panel.querySelectorAll('.lf-section').forEach(sec => {
                     const cat = sec.dataset.cat;
                     const clearEl = sec.querySelector('.lf-section-clear');
