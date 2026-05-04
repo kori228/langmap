@@ -362,7 +362,7 @@
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js?v=11"></script>
     <script src="meta_i18n_ext.js?v=4"></script>
-    <script src="lang-filter.js?v=10"></script>
+    <script src="lang-filter.js?v=11"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
@@ -504,6 +504,10 @@
         }
         uiLangSelect.value = uiLang;
 
+        // Expose UI language so external scripts (lang-filter.js) can read it
+        window.__langmap = window.__langmap || {};
+        window.__langmap.uiLang = uiLang;
+
         function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
 
         // UI subtitle translations
@@ -565,6 +569,8 @@
 
         uiLangSelect.addEventListener('change', () => {
             uiLang = uiLangSelect.value;
+            window.__langmap.uiLang = uiLang;
+            window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
             applyUILang();
             updateMarkers(currentWord);
             updateHash();
