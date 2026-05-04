@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 454 languages
+ * Word Map Data — 20 key words × 579 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -81,7 +81,7 @@ const LANG_DATA = {
     words: { water:['물','mul'], fire:['불','pul'], sun:['해','hɛ'], moon:['달','tal'], mother:['어무이','ʌmui'], father:['아부지','abudʑi'], eat:['먹다','mʌk̚t͈a'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip̚'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하십니까','annjʌŋhaɕimnikka'], thanks:['고맙습니다','komapsɯmnida'], one:['하나','hana'], good:['좋다','tɕot̚t͈a'] }},
   zh: { name: 'Chinese (Mandarin)', native: '中文', lat: 39.90, lng: 116.40, // Beijing
     words: { water:['水','ʂweɪ̯˧˩˧'], fire:['火','xwo˧˩˧'], sun:['太阳','tʰaɪ̯˥˩jɑŋ˧˥'], moon:['月亮','ɥɛ˥˩ljɑŋ˩'], mother:['妈妈','mama'], father:['爸爸','papa'], eat:['吃','ʈʂʰɨ˥'], drink:['喝','xɤ˥'], love:['爱','aɪ̯˥˩'], heart:['心','ɕin˥'], tree:['树','ʂu˥˩'], house:['房子','fɑŋ˧˥tsɨ'], dog:['狗','koʊ̯˧˩˧'], cat:['猫','mɑʊ̯˥'], hand:['手','ʂoʊ̯˧˩˧'], eye:['眼睛','jɛn˧˩˧tɕiŋ˥'], hello:['你好','ni˧˩˧xaʊ̯˧˩˧'], thanks:['谢谢','ɕjɛ˥˩ɕjɛ'], one:['一','i˥'], good:['好','xaʊ̯˧˩˧'] }},
-  yue: { name: 'Cantonese', native: '广东话', lat: 22.28, lng: 114.16, // Hong Kong
+  yue: { name: 'Cantonese', native: '廣東話', lat: 22.28, lng: 114.16, // Hong Kong
     words: { water:['水','sɵy˧˥'], fire:['火','fɔː˧˥'], sun:['日头','jɐt˨ tʰɐu˨˩'], moon:['月光','jyːt˨ kʷɔːŋ˥'], mother:['妈妈','maː˥maː˥'], father:['爸爸','paː˨˩paː˥'], eat:['食','sɪk˨'], drink:['饮','jɐm˧˥'], love:['爱','ɔːi˧'], heart:['心','sɐm˥'], tree:['树','syː˨'], house:['屋','ʊk˥'], dog:['狗','kɐu˧˥'], cat:['猫','maːu˥'], hand:['手','sɐu˧˥'], eye:['眼','ŋaːn˧˩'], hello:['你好','neːi˧˩hɔːu˧˥'], thanks:['多谢','tɔː˥tɕɛː˨'], one:['一','jɐt˥'], good:['好','hɔːu˧˥'] }},
   nan: { name: 'Taiwanese', native: '台語', lat: 25.03, lng: 121.57, // Taipei
     words: { water:['水','tsui˧˥'], fire:['火','hue˧˥'], sun:['日頭','lit˦˧tʰau˧˥'], moon:['月娘','ɡueʔ˦niu˧˥'], mother:['媽媽','mama'], father:['爸爸','papa'], eat:['食','tsiaʔ˦'], drink:['啉','lim˥'], love:['愛','ai˧'], heart:['心','sim˥'], tree:['樹','tsʰiu˧'], house:['厝','tsʰu˧'], dog:['狗','kau˧˥'], cat:['貓','niau˥'], hand:['手','tsʰiu˧˥'], eye:['目','bak˦'], hello:['你好','li˧˥ho˧˥'], thanks:['多謝','to˥sia˧'], one:['一','it˦'], good:['好','ho˧˥'] }},
