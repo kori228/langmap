@@ -106,6 +106,15 @@
         'Sinitic (Min Nan, Hainanese)': { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Wu)':                 { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Hakka)':              { wo: 'SVO', tone: true, morph: 'isolating' },
+        // SE Asian minority-language additions (Phase 16)
+        'Austroasiatic (Vietic)':       { wo: 'SVO', tone: true, morph: 'isolating' }, // Vietnamese, Mường
+        'Austroasiatic (Palaungic)':    { wo: 'SVO', tone: false, morph: 'isolating' }, // Wa
+        'Sino-Tibetan (Karen, Pwo)':    { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sino-Tibetan (Karen, Sgaw)':   { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sino-Tibetan (Sal, Jingpho)':  { wo: 'SOV', tone: true, morph: 'agglutinative' }, // Jingpo/Kachin
+        'Sino-Tibetan (Loloish, Hani)': { wo: 'SOV', tone: true, morph: 'isolating' }, // Akha
+        'Kra-Dai (Tai, Central)':       { wo: 'SVO', tone: true, morph: 'isolating' }, // Tày, Nung
+        'Austronesian (Sabahan)':       { wo: 'VSO', tone: false, morph: 'agglutinative' }, // Kadazan-Dusun
         // Niger-Congo / Bantu
         'Niger-Congo':            { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Niger-Congo (Bantu)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },

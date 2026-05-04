@@ -57,6 +57,26 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 8)</div>
+            <ul>
+                <li><strong>Word Map: 8 SE Asian high-population minority languages added</strong> (565 → <strong>573</strong>) covering significant gaps across Mainland and Maritime Southeast Asia:
+                    <ul>
+                        <li><strong>Patani Malay (mfa)</strong> ภาษามลายูปาตานี — Malayic, ~3M, Thailand's Deep South. Heavy Thai phonological influence; developed register-tone-like features unusual for Malay.</li>
+                        <li><strong>Mường (mtq)</strong> Tiếng Mường — Vietic, ~1.5M, northern Vietnam mountains. Closest relative of Vietnamese; partially mutually intelligible. Preserves features lost in modern Vietnamese.</li>
+                        <li><strong>Tày (tyz)</strong> Cần Tày — Central Tai (Kra-Dai), ~1.7M, Vietnam's largest minority language. Closely related to Nùng and to Zhuang in adjacent Guangxi. Historical Nôm Tày script (Chinese-character-derived).</li>
+                        <li><strong>Pwo Karen (kjp)</strong> ဖျိၣ် — Karen, ~1M, Myanmar/Thailand. One of two major Karenic branches (the other being Sgaw Karen, already covered as ksw); the two are not mutually intelligible.</li>
+                        <li><strong>Jingpo / Kachin (kac)</strong> Jinghpaw — Sino-Tibetan (Sal/Jingpho), ~900K, Myanmar (Kachin State) + China (Yunnan). SOV, complex tonal system, agglutinative.</li>
+                        <li><strong>Wa (wbm)</strong> Vāx — Austroasiatic Palaungic, ~1M, Myanmar (Wa State) + China (Yunnan). Non-tonal (unusual for region), rich consonant clusters.</li>
+                        <li><strong>Akha (ahk)</strong> Akhazà — Sino-Tibetan Loloish (Hani), ~600K spread across Yunnan/Myanmar/Thailand/Laos/Vietnam highland borders. Three contrastive tones, SOV.</li>
+                        <li><strong>Kadazan-Dusun (dtp)</strong> Boros Dusun — Austronesian Sabahan, ~570K, Sabah (Malaysian Borneo). Largest indigenous language complex of Sabah; unified literary standard combining the related Kadazan and Dusun varieties.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code>: <em>Austroasiatic (Vietic)</em>, <em>Austroasiatic (Palaungic)</em>, <em>Sino-Tibetan (Karen, Pwo / Sgaw)</em>, <em>Sino-Tibetan (Sal, Jingpho)</em>, <em>Sino-Tibetan (Loloish, Hani)</em>, <em>Kra-Dai (Tai, Central)</em>, <em>Austronesian (Sabahan)</em>. All inherit appropriate region-typical typology (most SE Asian Sino-Tibetan and Tai-Kadai are SVO+tonal+isolating; Vietic is SVO+tonal+isolating, Wa Palaungic non-tonal, Sabahan Austronesian VSO+agglutinative).</li>
+                <li>168 new <code>LANG_NAMES</code> entries (8 codes × 21 UI langs), inserted via the dedup-aware Python script that removes any pre-existing partial entries before inserting.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 7)</div>
             <ul>
                 <li><strong>Word Map: 8 more Chinese dialects added</strong> (557 → <strong>565</strong>) — major Sinitic gaps covering Wu, Min, Mandarin, and Hakka branches:
