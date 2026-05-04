@@ -57,6 +57,26 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 6)</div>
+            <ul>
+                <li><strong>Word Map: 8 Taiwan minority languages added</strong> (549 → <strong>557</strong>) — 7 Formosan languages plus Taiwanese Hakka. The Formosan languages are Austronesian primary branches (the deepest splits in the family tree, predating Malayo-Polynesian) and represent some of the most linguistically diverse languages in the world relative to their geographic concentration:
+                    <ul>
+                        <li><strong>Amis (ami)</strong> 阿美語 / Pangcah — East Formosan, ~200K speakers, largest indigenous language. Hualien/Taitung east coast. VOS, four-way focus system.</li>
+                        <li><strong>Paiwan (pwn)</strong> 排灣語 / Pinayuanan — Paiwanic, ~96K. Pingtung/Taitung south. Famous for noble vs. commoner lexical registers.</li>
+                        <li><strong>Atayal (tay)</strong> 泰雅語 / Tayal — Atayalic, ~90K. Northern mountains. Squliq dialect (most conservative).</li>
+                        <li><strong>Bunun (bnn)</strong> 布農語 — Bunun branch, ~60K. Central highlands. Famous for the eight-part polyphonic Pasibutbut harvest song. Isbukun standard dialect.</li>
+                        <li><strong>Truku/Seediq (trv)</strong> 太魯閣語 / Seediq Truku — Atayalic, ~30K. Hualien (Taroko Gorge area). Officially split from Atayal in 2008.</li>
+                        <li><strong>Tsou (tsu)</strong> 鄒語 / Cou — Tsouic, ~4K (severely endangered). Alishan area. Six-vowel system, four-voice focus system.</li>
+                        <li><strong>Tao / Yami (tao)</strong> 達悟語 — Batanic (Malayo-Polynesian, not Formosan!), ~3K. Orchid Island (Lanyu). Mutually intelligible with Ivatan in the Philippines' Batanes; maritime culture, plank-canoe (tatala) tradition.</li>
+                        <li><strong>Taiwanese Hakka (hak_tw)</strong> 台灣客家話 — Sinitic / Hakka branch, ~2-3M. Hsinchu/Miaoli/Pingtung. Sixian dialect (most common, 6 tones) used here. Distinct from mainland Hakka in tones, vocabulary, and pronunciation. Recognized as a national language of Taiwan in 2018.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code> entries in <code>lang-filter.js</code> for the Formosan primary branches: <em>Austronesian (Formosan)</em>, <em>(East Formosan)</em>, <em>(Atayalic)</em>, <em>(Paiwanic)</em>, <em>(Bunun)</em>, <em>(Tsouic)</em>, <em>(Batanic)</em>. Word order is predominantly verb-initial (VOS or VSO), non-tonal, agglutinative with rich verb-focus morphology.</li>
+                <li>All 8 names translated across 21 UI languages (168 new entries in <code>LANG_NAMES</code>); meta entries with full descriptions in 8 base UI languages (en/ja/ko/zh/de/fr/es/ru) added to <code>wordmap_meta.js</code>.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 5)</div>
             <ul>
                 <li><strong>Word Map: filter panel — full UI multi-lingualization (21 UI languages)</strong> — every hardcoded Japanese string in <code>lang-filter.js</code> now translates with the selected UI language. <code>FILTER_UI_TEXT</code> (16 strings × 21 langs) covers the panel title, six section titles (語族 / 文字 / 語順 / 声調 / 形態論 / 話者数), buttons (クリア / もっと表示 / 折りたたむ), counter ("X / Y 言語"), loading messages, and tonal/non-tonal chip labels. Switching UI language now rebuilds the filter panel in place (preserving active selections via <code>data-val</code> re-marking).</li>

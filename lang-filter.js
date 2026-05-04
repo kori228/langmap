@@ -147,6 +147,18 @@
         'Austronesian (Chamic)':                         { wo: 'SVO', tone: false, morph: 'isolating' },
         'Austronesian (South Sulawesi)':                 { wo: 'SVO', tone: false, morph: 'agglutinative' },
         'Austronesian (Central Philippine)':             { wo: 'VSO', tone: false, morph: 'agglutinative' },
+        // Formosan (Austronesian primary branches in Taiwan): predominantly
+        // verb-initial (VSO/VOS), non-tonal, agglutinative with rich
+        // verb-focus morphology. Several primary branches recognized in
+        // Blust 1999 / Sagart 2004 — they're the deepest Austronesian
+        // splits, hence outside the Malayo-Polynesian super-branch.
+        'Austronesian (Formosan)':                       { wo: 'VOS', tone: false, morph: 'agglutinative' },
+        'Austronesian (East Formosan)':                  { wo: 'VOS', tone: false, morph: 'agglutinative' }, // Amis, Kavalan, Sakizaya
+        'Austronesian (Atayalic)':                       { wo: 'VSO', tone: false, morph: 'agglutinative' }, // Atayal, Truku/Seediq
+        'Austronesian (Paiwanic)':                       { wo: 'VOS', tone: false, morph: 'agglutinative' }, // Paiwan
+        'Austronesian (Bunun)':                          { wo: 'VSO', tone: false, morph: 'agglutinative' }, // Bunun
+        'Austronesian (Tsouic)':                         { wo: 'VOS', tone: false, morph: 'agglutinative' }, // Tsou
+        'Austronesian (Batanic)':                        { wo: 'VSO', tone: false, morph: 'agglutinative' }, // Yami/Tao
         // Austroasiatic
         'Austroasiatic':            { wo: 'SVO', tone: false, morph: 'isolating' },
         'Austroasiatic (Munda)':    { wo: 'SOV', tone: false, morph: 'agglutinative' },

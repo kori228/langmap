@@ -2712,6 +2712,29 @@ const LANG_DATA = {
   // Orthography in Old Turkic script (U+10C00-U+10C4F) where attested; Latin in IPA field.
   otk: { name: 'Old Turkic', native: '𐱅𐰇𐰼𐰰', lat: 47.20, lng: 102.83,
     words: { water:['𐰽𐰆𐰉','sub'], fire:['𐰆𐱃','ot'], sun:['𐰚𐰰𐰣','kyn'], moon:['𐰀𐰖','aj'], mother:['𐰆𐰍','oɣ'], father:['𐰴𐰭','qaŋ'], eat:['𐰘𐰃-','je'], drink:['𐰃𐰲-','itʃ'], love:['𐰽𐰋-','sæb'], heart:['𐰚𐰭𐰠','køŋyl'], tree:['𐰃𐰍𐰲','ɯɣatʃ'], house:['𐰋','æb'], dog:['𐰃𐱃','it'], cat:['—','—'], hand:['𐰘𐰠𐰏','elig'], eye:['𐰚𐰕','køz'], hello:['𐰰𐰠𐰢','esænmy'], thanks:['—','—'], one:['𐰋𐰃𐰼','bir'], good:['𐰓𐰏𐰢','ædɡy'] }},
+
+  // === Phase 14: Taiwan minority languages (Formosan + Taiwanese Hakka) ===
+  // 7 Formosan languages (Austronesian, indigenous to Taiwan) + Taiwanese
+  // Hakka (distinct from mainland Hakka). Forms reflect the most common
+  // standard dialect of each: Amis = Central Amis (Hualien); Paiwan =
+  // northern; Atayal = Squliq; Bunun = Isbukun; Truku = Truku/Seediq;
+  // Tsou = Cou; Tao = Yami (Lanyu); Hakka = Sixian (Miaoli/Pingtung).
+  ami: { name: 'Amis', native: 'Pangcah', lat: 23.96, lng: 121.60, // Hualien
+    words: { water:['nanom','nanom'], fire:['namal','namal'], sun:['cidal','tʃidal'], moon:['folad','folad'], mother:['ina','ina'], father:['ama','ama'], eat:['komaen','komaen'], drink:['minom','minom'], love:['maolah','maolah'], heart:["faloko'",'falokoʔ'], tree:['kilang','kilaŋ'], house:["loma'",'lomaʔ'], dog:['wacu','watʃu'], cat:['posi','posi'], hand:['kamay','kamai'], eye:['mata','mata'], hello:["nga'ay ho",'ŋaʔai ho'], thanks:['aray','arai'], one:['cecay','tʃetʃai'], good:['kapah','kapah'] }},
+  pwn: { name: 'Paiwan', native: 'Pinayuanan', lat: 22.30, lng: 120.62, // Pingtung
+    words: { water:['zaljum','zaɭum'], fire:['sapuy','sapui'], sun:['qadaw','qadaw'], moon:['qiljas','qiɭas'], mother:['kina','kina'], father:['kama','kama'], eat:['keman','kəman'], drink:['temekel','təməkəl'], love:['nasaqaqa','nasaqaqa'], heart:['varung','vaɾuŋ'], tree:['kasiw','kasiw'], house:['umaq','umaq'], dog:['vatu','vatu'], cat:['ngiaw','ŋiaw'], hand:['lima','lima'], eye:['maca','matsa'], hello:['masalu','masalu'], thanks:['masalu','masalu'], one:['ita','ita'], good:['nguanguaq','ŋuaŋuaq'] }},
+  tay: { name: 'Atayal', native: 'Tayal', lat: 24.86, lng: 121.55, // Wulai
+    words: { water:["qsya'",'qsijaʔ'], fire:['puniq','puniq'], sun:["wagi'",'waɡiʔ'], moon:['byacing','bjatʃiŋ'], mother:["yaya'",'jajaʔ'], father:["yaba'",'jabaʔ'], eat:['maniq','maniq'], drink:['mqwalax','mqwalax'], love:['kmalu inlungan','kmalu inluŋan'], heart:['nyux','njux'], tree:['qhuniq','qhuniq'], house:['ngasal','ŋasal'], dog:['huzil','huzil'], cat:['ngiyaw','ŋijaw'], hand:["qba'",'qbaʔ'], eye:['roziq','roziq'], hello:['lokah','lokah'], thanks:['mhuway','mhuwaj'], one:['qutux','qutux'], good:['blaq','blaq'] }},
+  bnn: { name: 'Bunun', native: 'Bunun', lat: 23.83, lng: 121.05, // Nantou/Bunun area
+    words: { water:['danum','danum'], fire:['sapuz','sapuz'], sun:['vali','vali'], moon:['buan','buan'], mother:['tina','tina'], father:['tama','tama'], eat:['maun','maun'], drink:['muqun','muqun'], love:['masial','masial'], heart:['is-ang','isaŋ'], tree:['kahu','kahu'], house:['lumaq','lumaq'], dog:['asu','asu'], cat:['ngingiyaw','ŋiŋijaw'], hand:['ima','ima'], eye:['mata','mata'], hello:['uninang','uninaŋ'], thanks:['uninang','uninaŋ'], one:['tasa','tasa'], good:['masial','masial'] }},
+  trv: { name: 'Truku (Seediq)', native: 'Seediq Truku', lat: 24.16, lng: 121.62, // Hualien (Taroko)
+    words: { water:['qsiya','qsija'], fire:['puniq','puniq'], sun:['hidaw','hidaw'], moon:['idas','idas'], mother:['bubu','bubu'], father:['tama','tama'], eat:['meekan','meekan'], drink:['mimah','mimah'], love:['gmalu','gmalu'], heart:['lnglungan','lŋluŋan'], tree:['qhuni','qhuni'], house:['sapah','sapah'], dog:['huling','huliŋ'], cat:['ngiyaw','ŋijaw'], hand:['baga','baga'], eye:['dowriq','dowriq'], hello:['malu','malu'], thanks:['mhuway','mhuwaj'], one:['kingal','kiŋal'], good:['malu','malu'] }},
+  tsu: { name: 'Tsou', native: 'Cou', lat: 23.51, lng: 120.80, // Alishan
+    words: { water:['chumu','tsumu'], fire:['poepe','poepe'], sun:['hie','hie'], moon:["yum'au",'jumʔau'], mother:['ino','ino'], father:['amo','amo'], eat:['bonu','bonu'], drink:["'umnu",'ʔumnu'], love:['yainca','jaintsa'], heart:['yofu','jofu'], tree:['evi','evi'], house:['emoo','emoo'], dog:["avo'u",'avoʔu'], cat:['ngiao','ŋiao'], hand:['muu','muu'], eye:['maso','maso'], hello:['yokeoasu','jokeoasu'], thanks:['aveoveoyu','aveoveoju'], one:['cone','tsone'], good:["'aem'aemo",'ʔaemʔaemo'] }},
+  tao: { name: 'Tao (Yami)', native: 'Tao', lat: 22.04, lng: 121.55, // Orchid Island (Lanyu)
+    words: { water:['ranom','ranom'], fire:['apuy','apui'], sun:['araw','araw'], moon:['vehan','vehan'], mother:['ina','ina'], father:['ama','ama'], eat:['kuman','kuman'], drink:['minum','minum'], love:['makakdeng','makakdəŋ'], heart:['paso','paso'], tree:['kayo','kajo'], house:['vahay','vahai'], dog:['ino','ino'], cat:['koving','koviŋ'], hand:['kamay','kamai'], eye:['mata','mata'], hello:['akokay','akokai'], thanks:['ayoy','ajoi'], one:['asa','asa'], good:['mapia','mapia'] }},
+  hak_tw: { name: 'Taiwanese Hakka (Sixian)', native: '台灣客家話 (四縣腔)', lat: 24.55, lng: 120.93, // Miaoli (Sixian heartland)
+    words: { water:['水','sui˧˩'], fire:['火','fo˧˩'], sun:['日頭','ŋit˨ tʰeu˩˩'], moon:['月光','ŋiet˨ koŋ˨'], mother:['阿姆','a˨ me˨'], father:['阿爸','a˨ pa˨'], eat:['食','sit˨'], drink:['啉','lim˩˩'], love:['惜','siak˨'], heart:['心臟','sim˨ tsʰoŋ˥'], tree:['樹仔','su˥ e˧˩'], house:['屋','vuk˨'], dog:['狗','keu˧˩'], cat:['貓仔','meu˨ e˧˩'], hand:['手','su˧˩'], eye:['目珠','muk˨ tsu˨'], hello:['你好','ŋi˩˩ ho˧˩'], thanks:['承蒙你','sin˩˩ muŋ˩˩ ŋi˩˩'], one:['一','jit˨'], good:['好','ho˧˩'] }},
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
