@@ -167,6 +167,28 @@
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 Georgia, "Times New Roman", serif;
         }
+        /* Selected language (info panel open) — highlight + connector to modal */
+        .lang-label.selected, .globe-label.selected {
+            background: rgba(255,224,77,0.35); border-radius: 4px;
+            box-shadow: 0 0 0 2px #f4b400, 0 0 8px rgba(244,180,0,0.55);
+            outline: none;
+            z-index: 10;
+        }
+        .lang-label.selected .word, .globe-label.selected .word { color: #b85d00 !important; }
+        /* Connector line — full-viewport SVG overlay above map, below panels */
+        #connector-line {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1005;
+            display: none;
+        }
+        #connector-line.visible { display: block; }
+        #connector-line line {
+            stroke: #f4b400; stroke-width: 2; stroke-dasharray: 6 4;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.9));
+        }
         .lang-label {
             position: absolute; left: 50%; top: 50%;
             text-align: center; white-space: nowrap; cursor: pointer;
@@ -359,6 +381,10 @@
 
     <div id="map"></div>
     <div id="globe"></div>
+    <!-- Connector line from selected map label to the open info panel -->
+    <svg id="connector-line" aria-hidden="true">
+        <line x1="0" y1="0" x2="0" y2="0"></line>
+    </svg>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
@@ -768,6 +794,10 @@
                     // Re-layout label collisions; degree-spacing depends on altitude.
                     updateMarkers(currentWord);
                 });
+                // Update connector line continuously while user rotates/zooms.
+                controls.addEventListener('change', () => {
+                    if (typeof updateConnectorLine === 'function') updateConnectorLine();
+                });
             }
         }
 
@@ -1048,6 +1078,10 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
+            // Re-apply selected highlight + connector after re-render
+            // (markers are torn down and re-added each updateMarkers call).
+            if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+            if (typeof updateConnectorLine === 'function') updateConnectorLine();
         }
 
         function updateGlobeLabels(wordId) {
@@ -1116,6 +1150,12 @@
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
             }
             globe.htmlElementsData(elements);
+            // Re-apply selected highlight + connector after globe re-renders
+            // (labels are managed by globe.gl; defer one tick for DOM update)
+            requestAnimationFrame(() => {
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                if (typeof updateConnectorLine === 'function') updateConnectorLine();
+            });
         }
 
         // --- URL hash ---
@@ -1227,8 +1267,10 @@
         window.__langmap.uiLang = uiLang;
         window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
 
-        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
-        map.on('moveend', () => { updateHash(); });
+        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); updateConnectorLine(); });
+        map.on('moveend', () => { updateHash(); updateConnectorLine(); });
+        window.addEventListener('resize', () => { updateConnectorLine(); });
+        window.addEventListener('scroll', () => { updateConnectorLine(); }, true);
 
         // Expose refresh for async LANG_NAMES load
         window._refreshMarkers = () => updateMarkers(currentWord);
@@ -1256,6 +1298,52 @@
             // Clear dataset.code so the open-language state is consistent
             // (per wordmap-check-4.md §19).
             delete infoPanel.dataset.code;
+            updateSelectedLabel();
+            updateConnectorLine();
+        }
+
+        // === Selected-language highlight + connector line to info panel ===
+        // When the info panel is open, mark the corresponding map label
+        // with .selected (yellow ring) and draw a dashed line from the
+        // label to the panel's left edge. Recomputed on map move/zoom,
+        // marker re-render, panel open/close, and window resize.
+        const connectorSvg = document.getElementById('connector-line');
+        const connectorLine = connectorSvg.querySelector('line');
+        function getSelectedLabelEl() {
+            const code = infoPanel.dataset.code;
+            if (!code || !infoPanel.classList.contains('visible')) return null;
+            // Try 2D label first, then 3D globe label
+            return document.querySelector(`.lang-label[data-code="${CSS.escape(code)}"]`)
+                || document.querySelector(`.globe-label[data-code="${CSS.escape(code)}"]`);
+        }
+        function updateSelectedLabel() {
+            const open = infoPanel.classList.contains('visible');
+            document.querySelectorAll('.lang-label.selected, .globe-label.selected')
+                .forEach(el => el.classList.remove('selected'));
+            if (!open) return;
+            const el = getSelectedLabelEl();
+            if (el) el.classList.add('selected');
+        }
+        function updateConnectorLine() {
+            const open = infoPanel.classList.contains('visible');
+            const labelEl = open ? getSelectedLabelEl() : null;
+            if (!open || !labelEl) {
+                connectorSvg.classList.remove('visible');
+                return;
+            }
+            const lr = labelEl.getBoundingClientRect();
+            const pr = infoPanel.getBoundingClientRect();
+            // Source: right edge of label, vertical center
+            const x1 = lr.left + lr.width / 2;
+            const y1 = lr.top + lr.height / 2;
+            // Target: left edge of panel, vertical center (clamped to label y)
+            const x2 = pr.left;
+            const y2 = Math.max(pr.top + 12, Math.min(pr.bottom - 12, y1));
+            connectorLine.setAttribute('x1', x1);
+            connectorLine.setAttribute('y1', y1);
+            connectorLine.setAttribute('x2', x2);
+            connectorLine.setAttribute('y2', y2);
+            connectorSvg.classList.add('visible');
         }
         document.getElementById('info-close').addEventListener('click', closeInfoPanel);
         // Escape key closes the info panel and the filter panel
@@ -1359,6 +1447,8 @@
             infoPanel.dataset.code = code;
             renderLangInfo(code);
             infoPanel.classList.add('visible');
+            updateSelectedLabel();
+            updateConnectorLine();
             if (!lang.meta) {
                 loadMeta().then(() => {
                     if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
