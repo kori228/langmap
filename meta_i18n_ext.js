@@ -283,6 +283,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': '드바라바티 왕국, 바간 시대 버마',
         'Pagan Empire, post-Pagan Burma': '바간 제국, 바간 후기 버마',
         'Kievan Rus principalities, Novgorod Republic': '키예프 루스 공국들, 노브고로드 공화국',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (오어족 전체 총수; 상해어 단독은 ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (총 화자; L1 약 25-40M, 대부분 L2 / 국가 언어)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (총 화자; L2 공통어, L1 약 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (지역 · 방언 연속체; Ethnologue L1 약 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / 교육용; L1 아님)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (아프리카 프랑스어권 국가 전체 합산)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (지역 인구; 실제 방언 화자는 더 적음)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (브라질 인구; 포르투갈어 pt와 중복)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (멕시코 인구; 스페인어 es와 중복)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (다리어 · 타지크어 포함 합산; 순수 페르시아어 L1 약 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (관화 지역 변종; 중국어 zh와 중복)',
     },
 
     // === Chinese (Mandarin) ===============================================
@@ -443,6 +456,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': '堕罗钵底王国, 蒲甘时期缅甸',
         'Pagan Empire, post-Pagan Burma': '蒲甘王朝, 后蒲甘缅甸',
         'Kievan Rus principalities, Novgorod Republic': '基辅罗斯诸公国、诺夫哥罗德共和国',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M（吴语族总数；上海话单独约 ~15-20M）',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M（总话者；L1 约 25-40M，多为 L2 / 国家语言）',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M（总话者；L2 通用语，L1 约 15-20M）',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M（地区/方言连续体；Ethnologue L1 约 68M）',
+        '~130M (L2/educational; not L1)': '~130M（L2 / 教育用；非 L1）',
+        '~140M (regional aggregate across African Francophone countries)': '~140M（非洲法语国家的地区合计）',
+        '~100M (regional population; active dialect speakers fewer)': '~100M（地区人口；实际方言话者更少）',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M（巴西人口；与葡萄牙语 pt 重叠）',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M（墨西哥人口；与西班牙语 es 重叠）',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M（含达里语和塔吉克语合计；纯波斯语 L1 约 70M）',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M（官话地区变种；与中文 zh 重叠）',
     },
 
     // === Cantonese (Yue) — uses traditional characters mostly =============
@@ -546,6 +572,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': '墮羅缽底王國, 蒲甘時期緬甸',
         'Pagan Empire, post-Pagan Burma': '蒲甘王朝, 後蒲甘緬甸',
         'Kievan Rus principalities, Novgorod Republic': '基輔羅斯諸公國、諾夫哥羅德共和國',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M（吳語族總數；上海話單獨約 ~15-20M）',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M（總話者；L1 約 25-40M，多為 L2 / 國家語言）',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M（總話者；L2 通用語，L1 約 15-20M）',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M（地區/方言連續體；Ethnologue L1 約 68M）',
+        '~130M (L2/educational; not L1)': '~130M（L2 / 教育用；非 L1）',
+        '~140M (regional aggregate across African Francophone countries)': '~140M（非洲法語國家嘅地區合計）',
+        '~100M (regional population; active dialect speakers fewer)': '~100M（地區人口；實際方言話者更少）',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M（巴西人口；與葡萄牙語 pt 重疊）',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M（墨西哥人口；與西班牙語 es 重疊）',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M（含達里語同塔吉克語合計；純波斯語 L1 約 70M）',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M（官話地區變種；與中文 zh 重疊）',
     },
 
     // === German ===========================================================
@@ -694,6 +733,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Königreich Dvaravati, Pagan-Burma',
         'Pagan Empire, post-Pagan Burma': 'Pagan-Reich, post-Pagan Burma',
         'Kievan Rus principalities, Novgorod Republic': 'Fürstentümer der Kiewer Rus, Republik Nowgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (Gesamt der Wu-Sprachfamilie; Shanghainesisch allein ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (gesamt; L1 ≈ 25-40M, meist L2 / Landessprache)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (gesamt; L2 Lingua franca, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (regional/Dialektkontinuum; L1 laut Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / Bildung; nicht L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (regionale Aggregierung über frankophone afrikanische Länder)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (regionale Bevölkerung; aktive Dialektsprecher weniger)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (brasilianische Bevölkerung; überschneidet sich mit Portugiesisch pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (mexikanische Bevölkerung; überschneidet sich mit Spanisch es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (Aggregat inkl. Dari und Tadschikisch; reines Persisch L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (Mandarin-Varietät; überschneidet sich mit Chinesisch zh)',
     },
 
     // === French ===========================================================
@@ -842,6 +894,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Royaume de Dvaravati, Birmanie pagane',
         'Pagan Empire, post-Pagan Burma': 'Empire de Pagan, Birmanie post-Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Principautés de la Rus de Kiev, République de Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (total de la famille wu ; shanghaïen seul ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (total ; L1 ≈ 25-40M, surtout L2 / langue nationale)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (total ; lingua franca L2, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (régional / continuum dialectal ; L1 selon Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / éducation ; pas L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (agrégat régional des pays francophones africains)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (population régionale ; locuteurs actifs du dialecte moins nombreux)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (population brésilienne ; recoupe le portugais pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (population mexicaine ; recoupe l\'espagnol es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (agrégat incl. dari et tadjik ; persan strict L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (variété mandarine ; recoupe le chinois zh)',
     },
 
     // === Italian ==========================================================
@@ -978,6 +1043,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Regno di Dvaravati, Birmania pagana',
         'Pagan Empire, post-Pagan Burma': 'Impero di Pagan, Birmania post-Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Principati della Rus di Kiev, Repubblica di Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (totale famiglia Wu; il solo shanghainese ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (totale; L1 ≈ 25-40M, per lo più L2 / nazionale)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (totale; lingua franca L2, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (regionale/continuum dialettale; L1 secondo Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / istruzione; non L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (aggregato regionale dei paesi francofoni africani)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (popolazione regionale; parlanti attivi del dialetto meno numerosi)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (popolazione brasiliana; si sovrappone con il portoghese pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (popolazione messicana; si sovrappone con lo spagnolo es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (aggregato incl. dari e tagico; persiano puro L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (varietà di mandarino; si sovrappone con il cinese zh)',
     },
 
     // === Spanish (base, used for es/es_eu/es_mx) =========================
@@ -1117,6 +1195,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Reino de Dvaravati, Birmania paganesa',
         'Pagan Empire, post-Pagan Burma': 'Imperio Pagan, Birmania post-Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Principados de la Rus de Kiev, República de Nóvgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (total familia wu; shanghainés solo ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (total; L1 ≈ 25-40M, en su mayoría L2 / nacional)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (total; lingua franca L2, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (regional/continuo dialectal; L1 según Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / educativo; no L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (agregado regional de países francófonos africanos)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (población regional; hablantes activos del dialecto menores)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (población brasileña; se solapa con el portugués pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (población mexicana; se solapa con el español es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (agregado incl. dari y tayiko; persa puro L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (variedad de mandarín; se solapa con el chino zh)',
     },
 
     // === Portuguese (base, used for pt/pt_eu/pt_br) =======================
@@ -1253,6 +1344,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Reino de Dvaravati, Birmânia pagana',
         'Pagan Empire, post-Pagan Burma': 'Império de Pagan, Birmânia pós-Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Principados da Rússia de Kiev, República de Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (total família Wu; xangainês sozinho ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (total; L1 ≈ 25-40M, em sua maioria L2 / nacional)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (total; lingua franca L2, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (regional/continuum dialetal; L1 segundo Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / educacional; não L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (agregado regional dos países francófonos africanos)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (população regional; falantes ativos do dialeto menores)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (população brasileira; sobrepõe-se ao português pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (população mexicana; sobrepõe-se ao espanhol es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (agregado incl. dari e tajique; persa puro L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (variedade do mandarim; sobrepõe-se ao chinês zh)',
     },
 
     // === Russian ==========================================================
@@ -1384,6 +1488,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Царство Дваравати, Бирма паганской эпохи',
         'Pagan Empire, post-Pagan Burma': 'Паганская империя, постпаганская Бирма',
         'Kievan Rus principalities, Novgorod Republic': 'Княжества Киевской Руси, Новгородская республика',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (вся семья У; шанхайский отдельно ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (всего; L1 ≈ 25-40M, в основном L2 / государственный)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (всего; L2 лингва франка, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (региональный/диалектный континуум; L1 по Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / образовательный; не L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (региональная агрегация по франкоязычным странам Африки)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (региональное население; активных носителей диалекта меньше)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (население Бразилии; пересекается с португальским pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (население Мексики; пересекается с испанским es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (агрегат с дари и таджикским; чистый персидский L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (диалект мандарина; пересекается с китайским zh)',
     },
 
     // === Ukrainian ========================================================
@@ -1487,6 +1604,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Царство Дваравати, Бірма паганської епохи',
         'Pagan Empire, post-Pagan Burma': 'Паганська імперія, постпаганська Бірма',
         'Kievan Rus principalities, Novgorod Republic': 'Князівства Київської Русі, Новгородська республіка',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (вся родина У; шанхайська окремо ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (всього; L1 ≈ 25-40M, переважно L2 / державна мова)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (всього; L2 лінгва франка, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (регіональний/діалектний континуум; L1 за Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / освітній; не L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (регіональна агрегація франкомовних країн Африки)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (регіональне населення; активних носіїв діалекту менше)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (населення Бразилії; перетинається з португальською pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (населення Мексики; перетинається з іспанською es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (агрегат з дарі та таджицькою; чиста перська L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (діалект мандарина; перетинається з китайською zh)',
     },
 
     // === Arabic ===========================================================
@@ -1588,6 +1718,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'مملكة دفارافاتي، بورما العصر الباغاني',
         'Pagan Empire, post-Pagan Burma': 'إمبراطورية باغان، بورما ما بعد باغان',
         'Kievan Rus principalities, Novgorod Republic': 'إمارات روس الكييفية، جمهورية نوفغورود',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (إجمالي عائلة الوو؛ الشنغهاية وحدها ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (الإجمالي؛ L1 ≈ 25-40M، أغلبهم L2 / لغة وطنية)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (الإجمالي؛ لغة مشتركة L2، L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (إقليمي/سلسلة لهجات؛ L1 وفق Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / تعليمي؛ ليس L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (إجمالي إقليمي للبلدان الأفريقية الفرنكوفونية)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (سكان إقليميون؛ المتحدثون الفعليون باللهجة أقل)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (سكان البرازيل؛ يتداخل مع البرتغالية pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (سكان المكسيك؛ يتداخل مع الإسبانية es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (إجمالي يشمل الدري والطاجيكية؛ الفارسية الصرفة L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (لهجة من الماندرين؛ يتداخل مع الصينية zh)',
     },
 
     // === Hebrew ===========================================================
@@ -1677,6 +1820,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'ממלכת דווארוואטי, בורמה בעידן פאגאן',
         'Pagan Empire, post-Pagan Burma': 'אימפריית פאגאן, בורמה שלאחר פאגאן',
         'Kievan Rus principalities, Novgorod Republic': 'נסיכויות רוס של קייב, רפובליקת נובגורוד',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (סך כל משפחת וו; שנגחאית לבדה ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (סך הכל; L1 ≈ 25-40M, בעיקר L2 / שפה לאומית)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (סך הכל; שפת תקשורת L2, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (אזורי/רצף ניבים; L1 לפי Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / חינוכי; לא L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (אגרגציה אזורית בכל מדינות אפריקה הפרנקופוניות)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (אוכלוסייה אזורית; דוברי ניב פעילים מעטים יותר)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (אוכלוסיית ברזיל; חופף עם פורטוגזית pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (אוכלוסיית מקסיקו; חופף עם ספרדית es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (אגרגט כולל דארי וטג\'יקית; פרסית טהורה L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (גרסה של מנדרינית; חופף עם סינית zh)',
     },
 
     // === Swahili ==========================================================
@@ -1773,6 +1929,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Ufalme wa Dvaravati, Burma enzi ya Pagan',
         'Pagan Empire, post-Pagan Burma': 'Milki ya Pagan, Burma baada ya Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Wakuu wa Rus ya Kievan, Jamhuri ya Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (jumla ya familia ya Kiwu; Kishanghai pekee ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (jumla; L1 ≈ 25-40M, hasa L2 / lugha ya taifa)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (jumla; L2 lugha ya pamoja, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (kikanda/mfululizo wa lahaja; L1 kwa Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / kielimu; siyo L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (jumla ya kanda kwa nchi za Kifaransa za Afrika)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (idadi ya watu wa kanda; wazungumzaji wa lahaja halisi ni wachache)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (idadi ya watu Brazil; inazungumza pamoja na Kireno pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (idadi ya watu Meksiko; inazungumza pamoja na Kihispania es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (jumla ikiwemo Dari na Tajik; Kiajemi cha asili L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (lahaja ya Mandarin; inazungumza pamoja na Kichina zh)',
     },
 
     // === Hindi ============================================================
@@ -1864,6 +2033,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'द्वारवती राज्य, पगन-काल बर्मा',
         'Pagan Empire, post-Pagan Burma': 'पगन साम्राज्य, पगन-उत्तर बर्मा',
         'Kievan Rus principalities, Novgorod Republic': 'कीवीय रूस की रियासतें, नोवगोरोद गणराज्य',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (वू भाषा-परिवार कुल; अकेले शंघाई ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (कुल; L1 ≈ 25-40M, अधिकांश L2 / राष्ट्रभाषा)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (कुल; L2 सम्पर्क-भाषा, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (क्षेत्रीय/बोली-संतति; Ethnologue के अनुसार L1 ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / शैक्षिक; L1 नहीं)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (अफ्रीकी फ्रांकोफोन देशों का क्षेत्रीय समग्र)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (क्षेत्रीय जनसंख्या; सक्रिय बोली वक्ता कम)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (ब्राज़ील की जनसंख्या; पुर्तगाली pt से ओवरलैप)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (मेक्सिको की जनसंख्या; स्पेनिश es से ओवरलैप)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (दारी और ताजिक सहित कुल; शुद्ध फ़ारसी L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (मंदारिन की क्षेत्रीय किस्म; चीनी zh से ओवरलैप)',
     },
 
     // === Vietnamese =======================================================
@@ -1958,6 +2140,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Vương quốc Dvaravati, Miến Điện thời Pagan',
         'Pagan Empire, post-Pagan Burma': 'Đế quốc Pagan, Miến Điện hậu Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Các công quốc Kievan Rus, Cộng hòa Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (tổng họ Ngô; tiếng Thượng Hải riêng ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (tổng số; L1 ≈ 25-40M, chủ yếu L2 / quốc ngữ)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (tổng số; L2 ngôn ngữ chung, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (vùng/chuỗi phương ngữ; L1 theo Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / giáo dục; không phải L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (tổng hợp khu vực các quốc gia Pháp ngữ châu Phi)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (dân số khu vực; người nói phương ngữ thực tế ít hơn)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (dân số Brazil; trùng với tiếng Bồ Đào Nha pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (dân số Mexico; trùng với tiếng Tây Ban Nha es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (tổng gồm Dari và Tajik; tiếng Ba Tư thuần L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (biến thể Quan thoại; trùng với tiếng Trung zh)',
     },
 
     // === Thai =============================================================
@@ -2045,6 +2240,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'อาณาจักรทวารวดี ยุคพุกามของพม่า',
         'Pagan Empire, post-Pagan Burma': 'จักรวรรดิพุกาม, พม่ายุคหลังพุกาม',
         'Kievan Rus principalities, Novgorod Republic': 'อาณาเขตเคียฟรุส, สาธารณรัฐนอฟโกรอด',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (รวมตระกูลภาษาอู๋ทั้งหมด; เซี่ยงไฮ้เดี่ยว ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (รวมทั้งหมด; L1 ≈ 25-40M, ส่วนใหญ่เป็น L2 / ภาษาประจำชาติ)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (รวมทั้งหมด; L2 ภาษากลาง, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (ภูมิภาค/ความต่อเนื่องของภาษาถิ่น; L1 ตาม Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / การศึกษา; ไม่ใช่ L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (ผลรวมระดับภูมิภาคของประเทศแฟรงโกโฟนในแอฟริกา)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (ประชากรในภูมิภาค; ผู้ใช้ภาษาถิ่นจริงน้อยกว่า)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (ประชากรบราซิล; ทับซ้อนกับโปรตุเกส pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (ประชากรเม็กซิโก; ทับซ้อนกับสเปน es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (รวมดารีและทาจิก; ภาษาเปอร์เซียบริสุทธิ์ L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (ภาษาแมนดารินภูมิภาค; ทับซ้อนกับจีน zh)',
     },
 
     // === Indonesian =======================================================
@@ -2142,6 +2350,19 @@ const META_I18N_ATOMS = {
         'Dvaravati kingdom, Pagan-era Burma': 'Kerajaan Dvaravati, Burma era Pagan',
         'Pagan Empire, post-Pagan Burma': 'Kekaisaran Pagan, Burma pasca-Pagan',
         'Kievan Rus principalities, Novgorod Republic': 'Kepangeranan Kievan Rus, Republik Novgorod',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M (total rumpun Wu; Shanghai sendiri ~15-20M)',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M (total; L1 ≈ 25-40M, sebagian besar L2 / bahasa nasional)',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M (total; L2 lingua franca, L1 ≈ 15-20M)',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M (regional/kontinuum dialek; L1 menurut Ethnologue ≈ 68M)',
+        '~130M (L2/educational; not L1)': '~130M (L2 / pendidikan; bukan L1)',
+        '~140M (regional aggregate across African Francophone countries)': '~140M (agregat regional di negara Frankofon Afrika)',
+        '~100M (regional population; active dialect speakers fewer)': '~100M (populasi regional; penutur dialek aktif lebih sedikit)',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M (populasi Brasil; tumpang tindih dengan Portugis pt)',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M (populasi Meksiko; tumpang tindih dengan Spanyol es)',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M (agregat termasuk Dari dan Tajik; Persia murni L1 ≈ 70M)',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (varian Mandarin; tumpang tindih dengan Tionghoa zh)',
     },
 
     ja: {
@@ -2931,6 +3152,19 @@ const META_I18N_ATOMS = {
         'Tibetan (Uchen) ྑ': 'チベット文字（ウーチェン）ྑ',
         'Dunging) script (1947': 'ダンギン）文字（1947年',
         'Christian liturgical': 'キリスト教典礼',
+    
+        // Phase 13/13b/13c speaker annotation atoms
+        '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)': '~80M（呉語族全体の合計；上海語単独では ~15-20M）',
+        '~200M (total; L1 ≈ 25-40M, mostly L2/national)': '~200M（総話者；L1 約 25-40M、大半は L2 / 国家言語）',
+        '~100M (total; L2 lingua franca, L1 ≈ 15-20M)': '~100M（総話者；L2 共通語、L1 約 15-20M）',
+        '~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)': '~100M（地域・方言連続体；Ethnologue の L1 は約 68M）',
+        '~130M (L2/educational; not L1)': '~130M（L2 / 教育用；L1 ではない）',
+        '~140M (regional aggregate across African Francophone countries)': '~140M（アフリカのフランス語圏諸国にまたがる地域集計）',
+        '~100M (regional population; active dialect speakers fewer)': '~100M（地域人口；実際の方言話者はそれより少ない）',
+        '~215M (Brazilian population; overlaps with Portuguese pt)': '~215M（ブラジルの人口；ポルトガル語 pt と重複）',
+        '~130M (Mexican population; overlaps with Spanish es)': '~130M（メキシコの人口；スペイン語 es と重複）',
+        '~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)': '~110M（ダリー語・タジク語を含む集計；純粋なペルシア語 L1 は約 70M）',
+        '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M（官話の地域変種；中国語 zh と重複）',
     }
 };
 
