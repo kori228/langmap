@@ -93,19 +93,35 @@ function _resolve(val, dict, atoms, seps) {
         return commaParts.map(p => _resolve(p, dict, atoms, seps)).join(seps.comma);
     }
 
-    // 2. Top-level slash split (script alternates: "X / Y / Z")
+    // 2. Top-level semicolon split (speaker annotations: "X; Y; Z")
+    const semiParts = _splitTopLevel(val, ';').map(s => s.trim()).filter(Boolean);
+    if (semiParts.length > 1) {
+        return semiParts.map(p => _resolve(p, dict, atoms, seps)).join('; ');
+    }
+
+    // 3. Top-level slash split (script alternates: "X / Y / Z")
     const slashParts = _splitTopLevel(val, '/').map(s => s.trim()).filter(Boolean);
     if (slashParts.length > 1) {
         return slashParts.map(p => _resolve(p, dict, atoms, seps)).join(' / ');
     }
 
-    // 3. Parenthetical: "X (Y)" — only if parens balance and there's exactly
+    // 4. Parenthetical: "X (Y)" — only if parens balance and there's exactly
     //    one top-level paren group at the end
     const parenMatch = val.match(/^([^()]+?)\s*\((.+)\)\s*$/);
     if (parenMatch) {
         const left = _resolve(parenMatch[1].trim(), dict, atoms, seps);
         const inner = _resolve(parenMatch[2].trim(), dict, atoms, seps);
         return left + seps.lparen + inner + seps.rparen;
+    }
+
+    // 5. Number-prefix peel: "~10 fluent", "1.5M L2 speakers" — strip the
+    //    leading numeric quantity, recurse on the descriptor, prepend the
+    //    quantity verbatim. Only for clear numeric prefixes; never for
+    //    bare-word starts.
+    const numPrefix = val.match(/^(~?\d+[\d.,–\-]*\s*[MKB]?\+?)\s+(.+)$/);
+    if (numPrefix) {
+        const rhs = _resolve(numPrefix[2].trim(), dict, atoms, seps);
+        if (rhs !== numPrefix[2].trim()) return numPrefix[1] + ' ' + rhs;
     }
 
     return val;
@@ -3171,6 +3187,311 @@ const META_I18N_ATOMS = {
 // Alias regional variants to their base atom dict (es_eu = es_mx = es,
 // pt_eu = pt_br = pt). META_I18N may have separate entries per regional
 // variant which the smart translator still consults first; atoms are shared.
+META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
+META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
+META_I18N_ATOMS.pt_eu = META_I18N_ATOMS.pt;
+META_I18N_ATOMS.pt_br = META_I18N_ATOMS.pt;
+
+// === Speaker-annotation atoms ============================================
+// Common keywords that appear in speakers:'…' values across many languages.
+// Defined separately and merged into each per-lang dict so they're picked
+// up by the smart translator's atom lookup. Improves coverage for
+// composed annotations like "~25K (fluent)" or "Extinct (liturgical)".
+const SPEAKER_ATOMS = {
+    ja: {
+        'Extinct':'死語', 'liturgical':'典礼用', 'Liturgical':'典礼用',
+        'fluent':'流暢な話者', 'endangered':'危機言語',
+        'severely endangered':'重度の危機言語', 'critically endangered':'重大危機言語',
+        'revived':'復興語', 'macrolanguage':'大言語', 'lingua franca':'共通語',
+        'active':'活発', 'passive':'受動的', 'total':'合計', 'educational':'教育用',
+        'L1':'L1（母語）', 'L2':'L2（第二言語）', 'aggregate':'合算', 'continuum':'連続体',
+        'population':'人口', 'descends':'派生する', 'descend':'派生する',
+        'descendants':'子孫言語', 'all varieties':'全ての変種',
+        'modern dialects':'現代方言', 'hypothetical':'仮説的', 'mostly':'主に',
+        'dialect':'方言', 'dialects':'諸方言', 'incl.':'含む',
+        'incl. L2':'L2を含む', 'not L1':'L1ではない',
+        'Wu Chinese family':'呉語族', 'Mandarin variety':'官話の地域変種',
+        'Brazilian population':'ブラジルの人口', 'Mexican population':'メキシコの人口',
+    },
+    ko: {
+        'Extinct':'소멸', 'liturgical':'전례용', 'Liturgical':'전례용',
+        'fluent':'유창한 화자', 'endangered':'위기 언어',
+        'severely endangered':'심각한 위기', 'critically endangered':'중대 위기',
+        'revived':'부활', 'macrolanguage':'대언어', 'lingua franca':'공통어',
+        'active':'활동적', 'passive':'수동적', 'total':'총합', 'educational':'교육용',
+        'L1':'L1(모국어)', 'L2':'L2(제2언어)', 'aggregate':'합산', 'continuum':'연속체',
+        'population':'인구', 'descends':'파생', 'descend':'파생',
+        'descendants':'후손 언어', 'all varieties':'모든 변종',
+        'modern dialects':'현대 방언', 'hypothetical':'가설적', 'mostly':'대부분',
+        'dialect':'방언', 'dialects':'방언들', 'incl.':'포함',
+        'incl. L2':'L2 포함', 'not L1':'L1 아님',
+        'Wu Chinese family':'오어족', 'Mandarin variety':'관화 지역 변종',
+        'Brazilian population':'브라질 인구', 'Mexican population':'멕시코 인구',
+    },
+    zh: {
+        'Extinct':'已消亡', 'liturgical':'礼仪用', 'Liturgical':'礼仪用',
+        'fluent':'流利的使用者', 'endangered':'濒危',
+        'severely endangered':'严重濒危', 'critically endangered':'极度濒危',
+        'revived':'复兴', 'macrolanguage':'大语言', 'lingua franca':'通用语',
+        'active':'活跃', 'passive':'被动', 'total':'总数', 'educational':'教育用',
+        'L1':'L1（母语）', 'L2':'L2（第二语言）', 'aggregate':'合计', 'continuum':'连续体',
+        'population':'人口', 'descends':'派生', 'descend':'派生',
+        'descendants':'后裔语言', 'all varieties':'所有变种',
+        'modern dialects':'现代方言', 'hypothetical':'假定', 'mostly':'多数',
+        'dialect':'方言', 'dialects':'方言', 'incl.':'含',
+        'incl. L2':'含 L2', 'not L1':'非 L1',
+        'Wu Chinese family':'吴语族', 'Mandarin variety':'官话变种',
+        'Brazilian population':'巴西人口', 'Mexican population':'墨西哥人口',
+    },
+    yue: {
+        'Extinct':'已消亡', 'liturgical':'禮儀用', 'Liturgical':'禮儀用',
+        'fluent':'流利嘅使用者', 'endangered':'瀕危',
+        'severely endangered':'嚴重瀕危', 'critically endangered':'極度瀕危',
+        'revived':'復興', 'macrolanguage':'大語言', 'lingua franca':'通用語',
+        'active':'活躍', 'passive':'被動', 'total':'總數', 'educational':'教育用',
+        'L1':'L1（母語）', 'L2':'L2（第二語言）', 'aggregate':'合計', 'continuum':'連續體',
+        'population':'人口', 'descends':'派生', 'descend':'派生',
+        'descendants':'後裔語言', 'all varieties':'所有變種',
+        'modern dialects':'現代方言', 'hypothetical':'假定', 'mostly':'多數',
+        'dialect':'方言', 'dialects':'方言', 'incl.':'含',
+        'incl. L2':'含 L2', 'not L1':'非 L1',
+        'Wu Chinese family':'吳語族', 'Mandarin variety':'官話變種',
+        'Brazilian population':'巴西人口', 'Mexican population':'墨西哥人口',
+    },
+    vi: {
+        'Extinct':'đã tuyệt chủng', 'liturgical':'phụng vụ', 'Liturgical':'Phụng vụ',
+        'fluent':'thông thạo', 'endangered':'có nguy cơ',
+        'severely endangered':'nguy cấp nặng', 'critically endangered':'cực kỳ nguy cấp',
+        'revived':'phục hồi', 'macrolanguage':'đại ngôn ngữ', 'lingua franca':'lingua franca',
+        'active':'tích cực', 'passive':'thụ động', 'total':'tổng', 'educational':'giáo dục',
+        'L1':'L1 (tiếng mẹ đẻ)', 'L2':'L2 (ngôn ngữ thứ hai)', 'aggregate':'tổng hợp',
+        'continuum':'liên tục', 'population':'dân số',
+        'descends':'phái sinh', 'descend':'phái sinh', 'descendants':'ngôn ngữ hậu duệ',
+        'all varieties':'tất cả biến thể', 'modern dialects':'phương ngữ hiện đại',
+        'hypothetical':'giả thuyết', 'mostly':'phần lớn',
+        'dialect':'phương ngữ', 'dialects':'phương ngữ',
+        'incl.':'gồm', 'incl. L2':'gồm L2', 'not L1':'không phải L1',
+        'Wu Chinese family':'họ Ngô', 'Mandarin variety':'biến thể Quan thoại',
+        'Brazilian population':'dân số Brazil', 'Mexican population':'dân số Mexico',
+    },
+    th: {
+        'Extinct':'สูญแล้ว', 'liturgical':'ใช้ทางพิธีกรรม', 'Liturgical':'ใช้ทางพิธีกรรม',
+        'fluent':'พูดได้คล่อง', 'endangered':'ใกล้สูญ',
+        'severely endangered':'ใกล้สูญอย่างรุนแรง', 'critically endangered':'ใกล้สูญขั้นวิกฤต',
+        'revived':'ฟื้นฟู', 'macrolanguage':'มหาภาษา', 'lingua franca':'ภาษากลาง',
+        'active':'ใช้งานได้', 'passive':'รับรู้', 'total':'รวม', 'educational':'การศึกษา',
+        'L1':'L1 (ภาษาแม่)', 'L2':'L2 (ภาษาที่สอง)', 'aggregate':'รวมยอด',
+        'continuum':'ต่อเนื่อง', 'population':'ประชากร',
+        'descends':'สืบเชื้อสาย', 'descend':'สืบเชื้อสาย', 'descendants':'ภาษาลูกหลาน',
+        'all varieties':'ทุกพันธุ์', 'modern dialects':'สำเนียงสมัยใหม่',
+        'hypothetical':'สมมุติ', 'mostly':'ส่วนใหญ่',
+        'dialect':'สำเนียง', 'dialects':'สำเนียง',
+        'incl.':'รวม', 'incl. L2':'รวม L2', 'not L1':'ไม่ใช่ L1',
+        'Wu Chinese family':'ตระกูลภาษาอู๋', 'Mandarin variety':'สำเนียงจีนกลาง',
+        'Brazilian population':'ประชากรบราซิล', 'Mexican population':'ประชากรเม็กซิโก',
+    },
+    id: {
+        'Extinct':'punah', 'liturgical':'liturgi', 'Liturgical':'Liturgi',
+        'fluent':'fasih', 'endangered':'terancam',
+        'severely endangered':'terancam serius', 'critically endangered':'sangat terancam',
+        'revived':'dihidupkan kembali', 'macrolanguage':'bahasa makro', 'lingua franca':'lingua franca',
+        'active':'aktif', 'passive':'pasif', 'total':'total', 'educational':'pendidikan',
+        'L1':'L1 (bahasa ibu)', 'L2':'L2 (bahasa kedua)', 'aggregate':'agregat',
+        'continuum':'kontinum', 'population':'populasi',
+        'descends':'berasal', 'descend':'berasal', 'descendants':'bahasa turunan',
+        'all varieties':'semua varietas', 'modern dialects':'dialek modern',
+        'hypothetical':'hipotesis', 'mostly':'sebagian besar',
+        'dialect':'dialek', 'dialects':'dialek',
+        'incl.':'termasuk', 'incl. L2':'termasuk L2', 'not L1':'bukan L1',
+        'Wu Chinese family':'rumpun Wu', 'Mandarin variety':'varian Mandarin',
+        'Brazilian population':'populasi Brasil', 'Mexican population':'populasi Meksiko',
+    },
+    hi: {
+        'Extinct':'विलुप्त', 'liturgical':'धार्मिक', 'Liturgical':'धार्मिक',
+        'fluent':'धाराप्रवाह बोलने वाले', 'endangered':'संकटग्रस्त',
+        'severely endangered':'गंभीर संकटग्रस्त', 'critically endangered':'अत्यंत संकटग्रस्त',
+        'revived':'पुनर्जीवित', 'macrolanguage':'महाभाषा', 'lingua franca':'संपर्क भाषा',
+        'active':'सक्रिय', 'passive':'निष्क्रिय', 'total':'कुल', 'educational':'शैक्षिक',
+        'L1':'L1 (मातृभाषा)', 'L2':'L2 (दूसरी भाषा)', 'aggregate':'समुच्चय',
+        'continuum':'सातत्यक', 'population':'जनसंख्या',
+        'descends':'व्युत्पन्न', 'descend':'व्युत्पन्न', 'descendants':'वंशज भाषाएं',
+        'all varieties':'सभी प्रकार', 'modern dialects':'आधुनिक बोलियाँ',
+        'hypothetical':'अनुमानित', 'mostly':'अधिकतर',
+        'dialect':'बोली', 'dialects':'बोलियाँ',
+        'incl.':'सहित', 'incl. L2':'L2 सहित', 'not L1':'L1 नहीं',
+        'Wu Chinese family':'वू भाषा परिवार', 'Mandarin variety':'मंदारिन प्रकार',
+        'Brazilian population':'ब्राजील जनसंख्या', 'Mexican population':'मैक्सिको जनसंख्या',
+    },
+    de: {
+        'Extinct':'ausgestorben', 'liturgical':'liturgisch', 'Liturgical':'Liturgisch',
+        'fluent':'fließende Sprecher', 'endangered':'gefährdet',
+        'severely endangered':'stark gefährdet', 'critically endangered':'kritisch gefährdet',
+        'revived':'wiederbelebt', 'macrolanguage':'Makrosprache', 'lingua franca':'Lingua franca',
+        'active':'aktiv', 'passive':'passiv', 'total':'gesamt', 'educational':'bildungssprachlich',
+        'L1':'L1 (Muttersprache)', 'L2':'L2 (Zweitsprache)', 'aggregate':'aggregiert',
+        'continuum':'Kontinuum', 'population':'Bevölkerung',
+        'descends':'stammt ab', 'descend':'stammen ab', 'descendants':'Nachkommen',
+        'all varieties':'alle Varietäten', 'modern dialects':'moderne Dialekte',
+        'hypothetical':'hypothetisch', 'mostly':'überwiegend',
+        'dialect':'Dialekt', 'dialects':'Dialekte',
+        'incl.':'inkl.', 'incl. L2':'inkl. L2', 'not L1':'nicht L1',
+        'Wu Chinese family':'Wu-Sprachfamilie', 'Mandarin variety':'Mandarin-Varietät',
+        'Brazilian population':'brasilianische Bevölkerung', 'Mexican population':'mexikanische Bevölkerung',
+    },
+    fr: {
+        'Extinct':'éteinte', 'liturgical':'liturgique', 'Liturgical':'Liturgique',
+        'fluent':'locuteurs courants', 'endangered':'en danger',
+        'severely endangered':'sérieusement en danger', 'critically endangered':'en danger critique',
+        'revived':'ressuscitée', 'macrolanguage':'macrolangue', 'lingua franca':'lingua franca',
+        'active':'actif', 'passive':'passif', 'total':'total', 'educational':'éducatif',
+        'L1':'L1 (langue maternelle)', 'L2':'L2 (langue seconde)', 'aggregate':'agrégé',
+        'continuum':'continuum', 'population':'population',
+        'descends':'descend', 'descend':'descendent', 'descendants':'descendants',
+        'all varieties':'toutes variétés', 'modern dialects':'dialectes modernes',
+        'hypothetical':'hypothétique', 'mostly':'principalement',
+        'dialect':'dialecte', 'dialects':'dialectes',
+        'incl.':'incl.', 'incl. L2':'incl. L2', 'not L1':'non L1',
+        'Wu Chinese family':'famille Wu', 'Mandarin variety':'variété mandarine',
+        'Brazilian population':'population brésilienne', 'Mexican population':'population mexicaine',
+    },
+    it: {
+        'Extinct':'estinta', 'liturgical':'liturgica', 'Liturgical':'Liturgica',
+        'fluent':'parlanti fluenti', 'endangered':'in pericolo',
+        'severely endangered':'gravemente in pericolo', 'critically endangered':'in pericolo critico',
+        'revived':'rivitalizzata', 'macrolanguage':'macrolingua', 'lingua franca':'lingua franca',
+        'active':'attivi', 'passive':'passivi', 'total':'totale', 'educational':'educativo',
+        'L1':'L1 (madrelingua)', 'L2':'L2 (seconda lingua)', 'aggregate':'aggregato',
+        'continuum':'continuum', 'population':'popolazione',
+        'descends':'discende', 'descend':'discendono', 'descendants':'discendenti',
+        'all varieties':'tutte le varietà', 'modern dialects':'dialetti moderni',
+        'hypothetical':'ipotetica', 'mostly':'per lo più',
+        'dialect':'dialetto', 'dialects':'dialetti',
+        'incl.':'incl.', 'incl. L2':'incl. L2', 'not L1':'non L1',
+        'Wu Chinese family':'famiglia Wu', 'Mandarin variety':'varietà mandarina',
+        'Brazilian population':'popolazione brasiliana', 'Mexican population':'popolazione messicana',
+    },
+    es: {
+        'Extinct':'extinta', 'liturgical':'litúrgica', 'Liturgical':'Litúrgica',
+        'fluent':'hablantes fluidos', 'endangered':'en peligro',
+        'severely endangered':'gravemente en peligro', 'critically endangered':'en peligro crítico',
+        'revived':'revivida', 'macrolanguage':'macrolengua', 'lingua franca':'lingua franca',
+        'active':'activos', 'passive':'pasivos', 'total':'total', 'educational':'educativo',
+        'L1':'L1 (lengua materna)', 'L2':'L2 (segunda lengua)', 'aggregate':'agregado',
+        'continuum':'continuo', 'population':'población',
+        'descends':'desciende', 'descend':'descienden', 'descendants':'descendientes',
+        'all varieties':'todas las variedades', 'modern dialects':'dialectos modernos',
+        'hypothetical':'hipotética', 'mostly':'mayormente',
+        'dialect':'dialecto', 'dialects':'dialectos',
+        'incl.':'incl.', 'incl. L2':'incl. L2', 'not L1':'no L1',
+        'Wu Chinese family':'familia Wu', 'Mandarin variety':'variedad mandarín',
+        'Brazilian population':'población brasileña', 'Mexican population':'población mexicana',
+    },
+    pt: {
+        'Extinct':'extinta', 'liturgical':'litúrgica', 'Liturgical':'Litúrgica',
+        'fluent':'falantes fluentes', 'endangered':'ameaçada',
+        'severely endangered':'gravemente ameaçada', 'critically endangered':'criticamente ameaçada',
+        'revived':'revivida', 'macrolanguage':'macrolíngua', 'lingua franca':'língua franca',
+        'active':'ativos', 'passive':'passivos', 'total':'total', 'educational':'educativo',
+        'L1':'L1 (língua materna)', 'L2':'L2 (segunda língua)', 'aggregate':'agregado',
+        'continuum':'contínuo', 'population':'população',
+        'descends':'descende', 'descend':'descendem', 'descendants':'descendentes',
+        'all varieties':'todas as variedades', 'modern dialects':'dialetos modernos',
+        'hypothetical':'hipotética', 'mostly':'principalmente',
+        'dialect':'dialeto', 'dialects':'dialetos',
+        'incl.':'incl.', 'incl. L2':'incl. L2', 'not L1':'não L1',
+        'Wu Chinese family':'família Wu', 'Mandarin variety':'variedade mandarim',
+        'Brazilian population':'população brasileira', 'Mexican population':'população mexicana',
+    },
+    ru: {
+        'Extinct':'мёртвый', 'liturgical':'литургический', 'Liturgical':'Литургический',
+        'fluent':'свободно владеющие', 'endangered':'под угрозой',
+        'severely endangered':'серьёзно под угрозой', 'critically endangered':'на грани исчезновения',
+        'revived':'возрождённый', 'macrolanguage':'макроязык', 'lingua franca':'лингва-франка',
+        'active':'активные', 'passive':'пассивные', 'total':'всего', 'educational':'учебный',
+        'L1':'L1 (родной)', 'L2':'L2 (второй)', 'aggregate':'совокупно',
+        'continuum':'континуум', 'population':'население',
+        'descends':'происходит', 'descend':'происходят', 'descendants':'потомки',
+        'all varieties':'все варианты', 'modern dialects':'современные диалекты',
+        'hypothetical':'гипотетический', 'mostly':'преимущественно',
+        'dialect':'диалект', 'dialects':'диалекты',
+        'incl.':'вкл.', 'incl. L2':'вкл. L2', 'not L1':'не L1',
+        'Wu Chinese family':'семья У', 'Mandarin variety':'мандаринская разновидность',
+        'Brazilian population':'население Бразилии', 'Mexican population':'население Мексики',
+    },
+    uk: {
+        'Extinct':'мертва', 'liturgical':'літургійна', 'Liturgical':'Літургійна',
+        'fluent':'вільно володіють', 'endangered':'під загрозою',
+        'severely endangered':'серйозно під загрозою', 'critically endangered':'на межі зникнення',
+        'revived':'відроджена', 'macrolanguage':'макромова', 'lingua franca':'лінгва-франка',
+        'active':'активні', 'passive':'пасивні', 'total':'усього', 'educational':'навчальна',
+        'L1':'L1 (рідна)', 'L2':'L2 (друга)', 'aggregate':'сукупно',
+        'continuum':'континуум', 'population':'населення',
+        'descends':'походить', 'descend':'походять', 'descendants':'нащадки',
+        'all varieties':'усі варіанти', 'modern dialects':'сучасні діалекти',
+        'hypothetical':'гіпотетична', 'mostly':'переважно',
+        'dialect':'діалект', 'dialects':'діалекти',
+        'incl.':'вкл.', 'incl. L2':'вкл. L2', 'not L1':'не L1',
+        'Wu Chinese family':'сімейство Ву', 'Mandarin variety':'мандаринський варіант',
+        'Brazilian population':'населення Бразилії', 'Mexican population':'населення Мексики',
+    },
+    ar: {
+        'Extinct':'منقرضة', 'liturgical':'طقسية', 'Liturgical':'طقسية',
+        'fluent':'يجيدون اللغة', 'endangered':'مهددة',
+        'severely endangered':'مهددة بشدة', 'critically endangered':'مهددة بشدة قصوى',
+        'revived':'تم إحياؤها', 'macrolanguage':'لغة كبرى', 'lingua franca':'لغة مشتركة',
+        'active':'نشطون', 'passive':'سلبيون', 'total':'الإجمالي', 'educational':'تعليمية',
+        'L1':'L1 (اللغة الأم)', 'L2':'L2 (لغة ثانية)', 'aggregate':'مجمل',
+        'continuum':'متصل', 'population':'سكان',
+        'descends':'مشتقة', 'descend':'مشتقة', 'descendants':'لغات منحدرة',
+        'all varieties':'كل الأنواع', 'modern dialects':'لهجات حديثة',
+        'hypothetical':'افتراضية', 'mostly':'في الغالب',
+        'dialect':'لهجة', 'dialects':'لهجات',
+        'incl.':'ضمناً', 'incl. L2':'مع L2', 'not L1':'ليست L1',
+        'Wu Chinese family':'عائلة وو', 'Mandarin variety':'نوع المندرين',
+        'Brazilian population':'سكان البرازيل', 'Mexican population':'سكان المكسيك',
+    },
+    he: {
+        'Extinct':'גוועה', 'liturgical':'ליטורגית', 'Liturgical':'ליטורגית',
+        'fluent':'דוברים שולטים', 'endangered':'בסכנה',
+        'severely endangered':'בסכנה חמורה', 'critically endangered':'בסכנה קריטית',
+        'revived':'הוחיתה', 'macrolanguage':'מקרושפה', 'lingua franca':'לינגווה פרנקה',
+        'active':'פעילים', 'passive':'פסיביים', 'total':'סך הכל', 'educational':'חינוכית',
+        'L1':'L1 (שפת אם)', 'L2':'L2 (שפה שנייה)', 'aggregate':'מצרפי',
+        'continuum':'רצף', 'population':'אוכלוסייה',
+        'descends':'נגזרה', 'descend':'נגזרו', 'descendants':'צאצאים',
+        'all varieties':'כל הגרסאות', 'modern dialects':'ניבים מודרניים',
+        'hypothetical':'היפותטית', 'mostly':'בעיקר',
+        'dialect':'ניב', 'dialects':'ניבים',
+        'incl.':'כולל', 'incl. L2':'כולל L2', 'not L1':'לא L1',
+        'Wu Chinese family':'משפחת וו', 'Mandarin variety':'גרסת מנדרין',
+        'Brazilian population':'אוכלוסיית ברזיל', 'Mexican population':'אוכלוסיית מקסיקו',
+    },
+    sw: {
+        'Extinct':'iliyotoweka', 'liturgical':'ya kiliturujia', 'Liturgical':'Ya kiliturujia',
+        'fluent':'wanaozungumza vizuri', 'endangered':'iliyo hatarini',
+        'severely endangered':'iliyo hatarini sana', 'critically endangered':'iliyo hatarini sana sana',
+        'revived':'iliyofufuliwa', 'macrolanguage':'lugha-makro', 'lingua franca':'lugha ya mawasiliano',
+        'active':'wanaotumika', 'passive':'wasioongea', 'total':'jumla', 'educational':'ya kielimu',
+        'L1':'L1 (lugha mama)', 'L2':'L2 (lugha ya pili)', 'aggregate':'jumla',
+        'continuum':'mwendelezo', 'population':'idadi ya watu',
+        'descends':'imetokana', 'descend':'zimetokana', 'descendants':'lugha za uzao',
+        'all varieties':'aina zote', 'modern dialects':'lahaja za kisasa',
+        'hypothetical':'kidhanio', 'mostly':'hasa',
+        'dialect':'lahaja', 'dialects':'lahaja',
+        'incl.':'pamoja na', 'incl. L2':'pamoja na L2', 'not L1':'si L1',
+        'Wu Chinese family':'familia ya Wu', 'Mandarin variety':'aina ya Mandarini',
+        'Brazilian population':'idadi ya Brazili', 'Mexican population':'idadi ya Meksiko',
+    },
+};
+// Merge into the per-lang atom dicts. Existing keys win (don't override
+// curated whole-string atoms with our generic ones).
+for (const lang of Object.keys(SPEAKER_ATOMS)) {
+    if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
+    for (const k of Object.keys(SPEAKER_ATOMS[lang])) {
+        if (!(k in META_I18N_ATOMS[lang])) META_I18N_ATOMS[lang][k] = SPEAKER_ATOMS[lang][k];
+    }
+}
+// Re-apply regional aliases (the previous assignments were before merge).
 META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
 META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
 META_I18N_ATOMS.pt_eu = META_I18N_ATOMS.pt;
