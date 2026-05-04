@@ -364,7 +364,7 @@
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js?v=19"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
-    <script src="lang-filter.js?v=20"></script>
+    <script src="lang-filter.js?v=21"></script>
     <script src="lang_names.js?v=2"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -972,12 +972,23 @@
             const labelH = (baseLineH * labelScale) + 4;
             const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
 
+            // When a filter is active, only ACTIVE labels compete for cell
+            // slots. Dimmed (filtered-out) labels stay at their natural
+            // position and don't push active labels around. (Per user
+            // request 2026-05-04: "filter で非活性化された言語は退ける
+            // 対応から外す。活性化された言語のみかぶらないように退ける".)
+            const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                && window.__langmap.anyFilterActive();
+            const isActive = (code) => !filterActive
+                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+
             const ppx = {};
             const cellGroups = {};
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
                 const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
                 ppx[code] = pt;
+                if (!isActive(code)) continue;  // dimmed labels don't compete
                 const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
                 if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
                 cellGroups[cellKey].push(code);
@@ -992,10 +1003,12 @@
                 const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
                 const group = cellGroups[cellKey];
                 let yOffset = 0;
-                if (group.length > 1) {
+                if (group && group.length > 1) {
                     const idx = group.indexOf(code);
-                    const center = (group.length - 1) / 2;
-                    yOffset = (idx - center) * (labelH + 4);
+                    if (idx >= 0) {  // dimmed labels weren't bucketed
+                        const center = (group.length - 1) / 2;
+                        yOffset = (idx - center) * (labelH + 4);
+                    }
                 }
 
                 const displayName = getDisplayName(code, lang);
@@ -1035,8 +1048,17 @@
             const baseSpacingDeg = (0.4 + lines * 0.3) * labelScale * altScale;
             const cellSizeDeg = baseSpacingDeg * 1.2;
 
+            // When a filter is active, only ACTIVE labels compete for cell
+            // slots — dimmed labels stay at their natural lat (consistent
+            // with the 2D map behavior).
+            const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                && window.__langmap.anyFilterActive();
+            const isActive = (code) => !filterActive
+                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+
             const cellGroups = {};
             for (const code of visibleLangs) {
+                if (!isActive(code)) continue;  // dimmed labels don't compete
                 const lang = LANG_DATA[code];
                 const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
                 if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
@@ -1057,10 +1079,12 @@
                 const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
                 const group = cellGroups[cellKey];
                 let latOffset = 0;
-                if (group.length > 1) {
+                if (group && group.length > 1) {
                     const idx = group.indexOf(code);
-                    const center = (group.length - 1) / 2;
-                    latOffset = (idx - center) * baseSpacingDeg;
+                    if (idx >= 0) {  // dimmed labels weren't bucketed
+                        const center = (group.length - 1) / 2;
+                        latOffset = (idx - center) * baseSpacingDeg;
+                    }
                 }
 
                 const el = document.createElement('div');

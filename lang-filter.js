@@ -716,6 +716,11 @@
         const enc = encodeFilterState();
         return enc ? 'f=' + enc : '';
     };
+    // Expose filter predicates so wordmap.html's label-collision algorithm
+    // can scope cell-bucket competition to active labels only — dimmed
+    // (filtered-out) labels no longer push active labels around.
+    window.__langmap.passesFilter = function (code) { return passesFilter(code); };
+    window.__langmap.anyFilterActive = function () { return anyFilterActive(); };
 
     function passesFilter(code) {
         const f = featuresFor(code);
@@ -1294,6 +1299,11 @@
                 applyFilter();
                 updateBadge();
                 syncHash();
+                // Re-render map markers so the cell-group offsets recompute
+                // with only ACTIVE labels competing (per user request).
+                if (typeof window._refreshMarkers === 'function') {
+                    try { window._refreshMarkers(); } catch (e) {}
+                }
                 // Recompute cross-category chip counts in-place (don't
                 // rebuild the panel — that would lose show-more expanded
                 // state and scroll position).
