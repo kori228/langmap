@@ -561,8 +561,19 @@
                 if (lbl) lbl.textContent = text;
                 el.title = text;
             });
-            document.getElementById('era-modern').textContent = wt('modern') || 'Modern';
-            document.getElementById('era-historical').textContent = wt('historical') || 'Historical';
+            // Append per-era language counts in parens: "現代言語 (478)" / "歴史言語 (79)"
+            let modernCount = 0, historicalCount = 0;
+            if (typeof HIST_CODE_SET !== 'undefined' && typeof LANG_DATA !== 'undefined') {
+                for (const c of Object.keys(LANG_DATA)) {
+                    if (HIST_CODE_SET.has(c)) historicalCount++;
+                    else if (typeof EXCLUDED_CODES !== 'undefined' && EXCLUDED_CODES.has(c)) continue;
+                    else modernCount++;
+                }
+            }
+            const modernLabel = wt('modern') || 'Modern';
+            const histLabel   = wt('historical') || 'Historical';
+            document.getElementById('era-modern').textContent     = modernCount     ? `${modernLabel} (${modernCount})`     : modernLabel;
+            document.getElementById('era-historical').textContent = historicalCount ? `${histLabel} (${historicalCount})`   : histLabel;
             if (typeof updateNameSwitch === 'function') updateNameSwitch();
             rebuildWordSelect();
         }
