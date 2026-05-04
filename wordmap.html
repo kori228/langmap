@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LangMap — Word Map: 579 Languages on a World Map</title>
     <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 579 languages with IPA pronunciations. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
@@ -313,47 +313,47 @@
 
     <!-- Top-left controls (below header): word select + era -->
     <div class="top-left-controls">
-        <select id="word-select"></select>
-        <div class="radio-switch" id="era-switch">
-            <button class="radio-opt active" id="era-modern" data-val="modern"></button>
-            <button class="radio-opt" id="era-historical" data-val="historical"></button>
+        <select id="word-select" aria-label="Select word"></select>
+        <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
+            <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
+            <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
         </div>
     </div>
 
     <!-- Bottom-left: UI language only -->
     <div class="map-controls">
-        <select id="ui-lang" class="ui-lang-select"></select>
+        <select id="ui-lang" class="ui-lang-select" aria-label="UI language"></select>
     </div>
 
     <!-- Right-side controls: all stacked, centered -->
     <div class="right-controls">
-        <div class="map-zoom-controls" id="map-zoom">
-            <button id="map-zoom-in">+</button>
-            <button id="map-zoom-out">&minus;</button>
+        <div class="map-zoom-controls" id="map-zoom" role="group" aria-label="Map zoom">
+            <button id="map-zoom-in" aria-label="Zoom in">+</button>
+            <button id="map-zoom-out" aria-label="Zoom out">&minus;</button>
         </div>
-        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D">2D</button>
+        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
         <div style="height:8px"></div>
-        <button class="toggle-btn active" id="toggle-word"><span class="label">Word</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-ipa"><span class="label">IPA</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-name"><span class="label">Name</span><span class="onoff">ON</span></button>
-        <div class="radio-switch radio-switch-v" id="name-switch">
-            <button class="radio-opt" id="name-native"></button>
-            <button class="radio-opt active" id="name-translated"></button>
+        <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle word display"><span class="label">Word</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle IPA display"><span class="label">IPA</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
+        <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
+            <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
+            <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
         </div>
         <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
-            <span class="ctrl-label" id="size-label" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</span>
-            <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider">
+            <label class="ctrl-label" id="size-label" for="font-size" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</label>
+            <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider" aria-label="Label font size">
         </div>
     </div>
 
     <!-- Credit watermark -->
     <div class="url-watermark">
-        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;" aria-label="GitHub repository"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
     </div>
 
     <!-- Language info panel -->
-    <div id="lang-info" class="lang-info-panel">
-        <button class="close-btn" id="info-close">&times;</button>
+    <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false">
+        <button class="close-btn" id="info-close" aria-label="Close language info">&times;</button>
         <div id="info-content"></div>
     </div>
 
@@ -364,7 +364,7 @@
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js?v=19"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
-    <script src="lang-filter.js?v=21"></script>
+    <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -629,6 +629,8 @@
             window.__langmap.historical = historical;
             eraModern.classList.toggle('active', !historical);
             eraHistorical.classList.toggle('active', historical);
+            eraModern.setAttribute('aria-checked', String(!historical));
+            eraHistorical.setAttribute('aria-checked', String(historical));
             window.dispatchEvent(new CustomEvent('langmap:erachange', { detail: { historical } }));
             updateMarkers(currentWord);
             updateHash();
@@ -644,6 +646,7 @@
             btn.addEventListener('click', () => {
                 setter(!getter());
                 btn.classList.toggle('active', getter());
+                btn.setAttribute('aria-pressed', String(getter()));
                 updateOnOff(btn, getter());
                 updateMarkers(currentWord);
             });
@@ -655,6 +658,8 @@
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
             nameTranslated.classList.toggle('active', !showNative);
+            nameNative.setAttribute('aria-checked', String(showNative));
+            nameTranslated.setAttribute('aria-checked', String(!showNative));
             nameNative.textContent = wt('native') || 'Native';
             const uiName = WM_UI_LABELS[uiLang] || 'English';
             nameTranslated.textContent = uiName;
@@ -795,6 +800,7 @@
         btn3D.addEventListener('click', () => {
             is3D = !is3D;
             btn3D.classList.toggle('active', is3D);
+            btn3D.setAttribute('aria-pressed', String(is3D));
             btn3D.textContent = is3D ? '3D' : '2D';
             if (is3D) {
                 mapEl.style.display = 'none';
@@ -928,12 +934,29 @@
             return { visibleLangs, descendantCodes };
         }
 
+        // HTML-escape utility (per wordmap-check-4.md §5). All data values
+        // (word, ipa, displayName, native, descriptions, etc.) MUST go
+        // through this before being inserted into innerHTML strings.
+        // Color values (descColor) are validated against an allow-list
+        // since they're set by code, not by data — an attribute escape
+        // would also work but is unnecessary for fixed enum values.
+        const ESCAPE_HTML_MAP = { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' };
+        function escapeHtml(s) {
+            if (s == null) return '';
+            return String(s).replace(/[&<>"']/g, c => ESCAPE_HTML_MAP[c]);
+        }
+        const ALLOWED_DESC_COLORS = new Set(['#c0392b', '#ff6b6b', '']);
+        function safeColor(c) { return ALLOWED_DESC_COLORS.has(c) ? c : ''; }
+
         function buildLabelHtml(code, word, ipa, displayName, descColor, cssClass) {
             const isVertical = VERTICAL_LANGS.has(code);
-            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${code}">`;
-            if (showWord) html += `<div class="word" ${descColor ? `style="color:${descColor}"` : ''}>${word}</div>`;
-            if (showIpa) html += `<div class="ipa" ${descColor ? `style="color:${descColor}"` : ''}>/${ipa}/</div>`;
-            if (showName) html += `<div class="name" ${descColor ? `style="color:${descColor}"` : ''}>${displayName}</div>`;
+            const c = safeColor(descColor);
+            const codeAttr = escapeHtml(code);
+            const w = escapeHtml(word), i = escapeHtml(ipa), n = escapeHtml(displayName);
+            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}">`;
+            if (showWord) html += `<div class="word" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
+            if (showIpa) html += `<div class="ipa" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
+            if (showName) html += `<div class="name" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
         }
@@ -1016,7 +1039,6 @@
                 const descColor = isDescendant ? '#c0392b' : '';
 
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, 'lang-label');
-                const wrappedHtml = `<div style="transform:translate(-50%,calc(-50% + ${yOffset}px))">${html.slice(html.indexOf('>') + 1)}`; // re-wrap with offset
                 const labelHtml = html.replace('>', ` style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`);
 
                 const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
@@ -1097,78 +1119,111 @@
         }
 
         // --- URL hash ---
-        function updateHash() {
+        // URL hash management — uses URLSearchParams + history.replaceState
+        // (per wordmap-check-4.md §6 + §11). Preserves filter-state param
+        // owned by lang-filter.js. replaceState avoids polluting back-button
+        // history on every map move/zoom.
+        function updateHash(opts) {
+            opts = opts || {};
             let lat, lng, z;
             if (is3D && globe) {
                 const pov = globe.pointOfView();
                 lat = pov.lat; lng = pov.lng;
-                // Convert altitude back to approximate zoom
                 z = Math.round(2 + Math.log(4.0 / Math.max(0.2, pov.altitude)) / Math.log(1 / 0.55));
             } else {
                 const c = map.getCenter();
                 lat = c.lat; lng = c.lng;
                 z = map.getZoom();
             }
-            const s = fontSizeSlider.value;
-            const alt = (is3D && globe) ? globe.pointOfView().altitude.toFixed(2) : '';
-            let hash = `w=${currentWord}&z=${z}&lat=${lat.toFixed(2)}&lng=${lng.toFixed(2)}&nat=${showNative?1:0}&hist=${showHistorical?1:0}&fs=${s}&ui=${uiLang}&g3d=${is3D?1:0}`;
-            if (alt) hash += `&alt=${alt}`;
-            // Preserve the filter-state param owned by lang-filter.js
+            const params = new URLSearchParams();
+            params.set('w', currentWord);
+            params.set('z', String(z));
+            params.set('lat', lat.toFixed(2));
+            params.set('lng', lng.toFixed(2));
+            params.set('nat', showNative ? '1' : '0');
+            params.set('hist', showHistorical ? '1' : '0');
+            params.set('fs', String(fontSizeSlider.value));
+            params.set('ui', uiLang);
+            params.set('g3d', is3D ? '1' : '0');
+            if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
+            // Preserve the filter param owned by lang-filter.js
             const fParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
                 ? window.__langmap.getFilterHashParam() : '';
-            if (fParam) hash += '&' + fParam;
-            location.hash = hash;
+            if (fParam) {
+                const eq = fParam.indexOf('=');
+                params.set(fParam.slice(0, eq), fParam.slice(eq + 1));
+            }
+            const hash = '#' + params.toString();
+            // replaceState by default — avoids history bloat from continuous
+            // moveend/zoomend. Caller can pass {push:true} for explicit nav.
+            try {
+                if (opts.push) history.pushState(null, '', hash);
+                else          history.replaceState(null, '', hash);
+            } catch (e) { location.hash = hash; }
         }
 
         function loadHash() {
-            const h = location.hash.slice(1);
-            const params = Object.fromEntries(h.split('&').map(s => s.split('=')));
-            if (params.w && WORD_LIST.find(w => w.id === params.w)) {
-                select.value = params.w;
-                currentWord = params.w;
+            const params = new URLSearchParams(location.hash.slice(1));
+            const w = params.get('w');
+            if (w && WORD_LIST.find(item => item.id === w)) {
+                select.value = w;
+                currentWord = w;
             }
-            if (params.z && params.lat && params.lng) {
-                map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z));
+            const z = parseInt(params.get('z'));
+            const latStr = params.get('lat'); const lngStr = params.get('lng');
+            const lat = parseFloat(latStr); const lng = parseFloat(lngStr);
+            if (Number.isFinite(z) && Number.isFinite(lat) && Number.isFinite(lng)) {
+                map.setView([lat, lng], z);
             }
-            if (params.nat !== undefined) {
-                showNative = params.nat === '1';
+            const nat = params.get('nat');
+            if (nat === '0' || nat === '1') {
+                showNative = nat === '1';
                 updateNameSwitch();
             }
-            if (params.hist !== undefined) {
-                showHistorical = params.hist === '1';
+            const hist = params.get('hist');
+            if (hist === '0' || hist === '1') {
+                showHistorical = hist === '1';
                 eraModern.classList.toggle('active', !showHistorical);
                 eraHistorical.classList.toggle('active', showHistorical);
+                eraModern.setAttribute('aria-checked', String(!showHistorical));
+                eraHistorical.setAttribute('aria-checked', String(showHistorical));
             }
-            if (params.fs) {
-                fontSizeSlider.value = params.fs;
-                document.documentElement.style.setProperty('--label-scale', parseInt(params.fs) / 100);
+            const fs = parseInt(params.get('fs'));
+            if (Number.isFinite(fs) && fs >= 50 && fs <= 200) {
+                fontSizeSlider.value = String(fs);
+                document.documentElement.style.setProperty('--label-scale', fs / 100);
             }
-            if (params.ui && WM_UI[params.ui]) {
-                uiLang = params.ui;
-                uiLangSelect.value = params.ui;
+            const ui = params.get('ui');
+            if (ui && WM_UI[ui]) {
+                uiLang = ui;
+                uiLangSelect.value = ui;
                 window.__langmap.uiLang = uiLang;
                 window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
                 applyUILang();
             }
-            if (params.g3d === '1') {
+            if (params.get('g3d') === '1') {
                 is3D = true;
                 btn3D.classList.add('active');
+                btn3D.setAttribute('aria-pressed', 'true');
                 btn3D.textContent = '3D';
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
                 initGlobe();
-                if (params.lat && params.lng) {
-                    const alt = params.alt ? parseFloat(params.alt) : zoomToAltitude(parseInt(params.z) || 3);
-                    globe.pointOfView({ lat: parseFloat(params.lat), lng: parseFloat(params.lng), altitude: alt });
+                if (Number.isFinite(lat) && Number.isFinite(lng)) {
+                    const altParam = parseFloat(params.get('alt'));
+                    const alt = Number.isFinite(altParam) ? altParam : zoomToAltitude(Number.isFinite(z) ? z : 3);
+                    globe.pointOfView({ lat, lng, altitude: alt });
                 }
             }
         }
         loadHash();
         applyUILang(); // Apply detected/loaded UI language
         // Notify subscribers (lang-filter.js) of the resolved initial UI lang.
-        // Necessary because lang-filter.js's init runs before app.js finishes
-        // fetching, so __langmap.uiLang isn't readable when the filter panel
-        // is first built.
+        // lang-filter.js loads before this inline script via <script src> in
+        // the head, so its filter panel is built before __langmap.uiLang is
+        // assigned here. Dispatching after loadHash() lets the filter pick
+        // up the resolved (possibly hash-loaded) UI lang and rebuild its
+        // chip translations. Per wordmap-check-4.md §12.
         window.__langmap.uiLang = uiLang;
         window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
 
@@ -1196,8 +1251,20 @@
         // --- Language info panel ---
         const infoPanel = document.getElementById('lang-info');
         const infoContent = document.getElementById('info-content');
-        document.getElementById('info-close').addEventListener('click', () => {
+        function closeInfoPanel() {
             infoPanel.classList.remove('visible');
+            // Clear dataset.code so the open-language state is consistent
+            // (per wordmap-check-4.md §19).
+            delete infoPanel.dataset.code;
+        }
+        document.getElementById('info-close').addEventListener('click', closeInfoPanel);
+        // Escape key closes the info panel and the filter panel
+        // (per wordmap-check-4.md §3).
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            if (infoPanel.classList.contains('visible')) closeInfoPanel();
+            const lf = document.querySelector('.lf-panel.open');
+            if (lf) lf.classList.remove('open');
         });
 
         function translateMeta(val) {
@@ -1243,26 +1310,28 @@
             const m = lang.meta || {};
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
             const displayName = names[code] || lang.name;
-            let html = `<h2>${displayName}</h2>`;
-            html += `<div class="native-name">${lang.native} [${code}]</div>`;
+            // All data values escaped (per wordmap-check-4.md §5).
+            let html = `<h2>${escapeHtml(displayName)}</h2>`;
+            html += `<div class="native-name">${escapeHtml(lang.native)} [${escapeHtml(code)}]</div>`;
             // Data-status badge (per wordmap-check.md §8) — only shown for non-modern
             const status = getDataStatus(code);
             const badge = DATA_STATUS_BADGE[status];
             if (badge) {
                 const label = (uiLang === 'ja' && badge.ja) ? badge.ja : badge.en;
-                html += `<div style="margin:4px 0 6px"><span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg}">${label}</span></div>`;
+                // bg/fg are constants from a closed enum; label can be safe-escaped.
+                html += `<div style="margin:4px 0 6px"><span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg}">${escapeHtml(label)}</span></div>`;
             }
             if (lang.meta) {
                 html += '<table>';
-                if (m.family) html += `<tr><td>${wt('family')}</td><td>${translateMeta(m.family)}</td></tr>`;
-                if (m.speakers) html += `<tr><td>${wt('speakers')}</td><td>${translateMeta(m.speakers)}</td></tr>`;
-                if (m.countries) html += `<tr><td>${wt('countries')}</td><td>${translateMeta(m.countries)}</td></tr>`;
-                if (m.official) html += `<tr><td>${wt('official')}</td><td>${translateMeta(m.official)}</td></tr>`;
-                if (m.script) html += `<tr><td>${wt('script')}</td><td>${translateMeta(m.script)}</td></tr>`;
+                if (m.family) html += `<tr><td>${escapeHtml(wt('family'))}</td><td>${escapeHtml(translateMeta(m.family))}</td></tr>`;
+                if (m.speakers) html += `<tr><td>${escapeHtml(wt('speakers'))}</td><td>${escapeHtml(translateMeta(m.speakers))}</td></tr>`;
+                if (m.countries) html += `<tr><td>${escapeHtml(wt('countries'))}</td><td>${escapeHtml(translateMeta(m.countries))}</td></tr>`;
+                if (m.official) html += `<tr><td>${escapeHtml(wt('official'))}</td><td>${escapeHtml(translateMeta(m.official))}</td></tr>`;
+                if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
                 html += '</table>';
                 if (m.description) {
                     const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
-                    html += `<div class="desc">${desc}</div>`;
+                    html += `<div class="desc">${escapeHtml(desc)}</div>`;
                 }
             } else {
                 html += '<div class="meta-loading" style="padding:10px 0;color:#aaa;font-size:11px">…</div>';
@@ -1274,10 +1343,9 @@
                     const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
                     const wLabel = (uiLang === 'en' ? w.label.en : localWord);
                     if (isUnattestedEntry(entry)) {
-                        // Unattested in fragmentary languages (e.g. Meroitic, Pyu)
-                        html += `<tr><td>${wLabel}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
                     } else {
-                        html += `<tr><td>${wLabel}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}</td><td style="color:#888;font-size:11px">/${escapeHtml(entry[1])}/</td></tr>`;
                     }
                 }
             }

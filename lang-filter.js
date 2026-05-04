@@ -841,17 +841,23 @@
             display: flex; flex-wrap: wrap; gap: 4px;
         }
         .lf-chip {
+            font-family: inherit; color: inherit;
             font-size: 11px; padding: 3px 8px;
             border: 1px solid #d0d0d0; border-radius: 12px;
             background: #fafafa; cursor: pointer;
             transition: all 0.15s; user-select: none;
             display: inline-flex; align-items: center; gap: 3px;
+            line-height: 1.2;
         }
-        .lf-chip:hover { background: #eef; border-color: #99c; }
+        .lf-chip:hover:not([disabled]) { background: #eef; border-color: #99c; }
+        .lf-chip:focus-visible {
+            outline: 2px solid #4a6cf7; outline-offset: 1px;
+        }
         .lf-chip.on {
             background: #4a6cf7; color: #fff; border-color: #3a5ce5;
             box-shadow: 0 1px 3px rgba(74,108,247,0.35);
         }
+        .lf-chip[disabled] { cursor: not-allowed; }
         .lf-chip-count { opacity: 0.65; font-size: 10px; }
 
         /* Collapsible long lists (e.g. families) */
@@ -1114,12 +1120,17 @@
             if (!items || !items.length) continue;
             const limit = COLLAPSE_LIMITS[sec.key];
             const collapsible = limit && items.length > limit;
+            // chip is now a <button> for keyboard accessibility (per
+            // wordmap-check-4.md §18.1). data-val is HTML-escaped to handle
+            // family/script names with quotes/parens.
+            const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+            const escText = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             const renderChip = ([v, c], hidden) => {
                 const label = translateChipLabel(sec.key, v);
                 const cls = 'lf-chip' + (hidden ? ' lf-chip-hidden' : '') + (c === 0 ? ' lf-chip-disabled' : '');
-                return `<span class="${cls}" data-cat="${sec.key}" data-val="${v}">
-                    ${label}<span class="lf-chip-count">${c}</span>
-                </span>`;
+                return `<button type="button" class="${cls}" data-cat="${escAttr(sec.key)}" data-val="${escAttr(v)}" aria-pressed="false"${c === 0 ? ' disabled' : ''}>
+                    ${escText(label)}<span class="lf-chip-count" aria-hidden="true">${c}</span>
+                </button>`;
             };
             const visibleHtml = (collapsible ? items.slice(0, limit) : items)
                 .map(item => renderChip(item, false)).join('');
@@ -1259,7 +1270,10 @@
                 panel.querySelectorAll('.lf-chip').forEach(chip => {
                     const cat = chip.dataset.cat;
                     const val = chip.dataset.val;
-                    if (filterState[cat] && filterState[cat].has(val)) chip.classList.add('on');
+                    if (filterState[cat] && filterState[cat].has(val)) {
+                        chip.classList.add('on');
+                        chip.setAttribute('aria-pressed', 'true');
+                    }
                 });
                 positionPanel();
             }
@@ -1338,13 +1352,11 @@
                     if (chip.classList.contains('lf-chip-disabled')) return;
                     const cat = chip.dataset.cat;
                     const val = chip.dataset.val;
-                    if (filterState[cat].has(val)) {
-                        filterState[cat].delete(val);
-                        chip.classList.remove('on');
-                    } else {
-                        filterState[cat].add(val);
-                        chip.classList.add('on');
-                    }
+                    const on = !filterState[cat].has(val);
+                    if (on) filterState[cat].add(val);
+                    else    filterState[cat].delete(val);
+                    chip.classList.toggle('on', on);
+                    chip.setAttribute('aria-pressed', String(on));
                     refresh();
                     return;
                 }
@@ -1352,14 +1364,20 @@
                 if (sectionClear) {
                     const cat = sectionClear.dataset.cat;
                     filterState[cat].clear();
-                    panel.querySelectorAll(`.lf-chip[data-cat="${cat}"]`).forEach(c => c.classList.remove('on'));
+                    panel.querySelectorAll(`.lf-chip[data-cat="${cat}"]`).forEach(c => {
+                        c.classList.remove('on');
+                        c.setAttribute('aria-pressed', 'false');
+                    });
                     refresh();
                     return;
                 }
                 const reset = e.target.closest('.lf-reset');
                 if (reset) {
                     for (const k of Object.keys(filterState)) filterState[k].clear();
-                    panel.querySelectorAll('.lf-chip.on').forEach(c => c.classList.remove('on'));
+                    panel.querySelectorAll('.lf-chip.on').forEach(c => {
+                        c.classList.remove('on');
+                        c.setAttribute('aria-pressed', 'false');
+                    });
                     refresh();
                     return;
                 }
