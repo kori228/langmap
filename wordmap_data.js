@@ -1222,7 +1222,7 @@ const LANG_DATA = {
     words: { water:['水','sui˥˧'], fire:['火','xo˥˧'], sun:['日头','ʐɨ˨˦tʰəu˨˦'], moon:['月亮','yɛ˦˦ljaŋ'], mother:['妈','ma˧˧'], father:['爸','pa˥˧'], eat:['吃','tʂʰɨ˧˧'], drink:['喝','xɛ˧˧'], love:['爱','ɛ˨˦'], heart:['心','ɕin˧˩'], tree:['树','sɨ˨˦'], house:['房子','faŋ˨˦tsɨ'], dog:['狗','kəu˥˧'], cat:['猫','mau˧˧'], hand:['手','sou˥˧'], eye:['眼睛','jɛn˥˧tɕin'], hello:['你好','ni˥˧xau˥˧'], thanks:['谢谢','ɕjɛ˨˦ɕjɛ'], one:['一','ji˧˧'], good:['好','xau˥˧'] }},
   // Dungan (Mandarin in Cyrillic, Central Asia)
   dng: { name: 'Dungan', native: 'Хуэйзў йүян', lat: 42.84, lng: 75.30, // Tokmok, Kyrgyzstan
-    words: { water:['щүй','ɕy'], fire:['хуә','xua'], sun:['жѳтў','ʐətu'], moon:['югуә','jue-xua'], mother:['ма','ma'], father:['ба','pa'], eat:['чы','tʂʰɨ'], drink:['хә','xa'], love:['ээ','ɤː'], heart:['щин','ɕin'], tree:['шу','ʂu'], house:['фоңзы','faŋ-zɨ'], dog:['гу','ku'], cat:['мау','mau'], hand:['щу','ʂou'], eye:['янҗин','jen-tɕin'], hello:['ни хау','ni-xau'], thanks:['ще ще','ɕie-ɕie'], one:['и','i'], good:['хау','xau'] }},
+    words: { water:['щүй','ɕy'], fire:['хуә','xuə'], sun:['жѳтў','ʐətʰu'], moon:['юә','yə'], mother:['ма','ma'], father:['ба','pa'], eat:['чы','tʂʰɨ'], drink:['хә','xə'], love:['ай','ai'], heart:['щин','ɕin'], tree:['шу','ʂu'], house:['фоңзы','faŋ tsɨ'], dog:['гу','ku'], cat:['мау','mau'], hand:['шу','ʂu'], eye:['янҗин','jan tɕin'], hello:['ни хау','ni xau'], thanks:['ще ще','ɕie ɕie'], one:['и','i'], good:['хау','xau'] }},
   // === Phase 3I: European minority + Uralic minority ===
   // West Slavic minor
   hsb: { name: 'Upper Sorbian', native: 'Hornjoserbšćina', lat: 51.18, lng: 14.42, // Bautzen
