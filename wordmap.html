@@ -360,10 +360,10 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=16"></script>
+    <script src="wordmap_data.js?v=17"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
     <script src="lang-filter.js?v=19"></script>
-    <script src="lang_names.js?v=1"></script>
+    <script src="lang_names.js?v=2"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -845,32 +845,9 @@
 
         const VERTICAL_LANGS = new Set(['mnc', 'mn_cn', 'xng']);
 
-        // Per-language data-status overrides (wordmap-check.md §8). For most
-        // historical languages the badge is derived from the "—" count in
-        // word entries (fragmentary if >5 of 20). Reconstructed langs and
-        // pedagogical reconstructions need explicit tags.
-        const DATA_STATUS_OVERRIDES = {
-            ine: 'reconstructed',  // Proto-Indo-European
-            vsa: 'reconstructed',  // Vedic Sanskrit (largely reconstructed)
-            xto: 'reconstructed',  // Tocharian A
-            txb: 'reconstructed',  // Tocharian B
-            xlu: 'reconstructed',  // Luwian
-            xpu: 'reconstructed',  // Punic
-            sux: 'reconstructed',  // Sumerian (decoded but reconstructed phonology)
-            xmr: 'undeciphered',   // Meroitic
-            zkt: 'undeciphered',   // Khitan
-            pyx: 'undeciphered',   // Pyu
-            xhu: 'undeciphered',   // Hurrian
-            elx: 'undeciphered',   // Elamite (partly)
-            ja_edo:    'pedagogical',
-            ja_heian:  'pedagogical',
-            ko_mid:    'pedagogical',
-            ko_em:     'pedagogical',
-            vi_nom:    'pedagogical',
-            zh_song:   'attested',
-            zh_han:    'attested',
-            zh_tang:   'attested',
-        };
+        // DATA_STATUS_OVERRIDES is now defined in wordmap_data.js (data
+        // layer) per wordmap-check-2.md §8 so the validator can also read
+        // it. Reference it via the global from there.
         function getDataStatus(code) {
             if (DATA_STATUS_OVERRIDES[code]) return DATA_STATUS_OVERRIDES[code];
             if (!HIST_CODE_SET || !HIST_CODE_SET.has(code)) return 'modern';

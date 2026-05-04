@@ -2815,6 +2815,34 @@ const LANG_DATA = {
     words: { water:['uai','uai'], fire:['api','api'], sun:['mata allo','mataʔalːo'], moon:['bulan','bulan'], mother:['indo','indo'], father:['ambe','ambe'], eat:['kumande','kumande'], drink:["ma'iru",'maʔiru'], love:["ma'pa'iya",'maʔpaʔija'], heart:['penaa','penaː'], tree:['kayu','kaju'], house:['banua','banua'], dog:['asu','asu'], cat:['serre','serːe'], hand:['lima','lima'], eye:['mata','mata'], hello:['tabe','tabe'], thanks:["kurre sumanga'",'kurːe sumaŋaʔ'], one:['mesa','mesa'], good:['melo','melo'] }},
 };
 
+// === Data-status overrides for historical / reconstructed languages ===
+// Per wordmap-check-2.md §8 — moved from wordmap.html to the data layer so
+// the validator and other consumers can read it. Modern languages default
+// to status 'modern'; historical languages get 'attested' or auto-derived
+// 'fragmentary' (≥30% '—' entries) unless overridden here.
+const DATA_STATUS_OVERRIDES = {
+    ine:       'reconstructed',  // Proto-Indo-European
+    vsa:       'reconstructed',  // Vedic Sanskrit
+    xto:       'reconstructed',  // Tocharian A
+    txb:       'reconstructed',  // Tocharian B
+    xlu:       'reconstructed',  // Luwian
+    xpu:       'reconstructed',  // Punic
+    sux:       'reconstructed',  // Sumerian
+    xmr:       'undeciphered',   // Meroitic
+    zkt:       'undeciphered',   // Khitan
+    pyx:       'undeciphered',   // Pyu
+    xhu:       'undeciphered',   // Hurrian
+    elx:       'undeciphered',   // Elamite (partly)
+    ja_edo:    'pedagogical',
+    ja_heian:  'pedagogical',
+    ko_mid:    'pedagogical',
+    ko_em:     'pedagogical',
+    vi_nom:    'pedagogical',
+    zh_song:   'attested',
+    zh_han:    'attested',
+    zh_tang:   'attested',
+};
+
 // Six-color palette for country fills (pastel, semi-transparent)
 const COUNTRY_PALETTE = [
   'rgba(100,149,237,0.20)', // cornflower blue

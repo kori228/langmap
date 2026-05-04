@@ -47,6 +47,15 @@ const ctx = { window: {}, document: { createElement: () => ({}) } };
 vm.createContext(ctx);
 vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;', ctx);
 vm.runInContext(metaSrcStripped, ctx);
+// Load lang_names.js if present
+let LANG_NAMES = null;
+try {
+    const langNamesSrc = read('lang_names.js');
+    vm.runInContext(langNamesSrc + ';this.LANG_NAMES=LANG_NAMES;', ctx);
+    LANG_NAMES = ctx.LANG_NAMES;
+} catch (e) {
+    // lang_names.js may not exist in older trees
+}
 
 // HIST_DESCENDANT is in wordmap.html; pull it out by regex
 const histMatch = htmlSrc.match(/const HIST_DESCENDANT\s*=\s*\{([\s\S]*?)\n\s*\};/);
@@ -98,7 +107,7 @@ for (const code of codes) {
         E(`${code}: lng out of range: ${lang.lng}`);
     }
 }
-if (dashCount > 0) W(`${dashCount} word entries contain "—" (unattested) — see review §3`);
+if (dashCount > 0) I(`${dashCount} word entries contain "—" (explicitly unattested; hidden from map labels per §3)`);
 
 // ---- 6. Duplicate (lat,lng) groups --------------------------------------
 const coordGroups = new Map();
@@ -116,18 +125,18 @@ const codesWithMeta = codes.filter(c => ctx.LANG_DATA[c].meta);
 const missingMeta = codes.filter(c => !ctx.LANG_DATA[c].meta);
 for (const c of missingMeta) E(`${c}: no meta entry`);
 
-// Count assignments by parsing the meta.js source for "LANG_DATA['code'].meta = "
-// or "LANG_DATA['code'] && (LANG_DATA['code'].meta = ".
+// Count meta assignments. Strip line comments first (entire `// ...` lines and
+// trailing `// ...` portions), then run the regex over the FULL stripped text
+// — not line-by-line — so multi-line `LANG_DATA['x'] && (\n  LANG_DATA['x'].meta = {...}\n);`
+// patterns are caught (per wordmap-check-2.md §3).
 const metaAssignCount = {};
-const assignRe = /LANG_DATA\['([\w-]+)'\](?:\s*&&\s*\(LANG_DATA\['\1'\])?\.meta\s*=/g;
-// Skip lines starting with '//' (comments)
-for (const line of metaSrcStripped.split('\n')) {
-    if (line.trimStart().startsWith('//')) continue;
-    let m;
-    const re = /LANG_DATA\['([\w-]+)'\](?:\s*&&\s*\(LANG_DATA\['\1'\])?\.meta\s*=/g;
-    while ((m = re.exec(line)) !== null) {
-        metaAssignCount[m[1]] = (metaAssignCount[m[1]] || 0) + 1;
-    }
+const stripFullLineComments = s => s.split('\n').filter(l => !l.trimStart().startsWith('//')).join('\n');
+const stripTrailingLineComments = s => s.replace(/(^|[^:'"])\/\/[^\n]*$/gm, '$1');
+const metaSrcForCount = stripTrailingLineComments(stripFullLineComments(metaSrcStripped));
+const assignRe = /LANG_DATA\['([\w-]+)'\](?:\s*&&\s*\(\s*LANG_DATA\['\1'\])?\.meta\s*=/g;
+let mm;
+while ((mm = assignRe.exec(metaSrcForCount)) !== null) {
+    metaAssignCount[mm[1]] = (metaAssignCount[mm[1]] || 0) + 1;
 }
 const dupAssign = Object.entries(metaAssignCount).filter(([, n]) => n > 1);
 for (const [c, n] of dupAssign) E(`${c}: ${n} meta assignments (silent overwrite)`);
@@ -209,6 +218,75 @@ checkCounts(htmlSrc,    'wordmap.html');
 checkCounts(readmeSrc,  'README.md');
 const headerN = (dataSrc.match(/(\d{3,4})\s*languages/) || [])[1];
 if (headerN && +headerN !== N) E(`wordmap_data.js header says ${headerN} languages, actual ${N}`);
+
+// ---- 12b. WORD_LIST.label shape (per wordmap-check-2.md §6) ----------
+// Each entry: { id, label: { en, ja, ko, zh, de, fr, ... } }
+// label.en is required; label.ja/ko/zh/de/fr strongly recommended.
+// 'ind' as a key is forbidden (legacy; should be 'id' Indonesian).
+const wlSeenIds = new Set();
+const wlMustHave = ['en', 'ja', 'ko', 'zh', 'de', 'fr'];
+for (const w of (ctx.WORD_LIST || [])) {
+    if (!w.id || typeof w.id !== 'string') E(`WORD_LIST: entry missing string id: ${JSON.stringify(w)}`);
+    else if (wlSeenIds.has(w.id)) E(`WORD_LIST: duplicate id "${w.id}"`);
+    else wlSeenIds.add(w.id);
+    if (!w.label || typeof w.label !== 'object') {
+        E(`WORD_LIST entry "${w.id}" missing .label object`);
+        continue;
+    }
+    if ('ind' in w.label) E(`WORD_LIST entry "${w.id}" still uses legacy key 'ind' (use 'id' for Indonesian)`);
+    for (const k of wlMustHave) {
+        if (!w.label[k]) E(`WORD_LIST entry "${w.id}" missing label.${k}`);
+    }
+    // es_eu/es_mx fall back to es; pt_eu/pt_br fall back to pt
+    if (!w.label.es && (w.label.es_eu || w.label.es_mx)) W(`WORD_LIST entry "${w.id}" has es_eu/es_mx but no base 'es' for fallback`);
+    if (!w.label.pt && (w.label.pt_eu || w.label.pt_br)) W(`WORD_LIST entry "${w.id}" has pt_eu/pt_br but no base 'pt' for fallback`);
+}
+
+// ---- 12c. LANG_NAMES coverage per UI lang (per wordmap-check-2.md §4) -------
+const langNamesCoverage = {};
+const langNamesUis = ['en','ja','ko','zh','yue','vi','th','id','hi','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+if (LANG_NAMES) {
+    for (const ui of langNamesUis) {
+        const dict = LANG_NAMES[ui] || {};
+        const present = codes.filter(c => dict[c]).length;
+        langNamesCoverage[ui] = present;
+        if (present < codes.length) {
+            const missing = codes.filter(c => !dict[c]);
+            const which = missing.slice(0, 3).join(', ') + (missing.length > 3 ? `, …${missing.length - 3} more` : '');
+            W(`lang_names.${ui}: ${present}/${codes.length} (missing: ${which})`);
+        }
+    }
+} else {
+    W('lang_names.js not loaded — coverage check skipped');
+}
+
+// ---- 12d. Word-entry "—" severity split (per wordmap-check-2.md §7) ----
+// modern lang + any "—" entry → ERROR
+// historical lang + both "—" → OK (explicitly unattested)
+// historical lang + one-sided "—" → ERROR
+let modernDashErrors = 0, oneSidedDashErrors = 0;
+for (const code of codes) {
+    const isHist = HIST_SET.has(code);
+    const lang = ctx.LANG_DATA[code];
+    for (const id of WORD_IDS) {
+        const e = lang.words[id];
+        if (!Array.isArray(e) || e.length !== 2) continue;
+        const [w, ipa] = e;
+        const isDash = v => v === '—' || v === '-' || v === '';
+        const wDash = isDash(w);
+        const iDash = isDash(ipa);
+        if (!wDash && !iDash) continue;
+        if (wDash && iDash) {
+            if (!isHist) {
+                E(`${code}.words.${id}: both '—' but language is modern (unattested-marker only allowed for historical)`);
+                modernDashErrors++;
+            }
+        } else {
+            E(`${code}.words.${id}: one-sided dash/empty: ${JSON.stringify(e)}`);
+            oneSidedDashErrors++;
+        }
+    }
+}
 
 // ---- 13. Description i18n coverage (per wordmap-check.md §10) ----------
 const UI_LANGS = ['en','ja','ko','zh','yue','vi','th','id','hi','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];

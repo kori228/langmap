@@ -568,7 +568,7 @@ This script checks:
 ## Adding a New Language / 新しい言語の追加
 
 1. Add to `LANGUAGES` array in `app.js`
-2. Add to `LANG_NAMES` in `app.js` (all 21 UI language entries)
+2. Add to `LANG_NAMES` in `lang_names.js` (all 21 UI language entries)
 3. Add data for all 100 sentences in `data.js`
 4. **方言の場合**: 親言語のセグメント構造をコピーし、テキストのみ変換（Rule 7参照）
 5. If RTL, add to `RTL_LANGS` set in `app.js`
@@ -672,7 +672,7 @@ wordmap_meta.js — LANG_DATA[code].meta = { family, speakers, countries, offici
                   description must be { en, ja, ko, zh, ... } object (≥6 langs)
 ```
 
-`LANG_NAMES` (translated language names per UI lang) lives in `app.js` and is fetched at runtime by `wordmap.html`.
+`LANG_NAMES` (translated language names per UI lang) lives in `lang_names.js` (separated from app.js per wordmap-check.md §12) and is loaded by both `index.html` and `wordmap.html` via a normal `<script>` tag.
 
 ### B. Adding a new language
 
@@ -680,9 +680,9 @@ For every new code, you MUST add:
 
 1. **`wordmap_data.js`** — `LANG_DATA[code] = { name, native, lat, lng, words }` with all 20 word entries.
 2. **`wordmap_meta.js`** — `LANG_DATA[code].meta = { family, speakers, countries, official, script, description: { en, ja, ko, zh, de, fr, ... } }`.
-3. **`app.js`** — `LANG_NAMES[uiLang][code]` for all 21 UI languages (use the dedup-aware Python helpers in `/tmp/`).
+3. **`lang_names.js`** — `LANG_NAMES[uiLang][code]` for all 21 UI languages (use the dedup-aware Python helpers in `/tmp/`).
 4. **`lang-filter.js`** — if the family branch is new, add a `FAMILY_DEFAULTS[familyName]` entry with sensible (wo, tone, morph) defaults.
-5. **Bump cache busters**: `wordmap_data.js?v=N+1`, `wordmap_meta.js?v=N+1`, `app.js?v=N+1`.
+5. **Bump cache busters**: `wordmap_data.js?v=N+1`, `wordmap_meta.js?v=N+1`, `lang_names.js?v=N+1`.
 
 Run the validator:
 
@@ -758,7 +758,8 @@ Always bump after data changes:
 ```html
 <script src="wordmap_data.js?v=N+1"></script>
 <script src="meta_i18n_ext.js?v=N+1"></script>
-fetch('app.js?v=N+1').then(...)
+<script src="lang-filter.js?v=N+1"></script>
+<script src="lang_names.js?v=N+1"></script>
 s.src = 'wordmap_meta.js?v=N+1';
 ```
 
