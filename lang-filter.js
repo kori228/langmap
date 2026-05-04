@@ -100,6 +100,12 @@
         'Sinitic (Wu, Taihu)':          { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Hui)':                { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Pinghua)':            { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Mandarin, Southwestern)': { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Mandarin, Zhongyuan)':    { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Min Nan)':            { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Min Nan, Hainanese)': { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Wu)':                 { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Hakka)':              { wo: 'SVO', tone: true, morph: 'isolating' },
         // Niger-Congo / Bantu
         'Niger-Congo':            { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Niger-Congo (Bantu)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },

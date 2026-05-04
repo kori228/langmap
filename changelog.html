@@ -57,6 +57,26 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 7)</div>
+            <ul>
+                <li><strong>Word Map: 8 more Chinese dialects added</strong> (557 → <strong>565</strong>) — major Sinitic gaps covering Wu, Min, Mandarin, and Hakka branches:
+                    <ul>
+                        <li><strong>Suzhou Wu (wuu_sz)</strong> 苏州话 — historic prestige Wu variety, "Italian of Chinese", ~7M. Eight tones, voiced obstruents, Pingtan/Kunqu opera language. Suzhou.</li>
+                        <li><strong>Wenzhou Wu (wuu_wz)</strong> 温州话 — Oujiang Wu, ~5M. So divergent that PLA jokingly used it as a wartime code. Eight tones, extensive sandhi.</li>
+                        <li><strong>Quanzhou Hokkien (nan_qz)</strong> 泉州话 — historical reference for Min Nan branch (~7M); ancestor of Taiwanese Hokkien and most SE Asian Hokkien varieties. Quanzhou, Fujian.</li>
+                        <li><strong>Hainanese (nan_hai)</strong> 海南话 — Min Nan that split around the Tang dynasty and developed independently (~5M); not mutually intelligible with Hokkien. Implosive consonants. Haikou.</li>
+                        <li><strong>Wuhan Mandarin (zh_wh)</strong> 武汉话 — Southwestern Mandarin (~10M Wuhan; ~260M total SW Mandarin — the largest Mandarin sub-branch). Wuhan, Hubei.</li>
+                        <li><strong>Zhongyuan Mandarin (zh_zz)</strong> 中原官话 / 郑州话 — second-largest Mandarin sub-branch (~190M total), transitional between northern and southwestern types. Zhengzhou, Henan.</li>
+                        <li><strong>Hailu Hakka (hak_hl)</strong> 台灣客家話 (海陸腔) — second-most-common Taiwanese Hakka variety after Sixian, from Haifeng/Lufeng migrants. 7 tones (vs Sixian's 6); the news broadcast standard on Hakka TV. Hsinchu County.</li>
+                        <li><strong>Pu-Xian Min (cpx)</strong> 莆仙话 / 兴化话 — own Min branch (sister to Min Dong, not Min Nan), ~3M. Notable for the [ɬ] (voiceless lateral fricative) phoneme. Putian, Fujian.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code> entries: <em>Sinitic (Mandarin, Southwestern)</em>, <em>(Mandarin, Zhongyuan)</em>, <em>(Min Nan)</em> (top-level alias), <em>(Min Nan, Hainanese)</em>, <em>(Wu)</em> (top-level), <em>(Hakka)</em> (top-level). All inherit standard Sinitic defaults: SVO, tonal, isolating.</li>
+                <li>168 new <code>LANG_NAMES</code> entries (8 codes × 21 UI langs). The <code>add_chinese_lang_names_v2.py</code> helper de-dupes pre-existing entries (some codes had partial coverage already in JA/ZH/EN/KO) before inserting to avoid duplicate keys.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 6)</div>
             <ul>
                 <li><strong>Word Map: 8 Taiwan minority languages added</strong> (549 → <strong>557</strong>) — 7 Formosan languages plus Taiwanese Hakka. The Formosan languages are Austronesian primary branches (the deepest splits in the family tree, predating Malayo-Polynesian) and represent some of the most linguistically diverse languages in the world relative to their geographic concentration:
