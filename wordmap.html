@@ -167,27 +167,35 @@
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 Georgia, "Times New Roman", serif;
         }
-        /* Selected language (info panel open) — highlight + connector to modal */
+        /* Selected language (info panel open) — refined highlight */
         .lang-label.selected, .globe-label.selected {
-            background: rgba(255,224,77,0.35); border-radius: 4px;
-            box-shadow: 0 0 0 2px #f4b400, 0 0 8px rgba(244,180,0,0.55);
+            background: rgba(74,108,247,0.10); border-radius: 5px;
+            box-shadow: 0 0 0 1.5px #4a6cf7, 0 1px 6px rgba(74,108,247,0.4);
             outline: none;
             z-index: 10;
         }
-        .lang-label.selected .word, .globe-label.selected .word { color: #b85d00 !important; }
-        /* Connector line — full-viewport SVG overlay above map, below panels */
+        .lang-label.selected .word, .globe-label.selected .word { color: #2945c0 !important; }
+        /* Connector — smooth bezier curve from label to panel */
         #connector-line {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1005;
-            display: none;
+            opacity: 0;
+            transition: opacity 0.18s ease;
         }
-        #connector-line.visible { display: block; }
-        #connector-line line {
-            stroke: #f4b400; stroke-width: 2; stroke-dasharray: 6 4;
-            stroke-linecap: round;
-            filter: drop-shadow(0 0 2px rgba(255,255,255,0.9));
+        #connector-line.visible { opacity: 1; }
+        #connector-line path {
+            fill: none;
+            stroke: #4a6cf7; stroke-width: 1.5;
+            stroke-linecap: round; stroke-linejoin: round;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 3px rgba(255,255,255,0.95));
+        }
+        #connector-line .conn-anchor-label,
+        #connector-line .conn-anchor-panel {
+            fill: #4a6cf7;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.95));
         }
         .lang-label {
             position: absolute; left: 50%; top: 50%;
@@ -381,9 +389,11 @@
 
     <div id="map"></div>
     <div id="globe"></div>
-    <!-- Connector line from selected map label to the open info panel -->
+    <!-- Connector from selected map label to the open info panel -->
     <svg id="connector-line" aria-hidden="true">
-        <line x1="0" y1="0" x2="0" y2="0"></line>
+        <path d=""></path>
+        <circle class="conn-anchor-label" cx="0" cy="0" r="3"></circle>
+        <circle class="conn-anchor-panel" cx="0" cy="0" r="3"></circle>
     </svg>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -796,7 +806,7 @@
                 });
                 // Update connector line continuously while user rotates/zooms.
                 controls.addEventListener('change', () => {
-                    if (typeof updateConnectorLine === 'function') updateConnectorLine();
+                    if (typeof scheduleConnectorUpdate === 'function') scheduleConnectorUpdate();
                 });
             }
         }
@@ -1267,10 +1277,22 @@
         window.__langmap.uiLang = uiLang;
         window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
 
-        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); updateConnectorLine(); });
-        map.on('moveend', () => { updateHash(); updateConnectorLine(); });
-        window.addEventListener('resize', () => { updateConnectorLine(); });
-        window.addEventListener('scroll', () => { updateConnectorLine(); }, true);
+        // rAF-throttled connector update — keeps line glued to the label
+        // during continuous map drag/zoom without re-layout thrashing.
+        let _connRafPending = false;
+        function scheduleConnectorUpdate() {
+            if (_connRafPending) return;
+            _connRafPending = true;
+            requestAnimationFrame(() => { _connRafPending = false; updateConnectorLine(); });
+        }
+        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); scheduleConnectorUpdate(); });
+        map.on('moveend', () => { updateHash(); });
+        // Continuous events for smooth tracking during drag / zoom animation
+        map.on('move', scheduleConnectorUpdate);
+        map.on('zoom', scheduleConnectorUpdate);
+        map.on('zoomanim', scheduleConnectorUpdate);
+        window.addEventListener('resize', scheduleConnectorUpdate);
+        window.addEventListener('scroll', scheduleConnectorUpdate, true);
 
         // Expose refresh for async LANG_NAMES load
         window._refreshMarkers = () => updateMarkers(currentWord);
@@ -1343,17 +1365,28 @@
             }
             const lr = labelEl.getBoundingClientRect();
             const pr = ip.getBoundingClientRect();
-            const lineEl = svg.querySelector('line');
-            // Source: right edge of label, vertical center
-            const x1 = lr.left + lr.width / 2;
-            const y1 = lr.top + lr.height / 2;
-            // Target: left edge of panel, vertical center (clamped to label y)
-            const x2 = pr.left;
-            const y2 = Math.max(pr.top + 12, Math.min(pr.bottom - 12, y1));
-            lineEl.setAttribute('x1', x1);
-            lineEl.setAttribute('y1', y1);
-            lineEl.setAttribute('x2', x2);
-            lineEl.setAttribute('y2', y2);
+            // Source: midpoint of the side of the label closest to the panel
+            const labelCx = lr.left + lr.width / 2;
+            const labelCy = lr.top + lr.height / 2;
+            const panelOnLeft = pr.left + pr.width / 2 < labelCx;
+            const x1 = panelOnLeft ? lr.left : lr.right;
+            const y1 = labelCy;
+            // Target: edge of panel (closer side), clamped vertically inside panel
+            const x2 = panelOnLeft ? pr.right : pr.left;
+            const y2 = Math.max(pr.top + 16, Math.min(pr.bottom - 16, labelCy));
+            // Smooth bezier — control points pulled horizontally for a soft S
+            const dx = x2 - x1;
+            const cx1 = x1 + dx * 0.5;
+            const cy1 = y1;
+            const cx2 = x2 - dx * 0.5;
+            const cy2 = y2;
+            const path = `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`;
+            const pathEl = svg.querySelector('path');
+            const a1 = svg.querySelector('.conn-anchor-label');
+            const a2 = svg.querySelector('.conn-anchor-panel');
+            pathEl.setAttribute('d', path);
+            a1.setAttribute('cx', x1); a1.setAttribute('cy', y1);
+            a2.setAttribute('cx', x2); a2.setAttribute('cy', y2);
             svg.classList.add('visible');
         }
         document.getElementById('info-close').addEventListener('click', closeInfoPanel);
