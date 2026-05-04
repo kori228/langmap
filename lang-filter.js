@@ -1230,6 +1230,27 @@
                 applyFilter();
                 updateBadge();
                 syncHash();
+                // Recompute cross-category chip counts in-place (don't
+                // rebuild the panel — that would lose show-more expanded
+                // state and scroll position).
+                const values = enumerateValues();
+                const valuesByKey = {};
+                for (const cat of Object.keys(values)) {
+                    valuesByKey[cat] = new Map(values[cat]);
+                }
+                panel.querySelectorAll('.lf-chip').forEach(chip => {
+                    const cat = chip.dataset.cat;
+                    const val = chip.dataset.val;
+                    if (!valuesByKey[cat]) return;
+                    const c = valuesByKey[cat].get(val) || 0;
+                    const countEl = chip.querySelector('.lf-chip-count');
+                    if (countEl) countEl.textContent = c;
+                    // Toggle disabled state based on the new count. Don't
+                    // disable a chip that's already selected, even if
+                    // count went to 0 (so the user can always toggle off).
+                    const isOn = chip.classList.contains('on');
+                    chip.classList.toggle('lf-chip-disabled', c === 0 && !isOn);
+                });
                 panel.querySelectorAll('.lf-section').forEach(sec => {
                     const cat = sec.dataset.cat;
                     const clearEl = sec.querySelector('.lf-section-clear');
