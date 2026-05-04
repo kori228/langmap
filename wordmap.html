@@ -23,7 +23,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -162,18 +162,21 @@
         .lang-label .word {
             font-size: calc(15px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
             line-height: 1.2;
-            /* Fallback chain for ancient/rare scripts */
-            font-family: system-ui, -apple-system, "Segoe UI", "Noto Serif Tangut",
-                "Noto Sans Old Turkic", "Noto Sans Mongolian", "Noto Sans Sogdian",
-                "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
+            /* "Charis SIL" first: it has comprehensive Latin Extended + IPA
+               + combining-marks coverage. Without this, characters like ɨ̂
+               (i-with-stroke + combining circumflex) split across font runs
+               on map labels and the diacritic detaches from its base. */
+            font-family: "Charis SIL", system-ui, -apple-system, "Segoe UI",
+                "Noto Serif Tangut", "Noto Sans Old Turkic", "Noto Sans Mongolian",
+                "Noto Sans Sogdian", "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
                 "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
                 "Noto Sans Coptic", sans-serif;
         }
         .globe-label .word, .lang-label .ipa, .globe-label .ipa {
-            font-family: system-ui, -apple-system, "Segoe UI", "Noto Serif Tangut",
-                "Noto Sans Old Turkic", "Noto Sans Mongolian", "Noto Sans Sogdian",
-                "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
+            font-family: "Charis SIL", system-ui, -apple-system, "Segoe UI",
+                "Noto Serif Tangut", "Noto Sans Old Turkic", "Noto Sans Mongolian",
+                "Noto Sans Sogdian", "Noto Sans Phags Pa", "Noto Sans Khitan Small Script",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
                 "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
                 "Noto Sans Coptic", sans-serif;
