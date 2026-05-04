@@ -938,7 +938,12 @@
                 </div>
             </div>
         `;
+        // Speaker-tier categorization is meaningless for historical languages
+        // (almost all extinct or with negligible/liturgical-only speakers),
+        // so hide the entire section in historical mode.
+        const histMode = !!(window.__langmap && window.__langmap.historical);
         for (const sec of SECTIONS) {
+            if (sec.key === 'speaker' && histMode) continue;
             const items = values[sec.key];
             if (!items || !items.length) continue;
             const limit = COLLAPSE_LIMITS[sec.key];
@@ -1095,8 +1100,14 @@
             onUiChange = () => { renderFab(); rebuildPanel(); refresh(); };
 
             // Era change → re-enumerate chip counts (chips themselves don't
-            // change, but counts do; 0-count chips will become disabled)
-            window.addEventListener('langmap:erachange', () => {
+            // change, but counts do; 0-count chips will become disabled).
+            // Also clear any speaker filter when entering historical mode
+            // since that section disappears (and would otherwise dim
+            // every historical lang).
+            window.addEventListener('langmap:erachange', (e) => {
+                if (e.detail && e.detail.historical && filterState.speaker.size > 0) {
+                    filterState.speaker.clear();
+                }
                 rebuildPanel();
                 refresh();
             });

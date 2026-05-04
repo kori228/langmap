@@ -362,7 +362,7 @@
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js?v=11"></script>
     <script src="meta_i18n_ext.js?v=5"></script>
-    <script src="lang-filter.js?v=14"></script>
+    <script src="lang-filter.js?v=15"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
@@ -617,6 +617,7 @@
 
         function setEra(historical) {
             showHistorical = historical;
+            window.__langmap.historical = historical;
             eraModern.classList.toggle('active', !historical);
             eraHistorical.classList.toggle('active', historical);
             window.dispatchEvent(new CustomEvent('langmap:erachange', { detail: { historical } }));
@@ -840,6 +841,7 @@
         // Expose era-aware code set so lang-filter.js can scope its
         // chip counts to the currently visible cohort.
         const HIST_CODE_SET = new Set(Object.keys(HIST_DESCENDANT));
+        window.__langmap.historical = showHistorical;
         window.__langmap.getActiveCodes = function () {
             const out = new Set();
             if (showHistorical) {
