@@ -57,6 +57,28 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 10)</div>
+            <ul>
+                <li><strong>Word Map review (wordmap-check.md) — Phase A through partial Phase D</strong>:
+                    <ul>
+                        <li><strong>§1 Stale lang counts unified to 579</strong> — wordmap.html title + 3 meta descriptions, wordmap_data.js header comment, README.md (en + ja file structure).</li>
+                        <li><strong>§2 New <code>validate_wordmap_data.js</code></strong> — Word Map-specific static checker. Verifies WORD_LIST length, word-entry shape, lat/lng range, "—" unattested entries, duplicate meta assignments, EXCLUDED_CODES vs HIST_DESCENDANT consistency, speaker-tier parseability, family top-token allow-list, doc-vs-data lang counts, description i18n coverage. Currently passes with 1 warning (the 58 "—" entries — handled via §3 below).</li>
+                        <li><strong>§3 "—" word entries hidden from map labels</strong> — fragmentary historical languages (Meroitic 15/20, Pyu 7/20, etc.) no longer show literal "—" as a fake word on the map. The detail panel marks them as "— (unattested)" in italic grey. Languages appear/disappear per-word based on what's attested.</li>
+                        <li><strong>§4 6 silent duplicate meta definitions resolved</strong> — quc, kek, sid, cpx, wuu_wz, wuu_sz: older definitions in wordmap_meta.js commented out, the newer Phase 15/17 definitions (with multilingual descriptions) win.</li>
+                        <li><strong>§6 Duplicate top-family chips collapsed</strong> — new <code>PARENT_FAMILY</code> map in <code>expandFamilies()</code>. Sub-branches (Semitic, Cushitic, Bantu, Iranian, Indo-Aryan, Romance, Germanic, Slavic, Sinitic, Vietic, Quichean, …) now also tag their parent (Afro-Asiatic, Niger-Congo, Indo-European, Sino-Tibetan, Austroasiatic, Mayan, …). A language tagged "Semitic" now matches both the "Semitic" and the "Afro-Asiatic" chip, eliminating chip fragmentation.</li>
+                        <li><strong>§7.1 Cantonese native</strong> — <code>LANG_DATA.yue.native</code>: <code>'广东话'</code> → <code>'廣東話'</code> (Traditional, matching the Hong Kong setting and CONTRIBUTING rule).</li>
+                        <li><strong>§7.2 Wu Chinese / Shanghainese clarification</strong> — <code>wuu</code> meta now explicitly states "word entries are Shanghainese (~15-20M); Wu family total is ~80M; Suzhou Wu (wuu_sz) is the historical prestige form, Wenzhou Wu (wuu_wz) the most divergent." Family changed from <code>'Sino-Tibetan'</code> to <code>'Sinitic (Wu)'</code>; description object with 6 UI langs replacing the legacy single-string form.</li>
+                        <li><strong>§8 Data-status badge for historical/reconstructed languages</strong> — language detail panel now shows a small color-coded badge: <em>attested / fragmentary / reconstructed / undeciphered / pedagogical</em>. Auto-derived for historical langs based on "—" count (≥30% → fragmentary), with explicit overrides for the special cases (PIE → reconstructed; Meroitic/Pyu/Khitan/Hurrian → undeciphered; ja_edo/ja_heian/ko_mid/ko_em/vi_nom → pedagogical).</li>
+                        <li><strong>§10 Validator description i18n coverage report</strong> — tabular per-UI-lang coverage. Currently en/ja/ko/zh/de/fr 100%, ru 95%, others 90-94%.</li>
+                        <li><strong>§18 CONTRIBUTING.md Word Map section</strong> — new section after §6 covering file layout, required fields per language, word-entry format ("—" policy + warnings), coordinate conventions, meta field rules, speaker-annotation patterns, historical-language workflow, cache-buster bumps, validator command. Reduces contribution drift.</li>
+                    </ul>
+                </li>
+                <li>Cache busters: <code>wordmap_meta.js?v=13</code>, <code>lang-filter.js?v=19</code>.</li>
+                <li>Remaining review items deferred (large schema changes): §5/§16 structured speakers + IPA notation, §9 structured location/region, §11 WORD_LIST id-vs-translation key separation, §12 LANG_NAMES extraction via regex, §13 ISO/Glottocode tags, §15 source/confidence per word/lang. These need design decisions that warrant their own pass.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 9b)</div>
             <ul>
                 <li><strong>Language-count correction</strong> — re-counted <code>LANG_DATA</code> from the 549-language milestone commit (80d54c6) forward. Six codes added in Phases 15 and 17 turned out to already exist in <code>LANG_DATA</code> at the milestone: <code>wuu_sz</code>, <code>wuu_wz</code>, <code>cpx</code> (existed pre-Phase 15) and <code>quc</code>, <code>kek</code>, <code>sid</code> (existed pre-Phase 17). My recent commits treated them as new entries, inflating the running count. Corrected sequence: 549 → 557 (Phase 14, all new) → <strong>562</strong> (Phase 15, 5 new + 3 overwrites) → <strong>570</strong> (Phase 16, all new) → <strong>579</strong> (Phase 17, 9 new + 3 overwrites). Era counts in the toggle buttons (499 modern + 80 historical = 579) are correct; the changelog headlines were wrong. README updated.</li>

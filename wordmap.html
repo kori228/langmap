@@ -849,6 +849,49 @@
 
         const VERTICAL_LANGS = new Set(['mnc', 'mn_cn', 'xng']);
 
+        // Per-language data-status overrides (wordmap-check.md §8). For most
+        // historical languages the badge is derived from the "—" count in
+        // word entries (fragmentary if >5 of 20). Reconstructed langs and
+        // pedagogical reconstructions need explicit tags.
+        const DATA_STATUS_OVERRIDES = {
+            ine: 'reconstructed',  // Proto-Indo-European
+            vsa: 'reconstructed',  // Vedic Sanskrit (largely reconstructed)
+            xto: 'reconstructed',  // Tocharian A
+            txb: 'reconstructed',  // Tocharian B
+            xlu: 'reconstructed',  // Luwian
+            xpu: 'reconstructed',  // Punic
+            sux: 'reconstructed',  // Sumerian (decoded but reconstructed phonology)
+            xmr: 'undeciphered',   // Meroitic
+            zkt: 'undeciphered',   // Khitan
+            pyx: 'undeciphered',   // Pyu
+            xhu: 'undeciphered',   // Hurrian
+            elx: 'undeciphered',   // Elamite (partly)
+            ja_edo:    'pedagogical',
+            ja_heian:  'pedagogical',
+            ko_mid:    'pedagogical',
+            ko_em:     'pedagogical',
+            vi_nom:    'pedagogical',
+            zh_song:   'attested',
+            zh_han:    'attested',
+            zh_tang:   'attested',
+        };
+        function getDataStatus(code) {
+            if (DATA_STATUS_OVERRIDES[code]) return DATA_STATUS_OVERRIDES[code];
+            if (!HIST_CODE_SET || !HIST_CODE_SET.has(code)) return 'modern';
+            // Heuristic: count "—" entries
+            const lang = LANG_DATA[code];
+            if (!lang || !lang.words) return 'attested';
+            let dashes = 0, total = 0;
+            for (const id of WORD_LIST.map(w => w.id)) {
+                const e = lang.words[id];
+                if (!e) continue;
+                total++;
+                if (isUnattestedEntry(e)) dashes++;
+            }
+            if (total > 0 && dashes / total >= 0.3) return 'fragmentary';
+            return 'attested';
+        }
+
         // Expose era-aware code set so lang-filter.js can scope its
         // chip counts to the currently visible cohort.
         const HIST_CODE_SET = new Set(Object.keys(HIST_DESCENDANT));
@@ -1171,12 +1214,21 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=12';
+                s.src = 'wordmap_meta.js?v=13';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
             return _metaLoadPromise;
         }
+
+        const DATA_STATUS_BADGE = {
+            modern:        null,
+            attested:      { en:'attested',      ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8' },
+            fragmentary:   { en:'fragmentary',   ja:'断片的',       bg:'#fef0e0', fg:'#c0392b' },
+            reconstructed: { en:'reconstructed', ja:'再構',         bg:'#fff5e0', fg:'#b56500' },
+            undeciphered:  { en:'undeciphered',  ja:'未解読',       bg:'#fae0e0', fg:'#a02020' },
+            pedagogical:   { en:'pedagogical',   ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0' },
+        };
 
         function renderLangInfo(code) {
             const lang = LANG_DATA[code];
@@ -1186,6 +1238,13 @@
             const displayName = names[code] || lang.name;
             let html = `<h2>${displayName}</h2>`;
             html += `<div class="native-name">${lang.native} [${code}]</div>`;
+            // Data-status badge (per wordmap-check.md §8) — only shown for non-modern
+            const status = getDataStatus(code);
+            const badge = DATA_STATUS_BADGE[status];
+            if (badge) {
+                const label = (uiLang === 'ja' && badge.ja) ? badge.ja : badge.en;
+                html += `<div style="margin:4px 0 6px"><span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg}">${label}</span></div>`;
+            }
             if (lang.meta) {
                 html += '<table>';
                 if (m.family) html += `<tr><td>${wt('family')}</td><td>${translateMeta(m.family)}</td></tr>`;
