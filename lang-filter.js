@@ -803,11 +803,40 @@
 
     // ----- Available-value enumeration with counts -------------------------
 
+    // Helper: does a language pass all filter categories EXCEPT skipCat?
+    function passesFilterExcept(code, skipCat) {
+        const f = featuresFor(code);
+        if (!f) return false;
+        for (const cat of Object.keys(filterState)) {
+            if (cat === skipCat) continue;
+            const allowed = filterState[cat];
+            if (allowed.size === 0) continue;
+            if (cat === 'script' || cat === 'family') {
+                const tags = f[cat];
+                if (!Array.isArray(tags) || tags.length === 0) return false;
+                if (!tags.some(s => allowed.has(s))) return false;
+                continue;
+            }
+            let v;
+            if (cat === 'tone') {
+                if (f.tone == null) return false;
+                v = f.tone ? 'tonal' : 'non-tonal';
+            } else {
+                v = f[cat];
+                if (v == null) return false;
+            }
+            if (!allowed.has(v)) return false;
+        }
+        return true;
+    }
+
     function enumerateValues() {
-        // Universe = union of values across ALL languages (regardless of era).
-        // Counts = scoped to the active era (historical-only or modern-only)
-        // so chips with 0 in the current era render disabled rather than
-        // disappear, keeping the chip set stable across era switches.
+        // Universe = union of values across ALL languages (regardless of era
+        // or current filter selection) so chip identity stays stable.
+        // Counts for chip V in category C = #(languages that pass all OTHER
+        // categories' filters AND have V in C). This means: clicking V in C
+        // (when nothing in C is selected yet) would match exactly that many.
+        // 0-count chips render disabled.
         const universe = {
             family: new Set(), script: new Set(), wo: new Set(),
             morph: new Set(), speaker: new Set(),
@@ -823,18 +852,32 @@
         for (const code of Object.keys(LANG_DATA)) {
             const f = featuresFor(code);
             if (!f) continue;
-            const inScope = !scope || scope.has(code);
-            const bump = (cat, key) => {
-                universe[cat].add(key);
-                if (inScope) counts[cat].set(key, (counts[cat].get(key) || 0) + 1);
-            };
-            if (Array.isArray(f.family)) for (const fam of f.family) bump('family', fam);
-            if (Array.isArray(f.script)) for (const s of f.script) bump('script', s);
-            if (f.wo)      bump('wo',      f.wo);
-            if (f.morph)   bump('morph',   f.morph);
-            if (f.speaker) bump('speaker', f.speaker);
-            if (f.tone === true)  { toneUniverse.tonal = true;       if (inScope) tonal++; }
-            if (f.tone === false) { toneUniverse['non-tonal'] = true; if (inScope) nonTonal++; }
+            if (scope && !scope.has(code)) continue;
+            // Build the per-category universe regardless of filter state
+            if (Array.isArray(f.family)) for (const v of f.family) universe.family.add(v);
+            if (Array.isArray(f.script)) for (const v of f.script) universe.script.add(v);
+            if (f.wo)      universe.wo.add(f.wo);
+            if (f.morph)   universe.morph.add(f.morph);
+            if (f.speaker) universe.speaker.add(f.speaker);
+            if (f.tone === true)  toneUniverse.tonal = true;
+            if (f.tone === false) toneUniverse['non-tonal'] = true;
+            // For each category, count this language toward chip V if it
+            // passes all filters EXCEPT this category.
+            const passFamily  = passesFilterExcept(code, 'family');
+            const passScript  = passesFilterExcept(code, 'script');
+            const passWo      = passesFilterExcept(code, 'wo');
+            const passTone    = passesFilterExcept(code, 'tone');
+            const passMorph   = passesFilterExcept(code, 'morph');
+            const passSpeaker = passesFilterExcept(code, 'speaker');
+            if (passFamily && Array.isArray(f.family)) for (const v of f.family) counts.family.set(v, (counts.family.get(v) || 0) + 1);
+            if (passScript && Array.isArray(f.script)) for (const v of f.script) counts.script.set(v, (counts.script.get(v) || 0) + 1);
+            if (passWo      && f.wo)      counts.wo.set(f.wo,           (counts.wo.get(f.wo) || 0) + 1);
+            if (passMorph   && f.morph)   counts.morph.set(f.morph,     (counts.morph.get(f.morph) || 0) + 1);
+            if (passSpeaker && f.speaker) counts.speaker.set(f.speaker, (counts.speaker.get(f.speaker) || 0) + 1);
+            if (passTone) {
+                if (f.tone === true)  tonal++;
+                if (f.tone === false) nonTonal++;
+            }
         }
         const buildEntries = (cat, sortFn) => {
             const entries = [...universe[cat]].map(k => [k, counts[cat].get(k) || 0]);
@@ -1055,6 +1098,11 @@
 
     function init() {
         if (typeof LANG_DATA === 'undefined') return setTimeout(init, 200);
+        // Hydrate filterState from URL hash IMMEDIATELY (synchronous; doesn't
+        // need meta or LANG_DATA — just the hash). This must happen before
+        // app.js's first updateHash() call, otherwise getFilterHashParam()
+        // returns empty and the f= param gets clobbered out of the URL.
+        loadFilterFromHash();
         injectStyles();
 
         const fab = document.createElement('button');
@@ -1121,9 +1169,7 @@
             // Clear feature cache (placeholder may have polled before meta)
             _featCache.clear();
             metaReady = true;
-            // Restore filter state from URL hash (if any) before first render
-            // so chips render with the right `on` markers.
-            loadFilterFromHash();
+            // (filterState was already hydrated from URL at init() top.)
 
             function rebuildPanel() {
                 const built = buildPanel();
