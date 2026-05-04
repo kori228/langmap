@@ -734,6 +734,11 @@
         /* Collapsible long lists (e.g. families) */
         .lf-chip-hidden { display: none !important; }
         .lf-section.lf-expanded .lf-chip-hidden { display: inline-flex !important; }
+        /* Disabled chips (zero count in current era) */
+        .lf-chip-disabled {
+            opacity: 0.35; cursor: not-allowed; background: #f8f8f8;
+        }
+        .lf-chip-disabled:hover { background: #f8f8f8; border-color: #d0d0d0; }
         .lf-chip-more {
             font-size: 11px; padding: 3px 8px;
             color: #4a6cf7; cursor: pointer; user-select: none;
@@ -757,31 +762,49 @@
     // ----- Available-value enumeration with counts -------------------------
 
     function enumerateValues() {
-        const families = new Map(), scripts = new Map(), wos = new Map(),
-              morphs = new Map(), speakers = new Map();
+        // Universe = union of values across ALL languages (regardless of era).
+        // Counts = scoped to the active era (historical-only or modern-only)
+        // so chips with 0 in the current era render disabled rather than
+        // disappear, keeping the chip set stable across era switches.
+        const universe = {
+            family: new Set(), script: new Set(), wo: new Set(),
+            morph: new Set(), speaker: new Set(),
+        };
+        const counts = {
+            family: new Map(), script: new Map(), wo: new Map(),
+            morph: new Map(), speaker: new Map(),
+        };
         let tonal = 0, nonTonal = 0;
+        let toneUniverse = { tonal: false, 'non-tonal': false };
+        const scope = (window.__langmap && typeof window.__langmap.getActiveCodes === 'function')
+            ? window.__langmap.getActiveCodes() : null;
         for (const code of Object.keys(LANG_DATA)) {
             const f = featuresFor(code);
             if (!f) continue;
-            if (f.family)  families.set(f.family,  (families.get(f.family) || 0) + 1);
-            // Script is an array — count each tag separately
-            if (Array.isArray(f.script)) {
-                for (const s of f.script) scripts.set(s, (scripts.get(s) || 0) + 1);
-            }
-            if (f.wo)      wos.set(f.wo,           (wos.get(f.wo) || 0) + 1);
-            if (f.morph)   morphs.set(f.morph,     (morphs.get(f.morph) || 0) + 1);
-            if (f.speaker) speakers.set(f.speaker, (speakers.get(f.speaker) || 0) + 1);
-            if (f.tone === true)  tonal++;
-            if (f.tone === false) nonTonal++;
+            const inScope = !scope || scope.has(code);
+            const bump = (cat, key) => {
+                universe[cat].add(key);
+                if (inScope) counts[cat].set(key, (counts[cat].get(key) || 0) + 1);
+            };
+            if (f.family)  bump('family',  f.family);
+            if (Array.isArray(f.script)) for (const s of f.script) bump('script', s);
+            if (f.wo)      bump('wo',      f.wo);
+            if (f.morph)   bump('morph',   f.morph);
+            if (f.speaker) bump('speaker', f.speaker);
+            if (f.tone === true)  { toneUniverse.tonal = true;       if (inScope) tonal++; }
+            if (f.tone === false) { toneUniverse['non-tonal'] = true; if (inScope) nonTonal++; }
         }
-        const sorted = (m) => [...m.entries()].sort((a, b) => b[1] - a[1]);
+        const buildEntries = (cat, sortFn) => {
+            const entries = [...universe[cat]].map(k => [k, counts[cat].get(k) || 0]);
+            return sortFn ? entries.sort(sortFn) : entries.sort((a, b) => b[1] - a[1]);
+        };
         return {
-            family:  sorted(families),
-            script:  sorted(scripts),
-            wo:      [...wos.entries()].sort((a, b) => SPEAKER_TIERS_ORDER_W.indexOf(a[0]) - SPEAKER_TIERS_ORDER_W.indexOf(b[0])),
-            tone:    [['tonal', tonal], ['non-tonal', nonTonal]],
-            morph:   sorted(morphs),
-            speaker: SPEAKER_TIERS.map(t => [t, speakers.get(t) || 0]).filter(([_, c]) => c > 0),
+            family:  buildEntries('family'),
+            script:  buildEntries('script'),
+            wo:      buildEntries('wo', (a, b) => SPEAKER_TIERS_ORDER_W.indexOf(a[0]) - SPEAKER_TIERS_ORDER_W.indexOf(b[0])),
+            tone:    [['tonal', tonal], ['non-tonal', nonTonal]].filter(([k]) => toneUniverse[k]),
+            morph:   buildEntries('morph'),
+            speaker: SPEAKER_TIERS.map(t => [t, counts.speaker.get(t) || 0]).filter(t => universe.speaker.has(t[0])),
         };
     }
     const SPEAKER_TIERS_ORDER_W = ['SOV','SVO','VSO','VOS','OVS','OSV'];
@@ -922,7 +945,8 @@
             const collapsible = limit && items.length > limit;
             const renderChip = ([v, c], hidden) => {
                 const label = translateChipLabel(sec.key, v);
-                return `<span class="lf-chip${hidden ? ' lf-chip-hidden' : ''}" data-cat="${sec.key}" data-val="${v}">
+                const cls = 'lf-chip' + (hidden ? ' lf-chip-hidden' : '') + (c === 0 ? ' lf-chip-disabled' : '');
+                return `<span class="${cls}" data-cat="${sec.key}" data-val="${v}">
                     ${label}<span class="lf-chip-count">${c}</span>
                 </span>`;
             };
@@ -1070,6 +1094,13 @@
             // Swap the on-uichange handler to do a full panel rebuild
             onUiChange = () => { renderFab(); rebuildPanel(); refresh(); };
 
+            // Era change → re-enumerate chip counts (chips themselves don't
+            // change, but counts do; 0-count chips will become disabled)
+            window.addEventListener('langmap:erachange', () => {
+                rebuildPanel();
+                refresh();
+            });
+
             const badge = fab.querySelector('.lf-badge');
 
             function updateBadge() {
@@ -1098,6 +1129,7 @@
             panel.addEventListener('click', (e) => {
                 const chip = e.target.closest('.lf-chip');
                 if (chip) {
+                    if (chip.classList.contains('lf-chip-disabled')) return;
                     const cat = chip.dataset.cat;
                     const val = chip.dataset.val;
                     if (filterState[cat].has(val)) {
