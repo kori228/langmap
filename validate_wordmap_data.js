@@ -210,6 +210,42 @@ checkCounts(readmeSrc,  'README.md');
 const headerN = (dataSrc.match(/(\d{3,4})\s*languages/) || [])[1];
 if (headerN && +headerN !== N) E(`wordmap_data.js header says ${headerN} languages, actual ${N}`);
 
+// ---- 13. Description i18n coverage (per wordmap-check.md §10) ----------
+const UI_LANGS = ['en','ja','ko','zh','yue','vi','th','id','hi','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+const i18nCoverage = {};
+for (const ui of UI_LANGS) i18nCoverage[ui] = { covered: 0, missing: [] };
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta;
+    if (!m || !m.description) continue;
+    if (typeof m.description !== 'object') continue; // legacy single-string desc — counts as `en` only
+    for (const ui of UI_LANGS) {
+        if (m.description[ui]) i18nCoverage[ui].covered++;
+        else i18nCoverage[ui].missing.push(code);
+    }
+}
+const totalDescCodes = codes.filter(c => {
+    const m = ctx.LANG_DATA[c].meta;
+    return m && typeof m.description === 'object';
+}).length;
+// Legacy string-desc count
+const legacyDescCodes = codes.filter(c => {
+    const m = ctx.LANG_DATA[c].meta;
+    return m && typeof m.description === 'string';
+}).length;
+if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a string (not object) — UI lang fallback to English`);
+
+// ---- 14. Family top-token allow-list outliers (detail) -----------------
+const familyOutsideList = [];
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta;
+    if (!m || !m.family) continue;
+    const top = String(m.family).split('(')[0].trim();
+    if (!FAMILY_TOP_ALLOW.has(top)) familyOutsideList.push(`${code}: "${m.family}"`);
+}
+if (familyOutsideList.length && familyOutsideList.length <= 8) {
+    for (const f of familyOutsideList) I(`family outside allow-list: ${f}`);
+}
+
 // ---- Report -------------------------------------------------------------
 console.log('=== Word Map data validation ===');
 console.log(`Languages: ${N} (modern: ${N - histInData.length}, historical: ${histInData.length})`);
@@ -218,6 +254,13 @@ console.log(`Word entries with "—": ${dashCount}`);
 console.log(`Duplicate-coordinate groups: ${dupGroups.length}`);
 console.log(`Codes with meta: ${codesWithMeta.length}/${codes.length}`);
 console.log(`Distinct family top-tokens: ${Object.keys(familyTopHits).length}`);
+console.log('');
+console.log('Description i18n coverage:');
+for (const ui of UI_LANGS) {
+    const c = i18nCoverage[ui];
+    const pct = totalDescCodes ? Math.round(c.covered/totalDescCodes*100) : 0;
+    console.log(`  ${ui.padEnd(6)} ${c.covered}/${totalDescCodes}  (${pct}%)`);
+}
 console.log('');
 console.log(`ERRORS (${errors.length}):`);
 for (const m of errors) console.log('  ✗ ' + m);

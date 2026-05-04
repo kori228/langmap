@@ -543,9 +543,44 @@
         sa:  ['Indo-European', 'Indo-Aryan'],       // Sanskrit (already Indo-Aryan, but show under IE)
         vsa: ['Indo-European', 'Indo-Aryan', 'Proto-language'], // Vedic Sanskrit
     };
+
+    // Parent-family normalization (wordmap-check.md §6). Without this,
+    // a language tagged "Semitic" produces a "Semitic" chip while another
+    // tagged "Afro-Asiatic (Semitic)" produces a separate "Afro-Asiatic"
+    // chip — splitting the genealogical group into two. Map every known
+    // sub-branch top-token to its parent so chips collapse correctly.
+    // The sub-branch chip is also kept (so users can pick fine-grained
+    // groups like "Bantu" or "Iranian" specifically).
+    const PARENT_FAMILY = {
+        // Indo-European
+        'Romance':'Indo-European', 'Germanic':'Indo-European', 'Slavic':'Indo-European',
+        'Celtic':'Indo-European', 'Baltic':'Indo-European', 'Hellenic':'Indo-European',
+        'Italic':'Indo-European', 'Anatolian':'Indo-European', 'Indo-Aryan':'Indo-European',
+        'Iranian':'Indo-European', 'Tocharian':'Indo-European',
+        // Afro-Asiatic
+        'Semitic':'Afro-Asiatic', 'Cushitic':'Afro-Asiatic', 'Berber':'Afro-Asiatic',
+        'Omotic':'Afro-Asiatic', 'Egyptian':'Afro-Asiatic',
+        // Niger-Congo
+        'Bantu':'Niger-Congo', 'Atlantic':'Niger-Congo',
+        // Sino-Tibetan
+        'Sinitic':'Sino-Tibetan',
+        // Mayan
+        'Quichean':'Mayan', 'Mamean':'Mayan', 'Yucatecan':'Mayan',
+        // Austroasiatic
+        'Vietic':'Austroasiatic', 'Palaungic':'Austroasiatic', 'Munda':'Austroasiatic',
+        'Mon-Khmer':'Austroasiatic',
+        // Hurro-Urartian (separate macro per the data, but listed)
+    };
     function expandFamilies(famStr, code) {
         const overrides = FAMILY_MULTI_OVERRIDES[code];
-        if (overrides) return [...overrides];
+        if (overrides) {
+            const out = new Set(overrides);
+            // Apply parent-family normalization to overrides too
+            for (const t of [...out]) {
+                if (PARENT_FAMILY[t]) out.add(PARENT_FAMILY[t]);
+            }
+            return [...out];
+        }
         if (!famStr) return [];
         const top = topFamily(famStr);
         const out = new Set();
@@ -565,6 +600,12 @@
         if (lower.includes('pidgin'))     out.add('Pidgin');
         if (lower.includes('proto'))      out.add('Proto-language');
         if (lower.includes('mixed'))      out.add('Mixed');
+        // Parent-family normalization: ensure both sub-branch and parent
+        // family tags are present so chips don't fragment (e.g. Semitic +
+        // Afro-Asiatic, Iranian + Indo-European, Bantu + Niger-Congo).
+        for (const t of [...out]) {
+            if (PARENT_FAMILY[t]) out.add(PARENT_FAMILY[t]);
+        }
         return [...out];
     }
 

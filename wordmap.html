@@ -362,7 +362,7 @@
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script src="wordmap_data.js?v=15"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
-    <script src="lang-filter.js?v=18"></script>
+    <script src="lang-filter.js?v=19"></script>
     <script>
     // Load LANG_NAMES from app.js for translated language names
     let LANG_NAMES = {};
@@ -867,14 +867,25 @@
             return out;
         };
 
+        // True if both surface and IPA are dash/empty — the entry is
+        // explicitly unattested (common in fragmentary historical languages
+        // like Meroitic, Pyu, Khitan, PIE for non-basic vocab). Skip these
+        // to avoid showing "—" as a fake word on the map. Per wordmap-check.md §3.
+        function isUnattestedEntry(entry) {
+            if (!Array.isArray(entry) || entry.length !== 2) return true;
+            const [w, ipa] = entry;
+            const dashOrEmpty = v => !v || v === '—' || v === '-';
+            return dashOrEmpty(w) && dashOrEmpty(ipa);
+        }
+
         function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
             const descendantCodes = new Set();
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
-                    if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId]) {
+                    if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId] && !isUnattestedEntry(LANG_DATA[hist].words[wordId])) {
                         visibleLangs.push(hist);
-                        if (modern && LANG_DATA[modern] && LANG_DATA[modern].words[wordId]) {
+                        if (modern && LANG_DATA[modern] && LANG_DATA[modern].words[wordId] && !isUnattestedEntry(LANG_DATA[modern].words[wordId])) {
                             descendantCodes.add(modern);
                         }
                     }
@@ -884,6 +895,7 @@
                 for (const [code, lang] of Object.entries(LANG_DATA)) {
                     if (EXCLUDED_CODES.has(code)) continue;
                     if (!lang.words[wordId]) continue;
+                    if (isUnattestedEntry(lang.words[wordId])) continue;
                     if (zoom < 4 && !MAJOR.has(code)) continue;
                     visibleLangs.push(code);
                 }
@@ -1196,7 +1208,12 @@
                     const wKey = uiLang === 'id' ? 'ind' : uiLang;
                     const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
                     const wLabel = (uiLang === 'en' ? w.en : localWord);
-                    html += `<tr><td>${wLabel}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                    if (isUnattestedEntry(entry)) {
+                        // Unattested in fragmentary languages (e.g. Meroitic, Pyu)
+                        html += `<tr><td>${wLabel}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
+                    } else {
+                        html += `<tr><td>${wLabel}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                    }
                 }
             }
             html += '</table>';
