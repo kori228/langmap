@@ -1307,17 +1307,24 @@
         // with .selected (yellow ring) and draw a dashed line from the
         // label to the panel's left edge. Recomputed on map move/zoom,
         // marker re-render, panel open/close, and window resize.
-        const connectorSvg = document.getElementById('connector-line');
-        const connectorLine = connectorSvg.querySelector('line');
+        // Lazy DOM lookups — these helpers can be called during initial
+        // updateMarkers() before the const infoPanel above is in TDZ scope,
+        // so resolve via getElementById each call. Cheap enough.
+        function _infoPanel()    { return document.getElementById('lang-info'); }
+        function _connectorSvg() { return document.getElementById('connector-line'); }
         function getSelectedLabelEl() {
-            const code = infoPanel.dataset.code;
-            if (!code || !infoPanel.classList.contains('visible')) return null;
+            const ip = _infoPanel();
+            if (!ip) return null;
+            const code = ip.dataset.code;
+            if (!code || !ip.classList.contains('visible')) return null;
             // Try 2D label first, then 3D globe label
             return document.querySelector(`.lang-label[data-code="${CSS.escape(code)}"]`)
                 || document.querySelector(`.globe-label[data-code="${CSS.escape(code)}"]`);
         }
         function updateSelectedLabel() {
-            const open = infoPanel.classList.contains('visible');
+            const ip = _infoPanel();
+            if (!ip) return;
+            const open = ip.classList.contains('visible');
             document.querySelectorAll('.lang-label.selected, .globe-label.selected')
                 .forEach(el => el.classList.remove('selected'));
             if (!open) return;
@@ -1325,25 +1332,29 @@
             if (el) el.classList.add('selected');
         }
         function updateConnectorLine() {
-            const open = infoPanel.classList.contains('visible');
+            const ip = _infoPanel();
+            const svg = _connectorSvg();
+            if (!ip || !svg) return;
+            const open = ip.classList.contains('visible');
             const labelEl = open ? getSelectedLabelEl() : null;
             if (!open || !labelEl) {
-                connectorSvg.classList.remove('visible');
+                svg.classList.remove('visible');
                 return;
             }
             const lr = labelEl.getBoundingClientRect();
-            const pr = infoPanel.getBoundingClientRect();
+            const pr = ip.getBoundingClientRect();
+            const lineEl = svg.querySelector('line');
             // Source: right edge of label, vertical center
             const x1 = lr.left + lr.width / 2;
             const y1 = lr.top + lr.height / 2;
             // Target: left edge of panel, vertical center (clamped to label y)
             const x2 = pr.left;
             const y2 = Math.max(pr.top + 12, Math.min(pr.bottom - 12, y1));
-            connectorLine.setAttribute('x1', x1);
-            connectorLine.setAttribute('y1', y1);
-            connectorLine.setAttribute('x2', x2);
-            connectorLine.setAttribute('y2', y2);
-            connectorSvg.classList.add('visible');
+            lineEl.setAttribute('x1', x1);
+            lineEl.setAttribute('y1', y1);
+            lineEl.setAttribute('x2', x2);
+            lineEl.setAttribute('y2', y2);
+            svg.classList.add('visible');
         }
         document.getElementById('info-close').addEventListener('click', closeInfoPanel);
         // Escape key closes the info panel and the filter panel
