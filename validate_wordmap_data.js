@@ -345,6 +345,10 @@ for (const code of codes) {
     if (m.parentCode !== undefined && !ctx.LANG_DATA[m.parentCode]) {
         E(`${code}: meta.parentCode "${m.parentCode}" not in LANG_DATA`);
     }
+    if (m.dataStatus !== undefined) {
+        const allowed = new Set(['modern','attested','fragmentary','reconstructed','undeciphered','pedagogical']);
+        if (!allowed.has(m.dataStatus)) E(`${code}: meta.dataStatus "${m.dataStatus}" not in enum`);
+    }
     if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
         E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
     }
