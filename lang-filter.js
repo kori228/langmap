@@ -495,6 +495,44 @@
         return famStr.split('(')[0].trim();
     }
 
+    // Some languages genuinely belong to more than one family — creoles
+    // (substrate + lexifier), pidgins, mixed languages, proto-languages
+    // (themselves the family root). Return all applicable family tags so
+    // they show under multiple chips in the filter.
+    //
+    // Per-language overrides win over family-string heuristics.
+    const FAMILY_MULTI_OVERRIDES = {
+        ine: ['Indo-European', 'Proto-language'],   // Proto-Indo-European: family root
+        peo: ['Indo-European', 'Iranian'],          // Old Persian — already Iranian, but flag IE
+        ave: ['Indo-European', 'Iranian'],          // Avestan
+        sa:  ['Indo-European', 'Indo-Aryan'],       // Sanskrit (already Indo-Aryan, but show under IE)
+        vsa: ['Indo-European', 'Indo-Aryan', 'Proto-language'], // Vedic Sanskrit
+    };
+    function expandFamilies(famStr, code) {
+        const overrides = FAMILY_MULTI_OVERRIDES[code];
+        if (overrides) return [...overrides];
+        if (!famStr) return [];
+        const top = topFamily(famStr);
+        const out = new Set();
+        if (top) out.add(top);
+        // Heuristic decomposition for compound family strings.
+        const lower = famStr.toLowerCase();
+        if (lower.includes('creole')) {
+            out.add('Creole');
+            if (lower.includes('english-based')) out.add('Germanic');
+            if (lower.includes('french-based'))  out.add('Romance');
+            if (lower.includes('iberian-based')) out.add('Romance');
+            if (lower.includes('portuguese-based')) out.add('Romance');
+            if (lower.includes('spanish-based'))    out.add('Romance');
+            if (lower.includes('arabic-based'))     out.add('Semitic');
+            if (lower.includes('dutch-based'))      out.add('Germanic');
+        }
+        if (lower.includes('pidgin'))     out.add('Pidgin');
+        if (lower.includes('proto'))      out.add('Proto-language');
+        if (lower.includes('mixed'))      out.add('Mixed');
+        return [...out];
+    }
+
     // ----- Build per-language feature record on demand --------------------
 
     function familyDefault(famStr) {
@@ -514,9 +552,11 @@
         const fd = familyDefault(fam);
         const curated = F[code] || {};
         // Cascade: per-language override > family default > null.
-        // `script` is now an Array<string> (a language can have multiple).
+        // `script` and `family` are both Array<string> — a language can
+        // genuinely belong to more than one family (creoles → substrate +
+        // lexifier; proto-languages → themselves and the family they root).
         const rec = {
-            family:  topFamily(fam),
+            family:  expandFamilies(fam, code),
             script:  detectScript(meta.script),
             wo:      curated.wo    || fd.wo    || null,
             tone:    typeof curated.tone === 'boolean' ? curated.tone
@@ -607,12 +647,14 @@
         for (const cat of Object.keys(filterState)) {
             const allowed = filterState[cat];
             if (allowed.size === 0) continue;
-            // Script is multi-valued: a language passes if ANY of its scripts
-            // matches the allowed set (e.g. Punjabi has both Brahmic and
-            // Arabic-derived; selecting either should highlight Punjabi).
-            if (cat === 'script') {
-                if (!Array.isArray(f.script) || f.script.length === 0) return false;
-                if (!f.script.some(s => allowed.has(s))) return false;
+            // Script + family are multi-valued: a language passes if ANY
+            // of its tags matches the allowed set (e.g. Punjabi has both
+            // Brahmic and Arabic-derived; Singlish has both Germanic and
+            // Creole; selecting either should highlight the language).
+            if (cat === 'script' || cat === 'family') {
+                const tags = f[cat];
+                if (!Array.isArray(tags) || tags.length === 0) return false;
+                if (!tags.some(s => allowed.has(s))) return false;
                 continue;
             }
             let v;
@@ -786,7 +828,7 @@
                 universe[cat].add(key);
                 if (inScope) counts[cat].set(key, (counts[cat].get(key) || 0) + 1);
             };
-            if (f.family)  bump('family',  f.family);
+            if (Array.isArray(f.family)) for (const fam of f.family) bump('family', fam);
             if (Array.isArray(f.script)) for (const s of f.script) bump('script', s);
             if (f.wo)      bump('wo',      f.wo);
             if (f.morph)   bump('morph',   f.morph);
