@@ -234,6 +234,55 @@ const legacyDescCodes = codes.filter(c => {
 }).length;
 if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a string (not object) — UI lang fallback to English`);
 
+// ---- 13b. Optional schema fields (per "all A" decision) ----------------
+// New optional fields — if present, must have correct shape:
+//   meta.speakerBasis : 'L1' | 'total' | 'regional-population' | 'aggregate' | 'liturgical' | 'extinct' | 'uncertain'
+//   meta.speakerSource: free string (citation)
+//   meta.speakerYear  : number (4-digit year)
+//   meta.iso6393      : 3-letter ISO 639-3 code
+//   meta.glottocode   : Glottocode (8-char)
+//   meta.parentCode   : code in LANG_DATA (for varieties)
+//   lang.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+//   meta.sources      : Array<{ type, title, url?, accessed? }>
+const SPEAKER_BASIS = new Set(['L1','total','regional-population','aggregate','liturgical','extinct','uncertain']);
+const LOCATION_BASIS = new Set(['capital','prestige-center','historical-site','largest-city','approx-region']);
+let withSpeakerBasis = 0, withSources = 0, withIso = 0;
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    const m = lang.meta || {};
+    if (m.speakerBasis !== undefined) {
+        if (!SPEAKER_BASIS.has(m.speakerBasis)) E(`${code}: meta.speakerBasis "${m.speakerBasis}" not in enum`);
+        else withSpeakerBasis++;
+    }
+    if (m.speakerYear !== undefined && (typeof m.speakerYear !== 'number' || m.speakerYear < 1900 || m.speakerYear > 2100)) {
+        E(`${code}: meta.speakerYear "${m.speakerYear}" not a 4-digit year`);
+    }
+    if (m.iso6393 !== undefined) {
+        if (typeof m.iso6393 !== 'string' || !/^[a-z]{3}$/.test(m.iso6393)) E(`${code}: meta.iso6393 "${m.iso6393}" not a 3-letter code`);
+        else withIso++;
+    }
+    if (m.glottocode !== undefined && (typeof m.glottocode !== 'string' || !/^[a-z]{4}\d{4}$/.test(m.glottocode))) {
+        E(`${code}: meta.glottocode "${m.glottocode}" not a Glottocode`);
+    }
+    if (m.parentCode !== undefined && !ctx.LANG_DATA[m.parentCode]) {
+        E(`${code}: meta.parentCode "${m.parentCode}" not in LANG_DATA`);
+    }
+    if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
+        E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
+    }
+    if (m.sources !== undefined) {
+        if (!Array.isArray(m.sources)) E(`${code}: meta.sources is not an array`);
+        else {
+            for (const s of m.sources) {
+                if (!s || typeof s !== 'object' || !s.type || !s.title) {
+                    E(`${code}: meta.sources entry missing type/title: ${JSON.stringify(s)}`);
+                }
+            }
+            withSources++;
+        }
+    }
+}
+
 // ---- 14. Family top-token allow-list outliers (detail) -----------------
 const familyOutsideList = [];
 for (const code of codes) {
@@ -254,6 +303,7 @@ console.log(`Word entries with "—": ${dashCount}`);
 console.log(`Duplicate-coordinate groups: ${dupGroups.length}`);
 console.log(`Codes with meta: ${codesWithMeta.length}/${codes.length}`);
 console.log(`Distinct family top-tokens: ${Object.keys(familyTopHits).length}`);
+console.log(`Optional schema adoption: speakerBasis ${withSpeakerBasis}, iso6393 ${withIso}, sources ${withSources}`);
 console.log('');
 console.log('Description i18n coverage:');
 for (const ui of UI_LANGS) {

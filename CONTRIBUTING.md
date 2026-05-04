@@ -767,3 +767,45 @@ This keeps the user's browser from serving stale data after a deploy.
 ### I. Cantonese must use Traditional Chinese (recap from §5 above)
 
 Applies to `wordmap_data.js` too: `LANG_DATA.yue.native` and any words for `yue`/`yue_*` codes must be Traditional. Same for Taiwanese Hakka (`hak_tw`), Taiwanese (`nan`), and other Traditional-using varieties.
+
+### J. Optional richer schema (added per wordmap-check.md "all A" decisions)
+
+These fields are **optional** for backward compatibility — existing entries don't need to be migrated en masse. New entries (and any audit/correction pass) should adopt them. The validator checks shape when present, so missing fields are fine but malformed ones fail.
+
+```js
+// In wordmap_meta.js — add to any LANG_DATA[code].meta = { … } object:
+speakerBasis: 'L1',                    // 'L1' | 'total' | 'regional-population' | 'aggregate' | 'liturgical' | 'extinct' | 'uncertain'
+speakerSource: 'Ethnologue 26',        // free string (citation)
+speakerYear: 2023,                     // 4-digit year
+iso6393: 'jpn',                        // ISO 639-3 (3-letter, lowercase)
+glottocode: 'nucl1643',                // Glottocode (4 letters + 4 digits)
+parentCode: 'zh',                      // for varieties — must exist in LANG_DATA
+sources: [                             // citations as an array of objects
+  { type: 'reference', title: 'Ethnologue 26', url: 'https://...', accessed: '2026-05-04' },
+  { type: 'dictionary', title: 'CIP online dictionary', url: 'https://...' }
+],
+
+// In wordmap_data.js — add to LANG_DATA[code] (top-level, not meta):
+locationBasis: 'capital',              // 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+```
+
+Reference example: see `LANG_DATA['ja']` in `wordmap_meta.js` and `wordmap_data.js`. Used as the schema reference; the validator's "Optional schema adoption" line counts how many entries have each field.
+
+Why these fields:
+- **speakerBasis**: per `wordmap-check.md §5`, the bare speaker number mixes L1, total, regional aggregate, and liturgical bases — making "100M+" fragile. The `speakerBasis` enum makes the basis explicit so downstream tools can compare like-for-like.
+- **speakerSource / speakerYear**: per §15, no source/date in current data. Knowing whether a number is from Ethnologue 2023 vs. a 1980 census matters for endangered-language estimates.
+- **iso6393 / glottocode / parentCode**: per §13, the LangMap codes are a mix of ISO 639-3, ISO 639-1, and custom (`zh_sc`, `ja_edo`). Adding canonical IDs makes interop with Glottolog / WALS / Ethnologue trivial.
+- **locationBasis**: per §9, the single `lat/lng` mixes capital / prestige center / historical site / approx region. Knowing the basis prevents the map from being misread as "speaker distribution."
+- **sources**: per §15, source citations should at minimum exist at language level for accountability. Per-word `sources` is not required (would be 11,580 entries) but supported via the same shape if you want to record per-form citations.
+
+### K. WORD_LIST shape (refactored 2026-05-04)
+
+Each `WORD_LIST` entry is now `{ id: 'water', label: { en, ja, ko, zh, id, … } }`. The Indonesian key is `id` (not `ind` like before — the legacy collision-avoidance was needed when the entry's own id was a top-level field, but now it's nested in `label` so there's no clash).
+
+If you add a new concept to `WORD_LIST`, fill `label` for at least `en`, `ja`, `ko`, `zh`, `de`, `fr`, `es`, `pt`, `ru`, `ar`. The rendering falls back to `label.en` for missing UI langs.
+
+### L. LANG_NAMES is now in `lang_names.js`
+
+Previously embedded in `app.js` and extracted by `wordmap.html` via `fetch + regex + new Function` (per `wordmap-check.md §12`). Now in a standalone file `lang_names.js`, loaded by both `index.html` and `wordmap.html` via a normal `<script>` tag.
+
+When adding a new language: append the new code to the appropriate per-UI-lang dict in `lang_names.js` for all 21 UI langs. The dedup-aware Python helpers in `/tmp/add_*_lang_names*.py` handle this.

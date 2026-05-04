@@ -5,7 +5,12 @@
  */
 
 // === Language metadata ===
-LANG_DATA['ja'].meta = { family:'Japonic', speakers:'~125M', countries:'Japan', official:'Japan', script:'Kanji + Hiragana + Katakana', description:'Japanese is the national language of Japan, with a complex writing system combining Chinese characters and two syllabaries. It features agglutinative grammar, extensive honorific registers, and SOV word order.' };
+// Example reference language adopting the optional schema fields per
+// CONTRIBUTING.md "Word Map Rules / J. Optional richer schema". These
+// fields (speakerBasis / speakerSource / speakerYear / iso6393 /
+// glottocode / sources) are validated for shape if present; not required.
+LANG_DATA['ja'].meta = { family:'Japonic', speakers:'~125M', speakerBasis:'L1', speakerSource:'Ethnologue 26', speakerYear:2023, iso6393:'jpn', glottocode:'nucl1643', countries:'Japan', official:'Japan', script:'Kanji + Hiragana + Katakana', sources:[{type:'reference', title:'Ethnologue 26', url:'https://www.ethnologue.com/language/jpn/'}], description:'Japanese is the national language of Japan, with a complex writing system combining Chinese characters and two syllabaries. It features agglutinative grammar, extensive honorific registers, and SOV word order.' };
+LANG_DATA['ja'].locationBasis = 'capital';
 LANG_DATA['ja_osa'].meta = { family:'Japonic', speakers:'~9M', countries:'Japan', official:'No (regional)', script:'Kanji + Hiragana + Katakana', description:'Osaka-ben is the most widely recognized Kansai dialect, spoken in Japan\'s second-largest metro area. Known for its distinctive intonation, comedic associations, and expressions like "ookini" (thanks) and "akan" (no good).' };
 LANG_DATA['ja_aom'].meta = { family:'Japonic', speakers:'~1.3M', countries:'Japan', official:'No (regional)', script:'Kanji + Hiragana + Katakana', description:'Tsugaru dialect of Aomori prefecture in northern Honshu, part of the Tohoku dialect group. It is famously difficult for standard Japanese speakers to understand due to heavy vowel reduction and unique vocabulary.' };
 LANG_DATA['ja_oki'].meta = { family:'Japonic', speakers:'~1M', countries:'Japan', official:'No (regional)', script:'Kanji + Hiragana + Katakana', description:'Okinawan Japanese is the regional variety of Japanese spoken in Okinawa, influenced by the indigenous Ryukyuan languages. It retains distinctive vocabulary like "haisai" (hello) and "mensore" (welcome).' };

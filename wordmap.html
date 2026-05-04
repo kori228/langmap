@@ -360,20 +360,16 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=15"></script>
+    <script src="wordmap_data.js?v=16"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
     <script src="lang-filter.js?v=19"></script>
+    <script src="lang_names.js?v=1"></script>
     <script>
-    // Load LANG_NAMES from app.js for translated language names
-    let LANG_NAMES = {};
-    let langNamesReady = false;
-    fetch('app.js?v=59').then(r => r.text()).then(code => {
-        const m = code.match(/const LANG_NAMES = \{([\s\S]*?)\n\};/);
-        if (m) { try { LANG_NAMES = new Function('return {' + m[1] + '\n};')(); } catch(e) {} }
-        langNamesReady = true;
-        // Re-render markers now that LANG_NAMES is loaded
-        if (typeof _refreshMarkers === 'function') _refreshMarkers();
-    });
+    // LANG_NAMES is loaded synchronously via lang_names.js above.
+    // (Was previously extracted from app.js via fetch+regex+new Function.
+    //  See wordmap-check.md §12.) Make `langNamesReady` a constant true so
+    //  any legacy guard short-circuits.
+    let langNamesReady = true;
     </script>
     <script>
     (function() {
@@ -601,9 +597,9 @@
             WORD_LIST.forEach(w => {
                 const opt = document.createElement('option');
                 opt.value = w.id;
-                const wKey = uiLang === 'id' ? 'ind' : uiLang;
-                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
-                opt.textContent = (uiLang === 'en' ? w.en : localWord + ' / ' + w.en);
+                // w.label is { en, ja, id, ... } — `id` here is Indonesian, not entry id
+                const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
+                opt.textContent = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
                 select.appendChild(opt);
             });
             if (curVal) select.value = curVal;
@@ -1214,7 +1210,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=13';
+                s.src = 'wordmap_meta.js?v=14';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
@@ -1264,9 +1260,8 @@
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
-                    const wKey = uiLang === 'id' ? 'ind' : uiLang;
-                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
-                    const wLabel = (uiLang === 'en' ? w.en : localWord);
+                    const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
+                    const wLabel = (uiLang === 'en' ? w.label.en : localWord);
                     if (isUnattestedEntry(entry)) {
                         // Unattested in fragmentary languages (e.g. Meroitic, Pyu)
                         html += `<tr><td>${wLabel}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
