@@ -183,7 +183,9 @@
         .lang-label.selected .word, .globe-label.selected .word { color: #1a1a2e !important; }
         .lang-label.selected .ipa, .globe-label.selected .ipa { color: #555 !important; }
         .lang-label.selected .name, .globe-label.selected .name { color: #888 !important; }
-        /* Connector — smooth bezier curve from label to panel */
+        /* Connector — subtle, shadow-toned curve from label to panel.
+           Reads as a soft extension of the cards' drop-shadow rather
+           than a colored "line". */
         #connector-line {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -195,15 +197,11 @@
         #connector-line.visible { opacity: 1; }
         #connector-line path {
             fill: none;
-            stroke: #4a6cf7; stroke-width: 1.5;
-            stroke-linecap: round; stroke-linejoin: round;
-            opacity: 0.85;
-            filter: drop-shadow(0 0 3px rgba(255,255,255,0.95));
-        }
-        #connector-line .conn-anchor-label,
-        #connector-line .conn-anchor-panel {
-            fill: #4a6cf7;
-            filter: drop-shadow(0 0 2px rgba(255,255,255,0.95));
+            stroke: rgba(40, 50, 70, 0.45);
+            stroke-width: 1;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.9))
+                    drop-shadow(0 0 1px rgba(255,255,255,0.6));
         }
         .lang-label {
             position: absolute; left: 50%; top: 50%;
@@ -400,8 +398,6 @@
     <!-- Connector from selected map label to the open info panel -->
     <svg id="connector-line" aria-hidden="true">
         <path d=""></path>
-        <circle class="conn-anchor-label" cx="0" cy="0" r="3"></circle>
-        <circle class="conn-anchor-panel" cx="0" cy="0" r="3"></circle>
     </svg>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1382,19 +1378,13 @@
             // Target: edge of panel (closer side), clamped vertically inside panel
             const x2 = panelOnLeft ? pr.right : pr.left;
             const y2 = Math.max(pr.top + 16, Math.min(pr.bottom - 16, labelCy));
-            // Smooth bezier — control points pulled horizontally for a soft S
-            const dx = x2 - x1;
-            const cx1 = x1 + dx * 0.5;
-            const cy1 = y1;
-            const cx2 = x2 - dx * 0.5;
-            const cy2 = y2;
-            const path = `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`;
-            const pathEl = svg.querySelector('path');
-            const a1 = svg.querySelector('.conn-anchor-label');
-            const a2 = svg.querySelector('.conn-anchor-panel');
-            pathEl.setAttribute('d', path);
-            a1.setAttribute('cx', x1); a1.setAttribute('cy', y1);
-            a2.setAttribute('cx', x2); a2.setAttribute('cy', y2);
+            // Single quadratic bezier — gentler than the previous cubic S.
+            // Control point pulled horizontally toward the panel side, sitting
+            // at the average vertical so the arc bulges symmetrically.
+            const cpx = (x1 + x2) / 2;
+            const cpy = (y1 + y2) / 2 - Math.min(40, Math.abs(y2 - y1) * 0.25 + 8);
+            const path = `M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`;
+            svg.querySelector('path').setAttribute('d', path);
             svg.classList.add('visible');
         }
         document.getElementById('info-close').addEventListener('click', closeInfoPanel);
