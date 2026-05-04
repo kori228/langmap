@@ -362,9 +362,9 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=18"></script>
+    <script src="wordmap_data.js?v=19"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
-    <script src="lang-filter.js?v=19"></script>
+    <script src="lang-filter.js?v=20"></script>
     <script src="lang_names.js?v=2"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -816,7 +816,14 @@
         let currentWord = WORD_LIST[0].id;
         const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
-        // Historical → representative modern descendant
+        // Historical-mode codes → representative modern descendant (or null).
+        // Used both as the canonical list of "show in historical mode" languages
+        // and as the parent→descendant map for the era toggle. Entries are not
+        // strictly extinct: 'arc' (Aramaic) has modern descendant varieties,
+        // 'sa' (Sanskrit) is liturgical/classical with revived/scholarly use,
+        // 'mnc' (Manchu) is critically endangered. They live here because they
+        // belong on the historical map regardless of any present-day speakers.
+        // Per wordmap-check-3.md §8.
         const HIST_DESCENDANT = {
             la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
             got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
@@ -1189,7 +1196,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=15';
+                s.src = 'wordmap_meta.js?v=16';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
@@ -1197,12 +1204,13 @@
         }
 
         const DATA_STATUS_BADGE = {
-            modern:        null,
-            attested:      { en:'attested',      ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8' },
-            fragmentary:   { en:'fragmentary',   ja:'断片的',       bg:'#fef0e0', fg:'#c0392b' },
-            reconstructed: { en:'reconstructed', ja:'再構',         bg:'#fff5e0', fg:'#b56500' },
-            undeciphered:  { en:'undeciphered',  ja:'未解読',       bg:'#fae0e0', fg:'#a02020' },
-            pedagogical:   { en:'pedagogical',   ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0' },
+            modern:            null,
+            attested:          { en:'attested',          ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8' },
+            fragmentary:       { en:'fragmentary',       ja:'断片的',       bg:'#fef0e0', fg:'#c0392b' },
+            reconstructed:     { en:'reconstructed',     ja:'比較再構',     bg:'#fff5e0', fg:'#b56500' },
+            undeciphered:      { en:'undeciphered',      ja:'未解読',       bg:'#fae0e0', fg:'#a02020' },
+            'partly-understood': { en:'partly understood', ja:'部分解読',   bg:'#fff0d0', fg:'#a06000' },
+            pedagogical:       { en:'pedagogical',       ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0' },
         };
 
         function renderLangInfo(code) {

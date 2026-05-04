@@ -26,7 +26,16 @@ const WORD_LIST = [
   { id: 'good', label: { en: 'Good', ja: '良い', ko: '좋은', zh: '好', yue: '好', vi: 'Tốt', th: 'ดี', id: 'Baik', hi: 'अच्छा', de: 'Gut', fr: 'Bon', it: 'Buono', es: 'Bueno', pt: 'Bom', ru: 'Хороший', uk: 'Добрий', ar: 'جيد', he: 'טוב', sw: 'Nzuri' } },
 ];
 
-// Excluded codes: historical, constructed, ancient
+// Excluded codes: hidden from the default modern view. Includes:
+//   - Historical / classical / extinct languages (Latin, Old English, Akkadian, …)
+//   - Liturgical-only varieties (Pali, Coptic, Aramaic continuum)
+//   - Pedagogical reconstructions of older registers (ja_edo, ko_mid, vi_nom)
+//   - Genuine reconstructions (Proto-Indo-European)
+//   - Critically endangered or revived (Manchu, Sanskrit-as-classical)
+//   - Constructed / artificial languages can also live here
+// Per wordmap-check-3.md §8: not all entries here are strictly "extinct";
+// some have small modern speaker communities (e.g. Manchu, Aramaic dialects,
+// liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
   'non','en_ang','enm','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
@@ -2820,24 +2829,38 @@ const LANG_DATA = {
 // the validator and other consumers can read it. Modern languages default
 // to status 'modern'; historical languages get 'attested' or auto-derived
 // 'fragmentary' (≥30% '—' entries) unless overridden here.
+//
+// Reclassifications per wordmap-check-3.md §6 — the previous pass was too
+// generous with 'reconstructed' / 'undeciphered'. 'reconstructed' is now
+// reserved for genuine comparative reconstructions with no direct text
+// record (PIE only). Languages with substantial direct attestation move
+// to 'attested' even if their phonology has scholarly reconstructions.
+// 'partly-understood' is added for languages whose script is read but
+// whose vocabulary/grammar is only partially known (e.g. Elamite).
 const DATA_STATUS_OVERRIDES = {
-    ine:       'reconstructed',  // Proto-Indo-European
-    vsa:       'reconstructed',  // Vedic Sanskrit
-    xto:       'reconstructed',  // Tocharian A
-    txb:       'reconstructed',  // Tocharian B
-    xlu:       'reconstructed',  // Luwian
-    xpu:       'reconstructed',  // Punic
-    sux:       'reconstructed',  // Sumerian
-    xmr:       'undeciphered',   // Meroitic
-    zkt:       'undeciphered',   // Khitan
-    pyx:       'undeciphered',   // Pyu
-    xhu:       'undeciphered',   // Hurrian
-    elx:       'undeciphered',   // Elamite (partly)
+    // Genuinely reconstructed (no direct text record):
+    ine:       'reconstructed',  // Proto-Indo-European — comparative reconstruction
+    // Attested in primary text records (despite scholarly phonological reconstruction):
+    vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
+    xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
+    txb:       'attested',       // Tocharian B — same
+    xlu:       'attested',       // Luwian — cuneiform + hieroglyphic Luwian texts
+    xpu:       'attested',       // Punic — Phoenician-script inscriptions, Carthage texts
+    sux:       'attested',       // Sumerian — earliest extensive text record (~3100 BCE+)
+    xhu:       'attested',       // Hurrian — extensive cuneiform incl. bilingual texts
+    // Truly undeciphered (script read at most partially, language largely unknown):
+    xmr:       'undeciphered',   // Meroitic — script readable, language largely unknown
+    zkt:       'undeciphered',   // Khitan — partly deciphered
+    pyx:       'undeciphered',   // Pyu — partly deciphered
+    // Partially understood (script read; lexicon/grammar only partially known):
+    elx:       'partly-understood', // Elamite — texts readable but grammar/lexicon incomplete
+    // Pedagogical reconstructions (not attested forms; teaching approximations):
     ja_edo:    'pedagogical',
     ja_heian:  'pedagogical',
     ko_mid:    'pedagogical',
     ko_em:     'pedagogical',
     vi_nom:    'pedagogical',
+    // Well-attested historical Sinitic:
     zh_song:   'attested',
     zh_han:    'attested',
     zh_tang:   'attested',

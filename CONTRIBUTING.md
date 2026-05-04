@@ -617,12 +617,20 @@ Every non-English UI language must have a native translation. Never leave Englis
 
 ```bash
 node -e "
-const fs=require('fs'), src=fs.readFileSync('app.js','utf8');
-const m=src.match(/const LANG_NAMES = (\{[\s\S]*?\n\});/);
-const LN=new Function('return '+m[1])();
+const fs=require('fs'), vm=require('vm');
+const ctx={};
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync('lang_names.js','utf8')+';this.LANG_NAMES=LANG_NAMES;', ctx);
+const LN=ctx.LANG_NAMES;
 const words=['Vietnamese','English','French','German','Spanish','Chinese','Korean','Japanese','Middle','Old','Ancient','Classical'];
-for(const ui of Object.keys(LN)){if(ui==='en')continue;for(const[c,n]of Object.entries(LN[ui])){const w=n.split(/[\s(]/)[0];if(words.includes(w))console.log(ui,c,n)}}
+for(const ui of Object.keys(LN)){if(ui==='en')continue;for(const[c,n]of Object.entries(LN[ui])){const w=String(n).split(/[\s(]/)[0];if(words.includes(w))console.log(ui,c,n)}}
 "
+```
+
+For the canonical full validation (including LANG_NAMES coverage and many other Word Map checks), prefer:
+
+```bash
+node validate_wordmap_data.js
 ```
 
 ### 4. Consistent prefixes per UI language / 言語ごとの接頭辞統一
@@ -690,7 +698,10 @@ Run the validator:
 node validate_wordmap_data.js
 ```
 
-Must report 0 errors. Warnings on `—` entries and i18n coverage are acceptable for now.
+Must report 0 errors. As of wordmap-check-3.md cleanup, the only routine
+warnings are 100M+ tier entries lacking `speakerBasis` (target: 0 over time).
+INFO lines for explicitly-unattested `—` entries (hidden from map labels)
+and duplicate-coordinate groups are expected and benign.
 
 ### C. Word entry format / 語形エントリの形式
 

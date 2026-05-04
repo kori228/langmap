@@ -10,7 +10,8 @@
  *   1. WORD_LIST has 20 entries
  *   2. Every LANG_DATA[code].words contains every WORD_LIST id
  *   3. Each word entry is a 2-element [surface, ipa] array of strings
- *   4. surface or ipa equal to "—" → warning (likely unattested)
+ *   4. surface or ipa equal to "—" → INFO if both (explicit unattested in
+ *      historical lang); ERROR if modern lang or one-sided dash
  *   5. lat/lng are finite numbers in valid ranges
  *   6. Duplicate exact (lat,lng) pairs → info (often expected for parent/dialect)
  *   7. Every LANG_DATA code has a meta entry in wordmap_meta.js
@@ -45,7 +46,7 @@ const metaSrcStripped = metaSrc
 const vm = require('vm');
 const ctx = { window: {}, document: { createElement: () => ({}) } };
 vm.createContext(ctx);
-vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;', ctx);
+vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;this.DATA_STATUS_OVERRIDES=typeof DATA_STATUS_OVERRIDES!==\'undefined\'?DATA_STATUS_OVERRIDES:undefined;', ctx);
 vm.runInContext(metaSrcStripped, ctx);
 // Load lang_names.js if present
 let LANG_NAMES = null;
@@ -346,7 +347,7 @@ for (const code of codes) {
         E(`${code}: meta.parentCode "${m.parentCode}" not in LANG_DATA`);
     }
     if (m.dataStatus !== undefined) {
-        const allowed = new Set(['modern','attested','fragmentary','reconstructed','undeciphered','pedagogical']);
+        const allowed = new Set(['modern','attested','fragmentary','reconstructed','undeciphered','partly-understood','pedagogical']);
         if (!allowed.has(m.dataStatus)) E(`${code}: meta.dataStatus "${m.dataStatus}" not in enum`);
     }
     if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
@@ -362,6 +363,52 @@ for (const code of codes) {
             }
             withSources++;
         }
+    }
+}
+
+// ---- 13c. dataStatus breakdown + DATA_STATUS_OVERRIDES sanity ----------
+// Per wordmap-check-3.md §11. Tally meta.dataStatus values across all
+// languages, and verify every code in DATA_STATUS_OVERRIDES exists in
+// LANG_DATA (a typo there silently disables the override).
+const dataStatusCounts = {};
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    const s = m.dataStatus || 'modern';  // unset = modern by default
+    dataStatusCounts[s] = (dataStatusCounts[s] || 0) + 1;
+}
+if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
+    for (const c of Object.keys(ctx.DATA_STATUS_OVERRIDES)) {
+        if (!ctx.LANG_DATA[c]) E(`DATA_STATUS_OVERRIDES has code "${c}" not in LANG_DATA`);
+    }
+}
+
+// ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -
+// Languages with first numeric value ≥100M must have speakerBasis declared
+// so the tier comparison is honest about what's being counted.
+function firstNumericTier(s) {
+    if (!s) return 0;
+    const str = String(s);
+    // Skip historical/extinct/liturgical entries — date ranges like
+    // "Extinct (~1500 BCE-3rd c. CE)" would otherwise be parsed as 1500M.
+    if (/^(extinct|liturgical|extinct\b)/i.test(str.trim())) return 0;
+    // Require an explicit K/M/B unit so "20 (severely endangered)" isn't 20M.
+    const m = str.match(/(\d+(?:\.\d+)?)\s*([KMB])\b/);
+    if (!m) return 0;
+    const n = parseFloat(m[1]);
+    const unit = m[2];
+    if (unit === 'B') return n * 1e9;
+    if (unit === 'M') return n * 1e6;
+    if (unit === 'K') return n * 1e3;
+    return n;
+}
+let bigButNoBasis = 0;
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    if (!m.speakers) continue;
+    const tier = firstNumericTier(m.speakers);
+    if (tier >= 100e6 && !m.speakerBasis) {
+        W(`${code}: 100M+ tier (${m.speakers}) without speakerBasis`);
+        bigButNoBasis++;
     }
 }
 
@@ -386,6 +433,15 @@ console.log(`Duplicate-coordinate groups: ${dupGroups.length}`);
 console.log(`Codes with meta: ${codesWithMeta.length}/${codes.length}`);
 console.log(`Distinct family top-tokens: ${Object.keys(familyTopHits).length}`);
 console.log(`Optional schema adoption: speakerBasis ${withSpeakerBasis}, iso6393 ${withIso}, sources ${withSources}`);
+console.log('');
+console.log('Data status breakdown:');
+const statusOrder = ['modern','attested','fragmentary','reconstructed','undeciphered','partly-understood','pedagogical'];
+for (const s of statusOrder) {
+    if (dataStatusCounts[s]) console.log(`  ${s.padEnd(20)} ${dataStatusCounts[s]}`);
+}
+for (const s of Object.keys(dataStatusCounts)) {
+    if (!statusOrder.includes(s)) console.log(`  ${s.padEnd(20)} ${dataStatusCounts[s]} (unexpected)`);
+}
 console.log('');
 console.log('Description i18n coverage:');
 for (const ui of UI_LANGS) {

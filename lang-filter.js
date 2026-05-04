@@ -27,7 +27,7 @@
     // Tonal: true if phonemic tones distinguish words
     // Morph: 'isolating' | 'agglutinative' | 'fusional' | 'polysynthetic'
     //
-    // Two-tier resolution to cover all 526 languages:
+    // Two-tier resolution to cover all 579 languages:
     //   1. FAMILY_DEFAULTS: applied based on meta.family. Most languages in a
     //      family share basic typological tendencies, so a default per family
     //      gives instant coverage for every language. Looked up by full
