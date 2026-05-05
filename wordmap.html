@@ -180,9 +180,13 @@
             outline: none;
             z-index: 10;
         }
-        .lang-label.selected .word, .globe-label.selected .word { color: #1a1a2e !important; }
-        .lang-label.selected .ipa, .globe-label.selected .ipa { color: #555 !important; }
-        .lang-label.selected .name, .globe-label.selected .name { color: #888 !important; }
+        /* When the label has no inline color (era-default), use these readable
+           defaults inside the selected card. When the lang has a custom color
+           (e.g. red for historical), the inline style on .word/.ipa/.name wins
+           because :not([style]) doesn't apply — preserving the original color. */
+        .lang-label.selected .word:not([style]), .globe-label.selected .word:not([style]) { color: #1a1a2e; }
+        .lang-label.selected .ipa:not([style]),  .globe-label.selected .ipa:not([style])  { color: #555; }
+        .lang-label.selected .name:not([style]), .globe-label.selected .name:not([style]) { color: #888; }
         /* Connector — drawn ABOVE the info modal (z-index 1011 vs panel
            1010) so the line visibly terminates on the panel surface
            rather than sliding behind it. A small filled circle at the
@@ -1413,8 +1417,8 @@
             }
             const lr = labelEl.getBoundingClientRect();
             const pr = ip.getBoundingClientRect();
-            // UX fix #2: if the label is fully behind the modal panel, don't draw the line
-            // (no source point is visible to the user, so the connector is meaningless).
+            // UX fix #2 (Session 38): if the label is fully behind the modal panel,
+            // don't draw the line.
             const labelCx = lr.left + lr.width / 2;
             const labelCy = lr.top + lr.height / 2;
             const labelOccluded = labelCx >= pr.left && labelCx <= pr.right
@@ -1423,19 +1427,39 @@
                 svg.classList.remove('visible');
                 return;
             }
-            // Source: midpoint of the side of the label closest to the panel
-            const panelOnLeft = pr.left + pr.width / 2 < labelCx;
-            const x1 = panelOnLeft ? lr.left : lr.right;
-            const y1 = labelCy;
-            // UX fix #3: arrow tip lands flush on the modal edge (was 6px inside).
-            // Reduced to 2px for a tight visual snap to the panel border.
-            const PANEL_INSET = 2;
-            const x2 = panelOnLeft ? pr.right - PANEL_INSET : pr.left + PANEL_INSET;
-            const y2 = Math.max(pr.top + 18, Math.min(pr.bottom - 18, labelCy));
-            // Single quadratic bezier — gentler than the previous cubic S.
-            // Control point pulled horizontally with a small upward bow.
-            const cpx = (x1 + x2) / 2;
-            const cpy = (y1 + y2) / 2 - Math.min(40, Math.abs(y2 - y1) * 0.25 + 8);
+            // UX fix #2b (Session 39): mobile breakpoint matches CSS (768px) where
+            // the modal docks to the bottom edge full-width. On mobile we draw a
+            // vertical connector (label-bottom → modal-top); on desktop we draw a
+            // horizontal-ish bezier (label-side → modal-vertical-center).
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            const PANEL_INSET = 2;  // tip flush to modal edge
+            let x1, y1, x2, y2;
+            if (isMobile) {
+                // Mobile: label-bottom-center → modal-top-center (vertical drop)
+                x1 = labelCx;
+                y1 = lr.bottom;
+                x2 = pr.left + pr.width / 2;
+                y2 = pr.top + PANEL_INSET;
+            } else {
+                // Desktop: label-side → modal-left/right-edge (vertical center)
+                const panelOnLeft = pr.left + pr.width / 2 < labelCx;
+                x1 = panelOnLeft ? lr.left : lr.right;
+                y1 = labelCy;
+                x2 = panelOnLeft ? pr.right - PANEL_INSET : pr.left + PANEL_INSET;
+                y2 = pr.top + pr.height / 2;
+            }
+            // Single quadratic bezier — gentle curve. Control point logic differs
+            // for vertical (mobile) vs horizontal (desktop) layouts.
+            let cpx, cpy;
+            if (isMobile) {
+                // Mobile: bow horizontally a bit, mostly vertical line
+                cpx = (x1 + x2) / 2 + (x1 < x2 ? 12 : -12);
+                cpy = (y1 + y2) / 2;
+            } else {
+                // Desktop: bow upward
+                cpx = (x1 + x2) / 2;
+                cpy = (y1 + y2) / 2 - Math.min(40, Math.abs(y2 - y1) * 0.25 + 8);
+            }
             const path = `M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`;
             // marker-end on the path auto-orients the triangle arrowhead
             // to the tangent at the endpoint — no JS rotation needed.
