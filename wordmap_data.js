@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 579 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 578 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1344,8 +1344,9 @@ const LANG_DATA = {
   doi: { name: 'Dogri', native: 'डोगरी', lat: 32.73, lng: 74.86, // Jammu
     words: { water:['पाणी','paːɳiː'], fire:['अग्ग','aɡː'], sun:['सूरज','suːraj'], moon:['चन्न','tʃanː'], mother:['मां','maː'], father:['बापू','baːpuː'], eat:['खाना','kʰaːnaː'], drink:['पीना','piːnaː'], love:['प्यार','pjaːr'], heart:['दिल','dil'], tree:['रुक्ख','rukːʰ'], house:['घर','ɡʱər'], dog:['कुत्ता','kuttaː'], cat:['बिल्ली','bilːiː'], hand:['हत्थ','hattʰ'], eye:['अक्ख','akːʰ'], hello:['नमस्कार','nəməskaːr'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['इक','ik'], good:['चन्गा','tʃəŋɡaː'] }},
   // Austroasiatic (Mon-Khmer additional)
-  mon: { name: 'Mon', native: 'ဘာသာမန်', lat: 16.49, lng: 97.62, // Mawlamyine
-    words: { water:['ဍာ်','daˀ'], fire:['ပၟတ်','pəmoit'], sun:['တ္ၚဲ','tŋai'], moon:['ဂိတု','ɡitɔ'], mother:['မိ','mi'], father:['မ','məˀ'], eat:['ၜုၚ်','paŋ'], drink:['သုၚ်','soŋ'], love:['ဍၚ်','ɗaŋ'], heart:['ဍုၚ်','ɗuiŋ'], tree:['ဆု','tʃəneˀ'], house:['ၐိၚ်','ʔaiŋ'], dog:['ကၠဵု','klui'], cat:['ဟိၚ်','hin'], hand:['တဲ','tɔˀ'], eye:['မတ်','mat'], hello:['အရ','aro'], thanks:['ဂုဏ်','ɓjantonɛ'], one:['မွဲ','muə'], good:['ၐုၚ်','ɲɛˀ'] }},
+  // mon (incorrect ISO code; conflicts with ISO 639-1 'mon' = Mongolian)
+  // removed Session 51 — canonical Mon-language entry is `mnw` (ISO 639-3).
+  // omx Old Mon HIST_DESCENDANT updated to point at mnw.
   xkk: { name: 'Khmu', native: 'Kmhmu\'', lat: 19.89, lng: 102.13, // Luang Prabang
     words: { water:['ɔm','ʔɔm'], fire:['ʔus','ʔus'], sun:['maŋ','maŋ'], moon:['kee','keː'], mother:['mɔɔʔ','mɔːʔ'], father:['ʔaaʔ','ʔaːʔ'], eat:['caa','tʃaː'], drink:['ɲɔɔp','ɲɔːp'], love:['kɔɔh','kɔːh'], heart:['kruɛŋ','kruɛŋ'], tree:['cmuul','tʃmuːl'], house:['kaaŋ','kaːŋ'], dog:['cɔ̀','tʃɔ'], cat:['meeo','meːo'], hand:['tii','tiː'], eye:['ŋtaa','ŋtaː'], hello:['lɔh','lɔh'], thanks:['ɔrkun','ʔɔrkun'], one:['muei','muei'], good:['gee','ɡeː'] }},
   // Iroquoian (NE North America)

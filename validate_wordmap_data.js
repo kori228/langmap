@@ -107,13 +107,9 @@ const HIST_SET = new Set(HIST_KEYS);
 const EXPIRES_LEAD_DAYS = 30;
 
 const ALLOWLIST = [
-    {
-        match: '[mon, mnw] all map to "Mon@16.49,97.62"',
-        reason: 'ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)',
-        ref: 'audit Session 8 + 9, deferred to Session 14+',
-        created: '2026-05-05',
-        expires: '2027-01-01',
-    },
+    // [mon, mnw] resolved Session 51 (user-discovered duplicate): mon entry
+    // removed; mnw kept as canonical Mon-language ISO 639-3 code; omx HIST_-
+    // DESCENDANT now points at mnw. mn (Mongolian) unaffected.
 ];
 
 const TODAY_ISO = new Date().toISOString().slice(0, 10);

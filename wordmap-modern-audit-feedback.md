@@ -27,6 +27,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 76: `pronunciationType` schema + first-pass labeling | ✅ Schema + 162/579 langs labeled | 162 langs |
 | Task 76 UI: modal pronunciation label rendering | ✅ Localized en/ja/ko/zh | UI |
 | Task 79: `coverage` flag for regional variant rows + UI | ✅ Schema + 39 langs + UI | 39 langs |
+| User-discovered duplicate: mon/mnw resolved (mon removed; mnw canonical) | ✅ Fixed | -1 lang (579→578) |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -518,6 +519,29 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## User-discovered duplicate: mon/mnw resolved (✅ Session 51)
+
+User が "モン語が２つあること" を発見。実態:
+
+- `mon` (ISO 639-1 で実は **モンゴル語**を指す code) と `mnw` (ISO 639-3 — 正しい Mon language code) が同じ Mawlamyine 座標で別データを持つ重複行。
+- Validator allowlist で長期 deferred (Bauer 1982 / Diffloth merge needs Mon-language expert) だった。
+- Mongolian は別途 `mn` (ISO 639-1) として存在 → `mon` 行は誤分類。
+
+**解決:**
+- `mon` LANG_DATA entry を削除 (旧 wordmap_data.js:1347-1348) — 古い IPA `daˀ`/`pəmoit` 形は捨てる
+- `mnw` を canonical として保持 (新 IPA `ɗaʔ`/`pəmoʔ` — 正しい glottal stop ʔ + implosive ɗ)
+- `mon`.meta 削除 (wordmap_meta.js:408)
+- `lang_names.js` 21 UI sections から `mon: '...'` entry を全削除 (`mnw: '...'` は既存維持)
+- `wordmap.html:924` HIST_DESCENDANT: `omx: 'mon'` → `omx: 'mnw'` (Old Mon → modern Mon の系譜が修正された code を指す)
+- `validate_wordmap_data.js` ALLOWLIST から mon/mnw entry 削除 (audit Session 8+ deferred 状態解消)
+- 言語数 `579` → `578` を user-visible strings (wordmap.html title/og/twitter description, README.md) で更新
+
+`mn` (Mongolian) はそのまま — 影響なし。
+
+ISO 639-3 では `mnw` が Mon language の正しいコード。`mon` は ISO 639-1/639-2 で「Mongolian」(macrolanguage code) として意味が衝突する廃止候補。
+
+---
+
 ## Audit Task 79: coverage flag for regional variants (✅ schema + 39 langs + UI)
 
 Audit §38-§42 が指摘した「regional variant 行が base 言語をほぼコピー」問題に対応。`coverage` enum + optional `baseLang` field を `wordmap_meta.js` に追加。
@@ -618,7 +642,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=55` (data) / `v=16 → v=20` (meta, +Task 76 pronunciationType + Task 79 coverage)。
+Cache buster `v=46 → v=56` (data) / `v=16 → v=21` (meta, +Task 76 pronunciationType + Task 79 coverage + mon/mnw resolution)。
 
 ---
 
