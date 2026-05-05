@@ -1830,6 +1830,15 @@
                         const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
                         return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="padding:6px 9px;cursor:pointer;border-bottom:1px solid #f0f0f0">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
                     }).join('');
+                    // Live preview: open the modal for the top match (no map pan
+                    // while typing — that only happens on explicit click).
+                    if (LANG_DATA[top[0].code]) {
+                        // Only re-open if the top match changed (avoids
+                        // re-rendering the same modal on every keystroke).
+                        if (infoPanel.dataset.code !== top[0].code) {
+                            showLangInfo(top[0].code);
+                        }
+                    }
                 }
                 results.style.display = 'block';
             }
@@ -1846,7 +1855,11 @@
                 if (typeof map !== 'undefined' && map && map.setView) {
                     map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
                 }
-                showLangInfo(code);
+                // If modal already shows this lang (from live preview), avoid
+                // calling showLangInfo (which would toggle it closed).
+                if (infoPanel.dataset.code !== code || !infoPanel.classList.contains('visible')) {
+                    showLangInfo(code);
+                }
                 input.value = '';
                 results.style.display = 'none';
             });
