@@ -28,6 +28,9 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 76 UI: modal pronunciation label rendering | ✅ Localized en/ja/ko/zh | UI |
 | Task 79: `coverage` flag for regional variant rows + UI | ✅ Schema + 39 langs + UI | 39 langs |
 | User-discovered duplicate: mon/mnw resolved (mon removed; mnw canonical) | ✅ Fixed | -1 lang (579→578) |
+| Task 100: Localize unattested `—` cell label | ✅ 21 UI langs | UI |
+| Task 102: Rename "IPA" toggle → "Pron." (en) / "発音" (ja) etc. | ✅ Fixed | UI |
+| Task 132: Localize evidence markers (ja/ko/zh/de/fr/es + Source/Note prefix) | ✅ Localized | UI |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -519,6 +522,79 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Tasks 100/102/132 — i18n batch (✅ all)
+
+低コスト i18n cleanup を 3 task まとめて対応:
+
+### Task 100: Localize unattested `—` cells (✅ 21 UI langs)
+
+`wordmap.html` の renderLangInfo() で modern lang セルが `—` のとき、英語固有の "(unattested)" を表示していた問題。`UNATTESTED_LABEL` 定数を追加 ([wordmap.html:1665-1675](wordmap.html#L1665-L1675))、21 UI langs ローカライズ:
+
+| UI lang | Label |
+|---|---|
+| en | unattested |
+| ja | 未確認 |
+| ko | 미확인 |
+| zh | 未确认 |
+| yue | 未確認 |
+| vi | không có chứng cứ |
+| th | ไม่มีหลักฐาน |
+| id | tak terbukti |
+| hi | अप्रमाणित |
+| de | unbelegt |
+| fr | non attesté |
+| it | non attestato |
+| es | no atestiguado |
+| pt | não atestado |
+| ru | не засвидетельствовано |
+| uk | не засвідчено |
+| ar | غير مُثَبَّت |
+| he | לא מתועד |
+| sw | haijathibitishwa |
+
+UI lang 不明時は en にフォールバック。
+
+### Task 102: Rename "IPA" toggle → "Pron." / "発音" / etc. (✅)
+
+Audit 指摘: 「IPA toggle が strict IPA を全行で promise しているが、実態は orthography/broad mix」。Toggle button label を変更:
+
+| File / Layer | 旧 | 新 |
+|---|---|---|
+| `wordmap.html:387` button label | `<span class="label">IPA</span>` | `<span class="label">Pron.</span>` |
+| `wordmap.html:387` aria-label | "Toggle IPA / transcription display" | "Toggle pronunciation / IPA / transcription display" |
+| `wordmap_data.js` WM_UI en `ipa:` | `'IPA'` | `'Pron.'` |
+| `wordmap_data.js` WM_UI de `ipa:` | `'IPA'` | `'Aussprache'` |
+| `wordmap_data.js` WM_UI id `ipa:` | `'IPA'` | `'Lafal'` |
+| ja/ko/zh `ipa:` | 既に `発音`/`발음`/`发音` | (変更なし — 既存ローカライズ) |
+
+Hover tooltip (`title`) はテーブル column header (`ipaCol`) を表示し続けるため "IPA / Transcription" は残るが、これは正しい (column 名としては妥当)。
+
+### Task 132: Localize evidence markers (✅ ja/ko/zh/de/fr/es 追加)
+
+Audit: `EVIDENCE_MARKER` の labels が `label_en` + `label_ja` のみで、`evidenceTooltip()` も Japanese か English の二択。Korean/Chinese/Arabic 等の UI lang ユーザーは英語の trust label を見ていた。
+
+**変更:**
+
+- `EVIDENCE_MARKER` を `labels: { en, ja, ko, zh, de, fr, es }` に再構造化 ([wordmap.html:1645-1675](wordmap.html#L1645-L1675))
+- `evidenceTooltip()` が UI lang から正しい label を選ぶよう更新 (`uiLang.split('_')[0]` で variant codes も処理)
+- `EVIDENCE_PREFIX = { source, note }` で "Source:" / "Note:" prefix もローカライズ
+- 旧 ja の "直接 attested" / "近縁言語からの proxy" の英単語残留も除去 ("直接確認" / "近縁言語からの代用")
+
+**Marker 一覧:**
+
+| Symbol | en | ja | ko | zh |
+|---|---|---|---|---|
+| ✓ | directly attested | 直接確認 | 직접 확인됨 | 直接证实 |
+| ~ | proxy from related lang | 近縁言語からの代用 | 근연 언어에서의 대용 | 近亲语言代理 |
+| * | reconstructed | 再構形 | 재구형 | 构拟形式 |
+| ? | inferred from context | 文脈から推測 | 문맥에서 추정 | 依文脉推断 |
+| ⁉ | disputed reading | 異読あり | 이견 있음 | 存在异读 |
+| ◇ | pedagogical approx. | 教育用近似 | 교육용 근사 | 教学用近似 |
+
+これで Korean/Chinese 等の UI でも教材として trust labels が読める。
+
+---
+
 ## User-discovered duplicate: mon/mnw resolved (✅ Session 51)
 
 User が "モン語が２つあること" を発見。実態:
@@ -642,7 +718,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=56` (data) / `v=16 → v=21` (meta, +Task 76 pronunciationType + Task 79 coverage + mon/mnw resolution)。
+Cache buster `v=46 → v=57` (data) / `v=16 → v=21` (meta, +Tasks 76/79/100/102/132)。
 
 ---
 

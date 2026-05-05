@@ -384,7 +384,7 @@
         <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
         <div style="height:8px"></div>
         <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle IPA / transcription display"><span class="label">IPA</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
         <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
         <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
             <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
@@ -424,7 +424,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=56"></script>
+    <script src="wordmap_data.js?v=57"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -1655,20 +1655,55 @@
         };
         const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
 
+        // Audit Task 100: localize "— (unattested)" cell label
+        const UNATTESTED_LABEL = {
+            en: 'unattested',  ja: '未確認',  ko: '미확인',  zh: '未确认',
+            yue: '未確認',     vi: 'không có chứng cứ', th: 'ไม่มีหลักฐาน',
+            id: 'tak terbukti', hi: 'अप्रमाणित', de: 'unbelegt',
+            fr: 'non attesté', it: 'non attestato', es: 'no atestiguado',
+            es_eu: 'no atestiguado', es_mx: 'no atestiguado',
+            pt: 'não atestado', pt_eu: 'não atestado', pt_br: 'não atestado',
+            ru: 'не засвидетельствовано', uk: 'не засвідчено',
+            ar: 'غير مُثَبَّت', he: 'לא מתועד', sw: 'haijathibitishwa',
+        };
+
+        // Audit Task 132: evidence marker labels localized en/ja/ko/zh/de/fr/es.
+        // Removed English-only "attested", "proxy", "lexicon" leakage from
+        // ja and added ko/zh/de/fr/es so non-English UI users see localized labels.
         const EVIDENCE_MARKER = {
-            direct:        { sym: '✓', color: '#1a7a1a', label_en: 'directly attested',   label_ja: '直接 attested' },
-            proxy:         { sym: '~', color: '#c0392b', label_en: 'proxy from related lang', label_ja: '近縁言語からの proxy' },
-            reconstructed: { sym: '*', color: '#b56500', label_en: 'reconstructed',       label_ja: '再構形' },
-            inferred:      { sym: '?', color: '#a06000', label_en: 'inferred from context', label_ja: '文脈から推測' },
-            disputed:      { sym: '⁉', color: '#a02020', label_en: 'disputed reading',   label_ja: '異読あり' },
-            pedagogical:   { sym: '◇', color: '#6020a0', label_en: 'pedagogical approx.', label_ja: '教育用近似' },
+            direct:        { sym: '✓', color: '#1a7a1a', labels: {
+                en: 'directly attested', ja: '直接確認', ko: '직접 확인됨', zh: '直接证实',
+                de: 'direkt belegt',     fr: 'attesté directement', es: 'atestiguado directamente' } },
+            proxy:         { sym: '~', color: '#c0392b', labels: {
+                en: 'proxy from related lang', ja: '近縁言語からの代用', ko: '근연 언어에서의 대용', zh: '近亲语言代理',
+                de: 'Stellvertreter aus verwandter Sprache', fr: 'substitut depuis langue apparentée',
+                es: 'sustituto de lengua emparentada' } },
+            reconstructed: { sym: '*', color: '#b56500', labels: {
+                en: 'reconstructed', ja: '再構形', ko: '재구형', zh: '构拟形式',
+                de: 'rekonstruiert', fr: 'reconstruit', es: 'reconstruido' } },
+            inferred:      { sym: '?', color: '#a06000', labels: {
+                en: 'inferred from context', ja: '文脈から推測', ko: '문맥에서 추정', zh: '依文脉推断',
+                de: 'aus Kontext erschlossen', fr: 'déduit du contexte', es: 'inferido del contexto' } },
+            disputed:      { sym: '⁉', color: '#a02020', labels: {
+                en: 'disputed reading', ja: '異読あり', ko: '이견 있음', zh: '存在异读',
+                de: 'umstrittene Lesart', fr: 'lecture contestée', es: 'lectura disputada' } },
+            pedagogical:   { sym: '◇', color: '#6020a0', labels: {
+                en: 'pedagogical approx.', ja: '教育用近似', ko: '교육용 근사', zh: '教学用近似',
+                de: 'pädagogische Näherung', fr: 'approximation pédagogique', es: 'aproximación pedagógica' } },
+        };
+        const EVIDENCE_PREFIX = {
+            source: { en: 'Source', ja: '出典', ko: '출처', zh: '来源', de: 'Quelle', fr: 'Source', es: 'Fuente' },
+            note:   { en: 'Note',   ja: '注',   ko: '주',   zh: '注',   de: 'Hinweis', fr: 'Note',  es: 'Nota' },
         };
         function evidenceTooltip(ev) {
             if (!ev || !EVIDENCE_MARKER[ev.evidence]) return '';
             const m = EVIDENCE_MARKER[ev.evidence];
-            const label = (uiLang === 'ja' && m.label_ja) ? m.label_ja : m.label_en;
-            const src = ev.source ? ` — ${ev.source}` : '';
-            const note = ev.note ? ` (${ev.note})` : '';
+            const ui = uiLang.split('_')[0];
+            const label = (m.labels[ui] || m.labels.en);
+            const srcPrefix = (EVIDENCE_PREFIX.source[ui] || EVIDENCE_PREFIX.source.en);
+            const notePrefix = (EVIDENCE_PREFIX.note[ui] || EVIDENCE_PREFIX.note.en);
+            const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
+            const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
             return label + src + note;
         }
 
@@ -1745,7 +1780,8 @@
                     const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
                     const wLabel = (uiLang === 'en' ? w.label.en : localWord);
                     if (isUnattestedEntry(entry)) {
-                        html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
+                        const unattLabel = UNATTESTED_LABEL[uiLang] || UNATTESTED_LABEL[uiLang.split('_')[0]] || UNATTESTED_LABEL.en;
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (${escapeHtml(unattLabel)})</td></tr>`;
                     } else {
                         const ev = wEv[w.id];
                         const evMark = ev && EVIDENCE_MARKER[ev.evidence]
