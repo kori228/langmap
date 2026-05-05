@@ -403,6 +403,37 @@ checkCounts(readmeSrc,  'README.md');
 const headerN = (dataSrc.match(/(\d{3,4})\s*languages/) || [])[1];
 if (headerN && +headerN !== N) E(`wordmap_data.js header says ${headerN} languages, actual ${N}`);
 
+// ---- 18a. Trust-label UI coverage (Audit Task 92) --------------------
+// The trust-system UI uses several inline JS constants in wordmap.html
+// (PRONUNCIATION_LABEL, COVERAGE_LABEL, LOCATION_BASIS_LABEL, etc.).
+// They MUST cover at least { en, ja, ko, zh } so the modal labels stay
+// localized in priority UI languages. WARN if any are missing.
+const TRUST_LABEL_CONSTS = [
+    'PRONUNCIATION_LABEL', 'PRONUNCIATION_HEADER',
+    'COVERAGE_LABEL', 'COVERAGE_HEADER',
+    'LOCATION_BASIS_LABEL', 'LOCATION_BASIS_HEADER',
+    'LANGUAGE_KIND_BADGE',
+];
+const TRUST_LABEL_PRIORITY_UI = ['en', 'ja', 'ko', 'zh'];
+for (const constName of TRUST_LABEL_CONSTS) {
+    const re = new RegExp(`const\\s+${constName}\\s*=\\s*\\{([\\s\\S]*?)\\n\\s{8}\\};`);
+    const m = htmlSrc.match(re);
+    if (!m) {
+        W(`[#18a] wordmap.html missing const ${constName} (Audit Task 92)`);
+        continue;
+    }
+    const body = m[1];
+    // Extract leaf objects: each line that contains an inner { en: '...', ja: '...', ... }
+    // We match `entryName: { ... }` blocks OR direct `en:`/`ja:` keys at top level.
+    // Simple heuristic: count occurrences of priority UI keys inside the const body.
+    for (const ui of TRUST_LABEL_PRIORITY_UI) {
+        const keyRe = new RegExp(`\\b${ui}\\s*:`);
+        if (!keyRe.test(body)) {
+            W(`[#18a] ${constName} missing priority UI lang '${ui}' (Audit Task 92)`);
+        }
+    }
+}
+
 // ---- 19. Cache-buster registry drift (Audit Task 134) ----------------
 // Compare static <script>/<link> ?v= versions in wordmap.html against the
 // central WM_ASSET_VERSION object so drift is caught at validation time.
