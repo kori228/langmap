@@ -26,6 +26,11 @@
  *  16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry (Session 27 invariant)
  *  17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT (Session 29 inverse)
  *
+ * Convention: WARN/ERROR messages from a specific check should prefix `[#N]`
+ * to make the source check identifiable in output (Session 30). Newer checks
+ * (#13-17) follow this convention; older checks (#1-12) can be migrated
+ * incrementally. Allowlist substring matching tolerates the prefix.
+ *
  * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
  * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
  * Use this for issues intentionally deferred (e.g., needs linguist consultation).
@@ -265,7 +270,7 @@ for (const g of dupGroups) {
     if (g.length < 3) continue;
     const key = g.slice().sort().join('/');
     if (HIST_PROGRESSION_OK.has(key)) continue;
-    W(`coord cluster: ${g.length} codes at one (lat,lng): ${g.join(', ')} — consider distinct representative points`);
+    W(`[#14] coord cluster: ${g.length} codes at one (lat,lng): ${g.join(', ')} — consider distinct representative points`);
 }
 
 // ---- 15. Same name + same coord, different codes — likely code conflict (Session 8) ----
@@ -282,7 +287,7 @@ for (const g of dupGroups) {
     }
     for (const [k, group] of nameCoordGroups) {
         if (group.length < 2) continue;
-        W(`same (name, lat, lng) under different codes: [${group.join(', ')}] all map to "${k}" — likely ISO code conflict or accidental duplicate (audit Session 8)`);
+        W(`[#15] same (name, lat, lng) under different codes: [${group.join(', ')}] all map to "${k}" — likely ISO code conflict or accidental duplicate (audit Session 8)`);
     }
 }
 
@@ -299,7 +304,7 @@ for (const g of dupGroups) {
         seen[code] = (seen[code] || 0) + 1;
     }
     const dupKeys = Object.entries(seen).filter(([, n]) => n > 1);
-    for (const [c, n] of dupKeys) E(`LANG_DATA: code "${c}" defined ${n} times in source (silent JS overwrite — earlier definition is dead code)`);
+    for (const [c, n] of dupKeys) E(`[#13] LANG_DATA: code "${c}" defined ${n} times in source (silent JS overwrite — earlier definition is dead code)`);
 }
 
 // ---- 7. Every code has meta + 8. no duplicate meta assignments ----------
@@ -568,7 +573,7 @@ if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
     const dsoKeys = new Set(Object.keys(ctx.DATA_STATUS_OVERRIDES));
     const histMissing = HIST_KEYS.filter(c => ctx.LANG_DATA[c] && !dsoKeys.has(c));
     for (const c of histMissing) {
-        W(`${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry — ` +
+        W(`[#16] ${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry — ` +
           `defaults to 'modern' in stats (Session 27 normalization invariant)`);
     }
     // ---- 17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT ----
@@ -581,7 +586,7 @@ if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
         if (status === 'modern') continue;  // 'modern' override is consistent with non-HIST
         if (!ctx.LANG_DATA[c]) continue;    // already caught by check #13c above
         if (!histSet.has(c)) {
-            W(`${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT — ` +
+            W(`[#17] ${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT — ` +
               `UI filter will treat as modern (Session 29 inverse invariant)`);
         }
     }

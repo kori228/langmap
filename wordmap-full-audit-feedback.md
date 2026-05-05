@@ -3246,3 +3246,85 @@ match, 0 violations.)
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
 
 ---
+
+## Session 30 (2026-05-05): Validator output check ID prefix `[#N]`
+
+**スコープ:** Session 29 #2 で deferred した「validator output に check 番号 prefix を付与」を実装。`! ${msg}` フォーマットを `! [#N] ${msg}` に拡張し、どの check が fire したか出力で即座に identify できるように。
+
+### 変更内容
+
+新しめの checks 5 件 (#13, #14, #15, #16, #17) のメッセージに `[#N]` prefix を追加:
+
+```js
+// Before:
+W(`coord cluster: ${g.length} codes...`);
+W(`same (name, lat, lng) under different codes...`);
+E(`LANG_DATA: code "${c}" defined ${n} times...`);
+W(`${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry...`);
+W(`${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT...`);
+
+// After:
+W(`[#14] coord cluster: ${g.length} codes...`);
+W(`[#15] same (name, lat, lng) under different codes...`);
+E(`[#13] LANG_DATA: code "${c}" defined ${n} times...`);
+W(`[#16] ${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry...`);
+W(`[#17] ${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT...`);
+```
+
+旧 checks (#1-12) は incrementally migrate 候補として残し、convention は docstring に明記:
+
+```
+Convention: WARN/ERROR messages from a specific check should prefix `[#N]`
+to make the source check identifiable in output (Session 30). Newer checks
+(#13-17) follow this convention; older checks (#1-12) can be migrated
+incrementally. Allowlist substring matching tolerates the prefix.
+```
+
+### Allowlist 互換性確認
+
+ALLOWLIST の match string は substring match なので `[#15] same (name, lat, lng)...` のような prefix 付きメッセージにも問題なくマッチ:
+
+```
+ALLOWLISTED (1):
+  ⊘ [#15] same (name, lat, lng) under different codes: [mon, mnw] all map to "Mon@16.49,97.62" — likely ISO code conflict or accidental duplicate (audit Session 8)
+      reason:  ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)
+      ref:     audit Session 8 + 9, deferred to Session 14+
+      created: 2026-05-05
+      expires: 2027-01-01
+```
+
+### 効果と意義
+
+1. **どの check が問題を出したか即座に分かる**: 出力を見て `[#14]` なら 3+ coord cluster、`[#16]` なら HIST/DSO 不整合、と判別可能
+2. **Allowlist match との両立**: substring match なので prefix 追加は破壊的変更にならない
+3. **Convention 確立**: 今後新規 check 追加時に `[#N]` を付ける convention が docstring に明記
+4. **旧 checks の migration path**: incrementally できる、強制ではない
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+  ⊘ [#15] same (name, lat, lng)... ← prefix が visible
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+```
+
+### Session 30 中に気付いた追加問題（未対応・記録のみ）
+
+1. **旧 checks #1-12 への prefix 一括 migration** — 残 16 call sites (E/W/I) に対応する check 番号を逐次 prefix する作業。Session 31+ の incremental cleanup task。
+
+2. **`I()` 出力の prefix** — INFO message にも `[#N]` を付けるか? 現状は dashCount, dupGroups, dataStatus tally など複数 check に渡る集約 INFO が多いため必須ではない。但し individual INFO (e.g., family outside list) は付けてもよい。Session 31+ optional。
+
+3. **summary line の追加** — validator 出力末尾に `Checks fired: #14 (1) #15 (allowlisted) ...` のような summary が出ると、CI で「どの check が件数変化したか」を tracking しやすい。Session 31+ candidate。
+
+4. **`UNUSED ALLOWLIST ENTRIES` への prefix 適用** — ALLOWLIST entry の match field 自体に `[#N]` を含めるかは別問題。現状 match は raw message substring なので、新規 entry 追加時は prefix を含めるかどうか柔軟。`[#15] same (name, lat, lng)...` の prefix 部だけマッチさせると一括 fire 後も対応可能。Session 31+ design 検討。
+
+### 持ち越し（Session 31 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, 25 #1-3, 26 #4, 27 #1-4, 28 #1-3, 29 #1 #3 #4, **30 #1-4 (旧 checks prefix migration / INFO prefix / summary line / allowlist prefix design)**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
+
+---
