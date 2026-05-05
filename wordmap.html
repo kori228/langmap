@@ -1310,14 +1310,22 @@
         function scheduleConnectorUpdate() {
             if (_connRafPending) return;
             _connRafPending = true;
-            requestAnimationFrame(() => { _connRafPending = false; updateConnectorLine(); });
+            requestAnimationFrame(() => {
+                _connRafPending = false;
+                // UX fix #4: refresh selectedLabel ref before redrawing so the
+                // connector tracks fresh DOM position during/after zoom layout.
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                updateConnectorLine();
+            });
         }
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); scheduleConnectorUpdate(); });
-        map.on('moveend', () => { updateHash(); });
+        map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
         // Continuous events for smooth tracking during drag / zoom animation
         map.on('move', scheduleConnectorUpdate);
         map.on('zoom', scheduleConnectorUpdate);
+        map.on('zoomstart', scheduleConnectorUpdate);
         map.on('zoomanim', scheduleConnectorUpdate);
+        map.on('viewreset', scheduleConnectorUpdate);
         window.addEventListener('resize', scheduleConnectorUpdate);
         window.addEventListener('scroll', scheduleConnectorUpdate, true);
 
@@ -1392,16 +1400,23 @@
             }
             const lr = labelEl.getBoundingClientRect();
             const pr = ip.getBoundingClientRect();
-            // Source: midpoint of the side of the label closest to the panel
+            // UX fix #2: if the label is fully behind the modal panel, don't draw the line
+            // (no source point is visible to the user, so the connector is meaningless).
             const labelCx = lr.left + lr.width / 2;
             const labelCy = lr.top + lr.height / 2;
+            const labelOccluded = labelCx >= pr.left && labelCx <= pr.right
+                                && labelCy >= pr.top && labelCy <= pr.bottom;
+            if (labelOccluded) {
+                svg.classList.remove('visible');
+                return;
+            }
+            // Source: midpoint of the side of the label closest to the panel
             const panelOnLeft = pr.left + pr.width / 2 < labelCx;
             const x1 = panelOnLeft ? lr.left : lr.right;
             const y1 = labelCy;
-            // Target: a few pixels INSIDE the panel surface so the line
-            // visibly "lands" on the modal. Combined with z-index 1011
-            // (above panel's 1010), the endpoint sits on the panel edge.
-            const PANEL_INSET = 6;
+            // UX fix #3: arrow tip lands flush on the modal edge (was 6px inside).
+            // Reduced to 2px for a tight visual snap to the panel border.
+            const PANEL_INSET = 2;
             const x2 = panelOnLeft ? pr.right - PANEL_INSET : pr.left + PANEL_INSET;
             const y2 = Math.max(pr.top + 18, Math.min(pr.bottom - 18, labelCy));
             // Single quadratic bezier — gentler than the previous cubic S.
@@ -1684,6 +1699,11 @@
         function showLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
+            // UX fix #1: toggle — second click on same code closes the modal.
+            if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
+                closeInfoPanel();
+                return;
+            }
             infoPanel.dataset.code = code;
             renderLangInfo(code);
             infoPanel.classList.add('visible');

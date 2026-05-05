@@ -3901,3 +3901,35 @@ PASS
 **Codex review 残, mnp Min Bei fire, Tujia 方言基準 etc.:** 同前
 
 ---
+
+## Session 38 (2026-05-05): modal UX 4 fixes (toggle / occlusion / edge-snap / zoom redraw)
+
+**スコープ:** user 報告の modal/connector line UX 4 件を一括修正。
+
+### 修正 4 件
+
+1. **Modal toggle on second click** — `showLangInfo(code)` が既に同じ code で開いている場合、再 click で `closeInfoPanel()` を呼ぶ. 連続 click で modal を閉じられる.
+   ```js
+   if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
+       closeInfoPanel(); return;
+   }
+   ```
+
+2. **Hide arrow when label occluded** — `updateConnectorLine()` で label の中心が panel bounds 内にあれば arrow を隠す. modal の裏に隠れた label への矢印 (= 始点が見えない線) を表示しない.
+   ```js
+   const labelOccluded = labelCx >= pr.left && labelCx <= pr.right
+                       && labelCy >= pr.top && labelCy <= pr.bottom;
+   if (labelOccluded) { svg.classList.remove('visible'); return; }
+   ```
+
+3. **Arrow tip flush to modal edge** — `PANEL_INSET` を 6px → 2px に減少. 矢印の先 (triangle marker) が modal 縁にぴったり付くように.
+
+4. **Zoom redraw coverage** — connector が zoom 中も追従するよう event 範囲を拡張:
+   - `map.on('moveend', scheduleConnectorUpdate)` 追加
+   - `map.on('zoomstart', scheduleConnectorUpdate)` 追加
+   - `map.on('viewreset', scheduleConnectorUpdate)` 追加
+   - `scheduleConnectorUpdate` 内で `updateSelectedLabel()` を毎回先に呼んで DOM ref を fresh に保つ
+
+### Validator: PASS (UI 変更のみ、データ不変)
+
+---
