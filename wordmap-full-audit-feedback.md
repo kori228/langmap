@@ -3162,3 +3162,87 @@ DATA_STATUS_OVERRIDES entry.)
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
 
 ---
+
+## Session 29 (2026-05-05): Validator check #17 — DATA_STATUS_OVERRIDES (non-modern) × HIST_DESCENDANT 逆方向 invariant
+
+**スコープ:** Session 28 #4 で deferred した「DATA_STATUS_OVERRIDES に登録だが HIST_DESCENDANT 未登録」の不整合検出を実装。check #16 (HIST → DSO) と対称な逆方向 check #17 (DSO non-modern → HIST) を追加し、historical 認定の two-way invariant を完成。
+
+### 追加した check #17
+
+`validate_wordmap_data.js` check #16 の隣に追加:
+
+```js
+// ---- 17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT ----
+// Per Session 28 #4 / Session 29: complementary invariant to check #16.
+// If a code has dataStatus=fragmentary/attested/partly-understood/etc but
+// isn't in HIST_DESCENDANT, the UI's "modern/historical" filter will
+// misclassify it (e.g. show in modern list despite being historical).
+const histSet = new Set(HIST_KEYS);
+for (const [c, status] of Object.entries(ctx.DATA_STATUS_OVERRIDES)) {
+    if (status === 'modern') continue;  // 'modern' override is consistent with non-HIST
+    if (!ctx.LANG_DATA[c]) continue;    // already caught by check #13c above
+    if (!histSet.has(c)) {
+        W(`${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT — ` +
+          `UI filter will treat as modern (Session 29 inverse invariant)`);
+    }
+}
+```
+
+### 現状確認 + テスト結果
+
+**現状確認 (作業前):** DATA_STATUS_OVERRIDES の 80 entries 全てが HIST_DESCENDANT membership とも整合。check #17 で fire する entry は 0 件 (期待通り、Session 27 で完全整理済)。
+
+**テスト:** 一時的に `en` (modern lang) に `'attested'` を inject:
+```
+WARNINGS (1):
+  ! en: DATA_STATUS_OVERRIDES = 'attested' but NOT in HIST_DESCENDANT —
+    UI filter will treat as modern (Session 29 inverse invariant)
+```
+復元後 → WARNINGS (0) ✓
+
+### 効果と意義
+
+1. **check #16 + #17 の two-way invariant 完成:**
+   - **#16**: HIST_DESCENDANT に登録された code は DSO entry **必須** (Session 27 invariant)
+   - **#17**: DSO non-modern entry の code は HIST_DESCENDANT 登録 **必須** (Session 29 invariant)
+   - 両方を満たすと、HIST_DESCENDANT membership ≡ (DSO entry) ∧ (status ≠ 'modern') という双条件が成立
+
+2. **schema 完整性の自己ドキュメント化拡張:**
+   - 新規 historical lang 追加時の手順が validator-enforced になった (HIST_DESCENDANT への追加 + DSO への分類が両方必須)
+   - 新規 modern lang 追加時に DSO への重複登録は禁止 (UI filter の double-classification を防ぐ)
+
+3. **将来の `'modern'` override の許容性:**
+   - check #17 は `status === 'modern'` を skip。これは「modern lang を modern と明示的に override する」ケースを許容するため (現状はそういう entry 無し、将来 needs-explicit-modern-marking のため余地)。
+
+### Validator 結果 (現在の正常状態)
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+
+(Validator checks 1-17 all clean. Check #17 newly added in Session 29
+confirms two-way HIST × DSO invariant: 80 historical = DSO entries 1:1
+match, 0 violations.)
+```
+
+### Session 29 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`EXCLUDED_CODES` との 3-way invariant** — check #9 で「HIST_DESCENDANT keys ⊆ EXCLUDED_CODES」を検証。Session 29 では「DSO non-modern」 = HIST_DESCENDANT を確立。三者を組み合わせた完全な invariant は: `HIST_DESCENDANT keys ≡ DSO non-modern keys ⊆ EXCLUDED_CODES`. これを 1 つの check #18 で集約するか docs 化候補。Session 30+。
+
+2. **Validator output の check 番号付与** — Session 28 #3 で記録済。現在 `! ${msg}` のフォーマットだが、`! [#16] ${msg}` のように check 番号を prefix で付けると、どの check が fire したか追跡しやすい。Session 30+ output format 改善候補。
+
+3. **`EXCLUDED_CODES` の場所** — `EXCLUDED_CODES` は `wordmap_data.js` 内? `wordmap.html` 内? Validator は両方を読んで cross-reference できているが、UI と data の一貫性確認のため整理候補。
+
+4. **Validator 全 17 checks の summary** — Session 1-29 で validator が #1-17 (sub-checks 含めると 20+) まで成長。Validator README 候補 (Session 28 #1 の docs 候補と関連)。
+
+### 持ち越し（Session 30 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, 25 #1-3, 26 #4, 27 #1-4, 28 #1-3, **29 #1 3-way invariant 集約 / #2 check 番号 prefix / #4 validator README**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
+
+---

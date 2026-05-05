@@ -24,6 +24,7 @@
  *  14. 3+ codes sharing one (lat,lng) — flag as warning unless historical-progression cluster (audit §7.6)
  *  15. Same (name, lat, lng) under different codes — likely ISO code conflict (Session 8 mon/mnw)
  *  16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry (Session 27 invariant)
+ *  17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT (Session 29 inverse)
  *
  * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
  * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
@@ -569,6 +570,20 @@ if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
     for (const c of histMissing) {
         W(`${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry — ` +
           `defaults to 'modern' in stats (Session 27 normalization invariant)`);
+    }
+    // ---- 17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT ----
+    // Per Session 28 #4 / Session 29: complementary invariant to check #16.
+    // If a code has dataStatus=fragmentary/attested/partly-understood/etc but
+    // isn't in HIST_DESCENDANT, the UI's "modern/historical" filter will
+    // misclassify it (e.g. show in modern list despite being historical).
+    const histSet = new Set(HIST_KEYS);
+    for (const [c, status] of Object.entries(ctx.DATA_STATUS_OVERRIDES)) {
+        if (status === 'modern') continue;  // 'modern' override is consistent with non-HIST
+        if (!ctx.LANG_DATA[c]) continue;    // already caught by check #13c above
+        if (!histSet.has(c)) {
+            W(`${c}: DATA_STATUS_OVERRIDES = '${status}' but NOT in HIST_DESCENDANT — ` +
+              `UI filter will treat as modern (Session 29 inverse invariant)`);
+        }
     }
 }
 
