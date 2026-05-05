@@ -21,10 +21,17 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §32 ko_jeju Jeju reclassification (Option A) | ✅ Fixed | 1 lang reclass |
 | §46/§47 Naxi nxq: contamination + tone restoration | ✅ Fixed | 20 |
 | §48 Bouyei pcc tone letters → IPA Chao tones | ✅ Fixed | 20 |
+| §56/B Tujia tji love/thanks tone restoration | ✅ Fixed | 2 |
+| §60 Thai: over-marked ˥ → ˧ for inherent-mid words | ✅ Fixed | 11 |
+| §61 Lao: taːwēn romanization → IPA (full row tone deferred) | ✅ Fixed (1 cell) | 1 |
+| §64 Cantonese yue: simplified → traditional script (HK) | ✅ Fixed | 6 |
+| §65 Taiwanese nan: 媽媽/爸爸 tone added | ✅ Fixed | 2 |
+| §67 Arabic ar: eat/drink wordEvidence note (perfective lemma) | ✅ Annotated | 3 |
 | Systemic concept definitions | ⏸️ Schema work — Phase 4 候補 | — |
 | Pass 2-6 family-wide IPA cleanup (Slavic ts, Turkic, Polynesian, etc.) | ⏸️ Deferred (要 family-wide review + source) | — |
+| Pass 7 deferred: §62 Burmese tone, §63 Khmer transliteration, §66 id/ms/tl IPA, §68 ta/te register, §69 Tibetan tone | ⏸️ Deferred (要 source + policy) | — |
 
-**Total fixed:** 81 cells + 2 language reclassifications across 17 modern languages.
+**Total fixed:** 106 cells + 2 language reclassifications across 23 modern languages.
 
 ---
 
@@ -58,9 +65,9 @@ Japanese moraic nasal の placeholder `N` を実際の IPA `ɴ` (LATIN LETTER SM
 | `ja_sd` | Japanese (Sendai) | `mother`/`father` | `okːasaN`/`otːosaN` | `okːasaɴ`/`otːosaɴ` |
 | `wuu_nb` | Ningbo Wu | `heart`/`eye` | `siN˦˦`/`ŋɛ˨˧tɕiN˦˦` | `siɴ˦˦`/`ŋɛ˨˧tɕiɴ˦˦` |
 
-Audit reference: Cambridge JIPA は Japanese final moraic nasal の utterance-final realization を主に [ɴ] と記述。`ɴ` を採用。
+Audit reference: Cambridge JIPA は Japanese final moraic nasal の utterance-final realization を主に [ɴ] と記述。本プロジェクトの transcription policy として `ɴ` を採用 (universally strict IPA ではなく、project-specific convention)。
 
-これは historical lang (my Burmese, rki Rakhine) で Session 2 に既に行った同種正規化の modern 言語版。Word Map 全体で N → ɴ が一貫。
+これは Session 2 に行った Burmese (my, modern) / Rakhine (rki, modern) と同種の placeholder N の正規化を modern Japanese/Wu 言語にも適用したもの。Word Map 全体で N → ɴ が一貫。
 
 ---
 
@@ -300,9 +307,81 @@ Audit pass 2-6 の以下 categories は family-wide review + source 必須なた
 - §36 mother/father formal vs informal (policy)
 - §38-§42 regional variant rows (要 coverage flag schema or family review)
 - §43 coverage/confidence flag (要 schema 拡張)
-- §47-§58 Asian minority lang tone omission (Naxi/Bouyei/Iu Mien/Tai Lue/Shan/Lahu/Mlabri/Khmu/Wa/Tujia/Hmong/Zhuang/Jingpo/Akha) — 要 tone source per family
+- §47-§58 Asian minority lang tone omission (Iu Mien/Tai Lue/Shan/Lahu/Mlabri/Khmu/Wa/Hmong/Zhuang/Jingpo/Akha) — 要 tone source per family (Naxi/Bouyei/Tujia は本セッションで完了)
 
 これらは概ね Session 43+ または schema phase 4-5 で対処候補。
+
+---
+
+## Pass 7 fixes (✅ 6 categories applied)
+
+Audit Pass 7 (major Asian languages) のうち、source-confident な concrete 修正を適用:
+
+### §60 Thai — over-marked ˥ → ˧ (✅ 11 cells)
+
+Audit confirmed via Wiktionary: 多くの Thai 単語が inherent mid tone なのに ˥ (high) と marked。Bangkok Thai の正しい tone に修正。
+
+| Concept | 旧 IPA | 新 IPA | Wiktionary 根拠 |
+|---|---|---|---|
+| fire ไฟ | `faj˥` | `faj˧` | mid (compounds confirm) |
+| eat กิน | `kin˥` | `kin˧` | /kin˧/ |
+| heart ใจ | `tɕaj˥` | `tɕaj˧` | mid |
+| eye ตา | `taː˥` | `taː˧` | /taː˧/ |
+| good ดี | `diː˥` | `diː˧` | /diː˧/ |
+| cat แมว | `mɛːw˥` | `mɛːw˧` | mid |
+| hand มือ | `mɯː˥` | `mɯː˧` | mid |
+| sun (1+2 syllable) | `duaŋ˥ʔaː˥...` | `duaŋ˧ʔaː˧...` | both inherent mid |
+| moon | `duaŋ˥tɕan˥` | `duaŋ˧tɕan˧` | both inherent mid |
+| hello (last syl) | `...diː˥` | `...diː˧` | ดี mid |
+| thanks (last syl) | `...kʰun˥` | `...kʰun˧` | คุณ mid |
+| house บ้าน | `baːn˧˥` | `baːn˥˩` | /bâːn˥˩/ falling (corrected) |
+
+`น้ำ` (high), `แม่`/`พ่อ` (falling), `รัก` (high), `หนึ่ง` (low), `ดื่ม` (falling) は audit 通り keep。
+
+### §61 Lao — taːwēn romanization → IPA (✅ 1 cell)
+
+`sun ຕາເວັນ`: `taːwēn` → `taːwen` (`ē` non-IPA macron 削除)。Lao 全行の声調復元は per-cell source が必要のため deferred。
+
+### §64 Cantonese yue — simplified → traditional script (✅ 6 cells)
+
+HK Cantonese 行で simplified 字 を traditional に統一:
+- 日**头** → 日**頭** (sun)
+- **妈妈** → **媽媽** (mother)
+- **饮** → **飲** (drink)
+- **爱** → **愛** (love)
+- **树** → **樹** (tree)
+- **猫** → **貓** (cat)
+- 多**谢** → 多**謝** (thanks)
+
+### §65 Taiwanese nan — 媽媽/爸爸 tone added (✅ 2 cells)
+
+Mandarin loan kinship terms in Taiwanese pronounced high level (˥˥):
+- mother 媽媽: `mama` → `ma˥ma`
+- father 爸爸: `papa` → `pa˥pa`
+
+### §67 Arabic ar — eat/drink/one wordEvidence note (✅ 3 cells)
+
+Audit 指摘: Arabic `أكل/ʔakala`, `شرب/ʃariba` は perfective 3ms ("he ate"/"he drank") であり、displayed as infinitive-like concept では misleading。Arabic に直接の infinitive equivalent は無いため、wordEvidence note で明示 (form は keep)。`one واحد` も masculine form note 追加。
+
+### §56/B Tujia tji — love/thanks tone restoration (✅ 2 cells)
+
+Audit follow-up B: surface に tone digit (`a2ci1`, `ang2zai1`) が残り IPA に tone なし。他の tji 行と一致するよう surface clean + IPA tones 追加:
+- love: `a2ci1` / `atsi` → `aci` / `a˧˥tsi˥`
+- thanks: `ang2zai1` / `aŋtsai` → `angzai` / `aŋ˧˥tsai˥`
+
+Tone numerals 1=˥ (55), 2=˧˥ (35) per Northern Tujia standard scheme (matches existing row's ˥˧/˧˥/˨˩/˧ inventory).
+
+### Pass 7 deferred items
+
+| § | Lang | 理由 |
+|---|---|---|
+| §62 | `my` Burmese | tone/phonation 全行整合化に grave/acute/creaky 適用が necessary、per-syllable source 必要 |
+| §63 | `km` Khmer | 全行 IPA rebuild 必要、per-cell source verification |
+| §66 | `id`/`ms`/`tl` | 第二列が IPA か broad transcription か policy 決定が先 |
+| §68 | `ta`/`te` | concept-level register policy が先 |
+| §69 | `bo` Tibetan | Lhasa/Central source per-cell verification 必要 |
+
+これらは concrete column-policy + family source pass を経て対応。
 
 ---
 
@@ -315,11 +394,11 @@ ALLOWLISTED: 1  (mon/mnw)
 INFOS:    3
   · 101 word entries contain "—"
   · 26 duplicate-coordinate groups
-  · wordEvidence overlay: 21 languages, 165 cells annotated
+  · wordEvidence overlay: 22 languages, 168 cells annotated
 PASS
 ```
 
-Cache buster `v=46 → v=51` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=52` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
 
 ---
 
