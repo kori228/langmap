@@ -247,3 +247,78 @@ PASS
 - §6.31 別アプローチ — Japanese/Ningbo の `N` を許容するなら IPA 欄ラベルを「発音/転写」に緩める
 
 ---
+
+## Session 3 (2026-05-04): UI ラベル改名 §6.20 + §6.22
+
+**スコープ:** WM_UI ラベルを audit 推奨形に改名（21 UI言語すべて）。
+歴史語の Latin 転写・学術転写・再構記法を「IPA」「原文」と呼ぶのは misleading という §6.20 / §6.22 の指摘に対応。
+
+### 設計判断
+
+audit は短期対応として `IPA / transcription` / `発音/転写` 形・`表記` / `Form` 形を推奨。
+ただし右パネル toggle ボタンは max-width 56px に制約されるため、長い表記は溢れる。
+
+→ WM_UI に**新キーを追加**し、**用途別に短形/長形を分ける**：
+
+- `word` / `ipa`: toggle ボタン用（短形、56px に収まる）
+- `wordCol` / `ipaCol`: モーダル単語表ヘッダ用（長形、audit 推奨どおり）
+
+モーダルの単語表に **thead を新設**し、`wordCol` / `ipaCol` で列ヘッダを表示（従来は無ヘッダ）。
+これで audit の指摘を honor しつつ、toggle ボタンの UX を壊さない。
+
+### 変更内容
+
+**`wordmap_data.js`** - WM_UI 全 21 言語に対し:
+- `word`: 旧値 `原文` / `Word` / `Wort` 等 → 新値 `表記` / `Form` / `Forme` 等
+- `ipa`: 旧値そのまま（短形、toggle ボタン用ラベル）
+- `wordCol` (新規): `表記` / `Form / Transliteration` / `Forme / Translittération` 等 — 長形
+- `ipaCol` (新規): `発音/転写` / `IPA / Transcription` / `API / Transcription` / `МФА / Транскрипция` 等 — 長形
+
+| Lang | word (toggle) | ipa (toggle) | wordCol (header) | ipaCol (header) |
+|---|---|---|---|---|
+| ja | 表記 | 発音 | 表記 | 発音/転写 |
+| ko | 표기 | 발음 | 표기 | 발음/전사 |
+| zh | 写法 | 发音 | 写法 | 发音/转写 |
+| en | Form | IPA | Form / Transliteration | IPA / Transcription |
+| de | Form | IPA | Form / Transliteration | IPA / Transkription |
+| fr | Forme | API | Forme / Translittération | API / Transcription |
+| ru | Форма | МФА | Форма / Транслитерация | МФА / Транскрипция |
+| ar | كتابة | صوتي | كتابة / حرفنة | صوتي / نسخ |
+| (他14言語も同様) | | | | |
+
+**`wordmap.html`:**
+- `<button id="toggle-word">` の static label を `Word` → `Form` に変更（JS が言語切替時に上書きするが初期描画用）
+- `aria-label` を `Toggle word display` → `Toggle form display`、`Toggle IPA display` → `Toggle IPA / transcription display` に変更
+- モーダルの単語表に `<thead><tr>...</tr></thead>` を追加。Concept 列は空、`wt('wordCol')` / `wt('ipaCol')` でヘッダラベルを描画
+- フォールバック: `wt('wordCol') || wt('word')` とすることで、欠落時は短形にフォールバック
+- Cache buster: `wordmap_data.js?v=23` → `?v=24`
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+INFOS:    66 (—) + 32 (dup-coord)
+PASS
+```
+
+### Session 3 中に気付いた追加問題（未対応・記録のみ）
+
+1. **モーダル単語表の concept 列ヘッダが空欄** — Session 3 で thead を追加したが Concept 列は空にした。`概念` / `Concept` / `의미` 等のラベルキー（例: `concept`）を WM_UI に追加し、Session 4 以降で thead 第1セルに描画するのが望ましい。
+
+2. **`title` 属性が toggle ボタンで `wt(key)` を直接使用** ([wordmap.html:613](wordmap.html#L613)) — 現状 toggle ボタン hover 時の tooltip も短形（IPA/発音）になっている。`title` を `wt(key+'Col')` に切り替えれば、hover で長形（IPA / Transcription）が表示でき、audit の意図がより伝わる。Session 4 で対応候補。
+
+3. **WM_UI の `english` キーが全言語で `'English'` リテラル** — UI 言語切替プルダウンの「English」表示用と思われるが、`WM_UI_LABELS.en` でも同じ `'English'` を保持しており重複。schema 整理候補だが UX 影響なしのため後回し。
+
+4. **`word.label` (WORD_LIST) と `WM_UI.*.word` の命名衝突注意** — `word` という名前が「単語の概念ラベル（apple, dog 等）」と「列ヘッダのラベル（Form 等）」で異なる文脈に使われている。次回 schema 拡張時に `WM_UI.word` を `WM_UI.formCol` 等に rename する余地あり（今回は破壊的変更を避けて温存）。
+
+### 持ち越し（Session 4 以降）
+
+- §7.6 duplicate-coordinate UI clustering
+- §7.7 Cell-level evidence status のスキーマ化
+- §6.16 Iranian glk/lrc/bqi `eat == drink`（個別辞書ベース）
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- 上記 Session 3 中に気付いた4項目（モーダル concept 列ヘッダ、toggle title 長形化、WM_UI schema 整理）
+
+---
