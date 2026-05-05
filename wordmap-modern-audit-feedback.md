@@ -38,6 +38,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 105: SEO/OpenGraph text — remove "IPA pronunciations" overclaim | ✅ Fixed | meta + README |
 | Task 118: `languageKind` schema + UI badge + first-pass labeling | ✅ 94 langs labeled + UI | 94 langs |
 | Task 109: `codeType` + `canonicalCode` schema + 100% coverage + validator | ✅ 578/578 codeType + 82 canonicalCode | all langs |
+| Task 95+128: Concept definition visible UI (under word-select) + CONTRIBUTING.md | ✅ Always-visible, not hover-only | UI + docs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -529,6 +530,55 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Tasks 95 + 128 — Concept definition visible UI + CONTRIBUTING.md (✅)
+
+Task 82 で WORD_LIST に多言語 `definition: { en, ja, ko, zh }` field を追加したが、UI にはまだ表示されていなかった。Audit Task 95 が "concept-definition UI not depend on hover only" と要求、Task 128 が "Update contributor docs and validator for the new WORD_LIST.definition shape" と要求。両方に対応:
+
+### UI: 単語選択 dropdown 下に常時表示 ([wordmap.html:361-362, 697-733](wordmap.html#L361-L362))
+
+```html
+<!-- 旧 -->
+<select id="word-select" aria-label="Select word"></select>
+
+<!-- 新 -->
+<select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
+<div id="word-definition" style="font-size:10px;color:#888;font-style:italic"></div>
+```
+
+`updateWordDefinition()` 関数:
+- 現在選択中の concept の `definition[uiLang]` を取得
+- ja/ko/zh 揃っていればローカライズ表示
+- 無ければ `definition.en` + Task 121 と同じ `(English fallback)` italic 注記
+- UI lang 切り替え (`langmap:uichange` event) でも自動更新
+
+**現在の表示例 (default selection = water):**
+- en UI: "Drinkable water (H₂O); the basic substance, not a body of water."
+- ja UI: "飲用・生活用の水 (H₂O)。川・湖・海などの水域そのものではない。"
+- ko UI: "마시거나 일상에 쓰는 물 (H₂O). 강·호수·바다 같은 수역 자체가 아니다."
+
+User が `heart` を選択すると "Default: the basic emotional/cognitive heart/mind term..." と表示され、「なぜ ja=心 / ko=마음 / hi=दिल / fr=cœur のように身体器官と精神を兼ねる単語があるのか」という concept-scope ambiguity が即座に解決。
+
+これは **always-visible**、hover/click 不要 — audit Task 95 の核心要件を満たす。
+
+### CONTRIBUTING.md update ([CONTRIBUTING.md:813-855](CONTRIBUTING.md#L813-L855))
+
+旧:
+> Each `WORD_LIST` entry is now `{ id: 'water', label: { en, ja, ... } }`
+
+新: 完全な多言語 definition shape の例 + difficult concepts 表 + validator 規則を documentation 化:
+
+| Concept | Why it needs explicit definition |
+|---|---|
+| `heart` | Anatomical organ vs mind/soul (E/SE Asian langs use 心/마음/ใจ for the latter) |
+| `love` | Noun vs verb citation form depending on language |
+| `good` | Adjective form; not the adverb "well" or a greeting response |
+| `hello` | Neutral everyday greeting, not time-of-day forms unless the language only has those |
+| `eat` / `drink` | Citation form policy (infinitive / Semitic perfective 3ms / SE Asian bare stem) |
+
+Future contributor が新 concept を追加する時、これらの policy が明文化されているため drift を防止。
+
+---
+
 ## Audit Task 109 — codeType + canonicalCode schema (✅ 578/578 + 82 canonical)
 
 Audit が "There are 86 non-simple custom-looking codes containing underscores" の taxonomy を要求。Project が ISO 639-1/3 と project regional codes を mix しているが分類されていないため、validator も documentation もそれを区別できなかった。
@@ -1005,7 +1055,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=61` (data) / `v=16 → v=25` (meta, +Tasks 84/99/105/109/118/121)。Centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=62` (data) / `v=16 → v=25` (meta, +Tasks 84/95/99/105/109/118/121/128)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 

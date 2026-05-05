@@ -358,7 +358,8 @@
 
     <!-- Top-left controls (below header): word select + era + lang search -->
     <div class="top-left-controls">
-        <select id="word-select" aria-label="Select word"></select>
+        <select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
+        <div id="word-definition" style="font-size:10px;color:#888;font-style:italic;padding:2px 4px;max-width:520px;line-height:1.35"></div>
         <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
             <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
             <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
@@ -424,7 +425,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=61"></script>
+    <script src="wordmap_data.js?v=62"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -562,7 +563,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      61,
+            data:      62,
             metaI18n:  8,
             filter:    22,
             names:     2,
@@ -694,10 +695,45 @@
         }
         rebuildWordSelect();
 
+        // Audit Task 95/128: visible concept definition under the word
+        // selector. Localized en/ja/ko/zh with English fallback marked
+        // (reuses Task 121 fallback-label pattern).
+        function updateWordDefinition() {
+            const wd = document.getElementById('word-definition');
+            if (!wd) return;
+            const w = WORD_LIST.find(x => x.id === select.value);
+            if (!w || !w.definition) { wd.textContent = ''; return; }
+            const def = w.definition;
+            if (typeof def === 'string') {
+                wd.textContent = def;
+                return;
+            }
+            const baseLang = uiLang.split('_')[0];
+            const text = def[uiLang] || def[baseLang] || def.en || '';
+            const isFallback = uiLang !== 'en' && !def[uiLang] && !def[baseLang] && !!def.en;
+            wd.textContent = '';
+            wd.appendChild(document.createTextNode(text));
+            if (isFallback && text) {
+                const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                    || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                    || ENGLISH_FALLBACK_LABEL.en;
+                const fb = document.createElement('span');
+                fb.style.color = '#aaa';
+                fb.style.fontSize = '9px';
+                fb.style.marginLeft = '4px';
+                fb.textContent = `(${fbLabel})`;
+                wd.appendChild(fb);
+            }
+        }
+
         select.addEventListener('change', () => {
             updateMarkers(select.value);
+            updateWordDefinition();
             updateHash();
         });
+        updateWordDefinition();
+        // Refresh definition text when UI lang changes
+        window.addEventListener('langmap:uichange', updateWordDefinition);
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;

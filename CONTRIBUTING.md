@@ -810,11 +810,46 @@ Why these fields:
 - **locationBasis**: per §9, the single `lat/lng` mixes capital / prestige center / historical site / approx region. Knowing the basis prevents the map from being misread as "speaker distribution."
 - **sources**: per §15, source citations should at minimum exist at language level for accountability. Per-word `sources` is not required (would be 11,580 entries) but supported via the same shape if you want to record per-form citations.
 
-### K. WORD_LIST shape (refactored 2026-05-04)
+### K. WORD_LIST shape (refactored 2026-05-04, definition added 2026-05-05)
 
-Each `WORD_LIST` entry is now `{ id: 'water', label: { en, ja, ko, zh, id, … } }`. The Indonesian key is `id` (not `ind` like before — the legacy collision-avoidance was needed when the entry's own id was a top-level field, but now it's nested in `label` so there's no clash).
+Each `WORD_LIST` entry has the shape:
 
-If you add a new concept to `WORD_LIST`, fill `label` for at least `en`, `ja`, `ko`, `zh`, `de`, `fr`, `es`, `pt`, `ru`, `ar`. The rendering falls back to `label.en` for missing UI langs.
+```js
+{
+  id: 'water',
+  definition: {
+    en: 'Drinkable water (H₂O); ...',
+    ja: '飲用・生活用の水 (H₂O)。...',
+    ko: '마시거나 일상에 쓰는 물 (H₂O). ...',
+    zh: '可饮用或日常使用的水 (H₂O)；...'
+  },
+  label: { en, ja, ko, zh, id, … }
+}
+```
+
+The Indonesian key is `id` (not `ind` like before — the legacy collision-avoidance was needed when the entry's own id was a top-level field, but now it's nested in `label` so there's no clash).
+
+**Required for new concepts:**
+- `id`: lowercase ascii identifier
+- `label.en` and at least `ja`, `ko`, `zh`, `de`, `fr`, `es`, `pt`, `ru`, `ar`
+- `definition.en` (required) plus `ja`, `ko`, `zh` (priority UI langs per validator check #12b')
+
+**`definition` semantics** — defines the intended concept, not just UI help text. It locks down what each cell should mean so that future reviewers don't "fix" valid cells to a different sense. Difficult concepts that especially benefit from clear definitions:
+
+| Concept | Why it needs explicit definition |
+|---|---|
+| `heart` | Anatomical organ vs mind/soul (E/SE Asian langs use 心/마음/ใจ for the latter) |
+| `love` | Noun vs verb citation form depending on language |
+| `good` | Adjective form; not the adverb "well" or a greeting response |
+| `hello` | Neutral everyday greeting, not time-of-day forms unless the language only has those |
+| `eat` / `drink` | Citation form policy (infinitive / Semitic perfective 3ms / SE Asian bare stem) |
+
+If you add a new concept, include `definition` in the Option A multilingual-object shape. The renderer falls back to `definition.en` for missing UI langs, with a visible "(English fallback)" note (per Task 121).
+
+The validator (#12b' / #12b") requires:
+- `definition.en` present (ERROR if missing)
+- `definition.ja`/`ko`/`zh` strongly recommended (WARN if missing)
+- String `definition` rejected (the legacy partial implementation from Task 82 is now blocked)
 
 ### L. LANG_NAMES is now in `lang_names.js`
 
