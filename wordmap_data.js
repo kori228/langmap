@@ -879,8 +879,8 @@ const LANG_DATA = {
         "paxːur"
       ],
       "sun": [
-        "𒅆𒉿𒀜",
-        "ʃiwatː"
+        "—",
+        "—"
       ],
       "moon": [
         "𒀀𒅈𒈠",
@@ -1883,8 +1883,8 @@ const LANG_DATA = {
         "zuwana"
       ],
       "cat": [
-        "𔓯𔗬𔑯",
-        "marwaːra"
+        "—",
+        "—"
       ],
       "hand": [
         "𔖻𔑯",
@@ -1895,12 +1895,12 @@ const LANG_DATA = {
         "hidu"
       ],
       "hello": [
-        "𔖖𔓯",
-        "halzai"
+        "—",
+        "—"
       ],
       "thanks": [
-        "𔓷𔗬",
-        "wala"
+        "—",
+        "—"
       ],
       "one": [
         "𔑯",
@@ -2011,8 +2011,8 @@ const LANG_DATA = {
         "kuwɔːn"
       ],
       "cat": [
-        "𐀀𐀂𐀨𐀫",
-        "ailuros"
+        "—",
+        "—"
       ],
       "hand": [
         "𐀐𐀁",
@@ -2023,12 +2023,12 @@ const LANG_DATA = {
         "opʰtʰalmos"
       ],
       "hello": [
-        "𐀐𐀂𐀩",
-        "kʰaire"
+        "—",
+        "—"
       ],
       "thanks": [
-        "𐀐𐀩",
-        "kʰaris"
+        "—",
+        "—"
       ],
       "one": [
         "𐀁",
@@ -2670,7 +2670,7 @@ const LANG_DATA = {
   // Jurchen — Jin dynasty (1115-1234), ancestor of Manchu. Jurchen script is
   // not in Unicode; Latin transliteration after Kane (1989), Jin (1984).
   juc: { name: 'Jurchen', native: 'jušen gisun', lat: 45.55, lng: 126.97,
-    words: { water:['muke','muke'], fire:['tuwa','tuwa'], sun:['šun','ʃun'], moon:['biya','bija'], mother:['eme','eme'], father:['ama','ama'], eat:['jefu','dʒefu'], drink:['omi','omi'], love:['gosi','ɡosi'], heart:['niyaman','niaman'], tree:['mo','mo'], house:['boo','boː'], dog:['indahǔn','indahuːn'], cat:['kesike','kesike'], hand:['gala','ɡala'], eye:['yasa','jasa'], hello:['saiyūn','sajuːn'], thanks:['baniha','baniha'], one:['emu','emu'], good:['sain','sain'] }},
+    words: { water:['muke','muke'], fire:['tuwa','tuwa'], sun:['šun','ʃun'], moon:['biya','bija'], mother:['eme','eme'], father:['ama','ama'], eat:['jefu','dʒefu'], drink:['omi','omi'], love:['gosi','ɡosi'], heart:['niyaman','niaman'], tree:['mo','mo'], house:['boo','boː'], dog:['indahǔn','indahuːn'], cat:['kesike','kesike'], hand:['gala','ɡala'], eye:['yasa','jasa'], hello:['—','—'], thanks:['—','—'], one:['emu','emu'], good:['sain','sain'] }},
   // Old Mon — Dvaravati / Pagan-era Mon (6-11c.). Mon script (Brahmic).
   // Reconstructions follow Shorto (1971) and Diffloth.
   omx: { name: 'Old Mon', native: 'ဘာသာ မန်', lat: 16.92, lng: 97.36, // Thaton

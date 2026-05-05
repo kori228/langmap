@@ -1712,3 +1712,277 @@ PASS
 5. `elx` は partly-understood 言語として cell-level evidence status 導入とセットで再設計するのがよい。
 
 ---
+
+## Codex 追加レビュー 3 (2026-05-05): Hittite / Mycenaean / Scythian / Khitan 系
+
+**スコープ:** 前回に続き ancient / fragmentary language blocks を確認。今回は `hit` Hittite、`gmy` Mycenaean Greek、`xsc` Scythian、`zkt` Khitan を中心に見た。データ修正は未実施。結果は Session 16+ の review queue とする。
+
+### `hit` Hittite: 大半は妥当だが `sun` と `love` は意味ずれ
+
+- 対象: `wordmap_data.js` `hit` block。
+- 評価: **Hittite は比較的強い。`water`, `fire`, `tree`, `eye`, `good` などは外部辞書で確認できる。一方、少なくとも `sun` と `love` は見直し候補。**
+- 確認できたセル:
+  - `water: watar` は IDS Hittite で確認。
+  - `fire: pahhur` は IDS Hittite で確認。
+  - `tree: taru` は Hittite Wiktionary で `wood/tree` として確認。
+  - `eye: sakuwa` は IDS / Palaeolexicon で確認。
+  - `good: assu` は Hittite lexicon で `good`、さらに `assu: hello!` greeting としても確認。
+- 要修正候補:
+  - `sun:['𒅆𒉿𒀜','ʃiwatː']` は **sun ではなく day** の可能性が高い。Hittite lexicon では `siwatt-` = day、IDS では sun = `istanu-/astanu-`。
+  - `love:['𒀸𒅆𒅀𒀭','asːijant']` は `dear/loved; friend` 寄り。`love` セルとしては `assiya-` (to love) または `assiyatar` (love) を検討すべき。
+  - `hello` は現在 `—` だが、Hittite lexicon に `assu: hello!` がある。保守方針なら `—` 維持でもよいが、attested greeting として埋める候補はある。
+- 参照:
+  - https://ids.clld.org/units/208-16 (`watar` = water)
+  - https://ids.clld.org/units/208-58 (`pahhur` = fire)
+  - https://en.wiktionary.org/wiki/%F0%92%8B%AB%F0%92%80%80%F0%92%8A%92 (`taru` = wood/tree)
+  - https://ids.clld.org/valuesets/1-520-208 (`istanu-/astanu-` = sun)
+  - https://ids.clld.org/valuesets/14-410-208 (`siwat-` = day)
+  - https://www.assyrianlanguages.org/hittite/en_lexique_hittite.htm (`assiya-`, `assiyatar`, `assu`)
+  - https://www.palaeolexicon.com/Word/Show/26376 (`sakuwa` = eye)
+
+### `gmy` Mycenaean Greek: strong review candidate、Linear B と後代ギリシャ語の混同疑い
+
+- 対象: `wordmap_data.js` `gmy` block。
+- 評価: **かなり危険。Linear B は syllabary で、主に宮殿行政文書の記録用。現 block は後代/古典ギリシャ語の語彙を Linear B 風の記号列にしたものが多く、実際の Linear B attestation と整合しない可能性が高い。**
+- 背景:
+  - Britannica は Mycenaean Greek を Linear B で書かれた palace records / inventories の chancellery language と説明。
+  - Linear B は open syllables を表す syllabary で、閉音節・子音連結・有気/無気などを正確に表せない。
+  - したがって `hudɔːr`, `kardia`, `opʰtʰalmos`, `agatʰos` などをそのまま Linear B surface として示すのは危険。
+- 強い疑義:
+  - `water:['𐀓𐀈','hudɔːr']` は、Linear B の実際の綴り・音価確認が必要。後代 Greek `hydōr` をそのまま復元しただけの可能性。
+  - `tree:['𐀈𐀏','dorka']` は Greek `dorkas` 系なら「gazelle/deer」寄りで、tree ではない可能性がある。最優先確認候補。
+  - `cat:['𐀀𐀂𐀨𐀫','ailuros']` は `ailouros` が後代 Greek の cat word として知られるが、Mycenaean Linear B attestation は未確認。`cat` は `—` 候補。
+  - `hello:['𐀐𐀂𐀩','kʰaire']` / `thanks:['𐀐𐀩','kʰaris']` は後代 Greek greeting/thanks を Mycenaean に投影している疑いが強い。行政文書 corpus で会話句として確認できなければ `—` 化候補。
+  - `good:['𐀀𐀏𐀳','agatʰos']` も後代 Greek `agathos` の投影に見える。Linear B attested form を要確認。
+- 参照:
+  - https://www.britannica.com/topic/Mycenaean-language
+  - https://www.britannica.com/topic/Linear-A
+  - https://www.worldhistory.org/Linear_B_Script/
+  - https://www.palaeolexicon.com/Linear%20B
+
+### `xsc` Scythian: conservative だが、reconstructed proxy であることを UI/meta に出すべき
+
+- 対象: `wordmap_data.js` `xsc` block。
+- 評価: **現状は `—` が多く比較的保守的。ただし埋まっている値は大半が Avestan/Old Iranian proxy で、Scythian directly attested ではない。**
+- 背景:
+  - Encyclopaedia Iranica は Scythian language が authentic continuous texts を持たず、主に名前・Herodotus などの間接資料から fragmentary に知られると説明。
+  - `spaka` = dog は Iranica で Scythian name `Išpakaia` の基礎として `*spaka-` dog が確認できるため、かなり強い。
+- 個別評価:
+  - `dog:['spaka','spaka']` は比較的強い。
+  - `water: ap`, `fire: ātar`, `sun: hvar`, `moon: māh`, `mother/father`, `good: vohu` などは Old Iranian proxy として plausible だが、Scythian 固有 attest ではない可能性。
+  - `DATA_STATUS_OVERRIDES.xsc` は reconstructed/proxy で明示すべき。各セルに `source: proxy-from-Avestan/Old-Iranian` のような注記があると安全。
+- 参照:
+  - https://www.iranicaonline.org/articles/scythian-language/
+  - https://www.britannica.com/topic/Scythian
+
+### `zkt` Khitan: partially deciphered 言語として、20語を多く埋めすぎている可能性
+
+- 対象: `wordmap_data.js` `zkt` block。
+- 評価: **要再査定。Khitan は Unicode small script が使える一方、言語・文字は部分解読で、非自明なテキストはまだ完全には読めない。現 block の 17/20 程度が埋まっているのは confidence 表示なしでは強すぎる。**
+- 背景:
+  - Wikisource Khitan page は Khitan large/small scripts が partially deciphered で、non-trivial texts は fully understood ではないと説明。
+  - Kane 2009 は中心資料だが、一般語彙すべてが確定しているわけではない。
+- 個別評価:
+  - `water:muri`, `fire:niár`, `sun:nair`, `moon:sair` などは Kane 由来の可能性があるが、出典セルが必要。
+  - `love:nasun`, `heart:niyàmen`, `good:sayïn` など抽象語は特に要確認。
+  - `hello/thanks/cat` を `—` にしている点は保守的でよい。
+  - `DATA_STATUS_OVERRIDES.zkt` は既に `partly-understood` なら、UI 上も `provisional` 表示が必要。
+- 参照:
+  - https://wikisource.org/wiki/Main_Page/Khitan
+  - https://researchers.mq.edu.au/en/publications/the-kitan-language-and-script/
+  - https://www.babelstone.co.uk/Khitan/Kane2009List.html
+  - https://www.omniglot.com/writing/khitan.htm
+
+### 今回の結論と次の優先順
+
+1. `gmy` Mycenaean Greek は block 全体を Linear B attested forms で再構築する必要がある可能性が高い。
+2. `hit.sun` は `siwatt-` = day の可能性が高く、`istanu-/astanu-` へ修正候補。`hit.love` も `assiya-/assiyatar` に要再検討。
+3. `xsc` Scythian は proxy 明示が必要。`spaka` 以外は Scythian direct attest と混同しない。
+4. `zkt` Khitan は partially deciphered として、セル単位の confidence/source を付けるまで強く表示しすぎない。
+5. 前回からの `xlu` / `kho` / `sux.good` は引き続き優先度高。
+
+---
+
+## Codex 追加レビュー 4 (2026-05-05): Jurchen / Old Mon / Pyu / Old Burmese / Old Cham
+
+**スコープ:** `zkt` Khitan の隣接ブロックとして、`juc` Jurchen、`omx` Old Mon、`pyx` Pyu、`obr` Old Burmese、`occ` Old Cham を確認。データ修正は未実施。今回も「確実な誤字」より、attestation / proxy / 後代語投影の強さを評価した。
+
+### `juc` Jurchen: 現 block は Manchu 形の投影が強く、Jurchen direct attest としては危険
+
+- 対象: `wordmap_data.js` `juc` block。
+- 評価: **strong review candidate。Jurchen は Manchu の祖先言語だが、現 block の多くは Manchu とほぼ同形で、Kane 1989 の Sino-Jurchen Vocabulary などで direct attestation をセル単位確認するまで Jurchen 語形として強く表示しない方がよい。**
+- 背景:
+  - Britannica は Jurchen について、現存する written examples が少なく、言語について「almost nothing is known」とする。
+  - ScriptSource / Writing Systems Technical Resources も、Jurchen text は碑文・陶器・鏡などの限られた資料がほとんどで、script は Unicode 未収録と説明する。
+  - Kane 1989 `The Sino-Jurchen vocabulary of the Bureau of Interpreters` は重要な一次的参照だが、オンラインで各セルを直接照合できる形では確認できなかった。
+- 個別疑義:
+  - `water:muke`, `fire:tuwa`, `sun:šun`, `moon:biya`, `mother:eme`, `father:ama`, `eat:jefu`, `drink:omi`, `love:gosi`, `heart:niyaman`, `tree:mo`, `house:boo`, `hand:gala`, `eye:yasa`, `good:sain` は Manchu 基本語彙として自然すぎる。Jurchen としては Kane/Jin の entry 番号または対応漢語 gloss が必要。
+  - `hello:saiyūn` と `thanks:baniha` は特に現代/後代 Manchu 的な会話句に見える。Jurchen 碑文・Sino-Jurchen vocabulary で greeting / thanks として確認できなければ `—` 候補。
+  - `cat:kesike` も direct attestation が必要。古代・中世資料で cat word は後代語から補われがち。
+- 方針候補:
+  - `DATA_STATUS_OVERRIDES.juc` を現状 `attested` のままにするなら、各セルに `source: Kane 1989` レベルの根拠を持たせる。
+  - direct source が揃わない場合は、`juc` を `fragmentary/proxy` 寄りに表示し、会話句 (`hello/thanks`) は `—` 化を検討。
+- 参照:
+  - https://www.britannica.com/topic/Juchen-language
+  - https://scriptsource.org/cms/scripts/page.php?item_id=script_detail&key=Jurc
+  - https://writingsystems.info/scrlang/scripts/jurc/
+  - https://catalogue.nla.gov.au/catalog/2874292
+
+### `omx` Old Mon: 基礎語は Shorto で確認可能だが、modern Mon script 表示と時代層に注意
+
+- 対象: `wordmap_data.js` `omx` block。
+- 評価: **比較的 plausible。ただし surface 欄が現代 Mon/Burmese 系フォントで表示されており、Dvaravati / Pagan-era Old Mon の実際の碑文字形ではない。語形は Shorto 1971 / 2006 でセル単位確認が必要。**
+- 背景:
+  - Shorto `A dictionary of the Mon inscriptions from the sixth to the sixteenth centuries` と `A Mon-Khmer Comparative Dictionary` が主要資料。
+  - ANU の Open Research Repository では Shorto/Sidwell/Cooper/Bauer 2006 が Open Access として公開されている。
+  - Mon は 6 世紀頃から書かれたが、Dvaravati 系 Old Mon script と Lower Burma 系 Old Mon script の系統差がある。
+- 個別評価:
+  - `water:ဍာ်/ɗaːk`, `sun:တ္ၚဲ/tŋai`, `house:သ္ၚိ/sŋiʔ`, `eye:မတ်/mat`, `good:ခိုဟ်/kʰɔh` は Mon 系として plausible。
+  - `fire:ပ်ၟ/pmaʔ`, `moon:ဂျိုၚ်/klɔŋ`, `cat:ဂျိ/kluj`, `love:ဖျုန်/pʰyon` は Shorto の entry で直接確認したい。特に `cat` と `love` は意味がずれやすい。
+  - `hello/thanks` が `—` なのは保守的でよい。
+- 方針候補:
+  - Old Mon は `attested` 扱いでよいが、`surface` 欄は「原文」ではなく「標準化表記 / normalized form」と明示する。
+  - `mon` / `mnw` の重複 allowlist と合わせ、Modern Mon / Old Mon / ISO `mon` conflict の説明を meta に集約するとよい。
+- 参照:
+  - https://openresearch-repository.anu.edu.au/items/0d39362c-3ffa-4815-86bf-155af4393de2
+  - https://library.khmerstudies.org/bib/1761
+  - https://www.omniglot.com/writing/mon.htm
+
+### `pyx` Pyu: partly-understood 方針は妥当、ただし lexical confidence が必要
+
+- 対象: `wordmap_data.js` `pyx` block。
+- 評価: **現状の `—` 多め方針はよい。ただし埋まっている 13 セルは、Pyu direct evidence / Miyake reconstruction / Tibeto-Burman comparison のどれなのかを区別しないと強すぎる。**
+- 背景:
+  - Britannica / UNESCO 系資料では Myazedi inscription が Pyu 解読の鍵になったことが確認できる。
+  - Miyake 2024 は Kubyaukgyi/Myazedi inscription の Pyu face を新たに分析し、appendix で glossary / apparatus を提供している。
+  - Pyu は完全未解読ではないが、資料は碑文中心で、語彙解釈には tentative な部分がある。
+- 個別評価:
+  - `water:ʔuy`, `fire:vyaŋ`, `sun:ño`, `moon:hla`, `tree:siŋ`, `house:vaiŋ`, `dog:kwiy`, `hand:lak`, `eye:mik`, `one:te` などは plausible だが、Miyake / Luce / Blagden の対応表で確認が必要。
+  - `mother:na`, `father:paʔ`, `eat:cyaʔ` は基本語としてあり得るが、短い形なので gloss drift に注意。
+  - `hello/thanks/love/heart/cat/good` を `—` にしている点は適切。
+- 方針候補:
+  - `pyx` は `partly-understood` 維持。
+  - セル単位で `direct-Myazedi`, `reconstructed`, `comparative-proxy`, `unattested` のように分けると、UI 上の誤解が大幅に減る。
+- 参照:
+  - https://www.britannica.com/topic/Myazedi-inscription
+  - https://www.unesco.org/en/memory-world/myazedi-quadrilingual-stone-inscription
+  - https://brill.figshare.com/articles/journal_contribution/A_new_study_of_the_Pyu_face_of_the_Kubyaukgyi_Myazedi_inscription_Glossary_and_apparatus_Appendix_to_the_article_by_Marc_Miyake_published_in_CLAO_2024_/26317744
+
+### `obr` Old Burmese: 概ね plausible だが、surface 欄は Pagan-era orthography と modern normalized form の混在に注意
+
+- 対象: `wordmap_data.js` `obr` block。
+- 評価: **大きな赤信号は少ない。Old Burmese は Myazedi 以降の碑文でよく確認でき、Modern Burmese と連続している。ただし現 block は現代ビルマ文字で normalized された基本語が多く、Pagan-era inscription form として表示するには注記が必要。**
+- 背景:
+  - Myazedi inscription は 1113 年の四言語碑文で、Old Burmese / Pali / Old Mon / Pyu を含む。
+  - Old Burmese は 12-16 世紀の碑文に確認され、Modern Burmese と語順・基本語彙がかなり連続する。
+- 個別評価:
+  - `hand:လက်/lak`, `eye:မ္ယက်/mlak`, `one:တ/tac`, `house:အိမ်/ʔim`, `good:ကောင်း/kawŋ` などは plausible。
+  - `water:ရိ/riy`, `sun:နိ/niy`, `mother:အဝ/ʔaw`, `drink:ၐုက်/suk`, `dog:ခွၞး/kʰwiː` は Old Burmese specific form として専門資料で確認したい。
+  - `love:ချစ်/klyit`, `cat:ကြောင်/klyaŋ`, `heart:နှလုံး/hnaluːŋ` は現代語にも近いため、Old Burmese attestation か normalized modern equivalent かを明示したい。
+  - `hello/thanks` が `—` なのは古代語ポリシーとして適切。
+- 参照:
+  - https://www.britannica.com/topic/Myazedi-inscription
+  - https://www.unesco.org/en/memory-world/myazedi-quadrilingual-stone-inscription
+  - https://en.wikipedia.org/wiki/Old_Burmese
+
+### `occ` Old Cham: Chamic reconstruction と inscriptional Old Cham の境界を明示したい
+
+- 対象: `wordmap_data.js` `occ` block。
+- 評価: **多くは Chamic / Austronesian として plausible。ただし `Old Cham` として inscriptional attestation を示しているのか、Thurgood 1999 などの Proto-/Old Chamic reconstruction を使っているのかが曖昧。**
+- 背景:
+  - Thurgood 1999 は ancient Cham から modern dialects への変化を扱い、Chamic lexicon / reconstructions を提供する主要資料。
+  - ACD も Thurgood 1999 を Chamic source として収録している。
+- 個別評価:
+  - `fire:apuy`, `moon:bulan`, `father:amaŋ`, `heart:hatai`, `eye:mata`, `one:sa` は Chamic/Austronesian としてかなり plausible。
+  - `water:ie`, `sun:aṇdaw`, `eat:bɔh`, `love:klɛn`, `tree:phuəŋ`, `house:sɔŋ`, `cat:mɛw`, `good:siam` は Old Cham inscription / Thurgood reconstruction での直接確認が必要。
+  - `hello/thanks` が `—` なのは適切。
+- 方針候補:
+  - `occ` は `attested` でもよいが、セルごとに `inscriptional Old Cham` と `reconstructed Chamic` を分ける。
+  - surface 欄が Latin transliteration であることを UI/meta で明示する。
+- 参照:
+  - https://books.google.com/books/about/From_Ancient_Cham_to_Modern_Dialects.html?id=MBGYb84A7SAC
+  - https://catalogue.nla.gov.au/catalog/1484426
+  - https://acd.clld.org/sources/thurgood1999
+
+### 今回の結論と次の優先順
+
+1. `juc` は今回範囲の最優先。Manchu forms を Jurchen として投影している疑いが強く、`hello/thanks` は特に `—` 候補。
+2. `pyx` は方針自体は良いが、埋まっている基本語に source/confidence を付けたい。
+3. `omx`, `obr`, `occ` は大きな即時エラーより、normalized surface / inscriptional form / reconstruction の区別不足が主問題。
+4. この範囲も `surface` 欄ラベル問題と直結する。`原文` ではなく `表記 / 転写 / 再構形` を表せる schema/UI に寄せるのが望ましい。
+
+---
+
+## Session 17 (2026-05-05): Codex 追加レビュー 2/3/4 confirmed fixes — 9 セル `—` 化
+
+**スコープ:** Codex 追加レビュー 2 (xlu Luwian), 3 (gmy Mycenaean Greek, hit Hittite), 4 (juc Jurchen) で **明確に間違いまたは未検証** と特定された 9 セルを ancient lang policy に従い `—/—` 化。
+
+### 修正 9 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex review) |
+|---|---|---|---|---|
+| `xlu` | Luwian | `cat` | `𔓯𔗬𔑯`/`marwaːra` | `marwatar` 系は **「blackness」の再建語**、cat ではない (Codex 2) |
+| `xlu` | Luwian | `hello` | `𔖖𔓯`/`halzai` | 会話句として未確認、ancient lang policy |
+| `xlu` | Luwian | `thanks` | `𔓷𔗬`/`wala` | 同上、Luwian 文献に thanks 定型なし |
+| `gmy` | Mycenaean Greek | `cat` | `𐀀𐀂𐀨𐀫`/`ailuros` | `ailouros` は **後代 Greek の cat word**、Linear B 未 attestation (Codex 3) |
+| `gmy` | Mycenaean Greek | `hello` | `𐀐𐀂𐀩`/`kʰaire` | 後代 Greek `χαῖρε` を Mycenaean に投影 |
+| `gmy` | Mycenaean Greek | `thanks` | `𐀐𐀩`/`kʰaris` | 後代 Greek `χάρις` の Linear B 投影 |
+| `hit` | Hittite | `sun` | `𒅆𒉿𒀜`/`ʃiwatː` | `siwatt-` は IDS で **「day」と確認**、sun は `istanu-/astanu-` (Codex 3) |
+| `juc` | Jurchen | `hello` | `saiyūn` | **Manchu 形の Jurchen 投影**、direct attestation なし (Codex 4) |
+| `juc` | Jurchen | `thanks` | `baniha` | 同上、Manchu 会話句、Jurchen 碑文/Sino-Jurchen vocabulary に thanks 形なし |
+
+**hit.sun の修正方針:** 正しい Hittite sun は `istanu-` だが cuneiform spelling 確証なく書くと別の誤情報リスクあり。安全策として `—` 化、Hittite cuneiform 専門家による確定を Session 18+ 課題に。
+
+### Codex 2/3/4 で flag されたが今回 touch しなかったセル
+
+- `xlu.good: walwa`, `xlu.eye: hidu` — Cuneiform Luwian 専門資料確認要
+- `kho.cat / thanks / good` — Khotanese Project / Bailey Dictionary 確認要
+- `kaw.thanks: nuwun`, `cat: moŋ` — Zoetmulder Old Javanese Dictionary 確認要
+- `gmy.tree: dorka` — Greek `dorkas` (gazelle) の可能性
+- `hit.love: asːijant` — `assiya-` / `assiyatar` 候補だが cuneiform 確認要
+- `juc.cat: kesike` — Kane 1989 Sino-Jurchen vocabulary で確認要
+- `juc.water/fire/sun/moon/...` — Manchu 形の Jurchen 投影疑い、各セル direct source 確認要
+
+これらは Session 18+ で個別に専門資料判断。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    84 (—)  ← 75 → 84 (Session 17 で 9 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 17 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`xsc` Scythian の `spaka` 以外 proxy** (Codex 3 指摘) — `DATA_STATUS_OVERRIDES.xsc` 降格候補
+2. **`zkt` Khitan のセル単位 confidence** (Codex 3 指摘) — 17/20 埋まっているのは強すぎる、抽象語 `—` 化候補
+3. **`gmy` Mycenaean Greek block 全体再構築** (Codex 3 指摘) — Linear B attested forms 必要
+4. **`juc` Jurchen block 全体再評価** (Codex 4 指摘) — Manchu 形の Jurchen 投影疑い、`hello/thanks` 以外も広範に再評価候補
+5. **削除値のドキュメント化** — Session 10/11 で言及した「削除値を `wordmap_meta.js` notes として保存する仕組み」が今回 9 セル削除でさらに必要性増大
+
+### 持ち越し（Session 18 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化 + `direct-attested / reconstructed / proxy / unattested` のセル単位区分 (Codex 3/4 指摘)
+- Session 3 #4, Session 5 #4, Session 6 #4, Session 9 #5
+- Session 10 #4-5, Session 11 #3, #6
+- Session 13 #1-2, Session 14 #3-4, Session 15 #4, Session 16 #1-4
+- Session 17 #1 xsc.dataStatus / #2 zkt confidence / #4 juc 再評価 / #5 削除値 notes schema
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks 方言基準
+- Tujia 方言基準 / mnp Min Bei fire IPA / cpx/wuu_wz/wuu_sz 方言基準
+- Session 5 #1, #3, Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted, expires 2027-01-01)**
+- Session 8 残 dup-coord / Session 9 #1-3 / Session 11 #1-2
+- Session 12 #1-6 / Session 13 #3
+- **Codex 2/3/4 残: xlu.good/eye, kho.*, kaw.*, gmy.tree/water/good, hit.love, juc.cat/その他基本語**
+- **Session 17 #3 hit.sun の正しい cuneiform 復活 (現在 `—`、`istanu-` cuneiform 確定後)**
+
+---
