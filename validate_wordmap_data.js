@@ -25,6 +25,7 @@
  *  15. Same (name, lat, lng) under different codes — likely ISO code conflict (Session 8 mon/mnw)
  *  16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry (Session 27 invariant)
  *  17. DATA_STATUS_OVERRIDES (non-modern) → must be in HIST_DESCENDANT (Session 29 inverse)
+ *  18. wordEvidence schema: keys exist in words; evidence enum valid (Phase 2)
  *
  * Convention: WARN/ERROR messages from a specific check should prefix `[#N]`
  * to make the source check identifiable in output (Session 30). Newer checks
@@ -591,6 +592,32 @@ if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
         }
     }
 }
+
+// ---- 18. wordEvidence schema validation (Schema Revolution Phase 2) -----
+// Per-cell evidence overlay: each lang may have `wordEvidence: { <concept>: {evidence, source?, note?} }`.
+// Validate: (a) concept keys exist in words; (b) evidence is in the enum.
+const VALID_EVIDENCE = new Set(['direct', 'proxy', 'reconstructed', 'inferred', 'disputed', 'pedagogical']);
+let wordEvidenceLangs = 0;
+let wordEvidenceCells = 0;
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    if (!lang.wordEvidence) continue;
+    wordEvidenceLangs++;
+    for (const [concept, ev] of Object.entries(lang.wordEvidence)) {
+        wordEvidenceCells++;
+        if (!lang.words || !(concept in lang.words)) {
+            E(`[#18] ${code}.wordEvidence: concept "${concept}" not in words`);
+        }
+        if (!ev || typeof ev !== 'object') {
+            E(`[#18] ${code}.wordEvidence.${concept}: not an object`);
+            continue;
+        }
+        if (!VALID_EVIDENCE.has(ev.evidence)) {
+            E(`[#18] ${code}.wordEvidence.${concept}: evidence "${ev.evidence}" not in enum (${[...VALID_EVIDENCE].join('|')})`);
+        }
+    }
+}
+if (wordEvidenceLangs > 0) I(`wordEvidence overlay: ${wordEvidenceLangs} languages, ${wordEvidenceCells} cells annotated (Schema Revolution Phase 2)`);
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -
 // Languages with first numeric value ≥100M must have speakerBasis declared

@@ -2618,8 +2618,29 @@ const LANG_DATA = {
   // Scythian — Iranian, NE/SE European steppes (~7c. BCE - 4c. CE). Very fragmentary;
   // mostly known through Greek transcriptions of names + Ossetian cognates. Many entries
   // are reconstructed proxies based on Avestan/Old Iranian.
+  // === wordEvidence (Schema Revolution Phase 2) ===
+  // Per-cell evidence overlay. Schema:
+  //   wordEvidence: { <concept>: { evidence: 'direct'|'proxy'|'reconstructed'|'inferred'|'disputed'|'pedagogical', source?: string, note?: string } }
+  // Cells without an entry inherit the lang-level dataStatus (from DATA_STATUS_OVERRIDES).
+  // xsc Scythian is the pilot: per Iranica, only `spaka` (dog) is directly attested
+  // via the personal name Išpakaia; all other cells are Old Iranian/Avestan proxy.
   xsc: { name: 'Scythian', native: 'Skuda', lat: 47.00, lng: 35.00, // Pontic steppe
-    words: { water:['ap','ap'], fire:['ātar','aːtar'], sun:['hvar','xʷar'], moon:['māh','maːh'], mother:['mātar','maːtar'], father:['pitar','pitar'], eat:['xwartan','xʷartan'], drink:['—','—'], love:['—','—'], heart:['zard-','zard'], tree:['—','—'], house:['—','—'], dog:['spaka','spaka'], cat:['—','—'], hand:['zasta','zasta'], eye:['čašm','tʃaʃm'], hello:['—','—'], thanks:['—','—'], one:['aiwa','aiwa'], good:['vohu','wohu'] }},
+    words: { water:['ap','ap'], fire:['ātar','aːtar'], sun:['hvar','xʷar'], moon:['māh','maːh'], mother:['mātar','maːtar'], father:['pitar','pitar'], eat:['xwartan','xʷartan'], drink:['—','—'], love:['—','—'], heart:['zard-','zard'], tree:['—','—'], house:['—','—'], dog:['spaka','spaka'], cat:['—','—'], hand:['zasta','zasta'], eye:['čašm','tʃaʃm'], hello:['—','—'], thanks:['—','—'], one:['aiwa','aiwa'], good:['vohu','wohu'] },
+    wordEvidence: {
+      dog:    { evidence: 'direct', source: 'Iranica via personal name Išpakaia' },
+      water:  { evidence: 'proxy',  source: 'Old Iranian *āp- (Avestan ap-)' },
+      fire:   { evidence: 'proxy',  source: 'Avestan ātar-' },
+      sun:    { evidence: 'proxy',  source: 'Avestan hvar-' },
+      moon:   { evidence: 'proxy',  source: 'Old Iranian māh-' },
+      mother: { evidence: 'proxy',  source: 'Old Iranian mātar-' },
+      father: { evidence: 'proxy',  source: 'Old Iranian pitar-' },
+      eat:    { evidence: 'proxy',  source: 'Old Iranian *xwar-' },
+      heart:  { evidence: 'proxy',  source: 'Old Iranian zard-' },
+      hand:   { evidence: 'proxy',  source: 'Old Iranian zasta' },
+      eye:    { evidence: 'proxy',  source: 'Old Iranian čašm-' },
+      one:    { evidence: 'proxy',  source: 'Old Iranian *aiwa-' },
+      good:   { evidence: 'proxy',  source: 'Avestan vohu-' },
+    } },
   // Old Thai (Sukhothai era) — 13c. Ramkhamhaeng inscription (1283), the earliest
   // attested Thai. Sukhothai script, ancestor of modern Thai. Many words cognate
   // with modern Thai.

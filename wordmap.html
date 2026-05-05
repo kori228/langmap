@@ -415,7 +415,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=41"></script>
+    <script src="wordmap_data.js?v=42"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -1542,6 +1542,25 @@
         // "this is reconstructed/uncertain notation, not direct phonemic transcription".
         const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
 
+        // Per Phase 2 (Session 33): per-cell evidence overlay markers.
+        // Compact symbol shown next to each cell value; hover tooltip carries source.
+        const EVIDENCE_MARKER = {
+            direct:        { sym: '✓', color: '#1a7a1a', label_en: 'directly attested',   label_ja: '直接 attested' },
+            proxy:         { sym: '~', color: '#c0392b', label_en: 'proxy from related lang', label_ja: '近縁言語からの proxy' },
+            reconstructed: { sym: '*', color: '#b56500', label_en: 'reconstructed',       label_ja: '再構形' },
+            inferred:      { sym: '?', color: '#a06000', label_en: 'inferred from context', label_ja: '文脈から推測' },
+            disputed:      { sym: '⁉', color: '#a02020', label_en: 'disputed reading',   label_ja: '異読あり' },
+            pedagogical:   { sym: '◇', color: '#6020a0', label_en: 'pedagogical approx.', label_ja: '教育用近似' },
+        };
+        function evidenceTooltip(ev) {
+            if (!ev || !EVIDENCE_MARKER[ev.evidence]) return '';
+            const m = EVIDENCE_MARKER[ev.evidence];
+            const label = (uiLang === 'ja' && m.label_ja) ? m.label_ja : m.label_en;
+            const src = ev.source ? ` — ${ev.source}` : '';
+            const note = ev.note ? ` (${ev.note})` : '';
+            return label + src + note;
+        }
+
         function renderLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
@@ -1586,6 +1605,8 @@
             const ipaStyle = IPA_ITALIC_STATUSES.has(status)
                 ? 'color:#888;font-size:11px;font-style:italic'
                 : 'color:#888;font-size:11px';
+            // Phase 2 (Session 33): per-cell evidence overlay
+            const wEv = lang.wordEvidence || {};
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
@@ -1594,7 +1615,11 @@
                     if (isUnattestedEntry(entry)) {
                         html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
                     } else {
-                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
+                        const ev = wEv[w.id];
+                        const evMark = ev && EVIDENCE_MARKER[ev.evidence]
+                            ? ` <span style="color:${EVIDENCE_MARKER[ev.evidence].color};font-size:10px;cursor:help" title="${escapeHtml(evidenceTooltip(ev))}">${EVIDENCE_MARKER[ev.evidence].sym}</span>`
+                            : '';
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}${evMark}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
                     }
                 }
             }

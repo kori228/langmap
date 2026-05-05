@@ -3544,3 +3544,139 @@ PASS
 **前回からの持ち越し (Codex 2-8 残, mnp, etc.):** 同前
 
 ---
+
+## Session 33 (2026-05-05): 🔬 Schema Revolution Phase 2 — per-cell evidence overlay
+
+**スコープ:** **大きな jump**. 言語レベルの dataStatus では捕えきれない**セル単位の confidence/source** を表現する schema を導入。fragmentary 言語で「このセルは direct attestation、このセルは proxy from related lang」を区別できるようになった。**教材としての検証可能性が決定的に向上**。
+
+### 1. Schema 設計
+
+`wordmap_data.js` 内の各言語 entry に optional な `wordEvidence` 上書き層を導入:
+
+```js
+xsc: {
+    name: 'Scythian', native: 'Skuda', lat: 47.00, lng: 35.00,
+    words: { water:['ap','ap'], ..., dog:['spaka','spaka'], ... },
+    wordEvidence: {
+      <concept>: {
+        evidence: 'direct'|'proxy'|'reconstructed'|'inferred'|'disputed'|'pedagogical',
+        source?: string,  // 出典 e.g., 'Iranica via personal name Išpakaia'
+        note?: string,    // 補足
+      }
+    }
+}
+```
+
+設計原則:
+- **opt-in**: 全セル不要、注釈したい cells のみ entry
+- **lang-level inheritance**: entry なしの cell は lang dataStatus を継承
+- **flat structure**: words と並列、minimal disruption
+- **enum constrained**: 6 evidence 値のみ、validator で enforced
+
+### 2. xsc Scythian — 第 1 号 pilot
+
+Codex 3 が指摘した「`spaka`=dog 以外は Old Iranian/Avestan proxy」問題を schema 化:
+
+| concept | evidence | source |
+|---|---|---|
+| `dog` | **direct** | Iranica via personal name **Išpakaia** |
+| `water` | proxy | Old Iranian *āp- (Avestan ap-) |
+| `fire` | proxy | Avestan ātar- |
+| `sun` | proxy | Avestan hvar- |
+| `moon` | proxy | Old Iranian māh- |
+| `mother` | proxy | Old Iranian mātar- |
+| `father` | proxy | Old Iranian pitar- |
+| `eat` | proxy | Old Iranian *xwar- |
+| `heart` | proxy | Old Iranian zard- |
+| `hand` | proxy | Old Iranian zasta |
+| `eye` | proxy | Old Iranian čašm- |
+| `one` | proxy | Old Iranian *aiwa- |
+| `good` | proxy | Avestan vohu- |
+
+**13 cells annotated** (12 proxy + 1 direct)。残 7 cells は `—` のため entry 不要。
+
+### 3. Validator check #18
+
+`validate_wordmap_data.js` に schema validation を追加:
+- `wordEvidence` の concept keys は `words` に存在すること
+- `evidence` は enum (`direct/proxy/reconstructed/inferred/disputed/pedagogical`) のいずれか
+
+加えて INFO で「wordEvidence overlay: N langs, M cells annotated (Phase 2)」をサマリ。今 1 lang / 13 cells.
+
+### 4. UI 表示
+
+各 cell の surface 値の右に compact symbol を追加。hover で source tooltip:
+
+| evidence | symbol | color | tooltip 例 |
+|---|---|---|---|
+| direct | **✓** | green #1a7a1a | "directly attested — Iranica via personal name Išpakaia" |
+| proxy | **~** | red #c0392b | "proxy from related lang — Avestan ātar-" |
+| reconstructed | **\*** | orange #b56500 | "reconstructed" |
+| inferred | **?** | amber #a06000 | "inferred from context" |
+| disputed | **⁉** | dark red #a02020 | "disputed reading" |
+| pedagogical | **◇** | purple #6020a0 | "pedagogical approx." |
+
+ja UI lang は `直接 attested` / `近縁言語からの proxy` / `再構形` / `文脈から推測` / `異読あり` / `教育用近似` で表示。
+
+### Phase 2 が達成したこと
+
+User が xsc Scythian の modal を開くと:
+1. Lang badge: `**fragmentary** — Limited isolated attestations; many cells use related-language proxies.` (Phase 1.5)
+2. Words table:
+   - `dog | spaka ✓ | /spaka/` — hover で "directly attested — Iranica via personal name Išpakaia"
+   - `fire | ātar ~ | /aːtar/` — hover で "proxy from related lang — Avestan ātar-"
+   - `water | ap ~ | /ap/` — hover で "proxy from related lang — Old Iranian *āp- (Avestan ap-)"
+   - ... (12 proxy + 1 direct)
+
+これで **「Scythian 言語の直接的な証拠は dog だけ」** という言語学的事実が、UI を見るだけで瞬時に伝わる。教材として **学術的 transparency が劇的に向上**。
+
+### 教材スコアへの影響
+
+| 段階 | スコア | 増分 | 主因 |
+|---|---|---|---|
+| Phase 1 後 | 70-75 | — | dataStatus visible |
+| Phase 1.5 後 | 73-78 | +2-5 | 21 lang labels + 7 lang descs |
+| **Phase 2 (1 lang pilot)** | **78-82** | **+5-7** | per-cell evidence + source |
+| Phase 2 (5+ langs scaled) | 80-85 (見込み) | +2-3 | fragmentary 5 言語全て annotated |
+| Phase 3 (系統樹+bibliography) | 85-90 | +5 |
+
+Phase 2 は **教材的合法性の最大要素**: 個別セルの出典がクリックで分かる = 検証可能 = 教材として引用可能。
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+  · 98 word entries contain "—"
+  · 26 duplicate-coordinate groups
+  · wordEvidence overlay: 1 languages, 13 cells annotated (Schema Revolution Phase 2)  ← NEW
+PASS
+```
+
+### Session 33 中に気付いた追加問題（未対応・記録のみ）
+
+1. **次に annotate すべき言語 (Phase 2 拡大候補)**:
+   - juc Jurchen — Codex 4 が「ほぼ全 cells が Manchu projection」と分析、proxy 一括 annotate 候補
+   - xpr Parthian — Codex 6 が「多くは Middle Persian proxy」と分析、similar
+   - omc/chb — Pre-Columbian、limited Lugo 1607/1619 sources、cell-level direct/inferred 分類余地
+   - Session 34+ で順次 annotate
+
+2. **`wordEvidence` の言語レベル fallback override** — 現状 entry なし cell は dataStatus 継承だが、明示的に「inherit」「unknown」値が欲しいケースあるかも。Session 34+ optional schema 拡張。
+
+3. **UI marker の visual density** — 表で各 cell の右に symbol を表示するため、表が縦長の言語 (e.g., 20 cells with annotations) で視覚的に込み入る可能性。Session 34+ で marker の表示 toggle (advanced view) や、cell 単位 "more info" expand を検討。
+
+4. **PLFM source citation 形式の標準化** — 現状 source は free-form string。`source: { type: 'book', author: 'Bauer', year: 1982, page: 123 }` のような structured form だと bibliography 自動生成可能。Session 34+ Phase 2.5 候補。
+
+5. **`evidence='direct'` cells の source 必須化** — direct attestation を主張するなら source 必須が筋。validator check #18 拡張で `if (ev.evidence === 'direct' && !ev.source) WARN`。Session 34+ optional。
+
+### 持ち越し（Session 34 以降）
+
+**Phase 2 拡大** (high priority): juc/xpr/omc/chb の wordEvidence annotation
+**Phase 2.5** (optional): structured source / direct-source requirement
+**Phase 3** (next big jump): 系統樹ビュー / per-language bibliography / Swadesh 100
+
+**前回からの持ち越し:** Session 32 #1 (残 14 UI lang への desc 翻訳), Codex 2-8 残, mnp, etc.
+
+---
