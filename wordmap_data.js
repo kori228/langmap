@@ -2859,6 +2859,13 @@ const DATA_STATUS_OVERRIDES = {
                                     // inscriptions); many basic vocabulary cells are Middle Persian
                                     // projection rather than Parthian-specific attestation.
                                     // Per Codex review 6 / Session 21 #4 / Session 22 #4.
+    omc:       'fragmentary',       // Mochica/Yunga — Pre-Columbian Andean. Documentation limited
+                                    // to Carrera de la Vega's "Arte de la lengua yunga" (1644)
+                                    // and Lugo's "Arte de la lengua mochica" (1607). 7/20 cells
+                                    // are `—`. Per Codex review 4 / Session 18 #1.
+    chb:       'fragmentary',       // Chibcha/Muisca — Pre-Columbian Andean Colombia. Documented
+                                    // in Lugo (1619) and Anonymous (early 17c.) grammars; 17c.
+                                    // Spanish missionary corpus only. Per Codex review 4 / Session 18 #1.
     // Pedagogical reconstructions (not attested forms; teaching approximations):
     ja_edo:    'pedagogical',
     ja_heian:  'pedagogical',

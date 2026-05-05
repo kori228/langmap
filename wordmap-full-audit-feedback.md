@@ -2912,3 +2912,73 @@ Data status breakdown:
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2
 
 ---
+
+## Session 26 (2026-05-05): omc Mochica + chb Chibcha → `fragmentary`
+
+**スコープ:** Session 18 #1 / Codex 4 で fragmentary 候補と記録された Pre-Columbian 言語 2 件を schema 化。
+
+### 変更内容
+
+`DATA_STATUS_OVERRIDES` に追加 (xsc/juc/xpr に続く 4-5 件目):
+
+```js
+omc:       'fragmentary',       // Mochica/Yunga — Pre-Columbian Andean. Documentation limited
+                                // to Carrera de la Vega's "Arte de la lengua yunga" (1644)
+                                // and Lugo's "Arte de la lengua mochica" (1607). 7/20 cells
+                                // are `—`. Per Codex review 4 / Session 18 #1.
+chb:       'fragmentary',       // Chibcha/Muisca — Pre-Columbian Andean Colombia. Documented
+                                // in Lugo (1619) and Anonymous (early 17c.) grammars; 17c.
+                                // Spanish missionary corpus only. Per Codex review 4 / Session 18 #1.
+```
+
+### 各言語の現状
+
+| Code | Lang | filled cells | source | dataStatus 旧 | 新 |
+|---|---|---|---|---|---|
+| `omc` | Mochica/Yunga | 13/20 (7×`—`) | Lugo 1607 / Carrera de la Vega 1644 | (default = modern) | **fragmentary** |
+| `chb` | Chibcha/Muisca | 19/20 (1×`—` cat) | Lugo 1619 / Anonymous 17c. | (default = modern) | **fragmentary** |
+
+両者とも HIST_DESCENDANT に `null` で登録されているため UI では historical 扱いだったが、`dataStatus` override がなかったため validator stats では「modern」default にカウントされていた。今回の override 追加で:
+- Pre-Columbian Andean 言語の **限定的 attestation** が schema レベルで明示
+- validator stats の `modern` が 556 → 554 に正規化 (omc/chb 分が fragmentary へ移動)
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+
+Data status breakdown:
+  modern               554
+  attested             10
+  fragmentary          5     ← +2 (omc/chb 追加: xsc + juc + xpr + omc + chb)
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### Session 26 中に気付いた追加問題（未対応・記録のみ）
+
+1. **他 Pre-Columbian 言語の dataStatus 未設定** — `cqu` Classical Quechua, `nci` Classical Nahuatl は HIST_DESCENDANT に登録 (or 別途 historical 扱い) されているが、dataStatus override 状況が不明。Session 27+ で同様の体系的整理候補。
+
+2. **`Data status breakdown` の `modern 554` への正規化進行** — Session 24 (xpr) で 557→556、Session 26 で 556→554。historical 扱いだが override がなかった言語の正規化が継続中。最終的に modern = HIST_DESCENDANT 外の言語数 (498-499) に近づくはず。
+
+3. **fragmentary 5 件の系統内訳:**
+   - Iranian: xsc Scythian + xpr Parthian (2)
+   - Tungusic: juc Jurchen (1)
+   - Andean (Pre-Columbian): omc Mochica + chb Chibcha (2)
+   各系統の典型的な「documentation 限定」状況を表す。systematic UI 表示でこの分類が活きる可能性。
+
+4. **`omc.cat` `chb.cat` `omc.tree` 等の `—` の意味** — fragmentary 言語で `—` が並ぶことは「not attested」(意図的) と解釈されるべきだが、UI で「未調査」と区別できる仕組みが必要。Session 11 #6 / Session 17 #5 削除値 notes schema と関連。
+
+### 持ち越し（Session 27 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, 25 #1-3, **26 #1 cqu/nci dataStatus 整理 / #4 fragmentary cells UI 区別**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
+
+---
