@@ -1037,6 +1037,24 @@ const LANG_DATA = {
     wordEvidence: {
       water: { evidence: 'reconstructed', source: 'Samguk Sagi vol. 37 — 水谷城 (買旦忽); 買 read as Goguryeo *mai/*me — debated cognate (Whitman 2011: ↔ Old Japanese *mey "water"; Lee 1993: ↔ Tungusic mu)' },
     } },
+  // Goryeo Korean (Early Middle Korean, 918-1392). Primary corpus is
+  // 鶏林類事 (Gyerim Yusa, 1103) by 孫穆 — ~350 Korean words transcribed
+  // in Chinese characters as a Chinese-Korean glossary. Reconstructions
+  // follow Lee KM, Sasse (1976), Sohn (1999).
+  ko_gor: { name: 'Goryeo Korean (Early Middle)', native: '高麗時代韓國語', lat: 37.97, lng: 126.55, // Kaesong (Goryeo capital)
+    words: { water:['沒','*mwol'], fire:['孛','*pwol'], sun:['姮','*hai'], moon:['突','*twol'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['南記','*namki'], house:['集','*tɕip'], dog:['家稀','*kahi'], cat:['—','—'], hand:['遜','*swon'], eye:['嫩','*nwun'], hello:['—','—'], thanks:['—','—'], one:['河屯','*hatwun'], good:['—','—'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: '鶏林類事 (1103) 沒 mwol; cf. MK 믈 → 물' },
+      fire:   { evidence: 'direct', source: '鶏林類事 孛 pwol; cf. MK 블 → 불' },
+      sun:    { evidence: 'direct', source: '鶏林類事 姮 (= 害) hai; cf. modern 해' },
+      moon:   { evidence: 'direct', source: '鶏林類事 突 twol; cf. MK ᄃᆞᆯ → 달' },
+      tree:   { evidence: 'direct', source: '鶏林類事 南記 nam-ki; cf. MK 나모 → 나무' },
+      house:  { evidence: 'direct', source: '鶏林類事 集 cip; cf. MK 집' },
+      dog:    { evidence: 'direct', source: '鶏林類事 家稀 ka-hi; cf. MK 가히 → 개' },
+      hand:   { evidence: 'direct', source: '鶏林類事 遜 swon; cf. MK 손' },
+      eye:    { evidence: 'direct', source: '鶏林類事 嫩 nwun; cf. MK 눈' },
+      one:    { evidence: 'direct', source: '鶏林類事 河屯 ha-twun; cf. MK ᄒᆞ나 → 하나' },
+    } },
   ko_em: { name: 'Early Modern Korean', native: '近世韓國語', lat: 37.57, lng: 126.98,
     words: { water:['물','mul'], fire:['불','pul'], sun:['ᄒᆡ','hɛ'], moon:['달','tal'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌkta'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하시오','annjʌŋ.ha.si.o'], thanks:['고맙소이다','komap.so.i.da'], one:['하나','hana'], good:['좋다','tɕotta'] }},
   vi_nom: { name: 'Vietnamese Chữ Nôm', native: 'Tiếng Việt (Chữ Nôm)', lat: 21.03, lng: 105.85,

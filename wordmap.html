@@ -708,6 +708,65 @@
             he:'מפת מילים', sw:'Ramani ya maneno',
         };
 
+        // Audit i18n: centralized localized UI strings. Moved here (before
+        // applyUILang) so the i18n() helper is available during initial
+        // loadHash → applyUILang call (was previously after, causing a
+        // ReferenceError on first paint).
+        const I18N_STRINGS = {
+            modernDescendant: { en: 'Modern descendant', ja: '近代後裔', ko: '현대 후손', zh: '现代后裔',
+                yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
+                id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
+                fr: 'Descendant moderne', it: 'Discendente moderno',
+                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
+                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
+                ru: 'Совр. потомок', uk: 'Сучасний нащадок',
+                ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
+            historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
+                yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
+                id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
+                fr: 'Ancêtres hist.', it: 'Antenati storici',
+                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
+                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
+                ru: 'Ист. предки', uk: 'Іст. предки',
+                ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
+            sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
+                yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
+                de: 'Quellen', fr: 'Sources', it: 'Fonti',
+                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
+                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
+                ru: 'Источники', uk: 'Джерела',
+                ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
+            searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
+                yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
+                id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
+                fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
+                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
+                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
+                ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
+                ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
+            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
+            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
+                de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
+                pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
+                ar: 'لا توجد نتائج', he: 'אין תוצאות', sw: 'Hakuna inayolingana',
+                vi: 'Không tìm thấy', th: 'ไม่พบรายการ', id: 'Tidak ada' },
+            eraFilterOffHint: { en: 'Toggle off the {era} filter to select',
+                ja: '{era}フィルターをオフにしてください',
+                ko: '{era} 필터를 끄세요', zh: '请关闭{era}过滤器后再选择',
+                de: '{era}-Filter ausschalten, um auszuwählen',
+                fr: 'Désactivez le filtre {era} pour sélectionner',
+                es: 'Desactiva el filtro {era} para seleccionar',
+                pt: 'Desative o filtro {era} para selecionar',
+                ru: 'Отключите фильтр {era} для выбора',
+                ar: 'أوقف فلتر {era} للاختيار', he: 'בטל את מסנן ה־{era} לבחירה' },
+        };
+        function i18n(key) {
+            const m = I18N_STRINGS[key];
+            if (!m) return key;
+            return m[uiLang] || m[uiLang.split('_')[0]] || m.en;
+        }
+
         function applyUILang() {
             const subtitleEl = document.getElementById('ui-subtitle');
             if (subtitleEl) subtitleEl.textContent = SUBTITLES[uiLang] || SUBTITLES.en;
@@ -1872,65 +1931,6 @@
             'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
         };
         const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
-
-        // Audit: i18n gap fixes (Session 53) — strings that were previously
-        // inline ternaries in 6 langs only. Now centralized with full 21-UI
-        // coverage where translation is available; English fallback otherwise.
-        const I18N_STRINGS = {
-            modernDescendant: { en: 'Modern descendant', ja: '近代後裔', ko: '현대 후손', zh: '现代后裔',
-                yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
-                id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
-                fr: 'Descendant moderne', it: 'Discendente moderno',
-                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
-                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
-                ru: 'Совр. потомок', uk: 'Сучасний нащадок',
-                ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
-            historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
-                yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
-                id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
-                fr: 'Ancêtres hist.', it: 'Antenati storici',
-                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
-                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
-                ru: 'Ист. предки', uk: 'Іст. предки',
-                ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
-            sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
-                yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
-                de: 'Quellen', fr: 'Sources', it: 'Fonti',
-                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
-                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
-                ru: 'Источники', uk: 'Джерела',
-                ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
-            searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
-                yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
-                id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
-                fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
-                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
-                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
-                ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
-                ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
-            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
-            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
-            noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
-                de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
-                pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
-                ar: 'لا توجد نتائج', he: 'אין תוצאות', sw: 'Hakuna inayolingana',
-                vi: 'Không tìm thấy', th: 'ไม่พบรายการ', id: 'Tidak ada' },
-            eraFilterOffHint: { en: 'Toggle off the {era} filter to select',
-                ja: '{era}フィルターをオフにしてください',
-                ko: '{era} 필터를 끄세요', zh: '请关闭{era}过滤器后再选择',
-                de: '{era}-Filter ausschalten, um auszuwählen',
-                fr: 'Désactivez le filtre {era} pour sélectionner',
-                es: 'Desactiva el filtro {era} para seleccionar',
-                pt: 'Desative o filtro {era} para selecionar',
-                ru: 'Отключите фильтр {era} для выбора',
-                ar: 'أوقف فلتر {era} للاختيار', he: 'בטל את מסנן ה־{era} לבחירה' },
-        };
-        function i18n(key) {
-            const m = I18N_STRINGS[key];
-            if (!m) return key;
-            return m[uiLang] || m[uiLang.split('_')[0]] || m.en;
-        }
-
         // Audit Task 99: locationBasis label tells users that the marker is
         // a representative point, not a speaker-distribution map.
         const LOCATION_BASIS_LABEL = {
