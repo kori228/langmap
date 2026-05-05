@@ -23,6 +23,7 @@
  *  13. No code is defined twice in LANG_DATA source (silent JS overwrite — audit §6.28)
  *  14. 3+ codes sharing one (lat,lng) — flag as warning unless historical-progression cluster (audit §7.6)
  *  15. Same (name, lat, lng) under different codes — likely ISO code conflict (Session 8 mon/mnw)
+ *  16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry (Session 27 invariant)
  *
  * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
  * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
@@ -558,6 +559,16 @@ for (const code of codes) {
 if (typeof ctx.DATA_STATUS_OVERRIDES !== 'undefined') {
     for (const c of Object.keys(ctx.DATA_STATUS_OVERRIDES)) {
         if (!ctx.LANG_DATA[c]) E(`DATA_STATUS_OVERRIDES has code "${c}" not in LANG_DATA`);
+    }
+    // ---- 16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry --
+    // Per Session 27: ensures historical languages don't silently default to
+    // 'modern' in dataStatus stats (HIST_DESCENDANT membership doesn't auto-
+    // promote). Adding a new historical lang requires explicit classification.
+    const dsoKeys = new Set(Object.keys(ctx.DATA_STATUS_OVERRIDES));
+    const histMissing = HIST_KEYS.filter(c => ctx.LANG_DATA[c] && !dsoKeys.has(c));
+    for (const c of histMissing) {
+        W(`${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry — ` +
+          `defaults to 'modern' in stats (Session 27 normalization invariant)`);
     }
 }
 

@@ -3088,3 +3088,77 @@ Data status breakdown:
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
 
 ---
+
+## Session 28 (2026-05-05): Validator check #16 — HIST_DESCENDANT × DATA_STATUS_OVERRIDES invariant
+
+**スコープ:** Session 27 で発見した「HIST_DESCENDANT 言語が `DATA_STATUS_OVERRIDES` 未登録のため stats で modern default に流れる」問題が再発しないよう、validator check #16 を追加。Session 27 の正規化を invariant として固定。
+
+### 追加した check #16
+
+`validate_wordmap_data.js` の check #13c (DATA_STATUS_OVERRIDES sanity) の隣に追加:
+
+```js
+// ---- 16. HIST_DESCENDANT codes must have DATA_STATUS_OVERRIDES entry --
+// Per Session 27: ensures historical languages don't silently default to
+// 'modern' in dataStatus stats (HIST_DESCENDANT membership doesn't auto-
+// promote). Adding a new historical lang requires explicit classification.
+const dsoKeys = new Set(Object.keys(ctx.DATA_STATUS_OVERRIDES));
+const histMissing = HIST_KEYS.filter(c => ctx.LANG_DATA[c] && !dsoKeys.has(c));
+for (const c of histMissing) {
+    W(`${c}: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry — ` +
+      `defaults to 'modern' in stats (Session 27 normalization invariant)`);
+}
+```
+
+### テスト結果
+
+検証のため一時的に `akk` の `DATA_STATUS_OVERRIDES` entry を削除してテスト:
+
+```
+WARNINGS (1):
+  ! akk: in HIST_DESCENDANT but missing DATA_STATUS_OVERRIDES entry —
+    defaults to 'modern' in stats (Session 27 normalization invariant)
+```
+
+復元後 → WARNINGS (0) ✓
+
+### 効果と意義
+
+1. **Session 27 の bulk normalization が invariant として固定** — 将来 HIST_DESCENDANT に新しい historical lang を追加する際、`DATA_STATUS_OVERRIDES` への entry 追加を忘れると validator が自動で警告。
+
+2. **schema 完整性の自己ドキュメント化** — check #16 が validator code 内に明記されることで「historical lang を増やす時の必須手順」が code 経由で明確化。
+
+3. **CI でも catch 可能** — validator が exit 0 (WARN は ERROR ではない) ながら WARNINGS を出すため、CI で WARN 件数を監視していればこの class の regression が捕まる。
+
+### Validator 結果 (現在の正常状態)
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+
+(Validator checks 1-16 all clean. Check #16 newly added in Session 28 confirms
+Session 27's bulk normalization is complete: 0 historical langs missing
+DATA_STATUS_OVERRIDES entry.)
+```
+
+### Session 28 中に気付いた追加問題（未対応・記録のみ）
+
+1. **Validator checks の累積 (1-16)** — Session 1-28 で validator checks が #1-16 まで成長 (#13a/b/c/d は subdivided)。各 check の依存関係や実行順序を README/コメントで再整理する余地。Session 29+ docs。
+
+2. **`HIST_DESCENDANT` と `EXCLUDED_CODES` の関係** — 既存 check #9 で「HIST_DESCENDANT keys は EXCLUDED_CODES に含まれること」を検証。Session 28 の check #16 と合わせて「historical 認定の 3 axis (HIST_DESCENDANT membership / EXCLUDED_CODES membership / DATA_STATUS_OVERRIDES presence)」が relate. Session 29+ で「historical 認定の集中ドキュメント」候補。
+
+3. **Validator output の sub-header 整理** — 現状 INFO/WARN/ERROR/ALLOWLISTED/UNUSED ALLOWLIST という5種だが、check 番号がメッセージに付いていないため後で「どの check が何件 trigger したか」追跡しにくい。Session 29+ output format 改善候補。
+
+4. **逆方向 check (check #17 候補)** — DATA_STATUS_OVERRIDES に登録されているが HIST_DESCENDANT に登録されていない code がある場合、それは「historical だが UI で除外されない」という不整合。現状は ine (PIE) のみ historical 扱いだが HIST_DESCENDANT には ine:null で含まれている。要確認。
+
+### 持ち越し（Session 29 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, 25 #1-3, 26 #4, 27 #1-4, **28 #1-4 (validator output 整理 / 逆方向 check)**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
+
+---
