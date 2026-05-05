@@ -1820,23 +1820,42 @@
                         matches.push({ code, display, en, native, score });
                     }
                 }
+                // Mark each match's era so we can disable non-selected era entries.
+                // showHistorical = true → only historical langs are clickable.
+                // showHistorical = false → only modern langs are clickable.
+                for (const m of matches) {
+                    const isHist = HIST_CODE_SET.has(m.code);
+                    m.isHist = isHist;
+                    m.disabled = isHist !== showHistorical;
+                }
                 matches.sort((a, b) => a.score - b.score || a.display.localeCompare(b.display));
                 const top = matches.slice(0, 12);
                 if (top.length === 0) {
                     results.innerHTML = '<div style="padding:8px;color:#999">No match</div>';
                 } else {
+                    const eraLbl = showHistorical
+                        ? (uiLang === 'ja' ? '現代言語' : 'modern lang')
+                        : (uiLang === 'ja' ? '歴史言語' : 'historical lang');
                     results.innerHTML = top.map(m => {
                         const native = m.native && m.native !== m.display ? ` <span style="color:#999;font-size:11px">${escapeHtml(m.native)}</span>` : '';
                         const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
-                        return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="padding:6px 9px;cursor:pointer;border-bottom:1px solid #f0f0f0">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
+                        const baseStyle = 'padding:6px 9px;border-bottom:1px solid #f0f0f0';
+                        if (m.disabled) {
+                            const tooltip = uiLang === 'ja'
+                                ? `${eraLbl}フィルターをオフにしてください`
+                                : `Toggle off the ${eraLbl} filter to select`;
+                            return `<div class="lang-search-item disabled" data-code="${escapeHtml(m.code)}" data-disabled="1" title="${escapeHtml(tooltip)}" style="${baseStyle};opacity:0.4;cursor:not-allowed">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)} · ${escapeHtml(eraLbl)}</span></div>`;
+                        }
+                        return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
                     }).join('');
-                    // Live preview: open the modal for the top match (no map pan
-                    // while typing — that only happens on explicit click).
-                    if (LANG_DATA[top[0].code]) {
+                    // Live preview: open the modal for the top *enabled* match
+                    // (no map pan while typing — that only happens on explicit click).
+                    const topEnabled = top.find(m => !m.disabled);
+                    if (topEnabled && LANG_DATA[topEnabled.code]) {
                         // Only re-open if the top match changed (avoids
                         // re-rendering the same modal on every keystroke).
-                        if (infoPanel.dataset.code !== top[0].code) {
-                            showLangInfo(top[0].code);
+                        if (infoPanel.dataset.code !== topEnabled.code) {
+                            showLangInfo(topEnabled.code);
                         }
                     }
                 }
@@ -1849,6 +1868,7 @@
             results.addEventListener('click', e => {
                 const item = e.target.closest('.lang-search-item');
                 if (!item) return;
+                if (item.getAttribute('data-disabled') === '1') return;  // off-era item
                 const code = item.getAttribute('data-code');
                 if (!code || !LANG_DATA[code]) return;
                 const lang = LANG_DATA[code];
