@@ -494,7 +494,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=72"></script>
+    <script src="wordmap_data.js?v=73"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=3"></script>
@@ -632,11 +632,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      72,
+            data:      73,
             metaI18n:  8,
             filter:    22,
             names:     3,
-            meta:      26,
+            meta:      27,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2150,9 +2150,19 @@
             const input = document.getElementById('lang-search');
             const results = document.getElementById('lang-search-results');
             if (!input || !results) return;
+            // Audit Task 114: accent-insensitive search via Unicode NFD
+            // decomposition + combining-mark removal. Lets users type
+            // "Yoruba" and find "Yorùbá", "Maori" and find "Māori", etc.
+            // Also matches against meta.aliases / iso6393 / canonicalCode.
+            function normalizeSearchText(s) {
+                return String(s || '')
+                    .normalize('NFD')
+                    .replace(/\p{M}/gu, '')
+                    .toLowerCase();
+            }
             function renderResults(q) {
                 if (!q || q.length < 1) { results.style.display = 'none'; results.innerHTML = ''; return; }
-                const ql = q.toLowerCase();
+                const ql = normalizeSearchText(q);
                 const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
                 const enNames = LANG_NAMES.en || {};
                 const matches = [];
@@ -2161,17 +2171,31 @@
                     const display = names[code] || lang.name;
                     const en = enNames[code] || lang.name;
                     const native = lang.native || '';
-                    // Match against display name, English name, native name, or code
-                    if (display.toLowerCase().includes(ql) ||
-                        en.toLowerCase().includes(ql) ||
-                        native.toLowerCase().includes(ql) ||
-                        code.toLowerCase().includes(ql)) {
-                        // Score: exact prefix > prefix > substring
+                    const m = lang.meta || {};
+                    // Build searchable strings — main fields + aliases +
+                    // iso6393 + canonicalCode (all NFD-normalized)
+                    const dispN = normalizeSearchText(display);
+                    const enN   = normalizeSearchText(en);
+                    const natN  = normalizeSearchText(native);
+                    const codeN = normalizeSearchText(code);
+                    const aliasArr = Array.isArray(m.aliases) ? m.aliases : [];
+                    const aliasNs = aliasArr.map(normalizeSearchText);
+                    const isoN = normalizeSearchText(m.iso6393 || '');
+                    const canonN = normalizeSearchText(m.canonicalCode || '');
+                    const aliasHit = aliasNs.some(a => a && a.includes(ql));
+                    if (dispN.includes(ql) || enN.includes(ql) ||
+                        natN.includes(ql) || codeN.includes(ql) ||
+                        aliasHit ||
+                        (isoN && isoN.includes(ql)) ||
+                        (canonN && canonN.includes(ql))) {
+                        // Score: exact prefix > prefix > alias > substring
                         let score = 100;
-                        if (display.toLowerCase().startsWith(ql)) score = 0;
-                        else if (en.toLowerCase().startsWith(ql)) score = 1;
-                        else if (code.toLowerCase().startsWith(ql)) score = 2;
-                        else if (native.toLowerCase().startsWith(ql)) score = 3;
+                        if (dispN.startsWith(ql)) score = 0;
+                        else if (enN.startsWith(ql)) score = 1;
+                        else if (codeN.startsWith(ql)) score = 2;
+                        else if (natN.startsWith(ql)) score = 3;
+                        else if (aliasNs.some(a => a && a.startsWith(ql))) score = 4;
+                        else if (isoN.startsWith(ql) || canonN.startsWith(ql)) score = 5;
                         matches.push({ code, display, en, native, score });
                     }
                 }

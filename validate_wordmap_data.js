@@ -666,6 +666,12 @@ for (const code of codes) {
         const allowed = new Set(['natural','constructed','pidgin-creole','pedagogical-stage','reconstructed-proto','historical-attested']);
         if (!allowed.has(m.languageKind)) E(`[#13h] ${code}: meta.languageKind "${m.languageKind}" not in enum`);
     }
+    if (m.aliases !== undefined) {
+        if (!Array.isArray(m.aliases)) E(`[#13k] ${code}: meta.aliases is not an array (Audit Task 114)`);
+        else for (const a of m.aliases) {
+            if (typeof a !== 'string' || !a.trim()) E(`[#13k] ${code}: meta.aliases entry not a non-empty string: ${JSON.stringify(a)}`);
+        }
+    }
     if (m.codeType !== undefined) {
         const allowed = new Set(['iso','regional-variant','historical-stage','pedagogical-stage','script-variant','constructed','custom']);
         if (!allowed.has(m.codeType)) E(`[#13i] ${code}: meta.codeType "${m.codeType}" not in enum`);

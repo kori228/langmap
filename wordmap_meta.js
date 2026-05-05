@@ -1939,6 +1939,104 @@ for (const code of Object.keys(LANG_DATA)) {
     }
 }
 
+// === aliases (Audit Task 114) ======================================
+// Searchable alternative spellings + common English exonyms +
+// autonyms that aren't in the main display name. The search box
+// accent-normalizes both query and these strings, so most diacritic
+// variants don't need to be listed; aliases are for distinct spellings,
+// historical names, and common alternate Romanizations.
+const ALIASES = {
+    yo:    ['Yoruba'],         // diacritic-stripped form already auto-handled
+    mi:    ['Maori'],
+    haw:   ['Hawaiian'],
+    nv:    ['Navajo', 'Diné', 'Dine'],
+    ak:    ['Akan', 'Twi'],    // Twi is the most-spoken Akan dialect
+    yue:   ['Cantonese', 'Yue'],
+    nan:   ['Hokkien', 'Min Nan', 'Taiwanese'],
+    wuu:   ['Wu', 'Shanghainese'],
+    hak_cn: ['Hakka', 'Kejia'],
+    zh:    ['Mandarin', 'Putonghua', 'Standard Chinese', 'Chinese'],
+    ja:    ['Japanese', 'Nihongo'],
+    ko:    ['Korean', 'Hangugeo', 'Chosŏnmal'],
+    de:    ['German', 'Deutsch'],
+    fr:    ['French', 'Français', 'Francais'],
+    es_eu: ['Spanish', 'Castilian', 'Castellano', 'Español'],
+    pt_eu: ['Portuguese', 'Português'],
+    pt_br: ['Brazilian Portuguese'],
+    ru:    ['Russian', 'Russkij'],
+    ar:    ['Arabic', 'Modern Standard Arabic', 'MSA', 'Fusha'],
+    arq:   ['Algerian Arabic', 'Darja', 'Daridja'],
+    mey:   ['Hassaniya', 'Mauritanian Arabic'],
+    ar_eg: ['Egyptian Arabic', 'Masri'],
+    ar_lev: ['Levantine Arabic', 'Shami'],
+    ar_ma: ['Moroccan Arabic', 'Darija'],
+    ar_tn: ['Tunisian Arabic', 'Derja', 'Tounsi'],
+    he:    ['Hebrew', 'Ivrit'],
+    fa:    ['Persian', 'Farsi'],
+    el:    ['Greek', 'Hellenic'],
+    el_grc: ['Ancient Greek', 'Classical Greek', 'Koine'],
+    tr:    ['Turkish', 'Türkçe'],
+    azb:   ['Iranian Azerbaijani', 'Azeri (Iran)'],
+    gag:   ['Gagauz Turkish'],
+    sma:   ['Southern Sami', 'Aarjelsaemiengiele'],
+    se:    ['Northern Sami', 'Davvisamegiella'],
+    fi:    ['Finnish', 'Suomi'],
+    sv:    ['Swedish', 'Svenska'],
+    no:    ['Norwegian', 'Bokmål', 'Bokmal'],
+    nn:    ['Nynorsk'],
+    da:    ['Danish', 'Dansk'],
+    is:    ['Icelandic', 'Íslenska'],
+    fo:    ['Faroese', 'Føroyskt'],
+    et:    ['Estonian', 'Eesti'],
+    vro:   ['Voro', 'Voru'],
+    hi:    ['Hindi'],
+    bn:    ['Bengali', 'Bangla'],
+    ta:    ['Tamil'],
+    te:    ['Telugu'],
+    ur:    ['Urdu'],
+    th:    ['Thai', 'Siamese'],
+    vi:    ['Vietnamese', 'Tieng Viet'],
+    ms:    ['Malay', 'Bahasa Melayu'],
+    id:    ['Indonesian', 'Bahasa Indonesia'],
+    tl:    ['Tagalog', 'Filipino', 'Pilipino'],
+    sw:    ['Swahili', 'Kiswahili'],
+    am:    ['Amharic'],
+    bo:    ['Tibetan', 'Bod-skad', 'Bodskad'],
+    my:    ['Burmese', 'Myanmar'],
+    km:    ['Khmer', 'Cambodian'],
+    lo:    ['Lao', 'Laotian'],
+    ka:    ['Georgian', 'Kartuli'],
+    hy:    ['Armenian', 'Hayeren'],
+    eu:    ['Basque', 'Euskara'],
+    cy:    ['Welsh', 'Cymraeg'],
+    ga:    ['Irish', 'Gaeilge'],
+    gd:    ['Scottish Gaelic', 'Gàidhlig', 'Gaidhlig'],
+    eo:    ['Esperanto'],
+    tok:   ['Toki Pona'],
+    tlh:   ['Klingon', 'tlhIngan Hol'],
+    jbo:   ['Lojban'],
+    quc:   ["K'iche'", 'Quiche', 'Kiche'],
+    iu:    ['Inuktitut'],
+    ipk:   ['Inupiaq'],
+    kl:    ['Greenlandic', 'Kalaallisut'],
+    nci:   ['Classical Nahuatl', 'Aztec'],
+    myn:   ['Classical Maya', 'Mayan'],
+    tmh:   ['Tamasheq', 'Tuareg', 'Touareg'],
+    kab:   ['Kabyle', 'Taqbaylit'],
+    shi:   ['Tashelhit', 'Shilha', 'Tachelhit'],
+    rif:   ['Tarifit', 'Riffian', 'Berber Rif'],
+    tzm:   ['Central Atlas Tamazight', 'Tamazight'],
+    ja_oki: ['Okinawan', 'Uchinaaguchi'],
+    ko_jeju: ['Jeju', 'Jejueo'],
+};
+for (const code of Object.keys(ALIASES)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        if (!LANG_DATA[code].meta.aliases) {
+            LANG_DATA[code].meta.aliases = ALIASES[code];
+        }
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it
