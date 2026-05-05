@@ -3933,3 +3933,183 @@ PASS
 ### Validator: PASS (UI 変更のみ、データ不変)
 
 ---
+
+## Codex Claude 修正状況確認 1 (2026-05-05): Sessions 35-38 + search commits
+
+**確認対象:** 直近コミット `7b51222`, `8c34e1c`, `a7119f9`, `03711e8`, `df75113`, `f33fdcb`, `5a117ac`, `6d0fb0b` と現行 `wordmap.html` / `wordmap_data.js` / validator。
+
+### 総評
+
+Claude 側の修正は大枠で反映済み。tracked file の未コミット差分はなく、validator も PASS。特に dataStatus と wordEvidence overlay は大きく前進している。
+
+ただし、`showLangInfo(code)` に「同じ code なら閉じる」toggle 挙動を入れたことで、既存の「同じ言語を再描画する」呼び出しにも影響している。UI 側に小さな回帰が 2 件あるため、次セッションで先に直すのがよい。
+
+### 反映済み・良い点
+
+1. **Codex 8 の critical data fix が一部反映済み**
+   - `sga.hello` / `mga.hello` は `dia duit` から `—` に変更済み。
+   - `orv.thanks` は `благодарю` から `—` に変更済み。
+   - これは Codex 8 の優先修正 1-2 に対応しており妥当。
+
+2. **dataStatus の正常化が大きく進んだ**
+   - validator 現在:
+     - `modern 499`
+     - `attested 65`
+     - `fragmentary 5`
+     - `partly-understood 4`
+     - `reconstructed 1`
+     - `pedagogical 5`
+   - 以前の「歴史言語なのに modern 扱い」がかなり解消されている。
+
+3. **wordEvidence overlay は実装・検証済み**
+   - validator で `wordEvidence overlay: 9 languages, 137 cells annotated`。
+   - 対象は fragmentary / partly-understood 中心で、教材 UX として価値が高い。
+   - `direct/proxy/inferred/disputed` の違いが UI に出るようになったのは重要。
+
+4. **bibliography footer と ancestry/descendant link は実装済み**
+   - `wordEvidence.source` と `meta.references` を集約して modal 末尾に `参考/Sources` 表示。
+   - `HIST_DESCENDANT` から `ANCESTORS_OF` を作り、historical → modern descendant / modern → historical ancestors のリンクを表示。
+
+5. **検索 UI の直近 3 コミットは実装済み**
+   - `f33fdcb`: 言語名検索 box + dropdown
+   - `5a117ac`: 入力中に top match を modal live preview
+   - `6d0fb0b`: off-era result は表示するが disabled 化
+   - ただしこの検索 UI 群は feedback md の Session としてはまだ記録が薄い。必要なら Session 39-41 として整理しておくとよい。
+
+### 未解決・回帰疑い
+
+1. **UI 言語変更時に開いている modal が閉じる可能性**
+   - 現行 `wordmap.html:650-654`:
+     ```js
+     if (panel.classList.contains('visible') && panel.dataset.code) {
+         showLangInfo(panel.dataset.code);
+     }
+     ```
+   - しかし `showLangInfo(code)` は `wordmap.html:1768-1771` で同じ code なら `closeInfoPanel()` する。
+   - そのため、UI 言語 dropdown を変更すると、開いている modal を翻訳再描画するのではなく閉じてしまう。
+   - 推奨: UI 言語変更時は `showLangInfo()` ではなく `renderLangInfo(panel.dataset.code); updateSelectedLabel(); updateConnectorLine();` などの refresh path を使う。あるいは `showLangInfo(code, { forceOpen: true })` のように toggle を抑制する。
+
+2. **3D globe label の同一 label 再クリック close が `closeInfoPanel()` を経由していない**
+   - 現行 `wordmap.html:800-805`:
+     ```js
+     if (panel.classList.contains('visible') && panel.dataset.code === label.dataset.code) {
+         panel.classList.remove('visible');
+         panel.dataset.code = '';
+     }
+     ```
+   - ここでは `updateSelectedLabel()`, `updateConnectorLine()`, `updateHash()` が呼ばれない。
+   - 結果として、選択 highlight / connector line / URL `lang` parameter が stale になる可能性がある。
+   - 推奨: ここも `closeInfoPanel()` を呼ぶ。ただし `closeInfoPanel()` が定義済みのスコープかを確認し、必要なら helper 化する。
+
+3. **検索 UI の live preview は URL hash を入力ごとに更新する**
+   - `renderResults()` 内で top enabled match に対して `showLangInfo(topEnabled.code)` を呼ぶため、入力中にも `updateHash()` が走る。
+   - 仕様として許容かもしれないが、「preview」と「明示選択」の境界が曖昧になる。
+   - 気になる場合は preview 用に `renderLangInfo()` + visible 表示のみ、click 時だけ `updateHash()` / map pan に分ける。
+
+4. **Codex 8 の残り data review は未対応**
+   - `sga/mga.thanks: atloirgaim` の直接 source / 時代差確認。
+   - `fro.thanks: merci` の “mercy > thanks” 注記。
+   - `osp.hello: salud` と `osp.good: bono` の時代・用法注記。
+   - `goh/gmh/osx.thanks` の noun vs conversational formula 区別。
+   - `fro.eye`, `gmh.hello`, `osx.thanks` の orthography/source 確認。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+Word entries with "—": 98
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+  · 98 word entries contain "—"
+  · 26 duplicate-coordinate groups
+  · wordEvidence overlay: 9 languages, 137 cells annotated (Schema Revolution Phase 2)
+PASS
+```
+
+### 次の推奨順
+
+1. **先に UI 回帰 2 件を修正**: UI 言語変更 refresh と 3D globe close path。
+2. **検索 UI commits を feedback md に Session 39-41 として整理**。
+3. **Codex 8 の残 data review を続行**: 特に `atloirgaim`, `merci`, `mercedes/salud`, Germanic thanks。
+
+---
+
+## Session 39 (2026-05-05): Codex 修正状況確認 1 への対応 — UI 回帰 2 件 fix
+
+**スコープ:** Codex Claude 修正状況確認 1 で指摘された UI 回帰 2 件を修正。data review (Codex 8 残) は debatable cases のため別 session に分離。
+
+### Fix 1: UI 言語変更時に modal が閉じる回帰
+
+**症状:** UI 言語 dropdown 変更時、`showLangInfo(panel.dataset.code)` が呼ばれていたが、Session 38 で `showLangInfo` に "same code → closeInfoPanel" の toggle 動作を入れたため、re-render ではなく close になっていた。
+
+**修正:** UI 言語 change handler を direct render path に置換:
+
+```js
+// Before:
+if (panel.classList.contains('visible') && panel.dataset.code) {
+    showLangInfo(panel.dataset.code);  // ← toggle 発火
+}
+// After:
+if (panel.classList.contains('visible') && panel.dataset.code) {
+    renderLangInfo(panel.dataset.code);
+    if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+    if (typeof updateConnectorLine === 'function') updateConnectorLine();
+}
+```
+
+UI 言語切替時に modal が閉じず、新言語で内容が翻訳更新されるようになった。
+
+### Fix 2: 3D globe label 再 click が closeInfoPanel を経由しない
+
+**症状:** 3D globe で同じ label を再 click → 手動で `panel.classList.remove('visible')` + `panel.dataset.code = ''` するだけで、`updateSelectedLabel()`、`updateConnectorLine()`、`updateHash()` が呼ばれず stale state が残る。
+
+**修正:** showLangInfo の toggle 動作を活用 (closeInfoPanel が cleanup を完了する):
+
+```js
+// Before:
+if (panel.classList.contains('visible') && panel.dataset.code === label.dataset.code) {
+    panel.classList.remove('visible');
+    panel.dataset.code = '';
+} else {
+    showLangInfo(label.dataset.code);
+    panel.dataset.code = label.dataset.code;
+}
+// After:
+showLangInfo(label.dataset.code);  // 同 code なら toggle close、別 code なら open
+```
+
+これで 3D globe でも 2D map と同じ cleanup path を辿る (selected highlight clear / connector line hide / URL `lang` param remove)。
+
+### 検証結果
+
+```
+Validator: 0 errors / 0 warnings / 1 ALLOWLISTED / PASS
+```
+
+### Codex 修正状況確認 1 で指摘された他項目
+
+| # | 項目 | ステータス |
+|---|---|---|
+| 1 | UI 言語変更 modal 閉じる回帰 | **本セッション fix** |
+| 2 | 3D globe close path stale | **本セッション fix** |
+| 3 | 検索 live preview の URL hash 更新頻度 | 仕様として許容（debatable、defer） |
+| 4 | Codex 8 残 data review (atloirgaim/merci/etc.) | defer (debatable, separate session) |
+
+### Session 39 中に気付いた追加問題（未対応・記録のみ）
+
+1. **Codex 8 残 data review の trade-off** — `goh/gmh/osx.thanks: dank/danc/thank` は gratitude **noun** として attested だが、conversational interjection としての用法は modern German "Danke!" 時代以降。ancient lang policy で `—` 化する余地はあるが、Codex 自身が "noun と formula の区別が必要" と中立的指摘。Session 40+ で linguistic context を見ながら判断候補。
+
+2. **`fro.thanks: merci`** — Old French で 12c. には gratitude expression として attested。Codex 8 は "意味史 tooltip 必要" と維持寄り。Phase 2.5 schema を活かして per-cell `note` field で意味史 (mercy → thanks) を残せる余地。Session 40+ note field 拡張候補。
+
+3. **検索 live preview URL hash 頻度** — Session 38/39 で showLangInfo 経由で updateHash が走るため、入力ごとに URL bar が変動。replaceState なので history bloat はないが UX 上 noisy。Session 40+ で `showLangInfo(code, {silent: true})` のような flag 追加候補。
+
+### 持ち越し（Session 40 以降）
+
+- Codex 8 残 data review (Germanic thanks, fro.merci 意味史 note, osp.salud/bono 注記)
+- 検索 live preview の URL hash silent option
+- per-cell `note` field 拡張 (意味史 / register / dialect)
+- 既存 Phase 2 残: ine PIE 全 cells reconstructed annotation, pedagogical 5 lang annotation
+
+---

@@ -647,10 +647,14 @@
             applyUILang();
             updateMarkers(currentWord);
             updateHash();
-            // Refresh open modal
+            // Refresh open modal in the new UI lang. Use direct render path
+            // (not showLangInfo) because showLangInfo has a same-code toggle
+            // that would close the modal instead of re-rendering.
             const panel = document.getElementById('lang-info');
             if (panel.classList.contains('visible') && panel.dataset.code) {
-                showLangInfo(panel.dataset.code);
+                renderLangInfo(panel.dataset.code);
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                if (typeof updateConnectorLine === 'function') updateConnectorLine();
             }
         });
 
@@ -797,15 +801,12 @@
                 if (label && label.dataset.code) {
                     e.stopPropagation();
                     _labelClickedAt = Date.now();
-                    const panel = document.getElementById('lang-info');
-                    // Toggle: if same language is already showing, close it
-                    if (panel.classList.contains('visible') && panel.dataset.code === label.dataset.code) {
-                        panel.classList.remove('visible');
-                        panel.dataset.code = '';
-                    } else {
-                        showLangInfo(label.dataset.code);
-                        panel.dataset.code = label.dataset.code;
-                    }
+                    // showLangInfo already handles the same-code toggle
+                    // (calling closeInfoPanel for cleanup of selected highlight,
+                    // connector line, and URL `lang` param). Use it instead of
+                    // the manual visible/dataset.code mutation that left state
+                    // partially stale.
+                    showLangInfo(label.dataset.code);
                 }
             });
 
