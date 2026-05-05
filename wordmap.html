@@ -1227,6 +1227,10 @@
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
             if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
+            // Persist open language modal so reload restores it.
+            const openCode = infoPanel && infoPanel.classList.contains('visible')
+                ? infoPanel.dataset.code : '';
+            if (openCode) params.set('lang', openCode);
             // Preserve the filter param owned by lang-filter.js
             const fParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
                 ? window.__langmap.getFilterHashParam() : '';
@@ -1295,6 +1299,13 @@
                     const alt = Number.isFinite(altParam) ? altParam : zoomToAltitude(Number.isFinite(z) ? z : 3);
                     globe.pointOfView({ lat, lng, altitude: alt });
                 }
+            }
+            // Restore open language modal (after everything else is loaded so
+            // map markers exist by the time we look up the label DOM).
+            const langCode = params.get('lang');
+            if (langCode && LANG_DATA[langCode]) {
+                // Defer until after initial markers are rendered.
+                setTimeout(() => { showLangInfo(langCode); }, 100);
             }
         }
         loadHash();
@@ -1374,6 +1385,7 @@
             delete infoPanel.dataset.code;
             updateSelectedLabel();
             updateConnectorLine();
+            updateHash();  // remove `lang` param from URL
         }
 
         // === Selected-language highlight + connector line to info panel ===
@@ -1399,11 +1411,23 @@
             const ip = _infoPanel();
             if (!ip) return;
             const open = ip.classList.contains('visible');
-            document.querySelectorAll('.lang-label.selected, .globe-label.selected')
-                .forEach(el => el.classList.remove('selected'));
+            // Clear previous selection AND restore the Leaflet marker's natural
+            // z-index (the CSS z-index on `.selected` doesn't escape the marker
+            // icon container — we have to bump the marker icon itself).
+            document.querySelectorAll('.lang-label.selected, .globe-label.selected').forEach(el => {
+                el.classList.remove('selected');
+                const marker = el.closest('.leaflet-marker-icon');
+                if (marker) marker.style.zIndex = '';
+            });
             if (!open) return;
             const el = getSelectedLabelEl();
-            if (el) el.classList.add('selected');
+            if (el) {
+                el.classList.add('selected');
+                // Bring selected label's marker icon to front so overlapping
+                // nearby labels don't cover it (per user request).
+                const marker = el.closest('.leaflet-marker-icon');
+                if (marker) marker.style.zIndex = '1000';
+            }
         }
         function updateConnectorLine() {
             const ip = _infoPanel();
@@ -1746,6 +1770,7 @@
             infoPanel.classList.add('visible');
             updateSelectedLabel();
             updateConnectorLine();
+            updateHash();  // persist `lang` to URL so reload restores
             if (!lang.meta) {
                 loadMeta().then(() => {
                     if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
