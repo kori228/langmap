@@ -208,12 +208,11 @@
             outline: none;
             z-index: 10;
         }
-        /* In 3D mode the dark globe background makes the heavy drop shadow
-           on the selected label look muddy; replace it with a clean
-           high-contrast ring + glow that reads against either land/sea. */
+        /* In 3D mode drop the muddy heavy shadow + soft white glow; just
+           keep the 1px blue ring + white card so the selection is
+           identifiable without halo bleed against the dark globe. */
         body.is-3d .globe-label.selected {
-            box-shadow: 0 0 0 1px rgba(74,108,247,0.85),
-                        0 0 8px rgba(255,255,255,0.5);
+            box-shadow: 0 0 0 1px rgba(74,108,247,0.85);
         }
         /* The white drop-shadow halo around the connector path was tuned for
            the light 2D map; on the 3D night-sky background it leaves an
@@ -471,7 +470,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=65"></script>
+    <script src="wordmap_data.js?v=66"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -609,7 +608,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      65,
+            data:      66,
             metaI18n:  8,
             filter:    22,
             names:     2,
