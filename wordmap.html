@@ -356,12 +356,17 @@
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
 
-    <!-- Top-left controls (below header): word select + era -->
+    <!-- Top-left controls (below header): word select + era + lang search -->
     <div class="top-left-controls">
         <select id="word-select" aria-label="Select word"></select>
         <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
             <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
             <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
+        </div>
+        <div class="lang-search-wrap" style="position:relative">
+            <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
+                   style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
+            <div id="lang-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
     </div>
 
@@ -1782,6 +1787,78 @@
                 });
             }
         }
+
+        // === Language name search ===
+        // Filter LANG_DATA by display name (current UI lang), native name, and code.
+        // Show top 10 matches in a dropdown; click pans the map and opens the modal.
+        (function setupLangSearch() {
+            const input = document.getElementById('lang-search');
+            const results = document.getElementById('lang-search-results');
+            if (!input || !results) return;
+            function renderResults(q) {
+                if (!q || q.length < 1) { results.style.display = 'none'; results.innerHTML = ''; return; }
+                const ql = q.toLowerCase();
+                const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+                const enNames = LANG_NAMES.en || {};
+                const matches = [];
+                for (const code of Object.keys(LANG_DATA)) {
+                    const lang = LANG_DATA[code];
+                    const display = names[code] || lang.name;
+                    const en = enNames[code] || lang.name;
+                    const native = lang.native || '';
+                    // Match against display name, English name, native name, or code
+                    if (display.toLowerCase().includes(ql) ||
+                        en.toLowerCase().includes(ql) ||
+                        native.toLowerCase().includes(ql) ||
+                        code.toLowerCase().includes(ql)) {
+                        // Score: exact prefix > prefix > substring
+                        let score = 100;
+                        if (display.toLowerCase().startsWith(ql)) score = 0;
+                        else if (en.toLowerCase().startsWith(ql)) score = 1;
+                        else if (code.toLowerCase().startsWith(ql)) score = 2;
+                        else if (native.toLowerCase().startsWith(ql)) score = 3;
+                        matches.push({ code, display, en, native, score });
+                    }
+                }
+                matches.sort((a, b) => a.score - b.score || a.display.localeCompare(b.display));
+                const top = matches.slice(0, 12);
+                if (top.length === 0) {
+                    results.innerHTML = '<div style="padding:8px;color:#999">No match</div>';
+                } else {
+                    results.innerHTML = top.map(m => {
+                        const native = m.native && m.native !== m.display ? ` <span style="color:#999;font-size:11px">${escapeHtml(m.native)}</span>` : '';
+                        const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
+                        return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="padding:6px 9px;cursor:pointer;border-bottom:1px solid #f0f0f0">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
+                    }).join('');
+                }
+                results.style.display = 'block';
+            }
+            input.addEventListener('input', e => renderResults(e.target.value.trim()));
+            input.addEventListener('focus', e => { if (e.target.value.trim()) renderResults(e.target.value.trim()); });
+            input.addEventListener('blur', () => setTimeout(() => { results.style.display = 'none'; }, 200));
+            results.addEventListener('mousedown', e => e.preventDefault());  // prevent input blur before click
+            results.addEventListener('click', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (!item) return;
+                const code = item.getAttribute('data-code');
+                if (!code || !LANG_DATA[code]) return;
+                const lang = LANG_DATA[code];
+                if (typeof map !== 'undefined' && map && map.setView) {
+                    map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
+                }
+                showLangInfo(code);
+                input.value = '';
+                results.style.display = 'none';
+            });
+            results.addEventListener('mouseover', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (item) item.style.background = '#f5f5f5';
+            });
+            results.addEventListener('mouseout', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (item) item.style.background = '';
+            });
+        })();
 
         // Phase 3b (Session 37): clicking ancestor/descendant link navigates modal
         // to that lang. Map jumps to its coords too.
