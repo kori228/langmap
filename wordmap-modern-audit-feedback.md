@@ -20,10 +20,11 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §28 Mandarin 妈妈/爸爸 tone added | ✅ Fixed | 4 (zh+zh_db) |
 | §32 ko_jeju Jeju reclassification (Option A) | ✅ Fixed | 1 lang reclass |
 | §46 Naxi nxq surface contamination | ✅ Annotated as `disputed` | 2 |
+| §48 Bouyei pcc tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | Systemic concept definitions | ⏸️ Schema work — Phase 4 候補 | — |
 | Pass 2-6 family-wide IPA cleanup (Slavic ts, Turkic, Polynesian, etc.) | ⏸️ Deferred (要 family-wide review + source) | — |
 
-**Total fixed:** 43 cells + 2 language reclassifications across 16 modern languages.
+**Total fixed:** 63 cells + 2 language reclassifications across 17 modern languages.
 
 ---
 
@@ -208,6 +209,26 @@ Code key `ko_jeju` のまま維持 (URL hash compat)。Words data は既に Jeju
 
 ---
 
+## §48 Bouyei pcc — tone letters → IPA Chao tones (✅ 20 cells fixed)
+
+Audit §48: Bouyei pinyin tone letters (`-x`/`-z`/`-h`/`-l`/`-q`/`-s`) が IPA から strip されており tonal info が欠落。Standard Bouyei tone mapping を IPA Chao letters で復元。Wangmo ABVD source 参照。
+
+| Tone letter | Chao value | Examples |
+|---|---|---|
+| `-x` | ˧˩ (tone 4) | raamx → raːm˧˩, feih → fei˧˩, faix → fai˧˩, saamh → saːm˧˩ |
+| `-z` | ˩˩ (tone 2) | ngonz → ŋon˩˩, ranz → raŋ˩˩, faengz → faŋ˩˩ |
+| `-h` | ˧˩ (tone 6) | ronh → roːn˧˩, meeh → meː˧˩, poh → poː˧˩, hainh → haiŋ˧˩ |
+| `-l` | ˧˥ (tone 7, checked) | gianl → ɡian˧˥, gunl → ɡuŋ˧˥, ndeeul → ndeːu˧˥, ndil → ndi˧˥ |
+| `-q` | ˧˧ (tone 8, checked) | meeuq → meːu˧˧ |
+| `-s` | ˥˧ (tone 5) | gaais → ɡaːi˥˧ |
+| (none) | ˨˦ (tone 1) | ma → ma˨˦, daa → daː˨˦ |
+
+`good: ndil/ndil` の bug fix も同時に: 元 IPA は `l` を子音として残していたが正しくは `ndi˧˥` (tone 7)。Two-syllable phrases (hello, sun, thanks) も各音節 tone 復元。
+
+wordEvidence に water + one を direct/Wangmo source として記録。
+
+---
+
 ## §46 Naxi nxq — surface contamination annotated as `disputed` (✅ 2 cells)
 
 Audit: `thanks: gbie-ɣ` の surface に IPA `ɣ` 混入、`one: ʈʂʰu-i` の surface に IPA `ʈʂʰ` 混入。Naxi pinyin の正しい source 不明のため、surface 値は keep + wordEvidence に `evidence: 'disputed'` + note 追加。Modal hover で user に "needs Naxi-pinyin source verification" と表示される。
@@ -251,11 +272,11 @@ ALLOWLISTED: 1  (mon/mnw)
 INFOS:    3
   · 101 word entries contain "—"
   · 26 duplicate-coordinate groups
-  · wordEvidence overlay: 20 languages, 160 cells annotated
+  · wordEvidence overlay: 21 languages, 162 cells annotated
 PASS
 ```
 
-Cache buster `v=46 → v=49` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=50` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
 
 ---
 

@@ -2548,7 +2548,11 @@ const LANG_DATA = {
     words: { water:['tsʼa','tsʼa'], fire:['cʼoo','tsʼoː'], sun:['kʼɔɔ','kʼɔː'], moon:['tsoa','tsoa'], mother:['yei','jei'], father:['ai','ai'], eat:['ǁee','ǁeː'], drink:['ʔee','ʔeː'], love:['kalokisi','kalokisi'], heart:['ǁʼampoo','ǁʼampoː'], tree:['hetsʼee','hetsʼeː'], house:['ge','ɡe'], dog:['ǀɔɔ','ǀɔː'], cat:['misho','miʃo'], hand:['kxʼaa','kxʼaː'], eye:['gaa','ɡaː'], hello:['gabaeesa','ɡabaeːsa'], thanks:['musʼokoyo','muʃokojo'], one:['tsʼekʼe','tsʼekʼe'], good:['tlʼobe','tɬʼobe'] }},
   // Tai-Kadai (China, related to Zhuang)
   pcc: { name: 'Bouyei', native: 'Haausqyaix', lat: 26.58, lng: 106.71, // Anshun
-    words: { water:['raamx','raːm'], fire:['feih','fei'], sun:['ngonzbyaaiz','ŋonpjaːi'], moon:['ronh','roːn'], mother:['meeh','meː'], father:['poh','poː'], eat:['gianl','ɡian'], drink:['gunl','ɡuŋ'], love:['gaais','ɡaːi'], heart:['saamh','saːm'], tree:['faix','fai'], house:['ranz','raŋ'], dog:['ma','ma'], cat:['meeuq','meːu'], hand:['faengz','faŋ'], eye:['daa','daː'], hello:['meez ndil','meː ndi'], thanks:['gangzhainh','ɡaŋhaiŋ'], one:['ndeeul','ndeːu'], good:['ndil','ndil'] }},
+    words: { water:['raamx','raːm˧˩'], fire:['feih','fei˧˩'], sun:['ngonzbyaaiz','ŋon˩˩pjaːi˩˩'], moon:['ronh','roːn˧˩'], mother:['meeh','meː˧˩'], father:['poh','poː˧˩'], eat:['gianl','ɡian˧˥'], drink:['gunl','ɡuŋ˧˥'], love:['gaais','ɡaːi˥˧'], heart:['saamh','saːm˧˩'], tree:['faix','fai˧˩'], house:['ranz','raŋ˩˩'], dog:['ma','ma˨˦'], cat:['meeuq','meːu˧˧'], hand:['faengz','faŋ˩˩'], eye:['daa','daː˨˦'], hello:['meez ndil','meː˩˩ ndi˧˥'], thanks:['gangzhainh','ɡaŋ˩˩haiŋ˧˩'], one:['ndeeul','ndeːu˧˥'], good:['ndil','ndi˧˥'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Bouyei standard pinyin tone letters (Wikipedia + Omniglot); -x = tone 4 (˧˩)' },
+      one:    { evidence: 'direct', source: 'ABVD Wangmo Bouyei: ʔdɛu24/ndeːu˧˥ (tone 7 from -l ending)' },
+    } },
   // Hmong-Mien (Yao branch)
   iuu: { name: 'Iu Mien', native: 'Iu Mienh', lat: 22.0, lng: 103.0, // Vietnam-Laos-China border
     words: { water:['wuom','wuom'], fire:['douz','dou'], sun:['hnoi','hnoi'], moon:['hlaax','hlaː'], mother:['maa','maː'], father:['diex','die'], eat:['nyanc','ɲan'], drink:['hopv','hop'], love:['hnamv','hnam'], heart:['mba\'y-fim','mbai fim'], tree:['ndiangx','ndian'], house:['biauv','biau'], dog:['juv','dʒuv'], cat:['mbao','mbao'], hand:['buoz','buo'], eye:['m\'zing','mziŋ'], hello:['yiem-longx','jiem lon'], thanks:['laengz','laŋ'], one:['yietc','jiet'], good:['longx','lon'] }},
