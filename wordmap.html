@@ -514,7 +514,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=79"></script>
+    <script src="wordmap_data.js?v=80"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=4"></script>
@@ -652,7 +652,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      79,
+            data:      80,
             metaI18n:  8,
             filter:    22,
             names:     4,
@@ -731,6 +731,9 @@
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
             });
+            // Localize search input placeholder (Audit i18n gap fix)
+            const searchInput = document.getElementById('lang-search');
+            if (searchInput) searchInput.placeholder = i18n('searchPlaceholder');
             // Append per-era language counts in parens: "現代言語 (478)" / "歴史言語 (79)"
             let modernCount = 0, historicalCount = 0;
             if (typeof HIST_CODE_SET !== 'undefined' && typeof LANG_DATA !== 'undefined') {
@@ -1870,6 +1873,64 @@
         };
         const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
 
+        // Audit: i18n gap fixes (Session 53) — strings that were previously
+        // inline ternaries in 6 langs only. Now centralized with full 21-UI
+        // coverage where translation is available; English fallback otherwise.
+        const I18N_STRINGS = {
+            modernDescendant: { en: 'Modern descendant', ja: '近代後裔', ko: '현대 후손', zh: '现代后裔',
+                yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
+                id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
+                fr: 'Descendant moderne', it: 'Discendente moderno',
+                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
+                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
+                ru: 'Совр. потомок', uk: 'Сучасний нащадок',
+                ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
+            historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
+                yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
+                id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
+                fr: 'Ancêtres hist.', it: 'Antenati storici',
+                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
+                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
+                ru: 'Ист. предки', uk: 'Іст. предки',
+                ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
+            sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
+                yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
+                de: 'Quellen', fr: 'Sources', it: 'Fonti',
+                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
+                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
+                ru: 'Источники', uk: 'Джерела',
+                ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
+            searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
+                yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
+                id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
+                fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
+                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
+                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
+                ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
+                ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
+            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
+            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
+                de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
+                pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
+                ar: 'لا توجد نتائج', he: 'אין תוצאות', sw: 'Hakuna inayolingana',
+                vi: 'Không tìm thấy', th: 'ไม่พบรายการ', id: 'Tidak ada' },
+            eraFilterOffHint: { en: 'Toggle off the {era} filter to select',
+                ja: '{era}フィルターをオフにしてください',
+                ko: '{era} 필터를 끄세요', zh: '请关闭{era}过滤器后再选择',
+                de: '{era}-Filter ausschalten, um auszuwählen',
+                fr: 'Désactivez le filtre {era} pour sélectionner',
+                es: 'Desactiva el filtro {era} para seleccionar',
+                pt: 'Desative o filtro {era} para selecionar',
+                ru: 'Отключите фильтр {era} для выбора',
+                ar: 'أوقف فلتر {era} للاختيار', he: 'בטל את מסנן ה־{era} לבחירה' },
+        };
+        function i18n(key) {
+            const m = I18N_STRINGS[key];
+            if (!m) return key;
+            return m[uiLang] || m[uiLang.split('_')[0]] || m.en;
+        }
+
         // Audit Task 99: locationBasis label tells users that the marker is
         // a representative point, not a speaker-distribution map.
         const LOCATION_BASIS_LABEL = {
@@ -2100,12 +2161,12 @@
                     const descLang = LANG_DATA[desc];
                     if (descLang) {
                         const descName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[desc] || descLang.name;
-                        const lbl = uiLang === 'ja' ? '近代後裔' : (uiLang === 'zh' ? '现代后裔' : (uiLang === 'ko' ? '현대 후손' : (uiLang === 'de' ? 'Modern. Nachfahre' : (uiLang === 'fr' ? 'Descendant moderne' : (uiLang === 'ru' ? 'Совр. потомок' : 'Modern descendant')))));
+                        const lbl = i18n('modernDescendant');
                         chain += `<span style="color:#666"><b>${escapeHtml(lbl)}:</b> → <a href="#" data-langcode="${escapeHtml(desc)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(descName)}</a> (${escapeHtml(desc)})</span>`;
                     }
                 }
                 if (!isHist && ancestors.length > 0) {
-                    const lbl = uiLang === 'ja' ? '歴史的祖先' : (uiLang === 'zh' ? '历史祖先' : (uiLang === 'ko' ? '역사적 조상' : (uiLang === 'de' ? 'Hist. Vorfahren' : (uiLang === 'fr' ? 'Ancêtres hist.' : (uiLang === 'ru' ? 'Ист. предки' : 'Historical ancestors')))));
+                    const lbl = i18n('historicalAncestors');
                     const items = ancestors
                         .filter(a => LANG_DATA[a])
                         .map(a => {
@@ -2155,7 +2216,7 @@
                 }
             }
             if (sourceItems.length > 0) {
-                const srcLabel = uiLang === 'ja' ? '参考' : (uiLang === 'zh' ? '参考' : (uiLang === 'ko' ? '참고' : (uiLang === 'de' ? 'Quellen' : (uiLang === 'fr' ? 'Sources' : (uiLang === 'ru' ? 'Источники' : 'Sources')))));
+                const srcLabel = i18n('sources');
                 const safeUrl = u => (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null;
                 const renderItem = it => {
                     const url = safeUrl(it.url);
@@ -2270,19 +2331,20 @@
                 matches.sort((a, b) => a.score - b.score || a.display.localeCompare(b.display));
                 const top = matches.slice(0, 12);
                 if (top.length === 0) {
-                    results.innerHTML = '<div style="padding:8px;color:#999">No match</div>';
+                    const noMatchLabel = i18n('noMatch');
+                    results.innerHTML = `<div style="padding:8px;color:#999">${escapeHtml(noMatchLabel)}</div>`;
                 } else {
+                    // The era label here is the *opposite* of current era —
+                    // it tells the user "this match is in the [other] era".
                     const eraLbl = showHistorical
-                        ? (uiLang === 'ja' ? '現代言語' : 'modern lang')
-                        : (uiLang === 'ja' ? '歴史言語' : 'historical lang');
+                        ? i18n('modernLangTooltip')
+                        : i18n('historicalLangTooltip');
                     results.innerHTML = top.map(m => {
                         const native = m.native && m.native !== m.display ? ` <span style="color:#999;font-size:11px">${escapeHtml(m.native)}</span>` : '';
                         const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
                         const baseStyle = 'padding:6px 9px;border-bottom:1px solid #f0f0f0';
                         if (m.disabled) {
-                            const tooltip = uiLang === 'ja'
-                                ? `${eraLbl}フィルターをオフにしてください`
-                                : `Toggle off the ${eraLbl} filter to select`;
+                            const tooltip = i18n('eraFilterOffHint').replace('{era}', eraLbl);
                             return `<div class="lang-search-item disabled" data-code="${escapeHtml(m.code)}" data-disabled="1" title="${escapeHtml(tooltip)}" style="${baseStyle};opacity:0.4;cursor:not-allowed">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)} · ${escapeHtml(eraLbl)}</span></div>`;
                         }
                         return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
