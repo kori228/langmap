@@ -189,9 +189,29 @@
            Serif (+ JP/SC/TC/KR) backs it for CJK. Charis SIL is a
            diacritic safety net. Ancient-script Noto fonts last. Setting
            font-family on the parent so .word, .ipa, .name all inherit. */
+        /* Presence-only marker for languages without word data for the
+           current concept. Small grayed dot, clickable → opens modal so
+           user can still discover the language even when its cell is '—'. */
+        .unattested-marker {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(120,120,130,0.55);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 0 1px rgba(0,0,0,0.4);
+            cursor: pointer;
+        }
+        .unattested-marker:hover {
+            background: rgba(120,120,130,0.85);
+            transform: scale(1.4);
+            transition: transform 0.12s ease, background 0.12s ease;
+        }
+        body.is-3d .unattested-marker {
+            background: rgba(180,180,200,0.6);
+            border-color: rgba(255,255,255,0.5);
+        }
         .lang-label, .globe-label {
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Noto Sans Tibetan",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
                 "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
@@ -494,7 +514,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=78"></script>
+    <script src="wordmap_data.js?v=79"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=4"></script>
@@ -632,7 +652,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      78,
+            data:      79,
             metaI18n:  8,
             filter:    22,
             names:     4,
@@ -1117,10 +1137,14 @@
 
         function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
+            const unattestedLangs = [];
             const descendantCodes = new Set();
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
-                    if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId] && !isUnattestedEntry(LANG_DATA[hist].words[wordId])) {
+                    if (!LANG_DATA[hist] || !LANG_DATA[hist].words[wordId]) continue;
+                    if (isUnattestedEntry(LANG_DATA[hist].words[wordId])) {
+                        unattestedLangs.push(hist);
+                    } else {
                         visibleLangs.push(hist);
                         if (modern && LANG_DATA[modern] && LANG_DATA[modern].words[wordId] && !isUnattestedEntry(LANG_DATA[modern].words[wordId])) {
                             descendantCodes.add(modern);
@@ -1132,12 +1156,15 @@
                 for (const [code, lang] of Object.entries(LANG_DATA)) {
                     if (EXCLUDED_CODES.has(code)) continue;
                     if (!lang.words[wordId]) continue;
-                    if (isUnattestedEntry(lang.words[wordId])) continue;
                     if (zoom < 4 && !MAJOR.has(code)) continue;
-                    visibleLangs.push(code);
+                    if (isUnattestedEntry(lang.words[wordId])) {
+                        unattestedLangs.push(code);
+                    } else {
+                        visibleLangs.push(code);
+                    }
                 }
             }
-            return { visibleLangs, descendantCodes };
+            return { visibleLangs, unattestedLangs, descendantCodes };
         }
 
         // HTML-escape utility (per wordmap-check-4.md §5). All data values
@@ -1186,7 +1213,7 @@
             const zoom = map.getZoom();
             const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
 
-            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
+            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
 
             // --- Pixel-grid-based grouping ---
             // Project every visible marker to container pixel coords at the
@@ -1254,6 +1281,24 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
+            // Render unattested-cell langs as small gray dots so the user
+            // can still see the language exists at that location even when
+            // its word for the current concept is '—'. Click → modal.
+            for (const code of unattestedLangs) {
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const codeAttr = escapeHtml(code);
+                const dotIcon = L.divIcon({
+                    className: 'unattested-icon',
+                    html: `<div class="unattested-marker" data-code="${codeAttr}" title="${codeAttr}"></div>`,
+                    iconSize: [9, 9], iconAnchor: [4, 4],
+                });
+                const dotMarker = L.marker([lang.lat, lang.lng], { icon: dotIcon, interactive: true });
+                dotMarker._langCode = code;
+                dotMarker.on('click', () => showLangInfo(code));
+                dotMarker.addTo(map);
+                markers.push(dotMarker);
+            }
             // Re-apply selected highlight + connector after re-render
             // (markers are torn down and re-added each updateMarkers call).
             if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
@@ -1262,7 +1307,7 @@
 
         function updateGlobeLabels(wordId) {
             if (!globe) return;
-            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
             const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
             // Globe altitude in [0.1, 6]; lower = zoomed-in, labels appear
             // larger relative to globe, so they need MORE degree separation.
@@ -1324,6 +1369,20 @@
                 el.firstChild.dataset.code = code;
 
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
+            }
+            // 3D presence-only dots for unattested cells (mirrors 2D version).
+            for (const code of unattestedLangs) {
+                if (!isActive(code)) continue;
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const el = document.createElement('div');
+                el.innerHTML = `<div class="unattested-marker" data-code="${escapeHtml(code)}" title="${escapeHtml(code)}"></div>`;
+                el.firstChild.dataset.code = code;
+                el.firstChild.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showLangInfo(code);
+                });
+                elements.push({ el: el.firstChild, lat: lang.lat, lng: lang.lng, code });
             }
             globe.htmlElementsData(elements);
             // Re-apply selected highlight + connector after globe re-renders
