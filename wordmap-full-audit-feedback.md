@@ -4113,3 +4113,70 @@ Validator: 0 errors / 0 warnings / 1 ALLOWLISTED / PASS
 - 既存 Phase 2 残: ine PIE 全 cells reconstructed annotation, pedagogical 5 lang annotation
 
 ---
+
+## Session 40 (2026-05-05): Codex 8 残 — Germanic thanks 3 セル `—` 化
+
+**スコープ:** Codex 追加レビュー 8 で deferred としていた "Germanic gratitude noun vs conversational formula" の問題を ancient lang policy に従い処理。
+
+### 修正 3 セル
+
+| Code | Lang | Field | 旧 | 根拠 |
+|---|---|---|---|---|
+| `goh` | Old High German | `thanks` | `dank` / `dank` | OHG `dank` は **gratitude noun** (=感謝・思い)。conversational interjection としての standalone 用法は modern German `Danke!` (16-17c. 以降) の発展。古高ドイツ語 (8-11c.) の Otfrid/Tatian/Hildebrandslied 等で固定 thanks 表現として attested ではない |
+| `gmh` | Middle High German | `danc` / `dank` | 同上 — MHG `danc` は noun、Nibelungenlied/Minnesang で「感謝・思い」。standalone interjection 用法不明 |
+| `osx` | Old Saxon | `thank` / `θank` | 同上 — Old Saxon `thank` は noun、Heliand 等で attested だが conversational thanks formula としては不明 |
+
+**`hello` は keep:** Codex 8 は `heil` 系 greeting を「health/whole/welfare の greeting として plausible」と評価。Beowulf-era から `heill/heils/heil` は health-wishing greeting として attested、これは conversational use あり。touch せず。
+
+**`gmh.hello: gegrüezet`:** Codex 8 は "participial/finite greeting formula として plausible だが綴り差確認" と維持寄り。今回 keep。
+
+### Codex 8 で flag されたが今回 touch しなかったセル
+
+- `sga/mga.thanks: atloirgaim` — Old/Middle Irish "I thank/praise" 1sg finite form として plausible (Codex 8 priority 4-5、保留可)
+- `fro.thanks: merci` — 12c. 以降 Old French で gratitude expression として attested。`note` schema で意味史 (mercy → thanks) を残したいが現状 schema 不在、keep
+- `osp.thanks: mercedes` — RAE が "merced, muchas mercedes = gracias" を desus. expression として認可、keep
+- `osp.hello: salud` — health/salvation greeting use、direct citation 不明だが debatable
+- `osp.good: bono` — 単なる早期 Old Spanish 綴り、bueno との時代差は orthographic、keep
+- `fro.eye: oeil/œʎ` — modern-ish 綴り、Old French の `oil/ueil/uel` variants との region/period 区別必要だが orthographic、keep
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+  · 101 word entries contain "—"  ← 100 突破 (98 → 101)
+  · 26 duplicate-coordinate groups
+  · wordEvidence overlay: 9 languages, 137 cells annotated
+PASS
+```
+
+### 教材スコアへの影響
+
+- **+0.5-1 pt**: Germanic 系古代語の credibility 向上 (gratitude noun を greeting formula として誤って表示しない)
+- 累計推定: **88-92 / 100** (Phase 3b 後 から維持、改善は marginal)
+- 大きな score jump はもう Phase 4 (cell-level structured sources / 系統樹完全 view / Swadesh 100 拡張) を待つ段階
+
+### Session 40 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`non.thanks: þǫkk`** — 同じ noun-vs-formula 問題が Old Norse にも存在。ただし Eddic 詩で「þǫkk」が conversational thanks 形 (e.g., "þǫkk fyrir") として attested の可能性あり。Codex 8 が触れなかったので Session 41+ で再 review 候補。
+
+2. **`gez.thanks: ምስጋና / məsgaːnaː`** — Ge'ez "praise/thanks" noun。同様の noun-vs-formula 問題。Christian liturgical context での attestation あり、conservative には keep だが Session 41+ で確認候補。
+
+3. **`syc.thanks: ܫܘܒܚܐ / ʃubħaː`** — Classical Syriac "praise/glory" — Christian liturgical noun、conversational thanks 用法不明。Session 41+ で Sokoloff/Brockelmann 確認候補。
+
+4. **per-cell `note` field schema の必要性高まる** — Session 39/40 で「conservative には `—` 化したいが意味史/用法 nuance を捨てるのが惜しい」cases が増えてきた (`merci`, `þǫkk`, `mercedes` 等)。Phase 2.5 schema を活かして `wordEvidence[concept].note` を per-cell で追加できるが、現 UI rendering では note 表示なし。Session 41+ で UI extend 候補。
+
+### 持ち越し（Session 41 以降）
+
+**Schema/UI:**
+- per-cell `note` field UI rendering (意味史/register/dialect tooltip)
+- 検索 live preview の URL hash silent option (Session 39 #3)
+- Phase 2.5: ine PIE / pedagogical 5 lang の wordEvidence
+
+**Data review:**
+- Session 40 #1-3 (non/gez/syc thanks の noun-vs-formula)
+- Codex 8 残 (sga/mga.thanks の eDIL citation 確認、osp.hello/good 注記)
+
+---
