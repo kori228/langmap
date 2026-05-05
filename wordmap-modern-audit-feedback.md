@@ -23,6 +23,10 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §48 Bouyei pcc tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | §56/B Tujia tji love/thanks tone restoration | ✅ Fixed | 2 |
 | §50 Iu Mien iuu tone letters → IPA Chao tones | ✅ Fixed | 20 |
+| Phase 4 schema: WORD_LIST `definition` field added | ✅ Schema only (no UI yet) | 20 concepts |
+| §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
+| §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
+| Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
 | §60 Thai: over-marked ˥ → ˧ for inherent-mid words | ✅ Fixed | 11 |
 | §61 Lao: taːwēn romanization → IPA (full row tone deferred) | ✅ Fixed (1 cell) | 1 |
 | §64 Cantonese yue: simplified → traditional script (HK) | ✅ Fixed | 6 |
@@ -32,7 +36,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Pass 2-6 family-wide IPA cleanup (Slavic ts, Turkic, Polynesian, etc.) | ⏸️ Deferred (要 family-wide review + source) | — |
 | Pass 7 deferred: §62 Burmese tone, §63 Khmer transliteration, §66 id/ms/tl IPA, §68 ta/te register, §69 Tibetan tone | ⏸️ Deferred (要 source + policy) | — |
 
-**Total fixed:** 126 cells + 2 language reclassifications across 24 modern languages.
+**Total fixed:** 178 cells + 2 language reclassifications + 1 schema addition (Phase 4 definitions) across 27 modern languages.
 
 ---
 
@@ -411,6 +415,60 @@ Tone numerals 1=˥ (55), 2=˧˥ (35) per Northern Tujia standard scheme (matches
 
 ---
 
+## Low-cost batch fixes (Phase 4 schema + 教科書品質 cleanup)
+
+「100点教材化」ロードマップから低コスト項目を一括対応:
+
+### Phase 4 schema: WORD_LIST に `definition` field 追加 (20 concepts)
+
+各 concept の意味 scope を 1〜2 行で明文化、wordmap_data.js:6-26 の WORD_LIST 各 entry に `definition` field を追加。UI hover 表示は次フェーズ、まず schema layer を整備。
+
+主要記述:
+- `heart` — anatomical OR mind/soul、東/東南アジア言語 (心/마음/ใจ/hati) は通常 mind/feeling sense
+- `eat`/`drink` — citation/dictionary form preferred (infinitive / Semitic perfective 3ms / SE Asian bare stem)
+- `mother`/`father` — neutral citation form
+- `cat` — generic/sex-neutral preferred
+- `one` — masculine/default citation
+- `good` — adjective citation form (avoid adverb "well")
+- 全 20 concepts 同様
+
+これで「どんな form を期待するか」が data layer に lock され、validator で整合性検査可能。
+
+### §9 Russian/Ukrainian `cat` masculine → generic
+
+| Code | 旧 | 新 |
+|---|---|---|
+| `ru` | 既に `кошка / ˈkoʂkə` (生成済み) | (変更なし) |
+| `uk` | `кіт / kit` (masculine) | `кішка / ˈkiʃkɑ` (generic) |
+
+WORD_LIST `cat` label の `uk` も `Кіт` → `Кішка` で同期。
+
+### §31 Arabic — name 'Arabic' → 'Arabic (MSA)'
+
+Audit: row uses MSA-style citation forms (ʔakala/ʃariba/dʒajːid) が、name は generic 'Arabic'、coordinates Riyadh で誤解を招く。
+
+| File | 変更 |
+|---|---|
+| `wordmap_data.js:143` | `name: 'Arabic'` → `name: 'Arabic (MSA)'`、`native: 'العربية'` → `'العربية الفصحى'` (Modern Standard Arabic 明示) |
+
+地域方言 (`ar_eg`/`ar_lev`/`ar_gulf`/`ar_iq`/`ar_ma`/`ar_sd`/`ar_tn`) との区別が明確化。
+
+### Italian/Spanish/Polish stress marks added
+
+Audit §34 (European stress omission) のうち、予測可能ルールで mechanical に追加できる 3 言語を一括対応:
+
+- **Italian (`it`)** 18 cells: 全 multisyll 単語に penultimate (ˈ) 追加。`albero → ˈalbero` (antepenultimate 例外)、`mangiare → manˈdʒaːre`、`amore → aˈmoːre` 等。
+- **Spanish (`es_eu`)** 17 cells: 既定ルール (vowel/n/s 終わり → penult、それ以外 → final、accent 付き → 表記通り)。`comer → koˈmeɾ` (final r)、`corazón → koɾaˈθon` (written ó)、`árbol → ˈaɾβol` (written á)、その他 penult。
+- **Polish (`pl`)** 14 multisyll cells: ほぼ完全 penultimate-stress 言語。`dziękuję → d͡ʑɛŋˈkujɛ` 含む。Monosyllabic は stress mark 不要 (jeść/pić/dom/pies/kot/cześć)。
+
+Stress 付き IPA は narrow IPA convention に整合、教材として「どこを強く読むか」が明示される。
+
+### 残: stress 未対応の European 言語
+
+`es_mx` Mexican Spanish + 他 Spanish 地域 variants (es_co/es_cl/es_ar/es_cu/es_pe/es_an) は同じルールが適用可能だが next session。Czech/Slovak (initial-stress) も追加候補。German は predictable でないため要 source。
+
+---
+
 ## Validator 結果
 
 ```
@@ -424,7 +482,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=53` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=54` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
 
 ---
 
