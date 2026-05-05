@@ -2744,3 +2744,45 @@ PASS
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2 残: pi register / peo.naiba / ave/pal love, **21 #4 + 22 #4 peo/ave/xpr fragmentary 再評価**
 
 ---
+
+## Session 23 (2026-05-05): Codex 5 ojp.thanks → `—`
+
+**スコープ:** Codex 追加レビュー 5 で「Old Japanese 8 世紀 corpus での attestation 確認したい」と flag された `ojp.thanks` を ancient lang policy に従い `—` 化。
+
+### 修正 1 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 5) |
+|---|---|---|---|---|
+| `ojp` | Old Japanese | `thanks` | `忝し` / `katadʑike₁nasi` | `katajikenashi` (忝し) は **Heian 期 (10c.) 以降**の Genji Monogatari 等で attested。Old Japanese 8c. corpus (Man'yoshu/Kojiki/Nihon Shoki) での thanks 専用形 attested 不確定 |
+
+これで ojp の `—` cells: hello + cat + thanks = 3 セル。Old Japanese は名詞・基本動詞は attested だが、conversational hello/thanks 定型は限定的という ancient lang 全体パターンに沿う。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    95 (—)  ← 94 → 95 (Session 23 で 1 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 23 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`och.thanks: 謝 / *s.ɢAk-s` の polysemy** — Old Chinese `謝` は pre-Han texts で「decline, refuse, fade, apologize, thank」の polysemous。「thank」sense は確かに attested だが、modern English `thank you` の汎用直訳としては misleading。Codex 5 の「時代・用法は要注記」がぴったり。Session 24+ で note schema (Session 11 #6) があれば note 化、ない場合は `—` 候補。
+
+2. **`ojp.love: 愛し / kanasi`** — `kanasi` (悲し/愛し/哀し) は Old Japanese で「愛おしい、可哀想だ、いとしい」のような感情概念で、modern Japanese の「愛 (あい、love)」とは意味領域が異なる。Word Map の `love` (恋愛・愛情) との差異が UI 上伝わらない可能性。Codex 5 では touch されなかった項目だが、note schema 候補。Session 24+。
+
+3. **OJ corpus の小規模性** — Old Japanese 8c. corpus は Man'yoshu (~4500 首) + Kojiki + Nihon Shoki + Bussoku-seki etc. 全体でも数万語規模。20 基本語のうち 3-5 セルが attested 不確定なのは妥当。これは欠陥ではなく古代語データ表現の限界。
+
+4. **歴史言語 cells の累積 `—` 数** — Session 23 で 95 件。`—` cells は意図的 attestation gap として valid なので、95 という数字はむしろ「audit work が進んだ証拠」。Session 1 開始時の 58 から累計 +37 (Session 1 +8, 11 +5, 12 +3, 17 +9, 19 +3, 20 +2, 21 +3, 22 +2, 23 +1 = +36... 実際は +37)。
+
+### 持ち越し（Session 24 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, **23 #1-2 polysemy / love 意味領域 → note schema**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2, 21 #4 / 22 #4 peo/ave/xpr fragmentary 再評価
+
+---
