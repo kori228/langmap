@@ -27,9 +27,12 @@
  * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
  * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
  * Use this for issues intentionally deferred (e.g., needs linguist consultation).
- * Optional `expires: 'YYYY-MM-DD'` re-promotes the entry to WARN/ERROR after
- * the date passes (forces periodic review). Unused entries (match string never
- * fires) are listed under UNUSED ALLOWLIST ENTRIES so they can be cleaned up.
+ *   - `match` accepts a string or string[] (any matches → fires).
+ *   - `created: 'YYYY-MM-DD'` records when the entry was added (age tracking).
+ *   - `expires: 'YYYY-MM-DD'` re-promotes the entry to WARN/ERROR after the
+ *     date passes; within EXPIRES_LEAD_DAYS adds a ⚠ "N days left" note.
+ *   - Unused entries (no match fires) listed under UNUSED ALLOWLIST ENTRIES.
+ *   - Entries 1+ year old surfaced in INFOS as long-standing tech debt.
  *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
@@ -79,34 +82,46 @@ const HIST_SET = new Set(HIST_KEYS);
 
 // === Allowlist of known WARN/ERROR messages that are deliberately deferred ===
 // Each entry:
-//   - match:   substring match against the message
+//   - match:   substring match against the message. Either a string or an array
+//              of strings (any one matches → entry fires; useful for grouping
+//              related messages from the same root cause).
 //   - reason:  why this is intentionally suppressed
 //   - ref:     audit/session reference for context
+//   - created: ISO date (YYYY-MM-DD) when the entry was added; used to track
+//              age of unresolved tech debt (validator INFO summarises ages).
 //   - expires: ISO date (YYYY-MM-DD); past this date, the entry is treated as
 //              EXPIRED and the underlying WARN/ERROR is re-promoted (forces
 //              periodic review). Entries with no expires field never expire.
+//              When within EXPIRES_LEAD_DAYS of expiry, an INFO line is added.
 //
 // Add an entry when you intentionally accept a known issue that needs research
 // before it can be properly fixed (e.g., requires a linguist consultation).
+const EXPIRES_LEAD_DAYS = 30;
+
 const ALLOWLIST = [
     {
         match: '[mon, mnw] all map to "Mon@16.49,97.62"',
         reason: 'ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)',
         ref: 'audit Session 8 + 9, deferred to Session 14+',
+        created: '2026-05-05',
         expires: '2027-01-01',
     },
 ];
 
 const TODAY_ISO = new Date().toISOString().slice(0, 10);
-const allowlistHits = new WeakMap();
+const TODAY_MS = Date.parse(TODAY_ISO);
 const allowlistFired = new Set();
+
+// Normalize match field to array
+function entryMatches(entry, msg) {
+    const patterns = Array.isArray(entry.match) ? entry.match : [entry.match];
+    return patterns.some(p => msg.includes(p));
+}
 
 function checkAllowlist(msg) {
     for (const a of ALLOWLIST) {
-        if (msg.includes(a.match)) {
-            // Track which allowlist entry matched (for unused detection)
+        if (entryMatches(a, msg)) {
             allowlistFired.add(a);
-            // Treat expired entries as not allowlisted → re-promote
             if (a.expires && a.expires < TODAY_ISO) {
                 return { ...a, _expired: true };
             }
@@ -114,6 +129,10 @@ function checkAllowlist(msg) {
         }
     }
     return null;
+}
+
+function daysBetween(isoFrom, isoTo) {
+    return Math.round((Date.parse(isoTo) - Date.parse(isoFrom)) / 86400000);
 }
 
 const errors = [];
@@ -627,7 +646,12 @@ if (allowlisted.length) {
         console.log('  ⊘ ' + a.msg);
         console.log('      reason:  ' + a.reason);
         console.log('      ref:     ' + a.ref);
-        if (a.expires) console.log('      expires: ' + a.expires);
+        if (a.created) console.log('      created: ' + a.created);
+        if (a.expires) {
+            const daysLeft = daysBetween(TODAY_ISO, a.expires);
+            const note = daysLeft <= EXPIRES_LEAD_DAYS ? `  ⚠ ${daysLeft} days left` : '';
+            console.log('      expires: ' + a.expires + note);
+        }
     }
     console.log('');
 }
@@ -635,10 +659,24 @@ const unusedAllowlist = ALLOWLIST.filter(a => !allowlistFired.has(a));
 if (unusedAllowlist.length) {
     console.log(`UNUSED ALLOWLIST ENTRIES (${unusedAllowlist.length}) — match string never fired, may be safe to remove:`);
     for (const a of unusedAllowlist) {
-        console.log('  ? match: "' + a.match + '"');
+        const matchStr = Array.isArray(a.match) ? a.match.join(' | ') : a.match;
+        console.log('  ? match: "' + matchStr + '"');
         console.log('      ref: ' + a.ref);
     }
     console.log('');
+}
+// Lead-time summary as INFO (Session 16 #1)
+{
+    const expiringSoon = allowlisted.filter(a => a.expires && daysBetween(TODAY_ISO, a.expires) <= EXPIRES_LEAD_DAYS && daysBetween(TODAY_ISO, a.expires) >= 0);
+    if (expiringSoon.length) {
+        infos.push(`${expiringSoon.length} ALLOWLIST entries expire within ${EXPIRES_LEAD_DAYS} days — review before they re-promote`);
+    }
+    // Age summary (Session 16, technical debt visibility)
+    const aged = allowlisted.filter(a => a.created).map(a => ({a, days: daysBetween(a.created, TODAY_ISO)}));
+    const longstanding = aged.filter(x => x.days >= 365);
+    if (longstanding.length) {
+        infos.push(`${longstanding.length} ALLOWLIST entries are 1+ years old — consider scheduling resolution`);
+    }
 }
 console.log(`INFOS (${infos.length}):`);
 for (const m of infos) console.log('  · ' + m);

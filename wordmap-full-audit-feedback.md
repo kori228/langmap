@@ -1533,3 +1533,182 @@ PASS
 - Session 13 #3 tiw.cat の Tiwi 土着語確認
 
 ---
+
+## Session 16 (2026-05-05): ALLOWLIST 機構の最終整備 (created / lead-time / multi-match)
+
+**スコープ:** Session 15 で deferred した #1 (lead-time) / #2 (created) / #3 (multi-match) を一括実装。ALLOWLIST 機構を tooling として完成形に近づける。
+
+### 1. `created` フィールド (Session 15 #2)
+
+各 entry に optional `created: 'YYYY-MM-DD'` を追加。技術負債の age を可視化。
+
+mon/mnw entry に `created: '2026-05-05'` 設定。INFO セクションに「N entries are 1+ years old」サマリーを出力（現状 0 件、まだ追加直後のため）。
+
+### 2. expires lead-time (Session 15 #1)
+
+`EXPIRES_LEAD_DAYS = 30` を定数化。expires が今日から 30 日以内なら:
+- ALLOWLISTED 表示行に `⚠ N days left` suffix を付ける
+- INFO に `N ALLOWLIST entries expire within 30 days — review before they re-promote` を追加
+
+これで「今月末に失効する」allowlist entry を validator が自動でリマインドする。
+
+### 3. multi-match (Session 15 #3)
+
+`match` フィールドが `string` または `string[]` を受け付けるように:
+
+```js
+function entryMatches(entry, msg) {
+    const patterns = Array.isArray(entry.match) ? entry.match : [entry.match];
+    return patterns.some(p => msg.includes(p));
+}
+```
+
+将来「同じ root cause で異なる文言の WARN が複数出る」ケース (例: mon/mnw が renamed → 別の名前ペアでも WARN が出る等) を 1 entry で集約可能。
+
+### テスト結果
+
+3 機構を一時的に発火させて動作確認済:
+- expires=2026-05-30 (25 日後) → `⚠ 25 days left` + INFO `1 ALLOWLIST entries expire within 30 days` ✓
+- match=['NEVER_MATCHES_X', '...'] (配列) → 2 番目の文字列でマッチ、entry が allowlisted 化 ✓
+- created date 表示 ✓
+
+### Validator 結果 (現在の正常状態)
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+  ⊘ same (name, lat, lng) under different codes: [mon, mnw] ...
+      reason:  ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert
+      ref:     audit Session 8 + 9, deferred to Session 14+
+      created: 2026-05-05
+      expires: 2027-01-01
+INFOS:    75 (—) + 26 (dup-coord)
+PASS
+```
+
+### Session 16 中に気付いた追加問題（未対応・記録のみ）
+
+1. **ALLOWLIST 全体の health metrics** — 現状は entry 別に表示しているが、「validator 全 check の中で何 % が allowlisted で suppressed されているか」のような集計があると、全体の品質トレンドを見やすい。Session 17+ optional。
+
+2. **ALLOWLIST entry の `severity` (WARN/ERROR を区別)** — 現状 entry が match した時の元 severity (E vs W) を区別しないが、ERROR を allowlist するのは WARN を allowlist するより重い。`severity: 'WARN' | 'ERROR'` を明記して、ERROR allowlist は別セクションで強調表示する余地あり。Session 17+ optional。
+
+3. **ALLOWLIST entry に `owner` フィールド** — 「誰が allowlist に追加し、誰が解決責任を持つか」を記録できると CI/code review で有用。git blame でも分かるが entry 内に明示する余地。Session 17+ optional。
+
+4. **ALLOWLIST 全体の sort 順** — 現状は配列順で表示。`expires` 昇順や `created` 降順で並べると最近追加・近々失効を視覚化しやすい。Session 17+ optional UI enhancement。
+
+### 持ち越し（Session 17 以降）
+
+**Schema-level (前回から持ち越し):**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+- Session 13 #1-2 verbal-stem 表記 / 複合 script schema
+- Session 14 #3-4 ALLOWLIST 外部ファイル分離 / CI policy
+- Session 15 #4 ALLOWLIST README auto-update
+- **Session 16 #1-4 ALLOWLIST health metrics / severity / owner / sort 順**
+
+**追加リサーチ要 (前回から持ち越し):**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted, created 2026-05-05, expires 2027-01-01)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
+- Session 13 #3 tiw.cat の Tiwi 土着語確認
+
+---
+
+## Codex 追加レビュー 2 (2026-05-05): 古代語ブロック xlu/kho/kaw/elx/xhu
+
+**スコープ:** 前回の Codex 引き継ぎで「次に見る」とした ancient text language の語彙ブロックを継続確認。今回は `xlu` Luwian、`kho` Khotanese、`kaw` Old Javanese、前回から継続の `elx` Elamite / `xhu` Hurrian を見た。データ修正は未実施。外部資料は一次/専門辞書に近いものを優先し、見つからない場合は「未確認」とした。
+
+### `xlu` Luwian: 複数セルが要再確認、特に `good` と `cat`
+
+- 対象: `wordmap_data.js` `xlu` block。
+- 評価: **strong review candidate。Luwian は attested language だが、この block は Hieroglyphic Luwian 風の surface と Cuneiform Luwian / reconstruction が混在している可能性がある。**
+- 確認できた背景:
+  - Britannica は Luwian が cuneiform と hieroglyphic の 2 系統で記録され、互いに近いが distinct forms と説明している。
+  - Oxford/Yakubovich も Luwian は cuneiform と Anatolian hieroglyphs の両方で記録されるとする。
+- 個別セル:
+  - `good:['𔓷𔓷','walwa']` は要注意。Cuneiform Luwian の `wa-a-šu / wāšu` が「good」として確認できる一方、現データの `walwa` は今回の検索では `good` として確認できなかった。
+  - `cat:['𔓯𔗬𔑯','marwaːra']` はさらに危険。検索で見つかった Luwian `marwatar` 系は「blackness」再建語で、cat ではない。`marwaːra` が cat である根拠が必要。
+  - `hello:['𔖖𔓯','halzai']` / `thanks:['𔓷𔗬','wala']` は会話句として未確認。碑文言語としては `—` 化候補または evidence status 付与候補。
+  - `eye:['𔖖𔗬','hidu']` は Hittite/Luwian 周辺で `eye` が `sakui-` 系として見えるため、`hidu` の根拠確認が必要。
+- 参照:
+  - https://www.britannica.com/topic/Luwian-language
+  - https://academic.oup.com/edited-volume/42051/chapter/355821079
+  - https://palaeolexicon.com/Word/Show/26521 (`wa-a-šu` = good)
+  - https://en.wiktionary.org/wiki/%F0%92%89%BF%F0%92%80%80%F0%92%8B%97%F0%92%8D%91 (`wa-a-šu-uš` = good)
+  - https://en.wiktionary.org/wiki/Reconstruction:Luwian/%F0%92%88%A0%F0%92%85%88%F0%92%89%BF%F0%92%8B%BB (`marwatar` = blackness)
+
+### `kho` Khotanese: 全体は plausible だが、Brahmi surface と語彙出典を Bailey/Khotanese Project で要照合
+
+- 対象: `wordmap_data.js` `kho` block。
+- 評価: **Khotanese 自体は richly attested なので、`elx/xhu` より残しやすい。ただし現 block は各語の surface form と意味の出典が未記録で、特に `hello/thanks/good/cat` は要確認。**
+- 確認できた背景:
+  - Encyclopaedia Iranica は Khotanese を Eastern Middle Iranian とし、Old/Middle/Late stages を区別する。
+  - Britannica は Khotanese が 7-10c. Buddhist and other texts で richly attested と説明。
+  - Khotanese Project は Digital Khotanese Dictionary を公開し、Bailey 1979 `Dictionary of Khotan Saka` などを基礎資料としている。
+- 個別セル:
+  - `hello:['𑀤𑁆𑀭𑀽𑀤𑀻','drːuːdiː']` は Iranian `drōd/druud` 系の greeting として plausibile。ただし Khotanese 固有形として要辞書確認。
+  - `thanks:['𑀧𑁆𑀬𑀰𑁆𑀢','pjaʃta']` は `thanks` として未確認。Bailey/Khotanese Project で直接確認が必要。
+  - `good:['𑀯𑀺𑀭𑀢𑁆𑀢','viratːa']` は今回の検索では `good` として確認できなかった。Khotanese では別の `good/pure/excellent` 系語があり得るため要確認。
+  - `cat:['𑀰𑁆𑀰𑁆𑀭𑀅𑀼','ɕːrau']` も要確認。古代語では cat word が未確定になりやすいので、根拠なしなら `—` 候補。
+- 参照:
+  - https://www.iranicaonline.org/articles/khotan-iv-khotanese/
+  - https://www.britannica.com/topic/Saka-language
+  - https://khotanese.org/dictionary/
+  - https://openlibrary.org/books/OL4408784M/Dictionary_of_Khotan_Saka
+
+### `kaw` Old Javanese: `rahayu` は強め、`nuwun` は thanks として時代差要確認
+
+- 対象: `wordmap_data.js` `kaw` block。
+- 評価: **Old Javanese は専門辞書が強く、現 block の多くは plausible。ただし `thanks:nuwun` は modern Javanese politeness phrase の可能性があるため再確認。**
+- 確認できた背景:
+  - Zoetmulder / Robson `Old Javanese-English Dictionary` が主要基礎資料。
+  - Wiktionary `rahayu` は Old Javanese として `good, well; auspicious` を示しており、`hello` の surface として「祝福・安寧」寄りなら plausibile。
+- 個別セル:
+  - `hello:['ꦫꦲꦪꦸ','rahaju']` は「good/well/auspicious」なので greeting としては semantic extension。即エラーではないが `hello` というより blessing/good-wish。
+  - `good:['ꦲꦪꦸ','haju']` は `ayu/hayu` 系で plausible。
+  - `thanks:['ꦤꦸꦮꦸꦤ꧀','nuwun']` は現代 Javanese の polite thanks/request marker として自然だが、Old Javanese 文献で `thanks` として attested かは未確認。Zoetmulder で要確認。
+  - `cat:['ꦩꦺꦴꦁ','moŋ']` は現代/近世寄りの可能性があり、Old Javanese の animal term として要確認。
+- 参照:
+  - https://brill.com/display/title/23157
+  - https://openlibrary.org/books/OL3004786M/Old_Javanese-English_dictionary
+  - https://en.wiktionary.org/wiki/rahayu
+
+### `elx` / `xhu`: 前回指摘を維持、ただし全20語ポリシーとして扱うべき
+
+- `elx` Elamite:
+  - 前回は `hello/thanks` を中心に指摘したが、`partly-understood` 言語としては `cat`, `love`, `good` なども confidence が問題になる。
+  - 方針候補: `DATA_STATUS_OVERRIDES.elx = partly-understood` に合わせ、各セルに `sources/evidenceStatus` がないものは `—` または `provisional` 表示に寄せる。
+- `xhu` Hurrian:
+  - Hurrian は資料が豊富なので `attested` 扱い自体はよいが、`hello/thanks` は碑文・文書ジャンル上の問題が残る。
+  - `cat:['𒊭𒉿𒍣','ʃawazi']` も古代 Near East 語彙で本当に cat か要確認。
+- 参照:
+  - https://www.britannica.com/topic/Elamite-language
+  - https://www.britannica.com/topic/Hurrian-language
+
+### 今回の結論と次の優先順
+
+1. `sux.good` は引き続き最優先。
+2. 次点で `xlu.good`, `xlu.cat`, `xlu.hello/thanks`。Luwian block は script/lexeme 混在の疑いがある。
+3. `kho.thanks`, `kho.good`, `kho.cat` を Khotanese Project / Bailey で確認。
+4. `kaw.thanks:nuwun`, `kaw.cat:moŋ` を Zoetmulder で確認。
+5. `elx` は partly-understood 言語として cell-level evidence status 導入とセットで再設計するのがよい。
+
+---
