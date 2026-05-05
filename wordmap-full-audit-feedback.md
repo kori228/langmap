@@ -2696,3 +2696,51 @@ PASS
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, **20 #2 残: pi register, peo.naiba, ave/pal love**, **21 #4 peo/ave fragmentary 再評価**
 
 ---
+
+## Session 22 (2026-05-05): Codex 5 cat fixes — ojp.cat, och.cat → `—`
+
+**スコープ:** Codex 追加レビュー 5 で「pre-modern attestation 不確定」と flag された Old Japanese と Old Chinese の `cat` セルを ancient lang policy に従い `—` 化。
+
+### 修正 2 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 5) |
+|---|---|---|---|---|
+| `ojp` | Old Japanese | `cat` | `猫` / `neko` | Old Japanese 8c. corpus (Man'yoshu/Kojiki/Nihon Shoki) で `neko` が普通名詞として attested 不確定。`neko` は Heian 期 (10c.) Genji Monogatari 等で attested |
+| `och` | Old Chinese | `cat` | `貓` / `*mˤraw` | pre-Han Old Chinese で `貓` が「家猫」として attested 不確定。家猫の中国伝来は Han 代 (silk road) 以降、それ以前 `貓` は wildcat/leopard 一般を指す可能性 |
+
+### Codex 5 で flag された残存項目
+
+- `ojp.thanks: 忝し / katadʑike₁nasi` — Codex 5 「later classical Japanese では自然だが Old Japanese 8 世紀 corpus での attestation 確認したい」 — debatable、ONCOJ で要確認
+- `och.thanks: 謝 / *s.ɢAk-s` — Codex 5 「thank/apologize 系として plausible だが時代・用法は要注記」 — 古代漢語で `謝` (decline/thank) は attested、Session 22 では keep
+
+これらは Session 23+ で個別判断。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    94 (—)  ← 92 → 94 (Session 22 で 2 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 22 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`ojp` Old Japanese の `—` cells が増加** — 現在 ojp の `—` cells: hello + cat = 2 セル (20 中)。Old Japanese は資料が比較的多いので、`—` が並ぶと「データ整備不足」に見える可能性。逆に `attested` 言語で `—` を残すことで「OJ corpus に直接 attestation がない」という情報を伝える設計でもある。Session 23+ UI 検討候補 (Session 19 #1 と関連)。
+
+2. **`och` Old Chinese の `—` cells** — 現在 och の `—` cells: hello + cat = 2 セル。Old Chinese は Baxter-Sagart reconstruction 中心で、`hello/cat` の reconstruction が不確かなのは妥当。
+
+3. **`猫` 文字の Old Chinese 語義変遷** — Codex 5 が指摘した「pre-Han `貓` = wildcat/leopard 一般」は Erya (爾雅) や Shijing (詩經) でも家猫文脈なし、家猫は Han 代以降。これは linguistic interesting fact だが UI には note schema (Session 11 #6 削除値 notes) で記録できると良い。Session 23+ schema 検討。
+
+4. **fragmentary 候補の peo/ave/xpr** — Session 21 #4 で記録した「peo/ave も fragmentary 候補かもしれない」は、Codex 6 が peo/ave/pal/xpr で広範に attestation 不確定を flag したことを反映。Session 23+ で xpr Parthian も含めて再評価候補。
+
+### 持ち越し（Session 23 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, **22 #3 語義変遷 note schema**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2 残: pi register / peo.naiba / ave/pal love, **21 #4 + 22 #4 peo/ave/xpr fragmentary 再評価**
+
+---
