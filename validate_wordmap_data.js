@@ -24,6 +24,10 @@
  *  14. 3+ codes sharing one (lat,lng) — flag as warning unless historical-progression cluster (audit §7.6)
  *  15. Same (name, lat, lng) under different codes — likely ISO code conflict (Session 8 mon/mnw)
  *
+ * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
+ * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
+ * Use this for issues intentionally deferred (e.g., needs linguist consultation).
+ *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
 'use strict';
@@ -70,11 +74,40 @@ const HIST_BODY = histMatch[1].split('\n').filter(l => !l.trim().startsWith('//'
 const HIST_KEYS = [...HIST_BODY.matchAll(/(?:^|[\s,{])([a-z][a-z_0-9]*)\s*:/g)].map(m => m[1]);
 const HIST_SET = new Set(HIST_KEYS);
 
+// === Allowlist of known WARN/ERROR messages that are deliberately deferred ===
+// Each entry: substring match against the message. If matched, the WARN/ERROR
+// is downgraded to INFO with an "[allowlisted]" prefix and a short justification.
+// Add an entry when you intentionally accept a known issue that needs research
+// before it can be properly fixed (e.g., requires a linguist consultation).
+const ALLOWLIST = [
+    {
+        match: '[mon, mnw] all map to "Mon@16.49,97.62"',
+        reason: 'ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)',
+        ref: 'audit Session 8 + 9, deferred to Session 14+',
+    },
+];
+
+function checkAllowlist(msg) {
+    for (const a of ALLOWLIST) {
+        if (msg.includes(a.match)) return a;
+    }
+    return null;
+}
+
 const errors = [];
 const warns  = [];
 const infos  = [];
-const E = m => errors.push(m);
-const W = m => warns.push(m);
+const allowlisted = [];
+const E = m => {
+    const al = checkAllowlist(m);
+    if (al) { allowlisted.push({msg: m, ...al}); return; }
+    errors.push(m);
+};
+const W = m => {
+    const al = checkAllowlist(m);
+    if (al) { allowlisted.push({msg: m, ...al}); return; }
+    warns.push(m);
+};
 const I = m => infos.push(m);
 
 // ---- 1. WORD_LIST has 20 entries ----------------------------------------
@@ -558,6 +591,15 @@ console.log('');
 console.log(`WARNINGS (${warns.length}):`);
 for (const m of warns) console.log('  ! ' + m);
 console.log('');
+if (allowlisted.length) {
+    console.log(`ALLOWLISTED (${allowlisted.length}) — known issues, intentionally suppressed:`);
+    for (const a of allowlisted) {
+        console.log('  ⊘ ' + a.msg);
+        console.log('      reason: ' + a.reason);
+        console.log('      ref:    ' + a.ref);
+    }
+    console.log('');
+}
 console.log(`INFOS (${infos.length}):`);
 for (const m of infos) console.log('  · ' + m);
 console.log('');

@@ -1205,3 +1205,102 @@ PASS
 - Session 13 #3 tiw.cat の Tiwi 土着語確認
 
 ---
+
+## Session 14 (2026-05-05): Validator allowlist 機構実装 + mon/mnw 整理
+
+**スコープ:** Session 9 #4 で deferred していた validator allowlist 機構を実装。Session 8 で発見した mon/mnw warning が validator 出力に常時残り、新しい WARN が出ても埋もれる問題を解消。
+
+### Validator allowlist 実装
+
+`validate_wordmap_data.js` 冒頭に `ALLOWLIST` 配列を追加。各エントリは:
+- `match`: WARN/ERROR メッセージの substring
+- `reason`: なぜ意図的に保留しているかの説明
+- `ref`: audit/session 参照
+
+`E()` / `W()` 関数で allowlist マッチをチェックし、マッチしたメッセージは `allowlisted[]` に格納（errors/warns には積まない）。
+
+```js
+const ALLOWLIST = [
+    {
+        match: '[mon, mnw] all map to "Mon@16.49,97.62"',
+        reason: 'ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)',
+        ref: 'audit Session 8 + 9, deferred to Session 14+',
+    },
+];
+```
+
+### Validator 出力フォーマット (新)
+
+```
+ERRORS (0):
+WARNINGS (0):
+
+ALLOWLISTED (1) — known issues, intentionally suppressed:
+  ⊘ same (name, lat, lng) under different codes: [mon, mnw] all map to "Mon@16.49,97.62" — likely ISO code conflict or accidental duplicate (audit Session 8)
+      reason: ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)
+      ref:    audit Session 8 + 9, deferred to Session 14+
+
+INFOS (2):
+  · 75 word entries contain "—"
+  · 26 duplicate-coordinate groups
+```
+
+### 効果
+
+- WARNINGS が `0` に戻り、**新しい WARN が出たら明確に visible** になる
+- 既知問題は ALLOWLISTED セクションで常時自己ドキュメント化
+- exit code は ERROR 数で判定 (allowlisted は exit 0、warn と同等の扱い)
+- 将来 mon/mnw を解決したら、ALLOWLIST から削除するだけで自動的に「正常 PASS」になる
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0  ← クリーンな状態
+ALLOWLISTED: 1  (mon/mnw — 自己ドキュメント化)
+INFOS:    75 (—) + 26 (dup-coord)
+PASS
+```
+
+### Session 14 中に気付いた追加問題（未対応・記録のみ）
+
+1. **ALLOWLIST entry の expiry 機構** — 「いつまでに見直すか」の `expires` フィールドを追加し、過ぎたら WARN として再出題する仕組みがあると忘却防止になる。例: `expires: '2026-12-31'`。Session 15+ schema 拡張候補。
+
+2. **ALLOWLIST のヒット率/未使用エントリ検出** — match パターンが古くなって何にもヒットしない場合、ALLOWLIST 自体が dead code になる。validator 終了時に「未使用 ALLOWLIST entry: N 件」を info で出すと cleanup しやすい。Session 15+ 候補。
+
+3. **ALLOWLIST ファイル分離** — 現状 inline で ALLOWLIST を書いているが、`validator-allowlist.json` のような外部ファイルに分離すると、validator のコード変更なしに既知問題リストを更新できる。Session 15+ 候補。
+
+4. **ALLOWLIST と CI の関係** — CI で validator を実行している場合 (現状は不明)、`exit 0` でも ALLOWLISTED 件数が変動したら警告するなど、CI ポリシーの整合検討。Session 15+ DevOps 検討候補。
+
+### 持ち越し（Session 15 以降）
+
+**Schema-level (前回から持ち越し):**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+- Session 13 #1-2 verbal-stem 表記 / 複合 script schema
+- **Session 14 #1-4 ALLOWLIST 拡張 (expiry / unused detect / 外部 file / CI policy)**
+
+**追加リサーチ要 (前回から持ち越し):**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted by Session 14)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
+- Session 13 #3 tiw.cat の Tiwi 土着語確認
+
+---
