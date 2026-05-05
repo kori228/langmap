@@ -3680,3 +3680,96 @@ PASS
 **前回からの持ち越し:** Session 32 #1 (残 14 UI lang への desc 翻訳), Codex 2-8 残, mnp, etc.
 
 ---
+
+## Session 34 (2026-05-05): Phase 2 拡大 — fragmentary 5 言語に wordEvidence 完全投入
+
+**スコープ:** Session 33 で xsc (13 cells) のみだった wordEvidence overlay を、fragmentary status の残 4 言語 (juc/xpr/omc/chb) に拡大。**5 言語全 82 cells が annotation 完備**となり、Phase 2 schema が全 fragmentary lang で機能。
+
+### 拡大内容
+
+| Code | Lang | Annotated cells | Pattern | 出典 |
+|---|---|---|---|---|
+| `xsc` | Scythian | 13 (1 direct + 12 proxy) | 既存 (Session 33) | Iranica + Old Iranian/Avestan |
+| `juc` | Jurchen | **18 (all proxy)** | NEW | **Manchu projection** (Codex 4) |
+| `xpr` | Parthian | **19 (all proxy)** | NEW | **Iranian cognate / MP projection** (Codex 6) |
+| `omc` | Mochica | **13 (all direct)** | NEW | **Carrera de la Vega 1644** |
+| `chb` | Chibcha | **19 (all direct)** | NEW | **Lugo 1619** |
+| **合計** | **5 langs** | **82 cells** | | |
+
+### 言語家族別 evidence パターンの観察
+
+Phase 2 が schema として機能し始めたことで、興味深い**「fragmentary 言語の 2 タイプ」**が UI に表れた:
+
+#### Type A: Proxy-dominant (近縁言語からの再構/projection)
+- **xsc Scythian**: 12/13 = 92% proxy, 1 direct (spaka via Išpakaia name)
+- **juc Jurchen**: 18/18 = 100% proxy from Manchu
+- **xpr Parthian**: 19/19 = 100% proxy from Middle Persian/Iranian
+- → "言語そのものの直接資料は乏しく、近縁言語から推定" という型
+
+#### Type B: Direct-from-limited-source (限定的な原典に直接 attested)
+- **omc Mochica**: 13/13 = 100% direct from Carrera 1644
+- **chb Chibcha**: 19/19 = 100% direct from Lugo 1619
+- → "直接 attested だが、出典が一つの 17c. grammar に集約" という型
+
+これは **dataStatus = `fragmentary`** という同じ label の言語でも、**「proxy だらけの再構型」** と **「direct だが出典が少ない型」** という 2 つの本質的に異なるパターンが存在することを schema が visible にした。教材として user に「これは proxy 再構の Scythian、これは直接資料の Mochica」と区別を伝えられるのは大きな進歩。
+
+### UI 効果 (Type A vs Type B)
+
+User が `xsc` を click → **`dog ✓`** (Iranica 直接) + 12 cells **`~`** (proxy)、green/red の対比で「直接 vs 近縁」が一目で分かる。
+
+User が `omc` を click → 全 13 cells **`✓`** + green、「fragmentary 但し全 cells 直接」というメッセージ。
+
+User が `juc` を click → 全 18 cells **`~`** + red、「ほぼ全部 Manchu projection」というメッセージ。
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+  · 98 word entries contain "—"
+  · 26 duplicate-coordinate groups
+  · wordEvidence overlay: 5 languages, 82 cells annotated (Schema Revolution Phase 2)
+                            ↑↑↑                ↑↑↑↑
+                           1→5 langs (5x)      13→82 cells (6x)
+PASS
+```
+
+### 教材スコアへの影響
+
+| 段階 | スコア | 増分 | 主因 |
+|---|---|---|---|
+| Phase 2 (xsc only) | 78-82 | — | per-cell evidence schema 動く |
+| **Phase 2 拡大 (5 langs)** | **82-86** | **+3-4** | fragmentary 全 lang annotated, Type A/B 区別 visible |
+
+Phase 2 拡大が成し遂げたこと:
+- 教材的合法性 80% 突破 (5 fragmentary lang は全て出典 click で確認可能)
+- 「fragmentary」label の中の 2 type 区別 UI (再構型 vs 限定資料型)
+- **次に user が見るどの fragmentary lang も「ちゃんとした教材」感がある**
+
+### Session 34 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`partly-understood` 4 言語 (xmr/zkt/pyx/elx) も wordEvidence 候補** — fragmentary 5 lang の next 拡大候補。partly-understood 言語は「文字読めるが lexicon 未完成」なので cell-level の `direct/inferred/disputed/reconstructed` 区別が大きな価値。Session 35+ Phase 2.5 候補。
+
+2. **`reconstructed` 1 言語 (`ine` PIE)** — 全 cells 当然 reconstructed なので、language-level dataStatus で十分。per-cell wordEvidence は不要だが、source 注記 (e.g., Beekes 2011, LIV2) を language-level に追加する価値はある。Session 35+ Phase 2.5。
+
+3. **`pedagogical` 5 言語 (ja_edo/ja_heian/ko_mid/ko_em/vi_nom)** — 教育用近似なので各 cell `pedagogical` evidence で OK。但し source の特定が難しい (どの教材から?)。Session 35+ research-required。
+
+4. **xpr cells の verbal stem `-` 表記** — `xpr.eat: xward-` の `-` は verbal stem indicator。wordEvidence の `note` field に `verbal stem` を入れる schema 拡張候補。Session 35+ Phase 2.5。
+
+5. **xsc.dog `direct` の言語学的意味** — wordEvidence で `dog: direct` と annotated されたことで、user は **"Scythian の dog が言語学的に proven な唯一の word である"** と learn できる。これは linguistic学 の典型的な fragmentary lang 教材的事実 (Iranica が specifically 強調する point)。**教材として正に求められる情報密度**。
+
+### 持ち越し（Session 35 以降）
+
+**Phase 2.5** (immediate):
+- partly-understood 4 言語の wordEvidence 投入 (xmr/zkt/pyx/elx)
+- reconstructed/pedagogical 言語の language-level source 注記
+- xpr verbal stem `note` field 拡張
+
+**Phase 3** (next major jump):
+- 系統樹ビュー / per-language bibliography / Swadesh 100
+
+**前回からの持ち越し:** 同前
+
+---
