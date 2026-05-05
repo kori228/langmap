@@ -19,7 +19,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §16 Portuguese água stress added | ✅ Fixed | 2 |
 | §28 Mandarin 妈妈/爸爸 tone added | ✅ Fixed | 4 (zh+zh_db) |
 | §32 ko_jeju Jeju reclassification (Option A) | ✅ Fixed | 1 lang reclass |
-| §46 Naxi nxq surface contamination | ✅ Annotated as `disputed` | 2 |
+| §46/§47 Naxi nxq: contamination + tone restoration | ✅ Fixed | 20 |
 | §48 Bouyei pcc tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | Systemic concept definitions | ⏸️ Schema work — Phase 4 候補 | — |
 | Pass 2-6 family-wide IPA cleanup (Slavic ts, Turkic, Polynesian, etc.) | ⏸️ Deferred (要 family-wide review + source) | — |

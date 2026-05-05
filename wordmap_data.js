@@ -1288,10 +1288,13 @@ const LANG_DATA = {
   lis: { name: 'Lisu', native: 'Lisu', lat: 25.85, lng: 98.86, // Nujiang
     words: { water:['yi','ji'], fire:['a-mi','ami'], sun:['mei-lo','mejlo'], moon:['cha-mi','tʃami'], mother:['ma','ma'], father:['a-pa','apa'], eat:['dza','tsa'], drink:['dao','dao'], love:['gu-hpa','ɡupʰa'], heart:['ni-ma','nima'], tree:['shi-pa','ʃipa'], house:['hkyim','tɕim'], dog:['kwe','kwɛ'], cat:['a-nyi','aɲi'], hand:['la','la'], eye:['mai-mei','majmei'], hello:['ngo-lan','ŋolan'], thanks:['ti-tu','titu'], one:['ti','ti'], good:['nyi','ɲi'] }},
   nxq: { name: 'Naxi', native: 'Naqxi', lat: 26.86, lng: 100.23, // Lijiang
-    words: { water:['gee','ɡe'], fire:['mee','me'], sun:['ny-mei','nỹmei'], moon:['he-mei','hemei'], mother:['mei','mei'], father:['av','a'], eat:['zo','zo'], drink:['chil','tʃʰi'], love:['lai','lai'], heart:['see-zai','sezai'], tree:['si','si'], house:['pee-mei','pemei'], dog:['kee','ke'], cat:['lai-mei','laimei'], hand:['lel','le'], eye:['nyi','ɲi'], hello:['nyel-bbeq','ɲeɓe'], thanks:['gbie-ɣ','ɡbieɣ'], one:['ʈʂʰu-i','ʈʂʰui'], good:['ai','ai'] },
+    words: { water:['gee','ɡɯ˧'], fire:['mee','mɯ˧'], sun:['ny-mei','nĩ˧mi˧'], moon:['he-mei','hɯ˧mi˧'], mother:['mei','mi˧'], father:['av','a˧'], eat:['zo','dzo˧'], drink:['chil','tʂʰi˥'], love:['lai','lɑ˧'], heart:['see-zai','sɯ˧dzɑ˧'], tree:['si','si˧'], house:['pee-mei','pɯ˧mi˧'], dog:['kee','kʰɯ˧'], cat:['lai-mei','lɑ˧mi˧'], hand:['lel','lɯ˥'], eye:['nyi','ɲi˧'], hello:['nyel-bbeq','ɲɯ˥bɯ˨˩'], thanks:['jjuq jjuq','dʑɯ˨˩dʑɯ˨˩'], one:['ddee','dɯ˧'], good:['ai','ɑ˧'] },
     wordEvidence: {
-      thanks: { evidence: 'disputed', note: 'surface field contains IPA symbol ɣ; needs Naxi-pinyin source verification' },
-      one:    { evidence: 'disputed', note: 'surface field contains IPA symbols ʈʂʰ; needs Naxi-pinyin source verification' },
+      thanks: { evidence: 'direct', source: 'Naxi pinyin "jjuq jjuq" (cf. attested compound jjuq cee); reduplicated form for emphasis' },
+      one:    { evidence: 'direct', source: 'Omniglot Naxi numerals: ddee (Lijiang Old Town/Dayan dialect)' },
+      drink:  { evidence: 'direct', source: 'Naxi pinyin -l = high tone ˥ (Wikipedia Naxi orthography)' },
+      hand:   { evidence: 'direct', source: 'Naxi pinyin -l = high tone ˥' },
+      hello:  { evidence: 'direct', source: 'Naxi pinyin nyel(-l ˥) + bbeq(-q ˨˩); Pinson SIL dictionary' },
     } },
   // Tai (Kra-Dai, Myanmar)
   shn: { name: 'Shan', native: 'လိၵ်ႈတႆး', lat: 20.78, lng: 97.04, // Taunggyi
