@@ -1526,7 +1526,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=19';
+                s.src = 'wordmap_meta.js?v=20';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });
@@ -1634,6 +1634,27 @@
 
         // Per Phase 2 (Session 33): per-cell evidence overlay markers.
         // Compact symbol shown next to each cell value; hover tooltip carries source.
+        // Audit Task 76: pronunciationType label for the IPA column.
+        // Localized at en/ja/ko/zh; other UI langs fall back to en.
+        const PRONUNCIATION_LABEL = {
+            ipa:          { en: 'IPA',                    ja: 'IPA',          ko: 'IPA',         zh: 'IPA' },
+            broad:        { en: 'broad transcription',    ja: '広めの音写',    ko: '광역 전사',    zh: '宽式音写' },
+            romanization: { en: 'romanization',           ja: 'ローマ字転写',  ko: '로마자 전사',  zh: '罗马字转写' },
+            orthography:  { en: 'spelling-based',         ja: '綴り由来',      ko: '철자 기반',    zh: '拼写转写' },
+            mixed:        { en: 'mixed / needs review',   ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
+            unknown:      { en: 'not yet reviewed',       ja: '未確認',        ko: '미검토',       zh: '未审核' },
+        };
+        const PRONUNCIATION_HEADER = { en: 'Pronunciation', ja: '発音表記', ko: '발음 표기', zh: '发音标注' };
+
+        // Audit Task 79: coverage flag for regional variant rows
+        const COVERAGE_LABEL = {
+            full:                   { en: 'fully reviewed',          ja: '全体検証済み',     ko: '전면 검증',      zh: '全面审核' },
+            partial:                { en: 'partial',                 ja: '部分的',           ko: '부분적',         zh: '部分覆盖' },
+            'accent-only':          { en: 'accent/pronunciation only', ja: 'アクセント・発音のみ', ko: '발음·억양만',  zh: '仅口音/发音' },
+            'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
+        };
+        const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
+
         const EVIDENCE_MARKER = {
             direct:        { sym: '✓', color: '#1a7a1a', label_en: 'directly attested',   label_ja: '直接 attested' },
             proxy:         { sym: '~', color: '#c0392b', label_en: 'proxy from related lang', label_ja: '近縁言語からの proxy' },
@@ -1687,6 +1708,27 @@
                 }
             } else {
                 html += '<div class="meta-loading" style="padding:10px 0;color:#aaa;font-size:11px">…</div>';
+            }
+            // Audit Task 76: pronunciation-type note before the word table
+            // tells the user what kind of notation the IPA column actually is.
+            if (m.pronunciationType && PRONUNCIATION_LABEL[m.pronunciationType]) {
+                const ptLabel = PRONUNCIATION_LABEL[m.pronunciationType][uiLang]
+                    || PRONUNCIATION_LABEL[m.pronunciationType].en;
+                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
+                const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
+                html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
+            }
+            // Audit Task 79: coverage flag for regional variant rows
+            if (m.coverage && COVERAGE_LABEL[m.coverage]) {
+                let cvLabel = COVERAGE_LABEL[m.coverage][uiLang] || COVERAGE_LABEL[m.coverage].en;
+                if (m.baseLang) {
+                    const baseLang = LANG_DATA[m.baseLang];
+                    const baseName = baseLang ? ((LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.baseLang] || baseLang.name) : m.baseLang;
+                    cvLabel = cvLabel.replace('{base}', baseName);
+                }
+                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
+                const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;

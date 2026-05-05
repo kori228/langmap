@@ -25,6 +25,8 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §50 Iu Mien iuu tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | Phase 4 schema: WORD_LIST `definition` field added (multilingual {en,ja,ko,zh}) | ✅ Schema + validator check | 20 concepts |
 | Task 76: `pronunciationType` schema + first-pass labeling | ✅ Schema + 162/579 langs labeled | 162 langs |
+| Task 76 UI: modal pronunciation label rendering | ✅ Localized en/ja/ko/zh | UI |
+| Task 79: `coverage` flag for regional variant rows + UI | ✅ Schema + 39 langs + UI | 39 langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -507,9 +509,45 @@ Stress 付き IPA は narrow IPA convention に整合、教材として「どこ
 
 Audit 指定通り。
 
-### UI display (deferred to next phase)
+### UI display (✅ implemented)
 
-Audit Task 76 が指示した modal label (`Pronunciation: IPA` / `broad` 等) は次 session で実装予定。Schema + validator が先。
+Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.html:1693-1700](wordmap.html#L1693-L1700))。`PRONUNCIATION_LABEL` 定数で en/ja/ko/zh ローカライズ、`mixed`/`unknown` は警告色 (#a04020)、それ以外は #888。例:
+- `id` modal → "Pronunciation: spelling-based" (orthography)
+- `zh` modal → "Pronunciation: IPA"
+- `km` modal → "Pronunciation: mixed / needs review" (warning tone)
+
+---
+
+## Audit Task 79: coverage flag for regional variants (✅ schema + 39 langs + UI)
+
+Audit §38-§42 が指摘した「regional variant 行が base 言語をほぼコピー」問題に対応。`coverage` enum + optional `baseLang` field を `wordmap_meta.js` に追加。
+
+**Enum:** `'full' | 'partial' | 'accent-only' | 'base-copy-with-notes'`
+
+**第一段階 labeling — 39 regional 行:**
+
+| Coverage | Count | 例 |
+|---|---|---|
+| `base-copy-with-notes` | 2 | zh_db (20/20 = zh)、ko_kp (19/20 = ko) |
+| `accent-only` | 3 | es_mx/es_co/es_pe (18/20 vs es_eu) |
+| `partial` | 34 | es_cl/es_ar/es_cu/es_an + Korean/Japanese 全方言 + English 地域 + French 地域 + Arabic 方言 + 他 |
+
+**Audit §38 specific finding 反映:**
+- zh_db Northeastern Mandarin: 20/20 = zh → `coverage: 'base-copy-with-notes', baseLang: 'zh'` (Modal 警告色で「主に zh から継承」と表示)
+- ko_kp DPRK Korean: 19/20 = ko → 同上 (greeting のみ違うため audit の指摘通り)
+
+### Validator changes
+
+[validate_wordmap_data.js:560-572](validate_wordmap_data.js#L560-L572) に check #13e 追加:
+- `coverage` enum 検査 (4 値以外なら ERROR)
+- `coverage='base-copy-with-notes'` で `baseLang` 欠落なら WARN
+- `baseLang` が存在しない code を指していたら ERROR
+
+### UI display (✅ implemented)
+
+Modal の pronunciation label の直下に coverage label を追加 ([wordmap.html:1700-1710](wordmap.html#L1700-L1710))。`{base}` placeholder で base lang 名を埋め込み (例: 「主に英語から継承」)。`base-copy-with-notes` は警告色。
+
+これで learner が「en_ck Cockney 行は en の partial coverage」「zh_db は zh コピーで未レビュー」と一目で分かる。
 
 ### Task 80 (source references) との連携
 
@@ -580,7 +618,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=55` (data) / `v=16 → v=19` (meta, +Task 76 pronunciationType)。
+Cache buster `v=46 → v=55` (data) / `v=16 → v=20` (meta, +Task 76 pronunciationType + Task 79 coverage)。
 
 ---
 

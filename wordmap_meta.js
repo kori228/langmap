@@ -1285,6 +1285,86 @@ for (const code of Object.keys(PRONUNCIATION_TYPE)) {
     }
 }
 
+// === coverage flag (Audit Task 79) ================================
+// For regional variant rows: how complete is the row vs. its base lang?
+//   'full'                 — row is a fully reviewed variety
+//   'partial'              — only some cells differ from base (lexical/phonetic)
+//   'accent-only'          — same lexicon, different accent/IPA only
+//   'base-copy-with-notes' — most/all cells identical to base; not yet
+//                            reviewed for genuine regional differences
+// Identity counts come from audit §38-§42 measurements.
+const COVERAGE = {
+    // §38 Northeastern Mandarin: 20/20 identical to zh
+    zh_db: { coverage: 'base-copy-with-notes', baseLang: 'zh' },
+    // §39 Spanish regional (compared to es_eu)
+    es_mx: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
+    es_co: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
+    es_pe: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
+    es_cl: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
+    es_ar: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
+    es_cu: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
+    es_an: { coverage: 'partial',     baseLang: 'es_eu' }, // 11/20 (more regionalized)
+    // §40 Korean regional
+    ko_kp:   { coverage: 'base-copy-with-notes', baseLang: 'ko' }, // 19/20 — only greeting differs
+    ko_bus:  { coverage: 'partial',              baseLang: 'ko' }, // 15/20
+    ko_jeju: { coverage: 'partial',              baseLang: 'ko' }, // 14/20 (now Jeju lang per Option A)
+    ko_yb:   { coverage: 'partial',              baseLang: 'ko' }, // 17/20
+    // §41 Japanese dialects (vs ja)
+    ja_osa: { coverage: 'partial', baseLang: 'ja' }, // 15/20
+    ja_aom: { coverage: 'partial', baseLang: 'ja' }, // 14/20
+    ja_hak: { coverage: 'partial', baseLang: 'ja' }, // 16/20
+    ja_kyo: { coverage: 'partial', baseLang: 'ja' }, // 15/20
+    ja_hir: { coverage: 'partial', baseLang: 'ja' }, // 16/20
+    ja_kg:  { coverage: 'partial', baseLang: 'ja' }, // 7/20 (more regionalized)
+    ja_sd:  { coverage: 'partial', baseLang: 'ja' }, // 10/20
+    // §42 English regional
+    en_aave:  { coverage: 'partial', baseLang: 'en' }, // 8/20
+    en_app:   { coverage: 'partial', baseLang: 'en' }, // 8/20
+    en_sco:   { coverage: 'partial', baseLang: 'en' }, // 7/20
+    en_yk:    { coverage: 'partial', baseLang: 'en' }, // 5/20
+    en_ck:    { coverage: 'partial', baseLang: 'en' }, // 3/20
+    en_sg:    { coverage: 'partial', baseLang: 'en' }, // 4/20
+    en_south: { coverage: 'partial', baseLang: 'en' },
+    en_au:    { coverage: 'partial', baseLang: 'en' },
+    en_in:    { coverage: 'partial', baseLang: 'en' },
+    en_ie:    { coverage: 'partial', baseLang: 'en' },
+    // §29 Quebec French: mostly identical except hello/thanks
+    fr_qc: { coverage: 'partial', baseLang: 'fr' },
+    fr_be: { coverage: 'partial', baseLang: 'fr' },
+    fr_af: { coverage: 'partial', baseLang: 'fr' },
+    fr_ch: { coverage: 'partial', baseLang: 'fr' },
+    // Arabic dialect rows (vs ar = MSA)
+    ar_eg:   { coverage: 'partial', baseLang: 'ar' },
+    ar_lev:  { coverage: 'partial', baseLang: 'ar' },
+    ar_gulf: { coverage: 'partial', baseLang: 'ar' },
+    ar_iq:   { coverage: 'partial', baseLang: 'ar' },
+    ar_ma:   { coverage: 'partial', baseLang: 'ar' },
+    ar_sd:   { coverage: 'partial', baseLang: 'ar' },
+    ar_tn:   { coverage: 'partial', baseLang: 'ar' },
+    // Chinese regional
+    zh_sc: { coverage: 'partial', baseLang: 'zh' },
+    yue_gz: { coverage: 'partial', baseLang: 'yue' },
+    yue_ts: { coverage: 'partial', baseLang: 'yue' },
+    // Portuguese regional
+    pt_br: { coverage: 'partial', baseLang: 'pt_eu' },
+    // Vietnamese regional
+    vi_c: { coverage: 'partial', baseLang: 'vi' },
+    vi_s: { coverage: 'partial', baseLang: 'vi' },
+    // Thai regional
+    th_n:    { coverage: 'partial', baseLang: 'th' },
+    th_s:    { coverage: 'partial', baseLang: 'th' },
+    th_isan: { coverage: 'partial', baseLang: 'th' },
+    // German regional
+    de_by:  { coverage: 'partial', baseLang: 'de' },
+    de_at:  { coverage: 'partial', baseLang: 'de' },
+    de_gsw: { coverage: 'partial', baseLang: 'de' },
+};
+for (const code of Object.keys(COVERAGE)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        Object.assign(LANG_DATA[code].meta, COVERAGE[code]);
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

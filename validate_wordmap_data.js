@@ -559,6 +559,16 @@ for (const code of codes) {
         if (!allowed.has(m.pronunciationType)) E(`[#13d] ${code}: meta.pronunciationType "${m.pronunciationType}" not in enum`);
         else { withPronType++; pronTypeCounts[m.pronunciationType] = (pronTypeCounts[m.pronunciationType] || 0) + 1; }
     }
+    if (m.coverage !== undefined) {
+        const allowed = new Set(['full','partial','accent-only','base-copy-with-notes']);
+        if (!allowed.has(m.coverage)) E(`[#13e] ${code}: meta.coverage "${m.coverage}" not in enum`);
+        if (m.coverage === 'base-copy-with-notes' && !m.baseLang) {
+            W(`[#13e] ${code}: coverage='base-copy-with-notes' requires meta.baseLang`);
+        }
+    }
+    if (m.baseLang !== undefined && !ctx.LANG_DATA[m.baseLang]) {
+        E(`[#13e] ${code}: meta.baseLang "${m.baseLang}" not in LANG_DATA`);
+    }
     if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
         E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
     }
