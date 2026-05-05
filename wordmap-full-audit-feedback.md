@@ -146,3 +146,104 @@ PASS
 `wordmap-full-audit.md` 参照資料セクション（§9）に列挙された外部資料（Wiktionary, Wikipedia, Britannica, Palaeolexicon, Glosbe, tekinged.com, Webonary 等）を活用。
 
 ---
+
+## Session 2 (2026-05-05)
+
+残った大型項目（Armenian の表記破損、Sanskrit visarga、Burmese/Rakhine の `N` 正規化）と Formosan の review 残りを対応。
+
+### コミット
+- `<TBD - filled at commit time>`
+
+### 対応した audit 項目
+
+**§6.1 / §7.4 Armenian (`hy`) の surface 欄破損 — 17セル一括修正:**
+
+旧データには3種の破損が混在していた：
+1. `delays` という英語フラグメントの混入: `sun:['արdelays','aɾev']`, `eat:['ուdelays','utel']`, `love:['սdelays','seɾ']`
+2. アルメニア文字 + Latin 文字混在: `moon:['լուսin']`, `drink:['խմel']`, `heart:['սirt']`, `tree:['ծar']`, `dog:['շun']`
+3. 完全ローマ字転写: `house:['tun']`, `cat:['katou']`, `hand:['dzerrk']`, `eye:['atchk']`, `hello:['barev']`, `thanks:['shnorhakalutyun']`, `one:['meg']`, `good:['lav']`
+4. Cyrillic 混入: `father:['հայр']`（末尾 `р` が Cyrillic）
+
+修正は audit §6.1 の推奨案（Wiktionary 出典）通りに 17セルを一括書き換え：
+
+| 概念 | 旧 | 新 |
+|---|---|---|
+| sun | `արdelays` | `արև` (`ɑˈɾev`) |
+| moon | `լուսin` | `լուսին` |
+| father | `հայр` | `հայր` (Cyrillic→Armenian) |
+| eat | `ուdelays` | `ուտել` (`uˈtel`) |
+| drink | `խմel` | `խմել` (`χəˈmel`) |
+| love | `սdelays` | `սեր` |
+| heart | `սirt` | `սիրտ` |
+| tree | `ծar` | `ծառ` |
+| house | `tun` | `տուն` |
+| dog | `շun` | `շուն` |
+| cat | `katou` | `կատու` |
+| hand | `dzerrk` | `ձեռք` |
+| eye | `atchk` | `աչք` |
+| hello | `barev` | `բարև` |
+| thanks | `shnorhakalutyun` | `շնորհակալություն` |
+| one | `meg` | `մեկ` (`mek`) — IPA も `meɡ`→`mek` に（東アルメニア標準寄せ） |
+| good | `lav` | `լավ` |
+
+出典: Wiktionary（17セル分）+ Wikibooks Armenian/Common Phrases (`thanks`)
+
+**§6.43 / §7.14 Sanskrit (`sa`) visarga `ः` の IPA 不整合 — 7セル:**
+
+surface 末尾の visarga `ः`（=`ḥ`）を `aː` のような長母音にしていた問題を `aɦ` へ修正：
+
+| 概念 | surface | 旧IPA | 新IPA |
+|---|---|---|---|
+| fire | अग्निः | `aɡniː` | `aɡniɦ` |
+| sun | सूर्यः | `suːɾjaː` | `suːɾjaɦ` |
+| moon | चन्द्रः | `tɕandɾaː` | `tɕandɾaɦ` |
+| tree | वृक्षः | `vɾɨkʂaː` | `vɾɨkʂaɦ` |
+| cat | मार्जारः | `maːɾdʒaːɾaː` | `maːɾdʒaːɾaɦ` |
+| hand | हस्तः | `hastaː` | `hastaɦ` |
+| thanks | धन्यवादः | `dʰanjaʋaːdaː` | `dʰanjaʋaːdaɦ` |
+
+出典: Wiktionary Sanskrit declension 各語、`vsa` Vedic Sanskrit が既に visarga を `ɦ` で扱っている前例
+
+(`mother`/`father`/`heart` 等は元から `-ā` 系 surface なので別問題、保留)
+
+**§6.31 / §7.12 Burmese (`my`) と Rakhine (`rki`) の ASCII `N` を IPA `ɴ` に正規化 — 14セル:**
+
+Wiktionary Burmese phonology は語末 nasal を `/ɴ/`（U+0274 LATIN LETTER SMALL CAPITAL N）として記述。データ内の便宜的 ASCII `N` を厳密 IPA に統一：
+
+- `my`: heart, tree, house, cat, hello, thanks, good (7セル) — `káuN` → `káuɴ` 等
+- `rki`: heart, tree, house, cat, hello, thanks, good (7セル) — 同様
+
+(audit §6.31 では他 `wuu_nb` Ningbo Wu や Japanese 方言にも `N` 用法があると指摘されているが、それらは話者音韻の便宜表記として確立しており、Burmese/Rakhine と性格が異なるため今回は触らない)
+
+### Validator 結果
+
+実行: `node validate_wordmap_data.js`
+
+```
+Languages: 579 (modern: 499, historical: 80)
+Word entries with "—": 66 (= 58 + Session1で追加した8件)
+ERRORS:   0
+WARNINGS: 0
+PASS
+```
+
+**§6.42 (Formosan hello/thanks) は今回保留:**
+- `bnn.hello`: `uninang` のまま（thanks と重複だが audit `likely-issue` 止まり、`mihumisang` 候補は方言基準確認が必要）
+- `trv.hello`: `malu` のまま（good 重複だが、modern 言語のため `—` を validator が ERROR 扱い、適切な置換語が確定するまで保留）
+- `pwn.hello/thanks`: `masalu` のまま（welcome/thanks gloss として許容）
+
+### 持ち越し（Session 3 以降に対応予定）
+
+**Schema-level:**
+- §6.20 IPA 欄ラベル問題（zh_tang Baxter, ojp 甲乙類, och 再構記法）
+- §6.22 surface 欄ラベル `原文` の改名
+- §7.6 duplicate-coordinate UI clustering
+- §7.7 Cell-level evidence status のスキーマ化
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`（個別辞書ベース要）
+- §6.42 Formosan hello/thanks の Bunun/Truku（適切な置換語の方言確認要）
+- Tujia の方言基準と出典統一
+- §6.31 別アプローチ — Japanese/Ningbo の `N` を許容するなら IPA 欄ラベルを「発音/転写」に緩める
+
+---
