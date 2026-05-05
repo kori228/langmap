@@ -435,3 +435,82 @@ PASS
 - Session 4 中に気付いた5項目（K'iche' / Pu-Xian Min / Wenzhou / Suzhou Wu の品質再確認、Min Bei fire の IPA 確認）
 
 ---
+
+## Session 5 (2026-05-05): quc データ品質回復 + WM_UI schema cleanup
+
+**スコープ:** Session 4 で記録した「dead L1048 quc が effective L2806 より丁寧だった」問題を解消し、WM_UI の使われていない `english` キーを除去。
+
+### §6.28 followup: quc K'iche' データ品質回復
+
+Session 4 では runtime behavior 不変を優先して effective L2806 を残した。ただし dead L1048 が複数セルでより標準的・正確な K'iche' 表記だったため、Session 5 でそれらを effective 側に移植。
+
+修正対象（10セル、effective → restored）:
+
+| Cell | 旧 (effective L2806) | 新 (restored from L1048) | 根拠 |
+|------|----------------------|-------------------------|------|
+| water | `ja'` / `haʔ` | `ja'` / `xaʔ` | K'iche' 中部方言で /x/ 軟口蓋摩擦音が標準（Wiktionary `ja'` K'iche'） |
+| drink | `uk'ow` / `ukʼow` | `uk'aaj` / `ukʼaːh` | `uk'aaj` は動詞名詞「飲み物/飲むこと」標準形 |
+| love | `logoxik` / `loɡoʃik` | `loq'oj` / `loqʼoh` | `loq'oj` 語頭は ejective q' が正しい（K'iche' "to love" 動詞名詞） |
+| heart | `anima` / `anima` | `anima'` / `animaʔ` | スペイン語借用 `ánima`、K'iche' で末尾声門閉鎖 |
+| house | `ja` / `ha` | `ja` / `xa` | K'iche' "house" /xa(:)/ — 軟口蓋 fricative |
+| cat | `mes` / `mes` | `me's` / `meʔs` | K'iche' "cat" は声門閉鎖を伴う `me's` |
+| hand | `q'ab'` / `qʼɓ` | `q'ab'` / `qʼaɓ` | **typo 修正** — 母音 `a` 欠落していた |
+| eye | `waqaj` / `waqah` | `b'aq'wach` / `ɓaqʼwatʃ` | K'iche' "eye" は複合語 `b'aq' wach`（骨+顔） |
+| hello | `saqarik` / `saqarik` | `saqarik` / `saqaɾik` | K'iche' /r/ は通常 tap /ɾ/ |
+| one | `jun` / `hun` | `jun` / `xun` | K'iche' "one" /xun/ — 軟口蓋 fricative |
+
+不変セル (両方同じ): fire, sun, moon, mother, father, eat, tree, dog, thanks, good
+
+**特筆 typo 修正:** `hand: q'ab' / qʼɓ` の IPA から母音 `a` が欠落していた箇所が、Session 5 で `qʼaɓ` に修復。これは effective 側の純粋な誤記。
+
+### Session 3 followup #3: WM_UI から `english:'English'` キーを除去
+
+[wordmap_data.js:2873](wordmap_data.js#L2873) の WM_UI 全 21 言語に `english:'English'` リテラルが含まれていたが、`grep` で wordmap.html / wordmap_data.js / lang_names.js / app.js すべて確認しても参照されていなかった（`WM_UI_LABELS.en = 'English'` で UI 言語切替プルダウンに使われており、`english` キーは dead）。
+
+21 行すべての ` english:'English',` を削除。WM_UI 各エントリの key 数: 18 → 17。
+
+実行: `Edit replace_all=true`。Validator pass 維持。
+
+### mnp Min Bei fire IPA — Session 5 では未対応
+
+Session 4 で「`mnp.fire:['火','xui˧˧']` の IPA は Wiktionary `xy` / `hue` 系と揺れ」と note したが、これは audit が confirm した問題ではなく、私の感想ベース。出典確認なしで書き換えるのは保留。Session 6+ で Wiktionary Jian'ou phonology を確認して個別判断する。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+INFOS:    66 (—) + 32 (dup-coord)
+PASS  (check #13 重複キー検出も pass)
+```
+
+### Session 5 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`quc.thanks: maltyox / maltjoʃ`** — Wiktionary K'iche' "thank you" は `maltiox` または `maltyox`、IPA `/maltjoʃ/`。`y` (/j/) の存在は方言差。今回は両側 (dead/effective) 一致のため touch せず。Spanish loanword 起源 (`maltiox` ← Mam `chjonte`?) は別議論。
+
+2. **K'iche' 正書法の `ʼ` (U+02BC) vs `'` (U+0027)** — 現状 surface 欄で両者混在 (`q'aq'` ASCII apostrophe vs `Qʼeqchiʼ` modifier letter apostrophe)。PLFM (Proyecto Lingüístico Francisco Marroquín) 標準は U+02BC `ʼ`。長期的には全 Mayan を U+02BC に統一すべきだが、今回は scope 外。
+
+3. **`heart: anima' / animaʔ`** はスペイン語借用 `ánima`、本来 K'iche' は `k'u'x` (/kʼuʔʃ/) — 「心臓」というより「魂・生命」。WORD_LIST `heart` の意味定義が「心臓」(anatomical) か「心・愛情」(metaphorical) か曖昧。Session 6+ で WORD_LIST 各 concept の定義精度を上げる必要あり (audit §6.23 重複「挨拶・感謝・評価語の多義性」と同根)。
+
+4. **WM_UI の `WM_UI_LABELS` 配列 (21 lang)** — 現在 `en:'English'`, `ja:'日本語'` 等で UI 言語切替に使われている。Session 5 で `WM_UI.*.english` を削除したことで、WM_UI 内の lang 名 (native English) 表記は `WM_UI_LABELS` に一本化された。ただし `WM_UI_LABELS` は wordmap_data.js のグローバル const として定義されているが、URL persistence (`?ui=`) や localStorage との対応キーは独自 (`es_eu`, `pt_eu` 等)。schema 統一の余地あり。
+
+### 持ち越し（Session 6 以降）
+
+**Schema-level:**
+- §7.6 duplicate-coordinate UI clustering
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突 — `WM_UI.word` vs `WORD_LIST.label.word` の意味曖昧)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`（個別辞書ベース）
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の Putian/Hinghwa, Wenzhou, Suzhou 方言基準明記
+- Session 5 #1 quc.thanks `maltyox/maltiox` 方言差
+- Session 5 #2 Mayan 系の `ʼ` (U+02BC) 統一
+- Session 5 #3 WORD_LIST `heart` の意味定義（解剖学的 vs 比喩的）
+
+---
