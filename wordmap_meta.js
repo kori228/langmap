@@ -1773,6 +1773,81 @@ for (const code of Object.keys(SURFACE_TYPE)) {
     }
 }
 
+// === languageKind (Audit Task 118) =================================
+// Distinguishes constructed/pedagogical/proto rows from ordinary
+// natural-language rows. Independent of dataStatus.
+//   'natural'             — default; ordinary modern natural language
+//   'constructed'         — invented (Esperanto, Toki Pona, Lojban, Klingon)
+//   'pidgin-creole'       — pidgin or creole varieties
+//   'pedagogical-stage'   — rebuilt earlier stage of a living language for
+//                           teaching (not directly attested as a vernacular)
+//   'reconstructed-proto' — comparative reconstruction (PIE etc.)
+//   'historical-attested' — well-documented historical language
+const LANGUAGE_KIND = {
+    // Constructed
+    eo:  'constructed', tok: 'constructed', jbo: 'constructed',
+    tlh: 'constructed',
+    // Reconstructed proto
+    ine: 'reconstructed-proto',
+    // Pedagogical stage (teaching reconstructions of older registers)
+    ja_edo:   'pedagogical-stage',
+    ja_heian: 'pedagogical-stage',
+    ko_mid:   'pedagogical-stage',
+    ko_em:    'pedagogical-stage',
+    vi_nom:   'pedagogical-stage',
+    // Pidgin/creole — modern natural langs but a distinct kind
+    tpi: 'pidgin-creole', hwc: 'pidgin-creole', pcm: 'pidgin-creole',
+    en_sg: 'pidgin-creole', // Singlish (acrolectal+basilectal blend)
+    ht:  'pidgin-creole', mfe: 'pidgin-creole', srn: 'pidgin-creole',
+    pap: 'pidgin-creole', jam: 'pidgin-creole', cab: 'pidgin-creole',
+    kri: 'pidgin-creole', lad: 'pidgin-creole',
+    // Historical-attested (well-documented ancient/medieval rows)
+    la:   'historical-attested', grc: 'historical-attested',
+    el_grc: 'historical-attested', egy: 'historical-attested',
+    sa:   'historical-attested', cu:  'historical-attested',
+    pi:   'historical-attested', gez: 'historical-attested',
+    arc:  'historical-attested', cop: 'historical-attested',
+    syc:  'historical-attested', hbo: 'historical-attested',
+    sux:  'historical-attested', akk: 'historical-attested',
+    hit:  'historical-attested', xlu: 'historical-attested',
+    elx:  'historical-attested', xsa: 'historical-attested',
+    xhu:  'historical-attested', xpu: 'historical-attested',
+    phn:  'historical-attested', uga: 'historical-attested',
+    peo:  'historical-attested', ave: 'historical-attested',
+    pal:  'historical-attested', sog: 'historical-attested',
+    otk:  'historical-attested', xpr: 'historical-attested',
+    xqa:  'historical-attested', kho: 'historical-attested',
+    txg:  'historical-attested', zkt: 'historical-attested',
+    juc:  'historical-attested', xct: 'historical-attested',
+    gmy:  'historical-attested', xto: 'historical-attested',
+    txb:  'historical-attested', non: 'historical-attested',
+    got:  'historical-attested', sga: 'historical-attested',
+    mga:  'historical-attested', en_ang: 'historical-attested',
+    enm:  'historical-attested', fro: 'historical-attested',
+    osp:  'historical-attested', osx: 'historical-attested',
+    goh:  'historical-attested', gmh: 'historical-attested',
+    cqu:  'historical-attested', omc: 'historical-attested',
+    chb:  'historical-attested', oma: 'historical-attested',
+    osu:  'historical-attested', otl: 'historical-attested',
+    occ:  'historical-attested', obr: 'historical-attested',
+    pyx:  'historical-attested', omx: 'historical-attested',
+    okz:  'historical-attested', sukh: 'historical-attested',
+    xmr:  'historical-attested', onw: 'historical-attested',
+    nci:  'historical-attested', myn: 'historical-attested',
+    orv:  'historical-attested', xsc: 'historical-attested',
+    och:  'historical-attested', ojp: 'historical-attested',
+    vsa:  'historical-attested', kaw: 'historical-attested',
+    zh_song: 'historical-attested', zh_tang: 'historical-attested',
+    zh_han: 'historical-attested',
+};
+for (const code of Object.keys(LANGUAGE_KIND)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        if (!LANG_DATA[code].meta.languageKind) {
+            LANG_DATA[code].meta.languageKind = LANGUAGE_KIND[code];
+        }
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

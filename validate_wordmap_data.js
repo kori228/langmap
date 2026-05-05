@@ -631,6 +631,10 @@ for (const code of codes) {
         const allowed = new Set(['native-script','standard-orthography','romanization','phonetic','mixed','unknown']);
         if (!allowed.has(m.surfaceType)) E(`[#13g] ${code}: meta.surfaceType "${m.surfaceType}" not in enum`);
     }
+    if (m.languageKind !== undefined) {
+        const allowed = new Set(['natural','constructed','pidgin-creole','pedagogical-stage','reconstructed-proto','historical-attested']);
+        if (!allowed.has(m.languageKind)) E(`[#13h] ${code}: meta.languageKind "${m.languageKind}" not in enum`);
+    }
     if (m.baseLang !== undefined && !ctx.LANG_DATA[m.baseLang]) {
         E(`[#13e] ${code}: meta.baseLang "${m.baseLang}" not in LANG_DATA`);
     }
@@ -756,6 +760,21 @@ if (withSurfaceType > 0) {
     const breakdown = Object.entries(surfaceTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`surfaceType coverage: ${withSurfaceType}/${codes.length} languages (${breakdown}) — Audit Task 84`);
+}
+// Audit Task 118: languageKind coverage tally
+let withLanguageKind = 0;
+const languageKindCounts = {};
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    if (m.languageKind) {
+        withLanguageKind++;
+        languageKindCounts[m.languageKind] = (languageKindCounts[m.languageKind] || 0) + 1;
+    }
+}
+if (withLanguageKind > 0) {
+    const breakdown = Object.entries(languageKindCounts).sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k}=${v}`).join(', ');
+    I(`languageKind coverage: ${withLanguageKind}/${codes.length} languages (${breakdown}) — Audit Task 118`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -

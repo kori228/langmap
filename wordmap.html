@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LangMap — Word Map: 578 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 578 languages with IPA pronunciations. 2D map and 3D globe views.">
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 578 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 578 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 578 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 578 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 578 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <link rel="stylesheet" href="styles.css?v=54">
@@ -424,7 +424,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=60"></script>
+    <script src="wordmap_data.js?v=61"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -562,11 +562,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      60,
+            data:      61,
             metaI18n:  8,
             filter:    22,
             names:     2,
-            meta:      23,
+            meta:      24,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1684,6 +1684,17 @@
         };
         const LOCATION_BASIS_HEADER = { en: 'Map point', ja: 'マップ位置', ko: '지도 위치', zh: '地图标点' };
 
+        // Audit Task 118: languageKind badge for non-default kinds.
+        // Natural and historical-attested rows don't get a separate badge —
+        // dataStatus already covers those. Constructed / pidgin-creole /
+        // pedagogical-stage / reconstructed-proto do get a small badge.
+        const LANGUAGE_KIND_BADGE = {
+            'constructed':         { bg: '#7a3a8c', fg: '#fff', en: 'constructed',         ja: '人工言語',     ko: '인공어',       zh: '人工语言' },
+            'pidgin-creole':       { bg: '#0d6e6b', fg: '#fff', en: 'pidgin / creole',     ja: 'ピジン・クレオール', ko: '피진/크리올', zh: '皮钦语/克里奥尔语' },
+            'pedagogical-stage':   { bg: '#995500', fg: '#fff', en: 'pedagogical stage',   ja: '教材用前段階', ko: '교재용 단계',  zh: '教学用阶段' },
+            'reconstructed-proto': { bg: '#404060', fg: '#fff', en: 'reconstructed proto', ja: '再構祖語',     ko: '재구 조어',    zh: '构拟原始语' },
+        };
+
         // Audit Task 100: localize "— (unattested)" cell label
         const UNATTESTED_LABEL = {
             en: 'unattested',  ja: '未確認',  ko: '미확인',  zh: '未确认',
@@ -1768,13 +1779,21 @@
             // inline so users understand the data's evidentiary level.
             const status = getDataStatus(code);
             const badge = DATA_STATUS_BADGE[status];
-            if (badge) {
-                const label = pickBadgeLabel(badge);
-                const desc = pickBadgeDesc(badge);
-                html += `<div style="margin:4px 0 8px;line-height:1.4">` +
-                    `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg};vertical-align:middle">${escapeHtml(label)}</span>` +
-                    (desc ? ` <span style="font-size:10px;color:#777;vertical-align:middle">${escapeHtml(desc)}</span>` : '') +
-                    `</div>`;
+            const kindBadge = m.languageKind && LANGUAGE_KIND_BADGE[m.languageKind];
+            if (badge || kindBadge) {
+                html += `<div style="margin:4px 0 8px;line-height:1.4">`;
+                if (badge) {
+                    const label = pickBadgeLabel(badge);
+                    const desc = pickBadgeDesc(badge);
+                    html += `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg};vertical-align:middle">${escapeHtml(label)}</span>`;
+                    if (desc) html += ` <span style="font-size:10px;color:#777;vertical-align:middle">${escapeHtml(desc)}</span>`;
+                }
+                if (kindBadge) {
+                    const kLabel = kindBadge[uiLang] || kindBadge[uiLang.split('_')[0]] || kindBadge.en;
+                    if (badge) html += ' ';
+                    html += `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${kindBadge.bg};color:${kindBadge.fg};vertical-align:middle">${escapeHtml(kLabel)}</span>`;
+                }
+                html += `</div>`;
             }
             if (lang.meta) {
                 html += '<table>';

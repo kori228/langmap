@@ -35,6 +35,8 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 99: `locationBasis` schema + UI rendering + first-pass labeling | ✅ 152/578 langs labeled | 152 langs |
 | Task 121: Description fallback visible labeling + validator threshold | ✅ Implemented | UI + 14 WARN |
 | Task 84: `surfaceType` schema + first-pass labeling | ✅ 471/578 langs labeled (81%) | 471 langs |
+| Task 105: SEO/OpenGraph text — remove "IPA pronunciations" overclaim | ✅ Fixed | meta + README |
+| Task 118: `languageKind` schema + UI badge + first-pass labeling | ✅ 94 langs labeled + UI | 94 langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -526,6 +528,64 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 105 — SEO/OG/README "IPA pronunciations" overclaim 修正 (✅)
+
+Audit が "Avoid public metadata claiming the map provides IPA pronunciations for all entries" と指摘。Tasks 76/94 で「第二列は IPA だけでなく broad/orthography/romanization も含む」と明示した以上、SEO 文言も整合化必須。
+
+| File / Tag | 旧 | 新 |
+|---|---|---|
+| `wordmap.html` `<meta name="description">` | "in 578 languages with **IPA pronunciations**" | "in 578 languages with **pronunciation guides — IPA, broad transcription, and romanization where available**" |
+| `wordmap.html` `<meta property="og:description">` | "with **IPA pronunciations** and 3D globe" | "with **pronunciation guides (IPA / broad / romanization)** and 3D globe" |
+| `wordmap.html` `<meta name="twitter:description">` | 同上 | 同上 |
+| `README.md:27` | "with **IPA (Chao tone letters throughout)**" | "with **pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable)**" |
+
+これで Twitter share / Google snippet / GitHub README が dataset の実態と一致。
+
+---
+
+## Audit Task 118 — languageKind schema + UI badge + 94 langs labeled (✅)
+
+Audit が "Make constructed languages and pedagogical rows visibly distinct from natural-language rows" と指摘。`dataStatus` (modern/attested/fragmentary/...) は **データ状態**を表すが、**言語の種類** (人工言語/ピジン/教材用) は別軸の概念。
+
+**Schema:** `meta.languageKind: 'natural' | 'constructed' | 'pidgin-creole' | 'pedagogical-stage' | 'reconstructed-proto' | 'historical-attested'`
+
+**第一段階 labeling — 94/578 言語:**
+
+| Kind | Count | 例 |
+|---|---|---|
+| `historical-attested` | 72 | la, grc, sa, akk, hit, hbo, syc, en_ang, fro, sga, mga, sukh, omx, omc, chb, ja_edo (no — that's pedagogical-stage), och, ojp, vsa, etc. |
+| `pidgin-creole` | 12 | tpi, hwc, pcm, en_sg (Singlish), ht, mfe, srn, pap, jam, cab, kri, lad |
+| `pedagogical-stage` | 5 | ja_edo, ja_heian, ko_mid, ko_em, vi_nom |
+| `constructed` | 4 | eo, tok, jbo, tlh |
+| `reconstructed-proto` | 1 | ine (PIE) |
+
+**`natural` (default)** は明示せず、modern natural langs はラベル無し。
+
+### UI badge ([wordmap.html:1554-1564 + 1682-1696](wordmap.html#L1554-L1564))
+
+`LANGUAGE_KIND_BADGE` 定数で en/ja/ko/zh ローカライズ + 色分け:
+
+| Kind | 色 | en label | ja label |
+|---|---|---|---|
+| `constructed` | 紫 #7a3a8c | "constructed" | "人工言語" |
+| `pidgin-creole` | 緑 #0d6e6b | "pidgin / creole" | "ピジン・クレオール" |
+| `pedagogical-stage` | 茶 #995500 | "pedagogical stage" | "教材用前段階" |
+| `reconstructed-proto` | 紫紺 #404060 | "reconstructed proto" | "再構祖語" |
+
+`historical-attested` は dataStatus badge ("attested") で既に表示されるため、langKind badge は出さない (audit 通り重複回避)。
+
+**現在の表示例:**
+- `eo` modal: pronunciation type "broad" + langKind "人工言語" 紫 badge
+- `tpi` modal: dataStatus "modern" + langKind "ピジン・クレオール" 緑 badge
+- `ja_edo` modal: dataStatus "pedagogical" + langKind "教材用前段階" 茶 badge
+- `ine` modal: dataStatus "reconstructed" + langKind "再構祖語" 紫紺 badge
+
+### Validator change
+
+[validate_wordmap_data.js:574-577](validate_wordmap_data.js#L574-L577) check #13h 追加 + INFO line で coverage tally。
+
+---
+
 ## Audit Task 84 — surfaceType schema + first-pass labeling (✅ 471/578 langs)
 
 Audit が懸念した「IPA-like 文字 (ɔ/ɛ/ŋ/click) を含む surface を blanket regex で誤検出して valid orthography を破壊するリスク」に対応。`surfaceType` field で surface 列の意味を明示。
@@ -885,7 +945,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=60` (data) / `v=16 → v=23` (meta, +Tasks 84 surfaceType / 99 / 121)。Centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=61` (data) / `v=16 → v=24` (meta, +Tasks 84/99/105/118/121)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 
