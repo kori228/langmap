@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 586 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 586 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
+    <title>LangMap — Word Map: 588 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 588 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 586 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 588 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 586 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 588 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <link rel="stylesheet" href="styles.css?v=54">
@@ -494,10 +494,10 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=74"></script>
+    <script src="wordmap_data.js?v=75"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
-    <script src="lang_names.js?v=3"></script>
+    <script src="lang_names.js?v=4"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -632,11 +632,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      74,
+            data:      75,
             metaI18n:  8,
             filter:    22,
-            names:     3,
-            meta:      28,
+            names:     4,
+            meta:      29,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1034,6 +1034,7 @@
             sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
             ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
             ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
+            oko:'ko', okg:null,
             // Phase 4: historical
             peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
             xlu:null, pal:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',

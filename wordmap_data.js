@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 586 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 588 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -57,7 +57,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
   'orv','xsc','sukh','xmr','onw','cqu','omc','chb','oma','osu','otl',
   // Reconstructed proto / hypothetical
-  'pjk'
+  'pjk',
+  // Korean Peninsula historical
+  'oko', 'okg'
 ]);
 
 const LANG_DATA = {
@@ -997,6 +999,40 @@ const LANG_DATA = {
     words: { water:['水','midu'], fire:['火','ɸi'], sun:['日','ɸi'], moon:['月','tukï'], mother:['母','ɸaɸa'], father:['父','titï'], eat:['食ふ','kaɸu'], drink:['飲む','nomu'], love:['恋','koɸi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','iɸe'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['あなかしこ','anakasiko'], thanks:['忝なし','katadikenaɕi'], one:['一つ','ɸitotu'], good:['良し','joɕi'] }},
   ko_mid: { name: 'Medieval Korean', native: '中世韓國語', lat: 37.57, lng: 126.98,
     words: { water:['믈','mɯl'], fire:['블','pɯl'], sun:['ᄒᆡ','hʌj'], moon:['ᄃᆞᆯ','tʌl'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌk.ta'], drink:['마시다','maɕi.ta'], love:['ᄉᆞ랑','sʌ.ɾaŋ'], heart:['ᄆᆞᅀᆞᆷ','mʌzʌm'], tree:['나모','namo'], house:['집','tɕip'], dog:['가히','kahi'], cat:['고아이','koai'], hand:['손','son'], eye:['눈','nun'], hello:['안녕ᄒᆞ쇼셔','annjʌŋ hʌ.sjo.sjʌ'], thanks:['고맙ᄉᆞᆸ나이다','komap.sʌp.na.i.ta'], one:['ᄒᆞ나','hʌna'], good:['됴타','tjota'] }},
+  // Old Korean (Silla period, 7-10c.) — direct ancestor of Korean.
+  // Attested via 25 hyangga (郷歌) poems in Samguk Yusa + Gyunyeo's
+  // biography, plus idu/hyangchal records and personal/place names
+  // in Samguk Sagi. Hyangchal used Chinese characters for both
+  // semantic and phonetic readings; reconstruction follows Lee KM
+  // (1993, 2003), Sohn (1999), Whitman (2015).
+  oko: { name: 'Old Korean (Silla)', native: '古代韓國語', lat: 35.85, lng: 129.22, // Gyeongju (Silla capital)
+    words: { water:['*muru','*muɾu'], fire:['*purk','*puɾk'], sun:['*hai','*hai'], moon:['*tʌrh','*tʌɾh'], mother:['*əmi','*əmi'], father:['*əpi','*əpi'], eat:['*məkda','*məkta'], drink:['*masita','*maɕita'], love:['*sjarang','*sjaɾaŋ'], heart:['*məsʌm','*məsʌm'], tree:['*namok','*namok'], house:['*cip','*tɕip'], dog:['*kahi','*kahi'], cat:['—','—'], hand:['*son','*son'], eye:['*nun','*nun'], hello:['—','—'], thanks:['—','—'], one:['*hʌnah','*hʌnah'], good:['*djoh-','*tjoh'] },
+    wordEvidence: {
+      water:  { evidence: 'reconstructed', source: 'Lee KM 2003 — pre-MK *muru → MK 믈; cf. modern 물' },
+      moon:   { evidence: 'reconstructed', source: 'Lee KM 2003 — *tʌrh attested in hyangga 月隠 → MK ᄃᆞᆯ → 달' },
+      one:    { evidence: 'reconstructed', source: 'Hyangga 一念惡寸; → MK ᄒᆞ나 → 하나' },
+      house:  { evidence: 'direct', source: 'Idu/hyangchal 家=cip; → MK 집' },
+      heart:  { evidence: 'reconstructed', source: 'Hyangga 心 → *məsʌm → MK ᄆᆞᅀᆞᆷ → 마음' },
+      mother: { evidence: 'reconstructed', source: 'Lee KM 1993 — *əmi attested in idu → MK 어미' },
+      father: { evidence: 'reconstructed', source: 'Lee KM 1993 — *əpi attested → MK 아비' },
+      cat:    { evidence: 'disputed', note: 'no Old Korean form attested; later 고양이 < 高揚 + suffix is post-medieval' },
+      hello:  { evidence: 'disputed', note: 'Silla/Old Korean greeting formula not preserved in hyangga corpus' },
+      thanks: { evidence: 'disputed', note: 'no Old Korean thanks formula attested; native 고맙- < later strata' },
+    } },
+  // Goguryeo (高句麗) — extinct language of the northern Three Kingdoms
+  // state (1c. BCE - 668 CE). Status hotly debated: Beckwith (2004),
+  // Vovin (2013), Whitman (2011) propose Japonic affiliation based on
+  // famous numeral cognates (3=密 mil ↔ OJ mi; 5=于次 uci ↔ OJ itu;
+  // 7=難隱 nanǝn ↔ OJ nana; 10=徳 tǝk ↔ OJ töwo); other scholars
+  // (Lee, Vovin earlier) place it as a sister to Korean. Corpus is
+  // ~80 toponyms in Samguk Sagi (Geography vol. 37) — almost no
+  // basic-vocabulary attestation. Most cells deliberately '—' to
+  // honestly reflect this fragmentary state.
+  okg: { name: 'Goguryeo', native: '高句麗語', lat: 41.13, lng: 126.19, // Gungnae-seong (Ji'an, early Goguryeo capital)
+    words: { water:['買','*mai'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      water: { evidence: 'reconstructed', source: 'Samguk Sagi vol. 37 — 水谷城 (買旦忽); 買 read as Goguryeo *mai/*me — debated cognate (Whitman 2011: ↔ Old Japanese *mey "water"; Lee 1993: ↔ Tungusic mu)' },
+    } },
   ko_em: { name: 'Early Modern Korean', native: '近世韓國語', lat: 37.57, lng: 126.98,
     words: { water:['물','mul'], fire:['불','pul'], sun:['ᄒᆡ','hɛ'], moon:['달','tal'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌkta'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하시오','annjʌŋ.ha.si.o'], thanks:['고맙소이다','komap.so.i.da'], one:['하나','hana'], good:['좋다','tɕotta'] }},
   vi_nom: { name: 'Vietnamese Chữ Nôm', native: 'Tiếng Việt (Chữ Nôm)', lat: 21.03, lng: 105.85,
@@ -2960,7 +2996,7 @@ const LANG_DATA = {
   // is itself a major argument against the hypothesis. We therefore
   // leave most cells unattested ('—') and mark the few proposed
   // basic-vocabulary cognates with `disputed` evidence.
-  pjk: { name: 'Proto-Japonic-Koreanic', native: '*PJK', lat: 35.18, lng: 129.07, // Pusan area — Yayoi/Mumun contact zone (Whitman 2011)
+  pjk: { name: 'Proto-Japonic-Koreanic', native: '*PJK', lat: 38.50, lng: 134.00, // Sea of Japan (symbolic — between hypothetical Korean Peninsula homeland and the Japanese archipelago)
     words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['*ǝma','əma'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
     wordEvidence: {
       mother: { evidence: 'disputed', source: 'Whitman 2012 — childish *ma/əma; cross-linguistic baby-talk root, weak phylogenetic value' },
@@ -3220,6 +3256,8 @@ const DATA_STATUS_OVERRIDES = {
     ja_heian:  'pedagogical',
     ko_mid:    'pedagogical',
     ko_em:     'pedagogical',
+    oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
+    okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     vi_nom:    'pedagogical',
     // Well-attested historical Sinitic:
     zh_song:   'attested',
