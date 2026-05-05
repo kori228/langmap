@@ -32,6 +32,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 102: Rename "IPA" toggle → "Pron." (en) / "発音" (ja) etc. | ✅ Fixed | UI |
 | Task 132: Localize evidence markers (ja/ko/zh/de/fr/es + Source/Note prefix) | ✅ Localized | UI |
 | Task 134: Centralize cache-buster versions (`WM_ASSET_VERSION` + validator drift check) | ✅ Implemented | infra |
+| Task 99: `locationBasis` schema + UI rendering + first-pass labeling | ✅ 152/578 langs labeled | 152 langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -523,6 +524,46 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 99 — locationBasis schema + UI + 152 lang first-pass labeling (✅)
+
+Audit が "Make clear that each marker is a representative point, not a speaker-distribution map" と指摘。Modal に「Map point: capital / historical site / approximate region」表示で marker semantics を明示。
+
+**Schema:** `meta.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'` (canonical)。`lang.locationBasis` (legacy) も後方互換のため UI/validator が両方を受け付ける。
+
+**第一段階 labeling — 152/578 言語 (26%):**
+
+| Type | Count | 例 |
+|---|---|---|
+| `historical-site` | 67 | la, grc, sukh, omx, omc, chb, ja_edo, en_ang, enm, non, sga, fro, osp, sux, akk, hit, etc. |
+| `capital` | 65 | en (London), fr (Paris), de (Berlin), ja (Tokyo, legacy), ko (Seoul), zh (Beijing), ru (Moscow), hi (Delhi), th (Bangkok), id (Jakarta), etc. |
+| `prestige-center` | 13 | sa (Vedic N India), pi (Pali liturgical), cu (OCS), gez, ave (Avestan), bo (Lhasa), cy (Welsh), eu (Basque), ca (Catalan), ja_heian (Kyoto), ko_mid, ko_em, ar (Riyadh MSA centroid) |
+| `largest-city` | 5 | yue (HK), nan (Taipei), he (Tel Aviv), sw (Dar/Nairobi), ta (Chennai) |
+| `approx-region` | 2 | xsc (Pontic steppe), ine (Proto-Indo-European) |
+
+歴史言語は audit 指摘通り `historical-site`、現代国語は概ね `capital`、ar=MSA は単一首都ではなく `prestige-center`、he/yue/nan/sw/ta は実際の首都が language-cluster centroid と異なるため `largest-city`、再構言語/遊牧民は `approx-region` に。
+
+### UI display ([wordmap.html:1693-1700](wordmap.html#L1693-L1700))
+
+Modal の pronunciation/coverage 行と並んで `Map point: <label>` を表示:
+- 例: en modal → `Map point: capital city`
+- 例: ja_edo modal → `Map point: historical site`
+- 例: xsc Scythian → `Map point: approximate region`
+
+Localized en/ja/ko/zh、UI lang fallback chain は `uiLang → uiLang.split('_')[0] → en`。
+
+### Validator changes
+
+[validate_wordmap_data.js:617-627](validate_wordmap_data.js#L617-L627):
+- check #13f: `meta.locationBasis` enum 検査
+- 同一 lang で `lang.locationBasis` と `meta.locationBasis` 両方あり値が違う場合 WARN (canonical は meta)
+- INFO line で coverage tally (pronunciationType と同様、historical-site=67/capital=65/...)
+
+### 残: 426 言語の labeling
+
+Asian 諸言語、African 大半、Pacific Austronesian、Latin American minority、Caucasus、Native American は未 label。Incremental に対応予定 — 1 language 1 label なので、family-by-family で進めれば数 session で 100% 達成可能。
+
+---
+
 ## Audit Task 134 — Cache-buster centralization (✅)
 
 Audit が "stale data bugs caused by manually updated `?v=` numbers scattered through wordmap.html" を懸念した件。Cache-buster バージョンを 6 つの asset ([styles, data, metaI18n, filter, names, meta]) で散在させていたが、`WM_ASSET_VERSION` 中央レジストリに統一。
@@ -740,7 +781,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=58` (data) / `v=16 → v=21` (meta, +Tasks 76/79/100/102/132/134)。Now centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=59` (data) / `v=16 → v=22` (meta, +Task 99 locationBasis)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 

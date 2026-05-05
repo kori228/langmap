@@ -1365,6 +1365,154 @@ for (const code of Object.keys(COVERAGE)) {
     }
 }
 
+// === locationBasis (Audit Task 99) ================================
+// Marker is a representative point, not a speaker-distribution map.
+// Canonical field is meta.locationBasis. Existing lang.locationBasis
+// (e.g. ja from Session 33) remains valid; UI reads either.
+//   'capital'         — country capital (most common default)
+//   'prestige-center' — historical/cultural prestige (e.g. Edo Tokyo)
+//   'historical-site' — site of a historical attestation
+//   'largest-city'    — largest population center for the variety
+//   'approx-region'   — approximate cultural/ethnic region centroid
+const LOCATION_BASIS_OVERRIDES = {
+    // Modern capitals (high-traffic priorities)
+    en:    'capital', // London
+    fr:    'capital', // Paris
+    de:    'capital', // Berlin
+    it:    'capital', // Rome
+    es_eu: 'capital', // Madrid
+    pt_eu: 'capital', // Lisbon
+    ru:    'capital', // Moscow
+    uk:    'capital', // Kyiv
+    pl:    'capital', // Warsaw
+    nl:    'capital', // Amsterdam
+    el:    'capital', // Athens
+    tr:    'capital', // Ankara/Istanbul
+    he:    'largest-city', // Tel Aviv (not the de-facto capital)
+    ar:    'prestige-center', // Riyadh as MSA centroid; not a single capital
+    fa:    'capital', // Tehran
+    hi:    'capital', // Delhi
+    bn:    'capital', // Dhaka
+    ur:    'capital', // Islamabad/Karachi
+    th:    'capital', // Bangkok
+    vi:    'capital', // Hanoi
+    lo:    'capital', // Vientiane
+    km:    'capital', // Phnom Penh
+    my:    'capital', // Yangon (largest)
+    ko:    'capital', // Seoul
+    zh:    'capital', // Beijing
+    yue:   'largest-city', // Hong Kong
+    nan:   'largest-city', // Taipei (Taiwanese centroid)
+    id:    'capital', // Jakarta
+    ms:    'capital', // Kuala Lumpur
+    tl:    'capital', // Manila
+    sw:    'largest-city', // Dar es Salaam / Nairobi area
+    am:    'capital', // Addis Ababa
+    bo:    'prestige-center', // Lhasa
+    // Capitals for additional priority langs
+    cs:  'capital', sk:  'capital', hu:  'capital', ro:  'capital',
+    bg:  'capital', sr:  'capital', hr:  'capital', sl:  'capital',
+    sq:  'capital', mt:  'capital', mk:  'capital', ka:  'capital',
+    hy:  'capital', az:  'capital', kk:  'capital', uz:  'capital',
+    ky:  'capital', tg:  'capital', mn:  'capital', ne:  'capital',
+    si:  'capital', pa:  'capital', gu:  'capital', mr:  'capital',
+    ta:  'largest-city', // Chennai
+    te:  'capital',  // Hyderabad
+    ml:  'capital',  // Thiruvananthapuram (state capital)
+    kn:  'capital',  // Bengaluru
+    or:  'capital',  // Bhubaneshwar
+    sv:  'capital', no:  'capital', da:  'capital', is:  'capital',
+    fi:  'capital', et:  'capital', lv:  'capital', lt:  'capital',
+    ga:  'capital', cy:  'prestige-center',
+    eu:  'prestige-center', ca:  'prestige-center',
+    // Historical languages — most use capital/historical-site of their era
+    la:        'historical-site', // Rome (classical)
+    grc:       'historical-site', // Athens (classical)
+    egy:       'historical-site', // Memphis/Thebes (ancient)
+    sa:        'prestige-center', // Vedic-era N India
+    pi:        'prestige-center', // Pali liturgical area
+    cu:        'prestige-center', // Old Church Slavonic
+    gez:       'prestige-center', // Aksumite Ge'ez
+    sukh:      'historical-site', // Sukhothai
+    onw:       'historical-site', // Old Dongola
+    omx:       'historical-site', // Mon kingdoms (Dvaravati)
+    obr:       'historical-site', // Pagan Old Burmese
+    pyx:       'historical-site', // Pyu (Sri Ksetra)
+    xmr:       'historical-site', // Meroe
+    cqu:       'historical-site', // Cuzco
+    omc:       'historical-site', // Mochica
+    chb:       'historical-site', // Chibcha (Bogotá area)
+    oma:       'historical-site', // Old Malay (Sriwijaya/Palembang)
+    osu:       'historical-site', // Old Sundanese
+    otl:       'historical-site', // Old Tagalog
+    occ:       'historical-site', // Old Cham
+    xsc:       'approx-region', // Scythian (Pontic steppe)
+    xpr:       'historical-site', // Parthian
+    xqa:       'historical-site', // Karakhanid
+    sga:       'historical-site', // Old Irish
+    fro:       'historical-site', // Old French (Paris)
+    osp:       'historical-site', // Old Spanish (Toledo)
+    osx:       'historical-site', // Old Saxon
+    goh:       'historical-site', // Old High German
+    gmh:       'historical-site', // Middle High German
+    okz:       'historical-site', // Old Khmer (Angkor)
+    ja_edo:    'historical-site', // Edo period Japanese (Tokyo)
+    ja_heian:  'prestige-center', // Heian period (Kyoto)
+    ko_mid:    'prestige-center', // Middle Korean (Seoul)
+    ko_em:     'prestige-center', // Early Modern Korean
+    zh_song:   'historical-site', // Song/Ming Classical Chinese
+    zh_tang:   'historical-site', // Tang Classical Chinese
+    zh_han:    'historical-site', // Han dynasty Classical Chinese
+    vi_nom:    'historical-site', // Chữ Nôm Vietnamese
+    el_grc:    'historical-site', // Ancient Greek
+    en_ang:    'historical-site', // Old English
+    enm:       'historical-site', // Middle English
+    non:       'historical-site', // Old Norse
+    arc:       'historical-site', // Aramaic
+    cop:       'historical-site', // Coptic (Egypt)
+    syc:       'historical-site', // Classical Syriac
+    hbo:       'historical-site', // Biblical Hebrew
+    syr:       'historical-site', // Modern Assyrian Aramaic dispersed
+    xpu:       'historical-site', // Punic (Carthage)
+    xhu:       'historical-site', // Hurrian
+    elx:       'historical-site', // Elamite (Susa)
+    xsa:       'historical-site', // Sabaean
+    kaw:       'historical-site', // Kawi (Old Javanese)
+    kho:       'historical-site', // Khotanese
+    sog:       'historical-site', // Sogdian
+    otk:       'historical-site', // Old Turkic
+    zkt:       'historical-site', // Khitan
+    juc:       'historical-site', // Jurchen
+    txg:       'historical-site', // Tangut
+    xct:       'historical-site', // Classical Tibetan
+    gmy:       'historical-site', // Mycenaean Greek
+    pal:       'historical-site', // Pahlavi (Middle Persian)
+    peo:       'historical-site', // Old Persian
+    ave:       'prestige-center', // Avestan (liturgical)
+    xto:       'historical-site', // Tocharian A
+    txb:       'historical-site', // Tocharian B
+    phn:       'historical-site', // Phoenician
+    uga:       'historical-site', // Ugaritic
+    xlu:       'historical-site', // Luwian
+    sux:       'historical-site', // Sumerian
+    akk:       'historical-site', // Akkadian
+    hit:       'historical-site', // Hittite
+    nci:       'historical-site', // Classical Nahuatl
+    myn:       'historical-site', // Classical Maya
+    ine:       'approx-region', // Proto-Indo-European
+    orv:       'historical-site', // Old East Slavic
+    ojp:       'historical-site', // Old Japanese
+    och:       'historical-site', // Old Chinese
+    vsa:       'historical-site', // Vedic Sanskrit
+};
+for (const code of Object.keys(LOCATION_BASIS_OVERRIDES)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        if (!LANG_DATA[code].meta.locationBasis && !LANG_DATA[code].locationBasis) {
+            LANG_DATA[code].meta.locationBasis = LOCATION_BASIS_OVERRIDES[code];
+        }
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

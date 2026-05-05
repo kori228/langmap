@@ -617,6 +617,12 @@ for (const code of codes) {
     if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
         E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
     }
+    if (m.locationBasis !== undefined && !LOCATION_BASIS.has(m.locationBasis)) {
+        E(`[#13f] ${code}: meta.locationBasis "${m.locationBasis}" not in enum`);
+    }
+    if (lang.locationBasis && m.locationBasis && lang.locationBasis !== m.locationBasis) {
+        W(`[#13f] ${code}: lang.locationBasis="${lang.locationBasis}" differs from meta.locationBasis="${m.locationBasis}" — meta is canonical (Audit Task 99)`);
+    }
     if (m.sources !== undefined) {
         if (!Array.isArray(m.sources)) E(`${code}: meta.sources is not an array`);
         else {
@@ -699,6 +705,22 @@ if (withPronType > 0) {
     const breakdown = Object.entries(pronTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`pronunciationType coverage: ${withPronType}/${codes.length} languages (${breakdown}) — Audit Task 76`);
+}
+// Audit Task 99: locationBasis coverage tally
+let withLocationBasis = 0;
+const locBasisCounts = {};
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    const lb = m.locationBasis || ctx.LANG_DATA[code].locationBasis;
+    if (lb) {
+        withLocationBasis++;
+        locBasisCounts[lb] = (locBasisCounts[lb] || 0) + 1;
+    }
+}
+if (withLocationBasis > 0) {
+    const breakdown = Object.entries(locBasisCounts).sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k}=${v}`).join(', ');
+    I(`locationBasis coverage: ${withLocationBasis}/${codes.length} languages (${breakdown}) — Audit Task 99`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -

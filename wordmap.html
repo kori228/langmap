@@ -424,7 +424,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=58"></script>
+    <script src="wordmap_data.js?v=59"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -562,11 +562,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      58,
+            data:      59,
             metaI18n:  8,
             filter:    22,
             names:     2,
-            meta:      21,
+            meta:      22,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1673,6 +1673,17 @@
         };
         const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
 
+        // Audit Task 99: locationBasis label tells users that the marker is
+        // a representative point, not a speaker-distribution map.
+        const LOCATION_BASIS_LABEL = {
+            'capital':         { en: 'capital city',       ja: '首都',         ko: '수도',         zh: '首都' },
+            'prestige-center': { en: 'prestige center',    ja: '威信地',       ko: '위신 중심',    zh: '威望中心' },
+            'historical-site': { en: 'historical site',    ja: '歴史的所在地', ko: '역사적 장소',  zh: '历史遗迹' },
+            'largest-city':    { en: 'largest-speaker city', ja: '最大話者数都市', ko: '최대 화자 도시', zh: '最大使用者城市' },
+            'approx-region':   { en: 'approximate region', ja: '概略地域',     ko: '대략 지역',    zh: '大致区域' },
+        };
+        const LOCATION_BASIS_HEADER = { en: 'Map point', ja: 'マップ位置', ko: '지도 위치', zh: '地图标点' };
+
         // Audit Task 100: localize "— (unattested)" cell label
         const UNATTESTED_LABEL = {
             en: 'unattested',  ja: '未確認',  ko: '미확인',  zh: '未确认',
@@ -1770,6 +1781,16 @@
                 const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
                 const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
                 html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
+            }
+            // Audit Task 99: locationBasis — representative-point semantics.
+            // Read from meta.locationBasis (canonical) or lang.locationBasis (legacy).
+            const locBasis = m.locationBasis || lang.locationBasis;
+            if (locBasis && LOCATION_BASIS_LABEL[locBasis]) {
+                const lbLabel = LOCATION_BASIS_LABEL[locBasis][uiLang]
+                    || LOCATION_BASIS_LABEL[locBasis][uiLang.split('_')[0]]
+                    || LOCATION_BASIS_LABEL[locBasis].en;
+                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER.en;
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:#888"><b>${escapeHtml(lbHeader)}:</b> ${escapeHtml(lbLabel)}</div>`;
             }
             // Audit Task 79: coverage flag for regional variant rows
             if (m.coverage && COVERAGE_LABEL[m.coverage]) {
