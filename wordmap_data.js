@@ -2563,7 +2563,13 @@ const LANG_DATA = {
     } },
   // Hmong-Mien (Yao branch)
   iuu: { name: 'Iu Mien', native: 'Iu Mienh', lat: 22.0, lng: 103.0, // Vietnam-Laos-China border
-    words: { water:['wuom','wuom'], fire:['douz','dou'], sun:['hnoi','hnoi'], moon:['hlaax','hlaː'], mother:['maa','maː'], father:['diex','die'], eat:['nyanc','ɲan'], drink:['hopv','hop'], love:['hnamv','hnam'], heart:['mba\'y-fim','mbai fim'], tree:['ndiangx','ndian'], house:['biauv','biau'], dog:['juv','dʒuv'], cat:['mbao','mbao'], hand:['buoz','buo'], eye:['m\'zing','mziŋ'], hello:['yiem-longx','jiem lon'], thanks:['laengz','laŋ'], one:['yietc','jiet'], good:['longx','lon'] }},
+    words: { water:['wuom','wuom˧'], fire:['douz','dou˨˧'], sun:['hnoi','hnoi˧'], moon:['hlaax','hlaː˨˧'], mother:['maa','maː˧'], father:['diex','die˨˧'], eat:['nyanc','ɲan˨˩'], drink:['hopv','hop˦'], love:['hnamv','hnam˦'], heart:['mba\'y-fim','mbai˧fim˧'], tree:['ndiangx','ndiaŋ˨˧'], house:['biauv','biau˦'], dog:['juv','dʒu˦'], cat:['mbao','mbao˧'], hand:['buoz','buo˨˧'], eye:['m\'zing','m̩ziŋ˧'], hello:['yiem-longx','jiem˧loŋ˨˧'], thanks:['laengz','laŋ˨˧'], one:['yietc','jiet˨˩'], good:['longx','loŋ˨˧'] },
+    wordEvidence: {
+      fire:   { evidence: 'direct', source: 'IMUS tone letter -z = ˨˧ (low rise); Wikipedia Iu Mien language' },
+      eat:    { evidence: 'direct', source: 'IMUS tone letter -c = ˨˩ (low); Wikipedia Iu Mien' },
+      drink:  { evidence: 'direct', source: 'IMUS tone letter -v = ˦ (high); Wikipedia Iu Mien' },
+      good:   { evidence: 'direct', source: 'IMUS tone letter -x = ˨˧ (low rise); Wikipedia Iu Mien' },
+    } },
   // Trans-New Guinea (additional)
   hui: { name: 'Huli', native: 'Huli', lat: -5.85, lng: 142.95, // Tari
     words: { water:['iba','iba'], fire:['tia','tia'], sun:['nogo','noɡo'], moon:['hina','hina'], mother:['ainya','aiɲa'], father:['aba','aba'], eat:['na','na'], drink:['ila','ila'], love:['hando','hando'], heart:['hambu','hambu'], tree:['danda','danda'], house:['anda','anda'], dog:['yamu','jamu'], cat:['pusi','pusi'], hand:['ki','ki'], eye:['ta','ta'], hello:['balu','balu'], thanks:['wei','wei'], one:['mendene','mendene'], good:['poke','poke'] }},
