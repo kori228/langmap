@@ -936,3 +936,89 @@ PASS
 - **Session 10 #1-3 xto.hello: ñom (=name) のデータ入力ミス疑い + 古代語 hello/thanks 全体再確認**
 
 ---
+
+## Session 11 (2026-05-05): 古代語 hello/thanks 一斉点検 + 5 セル修正
+
+**スコープ:** Session 10 で deferred した「xto.hello: ñom が name の語」と「他古代語の hello/thanks 全体再確認」を実施。複数古代語で hello/thanks 欄に **religion/ritual 専門語** や **意味的に無関係な語** が機械的に入っていた。audit §6.54 ancient-lang policy に従い `—` 化。
+
+### 修正 5 セル
+
+| Code | Lang | Field | 旧 | 新 | 根拠 |
+|---|---|---|---|---|---|
+| `xto` | Tocharian A | `hello` | `𑀜𑁄𑀫𑁆`/`ɲom` | `—`/`—` | `ñom` は Tocharian A で「name (名前)」の語。greeting ではない。Wiktionary 確認可能。Session 10 で flag 済 |
+| `peo` | Old Persian | `thanks` | `𐎺𐏃𐎶𐎡𐎹`/`wahmaij` | `—`/`—` | `wahmaij` は宗教的・儀礼的な語形で Old Persian の thanks 専用形ではない。碑文には conversational thanks 定型なし |
+| `ave` | Avestan | `thanks` | `𐬫𐬀𐬯𐬥𐬀`/`jasna` | `—`/`—` | `jasna` (yasna) は Zoroastrian worship ritual の名称。conversational thanks ではない |
+| `vsa` | Vedic Sanskrit | `thanks` | `सुप्रियम्`/`supriːjam` | `—`/`—` | `supriyam` は「very dear/beloved」の意味。「thanks」ではない。Vedic Sanskrit に固定 thanks 定型なし |
+| `sux` | Sumerian | `thanks` | `𒋗𒇲`/`ʃulaː` | `—`/`—` | `ʃulaː` は Sumerian thanks 定型として確認できない。`silim` (peace/health) が greeting で thanks 兼用された可能性はあるが固定化なし |
+
+### Session 11 古代語 survey (今回 touch しなかった部分)
+
+調査した範囲で **plausible (= 残存)** と判定した古代語 hello/thanks:
+
+| Code | Lang | hello | thanks | 評価 |
+|---|---|---|---|---|
+| `non` | Old Norse | `heill/hɛilː` (= hale, healthy) | `þǫkk/θɔkː` | 両方 attested |
+| `got` | Gothic | `𐌷𐌰𐌹𐌻𐍃/hɛːls` (= whole, hale) | `𐌸𐌰𐌲𐌺𐍃/θɑŋks` | 両方 attested |
+| `cu` | OCS | `радоуисѧ/rɑdujisẽ` (= rejoice!) | `благодарьствоую` (= I give thanks) | 両方 liturgical attested |
+| `cop` | Coptic | `ⲛⲟⲩϥⲣⲓ/nufri` | `ϣⲉⲡϩⲙⲟⲧ/ʃephmot` (= receive favor) | 両方 plausible |
+| `arc` | Aramaic | `ܫܠܡܐ/ʃlaːmaː` (= peace) | `ܬܘܕܝ/tawdiː` | 両方 attested |
+| `akk` | Akkadian | `𒁲/ʃulmu` (= peace) | `𒁲𒌅/taʃlimtu` | hello 形 attested、thanks 形は派生だが許容範囲 |
+| `vsa` | Vedic Sanskrit | `स्वस्ति/swasti` (= well-being, blessing) | (Session 11 で `—` 化) | hello は attested |
+| `sux` | Sumerian | `𒁲/silim` (= peace/health) | (Session 11 で `—` 化) | hello attested、thanks は不明 |
+| `peo` | Old Persian | `𐎭𐎢𐎼𐎢𐎺/duruwa` (= "well/firm") | (Session 11 で `—` 化) | hello は debatable (`duruwa` は形容詞「健康な」、greeting としての確証なし) |
+| `ave` | Avestan | `𐬵𐬎𐬱/huʃ` (= good prefix) | (Session 11 で `—` 化) | hello は debatable (`huʃ-` は接頭辞「良い」、greeting 単独形ではない) |
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 1  (mon/mnw — 意図的に visible)
+INFOS:    72 (—)  ← 67 → 72 (Session 11 で 5 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### 🚨 Session 11 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`peo.hello: duruwa` と `ave.hello: huʃ` も debatable** — 両者とも「形容詞の good/health 系」を greeting に流用した可能性。Old Persian / Avestan の碑文・宗教文献で実際の greeting 定型は確認しにくい。Session 12+ で `—` 化候補（ただし「歴史言語の hello は全部 `—`」は過剰なので慎重に判断）。
+
+2. **`sux.good: 𒊩𒌆/saŋ`** — Sumerian で「good」の語は通常 `du10` (DUG) や `silim`。`saŋ` (𒊩𒌆) は「head」「principal」「first」を表すことが多く、「good」として直接的には使われない。Session 12+ で Sumerian 専門資料 (PSD = Pennsylvania Sumerian Dictionary) で再確認候補。
+
+3. **古代語の `eat`/`drink` 動詞形の不統一** — hit/xto/txb 等で `eat`/`drink` が「不定形 (infinitive)」「1sg現在 (admi)」「3sg現在 (pibati)」など活用形が混在している (vsa.eat: `admi` = 1sg、vsa.drink: `pibati` = 3sg、txb.eat: `ɕuwa` = ?)。Word Map のセル基準として「lexical lemma を基本形で」採用するか「最頻活用形で」採用するか方針未定。Session 12+ schema 議論候補。
+
+4. **`pi` Pali (line 599+) の hello/thanks** — survey 未実施。Pali は Buddhist liturgical language で、hello/thanks 定型は限定的。Session 12+ 確認候補。
+
+5. **`xpr` Parthian (line 2443) の hello/thanks** — survey 未実施。Session 12+ 確認候補。
+
+6. **削除した値の意味** — Session 10 の `kartsene` と同様、Session 11 で削除した `wahmaij` `jasna` `supriːjam` `ʃulaː` `ñom` の各意味を `wordmap_meta.js` の語注として残せると linguist にとって有用。Session 12+ schema 検討。
+
+### 持ち越し（Session 12 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #4 validator allowlist 機構
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 (重大、validator #15 で常時 visible)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 11 #4-5 pi Pali / xpr Parthian の hello/thanks survey
+
+---

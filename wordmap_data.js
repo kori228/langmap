@@ -763,8 +763,8 @@ const LANG_DATA = {
         "silim"
       ],
       "thanks": [
-        "𒋗𒇲",
-        "ʃulaː"
+        "—",
+        "—"
       ],
       "one": [
         "𒀸",
@@ -1542,8 +1542,8 @@ const LANG_DATA = {
         "duruwa"
       ],
       "thanks": [
-        "𐎺𐏃𐎶𐎡𐎹",
-        "wahmaij"
+        "—",
+        "—"
       ],
       "one": [
         "𐎠𐎡𐎺",
@@ -1630,8 +1630,8 @@ const LANG_DATA = {
         "huʃ"
       ],
       "thanks": [
-        "𐬫𐬀𐬯𐬥𐬀",
-        "jasna"
+        "—",
+        "—"
       ],
       "one": [
         "𐬀𐬉𐬬𐬀",
@@ -1714,8 +1714,8 @@ const LANG_DATA = {
         "ak"
       ],
       "hello": [
-        "𑀜𑁄𑀫𑁆",
-        "ɲom"
+        "—",
+        "—"
       ],
       "thanks": [
         "—",
@@ -2697,7 +2697,7 @@ const LANG_DATA = {
     words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','ta'], eye:['目','ma'], hello:['安し','yasusi'], thanks:['忝し','katadʑike₁nasi'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
   // Vedic Sanskrit — Rigveda period (~1500-500 BCE). Sapta Sindhu (Punjab/Saraswati basin).
   vsa: { name: 'Vedic Sanskrit', native: 'वैदिक संस्कृतम्', lat: 30.50, lng: 75.00,
-    words: { water:['आपः','aːpaɦ'], fire:['अग्निः','agniɦ'], sun:['सूर्यः','suːrjaɦ'], moon:['चन्द्रमाः','tɕandramaːɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['अद्मि','admi'], drink:['पिबति','pibati'], love:['स्निह्यति','snihjati'], heart:['हृदयम्','hr̩dajam'], tree:['वृक्षः','wr̩kʂaɦ'], house:['गृहम्','gr̩ham'], dog:['श्वा','ɕwaː'], cat:['मार्जारः','maːrdʑaːraɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['स्वस्ति','swasti'], thanks:['सुप्रियम्','supriːjam'], one:['एकम्','eːkam'], good:['साधु','saːdhu'] }},
+    words: { water:['आपः','aːpaɦ'], fire:['अग्निः','agniɦ'], sun:['सूर्यः','suːrjaɦ'], moon:['चन्द्रमाः','tɕandramaːɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['अद्मि','admi'], drink:['पिबति','pibati'], love:['स्निह्यति','snihjati'], heart:['हृदयम्','hr̩dajam'], tree:['वृक्षः','wr̩kʂaɦ'], house:['गृहम्','gr̩ham'], dog:['श्वा','ɕwaː'], cat:['मार्जारः','maːrdʑaːraɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['स्वस्ति','swasti'], thanks:['—','—'], one:['एकम्','eːkam'], good:['साधु','saːdhu'] }},
   // Tangut (Western Xia, 11-13c.) — Sofronov / Gong reconstructions; tones 1=level (˧), 2=rising (˧˥).
   // Tangut script chars are Unicode block U+17000-U+187FF; some readings are scholarly approximations.
   txg: { name: 'Tangut', native: '𗼇𗟲', lat: 38.50, lng: 106.27,
