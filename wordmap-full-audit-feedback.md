@@ -4180,3 +4180,99 @@ PASS
 - Codex 8 残 (sga/mga.thanks の eDIL citation 確認、osp.hello/good 注記)
 
 ---
+
+## Session 41 (2026-05-05): Codex meta translation コミット (51e3186 + c07961f) レビュー
+
+**スコープ:** Codex が別 thread で投入した 2 commits の翻訳をレビュー。実機テスト (translateMetaSmart 経由) で動作確認、見つかった 1 件のマージ衝突を修正。
+
+### 確認したコミット
+
+- **`51e3186` Translate historical speaker metadata** — `HISTORICAL_SPEAKER_PHRASES` (ja/ko/zh/yue/de/fr/ru の 7 lang × ~28 phrases) 追加、wordmap.html `meta_i18n_ext.js?v=6→7`
+- **`c07961f` Expand metadata translation fixes** — resolver step 6 (last-resort word composition) 追加、`KO_HISTORICAL_META_FIXES` (~400 entries)、`AVESTAN_META_FIXES_ALL_LANGS` (16 lang × 7 phrases)、`?v=7→8`
+
+### 翻訳品質評価 (sampled tests)
+
+ja/ko/zh/yue/de/fr/ru/vi/th/id/hi/ar/he/sw/it/es*/pt*/uk の主要 strings を実機で `translateMetaSmart()` にかけて検証:
+
+| Lang | サンプル | 結果 |
+|---|---|---|
+| ja | "Inca Empire (Tawantinsuyu): Peru, Bolivia, Ecuador, Chile, Argentina" | ✓ "インカ帝国（タワンティンスユ）：ペルー、ボリビア、エクアドル、チリ、アルゼンチン" |
+| ko | "Sukhothai Kingdom" | ✓ "수코타이 왕국" |
+| ko | "Brahmi-derived Tocharian script" | ✓ "브라흐미계 토하라 문자" |
+| ko | "Old Persian cuneiform" | ✓ "고대 페르시아 쐐기문자" |
+| ko | "Inscriptional and Book varieties" | ✓ "비문체와 서체" |
+| zh | "modern Mon descends" | ✓ "现代孟语由其发展而来" |
+| yue | "Yaghnobi is descendant" | ✓ "雅格諾比語係後裔" (Cantonese 係 ✓) |
+| de | "ancestor of Manchu" | ✓ "Vorfahr des Mandschurischen" |
+| fr | "ancestor of Manchu" | ✓ "ancêtre du mandchou" |
+| ru | "modern Thai descends" | ✓ "современный тайский происходит от него" |
+
+地域名・文字名・帝国名・期間記法 (BCE/CE) など、概ね自然で正確。
+
+### 🐛 発見した bug + 修正
+
+**Bug:** ja の "ancestor of Manchu" と "Yaghnobi is descendant" が、Codex が投入した新訳 (`HISTORICAL_SPEAKER_PHRASES`) ではなく、**既存の旧訳**を返す:
+
+```
+[ja] ancestor of Manchu → 満洲語の祖   (旧、訳が中途半端)
+[ja] Yaghnobi is descendant → ヤグノブ語が子孫  (旧、表記古い)
+```
+
+**原因:** `HISTORICAL_SPEAKER_PHRASES` のマージ logic が `if (!(k in META_I18N_ATOMS[lang]))` の guard を使用、既存 atom があると上書きされない:
+```js
+for (const k of Object.keys(phrases)) {
+    if (!(k in META_I18N_ATOMS[lang])) META_I18N_ATOMS[lang][k] = phrases[k];
+}
+```
+
+ja の旧 atom dict (line 3155-3175 周辺) に同 key の旧訳が存在し、Codex の新訳がブロックされていた。
+
+**修正:** ja 旧 atom 2 entries を新訳と整合する形に直接更新:
+
+| Line | Before | After |
+|---|---|---|
+| 3157 | `'Yaghnobi is descendant': 'ヤグノブ語が子孫'` | `'Yaghnobi is descendant': 'ヤグノビ語が後裔'` |
+| 3159 | `'ancestor of Manchu': '満洲語の祖'` | `'ancestor of Manchu': '満洲語の祖先'` |
+
+検証後:
+```
+[ja] ancestor of Manchu → 満洲語の祖先 ✓
+[ja] Yaghnobi is descendant → ヤグノビ語が後裔 ✓
+```
+
+### ⚠️ Codex に flag した観察事項 (修正なし)
+
+1. **Step 6 word-composition fallback の over-aggression risk** —  
+   `c07961f` で resolver に追加された step 6 は単語ごとに atom 翻訳 → 短い generic 文字列でも合成翻訳を返す。例:
+   ```
+   [ko] of as in to → 의 로서 내 로
+   ```
+   実用 strings ではほぼ起きないが、edge case で意味不明な合成が出る可能性。Codex 側で「最低 1 つの長単語マッチが必要」のような guard を追加するか、step 6 を opt-in にする余地。
+
+2. **`Han characters` の翻訳カバレッジ偏り** —  
+   ko だけ翻訳成功 (`한 문자`)、ja/zh/de/fr では unchanged。CJK 圏では本来 `漢字`/`汉字` が universally 自然なので、ja/zh の atom dict にも追加する価値あり。
+
+3. **`~` prefix が period notation の翻訳を阻害** —  
+   `~5th-10th c. CE` → unchanged。Codex は `5th-10th c. CE` を atom 化したが leading `~` を strip する step が resolver にない。`5-10世紀` 翻訳が当たらない。Codex 側で `~` prefix 対応 / 全パターンに `~` 含めて入れるか検討余地。
+
+4. **マージロジック `if (!(k in ATOMS))` を見直すべき** —  
+   今回見つけた conflict は ja の 2 件だが、同じ pattern で他 lang に未発見の conflict があるかも。Codex に「Codex meant to override 既存 atom; merge logic を `META_I18N_ATOMS[lang][k] = phrases[k];` (always-override) にすべき」と提案する余地あり。Session 42+。
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3 (98 word entries — / 26 dup-coord / wordEvidence overlay 9 langs 137 cells)
+PASS
+
+(meta_i18n_ext.js syntax check: SYNTAX OK)
+```
+
+### 持ち越し（Session 42 以降）
+
+- Codex 側修正提案: マージロジック override 化 / step 6 over-aggression guard / `~` prefix strip / Han characters 等 cross-lang atom 拡充
+- 既存持ち越し (Codex 8 残, Phase 2 拡張, etc.)
+
+---
