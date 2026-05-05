@@ -48,7 +48,7 @@ const LANGUAGES = [
     { code: 'ja_hir', name: '日本語(広島弁)', group: 'JPN', experimental: true },
     { code: 'ja_hak', name: '日本語(博多弁)', group: 'JPN', experimental: true },
     { code: 'ja_aom', name: '日本語(青森弁)', group: 'JPN', experimental: true },
-    { code: 'ja_oki', name: '日本語(沖縄弁)', group: 'JPN', experimental: true },
+    { code: 'ja_oki', name: '沖縄語', group: 'JPN', experimental: true },
     { code: 'ja_mvi', name: '宮古語', group: 'JPN', experimental: true },
     { code: 'ja_rys', name: '八重山語', group: 'JPN', experimental: true },
     // Japonic Historical (chronological: oldest first)

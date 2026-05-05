@@ -10,11 +10,11 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 |---|---|---|
 | §1 Surface/IPA mismatch (high priority) | ✅ Fixed | 6 |
 | §2 Capital N in IPA (high priority) | ✅ Fixed | 12 |
-| §3 ja_oki Okinawan classification (medium) | ⏸️ Deferred (decision required) | — |
-| §4 Same-form duplicates (medium) | ⏸️ Deferred (audit recommends "do not blindly change") | — |
+| §3 ja_oki Okinawan classification (medium) | ✅ Fixed (Option A applied) | 1 lang reclass |
+| §4 Same-form duplicates — wordEvidence overlap notes | ✅ 7 langs annotated | 14 cells |
 | Systemic concept definitions | ⏸️ Schema work — Phase 4 候補 | — |
 
-**Total fixed:** 18 cells / 6 modern languages.
+**Total fixed:** 18 cells + 1 language reclassification across 6 modern languages.
 
 ---
 
@@ -54,54 +54,50 @@ Audit reference: Cambridge JIPA は Japanese final moraic nasal の utterance-fi
 
 ---
 
-## §3 ja_oki classification — Deferred (decision required)
+## §3 ja_oki classification — ✅ Option A applied
 
-Audit が指摘: `ja_oki` (`Japanese (Okinawa)`) entry は Okinawan Japanese と Okinawan/Ryukyuan 言語項目が混在:
+User 判断: **Option A** (Ryukyuan reclassify)。`ja_oki` の現状値は大半が Ryukyuan (`tida`/`majaː`/`niɸeːdeːbiɾu` 等) であり、`Japanese (Okinawa)` の表示は誤分類だった。`ja_mvi` (Miyako) / `ja_rys` (Yaeyama) と同列 Ryukyuan family に整合化。
 
-```
-sun:    てぃだ / tida          (Ryukyuan)
-hello:  はいさい / haisai       (Okinawan greeting)
-thanks: にふぇーでーびる / niɸeːdeːbiɾu  (Okinawan thanks)
-cat:    まやー / majaː         (Ryukyuan)
-heart:  心 / kukuɾu            (Okinawan reading)
-```
+**変更内容:**
 
-**判断要件:** 2 options:
+| File | 変更 |
+|---|---|
+| `wordmap_data.js:69` | `name: 'Japanese (Okinawa)'` → `name: 'Okinawan'`、`native: '日本語(沖縄)'` → `native: 'うちなーぐち'` |
+| `wordmap_meta.js:16` | `family:'Japonic'` → `family:'Japonic (Ryukyuan)'`、`speakers:'~1M'` → `'~100,000 (UNESCO: definitely endangered)'`、`script:'Kanji + Hiragana + Katakana'` → `'Hiragana + Katakana (also Kanji historically)'`、`official:'No (regional)'` → `'No'`、description rewrite (Ryukyuan independent language として)、`parentCode:'ja'` 削除 |
+| `wordmap_meta.js:586` | 21 UI lang descriptions all rewrite as Ryukyuan independent language (Uchinaaguchi)、Standard Japanese との non-mutual-intelligibility を明記 |
+| `lang_names.js` (21 sections) | `ja_oki` 翻訳を全て Okinawan equivalent に: 沖縄語 / Okinawan / 오키나와어 / 冲绳语 / Okinawaïen / Okinawanisch / Okinawense / Окинавский / الأوكيناوية / 沖繩語 / Tiếng Okinawa / ภาษาโอกินาวา / Bahasa Okinawa / ओकिनावान / Okinawano / etc. (he/sw/uk は既に正しかった) |
+| `app.js:51` | LANG dropdown name `'日本語(沖縄弁)'` → `'沖縄語'` |
 
-- **Option A:** `ja_oki` を `Okinawan` / `Central Okinawan` (family `Japonic (Ryukyuan)`) に reclassify、Ryukyuan として再整理。`ja_mvi` (Miyako) / `ja_rys` (Yaeyama) と同列 Ryukyuan family に。
-- **Option B:** `Japanese (Okinawa)` のまま維持、Ryukyuan lexical forms を Okinawan Japanese (= Standard Japanese 沖縄方言) form に置換。文化的 attested な greetings のみ keep。
+**Code key:** `ja_oki` のまま維持 (URL hash backwards compatibility、HIST_DESCENDANT 影響 nil)。
 
-**推奨:** Option A の方が言語学的に正確 (`ja_mvi`/`ja_rys` と整合)、また `ja_oki` 現状値の大半が Ryukyuan であり、option B は大規模な data 入れ替え必要。
-
-ただし Option A は code rename (`ja_oki` → `ryu` or similar)、HIST_DESCENDANT 確認、URL hash 互換性、UI lang switching 影響など波及大。**user による方針決定後に実施**。Session 43+ で対応候補。
+**Words data:** 既に Ryukyuan/Okinawan forms が中心だったため変更なし。`heart:['心','kukuɾu']` 等の Sino-Japanese kanji + Okinawan reading は Okinawan の正規表記として keep。
 
 ---
 
-## §4 Same-form/same-IPA duplicates — Deferred per audit recommendation
+## §4 Same-form/same-IPA duplicates — wordEvidence overlap notes (✅ 7 langs / 14 cells)
 
-Audit が "Do not blindly change duplicates. Some are real lexical overlap." と明記。Review candidates 13 件:
+Audit が "Do not blindly change duplicates. Some are real lexical overlap." と明記。Words の data 自体は legitimate なため keep、Phase 2 wordEvidence schema で `lexical-overlap` note を追加して教育的透明性を確保。
 
-```
-lus.drink/house: in
-glk.eat/drink: خوردن / xoɾdæn
-lrc.eat/drink: خواردن / xwɒːɾdæn
-bqi.eat/drink: خواردن / xwoɾdan
-myp.heart/good: aoʔaago
-enq.fire/tree: ita
-mpt.sun/good: kep / mother/love: na
-kwk.hello/thanks: gilakas'la
-ygr.love/hello: amige
-pwn.hello/thanks: masalu
-bnn.hello/thanks: uninang
-trv.hello/good: malu
-```
+| Code | Lang | Concept overlap | Annotation |
+|---|---|---|---|
+| `glk` | Gilaki | eat/drink: `خوردن` (xoɾdæn) | West Iranian *xwar- "consume" covers both |
+| `lrc` | Lurish | eat/drink: `خواردن` (xwɒːɾdæn) | 同上 |
+| `bqi` | Bakhtiari | eat/drink: `خواردن` (xwoɾdan) | 同上 |
+| `kwk` | Kwak'wala | hello/thanks: `gilakas'la` | canonical multipurpose greeting/thanks formula |
+| `pwn` | Paiwan | hello/thanks: `masalu` | Formosan polysemy pattern |
+| `bnn` | Bunun | hello/thanks: `uninang` | Formosan polysemy pattern |
+| `trv` | Truku | hello/good: `malu` | Formosan greeting-as-affirmation pattern |
 
-これらは過去 Sessions 11/12 で audit 経由で個別に検討済み (Session 12 で okz/xqa/osu/otl/onw/cqu などをレビューした際に類似議論)。
+各 lang に `wordEvidence: { hello: { evidence: 'direct', note: 'lexical overlap with X: ...' }, thanks: {...} }` 等を追加。modal cell hover tooltip で表示される (Phase 2 overlay 既実装)。
 
-**戦略:** 大半は legitimate lexical/cultural overlap (例: `pjt` Pitjantjatjara `palya` は hello/thanks/good で正当に同形)。個別の change は外部 source 必須なので、Phase 2 wordEvidence schema の expansion で対処するのが筋:
-- `wordEvidence.<concept> = { evidence: 'attested', source: '...', note: 'lexical overlap with X' }` で source 明記
+**Deferred (要 source confirmation):**
+- `lus.drink/house: in` (Mizo) — house意味は確実 (`in` = house) だが drink = `in` は要確認、citation form vs imperative の可能性
+- `myp.heart/good: aoʔaago` (Pirahã) — Everett 研究で言及があるが安全 source 必要
+- `enq.fire/tree: ita` (Enga) — Papuan polysemy 要確認
+- `mpt` (Mian) sun/good `kep` + mother/love `na` — Mian grammar 要確認
+- `ygr.love/hello: amige` (Yagaria) — Highlands greeting 要確認
 
-Session 43+ で必要に応じて対応 (現状は audit recommendation の通り keep)。
+これら 5 langs は Session 43+ で source verification 後に対応候補。
 
 ---
 
@@ -131,17 +127,16 @@ ALLOWLISTED: 1  (mon/mnw)
 INFOS:    3
   · 101 word entries contain "—"
   · 26 duplicate-coordinate groups
-  · wordEvidence overlay: 9 languages, 137 cells annotated
+  · wordEvidence overlay: 16 languages, 151 cells annotated
 PASS
 ```
 
-Cache buster `v=45 → v=46`。
+Cache buster `v=46 → v=48` (data, +Option A meta + §4 wordEvidence) / `v=16 → v=17` (meta)。
 
 ---
 
 ## Next Steps (推奨優先順)
 
-1. **§3 ja_oki 方針決定** — Option A (Ryukyuan reclassify) vs Option B (Okinawan Japanese 化) を user に確認、決まり次第対応
+1. **Phase 2 拡張** — modern languages の同形 duplicates に wordEvidence + lexical-overlap note 追加 (`bnn.hello/thanks: uninang` 等)
 2. **Phase 4 (concept definitions) schema 設計** — WORD_LIST に definition 追加、modal で hover/tooltip 表示
-3. **Phase 2 拡張** — modern languages の同形 duplicates に wordEvidence + lexical-overlap note 追加 (`bnn.hello/thanks: uninang` 等)
-4. Codex 8 残 / mnp Min Bei fire 等の既存 deferred items
+3. Codex 8 残 / mnp Min Bei fire 等の既存 deferred items
