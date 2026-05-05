@@ -72,8 +72,12 @@
             font-style: italic;
             line-height: 1.35;
             background: transparent;
-            text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px rgba(255,255,255,0.85);
+            text-shadow: 0 1px 2px rgba(255,255,255,0.6);
             overflow: hidden;
+        }
+        body.is-3d .top-left-controls #word-definition {
+            color: #f5f5f5;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.7);
         }
         @media (max-width: 480px) {
             /* Hide the definition box on phones to save vertical space;
@@ -479,7 +483,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=67"></script>
+    <script src="wordmap_data.js?v=68"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -617,7 +621,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      67,
+            data:      68,
             metaI18n:  8,
             filter:    22,
             names:     2,
