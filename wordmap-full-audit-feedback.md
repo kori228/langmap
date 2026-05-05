@@ -2852,3 +2852,63 @@ Data status breakdown:
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2
 
 ---
+
+## Session 25 (2026-05-05): Codex 8 priority 1-2 fixes — sga/mga.hello + orv.thanks → `—`
+
+**スコープ:** Codex 追加レビュー 8 で優先順位 1-2 として「modern からの投影疑い」と flag された 3 セルを ancient lang policy に従い `—` 化。
+
+### 修正 3 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 8) |
+|---|---|---|---|---|
+| `sga` | Old Irish | `hello` | `dia duit` / `dia duitʲ` | `Dia duit` は **現代 Irish phrasebook の evidence が強い**。Old Irish 8-9c. の会話 greeting としてそのまま出すのは危険。Old Irish glosses/sagas/legal texts の実例なし |
+| `mga` | Middle Irish | `hello` | `dia duit` / `dia duitʲ` | 同上。Middle Irish (10-12c.) でも phrase としての greeting attestation 未確認、modern Irish 投影疑い |
+| `orv` | Old East Slavic | `thanks` | `благодарю` / `blagodarju` | **Modern Russian-like 1sg finite form** に見え、Old East Slavic 固定 thanks formula としては direct source 必要。Modern Russian `спасибо` は別語源 (`съпаси богъ` "God save") |
+
+### Codex 8 で flag されたが今回 touch しなかったセル
+
+- `sga.thanks` / `mga.thanks: atloirgaim` — Codex 8: "plausible だが eDIL entry/lemma/citations 確認要"。Old/Middle Irish で thank/praise 系の finite 1sg form として attested の可能性あり、今回 keep。
+- `fro.thanks: merci` — Codex 8: "維持可だが mercy/favor > thanks の意味史 tooltip 必要"。意味史 note schema があれば理想だが、現時点では keep。
+- `osp.thanks: mercedes` — Codex 8: "RAE が thanks expression として認める"、keep。
+- `goh/gmh/osx.thanks` — Germanic gratitude noun として plausible、formula か noun か区別注記候補だが keep。
+- `orv.hello: здравъ` — "healthy/sound" adjective の greeting use、Slavic `zdrav` greeting 系として plausible だが OES direct citation 要。Codex 8 priority 5。
+
+これらは Session 26+ で個別判断、もしくは note schema 導入後対応。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—)  ← 95 → 98 (Session 25 で 3 セル増)
+INFOS:    26 (dup-coord)
+PASS
+
+Data status breakdown:
+  modern               556
+  attested             10
+  fragmentary          3
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### Session 25 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`sga.hello` / `mga.hello` の代替候補** — Codex 8 が「Old Irish の attested greeting があるなら使うべき」と暗示。eDIL で `slán` (=safe/well, hello/farewell), `bennacht` (=blessing) 系を検索すると候補が見つかる可能性。Session 26+ で eDIL 直接確認候補。
+
+2. **Celtic family 全体の hello/thanks attestation** — `cy` Welsh, `br` Breton, `gd` Scottish Gaelic, `ga` Modern Irish などは現代語で標準形があるが、Old/Middle/Early Modern の各 stage で形が違う可能性。Celtic historical languages (sga/mga + 他) の系統的 hello/thanks audit が今後候補。Session 26+。
+
+3. **Slavic family の hello/thanks 系統** — `orv` Old East Slavic は今回 thanks `—` 化。`cu` Old Church Slavonic, `bg` Bulgarian, `uk` Ukrainian 等の Slavic family 全体で hello/thanks の系統的 audit が候補。Session 26+。
+
+4. **数字 98 への到達** — `—` cells が Session 1 開始時の 58 から +40 = 98。100 件超えが視野に入った。Session 1-25 で audit-driven `—` 化により「直接 attestation のないセルは表示しない」というポリシーが定着。validator stats でこのトレンド可視化候補。
+
+### 持ち越し（Session 26 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, **25 #1 eDIL 確認 / #2 Celtic 系統 / #3 Slavic 系統**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2
+
+---
