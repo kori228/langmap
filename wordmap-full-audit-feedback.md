@@ -2193,3 +2193,76 @@ UI 側で `meta.dataStatus = 'fragmentary'` を読み取って「断片的に at
 - **Session 18 #4 Codex 5 各項目**
 
 ---
+
+## Session 19 (2026-05-05): Codex 5 confirmed hello fixes — 3 セル `—` 化
+
+**スコープ:** Codex 追加レビュー 5 (Old Chinese / Old Japanese / Old Turkic 等) で「hello として出すのは危険」と確定指摘済の 3 セルを ancient lang policy に従い `—/—` 化。
+
+### 修正 3 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 5) |
+|---|---|---|---|---|
+| `och` | Old Chinese | `hello` | `拜` / `*pˤret-s` | `拜` は **「礼・拝礼の動作」**であって modern greeting ではない、semantic extension 危険 |
+| `ojp` | Old Japanese | `hello` | `安し` / `yasusi` | 「安い・平穏である」系の **形容詞**、greeting 専用語ではない、`yasusi` を hello として出すのは危険 |
+| `otk` | Old Turkic | `hello` | `𐰰𐰠𐰢` / `esænmy` | **現代 Turkic `esenmi?` を古代語に投影** している疑い、Orkhon inscription に attested greeting なし |
+
+### Codex 5 で flag されたが今回 touch しなかったセル
+
+- `otk.sun: 𐰚𐰰𐰣 / kyn` — surface が `kün` の標準的 runiform 綴りに見えず、Old Turkic dictionary 確認要 (Codex 5 priority 1)
+- `otk.fire: ot` — `ot` (grass) と `o:t` (fire) を IPA で区別する余地、長母音記号 `o:t` 候補
+- `otk.eat / drink / love` — verbal stem `-` 表示の schema/UI 化候補
+- `ojp.cat: 猫 / neko` — Old Japanese 8c. corpus で attested か未確認
+- `ojp.thanks: 忝し / katadʑike₁nasi` — later classical 表現を OJ 8c. corpus に投影している可能性
+- `och.cat: 貓 / *mˤraw` — pre-Han Old Chinese 直接 attestation 確認要
+- `och.thanks: 謝 / *s.ɢAk-s` — thank/apologize 系として plausible だが時代・用法注記必要
+- `txg` Tangut block — Li Fanwen entry source 必要
+- `sog` Sogdian block — verb stem schema 必要
+
+これらは Session 20+ で個別に専門資料判断。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    87 (—)  ← 84 → 87 (Session 19 で 3 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 19 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`och.hello` を `—` 化したことで Old Chinese のセル数が 18/20 (water...good) になり、cells = `—` 化が増えた古代語が目立つ** — 現在 `—` 87 件は全 LANG_DATA × 20 = 11,580 cells のうちの 0.75% だが、特定の古代語ブロックでは表示が「`—` だらけ」に見える可能性。Session 20+ UI 検討候補 (Session 10 #5 と関連)。
+
+2. **Codex 5 の verb stem schema 提案 (otk/sog 等)** — `eat: 食 / *mə.lək`, `eat: 𐰘𐰃- / je`, `drink: pi- / pi` のような形が混在。`lemma type` (`infinitive`, `stem`, `finite`) を schema に入れる提案は Session 13 #1 と一致 (Iranian/Wakhi 系の verbal stem `-`)。Session 20+ で verbal-stem schema 設計候補。
+
+3. **歴史言語の `surface` 欄ラベル** — Codex 5 が Sogdian で「Latin transliteration shown; native Sogdian script exists を UI/meta に出す」と指摘。これも Session 13 #2 (複合 script schema) と一致。Session 20+ schema 設計。
+
+4. **Codex review が継続して新発見を追加している** — Codex 1-5 がそれぞれ別の歴史言語ブロックを review してきた (xlu/kho/kaw/elx/xhu, hit/gmy/xsc/zkt, juc/omx/pyx/obr/occ, och/ojp/txg/sog/otk)。Codex 6 以降が来ると残りの歴史語ブロックも順次 review される見込み。Session 20+ で Codex review の整理 (どの言語が review 済か unreviewed か) の index を作成検討。
+
+### 持ち越し（Session 20 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 #4, Session 5 #4, Session 6 #4, Session 9 #5
+- Session 10 #4-5, Session 11 #3, #6
+- Session 13 #1-2, Session 14 #3-4, Session 15 #4, Session 16 #1-4
+- Session 17 #2, #4, #5
+- Session 18 #2, #3
+- **Session 19 #1 古代語 `—` UI 表示 (Session 10 #5 と関連)**
+- **Session 19 #2 verb stem schema (Session 13 #1 と関連)**
+- **Session 19 #3 surface 欄 transliteration 表示 (Session 13 #2 と関連)**
+- **Session 19 #4 Codex review 進捗 index**
+
+**追加リサーチ要:**
+- §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz
+- Session 5 #1, #3, Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted)**
+- Session 8 残 dup-coord / Session 9 #1-3 / Session 11 #1-2
+- Session 12 #1-6 / Session 13 #3
+- **Codex 2-5 残: xlu.good/eye, kho.*, kaw.*, gmy.tree/water/good, hit.love, juc.cat/基本語, otk.sun, ojp.cat/thanks, och.cat/thanks, txg source, sog schema**
+- Session 17 #3 hit.sun 正しい cuneiform / Session 18 #1 omc/chb/juc fragmentary
+
+---

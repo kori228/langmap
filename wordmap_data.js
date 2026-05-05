@@ -2691,10 +2691,10 @@ const LANG_DATA = {
   // === Ancient Asian languages (Phase 13) ===
   // Old Chinese — Baxter-Sagart 2014 reconstructions. Anyang (Shang capital area).
   och: { name: 'Old Chinese', native: '上古漢語', lat: 36.10, lng: 114.40,
-    words: { water:['水','*s.turʔ'], fire:['火','*qʷʰəjʔ'], sun:['日','*C.nik'], moon:['月','*ŋʷat'], mother:['母','*məʔ'], father:['父','*paʔ'], eat:['食','*mə.lək'], drink:['飲','*qrəmʔ'], love:['愛','*qˤəts'], heart:['心','*səm'], tree:['木','*C.mˤok'], house:['室','*l̥ik'], dog:['犬','*kʷʰˤinʔ'], cat:['貓','*mˤraw'], hand:['手','*n̥uʔ'], eye:['目','*C.muk'], hello:['拜','*pˤret-s'], thanks:['謝','*s.ɢAk-s'], one:['一','*ʔit'], good:['好','*qʰˤuʔ'] }},
+    words: { water:['水','*s.turʔ'], fire:['火','*qʷʰəjʔ'], sun:['日','*C.nik'], moon:['月','*ŋʷat'], mother:['母','*məʔ'], father:['父','*paʔ'], eat:['食','*mə.lək'], drink:['飲','*qrəmʔ'], love:['愛','*qˤəts'], heart:['心','*səm'], tree:['木','*C.mˤok'], house:['室','*l̥ik'], dog:['犬','*kʷʰˤinʔ'], cat:['貓','*mˤraw'], hand:['手','*n̥uʔ'], eye:['目','*C.muk'], hello:['—','—'], thanks:['謝','*s.ɢAk-s'], one:['一','*ʔit'], good:['好','*qʰˤuʔ'] }},
   // Old Japanese (Asuka-Nara, 7-8c.) — Manyōshū / Kojiki period. Heijō-kyō (Nara).
   ojp: { name: 'Old Japanese', native: '上代日本語', lat: 34.69, lng: 135.83,
-    words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','ta'], eye:['目','ma'], hello:['安し','yasusi'], thanks:['忝し','katadʑike₁nasi'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
+    words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','ta'], eye:['目','ma'], hello:['—','—'], thanks:['忝し','katadʑike₁nasi'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
   // Vedic Sanskrit — Rigveda period (~1500-500 BCE). Sapta Sindhu (Punjab/Saraswati basin).
   vsa: { name: 'Vedic Sanskrit', native: 'वैदिक संस्कृतम्', lat: 30.50, lng: 75.00,
     words: { water:['आपः','aːpaɦ'], fire:['अग्निः','agniɦ'], sun:['सूर्यः','suːrjaɦ'], moon:['चन्द्रमाः','tɕandramaːɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['अद्मि','admi'], drink:['पिबति','pibati'], love:['स्निह्यति','snihjati'], heart:['हृदयम्','hr̩dajam'], tree:['वृक्षः','wr̩kʂaɦ'], house:['गृहम्','gr̩ham'], dog:['श्वा','ɕwaː'], cat:['मार्जारः','maːrdʑaːraɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['स्वस्ति','swasti'], thanks:['—','—'], one:['एकम्','eːkam'], good:['साधु','saːdhu'] }},
@@ -2711,7 +2711,7 @@ const LANG_DATA = {
   // the wordmap auto-stacks shared-coord labels.
   // Orthography in Old Turkic script (U+10C00-U+10C4F) where attested; Latin in IPA field.
   otk: { name: 'Old Turkic', native: '𐱅𐰇𐰼𐰰', lat: 47.20, lng: 102.83,
-    words: { water:['𐰽𐰆𐰉','sub'], fire:['𐰆𐱃','ot'], sun:['𐰚𐰰𐰣','kyn'], moon:['𐰀𐰖','aj'], mother:['𐰆𐰍','oɣ'], father:['𐰴𐰭','qaŋ'], eat:['𐰘𐰃-','je'], drink:['𐰃𐰲-','itʃ'], love:['𐰽𐰋-','sæb'], heart:['𐰚𐰭𐰠','køŋyl'], tree:['𐰃𐰍𐰲','ɯɣatʃ'], house:['𐰋','æb'], dog:['𐰃𐱃','it'], cat:['—','—'], hand:['𐰘𐰠𐰏','elig'], eye:['𐰚𐰕','køz'], hello:['𐰰𐰠𐰢','esænmy'], thanks:['—','—'], one:['𐰋𐰃𐰼','bir'], good:['𐰓𐰏𐰢','ædɡy'] }},
+    words: { water:['𐰽𐰆𐰉','sub'], fire:['𐰆𐱃','ot'], sun:['𐰚𐰰𐰣','kyn'], moon:['𐰀𐰖','aj'], mother:['𐰆𐰍','oɣ'], father:['𐰴𐰭','qaŋ'], eat:['𐰘𐰃-','je'], drink:['𐰃𐰲-','itʃ'], love:['𐰽𐰋-','sæb'], heart:['𐰚𐰭𐰠','køŋyl'], tree:['𐰃𐰍𐰲','ɯɣatʃ'], house:['𐰋','æb'], dog:['𐰃𐱃','it'], cat:['—','—'], hand:['𐰘𐰠𐰏','elig'], eye:['𐰚𐰕','køz'], hello:['—','—'], thanks:['—','—'], one:['𐰋𐰃𐰼','bir'], good:['𐰓𐰏𐰢','ædɡy'] }},
 
   // === Phase 14: Taiwan minority languages (Formosan + Taiwanese Hakka) ===
   // 7 Formosan languages (Austronesian, indigenous to Taiwan) + Taiwanese
