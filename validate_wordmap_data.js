@@ -21,6 +21,7 @@
  *  11. meta.family / meta.script top-level tokens are in an allow-list
  *  12. README/HTML lang count matches actual LANG_DATA count
  *  13. No code is defined twice in LANG_DATA source (silent JS overwrite — audit §6.28)
+ *  14. 3+ codes sharing one (lat,lng) — flag as warning unless historical-progression cluster (audit §7.6)
  *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
@@ -172,6 +173,15 @@ for (const code of codes) {
 }
 const dupGroups = [...coordGroups.values()].filter(g => g.length > 1);
 if (dupGroups.length) I(`${dupGroups.length} duplicate-coordinate groups (often expected for parent/dialect pairs)`);
+// Audit §7.6: 3+ codes at one coord — usually a UI cluster issue.
+// Historical-progression (parent + descendants at same city) is OK; flag the rest.
+const HIST_PROGRESSION_OK = new Set(['en/en_ang/en_ck/enm', 'ko/ko_em/ko_mid']);
+for (const g of dupGroups) {
+    if (g.length < 3) continue;
+    const key = g.slice().sort().join('/');
+    if (HIST_PROGRESSION_OK.has(key)) continue;
+    W(`coord cluster: ${g.length} codes at one (lat,lng): ${g.join(', ')} — consider distinct representative points`);
+}
 
 // ---- 13. Source-level duplicate LANG_DATA keys (audit §6.28) -----------
 // JS object literal silently overwrites earlier `code: {...}` with later `code: {...}`,

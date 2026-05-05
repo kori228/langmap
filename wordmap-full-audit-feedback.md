@@ -514,3 +514,84 @@ PASS  (check #13 重複キー検出も pass)
 - Session 5 #3 WORD_LIST `heart` の意味定義（解剖学的 vs 比喩的）
 
 ---
+
+## Session 6 (2026-05-05): §6.37/§7.6 座標クラスタ整理 + validator #14
+
+**スコープ:** 同一座標に 3 言語以上集まる「クラスタ」を解消し、validator が今後の同種問題を自動検出するようにする。
+
+### §6.37/§7.6 — yo/ig/pcm Lagos クラスタの解消
+
+audit §6.37 で `(6.45, 3.40)` Lagos に 3 言語が重なっている問題を指摘していた:
+- `yo` Yoruba
+- `ig` Igbo
+- `pcm` Nigerian Pidgin
+
+これは「親言語 + 方言の自然な重複」ではなく、別系統の 3 言語が一点に集中するため、地図 UI 上で互いに完全に隠してしまう。民族誌的中心地で再配置:
+
+| Code | Lang | 旧座標 (Lagos) | 新座標 | 根拠 |
+|---|---|---|---|---|
+| `yo` | Yoruba | 6.45, 3.40 | **7.39, 3.93** (Ibadan) | Yoruba 文化・歴史的中心 |
+| `ig` | Igbo | 6.45, 3.40 | **6.17, 6.79** (Onitsha) | Igbo 商業・歴史的中心 |
+| `pcm` | Nigerian Pidgin | 6.45, 3.40 (維持) | 6.45, 3.40 (Lagos) | 商業・メディア中心、Pidgin 使用最頻地 |
+
+**判断方針:** 民族誌的代表点を優先。Lagos には pcm のみを残し、yo/ig は語族の歴史的中心へ。これで地図上の互いの重なりが解消され、3 言語とも個別にクリック可能。
+
+**Lagos の Yoruba/Igbo 話者についての注記:** Lagos は Yoruba 都市であり、Igbo 移民人口も多いが、これは話者集中地ではなく経済中心地。Ibadan / Onitsha は語族・文化の核として機能するため、地図の代表点としてはこちらが適切。
+
+### Validator check #14: 3+ コードの座標クラスタ検出
+
+`validate_wordmap_data.js` に新規チェック追加。同一 `(lat,lng)` に 3 コード以上が集まる場合に WARNING を発火。歴史進行クラスタ（同一都市の親言語+祖先語）は allowlist で除外:
+
+- `en/en_ang/en_ck/enm` (London — 現代英語 + Old English + Cockney + Middle English)
+- `ko/ko_em/ko_mid` (Seoul — 現代韓国語 + Early Modern + Middle)
+
+これらは「同一地理的継承」として正当。それ以外の 3+ クラスタが将来発生したら WARNING で目立つようになる。
+
+```js
+const HIST_PROGRESSION_OK = new Set(['en/en_ang/en_ck/enm', 'ko/ko_em/ko_mid']);
+for (const g of dupGroups) {
+    if (g.length < 3) continue;
+    const key = g.slice().sort().join('/');
+    if (HIST_PROGRESSION_OK.has(key)) continue;
+    W(`coord cluster: ${g.length} codes at one (lat,lng): ${g.join(', ')} — consider distinct representative points`);
+}
+```
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0  (Lagos クラスタ解消後)
+INFOS:    66 (—) + 31 (dup-coord, 32 から 1 減 = Lagos 群消失)
+PASS  (check #13, #14 ともに pass)
+```
+
+### Session 6 中に気付いた追加問題（未対応・記録のみ）
+
+1. **2 コードの dup-coord グループ 31 件は audit `info` 維持** — 親言語+方言、近隣都市の正当な重複が大半。`audit §7.6` の「2. データ側で代表点をずらすなら」「3. validator 3言語以上 review list」のうち、3言語+ は今回対応済、2言語ペアの個別判断は scope 外。
+
+2. **Lagos クラスタ解消の副作用観察候補** — 現状 `yo` lat=7.39, lng=3.93 で表示するが、Lagos に住む Yoruba 話者にとって「Lagos がない」のは違和感の可能性。長期的には「主要話者集中地」と「文化中心地」を別 metadata で持てると良い (`primaryCenter` / `culturalCenter`)。今は `comment: '// Ibadan'` で記録のみ。
+
+3. **同様にチェック必要な他クラスタ** — Cape Town `xh / af`、Addis Ababa `am / om`、Lankaran `tly / azb` 等は 2 言語クラスタ。validator info 止まりだが、地図 UI で代表点ずらしの余地あり。
+
+4. **§7.6 の長期的解決策**: validator は「3+ で WARN」だが、UI 側の spiderfy / cluster offset の仕組み追加は未着手。Leaflet クラスタ plugin or label-collision avoidance などの実装が筋。Session 7+ で UI 側も検討候補。
+
+### 持ち越し（Session 7 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1-3 (quc.thanks 方言差 / Mayan ʼ 統一 / heart 意味定義)
+- Session 6 #2-3 (Lagos 文化 vs 主要話者地、他 2 コードクラスタ個別判断)
+
+---
