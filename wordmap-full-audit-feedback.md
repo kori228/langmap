@@ -3773,3 +3773,131 @@ Phase 2 拡大が成し遂げたこと:
 **前回からの持ち越し:** 同前
 
 ---
+
+## Sessions 35-37 (2026-05-05): 🚀 Schema Revolution Phase 2.5 + Phase 3a + Phase 3b 一括実行
+
+**スコープ:** 教材スコア 90 を視野に入れた 3-phase 連続実装。Phase 2.5 で partly-understood 4 言語に wordEvidence 拡大、Phase 3a で bibliography footer 自動集約、Phase 3b で 系統樹コンテキスト (祖先/後裔 chain) を modal に追加。
+
+---
+
+### Session 35 — Phase 2.5: partly-understood 4 言語の wordEvidence
+
+**追加 4 言語:**
+
+| Code | Lang | Annotated cells | Pattern |
+|---|---|---|---|
+| `xmr` | Meroitic | 5 (4 direct + 1 inferred) | Rilly Meroitic lexicon (royal inscriptions); 多くは未解読 |
+| `zkt` | Khitan | 17 (12 direct + 3 inferred + 2 disputed) | Kane 2009 Khitan small script; 抽象語は disputed |
+| `pyx` | Pyu | 13 (12 direct + 1 inferred) | Miyake 2024 / Myazedi inscription / Tibeto-Burman 比較 |
+| `elx` | Elamite | 20 (10 direct + 6 inferred + 2 disputed + 2 inferred for hello/thanks) | 王碑文 + lexical lists |
+
+これで wordEvidence overlay 累計: **9 languages, 137 cells annotated** (Phase 2: 5 frag = 82 cells, Phase 2.5: 4 partly = 55 cells).
+
+evidence enum の 6 値 (`direct/proxy/reconstructed/inferred/disputed/pedagogical`) のうち、Phase 2 の段階では direct/proxy のみ使用。Phase 2.5 で initially導入した partly-understood 言語が `inferred` (文脈推測) と `disputed` (意味境界不明) を実用化、enum の表現力が validate された。
+
+例: zkt.love = `disputed` (Kane 2009; semantic uncertain) — UI で `⁉` が表示され「異読あり」が伝わる。
+
+---
+
+### Session 36 — Phase 3a: bibliography footer 自動集約
+
+modal の末尾に `wordEvidence` の sources を deduplicate して表示する footer を追加。新 schema 不要、既存 wordEvidence データを compute 時に集約。
+
+```js
+const sourceSet = new Set();
+for (const ev of Object.values(wEv)) if (ev.source) sourceSet.add(ev.source);
+if (m && Array.isArray(m.references)) for (const r of m.references) sourceSet.add(...);
+// → "Sources: Iranica via personal name Išpakaia · Avestan ātar- · ..."
+```
+
+加えて optional `meta.references: [{title, ...}|string]` も支援 (将来 reconstructed/pedagogical 言語の language-level reference を持たせる時用)。
+
+UI 効果:
+- xsc Scythian の modal を click → cells の各 ✓/~ symbol + 末尾 footer **"Sources: Iranica via personal name Išpakaia · Old Iranian *āp- (Avestan ap-) · Avestan ātar- · Avestan hvar- · ..."**
+- omc Mochica → **"Sources: Carrera de la Vega 1644 (Arte de la lengua yunga)"** (1 source 集約)
+- 注: `参考` (ja), `参考` (zh), `참고` (ko), `Quellen` (de), `Sources` (fr), `Источники` (ru), `Sources` (en/default) を i18n.
+
+---
+
+### Session 37 — Phase 3b: 系統樹コンテキスト (modal で祖先 / 後裔 chain)
+
+modal に「historical 祖先 ← (現在の lang) → 現代後裔」の chain を表示。HIST_DESCENDANT mapping を活用、起動時に reverse map (`ANCESTORS_OF`) を構築。
+
+実装:
+```js
+// 起動時に 1 度だけ:
+const ANCESTORS_OF = {};
+for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
+    if (modern) (ANCESTORS_OF[modern] = ANCESTORS_OF[modern] || []).push(hist);
+}
+
+// modal 内で:
+if (isHist) → "近代後裔: → fa Persian"
+if (isModern && hasAncestors) → "歴史的祖先: ← peo Old Persian · pal Middle Persian"
+```
+
+**chain links は clickable**: ancestor/descendant 名をクリックすると modal が遷移し、map もそこへ pan。
+
+UI 効果:
+- `peo` Old Persian の modal → 末尾に **"Modern descendant: → فارسی Persian (fa)"** (link)
+- `fa` Persian の modal → 末尾に **"Historical ancestors: ← Old Persian (peo) · Middle Persian (pal)"** (links)
+- click `peo` link → modal が peo に切り替わり、map も Persepolis 周辺へ pan
+- **教材として「言語史を辿る」navigation 体験**が成立
+
+i18n: `近代後裔` / `历史祖先` / `현대 후손` / `Hist. Vorfahren` / `Ancêtres hist.` / `Ист. предки` / `Modern descendant` で 6 lang 対応。
+
+---
+
+### 教材スコアへの影響
+
+| 段階 | スコア | 増分 |
+|---|---|---|
+| Phase 2 拡大 (Session 34) | 82-86 | — |
+| **Phase 2.5 (xmr/zkt/pyx/elx)** | **84-88** | +2-3 (partly-understood 全 lang annotated) |
+| **Phase 3a (bibliography footer)** | **86-90** | +2-3 (出典が 1 か所に集約、検証性 jump) |
+| **Phase 3b (系統樹 navigation)** | **88-92** | +3-5 (言語史 navigate 可能、教材 affordance 完成) |
+| Phase 3 残: 完全な独立系統樹ビュー | 92-95 (見立て) | +3 |
+
+**90 視野へ到達**: 教材として「**個別 cell 検証可能 + 全 lang 出典付き + 言語間 navigation**」の 3 拍子が揃った。
+
+---
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+  · 98 word entries contain "—"
+  · 26 duplicate-coordinate groups
+  · wordEvidence overlay: 9 languages, 137 cells annotated (Schema Revolution Phase 2)
+                            ↑ 5 → 9 lang, 82 → 137 cells
+PASS
+```
+
+### Sessions 35-37 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`reconstructed` 1 言語 (`ine` PIE) の per-cell evidence** — 全セル reconstructed なので一括 wordEvidence 投入候補。各 cell に source: 'Beekes 2011' or 'LIV2' などを付与。Session 38+。
+
+2. **`pedagogical` 5 言語の wordEvidence** — 教材 source が必要 (e.g., 「Old Japanese teaching approximation」だが具体的 textbook 不明)。Session 38+ で research-required。
+
+3. **`attested` 65 言語への部分 wordEvidence 投入** — 例えば古代漢語 och の cells で specific Baxter-Sagart entries を per-cell source 付与すると、reconstructed notation の評価が user に伝わる。Session 38+ optional, scale 大。
+
+4. **bibliography footer の link 化** — 現状 sources は plain text。`{title, url}` 構造化で URL link 可能になれば外部資料へジャンプ可能。Session 38+ Phase 3a.5。
+
+5. **系統樹 chain の depth** — 現状は parent / immediate ancestors のみ。「Indo-European ← Indo-Iranian ← Iranian ← Old Persian」のような multi-level chain を見せられればもっと教材的。Session 38+ Phase 3b.5。
+
+6. **map pan の zoom level** — 現状 click で `Math.max(map.getZoom(), 4)`。pan 後に view が too zoomed in/out になる場合あり。UX 改善余地。
+
+### 持ち越し（Session 38 以降）
+
+**Phase 3 残 (high impact):**
+- ine PIE / pedagogical 5 lang の wordEvidence 投入
+- bibliography link 化 (sources が URL 持ち)
+- 系統樹 multi-level chain (Indo-European ← Iranian ← ...)
+- 完全な独立系統樹ビュー (D3 tree)
+
+**Codex review 残, mnp Min Bei fire, Tujia 方言基準 etc.:** 同前
+
+---
