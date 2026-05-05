@@ -22,6 +22,7 @@
  *  12. README/HTML lang count matches actual LANG_DATA count
  *  13. No code is defined twice in LANG_DATA source (silent JS overwrite — audit §6.28)
  *  14. 3+ codes sharing one (lat,lng) — flag as warning unless historical-progression cluster (audit §7.6)
+ *  15. Same (name, lat, lng) under different codes — likely ISO code conflict (Session 8 mon/mnw)
  *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
@@ -181,6 +182,24 @@ for (const g of dupGroups) {
     const key = g.slice().sort().join('/');
     if (HIST_PROGRESSION_OK.has(key)) continue;
     W(`coord cluster: ${g.length} codes at one (lat,lng): ${g.join(', ')} — consider distinct representative points`);
+}
+
+// ---- 15. Same name + same coord, different codes — likely code conflict (Session 8) ----
+// Catches the mon/mnw class of bug: two LANG_DATA entries with identical
+// `.name` AND identical `(lat,lng)` but distinct codes. Almost always means
+// either ISO code confusion or accidental duplicate.
+{
+    const nameCoordGroups = new Map();
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const k = `${lang.name}@${lang.lat},${lang.lng}`;
+        if (!nameCoordGroups.has(k)) nameCoordGroups.set(k, []);
+        nameCoordGroups.get(k).push(code);
+    }
+    for (const [k, group] of nameCoordGroups) {
+        if (group.length < 2) continue;
+        W(`same (name, lat, lng) under different codes: [${group.join(', ')}] all map to "${k}" — likely ISO code conflict or accidental duplicate (audit Session 8)`);
+    }
 }
 
 // ---- 13. Source-level duplicate LANG_DATA keys (audit §6.28) -----------

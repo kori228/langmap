@@ -773,3 +773,94 @@ c. **validator 強化:** check #15 として「同一 (name, lat, lng) を別コ
 - Session 8 その他 dup-coord 候補 (ts/Giyani, ff/Mopti, za/Wuming, bal/Mastung 等)
 
 ---
+
+## Session 9 (2026-05-05): validator check #15 + 続 dup-coord 分離 2 件
+
+**スコープ:** Session 8 で発見した mon/mnw 重大問題が再発しないよう validator に専用 check を追加。さらに Session 8 で記録した dup-coord 候補から ts と za を分離。
+
+### Validator check #15: 同一 (name, lat, lng) 別コード検出
+
+`validate_wordmap_data.js` に新規チェック #15 を追加。Session 8 で発見した mon/mnw のような「2 つの LANG_DATA エントリが完全に同じ name と coord で別コード」というケースを WARNING で発火。
+
+```js
+const nameCoordGroups = new Map();
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    const k = `${lang.name}@${lang.lat},${lang.lng}`;
+    if (!nameCoordGroups.has(k)) nameCoordGroups.set(k, []);
+    nameCoordGroups.get(k).push(code);
+}
+for (const [k, group] of nameCoordGroups) {
+    if (group.length < 2) continue;
+    W(`same (name, lat, lng) under different codes: [${group.join(', ')}] all map to "${k}" — likely ISO code conflict or accidental duplicate`);
+}
+```
+
+**現在の検出結果:**
+
+```
+! same (name, lat, lng) under different codes: [mon, mnw] all map to "Mon@16.49,97.62"
+```
+
+mon/mnw のみが該当。これは意図的に WARNING として残し、Mon dialect 専門資料が揃うまで Session 9 では touch しない。validator 出力で常に visible なので忘れることはない。
+
+### 続 dup-coord 分離 2 件
+
+Session 8 で記録した候補のうち、民族誌的中心地が明確な 2 件を実施:
+
+| Code | Lang | 旧座標 | 新座標 | 根拠 |
+|---|---|---|---|---|
+| `ts` | Tsonga | -23.90, 29.45 (Polokwane area) | **-23.30, 30.71** (Giyani) | Giyani は Limpopo 州の Tsonga 民族中心都市。Polokwane は Northern Sotho 圏 |
+| `za` | Zhuang | 22.82, 108.32 (Nanning) | **23.16, 108.27** (Wuming) | Wuming は西部広西の Zhuang 民族中心。Nanning は Pinghua (cnp) も同居する都市中心 |
+
+**残存させた候補:**
+
+- `ff` Fula (Bamako) — Sahel 全域分散で代表点判断が難しいため Session 10+ で再検討
+- `bal/brh` (Quetta) — Balochi/Brahui は同地域で共存、物理的分離は実情に合わない
+- 他、ja_kg / nan_pn / wuu_nb の小規模 2-code ペアは parent+dialect で正当
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 1  (mon/mnw — 意図的に visible)
+INFOS:    66 (—) + 26 (dup-coord, 28→26 = 2 件解消)
+PASS  (check #13, #14, #15 ともに動作確認済み)
+```
+
+### Session 9 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`xng` Middle Mongolian / `otk` Old Turkic (Karakorum)** — 両者とも歴史言語で、Karakorum (47.2, 102.83) は両言語の歴史的中心地として正当。historical-progression クラスタに準じるが、validator check #14 の allowlist には未追加（3+ ではないため触れていない）。Session 10+ で他の歴史言語ペア (zh_han/zh_tang など) も含めて allowlist 拡張検討。
+
+2. **`zh_han` Han / `zh_tang` Tang (Xi'an, 34.26, 108.94)** — 同上。両方歴史言語で Xi'an は両朝の都。allowlist 候補。
+
+3. **`hu` Hungarian / `rom` Romani (Budapest, 47.5, 19.04)** — distinct languages だが Hungary は Romani 人口が多く Budapest は両方の中心地として一定の正当性あり。微妙。
+
+4. **検出された validator WARN を「許容済み」とマーク可能にする仕組み** — 現状 mon/mnw が WARN として常に出続ける。`validator-allowlist.json` のような外部ファイルで「了解済み既知問題」を抑制する仕組みがあると、CI で「new warnings」が出たときだけ目立つようになる。Session 10+ schema/UI 検討候補。
+
+5. **`za` Zhuang を Wuming へ移したが、`za` の話者数の大半は実際には武鳴+横県+上林の三角地帯** — 単一点で「Zhuang 中心」と言うのは粗い。長期的には複数代表点 (`representativePoints[]`) を meta に持たせる schema が望ましい (Session 10+)。
+
+### 持ち越し（Session 10 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- **Session 9 #4 validator allowlist 機構 (既知問題の抑制)**
+- **Session 9 #5 representativePoints[] meta schema (複数代表点)**
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 + Mon dialect 整理 (重大、validator #15 で常時 visible)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom 等の正当性判断)
+
+---
