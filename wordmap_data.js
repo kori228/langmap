@@ -2624,7 +2624,7 @@ const LANG_DATA = {
   // attested Thai. Sukhothai script, ancestor of modern Thai. Many words cognate
   // with modern Thai.
   sukh: { name: 'Old Thai (Sukhothai)', native: 'ภาสาไทย (สุโขทัย)', lat: 17.02, lng: 99.82,
-    words: { water:['น้ำ','naːm'], fire:['ไฟ','faj'], sun:['ตะวัน','tawan'], moon:['เดือน','dɯːan'], mother:['แม่','mɛː'], father:['พ่อ','pʰɔː'], eat:['กิน','kin'], drink:['กิน','kin'], love:['รัก','rak'], heart:['ใจ','tɕaj'], tree:['ไม้','maːj'], house:['เรือน','rɯːan'], dog:['หมา','maː'], cat:['แมว','mɛːw'], hand:['มือ','mɯː'], eye:['ตา','taː'], hello:['—','—'], thanks:['ขอบใจ','kʰɔːp tɕaj'], one:['หนึ่ง','nɯŋ'], good:['ดี','diː'] }},
+    words: { water:['น้ำ','naːm'], fire:['ไฟ','faj'], sun:['ตะวัน','tawan'], moon:['เดือน','dɯːan'], mother:['แม่','mɛː'], father:['พ่อ','pʰɔː'], eat:['กิน','kin'], drink:['กิน','kin'], love:['รัก','rak'], heart:['ใจ','tɕaj'], tree:['ไม้','maːj'], house:['เรือน','rɯːan'], dog:['หมา','maː'], cat:['แมว','mɛːw'], hand:['มือ','mɯː'], eye:['ตา','taː'], hello:['—','—'], thanks:['—','—'], one:['หนึ่ง','nɯŋ'], good:['ดี','diː'] }},
   // Meroitic — Kingdom of Kush / Meroe (Sudan, ~3c. BCE - 4c. CE). Two scripts
   // (Hieroglyphic U+10980, Cursive U+109A0). Script deciphered (Griffith), but
   // language still poorly understood; many entries are titles, names, or unknown.
@@ -2650,7 +2650,7 @@ const LANG_DATA = {
   // Old Malay — Srivijaya inscriptions (7c. CE+); the Kedukan Bukit (683) is the
   // earliest. Pallava-derived Brahmi script; many words cognate with modern Malay.
   oma: { name: 'Old Malay', native: 'bhāṣā Mlayu kuna', lat: -2.99, lng: 104.76, // Palembang
-    words: { water:['ayar','ajar'], fire:['api','api'], sun:['matari','matari'], moon:['bulan','bulan'], mother:['ibu','ibu'], father:['bapa','bapa'], eat:['makan','makan'], drink:['minum','minum'], love:['sayang','sajaŋ'], heart:['hati','hati'], tree:['kayu','kaju'], house:['rumah','rumah'], dog:['anjing','andʒiŋ'], cat:['kucing','kutʃiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['salam','salam'], thanks:['tarima kasih','tarima kasih'], one:['sa','sa'], good:['baik','baik'] }},
+    words: { water:['ayar','ajar'], fire:['api','api'], sun:['matari','matari'], moon:['bulan','bulan'], mother:['ibu','ibu'], father:['bapa','bapa'], eat:['makan','makan'], drink:['minum','minum'], love:['sayang','sajaŋ'], heart:['hati','hati'], tree:['kayu','kaju'], house:['rumah','rumah'], dog:['anjing','andʒiŋ'], cat:['kucing','kutʃiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['—','—'], thanks:['—','—'], one:['sa','sa'], good:['baik','baik'] }},
   // Old Sundanese — Sunda Kingdom / Pajajaran (14-16c.). Old Sundanese script
   // (Brahmic; ancestor of modern Sundanese script).
   osu: { name: 'Old Sundanese', native: 'basa Sunda buhun', lat: -6.59, lng: 106.80, // Pakuan Pajajaran

@@ -1022,3 +1022,108 @@ PASS
 - Session 11 #4-5 pi Pali / xpr Parthian の hello/thanks survey
 
 ---
+
+## Session 12 (2026-05-05): 古代語 hello/thanks 第 2 弾 + アナクロニズム除去
+
+**スコープ:** Session 11 で残した古代語の hello/thanks survey を継続。pi Pali / xpr Parthian / pal Middle Persian / phn Phoenician / uga Ugaritic / syc Classical Syriac / gez Ge'ez / xpu Punic / hbo Biblical Hebrew / xct Classical Tibetan / xsa Sabaean / nci Classical Nahuatl / fro Old French / goh Old High German / gmh Middle High German / osp Old Spanish / okz Old Khmer / osx Old Saxon / orv Old East Slavic / sukh Old Thai / cqu Classical Quechua / oma Old Malay / osu Old Sundanese / otl Old Tagalog / xqa Karakhanid / och Old Chinese / ojp Old Japanese / chb Chibcha / omc Mochica / xmr Meroitic / onw Old Nubian を点検。
+
+明確に **時代的に anachronistic な値** (modern Indonesian/Thai phrases in 7-13c. 古代語) を 3 セル `—` 化。
+
+### 修正 3 セル
+
+| Code | Lang | Field | 旧 | 新 | 根拠 |
+|---|---|---|---|---|---|
+| `oma` | Old Malay | `hello` | `salam`/`salam` | `—`/`—` | 7c. Srivijaya 期 Old Malay は pre-Islamic (Hindu-Buddhist) で、Arabic 借用 `salām` は時代的に存在しない。Islamization は 13c.+ |
+| `oma` | Old Malay | `thanks` | `tarima kasih`/`tarima kasih` | `—`/`—` | 現代 Malay/Indonesian の `terima kasih` (=「受け取る愛情」) は 19-20c. 表現で、7c. Old Malay には存在しない |
+| `sukh` | Old Thai | `thanks` | `ขอบใจ`/`kʰɔːp tɕaj` | `—`/`—` | 13c. Sukhothai 期の thanks 定型ではない。`ขอบใจ` は現代 Thai (19-20c.) の casual thanks。audit §6.13 に従い `—` 化 (hello は既に `—`) |
+
+### Session 12 古代語 survey 全結果
+
+調査した範囲で **plausible (= 残存)** と判定した古代語 hello/thanks (前回 Session 11 で plausible とした 10 件 + 今回 16 件):
+
+| Code | Lang | hello | thanks | 評価 |
+|---|---|---|---|---|
+| `pi` | Pali | `नमो/namo` (=I bow) | `अनुमोदामि/anumodaːmi` (=I rejoice with) | 両方 Buddhist liturgical、attested |
+| `pal` | Middle Persian | `𐭣𐭫𐭥𐭲/droːd` | `𐭮𐭯𐭠𐭮/spaːs` (=thanks 直系) | 両方 attested |
+| `xpr` | Parthian | `drōd` | `spās` | pal と同じ Iranian thanks 系 |
+| `phn` | Phoenician | `𐤔𐤋𐤌/ʃalom` (=peace) | `𐤁𐤓𐤊/barak` (=blessing) | Semitic 系挨拶、attested |
+| `uga` | Ugaritic | `𐎌𐎍𐎎/ʃalaːmu` | `𐎁𐎗𐎋/baːriku` | Semitic 系、attested |
+| `syc` | Classical Syriac | `ܫܠܡܐ/ʃlaːmaː` | `ܫܘܒܚܐ/ʃubħaː` (=glory/praise) | 両方 liturgical attested |
+| `gez` | Ge'ez | `ሰላም/salaːm` | `ምስጋና/məsgaːnaː` | Ethiopic 系、attested |
+| `xpu` | Punic | `𐤔𐤋𐤌/ʃalom` | `𐤁𐤓𐤊/barak` | phn と同じ |
+| `hbo` | Biblical Hebrew | `שלום/ʃaːloːm` | `תודה/toːðaː` | 両方 attested (todah は modern Hebrew でも使用) |
+| `xct` | Classical Tibetan | `བཀྲ་ཤིས་བདེ་ལེགས/tʂaʃi deleks` | `ཐུགས་རྗེ་ཆེ/tʰukdʒe tɕʰe` | Tibetan 仏教 attested |
+| `xsa` | Sabaean | `𐩪𐩡𐩣/salaːm` | `𐩦𐩫𐩧/ʃakar` | Semitic 系、attested |
+| `nci` | Classical Nahuatl | `niltze` | `tlazōhcāmati` | Nahuatl attested |
+| `fro` | Old French | `salut` | `merci` | attested |
+| `goh` | Old High German | `heil` | `dank` | attested |
+| `gmh` | Middle High German | `gegrüezet` | `danc` | attested |
+| `osp` | Old Spanish | `salud` | `mercedes` (gracias 前身) | attested |
+| `okz` | Old Khmer | `សួស្តី/suəsdəj` (modern Khmer 流れ) | `អនុមោទនា/ʔanumoːtəna` (Pali anumodanā) | debatable だが Sanskrit/Pali 影響圏なので残存 |
+| `osx` | Old Saxon | `heil` | `thank` | attested |
+| `orv` | Old East Slavic | `здравъ/zdravŭ` | `благодарю/blagodarju` | attested |
+| `cqu` | Classical Quechua | `rimajkuʎajki` | `aɲay` | attested |
+| `osu` | Old Sundanese | `wilujeng` | `nuhun` | 現代 Sundanese 流れだが Sunda Kingdom (14-16c.) では用法不明、debatable |
+| `otl` | Old Tagalog | `ᜋᜊᜓᜑᜌ᜔/mabuhaj` | `ᜐᜎᜋᜆ᜔/salamat` (Arabic loan via Spanish) | salamat 直接借用は debatable だが 16c.+ pre-Spanish 時期の動機不明 |
+| `xqa` | Karakhanid | `salām` | `tabug/tabuɡ` (=service/worship) | hello attested、thanks debatable |
+| `och` | Old Chinese | `拜/*pˤret-s` (=bow) | `謝/*s.ɢAk-s` (=thank) | 両方 attested |
+| `ojp` | Old Japanese | `安し/yasusi` | `忝し/katadʑike₁nasi` | attested |
+| `chb` | Chibcha | `chibu` | `chibchachoa` | uncertain だが Lugo 1619 由来か |
+| `omc` | Mochica | `—` (multi-cell unattested) | `—` | 既に conservative |
+| `xmr` | Meroitic | `—` | `—` | 既に conservative |
+| `onw` | Old Nubian | `ⲉⲓⲗⲗⲉ/ille` | `ⲡⲓⲥⲧⲁ/pista` | uncertain |
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 1  (mon/mnw — 意図的に visible)
+INFOS:    75 (—)  ← 72 → 75 (Session 12 で 3 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### 🚨 Session 12 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`okz` Old Khmer の `សួស្តី/suəsdəj` (svasti < Sanskrit)** — Angkor 期 (9-15c.) は Sanskrit/Pali 影響強いため Sanskrit 借用は時代的にあり得るが、conversational hello として実際にどう使われたかは碑文に直接根拠なし。Session 13+ で再確認候補。
+
+2. **`okz` Old Khmer の `អនុមោទនា/ʔanumoːtəna` (Pali anumodanā)** — Pali 仏教用語の thanks 流用。pi Pali の同じパターン。Buddhist 文化圏の thanks 表現として一貫しているが、conversational thanks としては debatable。Session 13+ 候補。
+
+3. **`xqa` Karakhanid の `tabug/tabuɡ`** — Old Turkic で「service/worship」の語。thanks としての用法は確認しにくい。Session 13+ で `Dīwān Lughāt al-Turk` (Mahmud al-Kashgari, 11c.) 等で確認候補。
+
+4. **`osu` Old Sundanese / `otl` Old Tagalog の値** — 現代語形をそのまま使っている可能性。Old Sundanese は 14-16c.、Old Tagalog は pre-Spanish (16c. 以前) で、現代形との対応は要確認。Session 13+ 候補。
+
+5. **`onw` Old Nubian の `pista` thanks** — Old Nubian は完全解読されておらず、thanks 専用形は確認しにくい。Session 13+ 候補。
+
+6. **`cqu` Classical Quechua の `rimajkuʎajki` hello** — modern Quechua の `Rimaykullayki` を Classical Quechua に転用。Classical (16c.) Quechua の greeting 定型は限定的だが、`rimaykullayki` は早期から使われた可能性あり。Session 13+ で再確認。
+
+### 持ち越し（Session 13 以降）
+
+**Schema-level (前回から持ち越し):**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #4 validator allowlist 機構
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+
+**追加リサーチ要 (前回から持ち越し):**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 (重大、validator #15 で常時 visible)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
+
+---
