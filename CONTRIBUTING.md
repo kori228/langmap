@@ -792,10 +792,13 @@ speakerYear: 2023,                     // 4-digit year
 iso6393: 'jpn',                        // ISO 639-3 (3-letter, lowercase)
 glottocode: 'nucl1643',                // Glottocode (4 letters + 4 digits)
 parentCode: 'zh',                      // for varieties — must exist in LANG_DATA
-sources: [                             // citations as an array of objects
+sources: [                             // CANONICAL citations array — structured.
   { type: 'reference', title: 'Ethnologue 26', url: 'https://...', accessed: '2026-05-04' },
   { type: 'dictionary', title: 'CIP online dictionary', url: 'https://...' }
 ],
+// references: [...] — legacy string-only field. Still rendered in the modal
+// bibliography footer for backward compatibility, but DO NOT add new entries
+// here. Use the structured `sources` array above. (Audit Task 91, 2026-05-05)
 
 // In wordmap_data.js — add to LANG_DATA[code] (top-level, not meta):
 locationBasis: 'capital',              // 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'

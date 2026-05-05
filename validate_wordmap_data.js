@@ -676,6 +676,19 @@ for (const code of codes) {
             withSources++;
         }
     }
+    // Audit Task 91: detect references vs sources drift. References is the
+    // legacy string-only display field; sources is the structured canonical
+    // field. Both renderable in the modal footer, but flag duplicates and
+    // disagreements for cleanup.
+    if (Array.isArray(m.references) && Array.isArray(m.sources)) {
+        const refTitles = new Set(m.references.map(r => typeof r === 'string' ? r : (r && r.title) || ''));
+        const srcTitles = new Set(m.sources.map(s => (s && s.title) || ''));
+        for (const t of refTitles) {
+            if (t && srcTitles.has(t)) {
+                W(`[#13j] ${code}: "${t}" appears in both meta.references and meta.sources — drop the references duplicate (Audit Task 91)`);
+            }
+        }
+    }
 }
 
 // ---- 13c. dataStatus breakdown + DATA_STATUS_OVERRIDES sanity ----------

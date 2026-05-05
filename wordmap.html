@@ -494,7 +494,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=69"></script>
+    <script src="wordmap_data.js?v=70"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -632,7 +632,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      69,
+            data:      70,
             metaI18n:  8,
             filter:    22,
             names:     2,
@@ -2059,8 +2059,11 @@
                     html += `<div style="margin-top:8px;padding-top:6px;border-top:1px dotted #ddd;font-size:11px;line-height:1.5">${chain}</div>`;
                 }
             })();
-            // Phase 3a (Session 36): bibliography footer — dedupe sources from wordEvidence,
-            // plus optional explicit meta.references array. Renders as small footnote section.
+            // Phase 3a (Session 36): bibliography footer — dedupe sources from
+            // wordEvidence, plus optional explicit meta.references and the
+            // structured meta.sources array. Per Audit Task 91 the canonical
+            // structured field is meta.sources; meta.references (legacy
+            // string-only) is still supported for migration.
             const sourceSet = new Set();
             for (const ev of Object.values(wEv)) {
                 if (ev && ev.source) sourceSet.add(ev.source);
@@ -2068,6 +2071,15 @@
             if (m && Array.isArray(m.references)) {
                 for (const r of m.references) sourceSet.add(typeof r === 'string' ? r : (r.title || ''));
             }
+            if (m && Array.isArray(m.sources)) {
+                for (const s of m.sources) {
+                    if (!s) continue;
+                    if (typeof s === 'string') { sourceSet.add(s); continue; }
+                    // Structured: prefer title; if URL also present, render as title link below
+                    sourceSet.add(s.title || s.url || '');
+                }
+            }
+            sourceSet.delete('');
             if (sourceSet.size > 0) {
                 const srcLabel = uiLang === 'ja' ? '参考' : (uiLang === 'zh' ? '参考' : (uiLang === 'ko' ? '참고' : (uiLang === 'de' ? 'Quellen' : (uiLang === 'fr' ? 'Sources' : (uiLang === 'ru' ? 'Источники' : 'Sources')))));
                 html += `<div style="margin-top:10px;padding-top:6px;border-top:1px dotted #ddd;font-size:10px;color:#888;line-height:1.5">` +

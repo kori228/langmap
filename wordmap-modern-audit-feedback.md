@@ -39,6 +39,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 118: `languageKind` schema + UI badge + first-pass labeling | ✅ 94 langs labeled + UI | 94 langs |
 | Task 109: `codeType` + `canonicalCode` schema + 100% coverage + validator | ✅ 578/578 codeType + 82 canonicalCode | all langs |
 | Task 95+128: Concept definition visible UI (under word-select) + CONTRIBUTING.md | ✅ Always-visible, not hover-only | UI + docs |
+| Task 91: `meta.sources` rendered in bibliography footer + drift validator + CONTRIBUTING | ✅ Fixed | UI + validator + docs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
