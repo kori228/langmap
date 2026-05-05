@@ -424,7 +424,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=59"></script>
+    <script src="wordmap_data.js?v=60"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -562,7 +562,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      59,
+            data:      60,
             metaI18n:  8,
             filter:    22,
             names:     2,
@@ -1693,7 +1693,25 @@
             es_eu: 'no atestiguado', es_mx: 'no atestiguado',
             pt: 'não atestado', pt_eu: 'não atestado', pt_br: 'não atestado',
             ru: 'не засвидетельствовано', uk: 'не засвідчено',
-            ar: 'غير مُثَبَّت', he: 'לא מתועד', sw: 'haijathibitishwa',
+            ar: 'غير مُثَبَّت', he: 'לא מתועد', sw: 'haijathibitishwa',
+        };
+
+        // Audit Task 121: visible fallback label when description is shown
+        // in English instead of the user's UI language.
+        const ENGLISH_FALLBACK_LABEL = {
+            en: 'English fallback',
+            ja: '説明は英語で表示中', ko: '설명은 영어로 표시 중', zh: '说明暂以英语显示',
+            yue: '說明暫以英文顯示', vi: 'Mô tả tạm thời bằng tiếng Anh',
+            th: 'แสดงเป็นภาษาอังกฤษชั่วคราว', id: 'Sementara dalam bahasa Inggris',
+            hi: 'विवरण फ़िलहाल अंग्रेज़ी में', de: 'Englischer Ersatztext',
+            fr: 'Texte de repli en anglais', it: 'Descrizione temporaneamente in inglese',
+            es: 'Texto en inglés (provisional)', es_eu: 'Texto en inglés (provisional)',
+            es_mx: 'Texto en inglés (provisional)',
+            pt: 'Texto provisório em inglês', pt_eu: 'Texto provisório em inglês',
+            pt_br: 'Texto provisório em inglês',
+            ru: 'Описание временно на английском', uk: 'Опис тимчасово англійською',
+            ar: 'الوصف معروض بالإنجليزية مؤقتًا', he: 'התיאור מוצג כעת באנגלית',
+            sw: 'Maelezo bado kwa Kiingereza',
         };
 
         // Audit Task 132: evidence marker labels localized en/ja/ko/zh/de/fr/es.
@@ -1767,8 +1785,32 @@
                 if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
                 html += '</table>';
                 if (m.description) {
-                    const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
-                    html += `<div class="desc">${escapeHtml(desc)}</div>`;
+                    // Audit Task 121: visible fallback label when localized
+                    // description is missing and English is shown instead.
+                    let desc, isFallback = false;
+                    if (typeof m.description === 'object') {
+                        const baseLang = uiLang.split('_')[0];
+                        desc = m.description[uiLang] || m.description[baseLang] || m.description.en || '';
+                        // Only show fallback note when uiLang isn't English and we
+                        // had to fall back from missing localization. Empty desc
+                        // (no localization at all) still shows the English text
+                        // with the note when m.description.en exists.
+                        isFallback = uiLang !== 'en' && !m.description[uiLang] && !m.description[baseLang]
+                                     && !!m.description.en;
+                    } else {
+                        desc = m.description;
+                        // String-only description is implicitly English; flag
+                        // fallback when UI is non-English.
+                        isFallback = uiLang !== 'en';
+                    }
+                    html += `<div class="desc">${escapeHtml(desc)}`;
+                    if (isFallback && desc) {
+                        const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                            || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                            || ENGLISH_FALLBACK_LABEL.en;
+                        html += ` <span style="color:#aaa;font-size:10px;font-style:italic">(${escapeHtml(fbLabel)})</span>`;
+                    }
+                    html += `</div>`;
                 }
             } else {
                 html += '<div class="meta-loading" style="padding:10px 0;color:#aaa;font-size:11px">…</div>';

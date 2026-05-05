@@ -561,6 +561,22 @@ const legacyDescCodes = codes.filter(c => {
 }).length;
 if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a string (not object) — UI lang fallback to English`);
 
+// ---- 13b'. Description i18n coverage threshold warnings (Audit Task 121) ----
+// Phase 1: WARN if any UI lang's description coverage falls below 95%.
+// UI now visibly labels English fallback (Task 121 UI), but we still want
+// to surface low-coverage UI langs so future translation work is targeted.
+const DESC_COVERAGE_THRESHOLD = 0.95;
+for (const ui of UI_LANGS) {
+    if (ui === 'en') continue;
+    if (!totalDescCodes) break;
+    const c = i18nCoverage[ui];
+    const pct = c.covered / totalDescCodes;
+    if (pct < DESC_COVERAGE_THRESHOLD) {
+        const missingPreview = c.missing.slice(0, 5).join(', ') + (c.missing.length > 5 ? `, …${c.missing.length - 5} more` : '');
+        W(`[#13b'] description i18n: ${ui} coverage ${(pct*100).toFixed(0)}% (${c.covered}/${totalDescCodes}) below ${(DESC_COVERAGE_THRESHOLD*100).toFixed(0)}% threshold — missing: ${missingPreview}`);
+    }
+}
+
 // ---- 13b. Optional schema fields (per "all A" decision) ----------------
 // New optional fields — if present, must have correct shape:
 //   meta.speakerBasis : 'L1' | 'total' | 'regional-population' | 'aggregate' | 'liturgical' | 'extinct' | 'uncertain'

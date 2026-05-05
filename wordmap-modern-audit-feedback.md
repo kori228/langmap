@@ -33,6 +33,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 132: Localize evidence markers (ja/ko/zh/de/fr/es + Source/Note prefix) | ✅ Localized | UI |
 | Task 134: Centralize cache-buster versions (`WM_ASSET_VERSION` + validator drift check) | ✅ Implemented | infra |
 | Task 99: `locationBasis` schema + UI rendering + first-pass labeling | ✅ 152/578 langs labeled | 152 langs |
+| Task 121: Description fallback visible labeling + validator threshold | ✅ Implemented | UI + 14 WARN |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -524,6 +525,70 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 121 — Description fallback visible labeling (✅)
+
+Audit が "If a translated description is missing and English is shown as fallback, the UI should not silently pretend it is localized" と指摘。Localized description が無くて英語が表示される場合、それを user に明示。
+
+### UI change
+
+[wordmap.html:1715-1740](wordmap.html#L1715-L1740) `renderLangInfo()` の description rendering を改修:
+
+```js
+// 旧
+const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
+html += `<div class="desc">${escapeHtml(desc)}</div>`;
+
+// 新
+let desc, isFallback = false;
+if (typeof m.description === 'object') {
+    const baseLang = uiLang.split('_')[0];
+    desc = m.description[uiLang] || m.description[baseLang] || m.description.en || '';
+    isFallback = uiLang !== 'en' && !m.description[uiLang] && !m.description[baseLang] && !!m.description.en;
+} else {
+    desc = m.description;
+    isFallback = uiLang !== 'en';  // string-only desc is implicitly English
+}
+// + show italicized "(English fallback)" / "(説明は英語で表示中)" label after desc
+```
+
+`ENGLISH_FALLBACK_LABEL` 定数 ([wordmap.html:1700-1715](wordmap.html#L1700-L1715)) を 21 UI langs ローカライズ:
+
+| UI lang | Label |
+|---|---|
+| en | English fallback |
+| ja | 説明は英語で表示中 |
+| ko | 설명은 영어로 표시 중 |
+| zh | 说明暂以英语显示 |
+| yue | 說明暫以英文顯示 |
+| de | Englischer Ersatztext |
+| fr | Texte de repli en anglais |
+| es/es_eu/es_mx | Texto en inglés (provisional) |
+| pt/pt_eu/pt_br | Texto provisório em inglês |
+| ru | Описание временно на английском |
+| uk | Опис тимчасово англійською |
+| ar | الوصف معروض بالإنجليزية مؤقتًا |
+| he | התיאור מוצג כעת באנגלית |
+| sw | Maelezo bado kwa Kiingereza |
+| (他 vi/th/id/hi/it も追加) | |
+
+これで例えば pwn (Paiwan) の modal を yue UI で開くと、英語説明 + `(說明暫以英文顯示)` の italic 注記が表示される。
+
+### Validator change (Phase 1 threshold)
+
+[validate_wordmap_data.js:565-580](validate_wordmap_data.js#L565-L580) check #13b' 追加:
+
+- UI lang ごとの description coverage を 95% threshold で WARN 化
+- 出力例: `[#13b'] description i18n: yue coverage 94% (542/578) below 95% threshold — missing: ami, pwn, tay, bnn, trv, …31 more`
+
+**現状 14 WARN:**
+- 94% (yue/vi/th/id/hi/it): 36 missing — 主に Formosan, Sinitic regional, Asian minority recent batch (ami/pwn/tay/bnn/trv/tsu/tao/hak_tw/wuu_*/nan_qz/zh_*/cpx/mfa/mtq/tyz/kjp/kac/wbm/ahk/dtp/hne/mnw/grt/nut/quc/kek/mam/wal/sid/tji/nij/sda)
+- 90% (es_eu/es_mx/pt_eu): 59 missing — 上記 + 多数の歴史言語 (orv/xsc/sukh/xmr/onw/cqu/omc/chb/oma/osu/otl/zkt/juc/...)
+- 92% (uk/ar/he/sw): similar set
+
+これらは future incremental session で翻訳追加するべき項目として visible に。Phase 2 で 100% に達したら threshold を 100% に上げる。
+
+---
+
 ## Audit Task 99 — locationBasis schema + UI + 152 lang first-pass labeling (✅)
 
 Audit が "Make clear that each marker is a representative point, not a speaker-distribution map" と指摘。Modal に「Map point: capital / historical site / approximate region」表示で marker semantics を明示。
@@ -781,7 +846,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=59` (data) / `v=16 → v=22` (meta, +Task 99 locationBasis)。Centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=60` (data) / `v=16 → v=22` (meta, +Tasks 99 + 121 description fallback)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 
