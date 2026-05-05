@@ -1320,14 +1320,27 @@
         }
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); scheduleConnectorUpdate(); });
         map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
-        // Continuous events for smooth tracking during drag / zoom animation
+        // Continuous events for smooth tracking during drag
         map.on('move', scheduleConnectorUpdate);
-        map.on('zoom', scheduleConnectorUpdate);
-        map.on('zoomstart', scheduleConnectorUpdate);
-        map.on('zoomanim', scheduleConnectorUpdate);
         map.on('viewreset', scheduleConnectorUpdate);
         window.addEventListener('resize', scheduleConnectorUpdate);
         window.addEventListener('scroll', scheduleConnectorUpdate, true);
+        // UX fix #4 (revised): Leaflet's `zoom`/`zoomanim` only fire once at the
+        // start; they don't tick per-frame during the CSS-transform zoom animation.
+        // Run a self-driving rAF loop from zoomstart to zoomend so the connector
+        // tracks the label every frame while the map animates.
+        let _zoomLoopActive = false;
+        function zoomLoop() {
+            if (!_zoomLoopActive) return;
+            if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+            updateConnectorLine();
+            requestAnimationFrame(zoomLoop);
+        }
+        map.on('zoomstart', () => {
+            _zoomLoopActive = true;
+            requestAnimationFrame(zoomLoop);
+        });
+        map.on('zoomend', () => { _zoomLoopActive = false; });
 
         // Expose refresh for async LANG_NAMES load
         window._refreshMarkers = () => updateMarkers(currentWord);
