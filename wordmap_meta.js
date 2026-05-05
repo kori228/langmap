@@ -1197,6 +1197,94 @@ LANG_DATA['tji'] && (LANG_DATA['tji'].meta = { family:'Sino-Tibetan (Tibeto-Burm
 LANG_DATA['nij'] && (LANG_DATA['nij'].meta = { family:'Austronesian (West Barito)', speakers:'~890K', countries:'Indonesia (Central Kalimantan)', official:'Indonesia (regional)', script:'Latin', description:{ en:'Ngaju is the largest Dayak language of Central Kalimantan, Indonesia. West Barito branch of Austronesian — distantly related to Malagasy (an East Barito language) which migrated to Madagascar in the first millennium. The Kaharingan religion of the Ngaju is a recognized indigenous faith.', ja:'ンガジュ語はインドネシア中央カリマンタン州最大のダヤク諸語。アウストロネシア西部バリト語派で、紀元1千年紀にマダガスカルへ移住したマラガシ語（東バリト語派）と遠縁。ンガジュ族のカハリンガン教はインドネシアで公認された土着信仰。', ko:'응아주어는 인도네시아 중앙 칼리만탄에서 가장 큰 다약 어군 언어. 오스트로네시아 서부 바리토 어파로, 1천년기에 마다가스카르로 이주한 말라가시어(동부 바리토)와 원거리 친족. 응아주 카하링간 종교는 인도네시아 공인 토착 신앙.', zh:'恩加朱语是印尼中加里曼丹最大的达雅克语。属南岛语系西巴里托语支，与公元1千纪迁徙至马达加斯加的马拉加斯语（东巴里托语支）远亲。恩加朱卡哈林甘宗教是印尼承认的本土信仰。', de:'Ngaju ist die größte Dayak-Sprache Zentralkalimantans (Indonesien). Westbarito-Zweig der austronesischen Sprachen — entfernt verwandt mit dem Malagassi (Ostbarito), das im ersten Jahrtausend nach Madagaskar wanderte. Die Kaharingan-Religion der Ngaju ist anerkannter indigener Glaube.', fr:'Le ngaju est la plus grande langue dayak du Kalimantan central (Indonésie). Branche bario occidentale de l’austronésien — apparenté lointain au malgache (bario oriental) qui a migré vers Madagascar au premier millénaire. La religion Kaharingan des Ngaju est une foi autochtone reconnue.' } });
 LANG_DATA['sda'] && (LANG_DATA['sda'].meta = { family:"Austronesian (South Sulawesi, Toraja-Sa'dan)", speakers:'~750K', countries:'Indonesia (Tana Toraja and North Toraja regencies, South Sulawesi)', official:'Indonesia (regional)', script:'Latin', description:{ en:"Toraja-Sa'dan is the principal language of the Toraja people of highland South Sulawesi. Famous worldwide for elaborate funeral ceremonies (Rambu Solo'), boat-shaped Tongkonan houses, and cliff-face hanging burials. South Sulawesi branch of Austronesian.", ja:"サダン・トラジャ語はインドネシア南スラウェシ高地のトラジャ族の主要言語。豪壮な葬儀（Rambu Solo'）、舟形の伝統家屋トンコナン、断崖の懸棺葬で世界的に有名。アウストロネシア語族の南スラウェシ語派。", ko:"사단 토라자어는 인도네시아 남술라웨시 고지 토라자족의 주요 언어. 화려한 장례식(Rambu Solo'), 배 모양 전통 가옥 통코난, 절벽 매장으로 세계적으로 유명. 오스트로네시아어족 남술라웨시 어파.", zh:"萨丹托拉雅语是印尼南苏拉威西高地托拉雅族的主要语言。以盛大葬礼（Rambu Solo'）、船形传统民居通孔南、悬崖悬棺葬闻名世界。南岛语系南苏拉威西语支。", de:"Toraja-Sa'dan ist die Hauptsprache des Toraja-Volkes in den Hochländern Süd-Sulawesis. Weltberühmt für aufwendige Bestattungszeremonien (Rambu Solo'), bootsförmige Tongkonan-Häuser und Felsen-Hängegräber. Südsulawesi-Zweig des Austronesischen.", fr:"Le toraja-sa'dan est la principale langue du peuple toraja des hautes terres du sud de Sulawesi (Indonésie). Mondialement célèbre pour ses cérémonies funéraires élaborées (Rambu Solo'), ses maisons traditionnelles tongkonan en forme de bateau et ses sépultures suspendues aux falaises." } });
 
+// === pronunciationType (Audit Task 76) ============================
+// Tells the user what kind of notation the second value in each word
+// cell represents. Six allowed values:
+//   'ipa'          — IPA notation, including stress/tone where relevant
+//   'broad'        — broad phonemic guide, may omit predictable detail
+//   'romanization' — romanization system, not IPA
+//   'orthography'  — spelling itself used as pronunciation guide
+//   'mixed'        — visibly mixes systems; needs cleanup
+//   'unknown'      — not yet reviewed (temporary)
+// First-pass labeling for high-traffic and recently-audited rows.
+// Validator emits WARN for languages without pronunciationType.
+const PRONUNCIATION_TYPE = {
+    // Major IPA-with-stress rows (audit/Phase 7 polish complete)
+    en: 'ipa', fr: 'ipa', it: 'ipa', es_eu: 'ipa', pl: 'ipa',
+    pt_eu: 'ipa', pt_br: 'ipa', he: 'ipa', ru: 'ipa', uk: 'ipa',
+    de: 'ipa', // (stress not added but generally IPA-shaped)
+    // Tone-restored rows (Bouyei/Naxi/Tujia/Iu Mien complete)
+    pcc: 'ipa', nxq: 'ipa', tji: 'ipa', iuu: 'ipa',
+    // Sinitic with tone marks
+    zh: 'ipa', yue: 'ipa', nan: 'ipa', wuu: 'ipa', hak_cn: 'ipa',
+    cdo: 'ipa', wuu_nb: 'ipa', wuu_sz: 'ipa', wuu_wz: 'ipa',
+    nan_qz: 'ipa', nan_te: 'ipa', cjy: 'ipa', hsn: 'ipa', gan: 'ipa',
+    cpx: 'ipa', mnp: 'ipa', hak_tw: 'ipa', hak_hl: 'ipa',
+    // Mainland SE Asian (with tones, mostly IPA-shaped)
+    th: 'ipa', vi: 'ipa', vi_c: 'ipa', vi_s: 'ipa',
+    th_n: 'ipa', th_s: 'ipa', th_isan: 'ipa',
+    my: 'broad', // tone diacritics inconsistent — audit §62
+    rki: 'broad',
+    km: 'mixed', // audit §63 — transliteration mixed with IPA
+    lo: 'broad', // audit §61 — tones omitted
+    bo: 'broad', // audit §69 — tone omitted, dialect unclear
+    // Japanese / Korean
+    ja: 'ipa', ja_osa: 'ipa', ja_aom: 'ipa', ja_oki: 'ipa',
+    ja_hak: 'ipa', ja_kyo: 'ipa', ja_hir: 'ipa', ja_kg: 'ipa',
+    ja_sd: 'ipa', ja_mvi: 'ipa', ja_rys: 'ipa',
+    ko: 'ipa', ko_kp: 'ipa', ko_bus: 'ipa', ko_jeju: 'ipa',
+    ko_yb: 'ipa', ko_hg: 'ipa', ko_jl: 'ipa',
+    // Semitic
+    ar: 'ipa', ar_eg: 'ipa', ar_lev: 'ipa', ar_gulf: 'ipa',
+    ar_iq: 'ipa', ar_ma: 'ipa', ar_sd: 'ipa', ar_tn: 'ipa',
+    // Indo-European others
+    hi: 'ipa', bn: 'ipa', ur: 'ipa', fa: 'ipa', el: 'ipa',
+    nl: 'ipa', sv: 'ipa', no: 'ipa', da: 'ipa', is: 'ipa',
+    fi: 'ipa', hu: 'ipa', ro: 'ipa', cs: 'ipa', sk: 'ipa',
+    sl: 'ipa', hr: 'ipa', sr: 'ipa', bg: 'ipa', mk: 'ipa',
+    sq: 'ipa', mt: 'ipa', ca: 'ipa', ga: 'ipa', cy: 'ipa',
+    eu: 'ipa', sw: 'broad', // simple Bantu phonology
+    // African (most are broad)
+    yo: 'broad', zu: 'broad', am: 'ipa', ha: 'broad',
+    ig: 'broad', wo: 'broad', so: 'broad', mg: 'broad',
+    // Audit Task 76: orthography-as-IPA cases
+    id: 'orthography', ms: 'orthography', tl: 'orthography',
+    jv: 'orthography', su: 'orthography', ceb: 'orthography',
+    tok: 'broad', // Toki Pona phonemic; orthography is intentionally close to IPA
+    hmo: 'orthography', tkl: 'orthography', niu: 'orthography',
+    sm: 'orthography', tvl: 'orthography', haw: 'orthography',
+    mi: 'orthography', to: 'orthography',
+    eo: 'broad', // Esperanto orthography is phonemic
+    // Formosan + Pacific Austronesian
+    pwn: 'orthography', bnn: 'orthography', trv: 'orthography',
+    ami: 'orthography', tay: 'orthography', tsu: 'orthography',
+    tao: 'orthography',
+    // Romance regional Spanish/Portuguese (mostly base copies, broad)
+    es_mx: 'broad', es_ar: 'broad', es_co: 'broad', es_cl: 'broad',
+    es_pe: 'broad', es_cu: 'broad', es_an: 'broad',
+    fr_qc: 'broad', fr_be: 'broad', fr_af: 'broad', fr_ch: 'broad',
+    // Constructed/Tangled
+    tlh: 'romanization', // Klingon official orthography
+    jbo: 'orthography', // Lojban phonemic spelling
+    // Russian-loan-cat minority langs (audit §10)
+    evn: 'broad', eve: 'broad', yrk: 'broad', kca: 'broad',
+    niv: 'broad', ket: 'broad', mns: 'broad',
+    // Lakota/Dakota/Navajo (audit §19/§20 — IPA + orthographic accents)
+    lkt: 'mixed', dak: 'mixed', nv: 'mixed',
+    // Inuit-Yupik (audit §21)
+    iu: 'romanization', ipk: 'romanization', kl: 'romanization',
+    esu: 'romanization',
+    // Surface-IPA cases (audit §54-55)
+    mra: 'mixed', xkk: 'mixed', wbm: 'mixed', lhu: 'mixed',
+    // Other tone-omitted Asian rows still pending (audit §51-52)
+    khb: 'broad', shn: 'broad',
+};
+for (const code of Object.keys(PRONUNCIATION_TYPE)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        LANG_DATA[code].meta.pronunciationType = PRONUNCIATION_TYPE[code];
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

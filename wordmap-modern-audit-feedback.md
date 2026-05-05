@@ -24,6 +24,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §56/B Tujia tji love/thanks tone restoration | ✅ Fixed | 2 |
 | §50 Iu Mien iuu tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | Phase 4 schema: WORD_LIST `definition` field added (multilingual {en,ja,ko,zh}) | ✅ Schema + validator check | 20 concepts |
+| Task 76: `pronunciationType` schema + first-pass labeling | ✅ Schema + 162/579 langs labeled | 162 langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -469,6 +470,53 @@ Stress 付き IPA は narrow IPA convention に整合、教材として「どこ
 
 ---
 
+## Audit Task 76: pronunciationType schema (✅ schema + validator)
+
+「100点教材化」の最大のブロッカーだった「第二列が IPA か broad か orthography か未定義」問題に対応。Audit Task 76/87 通り、`pronunciationType` field を `wordmap_meta.js` に追加 (per Task 87: meta は wordmap_meta.js に置く)。
+
+**Enum:** `'ipa' | 'broad' | 'romanization' | 'orthography' | 'mixed' | 'unknown'`
+
+**第一段階 labeling — 162/579 言語 (28%)**:
+
+| Type | Count | 例 |
+|---|---|---|
+| `ipa` | 93 | en/fr/it/es_eu/pl/de/ru/uk/he/ja/ko/zh/yue/nan/ar/vi/th/hi/pcc/nxq/tji/iuu (audit complete + tone-restored 言語) |
+| `broad` | 34 | sw/yo/zu/lo/my/bo/sm-of-Spanish-regional/eo/sukh-tone-still-tba |
+| `orthography` | 22 | id/ms/tl/jv/su/ceb/haw/mi/to/sm/tkl/niu/tvl/pwn/bnn/trv/ami/tay/tsu/tao/eo |
+| `mixed` | 8 | km (transliteration) / lhu/mra/xkk/wbm (surface contamination) / lkt/dak/nv (orthographic accents in IPA) |
+| `romanization` | 5 | iu/ipk/kl/esu (Inuit-Yupik) + tlh (Klingon) |
+
+残 417 言語は将来 session で incremental に label。Validator が new INFO で coverage を表示。
+
+### Validator change (Task 76)
+
+[validate_wordmap_data.js:556-559](validate_wordmap_data.js#L556-L559) に check #13d 追加:
+- `pronunciationType` enum 検査 (6 値以外なら ERROR)
+- 全体カウントを INFO 出力 (どの値がいくつあるか可視化)
+
+### Audit が指摘した sample rows での適用結果
+
+| Code | Audit 指定 | 適用 |
+|---|---|---|
+| `id` | `broad` or `orthography` | `orthography` |
+| `ms` | `broad` or `orthography` | `orthography` |
+| `tl` | `broad` or `orthography` | `orthography` |
+| `km` | `mixed` until rebuilt | `mixed` |
+| `bo` | `broad` unless tone-aware rebuild | `broad` |
+| `lo` | `broad` (tones omitted) | `broad` |
+
+Audit 指定通り。
+
+### UI display (deferred to next phase)
+
+Audit Task 76 が指示した modal label (`Pronunciation: IPA` / `broad` 等) は次 session で実装予定。Schema + validator が先。
+
+### Task 80 (source references) との連携
+
+`pronunciationType: 'ipa'` の言語のうち、validator が「source 無し」と warn 可能になった (Task 80 の予備工事)。
+
+---
+
 ## Audit Tasks 82/85/86 follow-up
 
 監査の最新バッチ (§71-§140) のうち、直前のセッションで作った *partial implementation* に対する正式 follow-up:
@@ -532,7 +580,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=55` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=55` (data) / `v=16 → v=19` (meta, +Task 76 pronunciationType)。
 
 ---
 

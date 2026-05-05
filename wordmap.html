@@ -1526,7 +1526,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=18';
+                s.src = 'wordmap_meta.js?v=19';
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });

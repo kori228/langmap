@@ -528,7 +528,8 @@ if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a
 //   meta.sources      : Array<{ type, title, url?, accessed? }>
 const SPEAKER_BASIS = new Set(['L1','total','regional-population','aggregate','liturgical','extinct','uncertain']);
 const LOCATION_BASIS = new Set(['capital','prestige-center','historical-site','largest-city','approx-region']);
-let withSpeakerBasis = 0, withSources = 0, withIso = 0;
+let withSpeakerBasis = 0, withSources = 0, withIso = 0, withPronType = 0;
+const pronTypeCounts = {};
 for (const code of codes) {
     const lang = ctx.LANG_DATA[code];
     const m = lang.meta || {};
@@ -552,6 +553,11 @@ for (const code of codes) {
     if (m.dataStatus !== undefined) {
         const allowed = new Set(['modern','attested','fragmentary','reconstructed','undeciphered','partly-understood','pedagogical']);
         if (!allowed.has(m.dataStatus)) E(`${code}: meta.dataStatus "${m.dataStatus}" not in enum`);
+    }
+    if (m.pronunciationType !== undefined) {
+        const allowed = new Set(['ipa','broad','romanization','orthography','mixed','unknown']);
+        if (!allowed.has(m.pronunciationType)) E(`[#13d] ${code}: meta.pronunciationType "${m.pronunciationType}" not in enum`);
+        else { withPronType++; pronTypeCounts[m.pronunciationType] = (pronTypeCounts[m.pronunciationType] || 0) + 1; }
     }
     if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
         E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
@@ -634,6 +640,11 @@ for (const code of codes) {
     }
 }
 if (wordEvidenceLangs > 0) I(`wordEvidence overlay: ${wordEvidenceLangs} languages, ${wordEvidenceCells} cells annotated (Schema Revolution Phase 2)`);
+if (withPronType > 0) {
+    const breakdown = Object.entries(pronTypeCounts).sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k}=${v}`).join(', ');
+    I(`pronunciationType coverage: ${withPronType}/${codes.length} languages (${breakdown}) — Audit Task 76`);
+}
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -
 // Languages with first numeric value ≥100M must have speakerBasis declared
