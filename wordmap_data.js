@@ -2839,6 +2839,72 @@ const DATA_STATUS_OVERRIDES = {
     xpu:       'attested',       // Punic — Phoenician-script inscriptions, Carthage texts
     sux:       'attested',       // Sumerian — earliest extensive text record (~3100 BCE+)
     xhu:       'attested',       // Hurrian — extensive cuneiform incl. bilingual texts
+    // Per Session 27: bulk normalization of well-attested historical languages
+    // that were defaulting to 'modern' due to missing override (HIST_DESCENDANT
+    // membership doesn't auto-promote). All have continuous primary text corpus.
+    // Indo-European Old:
+    la:        'attested',       // Latin — extensive Classical/Medieval corpus
+    el_grc:    'attested',       // Ancient Greek — Homer + Classical + Hellenistic corpus
+    en_ang:    'attested',       // Old English — Beowulf, Anglo-Saxon Chronicle, etc.
+    enm:       'attested',       // Middle English — Canterbury Tales, etc.
+    non:       'attested',       // Old Norse — Eddas, sagas
+    got:       'attested',       // Gothic — Wulfila Bible
+    cu:        'attested',       // Old Church Slavonic — liturgical corpus
+    sa:        'attested',       // Sanskrit — vast classical corpus
+    peo:       'attested',       // Old Persian — Achaemenid royal inscriptions
+    ave:       'attested',       // Avestan — Avesta corpus (Zoroastrian)
+    pal:       'attested',       // Middle Persian (Pahlavi) — Zoroastrian/Manichaean
+    fro:       'attested',       // Old French — Chanson de Roland, Roman de la Rose
+    goh:       'attested',       // Old High German — Hildebrandslied, etc.
+    gmh:       'attested',       // Middle High German — Nibelungenlied, Minnesang
+    osp:       'attested',       // Old Spanish — Cantar de Mio Cid, El Conde Lucanor
+    osx:       'attested',       // Old Saxon — Heliand
+    sga:       'attested',       // Old Irish — glosses, sagas
+    mga:       'attested',       // Middle Irish — Lebor Gabála Érenn, Táin
+    hit:       'attested',       // Hittite — extensive cuneiform tablets
+    gmy:       'attested',       // Mycenaean Greek — Linear B tablets (palace records)
+    hbo:       'attested',       // Biblical Hebrew — Hebrew Bible
+    sukh:      'attested',       // Old Thai (Sukhothai) — Ramkhamhaeng inscription (1283)
+    orv:       'attested',       // Old East Slavic — Russian Primary Chronicle, Igor's Tale
+    xct:       'attested',       // Classical Tibetan — Buddhist canon, royal annals
+    // Afro-Asiatic / Semitic Old:
+    egy:       'attested',       // Ancient Egyptian — vast hieroglyphic corpus (Old/Middle/Late)
+    cop:       'attested',       // Coptic — Christian/Gnostic corpus, Nag Hammadi
+    arc:       'attested',       // Aramaic — biblical + Targums + Talmudic
+    phn:       'attested',       // Phoenician — inscriptions + Punic
+    uga:       'attested',       // Ugaritic — Ras Shamra texts
+    syc:       'attested',       // Classical Syriac — Christian corpus + Peshitta
+    gez:       'attested',       // Ge'ez — Ethiopic Christian corpus
+    xsa:       'attested',       // Sabaean — South Arabian inscriptions
+    // Pali / Buddhist:
+    pi:        'attested',       // Pali — Theravada Buddhist canon (Tipitaka)
+    // Iranian:
+    xqa:       'attested',       // Karakhanid — Dīwān Lughāt al-Turk (Mahmud al-Kashgari, 11c.)
+    // Mesoamerican / Classical American:
+    nci:       'attested',       // Classical Nahuatl — codices + Spanish-era documentation
+    myn:       'attested',       // Classical Maya — hieroglyphic inscriptions + codices
+    cqu:       'attested',       // Classical Quechua — colonial-era documentation
+    // Mainland SE Asia / Insular SE Asia historical:
+    kaw:       'attested',       // Old Javanese (Kawi) — Brahmic inscriptions, kakawin literature
+    kho:       'attested',       // Khotanese — Buddhist + secular Saka manuscripts
+    okz:       'attested',       // Old Khmer — Angkor inscriptions
+    omx:       'attested',       // Old Mon — Dvaravati / Pagan inscriptions
+    obr:       'attested',       // Old Burmese — Myazedi (1113) + Pagan inscriptions
+    occ:       'attested',       // Old Cham — Champa kingdom inscriptions
+    oma:       'attested',       // Old Malay — Srivijaya inscriptions (Kedukan Bukit 683)
+    osu:       'attested',       // Old Sundanese — Sunda Kingdom / Pajajaran inscriptions
+    otl:       'attested',       // Old Tagalog — pre-Spanish Baybayin inscriptions
+    onw:       'attested',       // Old Nubian — Christian Nubian Christian texts
+    // East Asian / Inner Asian historical:
+    och:       'attested',       // Old Chinese — pre-Han inscriptions + Shijing/Shujing
+    ojp:       'attested',       // Old Japanese — Man'yōshū, Kojiki, Nihon Shoki
+    txg:       'attested',       // Tangut — Buddhist canon + literary corpus
+    sog:       'attested',       // Sogdian — Manichaean/Christian/Buddhist texts
+    otk:       'attested',       // Old Turkic — Orkhon/Yenisei inscriptions
+    xng:       'attested',       // Middle Mongolian — Secret History of the Mongols
+    // Tungusic / Akkadian:
+    mnc:       'attested',       // Manchu — extensive Qing-era corpus (Veritable Records, etc.)
+    akk:       'attested',       // Akkadian — extensive cuneiform from ~2350 BCE (Sumerian period)
     // Partially understood (script readable; lexicon/grammar incomplete):
     // Reclassified from 'undeciphered' per wordmap-full-audit.md §6.21 —
     // for all four, the script is read and basic vocabulary is known,

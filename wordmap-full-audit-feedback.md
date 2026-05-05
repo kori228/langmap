@@ -2982,3 +2982,109 @@ Data status breakdown:
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
 
 ---
+
+## Session 27 (2026-05-05): historical 言語 dataStatus 正規化 — 55 件 'attested' 追加
+
+**スコープ:** Session 26 #1-2 で記録した「他 historical 言語の dataStatus 未設定」問題を一括解決。HIST_DESCENDANT に登録されているが `DATA_STATUS_OVERRIDES` に entry がなく、validator stats で「modern」default に流れていた 55 言語に 'attested' を追加。validator stats の `modern` カウントが actual modern lang count (499) に正規化された。
+
+### Schema 整理結果
+
+```
+Before Session 27:                After Session 27:
+  modern               554          modern               499  ← 正確 (= 579 - 80 historical)
+  attested             10           attested             65   ← +55 (la/el_grc/sa 等 + mnc/akk)
+  fragmentary          5            fragmentary          5
+  reconstructed        1            reconstructed        1
+  partly-understood    4            partly-understood    4
+  pedagogical          5            pedagogical          5
+  -----------          ----         -----------          ----
+                       579                               579 ✓ (= 80 historical 全て分類済)
+```
+
+### 追加した 55 'attested' 言語の系統別内訳
+
+**Indo-European Old (24件):**
+la Latin, el_grc Ancient Greek, en_ang Old English, enm Middle English, non Old Norse, got Gothic, cu Old Church Slavonic, sa Sanskrit, peo Old Persian, ave Avestan, pal Middle Persian, fro Old French, goh Old High German, gmh Middle High German, osp Old Spanish, osx Old Saxon, sga Old Irish, mga Middle Irish, hit Hittite, gmy Mycenaean Greek, hbo Biblical Hebrew, sukh Old Thai (Sukhothai), orv Old East Slavic, xct Classical Tibetan
+
+**Afro-Asiatic / Semitic Old (8件):**
+egy Ancient Egyptian, cop Coptic, arc Aramaic, phn Phoenician, uga Ugaritic, syc Classical Syriac, gez Ge'ez, xsa Sabaean
+
+**Indic / Buddhist (1件):**
+pi Pali
+
+**Iranian / Turkic (1件):**
+xqa Karakhanid
+
+**Mesoamerican / Classical American (3件):**
+nci Classical Nahuatl, myn Classical Maya, cqu Classical Quechua
+
+**Mainland SE Asia / Insular SE Asia historical (10件):**
+kaw Old Javanese, kho Khotanese, okz Old Khmer, omx Old Mon, obr Old Burmese, occ Old Cham, oma Old Malay, osu Old Sundanese, otl Old Tagalog, onw Old Nubian
+
+**East Asian / Inner Asian historical (6件):**
+och Old Chinese, ojp Old Japanese, txg Tangut, sog Sogdian, otk Old Turkic, xng Middle Mongolian
+
+**Tungusic / Akkadian (2件):**
+mnc Manchu, akk Akkadian
+
+### 各言語の attested 根拠 (代表例)
+
+各 entry にコメントで attestation の代表的 corpus を記載:
+- la: Classical/Medieval Latin corpus 全体
+- el_grc: Homer + Classical + Hellenistic
+- sa: 大規模 Classical Sanskrit corpus
+- got: Wulfila Bible
+- gmy: Linear B tablets (palace records)
+- xqa: Dīwān Lughāt al-Turk (Mahmud al-Kashgari, 11c.)
+- och: pre-Han inscriptions + Shijing/Shujing
+- ojp: Man'yōshū + Kojiki + Nihon Shoki
+- mnc: Qing-era Veritable Records
+- akk: cuneiform from ~2350 BCE
+- (他 45 件、全て attestation source 記載)
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+
+Data status breakdown:
+  modern               499  ← 正規化完了
+  attested             65
+  fragmentary          5
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### 効果と意義
+
+1. **schema 完全性**: HIST_DESCENDANT に登録されている 80 historical 言語**全て**が `DATA_STATUS_OVERRIDES` に classify 済みになった。default-modern fallback の歴史言語が消滅。
+
+2. **validator 統計の意味化**: `modern: 499` は実際の modern 言語数と完全一致。`attested: 65` は historical の主流 (continuous primary text corpus を持つもの)、その他 15 件が special status (5 fragmentary + 4 partly-understood + 1 reconstructed + 5 pedagogical)。
+
+3. **UI 側で `meta.dataStatus` に基づく表示** が将来できるようになった基盤整備。例: 「fragmentary」「partly-understood」言語に注記アイコンを付ける、など。
+
+4. **Codex review 4-8 系の deferred fragmentary 検討との整合**: Session 18 (xsc) → 20 (juc) → 24 (xpr) → 26 (omc/chb) で fragmentary を個別に追加してきた流れと、Session 27 の bulk attested 追加で完全な classification table が完成。
+
+### Session 27 中に気付いた追加問題（未対応・記録のみ）
+
+1. **historical lang の中に「subdialectal」「colloquial register」分類が必要なケース** — 例: `ja_edo`/`ja_heian` は pedagogical だが、後の研究で「stage-specific attestation」と表現する余地。Session 28+ で `pedagogical` enum 拡張候補。
+
+2. **`gmy` Mycenaean Greek は attested だが Codex 3 が block 全体の信頼性を強く疑問視** — language-level dataStatus は 'attested' でよいが、cell-level の confidence は別問題。Session 17 #5 / Session 22 #3 削除値 notes schema と関連。
+
+3. **`onw` Old Nubian と `xqa` Karakhanid の `attested` 妥当性** — 両者とも特殊 corpus (Old Nubian Christian texts / Dīwān Lughāt al-Turk) を持つが、Codex 4-5 で hello/thanks の信頼性が flagged されている。dataStatus 'attested' で OK、cell-level で `—` 化は別途対応中。
+
+4. **README/docs に dataStatus 運用ルール明記** — Session 24 #3 の deferred 項目。Session 27 で 80/80 historical lang がカテゴリ化されたタイミングで、`docs/data-status-policy.md` のような文書を作成する motivation が高まった。Session 28+ docs 候補。
+
+### 持ち越し（Session 28 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, 24 #3, 25 #1-3, 26 #4, **27 #1-4 (pedagogical 拡張 / cell-level confidence / docs 整備)**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
+
+---
