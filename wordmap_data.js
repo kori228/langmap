@@ -1006,7 +1006,11 @@ const LANG_DATA = {
   // semantic and phonetic readings; reconstruction follows Lee KM
   // (1993, 2003), Sohn (1999), Whitman (2015).
   oko: { name: 'Old Korean (Silla)', native: '古代韓國語', lat: 35.85, lng: 129.22, // Gyeongju (Silla capital)
-    words: { water:['水','*muɾu'], fire:['火','*puɾk'], sun:['日','*hai'], moon:['月','*tʌɾh'], mother:['母','*əmi'], father:['父','*əpi'], eat:['食','*məkta'], drink:['飲','*maɕita'], love:['愛','*sjaɾaŋ'], heart:['心','*məsʌm'], tree:['樹','*namok'], house:['家','*tɕip'], dog:['犬','*kahi'], cat:['—','—'], hand:['手','*son'], eye:['目','*nun'], hello:['—','—'], thanks:['—','—'], one:['一','*hʌnah'], good:['好','*tjoh'] },
+    // Surface uses Hyangchal/Idu 当て字 (phonetic borrowings) where attested
+    // in idu/hyangga corpus; semantic borrowings + phonetic suffix where the
+    // hybrid pattern is well-documented (e.g. 一等 for hʌnah). Pure semantic
+    // characters used only where no phonetic attestation exists.
+    words: { water:['勿','*muɾu'], fire:['弗','*puɾk'], sun:['日','*hai'], moon:['達','*tʌɾh'], mother:['阿米','*əmi'], father:['阿比','*əpi'], eat:['食','*məkta'], drink:['飲','*maɕita'], love:['思良','*sjaɾaŋ'], heart:['心音','*məsʌm'], tree:['那木','*namok'], house:['執','*tɕip'], dog:['加伊','*kahi'], cat:['—','—'], hand:['孫','*son'], eye:['目','*nun'], hello:['—','—'], thanks:['—','—'], one:['一等','*hʌnah'], good:['好','*tjoh'] },
     wordEvidence: {
       water:  { evidence: 'reconstructed', source: 'Lee KM 2003 — pre-MK *muru → MK 믈; cf. modern 물' },
       moon:   { evidence: 'reconstructed', source: 'Lee KM 2003 — *tʌrh attested in hyangga 月隠 → MK ᄃᆞᆯ → 달' },
