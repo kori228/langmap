@@ -56,6 +56,32 @@
            the user picks different words (some labels are much longer
            than others, e.g. Japanese 食べる vs short 'good'). */
         .top-left-controls #word-select { width: 240px; }
+        /* Word definition — fixed width matching the selector and a fixed
+           height so that the era switch / language search below it never
+           shift vertically when the user picks a concept with a longer
+           or shorter definition. */
+        .top-left-controls #word-definition {
+            width: 240px;
+            box-sizing: border-box;
+            height: 88px;
+            margin-top: 2px;
+            margin-bottom: 6px;
+            padding: 4px 8px;
+            font-size: 10px;
+            color: #555;
+            font-style: italic;
+            line-height: 1.35;
+            background: rgba(255,255,255,0.78);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        @media (max-width: 480px) {
+            /* Hide the definition box on phones to save vertical space;
+               the modal still shows it once a language is selected. */
+            .top-left-controls #word-definition { display: none; }
+        }
 
         /* --- Bottom-left: UI lang only --- */
         .map-controls {
@@ -381,7 +407,7 @@
     <!-- Top-left controls (below header): word select + era + lang search -->
     <div class="top-left-controls">
         <select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
-        <div id="word-definition" style="font-size:10px;color:#888;font-style:italic;padding:2px 4px;max-width:520px;line-height:1.35"></div>
+        <div id="word-definition"></div>
         <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
             <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
             <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
@@ -447,7 +473,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=63"></script>
+    <script src="wordmap_data.js?v=64"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -585,7 +611,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      63,
+            data:      64,
             metaI18n:  8,
             filter:    22,
             names:     2,
