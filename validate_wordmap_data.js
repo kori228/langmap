@@ -27,6 +27,9 @@
  * Allowlist: ALLOWLIST (top of file) suppresses known WARN/ERROR messages
  * by substring match, downgrading them to INFO with [allowlisted] reason+ref.
  * Use this for issues intentionally deferred (e.g., needs linguist consultation).
+ * Optional `expires: 'YYYY-MM-DD'` re-promotes the entry to WARN/ERROR after
+ * the date passes (forces periodic review). Unused entries (match string never
+ * fires) are listed under UNUSED ALLOWLIST ENTRIES so they can be cleaned up.
  *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
@@ -75,8 +78,14 @@ const HIST_KEYS = [...HIST_BODY.matchAll(/(?:^|[\s,{])([a-z][a-z_0-9]*)\s*:/g)].
 const HIST_SET = new Set(HIST_KEYS);
 
 // === Allowlist of known WARN/ERROR messages that are deliberately deferred ===
-// Each entry: substring match against the message. If matched, the WARN/ERROR
-// is downgraded to INFO with an "[allowlisted]" prefix and a short justification.
+// Each entry:
+//   - match:   substring match against the message
+//   - reason:  why this is intentionally suppressed
+//   - ref:     audit/session reference for context
+//   - expires: ISO date (YYYY-MM-DD); past this date, the entry is treated as
+//              EXPIRED and the underlying WARN/ERROR is re-promoted (forces
+//              periodic review). Entries with no expires field never expire.
+//
 // Add an entry when you intentionally accept a known issue that needs research
 // before it can be properly fixed (e.g., requires a linguist consultation).
 const ALLOWLIST = [
@@ -84,12 +93,25 @@ const ALLOWLIST = [
         match: '[mon, mnw] all map to "Mon@16.49,97.62"',
         reason: 'ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert (Bauer 1982 / Diffloth)',
         ref: 'audit Session 8 + 9, deferred to Session 14+',
+        expires: '2027-01-01',
     },
 ];
 
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
+const allowlistHits = new WeakMap();
+const allowlistFired = new Set();
+
 function checkAllowlist(msg) {
     for (const a of ALLOWLIST) {
-        if (msg.includes(a.match)) return a;
+        if (msg.includes(a.match)) {
+            // Track which allowlist entry matched (for unused detection)
+            allowlistFired.add(a);
+            // Treat expired entries as not allowlisted → re-promote
+            if (a.expires && a.expires < TODAY_ISO) {
+                return { ...a, _expired: true };
+            }
+            return a;
+        }
     }
     return null;
 }
@@ -100,12 +122,20 @@ const infos  = [];
 const allowlisted = [];
 const E = m => {
     const al = checkAllowlist(m);
-    if (al) { allowlisted.push({msg: m, ...al}); return; }
+    if (al && !al._expired) { allowlisted.push({msg: m, ...al}); return; }
+    if (al && al._expired) {
+        errors.push(m + ` [ALLOWLIST EXPIRED ${al.expires}; re-promoted to ERROR]`);
+        return;
+    }
     errors.push(m);
 };
 const W = m => {
     const al = checkAllowlist(m);
-    if (al) { allowlisted.push({msg: m, ...al}); return; }
+    if (al && !al._expired) { allowlisted.push({msg: m, ...al}); return; }
+    if (al && al._expired) {
+        warns.push(m + ` [ALLOWLIST EXPIRED ${al.expires}; re-promoted to WARN]`);
+        return;
+    }
     warns.push(m);
 };
 const I = m => infos.push(m);
@@ -595,8 +625,18 @@ if (allowlisted.length) {
     console.log(`ALLOWLISTED (${allowlisted.length}) — known issues, intentionally suppressed:`);
     for (const a of allowlisted) {
         console.log('  ⊘ ' + a.msg);
-        console.log('      reason: ' + a.reason);
-        console.log('      ref:    ' + a.ref);
+        console.log('      reason:  ' + a.reason);
+        console.log('      ref:     ' + a.ref);
+        if (a.expires) console.log('      expires: ' + a.expires);
+    }
+    console.log('');
+}
+const unusedAllowlist = ALLOWLIST.filter(a => !allowlistFired.has(a));
+if (unusedAllowlist.length) {
+    console.log(`UNUSED ALLOWLIST ENTRIES (${unusedAllowlist.length}) — match string never fired, may be safe to remove:`);
+    for (const a of unusedAllowlist) {
+        console.log('  ? match: "' + a.match + '"');
+        console.log('      ref: ' + a.ref);
     }
     console.log('');
 }

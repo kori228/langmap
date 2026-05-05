@@ -1206,6 +1206,122 @@ PASS
 
 ---
 
+## Codex 追加レビュー引き継ぎ (2026-05-05): 口頭レビューの未記録分
+
+**目的:** Codex 側でユーザーへ口頭回答した追加レビューのうち、Claude Code が後続作業で参照できるように、未記録または記録が薄かった点をまとめて残す。ここでは即修正済みとはせず、Session 14+ の review queue とする。
+
+### 高優先度: `sux.good` は strong error 候補
+
+- 対象: `wordmap_data.js` の `sux.good: ['𒊩𒌆','saŋ']`
+- 評価: **かなり危険。validator では捕まらないが、意味・読みの両方で `good` と合っていない可能性が高い。**
+- 根拠:
+  - `𒊩𒌆` は Sumerian `nin` として「女主人・女王・女神への称号」系で確認される。
+  - `𒊩` 単体も `munus/sal` 系で、「good」の直接根拠にはならない。
+  - 「good」は通常 `dug3/du10`、`silim` などを候補に再確認すべき。
+- 参照候補:
+  - https://de.wiktionary.org/wiki/%F0%92%8A%A9%F0%92%8C%86
+  - https://en.wiktionary.org/wiki/%F0%92%8A%A9
+  - ePSD / Pennsylvania Sumerian Dictionary で最終確認。
+
+### 古代語 hello/thanks: 追加で要確認の強いもの
+
+1. **`otl.hello: ᜋᜊᜓᜑᜌ᜔/mabuhaj`**
+   - `mabuhay` は modern/formal welcome としては自然だが、Wiktionary では interjection が Spanish `¡Viva!` の calque とされる。
+   - pre-Hispanic Old Tagalog の greeting としては弱い。`—` 化候補、または Early Modern/Spanish-contact Tagalog として注記が必要。
+   - 一方 `otl.thanks: ᜐᜎᜋᜆ᜔/salamat` は San Buenaventura 1613 で `Agradecer/Graçias` 系の記載が確認できるため、`thanks` は相対的に強い。
+   - 参照:
+     - https://en.wiktionary.org/wiki/mabuhay
+     - https://en.wiktionary.org/wiki/salamat
+
+2. **`okz.hello: សួស្តី/suəsdəj`, `okz.thanks: អនុមោទនា/ʔanumoːtəna`**
+   - `svasti` 系は Angkor 期の Sanskrit/Old Khmer 碑文で formula としてあり得るが、日常 greeting とは別物。
+   - DHARMA の Old Khmer 碑文でも `śrī siddhi svasti jaya` のような祝福・開端 formula として出る例があり、conversational hello への転用は未確認。
+   - `anumodanā` も Buddhist/Pali liturgical term としては plausibile だが、`thanks` の会話句としては弱い。
+   - 参照:
+     - https://dharmalekha.info/texts/DHARMA_INSCIK00270-4
+     - https://dharmalekha.info/texts/INSCIK00270-2
+
+3. **`xqa.thanks: tabug/tabuɡ`**
+   - Old Turkic/Karakhanid で「service/worship」寄りの語と見られる。
+   - `thank you` の直接対応としては未確認。`Dīwān Lughāt al-Turk` 等で再確認が必要。
+   - 参照:
+     - https://en.wikipedia.org/wiki/D%C4%ABw%C4%81n_Lugh%C4%81t_al-Turk
+
+4. **`osu.hello: wilujeng`, `osu.thanks: nuhun`**
+   - 現代 Sundanese としては自然だが、Old Sundanese の碑文・写本資料からそのまま確認できていない。
+   - `Old Sundanese` として残すなら、Old Sundanese 辞書・写本での attest が必要。確認できない場合は descendant proxy として注記、または `—` 化候補。
+   - 参照:
+     - https://en.wikipedia.org/wiki/Old_Sundanese_language
+     - https://www.kamussunda.net/terjemahan/kata/wilujeng.html
+
+5. **`onw.thanks: ⲡⲓⲥⲧⲁ/pista`**
+   - Old Nubian は資料自体はあるが、thanks 専用形としての `pista` は現時点で未確認。
+   - Browne, *Old Nubian Dictionary* 等での直接確認が必要。
+   - 参照:
+     - https://openlibrary.org/books/OL717267M/Old_Nubian_dictionary
+
+### 追加で見つかった古代 Near East 系の注意点
+
+1. **`elx` Elamite の hello/thanks**
+   - 対象: `elx.hello: ['𒅆𒅋𒄩','ʃilha']`, `elx.thanks: ['𒇷𒄩𒊑','lihari']`
+   - 評価: **`partly-understood` 言語としては会話句が強すぎる可能性。**
+   - Elamite は Achaemenid Elamite など一部は十分読めるが、全段階が完全解読ではなく、会話句としての `hello/thanks` は要出典。
+   - 直ちに誤り確定ではないが、根拠が出なければ `—` 化または cell-level evidence status 付与候補。
+   - 参照:
+     - https://www.britannica.com/topic/Elamite-language
+
+2. **`xhu` Hurrian の hello/thanks**
+   - 対象: `xhu.hello: ['𒄭𒇻','hilːu']`, `xhu.thanks: ['𒀀𒅆','aʃi']`
+   - Hurrian は資料が豊富で Hurrian-Hittite bilingual などもあるが、日常 greeting / thanks としての確認は別問題。
+   - `hello/thanks` は出典確認まで provisional。Hittite/Hurrian bilingual や専門辞書で要確認。
+   - 参照:
+     - https://www.britannica.com/topic/Hurrian-language
+
+### Formosan hello/thanks: 方言基準と gloss の注意
+
+- `pwn.hello == pwn.thanks == masalu`
+  - Paiwan `masalu` は thanks / welcome 文脈で確認できるため、即エラーではない。
+  - ただし `hello` は「welcome/thanks 寄り」で、単純な `hello` としては gloss 注意。
+- `bnn.hello == bnn.thanks == uninang`
+  - Bunun `uninang` は gratitude/blessing 寄り。`hello` としては `uninang miqumisang` / `mihumisang` 系の候補があるが、方言基準確認が必要。
+- `trv.hello == trv.good == malu`
+  - Seediq/Taroko `malu` は `good/easy` 系としては確認しやすいが、`hello` としての直接根拠は弱い。
+- 参照候補:
+  - Bunun `Uninang`: https://www.erv-nsa.gov.tw/en/travel/uninang
+  - Bunun `uninang miqumisang`: https://www.gs-forest.com/en/the-daily-lives-and-constants-of-the-tribe-health-inequalities-from-past-to-present/
+  - Paiwan `masalu`: https://shop.statemusic.com.tw/soundtools/blog/60/ABAO-Thank-You.html
+  - Seediq `malu` good predicate: https://minpaku.repo.nii.ac.jp/record/2538/files/SES077_005.pdf
+
+### Iranian `eat == drink` はエラー確定ではないが継続確認
+
+- 対象: `glk`, `lrc`, `bqi` の `eat == drink`
+- Iranian `xordan/xwardan` 系は広義 consume 動詞として「食べる/飲む」の両方を担う可能性がある。
+- ただし個別の Gilaki / Northern Luri / Bakhtiari 方言で basic `drink` として妥当かは、方言辞書なしでは確定不可。
+- 結論: duplicate だけで自動修正しない。個別辞書ベースの確認まで deferred。
+- 参照候補:
+  - https://en.wiktionary.org/wiki/%D8%AE%D9%88%D8%B1%D8%AF%D9%86
+  - https://en.wiktionary.org/wiki/%D8%AE%D9%88%D8%A7%D8%B1%D8%AF%D9%86
+
+### その他、既存持ち越しの強弱メモ
+
+- `peo.hello: duruwa` / `ave.hello: huʃ`
+  - 既に Session 11 の持ち越しにあるが、Codex review でも debatable と判断。
+  - 形容詞・health/good 系を greeting に流用している可能性が高く、碑文・宗教文献で greeting 定型として確認できるかが鍵。
+- `xpr.thanks: spās`
+  - Middle Persian `spās` 系としては plausible だが、Parthian 固有の出典が必要。
+- `pi.thanks: anumodāmi`
+  - Buddhist liturgical/ritual context では plausibile。ただし現代的な direct "thank you" ではなく「随喜する/賛同する」寄りなので、注記候補。
+
+### 次回優先順の提案
+
+1. `sux.good` を専門資料で確認し、誤りなら修正。
+2. 古代語会話句のうち `otl.hello`, `okz.hello/thanks`, `xqa.thanks`, `osu.hello/thanks`, `onw.thanks` を確認。
+3. `elx` / `xhu` の `hello/thanks` を「partly-understood / ancient text language の会話句」として再査定。
+4. Formosan hello/thanks の方言基準を整理。
+5. `mon/mnw` ISO コード衝突は重大だが、既に validator allowlist 化が検討されているため、allowlist の有無に関係なく最終的にはデータ構造として解決する。
+
+---
+
 ## Session 14 (2026-05-05): Validator allowlist 機構実装 + mon/mnw 整理
 
 **スコープ:** Session 9 #4 で deferred していた validator allowlist 機構を実装。Session 8 で発見した mon/mnw warning が validator 出力に常時残り、新しい WARN が出ても埋もれる問題を解消。
@@ -1296,6 +1412,119 @@ PASS
 - Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
 - Session 7 #1-2, #5
 - **Session 8 mon/mnw (allowlisted by Session 14)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
+- Session 13 #3 tiw.cat の Tiwi 土着語確認
+
+---
+
+## Session 15 (2026-05-05): ALLOWLIST 拡張 (expires + unused-entry detection)
+
+**スコープ:** Session 14 で実装した validator allowlist 機構を、Session 14 #1 (expires 機構) と #2 (未使用エントリ検出) で拡張。allowlist が dead code 化するのを防ぎ、定期見直しを強制する仕組みを追加。
+
+### `expires` フィールド (Session 14 #1)
+
+各 ALLOWLIST エントリに optional `expires: 'YYYY-MM-DD'` を追加。日付を過ぎると、エントリは「期限切れ」として WARN/ERROR を **再 promote** し、メッセージに `[ALLOWLIST EXPIRED YYYY-MM-DD; re-promoted to WARN]` suffix を付ける。
+
+```js
+{
+    match: '[mon, mnw] all map to "Mon@16.49,97.62"',
+    reason: '...',
+    ref: 'audit Session 8 + 9, deferred to Session 14+',
+    expires: '2027-01-01',  // ← 追加
+},
+```
+
+実装:
+
+```js
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
+function checkAllowlist(msg) {
+    for (const a of ALLOWLIST) {
+        if (msg.includes(a.match)) {
+            allowlistFired.add(a);
+            if (a.expires && a.expires < TODAY_ISO) {
+                return { ...a, _expired: true };
+            }
+            return a;
+        }
+    }
+    return null;
+}
+```
+
+mon/mnw エントリには `expires: '2027-01-01'` を設定 (約 1.5 年の猶予で Mon dialect 専門資料の確保を促す)。
+
+### 未使用エントリ検出 (Session 14 #2)
+
+`allowlistFired: Set<entry>` で各 entry がマッチしたかを追跡。validator 終了時に未使用 entries を新セクション `UNUSED ALLOWLIST ENTRIES` で表示:
+
+```
+UNUSED ALLOWLIST ENTRIES (1) — match string never fired, may be safe to remove:
+  ? match: "NEVER_MATCHES_ANYTHING_TEST"
+      ref: audit Session 8 + 9, deferred to Session 14+
+```
+
+これで「過去に対応済の問題で ALLOWLIST entry だけ残ってる」状態を自動検出できる。
+
+### テスト結果
+
+両機構を一時的に発火させて動作確認済:
+- 期限切れ (expires=2025-01-01 過去日付) → WARN に再 promote ✓
+- 未使用 (match="NEVER_MATCHES_ANYTHING_TEST") → UNUSED セクションに表示 ✓
+
+### Validator 結果 (現在の正常状態)
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+  ⊘ same (name, lat, lng) under different codes: [mon, mnw] ...
+      reason:  ISO mon=Mongolian conflict + Mon dialect data merge needs Mon-language expert
+      ref:     audit Session 8 + 9, deferred to Session 14+
+      expires: 2027-01-01
+INFOS:    75 (—) + 26 (dup-coord)
+PASS
+```
+
+### Session 15 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`expires` フィールドの 警告 lead-time** — 現状は「過ぎたら即 WARN」だが、「30日前から `[expires soon]` を info で出す」など lead-time があると forgotten allowlist の急な失効を防げる。Session 16+ enhancement 候補。
+
+2. **ALLOWLIST entry の作成日 `created` フィールド** — いつ追加したかを記録すれば、「`X カ月以上未解決の allowlist entry: N 件」のような stats が validator INFO で出せる。技術負債の age 可視化候補。Session 16+。
+
+3. **複数 match のサポート** — 現状 1 entry = 1 match string。「mon/mnw 系の同じ問題が複数メッセージで出る」場合、複数 match を OR でグループ化したい。`match: ['msg1', 'msg2']` 形式の配列対応候補。Session 16+。
+
+4. **ALLOWLIST 統計の README 反映** — README に validator 出力例を載せている場合、ALLOWLIST 件数の更新を都度反映する手間あり。CI で auto-update する仕組み余地。Session 16+ DevOps 検討。
+
+### 持ち越し（Session 16 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+- Session 13 #1-2 verbal-stem 表記 / 複合 script schema
+- Session 14 #3-4 ALLOWLIST 外部ファイル分離 / CI policy
+- **Session 15 #1-4 ALLOWLIST expires lead-time / created field / multi-match / README auto-update**
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted, expires 2027-01-01)**
 - Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
 - Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
 - Session 11 #1 peo.hello / ave.hello 再確認
