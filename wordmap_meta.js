@@ -1513,6 +1513,266 @@ for (const code of Object.keys(LOCATION_BASIS_OVERRIDES)) {
     }
 }
 
+// === surfaceType (Audit Task 84) ===================================
+// Tells consumers what kind of writing the SURFACE column shows.
+// Distinct from pronunciationType (which is about the IPA column).
+//   'native-script'        — uses the language's native writing system
+//   'standard-orthography' — Latin or extended Latin practical orthography
+//                            (incl. ɔ, ɛ, ŋ, click chars where standard)
+//   'romanization'         — Latin romanization of a non-Latin script
+//   'phonetic'             — surface field is intentionally phonetic
+//                            because no practical orthography exists
+//   'mixed'                — visibly mixes systems; needs cleanup
+//   'unknown'              — not reviewed
+// First-pass labeling for high-traffic and recently-audited rows.
+const SURFACE_TYPE = {
+    // Native-script: rows whose surface uses the language's own script
+    zh: 'native-script', yue: 'native-script', nan: 'native-script',
+    wuu: 'native-script', wuu_nb: 'native-script', wuu_sz: 'native-script',
+    wuu_wz: 'native-script', hak_cn: 'native-script', hak_tw: 'native-script',
+    hak_hl: 'native-script', cdo: 'native-script', mnp: 'native-script',
+    cjy: 'native-script', hsn: 'native-script', gan: 'native-script',
+    cpx: 'native-script', nan_qz: 'native-script', nan_te: 'native-script',
+    nan_hai: 'native-script', cnp: 'native-script', czh: 'native-script',
+    yue_gz: 'native-script', yue_ts: 'native-script',
+    zh_sc: 'native-script', zh_db: 'native-script', zh_jh: 'native-script',
+    zh_tj: 'native-script', zh_lz: 'native-script', zh_wh: 'native-script',
+    zh_zz: 'native-script', dng: 'native-script',
+    ja: 'native-script', ja_osa: 'native-script', ja_aom: 'native-script',
+    ja_oki: 'native-script', ja_hak: 'native-script', ja_kyo: 'native-script',
+    ja_hir: 'native-script', ja_kg: 'native-script', ja_sd: 'native-script',
+    ja_mvi: 'native-script', ja_rys: 'native-script',
+    ja_edo: 'native-script', ja_heian: 'native-script',
+    ko: 'native-script', ko_kp: 'native-script', ko_bus: 'native-script',
+    ko_jeju: 'native-script', ko_yb: 'native-script', ko_hg: 'native-script',
+    ko_jl: 'native-script', ko_mid: 'native-script', ko_em: 'native-script',
+    th: 'native-script', th_n: 'native-script', th_s: 'native-script',
+    th_isan: 'native-script',
+    lo: 'native-script', km: 'native-script', my: 'native-script',
+    rki: 'native-script',
+    bo: 'native-script', dz: 'native-script', xct: 'native-script',
+    hi: 'native-script', mr: 'native-script', ne: 'native-script',
+    bho: 'native-script', mai: 'native-script', awa: 'native-script',
+    bn: 'native-script', as: 'native-script', sa: 'native-script',
+    ur: 'native-script', sd: 'native-script', skr: 'native-script',
+    pa: 'native-script', // Gurmukhi
+    gu: 'native-script', or: 'native-script',
+    ta: 'native-script', te: 'native-script', ml: 'native-script',
+    kn: 'native-script', si: 'native-script',
+    ar: 'native-script', ar_eg: 'native-script', ar_lev: 'native-script',
+    ar_gulf: 'native-script', ar_iq: 'native-script', ar_ma: 'native-script',
+    ar_sd: 'native-script', ar_tn: 'native-script',
+    he: 'native-script', am: 'native-script', gez: 'native-script',
+    ti: 'native-script', tig: 'native-script',
+    fa: 'native-script', haz: 'native-script', glk: 'native-script',
+    lrc: 'native-script', bqi: 'native-script', mzn: 'native-script',
+    ps: 'native-script', ckb: 'native-script', ku: 'native-script',
+    el: 'native-script', el_grc: 'native-script',
+    ru: 'native-script', uk: 'native-script', be: 'native-script',
+    bg: 'native-script', mk: 'native-script', sr: 'native-script',
+    cu: 'native-script', orv: 'native-script',
+    mn: 'native-script', mn_cn: 'native-script', xng: 'native-script',
+    bxr: 'native-script', xal: 'native-script', tt: 'native-script',
+    ba: 'native-script', sah: 'native-script', tyv: 'native-script',
+    kjh: 'native-script', alt: 'native-script', kk: 'native-script',
+    ky: 'native-script', tg: 'native-script', uz: 'native-script',
+    crh: 'native-script', krc: 'native-script', kaa: 'native-script',
+    egy: 'native-script', cop: 'native-script', xpu: 'native-script',
+    phn: 'native-script', uga: 'native-script', sux: 'native-script',
+    akk: 'native-script', hit: 'native-script', xlu: 'native-script',
+    elx: 'native-script', xsa: 'native-script', xhu: 'native-script',
+    xmr: 'native-script', onw: 'native-script',
+    arc: 'native-script', hbo: 'native-script', syc: 'native-script',
+    syr: 'native-script', ave: 'native-script', peo: 'native-script',
+    pal: 'native-script', sog: 'native-script', otk: 'native-script',
+    xqa: 'native-script', kho: 'native-script',
+    txg: 'native-script', zkt: 'native-script', juc: 'native-script',
+    pyx: 'native-script', obr: 'native-script', occ: 'native-script',
+    omx: 'native-script', mnw: 'native-script', mfa: 'native-script',
+    shn: 'native-script', khb: 'native-script', kjp: 'native-script',
+    sukh: 'native-script', vi_nom: 'native-script',
+    nci: 'native-script', myn: 'native-script',
+    ka: 'native-script', xmf: 'native-script', hy: 'native-script',
+    sat: 'native-script', mni: 'native-script', new: 'native-script',
+    grt: 'native-script', brx: 'native-script', kha: 'native-script',
+    chr: 'native-script', iu: 'native-script', // Inuktitut syllabics
+    yi: 'native-script', lad: 'native-script', // Hebrew script Yiddish/Ladino
+    cja: 'native-script', mga: 'native-script', sga: 'native-script',
+    bnk: 'native-script', xkk_native: 'native-script',
+    kac: 'native-script', wbm: 'native-script', // ?
+    nut: 'native-script',
+    tig_t: 'native-script', // dummy reference; will be skipped if absent
+    ksw: 'native-script', lhu: 'native-script', lis: 'native-script',
+    nxq: 'native-script', // Naxi pinyin (the surface is Naxi pinyin orthography)
+    pcc: 'native-script', // Bouyei pinyin
+    iuu: 'native-script', // Iu Mien IMUS
+    tji: 'native-script', // Tujia pinyin
+    cqu: 'native-script', // Classical Quechua
+    omc: 'native-script', // Mochica
+    chb: 'native-script', // Chibcha
+    oma: 'native-script', // Old Malay
+    osu: 'native-script', // Old Sundanese
+    otl: 'native-script', // Old Tagalog
+    osp: 'native-script', // Old Spanish
+    osx: 'native-script', // Old Saxon
+    // Standard Latin/extended-Latin orthography (modern)
+    en: 'standard-orthography', en_aave: 'standard-orthography',
+    en_south: 'standard-orthography', en_app: 'standard-orthography',
+    en_ie: 'standard-orthography', en_sco: 'standard-orthography',
+    en_yk: 'standard-orthography', en_ck: 'standard-orthography',
+    en_au: 'standard-orthography', en_in: 'standard-orthography',
+    en_sg: 'standard-orthography', en_ang: 'standard-orthography',
+    enm: 'standard-orthography',
+    fr: 'standard-orthography', fr_qc: 'standard-orthography',
+    fr_be: 'standard-orthography', fr_af: 'standard-orthography',
+    fr_ch: 'standard-orthography', fro: 'standard-orthography',
+    de: 'standard-orthography', de_at: 'standard-orthography',
+    de_by: 'standard-orthography', de_gsw: 'standard-orthography',
+    nds: 'standard-orthography', goh: 'standard-orthography',
+    gmh: 'standard-orthography', dsb: 'standard-orthography',
+    hsb: 'standard-orthography',
+    nl: 'standard-orthography', af: 'standard-orthography',
+    sv: 'standard-orthography', no: 'standard-orthography',
+    nn: 'standard-orthography', da: 'standard-orthography',
+    is: 'standard-orthography', fo: 'standard-orthography',
+    non: 'standard-orthography', got: 'standard-orthography',
+    es_eu: 'standard-orthography', es_mx: 'standard-orthography',
+    es_ar: 'standard-orthography', es_co: 'standard-orthography',
+    es_pe: 'standard-orthography', es_cl: 'standard-orthography',
+    es_cu: 'standard-orthography', es_an: 'standard-orthography',
+    pt_eu: 'standard-orthography', pt_br: 'standard-orthography',
+    it: 'standard-orthography', vec: 'standard-orthography',
+    nap: 'standard-orthography', scn: 'standard-orthography',
+    lmo: 'standard-orthography', pms: 'standard-orthography',
+    eml: 'standard-orthography', mwl: 'standard-orthography',
+    co: 'standard-orthography', sc: 'standard-orthography',
+    fur: 'standard-orthography', rm: 'standard-orthography',
+    ca: 'standard-orthography', oc: 'standard-orthography',
+    gl: 'standard-orthography', an: 'standard-orthography',
+    ast: 'standard-orthography', wa: 'standard-orthography',
+    rup: 'standard-orthography', ro: 'standard-orthography',
+    la: 'standard-orthography', vsa: 'standard-orthography',
+    pl: 'standard-orthography', cs: 'standard-orthography',
+    sk: 'standard-orthography', sl: 'standard-orthography',
+    hr: 'standard-orthography', bs: 'standard-orthography',
+    sq: 'standard-orthography', mt: 'standard-orthography',
+    csb: 'standard-orthography',
+    ga: 'standard-orthography', cy: 'standard-orthography',
+    eu: 'standard-orthography', gd: 'standard-orthography',
+    gv: 'standard-orthography', kw: 'standard-orthography',
+    br: 'standard-orthography', sco: 'standard-orthography',
+    fi: 'standard-orthography', hu: 'standard-orthography',
+    et: 'standard-orthography', se: 'standard-orthography',
+    krl: 'standard-orthography', mhr: 'standard-orthography',
+    mns: 'standard-orthography', kca: 'standard-orthography',
+    udm: 'standard-orthography', myv: 'standard-orthography',
+    kv: 'standard-orthography',
+    lv: 'standard-orthography', lt: 'standard-orthography',
+    sw: 'standard-orthography', ha: 'standard-orthography',
+    ig: 'standard-orthography', yo: 'standard-orthography',
+    zu: 'standard-orthography', xh: 'standard-orthography',
+    ssw: 'standard-orthography', nbl: 'standard-orthography',
+    nso: 'standard-orthography', tn: 'standard-orthography',
+    st: 'standard-orthography', ts: 'standard-orthography',
+    ve: 'standard-orthography', sn: 'standard-orthography',
+    rw: 'standard-orthography', ny: 'standard-orthography',
+    lg: 'standard-orthography', ki: 'standard-orthography',
+    luo: 'standard-orthography', mas: 'standard-orthography',
+    luy: 'standard-orthography', xog: 'standard-orthography',
+    teo: 'standard-orthography', nyn: 'standard-orthography',
+    bem: 'standard-orthography', tum: 'standard-orthography',
+    ndc: 'standard-orthography',
+    fan: 'standard-orthography', ee: 'standard-orthography',
+    ak: 'standard-orthography', // ɔ/ɛ standard
+    fon: 'standard-orthography', wo: 'standard-orthography',
+    so: 'standard-orthography', om: 'standard-orthography',
+    sid: 'standard-orthography', ssy: 'standard-orthography',
+    aa: 'standard-orthography', bej: 'standard-orthography',
+    naq: 'standard-orthography', // click chars are orthographic
+    bci: 'standard-orthography', dyu: 'standard-orthography',
+    bm: 'standard-orthography', ff: 'standard-orthography',
+    mnk: 'standard-orthography', kab: 'standard-orthography',
+    shi: 'standard-orthography', rif: 'standard-orthography',
+    tzm: 'standard-orthography', // Tamazight Latin
+    tr: 'standard-orthography', az: 'standard-orthography',
+    kk_lat: 'standard-orthography', tk: 'standard-orthography',
+    id: 'standard-orthography', ms: 'standard-orthography',
+    jv: 'standard-orthography', su: 'standard-orthography',
+    min: 'standard-orthography', ban: 'standard-orthography',
+    ace: 'standard-orthography', bug: 'standard-orthography',
+    bjn: 'standard-orthography', sas: 'standard-orthography',
+    iba: 'standard-orthography', ljp: 'standard-orthography',
+    bbc: 'standard-orthography', mak: 'standard-orthography',
+    kaw: 'standard-orthography', dtp: 'standard-orthography',
+    nij: 'standard-orthography', sda: 'standard-orthography',
+    tl: 'standard-orthography', ceb: 'standard-orthography',
+    ilo: 'standard-orthography', pam: 'standard-orthography',
+    pag: 'standard-orthography', hil: 'standard-orthography',
+    war: 'standard-orthography', bik: 'standard-orthography',
+    mdh: 'standard-orthography', tsg: 'standard-orthography',
+    mrw: 'standard-orthography', gor: 'standard-orthography',
+    vi: 'standard-orthography', vi_c: 'standard-orthography',
+    vi_s: 'standard-orthography', mtq: 'standard-orthography',
+    haw: 'standard-orthography', mi: 'standard-orthography',
+    sm: 'standard-orthography', to: 'standard-orthography',
+    fj: 'standard-orthography', ty: 'standard-orthography',
+    rar: 'standard-orthography', mh: 'standard-orthography',
+    gil: 'standard-orthography', ch: 'standard-orthography',
+    chk: 'standard-orthography', pon: 'standard-orthography',
+    yap: 'standard-orthography', tet: 'standard-orthography',
+    bi: 'standard-orthography', tpi: 'standard-orthography',
+    hwc: 'standard-orthography', pcm: 'standard-orthography',
+    en_sg2: 'standard-orthography', // Singlish (legacy alias if any)
+    pjt: 'standard-orthography', wbp: 'standard-orthography',
+    tiw: 'standard-orthography',
+    ami: 'standard-orthography', pwn: 'standard-orthography',
+    tay: 'standard-orthography', bnn: 'standard-orthography',
+    trv: 'standard-orthography', tsu: 'standard-orthography',
+    tao: 'standard-orthography', tao2: 'standard-orthography',
+    nv: 'standard-orthography', // Navajo orthography
+    lkt: 'standard-orthography', dak: 'standard-orthography',
+    chy: 'standard-orthography', cho: 'standard-orthography',
+    moh: 'standard-orthography', cr: 'standard-orthography',
+    oj: 'standard-orthography', dak2: 'standard-orthography',
+    apw: 'standard-orthography',
+    qu: 'standard-orthography', quc: 'standard-orthography',
+    quy: 'standard-orthography', quz: 'standard-orthography',
+    ay: 'standard-orthography', arn: 'standard-orthography',
+    cab: 'standard-orthography', emp: 'standard-orthography',
+    guc: 'standard-orthography', myp: 'standard-orthography',
+    yua: 'standard-orthography', tzo: 'standard-orthography',
+    mam: 'standard-orthography', kek: 'standard-orthography',
+    mix: 'standard-orthography', zap: 'standard-orthography',
+    ote: 'standard-orthography', tar: 'standard-orthography',
+    pap: 'standard-orthography', ht: 'standard-orthography',
+    mfe: 'standard-orthography', srn: 'standard-orthography',
+    jam: 'standard-orthography',
+    eo: 'standard-orthography', tok: 'standard-orthography',
+    rom: 'standard-orthography', ain: 'standard-orthography',
+    tum2: 'standard-orthography', dag: 'standard-orthography',
+    kri: 'standard-orthography', tcy: 'standard-orthography',
+    tly: 'standard-orthography', zza: 'standard-orthography',
+    ksh: 'standard-orthography', // legacy if any
+    fy: 'standard-orthography',
+    pi: 'standard-orthography', // Pali Latin (also written in many native scripts)
+    // Romanization of non-Latin / Latin-only conventions for modern langs
+    ipk: 'romanization', kl: 'romanization', esu: 'romanization',
+    tlh: 'romanization', // Klingon Latin orthography
+    jbo: 'romanization', // Lojban Latin
+    // Phonetic surface (no standard orthography)
+    mra: 'phonetic', xkk: 'phonetic',
+    // Mixed (audit §53/§55 surface contamination)
+    // lhu and wbm are mainly native-script; some cells contaminated
+    // — keep native-script labeling but cleanup is per-cell work
+};
+for (const code of Object.keys(SURFACE_TYPE)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta) {
+        if (!LANG_DATA[code].meta.surfaceType) {
+            LANG_DATA[code].meta.surfaceType = SURFACE_TYPE[code];
+        }
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

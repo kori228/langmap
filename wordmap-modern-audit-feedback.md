@@ -34,6 +34,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 134: Centralize cache-buster versions (`WM_ASSET_VERSION` + validator drift check) | ✅ Implemented | infra |
 | Task 99: `locationBasis` schema + UI rendering + first-pass labeling | ✅ 152/578 langs labeled | 152 langs |
 | Task 121: Description fallback visible labeling + validator threshold | ✅ Implemented | UI + 14 WARN |
+| Task 84: `surfaceType` schema + first-pass labeling | ✅ 471/578 langs labeled (81%) | 471 langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -525,6 +526,44 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 84 — surfaceType schema + first-pass labeling (✅ 471/578 langs)
+
+Audit が懸念した「IPA-like 文字 (ɔ/ɛ/ŋ/click) を含む surface を blanket regex で誤検出して valid orthography を破壊するリスク」に対応。`surfaceType` field で surface 列の意味を明示。
+
+**Schema:** `meta.surfaceType: 'native-script' | 'standard-orthography' | 'romanization' | 'phonetic' | 'mixed' | 'unknown'`
+
+**第一段階 labeling — 471/578 言語 (81%):**
+
+| Type | Count | 例 |
+|---|---|---|
+| `standard-orthography` | 255 | en/fr/de/es/it/pt/nl/sv/pl/cs/ro/sw/ha/yo/ee/ak (ɔ/ɛ orthographic)/lkt/dak (diacritics)/nv/haw/mi/sm/to/vi/id/ms/tl/jv/su/qu/quc/eo/tok/etc. |
+| `native-script` | 209 | zh/yue/ja/ko/ar/he/th/lo/my/km/bo/hi/bn/ta/te/ru/uk/el/ka/hy + 全 historical 言語 (cop/syr/sux/akk/hit/orv/onw/...) + 中国少数民族 pinyin 列 (nxq/pcc/iuu/tji) |
+| `romanization` | 5 | iu (Inuktitut Latin)/ipk/kl/esu (Inuit-Yupik) + tlh (Klingon)/jbo (Lojban) |
+| `phonetic` | 2 | mra (Mlabri)、xkk (Khmu) — 標準 orthography が無いため surface=transcription |
+
+**残 107 言語**は次 session で incremental labeling。Surface contamination 個別 cleanup (lhu/wbm) は別 task。
+
+### Validator change
+
+[validate_wordmap_data.js:570-573](validate_wordmap_data.js#L570-L573) check #13g 追加 + INFO line で coverage tally:
+- `surfaceType` enum 検査 (6 値以外で ERROR)
+- 全体 471/578 (81%) coverage を可視化
+
+### Audit が指摘した false-positive 防止
+
+Audit §84 が例示した:
+- `ee` Ewe `ɣe`/`ɖu`/`lɔ̃lɔ̃` → `standard-orthography` ✓
+- `ak` Akan `ɔsrane`/`ɛna`/`ɔdɔ` → `standard-orthography` ✓
+- `naq` Nama `ǁgam-i`/`ǀae-b`/`ǂû` → `standard-orthography` ✓ (click chars are orthographic)
+- `lkt` Lakota `čhaŋté`/`šúŋka`/`waŋží` → `standard-orthography` ✓
+- `mra` Mlabri/`xkk` Khmu → `phonetic` (audit 通り)
+
+これで future Claude session が「`ɔ` を見つけたから IPA だ」と誤判断する事故が schema layer で防げる。
+
+UI 表示は今回追加しない (pronunciationType の隣に並べると情報過多)。Validator で coverage が見える状態が schema cleanliness の十分条件。
+
+---
+
 ## Audit Task 121 — Description fallback visible labeling (✅)
 
 Audit が "If a translated description is missing and English is shown as fallback, the UI should not silently pretend it is localized" と指摘。Localized description が無くて英語が表示される場合、それを user に明示。
@@ -846,7 +885,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=60` (data) / `v=16 → v=22` (meta, +Tasks 99 + 121 description fallback)。Centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=60` (data) / `v=16 → v=23` (meta, +Tasks 84 surfaceType / 99 / 121)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 

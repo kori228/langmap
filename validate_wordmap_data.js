@@ -627,6 +627,10 @@ for (const code of codes) {
             W(`[#13e] ${code}: coverage='base-copy-with-notes' requires meta.baseLang`);
         }
     }
+    if (m.surfaceType !== undefined) {
+        const allowed = new Set(['native-script','standard-orthography','romanization','phonetic','mixed','unknown']);
+        if (!allowed.has(m.surfaceType)) E(`[#13g] ${code}: meta.surfaceType "${m.surfaceType}" not in enum`);
+    }
     if (m.baseLang !== undefined && !ctx.LANG_DATA[m.baseLang]) {
         E(`[#13e] ${code}: meta.baseLang "${m.baseLang}" not in LANG_DATA`);
     }
@@ -737,6 +741,21 @@ if (withLocationBasis > 0) {
     const breakdown = Object.entries(locBasisCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`locationBasis coverage: ${withLocationBasis}/${codes.length} languages (${breakdown}) — Audit Task 99`);
+}
+// Audit Task 84: surfaceType coverage tally
+let withSurfaceType = 0;
+const surfaceTypeCounts = {};
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    if (m.surfaceType) {
+        withSurfaceType++;
+        surfaceTypeCounts[m.surfaceType] = (surfaceTypeCounts[m.surfaceType] || 0) + 1;
+    }
+}
+if (withSurfaceType > 0) {
+    const breakdown = Object.entries(surfaceTypeCounts).sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k}=${v}`).join(', ');
+    I(`surfaceType coverage: ${withSurfaceType}/${codes.length} languages (${breakdown}) — Audit Task 84`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -
