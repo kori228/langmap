@@ -678,3 +678,98 @@ PASS  (check #13 重複キー、#14 3+ クラスタ ともに pass)
 - Session 7 #1-2, #5 (Tujia 転写整合, Mayan 派生言語追加時の PLFM 統一, heart `anima'` borrowing)
 
 ---
+
+## Session 8 (2026-05-05): 民族誌的代表点で 3 言語ペアを分離 + mon/mnw 重大問題発見
+
+**スコープ:** Session 6 で Lagos クラスタを解消したのと同様、distinct languages が同一座標に重なっている 2 コードペアのうち、明確な民族誌的代表点を持つ 3 件を分離。さらに、Mon language の code conflict (`mon` vs `mnw`) を新発見し記録。
+
+### 民族誌的分離 3 件
+
+| Code | Lang | 旧座標 | 新座標 | 根拠 |
+|---|---|---|---|---|
+| `om` | Oromo | 9.02, 38.75 (Addis Ababa) | **8.55, 39.27** (Adama) | Adama は Oromia 州の地域中心都市。Addis Ababa は Amhara/政治中心、Oromo の核ではない |
+| `xh` | Xhosa | -33.93, 18.42 (Cape Town) | **-33.02, 27.91** (East London) | East London は Eastern Cape の Xhosa 中心都市。Cape Town は Afrikaans 圏 |
+| `bug` | Buginese | -5.13, 119.41 (Makassar) | **-4.13, 120.00** (Sengkang) | Sengkang は Wajo regency の Bugis 中心地。Makassar は Makassarese (mak) の中心 |
+
+各ペアで一方が「都市の文化中心」、他方が「移住先・行政中心」と重なっていた問題を解消。
+
+**残存させた重複ペア (parent+dialect, parent+historical, etc.):**
+- ja+ja_edo (Tokyo), ja_kyo+ja_heian (Kyoto), vi+vi_nom (Hanoi), fr+fro (Paris), it+la (Rome), bo+xct (Lhasa), zh_han+zh_tang (Xi'an), haw+hwc (Honolulu), quz+cqu (Cusco), uk+orv (Kyiv), no+non (Oslo), bg+cu (Sofia), tl+otl (Manila), kca+mns (Khanty-Mansi), sco+en_sco (Glasgow), tr+lad (Istanbul), es_mx+nci (Mexico City), hu+rom (Budapest), ga+en_ie (Dublin), za+cnp (Nanning), mr+en_in (Mumbai), bal+brh (Quetta), ts+nso (Polokwane), ff+bm (Bamako), xng+otk (Karakorum), ja_kg+? (Kagoshima)
+
+これらはほとんど自然な重複（親+方言、親+歴史言語、co-located distinct families）。地図 UI の spiderfy / cluster offset で対処すべき。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+INFOS:    66 (—) + 28 (dup-coord, 31→28 = 3 件解消)
+PASS
+```
+
+### 🚨 Session 8 中に発見した重大問題（未対応・記録のみ）
+
+**`mon` vs `mnw` 言語コード衝突 + データ重複:**
+
+`wordmap_data.js` 内で:
+- L1314: `mon: { name: 'Mon', native: 'ဘာသာမန်', lat: 16.49, lng: 97.62 }` (Mawlamyine)
+- L2794: `mnw: { name: 'Mon', native: 'ဘာသာ မန်', lat: 16.49, lng: 97.62 }` (Mawlamyine)
+
+**問題点:**
+
+1. **ISO 639-2 では `mon` = Mongolian、`mnw` = Mon (Austroasiatic)。** `mon` を Mon language に使うのは ISO 違反。本データセットの Mongolian は `mn` (ISO 639-1) に正しく割り当てられている。
+2. **両エントリが同一の Mon 言語を指している** が、surface/IPA データが大きく異なる:
+   - 同じセル: water/drink/mother/tree(surface)/hand(surface)/eye(surface)/one(surface)
+   - 異なる surface: father (`မ` vs `အပါ`), eat (`ၜုၚ်` vs `ဂစုက်`), love (`ဍၚ်` vs `ဍေံ`), heart (`ဍုၚ်` vs `ဗ္ၜေံ`), house (`ၐိၚ်` vs `သ္ၚိ`), dog (`ကၠဵု` vs `ပ္ၟိၚ်`), cat (`ဟိၚ်` vs `ဗ္ဍိုၚ်`), hello (`အရ` vs `ပ္ဍဲဂေါဝ်`), thanks (`ဂုဏ်` vs `တၚ်ဂုဏ်`), good (`ၐုၚ်` vs `ခိုဟ်`)
+   - 同じ surface だが異なる IPA: sun (tŋai vs tŋoa), moon (ɡitɔ vs kətoa), tree (tʃəneˀ vs sɔ), hand (tɔˀ vs toa), eye (mat vs mɔʔ), one (muə vs mwoa)
+3. **§6.28 validator check #13 では検出不可** — 同一キー名ではないため。別の検査ロジックが必要 (例: 同一 name + 同一 coord で別コードの組合わせを検出)。
+
+**対応保留理由:**
+
+- どちらの転写・語彙が正典か判断には Mon language の専門資料が必要
+- 単純削除は両側のデータを失う可能性
+- Mon は実は方言バリアントが多数 (Pegu, Martaban, Ye, Tavoy, Inland) — `mon` と `mnw` が異なる方言を指している可能性も
+
+**Session 9+ 推奨対応:**
+
+a. **短期:** 一方を rename して座標を分離 (例: `mon` → `mnw_pegu` で Bago 16.79,96.46 へ移動、`mnw` は Martaban 16.49,97.62 維持)
+b. **長期:** Mon dialect 専門資料 (Bauer 1982, Diffloth) で方言基準を確定し、適切なコード割当 + meta.dialectBasis 記載
+c. **validator 強化:** check #15 として「同一 (name, lat, lng) を別コードで持つ場合 WARN」を追加
+
+### Session 8 中に気付いたその他の問題（未対応・記録のみ）
+
+1. **Tibetan `bo` vs Classical Tibetan `xct` (Lhasa)** — 親+古典で正当な重複だが、`xct` は本来 ISO 639-3 で Classical Tibetan、Lhasa は現代政治中心で歴史中心は Yarlung Valley (Tsetang)。歴史言語の代表点を「現代都市」に置くポリシー全般の見直し余地あり (Session 9+)。
+
+2. **`ts` Tsonga vs `nso` Northern Sotho (Polokwane)** — Tsonga heartland は Giyani (-23.30, 30.71)、Northern Sotho は Polokwane で正当。Session 9+ で `ts` を Giyani に移動候補。
+
+3. **`ff` Fula vs `bm` Bambara (Bamako)** — Bambara は Bamako で正当、Fula は Sahel 全域で広域分散。代表点を Mopti (14.49, -4.20) などに分離する余地。Session 9+ 候補。
+
+4. **`za` Zhuang vs `cnp` Pinghua (Nanning)** — Pinghua は Nanning で正当 (Sinitic)、Zhuang heartland は Wuming (23.16, 108.27) など西部 Guangxi。Session 9+ 候補。
+
+5. **`tr` Turkish vs `lad` Ladino (Istanbul)** — Ladino は歴史的に Istanbul で正当 (Ottoman Sephardic)、Turkish も同。両方 Istanbul で歴史的・現代的に存在感あり。残存させて問題なし。
+
+6. **`bal` Balochi vs `brh` Brahui (Quetta)** — 両者とも Balochistan に分布、共存している民族言語ペア。物理的に分離困難だが、Brahui 中心地は Mastung (29.79, 66.84) など。Session 9+ 候補だが微妙。
+
+### 持ち越し（Session 9 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- **Session 8 #mon/mnw: validator check #15 (同一 name + coord で別コード)**
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 6 #2-3 (他 2 コードクラスタ個別判断)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 + Mon dialect 整理 (重大)**
+- Session 8 その他 dup-coord 候補 (ts/Giyani, ff/Mopti, za/Wuming, bal/Mastung 等)
+
+---
