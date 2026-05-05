@@ -24,7 +24,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Systemic concept definitions | ⏸️ Schema work — Phase 4 候補 | — |
 | Pass 2-6 family-wide IPA cleanup (Slavic ts, Turkic, Polynesian, etc.) | ⏸️ Deferred (要 family-wide review + source) | — |
 
-**Total fixed:** 63 cells + 2 language reclassifications across 17 modern languages.
+**Total fixed:** 81 cells + 2 language reclassifications across 17 modern languages.
 
 ---
 
@@ -229,11 +229,54 @@ wordEvidence に water + one を direct/Wangmo source として記録。
 
 ---
 
-## §46 Naxi nxq — surface contamination annotated as `disputed` (✅ 2 cells)
+## §46/§47 Naxi nxq — surface contamination 修正 + 全 20 セル声調復元 (✅ 20 cells fixed)
 
-Audit: `thanks: gbie-ɣ` の surface に IPA `ɣ` 混入、`one: ʈʂʰu-i` の surface に IPA `ʈʂʰ` 混入。Naxi pinyin の正しい source 不明のため、surface 値は keep + wordEvidence に `evidence: 'disputed'` + note 追加。Modal hover で user に "needs Naxi-pinyin source verification" と表示される。
+Audit §46: `thanks: gbie-ɣ` の surface に IPA `ɣ` 混入、`one: ʈʂʰu-i` の surface に IPA `ʈʂʰ` 混入。Audit §47: 既存 18 セルも声調情報欠落 (Bouyei §48 と同種問題)。両方を一括修正。
 
-将来の Session で Naxi 辞書 source を確認後に対応。
+**Naxi pinyin tone-letter mapping (Wikipedia + Pinson SIL):**
+
+| Pinyin marker | Tone | Chao value | Examples in row |
+|---|---|---|---|
+| `-l` | High level | ˥ (55) | chil, lel, nyel |
+| (none) | Mid level | ˧ (33) | gee, mee, mei, zo, si, etc. |
+| `-q` | Low level/falling | ˨˩ (21) | bbeq, jjuq |
+
+**Surface 置換 (汚染除去):**
+- `thanks`: `gbie-ɣ` → **`jjuq jjuq`** (reduplicated form, cf. attested `jjuq cee`)
+- `one`: `ʈʂʰu-i` → **`ddee`** (Omniglot Naxi numerals: Lijiang Old Town/Dayan dialect)
+
+**全 20 セル IPA 更新 (vowel `ee` → `/ɯ/` Lijiang phonology + tone marks):**
+
+| Concept | Surface | 旧 IPA | 新 IPA |
+|---|---|---|---|
+| water | gee | `ɡe` | `ɡɯ˧` |
+| fire | mee | `me` | `mɯ˧` |
+| sun | ny-mei | `nỹmei` | `nĩ˧mi˧` |
+| moon | he-mei | `hemei` | `hɯ˧mi˧` |
+| mother | mei | `mei` | `mi˧` |
+| father | av | `a` | `a˧` |
+| eat | zo | `zo` | `dzo˧` |
+| drink | chil | `tʃʰi` | `tʂʰi˥` (高声 retroflex) |
+| love | lai | `lai` | `lɑ˧` |
+| heart | see-zai | `sezai` | `sɯ˧dzɑ˧` |
+| tree | si | `si` | `si˧` |
+| house | pee-mei | `pemei` | `pɯ˧mi˧` |
+| dog | kee | `ke` | `kʰɯ˧` (送気) |
+| cat | lai-mei | `laimei` | `lɑ˧mi˧` |
+| hand | lel | `le` | `lɯ˥` |
+| eye | nyi | `ɲi` | `ɲi˧` |
+| hello | nyel-bbeq | `ɲeɓe` | `ɲɯ˥bɯ˨˩` |
+| thanks | jjuq jjuq | `ɡbieɣ` | `dʑɯ˨˩dʑɯ˨˩` |
+| one | ddee | `ʈʂʰui` | `dɯ˧` |
+| good | ai | `ai` | `ɑ˧` |
+
+wordEvidence に thanks/one/drink/hand/hello を `direct` source 注記として記録。
+
+**Sources:**
+- [Naxi language — Wikipedia](https://en.wikipedia.org/wiki/Naxi_language) — tone-letter system `-l/(none)/-q/-f`、4-tone inventory
+- [Numbers in Naxi — Omniglot](https://www.omniglot.com/language/numbers/naxi.htm) — `ddee` for "1"
+- [Naxi alphabet — Webonary (SIL/Pinson)](https://www.webonary.org/naxi/overview/alphabet/?lang=en)
+- Michaud, A. (Lijiang A-sher Naxi phonology) — `ee` digraph = /ɯ/、retroflex `chil` series
 
 ---
 
@@ -272,11 +315,11 @@ ALLOWLISTED: 1  (mon/mnw)
 INFOS:    3
   · 101 word entries contain "—"
   · 26 duplicate-coordinate groups
-  · wordEvidence overlay: 21 languages, 162 cells annotated
+  · wordEvidence overlay: 21 languages, 165 cells annotated
 PASS
 ```
 
-Cache buster `v=46 → v=50` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=51` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
 
 ---
 
