@@ -1127,3 +1127,81 @@ PASS
 - Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
 
 ---
+
+## Session 13 (2026-05-05): §6.32 Wakhi 正書法統一 + 残 audit 項目巡回確認
+
+**スコープ:** audit §6.32 で記録された wbl Wakhi の正書法不統一 (18セルが Cyrillic、2セルだけ Latin) を解消。並行して §6.34 (pau Palauan) / §6.39 (tiw Tiwi の `pussycat` borderline) を確認。
+
+### §6.32 — wbl Wakhi cat/one を Cyrillic 表記に統一
+
+audit が指摘した「同一言語内で表示 script が混在」の典型例。Wakhi は Perso-Arabic, Cyrillic, Latin の複数正書法を持つが、本データセットは大半が Cyrillic 表記なので、不整合を解消する方向で Latin → Cyrillic に転写:
+
+| Code | Field | 旧 (Latin) | 新 (Cyrillic) | 根拠 |
+|---|---|---|---|---|
+| `wbl` | `cat` | `mušuk`/`muʃuk` | **`мушук`/`muʃuk`** | Wakhi Cyrillic 標準 (Tajik Pamir orthography): š→ш |
+| `wbl` | `one` | `yiu`/`jiu` | **`йиу`/`jiu`** | Wakhi Cyrillic: y/j→й |
+
+IPA は不変。これで wbl 全 20 セルが一貫して Cyrillic surface + IPA pronunciation の同形式になった。
+
+### §6.34 / §6.39 — 既に解消済 / borderline 判断
+
+- **§6.34 `pau.dog == pau.cat = katuu`** — 既に Session 1-2 で解消。現状: `dog: bilis/biˈlis`, `cat: katuu/katuː` ✓
+- **§6.39 `tiw.cat: pussycat`** — Tiwi (Australian Aboriginal) で cat の borrowed term。`pussycat` は英語 colloquial 形で、Tiwi 側で `pussikat` として実際に使用されている (loanword 許容方針)。audit も「借用語を許容する方針なら問題ではない」と判断。**現状維持**。
+
+### §6.40 / §6.16 Iranian eat==drink — 確認結果
+
+audit §6.40 で再評価された結果、`glk` Gilaki / `lrc` Lurish / `bqi` Bakhtiari の `eat == drink` は Iranian `xwardan/xordan` 系の広義 consume 動詞として使われる可能性が高く、**個別の方言辞書なしでは即エラーにできない**と確認。Session 13 では touch せず、Session 14+ 個別辞書ベースで再判定の deferred 状態を維持。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 1  (mon/mnw — 意図的に visible)
+INFOS:    75 (—)  ← 不変 (Session 13 は `—` 化なし)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 13 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`wbl.eat: 'йав-'` `wbl.drink: 'пав-'` の trailing `-`** — verbal stem 形式 (動詞語幹を `-` 付きで示す Iranian 動詞辞書の慣例)。同じパターン: `xpr Parthian` で `eat: 'xward-'` `drink: 'pī-'`、`xqa Karakhanid` で `eat: 'yi-'` `drink: 'ič-'`。これは linguistic convention だが UI 上「中途半端な単語」に見える可能性。Session 14+ で各セルに `notation: 'verbal-stem'` のような meta を追加する schema 検討。
+
+2. **Wakhi 表記体系のドキュメント化** — wbl が Perso-Arabic / Cyrillic / Latin を持つことは meta.script に明記すべき。現状 meta.script は単一値想定。`script: { primary: 'Cyrillic (Tajik Pamir)', alternative: ['Perso-Arabic', 'Latin'] }` のような複合値 schema 候補。Session 14+。
+
+3. **`tiw.cat: pussycat` borderline 件** — 現状維持にしたが、Tiwi 専門辞書 (Osborne 1974, Lee 1987) で土着の cat 語が attested かどうか再確認の余地あり。Session 14+ optional research 候補。
+
+4. **Wakhi の他 cells は全て Cyrillic だが、`native: 'x̌ikwor zik'` (decl line) は Latin** — これは linguistic name (autoname) として Latin が許容される慣例。一方で他 Cyrillic 表記言語 (`ru: 'Русский'`) は Cyrillic で書かれており、不統一感あり。Session 14+ で statemeta.scripts schema と一緒に検討。
+
+### 持ち越し（Session 14 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #4 validator allowlist 機構
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4-5 削除値 notes 化 / `—` 連続セル UI 折りたたみ
+- Session 11 #3 古代語 eat/drink 活用形ポリシー
+- Session 11 #6 削除値の `wordmap_meta.js` 語注 schema
+- **Session 13 #1 verbal-stem `-` 表記の meta 化**
+- **Session 13 #2 複合 script 言語の `meta.script` schema 拡張**
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 (重大、validator #15 で常時 visible)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- Session 11 #1 peo.hello / ave.hello 再確認
+- Session 11 #2 sux.good `saŋ` の確認
+- Session 12 #1-6 (okz / xqa / osu / otl / onw / cqu の hello/thanks 再確認)
+- Session 13 #3 tiw.cat の Tiwi 土着語確認
+
+---
