@@ -1443,30 +1443,101 @@
             return _metaLoadPromise;
         }
 
-        // Per Session 31 (Schema Revolution Phase 1): each status now carries a
-        // short pedagogical description shown inline next to the badge so users
-        // understand the data's evidentiary level (not just see a colored label).
+        // Per Session 31 (Schema Revolution Phase 1): each status carries a
+        // short pedagogical description shown inline next to the badge.
+        // Per Session 32 (Phase 1.5): labels translated to all 21 UI langs,
+        // descriptions to major 7 (en/ja/zh/ko/de/fr/ru); others fall back to en.
+        // Lookup helpers: pickLabel(badge) / pickDesc(badge) below.
         const DATA_STATUS_BADGE = {
-            modern:            null,
-            attested:          { en:'attested',          ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8',
-                                 desc_en:'Direct primary text corpus exists; values cite real sources.',
-                                 desc_ja:'直接的な原典コーパスあり、値は実在の出典に依拠。' },
-            fragmentary:       { en:'fragmentary',       ja:'断片的',       bg:'#fef0e0', fg:'#c0392b',
-                                 desc_en:'Limited isolated attestations; many cells use related-language proxies.',
-                                 desc_ja:'断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。' },
-            reconstructed:     { en:'reconstructed',     ja:'比較再構',     bg:'#fff5e0', fg:'#b56500',
-                                 desc_en:'Comparative reconstruction; no direct text record.',
-                                 desc_ja:'比較言語学による再構形、直接的な text record なし。' },
-            undeciphered:      { en:'undeciphered',      ja:'未解読',       bg:'#fae0e0', fg:'#a02020',
-                                 desc_en:'Script not yet readable.',
-                                 desc_ja:'文字が未解読の言語。' },
-            'partly-understood': { en:'partly understood', ja:'部分解読',   bg:'#fff0d0', fg:'#a06000',
-                                 desc_en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
-                                 desc_ja:'文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。' },
-            pedagogical:       { en:'pedagogical',       ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0',
-                                 desc_en:'Teaching approximation; not actual attested historical forms.',
-                                 desc_ja:'教育用近似、実際に attested された歴史的形態ではない。' },
+            modern: null,
+            attested: {
+                bg:'#e8f0fe', fg:'#1a73e8',
+                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es_eu:'atestiguado', es_mx:'atestiguado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
+                descs: {
+                    en:'Direct primary text corpus exists; values cite real sources.',
+                    ja:'直接的な原典コーパスあり、値は実在の出典に依拠。',
+                    zh:'存在直接的原始文本语料，值引自真实出处。',
+                    ko:'직접적인 원전 코퍼스가 존재, 값은 실제 출처에 의거.',
+                    de:'Direkte Primärquellen vorhanden; Werte beruhen auf echten Belegen.',
+                    fr:'Corpus de textes primaires existant ; valeurs sourcées.',
+                    ru:'Существует прямой первичный корпус; значения из реальных источников.',
+                },
+            },
+            fragmentary: {
+                bg:'#fef0e0', fg:'#c0392b',
+                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es_eu:'fragmentario', es_mx:'fragmentario', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
+                descs: {
+                    en:'Limited isolated attestations; many cells use related-language proxies.',
+                    ja:'断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。',
+                    zh:'仅有少量孤立的证据，许多词条采用近缘语言的代用形式。',
+                    ko:'고립적인 단편 자료만 존재, 많은 셀은 근연 언어의 proxy.',
+                    de:'Nur vereinzelte Belege; viele Zellen nutzen verwandtsprachliche Proxys.',
+                    fr:'Attestations isolées limitées ; nombreuses cellules par proxy de langues apparentées.',
+                    ru:'Лишь отдельные засвидетельствованные слова; многие ячейки — прокси из родственных языков.',
+                },
+            },
+            reconstructed: {
+                bg:'#fff5e0', fg:'#b56500',
+                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es_eu:'reconstruido', es_mx:'reconstruido', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
+                descs: {
+                    en:'Comparative reconstruction; no direct text record.',
+                    ja:'比較言語学による再構形、直接的な text record なし。',
+                    zh:'比较语言学重构，无直接文本记录。',
+                    ko:'비교언어학에 의한 재구형, 직접적인 텍스트 기록 없음.',
+                    de:'Komparative Rekonstruktion; keine direkten Textbelege.',
+                    fr:'Reconstitution comparative ; aucun témoignage textuel direct.',
+                    ru:'Сравнительная реконструкция; прямых текстовых свидетельств нет.',
+                },
+            },
+            undeciphered: {
+                bg:'#fae0e0', fg:'#a02020',
+                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es_eu:'no descifrado', es_mx:'no descifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
+                descs: {
+                    en:'Script not yet readable.',
+                    ja:'文字が未解読の言語。',
+                    zh:'文字尚未被解读。',
+                    ko:'문자가 아직 해독되지 않은 언어.',
+                    de:'Schrift noch nicht entziffert.',
+                    fr:'Écriture pas encore déchiffrée.',
+                    ru:'Письменность ещё не расшифрована.',
+                },
+            },
+            'partly-understood': {
+                bg:'#fff0d0', fg:'#a06000',
+                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
+                descs: {
+                    en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
+                    ja:'文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。',
+                    zh:'文字可读，但词汇/语法尚不完备，许多词条暂定。',
+                    ko:'문자는 읽을 수 있으나 어휘·문법은 미완성, 많은 셀이 잠정적.',
+                    de:'Schrift lesbar, aber Wortschatz/Grammatik unvollständig; viele Zellen unsicher.',
+                    fr:'Écriture lisible mais lexique/grammaire incomplets ; nombreuses cellules incertaines.',
+                    ru:'Письменность читается, но лексика/грамматика неполные; многие ячейки предварительные.',
+                },
+            },
+            pedagogical: {
+                bg:'#eee0fa', fg:'#6020a0',
+                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es_eu:'pedagógico', es_mx:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
+                descs: {
+                    en:'Teaching approximation; not actual attested historical forms.',
+                    ja:'教育用近似、実際に attested された歴史的形態ではない。',
+                    zh:'教学用近似形式，并非实际历史所证的语言形态。',
+                    ko:'교육용 근사형, 실제로 attested된 역사적 형태가 아님.',
+                    de:'Didaktische Annäherung; keine tatsächlich belegten historischen Formen.',
+                    fr:'Approximation pédagogique ; pas de formes historiques réellement attestées.',
+                    ru:'Учебное приближение; не реальные засвидетельствованные исторические формы.',
+                },
+            },
         };
+        // Look up label/desc for current uiLang with English fallback.
+        function pickBadgeLabel(badge) {
+            if (!badge || !badge.labels) return '';
+            return badge.labels[uiLang] || badge.labels[uiLang.split('_')[0]] || badge.labels.en || '';
+        }
+        function pickBadgeDesc(badge) {
+            if (!badge || !badge.descs) return '';
+            return badge.descs[uiLang] || badge.descs[uiLang.split('_')[0]] || badge.descs.en || '';
+        }
         // For these statuses, IPA cells are rendered in italic to signal
         // "this is reconstructed/uncertain notation, not direct phonemic transcription".
         const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
@@ -1486,8 +1557,8 @@
             const status = getDataStatus(code);
             const badge = DATA_STATUS_BADGE[status];
             if (badge) {
-                const label = (uiLang === 'ja' && badge.ja) ? badge.ja : badge.en;
-                const desc = (uiLang === 'ja' && badge.desc_ja) ? badge.desc_ja : badge.desc_en;
+                const label = pickBadgeLabel(badge);
+                const desc = pickBadgeDesc(badge);
                 html += `<div style="margin:4px 0 8px;line-height:1.4">` +
                     `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg};vertical-align:middle">${escapeHtml(label)}</span>` +
                     (desc ? ` <span style="font-size:10px;color:#777;vertical-align:middle">${escapeHtml(desc)}</span>` : '') +

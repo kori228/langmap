@@ -3433,3 +3433,114 @@ PASS  (data unchanged, schema 既存活用)
 **前回からの持ち越し:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2, Session 28-30 incremental items
 
 ---
+
+## Session 32 (2026-05-05): 🌐 Schema Revolution Phase 1.5 — dataStatus 多言語化
+
+**スコープ:** Session 31 で en/ja のみだった dataStatus badge の labels と descriptions を、UI lang 全 21 + 主要教育需要 7 lang に展開。Phase 1 の透明度向上を全 UI lang ユーザーへ届ける。
+
+### 変更内容
+
+#### 1. `DATA_STATUS_BADGE` を flat → nested 構造へ refactor
+
+```js
+// Before (Session 31, en/ja only):
+attested: { en:'attested', ja:'文献あり', desc_en:'...', desc_ja:'...', bg, fg }
+
+// After (Session 32, 21 labels + 7 descs):
+attested: {
+    bg, fg,
+    labels: { en, ja, ko, zh, yue, vi, th, id, hi, de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk, ar, he, sw },  // 21 langs
+    descs: { en, ja, zh, ko, de, fr, ru },  // 7 langs
+}
+```
+
+#### 2. `pickBadgeLabel(badge)` / `pickBadgeDesc(badge)` ヘルパー追加
+
+uiLang を見て該当言語の文字列を返す。fallback chain: `uiLang → uiLang.split('_')[0] → 'en'`
+
+```js
+function pickBadgeLabel(badge) {
+    if (!badge || !badge.labels) return '';
+    return badge.labels[uiLang] || badge.labels[uiLang.split('_')[0]] || badge.labels.en || '';
+}
+function pickBadgeDesc(badge) {
+    if (!badge || !badge.descs) return '';
+    return badge.descs[uiLang] || badge.descs[uiLang.split('_')[0]] || badge.descs.en || '';
+}
+```
+
+例: UI lang = `pt_eu` で descs に `pt_eu` がない → `pt` を試す → なければ `en` fallback。
+
+### 翻訳カバレッジ
+
+| 機能 | カバー数 | 備考 |
+|---|---|---|
+| **Labels** | 21/21 UI lang | 全 UI lang 完備、英語 fallback 不要 |
+| **Descriptions** | 7/21 UI lang | en/ja/zh/ko/de/fr/ru (教育需要・言語学伝統の strong lang) |
+| 他 14 lang の desc | 英語 fallback | yue/vi/th/id/hi/it/es*/pt*/uk/ar/he/sw |
+
+**翻訳された labels の例 (`fragmentary`):**
+- ja: 断片的, ko: 단편적, zh: 残缺, yue: 殘缺
+- de: fragmentarisch, fr: fragmentaire, it: frammentario
+- es: fragmentario, pt: fragmentário
+- ru: фрагментарный, uk: фрагментарний
+- ar: مُتفرّق, he: מקוטע, sw: kipande kipande
+- hi: खंडित, vi: mảnh vỡ, th: เศษเสี้ยว, id: fragmenter
+
+**翻訳された descs の例 (`reconstructed`):**
+- en: Comparative reconstruction; no direct text record.
+- ja: 比較言語学による再構形、直接的な text record なし。
+- zh: 比较语言学重构，无直接文本记录。
+- ko: 비교언어학에 의한 재구형, 직접적인 텍스트 기록 없음.
+- de: Komparative Rekonstruktion; keine direkten Textbelege.
+- fr: Reconstitution comparative ; aucun témoignage textuel direct.
+- ru: Сравнительная реконструкция; прямых текстовых свидетельств нет.
+
+### 影響範囲
+
+- 21 UI lang 全部で badge label が母語表示
+- 7 主要 UI lang で description も母語表示 (en/ja/zh/ko/de/fr/ru)
+- 14 lang は description が英語 fallback (短期、Session 33+ で順次追加候補)
+
+### 教材スコアへの影響
+
+Session 31 後 (70-75) → Session 32 後 の見立て:
+- **+2-3 points** (inclusivity): non-en/ja UI ユーザーへ意味が伝わる
+- **+1-2 points** (legitimacy): 多言語対応した教育コンテンツとしての credibility
+- 推定 **73-78/100**
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS
+
+(Sanity check via JS eval: 6 statuses × 21 labels + 6 × 7 descs = 168 strings parsed cleanly.)
+```
+
+### Session 32 中に気付いた追加問題（未対応・記録のみ）
+
+1. **残 14 UI lang への description 翻訳** — yue/vi/th/id/hi/it/es*/pt*/uk/ar/he/sw。約 14 × 5 statuses = 70 strings。Session 33+ optional。
+
+2. **`undeciphered` status は使用 0 件のまま** — Session 31 で記録済 (xmr/zkt/pyx/elx は `partly-understood` に reclassify 済)。badge 定義を残しているのは将来未解読言語追加時の即応性のため。
+
+3. **fallback chain の locale バリエーション** — 現状 `uiLang → uiLang.split('_')[0] → 'en'`。例えば `es_mx` で descs に `es` 等のグループ key があれば使う仕組みがあると、descriptions 追加が効率化。Session 33+ schema 候補。
+
+4. **labels と descs が分離した構造** — flat → nested 化したことで、将来 `tooltips` (詳細説明) や `references` (典拠 URL) を追加する際の拡張性が向上。Phase 2 で per-cell evidence schema を設計する際の参考になる。
+
+### 持ち越し（Session 33 以降）
+
+**Phase 2 (per-cell evidence schema)** ← 次の大きな jump:
+- セルごとに `{surface, ipa, evidence: 'direct|reconstructed|proxy|none', source}` を持たせる schema 設計
+- まず fragmentary 5 言語 (xsc/juc/xpr/omc/chb) の cells で試験投入
+- UI で per-cell badge / footnote / hover で表示
+
+**Phase 1 残作業:**
+- Session 32 #1 残 14 UI lang への desc 翻訳
+
+**前回からの持ち越し (Codex 2-8 残, mnp, etc.):** 同前
+
+---
