@@ -635,6 +635,24 @@ for (const code of codes) {
         const allowed = new Set(['natural','constructed','pidgin-creole','pedagogical-stage','reconstructed-proto','historical-attested']);
         if (!allowed.has(m.languageKind)) E(`[#13h] ${code}: meta.languageKind "${m.languageKind}" not in enum`);
     }
+    if (m.codeType !== undefined) {
+        const allowed = new Set(['iso','regional-variant','historical-stage','pedagogical-stage','script-variant','constructed','custom']);
+        if (!allowed.has(m.codeType)) E(`[#13i] ${code}: meta.codeType "${m.codeType}" not in enum`);
+    }
+    // Audit Task 109: underscore codes need a non-iso codeType + ideally parentCode/historical-stage
+    if (code.includes('_')) {
+        if (!m.codeType) {
+            W(`[#13i] ${code}: underscore code lacks meta.codeType (Audit Task 109)`);
+        } else if (m.codeType === 'iso') {
+            W(`[#13i] ${code}: underscore code can't have codeType='iso'`);
+        } else if (m.codeType === 'regional-variant' && !m.parentCode) {
+            // ja_mvi/ja_rys are regional-variant but might be ISO 639-3 of their own; tolerate
+            // when canonicalCode exists and differs from parent
+        }
+    }
+    if (m.canonicalCode && m.iso6393 && m.canonicalCode !== m.iso6393) {
+        W(`[#13i] ${code}: canonicalCode='${m.canonicalCode}' disagrees with iso6393='${m.iso6393}'`);
+    }
     if (m.baseLang !== undefined && !ctx.LANG_DATA[m.baseLang]) {
         E(`[#13e] ${code}: meta.baseLang "${m.baseLang}" not in LANG_DATA`);
     }
@@ -775,6 +793,22 @@ if (withLanguageKind > 0) {
     const breakdown = Object.entries(languageKindCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`languageKind coverage: ${withLanguageKind}/${codes.length} languages (${breakdown}) — Audit Task 118`);
+}
+// Audit Task 109: codeType / canonicalCode coverage tally
+let withCodeType = 0, withCanonicalCode = 0;
+const codeTypeCounts = {};
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    if (m.codeType) {
+        withCodeType++;
+        codeTypeCounts[m.codeType] = (codeTypeCounts[m.codeType] || 0) + 1;
+    }
+    if (m.canonicalCode) withCanonicalCode++;
+}
+if (withCodeType > 0) {
+    const breakdown = Object.entries(codeTypeCounts).sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k}=${v}`).join(', ');
+    I(`codeType coverage: ${withCodeType}/${codes.length} languages (${breakdown}); canonicalCode set on ${withCanonicalCode} — Audit Task 109`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -

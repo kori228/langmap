@@ -1848,6 +1848,90 @@ for (const code of Object.keys(LANGUAGE_KIND)) {
     }
 }
 
+// === codeType + canonicalCode (Audit Task 109) =====================
+// Documents the project's code taxonomy so future contributors and the
+// validator can distinguish project regional codes from ISO codes.
+//   'iso'                — direct ISO 639-1/3 code
+//   'regional-variant'   — geographic dialect/accent of a parent language
+//   'historical-stage'   — earlier chronological stage of a living language
+//   'pedagogical-stage'  — pedagogical reconstruction (overlaps with langKind)
+//   'script-variant'     — variant primarily distinguished by script
+//   'constructed'        — invented language project code
+//   'custom'             — none of the above
+// canonicalCode: the ISO 639-3 code where the project code differs.
+const HISTORICAL_STAGE_CODES = new Set([
+    'en_ang', 'enm',  // Old/Middle English
+    'el_grc',         // Ancient Greek
+    'zh_song', 'zh_tang', 'zh_han',  // Classical Chinese stages
+    // ja_edo / ja_heian / ko_mid / ko_em are pedagogical-stage (per langKind)
+]);
+const PEDAGOGICAL_STAGE_CODES = new Set([
+    'ja_edo', 'ja_heian', 'ko_mid', 'ko_em', 'vi_nom',
+]);
+const SCRIPT_VARIANT_CODES = new Set([
+    // (vi_nom is pedagogical-stage; if ever a pure script variant arises,
+    //  add here)
+]);
+const CANONICAL_CODE = {
+    // Where the project code differs from ISO 639-3
+    ja_oki:  'ryu', // Central Okinawan
+    ja_mvi:  'mvi', // Miyako (already 639-3)
+    ja_rys:  'rys', // Yaeyama (already 639-3)
+    ko_jeju: 'jje', // Jeju
+    ja_osa:  'jpn', // Japanese (regional-variant of jpn)
+    ja_aom:  'jpn',
+    ja_hak:  'jpn',
+    ja_kyo:  'jpn',
+    ja_hir:  'jpn',
+    ja_kg:   'jpn',
+    ja_sd:   'jpn',
+    ko_kp:   'kor', ko_bus: 'kor', ko_yb: 'kor', ko_hg: 'kor', ko_jl: 'kor',
+    zh_db: 'cmn', zh_sc: 'cmn', zh_jh: 'cmn', zh_tj: 'cmn',
+    zh_lz: 'cmn', zh_wh: 'cmn', zh_zz: 'cmn',
+    yue_gz: 'yue', yue_ts: 'yue',
+    nan_pn: 'nan', nan_qz: 'nan', nan_te: 'nan', nan_hai: 'nan',
+    wuu_nb: 'wuu', wuu_sz: 'wuu', wuu_wz: 'wuu',
+    hak_cn: 'hak', hak_tw: 'hak', hak_hl: 'hak',
+    en_aave: 'eng', en_south: 'eng', en_app: 'eng', en_ie: 'eng',
+    en_sco: 'eng', en_yk: 'eng', en_ck: 'eng', en_au: 'eng',
+    en_in:  'eng', en_sg: 'eng',
+    de_at: 'deu', de_by: 'bar', de_gsw: 'gsw',
+    fr_be: 'fra', fr_qc: 'fra', fr_af: 'fra', fr_ch: 'fra',
+    es_eu: 'spa', es_mx: 'spa', es_an: 'spa', es_pe: 'spa',
+    es_cu: 'spa', es_ar: 'spa', es_co: 'spa', es_cl: 'spa',
+    pt_eu: 'por', pt_br: 'por',
+    ar_eg: 'arz', ar_lev: 'apc', ar_gulf: 'afb', ar_iq: 'acm',
+    ar_ma: 'ary', ar_sd: 'apd', ar_tn: 'aeb',
+    vi_c: 'vie', vi_s: 'vie',
+    th_n: 'nod', th_s: 'sou', th_isan: 'tts',
+    mn_cn: 'mvf', // Peripheral Mongolian
+    en_ang: 'ang', enm: 'enm', el_grc: 'grc',
+    zh_song: 'lzh', zh_tang: 'lzh', zh_han: 'lzh',
+    ja_edo: 'ojp', ja_heian: 'ojp',
+    ko_mid: 'okm', ko_em: 'okm',
+    vi_nom: 'vie',
+};
+for (const code of Object.keys(LANG_DATA)) {
+    const m = LANG_DATA[code].meta;
+    if (!m) continue;
+    if (m.codeType) continue; // don't override explicit assignments
+    if (!code.includes('_')) {
+        m.codeType = 'iso';
+    } else if (PEDAGOGICAL_STAGE_CODES.has(code)) {
+        m.codeType = 'pedagogical-stage';
+    } else if (HISTORICAL_STAGE_CODES.has(code)) {
+        m.codeType = 'historical-stage';
+    } else if (SCRIPT_VARIANT_CODES.has(code)) {
+        m.codeType = 'script-variant';
+    } else {
+        // Default for underscore codes: regional-variant
+        m.codeType = 'regional-variant';
+    }
+    if (CANONICAL_CODE[code] && !m.canonicalCode && !m.iso6393) {
+        m.canonicalCode = CANONICAL_CODE[code];
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

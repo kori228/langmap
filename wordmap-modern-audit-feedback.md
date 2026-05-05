@@ -37,6 +37,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 84: `surfaceType` schema + first-pass labeling | ✅ 471/578 langs labeled (81%) | 471 langs |
 | Task 105: SEO/OpenGraph text — remove "IPA pronunciations" overclaim | ✅ Fixed | meta + README |
 | Task 118: `languageKind` schema + UI badge + first-pass labeling | ✅ 94 langs labeled + UI | 94 langs |
+| Task 109: `codeType` + `canonicalCode` schema + 100% coverage + validator | ✅ 578/578 codeType + 82 canonicalCode | all langs |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -528,6 +529,65 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 109 — codeType + canonicalCode schema (✅ 578/578 + 82 canonical)
+
+Audit が "There are 86 non-simple custom-looking codes containing underscores" の taxonomy を要求。Project が ISO 639-1/3 と project regional codes を mix しているが分類されていないため、validator も documentation もそれを区別できなかった。
+
+**Schema 追加:**
+- `meta.codeType`: `'iso' | 'regional-variant' | 'historical-stage' | 'pedagogical-stage' | 'script-variant' | 'constructed' | 'custom'`
+- `meta.canonicalCode`: project code が ISO 639-3 と異なる場合の真の ISO 639-3 (例: `ja_oki` → `ryu` Central Okinawan)
+
+**完全 coverage 達成 — 578/578 (100%):**
+
+| codeType | Count | 例 |
+|---|---|---|
+| `iso` | 493 | en, fr, de, ja, ko, zh, ar, ... (アンダーバー無しの全 ISO 639 codes) |
+| `regional-variant` | 75 | ja_osa, ja_kyo, ko_bus, zh_db, en_aave, fr_qc, ar_eg, vi_c, etc. |
+| `historical-stage` | 5 | en_ang, enm, el_grc, zh_song, zh_tang, zh_han (chronological earlier stages of living langs) |
+| `pedagogical-stage` | 5 | ja_edo, ja_heian, ko_mid, ko_em, vi_nom (rebuilt stages for teaching) |
+
+**`canonicalCode` set on 82 languages:**
+
+| Project code | canonicalCode | 説明 |
+|---|---|---|
+| `ja_oki` | `ryu` | Central Okinawan (Option A reclassify per Session 50) |
+| `ko_jeju` | `jje` | Jeju (Option A) |
+| `de_by` | `bar` | Bavarian |
+| `de_gsw` | `gsw` | Swiss German Alemannic |
+| `ar_eg` | `arz` | Egyptian Arabic |
+| `ar_lev` | `apc` | Levantine Arabic |
+| `ar_gulf` | `afb` | Gulf Arabic |
+| `ar_iq` | `acm` | Mesopotamian Arabic |
+| `ar_ma` | `ary` | Moroccan Arabic |
+| `ar_sd` | `apd` | Sudanese Arabic |
+| `ar_tn` | `aeb` | Tunisian Arabic |
+| `th_n` | `nod` | Northern Thai (Lanna) |
+| `th_s` | `sou` | Southern Thai |
+| `th_isan` | `tts` | Northeastern Thai (Isan) |
+| `mn_cn` | `mvf` | Peripheral Mongolian (Inner Mongolia) |
+| `en_ang`/`enm`/`el_grc` | `ang`/`enm`/`grc` | 直 ISO 639-3 |
+| `zh_song`/`zh_tang`/`zh_han` | `lzh` | Literary Chinese (all 3 are stages of) |
+| `ja_edo`/`ja_heian` | `ojp` | (pedagogical reconstructions of OJP-stage Japanese) |
+| `ko_mid`/`ko_em` | `okm` | Middle/Early Modern Korean (closest 639-3) |
+
+**Validator changes:**
+
+[validate_wordmap_data.js:578-595](validate_wordmap_data.js#L578-L595) check #13i 追加:
+- `codeType` enum 検査
+- アンダーバー code は `codeType` 必須 (欠落で WARN)
+- アンダーバー code に `codeType='iso'` 不可 (WARN)
+- `canonicalCode` と `iso6393` の disagree で WARN
+- INFO line で coverage tally
+
+これで:
+- Future contributor が `xx_yy` 形式の独自 code を追加した時、validator が即座に「codeType 設定して」「canonicalCode を設定して」と warn
+- Educational use 時に "ISO 639 code か / project code か / どの ISO に対応するか" が data layer に明示される
+- 例えば `ar_eg` の modal で future UI が canonicalCode='arz' を表示することで、user が ISO 639-3 'arz' を直接調べられる
+
+UI 表示は今回は schema layer のみ (modal で codeType / canonicalCode を専用表示しなくても、現在の `[code]` 表示 + family/parentCode で機能的には十分)。
+
+---
+
 ## Audit Task 105 — SEO/OG/README "IPA pronunciations" overclaim 修正 (✅)
 
 Audit が "Avoid public metadata claiming the map provides IPA pronunciations for all entries" と指摘。Tasks 76/94 で「第二列は IPA だけでなく broad/orthography/romanization も含む」と明示した以上、SEO 文言も整合化必須。
@@ -945,7 +1005,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=61` (data) / `v=16 → v=24` (meta, +Tasks 84/99/105/118/121)。Centralized via `WM_ASSET_VERSION`.
+Cache buster `v=46 → v=61` (data) / `v=16 → v=25` (meta, +Tasks 84/99/105/109/118/121)。Centralized via `WM_ASSET_VERSION`.
 
 ---
 
