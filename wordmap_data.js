@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 588 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 591 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -59,7 +59,9 @@ const EXCLUDED_CODES = new Set([
   // Reconstructed proto / hypothetical
   'pjk',
   // Korean Peninsula historical
-  'oko', 'okg'
+  'oko', 'okg', 'ko_gor',
+  // Japonic historical / proto
+  'ja_chu', 'pry'
 ]);
 
 const LANG_DATA = {
@@ -997,6 +999,29 @@ const LANG_DATA = {
     words: { water:['水','midzu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['おっかさん','okkasaN'], father:['おとっつぁん','otottsaɴ'], eat:['食う','kuː'], drink:['飲む','nomu'], love:['恋','kohi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よう','ɡokiɡeɴjoː'], thanks:['忝い','katadʑikenai'], one:['一','hitotsu'], good:['良い','joi'] }},
   ja_heian: { name: 'Japanese (Heian)', native: '平安京言葉', lat: 35.01, lng: 135.77,
     words: { water:['水','midu'], fire:['火','ɸi'], sun:['日','ɸi'], moon:['月','tukï'], mother:['母','ɸaɸa'], father:['父','titï'], eat:['食ふ','kaɸu'], drink:['飲む','nomu'], love:['恋','koɸi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','iɸe'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['あなかしこ','anakasiko'], thanks:['忝なし','katadikenaɕi'], one:['一つ','ɸitotu'], good:['良し','joɕi'] }},
+  // Middle Japanese (中世日本語) — Kamakura-Muromachi (1185-1603).
+  // Best attested via Heike Monogatari (~1240), Tsurezuregusa (1330),
+  // and especially Vocabulario da Lingoa de Iapam (1603) compiled by
+  // Jesuit missionaries — first systematic phonetic record of Japanese.
+  // Phonological transitions: p- → ɸ- (and later h-); -e- diphthong-
+  // simplification; verb conjugation regularization.
+  ja_chu: { name: 'Middle Japanese', native: '中世日本語', lat: 35.01, lng: 135.77, // Kyoto (linguistic center throughout Kamakura-Muromachi)
+    words: { water:['水','midu'], fire:['火','ɸi'], sun:['日','ɸi'], moon:['月','tuki'], mother:['母','ɸaɸa'], father:['父','titi'], eat:['食ふ','kuɸu'], drink:['飲む','nomu'], love:['愛','ai'], heart:['心','kokoro'], tree:['木','ki'], house:['家','iɸe'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よろしう','ɡokiɡen joroɕiu'], thanks:['忝し','katadʑikenaɕi'], one:['一つ','ɸitotu'], good:['良し','joɕi'] }},
+  // Proto-Ryukyuan (PR) — reconstructed common ancestor of all Ryukyuan
+  // languages (Okinawan, Miyako, Yaeyama, Yonaguni). Diverged from
+  // mainland Japonic ~7-8c. CE per Pellard (2015), Thorpe (1983).
+  // Distinctive innovations: *teda 'sun' (vs Japonic *pi), *kimu
+  // 'heart/liver' (vs Japonic *kokoro), *maja 'cat' (vs *neko).
+  pry: { name: 'Proto-Ryukyuan', native: '*PR', lat: 28.40, lng: 129.50, // Amami area (Japonic-Ryukyuan boundary; geographic midpoint of Ryukyuan dispersal)
+    words: { water:['*midu','*midu'], fire:['*pi','*pi'], sun:['*teda','*teda'], moon:['*tuki','*tuki'], mother:['*amma','*amma'], father:['*aja','*aja'], eat:['*kam-','*kam'], drink:['*num-','*num'], love:['—','—'], heart:['*kimu','*kimu'], tree:['*kii','*kiː'], house:['*yaa','*jaː'], dog:['*in','*in'], cat:['*maja','*maja'], hand:['*tii','*tiː'], eye:['*mii','*miː'], hello:['—','—'], thanks:['—','—'], one:['*pitu','*pitu'], good:['*masi','*maɕi'] },
+    wordEvidence: {
+      sun:    { evidence: 'reconstructed', source: 'Pellard 2015 — *teda; cf. Okinawan tida, Miyako tida (distinctive Ryukyuan; mainland Japonic uses *pi)' },
+      heart:  { evidence: 'reconstructed', source: 'Thorpe 1983 — *kimu (肝 "liver/heart"); cf. Miyako kimu (Ryukyuan retains "liver" semantics where mainland Japonic shifted to kokoro)' },
+      cat:    { evidence: 'reconstructed', source: 'Pellard 2015 — *maja; cf. Okinawan/Miyako majaː (distinctive Ryukyuan; not cognate to mainland *neko)' },
+      mother: { evidence: 'reconstructed', source: 'Pellard 2015 — *amma; cf. Okinawan ammaː, Miyako amma' },
+      water:  { evidence: 'reconstructed', source: 'Cognate with Japonic *midu' },
+      one:    { evidence: 'reconstructed', source: 'Pellard 2015 — *pitu; cf. OJ pïtötu, modern Japanese hitotsu' },
+    } },
   ko_mid: { name: 'Medieval Korean', native: '中世韓國語', lat: 37.57, lng: 126.98,
     words: { water:['믈','mɯl'], fire:['블','pɯl'], sun:['ᄒᆡ','hʌj'], moon:['ᄃᆞᆯ','tʌl'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌk.ta'], drink:['마시다','maɕi.ta'], love:['ᄉᆞ랑','sʌ.ɾaŋ'], heart:['ᄆᆞᅀᆞᆷ','mʌzʌm'], tree:['나모','namo'], house:['집','tɕip'], dog:['가히','kahi'], cat:['고아이','koai'], hand:['손','son'], eye:['눈','nun'], hello:['안녕ᄒᆞ쇼셔','annjʌŋ hʌ.sjo.sjʌ'], thanks:['고맙ᄉᆞᆸ나이다','komap.sʌp.na.i.ta'], one:['ᄒᆞ나','hʌna'], good:['됴타','tjota'] }},
   // Old Korean (Silla period, 7-10c.) — direct ancestor of Korean.
@@ -3281,6 +3306,9 @@ const DATA_STATUS_OVERRIDES = {
     ko_em:     'pedagogical',
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
+    ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
+    ja_chu:    'pedagogical',      // Middle Japanese — period reconstruction (Heike + Vocabulario)
+    pry:       'reconstructed',    // Proto-Ryukyuan — comparative reconstruction
     vi_nom:    'pedagogical',
     // Well-attested historical Sinitic:
     zh_song:   'attested',
