@@ -1538,8 +1538,8 @@ const LANG_DATA = {
         "tʃaʃman"
       ],
       "hello": [
-        "𐎭𐎢𐎼𐎢𐎺",
-        "duruwa"
+        "—",
+        "—"
       ],
       "thanks": [
         "—",
@@ -1626,8 +1626,8 @@ const LANG_DATA = {
         "tʃaʃman"
       ],
       "hello": [
-        "𐬵𐬎𐬱",
-        "huʃ"
+        "—",
+        "—"
       ],
       "thanks": [
         "—",
@@ -2852,6 +2852,9 @@ const DATA_STATUS_OVERRIDES = {
     // Per Codex review 3 / Session 17 #1.
     xsc:       'fragmentary',       // Scythian — only `spaka`=dog directly attested via
                                     // Iranica `Išpakaia`; rest are Old Iranian/Avestan proxy
+    juc:       'fragmentary',       // Jurchen — Britannica: "almost nothing is known".
+                                    // Limited inscriptions + Sino-Jurchen vocabulary (Kane 1989);
+                                    // most cells are Manchu projection. Per Codex review 4.
     // Pedagogical reconstructions (not attested forms; teaching approximations):
     ja_edo:    'pedagogical',
     ja_heian:  'pedagogical',

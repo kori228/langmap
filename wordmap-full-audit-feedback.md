@@ -2266,3 +2266,287 @@ PASS
 - Session 17 #3 hit.sun 正しい cuneiform / Session 18 #1 omc/chb/juc fragmentary
 
 ---
+
+## Codex 追加レビュー 6 (2026-05-05): Pali / Old Persian / Avestan / Middle Persian / Parthian
+
+**スコープ:** 前回までの ancient/historical review の続き。今回は `pi`, `peo`, `ave`, `pal`, `xpr` を、現行 `wordmap_data.js` と過去の feedback 記録の食い違いも含めて確認。
+
+### 重要: `peo.hello` / `ave.hello` は現行データにまだ残っている
+
+- 対象:
+  - `wordmap_data.js:1540` `peo.hello: ["𐎭𐎢𐎼𐎢𐎺", "duruwa"]`
+  - `wordmap_data.js:1628` `ave.hello: ["𐬵𐬎𐬱", "huʃ"]`
+- 評価: **未解決。過去 feedback には「Session 11 で `—` 化」と読める記述があるが、現行データ上はまだ残っている。**
+- 根拠:
+  - University of Texas Old Iranian Online の Old Persian base-form dictionary では `duruva-` は “durable, stable, firm, secure” 系で、greeting ではない。
+  - Avestan `hu-/huš-` 系は “good/well” 系の接頭・派生要素で、単独の `hello` として出す根拠は弱い。Avesta.org の辞書でも `ushta` は “hail/prosperity/good fortune/health/happiness” 系として確認できるが、現行の `huʃ` とは別。
+- 推奨:
+  - `peo.hello` は `["—", "—"]` に戻すのが安全。
+  - `ave.hello` も `["—", "—"]` が安全。もし `ushta` を採る場合でも「ritual/liturgical salutation」注記が必須。
+
+### `peo` Old Persian: 直接 attested と proxy/reconstructed が混ざっている
+
+- 対象: `wordmap_data.js:1470-1557`。
+- 評価: **`thanks` が `—` なのは良い。一方で `hello`, `cat`, 一部 basic nouns/verbs は Old Persian inscription corpus で直接確認できるか不明で、Avestan/Old Iranian proxy の可能性が高い。**
+- 背景:
+  - University of Texas Old Iranian Online は Old Persian を Achaemenid royal inscriptions からのみ知られる言語として説明している。
+  - Lexilogos も Old Persian resources を “all the words which occur in the Persian cuneiform inscriptions” 型の限定コーパス辞書として整理している。
+- 個別リスク:
+  - `hello:duruwa` は上記の通り **要修正候補**。
+  - `cat:𐎱𐎡𐏁𐎡/piʃiː` は Old Persian corpus 直接語として確認できなかった。Iranian 系の `piši`/`pišag` proxy なら、Old Persian cuneiform で断定表示するのは危険。
+  - `dog:spaka`, `hand:dasta`, `eye:tʃaʃman`, `tree:druma`, `house:maːnija`, `eat:xar`, `drink:paː`, `love:frija` は Iranian cognate として plausible だが、Old Persian inscriptions に直接出るかを Kent / Tolman / Schmitt でセル単位確認したい。
+  - `good:naiba` は UT base-form dictionary で “beautiful, pious” と出るため、単純な `good` とは少しずれる。UI には “beautiful/pious” 寄りの注記があると安全。
+- 推奨:
+  - `peo` は language-level `attested` でも、cell-level に `direct-attested` / `Old-Iranian-proxy` を分ける。
+  - 直接出典未確認の `cat` は `—` か `proxy` 注記付きにする。
+
+### `ave` Avestan: 基礎語は比較的強いが、`hello` と `cat` が弱い
+
+- 対象: `wordmap_data.js:1558-1645`。
+- 評価: **water/fire/sun/dog/hand/eye/good などは Avestan dictionary で確認しやすい。一方 `hello:huʃ` と `cat:piʃiː` は危険。**
+- 確認できた強い項目:
+  - Avesta.org dictionary で `ap` water, `hvar` sun, `span/spâ` dog, `zasta` hand, `cashman` eye などが確認できる。
+  - `wohu` は Avestan `vohu/vahu-` 系 “good” として妥当。
+- 個別リスク:
+  - `hello:huʃ` は **要修正候補**。`huš-` を `hello` として単独提示するのは根拠不足。
+  - `cat:piʃiː` は Avesta.org common dictionary では見当たらず、Avestan direct attestation の確認が必要。Middle/New Iranian proxy の可能性がある。
+  - `love:frija` は “dear/beloved” 系か “love” 動詞/名詞かを Kanga / Bartholomae で要確認。
+- 推奨:
+  - `ave.hello` は `—` 化を最優先。
+  - `ave.cat` は direct source がなければ `—` または `proxy` 注記。
+
+### `pal` Middle Persian: 大枠は妥当、ただし Pahlavi 表記と語義幅の出典が必要
+
+- 対象: `wordmap_data.js:1915-1942`。
+- 評価: **`drōd` / `spās` は Middle Persian greeting/thanks 系として plausible。基礎語も大きな即時エラーは見えないが、Pahlavi spelling は曖昧なので辞書エントリ単位で確認したい。**
+- 背景:
+  - MPCD は MacKenzie に沿った標準転写で Middle Persian dictionaries/glossaries を横断検索できるよう整備している。
+  - MPDP は実テキストの actual occurrences と用例を重視する辞書プロジェクトで、未 attest の reconstructed forms も区別する方針。
+- 個別メモ:
+  - `thanks:spās` は現代 Persian `sepās` に続く Iranian 系として自然。
+  - `hello:drōd` も greeting として plausible。
+  - `cat:gurbag` は Middle Persian/Persian 系として plausible だが、Pahlavi spelling と attestation を MacKenzie/MPCD で確認したい。
+  - `love:dōšī` は “love/affection/friendship” 系か、動詞/名詞/形容詞のどれを出しているかが曖昧。`word` キーが `love` なので品詞注記が必要。
+- 推奨:
+  - `pal` は現状維持でよいが、Pahlavi script surface と transliteration の source ID を持たせる。
+
+### `xpr` Parthian: Middle Persian からの類推が混ざっている可能性
+
+- 対象: `wordmap_data.js:2443-2444`。
+- 評価: **全体に Iranian cognate として plausible だが、Parthian 固有資料で確認できていないセルが多い。特に `hello`, `thanks`, `cat`, `house`, `good` は Middle Persian 形の転用ではないか要確認。**
+- 個別リスク:
+  - `hello:drōd`, `thanks:spās` は Middle Iranian としては自然。ただし Parthian 固有の citation が必要。
+  - `eat:xward-`, `drink:pī-` は verbal stem 表示。`pal.eat:xwardan`, `pal.drink:nōšīdan` のような infinitive 表示と混在しているため UI/meta 上は不統一。
+  - `cat:pišī` は Parthian direct attestation を要確認。Iranian proxy の可能性あり。
+  - `good:nēw` は Parthian としてあり得るが、Middle Persian/New Persian 系との混同に注意。
+- 推奨:
+  - Durkin-Meisterernst `Dictionary of Manichaean Middle Persian and Parthian` か MPCD/Kosh 系で Parthian entry を確認してから確定。
+  - `xpr` は `stem` 表示 (`xward-`, `pī-`) をセル注記する。
+
+### `pi` Pali: 語彙は概ね良いが、`hello/thanks` は register 注記が必要
+
+- 対象: `wordmap_data.js:599-686`。
+- 評価: **基礎語は Pali dictionary 上かなり妥当。問題は `hello:namo` と `thanks:anumodāmi` が日常会話の直訳ではなく、仏教的・儀礼的 register の表現である点。**
+- 個別メモ:
+  - `namo` は “homage/salutation” としては妥当だが、現代的 `hello` ではない。
+  - `anumodāmi` は WisdomLib/PTS 系で “rejoice in; appreciate; be thankful for” と確認できる。thanks 的用法はあるが、英語 `thank you` の汎用直訳ではなく「随喜する/感謝し賛同する」寄り。
+  - `eat:khādati`, `drink:pivati` は finite 3sg 形を辞書見出し的に出している。Pali 辞書ではこの形で見出しになることも多いが、他言語で infinitive/stem/noun が混在している問題と同じく `formType` 注記が必要。
+  - `good:sundara` は “beautiful/good” 寄り。Pali らしい “good/well/excellent” なら `sādhu` も候補。
+- 推奨:
+  - `pi.hello` は `namo` のままでもよいが `liturgical/homage salutation` 注記。
+  - `pi.thanks` は `ritual/appreciative formula` 注記。単純な `thanks` として出すなら tooltip に意味幅を出す。
+
+### 今回の優先修正順
+
+1. **`peo.hello` と `ave.hello` を `—` 化**。過去メモと現行データが食い違っており、かつ語義上も危険。
+2. **`peo.cat` と `ave.cat` の direct source 確認**。未確認なら `—` または proxy 注記。
+3. **`xpr` Parthian の固有出典確認**。Middle Persian と同形に見える項目は source が必要。
+4. **`pi` / `pal` は大枠維持で register・formType 注記**。直ちに `—` 化するほどではない。
+
+### 参照
+
+- Pali Text Society, freely available dictionaries: https://palitextsociety.org/pali-studies/pali-dictionaries/
+- PTS Pali-English Dictionary lookup: https://ped.readingfaithfully.org/
+- WisdomLib `anumodati`: https://www.wisdomlib.org/definition/anumodati
+- University of Texas Old Iranian Online introduction: https://lrc.la.utexas.edu/eieol/aveol/0
+- University of Texas Old Persian base-form dictionary: https://lrc.la.utexas.edu/eieol_base_form_dictionary/aveol/22
+- Lexilogos Old Persian resources: https://www.lexilogos.com/english/persian_old.htm
+- Avesta.org Avestan dictionary: https://www.avesta.org/avdict/
+- MPCD Middle Persian glossaries: https://www.mpcorpus.org/glossaries/
+- Middle Persian Dictionary Project: https://soudavar.org/middle-persian-dictionary/
+
+---
+
+## Codex 追加レビュー 7 (2026-05-05): Sumerian / Akkadian / Northwest Semitic / Syriac / Ge'ez
+
+**スコープ:** `sux`, `akk`, `phn`, `uga`, `xpu`, `hbo`, `arc`, `syc`, `gez`。過去 Session 12 で hello/thanks は一度 survey 済だが、今回は「thanks に bless/praise/glory を流用していないか」「直接 attested ではない動物名を入れていないか」を中心に再確認。
+
+### `sux` Sumerian: `good: saŋ` は修正優先、`cat` も source 必須
+
+- 対象: `wordmap_data.js:691-778`。
+- 評価: **`thanks` が `—` なのは良い。一方 `good: 𒊩𒌆 / saŋ` はかなり危険。過去 Session 11 の懸念どおり、Sumerian の “good” は普通 `du10` / `dug` 系や `silim` 系で確認すべき。**
+- 個別リスク:
+  - `good:𒊩𒌆/saŋ` は “head / top / first / principal” 系の可能性が高く、単純な `good` ではない。しかも surface `𒊩𒌆` は `nin` 系に見えるため、transliteration と sign が整合しているかも怪しい。
+  - `hello:𒁲/silim` は “health, well-being, peace” 系の greeting として plausible。ただし `hello` という modern label には注記が必要。
+  - `cat:𒌓𒊬/ʃa.tur` は直接 source 未確認。Sumerian に猫語彙を置くなら ePSD2 entry ID で確認したい。
+  - `moon:𒀭𒋀𒆠/nanna` は神名・月神としては plausible だが、`moon` そのものの普通名詞と神名が混ざっている可能性に注記が必要。
+- 推奨:
+  - `sux.good` は最優先で ePSD2 / PSD 確認。直接 `good` でないなら `𒄭 / du10` 系へ変更候補。
+  - `sux.cat` は ePSD2 で direct attestation がなければ `—` または note 付き。
+
+### `akk` Akkadian: 基本語は強いが、`thanks: tašlimtu` は再確認
+
+- 対象: `wordmap_data.js:779-866`。
+- 評価: **基礎語は概ね強い。`šurānu(m)` = cat と `šulmu(m)` = well-being/greeting は辞書上も確認しやすい。一方 `thanks:𒁲𒌅/taʃlimtu` は “thank you” としての直接根拠が弱い。**
+- 確認できた強い項目:
+  - `cat: šurānu(m)` は CAD / Concise Dictionary of Akkadian 系で “cat” として確認される。
+  - `hello: šulmu` は “well-being, health, safety, peace, greeting” 系として plausible。
+- 個別リスク:
+  - `thanks:tašlimtu` は `š-l-m` 系から作った「peace/well-being/reconciliation」寄りの語に見え、conversational thanks としては未確認。過去メモでは「派生だが許容範囲」とされていたが、今回の基準では **direct evidence 要**。
+  - `fire:𒉈𒌋/išātu` の surface は logographic/phonetic 混在の可能性がある。Akkadian の cuneiform 表示は単語ごとに logogram か syllabic spelling かを明記したい。
+- 推奨:
+  - `akk.thanks` は CAD / CDA で `tašlimtu` の意味を確認。単に “peace/reconciliation” なら `—` 化または “formula not attested” 注記。
+
+### `phn` Phoenician / `xpu` Punic: `thanks: barak` は “bless” であって thanks ではない
+
+- 対象:
+  - `wordmap_data.js:1822-1823` `phn`
+  - `wordmap_data.js:2046-2047` `xpu`
+- 評価: **`hello:𐤔𐤋𐤌/šalom` は Semitic greeting として plausible。一方 `thanks:𐤁𐤓𐤊/barak` は “bless” であり、`thanks` としては過剰。**
+- 背景:
+  - Krahmalkov `Phoenician-Punic Dictionary` は Phoenician/Punic の基本参照だが、現時点で `barak` を “thank you” formula とする直接証拠は未確認。
+  - Semitic `brk` は Hebrew / Ugaritic / Phoenician で “bless” 系として自然だが、`thanks` とは意味が違う。
+- 個別リスク:
+  - `phn.thanks` / `xpu.thanks` は **`—` 化候補**。少なくとも “blessing/praise, not conversational thanks” 注記が必要。
+  - `phn.cat:𐤔𐤍𐤓/ʃunār` は Akkadian `šurānu` → Aramaic/Hebrew 系の cognate としては plausible だが、Phoenician direct attestation は要確認。Punic はすでに `—` なので保守的。
+  - `phn.water:𐤌𐤌/majim` は spelling が `mm` で、Hebrew 型 `mayim` を Phoenician 表記に単純転写している可能性。Krahmalkov で要確認。
+- 推奨:
+  - `phn.thanks`, `xpu.thanks` は direct inscriptional formula が見つからなければ `—`。
+  - `phn.cat` は direct source がなければ `—` または Semitic-cognate proxy 注記。
+
+### `uga` Ugaritic: `brk` は “bless/knee”、thanks ではない
+
+- 対象: `wordmap_data.js:1824-1825`。
+- 評価: **`cat` が `—` なのは良い。一方 `thanks:𐎁𐎗𐎋/baːriku` は “bless” の動詞 `brk` を thanks に流用しており、`thanks` としては危険。**
+- 根拠:
+  - Ugaritic `𐎁𐎗𐎋/brk` は “knee” と “to bless” の両義が辞書で確認できる。
+  - “thank you” の定型として `brk` を出す根拠は未確認。
+- 推奨:
+  - `uga.thanks` は `—` 化候補。
+  - `uga.hello:šalāmu` は Semitic peace/well-being greeting として plausible だが、ritual/formula 注記を付ける。
+
+### `hbo` Biblical Hebrew: `todah` は attested だが modern “thank you” とは違う
+
+- 対象: `wordmap_data.js:2486-2487`。
+- 評価: **`cat` が `—` なのは非常に良い。`שלום/shalom` と `תודה/todah` はどちらも attested だが、`todah` は Biblical Hebrew では thanksgiving / praise / thank-offering の名詞で、現代会話の “thanks” と同一視しすぎない方がよい。**
+- 根拠:
+  - Strong / BDB 系では `todah` は thanksgiving, praise, confession, thank-offering, thanksgiving choir/procession などとして説明される。
+  - Bible encyclopedia 系では cat は canonical scriptures には出ないとされるため、`hbo.cat:—` は妥当。
+- 推奨:
+  - `hbo.thanks` は維持可。ただし tooltip で “thanksgiving/praise/thank-offering; not necessarily conversational thank you” と出したい。
+
+### `arc` / `syc` / `gez`: 後代・典礼 register の注記が必要
+
+- 対象:
+  - `wordmap_data.js:689-690` `arc`
+  - `wordmap_data.js:1943-1944` `syc`
+  - `wordmap_data.js:1951-1952` `gez`
+- 評価: **基礎語は概ね Semitic として plausible。ただし `thanks` 欄が modern/Neo-Aramaic・典礼語・praise/glory 系と混ざっている。**
+- 個別リスク:
+  - `arc.thanks:ܬܘܕܝ/tawdiː` は現代 Aramaic/Neo-Aramaic 系の “thank you” としては自然だが、`arc` が “Aramaic” 全体なのか Imperial/Official Aramaic なのか、時代設定が曖昧。
+  - `syc.thanks:ܫܘܒܚܐ/šubḥā` は “glory/praise” 系であり、thanks というより liturgical praise。Classical Syriac の感謝表現として `tawdi/tawdita` 系を確認したい。
+  - `gez.thanks:ምስጋና/məsganā` は “praise/thanksgiving” 系で比較的 plausible。ただし liturgical register 注記があると安全。
+- 推奨:
+  - `arc` は language label / dataStatus / period を分ける。Official Aramaic, Classical Syriac, Neo-Aramaic を混ぜない。
+  - `syc.thanks` は “glory/praise” 注記か、Classical Syriac 辞書で `thanks/thanksgiving` の direct form を確認。
+
+### 今回の優先修正順
+
+1. **`sux.good`**: `saŋ` は高リスク。`du10` 系への修正候補。
+2. **`phn.thanks`, `xpu.thanks`, `uga.thanks`**: `barak/brk` は “bless” であり、thanks としては `—` 候補。
+3. **`akk.thanks`**: `tašlimtu` の direct “thanks” 意味を CAD/CDA で確認。未確認なら `—`。
+4. **`syc.thanks`**: `šubḥā` は praise/glory。thanks として使うなら liturgical 注記。
+5. **`phn.cat`, `sux.cat`**: direct attestation がなければ proxy 注記または `—`。
+
+### 参照
+
+- Penn Museum ePSD overview: https://www.penn.museum/research/project.php?pid=17
+- ePSD2 official site: https://oracc.museum.upenn.edu/epsd2/
+- Akkadian `šurānum` / `šulmum` secondary lexical aggregation: https://kaikki.org/dictionary/Akkadian/pos-noun/%C5%A1ulmu--%C5%A1%C4%ABrum.html
+- Akkadian `šurānum` with CAD/CDA references: https://en.wiktionary.org/wiki/%C5%A1ur%C4%81num
+- Krahmalkov, Phoenician-Punic Dictionary metadata: https://books.google.com/books/about/Phoenician_Punic_dictionary.html?id=bh_jdzIT9GQC
+- Ugaritic `brk`: https://en.wiktionary.org/wiki/%F0%90%8E%81%F0%90%8E%97%F0%90%8E%8B
+- Strong/BDB `todah`: https://biblehub.com/hebrew/8426.htm
+- ISBE `Cat`: https://www.biblestudytools.com/dictionary/cat/
+
+---
+
+## Session 20 (2026-05-05): juc fragmentary + Codex 6 critical hello fixes (peo/ave)
+
+**スコープ:** Codex 4 で deferred した「`juc` Jurchen を fragmentary 化」と、Codex 6 で「現行データに残っている」と特定された `peo.hello` / `ave.hello` を一括対応。
+
+### 1. `juc` Jurchen → `fragmentary`
+
+`DATA_STATUS_OVERRIDES` に追加:
+
+```js
+juc:       'fragmentary',       // Jurchen — Britannica: "almost nothing is known".
+                                // Limited inscriptions + Sino-Jurchen vocabulary (Kane 1989);
+                                // most cells are Manchu projection. Per Codex review 4.
+```
+
+Session 17 で juc.hello/thanks を `—` 化したが、block 全体の信頼性を表す dataStatus 降格は別議論として残っていた。Codex 4 推奨に従い fragmentary 化。
+
+### 2. Codex 6 critical: `peo.hello` / `ave.hello` を `—` 化
+
+Codex 6 が「過去 feedback には Session 11 で `—` 化と読める記述があるが、現行データ上はまだ残っている」と特定。Session 11 で fix したのは thanks のみで、hello は touch されていなかった。
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 6) |
+|---|---|---|---|---|
+| `peo` | Old Persian | `hello` | `𐎭𐎢𐎼𐎢𐎺` / `duruwa` | UT Old Iranian Online: `duruva-` = **「durable, stable, firm, secure」**、greeting ではない |
+| `ave` | Avestan | `hello` | `𐬵𐬎𐬱` / `huʃ` | Avesta.org: `hu-/huš-` 系は **「good」接頭/派生要素**、単独 hello ではない |
+
+これで Session 11 で半端だった peo/ave の greeting/thanks が両方とも `—` に揃った。
+
+### Codex 6 で flag されたが今回 touch しなかったセル
+
+- `peo.cat`, `ave.cat`, `pal.cat`, `xpr.cat` — Iranian 系古代語の `cat` direct attestation 確認要
+- `peo.good: naiba` — 「beautiful, pious」、`good` 直訳との微妙な差
+- `ave.love: frija` — 品詞・意味確認要
+- `pal.love: dōšī` — 品詞注記必要
+- `pi.hello: namo` / `pi.thanks: anumodāmi` — Pali liturgical/ritual register 注記候補
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    89 (—)  ← 87 → 89 (Session 20 で 2 セル増)
+INFOS:    26 (dup-coord)
+PASS
+
+Data status breakdown:
+  modern               557
+  attested             10
+  fragmentary          2     ← +1 (juc 追加、xsc と合わせて 2)
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### Session 20 中に気付いた追加問題（未対応・記録のみ）
+
+1. **Codex 6 の `pi.hello/thanks` の register 注記** — `namo` / `anumodāmi` は現状値のままだが、UI で「liturgical」「buddhist ritual」 register 表示があると誤解防止。Session 21+ schema 候補。
+2. **古代 Iranian の `cat` 一括問題** — Codex 6 が peo/ave/pal/xpr で `cat` を「Iranian proxy」と flag。Session 21+ で一括 review 候補。
+3. **`peo.naiba` good 注記** — 「beautiful, pious」のニュアンスが UI で伝わらない、`note` フィールド追加候補。
+4. **fragmentary 統計が `2` に成長** — Codex review 進行で omc/chb/onw 等の追加候補で最終 5-10 件規模になる可能性。
+
+### 持ち越し（Session 21 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, 8 mon/mnw (allowlisted), 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-6 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, **20 #2 古代 Iranian cat 一括 review**
+
+---
