@@ -2550,3 +2550,149 @@ Data status breakdown:
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, 8 mon/mnw (allowlisted), 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-6 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, **20 #2 古代 Iranian cat 一括 review**
 
 ---
+
+## Codex 追加レビュー 8 (2026-05-05): Old/Middle Irish・西欧中世語の greeting/thanks と時代差
+
+**スコープ:** `sga`, `mga`, `fro`, `goh`, `gmh`, `osp`, `osx`, `orv`。過去 Session 12 では一括で “attested” とされたが、今回は「現代語・後代語の定型を古い段階へ投影していないか」「thanks が mercy/blessing/health 系の意味拡張ではないか」を中心に再確認。
+
+### `sga` Old Irish / `mga` Middle Irish: `dia duit` は現代 Irish greeting として強いが、Old/Middle Irish セルでは direct attestation 要
+
+- 対象:
+  - `wordmap_data.js:2449-2450` `sga`
+  - `wordmap_data.js:2483-2484` `mga`
+- 評価: **基礎語は概ね plausible。ただし `hello: dia duit` と `thanks: atloirgaim` は、Old/Middle Irish の直接定型として source が必要。特に `dia duit` は現代 Irish phrasebook の evidence が強く、Old Irish 8-9c. の会話 greeting としてそのまま出すのは危険。**
+- 背景:
+  - eDIL は c.700-c.1700 の Old/Middle/Early Modern Irish を広く含む辞書で、時代幅が広い。
+  - Modern Irish `Dia duit` は “hello, literally God to you” として確立しているが、これを Old Irish `sga` のセルへ置く場合、Old Irish glosses / sagas / legal texts の実例が必要。
+- 個別リスク:
+  - `sga.hello` / `mga.hello`: `Dia` と `duit` 自体は古い語形要素に遡れるが、**phrase としての greeting attestation** が未確認。
+  - `sga.thanks` / `mga.thanks`: `atloirgaim` は “I thank/praise” 系として plausible だが、現行では Old Irish と Middle Irish が同じ finite 1sg form。時代差・綴り差・品詞形の確認が必要。
+  - `mga.dog: madra` は Middle Irish では plausible だが、`sga.dog:cú` と違う選択基準が不明。`dog` が generic dog か hound かを注記したい。
+- 推奨:
+  - `dia duit` は `sga/mga` では `liturgical/Christian greeting?` の注記か、direct citation がなければ `—` 候補。
+  - `atloirgaim` は eDIL entry ID / lemma / citations を持たせる。
+
+### `fro` Old French: `salut` は greeting として可、`merci` は thanks より “mercy” が主義
+
+- 対象: `wordmap_data.js:1946-1947`。
+- 評価: **大枠は妥当。ただし `merci` は Old French ではまず “mercy/clemency” の名詞で、現代 French “merci” と同じ thanks interjection として扱うには時代注記が必要。**
+- 根拠:
+  - Anglo-Norman Dictionary の `salu/salut` は health, well-being, salvation, safety, salutation/greeting を含む。
+  - Old French `merci` は “mercy; clemency” が中心で、French の gratitude interjection としての発展は別途注記が必要。
+- 個別リスク:
+  - `fro.hello: salut` は greeting として plausible。
+  - `fro.thanks: merci` は維持可だが、`mercy/favor/grace > thanks` の意味史を tooltip に出したい。
+  - `fro.eye: oeil / œʎ` は表記が modern-ish。Old French では `oil/ueil/uel` など variant があり、period/region の統一が必要。
+
+### `osp` Old Spanish: `mercedes` は historical thanks として有力だが、`salud` は greeting 注記が必要
+
+- 対象: `wordmap_data.js:2407-2408`。
+- 評価: **`thanks: mercedes` は RAE が「Merced, muchas mercedes = gracias」として desusado expression を認めており、Old/Medieval Spanish 系の thanks として比較的強い。ただし `hello: salud` は “health/salvation” 系 greeting なので注記が必要。**
+- 根拠:
+  - RAE `merced` は「merced, muchas mercedes」を desus. の gratitude expression とする。
+  - `merced` 自体は reward, grace, favor, mercy, courtesy title などの意味が中心。
+- 個別リスク:
+  - `osp.thanks: mercedes` は “thanks” として維持可。ただし plural formula であること、modern `gracias` とは別であることを注記。
+  - `osp.hello: salud` は `salud` = health を greeting に使う形。direct greeting citation が欲しい。
+  - `osp.good: bono` は early Old Spanish / Ibero-Romance としてあり得るが、`bueno` との時代・地域差を注記したい。
+
+### `goh` / `gmh` / `osx`: Germanic greeting は概ね良いが、`thanks` は noun と formula の区別が必要
+
+- 対象:
+  - `wordmap_data.js:1948-1949` `goh`
+  - `wordmap_data.js:2404-2405` `gmh`
+  - `wordmap_data.js:2413-2414` `osx`
+- 評価: **`heil` 系 greeting は health/whole/welfare の greeting として plausible。`dank/danc/thank` も gratitude noun として plausible。ただし conversational “thanks” formula としての用法は source/citation を確認したい。**
+- 背景:
+  - OHG/MHG `heil` は health, happiness, salvation/welfare 系。greeting として自然だが、現代的 `hello` ではない。
+  - `dank/danc/thank` は noun “thanks/gratitude” であり、単独 interjection としての用例確認が必要。
+- 個別リスク:
+  - `gmh.hello: gegrüezet` は participial/finite greeting formula として plausible だが、標準的には `grüezen` / `gegrüezt` 系の綴り差を確認したい。
+  - `osx.thanks: thank` は Old Saxon spelling と IPA が English-like に見える。Old Saxon lexical source が必要。
+  - `goh.cat:kazza`, `gmh.cat:katze`, `osx.cat:katta` は plausible だが、loanword/cultural dating の注記があるとよい。
+
+### `orv` Old East Slavic: `благодарю` は modern Russian-like なので再確認
+
+- 対象: `wordmap_data.js:2616-2617`。
+- 評価: **基礎語は Slavic として plausible。ただし `thanks: благодарю/blagodarju` は現代 Russian/Church Slavonic 的な 1sg finite form に見え、Old East Slavic の固定 thanks formula としては direct source が必要。**
+- 背景:
+  - `orv` は Kievan Rus' / Old East Slavic 10-15c. として定義されている。
+  - Kaikki/Wiktionary 系の Old East Slavic dictionary は存在するが、現行 `благодарю` が OES entry として確認できるかは未確認。
+  - Modern Russian `спасибо` の語源は earlier Old East Slavic `съпаси богъ` (“God save [you]”) 系とされるため、thanks formula の選択肢は複数ある。
+- 個別リスク:
+  - `hello: здравъ/zdravŭ` は “healthy/sound” adjective を greeting に使っている可能性。Slavic `zdrav` greeting 系として plausible だが、OES direct greeting citation が必要。
+  - `thanks: благодарю` は `I thank` の finite formとしては意味が通るが、Old East Slavic の綴り・時代形として要確認。
+  - `cat: котъка/kotŭka` は East Slavic として plausible だが、OES attestation/source が必要。
+- 推奨:
+  - `orv.thanks` は `благодарю` の OES source がなければ `—` または `liturgical/Church-Slavonic-influenced` 注記。
+  - `orv.hello` は `здравъ` の greeting use を確認。単なる adjective なら注記。
+
+### 今回の優先修正順
+
+1. **`sga/mga.hello: dia duit`** — modern Irish からの投影疑い。Old/Middle Irish citation 必須。
+2. **`orv.thanks: благодарю`** — modern Russian-like finite form。OES source 確認。
+3. **`fro.thanks: merci` / `osp.thanks: mercedes`** — 維持可だが “mercy/favor > thanks” の意味史注記。
+4. **`goh/gmh/osx.thanks`** — gratitude noun と conversational thanks formula の区別。
+5. **`fro.eye`, `osp.good`, `gmh.hello`, `osx.thanks`** — period/orthography source 確認。
+
+### 参照
+
+- eDIL overview (Old/Middle Irish materials c.700-c.1700): https://mdr-maa.org/resource/edil/
+- Modern Irish `Dia duit`: https://en.wiktionary.org/wiki/Dia_duit
+- Old Irish overview: https://en.wikipedia.org/wiki/Old_Irish
+- Anglo-Norman Dictionary `salu/salut`: https://www.anglo-norman.net/entry/salute
+- Old French `merci`: https://en.wiktionary.org/wiki/merci
+- RAE `merced`: https://dle.rae.es/merced
+- OHG `heil`: https://kaikki.org/dictionary/Old%20High%20German/meaning/h/he/heil.html
+- German `Heil` etymology (OHG/MHG): https://en.wikisource.org/wiki/An_Etymological_Dictionary_of_the_German_Language/Annotated/Heil
+- Old East Slavic dictionary index: https://kaikki.org/dictionary/Old%20East%20Slavic/index.html
+- Russian `спасибо` etymology from earlier East Slavic formula: https://en.wiktionary.org/wiki/%D1%81%D0%BF%D0%B0%D1%81%D0%B8%D0%B1%D0%BE
+
+---
+
+## Session 21 (2026-05-05): Codex 6 ancient Iranian cat fixes — 3 セル `—` 化
+
+**スコープ:** Codex 追加レビュー 6 で「Iranian proxy / direct attestation 不確定」と flag された古代 Iranian の `cat` セルのうち、明確に Old Persian / Avestan / Parthian の corpus に直接 attestation がないものを `—` 化。`pal` Middle Persian の `gurbag` は Codex 6 で「plausible」と判断されたため touch せず。
+
+### 修正 3 セル
+
+| Code | Lang | Field | 旧 | 根拠 (Codex 6) |
+|---|---|---|---|---|
+| `peo` | Old Persian | `cat` | `𐎱𐎡𐏁𐎡` / `piʃiː` | Old Persian corpus 直接語として確認できず、Iranian `piši/pišag` proxy。**Old Persian cuneiform で断定表示するのは危険** |
+| `ave` | Avestan | `cat` | `𐬞𐬌𐬱𐬌` / `piʃiː` | Avesta.org common dictionary に **見当たらず**、Middle/New Iranian proxy の可能性高 |
+| `xpr` | Parthian | `cat` | `pišī` / `piʃiː` | Parthian direct attestation 要確認、**Iranian proxy の可能性あり** |
+
+### 残存 (Codex 6 で plausible 判断)
+
+- `pal.cat: gurbag` — Middle Persian/Persian 系として plausible (Codex 6: "plausible だが Pahlavi spelling と attestation を MacKenzie/MPCD で確認したい") — Session 22+ で再確認候補だが現状維持
+- `bal.cat: پشی / piʃiː` — Modern Balochi、ancient lang policy 対象外
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    92 (—)  ← 89 → 92 (Session 21 で 3 セル増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### Session 21 中に気付いた追加問題（未対応・記録のみ）
+
+1. **古代 Iranian の `house/eat/drink` 系** — Codex 6 が peo block で「dog:spaka, hand:dasta, eye:tʃaʃman, tree:druma, house:maːnija, eat:xar, drink:paː, love:frija は Iranian cognate として plausible だが、Old Persian inscriptions に直接出るか Kent / Tolman / Schmitt でセル単位確認したい」と指摘。これらは plausible 維持で OK だが、Session 22+ で sources field schema を導入するときに individual cell sources を持たせるよい機会。
+
+2. **`peo.cat` を `—` 化したことで peo の cells 数** — 現在 peo の `—` cells: hello + thanks + cat = 3 セル (20 中)。同様に ave も 3 セル、xpr は 3 セル (cat + thanks)。古代 Iranian 言語ブロック全体で `—` 表示が増えた。Session 19 #1 (古代語 `—` UI) と同じ懸念。
+
+3. **`spaka` (peo dog)** — Codex 6 が触れなかったが、Codex 3 で `xsc.dog: spaka` を「Scythian で direct attestation 強い」と評価していた。`peo.dog: spaka` も同形だが、これは Old Persian と Scythian の cognate の自然な一致 (両方とも Old Iranian)。問題なし。
+
+4. **fragmentary 統計の応用** — Session 20 で fragmentary 2 件 (xsc + juc) になったが、Codex 6 での peo/ave/pal/xpr の attestation 不安定さを見ると、peo/ave も fragmentary 候補かもしれない (現状 attested = 'attested' default)。Session 22+ で再評価候補。
+
+### 持ち越し（Session 22 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, **21 #1 sources field schema, #2 古代語 `—` UI**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, **20 #2 残: pi register, peo.naiba, ave/pal love**, **21 #4 peo/ave fragmentary 再評価**
+
+---

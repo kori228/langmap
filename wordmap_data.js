@@ -1526,8 +1526,8 @@ const LANG_DATA = {
         "spaka"
       ],
       "cat": [
-        "𐎱𐎡𐏁𐎡",
-        "piʃiː"
+        "—",
+        "—"
       ],
       "hand": [
         "𐎭𐎿𐎫",
@@ -1614,8 +1614,8 @@ const LANG_DATA = {
         "spaː"
       ],
       "cat": [
-        "𐬞𐬌𐬱𐬌",
-        "piʃiː"
+        "—",
+        "—"
       ],
       "hand": [
         "𐬰𐬀𐬯𐬙𐬀",
@@ -2441,7 +2441,7 @@ const LANG_DATA = {
     words: { water:['endaki','endaki'], fire:['ita','ita'], sun:['niko','niko'], moon:['kana','kana'], mother:['ainya','aiɲa'], father:['taata','taːta'], eat:['nepenge','nepeŋe'], drink:['na pee','na peː'], love:['mende','mende'], heart:['maita','maita'], tree:['ita','ita'], house:['anda','anda'], dog:['yana','jana'], cat:['pusi','pusi'], hand:['kingi','kiŋɡi'], eye:['lenge','leŋɡe'], hello:['baa wa','baː wa'], thanks:['yaku','jaku'], one:['mendeai','mendeai'], good:['epe','epe'] }},
   // Middle Iranian (Parthian, distinct from Pahlavi)
   xpr: { name: 'Parthian', native: 'Pārthawānīg', lat: 37.97, lng: 58.20, // Nisa, Turkmenistan
-    words: { water:['āb','aːb'], fire:['ādar','aːdar'], sun:['xwar','xwar'], moon:['māh','maːh'], mother:['mād','maːd'], father:['pid','pid'], eat:['xward-','xward'], drink:['pī-','piː'], love:['friyādan','frijaːdan'], heart:['dil','dil'], tree:['dār','daːr'], house:['xānag','xaːnaɡ'], dog:['spag','spaɡ'], cat:['pišī','piʃiː'], hand:['dast','dast'], eye:['čašm','tʃaʃm'], hello:['drōd','droːd'], thanks:['spās','spaːs'], one:['ēw','eːw'], good:['nēw','neːw'] }},
+    words: { water:['āb','aːb'], fire:['ādar','aːdar'], sun:['xwar','xwar'], moon:['māh','maːh'], mother:['mād','maːd'], father:['pid','pid'], eat:['xward-','xward'], drink:['pī-','piː'], love:['friyādan','frijaːdan'], heart:['dil','dil'], tree:['dār','daːr'], house:['xānag','xaːnaɡ'], dog:['spag','spaɡ'], cat:['—','—'], hand:['dast','dast'], eye:['čašm','tʃaʃm'], hello:['drōd','droːd'], thanks:['spās','spaːs'], one:['ēw','eːw'], good:['nēw','neːw'] }},
   // Karakhanid (Old Turkic of Kashgar)
   xqa: { name: 'Karakhanid', native: 'تركي', lat: 39.47, lng: 75.99, // Kashgar
     words: { water:['suw','suw'], fire:['ot','ot'], sun:['kün','kyn'], moon:['ay','aj'], mother:['ana','ana'], father:['ata','ata'], eat:['yi-','ji'], drink:['ič-','itʃ'], love:['sevgü','sevɡy'], heart:['yürek','jyrek'], tree:['ığač','ɯɣatʃ'], house:['ev','ev'], dog:['it','it'], cat:['piši','piʃi'], hand:['qol','qol'], eye:['köz','køz'], hello:['salām','salaːm'], thanks:['tabug','tabuɡ'], one:['bir','bir'], good:['yaqšı','jaqʃɯ'] }},
