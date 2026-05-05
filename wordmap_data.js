@@ -2997,9 +2997,10 @@ const LANG_DATA = {
   // leave most cells unattested ('—') and mark the few proposed
   // basic-vocabulary cognates with `disputed` evidence.
   pjk: { name: 'Proto-Japonic-Koreanic', native: '*PJK', lat: 38.50, lng: 134.00, // Sea of Japan (symbolic — between hypothetical Korean Peninsula homeland and the Japanese archipelago)
-    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['*ǝma','əma'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['*ǝma','əma'], father:['*ǝpa','əpa'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
     wordEvidence: {
       mother: { evidence: 'disputed', source: 'Whitman 2012 — childish *ma/əma; cross-linguistic baby-talk root, weak phylogenetic value' },
+      father: { evidence: 'disputed', source: 'Whitman 2012 — childish *əpa; cf. OJ titi but Korean apa is also baby-talk; weak phylogenetic value' },
     } },
   // Vedic Sanskrit — Rigveda period (~1500-500 BCE). Sapta Sindhu (Punjab/Saraswati basin).
   vsa: { name: 'Vedic Sanskrit', native: 'वैदिक संस्कृतम्', lat: 30.50, lng: 75.00,
