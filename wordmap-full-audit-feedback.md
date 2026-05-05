@@ -4276,3 +4276,94 @@ PASS
 - 既存持ち越し (Codex 8 残, Phase 2 拡張, etc.)
 
 ---
+
+## Session 42 (2026-05-05): Codex 対応評価 — Session 41 4 項目 全て fix 確認
+
+**スコープ:** Session 41 で Codex に flag した 4 観察事項について Codex が `meta_i18n_ext.js` を修正。runtime 検証で全 fix が正しく動作することを確認。
+
+### Codex 修正内容 (28 lines added, 3 deleted)
+
+| # | 修正 | 場所 | 評価 |
+|---|---|---|---|
+| 1 | **`~` prefix 対応** | `_resolve()` 直接 lookup の直後 | ✅ ✓ |
+| 2 | **Step 6 over-aggression guard** (`translatedLongWord` flag) | `_resolve()` step 6 | ✅ ✓ |
+| 3 | **HISTORICAL_SPEAKER_PHRASES merge always-override** | merge loop | ✅ ✓ |
+| 4 | **Han characters CJK atoms (ja/zh/yue)** | `SCRIPT_ATOM_FIXES_ALL_LANGS` | ✅ ✓ |
+
+### 各 fix の runtime 検証
+
+#### Fix 1: `~` prefix
+```
+[ko] ~5th-10th c. CE        → ~5-10세기            ✓
+[ko] ~9th-13th c. CE        → 약 9-13세기           ✓
+[ko] ~1500 BCE-3rd c. CE    → 기원전 약 1500년-3세기   ✓
+[ko] ~early 20c.            → 약 20세기 초          ✓
+[ko] ~late 18c.             → 약 18세기 말          ✓
+```
+
+実装: `val.startsWith('~')` をチェックし、`~` を strip して再帰、結果に `~` を prepend。Recursion で unchanged の場合は wrapper を skip (賢い)。
+
+#### Fix 2: Step 6 over-aggression guard
+```
+[ko] of as in to            → of as in to (unchanged) ✓ (was: 의 로서 내 로)
+[ja] as of in               → as of in (unchanged)    ✓
+[ja] Han characters         → 漢字 ✓ (long word match があれば動く)
+```
+
+実装: `translatedLongWord` flag を追加、`word.length >= 3` での hit を要求。短語のみの string は誤訳合成を skip。
+
+#### Fix 3: Always-override merge
+```
+[ja] ancestor of Manchu       → 満洲語の祖先 ✓ (Codex 新訳が適用)
+[ja] Yaghnobi is descendant   → ヤグノビ語が後裔 ✓ (Codex 新訳が適用)
+```
+
+実装: `if (!(k in ATOMS))` guard を削除して `META_I18N_ATOMS[lang][k] = phrases[k];` 単純代入。Codex の新訳が常に既存 atom を上書き。
+
+注: Session 41 で ja 旧 atom 2 entries を直接更新済み (line 3157, 3159)。今回の always-override で再上書きされるが、両方同じ値 (祖先 / ヤグノビが後裔) なので影響なし。my fix は redundant safety net として残す。
+
+#### Fix 4: Han characters CJK atoms
+```
+[ja] Han characters → 漢字 ✓
+[zh] Han characters → 汉字 ✓
+[yue] Han characters → 漢字 ✓
+[ko] Han characters → 한 문자 (pre-existing, composed)
+[de] Han characters → Han characters (no atoms, expected)
+```
+
+実装: `SCRIPT_ATOM_FIXES_ALL_LANGS` で ja/zh/yue に `'Han characters'` の exact atom + `'Han'` `'characters'` 個別 atoms を追加。
+
+### Real-world strings 引き続き正常動作
+
+```
+[ko] Inca Empire (Tawantinsuyu): Peru, Bolivia, Ecuador, Chile, Argentina
+   → 잉카 제국(타완틴수유): 페루, 볼리비아, 에콰도르, 칠레, 아르헨티나 ✓
+[zh] modern Mon descends → 现代孟语由其发展而来 ✓
+[ko] Brahmi-derived Tocharian script → 브라흐미계 토하라 문자 ✓
+```
+
+### 残 minor nit (修正不要)
+
+- **ko 'Han characters' は composed `한 문자`** — Codex は ja/zh/yue に exact atom を追加したが ko には追加せず。ko 標準は `한자` (1 word) だが、現状の `한 문자` も意味通る。Codex に ko 用 `'Han characters': '한자'` 追加を提案する余地あるが urgent ではない。
+
+### 総評
+
+Codex の対応は **excellent**:
+- 4 項目すべて意図通り fix
+- 実装が minimal & correct (no over-engineering)
+- 既存挙動への regression なし
+- 1 件 (Fix 1) は recursion で `~unchanged` wrapper を避ける賢い処理
+
+`meta_i18n_ext.js` runtime test: SYNTAX OK / PASS。
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    3
+PASS
+```
+
+---

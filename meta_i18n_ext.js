@@ -87,6 +87,13 @@ function _resolve(val, dict, atoms, seps) {
     const direct = _lookup(val, dict, atoms);
     if (direct !== null) return direct;
 
+    // Approximate-date marker: let "~5th-10th c. CE" reuse an atom for
+    // "5th-10th c. CE" when present.
+    if (val.startsWith('~') && val.length > 1) {
+        const rhs = _resolve(val.slice(1).trim(), dict, atoms, seps);
+        if (rhs !== val.slice(1).trim()) return '~' + rhs;
+    }
+
     // 1. Top-level comma split (countries: "X, Y, Z")
     const commaParts = _splitTopLevel(val, ',').map(s => s.trim()).filter(Boolean);
     if (commaParts.length > 1) {
@@ -126,20 +133,23 @@ function _resolve(val, dict, atoms, seps) {
 
     // 6. Last-resort word composition for short qualifiers and region names
     //    such as "regional-population", "Han characters", or "with extra
-    //    letters". Only use it when every Latin word has a known atom.
+    //    letters". Only use it when every substantial Latin word has a known
+    //    atom, and at least one substantial word was translated.
     let translatedAny = false;
+    let translatedLongWord = false;
     let failedWord = false;
     const wordComposed = val.replace(/[A-Za-z][A-Za-z.'’]*/g, (word) => {
         const hit = _lookup(word, dict, atoms);
         if (hit !== null) {
             translatedAny = true;
+            if (word.length >= 3) translatedLongWord = true;
             return hit;
         }
         if (word.length < 3) return word;
         failedWord = true;
         return word;
     });
-    if (translatedAny && !failedWord) return wordComposed;
+    if (translatedAny && translatedLongWord && !failedWord) return wordComposed;
 
     return val;
 }
@@ -3720,7 +3730,7 @@ for (const lang of Object.keys(HISTORICAL_SPEAKER_PHRASES)) {
     const phrases = HISTORICAL_SPEAKER_PHRASES[lang];
     if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
     for (const k of Object.keys(phrases)) {
-        if (!(k in META_I18N_ATOMS[lang])) META_I18N_ATOMS[lang][k] = phrases[k];
+        META_I18N_ATOMS[lang][k] = phrases[k];
     }
 }
 
@@ -4126,6 +4136,18 @@ for (const lang of Object.keys(AVESTAN_META_FIXES_ALL_LANGS)) {
     if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
     for (const k of Object.keys(AVESTAN_META_FIXES_ALL_LANGS[lang])) {
         META_I18N_ATOMS[lang][k] = AVESTAN_META_FIXES_ALL_LANGS[lang][k];
+    }
+}
+
+const SCRIPT_ATOM_FIXES_ALL_LANGS = {
+    ja: { 'Han characters': '漢字', 'Han': '漢', 'characters': '文字' },
+    zh: { 'Han characters': '汉字', 'Han': '汉', 'characters': '文字' },
+    yue: { 'Han characters': '漢字', 'Han': '漢', 'characters': '文字' },
+};
+for (const lang of Object.keys(SCRIPT_ATOM_FIXES_ALL_LANGS)) {
+    if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
+    for (const k of Object.keys(SCRIPT_ATOM_FIXES_ALL_LANGS[lang])) {
+        META_I18N_ATOMS[lang][k] = SCRIPT_ATOM_FIXES_ALL_LANGS[lang][k];
     }
 }
 
