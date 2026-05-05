@@ -322,3 +322,116 @@ PASS
 - 上記 Session 3 中に気付いた4項目（モーダル concept 列ヘッダ、toggle title 長形化、WM_UI schema 整理）
 
 ---
+
+## Session 4 (2026-05-05): §6.28 重複キー除去 + 検証強化 + Session 3 followup
+
+**スコープ:** Session 3 の未対応 followup 2件 と、audit §6.28（`LANG_DATA` 内の重複キーによる静かな上書きバグ）に対応。
+
+### §6.28 — `LANG_DATA` 重複定義の除去
+
+audit が指摘した 6 コードについて、`LANG_DATA` object literal 内で同名キーが二度定義され、JS は黙って後者で上書きしていた。validator は runtime view しか見ないため、これまで `PASS` していた。
+
+| Code | 旧 (dead) | 新 (effective) | 動作 |
+|---|---|---|---|
+| `quc` | L1048 K'iche' (careful glottalization) | L2806 (Qatzijob'al) | dead 削除 |
+| `kek` | L1052 Q'eqchi' | L2808 (Qʼeqchiʼ) | dead 削除 |
+| `sid` | L1174 Sidamo | L2814 (Sidamo) | dead 削除 |
+| `cpx` | L1195 Pu-Xian Min | L2759 Pu-Xian Min (Hinghwa) | dead 削除 |
+| `wuu_wz` | L1203 Wenzhounese | L2747 Wu (Wenzhou) | dead 削除 |
+| `wuu_sz` | L1205 Suzhou Wu | L2745 Wu (Suzhou) | dead 削除 |
+
+**判断方針:** runtime behavior 不変を優先（=後者を残す）。dead code を削除しても表示・filter・count に変化なし（`Languages: 579` 維持）。コメント `// (xxx moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)` を残してナビ性を担保。
+
+**注意:** `quc` の dead L1048 はグロッタル化記号 (`q'aq'`, `me's`, `b'aq'wach`, `loq'oj`, `tz'i'`, `anima'`, `q'ab'`) が effective L2806 (`q'aq'`, `mes`, `q'ab'` 母音欠落, `loɡoʃik`, `mes`, `qʼɓ`) より丁寧。本来 effective 側を品質寄せすべきだが、Session 4 では破壊的変更を避けて温存。**Session 5+ で `quc` セル単位品質レビュー対象として記録**。
+
+### Validator check #13: 同一キーの源コード上の重複検出
+
+`validate_wordmap_data.js` に新規チェックを追加。`LANG_DATA` の object literal 内で同じコードが二度書かれていれば ERROR を発火。
+
+```js
+const dataLineKeyRe = /^  ([\w-]+):\s*\{\s*name:/gm;
+const seen = {};
+let mm;
+while ((mm = dataLineKeyRe.exec(dataSrc)) !== null) {
+    seen[mm[1]] = (seen[mm[1]] || 0) + 1;
+}
+const dupKeys = Object.entries(seen).filter(([, n]) => n > 1);
+for (const [c, n] of dupKeys) E(`LANG_DATA: code "${c}" defined ${n} times in source...`);
+```
+
+これで「将来また誰かが同名キーを書いてしまった」場合に自動検出される。
+
+### Session 3 followup #1: モーダル単語表の concept 列ヘッダ
+
+WM_UI 全 21 言語に新キー `concept` を追加：
+
+| Lang | concept |
+|---|---|
+| ja | 概念 |
+| ko | 개념 |
+| zh / yue | 概念 |
+| vi | Khái niệm |
+| th | ความหมาย |
+| id | Konsep |
+| hi | अवधारणा |
+| en | Concept |
+| de | Konzept |
+| fr | Concept |
+| it | Concetto |
+| es_eu / es_mx | Concepto |
+| pt_eu / pt_br | Conceito |
+| ru | Понятие |
+| uk | Поняття |
+| ar | مفهوم |
+| he | מושג |
+| sw | Dhana |
+
+[wordmap.html:1487](wordmap.html#L1487) の thead 第1セルを `wt('concept') || 'Concept'` で描画するよう修正。これで Concept / Form / IPA の3列ヘッダが揃った。
+
+### Session 3 followup #2: toggle ボタン hover で長形を表示
+
+[wordmap.html:613](wordmap.html#L613) の `el.title = text;` を `el.title = wt(key + 'Col') || text;` に変更。toggle ボタン (`Form` / `IPA`) を hover すると `Form / Transliteration` / `IPA / Transcription` が tooltip として出る。Toggle 短形 + tooltip 長形 で audit の意図（厳密 IPA でないことを明示）がより伝わる。
+
+### Session 3 followup 残（Session 5+ 対応）
+
+- **#3 `english` キー重複**: `WM_UI.*.english = 'English'` と `WM_UI_LABELS.en = 'English'` が重複。UX 影響なし、schema 整理で削除候補。
+- **#4 `word` 命名衝突**: `WM_UI.word` と `WORD_LIST.label` が `word` 名で別文脈使用。schema 拡張時の rename 候補。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+INFOS:    66 (—) + 32 (dup-coord)
+PASS
+```
+
+新 check #13 も pass（重複キー除去後）。
+
+### Session 4 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`quc` (K'iche') effective 側のグロッタル化品質低下** — dead L1048 では `q'aq'` `me's` `b'aq'wach` `loq'oj` `tz'i'` `anima'` `q'ab'` のように apostrophe で ejective を明示。effective L2806 では `mes` `qʼɓ` (母音欠落) `loɡoʃik` のように一部欠落。Session 5+ で K'iche' 標準正書法（PLFM 等）に揃えてセル単位で更新候補。
+
+2. **`cpx` (Pu-Xian Min) 二版の語彙差** — dead L1195 と effective L2759 で `eat`, `drink`, `mother`, `father`, `tree`, `house`, `hand`, `eye`, `love`, `hello`, `thanks` の発音表記が異なる。effective 側 (Hinghwa label) は `lau˥˥bo˦˩` (老母) など複合語で詳細。dead 側はより簡素。Pu-Xian Min は Putian / Xianyou で sub-dialect 差があり、出典・方言基準を meta に明記する余地あり。
+
+3. **`wuu_wz` / `wuu_sz` 二版の音調表記差** — Wu 系の声調記法（˥˧ vs ˥˨ 等）と母音 (ɛ vs e) で揺れあり。effective 側がより詳細だが、dead 側のローマ字化は別方針 (Y.R. Chao 系？)。出典・転写方針の整合化候補。
+
+4. **`mnp` Min Bei の fire `xui˧˧` は通常 `xy˧˧` または `hui˧˧`** — Session 4 で Sinitic ブロックを確認中、Min Bei の fire IPA `xui` が辞書資料（Wiktionary 建瓯話 phonology）で見る `xy` / `xui` ⇄ 揺れあり。dead 側削除と無関係に元から存在する点。Session 5+ で要再確認。
+
+5. **`ChMap`/`HIST_DESCENDANT` の確認**: Session 4 中に LANG_DATA 構造を直接いじったが、`HIST_DESCENDANT` や `EXCLUDED_CODES` への影響はなし（重複キーは元から filter に1回だけ登場）。validator も影響なし。
+
+### 持ち越し（Session 5 以降）
+
+**Schema-level:**
+- §7.6 duplicate-coordinate UI clustering
+- §7.7 Cell-level evidence status のスキーマ化
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`（個別辞書ベース）
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- Session 3 followup #3 / #4 (`english` 重複, `word` 命名衝突)
+- Session 4 中に気付いた5項目（K'iche' / Pu-Xian Min / Wenzhou / Suzhou Wu の品質再確認、Min Bei fire の IPA 確認）
+
+---

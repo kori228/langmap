@@ -415,7 +415,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=24"></script>
+    <script src="wordmap_data.js?v=25"></script>
     <script src="meta_i18n_ext.js?v=6"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -610,7 +610,9 @@
                 const text = wt(key);
                 const lbl = el.querySelector('.label');
                 if (lbl) lbl.textContent = text;
-                el.title = text;
+                // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
+                // when available, falling back to the short label.
+                el.title = wt(key + 'Col') || text;
             });
             // Append per-era language counts in parens: "現代言語 (478)" / "歴史言語 (79)"
             let modernCount = 0, historicalCount = 0;
@@ -1484,7 +1486,7 @@
                 html += '<div class="meta-loading" style="padding:10px 0;color:#aaa;font-size:11px">…</div>';
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
-            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px"></th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
+            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {

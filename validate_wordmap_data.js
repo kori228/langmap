@@ -20,6 +20,7 @@
  *  10. Every meta.speakers is parseable into a tier (or known annotation)
  *  11. meta.family / meta.script top-level tokens are in an allow-list
  *  12. README/HTML lang count matches actual LANG_DATA count
+ *  13. No code is defined twice in LANG_DATA source (silent JS overwrite — audit §6.28)
  *
  * Exit code: 0 on no errors (warnings allowed), 1 on errors.
  */
@@ -171,6 +172,22 @@ for (const code of codes) {
 }
 const dupGroups = [...coordGroups.values()].filter(g => g.length > 1);
 if (dupGroups.length) I(`${dupGroups.length} duplicate-coordinate groups (often expected for parent/dialect pairs)`);
+
+// ---- 13. Source-level duplicate LANG_DATA keys (audit §6.28) -----------
+// JS object literal silently overwrites earlier `code: {...}` with later `code: {...}`,
+// so the validator's runtime view (codes[]) can't see the orphaned earlier entries.
+// Scan source text directly. Pattern: `^  code: { name:` at column 2 (data style).
+{
+    const dataLineKeyRe = /^  ([\w-]+):\s*\{\s*name:/gm;
+    const seen = {};
+    let mm;
+    while ((mm = dataLineKeyRe.exec(dataSrc)) !== null) {
+        const code = mm[1];
+        seen[code] = (seen[code] || 0) + 1;
+    }
+    const dupKeys = Object.entries(seen).filter(([, n]) => n > 1);
+    for (const [c, n] of dupKeys) E(`LANG_DATA: code "${c}" defined ${n} times in source (silent JS overwrite — earlier definition is dead code)`);
+}
 
 // ---- 7. Every code has meta + 8. no duplicate meta assignments ----------
 const codesWithMeta = codes.filter(c => ctx.LANG_DATA[c].meta);
