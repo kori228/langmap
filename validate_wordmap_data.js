@@ -703,6 +703,12 @@ for (const code of codes) {
                 if (!s || typeof s !== 'object' || !s.type || !s.title) {
                     E(`${code}: meta.sources entry missing type/title: ${JSON.stringify(s)}`);
                 }
+                // Audit Task 96: only allow http/https URLs in sources;
+                // anything else (javascript:, data:, mailto:, etc.) is rejected
+                // because the modal turns URLs into <a href> targets.
+                if (s && s.url && !/^https?:\/\//i.test(s.url)) {
+                    E(`[#13j'] ${code}: meta.sources URL "${s.url}" not http(s) — rejected (Audit Task 96)`);
+                }
             }
             withSources++;
         }
