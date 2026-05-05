@@ -210,9 +210,18 @@
         }
         /* In 3D mode drop the muddy heavy shadow + soft white glow; just
            keep the 1px blue ring + white card so the selection is
-           identifiable without halo bleed against the dark globe. */
+           identifiable without halo bleed against the dark globe.
+           Also clear the dark text-shadow (set on .globe-label for
+           legibility against the dark sky) so dark text on the white
+           selected-card doesn't have an ugly black blur halo around it. */
         body.is-3d .globe-label.selected {
             box-shadow: 0 0 0 1px rgba(74,108,247,0.85);
+        }
+        body.is-3d .globe-label.selected,
+        body.is-3d .globe-label.selected .word,
+        body.is-3d .globe-label.selected .ipa,
+        body.is-3d .globe-label.selected .name {
+            text-shadow: none;
         }
         /* The white drop-shadow halo around the connector path was tuned for
            the light 2D map; on the 3D night-sky background it leaves an
@@ -470,7 +479,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=66"></script>
+    <script src="wordmap_data.js?v=67"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -608,7 +617,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      66,
+            data:      67,
             metaI18n:  8,
             filter:    22,
             names:     2,
@@ -1518,6 +1527,10 @@
             return document.querySelector(`.lang-label[data-code="${CSS.escape(code)}"]`)
                 || document.querySelector(`.globe-label[data-code="${CSS.escape(code)}"]`);
         }
+        // Track retries so updateSelectedLabel doesn't keep retrying forever
+        // when the lang's marker is genuinely off-screen (e.g. far from the
+        // current map center on reload). Reset every time the modal opens.
+        let _selRetries = 0;
         function updateSelectedLabel() {
             const ip = _infoPanel();
             if (!ip) return;
@@ -1533,11 +1546,19 @@
             if (!open) return;
             const el = getSelectedLabelEl();
             if (el) {
+                _selRetries = 0;
                 el.classList.add('selected');
                 // Bring selected label's marker icon to front so overlapping
                 // nearby labels don't cover it (per user request).
                 const marker = el.closest('.leaflet-marker-icon');
                 if (marker) marker.style.zIndex = '1000';
+            } else if (_selRetries < 20) {
+                // The lang's marker hasn't been added to DOM yet (race between
+                // loadHash showLangInfo and Leaflet marker rendering). Retry on
+                // the next animation frame, up to ~20 frames (~333ms @ 60fps).
+                // Common cause: page reload with `lang=xxx` in URL.
+                _selRetries++;
+                requestAnimationFrame(updateSelectedLabel);
             }
         }
         function updateConnectorLine() {
@@ -2056,6 +2077,7 @@
             // Reset scroll to top when opening a new lang or switching from
             // another lang — the modal is the scroll container, not infoContent.
             infoPanel.scrollTop = 0;
+            _selRetries = 0;
             updateSelectedLabel();
             updateConnectorLine();
             updateHash();  // persist `lang` to URL so reload restores
