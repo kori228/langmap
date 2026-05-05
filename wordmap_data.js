@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 585 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 586 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -55,7 +55,9 @@ const EXCLUDED_CODES = new Set([
   // Phase 13b: NE Asian + SE Asian ancient
   'zkt','juc','omx','pyx','obr','occ',
   // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
-  'orv','xsc','sukh','xmr','onw','cqu','omc','chb','oma','osu','otl'
+  'orv','xsc','sukh','xmr','onw','cqu','omc','chb','oma','osu','otl',
+  // Reconstructed proto / hypothetical
+  'pjk'
 ]);
 
 const LANG_DATA = {
@@ -2948,6 +2950,21 @@ const LANG_DATA = {
   // Old Japanese (Asuka-Nara, 7-8c.) — Manyōshū / Kojiki period. Heijō-kyō (Nara).
   ojp: { name: 'Old Japanese', native: '上代日本語', lat: 34.69, lng: 135.83,
     words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['—','—'], hand:['手','ta'], eye:['目','ma'], hello:['—','—'], thanks:['—','—'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
+  // Proto-Japonic-Koreanic (PJK) — hypothesized common ancestor of
+  // Japanese and Korean. Status disputed: Vovin (2010) rejects the
+  // family connection; Whitman (2012) and Robbeets (2015) propose it
+  // as part of Transeurasian/Macro-Altaic. Crucially, attested cognate
+  // sets concentrate on cultural/farming vocabulary (rice, paddy,
+  // millet, silkworm) — basic Swadesh-style words like water/fire/sun
+  // do NOT show clear cognates between Japonic and Koreanic, which
+  // is itself a major argument against the hypothesis. We therefore
+  // leave most cells unattested ('—') and mark the few proposed
+  // basic-vocabulary cognates with `disputed` evidence.
+  pjk: { name: 'Proto-Japonic-Koreanic', native: '*PJK', lat: 35.18, lng: 129.07, // Pusan area — Yayoi/Mumun contact zone (Whitman 2011)
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['*ǝma','əma'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      mother: { evidence: 'disputed', source: 'Whitman 2012 — childish *ma/əma; cross-linguistic baby-talk root, weak phylogenetic value' },
+    } },
   // Vedic Sanskrit — Rigveda period (~1500-500 BCE). Sapta Sindhu (Punjab/Saraswati basin).
   vsa: { name: 'Vedic Sanskrit', native: 'वैदिक संस्कृतम्', lat: 30.50, lng: 75.00,
     words: { water:['आपः','aːpaɦ'], fire:['अग्निः','agniɦ'], sun:['सूर्यः','suːrjaɦ'], moon:['चन्द्रमाः','tɕandramaːɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['अद्मि','admi'], drink:['पिबति','pibati'], love:['स्निह्यति','snihjati'], heart:['हृदयम्','hr̩dajam'], tree:['वृक्षः','wr̩kʂaɦ'], house:['गृहम्','gr̩ham'], dog:['श्वा','ɕwaː'], cat:['मार्जारः','maːrdʑaːraɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['स्वस्ति','swasti'], thanks:['—','—'], one:['एकम्','eːkam'], good:['साधु','saːdhu'] }},
@@ -3096,6 +3113,7 @@ const LANG_DATA = {
 const DATA_STATUS_OVERRIDES = {
     // Genuinely reconstructed (no direct text record):
     ine:       'reconstructed',  // Proto-Indo-European — comparative reconstruction
+    pjk:       'reconstructed',  // Proto-Japonic-Koreanic — disputed hypothesis (Whitman/Robbeets)
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
