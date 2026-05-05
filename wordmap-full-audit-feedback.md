@@ -3328,3 +3328,108 @@ PASS
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2
 
 ---
+
+## Session 31 (2026-05-05): 🚀 Schema Revolution Phase 1 — UI dataStatus 教材的可視化
+
+**スコープ:** Sessions 18-27 で整備した 80 historical 言語の dataStatus classification を、UI で**意味が伝わる形**で可視化。教材としての透明度を一気に上げる Phase 1 改革。
+
+### 変更内容
+
+#### 1. `DATA_STATUS_BADGE` に教材的説明 (`desc_en` / `desc_ja`) を追加
+
+各 status の意味を user 向けに 1 文で説明:
+
+| Status | desc_en | desc_ja |
+|---|---|---|
+| `attested` | Direct primary text corpus exists; values cite real sources. | 直接的な原典コーパスあり、値は実在の出典に依拠。 |
+| `fragmentary` | Limited isolated attestations; many cells use related-language proxies. | 断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。 |
+| `reconstructed` | Comparative reconstruction; no direct text record. | 比較言語学による再構形、直接的な text record なし。 |
+| `partly-understood` | Script readable but lexicon/grammar incomplete; many cells uncertain. | 文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。 |
+| `pedagogical` | Teaching approximation; not actual attested historical forms. | 教育用近似、実際に attested された歴史的形態ではない。 |
+| `undeciphered` | Script not yet readable. | 文字が未解読の言語。 |
+
+#### 2. modal 表示で badge の隣に description を inline 表示
+
+```js
+if (badge) {
+    const label = (uiLang === 'ja' && badge.ja) ? badge.ja : badge.en;
+    const desc = (uiLang === 'ja' && badge.desc_ja) ? badge.desc_ja : badge.desc_en;
+    html += `<div style="margin:4px 0 8px;line-height:1.4">` +
+        `<span class="badge">${escapeHtml(label)}</span>` +
+        (desc ? ` <span style="font-size:10px;color:#777">${escapeHtml(desc)}</span>` : '') +
+        `</div>`;
+}
+```
+
+User が古代言語 (例: xsc Scythian) を click すると即座に「断片的 — 断片的な isolated 資料のみ、多くのセルは近縁言語の proxy」と表示。**「これは Scythian 直接 attested data ではない」というコンテキストが瞬時に伝わる**。
+
+#### 3. IPA セルに italic font-style (textbook convention)
+
+`reconstructed` / `partly-understood` / `pedagogical` / `fragmentary` の言語では IPA cells を **italic** で render。これは言語学教科書の標準慣例 (再構形・暫定形は italic で表示)。
+
+```js
+const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
+const ipaStyle = IPA_ITALIC_STATUSES.has(status)
+    ? 'color:#888;font-size:11px;font-style:italic'
+    : 'color:#888;font-size:11px';
+```
+
+例: PIE (`ine`) の cells は全て italic、Sumerian (`sux`, attested) は普通 font。
+
+### 影響範囲
+
+- attested 65 言語: badge + description (inline 説明)
+- fragmentary 5 言語: badge + description + **IPA italic** (xsc/juc/xpr/omc/chb)
+- partly-understood 4 言語: badge + description + **IPA italic** (xmr/zkt/pyx/elx)
+- reconstructed 1 言語: badge + description + **IPA italic** (ine PIE)
+- pedagogical 5 言語: badge + description + **IPA italic** (ja_edo/ja_heian/ko_mid/ko_em/vi_nom)
+- undeciphered 0 言語: 該当なし
+- modern 499 言語: badge 非表示 (default)
+
+合計 80 historical 言語の modal が **教材として意味が伝わる UI** に進化。
+
+### ja/en 以外の UI lang での behavior
+
+description は `uiLang === 'ja' ? desc_ja : desc_en`. 非 ja UI lang は英語 fallback。Session 32+ で ko/zh/de/fr/es/ru/ar 等への翻訳を追加候補。**英語 description は言語学コミュニティで universal なため、即座に教材として使えるレベル**。
+
+### 教材的価値の jump 評価
+
+Session 30 終了時 (60-65/100) → Session 31 後の見立て:
+- **+5-8 points**: dataStatus が UI で見える → 透明度 jump
+- **+3-5 points**: IPA italic で reconstructed/pedagogical が直感的に区別可能 → 教科書的 affordance
+- 推定 **70-75/100** に到達
+
+残る大きな gap:
+- per-cell sources (Phase 2 候補)
+- 系統樹ビュー (Phase 3)
+- Swadesh 100 拡張 / Bibliography (Phase 3)
+
+### Validator 結果
+
+```
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    98 (—) + 26 (dup-coord)
+PASS  (data unchanged, schema 既存活用)
+```
+
+### Session 31 中に気付いた追加問題（未対応・記録のみ）
+
+1. **description 翻訳 (Session 32+ Phase 1.5)** — ja/en のみ。ko/zh/de/fr/es/ru/ar/he/sw/uk/vi/th/id/hi/yue/it/es_eu/es_mx/pt_eu/pt_br への展開が課題。21 UI lang × 6 statuses = 126 strings.
+
+2. **`undeciphered` status は使用 0 件** — Session 1 audit で xmr/zkt/pyx/elx を `partly-understood` に reclassify したため。badge 定義はそのまま残しているが、enum cleanup 候補。Session 32+ optional。
+
+3. **`attested` description が長い** — 「Direct primary text corpus exists; values cite real sources.」は 65 言語で表示される。modal 上部が混雑する可能性。compact 版 description を検討する余地。Session 32+ UI tuning。
+
+4. **per-cell evidence schema (Phase 2 motivation)** — language-level dataStatus は今回 visible になったが、cell-level の confidence は依然 invisible。fragmentary 言語で「このセルは direct attest、このセルは proxy」を区別する schema 設計が次の jump の鍵。Session 32+ Phase 2。
+
+### 持ち越し（Session 32 以降）
+
+**Schema Revolution Phase 1.5:** description 多言語化 (ko/zh/de 等)
+**Schema Revolution Phase 2:** per-cell evidence schema 設計 + fragmentary 5 言語の cells に試験投入
+**Schema Revolution Phase 3:** 系統樹ビュー / bibliography / Swadesh 100 拡張
+
+**前回からの持ち越し:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-8 残**, 17 #3 hit.sun, 20 #2, Session 28-30 incremental items
+
+---

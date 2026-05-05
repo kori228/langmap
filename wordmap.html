@@ -1443,15 +1443,33 @@
             return _metaLoadPromise;
         }
 
+        // Per Session 31 (Schema Revolution Phase 1): each status now carries a
+        // short pedagogical description shown inline next to the badge so users
+        // understand the data's evidentiary level (not just see a colored label).
         const DATA_STATUS_BADGE = {
             modern:            null,
-            attested:          { en:'attested',          ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8' },
-            fragmentary:       { en:'fragmentary',       ja:'断片的',       bg:'#fef0e0', fg:'#c0392b' },
-            reconstructed:     { en:'reconstructed',     ja:'比較再構',     bg:'#fff5e0', fg:'#b56500' },
-            undeciphered:      { en:'undeciphered',      ja:'未解読',       bg:'#fae0e0', fg:'#a02020' },
-            'partly-understood': { en:'partly understood', ja:'部分解読',   bg:'#fff0d0', fg:'#a06000' },
-            pedagogical:       { en:'pedagogical',       ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0' },
+            attested:          { en:'attested',          ja:'文献あり',     bg:'#e8f0fe', fg:'#1a73e8',
+                                 desc_en:'Direct primary text corpus exists; values cite real sources.',
+                                 desc_ja:'直接的な原典コーパスあり、値は実在の出典に依拠。' },
+            fragmentary:       { en:'fragmentary',       ja:'断片的',       bg:'#fef0e0', fg:'#c0392b',
+                                 desc_en:'Limited isolated attestations; many cells use related-language proxies.',
+                                 desc_ja:'断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。' },
+            reconstructed:     { en:'reconstructed',     ja:'比較再構',     bg:'#fff5e0', fg:'#b56500',
+                                 desc_en:'Comparative reconstruction; no direct text record.',
+                                 desc_ja:'比較言語学による再構形、直接的な text record なし。' },
+            undeciphered:      { en:'undeciphered',      ja:'未解読',       bg:'#fae0e0', fg:'#a02020',
+                                 desc_en:'Script not yet readable.',
+                                 desc_ja:'文字が未解読の言語。' },
+            'partly-understood': { en:'partly understood', ja:'部分解読',   bg:'#fff0d0', fg:'#a06000',
+                                 desc_en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
+                                 desc_ja:'文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。' },
+            pedagogical:       { en:'pedagogical',       ja:'教育用近似',   bg:'#eee0fa', fg:'#6020a0',
+                                 desc_en:'Teaching approximation; not actual attested historical forms.',
+                                 desc_ja:'教育用近似、実際に attested された歴史的形態ではない。' },
         };
+        // For these statuses, IPA cells are rendered in italic to signal
+        // "this is reconstructed/uncertain notation, not direct phonemic transcription".
+        const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
 
         function renderLangInfo(code) {
             const lang = LANG_DATA[code];
@@ -1462,13 +1480,18 @@
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2>${escapeHtml(displayName)}</h2>`;
             html += `<div class="native-name">${escapeHtml(lang.native)} [${escapeHtml(code)}]</div>`;
-            // Data-status badge (per wordmap-check.md §8) — only shown for non-modern
+            // Data-status badge (per wordmap-check.md §8) — only shown for non-modern.
+            // Session 31 (Schema Revolution Phase 1): also show pedagogical description
+            // inline so users understand the data's evidentiary level.
             const status = getDataStatus(code);
             const badge = DATA_STATUS_BADGE[status];
             if (badge) {
                 const label = (uiLang === 'ja' && badge.ja) ? badge.ja : badge.en;
-                // bg/fg are constants from a closed enum; label can be safe-escaped.
-                html += `<div style="margin:4px 0 6px"><span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg}">${escapeHtml(label)}</span></div>`;
+                const desc = (uiLang === 'ja' && badge.desc_ja) ? badge.desc_ja : badge.desc_en;
+                html += `<div style="margin:4px 0 8px;line-height:1.4">` +
+                    `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg};vertical-align:middle">${escapeHtml(label)}</span>` +
+                    (desc ? ` <span style="font-size:10px;color:#777;vertical-align:middle">${escapeHtml(desc)}</span>` : '') +
+                    `</div>`;
             }
             if (lang.meta) {
                 html += '<table>';
@@ -1487,6 +1510,11 @@
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
+            // Session 31: italic IPA for reconstructed/partly-understood/pedagogical/fragmentary
+            // signals "this notation is not direct phonemic transcription" (textbook convention).
+            const ipaStyle = IPA_ITALIC_STATUSES.has(status)
+                ? 'color:#888;font-size:11px;font-style:italic'
+                : 'color:#888;font-size:11px';
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
@@ -1495,7 +1523,7 @@
                     if (isUnattestedEntry(entry)) {
                         html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (unattested)</td></tr>`;
                     } else {
-                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}</td><td style="color:#888;font-size:11px">/${escapeHtml(entry[1])}/</td></tr>`;
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
                     }
                 }
             }
