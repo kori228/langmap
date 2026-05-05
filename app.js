@@ -60,7 +60,7 @@ const LANGUAGES = [
     { code: 'ko', name: '韓国語(標準)', group: 'KOR' },
     { code: 'ko_kp', name: '朝鮮語(文化語)', group: 'KOR', experimental: true },
     { code: 'ko_bus', name: '韓国語(釜山弁)', group: 'KOR', experimental: true },
-    { code: 'ko_jeju', name: '韓国語(済州)', group: 'KOR', experimental: true },
+    { code: 'ko_jeju', name: '済州語', group: 'KOR', experimental: true },
     { code: 'ko_yb', name: '延辺朝鮮語', group: 'KOR', experimental: true },
     { code: 'ko_em', name: '韓国語(近世)', group: 'KOR', experimental: true, historical: true },
     { code: 'ko_mid', name: '韓国語(中世)', group: 'KOR', experimental: true, historical: true },
