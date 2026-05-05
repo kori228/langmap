@@ -52,6 +52,10 @@
             backdrop-filter: blur(6px); cursor: pointer;
             box-shadow: 0 1px 4px rgba(0,0,0,0.12);
         }
+        /* Word selector — fixed width so the dropdown doesn't resize as
+           the user picks different words (some labels are much longer
+           than others, e.g. Japanese 食べる vs short 'good'). */
+        .top-left-controls #word-select { width: 240px; }
 
         /* --- Bottom-left: UI lang only --- */
         .map-controls {
@@ -179,6 +183,24 @@
                         0 0 0 1px rgba(74,108,247,0.6);
             outline: none;
             z-index: 10;
+        }
+        /* In 3D mode the dark globe background makes the heavy drop shadow
+           on the selected label look muddy; replace it with a clean
+           high-contrast ring + glow that reads against either land/sea. */
+        body.is-3d .globe-label.selected {
+            box-shadow: 0 0 0 1px rgba(74,108,247,0.85),
+                        0 0 8px rgba(255,255,255,0.5);
+        }
+        /* The white drop-shadow halo around the connector path was tuned for
+           the light 2D map; on the 3D night-sky background it leaves an
+           ugly bright outline. Drop the white halo in 3D and let the line's
+           own color do the work. */
+        body.is-3d #connector-line .conn-path {
+            stroke: rgba(255,255,255,0.85);
+            filter: none;
+        }
+        body.is-3d #connector-line marker path {
+            fill: rgba(255,255,255,0.95);
         }
         /* When the label has no inline color (era-default), use these readable
            defaults inside the selected card. When the lang has a custom color
@@ -425,7 +447,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=62"></script>
+    <script src="wordmap_data.js?v=63"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -563,7 +585,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      62,
+            data:      63,
             metaI18n:  8,
             filter:    22,
             names:     2,
@@ -925,6 +947,9 @@
             btn3D.classList.toggle('active', is3D);
             btn3D.setAttribute('aria-pressed', String(is3D));
             btn3D.textContent = is3D ? '3D' : '2D';
+            // Body class so CSS can theme the connector + selected label
+            // differently in 3D (dark background needs different shadow).
+            document.body.classList.toggle('is-3d', is3D);
             if (is3D) {
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
@@ -938,6 +963,8 @@
             }
             updateMarkers(currentWord);
             updateHash();
+            // Connector line CSS depends on body.is-3d; refresh.
+            if (typeof updateConnectorLine === 'function') updateConnectorLine();
         });
 
         // --- Language markers ---
@@ -1351,6 +1378,7 @@
                 btn3D.classList.add('active');
                 btn3D.setAttribute('aria-pressed', 'true');
                 btn3D.textContent = '3D';
+                document.body.classList.add('is-3d');
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
                 initGlobe();
@@ -1501,6 +1529,20 @@
             }
             const lr = labelEl.getBoundingClientRect();
             const pr = ip.getBoundingClientRect();
+            // UX fix #3 (Session 53): in 3D mode, when the selected language
+            // is on the far side of the globe, globe.gl sets the html-label
+            // to display:none. getBoundingClientRect() then returns
+            // (0,0,0,0), which would make the connector arrow originate from
+            // the top-left corner of the viewport. Treat zero-size or
+            // off-screen labels as "no source" and hide the line.
+            const labelHidden = (lr.width === 0 && lr.height === 0)
+                              || lr.right <= 0 || lr.bottom <= 0
+                              || lr.left >= window.innerWidth
+                              || lr.top >= window.innerHeight;
+            if (labelHidden) {
+                svg.classList.remove('visible');
+                return;
+            }
             // UX fix #2 (Session 38): if the label is fully behind the modal panel,
             // don't draw the line.
             const labelCx = lr.left + lr.width / 2;
