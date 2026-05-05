@@ -57,6 +57,267 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-04 (cont. 10)</div>
+            <ul>
+                <li><strong>Word Map review (wordmap-check.md) — Phase A through partial Phase D</strong>:
+                    <ul>
+                        <li><strong>§1 Stale lang counts unified to 579</strong> — wordmap.html title + 3 meta descriptions, wordmap_data.js header comment, README.md (en + ja file structure).</li>
+                        <li><strong>§2 New <code>validate_wordmap_data.js</code></strong> — Word Map-specific static checker. Verifies WORD_LIST length, word-entry shape, lat/lng range, "—" unattested entries, duplicate meta assignments, EXCLUDED_CODES vs HIST_DESCENDANT consistency, speaker-tier parseability, family top-token allow-list, doc-vs-data lang counts, description i18n coverage. Currently passes with 1 warning (the 58 "—" entries — handled via §3 below).</li>
+                        <li><strong>§3 "—" word entries hidden from map labels</strong> — fragmentary historical languages (Meroitic 15/20, Pyu 7/20, etc.) no longer show literal "—" as a fake word on the map. The detail panel marks them as "— (unattested)" in italic grey. Languages appear/disappear per-word based on what's attested.</li>
+                        <li><strong>§4 6 silent duplicate meta definitions resolved</strong> — quc, kek, sid, cpx, wuu_wz, wuu_sz: older definitions in wordmap_meta.js commented out, the newer Phase 15/17 definitions (with multilingual descriptions) win.</li>
+                        <li><strong>§6 Duplicate top-family chips collapsed</strong> — new <code>PARENT_FAMILY</code> map in <code>expandFamilies()</code>. Sub-branches (Semitic, Cushitic, Bantu, Iranian, Indo-Aryan, Romance, Germanic, Slavic, Sinitic, Vietic, Quichean, …) now also tag their parent (Afro-Asiatic, Niger-Congo, Indo-European, Sino-Tibetan, Austroasiatic, Mayan, …). A language tagged "Semitic" now matches both the "Semitic" and the "Afro-Asiatic" chip, eliminating chip fragmentation.</li>
+                        <li><strong>§7.1 Cantonese native</strong> — <code>LANG_DATA.yue.native</code>: <code>'广东话'</code> → <code>'廣東話'</code> (Traditional, matching the Hong Kong setting and CONTRIBUTING rule).</li>
+                        <li><strong>§7.2 Wu Chinese / Shanghainese clarification</strong> — <code>wuu</code> meta now explicitly states "word entries are Shanghainese (~15-20M); Wu family total is ~80M; Suzhou Wu (wuu_sz) is the historical prestige form, Wenzhou Wu (wuu_wz) the most divergent." Family changed from <code>'Sino-Tibetan'</code> to <code>'Sinitic (Wu)'</code>; description object with 6 UI langs replacing the legacy single-string form.</li>
+                        <li><strong>§8 Data-status badge for historical/reconstructed languages</strong> — language detail panel now shows a small color-coded badge: <em>attested / fragmentary / reconstructed / undeciphered / pedagogical</em>. Auto-derived for historical langs based on "—" count (≥30% → fragmentary), with explicit overrides for the special cases (PIE → reconstructed; Meroitic/Pyu/Khitan/Hurrian → undeciphered; ja_edo/ja_heian/ko_mid/ko_em/vi_nom → pedagogical).</li>
+                        <li><strong>§10 Validator description i18n coverage report</strong> — tabular per-UI-lang coverage. Currently en/ja/ko/zh/de/fr 100%, ru 95%, others 90-94%.</li>
+                        <li><strong>§18 CONTRIBUTING.md Word Map section</strong> — new section after §6 covering file layout, required fields per language, word-entry format ("—" policy + warnings), coordinate conventions, meta field rules, speaker-annotation patterns, historical-language workflow, cache-buster bumps, validator command. Reduces contribution drift.</li>
+                    </ul>
+                </li>
+                <li>Cache busters: <code>wordmap_meta.js?v=13</code>, <code>lang-filter.js?v=19</code>.</li>
+                <li>Remaining review items deferred (large schema changes): §5/§16 structured speakers + IPA notation, §9 structured location/region, §11 WORD_LIST id-vs-translation key separation, §12 LANG_NAMES extraction via regex, §13 ISO/Glottocode tags, §15 source/confidence per word/lang. These need design decisions that warrant their own pass.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 9b)</div>
+            <ul>
+                <li><strong>Language-count correction</strong> — re-counted <code>LANG_DATA</code> from the 549-language milestone commit (80d54c6) forward. Six codes added in Phases 15 and 17 turned out to already exist in <code>LANG_DATA</code> at the milestone: <code>wuu_sz</code>, <code>wuu_wz</code>, <code>cpx</code> (existed pre-Phase 15) and <code>quc</code>, <code>kek</code>, <code>sid</code> (existed pre-Phase 17). My recent commits treated them as new entries, inflating the running count. Corrected sequence: 549 → 557 (Phase 14, all new) → <strong>562</strong> (Phase 15, 5 new + 3 overwrites) → <strong>570</strong> (Phase 16, all new) → <strong>579</strong> (Phase 17, 9 new + 3 overwrites). Era counts in the toggle buttons (499 modern + 80 historical = 579) are correct; the changelog headlines were wrong. README updated.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 9)</div>
+            <ul>
+                <li><strong>Word Map: 12 more 100K+ minority languages added</strong> (573 → <strong>585</strong>, but see correction above — actual was 570 → 579 because <code>quc</code>, <code>kek</code>, <code>sid</code> already existed) — broad regional coverage:
+                    <ul>
+                        <li><strong>Chhattisgarhi (hne)</strong> छत्तीसगढ़ी — Indo-Aryan, ~16M, central India (state language of Chhattisgarh).</li>
+                        <li><strong>Mon (mnw)</strong> ဘာသာ မန် — Austroasiatic Monic, ~1M, Myanmar/Thailand. One of the oldest written languages of mainland SE Asia; Mon script is the direct ancestor of modern Burmese script.</li>
+                        <li><strong>Garo (grt)</strong> A·chik — Sino-Tibetan Bodo-Garo, ~1M, NE India (Meghalaya). Matrilineal society.</li>
+                        <li><strong>Nùng (nut)</strong> — Kra-Dai Central Tai, ~1M, Vietnam. Vietnam's second-largest Tai-Kadai minority after Tày.</li>
+                        <li><strong>K'iche' (quc)</strong> Qatzijobʼal — Mayan Quichean, ~1.7M, Guatemala. The largest Mayan language; literary heritage includes the Popol Vuh creation epic.</li>
+                        <li><strong>Q'eqchi' (kek)</strong> — Mayan Quichean, ~800K, Guatemala/Belize. Second-largest Mayan language.</li>
+                        <li><strong>Mam (mam)</strong> Qyool Mam — Mayan Mamean, ~530K, Guatemala/Mexico (Chiapas). Third-largest Mayan language.</li>
+                        <li><strong>Wolaytta (wal)</strong> — Afro-Asiatic Omotic, ~2M, southern Ethiopia. Omotic affiliation with Afro-Asiatic remains debated.</li>
+                        <li><strong>Sidamo (sid)</strong> Sidaamu Afoo — Afro-Asiatic Cushitic Highland East, ~3M, Ethiopia (Sidama Region created 2020).</li>
+                        <li><strong>Tujia (tji)</strong> Bizisa — Sino-Tibetan Tibeto-Burman, ~830K speakers (out of ~8M ethnic Tujia, the 8th-largest minority in China).</li>
+                        <li><strong>Ngaju (nij)</strong> Basa Ngaju — Austronesian West Barito, ~890K, Central Kalimantan. Distantly related to Malagasy (East Barito).</li>
+                        <li><strong>Toraja-Sa'dan (sda)</strong> — Austronesian South Sulawesi, ~750K. Famous worldwide for elaborate funeral ceremonies (Rambu Solo'), boat-shaped Tongkonan houses.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code>: <em>Sino-Tibetan (Tibeto-Burman, Bodo-Garo / Tujia)</em>, <em>Mayan (Quichean)</em>, <em>Afro-Asiatic (Omotic / Cushitic, Highland East)</em>, <em>Austronesian (West Barito / South Sulawesi, Toraja-Sa'dan)</em>.</li>
+                <li>252 new <code>LANG_NAMES</code> entries (12 codes × 21 UI langs); the dedup-aware Python helper switched to double-quoted values to handle codes whose translations contain apostrophes (K'iche', Q'eqchi', Toraja-Sa'dan).</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 8)</div>
+            <ul>
+                <li><strong>Word Map: 8 SE Asian high-population minority languages added</strong> (565 → <strong>573</strong>) covering significant gaps across Mainland and Maritime Southeast Asia:
+                    <ul>
+                        <li><strong>Patani Malay (mfa)</strong> ภาษามลายูปาตานี — Malayic, ~3M, Thailand's Deep South. Heavy Thai phonological influence; developed register-tone-like features unusual for Malay.</li>
+                        <li><strong>Mường (mtq)</strong> Tiếng Mường — Vietic, ~1.5M, northern Vietnam mountains. Closest relative of Vietnamese; partially mutually intelligible. Preserves features lost in modern Vietnamese.</li>
+                        <li><strong>Tày (tyz)</strong> Cần Tày — Central Tai (Kra-Dai), ~1.7M, Vietnam's largest minority language. Closely related to Nùng and to Zhuang in adjacent Guangxi. Historical Nôm Tày script (Chinese-character-derived).</li>
+                        <li><strong>Pwo Karen (kjp)</strong> ဖျိၣ် — Karen, ~1M, Myanmar/Thailand. One of two major Karenic branches (the other being Sgaw Karen, already covered as ksw); the two are not mutually intelligible.</li>
+                        <li><strong>Jingpo / Kachin (kac)</strong> Jinghpaw — Sino-Tibetan (Sal/Jingpho), ~900K, Myanmar (Kachin State) + China (Yunnan). SOV, complex tonal system, agglutinative.</li>
+                        <li><strong>Wa (wbm)</strong> Vāx — Austroasiatic Palaungic, ~1M, Myanmar (Wa State) + China (Yunnan). Non-tonal (unusual for region), rich consonant clusters.</li>
+                        <li><strong>Akha (ahk)</strong> Akhazà — Sino-Tibetan Loloish (Hani), ~600K spread across Yunnan/Myanmar/Thailand/Laos/Vietnam highland borders. Three contrastive tones, SOV.</li>
+                        <li><strong>Kadazan-Dusun (dtp)</strong> Boros Dusun — Austronesian Sabahan, ~570K, Sabah (Malaysian Borneo). Largest indigenous language complex of Sabah; unified literary standard combining the related Kadazan and Dusun varieties.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code>: <em>Austroasiatic (Vietic)</em>, <em>Austroasiatic (Palaungic)</em>, <em>Sino-Tibetan (Karen, Pwo / Sgaw)</em>, <em>Sino-Tibetan (Sal, Jingpho)</em>, <em>Sino-Tibetan (Loloish, Hani)</em>, <em>Kra-Dai (Tai, Central)</em>, <em>Austronesian (Sabahan)</em>. All inherit appropriate region-typical typology (most SE Asian Sino-Tibetan and Tai-Kadai are SVO+tonal+isolating; Vietic is SVO+tonal+isolating, Wa Palaungic non-tonal, Sabahan Austronesian VSO+agglutinative).</li>
+                <li>168 new <code>LANG_NAMES</code> entries (8 codes × 21 UI langs), inserted via the dedup-aware Python script that removes any pre-existing partial entries before inserting.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 7)</div>
+            <ul>
+                <li><strong>Word Map: 8 more Chinese dialects added</strong> (557 → <strong>565</strong>) — major Sinitic gaps covering Wu, Min, Mandarin, and Hakka branches:
+                    <ul>
+                        <li><strong>Suzhou Wu (wuu_sz)</strong> 苏州话 — historic prestige Wu variety, "Italian of Chinese", ~7M. Eight tones, voiced obstruents, Pingtan/Kunqu opera language. Suzhou.</li>
+                        <li><strong>Wenzhou Wu (wuu_wz)</strong> 温州话 — Oujiang Wu, ~5M. So divergent that PLA jokingly used it as a wartime code. Eight tones, extensive sandhi.</li>
+                        <li><strong>Quanzhou Hokkien (nan_qz)</strong> 泉州话 — historical reference for Min Nan branch (~7M); ancestor of Taiwanese Hokkien and most SE Asian Hokkien varieties. Quanzhou, Fujian.</li>
+                        <li><strong>Hainanese (nan_hai)</strong> 海南话 — Min Nan that split around the Tang dynasty and developed independently (~5M); not mutually intelligible with Hokkien. Implosive consonants. Haikou.</li>
+                        <li><strong>Wuhan Mandarin (zh_wh)</strong> 武汉话 — Southwestern Mandarin (~10M Wuhan; ~260M total SW Mandarin — the largest Mandarin sub-branch). Wuhan, Hubei.</li>
+                        <li><strong>Zhongyuan Mandarin (zh_zz)</strong> 中原官话 / 郑州话 — second-largest Mandarin sub-branch (~190M total), transitional between northern and southwestern types. Zhengzhou, Henan.</li>
+                        <li><strong>Hailu Hakka (hak_hl)</strong> 台灣客家話 (海陸腔) — second-most-common Taiwanese Hakka variety after Sixian, from Haifeng/Lufeng migrants. 7 tones (vs Sixian's 6); the news broadcast standard on Hakka TV. Hsinchu County.</li>
+                        <li><strong>Pu-Xian Min (cpx)</strong> 莆仙话 / 兴化话 — own Min branch (sister to Min Dong, not Min Nan), ~3M. Notable for the [ɬ] (voiceless lateral fricative) phoneme. Putian, Fujian.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code> entries: <em>Sinitic (Mandarin, Southwestern)</em>, <em>(Mandarin, Zhongyuan)</em>, <em>(Min Nan)</em> (top-level alias), <em>(Min Nan, Hainanese)</em>, <em>(Wu)</em> (top-level), <em>(Hakka)</em> (top-level). All inherit standard Sinitic defaults: SVO, tonal, isolating.</li>
+                <li>168 new <code>LANG_NAMES</code> entries (8 codes × 21 UI langs). The <code>add_chinese_lang_names_v2.py</code> helper de-dupes pre-existing entries (some codes had partial coverage already in JA/ZH/EN/KO) before inserting to avoid duplicate keys.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 6)</div>
+            <ul>
+                <li><strong>Word Map: 8 Taiwan minority languages added</strong> (549 → <strong>557</strong>) — 7 Formosan languages plus Taiwanese Hakka. The Formosan languages are Austronesian primary branches (the deepest splits in the family tree, predating Malayo-Polynesian) and represent some of the most linguistically diverse languages in the world relative to their geographic concentration:
+                    <ul>
+                        <li><strong>Amis (ami)</strong> 阿美語 / Pangcah — East Formosan, ~200K speakers, largest indigenous language. Hualien/Taitung east coast. VOS, four-way focus system.</li>
+                        <li><strong>Paiwan (pwn)</strong> 排灣語 / Pinayuanan — Paiwanic, ~96K. Pingtung/Taitung south. Famous for noble vs. commoner lexical registers.</li>
+                        <li><strong>Atayal (tay)</strong> 泰雅語 / Tayal — Atayalic, ~90K. Northern mountains. Squliq dialect (most conservative).</li>
+                        <li><strong>Bunun (bnn)</strong> 布農語 — Bunun branch, ~60K. Central highlands. Famous for the eight-part polyphonic Pasibutbut harvest song. Isbukun standard dialect.</li>
+                        <li><strong>Truku/Seediq (trv)</strong> 太魯閣語 / Seediq Truku — Atayalic, ~30K. Hualien (Taroko Gorge area). Officially split from Atayal in 2008.</li>
+                        <li><strong>Tsou (tsu)</strong> 鄒語 / Cou — Tsouic, ~4K (severely endangered). Alishan area. Six-vowel system, four-voice focus system.</li>
+                        <li><strong>Tao / Yami (tao)</strong> 達悟語 — Batanic (Malayo-Polynesian, not Formosan!), ~3K. Orchid Island (Lanyu). Mutually intelligible with Ivatan in the Philippines' Batanes; maritime culture, plank-canoe (tatala) tradition.</li>
+                        <li><strong>Taiwanese Hakka (hak_tw)</strong> 台灣客家話 — Sinitic / Hakka branch, ~2-3M. Hsinchu/Miaoli/Pingtung. Sixian dialect (most common, 6 tones) used here. Distinct from mainland Hakka in tones, vocabulary, and pronunciation. Recognized as a national language of Taiwan in 2018.</li>
+                    </ul>
+                </li>
+                <li>New <code>FAMILY_DEFAULTS</code> entries in <code>lang-filter.js</code> for the Formosan primary branches: <em>Austronesian (Formosan)</em>, <em>(East Formosan)</em>, <em>(Atayalic)</em>, <em>(Paiwanic)</em>, <em>(Bunun)</em>, <em>(Tsouic)</em>, <em>(Batanic)</em>. Word order is predominantly verb-initial (VOS or VSO), non-tonal, agglutinative with rich verb-focus morphology.</li>
+                <li>All 8 names translated across 21 UI languages (168 new entries in <code>LANG_NAMES</code>); meta entries with full descriptions in 8 base UI languages (en/ja/ko/zh/de/fr/es/ru) added to <code>wordmap_meta.js</code>.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 5)</div>
+            <ul>
+                <li><strong>Word Map: filter panel — full UI multi-lingualization (21 UI languages)</strong> — every hardcoded Japanese string in <code>lang-filter.js</code> now translates with the selected UI language. <code>FILTER_UI_TEXT</code> (16 strings × 21 langs) covers the panel title, six section titles (語族 / 文字 / 語順 / 声調 / 形態論 / 話者数), buttons (クリア / もっと表示 / 折りたたむ), counter ("X / Y 言語"), loading messages, and tonal/non-tonal chip labels. Switching UI language now rebuilds the filter panel in place (preserving active selections via <code>data-val</code> re-marking).</li>
+                <li><strong>Filter chip values — script + morphology translations (660 entries, zero gaps)</strong> — added a dedicated <code>CHIP_LABELS</code> table for the 4 morphology values (<em>isolating, fusional, agglutinative, polysynthetic</em>) and 29 script tags (<em>Latin, Cyrillic, Han, Kana, Hangul, Brahmic, Arabic-derived, Hebrew, Greek, Armenian, Georgian, Ethiopic, Coptic, Cherokee, Syriac, Tifinagh, N'Ko, Yi, Canadian Aboriginal Syllabics, Mongolian-derived, Cuneiform, Hieroglyphs, Aegean syllabary, Mayan, Old Turkic, Tangut, Aramaic-derived, Other historical, Other</em>) across all 20 non-English UI languages. Reason: <code>META_I18N_ATOMS</code> covered ~3/29 script tags and 0/4 morphology values, leaving most chips raw English regardless of UI lang. Family chips still route through <code>translateMetaSmart</code>.</li>
+                <li><strong>Filter selections persist in URL</strong> — filter state now serializes to a single hash param <code>f=cat:val,val|cat:val|…</code>. Restored on init via <code>loadFilterFromHash()</code> before the first <code>rebuildPanel()</code> so chips render with the right "on" markers. Owner-collision avoidance: <code>window.__langmap.getFilterHashParam()</code> exposes the f= fragment so the main <code>updateHash()</code> in <code>wordmap.html</code> preserves it when rewriting the rest of the hash.</li>
+                <li><strong>Era-aware chip counts + 0-count chips disabled</strong> — when the user toggles to historical mode, the chip counts now reflect just the historical languages (and vice versa for modern). Chips with zero matches in the current era render disabled (greyed, non-clickable, <code>opacity: 0.35</code>) instead of disappearing — keeps the chip set stable across era switches and signals what's available in the other era. Plumbing: <code>window.__langmap.getActiveCodes()</code> returns the era-scoped code set and <code>setEra()</code> dispatches a <code>langmap:erachange</code> event that the filter listens to.</li>
+                <li><strong>Speaker section hidden in historical mode</strong> — speaker-tier categorization (100M+, 10M+, …) is meaningless for historical languages (almost all extinct or with only liturgical/scholarly use). When era=historical, the entire 話者数 section disappears from the panel; any active speaker filters are auto-cleared on entering historical mode so they don't silently dim every historical lang.</li>
+                <li><strong>UI-lang sync fix (Korean filter showing Japanese)</strong> — when a user landed on the page via <code>#ui=ko</code>, <code>loadHash()</code> updated the local <code>uiLang</code> and called <code>applyUILang()</code> but never published <code>window.__langmap.uiLang</code> or fired <code>langmap:uichange</code>. The filter panel was therefore stuck on the auto-detected language. Hash-load and end-of-init now both publish uiLang and dispatch the event.</li>
+
+                <li><strong>Meta translator — speaker-annotation atoms (<code>SPEAKER_ATOMS</code>) + smarter splitting</strong> — speaker fields like "<em>~25K (fluent)</em>" or "<em>~130M (L2/educational; not L1)</em>" used to leak raw English (educational, fluent, L1, L2, macrolanguage, lingua franca, etc.) because <code>META_I18N_ATOMS</code> had no entries and <code>translateMetaSmart</code> only split on <code>, / (</code>, never <code>;</code>. Three fixes:
+                    <ul>
+                        <li>Added top-level <code>;</code> split (between <code>,</code> and <code>/</code> in priority).</li>
+                        <li>Added a number-prefix peel rule: <code>"&lt;num&gt; &lt;word&gt;"</code> → strip the number, recurse the descriptor, prepend the number verbatim. Lets "<em>~10 fluent (severely endangered)</em>" decompose properly.</li>
+                        <li>Added <code>SPEAKER_ATOMS</code>: 32 atoms × 16 base langs (ja/ko/zh/yue/vi/th/id/hi/de/fr/it/es/pt/ru/uk/ar/he/sw — es_eu/es_mx and pt_eu/pt_br pick them up via the regional alias) covering Extinct, liturgical, fluent, endangered, severely/critically endangered, revived, macrolanguage, lingua franca, active, passive, total, educational, L1, L2, aggregate, continuum, population, descends/descend/descendants, all varieties, modern dialects, hypothetical, mostly, dialect/dialects, incl./incl. L2/not L1, Wu Chinese family, Mandarin variety, Brazilian/Mexican population.</li>
+                    </ul>
+                </li>
+                <li><strong>Bug: speakers field skipping <code>translateMeta()</code></strong> — <code>renderLangInfo()</code> emitted <code>m.speakers</code> raw while every other meta field (family/countries/official/script) routed through <code>translateMeta()</code>. Result: even fully-curated whole-string speaker atoms never reached the screen because the translator was never invoked. One-line wrap fixes it.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 4)</div>
+            <ul>
+                <li><strong>Word Map: speaker-count annotations (Codex check-2 §12)</strong> — clarified the basis ("L1 / total / regional / aggregate") for entries where the bare speaker number was misleading on the 100M+ tier.
+                    <ul>
+                        <li><strong>Wu Chinese (wuu)</strong> — renamed from "Shanghainese" to "Wu Chinese (Shanghainese)" since the previous ~80M figure was the Wu family total, not Shanghainese alone (~15-20M). Display name and 20 UI-language translations updated.</li>
+                        <li>Annotated speaker strings: <code>id</code> "<em>~200M (total; L1 ≈ 25-40M, mostly L2/national)</em>", <code>sw</code> "<em>~100M (total; L2 lingua franca, L1 ≈ 15-20M)</em>", <code>ar_eg</code> "<em>~100M (regional/dialect continuum; Ethnologue L1 ≈ 68M)</em>", <code>en_in</code> "<em>~130M (L2/educational; not L1)</em>", <code>fr_af</code> "<em>~140M (regional aggregate across African Francophone countries)</em>", <code>en_south</code> "<em>~100M (regional population; active dialect speakers fewer)</em>", <code>pt_br</code> "<em>~215M (Brazilian population; overlaps with Portuguese pt)</em>", <code>es_mx</code> "<em>~130M (Mexican population; overlaps with Spanish es)</em>", <code>fa</code> "<em>~110M (aggregate incl. Dari and Tajik; pure Persian L1 ≈ 70M)</em>", <code>zh_sc</code> "<em>~120M (Mandarin variety; overlaps with Chinese zh)</em>".</li>
+                        <li>The speaker-tier filter (<code>parseSpeakerTier</code>) takes the first numeric value in the string and is therefore unaffected by the appended notes — tiers stay the same; only the language detail panel now exposes the basis.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 3)</div>
+            <ul>
+                <li><strong>Word Map: 11 more historical languages added</strong> (538 → <strong>549</strong>) covering Russia, Thailand, Africa, the Americas, Indonesia, and the Philippines:
+                    <ul>
+                        <li><strong>Old East Slavic (orv)</strong> — Kievan Rus' (10-15c.), Old Cyrillic with archaic letters (yus / yer / yat), ancestor of Russian/Ukrainian/Belarusian. Kyiv.</li>
+                        <li><strong>Scythian (xsc)</strong> — Eastern Iranian steppe nomads (~7c. BCE - 4c. CE). Fragmentary; entries are Iranian-cognate proxies. Pontic steppe.</li>
+                        <li><strong>Old Thai / Sukhothai (sukh)</strong> — Sukhothai Kingdom (1238-1438). Ramkhamhaeng inscription (1283) is the earliest Thai written record.</li>
+                        <li><strong>Meroitic (xmr)</strong> — Kingdom of Kush / Meroe (~3c. BCE - 4c. CE), Sudan. Two scripts (Hieroglyphs U+10980, Cursive U+109A0) deciphered, language largely unknown.</li>
+                        <li><strong>Old Nubian (onw)</strong> — Christian Nubian kingdoms (Makuria, Alodia; 8-15c.). Coptic-derived alphabet with extra Nubian letters.</li>
+                        <li><strong>Classical Quechua (cqu)</strong> — Inca Empire lingua franca (~15-16c.). No native script (the Inca used khipu cord-records); Latin after Spanish contact.</li>
+                        <li><strong>Mochica (omc)</strong> — pre-Columbian Pacific coast Peru (Moche, Chimú); spoken until ~1920. Carrera Daza grammar (1644) is the main source.</li>
+                        <li><strong>Chibcha / Muisca (chb)</strong> — pre-Columbian Andean Colombia (Muisca Confederation). Lugo grammar (1619).</li>
+                        <li><strong>Old Malay (oma)</strong> — Srivijaya inscriptions (Kedukan Bukit, 683 CE+); Pallava-derived Brahmi.</li>
+                        <li><strong>Old Sundanese (osu)</strong> — Sunda Kingdom / Pajajaran (14-16c.); Old Sundanese script (Brahmic).</li>
+                        <li><strong>Old Tagalog (otl)</strong> — pre-Hispanic Tagalog written in Baybayin (Tagalog script U+1700).</li>
+                    </ul>
+                </li>
+                <li>Webfont coverage extended: added Noto Sans Meroitic, Noto Sans Sundanese, Noto Sans Tagalog (Baybayin), Noto Sans Coptic so the new ancient scripts render correctly.</li>
+                <li>New family defaults for the filter: <em>Chibchan</em> (SOV/non-tonal/agglutinative), <em>Meroitic</em> (SVO/non-tonal/agglutinative — debated affiliation), <em>Nilo-Saharan (Eastern Sudanic)</em> (SOV/tonal/agglutinative — Old Nubian).</li>
+
+                <li><strong>Word Map: ancient-language name &amp; meta translations (full i18n)</strong> — milestone wrap-up for the historical-language additions:
+                    <ul>
+                        <li><strong>Names:</strong> all 23 newly-added ancient languages (Phase 13 / 13b / 13c: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai, Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) translated across all 22 UI languages — 460 new entries in <code>LANG_NAMES</code>.</li>
+                        <li><strong>Meta:</strong> 833 new atom translations added to <code>META_I18N_ATOMS</code> across 18 UI languages (~80 atoms × ja + 49 atoms × 17 non-JA langs) covering new family branches (Slavic East, Iranian Eastern Scythian, Meroitic, Chibchan, Para-Mongolic, etc.), scripts (Old Cyrillic, Sukhothai, Meroitic Hieroglyphs/Cursive, Khitan Large/Small, Jurchen, Baybayin, Old Sundanese, Oracle bone script, Bronze inscriptions, Seal script, Man'yōgana, etc.), period/political entities (Western Xia, Liao, Jin, Christian Nubia, Inca/Tawantinsuyu, Sogdiana, Sukhothai Kingdom, Pyu City-States, Champa kingdom, Muisca Confederation, etc.), and longer compound phrases (Sogdian city-states / Silk Road lingua franca, "no native script — preserved through Greek transcriptions and Ossetian cognates", etc.). Final meta coverage on the 23 new entries: <strong>ja/zh/yue 100%, all others 96.7%–98.9%</strong>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont. 2)</div>
+            <ul>
+                <li><strong>Word Map: 6 more historical Asian languages added</strong> (532 → <strong>538</strong>):
+                    <ul>
+                        <li><strong>Khitan (zkt)</strong> — Liao dynasty (907-1125), Para-Mongolic. Khitan Small Script (partially deciphered, U+18B00). Liao Shangjing.</li>
+                        <li><strong>Jurchen (juc)</strong> — Jin dynasty (1115-1234), Tungusic, ancestor of Manchu. Jurchen script not in Unicode; Latin transliteration used. Acheng/Aleǰuke (Jin capital).</li>
+                        <li><strong>Old Mon (omx)</strong> — Dvaravati / Pagan-era (6-11c.), Mon-Khmer. Mon script (Brahmic). Thaton.</li>
+                        <li><strong>Pyu (pyx)</strong> — Pyu City-States (4-12c.), Sino-Tibetan. Sri Ksetra (Pyay). Many entries marked "—" reflecting incomplete decipherment.</li>
+                        <li><strong>Old Burmese (obr)</strong> — Pagan dynasty (1044-1297). Old Burmese script (early form of modern Burmese script). Bagan.</li>
+                        <li><strong>Old Cham (occ)</strong> — Champa kingdom (4c. CE+), Austronesian (Chamic). Mỹ Sơn sanctuary. Latin transliteration; earliest Austronesian-language inscriptions known.</li>
+                    </ul>
+                </li>
+                <li><strong>Webfont coverage for ancient Asian scripts</strong> — added Google Fonts links and CSS fallbacks for Noto Serif Tangut, Noto Sans Old Turkic (Orkhon), Noto Sans Mongolian, Noto Sans Sogdian, Noto Sans Phags-Pa, Noto Sans Khitan Small Script, Noto Sans Manichaean. Tangut characters that previously rendered as tofu boxes (𗌧 → □) now display correctly.</li>
+                <li><strong>Middle Mongolian (xng)</strong> — repositioned from Karakorum (47.2, 102.83) to central Mongolia (43.5, 107.0) so it doesn't overlap with Old Turkic at Orkhon. Word entries converted from Latin transliteration to Traditional Mongolian script (ᠮᠣᠩᠭᠣᠯ-style); added to VERTICAL_LANGS for vertical rendering matching Manchu and Inner Mongolian.</li>
+                <li>New family defaults for filter: <em>Mongolic (Para-Mongolic)</em> SOV/non-tonal/agglutinative (Khitan); <em>Sino-Tibetan (Pyu)</em> SOV/non-tonal/agglutinative; <em>Sino-Tibetan (Tibeto-Burman, Burmish)</em> SOV/tonal/isolating (Old Burmese).</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04 (cont.)</div>
+            <ul>
+                <li><strong>Word Map: 6 ancient Asian languages added</strong> — total now <strong>532 languages</strong>. New entries:
+                    <ul>
+                        <li><strong>Old Chinese (och)</strong> 上古漢語 — Shang/Zhou period (~1250-200 BCE), Baxter-Sagart 2014 reconstructions, oracle bone / bronze / seal scripts. Anyang area.</li>
+                        <li><strong>Old Japanese (ojp)</strong> 上代日本語 — Asuka-Nara (7-8c.), Manyōgana, eight-vowel system. Heijō-kyō (Nara).</li>
+                        <li><strong>Vedic Sanskrit (vsa)</strong> वैदिक संस्कृतम् — Rigveda (~1500-500 BCE), distinct from Classical Sanskrit (preserves pitch accent, subjunctive). Sapta Sindhu basin.</li>
+                        <li><strong>Tangut (txg)</strong> 𗼇𗟲 — Western Xia (1038-1227), unique logographic script (~6,000 chars, 1036 CE). Yinchuan. Reconstructions tentative (Sofronov / Gong / Jacques).</li>
+                        <li><strong>Sogdian (sog)</strong> sγwδyk — Eastern Iranian Silk Road lingua franca (5-9c.). Samarkand.</li>
+                        <li><strong>Old Turkic (otk)</strong> 𐱅𐰇𐰼𐰰 — Orkhon inscriptions (732 CE), earliest Turkic written record. Orkhon valley.</li>
+                    </ul>
+                    Each entry includes 20 words with IPA reconstructions, English+Japanese descriptions, family/script/period meta. All 6 marked historical (excluded from default modern view; appear with the Historical era toggle, paired with their representative descendants: zh, ja, hi, —, tg, tr).
+                </li>
+                <li><strong>Word Map: script filter — multi-tag &amp; classification fixes</strong> (Codex review):
+                    <ul>
+                        <li><strong>Multi-tag scripts</strong> — a language can now have multiple script tags. Punjabi (Gurmukhi+Shahmukhi), Malay (Latin+Jawi), Hausa (Latin+Ajami), Sindhi (Arabic+Devanagari), Kashmiri (Perso-Arabic+Devanagari+Sharada), Zhuang (Latin+Sawndip) etc. now match either filter. 94 languages have multiple tags.</li>
+                        <li><strong>False positives fixed</strong> — Mongolian (mn, mn_cn) was being tagged as <em>Han</em> because the regex matched the bare word "Traditional" in "Traditional Mongolian"; now correctly tagged <em>Mongolian-derived</em>. Shan was matching <em>Han</em> via the substring "Han" inside "Shan"; now <em>Brahmic</em>. Balinese (Hanacaraka) similarly. All regex patterns now use word boundaries or specific compound phrases.</li>
+                        <li><strong>Saraiki (skr)</strong> was tagged <em>Brahmic</em> because the language name appeared in the Brahmic regex; removed. Saraiki Naskh is correctly <em>Arabic-derived</em>.</li>
+                        <li><strong>New tags</strong>: <em>Yi</em> (was Other), <em>Tangut</em>, <em>Old Turkic</em>, <em>Aramaic-derived</em> (Sogdian / Pahlavi separate from Arabic), <em>Mongolian-derived</em> (renamed from "Mongolic" — clearer that it refers to script ancestry, not language family). Manchu language (Tungusic) is now correctly tagged for its Mongolian-derived script.</li>
+                        <li><strong>Brahmic completeness</strong> — Assamese (Eastern Nagari), Mon, Shan, Karen are now correctly Brahmic; previously fell to <em>Other</em>.</li>
+                    </ul>
+                    Coverage: 532/532 languages have at least one script tag (was: 4 → "Other"). 29 distinct script categories.
+                </li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-04</div>
+            <ul>
+                <li><strong>Word Map: filter classification fixes</strong> — pass over <code>lang-filter.js</code> based on a Codex review plus additional manual cross-check:
+                    <ul>
+                        <li><strong>Speaker-tier parser</strong> — strings with ranges or BCE/CE date spans (e.g. <code>~5,000–10,000</code>, <code>~20–200</code>, <code>Extinct (~550-330 BCE)</code>) were being concatenated into a giant integer (<code>500010000</code>) and bucketed as <code>100M+</code>. Rewrite to take only the first numeric group, treat ranges as their lower bound, and return null for extinct entries without an explicit speaker count. Knock-on effects: Jeju (~5–10K) drops from 100M+ to 1K+; Ket (~20–200) from 10K+ to &lt;1K; Klingon (~20–30 fluent) from 1K+ to &lt;1K; ~50 extinct languages no longer appear in any speaker tier.</li>
+                        <li><strong>Punjabi (pa)</strong> — was <code>SVO + non-tonal</code> due to a duplicate F-set assignment. Now <code>SOV + tonal + fusional</code> (Punjabi is the only major tonal Indo-Aryan).</li>
+                        <li><strong>Sino-Tibetan (Min Nan / Wu / Yue)</strong> — these family strings exist in the data but had no <code>FAMILY_DEFAULTS</code> entry, so <code>nan_pn</code>, <code>wuu_nb</code>, <code>yue_gz</code> fell back to plain <code>Sino-Tibetan</code> (SOV+agglutinative). Add Sinitic-style defaults: <code>SVO + tonal + isolating</code>.</li>
+                        <li><strong>Swahili / Wolof / Amharic</strong> — were inheriting Niger-Congo / Bantu / Semitic tonal defaults, but per WALS all three are non-tonal. Override.</li>
+                        <li><strong>Finnish / Estonian</strong> — were bundled in a Uralic SOV F-set together with Hungarian, masking the correct <code>Uralic (Finnic)</code> SVO family default. Removed; both now correctly resolve to SVO.</li>
+                        <li><strong>Polynesian / Philippine languages</strong> — Tagalog, Cebuano, Ilocano, Hawaiian, Maori, Samoan, Tongan, Fijian, Palauan were all bundled into an Austronesian SVO override. These are predicate-initial (VSO/VOS); split out and reassigned to <code>VSO</code>.</li>
+                        <li><strong>Klingon (tlh)</strong> — was SVO; now <code>OVS</code> (the language's defining typological feature by Marc Okrand's design).</li>
+                    </ul>
+                </li>
+                <li>Pitch-accent languages (Japanese, Norwegian, Ainu, Korean Busan/Gyeongsang) remain in the non-tonal bucket pending a UI design decision on whether to add a pitch-accent / lexical-tone three-way split.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-03 (cont.)</div>
+            <ul>
+                <li><strong>Word Map: Vietnamese dialect tones differentiated</strong> — 18 IPA entries across vi_c (Huế) and vi_s (Sài Gòn) now use dialect-specific tone realizations instead of copying the Hà Nội values. Examples: <code>fire lửa</code> (hỏi tone) vi <code>˧˩˧</code> → vi_c <code>˧˩</code> (Huế falling, no rise back) → vi_s <code>˨˩˥</code> (Saigon merger of hỏi/ngã, low-rising); <code>one một</code> (nặng-checked) vi <code>˨˩</code> → vi_c <code>˨˨</code> (Huế low level, no glottal) → vi_s <code>˨˩˨</code> (Saigon low-rising). Differentiation rules: vi_c shifts huyền to <code>˧˨</code>, sắc to <code>˩˧</code>, hỏi to <code>˧˩</code>, nặng to <code>˨˨</code>; vi_s merges hỏi/ngã to <code>˨˩˥</code> and shifts nặng to <code>˨˩˨</code>. Ngang (no diacritic) is preserved unchanged since the existing transcription is inconsistent and ngang doesn't differ across the three dialects.</li>
+                <li><strong>Word Map: speaker-tier filter subdivided</strong> — the <em>話者数 Speakers</em> filter, previously bottoming out at "&lt;100K", now adds three finer buckets: <code>10K+</code> (41 languages), <code>1K+</code> (27), <code>&lt;1K</code> (21). The 89 endangered / minority languages that were previously lumped together can now be individually filtered.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026-05-03</div>
+            <ul>
+                <li><strong>Word Map: Linguistic filter panel</strong> — new "フィルター" button in the top-left controls opens a multi-select chip panel for typologically-meaningful categories: <em>語族 (family), 文字 (script), 語順 (word order), 声調 (tonal), 形態論 (morphology), 話者数 (speaker tier)</em>. AND across categories, OR within. Non-matching languages dim to 0.12 opacity so the spatial context is preserved.</li>
+                <li>All 526 languages are covered via a two-tier resolution: <strong>FAMILY_DEFAULTS</strong> per language family (e.g. all Sinitic varieties default to SVO + tonal + isolating; all Uralic Finnic to SVO + agglutinative) plus per-language overrides for outliers. Word order, tone, and morphology now have 100% coverage.</li>
+                <li>Family and script chip lists collapse to the top entries with a <em>"+ もっと表示 (N件)"</em> toggle so the long tail of small families doesn't overwhelm the panel on first open.</li>
+                <li>Filter eagerly loads <code>wordmap_meta.js</code> on init so chip counts and feature data are available immediately rather than waiting for the user to first open a language detail panel.</li>
+                <li><strong>Word Map: compound metadata translations</strong> — the language detail panel's <em>family / countries / official / script</em> fields no longer fall through to English for compound strings like "Niger-Congo (Bantu, Nguni)" or "Russia (Sakha Republic), Mongolia, China". A smart composite translator decomposes commas / slashes / parentheses, translates each piece via <code>META_I18N</code> exact match → per-UI-lang atom dictionary, and recombines with locale-appropriate separators (CJK 「（）／、」, others ASCII). Coverage: ja 100%, ko/zh/yue 92–95%, others 86–92% across all 22 UI languages.</li>
+                <li><strong>Word Map: IPA tone notation unified</strong> — 278 IPA entries across 14 Chinese dialects (Min Bei, Pu-Xian Min, Teochew, Wenzhounese, Suzhou Wu, Ningbo Wu, Hui, Pinghua, Sze Yap Yue, Cantonese, Pinghua, three Mandarin sub-varieties) converted from digit-pair notation (e.g. <code>sui33</code>, <code>tsuy213</code>) to Chao tone letters (<code>sui˧˧</code>, <code>tsuy˨˩˧</code>) for consistency with the other 22 tonal-language entries.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-04-21 – 2026-04-24</div>
             <ul>
                 <li>New: <strong>Word Map</strong> (<a href="wordmap.html">wordmap.html</a>) — an interactive world map showing 20 key words (water, fire, sun, mother, hello, etc.) in 226 languages with IPA pronunciations.</li>

@@ -568,7 +568,7 @@ This script checks:
 ## Adding a New Language / 新しい言語の追加
 
 1. Add to `LANGUAGES` array in `app.js`
-2. Add to `LANG_NAMES` in `app.js` (all 21 UI language entries)
+2. Add to `LANG_NAMES` in `lang_names.js` (all 21 UI language entries)
 3. Add data for all 100 sentences in `data.js`
 4. **方言の場合**: 親言語のセグメント構造をコピーし、テキストのみ変換（Rule 7参照）
 5. If RTL, add to `RTL_LANGS` set in `app.js`
@@ -617,12 +617,20 @@ Every non-English UI language must have a native translation. Never leave Englis
 
 ```bash
 node -e "
-const fs=require('fs'), src=fs.readFileSync('app.js','utf8');
-const m=src.match(/const LANG_NAMES = (\{[\s\S]*?\n\});/);
-const LN=new Function('return '+m[1])();
+const fs=require('fs'), vm=require('vm');
+const ctx={};
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync('lang_names.js','utf8')+';this.LANG_NAMES=LANG_NAMES;', ctx);
+const LN=ctx.LANG_NAMES;
 const words=['Vietnamese','English','French','German','Spanish','Chinese','Korean','Japanese','Middle','Old','Ancient','Classical'];
-for(const ui of Object.keys(LN)){if(ui==='en')continue;for(const[c,n]of Object.entries(LN[ui])){const w=n.split(/[\s(]/)[0];if(words.includes(w))console.log(ui,c,n)}}
+for(const ui of Object.keys(LN)){if(ui==='en')continue;for(const[c,n]of Object.entries(LN[ui])){const w=String(n).split(/[\s(]/)[0];if(words.includes(w))console.log(ui,c,n)}}
 "
+```
+
+For the canonical full validation (including LANG_NAMES coverage and many other Word Map checks), prefer:
+
+```bash
+node validate_wordmap_data.js
 ```
 
 ### 4. Consistent prefixes per UI language / 言語ごとの接頭辞統一
@@ -654,3 +662,200 @@ When applying a fix based on external feedback:
 1. Include the contributor's name in the git commit message
 2. Add a dated entry in `changelog.html` with `<span class="contributor">— reported by Name</span>`
 3. Add the contributor's name to the Contributors list at the bottom of `changelog.html`
+
+---
+
+## Word Map (`wordmap_data.js` / `wordmap_meta.js`) Rules / Word Map のルール
+
+The Word Map page (`wordmap.html`) is a separate dataset from the Word Order Map: 20 key concepts × 579 languages/varieties on a world map. Different file, different rules.
+
+### A. File layout
+
+```text
+wordmap_data.js — LANG_DATA[code] = { name, native, lat, lng, words: { water:[...], fire:[...], ... } }
+                  WORD_LIST          (20 concepts in display order)
+                  EXCLUDED_CODES     (codes hidden from default modern view)
+                  WM_UI / WM_UI_LABELS (UI strings & UI lang labels)
+wordmap_meta.js — LANG_DATA[code].meta = { family, speakers, countries, official, script, description }
+                  description must be { en, ja, ko, zh, ... } object (≥6 langs)
+```
+
+`LANG_NAMES` (translated language names per UI lang) lives in `lang_names.js` (separated from app.js per wordmap-check.md §12) and is loaded by both `index.html` and `wordmap.html` via a normal `<script>` tag.
+
+### B. Adding a new language
+
+For every new code, you MUST add:
+
+1. **`wordmap_data.js`** — `LANG_DATA[code] = { name, native, lat, lng, words }` with all 20 word entries.
+2. **`wordmap_meta.js`** — `LANG_DATA[code].meta = { family, speakers, countries, official, script, description: { en, ja, ko, zh, de, fr, ... } }`.
+3. **`lang_names.js`** — `LANG_NAMES[uiLang][code]` for all 21 UI languages (use the dedup-aware Python helpers in `/tmp/`).
+4. **`lang-filter.js`** — if the family branch is new, add a `FAMILY_DEFAULTS[familyName]` entry with sensible (wo, tone, morph) defaults.
+5. **Bump cache busters**: `wordmap_data.js?v=N+1`, `wordmap_meta.js?v=N+1`, `lang_names.js?v=N+1`.
+
+Run the validator:
+
+```bash
+node validate_wordmap_data.js
+```
+
+Must report 0 errors. As of wordmap-check-3.md cleanup, the only routine
+warnings are 100M+ tier entries lacking `speakerBasis` (target: 0 over time).
+INFO lines for explicitly-unattested `—` entries (hidden from map labels)
+and duplicate-coordinate groups are expected and benign.
+
+### C. Word entry format / 語形エントリの形式
+
+Each word is `[surface, ipa]`:
+
+```js
+water: ['水', 'mizu']
+moon: ['ጨረቃ', 'tʃəräqa']
+```
+
+Both elements MUST be strings. Use `'—'` for both when explicitly unattested (fragmentary historical languages):
+
+```js
+cat: ['—', '—']  // No attested form for this concept
+```
+
+Entries with both `'—'` are now hidden from the map (rendered as "— (unattested)" only in the language detail panel). Do NOT use `'—'` to mean "I don't know" or "fill in later" — that is silent data corruption. If a form exists but you don't have IPA, put the surface form and approximate IPA, then mark in the commit message that IPA needs review.
+
+### D. Coordinates / 座標
+
+`lat/lng` is a single representative point (the prestige center, capital, or historical site). The map auto-stacks labels at duplicate or near-duplicate coordinates, so don't worry about exact uniqueness — use the geographically meaningful point for the speaker community.
+
+For diaspora languages or L2 lingua francas, pick the historical/cultural center (e.g. English → London, Spanish → Madrid). For ancient languages, use the historical capital or main archaeological site (e.g. Akkadian → Babylon, Tangut → Yinchuan).
+
+### E. Meta fields / メタフィールド
+
+| Field | Required | Notes |
+|---|---|---|
+| `family` | yes | Top-level family name + parenthetical sub-branch. E.g. `'Indo-European (Romance)'`, `'Sino-Tibetan (Min Nan)'`. Top token must be in the validator's allow-list (currently 70+ accepted families). |
+| `speakers` | yes | Best estimate as a single number (M/K) plus optional annotation in parens. E.g. `'~125M'`, `'~25K (fluent)'`, `'Extinct (liturgical)'`. Annotations like L2/L1, total, regional aggregate, lingua franca should be in the parenthetical so they translate via the speaker-atom translator. |
+| `countries` | yes | Comma-separated country names (top-level only). E.g. `'India, Sri Lanka'`. |
+| `official` | yes | Official status. `'No'` if none, otherwise specific countries/regions. |
+| `script` | yes | Writing system(s). Slash-separated for alternatives. Normalize to terms recognized by `detectScript()` in lang-filter.js (`Latin`, `Cyrillic`, `Han characters`, `Brahmic`, `Arabic`, etc.). |
+| `description` | yes | Object with translations. Must have AT LEAST: `en`, `ja`, `ko`, `zh`, `de`, `fr`. Strongly recommended: `es_eu` (or `es`), `pt_eu` (or `pt`), `ru`. |
+
+### F. Speakers field / 話者数フィールド
+
+Per `wordmap-check.md` §5, speaker counts mix several bases (L1, total L1+L2, regional aggregate, etc.). When in doubt, prefer L1 native-speaker counts and annotate the parenthetical:
+
+```js
+speakers: '~270M'                                       // L1 (Bengali — straightforward)
+speakers: '~100M (total; L2 lingua franca, L1 ≈ 15-20M)' // total + breakdown
+speakers: '~140M (regional aggregate across African Francophone countries)'
+speakers: '~80M (Wu Chinese family total; Shanghainese alone ~15-20M)'
+speakers: '~25K (fluent)'                               // endangered/revived
+speakers: 'Extinct (liturgical)'                        // historical/Latin/etc.
+```
+
+The speaker-tier filter takes the first numeric value, so annotations don't break tier classification — they just make the panel display the basis honestly.
+
+### G. Historical languages / 歴史言語
+
+For codes added to `HIST_DESCENDANT` in `wordmap.html`:
+
+1. Also add the code to `EXCLUDED_CODES` in `wordmap_data.js`.
+2. Pair with a representative modern descendant if one exists (`{hist: modern}`), or `null` if not.
+3. Use `'—'` for unattested word entries (fragmentary languages will have many).
+4. In the `description`, be explicit about reconstruction status: `'…reconstructed by comparative method'`, `'…attested in inscriptions only'`, etc.
+5. Speaker count should be `'Extinct'`, `'Extinct (liturgical)'`, `'Extinct (~Nc. CE)'` etc. — never a number unless revived.
+
+### H. Cache busters
+
+Always bump after data changes:
+
+```html
+<script src="wordmap_data.js?v=N+1"></script>
+<script src="meta_i18n_ext.js?v=N+1"></script>
+<script src="lang-filter.js?v=N+1"></script>
+<script src="lang_names.js?v=N+1"></script>
+s.src = 'wordmap_meta.js?v=N+1';
+```
+
+This keeps the user's browser from serving stale data after a deploy.
+
+### I. Cantonese must use Traditional Chinese (recap from §5 above)
+
+Applies to `wordmap_data.js` too: `LANG_DATA.yue.native` and any words for `yue`/`yue_*` codes must be Traditional. Same for Taiwanese Hakka (`hak_tw`), Taiwanese (`nan`), and other Traditional-using varieties.
+
+### J. Optional richer schema (added per wordmap-check.md "all A" decisions)
+
+These fields are **optional** for backward compatibility — existing entries don't need to be migrated en masse. New entries (and any audit/correction pass) should adopt them. The validator checks shape when present, so missing fields are fine but malformed ones fail.
+
+```js
+// In wordmap_meta.js — add to any LANG_DATA[code].meta = { … } object:
+speakerBasis: 'L1',                    // 'L1' | 'total' | 'regional-population' | 'aggregate' | 'liturgical' | 'extinct' | 'uncertain'
+speakerSource: 'Ethnologue 26',        // free string (citation)
+speakerYear: 2023,                     // 4-digit year
+iso6393: 'jpn',                        // ISO 639-3 (3-letter, lowercase)
+glottocode: 'nucl1643',                // Glottocode (4 letters + 4 digits)
+parentCode: 'zh',                      // for varieties — must exist in LANG_DATA
+sources: [                             // CANONICAL citations array — structured.
+  { type: 'reference', title: 'Ethnologue 26', url: 'https://...', accessed: '2026-05-04' },
+  { type: 'dictionary', title: 'CIP online dictionary', url: 'https://...' }
+],
+// references: [...] — legacy string-only field. Still rendered in the modal
+// bibliography footer for backward compatibility, but DO NOT add new entries
+// here. Use the structured `sources` array above. (Audit Task 91, 2026-05-05)
+
+// In wordmap_data.js — add to LANG_DATA[code] (top-level, not meta):
+locationBasis: 'capital',              // 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+```
+
+Reference example: see `LANG_DATA['ja']` in `wordmap_meta.js` and `wordmap_data.js`. Used as the schema reference; the validator's "Optional schema adoption" line counts how many entries have each field.
+
+Why these fields:
+- **speakerBasis**: per `wordmap-check.md §5`, the bare speaker number mixes L1, total, regional aggregate, and liturgical bases — making "100M+" fragile. The `speakerBasis` enum makes the basis explicit so downstream tools can compare like-for-like.
+- **speakerSource / speakerYear**: per §15, no source/date in current data. Knowing whether a number is from Ethnologue 2023 vs. a 1980 census matters for endangered-language estimates.
+- **iso6393 / glottocode / parentCode**: per §13, the LangMap codes are a mix of ISO 639-3, ISO 639-1, and custom (`zh_sc`, `ja_edo`). Adding canonical IDs makes interop with Glottolog / WALS / Ethnologue trivial.
+- **locationBasis**: per §9, the single `lat/lng` mixes capital / prestige center / historical site / approx region. Knowing the basis prevents the map from being misread as "speaker distribution."
+- **sources**: per §15, source citations should at minimum exist at language level for accountability. Per-word `sources` is not required (would be 11,580 entries) but supported via the same shape if you want to record per-form citations.
+
+### K. WORD_LIST shape (refactored 2026-05-04, definition added 2026-05-05)
+
+Each `WORD_LIST` entry has the shape:
+
+```js
+{
+  id: 'water',
+  definition: {
+    en: 'Drinkable water (H₂O); ...',
+    ja: '飲用・生活用の水 (H₂O)。...',
+    ko: '마시거나 일상에 쓰는 물 (H₂O). ...',
+    zh: '可饮用或日常使用的水 (H₂O)；...'
+  },
+  label: { en, ja, ko, zh, id, … }
+}
+```
+
+The Indonesian key is `id` (not `ind` like before — the legacy collision-avoidance was needed when the entry's own id was a top-level field, but now it's nested in `label` so there's no clash).
+
+**Required for new concepts:**
+- `id`: lowercase ascii identifier
+- `label.en` and at least `ja`, `ko`, `zh`, `de`, `fr`, `es`, `pt`, `ru`, `ar`
+- `definition.en` (required) plus `ja`, `ko`, `zh` (priority UI langs per validator check #12b')
+
+**`definition` semantics** — defines the intended concept, not just UI help text. It locks down what each cell should mean so that future reviewers don't "fix" valid cells to a different sense. Difficult concepts that especially benefit from clear definitions:
+
+| Concept | Why it needs explicit definition |
+|---|---|
+| `heart` | Anatomical organ vs mind/soul (E/SE Asian langs use 心/마음/ใจ for the latter) |
+| `love` | Noun vs verb citation form depending on language |
+| `good` | Adjective form; not the adverb "well" or a greeting response |
+| `hello` | Neutral everyday greeting, not time-of-day forms unless the language only has those |
+| `eat` / `drink` | Citation form policy (infinitive / Semitic perfective 3ms / SE Asian bare stem) |
+
+If you add a new concept, include `definition` in the Option A multilingual-object shape. The renderer falls back to `definition.en` for missing UI langs, with a visible "(English fallback)" note (per Task 121).
+
+The validator (#12b' / #12b") requires:
+- `definition.en` present (ERROR if missing)
+- `definition.ja`/`ko`/`zh` strongly recommended (WARN if missing)
+- String `definition` rejected (the legacy partial implementation from Task 82 is now blocked)
+
+### L. LANG_NAMES is now in `lang_names.js`
+
+Previously embedded in `app.js` and extracted by `wordmap.html` via `fetch + regex + new Function` (per `wordmap-check.md §12`). Now in a standalone file `lang_names.js`, loaded by both `index.html` and `wordmap.html` via a normal `<script>` tag.
+
+When adding a new language: append the new code to the appropriate per-UI-lang dict in `lang_names.js` for all 21 UI langs. The dedup-aware Python helpers in `/tmp/add_*_lang_names*.py` handle this.
