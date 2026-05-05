@@ -1006,7 +1006,7 @@ const LANG_DATA = {
   // semantic and phonetic readings; reconstruction follows Lee KM
   // (1993, 2003), Sohn (1999), Whitman (2015).
   oko: { name: 'Old Korean (Silla)', native: '古代韓國語', lat: 35.85, lng: 129.22, // Gyeongju (Silla capital)
-    words: { water:['*muru','*muɾu'], fire:['*purk','*puɾk'], sun:['*hai','*hai'], moon:['*tʌrh','*tʌɾh'], mother:['*əmi','*əmi'], father:['*əpi','*əpi'], eat:['*məkda','*məkta'], drink:['*masita','*maɕita'], love:['*sjarang','*sjaɾaŋ'], heart:['*məsʌm','*məsʌm'], tree:['*namok','*namok'], house:['*cip','*tɕip'], dog:['*kahi','*kahi'], cat:['—','—'], hand:['*son','*son'], eye:['*nun','*nun'], hello:['—','—'], thanks:['—','—'], one:['*hʌnah','*hʌnah'], good:['*djoh-','*tjoh'] },
+    words: { water:['水','*muɾu'], fire:['火','*puɾk'], sun:['日','*hai'], moon:['月','*tʌɾh'], mother:['母','*əmi'], father:['父','*əpi'], eat:['食','*məkta'], drink:['飲','*maɕita'], love:['愛','*sjaɾaŋ'], heart:['心','*məsʌm'], tree:['樹','*namok'], house:['家','*tɕip'], dog:['犬','*kahi'], cat:['—','—'], hand:['手','*son'], eye:['目','*nun'], hello:['—','—'], thanks:['—','—'], one:['一','*hʌnah'], good:['好','*tjoh'] },
     wordEvidence: {
       water:  { evidence: 'reconstructed', source: 'Lee KM 2003 — pre-MK *muru → MK 믈; cf. modern 물' },
       moon:   { evidence: 'reconstructed', source: 'Lee KM 2003 — *tʌrh attested in hyangga 月隠 → MK ᄃᆞᆯ → 달' },
