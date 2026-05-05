@@ -428,6 +428,22 @@ for (const w of (ctx.WORD_LIST || [])) {
     // es_eu/es_mx fall back to es; pt_eu/pt_br fall back to pt
     if (!w.label.es && (w.label.es_eu || w.label.es_mx)) W(`WORD_LIST entry "${w.id}" has es_eu/es_mx but no base 'es' for fallback`);
     if (!w.label.pt && (w.label.pt_eu || w.label.pt_br)) W(`WORD_LIST entry "${w.id}" has pt_eu/pt_br but no base 'pt' for fallback`);
+
+    // ---- 12b'. WORD_LIST.definition shape (audit Task 82/86) ----
+    // Required shape: { en, ja, ko, zh } (multilingual object). Plain strings
+    // are rejected so future Claude sessions don't accidentally regress.
+    if (w.definition !== undefined) {
+        if (typeof w.definition === 'string') {
+            W(`[#12b'] WORD_LIST entry "${w.id}" has string definition; expected object { en, ja, ko, zh }`);
+        } else if (typeof w.definition !== 'object' || w.definition === null) {
+            E(`[#12b'] WORD_LIST entry "${w.id}".definition is not an object`);
+        } else {
+            if (!w.definition.en) E(`[#12b'] WORD_LIST entry "${w.id}".definition missing .en`);
+            for (const k of ['ja', 'ko', 'zh']) {
+                if (!w.definition[k]) W(`[#12b'] WORD_LIST entry "${w.id}".definition missing priority UI lang .${k}`);
+            }
+        }
+    }
 }
 
 // ---- 12c. LANG_NAMES coverage per UI lang (per wordmap-check-2.md §4) -------

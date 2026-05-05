@@ -23,7 +23,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | §48 Bouyei pcc tone letters → IPA Chao tones | ✅ Fixed | 20 |
 | §56/B Tujia tji love/thanks tone restoration | ✅ Fixed | 2 |
 | §50 Iu Mien iuu tone letters → IPA Chao tones | ✅ Fixed | 20 |
-| Phase 4 schema: WORD_LIST `definition` field added | ✅ Schema only (no UI yet) | 20 concepts |
+| Phase 4 schema: WORD_LIST `definition` field added (multilingual {en,ja,ko,zh}) | ✅ Schema + validator check | 20 concepts |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -469,6 +469,56 @@ Stress 付き IPA は narrow IPA convention に整合、教材として「どこ
 
 ---
 
+## Audit Tasks 82/85/86 follow-up
+
+監査の最新バッチ (§71-§140) のうち、直前のセッションで作った *partial implementation* に対する正式 follow-up:
+
+### Task 82: WORD_LIST.definition object 化 (✅ Fixed)
+
+直前 commit で `definition: '...'` の plain string を 20 entries に追加したが、Audit Task 77/82 の required shape は `definition: { en, ja, ko, zh }` の多言語 object。Audit が "current working tree already has X but it's wrong shape" と明記。
+
+**変更:** 全 20 concepts の `definition` field を string → `{ en, ja, ko, zh }` object に変換。Audit が Task 82 で示した content corrections も適用:
+
+| Concept | 修正前 | 修正後 |
+|---|---|---|
+| `love` | "Noun (affection); not the verb" | "Basic word/root for love or affection — noun or verb citation form depending on language" (zh 愛/yue 愛/vi yêu/th รัก が verb-like の現状を反映) |
+| `heart` | "anatomical OR mind/soul, depending on language" | "Default: basic emotional/cognitive heart/mind term; use anatomical only where it is the normal basic word" (default 明示) |
+| `eat`/`drink` | "perfective 3ms for Semitic" hardcoded | "use the language's normal dictionary/citation convention; document exceptions with wordEvidence.note" (Hebrew は infinitive, Arabic は perfective という現状反映) |
+| `cat` | "sex-neutral preferred where the language distinguishes" | "use the normal generic/citation form for that language, and note gender if it matters" |
+
+UI hover 表示は次フェーズ (Audit Task 95 が "concept-definition UI not depend on hover only" と指示) — schema layer のみ整備。
+
+### Task 86: Validator check for definition shape (✅ Added)
+
+[validate_wordmap_data.js:432-446](validate_wordmap_data.js#L432-L446) に check #12b' 追加:
+- `definition` が string なら WARN (legacy partial implementation)
+- `definition` が non-null object でなければ ERROR
+- `definition.en` 必須 (ERROR)
+- `definition.ja`/`ko`/`zh` priority UI langs 欠落で WARN
+
+これで future Claude session が plain string definition を accidentally 追加しても warning が出る。
+
+### Task 85: Stress edits 受領確認 (acknowledge & retain)
+
+Audit Task 85 が「Italian/Spanish/Polish の stress 追加は Task 76 (pronunciationType schema) 後に行うべきだった、prematureだ」と指摘。Audit 自身が **"Do not revert already-added stress marks solely because of this note"** と明記。
+
+**現状:** 既存 stress edits は keep。`pronunciationType` schema が追加された段階で再評価予定。Italian/es_eu/Polish は確認後 `pronunciationType: 'ipa'` 候補だが、source citation も必要 (Task 80)。
+
+### Pass 7+ deferred (要 schema decision)
+
+以下は major refactor / policy decision が前提:
+- Task 76 `pronunciationType` schema (UI 列ラベルが IPA / broad / orthography のどれか)
+- Task 79 `coverage` flag for regional variants (zh_db = base-copy 等)
+- Task 84 `surfaceType` schema for non-Latin scripts
+- Task 95 concept-definition UI (hover-only でなく click/tap-friendly)
+- Task 87 meta fields は wordmap_meta.js に追加 (wordmap_data.js でなく)
+- Task 134 cache-buster 中央集約
+- Task 109 custom code documentation + validator
+
+これらは 1 commit で解決できないため、追って incremental に対応。
+
+---
+
 ## Validator 結果
 
 ```
@@ -482,7 +532,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=54` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
+Cache buster `v=46 → v=55` (data) / `v=16 → v=18` (meta, ko_jeju Option A)。
 
 ---
 
