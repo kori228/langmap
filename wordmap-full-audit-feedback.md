@@ -864,3 +864,75 @@ PASS  (check #13, #14, #15 ともに動作確認済み)
 - Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom 等の正当性判断)
 
 ---
+
+## Session 10 (2026-05-05): §6.54 古代語会話句ポリシー final cleanup
+
+**スコープ:** audit §6.54 (Tocharian / Hittite の `good` 代用) の final cleanup。Session 1-9 の作業で hit / xto.thanks / txb.hello はすでに `—` 化済みだったが、`txb.thanks` の `kartsene` のみ残存していた。audit が「kartse 派生っぽく見えるが thanks として確定できない」と再確認対象に挙げていたため、ancient lang ポリシーに従って `—` 化。
+
+### `txb.thanks` を `—/—` 化
+
+| Code | Field | 旧 | 新 | 根拠 |
+|---|---|---|---|---|
+| `txb` | `thanks` | `𑀓𑀭𑁆𑀢𑁆𑀲𑁂𑀦𑁂` / `kartsene` | `—` / `—` | `kartsene` は `kartse` (good) の派生形 (副詞「うまく/良く」)。audit §6.54 の re-verification target、Tocharian B 文献で thanks 専用語として確定不可。ancient lang ポリシー (hit/xto/txb は hello/thanks を `—` で揃える) に従う |
+
+これで Tocharian B の hello/thanks がともに `—` となり、Tocharian A、Hittite と方針が一致。ancient lang 全体の "hello/thanks に good 系を機械転用" 問題の最終整理が完了。
+
+### Hit/Xto/Txb 古代語会話句ポリシー — Session 10 終了時状態
+
+| Code | Lang | hello | thanks | good |
+|---|---|---|---|---|
+| `hit` | Hittite | `—/—` | `—/—` | `𒀸𒋗/asːu` ✓ |
+| `xto` | Tocharian A | `𑀜𑁄𑀫𑁆/ɲom` ⚠️ (=「name」の語、要確認) | `—/—` | `𑀓𑀸𑀲𑀼/kaːsu` ✓ |
+| `txb` | Tocharian B | `—/—` | **`—/—` (Session 10 fixed)** | `𑀓𑀭𑁆𑀢𑁆𑀲𑁂/kartse` ✓ |
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 1  (mon/mnw — 意図的に visible)
+INFOS:    67 (—)  ← 66 → 67 (txb.thanks 増)
+INFOS:    26 (dup-coord)
+PASS
+```
+
+### 🚨 Session 10 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`xto.hello: 𑀜𑁄𑀫𑁆 / ɲom`** — Tocharian A `ñom` は通常「name (名前)」を意味する語。Wiktionary Tocharian A は `ñom` を "name" として記述する。`hello` 欄に「名前」の語を入れているのはデータ入力ミスの可能性が高い。
+
+   **対応保留理由:** audit §6.54 では `xto.hello` を直接的に flag していない（`xto.thanks == good` のみ）。私の指摘は audit 範囲外の new finding。Session 11+ で Tocharian A の `ñom` 用法を専門資料 (Adams Tocharian Dictionary, CEToM corpus) で確認後、`—` 化または別の値に修正候補。
+
+2. **`xto.hello: ñom` (=name) が残存している非対称な状態** — Session 10 で `xto.thanks` を `—` 化したが `xto.hello` はそのまま。Session 11+ で同じ ancient lang ポリシーで `—` 化検討。
+
+3. **古代語他 (xpr Parthian, peo Old Persian, vsa Vedic Sanskrit, sga Old Irish, akk Akkadian, sux Sumerian 等)** — `hello/thanks` 欄が同様に問題ある可能性。Session 11+ で全古代語を audit §6.54 ポリシーで再確認候補。
+
+4. **削除した値 `kartsene` の意味** — Adams Tocharian B Dictionary では "well, in a good manner" (副詞) として記録されている可能性が高い。`thanks` の代用としては不適だが、削除前の値の意味を `wordmap_meta.js` の `notes` フィールドや `removedValueLog` のような形で記録できると linguist にとって有用 (Session 11+ schema 検討)。
+
+5. **「`—` だらけになる古代語の見栄え問題」** — txb のように hello + thanks 両方 `—` になると、地図モーダルの単語表でセル数が多く見える。UI 側で「`—` 連続セルは折りたたむ」オプション追加の余地あり (Session 11+ UI 検討)。
+
+### 持ち越し（Session 11 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+- Session 9 #4 validator allowlist 機構
+- Session 9 #5 representativePoints[] meta schema
+- Session 10 #4 削除値の `wordmap_meta.js` notes 化
+- Session 10 #5 古代語 `—` 連続セルの UI 折りたたみ
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 7 #1-2, #5
+- **Session 8 mon/mnw 言語コード衝突 (重大、validator #15 で常時 visible)**
+- Session 8 残 dup-coord 候補 (ff/Mopti, bal/Mastung)
+- Session 9 #1-3 (xng/otk, zh_han/zh_tang, hu/rom)
+- **Session 10 #1-3 xto.hello: ñom (=name) のデータ入力ミス疑い + 古代語 hello/thanks 全体再確認**
+
+---

@@ -1806,8 +1806,8 @@ const LANG_DATA = {
         "—"
       ],
       "thanks": [
-        "𑀓𑀭𑁆𑀢𑁆𑀲𑁂𑀦𑁂",
-        "kartsene"
+        "—",
+        "—"
       ],
       "one": [
         "𑀱𑁂",
