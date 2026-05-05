@@ -595,3 +595,86 @@ PASS  (check #13, #14 ともに pass)
 - Session 6 #2-3 (Lagos 文化 vs 主要話者地、他 2 コードクラスタ個別判断)
 
 ---
+
+## Session 7 (2026-05-05): Mayan ʼ (U+02BC) 統一
+
+**スコープ:** Session 5 #2 で記録した「Mayan 系の `ʼ` (U+02BC) 統一」を実施。PLFM (Proyecto Lingüístico Francisco Marroquín) 標準に従い、Mayan 諸語の surface 欄および name/native 欄、さらに lang_names.js 内の言語名翻訳を ASCII `'` (U+0027) → MODIFIER LETTER APOSTROPHE `ʼ` (U+02BC) に正規化。
+
+### 対象言語 (Mayan family)
+
+`wordmap_data.js` の 6 言語:
+
+| Code | Lang | name 変更 | native 変更 | words 変更 |
+|---|---|---|---|---|
+| `quc` | Kʼicheʼ | `K'iche'` → `Kʼicheʼ` | `Qatzijob'al` → `Qatzijobʼal` | 5 ASCII → ʼ (water/drink/love/heart/cat/eye 等) |
+| `yua` | Yucatec Maya | (`Yucatec Maya` 不変) | `Maya t'aan` → `Maya tʼaan` | 16 ASCII → ʼ |
+| `kek` | Qʼeqchiʼ | `Q'eqchi'` → `Qʼeqchiʼ` | (既に `Qʼeqchiʼ`) | 2 ASCII → ʼ |
+| `tzo` | Tzotzil | (`Tzotzil` 不変) | `Bats'i k'op` → `Batsʼi kʼop` | 15 ASCII → ʼ |
+| `mam` | Mam | (`Mam` 不変、apostrophe 無し) | (`Qyool Mam` 不変) | 8 ASCII → ʼ |
+| `myn` | Classical Maya | (不変) | (不変) | 11 ASCII → ʼ |
+
+合計: 7 line edits in wordmap_data.js（decl 4本 + words 6本のうち変更ありは 7）。
+
+ASCII `'` 残存数: 全 6 言語で 0 (前: 68 → 後: 0)。
+modifier ʼ 数: 25, 23, 21, 24, 15, 18 = 126 (IPA の既存 ʼ 含む)。
+
+**実装方法:** `/tmp/mayan_apostrophe.js` 一回限りスクリプト。JS 文字列リテラルを正しくパースして surface フィールドのみを置換、IPA 欄は不変、エスケープを正しく re-emit。実行後はバックアップから復元 → 修正版で再実行 → 検証。
+
+### `lang_names.js` の言語名翻訳
+
+各 UI 言語別の言語名翻訳でも Mayan 名 `K'iche'` / `Q'eqchi'` の ASCII `'` を normalize:
+
+| パターン | 件数 | 処理 |
+|---|---|---|
+| `K'iche'` → `Kʼicheʼ` | 4 | 全変換 (en, vi, etc.) |
+| `Q'eqchi'` → `Qʼeqchiʼ` | 4 | 全変換 |
+| `k'iche'` → `kʼicheʼ` | 6 | 全変換 (es, pt 等) |
+| `q'eqchi'` → `qʼeqchiʼ` | 6 | 全変換 |
+| Cyrillic `к'иче'` / `к'екчи'` → `кʼичеʼ` / `кʼекчиʼ` | 各 2 | ru, uk で変換 |
+| Arabic `كيتشي'` / `كيكتشي'` → `كيتشيʼ` / `كيكتشيʼ` | 各 1 | ar |
+
+**故意に touch しない:**
+- Hebrew (he UI): `קיצ'ה` `קקצ'י` の `'` は Hebrew geresh-like 用法（ヘブライ文字の特殊音を示す Hebrew 慣例）。U+02BC ではなく ASCII `'` または U+05F3 がヘブライ語タイポグラフィー上適切。
+- Swahili (sw UI): `Kʼiche` `Qʼeqchi` (末尾 ʼ なし、stylistic 短縮形)。Swahili では ejective 子音概念がないため末尾 ʼ を付けない選択は理にかなっている。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+INFOS:    66 (—) + 31 (dup-coord)
+PASS  (check #13 重複キー、#14 3+ クラスタ ともに pass)
+```
+
+### Session 7 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`tji.eye: mie / mie˨˩`** — Tujia の eye が `mie` (Latin) になっているが、Tujia は通常 `Lao Pinyin` 系統転写（数字声調付き）。Session 4 で `tji.love: a2ci1` `tji.thanks: ang2zai1` に修正済みだが、他セルとの転写整合性は別問題。Session 8+ で確認候補。
+
+2. **`yua.cat: miis`** — Yucatec Maya の cat は `miis` /miːs/ で OK だが、Wiktionary で確認すると `mis` (短母音) も併記されている。方言・地域差の可能性。Mérida 標準として `miis` は妥当。
+
+3. **`mam.cat: wiix`** — Mam の cat `wiix` /wiːʃ/ は Wiktionary で確認できる。問題なし。
+
+4. **PLFM ʼ 統一の他 Mayan 派生言語** — `cak` (Kaqchikel), `jak` (Jakaltek), `poc` (Poqomam), `ixl` (Ixil), `ttc` (Tektitek), `kjb` (Q'anjob'al), `qub` (Quechua-related, not Mayan) などのコードがあれば同様の normalize 候補。今回 LANG_DATA 内のそれら言語不在のため対象外。Session 8+ で Mayan family の他言語追加時には PLFM 標準を最初から守る運用にすべき。
+
+5. **`anima'` borrowing 注記** — Session 5 で記載した「`heart: anima' / animaʔ` はスペイン借用、本来の K'iche' は `k'u'x` /kʼuʔʃ/」問題は Session 7 時点でも未解決。`heart` の意味定義（解剖学的 vs 比喩的）と合わせて Session 8+ で再検討。
+
+### 持ち越し（Session 8 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化
+- Session 3 followup #4 (`word` 命名衝突)
+- Session 5 #4 (`WM_UI_LABELS` schema 統一)
+- Session 6 #4 UI 側 spiderfy / cluster offset 実装
+
+**追加リサーチ要:**
+- §6.16 Iranian glk/lrc/bqi `eat == drink`
+- §6.42 Formosan hello/thanks の方言基準確認
+- Tujia の方言基準と出典統一
+- mnp Min Bei `fire:xui˧˧` の Wiktionary 確認
+- cpx / wuu_wz / wuu_sz の方言基準明記
+- Session 5 #1, #3 (quc.thanks 方言差 / heart 意味定義)
+- Session 6 #2-3 (Lagos 文化 vs 主要話者地、他 2 コードクラスタ個別判断)
+- Session 7 #1-2, #5 (Tujia 転写整合, Mayan 派生言語追加時の PLFM 統一, heart `anima'` borrowing)
+
+---
