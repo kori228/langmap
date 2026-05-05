@@ -110,6 +110,57 @@ for (const code of codes) {
 }
 if (dashCount > 0) I(`${dashCount} word entries contain "—" (explicitly unattested; hidden from map labels per §3)`);
 
+// ---- 4b. IPA field — detect non-IPA scripts (per wordmap-data-audit-1 §5.1) ----
+// IPA uses Latin + Greek-letter conventions (θ β χ φ etc.). Cyrillic, Han,
+// Arabic, Devanagari, etc. should NEVER appear in the IPA field. This catches
+// cases like vec.house where the surface-form Cyrillic accidentally bled into
+// the IPA column.
+const NON_IPA_SCRIPT_RE = /[Ѐ-ӿ一-鿿぀-ゟ゠-ヿ֐-׿؀-ۿऀ-ॿঀ-৿฀-๿가-힯]/;
+let nonIpaInIpaField = 0;
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    if (!lang.words) continue;
+    for (const id of WORD_IDS) {
+        const e = lang.words[id];
+        if (!Array.isArray(e) || e.length !== 2) continue;
+        const ipa = e[1];
+        if (typeof ipa !== 'string') continue;
+        if (NON_IPA_SCRIPT_RE.test(ipa)) {
+            E(`${code}.words.${id}: IPA field contains non-IPA script chars: ${JSON.stringify(ipa)}`);
+            nonIpaInIpaField++;
+        }
+    }
+}
+
+// ---- 4c. Same-form/same-IPA duplicates within a language (per §4) ----
+// A language using the exact same [surface, ipa] for two different concepts
+// is often a copy-paste error (Palauan dog/cat both 'katuu'; Navajo eat/drink
+// both 'yishą́'). Some collisions are legitimate (greetings doubling as thanks),
+// so this is INFO-level — surface them for human review.
+const dupForms = [];
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    if (!lang.words) continue;
+    const seen = new Map();  // "surface||ipa" → [concept]
+    for (const id of WORD_IDS) {
+        const e = lang.words[id];
+        if (!Array.isArray(e) || e.length !== 2) continue;
+        if (isUnattestedEntry(e)) continue;
+        const k = e[0] + '||' + e[1];
+        if (!seen.has(k)) seen.set(k, []);
+        seen.get(k).push(id);
+    }
+    for (const [k, ids] of seen) {
+        if (ids.length < 2) continue;
+        dupForms.push(`${code}: ${ids.join('/')} share form ${k.split('||').map(x => JSON.stringify(x)).join(' ')}`);
+    }
+}
+function isUnattestedEntry(entry) {
+    if (!Array.isArray(entry) || entry.length !== 2) return true;
+    const [w, ipa] = entry;
+    return (!w || w === '—') && (!ipa || ipa === '—');
+}
+
 // ---- 6. Duplicate (lat,lng) groups --------------------------------------
 const coordGroups = new Map();
 for (const code of codes) {
@@ -443,6 +494,11 @@ for (const s of Object.keys(dataStatusCounts)) {
     if (!statusOrder.includes(s)) console.log(`  ${s.padEnd(20)} ${dataStatusCounts[s]} (unexpected)`);
 }
 console.log('');
+if (dupForms.length) {
+    console.log(`Same-form/same-IPA duplicates within a language (${dupForms.length}):`);
+    for (const d of dupForms) console.log('  · ' + d);
+    console.log('');
+}
 console.log('Description i18n coverage:');
 for (const ui of UI_LANGS) {
     const c = i18nCoverage[ui];
