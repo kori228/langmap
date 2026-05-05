@@ -1986,3 +1986,210 @@ PASS
 - **Session 17 #3 hit.sun の正しい cuneiform 復活 (現在 `—`、`istanu-` cuneiform 確定後)**
 
 ---
+
+## Codex 追加レビュー 5 (2026-05-05): Old Chinese / Old Japanese / Tangut / Sogdian / Old Turkic
+
+**スコープ:** `och` Old Chinese、`ojp` Old Japanese、`txg` Tangut、`sog` Sogdian、`otk` Old Turkic を確認。データ修正は未実施。直近の未コミット差分で `juc.hello/thanks` はすでに `—` 化されていることを確認したため、今回は次の歴史語ブロックに進んだ。
+
+### `otk` Old Turkic: `sun` の runiform surface と `hello` が強い再確認候補
+
+- 対象: `wordmap_data.js` `otk` block。
+- 評価: **Old Turkic は資料が強く、多くの基本語は plausible。ただし `sun` の Old Turkic script 表記と `hello` は優先確認が必要。**
+- 確認できた背景:
+  - Old Turkic corpus は Orkhon/Yenisei inscriptions と manuscripts が中心で、Old Turkic script の代表的語形は辞書で確認可能。
+  - Türk Tili の Old Turkic dictionary では `sub` = water, `o:t` = fire が直接確認できる。
+  - `Drevnetyurkskiy Slovar` / Clauson / Tekin が基本参照。
+- 個別評価:
+  - `water:['𐰽𐰆𐰉','sub']` は強い。Türk Tili で `𐰽𐰆𐰉 sub` = water と確認。
+  - `fire:['𐰆𐱃','ot']` も強い。ただし Türk Tili は `ot` grass と `o:t` fire を区別するため、IPA/転写側に長母音 `o:t` または注記があるとよい。
+  - `moon:['𐰀𐰖','aj']`, `father:['𐰴𐰭','qaŋ']`, `dog:['𐰃𐱃','it']`, `one:['𐰋𐰃𐰼','bir']` は plausible。
+  - `sun:['𐰚𐰰𐰣','kyn']` は **強い再確認候補**。Old Turkic `kün` = sun/day は自然だが、surface `𐰚𐰰𐰣` は `kün` の標準的な runiform 綴りに見えず、`qan/khan` 系に読める可能性がある。`kün` として表示するなら Old Turkic script の正しい綴りを辞書で確認すべき。
+  - `hello:['𐰰𐰠𐰢','esænmy']` は **現代 Turkic 的な “esenmi?” を古代語に投影している疑い**。Orkhon inscriptions で conversational greeting として attested でなければ `—` 候補。
+  - `eat:['𐰘𐰃-','je']`, `drink:['𐰃𐰲-','itʃ']`, `love:['𐰽𐰋-','sæb']` は verbal stem 表示であり、`-` が辞書語幹記号であることを UI/meta に出す必要がある。
+- 参照:
+  - https://turk-tili.com/dictionary/sub?lang=en
+  - https://turk-tili.com/dictionary/%C5%8Dt?lang=en
+  - https://zenodo.org/records/12594595
+  - https://kaikki.org/dictionary/Old%20Turkic/index.html
+
+### `ojp` Old Japanese: 基本語は概ね良いが `cat` と会話句は時代差が危険
+
+- 対象: `wordmap_data.js` `ojp` block。
+- 評価: **Old Japanese として資料は強いが、現 block は漢字表記 + 音韻転写の normalized display であり、Man'yogana の原文ではない。特に `cat`, `hello`, `thanks` は追加確認候補。**
+- 背景:
+  - ONCOJ は Old Japanese period の全テキストを原文・音韻転写・lemma 付きで扱う主要 corpus。
+  - Old Japanese は主に 7-8 世紀、資料は詩歌が中心。日常会話句の attestation は限られる。
+  - `₁` などの下付き数字は上代特殊仮名遣の区別で、IPA そのものではない。この点は既存 audit §6.20 と一致。
+- 個別評価:
+  - `water:水/mintu`, `fire:火/pə`, `sun:日/pi`, `moon:月/tukï`, `tree:木/kə`, `hand:手/ta`, `eye:目/ma`, `good:良し/yo₁si` は概ね plausible。
+  - `mother:母/papa`, `father:父/titi` も Old Japanese として plausible だが、現代日本語と意味領域・敬称関係が違うので ONCOJ lemma で確認したい。
+  - `cat:['猫','neko']` は **要確認**。猫自体は奈良時代に知られていても、Old Japanese corpus で `neko` が普通名詞として確実に attested かは未確認。未確認なら `—` または `later attested` 注記候補。
+  - `hello:['安し','yasusi']` は「安い/平穏である」系の形容詞で、greeting 専用語ではない。古代語会話句ポリシー上は `—` 候補に再浮上させるべき。
+  - `thanks:['忝し','katadʑike₁nasi']` は感謝・恐縮の語として later classical Japanese では自然だが、Old Japanese 8 世紀 corpus での attestation と `thanks` 用法を確認したい。
+- 方針候補:
+  - `ojp` は `surface` を「原文」と呼ばず、`normalized logographic form + OJ transcription` と説明する。
+  - `hello/thanks` は「意味として礼・感謝に近い形容詞」なのか「挨拶・感謝表現として attested」なのかを分ける。
+- 参照:
+  - https://oncoj.ninjal.ac.jp/
+  - https://digital.humanities.ox.ac.uk/article/oxford-ninjal-corpus-of-old-japanese
+  - https://www.thebritishacademy.ac.uk/projects/academy-research-projects-oxford-corpus-old-japanese/
+  - https://academic.oup.com/edited-volume/61882/chapter-abstract/547696493
+
+### `och` Old Chinese: 語形は概ね Baxter-Sagart 方針だが、`hello` と `cat` は注記が必要
+
+- 対象: `wordmap_data.js` `och` block。
+- 評価: **Old Chinese reconstruction としては概ね方針が通っている。ただし `hello:拜` は “bow/obeisance” であって modern greeting ではない。`cat:貓` も pre-Han / Old Chinese concept list での扱いを確認したい。**
+- 背景:
+  - Baxter-Sagart 2014 は Old Chinese reconstruction の主要参照。
+  - Sagart & Ma 2020 は 250 concept list を Baxter-Sagart reconstruction で提供し、pre-Han attestation と複数候補の問題を明示している。
+  - `*C.`, `*s.`, `*qˤ`, `*ɢA` などは IPA ではなく reconstruction notation。既存 audit §6.20 の UI ラベル問題に該当。
+- 個別評価:
+  - `water:水/*s.turʔ`, `fire:火/*qʷʰəjʔ`, `sun:日/*C.nik`, `moon:月/*ŋʷat`, `heart:心/*səm`, `hand:手/*n̥uʔ`, `eye:目/*C.muk`, `one:一/*ʔit`, `good:好/*qʰˤuʔ` は概ね plausible。
+  - `hello:['拜','*pˤret-s']` は **礼・拝礼の動作**としては attested だが、`hello` としては semantic extension。`bow/greet` 注記なしに modern greeting として見せるのは危険。
+  - `thanks:['謝','*s.ɢAk-s']` は thank/apologize 系として plausible だが、礼儀表現としての時代・用法は要注記。
+  - `cat:['貓','*mˤraw']` は猫語として plausible だが、pre-Han Old Chinese の基本語扱いとして直接確認したい。時代的に後出なら `later attested` 注記候補。
+- 参照:
+  - https://openlibrary.org/books/OL26885351M/Old_Chinese_A_New_Reconstruction
+  - https://zenodo.org/records/4548984
+  - https://brill.com/view/journals/clao/49/1/article-p92_5.xml
+  - https://books.google.com/books/about/Old_Chinese.html?id=UKQ-BAAAQBAJ
+
+### `txg` Tangut: 文字と辞書は強いが、readings は再構なので confidence/source 必須
+
+- 対象: `wordmap_data.js` `txg` block。
+- 評価: **Tangut script は Unicode にあり、辞書資料も強い。一方、各 reading は Gong/Sofronov 系の再構で、文字ごとの意味確認が不可欠。現 block は大きな即時エラーは見えないが、source なしでは強く表示しすぎる。**
+- 背景:
+  - Tangut.Info は Li Fanwen dictionary の番号・意味・Gong Hwangcherng reconstruction を検索できる。
+  - Arakawa 2023 は Kychanov/Arakawa Tangut Dictionary の重要性と、字形・再構形チェックを述べる。
+  - 近年の研究でも Tangut character readings の再構には未解決点がある。
+- 個別評価:
+  - `hello/thanks` が `—` なのは適切。
+  - `water`, `fire`, `sun`, `moon`, `mother/father`, `hand/eye`, `good` などは Tangut dictionary で文字ごとの meaning lookup が必要。
+  - `cat:𗦷/mji˧˥` は特に確認したい。Tangut 仏典・辞書に animal name として直接あるか、Chinese/Tibetan equivalent からの解釈かを分けるべき。
+- 方針候補:
+  - `txg` は `attested` だが、IPA 欄は `Gong reconstruction` と明示する。
+  - `sources` に Li Fanwen number / Kychanov-Arakawa entry / Tangut.Info lookup key を持たせると後続検証が現実的。
+- 参照:
+  - https://tangut.info/
+  - https://journals.eco-vector.com/2410-0145/article/view/569308/en_US
+  - https://repository.hku.hk/handle/10722/320348
+  - https://www.omniglot.com/writing/tangut.htm
+
+### `sog` Sogdian: 語形は概ね Iranian として plausible、ただし script 表示と語幹/派生語の注記が必要
+
+- 対象: `wordmap_data.js` `sog` block。
+- 評価: **基礎語は概ね plausible。大きな即時エラーは見えないが、surface 欄が Sogdian script ではなく Latin transliteration である点、`drink:pi-` など語幹表示である点、`love:frytk` の意味領域が注意点。**
+- 背景:
+  - Iranica / Smithsonian は Sogdian が Eastern Middle Iranian で、Sogdian / Manichaean / Syriac scripts による豊富な資料を持つと説明する。
+  - Gharib 1995 `Sogdian Dictionary` が主要辞書。
+- 個別評価:
+  - `water:ʾāp`, `fire:ʾātar`, `sun:xwr`, `moon:mʾx`, `mother:mʾtr`, `father:ptr`, `heart:dyl`, `tree:drxt`, `hand:dst`, `eye:cšm`, `good:nyk` は Iranian cognates として plausible。
+  - `drink:['pi-','pi']` は verbal stem 表示。`eat:xwartan` が infinitive 的なのに対し、品詞形が不統一。
+  - `love:['frytk','friːtak']` は “beloved/dear/friend” 系の派生語である可能性があり、abstract noun/verb `love` としては Gharib 等で確認したい。
+  - `hello:['drwd','druːd']` は Iranian greeting として plausible。ただし Sogdian corpus で greeting formula としての attestation を確認したい。
+- 方針候補:
+  - `sog` surface 欄は `Latin transliteration shown; native Sogdian script exists` を UI/meta に出す。
+  - 動詞セルは `lemma type` (`infinitive`, `stem`, `finite`) を持たせる。これは `otk`, `xpr`, `wbl` などにも共通する。
+- 参照:
+  - https://www.iranicaonline.org/articles/sogdian-language-01/
+  - https://sogdians.si.edu/sidebars/sogdian-language/
+  - https://cir.nii.ac.jp/crid/1971430859798258850
+  - https://glottolog.org/resource/reference/id/306690
+
+### 今回の結論と次の優先順
+
+1. `otk.sun` は surface が `kün` と整合しているか最優先で確認。`otk.hello` は ancient-lang policy 上 `—` 候補。
+2. `ojp.cat`, `ojp.hello`, `ojp.thanks` は ONCOJ / Frellesvig / OJ dictionary で直接確認。特に `yasusi` を hello として出すのは危険。
+3. `och.hello` は「拝礼」注記なしに hello として出すのは過剰。`och.cat` は pre-Han attestation を確認。
+4. `txg` は Tangut.Info / Li Fanwen / Kychanov-Arakawa の entry ID を source として持たせる。
+5. `sog` は大きな語義エラーより、Latin transliteration 表示と verb stem 表示の schema/UI 問題が主。
+
+---
+
+## Session 18 (2026-05-05): xsc Scythian dataStatus = 'fragmentary'
+
+**スコープ:** Session 17 #1 で deferred した「`xsc` Scythian の dataStatus 降格」を実施。Codex 追加レビュー 3 で「Scythian は `spaka`=dog 以外は Old Iranian/Avestan proxy」と確定指摘済の問題に対応。
+
+### 変更内容
+
+`DATA_STATUS_OVERRIDES` (wordmap_data.js) に `xsc: 'fragmentary'` を追加。validator が認める dataStatus enum (`modern`, `attested`, `fragmentary`, `reconstructed`, `undeciphered`, `partly-understood`, `pedagogical`) のうち `fragmentary` が Scythian の状況を最も正確に表す:
+
+- 連続的な書き言葉なし
+- Greek 文献 (Herodotus 等) や Iranian 名前 (Išpakaia 等) 経由の **isolated 単語のみ**
+- ほとんどの基本語は **Avestan/Old Iranian proxy**
+
+```js
+// Fragmentary (no continuous texts; mostly names + isolated words via
+// Greek/other-language sources, basic vocab via Old Iranian/Avestan proxy):
+// Per Codex review 3 / Session 17 #1.
+xsc:       'fragmentary',       // Scythian — only `spaka`=dog directly attested via
+                                // Iranica `Išpakaia`; rest are Old Iranian/Avestan proxy
+```
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    84 (—) + 26 (dup-coord)
+
+Data status breakdown:
+  modern               558
+  attested             10
+  fragmentary          1     ← NEW (xsc)
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### 効果
+
+UI 側で `meta.dataStatus = 'fragmentary'` を読み取って「断片的に attested」のラベルを出すようになれば、ユーザーが Scythian の cells を見たときに「これは Scythian 自体の attested form ではなく Avestan proxy」という文脈が伝わる。validator も dataStatus enum 確認で fragmentary を認知済。
+
+### Session 18 中に気付いた追加問題（未対応・記録のみ）
+
+1. **同様に `fragmentary` 候補の他言語** — Codex review が同様の状況と指摘した、または可能性があるもの:
+   - `juc` Jurchen (Codex 4: 「almost nothing is known」 — Manchu projection が多い)
+   - `omc` Mochica (大半 `—`、limited Lugo 1619 由来)
+   - `chb` Chibcha (Lugo 1619 由来、限定的)
+   - Session 19+ で各 Codex review を読み返して fragmentary 候補を整理
+
+2. **`fragmentary` と `partly-understood` の境界** — 現状の enum の差異を README/audit に明記する余地:
+   - `fragmentary`: 直接資料が isolated words のみ (Scythian 型)
+   - `partly-understood`: 文字は読めるが lexicon/grammar 未完成 (Khitan/Meroitic/Pyu/Elamite 型)
+   - `attested`: 連続テキストあり
+
+3. **UI 側の `dataStatus` 表示** — `wordmap.html` モーダル単語表で `meta.dataStatus = fragmentary` がどう表示されるか UI 確認候補。Session 19+。
+
+4. **Codex 5 の新発見 (此 session スコープ外、記録のみ)** — Codex 追加レビュー 5 (2026-05-05) で `otk` Old Turkic, `ojp` Old Japanese, `och` Old Chinese, `txg` Tangut, `sog` Sogdian が新たに review された。各セルの個別判定は Session 19+ で対応:
+   - `otk.sun` surface ↔ `kün` 整合確認
+   - `ojp.cat / hello / thanks` ONCOJ / Frellesvig 確認
+   - `och.hello` = 拝礼注記必要
+   - `txg` Tangut Li Fanwen entry source 持たせる
+   - `sog` Latin transliteration / verb stem schema
+
+### 持ち越し（Session 19 以降）
+
+**Schema-level:**
+- §7.7 Cell-level evidence status のスキーマ化 + `direct-attested / reconstructed / proxy / unattested` 区分
+- Session 3 #4, Session 5 #4, Session 6 #4, Session 9 #5
+- Session 10 #4-5, Session 11 #3, #6
+- Session 13 #1-2, Session 14 #3-4, Session 15 #4, Session 16 #1-4
+- Session 17 #2 zkt セル単位 confidence / #4 juc 再評価 / #5 削除値 notes schema
+- **Session 18 #2 fragmentary/partly-understood 境界 docs / #3 UI dataStatus 表示確認**
+
+**追加リサーチ要:**
+- §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz
+- Session 5 #1, #3, Session 7 #1-2, #5
+- **Session 8 mon/mnw (allowlisted)**
+- Session 8 残 dup-coord / Session 9 #1-3 / Session 11 #1-2
+- Session 12 #1-6 / Session 13 #3
+- **Codex 2/3/4 残: xlu.good/eye, kho.*, kaw.*, gmy.tree/water/good, hit.love, juc.cat/基本語**
+- **Codex 5: otk.sun, ojp.cat/hello/thanks, och.hello, txg source, sog schema**
+- **Session 17 #3 hit.sun 正しい cuneiform 復活**
+- **Session 18 #1 omc/chb/juc 等の fragmentary 候補確認**
+- **Session 18 #4 Codex 5 各項目**
+
+---

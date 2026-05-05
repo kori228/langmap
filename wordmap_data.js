@@ -2847,6 +2847,11 @@ const DATA_STATUS_OVERRIDES = {
     zkt:       'partly-understood', // Khitan
     pyx:       'partly-understood', // Pyu
     elx:       'partly-understood', // Elamite
+    // Fragmentary (no continuous texts; mostly names + isolated words via
+    // Greek/other-language sources, basic vocab via Old Iranian/Avestan proxy):
+    // Per Codex review 3 / Session 17 #1.
+    xsc:       'fragmentary',       // Scythian — only `spaka`=dog directly attested via
+                                    // Iranica `Išpakaia`; rest are Old Iranian/Avestan proxy
     // Pedagogical reconstructions (not attested forms; teaching approximations):
     ja_edo:    'pedagogical',
     ja_heian:  'pedagogical',
