@@ -2786,3 +2786,69 @@ PASS
 **追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2, 21 #4 / 22 #4 peo/ave/xpr fragmentary 再評価
 
 ---
+
+## Session 24 (2026-05-05): xpr Parthian → `fragmentary`
+
+**スコープ:** Session 21 #4 / Session 22 #4 で deferred した「peo/ave/xpr fragmentary 候補再評価」のうち、最も attestation 不安定な `xpr` Parthian を fragmentary 化。peo/ave は Achaemenid royal inscriptions / Avesta corpus と限定的だが直接資料があるため `attested` 維持。xpr は Codex 6 で「Middle Persian からの類推が混ざっている可能性」と broad に flag されており、fragmentary が最も適切。
+
+### 変更内容
+
+`DATA_STATUS_OVERRIDES` に `xpr: 'fragmentary'` を追加 (xsc Session 18 / juc Session 20 と同パターン):
+
+```js
+xpr:       'fragmentary',       // Parthian — corpus is limited (Manichaean texts, ostraca,
+                                // inscriptions); many basic vocabulary cells are Middle Persian
+                                // projection rather than Parthian-specific attestation.
+                                // Per Codex review 6 / Session 21 #4 / Session 22 #4.
+```
+
+Codex 6 の判定: "全体に Iranian cognate として plausible だが、Parthian 固有資料で確認できていないセルが多い。特に hello, thanks, cat, house, good は Middle Persian 形の転用ではないか要確認"
+
+xpr.cat は Session 21 で既に `—` 化済み。block 全体の信頼性表現として fragmentary を割り当てることで「Parthian 固有形として直接 attest されているか不確定」というコンテキストを UI に伝える基盤になる。
+
+### Validator 結果
+
+```
+Languages: 579 (modern: 499, historical: 80)
+ERRORS:   0
+WARNINGS: 0
+ALLOWLISTED: 1
+INFOS:    95 (—) + 26 (dup-coord)
+PASS
+
+Data status breakdown:
+  modern               556
+  attested             10
+  fragmentary          3     ← +1 (xpr 追加: xsc + juc + xpr)
+  reconstructed        1
+  partly-understood    4
+  pedagogical          5
+```
+
+### Session 24 中に気付いた追加問題（未対応・記録のみ）
+
+1. **`peo` / `ave` の fragmentary 不採用判断** — Session 24 では peo/ave を `attested` 維持。理由:
+   - peo Old Persian: Achaemenid royal inscriptions (Behistun, Persepolis fortification tablets 等) という直接 corpus が存在
+   - ave Avestan: Avesta (Yasna, Vendidad, Yashts 等) という extensive religious corpus が存在
+   - vocabulary 不足は corpus 範囲の限界で、attestation の不確実さとは異なる
+   - Codex 6 が指摘する「peo.cat/ave.cat が proxy」レベルは個別セル `—` 化で対応 (Session 21 完了)
+
+2. **fragmentary 統計が `3` に成長** — xsc + juc + xpr。Codex 7+ で他 ancient lang block (omc Mochica, chb Chibcha, onw Old Nubian 等) も同様に評価される見込み。最終的に 5-10 件規模になれば validator/UI で fragmentary 言語を別表示する schema 検討の motivation が高まる (Session 20 #4)。
+
+3. **fragmentary vs attested の運用ルール** — 暫定案:
+   - **attested**: 直接 corpus が存在し、surface form の attestation が確認可能 (大半の cells は OK、一部 `—` でも全体 attested)
+   - **fragmentary**: 直接 corpus が isolated/limited で、cells の多くが proxy/projection の可能性 (xsc/juc/xpr)
+   - **partly-understood**: 文字は読めるが lexicon/grammar 未完成 (xmr/zkt/pyx/elx)
+   - **reconstructed**: 直接資料なし、comparative reconstruction のみ (ine PIE)
+   - **pedagogical**: 教育用 reconstruction (ja_edo/ja_heian/ko_mid/ko_em/vi_nom)
+   この運用ルールを README/audit に明記する候補 (Session 18 #2 と一致)。
+
+4. **Iranian fragmentary 言語の系統的整理** — xpr Parthian + xsc Scythian は両方 fragmentary。Iranian family 内でほかに ave Avestan/peo Old Persian (attested 維持) / pal Middle Persian / Modern Iranian languages という階層がある。historical depth に沿った dataStatus 階層が見えてきた。
+
+### 持ち越し（Session 25 以降）
+
+**Schema-level:** §7.7 cell-level evidence / Session 3 #4, 5 #4, 6 #4, 9 #5, 10 #4-5, 11 #3 #6, 13 #1-2, 14 #3-4, 15 #4, 16 #1-4, 17 #2 #4 #5, 18 #2 #3, 19 #1-4, 20 #1 #3 #4, 21 #1 #2, 22 #3, 23 #1-2, **24 #3 dataStatus 運用ルール docs**
+
+**追加リサーチ要:** §6.16, §6.42, Tujia, mnp, cpx/wuu_wz/wuu_sz, Session 5 #1 #3, 7 #1-2 #5, **8 mon/mnw (allowlisted)**, 8 残 dup-coord, 9 #1-3, 11 #1-2, 12 #1-6, 13 #3, **Codex 2-7 残**, 17 #3 hit.sun, 18 #1 omc/chb fragmentary 候補, 20 #2
+
+---

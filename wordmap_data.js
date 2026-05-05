@@ -2855,6 +2855,10 @@ const DATA_STATUS_OVERRIDES = {
     juc:       'fragmentary',       // Jurchen — Britannica: "almost nothing is known".
                                     // Limited inscriptions + Sino-Jurchen vocabulary (Kane 1989);
                                     // most cells are Manchu projection. Per Codex review 4.
+    xpr:       'fragmentary',       // Parthian — corpus is limited (Manichaean texts, ostraca,
+                                    // inscriptions); many basic vocabulary cells are Middle Persian
+                                    // projection rather than Parthian-specific attestation.
+                                    // Per Codex review 6 / Session 21 #4 / Session 22 #4.
     // Pedagogical reconstructions (not attested forms; teaching approximations):
     ja_edo:    'pedagogical',
     ja_heian:  'pedagogical',
