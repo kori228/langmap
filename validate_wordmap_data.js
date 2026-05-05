@@ -403,6 +403,55 @@ checkCounts(readmeSrc,  'README.md');
 const headerN = (dataSrc.match(/(\d{3,4})\s*languages/) || [])[1];
 if (headerN && +headerN !== N) E(`wordmap_data.js header says ${headerN} languages, actual ${N}`);
 
+// ---- 19. Cache-buster registry drift (Audit Task 134) ----------------
+// Compare static <script>/<link> ?v= versions in wordmap.html against the
+// central WM_ASSET_VERSION object so drift is caught at validation time.
+const ASSET_KEY_BY_PATH = {
+    'styles.css':       'styles',
+    'wordmap_data.js':  'data',
+    'meta_i18n_ext.js': 'metaI18n',
+    'lang-filter.js':   'filter',
+    'lang_names.js':    'names',
+    'wordmap_meta.js':  'meta',
+};
+const versionRegistryMatch = htmlSrc.match(/const\s+WM_ASSET_VERSION\s*=\s*\{([^}]+)\}/);
+if (!versionRegistryMatch) {
+    W(`[#19] wordmap.html missing WM_ASSET_VERSION registry (Audit Task 134)`);
+} else {
+    const registry = {};
+    for (const m of versionRegistryMatch[1].matchAll(/(\w+)\s*:\s*(\d+)/g)) {
+        registry[m[1]] = +m[2];
+    }
+    for (const [path, key] of Object.entries(ASSET_KEY_BY_PATH)) {
+        if (registry[key] === undefined) {
+            W(`[#19] WM_ASSET_VERSION missing key '${key}' for ${path}`);
+            continue;
+        }
+        // wordmap_meta.js is loaded dynamically via assetUrl(); accept that
+        // pattern instead of a literal ?v=N string.
+        if (path === 'wordmap_meta.js') {
+            const dyn = htmlSrc.match(/assetUrl\(\s*['"]wordmap_meta\.js['"]\s*,\s*['"]meta['"]\s*\)/);
+            if (!dyn) {
+                W(`[#19] ${path}: no assetUrl('wordmap_meta.js', 'meta') call found in wordmap.html`);
+            }
+            continue;
+        }
+        const re = new RegExp(`${path.replace(/\./g, '\\.')}\\?v=(\\d+)`, 'g');
+        const matches = [...htmlSrc.matchAll(re)];
+        if (matches.length === 0) {
+            W(`[#19] ${path}: no cache-buster found in wordmap.html`);
+            continue;
+        }
+        const expected = registry[key];
+        for (const m of matches) {
+            const got = +m[1];
+            if (got !== expected) {
+                W(`[#19] ${path}?v=${got} in wordmap.html doesn't match WM_ASSET_VERSION.${key}=${expected}`);
+            }
+        }
+    }
+}
+
 // ---- 12b. WORD_LIST.label shape (per wordmap-check-2.md §6) ----------
 // Each entry: { id, label: { en, ja, ko, zh, de, fr, ... } }
 // label.en is required; label.ja/ko/zh/de/fr strongly recommended.

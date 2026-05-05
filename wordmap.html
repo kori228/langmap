@@ -424,7 +424,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=57"></script>
+    <script src="wordmap_data.js?v=58"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=22"></script>
     <script src="lang_names.js?v=2"></script>
@@ -554,6 +554,24 @@
             }
             return 'en';
         }
+        // Audit Task 134: Central cache-buster version registry. Static
+        // <script src="...?v=N"> and <link href="...?v=N"> tags above must
+        // be kept in sync with this object. validate_wordmap_data.js #19
+        // checks that the HTML versions match these values, so drift is
+        // caught at validation time. The dynamic wordmap_meta.js load
+        // below uses assetUrl() so its version is always read from here.
+        const WM_ASSET_VERSION = {
+            styles:    54,
+            data:      58,
+            metaI18n:  8,
+            filter:    22,
+            names:     2,
+            meta:      21,
+        };
+        function assetUrl(path, key) {
+            return `${path}?v=${WM_ASSET_VERSION[key]}`;
+        }
+
         let uiLang = detectBrowserLang();
         const uiLangSelect = document.getElementById('ui-lang');
         for (const [code, label] of Object.entries(WM_UI_LABELS)) {
@@ -1526,7 +1544,7 @@
                 if (window._wmMetaLoaded) return resolve();
                 window._wmMetaResolve = resolve;
                 const s = document.createElement('script');
-                s.src = 'wordmap_meta.js?v=21';
+                s.src = assetUrl('wordmap_meta.js', 'meta');
                 s.onerror = () => reject(new Error('meta load failed'));
                 document.head.appendChild(s);
             });

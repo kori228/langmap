@@ -31,6 +31,7 @@ Source: `wordmap-modern-audit.md` (modern languages 499 entries audit)
 | Task 100: Localize unattested `—` cell label | ✅ 21 UI langs | UI |
 | Task 102: Rename "IPA" toggle → "Pron." (en) / "発音" (ja) etc. | ✅ Fixed | UI |
 | Task 132: Localize evidence markers (ja/ko/zh/de/fr/es + Source/Note prefix) | ✅ Localized | UI |
+| Task 134: Centralize cache-buster versions (`WM_ASSET_VERSION` + validator drift check) | ✅ Implemented | infra |
 | §9 Russian/Ukrainian cat: masculine → generic | ✅ Fixed | 2 (uk кіт→кішка, ru already 一般形) |
 | §31 Arabic: name → 'Arabic (MSA)' clarification | ✅ Fixed | 1 lang label |
 | Italian/Spanish/Polish stress marks added | ✅ Fixed | ~50 cells |
@@ -522,6 +523,27 @@ Modal の語表 thead 直前に pronunciation type label を追加 ([wordmap.htm
 
 ---
 
+## Audit Task 134 — Cache-buster centralization (✅)
+
+Audit が "stale data bugs caused by manually updated `?v=` numbers scattered through wordmap.html" を懸念した件。Cache-buster バージョンを 6 つの asset ([styles, data, metaI18n, filter, names, meta]) で散在させていたが、`WM_ASSET_VERSION` 中央レジストリに統一。
+
+**変更内容:**
+
+1. **`wordmap.html`** に `WM_ASSET_VERSION` 定数 + `assetUrl(path, key)` ヘルパー追加 ([wordmap.html:557-570](wordmap.html#L557-L570))。
+2. **動的 meta load** を `assetUrl('wordmap_meta.js', 'meta')` に置換 (line 1529) — これで meta バージョンを忘れる risk が消える。
+3. **Static `<script>`/`<link>` tags** はビルドステップ無しでは inject 不可なので literal `?v=N` のまま。代わりに **validator check #19** を追加して registry との drift を検出。
+4. **Validator [check #19](validate_wordmap_data.js#L405-L443):**
+   - `WM_ASSET_VERSION` が無ければ WARN
+   - 各 asset の static tag バージョンを registry と照合、ずれていれば WARN
+   - `wordmap_meta.js` は dynamic 専用、`assetUrl()` 呼び出しの存在を確認
+   - `WM_ASSET_VERSION` から key が抜けていれば WARN
+
+**結果:** future Claude session が data を編集して `WM_ASSET_VERSION.data` を bump し忘れると validator が即警告。`wordmap_meta.js` を編集して動的 load を bump し忘れる事故も `assetUrl('wordmap_meta.js', 'meta')` の自動参照で解消。
+
+CONTRIBUTING.md 更新は次 session — schema は完成。
+
+---
+
 ## Audit Tasks 100/102/132 — i18n batch (✅ all)
 
 低コスト i18n cleanup を 3 task まとめて対応:
@@ -718,7 +740,7 @@ INFOS:    3
 PASS
 ```
 
-Cache buster `v=46 → v=57` (data) / `v=16 → v=21` (meta, +Tasks 76/79/100/102/132)。
+Cache buster `v=46 → v=58` (data) / `v=16 → v=21` (meta, +Tasks 76/79/100/102/132/134)。Now centralized via `WM_ASSET_VERSION`.
 
 ---
 
