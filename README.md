@@ -24,7 +24,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
-- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 578 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations all translate via composite atom translator), and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 585 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations all translate via composite atom translator), and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
 
 ## Languages (226 total, ordered by similarity)
 
@@ -97,7 +97,7 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 ```
 langmap/
   index.html         — Main HTML page (Word Order Map)
-  wordmap.html       — Word Map page (20 words × 578 languages on a world map)
+  wordmap.html       — Word Map page (20 words × 585 languages on a world map)
   wordmap_data.js    — Word Map core data (words, IPA, coordinates, native names, UI strings)
   wordmap_meta.js    — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
   styles.css         — Styles (including RTL support)
@@ -252,7 +252,7 @@ npx serve .
 ```
 langmap/
   index.html         — メインHTMLページ（語順マップ）
-  wordmap.html       — 単語マップページ（20語 × 578言語の世界地図）
+  wordmap.html       — 単語マップページ（20語 × 585言語の世界地図）
   wordmap_data.js    — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
   wordmap_meta.js    — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
   styles.css         — スタイル（RTL対応含む）
