@@ -1193,3 +1193,18 @@ Pass 8〜13 累計 **36 タスク + ユーザー要望 3 件** 対応完了。
 **Validator status**: PASS (0 errors, 17 pre-existing warnings, 29 INFOs)。新 INFOs に scripts in use / row-fingerprint duplicate groups / multiword summary が含まれる。Cache-buster は meta 35→36 bump。
 
 Pass 8〜14 累計 **41 タスク + ユーザー要望 3 件** 対応完了。
+
+---
+
+## Pass 15 Sequential Cleanup (2026-05-06 part 8)
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 80 | Priority langs 8 行に `meta.sources` backfill (it/uk/ko/th/vi/ms/tl/he)。Ethnologue 27 + 各言語の権威辞書 (Treccani / СУМ / 표준국어대사전 / Royal Society of Thailand / Kamus Dewan / KWF / Pealim 等) | wordmap_meta.js |
+| Task 89 | Modal に `surfaceType` バッジ追加 (native-script / standard-orthography / romanization / phonetic / mixed / unknown)。en/ja/ko/zh ローカライズ + validator の TRUST_LABEL_CONSTS にも追加 | wordmap.html, validate_wordmap_data.js |
+| Task 94 | Romanization-vs-IPA validator 追加 (`[#94]`)。非ラテン文字 surface + ASCII-only IPA で `pronunciationType` 未指定の行を WARN。検出した 32 行 (sah/kjh/alt/bxr/ain/mnc/ln/ja_edo/ja_chu/lez/tab/kv/myv/krc/syl/xal/xlu/elx/kaw/bqi/yag/wbl/xng/tar/onw/otl/ojp/okg/ko_gor/xmr/pyx/obr) を `broad` または `romanization` でラベル付け。pronunciationType coverage 162→194 (33% → 33%) | wordmap_meta.js, validate_wordmap_data.js |
+| Task 119 | Khitan (zkt) に `scriptDisplayPolicy` schema 追加 (primary: 'scholarly-transcription', secondary: 'historical-script' + 4-language note)。Modal の script row 下に italic note 表示。Validator が schema enum + note 検証 | wordmap_data.js, wordmap.html, validate_wordmap_data.js |
+
+**Validator status**: PASS (0 errors, 17 pre-existing description-i18n warnings — Pass 14 と同じ、変動なし)。pronunciationType coverage が 162 → 194 langs に拡大、scripts in use 検出 + script-font 抜け検出も正常動作。Cache-buster は data 86→87, meta 36→37 bump。
+
+Pass 8〜15 累計 **45 タスク + ユーザー要望 3 件** 対応完了。

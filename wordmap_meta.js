@@ -1291,6 +1291,30 @@ const PRONUNCIATION_TYPE = {
     mra: 'mixed', xkk: 'mixed', wbm: 'mixed', lhu: 'mixed',
     // Other tone-omitted Asian rows still pending (audit §51-52)
     khb: 'broad', shn: 'broad',
+    // Audit Task 94 backfill: 27 non-Latin-script rows whose IPA column
+    // is mostly ASCII characters (romanization-like). Mark as 'broad'
+    // by default — all use IPA-adjacent ASCII transcription, not strict
+    // narrow IPA. Specific rows that use a published romanization system
+    // are marked 'romanization' instead.
+    sah: 'broad', kjh: 'broad', alt: 'broad', bxr: 'broad',
+    krc: 'broad', xal: 'broad',
+    ain: 'romanization',                // Hepburn-style katakana → Latin
+    mnc: 'romanization',                // Möllendorff Manchu romanization
+    ln:  'broad',
+    ja_edo:  'broad', ja_chu: 'broad', ojp: 'broad',
+    lez: 'broad', tab: 'broad',
+    kv:  'broad', myv: 'broad',
+    syl: 'broad',
+    xlu: 'broad', elx: 'broad', kaw: 'broad', onw: 'broad', otl: 'broad',
+    bqi: 'broad', wbl: 'broad',
+    yag: 'broad', tar: 'broad',
+    xng: 'romanization',                // Middle Mongol — scholarly transliteration
+    // Audit Task 94 second pass (caught by validator)
+    okg: 'broad',                       // Old Korean (Goryeo period)
+    ko_gor: 'broad',                    // Goryeo Korean — historical Hyangchal/Idu transliteration
+    xmr: 'broad',                       // Meroitic — limited deciphered vocabulary
+    pyx: 'broad',                       // Pyu
+    obr: 'broad',                       // Old Burmese
 };
 for (const code of Object.keys(PRONUNCIATION_TYPE)) {
     if (LANG_DATA[code] && LANG_DATA[code].meta) {
@@ -2291,6 +2315,23 @@ const SOURCE_BACKFILL = {
     glk:    [{type:'reference', title:'Stilo — Gilaki: An Iranian Language Documentation', url:'https://en.wikipedia.org/wiki/Gilaki_language'}],
     lrc:    [{type:'reference', title:'Anonby — Lurish Documentation Project', url:'https://en.wikipedia.org/wiki/Northern_Luri_language'}],
     bqi:    [{type:'reference', title:'Anonby — Bakhtiari sketch', url:'https://en.wikipedia.org/wiki/Bakhtiari_dialect'}],
+    // Audit Task 80: high-traffic priority languages still missing sources
+    it:     [{type:'reference', title:'Ethnologue 27: Italian',          url:'https://www.ethnologue.com/language/ita/'},
+             {type:'reference', title:'Treccani Vocabolario online',     url:'https://www.treccani.it/vocabolario/'}],
+    uk:     [{type:'reference', title:'Ethnologue 27: Ukrainian',        url:'https://www.ethnologue.com/language/ukr/'},
+             {type:'reference', title:'СУМ — Словник української мови',  url:'https://sum.in.ua/'}],
+    ko:     [{type:'reference', title:'Ethnologue 27: Korean',           url:'https://www.ethnologue.com/language/kor/'},
+             {type:'reference', title:'표준국어대사전 (NIKL)',            url:'https://stdict.korean.go.kr/'}],
+    th:     [{type:'reference', title:'Ethnologue 27: Thai',             url:'https://www.ethnologue.com/language/tha/'},
+             {type:'reference', title:'Royal Society of Thailand Dictionary', url:'https://dictionary.orst.go.th/'}],
+    vi:     [{type:'reference', title:'Ethnologue 27: Vietnamese',       url:'https://www.ethnologue.com/language/vie/'},
+             {type:'reference', title:'Vietnamese Wiktionary',           url:'https://vi.wiktionary.org/'}],
+    ms:     [{type:'reference', title:'Ethnologue 27: Malay',            url:'https://www.ethnologue.com/language/msa/'},
+             {type:'reference', title:'Kamus Dewan (DBP)',               url:'https://prpm.dbp.gov.my/'}],
+    tl:     [{type:'reference', title:'Ethnologue 27: Tagalog',          url:'https://www.ethnologue.com/language/tgl/'},
+             {type:'reference', title:'KWF — Komisyon sa Wikang Filipino', url:'https://kwf.gov.ph/'}],
+    he:     [{type:'reference', title:'Ethnologue 27: Hebrew',           url:'https://www.ethnologue.com/language/heb/'},
+             {type:'reference', title:'Pealim — Hebrew dictionary',      url:'https://www.pealim.com/'}],
 };
 for (const code of Object.keys(SOURCE_BACKFILL)) {
     if (LANG_DATA[code] && LANG_DATA[code].meta && !Array.isArray(LANG_DATA[code].meta.sources)) {

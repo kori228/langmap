@@ -627,7 +627,7 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=86"></script>
+    <script src="wordmap_data.js?v=87"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="meta_i18n_coverage.js?v=1"></script>
     <script src="lang-filter.js?v=24"></script>
@@ -778,11 +778,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      86,
+            data:      87,
             metaI18n:  8,
             filter:    24,
             names:     5,
-            meta:      36,
+            meta:      37,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2170,6 +2170,17 @@
             unknown:      { en: 'not yet reviewed',       ja: '未確認',        ko: '미검토',       zh: '未审核' },
         };
         const PRONUNCIATION_HEADER = { en: 'Pronunciation', ja: '発音表記', ko: '발음 표기', zh: '发音标注' };
+        // Audit Task 84/89: surfaceType label (which kind of script is used
+        // in the surface column — native script, standard orthography, etc.)
+        const SURFACE_TYPE_LABEL = {
+            'native-script':         { en: 'native script',         ja: '現地文字',      ko: '고유 문자',     zh: '本族文字' },
+            'standard-orthography':  { en: 'standard orthography',  ja: '標準正書法',    ko: '표준 정서법',   zh: '标准正字法' },
+            'romanization':          { en: 'romanization',          ja: 'ローマ字転写',  ko: '로마자 전사',   zh: '罗马字' },
+            'phonetic':              { en: 'phonetic transcription', ja: '音声転写',     ko: '음성 전사',     zh: '音标转写' },
+            'mixed':                 { en: 'mixed / needs review',  ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
+            'unknown':               { en: 'not yet reviewed',      ja: '未確認',        ko: '미검토',        zh: '未审核' },
+        };
+        const SURFACE_TYPE_HEADER = { en: 'Surface', ja: '表記体系', ko: '표기 체계', zh: '表记体系' };
 
         // Audit Task 79: coverage flag for regional variant rows
         const COVERAGE_LABEL = {
@@ -2380,7 +2391,19 @@
                 }
                 if (m.countries) html += `<tr><td>${escapeHtml(wt('countries'))}</td><td>${escapeHtml(translateMeta(m.countries))}</td></tr>`;
                 if (m.official) html += `<tr><td>${escapeHtml(wt('official'))}</td><td>${escapeHtml(translateMeta(m.official))}</td></tr>`;
-                if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
+                if (m.script) {
+                    let scriptCell = escapeHtml(translateMeta(m.script));
+                    // Audit Task 119: scriptDisplayPolicy.note as small italic line
+                    // under the script row when present (Khitan / Jurchen / Sawndip).
+                    if (lang.scriptDisplayPolicy && lang.scriptDisplayPolicy.note) {
+                        const noteObj = lang.scriptDisplayPolicy.note;
+                        const note = noteObj[uiLang] || noteObj[uiLang.split('_')[0]] || noteObj.en || '';
+                        if (note) {
+                            scriptCell += `<div style="margin-top:2px;font-size:10px;color:#888;font-style:italic;line-height:1.4">${escapeHtml(note)}</div>`;
+                        }
+                    }
+                    html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${scriptCell}</td></tr>`;
+                }
                 // Audit Task 117: typology row with provenance hints. Show
                 // word order / tone / morphology and tag each value with
                 // (lang) for manually-curated, (family) for inherited
@@ -2447,6 +2470,18 @@
                 const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
                 const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
                 html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
+            }
+            // Audit Task 84/89: surfaceType badge (which kind of script is
+            // shown in the surface column — native script / standard
+            // orthography / romanization / phonetic / mixed). Helps users
+            // distinguish "this is the language's actual writing system"
+            // from "this is a romanization or scholarly transcription."
+            if (m.surfaceType && SURFACE_TYPE_LABEL[m.surfaceType]) {
+                const stObj = SURFACE_TYPE_LABEL[m.surfaceType];
+                const stLabel = stObj[uiLang] || stObj[uiLang.split('_')[0]] || stObj.en;
+                const stHeader = SURFACE_TYPE_HEADER[uiLang] || SURFACE_TYPE_HEADER.en;
+                const tone = (m.surfaceType === 'mixed' || m.surfaceType === 'unknown' || m.surfaceType === 'phonetic') ? '#a04020' : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(stHeader)}:</b> ${escapeHtml(stLabel)}</div>`;
             }
             // Audit Task 99: locationBasis — representative-point semantics.
             // Read from meta.locationBasis (canonical) or lang.locationBasis (legacy).

@@ -433,6 +433,7 @@ const TRUST_LABEL_CONSTS = [
     'LOCATION_BASIS_LABEL', 'LOCATION_BASIS_HEADER',
     'LANGUAGE_KIND_BADGE',
     'REVIEW_STATUS_LABEL', 'REVIEW_STATUS_HEADER',  // Audit Task 108
+    'SURFACE_TYPE_LABEL', 'SURFACE_TYPE_HEADER',    // Audit Task 84/89
 ];
 const TRUST_LABEL_PRIORITY_UI = ['en', 'ja', 'ko', 'zh'];
 for (const constName of TRUST_LABEL_CONSTS) {
@@ -819,6 +820,25 @@ for (const code of codes) {
             E(`[#13m] ${code}: meta.disambiguator must be string or object`);
         }
     }
+    // Audit Task 119: scriptDisplayPolicy shape check (when present)
+    if (lang.scriptDisplayPolicy !== undefined) {
+        const sdp = lang.scriptDisplayPolicy;
+        const PRIMARY = new Set(['modern-standard','romanization','scholarly-transcription','reconstructed-transcription']);
+        const SECONDARY = new Set(['traditional-script','historical-script','none']);
+        if (!sdp || typeof sdp !== 'object') {
+            E(`[#13o-policy] ${code}: scriptDisplayPolicy must be an object (Audit Task 119)`);
+        } else {
+            if (sdp.primary && !PRIMARY.has(sdp.primary)) {
+                E(`[#13o-policy] ${code}: scriptDisplayPolicy.primary "${sdp.primary}" not in enum (Audit Task 119)`);
+            }
+            if (sdp.secondary && !SECONDARY.has(sdp.secondary)) {
+                E(`[#13o-policy] ${code}: scriptDisplayPolicy.secondary "${sdp.secondary}" not in enum (Audit Task 119)`);
+            }
+            if (sdp.secondary && sdp.secondary !== 'none' && (!sdp.note || !sdp.note.en)) {
+                W(`[#13o-policy] ${code}: scriptDisplayPolicy.secondary set but no explanatory note.en (Audit Task 119)`);
+            }
+        }
+    }
     // Audit Task 119 / user request 2026-05-06: altWordForms shape check
     if (lang.altWordForms !== undefined) {
         if (typeof lang.altWordForms !== 'object' || Array.isArray(lang.altWordForms)) {
@@ -1163,6 +1183,36 @@ for (const code of codes) {
                 W(`[#90] parent/child high overlap: ${c} vs ${m.parentCode} (${ov}/20; ${tag}) — needs meta.coverage (Audit Task 90)`);
             }
         }
+    }
+}
+
+// === Romanization-vs-IPA audit (Audit Task 94) =====================
+// Non-Latin-script rows whose pronunciation column is ASCII-only are
+// usually romanization (not strict IPA). Surface this so reviewers can
+// label pronunciationType honestly instead of leaving the column
+// implying narrow IPA.
+{
+    const candidates = [];
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang.meta || {};
+        if (m.pronunciationType) continue; // already labeled
+        const w = lang.words || {};
+        let nonLatin = 0, asciiIpa = 0, total = 0;
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surf = w[k][0] || '', ipa = w[k][1] || '';
+            if (surf === '—') continue;
+            total++;
+            if (/[^\x00-\x7f]/.test(surf)) nonLatin++;
+            if (ipa && /^[\x00-\x7f]+$/.test(ipa)) asciiIpa++;
+        }
+        if (total > 0 && nonLatin >= total * 0.5 && asciiIpa >= total * 0.5) {
+            candidates.push(code);
+        }
+    }
+    if (candidates.length > 0) {
+        W(`[#94] ${candidates.length} unlabeled non-Latin-script rows have ASCII-only IPA — likely romanization. Set meta.pronunciationType. Codes: ${candidates.slice(0, 8).join(', ')}${candidates.length > 8 ? `, …${candidates.length - 8} more` : ''} (Audit Task 94)`);
     }
 }
 

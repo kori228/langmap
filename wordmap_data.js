@@ -2970,16 +2970,32 @@ const LANG_DATA = {
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
   zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
-    // scriptDisplayPolicy: Khitan Small Script (U+18B00–U+18CFF, Unicode 13.0)
-    // is partially deciphered. Mapping the basic-vocabulary readings here
-    // (muri, niár, sair, eme, mai, omsu, etc.) to specific small-script
-    // character sequences requires direct verification in Kane (2009),
-    // Wu Yingzhe / Aisin Gioro reconstructions — most published character
-    // tables cover royal titles, kin terms, names, and numerals rather than
-    // the everyday-vocabulary set. Per Audit Task 119: do NOT auto-generate
-    // characters from romanization. altWordForms is therefore intentionally
-    // empty until source-confirmed mappings are added cell by cell. The
-    // surface column shows scholarly Latin reconstructions (Kane 2009 system).
+    // scriptDisplayPolicy (Audit Task 119): Khitan Small Script
+    // (U+18B00–U+18CFF, Unicode 13.0, ~470 chars in the Noto Sans Khitan
+    // Small Script font) is only partially deciphered. Most published
+    // character tables (Kane 2009; Aisin Gioro 2004; Wu Yingzhe 2010)
+    // cover Liao-dynasty royal titles, kin terms, dynastic names, and
+    // numerals — NOT the everyday Swadesh-style vocabulary used here.
+    //
+    // Per Audit Task 119: do NOT auto-generate characters from the
+    // romanization. The surface column shows scholarly Latin readings
+    // (Kane 2009 system); these are defensible cross-references but
+    // cannot be mechanically back-mapped to small-script glyphs without
+    // direct citation. altWordForms is therefore intentionally empty
+    // until experts contribute source-confirmed mappings cell by cell.
+    //
+    // Khitan Large Script (separate; ~3000 logographs, not in Unicode)
+    // is even less systematically deciphered.
+    scriptDisplayPolicy: {
+        primary: 'scholarly-transcription',
+        secondary: 'historical-script',
+        note: {
+            en: 'Surface column shows the Kane (2009) Latin reconstruction. Khitan Small Script glyphs (Unicode U+18B00–U+18CFF) exist for some attested readings but are not yet mapped here per Audit Task 119 (no auto-generation from romanization).',
+            ja: '表示形は Kane (2009) のラテン文字再構。契丹小字 (Unicode U+18B00–U+18CFF) は一部の確認済み読みに対応する字形が存在するが、ローマ字からの自動生成を禁ずる監査方針 (Task 119) のため、ここでは未対応。',
+            ko: '표시 형은 Kane (2009)의 로마자 재구이다. 거란소자 (Unicode U+18B00–U+18CFF)에 해당 글리프가 일부 확인되어 있으나, 로마자 기반 자동 생성을 금지하는 감사 정책 (Task 119)에 따라 여기서는 매핑하지 않는다.',
+            zh: '表面列显示的是 Kane (2009) 的拉丁字母重构。契丹小字 (Unicode U+18B00–U+18CFF) 对某些已确认读音存在字形，但根据审核政策 (Task 119) 禁止从罗马字自动生成，此处暂不映射。',
+        },
+    },
     altWordForms: {},
     words: { water:['muri','muri'], fire:['niár','niar'], sun:['nair','nair'], moon:['sair','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['nïaqan','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['omsu','omsu'], good:['sayïn','sajin'] },
     wordEvidence: {
