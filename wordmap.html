@@ -399,6 +399,27 @@
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
         .lang-info-panel td:first-child { font-weight: 600; color: #555; width: 90px; white-space: nowrap; }
         .lang-info-panel .desc { color: #444; font-size: 12px; line-height: 1.5; }
+        /* Audit Task 129: RTL/bidi isolation for Arabic/Hebrew/Perso-Arabic
+           word cells. unicode-bidi:isolate prevents RTL text from reordering
+           neighboring LTR punctuation (slashes, brackets, evidence markers).
+           dir="auto" on the wrapper lets the browser detect direction
+           per-cell. IPA cells stay LTR. */
+        .wm-form { unicode-bidi: isolate; }
+        .wm-ipa  { unicode-bidi: isolate; direction: ltr; }
+        /* Audit Task 101: keyboard focus for inline evidence markers */
+        .lang-info-panel .ev-marker:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 1px;
+            border-radius: 2px;
+        }
+        .lang-info-panel .ev-detail {
+            font-size: 11px;
+            color: #666;
+            background: #f5f5f8;
+            padding: 4px 8px;
+            border-left: 2px solid #ccc;
+            margin: 2px 0 2px 16px;
+        }
 
         /* --- URL watermark --- */
         .url-watermark {
@@ -494,6 +515,12 @@
         <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
             <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
             <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
+            <!-- Audit Task 112: legend explaining what each era shows.
+                 Compact help icon; tooltip describes that historical mode
+                 also overlays modern descendants as cross-reference. -->
+            <span id="era-help" tabindex="0" role="button" aria-label=""
+                  style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
+                  title="">?</span>
         </div>
         <div class="lang-search-wrap" style="position:relative">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
@@ -558,7 +585,46 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=85"></script>
+    <!-- Audit Task 125: graceful CDN fallback. If Leaflet fails to load,
+         show a clear error panel instead of leaving a blank map. If only
+         Globe.gl fails, the 2D map still works; the 3D toggle is disabled. -->
+    <script>
+    (function () {
+        const missingDeps = [];
+        if (typeof L === 'undefined') missingDeps.push('Leaflet');
+        if (typeof Globe === 'undefined') missingDeps.push('Globe.gl');
+        if (missingDeps.length === 0) return;
+        // Defer the rest of init so we can show a friendly message.
+        window.__langmapMissingDeps = missingDeps;
+        if (missingDeps.includes('Leaflet')) {
+            // Leaflet missing: hide the map div, show a localized error.
+            // Inline-fallback message in English (UI labels not yet loaded).
+            window.addEventListener('DOMContentLoaded', () => {
+                const mapEl = document.getElementById('map');
+                if (mapEl) {
+                    mapEl.style.background = '#f7f7f8';
+                    mapEl.innerHTML = '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:system-ui,sans-serif;color:#666"><div><div style="font-size:32px;margin-bottom:12px">🗺️</div><div style="font-size:16px;font-weight:600;color:#333;margin-bottom:6px">Map could not load</div><div style="font-size:13px;line-height:1.5">External map library (Leaflet) is unavailable.<br>Check your network connection or content blockers, then reload.<br><br><span style="color:#999;font-size:11px">If you are on a restricted network, the CDN at <code>unpkg.com</code> may be blocked.</span></div></div></div>';
+                }
+            });
+            // Stop further init — Leaflet is required for both 2D and 3D paths.
+            throw new Error('Leaflet not loaded; halting wordmap init');
+        }
+        if (missingDeps.includes('Globe.gl')) {
+            // Globe missing: 2D works fine; we'll disable the 3D toggle once it exists.
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn3D = document.getElementById('toggle-3d');
+                if (btn3D) {
+                    btn3D.disabled = true;
+                    btn3D.style.opacity = '0.4';
+                    btn3D.style.cursor = 'not-allowed';
+                    btn3D.title = '3D globe unavailable (Globe.gl CDN failed to load)';
+                    btn3D.setAttribute('aria-disabled', 'true');
+                }
+            });
+        }
+    })();
+    </script>
+    <script src="wordmap_data.js?v=86"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="lang-filter.js?v=23"></script>
     <script src="lang_names.js?v=5"></script>
@@ -708,7 +774,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      85,
+            data:      86,
             metaI18n:  8,
             filter:    23,
             names:     5,
@@ -802,6 +868,22 @@
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
             modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
             historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            // Audit Task 112: era legend explanation. Modern mode shows
+            // only modern languages; historical mode adds historical
+            // entries plus their modern descendants as cross-reference
+            // markers (drawn in red).
+            eraHelpModern: {
+                en: 'Modern mode: shows modern languages and varieties.',
+                ja: '現代モード: 現代言語・地方変種のみ表示します。',
+                ko: '현대 모드: 현대 언어와 지역 변종을 표시합니다.',
+                zh: '现代模式：只显示现代语言和地区变体。',
+            },
+            eraHelpHistorical: {
+                en: 'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
+                ja: '歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
+                ko: '역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
+                zh: '历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+            },
             noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
                 de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
                 pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
@@ -864,6 +946,8 @@
             document.getElementById('era-historical').textContent = historicalCount ? `${histLabel} (${historicalCount})`   : histLabel;
             if (typeof updateNameSwitch === 'function') updateNameSwitch();
             rebuildWordSelect();
+            // Audit Task 112: refresh era help tooltip after labels update
+            if (typeof updateEraHelp === 'function') updateEraHelp();
         }
 
         uiLangSelect.addEventListener('change', () => {
@@ -960,10 +1044,20 @@
             eraHistorical.classList.toggle('active', historical);
             eraModern.setAttribute('aria-checked', String(!historical));
             eraHistorical.setAttribute('aria-checked', String(historical));
+            updateEraHelp();
             window.dispatchEvent(new CustomEvent('langmap:erachange', { detail: { historical } }));
             updateMarkers(currentWord);
             updateHash();
         }
+        // Audit Task 112: refresh the era-help tooltip whenever era or UI lang changes.
+        function updateEraHelp() {
+            const helpEl = document.getElementById('era-help');
+            if (!helpEl) return;
+            const text = showHistorical ? i18n('eraHelpHistorical') : i18n('eraHelpModern');
+            helpEl.title = text;
+            helpEl.setAttribute('aria-label', text);
+        }
+        window.addEventListener('langmap:uichange', updateEraHelp);
         eraModern.addEventListener('click', () => setEra(false));
         eraHistorical.addEventListener('click', () => setEra(true));
 
@@ -1136,6 +1230,8 @@
 
         const btn3D = document.getElementById('toggle-3d');
         btn3D.addEventListener('click', () => {
+            // Audit Task 125: refuse if Globe.gl CDN failed to load.
+            if (typeof Globe === 'undefined') return;
             is3D = !is3D;
             btn3D.classList.toggle('active', is3D);
             btn3D.setAttribute('aria-pressed', String(is3D));
@@ -1296,9 +1392,11 @@
             if (showIpa && ipa) ariaParts.push('/' + ipa + '/');
             const ariaLabel = escapeHtml(ariaParts.filter(Boolean).join(' — '));
             let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}" role="button" tabindex="0" aria-label="${ariaLabel}">`;
-            if (showWord) html += `<div class="word" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
-            if (showIpa) html += `<div class="ipa" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
-            if (showName) html += `<div class="name" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
+            // Audit Task 129: dir="auto" on word + name so RTL labels render
+            // in correct order; IPA stays LTR.
+            if (showWord) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
+            if (showIpa) html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
+            if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
         }
@@ -2115,7 +2213,7 @@
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
-            html += `<div class="native-name">${escapeHtml(lang.native)} [${escapeHtml(code)}]</div>`;
+            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
             // Audit Task 115: disambiguator for rows that share a display
             // or native name with another row (e.g. mn_cn/xng both show
             // ᠮᠣᠩᠭᠣᠯ; omx/mnw both show ဘာသာ မန်).
@@ -2246,8 +2344,12 @@
                         html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (${escapeHtml(unattLabel)})</td></tr>`;
                     } else {
                         const ev = wEv[w.id];
+                        // Audit Task 101: evidence markers are keyboard-accessible.
+                        // role=button + tabindex=0 + aria-label so screen readers
+                        // and keyboard users can read the evidence note (not just
+                        // hover-only). Native button avoided to keep table layout.
                         const evMark = ev && EVIDENCE_MARKER[ev.evidence]
-                            ? ` <span style="color:${EVIDENCE_MARKER[ev.evidence].color};font-size:10px;cursor:help" title="${escapeHtml(evidenceTooltip(ev))}">${EVIDENCE_MARKER[ev.evidence].sym}</span>`
+                            ? ` <span role="button" tabindex="0" class="ev-marker" style="color:${EVIDENCE_MARKER[ev.evidence].color};font-size:10px;cursor:help" title="${escapeHtml(evidenceTooltip(ev))}" aria-label="${escapeHtml(evidenceTooltip(ev))}">${EVIDENCE_MARKER[ev.evidence].sym}</span>`
                             : '';
                         // Build optional alt-script line (under main word cell)
                         let altLine = '';
@@ -2260,7 +2362,10 @@
                             });
                             altLine = `<div style="margin-top:2px;padding-left:0">${altParts.join(' / ')}</div>`;
                         }
-                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}${evMark}${altLine}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
+                        // Audit Task 129: wrap word in dir="auto" + bidi
+                        // isolation so RTL forms (Arabic/Hebrew/Perso-Arabic)
+                        // don't reorder adjacent slashes/markers; IPA forced LTR.
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td><span class="wm-form" dir="auto">${escapeHtml(entry[0])}</span>${evMark}${altLine}</td><td style="${ipaStyle}"><span class="wm-ipa">/${escapeHtml(entry[1])}/</span></td></tr>`;
                     }
                 }
             }
@@ -2629,17 +2734,56 @@
         // to that lang. Map jumps to its coords too.
         infoContent.addEventListener('click', e => {
             const a = e.target.closest('a[data-langcode]');
-            if (!a) return;
-            e.preventDefault();
-            const target = a.getAttribute('data-langcode');
-            if (target && LANG_DATA[target]) {
-                showLangInfo(target);
-                if (typeof map !== 'undefined' && map && map.setView) {
-                    const t = LANG_DATA[target];
-                    map.setView([t.lat, t.lng], Math.max(map.getZoom(), 4));
+            if (a) {
+                e.preventDefault();
+                const target = a.getAttribute('data-langcode');
+                if (target && LANG_DATA[target]) {
+                    showLangInfo(target);
+                    if (typeof map !== 'undefined' && map && map.setView) {
+                        const t = LANG_DATA[target];
+                        map.setView([t.lat, t.lng], Math.max(map.getZoom(), 4));
+                    }
                 }
+                return;
+            }
+            // Audit Task 101: clicking an evidence marker expands its
+            // detail inline (under the row) so it is reachable without hover.
+            const ev = e.target.closest('.ev-marker');
+            if (ev) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleEvDetail(ev);
             }
         });
+        // Audit Task 101: keyboard activation for evidence markers.
+        infoContent.addEventListener('keydown', e => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const ev = e.target.closest('.ev-marker');
+            if (!ev) return;
+            e.preventDefault();
+            toggleEvDetail(ev);
+        });
+        function toggleEvDetail(ev) {
+            const tr = ev.closest('tr');
+            if (!tr) return;
+            const next = tr.nextElementSibling;
+            if (next && next.classList.contains('ev-detail-row')) {
+                next.parentNode.removeChild(next);
+                return;
+            }
+            const detail = ev.getAttribute('aria-label') || ev.getAttribute('title') || '';
+            if (!detail) return;
+            const detailRow = document.createElement('tr');
+            detailRow.className = 'ev-detail-row';
+            const td = document.createElement('td');
+            td.colSpan = 3;
+            const div = document.createElement('div');
+            div.className = 'ev-detail';
+            div.textContent = detail;
+            td.appendChild(div);
+            detailRow.appendChild(td);
+            tr.parentNode.insertBefore(detailRow, tr.nextSibling);
+        }
 
     })();
     </script>

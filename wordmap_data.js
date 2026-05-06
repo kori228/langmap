@@ -3084,8 +3084,20 @@ const LANG_DATA = {
   och: { name: 'Old Chinese', native: '上古漢語', lat: 36.10, lng: 114.40,
     words: { water:['水','*s.turʔ'], fire:['火','*qʷʰəjʔ'], sun:['日','*C.nik'], moon:['月','*ŋʷat'], mother:['母','*məʔ'], father:['父','*paʔ'], eat:['食','*mə.lək'], drink:['飲','*qrəmʔ'], love:['愛','*qˤəts'], heart:['心','*səm'], tree:['木','*C.mˤok'], house:['室','*l̥ik'], dog:['犬','*kʷʰˤinʔ'], cat:['—','—'], hand:['手','*n̥uʔ'], eye:['目','*C.muk'], hello:['—','—'], thanks:['謝','*s.ɢAk-s'], one:['一','*ʔit'], good:['好','*qʰˤuʔ'] }},
   // Old Japanese (Asuka-Nara, 7-8c.) — Manyōshū / Kojiki period. Heijō-kyō (Nara).
+  // Hiragana did not yet exist (developed from man'yōgana cursive in late
+  // Heian, ~9-10c.); OJ orthography is man'yōgana (Chinese characters used
+  // phonetically) and semantic kanji. Per user request 2026-05-06: replace
+  // anachronistic hiragana suffixes (食ぶ・飲む・愛し・一つ・良し) with
+  // man'yōgana attested in Man'yōshū / Kojiki / Nihon Shoki.
   ojp: { name: 'Old Japanese', native: '上代日本語', lat: 34.69, lng: 135.83,
-    words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['食ぶ','tabu'], drink:['飲む','nəmu'], love:['愛し','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['—','—'], hand:['手','ta'], eye:['目','ma'], hello:['—','—'], thanks:['—','—'], one:['一つ','pïtətu'], good:['良し','yo₁si'] }},
+    words: { water:['水','mintu'], fire:['火','pə'], sun:['日','pi'], moon:['月','tukï'], mother:['母','papa'], father:['父','titi'], eat:['多夫','tabu'], drink:['能牟','nəmu'], love:['加奈志','kanasi'], heart:['心','kəkərə'], tree:['木','kə'], house:['家','ipey'], dog:['犬','inu'], cat:['—','—'], hand:['手','ta'], eye:['目','ma'], hello:['—','—'], thanks:['—','—'], one:['比登都','pïtətu'], good:['与之','yo₁si'] },
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'Man\'yōgana 多夫 (ta-bu) for OJ tabu "to eat" — attested in Man\'yōshū' },
+      drink: { evidence: 'direct', source: 'Man\'yōgana 能牟 (nö-mu) for OJ nömu "to drink" — attested in Man\'yōshū phonetic spellings' },
+      love:  { evidence: 'direct', source: 'Man\'yōgana 加奈志 (ka-na-si) for OJ kanasi "dear/poignantly loved" — attested in Man\'yōshū' },
+      one:   { evidence: 'direct', source: 'Man\'yōgana 比登都 (pi-tö-tu) for OJ pïtötu "one" — attested in Kojiki/Man\'yōshū' },
+      good:  { evidence: 'direct', source: 'Man\'yōgana 与之 (yö-si) for OJ yösi "good" — attested in Man\'yōshū' },
+    }},
   // Proto-Japonic-Koreanic (PJK) — hypothesized common ancestor of
   // Japanese and Korean. Status disputed: Vovin (2010) rejects the
   // family connection; Whitman (2012) and Robbeets (2015) propose it

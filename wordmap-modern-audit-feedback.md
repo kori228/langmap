@@ -1115,3 +1115,31 @@ Cache buster `v=46 → v=62` (data) / `v=16 → v=25` (meta, +Tasks 84/95/99/105
 | Task 137 (part 2) | Dialog focus management: `_lastDialogOpener` で opener を捕捉、close 時に opener へ focus restore (要素が DOM から消えていれば search input にフォールバック)。dialog に `tabindex="-1"` 追加 | wordmap.html |
 
 **Validator status**: PASS (0 errors, 17 pre-existing warnings)。codeType breakdown は regional-variant 77→75, historical-stage 5→7 (`ja_chu`/`ko_gor` 正分類)。HTML/data/meta/filter 全て syntax OK。Cache-buster は meta 32→33 bump 済。Pass 8+9+10 合計 18 タスク対応完了。
+
+---
+
+## Pass 11 Sequential Cleanup + User Fixes (2026-05-06 part 4)
+
+### User-reported fixes
+
+| Issue | 対応内容 | Files |
+|---|---|---|
+| 「単語が無い言語の存在が見えない」 | Unattested marker (—) を zoom ≥ 4 で言語名のラベル化 (薄いイタリック)、zoom ≤ 3 のみ従来のドット維持。2D/3D 両方に適用 | wordmap.html |
+| 「契丹小文字・女真の漢字表記が確認できない」 | `juc` (女真) に『女真譯語』9件を `altWordForms` で追加 (木克・脱瓦・順・厄默・阿馬・引荅渾・噶剌・牙撒・厄木)。`zkt` (契丹) は Kane (2009) 等の一次資料未確認のため `altWordForms: {}` に明示コメント付。Modal table に併記表示 | wordmap_data.js, wordmap.html |
+| 「上代日本語にひらがながあるのはおかしい」 | `ojp` (Old Japanese 上代日本語) の 5 cells に混入していたひらがなを万葉仮名に修正: 食ぶ→多夫、飲む→能牟、愛し→加奈志、一つ→比登都、良し→与之 (全て Man'yōshū 等で attested)。`wordEvidence` で出典明記 | wordmap_data.js |
+
+なお、ja_heian (平安京言葉, 794-1185) はひらがな成立期 (古今和歌集 905年, 源氏物語 1008年) の言語なのでひらがな使用は歴史的に正しい。ja_chu/ja_edo も成立後の時代で問題なし。修正は ojp のみ。
+
+### Audit roadmap tasks
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 96 | 既に safeUrl + escapeHtml + rel=noopener 実装済を確認、validator が `meta.sources URL "..." not http(s) — rejected (Audit Task 96)` で error 投げ済 | (no change) |
+| Task 101 | Evidence marker (`*`/`?`/`◇` 等) を `role=button` + `tabindex=0` + `aria-label` 化、click/Enter で詳細を行下にインライン展開 (.ev-detail-row)。focus-visible ring 追加 | wordmap.html |
+| Task 112 | Era 切替の隣に `?` ヘルプアイコン追加。Modern/Historical で異なる説明 (en/ja/ko/zh): Modern=「現代言語のみ」/ Historical=「歴史言語＋現代後裔(赤色)も参照表示」。era切替/UI言語変更で再描画 | wordmap.html |
+| Task 125 | 起動時に `typeof L === 'undefined'` / `typeof Globe === 'undefined'` を検出。Leaflet 失敗時はマップ領域に localized error カード表示+init halt。Globe.gl のみ失敗時は 3D ボタン disabled+title 説明、2D は通常動作 | wordmap.html |
+| Task 129 | RTL/bidi: `.wm-form` (`unicode-bidi: isolate`) と `.wm-ipa` (`unicode-bidi: isolate; direction: ltr`) CSS 追加。Modal の word/native-name と map labels (word/name) に `dir="auto"` 適用、IPA は `dir="ltr"` 強制 | wordmap.html |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings — 全て description i18n 関連で今回スコープ外)。HTML inline scripts (3 blocks)・data/meta/filter とも syntax OK。Cache-buster は data 85→86 bump 済 (CDN-fallback IIFE 1 block 追加で計 3 inline scripts)。
+
+Pass 8+9+10+11 合計 **24 タスク + ユーザー要望 3 件** 対応完了。
