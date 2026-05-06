@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 617 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 617 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
+    <title>LangMap — Word Map: 630 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 630 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 617 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 630 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 617 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 630 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=54">
+    <link rel="stylesheet" href="styles.css?v=59">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -49,11 +49,13 @@
             border-radius: 20px; background: #fff; cursor: pointer; max-width: 240px;
         }
         /* Header UI lang select (unified across index/wordmap/tree pages) */
-        .header-ui-lang {
+        .site-header-bar .header-ui-lang {
             padding: 4px 8px; font-size: 12px;
             border: 1px solid #d0d0d0; border-radius: 4px;
             background: #fff; color: #444; cursor: pointer;
+            margin-left: auto; min-width: 140px;
         }
+        .site-header-bar .header-ui-lang + .header-url { margin-left: 12px; }
 
         /* --- Top-left controls (below header) --- */
         .top-left-controls {
@@ -394,6 +396,22 @@
         .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
         .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
 
+        /* Unattested cell: same shape/footprint as a normal .lang-label card
+           (so the connector line still aims at it correctly when the modal
+           opens). Per user request, text colors match attested labels —
+           the dashed outline alone signals "no data for this concept". */
+        .lang-label.unattested {
+            background: rgba(255,255,255,0.55);
+            border: 1px dashed rgba(120,120,140,0.55);
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        .lang-label.unattested:hover { background: rgba(255,255,255,0.85); }
+        body.is-3d .lang-label.unattested {
+            background: rgba(0,0,0,0.45);
+            border-color: rgba(200,200,220,0.45);
+        }
+
         /* --- Language info panel --- */
         .lang-info-panel {
             position: absolute; top: 56px; right: 12px; z-index: 1010;
@@ -575,6 +593,16 @@
             writing-mode: vertical-lr; text-orientation: mixed;
             display: inline-block; line-height: 1.4; min-height: 2em;
         }
+        /* Globe (3D) unattested cell: dashed outline keeps the visual cue
+           that this lang has no data for the current concept; text colors
+           match attested labels (per user request). */
+        .globe-label.unattested {
+            background: rgba(0,0,0,0.45);
+            border: 1px dashed rgba(200,200,220,0.45);
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        .globe-label.unattested:hover { background: rgba(0,0,0,0.7); }
 
         /* --- Mobile responsive --- */
         @media (max-width: 768px) {
@@ -613,11 +641,11 @@
         <nav class="header-nav">
             <!-- Audit Task 124: nav default label is English; applyUILang()
                  swaps to NAV_ORDER[uiLang] / NAV_WORD[uiLang] on load. -->
-            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
+            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
             <span class="nav-sep">/</span>
-            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
+            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</span>
             <span class="nav-sep">/</span>
-            <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
+            <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>系統樹</a>
         </nav>
         <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
@@ -752,11 +780,11 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=102"></script>
+    <script src="wordmap_data.js?v=103"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="meta_i18n_coverage.js?v=1"></script>
     <script src="lang-filter.js?v=25"></script>
-    <script src="lang_names.js?v=10"></script>
+    <script src="lang_names.js?v=12"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -919,11 +947,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      102,
+            data:      103,
             metaI18n:  8,
             filter:    25,
-            names:    11,
-            meta:      55,
+            names:    12,
+            meta:      56,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -973,6 +1001,18 @@
             pt_eu:'Mapa de palavras', pt_br:'Mapa de palavras',
             ru:'Карта слов', uk:'Карта слів', ar:'خريطة الكلمات',
             he:'מפת מילים', sw:'Ramani ya maneno',
+        };
+        // Pass 36: Tree nav label — kept in lockstep with index.html's
+        // app.js trLabels and tree.html's UI_I18N.navTree so all 3 pages
+        // display identical translations per UI lang.
+        const NAV_TREE = {
+            ja:'系統樹', ko:'계통수', zh:'谱系树', yue:'譜系樹', vi:'Cây phả hệ',
+            th:'แผนภูมิ', id:'Pohon', hi:'वृक्ष', en:'Tree',
+            de:'Stammbaum', fr:'Arbre', it:'Albero',
+            es_eu:'Árbol', es_mx:'Árbol',
+            pt_eu:'Árvore', pt_br:'Árvore',
+            ru:'Древо', uk:'Дерево', ar:'الشجرة',
+            he:'אילן', sw:'Mti',
         };
 
         // Audit i18n: centralized localized UI strings. Moved here (before
@@ -1112,6 +1152,7 @@
             }
             setNavText(document.getElementById('nav-order-label'), NAV_ORDER[uiLang] || NAV_ORDER.en);
             setNavText(document.getElementById('navWordMap'), NAV_MAP[uiLang] || NAV_MAP.en);
+            setNavText(document.getElementById('nav-tree-label'), NAV_TREE[uiLang] || NAV_TREE.en);
             const sizeEl = document.getElementById('size-label');
             if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
             ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
@@ -1735,42 +1776,23 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
-            // Render unattested-cell langs so the user can still see the
-            // language exists at that location even when its word for the
-            // current concept is '—'. At zoom <= 3 we keep the compact dot
-            // (otherwise low-zoom views would clutter); at zoom >= 4 we
-            // render the language name in a muted style so users can
-            // immediately identify *which* language the marker is.
-            // Per user request 2026-05-06: language existence must be
-            // recognizable, not just a generic dot.
+            // Render unattested-cell langs as full .lang-label cards with
+            // "—" placeholders for word + IPA. This (a) keeps the language
+            // identifiable at any zoom, (b) gives the modal connector line
+            // a target to attach to (it queries .lang-label[data-code]),
+            // and (c) matches user expectation when arriving via a tree
+            // link with z=7&lang=xxx — the cell is still visible.
             for (const code of unattestedLangs) {
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
-                const codeAttr = escapeHtml(code);
                 const displayName = getDisplayName(code, lang);
-                const ariaLabel = escapeHtml(displayName);
-                let icon;
-                if (zoom <= 3) {
-                    // Compact dot for far-zoom views to avoid label clutter
-                    icon = L.divIcon({
-                        className: 'unattested-icon',
-                        html: `<div class="unattested-marker" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}"></div>`,
-                        iconSize: [9, 9], iconAnchor: [4, 4],
-                    });
-                } else {
-                    // Muted name label so the language is clearly identifiable
-                    const nameHtml = escapeHtml(displayName);
-                    icon = L.divIcon({
-                        className: 'unattested-icon',
-                        html: `<div class="unattested-label" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${nameHtml}</div>`,
-                        iconSize: [0, 0], iconAnchor: [0, 0],
-                    });
-                }
-                const dotMarker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
-                dotMarker._langCode = code;
-                dotMarker.on('click', () => showLangInfo(code));
-                dotMarker.addTo(map);
-                markers.push(dotMarker);
+                const html = buildLabelHtml(code, '—', '—', displayName, '', 'lang-label unattested');
+                const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
+                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
+                marker._langCode = code;
+                marker.on('click', () => showLangInfo(code));
+                marker.addTo(map);
+                markers.push(marker);
             }
             // Re-apply selected highlight + connector after re-render
             // (markers are torn down and re-added each updateMarkers call).
@@ -1843,18 +1865,16 @@
 
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
             }
-            // 3D presence labels for unattested cells (mirrors 2D version).
-            // Per user request 2026-05-06: show the language name so users
-            // can identify which language exists at the marker, even when
-            // its word for the current concept is '—'.
+            // 3D unattested cells: full .globe-label cards with "—" placeholders
+            // (mirrors 2D version). Same shape as attested labels so the
+            // connector line picks them up via .globe-label[data-code=...].
             for (const code of unattestedLangs) {
                 if (!isActive(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const displayName = getDisplayName(code, lang);
-                const ariaLabel = escapeHtml(displayName);
                 const el = document.createElement('div');
-                el.innerHTML = `<div class="unattested-label" data-code="${escapeHtml(code)}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${escapeHtml(displayName)}</div>`;
+                el.innerHTML = buildLabelHtml(code, '—', '—', displayName, '', 'globe-label unattested');
                 el.firstChild.dataset.code = code;
                 el.firstChild.addEventListener('click', (e) => {
                     e.stopPropagation();

@@ -380,6 +380,10 @@ const FAMILY_TOP_ALLOW = new Set([
     'Atlantic-Congo',                  // Bantu E70/JE Runyakitara cluster
     'Portuguese-based creole',         // kea Cape Verdean
     'Songhai',                         // ses Koyraboro Senni — genealogically isolated
+    // Pass 35: new family top-tokens
+    'Tyrsenian',                       // ett Etruscan + (potentially) Lemnian/Raetic
+    'Disputed',                        // txr Tartessian — affiliation contested
+    'Romance',                         // lld Ladin (Rhaeto-Romance) — already in list above; redundant but explicit
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;
@@ -610,9 +614,14 @@ if (LANG_NAMES) {
 // modern lang + any "—" entry → ERROR
 // historical lang + both "—" → OK (explicitly unattested)
 // historical lang + one-sided "—" → ERROR
+// Pass 35: also allow `dataStatus: 'fragmentary'` (e.g. critically-endangered
+// living isolates with very limited documentation) to use both-'—' cells.
 let modernDashErrors = 0, oneSidedDashErrors = 0;
+const dso = ctx.DATA_STATUS_OVERRIDES || {};
 for (const code of codes) {
     const isHist = HIST_SET.has(code);
+    const status = dso[code] || ctx.LANG_DATA[code]?.meta?.dataStatus;
+    const isFragmentary = status === 'fragmentary';
     const lang = ctx.LANG_DATA[code];
     for (const id of WORD_IDS) {
         const e = lang.words[id];
@@ -623,8 +632,8 @@ for (const code of codes) {
         const iDash = isDash(ipa);
         if (!wDash && !iDash) continue;
         if (wDash && iDash) {
-            if (!isHist) {
-                E(`${code}.words.${id}: both '—' but language is modern (unattested-marker only allowed for historical)`);
+            if (!isHist && !isFragmentary) {
+                E(`${code}.words.${id}: both '—' but language is modern (unattested-marker only allowed for historical or fragmentary)`);
                 modernDashErrors++;
             }
         } else {

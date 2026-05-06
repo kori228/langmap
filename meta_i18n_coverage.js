@@ -15751,6 +15751,143 @@ const COMMON_OVERRIDES = [
      'लैटिन (ग्लॉटल स्टॉप के लिए शीर्षक चिह्न सहित)',
      'ละติน (พร้อมเครื่องหมายอะพอสทรอฟีสำหรับเสียงกัก-เส้นเสียง)',
      'La-tinh (với dấu lược cho âm tắc thanh hầu)'],
+    // Latin (with q for /q/) — e.g. Greenlandic (kl). Korean composer was
+    // breaking this into "라틴 문자(와 q 용 / q)" (와=and, 용=use); needs
+    // a whole-phrase override for all UI langs.
+    ['Latin (with q for /q/)',
+     'ラテン（/q/ に q を使用）',
+     '라틴 문자 (/q/에 q 사용)',
+     '拉丁(以 q 表示 /q/)',
+     '拉丁(以 q 表示 /q/)',
+     'латиница (q для /q/)',
+     'латиниця (q для /q/)',
+     'اللاتينية (q لـ /q/)',
+     'לטינית (q לפונמת /q/)',
+     'लैटिन (/q/ के लिए q)',
+     'ละติน (ใช้ q แทน /q/)',
+     'La-tinh (q cho /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Same compositional bug.
+    ['Latin (with ṭ for /tʰ/)',
+     'ラテン（/tʰ/ に ṭ を使用）',
+     '라틴 문자 (/tʰ/에 ṭ 사용)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     'латиница (ṭ для /tʰ/)',
+     'латиниця (ṭ для /tʰ/)',
+     'اللاتينية (ṭ لـ /tʰ/)',
+     'לטינית (ṭ לפונמת /tʰ/)',
+     'लैटिन (/tʰ/ के लिए ṭ)',
+     'ละติน (ใช้ ṭ แทน /tʰ/)',
+     'La-tinh (ṭ cho /tʰ/)'],
+    // Cyrillic (with X Y Z) — Korean composer mistranslated 'with' as '와'
+    // (and). All Cyrillic+extra-letter scripts share this pattern.
+    ['Cyrillic (with Ӑ Ӗ Ҫ Ӳ)',
+     'キリル文字（Ӑ Ӗ Ҫ Ӳ 含む）', '키릴 문자 (Ӑ Ӗ Ҫ Ӳ 포함)',
+     '西里尔文(含 Ӑ Ӗ Ҫ Ӳ)', '西里爾文(含 Ӑ Ӗ Ҫ Ӳ)',
+     'кириллица (с Ӑ Ӗ Ҫ Ӳ)', 'кирилиця (з Ӑ Ӗ Ҫ Ӳ)',
+     'السيريلية (مع Ӑ Ӗ Ҫ Ӳ)', 'קירילית (עם Ӑ Ӗ Ҫ Ӳ)',
+     'सिरिलिक (Ӑ Ӗ Ҫ Ӳ सहित)', 'ซีริลลิก (พร้อม Ӑ Ӗ Ҫ Ӳ)',
+     'Kirin (kèm Ӑ Ӗ Ҫ Ӳ)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ ӹ)',
+     'キリル文字（ӓ ӧ ӱ ҥ ӹ 含む）', '키릴 문자 (ӓ ӧ ӱ ҥ ӹ 포함)',
+     '西里尔文(含 ӓ ӧ ӱ ҥ ӹ)', '西里爾文(含 ӓ ӧ ӱ ҥ ӹ)',
+     'кириллица (с ӓ ӧ ӱ ҥ ӹ)', 'кирилиця (з ӓ ӧ ӱ ҥ ӹ)',
+     'السيريلية (مع ӓ ӧ ӱ ҥ ӹ)', 'קירילית (עם ӓ ӧ ӱ ҥ ӹ)',
+     'सिरिलिक (ӓ ӧ ӱ ҥ ӹ सहित)', 'ซีริลลิก (พร้อม ӓ ӧ ӱ ҥ ӹ)',
+     'Kirin (kèm ӓ ӧ ӱ ҥ ӹ)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ)',
+     'キリル文字（ӓ ӧ ӱ ҥ 含む）', '키릴 문자 (ӓ ӧ ӱ ҥ 포함)',
+     '西里尔文(含 ӓ ӧ ӱ ҥ)', '西里爾文(含 ӓ ӧ ӱ ҥ)',
+     'кириллица (с ӓ ӧ ӱ ҥ)', 'кирилиця (з ӓ ӧ ӱ ҥ)',
+     'السيريلية (مع ӓ ӧ ӱ ҥ)', 'קירילית (עם ӓ ӧ ӱ ҥ)',
+     'सिरिलिक (ӓ ӧ ӱ ҥ सहित)', 'ซีริลลิก (พร้อม ӓ ӧ ӱ ҥ)',
+     'Kirin (kèm ӓ ӧ ӱ ҥ)'],
+    ['Cyrillic (with ӝ ӟ ӥ ӧ ӵ)',
+     'キリル文字（ӝ ӟ ӥ ӧ ӵ 含む）', '키릴 문자 (ӝ ӟ ӥ ӧ ӵ 포함)',
+     '西里尔文(含 ӝ ӟ ӥ ӧ ӵ)', '西里爾文(含 ӝ ӟ ӥ ӧ ӵ)',
+     'кириллица (с ӝ ӟ ӥ ӧ ӵ)', 'кирилиця (з ӝ ӟ ӥ ӧ ӵ)',
+     'السيريلية (مع ӝ ӟ ӥ ӧ ӵ)', 'קירילית (עם ӝ ӟ ӥ ӧ ӵ)',
+     'सिरिलिक (ӝ ӟ ӥ ӧ ӵ सहित)', 'ซีริลลิก (พร้อม ӝ ӟ ӥ ӧ ӵ)',
+     'Kirin (kèm ӝ ӟ ӥ ӧ ӵ)'],
+    // === Round 29: place / region / period atoms to close remaining Korean leaks ===
+    // Place names (common in countries field)
+    ['Cox\'s Bazar', 'コックスバザール', '콕스바자르', '科克斯巴扎', '科克斯巴扎', 'Кокс-Базар', 'Кокс-Базар', 'كوكس بازار', 'קוקס באזאר', 'कॉक्स बाज़ार', 'ค็อกซ์บาซาร์', 'Cox\'s Bazar'],
+    ['Saterland', 'ザータラント', '자터란트', '萨特兰', '薩特蘭', 'Затерланд', 'Затерланд', 'زاترلاند', 'זטרלנד', 'सेटरलैंड', 'ซาเทอร์ลันด์', 'Saterland'],
+    ['Wilamowice', 'ヴィラモヴィツェ', '빌라모비체', '维拉莫维采', '維拉莫維采', 'Виламовице', 'Віламовіце', 'فيلاموفيتسه', 'וילאמוביצה', 'विलामोविचे', 'วิลาโมวิตเซ', 'Wilamowice'],
+    ['South Tyrol', '南チロル', '남티롤', '南蒂罗尔', '南蒂羅爾', 'Южный Тироль', 'Південний Тіроль', 'تيرول الجنوبية', 'דרום טירול', 'दक्षिण टायरोल', 'เซาท์ทีโรล', 'Nam Tyrol'],
+    ['Trentino', 'トレンティーノ', '트렌티노', '特伦蒂诺', '特倫蒂諾', 'Трентино', 'Трентіно', 'ترينتينو', 'טרנטינו', 'त्रेंतिनो', 'เทรนตีโน', 'Trentino'],
+    ['Belluno', 'ベッルーノ', '벨루노', '贝卢诺', '貝盧諾', 'Беллуно', 'Беллуно', 'بيلونو', 'בלונו', 'बेल्लूनो', 'เบลลูโน', 'Belluno'],
+    ['Anatolia', 'アナトリア', '아나톨리아', '安纳托利亚', '安納托利亞', 'Анатолия', 'Анатолія', 'الأناضول', 'אנטוליה', 'अनातोलिया', 'อานาโตเลีย', 'Anatolia'],
+    ['Dang', 'ダン', '당', '当', '當', 'Данг', 'Данг', 'دانغ', 'דנג', 'दांग', 'ดัง', 'Dang'],
+    // Languages / peoples mentioned as proper-noun adjuncts
+    ['Frisian', 'フリジア', '프리지아', '弗里斯兰', '弗里斯蘭', 'фризский', 'фризька', 'الفريزية', 'פריזית', 'फ़्रिसी', 'ฟริเซียน', 'Frisian'],
+    ['Ladin', 'ラディン', '라딘', '拉丁尼亚', '拉丁尼亞', 'ладин', 'ладин', 'اللادينية', 'לדינית', 'लदीन', 'ลาดิน', 'Ladin'],
+    ['Hanifi', 'ハニフィ', '하니피', '哈尼菲', '哈尼菲', 'хаифи', 'хаіфі', 'الحنفي', 'חניפי', 'हनिफ़ी', 'หะนีฟี', 'Hanifi'],
+    ['Hittite', 'ヒッタイト', '히타이트', '赫梯', '赫梯', 'хеттский', 'хетський', 'الحثية', 'חתית', 'हित्ती', 'ฮิตไทต์', 'Hittite'],
+    ['Etruscan', 'エトルリア', '에트루리아', '伊特鲁里亚', '伊特魯里亞', 'этрусский', 'етруський', 'الإتروسكية', 'אטרוסקית', 'इट्रस्केन', 'อิทรัสคัน', 'Etruscan'],
+    ['Tyrsenian', 'テュルセニア', '티르세니아', '蒂尔森尼亚', '蒂爾森尼亞', 'тирренский', 'тирренський', 'التيرسينية', 'טירסנית', 'टिर्सेनियाई', 'ตีร์เซเนียน', 'Tyrsenian'],
+    ['Ottoman', 'オスマン', '오스만', '奥斯曼', '奧斯曼', 'османский', 'османський', 'العثمانية', 'עות׳מאנית', 'उस्मानी', 'ออตโตมัน', 'Ottoman'],
+    ['Ottoman Empire', 'オスマン帝国', '오스만 제국', '奥斯曼帝国', '奧斯曼帝國', 'Османская империя', 'Османська імперія', 'الإمبراطورية العثمانية', 'האימפריה העות׳מאנית', 'उस्मानी साम्राज्य', 'จักรวรรดิออตโตมัน', 'Đế quốc Ottoman'],
+    ['Ottoman Turkish', 'オスマン語', '오스만 튀르크어', '奥斯曼土耳其语', '奧斯曼土耳其語', 'османско-турецкий', 'османсько-турецька', 'التركية العثمانية', 'טורקית עות׳מאנית', 'उस्मानी तुर्की', 'ตุรกีออตโตมัน', 'Thổ Nhĩ Kỳ Ottoman'],
+    // United States (Oklahoma) — fix US capitalization conflict
+    ['United States', 'アメリカ合衆国', '미국', '美国', '美國', 'США', 'США', 'الولايات المتحدة', 'ארצות הברית', 'संयुक्त राज्य', 'สหรัฐอเมริกา', 'Hoa Kỳ'],
+    ['Oklahoma', 'オクラホマ', '오클라호마', '俄克拉荷马', '俄克拉荷馬', 'Оклахома', 'Оклахома', 'أوكلاهوما', 'אוקלהומה', 'ओक्लाहोमा', 'โอคลาโฮมา', 'Oklahoma'],
+    ['United States (Oklahoma)', 'アメリカ合衆国（オクラホマ）', '미국 (오클라호마)', '美国(俄克拉荷马)', '美國(俄克拉荷馬)', 'США (Оклахома)', 'США (Оклахома)', 'الولايات المتحدة (أوكلاهوما)', 'ארצות הברית (אוקלהומה)', 'संयुक्त राज्य (ओक्लाहोमा)', 'สหรัฐอเมริกา (โอคลาโฮมา)', 'Hoa Kỳ (Oklahoma)'],
+    // Common adjuncts
+    ['everyday', '日常', '일상', '日常', '日常', 'ежедневно', 'щодня', 'يومي', 'יומיומי', 'दैनिक', 'รายวัน', 'hằng ngày'],
+    ['southern', '南部', '남부', '南部', '南部', 'южный', 'південний', 'جنوبي', 'דרומי', 'दक्षिणी', 'ตอนใต้', 'phía nam'],
+    ['vertical', '縦書き', '세로쓰기', '竖排', '豎排', 'вертикальный', 'вертикальний', 'عمودي', 'אנכי', 'ऊर्ध्वाधर', 'แนวตั้ง', 'dọc'],
+    ['mid-western', '中西部', '중서부', '中西部', '中西部', 'центрально-западный', 'центрально-західний', 'وسط غربي', 'מערב-אמצעי', 'मध्य-पश्चिमी', 'กลาง-ตะวันตก', 'trung-tây'],
+    ['cultural sphere', '文化圏', '문화권', '文化圈', '文化圈', 'культурная сфера', 'культурна сфера', 'مجال ثقافي', 'תחום תרבותי', 'सांस्कृतिक क्षेत्र', 'พื้นที่วัฒนธรรม', 'vùng văn hóa'],
+    ['Mongol cultural sphere', 'モンゴル文化圏', '몽골 문화권', '蒙古文化圈', '蒙古文化圈', 'монгольская культурная сфера', 'монгольська культурна сфера', 'المجال الثقافي المغولي', 'תחום תרבותי מונגולי', 'मंगोल सांस्कृतिक क्षेत्र', 'พื้นที่วัฒนธรรมมองโกล', 'vùng văn hóa Mông Cổ'],
+    ['when written', '書記時', '문자화 시', '书面时', '書面時', 'когда записано', 'коли записано', 'عند الكتابة', 'בכתב', 'लिखित में', 'เมื่อเขียน', 'khi viết'],
+    ['city-states', '都市国家', '도시 국가', '城邦', '城邦', 'города-государства', 'міста-держави', 'دول-مدن', 'מדינות-עיר', 'नगर-राज्य', 'นครรัฐ', 'thành quốc'],
+    ['Etruscan city-states', 'エトルリア都市国家', '에트루리아 도시 국가', '伊特鲁里亚城邦', '伊特魯里亞城邦', 'этрусские города-государства', 'етруські міста-держави', 'دول-مدن إتروسكية', 'מדינות-עיר אטרוסקיות', 'इट्रस्केन नगर-राज्य', 'นครรัฐอิทรัสคัน', 'thành quốc Etruscan'],
+    ['Pre-Hittite', '前ヒッタイト', '전(前) 히타이트', '前赫梯', '前赫梯', 'до-хеттский', 'до-хетський', 'ما قبل الحثية', 'טרום-חתי', 'पूर्व-हित्ती', 'ก่อนฮิตไทต์', 'tiền Hittite'],
+    ['pre-Hittite Anatolia', '前ヒッタイト期アナトリア', '전(前) 히타이트 시대 아나톨리아', '前赫梯安纳托利亚', '前赫梯安納托利亞', 'до-хеттская Анатолия', 'до-хетська Анатолія', 'الأناضول ما قبل الحثية', 'אנטוליה הטרום-חתית', 'पूर्व-हित्ती अनातोलिया', 'อานาโตเลียก่อนฮิตไทต์', 'Anatolia tiền Hittite'],
+    // Iberian / Tartessian historical
+    ['Tartessian', 'タルテッソス', '타르테소스', '塔尔提希', '塔爾提希', 'тартессий', 'тартесій', 'التارتيسية', 'טרטסית', 'टार्टेसियन', 'ตาร์เตสเซียน', 'Tartessian'],
+    ['Iberian', 'イベリア', '이베리아', '伊比利亚', '伊比利亞', 'иберский', 'іберійський', 'الإيبيرية', 'איברית', 'इबेरी', 'ไอบีเรีย', 'Iberian'],
+    ['Iberia', 'イベリア半島', '이베리아 반도', '伊比利亚半岛', '伊比利亞半島', 'Иберия', 'Іберія', 'إيبيريا', 'איבריה', 'इबेरिया', 'ไอบีเรีย', 'Iberia'],
+    ['Pre-Roman', 'ローマ以前', '로마 이전', '前罗马', '前羅馬', 'до-римский', 'до-римський', 'ما قبل الرومان', 'טרום-רומי', 'पूर्व-रोमन', 'ก่อนโรมัน', 'tiền La Mã'],
+    ['polities', '政体', '정치체', '政体', '政體', 'полития', 'політія', 'كيانات سياسية', 'מדיניות', 'राज्य', 'ระบอบการปกครอง', 'thể chế chính trị'],
+    ['semi-syllabic', '半音節文字', '반(半)음절', '半音节', '半音節', 'полусиллабический', 'напівскладовий', 'نصف مقطعي', 'חצי-הברתי', 'अर्ध-शब्दांश', 'กึ่งพยางค์', 'bán âm tiết'],
+    // Hattic / Hittite Empire
+    ['Hattic', 'ハッティ', '하티', '哈梯', '哈梯', 'хаттский', 'хатський', 'الحاتية', 'חתית הקדומה', 'हाट्टी', 'ฮัตติก', 'Hattic'],
+    ['Hittite Empire', 'ヒッタイト帝国', '히타이트 제국', '赫梯帝国', '赫梯帝國', 'Хеттская империя', 'Хетська імперія', 'الإمبراطورية الحثية', 'האימפריה החתית', 'हित्ती साम्राज्य', 'จักรวรรดิฮิตไทต์', 'Đế quốc Hittite'],
+    ['cities', '都市', '도시들', '城市', '城市', 'города', 'міста', 'مدن', 'ערים', 'शहर', 'เมือง', 'thành phố'],
+    ['integrated', '統合', '편입', '并入', '併入', 'интегрирован', 'інтегрований', 'مُدمج', 'משולב', 'समाहित', 'รวมเข้า', 'tích hợp'],
+    ['ritual texts', '儀式文書', '의식 문서', '仪式文献', '儀式文獻', 'ритуальные тексты', 'ритуальні тексти', 'نصوص طقسية', 'טקסטים פולחניים', 'अनुष्ठानिक ग्रंथ', 'ตำราพิธีกรรม', 'văn bản nghi lễ'],
+    ['bilingual', '二か国語の', '이중언어의', '双语', '雙語', 'двуязычный', 'двомовний', 'ثنائي اللغة', 'דו-לשוני', 'द्विभाषी', 'สองภาษา', 'song ngữ'],
+    // Hanifi Rohingya script
+    ['Hanifi Rohingya', 'ハニフィ・ロヒンギャ文字', '하니피 로힝야 문자', '哈尼菲罗兴亚文', '哈尼菲羅興亞文', 'хаифи рохинджа', 'хаіфі рохінджа', 'الحنفي للروهينغية', 'חניפי רוהינגיה', 'हनिफ़ी रोहिंग्या', 'หะนีฟี โรฮีนจา', 'Hanifi Rohingya'],
+    ['Rohingya', 'ロヒンギャ', '로힝야', '罗兴亚', '羅興亞', 'рохинджа', 'рохінджа', 'الروهينغية', 'רוהינגיה', 'रोहिंग्या', 'โรฮีนจา', 'Rohingya'],
+    // Dang district (Nepal)
+    ['Dang district', 'ダン郡', '당 구', '当区', '當區', 'округ Данг', 'округ Данг', 'مقاطعة دانغ', 'מחוז דנג', 'दांग जिला', 'เขตดัง', 'huyện Dang'],
+    // Co-official prefix
+    ['co-official', '共同公用', '공동 공용', '共同官方', '共同官方', 'со-официальный', 'співофіційний', 'رسمي مشترك', 'רשמי משותף', 'सह-आधिकारिक', 'ทางการร่วม', 'đồng chính thức'],
+    // ~3 partial (critically endangered)
+    ['partial', '部分的', '부분적', '部分', '部分', 'частичный', 'частковий', 'جزئي', 'חלקי', 'आंशिक', 'บางส่วน', 'một phần'],
+    // Extinct phrases
+    ['replaced by', 'に取って代わられた', '에 의해 대체됨', '由...取代', '由...取代', 'заменён', 'замінено', 'استُبدل بـ', 'הוחלף בידי', 'द्वारा प्रतिस्थापित', 'แทนที่ด้วย', 'bị thay bằng'],
+    ['modern Turkish', '現代トルコ語', '현대 터키어', '现代土耳其语', '現代土耳其語', 'современный турецкий', 'сучасна турецька', 'التركية الحديثة', 'טורקית מודרנית', 'आधुनिक तुर्की', 'ตุรกีสมัยใหม่', 'Thổ Nhĩ Kỳ hiện đại'],
+    ['replaced by modern Turkish', '現代トルコ語に取って代わられた', '현대 터키어로 대체됨', '由现代土耳其语取代', '由現代土耳其語取代', 'заменён современным турецким', 'замінено сучасною турецькою', 'استُبدل بالتركية الحديثة', 'הוחלף בטורקית מודרנית', 'आधुनिक तुर्की द्वारा प्रतिस्थापित', 'แทนที่ด้วยตุรกีสมัยใหม่', 'bị Thổ Nhĩ Kỳ hiện đại thay'],
+    ['living register', '生きた言語使用域', '실생활 언어역', '日常活语言域', '日常活語言域', 'живой регистр', 'живий регістр', 'مجال حي', 'מבע חי', 'जीवित प्रयोग', 'ทะเบียนภาษาที่ใช้งาน', 'thanh ngữ sống'],
+    ['Extinct as living register', '生きた言語使用域として消滅', '실생활 언어역으로 소멸', '作为日常活语言域已灭绝', '作為日常活語言域已滅絕', 'вымер как живой регистр', 'вимер як живий регістр', 'منقرض كمجال حي', 'נכחד כמבע חי', 'जीवित प्रयोग के रूप में लुप्त', 'สูญพันธุ์ในฐานะภาษาที่ใช้งาน', 'tuyệt chủng như thanh ngữ sống'],
+    // === Round 30: Final 8 deeply-nested phrases — full-phrase overrides ===
+    ['Italy (co-official in Ladin valleys)', 'イタリア（ラディン語圏で共同公用）', '이탈리아 (라딘 계곡들에서 공동 공용)', '意大利(在拉丁尼亚山谷为共同官方)', '意大利(在拉丁尼亞山谷為共同官方)', 'Италия (со-официальный в долинах ладин)', 'Італія (співофіційна в долинах ладин)', 'إيطاليا (رسمية مشتركة في وديان اللادينية)', 'איטליה (רשמית משותפת בעמקי לדינית)', 'इटली (लदीन घाटियों में सह-आधिकारिक)', 'อิตาลี (ทางการร่วมในหุบเขาลาดิน)', 'Ý (đồng chính thức tại các thung lũng Ladin)'],
+    ['Tyrsenian (language isolate within Italy)', 'テュルセニア（イタリア内の孤立語）', '티르세니아 (이탈리아 내 고립어)', '蒂尔森尼亚(意大利境内孤立语言)', '蒂爾森尼亞(意大利境內孤立語言)', 'тирренский (изолят в Италии)', 'тирренський (ізолят в Італії)', 'التيرسينية (لغة معزولة داخل إيطاليا)', 'טירסנית (שפה מבודדת בתוך איטליה)', 'टिर्सेनियाई (इटली के भीतर अलग भाषा)', 'ตีร์เซเนียน (ภาษาโดดเดี่ยวภายในอิตาลี)', 'Tyrsenian (ngôn ngữ biệt lập trong Ý)'],
+    ['Etruscan city-states (12 of the Dodecapolis)', 'エトルリア都市国家（ドデカポリス12都市）', '에트루리아 도시 국가 (도데카폴리스 12개 도시)', '伊特鲁里亚城邦(十二市同盟之一)', '伊特魯里亞城邦(十二市同盟之一)', 'этрусские города-государства (12 из Додекаполиса)', 'етруські міста-держави (12 з Додекаполісу)', 'دول-مدن إتروسكية (12 من الدودكابولس)', 'מדינות-עיר אטרוסקיות (12 מהדודקפוליס)', 'इट्रस्केन नगर-राज्य (दोदेकापोलिस के 12)', 'นครรัฐอิทรัสคัน (12 แห่งแห่งโดเดคาโพลิส)', 'thành quốc Etruscan (12 trong Dodecapolis)'],
+    ['Hattic cities (pre-Hittite, integrated into Hittite Empire)', 'ハッティ諸都市（前ヒッタイト期、後にヒッタイト帝国に統合）', '하티 도시들 (전(前) 히타이트 시대, 후에 히타이트 제국에 편입)', '哈梯城市(前赫梯, 后并入赫梯帝国)', '哈梯城市(前赫梯, 後併入赫梯帝國)', 'хаттские города (до-хеттские, интегрированы в Хеттскую империю)', 'хатські міста (до-хетські, інтегровані в Хетську імперію)', 'مدن حاتية (ما قبل الحثية، اندمجت في الإمبراطورية الحثية)', 'ערי החתים הקדומים (טרום-חתי, השתלבו באימפריה החתית)', 'हाट्टी शहर (पूर्व-हित्ती, बाद में हित्ती साम्राज्य में समाहित)', 'เมืองฮัตติก (ก่อนฮิตไทต์, รวมเข้าจักรวรรดิฮิตไทต์ภายหลัง)', 'thành phố Hattic (tiền Hittite, sau hợp nhất vào Đế quốc Hittite)'],
+    ['Cuneiform (in Hittite-Hattic bilingual ritual texts)', '楔形文字（ヒッタイト・ハッティ二言語儀式文書中）', '쐐기 문자 (히타이트-하티 이중언어 의식 문서 내)', '楔形文字(赫梯-哈梯双语仪式文献中)', '楔形文字(赫梯-哈梯雙語儀式文獻中)', 'клинопись (в хетто-хаттских двуязычных ритуальных текстах)', 'клинопис (у хетто-хатських двомовних ритуальних текстах)', 'الكتابة المسمارية (في النصوص الطقسية ثنائية اللغة الحثية-الحاتية)', 'יתדות (בטקסטים פולחניים דו-לשוניים חתי-חתי קדום)', 'क्यूनिफॉर्म (हित्ती-हाट्टी द्विभाषी अनुष्ठानिक ग्रंथों में)', 'อักษรลิ่ม (ในตำราพิธีกรรมสองภาษาฮิตไทต์-ฮัตติก)', 'chữ tiết hình (trong văn bản nghi lễ song ngữ Hittite-Hattic)'],
+    ['Disputed (Indo-European Celtic per Koch 2009; non-IE per Untermann 1997)', '議論あり（コック 2009 はインド・ヨーロッパ語族ケルト派、ウンターマン 1997 は非インド・ヨーロッパ語族とする）', '논쟁 중 (Koch 2009은 인도유럽어족 켈트어파, Untermann 1997은 비(非) 인도유럽어족으로 봄)', '存在争议(Koch 2009主张印欧凯尔特, Untermann 1997主张非印欧)', '存在爭議(Koch 2009主張印歐凱爾特, Untermann 1997主張非印歐)', 'спорно (Кох 2009 относит к индоевропейским кельтским; Унтерман 1997 — к неиндоевропейским)', 'спірно (Кох 2009 відносить до індоєвропейських кельтських; Унтерман 1997 — до неіндоєвропейських)', 'موضع جدل (يصنفها كوخ 2009 بأنها هندو-أوروبية كلتية، بينما يصنفها أونترمان 1997 خارج الهندو-أوروبية)', 'שנוי במחלוקת (Koch 2009 — הודו-אירופית קלטית; Untermann 1997 — לא הודו-אירופית)', 'विवादित (Koch 2009 के अनुसार इंडो-यूरोपीय केल्टिक; Untermann 1997 के अनुसार गैर-इंडो-यूरोपीय)', 'เป็นที่ถกเถียง (Koch 2009 ถือเป็นเซลติกอินโด-ยูโรเปียน; Untermann 1997 ถือเป็นไม่ใช่อินโด-ยูโรเปียน)', 'gây tranh cãi (Koch 2009 xếp vào Celt Ấn-Âu; Untermann 1997 xếp ngoài Ấn-Âu)'],
+    ['Pre-Roman southwestern Iberia (modern Portugal, SW Spain)', 'ローマ以前の南西イベリア（現代のポルトガル・スペイン南西部）', '로마 이전 남서 이베리아 (현대 포르투갈, 스페인 남서부)', '前罗马时代西南伊比利亚(今葡萄牙、西班牙西南)', '前羅馬時代西南伊比利亞(今葡萄牙、西班牙西南)', 'до-римская юго-западная Иберия (современная Португалия и юго-запад Испании)', 'до-римська південно-західна Іберія (сучасна Португалія, південно-західна Іспанія)', 'إيبيريا الجنوبية الغربية ما قبل الرومان (البرتغال الحديثة، جنوب غرب إسبانيا)', 'איבריה דרום-מערבית הטרום-רומית (פורטוגל המודרנית, דרום-מערב ספרד)', 'पूर्व-रोमन दक्षिण-पश्चिमी इबेरिया (आधुनिक पुर्तगाल, दक्षिण-पश्चिमी स्पेन)', 'ไอบีเรียตะวันตกเฉียงใต้ก่อนโรมัน (โปรตุเกสปัจจุบัน, สเปนตะวันตกเฉียงใต้)', 'tây nam Iberia tiền La Mã (Bồ Đào Nha hiện đại, tây nam Tây Ban Nha)'],
+    ['Tartessian (SW) script (semi-syllabic, Iberian-derived)', 'タルテッソス（南西）文字（半音節文字、イベリア文字派生）', '타르테소스 (남서) 문자 (반(半)음절, 이베리아 문자 유래)', '塔尔提希(西南)文字(半音节, 源自伊比利亚)', '塔爾提希(西南)文字(半音節, 源自伊比利亞)', 'тартессийское (юго-западное) письмо (полусиллабическое, иберийского происхождения)', 'тартесійське (південно-західне) письмо (напівскладове, іберійського походження)', 'الكتابة التارتيسية (الجنوبية الغربية) (نصف مقطعية، مشتقة من الإيبيرية)', 'כתב טרטסי (דרום-מערבי) (חצי-הברתי, נגזר מאיברית)', 'टार्टेसियन (दक्षिण-पश्चिम) लिपि (अर्ध-शब्दांश, इबेरी से व्युत्पन्न)', 'อักษรตาร์เตสเซียน (ตะวันตกเฉียงใต้) (กึ่งพยางค์, มาจากไอบีเรีย)', 'chữ Tartessian (SW) (bán âm tiết, gốc Iberian)'],
+    // Final 2 stragglers
+    ['Poland (regional minority recognition)', 'ポーランド（地域少数民族として承認）', '폴란드 (지역 소수민족 인정)', '波兰(作为地区少数民族获得承认)', '波蘭(作為地區少數民族獲得承認)', 'Польша (признание как региональное меньшинство)', 'Польща (визнання як регіональна меншина)', 'بولندا (اعتراف كأقلية إقليمية)', 'פולין (הכרה כמיעוט אזורי)', 'पोलैंड (क्षेत्रीय अल्पसंख्यक मान्यता)', 'โปแลนด์ (การรับรองเป็นชนกลุ่มน้อยในภูมิภาค)', 'Ba Lan (công nhận là dân tộc thiểu số khu vực)'],
+    ['Ottoman Turkish (modified Arabic)', 'オスマン・トルコ語（変形アラビア文字）', '오스만 튀르크어 (변형 아랍 문자)', '奥斯曼土耳其语(变形阿拉伯文)', '奧斯曼土耳其語(變形阿拉伯文)', 'османско-турецкий (модифицированный арабский)', 'османсько-турецька (модифікована арабська)', 'التركية العثمانية (عربية معدلة)', 'טורקית עות׳מאנית (ערבית מותאמת)', 'उस्मानी तुर्की (संशोधित अरबी)', 'ตุรกีออตโตมัน (อาหรับดัดแปลง)', 'Thổ Nhĩ Kỳ Ottoman (Ả Rập biến đổi)'],
+    // 'online' atom — appears in Rohingya script field; ru was leaking it.
+    ['online', 'オンライン', '온라인', '在线', '線上', 'онлайн', 'онлайн', 'عبر الإنترنت', 'מקוון', 'ऑनलाइन', 'ออนไลน์', 'trực tuyến'],
     // Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)
     ['Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)',
      'ラテン（放出音用アポストロフィ、/x/にx̱、/tɬ/にƛ）',
@@ -16049,6 +16186,33 @@ for (const [enKey, byLang] of Object.entries(COVERAGE_NOTES)) {
 // are unambiguously translatable.
 const COMMON_PHRASES_LATIN = [
     // [key, de, fr, es, it, pt, id, sw]
+    // === Round 31: basic prepositions / connectives for Latin UIs ===
+    // These let the recursive composer translate 'Latin (with X)' style
+    // strings cleanly without an explicit override per variant.
+    ['with', 'mit', 'avec', 'con', 'con', 'com', 'dengan', 'na'],
+    ['for', 'für', 'pour', 'para', 'per', 'para', 'untuk', 'kwa'],
+    ['and', 'und', 'et', 'y', 'e', 'e', 'dan', 'na'],
+    ['or', 'oder', 'ou', 'o', 'o', 'ou', 'atau', 'au'],
+    ['the', 'die', 'le', 'el', 'il', 'o', '', ''],
+    ['of', 'von', 'de', 'de', 'di', 'de', 'dari', 'wa'],
+    ['in', 'in', 'en', 'en', 'in', 'em', 'di', 'katika'],
+    ['on', 'auf', 'sur', 'en', 'su', 'em', 'di', 'juu ya'],
+    ['by', 'von', 'par', 'por', 'da', 'por', 'oleh', 'kwa'],
+    ['as', 'als', 'comme', 'como', 'come', 'como', 'sebagai', 'kama'],
+    // Common adjectives
+    ['historical', 'historisch', 'historique', 'histórico', 'storico', 'histórico', 'historis', 'kihistoria'],
+    ['extra', 'zusätzlich', 'supplémentaire', 'extra', 'extra', 'extra', 'tambahan', 'ziada'],
+    ['letters', 'Buchstaben', 'lettres', 'letras', 'lettere', 'letras', 'huruf', 'herufi'],
+    ['extra letters', 'zusätzliche Buchstaben', 'lettres supplémentaires', 'letras extra', 'lettere extra', 'letras extra', 'huruf tambahan', 'herufi za ziada'],
+    ['glottal stop', 'Stimmritzenverschluss', 'coup de glotte', 'oclusiva glotal', 'occlusiva glottidale', 'oclusiva glotal', 'glotal', 'kifaranga'],
+    ['ejectives', 'Ejektive', 'éjectives', 'eyectivas', 'eiettive', 'ejetivas', 'ejektif', 'milio'],
+    ['apostrophes', 'Apostrophen', 'apostrophes', 'apóstrofos', 'apostrofi', 'apóstrofos', 'apostrof', 'alama za apostrofi'],
+    ['retroflexes', 'retroflexe Konsonanten', 'rétroflexes', 'retroflejas', 'retroflesse', 'retroflexas', 'retrofleks', 'sauti za retroflex'],
+    ['tone diacritics', 'Tonzeichen', 'diacritiques tonals', 'diacríticos tonales', 'diacritici tonali', 'diacríticos tonais', 'diakritik nada', 'alama za toni'],
+    ['recognized minority', 'anerkannte Minderheit', 'minorité reconnue', 'minoría reconocida', 'minoranza riconosciuta', 'minoria reconhecida', 'minoritas yang diakui', 'wachache wanaotambuliwa'],
+    ['recognized', 'anerkannt', 'reconnu', 'reconocido', 'riconosciuto', 'reconhecido', 'diakui', 'kutambuliwa'],
+    ['minority', 'Minderheit', 'minorité', 'minoría', 'minoranza', 'minoria', 'minoritas', 'wachache'],
+    ['Co-official in', 'co-amtlich in', 'co-officiel en', 'cooficial en', 'co-ufficiale in', 'cooficial em', 'resmi bersama di', 'rasmi pamoja katika'],
     // Empires / kingdoms / courts
     ['Empire', 'Reich', 'Empire', 'Imperio', 'Impero', 'Império', 'Kekaisaran', 'Milki'],
     ['empire', 'Reich', 'empire', 'imperio', 'impero', 'império', 'kekaisaran', 'milki'],
@@ -16276,6 +16440,20 @@ const COMMON_PHRASES_LATIN = [
     ['Marshall Islands', 'Marshallinseln', 'Îles Marshall', 'Islas Marshall', 'Isole Marshall', 'Ilhas Marshall', 'Kepulauan Marshall', 'Visiwa vya Marshall'],
     // Sri Lanka
     ['Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka'],
+    // Latin (with q for /q/) — Greenlandic (kl). Latin-UI version for de/fr/es/it/pt/id/sw.
+    ['Latin (with q for /q/)', 'Lateinisch (mit q für /q/)', 'latin (avec q pour /q/)', 'latín (con q para /q/)', 'latino (con q per /q/)', 'latim (com q para /q/)', 'Latin (dengan q untuk /q/)', 'Kilatini (q kwa /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Latin-UI version.
+    ['Latin (with ṭ for /tʰ/)', 'Lateinisch (mit ṭ für /tʰ/)', 'latin (avec ṭ pour /tʰ/)', 'latín (con ṭ para /tʰ/)', 'latino (con ṭ per /tʰ/)', 'latim (com ṭ para /tʰ/)', 'Latin (dengan ṭ untuk /tʰ/)', 'Kilatini (ṭ kwa /tʰ/)'],
+    // Latin (with ʼ for clicks/glottal) — Hadza (hts). Latin-UI version.
+    ['Latin (with ʼ for clicks/glottal)', 'Lateinisch (mit ʼ für Klicks/Stimmritzenverschluss)', 'latin (avec ʼ pour clics/coup de glotte)', 'latín (con ʼ para chasquidos/oclusiva glotal)', 'latino (con ʼ per click/occlusiva glottidale)', 'latim (com ʼ para clique/oclusiva glotal)', 'Latin (dengan ʼ untuk klik/glotal)', 'Kilatini (ʼ kwa milio ya kibofyo / kifaranga)'],
+    // Latin (with mw, ng, oa for special phonemes) — Pohnpeian (pon). Latin-UI version.
+    ['Latin (with mw, ng, oa for special phonemes)', 'Lateinisch (mit mw, ng, oa für besondere Phoneme)', 'latin (avec mw, ng, oa pour phonèmes spéciaux)', 'latín (con mw, ng, oa para fonemas especiales)', 'latino (con mw, ng, oa per fonemi speciali)', 'latim (com mw, ng, oa para fonemas especiais)', 'Latin (dengan mw, ng, oa untuk fonem khusus)', 'Kilatini (mw, ng, oa kwa fonimu maalum)'],
+    // Cyrillic (with X Y Z) — Korean composer turns 'with' into '와' (and).
+    // Latin-UI versions.
+    ['Cyrillic (with Ӑ Ӗ Ҫ Ӳ)', 'Kyrillisch (mit Ӑ Ӗ Ҫ Ӳ)', 'cyrillique (avec Ӑ Ӗ Ҫ Ӳ)', 'cirílico (con Ӑ Ӗ Ҫ Ӳ)', 'cirillico (con Ӑ Ӗ Ҫ Ӳ)', 'cirílico (com Ӑ Ӗ Ҫ Ӳ)', 'Sirilik (dengan Ӑ Ӗ Ҫ Ӳ)', 'Kisirili (Ӑ Ӗ Ҫ Ӳ ikiwemo)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ ӹ)', 'Kyrillisch (mit ӓ ӧ ӱ ҥ ӹ)', 'cyrillique (avec ӓ ӧ ӱ ҥ ӹ)', 'cirílico (con ӓ ӧ ӱ ҥ ӹ)', 'cirillico (con ӓ ӧ ӱ ҥ ӹ)', 'cirílico (com ӓ ӧ ӱ ҥ ӹ)', 'Sirilik (dengan ӓ ӧ ӱ ҥ ӹ)', 'Kisirili (ӓ ӧ ӱ ҥ ӹ ikiwemo)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ)', 'Kyrillisch (mit ӓ ӧ ӱ ҥ)', 'cyrillique (avec ӓ ӧ ӱ ҥ)', 'cirílico (con ӓ ӧ ӱ ҥ)', 'cirillico (con ӓ ӧ ӱ ҥ)', 'cirílico (com ӓ ӧ ӱ ҥ)', 'Sirilik (dengan ӓ ӧ ӱ ҥ)', 'Kisirili (ӓ ӧ ӱ ҥ ikiwemo)'],
+    ['Cyrillic (with ӝ ӟ ӥ ӧ ӵ)', 'Kyrillisch (mit ӝ ӟ ӥ ӧ ӵ)', 'cyrillique (avec ӝ ӟ ӥ ӧ ӵ)', 'cirílico (con ӝ ӟ ӥ ӧ ӵ)', 'cirillico (con ӝ ӟ ӥ ӧ ӵ)', 'cirílico (com ӝ ӟ ӥ ӧ ӵ)', 'Sirilik (dengan ӝ ӟ ӥ ӧ ӵ)', 'Kisirili (ӝ ӟ ӥ ӧ ӵ ikiwemo)'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];

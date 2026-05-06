@@ -24,7 +24,8 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
-- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 617 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations all translate via composite atom translator), and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 630 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations, typology row, badges, ARIA labels, ON/OFF toggles, Compare panel — all 18+ UI languages), drag-to-reorder language comparison view, and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
+- **[Family Tree](tree.html)** — D3-based horizontal dendrogram of all Word Map languages organized by genealogical family, with curved Bezier branches and family-name i18n; click a leaf to jump to the language on the Word Map
 
 ## Languages (226 total, ordered by similarity)
 
@@ -96,19 +97,21 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 
 ```
 langmap/
-  index.html         — Main HTML page (Word Order Map)
-  wordmap.html       — Word Map page (20 words × 617 languages on a world map)
-  wordmap_data.js    — Word Map core data (words, IPA, coordinates, native names, UI strings)
-  wordmap_meta.js    — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
-  styles.css         — Styles (including RTL support)
-  app.js             — Rendering engine, controls, drag-and-drop, export, i18n
-  data.js            — 100 sentences × 226 languages with segment alignments
-  lang_names.js      — Word Map language display names (per UI language)
-  meta_i18n_ext.js   — Word Map metadata translation extensions
-  lang-filter.js     — Word Map typology filter (word order / tone / morphology)
-  validate_data.py   — Sentence/Word-Order Map validator (data.js)
+  index.html              — Main HTML page (Word Order Map)
+  wordmap.html            — Word Map page (20 words × 630 languages on a world map)
+  tree.html               — Language Family Tree page (D3 horizontal dendrogram)
+  wordmap_data.js         — Word Map core data (words, IPA, coordinates, native names, UI strings)
+  wordmap_meta.js         — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
+  styles.css              — Styles (including RTL support)
+  app.js                  — Rendering engine, controls, drag-and-drop, export, i18n
+  data.js                 — 100 sentences × 226 languages with segment alignments
+  lang_names.js           — Word Map language display names (per UI language)
+  meta_i18n_ext.js        — Word Map metadata translation atoms (per-UI-lang base dictionaries + recursive composer translateMetaSmart)
+  meta_i18n_coverage.js   — Layered patches that extend META_I18N_ATOMS / META_I18N for full UI-lang coverage of compound meta phrases (countries, families, scripts, romanization standards, region compounds…) without rewriting the base atoms
+  lang-filter.js          — Word Map typology filter (word order / tone / morphology / family / script / speaker tier)
+  validate_data.py        — Sentence/Word-Order Map validator (data.js)
   validate_wordmap_data.js — Word Map validator (wordmap_data.js + wordmap_meta.js + lang_names.js)
-  CONTRIBUTING.md    — Data contribution guidelines
+  CONTRIBUTING.md         — Data contribution guidelines
 ```
 
 ## Data Format
@@ -194,6 +197,8 @@ MIT
 - **キーボードショートカット** — `←`/`→`で文章切替、`r`でランダム
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
+- **[単語マップ](wordmap.html)** — 630言語で20の基本語を世界地図上に表示。発音ガイド (IPA / 広めの音写 / ローマ字、声調文字)、2D/3Dグローブ切替、言語情報パネル、全UI18言語対応の i18n (パネルラベル、言語説明、話者数注記、類型情報行、各種バッジ、ARIA ラベル、ON/OFFトグル、比較パネル等)、ドラッグ並べ替え可能な言語比較ビュー、語族／文字／語順／声調／形態論／話者規模で絞り込める **多言語類型論フィルタパネル** (時代対応のチップ数表示、0件チップは無効化、選択はURLに保存)
+- **[系統樹](tree.html)** — Word Map 全言語を D3 横向き dendrogram で表示。曲線ベジェ分岐＋語族名i18n、葉をクリックで Word Map の該当言語へジャンプ
 
 ## 言語一覧（226言語、類似言語順）
 
@@ -265,19 +270,21 @@ npx serve .
 
 ```
 langmap/
-  index.html         — メインHTMLページ（語順マップ）
-  wordmap.html       — 単語マップページ（20語 × 617言語の世界地図）
-  wordmap_data.js    — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
-  wordmap_meta.js    — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
-  styles.css         — スタイル（RTL対応含む）
-  app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
-  data.js            — 100文 × 226言語のセグメントアラインメントデータ
-  lang_names.js      — 単語マップの言語表示名（UI言語別）
-  meta_i18n_ext.js   — 単語マップメタデータの翻訳拡張
-  lang-filter.js     — 単語マップ類型論フィルタ（語順／声調／形態論）
-  validate_data.py   — 文／語順マップ用バリデータ（data.js）
+  index.html              — メインHTMLページ（語順マップ）
+  wordmap.html            — 単語マップページ（20語 × 630言語の世界地図）
+  tree.html               — 言語系統樹ページ（D3横向き dendrogram）
+  wordmap_data.js         — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
+  wordmap_meta.js         — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
+  styles.css              — スタイル（RTL対応含む）
+  app.js                  — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
+  data.js                 — 100文 × 226言語のセグメントアラインメントデータ
+  lang_names.js           — 単語マップの言語表示名（UI言語別）
+  meta_i18n_ext.js        — 単語マップ メタデータ翻訳の atom 辞書（UI言語別ベース辞書 + 再帰的コンポーザ translateMetaSmart）
+  meta_i18n_coverage.js   — 複合メタ表現（国名／語族／文字種／ローマ字標準／地域複合語など）の全UI言語カバレッジを実現する重ね合わせパッチ層。ベース atom を書き換えずに META_I18N_ATOMS / META_I18N を拡張
+  lang-filter.js          — 単語マップ類型論フィルタ（語順／声調／形態論／語族／文字／話者規模）
+  validate_data.py        — 文／語順マップ用バリデータ（data.js）
   validate_wordmap_data.js — 単語マップ用バリデータ（wordmap_data.js + wordmap_meta.js + lang_names.js）
-  CONTRIBUTING.md    — データ追加ガイドライン
+  CONTRIBUTING.md         — データ追加ガイドライン
 ```
 
 ## データ形式

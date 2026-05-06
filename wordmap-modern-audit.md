@@ -7310,3 +7310,1536 @@ Done when:
 - UI Option B (fade rendering) is implemented.
 - Validator `[#169]` warns on `pronunciationType: 'ipa'` rows where surface == IPA.
 - CONTRIBUTING.md documents the policy.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 13)
+
+A third-pass scan focused on relational integrity (cross-references between codes, fields, and metadata) and *coverage* metrics (what fraction of rows have which optional fields populated) surfaced four more data-quality problems not addressed by Tasks 1–169. Each is a real on-disk gap, reproducible by inspection.
+
+Tools used:
+- Cross-reference scan: every `parentCode` / `canonicalCode` / `iso6393` / `glottocode` / `baseLang` value verified against the `LANG_DATA` code set.
+- Coverage counts on every optional schema field (`speakerYear`, `reviewStatus`, `wordEvidence`, `meta.sources`, `audioCoverage`, etc.).
+- Cross-validation between fields (e.g., languages with `meta.sources` populated should typically have `reviewStatus !== 'unreviewed'`).
+
+### New Task 170. Backfill missing `parentCode` on 30+ underscore-code rows where parent is unambiguous
+
+Goal:
+Close the parent-pointer gap surfaced by the cross-reference scan. **39 of 88 underscore codes have no `parentCode` set.** Some are intentional (Ryukyuan languages and Jeju were reclassified as sibling languages per Task 32, not children of Japanese/Korean), but the majority are real gaps where a clear parent exists. Without `parentCode`, the modal cannot show "Regional variety of: X", the duplicate-detection in Task 90 cannot link variants to their base, and the ancestor-chain navigation breaks.
+
+Current issue I checked (2026-05-06 cross-reference scan):
+
+**Intentionally without `parentCode` (do not change):**
+- `ja_oki`, `ja_mvi`, `ja_rys` — Ryukyuan languages, sibling-language to Japonic per Task 32.
+- `ko_jeju` — Jeju, sibling-language to Korean per Task 32.
+- `th_isan` — Northern Thai continuum.
+- `hak_cn`, `es_eu`, `pt_eu` — base varieties (other dialects point to these).
+- Historical-stage codes that have no living parent (`el_grc`, `en_ang`, `enm`, `zh_song`, `zh_tang`, `zh_han`, `ja_edo`, `ja_heian`, `ja_chu`, `ko_mid`, `ko_gor`, `ko_em`, `vi_nom`).
+
+**Gaps that should have `parentCode` set (likely 25–30 rows):**
+- `ja_kg` (Kagoshima), `ja_sd` (Sendai) — should have `parentCode: 'ja'`.
+- `ko_hg`, `ko_jl` — should have `parentCode: 'ko'`.
+- `wuu_nb`, `wuu_sz`, `wuu_wz` — should have `parentCode: 'wuu'`.
+- `hak_tw`, `hak_hl` — should have `parentCode: 'hak_cn'` (or `'hak'` if a non-regional Hakka exists).
+- `nan_qz`, `nan_hai` — should have `parentCode: 'nan'`.
+- `zh_wh`, `zh_zz` — should have `parentCode: 'zh'`.
+- `es_co`, `es_cl` — should have `parentCode: 'es_eu'`.
+- `fr_ch` — should have `parentCode: 'fr'`.
+- `mn_cn` — should have `parentCode: 'mn'`.
+- `en_nz` — recently added; should have `parentCode: 'en'`.
+- `ko_yb` — Yanbian Korean; should have `parentCode: 'ko'`.
+
+Files to change:
+- `wordmap_meta.js` — add `parentCode` and `varietyRole` per Task 126 to the 25–30 rows above.
+- `validate_wordmap_data.js` — strengthen check #126 (`underscore code without parentCode`) to enumerate all gaps and require either a `parentCode` or an explicit `varietyRole: 'sibling-language' | 'continuum-member' | 'base-variety' | 'historical-stage'`. Today the check probably exists but does not error on missing parent.
+- `CONTRIBUTING.md` — document the variety-role taxonomy explicitly.
+
+Implementation instructions:
+
+**Step 1 — categorize the 39 rows.**
+- Apply one of: `parentCode: 'X'` (regional variant of X), `varietyRole: 'sibling-language'` (e.g., Ryukyuan), `varietyRole: 'continuum-member'` (Isan/Northern Thai), `varietyRole: 'base-variety'` (es_eu), `varietyRole: 'historical-stage'` (Old English).
+
+**Step 2 — modal display.** When `parentCode` is set: show "Regional variety of: <parent name>". When `varietyRole: 'sibling-language'` is set: show "Sibling language of: <related name>" (with explicit link). Today some of these are silently empty.
+
+**Step 3 — validator escalation.** Underscore codes without either `parentCode` or `varietyRole` should ERROR (not just WARN) once Task 170 lands.
+
+Validator / static check:
+- `[#170]` Underscore code with no `parentCode` and no `varietyRole` → ERROR.
+- `parentCode` value must exist as a top-level code in `LANG_DATA`.
+- `varietyRole` must be one of the enum values.
+- INFO line: parentCode coverage `N/M` underscore codes.
+
+Do not:
+- Do not assign `parentCode: 'ja'` to `ja_oki`/`ja_mvi`/`ja_rys`/`ko_jeju`. Those were deliberately reclassified per Task 32 and Task 126.
+- Do not assume that all underscore codes have a parent. Continuum members and historical stages should use `varietyRole`, not a forced parent.
+- Do not change `parentCode` of rows that already have it set without auditing the existing assignment first — there may be project-specific reasons (e.g., `fr_be` parentCode might intentionally not be `fr`).
+
+Done when:
+- 0 underscore codes lack both `parentCode` and `varietyRole`.
+- Validator `[#170]` reports 0 errors.
+- CONTRIBUTING.md documents the four `varietyRole` values.
+- Modal displays the appropriate "Regional variety of: X" / "Sibling language of: X" line for every underscore-code row.
+
+### New Task 171. Backfill `speakerYear` and `speakerSource` on the 552 rows that lack temporal anchoring
+
+Goal:
+**67 of 619 rows have `speakerYear` set; 552 do not.** This means 89% of speaker counts displayed on the map have no documented vintage. A user reading "~125M" cannot tell whether the figure is from Ethnologue 27 (2024) or a 1995 estimate that has drifted. For pedagogical/academic use the temporal anchor is required.
+
+Current issue I checked:
+- `speakerYear` set: 67 rows (66 are 2024, 1 is 2023).
+- `speakerSource` set: also ~67 rows (correlated with `speakerYear`).
+- The other 552 rows have prose `speakers: '~125M'` with no anchor.
+- The Task 80 / Task 98 priority-language batches (it/uk/ko/th/vi/ms/tl/he/ja/zh/...) added these fields, but the rollout never extended beyond the priority set.
+
+Files to change:
+- `wordmap_meta.js` — add `speakerYear`, `speakerSource`, `speakerBasis` to the 552 rows.
+- `validate_wordmap_data.js` — extend the existing speaker-coverage check to track `speakerYear` coverage and warn when it is below 80%.
+- `wordmap.html` — modal already shows the structured form when fields are set (per Task 98). No new UI work needed; just data backfill.
+
+Implementation instructions:
+
+**Step 1 — sub-batch by source authority.**
+- Most rows can use Ethnologue 27 (2024) as the canonical authority for speaker counts.
+- For endangered/historical/recently-revived languages (Saami varieties, Hawaiian, Welsh, Cornish, Basque), prefer the most recent census or UNESCO atlas figure.
+- For dialect rows (`ja_osa`, `en_ck`, `es_co`), the speaker count is often a local-government estimate or census; cite that explicitly.
+
+**Step 2 — staged backfill.**
+- Phase 1 (high-traffic 50 rows): manually source each.
+- Phase 2 (next 200 rows): bulk import from Ethnologue 27 with cross-check.
+- Phase 3 (remaining ~300 rows): opportunistic.
+
+**Step 3 — validator-enforced minimum.**
+- After Phase 1: validator warning threshold at 50% coverage.
+- After Phase 2: 80%.
+- After Phase 3: target 95% (some genuinely-impossible cases, like extinct languages with no census, remain).
+
+Validator / static check:
+- Coverage line: `speakerYear coverage: N/M (X%) — Y rows with speakers but no year`.
+- Cross-check: if `speakerYear < 2010` AND `dataStatus === 'modern'`, WARN — speaker counts older than 15 years for living languages are likely outdated.
+
+Do not:
+- Do not invent dates. If a speaker count's source is unknown, leave the field unset rather than guessing.
+- Do not bulk-set `speakerYear: 2024` for rows where the underlying prose is older. The `speakers` and `speakerYear` must agree.
+- Do not skip the `speakerSource` field. Year alone without source is half-information.
+
+Done when:
+- 95% of `dataStatus: 'modern'` rows have `speakerYear` set.
+- Validator coverage line reports the new state.
+- No `dataStatus: 'modern'` row has `speakerYear < 2010`.
+- For each `dataStatus: 'attested'` historical row, either `speakerYear: 0` (extinct) or an explanation in `description`.
+
+### New Task 172. Migrate the implicit `reviewStatus: 'unreviewed'` default to explicit values
+
+Goal:
+**591 of 619 rows have no explicit `reviewStatus`** — they default to `'unreviewed'` in code, but the static data does not record this fact. The 28 explicitly-marked rows (per Task 108) are mostly `'source-checked'` or `'needs-rebuild'`. The hidden-default state means:
+1. Contributors cannot tell which rows have been reviewed at any level vs which are simply untouched.
+2. The validator cannot warn when a row has rich data (sources, wordEvidence) but reviewStatus is still 'unreviewed' — they look the same as bare rows.
+3. The "review status badge" in the modal (per Task 108) shows nothing for 95% of rows, even though many have partial review.
+
+Current issue I checked:
+- 28 rows with explicit `reviewStatus`: 24 `'source-checked'`, 4 `'needs-rebuild'`, none `'human-reviewed'`, none `'machine-seeded'`, none `'unreviewed'`.
+- ~70 rows have `meta.sources` populated but no explicit `reviewStatus` → suggests human review was done but not recorded.
+- ~73 rows have `wordEvidence` populated but no explicit `reviewStatus` → same.
+- The `REVIEW_STATUS` map at `wordmap_meta.js:2255` is the canonical setter, and it covers only the 28 explicit rows.
+
+Files to change:
+- `wordmap_meta.js` — extend `REVIEW_STATUS` map. Add an explicit value for every row, even if that value is `'unreviewed'`.
+- `validate_wordmap_data.js` — new check that flags inconsistency: row with `meta.sources.length > 0` AND `reviewStatus === 'unreviewed'` → WARN (sources imply review).
+- Same for rows with `wordEvidence`.
+- `CONTRIBUTING.md` — document that every new row must include an explicit `reviewStatus`, even for new placeholder rows (which start as `'unreviewed'`).
+
+Implementation instructions:
+
+**Step 1 — assign `'machine-seeded'` to rows with no human review.**
+- Rows imported from external sources (Wiktionary, Glottolog) without per-cell verification → `'machine-seeded'`.
+
+**Step 2 — assign `'human-reviewed'` to rows with sources but no per-cell verification.**
+- Rows where someone added a description and `meta.sources` but did not verify each of the 20 word entries against a source → `'human-reviewed'`.
+
+**Step 3 — keep `'source-checked'` for rows where every cell has a citation.**
+- Today's 24 such rows.
+
+**Step 4 — keep `'needs-rebuild'` for rows flagged as low-quality.**
+- Today's 4 such rows.
+
+**Step 5 — validator escalation.**
+- Once every row has explicit `reviewStatus`, the validator can WARN if a contributor adds a row without setting it.
+
+Validator / static check:
+- `[#172]` row missing `meta.reviewStatus` → WARN.
+- Cross-check: `meta.sources.length > 0` AND `reviewStatus === 'unreviewed'` → WARN.
+- Cross-check: `wordEvidence` populated AND `reviewStatus === 'unreviewed'` → WARN.
+- INFO line: distribution of review states across all 619 rows.
+
+Do not:
+- Do not bulk-set every row to `'human-reviewed'`. The default is `'unreviewed'`; promote only with evidence.
+- Do not set `'source-checked'` for rows that have sources at row-level but no per-cell citations. `'source-checked'` is a strong claim.
+- Do not delete the existing `REVIEW_STATUS` map; extend it.
+
+Done when:
+- All 619 rows have explicit `reviewStatus` in the static data (not just the runtime default).
+- Validator `[#172]` reports 0 missing.
+- Validator coverage INFO shows distribution.
+- Modal shows a review-status badge on every row, not just the 28 currently-flagged ones.
+
+### New Task 173. Expand `wordEvidence` per-cell sourcing from 12% to ≥ 50% coverage
+
+Goal:
+**73 of 619 languages have any `wordEvidence` data; 546 have none.** Most rows show 20 surface/IPA pairs with no per-cell sourcing; a learner cannot tell which cells are well-attested vs. which are reconstructed approximations. Tasks 91/110/111/133 added the schema and started filling it in; this task is the broad coverage push.
+
+Current issue I checked (validator INFO line + scan):
+- `wordEvidence overlay: 73 languages, 300 cells annotated` (validator INFO).
+- 0 languages have full 20-cell `wordEvidence` coverage.
+- 9 languages have 10–19 cells.
+- 4 languages have 5–9 cells.
+- 21 languages have 1–4 cells.
+- 39 languages have at least *something*; the rest (~580) have nothing.
+- The 300-cell total is also less than 0.025 × (619 langs × 20 cells) = 12,380 cells. Coverage is 2.4% by cell, 12% by language.
+
+Files to change:
+- `wordmap_data.js` — add `wordEvidence` blocks for the priority languages.
+- `wordmap_meta.js` — add corresponding `meta.sources` (Task 80) for the same languages.
+- `validate_wordmap_data.js` — track `wordEvidence` coverage per language and warn when a `'source-checked'` row has < 20 cells annotated.
+- `CONTRIBUTING.md` — document the policy that `'source-checked'` rows must have full 20-cell `wordEvidence`.
+
+Implementation instructions:
+
+**Step 1 — pick a coverage tier policy.**
+- `'source-checked'` rows must have all 20 cells annotated. Currently 24 rows are flagged source-checked but most do not have 20 cells of evidence — this is an internal inconsistency and should be the first phase.
+- `'human-reviewed'` rows should have at least 5 cells annotated (the most-uncertain ones).
+- `'machine-seeded'` rows can have 0 cells but the row-level `meta.sources` must exist.
+- `'unreviewed'` and `'needs-rebuild'` have no requirement.
+
+**Step 2 — backfill the 24 currently-`source-checked` rows to 20-cell coverage.**
+- These are explicitly claiming to be source-checked. The claim should be backed.
+- Estimate: 24 × 20 = 480 new wordEvidence entries. ~1 day per language for a careful annotator.
+
+**Step 3 — extend to top-50 priority languages.**
+- The Task 80 / 98 priority list (`it`, `uk`, `ko`, `th`, `vi`, `ms`, `tl`, `he`, `ja`, `zh`, `en`, `fr`, `de`, `es_eu`, `pt_br`, `ru`, `ar`, `hi`, `bn`, etc.) should reach `'source-checked'` next.
+- 50 × 20 = 1,000 cells.
+
+**Step 4 — opportunistic for the rest.**
+- No mandate; let coverage grow as contributors add languages.
+
+Validator / static check:
+- `[#173]` `'source-checked'` row with < 20 cells of `wordEvidence` → WARN.
+- INFO line: coverage by tier (`source-checked rows: N/M with full coverage`).
+
+Do not:
+- Do not annotate cells without a real source. `wordEvidence: { evidence: 'direct' }` without a `source` field defeats the purpose.
+- Do not duplicate `meta.sources` into per-cell `wordEvidence.source` if the row-level source covers all cells. Per-cell entries are for cells whose source differs from the row default or whose evidence type differs.
+- Do not let this task block Task 172 (reviewStatus migration). Both can proceed in parallel; the dependency is one-way (Task 172 categorizes; Task 173 backfills evidence in the categorized rows).
+
+Done when:
+- All 24 `'source-checked'` rows have 20-cell `wordEvidence`.
+- Coverage is ≥ 50% by language and ≥ 20% by cell.
+- Validator `[#173]` warning is below 5 (down from current implicit 24).
+- A learner clicking any modal cell on a `'source-checked'` row sees per-cell evidence; clicking on a `'human-reviewed'` row sees row-level sources at minimum.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 14)
+
+A fourth-pass scan focused on i18n coverage, metadata-field cross-references, and specific coordinate-vs-content cases surfaced five more concrete data problems. The findings shrink as the easy targets are exhausted; remaining issues are subtler architectural overlaps and specific row placements.
+
+### New Task 174. Relocate constructed-language coordinates from the fake mid-Atlantic column
+
+Goal:
+The four constructed languages `eo` Esperanto, `tok` Toki Pona, `tlh` Klingon, and `jbo` Lojban are anchored at deliberate decoy coordinates in the **mid-Atlantic Ocean**, vertically stacked at lng=-38: `eo (32, -38)`, `tok (28, -38)`, `tlh (24, -38)`, `jbo (20, -38)`. This appears to be a UI hack to give them visible markers without overlapping any real-world location, but the result is geographically misleading: a learner reasonably expects each language's marker to point at a meaningful place. By contrast, `vo` Volapük is correctly placed at Litzelstetten near Konstanz (Schleyer's home) per Task 149's proposal — so the convention is inconsistent within the constructed-language group.
+
+Current issue I checked (2026-05-06 scan):
+- `eo`: lat=32, lng=-38 (mid-Atlantic).
+- `tok`: lat=28, lng=-38 (mid-Atlantic, 4° south of `eo`).
+- `tlh`: lat=24, lng=-38.
+- `jbo`: lat=20, lng=-38.
+- `vo`: lat=47.71, lng=9.20 (Litzelstetten — correct).
+
+Files to change:
+- `wordmap_data.js` — relocate 4 rows.
+- `wordmap_meta.js` — set `meta.locationBasis: 'prestige-center'` for each (none of these have a native-speaker community to anchor a `'capital'` or `'largest-city'`).
+
+Implementation instructions:
+
+**Recommended relocations:**
+- `eo` Esperanto → **Białystok**, Poland (53.13, 23.16) — birthplace of L. L. Zamenhof who created Esperanto. *Or* Rotterdam (51.92, 4.48) where the Universala Esperanto-Asocio is headquartered. Either is geographically and historically defensible.
+- `tok` Toki Pona → **Toronto**, Canada (43.65, -79.38) — where the language's creator Sonja Lang lives.
+- `tlh` Klingon → **Mountain View, California** (37.39, -122.08) — Paramount Pictures' historical Klingon Language Institute and the Star Trek franchise headquarters. Or, alternatively, set `dataStatus: 'constructed'` and use a clearly fictional but flagged coordinate (the surface of Kronos is not on Earth).
+- `jbo` Lojban → **Fairfax, Virginia** (38.85, -77.31) — The Logical Language Group (LLG) headquarters, or simply Washington DC area as the closest-with-real-meeting-spaces approximation.
+
+**Why each choice rather than mid-Atlantic:**
+- The mid-Atlantic was likely chosen to avoid covering an existing language's marker. But the project already has `meta.locationBasis: 'prestige-center'` (Task 99) which signals exactly that the marker is symbolic. With `'prestige-center'` set, the user understands the marker is not "speakers live here" — it is a *historical/cultural anchor*, which is meaningful for constructed languages.
+
+**Step 1 — relocate `eo` to Białystok or Rotterdam.** Document choice in `description`.
+**Step 2 — relocate `tok` to Toronto.**
+**Step 3 — relocate `tlh` to Mountain View** (or to Hollywood, depending on Klingon-history preference).
+**Step 4 — relocate `jbo` to Fairfax** or LLG's current address.
+**Step 5 — set `locationBasis: 'prestige-center'` on all four.** Document each choice in CONTRIBUTING.md.
+
+Validator / static check:
+- Cross-check: any constructed language with `locationBasis !== 'prestige-center'` and lat/lng in the mid-Atlantic deep-water (10°–50° N, -50° to -10° W) — WARN.
+- The relocations should immediately satisfy the existing `[#14]` cluster check (currently all four cluster at lng=-38).
+
+Do not:
+- Do not invent a "headquarters" for a constructed language without a citeable real-world address. Do not place Klingon at "Romulus" or some made-up location.
+- Do not retain the mid-Atlantic stack as a stylistic preference. The visual quirk obscures the project's pedagogical mission.
+- Do not apply the same fix to `pjk` Proto-Japonic-Koreanic or other reconstructed-proto languages that already use `'approx-region'` — those have a defensible reason for non-pinpoint coordinates.
+
+Done when:
+- All 4 constructed-language rows have plausible real-world coordinates with `locationBasis: 'prestige-center'`.
+- The coordinate-cluster validator no longer reports a cluster at lng=-38.
+- A learner viewing the Esperanto modal sees "Białystok" or "Rotterdam" as the map point with prestige-center context.
+
+### New Task 175. Add `es_eu`/`es_mx`/`pt_eu`/`pt_br` to `WORD_LIST.label` so regional Spanish/Portuguese UI users see localized concept labels
+
+Goal:
+Resolve a real i18n bug surfaced by cross-checking `WORD_LIST.label` UI lang coverage with `lang_names.js` UI lang coverage. **`WORD_LIST.label` has 19 UI langs (`es`/`pt` umbrella codes); `lang_names.js` has 21 UI sections (split into `es_eu`/`es_mx`/`pt_eu`/`pt_br`).** A user who selects `es_mx` (Mexican Spanish) UI gets concept labels via a fallback chain: `es_mx` → `es` (does not exist in WORD_LIST.label) → `en`. The result: **Mexican Spanish users see English concept labels** in the word selector and modal column headers. Same problem for `pt_br` users.
+
+Current issue I checked:
+- `WORD_LIST.label` (in `wordmap_data.js:6-26`) has UI lang keys: `en, ja, ko, zh, yue, vi, th, id, hi, de, fr, it, es, pt, ru, uk, ar, he, sw` (19 langs).
+- `lang_names.js` has UI lang keys: `en, ja, ko, zh, yue, vi, th, id, hi, de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk, ar, he, sw` (21 sections; `es` split into `es_eu`/`es_mx`, `pt` split into `pt_eu`/`pt_br`).
+- The application's UI lang dropdown (in `app.js`) likely offers 21 options, matching `lang_names.js`.
+- When user selects `es_mx`, the concept-label lookup is `WORD_LIST[i].label.es_mx` (does not exist) → fallback to `WORD_LIST[i].label.es` (does not exist) → fallback to `WORD_LIST[i].label.en` (exists, English). User sees "Water" instead of "Agua."
+- Validator does not catch this because `label.en` exists.
+
+Files to change:
+- `wordmap_data.js` — extend each of the 20 `WORD_LIST` entries' `label` to include `es_eu`, `es_mx`, `pt_eu`, `pt_br`.
+- Optionally: extend `definition` similarly (related Task 176).
+- `validate_wordmap_data.js` — new check that ensures `WORD_LIST.label` has every UI lang in `lang_names.js`.
+
+Implementation instructions:
+
+**Step 1 — define the regional differences.**
+- For most concepts, `es_eu` and `es_mx` are spelled identically (Spanish orthographic standardization). But there are concept-level differences worth representing:
+  - "computer": Spain `ordenador` vs Mexico `computadora`. Not in WORD_LIST but illustrative.
+  - "you (singular informal)": `tú` everywhere; "you all": Spain `vosotros` vs LatAm `ustedes`. Not in WORD_LIST.
+  - For the 20 actual concepts (water, fire, sun, ...), the Spanish forms are identical: `Agua`, `Fuego`, `Sol`, etc. So the labels would just duplicate `es: 'Agua'` into both `es_eu: 'Agua'` and `es_mx: 'Agua'`.
+- For Portuguese: same — most concept words are identical, but for "house" `pt_eu: 'Casa'` and `pt_br: 'Casa'` are identical.
+
+**Step 2 — pragmatic resolution.**
+- **Option A (preferred):** Add `es_eu`, `es_mx`, `pt_eu`, `pt_br` to every `WORD_LIST.label` block, copying from `es` and `pt`. The duplication is fine because the concept labels are genuinely the same word.
+- **Option B:** Add a fallback layer in the UI rendering: when `label[uiLang]` is missing, try `label[uiLang.split('_')[0]]` (so `es_mx` → `es`). This is a one-line UI fix without data changes.
+- **Option C (combination):** Both — use Option B as the safety net AND add Option A's explicit values for the 5 cases (if any) where the regional split actually matters lexically.
+
+**Step 3 — validator coverage check.**
+- Add `[#175]`: every UI lang in `lang_names.js` must have a label entry in every `WORD_LIST` entry.
+
+Validator / static check:
+- INFO line: `WORD_LIST.label coverage: N/M UI langs covered across all 20 concepts`.
+- WARN if any UI lang in `lang_names.js` has < 20 entries in `WORD_LIST.label`.
+
+Do not:
+- Do not invent a regional difference where none exists. `Agua` and `Agua` is fine.
+- Do not skip Option B (UI fallback). Even with explicit values, the fallback is a safety net for any future UI lang added without `WORD_LIST.label` updates.
+- Do not delete the umbrella `es` or `pt` keys. They remain valid for any `es_*` or `pt_*` UI lang that might be added later.
+
+Done when:
+- `WORD_LIST.label` has entries for all 21 UI langs in `lang_names.js`.
+- A user selecting `es_mx` UI sees `Agua, Fuego, Sol, ...` instead of `Water, Fire, Sun, ...`.
+- A user selecting `pt_br` UI sees `Água, Fogo, Sol, ...`.
+- Validator `[#175]` passes.
+
+### New Task 176. Expand `WORD_LIST.definition` from 4 UI langs to all 21
+
+Goal:
+**`WORD_LIST.definition` is set in 4 UI langs (en, ja, ko, zh) per Task 82.** The other 17 UI langs in `lang_names.js` (yue, vi, th, id, hi, de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk, ar, he, sw) see English fallback for concept definitions despite being supported elsewhere in the UI. A French-speaking learner who picks `fr` UI gets localized labels but English definitions, breaking the pedagogical experience that Task 95 (always-visible definitions) was built for.
+
+Current issue I checked:
+- `WORD_LIST[0].definition`: `{ en: '...', ja: '...', ko: '...', zh: '...' }`. 4 UI langs.
+- All 20 entries follow the same 4-lang pattern.
+- 17 UI langs in `lang_names.js` are not represented.
+- The UI rendering's fallback chain hits English for these 17.
+
+Files to change:
+- `wordmap_data.js` — extend `WORD_LIST[i].definition` for every entry to include all 21 UI langs.
+- `validate_wordmap_data.js` — strengthen Task 82's validator check to require all UI langs (not just `en/ja/ko/zh`).
+- `meta_i18n_coverage.js` — if the project prefers a centralized translation layer rather than embedded translations in `wordmap_data.js`, host the additional 17 UI langs there.
+
+Implementation instructions:
+
+**Step 1 — translation source quality.**
+- Translations of concept definitions are not casual labels. The "heart" definition explicitly says "default: basic emotional/cognitive heart/mind term" — a learner needs that nuance in their UI lang or the pedagogical value is lost.
+- Use a competent translator per UI lang, not machine translation alone. Validate with a native speaker if possible.
+- Length: keep each translation roughly the same character count as English to fit the modal display.
+
+**Step 2 — phased rollout.**
+- Phase 1 (priority European): de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk. ~9 langs × 20 = 180 strings.
+- Phase 2 (priority Asian): yue, vi, th, id, hi, ar, he. ~7 langs × 20 = 140 strings.
+- Phase 3 (remaining): sw. 20 strings.
+
+**Step 3 — fallback chain resilience.**
+- The UI rendering should still fall back gracefully if a UI lang's definitions are partial. Today's fallback is `uiLang → en`; consider extending to `uiLang → uiLang.split('_')[0] → en` for regional variants.
+
+Validator / static check:
+- `[#176]` `WORD_LIST[i].definition` missing UI lang `X` → WARN once `X` reaches Phase 1/2/3 readiness.
+- Coverage tally: `definitions UI lang coverage: en 20/20, ja 20/20, ko 20/20, zh 20/20, fr X/20, ...`.
+
+Do not:
+- Do not machine-translate without review. The "heart" definition's nuance about anatomical-vs-emotional must transfer correctly.
+- Do not skip the regional Spanish/Portuguese splits. A user who picks `pt_br` deserves a definition in their UI.
+- Do not add UI langs to `WORD_LIST.definition` without also adding them to `WORD_LIST.label` (Task 175).
+
+Done when:
+- All 21 UI langs have full 20-entry coverage in `WORD_LIST.definition`.
+- A learner with `fr` UI sees French definitions of all 20 concepts.
+- Validator coverage line shows ≥ 95% per UI lang.
+
+### New Task 177. Backfill `glottocode` (4% → ≥ 80%) and `iso6393` (11% → ≥ 95%) coverage
+
+Goal:
+**Glottocode coverage is 26/619 = 4%; iso6393 coverage is 65/619 = 11%.** Both are critical metadata fields for cross-database linking with Glottolog (the comprehensive linguistic database) and ISO 639-3. Without them, the project cannot link to canonical references for individual languages, and academic citations (Task 157) cannot include the standard identifiers.
+
+Current issue I checked:
+- 26 rows have `glottocode` set (e.g., `glottocode: 'stan1293'` for English).
+- 65 rows have `iso6393` set (e.g., `iso6393: 'eng'`).
+- Most non-historical languages have well-known Glottocodes: every modern living language is in Glottolog with a 4-letter-4-digit code.
+- The `CANONICAL_CODE` map at `wordmap_meta.js:1996` has 82 entries for ISO 639-3 mapping but only sets them at runtime when neither `iso6393` nor `canonicalCode` is already set.
+
+Files to change:
+- `wordmap_meta.js` — backfill `glottocode` and `iso6393` for all rows.
+- `validate_wordmap_data.js` — extend coverage check to enforce thresholds.
+- `CONTRIBUTING.md` — document that all new rows must include both fields when available.
+
+Implementation instructions:
+
+**Step 1 — scrape from Glottolog.**
+- Glottolog publishes a complete CSV at `https://glottolog.org/meta/downloads`. Cross-reference each project code with Glottolog's `iso639P3code` column to populate `iso6393`, and the `id` column to populate `glottocode`.
+- For project-internal codes that don't map to a single Glottolog entry (regional dialects like `ja_osa`), use the parent's Glottocode and document via `parentCode`.
+
+**Step 2 — verify each value.**
+- Glottocodes follow strict pattern `^[a-z]{4}\\d{4}$`.
+- Validator already (per scan) catches malformed values; extend to require non-null for `dataStatus: 'modern'` rows.
+
+**Step 3 — handle ISO-less languages.**
+- Some languages don't have ISO 639-3 codes (very recently described, project-internal pedagogical reconstructions). Document these explicitly with `iso6393: null` and an explanation in `description`.
+
+Validator / static check:
+- `[#177]`: `dataStatus: 'modern'` row without `glottocode` → WARN.
+- `dataStatus: 'modern'` row without `iso6393` AND without `canonicalCode` → WARN.
+- `glottocode` format check: `^[a-z]{4}\\d{4}$`.
+- `iso6393` format check: `^[a-z]{3}$`.
+- Coverage line: `glottocode N/M (X%); iso6393 N/M (X%)`.
+
+Do not:
+- Do not invent Glottocodes. If a row truly has none, leave the field unset and flag it.
+- Do not duplicate the project code as ISO. `ja_osa: 'jpn'` is correct (Osaka is a variety of Japanese); `ja_osa: 'ja_osa'` would be wrong.
+- Do not remove `canonicalCode` when adding `iso6393` — the two coexist (Task 178).
+
+Done when:
+- Glottocode coverage reaches ≥ 80% (495+/619).
+- ISO 6393 coverage reaches ≥ 95% (588+/619).
+- Validator `[#177]` reports below 50 missing.
+- Citation export (Task 157) can include both identifiers per row.
+
+### New Task 178. Resolve `iso6393` vs `canonicalCode` schema overlap — pick a single canonical concept
+
+Goal:
+The project has two fields for "the ISO 639-3 code this row corresponds to": **`meta.iso6393`** (set on 65 rows directly) and **`meta.canonicalCode`** (set at runtime from the `CANONICAL_CODE` map for ~82 codes when `iso6393` is not set). They express the same concept but live in two places. Validator and UI logic must check both. Tooling reading the data sees the same row sometimes via one path, sometimes via the other.
+
+Current issue I checked:
+- The runtime initializer at `wordmap_meta.js:2051`:
+  ```
+  if (CANONICAL_CODE[code] && !m.canonicalCode && !m.iso6393) {
+      m.canonicalCode = CANONICAL_CODE[code];
+  }
+  ```
+  This sets `canonicalCode` *only if* `iso6393` is unset. So a row never has both — but the choice depends on which got there first.
+- Result: 65 rows use `iso6393`, ~82 use `canonicalCode`, 472 have neither.
+- Both fields hold the same kind of value (an ISO 639-3 code).
+- Per Task 109's commentary, the conceptual difference was: `iso6393` for direct ISO-code mapping, `canonicalCode` for "the canonical code where the project code differs." But in practice, every project code that has an ISO 639-3 fits both definitions — so the distinction collapses.
+
+Files to change:
+- `wordmap_meta.js` — pick one field, migrate the other.
+- `validate_wordmap_data.js` — update checks.
+- `CONTRIBUTING.md` — document the chosen single field.
+- `wordmap.html` — modal rendering must read from the single field.
+
+Implementation instructions:
+
+**Step 1 — pick the canonical name.**
+- **Option A:** Keep `iso6393`, deprecate `canonicalCode`. Migrate the runtime-set `canonicalCode` values into static `iso6393` values.
+- **Option B:** Keep `canonicalCode` (more semantically descriptive — it includes pedagogical-stage codes, regional-variant mappings, etc.), deprecate `iso6393`.
+- **Recommended Option A:** ISO 6393 is an external standard recognized by every linguistic database; `canonicalCode` is project-internal and carries no advantage over the standard name.
+
+**Step 2 — apply migration.**
+- For each of the 82 codes in `CANONICAL_CODE`, write the value into `iso6393` directly in the static meta block (instead of the runtime initializer).
+- Delete the runtime block at `wordmap_meta.js:2035-2054`.
+- Delete `canonicalCode` references in `validate_wordmap_data.js`, `wordmap.html`, and any tools.
+
+**Step 3 — update validator.**
+- Single-field check: `iso6393` must be valid ISO 639-3 format.
+- Cross-check: `meta.codeType: 'historical-stage'` rows must have `iso6393` set to the closest 639-3 (`ang` for Old English, etc.).
+
+Validator / static check:
+- `[#178]`: any row with `canonicalCode` set after migration → ERROR (field deprecated).
+- Coverage line: now single-source `iso6393 coverage: N/M`.
+
+Do not:
+- Do not remove `canonicalCode` without first migrating its values into `iso6393`. Data loss.
+- Do not leave the runtime `CANONICAL_CODE` initializer in place after migration — it would re-set `canonicalCode` on every page load, undoing the migration.
+- Do not bundle this with Task 177 (coverage backfill). Do migration first, *then* backfill — otherwise some rows get values written via the wrong field.
+
+Done when:
+- `canonicalCode` no longer appears in `wordmap_meta.js` static data.
+- Runtime initializer at `wordmap_meta.js:2035-2054` is removed.
+- Validator references only `iso6393`.
+- UI modal references only `iso6393`.
+- CONTRIBUTING.md documents the single canonical field.
+
+---
+
+## Cumulative status after data-scrutiny (Tasks 159–178)
+
+After 4 rounds of data scrutiny:
+
+**Confirmed clean (no issues found):**
+- ASCII colon vs ː, ASCII apostrophe vs ʔ/ʼ, NBSP/Tab characters, NFC normalization, IPA stress mark misplacement, ZWJ/ZWNJ/LRM/RLM, surface IPA-bracket wrapping, code duplicates, wrong-script-in-IPA bleed, parentCode pointing to non-existent rows, numerical tones, IPA trailing digits, URL `https://` validity, source type values.
+
+**Open data tasks (Tasks 143–178):** 35 tasks covering structural normalization, coverage backfills, schema overlaps, classification consistency, coordinate placements, and field-by-field semantic cleanup.
+
+**Known sub-thresholds remaining to probe:**
+- IPA vowel-quality consistency (ɨ vs ɯ, ʌ vs ɐ) across closely-related languages.
+- `description` field's prose style consistency (some use prose, others use a structured opening-sentence formula).
+- `meta.aliases` runtime-set vs static (similar overlap to Task 178).
+- `meta_i18n_coverage.js` atom-translator pattern coverage.
+
+These remaining areas are likely subtler than the 35 found so far and may yield 5–10 more tasks if probed with the same depth.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 15)
+
+A fifth-pass scan focused on cross-row identity (whole-row duplicate detection beyond Task 90's surface-fingerprint check), native-name disambiguation, and architectural overlaps surfaced four more concrete issues. The first three are *real data errors* (mislabeled or duplicate row entries), not just style/coverage gaps; they constitute on-disk bugs.
+
+Tools used:
+- 20-cell row fingerprint hashing (concatenated `surface|ipa` for every concept in row order).
+- Native-name multimap detection.
+- IPA vowel-symbol per-row distribution (ɨ vs ɯ, ʌ vs ɐ).
+
+**No issue found in:** Japanese mainland uses ɯ uniformly while Ryukyuan uses ɨ — correct (different phonemes). Mandarin retroflex apical /ɨ/ in `tʂʰɨ` is correct. Description prose style "no final period" cases were regex artifacts on escaped apostrophes, not real data issues. ASCII straight quotes inside descriptions (36 cases) are intentional inline-quote uses (e.g., "Italian of the East") and acceptable typography.
+
+### New Task 179. Resolve the `kv` / `kpv` duplicate row pair (Komi macrolanguage vs. Komi-Zyrian)
+
+Goal:
+The 20-cell whole-row fingerprint scan identified `kv` and `kpv` as **100% identical** rows: same surface, same IPA, same coordinates (61.67, 50.84 Syktyvkar), same native name (`Коми кыв`). The comment block at `wordmap_data.js:1432-1434` already acknowledges this overlap: "Komi-Zyrian (kpv) is the more standard ISO 639-3 code that the macro `kv` actually represents." This is the same pattern that was resolved for `mon`/`mnw` in Pass 7 (mn ISO 639-1 reserved for Mongolian, mnw is the actual Mon language code; `mon` row was deleted, `mnw` kept canonical).
+
+Current issue I checked (2026-05-06 scan):
+- `wordmap_data.js:1430` — `kv` row.
+- `wordmap_data.js:1435` — `kpv` row, 100% identical content.
+- ISO 639-1 `kv` is reserved for the Komi macrolanguage (covers both Komi-Zyrian and Komi-Permyak); ISO 639-3 distinguishes `kpv` (Komi-Zyrian) from `koi` (Komi-Permyak).
+- Project also has `koi` Komi-Permyak as a separate row at `wordmap_data.js:1437` with distinct word data — that one is correct.
+- Whole-row fingerprint validator (per Task 90) does flag `kv = kpv` as a duplicate group, but does not auto-resolve.
+
+Files to change:
+- `wordmap_data.js` — delete the `kv` row.
+- `wordmap_meta.js` — delete the `kv` meta block.
+- `lang_names.js` — delete `kv: '...'` entries from all 21 UI sections.
+- `validate_wordmap_data.js` — remove `kv` from the duplicate-allowlist if listed; add a check that flags any new macrolanguage code (`kv`, `mn`-as-Mon, etc.) when the 639-3 code is also present.
+- `wordmap.html` — check `HIST_DESCENDANT` for any `kv` references; replace with `kpv`.
+- `changelog.html` — record the resolution.
+- `wordmap-modern-audit-feedback.md` — record under Task 168 / Task 179 follow-up.
+
+Implementation instructions:
+
+**Step 1 — confirm `kpv` is canonical.**
+- ISO 639-3 `kpv` is the explicit Komi-Zyrian. `kv` is the macro covering both Zyrian and Permyak.
+- Keep `kpv` (specific) and `koi` (Permyak); delete `kv` (macro).
+
+**Step 2 — remove `kv` and update references.**
+- Delete the entry at `wordmap_data.js:1430`.
+- Delete `kv` meta block (`LANG_DATA['kv'].meta = ...`).
+- Update `lang_names.js` 21 UI sections.
+- Search the codebase for `'kv'` string references and verify each is updated or removed (don't blindly delete — `kv` could appear in test code, examples, etc.).
+
+**Step 3 — bump count strings.**
+- Public count goes from 619 → 618.
+- Update `wordmap.html` `<title>`, OG/Twitter descriptions, README, validator's expected count.
+
+**Step 4 — validator.**
+- Strengthen the whole-row fingerprint check to ERROR (not just INFO) on 20/20 cell duplicates that are not in an explicit allowlist.
+- Add a per-language-family check: if both an ISO 639-1 macro code and its 639-3 specific code exist for the same language family, WARN.
+
+Validator / static check:
+- `[#179]` row pair with identical 20-cell fingerprint AND not in allowlist → ERROR.
+- Coverage update: language total 619 → 618 after `kv` removal.
+
+Do not:
+- Do not delete `kpv`. Despite being 100% identical to `kv` today, `kpv` is the more specific canonical 639-3 code and should be kept as the single representative.
+- Do not delete `koi` Komi-Permyak. It is a *different* language with distinct data; only `kv` is the duplicate.
+- Do not silently delete without updating the 21 lang_names sections — that recreates the lang_names mismatch from Task 143.
+- Do not bundle this with Task 180 (`ttj`/`nyo`); they are independent issues with different resolutions.
+
+Done when:
+- `kv` is removed from `wordmap_data.js`, `wordmap_meta.js`, `lang_names.js`.
+- Total language count strings updated to 618.
+- Whole-row fingerprint validator no longer flags `kv = kpv`.
+- A user searching for "Komi" finds only `kpv` and `koi`, not three rows.
+
+### New Task 180. Resolve the `ttj` / `nyo` whole-row duplicate (Tooro / Nyoro)
+
+Goal:
+The whole-row fingerprint scan flagged **`ttj` Tooro and `nyo` Nyoro** as 100% identical 20-cell content. Both are Runyakitara-cluster Bantu languages of Uganda added in Task 150's Group F. They are *closely related* (mutually intelligible to a high degree) but **not identical** — Glottolog lists them as distinct languages with documented lexical and phonological differences. The 100% match is almost certainly a copy-paste error during Task 150's batch addition, not a true linguistic identity.
+
+Current issue I checked:
+- `wordmap_data.js`: `ttj` (Tooro) and `nyo` (Nyoro) have identical 20-cell `words` blocks.
+- Both placed at distinct coordinates per Task 150 (`ttj` Fort Portal at 0.66, 30.27; `nyo` Hoima at 1.43, 31.34) — coordinate distinction is correct.
+- Language descriptions in `wordmap_meta.js` correctly distinguish them.
+- Word data: identical, including the same IPA romanizations. Suspicious.
+- Reference materials (Ruzindana 1996 *Runyoro-Rutooro Dictionary*, Davis & Schadeberg, Uganda Christian University Press) document differences in vocabulary and tone, even between very closely related Runyakitara languages.
+
+Files to change:
+- `wordmap_data.js` — replace one row's word data with sourced distinct values.
+- `wordmap_meta.js` — add `meta.sources` per Task 80 to document the new word source.
+- `wordEvidence` — add per-cell sourcing per Task 173.
+- `wordmap-modern-audit-feedback.md` — record the fix.
+
+Implementation instructions:
+
+**Step 1 — pick the row to keep canonical.**
+- `nyo` Nyoro has more L1 speakers (~970K vs ~660K for Tooro). Either could be canonical, but Nyoro is the better-documented anchor.
+- Keep `nyo` as currently structured. Rebuild `ttj` Tooro with sourced Tooro-specific forms.
+
+**Step 2 — source Tooro-specific data.**
+- Primary source: Ruzindana M., *Runyoro-Rutooro–English Dictionary* (1996, Uganda Christian University Press).
+- Cross-check: Kahaiya O., *A Dictionary of the Runyoro/Rutooro Language* (newer revision).
+- The two languages share roots but differ in:
+  - Some kinship terms.
+  - Vocabulary for specific cultural items.
+  - Phonological reductions in Tooro (e.g., elision of certain vowels in unstressed positions).
+
+**Step 3 — rebuild `ttj` Tooro 20 cells.**
+- Each cell must cite the source.
+- Where a cell genuinely has the same form in both languages, document with `wordEvidence: { note: 'shared with Nyoro (nyo) within Runyakitara cluster' }`.
+
+**Step 4 — extend the validator.**
+- Whole-row fingerprint check (per Task 179) should ERROR on this pair until distinct data lands.
+
+**Step 5 — document the cluster.**
+- Add a `meta.disambiguator` field (per Task 115) to both rows: `ttj` says "(Tooro / Rutooro, Fort Portal)", `nyo` says "(Nyoro / Runyoro, Hoima)". This is for search-result clarity, complementing the distinct word data.
+
+Validator / static check:
+- After rebuild: `ttj = nyo` no longer in fingerprint duplicate group.
+- `meta.disambiguator` set on both rows.
+
+Do not:
+- Do not delete `ttj`. Tooro is a real distinct language even if closely related; the project's pedagogical mission is to surface the diversity, not collapse it.
+- Do not invent differences. If a cell genuinely has the same form, keep the form and add the `note` documenting the share.
+- Do not bundle this with Task 179 (`kv`/`kpv`) — that is a true macro/specific duplicate; this is an authoring error in genuinely distinct data.
+
+Done when:
+- `ttj` row has 20 cells of sourced Tooro-specific data.
+- The `ttj = nyo` whole-row fingerprint duplicate is resolved.
+- Both rows have `meta.disambiguator`.
+- `meta.sources` cites the Tooro grammar/dictionary used.
+
+### New Task 181. Fix the `lag` row mislabel — should be Langi (Tanzania, Bantu), not Lango (Uganda, Nilotic)
+
+Goal:
+The native-name multimap scan flagged `laj` (Lango of Uganda, Western Nilotic) and `lag` as both having `name: 'Lango'`, `native: 'Lëblaŋo'`, and Uganda coordinates (~2.24, 32.90 Lira). But **ISO 639-3 `lag` is Langi (Rangi)**, a Bantu language of central Tanzania (~370,000 speakers, around the Kondoa region at lat -4.9, lng 35.8) — totally different from Lango.
+
+Either:
+- The row was authored as a duplicate of `laj` Lango by mistake (possibly during Task 150's Uganda batch when both `laj` and `lag` appear in the same sub-batch order), OR
+- The author meant to add Langi but accidentally copied Lango data.
+
+Either way, the current state is wrong: a user clicking the `lag` marker on the Uganda map sees "Lango" labels with Nilotic Lwoo data, but the underlying ISO code says they should be looking at a Tanzanian Bantu language with completely different vocabulary.
+
+Current issue I checked:
+- `wordmap_data.js:2860` — `lag: { name: 'Lango', native: 'Lëblaŋo', lat: 2.25, lng: 32.90 ... }` with Lwoo Nilotic words (matʃ for fire, tʃamo for eat, etc.).
+- ISO 639-3 standard: `lag` is Langi (Rangi), Bantu of Tanzania, with completely different vocabulary (Bantu noun classes, different roots).
+- The `laj` row immediately above (`wordmap_data.js:2856`) is correctly Lango of Uganda with proper Nilotic Lwoo data.
+- The `ach` Acholi row between them is also Nilotic — so the mistake is plausibly a copy-of-laj into lag.
+
+Files to change:
+- `wordmap_data.js` — either delete the `lag` row entirely (it is a duplicate of `laj`) OR rebuild it as Langi with Tanzanian coordinates and Bantu vocabulary.
+- `wordmap_meta.js` — meta block for `lag`.
+- `lang_names.js` — `lag` entries in 21 UI sections.
+- `wordmap-modern-audit-feedback.md` — record decision.
+
+Implementation instructions:
+
+**Decision needed: Option A or Option B.**
+
+- **Option A — delete the `lag` row.** It is a copy-paste duplicate of `laj` Lango. Removing it brings the count to 617 and eliminates the wrong claim that "Langi = Lango".
+- **Option B — rebuild `lag` as Langi (Rangi) of Tanzania.** This is the linguistically correct version. Source: Stegen O., *A grammatical sketch of Rangi* (2002), or other Bantu Tanzania grammars. New coordinates: Kondoa, Tanzania (-4.91, 35.78). New vocabulary: Bantu E10/E20 typical (ma- noun-class prefix on water/etc.).
+
+Recommend **Option B** because:
+- The project's mission is to represent linguistic diversity; deleting `lag` removes a legitimate Bantu language from the map.
+- The data error is about *what `lag` is*, not whether `lag` should exist.
+- Tanzania currently has limited representation in the map; adding Langi closes a regional coverage gap.
+
+**Step 1 — confirm decision.**
+**Step 2 — if Option A:** delete row, update count strings, lang_names.
+**Step 3 — if Option B:**
+- Rebuild row with `name: 'Langi'`, `native: 'kɨlaaŋi'` (Rangi endonym), coordinates (-4.91, 35.78) for Kondoa.
+- Rebuild 20 cells from Stegen 2002 or Bantu Online lexicon.
+- Set `meta.family: 'Atlantic-Congo (Bantu, F33 Rangi)'` per Task 159's normalization.
+- `meta.iso6393: 'lag'`.
+- `meta.parentCode: null`, `meta.varietyRole: null`.
+- `meta.officialStatus: 'recognized-minority'`, `meta.officialIn: ['Tanzania']`.
+- Source: cite Stegen 2002.
+
+**Step 4 — verify `laj` Lango still works.**
+- Rerun whole-row fingerprint validator. The `laj`/`lag` pair should no longer match (whether Option A removed `lag` or Option B rebuilt it with distinct data).
+
+Validator / static check:
+- After fix: `laj = lag` fingerprint duplicate resolved.
+- If Option B: `lag.iso6393` matches ISO 639-3 standard (`lag`).
+- If Option A: count strings updated (619 → 617 since `kv` and `lag` both removed).
+
+Do not:
+- Do not silently leave the rows as-is. The `lag` row is currently a *factual error* — the row claims to be a language it isn't.
+- Do not rename `lag` to `laj_dup` or similar workaround. ISO codes are not project-extensible; `lag` either is Langi (real) or it shouldn't exist (Option A).
+- Do not bundle this with Task 179 or 180. Different errors, different fixes.
+
+Done when:
+- `laj` Lango row is canonical and correctly Nilotic.
+- `lag` row is either removed (Option A) or rebuilt as Langi/Tanzania with distinct Bantu data + sources (Option B).
+- Validator no longer flags `laj`/`lag` as duplicates.
+- A user searching ISO 639-3 `lag` finds the correct language (Langi) on the map, not a Uganda Nilotic mislabel.
+
+### New Task 182. Migrate `meta.aliases` runtime initializer to static field (mirrors Task 178)
+
+Goal:
+**0 of 619 rows have static `meta.aliases`; the runtime `ALIASES` map at `wordmap_meta.js:2098` populates 82 rows at module load time.** Same architectural pattern as the `iso6393` / `canonicalCode` overlap fixed by Task 178: a structured field is initialized from a separate runtime map rather than living statically in the meta block. Tooling that walks meta blocks (validators, audit scripts, this audit file's grep-based checks) misses the alias data entirely.
+
+Current issue I checked:
+- Static count of `aliases:` entries: 0.
+- Runtime `ALIASES` map entries: 82.
+- The runtime initializer at `wordmap_meta.js:2146-2152`:
+  ```
+  for (const code of Object.keys(ALIASES)) {
+      if (LANG_DATA[code] && LANG_DATA[code].meta) {
+          if (!LANG_DATA[code].meta.aliases) {
+              LANG_DATA[code].meta.aliases = ALIASES[code];
+          }
+      }
+  }
+  ```
+- Tasks 114 (search alias support) and 115 (disambiguator) rely on `meta.aliases`. The search code reads `meta.aliases` at runtime — so functionally, search works. But the data is hidden from static inspection.
+
+Files to change:
+- `wordmap_meta.js` — migrate the 82 `ALIASES` entries into static `meta.aliases: [...]` arrays inside the corresponding meta blocks.
+- Delete the `ALIASES` constant + the for-loop initializer.
+- `validate_wordmap_data.js` — extend coverage check to enforce static-only.
+- `CONTRIBUTING.md` — document `meta.aliases` as a static field.
+
+Implementation instructions:
+
+**Step 1 — migrate.**
+- For each entry in `ALIASES` (`eo: ['Esperanto'], tlh: ['Klingon', 'tlhIngan Hol'], ...`), find the corresponding meta block and add `aliases: [...]` to it.
+
+**Step 2 — delete the runtime initializer.**
+- After all 82 entries are migrated, remove the `ALIASES` constant and the for-loop.
+- Verify the search functionality (Task 114 alias search) still works post-migration.
+
+**Step 3 — extend validator.**
+- Static-only validation: warn if a `meta.aliases` value is set via runtime initializer rather than statically.
+- Coverage line: `meta.aliases: N/M rows have aliases set`.
+
+**Step 4 — backfill alias coverage.**
+- The current 82 rows are an incomplete set (the priority languages from Task 114). After migration, identify additional rows where common alternate names exist and were not yet captured — e.g., Faroese / Føroyskt, Romansh / Rumantsch, etc.
+- Goal: 200+ rows with at least one alias.
+
+Validator / static check:
+- `[#182]` row with runtime-only aliases (post-migration check) → ERROR.
+- INFO line: alias coverage.
+
+Do not:
+- Do not migrate without verifying search continues to work. The migration must preserve search behavior bit-for-bit.
+- Do not auto-translate or auto-generate aliases. Each one must be a citeable alternate name from a dictionary or community usage.
+- Do not put endonyms (the `native` field's content) in `aliases` — that duplicates information already on the row.
+
+Done when:
+- `wordmap_meta.js` `ALIASES` constant is deleted.
+- The for-loop at `:2146-2152` is removed.
+- 82 rows now have static `meta.aliases` arrays.
+- Validator `[#182]` reports 0 errors.
+- Search (Task 114) continues to work for all previously-aliased languages.
+- CONTRIBUTING.md documents the static convention.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 16)
+
+A sixth-pass scan focused on the meta-translation layer (`meta_i18n_coverage.js`, `meta_i18n_ext.js`, and the `META_I18N` block inside `wordmap_meta.js`) surfaced four substantive coverage and architecture issues. The atom-translator infrastructure is sound but the per-UI-language coverage is wildly uneven — leaving large UI-language audiences with degraded modal translations even though the structural support is in place.
+
+Tools used:
+- Per-UI-lang atom-entry counting in `META_I18N_COVERAGE_ATOMS` (16,015 lines) and `META_I18N_ATOMS` (4,388 lines).
+- Per-UI-lang full-string entry counting in `META_I18N` (`wordmap_meta.js:1212`).
+- Cross-set diff: meta-data strings (`family`/`script`/`countries`/`official`) vs covered atoms.
+
+### New Task 183. Resolve the 8–13× spread in atom-translation coverage across UI languages
+
+Goal:
+The atom-translator layer (used by `translateMetaSmart()` to recursively decompose meta strings) has wildly uneven per-UI-lang coverage, ranging from **2,189 atoms (Ukrainian)** to **161 atoms (Swahili)** — a 13× spread. Users picking a UI lang on the low-coverage end see modal descriptions, family labels, and country lists with significant English fragments showing through. The full-string layer (`META_I18N`) is balanced at 434 entries × 22 langs, but full-string only covers ~30% of real meta strings; the rest depend on atoms.
+
+Current issue I checked (2026-05-06, combining `meta_i18n_coverage.js` + `meta_i18n_ext.js`):
+
+| UI lang | ext.js | coverage.js | Total | Spread vs lowest |
+|---|---:|---:|---:|---:|
+| uk | 184 | 2005 | 2189 | 13.6× |
+| ar | 174 | 1760 | 1934 | 12.0× |
+| yue | 184 | 1736 | 1920 | 11.9× |
+| zh | 311 | 1575 | 1886 | 11.7× |
+| ja | 1192 | 638 | 1830 | 11.4× |
+| th | 139 | 1461 | 1600 | 9.9× |
+| hi | 147 | 1456 | 1603 | 10.0× |
+| he | 145 | 1420 | 1565 | 9.7× |
+| ru | 252 | 1351 | 1603 | 10.0× |
+| ko | 312 | 998 | 1310 | 8.1× |
+| **de** | **285** | **0** | **285** | **1.8×** |
+| **fr** | **284** | **0** | **284** | **1.8×** |
+| **es** | **277** | **0** | **277** | **1.7×** |
+| **pt** | **268** | **0** | **268** | **1.7×** |
+| **vi** | **156** | **115** | **271** | **1.7×** |
+| **it** | **257** | **0** | **257** | **1.6×** |
+| **id** | **163** | **0** | **163** | **1.0×** |
+| **sw** | **161** | **0** | **161** | **1.0×** |
+
+The bottom 8 UI langs (de/fr/it/es/pt/vi/id/sw) all rely on `meta_i18n_ext.js` exclusively; the larger `meta_i18n_coverage.js` extension was applied to 11 langs but skipped these 8.
+
+Files to change:
+- `meta_i18n_coverage.js` — extend the `META_I18N_COVERAGE_ATOMS` block to cover the bottom 8 UI langs at parity with the existing top 11.
+- `validate_wordmap_data.js` — add a coverage-spread check that warns when any UI lang's atom coverage is < 50% of the median.
+
+Implementation instructions:
+
+**Step 1 — calibrate the target.**
+- Median coverage across covered langs: ~1500 atoms.
+- Set goal: every UI lang should reach ≥ 1000 atoms (≥ 70% of median).
+
+**Step 2 — extend the bottom 8 UI langs.**
+- Each needs ~700–900 additional atoms.
+- Source: same atom set used for the top 11 (family/branch sub-tags, region names, script descriptors, official-language formulations, dynastic/era names).
+- For Romance langs (de, fr, it, es, pt), some atoms are cognate with English and need minimal effort (`Iranian` → `Iranian` in fr, with article `(l')Iranien`); others need careful translation (`Volga` → `Volga`).
+- For Vietnamese (271), Indonesian (163), Swahili (161): start with the most-frequent meta-string substrings.
+
+**Step 3 — staged rollout.**
+- Phase 1: bring vi/id/sw to 800+ atoms.
+- Phase 2: bring de/fr/it/es/pt to 1500+ atoms.
+- Phase 3: top off remaining UI langs to ≥ 1500.
+
+**Step 4 — validator coverage check.**
+- INFO line: `atom coverage by UI lang: <table>`.
+- WARN if any UI lang has < 50% of median coverage.
+
+Validator / static check:
+- New check `[#183]`: per-UI-lang atom count from combined coverage + ext layers.
+- WARN at < 50% of median, ERROR at < 25%.
+
+Do not:
+- Do not machine-translate meta atoms in bulk. Each atom is a noun phrase whose translation may need community-specific decisions (e.g., "Cushitic" in Swahili: `Kikushiti` vs `Kushitiki` — use whichever the reference grammars prefer).
+- Do not skip the `id`/`sw` bottom even though they have lower native-speaker map-user populations. Pedagogical use of the map for learners *of* Indonesian or Swahili (rather than learners *from* Indonesia / Swahili-speaking regions) needs the same coverage.
+- Do not let Vietnamese stay at 271. It is a major UI lang and the atom layer should match other Asian UI langs.
+
+Done when:
+- All 18 distinct UI langs reach ≥ 1000 atoms.
+- Validator coverage spread shrinks from 13× to ≤ 2×.
+- A user picking `de` UI sees German labels for "Sinitic", "Cushitic", "Loloish", etc., not English.
+- INFO line shows balanced coverage.
+
+### New Task 184. Add coverage for the 9 UI langs absent from `META_I18N_COVERAGE_ATOMS` entirely
+
+Goal:
+**`META_I18N_COVERAGE_ATOMS` has entries for 11 UI langs (uk, ar, yue, zh, th, hi, he, ru, ko, ja, vi); the other 9 UI langs (de, fr, it, es_eu, es_mx, pt_eu, pt_br, id, sw) have ZERO entries in this file.** They survive only on the smaller `META_I18N_ATOMS` block in `meta_i18n_ext.js`. This is closely related to Task 183 but is more specific: the *file structure* indicates intent to extend coverage but the extension never happened for these langs. Fixing this cleanly resolves Task 183's bottom of the table.
+
+Current issue I checked:
+- `META_I18N_COVERAGE_ATOMS` block in `meta_i18n_coverage.js`: 11 UI lang keys.
+- The header comment says: "Adds per-UI-language atom and full-string translations to push translateMetaSmart() coverage of LANG_DATA[*].meta toward 100%." — clear intent is coverage parity.
+- Yet 9 UI langs are missing entirely from this file.
+
+Files to change:
+- `meta_i18n_coverage.js` — add `de`, `fr`, `it`, `id`, `sw` UI lang blocks to `META_I18N_COVERAGE_ATOMS` (and to `META_I18N_COVERAGE_FULLS` if it exists).
+- The 4 regional-Spanish/Portuguese codes (`es_eu`, `es_mx`, `pt_eu`, `pt_br`) inherit via the runtime aliasing at `meta_i18n_ext.js:3217-3220`. Either leave those as runtime aliases or migrate to static blocks (Task 186).
+
+Implementation instructions:
+
+**Step 1 — add `de` UI lang block.**
+- Mirror the structure of `ja`/`ko`/`zh` blocks.
+- Translate the same set of family/region/script/official-status atom keys to German.
+
+**Step 2 — add `fr`, `it` UI lang blocks.** Same approach.
+
+**Step 3 — add `id`, `sw` UI lang blocks.**
+- These need more careful sourcing because Indonesian and Swahili linguistic terminology has both calques (`Bahasa-` prefixes for languages) and English borrowings (`Cushitic`).
+
+**Step 4 — verify behavior post-extension.**
+- Run the map in a browser with `de` UI selected. Modal for Mandarin should show German family labels for "Sinitic (Mandarin)", "Bantu", etc.
+- Same for fr, it, id, sw.
+
+Validator / static check:
+- `[#184]` `META_I18N_COVERAGE_ATOMS` must have a key for every UI lang in `lang_names.js` (excluding the 4 regional-aliases that legitimately re-use parent).
+- INFO line: list missing UI langs.
+
+Do not:
+- Do not skip Indonesian / Swahili because their atom counts in `meta_i18n_ext.js` are also low. Both files need extension.
+- Do not auto-translate without a reference. Indonesian linguistic terminology often differs from popular usage (e.g., "Indo-Aryan" might be `Indo-Arya` or `Indo-Arya (Hindia)` depending on convention).
+- Do not migrate the 4 regional-Spanish/Portuguese aliases to static blocks within this task — that is Task 186's scope.
+
+Done when:
+- 5 new UI lang blocks (de, fr, it, id, sw) exist in `META_I18N_COVERAGE_ATOMS`.
+- Each new block has ≥ 800 entries (target per Task 183).
+- Validator `[#184]` passes.
+- A user picking `de` UI sees German family labels in modal for languages whose family was not in `META_I18N` (full-string) full-coverage.
+
+### New Task 185. Cover the 712 meta-string "orphans" with no atom translation in any UI lang
+
+Goal:
+The meta-data fields (`family`, `script`, `countries`, `official`) contain **1,478 distinct strings**, and **712 of them (48%) have no atom-level translation in any UI lang**. These are mostly composite forms like `"Sinitic (Mandarin, Ji-Lu)"` where the *whole* string is unknown to the atom map even though `Sinitic`, `Mandarin`, and `Ji-Lu` may individually be atoms. The recursive translator (`translateMetaSmart()`) handles decomposition, but only if the constituent atoms exist for the chosen UI lang.
+
+Current issue I checked:
+- 1,478 distinct meta-data strings extracted from `wordmap_meta.js`.
+- 2,903 unique atom keys across both translation files (any UI lang).
+- 712 meta strings are not present as atoms in any UI lang's coverage block.
+- Examples of orphan composites: `"Sinitic (Yue)"`, `"Sinitic (Min Nan)"`, `"Sinitic (Wu)"`, `"Sinitic (Mandarin, Northeastern)"`, `"Sinitic (Mandarin, Southwestern)"`, `"Sino-Tibetan (Tibeto-Burman, Bodish)"`, `"Bantu (Nguni)"`, `"Afro-Asiatic (Chadic)"`, `"Atlantic (Niger-Congo)"`.
+- Most orphans should be fine via recursion: `Sinitic (Mandarin, Ji-Lu)` decomposes to `Sinitic` + `(Mandarin, Ji-Lu)` which decomposes further. But the project relies on this without verifying — and the recursion is brittle when atoms are missing in a particular UI lang.
+
+Files to change:
+- `meta_i18n_coverage.js` — for orphan composites that are not cleanly decomposable, add the full string as an atom in each UI lang.
+- `wordmap_meta.js` (`META_I18N` full-string block) — for the most-frequent ~50 composite strings, add full-string entries in all 22 UI langs.
+- `validate_wordmap_data.js` — add a "translation reachability" check: simulate `translateMetaSmart()` for every meta string in every UI lang and report the fraction that produces an English fragment.
+
+Implementation instructions:
+
+**Step 1 — categorize orphans.**
+- Decomposable: `Sinitic (Mandarin, Ji-Lu)` → `Sinitic` + `(Mandarin, Ji-Lu)` → `Mandarin` + `Ji-Lu`. Each component is or can be an atom. Verify the recursion succeeds in each UI lang.
+- Non-decomposable: `Carthage and the Punic Mediterranean (Tunisia, Sardinia, Sicily, Malta, etc.)` — prose with proper noun "Tunisia" that is unlikely to be an atom in most UI langs. These need full-string entries.
+
+**Step 2 — atom backfill.**
+- For decomposable orphans, ensure all constituent atoms exist. If `Ji-Lu` is missing in `vi`, add it.
+- Run the simulator in Step 4 of validator; iterate until all orphans translate cleanly.
+
+**Step 3 — full-string backfill for non-decomposable.**
+- Identify the ~50 most-frequent non-decomposable strings (those used in multiple rows).
+- Translate each in all 22 UI langs.
+- Add to `META_I18N`.
+
+**Step 4 — translation reachability validator.**
+- Implement `translateMetaSmart()` simulator in the validator.
+- For each (string, lang) pair, check if the result contains any English fragment.
+- INFO line: `translation reachability by UI lang: en N/M (X%)`.
+
+Validator / static check:
+- `[#185]` translation-reachability < 95% per UI lang → WARN.
+- Per-UI-lang reachability table in INFO.
+
+Do not:
+- Do not bulk-add full-string translations for orphans that recursion handles. The atom approach is more maintainable.
+- Do not break `translateMetaSmart()` by removing atoms used by other meta strings. Verify reachability after each change.
+- Do not let the 712-orphan number grow as new languages are added. Add orphan-prevention to CONTRIBUTING.md (require any new family/script string to either decompose or have a full-string entry).
+
+Done when:
+- Orphan count drops below 50 (those genuinely needing full-string entries).
+- Validator translation-reachability per UI lang ≥ 95%.
+- A user picking any UI lang sees fully-translated family/script/countries/official labels for ≥ 95% of rows.
+
+### New Task 186. Migrate the runtime `es`/`pt` atom aliasing to static field names
+
+Goal:
+At `meta_i18n_ext.js:3217-3220`, the regional Spanish/Portuguese atom blocks are aliased to umbrella `es`/`pt` blocks at module load time:
+```
+META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
+META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
+META_I18N_ATOMS.pt_eu = META_I18N_ATOMS.pt;
+META_I18N_ATOMS.pt_br = META_I18N_ATOMS.pt;
+```
+
+Same architectural pattern as Tasks 178 (`canonicalCode`/`iso6393`) and 182 (`meta.aliases`): a runtime side-effect creates a structure that static inspection cannot see. Plus, the aliasing forces `es_mx` and `es_eu` to share identical atom blocks, foreclosing any genuine regional-Spanish-specific translation difference even if one would be appropriate (e.g., Mexican Spanish uses `idioma` for "language" while Spain Spanish often uses `lengua` — atomic difference).
+
+Current issue I checked:
+- 4 lines of runtime aliasing in `meta_i18n_ext.js:3217-3220`.
+- `meta_i18n_coverage.js` does not have parallel aliasing — its 11 UI langs are static.
+- The aliasing prevents a hypothetical future `es_mx`-specific atom block.
+- Same antipattern as Tasks 178 and 182.
+
+Files to change:
+- `meta_i18n_ext.js` — replace runtime aliases with explicit static keys for `es_eu`/`es_mx`/`pt_eu`/`pt_br`.
+- Choose between:
+  - **Option A:** copy the `es` and `pt` atom blocks into 4 separate static blocks. Identical content but explicit.
+  - **Option B:** keep `es` / `pt` umbrella blocks for now; add new specific blocks (`es_eu`, `es_mx`, `pt_eu`, `pt_br`) only when a regional difference is found.
+- `wordmap.html` — modal lookup for `es_mx` UI must check the regional block first, then fall back to `es`.
+
+Implementation instructions:
+
+**Recommended: Option B (static fallback chain in lookup, no copy).**
+- Keep `META_I18N_ATOMS.es` and `META_I18N_ATOMS.pt` as canonical umbrella blocks.
+- Remove the runtime aliasing.
+- In the lookup function (`translateMetaSmart()` or its dependencies), implement a fallback chain: try `META_I18N_ATOMS[lang]` first, then `META_I18N_ATOMS[lang.split('_')[0]]`, then English.
+- This way:
+  - `es_mx` UI gets `es` atoms by lookup (same as today's runtime aliasing result).
+  - But the lookup is explicit and visible in the code.
+  - A future regional-specific atom block can be added without removing the umbrella.
+
+**Step 1 — remove runtime aliasing.**
+- Delete lines 3217-3220 from `meta_i18n_ext.js`.
+
+**Step 2 — extend the lookup function.**
+- In whichever module reads `META_I18N_ATOMS` (likely `wordmap.html` or `meta_i18n_ext.js` itself), add the fallback chain.
+
+**Step 3 — verify.**
+- Run the map with `es_mx` UI selected. Modal translations should be identical to before (because `es_mx` falls back to `es`).
+- Same for `pt_br`.
+
+**Step 4 — extend `META_I18N_COVERAGE_ATOMS` similarly** — the coverage file has no regional aliasing today; add the fallback chain there too if applicable.
+
+Validator / static check:
+- `[#186]` if `META_I18N_ATOMS.es_eu` (etc.) is set, it must be set statically not via runtime aliasing.
+- INFO line: regional Spanish/Portuguese fallback chain configuration.
+
+Do not:
+- Do not delete the runtime aliasing without implementing the fallback chain. Doing so silently breaks regional Spanish/Portuguese atom translation.
+- Do not duplicate the entire `es` block into `es_eu`/`es_mx` (Option A) without justification — that's 540+ lines of duplicate maintenance burden.
+- Do not bundle this with Task 184 (which adds new UI lang blocks) or Task 185 (orphan strings). Each is independent.
+
+Done when:
+- Runtime aliasing at `meta_i18n_ext.js:3217-3220` is removed.
+- Lookup function implements `lang → lang.split('_')[0] → en` fallback chain.
+- Regional Spanish/Portuguese UIs continue to see translated atoms (verified manually).
+- Validator `[#186]` passes.
+- The runtime/static-overlap antipattern (Tasks 178, 182, 186) is fully resolved across the codebase.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 17)
+
+A seventh-pass scan focused on schema-followthrough — fields whose schema was added by an earlier audit task but whose data backfill was either incomplete or never started. Five distinct findings; each is a "schema added but coverage = 0 or near-zero" gap.
+
+Tools used:
+- Per-row tone-letter sequence extraction with single-vs-doubled detection.
+- Coverage counts on `disambiguator`, `accessed`, `vitality`, `formType` fields.
+- Surface == IPA cell-count distribution per language.
+
+### New Task 187. Normalize tone-bar notation within single rows (single letter `˥` vs doubled `˥˥`)
+
+Goal:
+**11 tonal-language rows mix single-letter and doubled-letter Chao tone notation within the same row.** In Chao notation, level tones can be written either as one letter (`˥`) or doubled (`˥˥`). Both refer to the same phonetic value (high level), but mixing both within a single 20-cell row is internally inconsistent — readers cannot tell whether `˥` and `˥˥` are meant to be the same tone or different.
+
+Current issue I checked (2026-05-06 scan):
+
+| Lang | Mixed pairs | All tones in row |
+|---|---|---|
+| `cdo` Min Dong | `˧/˧˧` | ˧˧ ˧ ˨˦ ˥ |
+| `ii` Yi | `˧/˧˧` | ˧˧ ˧ |
+| `nan_te` | `˥/˥˥` | ˥˧ ˥ ˥˥ ˧˧ ˨˩˧ ˩˩ ˨ |
+| `yue_ts` | `˧/˧˧, ˨/˨˨` | ˧˧ ˨ ˧ ˨˨ ˧˨ ˥ |
+| `zh_jh` | `˦/˦˦` | ˨˩˦ ˦ ˨˦ ˧˧ ˥˥ ˦˦ |
+| `nan_pn` | `˥/˥˥` | ˥˧ ˥ ˨˨ ˧˧ ˥˥ ˨˩˧ ˩˩ |
+| `yue_gz` | `˥/˥˥` | ˧˥ ˥ ˧˧ ˥˥ ˨˩ ˨˨ |
+| `wuu_sz` | `˧/˧˧, ˦/˦˦` | ˥˨ ˧˧ ˨˧ ˧ ˥ ˦˦ ˨˧˩ ˦ |
+| `nan_qz` | `˨/˨˨` | ˨˨ ˧˥ ˨ ˨˦ ˦ ˦˩ ˧˧ |
+| `hak_hl` | `˥/˥˥, ˨/˨˨` | ˨˦ ˨ ˥ ˥˥ ˨˨ |
+| `cpx` Pu-Xian | `˥/˥˥` | ˦˩ ˥˥ ˧˧ ˥˧ ˥ ˨˩ |
+
+Files to change:
+- `wordmap_data.js` — normalize 11 rows.
+- `validate_wordmap_data.js` — new check that flags within-row single/doubled tone mixing.
+- `CONTRIBUTING.md` — document the tone-bar convention.
+
+Implementation instructions:
+
+**Step 1 — pick the convention.**
+- **Option A (recommended): always use doubled.** `˥˥` for high level, `˧˧` for mid level. This is the standard Chao convention used in *most* modern transcription practice. Single-letter forms are usually shorthand for level tones in published works that adopt the convention "single letter = level tone".
+- **Option B (alternative): always single for level, multi-character for contour.** `˥` for high level, `˥˩` for high-falling. This is a simpler notation system but less common in published linguistic literature.
+
+**Step 2 — apply per-language.**
+- For each of the 11 rows, decide which convention the row predominantly uses (i.e., which is the *intended* normalization), then convert all cells to that convention.
+- For ambiguous cases (e.g., `cdo` has `˧˧ ˧ ˨˦ ˥` — both single and doubled level tones), pick Option A and convert all single-letter level tones to doubled.
+
+**Step 3 — bump cache buster.**
+
+Validator / static check:
+- `[#187]` row containing both `<X>` and `<XX>` (where X is any tone letter) → WARN.
+- Across-rows consistency: warn if some rows use Option A and others Option B (within the same Sinitic family, for example).
+
+Do not:
+- Do not normalize a row's contour tones to doubled. `˨˩˧` should stay `˨˩˧`, not `˨˨˩˩˧˧`.
+- Do not change tone *values*. Normalize notation only; do not, for example, write `˥˧` as `˥` if the source says `˥˧`.
+- Do not bundle this with Task 163 (ASCII affricate normalization) — different convention, different scope.
+
+Done when:
+- 0 rows mix single and doubled level tones.
+- All level tones use the same convention (Option A or B) project-wide.
+- Validator `[#187]` reports 0 warnings.
+- CONTRIBUTING.md documents the rule.
+
+### New Task 188. Backfill `meta.disambiguator` for the 4+ identified language pairs
+
+Goal:
+**0 of 619 rows have `meta.disambiguator` set**, despite Task 115 adding the schema specifically for the cases identified by the native-name scan (Round 5 finding). The four identified pairs (`mn_cn`/`xng`, `omx`/`mnw`, `kv`/`kpv`, `laj`/`lag`) all share native names and are functionally indistinguishable in search results without disambiguation. This is pure schema-followthrough — the schema is in place, the candidates are known, and only the data backfill is missing.
+
+Current issue I checked:
+- `meta.disambiguator` count: 0 rows.
+- Task 115 schema is implemented: `meta.disambiguator` accepts `string` or `{en, ja, ko, zh, ...}` object.
+- Task 115's "Done when" criteria included setting disambiguator on the 2 known pairs (`mn_cn`/`xng`, `omx`/`mnw`) and adding it to validator. Validator check exists, but no row has the field set.
+- Round 5 added two more pairs (`kv`/`kpv` is a duplicate, scoped to Task 179; `laj`/`lag` is a mislabel, scoped to Task 181). After Tasks 179 and 181 land, the remaining disambiguator candidates are `mn_cn`/`xng` and `omx`/`mnw`.
+
+Files to change:
+- `wordmap_meta.js` — add `disambiguator` to the 4 (or 2 post-179/181) identified rows.
+- `validate_wordmap_data.js` — extend coverage check to enumerate which rows have shared native names but no disambiguator.
+
+Implementation instructions:
+
+**Step 1 — identify all rows needing disambiguator.**
+- Run the native-name multimap scan: any native name shared by ≥ 2 rows is a candidate.
+- After Task 179 (kv/kpv merge) and Task 181 (lag fix): remaining shared-native rows are `mn_cn`/`xng` (Mongolian script) and `omx`/`mnw` (Mon script).
+- Plus: any future-added rows where native names collide.
+
+**Step 2 — add disambiguator strings.**
+- `mn_cn` (Inner Mongolian, modern): `disambiguator: { en: '(Modern Inner Mongolia)', ja: '（現代内モンゴル）', ko: '(현대 내몽골)', zh: '（现代内蒙古）' }`.
+- `xng` (Middle Mongolian, historical 13th-15th c.): `disambiguator: { en: '(Middle Mongolian, 13th-15th c.)', ja: '（中世モンゴル語、13-15世紀）', ko: '(중세 몽골어, 13-15세기)', zh: '（中世纪蒙古语，13-15世纪）' }`.
+- `omx` (Old Mon, historical): similar pattern.
+- `mnw` (modern Mon): `disambiguator: { en: '(Modern Mon, Myanmar/Thailand)', ... }`.
+
+**Step 3 — UI integration.**
+- Modal renders disambiguator after the language name when the field is set.
+- Search results show disambiguator as a small italic suffix.
+
+**Step 4 — validator.**
+- For every native name shared by ≥ 2 rows, both rows must have `disambiguator`. Otherwise WARN.
+
+Validator / static check:
+- `[#188]`: shared-native rows missing `disambiguator` → WARN.
+- INFO: disambiguator coverage `N/M`.
+
+Do not:
+- Do not set `disambiguator` on rows where the native name is unique. Field is redundant.
+- Do not put disambiguating info in the `name` or `native` fields. The schema separation matters: name and native should be canonical; disambiguator handles UI presentation when collisions occur.
+- Do not skip the localized object form. A Japanese user searching for `モンゴル` deserves a Japanese disambiguator, not English.
+
+Done when:
+- All 2-4 identified pairs have `disambiguator` set in 4+ UI langs (en, ja, ko, zh at minimum).
+- Validator `[#188]` reports 0 warnings.
+- A user searching `Mongol` sees both `mn_cn` and `xng` rows with their respective era disambiguators.
+
+### New Task 189. Backfill `wordEvidence.accessed` ISO 8601 dates for all sourced citations
+
+Goal:
+**0 of all `wordEvidence.url` references have an `accessed` date populated**, despite Task 97 explicitly adding the field for citation reproducibility. URLs decay (link rot, content changes); without an accessed-on date, future readers cannot tell whether the cited content was the same when authoring as it is when re-reading.
+
+Current issue I checked:
+- `wordEvidence.url` count: 0 cells (the `url` field exists in schema per Task 97 but has 0 occurrences).
+- `wordEvidence.accessed` count: 0 cells.
+- Task 97's "Done when" required URL + accessed enforcement; the validator check exists but never fires because no cell has either field set.
+- The structured-citation schema (Task 133's `wordEvidence.citation`) is also unused at scale — only a handful of cells have it.
+
+Files to change:
+- `wordmap_data.js` — backfill `url` + `accessed` (or `wordEvidence.citation.url` + `.accessed`) for the ~300 cells that have any wordEvidence.
+- `validate_wordmap_data.js` — extend the `accessed` check to require ISO 8601 (`YYYY-MM-DD`).
+- `CONTRIBUTING.md` — document that all URL citations must include an `accessed` date.
+
+Implementation instructions:
+
+**Step 1 — for each wordEvidence cell with a source.**
+- Today, ~300 cells have wordEvidence. Most cite a paper or source title but no URL.
+- For sources that have a stable URL (Wiktionary entries, Glottolog pages, online dictionaries), add `url:` and `accessed: 'YYYY-MM-DD'`.
+- For book sources, no URL is needed; instead, ensure `citation` (Task 133) has `author`, `year`, `title`, `page`.
+
+**Step 2 — backfill in stages.**
+- Phase 1: the 24 `'source-checked'` rows (per Task 173). Each cell with a URL gets `accessed`.
+- Phase 2: the next 50 priority rows.
+- Phase 3: opportunistic.
+
+**Step 3 — link-rot mitigation.**
+- For URLs that already 404, replace with archive.org snapshots and document.
+
+**Step 4 — validator.**
+- Every `wordEvidence.url` must have an `accessed` ISO 8601 date.
+- WARN if `accessed` is older than 365 days (likely needs re-verification).
+
+Validator / static check:
+- `[#189]` `wordEvidence.url` without `accessed` → ERROR.
+- `accessed` not matching `YYYY-MM-DD` → ERROR.
+- `accessed > today` (future-dated) → ERROR.
+- `accessed > 1 year ago` → INFO (consider re-verification).
+
+Do not:
+- Do not invent accessed dates. If the cell was added without recording when, leave the field unset and add it during the next verification pass.
+- Do not delete a URL because it 404s. Replace with archive.org first; if archive.org also fails, mark `url: null` with a note.
+
+Done when:
+- All `wordEvidence.url` entries have `accessed` set.
+- All `accessed` values match ISO 8601 format.
+- Validator `[#189]` reports 0 errors.
+- A reader of any sourced cell can verify the citation was retrieved on a known date.
+
+### New Task 190. Backfill `meta.vitality` for endangered languages — schema in place, 0 coverage
+
+Goal:
+**0 of 619 rows have `meta.vitality` set**, despite Task 167 introducing the structured `vitality` enum (`'safe' | 'vulnerable' | 'definitely-endangered' | 'severely-endangered' | 'critically-endangered' | 'extinct'`) within the `speakerCount` block. UNESCO endangered-language data is well-known and the enum was created specifically to encode it. The schema work was done; the data backfill was not started.
+
+Current issue I checked:
+- `meta.vitality` count (or `meta.speakerCount.vitality`): 0 rows.
+- Multiple rows have *prose* qualifier strings that include endangerment ("UNESCO: definitely endangered", "critically endangered", "severely endangered", "fluent") in the `speakers` field — but no structured form.
+- Task 167's plan was to parse these into structured `vitality` values; that parse was never run.
+
+Files to change:
+- `wordmap_meta.js` — add `vitality` to all 619 rows.
+- `validate_wordmap_data.js` — extend coverage check to track vitality coverage and cross-validate with speaker count.
+- UNESCO atlas of endangered languages is the primary source.
+
+Implementation instructions:
+
+**Step 1 — assign default vitality based on speaker count + Ethnologue scale.**
+- L1 > 1M: `'safe'`.
+- L1 100K–1M: usually `'safe'` unless context flags otherwise.
+- L1 10K–100K: `'vulnerable'` if community is shrinking, else `'safe'`.
+- L1 1K–10K: typically `'definitely-endangered'`.
+- L1 100–1K: `'severely-endangered'`.
+- L1 < 100: `'critically-endangered'`.
+- L1 = 0 (extinct): `'extinct'`.
+- Historical languages with `dataStatus: 'attested'`: `'extinct'` is appropriate.
+
+**Step 2 — override based on UNESCO Atlas.**
+- Don't rely solely on the count rule. UNESCO has reviewed each endangered language case-by-case; use their categorization.
+- Examples:
+  - Welsh (`cy`): UNESCO `'vulnerable'` despite > 500K L1.
+  - Hawaiian (`haw`): `'critically-endangered'` despite revitalization (most L1 are elderly).
+  - Cornish (`kw` if added): `'critically-endangered'`.
+  - Manx (`gv` if added): `'critically-endangered'`.
+
+**Step 3 — historical languages.**
+- Set `vitality: 'extinct'` for all `dataStatus: 'attested'` and `'fragmentary'` rows.
+- For `'reconstructed'` rows (PIE, PJK), `vitality: 'extinct'` is appropriate too (the proto never was a living language for the tagged form).
+- For `'pedagogical'` rows (`ja_edo`/`ja_heian`), `vitality: 'extinct'` (historical-stage pedagogical reconstructions).
+
+**Step 4 — validator.**
+- Cross-check: `dataStatus: 'modern'` AND `vitality: 'extinct'` → ERROR (contradiction).
+- Cross-check: `vitality: 'extinct'` AND any non-zero speaker count → WARN.
+
+Validator / static check:
+- `[#190]` row missing `meta.vitality` → WARN.
+- Coverage line: `vitality: N/M`.
+- INFO: distribution `safe: X, vulnerable: Y, ..., extinct: Z`.
+
+Do not:
+- Do not assume "safe" by default for under-researched languages. Many small languages are in slow decline; check UNESCO before assuming.
+- Do not encode endangerment in prose `description` AND structured `vitality`. The structured field is canonical.
+- Do not bulk-set `vitality: 'safe'` to silence the warning. Empty is better than wrong.
+
+Done when:
+- All 619 rows have `meta.vitality` set.
+- Distribution INFO shows realistic spread.
+- Validator `[#190]` reports 0 missing.
+- A user filtering by "show me critically-endangered languages" gets accurate results.
+
+### New Task 191. Complete `wordEvidence.formType` for the 17 hyphen/star surface cells in `pjk` and `ine`
+
+Goal:
+**Task 103 added `formType` ('bound-stem' / 'reconstructed-root' / 'agreement-stem' / 'compound') for hyphen-marked or star-prefixed surface forms, but coverage is incomplete.** The `pjk` Proto-Japonic-Koreanic row has 2 hyphen surface cells with no formType, and `ine` PIE has 17 hyphen surface cells but only 5 are covered by the `FORM_TYPE_OVERLAY` map.
+
+Current issue I checked:
+- `pjk` cells with `^*|*-` surface: 2 cells, formType not in overlay. Likely needs `'reconstructed-root'`.
+- `ine` cells with `^*|*-` surface: 17 cells. Overlay covers eat/drink/love/eye/good (5). Missing: water/fire/sun/moon/mother/father/heart/tree/house/dog/cat/hand/hello/thanks/one (12 cells).
+- Validator's `[#103]` schema check accepts unset formType silently — should warn when surface has hyphen/star marker.
+
+Files to change:
+- `wordmap_meta.js` — extend `FORM_TYPE_OVERLAY` with the missing cells.
+- `validate_wordmap_data.js` — enforce: surface starting/ending with hyphen or starting with `*` REQUIRES formType in overlay.
+
+Implementation instructions:
+
+**Step 1 — extend FORM_TYPE_OVERLAY.**
+```
+ine: {
+    water: 'reconstructed-root', fire: 'reconstructed-root', sun: 'reconstructed-root',
+    moon: 'reconstructed-root', mother: 'reconstructed-root', father: 'reconstructed-root',
+    eat: 'reconstructed-root', drink: 'reconstructed-root', love: 'reconstructed-root',
+    heart: 'reconstructed-root', tree: 'reconstructed-root', house: 'reconstructed-root',
+    dog: 'reconstructed-root', cat: 'reconstructed-root', hand: 'reconstructed-root',
+    eye: 'reconstructed-root', hello: 'reconstructed-root', thanks: 'reconstructed-root',
+    one: 'reconstructed-root', good: 'reconstructed-root'
+}
+```
+Or simpler: a wildcard mark indicating "all 20 cells are reconstructed-root" since `ine` is entirely reconstructed.
+
+**Step 2 — same for pjk.** All cells where surface is asterisked.
+
+**Step 3 — extend the validator.**
+- Surface matching `/^\\*|^-|-$/` AND `formType` not set → WARN.
+
+**Step 4 — modal display.**
+- Modal already renders formType per Task 103. After backfill, every PIE / PJK cell shows `[reconstructed root]` or `[bound stem]` as a tag.
+
+Validator / static check:
+- `[#191]` hyphen/star surface without formType → WARN.
+- Coverage line: `formType coverage: N/M relevant cells`.
+
+Do not:
+- Do not over-tag. Cells whose surface is a normal word (not hyphen/star) should not have formType set.
+- Do not assume all `ine` cells are bound stems — most PIE forms ARE roots, but some are full citation forms. Check each cell.
+- Do not bundle this with Task 164 (asterisk consistency between surface/IPA) — the formType backfill is independent of the surface/IPA notation choice.
+
+Done when:
+- All `pjk` and `ine` hyphen/star cells have `formType` in overlay.
+- Validator `[#191]` reports 0 warnings.
+- Modal shows `[reconstructed root]` or similar tag on every PIE/PJK cell.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 18)
+
+An eighth-pass scan focused on the *architectural* discovery underlying many earlier coverage findings: **the project has 17 runtime overlay maps** that set meta fields at module load time rather than statically. Previous coverage findings (Task 188 disambiguator "0", Task 190 vitality "0", Task 191 formType partial) need to be reinterpreted in light of this architecture — the data IS often there, just hidden from static inspection.
+
+### Important correction to earlier findings
+
+Tasks 188 and several others reported "0 of 619 rows have field X set" based on static grep. Round 8 verification reveals that many of these fields are populated via runtime overlay maps:
+
+| Field | Static count | Runtime map | Map entries | Reconciled coverage |
+|---|---:|---|---:|---:|
+| `pronunciationType` | 16 | PRONUNCIATION_TYPE | 72 | ~88+ |
+| `surfaceType` | 0 | SURFACE_TYPE | 231 | 231 |
+| `locationBasis` | 0 | LOCATION_BASIS_OVERRIDES | 144 | 144 |
+| `languageKind` | 7 | LANGUAGE_KIND | 51 | ~58 |
+| `reviewStatus` | 0 | REVIEW_STATUS | 20 | 20 (rest default 'unreviewed') |
+| `varietyRole` | 41 | VARIETY_REL | 18 | up to 59 |
+| `disambiguator` | 0 | **DISAMBIGUATORS** | **4** | **4 (Task 188 was wrong)** |
+| `dataStatus` | 0 | DATA_STATUS_OVERRIDES (data.js) | 86 | 86 |
+| `aliases` | 0 | ALIASES | 82 | 82 |
+| `formType` | 0 | FORM_TYPE_OVERLAY | 43 | 43 |
+| `sources` | 52 | SOURCE_BACKFILL | 35 | up to 87 |
+| `scriptTags` | 0 | SCRIPT_TAGS | 7 | 7 |
+| `coverage` | (varies) | COVERAGE | 55 | matches |
+| `speakerSource` etc. | (varies) | SPEAKER_BACKFILL | 8 | matches |
+| `unattestedReason` | 0 | UNATTESTED_REASON_DEFAULTS | 13 | 13 |
+| `description.{ja,ko,zh}` | (varies) | DESC_JKZ | 35 | matches |
+| `canonicalCode` | 0 | CANONICAL_CODE | 39 | 39 |
+
+**Fields with genuine zero coverage (no static, no runtime map):**
+- `vitality` — 0 (Task 190 finding stands).
+- `textDirection` — 1 (Task 193 below — 60 RTL rows, 1 set).
+- `officialStatus` — 0 (Task 166 still pending).
+- `accessed` ISO 8601 dates — 0 (Task 189 stands).
+- `audioRef` — 0 (Task 151 not yet executed).
+- `glottocode` / `iso6393` — partial static, no runtime map (Task 177 stands).
+- `formEvidence` / `pronunciationEvidence` / `conceptEvidence` / structured `citation` — 0 (Task 195 below).
+
+### New Task 192. Migrate the remaining 14 runtime overlay maps to static meta fields (extends Tasks 178, 182, 186)
+
+Goal:
+**Tasks 178, 182, 186 each addressed *one* runtime overlay map** (`CANONICAL_CODE`, `ALIASES`, the regional Spanish/Portuguese atom aliases). The Round 8 scan reveals **14 more runtime overlay maps** following the same antipattern, each setting a meta field at module load time. Static analysis tools, audit scripts, regex extractors, and contributor inspections all silently miss the data. Tasks 188 ("0 disambiguators"), 191 (formType partial), and several others miscounted because they checked only static occurrences.
+
+Current issue I checked (2026-05-06 scan):
+
+**17 total runtime overlay maps in the project:**
+
+In `wordmap_meta.js`:
+1. `PRONUNCIATION_TYPE` (line 1269, 72 entries) — `pronunciationType`.
+2. `COVERAGE` (line 1389, 55 entries) — `coverage`/`baseLang`.
+3. `LOCATION_BASIS_OVERRIDES` (line 1481, 144 entries) — `locationBasis`.
+4. `SURFACE_TYPE` (line 1652, 231 entries) — `surfaceType`.
+5. `LANGUAGE_KIND` (line 1910, 51 entries) — `languageKind`.
+6. `CANONICAL_CODE` (line 2034, 39 entries) — `canonicalCode` (already covered by Task 178).
+7. `ALIASES` (line 2114, 82 entries) — `aliases` (already covered by Task 182).
+8. `FORM_TYPE_OVERLAY` (line 2214, 43 entries) — `wordEvidence.formType`.
+9. `SPEAKER_BACKFILL` (line 2278, 8 entries) — `speakerSource`/`speakerYear`/`speakerBasis`.
+10. `UNATTESTED_REASON_DEFAULTS` (line 2318, 13 entries) — `unattestedReason`.
+11. `REVIEW_STATUS` (line 2336, 20 entries) — `reviewStatus`.
+12. `VARIETY_REL` (line 2386, 18 entries) — `varietyRole`/`parentCode`.
+13. `DISAMBIGUATORS` (line 2425, 4 entries) — `disambiguator`.
+14. `SOURCE_BACKFILL` (line 2522, 35 entries) — `sources`.
+15. `SCRIPT_TAGS` (line 2622, 7 entries) — `scriptTags`.
+16. `DESC_JKZ` (line 2650, 35 entries) — `description.{ja,ko,zh}` translations.
+
+In `wordmap_data.js`:
+17. `DATA_STATUS_OVERRIDES` (line 3400, 86 entries) — `dataStatus`. The setter loop is in `wordmap_meta.js:2702` but the data lives in `wordmap_data.js` — *cross-file* runtime overlay, even more opaque.
+
+**Why the antipattern matters:**
+- Static grep tools (audit, validator pre-pass, contributor IDE jump-to-definition) miss 17 fields' worth of data.
+- Field renames or schema changes require touching the runtime initializer + the meta blocks — two places.
+- New contributors unfamiliar with the pattern add the same field both statically AND in the overlay map, causing silent shadow-overrides.
+- Audit findings (this file's own Tasks 188, 190, 191) become unreliable because static checks don't reflect actual coverage.
+
+Files to change:
+- `wordmap_meta.js` — migrate all 14 remaining runtime overlay maps.
+- `wordmap_data.js` — migrate `DATA_STATUS_OVERRIDES` (cross-file).
+- `validate_wordmap_data.js` — strengthen checks to detect and forbid runtime-only fields.
+- `CONTRIBUTING.md` — add an "All meta fields go in static blocks" policy section.
+
+Implementation instructions:
+
+**Phase 1 — pick the migration approach.**
+- Each runtime overlay map has a `for (const code of Object.keys(MAP))` loop that copies values into `LANG_DATA[code].meta.<field>`.
+- The migration replaces both the map *and* the loop: each map entry becomes a static field in the corresponding meta block.
+
+**Phase 2 — migrate one map at a time.**
+- Start with the smallest (`DISAMBIGUATORS` 4 entries, `SCRIPT_TAGS` 7 entries) to validate the migration script.
+- Move to medium (`SPEAKER_BACKFILL` 8, `UNATTESTED_REASON_DEFAULTS` 13, `REVIEW_STATUS` 20).
+- End with the largest (`SURFACE_TYPE` 231, `LOCATION_BASIS_OVERRIDES` 144, `DATA_STATUS_OVERRIDES` 86).
+
+**Phase 3 — handle COVERAGE (special case).**
+- `COVERAGE` map sets *both* `coverage` and `baseLang` per row. Migration must preserve this paired write.
+
+**Phase 4 — handle DATA_STATUS_OVERRIDES (cross-file special case).**
+- The map lives in `wordmap_data.js`; the setter is in `wordmap_meta.js`. Migration moves the data into static `meta.dataStatus` fields in `wordmap_meta.js` and deletes the cross-file dependency.
+
+**Phase 5 — strengthen validator.**
+- After migration, add a check that scans for any remaining `for (const code of Object.keys(MAP))` pattern in `wordmap_meta.js` that writes to `LANG_DATA[code].meta.X`. WARN.
+
+Validator / static check:
+- `[#192]` runtime overlay-map setter pattern detected → ERROR.
+- INFO line: `static field coverage: <table>` listing each field's count from static grep alone.
+
+Do not:
+- Do not migrate without testing. Each migration must be verified by running the validator before and after; coverage tallies should remain unchanged.
+- Do not delete the runtime overlay maps before migration is complete. Removing the maps breaks the runtime initializer until each entry is moved.
+- Do not bundle migrations across phases. Migrate one map per commit so any regressions are bisectable.
+- Do not use this task as cover to redesign the schema. Migration preserves data; schema redesign is separate.
+
+Done when:
+- All 17 runtime overlay maps are migrated to static fields.
+- 0 runtime initializer loops remain in `wordmap_meta.js`.
+- Validator coverage tallies match pre-migration counts (no data lost).
+- Static grep over `wordmap_meta.js` returns the full coverage for every field.
+- CONTRIBUTING.md documents the static-only policy.
+
+### New Task 193. Backfill `meta.textDirection: 'rtl'` for the 60 right-to-left script rows
+
+Goal:
+**60 of 619 rows use right-to-left scripts (Arabic, Hebrew, Syriac, Thaana, Adlam, Mandaic), but only 1 row has `meta.textDirection: 'rtl'` set** (Dhivehi `dv`, recently added in Task 141). The other 59 rely on the project's CSS `dir="auto"` and Unicode Bidi Algorithm to render correctly. Task 129 added the schema for explicit RTL marking; the backfill never ran.
+
+Current issue I checked:
+- 60 rows with RTL or partially-RTL script as primary or secondary writing system.
+- 1 row (`dv`) has `meta.textDirection: 'rtl'` set explicitly.
+- Other RTL rows: ar (+7 dialects), arq, mey, he, fa, az, azb, ug, ku, ckb, ps, yi, arc, skr, bal, ff (Adlam), and ~30 more whose script field includes Arabic / Tifinagh / Adlam.
+
+Files to change:
+- `wordmap_meta.js` — add `textDirection: 'rtl'` to all 60 RTL-script rows.
+- `validate_wordmap_data.js` — cross-check: `script` contains RTL-script name → `textDirection: 'rtl'` required.
+- `wordmap.html` — modal already handles bidi per Task 129. Confirm rendering is correct on all 60 rows.
+
+Implementation instructions:
+
+**Step 1 — categorize.**
+- **Pure RTL:** Arabic, Hebrew, Syriac, Thaana, Mandaic, N'Ko. ~30 rows.
+- **Mixed (RTL secondary):** Languages with both Latin and Arabic scripts (e.g., Hausa, Tamasheq, Berber). ~25 rows. For these, decide whether `textDirection` is rtl, ltr, or 'auto' based on the *primary* script.
+- **Special:** Adlam (Fula), N'Ko (Bambara) — RTL but recently codified.
+
+**Step 2 — for pure-RTL rows, set `textDirection: 'rtl'`.**
+
+**Step 3 — for mixed-script rows, set `textDirection` based on the primary script in modern usage.**
+- Hausa today uses Latin primarily → `textDirection: 'ltr'`.
+- Persian uses Perso-Arabic → `textDirection: 'rtl'`.
+- Document the decision per row.
+
+**Step 4 — extend validator.**
+- If `script` matches RTL-script keywords without `textDirection` set → WARN.
+
+Validator / static check:
+- `[#193]` RTL script without explicit `textDirection` → WARN.
+- INFO: textDirection coverage `N/M`.
+
+Do not:
+- Do not assume `textDirection: 'rtl'` for every script that includes "Arabic". Some languages list Arabic as a *secondary* script (e.g., Latin/Arabic for Hausa); the primary script determines direction.
+- Do not silently override existing direction handling. Existing CSS `dir="auto"` works for most cases; the explicit field is for accessibility tools and screen readers that benefit from explicit direction.
+
+Done when:
+- All 60 RTL-script rows have `textDirection` set explicitly.
+- Validator `[#193]` reports 0 warnings.
+- Screen-reader testing confirms RTL rows announce direction correctly.
+
+### New Task 194. Backfill `wordEvidence.formType: 'compound'` for the 190 missing multi-word cells
+
+Goal:
+**241 cells have multi-word surface forms; only 51 have `formType: 'compound'` set (21%).** Task 104 added the schema and started annotation but coverage stalled at the priority languages. The remaining 190 cells across ~150 languages render in the modal as ambiguous "is this one word or two?" without the structured tag.
+
+Current issue I checked:
+- Multi-word cells distribution (top 15):
+  - `ahk` Akha: 11 cells, `kha` Khasi: 9 (covered)
+  - `vi`/`vi_c`/`vi_s`: 5 each (covered for sun/moon/heart only — 3/5)
+  - `gor`: 5, `mtq`: 4, `hmn`: 3, `st`: 3, `ve`: 3, `bm`: 3, `nso`: 3, `kac`: 3, `nut`: 3, `yo`: 2
+- 159 languages have at least 1 multi-word cell.
+
+Files to change:
+- `wordmap_meta.js` `FORM_TYPE_OVERLAY` (or static fields per Task 192).
+- `validate_wordmap_data.js` — extend the existing multiword check to enumerate all uncovered.
+
+Implementation instructions:
+
+**Step 1 — auto-flag every multi-word surface cell.**
+- Run a one-time script that finds every `surface` containing whitespace.
+- Output per-language list.
+
+**Step 2 — categorize.**
+- **Lexical compound** (single concept, multi-word surface): `mặt trời` (sun = "face of sky" in Vietnamese), `qhov muag` (eye = "hole eye" in Hmong). Tag `formType: 'compound'`.
+- **Phrase**: `xin chào` (hello), `cảm ơn` (thanks). The phrase IS the citation form, not a compound noun. Tag `formType: 'phrase'` (new value if not in enum).
+- **Article + noun**: Khasi `u jingstad` (the wisdom), where `u` is article. Tag `formType: 'article-noun'` (new value).
+
+**Step 3 — extend `formType` enum if needed.**
+- Currently allowed: `'bound-stem'`, `'reconstructed-root'`, `'agreement-stem'`, `'compound'`.
+- Consider adding: `'phrase'`, `'article-noun'`.
+- Document in CONTRIBUTING.md.
+
+**Step 4 — backfill in batches.**
+- Phase 1: Vietnamese cells (`vi`/`vi_c`/`vi_s` × remaining 2 cells) — small.
+- Phase 2: Akha (11), Khasi remaining, Hmong, top-10 languages.
+- Phase 3: opportunistic.
+
+Validator / static check:
+- `[#194]` multi-word surface without `formType` → WARN.
+- INFO: compound coverage `N/M` of multi-word cells.
+
+Do not:
+- Do not annotate cells whose multi-word surface is incidental (e.g., a translation gloss in parens). Surface should be the lemma; if a cell shows two forms separated by whitespace, decide which is canonical.
+- Do not set `formType: 'compound'` on phrases. The semantic distinction matters for educational use (showing how a word is built).
+
+Done when:
+- All 241 multi-word cells have `formType` in the overlay or static field.
+- Coverage line shows ≥ 95%.
+- Modal renders the appropriate tag for every multi-word cell.
+
+### New Task 195. Adopt the split evidence schemas (`formEvidence` / `pronunciationEvidence` / `conceptEvidence` / `citation`) — 0 cells use them
+
+Goal:
+**Tasks 97 and 133 added structured evidence schemas (`formEvidence`, `pronunciationEvidence`, `conceptEvidence`, structured `citation`) but ZERO cells use them.** Authors continue to use the legacy unified `wordEvidence: { evidence, source }` format. The richer schemas exist but are dead schema — no row demonstrates them, validator's structural checks don't fire, and educational use cases (Task 152's cognate sets, Task 157's citation export) cannot leverage the structured form.
+
+Current issue I checked:
+- `formEvidence:` field count: 0 cells (in both data and meta).
+- `pronunciationEvidence:` field count: 0.
+- `conceptEvidence:` field count: 0.
+- Structured `citation:` field count: 0.
+- Legacy `wordEvidence: { evidence: '...', source: '...' }` is used in ~300 cells.
+
+Files to change:
+- `wordmap_data.js` — migrate the most-recently-edited cells (Pass 12 onwards) to use split schemas.
+- `validate_wordmap_data.js` — make split schema validation actually fire by populating example cells.
+- `CONTRIBUTING.md` — make split schema the documented preferred form for new entries.
+
+Implementation instructions:
+
+**Step 1 — pick a pilot.**
+- Choose ~50 cells across 5 languages where the form, pronunciation, and concept come from clearly distinct sources. Old Korean (`oko`) is a great pilot because forms come from Hyangchal corpus, pronunciations are reconstructed phonology, and concept-meanings come from semantic interpretation — three different evidence streams.
+
+**Step 2 — migrate the pilot cells.**
+- Replace `wordEvidence: { evidence: 'direct', source: 'Lee 2003' }` with:
+  ```
+  wordEvidence: {
+      formEvidence: { evidence: 'direct', citation: { short: 'Lee 2003', type: 'grammar', author: 'Lee, K-M.', year: 2003, title: 'A History of the Korean Language', page: 'p. 47' } },
+      pronunciationEvidence: { evidence: 'reconstructed', citation: { short: 'Lee 2003', type: 'grammar' } },
+      conceptEvidence: { evidence: 'direct', citation: { short: 'Lee 2003', type: 'grammar' } },
+  }
+  ```
+
+**Step 3 — extend modal display.**
+- Modal already supports the split per Task 97. After migration, the pilot cells render `[form: direct; pron: reconstructed; concept: direct]` instead of a single evidence marker.
+
+**Step 4 — update CONTRIBUTING.md.**
+- Document the split schema as preferred for new authoring.
+- Mark the legacy `evidence: + source:` form as deprecated.
+
+**Step 5 — validator escalation.**
+- After ~50 cells use the split, run the validator. The structural checks for split schemas should fire and pass.
+- Add a deprecation warning for new cells using the legacy unified form.
+
+Validator / static check:
+- `[#195]` cell using legacy `wordEvidence: { evidence, source }` only → INFO (deprecated).
+- Coverage line: split-schema adoption `N/M of wordEvidence cells use the split form`.
+
+Do not:
+- Do not migrate every cell at once. The split is more verbose; only adopt where the three streams are genuinely distinct.
+- Do not delete the legacy unified form support from the validator. Many cells still use it; the migration is gradual.
+- Do not create false detail. If form, pronunciation, and concept all come from the same source, the unified form is fine and the split is redundant.
+
+Done when:
+- ≥ 50 cells use the split evidence schema.
+- Validator structural checks for split fields fire and pass on those cells.
+- CONTRIBUTING.md marks split as preferred.
+- Modal correctly renders the split tags on pilot cells.
