@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 635 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 640 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -468,6 +468,21 @@ const LANG_DATA = {
     words: { water:['acqua','akkwa'], fire:['focu','fɔku'], sun:['suli','suli'], moon:['luna','luna'], mother:['matri','matri'], father:['patri','patri'], eat:['manciari','mantʃari'], drink:['vìviri','viviri'], love:['amuri','amuri'], heart:['cori','kɔri'], tree:['àrbulu','arbulu'], house:['casa','kasa'], dog:['cani','kani'], cat:['jattu','jattu'], hand:['manu','manu'], eye:['occhiu','ɔkkju'], hello:['salutamu','salutamu'], thanks:['grazii','ɡrattsii'], one:['unu','unu'], good:['bonu','bɔnu'] }},
   vec: { name: 'Venetian', native: 'Vèneto', lat: 45.44, lng: 12.34,
     words: { water:['aqua','akwa'], fire:['fogo','foɡo'], sun:['sol','sol'], moon:['łuna','ɰuna'], mother:['mare','mare'], father:['pare','pare'], eat:['magnàr','maɲar'], drink:['bévar','bevar'], love:['amor','amor'], heart:['cor','kɔr'], tree:['àrboro','arboro'], house:['caxa','ˈkaza'], dog:['can','kan'], cat:['gato','ɡato'], hand:['man','man'], eye:['ocio','ɔtʃo'], hello:['ciao','tʃao'], thanks:['grassie','ɡrasje'], one:['un','un'], good:['bon','bon'] }},
+  // Corsican — Italo-Dalmatian Romance, ~150K, France (Corsica). Italian-
+  // descended but with French orthographic conventions; closest to
+  // central-southern Italian dialects.
+  co: { name: 'Corsican', native: 'Corsu', lat: 41.92, lng: 8.74, // Ajaccio
+    words: { water:['acqua','akwa'], fire:['focu','fɔku'], sun:['sole','sɔle'], moon:['luna','luna'], mother:['mamma','mamma'], father:['babbu','babːu'], eat:['manghjà','mandʒa'], drink:['beie','beje'], love:['amore','amɔre'], heart:['core','kɔre'], tree:['arburu','arburu'], house:['casa','kaza'], dog:['cane','kane'], cat:['ghjattu','dʒattu'], hand:['manu','manu'], eye:['ochju','ɔkju'], hello:['salute','salute'], thanks:['grazie','ɡratsje'], one:['unu','unu'], good:['bonu','bonu'] }},
+  // Ligurian — Gallo-Italic Romance, ~500K, Italy (Liguria + Mediterranean
+  // diaspora). Conservative final-vowel reduction and distinctive
+  // pronunciation. Reference: Genoese standard.
+  lij: { name: 'Ligurian', native: 'Lìgure', lat: 44.41, lng: 8.93, // Genoa
+    words: { water:['ægoa','ɛɡwa'], fire:['fêugo','føɡu'], sun:['sô','suː'], moon:['lùn-a','lyna'], mother:['moæ','mwɛ'], father:['poæ','pwɛ'], eat:['mangiâ','mandʒaː'], drink:['béive','bejve'], love:['amô','amuː'], heart:['cuô','kwoː'], tree:['ærbo','ɛrbu'], house:['câza','kaːza'], dog:['can','kaŋ'], cat:['gatto','ɡatːu'], hand:['man','maŋ'], eye:['euggio','ødʒu'], hello:['ciâo','tʃaː'], thanks:['graçie','ɡrasje'], one:['un','uŋ'], good:['bon','buŋ'] }},
+  // Arpitan / Franco-Provençal — Gallo-Romance, ~150K, France/Italy/Switzerland.
+  // Distinct from both French and Occitan; UNESCO endangered. Reference
+  // Orthographe de Référence B (ORB).
+  frp: { name: 'Arpitan', native: 'Arpitan', lat: 45.74, lng: 4.84, // Lyon
+    words: { water:['égoua','eɡwɔ'], fire:['fuè','fwɛ'], sun:['solely','sɔlɛj'], moon:['lena','lənə'], mother:['mâre','mar'], father:['pâre','par'], eat:['mengiér','mendʒje'], drink:['bêre','beːr'], love:['amor','amur'], heart:['côr','kɔr'], tree:['âbro','abru'], house:['mêson','meːzɔ̃'], dog:['chen','tʃɛ̃'], cat:['chat','tʃa'], hand:['man','mã'], eye:['uely','œj'], hello:['adiô','adjo'], thanks:['mèrci','mɛrsi'], one:['yon','jɔ̃'], good:['bon','bɔ̃'] }},
   ca: { name: 'Catalan', native: 'Català', lat: 41.39, lng: 2.17,
     words: { water:['aigua','ajɣwə'], fire:['foc','fɔk'], sun:['sol','sɔl'], moon:['lluna','ʎunə'], mother:['mare','maɾə'], father:['pare','paɾə'], eat:['menjar','mənʒa'], drink:['beure','bewɾə'], love:['amor','əmo'], heart:['cor','kɔr'], tree:['arbre','aɾbɾə'], house:['casa','kazə'], dog:['gos','ɡɔs'], cat:['gat','ɡat'], hand:['mà','ma'], eye:['ull','uʎ'], hello:['hola','ɔlə'], thanks:['gràcies','ɡɾasiəs'], one:['un','un'], good:['bo','bɔ'] }},
   gl: { name: 'Galician', native: 'Galego', lat: 42.88, lng: -8.54,
@@ -564,6 +579,11 @@ const LANG_DATA = {
     words: { water:['water','wɔːtə'], fire:['fire','fajə'], sun:['sun','san'], moon:['moon','muːn'], mother:['mother','madə'], father:['father','fadə'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','laf'], heart:['heart','hat'], tree:['tree','tɹiː'], house:['house','haʊs'], dog:['dog','dɔk'], cat:['cat','kɛt'], hand:['hand','hɛn'], eye:['eye','aɪ'], hello:['hello lah','hɛlo lɑː'], thanks:['thanks','tɛŋks'], one:['one','wan'], good:['good','ɡʊt'] }},
   fy: { name: 'West Frisian', native: 'Frysk', lat: 53.20, lng: 5.80,
     words: { water:['wetter','vɛtər'], fire:['fjoer','fjuːr'], sun:['sinne','sɪnə'], moon:['moanne','mwɑnə'], mother:['mem','mɛm'], father:['heit','hait'], eat:['ite','iːtə'], drink:['drinke','drɪŋkə'], love:['leafde','lɪəfdə'], heart:['hert','hɛrt'], tree:['beam','bɪəm'], house:['hûs','huːs'], dog:['hûn','huːn'], cat:['kat','kɑt'], hand:['hân','hɔːn'], eye:['each','ɪəx'], hello:['hoi','hɔi'], thanks:['tankewol','tɑŋkəvɔl'], one:['ien','iːn'], good:['goed','ɡuːd'] }},
+  // Limburgish — West Germanic, ~1.3M, NL Limburg + Belgium + Germany.
+  // Tonal (uniquely among major Germanic varieties — pitch accent like
+  // Norwegian/Swedish but contrastive). Maastricht standard.
+  li: { name: 'Limburgish', native: 'Limburgs', lat: 50.85, lng: 5.69, // Maastricht
+    words: { water:['water','vatər'], fire:['vuur','vyːr'], sun:['zón','zɔn'], moon:['maon','maːʊn'], mother:['mam','mam'], father:['pap','pap'], eat:['ete','eːtə'], drink:['drinke','drɪŋkə'], love:['leefde','leːfdə'], heart:['hart','hart'], tree:['boum','bʌʊm'], house:['hoes','huːs'], dog:['hóndj','hɔnʲ'], cat:['kat','kat'], hand:['handj','hanʲ'], eye:['oug','ɔux'], hello:['hallo','halo'], thanks:['merci','mɛrsi'], one:['eine','ɛɪnə'], good:['good','ɡoːt'] }},
   nn: { name: 'Norwegian Nynorsk', native: 'Nynorsk', lat: 60.39, lng: 5.32,
     words: { water:['vatn','vɑːtn'], fire:['eld','ɛld'], sun:['sol','suːl'], moon:['måne','moːnə'], mother:['mor','muːɹ'], father:['far','fɑːɹ'], eat:['eta','eːtɑ'], drink:['drikka','drɪkːɑ'], love:['kjærleik','çæːɹlɛɪk'], heart:['hjarte','jɑːɹtə'], tree:['tre','tɹeː'], house:['hus','huːs'], dog:['hund','hʉnd'], cat:['katt','kɑtː'], hand:['hand','hɑnd'], eye:['auga','æʉɡɑ'], hello:['hei','hæɪ'], thanks:['takk','tɑkː'], one:['ein','ɛɪn'], good:['god','ɡuːd'] }},
   fo: { name: 'Faroese', native: 'Føroyskt', lat: 62.01, lng: -6.77,
@@ -2891,6 +2911,11 @@ const LANG_DATA = {
     words: { water:['unu','unu'], fire:['nina','nina'], sun:['inti','inti'], moon:['killa','kiʎa'], mother:['mama','mama'], father:['tayta','tajta'], eat:['mikhuy','mikʰuj'], drink:['upyay','upjaj'], love:['munay','munaj'], heart:['sunqu','sunqu'], tree:['sach\'a','satʃʼa'], house:['wasi','wasi'], dog:['alqu','alqu'], cat:['misi','misi'], hand:['maki','maki'], eye:['ñawi','ɲawi'], hello:['rimaykullayki','rimajkuʎajki'], thanks:['añay','aɲaj'], one:['huk','huk'], good:['allin','aʎin'] }},
   quy: { name: 'Ayacucho Quechua', native: 'Chanka Runasimi', lat: -13.16, lng: -74.22, // Ayacucho
     words: { water:['yaku','jaku'], fire:['nina','nina'], sun:['inti','inti'], moon:['killa','kiʎa'], mother:['mama','mama'], father:['tayta','tajta'], eat:['mikuy','mikuj'], drink:['upyay','upjaj'], love:['kuyay','kujaj'], heart:['sunqu','sunqu'], tree:['sacha','satʃa'], house:['wasi','wasi'], dog:['allqu','aʎqu'], cat:['michi','mitʃi'], hand:['maki','maki'], eye:['ñawi','ɲawi'], hello:['napaykullayki','napajkuʎajki'], thanks:['agradecekuyki','aɡradesekujki'], one:['huk','huk'], good:['allin','aʎin'] }},
+  // Shipibo-Conibo — Pano family, ~26K, Peru (Ucayali River basin).
+  // Documented for unique 'song-design' tradition (kené) and complex
+  // evidentiality system.
+  shp: { name: 'Shipibo-Conibo', native: 'Jonibo', lat: -8.39, lng: -74.55, // Pucallpa, Ucayali
+    words: { water:['jene','xene'], fire:['chii','tʃiː'], sun:['bari','bari'], moon:['oxe','oʃe'], mother:['tita','tita'], father:['papa','papa'], eat:['piti','piti'], drink:['xeati','ʃeati'], love:['noi','noi'], heart:['joi','xoi'], tree:['jiwi','xiwi'], house:['xobo','ʃobo'], dog:['ochiti','otʃiti'], cat:['mishi','miʃi'], hand:['mëken','mɯken'], eye:['bero','bero'], hello:['jakon raoma','xakon raoma'], thanks:['gracias','ɡrasjas'], one:['westíora','westioɾa'], good:['jakon','xakon'] }},
   // Arawakan (Caribbean)
   cab: { name: 'Garifuna', native: 'Karifuna', lat: 15.77, lng: -86.79, // La Ceiba
     words: { water:['huya','huja'], fire:['watu','watu'], sun:['weyu','weju'], moon:['hati','hati'], mother:['úguchu','uɡutʃu'], father:['úguchili','uɡutʃili'], eat:['éiga','eiɡa'], drink:['ata','ata'], love:['hínsiñe','hinsiɲe'], heart:['anigi','aniɡi'], tree:['wewe','wewe'], house:['muna','muna'], dog:['aulamu','aulamu'], cat:['meu','meu'], hand:['úhabu','uhabu'], eye:['úgubu','uɡubu'], hello:['mabuiga','mabuiɡa'], thanks:['seremein','seremein'], one:['aban','aban'], good:['buidu','bwidu'] }},

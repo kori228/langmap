@@ -300,4 +300,39 @@ const LANG_NAMES = {
             }
         }
     }
+    // Corsican (co), Ligurian (lij), Arpitan (frp), Limburgish (li), Shipibo-Conibo (shp)
+    const ADDED9 = {
+        co: { en: 'Corsican', ja: 'コルシカ語', ko: '코르시카어', zh: '科西嘉语', yue: '科西嘉語',
+              vi: 'Tiếng Corse', th: 'ภาษาคอร์ซิกา', id: 'Korsika', hi: 'कोर्सीकन',
+              de: 'Korsisch', fr: 'Corse', it: 'Corso',
+              es_eu: 'Corso', es_mx: 'Corso', pt_eu: 'Corso', pt_br: 'Corso',
+              ru: 'Корсиканский', uk: 'Корсиканська', ar: 'الكورسيكية', he: 'קורסיקנית', sw: 'Kikorsika' },
+        lij: { en: 'Ligurian', ja: 'リグーリア語', ko: '리구리아어', zh: '利古里亚语', yue: '利古里亞語',
+               vi: 'Tiếng Liguria', th: 'ภาษาลิกูเรีย', id: 'Liguria', hi: 'लिगुरियन',
+               de: 'Ligurisch', fr: 'Ligurien', it: 'Ligure',
+               es_eu: 'Ligur', es_mx: 'Ligur', pt_eu: 'Lígure', pt_br: 'Lígure',
+               ru: 'Лигурский', uk: 'Лігурська', ar: 'الليغورية', he: 'ליגורית', sw: 'Kiliguria' },
+        frp: { en: 'Arpitan', ja: 'アルピタン語', ko: '아르피탄어', zh: '阿尔皮坦语', yue: '阿爾皮坦語',
+               vi: 'Tiếng Arpitan', th: 'ภาษาอาร์ปีตัน', id: 'Arpitan', hi: 'अर्पीतान',
+               de: 'Frankoprovenzalisch', fr: 'Arpitan', it: 'Arpitano',
+               es_eu: 'Arpitano', es_mx: 'Arpitano', pt_eu: 'Arpitano', pt_br: 'Arpitano',
+               ru: 'Арпитанский', uk: 'Арпітанська', ar: 'الأربيتانية', he: 'ארפיטנית', sw: 'Kiarpitan' },
+        li: { en: 'Limburgish', ja: 'リンブルフ語', ko: '림뷔르흐어', zh: '林堡语', yue: '林堡語',
+              vi: 'Tiếng Limburg', th: 'ภาษาลิมเบิร์ก', id: 'Limburg', hi: 'लिमबर्गिश',
+              de: 'Limburgisch', fr: 'Limbourgeois', it: 'Limburghese',
+              es_eu: 'Limburgués', es_mx: 'Limburgués', pt_eu: 'Limburguês', pt_br: 'Limburguês',
+              ru: 'Лимбургский', uk: 'Лімбурзька', ar: 'الليمبورغية', he: 'לימבורגית', sw: 'Kilimburg' },
+        shp: { en: 'Shipibo-Conibo', ja: 'シピボ・コニボ語', ko: '시피보-코니보어', zh: '希皮博-科尼博语', yue: '希皮博-科尼博語',
+               vi: 'Tiếng Shipibo-Conibo', th: 'ภาษาชิปีโบ-โคนีโบ', id: 'Shipibo-Conibo', hi: 'शिपीबो-कोनीबो',
+               de: 'Shipibo-Conibo', fr: 'Shipibo-Conibo', it: 'Shipibo-Conibo',
+               es_eu: 'Shipibo-Conibo', es_mx: 'Shipibo-Conibo', pt_eu: 'Shipibo-Conibo', pt_br: 'Shipibo-Conibo',
+               ru: 'Шипибо-конибо', uk: 'Шипібо-коніво', ar: 'الشيبيبو-كونيبو', he: 'שיפיבו-קוניבו', sw: 'Kishipibo-Conibo' },
+    };
+    for (const code of Object.keys(ADDED9)) {
+        for (const ui of Object.keys(ADDED9[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED9[code][ui];
+            }
+        }
+    }
 })();
