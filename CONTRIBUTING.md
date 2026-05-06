@@ -929,12 +929,20 @@ Always bump after data changes:
 ```html
 <script src="wordmap_data.js?v=N+1"></script>
 <script src="meta_i18n_ext.js?v=N+1"></script>
+<script src="meta_i18n_coverage.js?v=N+1"></script>
 <script src="lang-filter.js?v=N+1"></script>
 <script src="lang_names.js?v=N+1"></script>
 s.src = 'wordmap_meta.js?v=N+1';
 ```
 
 This keeps the user's browser from serving stale data after a deploy.
+
+`meta_i18n_coverage.js` is a layered patch over `meta_i18n_ext.js` — when adding new
+country / family / script / region phrases, prefer extending the
+<code>COMMON_PHRASES</code> table there (one row per phrase, 11 non-Latin UI columns) and
+the <code>COMMON_PHRASES_LATIN</code> table for de/fr/es/it/pt/id/sw. Don't edit the
+base atoms in <code>meta_i18n_ext.js</code> for compound phrases; the layered approach
+keeps base translations stable and lets coverage iterate without merge churn.
 
 ### I. Cantonese must use Traditional Chinese (recap from §5 above)
 

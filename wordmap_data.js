@@ -61,7 +61,9 @@ const EXCLUDED_CODES = new Set([
   // Korean Peninsula historical
   'oko', 'okg', 'ko_gor',
   // Japonic historical / proto
-  'ja_chu', 'pry'
+  'ja_chu', 'pry',
+  // Pass 35: 5 historical additions
+  'ota', 'cmg', 'ett', 'xht', 'txr',
 ]);
 
 const LANG_DATA = {
@@ -3381,6 +3383,74 @@ const LANG_DATA = {
     words: { water:['danum','danum'], fire:['apui','apui'], sun:['matanandau','matananˈdau'], moon:['bulan','bulan'], mother:['indu','indu'], father:['bapa','bapa'], eat:['kuman','kuman'], drink:['mihop','mihop'], love:['sinta','sinta'], heart:['atei','atei'], tree:['kayu','kaju'], house:['huma','huma'], dog:['asu','asu'], cat:['posa','posa'], hand:['lengen','ləŋən'], eye:['mate','mate'], hello:['tabea','tabea'], thanks:['sahindai','sahindai'], one:['ije','ije'], good:['bahalap','bahalap'] }},
   sda: { name: "Toraja-Sa'dan", native: "Basa Toraya", lat: -2.97, lng: 119.90, // Rantepao
     words: { water:['uai','uai'], fire:['api','api'], sun:['mata allo','mataʔalːo'], moon:['bulan','bulan'], mother:['indo','indo'], father:['ambe','ambe'], eat:['kumande','kumande'], drink:["ma'iru",'maʔiru'], love:["ma'pa'iya",'maʔpaʔija'], heart:['penaa','penaː'], tree:['kayu','kaju'], house:['banua','banua'], dog:['asu','asu'], cat:['serre','serːe'], hand:['lima','lima'], eye:['mata','mata'], hello:['tabe','tabe'], thanks:["kurre sumanga'",'kurːe sumaŋaʔ'], one:['mesa','mesa'], good:['melo','melo'] }},
+
+  // === Pass 35: 10-language batch additions (5 modern endangered + 5 historical) ===
+
+  // Ladin (Dolomite Romance, ~30K speakers in 5 valleys; co-official in Italy's
+  // South Tyrol and Trentino provinces). Sister to Romansh and Friulian within
+  // the Rhaeto-Romance group.
+  lld: { name: 'Ladin', native: 'Lingaz Ladin', lat: 46.57, lng: 11.67, // Ortisei / Urtijëi (Val Gardena)
+    words: { water:['ega','ˈeɡa'], fire:['füch','fyk'], sun:['surëdl','suˈrəːdl'], moon:['löna','ˈløːna'], mother:['oma','ˈoma'], father:['pere','ˈpere'], eat:['mangé','manˈʤe'], drink:['bever','ˈbever'], love:['amor','aˈmoɾ'], heart:['cuer','kweɾ'], tree:['lën','ləŋ'], house:['ciasa','ˈʧaza'], dog:['cian','ʧaŋ'], cat:['giat','ʤat'], hand:['man','maŋ'], eye:['uedl','ʷəːdl'], hello:['bun de','bun de'], thanks:['dilan','diˈlaŋ'], one:['un','un'], good:['bon','boŋ'] }},
+
+  // Saterland Frisian (East Frisian, ~2K speakers in 4 villages of Saterland,
+  // Lower Saxony). The only living East Frisian variety; West Frisian (fy) is
+  // separate, North Frisian also separate.
+  stq: { name: 'Saterland Frisian', native: 'Seeltersk', lat: 53.05, lng: 7.65, // Ramsloh / Saterland
+    words: { water:['Woater','ˈvɔːtɐ'], fire:['Fjuur','fjuːɐ'], sun:['Sunne','ˈzʊnə'], moon:['Moune','ˈmoːnə'], mother:['Mäme','ˈmɛːmə'], father:['Babe','ˈbaːbə'], eat:['ete','ˈeːtə'], drink:['drinke','ˈdrɪŋkə'], love:['Lieuwde','ˈljœːʊdə'], heart:['Häärt','hɛːrt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Huund','huːnt'], cat:['Kat','kat'], hand:['Hounde','ˈhɔʊndə'], eye:['Oge','ˈɔːɣə'], hello:['Moin','moin'], thanks:['Bedoankje','bəˈdɔːŋkjə'], one:['aan','ˈɔːn'], good:['goud','ɡoʊt'] }},
+
+  // Wymysorys (Vilamovian) — endangered Germanic island in Wilamowice, southern
+  // Poland. ~50 speakers, mostly elderly; revitalisation efforts ongoing.
+  // Distinct from neighbouring Polish; resembles Bavarian-Austrian dialects.
+  wym: { name: 'Wymysorys', native: 'Wymysiöeryś', lat: 49.92, lng: 19.15, // Wilamowice
+    words: { water:['wåda','ˈvauda'], fire:['füjer','ˈfyjer'], sun:['zóner','ˈtsɔnɐ'], moon:['mün','myn'], mother:['müter','ˈmytɐ'], father:['foter','ˈfɔtɐ'], eat:['asy','ˈasɪ'], drink:['trynkn','ˈtrɪŋkn'], love:['lib','lib'], heart:['hȧrc','hɐrts'], tree:['bům','buːm'], house:['hous','hoʊs'], dog:['hund','hund'], cat:['kåt','kɔt'], hand:['hand','hand'], eye:['oig','oig'], hello:['yti','ˈytɪ'], thanks:['dynk śejn','dɪnk ʃejn'], one:['ejn','ejn'], good:['gut','ɡut'] }},
+
+  // Yuchi (Euchee) — language isolate of the southeastern US (Oklahoma after
+  // Trail of Tears). Critically endangered, fewer than 5 fluent first-language
+  // speakers. Project documented by Mary Linn (Yuchi grammatical sketch, 2001)
+  // and earlier by Wagner (1934).
+  yuc: { name: 'Yuchi', native: 'Tsoyaha', lat: 35.99, lng: -96.10, // Sapulpa, Oklahoma
+    words: { water:['cha','tʃa'], fire:['tsoda','tsoda'], sun:['dethla','dɛθla'], moon:['zethla','zɛθla'], mother:['ahnʌh','ahnʌh'], father:['—','—'], eat:['gʌ','ɡʌ'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['tsotʔa','tsotʔa'], dog:['shtsé','ʃtsɛ'], cat:['—','—'], hand:['—','—'], eye:['shela','ʃela'], hello:['—','—'], thanks:['—','—'], one:['hahgo','hahɡo'], good:['—','—'] }},
+
+  // Kusunda — language isolate of mid-western Nepal. ~3 partial speakers; the
+  // last fluent speaker died in 2024. Documented in Watters (2006) "Notes on
+  // Kusunda grammar". Lexical set extracted from Watters' field notes.
+  kgg: { name: 'Kusunda', native: 'Mihaq', lat: 28.0, lng: 82.5, // mid-western Nepal (Dang district approx.)
+    words: { water:['tang','tɑŋ'], fire:['yu','ju'], sun:['nəm','nəm'], moon:['pom','pom'], mother:['—','—'], father:['ama','ama'], eat:['təim','təim'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['cigi','t͡siɡi'], house:['gepa','ɡepa'], dog:['ipa','ipa'], cat:['—','—'], hand:['gisi','ɡisi'], eye:['gam','ɡam'], hello:['—','—'], thanks:['—','—'], one:['nu','nu'], good:['—','—'] }},
+
+  // Ottoman Turkish — Turkic Oghuz literary register used 1300-1928, written
+  // in a modified Arabic script (Ottoman alphabet). Distinct from modern
+  // Turkish (tr) by extensive Arabic and Persian vocabulary and orthography.
+  ota: { name: 'Ottoman Turkish', native: 'لسان عثمانی', lat: 41.01, lng: 28.97, // Istanbul
+    words: { water:['سو','su'], fire:['آتش','aˈteʃ'], sun:['كونش','ɡyˈneʃ'], moon:['آی','aj'], mother:['آنه','aˈne'], father:['پدر','peˈdeɾ'], eat:['یمك','jeˈmek'], drink:['ایچمك','itʃˈmek'], love:['عشق','aʃk'], heart:['قلب','kalb'], tree:['آغاج','aˈʁatʃ'], house:['خانه','xaːˈne'], dog:['كوپك','køˈpek'], cat:['كدی','keˈdi'], hand:['ال','el'], eye:['كوز','ɡøz'], hello:['سلام','seˈlaːm'], thanks:['تشكر ادرم','teʃekˈkyɾ edeˈɾim'], one:['بر','biɾ'], good:['ایی','iˈji'] }},
+
+  // Classical Mongolian — Mongolic literary register written in vertical
+  // Mongolian script, used 17-20c. Distinct from xng (Middle Mongol, 13-15c)
+  // and modern Khalkha (mn). Lessing (1960) "Mongolian-English Dictionary"
+  // is the principal reference.
+  cmg: { name: 'Classical Mongolian', native: 'ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ', lat: 40.84, lng: 111.75, // Hohhot (Inner Mongolia, surviving classical-script tradition)
+    words: { water:['ᠤᠰᠤᠨ','usun'], fire:['ᠭᠠᠯ','ɡal'], sun:['ᠨᠠᠷᠠᠨ','naran'], moon:['ᠰᠠᠷᠠ','sara'], mother:['ᠡᠬᠡ','eke'], father:['ᠡᠴᠢᠭᠡ','et͡ʃiɡe'], eat:['ᠢᠳᠡ-','ide-'], drink:['ᠤᠭᠤ-','uɣu-'], love:['ᠬᠠᠶᠢᠷᠠ','xajira'], heart:['ᠵᠢᠷᠦᠬᠡ','d͡ʒirüke'], tree:['ᠮᠣᠳᠤ','modu'], house:['ᠭᠡᠷ','ɡer'], dog:['ᠨᠣᠬᠠᠢ','noxai'], cat:['ᠮᠠᠭᠣ','maɣu'], hand:['ᠭᠠᠷ','ɡar'], eye:['ᠨᠢᠳᠦ','nidü'], hello:['ᠰᠠᠶᠢᠨ ᠤᠤ','sajin uu'], thanks:['ᠪᠠᠶᠠᠷᠯᠠᠯᠠ','bajarlala'], one:['ᠨᠢᠭᠡᠨ','niɡen'], good:['ᠰᠠᠶᠢᠨ','sajin'] }},
+
+  // Etruscan — language isolate of pre-Roman northern Italy (~700 BCE-1c CE),
+  // attested in ~13,000 inscriptions but partly understood. Most basic-vocab
+  // cells unattested in surviving corpus. Reference: Bonfante & Bonfante
+  // (2002) "The Etruscan Language: An Introduction" + Pallottino (1968).
+  ett: { name: 'Etruscan', native: 'Mech Rasnal', lat: 42.25, lng: 11.76, // Tarquinia (major Etruscan city)
+    words: { water:['—','—'], fire:['—','—'], sun:['usil','ˈuzil'], moon:['tiur','ˈtiur'], mother:['ati','ˈati'], father:['apa','ˈapa'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['śuthi','ˈsuθi'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['thu','θu'], good:['—','—'] }},
+
+  // Hattic — language isolate of pre-Hittite central Anatolia (~2400-1700 BCE).
+  // Preserved only in Hittite-Hattic bilingual ritual texts; very small attested
+  // corpus. Reference: Soysal (2004) "Hattischer Wortschatz". Most cells
+  // unattested or contested.
+  xht: { name: 'Hattic', native: 'Hatti', lat: 40.02, lng: 34.62, // Hattusa
+    words: { water:['—','—'], fire:['—','—'], sun:['eštan','ɛʃtan'], moon:['kāp','kaːp'], mother:['ana','ana'], father:['pap','pap'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['pina','pina'], tree:['—','—'], house:['wel','wɛl'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+
+  // Tartessian — language of pre-Roman southwestern Iberia (~7-5c BCE),
+  // attested in ~95 stelae inscriptions in the Tartessian (SW) script.
+  // Decipherment is partial and disputed (Koch 2009 argues Celtic affiliation;
+  // Untermann 1997 treats as non-IE). Most cells unattested as basic vocabulary.
+  txr: { name: 'Tartessian', native: 'Tartessos', lat: 37.64, lng: -7.66, // Mértola, Portugal (main inscription area)
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+
 };
 
 // === Data-status overrides for historical / reconstructed languages ===
@@ -3516,6 +3586,12 @@ const DATA_STATUS_OVERRIDES = {
     zh_song:   'attested',
     zh_han:    'attested',
     zh_tang:   'attested',
+    // Pass 35: 5 historical additions
+    ota:       'attested',         // Ottoman Turkish — extensive 1300-1928 corpus
+    cmg:       'attested',         // Classical Mongolian — vertical-script literary tradition
+    ett:       'fragmentary',      // Etruscan — ~13K inscriptions, partly understood
+    xht:       'fragmentary',      // Hattic — Hittite-Hattic bilinguals only
+    txr:       'fragmentary',      // Tartessian — ~95 inscriptions, decipherment disputed
 };
 
 // === HIST_DESCENDANT (Audit Task 122) ================================
@@ -3553,6 +3629,9 @@ const HIST_DESCENDANT = {
     // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
     orv:'ru', xsc:null, sukh:'th', xmr:null, onw:null, cqu:'qu',
     omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
+    // Pass 35: 5 historical additions (Ottoman→Turkish, Classical Mongolian→Mongolian,
+    // Etruscan/Hattic/Tartessian = isolates with no living descendant)
+    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null,
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)

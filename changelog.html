@@ -57,6 +57,31 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-06</div>
+            <ul>
+                <li><strong>Index page restored</strong> — <code>index.html</code> was throwing <code>ReferenceError: initCtaBanner is not defined</code> on every load (the function lives on the unmerged <code>feature/update_phrase</code> branch, but the call had been added to <code>develop</code>'s <code>index.html</code> alone). Removed the dangling call. The page now initialises correctly again.</li>
+                <li><strong>Word Map UI fully internationalised across all 18+ UI languages</strong> — large batch closing every English-text leak that survived the earlier 5-field corpus check. Now localised:
+                    <ul>
+                        <li><strong>Typology row</strong> (Word order / Tone / Morphology) — values (<em>tonal/non-tonal</em>, <em>agglutinative/fusional/isolating/polysynthetic</em>) and provenance tags (<em>lang/family/?</em>) had been hard-coded English; now per-UI-lang for ja/ko/zh/yue/vi/th/id/hi/de/fr/it/es/pt/ru/uk/ar/he/sw.</li>
+                        <li><strong>DISAMBIGUATORS</strong> (mn_cn / xng / omx / mnw) had only en+ja, now all 18 UI langs.</li>
+                        <li><strong>speakerBasis</strong> (L1 / L2 / total / aggregate / regional-population) — was rendered as the raw English key; L1/L2 now translate to native terms in non-Latin scripts (母語 / 第二言語, 모어 / 제2언어, родной язык / второй язык, اللغة الأم / اللغة الثانية, etc.) while staying as <code>L1</code>/<code>L2</code> in Latin-script UIs where the abbreviation is conventional.</li>
+                        <li><strong>coverageNote</strong> (<em>Word cells inherit Standard Mandarin; Dongbei-specific lexical/pronunciation coverage pending.</em> et al., 10 distinct sentences) now passed through <code>translateMeta()</code> with full per-UI-lang overrides.</li>
+                        <li><strong>Label dictionaries</strong>: <code>COVERAGE_LABEL</code> / <code>REVIEW_STATUS_LABEL</code> / <code>LOCATION_BASIS_LABEL</code> + their headers (was en/ja/ko/zh-only); <code>PRONUNCIATION_LABEL</code> / <code>SURFACE_TYPE_LABEL</code>; <code>LANGUAGE_KIND_BADGE</code> (constructed / pidgin-creole / pedagogical-stage / reconstructed-proto); <code>EVIDENCE_MARKER</code> labels (direct / proxy / reconstructed / inferred / disputed / pedagogical) and <code>EVIDENCE_PREFIX</code> (Source / Note); <code>formTypeLabels</code> (free-word / bound-stem / root / inflected-form / phrase / reconstructed-root / agreement-stem / greeting-formula / thanks-formula / compound / light-verb-construction); variety-role labels (regional-variety / dialect / sibling-language / continuum-member / base) — all now in 18 UI langs.</li>
+                        <li><strong>DATA_STATUS_BADGE descriptions</strong> (the badge's tooltip prose) had only en/ja/ko/zh/de/fr/ru and the JA/KO descs had embedded English words (<em>isolated</em>, <em>proxy</em>, <em>lexicon/grammar</em>, <em>text record</em>, <em>attested</em>); now full 18-lang and English-mixing cleaned.</li>
+                        <li><strong>Top-bar ARIA labels</strong> (search word, UI language, map zoom, zoom in/out, 2D-3D toggle, Form/Pron./Name toggles, name display group, font size, close info, era group, modern/historical tooltip, Random language) — were en/ja/ko/zh-only, now all UI langs.</li>
+                        <li><strong>ON/OFF text on the Form/Pron./Name toggles</strong> — was hard-coded ASCII; now ja:オン/オフ, ko:켜짐/꺼짐, zh:开/关, vi:BẬT/TẮT, ru:ВКЛ/ВЫКЛ, ar:تشغيل/إيقاف, etc.</li>
+                        <li><strong>Compare panel</strong> — <code>COMPARE_I18N</code> (heading / Clear / FAB / Add / Remove / Max-8 message) was en/ja/ko/zh-only and was duplicated inside the langinfo modal; consolidated into one table with all 18 UI langs and refreshed on UI lang change.</li>
+                        <li><strong>eraHelp tooltips</strong> (Modern mode / Historical mode descriptions) — full UI-lang coverage.</li>
+                    </ul>
+                </li>
+                <li><strong>Non-Latin UI Word-Map meta atoms reach 100% coverage</strong> — over twenty rounds of <code>meta_i18n_coverage.js</code> additions for compound country / family / script / region phrases. With conventional Latin acronyms (PFS / POJ / ALMG / ALUPEC / CIP / GEREC / RPA / SudEL / IPA / Ethnologue / RTL / etc.) treated as proper nouns, ja / ko / zh / yue / ru / uk / ar / he / hi / th all hit 100.0% (1788 / 1788). Romance- and Indonesian-script UIs are at 80–86% by the strict "output differs from English" measure (most of the gap is legitimately-identical proper-noun country names).</li>
+                <li><strong>New Family Tree page (<code>tree.html</code>)</strong> — D3-based horizontal dendrogram of all 627 Word-Map languages organised by genealogical family, with Bezier curve branches and family-name i18n. Click any leaf to jump to the language on the Word Map. Linked from the header nav of the other two pages.</li>
+                <li><strong>Cross-page UI-lang persistence (Pass 34)</strong> — header UI-lang dropdown unified across <code>index.html</code> / <code>wordmap.html</code> / <code>tree.html</code>. Cookie <code>wm_uilang</code> remembers the choice on first visit. <code>?ui=xx</code> URL parameter still wins for transient sharing.</li>
+                <li><strong>Word Map size bump</strong> — 617 → <strong>627 languages</strong> from Pass 32–34 audit batches (Sinitic Pinghua / Yue, Vietnam provincial dialects, S. Thailand provinces, Mochica family, Jeju, Akan, etc.).</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-04 (cont. 10)</div>
             <ul>
                 <li><strong>Word Map review (wordmap-check.md) — Phase A through partial Phase D</strong>:
