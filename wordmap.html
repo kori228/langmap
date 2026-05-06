@@ -636,7 +636,8 @@
     </script>
     <script src="wordmap_data.js?v=86"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
-    <script src="lang-filter.js?v=23"></script>
+    <script src="meta_i18n_coverage.js?v=1"></script>
+    <script src="lang-filter.js?v=24"></script>
     <script src="lang_names.js?v=5"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -786,9 +787,9 @@
             styles:    54,
             data:      86,
             metaI18n:  8,
-            filter:    23,
+            filter:    24,
             names:     5,
-            meta:      34,
+            meta:      35,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -876,6 +877,21 @@
                 pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
+            // Audit Task 106: ARIA labels for top-bar controls (en/ja/ko/zh,
+            // English fallback for other UI langs)
+            ariaSelectWord:    { en: 'Select word',                          ja: '単語を選択',         ko: '단어 선택',           zh: '选择词' },
+            ariaUiLanguage:    { en: 'UI language',                          ja: 'UI 言語',            ko: 'UI 언어',             zh: '界面语言' },
+            ariaMapZoom:       { en: 'Map zoom',                             ja: '地図ズーム',         ko: '지도 확대/축소',       zh: '地图缩放' },
+            ariaZoomIn:        { en: 'Zoom in',                              ja: '拡大',               ko: '확대',                zh: '放大' },
+            ariaZoomOut:       { en: 'Zoom out',                             ja: '縮小',               ko: '축소',                zh: '缩小' },
+            aria2D3D:          { en: 'Toggle 2D / 3D view',                  ja: '2D/3D 表示切替',     ko: '2D/3D 보기 전환',     zh: '切换 2D/3D 视图' },
+            ariaToggleForm:    { en: 'Toggle form display',                  ja: '表記の表示切替',     ko: '표기 표시 전환',       zh: '切换写法显示' },
+            ariaTogglePron:    { en: 'Toggle pronunciation display',         ja: '発音表示切替',       ko: '발음 표시 전환',       zh: '切换发音显示' },
+            ariaToggleName:    { en: 'Toggle language-name display',         ja: '言語名表示切替',     ko: '언어명 표시 전환',     zh: '切换语言名显示' },
+            ariaNameGroup:     { en: 'Name display (native / translated)',   ja: '言語名表示（現地名/翻訳）', ko: '언어명 표시 (현지/번역)', zh: '语言名显示（本名/翻译）' },
+            ariaFontSize:      { en: 'Label font size',                      ja: 'ラベル文字サイズ',   ko: '라벨 글꼴 크기',       zh: '标签字体大小' },
+            ariaCloseInfo:     { en: 'Close language info',                  ja: '言語情報を閉じる',   ko: '언어 정보 닫기',       zh: '关闭语言信息' },
+            ariaEraGroup:      { en: 'Era (modern / historical)',            ja: '時代（現代/歴史）',  ko: '시대 (현대/역사)',     zh: '时代（现代/历史）' },
             modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
             historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
             // Audit Task 112: era legend explanation. Modern mode shows
@@ -941,6 +957,29 @@
             // Localize search input placeholder (Audit i18n gap fix)
             const searchInput = document.getElementById('lang-search');
             if (searchInput) searchInput.placeholder = i18n('searchPlaceholder');
+            // Audit Task 106: localize remaining ARIA labels for top-bar
+            // controls. Updates on every UI lang change so screen readers
+            // see the user's chosen language immediately.
+            const ariaTargets = [
+                ['word-select',     'ariaSelectWord',  'aria-label'],
+                ['ui-lang',         'ariaUiLanguage',  'aria-label'],
+                ['map-zoom',        'ariaMapZoom',     'aria-label'],
+                ['map-zoom-in',     'ariaZoomIn',      'aria-label'],
+                ['map-zoom-out',    'ariaZoomOut',     'aria-label'],
+                ['toggle-3d',       'aria2D3D',        'aria-label'],
+                ['toggle-3d',       'aria2D3D',        'title'],
+                ['toggle-word',     'ariaToggleForm',  'aria-label'],
+                ['toggle-ipa',      'ariaTogglePron',  'aria-label'],
+                ['toggle-name',     'ariaToggleName',  'aria-label'],
+                ['name-switch',     'ariaNameGroup',   'aria-label'],
+                ['font-size',       'ariaFontSize',    'aria-label'],
+                ['info-close',      'ariaCloseInfo',   'aria-label'],
+                ['era-switch',      'ariaEraGroup',    'aria-label'],
+            ];
+            for (const [id, key, attr] of ariaTargets) {
+                const el = document.getElementById(id);
+                if (el) el.setAttribute(attr, i18n(key));
+            }
             // Append per-era language counts in parens: "現代言語 (478)" / "歴史言語 (79)"
             let modernCount = 0, historicalCount = 0;
             if (typeof HIST_CODE_SET !== 'undefined' && typeof LANG_DATA !== 'undefined') {
@@ -2253,6 +2292,10 @@
                 'phrase':              { en: 'phrase',                     ja: '句' },
                 'reconstructed-root':  { en: 'reconstructed root',         ja: '再構語根', ko: '재구 어근', zh: '重构词根' },
                 'agreement-stem':      { en: 'noun-class agreement stem',  ja: '名詞クラス一致語幹', ko: '명사 부류 일치 어간', zh: '名词类一致词干' },
+                'greeting-formula':    { en: 'greeting formula',           ja: '挨拶定型句' },
+                'thanks-formula':      { en: 'thanks formula',             ja: '感謝定型句' },
+                'compound':            { en: 'compound',                   ja: '複合語' },
+                'light-verb-construction': { en: 'light-verb construction', ja: '機能動詞構造' },
             };
             let formNote = '';
             if (ev.formType && formTypeLabels[ev.formType]) {
@@ -2260,9 +2303,18 @@
                 const ft = ftObj[ui] || ftObj.en;
                 formNote = ` [${ft}]`;
             }
+            // Audit Task 97: surface the split evidence (form / pronunciation /
+            // concept) when separately recorded, so users see *what* the
+            // source supports — not just the summary evidence label.
+            const splitParts = [];
+            if (ev.formEvidence)         splitParts.push(`form: ${ev.formEvidence}`);
+            if (ev.pronunciationEvidence) splitParts.push(`pron: ${ev.pronunciationEvidence}`);
+            if (ev.conceptEvidence)      splitParts.push(`concept: ${ev.conceptEvidence}`);
+            const split = splitParts.length ? ` {${splitParts.join('; ')}}` : '';
             const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
             const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
-            return label + formNote + src + note;
+            const url = ev.url ? ` <${ev.url}>` : '';
+            return label + formNote + split + src + note + url;
         }
 
         function renderLangInfo(code) {
@@ -2309,10 +2361,49 @@
             if (lang.meta) {
                 html += '<table>';
                 if (m.family) html += `<tr><td>${escapeHtml(wt('family'))}</td><td>${escapeHtml(translateMeta(m.family))}</td></tr>`;
-                if (m.speakers) html += `<tr><td>${escapeHtml(wt('speakers'))}</td><td>${escapeHtml(translateMeta(m.speakers))}</td></tr>`;
+                if (m.speakers) {
+                    // Audit Task 98: append (basis, source year) when present so
+                    // users know whether a number is L1 vs total vs aggregate, and
+                    // which census/year it came from.
+                    let speakerCell = escapeHtml(translateMeta(m.speakers));
+                    if (m.speakerBasis || m.speakerSource || m.speakerYear) {
+                        const parts = [];
+                        if (m.speakerBasis)  parts.push(escapeHtml(m.speakerBasis));
+                        if (m.speakerSource) parts.push(escapeHtml(m.speakerSource));
+                        if (m.speakerYear)   parts.push(String(m.speakerYear));
+                        speakerCell += ` <span style="color:#999;font-size:10px">(${parts.join(', ')})</span>`;
+                    }
+                    html += `<tr><td>${escapeHtml(wt('speakers'))}</td><td>${speakerCell}</td></tr>`;
+                }
                 if (m.countries) html += `<tr><td>${escapeHtml(wt('countries'))}</td><td>${escapeHtml(translateMeta(m.countries))}</td></tr>`;
                 if (m.official) html += `<tr><td>${escapeHtml(wt('official'))}</td><td>${escapeHtml(translateMeta(m.official))}</td></tr>`;
                 if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
+                // Audit Task 117: typology row with provenance hints. Show
+                // word order / tone / morphology and tag each value with
+                // (lang) for manually-curated, (family) for inherited
+                // from family default, or (?) for unknown. Helps users
+                // distinguish source-checked from inferred typology.
+                if (window.__langmap && typeof window.__langmap.getFeatures === 'function') {
+                    const f = window.__langmap.getFeatures(code);
+                    if (f) {
+                        const provLbl = { 'manual-override': 'lang', 'family-default': 'family', 'unknown': '?' };
+                        const provColor = { 'manual-override': '#3a8a3a', 'family-default': '#888', 'unknown': '#bbb' };
+                        const fmtCell = (val, prov) => {
+                            if (val === null || val === undefined) return '<span style="color:#bbb">—</span>';
+                            const v = (typeof val === 'boolean') ? (val ? 'tonal' : 'non-tonal') : String(val);
+                            const tag = (provLbl[prov] || prov);
+                            const c = provColor[prov] || '#888';
+                            return `${escapeHtml(v)} <span style="color:${c};font-size:10px">(${escapeHtml(tag)})</span>`;
+                        };
+                        const woLbl    = { en: 'Word order',  ja: '語順',     ko: '어순',         zh: '语序' };
+                        const toneLbl  = { en: 'Tone',        ja: '声調',     ko: '성조',         zh: '声调' };
+                        const morphLbl = { en: 'Morphology',  ja: '形態論',   ko: '형태론',       zh: '形态' };
+                        const ui = uiLang.split('_')[0];
+                        html += `<tr><td>${escapeHtml(woLbl[ui] || woLbl.en)}</td><td>${fmtCell(f.wo, f.provenance.wo)}</td></tr>`;
+                        html += `<tr><td>${escapeHtml(toneLbl[ui] || toneLbl.en)}</td><td>${fmtCell(f.tone, f.provenance.tone)}</td></tr>`;
+                        html += `<tr><td>${escapeHtml(morphLbl[ui] || morphLbl.en)}</td><td>${fmtCell(f.morph, f.provenance.morph)}</td></tr>`;
+                    }
+                }
                 html += '</table>';
                 if (m.description) {
                     // Audit Task 121: visible fallback label when localized
