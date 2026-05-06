@@ -1620,3 +1620,45 @@ Pass 8〜25 累計 **62 タスク対応 + 28 言語追加 + 4 言語 IPA rebuild
 - Task 149/150: oto/jrb/nmn (外部出典待ち)
 
 Pass 8〜26 累計 **63 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 reclassification + 5 座標分散 + 60+ family token 統一** (591 → 619)。
+
+---
+
+## Pass 27 Sequential Cleanup (2026-05-06 part 20)
+
+### Task 159 final — macro Sinitic 行の sub-branch 確定
+
+| Code | 旧 | 新 |
+|---|---|---|
+| `zh` | Sino-Tibetan | **Sinitic (Mandarin)** |
+| `yue` | Sino-Tibetan | **Sinitic (Yue)** |
+| `nan` | Sino-Tibetan | **Sinitic (Min Nan)** |
+| `hak_cn` | Sino-Tibetan | **Sinitic (Hakka)** |
+| `cdo` | Sino-Tibetan | **Sinitic (Min Dong)** |
+| `zh_db` | Sino-Tibetan | **Sinitic (Mandarin, Northeastern)** |
+| `zh_sc` | Sino-Tibetan | **Sinitic (Mandarin, Southwestern)** |
+
+非 Sinitic の Sino-Tibetan 行も sub-branch を確定:
+- `bo` Tibetan → **Sino-Tibetan (Tibeto-Burman, Bodish)**
+- `my` Burmese → **Sino-Tibetan (Tibeto-Burman, Burmic)**
+
+### Task 160 part 2 — Baxter-Sagart Old/Middle Chinese
+`zh_tang` (Tang Middle Chinese) と `och` (Old Chinese) は Baxter-Sagart の scholarly notation (X = 上聲, H = 去聲, *C. = unidentified prefix) を使用。これは pure IPA ではないため `pronunciationType: 'mixed'` に変更。Audit Option C を採用 (per-cell tone bar 変換は将来作業)。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 17 (変動なし)
+- Languages: 619
+- pronunciationType breakdown 更新: mixed が +2 (zh_tang, och)
+- Cache-buster: meta 48→49
+
+### 残（次回以降）
+- Task 144: UI 多言語化（別スレッド）
+- Task 159 残: Indo-Aryan/Iranian 並列パターン (Indo-Aryan は今 IE prefix なし、Iranian は Iranian prefix 単独 — 両者で揃えるか要 policy 決定)
+- Task 160 part 1 残: zh_tang/och の per-cell scholarly tone → Chao bar 変換 (将来 task)
+- Task 162 残: thanks/hello 文化的 absence vs unsourced
+- Task 163: ASCII affricate → IPA tie-bar
+- Task 164: 再構形表記整合
+- Task 146 残: khb/shn/id/ms/tl/ta/te
+- Task 149 Batch 4: oto Otomi (Lastra)
+- Task 150 Batch H/I: jrb (Anvita Abbi), nmn Taa (Traill)
+
+Pass 8〜27 累計 **64 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 reclassification + 5 座標分散 + 67+ family token 統一** (591 → 619)。
