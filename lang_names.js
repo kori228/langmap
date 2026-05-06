@@ -230,4 +230,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 142 (Tier 2): Hill Mari (mrj), Rohingya (rhg), Chittagonian (ctg)
+    const ADDED6 = {
+        mrj: { en: 'Hill Mari', ja: '西部マリ語', ko: '서부 마리어', zh: '西马里语', yue: '西馬里語',
+               vi: 'Tiếng Mari Tây', th: 'ภาษามารีตะวันตก', id: 'Mari Pegunungan', hi: 'पहाड़ी मारी',
+               de: 'Bergmari', fr: 'Mari des collines', it: 'Mari delle colline',
+               es_eu: 'Mari occidental', es_mx: 'Mari occidental', pt_eu: 'Mari ocidental', pt_br: 'Mari ocidental',
+               ru: 'Горномарийский', uk: 'Гірськомарійська', ar: 'المارية الجبلية', he: 'מארי הררית', sw: 'Kimari cha Milimani' },
+        rhg: { en: 'Rohingya', ja: 'ロヒンギャ語', ko: '로힝야어', zh: '罗兴亚语', yue: '羅興亞語',
+               vi: 'Tiếng Rohingya', th: 'ภาษาโรฮีนจา', id: 'Rohingya', hi: 'रोहिंग्या',
+               de: 'Rohingya', fr: 'Rohingya', it: 'Rohingya',
+               es_eu: 'Rohinyá', es_mx: 'Rohinyá', pt_eu: 'Rohingya', pt_br: 'Rohingya',
+               ru: 'Рохинджа', uk: 'Рохінджа', ar: 'الروهينغية', he: 'רוהינגיה', sw: 'Kirohingya' },
+        ctg: { en: 'Chittagonian', ja: 'チッタゴン語', ko: '치타공어', zh: '吉大港语', yue: '吉大港語',
+               vi: 'Tiếng Chittagong', th: 'ภาษาจิตตะกอง', id: 'Chittagong', hi: 'चिट्टागोनी',
+               de: 'Chittagonisch', fr: 'Chittagonien', it: 'Chittagoniano',
+               es_eu: 'Chitagoniano', es_mx: 'Chitagoniano', pt_eu: 'Chitagoniano', pt_br: 'Chitagoniano',
+               ru: 'Читтагонский', uk: 'Читтагонська', ar: 'الشيتاغونغية', he: 'צ׳יטגוניאנית', sw: 'Kichittagong' },
+    };
+    for (const code of Object.keys(ADDED6)) {
+        for (const ui of Object.keys(ADDED6[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED6[code][ui];
+            }
+        }
+    }
 })();
