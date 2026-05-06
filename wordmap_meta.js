@@ -41,7 +41,7 @@ LANG_DATA['th_n'].meta = { family:'Kra-Dai', speakers:'~6M', countries:'Thailand
 LANG_DATA['th_s'].meta = { family:'Kra-Dai', speakers:'~5M', countries:'Thailand', official:'No (regional)', script:'Thai', description:'Southern Thai (Pak Tai) is spoken along the Malay Peninsula. It features faster speech tempo and vocabulary influenced by Malay.', parentCode:'th' };
 LANG_DATA['id'].meta = { family:'Austronesian', speakers:'~200M (total; L1 ≈ 25-40M, mostly L2/national)', countries:'Indonesia', official:'Indonesia', script:'Latin', description:'Indonesian is the national language of Indonesia, based on Malay. It serves as a lingua franca across 700+ languages and uses a simple non-tonal phonology.', speakerBasis:'total', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'ind', glottocode:'indo1316', sources:[{type:'reference', title:'Ethnologue 27: Indonesian', url:'https://www.ethnologue.com/language/ind/'}] };
 LANG_DATA['ms'].meta = { family:'Austronesian', speakers:'~77M', countries:'Malaysia, Brunei, Singapore', official:'Malaysia, Brunei, Singapore', script:'Latin (Rumi) / Jawi', description:'Malay shares high mutual intelligibility with Indonesian and has historically been written in both Latin and Arabic-derived scripts.' };
-LANG_DATA['bo'].meta = { family:'Sino-Tibetan', speakers:'~6M', countries:'China (Tibet), India, Nepal', official:'Tibet Autonomous Region (co-official)', script:'Tibetan', description:'Tibetan script preserves archaic spelling reflecting Classical Tibetan pronunciation. Spoken across the Tibetan Plateau and Himalayan regions.' };
+LANG_DATA['bo'].meta = { family:'Sino-Tibetan', speakers:'~6M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'bod', countries:'China (Tibet), India, Nepal', official:'Tibet Autonomous Region (co-official)', script:'Tibetan', description:'Tibetan script preserves archaic spelling reflecting Classical Tibetan pronunciation. Spoken across the Tibetan Plateau and Himalayan regions. Lhasa Central Tibetan is the de facto standard with a binary HIGH/LOW tone system derived from written initials (Audit Task 146 source-checked rebuild).', sources:[{type:'reference', title:'Tournadre & Sangda Dorje — Manual of Standard Tibetan'},{type:'reference', title:'Wiktionary Lhasa Tibetan IPA conventions', url:'https://en.wiktionary.org/wiki/Wiktionary:Tibetan_transliteration'},{type:'reference', title:'Ethnologue 27: Tibetan', url:'https://www.ethnologue.com/language/bod/'}] };
 LANG_DATA['ii'].meta = { family:'Sino-Tibetan (Loloish)', speakers:'~2M', countries:'China', official:'Liangshan Yi Autonomous Prefecture', script:'Yi syllabary', description:'Nuosu (Yi) uses a unique syllabary script standardized in 1975. The language features a complex system of tones.' };
 LANG_DATA['za'].meta = { family:'Kra-Dai', speakers:'~16M', countries:'China', official:'Guangxi Zhuang Autonomous Region', script:'Latin / Sawndip', description:'Zhuang is the largest minority language of China. It has a traditional logographic script (Sawndip) dating back over a thousand years.' };
 LANG_DATA['hmn'].meta = { family:'Hmong-Mien', speakers:'~4M', countries:'China, Vietnam, Laos, Thailand, USA', official:'No', script:'Latin (RPA) / Pahawh Hmong', description:'Hmong is tonal with eight tones in most varieties and has multiple writing systems including the Romanized Popular Alphabet.' };
@@ -50,9 +50,9 @@ LANG_DATA['su'].meta = { family:'Austronesian', speakers:'~42M', countries:'Indo
 LANG_DATA['ceb'].meta = { family:'Austronesian', speakers:'~27M', countries:'Philippines', official:'No (regional)', script:'Latin', description:'Cebuano (Bisaya) is the most widely spoken Visayan language in the Philippines.' };
 LANG_DATA['ilo'].meta = { family:'Austronesian', speakers:'~10M', countries:'Philippines', official:'No (regional)', script:'Latin', description:'Ilocano is the third most-spoken native language in the Philippines, dominant in the Ilocos Region of northern Luzon.' };
 LANG_DATA['tl'].meta = { family:'Austronesian', speakers:'~82M (total)', countries:'Philippines', official:'Philippines (as Filipino)', script:'Latin', description:'Tagalog is the basis for Filipino, the national language of the Philippines. It features a complex verb focus system and extensive affixation.' };
-LANG_DATA['km'].meta = { family:'Austroasiatic', speakers:'~16M', countries:'Cambodia', official:'Cambodia', script:'Khmer', description:'Khmer is non-tonal, unlike its neighbors, and has one of the largest alphabets in the world. Inscriptions date to the 7th century.' };
+LANG_DATA['km'].meta = { family:'Austroasiatic', speakers:'~16M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'khm', countries:'Cambodia', official:'Cambodia', script:'Khmer', description:'Khmer is non-tonal, unlike its neighbors, and has one of the largest alphabets in the world. Inscriptions date to the 7th century. IPA rebuilt per Audit Task 146 to remove romanization-style forms (preah/mae/snaehaː/beh/pteah) — Phnom Penh standard.', sources:[{type:'reference', title:'Headley (1977) — Cambodian-English Dictionary'},{type:'reference', title:'Wiktionary Khmer IPA conventions', url:'https://en.wiktionary.org/wiki/Wiktionary:Khmer_transliteration'},{type:'reference', title:'Ethnologue 27: Khmer', url:'https://www.ethnologue.com/language/khm/'}] };
 LANG_DATA['lo'].meta = { family:'Kra-Dai', speakers:'~7M', countries:'Laos', official:'Laos', script:'Lao', description:'Lao is closely related to Thai, sharing significant mutual intelligibility especially with Isan. It has six tones.' };
-LANG_DATA['my'].meta = { family:'Sino-Tibetan', speakers:'~33M', countries:'Myanmar', official:'Myanmar', script:'Myanmar (Burmese)', description:'Burmese is written in a distinctive rounded script derived from Mon. It is tonal with four tones and has significant Pali-Sanskrit vocabulary.' };
+LANG_DATA['my'].meta = { family:'Sino-Tibetan', speakers:'~33M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'mya', countries:'Myanmar', official:'Myanmar', script:'Myanmar (Burmese)', description:'Burmese is written in a distinctive rounded script derived from Mon. It is tonal with four tones (low ̀, high ́, creaky ̰, checked ʔ-final) and has significant Pali-Sanskrit vocabulary. Tone notation normalized per Audit Task 146 source-checked rebuild.', sources:[{type:'reference', title:'Watkins (2001) — Burmese, JIPA 31(2)'},{type:'reference', title:'Ethnologue 27: Burmese', url:'https://www.ethnologue.com/language/mya/'}] };
 LANG_DATA['mn'].meta = { family:'Mongolic', speakers:'~5M', countries:'Mongolia, China', official:'Mongolia', script:'Cyrillic / Traditional Mongolian', description:'Mongolian traces its literary tradition to the 13th-century Secret History of the Mongols. Efforts are underway to revive the traditional vertical script.' };
 LANG_DATA['fj'].meta = { family:'Austronesian', speakers:'~350,000', countries:'Fiji', official:'Fiji', script:'Latin', description:'Fijian has a relatively simple phonology, inclusive/exclusive pronoun distinction, and an important oral tradition.' };
 LANG_DATA['sm'].meta = { family:'Austronesian (Polynesian)', speakers:'~510,000', countries:'Samoa, American Samoa', official:'Samoa', script:'Latin', description:'Samoan features a T/K register distinction and a rich oratory tradition central to fa\'a Samoa culture.' };
@@ -1285,7 +1285,7 @@ const PRONUNCIATION_TYPE = {
     rki: 'broad',
     km: 'mixed', // audit §63 — transliteration mixed with IPA
     lo: 'broad', // audit §61 — tones omitted
-    bo: 'broad', // audit §69 — tone omitted, dialect unclear
+    bo: 'ipa', // Pass 23: Lhasa tones added (audit Task 146)
     // Japanese / Korean
     ja: 'ipa', ja_osa: 'ipa', ja_aom: 'ipa', ja_oki: 'ipa',
     ja_hak: 'ipa', ja_kyo: 'ipa', ja_hir: 'ipa', ja_kg: 'ipa',
@@ -2260,11 +2260,17 @@ const REVIEW_STATUS = {
     non:     'source-checked', sa: 'source-checked', pal: 'source-checked',
     xct:     'source-checked', glk: 'source-checked', lrc: 'source-checked',
     bqi:     'source-checked', juc: 'source-checked',
+    bo:      'source-checked', // Pass 23: Lhasa tones added per Wiktionary Tournadre notation
     // Rows flagged in audit Task 78 / Pass 7 as needing tone/IPA rebuild
     lo:      'needs-rebuild',  // Lao tones almost entirely missing
-    my:      'needs-rebuild',  // Burmese tone notation inconsistent
-    km:      'needs-rebuild',  // Khmer column is transliteration, not IPA
-    bo:      'needs-rebuild',  // Tibetan needs dialect+tone decision
+    // my Burmese: tone notation normalized in Pass 23 — promoted to source-checked
+    // (Watkins 2001 JIPA 4-tone system: low ̀ / high ́ / creaky ̰ / checked ʔ)
+    my:      'source-checked',
+    // km Khmer: IPA rebuilt in Pass 23 — promoted to source-checked
+    // (Wiktionary Khmer IPA conventions, Phnom Penh standard)
+    km:      'source-checked',
+    // bo Tibetan: rebuilt with Lhasa tones in Pass 23 — promoted to source-checked
+    // (Wiktionary Lhasa Tibetan binary HIGH/LOW notation, written-initial-derived)
     khb:     'needs-rebuild',  // Tai Lue tone marks omitted
     shn:     'needs-rebuild',  // Shan tone omitted
     lhu:     'needs-rebuild',  // Lahu surface field has IPA/tone notation
