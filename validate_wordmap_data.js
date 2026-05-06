@@ -666,10 +666,10 @@ const legacyDescCodesList = codes.filter(c => {
     return m && typeof m.description === 'string';
 });
 if (legacyDescCodesList.length) {
-    const list = legacyDescCodesList.length <= 12
-        ? legacyDescCodesList.join(', ')
-        : legacyDescCodesList.slice(0, 12).join(', ') + `, …${legacyDescCodesList.length - 12} more`;
-    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${list} (Audit Task 145)`);
+    // Audit Task 145 Phase C: enumerate ALL offenders. Past truncation
+    // ("…87 more") hid the migration scope; full list lets a contributor
+    // batch-convert in one mechanical pass.
+    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${legacyDescCodesList.join(', ')} (Audit Task 145)`);
 }
 
 // ---- 13b'. Description i18n coverage threshold warnings (Audit Task 121) ----
