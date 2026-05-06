@@ -643,6 +643,16 @@
         const scriptTags = Array.isArray(meta.scriptTags) && meta.scriptTags.length > 0
             ? meta.scriptTags.slice()
             : detectScript(meta.script);
+        // Audit Task 117: track provenance of each typological value so the
+        // UI/validator can distinguish language-specific facts from family
+        // defaults (which may be wrong for any individual language).
+        //   'manual-override'  — curated per-language F[code]
+        //   'family-default'   — derived from family heuristic
+        //   'unknown'          — neither source had a value
+        const woProv    = curated.wo   ? 'manual-override' : (fd.wo   ? 'family-default' : 'unknown');
+        const toneProv  = (typeof curated.tone === 'boolean') ? 'manual-override'
+                        : (typeof fd.tone      === 'boolean') ? 'family-default' : 'unknown';
+        const morphProv = curated.morph ? 'manual-override' : (fd.morph ? 'family-default' : 'unknown');
         const rec = {
             family:  expandFamilies(fam, code),
             script:  scriptTags,
@@ -651,6 +661,8 @@
                    : typeof fd.tone      === 'boolean' ? fd.tone : null,
             morph:   curated.morph || fd.morph || null,
             speaker: parseSpeakerTier(meta.speakers),
+            // Audit Task 117 provenance
+            provenance: { wo: woProv, tone: toneProv, morph: morphProv },
         };
         _featCache.set(code, rec);
         return rec;
@@ -733,6 +745,9 @@
     // (filtered-out) labels no longer push active labels around.
     window.__langmap.passesFilter = function (code) { return passesFilter(code); };
     window.__langmap.anyFilterActive = function () { return anyFilterActive(); };
+    // Audit Task 117: expose featuresFor so wordmap.html modal can show
+    // typology + provenance. featuresFor caches internally so cheap to call.
+    window.__langmap.getFeatures = function (code) { return featuresFor(code); };
 
     function passesFilter(code) {
         const f = featuresFor(code);

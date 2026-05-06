@@ -2081,6 +2081,35 @@ const FORM_TYPE_OVERLAY = {
     xsc: { heart: 'bound-stem' },
     sog: { drink: 'bound-stem' },
     otk: { eat: 'bound-stem', drink: 'bound-stem', love: 'bound-stem' },
+    // Audit Task 104: lexical compound annotations (multiword surface forms
+    // that are nonetheless a single lexical item — a single concept).
+    vi:    { sun: 'compound', moon: 'compound', heart: 'compound' },           // mặt trời, mặt trăng, trái tim
+    vi_c:  { sun: 'compound', moon: 'compound', heart: 'compound' },
+    vi_s:  { sun: 'compound', moon: 'compound', heart: 'compound' },
+    hmn:   { eye: 'compound' },                                                // qhov muag
+    chr:   { moon: 'compound' },                                               // ᏅᏓ ᏒᏃᏱ
+    lkt:   { moon: 'compound' },                                               // haŋhépi wí
+    ty:    { tree: 'compound' },                                               // tumu rā'au
+    rap:   { tree: 'compound' },                                               // tumu rākau
+    mrq:   { tree: 'compound' },                                               // tumu kahi
+    ace:   { sun: 'compound' },                                                // mata uroe
+    bug:   { sun: 'compound' },                                                // mata esso
+    bbc:   { sun: 'compound' },                                                // mata ni ari
+    sas:   { tree: 'compound' },                                               // lolon kayu
+    cho:   { moon: 'compound' },                                               // hashi ninak
+    ljp:   { tree: 'compound' },                                               // batang kayu
+    mos:   { one: 'compound' },                                                // a yɛmbɛr
+    // Khasi (kha): article + noun pattern; whole form functions as the nominal
+    kha:   { sun: 'compound', heart: 'compound', tree: 'compound', house: 'compound', dog: 'compound', cat: 'compound', hand: 'compound', eye: 'compound' },
+    gor:   { sun: 'compound' },     // mata lo dulahu
+    mak:   { sun: 'compound', tree: 'compound' },
+    mtq:   { sun: 'compound', heart: 'compound' },
+    tyz:   { sun: 'compound' },
+    // Akha (ahk) writes most basic words as 2-syllable compounds; tone-bearing
+    ahk:   { water: 'compound', sun: 'compound', moon: 'compound', heart: 'compound', tree: 'compound', dog: 'compound', hand: 'compound', eye: 'compound', one: 'compound', cat: 'compound' },
+    nut:   { sun: 'compound' },
+    kek:   { eye: 'compound' },
+    sda:   { sun: 'compound' },
 };
 for (const code of Object.keys(FORM_TYPE_OVERLAY)) {
     if (!LANG_DATA[code]) continue;
@@ -2089,6 +2118,29 @@ for (const code of Object.keys(FORM_TYPE_OVERLAY)) {
     for (const concept of Object.keys(FORM_TYPE_OVERLAY[code])) {
         if (!wEv[concept]) wEv[concept] = { evidence: 'inferred' };
         if (!wEv[concept].formType) wEv[concept].formType = FORM_TYPE_OVERLAY[code][concept];
+    }
+}
+
+// === Speaker metadata backfill (Audit Task 98) =====================
+// Priority high-traffic languages from Audit Task 80 that lacked the
+// speaker-basis trio (basis/source/year). Adding iso6393 + glottocode
+// where missing too.
+const SPEAKER_BACKFILL = {
+    it: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'ita', glottocode: 'ital1282' },
+    uk: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'ukr', glottocode: 'ukra1253' },
+    ko: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'kor', glottocode: 'kore1280' },
+    th: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'tha', glottocode: 'thai1261' },
+    vi: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'vie', glottocode: 'viet1252' },
+    ms: { speakerBasis: 'total',      speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'msa', glottocode: 'mala1546' },
+    tl: { speakerBasis: 'total',      speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'tgl', glottocode: 'taga1270' },
+    he: { speakerBasis: 'L1',         speakerSource: 'Ethnologue 27', speakerYear: 2024, iso6393: 'heb', glottocode: 'hebr1245' },
+};
+for (const code of Object.keys(SPEAKER_BACKFILL)) {
+    if (!LANG_DATA[code] || !LANG_DATA[code].meta) continue;
+    const m = LANG_DATA[code].meta;
+    const sb = SPEAKER_BACKFILL[code];
+    for (const k of Object.keys(sb)) {
+        if (m[k] === undefined) m[k] = sb[k];
     }
 }
 

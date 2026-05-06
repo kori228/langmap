@@ -432,6 +432,7 @@ const TRUST_LABEL_CONSTS = [
     'COVERAGE_LABEL', 'COVERAGE_HEADER',
     'LOCATION_BASIS_LABEL', 'LOCATION_BASIS_HEADER',
     'LANGUAGE_KIND_BADGE',
+    'REVIEW_STATUS_LABEL', 'REVIEW_STATUS_HEADER',  // Audit Task 108
 ];
 const TRUST_LABEL_PRIORITY_UI = ['en', 'ja', 'ko', 'zh'];
 for (const constName of TRUST_LABEL_CONSTS) {
@@ -449,6 +450,47 @@ for (const constName of TRUST_LABEL_CONSTS) {
         const keyRe = new RegExp(`\\b${ui}\\s*:`);
         if (!keyRe.test(body)) {
             W(`[#18a] ${constName} missing priority UI lang '${ui}' (Audit Task 92)`);
+        }
+    }
+}
+
+// Audit Task 92: required WM_UI table/modal keys must exist in en.
+// (WM_UI lives in wordmap_data.js; I18N_STRINGS for messages lives in
+// wordmap.html and is checked separately below via regex.)
+const REQUIRED_WM_UI_KEYS = [
+    'word', 'ipa', 'wordCol', 'ipaCol', 'concept', 'native', 'name',
+    'family', 'speakers', 'countries', 'official', 'script', 'modern', 'historical',
+];
+const wmUi = ctx.WM_UI || {};
+if (wmUi.en) {
+    for (const key of REQUIRED_WM_UI_KEYS) {
+        if (wmUi.en[key] === undefined) {
+            W(`[#18b] WM_UI.en missing required key '${key}' (Audit Task 92)`);
+        }
+    }
+} else {
+    W(`[#18b] WM_UI.en not found — UI labels likely broken (Audit Task 92)`);
+}
+// Audit Task 92: required I18N_STRINGS keys (in wordmap.html). Use a regex
+// on the source — running the inline JS would require executing the full
+// page. Each key needs en at minimum; ja/ko/zh expected for priority langs.
+const REQUIRED_I18N_KEYS = [
+    'noMatch', 'eraFilterOffHint', 'eraHelpModern', 'eraHelpHistorical', 'sources',
+    'modernDescendant', 'historicalAncestors',
+    'searchPlaceholder',
+    // Audit Task 106 ARIA labels
+    'ariaSelectWord', 'ariaUiLanguage', 'ariaMapZoom', 'ariaZoomIn', 'ariaZoomOut',
+    'aria2D3D', 'ariaToggleForm', 'ariaTogglePron', 'ariaToggleName',
+    'ariaNameGroup', 'ariaFontSize', 'ariaCloseInfo', 'ariaEraGroup',
+];
+const i18nBlock = htmlSrc.match(/const\s+I18N_STRINGS\s*=\s*\{([\s\S]*?)\n\s{8}\};/);
+if (!i18nBlock) {
+    W(`[#18b] wordmap.html: I18N_STRINGS not found (Audit Task 92)`);
+} else {
+    for (const key of REQUIRED_I18N_KEYS) {
+        const re = new RegExp(`\\b${key}\\s*:\\s*\\{[^}]*\\ben\\s*:`);
+        if (!re.test(i18nBlock[1])) {
+            W(`[#18b] I18N_STRINGS missing required key '${key}' with en value (Audit Task 92)`);
         }
     }
 }
@@ -692,13 +734,34 @@ for (const code of codes) {
             if (typeof a !== 'string' || !a.trim()) E(`[#13k] ${code}: meta.aliases entry not a non-empty string: ${JSON.stringify(a)}`);
         }
     }
-    // Audit Task 103: wordEvidence.formType enum (when present)
+    // Audit Task 103/104: wordEvidence.formType enum (when present)
+    // Audit Task 97: split evidence enum (formEvidence / pronunciationEvidence / conceptEvidence)
     if (lang.wordEvidence && typeof lang.wordEvidence === 'object') {
         const FT_ENUM = new Set(['free-word','bound-stem','root','inflected-form','phrase','reconstructed-root','agreement-stem','greeting-formula','thanks-formula','compound','light-verb-construction']);
+        const SPLIT_EV_ENUM = new Set(['direct','proxy','reconstructed','inferred','disputed','pedagogical','noted']);
         for (const k of Object.keys(lang.wordEvidence)) {
             const ev = lang.wordEvidence[k];
-            if (ev && ev.formType !== undefined && !FT_ENUM.has(ev.formType)) {
+            if (!ev) continue;
+            if (ev.formType !== undefined && !FT_ENUM.has(ev.formType)) {
                 E(`[#13q] ${code}: wordEvidence.${k}.formType "${ev.formType}" not in enum (Audit Task 103/104)`);
+            }
+            // Audit Task 97: split-evidence enum check (when present)
+            for (const split of ['formEvidence', 'pronunciationEvidence', 'conceptEvidence']) {
+                if (ev[split] !== undefined && !SPLIT_EV_ENUM.has(ev[split])) {
+                    E(`[#13r] ${code}: wordEvidence.${k}.${split} "${ev[split]}" not in enum (Audit Task 97)`);
+                }
+            }
+            // Audit Task 97: url must be http(s) when present
+            if (ev.url !== undefined) {
+                if (typeof ev.url !== 'string' || !/^https?:\/\//i.test(ev.url)) {
+                    E(`[#13r] ${code}: wordEvidence.${k}.url "${ev.url}" not http(s) (Audit Task 97)`);
+                }
+            }
+            // Audit Task 97: accessed must be ISO date YYYY-MM-DD when present
+            if (ev.accessed !== undefined) {
+                if (typeof ev.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(ev.accessed)) {
+                    W(`[#13r] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" not ISO date (Audit Task 97)`);
+                }
             }
         }
     }
@@ -898,6 +961,38 @@ if (withPronType > 0) {
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`pronunciationType coverage: ${withPronType}/${codes.length} languages (${breakdown}) — Audit Task 76`);
 }
+// Audit Task 104: phrase-vs-word policy.
+// Multiword cells (containing a space in the surface form) are normal for
+// hello/thanks/eat/drink in many languages but suspicious for typically
+// lexical concepts like water/fire/tree/hand/eye/one. Warn only the latter.
+const LEXICAL_CONCEPTS = new Set(['water','fire','tree','hand','eye','one','sun','moon','heart','dog','cat','house']);
+const phraseCounts = {};
+for (const code of codes) {
+    const lang = ctx.LANG_DATA[code];
+    const wEv = lang.wordEvidence || {};
+    for (const w of ctx.WORD_LIST) {
+        const e = lang.words && lang.words[w.id];
+        if (!Array.isArray(e)) continue;
+        const surf = e[0] || '';
+        if (!surf || surf === '—') continue;
+        if (!/\s/.test(surf)) continue;
+        phraseCounts[w.id] = (phraseCounts[w.id] || 0) + 1;
+        if (LEXICAL_CONCEPTS.has(w.id)) {
+            const ev = wEv[w.id];
+            const hasFormType = ev && (ev.formType === 'phrase' || ev.formType === 'compound' || ev.formType === 'light-verb-construction');
+            const hasNote = ev && ev.note;
+            if (!hasFormType && !hasNote) {
+                W(`[#13s] ${code}.${w.id}: lexical concept has multiword value "${surf}" but no wordEvidence.formType / note (Audit Task 104)`);
+            }
+        }
+    }
+}
+{
+    const breakdown = Object.entries(phraseCounts).sort((a,b)=>b[1]-a[1])
+        .map(([k,n])=>`${k}=${n}`).join(', ');
+    if (breakdown) I(`multiword surface forms by concept: ${breakdown} (Audit Task 104)`);
+}
+
 // Audit Task 99: locationBasis coverage tally
 let withLocationBasis = 0;
 const locBasisCounts = {};
