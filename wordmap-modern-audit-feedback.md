@@ -1177,3 +1177,19 @@ Pass 8〜12 で **30 タスク + ユーザー要望 3 件** 対応完了。
 **Validator status**: PASS (0 errors, 17 pre-existing description-i18n warnings — Pass 11/12 と同じ、変動なし)。新 schema (formEvidence/url/accessed/multiword formType) も全て enum/format 検証済。Cache-buster は filter 23→24, meta 34→35 bump。
 
 Pass 8〜13 累計 **36 タスク + ユーザー要望 3 件** 対応完了。
+
+---
+
+## Pass 14 Sequential Cleanup (2026-05-06 part 7)
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 81 | CONTRIBUTING.md に **C2. Pronunciation / IPA Policy** 節追加。`pronunciationType` の各値 ('ipa'/'broad'/'romanization'/'orthography'/'mixed'/'unknown') ごとに stress/tone 要件を明文化。Stress policy: 'ipa' タグ済 OR 全 20 cell sourced rebuild 時のみ追加可、機械的 spelling 由来追加禁止 | CONTRIBUTING.md |
+| Task 90 | Row-fingerprint comparison validator 追加。Exact (20/20) duplicate / surface-only duplicate / parent-child high overlap (18+/20) を検出。既ラベル済の duplicate group は INFO、未ラベルは WARN | validate_wordmap_data.js |
+| Task 116 | Unicode/font/script rendering audit 追加。全データから使用 script を検出 (現在: Coptic/Egyptian Hieroglyphs/Meroitic/Mongolian/New Tai Lue/Old Turkic/Sundanese/Tagalog/Tangut/Tibetan の 10 script)、必要 font が wordmap.html font stack に無ければ WARN。検出した抜け (Noto Sans New Tai Lue) を fontStack + Google Fonts URL に追加。NFC normalization も併せて check | validate_wordmap_data.js, wordmap.html |
+| Task 127 | LocationBasis priority backfill 12 行追加: diaspora/revived (yi/rom/lad/ain/haw/chr) と regional varieties (wuu/hak_cn/ko_yb/mn_cn/th_isan/fr_af) | wordmap_meta.js |
+| Task 133 | `wordEvidence.citation` structured object schema 追加 (`short`/`type`/`title`/`author`/`year`/`url`/`page`/`accessed`)。Type enum: dictionary/grammar/inscription/wordlist/database/article/internal-review/reference。Modal evidence tooltip が citation を `Kane 2009 (dictionary)` 形式で表示、URL も併記 | validate_wordmap_data.js, wordmap.html |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings, 29 INFOs)。新 INFOs に scripts in use / row-fingerprint duplicate groups / multiword summary が含まれる。Cache-buster は meta 35→36 bump。
+
+Pass 8〜14 累計 **41 タスク + ユーザー要望 3 件** 対応完了。

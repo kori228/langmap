@@ -720,6 +720,23 @@ cat: ['—', '—']  // No attested form for this concept
 
 Entries with both `'—'` are now hidden from the map (rendered as "— (unattested)" only in the language detail panel). Do NOT use `'—'` to mean "I don't know" or "fill in later" — that is silent data corruption. If a form exists but you don't have IPA, put the surface form and approximate IPA, then mark in the commit message that IPA needs review.
 
+### C2. Pronunciation / IPA Policy / 発音表記ポリシー (Audit Tasks 76, 81, 94)
+
+The second element in `[surface, ipa]` is governed by `meta.pronunciationType` (Audit Task 76):
+
+| Value | Use when | Stress / tones |
+|---|---|---|
+| `'ipa'` | The row is intended as IPA, including stress/tone where relevant | Required where the language has lexical stress (Italian, Spanish, Russian, Polish) or contrastive tone (Mandarin, Cantonese, Vietnamese, Thai) |
+| `'broad'` | Broad phonemic guide; may omit predictable allophones, stress, or fine phonetics | Stress/tone optional but document the omission in `meta.coverageNote` |
+| `'romanization'` | The second value is primarily a romanization system, not IPA | Use the standard romanization for that language (Pinyin, Hepburn, RR, etc.) |
+| `'orthography'` | The second value mostly copies spelling because the orthography itself is the pronunciation guide | Acceptable for shallow orthographies (Indonesian, Esperanto); document the choice |
+| `'mixed'` | The row visibly mixes systems and needs cleanup | Add `meta.coverageNote` flagging the mixed state |
+| `'unknown'` | Not yet reviewed | Temporary fallback only |
+
+**Stress policy (Audit Task 81)**: stress marks (ˈ/ˌ) should be added to a row only when **either** (a) the row is `pronunciationType: 'ipa'`, **or** (b) you are committing to source-checked IPA across all 20 cells of that row. Adding stress to a few cells of an otherwise stress-less row creates a mixed state — either finish the row or mark `pronunciationType: 'mixed'`. Do not add stress mechanically from spelling.
+
+**Do NOT** mark a row as `'ipa'` without checking it actually represents IPA (e.g. Indonesian `air/air` is orthography, not IPA).
+
 ### D. Coordinates / 座標
 
 `lat/lng` is a single representative point (the prestige center, capital, or historical site). The map auto-stacks labels at duplicate or near-duplicate coordinates, so don't worry about exact uniqueness — use the geographically meaningful point for the speaker community.

@@ -23,7 +23,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -252,6 +252,7 @@
                 "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
                 "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
+                "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
         /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
@@ -781,7 +782,7 @@
             metaI18n:  8,
             filter:    24,
             names:     5,
-            meta:      35,
+            meta:      36,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2303,9 +2304,19 @@
             if (ev.pronunciationEvidence) splitParts.push(`pron: ${ev.pronunciationEvidence}`);
             if (ev.conceptEvidence)      splitParts.push(`concept: ${ev.conceptEvidence}`);
             const split = splitParts.length ? ` {${splitParts.join('; ')}}` : '';
-            const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
+            // Audit Task 133: structured citation supersedes legacy `source`
+            // when present. Builds "Kane 2009 (dictionary)" from citation.short.
+            let src = '';
+            if (ev.citation && ev.citation.short) {
+                let cit = ev.citation.short;
+                if (ev.citation.type) cit += ` (${ev.citation.type})`;
+                src = ` — ${srcPrefix}: ${cit}`;
+            } else if (ev.source) {
+                src = ` — ${srcPrefix}: ${ev.source}`;
+            }
             const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
-            const url = ev.url ? ` <${ev.url}>` : '';
+            const citUrl = (ev.citation && ev.citation.url) ? ev.citation.url : ev.url;
+            const url = citUrl ? ` <${citUrl}>` : '';
             return label + formNote + split + src + note + url;
         }
 

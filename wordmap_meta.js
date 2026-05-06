@@ -1527,6 +1527,20 @@ const LOCATION_BASIS_OVERRIDES = {
     ojp:       'historical-site', // Old Japanese
     och:       'historical-site', // Old Chinese
     vsa:       'historical-site', // Vedic Sanskrit
+    // Audit Task 127: priority backfill — diaspora/revived rows
+    yi:        'approx-region',     // Yiddish: scattered across Europe/Israel/Americas; Ashkenaz centroid (Warsaw area)
+    rom:       'approx-region',     // Romani: pan-European Roma diaspora; representative point only
+    lad:       'approx-region',     // Ladino/Judeo-Spanish: Sephardi diaspora (Istanbul/Thessaloniki/Israel)
+    ain:       'approx-region',     // Ainu: Hokkaido / Sakhalin / Kuril (small remaining speakers)
+    haw:       'approx-region',     // Hawaiian: revival language across Hawaiʻi
+    chr:       'approx-region',     // Cherokee: tribal/community lands (Oklahoma + North Carolina)
+    // Audit Task 127: priority backfill — regional varieties
+    wuu:       'largest-city',      // Wu Chinese: Shanghai is the largest urban variety
+    hak_cn:    'approx-region',     // Hakka: dispersed across S. China + Taiwan + SE Asia
+    ko_yb:     'prestige-center',   // Yanbian Korean: Yanji as cultural center
+    mn_cn:     'approx-region',     // Inner Mongolian: pastoralist range, not a single point
+    th_isan:   'approx-region',     // Isan: Thai/Lao continuum across NE Thailand
+    fr_af:     'approx-region',     // African French: continental representative point
 };
 for (const code of Object.keys(LOCATION_BASIS_OVERRIDES)) {
     if (LANG_DATA[code] && LANG_DATA[code].meta) {

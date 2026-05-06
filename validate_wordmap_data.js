@@ -763,6 +763,32 @@ for (const code of codes) {
                     W(`[#13r] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" not ISO date (Audit Task 97)`);
                 }
             }
+            // Audit Task 133: structured citation object (when present).
+            // Migration-safe: legacy `source` string still supported, but
+            // when `citation` is set it must follow the schema.
+            if (ev.citation !== undefined) {
+                const CIT_TYPE = new Set(['dictionary','grammar','inscription','wordlist','database','article','internal-review','reference']);
+                const cit = ev.citation;
+                if (!cit || typeof cit !== 'object') {
+                    E(`[#13t] ${code}: wordEvidence.${k}.citation must be an object (Audit Task 133)`);
+                } else {
+                    if (!cit.short || typeof cit.short !== 'string') {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation missing 'short' display label (Audit Task 133)`);
+                    }
+                    if (!cit.type || !CIT_TYPE.has(cit.type)) {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation.type "${cit.type}" not in enum (Audit Task 133)`);
+                    }
+                    if (cit.year !== undefined && (typeof cit.year !== 'number' || cit.year < 0 || cit.year > 2100)) {
+                        W(`[#13t] ${code}: wordEvidence.${k}.citation.year invalid (Audit Task 133)`);
+                    }
+                    if (cit.url !== undefined && (typeof cit.url !== 'string' || !/^https?:\/\//i.test(cit.url))) {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation.url not http(s) (Audit Task 133)`);
+                    }
+                    if (cit.accessed !== undefined && (typeof cit.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(cit.accessed))) {
+                        W(`[#13t] ${code}: wordEvidence.${k}.citation.accessed not ISO date (Audit Task 133)`);
+                    }
+                }
+            }
         }
     }
     // Audit Task 108: meta.reviewStatus enum
@@ -991,6 +1017,153 @@ for (const code of codes) {
     const breakdown = Object.entries(phraseCounts).sort((a,b)=>b[1]-a[1])
         .map(([k,n])=>`${k}=${n}`).join(', ');
     if (breakdown) I(`multiword surface forms by concept: ${breakdown} (Audit Task 104)`);
+}
+
+// === Script/font rendering audit (Audit Task 116) ====================
+// Detect which Unicode scripts the data uses, then warn when a script
+// appears but the font stack in wordmap.html doesn't load a font that
+// covers it. This catches "tofu" (missing-glyph) regressions when fonts
+// are reorganized or when a new script is added without font coverage.
+{
+    // Map Unicode block prefix → human script name → required font family
+    const SCRIPT_FONT = [
+        { name: 'Tangut',                range: /[\u{17000}-\u{187FF}\u{18800}-\u{18AFF}]/u, font: 'Noto Serif Tangut' },
+        { name: 'Khitan Small Script',   range: /[\u{18B00}-\u{18CFF}]/u,                    font: 'Noto Sans Khitan Small Script' },
+        { name: 'Manichaean',            range: /[\u{10AC0}-\u{10AFF}]/u,                    font: 'Noto Sans Manichaean' },
+        { name: 'Coptic',                range: /[Ⲁ-⳿\u{102E0}-\u{102FF}]/u,       font: 'Noto Sans Coptic' },
+        { name: 'Egyptian Hieroglyphs',  range: /[\u{13000}-\u{1342F}]/u,                    font: 'Noto Sans Egyptian Hieroglyphs' },
+        { name: 'Meroitic',              range: /[\u{10980}-\u{109FF}]/u,                    font: 'Noto Sans Meroitic' },
+        { name: 'Old Turkic',            range: /[\u{10C00}-\u{10C4F}]/u,                    font: 'Noto Sans Old Turkic' },
+        { name: 'Mongolian',             range: /[᠀-᢯]/u,                          font: 'Noto Sans Mongolian' },
+        { name: 'Sogdian',               range: /[\u{10F30}-\u{10F6F}]/u,                    font: 'Noto Sans Sogdian' },
+        { name: 'Phags-pa',              range: /[ꡀ-꡿]/u,                          font: 'Noto Sans Phags Pa' },
+        { name: 'Tibetan',               range: /[ༀ-࿿]/u,                          font: 'Noto Serif Tibetan' },
+        { name: 'Tagalog',               range: /[ᜀ-ᜟ]/u,                          font: 'Noto Sans Tagalog' },
+        { name: 'Sundanese',             range: /[ᮀ-ᮿ]/u,                          font: 'Noto Sans Sundanese' },
+        { name: 'New Tai Lue',           range: /[ᦀ-᧟]/u,                          font: 'Noto Sans New Tai Lue' },
+    ];
+    const fontStackMatch = htmlSrc.match(/font-family:[^;}]+/g) || [];
+    const fontStack = fontStackMatch.join(' ');
+    const usedScripts = new Set();
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        const native = ctx.LANG_DATA[code]?.native || '';
+        const sample = native + ' ' + Object.values(w).flat().join(' ');
+        for (const s of SCRIPT_FONT) {
+            if (s.range.test(sample)) usedScripts.add(s.name);
+        }
+    }
+    if (usedScripts.size > 0) {
+        I(`scripts in use: ${[...usedScripts].sort().join(', ')} (Audit Task 116)`);
+    }
+    for (const s of SCRIPT_FONT) {
+        if (!usedScripts.has(s.name)) continue;
+        if (fontStack.indexOf(s.font) === -1) {
+            W(`[#116] script ${s.name} appears in data but wordmap.html font stack lacks "${s.font}" (Audit Task 116)`);
+        }
+    }
+    // NFC normalization check: warn if any cell has un-normalized Unicode
+    let nfcIssues = 0;
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            for (const v of w[k]) {
+                if (typeof v === 'string' && v && v.normalize('NFC') !== v) {
+                    nfcIssues++;
+                    if (nfcIssues <= 3) W(`[#116] ${code}.${k}: word value not in Unicode NFC form (Audit Task 116)`);
+                }
+            }
+        }
+    }
+    if (nfcIssues > 3) W(`[#116] (${nfcIssues - 3} more NFC issues — fix all)`);
+}
+
+// === Row-fingerprint comparison (Audit Task 90) =====================
+// Detect duplicate / near-duplicate word rows so reviewers don't rely on
+// ad hoc scripts. Three checks:
+//   exact:        all 20 [surface, pronunciation] pairs identical
+//   surface-only: all 20 surface values identical, pronunciation differs
+//   high-overlap: 18+ of 20 cells identical (excluding exact)
+// Exact duplicates warn unless every non-primary row has coverage+baseLang.
+// Parent/child overlap is INFO if coverage exists, WARN otherwise.
+{
+    const wordIds = ctx.WORD_LIST.map(w => w.id);
+    function fingerprint(c) {
+        const w = ctx.LANG_DATA[c]?.words;
+        if (!w) return null;
+        return wordIds.map(k => Array.isArray(w[k]) ? w[k].join('||') : '').join('');
+    }
+    function surfaceFingerprint(c) {
+        const w = ctx.LANG_DATA[c]?.words;
+        if (!w) return null;
+        return wordIds.map(k => (Array.isArray(w[k]) ? (w[k][0] || '') : '')).join('');
+    }
+    function overlapCount(a, b) {
+        const wa = ctx.LANG_DATA[a]?.words || {};
+        const wb = ctx.LANG_DATA[b]?.words || {};
+        let same = 0;
+        for (const k of wordIds) {
+            if (Array.isArray(wa[k]) && Array.isArray(wb[k])
+                && wa[k][0] === wb[k][0] && wa[k][1] === wb[k][1]) same++;
+        }
+        return same;
+    }
+    // Group by exact fingerprint
+    const fpGroups = {};
+    for (const c of codes) {
+        const fp = fingerprint(c);
+        if (!fp) continue;
+        (fpGroups[fp] = fpGroups[fp] || []).push(c);
+    }
+    const exactDupGroups = Object.values(fpGroups).filter(g => g.length > 1);
+    if (exactDupGroups.length > 0) {
+        for (const grp of exactDupGroups) {
+            const members = grp.join(', ');
+            // First member is treated as the "primary"; all others must have
+            // coverage + baseLang to suppress warning.
+            const [primary, ...rest] = grp;
+            const unlabeled = rest.filter(c => {
+                const m = ctx.LANG_DATA[c].meta || {};
+                return !m.coverage || !m.baseLang;
+            });
+            if (unlabeled.length > 0) {
+                W(`[#90] exact duplicate word rows: ${members} (20/20) — non-primary need meta.coverage + meta.baseLang (Audit Task 90)`);
+            } else {
+                I(`[#90] exact duplicate word rows: ${members} (20/20) — all labeled with coverage/baseLang`);
+            }
+        }
+    }
+    // Surface-only duplicates (same spelling, different pronunciation)
+    const sfGroups = {};
+    for (const c of codes) {
+        const sf = surfaceFingerprint(c);
+        if (!sf) continue;
+        (sfGroups[sf] = sfGroups[sf] || []).push(c);
+    }
+    const surfaceOnlyGroups = Object.values(sfGroups)
+        .filter(g => g.length > 1 && fpGroups[fingerprint(g[0])] !== g);
+    for (const grp of surfaceOnlyGroups) {
+        // De-duplicate against exact-dup groups
+        const fp0 = fingerprint(grp[0]);
+        if (fpGroups[fp0] && fpGroups[fp0].length === grp.length) continue;
+        I(`[#90] surface-only duplicate word rows: ${grp.join(', ')} (same spellings, different pronunciation)`);
+    }
+    // Parent/child high-overlap: child shares 18+ cells with declared parent
+    for (const c of codes) {
+        const m = ctx.LANG_DATA[c].meta || {};
+        if (!m.parentCode) continue;
+        if (!ctx.LANG_DATA[m.parentCode]) continue;
+        const ov = overlapCount(c, m.parentCode);
+        if (ov >= 18) {
+            const tag = `parentCode=${m.parentCode}`;
+            if (m.coverage) {
+                I(`[#90] parent/child high overlap: ${c} vs ${m.parentCode} (${ov}/20; ${tag}, coverage=${m.coverage})`);
+            } else {
+                W(`[#90] parent/child high overlap: ${c} vs ${m.parentCode} (${ov}/20; ${tag}) — needs meta.coverage (Audit Task 90)`);
+            }
+        }
+    }
 }
 
 // Audit Task 99: locationBasis coverage tally
