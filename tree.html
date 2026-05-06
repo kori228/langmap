@@ -817,7 +817,7 @@
         gLinks = gCompress.append('g').attr('class', 'links');
         gNodes = gCompress.append('g').attr('class', 'nodes');
         zoom = d3.zoom()
-            .scaleExtent([0.1, 32])  // wider range — was [0.2, 8] which the user hit after only 3 zoom-in clicks
+            .scaleExtent([0.05, 64])  // very wide range — even with 2× per click, takes 6 clicks to reach max
             .on('zoom', (event) => {
                 g.attr('transform', event.transform);
                 lastTransform = event.transform;
@@ -908,11 +908,11 @@
     // Base ring distance between depth levels (pixels in layout coordinates).
     const RING_STEP_BASE = 130;
     // Compression exponent applied via the inner "compress" g layer.
-    //   EXP = 0 → ring distance and element size scale linearly with k (raw zoom)
-    //   EXP = 1 → ring distance and element size are constant in pixels (no zoom)
-    //   EXP = 0.85 → distances grow slowly (k^0.15) so the user gets a clear
-    //                "more detail revealed" feeling without distances ballooning.
-    const RING_COMPRESSION_EXP = 0.85;
+    //   EXP = 0   → ring distance scales linearly with k (raw zoom growth)
+    //   EXP = 1   → ring distance constant in pixels (no visible zoom)
+    //   EXP = 0.3 → distances grow with k^0.7 — meaningfully responsive to
+    //               zoom without the "things ballooning" feeling at high k.
+    const RING_COMPRESSION_EXP = 0.3;
 
     // Helper for radial layout: convert (angle in radians, radius) → (x, y) in
     // SVG coordinates. Angle 0 = up (12 o'clock), increases clockwise.
@@ -925,33 +925,28 @@
         const nodes = root.descendants();
         const links = root.links();
 
-        // CUSTOM radial layout (replaces d3.tree). Each node's angular slot
-        // is sized by its TOTAL descendant count (visible + hidden _children),
-        // not by visible leaves. This is the key fix for the user-reported
-        // Indo-European oscillation: with the standard d3.tree layout, every
-        // expand/collapse re-distributes 2π among the *visible* leaves, so
-        // top-family centers shift each time a deep child appears. With
-        // pre-reserved slots based on TOTAL leaves, top-family positions are
-        // invariant under expand/collapse — children of an expanded node just
-        // fill in the slots their parent had already reserved.
-        function totalLeaves(n) {
-            const kids = (n.children || n._children) || [];
-            if (kids.length === 0) return 1;
-            let s = 0;
-            for (const c of kids) s += totalLeaves(c);
-            return s;
-        }
+        // CUSTOM radial layout: each node distributes its angular slot
+        // EQUALLY among its children (visible + hidden _children combined),
+        // so node positions are invariant under expand/collapse AND each
+        // ring shows uniformly-spaced siblings (no compressed slots from
+        // small-leaf-count subtrees).
+        //
+        // This fixes two reported issues at once:
+        //  1. Indo-European no longer drifts when descendants are revealed
+        //     — its slot is fixed at 1/N of 2π (N = top-level child count),
+        //     regardless of how many leaves are visible underneath.
+        //  2. Adjacent sibling spacing is uniform per ring — the "non-uniform
+        //     distance" complaint from the previous total-leaves layout.
         function assignRadial(node, startAngle, endAngle, depth) {
             node.x = (startAngle + endAngle) / 2;
             node.y = depth * RING_STEP_BASE;
             const kids = (node.children || node._children) || [];
             if (kids.length === 0) return;
-            const total = kids.reduce((acc, c) => acc + totalLeaves(c), 0);
+            const slot = (endAngle - startAngle) / kids.length;
             let cur = startAngle;
             for (const c of kids) {
-                const w = totalLeaves(c) / total * (endAngle - startAngle);
-                assignRadial(c, cur, cur + w, depth + 1);
-                cur += w;
+                assignRadial(c, cur, cur + slot, depth + 1);
+                cur += slot;
             }
         }
         assignRadial(root, 0, 2 * Math.PI, 0);
