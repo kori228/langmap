@@ -15930,6 +15930,69 @@ const COMMON_PHRASES_LATIN = [
     ['Amami archipelago', 'Amami-Inseln', 'archipel d\'Amami', 'archipiélago de Amami', 'arcipelago di Amami', 'arquipélago de Amami', 'kepulauan Amami', 'visiwa vya Amami'],
     ['Okinawa Islands', 'Okinawa-Inseln', 'îles d\'Okinawa', 'Islas Okinawa', 'Isole Okinawa', 'Ilhas de Okinawa', 'Kepulauan Okinawa', 'Visiwa vya Okinawa'],
     ['Hypothetical homeland: Amami archipelago / Okinawa Islands', 'hypothetische Urheimat: Amami-Inseln / Okinawa-Inseln', 'foyer hypothétique : archipel d\'Amami / îles d\'Okinawa', 'patria hipotética: archipiélago de Amami / Islas Okinawa', 'patria ipotetica: arcipelago di Amami / Isole Okinawa', 'pátria hipotética: arquipélago de Amami / Ilhas de Okinawa', 'tanah air hipotetis: kepulauan Amami / Kepulauan Okinawa', 'nchi ya kufikirika: visiwa vya Amami / Visiwa vya Okinawa'],
+
+    // === Round 27: Latin atoms (regions, common nouns) for compound coverage ===
+    // Regions / peninsulas
+    ['Abkhazia', 'Abchasien', 'Abkhazie', 'Abjasia', 'Abcasia', 'Abecásia', 'Abkhazia', 'Abkhazia'],
+    ['Manchuria', 'Mandschurei', 'Mandchourie', 'Manchuria', 'Manciuria', 'Manchúria', 'Manchuria', 'Manchuria'],
+    ['Korean Peninsula', 'Koreanische Halbinsel', 'péninsule coréenne', 'península de Corea', 'penisola coreana', 'península coreana', 'Semenanjung Korea', 'Rasi ya Korea'],
+    ['Korean Peninsula / Manchuria', 'Koreanische Halbinsel / Mandschurei', 'péninsule coréenne / Mandchourie', 'península de Corea / Manchuria', 'penisola coreana / Manciuria', 'península coreana / Manchúria', 'Semenanjung Korea / Manchuria', 'Rasi ya Korea / Manchuria'],
+    ['Hypothetical homeland: Korean Peninsula / Manchuria', 'hypothetische Urheimat: Koreanische Halbinsel / Mandschurei', 'foyer hypothétique : péninsule coréenne / Mandchourie', 'patria hipotética: península de Corea / Manchuria', 'patria ipotetica: penisola coreana / Manciuria', 'pátria hipotética: península coreana / Manchúria', 'tanah air hipotetis: Semenanjung Korea / Manchuria', 'nchi ya kufikirika: Rasi ya Korea / Manchuria'],
+    // Khanate
+    ['Khanate', 'Khanat', 'khanat', 'janato', 'khanato', 'canato', 'Kekhanan', 'Ukhani'],
+    ['Karakhanid', 'Karakhanid', 'karakhanide', 'karajánida', 'karakhanide', 'caracânida', 'Karakhanid', 'Karakhanid'],
+    ['Karakhanid Khanate', 'Karakhaniden-Khanat', 'khanat karakhanide', 'janato karajánida', 'khanato karakhanide', 'canato caracânida', 'Kekhanan Karakhanid', 'Ukhani wa Karakhanid'],
+    // cuneiform / oral / creole
+    ['cuneiform', 'Keilschrift', 'cunéiforme', 'cuneiforme', 'cuneiforme', 'cuneiforme', 'aksara paku', 'maandishi ya kabari'],
+    ['Old Persian cuneiform', 'altpersische Keilschrift', 'cunéiforme vieux-perse', 'cuneiforme persa antiguo', 'cuneiforme persiano antico', 'cuneiforme persa antigo', 'aksara paku Persia Kuno', 'maandishi ya kabari ya Kiajemi cha Kale'],
+    ['oral', 'mündlich', 'oral', 'oral', 'orale', 'oral', 'lisan', 'mdomo'],
+    ['Originally oral', 'ursprünglich mündlich', 'à l\'origine oral', 'originalmente oral', 'originariamente orale', 'originalmente oral', 'awalnya lisan', 'awali mdomo'],
+    ['Originally oral; later Brāhmī, Devanagari', 'ursprünglich mündlich; später Brāhmī, Devanagari', 'à l\'origine oral ; plus tard Brāhmī, Devanagari', 'originalmente oral; luego Brāhmī, Devanagari', 'originariamente orale; poi Brāhmī, Devanagari', 'originalmente oral; depois Brāhmī, Devanagari', 'awalnya lisan; kemudian Brāhmī, Devanagari', 'awali mdomo; baadaye Brāhmī, Devanagari'],
+    ['creole', 'Kreol', 'créole', 'criollo', 'creolo', 'crioulo', 'kreol', 'Krioli'],
+    ['Portuguese-based creole', 'portugiesisch-basiertes Kreol', 'créole à base portugaise', 'criollo de base portuguesa', 'creolo a base portoghese', 'crioulo de base portuguesa', 'kreol berbasis Portugis', 'Krioli ya msingi wa Kireno'],
+    ['English-based creole', 'englisch-basiertes Kreol', 'créole à base anglaise', 'criollo de base inglesa', 'creolo a base inglese', 'crioulo de base inglesa', 'kreol berbasis Inggris', 'Krioli ya msingi wa Kiingereza'],
+    ['French-based creole', 'französisch-basiertes Kreol', 'créole à base française', 'criollo de base francesa', 'creolo a base francese', 'crioulo de base francesa', 'kreol berbasis Prancis', 'Krioli ya msingi wa Kifaransa'],
+    // regions / later / earlier / Originally
+    ['regions', 'Regionen', 'régions', 'regiones', 'regioni', 'regiões', 'wilayah', 'maeneo'],
+    ['region', 'Region', 'région', 'región', 'regione', 'região', 'wilayah', 'eneo'],
+    ['later', 'später', 'plus tard', 'luego', 'poi', 'depois', 'kemudian', 'baadaye'],
+    ['earlier', 'früher', 'plus tôt', 'antes', 'prima', 'antes', 'sebelumnya', 'mapema'],
+    ['Originally', 'ursprünglich', 'à l\'origine', 'originalmente', 'originariamente', 'originalmente', 'awalnya', 'awali'],
+    ['originally', 'ursprünglich', 'à l\'origine', 'originalmente', 'originariamente', 'originalmente', 'awalnya', 'awali'],
+    ['historically', 'historisch', 'historiquement', 'históricamente', 'storicamente', 'historicamente', 'secara historis', 'kihistoria'],
+    ['historical', 'historisch', 'historique', 'histórico', 'storico', 'histórico', 'historis', 'kihistoria'],
+    // -influenced
+    ['influenced', 'beeinflusst', 'influencé', 'influenciado', 'influenzato', 'influenciado', 'dipengaruhi', 'iliyoathiriwa'],
+    ['Majapahit-influenced', 'von Majapahit beeinflusst', 'influencé par Majapahit', 'influenciado por Majapahit', 'influenzato da Majapahit', 'influenciado por Majapahit', 'dipengaruhi Majapahit', 'iliyoathiriwa na Majapahit'],
+    ['Srivijaya, later Majapahit-influenced regions', 'Srivijaya, später von Majapahit beeinflusste Regionen', 'Srivijaya, plus tard régions influencées par Majapahit', 'Srivijaya, luego regiones influenciadas por Majapahit', 'Srivijaya, poi regioni influenzate da Majapahit', 'Srivijaya, depois regiões influenciadas por Majapahit', 'Sriwijaya, kemudian wilayah dipengaruhi Majapahit', 'Srivijaya, baadaye maeneo yaliyoathiriwa na Majapahit'],
+    // Russian republics phrasing
+    ['Russian', 'russisch', 'russe', 'ruso', 'russo', 'russo', 'Rusia', 'Kirusi'],
+    ['Russian republics', 'russische Republiken', 'républiques russes', 'repúblicas rusas', 'repubbliche russe', 'repúblicas russas', 'republik-republik Rusia', 'jamhuri za Kirusi'],
+    // Han characters / Hangul / Hanja / Kanji etc — keep as proper nouns for Latin UIs
+    ['Han characters', 'Han-Schriftzeichen', 'caractères han', 'caracteres han', 'caratteri han', 'caracteres han', 'aksara Han', 'herufi za Han'],
+    ['Han characters / POJ', 'Han-Schriftzeichen / POJ', 'caractères han / POJ', 'caracteres han / POJ', 'caratteri han / POJ', 'caracteres han / POJ', 'aksara Han / POJ', 'herufi za Han / POJ'],
+    ['Han characters / PFS romanization', 'Han-Schriftzeichen / PFS-Romanisierung', 'caractères han / romanisation PFS', 'caracteres han / romanización PFS', 'caratteri han / romanizzazione PFS', 'caracteres han / romanização PFS', 'aksara Han / romanisasi PFS', 'herufi za Han / urumi wa PFS'],
+    // (international) etc
+    ['(international)', '(international)', '(international)', '(internacional)', '(internazionale)', '(internacional)', '(internasional)', '(kimataifa)'],
+    ['international', 'international', 'international', 'internacional', 'internazionale', 'internacional', 'internasional', 'kimataifa'],
+    ['Romance-language readership', 'romanischsprachige Leserschaft', 'lectorat des langues romanes', 'lectores de lenguas romances', 'lettori delle lingue romanze', 'leitores das línguas românicas', 'pembaca bahasa Roman', 'wasomaji wa lugha za Roman'],
+    ['(international, Romance-language readership)', '(international, romanischsprachige Leserschaft)', '(international, lectorat des langues romanes)', '(internacional, lectores de lenguas romances)', '(internazionale, lettori delle lingue romanze)', '(internacional, leitores das línguas românicas)', '(internasional, pembaca bahasa Roman)', '(kimataifa, wasomaji wa lugha za Roman)'],
+    // 'and ... historically'
+    ['post-1991 standardized', 'nach 1991 standardisiert', 'standardisé après 1991', 'estandarizado después de 1991', 'standardizzato dopo il 1991', 'padronizado após 1991', 'distandarisasi pasca-1991', 'iliyowekwa kiwango baada ya 1991'],
+    ['Latin (post-1991 standardized) and Ge\'ez (Ethiopic) historically', 'Lateinisch (nach 1991 standardisiert) und Ge\'ez (Äthiopisch) historisch', 'latin (standardisé après 1991) et ge\'ez (éthiopien) historiquement', 'latín (estandarizado después de 1991) y ge\'ez (etiópico) históricamente', 'latino (standardizzato dopo il 1991) e ge\'ez (etiopico) storicamente', 'latim (padronizado após 1991) e ge\'ez (etíope) historicamente', 'Latin (distandarisasi pasca-1991) dan Ge\'ez (Etiopia) secara historis', 'Kilatini (iliyowekwa kiwango baada ya 1991) na Ge\'ez (Kihabeshi) kihistoria'],
+    // ~16M (Ethnologue) — sometimes counted as Hindi dialect
+    ['sometimes counted as Hindi dialect', 'manchmal als Hindi-Dialekt gezählt', 'parfois compté comme dialecte hindi', 'a veces contado como dialecto del hindi', 'a volte contato come dialetto dell\'hindi', 'às vezes contado como dialeto do hindi', 'kadang dihitung sebagai dialek Hindi', 'wakati mwingine huhesabiwa kama lahaja ya Kihindi'],
+    ['~16M (Ethnologue) — sometimes counted as Hindi dialect', '~16M (Ethnologue) — manchmal als Hindi-Dialekt gezählt', '~16M (Ethnologue) — parfois compté comme dialecte hindi', '~16M (Ethnologue) — a veces contado como dialecto del hindi', '~16M (Ethnologue) — a volte contato come dialetto dell\'hindi', '~16M (Ethnologue) — às vezes contado como dialeto do hindi', '~16M (Ethnologue) — kadang dihitung sebagai dialek Hindi', '~16M (Ethnologue) — wakati mwingine huhesabiwa kama lahaja ya Kihindi'],
+    // Cherokee Nation
+    ['Cherokee', 'Cherokee', 'cherokee', 'cheroqui', 'cherokee', 'cherokee', 'Cherokee', 'Cherokee'],
+    ['Cherokee Nation', 'Cherokee-Nation', 'Nation cherokee', 'Nación Cheroqui', 'Nazione Cherokee', 'Nação Cherokee', 'Bangsa Cherokee', 'Taifa la Cherokee'],
+    // Curaçao, Aruba, Bonaire
+    ['Curaçao, Aruba', 'Curaçao, Aruba', 'Curaçao, Aruba', 'Curazao, Aruba', 'Curaçao, Aruba', 'Curaçao, Aruba', 'Curaçao, Aruba', 'Curaçao, Aruba'],
+    ['Curaçao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire', 'Curazao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire', 'Curaçao, Aruba, Bonaire'],
+    // Devanagari / Ranjana / Prachalit Nepal
+    ['Ranjana', 'Ranjana', 'rañjana', 'ranjana', 'ranjana', 'ranjana', 'Ranjana', 'Ranjana'],
+    ['Prachalit Nepal', 'Prachalit-Nepal', 'prachalit népalais', 'prachalit nepalí', 'prachalit nepalese', 'prachalit nepalês', 'Prachalit Nepal', 'Prachalit Nepal'],
+    ['Devanagari / Ranjana / Prachalit Nepal', 'Devanagari / Ranjana / Prachalit-Nepal', 'devanagari / rañjana / prachalit népalais', 'devanagari / ranjana / prachalit nepalí', 'devanagari / ranjana / prachalit nepalese', 'devanagari / ranjana / prachalit nepalês', 'Devanagari / Ranjana / Prachalit Nepal', 'Devanagari / Ranjana / Prachalit Nepal'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
