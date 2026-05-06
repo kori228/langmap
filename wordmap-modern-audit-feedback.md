@@ -1268,3 +1268,24 @@ Pass 8〜16 累計 **46 タスク + ユーザー要望 3 件** 対応完了 (+ 4
 **Validator status**: PASS (0 errors, 17 pre-existing warnings — Pass 16 と同じ)。Languages: **603** (modern 517, historical 86)。Cache-buster は data 88→89, names 6→7, meta 38→39 bump。
 
 Pass 8〜17 累計 **46 タスク + Tier 1 言語 4 + Tier 1 残 + Tier 2 partial で計 8 言語追加** (591→603 langs)。
+
+---
+
+## Pass 18 Sequential Cleanup (2026-05-06 part 11)
+
+監査ファイルに新規追加された **Verification Sweep** (Tasks 143-148) に対応。
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 143 | **完了確認**: Pass 16/17 で cv/dv/tzh/mdf/kpv/koi/rmy/smj/smn/sms/vep/vot は既に全 21 UI 言語の lang_names 入り。bxr/nci も既存。validator の lang_names 警告は既に 0 | (verified) |
+| Task 145 (Phase A) | 19 行の string-form `description` を `{ en: '...' }` object 形式に機械的変換 (cv/dv/tzh/mdf/kpv/koi/rmy/smj/smn/sms/vep/vot/azb/gag/arq/mey/sma/vro/tmh)。validator の string-description 警告も full enumeration に拡張。Phase B (ja/ko/zh translations) は次回以降 | wordmap_meta.js, validate_wordmap_data.js |
+| Task 148 | `ja_kyo`/`ja_heian`/`ja_chu` の同一 Kyoto 座標 (35.01, 135.77) クラスタを分散: <br>- `ja_kyo` 京都御所 (35.01, 135.77) — 維持<br>- `ja_heian` → 平安京西側 / 平安宮跡 (35.05, 135.74)<br>- `ja_chu` → **鎌倉** (35.32, 139.55) — 平家物語 (鎌倉期成立) を主資料とする本行の地理的整合 | wordmap_data.js |
+
+**Validator status**: PASS (0 errors, **15 warnings** ↓ from 17)。`[#14]` coord cluster 警告 + string-description 警告が解消。残り 15 はすべて pre-existing description-i18n coverage 関連 (Task 144 の対象)。Cache-buster は data 89→90, meta 39→40 bump。
+
+### 残 (新タスク 144/146/147)
+- **Task 144**: 15 UI 言語の description-i18n を 95% threshold 以上に。最も影響が大きい batch (ja_chu/pry/oko/okg/ko_gor 等の歴史言語+最近追加分の翻訳)。次回以降の重い翻訳作業
+- **Task 146**: Pass 7 deferred (`my`/`km`/`id`/`ms`/`tl`/`ta`/`te`/`bo`) per-language IPA rebuilds — 各言語 source-cited rebuild が必要
+- **Task 147**: Pass 2-6 deferred policy items — CONTRIBUTING.md への大幅追加が先行必要
+
+Pass 8〜18 累計 **49 タスク + 12 言語追加** (591→603) + 4 件の verification 完了。

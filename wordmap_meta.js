@@ -2384,6 +2384,19 @@ for (const code of Object.keys(SCRIPT_TAGS)) {
     }
 }
 
+// === Mechanical string→object description migration (Audit Task 145) ===
+// Phase A of Task 145: convert any remaining string descriptions to
+// `{ en: '...' }` shape so the validator's coverage logic can count them.
+// Phase B (per-language ja/ko/zh translations) is still pending and tracked
+// separately; this pass only resolves the schema warning.
+for (const code of Object.keys(LANG_DATA)) {
+    const m = LANG_DATA[code] && LANG_DATA[code].meta;
+    if (m && typeof m.description === 'string') {
+        const en = m.description;
+        m.description = { en };
+    }
+}
+
 // === Surface dataStatus into meta (per wordmap-check-2.md §C4) ===
 // Copy explicit DATA_STATUS_OVERRIDES (defined in wordmap_data.js) into
 // each language's meta so validators and downstream consumers can read it

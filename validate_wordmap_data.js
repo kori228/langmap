@@ -647,12 +647,17 @@ const totalDescCodes = codes.filter(c => {
     const m = ctx.LANG_DATA[c].meta;
     return m && typeof m.description === 'object';
 }).length;
-// Legacy string-desc count
-const legacyDescCodes = codes.filter(c => {
+// Legacy string-desc count + enumeration (Audit Task 145)
+const legacyDescCodesList = codes.filter(c => {
     const m = ctx.LANG_DATA[c].meta;
     return m && typeof m.description === 'string';
-}).length;
-if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a string (not object) — UI lang fallback to English`);
+});
+if (legacyDescCodesList.length) {
+    const list = legacyDescCodesList.length <= 12
+        ? legacyDescCodesList.join(', ')
+        : legacyDescCodesList.slice(0, 12).join(', ') + `, …${legacyDescCodesList.length - 12} more`;
+    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${list} (Audit Task 145)`);
+}
 
 // ---- 13b'. Description i18n coverage threshold warnings (Audit Task 121) ----
 // Phase 1: WARN if any UI lang's description coverage falls below 95%.

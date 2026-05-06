@@ -1015,7 +1015,10 @@ const LANG_DATA = {
     words: { water:['水','ɕyɪX'], fire:['火','xuɑX'], sun:['日','ȵit'], moon:['月','ŋʉɐt'], mother:['母','muX'], father:['父','bɨoX'], eat:['食','ʑik'], drink:['飲','ʔimX'], love:['愛','ʔɑiH'], heart:['心','sim'], tree:['木','muk'], house:['屋','ʔuk'], dog:['犬','kʰiuɛnX'], cat:['貓','mæw'], hand:['手','ɕɨuX'], eye:['目','muk'], hello:['萬福','mʉɐnH piuk'], thanks:['謝','ziɛH'], one:['一','ʔit'], good:['善','dʑiɛnX'] }},
   ja_edo: { name: 'Japanese (Edo)', native: '江戸言葉', lat: 35.68, lng: 139.69,
     words: { water:['水','midzu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['おっかさん','okkasaN'], father:['おとっつぁん','otottsaɴ'], eat:['食う','kuː'], drink:['飲む','nomu'], love:['恋','kohi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よう','ɡokiɡeɴjoː'], thanks:['忝い','katadʑikenai'], one:['一','hitotsu'], good:['良い','joi'] }},
-  ja_heian: { name: 'Japanese (Heian)', native: '平安京言葉', lat: 35.01, lng: 135.77,
+  // Audit Task 148: shifted from Kyoto Gosho (35.01, 135.77) to Heian-kyō
+  // historical western palace area so ja_heian / ja_kyo / ja_chu no longer
+  // cluster on a single coordinate. Heian-jingū / former 平安宮 site.
+  ja_heian: { name: 'Japanese (Heian)', native: '平安京言葉', lat: 35.05, lng: 135.74,
     words: { water:['水','midu'], fire:['火','ɸi'], sun:['日','ɸi'], moon:['月','tukï'], mother:['母','ɸaɸa'], father:['父','titï'], eat:['食ふ','kaɸu'], drink:['飲む','nomu'], love:['恋','koɸi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','iɸe'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['あなかしこ','anakasiko'], thanks:['忝なし','katadikenaɕi'], one:['一つ','ɸitotu'], good:['良し','joɕi'] }},
   // Middle Japanese (中世日本語) — Kamakura-Muromachi (1185-1603).
   // Best attested via Heike Monogatari (~1240), Tsurezuregusa (1330),
@@ -1023,7 +1026,10 @@ const LANG_DATA = {
   // Jesuit missionaries — first systematic phonetic record of Japanese.
   // Phonological transitions: p- → ɸ- (and later h-); -e- diphthong-
   // simplification; verb conjugation regularization.
-  ja_chu: { name: 'Middle Japanese', native: '中世日本語', lat: 35.01, lng: 135.77, // Kyoto (linguistic center throughout Kamakura-Muromachi)
+  // Audit Task 148: shifted to Kamakura (Kamakura-period political/cultural
+  // center, ~1185-1333) since Heike Monogatari is the principal source for
+  // this row. Splits the cluster of three Japanese-stage rows at Kyoto.
+  ja_chu: { name: 'Middle Japanese', native: '中世日本語', lat: 35.32, lng: 139.55, // Kamakura
     words: { water:['水','midu'], fire:['火','ɸi'], sun:['日','ɸi'], moon:['月','tuki'], mother:['母','ɸaɸa'], father:['父','titi'], eat:['食ふ','kuɸu'], drink:['飲む','nomu'], love:['愛','ai'], heart:['心','kokoro'], tree:['木','ki'], house:['家','iɸe'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よろしう','ɡokiɡen joroɕiu'], thanks:['忝し','katadʑikenaɕi'], one:['一つ','ɸitotu'], good:['良し','joɕi'] }},
   // Proto-Ryukyuan (PR) — reconstructed common ancestor of all Ryukyuan
   // languages (Okinawan, Miyako, Yaeyama, Yonaguni). Diverged from

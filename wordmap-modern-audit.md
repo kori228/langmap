@@ -5602,3 +5602,231 @@ Done when:
 - Sign-language modality decision is documented in CONTRIBUTING and at least the chosen option is implemented for `ase` and `bfi` as the first two pilots — or, if Option C is chosen, the deferral and reasoning are recorded in this audit file.
 - `node validate_wordmap_data.js` passes; modality-aware rules (if added) cover the new rows.
 - Changelog credits the gap analysis (2026-05-06) and lists the additions.
+
+---
+
+## Verification Sweep (2026-05-06 part 9)
+
+This block records what is *still open* after a source-vs-feedback verification of `wordmap-modern-audit-feedback.md`. The feedback file claims many tasks complete; verification confirmed almost all schema/UI claims (codeType 595/595, languageKind, surfaceType, locationBasis, scriptDisplayPolicy, formType/citation, WM_ASSET_VERSION, hash/popstate, combobox ARIA, dialog focus, CDN fallback, RTL bidi, era help icon, multiword formType, GitHub Actions CI, legacy script headers, Pronunciation/IPA Policy section). Issues below are gaps the verification surfaced.
+
+### New Task 143. Finish in-flight Tier 1 language additions before merging
+
+Goal:
+Close the partial state introduced by adding `cv`, `dv`, `tzh`, `mdf` (Task 141 first wave) to `wordmap_data.js` and `wordmap_meta.js` without parallel updates in `lang_names.js` and the historical/recent description-i18n bucket. Right now the validator reports 21 fresh `lang_names.<UI>: 591/595 (missing: cv, dv, tzh, mdf)` warnings — one per UI language. The languages currently render with raw codes in dropdowns and search.
+
+Current issue I checked (2026-05-06):
+- `wordmap_data.js`: `cv` (line 179), `dv` (318), `tzh` (1171), `mdf` (1374) all have full 20-word entries.
+- `wordmap_meta.js`: all four have full meta blocks (family, speakers, sources, parentCode/varietyRole, RTL flag for `dv`).
+- `lang_names.js`: all four are missing from every one of the 21 UI sections.
+- `bxr` Buryat and `nci` Classical Nahuatl are present in data + meta but only in **3** of 21 UI sections of `lang_names.js`. They predate this batch and do not show up in the new validator warnings (the validator seems to only flag the most recent diff), but they are equally incomplete and should be filled in alongside.
+- Validator delta: 17 pre-existing warnings → 38 warnings (21 new lang_names rows). 0 errors.
+
+Files to change:
+- `lang_names.js` — add `cv`, `dv`, `tzh`, `mdf`, `bxr`, `nci` to all 21 UI sections.
+- `meta_i18n_coverage.js` / `meta_i18n_ext.js` — add description translations for these six codes for the UI langs that already have other-lang descriptions.
+- `wordmap-modern-audit-feedback.md` — record the completion in a follow-up Pass entry.
+- `changelog.html` — list the new languages with credit.
+
+Implementation instructions:
+- Use citeable native-speaker / scholarly references for native and translated names. No machine translation for native forms. Acceptable for translated names is the standard endonym/exonym table from each UI language's Wikipedia or major dictionary.
+- For `dv` Dhivehi, ensure RTL handling: Thaana script renders RTL. Re-confirm `textDirection: 'rtl'` in meta and that the search results / modal honor it (per Task 129).
+- For `tzh` Tzeltal, retain `parentCode: 'tzo'` only because the meta entry uses it — do not propagate that into `lang_names.js` UI sections; UI display should be the standalone language name, not "Tzotzil (Tzeltal)".
+- Run `node validate_wordmap_data.js` and confirm the 21 lang_names warnings drop to 0 (or to the same count as before this batch started).
+- Bump `WM_ASSET_VERSION.names` per Task 134.
+
+Validator / static check:
+- The validator already enforces `lang_names.<UI>` coverage. No new check needed; just close the warning gap.
+
+Do not:
+- Do not invent translated names. If a UI language has no documented exonym for the language, use the endonym (from `wordmap_data.js` `native`) and mark it in a comment.
+- Do not commit the partial state to `main` — finish `lang_names.js` before merging the data/meta entries forward.
+
+Done when:
+- 0 lang_names warnings for `cv`, `dv`, `tzh`, `mdf`, `bxr`, `nci`.
+- Each of the six languages renders correctly in the search dropdown for all 21 UI langs.
+- Validator total warnings return to ≤ 17 (the pre-existing baseline) once Tasks 144 and 145 also land.
+
+### New Task 144. Close description-i18n coverage gap on historical and recent-batch rows
+
+Goal:
+Bring the validator's `[#13b'] description i18n` coverage to ≥ 95% for the 15 UI languages currently below threshold. The same ~30–60 codes are missing across all UI languages — a single batch translation pass can close most warnings at once.
+
+Current issue I checked:
+- Validator output (2026-05-06) shows the same code prefix `ja_chu, pry, oko, okg, ko_gor, …` reported as missing across 15 UI langs.
+- Worst offenders: `es_eu`/`es_mx`/`pt_eu`/`pt_br` at 89% (~60 missing each).
+- Mid-tier: `yue`/`vi`/`th`/`id`/`hi`/`it`/`uk`/`ar`/`he`/`sw` at 93%.
+- `ru` at 94%.
+- The bulk of missing codes are historical or recent-batch: `ja_chu`, `ja_heian`, `ja_edo`, `pry`, `oko`, `okg`, `ko_gor`, plus the proto-language batch (`ine`, `pjk`) and the most recent additions (`bxr`, `nci`, and likely `cv`/`dv`/`tzh`/`mdf` once Task 143 lands).
+- Same 60 codes appear in every "missing" list — translating once unblocks all 15 UI lang warnings.
+
+Files to change:
+- `meta_i18n_coverage.js` — primary. This holds the per-UI translations for descriptions.
+- `meta_i18n_ext.js` — fallback chain.
+- `wordmap_meta.js` — only if a code's English `description` is missing entirely (then add English first; translations follow).
+
+Implementation instructions:
+- Prepare the English source descriptions first; translation quality follows source quality.
+- For historical reconstructions (`ine`, `pjk`, `pry`, `oko`, `okg`, `ko_gor`, `ja_chu`), include explicit attestation status in the description (when first attested, what corpus, how reconstructed) — this is information already present in the audit but not in the per-language descriptions.
+- Group translations by UI lang, not by source code, to avoid 21× context-switching cost.
+- Treat the `es_*` / `pt_*` Spanish/Portuguese variants as the same translation unless there is a documented regional difference — they share the same ~60 missing codes.
+- Run validator after each UI lang's batch and confirm the corresponding `[#13b']` warning disappears.
+
+Validator / static check:
+- Existing `[#13b']` 95% threshold check covers this. Once at 100%, raise the threshold to 100% as already noted in feedback.
+
+Do not:
+- Do not machine-translate without review. Historical-language descriptions contain technical terms (cuneiform, oracle bone script, Hyangchal, etc.) where MT routinely produces wrong cognates.
+- Do not omit the `<UI>` translation just because the language is endangered/historical — the *description* still benefits non-English readers.
+
+Done when:
+- All 15 UI langs return to ≥ 95% description coverage.
+- Validator `[#13b']` warnings drop from 15 → 0.
+- `node validate_wordmap_data.js` reports total warnings ≤ baseline (17).
+
+### New Task 145. Migrate string-only descriptions on priority languages to multilingual object form
+
+Goal:
+Resolve the validator warning `11 languages still have description as a string (not object) — UI lang fallback to English`. Spot-check shows several Tier-A languages (e.g. `ja`, `ko`, `zh`, `ja_osa`, `ja_aom`, `ja_oki`, `ja_hak`, `ja_kyo`, `ja_hir`, `ja_mvi`, `ja_rys`, `ko_kp`, `ko_bus`, `ko_jeju`, `ko_yb`) have `description: '...'` as a plain string in `wordmap_meta.js`. The validator only flags 11 in the warning summary, but the source contains many more — the warning logic appears to undercount.
+
+Current issue I checked:
+- `wordmap_meta.js:12` `LANG_DATA['ja'].meta` uses `description: 'Japanese is the national language ...'` — string.
+- Same pattern in lines 14–26 (the entire opening Japanese/Korean block) and many others.
+- `[#13b']` validator only counts coverage on object-shaped descriptions. String descriptions are silently treated as English-only and never flagged in per-UI-lang coverage stats.
+
+Files to change:
+- `wordmap_meta.js` — convert each string `description` to `{ en: '...' }` shape.
+- `meta_i18n_coverage.js` — add `ja`/`ko`/`zh` translations alongside English (these are the priority UI langs).
+- `validate_wordmap_data.js` — strengthen the string-description warning to print *all* offenders, not just the first 11. Today it elides the rest, hiding scope.
+
+Implementation instructions:
+- Phase A: convert string descriptions to `{ en: '...' }` shape mechanically. This alone resolves the schema warning, even if translations are not added yet.
+- Phase B: backfill `ja`/`ko`/`zh` for the resulting bare `{ en }` blocks. Use existing translations in `meta_i18n_coverage.js` if present; otherwise translate.
+- Phase C: re-run `[#13b']` coverage — the priority UI langs (`ja`/`ko`/`zh`) should now reach 100% on these languages.
+
+Validator / static check:
+- Update the warning to enumerate all string-description codes:
+  ```
+  ! N languages still have description as a string (not object): ja, ja_osa, ja_aom, ... (full list)
+  ```
+
+Do not:
+- Do not delete the existing string descriptions before adding the object form — convert in place.
+- Do not introduce a `description` shape that mixes string and object across different rows; pick the object form everywhere.
+
+Done when:
+- 0 languages have string-form `description` in `wordmap_meta.js`.
+- The string-description warning disappears from validator output.
+- `ja`/`ko`/`zh` description i18n coverage reaches 100% (already at 100% per current report — verify it stays after migration).
+
+### New Task 146. Resolve Pass-7 deferred per-language IPA rebuilds
+
+Goal:
+Close the five language-level "deferred Pass 7" items still listed in `wordmap-modern-audit-feedback.md` (line 422–428). Each needs a per-language source pass plus a column-policy decision; they have been deferred since 2026-04-21+ and are blocking the "100点教材化" milestone.
+
+Current issue I checked:
+- §62 `my` Burmese — feedback says "tone/phonation 全行整合化 + per-syllable source 必要". `wordmap_data.js:200` confirms Burmese has IPA but tone marks (acute/grave/creaky) are inconsistent across rows.
+- §63 `km` Khmer — feedback: "全行 IPA rebuild 必要". Modern Khmer transliteration ≠ IPA but the column is still labeled IPA in some renders.
+- §66 `id`/`ms`/`tl` — feedback: "第二列が IPA か broad transcription か policy 決定が先". `pronunciationType` is now set to `orthography` (per Task 76) but the data layer still mixes orthography copies into the IPA column for `air`/`api`/etc. Decision still needs to be made about whether to add genuine broad transcription or commit to orthography only.
+- §68 `ta`/`te` — feedback: "concept-level register policy が先". Tamil has a literary/colloquial split that `pronunciationType` does not capture.
+- §69 `bo` Tibetan — feedback: "Lhasa/Central source per-cell verification 必要". Wylie vs IPA mixing remains.
+
+Files to change:
+- `wordmap_data.js` — per-cell rebuilds for the 5 languages (~100 cells total at 20 cells each).
+- `wordmap_meta.js` — add `meta.sources` per Task 80 once rebuilt; consider extending `pronunciationType` to a per-concept override field if a single language uses different conventions across concepts.
+- `validate_wordmap_data.js` — if a per-concept `pronunciationType` override is added, extend the schema validator.
+
+Implementation instructions:
+- Treat each language as its own session — do not bundle all five.
+- Required source per cell: a citation in `wordEvidence.citation` (Task 133) plus a `pronunciationEvidence` split (Task 97) when the form, the pronunciation, and the concept come from different sources.
+- For Burmese: Cambridge JIPA Burmese article (2014) is the most-cited modern reference. Use it consistently.
+- For Khmer: Royal Phnom Penh standard, not Battambang or Northern. Cite Headley 1977 or modern equivalent.
+- For Tibetan: stick to Lhasa Central Tibetan; do not mix Amdo or Khams.
+- Document the column-policy decision for `id`/`ms`/`tl` in CONTRIBUTING.md before editing data — the decision affects ~60 cells across 3 languages and must not be made cell-by-cell.
+
+Validator / static check:
+- Once each language is rebuilt, set `meta.reviewStatus: 'source-checked'` and ensure validator's existing reviewStatus enum check catches drift.
+
+Do not:
+- Do not partially rebuild a language (e.g., only update tones for some Burmese cells). Either rebuild all 20 or none, to preserve internal consistency.
+- Do not change `pronunciationType` from `orthography` to `ipa` for `id`/`ms`/`tl` until the column-policy decision is made and CONTRIBUTING.md updated.
+
+Done when:
+- All five languages have `reviewStatus: 'source-checked'` and full `meta.sources`.
+- Each rebuilt cell has `wordEvidence` with structured citation per Task 133.
+- Audit Pass 7 deferred list is empty in the next feedback file revision.
+
+### New Task 147. Resolve Pass-2-through-6 deferred semantic/policy items
+
+Goal:
+Close the open list at `wordmap-modern-audit-feedback.md` lines 311–333. Each item is a policy decision blocking family-wide cleanup. None require source-pass work alone — they need a documented policy first, then mechanical edits.
+
+Current issue I checked (each is still mentioned as deferred in the feedback):
+- §5 IPA-vs-orthography column policy — partially addressed by `pronunciationType` (Task 76) but a global *column-policy* decision (separate IPA column? rename? collapse?) has not been recorded.
+- §11/§12 tone/stress/verb-form conventions — no project-level policy document; per-language decisions drift.
+- §14 ASCII affricate notation (Slavic `ts` → `t͡s`) — family-wide; no decision recorded on whether to keep ASCII or migrate to tie-bar.
+- §22 Turkic `w/y/q/x` conventions — no decision.
+- §23 Georgian transliteration vs IPA — no decision.
+- §25/§37 `heart` anatomical vs emotional — `WORD_LIST.heart.definition` (Task 82) records "default: basic emotional/cognitive" but the per-cell audit has not been re-run with that policy.
+- §27 Mandarin 你好 sandhi — feedback says "defensible as citation"; not formally closed.
+- §29 Quebec French — full-row review still required.
+- §35 `one` gender choice — `WORD_LIST.one.definition` records "masculine/default" but several rows still use feminine forms.
+- §36 mother/father formal vs informal — no policy recorded.
+
+Files to change:
+- `CONTRIBUTING.md` — add a "Column conventions and concept policies" section. This is the single highest-leverage edit; it locks in answers that currently drift.
+- `wordmap_data.js` — per-cell mechanical edits *after* CONTRIBUTING is updated.
+- `validate_wordmap_data.js` — add validators that flag policy violations once policy is documented (e.g., warn if `one` is feminine without `wordEvidence.note`).
+
+Implementation instructions:
+- Resolve as a *policy commit first*, *data commit second*. Mixing the two means future readers cannot tell which decisions are official vs accidental.
+- For each deferred § item, record one paragraph in CONTRIBUTING with: policy rule, rationale, exception clause.
+- Then run the data edits in commits scoped to one § item each.
+- Mark each closed item with the commit SHA in feedback file's "Pass 2-6 deferred items" section, so the deferral list shrinks visibly.
+
+Do not:
+- Do not bundle policy decisions and data edits in the same commit. Reviewers cannot follow them together.
+- Do not let "we'll decide later" stay in the feedback file; if the team cannot decide a policy, document the open question explicitly with a stake-in-the-ground default (e.g., "default: keep ASCII affricates; revisit Q3").
+
+Done when:
+- CONTRIBUTING.md has a "Column conventions and concept policies" section covering all bullets above.
+- The deferred list in `wordmap-modern-audit-feedback.md` lines 311–333 has every entry either closed (commit SHA) or explicitly marked open-with-default.
+
+### New Task 148. Distribute Japonic-stage coordinates so they do not stack at Kyoto
+
+Goal:
+Resolve the validator warning `[#14] coord cluster: 3 codes at one (lat,lng): ja_kyo, ja_heian, ja_chu — consider distinct representative points`. Three languages currently share the same Kyoto coordinate, which makes the marker overlap and harms the "marker-as-representative-point" message reinforced by Task 99.
+
+Current issue I checked:
+- `wordmap_data.js`: `ja_kyo` (modern Kyoto dialect), `ja_heian` (pedagogical-stage Heian Japanese 794–1185), and `ja_chu` (historical Middle Japanese 鎌倉～室町) all sit on the same lat/lng pair near Kyoto.
+- All three have `meta.locationBasis: 'historical-site'` or `'capital'` — the warning is the right call: each should pin to a stage-appropriate coordinate.
+
+Files to change:
+- `wordmap_data.js` — adjust lat/lng for at least two of the three.
+- `wordmap_meta.js` — record reasoning in `locationBasis` notes if the schema supports it; otherwise add a comment.
+
+Implementation instructions:
+- Suggested anchors:
+  - `ja_kyo` modern Kyoto dialect: keep at Kyoto Gosho (current setting).
+  - `ja_heian` Heian Japanese: shift slightly to Heian-kyō historical center (~ Heian-jingū area, not Gosho) to acknowledge it is not the modern city.
+  - `ja_chu` Middle Japanese / Chusei: shift to Kamakura or Muromachi-era political centers, depending on which sub-period the data targets. The label `ja_chu` is broad — pick whichever sub-period best matches the lexical sources used.
+- Coordinate offsets must be > ~0.05° lat or lng to clear the validator threshold; small jitter is not enough.
+- Update `meta.locationBasis` notes (or `description`) to explain the choice so it does not look arbitrary.
+
+Validator / static check:
+- Existing `[#14]` cluster check covers this; once split, the warning disappears.
+
+Do not:
+- Do not jitter randomly. Each new coordinate must correspond to a documented historical site for the stage represented.
+- Do not change `ja_kyo` itself unless the rest of `ja_*` coordinate scheme changes — it is the modern reference.
+
+Done when:
+- `[#14]` warning for this cluster disappears.
+- Each of the three languages renders at a visibly distinct map marker at zoom ≥ 5.
+
+---
+
+## Cumulative status after Verification Sweep
+
+- **Confirmed implemented (no further work needed):** All 30 spot-checked schema/UI claims from the feedback file (codeType, languageKind, surfaceType, locationBasis, scriptDisplayPolicy, formType/citation, WM_ASSET_VERSION, hash/popstate, combobox ARIA, dialog focus, CDN fallback, RTL bidi, era help icon, multiword formType, GitHub Actions CI, legacy script headers, Pronunciation/IPA Policy section).
+- **Open / partial (new tasks 143–148):** Tier-1 lang_names completion; description-i18n historical batch; string→object description migration; Pass-7 per-language rebuilds; Pass-2-6 policy locks; Japonic-stage coordinate cluster.
+- **Validator delta:** 17 → 38 warnings. 21 are temporary (Task 143 closes them). The remaining 17 are the pre-existing description-i18n + string-description + coord-cluster warnings tracked above.
