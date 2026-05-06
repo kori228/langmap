@@ -275,4 +275,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Pennsylvania German (pdc), Livonian (liv), Aleut (ale)
+    const ADDED8 = {
+        pdc: { en: 'Pennsylvania German', ja: 'ペンシルベニア・ドイツ語', ko: '펜실베이니아 독일어', zh: '宾夕法尼亚德语', yue: '賓夕法尼亞德語',
+               vi: 'Tiếng Đức Pennsylvania', th: 'ภาษาเยอรมันเพนซิลเวเนีย', id: 'Jerman Pennsylvania', hi: 'पेंसिल्वेनिया जर्मन',
+               de: 'Pennsylvaniadeutsch', fr: 'Allemand de Pennsylvanie', it: 'Tedesco di Pennsylvania',
+               es_eu: 'Alemán de Pensilvania', es_mx: 'Alemán de Pensilvania', pt_eu: 'Alemão da Pensilvânia', pt_br: 'Alemão da Pensilvânia',
+               ru: 'Пенсильванский немецкий', uk: 'Пенсильванська німецька', ar: 'الألمانية البنسلفانية', he: 'גרמנית פנסילבניה', sw: 'Kijerumani cha Pennsylvania' },
+        liv: { en: 'Livonian', ja: 'リーヴ語', ko: '리보니아어', zh: '利沃尼亚语', yue: '利沃尼亞語',
+               vi: 'Tiếng Liv', th: 'ภาษาลิโวเนีย', id: 'Liv', hi: 'लिवोनियन',
+               de: 'Livisch', fr: 'Live', it: 'Livone',
+               es_eu: 'Livonio', es_mx: 'Livonio', pt_eu: 'Livónio', pt_br: 'Livônio',
+               ru: 'Ливский', uk: 'Лівська', ar: 'الليفية', he: 'ליבונית', sw: 'Kiliv' },
+        ale: { en: 'Aleut', ja: 'アリュート語', ko: '알류트어', zh: '阿留申语', yue: '阿留申語',
+               vi: 'Tiếng Aleut', th: 'ภาษาอาเลอุต', id: 'Aleut', hi: 'अलेउत',
+               de: 'Aleutisch', fr: 'Aléoute', it: 'Aleutino',
+               es_eu: 'Aleutiano', es_mx: 'Aleutiano', pt_eu: 'Aleúte', pt_br: 'Aleúte',
+               ru: 'Алеутский', uk: 'Алеутська', ar: 'الأليوتية', he: 'אלאוטית', sw: 'Kialeut' },
+    };
+    for (const code of Object.keys(ADDED8)) {
+        for (const ui of Object.keys(ADDED8[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED8[code][ui];
+            }
+        }
+    }
 })();
