@@ -572,17 +572,22 @@
         const nodes = root.descendants();
         const links = root.links();
 
-        // Compute layout. d3.cluster with size [2π, R] places leaves on the
-        // perimeter of a circle. Radius scales with the number of visible
-        // depth levels so deeper subtrees push outward, but we cap it to keep
-        // the tree comfortable on small screens.
+        // Compute layout. d3.tree (NOT cluster/dendrogram) places each node
+        // at a radius proportional to its DEPTH, so collapsed branches at
+        // depth 2 stay inside the ring of depth-3 leaves of an expanded
+        // sibling — instead of all leaves piling up on the outer ring.
+        // We then rescale d.y from "depth distance in tree-coords" to a
+        // radius that scales with the deepest visible level.
         const visibleDepths = d3.max(nodes, d => d.depth) || 1;
-        const baseRadius = Math.min(540, Math.max(220, 150 + visibleDepths * 110));
-        const cluster = d3.cluster()
-            .size([2 * Math.PI, baseRadius])
+        const ringStep = 130;  // pixels between depth levels
+        const treeLayoutR = d3.tree()
+            .size([2 * Math.PI, ringStep * visibleDepths])
             .separation((a, b) => (a.parent === b.parent ? 1 : 2) / Math.max(1, a.depth));
-        cluster(root);
-        // d.x = angle in radians [0, 2π); d.y = radial distance.
+        treeLayoutR(root);
+        // After layout, force d.y = depth * ringStep so each depth gets its
+        // own concentric ring. d3.tree's default y is depth-based but with
+        // its own scaling; we override for predictable concentric rings.
+        root.each(d => { d.y = d.depth * ringStep; });
 
         // === Links === Smooth Bezier curves between parent and child via
         // d3.linkRadial — naturally curves through the polar plane.
