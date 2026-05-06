@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 632 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 635 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -449,6 +449,11 @@ const LANG_DATA = {
     words: { water:['Wossa','vɔsɐ'], fire:['Feia','fɑɪɐ'], sun:['Sunn','zʊn'], moon:['Mond','moːnd'], mother:['Muada','muːɐdɐ'], father:['Voda','foːdɐ'], eat:['essn','ɛsn'], drink:['dringa','dʁɪŋɐ'], love:['Liab','liːɐb'], heart:['Herz','hɛɐts'], tree:['Bam','bɑːm'], house:['Haus','haʊs'], dog:['Hund','hʊnd'], cat:['Katz','kɑts'], hand:['Hand','hɑnd'], eye:['Aug','aʊɡ'], hello:['Griaß God','ɡʁiɐs ɡɔd'], thanks:['Dangschee','dɑŋʃeː'], one:['oans','oːɐns'], good:['guad','ɡuːɐd'] }},
   nds: { name: 'Low German', native: 'Plattdüütsch', lat: 53.55, lng: 9.99,
     words: { water:['Water','vɑːtɐ'], fire:['Füer','fyːɐ'], sun:['Sünn','zʏn'], moon:['Maand','mɑːnt'], mother:['Moder','moːdɐ'], father:['Vader','fɑːdɐ'], eat:['eten','eːtn'], drink:['drinken','dɹɪŋkn'], love:['Leev','leːf'], heart:['Hart','haɐt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Hund','hʊnt'], cat:['Katt','kat'], hand:['Hand','hant'], eye:['Oog','oːx'], hello:['Moin','mɔɪn'], thanks:['Dankschöön','daŋkʃøːn'], one:['een','eːn'], good:['good','ɡoːt'] }},
+  // Pennsylvania German — High German (Palatinate origin), spoken by
+  // Amish/Mennonite communities across PA/OH/IN/Ontario. Distinct from
+  // Standard German with English loanwords + Palatine-German base.
+  pdc: { name: 'Pennsylvania German', native: 'Pennsilfaanisch Deitsch', lat: 40.04, lng: -76.30, // Lancaster PA
+    words: { water:['Wasser','vasər'], fire:['Feier','faɪər'], sun:['Sunn','sʊn'], moon:['Mund','mʊnt'], mother:['Mudder','mʊdər'], father:['Daadi','daːdi'], eat:['esse','ɛsə'], drink:['drinke','dɾɪŋkə'], love:['liewe','liːvə'], heart:['Hatz','hats'], tree:['Baam','baːm'], house:['Haus','haʊs'], dog:['Hund','hʊnt'], cat:['Katz','kats'], hand:['Hand','hant'], eye:['Aag','aːk'], hello:['Hallo','haloː'], thanks:['Denki','dɛŋki'], one:['eens','eːns'], good:['gut','ɡuːt'] }},
   yi: { name: 'Yiddish', native: 'ייִדיש', lat: 40.71, lng: -74.01,
     words: { water:['וואַסער','vasər'], fire:['פֿײַער','fajər'], sun:['זון','zun'], moon:['לבֿנה','ləvɔnə'], mother:['מאַמע','mamə'], father:['טאַטע','tatə'], eat:['עסן','ɛsn'], drink:['טרינקען','trɪŋkən'], love:['ליבע','libə'], heart:['האַרץ','harts'], tree:['בוים','bɔɪm'], house:['הויז','hɔɪz'], dog:['הונט','hʊnt'], cat:['קאַץ','kats'], hand:['האַנט','hant'], eye:['אויג','ɔɪɡ'], hello:['שלום עליכם','ʃɔləm alɛɪxəm'], thanks:['אַ דאַנק','a daŋk'], one:['איינס','ɛɪns'], good:['גוט','ɡʊt'] }},
   is: { name: 'Icelandic', native: 'Íslenska', lat: 64.15, lng: -21.94,
@@ -1478,6 +1483,12 @@ const LANG_DATA = {
     words: { water:['vezi','ˈvezi'], fire:['lämoi','ˈlæmoi'], sun:['päiväine','ˈpæivæine'], moon:['kuu','kuː'], mother:['mam','mam'], father:['tat','tat'], eat:['söda','ˈsødæ'], drink:['joda','ˈjoda'], love:['armaztada','armasˈtada'], heart:['südäin','ˈsydæin'], tree:['pu','pu'], house:['pert\'','pertʲ'], dog:['koir','koir'], cat:['kaži','ˈkaʒi'], hand:['käzi','ˈkæzi'], eye:['silm','silm'], hello:['tervhen','ˈtervhen'], thanks:['spasib','ˈspasib'], one:['üks\'','yksʲ'], good:['hüvä','ˈhyvæ'] }},
   vot: { name: 'Votic', native: 'vaďďa tšeeli', lat: 59.55, lng: 28.20, // Krakolye
     words: { water:['vesi','ˈvesi'], fire:['tuli','ˈtuli'], sun:['päivä','ˈpæivæ'], moon:['kuu','kuː'], mother:['emä','ˈemæ'], father:['izä','ˈizæ'], eat:['süüvvä','ˈsyːvːæ'], drink:['jooda','ˈjoːda'], love:['tükkäd','ˈtykːæd'], heart:['süä','ˈsyæ'], tree:['puu','puː'], house:['kotto','ˈkotːo'], dog:['koira','ˈkoira'], cat:['kassi','ˈkasːi'], hand:['tšäsi','ˈtʃæsi'], eye:['silmä','ˈsilmæ'], hello:['tervetä','ˈtervetæ'], thanks:['passibo','ˈpasːibo'], one:['ühte','ˈyhte'], good:['üvä','ˈyvæ'] }},
+  // Livonian — UNESCO critically endangered Finnic language of Latvia,
+  // ~30 partial speakers (last fluent native died 2013). Latin script
+  // with macron/breve diacritics. Source: Viitso 1998 + EKI Livonian
+  // dictionary.
+  liv: { name: 'Livonian', native: 'Līvõ kēļ', lat: 57.69, lng: 22.32, // Mazirbe, Latvia
+    words: { water:['vež','vɛʒ'], fire:['tūl','tuːl'], sun:['pǟva','pæːva'], moon:['kūʼ','kuː'], mother:['jemā','jɛmaː'], father:['izā','izaː'], eat:['sīedõ','siːədə'], drink:['jūodõ','juːədə'], love:['ārmaztõ','aːrmastə'], heart:['sidām','sidaːm'], tree:['pū','puː'], house:['kuodā','kuədaː'], dog:['piņ','piɲ'], cat:['kaš','kaʃ'], hand:['kež','kɛʒ'], eye:['sīlma','siːlma'], hello:['tervīst','tɛrviːst'], thanks:['tienū','tiɛnuː'], one:['ikš','ikʃ'], good:['jõvā','jəvaː'] }},
   // === Phase 3J: Iranian + Turkic + Tibeto-Burman ===
   // Iranian (Caspian + Zagros)
   mzn: { name: 'Mazandarani', native: 'مازرونی', lat: 36.57, lng: 53.06, // Sari
@@ -1607,6 +1618,13 @@ const LANG_DATA = {
     words: { water:['meq','meq'], fire:['keneq','keneq'], sun:['akerta','akerta'], moon:['iraluq','iraluq'], mother:['aana','aːna'], father:['ata','ata'], eat:['ner\'uq','nerʔuq'], drink:['mertuq','mertuq'], love:['kenka','kenka'], heart:['irua','irua'], tree:['napa','napa'], house:['ena','ena'], dog:['qimugta','qimuxta'], cat:['qassraaraq','qassraːraq'], hand:['unirak','unirak'], eye:['ii','iː'], hello:['waqaa','waqaː'], thanks:['quyana','qujana'], one:['ataucik','atautʃik'], good:['assirtuq','asːirtuq'] }},
   ipk: { name: 'Inupiaq', native: 'Iñupiatun', lat: 71.29, lng: -156.79, // Utqiagvik
     words: { water:['imiq','imiq'], fire:['igniq','iɡniq'], sun:['siqiñiq','siqiɲiq'], moon:['tatqiq','tatqiq'], mother:['aaka','aːka'], father:['aapa','aːpa'], eat:['niġiruq','niʁiruq'], drink:['imiġuq','imiʁuq'], love:['piqpaġiyaa','piqpaʁijaː'], heart:['uumman','uːmːan'], tree:['napaaqtaq','napaːqtaq'], house:['iglu','iɡlu'], dog:['qimmiq','qimːiq'], cat:['pussiq','pusːiq'], hand:['argak','arɡak'], eye:['iri','iri'], hello:['paglagvik','paɡlaɡvik'], thanks:['quyanaq','qujanaq'], one:['atausiq','ataʊʃiq'], good:['nakuuruq','nakuːruq'] }},
+  // Aleut — sole surviving Aleut branch of Eskimo-Aleut family,
+  // ~150 speakers (severely endangered) split between Alaska
+  // (Aleutian/Pribilof Islands) and Russia (Commander Islands —
+  // Bering/Mednyj). Dominant Eastern dialect (Atka standard).
+  // Source: Bergsland (1994) Aleut dictionary; community materials.
+  ale: { name: 'Aleut', native: 'Унаӈан тунуу', lat: 52.20, lng: -174.20, // Atka, AK
+    words: { water:['таӈах̆','taŋaχ'], fire:['кигнах̆','kiɡnaχ'], sun:['агадгих̆','aɡaðɣiχ'], moon:['тугидах̆','tuɣiðaχ'], mother:['анаах̆','anaːχ'], father:['адаах̆','aðaːχ'], eat:['ках̆тах','qaχtax'], drink:['таӈах̆-','taŋaχ-'], love:['кидук-','kiðuk-'], heart:['канух̆','kanuχ'], tree:['ях̆','jaχ'], house:['улах̆','ulaχ'], dog:['сабаакаах̆','sabaːkaːχ'], cat:['кошкаах̆','koʂkaːχ'], hand:['чах̆','tʃaχ'], eye:['дах̆','ðaχ'], hello:['аӈ','aŋ'], thanks:['к̆аг̆аасак','qaɣaːsak'], one:['атак̆ан','ataqan'], good:['игах̆','iɣaχ'] }},
   // Athabaskan
   apw: { name: 'Western Apache', native: 'Ndee bizaa', lat: 33.84, lng: -109.96, // Whiteriver, AZ
     words: { water:['tu','tu'], fire:['ko\'','koʔ'], sun:['shánda\'á','ʃandaʔa'], moon:['tłʼéʼsanaaʼái','tɬʔeʔsanaːʔai'], mother:['shimá','ʃima'], father:['shitaa','ʃitaː'], eat:['yiyąʼ','jijãʔ'], drink:['yidlą','jidlãˀ'], love:['ayóigóʼíí','ʔajoiɣoʔiː'], heart:['bíjéí','bidʒeː'], tree:['tsin','tsin'], house:['kį','kĩ'], dog:['łį́į́ʼ','ɬĩːʔ'], cat:['mósí','mosi'], hand:['shílaʼ','ʃilaʔ'], eye:['nadáá','nadaː'], hello:['dahgotʼe','dahɡotʔe'], thanks:['ahéheʼe','ʔaheːheʔe'], one:['dááłeʼ','daːɬeʔ'], good:['yáʼátʼééh','jaʔatʔeːh'] }},
