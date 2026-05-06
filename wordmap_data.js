@@ -529,7 +529,9 @@ const LANG_DATA = {
     words: { water:['water','wɔːtəɹ'], fire:['fire','faɪɹ'], sun:['sun','sʌn'], moon:['moon','muːn'], mother:['mother','mʌðəɹ'], father:['father','fɑːðəɹ'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lʌv'], heart:['heart','hɑɹt'], tree:['tree','tɹiː'], house:['house','hʌus'], dog:['dog','dɔɡ'], cat:['cat','kat'], hand:['hand','hand'], eye:['eye','aɪ'], hello:['hello','hɛlo'], thanks:['thanks','θaŋks'], one:['one','wʌn'], good:['good','ɡʊd'] }},
   en_yk: { name: 'English (Yorkshire)', native: 'English (Yorkshire)', lat: 53.80, lng: -1.55,
     words: { water:['water','wɔːtə'], fire:['fire','faɪə'], sun:['sun','sʊn'], moon:['moon','muːn'], mother:['mother','mʊðə'], father:['father','fɑːðə'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lʊv'], heart:['heart','hɑːt'], tree:['tree','tɹiː'], house:['house','aʊs'], dog:['dog','dɒɡ'], cat:['cat','kat'], hand:['hand','and'], eye:['eye','aɪ'], hello:['ey up','eɪ ʊp'], thanks:['ta','tɑː'], one:['one','wɒn'], good:['good','ɡʊd'] }},
-  en_ck: { name: 'English (Cockney)', native: 'English (Cockney)', lat: 51.51, lng: -0.13,
+  // Audit Task 161: shifted from London center to Bow / East End — the
+  // working-class East London where Cockney is anchored.
+  en_ck: { name: 'English (Cockney)', native: 'English (Cockney)', lat: 51.53, lng: -0.02,
     words: { water:['water','woːʔə'], fire:['fire','fɑːə'], sun:['sun','sɐn'], moon:['moon','muːn'], mother:['mother','mɐvə'], father:['father','fɑːvə'], eat:['eat','iːʔ'], drink:['drink','dɹɪŋk'], love:['love','lɐv'], heart:['heart','ɑːʔ'], tree:['tree','tɹiː'], house:['house','æːʔs'], dog:['dog','dɒɡ'], cat:['cat','kæʔ'], hand:['hand','ænd'], eye:['eye','ɑː'], hello:['oi','oɪ'], thanks:['fanks','fæŋks'], one:['one','wɐn'], good:['good','ɡʊd'] }},
   en_sg: { name: 'Singlish', native: 'Singlish', lat: 1.35, lng: 103.82,
     words: { water:['water','wɔːtə'], fire:['fire','fajə'], sun:['sun','san'], moon:['moon','muːn'], mother:['mother','madə'], father:['father','fadə'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','laf'], heart:['heart','hat'], tree:['tree','tɹiː'], house:['house','haʊs'], dog:['dog','dɔk'], cat:['cat','kɛt'], hand:['hand','hɛn'], eye:['eye','aɪ'], hello:['hello lah','hɛlo lɑː'], thanks:['thanks','tɛŋks'], one:['one','wan'], good:['good','ɡʊt'] }},
@@ -660,9 +662,14 @@ const LANG_DATA = {
       ]
     }
   },
-  en_ang: { name: 'Old English', native: 'Englisc', lat: 51.51, lng: -0.13,
+  // Audit Task 161: shifted from London to Winchester (Wessex capital and
+  // primary Old English prestige center). Acknowledges OE was a dialect
+  // continuum across multiple West-Saxon and Anglian centers.
+  en_ang: { name: 'Old English', native: 'Englisc', lat: 51.06, lng: -1.31,
     words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufu','luvu'], heart:['heorte','heorte'], tree:['trēow','treːow'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','kɑtː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['hāl','hɑːl'], thanks:['þancas','θɑnkɑs'], one:['ān','ɑːn'], good:['gōd','ɡoːd'] }},
-  enm: { name: 'Middle English', native: 'Englisch', lat: 51.51, lng: -0.13,
+  // Audit Task 161: shifted from London to Canterbury (Chaucer-era southern
+  // dialect tradition; Canterbury Tales pilgrims reflect Middle English speech).
+  enm: { name: 'Middle English', native: 'Englisch', lat: 51.28, lng: 1.08,
     words: { water:['water','watər'], fire:['fyr','fyːr'], sun:['sonne','sɔnːə'], moon:['mone','moːnə'], mother:['moder','moːdər'], father:['fader','faːdər'], eat:['eten','eːtən'], drink:['drinken','drɪŋkən'], love:['love','lʊvə'], heart:['herte','hɛrtə'], tree:['tre','treː'], house:['hous','huːs'], dog:['hound','huːnd'], cat:['catte','katːə'], hand:['hand','hand'], eye:['eye','iːə'], hello:['hail','hɛːl'], thanks:['gramercy','ɡraːmɛrsiː'], one:['oon','oːn'], good:['good','ɡoːd'] }},
   non: { name: 'Old Norse', native: 'Norrǿnt mál', lat: 59.91, lng: 10.75,
     words: { water:['vatn','vɑtn'], fire:['eldr','eldr'], sun:['sól','soːl'], moon:['máni','mɑːni'], mother:['móðir','moːðir'], father:['faðir','fɑðir'], eat:['eta','etɑ'], drink:['drekka','drekːɑ'], love:['ást','ɑːst'], heart:['hjarta','hjɑrtɑ'], tree:['tré','treː'], house:['hús','huːs'], dog:['hundr','hundr'], cat:['kǫttr','kɔtːr'], hand:['hǫnd','hɔnd'], eye:['auga','ɑuɣɑ'], hello:['heill','hɛilː'], thanks:['þǫkk','θɔkː'], one:['einn','ɛinː'], good:['góðr','ɡoːðr'] }},
@@ -1039,7 +1046,7 @@ const LANG_DATA = {
   zh_tang: { name: 'Tang Chinese', native: '漢語(唐代)', lat: 34.26, lng: 108.94,
     words: { water:['水','ɕyɪX'], fire:['火','xuɑX'], sun:['日','ȵit'], moon:['月','ŋʉɐt'], mother:['母','muX'], father:['父','bɨoX'], eat:['食','ʑik'], drink:['飲','ʔimX'], love:['愛','ʔɑiH'], heart:['心','sim'], tree:['木','muk'], house:['屋','ʔuk'], dog:['犬','kʰiuɛnX'], cat:['貓','mæw'], hand:['手','ɕɨuX'], eye:['目','muk'], hello:['萬福','mʉɐnH piuk'], thanks:['謝','ziɛH'], one:['一','ʔit'], good:['善','dʑiɛnX'] }},
   ja_edo: { name: 'Japanese (Edo)', native: '江戸言葉', lat: 35.68, lng: 139.69,
-    words: { water:['水','midzu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['おっかさん','okkasaN'], father:['おとっつぁん','otottsaɴ'], eat:['食う','kuː'], drink:['飲む','nomu'], love:['恋','kohi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よう','ɡokiɡeɴjoː'], thanks:['忝い','katadʑikenai'], one:['一','hitotsu'], good:['良い','joi'] }},
+    words: { water:['水','midzu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['おっかさん','okkasaɴ'], father:['おとっつぁん','otottsaɴ'], eat:['食う','kuː'], drink:['飲む','nomu'], love:['恋','kohi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よう','ɡokiɡeɴjoː'], thanks:['忝い','katadʑikenai'], one:['一','hitotsu'], good:['良い','joi'] }},
   // Audit Task 148: shifted from Kyoto Gosho (35.01, 135.77) to Heian-kyō
   // historical western palace area so ja_heian / ja_kyo / ja_chu no longer
   // cluster on a single coordinate. Heian-jingū / former 平安宮 site.
@@ -1071,7 +1078,9 @@ const LANG_DATA = {
       water:  { evidence: 'reconstructed', source: 'Cognate with Japonic *midu' },
       one:    { evidence: 'reconstructed', source: 'Pellard 2015 — *pitu; cf. OJ pïtötu, modern Japanese hitotsu' },
     } },
-  ko_mid: { name: 'Medieval Korean', native: '中世韓國語', lat: 37.57, lng: 126.98,
+  // Audit Task 161: shifted from Seoul (37.57, 126.98) to Gaegyeong/Kaesong
+  // (Goryeo dynasty capital, where Middle Korean was the prestige variety)
+  ko_mid: { name: 'Medieval Korean', native: '中世韓國語', lat: 37.97, lng: 126.55,
     words: { water:['믈','mɯl'], fire:['블','pɯl'], sun:['ᄒᆡ','hʌj'], moon:['ᄃᆞᆯ','tʌl'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌk.ta'], drink:['마시다','maɕi.ta'], love:['ᄉᆞ랑','sʌ.ɾaŋ'], heart:['ᄆᆞᅀᆞᆷ','mʌzʌm'], tree:['나모','namo'], house:['집','tɕip'], dog:['가히','kahi'], cat:['고아이','koai'], hand:['손','son'], eye:['눈','nun'], hello:['안녕ᄒᆞ쇼셔','annjʌŋ hʌ.sjo.sjʌ'], thanks:['고맙ᄉᆞᆸ나이다','komap.sʌp.na.i.ta'], one:['ᄒᆞ나','hʌna'], good:['됴타','tjota'] }},
   // Old Korean (Silla period, 7-10c.) — direct ancestor of Korean.
   // Attested via 25 hyangga (郷歌) poems in Samguk Yusa + Gyunyeo's
@@ -1129,7 +1138,9 @@ const LANG_DATA = {
       eye:    { evidence: 'direct', source: '鶏林類事 嫩 nwun; cf. MK 눈' },
       one:    { evidence: 'direct', source: '鶏林類事 河屯 ha-twun; cf. MK ᄒᆞ나 → 하나' },
     } },
-  ko_em: { name: 'Early Modern Korean', native: '近世韓國語', lat: 37.57, lng: 126.98,
+  // Audit Task 161: shifted from Seoul (37.57, 126.98) to Suwon (Joseon-era
+  // regional prestige center) so Korean stages no longer cluster at Seoul.
+  ko_em: { name: 'Early Modern Korean', native: '近世韓國語', lat: 37.27, lng: 127.01,
     words: { water:['물','mul'], fire:['불','pul'], sun:['ᄒᆡ','hɛ'], moon:['달','tal'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌkta'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하시오','annjʌŋ.ha.si.o'], thanks:['고맙소이다','komap.so.i.da'], one:['하나','hana'], good:['좋다','tɕotta'] }},
   vi_nom: { name: 'Vietnamese Chữ Nôm', native: 'Tiếng Việt (Chữ Nôm)', lat: 21.03, lng: 105.85,
     words: { water:['渃','nɨək'], fire:['𤏬','lɨə'], sun:['𣎏𡗶','mət tɤj'], moon:['𣎏𢁑','mət taŋ'], mother:['𡞕','mɛ'], father:['𤙗','ɓo'], eat:['𫗒','an'], drink:['㗂','uəŋ'], love:['𢞅','iəw'], heart:['𢣐𢞂','tɤj tim'], tree:['𣘃','kəj'], house:['茹','ɲaː'], dog:['𤝞','tɕɔ'], cat:['猫','mɛw'], hand:['𡬶','taj'], eye:['𥄫','mak'], hello:['吀嘲','sin tɕaːw'], thanks:['感恩','kaːm əːn'], one:['𠬠','mot'], good:['卒','tot'] }},

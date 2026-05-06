@@ -1537,3 +1537,50 @@ Pass 8〜23 累計 **57 タスク + 28 言語追加 + 3 言語 IPA rebuild** (59
 - Task 150 Batch H/I: jrb (Anvita Abbi 2012), nmn Taa (Traill 1985)
 
 Pass 8〜24 累計 **57 タスク + 28 言語追加 + 4 言語 IPA rebuild + 4 言語 reclassification** (591 → 619、needs-rebuild 11 → 4)。
+
+---
+
+## Pass 25 Sequential Cleanup (2026-05-06 part 18)
+
+監査ファイルが Tasks 151-164 まで拡張。新タスクのうち独立した小さい修正を集めて対応。
+
+### Task 160 part 1
+- `ja_edo` mother: `okkasaN` (大文字 N) → `okkasaɴ` (LATIN LETTER SMALL CAPITAL N, U+0274) — 行内整合 (father/hello はすでに ɴ を使用)
+
+### Task 161 — Korean + English 歴史段階座標分散
+
+| Code | 旧座標 | 新座標 | 根拠 |
+|---|---|---|---|
+| `ko_mid` 中世韓国語 | Seoul (37.57, 126.98) | **Gaegyeong/Kaesong (37.97, 126.55)** | 高麗王朝首都 — 中世韓国語の威信地 |
+| `ko_em` 近世韓国語 | Seoul (37.57, 126.98) | **Suwon area (37.27, 127.01)** | 朝鮮時代の地方威信地 |
+| `en_ang` Old English | London (51.51, -0.13) | **Winchester (51.06, -1.31)** | Wessex 王国首都 — 古英語の主要威信地 |
+| `enm` Middle English | London (51.51, -0.13) | **Canterbury (51.28, 1.08)** | カンタベリー物語成立地、南部方言伝統 |
+| `en_ck` Cockney | London (51.51, -0.13) | **Bow/East End (51.53, -0.02)** | コックニーが anchor される下町地域 |
+
+各 shift > 0.05° で validator cluster threshold をクリア。
+
+### Task 159 partial — family taxonomy 統一
+- `Mongolic (Western/Oirat)` → `Mongolic (Western, Oirat)` (xal Kalmyk)。validator allow-list も更新
+- `Uralic (Sámi)` → `Uralic (Saami)` 全 6 instances 統一 (project English convention)
+
+### Task 162 partial — N/A 確認
+modern 言語で `cat = '—'` の行は **0 件**。すべて歴史言語の expected absence (Hittite/Sumerian 等で猫が言及されないのは自然)。Task 162 の audit text は古いデータ状況に基づく; 現状は対応不要。
+
+### Validator/数値
+- ERRORS: 0
+- WARNINGS: 17 (変動なし — 全 description-i18n)
+- Languages: 619
+- Cache-buster: data 95→96, meta 46→47
+
+### 残（次回以降、要 source）
+- **Task 144**: UI 多言語化（別スレッド進行中）
+- **Task 159 残**: Sinitic/Sino-Tibetan, Bantu/Atlantic-Congo, Iranian/Indo-European, Romance prefix unification (大規模 family 整合)
+- **Task 160 残**: zh_tang/och Baxter-Sagart 73+ cells (Option A/B/C 選択が必要)
+- **Task 162 残**: thanks (26 langs), hello (23 langs) の文化的 absence vs unsourced 区別
+- **Task 163**: ASCII affricate `ts/dʐ` → IPA tie-bar
+- **Task 164**: 再構形表記の整合
+- **Task 146 残**: khb/shn (per-cell Wiktionary 待ち)、id/ms/tl, ta/te
+- **Task 149 Batch 4**: oto Otomi (Lastra)
+- **Task 150 Batch H/I**: jrb (Anvita Abbi), nmn Taa (Traill)
+
+Pass 8〜25 累計 **62 タスク対応 + 28 言語追加 + 4 言語 IPA rebuild + 4 言語 reclassification + 5 座標分散** (591 → 619)。

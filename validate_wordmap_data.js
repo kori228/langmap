@@ -372,7 +372,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Germanic (East)','Germanic (creole-influenced)',
     'Hurro-Urartian (separate from IE/Semitic)',
     'Indo-Aryan (NW, Pahari/Punjabi-related)',
-    'Mongolic (Western/Oirat)',
+    'Mongolic (Western, Oirat)',
     'Sino-Tibetan (Naic/Loloish)',
     'Proto-language (reconstructed)',
     'Austronesian (Pidgin)',

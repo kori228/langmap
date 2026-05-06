@@ -6054,3 +6054,1259 @@ Done when:
 - Map at zoom 5 visibly shows Lira, Kabale, Fort Portal, Hoima, Keren, Tsabong, and (if added) Port Blair.
 - Khoisan typological rarity is now demonstrable: `naq` Nama + `nmn` Taa together cover the click-language spectrum from medium-inventory to maximum-inventory.
 - Changelog credits the gap analysis (2026-05-06) and lists each addition.
+
+---
+
+## Linguistics-Education Use-Case Audit (2026-05-06 part 10)
+
+The map ships rich data and a polished UI, but none of the existing tasks treat *learning use* as a first-class requirement. This block adds the gaps that surface only when the project is evaluated as a linguistics teaching tool — i.e. for university courses, self-study, classroom worksheets, or independent learners trying to build IPA / typology / historical-linguistics intuition.
+
+The principle for new Tasks 151–158: each closes a gap where the *data* is already excellent but the *learning experience* falls short. None of these are blocking the dataset's correctness; all of them are what would let a teacher say "use this in class" rather than "use this as a reference."
+
+### New Task 151. Add native-speaker audio playback for priority languages
+
+Goal:
+Make every IPA symbol on the map auditable. IPA without sound is half a teaching tool — students can read the symbols but cannot match them to actual pronunciation. Adding a play button per cell that streams a recorded native-speaker realization (or, where unavailable, a synthesized fallback) is the single highest-leverage pedagogical improvement available.
+
+Current issue I checked:
+- `wordmap_data.js` has IPA strings (e.g., `water:['water','ˈwɔːtə']`) but no audio asset reference.
+- `wordmap.html` modal renders IPA as text only.
+- No schema field links a row's surface form to an audio source.
+- Wikimedia Commons hosts ≥ 50,000 native-speaker recordings of common words, indexed by language and concept; many of LangMap's 595 languages already have ≥ 5 of the 20 concepts available.
+- No audio CDN is referenced in `wordmap.html` `<link>` tags.
+- For learners with no IPA training, the symbols are functionally illegible without audio.
+
+Files to change:
+- `wordmap_data.js` — extend per-cell shape from `[surface, ipa]` to `[surface, ipa, audioRef?]` where `audioRef` is an opt-in object `{ url, source, attribution, license, rec? }`. Backwards compatibility: when the third element is absent, the cell renders as today.
+- `wordmap_meta.js` — add `meta.audioCoverage: 0..20` indicating how many of the 20 concepts have audio. Used by lang-filter to surface "languages with audio" as a filter.
+- `wordmap.html` — render a small `<button class="wm-audio">▶</button>` next to each IPA cell when `audioRef` is present; hidden otherwise. Use HTMLAudioElement, lazy-loaded on click. Add `aria-label="Play pronunciation of <surface> (<lang>)"`. ARIA live region announces "now playing" / "audio failed".
+- `lang-filter.js` — add a "has audio" filter chip and a numeric badge on each language showing audioCoverage / 20.
+- `validate_wordmap_data.js` — enforce `audioRef.url` is `https://`, has a known license tag, and is reachable at validate time only when run with `--check-audio` flag (network-dependent so off by default).
+- `CONTRIBUTING.md` — add an "Audio sourcing" section with the attribution policy.
+- `styles.css` — minimal `.wm-audio` button style; audio-unavailable rows render no button (don't show a disabled button — visual noise).
+
+Implementation instructions:
+
+**Audio sourcing policy:**
+- Primary source: Wikimedia Commons. Files are typically `commons.wikimedia.org/wiki/File:LL-Q*-Word.ogg` or `.wav`. Use the `<audio>` element with the direct file URL on `upload.wikimedia.org`.
+- Each cell with audio must record the contributor (Wiktionary username or research-corpus identifier), the upload date, and the license (typically CC-BY-SA 4.0 or CC0).
+- If a cell uses a non-Wikimedia source (Forvo paid API, Glosbe, language-specific archives), put the license terms in `audioRef.license` and confirm the use is non-commercial-acceptable. The map is open-source and may be embedded in classroom contexts; do not pull from a source that prohibits that.
+
+**Lazy load + cache strategy:**
+- Do not preload audio. The map already loads ~600 KB of meta data; preloading audio for 595 languages × up to 20 cells would push the page to gigabytes.
+- On click, fetch the audio URL once, cache the HTMLAudioElement keyed by URL in a single in-memory `Map`. Maximum cache size: 50 entries, LRU eviction.
+- Show a 1-second loading spinner if the audio takes more than 200 ms to start.
+- On failure (404, network error), display a small inline `(audio unavailable)` text in the same UI lang, log to the console, and grey out the button for that cell only.
+
+**Coverage roadmap (recommended sub-batches):**
+1. **Pilot (10 langs):** `en`, `fr`, `de`, `es_eu`, `it`, `ja`, `ko`, `zh`, `ar`, `ru`. Each with all 20 cells. ≈ 200 audio refs.
+2. **Tier 1 expansion (20 langs):** add the rest of the top-30 by speaker count (`hi`, `pt_br`, `bn`, `id`, `vi`, `tr`, `pl`, `nl`, `th`, `el`, `cs`, `sv`, `no`, `da`, `fi`, `he`, `uk`, `fa`, `ur`, `sw`).
+3. **Family anchors (15 langs):** add one anchor per language family for typological diversity even if not high-speaker (`la`, `sa`, `eo`, `nv`, `haw`, `mi`, `qu`, `bo`, `my`, `am`, `tlh` (synthesized acceptable for a conlang), `eu`, `ka`, `tah`, `mt`).
+4. **Long tail:** filling in is opportunistic — Wikimedia Commons coverage is uneven.
+
+**Synthesized fallback policy:**
+- For languages with no native-speaker audio in the open-license pool, a TTS fallback (e.g., browser's `SpeechSynthesisUtterance` with the closest-matching `lang` code) is acceptable *but must be marked as synthesized* in `audioRef.source: 'tts'`. The play button shows a different icon (e.g., a small robot glyph) and the tooltip explains "synthesized (no native recording available)".
+- Do not use TTS for tonal languages unless the engine reliably reproduces tone (browser TTS rarely does for Vietnamese / Thai / Yoruba). For tonal languages, prefer "no audio" over "wrong tone."
+
+**Validator policy (Task 151-specific):**
+- Add validator check: if `audioRef.source: 'tts'` is used for a language whose family is in a tonal-language list (`Sinitic`, `Tai-Kadai`, `Hmong-Mien`, `Yoruba`, `Igbo`, etc.), WARN. Tonal-language synthesized audio is misleading for learners.
+- Validator must report total audio coverage: `audio coverage: N cells across M languages (priority langs: 10/30 fully covered)`.
+
+Do not:
+- Do not preload audio. The bandwidth and memory cost makes the entire map unusable on slow connections.
+- Do not auto-play on page load. Auto-play violates browser policy and is hostile UX. The user must opt in by clicking.
+- Do not add audio for a tonal language using non-tonal TTS. Better to leave the cell silent.
+- Do not bypass attribution. CC-BY-SA requires "attribution by contributor name in the same context." Modal must show the attribution when audio is played, not bury it elsewhere.
+- Do not add a play button on cells with `—` (unattested) or with empty IPA. There is nothing to play.
+
+Done when:
+- The 10 pilot languages have 100% audio coverage (200 cells).
+- A learner can click any IPA cell on a pilot row and hear a native-speaker realization within 500 ms on a typical broadband connection.
+- The "has audio" filter chip works and shows accurate counts.
+- Validator reports `audio coverage` line.
+- Attribution / license appears in modal when audio is played.
+- `node validate_wordmap_data.js` passes including the new audioRef schema check.
+
+### New Task 152. Add cognate-set / sound-correspondence demonstration mode
+
+Goal:
+Surface the historical-linguistics value already latent in the data. The dataset includes Latin/Sanskrit/Old English/Proto-Indo-European/Proto-Japonic-Koreanic and ~80 historical languages — but a learner navigating a modern row has no way to *see* the cognates. Selecting "father" should let a learner instantly see Latin *pater* / Sanskrit *pitár-* / Old English *fæder* / Modern English *father* / German *Vater* and read off Grimm's law in action.
+
+Current issue I checked:
+- `HIST_DESCENDANT` mapping is in `wordmap_data.js` and is used to draw a red descendant overlay (per Task 122).
+- But cognate visualization across *non-ancestral* sister languages (e.g., father in pater, padre, père, padre, vater, faðir) requires a separate "shared etymology" relation that is not encoded.
+- `wordEvidence` annotates per-cell sources, but does not link cognates.
+- A learner can only see one row's cells in modal; they cannot pivot to "show me this concept across Indo-European" or "show me sound changes from PIE to modern."
+- The map's family filter shows membership but does not animate the cognate relations.
+
+Files to change:
+- `wordmap_meta.js` — add `meta.etymologyTags: { water: 'IE-*udōr', father: 'IE-*pəter-', ... }` opt-in. Each tag is a Glottolog/Wiktionary cognate-set identifier OR a free-form project-defined tag like `IE-pater` for which the project documents the sound-correspondence chart.
+- `wordmap_data.js` — same shape as etymologyTags but at row level (per-cell when the cognate relation differs from the language-default).
+- `wordmap.html` — add a "show cognates" button in the concept-selection area. When clicked: highlight all rows on the map whose row has `etymologyTags[<currentConcept>]` matching the currently-selected row's tag. Open a side panel listing them in tree form rooted at the proto-form.
+- `meta_i18n_coverage.js` — add UI strings for "show cognates" / "sound correspondence" / "shared etymology" / "Grimm's law" / "Verner's law" / "Indo-European" etc., in the priority UI langs.
+- `lang-filter.js` — extend with an `etymologyTag` filter for searching by cognate set.
+- `wordmap-modern-audit-feedback.md` — document the etymology-tag taxonomy chosen.
+
+Implementation instructions:
+
+**Phase 1: Schema + curated data.**
+- Pick 10 well-known cognate sets to start: PIE roots for *water (`*wod-`), *father (`*peh₂tér-`), *mother (`*méh₂tēr-`), *one (`*óynos`), *fire (`*péh₂wr̥`), *heart (`*ḱḗr`), *eye (`*h₃ókʷs`), *moon (`*méh₁n̥s`), *dog (`*ḱwṓ`), *house (`*dṓm-`)`. Tag every IE language row whose cell for that concept descends from the PIE root.
+- Use a comparable approach for Sino-Tibetan (`*water`, `*fire`, `*one`), Austronesian (`*water`/`*fire`/`*eye`), Bantu (`*-cua` water, `*-bele` two/etc.), Afro-Asiatic.
+- Each tag is a string like `IE-*ph2ter`. Document the tag → modern reflexes mapping in a new `etymology_tags.md` reference file.
+
+**Phase 2: UI.**
+- "Show cognates" button next to the concept dropdown. State: off (default) / on.
+- When on: each language row whose currently-selected concept has the same `etymologyTags` value gets a halo on the map. Other rows fade.
+- Side panel renders the cognate list as a tree:
+  - Proto-form at root (italics).
+  - Each modern reflex below as `<lang> : <surface> /<ipa>/`.
+  - Optional: small annotations on each node for known sound changes (e.g., "p > f via Grimm").
+- Clicking a tree node centers the map on that language.
+
+**Phase 3: Educational annotations (later).**
+- For known sound-change phenomena (Grimm's law, Verner's law, Bartholomae's law, the Sanskrit cerebralization rule, Sino-Tibetan's tonogenesis, etc.), add a `?` icon next to relevant cognates that opens a popup explaining the sound change in 2–3 sentences in the priority UI langs.
+
+**Per-language tagging effort estimate:**
+- Phase 1's 10 sets × ~50 IE languages = 500 cell tags. Most can be auto-generated by walking the existing `HIST_DESCENDANT` chain and copying the parent's tag down — a one-time script.
+- Sino-Tibetan is harder (less consensus). Start with the 5 best-attested sets only.
+
+**Validator policy:**
+- Tag must be a string of pattern `<family-prefix>-<asterisked-form>`, e.g., `IE-*ph₂tḗr`.
+- If two rows in the same family have the same tag, they should typically be in the same `HIST_DESCENDANT` chain or be sibling languages — flag if a tag is shared between unrelated families (e.g., IE tag appearing on a Bantu row).
+- Coverage line: `etymologyTags: N tags across M sets, F families`.
+
+Do not:
+- Do not invent cognate relations the literature does not support. If a controversial reconstruction (e.g., Altaic) is desired, mark it `etymologyTagsControversial:` and gate behind a "show controversial reconstructions" UI toggle.
+- Do not assume that a shared tag means "looks similar phonologically." Cognacy is a historical relation, not a similarity relation. Loanwords, taboo replacements, and chance similarities can all break the surface match.
+- Do not surface controversial tags (Nostratic, Eurasiatic, Borean) as the same color/halo as well-attested ones (PIE, Proto-Bantu). Mark them visually distinct.
+
+Done when:
+- 10 PIE cognate sets are tagged across the IE rows in `wordmap_data.js`.
+- "Show cognates" button works, side panel opens with the tree view.
+- Clicking a tree node re-centers the map.
+- Sino-Tibetan / Austronesian / Bantu each have at least 3 cognate sets tagged.
+- Documentation file `etymology_tags.md` lists every tag and its reflexes.
+- Validator coverage line is positive (≥ 100 tagged cells).
+
+### New Task 153. Expand per-language description into a structured grammar capsule
+
+Goal:
+Replace the free-form 1–3-sentence `description` with a structured "grammar capsule" that a learner can scan in 30 seconds. A capsule answers: word order? morphological type? script(s)? notable phonemes? how does it inflect verbs? what register(s) of speaker does it have? Today the description tells some of this in prose but is unsearchable, untranslatable systematically, and inconsistent across rows.
+
+Current issue I checked:
+- `wordmap_meta.js` rows have `description: '...'` (string or `{ en, ja, ko, zh }` per Task 145).
+- A typical description is "Korean is spoken on the Korean Peninsula. Hangul, its unique alphabetic script invented in 1443, is celebrated for its scientific design. Korean is agglutinative with SOV word order and a complex honorific system."
+- Useful but not consistently present across all 595 languages, not localizable as structured data, and not searchable / filterable.
+- Learners cannot ask "show me all polysynthetic languages" or "show me all SVO + tonal + non-Latin-script" without reading every description.
+
+Files to change:
+- `wordmap_meta.js` — add `meta.grammarCapsule` schema:
+  ```
+  grammarCapsule: {
+    wordOrder: 'SOV' | 'SVO' | 'VSO' | 'VOS' | 'OSV' | 'OVS' | 'free' | 'mixed',
+    morphology: 'isolating' | 'agglutinative' | 'fusional' | 'polysynthetic' | 'introflexive' | 'mixed',
+    alignment: 'nominative-accusative' | 'ergative-absolutive' | 'split-S' | 'tripartite' | 'mixed',
+    case: { count: 0..30, exemplars: ['nom', 'gen', 'dat', ...] },
+    gender: { count: 0..30, system: 'masculine-feminine' | 'animate-inanimate' | 'noun-class' | 'none' },
+    tense: { count: 0..15, exemplars: [...] },
+    aspect: { count: 0..10, exemplars: [...] },
+    tonal: { kind: 'register' | 'contour' | 'pitch-accent' | 'none', count: 0..N },
+    register: { honorific: boolean, formality: ['plain', 'polite', 'humble', 'royal'] },
+    inventory: { consonants: 0..N, vowels: 0..N, distinctive: ['clicks', 'ejectives', 'implosives', 'pharyngeals', ...] },
+    notes: 'free-form 1–2 sentence highlight'
+  }
+  ```
+  All fields are optional. Fields default to `null` rather than guessing.
+- `wordmap.html` — add a "Grammar at a glance" collapsible section in the modal, populated from the capsule. Render as a 2-column grid of label:value.
+- `meta_i18n_coverage.js` — add localizations for every label and every enum value (in the priority UI langs).
+- `lang-filter.js` — extend filter UI to accept capsule-based queries: e.g., "alignment: ergative-absolutive" or "tonal: yes" or "polysynthetic: yes".
+- `validate_wordmap_data.js` — enforce enum values; INFO line for capsule coverage.
+- `CONTRIBUTING.md` — document the schema with examples.
+
+Implementation instructions:
+
+**Coverage roadmap:**
+1. **Phase 1 (priority 30 langs):** add capsules for the same 30 priority languages identified in Task 80. For each, the capsule comes from the standard reference grammar, not free-form judgment.
+2. **Phase 2 (family anchors):** ensure at least one language per family has a capsule. The validator can warn if a family has > 5 languages but no capsule on any of them.
+3. **Phase 3 (long tail):** opportunistic.
+
+**Per-field policy:**
+- `wordOrder`: pick the basic, unmarked clausal order. Languages with topic-prominent or free order (Russian, Latin) → `'mixed'` with a `notes` clarification.
+- `morphology`: pick the dominant type. Note that almost no language is purely one type — "Japanese is agglutinative" hides fusion in some auxiliary verbs. Capsule reflects the dominant pattern.
+- `alignment`: this is the one most often missed in casual descriptions. Worth filling in for at least the Caucasian, Polynesian, Eskimo-Aleut, Australian, and Mayan languages where ergative alignment is salient.
+- `case.exemplars`: list the cases. For Latin: `['nom', 'gen', 'dat', 'acc', 'abl', 'voc']`. For Estonian: 14 cases — give the count and 4–5 most common exemplars rather than all 14.
+- `gender.system`: distinguish "noun class" (Swahili 18-class system) from "masculine-feminine" (Spanish) — both are gender systems but pedagogically very different.
+- `tonal.kind`: pitch-accent (Japanese, Norwegian) is a specific category that should not be conflated with full tonal (Mandarin, Yoruba).
+- `inventory.distinctive`: only flag rare features. Standard plosives/nasals are not "distinctive" in this sense. Only flag clicks, ejectives, implosives, pharyngeals, retroflex consonants, lateral fricatives, and unusually large or small inventories.
+
+**Display conventions:**
+- Modal collapsible section "Grammar at a glance" / 「文法のあらまし」 / 「문법 한눈에」 / 「文法概览」.
+- Sticky inside the modal so it does not scroll out of view when reading other sections.
+- "Distinctive features" inventory items render with small ⚠ or ★ icons when they are typologically rare.
+- Expand-on-click for "tense" and "aspect" lists if exemplars > 3.
+
+Validator / static check:
+- Enum validation per field.
+- Capsule coverage tally per family (`grammar capsules: N/M priority langs; family coverage: 32/69 families have ≥ 1 capsule`).
+- Warn if `inventory.distinctive` includes 'clicks' but family is not Khoisan or Bantu (likely error).
+- Warn if `tonal.kind: 'register'` but family is not in a known register-tone family list (Otomanguean, Khoisan, etc.).
+
+Do not:
+- Do not write a capsule from a prose description without checking a reference grammar — the description was likely casual and may be wrong.
+- Do not conflate pitch-accent with tone. Mark Japanese and Norwegian as `pitch-accent`, not `tone`.
+- Do not add a capsule field that is not in the schema. Free-form data goes in `notes`.
+- Do not let `notes` exceed 2 sentences. If more is needed, the existing prose `description` is the place.
+
+Done when:
+- All 30 priority languages have capsules.
+- Modal renders the "Grammar at a glance" section.
+- Filters work for at least `alignment`, `morphology`, `tonal.kind`.
+- Validator coverage tally is reported.
+- A learner can answer "show me all ergative-absolutive languages" with one filter click.
+
+### New Task 154. Add per-language sample sentence corpus with morpheme glossing
+
+Goal:
+A 20-word vocabulary tells a learner *nothing* about how the language assembles those words into sentences. Adding 1–3 sample sentences per language with interlinear morpheme glossing (Leipzig Glossing Rules) bridges from "I can read 20 isolated words" to "I can see the syntax."
+
+Current issue I checked:
+- The map is strictly word-level: every cell is a citation form.
+- No syntax, agreement, word-order in context, or morpheme-internal structure is visible.
+- A learner studying Turkish can see `ev` "house" but cannot see how Turkish builds *evlerimde* "in my houses" without external resources.
+- This gap is the single biggest reason the map is currently a *reference* tool rather than a *learning* tool.
+
+Files to change:
+- `wordmap_meta.js` — add `meta.samples` array:
+  ```
+  samples: [
+    {
+      surface: 'Evlerimde kitaplar var.',
+      gloss:   'ev-ler-im-de kitap-lar var',
+      morph:   'house-PL-1SG.POSS-LOC book-PL exist',
+      translation: { en: 'There are books in my houses.', ja: '私の家々に本がある。' },
+      audioRef?: { url, source, attribution },
+      source: { citation, url, page }
+    }
+  ]
+  ```
+- `wordmap.html` — add a "Sample sentences" collapsible section in the modal. Render each sample as 4 lines (surface / morpheme split / morpheme gloss / translation). Use monospace alignment so glosses stack visually.
+- `meta_i18n_coverage.js` — translation field is multi-lingual.
+- `validate_wordmap_data.js` — enforce schema: surface and gloss must have the same number of morpheme spaces (Leipzig rule); morph gloss tokens are validated against an allowlist of standard glossing abbreviations (`PL`, `SG`, `1SG`, `LOC`, `ACC`, `NOM`, `ERG`, `ABS`, `PERF`, `IMPF`, etc.).
+- `CONTRIBUTING.md` — document Leipzig Glossing Rules link, allowed abbreviations, and citation policy.
+
+Implementation instructions:
+
+**Per-language choice of sample:**
+- Sample 1: a simple SVO/SOV/VSO clause demonstrating basic word order.
+- Sample 2 (if added): a clause with notable morphology — relevant agreement, case, or tense marker.
+- Sample 3 (optional): an idiom or proverb that gives cultural flavor.
+- Avoid biblical or political quotations (cross-cultural sensitivity).
+- Source must be cited. UDHR, Wikipedia, Wiktionary entries, or published grammars are all acceptable.
+
+**Glossing standard:**
+- Use Leipzig Glossing Rules strictly. Do not invent abbreviations.
+- Allowed: `PL`, `SG`, `DU`, `1`, `2`, `3`, `M`, `F`, `N`, `NOM`, `ACC`, `GEN`, `DAT`, `ABL`, `LOC`, `INST`, `VOC`, `ERG`, `ABS`, `PRS`, `PST`, `FUT`, `PERF`, `IMPF`, `PROG`, `HABIT`, `SBJV`, `IMP`, `COND`, `NEG`, `Q`, `TOP`, `FOC`, `POSS`, `REFL`, `RECP`, `CAUS`, `PASS`, `ANTIPASS`, `APPL`, `NMLZ`, `CL` (classifier), and standard noun-class numbers.
+- For unusual categories (evidentiality, switch-reference, Algonquian obviation), document in `CONTRIBUTING.md` and allowlist.
+
+**Display in modal:**
+- Monospace block with 4 aligned lines:
+  ```
+  Evlerimde      kitaplar    var.
+  ev-ler-im-de   kitap-lar   var
+  house-PL-1SG.POSS-LOC  book-PL   exist
+  → "There are books in my houses."
+  ```
+- "→" and the translation line in the user's UI lang.
+- Small "?" next to each gloss abbreviation that opens the glossary popup defining it (cross-link Task 155).
+
+**Coverage roadmap:**
+- Phase 1 (priority 30 langs): one sample each. ~30 entries.
+- Phase 2 (family anchors): one per family that lacks coverage.
+- Phase 3 (long tail): opportunistic. Validator INFO line tracks coverage.
+
+Validator / static check:
+- Surface/gloss alignment: morpheme count must match exactly. If `ev-ler-im-de` (4 morphemes) and gloss is `house-PL-LOC` (3), error.
+- Glossing-abbreviation allowlist check.
+- Translation must be multi-lingual object with at least `en`.
+- Source citation required.
+
+Do not:
+- Do not skip glossing. A surface + translation only is the same as a Wiktionary phrase entry — not pedagogically useful for syntax/morphology teaching.
+- Do not paste from copyrighted grammars without checking permissions. Use UDHR Article 1, public-domain corpora, or grammar examples cited under fair-use educational excerpting (with attribution).
+- Do not invent glossing abbreviations.
+- Do not let surface contain embedded quotations or markup. Plain Unicode only.
+
+Done when:
+- 30 priority languages have at least one sample.
+- Modal renders the section with Leipzig-aligned glosses.
+- Validator enforces alignment and abbreviation allowlist.
+- A learner can read a Turkish sample and visually identify which morpheme is the locative.
+
+### New Task 155. Add IPA tutor: clickable IPA symbols + glossary of linguistic terms
+
+Goal:
+The map uses ~120 IPA symbols across all rows. Many learners do not know which symbol denotes which sound. A clickable IPA symbol that opens a small popup with "voiced bilabial plosive — found in 95% of world languages" and a play-IPA-sound button (cross-link Task 151) turns the map from "reference for those who already know IPA" into "tool that *teaches* IPA in context."
+
+Same idea applies to grammatical jargon: when a description says "agglutinative" or "ergative-absolutive," a learner unfamiliar with the term sees gibberish unless a glossary tooltip explains it.
+
+Current issue I checked:
+- IPA symbols in `<td class="wm-ipa">` cells render as plain text. No interaction.
+- No `IPA_SYMBOL_DESCRIPTION` table exists.
+- No `LINGUISTIC_TERM_GLOSSARY` exists.
+- Modal text uses jargon ("ergative", "polysynthetic", "tonal", "register tone") without inline explanation.
+
+Files to change:
+- New file `ipa_descriptions.js` — table mapping each IPA symbol to:
+  ```
+  {
+    description: { en, ja, ko, zh },           // "voiced bilabial plosive"
+    place: 'bilabial' | 'alveolar' | ...,
+    manner: 'plosive' | 'fricative' | ...,
+    voicing: 'voiced' | 'voiceless',
+    rarity: 'common' | 'rare' | 'very-rare',  // for educational highlighting
+    chartUrl?: 'https://en.wikipedia.org/wiki/...'
+  }
+  ```
+  Cover all 120 symbols actually used in the data.
+- New file `linguistic_glossary.js` — table for terms used in descriptions/grammar capsules: `agglutinative`, `polysynthetic`, `ergative`, `absolutive`, `tonal`, `register-tone`, `pitch-accent`, `noun class`, etc. Each entry has multilingual definition and optional reference URL.
+- `wordmap.html` — wrap IPA symbols in `<span class="wm-ipa-symbol" data-sym="X">`. On hover/click: open small popup with description and (if Task 151 done) play button.
+- `wordmap.html` — wrap glossary terms in `<span class="wm-term" data-term="ergative">`. Render the term with a faint dotted underline so users see it's interactive.
+- `meta_i18n_coverage.js` — UI strings for the glossary popup.
+- `lang-filter.js` — when a feature filter is selected (e.g., "ergative"), show the glossary entry inline as a hint.
+
+Implementation instructions:
+
+**IPA-symbol coverage:**
+- Generate the symbol list from a one-time script that walks `wordmap_data.js` and extracts every Unicode character classified as IPA.
+- Cross-reference with the IPA chart on Wikipedia. Every symbol gets `place`, `manner`, `voicing` from the chart.
+- For diacritics (`ʰ`, `ʷ`, `ʲ`, `ˤ`, `ˀ`, `ˡ`, `ː`, `˞`, `̃`, `̥`, `̩`): treat each as a separate entry with description "X-ization" / "X-modified".
+- For tone letters (`˥`, `˩`, `˧˩`, etc.): describe each as "high tone", "low tone", "mid-falling", etc.
+- Cover all symbols found in data; flag any symbol the script finds but the table does not have.
+
+**Glossary terms (initial set, ~50):**
+- Word order: SOV, SVO, VSO, VOS, OSV, OVS, free word order, topic-prominent.
+- Morphology: isolating, agglutinative, fusional, polysynthetic, introflexive (Semitic), mixed.
+- Alignment: nominative-accusative, ergative-absolutive, split-S, tripartite, active-stative.
+- Phonology: tone, register tone, contour tone, pitch accent, click, ejective, implosive, pharyngeal, retroflex, vowel harmony, length, gemination, breathy, creaky, modal voicing.
+- Misc: classifier, evidentiality, switch-reference, animacy, honorific, register.
+
+**Popup UX:**
+- Hover delay: 300 ms before popup opens (avoid flicker on rapid mouse motion).
+- Popup is a small floating card, not a modal. Closes on mouse-out or click-elsewhere.
+- Popup contains: term in user's UI lang + 2-sentence definition + (optional) "see also" links to related terms + (optional) Wikipedia external link.
+- Keyboard accessible: focus a wrapped span with Tab, Enter opens, Escape closes.
+
+**Validator:**
+- For every IPA symbol present in `wordmap_data.js`, the description table must have an entry. Missing entries WARN.
+- For glossary terms used in descriptions or grammar capsules, the glossary table must define them. Missing terms WARN.
+
+Do not:
+- Do not pop the IPA description on hover for every cell. The data has tens of thousands of symbol occurrences. Let the user opt in by clicking the cell or pressing a hotkey.
+- Do not invent IPA symbol descriptions. Use the official IPA chart consonant/vowel categorizations.
+- Do not let the glossary become a substitute for the language description. It is for term-level support, not full explanations.
+- Do not localize the IPA symbol itself. Symbols are universal; only the *description* is localized.
+
+Done when:
+- Every IPA symbol used in `wordmap_data.js` has an `ipa_descriptions.js` entry.
+- Hover/click on an IPA symbol shows a description in the user's UI lang.
+- 50 linguistic terms are in the glossary, dotted-underlined wherever they appear in modal text.
+- A learner clicking on `ɲ` in any row sees "voiced palatal nasal".
+
+### New Task 156. Add curated lesson tours / learning paths through the data
+
+Goal:
+The map is brilliant for exploration but gives no narrative. A teacher should be able to point a class to a "tour" that walks through 10 languages with a teaching question, e.g., "How does Indo-European *pater* drift across 4,000 years?" or "What does a tone system actually look like?" Each tour highlights a curated subset of languages, walks linearly with prev/next, and includes 1–2 paragraphs of pedagogical commentary per stop.
+
+Current issue I checked:
+- The map is purely user-driven exploration. No guided sequence exists.
+- A first-time visitor has no entry-narrative explaining why the map is interesting.
+- Teachers wanting to use the map in class must build the lesson plan from scratch.
+
+Files to change:
+- New file `tours.js` — declarative tour definitions:
+  ```
+  TOURS = [
+    {
+      id: 'ie-pater',
+      title: { en: 'How "father" drifted across Indo-European', ja: '... ', ... },
+      audience: 'introductory' | 'intermediate' | 'advanced',
+      stops: [
+        { lang: 'ine', concept: 'father', commentary: { en: 'PIE *ph₂tḗr is the reconstructed form...', ja: '...' } },
+        { lang: 'sa', concept: 'father', commentary: { en: 'In Sanskrit the form is pitár-...', ja: '...' } },
+        ...
+      ]
+    },
+    ...
+  ]
+  ```
+- `wordmap.html` — add a "Tours" entry in the navigation. Tour list shows each tour's title and audience level.
+- Tour player UI: bottom drawer with prev/next, current stop number, commentary text, and "exit tour" button. The map auto-pans to each stop's language and auto-selects the stop's concept.
+- `meta_i18n_coverage.js` — UI strings for tour player.
+
+Implementation instructions:
+
+**Initial tour set (8–10 tours):**
+1. **"How 'father' drifted across Indo-European"** — Demonstrates Grimm's law via 8 stops: PIE → Latin → Old English → Modern English → German → Sanskrit → Greek → Persian.
+2. **"Tone systems compared"** — 7 stops: Mandarin (4 contour tones) → Cantonese (6 tones) → Vietnamese (6 tones) → Thai (5 tones) → Yoruba (3 register tones) → Otomi (register + phonation) → Punjabi (register-tone Indic).
+3. **"Click consonants and how they work"** — 4 stops across Khoisan: Nama → Taa → Khoekhoe → Sandawe.
+4. **"Three writing systems for one language"** — Japanese (kanji+kana), Korean (hangul), then Vietnamese (Latin chữ Quốc Ngữ + chữ Nôm), Mongolian (Cyrillic vs traditional script).
+5. **"Polysynthesis"** — 4 stops: Inuktitut → Mohawk → Nahuatl → Yupik. Show how a single word can be a sentence.
+6. **"Ergative-absolutive vs nominative-accusative"** — 6 stops: English (nom-acc reference) → Basque (erg-abs) → Tibetan → Hindi (split-ergative) → Inuktitut → Dyirbal.
+7. **"Five language families on one trade route"** — Silk Road languages: Persian / Sogdian / Chinese / Mongolian / Turkic.
+8. **"Endangered languages of one country"** — pick a country and walk through its threatened minority languages.
+9. **"Loanword chains"** — `algebra` from Arabic to European → `tea` from Min Nan to many → `kimono` from Japanese.
+10. **"How creoles are born"** — 5 stops: lexifier (Portuguese / French / English) → contact-era pidgin → modern creole (Cape Verdean / Mauritian / Tok Pisin).
+
+**Tour-player behavior:**
+- Map auto-pans to current stop with smooth zoom.
+- Concept dropdown auto-selects.
+- Current stop's language modal opens automatically? — *no*. Modal opening is intrusive. Highlight the language with a halo on the map, but let the user open the modal explicitly.
+- "Next" and "Prev" buttons. Progress dots show position.
+- Linear; no branching tours in v1.
+- Tour state lives in URL hash (`#tour=ie-pater&stop=3`) so a teacher can link directly to a stop.
+
+**Authoring workflow:**
+- Tours are markdown-friendly and live in `tours.js` so they can be reviewed in PRs.
+- Commentary text supports inline links to glossary terms (Task 155).
+- Each tour has a `audience` level and a recommended duration (`~10 min`).
+
+Validator / static check:
+- Each `stops[i].lang` must exist in `wordmap_data.js`.
+- Each `stops[i].concept` must be in `WORD_LIST`.
+- Tour metadata (title, commentary) must be localized to at least the priority UI langs.
+
+Do not:
+- Do not auto-start a tour on page load. The default landing must remain the exploratory map.
+- Do not write tours as marketing. Tours are for learning, not promotion.
+- Do not skip commentary in non-English UI langs. A Japanese-speaking learner who follows a tour should not get only English text.
+- Do not let tours exceed 12 stops. Beyond that, attention drops; split into "Part 1" / "Part 2".
+
+Done when:
+- 8 tours exist in `tours.js` with full localization in priority UI langs.
+- Tour player UI works with prev/next and URL state.
+- A teacher can link a class directly to `?#tour=tone-systems&stop=1`.
+- Each tour has been reviewed by at least one person whose specialty is the tour's topic (e.g., the tone-systems tour is reviewed by someone who has taught a phonology course).
+
+### New Task 157. Add "cite this language" / academic export functionality
+
+Goal:
+For students writing papers and teachers building handouts, the project should make citation friction-free. Right now a learner has to manually copy the language name, scroll for sources, copy URLs, and assemble a citation by hand. Adding a "Cite" button per language that generates BibTeX / APA / MLA / Chicago entries closes the loop from "I learned this from LangMap" to "I can put it in my paper."
+
+Plus: a "compare these languages" CSV export for students doing comparative analyses (lining up 5 languages × 20 concepts in a spreadsheet for a phonetics homework).
+
+Current issue I checked:
+- `meta.sources` exists for ~59 languages and renders in the modal footer as clickable URLs.
+- No machine-readable citation output.
+- No way to export a subset of languages for offline analysis.
+
+Files to change:
+- `wordmap.html` — add "Cite" button in modal. Opens a small dialog with three tabs: BibTeX, APA, MLA, Chicago. "Copy to clipboard" button per format.
+- `wordmap.html` — add "Export" button in the language search results. Opens dialog: select format (CSV, TSV, JSON), select fields, select languages, "Download".
+- New file `citation_formatters.js` — pure JS functions:
+  ```
+  toBibtex(lang, meta) -> string
+  toAPA(lang, meta) -> string
+  toMLA(lang, meta) -> string
+  toChicago(lang, meta) -> string
+  toCSV(langs, fields) -> string
+  ```
+- `meta_i18n_coverage.js` — UI strings for citation dialog.
+
+Implementation instructions:
+
+**Citation content per format:**
+- BibTeX entry type: `@misc` for the LangMap row itself, plus separate `@reference` entries for each `meta.sources` entry.
+- APA: "Language name (n.d.). In LangMap: Word Map of N languages. Retrieved [date] from [URL]." Plus formatted refs from `meta.sources`.
+- MLA: similar but MLA 9 conventions.
+- Chicago: footnote-style and bibliography-style.
+- The page URL must include the hash `#lang=<code>` so the citation links back to the exact row.
+
+**CSV export fields:**
+- Default columns: `code, name, family, region, surface_water, ipa_water, surface_fire, ipa_fire, ...` (40 columns for 20 concepts × 2). Plus `description` (single UI lang chosen by user).
+- User can deselect columns.
+- Selected languages: by default current filter set; user can change.
+- Encoding: UTF-8 with BOM (Excel compatibility).
+- File name: `langmap-export-<date>.csv`.
+
+**JSON export:**
+- Mirror the underlying data structure but flatten relevant subsets.
+- Include `meta.sources` for full citation in offline use.
+
+**Dialog UX:**
+- Modal-style, not a side panel. Citation is a transactional action.
+- Live preview of the citation text as the user switches tabs.
+- Single-click "Copy to clipboard" with toast confirmation.
+- Big "Download" button for CSV with browser file-save dialog.
+
+Validator / static check:
+- For every language with a "Cite" button, `meta.sources` should have at least one entry. WARN if missing on a row that is exposed in the UI.
+
+Do not:
+- Do not generate a citation that omits the per-language sources buried in `meta.sources`. The citation must transitively credit the underlying scholarship, not just LangMap itself.
+- Do not export the entire dataset by default — let users select. A 600-row dump is rarely what they want.
+- Do not gate this feature behind a login. The map is public; export should be too.
+
+Done when:
+- "Cite" button works in modal; produces BibTeX/APA/MLA/Chicago.
+- "Export" generates CSV with selected fields and languages.
+- A student can copy a BibTeX entry, paste into Overleaf, and have it format correctly.
+- A teacher can export 10 languages × 20 concepts to a CSV in under 30 seconds.
+
+### New Task 158. Add interactive self-test / quiz mode for IPA, family identification, and cognate matching
+
+Goal:
+Active learning beats passive reading. A quiz mode that drills IPA symbols, asks learners to identify language families from a word, or matches cognates across an Indo-European set, converts the map from a reference into a learning-by-doing tool. With spaced-repetition for IPA (reusing stuff already in the data), a learner who returns daily for 5 minutes will become IPA-literate within weeks.
+
+Current issue I checked:
+- No quiz/self-test functionality.
+- No spaced repetition. No score tracking. No feedback loop.
+- The data is rich enough to power exercises with no extra content authoring.
+
+Files to change:
+- New file `quiz.js` — quiz engine:
+  - Question types: `ipa-to-place-manner`, `ipa-to-language`, `language-to-family`, `concept-to-language`, `cognate-match`.
+  - Question generators consume `wordmap_data.js` + `wordmap_meta.js` + `ipa_descriptions.js` (Task 155).
+  - Spaced-repetition state in `localStorage` (no server-side; respects privacy).
+- `wordmap.html` — add "Quiz" entry in navigation. Quiz UI is a modal overlay.
+- `meta_i18n_coverage.js` — UI strings for quiz.
+
+Implementation instructions:
+
+**Question types:**
+1. **IPA → place/manner.** "Which of these is the voiced bilabial plosive? `[b], [p], [d], [t]`." Difficulty scales: voiceless/voiced pairs → fricative/plosive distinctions → diacritics.
+2. **IPA → language.** "This sound `[ǂ]` appears in which language?" Multiple-choice from data.
+3. **Language → family.** "Hungarian belongs to which family?" Multiple-choice. Difficulty scales by family size (Indo-European is easy; Khoisan, Niger-Congo subbranches are harder).
+4. **Concept → language.** "Which language uses `mizu` for water?" (Japanese.)
+5. **Cognate matching.** "Which of these words is the cognate of Latin `pater` in Sanskrit?" Uses Task 152's etymology tags.
+
+**Quiz UX:**
+- Single question on screen. Multiple-choice (4 options) by default; easy mode 2 options; hard mode free-text.
+- Immediate feedback: green check / red X with the correct answer and a 1-sentence explanation.
+- "Next question" button, no auto-advance (let the learner read the explanation).
+- Score and streak counter at the top.
+- Settings: question types to include, difficulty, language pool (e.g., "only Indo-European").
+
+**Spaced repetition:**
+- Keep score per IPA symbol / language / family in `localStorage`.
+- Items the learner gets wrong come back sooner; items consistently right are pushed further out.
+- Use a simple SM-2-like schedule, not a full Anki port — overengineering risk.
+
+**Privacy:**
+- No quiz data leaves the browser. No telemetry. `localStorage` only.
+- "Reset progress" button in settings.
+
+Validator / static check:
+- Quiz cannot reference an IPA symbol or language not in the data.
+- Each question type must have unit tests for question generation.
+
+Do not:
+- Do not gamify with leaderboards or social features. The audience is learners, not players.
+- Do not run analytics on quiz performance. Privacy first.
+- Do not let one question type dominate. Mix evenly unless the user has set a preference.
+- Do not require an internet connection to take the quiz. All assets should be cached for offline use.
+
+Done when:
+- 5 question types are implemented and each generates valid questions.
+- Spaced-repetition schedule works.
+- A learner can take a 10-minute quiz without internet and have their progress saved across sessions.
+- IPA symbol pool grows to ~120 questions, language pool to all 595 (filterable).
+
+---
+
+## Education-readiness rollup (after Tasks 151–158)
+
+Once 151–158 are complete, the map graduates from *good reference* to *teaching-grade resource*. The progression by phase:
+- **Phase A — minimum viable teaching tool:** Tasks 151 (audio for 30 priority langs) + 153 (grammar capsules for 30) + 154 (samples for 30). Without these three, students cannot use the map for an introductory phonology, syntax, or morphology class.
+- **Phase B — historical-linguistics support:** Task 152 (cognate sets) + the existing HIST_DESCENDANT chain. Enables Indo-European / Sino-Tibetan / Austronesian sound-change exercises.
+- **Phase C — guided learning:** Tasks 156 (tours) + 158 (quizzes). Converts the map into something a learner can engage with on their own initiative without a teacher present.
+- **Phase D — academic adoption:** Tasks 155 (IPA tutor / glossary) + 157 (citation export). Removes the friction that prevents the map from being cited in coursework and assignments.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 11)
+
+A direct scan of `wordmap_data.js` (12,022 cells) and `wordmap_meta.js` surfaced concrete data problems not yet captured by the validator or by Tasks 1–158. Each finding below is a real, currently-on-disk discrepancy — not a policy question — and has a small, scoped fix.
+
+Scan tooling used:
+- Regex-based cell extraction with surface/IPA pair iteration (12,022 cells).
+- Per-row script-script consistency check (no cross-script bleed found).
+- Per-language family-string clustering (307 distinct family strings).
+- Coordinate de-duplication at 0.01° precision.
+- Surface/IPA structural pattern detection (parens, slashes, hyphens, embedded English glosses).
+
+### New Task 159. Normalize family-classification taxonomy strings across `wordmap_meta.js`
+
+Goal:
+Resolve **307 distinct `family:` string values** that contain at least 12 inconsistencies where the same lineage is labeled differently across rows. The filter UI groups by `family` token, so this drift directly degrades the user-facing language-family browser: a learner who picks "Sino-Tibetan" sees a different language list than a learner who picks "Sinitic," even though they overlap.
+
+Current issue I checked (counts via 2026-05-06 scan):
+
+**Sinitic / Sino-Tibetan inconsistency (13 rows misaligned):**
+- 21 rows use `Sinitic (...)` as the top label (e.g., `Sinitic (Mandarin, Ji-Lu)`).
+- 8 rows use `Sino-Tibetan (...)` for *Sinitic* sub-branches (e.g., `Sino-Tibetan (Yue)`, `Sino-Tibetan (Min Nan)`, `Sino-Tibetan (Wu)`).
+- Both are technically correct (Sinitic is a branch of Sino-Tibetan) but the project should pick one and apply it. Recommend `Sinitic (...)` for the Sinitic sub-branches and reserve `Sino-Tibetan (...)` for non-Sinitic Tibeto-Burman.
+
+**Bantu under Atlantic-Congo vs Niger-Congo (33 Bantu rows split):**
+- 28 Bantu rows use `Niger-Congo (Bantu, ...)`.
+- 4 use `Atlantic-Congo (Bantu, ...)` (recent additions).
+- 1 uses `Bantu (Nguni)` directly with no parent.
+- Modern Glottolog/Hammarström classification places Bantu under Atlantic-Congo; the project should pick one taxonomy convention.
+
+**Iranian / Indo-European (Iranian) split (14 rows):**
+- 11 rows use `Iranian (...)` directly (e.g., `Iranian (Northwestern, Caspian)`).
+- 9 rows use `Indo-European (Iranian, ...)` (e.g., `Indo-European (Iranian, Old)`).
+- Same lineage, two prefix conventions. Pick one.
+
+**Romance / Indo-European (Romance) split (28 rows):**
+- 26 rows use `Romance (...)` (e.g., `Romance (Iberian, Astur-Leonese)`).
+- 1 uses `Indo-European (Romance, Gallo-Romance)`.
+- 1 uses `Indo-European (Romance, Iberian)`.
+
+**Saami / Sámi spelling (5 rows):**
+- 3 rows: `Uralic (Saami)`.
+- 1 row: `Uralic (Sámi)`.
+- 1 row: `Uralic (Sámi, Western)`.
+- Pick one spelling and apply.
+
+**Atlantic / Atlantic-Congo (2 rows ambiguous):**
+- 1: `Atlantic (Niger-Congo)`.
+- 1: `Atlantic-Congo (Mel)`.
+- Different ways of saying the Mel sub-branch.
+
+**Indo-Aryan / Indo-European (Indo-Aryan) (none mixed today, but the asymmetric pattern with Iranian is fragile)** — Indo-Aryan rows are all `Indo-Aryan (...)` while Iranian rows are sometimes `Indo-European (Iranian, ...)`. The two should follow the same pattern.
+
+**Mongolic slash style (1 row):**
+- `Mongolic (Western/Oirat)` uses a slash inside parens.
+- All other multi-part labels use comma: `(Western, Oirat)`. Normalize.
+
+Files to change:
+- `wordmap_meta.js` — every `family: '...'` occurrence, mechanical search-and-replace.
+- `lang-filter.js` — confirm the family taxonomy in the filter UI matches the new normalized strings.
+- `validate_wordmap_data.js` — add a check that warns on family strings with inconsistent prefix conventions (e.g., `Niger-Congo (Bantu, ...)` and `Atlantic-Congo (Bantu, ...)` cannot both exist in the same dataset).
+- `wordmap-modern-audit-feedback.md` — record the policy choice in a new follow-up Pass entry.
+
+Implementation instructions:
+
+**Step 1 — pick a policy.** Document in CONTRIBUTING.md a single rule: "Family strings use the *most specific commonly-used genealogical label* with sub-branches in parentheses, comma-separated. Top-level prefix is the lineage's accepted modern name (e.g., `Atlantic-Congo`, not legacy `Niger-Congo`; `Sinitic`, not the macro `Sino-Tibetan`, when the row is Sinitic)."
+
+**Step 2 — apply the rule:**
+- All Sinitic rows: `Sinitic (...)`. Move the 8 `Sino-Tibetan (Yue|Min Nan|Wu|...)` rows to `Sinitic (...)`.
+- All Bantu rows: `Atlantic-Congo (Bantu, ...)`. Move the 28 `Niger-Congo (Bantu, ...)` rows. The 1 `Bantu (Nguni)` row gets the full prefix.
+- All Iranian rows: `Indo-European (Iranian, ...)`. Move the 11 short-form rows. (Or, alternatively, all become `Iranian (...)` — pick whichever the project policy prefers, but apply uniformly.)
+- All Romance rows: `Indo-European (Romance, ...)` *or* `Romance (...)` — uniform.
+- All Saami rows: `Uralic (Saami)` (English convention) *or* `Uralic (Sámi)` (endonym convention). Document choice.
+- `Atlantic (Niger-Congo)` → `Atlantic-Congo (Mel)` (or the row's actual Mel sub-branch).
+- `Mongolic (Western/Oirat)` → `Mongolic (Western, Oirat)`.
+
+**Step 3 — re-validate filter behavior.** After normalization, verify the lang-filter UI shows the expected language counts under each family chip. Some chips may merge (e.g., `Atlantic-Congo (Bantu, ...)` count grows from 4 to 33).
+
+Validator / static check:
+- Warn if any family string occurs only once (likely a typo or one-off label inconsistency).
+- Warn if both `Niger-Congo (Bantu, X)` and `Atlantic-Congo (Bantu, X)` exist in the same dataset.
+- Warn if both `Saami` and `Sámi` exist in the same dataset.
+- Warn if both `Sinitic (X)` and `Sino-Tibetan (Sinitic, X)` patterns exist for the same X.
+
+Do not:
+- Do not change the family string for a single row without checking what the filter UI does. The lang-filter chip count is user-visible and changes when family strings change.
+- Do not introduce a *third* convention while normalizing. If the project uses `Niger-Congo`, do not also start using `Volta-Congo` for some rows.
+- Do not strip sub-branch detail. The current sub-branch labels (`R10`, `S10 Shona`, `JE Runyakitara`) carry information that historical/typological filters depend on.
+- Do not bundle this with Task 130 (`scriptTags` schema) — those are independent.
+
+Done when:
+- All 307 distinct family strings are reviewed and any duplicates collapsed.
+- The CONTRIBUTING.md "family string convention" paragraph exists.
+- `node validate_wordmap_data.js` passes including the new family-consistency warnings.
+- `lang-filter.js` chip counts visibly reflect the normalized taxonomy.
+
+### New Task 160. Fix residual capital `N` and Baxter-Sagart non-IPA notation in IPA fields
+
+Goal:
+Close the IPA-strictness gap on cells that still contain non-IPA characters in the IPA column. Two specific patterns slipped past the Pass-2 cleanup:
+1. **One residual capital `N`** in `ja_edo` (mother): `okkasaN` while the same row's father uses `otottsaɴ`. Within-row inconsistency.
+2. **73 Baxter-Sagart Old/Middle Chinese cells** in `zh_tang` (and 3 in `och`) using `X` (rising tone) and `H` (departing tone) finals plus `*C.` syllabicism prefixes. These are reconstructional conventions, not IPA.
+
+Current issue I checked:
+- `wordmap_data.js:1040` — `ja_edo` row has `mother:['おっかさん','okkasaN']` while `father:['おとっつぁん','otottsaɴ']` and `hello:['御機嫌よう','ɡokiɡeɴjoː']` use the correct `ɴ`. The `N` is a Pass-2 oversight.
+- `zh_tang` row has IPA cells like `ɕyɪX`, `xuɑX`, `bɨoX`, `ʔɑiH`, `ʔimX`, `kʰiuɛnX`, `ɕɨuX`, `mʉɐnH piuk`, `ziɛH`, `dʑiɛnX`. The X/H letters are Baxter-Sagart Middle Chinese tone notation: 上聲 (X) and 去聲 (H). Real IPA uses tone bars (˩˨˧˦˥) or numerical tone values, not Latin letters.
+- `och` Old Chinese has IPA like `*C.nik`, `*C.mˤok`, `*C.muk` — Baxter-Sagart syllabicism prefix `C.` indicates an unidentified prefix consonant. Asterisk indicates reconstruction (which is correct for `dataStatus: 'reconstructed'`) but the `C.` prefix is convention-specific.
+
+Files to change:
+- `wordmap_data.js` — `ja_edo` mother cell + `zh_tang` 73 cells + `och` 3 cells.
+- `wordmap_meta.js` — for `zh_tang` and `och`: set or confirm `pronunciationType: 'mixed'` (Baxter-Sagart is a transcription convention with IPA borrowings, not pure IPA), and add a `transcriptionConvention: 'Baxter-Sagart 2014'` field if the schema allows.
+- `validate_wordmap_data.js` — add a check that flags ASCII uppercase A–Z in the IPA column (excluding the project-allowed IPA small-cap symbols `ɴ ɪ ʏ ʊ ʟ` etc.). Currently the validator catches some patterns but not Baxter-Sagart X/H finals.
+
+Implementation instructions:
+
+**For `ja_edo` mother:**
+- Change `okkasaN` → `okkasaɴ` (LATIN LETTER SMALL CAPITAL N, U+0274) to match the rest of the row.
+
+**For `zh_tang` (73 cells):**
+- **Option A (recommended):** Convert X → tone bar `˨˦` (rising; specific Chao value depends on the reconstructed Middle Chinese tone class, but `˨˦` is the conventional substitute) and H → `˥˩` (departing). Document in `wordmap_meta.js` `description` that the row uses Middle Chinese reconstructed values.
+- **Option B (preserve scholarly notation):** Keep X/H, but move them out of the IPA column into a new `transcriptionScholarly` field. The IPA column then stays empty or holds a phonetic approximation in real IPA. Set `pronunciationType: 'mixed'` and document.
+- **Option C (mark as transcription):** Keep X/H in the IPA column but set `pronunciationType: 'romanization'` or a new `'reconstruction-notation'` value. Update the validator to allow.
+- Pick one option in this task; do not mix.
+
+**For `och` Old Chinese:**
+- Same options as zh_tang but with Baxter-Sagart's `*C.` prefix syllabicism marker. Most accessible solution: keep the `*C.` form but treat the IPA column as `pronunciationType: 'mixed'` and add CONTRIBUTING.md documentation.
+
+**For `tlh` Klingon `*` strings:**
+- The scan flagged 3 Klingon cells but they appear to use `*` for project-internal reasons (possibly marker for "not yet sourced"); audit these separately.
+
+Validator / static check:
+- New check `[#160]`: any IPA cell containing ASCII A–Z (uppercase Latin) outside the allowlist of IPA small caps WARN. The current validator misses X/H endings.
+- `transcriptionScholarly` (if added per Option B) must be a string with optional `convention` sub-field naming the system (e.g., `'Baxter-Sagart 2014'`).
+
+Do not:
+- Do not delete Baxter-Sagart X/H without preserving the scholarly value somewhere. Researchers consulting the row for Middle Chinese reconstruction need the original notation; do not strip information.
+- Do not auto-convert X → ˨˦ for individual cells without confirming each cell's specific Middle Chinese tone class. Some X-final cells may correspond to different historical tone classes than others.
+- Do not silently rewrite `okkasaN` to `okkasaɴ` without checking the rest of the `ja_edo` row for any other capital-letter survivors.
+- Do not extend this task to "all non-IPA in IPA column" — there are too many edge cases (romanizations of unwritten languages, tone-letter conventions for tonal langs). This task scopes to ASCII A–Z (single-character residue) only.
+
+Done when:
+- 0 cells in `wordmap_data.js` contain ASCII A–Z uppercase characters in the IPA column except documented IPA small caps.
+- `zh_tang` and `och` have a documented transcription convention (one of Options A/B/C applied).
+- Validator's new `[#160]` check passes with 0 warnings.
+- `wordmap-modern-audit-feedback.md` records which option was chosen and why.
+
+### New Task 161. Distribute Korean and English historical-stage coordinates so they do not stack at modern capitals
+
+Goal:
+Extend Task 148's "Japonic stages clustering at Kyoto" fix to the two remaining historical-stage coordinate clusters: **Korean stages stacked at Seoul (37.57, 126.98)** and **English stages stacked at London (51.51, -0.13)**. Same problem as Task 148 — the marker overlap obscures that each row represents a distinct historical stage with its own representative geography.
+
+Current issue I checked:
+- `ko` (modern Korean), `ko_mid` (Middle Korean ~13th–16th c.), `ko_em` (Early Modern Korean ~17th–19th c.) all sit at Seoul (`37.57, 126.98`).
+- `en` (modern Standard English / RP), `en_ck` (Cockney), `en_ang` (Old English ~7th–11th c.), `enm` (Middle English ~11th–15th c.) all sit at London (`51.51, -0.13`).
+- Both clusters fail Task 14's coordinate-cluster check (`coord cluster: N codes at one (lat,lng)`); the validator currently flags only the Japanese cluster but the same logic applies here.
+
+Files to change:
+- `wordmap_data.js` — adjust lat/lng for at least 2 of 3 Korean stages and 2 of 4 English stages.
+- `wordmap_meta.js` — record reasoning in `meta.locationBasis` (per Task 99) and free-form notes.
+
+Implementation instructions:
+
+**Korean stages:**
+- `ko` (modern): keep at Seoul (37.57, 126.98). `locationBasis: 'capital'`.
+- `ko_mid` Middle Korean: shift to **Gaegyeong (Kaesong)** at `37.97, 126.55` — the Goryeo dynasty capital where Middle Korean was the prestige variety. `locationBasis: 'historical-site'`.
+- `ko_em` Early Modern Korean: keep at Hanyang/Seoul-area but shift slightly to **Hanyang** city-historical center, e.g., Gyeongbokgung Palace area (`37.58, 126.97`). `locationBasis: 'historical-site'` (acknowledging it is the precursor to modern Seoul, not modern Seoul itself). Alternatively, distribute to a regional Joseon-era prestige center like Suwon (37.27, 127.01).
+- `ko_gor` (Goryeo Korean if present) → Gaegyeong (37.97, 126.55) — already aligned with `ko_mid` if that exists.
+
+**English stages:**
+- `en` (modern Standard / London): keep at London (51.51, -0.13). `locationBasis: 'capital'`.
+- `en_ck` Cockney: shift slightly to **Bow / East End** (`51.53, -0.02`) — the working-class East London where Cockney is anchored. `locationBasis: 'prestige-center'` (in the dialectological sense of Cockney's own distinct prestige area).
+- `en_ang` Old English: shift to **Winchester** (`51.06, -1.31`) — the Wessex capital and primary Old English prestige center. `locationBasis: 'historical-site'`.
+- `enm` Middle English: shift to **Canterbury** (`51.28, 1.08`) for the Chaucer-era southern dialect tradition, OR to **London** at a Middle-English-era spot like Westminster (`51.50, -0.13`) if the row's lexical sources are London-Midland. Document the choice.
+
+**Coordinate offsets:**
+- Each new coordinate must differ from the cluster's center by at least 0.05° in lat or lng to clear the validator's cluster threshold.
+- Document each shift in the row's `description` (or a new `historicalGeography` field) so future readers see why the modern/historical capitals diverge.
+
+Validator / static check:
+- Existing `[#14]` check covers this. After the shifts, the Korean and English clusters should no longer trigger.
+- Optional: extend the cluster check to flag any case where ≥ 2 historical-stage rows share coordinates with the modern row of the same family (e.g., `ja` and `ja_heian` should not be at the same point).
+
+Do not:
+- Do not jitter coordinates randomly to clear the warning. Each new coordinate must correspond to a documented historical site.
+- Do not shift modern `ko` or `en` rows; modernity stays at the modern capital.
+- Do not push Old English to Wessex without acknowledging that Old English is a dialect continuum across many West-Saxon and Anglian centers; pick one representative point but document the choice.
+- Do not pick coordinates outside the language's actual historical range. Old English at, say, York would push the row into Anglian rather than West Saxon territory; pick consciously.
+
+Done when:
+- The Korean stages cluster (3 rows) is split into ≥ 2 distinct coordinates separated by ≥ 0.05°.
+- The English stages cluster (4 rows) is split into ≥ 3 distinct coordinates.
+- Validator `[#14]` check no longer flags these clusters.
+- Each new coordinate has a `locationBasis` value and a brief explanation in the row's `description`.
+
+### New Task 162. Audit and document the 133 unattested `—` cells across 36 languages
+
+Goal:
+The validator currently reports `154 word entries contain "—"` (per latest run). Of these, ~133 are in modern/active languages and concentrate in specific concepts: `thanks` (26), `hello` (23), `cat` (21), `love` (8), `drink` (7). The dataset does not distinguish between (a) "this language genuinely lacks a basic word for this concept" (legitimate cultural absence), (b) "the form exists but is unsourced/unattested in available materials," and (c) "the form was simply never filled in." A learner cannot tell which of the three applies, and the validator cannot tell either.
+
+Current issue I checked (2026-05-06 scan):
+
+**Concept-distribution of `—` cells in modern languages:**
+- thanks: 26 langs (suggests many languages did not historically have a single-word "thanks" — it's a culturally European/East-Asian formula).
+- hello: 23 langs (similar — many languages use time-of-day greetings or no general "hello").
+- cat: 21 langs (interesting — likely indigenous languages with no native word because cats arrived with European contact).
+- love: 8 langs.
+- drink: 7 langs (some languages only have specific drink-X verbs; no general "drink").
+- eat: 5 langs.
+- heart: 5, tree: 5, house: 4, good: 4, fire: 3, moon: 3, dog: 3, hand: 3, eye: 3, one: 3, sun: 2, mother: 2, father: 2, water: 1.
+
+**Total: 133 unattested cells across 36 modern languages** (plus ~21 in historical languages, which are expected and not in scope here).
+
+Files to change:
+- `wordmap_data.js` — for cells where the absence is semantic/cultural, no change to the `—` itself. For cells where the absence is *unfilled*, fill them.
+- `wordmap_meta.js` — add a new `meta.unattestedReason: { <concept>: 'cultural-absence' | 'unsourced' | 'recent-loanword' | 'has-only-derived-form' | 'unknown' }` schema to document why each `—` is there.
+- `validate_wordmap_data.js` — new check `[#162]`: if a cell is `—`, the language's meta should have `unattestedReason[concept]` set; otherwise WARN.
+- `CONTRIBUTING.md` — document the policy: when to use `—` vs when to fill in a form.
+- `wordmap.html` — modal already shows the localized "unattested" label (Task 100); extend it to show the reason when `unattestedReason` is set: e.g., "—  (no native word; introduced via Spanish contact)".
+
+Implementation instructions:
+
+**Step 1 — categorize each of the 133 cells.** A one-time spreadsheet pass (or an annotated PR) mapping each (language, concept) → reason category:
+
+- `cultural-absence`: the language genuinely lacks a basic word. Example: many Polynesian languages do not have a non-formula thanks; some Pirahã / Amazonian languages reportedly lack "love" as a basic concept.
+- `unsourced`: a form likely exists but is not yet documented in available references. Action: ask community contributors or check a specialist.
+- `recent-loanword`: a loanword exists (e.g., English `cat` borrowed into many indigenous American languages) and the project policy is to mark it `—` rather than show the loanword as the basic word. Action: either fill in with the loanword + `wordEvidence.note: 'recent loanword from X'`, or keep `—` with documented reason.
+- `has-only-derived-form`: the language has a derived/compound form for the concept but no monomorphemic basic word. E.g., a language might say "love" only as "have-strong-feeling" without a single-word equivalent.
+- `unknown`: simply not yet researched.
+
+**Step 2 — backfill where possible.** For `unsourced` and `recent-loanword` categories, fill the cell after sourcing. Move from `—` to the actual form with `wordEvidence`.
+
+**Step 3 — document `cultural-absence`.** For genuine absences, keep `—` but record the reason in `meta.unattestedReason`. The UI can then show "—  (no native single-word form)" instead of just "—".
+
+**Step 4 — validator coverage.** New check ensures every `—` cell has documentation.
+
+**Heuristic targets for backfill (likely "unsourced" rather than cultural absence):**
+- `cat` in Australian / Native American / Pacific languages — almost always there is a name, often an English loanword. Fill these.
+- `thanks`/`hello` in tribal languages — usually a multi-word formula exists and is fillable; mark formType per Task 103.
+- `drink` in some Bantu / Nilotic — many have a native verb root; fill where citeable.
+- `love` in some Pacific / Pirahã — careful; some are genuinely missing.
+
+Validator / static check:
+- `[#162]` `—` cell without `meta.unattestedReason[concept]` → WARN.
+- INFO line: `unattested cells: N total, M with reason documented`.
+- Validator should not require *every* `—` to be filled — that would break the cultural-absence cases. It only requires *documentation*.
+
+Do not:
+- Do not auto-fill cultural-absence cells with placeholder forms. If a language genuinely lacks a basic word, do not invent one to silence the warning.
+- Do not assume a `—` is wrong. Some are correct cultural-absences and the project's pedagogical value increases by *showing* them with explanation.
+- Do not move the `—` to an empty string. Empty strings hide the data, while `—` makes the absence visible.
+- Do not document reasons in the `description` free-form. Use the structured `unattestedReason` field so the validator can verify.
+
+Done when:
+- All 133 modern-row `—` cells have `meta.unattestedReason[concept]` set.
+- Validator `[#162]` check passes (0 undocumented `—` cells).
+- Modal shows reason when `unattestedReason` is set.
+- A learner browsing a Polynesian language with `thanks: —` sees "—  (uses formulaic phrase, not single-word)" or similar.
+- Backfill of recoverable cells (`unsourced`, `recent-loanword`) completes; the total `—` count shrinks from 133 toward the truly-cultural-absence baseline (likely 60–80).
+
+### New Task 163. Normalize ASCII affricate notation `ts/dʐ/...` to IPA tie-bar across the corpus
+
+Goal:
+Concrete execution of Audit §14 (deferred since 2026-04-21). The scan identified **92 cells** using bare ASCII `ts` (no tie bar) where strict IPA expects `t͡s` (U+0361 COMBINING DOUBLE INVERTED BREVE) or the precomposed `ʦ`. Cells affected include Japanese kun forms (`月 tsɯki`, `tsɯkɨ`), Sinitic dialects (`房子 fɑŋ˧˥tsɨ`, `樹 tsʰiu˧`), Germanic affricates (`Herz hɛʁts`), and similar.
+
+Current issue I checked:
+- 92 cells contain bare `ts` or `tsʰ` adjacent to a vowel or consonant context where the affricate reading is intended.
+- The same cells in some sister languages already use `t͡s` (e.g., Polish `c [t͡s]` in some rows) — within-corpus inconsistency.
+- `pronunciationType` is `'broad'` or `'orthography'` for many of these rows, which technically licenses broad notation, but it is not consistently applied (some `'ipa'`-tagged Polish/Japanese rows still use bare `ts`).
+
+Files to change:
+- `wordmap_data.js` — 92 cells across roughly 20 languages.
+- `CONTRIBUTING.md` — add the affricate notation policy to the IPA Policy section (Task 81).
+- `validate_wordmap_data.js` — new check that warns when an `'ipa'`-tagged row has bare ASCII `ts`/`dz`/`tʃ`/`dʒ` (tie-bar required for strict IPA) but allows them in `'broad'`/`'romanization'`/`'orthography'` rows.
+
+Implementation instructions:
+
+**Step 1 — pick the convention.**
+- **Option A (strict IPA):** Migrate to `t͡s` (with tie bar U+0361) everywhere strict IPA is intended. Applies to all `pronunciationType: 'ipa'` rows.
+- **Option B (precomposed ligature):** Use `ʦ` (U+02A6 LATIN SMALL LETTER TS DIGRAPH) — visually compact but deprecated in current IPA recommendations.
+- **Option C (broad transcription stays bare):** Allow bare `ts` only when `pronunciationType` is `'broad'` or `'romanization'`. Strict IPA rows must use tie-bar. This requires per-row review of `pronunciationType`.
+- Recommend Option C (most semantically honest).
+
+**Step 2 — apply mechanically.**
+- For each of the 92 cells, look up the row's `pronunciationType`:
+  - If `'ipa'`: change `ts` → `t͡s`, `tsʰ` → `t͡sʰ`, `dz` → `d͡z`, `tʃ` → `t͡ʃ`, `dʒ` → `d͡ʒ`.
+  - If `'broad'`/`'romanization'`/`'orthography'`: leave as `ts`. No change.
+  - If unset: pick the type first (per Task 76), then apply.
+
+**Step 3 — apply to other affricate digraphs.**
+- Same logic for `tʃ`, `dʒ`, `tɕ`, `dʑ`, `ʈʂ`, `ɖʐ`, `pf`, `bv`, `kx`. Scan and normalize.
+
+**Step 4 — validator enforcement.**
+- New check `[#163]` finds bare ASCII `ts` (etc.) in `'ipa'`-tagged rows and WARNs.
+
+Validator / static check:
+- The check must not fire on `'broad'` or `'romanization'` rows. Pre-filter by row's `pronunciationType`.
+- Coverage line: `affricate tie-bar coverage: N/M cells in 'ipa' rows`.
+
+Do not:
+- Do not tie-bar an affricate that is actually a stop+fricative cluster (e.g., English "outset" has /ts/ across morpheme boundary, not /t͡s/). For surface-level cells of basic words this is rarely an issue but be careful with morphologically-complex surface fields.
+- Do not bulk-replace without first deciding the row's `pronunciationType`. A row with `pronunciationType: 'broad'` should keep `ts`; bulk-replacing all 92 cells without per-row check would over-correct.
+- Do not introduce `t͡s` in surface forms (only in IPA columns). Surface uses orthography of the language.
+- Do not migrate Old/Middle Chinese cells in the same task — those are scoped under Task 160 (Baxter-Sagart).
+
+Done when:
+- 0 bare-ASCII affricate digraphs in `'ipa'`-tagged rows.
+- `'broad'`/`'romanization'`/`'orthography'` rows continue to use bare digraphs (intentional).
+- Validator `[#163]` reports 0 errors and provides coverage line.
+- CONTRIBUTING.md IPA Policy section documents the rule.
+
+### New Task 164. Audit reconstructed-form notation consistency between surface and IPA columns
+
+Goal:
+Reconstructed/proto languages (`ine` PIE, `pry` Proto-Ryukyuan, `oko` Old Korean, `okg` Old Goguryeo, `ko_gor` Goguryeo Korean, `och` Old Chinese) use different conventions in surface vs. IPA. Surface keeps the asterisk and bound-stem hyphen (`*h₁ed-`); IPA strips them (`h₁ed`). Whether to do this is a real policy choice, but currently it is inconsistent within the project.
+
+Current issue I checked:
+- `ine` PIE row: surface `*h₁ed-`, IPA `h₁ed`. Asterisk and trailing hyphen present in surface only.
+- `och` Old Chinese: both surface and IPA carry `*` (`*C.nik`).
+- `pry`/`oko`/`okg`/`ko_gor`: pattern varies row to row; some rows have `*` in both columns, others only in surface.
+- `wordEvidence.formType` schema (Task 103) supports `bound-stem` and `reconstructed-root` annotations, but the asterisk/hyphen presence is not consistent with the formType tag.
+
+Files to change:
+- `wordmap_data.js` — reconstructed-language rows.
+- `CONTRIBUTING.md` — document the convention.
+- `validate_wordmap_data.js` — new check that enforces consistency.
+
+Implementation instructions:
+
+**Step 1 — pick a convention.**
+- **Option A:** Reconstructed forms carry `*` in **both** surface and IPA. Bound stems carry trailing `-` in **both**. This is unambiguous but visually noisy.
+- **Option B:** Reconstructed status is signaled only by `dataStatus: 'reconstructed'` (already in meta) plus `wordEvidence.formType: 'reconstructed-root'` (Task 103). Asterisk is removed from surface and IPA. Bound-stem hyphen is also removed; instead, `wordEvidence.formType: 'bound-stem'` flags it.
+- **Option C (recommended):** Asterisk in surface; remove from IPA (current default for `ine`). The asterisk visibly signals "this is a reconstruction" to a reader scanning the surface column, while the IPA column gives a phonological form ready to be read aloud. Bound-stem hyphen: same — keep in surface, strip in IPA.
+
+**Step 2 — apply consistently.**
+- For each of the 6 reconstructed-language rows × 20 cells = 120 cells, audit and apply the chosen convention.
+- Cross-check with `wordEvidence.formType` per Task 103. Every `*`-prefixed surface should have `formType: 'reconstructed-root'`. Every `-`-suffix surface should have `formType: 'bound-stem'`.
+
+**Step 3 — validator.**
+- `[#164]`: if surface starts with `*`, IPA should not (Option C); if surface starts with `*`, formType must be `'reconstructed-root'`; if surface ends with `-`, formType must be `'bound-stem'`.
+
+Validator / static check:
+- New check enforces the chosen convention.
+- Cross-references `dataStatus: 'reconstructed'` with formType tags.
+
+Do not:
+- Do not selectively apply the convention to some reconstructed rows but not others. Either all reconstructed rows follow Option A/B/C, or the convention is broken.
+- Do not strip `*` from `och` Old Chinese surface unless the policy is Option B. Old Chinese reconstructions are *all* asterisked by scholarly convention; stripping is a strong claim.
+- Do not put `*` inside the IPA cell when reading aloud. The asterisk is meta-annotation, not a phoneme.
+
+Done when:
+- All 6 reconstructed-language rows follow the chosen convention uniformly.
+- `wordEvidence.formType` matches surface presence/absence of `*` and `-`.
+- Validator `[#164]` passes.
+- CONTRIBUTING.md documents the rule.
+
+---
+
+## Data-Scrutiny Sweep (2026-05-06 part 12)
+
+A second-pass scan of `wordmap_data.js` and `wordmap_meta.js` surfaced five additional structural data problems not addressed by Tasks 1–164. Each was found by scanning the actual file contents (not by reading docs), and each is reproducible.
+
+Tools used in this pass:
+- Per-field clustering of `meta.script`, `meta.official`, `meta.speakers`, `meta.countries` strings.
+- Format-pattern detection on `LANG_DATA` row declarations.
+- Codepoint-equality test between surface and IPA columns.
+- Cross-reference between `LANG_DATA` keys and `meta` keys.
+
+### New Task 165. Structurally normalize `meta.script` field — 277 free-form strings degrade filter/search
+
+Goal:
+Reduce the 277 distinct values currently in `meta.script` to a structured, filterable form. Right now the script field mixes a primary script name with parenthetical prose, with at least four different separator conventions for dual-script languages, plus historical/orthographic notes embedded in the same string. Task 130 added `meta.scriptTags` (a typed array) — but the prose `script` field still drives the modal display, and the prose drift is visible to users.
+
+Current issue I checked (counts via 2026-05-06 scan):
+- 277 distinct values for `meta.script`.
+- 141 of those start with "Latin" but with all of the following parenthetical/separator variants:
+  - `"Latin"` (209 langs).
+  - `"Latin (CIP romanization)"` (7).
+  - `"Latin / Jawi (historical)"` (5).
+  - `"Latin / Arabic"`, `"Latin/Arabic"` — same content, different separator.
+  - `"Cyrillic/Latin"` vs `"Cyrillic / Latin"` vs `"Latin / Cyrillic"` vs `"Latin/Cyrillic"` — same dual-script in 4 different orderings/spacings.
+  - `"Latin (with Á Ŋ Ŧ Đ)"`, `"Latin (with ɛ ɔ)"`, `"Latin (with ƒ ɔ ɖ ɛ ɔ ɣ ŋ ʋ)"` — diacritic enumeration in free-form prose.
+  - Embedded notes: `"Latin (since 19th c. missionaries); also Bengali script"`, `"Latin (post-1989); previously Cyrillic"`, `"No native script (the Inca used khipu cord-records); Latin script after Spanish contact"`.
+  - At least 3 cases with truncated/escape-broken strings: `"Latin (with \\"`, `"Latin / N\\"` — the trailing `\\` suggests a quote-escape bug or a deliberately incomplete entry that needs cleanup.
+- Same patterns repeat for `Cyrillic` (23 variants), `Arabic` (≥ 8 variants), `Devanagari` (≥ 4 variants).
+
+Files to change:
+- `wordmap_meta.js` — every `script: '...'` value.
+- `validate_wordmap_data.js` — add a check that warns on multi-script `script:` strings whose ordering or separator differs from the canonical form.
+- `wordmap.html` — modal already renders `script`; ensure it falls back to `scriptTags` (Task 130) when present and uses `script` only as prose-readable supplement.
+- `CONTRIBUTING.md` — document the canonical formatting rule.
+
+Implementation instructions:
+
+**Step 1 — pick a canonical formatting rule.** Recommended:
+- Single primary script: `"Latin"` / `"Cyrillic"` / `"Arabic"` / etc.
+- Multi-script (current usage): primary first, then ` / ` (space-slash-space), then secondary, e.g., `"Latin / Cyrillic"`. Never `"Latin/Cyrillic"` (no space) or `"Cyrillic/Latin"` (wrong ordering — primary should be the one most-used today).
+- Parenthetical detail: only the *script variant* fits in parens. Free-form prose (history, missionary dates, diacritics enumerations) moves to `meta.description` or a new `meta.scriptHistory` field. Examples:
+  - Allowed: `"Latin"` ✓, `"Latin / Jawi"` ✓, `"Cyrillic (with Ӑ Ӗ Ҫ Ӳ)"` ✓ (parens describe the variant).
+  - Not allowed: `"Latin (since 19th c. missionaries); also Bengali script"` — the date and "also" prose belong elsewhere; the structured value is `"Latin / Bengali"` and the date goes to `description`.
+- Separator order: list scripts in dominant-first order. Document criterion (most-used today; if unclear, document the choice in a comment).
+
+**Step 2 — apply mechanically.** Audit each of the 277 strings:
+- Direct rename: `"Latin/Arabic"` → `"Latin / Arabic"`.
+- Reorder: `"Cyrillic/Latin"` for languages where Latin is primary today → `"Latin / Cyrillic"`.
+- Move prose to `description`: e.g., `"Latin (since 19th c. missionaries)"` → `script: "Latin"`, append "Latin script adopted in the 19th c. by missionaries" to the row's `description`.
+- Fix escape-broken strings: every `"... \\"` or `"... \\\\"` is a string-escape bug. Read the original `wordmap_meta.js` and repair.
+
+**Step 3 — extend `scriptTags` (Task 130) coverage.** Wherever `script` is rewritten, also ensure `scriptTags` is set. The `scriptTags` array is the structured data for filter/search; `script` becomes the prose-display fallback.
+
+**Step 4 — UI.** Modal renders `scriptTags` (typed) when present, otherwise prose `script`.
+
+Validator / static check:
+- Warn on `script:` strings containing `/` without surrounding spaces.
+- Warn on `script:` strings containing `;` (free-form prose marker) — should be split into structured fields.
+- Warn on `script:` strings containing trailing backslash (`\\`) — escape bug.
+- Warn on `script:` strings whose normalized form (lowercased, trimmed, collapsed-whitespace, sorted-multi-script) differs from another row's normalized form by only minor formatting — likely the same script with different writing.
+- INFO line: count of distinct normalized scripts vs distinct raw scripts.
+
+Do not:
+- Do not delete the diacritic-enumerations (`"Latin (with ɛ ɔ)"`) without preserving the information. Move it to `description` or a new `meta.scriptDiacritics` field.
+- Do not auto-collapse `"Latin"` and `"Latin (CIP romanization)"` — they are different orthographic conventions for different rows. The variant detail in parens is preserved when it identifies a distinct convention.
+- Do not break the 209-row `"Latin"` flat case. Most rows are simple Latin; the canonicalization is for the 68 dual-script and prose-laden cases.
+- Do not change `script` without checking that `scriptTags` (Task 130) accurately reflects the same information.
+
+Done when:
+- Distinct `meta.script` strings reduce from 277 to under 120 (expected: ~80 unique scripts after canonicalization).
+- All escape-broken `script` strings are repaired.
+- All multi-script values use ` / ` (space-slash-space) ordering with primary first.
+- `validate_wordmap_data.js` warnings on script formatting drop to 0.
+- A learner filtering by "Latin / Arabic" sees the same languages whether the original row said "Latin/Arabic" or "Latin / Arabic" or "Arabic / Latin".
+- CONTRIBUTING.md documents the formatting rule.
+
+### New Task 166. Replace `meta.official` free-form prose with a structured official-status enum
+
+Goal:
+The `meta.official` field has **382 distinct values** for ~595 languages (i.e., almost every row has a unique value). The semantic categories actually represented are far fewer (probably ~6: official-national, official-co, official-regional, recognized-minority, no-official-status, etc.) but the prose drift hides them. A user cannot filter "show me all officially-co-recognized languages" because there are ≥ 7 ways to spell the absence of national status alone.
+
+Current issue I checked:
+- "No" (34 rows), "None" (26), "No (regional)" (62), "No (recognized regional)" (31), "No (recognized minority)" (23), "No (recognized)" (5), "No (tribal recognition)" (5), "No (recognized aboriginal)" (5), "No (recognized scheduled)" (4), "No (recognized indigenous)" (3) — at least **10 string values, all expressing "not officially national but X-level recognition exists"**.
+- Country-level entries also drift: `"South Africa"` (7), `"India (8th Schedule)"` (5), `"Mexico (national)"` (5), `"Republic of Daghestan"` (5), `"Taiwan (recognized indigenous language)"` (5), `"Uganda (regional)"` (4), `"Nigeria (regional)"` (3).
+- Same recognition can be in different rows as `"Spain (co-official)"` vs `"Catalonia (co-official)"` vs just `"Spain"`.
+- Some rows mix national and sub-national (`"China (regional)"`, `"Iraq (regional)"`).
+
+Files to change:
+- `wordmap_meta.js` — convert `meta.official` from a string to a structured enum + optional list:
+  ```
+  meta.officialStatus: 'national' | 'co-official' | 'regional' | 'recognized-minority' | 'recognized-indigenous' | 'recognized-historical' | 'none'
+  meta.officialIn: ['Country', 'Region', ...]   // jurisdictions where official
+  meta.recognizedIn: ['Country', 'Region', ...] // jurisdictions where recognized but not official
+  ```
+  Keep `meta.official` as a derived display string (auto-generated from the structured fields) for backwards compatibility with existing UI rendering.
+- `validate_wordmap_data.js` — enforce enum + check that derived display string matches structured fields.
+- `wordmap.html` — modal renders `officialStatus` + `officialIn` as a structured row instead of the prose blob.
+- `lang-filter.js` — add a filter chip for `officialStatus` that lets users filter by "national" / "co-official" / etc.
+- `CONTRIBUTING.md` — document the enum.
+
+Implementation instructions:
+
+**Step 1 — define the enum.** Six values cover the cases observed:
+- `'national'`: language is the (or a) sole official national language. Example: French in France.
+- `'co-official'`: language shares official status with one or more other languages at the national level. Example: Catalan in Spain (alongside Spanish).
+- `'regional'`: language has official status at a sub-national level (state, region, province, autonomous republic) but not nationally. Example: Welsh in Wales.
+- `'recognized-minority'`: explicitly recognized minority language under EU/UN/national law but no co-officiality. Example: Sorbian in Germany.
+- `'recognized-indigenous'`: recognized indigenous language with constitutional/scheduled status but not co-official at national level. Example: many Native American languages with US state recognition.
+- `'recognized-historical'`: recognized as historical/heritage but not living official. Example: Latin in the Vatican.
+- `'none'`: no official or recognized status anywhere.
+
+**Step 2 — apply to all 595 rows.** Map each existing prose value to one of the enums + the `officialIn` / `recognizedIn` lists.
+
+**Step 3 — validator coverage.** Every row must have `officialStatus`. Drift between structured and derived `official` strings flags WARN.
+
+**Step 4 — UI display.** Render structured: `Status: regional · Spain · Catalonia · Balearic Islands · Valencia` instead of the freeform `"Spain (co-official)"`.
+
+Validator / static check:
+- Enum check on `officialStatus`.
+- If `officialStatus !== 'none'`, then `officialIn` or `recognizedIn` must be non-empty.
+- If `officialStatus === 'national'`, `officialIn` must have exactly one entry (the country).
+- INFO line: distribution `national: N, co-official: M, regional: K, ...`.
+
+Do not:
+- Do not collapse `'co-official'` and `'regional'` — they answer different filter questions ("is this a national language?" vs "is this regional?").
+- Do not auto-derive without checking each row. Some rows' prose entries hide nuance (e.g., `"Republic of Daghestan"` could be `'regional'` or `'co-official'` depending on Daghestan-specific law).
+- Do not delete the prose `official` field; keep it as the derived display string. Some external tooling reads it.
+
+Done when:
+- All 595 rows have `meta.officialStatus`.
+- Distinct values for the structured enum are exactly the 7 above.
+- A user can filter by "co-official" and see exactly the languages with co-official status.
+- Validator coverage info shows distribution.
+- CONTRIBUTING.md documents the schema.
+
+### New Task 167. Structurally normalize `meta.speakers` field with a parsed numeric range + qualifier
+
+Goal:
+The `speakers` field uses **at least 5 incompatible format conventions in 619 rows**, mixing structured counts, ranges, prose footnotes, and qualifier sentences. The current schema cannot answer numeric questions like "show me all languages with 1M–10M speakers" because the field is unparseable. A structured parse + qualifier separation enables filtering, sorting, and accurate map labels.
+
+Current issue I checked (2026-05-06 scan, 619 rows):
+- `"~125M"` form: 451 rows (most common, structured count).
+- Range / qualifier prose: 145 rows. Examples:
+  - `"~80M (Wu Chinese family total; Shanghainese alone ~15-20M)"`
+  - `"~120M (Mandarin variety; overlaps with Chinese zh)"`
+  - `"~200M (total; L1 ≈ 25-40M, mostly L2/national)"`
+  - `"~25K (fluent)"`
+- Bare number, no unit: 17 rows (e.g., `"~2,000"`, `"~45,000"`) — could be speakers in thousands or units.
+- Qualifier-only: 6 rows (e.g., `"~100,000 (UNESCO: definitely endangered)"`).
+- Other free-form: rest.
+
+Files to change:
+- `wordmap_meta.js` — extend with structured numeric:
+  ```
+  meta.speakerCount: { l1: number | null, l2: number | null, total: number | null,
+                      range: 'point' | 'range', rangeMin: number, rangeMax: number,
+                      year: number, source: string, vitality: 'safe' | 'vulnerable' | 'definitely-endangered' | 'severely-endangered' | 'critically-endangered' | 'extinct' }
+  ```
+  Keep `meta.speakers` as a derived display string for backwards compatibility.
+- `validate_wordmap_data.js` — enforce numeric type + cross-check against the prose string.
+- `wordmap.html` — modal renders structured count with formatting (e.g., "125 million L1 speakers (Ethnologue 26, 2023)").
+- `lang-filter.js` — add a numeric-range filter slider for `speakerCount.l1` or `speakerCount.total`.
+- `CONTRIBUTING.md` — document the schema.
+
+Implementation instructions:
+
+**Step 1 — parse existing prose to structured.**
+- For each row, write a one-time parser that extracts:
+  - Primary count → `speakerCount.l1` (default; speakers normally means L1)
+  - Range if present → `rangeMin` / `rangeMax`
+  - Year → `year`
+  - Vitality → enum
+  - Source attribution → `source`
+- Examples:
+  - `"~125M"` → `{ l1: 125000000, range: 'point', year: null, source: null }` (year/source filled from `speakerSource` / `speakerYear` if present).
+  - `"~5,000–10,000 (UNESCO: critically endangered)"` → `{ l1: null, range: 'range', rangeMin: 5000, rangeMax: 10000, vitality: 'critically-endangered', source: 'UNESCO' }`.
+  - `"~80M (Wu Chinese family total; Shanghainese alone ~15-20M)"` → `{ total: 80000000, range: 'point', notes: 'Wu Chinese family total; Shanghainese alone ~15-20M' }`.
+
+**Step 2 — `speakerCount` becomes the source of truth.**
+- The legacy `meta.speakers` string is auto-derived for display.
+- The legacy `speakerSource`, `speakerYear`, `speakerBasis` fields (already partially present per Task 98) are merged into `speakerCount`.
+
+**Step 3 — UI display.**
+- Modal: structured presentation. `Speakers: 125,000,000 (L1) · Ethnologue 26 (2023)`.
+- Map label: short form `~125M` (unchanged from today's display).
+
+**Step 4 — vitality vs speakerCount.**
+- Cross-validate: a language with `speakerCount.l1 < 1000` should typically have `vitality: 'severely-endangered'` or `'critically-endangered'`.
+
+Validator / static check:
+- `speakerCount.l1` must be `>= 0` if set; same for `l2`, `total`.
+- `range: 'range'` must have `rangeMin <= rangeMax` and both set.
+- If `vitality === 'extinct'`, count must be 0 and `dataStatus` must be one of `'attested'`, `'reconstructed'`, `'fragmentary'`.
+- Coverage line: number of rows with `speakerCount` parsed vs raw `speakers` only.
+
+Do not:
+- Do not silently drop the prose footnote when parsing. The `notes` sub-field preserves it.
+- Do not estimate speaker counts where the row's prose says "unknown" — leave structured nulls.
+- Do not pick a single number when the prose says "L1 ≈ 25-40M". Use the range form.
+- Do not collapse "Wu Chinese family total" with "Shanghainese alone" without naming what the row actually represents — the row's `name` already says (e.g., "Shanghainese"), so the `total` number must match the row's scope.
+
+Done when:
+- All 619 rows have `meta.speakerCount` structured.
+- Distinct vitality enum values match the 6 standard UNESCO categories.
+- A user can numeric-range-filter languages by speaker count.
+- Validator coverage line is non-zero (≥ 80% of rows have parsed counts).
+- CONTRIBUTING.md documents the schema.
+
+### New Task 168. Unify the two declaration formats in `wordmap_data.js` (single-line vs multi-line)
+
+Goal:
+Resolve a structural inconsistency in `wordmap_data.js`: **603 rows use the single-line JS format** (`abc: { name: '...', native: '...', ... words: { ... } }`) while **16 rows use a multi-line JSON-style format** with double-quoted keys and one field per line. Both produce the same in-memory object, but they break tooling: regexes targeting the single-line form (used by validators, audit scripts, and the cell-extraction approach in this audit) silently miss the multi-line rows.
+
+Current issue I checked:
+- Single-line: 603 rows (e.g., `ja`, `en`, `fr`, `de`, every row added through the conventional pattern).
+- Multi-line: 16 rows, all historical/ancient: `egy`, `pi`, `sux`, `akk`, `hit`, `peo`, `ave`, `xto`, `txb`, `xlu`, `pal`, `gmy`, `xhu`, `elx`, `kaw`, `kho`. Each is formatted like:
+  ```
+    egy: {
+      "name": "Ancient Egyptian",
+      "native": "𓂋 𓈖 𓆎𓅓𓏏",
+      "lat": 25.69,
+      "lng": 32.64,
+      "words": {
+        "water": [
+          "𓈗",
+          ...
+        ]
+      }
+    }
+  ```
+- The validator handles both because it parses the file as JS, but every grep/sed/regex audit tool we've used silently undercounts. The Task 159 family scan, the Task 160 capital-letter scan, and several earlier scans missed these 16 rows.
+
+Files to change:
+- `wordmap_data.js` — convert the 16 multi-line rows to single-line format.
+- `validate_wordmap_data.js` — add a check that flags rows declared in the multi-line format.
+- `CONTRIBUTING.md` — document the canonical format.
+
+Implementation instructions:
+
+**Step 1 — convert the 16 rows.**
+- For each: read the multi-line block, flatten to single-line format matching the conventional pattern.
+- Preserve all data exactly. Verify by running validator before and after; the validator's totals should not change.
+- The multi-line entries use double-quoted keys (`"name"` instead of `name`), which is also a JSON convention. Convert to unquoted keys to match the rest of the file.
+
+**Step 2 — write a validator check.**
+- Detect any row declared as `code: {\n` (newline immediately after the opening brace) without `name:` on the same line. Such rows are in multi-line format.
+- WARN with the specific row codes.
+
+**Step 3 — update CONTRIBUTING.md.**
+- Document: "All rows in `wordmap_data.js` use the single-line JS format with unquoted keys: `abc: { name: '...', native: '...', lat: N, lng: N, words: { ... } }`. Multi-line JSON-style declarations (`abc: {\n  \"name\": ...,\n}`) are not allowed."
+
+**Step 4 — confirm no auditing scripts have silently missed the 16 historical rows.** Re-run earlier audit scans after the conversion to verify they now report different (higher) counts.
+
+Validator / static check:
+- New check `[#168]`: any row declaration with newline immediately after `{` and double-quoted keys WARN.
+- Coverage line: format consistency: 603/603 single-line.
+
+Do not:
+- Do not change any data values when reformatting. The conversion is whitespace and quote-style only.
+- Do not move the historical rows out of `wordmap_data.js` — they are language data, not separate from the rest.
+- Do not break Egyptian hieroglyph encoding when reformatting. The hieroglyphs use surrogate pairs and may be misread by some tools; verify NFC after reformat.
+- Do not bundle this with Task 165 (`script` formatting) or Task 167 (`speakers` schema) — they are structurally independent.
+
+Done when:
+- All 619 rows in `wordmap_data.js` use the single-line format.
+- Validator `[#168]` reports 0 warnings.
+- The grep-extracted code count from `wordmap_data.js` matches `meta`-extracted count (619 == 619).
+- Earlier audit scripts re-run and produce updated, complete results.
+
+### New Task 169. Document and resolve the 144 cells where surface == IPA (orthography-as-IPA)
+
+Goal:
+The scan found **144 cells where the surface form and the IPA form are character-for-character identical**, and the surface contains non-Latin or extended-Latin characters (so it is not a trivial cognate-with-English case). For these cells, the IPA column carries zero additional information beyond what the surface column already shows. The cell is structurally redundant.
+
+This is *not* a bug per se — many languages use phonemic Latin orthography that uses IPA-compatible characters (Yoruba `ɛ ɔ`, Akan `ɔ ɛ`, Bambara `ɲ ɔ`, etc.). For these languages, the surface IS the IPA. But the project does not surface this fact: a learner sees an "IPA" column and assumes it adds detail, when in reality it does not.
+
+Current issue I checked (2026-05-06 scan):
+- 144 cells where surface == IPA character-for-character (not just visually similar).
+- Distribution by language:
+  - `yo` Yoruba: ~12 cells (orthography uses ɛ ɔ + tone marks).
+  - `ak` Akan: ~10 cells.
+  - `bm` Bambara: ~6 cells.
+  - `ee` Ewe: ~10 cells.
+  - `nv` Navajo: ~5 cells (orthography uses á é í ó ą ę į).
+  - `gn` Guarani: several cells.
+  - `en_ang` Old English: ~8 cells.
+  - `myn` Mayan: ~6 cells (kʼ for ejective k).
+  - Plus 20+ more languages with ≥ 1 cell.
+
+Files to change:
+- `wordmap_meta.js` — for languages where surface matches IPA in the majority of cells, add `meta.surfaceIsPhonemicIPA: true`. UI rendering can then either:
+  - **Option A:** Hide the IPA column for these languages (single-column view).
+  - **Option B:** Show both columns but render the IPA column in a faded color with a tooltip "Same as surface — orthography is phonemic IPA".
+  - **Option C:** Replace the IPA column for these languages with a *narrower phonetic transcription* (when sourced) that adds tonal/allophonic detail beyond the orthography. Flag affected cells with `pronunciationType: 'broad'` until upgraded to `'ipa'` with sourced narrow transcription.
+- `wordmap.html` — implement the chosen rendering.
+- `validate_wordmap_data.js` — flag cells where surface == IPA AND `pronunciationType` is `'ipa'` (those should be `'orthography'` or `'broad'` instead).
+- `CONTRIBUTING.md` — document the policy.
+
+Implementation instructions:
+
+**Step 1 — pick the rendering option.**
+- **Option B (recommended):** Show both columns, fade IPA when identical, tooltip explains. Preserves the current schema and the visual scan, but signals the redundancy. No data loss.
+- **Option C (long-term recommended):** Source narrower transcriptions for these languages. For Yoruba, `ɛ̀` (low tone) on the orthographic `ɛ` adds tonal detail beyond the surface. For Old English, broad IPA for the dialectal pronunciation differs from orthography in subtle ways (e.g., `wæter` in OE orthography → `[ˈwæter]` in narrow IPA with stress).
+
+**Step 2 — apply `surfaceIsPhonemicIPA` flag.**
+- Audit each of ~40 candidate languages.
+- Set `meta.surfaceIsPhonemicIPA: true` if all 20 cells (or > 90%) have surface == IPA.
+- Set `meta.pronunciationType` to `'orthography'` for those languages (per Task 76).
+
+**Step 3 — UI fade rendering (Option B).**
+- For languages with `surfaceIsPhonemicIPA: true`, show the IPA column in a faded color with hover tooltip "Same as surface (phonemic orthography)" / 「文字表記と同じ (音素正書法)」.
+
+**Step 4 — Long-term Option C plan.**
+- For each language, identify a citeable narrow-transcription source.
+- Replace the IPA column with sourced narrow transcription one language at a time.
+- This is a multi-pass project; not blocking the rendering fix in step 3.
+
+Validator / static check:
+- New check `[#169]`: any cell with surface == IPA in a row where `pronunciationType === 'ipa'` WARN. The combination is contradictory (the IPA column adds no narrow detail).
+- INFO line: count of cells where surface == IPA per language.
+
+Do not:
+- Do not delete the IPA column for these languages. Rendering hides redundancy; data deletion loses information about which languages use phonemic Latin (which is itself a typological fact).
+- Do not auto-replace surface-IPA-equal cells with narrow IPA without a citeable source. The current state is a *correct* representation of phonemic orthography; replacing it with synthesized narrow transcription would degrade quality.
+- Do not flag this as an error. It is a presentation/policy issue, not a data error.
+
+Done when:
+- ~40 candidate languages have `meta.surfaceIsPhonemicIPA: true`.
+- All such rows have `pronunciationType: 'orthography'` (or `'broad'` if intentional).
+- UI Option B (fade rendering) is implemented.
+- Validator `[#169]` warns on `pronunciationType: 'ipa'` rows where surface == IPA.
+- CONTRIBUTING.md documents the policy.
