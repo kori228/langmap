@@ -1289,3 +1289,54 @@ Pass 8〜17 累計 **46 タスク + Tier 1 言語 4 + Tier 1 残 + Tier 2 partia
 - **Task 147**: Pass 2-6 deferred policy items — CONTRIBUTING.md への大幅追加が先行必要
 
 Pass 8〜18 累計 **49 タスク + 12 言語追加** (591→603) + 4 件の verification 完了。
+
+---
+
+## Pass 19 Sequential Cleanup (2026-05-06 part 12)
+
+監査ファイル新規追加 **Tasks 147/149/150** に対応。
+
+### Task 147: CONTRIBUTING.md ポリシー文書追加
+新節 **C3. Column conventions and concept policies** を追加。Pass 2-6 で deferred されていた policy 決定を明文化:
+- Tone/stress notation (Sinitic Chao tone letters / Spanish-Russian stress required)
+- Affricate notation (ASCII tolerated for broad; tie-bar for ipa)
+- Verb forms (IE infinitive / Arabic 3ms perfective / Hebrew infinitive — explicit per-family)
+- Concept scope (heart 感情中心 default / mother・father neutral / one masculine default)
+- Mandarin 第3声 sandhi: citation tone を維持
+- Quebec French: regional-variety + partial coverage policy
+
+### Task 149 Batch 1+5: Polynesian/Pacific + Constructed IALs 追加
+
+| Code | 言語 | 系統 | 話者数 | 備考 |
+|---|---|---|---|---|
+| `tah` | タヒチ | Polynesian (Tahitic) | ~70K | French Polynesia 公用語、Tahitic 系統の語源 |
+| `en_nz` | English (New Zealand) | Germanic | ~4M | NZ short-front-vowel shift、Māori 借用語多数 |
+| `vo` | ヴォラピュク (Volapük) | Constructed IAL | <30 active | 1879 Schleyer、Esperanto より早い IAL |
+| `ia` | インターリングア (Interlingua) | Constructed IAL | ~1.5K active | 1951 IALA、自然主義 IAL |
+| `ho` | Hiri Motu | — | — | **既存 `hmo` で対応済** |
+
+### Task 150 Batch G: Horn-of-Africa 追加
+
+| Code | 言語 | 系統 | 話者数 |
+|---|---|---|---|
+| `byn` | Blin (Bilen) | Cushitic Agaw | ~110K | Eritrea 唯一の Agaw 分岐 |
+
+### Task 150 Batch I (nmn Taa) — 明示的延期
+
+監査自身が「Do not add nmn Taa as a non-IPA row」と明記。Traill (1985) *Phonetic and Phonological Studies of !Xóõ Bushman* および Naumann (2008) の per-cell 出典確認なしに click + phonation 表記をするのは禁則のため、**直接出典が確認できる将来パスまで延期**。Khoisan max-inventory 言語の追加 educational value は高いが、出典なしでは misleading。
+
+### Validator + 言語数
+
+- ERRORS: 0 (修正: speakerBasis enum に `L2` 追加 ←IAL 用)
+- WARNINGS: 16 (Pass 18 の 15 → +1 は新言語追加に伴う i18n 関連、ベースラインに復帰見込み)
+- Languages: **608** (modern 522, historical 86) — Pass 18 から +5
+- Cache-buster: data 90→91, names 7→8, meta 40→41
+
+### 残（次回以降）
+- **Task 144**: 15 UI lang description-i18n の 95% 達成（重い翻訳作業）
+- **Task 145 Phase B**: ja/ko/zh translations for converted descriptions
+- **Task 146**: my/km/id/ms/tl/ta/te/bo per-language IPA rebuild
+- **Task 149 残 Batches 2/3/4**: kea/rcf/crs/gcf/pis (creoles 5)、kam/ses/tem (African 3)、oto (Otomi tone+phonation)
+- **Task 150 残 Batches F/H/J**: laj/cgg/ttj/nyo (Uganda 4), jrb (Andamanese), CONTRIBUTING.md "Conscious omissions" 節
+
+Pass 8〜19 累計 **52 タスク + Tier 1/2/3/3.5 で 17 言語追加** (591 → 608)。

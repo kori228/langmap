@@ -115,4 +115,39 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 149/150: Tier 3 / 3.5 additions (tah/en_nz/vo/ia/byn)
+    const ADDED3 = {
+        tah:   { en: 'Tahitian', ja: 'タヒチ語', ko: '타히티어', zh: '塔希提语', yue: '塔希提語',
+                 vi: 'Tiếng Tahiti', th: 'ภาษาตาฮีตี', id: 'Tahiti', hi: 'ताहिती',
+                 de: 'Tahitianisch', fr: 'Tahitien', it: 'Tahitiano',
+                 es_eu: 'Tahitiano', es_mx: 'Tahitiano', pt_eu: 'Taitiano', pt_br: 'Taitiano',
+                 ru: 'Таитянский', uk: 'Таїтянська', ar: 'التاهيتية', he: 'טהיטית', sw: 'Kitahiti' },
+        en_nz: { en: 'English (New Zealand)', ja: '英語(ニュージーランド)', ko: '영어(뉴질랜드)', zh: '英语(新西兰)', yue: '英語(紐西蘭)',
+                 vi: 'Tiếng Anh (New Zealand)', th: 'อังกฤษ (นิวซีแลนด์)', id: 'Inggris (Selandia Baru)', hi: 'अंग्रेज़ी (न्यूज़ीलैंड)',
+                 de: 'Englisch (Neuseeland)', fr: 'Anglais (Nouvelle-Zélande)', it: 'Inglese (Nuova Zelanda)',
+                 es_eu: 'Inglés (Nueva Zelanda)', es_mx: 'Inglés (Nueva Zelanda)', pt_eu: 'Inglês (Nova Zelândia)', pt_br: 'Inglês (Nova Zelândia)',
+                 ru: 'Английский (Новая Зеландия)', uk: 'Англійська (Нова Зеландія)', ar: 'الإنجليزية (نيوزيلندا)', he: 'אנגלית (ניו זילנד)', sw: 'Kiingereza (NZ)' },
+        vo:    { en: 'Volapük', ja: 'ヴォラピュク', ko: '볼라퓌크', zh: '沃拉普克语', yue: '沃拉普克語',
+                 vi: 'Tiếng Volapük', th: 'ภาษาวอลาปุค', id: 'Volapük', hi: 'वोलापुक',
+                 de: 'Volapük', fr: 'Volapük', it: 'Volapük',
+                 es_eu: 'Volapük', es_mx: 'Volapük', pt_eu: 'Volapük', pt_br: 'Volapük',
+                 ru: 'Волапюк', uk: 'Волапюк', ar: 'فولابوك', he: 'וולאפיק', sw: 'Kivolapük' },
+        ia:    { en: 'Interlingua', ja: 'インターリングア', ko: '인테르링구아', zh: '国际语', yue: '國際語',
+                 vi: 'Interlingua', th: 'อินเตอร์ลิงกัว', id: 'Interlingua', hi: 'इंटरलिंगुआ',
+                 de: 'Interlingua', fr: 'Interlingua', it: 'Interlingua',
+                 es_eu: 'Interlingua', es_mx: 'Interlingua', pt_eu: 'Interlíngua', pt_br: 'Interlíngua',
+                 ru: 'Интерлингва', uk: 'Інтерлінгва', ar: 'إنترلينغوا', he: 'אינטרלינגואה', sw: 'Interlingua' },
+        byn:   { en: 'Blin', ja: 'ブリン語', ko: '블린어', zh: '布林语', yue: '布林語',
+                 vi: 'Tiếng Bilen', th: 'ภาษาบีเลน', id: 'Blin', hi: 'ब्लिन',
+                 de: 'Blin', fr: 'Blin (bilen)', it: 'Blin',
+                 es_eu: 'Blin', es_mx: 'Blin', pt_eu: 'Blin', pt_br: 'Blin',
+                 ru: 'Билин', uk: 'Білен', ar: 'البلينية', he: 'בלין', sw: 'Kibilen' },
+    };
+    for (const code of Object.keys(ADDED3)) {
+        for (const ui of Object.keys(ADDED3[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED3[code][ui];
+            }
+        }
+    }
 })();

@@ -686,7 +686,8 @@ for (const ui of UI_LANGS) {
 //   meta.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
 //                       (CANONICAL — Audit Task 131; lang.locationBasis kept as legacy alias only)
 //   meta.sources      : Array<{ type, title, url?, accessed? }>
-const SPEAKER_BASIS = new Set(['L1','total','regional-population','aggregate','liturgical','extinct','uncertain']);
+// Audit Task 149: 'L2' added for constructed/auxiliary IALs (vo, ia, eo, etc.)
+const SPEAKER_BASIS = new Set(['L1','L2','total','regional-population','aggregate','liturgical','extinct','uncertain']);
 const LOCATION_BASIS = new Set(['capital','prestige-center','historical-site','largest-city','approx-region']);
 let withSpeakerBasis = 0, withSources = 0, withIso = 0, withPronType = 0;
 const pronTypeCounts = {};

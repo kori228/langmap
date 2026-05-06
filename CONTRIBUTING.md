@@ -737,6 +737,95 @@ The second element in `[surface, ipa]` is governed by `meta.pronunciationType` (
 
 **Do NOT** mark a row as `'ipa'` without checking it actually represents IPA (e.g. Indonesian `air/air` is orthography, not IPA).
 
+### C3. Column conventions and concept policies (Audit Task 147)
+
+The following conventions resolve the long-running policy questions that
+were deferred across audit Pass 2-6. Each rule has a default and an
+exception clause; per-row deviations must be documented in
+`wordEvidence.note` or `meta.coverageNote`.
+
+#### Tone and stress notation
+
+- **Tone-required languages** (Mandarin, Cantonese, Vietnamese, Thai,
+  Lao, Burmese, Yoruba, Hausa, Igbo, Naxi, Bouyei, Iu Mien, Hmong,
+  Zhuang, Tai Lue, Shan): tone marks are required when
+  `pronunciationType: 'ipa'`. Use Chao tone letters (˥ ˦ ˧ ˨ ˩) for
+  Sinitic and Tai-Kadai; IPA tone diacritics (´ ` etc.) for African and
+  South Asian. Pick one notation per language and document in
+  `meta.coverageNote`.
+- **Stress-required languages** (Italian, Spanish, Portuguese, Russian,
+  Polish, Greek, German, French): `ˈ` (primary) and `ˌ` (secondary) are
+  required when `pronunciationType: 'ipa'` and stress is contrastive or
+  predictable-but-non-final. See C2 stress policy for when to add.
+- **Both can be omitted** if `pronunciationType: 'broad'` and
+  `meta.coverageNote` documents the omission.
+
+#### Affricate notation
+
+- **Default**: project tolerates ASCII digraphs (`ts`, `dz`, `tʃ`, `dʒ`)
+  for broad transcriptions. IPA tie-bar (`t͡s`, `d͡z`) is preferred for
+  `pronunciationType: 'ipa'` rows but ASCII is not a validator error.
+- **Slavic family**: ASCII `ts` is acceptable across the Slavic rows
+  (Russian/Ukrainian/Polish/Czech/etc.) for consistency. Migration to
+  tie-bar is a future project-wide pass.
+- **Turkic family** (Kazakh/Bashkir/Karachay-Balkar/Karakalpak): the
+  conventions `w`/`y`/`q`/`x` are accepted as they reflect documented
+  romanization standards; treat as `pronunciationType: 'broad'`.
+
+#### Verb forms (eat / drink / love)
+
+- **Default**: use the language's normal dictionary citation form.
+- **Indo-European**: infinitive (English `eat`, German `essen`,
+  French `manger`, Russian `есть`).
+- **Semitic** (Arabic/Hebrew/Aramaic): Arabic uses 3rd-masculine-singular
+  perfective (`أكل` ʔakala) following standard Semitic dictionary
+  convention; Hebrew uses infinitive (`לאכול` leʔeχol). Both are correct
+  per their respective lexicographic traditions; do not blindly impose
+  one convention. Each Arabic dictionary entry must have
+  `wordEvidence.note` explaining the perfective choice.
+- **Verbal-noun languages** (Tamil, Telugu, Kannada, Tibetan): verbal
+  noun is acceptable as citation form; document with
+  `wordEvidence.note` if the language has both verbal-noun and finite
+  citation traditions.
+- **Bound-stem languages** (Inuit-Yupik, Iranian historical, Pashai,
+  Burushaski, Wakhi): trailing-hyphen bound stems are acceptable per
+  Task 103 with `wordEvidence.formType: 'bound-stem'`.
+
+#### Concept scope: heart, mother/father, one
+
+- **`heart`**: default is *emotional/cognitive* "heart" where the
+  language has a basic everyday term for it. Anatomical heart is
+  acceptable when the emotional sense uses a different concept entirely.
+  Document the choice in `wordEvidence.conceptEvidence: 'noted'` for
+  rows where the choice is non-obvious (Indonesian/Malay `hati` =
+  liver/heart-as-feeling; Thai `ใจ` = heart/mind/spirit; Korean `마음` =
+  mind/heart/feeling; Japanese `心` = heart/mind/spirit).
+- **`mother` / `father`**: default is the *neutral citation form*
+  most Indo-European dictionaries use. Languages may use child/familiar
+  register (e.g., Chinese `妈妈/爸爸`, English AAVE `mama/daddy`) where
+  the formal counterpart is rarely used in everyday speech; document
+  this in `meta.coverageNote`.
+- **`one`**: default is the *masculine/default citation form* where the
+  language has gender-marked numerals (Arabic `واحد`, Hebrew `אחד`,
+  French `un`, Spanish `uno`, Italian `uno`). Document gender in
+  `wordEvidence.note` when the choice would otherwise mislead.
+
+#### Mandarin tone sandhi
+
+- **Default**: keep underlying citation tones in the IPA column. Sandhi
+  is rule-based and predictable; the citation form is more useful for
+  cross-language comparison than the surface form.
+- Example: 你好 = `ni˧˩˧xaʊ̯˧˩˧` (citation), not `ni˧˥xaʊ̯˨˩˦` (after
+  third-tone sandhi). Document this in
+  `meta.coverageNote` for the Mandarin row.
+
+#### Quebec French
+
+- `fr_qc` represents Québec French. Treat as a `regional-variety` of
+  `fr` with `coverage: 'partial'`. Differences from `fr` should focus on
+  lexical items that distinguish Québec usage (e.g., `bonjour` vs `allô`)
+  rather than full phonetic re-transcription.
+
 ### D. Coordinates / 座標
 
 `lat/lng` is a single representative point (the prestige center, capital, or historical site). The map auto-stacks labels at duplicate or near-duplicate coordinates, so don't worry about exact uniqueness — use the geographically meaningful point for the speaker community.

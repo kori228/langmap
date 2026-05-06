@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 603 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 608 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -296,6 +296,9 @@ const LANG_DATA = {
     words: { water:['wai','wai'], fire:['buka','mbukaː'], sun:['siga','siŋa'], moon:['vula','vula'], mother:['tina','tina'], father:['tama','tama'], eat:['kana','kana'], drink:['gunu','ɡunu'], love:['loloma','loloma'], heart:['uto','uto'], tree:['kau','kau'], house:['vale','vale'], dog:['koli','koli'], cat:['pusi','pusi'], hand:['liga','liɡa'], eye:['mata','mata'], hello:['bula','mbula'], thanks:['vinaka','vinaka'], one:['dua','ndua'], good:['vinaka','vinaka'] }},
   sm: { name: 'Samoan', native: 'Gagana Sāmoa', lat: -13.83, lng: -171.76,
     words: { water:['vai','vai'], fire:['afi','afi'], sun:['lā','laː'], moon:['māsina','maːsina'], mother:['tinā','tinaː'], father:['tamā','tamaː'], eat:['ʻai','ʔai'], drink:['inu','inu'], love:['alofa','alofa'], heart:['loto','loto'], tree:['laʻau','laʔau'], house:['fale','fale'], dog:['maile','maile'], cat:['pusi','pusi'], hand:['lima','lima'], eye:['mata','mata'], hello:['talofa','talofa'], thanks:['faʻafetai','faʔafetai'], one:['tasi','tasi'], good:['lelei','lelei'] }},
+  // Tahitian — Eastern Polynesian, French Polynesia (Audit Task 149)
+  tah: { name: 'Tahitian', native: 'Reo Tahiti', lat: -17.54, lng: -149.57, // Pape'ete
+    words: { water:['pape','pape'], fire:['auahi','aʔuahi'], sun:['mahana','mahana'], moon:['ʻāvaʻe','aːvaʔe'], mother:['māmā','maːmaː'], father:['pāpā','paːpaː'], eat:['ʻamu','ʔamu'], drink:['inu','inu'], love:['here','here'], heart:['mafatu','mafatu'], tree:['rāʻau','raːʔau'], house:['fare','fare'], dog:['ʻūrī','ʔuːriː'], cat:['mīmī','miːmiː'], hand:['rima','rima'], eye:['mata','mata'], hello:['ʻia ora na','ʔia ora na'], thanks:['māuruuru','maːuruːuru'], one:['hōʻē','hoːʔeː'], good:['maitaʻi','maitaʔi'] }},
   to: { name: 'Tongan', native: 'Lea faka-Tonga', lat: -21.21, lng: -175.15,
     words: { water:['vai','vai'], fire:['afi','afi'], sun:['laʻā','laʔaː'], moon:['māhina','maːhina'], mother:['faʻē','faʔeː'], father:['tamai','tamai'], eat:['kai','kai'], drink:['inu','inu'], love:['ʻofa','ʔofa'], heart:['loto','loto'], tree:['ʻakau','ʔakau'], house:['fale','fale'], dog:['kulī','kuliː'], cat:['pusi','pusi'], hand:['nima','nima'], eye:['mata','mata'], hello:['mālō e lelei','maːloː e lelei'], thanks:['mālō','maːloː'], one:['taha','taha'], good:['lelei','lelei'] }},
   pau: { name: 'Palauan', native: 'A tekoi er a Belau', lat: 7.50, lng: 134.62,
@@ -396,6 +399,9 @@ const LANG_DATA = {
     words: { water:['madzi','madzi'], fire:['moto','moto'], sun:['dzuwa','dzuwa'], moon:['mwezi','mwezi'], mother:['amayi','amaji'], father:['abambo','abambo'], eat:['kudya','kudja'], drink:['kumwa','kumwa'], love:['chikondi','tʃikondi'], heart:['mtima','mtima'], tree:['mtengo','mteŋɡo'], house:['nyumba','ɲumba'], dog:['galu','ɡalu'], cat:['mphaka','mpʰaka'], hand:['dzanja','dzandʒa'], eye:['diso','diso'], hello:['moni','moni'], thanks:['zikomo','zikomo'], one:['chimodzi','tʃimodzi'], good:['chabwino','tʃabwino'] }},
   en_aave: { name: 'English (AAVE)', native: 'English (AAVE)', lat: 33.75, lng: -84.39,
     words: { water:['water','wɑːɾɚ'], fire:['fire','faːɚ'], sun:['sun','sʌn'], moon:['moon','muːn'], mother:['mama','mɑːmə'], father:['daddy','dæɾi'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lʌv'], heart:['heart','hɑːɹt'], tree:['tree','tɹiː'], house:['house','haʊs'], dog:['dog','dɔːɡ'], cat:['cat','kæt'], hand:['hand','hæːnd'], eye:['eye','aː'], hello:["what's up",'wʌts ʌp'], thanks:['thanks','θæŋks'], one:['one','wʌn'], good:['good','ɡʊd'] }},
+  // New Zealand English (Audit Task 149) — distinctive front-vowel raising
+  en_nz: { name: 'English (New Zealand)', native: 'English (NZ) / Reo Pākehā', lat: -36.85, lng: 174.76, // Auckland
+    words: { water:['water','wɔːtə'], fire:['fire','fɑeə'], sun:['sun','sɐn'], moon:['moon','muːn'], mother:['mother','mɐðə'], father:['father','fɐːðə'], eat:['eat','iːt'], drink:['drink','dɾiŋk'], love:['love','lɐv'], heart:['heart','hɐːt'], tree:['tree','tɾiː'], house:['house','hæɔs'], dog:['dog','dɔɡ'], cat:['cat','kæt'], hand:['hand','hænd'], eye:['eye','ɐe'], hello:['kia ora','kiə ɔːɾə'], thanks:['cheers','tʃiəz'], one:['one','wɐn'], good:['good','ɡʊd'] }},
   en_au: { name: 'English (Australian)', native: 'English (Australian)', lat: -33.87, lng: 151.21,
     words: { water:['water','woːɾə'], fire:['fire','fɑːə'], sun:['sun','sɐn'], moon:['moon','muːn'], mother:['mother','mɐðə'], father:['father','fɐːðə'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lɐv'], heart:['heart','hɐːt'], tree:['tree','tɹiː'], house:['house','hæːʉs'], dog:['dog','dɔɡ'], cat:['cat','kæːt'], hand:['hand','hæːnd'], eye:['eye','ɑːe'], hello:["g'day",'ɡədæɪ'], thanks:['thanks','θæːŋks'], one:['one','wɐn'], good:['good','ɡʊd'] }},
   sco: { name: 'Scots', native: 'Scots', lat: 55.86, lng: -4.25,
@@ -1111,6 +1117,12 @@ const LANG_DATA = {
   // === Constructed Languages ===
   eo: { name: 'Esperanto', native: 'Esperanto', lat: 32, lng: -38,
     words: { water:['akvo','akvo'], fire:['fajro','fajro'], sun:['suno','suno'], moon:['luno','luno'], mother:['patrino','patrino'], father:['patro','patro'], eat:['manĝi','mandʒi'], drink:['trinki','trinki'], love:['amo','amo'], heart:['koro','koro'], tree:['arbo','arbo'], house:['domo','domo'], dog:['hundo','hundo'], cat:['kato','kato'], hand:['mano','mano'], eye:['okulo','okulo'], hello:['saluton','saluton'], thanks:['dankon','dankon'], one:['unu','unu'], good:['bona','bona'] }},
+  // Volapük — first widely-adopted IAL (Schleyer 1879, predates Esperanto)
+  vo: { name: 'Volapük', native: 'Volapük', lat: 47.71, lng: 9.20, // Litzelstetten (Schleyer's home)
+    words: { water:['vat','vat'], fire:['fil','fil'], sun:['sol','sol'], moon:['mun','mun'], mother:['mot','mot'], father:['fat','fat'], eat:['fidön','fidøn'], drink:['drinön','drinøn'], love:['löf','løf'], heart:['lad','lad'], tree:['bim','bim'], house:['dom','dom'], dog:['dog','doɡ'], cat:['kat','kat'], hand:['nam','nam'], eye:['log','loɡ'], hello:['glidis','ɡlidis'], thanks:['danö','danø'], one:['bal','bal'], good:['gudik','ɡudik'] }},
+  // Interlingua — naturalistic IAL (IALA 1951)
+  ia: { name: 'Interlingua', native: 'Interlingua', lat: 40.71, lng: -74.01, // New York (IALA HQ)
+    words: { water:['aqua','akwa'], fire:['foco','fɔko'], sun:['sol','sɔl'], moon:['luna','luna'], mother:['matre','matre'], father:['patre','patre'], eat:['manducar','mandukar'], drink:['biber','biber'], love:['amor','amor'], heart:['corde','kɔrde'], tree:['arbore','arbore'], house:['casa','kasa'], dog:['can','kan'], cat:['catto','katto'], hand:['mano','mano'], eye:['oculo','okulo'], hello:['salute','salute'], thanks:['gratias','ɡratias'], one:['un','un'], good:['bon','bon'] }},
   tok: { name: 'Toki Pona', native: 'toki pona', lat: 28, lng: -38,
     words: { water:['telo','telo'], fire:['seli','seli'], sun:['suno','suno'], moon:['mun','mun'], mother:['mama meli','mama meli'], father:['mama mije','mama mije'], eat:['moku','moku'], drink:['moku','moku'], love:['olin','olin'], heart:['pilin','pilin'], tree:['kasi','kasi'], house:['tomo','tomo'], dog:['soweli','soweli'], cat:['soweli','soweli'], hand:['luka','luka'], eye:['lukin','lukin'], hello:['toki','toki'], thanks:['pona','pona'], one:['wan','wan'], good:['pona','pona'] }},
   tlh: { name: 'Klingon', native: 'tlhIngan Hol', lat: 24, lng: -38,
@@ -2862,6 +2874,10 @@ const LANG_DATA = {
     words: { water:['yam','jam'], fire:['neʼaat','neʔaːt'], sun:['yint','jint'], moon:['tirig','tiɾiɡ'], mother:['indee','iːndeː'], father:['baab','baːb'], eat:['tame','tame'], drink:['gwaʼa','ɡʷaʕa'], love:['kima','kima'], heart:['ginʼa','ɡinʕa'], tree:['hindeb','hindeb'], house:['gaw','ɡaw'], dog:['yas','jas'], cat:['kabsoot','kabsoːt'], hand:['ay','aj'], eye:['liili','liːli'], hello:['salaam','salaːm'], thanks:['baraʼoo','baɾaʕoː'], one:['gaal','ɡaːl'], good:['dabaab','dabaːb'] }},
   tig: { name: 'Tigre', native: 'ትግረ', lat: 15.78, lng: 38.45, // Keren
     words: { water:['ማይ','maj'], fire:['እሳት','əssat'], sun:['ጸሓይ','tsʼəħaj'], moon:['ወርሕ','waɾəħ'], mother:['እሞ','əmmo'], father:['አቦ','abbo'], eat:['በልዐ','balʕa'], drink:['ሰትየ','satja'], love:['ፍቅሪ','fəqri'], heart:['ልቢ','ləbbi'], tree:['ዕጨይ','ʕətʃaj'], house:['ቤት','beːt'], dog:['ከልብ','kalb'], cat:['ድሙ','dəmmu'], hand:['እድ','əd'], eye:['ዐይን','ʕajn'], hello:['ሰላም','salaːm'], thanks:['የቀንየለይ','jəqanjəlej'], one:['ዎሮ','woɾo'], good:['ጽቡቕ','tsʼəbbuq'] }},
+  // Blin/Bilen — Cushitic Agaw, Eritrea (Audit Task 150 Batch G).
+  // Eritrea's only Agaw branch language. Sandgren (1991) + EMoE materials.
+  byn: { name: 'Blin', native: 'ብሊና', lat: 15.78, lng: 38.46, // Keren
+    words: { water:['አኳ','akwa'], fire:['ላእ','laʔ'], sun:['ኤርሕ','erəħ'], moon:['ቸራ','tʃəra'], mother:['እና','əna'], father:['አባ','aba'], eat:['ምሰራ','məsəra'], drink:['መዕያ','mətʕəja'], love:['ኩረቦ','kurəbo'], heart:['ሊባ','liba'], tree:['ሐጨር','ħətʃər'], house:['ጊና','ɡina'], dog:['ጋቢራ','ɡabira'], cat:['ሐራ','ħara'], hand:['አንካዕ','ankaʕ'], eye:['ኢላ','ila'], hello:['ኢራዋ','irawa'], thanks:['ቀንየለይ','qənjələj'], one:['አሬ','are'], good:['ጨጋ','tʃəɡa'] }},
   ssy: { name: 'Saho', native: 'Saaho', lat: 15.20, lng: 39.40, // Foro
     words: { water:['lee','leː'], fire:['gira','ɡira'], sun:['ayro','ajɾo'], moon:['alsa','alsa'], mother:['ina','ina'], father:['abba','abba'], eat:['niitan','niːtan'], drink:['yaaqab','jaːqab'], love:['kichanam','kitʃanam'], heart:['laffa','laffa'], tree:['caar','tʃaːr'], house:['kalo','kalo'], dog:['kare','kaɾe'], cat:['dummu','dummu'], hand:['gaba','ɡaba'], eye:['int','int'], hello:['malaal','malaːl'], thanks:['galatto','ɡalatto'], one:['inki','inki'], good:['meqe','meqe'] }},
   ewo: { name: 'Ewondo', native: 'Kɔlɔ', lat: 3.85, lng: 11.50, // Yaoundé
