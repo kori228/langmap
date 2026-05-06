@@ -826,6 +826,38 @@ exception clause; per-row deviations must be documented in
   lexical items that distinguish Québec usage (e.g., `bonjour` vs `allô`)
   rather than full phonetic re-transcription.
 
+### C4. Languages intentionally not represented as rows (Audit Task 150 Batch J)
+
+The 20-word × IPA schema cannot honestly represent every linguistic
+phenomenon. The following are *consciously omitted* — recording them
+here so future contributors do not add misleading rows:
+
+- **Whistled languages** (Silbo Gomero on La Gomera, Mazatec whistled,
+  Kuşköy whistled Turkish, Pirahã whistled register, Akha whistled
+  speech, etc.). These are *registers* of their host languages — the
+  whistled form encodes the host language's prosody/tone, not a
+  separate phoneme inventory. Adding them as separate rows would
+  duplicate the host language's data with a fake "IPA" column.
+  *Action:* document the host language; mention whistled register in
+  `meta.coverageNote` if relevant.
+- **Signed languages** (American Sign Language `ase`, British Sign
+  Language `bfi`, Japanese Sign Language `jsl`, etc.). See Task 142
+  for the modality decision. Sign languages need a `modality: 'signed'`
+  field and either SignWriting (Sutton SW, Unicode U+1D800–U+1DAAF) or
+  curated video URL handling — the `[surface, ipa]` pair cannot
+  represent handshape/movement/orientation/non-manual markers.
+- **Drum languages, click sub-systems used as games, secret-society
+  registers** (e.g., Sranan Tongo `kromanti` ritual register, Yoruba
+  drum talk, Pig Latin / Verlan / similar play-language registers).
+  Same issue: they encode the host language's segments/tones via a
+  different medium, not separate phoneme inventories.
+- **Thieves' cant / criminal argots** (Polari, Cant, etc.). Lexically
+  parasitic on a host language with limited speaker community; better
+  documented in linguistic ethnography than in a comparative word map.
+
+If a contributor proposes adding any of the above, point them to this
+subsection and discuss the underlying schema work first.
+
 ### D. Coordinates / 座標
 
 `lat/lng` is a single representative point (the prestige center, capital, or historical site). The map auto-stacks labels at duplicate or near-duplicate coordinates, so don't worry about exact uniqueness — use the geographically meaningful point for the speaker community.

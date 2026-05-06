@@ -150,4 +150,49 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 149/150 batch additions: Uganda + Kamba + creoles
+    const ADDED4 = {
+        cgg: { en: 'Chiga', ja: 'チガ語', ko: '치가어', zh: '奇加语', yue: '奇加語',
+               vi: 'Tiếng Chiga', th: 'ภาษาชิกา', id: 'Chiga', hi: 'चिगा',
+               de: 'Chiga', fr: 'Chiga', it: 'Chiga',
+               es_eu: 'Chiga', es_mx: 'Chiga', pt_eu: 'Chiga', pt_br: 'Chiga',
+               ru: 'Чига', uk: 'Чига', ar: 'الشيغية', he: 'צ\'יגה', sw: 'Kichiga' },
+        ttj: { en: 'Tooro', ja: 'トーロ語', ko: '토로어', zh: '托罗语', yue: '托羅語',
+               vi: 'Tiếng Tooro', th: 'ภาษาตูโร', id: 'Tooro', hi: 'टूरो',
+               de: 'Tooro', fr: 'Tooro', it: 'Tooro',
+               es_eu: 'Tooro', es_mx: 'Tooro', pt_eu: 'Tooro', pt_br: 'Tooro',
+               ru: 'Тооро', uk: 'Тооро', ar: 'التورية', he: 'טורו', sw: 'Kitooro' },
+        nyo: { en: 'Nyoro', ja: 'ニョロ語', ko: '뇨로어', zh: '尼奥罗语', yue: '尼奧羅語',
+               vi: 'Tiếng Nyoro', th: 'ภาษานิโอโร', id: 'Nyoro', hi: 'न्योरो',
+               de: 'Nyoro', fr: 'Nyoro', it: 'Nyoro',
+               es_eu: 'Nyoro', es_mx: 'Nyoro', pt_eu: 'Nyoro', pt_br: 'Nyoro',
+               ru: 'Ньоро', uk: 'Ньоро', ar: 'النيورية', he: 'ניורו', sw: 'Kinyoro' },
+        laj: { en: 'Lango', ja: 'ランゴ語', ko: '랑고어', zh: '兰戈语', yue: '蘭戈語',
+               vi: 'Tiếng Lango', th: 'ภาษาลังโก', id: 'Lango', hi: 'लांगो',
+               de: 'Lango', fr: 'Lango', it: 'Lango',
+               es_eu: 'Lango', es_mx: 'Lango', pt_eu: 'Lango', pt_br: 'Lango',
+               ru: 'Ланго', uk: 'Ланго', ar: 'اللانغو', he: 'לאנגו', sw: 'Kilango' },
+        kam: { en: 'Kamba', ja: 'カンバ語', ko: '캄바어', zh: '坎巴语', yue: '坎巴語',
+               vi: 'Tiếng Kamba', th: 'ภาษากัมบา', id: 'Kamba', hi: 'कांबा',
+               de: 'Kamba', fr: 'Kamba', it: 'Kamba',
+               es_eu: 'Kamba', es_mx: 'Kamba', pt_eu: 'Kamba', pt_br: 'Kamba',
+               ru: 'Камба', uk: 'Камба', ar: 'الكامبا', he: 'קמבה', sw: 'Kikamba' },
+        kea: { en: 'Cape Verdean Creole', ja: 'カーボベルデ・クレオール', ko: '카보베르데 크레올어', zh: '佛得角克里奥尔语', yue: '佛得角克里奧爾語',
+               vi: 'Tiếng Creole Cape Verde', th: 'ภาษาครีโอลกาบูเวร์ดี', id: 'Kreol Tanjung Verde', hi: 'कैप वर्डियन क्रियोल',
+               de: 'Kabuverdianu', fr: 'Capverdien', it: 'Capoverdiano',
+               es_eu: 'Caboverdiano', es_mx: 'Caboverdiano', pt_eu: 'Cabo-Verdiano', pt_br: 'Cabo-Verdiano',
+               ru: 'Кабувердьяну', uk: 'Капвердійська креольська', ar: 'الكريولية الرأسخضراوية', he: 'קריאולית כף ורדה', sw: 'Kikabuverdianu' },
+        pis: { en: 'Pijin', ja: 'ピジン語', ko: '솔로몬 피진어', zh: '所罗门皮金语', yue: '所羅門皮金語',
+               vi: 'Tiếng Pijin', th: 'ภาษาพิจิน', id: 'Pijin', hi: 'पिजिन',
+               de: 'Pijin', fr: 'Pijin', it: 'Pijin',
+               es_eu: 'Pijín', es_mx: 'Pijín', pt_eu: 'Pijin', pt_br: 'Pijin',
+               ru: 'Пиджин', uk: 'Піджин', ar: 'البيجين', he: 'פיג\'ין', sw: 'Kipijin' },
+    };
+    for (const code of Object.keys(ADDED4)) {
+        for (const ui of Object.keys(ADDED4[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED4[code][ui];
+            }
+        }
+    }
 })();

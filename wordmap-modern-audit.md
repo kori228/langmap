@@ -5830,3 +5830,227 @@ Done when:
 - **Confirmed implemented (no further work needed):** All 30 spot-checked schema/UI claims from the feedback file (codeType, languageKind, surfaceType, locationBasis, scriptDisplayPolicy, formType/citation, WM_ASSET_VERSION, hash/popstate, combobox ARIA, dialog focus, CDN fallback, RTL bidi, era help icon, multiword formType, GitHub Actions CI, legacy script headers, Pronunciation/IPA Policy section).
 - **Open / partial (new tasks 143–148):** Tier-1 lang_names completion; description-i18n historical batch; string→object description migration; Pass-7 per-language rebuilds; Pass-2-6 policy locks; Japonic-stage coordinate cluster.
 - **Validator delta:** 17 → 38 warnings. 21 are temporary (Task 143 closes them). The remaining 17 are the pre-existing description-i18n + string-description + coord-cluster warnings tracked above.
+
+### New Task 149. Add Tier 3 missing languages — Polynesian, creole-family, mid-size African, Mesoamerican register-tone, classical conlangs
+
+Goal:
+Close the next-tier coverage gaps surfaced by the 2026-05-06 Tier 1/2 gap analysis. Each language below either fills a *family-coverage hole* (Polynesian without Tahitian, French-based creole without Réunion/Seychelles/Guadeloupe, Portuguese-based creole without Cape Verdean), corresponds to a recognized national/official language not yet on the map, or anchors a typological feature (Otomi register tone, Volapük as the first widely adopted constructed language). Tier 3 is broader than Tier 1/2 and is best done as 4–5 incremental sub-batches rather than one sweep.
+
+Current issue I checked (codes verified absent on 2026-05-06):
+
+**Group A — Pacific / Polynesian gaps:**
+- `tah` Tahitian — French Polynesia official language, ~70K speakers, sister to `mi`/`haw`/`sm`/`to` already present. Conservative Eastern Polynesian phonology with glottal stop ʼ and macron-marked long vowels. Without it the project has every other major Eastern Polynesian language but skips the one that is the namesake of "Tahitic" subgroup.
+- `ho` Hiri Motu — one of three official languages of Papua New Guinea (with `tpi` Tok Pisin already present and English). Simplified trade form of Motu, distinct from full Motu. ~120K. Pairs with `tpi` to show PNG's two contact languages side by side.
+- `en_nz` New Zealand English — `en_au` Australian English is present, but NZ English is missing despite a ~4M speaker base, distinctive vowel system (NZ short-front-vowel shift), and significant Māori-loanword integration. Typologically interesting because of front-vowel raising that diverges from Australian.
+
+**Group B — Creole-family gaps (currently underrepresented in the map's contact-language coverage):**
+- `kea` Kabuverdianu (Cape Verdean Creole) — national language of Cape Verde, ~870K. Largest Portuguese-based creole. Two main variants (Sotavento/Barlavento); pick the Sotavento (Santiago) standard for the map row. The map already has `pap` Papiamento (Iberian-based creole of the ABC islands) but is missing the much larger Cape Verdean.
+- `rcf` Réunion Creole (Kreol Réyoné) — French-based, ~600K, Réunion island. Pairs with `mfe` Mauritian Creole already present.
+- `crs` Seychellois Creole (Kreol Seselwa) — French-based, ~73K, official language of Seychelles. Completes the Indian Ocean French-creole triad with `mfe` Mauritian and `rcf` Réunion.
+- `gcf` Guadeloupean Creole — French-based, ~430K, French overseas region. Caribbean French-creole anchor.
+- `pis` Pijin (Solomon Islands Pijin) — ~370K, English-based. Sister to `tpi` and `bi` Bislama (both present). The three together form the canonical Melanesian Pijin continuum and the project already has two of three.
+
+**Group C — Mid-size African languages:**
+- `kam` Kamba (Kĩkamba) — Kenyan Bantu E system, ~4M. One of the five largest ethnic-language groups in Kenya alongside Kikuyu (`ki` present), Luhya, Kalenjin (`kln` present), and Luo (`luo` present).
+- `ses` Koyraboro Senni (Eastern Songhai) — ~430K, Mali/Niger. Songhai is genealogically isolated within Africa (sometimes Nilo-Saharan, sometimes ungrouped); the Saharan trade-corridor language of Gao and Timbuktu. Worth representing one Songhai variety even if just one.
+- `tem` Themne — ~1.5M, Sierra Leone. One of two largest Sierra Leonean languages alongside Mende (`men` present). Atlantic-Congo branch with grammatical-gender noun-class system.
+
+**Group D — Mesoamerican register-tone language:**
+- `oto` Otomi (Hñähñu / Hñähño) — Mexican Otomanguean, ~300K, scheduled language of Mexico. Critically interesting because it has *register* tones (high/low) plus contrastive *phonation types* (modal/breathy/creaky vowels) — typologically distinct from East Asian contour-tone systems. Without it, the map has no Mexican non-Mayan indigenous language demonstrating phonation-type contrasts.
+
+**Group E — Classical / historic constructed languages:**
+- `vo` Volapük — published 1879 by Schleyer, predates Esperanto by ~8 years and was briefly more popular before Esperanto eclipsed it. Significant in linguistic history as the first widely adopted international auxiliary language (IAL). Speaker count is now negligible but the historical/linguistic-history value is large; the project already has `eo` Esperanto, `tok` Toki Pona, `jbo` Lojban, `tlh` Klingon as constructed languages.
+- `ia` Interlingua — naturalistic IAL designed by IALA (1951), readable by anyone literate in a Romance language without prior study. Distinct philosophy from Esperanto (no schematic regularization) — pairing the two is pedagogically valuable for explaining IAL design space.
+
+Files to change (all groups):
+- `wordmap_data.js` — add 20-word entries with IPA + romanization where applicable. Each language is one new top-level row.
+- `wordmap_meta.js` — full meta block: `family`, `speakers`, `speakerBasis`, `speakerSource`, `speakerYear`, `iso6393`, `glottocode`, `countries`, `official`, `script`, `description` (multilingual object per Task 145), `sources` (per Task 80), `pronunciationType` (per Task 76), `surfaceType` (per Task 84), `locationBasis` (per Task 99/127), `codeType: 'iso'`, `languageKind` where non-default, `parentCode`/`varietyRole` where applicable.
+- `lang_names.js` — add to all 21 UI sections (per Task 143's lessons).
+- `meta_i18n_coverage.js` — add `description` translations for the 4 priority UI langs (`ja`/`ko`/`zh`/`yue`) at minimum.
+- `lang-filter.js` — confirm `Atlantic-Congo`, `Otomanguean`, `Songhai`, `Polynesian`, `French-based creole`, `Portuguese-based creole`, `Constructed (auxiliary)` are all recognized family/category buckets; extend the curated tag set if not.
+- `changelog.html` — credit the gap analysis (2026-05-06) and list each addition in the next changelog entry.
+- `CONTRIBUTING.md` — if a creole-handling policy is not yet documented, add one paragraph in the language-typology conventions section explaining how creoles are tagged (`languageKind: 'pidgin-creole'`, lexifier in `description`).
+
+Implementation instructions:
+
+**Sub-batch ordering (recommended):**
+1. **Batch 1 (Polynesian + Pacific):** `tah`, `ho`, `en_nz`. Smallest data-source effort because Wiktionary + Académie Tahitienne + PNG language atlas + standard NZ-English references are well-curated. ~3 langs × 20 cells = 60 cells.
+2. **Batch 2 (creole family):** `kea`, `rcf`, `crs`, `gcf`, `pis`. Group together because they share methodology — pick one orthography per language (most have multiple competing standards), document the choice in `wordmap_meta.js` `description`, and keep substrate/superstrate notes in `wordEvidence.note`. ~5 langs × 20 = 100 cells.
+3. **Batch 3 (African mid-size):** `kam`, `ses`, `tem`. These need careful Bantu-noun-class / Atlantic-noun-class handling for `mother`/`father`/`tree`/`house`/`heart` — many pair with class prefixes that should not be stripped. ~3 langs × 20 = 60 cells.
+4. **Batch 4 (Mesoamerican):** `oto`. Single language, but high-cost cell-by-cell because of the tone × phonation grid. Cite Lastra (1992, 1997) or similar and include `wordEvidence.pronunciationEvidence` per Task 97 so future readers can verify each tone+phonation choice. ~1 lang × 20 cells but each cell is double-checked.
+5. **Batch 5 (constructed):** `vo`, `ia`. Smallest cost because both have fixed standardized lexicons; surface comes directly from the official dictionary. Mark `languageKind: 'constructed'`, `pronunciationType: 'broad'` (Volapük's IPA is rule-based; Interlingua phonology is loose). ~2 langs × 20 = 40 cells.
+
+**Per-language source policy:**
+- Each language must arrive with at least one citeable reference in `meta.sources`. No row goes in without a source.
+- For Tahitian: Académie Tahitienne (Fare Vana'a) Tahitian-French dictionary; Wiktionary cross-checks.
+- For Hiri Motu: Dutton & Voorhoeve (1974) *Beginning Hiri Motu*; PNG official Hiri Motu publications.
+- For NZ English: pronunciation transcriptions from the Cambridge English Pronouncing Dictionary (NZ supplements) + audio from OZdic / NZ Herald style guide; cite at row level.
+- For Cape Verdean: ALUPEC orthography (official 2009); Veiga (2002) *Le créole du Cap-Vert*; choose Santiago variant.
+- For Réunion: Cellier *Comparons nos langues*; SudEL orthographic standard.
+- For Seychellois: Bollée & D'Offay (2009) *Le créole seychellois*; Lenstiti Kreol (Creole Institute Seychelles).
+- For Guadeloupean: Ludwig et al. (2002) *Dictionnaire créole français*.
+- For Solomons Pijin: Crowley & Lynch (eds.) for Melanesian languages; Solomon Islands Pijin Wordlist (SIL).
+- For Kamba: Lindblom (1926) and modern updates; *Kĩkamba Bible* lexical baseline.
+- For Songhai (Koyraboro Senni): Heath (1999) *A Grammar of Koyraboro Senni*.
+- For Themne: Wilson (1961) *An outline of the Temne language*; Bai-Sharka (2018).
+- For Otomi: Lastra (1997) *El otomí de Toluca*; Bartholomew & Schoenhals (1983); pick *Mezquital Otomi* (`ote` ISO 639-3) as the variant unless a different one is justified.
+- For Volapük: Schleyer's *Wörterbuch der Universalsprache* (1888) and the Cifal Volapüka modern update; Volapük Wikipedia's modern lexicon.
+- For Interlingua: IALA *Interlingua-English Dictionary* (1951); Union Mundial pro Interlingua.
+
+**Per-language metadata pitfalls to avoid:**
+- For Tahitian: do *not* set `parentCode: 'mi'` or `'haw'` — Tahitian is a sister, not a child, of those.
+- For Hiri Motu: distinguish from Motu (`meu`); these are different rows. Hiri Motu is simplified, lexically Motu but grammatically reduced.
+- For NZ English: set `parentCode: 'en'`, `varietyRole: 'regional-variety'`, `coverage: 'partial'` per Task 79.
+- For each French-based creole: do *not* set `parentCode: 'fr'`. Creoles are not regional varieties of French; they are distinct languages with French lexifier. Use `languageKind: 'pidgin-creole'`, document lexifier in `description`.
+- For Cape Verdean: same — *not* a parent of `pt`. Use `languageKind: 'pidgin-creole'`.
+- For Solomons Pijin: do *not* set `parentCode: 'tpi'`. Tok Pisin and Pijin are sister Melanesian Pijins, not parent-child.
+- For Kamba/Themne/Songhai: set `pronunciationType: 'broad'` not `'ipa'` unless a tone-sourced full rebuild is done.
+- For Otomi: must set `pronunciationType: 'ipa'` (because tone+phonation cannot be represented in standard orthography), and `wordEvidence.pronunciationEvidence` for every cell.
+- For Volapük/Interlingua: set `languageKind: 'constructed'`, `dataStatus: 'modern'` (they are still in active community use, however small), `pronunciationType: 'broad'`.
+
+**Coordinate selection (per Task 99/127):**
+- `tah` → Pape'ete, Tahiti (`-17.54, -149.57`).
+- `ho` → Port Moresby (`-9.44, 147.18`).
+- `en_nz` → Auckland or Wellington (~`-36.85, 174.76` for Auckland, the larger speaker pool).
+- `kea` → Praia, Cape Verde (`14.92, -23.51`).
+- `rcf` → Saint-Denis, Réunion (`-20.88, 55.45`).
+- `crs` → Victoria, Mahé (`-4.62, 55.45`).
+- `gcf` → Pointe-à-Pitre or Basse-Terre (`16.24, -61.53`).
+- `pis` → Honiara (`-9.43, 159.95`).
+- `kam` → Machakos, Kenya (`-1.52, 37.27`).
+- `ses` → Gao, Mali (`16.27, -0.05`) for the Eastern Songhai variant.
+- `tem` → Makeni or Freetown approach (`8.88, -12.05` Makeni for Themne center).
+- `oto` → Tula de Allende or Ixmiquilpan, Hidalgo (`20.48, -99.22` Ixmiquilpan as Mezquital center).
+- `vo` → Litzelstetten near Konstanz (`47.71, 9.20`) — Schleyer's home; or Cifal Volapüka HQ if more current.
+- `ia` → New York (`40.71, -74.01`) — IALA's HQ, or any IALA-defining city.
+
+**Per-language `locationBasis`:**
+- Pacific / Polynesian / mid-size African modern languages → `capital` or `largest-city`.
+- Creoles → `capital` (creole anchored to its territory's center).
+- `vo`, `ia` → `prestige-center` (no native-speaker community to ground a `capital`).
+- `oto` → `largest-city` (Ixmiquilpan as the cultural/linguistic center, not Mexico City).
+
+**Per-language `pronunciationType` defaults:**
+- `tah`, `ho`, `en_nz`, `kea`, `rcf`, `crs`, `gcf`, `pis`, `kam`, `ses`, `tem` → `'broad'` until a sourced full-IPA rebuild.
+- `oto` → `'ipa'` (must be IPA because tone+phonation is required).
+- `vo`, `ia` → `'broad'` (well-defined but not phonemic-ipa-strict).
+
+**Per-batch validation:**
+- After each sub-batch, run `node validate_wordmap_data.js`.
+- Each new lang must pass: `codeType` set; `lang_names.<UI>` filled for all 21 UI sections; `pronunciationType` and `surfaceType` set; `meta.sources` non-empty; `wordEvidence` populated for at least 5 cells per language.
+- Bump `WM_ASSET_VERSION.data` and `.meta` per Task 134; `lang_names` cache-buster per Task 143's lesson.
+
+Validator / static check:
+- Extend `validate_wordmap_data.js` to recognize the new `family` strings if they are new tokens (e.g., `'Atlantic-Congo (Mel)'` for Themne if not previously seen).
+- Add a check that flags any creole row without `languageKind: 'pidgin-creole'`. Today the validator counts `pidgin-creole` but does not enforce it on rows that look creole-y in `description`. A simple substring match on creole-related description keywords (`creole`, `pidgin`, `créole`, `crioulo`, `kreol`, `kreyòl`) could WARN if `languageKind` is missing.
+
+Do not:
+- Do not mass-add all 14 in one commit. Reviewing 14 languages × 20 cells in one diff is impractical and hides errors. Use the 5 sub-batches above as commit boundaries.
+- Do not pick the most-popular spelling variant of a creole without documenting which standard it is. ALUPEC (Cape Verde), GEREC-2 (French Caribbean), and various uncodified standards exist; pick one and say so.
+- Do not borrow an Esperanto-style approach for Volapük's pronunciation. Volapük has rule-based stress on the final vowel; do not simulate Esperanto's penultimate stress just because Esperanto is the closest sibling row.
+- Do not omit `wordEvidence.note` for Otomi cells — the tone+phonation choices are non-obvious and must be sourceable.
+- Do not introduce these languages without first finishing Task 143 (cv/dv/tzh/mdf lang_names cleanup). Adding more languages while a lang_names backlog exists multiplies the warning count.
+
+Done when:
+- All 14 codes (`tah`, `ho`, `en_nz`, `kea`, `rcf`, `crs`, `gcf`, `pis`, `kam`, `ses`, `tem`, `oto`, `vo`, `ia`) have full word + meta + name entries across all 21 UI langs.
+- `node validate_wordmap_data.js` passes with no new warnings introduced beyond the deferred-i18n list.
+- The map at zoom 5 visibly shows: Pape'ete, Port Moresby, Praia, Saint-Denis, Mahé, Pointe-à-Pitre, Honiara, Machakos, Gao, Makeni, Ixmiquilpan, and the conlang anchors.
+- Family-coverage gaps for Tahitic Polynesian, English-based PNG/Solomons creole pair, Portuguese-based and French-based creole branches, Kenyan Bantu E mid-size, Songhai isolate, Atlantic-Congo Mel branch, Mexican Otomanguean register-tone, and pre-Esperanto IAL history are all visibly closed.
+- Changelog credits the gap analysis (2026-05-06) and lists each addition.
+
+### New Task 150. Add Tier 3.5 — coverage rounding-out languages and typological rarities
+
+Goal:
+After Task 149 is finished, fill the remaining "would be nice" gaps that close out regional clusters or add typologically extreme rarities. Lower-priority than 141/142/149 because each is either small in speaker count or specialized, but each adds visible educational value at reasonable per-row cost.
+
+Current issue I checked (codes verified absent on 2026-05-06):
+
+**Group F — Uganda Bantu/Nilotic cluster completion:**
+- `laj` Lango — Western Nilotic, ~2.1M, Northern Uganda. Pairs with `luo` Luo, `ach` Acholi (both present) within the Luo cluster.
+- `cgg` Chiga (Rukiga) — Bantu JE, ~2.3M, southwestern Uganda.
+- `ttj` Tooro — Bantu JE, ~660K, western Uganda. Sister to Nyoro.
+- `nyo` Nyoro (Runyoro) — Bantu JE, ~970K, western Uganda. Forms the Runyakitara cluster with Tooro/Chiga/Nkore.
+- These four together with already-present `lg` Luganda, `nyn` Nkore, `teo` Teso, `ach` Acholi, `luo` Luo make Uganda's language map nearly complete.
+
+**Group G — Horn of Africa rounding:**
+- `byn` Blin (Bilen) — Cushitic Agaw, ~110K, Eritrea. Eritrea's only Agaw branch language. Pairs with `tig` Tigre (present), `ti` Tigrinya (present), `aa` Afar (present), `so` Somali (present) to give Horn-of-Africa Cushitic+Semitic+Agaw representation.
+
+**Group H — Andamanese (typological / endangered isolates):**
+- `jrb` Great Andamanese (modern revitalized form) — critically endangered, ~3 fluent speakers (per UNESCO). The Great Andamanese family is one of the most ancient language groupings in South Asia and is treated as an isolate by most classifications. The small surviving variety is the result of language merger of multiple originally distinct Andamanese languages. **Note:** scope must explicitly say "modern attested rump form" not "the Andamanese family" — the latter is mostly extinct.
+- Optional: a separate row for an extinct named Andamanese variety (e.g., Aka-Bea) marked `dataStatus: 'fragmentary'` with whatever Reverend Portman 1899 or modern revitalization-corpus material exists. Skip if the corpus is too thin.
+
+**Group I — Khoisan typological extreme:**
+- `nmn` Taa (also called !Xóõ or ǃXóõ) — Tuu (Khoisan), ~2,500, Botswana/Namibia. Famously has *the largest consonant inventory of any documented language* (~128–164 phonemes depending on analysis, with multiple click series + plain consonants + complex vowel modifications). Adding even a 20-cell row teaches more about phonological rarity than 10 European languages combined. Compare to `naq` Nama (present, click language but smaller inventory).
+
+**Group J — Whistled / non-spoken language note:**
+- Silbo Gomero (Spain, La Gomera) and other whistled registers (Mazatec whistled, etc.) — cannot be represented in the current 20-word × IPA schema because the medium is whistled, not phoneme-based. The audit should record this as a known data-model limitation rather than a missing-language row. Recommendation: add a paragraph to `CONTRIBUTING.md` explaining why whistled and signed languages need special schema treatment (see Task 142 for sign languages), and list `silbo-gomero` and similar in a "Conscious omissions" table.
+
+Files to change:
+- `wordmap_data.js` — 6 new top-level rows (`laj`, `cgg`, `ttj`, `nyo`, `byn`, `nmn`) plus optionally `jrb`.
+- `wordmap_meta.js` — full meta blocks for each.
+- `lang_names.js` — entries in all 21 UI sections.
+- `meta_i18n_coverage.js` — descriptions in priority UI langs.
+- `lang-filter.js` — confirm `Cushitic (Agaw)`, `Khoisan (Tuu)`, `Andamanese` are recognized family tokens.
+- `CONTRIBUTING.md` — add a "Conscious data-model omissions" subsection covering whistled and signed languages.
+- `wordmap-modern-audit-feedback.md` — record completion in a new Pass entry.
+- `changelog.html` — credit additions.
+
+Implementation instructions:
+
+**Sub-batch ordering:**
+1. **Batch F1 (Uganda Bantu/Nilotic 4 langs):** `laj`, `cgg`, `ttj`, `nyo`. Group together because they share regional metadata (countries: Uganda, official: Uganda, parent context: Runyakitara cluster) and similar source bases (Uganda Christian University Press dictionaries, SIL Bantu surveys). ~4 × 20 = 80 cells.
+2. **Batch G (Horn of Africa rounding):** `byn`. Single language. ~20 cells.
+3. **Batch I (Khoisan typological rarity):** `nmn` Taa. ~20 cells but each cell must be sourced because the click+phonation choices are non-obvious. This is the most-cited Khoisan language in linguistic typology, so source quality matters.
+4. **Batch H (Andamanese, optional):** `jrb` Great Andamanese modern. Defer if no current source can be cited; do not invent forms. ~20 cells, with `dataStatus` set explicitly to `fragmentary` or `modern` depending on what is recorded.
+5. **Batch J (data-model documentation, no row addition):** `CONTRIBUTING.md` paragraph + audit feedback follow-up.
+
+**Per-language source policy:**
+- For Lango: Driberg (1923) *The Lango: A Nilotic Tribe of Uganda*, modern Lango-English dictionary by Noonan or Okolo.
+- For Chiga (Rukiga): SIL Uganda's *Runyakitara cluster* materials; Ruhakana Rugunda's published works; Uganda Christian University Press Rukiga dictionary.
+- For Tooro: Kamoga (1968); Davis & Schadeberg in the Bantu surveys.
+- For Nyoro: Ruzindana (1996) *Runyoro-Rutooro–English Dictionary*.
+- For Blin: Sandgren (1991) *A Grammar of Bilin*; Eritrean Ministry of Education materials.
+- For Taa (`nmn`): Traill (1985) *Phonetic and Phonological Studies of !Xóõ Bushman*; Naumann (2008) *The Tuu Languages*. Source per cell.
+- For Andamanese (`jrb`): Anvita Abbi *Dictionary of the Great Andamanese Language* (2012); or skip if insufficient.
+
+**Per-language metadata (group-specific pitfalls):**
+- For all four Uganda Runyakitara-cluster languages (`cgg`, `ttj`, `nyo`, plus already-present `nyn`): set a `parentCode` only if the project decides to introduce a Runyakitara macrolanguage row. If not, leave `parentCode` unset and use `description` to explain the cluster relationship.
+- For `laj` Lango vs `luo` Luo: these are sister languages within Western Nilotic (Lwoo). Do not set `parentCode` between them.
+- For `nmn` Taa: must use IPA with click letters (ǀ, ǁ, ǂ, ǃ) and tone marks. Do not romanize as ASCII. Set `pronunciationType: 'ipa'`. Set `surfaceType: 'standard-orthography'` (the click letters are part of standard Khoisan orthography, not phonetic notation).
+- For `jrb` Great Andamanese: set `dataStatus: 'fragmentary'` or `'modern'` depending on the form chosen, and document in `description` which sub-variant (Pucikwar, Kede, etc., merged into the modern rump) the row reflects.
+- For all of Group F + G: set `pronunciationType: 'broad'` initially; full-IPA rebuild is a separate later task.
+
+**Coordinate selection:**
+- `laj` Lango → Lira, Northern Uganda (`2.24, 32.90`).
+- `cgg` Chiga → Kabale, southwestern Uganda (`-1.25, 29.98`).
+- `ttj` Tooro → Fort Portal (`0.66, 30.27`).
+- `nyo` Nyoro → Hoima or Masindi (`1.43, 31.34` Hoima).
+- `byn` Blin → Keren, Eritrea (`15.78, 38.46`).
+- `nmn` Taa → near Tsabong, Botswana, or Aminuis-area Namibia (`-26.05, 22.42` Tsabong is a workable representative point).
+- `jrb` Great Andamanese → Strait Island or Port Blair, Andaman Islands (`11.66, 92.74` Port Blair as the administrative center where speakers now live).
+
+**Conscious data-model omissions documentation (Batch J):**
+- Add a new subsection in `CONTRIBUTING.md` titled "Languages intentionally not represented as rows" with the following content:
+  - **Whistled languages** (Silbo Gomero, Mazatec whistled, Kuşköy whistled Turkish, Pirahã whistled register, etc.) — they are *registers* of their host languages, not separate phoneme inventories. The 20-word × IPA schema cannot represent them.
+  - **Signed languages** — see Task 142. Modality-dependent representation is required.
+  - **Drum languages, click sub-systems used as games, secret-society registers** — same issue.
+- This documentation is the deliverable, not a row.
+
+Validator / static check:
+- Add an enum check for any new `family` token introduced (Uganda Bantu JE, Tuu Khoisan, Great Andamanese isolate, Cushitic Agaw).
+- Optionally extend the family/region filter UI to expose "Khoisan (click languages)" as a filterable category if not already present.
+
+Do not:
+- Do not add `jrb` Great Andamanese unless a citeable source can ground each cell — fewer than 5 fluent speakers means almost any unsourced form is functionally invented.
+- Do not add `nmn` Taa as a non-IPA row. The whole reason for adding it is to demonstrate the click+phonation inventory; using a romanization defeats the purpose.
+- Do not add Silbo Gomero as a row even if requested — record it in the "Conscious omissions" subsection instead. Adding a fake-orthography row would mislead users about the data model.
+- Do not bundle the four Uganda languages with the Khoisan/Andamanese ones in a single commit — different review needs.
+
+Done when:
+- All Group F (`laj`, `cgg`, `ttj`, `nyo`) and Group G (`byn`) and Group I (`nmn`) have full word + meta + name + i18n entries.
+- Group H (`jrb`) is either added with a clearly-sourced 20-cell row or explicitly deferred with a one-line note in this audit referencing the deferral reason.
+- Group J's CONTRIBUTING.md "Conscious omissions" subsection exists and lists whistled languages, signed languages (cross-link Task 142), and any other data-model-incompatible varieties.
+- `node validate_wordmap_data.js` passes; new family tokens are recognized.
+- Map at zoom 5 visibly shows Lira, Kabale, Fort Portal, Hoima, Keren, Tsabong, and (if added) Port Blair.
+- Khoisan typological rarity is now demonstrable: `naq` Nama + `nmn` Taa together cover the click-language spectrum from medium-inventory to maximum-inventory.
+- Changelog credits the gap analysis (2026-05-06) and lists each addition.

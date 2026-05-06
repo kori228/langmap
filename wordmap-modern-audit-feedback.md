@@ -1340,3 +1340,55 @@ Pass 8〜18 累計 **49 タスク + 12 言語追加** (591→603) + 4 件の ver
 - **Task 150 残 Batches F/H/J**: laj/cgg/ttj/nyo (Uganda 4), jrb (Andamanese), CONTRIBUTING.md "Conscious omissions" 節
 
 Pass 8〜19 累計 **52 タスク + Tier 1/2/3/3.5 で 17 言語追加** (591 → 608)。
+
+---
+
+## Pass 20 Sequential Cleanup (2026-05-06 part 13)
+
+### Task 150 Batch J — Conscious omissions doc
+CONTRIBUTING.md に **C4. Languages intentionally not represented as rows** 節を追加。Whistled languages (Silbo Gomero, Mazatec whistled 等)、Signed languages (Task 142 cross-link)、Drum languages、Thieves' cant 等を schema 不適合として明記。
+
+### Task 150 Batch F — Uganda Bantu/Nilotic 追加 (4 言語)
+
+| Code | 言語 | 系統 |
+|---|---|---|
+| `laj` | ランゴ (Lëblaŋo) | Western Nilotic Lwoo |
+| `cgg` | チガ (Rukiga) | Bantu JE Runyakitara |
+| `ttj` | トーロ (Rutooro) | Bantu JE Runyakitara |
+| `nyo` | ニョロ (Runyoro) | Bantu JE Runyakitara |
+
+Runyakitara クラスタ (cgg/ttj/nyo + 既存 nyn) で Uganda Bantu の coverage が完成。`laj` は既存 `ach` Acholi/`luo` Luo の sister。
+
+### Task 149 Batch 3 partial — Kenyan Bantu
+
+| Code | 言語 | 系統 |
+|---|---|---|
+| `kam` | カンバ (Kĩkamba) | Bantu E70, ~4M, Kenya |
+
+### Task 149 Batch 2 partial — 大型 creole
+
+| Code | 言語 | 系統 |
+|---|---|---|
+| `kea` | カーボベルデ・クレオール | Portuguese-based creole, ~870K |
+| `pis` | ソロモンズ・ピジン (Pijin) | English-based Melanesian Pijin |
+
+### 重複削除
+- `tah` Tahitian: 既存 `ty` (ISO 639-1 同言語) と重複していたため**削除**
+
+### Validator
+- ERRORS: 0
+- WARNINGS: **17** ↑ (description-i18n 17 件、新言語追加分は normalize 済)
+- Languages: **614** (modern 528, historical 86) — Pass 19 から +6
+- 新 family token (`Atlantic-Congo`, `Portuguese-based creole`) を allow-list 追加
+- ttj/nyo Tooro-Nyoro 重複: 両方に coverage 付与で警告解消
+- Cache-buster: data 91→92, names 8→9, meta 41→42
+
+### 残（次回以降）
+- **Task 144**: 重い翻訳作業 (15 UI lang × ~60 codes)
+- **Task 145 Phase B**: ja/ko/zh translations
+- **Task 146**: my/km/id/ms/tl/ta/te/bo per-language IPA rebuild
+- **Task 149 残**: rcf/crs/gcf (creoles 3)、ses/tem (African 2)、oto (Otomi tone+phonation)
+- **Task 150 Batch H**: jrb (Andamanese, ~3 speakers)
+- **Task 150 Batch I**: nmn Taa (Khoisan, Traill 1985 出典待ち)
+
+Pass 8〜20 累計 **53 タスク + 23 言語追加 - 1 重複削除** (591 → 614)。
