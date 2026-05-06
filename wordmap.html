@@ -870,38 +870,67 @@
                 pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
-            // Audit Task 106: ARIA labels for top-bar controls (en/ja/ko/zh,
-            // English fallback for other UI langs)
-            ariaSelectWord:    { en: 'Select word',                          ja: '単語を選択',         ko: '단어 선택',           zh: '选择词' },
-            ariaUiLanguage:    { en: 'UI language',                          ja: 'UI 言語',            ko: 'UI 언어',             zh: '界面语言' },
-            ariaMapZoom:       { en: 'Map zoom',                             ja: '地図ズーム',         ko: '지도 확대/축소',       zh: '地图缩放' },
-            ariaZoomIn:        { en: 'Zoom in',                              ja: '拡大',               ko: '확대',                zh: '放大' },
-            ariaZoomOut:       { en: 'Zoom out',                             ja: '縮小',               ko: '축소',                zh: '缩小' },
-            aria2D3D:          { en: 'Toggle 2D / 3D view',                  ja: '2D/3D 表示切替',     ko: '2D/3D 보기 전환',     zh: '切换 2D/3D 视图' },
-            ariaToggleForm:    { en: 'Toggle form display',                  ja: '表記の表示切替',     ko: '표기 표시 전환',       zh: '切换写法显示' },
-            ariaTogglePron:    { en: 'Toggle pronunciation display',         ja: '発音表示切替',       ko: '발음 표시 전환',       zh: '切换发音显示' },
-            ariaToggleName:    { en: 'Toggle language-name display',         ja: '言語名表示切替',     ko: '언어명 표시 전환',     zh: '切换语言名显示' },
-            ariaNameGroup:     { en: 'Name display (native / translated)',   ja: '言語名表示（現地名/翻訳）', ko: '언어명 표시 (현지/번역)', zh: '语言名显示（本名/翻译）' },
-            ariaFontSize:      { en: 'Label font size',                      ja: 'ラベル文字サイズ',   ko: '라벨 글꼴 크기',       zh: '标签字体大小' },
-            ariaCloseInfo:     { en: 'Close language info',                  ja: '言語情報を閉じる',   ko: '언어 정보 닫기',       zh: '关闭语言信息' },
-            ariaEraGroup:      { en: 'Era (modern / historical)',            ja: '時代（現代/歴史）',  ko: '시대 (현대/역사)',     zh: '时代（现代/历史）' },
-            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
-            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            // Audit Task 106: ARIA labels for top-bar controls (now full UI-lang coverage)
+            ariaSelectWord:    { en:'Select word', ja:'単語を選択', ko:'단어 선택', zh:'选择词', yue:'選擇詞', vi:'Chọn từ', th:'เลือกคำ', id:'Pilih kata', hi:'शब्द चुनें', de:'Wort wählen', fr:'Sélectionner un mot', it:'Seleziona parola', es:'Seleccionar palabra', pt:'Selecionar palavra', ru:'Выбрать слово', uk:'Вибрати слово', ar:'اختر كلمة', he:'בחר מילה', sw:'Chagua neno' },
+            ariaUiLanguage:    { en:'UI language', ja:'UI 言語', ko:'UI 언어', zh:'界面语言', yue:'介面語言', vi:'Ngôn ngữ giao diện', th:'ภาษาส่วนติดต่อ', id:'Bahasa antarmuka', hi:'UI भाषा', de:'UI-Sprache', fr:'Langue de l\'interface', it:'Lingua dell\'interfaccia', es:'Idioma de interfaz', pt:'Idioma da interface', ru:'Язык интерфейса', uk:'Мова інтерфейсу', ar:'لغة الواجهة', he:'שפת ממשק', sw:'Lugha ya kiolesura' },
+            ariaMapZoom:       { en:'Map zoom', ja:'地図ズーム', ko:'지도 확대/축소', zh:'地图缩放', yue:'地圖縮放', vi:'Thu phóng bản đồ', th:'ซูมแผนที่', id:'Zoom peta', hi:'मानचित्र ज़ूम', de:'Karten-Zoom', fr:'Zoom de la carte', it:'Zoom mappa', es:'Zoom del mapa', pt:'Zoom do mapa', ru:'Масштаб карты', uk:'Масштаб мапи', ar:'تكبير الخريطة', he:'זום מפה', sw:'Kuza ramani' },
+            ariaZoomIn:        { en:'Zoom in', ja:'拡大', ko:'확대', zh:'放大', yue:'放大', vi:'Phóng to', th:'ขยาย', id:'Perbesar', hi:'ज़ूम इन', de:'Vergrößern', fr:'Agrandir', it:'Ingrandisci', es:'Acercar', pt:'Aproximar', ru:'Увеличить', uk:'Збільшити', ar:'تكبير', he:'הגדל', sw:'Kuza' },
+            ariaZoomOut:       { en:'Zoom out', ja:'縮小', ko:'축소', zh:'缩小', yue:'縮小', vi:'Thu nhỏ', th:'ย่อ', id:'Perkecil', hi:'ज़ूम आउट', de:'Verkleinern', fr:'Réduire', it:'Riduci', es:'Alejar', pt:'Afastar', ru:'Уменьшить', uk:'Зменшити', ar:'تصغير', he:'הקטן', sw:'Punguza' },
+            aria2D3D:          { en:'Toggle 2D / 3D view', ja:'2D/3D 表示切替', ko:'2D/3D 보기 전환', zh:'切换 2D/3D 视图', yue:'切換 2D/3D 視圖', vi:'Chuyển 2D / 3D', th:'สลับมุมมอง 2D / 3D', id:'Alih 2D / 3D', hi:'2D / 3D दृश्य बदलें', de:'2D / 3D wechseln', fr:'Basculer 2D / 3D', it:'Alterna 2D / 3D', es:'Alternar 2D / 3D', pt:'Alternar 2D / 3D', ru:'Переключить 2D / 3D', uk:'Перемкнути 2D / 3D', ar:'تبديل 2D / 3D', he:'החלף 2D / 3D', sw:'Badilisha 2D / 3D' },
+            ariaToggleForm:    { en:'Toggle form display', ja:'表記の表示切替', ko:'표기 표시 전환', zh:'切换写法显示', yue:'切換寫法顯示', vi:'Bật/tắt hiển thị chữ viết', th:'สลับการแสดงรูปคำ', id:'Alih tampilan bentuk', hi:'रूप प्रदर्शन बदलें', de:'Schreibung umschalten', fr:'Basculer l\'affichage des graphies', it:'Alterna la grafia', es:'Alternar grafía', pt:'Alternar grafia', ru:'Переключить отображение записи', uk:'Перемкнути показ написання', ar:'تبديل عرض الشكل', he:'החלף תצוגת כתיב', sw:'Badilisha tabia ya kuandika' },
+            ariaTogglePron:    { en:'Toggle pronunciation display', ja:'発音表示切替', ko:'발음 표시 전환', zh:'切换发音显示', yue:'切換發音顯示', vi:'Bật/tắt phát âm', th:'สลับการแสดงการออกเสียง', id:'Alih tampilan pelafalan', hi:'उच्चारण प्रदर्शन बदलें', de:'Aussprache umschalten', fr:'Basculer la prononciation', it:'Alterna la pronuncia', es:'Alternar pronunciación', pt:'Alternar pronúncia', ru:'Переключить произношение', uk:'Перемкнути вимову', ar:'تبديل عرض النطق', he:'החלף תצוגת הגייה', sw:'Badilisha matamshi' },
+            ariaToggleName:    { en:'Toggle language-name display', ja:'言語名表示切替', ko:'언어명 표시 전환', zh:'切换语言名显示', yue:'切換語言名顯示', vi:'Bật/tắt tên ngôn ngữ', th:'สลับการแสดงชื่อภาษา', id:'Alih tampilan nama bahasa', hi:'भाषा नाम बदलें', de:'Sprachnamen umschalten', fr:'Basculer le nom de langue', it:'Alterna nome lingua', es:'Alternar nombre del idioma', pt:'Alternar nome do idioma', ru:'Переключить название языка', uk:'Перемкнути назву мови', ar:'تبديل عرض اسم اللغة', he:'החלף תצוגת שם השפה', sw:'Badilisha jina la lugha' },
+            ariaNameGroup:     { en:'Name display (native / translated)', ja:'言語名表示（現地名/翻訳）', ko:'언어명 표시 (현지/번역)', zh:'语言名显示（本名/翻译）', yue:'語言名顯示（本名／翻譯）', vi:'Hiển thị tên (bản địa / dịch)', th:'การแสดงชื่อ (พื้นเมือง / แปล)', id:'Tampilan nama (asli / diterjemahkan)', hi:'नाम प्रदर्शन (मूल / अनुवादित)', de:'Namensanzeige (nativ / übersetzt)', fr:'Affichage du nom (natif / traduit)', it:'Visualizzazione nome (nativo / tradotto)', es:'Mostrar nombre (nativo / traducido)', pt:'Exibição de nome (nativo / traduzido)', ru:'Отображение названия (родное / перевод)', uk:'Відображення назви (рідна / переклад)', ar:'عرض الاسم (الأصلي / المُترجم)', he:'תצוגת שם (מקורי / מתורגם)', sw:'Onyesho la jina (asili / iliyotafsiriwa)' },
+            ariaFontSize:      { en:'Label font size', ja:'ラベル文字サイズ', ko:'라벨 글꼴 크기', zh:'标签字体大小', yue:'標籤字體大小', vi:'Cỡ chữ nhãn', th:'ขนาดอักษรของป้าย', id:'Ukuran huruf label', hi:'लेबल फ़ॉन्ट आकार', de:'Beschriftungs-Schriftgröße', fr:'Taille de police d\'étiquette', it:'Dimensione carattere etichetta', es:'Tamaño de fuente de etiqueta', pt:'Tamanho da fonte do rótulo', ru:'Размер шрифта подписей', uk:'Розмір шрифту підпису', ar:'حجم خط التسمية', he:'גודל גופן תווית', sw:'Saizi ya fonti ya lebo' },
+            ariaCloseInfo:     { en:'Close language info', ja:'言語情報を閉じる', ko:'언어 정보 닫기', zh:'关闭语言信息', yue:'關閉語言資訊', vi:'Đóng thông tin ngôn ngữ', th:'ปิดข้อมูลภาษา', id:'Tutup info bahasa', hi:'भाषा जानकारी बंद करें', de:'Sprachinformationen schließen', fr:'Fermer les infos de la langue', it:'Chiudi info lingua', es:'Cerrar info del idioma', pt:'Fechar info do idioma', ru:'Закрыть инфо языка', uk:'Закрити інфо мови', ar:'إغلاق معلومات اللغة', he:'סגור מידע שפה', sw:'Funga taarifa ya lugha' },
+            ariaEraGroup:      { en:'Era (modern / historical)', ja:'時代（現代/歴史）', ko:'시대 (현대/역사)', zh:'时代（现代/历史）', yue:'時代（現代／歷史）', vi:'Thời kỳ (hiện đại / lịch sử)', th:'ยุค (สมัยใหม่ / ประวัติศาสตร์)', id:'Era (modern / historis)', hi:'युग (आधुनिक / ऐतिहासिक)', de:'Epoche (modern / historisch)', fr:'Époque (moderne / historique)', it:'Epoca (moderna / storica)', es:'Época (moderna / histórica)', pt:'Era (moderna / histórica)', ru:'Эпоха (современная / историческая)', uk:'Епоха (сучасна / історична)', ar:'الحقبة (حديثة / تاريخية)', he:'תקופה (מודרני / היסטורי)', sw:'Enzi (kisasa / kihistoria)' },
+            modernLangTooltip: { en:'modern lang', ja:'現代言語', ko:'현대어', zh:'现代语言', yue:'現代語言', vi:'ngôn ngữ hiện đại', th:'ภาษาสมัยใหม่', id:'bahasa modern', hi:'आधुनिक भाषा', de:'moderne Sprache', fr:'langue moderne', it:'lingua moderna', es:'idioma moderno', pt:'idioma moderno', ru:'современный язык', uk:'сучасна мова', ar:'لغة حديثة', he:'שפה מודרנית', sw:'lugha ya kisasa' },
+            historicalLangTooltip: { en:'historical lang', ja:'歴史言語', ko:'역사 언어', zh:'历史语言', yue:'歷史語言', vi:'ngôn ngữ lịch sử', th:'ภาษาประวัติศาสตร์', id:'bahasa historis', hi:'ऐतिहासिक भाषा', de:'historische Sprache', fr:'langue historique', it:'lingua storica', es:'idioma histórico', pt:'idioma histórico', ru:'исторический язык', uk:'історична мова', ar:'لغة تاريخية', he:'שפה היסטורית', sw:'lugha ya kihistoria' },
             // Audit Task 112: era legend explanation. Modern mode shows
             // only modern languages; historical mode adds historical
             // entries plus their modern descendants as cross-reference
             // markers (drawn in red).
             eraHelpModern: {
-                en: 'Modern mode: shows modern languages and varieties.',
-                ja: '現代モード: 現代言語・地方変種のみ表示します。',
-                ko: '현대 모드: 현대 언어와 지역 변종을 표시합니다.',
-                zh: '现代模式：只显示现代语言和地区变体。',
+                en:'Modern mode: shows modern languages and varieties.',
+                ja:'現代モード: 現代言語・地方変種のみ表示します。',
+                ko:'현대 모드: 현대 언어와 지역 변종을 표시합니다.',
+                zh:'现代模式：只显示现代语言和地区变体。',
+                yue:'現代模式：只顯示現代語言同地區變體。',
+                vi:'Chế độ hiện đại: hiển thị ngôn ngữ và phương ngữ hiện đại.',
+                th:'โหมดสมัยใหม่: แสดงภาษาและสำเนียงสมัยใหม่',
+                id:'Mode modern: menampilkan bahasa dan ragam modern.',
+                hi:'आधुनिक मोड: आधुनिक भाषाएं और किस्में दिखाता है।',
+                de:'Moderner Modus: zeigt moderne Sprachen und Varietäten.',
+                fr:'Mode moderne : affiche les langues et variétés modernes.',
+                it:'Modalità moderna: mostra lingue e varietà moderne.',
+                es:'Modo moderno: muestra idiomas y variedades modernos.',
+                pt:'Modo moderno: mostra idiomas e variedades modernos.',
+                ru:'Современный режим: показывает современные языки и варианты.',
+                uk:'Сучасний режим: показує сучасні мови та варіанти.',
+                ar:'الوضع الحديث: يعرض اللغات والأشكال الحديثة.',
+                he:'מצב מודרני: מציג שפות וניבים מודרניים.',
+                sw:'Hali ya kisasa: huonyesha lugha na ainalugha za kisasa.',
             },
             eraHelpHistorical: {
-                en: 'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
-                ja: '歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
-                ko: '역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
-                zh: '历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+                en:'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
+                ja:'歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
+                ko:'역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
+                zh:'历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+                yue:'歷史模式：顯示歷史語言以及作為參照嘅現代後裔語言（紅色）。',
+                vi:'Chế độ lịch sử: hiển thị các ngôn ngữ lịch sử cùng hậu duệ hiện đại (đỏ) để đối chiếu.',
+                th:'โหมดประวัติศาสตร์: แสดงภาษาประวัติศาสตร์พร้อมลูกหลานสมัยใหม่ (สีแดง) เป็นการอ้างอิง',
+                id:'Mode historis: menampilkan bahasa historis beserta keturunan modern (merah) sebagai referensi.',
+                hi:'ऐतिहासिक मोड: ऐतिहासिक भाषाएं तथा संदर्भ के रूप में आधुनिक वंशज (लाल) दिखाता है।',
+                de:'Historischer Modus: zeigt historische Sprachen plus moderne Nachfahren (rot) als Querverweis.',
+                fr:'Mode historique : affiche les langues historiques et les descendants modernes (rouges) en référence.',
+                it:'Modalità storica: mostra lingue storiche più discendenti moderni (rossi) come riferimento.',
+                es:'Modo histórico: muestra idiomas históricos junto con descendientes modernos (rojo) como referencia.',
+                pt:'Modo histórico: mostra idiomas históricos com descendentes modernos (vermelho) como referência.',
+                ru:'Исторический режим: показывает исторические языки и современные потомки (красные) для сопоставления.',
+                uk:'Історичний режим: показує історичні мови та сучасних нащадків (червоних) як посилання.',
+                ar:'الوضع التاريخي: يعرض اللغات التاريخية مع السلائل الحديثة (بالأحمر) كمرجع.',
+                he:'מצב היסטורי: מציג שפות היסטוריות לצד צאצאים מודרניים (אדום) כעזר.',
+                sw:'Hali ya kihistoria: huonyesha lugha za kihistoria pamoja na wazao wa kisasa (nyekundu) kama rejea.',
             },
             noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
                 de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
@@ -2159,28 +2188,27 @@
 
         // Per Phase 2 (Session 33): per-cell evidence overlay markers.
         // Compact symbol shown next to each cell value; hover tooltip carries source.
-        // Audit Task 76: pronunciationType label for the IPA column.
-        // Localized at en/ja/ko/zh; other UI langs fall back to en.
+        // Audit Task 76: pronunciationType label for the IPA column. Full UI-lang coverage.
         const PRONUNCIATION_LABEL = {
-            ipa:          { en: 'IPA',                    ja: 'IPA',          ko: 'IPA',         zh: 'IPA' },
-            broad:        { en: 'broad transcription',    ja: '広めの音写',    ko: '광역 전사',    zh: '宽式音写' },
-            romanization: { en: 'romanization',           ja: 'ローマ字転写',  ko: '로마자 전사',  zh: '罗马字转写' },
-            orthography:  { en: 'spelling-based',         ja: '綴り由来',      ko: '철자 기반',    zh: '拼写转写' },
-            mixed:        { en: 'mixed / needs review',   ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
-            unknown:      { en: 'not yet reviewed',       ja: '未確認',        ko: '미검토',       zh: '未审核' },
+            ipa:          { en:'IPA', ja:'IPA', ko:'IPA', zh:'IPA', yue:'IPA', vi:'IPA', th:'สัทอักษรสากล', id:'IPA', hi:'IPA', de:'IPA', fr:'API', it:'IPA', es:'AFI', pt:'AFI', ru:'МФА', uk:'МФА', ar:'IPA', he:'IPA', sw:'IPA' },
+            broad:        { en:'broad transcription', ja:'広めの音写', ko:'광역 전사', zh:'宽式音写', yue:'寬式音寫', vi:'phiên âm rộng', th:'การถอดเสียงอย่างกว้าง', id:'transkripsi luas', hi:'विस्तृत प्रतिलेखन', de:'breite Transkription', fr:'transcription large', it:'trascrizione larga', es:'transcripción amplia', pt:'transcrição ampla', ru:'широкая транскрипция', uk:'широка транскрипція', ar:'نسخ صوتي عريض', he:'תעתיק רחב', sw:'unukuzi mpana' },
+            romanization: { en:'romanization', ja:'ローマ字転写', ko:'로마자 전사', zh:'罗马字转写', yue:'羅馬字轉寫', vi:'phiên âm La-tinh', th:'การถอดเป็นโรมัน', id:'romanisasi', hi:'रोमनीकरण', de:'Romanisierung', fr:'romanisation', it:'romanizzazione', es:'romanización', pt:'romanização', ru:'романизация', uk:'романізація', ar:'الكتابة بالحروف اللاتينية', he:'תעתיק לטיני', sw:'urumi' },
+            orthography:  { en:'spelling-based', ja:'綴り由来', ko:'철자 기반', zh:'拼写转写', yue:'拼寫轉寫', vi:'theo chính tả', th:'อิงอักขรวิธี', id:'berbasis ejaan', hi:'वर्तनी-आधारित', de:'rechtschreibungsbasiert', fr:'orthographique', it:'ortografica', es:'ortográfico', pt:'ortográfico', ru:'на основе орфографии', uk:'на основі правопису', ar:'مبني على الإملاء', he:'מבוסס כתיב', sw:'msingi wa tahajia' },
+            mixed:        { en:'mixed / needs review', ja:'混在/要確認', ko:'혼합/재검토 필요', zh:'混合/待修订', yue:'混合／待修訂', vi:'hỗn hợp / cần xem xét', th:'ผสม / ต้องตรวจสอบ', id:'campuran / perlu ditinjau', hi:'मिश्रित / समीक्षा आवश्यक', de:'gemischt / zu prüfen', fr:'mixte / à revoir', it:'misto / da rivedere', es:'mixto / requiere revisión', pt:'misto / precisa revisão', ru:'смешано / требует проверки', uk:'змішано / потребує перевірки', ar:'مختلط / يتطلب مراجعة', he:'מעורב / דורש סקירה', sw:'mchanganyiko / linahitaji ukaguzi' },
+            unknown:      { en:'not yet reviewed', ja:'未確認', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
         };
-        const PRONUNCIATION_HEADER = { en: 'Pronunciation', ja: '発音表記', ko: '발음 표기', zh: '发音标注' };
+        const PRONUNCIATION_HEADER = { en:'Pronunciation', ja:'発音表記', ko:'발음 표기', zh:'发音标注', yue:'發音標註', vi:'Phát âm', th:'การออกเสียง', id:'Pelafalan', hi:'उच्चारण', de:'Aussprache', fr:'Prononciation', it:'Pronuncia', es:'Pronunciación', pt:'Pronúncia', ru:'Произношение', uk:'Вимова', ar:'النطق', he:'הגייה', sw:'Matamshi' };
         // Audit Task 84/89: surfaceType label (which kind of script is used
         // in the surface column — native script, standard orthography, etc.)
         const SURFACE_TYPE_LABEL = {
-            'native-script':         { en: 'native script',         ja: '現地文字',      ko: '고유 문자',     zh: '本族文字' },
-            'standard-orthography':  { en: 'standard orthography',  ja: '標準正書法',    ko: '표준 정서법',   zh: '标准正字法' },
-            'romanization':          { en: 'romanization',          ja: 'ローマ字転写',  ko: '로마자 전사',   zh: '罗马字' },
-            'phonetic':              { en: 'phonetic transcription', ja: '音声転写',     ko: '음성 전사',     zh: '音标转写' },
-            'mixed':                 { en: 'mixed / needs review',  ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
-            'unknown':               { en: 'not yet reviewed',      ja: '未確認',        ko: '미검토',        zh: '未审核' },
+            'native-script':         { en:'native script', ja:'現地文字', ko:'고유 문자', zh:'本族文字', yue:'本族文字', vi:'chữ bản địa', th:'อักษรพื้นเมือง', id:'aksara asli', hi:'देशीय लिपि', de:'einheimische Schrift', fr:'écriture native', it:'scrittura nativa', es:'escritura nativa', pt:'escrita nativa', ru:'родная письменность', uk:'рідне письмо', ar:'الكتابة الأصلية', he:'כתב מקורי', sw:'maandishi asilia' },
+            'standard-orthography':  { en:'standard orthography', ja:'標準正書法', ko:'표준 정서법', zh:'标准正字法', yue:'標準正字法', vi:'chính tả chuẩn', th:'อักขรวิธีมาตรฐาน', id:'ejaan standar', hi:'मानक वर्तनी', de:'Standardrechtschreibung', fr:'orthographe standard', it:'ortografia standard', es:'ortografía estándar', pt:'ortografia padrão', ru:'стандартная орфография', uk:'стандартний правопис', ar:'الإملاء القياسي', he:'כתיב סטנדרטי', sw:'tahajia sanifu' },
+            'romanization':          { en:'romanization', ja:'ローマ字転写', ko:'로마자 전사', zh:'罗马字', yue:'羅馬字', vi:'phiên âm La-tinh', th:'การถอดเป็นโรมัน', id:'romanisasi', hi:'रोमनीकरण', de:'Romanisierung', fr:'romanisation', it:'romanizzazione', es:'romanización', pt:'romanização', ru:'романизация', uk:'романізація', ar:'الكتابة بالحروف اللاتينية', he:'תעתיק לטיני', sw:'urumi' },
+            'phonetic':              { en:'phonetic transcription', ja:'音声転写', ko:'음성 전사', zh:'音标转写', yue:'音標轉寫', vi:'phiên âm ngữ âm', th:'การถอดเสียงเชิงสัทศาสตร์', id:'transkripsi fonetik', hi:'ध्वन्यात्मक प्रतिलेखन', de:'phonetische Transkription', fr:'transcription phonétique', it:'trascrizione fonetica', es:'transcripción fonética', pt:'transcrição fonética', ru:'фонетическая транскрипция', uk:'фонетична транскрипція', ar:'النسخ الصوتي', he:'תעתיק פונטי', sw:'unukuzi wa kifonetiki' },
+            'mixed':                 { en:'mixed / needs review', ja:'混在/要確認', ko:'혼합/재검토 필요', zh:'混合/待修订', yue:'混合／待修訂', vi:'hỗn hợp / cần xem xét', th:'ผสม / ต้องตรวจสอบ', id:'campuran / perlu ditinjau', hi:'मिश्रित / समीक्षा आवश्यक', de:'gemischt / zu prüfen', fr:'mixte / à revoir', it:'misto / da rivedere', es:'mixto / requiere revisión', pt:'misto / precisa revisão', ru:'смешано / требует проверки', uk:'змішано / потребує перевірки', ar:'مختلط / يتطلب مراجعة', he:'מעורב / דורש סקירה', sw:'mchanganyiko / linahitaji ukaguzi' },
+            'unknown':               { en:'not yet reviewed', ja:'未確認', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
         };
-        const SURFACE_TYPE_HEADER = { en: 'Surface', ja: '表記体系', ko: '표기 체계', zh: '表记体系' };
+        const SURFACE_TYPE_HEADER = { en:'Surface', ja:'表記体系', ko:'표기 체계', zh:'表记体系', yue:'表記體系', vi:'Hệ chữ', th:'ระบบการเขียน', id:'Sistem Tulisan', hi:'लेखन प्रणाली', de:'Schriftform', fr:'Forme écrite', it:'Forma scritta', es:'Forma escrita', pt:'Forma escrita', ru:'Запись', uk:'Запис', ar:'النظام الكتابي', he:'מערכת כתב', sw:'Mfumo wa Kuandika' };
 
         // Audit Task 79: coverage flag for regional variant rows
         const COVERAGE_LABEL = {
@@ -2215,10 +2243,10 @@
         // dataStatus already covers those. Constructed / pidgin-creole /
         // pedagogical-stage / reconstructed-proto do get a small badge.
         const LANGUAGE_KIND_BADGE = {
-            'constructed':         { bg: '#7a3a8c', fg: '#fff', en: 'constructed',         ja: '人工言語',     ko: '인공어',       zh: '人工语言' },
-            'pidgin-creole':       { bg: '#0d6e6b', fg: '#fff', en: 'pidgin / creole',     ja: 'ピジン・クレオール', ko: '피진/크리올', zh: '皮钦语/克里奥尔语' },
-            'pedagogical-stage':   { bg: '#995500', fg: '#fff', en: 'pedagogical stage',   ja: '教材用前段階', ko: '교재용 단계',  zh: '教学用阶段' },
-            'reconstructed-proto': { bg: '#404060', fg: '#fff', en: 'reconstructed proto', ja: '再構祖語',     ko: '재구 조어',    zh: '构拟原始语' },
+            'constructed':         { bg:'#7a3a8c', fg:'#fff', en:'constructed', ja:'人工言語', ko:'인공어', zh:'人工语言', yue:'人工語言', vi:'ngôn ngữ nhân tạo', th:'ภาษาประดิษฐ์', id:'bahasa buatan', hi:'निर्मित भाषा', de:'Plansprache', fr:'langue construite', it:'lingua costruita', es:'lengua construida', pt:'língua construída', ru:'искусственный язык', uk:'штучна мова', ar:'لغة مُنشأة', he:'שפה מובנית', sw:'lugha iliyobuniwa' },
+            'pidgin-creole':       { bg:'#0d6e6b', fg:'#fff', en:'pidgin / creole', ja:'ピジン・クレオール', ko:'피진/크리올', zh:'皮钦语/克里奥尔语', yue:'皮欽語／克里奧爾語', vi:'pidgin / creole', th:'พิดจิน / ครีโอล', id:'pidgin / kreol', hi:'पिजिन / क्रियोल', de:'Pidgin / Kreol', fr:'pidgin / créole', it:'pidgin / creolo', es:'pidgin / criollo', pt:'pidgin / crioulo', ru:'пиджин / креол', uk:'піджин / креол', ar:'بدجن / كريول', he:'פידג\'ין / קריאולית', sw:'pijini / krioli' },
+            'pedagogical-stage':   { bg:'#995500', fg:'#fff', en:'pedagogical stage', ja:'教材用前段階', ko:'교재용 단계', zh:'教学用阶段', yue:'教學用階段', vi:'giai đoạn giáo dục', th:'ระยะเพื่อการสอน', id:'tahap pedagogis', hi:'शैक्षिक चरण', de:'pädagogische Stufe', fr:'étape pédagogique', it:'fase pedagogica', es:'etapa pedagógica', pt:'etapa pedagógica', ru:'учебная стадия', uk:'навчальний етап', ar:'مرحلة تعليمية', he:'שלב לימודי', sw:'hatua ya kielimu' },
+            'reconstructed-proto': { bg:'#404060', fg:'#fff', en:'reconstructed proto', ja:'再構祖語', ko:'재구 조어', zh:'构拟原始语', yue:'構擬原始語', vi:'tổ ngữ tái dựng', th:'ภาษาดั้งเดิมที่สร้างใหม่', id:'proto-bahasa rekonstruksi', hi:'पुनर्निर्मित प्रोटो', de:'rekonstruierte Ursprache', fr:'proto-langue reconstituée', it:'protolingua ricostruita', es:'protolengua reconstruida', pt:'protolíngua reconstruída', ru:'реконструированный праязык', uk:'реконструйована прамова', ar:'لغة بدئية مُعاد بناؤها', he:'פרוטו-שפה משוחזרת', sw:'protolugha iliyorejeshwa' },
         };
 
         // Audit Task 100: localize "— (unattested)" cell label
@@ -2255,29 +2283,22 @@
         // Removed English-only "attested", "proxy", "lexicon" leakage from
         // ja and added ko/zh/de/fr/es so non-English UI users see localized labels.
         const EVIDENCE_MARKER = {
-            direct:        { sym: '✓', color: '#1a7a1a', labels: {
-                en: 'directly attested', ja: '直接確認', ko: '직접 확인됨', zh: '直接证实',
-                de: 'direkt belegt',     fr: 'attesté directement', es: 'atestiguado directamente' } },
-            proxy:         { sym: '~', color: '#c0392b', labels: {
-                en: 'proxy from related lang', ja: '近縁言語からの代用', ko: '근연 언어에서의 대용', zh: '近亲语言代理',
-                de: 'Stellvertreter aus verwandter Sprache', fr: 'substitut depuis langue apparentée',
-                es: 'sustituto de lengua emparentada' } },
-            reconstructed: { sym: '*', color: '#b56500', labels: {
-                en: 'reconstructed', ja: '再構形', ko: '재구형', zh: '构拟形式',
-                de: 'rekonstruiert', fr: 'reconstruit', es: 'reconstruido' } },
-            inferred:      { sym: '?', color: '#a06000', labels: {
-                en: 'inferred from context', ja: '文脈から推測', ko: '문맥에서 추정', zh: '依文脉推断',
-                de: 'aus Kontext erschlossen', fr: 'déduit du contexte', es: 'inferido del contexto' } },
-            disputed:      { sym: '⁉', color: '#a02020', labels: {
-                en: 'disputed reading', ja: '異読あり', ko: '이견 있음', zh: '存在异读',
-                de: 'umstrittene Lesart', fr: 'lecture contestée', es: 'lectura disputada' } },
-            pedagogical:   { sym: '◇', color: '#6020a0', labels: {
-                en: 'pedagogical approx.', ja: '教育用近似', ko: '교육용 근사', zh: '教学用近似',
-                de: 'pädagogische Näherung', fr: 'approximation pédagogique', es: 'aproximación pedagógica' } },
+            direct:        { sym:'✓', color:'#1a7a1a', labels: {
+                en:'directly attested', ja:'直接確認', ko:'직접 확인됨', zh:'直接证实', yue:'直接證實', vi:'được chứng tích trực tiếp', th:'มีหลักฐานตรง', id:'terdokumentasi langsung', hi:'प्रत्यक्ष रूप से प्रमाणित', de:'direkt belegt', fr:'attesté directement', it:'attestato direttamente', es:'atestiguado directamente', pt:'atestado diretamente', ru:'прямо засвидетельствовано', uk:'прямо засвідчено', ar:'مُؤكَّد مباشرةً', he:'מתועד ישירות', sw:'imethibitishwa moja kwa moja' } },
+            proxy:         { sym:'~', color:'#c0392b', labels: {
+                en:'proxy from related lang', ja:'近縁言語からの代用', ko:'근연 언어에서의 대용', zh:'近亲语言代理', yue:'近親語言代理', vi:'thay thế từ ngôn ngữ liên quan', th:'แทนจากภาษาที่เกี่ยวข้อง', id:'pengganti dari bahasa terkait', hi:'संबंधित भाषा से प्रॉक्सी', de:'Stellvertreter aus verwandter Sprache', fr:'substitut depuis langue apparentée', it:'sostituto da lingua imparentata', es:'sustituto de lengua emparentada', pt:'substituto de língua aparentada', ru:'замена из родственного языка', uk:'заміна з спорідненої мови', ar:'بديل من لغة قريبة', he:'תחליף משפה קרובה', sw:'badala kutoka lugha husiana' } },
+            reconstructed: { sym:'*', color:'#b56500', labels: {
+                en:'reconstructed', ja:'再構形', ko:'재구형', zh:'构拟形式', yue:'構擬形式', vi:'dạng tái dựng', th:'รูปสร้างใหม่', id:'bentuk rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstruit', it:'ricostruito', es:'reconstruido', pt:'reconstruído', ru:'реконструировано', uk:'реконструйовано', ar:'مُعاد البناء', he:'משוחזר', sw:'imerejeshwa' } },
+            inferred:      { sym:'?', color:'#a06000', labels: {
+                en:'inferred from context', ja:'文脈から推測', ko:'문맥에서 추정', zh:'依文脉推断', yue:'依文脈推斷', vi:'suy ra từ ngữ cảnh', th:'อนุมานจากบริบท', id:'disimpulkan dari konteks', hi:'संदर्भ से अनुमानित', de:'aus Kontext erschlossen', fr:'déduit du contexte', it:'dedotto dal contesto', es:'inferido del contexto', pt:'inferido do contexto', ru:'вывод из контекста', uk:'висновок з контексту', ar:'مستنتج من السياق', he:'נגזר מההקשר', sw:'imekisiwa kutoka muktadha' } },
+            disputed:      { sym:'⁉', color:'#a02020', labels: {
+                en:'disputed reading', ja:'異読あり', ko:'이견 있음', zh:'存在异读', yue:'存在異讀', vi:'cách đọc tranh cãi', th:'การอ่านที่ถกเถียง', id:'pembacaan diperdebatkan', hi:'विवादित पाठ', de:'umstrittene Lesart', fr:'lecture contestée', it:'lettura contestata', es:'lectura disputada', pt:'leitura disputada', ru:'спорное чтение', uk:'спірне читання', ar:'قراءة مُختلَف فيها', he:'קריאה שנויה במחלוקת', sw:'usomaji wenye mzozo' } },
+            pedagogical:   { sym:'◇', color:'#6020a0', labels: {
+                en:'pedagogical approx.', ja:'教育用近似', ko:'교육용 근사', zh:'教学用近似', yue:'教學用近似', vi:'mô phỏng giáo dục', th:'การประมาณเชิงการศึกษา', id:'pendekatan pedagogis', hi:'शैक्षिक अनुमानन', de:'pädagogische Näherung', fr:'approximation pédagogique', it:'approssimazione pedagogica', es:'aproximación pedagógica', pt:'aproximação pedagógica', ru:'учебная аппроксимация', uk:'навчальне наближення', ar:'تقريب تعليمي', he:'קירוב לימודי', sw:'makadirio ya kielimu' } },
         };
         const EVIDENCE_PREFIX = {
-            source: { en: 'Source', ja: '出典', ko: '출처', zh: '来源', de: 'Quelle', fr: 'Source', es: 'Fuente' },
-            note:   { en: 'Note',   ja: '注',   ko: '주',   zh: '注',   de: 'Hinweis', fr: 'Note',  es: 'Nota' },
+            source: { en:'Source', ja:'出典', ko:'출처', zh:'来源', yue:'來源', vi:'Nguồn', th:'แหล่งข้อมูล', id:'Sumber', hi:'स्रोत', de:'Quelle', fr:'Source', it:'Fonte', es:'Fuente', pt:'Fonte', ru:'Источник', uk:'Джерело', ar:'المصدر', he:'מקור', sw:'Chanzo' },
+            note:   { en:'Note',   ja:'注',   ko:'주',   zh:'注',   yue:'註',   vi:'Ghi chú', th:'หมายเหตุ', id:'Catatan', hi:'टिप्पणी', de:'Hinweis', fr:'Note', it:'Nota', es:'Nota', pt:'Nota', ru:'Примечание', uk:'Примітка', ar:'ملاحظة', he:'הערה', sw:'Kumbuka' },
         };
         function evidenceTooltip(ev) {
             if (!ev || !EVIDENCE_MARKER[ev.evidence]) return '';
@@ -2289,15 +2310,15 @@
             // Audit Task 103: surface formType so users know the displayed
             // form is a bound stem / root, not a free word.
             const formTypeLabels = {
-                'free-word':           { en: 'free word' },
-                'bound-stem':          { en: 'bound stem (requires suffix)', ja: '拘束語幹（接辞要）', ko: '구속 어간 (접사 필요)', zh: '黏着词干（需后缀）' },
-                'root':                { en: 'root',                       ja: '語根' },
-                'inflected-form':      { en: 'inflected form',             ja: '屈折形' },
-                'phrase':              { en: 'phrase',                     ja: '句' },
-                'reconstructed-root':  { en: 'reconstructed root',         ja: '再構語根', ko: '재구 어근', zh: '重构词根' },
-                'agreement-stem':      { en: 'noun-class agreement stem',  ja: '名詞クラス一致語幹', ko: '명사 부류 일치 어간', zh: '名词类一致词干' },
-                'greeting-formula':    { en: 'greeting formula',           ja: '挨拶定型句' },
-                'thanks-formula':      { en: 'thanks formula',             ja: '感謝定型句' },
+                'free-word':           { en:'free word', ja:'自由語', ko:'자립어', zh:'自由词', yue:'自由詞', vi:'từ tự do', th:'คำอิสระ', id:'kata bebas', hi:'मुक्त शब्द', de:'freies Wort', fr:'mot libre', it:'parola libera', es:'palabra libre', pt:'palavra livre', ru:'свободное слово', uk:'вільне слово', ar:'كلمة حرة', he:'מילה חופשית', sw:'neno huru' },
+                'bound-stem':          { en:'bound stem (requires suffix)', ja:'拘束語幹（接辞要）', ko:'구속 어간 (접사 필요)', zh:'黏着词干（需后缀）', yue:'黏著詞幹（需後綴）', vi:'thân buộc (cần hậu tố)', th:'คำราก-ผูก (ต้องเติมปัจจัย)', id:'pangkal terikat (butuh sufiks)', hi:'बद्ध मूल (प्रत्यय आवश्यक)', de:'gebundener Stamm (Suffix nötig)', fr:'radical lié (suffixe requis)', it:'tema legato (richiede suffisso)', es:'raíz ligada (requiere sufijo)', pt:'radical ligado (requer sufixo)', ru:'связанная основа (требует суффикса)', uk:'зв\'язана основа (потрібен суфікс)', ar:'جذر مقيد (يتطلب لاحقة)', he:'גזע כבול (דורש סיומת)', sw:'kiini cha kufungwa (kinahitaji kiambishi)' },
+                'root':                { en:'root', ja:'語根', ko:'어근', zh:'词根', yue:'詞根', vi:'gốc từ', th:'รากศัพท์', id:'akar kata', hi:'मूल', de:'Wurzel', fr:'racine', it:'radice', es:'raíz', pt:'raiz', ru:'корень', uk:'корінь', ar:'جذر', he:'שורש', sw:'mzizi' },
+                'inflected-form':      { en:'inflected form', ja:'屈折形', ko:'굴절형', zh:'屈折形式', yue:'屈折形式', vi:'dạng biến tố', th:'รูปผันคำ', id:'bentuk infleksi', hi:'विकारी रूप', de:'flektierte Form', fr:'forme fléchie', it:'forma flessa', es:'forma flexionada', pt:'forma flexionada', ru:'словоизменительная форма', uk:'словозмінна форма', ar:'صيغة مصرَّفة', he:'צורה מוטה', sw:'umbo lililoinama' },
+                'phrase':              { en:'phrase', ja:'句', ko:'구', zh:'短语', yue:'短語', vi:'cụm từ', th:'วลี', id:'frasa', hi:'वाक्यांश', de:'Phrase', fr:'syntagme', it:'sintagma', es:'frase', pt:'frase', ru:'словосочетание', uk:'словосполучення', ar:'عبارة', he:'ביטוי', sw:'msemo' },
+                'reconstructed-root':  { en:'reconstructed root', ja:'再構語根', ko:'재구 어근', zh:'重构词根', yue:'構擬詞根', vi:'gốc từ tái dựng', th:'รากศัพท์ที่สร้างใหม่', id:'akar rekonstruksi', hi:'पुनर्निर्मित मूल', de:'rekonstruierte Wurzel', fr:'racine reconstruite', it:'radice ricostruita', es:'raíz reconstruida', pt:'raiz reconstruída', ru:'реконструированный корень', uk:'реконструйований корінь', ar:'جذر مُعاد البناء', he:'שורש משוחזר', sw:'mzizi uliyorejeshwa' },
+                'agreement-stem':      { en:'noun-class agreement stem', ja:'名詞クラス一致語幹', ko:'명사 부류 일치 어간', zh:'名词类一致词干', yue:'名詞類一致詞幹', vi:'thân hợp lớp danh từ', th:'คำรากการเห็นชอบประเภทคำนาม', id:'pangkal kesepakatan kelas nomina', hi:'संज्ञा-वर्ग सहमति मूल', de:'Substantivklassen-Übereinstimmungsstamm', fr:'radical d\'accord de classe nominale', it:'tema di accordo di classe nominale', es:'raíz de concordancia de clase nominal', pt:'radical de concordância de classe nominal', ru:'основа согласования класса существительных', uk:'основа узгодження класу іменників', ar:'جذر توافق صنف الاسم', he:'גזע הסכם מחלקת שם עצם', sw:'kiini cha makubaliano ya darasa la nomino' },
+                'greeting-formula':    { en:'greeting formula', ja:'挨拶定型句', ko:'인사 정형구', zh:'问候语', yue:'問候語', vi:'lời chào', th:'สำนวนทักทาย', id:'sapaan baku', hi:'अभिवादन सूत्र', de:'Grußformel', fr:'formule de salutation', it:'formula di saluto', es:'fórmula de saludo', pt:'fórmula de saudação', ru:'приветственная формула', uk:'формула привітання', ar:'صيغة التحية', he:'נוסח ברכה', sw:'fomula ya salamu' },
+                'thanks-formula':      { en:'thanks formula', ja:'感謝定型句', ko:'감사 정형구', zh:'致谢用语', yue:'致謝用語', vi:'lời cảm ơn', th:'สำนวนขอบคุณ', id:'ungkapan terima kasih', hi:'धन्यवाद सूत्र', de:'Dankesformel', fr:'formule de remerciement', it:'formula di ringraziamento', es:'fórmula de agradecimiento', pt:'fórmula de agradecimento', ru:'формула благодарности', uk:'формула подяки', ar:'صيغة الشكر', he:'נוסח תודה', sw:'fomula ya shukrani' },
                 'compound':            { en: 'compound',                   ja: '複合語' },
                 'light-verb-construction': { en: 'light-verb construction', ja: '機能動詞構造' },
             };
@@ -2649,25 +2670,25 @@
                     const parent = LANG_DATA[m.parentCode];
                     const parentName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.parentCode] || parent.name;
                     const roleLabels = {
-                        'regional-variety':   { en: 'Regional variety of', ja: '地方変種', ko: '지역 변종', zh: '地方变体' },
-                        'dialect':            { en: 'Dialect of',          ja: '方言',     ko: '방언',     zh: '方言' },
-                        'sibling-language':   { en: 'Related branch',      ja: '姉妹言語', ko: '자매 언어', zh: '姊妹语言' },
-                        'continuum-member':   { en: 'Continuum member',    ja: '連続体',   ko: '연속체',   zh: '连续体' },
+                        'regional-variety':   { en:'Regional variety of', ja:'地方変種', ko:'지역 변종', zh:'地方变体', yue:'地方變體', vi:'biến thể vùng của', th:'รูปท้องถิ่นของ', id:'ragam daerah dari', hi:'क्षेत्रीय भेद', de:'Regionalvarietät von', fr:'variété régionale de', it:'varietà regionale di', es:'variedad regional de', pt:'variedade regional de', ru:'региональный вариант', uk:'регіональний варіант', ar:'تنويع إقليمي لـ', he:'גרסה אזורית של', sw:'ainalugha ya eneo' },
+                        'dialect':            { en:'Dialect of', ja:'方言', ko:'방언', zh:'方言', yue:'方言', vi:'phương ngữ của', th:'ภาษาถิ่นของ', id:'dialek dari', hi:'बोली', de:'Dialekt von', fr:'dialecte de', it:'dialetto di', es:'dialecto de', pt:'dialeto de', ru:'диалект', uk:'діалект', ar:'لهجة', he:'ניב של', sw:'lahaja ya' },
+                        'sibling-language':   { en:'Related branch', ja:'姉妹言語', ko:'자매 언어', zh:'姊妹语言', yue:'姊妹語言', vi:'ngôn ngữ chị em', th:'ภาษาพี่น้อง', id:'cabang terkait', hi:'सहोदर भाषा', de:'verwandter Zweig', fr:'branche apparentée', it:'ramo correlato', es:'rama relacionada', pt:'ramo relacionado', ru:'родственная ветвь', uk:'споріднена гілка', ar:'فرع شقيق', he:'ענף אחות', sw:'tawi husiana' },
+                        'continuum-member':   { en:'Continuum member', ja:'連続体', ko:'연속체', zh:'连续体', yue:'連續體', vi:'thành viên liên tục', th:'สมาชิกความต่อเนื่อง', id:'anggota kontinum', hi:'सातत्य सदस्य', de:'Kontinuums-Mitglied', fr:'membre du continuum', it:'membro del continuum', es:'miembro del continuo', pt:'membro do continuum', ru:'член континуума', uk:'член континууму', ar:'عضو في المتصل', he:'חבר רצף', sw:'mwanachama wa mfululizo' },
                     };
                     const role = m.varietyRole || 'regional-variety';
                     const lblObj = roleLabels[role] || roleLabels['regional-variety'];
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}:</b> <a href="#" data-langcode="${escapeHtml(m.parentCode)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(parentName)}</a> (${escapeHtml(m.parentCode)})</div>`;
                 } else if (m.varietyRole === 'base') {
-                    const lblObj = { en: 'Base variety', ja: '基準変種', ko: '기준 변종', zh: '基准变体' };
+                    const lblObj = { en:'Base variety', ja:'基準変種', ko:'기준 변종', zh:'基准变体', yue:'基準變體', vi:'biến thể cơ sở', th:'รูปฐาน', id:'ragam dasar', hi:'आधार भेद', de:'Basisvarietät', fr:'variété de base', it:'varietà di base', es:'variedad base', pt:'variedade base', ru:'базовый вариант', uk:'базовий варіант', ar:'تنويع أساسي', he:'גרסה בסיסית', sw:'ainalugha ya msingi' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 } else if (m.varietyRole === 'sibling-language') {
-                    const lblObj = { en: 'Sibling language (separate from related main language)', ja: '姉妹言語（関連する主要言語とは別個）', ko: '자매 언어 (관련 주요 언어와 별개)', zh: '姊妹语言（与相关主要语言独立）' };
+                    const lblObj = { en:'Sibling language (separate from related main language)', ja:'姉妹言語（関連する主要言語とは別個）', ko:'자매 언어 (관련 주요 언어와 별개)', zh:'姊妹语言（与相关主要语言独立）', yue:'姊妹語言（與相關主要語言獨立）', vi:'ngôn ngữ chị em (tách khỏi ngôn ngữ chính liên quan)', th:'ภาษาพี่น้อง (แยกจากภาษาหลักที่เกี่ยวข้อง)', id:'bahasa saudara (terpisah dari bahasa utama terkait)', hi:'सहोदर भाषा (संबंधित मुख्य भाषा से अलग)', de:'Schwestersprache (getrennt von verwandter Hauptsprache)', fr:'langue sœur (distincte de la langue principale apparentée)', it:'lingua sorella (separata dalla lingua principale correlata)', es:'lengua hermana (separada del idioma principal relacionado)', pt:'língua irmã (separada do idioma principal relacionado)', ru:'родственный язык (отдельно от связанного основного языка)', uk:'споріднена мова (окремо від пов\'язаної основної мови)', ar:'لغة شقيقة (مستقلة عن اللغة الرئيسية المرتبطة)', he:'שפה אחות (נפרדת מהשפה הראשית הקרובה)', sw:'lugha dada (tofauti na lugha kuu husiana)' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 } else if (m.varietyRole === 'continuum-member') {
-                    const lblObj = { en: 'Continuum member (between related languages)', ja: '連続体メンバー（関連言語の間）', ko: '연속체 구성원 (관련 언어 사이)', zh: '连续体成员（关联语言之间）' };
+                    const lblObj = { en:'Continuum member (between related languages)', ja:'連続体メンバー（関連言語の間）', ko:'연속체 구성원 (관련 언어 사이)', zh:'连续体成员（关联语言之间）', yue:'連續體成員（關聯語言之間）', vi:'thành viên của liên tục (giữa các ngôn ngữ liên quan)', th:'สมาชิกความต่อเนื่อง (ระหว่างภาษาที่เกี่ยวข้อง)', id:'anggota kontinum (di antara bahasa terkait)', hi:'सातत्य सदस्य (संबंधित भाषाओं के बीच)', de:'Kontinuum-Mitglied (zwischen verwandten Sprachen)', fr:'membre d\'un continuum (entre langues apparentées)', it:'membro del continuum (tra lingue imparentate)', es:'miembro del continuo (entre lenguas relacionadas)', pt:'membro do continuum (entre idiomas relacionados)', ru:'член континуума (между родственными языками)', uk:'член континууму (між спорідненими мовами)', ar:'عضو في المتصل (بين لغات قريبة)', he:'חבר רצף (בין שפות קרובות)', sw:'mwanachama wa mfululizo (kati ya lugha husiana)' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 }
