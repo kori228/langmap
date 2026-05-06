@@ -848,21 +848,17 @@
         nodeUpdate.select('circle')
             .attr('r', d => d.data.isInternal ? (d._children ? 6 : 5) : 4);
 
-        // Re-orient text on existing nodes whose angle changed
-        nodeUpdate.selectAll('text')
-            .transition().duration(500)
-            .attr('transform', function() {
-                const parentDatum = d3.select(this.parentNode).datum();
-                return `rotate(${textRotation(parentDatum)})`;
-            })
-            .attr('text-anchor', function() {
-                const parentDatum = d3.select(this.parentNode).datum();
-                return textAnchor(parentDatum);
-            })
-            .attr('x', function() {
-                const parentDatum = d3.select(this.parentNode).datum();
-                return textX(parentDatum);
-            });
+        // Re-orient text on existing nodes whose angle changed.
+        // INSTANT (no transition) so we don't compete with applyMapLikeScale.
+        const _textK = (lastTransform && lastTransform.k) || 1;
+        nodeUpdate.selectAll('text').each(function() {
+            const parentDatum = d3.select(this.parentNode).datum();
+            const sign = (parentDatum.x >= Math.PI) ? -1 : 1;
+            d3.select(this)
+                .attr('transform', `rotate(${textRotation(parentDatum)})`)
+                .attr('text-anchor', textAnchor(parentDatum))
+                .attr('x', (sign * 9) / _textK);
+        });
 
         // Exit
         node.exit().transition().duration(500)
