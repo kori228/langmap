@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 627 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 630 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1439,6 +1439,12 @@ const LANG_DATA = {
     words: { water:['ву','vu'], fire:['тыл','tɨl'], sun:['шунды','ʃundɨ'], moon:['толэзь','tolezʲ'], mother:['мумы','mumɨ'], father:['атай','ataj'], eat:['сиыны','sijɨnɨ'], drink:['юыны','jujɨnɨ'], love:['яратон','jaraton'], heart:['сюлэм','sʲulem'], tree:['писпу','pispu'], house:['корка','korka'], dog:['пуны','punɨ'], cat:['коӵыш','kotɕɨʃ'], hand:['ки','ki'], eye:['син','sin'], hello:['ӟечбур','dʑetɕbur'], thanks:['тау','tau'], one:['одӥг','odiɡ'], good:['умой','umoj'] }},
   mhr: { name: 'Meadow Mari', native: 'марий йылме', lat: 56.63, lng: 47.89, // Yoshkar-Ola
     words: { water:['вӱд','vyd'], fire:['тул','tul'], sun:['кече','ketʃe'], moon:['тылзе','tɨlze'], mother:['ава','ava'], father:['ача','atʃa'], eat:['кочкаш','kotʃkaʃ'], drink:['йӱаш','jyaʃ'], love:['йӧратымаш','jøratɨmaʃ'], heart:['шӱм','ʃym'], tree:['пушеҥге','puʃeŋɡe'], house:['пӧрт','pørt'], dog:['пий','pij'], cat:['пырыс','pɨrɨs'], hand:['кид','kid'], eye:['шинча','ʃintʃa'], hello:['салам лийже','salam lijʒe'], thanks:['тау','tau'], one:['ик','ik'], good:['сай','saj'] }},
+  // Audit Task 142 (Tier 2): Hill Mari sister to Meadow Mari (mhr).
+  // Mutually intelligible to limited degree but treated as distinct
+  // standard varieties; Hill Mari uses Cyrillic with extra letters
+  // ä/ö/ü/ӓ/ӧ/ӱ.
+  mrj: { name: 'Hill Mari', native: 'мары йӹлмӹ', lat: 56.20, lng: 46.04, // Kozmodemyansk
+    words: { water:['вӹд','vʉd'], fire:['тыл','tɨl'], sun:['кечӹ','ketʃʉ'], moon:['тӹлзӹ','tʉlzʉ'], mother:['ӓвӓ','ævæ'], father:['ӓтя','ætʲa'], eat:['качкаш','katʃkaʃ'], drink:['йӱӓш','jyæʃ'], love:['ярататмаш','jaratatmaʃ'], heart:['шӱм','ʃym'], tree:['пушӓнгӹ','puʃæŋɡʉ'], house:['пӧрт','pørt'], dog:['пи','pi'], cat:['кытьӹ','kʉtʲʉ'], hand:['кид','kid'], eye:['сӹнзӓ','sʉnzæ'], hello:['пӓрӓнӓ','pæræ næ'], thanks:['таусола','tau sola'], one:['ик','ik'], good:['сӓй','sæj'] }},
   myv: { name: 'Erzya', native: 'эрзянь кель', lat: 54.18, lng: 45.18, // Saransk
     words: { water:['ведь','vedʲ'], fire:['тол','tol'], sun:['чи','tʃi'], moon:['ков','kov'], mother:['ава','ava'], father:['тетя','tʲetʲa'], eat:['ярсамс','jarsams'], drink:['симемс','simems'], love:['вечкема','vetʃkema'], heart:['седей','sedej'], tree:['чувто','tʃuvto'], house:['кудо','kudo'], dog:['киска','kiska'], cat:['катка','katka'], hand:['кедь','kedʲ'], eye:['сельме','sʲelʲme'], hello:['шумбрат','ʃumbrat'], thanks:['сюкпря','sʲukprʲa'], one:['вейке','vejke'], good:['паро','paro'] }},
   // Mordvinic pair (Audit Task 141): Moksha sister to Erzya, mutually
@@ -1545,6 +1551,21 @@ const LANG_DATA = {
   // Indo-Aryan (more)
   syl: { name: 'Sylheti', native: 'ꠍꠤꠟꠐꠤ', lat: 24.89, lng: 91.87, // Sylhet
     words: { water:['পানি','pani'], fire:['আগুন','agun'], sun:['সুরুজ','suruz'], moon:['চান','tʃan'], mother:['মা','ma'], father:['বাফ','baf'], eat:['খাইন','xaɪn'], drink:['ফিন','fin'], love:['মহব্বত','mohobbot'], heart:['দিল','dil'], tree:['গাছ','ɡatʃʰ'], house:['ঘর','gor'], dog:['কুত্তা','kuttʰa'], cat:['বিলাই','bilai'], hand:['হাত','hat'], eye:['ছকু','ʃoku'], hello:['আদাব','adab'], thanks:['শুকরিয়া','ʃukria'], one:['এক','ek'], good:['ভালা','bʱala'] }},
+  // Audit Task 142 (Tier 2): Rohingya — Indo-Aryan, ~1.8M, Myanmar
+  // (Rakhine) and Bangladesh (Cox's Bazar refugee camps). Hanifi
+  // Rohingya script primary today (Hanifi, 1980s); Latin Rohingyalish
+  // common online; Bengali-script attestation also exists. Surface
+  // here uses Latin Rohingyalish for cross-platform compatibility.
+  // Tonal — unusual among Indo-Aryan languages.
+  rhg: { name: 'Rohingya', native: 'Ruáingga', lat: 21.43, lng: 91.99, // Cox's Bazar
+    words: { water:['fani','fani'], fire:['aág','aːɡ'], sun:['beil','beil'], moon:['sán','sãn'], mother:['maa','maː'], father:['baba','baba'], eat:['háwa','kʰaowa'], drink:['piya','pija'], love:['muhabbat','muhabːat'], heart:['dil','dil'], tree:['gas','ɡas'], house:['gór','ɡɔr'], dog:['kúkkur','kukːur'], cat:['bilai','bilai'], hand:['hát','hat'], eye:['sui','sui'], hello:['assalam','assalam'], thanks:['shukoría','ʃukria'], one:['ek','ek'], good:['bála','baːla'] }},
+  // Audit Task 142 (Tier 2): Chittagonian — Eastern Indo-Aryan, ~13M.
+  // Frequently raised in macrolanguage debates: spoken in Chittagong
+  // Division of Bangladesh, often classified as a Bengali (bn) dialect
+  // by Bangladeshi linguistic policy but as a separate language by
+  // Glottolog and Ethnologue (ISO 639-3 ctg distinct from ben).
+  ctg: { name: 'Chittagonian', native: 'চাটগাঁইয়া বুলি', lat: 22.36, lng: 91.83, // Chittagong
+    words: { water:['ফানি','fani'], fire:['আগ্যন','aɡːon'], sun:['সূর্য','surdʒo'], moon:['চান','tʃan'], mother:['মা','ma'], father:['বাফ','baf'], eat:['খাওয়া','kʰaɔwa'], drink:['ফিওয়া','fiɔwa'], love:['মাইয়া','majːa'], heart:['মন','mon'], tree:['গাছ','ɡatʃʰ'], house:['গর','ɡɔr'], dog:['কুত্তা','kutːa'], cat:['বিলাই','bilaj'], hand:['আত','at'], eye:['চোক','tʃɔk'], hello:['আদাব','adab'], thanks:['শুকরিয়া','ʃukrija'], one:['এক','ek'], good:['ফাল্লে','falːe'] }},
   mag: { name: 'Magahi', native: 'मगही', lat: 25.59, lng: 85.14, // Patna
     words: { water:['पानी','paːni'], fire:['आग','aːɡ'], sun:['सूरज','suːraj'], moon:['चान','tʃaːn'], mother:['माय','maːj'], father:['बाबू','baːbuː'], eat:['खैना','kʰaiːnaː'], drink:['पीना','piːnaː'], love:['प्रेम','preːm'], heart:['मन','mən'], tree:['गाछ','ɡaːtʃʰ'], house:['घर','ɡʱər'], dog:['कूकूर','kuːkuːr'], cat:['बिलाई','bilaːi'], hand:['हाथ','haːtʰ'], eye:['आँख','aːŋkʰ'], hello:['परणाम','prəɳaːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
   doi: { name: 'Dogri', native: 'डोगरी', lat: 32.73, lng: 74.86, // Jammu

@@ -57,6 +57,23 @@
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
 
         <div class="entry">
+            <div class="date">2026-05-07</div>
+            <ul>
+                <li><strong>3 new languages added (627 → 630)</strong> per audit Task 142 (Tier 2):
+                    <ul>
+                        <li><strong>Hill Mari (<code>mrj</code>)</strong> мары йӹлмӹ — Uralic Volga-Finnic, ~30K, Mari El Republic / Russia. Sister to existing Meadow Mari (<code>mhr</code>); both standardised separately, both co-official in Mari El. Closes the Mari pair.</li>
+                        <li><strong>Rohingya (<code>rhg</code>)</strong> Ruáingga — Indo-Aryan Eastern (Bengali-Assamese), ~1.8M, Myanmar (Rakhine, displaced) and Bangladesh (Cox's Bazar refugee camps). Tonal — unusual among Indo-Aryan. Surface in Latin Rohingyalish for cross-platform compatibility; Hanifi Rohingya, Bengali, and Arabic-derived alternatives noted in metadata.</li>
+                        <li><strong>Chittagonian (<code>ctg</code>)</strong> চাটগাঁইয়া বুলি — Eastern Indo-Aryan, ~13M, Chittagong Division (Bangladesh). Glottolog/Ethnologue treat it as a distinct language; Bangladeshi linguistic policy considers it a Bengali dialect — metadata documents both views.</li>
+                    </ul>
+                </li>
+                <li>Skipped from audit Task 141 candidates because already covered under different ISO codes: <code>chm</code> Mari (covered by <code>mhr</code> Meadow Mari), <code>bcl</code> Central Bikol (covered by <code>bik</code> with native form 'Bikol' and the same Naga coordinates), <code>tw</code> Twi (covered by <code>ak</code> Akan with explicit "(Twi)" label in name).</li>
+                <li>Optional Tier 2 deferred: <code>itl</code> Itelmen and <code>yux</code> Yukaghir — both nearly-extinct Siberian languages; full 20-word IPA sourcing requires more careful work and they are explicitly marked optional in audit Task 142.</li>
+                <li>21-UI <code>lang_names.js</code> entries added for all 3 (via <code>ADDED6</code> block matching the existing pattern).</li>
+                <li>Doc count refresh: <code>README.md</code> (en + ja sections) and <code>wordmap.html</code> &lt;title&gt; / og:description / twitter:description / meta description all bumped 627 → 630.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-06</div>
             <ul>
                 <li><strong>Index page restored</strong> — <code>index.html</code> was throwing <code>ReferenceError: initCtaBanner is not defined</code> on every load (the function lives on the unmerged <code>feature/update_phrase</code> branch, but the call had been added to <code>develop</code>'s <code>index.html</code> alone). Removed the dangling call. The page now initialises correctly again.</li>

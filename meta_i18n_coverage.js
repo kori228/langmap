@@ -15751,6 +15751,64 @@ const COMMON_OVERRIDES = [
      'लैटिन (ग्लॉटल स्टॉप के लिए शीर्षक चिह्न सहित)',
      'ละติน (พร้อมเครื่องหมายอะพอสทรอฟีสำหรับเสียงกัก-เส้นเสียง)',
      'La-tinh (với dấu lược cho âm tắc thanh hầu)'],
+    // Latin (with q for /q/) — e.g. Greenlandic (kl). Korean composer was
+    // breaking this into "라틴 문자(와 q 용 / q)" (와=and, 용=use); needs
+    // a whole-phrase override for all UI langs.
+    ['Latin (with q for /q/)',
+     'ラテン（/q/ に q を使用）',
+     '라틴 문자 (/q/에 q 사용)',
+     '拉丁(以 q 表示 /q/)',
+     '拉丁(以 q 表示 /q/)',
+     'латиница (q для /q/)',
+     'латиниця (q для /q/)',
+     'اللاتينية (q لـ /q/)',
+     'לטינית (q לפונמת /q/)',
+     'लैटिन (/q/ के लिए q)',
+     'ละติน (ใช้ q แทน /q/)',
+     'La-tinh (q cho /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Same compositional bug.
+    ['Latin (with ṭ for /tʰ/)',
+     'ラテン（/tʰ/ に ṭ を使用）',
+     '라틴 문자 (/tʰ/에 ṭ 사용)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     'латиница (ṭ для /tʰ/)',
+     'латиниця (ṭ для /tʰ/)',
+     'اللاتينية (ṭ لـ /tʰ/)',
+     'לטינית (ṭ לפונמת /tʰ/)',
+     'लैटिन (/tʰ/ के लिए ṭ)',
+     'ละติน (ใช้ ṭ แทน /tʰ/)',
+     'La-tinh (ṭ cho /tʰ/)'],
+    // Cyrillic (with X Y Z) — Korean composer mistranslated 'with' as '와'
+    // (and). All Cyrillic+extra-letter scripts share this pattern.
+    ['Cyrillic (with Ӑ Ӗ Ҫ Ӳ)',
+     'キリル文字（Ӑ Ӗ Ҫ Ӳ 含む）', '키릴 문자 (Ӑ Ӗ Ҫ Ӳ 포함)',
+     '西里尔文(含 Ӑ Ӗ Ҫ Ӳ)', '西里爾文(含 Ӑ Ӗ Ҫ Ӳ)',
+     'кириллица (с Ӑ Ӗ Ҫ Ӳ)', 'кирилиця (з Ӑ Ӗ Ҫ Ӳ)',
+     'السيريلية (مع Ӑ Ӗ Ҫ Ӳ)', 'קירילית (עם Ӑ Ӗ Ҫ Ӳ)',
+     'सिरिलिक (Ӑ Ӗ Ҫ Ӳ सहित)', 'ซีริลลิก (พร้อม Ӑ Ӗ Ҫ Ӳ)',
+     'Kirin (kèm Ӑ Ӗ Ҫ Ӳ)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ ӹ)',
+     'キリル文字（ӓ ӧ ӱ ҥ ӹ 含む）', '키릴 문자 (ӓ ӧ ӱ ҥ ӹ 포함)',
+     '西里尔文(含 ӓ ӧ ӱ ҥ ӹ)', '西里爾文(含 ӓ ӧ ӱ ҥ ӹ)',
+     'кириллица (с ӓ ӧ ӱ ҥ ӹ)', 'кирилиця (з ӓ ӧ ӱ ҥ ӹ)',
+     'السيريلية (مع ӓ ӧ ӱ ҥ ӹ)', 'קירילית (עם ӓ ӧ ӱ ҥ ӹ)',
+     'सिरिलिक (ӓ ӧ ӱ ҥ ӹ सहित)', 'ซีริลลิก (พร้อม ӓ ӧ ӱ ҥ ӹ)',
+     'Kirin (kèm ӓ ӧ ӱ ҥ ӹ)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ)',
+     'キリル文字（ӓ ӧ ӱ ҥ 含む）', '키릴 문자 (ӓ ӧ ӱ ҥ 포함)',
+     '西里尔文(含 ӓ ӧ ӱ ҥ)', '西里爾文(含 ӓ ӧ ӱ ҥ)',
+     'кириллица (с ӓ ӧ ӱ ҥ)', 'кирилиця (з ӓ ӧ ӱ ҥ)',
+     'السيريلية (مع ӓ ӧ ӱ ҥ)', 'קירילית (עם ӓ ӧ ӱ ҥ)',
+     'सिरिलिक (ӓ ӧ ӱ ҥ सहित)', 'ซีริลลิก (พร้อม ӓ ӧ ӱ ҥ)',
+     'Kirin (kèm ӓ ӧ ӱ ҥ)'],
+    ['Cyrillic (with ӝ ӟ ӥ ӧ ӵ)',
+     'キリル文字（ӝ ӟ ӥ ӧ ӵ 含む）', '키릴 문자 (ӝ ӟ ӥ ӧ ӵ 포함)',
+     '西里尔文(含 ӝ ӟ ӥ ӧ ӵ)', '西里爾文(含 ӝ ӟ ӥ ӧ ӵ)',
+     'кириллица (с ӝ ӟ ӥ ӧ ӵ)', 'кирилиця (з ӝ ӟ ӥ ӧ ӵ)',
+     'السيريلية (مع ӝ ӟ ӥ ӧ ӵ)', 'קירילית (עם ӝ ӟ ӥ ӧ ӵ)',
+     'सिरिलिक (ӝ ӟ ӥ ӧ ӵ सहित)', 'ซีริลลิก (พร้อม ӝ ӟ ӥ ӧ ӵ)',
+     'Kirin (kèm ӝ ӟ ӥ ӧ ӵ)'],
     // Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)
     ['Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)',
      'ラテン（放出音用アポストロフィ、/x/にx̱、/tɬ/にƛ）',
@@ -16276,6 +16334,20 @@ const COMMON_PHRASES_LATIN = [
     ['Marshall Islands', 'Marshallinseln', 'Îles Marshall', 'Islas Marshall', 'Isole Marshall', 'Ilhas Marshall', 'Kepulauan Marshall', 'Visiwa vya Marshall'],
     // Sri Lanka
     ['Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka'],
+    // Latin (with q for /q/) — Greenlandic (kl). Latin-UI version for de/fr/es/it/pt/id/sw.
+    ['Latin (with q for /q/)', 'Lateinisch (mit q für /q/)', 'latin (avec q pour /q/)', 'latín (con q para /q/)', 'latino (con q per /q/)', 'latim (com q para /q/)', 'Latin (dengan q untuk /q/)', 'Kilatini (q kwa /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Latin-UI version.
+    ['Latin (with ṭ for /tʰ/)', 'Lateinisch (mit ṭ für /tʰ/)', 'latin (avec ṭ pour /tʰ/)', 'latín (con ṭ para /tʰ/)', 'latino (con ṭ per /tʰ/)', 'latim (com ṭ para /tʰ/)', 'Latin (dengan ṭ untuk /tʰ/)', 'Kilatini (ṭ kwa /tʰ/)'],
+    // Latin (with ʼ for clicks/glottal) — Hadza (hts). Latin-UI version.
+    ['Latin (with ʼ for clicks/glottal)', 'Lateinisch (mit ʼ für Klicks/Stimmritzenverschluss)', 'latin (avec ʼ pour clics/coup de glotte)', 'latín (con ʼ para chasquidos/oclusiva glotal)', 'latino (con ʼ per click/occlusiva glottidale)', 'latim (com ʼ para clique/oclusiva glotal)', 'Latin (dengan ʼ untuk klik/glotal)', 'Kilatini (ʼ kwa milio ya kibofyo / kifaranga)'],
+    // Latin (with mw, ng, oa for special phonemes) — Pohnpeian (pon). Latin-UI version.
+    ['Latin (with mw, ng, oa for special phonemes)', 'Lateinisch (mit mw, ng, oa für besondere Phoneme)', 'latin (avec mw, ng, oa pour phonèmes spéciaux)', 'latín (con mw, ng, oa para fonemas especiales)', 'latino (con mw, ng, oa per fonemi speciali)', 'latim (com mw, ng, oa para fonemas especiais)', 'Latin (dengan mw, ng, oa untuk fonem khusus)', 'Kilatini (mw, ng, oa kwa fonimu maalum)'],
+    // Cyrillic (with X Y Z) — Korean composer turns 'with' into '와' (and).
+    // Latin-UI versions.
+    ['Cyrillic (with Ӑ Ӗ Ҫ Ӳ)', 'Kyrillisch (mit Ӑ Ӗ Ҫ Ӳ)', 'cyrillique (avec Ӑ Ӗ Ҫ Ӳ)', 'cirílico (con Ӑ Ӗ Ҫ Ӳ)', 'cirillico (con Ӑ Ӗ Ҫ Ӳ)', 'cirílico (com Ӑ Ӗ Ҫ Ӳ)', 'Sirilik (dengan Ӑ Ӗ Ҫ Ӳ)', 'Kisirili (Ӑ Ӗ Ҫ Ӳ ikiwemo)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ ӹ)', 'Kyrillisch (mit ӓ ӧ ӱ ҥ ӹ)', 'cyrillique (avec ӓ ӧ ӱ ҥ ӹ)', 'cirílico (con ӓ ӧ ӱ ҥ ӹ)', 'cirillico (con ӓ ӧ ӱ ҥ ӹ)', 'cirílico (com ӓ ӧ ӱ ҥ ӹ)', 'Sirilik (dengan ӓ ӧ ӱ ҥ ӹ)', 'Kisirili (ӓ ӧ ӱ ҥ ӹ ikiwemo)'],
+    ['Cyrillic (with ӓ ӧ ӱ ҥ)', 'Kyrillisch (mit ӓ ӧ ӱ ҥ)', 'cyrillique (avec ӓ ӧ ӱ ҥ)', 'cirílico (con ӓ ӧ ӱ ҥ)', 'cirillico (con ӓ ӧ ӱ ҥ)', 'cirílico (com ӓ ӧ ӱ ҥ)', 'Sirilik (dengan ӓ ӧ ӱ ҥ)', 'Kisirili (ӓ ӧ ӱ ҥ ikiwemo)'],
+    ['Cyrillic (with ӝ ӟ ӥ ӧ ӵ)', 'Kyrillisch (mit ӝ ӟ ӥ ӧ ӵ)', 'cyrillique (avec ӝ ӟ ӥ ӧ ӵ)', 'cirílico (con ӝ ӟ ӥ ӧ ӵ)', 'cirillico (con ӝ ӟ ӥ ӧ ӵ)', 'cirílico (com ӝ ӟ ӥ ӧ ӵ)', 'Sirilik (dengan ӝ ӟ ӥ ӧ ӵ)', 'Kisirili (ӝ ӟ ӥ ӧ ӵ ikiwemo)'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
