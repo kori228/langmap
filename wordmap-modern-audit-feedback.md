@@ -1222,3 +1222,49 @@ Pass 8〜15 累計 **45 タスク + ユーザー要望 3 件** 対応完了。
 **Validator status**: PASS (0 errors, 17 pre-existing warnings — language count update以外 unchanged)。Languages: 595 (modern: 509, historical: 86)。Cache-buster は data 87→88, names 5→6, meta 37→38。
 
 Pass 8〜16 累計 **46 タスク + ユーザー要望 3 件** 対応完了 (+ 4 言語追加 で 591→595 langs)。
+
+---
+
+## Pass 17 Sequential Cleanup (2026-05-06 part 10)
+
+### Task 141 残り完了
+
+| Code | 言語 | 系統 | 話者数 | 既存確認 |
+|---|---|---|---|---|
+| `kpv` | コミ・ジリエン (Komi-Zyrian) | Permic Uralic | ~140K | 新規（macro `kv` のISO 639-3 標準コード） |
+| `koi` | コミ・ペルミャク (Komi-Permyak) | Permic Uralic | ~63K | 新規 (`kpv` の姉妹言語) |
+| `rmy` | ヴラフ・ロマ語 (Vlax Romani) | Indo-Aryan (Romani) | ~1.5M | 新規 (macro `rom` の最大方言群) |
+| `bcl` | Central Bikol | — | — | **既存 `bik` で対応済** |
+
+### Task 142 部分対応
+
+| Code | 言語 | 系統 | 話者数 |
+|---|---|---|---|
+| `smj` | ルレ・サーミ | Uralic (Saami) | ~2K |
+| `smn` | イナリ・サーミ | Uralic (Saami) | ~400 (危機言語) |
+| `sms` | スコルト・サーミ | Uralic (Saami) | ~300 (危機言語) |
+| `vep` | ヴェプス | Uralic (Finnic) | ~1.6K (危機言語) |
+| `vot` | ヴォート (Votic) | Uralic (Finnic) | ~10 (近絶滅) |
+
+各言語に: 20-word entries (Wiktionary/Ethnologue 27 ベース) + meta (family/speakers/iso6393/script/description/sources/parentCode/varietyRole) + LANG_NAMES (21 UI 言語分)。`kpv` は `kv` と同データで `coverage: 'base-copy-with-notes'` 明示。`pronunciationType: 'broad'` 付与。
+
+### Task 142 残り — Sign languages 等の明示的延期
+
+監査 Task 142 の **Option C (defer)** を採用:
+
+**Sign languages** (`ase`/`bfi`/`jsl`/`fsl`/`gsg`/`gss`/`csl`/`kvk`):
+- 手話言語は modality（音声/書字とは異なる伝達様式）が前提的に異なるため、surface/IPA カラムの抽象化を根本から見直す必要がある
+- SignWriting (Sutton, Unicode U+1D800–U+1DAAF) または video URL 参照のいずれかを採用するかは設計判断が必要
+- 現データモデル (`[surface, ipa]`) では誤った含意を生むので、**modality schema 設計まで延期**
+- `meta.modality: 'signed'` + IPA-validation skip ルール + 独自 surface 表示は別 task として将来追加
+
+**残りの Task 141/142 言語** (低優先度):
+- `rhg` Rohingya: Hanifi script 対応＋出典確認に追加調査が必要
+- `ctg` Chittagonian: Bengali macro `bn` との境界線議論を要する
+- `itl` Itelmen, `yux` Yukaghir: 近絶滅言語、出典を要する
+
+これらは次回以降のパスで個別出典付きで対応予定。
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings — Pass 16 と同じ)。Languages: **603** (modern 517, historical 86)。Cache-buster は data 88→89, names 6→7, meta 38→39 bump。
+
+Pass 8〜17 累計 **46 タスク + Tier 1 言語 4 + Tier 1 残 + Tier 2 partial で計 8 言語追加** (591→603 langs)。

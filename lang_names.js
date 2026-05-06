@@ -55,11 +55,63 @@ const LANG_NAMES = {
                de: 'Tzeltal', fr: 'Tzeltal', it: 'Tzeltal',
                es_eu: 'Tzeltal', es_mx: 'Tzeltal', pt_eu: 'Tzeltal', pt_br: 'Tzeltal',
                ru: 'Цельталь', uk: 'Цельталь', ar: 'تسلتال', he: 'צלטל', sw: 'Kitzeltal' },
+        // Audit Task 141 part 2 + Task 142 (2026-05-06)
+        kpv: { en: 'Komi-Zyrian', ja: 'コミ・ジリエン語', ko: '코미지리안어', zh: '科米-济良语',
+               de: 'Syrjänisch', fr: 'Komi-Zyriène', it: 'Komi-Zyrieno',
+               es_eu: 'Komi zyriano', es_mx: 'Komi zyriano', pt_eu: 'Komi zíria', pt_br: 'Komi zíria',
+               ru: 'Коми-зырянский', uk: 'Комі-зирянська', ar: 'الكومية الزيرية', he: 'קומי זיריאן', sw: 'Kikomi-Zyrian' },
+        koi: { en: 'Komi-Permyak', ja: 'コミ・ペルミャク語', ko: '코미페르먀크어', zh: '科米-彼尔米亚克语',
+               de: 'Komi-Permjakisch', fr: 'Komi-Permiak', it: 'Komi-Permiacco',
+               es_eu: 'Komi permiaco', es_mx: 'Komi permiaco', pt_eu: 'Komi-Permiaca', pt_br: 'Komi-Permiaca',
+               ru: 'Коми-пермяцкий', uk: 'Комі-перм\'яцька', ar: 'الكومية البيرمية', he: 'קומי-פרמיאק', sw: 'Kikomi-Permyak' },
+        rmy: { en: 'Vlax Romani', ja: 'ヴラフ・ロマ語', ko: '블락스 로마니어', zh: '弗拉克斯罗姆语',
+               de: 'Vlax-Romani', fr: 'Romani vlax', it: 'Romani vlax',
+               es_eu: 'Romaní vlax', es_mx: 'Romaní vlax', pt_eu: 'Romani vlax', pt_br: 'Romani vlax',
+               ru: 'Влашский цыганский', uk: 'Власька циганська', ar: 'الرومانية الفلاشية', he: 'רומאני ולאשי', sw: 'Kiromani cha Vlax' },
+        smj: { en: 'Lule Sámi', ja: 'ルレ・サーミ語', ko: '룰레 사미어', zh: '吕勒萨米语',
+               de: 'Lulesamisch', fr: 'Same de Lule', it: 'Sami di Lule',
+               es_eu: 'Sami de Lule', es_mx: 'Sami de Lule', pt_eu: 'Sami de Lule', pt_br: 'Sami de Lule',
+               ru: 'Луле-саамский', uk: 'Луле-саамська', ar: 'السامية اللولية', he: 'סאמית לולה', sw: 'Kisami cha Lule' },
+        smn: { en: 'Inari Sámi', ja: 'イナリ・サーミ語', ko: '이나리 사미어', zh: '伊纳里萨米语',
+               de: 'Inarisamisch', fr: 'Same d\'Inari', it: 'Sami di Inari',
+               es_eu: 'Sami de Inari', es_mx: 'Sami de Inari', pt_eu: 'Sami de Inari', pt_br: 'Sami de Inari',
+               ru: 'Инари-саамский', uk: 'Інарі-саамська', ar: 'السامية الإيناريّة', he: 'סאמית אינארי', sw: 'Kisami cha Inari' },
+        sms: { en: 'Skolt Sámi', ja: 'スコルト・サーミ語', ko: '스콜트 사미어', zh: '斯科尔特萨米语',
+               de: 'Skoltsamisch', fr: 'Same skolt', it: 'Sami skolt',
+               es_eu: 'Sami skolt', es_mx: 'Sami skolt', pt_eu: 'Sami skolt', pt_br: 'Sami skolt',
+               ru: 'Колтта-саамский', uk: 'Колтта-саамська', ar: 'السامية السكولتية', he: 'סאמית סקולט', sw: 'Kisami cha Skolt' },
+        vep: { en: 'Veps', ja: 'ヴェプス語', ko: '베프스어', zh: '维普森语',
+               de: 'Wepsisch', fr: 'Vepse', it: 'Vepso',
+               es_eu: 'Vepso', es_mx: 'Vepso', pt_eu: 'Vepse', pt_br: 'Vepse',
+               ru: 'Вепсский', uk: 'Вепська', ar: 'الفيبسية', he: 'וופסית', sw: 'Kiveps' },
+        vot: { en: 'Votic', ja: 'ヴォート語', ko: '보트어', zh: '沃特语',
+               de: 'Wotisch', fr: 'Vote', it: 'Voto',
+               es_eu: 'Voto', es_mx: 'Voto', pt_eu: 'Vótico', pt_br: 'Vótico',
+               ru: 'Водский', uk: 'Водська', ar: 'الفوتية', he: 'ווטית', sw: 'Kivoti' },
     };
     for (const code of Object.keys(ADDED)) {
         for (const ui of Object.keys(ADDED[code])) {
             if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
                 LANG_NAMES[ui][code] = ADDED[code][ui];
+            }
+        }
+    }
+    // Audit Task 141 part 2 / Task 142: yue/vi/th/id/hi backfill for the
+    // 8 newer language additions (kpv/koi/rmy/smj/smn/sms/vep/vot).
+    const ADDED2 = {
+        kpv: { yue: '科米-濟良語', vi: 'Tiếng Komi-Zyrian', th: 'ภาษาโกมิ-ไซเรียน', id: 'Komi-Zyrian', hi: 'कोमी-जिर्यान' },
+        koi: { yue: '科米-彼爾米亞克語', vi: 'Tiếng Komi-Permyak', th: 'ภาษาโกมิ-เปอร์เมียค', id: 'Komi-Permyak', hi: 'कोमी-पर्म्याक' },
+        rmy: { yue: '弗拉克斯羅姆語', vi: 'Tiếng Romani Vlax', th: 'ภาษาโรมานีฟลาช', id: 'Romani Vlax', hi: 'व्लाख रोमानी' },
+        smj: { yue: '呂勒薩米語', vi: 'Tiếng Sami Lule', th: 'ภาษาซามิลูเล', id: 'Sami Lule', hi: 'लूले सामी' },
+        smn: { yue: '伊納里薩米語', vi: 'Tiếng Sami Inari', th: 'ภาษาซามิอินาริ', id: 'Sami Inari', hi: 'इनारी सामी' },
+        sms: { yue: '斯科爾特薩米語', vi: 'Tiếng Sami Skolt', th: 'ภาษาซามิสคอลต์', id: 'Sami Skolt', hi: 'स्कोल्ट सामी' },
+        vep: { yue: '維普森語', vi: 'Tiếng Veps', th: 'ภาษาเวปส์', id: 'Veps', hi: 'वेप्स' },
+        vot: { yue: '沃特語', vi: 'Tiếng Votic', th: 'ภาษาโวติก', id: 'Voti', hi: 'वोटिक' },
+    };
+    for (const code of Object.keys(ADDED2)) {
+        for (const ui of Object.keys(ADDED2[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED2[code][ui];
             }
         }
     }
