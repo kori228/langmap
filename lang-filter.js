@@ -414,7 +414,8 @@
         // Han (Chinese characters and derivatives — Hanzi, Kanji, Hanja,
         // Chữ Nôm, Sawndip). Avoid matching "Shan" / "Hanacaraka" /
         // "Traditional Mongolian" by requiring specific compound phrases.
-        if (/Chinese characters|Han characters|Hanzi|Simplified Chinese|Traditional Chinese|Simplified\/Traditional Chinese|Chinese\/Peng|Chữ Nôm|Hanja|Kanji|Sawndip|Hing-hua romanization|Peng'im/i.test(s)) tags.add('Han');
+        // Also covers ancient Chinese script names (Audit Task 130).
+        if (/Chinese characters|Han characters|Hanzi|Simplified Chinese|Traditional Chinese|Simplified\/Traditional Chinese|Chinese\/Peng|Chữ Nôm|Hanja|Kanji|Sawndip|Hing-hua romanization|Peng'im|^Chinese$|Oracle bone|Bronze inscriptions|Seal script/i.test(s)) tags.add('Han');
 
         // Kana (Japanese syllabaries, distinct from Han kanji)
         if (/Hiragana|Katakana|\bkana\b/i.test(s)) tags.add('Kana');
@@ -454,6 +455,13 @@
         if (/Maya hieroglyph|Mayan glyphs|Maya script/i.test(s)) tags.add('Mayan');
         if (/Old Turkic|Orkhon|runiform/i.test(s)) tags.add('Old Turkic');
         if (/Tangut/i.test(s)) tags.add('Tangut');
+        // Audit Task 130: Khitan / Jurchen (Sinitic-area historical scripts).
+        if (/Khitan/i.test(s)) { tags.add('Khitan'); tags.add('Other historical'); }
+        if (/Jurchen/i.test(s)) { tags.add('Jurchen'); tags.add('Other historical'); }
+        // Sukhothai / Old Thai script (Brahmic descendant).
+        if (/Sukhothai/i.test(s)) { tags.add('Brahmic'); tags.add('Other historical'); }
+        // None / reconstructed (proto-languages).
+        if (/None\s*\(reconstructed\)|reconstructed\)|^None$/i.test(s)) tags.add('None / reconstructed');
 
         // Aramaic-derived (Sogdian, Pahlavi, Parthian, Manichaean) — distinct
         // from Arabic-derived and Mongolian-derived branches of the same root.
@@ -631,9 +639,13 @@
         // `script` and `family` are both Array<string> — a language can
         // genuinely belong to more than one family (creoles → substrate +
         // lexifier; proto-languages → themselves and the family they root).
+        // Audit Task 130: prefer meta.scriptTags (curated) over regex detection.
+        const scriptTags = Array.isArray(meta.scriptTags) && meta.scriptTags.length > 0
+            ? meta.scriptTags.slice()
+            : detectScript(meta.script);
         const rec = {
             family:  expandFamilies(fam, code),
-            script:  detectScript(meta.script),
+            script:  scriptTags,
             wo:      curated.wo    || fd.wo    || null,
             tone:    typeof curated.tone === 'boolean' ? curated.tone
                    : typeof fd.tone      === 'boolean' ? fd.tone : null,

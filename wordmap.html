@@ -208,6 +208,41 @@
             background: rgba(180,180,200,0.6);
             border-color: rgba(255,255,255,0.5);
         }
+        /* Unattested-but-named label: shows the language name in a muted
+           style so users can recognize the language even when its word for
+           the current concept is '—'. Compact, clearly distinct from regular
+           labels (lighter, italic, smaller). User request 2026-05-06. */
+        .unattested-label {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-size: calc(10px * var(--label-scale, 1));
+            color: #999;
+            font-style: italic;
+            background: rgba(255,255,255,0.55);
+            padding: 1px 4px;
+            border-radius: 3px;
+            white-space: nowrap;
+            cursor: pointer;
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                Georgia, "Times New Roman", serif;
+        }
+        .unattested-label:hover {
+            color: #555;
+            background: rgba(255,255,255,0.9);
+        }
+        body.is-3d .unattested-label {
+            background: rgba(0,0,0,0.45);
+            color: #ccc;
+        }
+        body.is-3d .unattested-label:hover {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+        }
+        .unattested-label:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 2px;
+        }
         .lang-label, .globe-label {
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
@@ -218,6 +253,13 @@
                 "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 Georgia, "Times New Roman", serif;
+        }
+        /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
+        .lang-label:focus-visible,
+        .globe-label:focus-visible,
+        .unattested-marker:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 2px;
         }
         /* Selected language (info panel open) — looks like a miniature
            version of the info modal: same translucent white card,
@@ -455,8 +497,10 @@
         </div>
         <div class="lang-search-wrap" style="position:relative">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
+                   role="combobox" aria-autocomplete="list" aria-expanded="false"
+                   aria-controls="lang-search-results" aria-activedescendant=""
                    style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
-            <div id="lang-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
+            <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
     </div>
 
@@ -492,7 +536,7 @@
     </div>
 
     <!-- Language info panel -->
-    <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false">
+    <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false" tabindex="-1">
         <button class="close-btn" id="info-close" aria-label="Close language info">&times;</button>
         <div id="info-content"></div>
     </div>
@@ -514,9 +558,9 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js?v=83"></script>
+    <script src="wordmap_data.js?v=85"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
-    <script src="lang-filter.js?v=22"></script>
+    <script src="lang-filter.js?v=23"></script>
     <script src="lang_names.js?v=5"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -600,6 +644,18 @@
             maxZoom: 18,
         }).addTo(map);
 
+        // Audit Task 135: keyboard activation for 2D map labels.
+        // Labels are rendered as Leaflet divIcons with role=button + tabindex=0.
+        // We need a delegated keydown handler at the map container level since
+        // markers are rebuilt on every word/zoom change.
+        map.getContainer().addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const label = e.target.closest('.lang-label, .unattested-marker, .unattested-label');
+            if (!label || !label.dataset.code) return;
+            e.preventDefault();
+            showLangInfo(label.dataset.code);
+        });
+
         // Country borders
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
             .then(r => r.json())
@@ -652,11 +708,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      83,
+            data:      85,
             metaI18n:  8,
-            filter:    22,
+            filter:    23,
             names:     5,
-            meta:      30,
+            meta:      33,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1014,6 +1070,14 @@
                     showLangInfo(label.dataset.code);
                 }
             });
+            // Audit Task 135: keyboard activation for globe labels.
+            globeEl.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const label = e.target.closest('.globe-label');
+                if (!label || !label.dataset.code) return;
+                e.preventDefault();
+                showLangInfo(label.dataset.code);
+            });
 
             // Sync globe size
             function resizeGlobe() {
@@ -1109,34 +1173,8 @@
         // 'mnc' (Manchu) is critically endangered. They live here because they
         // belong on the historical map regardless of any present-day speakers.
         // Per wordmap-check-3.md §8.
-        const HIST_DESCENDANT = {
-            la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
-            got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
-            sa:'hi', mnc:'zh',
-            sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
-            ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
-            ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
-            oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
-            // Phase 4: historical
-            peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
-            xlu:null, pal:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',
-            // Phase 4B: more historical
-            gmy:'el', xct:'bo', xpu:'ar', xhu:null, elx:null, xsa:'ar',
-            kaw:'jv', kho:null, gmh:'de', osp:'es_eu', okz:'km', osx:'nds',
-            // Phase 5 historical
-            xpr:'fa', xqa:'ug', sga:'ga',
-            // Phase 6 historical
-            mga:'ga', hbo:'he',
-            // Phase 8 historical
-            xng:'mn',
-            // Phase 13: ancient Asian additions
-            och:'zh', ojp:'ja', vsa:'hi', txg:null, sog:'tg', otk:'tr',
-            // Phase 13b: NE Asian + SE Asian ancient
-            zkt:null, juc:'mnc', omx:'mnw', pyx:'my', obr:'my', occ:'cja',
-            // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
-            orv:'ru', xsc:null, sukh:'th', xmr:null, onw:null, cqu:'qu',
-            omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
-        };
+        // HIST_DESCENDANT is defined in wordmap_data.js (Audit Task 122).
+        // Loaded as a global from that script tag; referenced here as-is.
 
         const VERTICAL_LANGS = new Set(['mnc', 'mn_cn', 'xng']);
 
@@ -1248,7 +1286,16 @@
             const c = safeColor(descColor);
             const codeAttr = escapeHtml(code);
             const w = escapeHtml(word), i = escapeHtml(ipa), n = escapeHtml(displayName);
-            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}">`;
+            // Audit Task 135: keyboard-accessible labels.
+            // role="button" + tabindex="0" lets keyboard users tab to the
+            // label and Enter/Space to open the language modal. aria-label
+            // includes display name + word + IPA so screen readers announce
+            // a meaningful summary.
+            const ariaParts = [n];
+            if (showWord && word) ariaParts.push(word);
+            if (showIpa && ipa) ariaParts.push('/' + ipa + '/');
+            const ariaLabel = escapeHtml(ariaParts.filter(Boolean).join(' — '));
+            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}" role="button" tabindex="0" aria-label="${ariaLabel}">`;
             if (showWord) html += `<div class="word" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
             if (showIpa) html += `<div class="ipa" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
             if (showName) html += `<div class="name" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
@@ -1343,19 +1390,38 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
-            // Render unattested-cell langs as small gray dots so the user
-            // can still see the language exists at that location even when
-            // its word for the current concept is '—'. Click → modal.
+            // Render unattested-cell langs so the user can still see the
+            // language exists at that location even when its word for the
+            // current concept is '—'. At zoom <= 3 we keep the compact dot
+            // (otherwise low-zoom views would clutter); at zoom >= 4 we
+            // render the language name in a muted style so users can
+            // immediately identify *which* language the marker is.
+            // Per user request 2026-05-06: language existence must be
+            // recognizable, not just a generic dot.
             for (const code of unattestedLangs) {
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const codeAttr = escapeHtml(code);
-                const dotIcon = L.divIcon({
-                    className: 'unattested-icon',
-                    html: `<div class="unattested-marker" data-code="${codeAttr}" title="${codeAttr}"></div>`,
-                    iconSize: [9, 9], iconAnchor: [4, 4],
-                });
-                const dotMarker = L.marker([lang.lat, lang.lng], { icon: dotIcon, interactive: true });
+                const displayName = getDisplayName(code, lang);
+                const ariaLabel = escapeHtml(displayName);
+                let icon;
+                if (zoom <= 3) {
+                    // Compact dot for far-zoom views to avoid label clutter
+                    icon = L.divIcon({
+                        className: 'unattested-icon',
+                        html: `<div class="unattested-marker" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}"></div>`,
+                        iconSize: [9, 9], iconAnchor: [4, 4],
+                    });
+                } else {
+                    // Muted name label so the language is clearly identifiable
+                    const nameHtml = escapeHtml(displayName);
+                    icon = L.divIcon({
+                        className: 'unattested-icon',
+                        html: `<div class="unattested-label" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${nameHtml}</div>`,
+                        iconSize: [0, 0], iconAnchor: [0, 0],
+                    });
+                }
+                const dotMarker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 dotMarker._langCode = code;
                 dotMarker.on('click', () => showLangInfo(code));
                 dotMarker.addTo(map);
@@ -1432,13 +1498,18 @@
 
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
             }
-            // 3D presence-only dots for unattested cells (mirrors 2D version).
+            // 3D presence labels for unattested cells (mirrors 2D version).
+            // Per user request 2026-05-06: show the language name so users
+            // can identify which language exists at the marker, even when
+            // its word for the current concept is '—'.
             for (const code of unattestedLangs) {
                 if (!isActive(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
+                const displayName = getDisplayName(code, lang);
+                const ariaLabel = escapeHtml(displayName);
                 const el = document.createElement('div');
-                el.innerHTML = `<div class="unattested-marker" data-code="${escapeHtml(code)}" title="${escapeHtml(code)}"></div>`;
+                el.innerHTML = `<div class="unattested-label" data-code="${escapeHtml(code)}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${escapeHtml(displayName)}</div>`;
                 el.firstChild.dataset.code = code;
                 el.firstChild.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1635,6 +1706,10 @@
         // --- Language info panel ---
         const infoPanel = document.getElementById('lang-info');
         const infoContent = document.getElementById('info-content');
+        // Audit Task 137: track the element that opened the dialog so focus
+        // can be restored on close. document.activeElement at close time is
+        // unreliable because Leaflet markers are recreated on every render.
+        let _lastDialogOpener = null;
         function closeInfoPanel() {
             infoPanel.classList.remove('visible');
             // Clear dataset.code so the open-language state is consistent
@@ -1643,6 +1718,15 @@
             updateSelectedLabel();
             updateConnectorLine();
             updateHash();  // remove `lang` param from URL
+            // Audit Task 137: restore focus to the opener if still in DOM.
+            // Falls back to language search input if opener has been removed.
+            if (_lastDialogOpener && document.contains(_lastDialogOpener) && typeof _lastDialogOpener.focus === 'function') {
+                try { _lastDialogOpener.focus(); } catch (_) { /* ignore */ }
+            } else {
+                const search = document.getElementById('lang-search');
+                if (search) try { search.focus(); } catch (_) { /* ignore */ }
+            }
+            _lastDialogOpener = null;
         }
 
         // === Selected-language highlight + connector line to info panel ===
@@ -2030,8 +2114,19 @@
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
-            let html = `<h2>${escapeHtml(displayName)}</h2>`;
+            let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
             html += `<div class="native-name">${escapeHtml(lang.native)} [${escapeHtml(code)}]</div>`;
+            // Audit Task 115: disambiguator for rows that share a display
+            // or native name with another row (e.g. mn_cn/xng both show
+            // ᠮᠣᠩᠭᠣᠯ; omx/mnw both show ဘာသာ မန်).
+            if (m.disambiguator) {
+                const dis = (typeof m.disambiguator === 'object')
+                    ? (m.disambiguator[uiLang] || m.disambiguator[uiLang.split('_')[0]] || m.disambiguator.en || '')
+                    : String(m.disambiguator);
+                if (dis) {
+                    html += `<div style="margin:-4px 0 8px;font-size:11px;color:#a04020;font-style:italic">${escapeHtml(dis)}</div>`;
+                }
+            }
             // Data-status badge (per wordmap-check.md §8) — only shown for non-modern.
             // Session 31 (Schema Revolution Phase 1): also show pedagogical description
             // inline so users understand the data's evidentiary level.
@@ -2122,6 +2217,10 @@
                 const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
                 const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
+                // Audit Task 88: show coverageNote when present
+                if (m.coverageNote && typeof m.coverageNote === 'string') {
+                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(m.coverageNote)}</div>`;
+                }
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
@@ -2132,6 +2231,11 @@
                 : 'color:#888;font-size:11px';
             // Phase 2 (Session 33): per-cell evidence overlay
             const wEv = lang.wordEvidence || {};
+            // Audit Task 119 / user request 2026-05-06: alternate script
+            // forms (e.g. Jurchen 女真譯語 Chinese-character transliterations,
+            // Khitan small script, Sawndip for Zhuang). Shown as a second
+            // line below the main word when present.
+            const altWF = lang.altWordForms || {};
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
@@ -2145,7 +2249,18 @@
                         const evMark = ev && EVIDENCE_MARKER[ev.evidence]
                             ? ` <span style="color:${EVIDENCE_MARKER[ev.evidence].color};font-size:10px;cursor:help" title="${escapeHtml(evidenceTooltip(ev))}">${EVIDENCE_MARKER[ev.evidence].sym}</span>`
                             : '';
-                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}${evMark}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
+                        // Build optional alt-script line (under main word cell)
+                        let altLine = '';
+                        const alts = altWF[w.id];
+                        if (Array.isArray(alts) && alts.length > 0) {
+                            const altParts = alts.map(a => {
+                                const formHtml = escapeHtml(a.form || '');
+                                const scriptTip = escapeHtml((a.script || '') + (a.source ? ' — ' + a.source : ''));
+                                return `<span style="font-size:11px;color:#888" title="${scriptTip}">${formHtml}</span>`;
+                            });
+                            altLine = `<div style="margin-top:2px;padding-left:0">${altParts.join(' / ')}</div>`;
+                        }
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td>${escapeHtml(entry[0])}${evMark}${altLine}</td><td style="${ipaStyle}">/${escapeHtml(entry[1])}/</td></tr>`;
                     }
                 }
             }
@@ -2178,6 +2293,35 @@
                 }
                 if (chain) {
                     html += `<div style="margin-top:8px;padding-top:6px;border-top:1px dotted #ddd;font-size:11px;line-height:1.5">${chain}</div>`;
+                }
+            })();
+            // Audit Task 113/126: parent variety relation (modern variant rows)
+            (() => {
+                if (m.parentCode && LANG_DATA[m.parentCode]) {
+                    const parent = LANG_DATA[m.parentCode];
+                    const parentName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.parentCode] || parent.name;
+                    const roleLabels = {
+                        'regional-variety':   { en: 'Regional variety of', ja: '地方変種', ko: '지역 변종', zh: '地方变体' },
+                        'dialect':            { en: 'Dialect of',          ja: '方言',     ko: '방언',     zh: '方言' },
+                        'sibling-language':   { en: 'Related branch',      ja: '姉妹言語', ko: '자매 언어', zh: '姊妹语言' },
+                        'continuum-member':   { en: 'Continuum member',    ja: '連続体',   ko: '연속체',   zh: '连续体' },
+                    };
+                    const role = m.varietyRole || 'regional-variety';
+                    const lblObj = roleLabels[role] || roleLabels['regional-variety'];
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}:</b> <a href="#" data-langcode="${escapeHtml(m.parentCode)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(parentName)}</a> (${escapeHtml(m.parentCode)})</div>`;
+                } else if (m.varietyRole === 'base') {
+                    const lblObj = { en: 'Base variety', ja: '基準変種', ko: '기준 변종', zh: '基准变体' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
+                } else if (m.varietyRole === 'sibling-language') {
+                    const lblObj = { en: 'Sibling language (separate from related main language)', ja: '姉妹言語（関連する主要言語とは別個）', ko: '자매 언어 (관련 주요 언어와 별개)', zh: '姊妹语言（与相关主要语言独立）' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
+                } else if (m.varietyRole === 'continuum-member') {
+                    const lblObj = { en: 'Continuum member (between related languages)', ja: '連続体メンバー（関連言語の間）', ko: '연속체 구성원 (관련 언어 사이)', zh: '连续体成员（关联语言之间）' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 }
             })();
             // Phase 3a (Session 36): bibliography footer — dedupe sources from
@@ -2237,6 +2381,12 @@
         function showLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
+            // Audit Task 137: capture the opener BEFORE state changes so we
+            // can restore focus on close. activeElement is the most reliable
+            // signal for keyboard openers; pointer openers may have already
+            // shifted focus, in which case the search input is a sane default.
+            const opener = document.activeElement;
+            if (opener && opener !== document.body) _lastDialogOpener = opener;
             // UX fix #1: toggle — second click on same code closes the modal.
             if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
                 closeInfoPanel();
@@ -2282,7 +2432,12 @@
                     .toLowerCase();
             }
             function renderResults(q) {
-                if (!q || q.length < 1) { results.style.display = 'none'; results.innerHTML = ''; return; }
+                if (!q || q.length < 1) {
+                    results.style.display = 'none'; results.innerHTML = '';
+                    input.setAttribute('aria-expanded', 'false');
+                    input.setAttribute('aria-activedescendant', '');
+                    return;
+                }
                 const ql = normalizeSearchText(q);
                 const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
                 const enNames = LANG_NAMES.en || {};
@@ -2317,7 +2472,15 @@
                         else if (natN.startsWith(ql)) score = 3;
                         else if (aliasNs.some(a => a && a.startsWith(ql))) score = 4;
                         else if (isoN.startsWith(ql) || canonN.startsWith(ql)) score = 5;
-                        matches.push({ code, display, en, native, score });
+                        // Audit Task 115: capture disambiguator for the
+                        // search result tooltip if the row has one.
+                        let disambig = '';
+                        if (m.disambiguator) {
+                            disambig = (typeof m.disambiguator === 'object')
+                                ? (m.disambiguator[uiLang] || m.disambiguator[uiLang.split('_')[0]] || m.disambiguator.en || '')
+                                : String(m.disambiguator);
+                        }
+                        matches.push({ code, display, en, native, score, disambig });
                     }
                 }
                 // Mark each match's era so we can disable non-selected era entries.
@@ -2339,15 +2502,24 @@
                     const eraLbl = showHistorical
                         ? i18n('modernLangTooltip')
                         : i18n('historicalLangTooltip');
-                    results.innerHTML = top.map(m => {
+                    results.innerHTML = top.map((m, idx) => {
                         const native = m.native && m.native !== m.display ? ` <span style="color:#999;font-size:11px">${escapeHtml(m.native)}</span>` : '';
                         const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
+                        // Audit Task 115: append disambiguator hint after the row
+                        // when present so duplicate-name groups (mn_cn/xng,
+                        // omx/mnw) are visually distinguishable in search.
+                        const dis = m.disambig
+                            ? ` <span style="color:#a04020;font-size:10px;font-style:italic"> — ${escapeHtml(m.disambig)}</span>`
+                            : '';
                         const baseStyle = 'padding:6px 9px;border-bottom:1px solid #f0f0f0';
+                        // Audit Task 136: combobox/listbox semantics — each
+                        // visible result is a role="option" with a stable id.
+                        const optId = `lang-search-opt-${idx}`;
                         if (m.disabled) {
                             const tooltip = i18n('eraFilterOffHint').replace('{era}', eraLbl);
-                            return `<div class="lang-search-item disabled" data-code="${escapeHtml(m.code)}" data-disabled="1" title="${escapeHtml(tooltip)}" style="${baseStyle};opacity:0.4;cursor:not-allowed">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)} · ${escapeHtml(eraLbl)}</span></div>`;
+                            return `<div id="${optId}" class="lang-search-item disabled" role="option" aria-disabled="true" aria-selected="false" data-code="${escapeHtml(m.code)}" data-disabled="1" title="${escapeHtml(tooltip)}" style="${baseStyle};opacity:0.4;cursor:not-allowed">${escapeHtml(m.display)}${native}${en}${dis} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)} · ${escapeHtml(eraLbl)}</span></div>`;
                         }
-                        return `<div class="lang-search-item" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
+                        return `<div id="${optId}" class="lang-search-item" role="option" aria-selected="false" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en}${dis} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
                     }).join('');
                     // Live preview: open the modal for the top *enabled* match
                     // (no map pan while typing — that only happens on explicit click).
@@ -2361,10 +2533,69 @@
                     }
                 }
                 results.style.display = 'block';
+                input.setAttribute('aria-expanded', 'true');
             }
             input.addEventListener('input', e => renderResults(e.target.value.trim()));
             input.addEventListener('focus', e => { if (e.target.value.trim()) renderResults(e.target.value.trim()); });
-            input.addEventListener('blur', () => setTimeout(() => { results.style.display = 'none'; }, 200));
+            input.addEventListener('blur', () => setTimeout(() => {
+                results.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+                input.setAttribute('aria-activedescendant', '');
+            }, 200));
+            // Audit Task 136: keyboard navigation for the listbox.
+            //   ArrowDown / ArrowUp moves the active option (visual highlight + aria-activedescendant)
+            //   Enter selects the active enabled option
+            //   Escape closes without opening the modal
+            let activeOptionIdx = -1;
+            function setActiveOption(newIdx) {
+                const items = results.querySelectorAll('.lang-search-item');
+                if (items.length === 0) { activeOptionIdx = -1; return; }
+                if (newIdx < 0) newIdx = items.length - 1;
+                if (newIdx >= items.length) newIdx = 0;
+                activeOptionIdx = newIdx;
+                items.forEach((it, i) => {
+                    if (i === newIdx) {
+                        it.style.background = '#f0f4ff';
+                        it.setAttribute('aria-selected', 'true');
+                        input.setAttribute('aria-activedescendant', it.id || '');
+                        // Scroll into view
+                        if (it.scrollIntoView) it.scrollIntoView({block: 'nearest'});
+                    } else {
+                        it.style.background = '';
+                        it.setAttribute('aria-selected', 'false');
+                    }
+                });
+            }
+            input.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown') { e.preventDefault(); setActiveOption(activeOptionIdx + 1); }
+                else if (e.key === 'ArrowUp')   { e.preventDefault(); setActiveOption(activeOptionIdx - 1); }
+                else if (e.key === 'Escape')    {
+                    if (results.style.display !== 'none') {
+                        results.style.display = 'none';
+                        input.setAttribute('aria-expanded', 'false');
+                        input.setAttribute('aria-activedescendant', '');
+                        e.stopPropagation();
+                    }
+                }
+                else if (e.key === 'Enter') {
+                    if (activeOptionIdx >= 0) {
+                        const items = results.querySelectorAll('.lang-search-item');
+                        const it = items[activeOptionIdx];
+                        if (it && it.getAttribute('data-disabled') !== '1') {
+                            e.preventDefault();
+                            const code = it.getAttribute('data-code');
+                            if (code && LANG_DATA[code]) {
+                                showLangInfo(code);
+                                input.value = '';
+                                results.style.display = 'none';
+                                input.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    }
+                }
+            });
+            // Reset active option whenever results re-render
+            input.addEventListener('input', () => { activeOptionIdx = -1; });
             results.addEventListener('mousedown', e => e.preventDefault());  // prevent input blur before click
             results.addEventListener('click', e => {
                 const item = e.target.closest('.lang-search-item');

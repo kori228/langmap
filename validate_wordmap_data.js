@@ -67,7 +67,7 @@ const metaSrcStripped = metaSrc
 const vm = require('vm');
 const ctx = { window: {}, document: { createElement: () => ({}) } };
 vm.createContext(ctx);
-vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;this.DATA_STATUS_OVERRIDES=typeof DATA_STATUS_OVERRIDES!==\'undefined\'?DATA_STATUS_OVERRIDES:undefined;', ctx);
+vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;this.DATA_STATUS_OVERRIDES=typeof DATA_STATUS_OVERRIDES!==\'undefined\'?DATA_STATUS_OVERRIDES:undefined;this.HIST_DESCENDANT=typeof HIST_DESCENDANT!==\'undefined\'?HIST_DESCENDANT:undefined;', ctx);
 vm.runInContext(metaSrcStripped, ctx);
 // Load lang_names.js if present
 let LANG_NAMES = null;
@@ -79,14 +79,20 @@ try {
     // lang_names.js may not exist in older trees
 }
 
-// HIST_DESCENDANT is in wordmap.html; pull it out by regex
-const histMatch = htmlSrc.match(/const HIST_DESCENDANT\s*=\s*\{([\s\S]*?)\n\s*\};/);
-if (!histMatch) { console.error('FATAL: could not locate HIST_DESCENDANT'); process.exit(2); }
-// Match real keys (lowercase letters/underscores/digits, must be quoted-style key)
-// and skip comment lines
-const HIST_BODY = histMatch[1].split('\n').filter(l => !l.trim().startsWith('//')).join('\n');
-const HIST_KEYS = [...HIST_BODY.matchAll(/(?:^|[\s,{])([a-z][a-z_0-9]*)\s*:/g)].map(m => m[1]);
-const HIST_SET = new Set(HIST_KEYS);
+// HIST_DESCENDANT is now in wordmap_data.js (Audit Task 122). Pull from
+// the evaluated data context. Fall back to regex scrape of wordmap.html if
+// not found there (legacy compatibility during migration).
+let HIST_KEYS, HIST_SET;
+if (ctx.HIST_DESCENDANT && typeof ctx.HIST_DESCENDANT === 'object') {
+    HIST_KEYS = Object.keys(ctx.HIST_DESCENDANT);
+    HIST_SET = new Set(HIST_KEYS);
+} else {
+    const histMatch = htmlSrc.match(/const HIST_DESCENDANT\s*=\s*\{([\s\S]*?)\n\s*\};/);
+    if (!histMatch) { console.error('FATAL: could not locate HIST_DESCENDANT'); process.exit(2); }
+    const HIST_BODY = histMatch[1].split('\n').filter(l => !l.trim().startsWith('//')).join('\n');
+    HIST_KEYS = [...HIST_BODY.matchAll(/(?:^|[\s,{])([a-z][a-z_0-9]*)\s*:/g)].map(m => m[1]);
+    HIST_SET = new Set(HIST_KEYS);
+}
 
 // === Allowlist of known WARN/ERROR messages that are deliberately deferred ===
 // Each entry:
@@ -382,7 +388,7 @@ for (const code of codes) {
 }
 if (familyOutsideAllow) W(`${familyOutsideAllow} languages have meta.family with a top token outside the allow-list`);
 
-// ---- 12. Doc-vs-data lang count -----------------------------------------
+// ---- 12. Doc-vs-data lang count (Audit Task 107) ----------------------
 // Only check counts that are plausibly Word-Map related (within 100 of actual)
 // to avoid false positives from index.html / Word Order Map mentions.
 const N = codes.length;
@@ -402,6 +408,19 @@ checkCounts(htmlSrc,    'wordmap.html');
 checkCounts(readmeSrc,  'README.md');
 const headerN = (dataSrc.match(/(\d{3,4})\s*languages/) || [])[1];
 if (headerN && +headerN !== N) E(`wordmap_data.js header says ${headerN} languages, actual ${N}`);
+
+// Audit Task 107: explicitly cross-check meta description / OG / Twitter tags
+// that are externally visible (SEO/social previews) and easy to miss.
+const seoTags = [
+    { re: /<title>[^<]*?(\d{3,4})\s*Languages/i,                                   label: '<title>' },
+    { re: /<meta\s+name="description"\s+content="[^"]*?(\d{3,4})\s*languages/i,    label: '<meta name="description">' },
+    { re: /<meta\s+property="og:description"\s+content="[^"]*?(\d{3,4})\s*languages/i, label: '<meta og:description>' },
+    { re: /<meta\s+name="twitter:description"\s+content="[^"]*?(\d{3,4})\s*languages/i, label: '<meta twitter:description>' },
+];
+for (const t of seoTags) {
+    const m = htmlSrc.match(t.re);
+    if (m && +m[1] !== N) W(`wordmap.html ${t.label} mentions ${m[1]} languages but actual count is ${N} (Audit Task 107)`);
+}
 
 // ---- 18a. Trust-label UI coverage (Audit Task 92) --------------------
 // The trust-system UI uses several inline JS constants in wordmap.html
@@ -616,7 +635,8 @@ for (const ui of UI_LANGS) {
 //   meta.iso6393      : 3-letter ISO 639-3 code
 //   meta.glottocode   : Glottocode (8-char)
 //   meta.parentCode   : code in LANG_DATA (for varieties)
-//   lang.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+//   meta.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+//                       (CANONICAL — Audit Task 131; lang.locationBasis kept as legacy alias only)
 //   meta.sources      : Array<{ type, title, url?, accessed? }>
 const SPEAKER_BASIS = new Set(['L1','total','regional-population','aggregate','liturgical','extinct','uncertain']);
 const LOCATION_BASIS = new Set(['capital','prestige-center','historical-site','largest-city','approx-region']);
@@ -672,6 +692,58 @@ for (const code of codes) {
             if (typeof a !== 'string' || !a.trim()) E(`[#13k] ${code}: meta.aliases entry not a non-empty string: ${JSON.stringify(a)}`);
         }
     }
+    // Audit Task 126: varietyRole enum
+    if (m.varietyRole !== undefined) {
+        const VR_ENUM = new Set(['base','regional-variety','dialect','sibling-language','continuum-member']);
+        if (!VR_ENUM.has(m.varietyRole)) E(`[#13n] ${code}: meta.varietyRole "${m.varietyRole}" not in enum (Audit Task 126)`);
+        if (m.varietyRole === 'regional-variety' && !m.parentCode) {
+            W(`[#13n] ${code}: varietyRole='regional-variety' should also set parentCode (Audit Task 126)`);
+        }
+    }
+    // Audit Task 115: meta.disambiguator can be a plain string or {en, ja, ...} object
+    if (m.disambiguator !== undefined) {
+        if (typeof m.disambiguator === 'string') {
+            // ok
+        } else if (typeof m.disambiguator === 'object' && m.disambiguator) {
+            if (!m.disambiguator.en || typeof m.disambiguator.en !== 'string') {
+                W(`[#13m] ${code}: meta.disambiguator missing 'en' fallback (Audit Task 115)`);
+            }
+        } else {
+            E(`[#13m] ${code}: meta.disambiguator must be string or object`);
+        }
+    }
+    // Audit Task 119 / user request 2026-05-06: altWordForms shape check
+    if (lang.altWordForms !== undefined) {
+        if (typeof lang.altWordForms !== 'object' || Array.isArray(lang.altWordForms)) {
+            E(`[#13o] ${code}: altWordForms must be an object keyed by concept`);
+        } else {
+            const wordIds = new Set(ctx.WORD_LIST.map(w => w.id));
+            for (const k of Object.keys(lang.altWordForms)) {
+                if (!wordIds.has(k)) E(`[#13o] ${code}: altWordForms key "${k}" not a valid concept id`);
+                const v = lang.altWordForms[k];
+                if (!Array.isArray(v)) { E(`[#13o] ${code}: altWordForms.${k} must be an array`); continue; }
+                for (const a of v) {
+                    if (!a || typeof a !== 'object') { E(`[#13o] ${code}: altWordForms.${k} entry not an object`); continue; }
+                    if (!a.form || typeof a.form !== 'string') E(`[#13o] ${code}: altWordForms.${k} missing 'form'`);
+                    if (!a.script || typeof a.script !== 'string') W(`[#13o] ${code}: altWordForms.${k} missing 'script'`);
+                    if (!a.source || typeof a.source !== 'string') W(`[#13o] ${code}: altWordForms.${k} missing 'source' (Audit Task 119: alt-script forms must be source-confirmed)`);
+                }
+            }
+        }
+    }
+    // Audit Task 130: meta.scriptTags must be Array<string> from the allowed enum
+    if (m.scriptTags !== undefined) {
+        const SCRIPT_TAG_ENUM = new Set([
+            'Latin','Han','Kana','Hangul','Cyrillic','Arabic-derived','Hebrew','Syriac','Brahmic','Greek',
+            'Armenian','Georgian','Ethiopic','Coptic','Cherokee','Tifinagh','Yi','Canadian Aboriginal Syllabics',
+            'Mongolian-derived','Cuneiform','Hieroglyphs','Aegean syllabary','Mayan','Old Turkic','Tangut',
+            'Khitan','Jurchen','Aramaic-derived','Other historical','None / reconstructed','N\'Ko','Other'
+        ]);
+        if (!Array.isArray(m.scriptTags)) E(`[#13l] ${code}: meta.scriptTags is not an array (Audit Task 130)`);
+        else for (const t of m.scriptTags) {
+            if (!SCRIPT_TAG_ENUM.has(t)) W(`[#13l] ${code}: meta.scriptTags entry "${t}" not in enum (Audit Task 130)`);
+        }
+    }
     if (m.codeType !== undefined) {
         const allowed = new Set(['iso','regional-variant','historical-stage','pedagogical-stage','script-variant','constructed','custom']);
         if (!allowed.has(m.codeType)) E(`[#13i] ${code}: meta.codeType "${m.codeType}" not in enum`);
@@ -693,14 +765,18 @@ for (const code of codes) {
     if (m.baseLang !== undefined && !ctx.LANG_DATA[m.baseLang]) {
         E(`[#13e] ${code}: meta.baseLang "${m.baseLang}" not in LANG_DATA`);
     }
-    if (lang.locationBasis !== undefined && !LOCATION_BASIS.has(lang.locationBasis)) {
-        E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
+    if (lang.locationBasis !== undefined) {
+        if (!LOCATION_BASIS.has(lang.locationBasis)) {
+            E(`${code}: locationBasis "${lang.locationBasis}" not in enum`);
+        } else {
+            W(`[#13f] ${code}: top-level locationBasis is deprecated — use meta.locationBasis (Audit Task 131)`);
+        }
     }
     if (m.locationBasis !== undefined && !LOCATION_BASIS.has(m.locationBasis)) {
         E(`[#13f] ${code}: meta.locationBasis "${m.locationBasis}" not in enum`);
     }
     if (lang.locationBasis && m.locationBasis && lang.locationBasis !== m.locationBasis) {
-        W(`[#13f] ${code}: lang.locationBasis="${lang.locationBasis}" differs from meta.locationBasis="${m.locationBasis}" — meta is canonical (Audit Task 99)`);
+        W(`[#13f] ${code}: lang.locationBasis="${lang.locationBasis}" differs from meta.locationBasis="${m.locationBasis}" — meta is canonical (Audit Task 99/131)`);
     }
     if (m.sources !== undefined) {
         if (!Array.isArray(m.sources)) E(`${code}: meta.sources is not an array`);

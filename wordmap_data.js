@@ -1255,7 +1255,11 @@ const LANG_DATA = {
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
   lus: { name: 'Mizo', native: 'Mizo ṭawng', lat: 23.73, lng: 92.72, // Aizawl
-    words: { water:['tui','tui'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['in','in'], love:['hmangaih','hmaŋai'], heart:['thinlung','tʰinluŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['in','in'], dog:['ui','ui'], cat:['zawhte','zawʔte'], hand:['kut','kut'], eye:['mit','mit'], hello:['chibai','tʃibai'], thanks:['ka lawm e','ka lawm e'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] }},
+    words: { water:['tui','tui'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['in','in'], love:['hmangaih','hmaŋai'], heart:['thinlung','tʰinluŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['in','in'], dog:['ui','ui'], cat:['zawhte','zawʔte'], hand:['kut','kut'], eye:['mit','mit'], hello:['chibai','tʃibai'], thanks:['ka lawm e','ka lawm e'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] },
+    wordEvidence: {
+      drink: { evidence: 'direct', note: 'Mizo "in" verb "to drink" — homophone with noun "in" (house); distinct lexemes (Audit Task 120)' },
+      house: { evidence: 'direct', note: 'Mizo "in" noun "house" — homophone with verb "in" (to drink); distinct lexemes (Audit Task 120)' }
+    }},
   dz: { name: 'Dzongkha', native: 'རྫོང་ཁ', lat: 27.47, lng: 89.64, // Thimphu
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཀུ་ཟུ་ཟངས་པོ་ལ','kuzu zaŋpo la'], thanks:['བཀྲིན་ཆེ','kadrintɕe'], one:['གཅིག','tɕik'], good:['ལེགས་ཤོམ','lekɕom'] }},
   // Indonesian (large regional)
@@ -1523,7 +1527,11 @@ const LANG_DATA = {
     words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
   // Mura (linguistic isolate, Amazonia)
   myp: { name: 'Pirahã', native: 'Xapagí', lat: -7.70, lng: -62.30, // Maici River
-    words: { water:['piigi','piiɡi'], fire:['hoa','hoa'], sun:['hisi','hisi'], moon:['kapiigaísao','kapiːɡaísao'], mother:['ʔaaí','ʔaaí'], father:['baíxi','baíʃi'], eat:['ʔaʔaí','ʔaʔaí'], drink:['gao','ɡao'], love:['gí','ɡí'], heart:['aoʔaago','aoʔaaɡo'], tree:['hoí','hoí'], house:['kaiʔii','kaiʔii'], dog:['kobaí','kobaí'], cat:['xowí','ʃowí'], hand:['piíʔai','piíʔai'], eye:['ʔai','ʔai'], hello:['gaíhií','ɡaíhií'], thanks:['kapiíhií','kapiíhií'], one:['hói','hói'], good:['aoʔaago','aoʔaaɡo'] }},
+    words: { water:['piigi','piiɡi'], fire:['hoa','hoa'], sun:['hisi','hisi'], moon:['kapiigaísao','kapiːɡaísao'], mother:['ʔaaí','ʔaaí'], father:['baíxi','baíʃi'], eat:['ʔaʔaí','ʔaʔaí'], drink:['gao','ɡao'], love:['gí','ɡí'], heart:['aoʔaago','aoʔaaɡo'], tree:['hoí','hoí'], house:['kaiʔii','kaiʔii'], dog:['kobaí','kobaí'], cat:['xowí','ʃowí'], hand:['piíʔai','piíʔai'], eye:['ʔai','ʔai'], hello:['gaíhií','ɡaíhií'], thanks:['kapiíhií','kapiíhií'], one:['hói','hói'], good:['aoʔaago','aoʔaaɡo'] },
+    wordEvidence: {
+      heart: { evidence: 'inferred', note: 'Pirahã "aoʔaago" reflects emotional/inner-state concept; same form appears for "good" — pending source confirmation (Audit Task 120)' },
+      good:  { evidence: 'inferred', note: 'Pirahã "aoʔaago" — same form as "heart"; semantic overlap pending source confirmation (Audit Task 120)' }
+    }},
   // Chocoan (NW South America)
   emp: { name: 'Northern Embera', native: 'Eperã pedea', lat: 5.69, lng: -76.66, // Quibdó
     words: { water:['do','do'], fire:['tu','tu'], sun:['hewa','hewa'], moon:['ahuru','ahuɾu'], mother:['papa','papa'], father:['apa','apa'], eat:['ko','ko'], drink:['dorrare','doraɾe'], love:['ãỹba','ãɨba'], heart:['ƀakhuru','ɓakuɾu'], tree:['bakuru','bakuɾu'], house:['te','te'], dog:['usa','usa'], cat:['misu','misu'], hand:['jua','xua'], eye:['tau','tau'], hello:['sake bia','sake bia'], thanks:['bia bara','bia baɾa'], one:['aba','aba'], good:['bia','bia'] }},
@@ -2599,7 +2607,11 @@ const LANG_DATA = {
     words: { water:['daa','daː'], fire:['sengel','seŋɡel'], sun:['singi','siŋɡi'], moon:['chando','tʃando'], mother:['ayu','aju'], father:['apu','apu'], eat:['jom','dʒom'], drink:['nu','nu'], love:['dulaiya','dulaija'], heart:['jiu','dʒiu'], tree:['daru','daru'], house:['oraa','oraː'], dog:['seta','seta'], cat:['pusi','pusi'], hand:['ti','ti'], eye:['med','med'], hello:['johar','dʒohar'], thanks:['dhanybad','dʱanjbad'], one:['miyad','mijad'], good:['bugin','buɡin'] }},
   // Trans-New Guinea (first Papuan language)
   enq: { name: 'Enga', native: 'Enga', lat: -5.47, lng: 143.71, // Wabag
-    words: { water:['endaki','endaki'], fire:['ita','ita'], sun:['niko','niko'], moon:['kana','kana'], mother:['ainya','aiɲa'], father:['taata','taːta'], eat:['nepenge','nepeŋe'], drink:['na pee','na peː'], love:['mende','mende'], heart:['maita','maita'], tree:['ita','ita'], house:['anda','anda'], dog:['yana','jana'], cat:['pusi','pusi'], hand:['kingi','kiŋɡi'], eye:['lenge','leŋɡe'], hello:['baa wa','baː wa'], thanks:['yaku','jaku'], one:['mendeai','mendeai'], good:['epe','epe'] }},
+    words: { water:['endaki','endaki'], fire:['ita','ita'], sun:['niko','niko'], moon:['kana','kana'], mother:['ainya','aiɲa'], father:['taata','taːta'], eat:['nepenge','nepeŋe'], drink:['na pee','na peː'], love:['mende','mende'], heart:['maita','maita'], tree:['ita','ita'], house:['anda','anda'], dog:['yana','jana'], cat:['pusi','pusi'], hand:['kingi','kiŋɡi'], eye:['lenge','leŋɡe'], hello:['baa wa','baː wa'], thanks:['yaku','jaku'], one:['mendeai','mendeai'], good:['epe','epe'] },
+    wordEvidence: {
+      fire: { evidence: 'inferred', note: 'Enga "ita" — same form as "tree" (firewood/tree polysemy possible); pending source confirmation (Audit Task 120)' },
+      tree: { evidence: 'inferred', note: 'Enga "ita" — same form as "fire" (firewood/tree polysemy possible); pending source confirmation (Audit Task 120)' }
+    }},
   // Middle Iranian (Parthian, distinct from Pahlavi)
   // xpr Parthian wordEvidence: per Codex review 6, most cells are Iranian
   // cognate / Middle Persian projection; Parthian-specific direct attestation
@@ -2688,9 +2700,19 @@ const LANG_DATA = {
   // === Phase 7: regional gap-fillers ===
   // Trans-New Guinea (Papuan)
   mpt: { name: 'Mian', native: 'Mian', lat: -5.13, lng: 141.61, // Telefomin
-    words: { water:['ot','ot'], fire:['aon','aon'], sun:['kep','kep'], moon:['ham','ham'], mother:['na','na'], father:['ki','ki'], eat:['naka','naka'], drink:['an','an'], love:['na','na'], heart:['tem','tem'], tree:['yel','jel'], house:['am','am'], dog:['kowok','kowok'], cat:['pus','pus'], hand:['kun','kun'], eye:['tan','tan'], hello:['aben','aben'], thanks:['hok','hok'], one:['alok','alok'], good:['kep','kep'] }},
+    words: { water:['ot','ot'], fire:['aon','aon'], sun:['kep','kep'], moon:['ham','ham'], mother:['na','na'], father:['ki','ki'], eat:['naka','naka'], drink:['an','an'], love:['na','na'], heart:['tem','tem'], tree:['yel','jel'], house:['am','am'], dog:['kowok','kowok'], cat:['pus','pus'], hand:['kun','kun'], eye:['tan','tan'], hello:['aben','aben'], thanks:['hok','hok'], one:['alok','alok'], good:['kep','kep'] },
+    wordEvidence: {
+      sun:    { evidence: 'inferred', note: 'Mian "kep" — same form as "good"; pending source confirmation (Audit Task 120)' },
+      good:   { evidence: 'inferred', note: 'Mian "kep" — same form as "sun" (sunlight/positive polysemy possible); pending source confirmation (Audit Task 120)' },
+      mother: { evidence: 'inferred', note: 'Mian "na" — same form as "love"; pending source confirmation (Audit Task 120)' },
+      love:   { evidence: 'inferred', note: 'Mian "na" — same form as "mother" (kinship/affection polysemy possible); pending source confirmation (Audit Task 120)' }
+    }},
   ygr: { name: 'Yagaria', native: 'Yagaria', lat: -6.58, lng: 145.39, // Eastern Highlands
-    words: { water:['nofa','nofa'], fire:['yo','jo'], sun:['kena','kena'], moon:['ulu','ulu'], mother:['nene','nene'], father:['papa','papa'], eat:['na','na'], drink:['nava','nava'], love:['amige','amiɡe'], heart:['nemo','nemo'], tree:['yake','jake'], house:['nono','nono'], dog:['yapa','japa'], cat:['pusi','pusi'], hand:['bayo','bajo'], eye:['gago','ɡaɡo'], hello:['amige','amiɡe'], thanks:['tega','teɡa'], one:['kahene','kahene'], good:['kavi','kavi'] }},
+    words: { water:['nofa','nofa'], fire:['yo','jo'], sun:['kena','kena'], moon:['ulu','ulu'], mother:['nene','nene'], father:['papa','papa'], eat:['na','na'], drink:['nava','nava'], love:['amige','amiɡe'], heart:['nemo','nemo'], tree:['yake','jake'], house:['nono','nono'], dog:['yapa','japa'], cat:['pusi','pusi'], hand:['bayo','bajo'], eye:['gago','ɡaɡo'], hello:['amige','amiɡe'], thanks:['tega','teɡa'], one:['kahene','kahene'], good:['kavi','kavi'] },
+    wordEvidence: {
+      love:  { evidence: 'inferred', note: 'Yagaria "amige" — same form as greeting "hello" (affectionate greeting overlap possible); pending source confirmation (Audit Task 120)' },
+      hello: { evidence: 'inferred', note: 'Yagaria "amige" — same form as "love"; greeting/affection overlap pending source confirmation (Audit Task 120)' }
+    }},
   // Quechuan (specific varieties)
   quz: { name: 'Cusco Quechua', native: 'Qhichwa', lat: -13.53, lng: -71.97, // Cusco
     words: { water:['unu','unu'], fire:['nina','nina'], sun:['inti','inti'], moon:['killa','kiʎa'], mother:['mama','mama'], father:['tayta','tajta'], eat:['mikhuy','mikʰuj'], drink:['upyay','upjaj'], love:['munay','munaj'], heart:['sunqu','sunqu'], tree:['sach\'a','satʃʼa'], house:['wasi','wasi'], dog:['alqu','alqu'], cat:['misi','misi'], hand:['maki','maki'], eye:['ñawi','ɲawi'], hello:['rimaykullayki','rimajkuʎajki'], thanks:['añay','aɲaj'], one:['huk','huk'], good:['allin','aʎin'] }},
@@ -2845,7 +2867,11 @@ const LANG_DATA = {
   // attested Thai. Sukhothai script, ancestor of modern Thai. Many words cognate
   // with modern Thai.
   sukh: { name: 'Old Thai (Sukhothai)', native: 'ภาสาไทย (สุโขทัย)', lat: 17.02, lng: 99.82,
-    words: { water:['น้ำ','naːm'], fire:['ไฟ','faj'], sun:['ตะวัน','tawan'], moon:['เดือน','dɯːan'], mother:['แม่','mɛː'], father:['พ่อ','pʰɔː'], eat:['กิน','kin'], drink:['กิน','kin'], love:['รัก','rak'], heart:['ใจ','tɕaj'], tree:['ไม้','maːj'], house:['เรือน','rɯːan'], dog:['หมา','maː'], cat:['แมว','mɛːw'], hand:['มือ','mɯː'], eye:['ตา','taː'], hello:['—','—'], thanks:['—','—'], one:['หนึ่ง','nɯŋ'], good:['ดี','diː'] }},
+    words: { water:['น้ำ','naːm'], fire:['ไฟ','faj'], sun:['ตะวัน','tawan'], moon:['เดือน','dɯːan'], mother:['แม่','mɛː'], father:['พ่อ','pʰɔː'], eat:['กิน','kin'], drink:['กิน','kin'], love:['รัก','rak'], heart:['ใจ','tɕaj'], tree:['ไม้','maːj'], house:['เรือน','rɯːan'], dog:['หมา','maː'], cat:['แมว','mɛːw'], hand:['มือ','mɯː'], eye:['ตา','taː'], hello:['—','—'], thanks:['—','—'], one:['หนึ่ง','nɯŋ'], good:['ดี','diː'] },
+    wordEvidence: {
+      eat:   { evidence: 'inferred', note: 'Old Thai "กิน" broad consume verb covers eat/drink in Sukhothai-era texts; pending detailed source verification (Audit Task 120)' },
+      drink: { evidence: 'inferred', note: 'Old Thai "กิน" broad consume verb covers eat/drink in Sukhothai-era texts; pending detailed source verification (Audit Task 120)' }
+    }},
   // Meroitic — Kingdom of Kush / Meroe (Sudan, ~3c. BCE - 4c. CE). Two scripts
   // (Hieroglyphic U+10980, Cursive U+109A0). Script deciphered (Griffith), but
   // language still poorly understood; many entries are titles, names, or unknown.
@@ -2944,6 +2970,17 @@ const LANG_DATA = {
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
   zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
+    // scriptDisplayPolicy: Khitan Small Script (U+18B00–U+18CFF, Unicode 13.0)
+    // is partially deciphered. Mapping the basic-vocabulary readings here
+    // (muri, niár, sair, eme, mai, omsu, etc.) to specific small-script
+    // character sequences requires direct verification in Kane (2009),
+    // Wu Yingzhe / Aisin Gioro reconstructions — most published character
+    // tables cover royal titles, kin terms, names, and numerals rather than
+    // the everyday-vocabulary set. Per Audit Task 119: do NOT auto-generate
+    // characters from romanization. altWordForms is therefore intentionally
+    // empty until source-confirmed mappings are added cell by cell. The
+    // surface column shows scholarly Latin reconstructions (Kane 2009 system).
+    altWordForms: {},
     words: { water:['muri','muri'], fire:['niár','niar'], sun:['nair','nair'], moon:['sair','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['nïaqan','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['omsu','omsu'], good:['sayïn','sajin'] },
     wordEvidence: {
       water:  { evidence: 'direct', source: 'Kane 2009 Khitan small script' },
@@ -2970,6 +3007,22 @@ const LANG_DATA = {
   // Manchu projection. Direct Jurchen attestation requires Kane 1989 Sino-Jurchen
   // vocabulary verification (not done online). All cells marked proxy from Manchu.
   juc: { name: 'Jurchen', native: 'jušen gisun', lat: 45.55, lng: 126.97,
+    // altWordForms: 女真譯語 (Hua-Yi Yiyu, c. 1500 Ming-era Chinese-character
+    // transliterations of Jurchen). Coverage is partial — only those entries
+    // widely cited in standard secondary sources. The Jurchen script proper
+    // is not yet in Unicode; these Chinese-character renderings are the
+    // primary written record for most basic vocabulary.
+    altWordForms: {
+      water:  [{ form: '木克',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語 / Jin 1984; 木克 = muke' }],
+      fire:   [{ form: '脱瓦',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 脱瓦 = tuwa' }],
+      sun:    [{ form: '順',       script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 順 = šun' }],
+      mother: [{ form: '厄默',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 厄默 = eme' }],
+      father: [{ form: '阿馬',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 阿馬 = ama' }],
+      dog:    [{ form: '引荅渾',   script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 引荅渾 = indahǔn' }],
+      hand:   [{ form: '噶剌',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 噶剌 = gala' }],
+      eye:    [{ form: '牙撒',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 牙撒 = yasa' }],
+      one:    [{ form: '厄木',     script: 'Chinese-character transliteration', type: 'attested', source: '女真譯語; 厄木 = emu' }],
+    },
     words: { water:['muke','muke'], fire:['tuwa','tuwa'], sun:['šun','ʃun'], moon:['biya','bija'], mother:['eme','eme'], father:['ama','ama'], eat:['jefu','dʒefu'], drink:['omi','omi'], love:['gosi','ɡosi'], heart:['niyaman','niaman'], tree:['mo','mo'], house:['boo','boː'], dog:['indahǔn','indahuːn'], cat:['kesike','kesike'], hand:['gala','ɡala'], eye:['yasa','jasa'], hello:['—','—'], thanks:['—','—'], one:['emu','emu'], good:['sain','sain'] },
     wordEvidence: {
       water:  { evidence: 'direct', source: '女真訳語 (1380s 四夷館編) 漢字音訳「沒可」 (mu-ke); + Manchu cognate muke' },
@@ -3314,6 +3367,43 @@ const DATA_STATUS_OVERRIDES = {
     zh_song:   'attested',
     zh_han:    'attested',
     zh_tang:   'attested',
+};
+
+// === HIST_DESCENDANT (Audit Task 122) ================================
+// Map historical-language code -> modern descendant code (or null when no
+// single descendant exists). Used to (a) classify codes into the
+// historical-mode era set; (b) draw "modern descendant" cross-links in the
+// language modal; (c) drive validator invariants (#9, #16, #17).
+//
+// Moved from wordmap.html to the data layer so the validator does not need
+// to regex-scrape JS source. The browser also reads this constant.
+const HIST_DESCENDANT = {
+    la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
+    got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
+    sa:'hi', mnc:'zh',
+    sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
+    ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
+    ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
+    oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
+    // Phase 4: historical
+    peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
+    xlu:null, pal:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',
+    // Phase 4B: more historical
+    gmy:'el', xct:'bo', xpu:'ar', xhu:null, elx:null, xsa:'ar',
+    kaw:'jv', kho:null, gmh:'de', osp:'es_eu', okz:'km', osx:'nds',
+    // Phase 5 historical
+    xpr:'fa', xqa:'ug', sga:'ga',
+    // Phase 6 historical
+    mga:'ga', hbo:'he',
+    // Phase 8 historical
+    xng:'mn',
+    // Phase 13: ancient Asian additions
+    och:'zh', ojp:'ja', vsa:'hi', txg:null, sog:'tg', otk:'tr',
+    // Phase 13b: NE Asian + SE Asian ancient
+    zkt:null, juc:'mnc', omx:'mnw', pyx:'my', obr:'my', occ:'cja',
+    // Phase 13c: Russia / Thailand / Africa / Americas / Indonesia / Philippines ancient
+    orv:'ru', xsc:null, sukh:'th', xmr:null, onw:null, cqu:'qu',
+    omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)

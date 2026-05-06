@@ -10,7 +10,7 @@
 // fields (speakerBasis / speakerSource / speakerYear / iso6393 /
 // glottocode / sources) are validated for shape if present; not required.
 LANG_DATA['ja'].meta = { family:'Japonic', speakers:'~125M', speakerBasis:'L1', speakerSource:'Ethnologue 26', speakerYear:2023, iso6393:'jpn', glottocode:'nucl1643', countries:'Japan', official:'Japan', script:'Kanji + Hiragana + Katakana', sources:[{type:'reference', title:'Ethnologue 26', url:'https://www.ethnologue.com/language/jpn/'}], description:'Japanese is the national language of Japan, with a complex writing system combining Chinese characters and two syllabaries. It features agglutinative grammar, extensive honorific registers, and SOV word order.' };
-LANG_DATA['ja'].locationBasis = 'capital';
+LANG_DATA['ja'].meta.locationBasis = 'capital'; // Audit Task 131: meta.locationBasis canonical
 LANG_DATA['ja_osa'].meta = { family:'Japonic', speakers:'~9M', countries:'Japan', official:'No (regional)', script:'Kanji + Hiragana + Katakana', description:'Osaka-ben is the most widely recognized Kansai dialect, spoken in Japan\'s second-largest metro area. Known for its distinctive intonation, comedic associations, and expressions like "ookini" (thanks) and "akan" (no good).', parentCode:'ja' };
 LANG_DATA['ja_aom'].meta = { family:'Japonic', speakers:'~1.3M', countries:'Japan', official:'No (regional)', script:'Kanji + Hiragana + Katakana', description:'Tsugaru dialect of Aomori prefecture in northern Honshu, part of the Tohoku dialect group. It is famously difficult for standard Japanese speakers to understand due to heavy vowel reduction and unique vocabulary.', parentCode:'ja' };
 LANG_DATA['ja_oki'].meta = { family:'Japonic (Ryukyuan)', speakers:'~100,000 (UNESCO: definitely endangered)', countries:'Japan', official:'No', script:'Hiragana + Katakana (also Kanji historically)', description:'Okinawan (Uchinaaguchi) is a Ryukyuan language indigenous to the central and southern Okinawa Islands, distinct from Japanese and not mutually intelligible with it. Centuries of language shift toward Standard Japanese have left it primarily spoken by elders, with cultural revitalization efforts ongoing.' };
@@ -1308,15 +1308,18 @@ for (const code of Object.keys(PRONUNCIATION_TYPE)) {
 // Identity counts come from audit §38-§42 measurements.
 const COVERAGE = {
     // §38 Northeastern Mandarin: 20/20 identical to zh
-    zh_db: { coverage: 'base-copy-with-notes', baseLang: 'zh' },
-    // §39 Spanish regional (compared to es_eu)
-    es_mx: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
-    es_co: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
-    es_pe: { coverage: 'accent-only', baseLang: 'es_eu' }, // 18/20
-    es_cl: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
-    es_ar: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
-    es_cu: { coverage: 'partial',     baseLang: 'es_eu' }, // 17/20
-    es_an: { coverage: 'partial',     baseLang: 'es_eu' }, // 11/20 (more regionalized)
+    zh_db: { coverage: 'base-copy-with-notes', baseLang: 'zh', coverageNote: 'Word cells inherit Standard Mandarin; Dongbei-specific lexical/pronunciation coverage pending.' },
+    // ko_kp: 19/20 identical to ko (only greeting differs)
+    // (ko_kp coverage entry is set below in the Korean regional block)
+    // §39 Spanish regional (Audit Task 88: actual fingerprints differ from §39 prose)
+    // Latin American baseline: es_mx is canonical; es_co/es_pe are 20/20 identical to es_mx
+    es_mx: { coverage: 'accent-only',          baseLang: 'es_eu' },
+    es_co: { coverage: 'base-copy-with-notes', baseLang: 'es_mx', coverageNote: 'Word cells currently inherit Mexican Spanish (Latin American baseline); Colombian-specific lexical/pronunciation coverage pending.' },
+    es_pe: { coverage: 'base-copy-with-notes', baseLang: 'es_mx', coverageNote: 'Word cells currently inherit Mexican Spanish (Latin American baseline); Peruvian-specific lexical/pronunciation coverage pending.' },
+    es_cl: { coverage: 'partial',              baseLang: 'es_eu' },
+    es_ar: { coverage: 'partial',              baseLang: 'es_eu' },
+    es_cu: { coverage: 'base-copy-with-notes', baseLang: 'es_cl', coverageNote: 'Word cells currently match Chilean Spanish row; Cuban-specific lexical/pronunciation coverage pending.' },
+    es_an: { coverage: 'partial',              baseLang: 'es_eu' },
     // §40 Korean regional
     ko_kp:   { coverage: 'base-copy-with-notes', baseLang: 'ko' }, // 19/20 — only greeting differs
     ko_bus:  { coverage: 'partial',              baseLang: 'ko' }, // 15/20
@@ -1343,9 +1346,10 @@ const COVERAGE = {
     en_ie:    { coverage: 'partial', baseLang: 'en' },
     // §29 Quebec French: mostly identical except hello/thanks
     fr_qc: { coverage: 'partial', baseLang: 'fr' },
-    fr_be: { coverage: 'partial', baseLang: 'fr' },
-    fr_af: { coverage: 'partial', baseLang: 'fr' },
-    fr_ch: { coverage: 'partial', baseLang: 'fr' },
+    // Audit Task 88: fr_be/fr_af/fr_ch are 20/20 identical to each other and 19/20 to fr
+    fr_be: { coverage: 'base-copy-with-notes', baseLang: 'fr', coverageNote: 'Word cells inherit standard French; Belgian-specific lexical/pronunciation coverage pending.' },
+    fr_af: { coverage: 'base-copy-with-notes', baseLang: 'fr', coverageNote: 'Word cells inherit standard French; African French regional coverage pending.' },
+    fr_ch: { coverage: 'base-copy-with-notes', baseLang: 'fr', coverageNote: 'Word cells inherit standard French; Swiss-specific lexical/pronunciation coverage pending.' },
     // Arabic dialect rows (vs ar = MSA)
     ar_eg:   { coverage: 'partial', baseLang: 'ar' },
     ar_lev:  { coverage: 'partial', baseLang: 'ar' },
@@ -1883,6 +1887,8 @@ const HISTORICAL_STAGE_CODES = new Set([
     'en_ang', 'enm',  // Old/Middle English
     'el_grc',         // Ancient Greek
     'zh_song', 'zh_tang', 'zh_han',  // Classical Chinese stages
+    'ja_chu',         // Middle Japanese (Kamakura/Muromachi) — Audit Task 126
+    'ko_gor',         // Goryeo/Early Middle Korean — Audit Task 126
     // ja_edo / ja_heian / ko_mid / ko_em are pedagogical-stage (per langKind)
 ]);
 const PEDAGOGICAL_STAGE_CODES = new Set([
@@ -2047,6 +2053,119 @@ for (const code of Object.keys(ALIASES)) {
         if (!LANG_DATA[code].meta.aliases) {
             LANG_DATA[code].meta.aliases = ALIASES[code];
         }
+    }
+}
+
+// === parentCode + varietyRole (Audit Task 126) =====================
+// Document language-variety relationships so the modal/UI can show
+// "Regional variety of: <parent>" and the validator can warn about
+// unclassified variant rows. Sensitive cases (Ryukyuan, Jeju, Isan)
+// use varietyRole to avoid forcing a misleading parent.
+const VARIETY_REL = {
+    // Ryukyuan languages — sibling-language to Japonic, NOT child of Japanese
+    ja_oki: { varietyRole: 'sibling-language' },
+    ja_mvi: { varietyRole: 'sibling-language' },
+    ja_rys: { varietyRole: 'sibling-language' },
+    // Jeju — sibling-language to Korean (Koreanic)
+    ko_jeju: { varietyRole: 'sibling-language' },
+    // Isan — Lao/Thai continuum
+    th_isan: { varietyRole: 'continuum-member' },
+    // Hakka top-level (potential parent for hak_tw / hak_hl / hak_cn subrows)
+    hak_cn: { varietyRole: 'base' },
+    // Spanish/Portuguese baselines
+    es_eu: { varietyRole: 'base' },
+    pt_eu: { varietyRole: 'base' },
+    // Straightforward regional variants
+    ko_yb:  { parentCode: 'ko',  varietyRole: 'regional-variety' },
+    mn_cn:  { parentCode: 'mn',  varietyRole: 'regional-variety' },
+    fr_ch:  { parentCode: 'fr',  varietyRole: 'regional-variety' },
+    es_co:  { parentCode: 'es_eu', varietyRole: 'regional-variety' },
+    es_cl:  { parentCode: 'es_eu', varietyRole: 'regional-variety' },
+    ja_kg:  { parentCode: 'ja',  varietyRole: 'regional-variety' },
+    ja_sd:  { parentCode: 'ja',  varietyRole: 'regional-variety' },
+    ko_jl:  { parentCode: 'ko',  varietyRole: 'regional-variety' },
+    ko_hg:  { parentCode: 'ko',  varietyRole: 'regional-variety' },
+    wuu_nb: { parentCode: 'wuu', varietyRole: 'regional-variety' },
+};
+for (const code of Object.keys(VARIETY_REL)) {
+    if (!LANG_DATA[code] || !LANG_DATA[code].meta) continue;
+    const v = VARIETY_REL[code];
+    const m = LANG_DATA[code].meta;
+    if (v.parentCode && !m.parentCode) m.parentCode = v.parentCode;
+    if (v.varietyRole && !m.varietyRole) m.varietyRole = v.varietyRole;
+}
+
+// === Disambiguator (Audit Task 115) =================================
+// Short human-readable note shown when two rows share the same display
+// or native name. Prevents users from thinking the duplicate is an
+// accidental copy. Currently only 2 native-name collisions exist after
+// the mon/mnw resolution: Mongolic "ᠮᠣᠩᠭᠣᠯ" and Mon "ဘာသာ မန်".
+const DISAMBIGUATORS = {
+    mn_cn: { en: 'Inner Mongolian (Cyrillic-script Mongolian elsewhere)', ja: '内モンゴル方言（他のモンゴル諸方言とはキリル文字使用などで区別）' },
+    xng:   { en: 'Middle Mongol (historical, ~13c.)',                      ja: '中世モンゴル語（歴史言語、13世紀頃）' },
+    omx:   { en: 'Old Mon (historical, pre-modern)',                       ja: '古モン語（歴史言語、近代以前）' },
+    mnw:   { en: 'Modern Mon (Burma/Thailand)',                            ja: '現代モン語（ビルマ／タイ）' },
+};
+for (const code of Object.keys(DISAMBIGUATORS)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta && !LANG_DATA[code].meta.disambiguator) {
+        LANG_DATA[code].meta.disambiguator = DISAMBIGUATORS[code];
+    }
+}
+
+// === Source coverage backfill (Audit Tasks 110/111) ================
+// Add language-level meta.sources for rows that audit identified as
+// having full word coverage (or per-cell wordEvidence) but no
+// language-level citation trail. Reuses existing structured shape.
+// Only sets if not already present.
+const SOURCE_BACKFILL = {
+    // Task 110: high-coverage historical rows lacking sources
+    la:     [{type:'reference', title:'Lewis & Short — A Latin Dictionary', url:'https://en.wiktionary.org/wiki/Appendix:Latin_index'}],
+    el_grc: [{type:'reference', title:'LSJ — A Greek-English Lexicon', url:'https://lsj.gr/'}],
+    en_ang: [{type:'reference', title:'Bosworth-Toller Anglo-Saxon Dictionary', url:'https://bosworthtoller.com/'}],
+    non:    [{type:'reference', title:'Cleasby-Vigfusson Old Norse Dictionary', url:'https://cleasby-vigfusson-dictionary.vercel.app/'}],
+    sa:     [{type:'reference', title:'Monier-Williams Sanskrit Dictionary', url:'https://www.sanskritdictionary.com/'}],
+    pal:    [{type:'reference', title:'MacKenzie — A Concise Pahlavi Dictionary', url:'https://en.wikipedia.org/wiki/Middle_Persian'}],
+    xct:    [{type:'reference', title:'Jäschke — Tibetan-English Dictionary', url:'https://archive.org/details/tibetanenglishdi00jasc'}],
+    ja_edo: [{type:'reference', title:'Frellesvig — A History of the Japanese Language', url:'https://www.cambridge.org/core/books/history-of-the-japanese-language/'}],
+    ja_heian: [{type:'reference', title:'Frellesvig — A History of the Japanese Language', url:'https://www.cambridge.org/core/books/history-of-the-japanese-language/'}],
+    ko_mid: [{type:'reference', title:'Lee & Ramsey — A History of the Korean Language', url:'https://www.cambridge.org/core/books/history-of-the-korean-language/'}],
+    ko_em:  [{type:'reference', title:'Lee & Ramsey — A History of the Korean Language', url:'https://www.cambridge.org/core/books/history-of-the-korean-language/'}],
+    vi_nom: [{type:'reference', title:'ChuNomStandardization (GitHub)', url:'https://github.com/valestanov/ChuNomStandardization'}],
+    // Task 111: modern rows that already have wordEvidence but lack lang-level sources
+    nv:     [{type:'reference', title:'Young & Morgan — The Navajo Language: A Grammar and Colloquial Dictionary', url:'https://en.wikipedia.org/wiki/Navajo_language'}],
+    haw:    [{type:'reference', title:'Pukui & Elbert — Hawaiian Dictionary', url:'http://wehewehe.org/'}],
+    pjt:    [{type:'reference', title:'Goddard — Pitjantjatjara/Yankunytjatjara to English Dictionary', url:'https://en.wikipedia.org/wiki/Pitjantjatjara_dialect'}],
+    kwk:    [{type:'reference', title:'First Voices — Kwak\'wala', url:'https://www.firstvoices.com/explore/FV/sections/Data/Kwak%27wala'}],
+    pwn:    [{type:'reference', title:'CIP Indigenous Languages Dictionary — Paiwan', url:'https://e-dictionary.ilrdf.org.tw/pwn/'}],
+    bnn:    [{type:'reference', title:'CIP Indigenous Languages Dictionary — Bunun', url:'https://e-dictionary.ilrdf.org.tw/bnn/'}],
+    trv:    [{type:'reference', title:'CIP Indigenous Languages Dictionary — Truku/Seediq', url:'https://e-dictionary.ilrdf.org.tw/trv/'}],
+    glk:    [{type:'reference', title:'Stilo — Gilaki: An Iranian Language Documentation', url:'https://en.wikipedia.org/wiki/Gilaki_language'}],
+    lrc:    [{type:'reference', title:'Anonby — Lurish Documentation Project', url:'https://en.wikipedia.org/wiki/Northern_Luri_language'}],
+    bqi:    [{type:'reference', title:'Anonby — Bakhtiari sketch', url:'https://en.wikipedia.org/wiki/Bakhtiari_dialect'}],
+};
+for (const code of Object.keys(SOURCE_BACKFILL)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta && !Array.isArray(LANG_DATA[code].meta.sources)) {
+        LANG_DATA[code].meta.sources = SOURCE_BACKFILL[code];
+    }
+}
+
+// === scriptTags (Audit Task 130) ===================================
+// Curated normalized script categories. Used by lang-filter.js for the
+// script filter. When meta.scriptTags is set, the filter uses it directly
+// instead of regex-matching meta.script. Initial coverage: the 7 rows
+// the audit identified as falling into generic 'Other' under regex.
+const SCRIPT_TAGS = {
+    hak_cn: ['Han'],                          // 'Chinese' → Han
+    cdo:    ['Han'],                          // 'Chinese' → Han
+    ine:    ['None / reconstructed'],         // PIE — proto-language
+    sukh:   ['Brahmic', 'Other historical'],  // Sukhothai script (1283 CE) → Brahmic
+    zkt:    ['Khitan', 'Other historical'],   // Khitan Large/Small Script
+    juc:    ['Jurchen', 'Other historical'],  // Jurchen script (1119 CE)
+    och:    ['Han', 'Other historical'],      // Oracle bone / Bronze / Seal — Han historical
+};
+for (const code of Object.keys(SCRIPT_TAGS)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta && !LANG_DATA[code].meta.scriptTags) {
+        LANG_DATA[code].meta.scriptTags = SCRIPT_TAGS[code];
     }
 }
 

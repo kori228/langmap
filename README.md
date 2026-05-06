@@ -103,7 +103,11 @@ langmap/
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
   data.js            — 100 sentences × 226 languages with segment alignments
-  validate_data.py   — Data validation script
+  lang_names.js      — Word Map language display names (per UI language)
+  meta_i18n_ext.js   — Word Map metadata translation extensions
+  lang-filter.js     — Word Map typology filter (word order / tone / morphology)
+  validate_data.py   — Sentence/Word-Order Map validator (data.js)
+  validate_wordmap_data.js — Word Map validator (wordmap_data.js + wordmap_meta.js + lang_names.js)
   CONTRIBUTING.md    — Data contribution guidelines
 ```
 
@@ -135,7 +139,17 @@ Each language lists the same segment IDs in its own natural word order. The visu
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding sentences or languages.
 
-Run `python3 validate_data.py` before committing to check for common errors.
+### Sentence / Word Order Map validation
+
+Run `python3 validate_data.py` to check `data.js` and the sentence segmentation/order map.
+
+### Word Map validation
+
+Run `node validate_wordmap_data.js` to check `wordmap_data.js`, `wordmap_meta.js`, `lang_names.js`, historical-language status, word-entry shape, metadata, i18n coverage, and Word Map-specific invariants.
+
+If you changed Word Map files (`wordmap.html`, `wordmap_data.js`, `wordmap_meta.js`, `meta_i18n_ext.js`, `lang_names.js`, `lang-filter.js`, `validate_wordmap_data.js`), run `node validate_wordmap_data.js`.
+If you changed sentence/order-map files (`data.js`, `app.js`, etc.), run `python3 validate_data.py`.
+If you changed both, run both.
 
 ### Chữ Nôm Standardization
 
@@ -258,7 +272,11 @@ langmap/
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
   data.js            — 100文 × 226言語のセグメントアラインメントデータ
-  validate_data.py   — データバリデーションスクリプト
+  lang_names.js      — 単語マップの言語表示名（UI言語別）
+  meta_i18n_ext.js   — 単語マップメタデータの翻訳拡張
+  lang-filter.js     — 単語マップ類型論フィルタ（語順／声調／形態論）
+  validate_data.py   — 文／語順マップ用バリデータ（data.js）
+  validate_wordmap_data.js — 単語マップ用バリデータ（wordmap_data.js + wordmap_meta.js + lang_names.js）
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
 
@@ -290,7 +308,17 @@ langmap/
 
 文章や言語の追加については [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
-コミット前に `python3 validate_data.py` を実行してエラーチェックを行ってください。
+### 文／語順マップのバリデーション
+
+`python3 validate_data.py` で `data.js`（文・語順マップ）をチェックします。
+
+### 単語マップのバリデーション
+
+`node validate_wordmap_data.js` で `wordmap_data.js`、`wordmap_meta.js`、`lang_names.js`、歴史言語ステータス、単語エントリ形式、メタデータ、i18n カバレッジ、単語マップ固有の不変条件をチェックします。
+
+単語マップのファイル（`wordmap.html`、`wordmap_data.js`、`wordmap_meta.js`、`meta_i18n_ext.js`、`lang_names.js`、`lang-filter.js`、`validate_wordmap_data.js`）を変更した場合は `node validate_wordmap_data.js` を実行してください。
+文／語順マップのファイル（`data.js`、`app.js` 等）を変更した場合は `python3 validate_data.py` を実行してください。
+両方変更した場合は両方実行してください。
 
 ### チューノム標準化
 

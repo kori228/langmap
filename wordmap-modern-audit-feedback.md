@@ -1066,3 +1066,52 @@ Cache buster `v=46 → v=62` (data) / `v=16 → v=25` (meta, +Tasks 84/95/99/105
 2. **Pronunciation column policy decision** — IPA strict vs broad transcription を user に確認、その後 family-wide cleanup
 3. **Coverage/confidence flag schema** — regional variant rows (zh_db, ko_kp, fr_qc, Spanish regional) に partial/full flag 追加
 4. Codex 8 残 / mnp Min Bei fire 等の既存 deferred items
+
+---
+
+## Pass 8 Sequential Cleanup (2026-05-06)
+
+監査の Education-Grade Roadmap 中、未対応だったタスクを順次対応。
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 88 | Exact-duplicate regional rows に `coverageNote` 追加 + UI render: `zh_db`/`es_co`/`es_pe`/`es_cu`/`fr_be`/`fr_af`/`fr_ch` を `base-copy-with-notes` 化、根拠は wordmap_data.js fingerprint 比較 | wordmap_meta.js, wordmap.html |
+| Task 120 | Suspicious same-form duplicate cells に `wordEvidence` 注釈: `lus` (drink/house "in"), `myp` (heart/good aoʔaago), `enq` (fire/tree ita), `mpt` (sun/good kep, mother/love na), `ygr` (love/hello amige), `sukh` (eat/drink กิน) | wordmap_data.js |
+| Task 122 | `HIST_DESCENDANT` を `wordmap.html` から `wordmap_data.js` へ移動。validator は ctx.HIST_DESCENDANT を直読みし、regex scrape は legacy fallback として保持 | wordmap_data.js, wordmap.html, validate_wordmap_data.js |
+| Task 131 | `meta.locationBasis` を canonical に明文化。top-level `lang.locationBasis` は deprecated warning。`LANG_DATA['ja'].locationBasis` を `meta.locationBasis` に移動 | wordmap_meta.js, validate_wordmap_data.js, CONTRIBUTING.md |
+| Task 137 | `<h2>` の dialog heading に `id="lang-info-heading"` を追加。dialog の `aria-labelledby` 参照が壊れていた問題を解消 | wordmap.html |
+| Task 138 | Legacy sentence-map スクリプト (`add_new_langs.py`/`add_egy.py`/`add_sa_la.py`/`add_languages.py`) に `LEGACY SENTENCE MAP TOOL` ヘッダと `--i-know-this-edits-data-js` 安全フラグを追加 | add_*.py |
+| Task 139 | README に Word Map バリデーション節 (`node validate_wordmap_data.js`) を追加。en/ja 双方更新 | README.md |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings — all i18n description coverage). wordEvidence overlay は 28→34 langs / 201→215 cells に拡大。
+
+---
+
+## Pass 9 Sequential Cleanup (2026-05-06 part 2)
+
+引き続き Education-Grade Roadmap の未対応タスクに対応。
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 107 | Public count string drift check 強化: SEO/OG/Twitter description / `<title>` を validator が個別に検査 | validate_wordmap_data.js |
+| Task 110 | High-coverage historical rows に `meta.sources` 追加 (12 langs: la, el_grc, en_ang, non, sa, pal, xct, ja_edo, ja_heian, ko_mid, ko_em, vi_nom) | wordmap_meta.js |
+| Task 111 | wordEvidence あり source なし modern rows に `meta.sources` 追加 (10 langs: nv, haw, pjt, kwk, pwn, bnn, trv, glk, lrc, bqi) | wordmap_meta.js |
+| Task 130 | `meta.scriptTags` schema + 7 misclassified rows ラベル付け (`hak_cn`/`cdo` Han, `ine` None/reconstructed, `sukh` Brahmic, `zkt` Khitan, `juc` Jurchen, `och` Han historical)。lang-filter.js が curated tags 優先、regex も `Khitan`/`Jurchen`/`Sukhothai`/`Oracle bone` 等を追加認識。validator が enum 検証 | wordmap_meta.js, lang-filter.js, validate_wordmap_data.js |
+| Task 135 | Map labels (`.lang-label`/`.globe-label`/`.unattested-marker`) を `role="button"` + `tabindex="0"` + `aria-label` で keyboard accessible に。`focus-visible` ring 追加。2D map container と globe container の双方に Enter/Space keydown handler 追加 | wordmap.html |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings — same as Pass 8). HTML/data/meta/filter 全て syntax OK。Cache-buster は filter 22→23、meta 31→32 bump 済。
+
+---
+
+## Pass 10 Sequential Cleanup (2026-05-06 part 3)
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 113 | Modal に parent/variety relation 行を表示: 「Regional variety of: <parent>」「Sibling language」「Continuum member」「Base variety」を localized で render (en/ja/ko/zh) | wordmap.html |
+| Task 114 | 既に実装済を確認 (NFD accent normalization + meta.aliases + iso6393 + canonicalCode の検索対応) | (no change) |
+| Task 115 | Duplicate display/native name 用 `meta.disambiguator` schema 追加 (string or {en,ja...} object)。`mn_cn`/`xng` (ᠮᠣᠩᠭᠣᠯ) と `omx`/`mnw` (ဘာသာ မန်) に注記。modal と search results の両方に表示。validator が schema 検証 | wordmap_meta.js, wordmap.html, validate_wordmap_data.js |
+| Task 126 | 全 underscore variant 行に `parentCode` / `varietyRole` 付与。Sensitive cases (Ryukyuan ja_oki/mvi/rys, ko_jeju=sibling-language, th_isan=continuum-member, hak_cn/es_eu/pt_eu=base) を尊重し、straightforward 10行 (ko_yb/mn_cn/fr_ch/es_co/es_cl/ja_kg/ja_sd/ko_jl/ko_hg/wuu_nb) に parent 紐付け。`ja_chu`/`ko_gor` を `historical-stage` に正分類 | wordmap_meta.js, validate_wordmap_data.js |
+| Task 136 | Language search を ARIA combobox + listbox 化: input に `role=combobox`, `aria-autocomplete=list`, `aria-expanded`, `aria-controls`, `aria-activedescendant` 追加。Result item に `role=option`, stable id, `aria-selected`, `aria-disabled` 追加。Arrow Up/Down/Enter/Escape のキーボード操作追加 | wordmap.html |
+| Task 137 (part 2) | Dialog focus management: `_lastDialogOpener` で opener を捕捉、close 時に opener へ focus restore (要素が DOM から消えていれば search input にフォールバック)。dialog に `tabindex="-1"` 追加 | wordmap.html |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings)。codeType breakdown は regional-variant 77→75, historical-stage 5→7 (`ja_chu`/`ko_gor` 正分類)。HTML/data/meta/filter 全て syntax OK。Cache-buster は meta 32→33 bump 済。Pass 8+9+10 合計 18 タスク対応完了。

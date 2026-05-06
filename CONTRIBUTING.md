@@ -800,8 +800,11 @@ sources: [                             // CANONICAL citations array — structur
 // bibliography footer for backward compatibility, but DO NOT add new entries
 // here. Use the structured `sources` array above. (Audit Task 91, 2026-05-05)
 
-// In wordmap_data.js — add to LANG_DATA[code] (top-level, not meta):
-locationBasis: 'capital',              // 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+// CANONICAL placement — Audit Task 131: meta.locationBasis is canonical.
+// Do not add new top-level lang.locationBasis entries; the validator now warns.
+meta: {
+  locationBasis: 'capital',            // 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
+}
 ```
 
 Reference example: see `LANG_DATA['ja']` in `wordmap_meta.js` and `wordmap_data.js`. Used as the schema reference; the validator's "Optional schema adoption" line counts how many entries have each field.
