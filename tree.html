@@ -1203,20 +1203,45 @@
         const data = buildHierarchy();
         root = d3.hierarchy(data, d => d.children);
         root.x0 = 0; root.y0 = 0;
-        // Precompute a proportional radial layout on the FULLY-EXPANDED tree
-        // (all .children visible since we haven't collapsed yet). Cache each
-        // node's angle (d.x) so update() can reuse it without re-running
-        // d3.tree on every expand/collapse. This is the actual fix for the
-        // Indo-European oscillation: angles are LOCKED IN at init time and
-        // cannot drift when descendants are revealed/hidden.
-        // It also gives leaf-count-proportional spacing (d3.tree's natural
-        // look) which the user said felt right "2 versions ago".
-        const totalDepth = root.height || 1;
-        d3.tree()
-            .size([2 * Math.PI, RING_STEP_BASE * totalDepth])
-            .separation((a, b) => (a.parent === b.parent ? 1 : 2))
-            (root);
-        root.each(n => { n._cachedX = n.x; });
+        // Precompute angles using a HYBRID layout: equal slots at the top
+        // level (each top-family gets 1/N of 2π regardless of leaf count),
+        // then leaf-count-proportional within each family. This combines:
+        //   - clean uniform top ring (no IE dominating, no isolate cramming)
+        //   - natural variation deeper in the tree (avoids the previous
+        //     "下の階層の幅が狭い" complaint)
+        //   - layout invariance under expand/collapse (no IE oscillation)
+        function totalLeaves(n) {
+            const kids = (n.children || n._children) || [];
+            if (kids.length === 0) return 1;
+            let s = 0;
+            for (const c of kids) s += totalLeaves(c);
+            return s;
+        }
+        function assignAngles(node, startAngle, endAngle, depth) {
+            node._cachedX = (startAngle + endAngle) / 2;
+            const kids = (node.children || node._children) || [];
+            if (kids.length === 0) return;
+            const span = endAngle - startAngle;
+            if (depth === 0) {
+                // Top level: equal slots per top-family.
+                const slot = span / kids.length;
+                let cur = startAngle;
+                for (const c of kids) {
+                    assignAngles(c, cur, cur + slot, depth + 1);
+                    cur += slot;
+                }
+            } else {
+                // Inside a family: proportional to total leaves.
+                const total = kids.reduce((s, c) => s + totalLeaves(c), 0);
+                let cur = startAngle;
+                for (const c of kids) {
+                    const w = totalLeaves(c) / total * span;
+                    assignAngles(c, cur, cur + w, depth + 1);
+                    cur += w;
+                }
+            }
+        }
+        assignAngles(root, 0, 2 * Math.PI, 0);
         // Now collapse to initial state.
         collapseDeepHierarchy(root, 0, 1);
         document.getElementById('loading')?.remove();
