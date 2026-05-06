@@ -2184,31 +2184,31 @@
 
         // Audit Task 79: coverage flag for regional variant rows
         const COVERAGE_LABEL = {
-            full:                   { en: 'fully reviewed',          ja: '全体検証済み',     ko: '전면 검증',      zh: '全面审核' },
-            partial:                { en: 'partial',                 ja: '部分的',           ko: '부분적',         zh: '部分覆盖' },
-            'accent-only':          { en: 'accent/pronunciation only', ja: 'アクセント・発音のみ', ko: '발음·억양만',  zh: '仅口音/发音' },
-            'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
+            full:                   { en:'fully reviewed', ja:'全体検証済み', ko:'전면 검증', zh:'全面审核', yue:'全面審核', vi:'đã xem xét đầy đủ', th:'ตรวจสอบครบถ้วน', id:'sepenuhnya ditinjau', hi:'पूर्णतः समीक्षित', de:'vollständig geprüft', fr:'entièrement vérifié', it:'interamente rivisto', es:'totalmente revisado', pt:'totalmente revisado', ru:'полностью проверено', uk:'повністю перевірено', ar:'مراجع بالكامل', he:'נסקר במלואו', sw:'imekaguliwa kikamilifu' },
+            partial:                { en:'partial', ja:'部分的', ko:'부분적', zh:'部分覆盖', yue:'部分覆蓋', vi:'một phần', th:'บางส่วน', id:'sebagian', hi:'आंशिक', de:'teilweise', fr:'partiel', it:'parziale', es:'parcial', pt:'parcial', ru:'частично', uk:'частково', ar:'جزئي', he:'חלקי', sw:'sehemu' },
+            'accent-only':          { en:'accent/pronunciation only', ja:'アクセント・発音のみ', ko:'발음·억양만', zh:'仅口音/发音', yue:'只口音／發音', vi:'chỉ giọng/phát âm', th:'เฉพาะสำเนียง/การออกเสียง', id:'hanya aksen/pengucapan', hi:'केवल उच्चारण/लहजा', de:'nur Akzent/Aussprache', fr:'accent/prononciation uniquement', it:'solo accento/pronuncia', es:'solo acento/pronunciación', pt:'apenas sotaque/pronúncia', ru:'только акцент/произношение', uk:'лише акцент/вимова', ar:'اللهجة/النطق فقط', he:'מבטא/הגייה בלבד', sw:'lafudhi/matamshi tu' },
+            'base-copy-with-notes': { en:'mostly inherited from {base}', ja:'主に{base}から継承', ko:'대부분 {base}에서 상속', zh:'主要继承自{base}', yue:'主要繼承自{base}', vi:'chủ yếu kế thừa từ {base}', th:'ส่วนใหญ่สืบทอดจาก {base}', id:'sebagian besar diwarisi dari {base}', hi:'मुख्यतः {base} से विरासत', de:'meist von {base} übernommen', fr:'principalement hérité de {base}', it:'in gran parte ereditato da {base}', es:'mayormente heredado de {base}', pt:'principalmente herdado de {base}', ru:'в основном унаследовано от {base}', uk:'переважно успадковано від {base}', ar:'موروث في الغالب من {base}', he:'נורש בעיקר מ-{base}', sw:'kwa kiasi kikubwa kutoka {base}' },
         };
-        const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
+        const COVERAGE_HEADER = { en:'Coverage', ja:'網羅度', ko:'커버리지', zh:'覆盖度', yue:'覆蓋度', vi:'Mức độ', th:'การครอบคลุม', id:'Cakupan', hi:'कवरेज', de:'Abdeckung', fr:'Couverture', it:'Copertura', es:'Cobertura', pt:'Cobertura', ru:'Охват', uk:'Охоплення', ar:'التغطية', he:'כיסוי', sw:'Ufunikaji' };
         // Audit Task 108: review status (separate from dataStatus)
         const REVIEW_STATUS_LABEL = {
-            'unreviewed':      { en: 'not reviewed',     ja: '未レビュー',     ko: '미검토',         zh: '未审核' },
-            'machine-seeded':  { en: 'machine-seeded',   ja: '機械生成初期値', ko: '기계 생성 초기',  zh: '机器初始值' },
-            'human-reviewed':  { en: 'human-reviewed',   ja: '人手レビュー済', ko: '수동 검토',       zh: '人工审核' },
-            'source-checked':  { en: 'source-checked',   ja: '出典確認済',     ko: '출처 확인',       zh: '已核对来源' },
-            'needs-rebuild':   { en: 'needs rebuild',    ja: '再構築要',       ko: '재구축 필요',     zh: '需重建' },
+            'unreviewed':      { en:'not reviewed', ja:'未レビュー', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
+            'machine-seeded':  { en:'machine-seeded', ja:'機械生成初期値', ko:'기계 생성 초기', zh:'机器初始值', yue:'機器初始值', vi:'tạo bằng máy', th:'สร้างโดยเครื่อง', id:'awal dari mesin', hi:'मशीन-बीजित', de:'maschinen-initiiert', fr:'généré par machine', it:'iniziato da macchina', es:'sembrado por máquina', pt:'semeado por máquina', ru:'машинная инициализация', uk:'машинна ініціалізація', ar:'مُنشأ بالآلة', he:'נוצר במכונה', sw:'iliyowekwa na mashine' },
+            'human-reviewed':  { en:'human-reviewed', ja:'人手レビュー済', ko:'수동 검토', zh:'人工审核', yue:'人手審核', vi:'đã được xem xét', th:'ตรวจสอบโดยมนุษย์', id:'ditinjau manusia', hi:'मानव-समीक्षित', de:'manuell geprüft', fr:'vérifié par humain', it:'rivisto a mano', es:'revisado por humanos', pt:'revisado por humanos', ru:'человек проверил', uk:'переглянуто людиною', ar:'مراجعة بشرية', he:'נסקר ידנית', sw:'imekaguliwa na binadamu' },
+            'source-checked':  { en:'source-checked', ja:'出典確認済', ko:'출처 확인', zh:'已核对来源', yue:'已核對來源', vi:'đã đối chiếu nguồn', th:'ตรวจสอบแหล่งข้อมูล', id:'diperiksa sumber', hi:'स्रोत-सत्यापित', de:'quellengeprüft', fr:'source vérifiée', it:'fonte verificata', es:'fuente verificada', pt:'fonte verificada', ru:'проверено по источнику', uk:'перевірено за джерелом', ar:'تحقق من المصدر', he:'אומת מקור', sw:'chanzo kimethibitishwa' },
+            'needs-rebuild':   { en:'needs rebuild', ja:'再構築要', ko:'재구축 필요', zh:'需重建', yue:'需重建', vi:'cần xây lại', th:'ต้องสร้างใหม่', id:'perlu dibangun ulang', hi:'पुनर्निर्माण आवश्यक', de:'Neuaufbau nötig', fr:'à reconstruire', it:'da ricostruire', es:'requiere reconstrucción', pt:'requer reconstrução', ru:'требует пересборки', uk:'потребує перезбірки', ar:'بحاجة إلى إعادة بناء', he:'דרוש בנייה מחדש', sw:'inahitaji kujengwa upya' },
         };
-        const REVIEW_STATUS_HEADER = { en: 'Review', ja: 'レビュー状況', ko: '검토 상태', zh: '审核状态' };
+        const REVIEW_STATUS_HEADER = { en:'Review', ja:'レビュー状況', ko:'검토 상태', zh:'审核状态', yue:'審核狀態', vi:'Trạng thái xem xét', th:'สถานะการตรวจสอบ', id:'Status Tinjauan', hi:'समीक्षा स्थिति', de:'Prüfung', fr:'Vérification', it:'Revisione', es:'Revisión', pt:'Revisão', ru:'Проверка', uk:'Перевірка', ar:'المراجعة', he:'סקירה', sw:'Ukaguzi' };
         // Audit Task 99: locationBasis label tells users that the marker is
         // a representative point, not a speaker-distribution map.
         const LOCATION_BASIS_LABEL = {
-            'capital':         { en: 'capital city',       ja: '首都',         ko: '수도',         zh: '首都' },
-            'prestige-center': { en: 'prestige center',    ja: '威信地',       ko: '위신 중심',    zh: '威望中心' },
-            'historical-site': { en: 'historical site',    ja: '歴史的所在地', ko: '역사적 장소',  zh: '历史遗迹' },
-            'largest-city':    { en: 'largest-speaker city', ja: '最大話者数都市', ko: '최대 화자 도시', zh: '最大使用者城市' },
-            'approx-region':   { en: 'approximate region', ja: '概略地域',     ko: '대략 지역',    zh: '大致区域' },
+            'capital':         { en:'capital city', ja:'首都', ko:'수도', zh:'首都', yue:'首都', vi:'thủ đô', th:'เมืองหลวง', id:'ibu kota', hi:'राजधानी', de:'Hauptstadt', fr:'capitale', it:'capitale', es:'capital', pt:'capital', ru:'столица', uk:'столиця', ar:'العاصمة', he:'בירה', sw:'mji mkuu' },
+            'prestige-center': { en:'prestige center', ja:'威信地', ko:'위신 중심', zh:'威望中心', yue:'威望中心', vi:'trung tâm danh tiếng', th:'ศูนย์กลางที่มีเกียรติ', id:'pusat prestise', hi:'प्रतिष्ठा केंद्र', de:'Prestigezentrum', fr:'centre de prestige', it:'centro di prestigio', es:'centro de prestigio', pt:'centro de prestígio', ru:'престижный центр', uk:'престижний центр', ar:'مركز هيبة', he:'מרכז יוקרה', sw:'kituo cha hadhi' },
+            'historical-site': { en:'historical site', ja:'歴史的所在地', ko:'역사적 장소', zh:'历史遗迹', yue:'歷史遺跡', vi:'di tích lịch sử', th:'แหล่งประวัติศาสตร์', id:'situs historis', hi:'ऐतिहासिक स्थल', de:'historischer Ort', fr:'site historique', it:'sito storico', es:'sitio histórico', pt:'sítio histórico', ru:'историческое место', uk:'історичне місце', ar:'موقع تاريخي', he:'אתר היסטורי', sw:'eneo la kihistoria' },
+            'largest-city':    { en:'largest-speaker city', ja:'最大話者数都市', ko:'최대 화자 도시', zh:'最大使用者城市', yue:'最大使用者城市', vi:'thành phố nhiều người nói nhất', th:'เมืองผู้พูดมากที่สุด', id:'kota dengan penutur terbanyak', hi:'सबसे अधिक वक्ता शहर', de:'Stadt mit meisten Sprechern', fr:'ville avec plus de locuteurs', it:'città con più parlanti', es:'ciudad con más hablantes', pt:'cidade com mais falantes', ru:'город с наибольшим числом носителей', uk:'місто з найбільшою кількістю мовців', ar:'مدينة بأكبر عدد متحدثين', he:'עיר הדוברים הגדולה ביותר', sw:'jiji lenye wazungumzaji wengi zaidi' },
+            'approx-region':   { en:'approximate region', ja:'概略地域', ko:'대략 지역', zh:'大致区域', yue:'大致區域', vi:'vùng khoảng chừng', th:'ภูมิภาคโดยประมาณ', id:'wilayah perkiraan', hi:'अनुमानित क्षेत्र', de:'ungefähre Region', fr:'région approximative', it:'regione approssimativa', es:'región aproximada', pt:'região aproximada', ru:'приблизительный регион', uk:'приблизний регіон', ar:'منطقة تقريبية', he:'אזור משוער', sw:'eneo la makadirio' },
         };
-        const LOCATION_BASIS_HEADER = { en: 'Map point', ja: 'マップ位置', ko: '지도 위치', zh: '地图标点' };
+        const LOCATION_BASIS_HEADER = { en:'Map point', ja:'マップ位置', ko:'지도 위치', zh:'地图标点', yue:'地圖標點', vi:'Vị trí bản đồ', th:'จุดบนแผนที่', id:'Titik Peta', hi:'मानचित्र बिंदु', de:'Kartenpunkt', fr:'Point de carte', it:'Punto sulla mappa', es:'Punto del mapa', pt:'Ponto do mapa', ru:'Точка на карте', uk:'Точка на мапі', ar:'نقطة الخريطة', he:'נקודה במפה', sw:'Nukta ya Ramani' };
 
         // Audit Task 118: languageKind badge for non-default kinds.
         // Natural and historical-attested rows don't get a separate badge —
@@ -2379,10 +2379,22 @@
                     // Audit Task 98: append (basis, source year) when present so
                     // users know whether a number is L1 vs total vs aggregate, and
                     // which census/year it came from.
+                    // Localize speakerBasis values across all UI langs.
+                    const SPEAKER_BASIS_LBL = {
+                        'L1':                  { en:'L1', ja:'L1', ko:'L1', zh:'L1', yue:'L1', vi:'L1', th:'L1', id:'L1', hi:'L1', de:'L1', fr:'L1', it:'L1', es:'L1', pt:'L1', ru:'L1', uk:'L1', ar:'L1', he:'L1', sw:'L1' },
+                        'L2':                  { en:'L2', ja:'L2', ko:'L2', zh:'L2', yue:'L2', vi:'L2', th:'L2', id:'L2', hi:'L2', de:'L2', fr:'L2', it:'L2', es:'L2', pt:'L2', ru:'L2', uk:'L2', ar:'L2', he:'L2', sw:'L2' },
+                        'total':               { en:'total',     ja:'合計',     ko:'합계',     zh:'合计',    yue:'合計',    vi:'tổng',         th:'รวม',          id:'total',          hi:'कुल',           de:'gesamt',     fr:'total',     it:'totale',     es:'total',      pt:'total',     ru:'всего',        uk:'усього',     ar:'إجمالي',     he:'סה"כ',       sw:'jumla' },
+                        'aggregate':           { en:'aggregate', ja:'総計',     ko:'총계',     zh:'综合',    yue:'綜合',    vi:'tổng hợp',     th:'รวมทั้งหมด',   id:'agregat',        hi:'समग्र',         de:'aggregiert', fr:'agrégé',    it:'aggregato',  es:'agregado',   pt:'agregado',  ru:'совокупно',    uk:'сукупно',    ar:'إجمالي',     he:'מצרפי',     sw:'jumlisho' },
+                        'regional-population': { en:'regional-population', ja:'地域人口', ko:'지역 인구', zh:'地区人口', yue:'地區人口', vi:'dân số vùng', th:'ประชากรในภูมิภาค', id:'populasi regional', hi:'क्षेत्रीय जनसंख्या', de:'Regionsbevölkerung', fr:'population régionale', it:'popolazione regionale', es:'población regional', pt:'população regional', ru:'население региона', uk:'населення регіону', ar:'سكان المنطقة', he:'אוכלוסיית האזור', sw:'idadi ya watu wa eneo' },
+                    };
+                    const ui = uiLang.split('_')[0];
                     let speakerCell = escapeHtml(translateMeta(m.speakers));
                     if (m.speakerBasis || m.speakerSource || m.speakerYear) {
                         const parts = [];
-                        if (m.speakerBasis)  parts.push(escapeHtml(m.speakerBasis));
+                        if (m.speakerBasis) {
+                            const sb = SPEAKER_BASIS_LBL[m.speakerBasis];
+                            parts.push(escapeHtml((sb && (sb[ui] || sb.en)) || m.speakerBasis));
+                        }
                         if (m.speakerSource) parts.push(escapeHtml(m.speakerSource));
                         if (m.speakerYear)   parts.push(String(m.speakerYear));
                         speakerCell += ` <span style="color:#999;font-size:10px">(${parts.join(', ')})</span>`;
@@ -2412,19 +2424,48 @@
                 if (window.__langmap && typeof window.__langmap.getFeatures === 'function') {
                     const f = window.__langmap.getFeatures(code);
                     if (f) {
-                        const provLbl = { 'manual-override': 'lang', 'family-default': 'family', 'unknown': '?' };
+                        // Provenance tags: localized for all UI langs (was: en-only "lang/family/?")
+                        const PROV_LBL = {
+                            'manual-override': { en:'lang', ja:'言語', ko:'언어', zh:'语言', yue:'語言', vi:'ngôn ngữ', th:'ภาษา', id:'bahasa', hi:'भाषा', de:'Sprache', fr:'langue', it:'lingua', es:'idioma', pt:'idioma', ru:'язык', uk:'мова', ar:'لغة', he:'שפה', sw:'lugha' },
+                            'family-default': { en:'family', ja:'語族', ko:'어족', zh:'语系', yue:'語系', vi:'họ', th:'ตระกูล', id:'rumpun', hi:'परिवार', de:'Familie', fr:'famille', it:'famiglia', es:'familia', pt:'família', ru:'семья', uk:'сім\'я', ar:'عائلة', he:'משפחה', sw:'familia' },
+                            'unknown': { en:'?', ja:'?', ko:'?', zh:'?', yue:'?', vi:'?', th:'?', id:'?', hi:'?', de:'?', fr:'?', it:'?', es:'?', pt:'?', ru:'?', uk:'?', ar:'?', he:'?', sw:'?' },
+                        };
                         const provColor = { 'manual-override': '#3a8a3a', 'family-default': '#888', 'unknown': '#bbb' };
+                        // Tone (boolean) → localized "tonal" / "non-tonal"
+                        const TONE_LBL = {
+                            true:  { en:'tonal',     ja:'声調あり',   ko:'성조 있음', zh:'有声调',   yue:'有聲調',   vi:'có thanh điệu',   th:'มีวรรณยุกต์',     id:'tonal',         hi:'स्वराघातिक',         de:'tonal',     fr:'tonale',     it:'tonale',     es:'tonal',     pt:'tonal',     ru:'тональный',    uk:'тональна',    ar:'نبري',        he:'טונאלית',     sw:'yenye toni' },
+                            false: { en:'non-tonal', ja:'声調なし',   ko:'성조 없음', zh:'无声调',   yue:'無聲調',   vi:'không thanh điệu',th:'ไม่มีวรรณยุกต์', id:'non-tonal',     hi:'गैर-स्वराघातिक',    de:'nicht tonal', fr:'non tonale', it:'non tonale', es:'no tonal',  pt:'não tonal', ru:'не тональный', uk:'не тональна', ar:'غير نبري',    he:'לא טונאלית',  sw:'isiyo na toni' },
+                        };
+                        // Morphology values → localized
+                        const MORPH_LBL = {
+                            isolating:     { en:'isolating',     ja:'孤立語',  ko:'고립어',  zh:'孤立语',  yue:'孤立語',  vi:'đơn lập',          th:'ภาษาคำโดด',     id:'isolatif',     hi:'वियोगात्मक',         de:'isolierend',     fr:'isolante',     it:'isolante',     es:'aislante',     pt:'isolante',     ru:'изолирующий',     uk:'ізолятивна',     ar:'عازلة',         he:'מבודדת',       sw:'isiyoambika' },
+                            fusional:      { en:'fusional',      ja:'屈折語',  ko:'굴절어',  zh:'屈折语',  yue:'屈折語',  vi:'biến hình',        th:'ภาษาวิภัตติ',    id:'fusional',     hi:'योगात्मक',          de:'flektierend',    fr:'fusionnelle',  it:'fusiva',       es:'flexiva',      pt:'fusional',     ru:'флективный',      uk:'флективна',      ar:'اندماجية',      he:'פוזיונלית',    sw:'iliyoungana' },
+                            agglutinative: { en:'agglutinative', ja:'膠着語',  ko:'교착어',  zh:'黏着语',  yue:'黏著語',  vi:'chắp dính',        th:'ภาษาคำติดต่อ',   id:'aglutinatif',  hi:'श्लिष्टयोगात्मक',     de:'agglutinierend', fr:'agglutinante', it:'agglutinante', es:'aglutinante',  pt:'aglutinante',  ru:'агглютинативный', uk:'аглютинативна',  ar:'إلصاقية',       he:'אגלוטינטיבית', sw:'iliyoambatishwa' },
+                            polysynthetic: { en:'polysynthetic', ja:'抱合語',  ko:'포합어',  zh:'复综语',  yue:'複綜語',  vi:'đa tổng hợp',      th:'ภาษาประสาน',    id:'polisintetik', hi:'बहुसंश्लिष्ट',       de:'polysynthetisch',fr:'polysynthétique',it:'polisintetica',es:'polisintética',pt:'polissintética',ru:'полисинтетический',uk:'полісинтетична',ar:'متعدد التركيب', he:'פוליסינתטית',  sw:'iliyoshikamana sana' },
+                        };
+                        const ui = uiLang.split('_')[0];
+                        const localizeProv = (prov) => {
+                            const m = PROV_LBL[prov]; if (!m) return prov;
+                            return m[ui] || m.en || prov;
+                        };
+                        const localizeVal = (val) => {
+                            if (typeof val === 'boolean') {
+                                const m = TONE_LBL[val]; return (m && (m[ui] || m.en)) || (val ? 'tonal' : 'non-tonal');
+                            }
+                            const m = MORPH_LBL[val]; if (m) return m[ui] || m.en || val;
+                            return String(val);
+                        };
                         const fmtCell = (val, prov) => {
                             if (val === null || val === undefined) return '<span style="color:#bbb">—</span>';
-                            const v = (typeof val === 'boolean') ? (val ? 'tonal' : 'non-tonal') : String(val);
-                            const tag = (provLbl[prov] || prov);
+                            const v = localizeVal(val);
+                            const tag = localizeProv(prov);
                             const c = provColor[prov] || '#888';
                             return `${escapeHtml(v)} <span style="color:${c};font-size:10px">(${escapeHtml(tag)})</span>`;
                         };
-                        const woLbl    = { en: 'Word order',  ja: '語順',     ko: '어순',         zh: '语序' };
-                        const toneLbl  = { en: 'Tone',        ja: '声調',     ko: '성조',         zh: '声调' };
-                        const morphLbl = { en: 'Morphology',  ja: '形態論',   ko: '형태론',       zh: '形态' };
-                        const ui = uiLang.split('_')[0];
+                        // Localized labels for ALL UI langs (was en/ja/ko/zh-only)
+                        const woLbl    = { en:'Word order', ja:'語順',  ko:'어순',  zh:'语序', yue:'語序', vi:'Trật tự từ', th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole', es:'Orden de palabras', pt:'Ordem das palavras', ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات', he:'סדר מילים', sw:'Mpangilio wa Maneno' };
+                        const toneLbl  = { en:'Tone',       ja:'声調',  ko:'성조',  zh:'声调', yue:'聲調', vi:'Thanh điệu', th:'วรรณยุกต์', id:'Tonal',       hi:'स्वराघात',   de:'Ton',           fr:'Ton',            it:'Tono',         es:'Tono',              pt:'Tom',                ru:'Тон',           uk:'Тон',          ar:'النبرة',        he:'טון',         sw:'Toni' };
+                        const morphLbl = { en:'Morphology', ja:'形態論', ko:'형태론', zh:'形态', yue:'形態學', vi:'Hình thái', th:'สัณฐานวิทยา',  id:'Morfologi',  hi:'आकृति विज्ञान',  de:'Morphologie',   fr:'Morphologie',   it:'Morfologia',   es:'Morfología',         pt:'Morfologia',         ru:'Морфология',    uk:'Морфологія',  ar:'علم الصرف',    he:'מורפולוגיה', sw:'Mofolojia' };
                         html += `<tr><td>${escapeHtml(woLbl[ui] || woLbl.en)}</td><td>${fmtCell(f.wo, f.provenance.wo)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(toneLbl[ui] || toneLbl.en)}</td><td>${fmtCell(f.tone, f.provenance.tone)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(morphLbl[ui] || morphLbl.en)}</td><td>${fmtCell(f.morph, f.provenance.morph)}</td></tr>`;
@@ -2504,9 +2545,9 @@
                 const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
                 const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
-                // Audit Task 88: show coverageNote when present
+                // Audit Task 88: show coverageNote when present (translated)
                 if (m.coverageNote && typeof m.coverageNote === 'string') {
-                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(m.coverageNote)}</div>`;
+                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(translateMeta(m.coverageNote))}</div>`;
                 }
             }
             // Audit Task 108: review status badge (separate from coverage / dataStatus)
