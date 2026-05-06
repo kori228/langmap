@@ -1213,6 +1213,38 @@ for (const code of codes) {
     I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
 }
 
+// === reviewStatus distribution + consistency (Audit Task 172) ===
+// Every row should have an explicit reviewStatus after the 172 backfill.
+// Cross-check: rows with rich evidence (sources or wordEvidence) should not be
+// 'unreviewed' or 'machine-seeded'.
+{
+    const counts = {};
+    let missingTotal = 0;
+    let inconsistencies = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang?.meta || {};
+        const rs = m.reviewStatus;
+        if (!rs) {
+            missingTotal++;
+            if (missingTotal <= 5) W(`[#172] ${code}: missing reviewStatus after backfill (Audit Task 172)`);
+            continue;
+        }
+        counts[rs] = (counts[rs] || 0) + 1;
+        const we = lang?.wordEvidence || {};
+        const weCount = Object.keys(we).length;
+        const hasSources = m.sources && m.sources.length > 0;
+        if ((rs === 'unreviewed' || rs === 'machine-seeded') && (hasSources || weCount > 0)) {
+            inconsistencies++;
+            if (inconsistencies <= 5) W(`[#172] ${code}: reviewStatus='${rs}' but has sources/wordEvidence — promote to human-reviewed or higher (Audit Task 172)`);
+        }
+    }
+    if (missingTotal > 5) W(`[#172] (${missingTotal - 5} more rows missing reviewStatus)`);
+    if (inconsistencies > 5) W(`[#172] (${inconsistencies - 5} more rows with rs/evidence mismatch)`);
+    const breakdown = Object.entries(counts).sort((a,b) => b[1]-a[1]).map(([k,v]) => `${k}=${v}`).join(', ');
+    I(`reviewStatus coverage: ${codes.length - missingTotal}/${codes.length} (${breakdown}) (Audit Task 172)`);
+}
+
 // === WORD_LIST.label UI lang coverage vs lang_names.js (Audit Task 175) ===
 // Every UI lang in lang_names.js must have a label entry in every WORD_LIST entry.
 // Otherwise users see English fallback for that UI lang's concept labels.

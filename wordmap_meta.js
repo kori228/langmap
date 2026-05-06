@@ -1999,6 +1999,38 @@ const SCRIPT_VARIANT_CODES = new Set([
     // (vi_nom is pedagogical-stage; if ever a pure script variant arises,
     //  add here)
 ]);
+// Audit Task 177: ISO 639-1 (2-letter) → ISO 639-3 (3-letter) mapping for backfill.
+// Used by the runtime initializer below to populate meta.iso6393 on rows that don't
+// have it set explicitly. Covers all ISO 639-1 codes used in this project.
+const ISO_639_1_TO_3 = {
+    aa:'aar', ab:'abk', af:'afr', ak:'aka', am:'amh', an:'arg', ar:'ara',
+    as:'asm', av:'ava', ay:'aym', az:'aze', ba:'bak', be:'bel', bg:'bul',
+    bi:'bis', bm:'bam', bn:'ben', bo:'bod', br:'bre', bs:'bos', ca:'cat',
+    ce:'che', ch:'cha', co:'cos', cr:'cre', cs:'ces', cu:'chu', cv:'chv',
+    cy:'cym', da:'dan', de:'deu', dv:'div', dz:'dzo', ee:'ewe', el:'ell',
+    en:'eng', eo:'epo', es:'spa', et:'est', eu:'eus', fa:'fas', ff:'ful',
+    fi:'fin', fj:'fij', fo:'fao', fr:'fra', fy:'fry', ga:'gle', gd:'gla',
+    gl:'glg', gn:'grn', gu:'guj', gv:'glv', ha:'hau', he:'heb', hi:'hin',
+    ho:'hmo', hr:'hrv', ht:'hat', hu:'hun', hy:'hye', hz:'her', ia:'ina',
+    id:'ind', ie:'ile', ig:'ibo', ii:'iii', ik:'ipk', io:'ido', is:'isl',
+    it:'ita', iu:'iku', ja:'jpn', jv:'jav', ka:'kat', kg:'kon', ki:'kik',
+    kj:'kua', kk:'kaz', kl:'kal', km:'khm', kn:'kan', ko:'kor', kr:'kau',
+    ks:'kas', ku:'kur', kv:'kom', kw:'cor', ky:'kir', la:'lat', lb:'ltz',
+    lg:'lug', li:'lim', ln:'lin', lo:'lao', lt:'lit', lu:'lub', lv:'lav',
+    mg:'mlg', mh:'mah', mi:'mri', mk:'mkd', ml:'mal', mn:'mon', mr:'mar',
+    ms:'msa', mt:'mlt', my:'mya', na:'nau', nb:'nob', nd:'nde', ne:'nep',
+    ng:'ndo', nl:'nld', nn:'nno', no:'nor', nr:'nbl', nv:'nav', ny:'nya',
+    oc:'oci', oj:'oji', om:'orm', or:'ori', os:'oss', pa:'pan', pi:'pli',
+    pl:'pol', ps:'pus', pt:'por', qu:'que', rm:'roh', rn:'run', ro:'ron',
+    ru:'rus', rw:'kin', sa:'san', sc:'srd', sd:'snd', se:'sme', sg:'sag',
+    si:'sin', sk:'slk', sl:'slv', sm:'smo', sn:'sna', so:'som', sq:'sqi',
+    sr:'srp', ss:'ssw', st:'sot', su:'sun', sv:'swe', sw:'swa', ta:'tam',
+    te:'tel', tg:'tgk', th:'tha', ti:'tir', tk:'tuk', tl:'tgl', tn:'tsn',
+    to:'ton', tr:'tur', ts:'tso', tt:'tat', tw:'twi', ty:'tah', ug:'uig',
+    uk:'ukr', ur:'urd', uz:'uzb', ve:'ven', vi:'vie', vo:'vol', wa:'wln',
+    wo:'wol', xh:'xho', yi:'yid', yo:'yor', za:'zha', zh:'zho', zu:'zul',
+};
+
 const CANONICAL_CODE = {
     // Where the project code differs from ISO 639-3
     ja_oki:  'ryu', // Central Okinawan
@@ -2037,6 +2069,10 @@ const CANONICAL_CODE = {
     ja_edo: 'ojp', ja_heian: 'ojp',
     ko_mid: 'okm', ko_em: 'okm',
     vi_nom: 'vie',
+    // Audit Task 177: extra historical-stage mappings
+    ja_chu: 'ojp',  // Middle Japanese → closest 639-3 is Old Japanese
+    ko_gor: 'okm',  // Goryeo Korean (Early Middle Korean) → closest 639-3 is Middle Korean
+    sukh:   'tha',  // Old Thai (Sukhothai) → no dedicated 639-3; modern Thai is the descendant
 };
 for (const code of Object.keys(LANG_DATA)) {
     const m = LANG_DATA[code].meta;
@@ -2057,6 +2093,15 @@ for (const code of Object.keys(LANG_DATA)) {
     // Audit Task 178: write to iso6393 (canonical) — canonicalCode field deprecated
     if (CANONICAL_CODE[code] && !m.iso6393 && !m.canonicalCode) {
         m.iso6393 = CANONICAL_CODE[code];
+    }
+    // Audit Task 177: backfill iso6393 for top-level codes (ISO 639-1 → 639-3 + identity for 3-letter codes)
+    if (!m.iso6393 && !code.includes('_')) {
+        if (ISO_639_1_TO_3[code]) {
+            m.iso6393 = ISO_639_1_TO_3[code];
+        } else if (/^[a-z]{3}$/.test(code)) {
+            // 3-letter row code is its own ISO 639-3 (project convention)
+            m.iso6393 = code;
+        }
     }
 }
 
@@ -2301,6 +2346,8 @@ for (const code of Object.keys(REVIEW_STATUS)) {
         LANG_DATA[code].meta.reviewStatus = REVIEW_STATUS[code];
     }
 }
+// (Audit Task 172 reviewStatus backfill is moved to AFTER SOURCE_BACKFILL so
+// that meta.sources is fully populated before the heuristic runs.)
 
 // === parentCode + varietyRole (Audit Task 126) =====================
 // Document language-variety relationships so the modal/UI can show
@@ -2415,6 +2462,26 @@ const SOURCE_BACKFILL = {
 for (const code of Object.keys(SOURCE_BACKFILL)) {
     if (LANG_DATA[code] && LANG_DATA[code].meta && !Array.isArray(LANG_DATA[code].meta.sources)) {
         LANG_DATA[code].meta.sources = SOURCE_BACKFILL[code];
+    }
+}
+
+// === Audit Task 172: backfill reviewStatus for all remaining rows ====
+// Runs AFTER SOURCE_BACKFILL so the heuristic sees the merged sources.
+//   - wordEvidence ≥ 5 cells AND meta.sources non-empty → 'source-checked'
+//   - wordEvidence ≥ 1 cell OR meta.sources non-empty   → 'human-reviewed'
+//   - none of the above                                 → 'machine-seeded'
+for (const code of Object.keys(LANG_DATA)) {
+    const lang = LANG_DATA[code];
+    if (!lang || !lang.meta || lang.meta.reviewStatus) continue;
+    const we = lang.wordEvidence || {};
+    const weCount = Object.keys(we).length;
+    const hasSources = lang.meta.sources && lang.meta.sources.length > 0;
+    if (weCount >= 5 && hasSources) {
+        lang.meta.reviewStatus = 'source-checked';
+    } else if (weCount > 0 || hasSources) {
+        lang.meta.reviewStatus = 'human-reviewed';
+    } else {
+        lang.meta.reviewStatus = 'machine-seeded';
     }
 }
 
