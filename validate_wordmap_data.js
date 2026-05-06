@@ -812,7 +812,7 @@ for (const code of codes) {
     }
     // Audit Task 126: varietyRole enum
     if (m.varietyRole !== undefined) {
-        const VR_ENUM = new Set(['base','regional-variety','dialect','sibling-language','continuum-member']);
+        const VR_ENUM = new Set(['base','base-variety','regional-variety','dialect','sibling-language','continuum-member','historical-stage']);
         if (!VR_ENUM.has(m.varietyRole)) E(`[#13n] ${code}: meta.varietyRole "${m.varietyRole}" not in enum (Audit Task 126)`);
         if (m.varietyRole === 'regional-variety' && !m.parentCode) {
             W(`[#13n] ${code}: varietyRole='regional-variety' should also set parentCode (Audit Task 126)`);
@@ -1180,6 +1180,81 @@ for (const code of codes) {
     I(`reconstructed-form notation: ${reconCodes.length} 'reconstructed' rows audited (Option C: */- in surface only) (Audit Task 164)`);
 }
 
+// === Underscore-code parentCode/varietyRole completeness (Audit Task 170) ===
+// Every underscore code (regional variant or historical stage) must have either
+// `parentCode` (regional variant of an attested parent) or `varietyRole`
+// (sibling-language / continuum-member / base-variety / historical-stage).
+{
+    const VARIETY_ROLE_ENUM = new Set(['base','base-variety','regional-variety','dialect','sibling-language','continuum-member','historical-stage']);
+    const underscoreCodes = codes.filter(c => c.includes('_'));
+    let missingTotal = 0;
+    let badParent = 0;
+    let badRole = 0;
+    for (const code of underscoreCodes) {
+        const m = ctx.LANG_DATA[code]?.meta;
+        if (!m) continue;
+        const hasParent = m.parentCode !== undefined;
+        const hasRole = m.varietyRole !== undefined;
+        if (!hasParent && !hasRole) {
+            missingTotal++;
+            if (missingTotal <= 5) W(`[#170] ${code}: underscore code without parentCode or varietyRole (Audit Task 170)`);
+        }
+        if (hasParent && !ctx.LANG_DATA[m.parentCode]) {
+            badParent++;
+            W(`[#170] ${code}: parentCode='${m.parentCode}' not in LANG_DATA (Audit Task 170)`);
+        }
+        if (hasRole && !VARIETY_ROLE_ENUM.has(m.varietyRole)) {
+            badRole++;
+            W(`[#170] ${code}: varietyRole='${m.varietyRole}' not in enum (Audit Task 170)`);
+        }
+    }
+    if (missingTotal > 5) W(`[#170] (${missingTotal - 5} more underscore codes missing parentCode/varietyRole)`);
+    const covered = underscoreCodes.length - missingTotal;
+    I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
+}
+
+// === WORD_LIST.label UI lang coverage vs lang_names.js (Audit Task 175) ===
+// Every UI lang in lang_names.js must have a label entry in every WORD_LIST entry.
+// Otherwise users see English fallback for that UI lang's concept labels.
+{
+    // Discover UI langs from lang_names.js — top-level keys of `LANG_NAMES = { uilang: {...}, ... }`.
+    let uiLangs = new Set();
+    try {
+        const namesSrc = fs.readFileSync('lang_names.js', 'utf-8');
+        // Find the LANG_NAMES = { ... } block, scan for top-level `<key>: {`
+        const blockMatch = namesSrc.match(/const\s+LANG_NAMES\s*=\s*\{([\s\S]*?)\n\};/);
+        if (blockMatch) {
+            const block = blockMatch[1];
+            // Top-level keys appear at line-start indented by 4 spaces (per file convention)
+            const re = /^\s{4}([a-z][a-z0-9_]*):\s*\{/gm;
+            let m;
+            while ((m = re.exec(block)) !== null) {
+                uiLangs.add(m[1]);
+            }
+        }
+    } catch (e) { /* skip if unreadable */ }
+    if (uiLangs.size > 0) {
+        const wl = ctx.WORD_LIST || [];
+        let missingTotal = 0;
+        const perLangMissing = {};
+        for (const w of wl) {
+            const lbl = w.label || {};
+            for (const ui of uiLangs) {
+                if (!lbl[ui]) {
+                    perLangMissing[ui] = (perLangMissing[ui] || 0) + 1;
+                    missingTotal++;
+                }
+            }
+        }
+        const missingLangs = Object.keys(perLangMissing).filter(l => perLangMissing[l] > 0);
+        for (const l of missingLangs) {
+            W(`[#175] WORD_LIST.label missing UI lang '${l}' on ${perLangMissing[l]}/20 entries (Audit Task 175)`);
+        }
+        const covered = uiLangs.size - missingLangs.length;
+        I(`WORD_LIST.label coverage: ${covered}/${uiLangs.size} UI langs fully covered across all ${wl.length} concepts (Audit Task 175)`);
+    }
+}
+
 // === Row-fingerprint comparison (Audit Task 90) =====================
 // Detect duplicate / near-duplicate word rows so reviewers don't rely on
 // ad hoc scripts. Three checks:
@@ -1343,8 +1418,8 @@ if (withLanguageKind > 0) {
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`languageKind coverage: ${withLanguageKind}/${codes.length} languages (${breakdown}) — Audit Task 118`);
 }
-// Audit Task 109: codeType / canonicalCode coverage tally
-let withCodeType = 0, withCanonicalCode = 0;
+// Audit Task 109/178: codeType / iso6393 coverage tally (canonicalCode deprecated post-178)
+let withCodeType = 0, withIso6393 = 0, withCanonicalCode = 0;
 const codeTypeCounts = {};
 for (const code of codes) {
     const m = ctx.LANG_DATA[code].meta || {};
@@ -1352,12 +1427,17 @@ for (const code of codes) {
         withCodeType++;
         codeTypeCounts[m.codeType] = (codeTypeCounts[m.codeType] || 0) + 1;
     }
+    if (m.iso6393) withIso6393++;
     if (m.canonicalCode) withCanonicalCode++;
 }
 if (withCodeType > 0) {
     const breakdown = Object.entries(codeTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
-    I(`codeType coverage: ${withCodeType}/${codes.length} languages (${breakdown}); canonicalCode set on ${withCanonicalCode} — Audit Task 109`);
+    I(`codeType coverage: ${withCodeType}/${codes.length} languages (${breakdown}); iso6393 set on ${withIso6393}; canonicalCode (deprecated) set on ${withCanonicalCode} — Audit Tasks 109/178`);
+}
+// Audit Task 178: warn if canonicalCode is still used in static data
+if (withCanonicalCode > 0) {
+    W(`[#178] canonicalCode is deprecated — ${withCanonicalCode} rows still use it; migrate to iso6393 (Audit Task 178)`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -
