@@ -15751,6 +15751,21 @@ const COMMON_OVERRIDES = [
      'लैटिन (ग्लॉटल स्टॉप के लिए शीर्षक चिह्न सहित)',
      'ละติน (พร้อมเครื่องหมายอะพอสทรอฟีสำหรับเสียงกัก-เส้นเสียง)',
      'La-tinh (với dấu lược cho âm tắc thanh hầu)'],
+    // Latin (with q for /q/) — e.g. Greenlandic (kl). Korean composer was
+    // breaking this into "라틴 문자(와 q 용 / q)" (와=and, 용=use); needs
+    // a whole-phrase override for all UI langs.
+    ['Latin (with q for /q/)',
+     'ラテン（/q/ に q を使用）',
+     '라틴 문자 (/q/에 q 사용)',
+     '拉丁(以 q 表示 /q/)',
+     '拉丁(以 q 表示 /q/)',
+     'латиница (q для /q/)',
+     'латиниця (q для /q/)',
+     'اللاتينية (q لـ /q/)',
+     'לטינית (q לפונמת /q/)',
+     'लैटिन (/q/ के लिए q)',
+     'ละติน (ใช้ q แทน /q/)',
+     'La-tinh (q cho /q/)'],
     // Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)
     ['Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)',
      'ラテン（放出音用アポストロフィ、/x/にx̱、/tɬ/にƛ）',
@@ -16276,6 +16291,8 @@ const COMMON_PHRASES_LATIN = [
     ['Marshall Islands', 'Marshallinseln', 'Îles Marshall', 'Islas Marshall', 'Isole Marshall', 'Ilhas Marshall', 'Kepulauan Marshall', 'Visiwa vya Marshall'],
     // Sri Lanka
     ['Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka'],
+    // Latin (with q for /q/) — Greenlandic (kl). Latin-UI version for de/fr/es/it/pt/id/sw.
+    ['Latin (with q for /q/)', 'Lateinisch (mit q für /q/)', 'latin (avec q pour /q/)', 'latín (con q para /q/)', 'latino (con q per /q/)', 'latim (com q para /q/)', 'Latin (dengan q untuk /q/)', 'Kilatini (q kwa /q/)'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
