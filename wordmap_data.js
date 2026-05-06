@@ -1145,7 +1145,7 @@ const LANG_DATA = {
   vi_nom: { name: 'Vietnamese Chữ Nôm', native: 'Tiếng Việt (Chữ Nôm)', lat: 21.03, lng: 105.85,
     words: { water:['渃','nɨək'], fire:['𤏬','lɨə'], sun:['𣎏𡗶','mət tɤj'], moon:['𣎏𢁑','mət taŋ'], mother:['𡞕','mɛ'], father:['𤙗','ɓo'], eat:['𫗒','an'], drink:['㗂','uəŋ'], love:['𢞅','iəw'], heart:['𢣐𢞂','tɤj tim'], tree:['𣘃','kəj'], house:['茹','ɲaː'], dog:['𤝞','tɕɔ'], cat:['猫','mɛw'], hand:['𡬶','taj'], eye:['𥄫','mak'], hello:['吀嘲','sin tɕaːw'], thanks:['感恩','kaːm əːn'], one:['𠬠','mot'], good:['卒','tot'] }},
   // === Constructed Languages ===
-  eo: { name: 'Esperanto', native: 'Esperanto', lat: 32, lng: -38, // Mid-Atlantic decoy column for constructed languages (per user preference 2026-05-06)
+  eo: { name: 'Esperanto', native: 'Esperanto', lat: 53.13, lng: 23.16, // Białystok, Poland (L. L. Zamenhof's birthplace)
     words: { water:['akvo','akvo'], fire:['fajro','fajro'], sun:['suno','suno'], moon:['luno','luno'], mother:['patrino','patrino'], father:['patro','patro'], eat:['manĝi','mandʒi'], drink:['trinki','trinki'], love:['amo','amo'], heart:['koro','koro'], tree:['arbo','arbo'], house:['domo','domo'], dog:['hundo','hundo'], cat:['kato','kato'], hand:['mano','mano'], eye:['okulo','okulo'], hello:['saluton','saluton'], thanks:['dankon','dankon'], one:['unu','unu'], good:['bona','bona'] }},
   // Volapük — first widely-adopted IAL (Schleyer 1879, predates Esperanto)
   vo: { name: 'Volapük', native: 'Volapük', lat: 47.71, lng: 9.20, // Litzelstetten (Schleyer's home)
@@ -1153,11 +1153,11 @@ const LANG_DATA = {
   // Interlingua — naturalistic IAL (IALA 1951)
   ia: { name: 'Interlingua', native: 'Interlingua', lat: 40.71, lng: -74.01, // New York (IALA HQ)
     words: { water:['aqua','akwa'], fire:['foco','fɔko'], sun:['sol','sɔl'], moon:['luna','luna'], mother:['matre','matre'], father:['patre','patre'], eat:['manducar','mandukar'], drink:['biber','biber'], love:['amor','amor'], heart:['corde','kɔrde'], tree:['arbore','arbore'], house:['casa','kasa'], dog:['can','kan'], cat:['catto','katto'], hand:['mano','mano'], eye:['oculo','okulo'], hello:['salute','salute'], thanks:['gratias','ɡratias'], one:['un','un'], good:['bon','bon'] }},
-  tok: { name: 'Toki Pona', native: 'toki pona', lat: 28, lng: -38, // Mid-Atlantic decoy column for constructed languages
+  tok: { name: 'Toki Pona', native: 'toki pona', lat: 43.65, lng: -79.38, // Toronto (Sonja Lang's residence)
     words: { water:['telo','telo'], fire:['seli','seli'], sun:['suno','suno'], moon:['mun','mun'], mother:['mama meli','mama meli'], father:['mama mije','mama mije'], eat:['moku','moku'], drink:['moku','moku'], love:['olin','olin'], heart:['pilin','pilin'], tree:['kasi','kasi'], house:['tomo','tomo'], dog:['soweli','soweli'], cat:['soweli','soweli'], hand:['luka','luka'], eye:['lukin','lukin'], hello:['toki','toki'], thanks:['pona','pona'], one:['wan','wan'], good:['pona','pona'] }},
-  tlh: { name: 'Klingon', native: 'tlhIngan Hol', lat: 24, lng: -38, // Mid-Atlantic decoy column for constructed languages
+  tlh: { name: 'Klingon', native: 'tlhIngan Hol', lat: 34.10, lng: -118.34, // Hollywood / Paramount Pictures (Star Trek franchise origin)
     words: { water:['bIQ','bɪqʰ'], fire:['qul','qʰul'], sun:['jul','dʒul'], moon:['maS','mɑʃ'], mother:['SoS','ʃoʃ'], father:['vav','vɑv'], eat:['Sop','ʃopʰ'], drink:['tlhutlh','t͡ɬʰut͡ɬʰ'], love:['parmaq','pʰɑrmɑqʰ'], heart:['tIq','tʰɪqʰ'], tree:['Sor','ʃor'], house:['juH','dʒux'], dog:['QaghwI\'','qɑɣwɪʔ'], cat:['vIghro\'','vɪɣroʔ'], hand:['ghop','ɣopʰ'], eye:['mIn','mɪn'], hello:['nuqneH','nuqʰnex'], thanks:['qatlho\'','qʰɑt͡ɬʰoʔ'], one:['wa\'','wɑʔ'], good:['QaQ','qɑqʰ'] }},
-  jbo: { name: 'Lojban', native: 'la .lojban.', lat: 20, lng: -38, // Mid-Atlantic decoy column for constructed languages
+  jbo: { name: 'Lojban', native: 'la .lojban.', lat: 38.85, lng: -77.31, // Fairfax, Virginia (Logical Language Group HQ)
     words: { water:['djacu','dʒatu͡ʃu'], fire:['fagri','faɡri'], sun:['solri','solri'], moon:['lunra','lunra'], mother:['mamta','mamta'], father:['patfu','patfu'], eat:['citka','ʃitka'], drink:['pinxe','pinʃe'], love:['prami','prami'], heart:['risna','risna'], tree:['tricu','tritu͡ʃu'], house:['zdani','zdani'], dog:['gerku','ɡerku'], cat:['mlatu','mlatu'], hand:['xance','ʃant͡ʃe'], eye:['kanla','kanla'], hello:['coi','ʃoj'], thanks:['ki\'e','kiʔe'], one:['pa','pa'], good:['xamgu','ʃamɡu'] }},
   // === Phase 2: high-population missing languages ===
   // Sinitic (Chinese varieties)

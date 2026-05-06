@@ -40,6 +40,12 @@
             font-size: 13px; padding: 4px 8px; border: 1px solid #d0d0d0;
             border-radius: 20px; background: #fff; cursor: pointer; max-width: 240px;
         }
+        /* Header UI lang select (unified across index/wordmap/tree pages) */
+        .header-ui-lang {
+            padding: 4px 8px; font-size: 12px;
+            border: 1px solid #d0d0d0; border-radius: 4px;
+            background: #fff; color: #444; cursor: pointer;
+        }
 
         /* --- Top-left controls (below header) --- */
         .top-left-controls {
@@ -605,6 +611,7 @@
             <span class="nav-sep">/</span>
             <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
         </nav>
+        <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
 
@@ -634,10 +641,7 @@
         </div>
     </div>
 
-    <!-- Bottom-left: UI language only -->
-    <div class="map-controls">
-        <select id="ui-lang" class="ui-lang-select" aria-label="UI language"></select>
-    </div>
+    <!-- (UI lang select moved to header for cross-page consistency, Pass 34) -->
 
     <!-- Right-side controls: all stacked, centered -->
     <div class="right-controls">
@@ -740,7 +744,7 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=101"></script>
+    <script src="wordmap_data.js?v=102"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="meta_i18n_coverage.js?v=1"></script>
     <script src="lang-filter.js?v=25"></script>
@@ -864,23 +868,39 @@
             .catch(err => console.warn('Could not load country borders:', err));
 
         // --- UI language (detect from browser) ---
+        // Cookie helpers: shared cross-page UI-lang persistence (wm_uilang).
+        function _wmGetCookie(name) {
+            const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+        function _wmSetCookie(name, value) {
+            document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
+        }
+
         function detectBrowserLang() {
+            // 1. Cookie first (set by user's previous choice on any page)
+            const cookie = _wmGetCookie('wm_uilang');
+            if (cookie && WM_UI[cookie]) return cookie;
+            if (cookie) {
+                const base = cookie.split('_')[0];
+                if (WM_UI[base]) return base;
+            }
+            // 2. navigator.language fallback
             const langs = navigator.languages || [navigator.language || 'en'];
             for (const l of langs) {
                 const code = l.replace('-', '_').toLowerCase();
                 if (WM_UI[code]) return code;
                 const base = code.split('_')[0];
-                // Map browser codes to our UI codes
                 const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
                     en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
                     sw:'sw', pt:'pt_br', es:'es_mx', da:'en', sv:'en', no:'en', nl:'en' };
                 if (map[base] && WM_UI[map[base]]) return map[base];
-                // Chinese variants
                 if (base === 'zh') {
                     if (code.includes('hk') || code.includes('tw') || code.includes('hant')) return 'yue';
                     return 'zh';
                 }
             }
+            // 3. Default
             return 'en';
         }
         // Audit Task 134: Central cache-buster version registry. Static
@@ -891,7 +911,7 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      101,
+            data:      102,
             metaI18n:  8,
             filter:    25,
             names:    11,
@@ -902,7 +922,7 @@
         }
 
         let uiLang = detectBrowserLang();
-        const uiLangSelect = document.getElementById('ui-lang');
+        const uiLangSelect = document.getElementById('header-ui-lang');
         for (const [code, label] of Object.entries(WM_UI_LABELS)) {
             const opt = document.createElement('option');
             opt.value = code;
@@ -1165,6 +1185,7 @@
 
         uiLangSelect.addEventListener('change', () => {
             uiLang = uiLangSelect.value;
+            _wmSetCookie('wm_uilang', uiLang);  // Pass 34: cross-page cookie persistence
             window.__langmap.uiLang = uiLang;
             window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
             applyUILang();

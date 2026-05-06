@@ -7,11 +7,13 @@
 <meta name="description" content="Browse 617 languages organized by their genealogical family tree.">
 <link rel="stylesheet" href="styles.css?v=54">
 <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #222; background: #fafbfc; overflow: hidden; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #222; background: #fafbfc; overflow: hidden; }
     .site-header-bar {
-        position: sticky; top: 0; z-index: 10; background: #fff;
+        position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: #fff;
         padding: 8px 16px; border-bottom: 1px solid #e0e0e0;
         display: flex; align-items: center; gap: 18px;
+        height: 24px;  /* total = 24 + 16 padding = 40px */
     }
     .site-header-bar .logo { font-weight: 700; color: #1a73e8; text-decoration: none; font-size: 16px; }
     .header-nav { display: flex; align-items: center; gap: 6px; flex: 1; font-size: 13px; }
@@ -20,9 +22,14 @@
     .header-nav-current { font-weight: 600; color: #1a73e8; background: #e8f0fe; }
     .nav-sep { color: #ccc; }
     .header-url { color: #888; font-size: 12px; text-decoration: none; }
+    .header-ui-lang {
+        padding: 4px 8px; font-size: 12px;
+        border: 1px solid #d0d0d0; border-radius: 4px;
+        background: #fff; color: #444; cursor: pointer;
+    }
 
     .controls-bar {
-        position: sticky; top: 41px; z-index: 9; background: #fff;
+        position: fixed; top: 41px; left: 0; right: 0; z-index: 9; background: #fff;
         border-bottom: 1px solid #e8e8e8; padding: 8px 16px;
         display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
     }
@@ -41,7 +48,7 @@
 
     /* Tree canvas: full-height SVG with pan/zoom */
     .tree-canvas {
-        position: absolute;
+        position: fixed;
         top: 90px;  /* below header + controls */
         left: 0; right: 0; bottom: 0;
         overflow: hidden; background: #fafbfc;
@@ -124,12 +131,12 @@
         <span class="nav-sep">/</span>
         <span class="header-nav-current" id="nav-tree">Tree</span>
     </nav>
+    <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
     <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
 </div>
 
 <div class="controls-bar">
     <input type="text" id="search" placeholder="🔍 Filter…" autocomplete="off">
-    <select id="ui-lang" aria-label="UI language"></select>
     <button type="button" id="expand-all">Expand all</button>
     <button type="button" id="collapse-all">Collapse all</button>
     <button type="button" id="reset-view" title="Reset view">⟲</button>
@@ -142,7 +149,7 @@
 </div>
 <div class="tooltip" id="tooltip"></div>
 
-<script src="wordmap_data.js?v=101"></script>
+<script src="wordmap_data.js?v=102"></script>
 <script src="lang_names.js?v=11"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script>
@@ -176,14 +183,29 @@
         sw: { title:'Mti wa Lugha', subtitle:n=>n+' lugha kwa familia.', search:'🔍 Chuja…', expand:'Panua zote', collapse:'Kunja zote', reset:'Weka upya', legend:'Bofya kupanua · vuta kuhamisha · sogeza kukuza · bofya jani kufungua ramani', stats:n=>n+' lugha', navOrder:'Mpangilio', navMap:'Ramani', navTree:'Mti', uiLangLabel:'Lugha UI' },
     };
 
+    // Cookie helpers (shared cross-page persistence; cookie 'wm_uilang')
+    function getCookie(name) {
+        const m = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
+        return m ? decodeURIComponent(m[2]) : null;
+    }
+    function setCookie(name, value) {
+        document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
+    }
+
+    // UI lang resolution: cookie → navigator.language → 'en'.
+    // URL ?ui= param overrides for transient preview.
     function resolveUiLang() {
         try {
             const params = new URLSearchParams(location.search || location.hash.replace(/^#/, ''));
             const u = params.get('ui'); if (u && UI_I18N[u]) return u;
         } catch (e) {}
+        const cookie = getCookie('wm_uilang');
+        if (cookie && UI_I18N[cookie]) return cookie;
+        if (cookie) { const base = cookie.split('_')[0]; if (UI_I18N[base]) return base; }
+        // Backward-compat: also read old localStorage key
         try {
-            const u = localStorage.getItem('wm.uiLang'); if (u && UI_I18N[u]) return u;
-            if (u) { const base = u.split('_')[0]; if (UI_I18N[base]) return base; }
+            const u = localStorage.getItem('wm.uiLang');
+            if (u && UI_I18N[u]) { setCookie('wm_uilang', u); return u; }
         } catch (e) {}
         const nav = (navigator.language || 'en').toLowerCase().split('-')[0];
         if (UI_I18N[nav]) return nav;
@@ -199,7 +221,7 @@
     if (uiLang === 'ar' || uiLang === 'he') document.documentElement.dir = 'rtl';
 
     function populateUiLangSelect() {
-        const sel = document.getElementById('ui-lang');
+        const sel = document.getElementById('header-ui-lang');
         const NATIVE = { en:'English', ja:'日本語', ko:'한국어', zh:'中文', yue:'粵語', vi:'Tiếng Việt', th:'ภาษาไทย', id:'Bahasa Indonesia', hi:'हिन्दी', de:'Deutsch', fr:'Français', it:'Italiano', es:'Español', pt:'Português', ru:'Русский', uk:'Українська', ar:'العربية', he:'עברית', sw:'Kiswahili' };
         for (const u of Object.keys(UI_I18N)) {
             const opt = document.createElement('option');
@@ -210,9 +232,9 @@
         sel.title = t('uiLangLabel');
         sel.addEventListener('change', () => {
             uiLang = sel.value;
-            try { localStorage.setItem('wm.uiLang', uiLang); } catch (e) {}
+            setCookie('wm_uilang', uiLang);
+            try { localStorage.setItem('wm.uiLang', uiLang); } catch (e) {}  // keep backward compat
             applyI18n();
-            // Re-render with new language names
             buildAndRender();
         });
     }
@@ -506,15 +528,13 @@
     function makeSvg() {
         const canvas = document.getElementById('tree-canvas');
         canvas.innerHTML = '';
-        const w = canvas.clientWidth;
-        const h = canvas.clientHeight;
+        const w = canvas.clientWidth || 800;
+        const h = canvas.clientHeight || 600;
         svg = d3.select(canvas).append('svg')
-            .attr('width', w).attr('height', h)
-            .attr('viewBox', `0 0 ${w} ${h}`);
+            .attr('width', w).attr('height', h);
         g = svg.append('g');
         gLinks = g.append('g').attr('class', 'links');
         gNodes = g.append('g').attr('class', 'nodes');
-        // Pan/zoom
         zoom = d3.zoom()
             .scaleExtent([0.2, 4])
             .on('zoom', (event) => {
@@ -540,21 +560,12 @@
         const links = root.links();
 
         // Determine vertical extent based on visible leaves
-        const leafCount = root.leaves().length;
-        const dx = Math.max(20, Math.min(40, 800 / Math.max(1, leafCount)));
-        const dy = 200;  // horizontal spacing between depth levels
+        const leafCount = root.descendants().filter(d => !d.children && !d._children).length || 1;
+        const dx = leafCount > 60 ? 22 : (leafCount > 20 ? 28 : 36);
+        const dy = 220;  // horizontal spacing between depth levels
         treeLayout = d3.tree().nodeSize([dx, dy]);
         treeLayout(root);
-
-        // Compute the bounding box
-        let x0 = Infinity, x1 = -Infinity;
-        root.each(d => { if (d.x > x1) x1 = d.x; if (d.x < x0) x0 = d.x; });
-        const height = x1 - x0 + dx * 4;
-        const width = (root.height + 1) * dy + 240;
-        // Update SVG size to fit (so scrolling/panning works for big trees)
-        svg.attr('width', Math.max(width, svg.node().clientWidth))
-           .attr('height', Math.max(height, svg.node().clientHeight))
-           .attr('viewBox', `${-100} ${x0 - dx * 2} ${width} ${height}`);
+        // svg dimensions stay = canvas dimensions; positioning handled by zoom transform.
 
         // === Links ===
         const link = gLinks.selectAll('path.link')
@@ -777,10 +788,11 @@
 
     function centerInitialView() {
         if (!svg || !zoom) return;
-        const w = svg.node().clientWidth;
-        const h = svg.node().clientHeight;
+        const canvas = document.getElementById('tree-canvas');
+        const w = canvas.clientWidth || 800;
+        const h = canvas.clientHeight || 600;
         // Translate so the root sits at the left edge with vertical centering.
-        const tx = 60;
+        const tx = 80;
         const ty = h / 2;
         svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty));
     }
