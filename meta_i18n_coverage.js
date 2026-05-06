@@ -15822,6 +15822,129 @@ for (const row of COMMON_OVERRIDES) {
     }
 }
 
+// === Latin-script UI translations (de/fr/es/it/pt/id/sw) =================
+// These UIs share the Latin alphabet with English so many proper nouns
+// (country names, language names, acronyms) are correctly identical to
+// English. The rows below add translations for common-noun phrases that
+// are unambiguously translatable.
+const COMMON_PHRASES_LATIN = [
+    // [key, de, fr, es, it, pt, id, sw]
+    // Empires / kingdoms / courts
+    ['Empire', 'Reich', 'Empire', 'Imperio', 'Impero', 'Império', 'Kekaisaran', 'Milki'],
+    ['empire', 'Reich', 'empire', 'imperio', 'impero', 'império', 'kekaisaran', 'milki'],
+    ['Kingdom', 'Königreich', 'Royaume', 'Reino', 'Regno', 'Reino', 'Kerajaan', 'Ufalme'],
+    ['kingdom', 'Königreich', 'royaume', 'reino', 'regno', 'reino', 'kerajaan', 'ufalme'],
+    ['kingdoms', 'Königreiche', 'royaumes', 'reinos', 'regni', 'reinos', 'kerajaan-kerajaan', 'falme'],
+    ['Republic', 'Republik', 'République', 'República', 'Repubblica', 'República', 'Republik', 'Jamhuri'],
+    ['republic', 'Republik', 'république', 'república', 'repubblica', 'república', 'republik', 'jamhuri'],
+    ['Court', 'Hof', 'Cour', 'Corte', 'Corte', 'Corte', 'Istana', 'Mahakama'],
+    ['court', 'Hof', 'cour', 'corte', 'corte', 'corte', 'istana', 'mahakama'],
+    ['administration', 'Verwaltung', 'administration', 'administración', 'amministrazione', 'administração', 'administrasi', 'utawala'],
+    ['administrations', 'Verwaltungen', 'administrations', 'administraciones', 'amministrazioni', 'administrações', 'administrasi', 'utawala'],
+    ['palace', 'Palast', 'palais', 'palacio', 'palazzo', 'palácio', 'istana', 'kasri'],
+    ['palace administrations', 'Palastverwaltungen', 'administrations palatines', 'administraciones palaciegas', 'amministrazioni palatine', 'administrações palacianas', 'administrasi istana', 'utawala wa kasri'],
+    // Era / age
+    ['Bronze Age', 'Bronzezeit', 'Âge du bronze', 'Edad del Bronce', 'Età del bronzo', 'Idade do Bronze', 'Zaman Perunggu', 'Enzi ya Shaba'],
+    ['Iron Age', 'Eisenzeit', 'Âge du fer', 'Edad del Hierro', 'Età del ferro', 'Idade do Ferro', 'Zaman Besi', 'Enzi ya Chuma'],
+    // Compound empire/kingdom phrases
+    ['Achaemenid Empire', 'Achämenidenreich', 'Empire achéménide', 'Imperio aqueménida', 'Impero achemenide', 'Império Aquemênida', 'Kekaisaran Akhemeniyah', 'Milki ya Akemenidi'],
+    ['Carthaginian Empire', 'Karthagisches Reich', 'Empire carthaginois', 'Imperio cartaginés', 'Impero cartaginese', 'Império Cartaginês', 'Kekaisaran Kartago', 'Milki ya Kathago'],
+    ['Mongol Empire', 'Mongolenreich', 'Empire mongol', 'Imperio mongol', 'Impero mongolo', 'Império Mongol', 'Kekaisaran Mongol', 'Milki ya Mongolia'],
+    ['Parthian Empire', 'Partherreich', 'Empire parthe', 'Imperio parto', 'Impero partico', 'Império Parta', 'Kekaisaran Parthia', 'Milki ya Parthia'],
+    ['Elamite Empire', 'Elamitisches Reich', 'Empire élamite', 'Imperio elamita', 'Impero elamita', 'Império Elamita', 'Kekaisaran Elam', 'Milki ya Elam'],
+    ['Mitanni kingdom', 'Königreich Mitanni', 'royaume du Mitanni', 'reino de Mitanni', 'regno di Mitanni', 'reino de Mitanni', 'kerajaan Mitanni', 'ufalme wa Mitanni'],
+    ['Kingdom of Ugarit', 'Königreich Ugarit', 'Royaume d\'Ougarit', 'Reino de Ugarit', 'Regno di Ugarit', 'Reino de Ugarit', 'Kerajaan Ugarit', 'Ufalme wa Ugariti'],
+    // Achaemenid administration
+    ['Achaemenid administration', 'achämenidische Verwaltung', 'administration achéménide', 'administración aqueménida', 'amministrazione achemenide', 'administração aquemênida', 'administrasi Akhemeniyah', 'utawala wa Akemenidi'],
+    ['Elamite Empire, Achaemenid administration', 'Elamitisches Reich, achämenidische Verwaltung', 'Empire élamite, administration achéménide', 'Imperio elamita, administración aqueménida', 'Impero elamita, amministrazione achemenide', 'Império Elamita, administração aquemênida', 'Kekaisaran Elam, administrasi Akhemeniyah', 'Milki ya Elam, utawala wa Akemenidi'],
+    // Bronze Age palace administrations
+    ['Bronze Age palace administrations', 'bronzezeitliche Palastverwaltungen', 'administrations palatines de l\'Âge du bronze', 'administraciones palaciegas de la Edad del Bronce', 'amministrazioni palatine dell\'Età del bronzo', 'administrações palacianas da Idade do Bronze', 'administrasi istana Zaman Perunggu', 'utawala wa kasri ya Enzi ya Shaba'],
+    // Israelite, Jewish liturgy
+    ['Ancient Israelite kingdoms', 'altisraelitische Königreiche', 'royaumes israélites antiques', 'reinos israelitas antiguos', 'regni israelitici antichi', 'reinos israelitas antigos', 'kerajaan Israel kuno', 'falme za kale za Waisraeli'],
+    ['Jewish liturgy', 'jüdische Liturgie', 'liturgie juive', 'liturgia judía', 'liturgia ebraica', 'liturgia judaica', 'liturgi Yahudi', 'ibada ya Kiyahudi'],
+    ['Ancient Israelite kingdoms; Jewish liturgy', 'altisraelitische Königreiche; jüdische Liturgie', 'royaumes israélites antiques ; liturgie juive', 'reinos israelitas antiguos; liturgia judía', 'regni israelitici antichi; liturgia ebraica', 'reinos israelitas antigos; liturgia judaica', 'kerajaan Israel kuno; liturgi Yahudi', 'falme za kale za Waisraeli; ibada ya Kiyahudi'],
+    // Buddhist kingdom of Khotan, Khotanese, Tocharian
+    ['Buddhist', 'buddhistisch', 'bouddhiste', 'budista', 'buddhista', 'budista', 'Buddha', 'Kibuddha'],
+    ['Khotan', 'Khotan', 'Khotan', 'Jotán', 'Khotan', 'Khotan', 'Khotan', 'Khotan'],
+    ['Khotanese', 'khotanesisch', 'khotanais', 'jotanés', 'khotanese', 'khotanês', 'Khotan', 'Khotan'],
+    ['Tocharian', 'tocharisch', 'tokharien', 'tocario', 'tocario', 'tocário', 'Tokharia', 'Tokharia'],
+    ['Buddhist kingdom of Khotan', 'buddhistisches Königreich Khotan', 'royaume bouddhiste de Khotan', 'reino budista de Jotán', 'regno buddhista di Khotan', 'reino budista de Khotan', 'kerajaan Buddha Khotan', 'ufalme wa Kibuddha wa Khotan'],
+    ['script', 'Schrift', 'écriture', 'escritura', 'scrittura', 'escrita', 'aksara', 'maandishi'],
+    ['Brahmi-derived', 'Brahmi-abgeleitet', 'dérivé du brahmi', 'derivado del brahmi', 'derivato dal brahmi', 'derivado do brahmi', 'turunan brahmi', 'asilia ya brahmi'],
+    ['Brahmi-derived Khotanese script', 'aus Brahmi abgeleitete khotanesische Schrift', 'écriture khotanaise dérivée du brahmi', 'escritura jotanesa derivada del brahmi', 'scrittura khotanese derivata dal brahmi', 'escrita khotanesa derivada do brahmi', 'aksara Khotan turunan brahmi', 'maandishi ya Khotan asilia ya brahmi'],
+    ['Brahmi-derived Tocharian script', 'aus Brahmi abgeleitete tocharische Schrift', 'écriture tokharienne dérivée du brahmi', 'escritura tocaria derivada del brahmi', 'scrittura tocaria derivata dal brahmi', 'escrita tocária derivada do brahmi', 'aksara Tokharia turunan brahmi', 'maandishi ya Tokharia asilia ya brahmi'],
+    // Goguryeo / Goryeo / Silla courts
+    ['Goguryeo', 'Goguryeo', 'Goguryeo', 'Goguryeo', 'Goguryeo', 'Goguryeo', 'Goguryeo', 'Goguryeo'],
+    ['Goryeo', 'Goryeo', 'Goryeo', 'Goryeo', 'Goryeo', 'Goryeo', 'Goryeo', 'Goryeo'],
+    ['Silla', 'Silla', 'Silla', 'Silla', 'Silla', 'Silla', 'Silla', 'Silla'],
+    ['Goguryeo court', 'Goguryeo-Hof', 'cour de Goguryeo', 'corte de Goguryeo', 'corte di Goguryeo', 'corte de Goguryeo', 'istana Goguryeo', 'mahakama ya Goguryeo'],
+    ['Goryeo court', 'Goryeo-Hof', 'cour de Goryeo', 'corte de Goryeo', 'corte di Goryeo', 'corte de Goryeo', 'istana Goryeo', 'mahakama ya Goryeo'],
+    ['Silla court', 'Silla-Hof', 'cour de Silla', 'corte de Silla', 'corte di Silla', 'corte de Silla', 'istana Silla', 'mahakama ya Silla'],
+    // Sabaean and Himyarite kingdoms
+    ['Sabaean', 'sabäisch', 'sabéen', 'sabeo', 'sabeo', 'sabeu', 'Saba', 'Saba'],
+    ['Himyarite', 'himyaritisch', 'himyarite', 'himyarí', 'himyarita', 'himiarita', 'Himyar', 'Himyar'],
+    ['Sabaean and Himyarite kingdoms', 'sabäische und himyaritische Königreiche', 'royaumes sabéen et himyarite', 'reinos sabeo e himyarí', 'regni sabeo e himyarita', 'reinos sabeu e himiarita', 'kerajaan Saba dan Himyar', 'falme za Saba na Himyar'],
+    // Phoenicia + Mediterranean colonies
+    ['Phoenicia', 'Phönizien', 'Phénicie', 'Fenicia', 'Fenicia', 'Fenícia', 'Fenisia', 'Foinike'],
+    ['Mediterranean colonies', 'Mittelmeer-Kolonien', 'colonies méditerranéennes', 'colonias mediterráneas', 'colonie mediterranee', 'colônias mediterrâneas', 'koloni Mediterania', 'makoloni ya Mediterania'],
+    ['Phoenicia (Lebanon, coastal Syria/Israel) + Mediterranean colonies', 'Phönizien (Libanon, Küsten-Syrien/Israel) + Mittelmeer-Kolonien', 'Phénicie (Liban, Syrie/Israël côtiers) + colonies méditerranéennes', 'Fenicia (Líbano, costa de Siria/Israel) + colonias mediterráneas', 'Fenicia (Libano, Siria/Israele costieri) + colonie mediterranee', 'Fenícia (Líbano, costa da Síria/Israel) + colônias mediterrâneas', 'Fenisia (Lebanon, pesisir Suriah/Israel) + koloni Mediterania', 'Foinike (Lebanoni, mwambao wa Syria/Israel) + makoloni ya Mediterania'],
+    // Russian republics (Adygea, Bashkortostan, etc)
+    ['Republic of Adygea', 'Republik Adygeja', 'République d\'Adyguée', 'República de Adigueya', 'Repubblica dell\'Adighezia', 'República da Adigueia', 'Republik Adigea', 'Jamhuri ya Adigea'],
+    ['Republic of Bashkortostan', 'Republik Baschkortostan', 'République du Bachkortostan', 'República de Baskortostán', 'Repubblica del Baschiria', 'República do Bascortostão', 'Republik Bashkortostan', 'Jamhuri ya Bashkortostan'],
+    ['Republic of Daghestan', 'Republik Dagestan', 'République du Daghestan', 'República de Daguestán', 'Repubblica del Daghestan', 'República do Daguestão', 'Republik Daghestan', 'Jamhuri ya Daghestan'],
+    ['Republic of Ingushetia', 'Republik Inguschetien', 'République d\'Ingouchie', 'República de Ingushetia', 'Repubblica dell\'Inguscezia', 'República da Inguchétia', 'Republik Ingushetia', 'Jamhuri ya Ingushetia'],
+    ['Republic of Kalmykia', 'Republik Kalmückien', 'République de Kalmoukie', 'República de Kalmukia', 'Repubblica della Calmucchia', 'República da Calmúquia', 'Republik Kalmykia', 'Jamhuri ya Kalmykia'],
+    ['Republic of Tatarstan', 'Republik Tatarstan', 'République du Tatarstan', 'República de Tartaristán', 'Repubblica del Tatarstan', 'República do Tataristão', 'Republik Tatarstan', 'Jamhuri ya Tatarstan'],
+    // Chechen Republic
+    ['Chechen Republic', 'Tschetschenische Republik', 'République tchétchène', 'República Chechena', 'Repubblica Cecena', 'República Chechena', 'Republik Chechnya', 'Jamhuri ya Chechnya'],
+    // Republic compound (recursive coverage)
+    // Eastern Christian liturgical
+    ['liturgical', 'liturgisch', 'liturgique', 'litúrgico', 'liturgico', 'litúrgico', 'liturgis', 'kiibada'],
+    ['Eastern Christian', 'Ostkirchen-', 'chrétien oriental', 'cristiano oriental', 'cristiano orientale', 'cristão oriental', 'Kristen Timur', 'Kikristo cha Mashariki'],
+    ['Eastern Christian liturgical language', 'Liturgiesprache der Ostkirchen', 'langue liturgique chrétienne orientale', 'lengua litúrgica cristiana oriental', 'lingua liturgica cristiana orientale', 'língua litúrgica cristã oriental', 'bahasa liturgis Kristen Timur', 'lugha ya kiibada ya Kikristo cha Mashariki'],
+    ['Tibetan Buddhist liturgical language', 'tibetisch-buddhistische Liturgiesprache', 'langue liturgique bouddhiste tibétaine', 'lengua litúrgica budista tibetana', 'lingua liturgica buddhista tibetana', 'língua litúrgica budista tibetana', 'bahasa liturgis Buddha Tibet', 'lugha ya kiibada ya Kibuddha cha Tibet'],
+    // Medieval Irish kingdoms / Early Irish kingdoms
+    ['Medieval', 'mittelalterlich', 'médiéval', 'medieval', 'medievale', 'medieval', 'pertengahan', 'kati'],
+    ['Early', 'früh', 'ancien', 'temprano', 'antico', 'antigo', 'awal', 'mapema'],
+    ['Irish', 'irisch', 'irlandais', 'irlandés', 'irlandese', 'irlandês', 'Irlandia', 'Kiairishi'],
+    ['Medieval Irish kingdoms', 'mittelalterliche irische Königreiche', 'royaumes irlandais médiévaux', 'reinos irlandeses medievales', 'regni irlandesi medievali', 'reinos irlandeses medievais', 'kerajaan Irlandia pertengahan', 'falme za kati za Kiairishi'],
+    ['Early Irish kingdoms', 'frühe irische Königreiche', 'anciens royaumes irlandais', 'reinos irlandeses tempranos', 'antichi regni irlandesi', 'antigos reinos irlandeses', 'kerajaan Irlandia awal', 'falme za mapema za Kiairishi'],
+    ['Medieval Japan', 'mittelalterliches Japan', 'Japon médiéval', 'Japón medieval', 'Giappone medievale', 'Japão medieval', 'Jepang pertengahan', 'Japan ya kati'],
+    // Solomon Islands, Isle of Man, Cape Verde, Curaçao etc — countries with translatable form
+    ['Solomon Islands', 'Salomonen', 'Îles Salomon', 'Islas Salomón', 'Isole Salomone', 'Ilhas Salomão', 'Kepulauan Solomon', 'Visiwa vya Solomon'],
+    ['Isle of Man', 'Insel Man', 'Île de Man', 'Isla de Man', 'Isola di Man', 'Ilha de Man', 'Pulau Man', 'Kisiwa cha Man'],
+    ['Cape Verde', 'Kap Verde', 'Cap-Vert', 'Cabo Verde', 'Capo Verde', 'Cabo Verde', 'Tanjung Verde', 'Kepuvedi'],
+    ['Cape Verde, diaspora', 'Kap Verde, Diaspora', 'Cap-Vert, diaspora', 'Cabo Verde, diáspora', 'Capo Verde, diaspora', 'Cabo Verde, diáspora', 'Tanjung Verde, diaspora', 'Kepuvedi, diaspora'],
+    // Northern Mariana Islands
+    ['Northern Mariana Islands', 'Nördliche Marianen', 'Îles Mariannes du Nord', 'Islas Marianas del Norte', 'Isole Marianne Settentrionali', 'Ilhas Marianas do Norte', 'Kepulauan Mariana Utara', 'Visiwa vya Kaskazini vya Mariana'],
+    ['Guam, Northern Mariana Islands', 'Guam, Nördliche Marianen', 'Guam, Îles Mariannes du Nord', 'Guam, Islas Marianas del Norte', 'Guam, Isole Marianne Settentrionali', 'Guam, Ilhas Marianas do Norte', 'Guam, Kepulauan Mariana Utara', 'Guam, Visiwa vya Kaskazini vya Mariana'],
+    // North/South Ossetia
+    ['North Ossetia', 'Nordossetien', 'Ossétie du Nord', 'Osetia del Norte', 'Ossezia del Nord', 'Ossétia do Norte', 'Ossetia Utara', 'Osetia Kaskazini'],
+    ['South Ossetia', 'Südossetien', 'Ossétie du Sud', 'Osetia del Sur', 'Ossezia del Sud', 'Ossétia do Sul', 'Ossetia Selatan', 'Osetia Kusini'],
+    ['North Ossetia, South Ossetia', 'Nordossetien, Südossetien', 'Ossétie du Nord, Ossétie du Sud', 'Osetia del Norte, Osetia del Sur', 'Ossezia del Nord, Ossezia del Sud', 'Ossétia do Norte, Ossétia do Sul', 'Ossetia Utara, Ossetia Selatan', 'Osetia Kaskazini, Osetia Kusini'],
+    // Recognized regional language of Estonia
+    ['Recognized regional', 'anerkannt regional', 'régional reconnu', 'regional reconocido', 'regionale riconosciuto', 'regional reconhecido', 'regional yang diakui', 'eneo lililotambuliwa'],
+    ['Recognized regional language of Estonia', 'anerkannte Regionalsprache Estlands', 'langue régionale reconnue de l\'Estonie', 'lengua regional reconocida de Estonia', 'lingua regionale riconosciuta dell\'Estonia', 'língua regional reconhecida da Estónia', 'bahasa regional yang diakui di Estonia', 'lugha ya eneo iliyotambuliwa ya Estonia'],
+    // Hypothetical homeland: Amami archipelago / Okinawa Islands
+    ['Hypothetical homeland', 'hypothetische Urheimat', 'foyer hypothétique', 'patria hipotética', 'patria ipotetica', 'pátria hipotética', 'tanah air hipotetis', 'nchi ya kufikirika'],
+    ['Amami archipelago', 'Amami-Inseln', 'archipel d\'Amami', 'archipiélago de Amami', 'arcipelago di Amami', 'arquipélago de Amami', 'kepulauan Amami', 'visiwa vya Amami'],
+    ['Okinawa Islands', 'Okinawa-Inseln', 'îles d\'Okinawa', 'Islas Okinawa', 'Isole Okinawa', 'Ilhas de Okinawa', 'Kepulauan Okinawa', 'Visiwa vya Okinawa'],
+    ['Hypothetical homeland: Amami archipelago / Okinawa Islands', 'hypothetische Urheimat: Amami-Inseln / Okinawa-Inseln', 'foyer hypothétique : archipel d\'Amami / îles d\'Okinawa', 'patria hipotética: archipiélago de Amami / Islas Okinawa', 'patria ipotetica: arcipelago di Amami / Isole Okinawa', 'pátria hipotética: arquipélago de Amami / Ilhas de Okinawa', 'tanah air hipotetis: kepulauan Amami / Kepulauan Okinawa', 'nchi ya kufikirika: visiwa vya Amami / Visiwa vya Okinawa'],
+];
+
+const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
+for (const row of COMMON_PHRASES_LATIN) {
+    if (!row || row.length < 2) continue;
+    const key = row[0];
+    for (let i = 0; i < LATIN_LANG_ORDER.length; i++) {
+        const lang = LATIN_LANG_ORDER[i];
+        const val = row[i + 1];
+        if (typeof val !== 'string') continue;
+        if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
+        if (!(key in META_I18N_ATOMS[lang])) META_I18N_ATOMS[lang][key] = val;
+    }
+}
+
 // Re-apply regional aliases so es_eu/es_mx/pt_eu/pt_br pick up base updates.
 META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
 META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
