@@ -372,10 +372,14 @@ const FAMILY_TOP_ALLOW = new Set([
     'Germanic (East)','Germanic (creole-influenced)',
     'Hurro-Urartian (separate from IE/Semitic)',
     'Indo-Aryan (NW, Pahari/Punjabi-related)',
-    'Mongolic (Western/Oirat)',
+    'Mongolic (Western, Oirat)',
     'Sino-Tibetan (Naic/Loloish)',
     'Proto-language (reconstructed)',
     'Austronesian (Pidgin)',
+    // Audit Task 149/150: new family top-tokens introduced
+    'Atlantic-Congo',                  // Bantu E70/JE Runyakitara cluster
+    'Portuguese-based creole',         // kea Cape Verdean
+    'Songhai',                         // ses Koyraboro Senni — genealogically isolated
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;
@@ -433,6 +437,7 @@ const TRUST_LABEL_CONSTS = [
     'LOCATION_BASIS_LABEL', 'LOCATION_BASIS_HEADER',
     'LANGUAGE_KIND_BADGE',
     'REVIEW_STATUS_LABEL', 'REVIEW_STATUS_HEADER',  // Audit Task 108
+    'SURFACE_TYPE_LABEL', 'SURFACE_TYPE_HEADER',    // Audit Task 84/89
 ];
 const TRUST_LABEL_PRIORITY_UI = ['en', 'ja', 'ko', 'zh'];
 for (const constName of TRUST_LABEL_CONSTS) {
@@ -646,12 +651,17 @@ const totalDescCodes = codes.filter(c => {
     const m = ctx.LANG_DATA[c].meta;
     return m && typeof m.description === 'object';
 }).length;
-// Legacy string-desc count
-const legacyDescCodes = codes.filter(c => {
+// Legacy string-desc count + enumeration (Audit Task 145)
+const legacyDescCodesList = codes.filter(c => {
     const m = ctx.LANG_DATA[c].meta;
     return m && typeof m.description === 'string';
-}).length;
-if (legacyDescCodes) W(`${legacyDescCodes} languages still have description as a string (not object) — UI lang fallback to English`);
+});
+if (legacyDescCodesList.length) {
+    const list = legacyDescCodesList.length <= 12
+        ? legacyDescCodesList.join(', ')
+        : legacyDescCodesList.slice(0, 12).join(', ') + `, …${legacyDescCodesList.length - 12} more`;
+    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${list} (Audit Task 145)`);
+}
 
 // ---- 13b'. Description i18n coverage threshold warnings (Audit Task 121) ----
 // Phase 1: WARN if any UI lang's description coverage falls below 95%.
@@ -680,7 +690,8 @@ for (const ui of UI_LANGS) {
 //   meta.locationBasis: 'capital' | 'prestige-center' | 'historical-site' | 'largest-city' | 'approx-region'
 //                       (CANONICAL — Audit Task 131; lang.locationBasis kept as legacy alias only)
 //   meta.sources      : Array<{ type, title, url?, accessed? }>
-const SPEAKER_BASIS = new Set(['L1','total','regional-population','aggregate','liturgical','extinct','uncertain']);
+// Audit Task 149: 'L2' added for constructed/auxiliary IALs (vo, ia, eo, etc.)
+const SPEAKER_BASIS = new Set(['L1','L2','total','regional-population','aggregate','liturgical','extinct','uncertain']);
 const LOCATION_BASIS = new Set(['capital','prestige-center','historical-site','largest-city','approx-region']);
 let withSpeakerBasis = 0, withSources = 0, withIso = 0, withPronType = 0;
 const pronTypeCounts = {};
@@ -763,6 +774,32 @@ for (const code of codes) {
                     W(`[#13r] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" not ISO date (Audit Task 97)`);
                 }
             }
+            // Audit Task 133: structured citation object (when present).
+            // Migration-safe: legacy `source` string still supported, but
+            // when `citation` is set it must follow the schema.
+            if (ev.citation !== undefined) {
+                const CIT_TYPE = new Set(['dictionary','grammar','inscription','wordlist','database','article','internal-review','reference']);
+                const cit = ev.citation;
+                if (!cit || typeof cit !== 'object') {
+                    E(`[#13t] ${code}: wordEvidence.${k}.citation must be an object (Audit Task 133)`);
+                } else {
+                    if (!cit.short || typeof cit.short !== 'string') {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation missing 'short' display label (Audit Task 133)`);
+                    }
+                    if (!cit.type || !CIT_TYPE.has(cit.type)) {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation.type "${cit.type}" not in enum (Audit Task 133)`);
+                    }
+                    if (cit.year !== undefined && (typeof cit.year !== 'number' || cit.year < 0 || cit.year > 2100)) {
+                        W(`[#13t] ${code}: wordEvidence.${k}.citation.year invalid (Audit Task 133)`);
+                    }
+                    if (cit.url !== undefined && (typeof cit.url !== 'string' || !/^https?:\/\//i.test(cit.url))) {
+                        E(`[#13t] ${code}: wordEvidence.${k}.citation.url not http(s) (Audit Task 133)`);
+                    }
+                    if (cit.accessed !== undefined && (typeof cit.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(cit.accessed))) {
+                        W(`[#13t] ${code}: wordEvidence.${k}.citation.accessed not ISO date (Audit Task 133)`);
+                    }
+                }
+            }
         }
     }
     // Audit Task 108: meta.reviewStatus enum
@@ -775,7 +812,7 @@ for (const code of codes) {
     }
     // Audit Task 126: varietyRole enum
     if (m.varietyRole !== undefined) {
-        const VR_ENUM = new Set(['base','regional-variety','dialect','sibling-language','continuum-member']);
+        const VR_ENUM = new Set(['base','base-variety','regional-variety','dialect','sibling-language','continuum-member','historical-stage']);
         if (!VR_ENUM.has(m.varietyRole)) E(`[#13n] ${code}: meta.varietyRole "${m.varietyRole}" not in enum (Audit Task 126)`);
         if (m.varietyRole === 'regional-variety' && !m.parentCode) {
             W(`[#13n] ${code}: varietyRole='regional-variety' should also set parentCode (Audit Task 126)`);
@@ -791,6 +828,25 @@ for (const code of codes) {
             }
         } else {
             E(`[#13m] ${code}: meta.disambiguator must be string or object`);
+        }
+    }
+    // Audit Task 119: scriptDisplayPolicy shape check (when present)
+    if (lang.scriptDisplayPolicy !== undefined) {
+        const sdp = lang.scriptDisplayPolicy;
+        const PRIMARY = new Set(['modern-standard','romanization','scholarly-transcription','reconstructed-transcription']);
+        const SECONDARY = new Set(['traditional-script','historical-script','none']);
+        if (!sdp || typeof sdp !== 'object') {
+            E(`[#13o-policy] ${code}: scriptDisplayPolicy must be an object (Audit Task 119)`);
+        } else {
+            if (sdp.primary && !PRIMARY.has(sdp.primary)) {
+                E(`[#13o-policy] ${code}: scriptDisplayPolicy.primary "${sdp.primary}" not in enum (Audit Task 119)`);
+            }
+            if (sdp.secondary && !SECONDARY.has(sdp.secondary)) {
+                E(`[#13o-policy] ${code}: scriptDisplayPolicy.secondary "${sdp.secondary}" not in enum (Audit Task 119)`);
+            }
+            if (sdp.secondary && sdp.secondary !== 'none' && (!sdp.note || !sdp.note.en)) {
+                W(`[#13o-policy] ${code}: scriptDisplayPolicy.secondary set but no explanatory note.en (Audit Task 119)`);
+            }
         }
     }
     // Audit Task 119 / user request 2026-05-06: altWordForms shape check
@@ -993,6 +1049,584 @@ for (const code of codes) {
     if (breakdown) I(`multiword surface forms by concept: ${breakdown} (Audit Task 104)`);
 }
 
+// === Script/font rendering audit (Audit Task 116) ====================
+// Detect which Unicode scripts the data uses, then warn when a script
+// appears but the font stack in wordmap.html doesn't load a font that
+// covers it. This catches "tofu" (missing-glyph) regressions when fonts
+// are reorganized or when a new script is added without font coverage.
+{
+    // Map Unicode block prefix → human script name → required font family
+    const SCRIPT_FONT = [
+        { name: 'Tangut',                range: /[\u{17000}-\u{187FF}\u{18800}-\u{18AFF}]/u, font: 'Noto Serif Tangut' },
+        { name: 'Khitan Small Script',   range: /[\u{18B00}-\u{18CFF}]/u,                    font: 'Noto Sans Khitan Small Script' },
+        { name: 'Manichaean',            range: /[\u{10AC0}-\u{10AFF}]/u,                    font: 'Noto Sans Manichaean' },
+        { name: 'Coptic',                range: /[Ⲁ-⳿\u{102E0}-\u{102FF}]/u,       font: 'Noto Sans Coptic' },
+        { name: 'Egyptian Hieroglyphs',  range: /[\u{13000}-\u{1342F}]/u,                    font: 'Noto Sans Egyptian Hieroglyphs' },
+        { name: 'Meroitic',              range: /[\u{10980}-\u{109FF}]/u,                    font: 'Noto Sans Meroitic' },
+        { name: 'Old Turkic',            range: /[\u{10C00}-\u{10C4F}]/u,                    font: 'Noto Sans Old Turkic' },
+        { name: 'Mongolian',             range: /[᠀-᢯]/u,                          font: 'Noto Sans Mongolian' },
+        { name: 'Sogdian',               range: /[\u{10F30}-\u{10F6F}]/u,                    font: 'Noto Sans Sogdian' },
+        { name: 'Phags-pa',              range: /[ꡀ-꡿]/u,                          font: 'Noto Sans Phags Pa' },
+        { name: 'Tibetan',               range: /[ༀ-࿿]/u,                          font: 'Noto Serif Tibetan' },
+        { name: 'Tagalog',               range: /[ᜀ-ᜟ]/u,                          font: 'Noto Sans Tagalog' },
+        { name: 'Sundanese',             range: /[ᮀ-ᮿ]/u,                          font: 'Noto Sans Sundanese' },
+        { name: 'New Tai Lue',           range: /[ᦀ-᧟]/u,                          font: 'Noto Sans New Tai Lue' },
+    ];
+    const fontStackMatch = htmlSrc.match(/font-family:[^;}]+/g) || [];
+    const fontStack = fontStackMatch.join(' ');
+    const usedScripts = new Set();
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        const native = ctx.LANG_DATA[code]?.native || '';
+        const sample = native + ' ' + Object.values(w).flat().join(' ');
+        for (const s of SCRIPT_FONT) {
+            if (s.range.test(sample)) usedScripts.add(s.name);
+        }
+    }
+    if (usedScripts.size > 0) {
+        I(`scripts in use: ${[...usedScripts].sort().join(', ')} (Audit Task 116)`);
+    }
+    for (const s of SCRIPT_FONT) {
+        if (!usedScripts.has(s.name)) continue;
+        if (fontStack.indexOf(s.font) === -1) {
+            W(`[#116] script ${s.name} appears in data but wordmap.html font stack lacks "${s.font}" (Audit Task 116)`);
+        }
+    }
+    // NFC normalization check: warn if any cell has un-normalized Unicode
+    let nfcIssues = 0;
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            for (const v of w[k]) {
+                if (typeof v === 'string' && v && v.normalize('NFC') !== v) {
+                    nfcIssues++;
+                    if (nfcIssues <= 3) W(`[#116] ${code}.${k}: word value not in Unicode NFC form (Audit Task 116)`);
+                }
+            }
+        }
+    }
+    if (nfcIssues > 3) W(`[#116] (${nfcIssues - 3} more NFC issues — fix all)`);
+}
+
+// === Affricate tie-bar enforcement for 'ipa'-tagged rows (Audit Task 163) ===
+// Strict IPA requires t͡s/d͡z/t͡ʃ/d͡ʒ/t͡ɕ/d͡ʑ/t͡ʂ/d͡ʐ (with U+0361 COMBINING DOUBLE
+// INVERTED BREVE) instead of bare ASCII digraphs. Apply only to rows whose
+// pronunciationType is 'ipa'. Rows tagged 'broad'/'romanization'/'orthography'
+// or untagged are exempt — broad transcription legitimately uses bare digraphs.
+{
+    const ipaCodes = codes.filter(c => ctx.LANG_DATA[c]?.meta?.pronunciationType === 'ipa');
+    const affricates = ['ts','dz','tʃ','dʒ','tɕ','dʑ','tʂ','dʐ'];
+    let bareCount = 0, totalIpaCells = 0, tieBarredCells = 0;
+    for (const code of ipaCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string' || ipa === '—' || !ipa) continue;
+            totalIpaCells++;
+            if (ipa.indexOf('͡') !== -1) tieBarredCells++;
+            for (const a of affricates) {
+                let idx = -1;
+                while ((idx = ipa.indexOf(a, idx+1)) !== -1) {
+                    // Skip if already tie-barred (preceded by U+0361)
+                    if (idx > 0 && ipa.charCodeAt(idx-1) === 0x0361) continue;
+                    bareCount++;
+                    if (bareCount <= 5) W(`[#163] ${code}.${k}: bare ASCII affricate "${a}" in IPA "${ipa}" — strict IPA requires tie-bar (Audit Task 163)`);
+                    break;
+                }
+            }
+        }
+    }
+    if (bareCount > 5) W(`[#163] (${bareCount - 5} more bare-affricate issues in 'ipa' rows — fix all)`);
+    I(`affricate tie-bar coverage: ${tieBarredCells}/${totalIpaCells} cells in 'ipa' rows contain U+0361 (Audit Task 163)`);
+}
+
+// === Reconstructed-form notation consistency (Audit Task 164) ===
+// Option C: surface keeps `*` reconstruction marker and `-` bound-stem suffix;
+// IPA strips both. Logographic-surface rows (Chinese characters as surface)
+// are exempt — they cannot carry `*`, so the IPA column is the only place to
+// signal reconstruction. Enforce only when surface uses Latin script.
+{
+    const dso = ctx.DATA_STATUS_OVERRIDES || {};
+    const reconCodes = codes.filter(c => {
+        const m = ctx.LANG_DATA[c]?.meta;
+        return (m && m.dataStatus === 'reconstructed') || dso[c] === 'reconstructed';
+    });
+    let inconsistencies = 0;
+    for (const code of reconCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const [s, i] = w[k];
+            if (s === '—' || i === '—' || !s || !i) continue;
+            // Skip logographic-surface rows: surface contains CJK characters
+            if (/[一-鿿]/.test(s)) continue;
+            const sStar = s.startsWith('*');
+            const iStar = i.startsWith('*');
+            const sDash = s.endsWith('-');
+            const iDash = i.endsWith('-');
+            if (sStar && iStar) {
+                inconsistencies++;
+                if (inconsistencies <= 5) W(`[#164] ${code}.${k}: both surface "${s}" and IPA "${i}" carry "*" — Option C strips from IPA (Audit Task 164)`);
+            }
+            if (sDash && iDash) {
+                inconsistencies++;
+                if (inconsistencies <= 5) W(`[#164] ${code}.${k}: both surface "${s}" and IPA "${i}" carry trailing "-" — Option C strips from IPA (Audit Task 164)`);
+            }
+        }
+    }
+    if (inconsistencies > 5) W(`[#164] (${inconsistencies - 5} more recon-notation issues — fix all)`);
+    I(`reconstructed-form notation: ${reconCodes.length} 'reconstructed' rows audited (Option C: */- in surface only) (Audit Task 164)`);
+}
+
+// === Underscore-code parentCode/varietyRole completeness (Audit Task 170) ===
+// Every underscore code (regional variant or historical stage) must have either
+// `parentCode` (regional variant of an attested parent) or `varietyRole`
+// (sibling-language / continuum-member / base-variety / historical-stage).
+{
+    const VARIETY_ROLE_ENUM = new Set(['base','base-variety','regional-variety','dialect','sibling-language','continuum-member','historical-stage']);
+    const underscoreCodes = codes.filter(c => c.includes('_'));
+    let missingTotal = 0;
+    let badParent = 0;
+    let badRole = 0;
+    for (const code of underscoreCodes) {
+        const m = ctx.LANG_DATA[code]?.meta;
+        if (!m) continue;
+        const hasParent = m.parentCode !== undefined;
+        const hasRole = m.varietyRole !== undefined;
+        if (!hasParent && !hasRole) {
+            missingTotal++;
+            if (missingTotal <= 5) W(`[#170] ${code}: underscore code without parentCode or varietyRole (Audit Task 170)`);
+        }
+        if (hasParent && !ctx.LANG_DATA[m.parentCode]) {
+            badParent++;
+            W(`[#170] ${code}: parentCode='${m.parentCode}' not in LANG_DATA (Audit Task 170)`);
+        }
+        if (hasRole && !VARIETY_ROLE_ENUM.has(m.varietyRole)) {
+            badRole++;
+            W(`[#170] ${code}: varietyRole='${m.varietyRole}' not in enum (Audit Task 170)`);
+        }
+    }
+    if (missingTotal > 5) W(`[#170] (${missingTotal - 5} more underscore codes missing parentCode/varietyRole)`);
+    const covered = underscoreCodes.length - missingTotal;
+    I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
+}
+
+// === Tone-bar within-row notation consistency (Audit Task 187) ===
+// A row that mixes single (˥) and doubled (˥˥) level tones for the SAME pitch is
+// internally inconsistent. Pass 32 normalized 11 tonal rows to doubled; warn if
+// any future edit reintroduces the mix.
+{
+    let mixed = 0;
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        const singles = new Set(), doubles = new Set();
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string') continue;
+            const runs = ipa.match(/[˥˦˧˨˩]+/g) || [];
+            for (const r of runs) {
+                if (r.length === 1) singles.add(r);
+                else if (r.length === 2 && r[0] === r[1]) doubles.add(r);
+            }
+        }
+        for (const s of singles) if (doubles.has(s + s)) {
+            mixed++;
+            if (mixed <= 5) W(`[#187] ${code}: row mixes "${s}" and "${s+s}" level-tone notations (Audit Task 187)`);
+            break;
+        }
+    }
+    if (mixed > 5) W(`[#187] (${mixed - 5} more rows mix single/doubled tone letters)`);
+}
+
+// === Disambiguator coverage for shared-native-name pairs (Audit Task 188) ===
+{
+    const byNative = {};
+    for (const code of codes) {
+        const native = ctx.LANG_DATA[code]?.native;
+        if (!native) continue;
+        if (!byNative[native]) byNative[native] = [];
+        byNative[native].push(code);
+    }
+    let covered = 0, total = 0, missing = 0;
+    for (const native of Object.keys(byNative)) {
+        const group = byNative[native];
+        if (group.length < 2) continue;
+        for (const code of group) {
+            total++;
+            const m = ctx.LANG_DATA[code]?.meta;
+            if (m && m.disambiguator) covered++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#188] ${code}: shares native name "${native}" with ${group.filter(c=>c!==code).join('/')} but has no meta.disambiguator (Audit Task 188)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#188] (${missing - 5} more shared-native rows missing disambiguator)`);
+    I(`disambiguator coverage on shared-native rows: ${covered}/${total} (Audit Task 188)`);
+}
+
+// === Vitality coverage (Audit Task 190) ===
+{
+    const VITALITY_ENUM = new Set(['safe','vulnerable','definitely-endangered','severely-endangered','critically-endangered','extinct','unknown']);
+    const counts = {};
+    let total = 0, missing = 0, badEnum = 0;
+    for (const code of codes) {
+        const m = ctx.LANG_DATA[code]?.meta;
+        if (!m) continue;
+        const v = m.vitality;
+        if (!v) {
+            missing++;
+            if (missing <= 5) W(`[#190] ${code}: missing meta.vitality (Audit Task 190)`);
+            continue;
+        }
+        if (!VITALITY_ENUM.has(v)) {
+            badEnum++;
+            if (badEnum <= 5) W(`[#190] ${code}: meta.vitality '${v}' not in enum (Audit Task 190)`);
+            continue;
+        }
+        counts[v] = (counts[v] || 0) + 1;
+        total++;
+    }
+    if (missing > 5) W(`[#190] (${missing - 5} more rows missing vitality)`);
+    if (badEnum > 5) W(`[#190] (${badEnum - 5} more rows with bad vitality enum)`);
+    const breakdown = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v]) => `${k}=${v}`).join(', ');
+    I(`vitality coverage: ${total}/${codes.length} (${breakdown}) (Audit Task 190)`);
+}
+
+// === Multi-word formType coverage (Audit Task 194) ===
+{
+    let total = 0, withFt = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const we = lang.wordEvidence || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surface = w[k][0];
+            if (typeof surface !== 'string' || surface === '—' || !/\s/.test(surface)) continue;
+            total++;
+            if (we[k] && we[k].formType) withFt++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#194] ${code}.${k}: multi-word surface "${surface}" without formType (Audit Task 194)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#194] (${missing - 5} more multi-word cells without formType)`);
+    I(`multi-word formType coverage: ${withFt}/${total} (Audit Task 194)`);
+}
+
+// === RTL textDirection backfill audit (Audit Task 193) ===
+// Detect rows whose surface uses RTL Unicode blocks; verify meta.textDirection='rtl'
+// is set (the runtime initializer in wordmap_meta.js does this automatically).
+{
+    const RTL_RE = /[֐-׿؀-ۿ܀-ݏݐ-ݿހ-޿߀-߿ࠀ-࠿ࡀ-࡟ࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
+    let rtlCount = 0, rtlMarked = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        let isRtl = false;
+        for (const k of Object.keys(w)) {
+            if (Array.isArray(w[k]) && typeof w[k][0] === 'string' && RTL_RE.test(w[k][0])) { isRtl = true; break; }
+        }
+        if (!isRtl) continue;
+        rtlCount++;
+        const td = lang.meta && lang.meta.textDirection;
+        if (td === 'rtl') rtlMarked++;
+        else {
+            missing++;
+            if (missing <= 5) W(`[#193] ${code}: surface uses RTL script but meta.textDirection != 'rtl' (Audit Task 193)`);
+        }
+    }
+    if (missing > 5) W(`[#193] (${missing - 5} more RTL rows missing textDirection)`);
+    I(`textDirection='rtl' coverage: ${rtlMarked}/${rtlCount} RTL-script rows (Audit Task 193)`);
+}
+
+// === formType coverage for hyphen/star surface cells (Audit Task 191) ===
+// Surface forms starting with '*' or ending with '-' or starting with '-' should
+// have wordEvidence.formType set ('reconstructed-root' / 'bound-stem' / etc.).
+{
+    let total = 0, withForm = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const we = lang.wordEvidence || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surface = w[k][0];
+            if (typeof surface !== 'string' || surface === '—') continue;
+            if (!/^\*|^-|-$/.test(surface)) continue;
+            total++;
+            if (we[k] && we[k].formType) withForm++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#191] ${code}.${k}: hyphen/star surface "${surface}" without wordEvidence.formType (Audit Task 191)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#191] (${missing - 5} more hyphen/star cells without formType)`);
+    I(`formType coverage on hyphen/star cells: ${withForm}/${total} (Audit Task 191)`);
+}
+
+// === Unattested-cell reason documentation (Audit Task 162) ===
+// Every `—` cell must have meta.unattestedReason[concept] set to one of the
+// allowed reasons. The runtime initializer in wordmap_meta.js applies sensible
+// defaults so this should be 0 missing in normal operation; warn if any cell
+// slipped through (e.g., a new `—` added without re-running the initializer).
+{
+    const REASON_ENUM = new Set(['cultural-absence','unsourced','recent-loanword','has-only-derived-form','unknown']);
+    let dashTotal = 0, withReason = 0, badEnum = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const reasons = lang.meta?.unattestedReason || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k]) || w[k][0] !== '—') continue;
+            dashTotal++;
+            const r = reasons[k];
+            if (!r) {
+                missing++;
+                if (missing <= 5) W(`[#162] ${code}.${k}: '—' cell without meta.unattestedReason (Audit Task 162)`);
+            } else if (!REASON_ENUM.has(r)) {
+                badEnum++;
+                if (badEnum <= 5) W(`[#162] ${code}.${k}: meta.unattestedReason='${r}' not in enum (Audit Task 162)`);
+            } else {
+                withReason++;
+            }
+        }
+    }
+    if (missing > 5) W(`[#162] (${missing - 5} more '—' cells without unattestedReason)`);
+    if (badEnum > 5) W(`[#162] (${badEnum - 5} more cells with bad enum value)`);
+    I(`unattestedReason coverage: ${withReason}/${dashTotal} '—' cells documented (Audit Task 162)`);
+}
+
+// === source-checked rows must have ~20-cell wordEvidence coverage (Audit Task 173) ===
+// Per audit: source-checked is a strong claim and should be backed by per-cell evidence.
+// WARN when a row claims source-checked but has < 20 cells annotated. Coverage info shows
+// the gap so reviewers can prioritize backfill.
+{
+    let scTotal = 0, scFull = 0, scShort = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang?.meta || {};
+        if (m.reviewStatus !== 'source-checked') continue;
+        scTotal++;
+        const we = lang?.wordEvidence || {};
+        const weCount = Object.keys(we).length;
+        if (weCount >= 20) {
+            scFull++;
+        } else {
+            scShort++;
+            if (scShort <= 5) W(`[#173] ${code}: reviewStatus='source-checked' but only ${weCount}/20 cells of wordEvidence (Audit Task 173)`);
+        }
+    }
+    if (scShort > 5) W(`[#173] (${scShort - 5} more 'source-checked' rows with < 20-cell wordEvidence — backfill needed)`);
+    I(`source-checked wordEvidence coverage: ${scFull}/${scTotal} rows with full 20-cell evidence (Audit Task 173)`);
+}
+
+// === reviewStatus distribution + consistency (Audit Task 172) ===
+// Every row should have an explicit reviewStatus after the 172 backfill.
+// Cross-check: rows with rich evidence (sources or wordEvidence) should not be
+// 'unreviewed' or 'machine-seeded'.
+{
+    const counts = {};
+    let missingTotal = 0;
+    let inconsistencies = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang?.meta || {};
+        const rs = m.reviewStatus;
+        if (!rs) {
+            missingTotal++;
+            if (missingTotal <= 5) W(`[#172] ${code}: missing reviewStatus after backfill (Audit Task 172)`);
+            continue;
+        }
+        counts[rs] = (counts[rs] || 0) + 1;
+        const we = lang?.wordEvidence || {};
+        // Substantive evidence count: skip auto-tagged Task 194 entries
+        let weCount = 0;
+        for (const k of Object.keys(we)) {
+            if (we[k] && we[k].autoTag) continue;
+            weCount++;
+        }
+        const hasSources = m.sources && m.sources.length > 0;
+        if ((rs === 'unreviewed' || rs === 'machine-seeded') && (hasSources || weCount > 0)) {
+            inconsistencies++;
+            if (inconsistencies <= 5) W(`[#172] ${code}: reviewStatus='${rs}' but has sources/wordEvidence — promote to human-reviewed or higher (Audit Task 172)`);
+        }
+    }
+    if (missingTotal > 5) W(`[#172] (${missingTotal - 5} more rows missing reviewStatus)`);
+    if (inconsistencies > 5) W(`[#172] (${inconsistencies - 5} more rows with rs/evidence mismatch)`);
+    const breakdown = Object.entries(counts).sort((a,b) => b[1]-a[1]).map(([k,v]) => `${k}=${v}`).join(', ');
+    I(`reviewStatus coverage: ${codes.length - missingTotal}/${codes.length} (${breakdown}) (Audit Task 172)`);
+}
+
+// === WORD_LIST.label UI lang coverage vs lang_names.js (Audit Task 175) ===
+// Every UI lang in lang_names.js must have a label entry in every WORD_LIST entry.
+// Otherwise users see English fallback for that UI lang's concept labels.
+{
+    // Discover UI langs from lang_names.js — top-level keys of `LANG_NAMES = { uilang: {...}, ... }`.
+    let uiLangs = new Set();
+    try {
+        const namesSrc = fs.readFileSync('lang_names.js', 'utf-8');
+        // Find the LANG_NAMES = { ... } block, scan for top-level `<key>: {`
+        const blockMatch = namesSrc.match(/const\s+LANG_NAMES\s*=\s*\{([\s\S]*?)\n\};/);
+        if (blockMatch) {
+            const block = blockMatch[1];
+            // Top-level keys appear at line-start indented by 4 spaces (per file convention)
+            const re = /^\s{4}([a-z][a-z0-9_]*):\s*\{/gm;
+            let m;
+            while ((m = re.exec(block)) !== null) {
+                uiLangs.add(m[1]);
+            }
+        }
+    } catch (e) { /* skip if unreadable */ }
+    if (uiLangs.size > 0) {
+        const wl = ctx.WORD_LIST || [];
+        let missingTotal = 0;
+        const perLangMissing = {};
+        for (const w of wl) {
+            const lbl = w.label || {};
+            for (const ui of uiLangs) {
+                if (!lbl[ui]) {
+                    perLangMissing[ui] = (perLangMissing[ui] || 0) + 1;
+                    missingTotal++;
+                }
+            }
+        }
+        const missingLangs = Object.keys(perLangMissing).filter(l => perLangMissing[l] > 0);
+        for (const l of missingLangs) {
+            W(`[#175] WORD_LIST.label missing UI lang '${l}' on ${perLangMissing[l]}/20 entries (Audit Task 175)`);
+        }
+        const covered = uiLangs.size - missingLangs.length;
+        I(`WORD_LIST.label coverage: ${covered}/${uiLangs.size} UI langs fully covered across all ${wl.length} concepts (Audit Task 175)`);
+    }
+}
+
+// === Row-fingerprint comparison (Audit Task 90) =====================
+// Detect duplicate / near-duplicate word rows so reviewers don't rely on
+// ad hoc scripts. Three checks:
+//   exact:        all 20 [surface, pronunciation] pairs identical
+//   surface-only: all 20 surface values identical, pronunciation differs
+//   high-overlap: 18+ of 20 cells identical (excluding exact)
+// Exact duplicates warn unless every non-primary row has coverage+baseLang.
+// Parent/child overlap is INFO if coverage exists, WARN otherwise.
+{
+    const wordIds = ctx.WORD_LIST.map(w => w.id);
+    function fingerprint(c) {
+        const w = ctx.LANG_DATA[c]?.words;
+        if (!w) return null;
+        return wordIds.map(k => Array.isArray(w[k]) ? w[k].join('||') : '').join('');
+    }
+    function surfaceFingerprint(c) {
+        const w = ctx.LANG_DATA[c]?.words;
+        if (!w) return null;
+        return wordIds.map(k => (Array.isArray(w[k]) ? (w[k][0] || '') : '')).join('');
+    }
+    function overlapCount(a, b) {
+        const wa = ctx.LANG_DATA[a]?.words || {};
+        const wb = ctx.LANG_DATA[b]?.words || {};
+        let same = 0;
+        for (const k of wordIds) {
+            if (Array.isArray(wa[k]) && Array.isArray(wb[k])
+                && wa[k][0] === wb[k][0] && wa[k][1] === wb[k][1]) same++;
+        }
+        return same;
+    }
+    // Group by exact fingerprint
+    const fpGroups = {};
+    for (const c of codes) {
+        const fp = fingerprint(c);
+        if (!fp) continue;
+        (fpGroups[fp] = fpGroups[fp] || []).push(c);
+    }
+    const exactDupGroups = Object.values(fpGroups).filter(g => g.length > 1);
+    if (exactDupGroups.length > 0) {
+        for (const grp of exactDupGroups) {
+            const members = grp.join(', ');
+            // First member is treated as the "primary"; all others must have
+            // coverage + baseLang to suppress warning.
+            const [primary, ...rest] = grp;
+            const unlabeled = rest.filter(c => {
+                const m = ctx.LANG_DATA[c].meta || {};
+                return !m.coverage || !m.baseLang;
+            });
+            if (unlabeled.length > 0) {
+                W(`[#90] exact duplicate word rows: ${members} (20/20) — non-primary need meta.coverage + meta.baseLang (Audit Task 90)`);
+            } else {
+                I(`[#90] exact duplicate word rows: ${members} (20/20) — all labeled with coverage/baseLang`);
+            }
+        }
+    }
+    // Surface-only duplicates (same spelling, different pronunciation)
+    const sfGroups = {};
+    for (const c of codes) {
+        const sf = surfaceFingerprint(c);
+        if (!sf) continue;
+        (sfGroups[sf] = sfGroups[sf] || []).push(c);
+    }
+    const surfaceOnlyGroups = Object.values(sfGroups)
+        .filter(g => g.length > 1 && fpGroups[fingerprint(g[0])] !== g);
+    for (const grp of surfaceOnlyGroups) {
+        // De-duplicate against exact-dup groups
+        const fp0 = fingerprint(grp[0]);
+        if (fpGroups[fp0] && fpGroups[fp0].length === grp.length) continue;
+        I(`[#90] surface-only duplicate word rows: ${grp.join(', ')} (same spellings, different pronunciation)`);
+    }
+    // Parent/child high-overlap: child shares 18+ cells with declared parent
+    for (const c of codes) {
+        const m = ctx.LANG_DATA[c].meta || {};
+        if (!m.parentCode) continue;
+        if (!ctx.LANG_DATA[m.parentCode]) continue;
+        const ov = overlapCount(c, m.parentCode);
+        if (ov >= 18) {
+            const tag = `parentCode=${m.parentCode}`;
+            if (m.coverage) {
+                I(`[#90] parent/child high overlap: ${c} vs ${m.parentCode} (${ov}/20; ${tag}, coverage=${m.coverage})`);
+            } else {
+                W(`[#90] parent/child high overlap: ${c} vs ${m.parentCode} (${ov}/20; ${tag}) — needs meta.coverage (Audit Task 90)`);
+            }
+        }
+    }
+}
+
+// === Romanization-vs-IPA audit (Audit Task 94) =====================
+// Non-Latin-script rows whose pronunciation column is ASCII-only are
+// usually romanization (not strict IPA). Surface this so reviewers can
+// label pronunciationType honestly instead of leaving the column
+// implying narrow IPA.
+{
+    const candidates = [];
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang.meta || {};
+        if (m.pronunciationType) continue; // already labeled
+        const w = lang.words || {};
+        let nonLatin = 0, asciiIpa = 0, total = 0;
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surf = w[k][0] || '', ipa = w[k][1] || '';
+            if (surf === '—') continue;
+            total++;
+            if (/[^\x00-\x7f]/.test(surf)) nonLatin++;
+            if (ipa && /^[\x00-\x7f]+$/.test(ipa)) asciiIpa++;
+        }
+        if (total > 0 && nonLatin >= total * 0.5 && asciiIpa >= total * 0.5) {
+            candidates.push(code);
+        }
+    }
+    if (candidates.length > 0) {
+        W(`[#94] ${candidates.length} unlabeled non-Latin-script rows have ASCII-only IPA — likely romanization. Set meta.pronunciationType. Codes: ${candidates.slice(0, 8).join(', ')}${candidates.length > 8 ? `, …${candidates.length - 8} more` : ''} (Audit Task 94)`);
+    }
+}
+
 // Audit Task 99: locationBasis coverage tally
 let withLocationBasis = 0;
 const locBasisCounts = {};
@@ -1039,8 +1673,8 @@ if (withLanguageKind > 0) {
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`languageKind coverage: ${withLanguageKind}/${codes.length} languages (${breakdown}) — Audit Task 118`);
 }
-// Audit Task 109: codeType / canonicalCode coverage tally
-let withCodeType = 0, withCanonicalCode = 0;
+// Audit Task 109/178: codeType / iso6393 coverage tally (canonicalCode deprecated post-178)
+let withCodeType = 0, withIso6393 = 0, withCanonicalCode = 0;
 const codeTypeCounts = {};
 for (const code of codes) {
     const m = ctx.LANG_DATA[code].meta || {};
@@ -1048,12 +1682,17 @@ for (const code of codes) {
         withCodeType++;
         codeTypeCounts[m.codeType] = (codeTypeCounts[m.codeType] || 0) + 1;
     }
+    if (m.iso6393) withIso6393++;
     if (m.canonicalCode) withCanonicalCode++;
 }
 if (withCodeType > 0) {
     const breakdown = Object.entries(codeTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
-    I(`codeType coverage: ${withCodeType}/${codes.length} languages (${breakdown}); canonicalCode set on ${withCanonicalCode} — Audit Task 109`);
+    I(`codeType coverage: ${withCodeType}/${codes.length} languages (${breakdown}); iso6393 set on ${withIso6393}; canonicalCode (deprecated) set on ${withCanonicalCode} — Audit Tasks 109/178`);
+}
+// Audit Task 178: warn if canonicalCode is still used in static data
+if (withCanonicalCode > 0) {
+    W(`[#178] canonicalCode is deprecated — ${withCanonicalCode} rows still use it; migrate to iso6393 (Audit Task 178)`);
 }
 
 // ---- 13d. 100M+ tier requires speakerBasis (per wordmap-check-3.md §7) -

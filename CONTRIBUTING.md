@@ -720,6 +720,166 @@ cat: ['—', '—']  // No attested form for this concept
 
 Entries with both `'—'` are now hidden from the map (rendered as "— (unattested)" only in the language detail panel). Do NOT use `'—'` to mean "I don't know" or "fill in later" — that is silent data corruption. If a form exists but you don't have IPA, put the surface form and approximate IPA, then mark in the commit message that IPA needs review.
 
+### C2. Pronunciation / IPA Policy / 発音表記ポリシー (Audit Tasks 76, 81, 94)
+
+The second element in `[surface, ipa]` is governed by `meta.pronunciationType` (Audit Task 76):
+
+| Value | Use when | Stress / tones |
+|---|---|---|
+| `'ipa'` | The row is intended as IPA, including stress/tone where relevant | Required where the language has lexical stress (Italian, Spanish, Russian, Polish) or contrastive tone (Mandarin, Cantonese, Vietnamese, Thai) |
+| `'broad'` | Broad phonemic guide; may omit predictable allophones, stress, or fine phonetics | Stress/tone optional but document the omission in `meta.coverageNote` |
+| `'romanization'` | The second value is primarily a romanization system, not IPA | Use the standard romanization for that language (Pinyin, Hepburn, RR, etc.) |
+| `'orthography'` | The second value mostly copies spelling because the orthography itself is the pronunciation guide | Acceptable for shallow orthographies (Indonesian, Esperanto); document the choice |
+| `'mixed'` | The row visibly mixes systems and needs cleanup | Add `meta.coverageNote` flagging the mixed state |
+| `'unknown'` | Not yet reviewed | Temporary fallback only |
+
+**Stress policy (Audit Task 81)**: stress marks (ˈ/ˌ) should be added to a row only when **either** (a) the row is `pronunciationType: 'ipa'`, **or** (b) you are committing to source-checked IPA across all 20 cells of that row. Adding stress to a few cells of an otherwise stress-less row creates a mixed state — either finish the row or mark `pronunciationType: 'mixed'`. Do not add stress mechanically from spelling.
+
+**Do NOT** mark a row as `'ipa'` without checking it actually represents IPA (e.g. Indonesian `air/air` is orthography, not IPA).
+
+### C3. Column conventions and concept policies (Audit Task 147)
+
+The following conventions resolve the long-running policy questions that
+were deferred across audit Pass 2-6. Each rule has a default and an
+exception clause; per-row deviations must be documented in
+`wordEvidence.note` or `meta.coverageNote`.
+
+#### Tone and stress notation
+
+- **Tone-required languages** (Mandarin, Cantonese, Vietnamese, Thai,
+  Lao, Burmese, Yoruba, Hausa, Igbo, Naxi, Bouyei, Iu Mien, Hmong,
+  Zhuang, Tai Lue, Shan): tone marks are required when
+  `pronunciationType: 'ipa'`. Use Chao tone letters (˥ ˦ ˧ ˨ ˩) for
+  Sinitic and Tai-Kadai; IPA tone diacritics (´ ` etc.) for African and
+  South Asian. Pick one notation per language and document in
+  `meta.coverageNote`.
+- **Stress-required languages** (Italian, Spanish, Portuguese, Russian,
+  Polish, Greek, German, French): `ˈ` (primary) and `ˌ` (secondary) are
+  required when `pronunciationType: 'ipa'` and stress is contrastive or
+  predictable-but-non-final. See C2 stress policy for when to add.
+- **Both can be omitted** if `pronunciationType: 'broad'` and
+  `meta.coverageNote` documents the omission.
+
+#### Affricate notation (Audit Task 163)
+
+- **`pronunciationType: 'ipa'` rows**: IPA tie-bar is **required**.
+  Use `t͡s` (U+0361 COMBINING DOUBLE INVERTED BREVE) instead of bare
+  ASCII `ts`. Same for `d͡z`, `t͡ʃ`, `d͡ʒ`, `t͡ɕ`, `d͡ʑ`, `t͡ʂ`, `d͡ʐ`,
+  and aspirated variants `t͡sʰ`/`t͡ʃʰ`/`t͡ɕʰ`/`t͡ʂʰ`. Validator `[#163]`
+  enforces this.
+- **`pronunciationType: 'broad'`/`'romanization'`/`'orthography'` rows**:
+  bare ASCII digraphs (`ts`, `dz`, `tʃ`, `dʒ`) are acceptable. Broad
+  transcription legitimately uses bare digraphs.
+- **Untagged rows**: assign `pronunciationType` first (Audit Task 76),
+  then apply the rule for the assigned type.
+- **Slavic family**: ASCII `ts` is acceptable across rows tagged `'broad'`
+  (most regional Slavic varieties); rows promoted to `'ipa'` get tie-bar.
+- **Turkic family** (Kazakh/Bashkir/Karachay-Balkar/Karakalpak): the
+  conventions `w`/`y`/`q`/`x` are accepted as they reflect documented
+  romanization standards; treat as `pronunciationType: 'broad'`.
+
+#### Reconstructed-form notation (Audit Task 164)
+
+For rows with `dataStatus: 'reconstructed'` (Proto-Indo-European `ine`,
+Proto-Ryukyuan `pry`, Proto-Japonic-Koreanic `pjk`):
+
+- **Surface column**: keep the asterisk reconstruction marker (`*kam`)
+  and bound-stem hyphen (`*h₁ed-`).
+- **IPA column**: strip both. The `*` and trailing `-` belong only in
+  surface; IPA gives a phonological form ready to be read aloud.
+- **Logographic-surface rows** (Old Korean `oko`, Goguryeo `okg`, Goryeo
+  Korean `ko_gor`, Old Chinese `och`): surface uses Chinese characters
+  and cannot carry `*`, so the reconstructed `*` appears in IPA only.
+  This is a separate convention and is exempt from `[#164]`.
+- Validator `[#164]` enforces the surface-only rule for Latin-script
+  reconstructions.
+
+#### Verb forms (eat / drink / love)
+
+- **Default**: use the language's normal dictionary citation form.
+- **Indo-European**: infinitive (English `eat`, German `essen`,
+  French `manger`, Russian `есть`).
+- **Semitic** (Arabic/Hebrew/Aramaic): Arabic uses 3rd-masculine-singular
+  perfective (`أكل` ʔakala) following standard Semitic dictionary
+  convention; Hebrew uses infinitive (`לאכול` leʔeχol). Both are correct
+  per their respective lexicographic traditions; do not blindly impose
+  one convention. Each Arabic dictionary entry must have
+  `wordEvidence.note` explaining the perfective choice.
+- **Verbal-noun languages** (Tamil, Telugu, Kannada, Tibetan): verbal
+  noun is acceptable as citation form; document with
+  `wordEvidence.note` if the language has both verbal-noun and finite
+  citation traditions.
+- **Bound-stem languages** (Inuit-Yupik, Iranian historical, Pashai,
+  Burushaski, Wakhi): trailing-hyphen bound stems are acceptable per
+  Task 103 with `wordEvidence.formType: 'bound-stem'`.
+
+#### Concept scope: heart, mother/father, one
+
+- **`heart`**: default is *emotional/cognitive* "heart" where the
+  language has a basic everyday term for it. Anatomical heart is
+  acceptable when the emotional sense uses a different concept entirely.
+  Document the choice in `wordEvidence.conceptEvidence: 'noted'` for
+  rows where the choice is non-obvious (Indonesian/Malay `hati` =
+  liver/heart-as-feeling; Thai `ใจ` = heart/mind/spirit; Korean `마음` =
+  mind/heart/feeling; Japanese `心` = heart/mind/spirit).
+- **`mother` / `father`**: default is the *neutral citation form*
+  most Indo-European dictionaries use. Languages may use child/familiar
+  register (e.g., Chinese `妈妈/爸爸`, English AAVE `mama/daddy`) where
+  the formal counterpart is rarely used in everyday speech; document
+  this in `meta.coverageNote`.
+- **`one`**: default is the *masculine/default citation form* where the
+  language has gender-marked numerals (Arabic `واحد`, Hebrew `אחד`,
+  French `un`, Spanish `uno`, Italian `uno`). Document gender in
+  `wordEvidence.note` when the choice would otherwise mislead.
+
+#### Mandarin tone sandhi
+
+- **Default**: keep underlying citation tones in the IPA column. Sandhi
+  is rule-based and predictable; the citation form is more useful for
+  cross-language comparison than the surface form.
+- Example: 你好 = `ni˧˩˧xaʊ̯˧˩˧` (citation), not `ni˧˥xaʊ̯˨˩˦` (after
+  third-tone sandhi). Document this in
+  `meta.coverageNote` for the Mandarin row.
+
+#### Quebec French
+
+- `fr_qc` represents Québec French. Treat as a `regional-variety` of
+  `fr` with `coverage: 'partial'`. Differences from `fr` should focus on
+  lexical items that distinguish Québec usage (e.g., `bonjour` vs `allô`)
+  rather than full phonetic re-transcription.
+
+### C4. Languages intentionally not represented as rows (Audit Task 150 Batch J)
+
+The 20-word × IPA schema cannot honestly represent every linguistic
+phenomenon. The following are *consciously omitted* — recording them
+here so future contributors do not add misleading rows:
+
+- **Whistled languages** (Silbo Gomero on La Gomera, Mazatec whistled,
+  Kuşköy whistled Turkish, Pirahã whistled register, Akha whistled
+  speech, etc.). These are *registers* of their host languages — the
+  whistled form encodes the host language's prosody/tone, not a
+  separate phoneme inventory. Adding them as separate rows would
+  duplicate the host language's data with a fake "IPA" column.
+  *Action:* document the host language; mention whistled register in
+  `meta.coverageNote` if relevant.
+- **Signed languages** (American Sign Language `ase`, British Sign
+  Language `bfi`, Japanese Sign Language `jsl`, etc.). See Task 142
+  for the modality decision. Sign languages need a `modality: 'signed'`
+  field and either SignWriting (Sutton SW, Unicode U+1D800–U+1DAAF) or
+  curated video URL handling — the `[surface, ipa]` pair cannot
+  represent handshape/movement/orientation/non-manual markers.
+- **Drum languages, click sub-systems used as games, secret-society
+  registers** (e.g., Sranan Tongo `kromanti` ritual register, Yoruba
+  drum talk, Pig Latin / Verlan / similar play-language registers).
+  Same issue: they encode the host language's segments/tones via a
+  different medium, not separate phoneme inventories.
+- **Thieves' cant / criminal argots** (Polari, Cant, etc.). Lexically
+  parasitic on a host language with limited speaker community; better
+  documented in linguistic ethnography than in a comparative word map.
+
+If a contributor proposes adding any of the above, point them to this
+subsection and discuss the underlying schema work first.
+
 ### D. Coordinates / 座標
 
 `lat/lng` is a single representative point (the prestige center, capital, or historical site). The map auto-stacks labels at duplicate or near-duplicate coordinates, so don't worry about exact uniqueness — use the geographically meaningful point for the speaker community.
@@ -812,7 +972,8 @@ Reference example: see `LANG_DATA['ja']` in `wordmap_meta.js` and `wordmap_data.
 Why these fields:
 - **speakerBasis**: per `wordmap-check.md §5`, the bare speaker number mixes L1, total, regional aggregate, and liturgical bases — making "100M+" fragile. The `speakerBasis` enum makes the basis explicit so downstream tools can compare like-for-like.
 - **speakerSource / speakerYear**: per §15, no source/date in current data. Knowing whether a number is from Ethnologue 2023 vs. a 1980 census matters for endangered-language estimates.
-- **iso6393 / glottocode / parentCode**: per §13, the LangMap codes are a mix of ISO 639-3, ISO 639-1, and custom (`zh_sc`, `ja_edo`). Adding canonical IDs makes interop with Glottolog / WALS / Ethnologue trivial.
+- **iso6393 / glottocode / parentCode**: per §13, the LangMap codes are a mix of ISO 639-3, ISO 639-1, and custom (`zh_sc`, `ja_edo`). Adding canonical IDs makes interop with Glottolog / WALS / Ethnologue trivial. **Note (Audit Task 178): `meta.iso6393` is the canonical field for ISO 639-3 codes. The earlier `meta.canonicalCode` field is deprecated — `CANONICAL_CODE` runtime initializer now writes into `iso6393`. Validator `[#178]` warns if `canonicalCode` is still set on any row.** **Audit Task 177: `iso6393` is auto-backfilled at runtime from a 2-letter→3-letter map (`ISO_639_1_TO_3`) for codes without explicit assignment, plus identity for 3-letter row codes. Coverage is 619/619 (100%); contributors adding new rows do not need to set `iso6393` manually if the row code is already an ISO 639-1 or 639-3 code.**
+- **reviewStatus** (Audit Task 172): every row has an explicit `meta.reviewStatus` after the runtime backfill. Initial value is determined by a heuristic over `wordEvidence` and `meta.sources`: rows with both per-cell evidence (≥5 cells) AND row-level sources → `'source-checked'`; rows with at least one form of evidence → `'human-reviewed'`; otherwise `'machine-seeded'`. Override the default by adding the row to the `REVIEW_STATUS` map at the top of `wordmap_meta.js`. Validator `[#172]` warns when a row has rich evidence but is still flagged `'unreviewed'` or `'machine-seeded'`.
 - **locationBasis**: per §9, the single `lat/lng` mixes capital / prestige center / historical site / approx region. Knowing the basis prevents the map from being misread as "speaker distribution."
 - **sources**: per §15, source citations should at minimum exist at language level for accountability. Per-word `sources` is not required (would be 11,580 entries) but supported via the same shape if you want to record per-form citations.
 

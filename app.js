@@ -502,6 +502,11 @@ function scheduleRedrawLines() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // Pass 34: detect UI lang from cookie / navigator.language before parsing
+    // hash, so a brand-new visitor sees their preferred language even on the
+    // first load. URL ?ui= still overrides via loadFromHash below.
+    currentUILang = detectUILang();
+
     // Restore state from URL hash before building UI
     loadFromHash();
 
@@ -538,8 +543,39 @@ function syncUIFromState() {
     updateLangSummary();
 }
 
+// Pass 34: cookie helpers for cross-page UI-lang persistence (cookie 'wm_uilang')
+function _wmGetCookie(name) {
+    const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+    return m ? decodeURIComponent(m[1]) : null;
+}
+function _wmSetCookie(name, value) {
+    document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
+}
+// Resolve initial UI lang: cookie → navigator.language → 'en'.
+// URL ?ui=xx (handled in loadFromHash) overrides for transient sharing.
+function detectUILang() {
+    const cookie = _wmGetCookie('wm_uilang');
+    if (cookie && UI_STRINGS[cookie]) return cookie;
+    if (cookie) {
+        const base = cookie.split('_')[0];
+        if (UI_STRINGS[base]) return base;
+    }
+    const langs = navigator.languages || [navigator.language || 'en'];
+    for (const l of langs) {
+        const code = l.replace('-', '_').toLowerCase();
+        if (UI_STRINGS[code]) return code;
+        const base = code.split('_')[0];
+        const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
+            en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
+            sw:'sw', pt:'pt_br', es:'es_mx' };
+        if (map[base] && UI_STRINGS[map[base]]) return map[base];
+    }
+    return 'en';
+}
+
 function initUILangSelect() {
-    const sel = document.getElementById('uiLangSelect');
+    const sel = document.getElementById('header-ui-lang');
+    if (!sel) return;
     LANGUAGES.forEach(lang => {
         if (UI_STRINGS[lang.code]) {
             const opt = document.createElement('option');
@@ -551,6 +587,7 @@ function initUILangSelect() {
     sel.value = currentUILang;
     sel.addEventListener('change', () => {
         currentUILang = sel.value;
+        _wmSetCookie('wm_uilang', currentUILang);
         applyUILang();
         updateURL();
     });
@@ -582,8 +619,10 @@ function applyUILang() {
             el.appendChild(document.createTextNode(text));
         }
     }
+    const trLabels = {ja:'系統樹',ko:'계통수',zh:'谱系树',yue:'譜系樹',vi:'Cây phả hệ',th:'แผนภูมิ',id:'Pohon',hi:'वृक्ष',en:'Tree',de:'Stammbaum',fr:'Arbre',it:'Albero',es_eu:'Árbol',es_mx:'Árbol',pt_eu:'Árvore',pt_br:'Árvore',ru:'Древо',uk:'Дерево',ar:'الشجرة',he:'אילן',sw:'Mti'};
     setNavText(document.getElementById('navWordOrder'), woLabels[currentUILang] || woLabels.en);
     setNavText(document.getElementById('navToWordMap'), wmLabels[currentUILang] || wmLabels.en);
+    setNavText(document.getElementById('navToTree'), trLabels[currentUILang] || trLabels.en);
     const creditEl = document.getElementById('siteCredit');
     if (creditEl) creditEl.innerHTML = t('creditText');
     const disclaimerEl = document.getElementById('disclaimer');
@@ -605,7 +644,7 @@ function applyUILang() {
     const csvPrev = csvSel && csvSel.value;
     initCSVLangSelect();
     if (csvSel && csvPrev) csvSel.value = csvPrev;
-    const uiSel = document.getElementById('uiLangSelect');
+    const uiSel = document.getElementById('header-ui-lang');
     if (uiSel) {
         uiSel.value = currentUILang;
         Array.from(uiSel.options).forEach(opt => { opt.textContent = langName(opt.value); });

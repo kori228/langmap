@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 591 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 591 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
+    <title>LangMap — Word Map: 617 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 617 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 591 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 617 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 591 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 617 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -31,7 +31,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -47,6 +47,12 @@
         .site-header-bar select {
             font-size: 13px; padding: 4px 8px; border: 1px solid #d0d0d0;
             border-radius: 20px; background: #fff; cursor: pointer; max-width: 240px;
+        }
+        /* Header UI lang select (unified across index/wordmap/tree pages) */
+        .header-ui-lang {
+            padding: 4px 8px; font-size: 12px;
+            border: 1px solid #d0d0d0; border-radius: 4px;
+            background: #fff; color: #444; cursor: pointer;
         }
 
         /* --- Top-left controls (below header) --- */
@@ -260,6 +266,7 @@
                 "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
                 "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
+                "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
         /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
@@ -401,7 +408,7 @@
             background: none; border: none; font-size: 18px; cursor: pointer; color: #999;
         }
         .lang-info-panel .close-btn:hover { color: #333; }
-        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; }
+        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; padding-right: 130px; }
         .lang-info-panel .native-name { font-size: 14px; color: #666; margin-bottom: 10px; }
         .lang-info-panel table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
@@ -427,6 +434,101 @@
             padding: 4px 8px;
             border-left: 2px solid #ccc;
             margin: 2px 0 2px 16px;
+        }
+
+        /* --- Compare panel (Pass 32) --- */
+        .compare-fab {
+            position: fixed; bottom: 16px; right: 16px; z-index: 1015;
+            background: #1a73e8; color: #fff; border: none; border-radius: 24px;
+            padding: 9px 16px; font-size: 13px; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: none;
+            align-items: center; gap: 6px; font-weight: 500;
+        }
+        .compare-fab.visible { display: inline-flex; }
+        .compare-fab:hover { background: #1765c4; }
+        .compare-fab-badge {
+            background: #fff; color: #1a73e8; border-radius: 12px;
+            padding: 1px 8px; font-weight: 600; font-size: 12px; min-width: 18px; text-align: center;
+        }
+        .compare-panel {
+            position: fixed; left: 0; right: 0; bottom: 0; z-index: 1020;
+            background: rgba(255,255,255,0.98); border-top: 1px solid #ddd;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
+            max-height: 70vh; display: none; overflow: auto;
+        }
+        .compare-panel.visible { display: block; }
+        .compare-header {
+            position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
+            padding: 10px 16px; display: flex; align-items: center; gap: 10px; z-index: 2;
+        }
+        .compare-title { margin: 0; font-size: 15px; flex: 1; }
+        .compare-close, .compare-clear {
+            background: none; border: none; cursor: pointer;
+        }
+        .compare-clear {
+            background: #f1f3f4; color: #444; border-radius: 4px;
+            padding: 4px 10px; font-size: 12px;
+        }
+        .compare-clear:hover { background: #e5e7e9; }
+        .compare-close {
+            font-size: 22px; color: #999; padding: 0; width: 28px; height: 28px; line-height: 1;
+        }
+        .compare-close:hover { color: #333; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .compare-table th, .compare-table td {
+            border-bottom: 1px solid #eee; padding: 6px 10px;
+            text-align: left; vertical-align: top;
+        }
+        .compare-table thead th {
+            background: #f8f9fa; position: sticky; top: 44px; z-index: 1;
+            font-weight: 600;
+        }
+        .compare-table thead .lang-name { display: block; }
+        .compare-table thead .native-name {
+            font-size: 11px; color: #888; font-weight: 400; display: block;
+        }
+        .compare-table thead .remove-col {
+            background: none; border: none; cursor: pointer; color: #bbb;
+            font-size: 13px; padding: 0; margin-left: 4px; vertical-align: super;
+        }
+        .compare-table thead .remove-col:hover { color: #d33; }
+        .compare-table tbody th { background: #fafafa; font-weight: 600; min-width: 80px; }
+        .compare-table .surface { font-size: 14px; }
+        .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
+        .compare-table .unattested { color: #aaa; font-style: italic; }
+        .compare-add-btn {
+            display: inline-block; margin-top: 10px; padding: 4px 10px;
+            font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
+            border-radius: 4px; cursor: pointer;
+        }
+        .compare-add-btn:hover { background: #e8f0fe; }
+        .compare-add-btn.added { background: #1a73e8; color: #fff; }
+        /* Header position: top-right of the modal, immediately left of the × close button. */
+        .compare-add-btn.header {
+            position: absolute; top: 6px; right: 36px; z-index: 1;
+            margin: 0; padding: 2px 8px; font-size: 11px;
+        }
+        /* Compare-table column headers are draggable for reorder */
+        .compare-table thead th[draggable="true"] {
+            cursor: grab; user-select: none;
+        }
+        .compare-table thead th[draggable="true"]:active { cursor: grabbing; }
+        .compare-table thead th.dragging { opacity: 0.4; }
+        .compare-table thead th.drop-before {
+            box-shadow: inset 3px 0 0 0 #1a73e8;
+        }
+        .compare-table thead th.drop-after {
+            box-shadow: inset -3px 0 0 0 #1a73e8;
+        }
+        .compare-table thead .drag-handle {
+            color: #bbb; font-size: 12px; margin-right: 4px; vertical-align: middle;
+            cursor: grab;
+        }
+        .compare-table thead th[draggable="true"]:hover .drag-handle { color: #1a73e8; }
+        @media (max-width: 600px) {
+            .compare-panel { max-height: 80vh; }
+            .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
+            .compare-fab { padding: 8px 12px; }
         }
 
         /* --- URL watermark --- */
@@ -514,7 +616,10 @@
             <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
             <span class="nav-sep">/</span>
             <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
+            <span class="nav-sep">/</span>
+            <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
         </nav>
+        <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
 
@@ -532,19 +637,19 @@
                   style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
                   title="">?</span>
         </div>
-        <div class="lang-search-wrap" style="position:relative">
+        <div class="lang-search-wrap" style="position:relative;display:flex;gap:4px">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
                    role="combobox" aria-autocomplete="list" aria-expanded="false"
                    aria-controls="lang-search-results" aria-activedescendant=""
                    style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
+            <button type="button" id="lang-random" title="Random language"
+                    aria-label="Random language"
+                    style="padding:5px 8px;font-size:14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#555;cursor:pointer;line-height:1">🎲</button>
             <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
     </div>
 
-    <!-- Bottom-left: UI language only -->
-    <div class="map-controls">
-        <select id="ui-lang" class="ui-lang-select" aria-label="UI language"></select>
-    </div>
+    <!-- (UI lang select moved to header for cross-page consistency, Pass 34) -->
 
     <!-- Right-side controls: all stacked, centered -->
     <div class="right-controls">
@@ -576,6 +681,19 @@
     <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false" tabindex="-1">
         <button class="close-btn" id="info-close" aria-label="Close language info">&times;</button>
         <div id="info-content"></div>
+    </div>
+
+    <!-- Compare view: floating button + bottom panel -->
+    <button id="compare-fab" class="compare-fab" type="button" aria-label="Open language comparison">
+        <span class="compare-fab-label">比較</span> <span class="compare-fab-badge">0</span>
+    </button>
+    <div id="compare-panel" class="compare-panel" role="dialog" aria-labelledby="compare-heading" aria-modal="false" tabindex="-1">
+        <div class="compare-header">
+            <h3 id="compare-heading" class="compare-title">Language comparison</h3>
+            <button class="compare-clear" id="compare-clear" type="button">Clear</button>
+            <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">&times;</button>
+        </div>
+        <div id="compare-body"></div>
     </div>
 
     <div id="map"></div>
@@ -634,11 +752,11 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=86"></script>
+    <script src="wordmap_data.js?v=102"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="meta_i18n_coverage.js?v=1"></script>
-    <script src="lang-filter.js?v=24"></script>
-    <script src="lang_names.js?v=5"></script>
+    <script src="lang-filter.js?v=25"></script>
+    <script src="lang_names.js?v=10"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -758,23 +876,39 @@
             .catch(err => console.warn('Could not load country borders:', err));
 
         // --- UI language (detect from browser) ---
+        // Cookie helpers: shared cross-page UI-lang persistence (wm_uilang).
+        function _wmGetCookie(name) {
+            const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+        function _wmSetCookie(name, value) {
+            document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
+        }
+
         function detectBrowserLang() {
+            // 1. Cookie first (set by user's previous choice on any page)
+            const cookie = _wmGetCookie('wm_uilang');
+            if (cookie && WM_UI[cookie]) return cookie;
+            if (cookie) {
+                const base = cookie.split('_')[0];
+                if (WM_UI[base]) return base;
+            }
+            // 2. navigator.language fallback
             const langs = navigator.languages || [navigator.language || 'en'];
             for (const l of langs) {
                 const code = l.replace('-', '_').toLowerCase();
                 if (WM_UI[code]) return code;
                 const base = code.split('_')[0];
-                // Map browser codes to our UI codes
                 const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
                     en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
                     sw:'sw', pt:'pt_br', es:'es_mx', da:'en', sv:'en', no:'en', nl:'en' };
                 if (map[base] && WM_UI[map[base]]) return map[base];
-                // Chinese variants
                 if (base === 'zh') {
                     if (code.includes('hk') || code.includes('tw') || code.includes('hant')) return 'yue';
                     return 'zh';
                 }
             }
+            // 3. Default
             return 'en';
         }
         // Audit Task 134: Central cache-buster version registry. Static
@@ -785,18 +919,18 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    54,
-            data:      86,
+            data:      102,
             metaI18n:  8,
-            filter:    24,
-            names:     5,
-            meta:      35,
+            filter:    25,
+            names:    11,
+            meta:      55,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
         }
 
         let uiLang = detectBrowserLang();
-        const uiLangSelect = document.getElementById('ui-lang');
+        const uiLangSelect = document.getElementById('header-ui-lang');
         for (const [code, label] of Object.entries(WM_UI_LABELS)) {
             const opt = document.createElement('option');
             opt.value = code;
@@ -877,53 +1011,89 @@
                 pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
-            // Audit Task 106: ARIA labels for top-bar controls (en/ja/ko/zh,
-            // English fallback for other UI langs)
-            ariaSelectWord:    { en: 'Select word',                          ja: '単語を選択',         ko: '단어 선택',           zh: '选择词' },
-            ariaUiLanguage:    { en: 'UI language',                          ja: 'UI 言語',            ko: 'UI 언어',             zh: '界面语言' },
-            ariaMapZoom:       { en: 'Map zoom',                             ja: '地図ズーム',         ko: '지도 확대/축소',       zh: '地图缩放' },
-            ariaZoomIn:        { en: 'Zoom in',                              ja: '拡大',               ko: '확대',                zh: '放大' },
-            ariaZoomOut:       { en: 'Zoom out',                             ja: '縮小',               ko: '축소',                zh: '缩小' },
-            aria2D3D:          { en: 'Toggle 2D / 3D view',                  ja: '2D/3D 表示切替',     ko: '2D/3D 보기 전환',     zh: '切换 2D/3D 视图' },
-            ariaToggleForm:    { en: 'Toggle form display',                  ja: '表記の表示切替',     ko: '표기 표시 전환',       zh: '切换写法显示' },
-            ariaTogglePron:    { en: 'Toggle pronunciation display',         ja: '発音表示切替',       ko: '발음 표시 전환',       zh: '切换发音显示' },
-            ariaToggleName:    { en: 'Toggle language-name display',         ja: '言語名表示切替',     ko: '언어명 표시 전환',     zh: '切换语言名显示' },
-            ariaNameGroup:     { en: 'Name display (native / translated)',   ja: '言語名表示（現地名/翻訳）', ko: '언어명 표시 (현지/번역)', zh: '语言名显示（本名/翻译）' },
-            ariaFontSize:      { en: 'Label font size',                      ja: 'ラベル文字サイズ',   ko: '라벨 글꼴 크기',       zh: '标签字体大小' },
-            ariaCloseInfo:     { en: 'Close language info',                  ja: '言語情報を閉じる',   ko: '언어 정보 닫기',       zh: '关闭语言信息' },
-            ariaEraGroup:      { en: 'Era (modern / historical)',            ja: '時代（現代/歴史）',  ko: '시대 (현대/역사)',     zh: '时代（现代/历史）' },
-            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
-            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            // Audit Task 106: ARIA labels for top-bar controls (now full UI-lang coverage)
+            ariaSelectWord:    { en:'Select word', ja:'単語を選択', ko:'단어 선택', zh:'选择词', yue:'選擇詞', vi:'Chọn từ', th:'เลือกคำ', id:'Pilih kata', hi:'शब्द चुनें', de:'Wort wählen', fr:'Sélectionner un mot', it:'Seleziona parola', es:'Seleccionar palabra', pt:'Selecionar palavra', ru:'Выбрать слово', uk:'Вибрати слово', ar:'اختر كلمة', he:'בחר מילה', sw:'Chagua neno' },
+            ariaUiLanguage:    { en:'UI language', ja:'UI 言語', ko:'UI 언어', zh:'界面语言', yue:'介面語言', vi:'Ngôn ngữ giao diện', th:'ภาษาส่วนติดต่อ', id:'Bahasa antarmuka', hi:'UI भाषा', de:'UI-Sprache', fr:'Langue de l\'interface', it:'Lingua dell\'interfaccia', es:'Idioma de interfaz', pt:'Idioma da interface', ru:'Язык интерфейса', uk:'Мова інтерфейсу', ar:'لغة الواجهة', he:'שפת ממשק', sw:'Lugha ya kiolesura' },
+            ariaMapZoom:       { en:'Map zoom', ja:'地図ズーム', ko:'지도 확대/축소', zh:'地图缩放', yue:'地圖縮放', vi:'Thu phóng bản đồ', th:'ซูมแผนที่', id:'Zoom peta', hi:'मानचित्र ज़ूम', de:'Karten-Zoom', fr:'Zoom de la carte', it:'Zoom mappa', es:'Zoom del mapa', pt:'Zoom do mapa', ru:'Масштаб карты', uk:'Масштаб мапи', ar:'تكبير الخريطة', he:'זום מפה', sw:'Kuza ramani' },
+            ariaZoomIn:        { en:'Zoom in', ja:'拡大', ko:'확대', zh:'放大', yue:'放大', vi:'Phóng to', th:'ขยาย', id:'Perbesar', hi:'ज़ूम इन', de:'Vergrößern', fr:'Agrandir', it:'Ingrandisci', es:'Acercar', pt:'Aproximar', ru:'Увеличить', uk:'Збільшити', ar:'تكبير', he:'הגדל', sw:'Kuza' },
+            ariaZoomOut:       { en:'Zoom out', ja:'縮小', ko:'축소', zh:'缩小', yue:'縮小', vi:'Thu nhỏ', th:'ย่อ', id:'Perkecil', hi:'ज़ूम आउट', de:'Verkleinern', fr:'Réduire', it:'Riduci', es:'Alejar', pt:'Afastar', ru:'Уменьшить', uk:'Зменшити', ar:'تصغير', he:'הקטן', sw:'Punguza' },
+            aria2D3D:          { en:'Toggle 2D / 3D view', ja:'2D/3D 表示切替', ko:'2D/3D 보기 전환', zh:'切换 2D/3D 视图', yue:'切換 2D/3D 視圖', vi:'Chuyển 2D / 3D', th:'สลับมุมมอง 2D / 3D', id:'Alih 2D / 3D', hi:'2D / 3D दृश्य बदलें', de:'2D / 3D wechseln', fr:'Basculer 2D / 3D', it:'Alterna 2D / 3D', es:'Alternar 2D / 3D', pt:'Alternar 2D / 3D', ru:'Переключить 2D / 3D', uk:'Перемкнути 2D / 3D', ar:'تبديل 2D / 3D', he:'החלף 2D / 3D', sw:'Badilisha 2D / 3D' },
+            ariaToggleForm:    { en:'Toggle form display', ja:'表記の表示切替', ko:'표기 표시 전환', zh:'切换写法显示', yue:'切換寫法顯示', vi:'Bật/tắt hiển thị chữ viết', th:'สลับการแสดงรูปคำ', id:'Alih tampilan bentuk', hi:'रूप प्रदर्शन बदलें', de:'Schreibung umschalten', fr:'Basculer l\'affichage des graphies', it:'Alterna la grafia', es:'Alternar grafía', pt:'Alternar grafia', ru:'Переключить отображение записи', uk:'Перемкнути показ написання', ar:'تبديل عرض الشكل', he:'החלף תצוגת כתיב', sw:'Badilisha tabia ya kuandika' },
+            ariaTogglePron:    { en:'Toggle pronunciation display', ja:'発音表示切替', ko:'발음 표시 전환', zh:'切换发音显示', yue:'切換發音顯示', vi:'Bật/tắt phát âm', th:'สลับการแสดงการออกเสียง', id:'Alih tampilan pelafalan', hi:'उच्चारण प्रदर्शन बदलें', de:'Aussprache umschalten', fr:'Basculer la prononciation', it:'Alterna la pronuncia', es:'Alternar pronunciación', pt:'Alternar pronúncia', ru:'Переключить произношение', uk:'Перемкнути вимову', ar:'تبديل عرض النطق', he:'החלף תצוגת הגייה', sw:'Badilisha matamshi' },
+            ariaToggleName:    { en:'Toggle language-name display', ja:'言語名表示切替', ko:'언어명 표시 전환', zh:'切换语言名显示', yue:'切換語言名顯示', vi:'Bật/tắt tên ngôn ngữ', th:'สลับการแสดงชื่อภาษา', id:'Alih tampilan nama bahasa', hi:'भाषा नाम बदलें', de:'Sprachnamen umschalten', fr:'Basculer le nom de langue', it:'Alterna nome lingua', es:'Alternar nombre del idioma', pt:'Alternar nome do idioma', ru:'Переключить название языка', uk:'Перемкнути назву мови', ar:'تبديل عرض اسم اللغة', he:'החלף תצוגת שם השפה', sw:'Badilisha jina la lugha' },
+            ariaNameGroup:     { en:'Name display (native / translated)', ja:'言語名表示（現地名/翻訳）', ko:'언어명 표시 (현지/번역)', zh:'语言名显示（本名/翻译）', yue:'語言名顯示（本名／翻譯）', vi:'Hiển thị tên (bản địa / dịch)', th:'การแสดงชื่อ (พื้นเมือง / แปล)', id:'Tampilan nama (asli / diterjemahkan)', hi:'नाम प्रदर्शन (मूल / अनुवादित)', de:'Namensanzeige (nativ / übersetzt)', fr:'Affichage du nom (natif / traduit)', it:'Visualizzazione nome (nativo / tradotto)', es:'Mostrar nombre (nativo / traducido)', pt:'Exibição de nome (nativo / traduzido)', ru:'Отображение названия (родное / перевод)', uk:'Відображення назви (рідна / переклад)', ar:'عرض الاسم (الأصلي / المُترجم)', he:'תצוגת שם (מקורי / מתורגם)', sw:'Onyesho la jina (asili / iliyotafsiriwa)' },
+            ariaFontSize:      { en:'Label font size', ja:'ラベル文字サイズ', ko:'라벨 글꼴 크기', zh:'标签字体大小', yue:'標籤字體大小', vi:'Cỡ chữ nhãn', th:'ขนาดอักษรของป้าย', id:'Ukuran huruf label', hi:'लेबल फ़ॉन्ट आकार', de:'Beschriftungs-Schriftgröße', fr:'Taille de police d\'étiquette', it:'Dimensione carattere etichetta', es:'Tamaño de fuente de etiqueta', pt:'Tamanho da fonte do rótulo', ru:'Размер шрифта подписей', uk:'Розмір шрифту підпису', ar:'حجم خط التسمية', he:'גודל גופן תווית', sw:'Saizi ya fonti ya lebo' },
+            ariaCloseInfo:     { en:'Close language info', ja:'言語情報を閉じる', ko:'언어 정보 닫기', zh:'关闭语言信息', yue:'關閉語言資訊', vi:'Đóng thông tin ngôn ngữ', th:'ปิดข้อมูลภาษา', id:'Tutup info bahasa', hi:'भाषा जानकारी बंद करें', de:'Sprachinformationen schließen', fr:'Fermer les infos de la langue', it:'Chiudi info lingua', es:'Cerrar info del idioma', pt:'Fechar info do idioma', ru:'Закрыть инфо языка', uk:'Закрити інфо мови', ar:'إغلاق معلومات اللغة', he:'סגור מידע שפה', sw:'Funga taarifa ya lugha' },
+            ariaEraGroup:      { en:'Era (modern / historical)', ja:'時代（現代/歴史）', ko:'시대 (현대/역사)', zh:'时代（现代/历史）', yue:'時代（現代／歷史）', vi:'Thời kỳ (hiện đại / lịch sử)', th:'ยุค (สมัยใหม่ / ประวัติศาสตร์)', id:'Era (modern / historis)', hi:'युग (आधुनिक / ऐतिहासिक)', de:'Epoche (modern / historisch)', fr:'Époque (moderne / historique)', it:'Epoca (moderna / storica)', es:'Época (moderna / histórica)', pt:'Era (moderna / histórica)', ru:'Эпоха (современная / историческая)', uk:'Епоха (сучасна / історична)', ar:'الحقبة (حديثة / تاريخية)', he:'תקופה (מודרני / היסטורי)', sw:'Enzi (kisasa / kihistoria)' },
+            modernLangTooltip: { en:'modern lang', ja:'現代言語', ko:'현대어', zh:'现代语言', yue:'現代語言', vi:'ngôn ngữ hiện đại', th:'ภาษาสมัยใหม่', id:'bahasa modern', hi:'आधुनिक भाषा', de:'moderne Sprache', fr:'langue moderne', it:'lingua moderna', es:'idioma moderno', pt:'idioma moderno', ru:'современный язык', uk:'сучасна мова', ar:'لغة حديثة', he:'שפה מודרנית', sw:'lugha ya kisasa' },
+            historicalLangTooltip: { en:'historical lang', ja:'歴史言語', ko:'역사 언어', zh:'历史语言', yue:'歷史語言', vi:'ngôn ngữ lịch sử', th:'ภาษาประวัติศาสตร์', id:'bahasa historis', hi:'ऐतिहासिक भाषा', de:'historische Sprache', fr:'langue historique', it:'lingua storica', es:'idioma histórico', pt:'idioma histórico', ru:'исторический язык', uk:'історична мова', ar:'لغة تاريخية', he:'שפה היסטורית', sw:'lugha ya kihistoria' },
+            ariaRandomLang:    { en:'Random language', ja:'ランダムな言語', ko:'무작위 언어', zh:'随机语言', yue:'隨機語言', vi:'Ngôn ngữ ngẫu nhiên', th:'ภาษาแบบสุ่ม', id:'Bahasa acak', hi:'यादृच्छिक भाषा', de:'Zufällige Sprache', fr:'Langue aléatoire', it:'Lingua casuale', es:'Idioma aleatorio', pt:'Idioma aleatório', ru:'Случайный язык', uk:'Випадкова мова', ar:'لغة عشوائية', he:'שפה אקראית', sw:'Lugha ya nasibu' },
             // Audit Task 112: era legend explanation. Modern mode shows
             // only modern languages; historical mode adds historical
             // entries plus their modern descendants as cross-reference
             // markers (drawn in red).
             eraHelpModern: {
-                en: 'Modern mode: shows modern languages and varieties.',
-                ja: '現代モード: 現代言語・地方変種のみ表示します。',
-                ko: '현대 모드: 현대 언어와 지역 변종을 표시합니다.',
-                zh: '现代模式：只显示现代语言和地区变体。',
+                en:'Modern mode: shows modern languages and varieties.',
+                ja:'現代モード: 現代言語・地方変種のみ表示します。',
+                ko:'현대 모드: 현대 언어와 지역 변종을 표시합니다.',
+                zh:'现代模式：只显示现代语言和地区变体。',
+                yue:'現代模式：只顯示現代語言同地區變體。',
+                vi:'Chế độ hiện đại: hiển thị ngôn ngữ và phương ngữ hiện đại.',
+                th:'โหมดสมัยใหม่: แสดงภาษาและสำเนียงสมัยใหม่',
+                id:'Mode modern: menampilkan bahasa dan ragam modern.',
+                hi:'आधुनिक मोड: आधुनिक भाषाएं और किस्में दिखाता है।',
+                de:'Moderner Modus: zeigt moderne Sprachen und Varietäten.',
+                fr:'Mode moderne : affiche les langues et variétés modernes.',
+                it:'Modalità moderna: mostra lingue e varietà moderne.',
+                es:'Modo moderno: muestra idiomas y variedades modernos.',
+                pt:'Modo moderno: mostra idiomas e variedades modernos.',
+                ru:'Современный режим: показывает современные языки и варианты.',
+                uk:'Сучасний режим: показує сучасні мови та варіанти.',
+                ar:'الوضع الحديث: يعرض اللغات والأشكال الحديثة.',
+                he:'מצב מודרני: מציג שפות וניבים מודרניים.',
+                sw:'Hali ya kisasa: huonyesha lugha na ainalugha za kisasa.',
             },
             eraHelpHistorical: {
-                en: 'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
-                ja: '歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
-                ko: '역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
-                zh: '历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+                en:'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
+                ja:'歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
+                ko:'역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
+                zh:'历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+                yue:'歷史模式：顯示歷史語言以及作為參照嘅現代後裔語言（紅色）。',
+                vi:'Chế độ lịch sử: hiển thị các ngôn ngữ lịch sử cùng hậu duệ hiện đại (đỏ) để đối chiếu.',
+                th:'โหมดประวัติศาสตร์: แสดงภาษาประวัติศาสตร์พร้อมลูกหลานสมัยใหม่ (สีแดง) เป็นการอ้างอิง',
+                id:'Mode historis: menampilkan bahasa historis beserta keturunan modern (merah) sebagai referensi.',
+                hi:'ऐतिहासिक मोड: ऐतिहासिक भाषाएं तथा संदर्भ के रूप में आधुनिक वंशज (लाल) दिखाता है।',
+                de:'Historischer Modus: zeigt historische Sprachen plus moderne Nachfahren (rot) als Querverweis.',
+                fr:'Mode historique : affiche les langues historiques et les descendants modernes (rouges) en référence.',
+                it:'Modalità storica: mostra lingue storiche più discendenti moderni (rossi) come riferimento.',
+                es:'Modo histórico: muestra idiomas históricos junto con descendientes modernos (rojo) como referencia.',
+                pt:'Modo histórico: mostra idiomas históricos com descendentes modernos (vermelho) como referência.',
+                ru:'Исторический режим: показывает исторические языки и современные потомки (красные) для сопоставления.',
+                uk:'Історичний режим: показує історичні мови та сучасних нащадків (червоних) як посилання.',
+                ar:'الوضع التاريخي: يعرض اللغات التاريخية مع السلائل الحديثة (بالأحمر) كمرجع.',
+                he:'מצב היסטורי: מציג שפות היסטוריות לצד צאצאים מודרניים (אדום) כעזר.',
+                sw:'Hali ya kihistoria: huonyesha lugha za kihistoria pamoja na wazao wa kisasa (nyekundu) kama rejea.',
             },
-            noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
-                de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
-                pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
-                ar: 'لا توجد نتائج', he: 'אין תוצאות', sw: 'Hakuna inayolingana',
-                vi: 'Không tìm thấy', th: 'ไม่พบรายการ', id: 'Tidak ada' },
-            eraFilterOffHint: { en: 'Toggle off the {era} filter to select',
-                ja: '{era}フィルターをオフにしてください',
-                ko: '{era} 필터를 끄세요', zh: '请关闭{era}过滤器后再选择',
-                de: '{era}-Filter ausschalten, um auszuwählen',
-                fr: 'Désactivez le filtre {era} pour sélectionner',
-                es: 'Desactiva el filtro {era} para seleccionar',
-                pt: 'Desative o filtro {era} para selecionar',
-                ru: 'Отключите фильтр {era} для выбора',
-                ar: 'أوقف فلتر {era} للاختيار', he: 'בטל את מסנן ה־{era} לבחירה' },
+            noMatch: { en:'No match', ja:'該当なし', ko:'일치 항목 없음', zh:'无匹配', yue:'冇匹配',
+                vi:'Không tìm thấy', th:'ไม่พบรายการ', id:'Tidak ada', hi:'कोई मेल नहीं',
+                de:'Kein Treffer', fr:'Aucun résultat', it:'Nessun risultato',
+                es:'Sin resultados', pt:'Sem resultados',
+                ru:'Нет совпадений', uk:'Немає збігів',
+                ar:'لا توجد نتائج', he:'אין תוצאות', sw:'Hakuna inayolingana' },
+            eraFilterOffHint: { en:'Toggle off the {era} filter to select',
+                ja:'{era}フィルターをオフにしてください', ko:'{era} 필터를 끄세요',
+                zh:'请关闭{era}过滤器后再选择', yue:'請關閉{era}過濾器再選擇',
+                vi:'Tắt bộ lọc {era} để chọn', th:'ปิดตัวกรอง {era} เพื่อเลือก',
+                id:'Matikan filter {era} untuk memilih', hi:'चुनने के लिए {era} फ़िल्टर बंद करें',
+                de:'{era}-Filter ausschalten, um auszuwählen',
+                fr:'Désactivez le filtre {era} pour sélectionner',
+                it:'Disattiva il filtro {era} per selezionare',
+                es:'Desactiva el filtro {era} para seleccionar',
+                pt:'Desative o filtro {era} para selecionar',
+                ru:'Отключите фильтр {era} для выбора',
+                uk:'Вимкніть фільтр {era}, щоб вибрати',
+                ar:'أوقف فلتر {era} للاختيار', he:'בטל את מסנן ה־{era} לבחירה',
+                sw:'Zima kichujio cha {era} ili kuchagua' },
         };
         function i18n(key) {
             const m = I18N_STRINGS[key];
@@ -953,6 +1123,10 @@
                 // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
+                // Refresh the ON/OFF text in the user's UI language.
+                if (typeof updateOnOff === 'function') {
+                    updateOnOff(el, el.classList.contains('active'));
+                }
             });
             // Localize search input placeholder (Audit i18n gap fix)
             const searchInput = document.getElementById('lang-search');
@@ -975,6 +1149,8 @@
                 ['font-size',       'ariaFontSize',    'aria-label'],
                 ['info-close',      'ariaCloseInfo',   'aria-label'],
                 ['era-switch',      'ariaEraGroup',    'aria-label'],
+                ['lang-random',     'ariaRandomLang',  'aria-label'],
+                ['lang-random',     'ariaRandomLang',  'title'],
             ];
             for (const [id, key, attr] of ariaTargets) {
                 const el = document.getElementById(id);
@@ -997,10 +1173,27 @@
             rebuildWordSelect();
             // Audit Task 112: refresh era help tooltip after labels update
             if (typeof updateEraHelp === 'function') updateEraHelp();
+            // Refresh Compare UI labels for the current UI lang.
+            try {
+                const fabLbl = document.querySelector('#compare-fab .compare-fab-label');
+                if (fabLbl && typeof compareT === 'function') fabLbl.textContent = compareT('fab');
+                const fabBtn = document.getElementById('compare-fab');
+                if (fabBtn && typeof compareT === 'function') {
+                    fabBtn.setAttribute('aria-label', compareT('fab'));
+                    fabBtn.title = compareT('fab');
+                }
+                const cmpTitle = document.querySelector('#compare-panel .compare-title');
+                if (cmpTitle && typeof compareT === 'function') cmpTitle.textContent = compareT('title');
+                const cmpClear = document.getElementById('compare-clear');
+                if (cmpClear && typeof compareT === 'function') cmpClear.textContent = compareT('clear');
+                const cmpClose = document.getElementById('compare-close');
+                if (cmpClose && typeof compareT === 'function') cmpClose.setAttribute('aria-label', compareT('title'));
+            } catch (e) { /* compareT may not yet be defined during early init */ }
         }
 
         uiLangSelect.addEventListener('change', () => {
             uiLang = uiLangSelect.value;
+            _wmSetCookie('wm_uilang', uiLang);  // Pass 34: cross-page cookie persistence
             window.__langmap.uiLang = uiLang;
             window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
             applyUILang();
@@ -1110,9 +1303,14 @@
         eraModern.addEventListener('click', () => setEra(false));
         eraHistorical.addEventListener('click', () => setEra(true));
 
+        const ON_LBL  = { en:'ON',  ja:'オン',  ko:'켜짐',   zh:'开',    yue:'開',    vi:'BẬT', th:'เปิด',  id:'AKTIF',   hi:'चालू',     de:'EIN',   fr:'ACTIF',  it:'ATTIVO',  es:'ACT.',  pt:'LIG.',  ru:'ВКЛ', uk:'УВІМК', ar:'تشغيل',   he:'פעיל',  sw:'WASHA' };
+        const OFF_LBL = { en:'OFF', ja:'オフ',  ko:'꺼짐',   zh:'关',    yue:'關',    vi:'TẮT', th:'ปิด',   id:'NONAKTIF', hi:'बंद',      de:'AUS',   fr:'INACTIF', it:'INATTIVO', es:'INACT.', pt:'DESLIG.', ru:'ВЫКЛ', uk:'ВИМКН', ar:'إيقاف',  he:'כבוי',  sw:'ZIMA' };
         function updateOnOff(btn, on) {
             const oo = btn.querySelector('.onoff');
-            if (oo) oo.textContent = on ? 'ON' : 'OFF';
+            if (!oo) return;
+            const ui = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            const map = on ? ON_LBL : OFF_LBL;
+            oo.textContent = map[ui] || map.en;
         }
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -1708,6 +1906,10 @@
             const openCode = infoPanel && infoPanel.classList.contains('visible')
                 ? infoPanel.dataset.code : '';
             if (openCode) params.set('lang', openCode);
+            // Pass 32: persist compare list
+            if (window.__compareList && window.__compareList.length > 0) {
+                params.set('cmp', window.__compareList.join(','));
+            }
             // Preserve the filter param owned by lang-filter.js
             const fParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
                 ? window.__langmap.getFilterHashParam() : '';
@@ -2074,80 +2276,152 @@
             modern: null,
             attested: {
                 bg:'#e8f0fe', fg:'#1a73e8',
-                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es_eu:'atestiguado', es_mx:'atestiguado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
+                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es:'atestiguado', es_eu:'atestiguado', es_mx:'atestiguado', pt:'atestado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
                 descs: {
                     en:'Direct primary text corpus exists; values cite real sources.',
                     ja:'直接的な原典コーパスあり、値は実在の出典に依拠。',
+                    ko:'직접적인 원전 코퍼스가 존재하며, 값은 실제 출처에 근거함.',
                     zh:'存在直接的原始文本语料，值引自真实出处。',
-                    ko:'직접적인 원전 코퍼스가 존재, 값은 실제 출처에 의거.',
+                    yue:'存在直接嘅原始文本語料，值引自真實出處。',
+                    vi:'Có kho văn bản gốc trực tiếp; các giá trị dẫn nguồn thực tế.',
+                    th:'มีคลังข้อความต้นฉบับโดยตรง ค่าต่าง ๆ อ้างอิงแหล่งข้อมูลจริง',
+                    id:'Korpus teks primer langsung tersedia; nilai mengutip sumber nyata.',
+                    hi:'प्रत्यक्ष प्राथमिक पाठ कॉर्पस उपलब्ध; मान वास्तविक स्रोतों का उद्धरण देते हैं।',
                     de:'Direkte Primärquellen vorhanden; Werte beruhen auf echten Belegen.',
                     fr:'Corpus de textes primaires existant ; valeurs sourcées.',
+                    it:'Corpus di testi primari diretto; i valori citano fonti reali.',
+                    es:'Existe un corpus directo de textos primarios; los valores citan fuentes reales.',
+                    pt:'Existe um corpus direto de textos primários; os valores citam fontes reais.',
                     ru:'Существует прямой первичный корпус; значения из реальных источников.',
+                    uk:'Існує прямий первинний корпус; значення з реальних джерел.',
+                    ar:'يوجد كوربس نصوص أولي مباشر؛ القيم تستشهد بمصادر حقيقية.',
+                    he:'קיים קורפוס של טקסטים ראשוניים ישירים; הערכים מצטטים מקורות אמיתיים.',
+                    sw:'Kuna korpasi ya maandishi ya msingi ya moja kwa moja; thamani hutaja vyanzo halisi.',
                 },
             },
             fragmentary: {
                 bg:'#fef0e0', fg:'#c0392b',
-                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es_eu:'fragmentario', es_mx:'fragmentario', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
+                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es:'fragmentario', es_eu:'fragmentario', es_mx:'fragmentario', pt:'fragmentário', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
                 descs: {
                     en:'Limited isolated attestations; many cells use related-language proxies.',
-                    ja:'断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。',
+                    ja:'孤立した断片的資料のみ。多くのセルは近縁言語からの代用形を用いる。',
+                    ko:'고립된 단편적 자료만 존재. 많은 셀은 근연 언어의 대용형을 사용함.',
                     zh:'仅有少量孤立的证据，许多词条采用近缘语言的代用形式。',
-                    ko:'고립적인 단편 자료만 존재, 많은 셀은 근연 언어의 proxy.',
+                    yue:'僅有少量孤立嘅證據，多數詞條採用近緣語言嘅代用形式。',
+                    vi:'Chỉ có chứng tích lẻ tẻ; nhiều ô dùng dạng thay thế từ ngôn ngữ liên quan.',
+                    th:'มีหลักฐานเศษเสี้ยวที่กระจัดกระจาย; หลายช่องใช้รูปทดแทนจากภาษาที่เกี่ยวข้อง',
+                    id:'Hanya bukti terpisah-pisah; banyak sel memakai pengganti dari bahasa terkait.',
+                    hi:'सीमित विलगित प्रमाण; कई कोशिकाएं संबंधित भाषाओं के प्रतिरूप उपयोग करती हैं।',
                     de:'Nur vereinzelte Belege; viele Zellen nutzen verwandtsprachliche Proxys.',
                     fr:'Attestations isolées limitées ; nombreuses cellules par proxy de langues apparentées.',
-                    ru:'Лишь отдельные засвидетельствованные слова; многие ячейки — прокси из родственных языков.',
+                    it:'Attestazioni isolate limitate; molte celle usano sostituti da lingue correlate.',
+                    es:'Atestaciones aisladas limitadas; muchas celdas usan sustitutos de lenguas emparentadas.',
+                    pt:'Atestações isoladas limitadas; muitas células usam substitutos de línguas aparentadas.',
+                    ru:'Лишь отдельные засвидетельствованные слова; многие ячейки — замены из родственных языков.',
+                    uk:'Лише окремі засвідчені слова; багато клітинок — заміни зі споріднених мов.',
+                    ar:'شهادات معزولة محدودة؛ تستخدم خلايا كثيرة بدائل من لغات قريبة.',
+                    he:'אישושים מבודדים מוגבלים; תאים רבים משתמשים בתחליפים משפות קרובות.',
+                    sw:'Ushahidi wa pekee uliopungua; visehemu vingi vinatumia mbadala kutoka lugha husiana.',
                 },
             },
             reconstructed: {
                 bg:'#fff5e0', fg:'#b56500',
-                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es_eu:'reconstruido', es_mx:'reconstruido', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
+                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es:'reconstruido', es_eu:'reconstruido', es_mx:'reconstruido', pt:'reconstruído', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
                 descs: {
                     en:'Comparative reconstruction; no direct text record.',
-                    ja:'比較言語学による再構形、直接的な text record なし。',
+                    ja:'比較言語学による再構形、直接的な文献記録なし。',
+                    ko:'비교언어학에 의한 재구형, 직접적인 문헌 기록 없음.',
                     zh:'比较语言学重构，无直接文本记录。',
-                    ko:'비교언어학에 의한 재구형, 직접적인 텍스트 기록 없음.',
+                    yue:'比較語言學重構，冇直接文獻記錄。',
+                    vi:'Tái dựng so sánh; không có ghi chép văn bản trực tiếp.',
+                    th:'การสร้างใหม่เชิงเปรียบเทียบ; ไม่มีบันทึกข้อความโดยตรง',
+                    id:'Rekonstruksi komparatif; tidak ada catatan teks langsung.',
+                    hi:'तुलनात्मक पुनर्निर्माण; कोई प्रत्यक्ष पाठ अभिलेख नहीं।',
                     de:'Komparative Rekonstruktion; keine direkten Textbelege.',
                     fr:'Reconstitution comparative ; aucun témoignage textuel direct.',
+                    it:'Ricostruzione comparativa; nessuna documentazione testuale diretta.',
+                    es:'Reconstrucción comparativa; sin registro textual directo.',
+                    pt:'Reconstrução comparativa; sem registro textual direto.',
                     ru:'Сравнительная реконструкция; прямых текстовых свидетельств нет.',
+                    uk:'Порівняльна реконструкція; прямих текстових свідчень немає.',
+                    ar:'إعادة بناء مقارنة؛ لا يوجد سجل نصي مباشر.',
+                    he:'שחזור השוואתי; אין רישום טקסטואלי ישיר.',
+                    sw:'Urejeshaji wa kulinganisha; hakuna kumbukumbu ya maandishi ya moja kwa moja.',
                 },
             },
             undeciphered: {
                 bg:'#fae0e0', fg:'#a02020',
-                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es_eu:'no descifrado', es_mx:'no descifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
+                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es:'no descifrado', es_eu:'no descifrado', es_mx:'no descifrado', pt:'não decifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
                 descs: {
                     en:'Script not yet readable.',
                     ja:'文字が未解読の言語。',
-                    zh:'文字尚未被解读。',
                     ko:'문자가 아직 해독되지 않은 언어.',
+                    zh:'文字尚未被解读。',
+                    yue:'文字仲未被解讀。',
+                    vi:'Chữ viết chưa thể đọc được.',
+                    th:'อักษรยังไม่สามารถอ่านได้',
+                    id:'Aksara belum dapat dibaca.',
+                    hi:'लिपि अभी पठनीय नहीं है।',
                     de:'Schrift noch nicht entziffert.',
                     fr:'Écriture pas encore déchiffrée.',
+                    it:'Scrittura non ancora leggibile.',
+                    es:'Escritura aún no legible.',
+                    pt:'Escrita ainda não legível.',
                     ru:'Письменность ещё не расшифрована.',
+                    uk:'Письменність ще не розшифрована.',
+                    ar:'الكتابة غير قابلة للقراءة بعد.',
+                    he:'הכתב טרם ניתן לקריאה.',
+                    sw:'Maandishi bado hayaweza kusomwa.',
                 },
             },
             'partly-understood': {
                 bg:'#fff0d0', fg:'#a06000',
-                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
+                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es:'parcialmente entendido', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt:'parcialmente compreendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
                 descs: {
                     en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
-                    ja:'文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。',
+                    ja:'文字は読めるが語彙・文法は未完成。多くのセルが暫定的。',
+                    ko:'문자는 읽을 수 있으나 어휘·문법은 미완성. 많은 셀이 잠정적.',
                     zh:'文字可读，但词汇/语法尚不完备，许多词条暂定。',
-                    ko:'문자는 읽을 수 있으나 어휘·문법은 미완성, 많은 셀이 잠정적.',
+                    yue:'文字可讀，但詞彙／語法仍未完備，多數詞條暫定。',
+                    vi:'Chữ viết đọc được nhưng từ vựng/ngữ pháp chưa đầy đủ; nhiều ô chưa chắc chắn.',
+                    th:'อักษรอ่านได้แต่ศัพท์/ไวยากรณ์ไม่สมบูรณ์; หลายช่องยังไม่แน่นอน',
+                    id:'Aksara dapat dibaca tetapi leksikon/tata bahasa belum lengkap; banyak sel tidak pasti.',
+                    hi:'लिपि पठनीय परन्तु शब्दावली/व्याकरण अपूर्ण; कई कोशिकाएं अनिश्चित।',
                     de:'Schrift lesbar, aber Wortschatz/Grammatik unvollständig; viele Zellen unsicher.',
                     fr:'Écriture lisible mais lexique/grammaire incomplets ; nombreuses cellules incertaines.',
+                    it:'Scrittura leggibile ma lessico/grammatica incompleti; molte celle incerte.',
+                    es:'Escritura legible pero léxico/gramática incompletos; muchas celdas inciertas.',
+                    pt:'Escrita legível mas léxico/gramática incompletos; muitas células incertas.',
                     ru:'Письменность читается, но лексика/грамматика неполные; многие ячейки предварительные.',
+                    uk:'Письменність читається, але лексика/граматика неповні; багато клітинок попередні.',
+                    ar:'الكتابة مقروءة لكن المعجم/النحو غير مكتملين؛ كثير من الخلايا غير مؤكدة.',
+                    he:'הכתב קריא אך אוצר המילים/הדקדוק חלקיים; תאים רבים אינם ודאיים.',
+                    sw:'Maandishi yanaweza kusomwa lakini msamiati/sarufi haijakamilika; visehemu vingi havihakikishwi.',
                 },
             },
             pedagogical: {
                 bg:'#eee0fa', fg:'#6020a0',
-                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es_eu:'pedagógico', es_mx:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
+                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es:'pedagógico', es_eu:'pedagógico', es_mx:'pedagógico', pt:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
                 descs: {
                     en:'Teaching approximation; not actual attested historical forms.',
-                    ja:'教育用近似、実際に attested された歴史的形態ではない。',
+                    ja:'教育用の近似形であり、実際に文献で確認された歴史的形態ではない。',
+                    ko:'교육용 근사형으로, 실제 문헌으로 확인된 역사적 형태가 아님.',
                     zh:'教学用近似形式，并非实际历史所证的语言形态。',
-                    ko:'교육용 근사형, 실제로 attested된 역사적 형태가 아님.',
+                    yue:'教學用近似形式，並非實際歷史文獻所證嘅語言形態。',
+                    vi:'Mô phỏng để giảng dạy; không phải dạng lịch sử có chứng tích thực tế.',
+                    th:'รูปประมาณเพื่อการสอน; ไม่ใช่รูปประวัติศาสตร์ที่มีหลักฐานจริง',
+                    id:'Pendekatan untuk pengajaran; bukan bentuk historis yang benar-benar terdokumentasi.',
+                    hi:'शिक्षण हेतु अनुमानन; वास्तविक प्रमाणित ऐतिहासिक रूप नहीं।',
                     de:'Didaktische Annäherung; keine tatsächlich belegten historischen Formen.',
                     fr:'Approximation pédagogique ; pas de formes historiques réellement attestées.',
+                    it:'Approssimazione didattica; non forme storiche realmente attestate.',
+                    es:'Aproximación pedagógica; no son formas históricas atestiguadas reales.',
+                    pt:'Aproximação pedagógica; não são formas históricas realmente atestadas.',
                     ru:'Учебное приближение; не реальные засвидетельствованные исторические формы.',
+                    uk:'Навчальне наближення; не реальні засвідчені історичні форми.',
+                    ar:'تقريب تعليمي؛ ليست أشكالاً تاريخية مثبتة فعليًا.',
+                    he:'קירוב לימודי; אינן צורות היסטוריות מתועדות בפועל.',
+                    sw:'Ukadirio wa kufundishia; siyo aina za kihistoria zilizothibitishwa kihalisi.',
                 },
             },
         };
@@ -2166,55 +2440,65 @@
 
         // Per Phase 2 (Session 33): per-cell evidence overlay markers.
         // Compact symbol shown next to each cell value; hover tooltip carries source.
-        // Audit Task 76: pronunciationType label for the IPA column.
-        // Localized at en/ja/ko/zh; other UI langs fall back to en.
+        // Audit Task 76: pronunciationType label for the IPA column. Full UI-lang coverage.
         const PRONUNCIATION_LABEL = {
-            ipa:          { en: 'IPA',                    ja: 'IPA',          ko: 'IPA',         zh: 'IPA' },
-            broad:        { en: 'broad transcription',    ja: '広めの音写',    ko: '광역 전사',    zh: '宽式音写' },
-            romanization: { en: 'romanization',           ja: 'ローマ字転写',  ko: '로마자 전사',  zh: '罗马字转写' },
-            orthography:  { en: 'spelling-based',         ja: '綴り由来',      ko: '철자 기반',    zh: '拼写转写' },
-            mixed:        { en: 'mixed / needs review',   ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
-            unknown:      { en: 'not yet reviewed',       ja: '未確認',        ko: '미검토',       zh: '未审核' },
+            ipa:          { en:'IPA', ja:'IPA', ko:'IPA', zh:'IPA', yue:'IPA', vi:'IPA', th:'สัทอักษรสากล', id:'IPA', hi:'IPA', de:'IPA', fr:'API', it:'IPA', es:'AFI', pt:'AFI', ru:'МФА', uk:'МФА', ar:'IPA', he:'IPA', sw:'IPA' },
+            broad:        { en:'broad transcription', ja:'広めの音写', ko:'광역 전사', zh:'宽式音写', yue:'寬式音寫', vi:'phiên âm rộng', th:'การถอดเสียงอย่างกว้าง', id:'transkripsi luas', hi:'विस्तृत प्रतिलेखन', de:'breite Transkription', fr:'transcription large', it:'trascrizione larga', es:'transcripción amplia', pt:'transcrição ampla', ru:'широкая транскрипция', uk:'широка транскрипція', ar:'نسخ صوتي عريض', he:'תעתיק רחב', sw:'unukuzi mpana' },
+            romanization: { en:'romanization', ja:'ローマ字転写', ko:'로마자 전사', zh:'罗马字转写', yue:'羅馬字轉寫', vi:'phiên âm La-tinh', th:'การถอดเป็นโรมัน', id:'romanisasi', hi:'रोमनीकरण', de:'Romanisierung', fr:'romanisation', it:'romanizzazione', es:'romanización', pt:'romanização', ru:'романизация', uk:'романізація', ar:'الكتابة بالحروف اللاتينية', he:'תעתיק לטיני', sw:'urumi' },
+            orthography:  { en:'spelling-based', ja:'綴り由来', ko:'철자 기반', zh:'拼写转写', yue:'拼寫轉寫', vi:'theo chính tả', th:'อิงอักขรวิธี', id:'berbasis ejaan', hi:'वर्तनी-आधारित', de:'rechtschreibungsbasiert', fr:'orthographique', it:'ortografica', es:'ortográfico', pt:'ortográfico', ru:'на основе орфографии', uk:'на основі правопису', ar:'مبني على الإملاء', he:'מבוסס כתיב', sw:'msingi wa tahajia' },
+            mixed:        { en:'mixed / needs review', ja:'混在/要確認', ko:'혼합/재검토 필요', zh:'混合/待修订', yue:'混合／待修訂', vi:'hỗn hợp / cần xem xét', th:'ผสม / ต้องตรวจสอบ', id:'campuran / perlu ditinjau', hi:'मिश्रित / समीक्षा आवश्यक', de:'gemischt / zu prüfen', fr:'mixte / à revoir', it:'misto / da rivedere', es:'mixto / requiere revisión', pt:'misto / precisa revisão', ru:'смешано / требует проверки', uk:'змішано / потребує перевірки', ar:'مختلط / يتطلب مراجعة', he:'מעורב / דורש סקירה', sw:'mchanganyiko / linahitaji ukaguzi' },
+            unknown:      { en:'not yet reviewed', ja:'未確認', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
         };
-        const PRONUNCIATION_HEADER = { en: 'Pronunciation', ja: '発音表記', ko: '발음 표기', zh: '发音标注' };
+        const PRONUNCIATION_HEADER = { en:'Pronunciation', ja:'発音表記', ko:'발음 표기', zh:'发音标注', yue:'發音標註', vi:'Phát âm', th:'การออกเสียง', id:'Pelafalan', hi:'उच्चारण', de:'Aussprache', fr:'Prononciation', it:'Pronuncia', es:'Pronunciación', pt:'Pronúncia', ru:'Произношение', uk:'Вимова', ar:'النطق', he:'הגייה', sw:'Matamshi' };
+        // Audit Task 84/89: surfaceType label (which kind of script is used
+        // in the surface column — native script, standard orthography, etc.)
+        const SURFACE_TYPE_LABEL = {
+            'native-script':         { en:'native script', ja:'現地文字', ko:'고유 문자', zh:'本族文字', yue:'本族文字', vi:'chữ bản địa', th:'อักษรพื้นเมือง', id:'aksara asli', hi:'देशीय लिपि', de:'einheimische Schrift', fr:'écriture native', it:'scrittura nativa', es:'escritura nativa', pt:'escrita nativa', ru:'родная письменность', uk:'рідне письмо', ar:'الكتابة الأصلية', he:'כתב מקורי', sw:'maandishi asilia' },
+            'standard-orthography':  { en:'standard orthography', ja:'標準正書法', ko:'표준 정서법', zh:'标准正字法', yue:'標準正字法', vi:'chính tả chuẩn', th:'อักขรวิธีมาตรฐาน', id:'ejaan standar', hi:'मानक वर्तनी', de:'Standardrechtschreibung', fr:'orthographe standard', it:'ortografia standard', es:'ortografía estándar', pt:'ortografia padrão', ru:'стандартная орфография', uk:'стандартний правопис', ar:'الإملاء القياسي', he:'כתיב סטנדרטי', sw:'tahajia sanifu' },
+            'romanization':          { en:'romanization', ja:'ローマ字転写', ko:'로마자 전사', zh:'罗马字', yue:'羅馬字', vi:'phiên âm La-tinh', th:'การถอดเป็นโรมัน', id:'romanisasi', hi:'रोमनीकरण', de:'Romanisierung', fr:'romanisation', it:'romanizzazione', es:'romanización', pt:'romanização', ru:'романизация', uk:'романізація', ar:'الكتابة بالحروف اللاتينية', he:'תעתיק לטיני', sw:'urumi' },
+            'phonetic':              { en:'phonetic transcription', ja:'音声転写', ko:'음성 전사', zh:'音标转写', yue:'音標轉寫', vi:'phiên âm ngữ âm', th:'การถอดเสียงเชิงสัทศาสตร์', id:'transkripsi fonetik', hi:'ध्वन्यात्मक प्रतिलेखन', de:'phonetische Transkription', fr:'transcription phonétique', it:'trascrizione fonetica', es:'transcripción fonética', pt:'transcrição fonética', ru:'фонетическая транскрипция', uk:'фонетична транскрипція', ar:'النسخ الصوتي', he:'תעתיק פונטי', sw:'unukuzi wa kifonetiki' },
+            'mixed':                 { en:'mixed / needs review', ja:'混在/要確認', ko:'혼합/재검토 필요', zh:'混合/待修订', yue:'混合／待修訂', vi:'hỗn hợp / cần xem xét', th:'ผสม / ต้องตรวจสอบ', id:'campuran / perlu ditinjau', hi:'मिश्रित / समीक्षा आवश्यक', de:'gemischt / zu prüfen', fr:'mixte / à revoir', it:'misto / da rivedere', es:'mixto / requiere revisión', pt:'misto / precisa revisão', ru:'смешано / требует проверки', uk:'змішано / потребує перевірки', ar:'مختلط / يتطلب مراجعة', he:'מעורב / דורש סקירה', sw:'mchanganyiko / linahitaji ukaguzi' },
+            'unknown':               { en:'not yet reviewed', ja:'未確認', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
+        };
+        const SURFACE_TYPE_HEADER = { en:'Surface', ja:'表記体系', ko:'표기 체계', zh:'表记体系', yue:'表記體系', vi:'Hệ chữ', th:'ระบบการเขียน', id:'Sistem Tulisan', hi:'लेखन प्रणाली', de:'Schriftform', fr:'Forme écrite', it:'Forma scritta', es:'Forma escrita', pt:'Forma escrita', ru:'Запись', uk:'Запис', ar:'النظام الكتابي', he:'מערכת כתב', sw:'Mfumo wa Kuandika' };
 
         // Audit Task 79: coverage flag for regional variant rows
         const COVERAGE_LABEL = {
-            full:                   { en: 'fully reviewed',          ja: '全体検証済み',     ko: '전면 검증',      zh: '全面审核' },
-            partial:                { en: 'partial',                 ja: '部分的',           ko: '부분적',         zh: '部分覆盖' },
-            'accent-only':          { en: 'accent/pronunciation only', ja: 'アクセント・発音のみ', ko: '발음·억양만',  zh: '仅口音/发音' },
-            'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
+            full:                   { en:'fully reviewed', ja:'全体検証済み', ko:'전면 검증', zh:'全面审核', yue:'全面審核', vi:'đã xem xét đầy đủ', th:'ตรวจสอบครบถ้วน', id:'sepenuhnya ditinjau', hi:'पूर्णतः समीक्षित', de:'vollständig geprüft', fr:'entièrement vérifié', it:'interamente rivisto', es:'totalmente revisado', pt:'totalmente revisado', ru:'полностью проверено', uk:'повністю перевірено', ar:'مراجع بالكامل', he:'נסקר במלואו', sw:'imekaguliwa kikamilifu' },
+            partial:                { en:'partial', ja:'部分的', ko:'부분적', zh:'部分覆盖', yue:'部分覆蓋', vi:'một phần', th:'บางส่วน', id:'sebagian', hi:'आंशिक', de:'teilweise', fr:'partiel', it:'parziale', es:'parcial', pt:'parcial', ru:'частично', uk:'частково', ar:'جزئي', he:'חלקי', sw:'sehemu' },
+            'accent-only':          { en:'accent/pronunciation only', ja:'アクセント・発音のみ', ko:'발음·억양만', zh:'仅口音/发音', yue:'只口音／發音', vi:'chỉ giọng/phát âm', th:'เฉพาะสำเนียง/การออกเสียง', id:'hanya aksen/pengucapan', hi:'केवल उच्चारण/लहजा', de:'nur Akzent/Aussprache', fr:'accent/prononciation uniquement', it:'solo accento/pronuncia', es:'solo acento/pronunciación', pt:'apenas sotaque/pronúncia', ru:'только акцент/произношение', uk:'лише акцент/вимова', ar:'اللهجة/النطق فقط', he:'מבטא/הגייה בלבד', sw:'lafudhi/matamshi tu' },
+            'base-copy-with-notes': { en:'mostly inherited from {base}', ja:'主に{base}から継承', ko:'대부분 {base}에서 상속', zh:'主要继承自{base}', yue:'主要繼承自{base}', vi:'chủ yếu kế thừa từ {base}', th:'ส่วนใหญ่สืบทอดจาก {base}', id:'sebagian besar diwarisi dari {base}', hi:'मुख्यतः {base} से विरासत', de:'meist von {base} übernommen', fr:'principalement hérité de {base}', it:'in gran parte ereditato da {base}', es:'mayormente heredado de {base}', pt:'principalmente herdado de {base}', ru:'в основном унаследовано от {base}', uk:'переважно успадковано від {base}', ar:'موروث في الغالب من {base}', he:'נורש בעיקר מ-{base}', sw:'kwa kiasi kikubwa kutoka {base}' },
         };
-        const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
+        const COVERAGE_HEADER = { en:'Coverage', ja:'網羅度', ko:'커버리지', zh:'覆盖度', yue:'覆蓋度', vi:'Mức độ', th:'การครอบคลุม', id:'Cakupan', hi:'कवरेज', de:'Abdeckung', fr:'Couverture', it:'Copertura', es:'Cobertura', pt:'Cobertura', ru:'Охват', uk:'Охоплення', ar:'التغطية', he:'כיסוי', sw:'Ufunikaji' };
         // Audit Task 108: review status (separate from dataStatus)
         const REVIEW_STATUS_LABEL = {
-            'unreviewed':      { en: 'not reviewed',     ja: '未レビュー',     ko: '미검토',         zh: '未审核' },
-            'machine-seeded':  { en: 'machine-seeded',   ja: '機械生成初期値', ko: '기계 생성 초기',  zh: '机器初始值' },
-            'human-reviewed':  { en: 'human-reviewed',   ja: '人手レビュー済', ko: '수동 검토',       zh: '人工审核' },
-            'source-checked':  { en: 'source-checked',   ja: '出典確認済',     ko: '출처 확인',       zh: '已核对来源' },
-            'needs-rebuild':   { en: 'needs rebuild',    ja: '再構築要',       ko: '재구축 필요',     zh: '需重建' },
+            'unreviewed':      { en:'not reviewed', ja:'未レビュー', ko:'미검토', zh:'未审核', yue:'未審核', vi:'chưa xem xét', th:'ยังไม่ตรวจสอบ', id:'belum ditinjau', hi:'समीक्षा नहीं हुई', de:'nicht geprüft', fr:'non vérifié', it:'non rivisto', es:'sin revisar', pt:'não revisado', ru:'не проверено', uk:'не перевірено', ar:'لم تُراجع', he:'לא נסקר', sw:'haijakaguliwa' },
+            'machine-seeded':  { en:'machine-seeded', ja:'機械生成初期値', ko:'기계 생성 초기', zh:'机器初始值', yue:'機器初始值', vi:'tạo bằng máy', th:'สร้างโดยเครื่อง', id:'awal dari mesin', hi:'मशीन-बीजित', de:'maschinen-initiiert', fr:'généré par machine', it:'iniziato da macchina', es:'sembrado por máquina', pt:'semeado por máquina', ru:'машинная инициализация', uk:'машинна ініціалізація', ar:'مُنشأ بالآلة', he:'נוצר במכונה', sw:'iliyowekwa na mashine' },
+            'human-reviewed':  { en:'human-reviewed', ja:'人手レビュー済', ko:'수동 검토', zh:'人工审核', yue:'人手審核', vi:'đã được xem xét', th:'ตรวจสอบโดยมนุษย์', id:'ditinjau manusia', hi:'मानव-समीक्षित', de:'manuell geprüft', fr:'vérifié par humain', it:'rivisto a mano', es:'revisado por humanos', pt:'revisado por humanos', ru:'человек проверил', uk:'переглянуто людиною', ar:'مراجعة بشرية', he:'נסקר ידנית', sw:'imekaguliwa na binadamu' },
+            'source-checked':  { en:'source-checked', ja:'出典確認済', ko:'출처 확인', zh:'已核对来源', yue:'已核對來源', vi:'đã đối chiếu nguồn', th:'ตรวจสอบแหล่งข้อมูล', id:'diperiksa sumber', hi:'स्रोत-सत्यापित', de:'quellengeprüft', fr:'source vérifiée', it:'fonte verificata', es:'fuente verificada', pt:'fonte verificada', ru:'проверено по источнику', uk:'перевірено за джерелом', ar:'تحقق من المصدر', he:'אומת מקור', sw:'chanzo kimethibitishwa' },
+            'needs-rebuild':   { en:'needs rebuild', ja:'再構築要', ko:'재구축 필요', zh:'需重建', yue:'需重建', vi:'cần xây lại', th:'ต้องสร้างใหม่', id:'perlu dibangun ulang', hi:'पुनर्निर्माण आवश्यक', de:'Neuaufbau nötig', fr:'à reconstruire', it:'da ricostruire', es:'requiere reconstrucción', pt:'requer reconstrução', ru:'требует пересборки', uk:'потребує перезбірки', ar:'بحاجة إلى إعادة بناء', he:'דרוש בנייה מחדש', sw:'inahitaji kujengwa upya' },
         };
-        const REVIEW_STATUS_HEADER = { en: 'Review', ja: 'レビュー状況', ko: '검토 상태', zh: '审核状态' };
+        const REVIEW_STATUS_HEADER = { en:'Review', ja:'レビュー状況', ko:'검토 상태', zh:'审核状态', yue:'審核狀態', vi:'Trạng thái xem xét', th:'สถานะการตรวจสอบ', id:'Status Tinjauan', hi:'समीक्षा स्थिति', de:'Prüfung', fr:'Vérification', it:'Revisione', es:'Revisión', pt:'Revisão', ru:'Проверка', uk:'Перевірка', ar:'المراجعة', he:'סקירה', sw:'Ukaguzi' };
         // Audit Task 99: locationBasis label tells users that the marker is
         // a representative point, not a speaker-distribution map.
         const LOCATION_BASIS_LABEL = {
-            'capital':         { en: 'capital city',       ja: '首都',         ko: '수도',         zh: '首都' },
-            'prestige-center': { en: 'prestige center',    ja: '威信地',       ko: '위신 중심',    zh: '威望中心' },
-            'historical-site': { en: 'historical site',    ja: '歴史的所在地', ko: '역사적 장소',  zh: '历史遗迹' },
-            'largest-city':    { en: 'largest-speaker city', ja: '最大話者数都市', ko: '최대 화자 도시', zh: '最大使用者城市' },
-            'approx-region':   { en: 'approximate region', ja: '概略地域',     ko: '대략 지역',    zh: '大致区域' },
+            'capital':         { en:'capital city', ja:'首都', ko:'수도', zh:'首都', yue:'首都', vi:'thủ đô', th:'เมืองหลวง', id:'ibu kota', hi:'राजधानी', de:'Hauptstadt', fr:'capitale', it:'capitale', es:'capital', pt:'capital', ru:'столица', uk:'столиця', ar:'العاصمة', he:'בירה', sw:'mji mkuu' },
+            'prestige-center': { en:'prestige center', ja:'威信地', ko:'위신 중심', zh:'威望中心', yue:'威望中心', vi:'trung tâm danh tiếng', th:'ศูนย์กลางที่มีเกียรติ', id:'pusat prestise', hi:'प्रतिष्ठा केंद्र', de:'Prestigezentrum', fr:'centre de prestige', it:'centro di prestigio', es:'centro de prestigio', pt:'centro de prestígio', ru:'престижный центр', uk:'престижний центр', ar:'مركز هيبة', he:'מרכז יוקרה', sw:'kituo cha hadhi' },
+            'historical-site': { en:'historical site', ja:'歴史的所在地', ko:'역사적 장소', zh:'历史遗迹', yue:'歷史遺跡', vi:'di tích lịch sử', th:'แหล่งประวัติศาสตร์', id:'situs historis', hi:'ऐतिहासिक स्थल', de:'historischer Ort', fr:'site historique', it:'sito storico', es:'sitio histórico', pt:'sítio histórico', ru:'историческое место', uk:'історичне місце', ar:'موقع تاريخي', he:'אתר היסטורי', sw:'eneo la kihistoria' },
+            'largest-city':    { en:'largest-speaker city', ja:'最大話者数都市', ko:'최대 화자 도시', zh:'最大使用者城市', yue:'最大使用者城市', vi:'thành phố nhiều người nói nhất', th:'เมืองผู้พูดมากที่สุด', id:'kota dengan penutur terbanyak', hi:'सबसे अधिक वक्ता शहर', de:'Stadt mit meisten Sprechern', fr:'ville avec plus de locuteurs', it:'città con più parlanti', es:'ciudad con más hablantes', pt:'cidade com mais falantes', ru:'город с наибольшим числом носителей', uk:'місто з найбільшою кількістю мовців', ar:'مدينة بأكبر عدد متحدثين', he:'עיר הדוברים הגדולה ביותר', sw:'jiji lenye wazungumzaji wengi zaidi' },
+            'approx-region':   { en:'approximate region', ja:'概略地域', ko:'대략 지역', zh:'大致区域', yue:'大致區域', vi:'vùng khoảng chừng', th:'ภูมิภาคโดยประมาณ', id:'wilayah perkiraan', hi:'अनुमानित क्षेत्र', de:'ungefähre Region', fr:'région approximative', it:'regione approssimativa', es:'región aproximada', pt:'região aproximada', ru:'приблизительный регион', uk:'приблизний регіон', ar:'منطقة تقريبية', he:'אזור משוער', sw:'eneo la makadirio' },
         };
-        const LOCATION_BASIS_HEADER = { en: 'Map point', ja: 'マップ位置', ko: '지도 위치', zh: '地图标点' };
+        const LOCATION_BASIS_HEADER = { en:'Map point', ja:'マップ位置', ko:'지도 위치', zh:'地图标点', yue:'地圖標點', vi:'Vị trí bản đồ', th:'จุดบนแผนที่', id:'Titik Peta', hi:'मानचित्र बिंदु', de:'Kartenpunkt', fr:'Point de carte', it:'Punto sulla mappa', es:'Punto del mapa', pt:'Ponto do mapa', ru:'Точка на карте', uk:'Точка на мапі', ar:'نقطة الخريطة', he:'נקודה במפה', sw:'Nukta ya Ramani' };
 
         // Audit Task 118: languageKind badge for non-default kinds.
         // Natural and historical-attested rows don't get a separate badge —
         // dataStatus already covers those. Constructed / pidgin-creole /
         // pedagogical-stage / reconstructed-proto do get a small badge.
         const LANGUAGE_KIND_BADGE = {
-            'constructed':         { bg: '#7a3a8c', fg: '#fff', en: 'constructed',         ja: '人工言語',     ko: '인공어',       zh: '人工语言' },
-            'pidgin-creole':       { bg: '#0d6e6b', fg: '#fff', en: 'pidgin / creole',     ja: 'ピジン・クレオール', ko: '피진/크리올', zh: '皮钦语/克里奥尔语' },
-            'pedagogical-stage':   { bg: '#995500', fg: '#fff', en: 'pedagogical stage',   ja: '教材用前段階', ko: '교재용 단계',  zh: '教学用阶段' },
-            'reconstructed-proto': { bg: '#404060', fg: '#fff', en: 'reconstructed proto', ja: '再構祖語',     ko: '재구 조어',    zh: '构拟原始语' },
+            'constructed':         { bg:'#7a3a8c', fg:'#fff', en:'constructed', ja:'人工言語', ko:'인공어', zh:'人工语言', yue:'人工語言', vi:'ngôn ngữ nhân tạo', th:'ภาษาประดิษฐ์', id:'bahasa buatan', hi:'निर्मित भाषा', de:'Plansprache', fr:'langue construite', it:'lingua costruita', es:'lengua construida', pt:'língua construída', ru:'искусственный язык', uk:'штучна мова', ar:'لغة مُنشأة', he:'שפה מובנית', sw:'lugha iliyobuniwa' },
+            'pidgin-creole':       { bg:'#0d6e6b', fg:'#fff', en:'pidgin / creole', ja:'ピジン・クレオール', ko:'피진/크리올', zh:'皮钦语/克里奥尔语', yue:'皮欽語／克里奧爾語', vi:'pidgin / creole', th:'พิดจิน / ครีโอล', id:'pidgin / kreol', hi:'पिजिन / क्रियोल', de:'Pidgin / Kreol', fr:'pidgin / créole', it:'pidgin / creolo', es:'pidgin / criollo', pt:'pidgin / crioulo', ru:'пиджин / креол', uk:'піджин / креол', ar:'بدجن / كريول', he:'פידג\'ין / קריאולית', sw:'pijini / krioli' },
+            'pedagogical-stage':   { bg:'#995500', fg:'#fff', en:'pedagogical stage', ja:'教材用前段階', ko:'교재용 단계', zh:'教学用阶段', yue:'教學用階段', vi:'giai đoạn giáo dục', th:'ระยะเพื่อการสอน', id:'tahap pedagogis', hi:'शैक्षिक चरण', de:'pädagogische Stufe', fr:'étape pédagogique', it:'fase pedagogica', es:'etapa pedagógica', pt:'etapa pedagógica', ru:'учебная стадия', uk:'навчальний етап', ar:'مرحلة تعليمية', he:'שלב לימודי', sw:'hatua ya kielimu' },
+            'reconstructed-proto': { bg:'#404060', fg:'#fff', en:'reconstructed proto', ja:'再構祖語', ko:'재구 조어', zh:'构拟原始语', yue:'構擬原始語', vi:'tổ ngữ tái dựng', th:'ภาษาดั้งเดิมที่สร้างใหม่', id:'proto-bahasa rekonstruksi', hi:'पुनर्निर्मित प्रोटो', de:'rekonstruierte Ursprache', fr:'proto-langue reconstituée', it:'protolingua ricostruita', es:'protolengua reconstruida', pt:'protolíngua reconstruída', ru:'реконструированный праязык', uk:'реконструйована прамова', ar:'لغة بدئية مُعاد بناؤها', he:'פרוטו-שפה משוחזרת', sw:'protolugha iliyorejeshwa' },
         };
 
         // Audit Task 100: localize "— (unattested)" cell label
@@ -2251,29 +2535,22 @@
         // Removed English-only "attested", "proxy", "lexicon" leakage from
         // ja and added ko/zh/de/fr/es so non-English UI users see localized labels.
         const EVIDENCE_MARKER = {
-            direct:        { sym: '✓', color: '#1a7a1a', labels: {
-                en: 'directly attested', ja: '直接確認', ko: '직접 확인됨', zh: '直接证实',
-                de: 'direkt belegt',     fr: 'attesté directement', es: 'atestiguado directamente' } },
-            proxy:         { sym: '~', color: '#c0392b', labels: {
-                en: 'proxy from related lang', ja: '近縁言語からの代用', ko: '근연 언어에서의 대용', zh: '近亲语言代理',
-                de: 'Stellvertreter aus verwandter Sprache', fr: 'substitut depuis langue apparentée',
-                es: 'sustituto de lengua emparentada' } },
-            reconstructed: { sym: '*', color: '#b56500', labels: {
-                en: 'reconstructed', ja: '再構形', ko: '재구형', zh: '构拟形式',
-                de: 'rekonstruiert', fr: 'reconstruit', es: 'reconstruido' } },
-            inferred:      { sym: '?', color: '#a06000', labels: {
-                en: 'inferred from context', ja: '文脈から推測', ko: '문맥에서 추정', zh: '依文脉推断',
-                de: 'aus Kontext erschlossen', fr: 'déduit du contexte', es: 'inferido del contexto' } },
-            disputed:      { sym: '⁉', color: '#a02020', labels: {
-                en: 'disputed reading', ja: '異読あり', ko: '이견 있음', zh: '存在异读',
-                de: 'umstrittene Lesart', fr: 'lecture contestée', es: 'lectura disputada' } },
-            pedagogical:   { sym: '◇', color: '#6020a0', labels: {
-                en: 'pedagogical approx.', ja: '教育用近似', ko: '교육용 근사', zh: '教学用近似',
-                de: 'pädagogische Näherung', fr: 'approximation pédagogique', es: 'aproximación pedagógica' } },
+            direct:        { sym:'✓', color:'#1a7a1a', labels: {
+                en:'directly attested', ja:'直接確認', ko:'직접 확인됨', zh:'直接证实', yue:'直接證實', vi:'được chứng tích trực tiếp', th:'มีหลักฐานตรง', id:'terdokumentasi langsung', hi:'प्रत्यक्ष रूप से प्रमाणित', de:'direkt belegt', fr:'attesté directement', it:'attestato direttamente', es:'atestiguado directamente', pt:'atestado diretamente', ru:'прямо засвидетельствовано', uk:'прямо засвідчено', ar:'مُؤكَّد مباشرةً', he:'מתועד ישירות', sw:'imethibitishwa moja kwa moja' } },
+            proxy:         { sym:'~', color:'#c0392b', labels: {
+                en:'proxy from related lang', ja:'近縁言語からの代用', ko:'근연 언어에서의 대용', zh:'近亲语言代理', yue:'近親語言代理', vi:'thay thế từ ngôn ngữ liên quan', th:'แทนจากภาษาที่เกี่ยวข้อง', id:'pengganti dari bahasa terkait', hi:'संबंधित भाषा से प्रॉक्सी', de:'Stellvertreter aus verwandter Sprache', fr:'substitut depuis langue apparentée', it:'sostituto da lingua imparentata', es:'sustituto de lengua emparentada', pt:'substituto de língua aparentada', ru:'замена из родственного языка', uk:'заміна з спорідненої мови', ar:'بديل من لغة قريبة', he:'תחליף משפה קרובה', sw:'badala kutoka lugha husiana' } },
+            reconstructed: { sym:'*', color:'#b56500', labels: {
+                en:'reconstructed', ja:'再構形', ko:'재구형', zh:'构拟形式', yue:'構擬形式', vi:'dạng tái dựng', th:'รูปสร้างใหม่', id:'bentuk rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstruit', it:'ricostruito', es:'reconstruido', pt:'reconstruído', ru:'реконструировано', uk:'реконструйовано', ar:'مُعاد البناء', he:'משוחזר', sw:'imerejeshwa' } },
+            inferred:      { sym:'?', color:'#a06000', labels: {
+                en:'inferred from context', ja:'文脈から推測', ko:'문맥에서 추정', zh:'依文脉推断', yue:'依文脈推斷', vi:'suy ra từ ngữ cảnh', th:'อนุมานจากบริบท', id:'disimpulkan dari konteks', hi:'संदर्भ से अनुमानित', de:'aus Kontext erschlossen', fr:'déduit du contexte', it:'dedotto dal contesto', es:'inferido del contexto', pt:'inferido do contexto', ru:'вывод из контекста', uk:'висновок з контексту', ar:'مستنتج من السياق', he:'נגזר מההקשר', sw:'imekisiwa kutoka muktadha' } },
+            disputed:      { sym:'⁉', color:'#a02020', labels: {
+                en:'disputed reading', ja:'異読あり', ko:'이견 있음', zh:'存在异读', yue:'存在異讀', vi:'cách đọc tranh cãi', th:'การอ่านที่ถกเถียง', id:'pembacaan diperdebatkan', hi:'विवादित पाठ', de:'umstrittene Lesart', fr:'lecture contestée', it:'lettura contestata', es:'lectura disputada', pt:'leitura disputada', ru:'спорное чтение', uk:'спірне читання', ar:'قراءة مُختلَف فيها', he:'קריאה שנויה במחלוקת', sw:'usomaji wenye mzozo' } },
+            pedagogical:   { sym:'◇', color:'#6020a0', labels: {
+                en:'pedagogical approx.', ja:'教育用近似', ko:'교육용 근사', zh:'教学用近似', yue:'教學用近似', vi:'mô phỏng giáo dục', th:'การประมาณเชิงการศึกษา', id:'pendekatan pedagogis', hi:'शैक्षिक अनुमानन', de:'pädagogische Näherung', fr:'approximation pédagogique', it:'approssimazione pedagogica', es:'aproximación pedagógica', pt:'aproximação pedagógica', ru:'учебная аппроксимация', uk:'навчальне наближення', ar:'تقريب تعليمي', he:'קירוב לימודי', sw:'makadirio ya kielimu' } },
         };
         const EVIDENCE_PREFIX = {
-            source: { en: 'Source', ja: '出典', ko: '출처', zh: '来源', de: 'Quelle', fr: 'Source', es: 'Fuente' },
-            note:   { en: 'Note',   ja: '注',   ko: '주',   zh: '注',   de: 'Hinweis', fr: 'Note',  es: 'Nota' },
+            source: { en:'Source', ja:'出典', ko:'출처', zh:'来源', yue:'來源', vi:'Nguồn', th:'แหล่งข้อมูล', id:'Sumber', hi:'स्रोत', de:'Quelle', fr:'Source', it:'Fonte', es:'Fuente', pt:'Fonte', ru:'Источник', uk:'Джерело', ar:'المصدر', he:'מקור', sw:'Chanzo' },
+            note:   { en:'Note',   ja:'注',   ko:'주',   zh:'注',   yue:'註',   vi:'Ghi chú', th:'หมายเหตุ', id:'Catatan', hi:'टिप्पणी', de:'Hinweis', fr:'Note', it:'Nota', es:'Nota', pt:'Nota', ru:'Примечание', uk:'Примітка', ar:'ملاحظة', he:'הערה', sw:'Kumbuka' },
         };
         function evidenceTooltip(ev) {
             if (!ev || !EVIDENCE_MARKER[ev.evidence]) return '';
@@ -2285,17 +2562,17 @@
             // Audit Task 103: surface formType so users know the displayed
             // form is a bound stem / root, not a free word.
             const formTypeLabels = {
-                'free-word':           { en: 'free word' },
-                'bound-stem':          { en: 'bound stem (requires suffix)', ja: '拘束語幹（接辞要）', ko: '구속 어간 (접사 필요)', zh: '黏着词干（需后缀）' },
-                'root':                { en: 'root',                       ja: '語根' },
-                'inflected-form':      { en: 'inflected form',             ja: '屈折形' },
-                'phrase':              { en: 'phrase',                     ja: '句' },
-                'reconstructed-root':  { en: 'reconstructed root',         ja: '再構語根', ko: '재구 어근', zh: '重构词根' },
-                'agreement-stem':      { en: 'noun-class agreement stem',  ja: '名詞クラス一致語幹', ko: '명사 부류 일치 어간', zh: '名词类一致词干' },
-                'greeting-formula':    { en: 'greeting formula',           ja: '挨拶定型句' },
-                'thanks-formula':      { en: 'thanks formula',             ja: '感謝定型句' },
-                'compound':            { en: 'compound',                   ja: '複合語' },
-                'light-verb-construction': { en: 'light-verb construction', ja: '機能動詞構造' },
+                'free-word':           { en:'free word', ja:'自由語', ko:'자립어', zh:'自由词', yue:'自由詞', vi:'từ tự do', th:'คำอิสระ', id:'kata bebas', hi:'मुक्त शब्द', de:'freies Wort', fr:'mot libre', it:'parola libera', es:'palabra libre', pt:'palavra livre', ru:'свободное слово', uk:'вільне слово', ar:'كلمة حرة', he:'מילה חופשית', sw:'neno huru' },
+                'bound-stem':          { en:'bound stem (requires suffix)', ja:'拘束語幹（接辞要）', ko:'구속 어간 (접사 필요)', zh:'黏着词干（需后缀）', yue:'黏著詞幹（需後綴）', vi:'thân buộc (cần hậu tố)', th:'คำราก-ผูก (ต้องเติมปัจจัย)', id:'pangkal terikat (butuh sufiks)', hi:'बद्ध मूल (प्रत्यय आवश्यक)', de:'gebundener Stamm (Suffix nötig)', fr:'radical lié (suffixe requis)', it:'tema legato (richiede suffisso)', es:'raíz ligada (requiere sufijo)', pt:'radical ligado (requer sufixo)', ru:'связанная основа (требует суффикса)', uk:'зв\'язана основа (потрібен суфікс)', ar:'جذر مقيد (يتطلب لاحقة)', he:'גזע כבול (דורש סיומת)', sw:'kiini cha kufungwa (kinahitaji kiambishi)' },
+                'root':                { en:'root', ja:'語根', ko:'어근', zh:'词根', yue:'詞根', vi:'gốc từ', th:'รากศัพท์', id:'akar kata', hi:'मूल', de:'Wurzel', fr:'racine', it:'radice', es:'raíz', pt:'raiz', ru:'корень', uk:'корінь', ar:'جذر', he:'שורש', sw:'mzizi' },
+                'inflected-form':      { en:'inflected form', ja:'屈折形', ko:'굴절형', zh:'屈折形式', yue:'屈折形式', vi:'dạng biến tố', th:'รูปผันคำ', id:'bentuk infleksi', hi:'विकारी रूप', de:'flektierte Form', fr:'forme fléchie', it:'forma flessa', es:'forma flexionada', pt:'forma flexionada', ru:'словоизменительная форма', uk:'словозмінна форма', ar:'صيغة مصرَّفة', he:'צורה מוטה', sw:'umbo lililoinama' },
+                'phrase':              { en:'phrase', ja:'句', ko:'구', zh:'短语', yue:'短語', vi:'cụm từ', th:'วลี', id:'frasa', hi:'वाक्यांश', de:'Phrase', fr:'syntagme', it:'sintagma', es:'frase', pt:'frase', ru:'словосочетание', uk:'словосполучення', ar:'عبارة', he:'ביטוי', sw:'msemo' },
+                'reconstructed-root':  { en:'reconstructed root', ja:'再構語根', ko:'재구 어근', zh:'重构词根', yue:'構擬詞根', vi:'gốc từ tái dựng', th:'รากศัพท์ที่สร้างใหม่', id:'akar rekonstruksi', hi:'पुनर्निर्मित मूल', de:'rekonstruierte Wurzel', fr:'racine reconstruite', it:'radice ricostruita', es:'raíz reconstruida', pt:'raiz reconstruída', ru:'реконструированный корень', uk:'реконструйований корінь', ar:'جذر مُعاد البناء', he:'שורש משוחזר', sw:'mzizi uliyorejeshwa' },
+                'agreement-stem':      { en:'noun-class agreement stem', ja:'名詞クラス一致語幹', ko:'명사 부류 일치 어간', zh:'名词类一致词干', yue:'名詞類一致詞幹', vi:'thân hợp lớp danh từ', th:'คำรากการเห็นชอบประเภทคำนาม', id:'pangkal kesepakatan kelas nomina', hi:'संज्ञा-वर्ग सहमति मूल', de:'Substantivklassen-Übereinstimmungsstamm', fr:'radical d\'accord de classe nominale', it:'tema di accordo di classe nominale', es:'raíz de concordancia de clase nominal', pt:'radical de concordância de classe nominal', ru:'основа согласования класса существительных', uk:'основа узгодження класу іменників', ar:'جذر توافق صنف الاسم', he:'גזע הסכם מחלקת שם עצם', sw:'kiini cha makubaliano ya darasa la nomino' },
+                'greeting-formula':    { en:'greeting formula', ja:'挨拶定型句', ko:'인사 정형구', zh:'问候语', yue:'問候語', vi:'lời chào', th:'สำนวนทักทาย', id:'sapaan baku', hi:'अभिवादन सूत्र', de:'Grußformel', fr:'formule de salutation', it:'formula di saluto', es:'fórmula de saludo', pt:'fórmula de saudação', ru:'приветственная формула', uk:'формула привітання', ar:'صيغة التحية', he:'נוסח ברכה', sw:'fomula ya salamu' },
+                'thanks-formula':      { en:'thanks formula', ja:'感謝定型句', ko:'감사 정형구', zh:'致谢用语', yue:'致謝用語', vi:'lời cảm ơn', th:'สำนวนขอบคุณ', id:'ungkapan terima kasih', hi:'धन्यवाद सूत्र', de:'Dankesformel', fr:'formule de remerciement', it:'formula di ringraziamento', es:'fórmula de agradecimiento', pt:'fórmula de agradecimento', ru:'формула благодарности', uk:'формула подяки', ar:'صيغة الشكر', he:'נוסח תודה', sw:'fomula ya shukrani' },
+                'compound':            { en:'compound', ja:'複合語', ko:'복합어', zh:'复合词', yue:'複合詞', vi:'từ ghép', th:'คำประสม', id:'kata majemuk', hi:'समस्त शब्द', de:'Kompositum', fr:'composé', it:'composto', es:'compuesto', pt:'composto', ru:'сложное слово', uk:'складне слово', ar:'كلمة مركبة', he:'מילה מורכבת', sw:'neno mseto' },
+                'light-verb-construction': { en:'light-verb construction', ja:'機能動詞構造', ko:'경동사 구문', zh:'轻动词结构', yue:'輕動詞結構', vi:'cấu trúc động từ nhẹ', th:'โครงสร้างกริยาเบา', id:'konstruksi verba ringan', hi:'हल्की क्रिया रचना', de:'Funktionsverbgefüge', fr:'construction à verbe support', it:'costruzione a verbo supporto', es:'construcción con verbo de apoyo', pt:'construção com verbo-suporte', ru:'конструкция с лёгким глаголом', uk:'конструкція з легким дієсловом', ar:'تركيب الفعل الخفيف', he:'בניית פועל קל', sw:'muundo wa kitenzi chepesi' },
             };
             let formNote = '';
             if (ev.formType && formTypeLabels[ev.formType]) {
@@ -2311,9 +2588,19 @@
             if (ev.pronunciationEvidence) splitParts.push(`pron: ${ev.pronunciationEvidence}`);
             if (ev.conceptEvidence)      splitParts.push(`concept: ${ev.conceptEvidence}`);
             const split = splitParts.length ? ` {${splitParts.join('; ')}}` : '';
-            const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
+            // Audit Task 133: structured citation supersedes legacy `source`
+            // when present. Builds "Kane 2009 (dictionary)" from citation.short.
+            let src = '';
+            if (ev.citation && ev.citation.short) {
+                let cit = ev.citation.short;
+                if (ev.citation.type) cit += ` (${ev.citation.type})`;
+                src = ` — ${srcPrefix}: ${cit}`;
+            } else if (ev.source) {
+                src = ` — ${srcPrefix}: ${ev.source}`;
+            }
             const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
-            const url = ev.url ? ` <${ev.url}>` : '';
+            const citUrl = (ev.citation && ev.citation.url) ? ev.citation.url : ev.url;
+            const url = citUrl ? ` <${citUrl}>` : '';
             return label + formNote + split + src + note + url;
         }
 
@@ -2325,6 +2612,20 @@
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+            // Pass 32 (header position): Add-to-compare button right under the title
+            (() => {
+                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+                const cmpI18n = {
+                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
+                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
+                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
+                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
+                };
+                const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
+                const lbl = inCmp ? lObj.remove : lObj.add;
+                const cls = inCmp ? 'compare-add-btn header added' : 'compare-add-btn header';
+                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+            })();
             html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
             // Audit Task 115: disambiguator for rows that share a display
             // or native name with another row (e.g. mn_cn/xng both show
@@ -2365,10 +2666,25 @@
                     // Audit Task 98: append (basis, source year) when present so
                     // users know whether a number is L1 vs total vs aggregate, and
                     // which census/year it came from.
+                    // Localize speakerBasis values across all UI langs.
+                    const SPEAKER_BASIS_LBL = {
+                        // L1/L2: kept as conventional 'L1'/'L2' in scripts where
+                        // the abbreviation reads natively (en/de/fr/it/es/pt/id/sw),
+                        // localized in CJK/Cyrillic/Indic/Thai/Vietnamese/Arabic/Hebrew.
+                        'L1':                  { en:'L1', ja:'母語',     ko:'모어',      zh:'母语',     yue:'母語',     vi:'tiếng mẹ đẻ',      th:'ภาษาแม่',      id:'L1', hi:'मातृभाषा',     de:'L1', fr:'L1', it:'L1', es:'L1', pt:'L1', ru:'родной язык',  uk:'рідна мова',  ar:'اللغة الأم',     he:'שפת אם',     sw:'L1' },
+                        'L2':                  { en:'L2', ja:'第二言語', ko:'제2언어',   zh:'第二语言', yue:'第二語言', vi:'ngôn ngữ thứ hai', th:'ภาษาที่สอง',  id:'L2', hi:'दूसरी भाषा',  de:'L2', fr:'L2', it:'L2', es:'L2', pt:'L2', ru:'второй язык', uk:'друга мова', ar:'اللغة الثانية', he:'שפה שנייה', sw:'L2' },
+                        'total':               { en:'total',     ja:'合計',     ko:'합계',     zh:'合计',    yue:'合計',    vi:'tổng',         th:'รวม',          id:'total',          hi:'कुल',           de:'gesamt',     fr:'total',     it:'totale',     es:'total',      pt:'total',     ru:'всего',        uk:'усього',     ar:'إجمالي',     he:'סה"כ',       sw:'jumla' },
+                        'aggregate':           { en:'aggregate', ja:'総計',     ko:'총계',     zh:'综合',    yue:'綜合',    vi:'tổng hợp',     th:'รวมทั้งหมด',   id:'agregat',        hi:'समग्र',         de:'aggregiert', fr:'agrégé',    it:'aggregato',  es:'agregado',   pt:'agregado',  ru:'совокупно',    uk:'сукупно',    ar:'إجمالي',     he:'מצרפי',     sw:'jumlisho' },
+                        'regional-population': { en:'regional-population', ja:'地域人口', ko:'지역 인구', zh:'地区人口', yue:'地區人口', vi:'dân số vùng', th:'ประชากรในภูมิภาค', id:'populasi regional', hi:'क्षेत्रीय जनसंख्या', de:'Regionsbevölkerung', fr:'population régionale', it:'popolazione regionale', es:'población regional', pt:'população regional', ru:'население региона', uk:'населення регіону', ar:'سكان المنطقة', he:'אוכלוסיית האזור', sw:'idadi ya watu wa eneo' },
+                    };
+                    const ui = uiLang.split('_')[0];
                     let speakerCell = escapeHtml(translateMeta(m.speakers));
                     if (m.speakerBasis || m.speakerSource || m.speakerYear) {
                         const parts = [];
-                        if (m.speakerBasis)  parts.push(escapeHtml(m.speakerBasis));
+                        if (m.speakerBasis) {
+                            const sb = SPEAKER_BASIS_LBL[m.speakerBasis];
+                            parts.push(escapeHtml((sb && (sb[ui] || sb.en)) || m.speakerBasis));
+                        }
                         if (m.speakerSource) parts.push(escapeHtml(m.speakerSource));
                         if (m.speakerYear)   parts.push(String(m.speakerYear));
                         speakerCell += ` <span style="color:#999;font-size:10px">(${parts.join(', ')})</span>`;
@@ -2377,7 +2693,19 @@
                 }
                 if (m.countries) html += `<tr><td>${escapeHtml(wt('countries'))}</td><td>${escapeHtml(translateMeta(m.countries))}</td></tr>`;
                 if (m.official) html += `<tr><td>${escapeHtml(wt('official'))}</td><td>${escapeHtml(translateMeta(m.official))}</td></tr>`;
-                if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
+                if (m.script) {
+                    let scriptCell = escapeHtml(translateMeta(m.script));
+                    // Audit Task 119: scriptDisplayPolicy.note as small italic line
+                    // under the script row when present (Khitan / Jurchen / Sawndip).
+                    if (lang.scriptDisplayPolicy && lang.scriptDisplayPolicy.note) {
+                        const noteObj = lang.scriptDisplayPolicy.note;
+                        const note = noteObj[uiLang] || noteObj[uiLang.split('_')[0]] || noteObj.en || '';
+                        if (note) {
+                            scriptCell += `<div style="margin-top:2px;font-size:10px;color:#888;font-style:italic;line-height:1.4">${escapeHtml(note)}</div>`;
+                        }
+                    }
+                    html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${scriptCell}</td></tr>`;
+                }
                 // Audit Task 117: typology row with provenance hints. Show
                 // word order / tone / morphology and tag each value with
                 // (lang) for manually-curated, (family) for inherited
@@ -2386,19 +2714,48 @@
                 if (window.__langmap && typeof window.__langmap.getFeatures === 'function') {
                     const f = window.__langmap.getFeatures(code);
                     if (f) {
-                        const provLbl = { 'manual-override': 'lang', 'family-default': 'family', 'unknown': '?' };
+                        // Provenance tags: localized for all UI langs (was: en-only "lang/family/?")
+                        const PROV_LBL = {
+                            'manual-override': { en:'lang', ja:'言語', ko:'언어', zh:'语言', yue:'語言', vi:'ngôn ngữ', th:'ภาษา', id:'bahasa', hi:'भाषा', de:'Sprache', fr:'langue', it:'lingua', es:'idioma', pt:'idioma', ru:'язык', uk:'мова', ar:'لغة', he:'שפה', sw:'lugha' },
+                            'family-default': { en:'family', ja:'語族', ko:'어족', zh:'语系', yue:'語系', vi:'họ', th:'ตระกูล', id:'rumpun', hi:'परिवार', de:'Familie', fr:'famille', it:'famiglia', es:'familia', pt:'família', ru:'семья', uk:'сім\'я', ar:'عائلة', he:'משפחה', sw:'familia' },
+                            'unknown': { en:'?', ja:'?', ko:'?', zh:'?', yue:'?', vi:'?', th:'?', id:'?', hi:'?', de:'?', fr:'?', it:'?', es:'?', pt:'?', ru:'?', uk:'?', ar:'?', he:'?', sw:'?' },
+                        };
                         const provColor = { 'manual-override': '#3a8a3a', 'family-default': '#888', 'unknown': '#bbb' };
+                        // Tone (boolean) → localized "tonal" / "non-tonal"
+                        const TONE_LBL = {
+                            true:  { en:'tonal',     ja:'声調あり',   ko:'성조 있음', zh:'有声调',   yue:'有聲調',   vi:'có thanh điệu',   th:'มีวรรณยุกต์',     id:'tonal',         hi:'स्वराघातिक',         de:'tonal',     fr:'tonale',     it:'tonale',     es:'tonal',     pt:'tonal',     ru:'тональный',    uk:'тональна',    ar:'نبري',        he:'טונאלית',     sw:'yenye toni' },
+                            false: { en:'non-tonal', ja:'声調なし',   ko:'성조 없음', zh:'无声调',   yue:'無聲調',   vi:'không thanh điệu',th:'ไม่มีวรรณยุกต์', id:'non-tonal',     hi:'गैर-स्वराघातिक',    de:'nicht tonal', fr:'non tonale', it:'non tonale', es:'no tonal',  pt:'não tonal', ru:'не тональный', uk:'не тональна', ar:'غير نبري',    he:'לא טונאלית',  sw:'isiyo na toni' },
+                        };
+                        // Morphology values → localized
+                        const MORPH_LBL = {
+                            isolating:     { en:'isolating',     ja:'孤立語',  ko:'고립어',  zh:'孤立语',  yue:'孤立語',  vi:'đơn lập',          th:'ภาษาคำโดด',     id:'isolatif',     hi:'वियोगात्मक',         de:'isolierend',     fr:'isolante',     it:'isolante',     es:'aislante',     pt:'isolante',     ru:'изолирующий',     uk:'ізолятивна',     ar:'عازلة',         he:'מבודדת',       sw:'isiyoambika' },
+                            fusional:      { en:'fusional',      ja:'屈折語',  ko:'굴절어',  zh:'屈折语',  yue:'屈折語',  vi:'biến hình',        th:'ภาษาวิภัตติ',    id:'fusional',     hi:'योगात्मक',          de:'flektierend',    fr:'fusionnelle',  it:'fusiva',       es:'flexiva',      pt:'fusional',     ru:'флективный',      uk:'флективна',      ar:'اندماجية',      he:'פוזיונלית',    sw:'iliyoungana' },
+                            agglutinative: { en:'agglutinative', ja:'膠着語',  ko:'교착어',  zh:'黏着语',  yue:'黏著語',  vi:'chắp dính',        th:'ภาษาคำติดต่อ',   id:'aglutinatif',  hi:'श्लिष्टयोगात्मक',     de:'agglutinierend', fr:'agglutinante', it:'agglutinante', es:'aglutinante',  pt:'aglutinante',  ru:'агглютинативный', uk:'аглютинативна',  ar:'إلصاقية',       he:'אגלוטינטיבית', sw:'iliyoambatishwa' },
+                            polysynthetic: { en:'polysynthetic', ja:'抱合語',  ko:'포합어',  zh:'复综语',  yue:'複綜語',  vi:'đa tổng hợp',      th:'ภาษาประสาน',    id:'polisintetik', hi:'बहुसंश्लिष्ट',       de:'polysynthetisch',fr:'polysynthétique',it:'polisintetica',es:'polisintética',pt:'polissintética',ru:'полисинтетический',uk:'полісинтетична',ar:'متعدد التركيب', he:'פוליסינתטית',  sw:'iliyoshikamana sana' },
+                        };
+                        const ui = uiLang.split('_')[0];
+                        const localizeProv = (prov) => {
+                            const m = PROV_LBL[prov]; if (!m) return prov;
+                            return m[ui] || m.en || prov;
+                        };
+                        const localizeVal = (val) => {
+                            if (typeof val === 'boolean') {
+                                const m = TONE_LBL[val]; return (m && (m[ui] || m.en)) || (val ? 'tonal' : 'non-tonal');
+                            }
+                            const m = MORPH_LBL[val]; if (m) return m[ui] || m.en || val;
+                            return String(val);
+                        };
                         const fmtCell = (val, prov) => {
                             if (val === null || val === undefined) return '<span style="color:#bbb">—</span>';
-                            const v = (typeof val === 'boolean') ? (val ? 'tonal' : 'non-tonal') : String(val);
-                            const tag = (provLbl[prov] || prov);
+                            const v = localizeVal(val);
+                            const tag = localizeProv(prov);
                             const c = provColor[prov] || '#888';
                             return `${escapeHtml(v)} <span style="color:${c};font-size:10px">(${escapeHtml(tag)})</span>`;
                         };
-                        const woLbl    = { en: 'Word order',  ja: '語順',     ko: '어순',         zh: '语序' };
-                        const toneLbl  = { en: 'Tone',        ja: '声調',     ko: '성조',         zh: '声调' };
-                        const morphLbl = { en: 'Morphology',  ja: '形態論',   ko: '형태론',       zh: '形态' };
-                        const ui = uiLang.split('_')[0];
+                        // Localized labels for ALL UI langs (was en/ja/ko/zh-only)
+                        const woLbl    = { en:'Word order', ja:'語順',  ko:'어순',  zh:'语序', yue:'語序', vi:'Trật tự từ', th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole', es:'Orden de palabras', pt:'Ordem das palavras', ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات', he:'סדר מילים', sw:'Mpangilio wa Maneno' };
+                        const toneLbl  = { en:'Tone',       ja:'声調',  ko:'성조',  zh:'声调', yue:'聲調', vi:'Thanh điệu', th:'วรรณยุกต์', id:'Tonal',       hi:'स्वराघात',   de:'Ton',           fr:'Ton',            it:'Tono',         es:'Tono',              pt:'Tom',                ru:'Тон',           uk:'Тон',          ar:'النبرة',        he:'טון',         sw:'Toni' };
+                        const morphLbl = { en:'Morphology', ja:'形態論', ko:'형태론', zh:'形态', yue:'形態學', vi:'Hình thái', th:'สัณฐานวิทยา',  id:'Morfologi',  hi:'आकृति विज्ञान',  de:'Morphologie',   fr:'Morphologie',   it:'Morfologia',   es:'Morfología',         pt:'Morfologia',         ru:'Морфология',    uk:'Морфологія',  ar:'علم الصرف',    he:'מורפולוגיה', sw:'Mofolojia' };
                         html += `<tr><td>${escapeHtml(woLbl[ui] || woLbl.en)}</td><td>${fmtCell(f.wo, f.provenance.wo)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(toneLbl[ui] || toneLbl.en)}</td><td>${fmtCell(f.tone, f.provenance.tone)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(morphLbl[ui] || morphLbl.en)}</td><td>${fmtCell(f.morph, f.provenance.morph)}</td></tr>`;
@@ -2439,11 +2796,23 @@
             // Audit Task 76: pronunciation-type note before the word table
             // tells the user what kind of notation the IPA column actually is.
             if (m.pronunciationType && PRONUNCIATION_LABEL[m.pronunciationType]) {
-                const ptLabel = PRONUNCIATION_LABEL[m.pronunciationType][uiLang]
-                    || PRONUNCIATION_LABEL[m.pronunciationType].en;
-                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
+                const ptObj = PRONUNCIATION_LABEL[m.pronunciationType];
+                const ptLabel = ptObj[uiLang] || ptObj[uiLang.split('_')[0]] || ptObj.en;
+                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER[uiLang.split('_')[0]] || PRONUNCIATION_HEADER.en;
                 const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
                 html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
+            }
+            // Audit Task 84/89: surfaceType badge (which kind of script is
+            // shown in the surface column — native script / standard
+            // orthography / romanization / phonetic / mixed). Helps users
+            // distinguish "this is the language's actual writing system"
+            // from "this is a romanization or scholarly transcription."
+            if (m.surfaceType && SURFACE_TYPE_LABEL[m.surfaceType]) {
+                const stObj = SURFACE_TYPE_LABEL[m.surfaceType];
+                const stLabel = stObj[uiLang] || stObj[uiLang.split('_')[0]] || stObj.en;
+                const stHeader = SURFACE_TYPE_HEADER[uiLang] || SURFACE_TYPE_HEADER[uiLang.split('_')[0]] || SURFACE_TYPE_HEADER.en;
+                const tone = (m.surfaceType === 'mixed' || m.surfaceType === 'unknown' || m.surfaceType === 'phonetic') ? '#a04020' : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(stHeader)}:</b> ${escapeHtml(stLabel)}</div>`;
             }
             // Audit Task 99: locationBasis — representative-point semantics.
             // Read from meta.locationBasis (canonical) or lang.locationBasis (legacy).
@@ -2452,30 +2821,31 @@
                 const lbLabel = LOCATION_BASIS_LABEL[locBasis][uiLang]
                     || LOCATION_BASIS_LABEL[locBasis][uiLang.split('_')[0]]
                     || LOCATION_BASIS_LABEL[locBasis].en;
-                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER.en;
+                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER[uiLang.split('_')[0]] || LOCATION_BASIS_HEADER.en;
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:#888"><b>${escapeHtml(lbHeader)}:</b> ${escapeHtml(lbLabel)}</div>`;
             }
             // Audit Task 79: coverage flag for regional variant rows
             if (m.coverage && COVERAGE_LABEL[m.coverage]) {
-                let cvLabel = COVERAGE_LABEL[m.coverage][uiLang] || COVERAGE_LABEL[m.coverage].en;
+                const cvObj = COVERAGE_LABEL[m.coverage];
+                let cvLabel = cvObj[uiLang] || cvObj[uiLang.split('_')[0]] || cvObj.en;
                 if (m.baseLang) {
                     const baseLang = LANG_DATA[m.baseLang];
                     const baseName = baseLang ? ((LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.baseLang] || baseLang.name) : m.baseLang;
                     cvLabel = cvLabel.replace('{base}', baseName);
                 }
-                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
+                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER[uiLang.split('_')[0]] || COVERAGE_HEADER.en;
                 const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
-                // Audit Task 88: show coverageNote when present
+                // Audit Task 88: show coverageNote when present (translated)
                 if (m.coverageNote && typeof m.coverageNote === 'string') {
-                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(m.coverageNote)}</div>`;
+                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(translateMeta(m.coverageNote))}</div>`;
                 }
             }
             // Audit Task 108: review status badge (separate from coverage / dataStatus)
             if (m.reviewStatus && REVIEW_STATUS_LABEL[m.reviewStatus]) {
                 const rsObj = REVIEW_STATUS_LABEL[m.reviewStatus];
                 const rsLabel = rsObj[uiLang] || rsObj[uiLang.split('_')[0]] || rsObj.en;
-                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER.en;
+                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER[uiLang.split('_')[0]] || REVIEW_STATUS_HEADER.en;
                 const rsTone = (m.reviewStatus === 'needs-rebuild') ? '#a04020'
                             : (m.reviewStatus === 'source-checked') ? '#3a8a3a'
                             : '#888';
@@ -2567,25 +2937,25 @@
                     const parent = LANG_DATA[m.parentCode];
                     const parentName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.parentCode] || parent.name;
                     const roleLabels = {
-                        'regional-variety':   { en: 'Regional variety of', ja: '地方変種', ko: '지역 변종', zh: '地方变体' },
-                        'dialect':            { en: 'Dialect of',          ja: '方言',     ko: '방언',     zh: '方言' },
-                        'sibling-language':   { en: 'Related branch',      ja: '姉妹言語', ko: '자매 언어', zh: '姊妹语言' },
-                        'continuum-member':   { en: 'Continuum member',    ja: '連続体',   ko: '연속체',   zh: '连续体' },
+                        'regional-variety':   { en:'Regional variety of', ja:'地方変種', ko:'지역 변종', zh:'地方变体', yue:'地方變體', vi:'biến thể vùng của', th:'รูปท้องถิ่นของ', id:'ragam daerah dari', hi:'क्षेत्रीय भेद', de:'Regionalvarietät von', fr:'variété régionale de', it:'varietà regionale di', es:'variedad regional de', pt:'variedade regional de', ru:'региональный вариант', uk:'регіональний варіант', ar:'تنويع إقليمي لـ', he:'גרסה אזורית של', sw:'ainalugha ya eneo' },
+                        'dialect':            { en:'Dialect of', ja:'方言', ko:'방언', zh:'方言', yue:'方言', vi:'phương ngữ của', th:'ภาษาถิ่นของ', id:'dialek dari', hi:'बोली', de:'Dialekt von', fr:'dialecte de', it:'dialetto di', es:'dialecto de', pt:'dialeto de', ru:'диалект', uk:'діалект', ar:'لهجة', he:'ניב של', sw:'lahaja ya' },
+                        'sibling-language':   { en:'Related branch', ja:'姉妹言語', ko:'자매 언어', zh:'姊妹语言', yue:'姊妹語言', vi:'ngôn ngữ chị em', th:'ภาษาพี่น้อง', id:'cabang terkait', hi:'सहोदर भाषा', de:'verwandter Zweig', fr:'branche apparentée', it:'ramo correlato', es:'rama relacionada', pt:'ramo relacionado', ru:'родственная ветвь', uk:'споріднена гілка', ar:'فرع شقيق', he:'ענף אחות', sw:'tawi husiana' },
+                        'continuum-member':   { en:'Continuum member', ja:'連続体', ko:'연속체', zh:'连续体', yue:'連續體', vi:'thành viên liên tục', th:'สมาชิกความต่อเนื่อง', id:'anggota kontinum', hi:'सातत्य सदस्य', de:'Kontinuums-Mitglied', fr:'membre du continuum', it:'membro del continuum', es:'miembro del continuo', pt:'membro do continuum', ru:'член континуума', uk:'член континууму', ar:'عضو في المتصل', he:'חבר רצף', sw:'mwanachama wa mfululizo' },
                     };
                     const role = m.varietyRole || 'regional-variety';
                     const lblObj = roleLabels[role] || roleLabels['regional-variety'];
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}:</b> <a href="#" data-langcode="${escapeHtml(m.parentCode)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(parentName)}</a> (${escapeHtml(m.parentCode)})</div>`;
                 } else if (m.varietyRole === 'base') {
-                    const lblObj = { en: 'Base variety', ja: '基準変種', ko: '기준 변종', zh: '基准变体' };
+                    const lblObj = { en:'Base variety', ja:'基準変種', ko:'기준 변종', zh:'基准变体', yue:'基準變體', vi:'biến thể cơ sở', th:'รูปฐาน', id:'ragam dasar', hi:'आधार भेद', de:'Basisvarietät', fr:'variété de base', it:'varietà di base', es:'variedad base', pt:'variedade base', ru:'базовый вариант', uk:'базовий варіант', ar:'تنويع أساسي', he:'גרסה בסיסית', sw:'ainalugha ya msingi' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 } else if (m.varietyRole === 'sibling-language') {
-                    const lblObj = { en: 'Sibling language (separate from related main language)', ja: '姉妹言語（関連する主要言語とは別個）', ko: '자매 언어 (관련 주요 언어와 별개)', zh: '姊妹语言（与相关主要语言独立）' };
+                    const lblObj = { en:'Sibling language (separate from related main language)', ja:'姉妹言語（関連する主要言語とは別個）', ko:'자매 언어 (관련 주요 언어와 별개)', zh:'姊妹语言（与相关主要语言独立）', yue:'姊妹語言（與相關主要語言獨立）', vi:'ngôn ngữ chị em (tách khỏi ngôn ngữ chính liên quan)', th:'ภาษาพี่น้อง (แยกจากภาษาหลักที่เกี่ยวข้อง)', id:'bahasa saudara (terpisah dari bahasa utama terkait)', hi:'सहोदर भाषा (संबंधित मुख्य भाषा से अलग)', de:'Schwestersprache (getrennt von verwandter Hauptsprache)', fr:'langue sœur (distincte de la langue principale apparentée)', it:'lingua sorella (separata dalla lingua principale correlata)', es:'lengua hermana (separada del idioma principal relacionado)', pt:'língua irmã (separada do idioma principal relacionado)', ru:'родственный язык (отдельно от связанного основного языка)', uk:'споріднена мова (окремо від пов\'язаної основної мови)', ar:'لغة شقيقة (مستقلة عن اللغة الرئيسية المرتبطة)', he:'שפה אחות (נפרדת מהשפה הראשית הקרובה)', sw:'lugha dada (tofauti na lugha kuu husiana)' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 } else if (m.varietyRole === 'continuum-member') {
-                    const lblObj = { en: 'Continuum member (between related languages)', ja: '連続体メンバー（関連言語の間）', ko: '연속체 구성원 (관련 언어 사이)', zh: '连续体成员（关联语言之间）' };
+                    const lblObj = { en:'Continuum member (between related languages)', ja:'連続体メンバー（関連言語の間）', ko:'연속체 구성원 (관련 언어 사이)', zh:'连续体成员（关联语言之间）', yue:'連續體成員（關聯語言之間）', vi:'thành viên của liên tục (giữa các ngôn ngữ liên quan)', th:'สมาชิกความต่อเนื่อง (ระหว่างภาษาที่เกี่ยวข้อง)', id:'anggota kontinum (di antara bahasa terkait)', hi:'सातत्य सदस्य (संबंधित भाषाओं के बीच)', de:'Kontinuum-Mitglied (zwischen verwandten Sprachen)', fr:'membre d\'un continuum (entre langues apparentées)', it:'membro del continuum (tra lingue imparentate)', es:'miembro del continuo (entre lenguas relacionadas)', pt:'membro do continuum (entre idiomas relacionados)', ru:'член континуума (между родственными языками)', uk:'член континууму (між спорідненими мовами)', ar:'عضو في المتصل (بين لغات قريبة)', he:'חבר רצף (בין שפות קרובות)', sw:'mwanachama wa mfululizo (kati ya lugha husiana)' };
                     const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
                     html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
                 }
@@ -2641,7 +3011,49 @@
                     sourceItems.map(renderItem).join(' · ') +
                     `</div>`;
             }
+            // Pass 32: Add-to-compare button (renders before sources/footer area)
+            // (Reuses the global COMPARE_I18N table for full UI-lang coverage.)
+            (() => {
+                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+                const lbl = inCmp ? compareT('remove') : compareT('add');
+                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
+                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+            })();
             infoContent.innerHTML = html;
+        }
+
+        // Pan the map (or globe) to a language's coordinate, accounting for the
+        // bottom-mounted modal on mobile. On mobile, the lang-info-panel covers
+        // the bottom 50-60% of the viewport, so we use fitBounds with
+        // paddingBottomRight to push the coord into the visible upper region.
+        function centerLangOnMap(code) {
+            const lang = LANG_DATA[code];
+            if (!lang || !Number.isFinite(lang.lat) || !Number.isFinite(lang.lng)) return;
+            if (is3D && globe) {
+                globe.pointOfView({ lat: lang.lat, lng: lang.lng, altitude: 1.2 }, 800);
+                return;
+            }
+            if (!map) return;
+            const targetZoom = Math.max(map.getZoom(), 5);
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile) {
+                // Estimate modal height: 50vh per the @media (max-width: 768px) rule
+                // (60vh at ≤480px). Add a small buffer so the marker isn't right on the seam.
+                const isSmall = window.matchMedia('(max-width: 480px)').matches;
+                const modalFraction = isSmall ? 0.6 : 0.5;
+                const modalH = Math.round(window.innerHeight * modalFraction) + 16;
+                try {
+                    map.fitBounds([[lang.lat, lang.lng], [lang.lat, lang.lng]], {
+                        paddingBottomRight: [0, modalH],
+                        maxZoom: targetZoom,
+                        animate: true,
+                    });
+                } catch (e) {
+                    map.setView([lang.lat, lang.lng], targetZoom);
+                }
+            } else {
+                map.setView([lang.lat, lang.lng], targetZoom);
+            }
         }
 
         function showLangInfo(code) {
@@ -2870,9 +3282,7 @@
                 const code = item.getAttribute('data-code');
                 if (!code || !LANG_DATA[code]) return;
                 const lang = LANG_DATA[code];
-                if (typeof map !== 'undefined' && map && map.setView) {
-                    map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
-                }
+                centerLangOnMap(code);
                 // If modal already shows this lang (from live preview), avoid
                 // calling showLangInfo (which would toggle it closed).
                 if (infoPanel.dataset.code !== code || !infoPanel.classList.contains('visible')) {
@@ -2945,6 +3355,306 @@
             detailRow.appendChild(td);
             tr.parentNode.insertBefore(detailRow, tr.nextSibling);
         }
+
+        // === Compare view (Pass 32) ============================================
+        // Multi-language side-by-side comparison panel. Users add languages from
+        // the modal, the FAB shows count, the bottom panel renders an N×20 table.
+        // State persists in localStorage and URL hash (cmp=ja,ko,zh).
+        const COMPARE_STORAGE_KEY = 'wm.compareList';
+        const COMPARE_MAX = 8;
+        let _compareList = [];
+        window.__compareList = _compareList;  // exposed for updateHash to read
+
+        // i18n labels for compare UI (subset; falls back to en)
+        const COMPARE_I18N = {
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
+        };
+        function compareT(key) {
+            const base = uiLang.split('_')[0];
+            return (COMPARE_I18N[uiLang] && COMPARE_I18N[uiLang][key])
+                || (COMPARE_I18N[base] && COMPARE_I18N[base][key])
+                || COMPARE_I18N.en[key];
+        }
+
+        function loadCompareList() {
+            // Priority: URL hash → localStorage
+            const params = new URLSearchParams(location.hash.slice(1));
+            const cmp = params.get('cmp');
+            if (cmp) {
+                _compareList = cmp.split(',').filter(c => LANG_DATA[c]).slice(0, COMPARE_MAX);
+            } else {
+                try {
+                    const stored = localStorage.getItem(COMPARE_STORAGE_KEY);
+                    if (stored) _compareList = JSON.parse(stored).filter(c => LANG_DATA[c]).slice(0, COMPARE_MAX);
+                } catch (e) {}
+            }
+            window.__compareList = _compareList;
+        }
+        function saveCompareList() {
+            window.__compareList = _compareList;
+            try { localStorage.setItem(COMPARE_STORAGE_KEY, JSON.stringify(_compareList)); } catch (e) {}
+            try { updateHash(); } catch (e) {}
+        }
+        function isInCompare(code) { return _compareList.indexOf(code) !== -1; }
+        function addToCompare(code) {
+            if (!LANG_DATA[code] || isInCompare(code)) return;
+            if (_compareList.length >= COMPARE_MAX) { alert(compareT('max')); return; }
+            _compareList.push(code);
+            saveCompareList();
+            updateCompareFab();
+            renderCompareIfOpen();
+            updateModalCompareBtn(code);
+        }
+        function removeFromCompare(code) {
+            const i = _compareList.indexOf(code);
+            if (i === -1) return;
+            _compareList.splice(i, 1);
+            saveCompareList();
+            updateCompareFab();
+            renderCompareIfOpen();
+            updateModalCompareBtn(code);
+            if (_compareList.length === 0) closeComparePanel();
+        }
+        function clearCompare() {
+            const wasOpen = _compareList.slice();
+            _compareList = [];
+            saveCompareList();
+            updateCompareFab();
+            closeComparePanel();
+            // Refresh modal compare button if a previously-compared lang is open
+            const open = infoPanel && infoPanel.classList.contains('visible') ? infoPanel.dataset.code : '';
+            if (open && wasOpen.indexOf(open) !== -1) updateModalCompareBtn(open);
+        }
+        function updateCompareFab() {
+            const fab = document.getElementById('compare-fab');
+            if (!fab) return;
+            if (_compareList.length === 0) {
+                fab.classList.remove('visible');
+            } else {
+                fab.classList.add('visible');
+                const badge = fab.querySelector('.compare-fab-badge');
+                if (badge) badge.textContent = String(_compareList.length);
+                const lbl = fab.querySelector('.compare-fab-label');
+                if (lbl) lbl.textContent = compareT('fab');
+            }
+        }
+        function openComparePanel() {
+            if (_compareList.length === 0) return;
+            renderCompare();
+            const panel = document.getElementById('compare-panel');
+            panel.classList.add('visible');
+            // Update title text per current UI lang
+            const t = panel.querySelector('.compare-title'); if (t) t.textContent = compareT('title');
+            const c = panel.querySelector('.compare-clear'); if (c) c.textContent = compareT('clear');
+        }
+        function closeComparePanel() {
+            const panel = document.getElementById('compare-panel');
+            if (panel) panel.classList.remove('visible');
+        }
+        function renderCompareIfOpen() {
+            const panel = document.getElementById('compare-panel');
+            if (panel && panel.classList.contains('visible')) renderCompare();
+        }
+        // Reorder: move source code so it lands at toIdx (clamped)
+        function reorderCompare(srcCode, toIdx) {
+            const from = _compareList.indexOf(srcCode);
+            if (from === -1) return;
+            let to = Math.max(0, Math.min(toIdx, _compareList.length - 1));
+            if (from === to) return;
+            _compareList.splice(from, 1);
+            _compareList.splice(to, 0, srcCode);
+            saveCompareList();
+            renderCompare();
+        }
+
+        function renderCompare() {
+            const body = document.getElementById('compare-body');
+            if (!body) return;
+            if (_compareList.length === 0) { body.innerHTML = ''; return; }
+            const names = (typeof LANG_NAMES !== 'undefined' && LANG_NAMES[uiLang]) || (typeof LANG_NAMES !== 'undefined' && LANG_NAMES.en) || {};
+            const conceptLangFb = uiLang.split('_')[0];
+            let html = '<table class="compare-table"><thead><tr><th></th>';
+            const len = _compareList.length;
+            for (let idx = 0; idx < len; idx++) {
+                const code = _compareList[idx];
+                const lang = LANG_DATA[code]; if (!lang) continue;
+                const display = names[code] || lang.name || code;
+                html += '<th draggable="true" data-code="' + escapeHtml(code) + '" data-idx="' + idx + '" title="Drag to reorder">'
+                     + '<span class="drag-handle" aria-hidden="true">⋮⋮</span>'
+                     + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
+                     + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
+                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
+                     + '</th>';
+            }
+            html += '</tr></thead><tbody>';
+            for (const w of WORD_LIST) {
+                const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
+                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                for (const code of _compareList) {
+                    const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
+                    if (!cell || cell[0] === '—') {
+                        html += '<td class="unattested">—</td>';
+                    } else {
+                        const surface = cell[0] || '';
+                        const ipa = cell[1] || '';
+                        html += '<td><span class="surface" dir="auto">' + escapeHtml(surface) + '</span>'
+                             + (ipa && ipa !== '—' ? '<span class="ipa">' + escapeHtml(ipa) + '</span>' : '')
+                             + '</td>';
+                    }
+                }
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+            body.innerHTML = html;
+            // Wire interactions
+            body.querySelectorAll('.remove-col').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    removeFromCompare(btn.dataset.code);
+                });
+                // Don't let the remove-button start a drag (the parent <th> is draggable)
+                btn.addEventListener('mousedown', e => e.stopPropagation());
+            });
+            body.querySelectorAll('.lang-name[data-code]').forEach(el => {
+                el.style.cursor = 'pointer';
+                el.style.textDecoration = 'underline';
+                el.addEventListener('click', e => {
+                    e.stopPropagation();
+                    showLangInfo(el.dataset.code);
+                });
+            });
+
+            // Drag-and-drop reordering on column headers
+            let dragSrcCode = null;
+            body.querySelectorAll('th[draggable="true"]').forEach(th => {
+                th.addEventListener('dragstart', e => {
+                    dragSrcCode = th.dataset.code;
+                    th.classList.add('dragging');
+                    if (e.dataTransfer) {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', dragSrcCode);
+                    }
+                });
+                th.addEventListener('dragend', () => {
+                    th.classList.remove('dragging');
+                    body.querySelectorAll('th.drop-before, th.drop-after')
+                        .forEach(el => el.classList.remove('drop-before', 'drop-after'));
+                    dragSrcCode = null;
+                });
+                th.addEventListener('dragover', e => {
+                    if (!dragSrcCode || th.dataset.code === dragSrcCode) return;
+                    e.preventDefault();
+                    if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+                    const rect = th.getBoundingClientRect();
+                    const before = (e.clientX - rect.left) < rect.width / 2;
+                    th.classList.toggle('drop-before', before);
+                    th.classList.toggle('drop-after', !before);
+                });
+                th.addEventListener('dragleave', () => {
+                    th.classList.remove('drop-before', 'drop-after');
+                });
+                th.addEventListener('drop', e => {
+                    e.preventDefault();
+                    if (!dragSrcCode || th.dataset.code === dragSrcCode) return;
+                    const targetIdx = parseInt(th.dataset.idx);
+                    const srcIdx = _compareList.indexOf(dragSrcCode);
+                    const rect = th.getBoundingClientRect();
+                    const before = (e.clientX - rect.left) < rect.width / 2;
+                    let toIdx = targetIdx + (before ? 0 : 1);
+                    if (srcIdx < toIdx) toIdx -= 1;  // account for the splice removing src first
+                    reorderCompare(dragSrcCode, toIdx);
+                });
+            });
+        }
+
+        function updateModalCompareBtn(code) {
+            // Update the in-modal "Add/Remove from compare" button if it exists for this code
+            const btn = infoContent && infoContent.querySelector('.compare-add-btn[data-code="' + (window.CSS ? CSS.escape(code) : code) + '"]');
+            if (!btn) return;
+            if (isInCompare(code)) {
+                btn.classList.add('added');
+                btn.textContent = compareT('remove');
+            } else {
+                btn.classList.remove('added');
+                btn.textContent = compareT('add');
+            }
+        }
+
+        // Wire FAB + panel buttons + modal button delegation
+        document.getElementById('compare-fab').addEventListener('click', openComparePanel);
+        document.getElementById('compare-close').addEventListener('click', closeComparePanel);
+        document.getElementById('compare-clear').addEventListener('click', clearCompare);
+        // Delegate compare-add-btn clicks inside the language modal
+        infoContent.addEventListener('click', e => {
+            const btn = e.target.closest('.compare-add-btn');
+            if (!btn) return;
+            const code = btn.dataset.code;
+            if (!code) return;
+            if (isInCompare(code)) removeFromCompare(code); else addToCompare(code);
+        });
+        // ESC closes the compare panel
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const panel = document.getElementById('compare-panel');
+                if (panel && panel.classList.contains('visible')) {
+                    closeComparePanel();
+                }
+            }
+        });
+
+        // === Random language button (next to search) ===========================
+        // Picks a random language from the *currently visible* set:
+        //   - respects the era toggle (modern vs historical) via getActiveCodes()
+        //   - respects active lang-filter selections via passesFilter()
+        const randomBtn = document.getElementById('lang-random');
+        if (randomBtn) {
+            randomBtn.addEventListener('click', () => {
+                // Step 1: era-aware base set
+                let pool;
+                if (window.__langmap && typeof window.__langmap.getActiveCodes === 'function') {
+                    pool = Array.from(window.__langmap.getActiveCodes());
+                } else {
+                    pool = Object.keys(LANG_DATA);
+                }
+                // Step 2: intersect with active filter (only if any filter is active)
+                if (window.__langmap
+                    && typeof window.__langmap.anyFilterActive === 'function'
+                    && typeof window.__langmap.passesFilter === 'function'
+                    && window.__langmap.anyFilterActive()) {
+                    pool = pool.filter(c => window.__langmap.passesFilter(c));
+                }
+                if (!pool.length) return;
+                const code = pool[Math.floor(Math.random() * pool.length)];
+                centerLangOnMap(code);
+                showLangInfo(code);
+            });
+        }
+
+        // Initialize compare list from hash/localStorage now that everything is wired
+        loadCompareList();
+        updateCompareFab();
 
     })();
     </script>

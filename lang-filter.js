@@ -81,13 +81,17 @@
         'Sino-Tibetan (Pyu)':           { wo: 'SOV', tone: false, morph: 'agglutinative' },
         'Sino-Tibetan (Tibeto-Burman, Burmish)': { wo: 'SOV', tone: true,  morph: 'isolating' },
         // All Sinitic sub-variants explicitly tonal SVO
-        // Some entries in the data list these as `Sino-Tibetan (Min Nan)`
+        // Audit Task 159: Sinitic sub-branches normalized to `Sinitic (X)`
+        // (Pass 26). Legacy `Sino-Tibetan (X)` keys retained for back-compat.
         // etc. (parent name) rather than `Sinitic (...)`. Without these
         // explicit aliases the lookup falls back to plain `Sino-Tibetan`
         // (SOV+tonal+agglutinative) which is wrong for Sinitic varieties.
         'Sino-Tibetan (Min Nan)':       { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sino-Tibetan (Wu)':            { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sino-Tibetan (Yue)':           { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Min Nan)':            { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Wu)':                 { wo: 'SVO', tone: true, morph: 'isolating' },
+        'Sinitic (Yue)':                { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin)':           { wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin, Jianghuai)':{ wo: 'SVO', tone: true, morph: 'isolating' },
         'Sinitic (Mandarin, Ji-Lu)':    { wo: 'SVO', tone: true, morph: 'isolating' },
@@ -125,17 +129,17 @@
         'Austronesian (South Sulawesi, Toraja-Sa\'dan)': { wo: 'SVO', tone: false, morph: 'agglutinative' }, // Toraja
         // Niger-Congo / Bantu
         'Niger-Congo':            { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, Nguni)':           { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, Sotho-Tswana)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, Tswa-Ronga)':      { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, A.70 Yaounde-Fang)':{wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, R10)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, H21)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, R31)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, M64)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, A70 Beti)':        { wo: 'SVO', tone: true, morph: 'agglutinative' },
-        'Niger-Congo (Bantu, S10 Shona)':       { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, Nguni)':           { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, Sotho-Tswana)':    { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, Tswa-Ronga)':      { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, A.70 Yaounde-Fang)':{wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, R10)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, H21)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, R31)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, M64)':             { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, A70 Beti)':        { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        'Atlantic-Congo (Bantu, S10 Shona)':       { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Niger-Congo (Atlantic)':               { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Niger-Congo (Mande)':                  { wo: 'SOV', tone: true, morph: 'isolating' },
         'Niger-Congo (Mande, Manding)':         { wo: 'SOV', tone: true, morph: 'isolating' },
