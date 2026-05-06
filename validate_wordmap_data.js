@@ -1118,6 +1118,30 @@ for (const code of codes) {
     if (nfcIssues > 3) W(`[#116] (${nfcIssues - 3} more NFC issues — fix all)`);
 }
 
+// === ASCII uppercase A-Z residue in 'ipa'-tagged rows (Audit Task 160) ===
+// Strict IPA has no ASCII uppercase letters. The IPA small-caps (ɴ ɪ ʏ ʊ ʟ ɢ ʀ
+// ʁ ɶ etc.) are all U+02xx codepoints, not ASCII A-Z, so flagging A-Z catches
+// real residue (Pass-2 leftover capital N, Baxter-Sagart X/H tone letters).
+// 'mixed'/'romanization'/'broad'/'orthography' rows are exempt — they
+// legitimately carry transcription conventions outside strict IPA.
+{
+    const ipaCodes = codes.filter(c => ctx.LANG_DATA[c]?.meta?.pronunciationType === 'ipa');
+    let asciiResidue = 0;
+    for (const code of ipaCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string' || ipa === '—' || !ipa) continue;
+            if (/[A-Z]/.test(ipa)) {
+                asciiResidue++;
+                if (asciiResidue <= 5) W(`[#160] ${code}.${k}: ASCII uppercase A-Z in IPA "${ipa}" — strict IPA uses small-cap codepoints (Audit Task 160)`);
+            }
+        }
+    }
+    if (asciiResidue > 5) W(`[#160] (${asciiResidue - 5} more ASCII-A-Z residue cells in 'ipa' rows)`);
+}
+
 // === Affricate tie-bar enforcement for 'ipa'-tagged rows (Audit Task 163) ===
 // Strict IPA requires t͡s/d͡z/t͡ʃ/d͡ʒ/t͡ɕ/d͡ʑ/t͡ʂ/d͡ʐ (with U+0361 COMBINING DOUBLE
 // INVERTED BREVE) instead of bare ASCII digraphs. Apply only to rows whose

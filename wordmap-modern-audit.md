@@ -9255,3 +9255,40 @@ Each of `my` / `km` / `id-ms-tl` / `ta-te` / `bo` requires:
 4. After rebuild: `meta.reviewStatus: 'source-checked'` + full `meta.sources` + per-cell `wordEvidence.citation` (Audit Task 133).
 
 Rebuilding all five in one session is unrealistic without dedicated source access. Recommended order: `km` (most contained, single standard) → `my` (well-documented Cambridge JIPA reference) → `bo` → `ta`/`te` → `id`/`ms`/`tl` (column policy first). Each is its own commit / session.
+
+---
+
+## Progress notes — Tasks 151-158, 160-163 (2026-05-07)
+
+### Tasks 151-158 — education-readiness features ⚠ multi-session, deferred
+
+These are major feature additions (audio playback, cognate tagging, grammar capsules, sample sentences with Leipzig glossing, IPA tutor, lesson tours, citation export, quiz mode). Each requires substantial:
+- Content authoring (audio sourcing, sample-sentence corpus, IPA descriptions, tour commentary in priority UI langs).
+- Schema design + validator extensions.
+- UI work (modal sections, dialog overlays, side panels).
+
+A single session cannot complete any to "Done when" criteria. Recommended order (per audit's Phase A-D rollup):
+- **Phase A (minimum viable teaching):** 151 (audio for 30 priority langs) + 153 (grammar capsules for 30) + 154 (samples for 30).
+- **Phase B (historical-linguistics):** 152 (cognate sets).
+- **Phase C (guided learning):** 156 (tours) + 158 (quizzes).
+- **Phase D (academic adoption):** 155 (IPA tutor) + 157 (citation export).
+
+Each task needs its own dedicated session(s) with content-sourcing time. The audit-doc sections (lines 6066-6612) are already detailed implementation specs.
+
+### Task 160 — IPA-column ASCII A-Z residue ✓ validator added
+
+- Verified `ja_edo.mother` is correct: `okkasaɴ` (small-cap ɴ, U+0274) — not the `okkasaN` ASCII residue the audit reported.
+- `zh_tang` (Baxter-Sagart Middle Chinese tone letters X/H) and `och` (Old Chinese Baxter-Sagart `*C.` syllabicism) already have `pronunciationType: 'mixed'` set, which is the audit's recommended Option C.
+- New validator check `[#160]`: flags ASCII uppercase A-Z in IPA cells of `'ipa'`-tagged rows. Initial run: zero offenders. The check covers regression risk for future Pass-N cleanups.
+
+### Task 161 — Korean / English historical-stage coordinates ✓ already done
+
+- Verified all stages are at distinct coordinates: `ko_mid` at Kaesong (37.97/126.55), `ko_em` at Suwon area (37.27/127.01), `en_ang` at Winchester (51.06/-1.31), `enm` at Canterbury (51.28/1.08), `en_ck` at Bow (51.53/-0.02). Validator `[#14]` cluster check fires zero warnings on these rows.
+
+### Task 162 — unattested `—` cell documentation ✓ already done
+
+- Validator INFO line confirms: `unattestedReason coverage: 231/231 '—' cells documented`. All `—` cells have a categorized reason.
+
+### Task 163 — affricate tie-bar normalization ✓ validator already in place
+
+- Existing validator check `[#163]` (lines 1121-1151 of validate_wordmap_data.js) flags bare ASCII affricates (`ts`/`dz`/`tʃ`/`dʒ`/`tɕ`/`dʑ`/`tʂ`/`dʐ`) in `'ipa'`-tagged rows. Coverage line: `affricate tie-bar coverage: 214/1920 cells in 'ipa' rows contain U+0361`. Per-cell rebuilds remain opportunistic — not blocking.
