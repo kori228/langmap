@@ -12,25 +12,21 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         color: #222; background: #fafbfc; overflow: hidden;
         display: flex; flex-direction: column; min-height: 100vh;
+        padding: 0;  /* override styles.css default body padding */
     }
+    /* Tree page-specific overrides for the shared .site-header-bar from
+       styles.css. Reset margin (which the shared rule offsets for inset
+       containers) and let it sit as a flex item at the top. */
     .site-header-bar {
         flex: 0 0 auto;
-        background: #fff;
-        padding: 8px 16px; border-bottom: 1px solid #e0e0e0;
-        display: flex; align-items: center; gap: 18px;
+        margin: 0;  /* override styles.css negative margin */
         z-index: 10;
     }
-    .site-header-bar .logo { font-weight: 700; color: #1a73e8; text-decoration: none; font-size: 16px; }
-    .header-nav { display: flex; align-items: center; gap: 6px; flex: 1; font-size: 13px; }
-    .header-nav-link, .header-nav-current { color: #444; text-decoration: none; padding: 4px 8px; border-radius: 4px; }
-    .header-nav-link:hover { background: #f1f3f4; }
-    .header-nav-current { font-weight: 600; color: #1a73e8; background: #e8f0fe; }
-    .nav-sep { color: #ccc; }
-    .header-url { color: #888; font-size: 12px; text-decoration: none; }
-    .header-ui-lang {
-        padding: 4px 8px; font-size: 12px;
-        border: 1px solid #d0d0d0; border-radius: 4px;
-        background: #fff; color: #444; cursor: pointer;
+    /* Pin the UI-lang select to a fixed width on the right (matches
+       wordmap.html's right-aligned style). margin-left:auto comes from
+       styles.css. */
+    .site-header-bar .header-ui-lang {
+        min-width: 140px;
     }
 
     .controls-bar {
@@ -129,13 +125,13 @@
 </head>
 <body>
 <div class="site-header-bar">
-    <a href="wordmap.html" class="logo">LangMap</a>
+    <a href="index.html" class="logo">LangMap</a>
     <nav class="header-nav">
-        <a href="index.html" class="header-nav-link" id="nav-order">Word Order</a>
+        <a href="index.html" class="header-nav-link" id="nav-order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
         <span class="nav-sep">/</span>
-        <a href="wordmap.html" class="header-nav-link" id="nav-map">Word Map</a>
+        <a href="wordmap.html" class="header-nav-link" id="nav-map"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</a>
         <span class="nav-sep">/</span>
-        <span class="header-nav-current" id="nav-tree">Tree</span>
+        <span class="header-nav-current" id="nav-tree"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>系統樹</span>
     </nav>
     <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
     <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
@@ -252,9 +248,17 @@
         document.getElementById('collapse-all').textContent = t('collapse');
         document.getElementById('reset-view').title = t('reset');
         document.getElementById('legend').textContent = t('legend');
-        document.getElementById('nav-order').textContent = t('navOrder');
-        document.getElementById('nav-map').textContent = t('navMap');
-        document.getElementById('nav-tree').textContent = t('navTree');
+        // Update nav labels while preserving the leading SVG icon (mirrors
+        // index.html's app.js setNavText behavior).
+        function setNavText(el, text) {
+            if (!el) return;
+            const last = el.lastChild;
+            if (last && last.nodeType === Node.TEXT_NODE) last.textContent = text;
+            else el.appendChild(document.createTextNode(text));
+        }
+        setNavText(document.getElementById('nav-order'), t('navOrder'));
+        setNavText(document.getElementById('nav-map'), t('navMap'));
+        setNavText(document.getElementById('nav-tree'), t('navTree'));
     }
 
     // Lazy-load wordmap_meta.js
@@ -542,13 +546,41 @@
         gLinks = g.append('g').attr('class', 'links');
         gNodes = g.append('g').attr('class', 'nodes');
         zoom = d3.zoom()
-            .scaleExtent([0.2, 4])
+            .scaleExtent([0.2, 8])
             .on('zoom', (event) => {
                 g.attr('transform', event.transform);
                 lastTransform = event.transform;
+                applyMapLikeScale(event.transform.k);
             });
         svg.call(zoom);
         return { w, h };
+    }
+
+    // Map-like zoom: positions scale with k, but visual sizes (circle radius,
+    // text font-size, line stroke width, text-to-circle offset) are
+    // counter-scaled by 1/k so they stay constant on screen — like the way
+    // a map's roads spread out when you zoom in but the road labels and
+    // pin icons keep their pixel size.
+    function applyMapLikeScale(k) {
+        if (!g) return;
+        // Circles
+        g.selectAll('.node circle')
+            .attr('r', d => (d.data.isInternal ? (d._children ? 6 : 5) : 4) / k);
+        // Link stroke
+        g.selectAll('.link').attr('stroke-width', 1.5 / k);
+        // Text font-sizes per class
+        g.selectAll('.node-internal text').attr('font-size', 12 / k);
+        g.selectAll('.node-leaf text:not(.native):not(.code)').attr('font-size', 12 / k);
+        g.selectAll('.node-leaf text.native').attr('font-size', 11 / k);
+        g.selectAll('.node-leaf text.code').attr('font-size', 10 / k);
+        // Text-to-circle offset (counter-scale so labels stay close to their circle)
+        g.selectAll('.node text').each(function() {
+            const parentDatum = d3.select(this.parentNode).datum();
+            const sign = (parentDatum.x >= Math.PI) ? -1 : 1;
+            d3.select(this).attr('x', (sign * 9) / k);
+        });
+        // Text-stroke (the white halo around labels) — counter-scale too
+        g.selectAll('.node text').attr('stroke-width', 3 / k);
     }
 
     function collapseDeep(node, currentDepth, maxDepth) {
@@ -765,6 +797,13 @@
 
         // Cache positions for next transition's animation origin
         root.each(d => { d.x0 = d.x; d.y0 = d.y; });
+
+        // Re-apply map-like counter-scaling so newly-entering nodes/links
+        // pick up the current zoom level immediately. Without this, freshly
+        // added nodes after expand would default to k=1 sizes and look
+        // oversized at high zoom or undersized at low zoom.
+        const currentK = (lastTransform && lastTransform.k) || 1;
+        applyMapLikeScale(currentK);
     }
     let linkSeq = 0, nodeSeq = 0;
 
