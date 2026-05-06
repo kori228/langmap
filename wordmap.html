@@ -390,10 +390,8 @@
 
         /* Unattested cell: same shape/footprint as a normal .lang-label card
            (so the connector line still aims at it correctly when the modal
-           opens), but visually muted with a dashed outline + italic dashes. */
-        .lang-label.unattested .word,
-        .lang-label.unattested .ipa { color: #a0a4ae; font-style: italic; }
-        .lang-label.unattested .name { color: #888; }
+           opens). Per user request, text colors match attested labels —
+           the dashed outline alone signals "no data for this concept". */
         .lang-label.unattested {
             background: rgba(255,255,255,0.55);
             border: 1px dashed rgba(120,120,140,0.55);
@@ -405,9 +403,6 @@
             background: rgba(0,0,0,0.45);
             border-color: rgba(200,200,220,0.45);
         }
-        body.is-3d .lang-label.unattested .word,
-        body.is-3d .lang-label.unattested .ipa { color: #c8ccd6; }
-        body.is-3d .lang-label.unattested .name { color: #b0b4be; }
 
         /* --- Language info panel --- */
         .lang-info-panel {
@@ -590,17 +585,15 @@
             writing-mode: vertical-lr; text-orientation: mixed;
             display: inline-block; line-height: 1.4; min-height: 2em;
         }
-        /* Globe (3D) unattested cell: muted text + dashed outline so the
-           language is identifiable but visibly distinct from attested data. */
+        /* Globe (3D) unattested cell: dashed outline keeps the visual cue
+           that this lang has no data for the current concept; text colors
+           match attested labels (per user request). */
         .globe-label.unattested {
             background: rgba(0,0,0,0.45);
             border: 1px dashed rgba(200,200,220,0.45);
             border-radius: 4px;
             padding: 2px 6px;
         }
-        .globe-label.unattested .word,
-        .globe-label.unattested .ipa { color: #c8ccd6; font-style: italic; }
-        .globe-label.unattested .name { color: #b0b4be; }
         .globe-label.unattested:hover { background: rgba(0,0,0,0.7); }
 
         /* --- Mobile responsive --- */
