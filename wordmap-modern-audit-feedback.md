@@ -1143,3 +1143,20 @@ Cache buster `v=46 → v=62` (data) / `v=16 → v=25` (meta, +Tasks 84/95/99/105
 **Validator status**: PASS (0 errors, 17 pre-existing warnings — 全て description i18n 関連で今回スコープ外)。HTML inline scripts (3 blocks)・data/meta/filter とも syntax OK。Cache-buster は data 85→86 bump 済 (CDN-fallback IIFE 1 block 追加で計 3 inline scripts)。
 
 Pass 8+9+10+11 合計 **24 タスク + ユーザー要望 3 件** 対応完了。
+
+---
+
+## Pass 12 Sequential Cleanup (2026-05-06 part 5)
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 103 | `wordEvidence.formType` enum 追加。Hyphen-marked 行 (`iu`/`ine`/`xpr`/`bsk`/`ng`/`kmb`/`her`/`toi`/`smg`/`xqa`/`wbl`/`psi`/`xsc`/`sog`/`otk`/`pry`) の bound-stem / reconstructed-root / agreement-stem を annotate。Modal evidence tooltip に `[bound stem]` 等を表示 (en/ja/ko/zh) | wordmap_meta.js, wordmap.html, validate_wordmap_data.js |
+| Task 108 | `meta.reviewStatus` schema (`unreviewed`/`machine-seeded`/`human-reviewed`/`source-checked`/`needs-rebuild`)。25 langs 初期ラベル: 出典確認済 (ja/zh/wuu/nv/haw/pjt/nxq/tji/pcc/iuu/kwk/pwn/bnn/trv/la/el_grc/en_ang/non/sa/pal/xct/glk/lrc/bqi/juc) と 再構築要 (lo/my/km/bo/khb/shn/lhu/mra/xkk/wbm/zkt)。Modal に色付きバッジ (緑/赤/灰) | wordmap_meta.js, wordmap.html, validate_wordmap_data.js |
+| Task 110/111 | `nxq`/`pcc`/`iuu`/`juc`/`tji` の lang-level `meta.sources` 追加 (Pass 9 漏れ。reviewStatus=source-checked との整合性) | wordmap_meta.js |
+| Task 123 | `popstate` + `hashchange` リスナー追加。`applyHashState()` で URL 状態を再適用、フィードバックループ防止のため `window.__langmap.isApplyingHash()` ガードを `updateHash()` に追加。ブラウザ Back/Forward と manual hash edit が動作するように | wordmap.html |
+| Task 124 | Header nav の hardcoded `語順マップ`/`単語マップ` を `Word Order`/`Word Map` (英語デフォルト) に変更。`applyUILang()` が NAV_ORDER/NAV_WORD で UI 言語に切替 (既存仕組み) | wordmap.html |
+| Task 140 | GitHub Actions workflow `.github/workflows/wordmap-validate.yml` 追加。PR/push (main/develop) で `node validate_wordmap_data.js` と inline-script syntax check を実行 | .github/workflows/wordmap-validate.yml (new) |
+
+**Validator status**: PASS (0 errors, 17 pre-existing description-i18n warnings — Pass 11 と同じ)。formType / reviewStatus / sources の各 schema 検証が validator に組み込まれた。HTML inline scripts (3 blocks) / data / meta 全て syntax OK。Cache-buster は meta 33→34 bump 済。
+
+Pass 8〜12 で **30 タスク + ユーザー要望 3 件** 対応完了。

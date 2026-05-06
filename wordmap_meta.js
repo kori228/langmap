@@ -2056,6 +2056,83 @@ for (const code of Object.keys(ALIASES)) {
     }
 }
 
+// === formType for hyphen-marked stems (Audit Task 103) =============
+// Cells whose surface form starts or ends with a hyphen (or asterisk for
+// reconstructed) are bound stems / roots, not free citation forms.
+// Annotate them via wordEvidence.formType so the modal can show users
+// the displayed form is a stem, not a standalone word.
+//   'bound-stem'         — verb stem requiring suffix (Inuktitut, Iranian)
+//   'reconstructed-root' — proto-language root (PIE, PR)
+//   'agreement-stem'     — noun-class agreement form (Bantu)
+const FORM_TYPE_OVERLAY = {
+    iu:  { eat: 'bound-stem', drink: 'bound-stem', love: 'bound-stem' },
+    ine: { eat: 'reconstructed-root', drink: 'reconstructed-root', love: 'reconstructed-root', eye: 'reconstructed-root', good: 'reconstructed-root' },
+    pry: { eat: 'reconstructed-root', drink: 'reconstructed-root' },
+    ng:  { one: 'agreement-stem', good: 'agreement-stem' },
+    kmb: { one: 'agreement-stem' },
+    her: { one: 'agreement-stem', good: 'agreement-stem' },
+    toi: { one: 'agreement-stem' },
+    smg: { good: 'agreement-stem' },
+    xpr: { eat: 'bound-stem', drink: 'bound-stem' },
+    xqa: { eat: 'bound-stem', drink: 'bound-stem' },
+    bsk: { eat: 'bound-stem', heart: 'bound-stem', hand: 'bound-stem', eye: 'bound-stem' },
+    wbl: { eat: 'bound-stem', drink: 'bound-stem' },
+    psi: { eat: 'bound-stem', drink: 'bound-stem' },
+    xsc: { heart: 'bound-stem' },
+    sog: { drink: 'bound-stem' },
+    otk: { eat: 'bound-stem', drink: 'bound-stem', love: 'bound-stem' },
+};
+for (const code of Object.keys(FORM_TYPE_OVERLAY)) {
+    if (!LANG_DATA[code]) continue;
+    if (!LANG_DATA[code].wordEvidence) LANG_DATA[code].wordEvidence = {};
+    const wEv = LANG_DATA[code].wordEvidence;
+    for (const concept of Object.keys(FORM_TYPE_OVERLAY[code])) {
+        if (!wEv[concept]) wEv[concept] = { evidence: 'inferred' };
+        if (!wEv[concept].formType) wEv[concept].formType = FORM_TYPE_OVERLAY[code][concept];
+    }
+}
+
+// === reviewStatus (Audit Task 108) =================================
+// Distinguish "this is a modern language" (dataStatus) from "this row has
+// been linguistically reviewed" (reviewStatus). A modern row can be
+// dataStatus='modern' but still have broad/romanized pronunciation,
+// incomplete sources, base-copy coverage, or unsourced cells.
+//   'unreviewed'      — no human review yet
+//   'machine-seeded'  — initial bulk import; minimal review
+//   'human-reviewed'  — checked manually but without full source coverage
+//   'source-checked'  — has meaningful sources and no major open issues
+//   'needs-rebuild'   — flagged for full rebuild (Tasks 78/94/120 family)
+const REVIEW_STATUS = {
+    // Rows with sources + recent corrections — source-checked
+    ja:      'source-checked', zh: 'source-checked', wuu: 'source-checked',
+    nv:      'source-checked', haw: 'source-checked', pjt: 'source-checked',
+    nxq:     'source-checked', tji: 'source-checked', pcc: 'source-checked',
+    iuu:     'source-checked', kwk: 'source-checked', pwn: 'source-checked',
+    bnn:     'source-checked', trv: 'source-checked',
+    la:      'source-checked', el_grc: 'source-checked', en_ang: 'source-checked',
+    non:     'source-checked', sa: 'source-checked', pal: 'source-checked',
+    xct:     'source-checked', glk: 'source-checked', lrc: 'source-checked',
+    bqi:     'source-checked', juc: 'source-checked',
+    // Rows flagged in audit Task 78 / Pass 7 as needing tone/IPA rebuild
+    lo:      'needs-rebuild',  // Lao tones almost entirely missing
+    my:      'needs-rebuild',  // Burmese tone notation inconsistent
+    km:      'needs-rebuild',  // Khmer column is transliteration, not IPA
+    bo:      'needs-rebuild',  // Tibetan needs dialect+tone decision
+    khb:     'needs-rebuild',  // Tai Lue tone marks omitted
+    shn:     'needs-rebuild',  // Shan tone omitted
+    lhu:     'needs-rebuild',  // Lahu surface field has IPA/tone notation
+    mra:     'needs-rebuild',  // Mlabri uses IPA-as-surface
+    xkk:     'needs-rebuild',  // Khmu uses IPA-as-surface
+    wbm:     'needs-rebuild',  // Wa has IPA in surface forms
+    // Khitan: scriptDisplayPolicy not yet implemented per Audit Task 119
+    zkt:     'needs-rebuild',
+};
+for (const code of Object.keys(REVIEW_STATUS)) {
+    if (LANG_DATA[code] && LANG_DATA[code].meta && !LANG_DATA[code].meta.reviewStatus) {
+        LANG_DATA[code].meta.reviewStatus = REVIEW_STATUS[code];
+    }
+}
+
 // === parentCode + varietyRole (Audit Task 126) =====================
 // Document language-variety relationships so the modal/UI can show
 // "Regional variety of: <parent>" and the validator can warn about
@@ -2132,6 +2209,12 @@ const SOURCE_BACKFILL = {
     ko_em:  [{type:'reference', title:'Lee & Ramsey — A History of the Korean Language', url:'https://www.cambridge.org/core/books/history-of-the-korean-language/'}],
     vi_nom: [{type:'reference', title:'ChuNomStandardization (GitHub)', url:'https://github.com/valestanov/ChuNomStandardization'}],
     // Task 111: modern rows that already have wordEvidence but lack lang-level sources
+    // Tone-language minority rows fixed in earlier sessions (Pass 8)
+    nxq:    [{type:'reference', title:'Naqxi Habaq Yiyu Ceeqdiai — Naxi-Chinese-English Dictionary (2003)', url:'https://en.wikipedia.org/wiki/Naxi_language'}],
+    pcc:    [{type:'reference', title:'ABVD Bouyei (Wangmo)', url:'https://abvd.eva.mpg.de/austronesian/language.php?id=731'}, {type:'reference', title:'Bouyei language overview', url:'https://en.wikipedia.org/wiki/Bouyei_language'}],
+    iuu:    [{type:'reference', title:'Iu Mien language overview (IMUS tone letters)', url:'https://en.wikipedia.org/wiki/Iu_Mien_language'}],
+    juc:    [{type:'reference', title:'Kane — The Sino-Jurchen Vocabulary of the Bureau of Interpreters (1989)', url:'https://en.wikipedia.org/wiki/Jurchen_language'}, {type:'reference', title:'Jin Qicong — Nüzhenwen Cidian (1984)'}],
+    tji:    [{type:'reference', title:'Tujia language overview', url:'https://en.wikipedia.org/wiki/Tujia_language'}],
     nv:     [{type:'reference', title:'Young & Morgan — The Navajo Language: A Grammar and Colloquial Dictionary', url:'https://en.wikipedia.org/wiki/Navajo_language'}],
     haw:    [{type:'reference', title:'Pukui & Elbert — Hawaiian Dictionary', url:'http://wehewehe.org/'}],
     pjt:    [{type:'reference', title:'Goddard — Pitjantjatjara/Yankunytjatjara to English Dictionary', url:'https://en.wikipedia.org/wiki/Pitjantjatjara_dialect'}],

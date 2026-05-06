@@ -692,6 +692,24 @@ for (const code of codes) {
             if (typeof a !== 'string' || !a.trim()) E(`[#13k] ${code}: meta.aliases entry not a non-empty string: ${JSON.stringify(a)}`);
         }
     }
+    // Audit Task 103: wordEvidence.formType enum (when present)
+    if (lang.wordEvidence && typeof lang.wordEvidence === 'object') {
+        const FT_ENUM = new Set(['free-word','bound-stem','root','inflected-form','phrase','reconstructed-root','agreement-stem','greeting-formula','thanks-formula','compound','light-verb-construction']);
+        for (const k of Object.keys(lang.wordEvidence)) {
+            const ev = lang.wordEvidence[k];
+            if (ev && ev.formType !== undefined && !FT_ENUM.has(ev.formType)) {
+                E(`[#13q] ${code}: wordEvidence.${k}.formType "${ev.formType}" not in enum (Audit Task 103/104)`);
+            }
+        }
+    }
+    // Audit Task 108: meta.reviewStatus enum
+    if (m.reviewStatus !== undefined) {
+        const RS_ENUM = new Set(['unreviewed','machine-seeded','human-reviewed','source-checked','needs-rebuild']);
+        if (!RS_ENUM.has(m.reviewStatus)) E(`[#13p] ${code}: meta.reviewStatus "${m.reviewStatus}" not in enum (Audit Task 108)`);
+        if (m.reviewStatus === 'source-checked' && !Array.isArray(m.sources) && !Array.isArray(m.references)) {
+            W(`[#13p] ${code}: reviewStatus='source-checked' but no meta.sources or meta.references (Audit Task 108)`);
+        }
+    }
     // Audit Task 126: varietyRole enum
     if (m.varietyRole !== undefined) {
         const VR_ENUM = new Set(['base','regional-variety','dialect','sibling-language','continuum-member']);

@@ -501,9 +501,11 @@
     <div class="site-header-bar">
         <a href="wordmap.html" class="logo">LangMap</a>
         <nav class="header-nav">
-            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
+            <!-- Audit Task 124: nav default label is English; applyUILang()
+                 swaps to NAV_ORDER[uiLang] / NAV_WORD[uiLang] on load. -->
+            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
             <span class="nav-sep">/</span>
-            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</span>
+            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
         </nav>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
@@ -778,7 +780,7 @@
             metaI18n:  8,
             filter:    23,
             names:     5,
-            meta:      33,
+            meta:      34,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1631,6 +1633,9 @@
         // history on every map move/zoom.
         function updateHash(opts) {
             opts = opts || {};
+            // Audit Task 123: don't write hash while we're applying one
+            // from popstate/hashchange — that would bounce-back loop.
+            if (window.__langmap && window.__langmap.isApplyingHash && window.__langmap.isApplyingHash()) return;
             let lat, lng, z;
             if (is3D && globe) {
                 const pov = globe.pointOfView();
@@ -1744,6 +1749,27 @@
         // chip translations. Per wordmap-check-4.md §12.
         window.__langmap.uiLang = uiLang;
         window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
+
+        // Audit Task 123: respond to browser back/forward + manual hash edits.
+        // Without this, copying a state URL to a new tab works (loadHash runs
+        // at page load) but back/forward navigation does not restore state.
+        // Guard against the feedback loop: applyHashState should not trigger
+        // updateHash() for transient state changes during application.
+        let _applyingHashState = false;
+        function applyHashState() {
+            if (_applyingHashState) return;
+            _applyingHashState = true;
+            try {
+                loadHash();
+                updateMarkers(currentWord);
+            } finally {
+                _applyingHashState = false;
+            }
+        }
+        window.addEventListener('popstate',   applyHashState);
+        window.addEventListener('hashchange', applyHashState);
+        // Also expose so other code paths (search/option) can guard if needed.
+        window.__langmap.isApplyingHash = () => _applyingHashState;
 
         // rAF-throttled connector update — keeps line glued to the label
         // during continuous map drag/zoom without re-layout thrashing.
@@ -2113,6 +2139,15 @@
             'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
         };
         const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
+        // Audit Task 108: review status (separate from dataStatus)
+        const REVIEW_STATUS_LABEL = {
+            'unreviewed':      { en: 'not reviewed',     ja: '未レビュー',     ko: '미검토',         zh: '未审核' },
+            'machine-seeded':  { en: 'machine-seeded',   ja: '機械生成初期値', ko: '기계 생성 초기',  zh: '机器初始值' },
+            'human-reviewed':  { en: 'human-reviewed',   ja: '人手レビュー済', ko: '수동 검토',       zh: '人工审核' },
+            'source-checked':  { en: 'source-checked',   ja: '出典確認済',     ko: '출처 확인',       zh: '已核对来源' },
+            'needs-rebuild':   { en: 'needs rebuild',    ja: '再構築要',       ko: '재구축 필요',     zh: '需重建' },
+        };
+        const REVIEW_STATUS_HEADER = { en: 'Review', ja: 'レビュー状況', ko: '검토 상태', zh: '审核状态' };
         // Audit Task 99: locationBasis label tells users that the marker is
         // a representative point, not a speaker-distribution map.
         const LOCATION_BASIS_LABEL = {
@@ -2200,9 +2235,26 @@
             const label = (m.labels[ui] || m.labels.en);
             const srcPrefix = (EVIDENCE_PREFIX.source[ui] || EVIDENCE_PREFIX.source.en);
             const notePrefix = (EVIDENCE_PREFIX.note[ui] || EVIDENCE_PREFIX.note.en);
+            // Audit Task 103: surface formType so users know the displayed
+            // form is a bound stem / root, not a free word.
+            const formTypeLabels = {
+                'free-word':           { en: 'free word' },
+                'bound-stem':          { en: 'bound stem (requires suffix)', ja: '拘束語幹（接辞要）', ko: '구속 어간 (접사 필요)', zh: '黏着词干（需后缀）' },
+                'root':                { en: 'root',                       ja: '語根' },
+                'inflected-form':      { en: 'inflected form',             ja: '屈折形' },
+                'phrase':              { en: 'phrase',                     ja: '句' },
+                'reconstructed-root':  { en: 'reconstructed root',         ja: '再構語根', ko: '재구 어근', zh: '重构词根' },
+                'agreement-stem':      { en: 'noun-class agreement stem',  ja: '名詞クラス一致語幹', ko: '명사 부류 일치 어간', zh: '名词类一致词干' },
+            };
+            let formNote = '';
+            if (ev.formType && formTypeLabels[ev.formType]) {
+                const ftObj = formTypeLabels[ev.formType];
+                const ft = ftObj[ui] || ftObj.en;
+                formNote = ` [${ft}]`;
+            }
             const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
             const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
-            return label + src + note;
+            return label + formNote + src + note;
         }
 
         function renderLangInfo(code) {
@@ -2319,6 +2371,16 @@
                 if (m.coverageNote && typeof m.coverageNote === 'string') {
                     html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(m.coverageNote)}</div>`;
                 }
+            }
+            // Audit Task 108: review status badge (separate from coverage / dataStatus)
+            if (m.reviewStatus && REVIEW_STATUS_LABEL[m.reviewStatus]) {
+                const rsObj = REVIEW_STATUS_LABEL[m.reviewStatus];
+                const rsLabel = rsObj[uiLang] || rsObj[uiLang.split('_')[0]] || rsObj.en;
+                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER.en;
+                const rsTone = (m.reviewStatus === 'needs-rebuild') ? '#a04020'
+                            : (m.reviewStatus === 'source-checked') ? '#3a8a3a'
+                            : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${rsTone}"><b>${escapeHtml(rsHeader)}:</b> ${escapeHtml(rsLabel)}</div>`;
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;

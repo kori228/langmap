@@ -1,0 +1,74 @@
+name: Word Map validation
+
+# Audit Task 140: automated Word Map data validation on every PR / push to
+# main + develop. Catches schema regressions, missing translations,
+# hardcoded count drift, and other invariants enforced by
+# validate_wordmap_data.js. The script runs entirely offline (no network
+# required), so this CI job stays fast and deterministic.
+
+on:
+  pull_request:
+    paths:
+      - 'wordmap.html'
+      - 'wordmap_data.js'
+      - 'wordmap_meta.js'
+      - 'meta_i18n_ext.js'
+      - 'lang_names.js'
+      - 'lang-filter.js'
+      - 'validate_wordmap_data.js'
+      - 'CONTRIBUTING.md'
+      - 'README.md'
+      - '.github/workflows/wordmap-validate.yml'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'wordmap.html'
+      - 'wordmap_data.js'
+      - 'wordmap_meta.js'
+      - 'meta_i18n_ext.js'
+      - 'lang_names.js'
+      - 'lang-filter.js'
+      - 'validate_wordmap_data.js'
+      - 'CONTRIBUTING.md'
+      - 'README.md'
+      - '.github/workflows/wordmap-validate.yml'
+
+jobs:
+  validate-wordmap:
+    name: Validate Word Map data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run validator
+        run: node validate_wordmap_data.js
+
+  syntax-check:
+    name: Inline-script syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Parse inline scripts and data files
+        run: |
+          node -e "
+            const fs = require('fs');
+            const html = fs.readFileSync('wordmap.html', 'utf-8');
+            const blocks = html.match(/<script(?![^>]*src)[^>]*>([\\s\\S]*?)<\\/script>/g) || [];
+            let i = 0;
+            for (const b of blocks) {
+              i++;
+              const code = b.replace(/<script[^>]*>/, '').replace(/<\\/script>/, '');
+              try { new Function(code); }
+              catch (e) { console.error('Inline script', i, 'syntax error:', e.message); process.exit(1); }
+            }
+            console.log('All', i, 'inline scripts parse OK');
+            for (const f of ['wordmap_data.js', 'wordmap_meta.js', 'lang-filter.js', 'lang_names.js']) {
+              try { new Function(fs.readFileSync(f, 'utf-8')); console.log(f, 'OK'); }
+              catch (e) { console.error(f, 'syntax error:', e.message); process.exit(1); }
+            }
+          "
