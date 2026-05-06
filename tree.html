@@ -71,7 +71,7 @@
     .node circle {
         stroke-width: 2px;
         cursor: pointer;
-        transition: r 0.15s, fill 0.2s;
+        transition: fill 0.2s;  /* don't transition r — d3 manages it; CSS r-transition causes oscillation with applyMapLikeScale */
     }
     .node-internal circle { fill: #fff; stroke: #4a78c8; }
     .node-internal.collapsed circle { fill: #4a78c8; }
@@ -590,6 +590,26 @@
         gLinks.selectAll('path.link').attr('d', linkPath);
     }
 
+    // Apply map-like scaling to a specific selection of node g elements
+    // (used for entering nodes in update() so they start at the right
+    // pixel size without re-touching every existing node mid-transition).
+    function applyMapLikeScaleToSelection(nodeSel, k) {
+        nodeSel.select('circle')
+            .style('r', d => ((d.data.isInternal ? (d._children ? 6 : 5) : 4) / k) + 'px')
+            .style('stroke-width', (2 / k) + 'px');
+        nodeSel.selectAll('text')
+            .style('stroke-width', (3 / k) + 'px');
+        nodeSel.selectAll('.node-internal text, text:not(.native):not(.code)')
+            .style('font-size', (12 / k) + 'px');
+        nodeSel.selectAll('text.native').style('font-size', (11 / k) + 'px');
+        nodeSel.selectAll('text.code').style('font-size', (10 / k) + 'px');
+        nodeSel.selectAll('text').each(function() {
+            const parentDatum = d3.select(this.parentNode).datum();
+            const sign = (parentDatum.x >= Math.PI) ? -1 : 1;
+            d3.select(this).attr('x', (sign * 9) / k);
+        });
+    }
+
     // Map-like zoom: positions scale with k, but visual sizes (circle radius,
     // text font-size, line stroke width, text-to-circle offset) are
     // counter-scaled by 1/k so they stay constant on screen — like a map's
@@ -853,12 +873,21 @@
         // Cache positions for next transition's animation origin
         root.each(d => { d.x0 = d.x; d.y0 = d.y; });
 
-        // Re-apply map-like counter-scaling so newly-entering nodes/links
-        // pick up the current zoom level immediately. Without this, freshly
-        // added nodes after expand would default to k=1 sizes and look
-        // oversized at high zoom or undersized at low zoom.
+        // Apply map-like counter-scaling AFTER the transition completes so it
+        // doesn't compete with the in-flight transition on circle r / text x.
+        // (Calling applyMapLikeScale immediately caused visible oscillation
+        // on the largest top-level family node — its position was animated
+        // by d3.tree, then nudged by inline style overrides while the
+        // transition was still running, then settled, repeatedly.)
         const currentK = (lastTransform && lastTransform.k) || 1;
-        applyMapLikeScale(currentK);
+        nodeUpdate.transition().duration(0).delay(520).on('end', () => {
+            applyMapLikeScale(currentK);
+        });
+        // Also apply immediately to ENTERING nodes only, so they start at
+        // the right scale (the transition above only fires once on each
+        // selection, so newly-entering nodes need their initial scale set).
+        applyMapLikeScaleToSelection(nodeEnter, currentK);
+        gLinks.selectAll('path.link').style('stroke-width', (1.5 / currentK) + 'px');
     }
     let linkSeq = 0, nodeSeq = 0;
 
