@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 648 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 651 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1609,6 +1609,10 @@ const LANG_DATA = {
     words: { water:['emanti','emanti'], fire:['umlilo','umlilo'], sun:['lilanga','lilaŋɡa'], moon:['inyanga','iɲaŋɡa'], mother:['make','make'], father:['babe','babe'], eat:['kudla','kuɗla'], drink:['kunatsa','kunatsa'], love:['lutsandvo','luʦandwo'], heart:['inhlitiyo','inɬitijo'], tree:['sihlahla','siɬaɬa'], house:['indlu','indlu'], dog:['inja','indʒa'], cat:['likati','likati'], hand:['sandla','sandla'], eye:['liso','liso'], hello:['sawubona','sawuɓona'], thanks:['ngiyabonga','ŋijaɓoŋɡa'], one:['kunye','kuɲe'], good:['kuhle','kuɬe'] }},
   nbl: { name: 'Southern Ndebele', native: 'isiNdebele', lat: -25.69, lng: 28.85, // KwaNdebele
     words: { water:['amanzi','amanzi'], fire:['umlilo','umlilo'], sun:['ilanga','ilaŋɡa'], moon:['inyanga','iɲaŋɡa'], mother:['umma','umma'], father:['ubaba','uɓaɓa'], eat:['ukudla','ukuɗla'], drink:['ukusela','ukusela'], love:['ithando','itʰando'], heart:['ihliziyo','iɬizijo'], tree:['umuthi','umutʰi'], house:['indlu','indlu'], dog:['inja','indʒa'], cat:['ikati','ikati'], hand:['isandla','isandla'], eye:['ihlo','iɬo'], hello:['lotjhani','lotʃʰani'], thanks:['ngiyathokoza','ŋijatʰokoza'], one:['nye','ɲe'], good:['kuhle','kuɬe'] }},
+  // Northern Ndebele — Bantu Nguni, ~1.6M, Zimbabwe official language. Distinct from Southern Ndebele (nbl) of South Africa.
+  // Sources: Ethnologue 27 'nde'; Pelling (1971) Ndebele-English Dictionary.
+  nd: { name: 'Northern Ndebele', native: 'isiNdebele', lat: -20.16, lng: 28.58, // Bulawayo
+    words: { water:['amanzi','amanzi'], fire:['umlilo','umlilo'], sun:['ilanga','ilaŋɡa'], moon:['inyanga','iɲaŋɡa'], mother:['umama','umama'], father:['ubaba','uɓaɓa'], eat:['ukudla','ukuɗla'], drink:['ukunatha','ukunatʰa'], love:['uthando','utʰando'], heart:['inhliziyo','inɬizijo'], tree:['isihlahla','isiɬaɬa'], house:['indlu','indlu'], dog:['inja','indʒa'], cat:['ikati','ikati'], hand:['isandla','isandla'], eye:['ilihlo','iliɬo'], hello:['salibonani','saliɓonani'], thanks:['ngiyabonga','ŋijaɓoŋɡa'], one:['nye','ɲe'], good:['kuhle','kuɬe'] }},
   nso: { name: 'Northern Sotho', native: 'Sesotho sa Leboa', lat: -23.90, lng: 29.45, // Polokwane
     words: { water:['meetse','meːtse'], fire:['mollo','molːo'], sun:['letšatši','letʃatʃi'], moon:['ngwedi','ŋwedi'], mother:['mma','mːa'], father:['tate','tate'], eat:['go ja','ɡodʒa'], drink:['go nwa','ɡonwa'], love:['lerato','leɾato'], heart:['pelo','pelo'], tree:['sehlare','seɬare'], house:['ntlo','ntɬo'], dog:['mpša','mpʃa'], cat:['katse','katse'], hand:['seatla','seatɬa'], eye:['leihlo','leiɬo'], hello:['dumela','dumɛla'], thanks:['ke a leboga','kealeboɣa'], one:['tee','teː'], good:['botse','botse'] }},
   // Niger-Congo (Bantu, A zone)
@@ -1807,10 +1811,18 @@ const LANG_DATA = {
   // Bantu (Namibia/Angola)
   ng: { name: 'Ndonga', native: 'Oshindonga', lat: -17.78, lng: 15.69, // Oshakati
     words: { water:['omeya','omeja'], fire:['omulilo','omulilo'], sun:['etango','etaŋɡo'], moon:['omwedhi','omweðiɲ'], mother:['meme','meme'], father:['tate','tate'], eat:['lya','ʎa'], drink:['nwa','nwa'], love:['ohole','ohole'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['egumbo','eɡumbo'], dog:['ombwa','ombwa'], cat:['okashima','okaʃima'], hand:['oshikaha','oʃikaha'], eye:['eho','eho'], hello:['wa lalapo','wa lalapo'], thanks:['tangi','taŋɡi'], one:['-mwe','mwe'], good:['-nawa','nawa'] }},
+  // Kuanyama / Oshikwanyama — Bantu R21, sister to Ndonga (ng) within the Oshiwambo macrolanguage cluster.
+  // Sources: Ethnologue 27 'kua'; Glottolog kuan1252.
+  kj: { name: 'Kuanyama', native: 'Oshikwanyama', lat: -17.78, lng: 15.78, // Oshikango (border with Angola)
+    words: { water:['omeva','omeva'], fire:['omundilo','omundilo'], sun:['etango','etaŋɡo'], moon:['omwedi','omwedi'], mother:['meme','meme'], father:['tate','tate'], eat:['lya','ʎa'], drink:['nwa','nwa'], love:['ohole','ohole'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['eumbo','eumbo'], dog:['ombwa','ombwa'], cat:['okatufi','okatufi'], hand:['eke','eke'], eye:['eho','eho'], hello:['wa hala po','wa hala po'], thanks:['pandula','pandula'], one:['-mwe','mwe'], good:['-wa','wa'] }},
   umb: { name: 'Umbundu', native: 'Umbundu', lat: -12.78, lng: 15.74, // Huambo
     words: { water:['ovava','ovava'], fire:['ondalu','ondalu'], sun:['ekumbi','ekumbi'], moon:['osãi','osãi'], mother:['inã','inã'], father:['tate','tate'], eat:['okulya','okulja'], drink:['okunwa','okunwa'], love:['ocisola','otʃisola'], heart:['utima','utima'], tree:['omuti','omuti'], house:['onjo','ondʒo'], dog:['ombwa','ombwa'], cat:['ocikangu','otʃikaŋɡu'], hand:['oluwoko','oluwoko'], eye:['iso','iso'], hello:['oloi','oloi'], thanks:['twalipata','twalipata'], one:['imwe','imwe'], good:['vyali','vjali'] }},
   kmb: { name: 'Kimbundu', native: 'Kimbundu', lat: -8.84, lng: 13.23, // Luanda
     words: { water:['menha','meɲa'], fire:['tubia','tubja'], sun:['muanya','mwaɲa'], moon:['ngonde','ŋɡonde'], mother:['mama','mama'], father:['tata','tata'], eat:['kudya','kudja'], drink:['kunwa','kunwa'], love:['henda','henda'], heart:['muxima','muʃima'], tree:['mukune','mukune'], house:['inzo','inzo'], dog:['imbwa','imbwa'], cat:['kasalu','kasalu'], hand:['lukwaku','lukwaku'], eye:['dixi','diʃi'], hello:['kiebi','kiebi'], thanks:['kishukutu','kiʃukutu'], one:['-moxi','moʃi'], good:['kiá','kja'] }},
+  // Luvale — Bantu K14, ~600K, Angola/Zambia. National language of both countries (Zambia recognises 7 regional Bantu).
+  // Sources: Ethnologue 27 'lue'; Glottolog luva1239; Horton (1949) A Grammar of Luvale.
+  lue: { name: 'Luvale', native: 'Chiluvale', lat: -11.78, lng: 22.70, // Lukulu, Zambia
+    words: { water:['meya','meja'], fire:['kakahya','kakahja'], sun:['likumbi','likumbi'], moon:['kakweji','kakwedʒi'], mother:['mama','mama'], father:['tata','tata'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['zangi','zaŋɡi'], heart:['mutima','mutima'], tree:['mutondo','mutondo'], house:['zuvo','zuvo'], dog:['kawa','kawa'], cat:['katako','katako'], hand:['livoko','livoko'], eye:['liso','liso'], hello:['mwane','mwane'], thanks:['nasakwilila','nasakwilila'], one:['-mwe','mwe'], good:['-mwaza','mwaza'] }},
   her: { name: 'Herero', native: 'Otjiherero', lat: -20.46, lng: 16.65, // Otjiwarongo
     words: { water:['omeva','omeva'], fire:['omuriro','omuriro'], sun:['eyuva','ejuva'], moon:['omueze','omueze'], mother:['mama','mama'], father:['tate','tate'], eat:['kuriya','kurija'], drink:['kunwa','kunwa'], love:['orusuvero','orusuvero'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['ondjuwo','ondʒuwo'], dog:['ombwa','ombwa'], cat:['okatjiru','okat͡ʃiru'], hand:['eke','eke'], eye:['eho','eho'], hello:['wa penduka','wa penduka'], thanks:['okuhepa','okuhepa'], one:['-mwe','mwe'], good:['-wa','wa'] }},
   // Mongolic (Russia, Caspian)

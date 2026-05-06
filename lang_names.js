@@ -405,4 +405,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Northern Ndebele (nd), Kuanyama (kj), Luvale (lue) — Southern African Bantu.
+    const ADDED13 = {
+        nd:  { en: 'Northern Ndebele', ja: '北ンデベレ語', ko: '북부 응데벨레어', zh: '北恩德贝勒语', yue: '北恩德貝勒語',
+               vi: 'Tiếng Ndebele Bắc', th: 'ภาษาเอ็นเดเบเลเหนือ', id: 'Ndebele Utara', hi: 'उत्तरी न्डेबेले',
+               de: 'Nord-Ndebele', fr: 'Ndébélé du Nord', it: 'Ndebele del Nord',
+               es_eu: 'Ndebele del Norte', es_mx: 'Ndebele del Norte', pt_eu: 'Ndebele do Norte', pt_br: 'Ndebele do Norte',
+               ru: 'Северный ндебеле', uk: 'Північна ндебеле', ar: 'الندبيلية الشمالية', he: 'נדבלה צפונית', sw: 'Kindebele cha Kaskazini' },
+        kj:  { en: 'Kuanyama', ja: 'クワニヤマ語', ko: '콰니야마어', zh: '夸尼亚马语', yue: '誇尼亞馬語',
+               vi: 'Tiếng Kuanyama', th: 'ภาษาควานยามา', id: 'Kuanyama', hi: 'कुआन्यामा',
+               de: 'Kwanyama', fr: 'Kwanyama', it: 'Kuanyama',
+               es_eu: 'Kuanyama', es_mx: 'Kuanyama', pt_eu: 'Cuanhama', pt_br: 'Cuanhama',
+               ru: 'Кваньяма', uk: 'Кваньяма', ar: 'الكوانياما', he: 'קוואניאמה', sw: 'Kikwanyama' },
+        lue: { en: 'Luvale', ja: 'ルヴァレ語', ko: '루발레어', zh: '卢瓦莱语', yue: '盧瓦萊語',
+               vi: 'Tiếng Luvale', th: 'ภาษาลูวาเล', id: 'Luvale', hi: 'लुवाले',
+               de: 'Luvale', fr: 'Luvale', it: 'Luvale',
+               es_eu: 'Luvale', es_mx: 'Luvale', pt_eu: 'Luvale', pt_br: 'Luvale',
+               ru: 'Луваль', uk: 'Лувале', ar: 'اللوفالية', he: 'לובלה', sw: 'Kiluvale' },
+    };
+    for (const code of Object.keys(ADDED13)) {
+        for (const ui of Object.keys(ADDED13[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED13[code][ui];
+            }
+        }
+    }
 })();
