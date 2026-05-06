@@ -422,6 +422,79 @@
             margin: 2px 0 2px 16px;
         }
 
+        /* --- Compare panel (Pass 32) --- */
+        .compare-fab {
+            position: fixed; bottom: 16px; right: 16px; z-index: 1015;
+            background: #1a73e8; color: #fff; border: none; border-radius: 24px;
+            padding: 9px 16px; font-size: 13px; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: none;
+            align-items: center; gap: 6px; font-weight: 500;
+        }
+        .compare-fab.visible { display: inline-flex; }
+        .compare-fab:hover { background: #1765c4; }
+        .compare-fab-badge {
+            background: #fff; color: #1a73e8; border-radius: 12px;
+            padding: 1px 8px; font-weight: 600; font-size: 12px; min-width: 18px; text-align: center;
+        }
+        .compare-panel {
+            position: fixed; left: 0; right: 0; bottom: 0; z-index: 1020;
+            background: rgba(255,255,255,0.98); border-top: 1px solid #ddd;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
+            max-height: 70vh; display: none; overflow: auto;
+        }
+        .compare-panel.visible { display: block; }
+        .compare-header {
+            position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
+            padding: 10px 16px; display: flex; align-items: center; gap: 10px; z-index: 2;
+        }
+        .compare-title { margin: 0; font-size: 15px; flex: 1; }
+        .compare-close, .compare-clear {
+            background: none; border: none; cursor: pointer;
+        }
+        .compare-clear {
+            background: #f1f3f4; color: #444; border-radius: 4px;
+            padding: 4px 10px; font-size: 12px;
+        }
+        .compare-clear:hover { background: #e5e7e9; }
+        .compare-close {
+            font-size: 22px; color: #999; padding: 0; width: 28px; height: 28px; line-height: 1;
+        }
+        .compare-close:hover { color: #333; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .compare-table th, .compare-table td {
+            border-bottom: 1px solid #eee; padding: 6px 10px;
+            text-align: left; vertical-align: top;
+        }
+        .compare-table thead th {
+            background: #f8f9fa; position: sticky; top: 44px; z-index: 1;
+            font-weight: 600;
+        }
+        .compare-table thead .lang-name { display: block; }
+        .compare-table thead .native-name {
+            font-size: 11px; color: #888; font-weight: 400; display: block;
+        }
+        .compare-table thead .remove-col {
+            background: none; border: none; cursor: pointer; color: #bbb;
+            font-size: 13px; padding: 0; margin-left: 4px; vertical-align: super;
+        }
+        .compare-table thead .remove-col:hover { color: #d33; }
+        .compare-table tbody th { background: #fafafa; font-weight: 600; min-width: 80px; }
+        .compare-table .surface { font-size: 14px; }
+        .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
+        .compare-table .unattested { color: #aaa; font-style: italic; }
+        .compare-add-btn {
+            display: inline-block; margin-top: 10px; padding: 4px 10px;
+            font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
+            border-radius: 4px; cursor: pointer;
+        }
+        .compare-add-btn:hover { background: #e8f0fe; }
+        .compare-add-btn.added { background: #1a73e8; color: #fff; }
+        @media (max-width: 600px) {
+            .compare-panel { max-height: 80vh; }
+            .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
+            .compare-fab { padding: 8px 12px; }
+        }
+
         /* --- URL watermark --- */
         .url-watermark {
             position: absolute; bottom: 28px; right: 8px; z-index: 1000;
@@ -525,11 +598,13 @@
                   style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
                   title="">?</span>
         </div>
-        <div class="lang-search-wrap" style="position:relative">
+        <div class="lang-search-wrap" style="position:relative;display:flex;gap:4px">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
                    role="combobox" aria-autocomplete="list" aria-expanded="false"
                    aria-controls="lang-search-results" aria-activedescendant=""
                    style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
+            <button type="button" id="lang-random" title="Random language"
+                    style="padding:5px 8px;font-size:14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#555;cursor:pointer;line-height:1">🎲</button>
             <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
     </div>
@@ -569,6 +644,19 @@
     <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false" tabindex="-1">
         <button class="close-btn" id="info-close" aria-label="Close language info">&times;</button>
         <div id="info-content"></div>
+    </div>
+
+    <!-- Compare view: floating button + bottom panel -->
+    <button id="compare-fab" class="compare-fab" type="button" aria-label="Open language comparison">
+        <span class="compare-fab-label">比較</span> <span class="compare-fab-badge">0</span>
+    </button>
+    <div id="compare-panel" class="compare-panel" role="dialog" aria-labelledby="compare-heading" aria-modal="false" tabindex="-1">
+        <div class="compare-header">
+            <h3 id="compare-heading" class="compare-title">Language comparison</h3>
+            <button class="compare-clear" id="compare-clear" type="button">Clear</button>
+            <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">&times;</button>
+        </div>
+        <div id="compare-body"></div>
     </div>
 
     <div id="map"></div>
@@ -1730,6 +1818,10 @@
             const openCode = infoPanel && infoPanel.classList.contains('visible')
                 ? infoPanel.dataset.code : '';
             if (openCode) params.set('lang', openCode);
+            // Pass 32: persist compare list
+            if (window.__compareList && window.__compareList.length > 0) {
+                params.set('cmp', window.__compareList.join(','));
+            }
             // Preserve the filter param owned by lang-filter.js
             const fParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
                 ? window.__langmap.getFilterHashParam() : '';
@@ -2744,6 +2836,20 @@
                     sourceItems.map(renderItem).join(' · ') +
                     `</div>`;
             }
+            // Pass 32: Add-to-compare button (renders before sources/footer area)
+            (() => {
+                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+                const cmpI18n = {
+                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
+                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
+                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
+                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
+                };
+                const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
+                const lbl = inCmp ? lObj.remove : lObj.add;
+                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
+                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+            })();
             infoContent.innerHTML = html;
         }
 
@@ -3048,6 +3154,217 @@
             detailRow.appendChild(td);
             tr.parentNode.insertBefore(detailRow, tr.nextSibling);
         }
+
+        // === Compare view (Pass 32) ============================================
+        // Multi-language side-by-side comparison panel. Users add languages from
+        // the modal, the FAB shows count, the bottom panel renders an N×20 table.
+        // State persists in localStorage and URL hash (cmp=ja,ko,zh).
+        const COMPARE_STORAGE_KEY = 'wm.compareList';
+        const COMPARE_MAX = 8;
+        let _compareList = [];
+        window.__compareList = _compareList;  // exposed for updateHash to read
+
+        // i18n labels for compare UI (subset; falls back to en)
+        const COMPARE_I18N = {
+            en: { title: 'Language comparison', clear: 'Clear', fab: 'Compare', add: '+ Add to compare', remove: '✓ In comparison (remove)', max: 'Maximum 8 languages' },
+            ja: { title: '言語比較', clear: 'クリア', fab: '比較', add: '+ 比較に追加', remove: '✓ 比較中（削除）', max: '最大 8 言語まで' },
+            ko: { title: '언어 비교', clear: '초기화', fab: '비교', add: '+ 비교에 추가', remove: '✓ 비교 중 (제거)', max: '최대 8개 언어' },
+            zh: { title: '语言对比', clear: '清空', fab: '对比', add: '+ 加入对比', remove: '✓ 对比中（移除）', max: '最多 8 种语言' },
+        };
+        function compareT(key) {
+            const base = uiLang.split('_')[0];
+            return (COMPARE_I18N[uiLang] && COMPARE_I18N[uiLang][key])
+                || (COMPARE_I18N[base] && COMPARE_I18N[base][key])
+                || COMPARE_I18N.en[key];
+        }
+
+        function loadCompareList() {
+            // Priority: URL hash → localStorage
+            const params = new URLSearchParams(location.hash.slice(1));
+            const cmp = params.get('cmp');
+            if (cmp) {
+                _compareList = cmp.split(',').filter(c => LANG_DATA[c]).slice(0, COMPARE_MAX);
+            } else {
+                try {
+                    const stored = localStorage.getItem(COMPARE_STORAGE_KEY);
+                    if (stored) _compareList = JSON.parse(stored).filter(c => LANG_DATA[c]).slice(0, COMPARE_MAX);
+                } catch (e) {}
+            }
+            window.__compareList = _compareList;
+        }
+        function saveCompareList() {
+            window.__compareList = _compareList;
+            try { localStorage.setItem(COMPARE_STORAGE_KEY, JSON.stringify(_compareList)); } catch (e) {}
+            try { updateHash(); } catch (e) {}
+        }
+        function isInCompare(code) { return _compareList.indexOf(code) !== -1; }
+        function addToCompare(code) {
+            if (!LANG_DATA[code] || isInCompare(code)) return;
+            if (_compareList.length >= COMPARE_MAX) { alert(compareT('max')); return; }
+            _compareList.push(code);
+            saveCompareList();
+            updateCompareFab();
+            renderCompareIfOpen();
+            updateModalCompareBtn(code);
+        }
+        function removeFromCompare(code) {
+            const i = _compareList.indexOf(code);
+            if (i === -1) return;
+            _compareList.splice(i, 1);
+            saveCompareList();
+            updateCompareFab();
+            renderCompareIfOpen();
+            updateModalCompareBtn(code);
+            if (_compareList.length === 0) closeComparePanel();
+        }
+        function clearCompare() {
+            const wasOpen = _compareList.slice();
+            _compareList = [];
+            saveCompareList();
+            updateCompareFab();
+            closeComparePanel();
+            // Refresh modal compare button if a previously-compared lang is open
+            const open = infoPanel && infoPanel.classList.contains('visible') ? infoPanel.dataset.code : '';
+            if (open && wasOpen.indexOf(open) !== -1) updateModalCompareBtn(open);
+        }
+        function updateCompareFab() {
+            const fab = document.getElementById('compare-fab');
+            if (!fab) return;
+            if (_compareList.length === 0) {
+                fab.classList.remove('visible');
+            } else {
+                fab.classList.add('visible');
+                const badge = fab.querySelector('.compare-fab-badge');
+                if (badge) badge.textContent = String(_compareList.length);
+                const lbl = fab.querySelector('.compare-fab-label');
+                if (lbl) lbl.textContent = compareT('fab');
+            }
+        }
+        function openComparePanel() {
+            if (_compareList.length === 0) return;
+            renderCompare();
+            const panel = document.getElementById('compare-panel');
+            panel.classList.add('visible');
+            // Update title text per current UI lang
+            const t = panel.querySelector('.compare-title'); if (t) t.textContent = compareT('title');
+            const c = panel.querySelector('.compare-clear'); if (c) c.textContent = compareT('clear');
+        }
+        function closeComparePanel() {
+            const panel = document.getElementById('compare-panel');
+            if (panel) panel.classList.remove('visible');
+        }
+        function renderCompareIfOpen() {
+            const panel = document.getElementById('compare-panel');
+            if (panel && panel.classList.contains('visible')) renderCompare();
+        }
+        function renderCompare() {
+            const body = document.getElementById('compare-body');
+            if (!body) return;
+            if (_compareList.length === 0) { body.innerHTML = ''; return; }
+            const names = (typeof LANG_NAMES !== 'undefined' && LANG_NAMES[uiLang]) || (typeof LANG_NAMES !== 'undefined' && LANG_NAMES.en) || {};
+            const conceptLangFb = uiLang.split('_')[0];
+            let html = '<table class="compare-table"><thead><tr><th></th>';
+            for (const code of _compareList) {
+                const lang = LANG_DATA[code]; if (!lang) continue;
+                const display = names[code] || lang.name || code;
+                html += '<th>'
+                     + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
+                     + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
+                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
+                     + '</th>';
+            }
+            html += '</tr></thead><tbody>';
+            for (const w of WORD_LIST) {
+                const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
+                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                for (const code of _compareList) {
+                    const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
+                    if (!cell || cell[0] === '—') {
+                        html += '<td class="unattested">—</td>';
+                    } else {
+                        const surface = cell[0] || '';
+                        const ipa = cell[1] || '';
+                        html += '<td><span class="surface" dir="auto">' + escapeHtml(surface) + '</span>'
+                             + (ipa && ipa !== '—' ? '<span class="ipa">' + escapeHtml(ipa) + '</span>' : '')
+                             + '</td>';
+                    }
+                }
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+            body.innerHTML = html;
+            // Wire interactions
+            body.querySelectorAll('.remove-col').forEach(btn => {
+                btn.addEventListener('click', () => removeFromCompare(btn.dataset.code));
+            });
+            body.querySelectorAll('.lang-name[data-code]').forEach(el => {
+                el.style.cursor = 'pointer';
+                el.style.textDecoration = 'underline';
+                el.addEventListener('click', () => {
+                    const code = el.dataset.code;
+                    showLangInfo(code);
+                });
+            });
+        }
+
+        function updateModalCompareBtn(code) {
+            // Update the in-modal "Add/Remove from compare" button if it exists for this code
+            const btn = infoContent && infoContent.querySelector('.compare-add-btn[data-code="' + (window.CSS ? CSS.escape(code) : code) + '"]');
+            if (!btn) return;
+            if (isInCompare(code)) {
+                btn.classList.add('added');
+                btn.textContent = compareT('remove');
+            } else {
+                btn.classList.remove('added');
+                btn.textContent = compareT('add');
+            }
+        }
+
+        // Wire FAB + panel buttons + modal button delegation
+        document.getElementById('compare-fab').addEventListener('click', openComparePanel);
+        document.getElementById('compare-close').addEventListener('click', closeComparePanel);
+        document.getElementById('compare-clear').addEventListener('click', clearCompare);
+        // Delegate compare-add-btn clicks inside the language modal
+        infoContent.addEventListener('click', e => {
+            const btn = e.target.closest('.compare-add-btn');
+            if (!btn) return;
+            const code = btn.dataset.code;
+            if (!code) return;
+            if (isInCompare(code)) removeFromCompare(code); else addToCompare(code);
+        });
+        // ESC closes the compare panel
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const panel = document.getElementById('compare-panel');
+                if (panel && panel.classList.contains('visible')) {
+                    closeComparePanel();
+                }
+            }
+        });
+
+        // === Random language button (next to search) ===========================
+        const randomBtn = document.getElementById('lang-random');
+        if (randomBtn) {
+            randomBtn.addEventListener('click', () => {
+                const codes = Object.keys(LANG_DATA);
+                if (!codes.length) return;
+                const code = codes[Math.floor(Math.random() * codes.length)];
+                // Pan to the language and open its modal
+                const lang = LANG_DATA[code];
+                if (lang && Number.isFinite(lang.lat) && Number.isFinite(lang.lng)) {
+                    if (is3D && globe) {
+                        globe.pointOfView({ lat: lang.lat, lng: lang.lng, altitude: 1.2 }, 800);
+                    } else if (map) {
+                        map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
+                    }
+                }
+                showLangInfo(code);
+            });
+        }
+
+        // Initialize compare list from hash/localStorage now that everything is wired
+        loadCompareList();
+        updateCompareFab();
 
     })();
     </script>
