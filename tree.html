@@ -8,12 +8,17 @@
 <link rel="stylesheet" href="styles.css?v=54">
 <style>
     html, body { margin: 0; height: 100%; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #222; background: #fafbfc; overflow: hidden; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: #222; background: #fafbfc; overflow: hidden;
+        display: flex; flex-direction: column; min-height: 100vh;
+    }
     .site-header-bar {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: #fff;
+        flex: 0 0 auto;
+        background: #fff;
         padding: 8px 16px; border-bottom: 1px solid #e0e0e0;
         display: flex; align-items: center; gap: 18px;
-        height: 24px;  /* total = 24 + 16 padding = 40px */
+        z-index: 10;
     }
     .site-header-bar .logo { font-weight: 700; color: #1a73e8; text-decoration: none; font-size: 16px; }
     .header-nav { display: flex; align-items: center; gap: 6px; flex: 1; font-size: 13px; }
@@ -29,9 +34,11 @@
     }
 
     .controls-bar {
-        position: fixed; top: 41px; left: 0; right: 0; z-index: 9; background: #fff;
+        flex: 0 0 auto;
+        background: #fff;
         border-bottom: 1px solid #e8e8e8; padding: 8px 16px;
         display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+        z-index: 9;
     }
     .controls-bar input[type="text"] {
         flex: 1; min-width: 180px; max-width: 320px;
@@ -46,12 +53,12 @@
     .controls-bar .stats { color: #888; font-size: 12px; margin-left: auto; }
     .controls-bar .legend { font-size: 11px; color: #888; }
 
-    /* Tree canvas: full-height SVG with pan/zoom */
+    /* Tree canvas: takes remaining viewport with pan/zoom */
     .tree-canvas {
-        position: fixed;
-        top: 90px;  /* below header + controls */
-        left: 0; right: 0; bottom: 0;
+        flex: 1 1 auto;
+        position: relative;
         overflow: hidden; background: #fafbfc;
+        min-height: 200px;
     }
     .tree-canvas svg {
         display: block; cursor: grab;
@@ -114,7 +121,6 @@
 
     @media (max-width: 600px) {
         .controls-bar { padding: 6px 10px; gap: 6px; }
-        .tree-canvas { top: 100px; }
         .controls-bar input[type="text"] { max-width: none; }
         .node text { font-size: 11px; }
         .node-leaf .native { font-size: 10px; }
@@ -555,42 +561,55 @@
         node.children.forEach(c => collapseDeep(c, currentDepth + 1, maxDepth));
     }
 
+    // Helper for radial layout: convert (angle in radians, radius) → (x, y) in
+    // SVG coordinates. Angle 0 = up (12 o'clock), increases clockwise.
+    function polarToCartesian(angleRad, radius) {
+        return [radius * Math.cos(angleRad - Math.PI / 2),
+                radius * Math.sin(angleRad - Math.PI / 2)];
+    }
+
     function update(source) {
         const nodes = root.descendants();
         const links = root.links();
 
-        // Determine vertical extent based on visible leaves
-        const leafCount = root.descendants().filter(d => !d.children && !d._children).length || 1;
-        const dx = leafCount > 60 ? 22 : (leafCount > 20 ? 28 : 36);
-        const dy = 220;  // horizontal spacing between depth levels
-        treeLayout = d3.tree().nodeSize([dx, dy]);
-        treeLayout(root);
-        // svg dimensions stay = canvas dimensions; positioning handled by zoom transform.
+        // Compute layout. d3.cluster with size [2π, R] places leaves on the
+        // perimeter of a circle. Radius scales with the number of visible
+        // depth levels so deeper subtrees push outward, but we cap it to keep
+        // the tree comfortable on small screens.
+        const visibleDepths = d3.max(nodes, d => d.depth) || 1;
+        const baseRadius = Math.min(540, Math.max(220, 150 + visibleDepths * 110));
+        const cluster = d3.cluster()
+            .size([2 * Math.PI, baseRadius])
+            .separation((a, b) => (a.parent === b.parent ? 1 : 2) / Math.max(1, a.depth));
+        cluster(root);
+        // d.x = angle in radians [0, 2π); d.y = radial distance.
 
-        // === Links ===
+        // === Links === Smooth Bezier curves between parent and child via
+        // d3.linkRadial — naturally curves through the polar plane.
+        const linkPath = d3.linkRadial().angle(d => d.x).radius(d => d.y);
+
         const link = gLinks.selectAll('path.link')
             .data(links, d => d.target.__id || (d.target.__id = ++linkSeq));
-
-        const linkPath = d3.linkHorizontal().x(d => d.y).y(d => d.x);
 
         link.enter().append('path')
             .attr('class', 'link')
             .attr('d', d => {
-                const o = { x: source.x0 ?? source.x, y: source.y0 ?? source.y };
-                return linkPath({ source: o, target: o });
+                // Animate from the parent's previous (or current) position
+                const o0 = { x: source.x0 ?? source.x, y: source.y0 ?? source.y };
+                return linkPath({ source: o0, target: o0 });
             })
             .merge(link)
-            .transition().duration(420)
+            .transition().duration(500)
             .attr('d', linkPath)
             .attr('stroke', d => {
                 // Color link by closest top-level family ancestor
                 let n = d.target;
-                while (n.parent && n.parent.depth > 0) n = n.parent;
+                while (n.parent && n.parent.depth > 1) n = n.parent;
                 if (n && n.depth === 1) return familyColor(n.data.name);
                 return '#b8c8e0';
             });
 
-        link.exit().transition().duration(420)
+        link.exit().transition().duration(500)
             .attr('d', d => {
                 const o = { x: source.x, y: source.y };
                 return linkPath({ source: o, target: o });
@@ -601,43 +620,80 @@
         const node = gNodes.selectAll('g.node')
             .data(nodes, d => d.__id || (d.__id = ++nodeSeq));
 
+        // Initial position for entering nodes: at the parent's previous position
+        const startTransform = d => {
+            const ax = source.x0 ?? source.x ?? 0;
+            const ay = source.y0 ?? source.y ?? 0;
+            const [cx, cy] = polarToCartesian(ax, ay);
+            return `translate(${cx},${cy})`;
+        };
+        // Final radial transform: rotate+translate puts node at (angle, radius).
+        // Then text is rotated within the node's local frame so it reads outward
+        // (right side of disk: text reads left-to-right; left side: rotate 180°).
+        const finalTransform = d => {
+            const angleDeg = d.x * 180 / Math.PI - 90;  // rotate so radial axis points "right"
+            return `rotate(${angleDeg}) translate(${d.y},0)`;
+        };
+
         const nodeEnter = node.enter().append('g')
             .attr('class', d => 'node ' + (d.data.isInternal ? 'node-internal' : 'node-leaf') + (d._children ? ' collapsed' : '') + (d.data._matched ? ' match' : ''))
-            .attr('transform', d => `translate(${source.y0 ?? source.y},${source.x0 ?? source.x})`)
+            .attr('transform', startTransform)
             .style('opacity', 0);
 
-        // Circle
+        // Circle (drawn at local origin; node group's transform places it)
         nodeEnter.append('circle')
             .attr('r', d => d.data.isInternal ? (d._children ? 6 : 5) : 4)
             .attr('stroke', d => {
                 let n = d;
-                while (n.parent && n.parent.depth > 0) n = n.parent;
+                while (n.parent && n.parent.depth > 1) n = n.parent;
                 return n && n.depth === 1 ? familyColor(n.data.name) : '#888';
             });
+
+        // Text label: rotate so it reads outward. If node is on the left half
+        // of the disk (angle > π), flip text 180° and anchor "end" so it reads
+        // from outside in.
+        function textRotation(d) {
+            return (d.x >= Math.PI) ? 180 : 0;
+        }
+        function textAnchor(d) {
+            return (d.x >= Math.PI) ? 'end' : 'start';
+        }
+        function textX(d) {
+            const offset = d.data.isInternal ? 9 : 9;
+            return (d.x >= Math.PI) ? -offset : offset;
+        }
 
         // Internal node text: family name + count
         nodeEnter.filter(d => d.data.isInternal).append('text')
             .attr('dy', '0.31em')
-            .attr('x', d => d._children ? -10 : 10)
-            .attr('text-anchor', d => d._children ? 'end' : 'start')
+            .attr('x', textX)
+            .attr('text-anchor', textAnchor)
+            .attr('transform', d => `rotate(${textRotation(d)})`)
             .text(d => d.data.name + ' (' + (d.data.descendantLeaves || (d._children || d.children || []).length) + ')');
 
-        // Leaf node text
+        // Leaf node text — show display name, native, and code on three lines
+        // arranged radially outward.
         const leafEnter = nodeEnter.filter(d => !d.data.isInternal);
         leafEnter.append('text')
             .attr('dy', '0.31em')
-            .attr('x', 10)
+            .attr('x', textX)
+            .attr('text-anchor', textAnchor)
+            .attr('transform', d => `rotate(${textRotation(d)})`)
             .text(d => d.data.name);
         leafEnter.append('text')
             .attr('class', 'native')
-            .attr('dy', '0.31em')
-            .attr('x', d => 10 + (d.data.name.length * 7) + 8)
+            .attr('dy', '1.45em')
+            .attr('x', textX)
+            .attr('text-anchor', textAnchor)
+            .attr('transform', d => `rotate(${textRotation(d)})`)
             .attr('dir', 'auto')
             .text(d => d.data.native || '');
         leafEnter.append('text')
             .attr('class', 'code')
-            .attr('dy', '1.5em')
-            .attr('x', 10)
+            .attr('dy', d => d.data.native ? '2.55em' : '1.45em')
+            .attr('x', textX)
+            .attr('text-anchor', textAnchor)
+            .attr('transform', d => `rotate(${textRotation(d)})`)
             .text(d => '[' + d.data.code + ']');
 
         // Click handler
@@ -645,7 +701,6 @@
             .on('click', (event, d) => {
                 event.stopPropagation();
                 if (d.data.isInternal) {
-                    // Toggle expand/collapse
                     if (d.children) {
                         d._children = d.children;
                         d.children = null;
@@ -655,7 +710,6 @@
                     }
                     update(d);
                 } else {
-                    // Leaf — navigate to wordmap with z=7, 2D, modal open
                     const lang = LANG_DATA[d.data.code];
                     if (!lang) return;
                     const params = new URLSearchParams();
@@ -672,23 +726,39 @@
             .on('mousemove', (event) => moveTooltip(event))
             .on('mouseleave', hideTooltip);
 
-        // Update existing nodes
+        // Update all nodes (entering + existing) to their final radial positions.
         const nodeUpdate = nodeEnter.merge(node);
-        nodeUpdate.transition().duration(420)
-            .attr('transform', d => `translate(${d.y},${d.x})`)
+        nodeUpdate.transition().duration(500)
+            .attr('transform', finalTransform)
             .style('opacity', 1)
             .attr('class', d => 'node ' + (d.data.isInternal ? 'node-internal' : 'node-leaf') + (d._children ? ' collapsed' : '') + (d.data._matched ? ' match' : ''));
 
         nodeUpdate.select('circle')
             .attr('r', d => d.data.isInternal ? (d._children ? 6 : 5) : 4);
 
+        // Re-orient text on existing nodes whose angle changed
+        nodeUpdate.selectAll('text')
+            .transition().duration(500)
+            .attr('transform', function() {
+                const parentDatum = d3.select(this.parentNode).datum();
+                return `rotate(${textRotation(parentDatum)})`;
+            })
+            .attr('text-anchor', function() {
+                const parentDatum = d3.select(this.parentNode).datum();
+                return textAnchor(parentDatum);
+            })
+            .attr('x', function() {
+                const parentDatum = d3.select(this.parentNode).datum();
+                return textX(parentDatum);
+            });
+
         // Exit
-        node.exit().transition().duration(420)
-            .attr('transform', d => `translate(${source.y},${source.x})`)
+        node.exit().transition().duration(500)
+            .attr('transform', startTransform)
             .style('opacity', 0)
             .remove();
 
-        // Cache positions for next transition
+        // Cache positions for next transition's animation origin
         root.each(d => { d.x0 = d.x; d.y0 = d.y; });
     }
     let linkSeq = 0, nodeSeq = 0;
@@ -791,8 +861,8 @@
         const canvas = document.getElementById('tree-canvas');
         const w = canvas.clientWidth || 800;
         const h = canvas.clientHeight || 600;
-        // Translate so the root sits at the left edge with vertical centering.
-        const tx = 80;
+        // Center the radial dendrogram in the canvas.
+        const tx = w / 2;
         const ty = h / 2;
         svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty));
     }
