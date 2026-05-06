@@ -14,8 +14,15 @@
         display: flex; flex-direction: column; min-height: 100vh; padding: 0;
     }
 
-    /* Header overrides for full-screen layout (defaults from styles.css) */
-    .site-header-bar { flex: 0 0 auto; margin: 0; z-index: 10; }
+    /* Header: fixed-width + right-aligned (per user feedback). Body is
+       a flex column, so use align-self to push the bar to the end of
+       the cross axis (which is the right edge here). */
+    .site-header-bar {
+        flex: 0 0 auto; margin: 0; z-index: 10;
+        max-width: 1400px;
+        width: 100%;
+        align-self: flex-end;
+    }
 
     .controls-bar {
         flex: 0 0 auto; background: #fff;
