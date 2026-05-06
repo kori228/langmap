@@ -366,7 +366,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Eskimo-Aleut','Algic','Iroquoian','Siouan','Salishan','Wakashan','Na-Dené','Muskogean','Uto-Aztecan','Oto-Manguean','Mayan','Tsimshianic',
     'Quechuan','Aymaran','Tupian','Araucanian','Arawakan','Chibchan','Chocoan','Mura',
     'Pama-Nyungan','Trans-New Guinea','Iwaidjan or unclassified',
-    'Yeniseian','Chukotko-Kamchatkan','Hurro-Urartian','Meroitic',
+    'Yeniseian','Chukotko-Kamchatkan','Hurro-Urartian','Meroitic','Yukaghir',
     'Language isolate','Constructed','Creole','English-based creole','French-based creole','Iberian-based creole','Pidgin','Mixed','Proto-language',
     'Tocharian','Anatolian (Indo-European)','Indo-European (Armenian)','Indo-European (isolate branch)','Tocharian (Indo-European)',
     'Germanic (East)','Germanic (creole-influenced)',

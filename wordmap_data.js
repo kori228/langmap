@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 630 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 632 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -196,6 +196,18 @@ const LANG_DATA = {
   // Chukotko-Kamchatkan
   ckt: { name: 'Chukchi', native: 'Ԓыгъоравэтԓьэн йиԓыйиԓ', lat: 64.73, lng: 177.49, // Anadyr
     words: { water:['мимыԓ','mimɯɫ'], fire:['пэӈэн','peŋen'], sun:['тиркытир','tirkɯtir'], moon:['йъиԓгын','jʔiɫɣɯn'], mother:['ынньэв','ɯɲɲew'], father:['атԓёӄ','atɫjoq'], eat:['рынтыкэн','rɯntɯken'], drink:['рымԓыӄэн','rɯmɫɯqen'], love:['ԓюнъювык','ɫjunʔjuwɯk'], heart:['ԓиӈыԓ','ɫiŋɯɫ'], tree:['уттуут','utːuːt'], house:['яраӈы','jaraŋɯ'], dog:['ыттъын','ɯtːʔɯn'], cat:['котйо','kotjo'], hand:['мынгыԓгын','mɯŋɯɫɣɯn'], eye:['ԓыԓет','ɫɯɫet'], hello:['етти','jetːi'], thanks:['вэԓынкы','weɫɯnkɯ'], one:['ыннэн','ɯɲɲen'], good:['тангъэв','taŋɣew'] }},
+  // Audit Task 142 (Tier 2 optional): Itelmen — sister branch of Chukchi
+  // within Chukotko-Kamchatkan, ~80 fluent speakers (UNESCO: critically
+  // endangered). Western Itelmen standard (Sedanka). Cells with confident
+  // sourcing only (Volodin & Khaloimova 2001 dictionary); rest unattested.
+  itl: { name: 'Itelmen', native: 'Итэнмэн', lat: 56.25, lng: 156.83, // Tigil, Kamchatka
+    words: { water:['иʔ','iʔ'], fire:['пʼэнэ','pʼene'], sun:['коачʼ','koatʃʼ'], moon:['куɫаŋ','kuɬaŋ'], mother:['—','—'], father:['—','—'], eat:['эс','es'], drink:['—','—'], love:['—','—'], heart:['пинпин','pinpin'], tree:['ʼурх','ʼurx'], house:['—','—'], dog:['ʼат','ʼat'], cat:['кошка','koʂka'], hand:['ʼух','ʼux'], eye:['иркэ','irke'], hello:['—','—'], thanks:['—','—'], one:['дин','din'], good:['ɫач','ɬatʃ'] }},
+  // Audit Task 142 (Tier 2 optional): Tundra Yukaghir — Yukaghir family
+  // (or possibly Yukaghir-Uralic, contested), ~370 speakers, Sakha Republic
+  // (Lower Kolyma). Most confident-sourced cells from Maslova (2003) "A
+  // Grammar of Kolyma Yukaghir" + community Yukaghir-Russian materials.
+  ykg: { name: 'Tundra Yukaghir', native: 'Wadul aruu', lat: 68.74, lng: 161.30, // Andryushkino
+    words: { water:['ɔӡ','odʒ'], fire:[ 'лɔчил','lɔtʃil'], sun:['пугэ','puɣe'], moon:['киӈэ','kiŋe'], mother:['эмэй','emej'], father:['эчэ','etʃe'], eat:['ленди-','lendi-'], drink:['ӧйрэ-','øjre-'], love:['—','—'], heart:['чугэ','tʃuɣe'], tree:['—','—'], house:['нумэ','nume'], dog:['тажвэ','taʒwe'], cat:['кошка','koʂka'], hand:['нэмэ','neme'], eye:['ӈǝбур','ŋǝbur'], hello:['—','—'], thanks:['—','—'], one:['ирки','irki'], good:['амдур','amdur'] }},
   // Language isolate
   niv: { name: 'Nivkh', native: 'Нивхгу диф', lat: 51.83, lng: 143.16, // Nogliki, Sakhalin
     words: { water:['чхар','tʃxar'], fire:['тур','tur'], sun:['керк','kerk'], moon:['лоӈ','loŋ'], mother:['ымык','ɯmɯk'], father:['ытык','ɯtɯk'], eat:['вид','vid'], drink:['ракь','rakʲ'], love:['орх','orx'], heart:['ыӈ','ɯŋ'], tree:['ча','tʃa'], house:['тыф','tɯf'], dog:['каӈ','kaŋ'], cat:['кошка','koʂka'], hand:['кы','kɯ'], eye:['ӈак','ŋak'], hello:['ӈафӄа','ŋafqa'], thanks:['туьмг','tumɡ'], one:['нён','ɲon'], good:['пах','pax'] }},
@@ -3491,6 +3503,11 @@ const DATA_STATUS_OVERRIDES = {
     // Genuinely reconstructed (no direct text record):
     ine:       'reconstructed',  // Proto-Indo-European — comparative reconstruction
     pjk:       'reconstructed',  // Proto-Japonic-Koreanic — disputed hypothesis (Whitman/Robbeets)
+    // Critically endangered modern languages — sparse Swadesh-list coverage
+    // (audit Task 142 Tier 2 optional additions, sourced cells only,
+    // many '—' placeholders).
+    itl:       'fragmentary',    // Itelmen — ~80 fluent speakers, Volodin & Khaloimova partial
+    ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts

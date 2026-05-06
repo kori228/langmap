@@ -255,4 +255,24 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 142 (Tier 2 optional): Itelmen (itl), Tundra Yukaghir (ykg)
+    const ADDED7 = {
+        itl: { en: 'Itelmen', ja: 'イテリメン語', ko: '이텔멘어', zh: '伊捷尔缅语', yue: '伊捷爾緬語',
+               vi: 'Tiếng Itelmen', th: 'ภาษาอีเทลเมน', id: 'Itelmen', hi: 'इतेलमेन',
+               de: 'Itelmenisch', fr: 'Itelmène', it: 'Itelmeno',
+               es_eu: 'Itelmeno', es_mx: 'Itelmeno', pt_eu: 'Itelmeno', pt_br: 'Itelmeno',
+               ru: 'Ительменский', uk: 'Ітельменська', ar: 'الإيتلمن', he: 'איטלמן', sw: 'Kiitelmen' },
+        ykg: { en: 'Tundra Yukaghir', ja: 'ツンドラ・ユカギール語', ko: '툰드라 유카기르어', zh: '苔原尤卡吉尔语', yue: '苔原尤卡吉爾語',
+               vi: 'Tiếng Yukaghir Lãnh Nguyên', th: 'ภาษายูคากีร์ทุนดรา', id: 'Yukaghir Tundra', hi: 'टुंड्रा युकागिर',
+               de: 'Tundra-Jukagirisch', fr: 'Iukaguir de la toundra', it: 'Yukaghir della tundra',
+               es_eu: 'Yucaguir de la tundra', es_mx: 'Yucaguir de la tundra', pt_eu: 'Yukaghir da tundra', pt_br: 'Yukaghir da tundra',
+               ru: 'Тундренный юкагирский', uk: 'Тундровий юкагирський', ar: 'يوكاغيرية التندرا', he: 'יוקאגיר טונדרה', sw: 'Kiyukaghir cha Tundra' },
+    };
+    for (const code of Object.keys(ADDED7)) {
+        for (const ui of Object.keys(ADDED7[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED7[code][ui];
+            }
+        }
+    }
 })();
