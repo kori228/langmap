@@ -2412,19 +2412,48 @@
                 if (window.__langmap && typeof window.__langmap.getFeatures === 'function') {
                     const f = window.__langmap.getFeatures(code);
                     if (f) {
-                        const provLbl = { 'manual-override': 'lang', 'family-default': 'family', 'unknown': '?' };
+                        // Provenance tags: localized for all UI langs (was: en-only "lang/family/?")
+                        const PROV_LBL = {
+                            'manual-override': { en:'lang', ja:'言語', ko:'언어', zh:'语言', yue:'語言', vi:'ngôn ngữ', th:'ภาษา', id:'bahasa', hi:'भाषा', de:'Sprache', fr:'langue', it:'lingua', es:'idioma', pt:'idioma', ru:'язык', uk:'мова', ar:'لغة', he:'שפה', sw:'lugha' },
+                            'family-default': { en:'family', ja:'語族', ko:'어족', zh:'语系', yue:'語系', vi:'họ', th:'ตระกูล', id:'rumpun', hi:'परिवार', de:'Familie', fr:'famille', it:'famiglia', es:'familia', pt:'família', ru:'семья', uk:'сім\'я', ar:'عائلة', he:'משפחה', sw:'familia' },
+                            'unknown': { en:'?', ja:'?', ko:'?', zh:'?', yue:'?', vi:'?', th:'?', id:'?', hi:'?', de:'?', fr:'?', it:'?', es:'?', pt:'?', ru:'?', uk:'?', ar:'?', he:'?', sw:'?' },
+                        };
                         const provColor = { 'manual-override': '#3a8a3a', 'family-default': '#888', 'unknown': '#bbb' };
+                        // Tone (boolean) → localized "tonal" / "non-tonal"
+                        const TONE_LBL = {
+                            true:  { en:'tonal',     ja:'声調あり',   ko:'성조 있음', zh:'有声调',   yue:'有聲調',   vi:'có thanh điệu',   th:'มีวรรณยุกต์',     id:'tonal',         hi:'स्वराघातिक',         de:'tonal',     fr:'tonale',     it:'tonale',     es:'tonal',     pt:'tonal',     ru:'тональный',    uk:'тональна',    ar:'نبري',        he:'טונאלית',     sw:'yenye toni' },
+                            false: { en:'non-tonal', ja:'声調なし',   ko:'성조 없음', zh:'无声调',   yue:'無聲調',   vi:'không thanh điệu',th:'ไม่มีวรรณยุกต์', id:'non-tonal',     hi:'गैर-स्वराघातिक',    de:'nicht tonal', fr:'non tonale', it:'non tonale', es:'no tonal',  pt:'não tonal', ru:'не тональный', uk:'не тональна', ar:'غير نبري',    he:'לא טונאלית',  sw:'isiyo na toni' },
+                        };
+                        // Morphology values → localized
+                        const MORPH_LBL = {
+                            isolating:     { en:'isolating',     ja:'孤立語',  ko:'고립어',  zh:'孤立语',  yue:'孤立語',  vi:'đơn lập',          th:'ภาษาคำโดด',     id:'isolatif',     hi:'वियोगात्मक',         de:'isolierend',     fr:'isolante',     it:'isolante',     es:'aislante',     pt:'isolante',     ru:'изолирующий',     uk:'ізолятивна',     ar:'عازلة',         he:'מבודדת',       sw:'isiyoambika' },
+                            fusional:      { en:'fusional',      ja:'屈折語',  ko:'굴절어',  zh:'屈折语',  yue:'屈折語',  vi:'biến hình',        th:'ภาษาวิภัตติ',    id:'fusional',     hi:'योगात्मक',          de:'flektierend',    fr:'fusionnelle',  it:'fusiva',       es:'flexiva',      pt:'fusional',     ru:'флективный',      uk:'флективна',      ar:'اندماجية',      he:'פוזיונלית',    sw:'iliyoungana' },
+                            agglutinative: { en:'agglutinative', ja:'膠着語',  ko:'교착어',  zh:'黏着语',  yue:'黏著語',  vi:'chắp dính',        th:'ภาษาคำติดต่อ',   id:'aglutinatif',  hi:'श्लिष्टयोगात्मक',     de:'agglutinierend', fr:'agglutinante', it:'agglutinante', es:'aglutinante',  pt:'aglutinante',  ru:'агглютинативный', uk:'аглютинативна',  ar:'إلصاقية',       he:'אגלוטינטיבית', sw:'iliyoambatishwa' },
+                            polysynthetic: { en:'polysynthetic', ja:'抱合語',  ko:'포합어',  zh:'复综语',  yue:'複綜語',  vi:'đa tổng hợp',      th:'ภาษาประสาน',    id:'polisintetik', hi:'बहुसंश्लिष्ट',       de:'polysynthetisch',fr:'polysynthétique',it:'polisintetica',es:'polisintética',pt:'polissintética',ru:'полисинтетический',uk:'полісинтетична',ar:'متعدد التركيب', he:'פוליסינתטית',  sw:'iliyoshikamana sana' },
+                        };
+                        const ui = uiLang.split('_')[0];
+                        const localizeProv = (prov) => {
+                            const m = PROV_LBL[prov]; if (!m) return prov;
+                            return m[ui] || m.en || prov;
+                        };
+                        const localizeVal = (val) => {
+                            if (typeof val === 'boolean') {
+                                const m = TONE_LBL[val]; return (m && (m[ui] || m.en)) || (val ? 'tonal' : 'non-tonal');
+                            }
+                            const m = MORPH_LBL[val]; if (m) return m[ui] || m.en || val;
+                            return String(val);
+                        };
                         const fmtCell = (val, prov) => {
                             if (val === null || val === undefined) return '<span style="color:#bbb">—</span>';
-                            const v = (typeof val === 'boolean') ? (val ? 'tonal' : 'non-tonal') : String(val);
-                            const tag = (provLbl[prov] || prov);
+                            const v = localizeVal(val);
+                            const tag = localizeProv(prov);
                             const c = provColor[prov] || '#888';
                             return `${escapeHtml(v)} <span style="color:${c};font-size:10px">(${escapeHtml(tag)})</span>`;
                         };
-                        const woLbl    = { en: 'Word order',  ja: '語順',     ko: '어순',         zh: '语序' };
-                        const toneLbl  = { en: 'Tone',        ja: '声調',     ko: '성조',         zh: '声调' };
-                        const morphLbl = { en: 'Morphology',  ja: '形態論',   ko: '형태론',       zh: '形态' };
-                        const ui = uiLang.split('_')[0];
+                        // Localized labels for ALL UI langs (was en/ja/ko/zh-only)
+                        const woLbl    = { en:'Word order', ja:'語順',  ko:'어순',  zh:'语序', yue:'語序', vi:'Trật tự từ', th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole', es:'Orden de palabras', pt:'Ordem das palavras', ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات', he:'סדר מילים', sw:'Mpangilio wa Maneno' };
+                        const toneLbl  = { en:'Tone',       ja:'声調',  ko:'성조',  zh:'声调', yue:'聲調', vi:'Thanh điệu', th:'วรรณยุกต์', id:'Tonal',       hi:'स्वराघात',   de:'Ton',           fr:'Ton',            it:'Tono',         es:'Tono',              pt:'Tom',                ru:'Тон',           uk:'Тон',          ar:'النبرة',        he:'טון',         sw:'Toni' };
+                        const morphLbl = { en:'Morphology', ja:'形態論', ko:'형태론', zh:'形态', yue:'形態學', vi:'Hình thái', th:'สัณฐานวิทยา',  id:'Morfologi',  hi:'आकृति विज्ञान',  de:'Morphologie',   fr:'Morphologie',   it:'Morfologia',   es:'Morfología',         pt:'Morfologia',         ru:'Морфология',    uk:'Морфологія',  ar:'علم الصرف',    he:'מורפולוגיה', sw:'Mofolojia' };
                         html += `<tr><td>${escapeHtml(woLbl[ui] || woLbl.en)}</td><td>${fmtCell(f.wo, f.provenance.wo)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(toneLbl[ui] || toneLbl.en)}</td><td>${fmtCell(f.tone, f.provenance.tone)}</td></tr>`;
                         html += `<tr><td>${escapeHtml(morphLbl[ui] || morphLbl.en)}</td><td>${fmtCell(f.morph, f.provenance.morph)}</td></tr>`;
