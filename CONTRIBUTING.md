@@ -760,17 +760,39 @@ exception clause; per-row deviations must be documented in
 - **Both can be omitted** if `pronunciationType: 'broad'` and
   `meta.coverageNote` documents the omission.
 
-#### Affricate notation
+#### Affricate notation (Audit Task 163)
 
-- **Default**: project tolerates ASCII digraphs (`ts`, `dz`, `tʃ`, `dʒ`)
-  for broad transcriptions. IPA tie-bar (`t͡s`, `d͡z`) is preferred for
-  `pronunciationType: 'ipa'` rows but ASCII is not a validator error.
-- **Slavic family**: ASCII `ts` is acceptable across the Slavic rows
-  (Russian/Ukrainian/Polish/Czech/etc.) for consistency. Migration to
-  tie-bar is a future project-wide pass.
+- **`pronunciationType: 'ipa'` rows**: IPA tie-bar is **required**.
+  Use `t͡s` (U+0361 COMBINING DOUBLE INVERTED BREVE) instead of bare
+  ASCII `ts`. Same for `d͡z`, `t͡ʃ`, `d͡ʒ`, `t͡ɕ`, `d͡ʑ`, `t͡ʂ`, `d͡ʐ`,
+  and aspirated variants `t͡sʰ`/`t͡ʃʰ`/`t͡ɕʰ`/`t͡ʂʰ`. Validator `[#163]`
+  enforces this.
+- **`pronunciationType: 'broad'`/`'romanization'`/`'orthography'` rows**:
+  bare ASCII digraphs (`ts`, `dz`, `tʃ`, `dʒ`) are acceptable. Broad
+  transcription legitimately uses bare digraphs.
+- **Untagged rows**: assign `pronunciationType` first (Audit Task 76),
+  then apply the rule for the assigned type.
+- **Slavic family**: ASCII `ts` is acceptable across rows tagged `'broad'`
+  (most regional Slavic varieties); rows promoted to `'ipa'` get tie-bar.
 - **Turkic family** (Kazakh/Bashkir/Karachay-Balkar/Karakalpak): the
   conventions `w`/`y`/`q`/`x` are accepted as they reflect documented
   romanization standards; treat as `pronunciationType: 'broad'`.
+
+#### Reconstructed-form notation (Audit Task 164)
+
+For rows with `dataStatus: 'reconstructed'` (Proto-Indo-European `ine`,
+Proto-Ryukyuan `pry`, Proto-Japonic-Koreanic `pjk`):
+
+- **Surface column**: keep the asterisk reconstruction marker (`*kam`)
+  and bound-stem hyphen (`*h₁ed-`).
+- **IPA column**: strip both. The `*` and trailing `-` belong only in
+  surface; IPA gives a phonological form ready to be read aloud.
+- **Logographic-surface rows** (Old Korean `oko`, Goguryeo `okg`, Goryeo
+  Korean `ko_gor`, Old Chinese `och`): surface uses Chinese characters
+  and cannot carry `*`, so the reconstructed `*` appears in IPA only.
+  This is a separate convention and is exempt from `[#164]`.
+- Validator `[#164]` enforces the surface-only rule for Latin-script
+  reconstructions.
 
 #### Verb forms (eat / drink / love)
 

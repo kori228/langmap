@@ -1109,6 +1109,77 @@ for (const code of codes) {
     if (nfcIssues > 3) W(`[#116] (${nfcIssues - 3} more NFC issues — fix all)`);
 }
 
+// === Affricate tie-bar enforcement for 'ipa'-tagged rows (Audit Task 163) ===
+// Strict IPA requires t͡s/d͡z/t͡ʃ/d͡ʒ/t͡ɕ/d͡ʑ/t͡ʂ/d͡ʐ (with U+0361 COMBINING DOUBLE
+// INVERTED BREVE) instead of bare ASCII digraphs. Apply only to rows whose
+// pronunciationType is 'ipa'. Rows tagged 'broad'/'romanization'/'orthography'
+// or untagged are exempt — broad transcription legitimately uses bare digraphs.
+{
+    const ipaCodes = codes.filter(c => ctx.LANG_DATA[c]?.meta?.pronunciationType === 'ipa');
+    const affricates = ['ts','dz','tʃ','dʒ','tɕ','dʑ','tʂ','dʐ'];
+    let bareCount = 0, totalIpaCells = 0, tieBarredCells = 0;
+    for (const code of ipaCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string' || ipa === '—' || !ipa) continue;
+            totalIpaCells++;
+            if (ipa.indexOf('͡') !== -1) tieBarredCells++;
+            for (const a of affricates) {
+                let idx = -1;
+                while ((idx = ipa.indexOf(a, idx+1)) !== -1) {
+                    // Skip if already tie-barred (preceded by U+0361)
+                    if (idx > 0 && ipa.charCodeAt(idx-1) === 0x0361) continue;
+                    bareCount++;
+                    if (bareCount <= 5) W(`[#163] ${code}.${k}: bare ASCII affricate "${a}" in IPA "${ipa}" — strict IPA requires tie-bar (Audit Task 163)`);
+                    break;
+                }
+            }
+        }
+    }
+    if (bareCount > 5) W(`[#163] (${bareCount - 5} more bare-affricate issues in 'ipa' rows — fix all)`);
+    I(`affricate tie-bar coverage: ${tieBarredCells}/${totalIpaCells} cells in 'ipa' rows contain U+0361 (Audit Task 163)`);
+}
+
+// === Reconstructed-form notation consistency (Audit Task 164) ===
+// Option C: surface keeps `*` reconstruction marker and `-` bound-stem suffix;
+// IPA strips both. Logographic-surface rows (Chinese characters as surface)
+// are exempt — they cannot carry `*`, so the IPA column is the only place to
+// signal reconstruction. Enforce only when surface uses Latin script.
+{
+    const dso = ctx.DATA_STATUS_OVERRIDES || {};
+    const reconCodes = codes.filter(c => {
+        const m = ctx.LANG_DATA[c]?.meta;
+        return (m && m.dataStatus === 'reconstructed') || dso[c] === 'reconstructed';
+    });
+    let inconsistencies = 0;
+    for (const code of reconCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const [s, i] = w[k];
+            if (s === '—' || i === '—' || !s || !i) continue;
+            // Skip logographic-surface rows: surface contains CJK characters
+            if (/[一-鿿]/.test(s)) continue;
+            const sStar = s.startsWith('*');
+            const iStar = i.startsWith('*');
+            const sDash = s.endsWith('-');
+            const iDash = i.endsWith('-');
+            if (sStar && iStar) {
+                inconsistencies++;
+                if (inconsistencies <= 5) W(`[#164] ${code}.${k}: both surface "${s}" and IPA "${i}" carry "*" — Option C strips from IPA (Audit Task 164)`);
+            }
+            if (sDash && iDash) {
+                inconsistencies++;
+                if (inconsistencies <= 5) W(`[#164] ${code}.${k}: both surface "${s}" and IPA "${i}" carry trailing "-" — Option C strips from IPA (Audit Task 164)`);
+            }
+        }
+    }
+    if (inconsistencies > 5) W(`[#164] (${inconsistencies - 5} more recon-notation issues — fix all)`);
+    I(`reconstructed-form notation: ${reconCodes.length} 'reconstructed' rows audited (Option C: */- in surface only) (Audit Task 164)`);
+}
+
 // === Row-fingerprint comparison (Audit Task 90) =====================
 // Detect duplicate / near-duplicate word rows so reviewers don't rely on
 // ad hoc scripts. Three checks:

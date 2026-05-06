@@ -1662,3 +1662,55 @@ Pass 8〜26 累計 **63 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 re
 - Task 150 Batch H/I: jrb (Anvita Abbi), nmn Taa (Traill)
 
 Pass 8〜27 累計 **64 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 reclassification + 5 座標分散 + 67+ family token 統一** (591 → 619)。
+
+## Pass 28 (2026-05-06)
+
+### Task 163 — ASCII affricate → IPA tie-bar (`pronunciationType: 'ipa'` 行のみ)
+Audit §14 (2026-04-21 から deferred) を Option C で実行。`pronunciationType: 'ipa'` 行のみが対象、`'broad'`/`'romanization'`/`'orthography'` は ASCII digraph 維持 (broad transcription として正当)。
+
+**変換規則** (longest-match 順):
+- `tsʰ` → `t͡sʰ` (U+0361 COMBINING DOUBLE INVERTED BREVE)
+- `tʃʰ`/`tɕʰ`/`tʂʰ` → `t͡ʃʰ`/`t͡ɕʰ`/`t͡ʂʰ`
+- `ts`/`dz`/`tʃ`/`dʒ`/`tɕ`/`dʑ`/`tʂ`/`dʐ` → tie-bar 版
+- 既に tie-bar 付きの位置 (前文字が U+0361) はスキップ
+
+**結果**: 73 言語 (am, ar, ar_iq, ar_sd, bg, bn, bo, cdo, cjy, cpx, cs, de, en_nz, eu, fa, gan, hak_cn, hak_hl, hak_tw, he, hi, hr, hsn, hu, it, iuu, ja, ja_aom, ja_hak, ja_hir, ja_kg, ja_kyo, ja_mvi, ja_oki, ja_osa, ja_rys, ja_sd, ko, ko_bus, ko_hg, ko_jeju, ko_jl, ko_kp, ko_yb, lo, mk, mnp, mt, nan, nan_qz, nan_te, nxq, pl, ru, sk, sl, sq, sr, th, th_isan, th_n, th_s, tji, uk, ur, vi, vi_c, wuu, wuu_nb, wuu_sz, wuu_wz, yue, zh) で **196 cells, 202 substitutions**。
+
+例:
+- `ja moon`: `tsɯki` → `t͡sɯki`
+- `ja father`: `tɕitɕi` → `t͡ɕit͡ɕi`
+- `de heart`: `hɛʁts` → `hɛʁt͡s`
+- `pl tree`: `ˈdʐɛvɔ` → `ˈd͡ʐɛvɔ`
+
+Validator `[#163]` 追加: bare ASCII affricate を `'ipa'` 行で検出すると WARN。Coverage line: `affricate tie-bar coverage: 214/1920 cells in 'ipa' rows contain U+0361`。
+
+### Task 164 — 再構形表記整合 (Option C)
+6 言語 (ine/pry/oko/okg/ko_gor/och) を audit。`/tmp/recon_audit.js` で surface vs IPA の `*` `-` 対応を全 cell 検査。
+
+**ine (Proto-Indo-European)**: 既に Option C compliant (surface に `*`、IPA は剥がす)。
+
+**pry (Proto-Ryukyuan)**: 全 17 セルで surface/IPA 両方に `*` (例: `*midu`/`*midu`)。Option C 適用 — IPA から `*` 除去:
+- `water:['*midu','*midu']` → `['*midu','midu']`
+- `eat:['*kam-','*kam']` → `['*kam-','kam']`
+- 17 cells 修正
+
+**oko/okg/ko_gor/och**: surface は漢字 (Hyangchal/Idu/Chinese characters)、IPA 側のみ `*` (例: `oko` `water:['勿','*muɾu']`)。漢字は `*` を担えないため IPA に reconstruction marker を残す — 別 convention として exempt 扱い。
+
+CONTRIBUTING.md C3 に "Reconstructed-form notation (Audit Task 164)" 節を追加。Validator `[#164]` 追加: Latin-script reconstruction 行で surface と IPA 両方に `*` または `-` がある場合 WARN。Logographic surface (CJK含む) は除外。Coverage line: `reconstructed-form notation: 3 'reconstructed' rows audited`。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 17 (変動なし)
+- Languages: 619
+- 新 INFO line × 2: `[#163]` `[#164]`
+- Cache-buster: data 96→97
+
+### 残（次回以降）
+- Task 144: UI 多言語化（別スレッド）
+- Task 159 残: Indo-Aryan/Iranian 並列パターン
+- Task 160 part 1 残: zh_tang/och per-cell scholarly tone → Chao bar
+- Task 162 残: thanks/hello 文化的 absence vs unsourced
+- Task 146 残: khb/shn/id/ms/tl/ta/te
+- Task 149 Batch 4: oto Otomi (Lastra)
+- Task 150 Batch H/I: jrb (Anvita Abbi), nmn Taa (Traill)
+
+Pass 8〜28 累計 **66 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 reclassification + 5 座標分散 + 67+ family token 統一 + 196 cells affricate tie-bar 化** (591 → 619)。
