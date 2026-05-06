@@ -388,6 +388,27 @@
         .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
         .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
 
+        /* Unattested cell: same shape/footprint as a normal .lang-label card
+           (so the connector line still aims at it correctly when the modal
+           opens), but visually muted with a dashed outline + italic dashes. */
+        .lang-label.unattested .word,
+        .lang-label.unattested .ipa { color: #a0a4ae; font-style: italic; }
+        .lang-label.unattested .name { color: #888; }
+        .lang-label.unattested {
+            background: rgba(255,255,255,0.55);
+            border: 1px dashed rgba(120,120,140,0.55);
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        .lang-label.unattested:hover { background: rgba(255,255,255,0.85); }
+        body.is-3d .lang-label.unattested {
+            background: rgba(0,0,0,0.45);
+            border-color: rgba(200,200,220,0.45);
+        }
+        body.is-3d .lang-label.unattested .word,
+        body.is-3d .lang-label.unattested .ipa { color: #c8ccd6; }
+        body.is-3d .lang-label.unattested .name { color: #b0b4be; }
+
         /* --- Language info panel --- */
         .lang-info-panel {
             position: absolute; top: 56px; right: 12px; z-index: 1010;
@@ -569,6 +590,18 @@
             writing-mode: vertical-lr; text-orientation: mixed;
             display: inline-block; line-height: 1.4; min-height: 2em;
         }
+        /* Globe (3D) unattested cell: muted text + dashed outline so the
+           language is identifiable but visibly distinct from attested data. */
+        .globe-label.unattested {
+            background: rgba(0,0,0,0.45);
+            border: 1px dashed rgba(200,200,220,0.45);
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        .globe-label.unattested .word,
+        .globe-label.unattested .ipa { color: #c8ccd6; font-style: italic; }
+        .globe-label.unattested .name { color: #b0b4be; }
+        .globe-label.unattested:hover { background: rgba(0,0,0,0.7); }
 
         /* --- Mobile responsive --- */
         @media (max-width: 768px) {
@@ -1742,42 +1775,23 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
-            // Render unattested-cell langs so the user can still see the
-            // language exists at that location even when its word for the
-            // current concept is '—'. At zoom <= 3 we keep the compact dot
-            // (otherwise low-zoom views would clutter); at zoom >= 4 we
-            // render the language name in a muted style so users can
-            // immediately identify *which* language the marker is.
-            // Per user request 2026-05-06: language existence must be
-            // recognizable, not just a generic dot.
+            // Render unattested-cell langs as full .lang-label cards with
+            // "—" placeholders for word + IPA. This (a) keeps the language
+            // identifiable at any zoom, (b) gives the modal connector line
+            // a target to attach to (it queries .lang-label[data-code]),
+            // and (c) matches user expectation when arriving via a tree
+            // link with z=7&lang=xxx — the cell is still visible.
             for (const code of unattestedLangs) {
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
-                const codeAttr = escapeHtml(code);
                 const displayName = getDisplayName(code, lang);
-                const ariaLabel = escapeHtml(displayName);
-                let icon;
-                if (zoom <= 3) {
-                    // Compact dot for far-zoom views to avoid label clutter
-                    icon = L.divIcon({
-                        className: 'unattested-icon',
-                        html: `<div class="unattested-marker" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}"></div>`,
-                        iconSize: [9, 9], iconAnchor: [4, 4],
-                    });
-                } else {
-                    // Muted name label so the language is clearly identifiable
-                    const nameHtml = escapeHtml(displayName);
-                    icon = L.divIcon({
-                        className: 'unattested-icon',
-                        html: `<div class="unattested-label" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${nameHtml}</div>`,
-                        iconSize: [0, 0], iconAnchor: [0, 0],
-                    });
-                }
-                const dotMarker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
-                dotMarker._langCode = code;
-                dotMarker.on('click', () => showLangInfo(code));
-                dotMarker.addTo(map);
-                markers.push(dotMarker);
+                const html = buildLabelHtml(code, '—', '—', displayName, '', 'lang-label unattested');
+                const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
+                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
+                marker._langCode = code;
+                marker.on('click', () => showLangInfo(code));
+                marker.addTo(map);
+                markers.push(marker);
             }
             // Re-apply selected highlight + connector after re-render
             // (markers are torn down and re-added each updateMarkers call).
@@ -1850,18 +1864,16 @@
 
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
             }
-            // 3D presence labels for unattested cells (mirrors 2D version).
-            // Per user request 2026-05-06: show the language name so users
-            // can identify which language exists at the marker, even when
-            // its word for the current concept is '—'.
+            // 3D unattested cells: full .globe-label cards with "—" placeholders
+            // (mirrors 2D version). Same shape as attested labels so the
+            // connector line picks them up via .globe-label[data-code=...].
             for (const code of unattestedLangs) {
                 if (!isActive(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const displayName = getDisplayName(code, lang);
-                const ariaLabel = escapeHtml(displayName);
                 const el = document.createElement('div');
-                el.innerHTML = `<div class="unattested-label" data-code="${escapeHtml(code)}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${escapeHtml(displayName)}</div>`;
+                el.innerHTML = buildLabelHtml(code, '—', '—', displayName, '', 'globe-label unattested');
                 el.firstChild.dataset.code = code;
                 el.firstChild.addEventListener('click', (e) => {
                     e.stopPropagation();

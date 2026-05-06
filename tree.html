@@ -157,6 +157,7 @@
 </div>
 
 <script src="wordmap_data.js?v=103"></script>
+<script src="meta_i18n_ext.js?v=8"></script>
 <script src="lang_names.js?v=12"></script>
 <script>
 (function () {
@@ -410,9 +411,45 @@
             'Central':'中央', 'Old':'古', 'Middle':'中世', 'Modern':'现代',
         },
     };
+    // Tree-specific labels for the synthetic root + the rare "Unclassified"
+    // fallback. These don't appear in meta.family, so translateMetaSmart()
+    // can't translate them. Minimal entry per UI lang.
+    const TREE_ROOT_I18N = {
+        en: { 'All Languages':'All Languages', 'Unclassified':'Unclassified' },
+        ja: { 'All Languages':'全言語', 'Unclassified':'未分類' },
+        ko: { 'All Languages':'전 언어', 'Unclassified':'미분류' },
+        zh: { 'All Languages':'所有语言', 'Unclassified':'未分类' },
+        yue:{ 'All Languages':'所有語言', 'Unclassified':'未分類' },
+        vi: { 'All Languages':'Tất cả ngôn ngữ', 'Unclassified':'Chưa phân loại' },
+        th: { 'All Languages':'ทุกภาษา', 'Unclassified':'ไม่ได้จำแนก' },
+        id: { 'All Languages':'Semua Bahasa', 'Unclassified':'Belum diklasifikasi' },
+        hi: { 'All Languages':'सभी भाषाएँ', 'Unclassified':'अवर्गीकृत' },
+        de: { 'All Languages':'Alle Sprachen', 'Unclassified':'Nicht klassifiziert' },
+        fr: { 'All Languages':'Toutes les langues', 'Unclassified':'Non classé' },
+        it: { 'All Languages':'Tutte le lingue', 'Unclassified':'Non classificato' },
+        es: { 'All Languages':'Todas las lenguas', 'Unclassified':'Sin clasificar' },
+        pt: { 'All Languages':'Todas as línguas', 'Unclassified':'Não classificado' },
+        ru: { 'All Languages':'Все языки', 'Unclassified':'Неклассифицировано' },
+        uk: { 'All Languages':'Усі мови', 'Unclassified':'Некласифіковано' },
+        ar: { 'All Languages':'كل اللغات', 'Unclassified':'غير مصنفة' },
+        he: { 'All Languages':'כל השפות', 'Unclassified':'לא מסווג' },
+        sw: { 'All Languages':'Lugha Zote', 'Unclassified':'Bila uainishwa' },
+    };
     function familyDisplayName(name) {
+        // 1. Tree-specific overrides (root + Unclassified)
+        const rootDict = TREE_ROOT_I18N[uiLang] || TREE_ROOT_I18N[uiLang.split('_')[0]];
+        if (rootDict && rootDict[name]) return rootDict[name];
+        // 2. Local FAMILY_NAMES_I18N — historically maintained ja/ko/zh sub-branch
+        //    overrides (e.g. 'East Slavic', dialect group names not in FAMILY_ATOMS)
         const dict = FAMILY_NAMES_I18N[uiLang] || FAMILY_NAMES_I18N[uiLang.split('_')[0]];
         if (dict && dict[name]) return dict[name];
+        // 3. Smart translator — uses META_I18N_ATOMS (FAMILY_ATOMS, country atoms,
+        //    geo atoms, etc.) shared with the wordmap. Covers ~17 UI langs at the
+        //    family-name level and decomposes compounds like 'East Slavic'.
+        if (uiLang !== 'en' && typeof translateMetaSmart === 'function') {
+            const t = translateMetaSmart(name, uiLang);
+            if (t && t !== name) return t;
+        }
         return name;
     }
 
@@ -581,7 +618,11 @@
             let line;
             if (isLeaf) {
                 const lang = LANG_DATA[child.code];
-                const params = lang ? `lang=${encodeURIComponent(child.code)}&z=7&lat=${lang.lat}&lng=${lang.lng}&g3d=0&ui=${uiLang}` : '';
+                // Historical languages route into the wordmap's "歴史言語"
+                // mode by appending hist=1; modern langs get hist=0.
+                const isHist = (typeof HIST_DESCENDANT !== 'undefined') &&
+                               Object.prototype.hasOwnProperty.call(HIST_DESCENDANT, child.code);
+                const params = lang ? `lang=${encodeURIComponent(child.code)}&z=7&lat=${lang.lat}&lng=${lang.lng}&g3d=0&hist=${isHist?'1':'0'}&ui=${uiLang}` : '';
                 line = '<span class="' + nodeClass + '" data-leaf="1">'
                     + '<span class="toggle">▶</span>'
                     + '<span class="label"><a href="wordmap.html#' + escapeHtml(params) + '">' + escapeHtml(child.name) + '</a></span>'
