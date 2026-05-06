@@ -569,9 +569,25 @@
                 g.attr('transform', event.transform);
                 lastTransform = event.transform;
                 applyMapLikeScale(event.transform.k);
+                relayoutRingsForZoom(event.transform.k);
             });
         svg.call(zoom);
         return { w, h };
+    }
+
+    // Live re-layout: recompute each node's radial distance based on the
+    // current zoom level, then update node and link positions in place
+    // (no transitions — needs to be cheap since this fires on every zoom event).
+    function relayoutRingsForZoom(k) {
+        if (!root || !gNodes) return;
+        const ringStep = currentRingStep(k);
+        root.each(d => { d.y = d.depth * ringStep; });
+        gNodes.selectAll('g.node').attr('transform', d => {
+            const angleDeg = d.x * 180 / Math.PI - 90;
+            return `rotate(${angleDeg}) translate(${d.y},0)`;
+        });
+        const linkPath = d3.linkRadial().angle(d => d.x).radius(d => d.y);
+        gLinks.selectAll('path.link').attr('d', linkPath);
     }
 
     // Map-like zoom: positions scale with k, but visual sizes (circle radius,
@@ -620,6 +636,18 @@
         node.children.forEach(c => collapseDeep(c, currentDepth + 1, maxDepth));
     }
 
+    // Base ring distance at zoom k=1 (pixels between depth levels).
+    const RING_STEP_BASE = 130;
+    // Compression curve: as zoom k grows, ring distance shrinks so the
+    // visual depth-to-depth gap stays roughly constant (or even shrinks
+    // slightly at very high zoom). With exponent 1.0 the visual distance
+    // is exactly constant (1/k * k = 1); >1 shrinks visually; <1 grows.
+    // 0.92 ≈ slight visual compression as the user zooms in.
+    const RING_COMPRESSION_EXP = 0.92;
+    function currentRingStep(k) {
+        return RING_STEP_BASE / Math.pow(Math.max(0.001, k), RING_COMPRESSION_EXP);
+    }
+
     // Helper for radial layout: convert (angle in radians, radius) → (x, y) in
     // SVG coordinates. Angle 0 = up (12 o'clock), increases clockwise.
     function polarToCartesian(angleRad, radius) {
@@ -631,21 +659,21 @@
         const nodes = root.descendants();
         const links = root.links();
 
-        // Compute layout. d3.tree (NOT cluster/dendrogram) places each node
-        // at a radius proportional to its DEPTH, so collapsed branches at
-        // depth 2 stay inside the ring of depth-3 leaves of an expanded
-        // sibling — instead of all leaves piling up on the outer ring.
-        // We then rescale d.y from "depth distance in tree-coords" to a
-        // radius that scales with the deepest visible level.
+        // Compute layout. d3.tree places each node at a radius proportional
+        // to its DEPTH, so collapsed branches at depth 2 stay inside the
+        // ring of depth-3 leaves of an expanded sibling.
         const visibleDepths = d3.max(nodes, d => d.depth) || 1;
-        const ringStep = 130;  // pixels between depth levels
         const treeLayoutR = d3.tree()
-            .size([2 * Math.PI, ringStep * visibleDepths])
+            .size([2 * Math.PI, RING_STEP_BASE * visibleDepths])
             .separation((a, b) => (a.parent === b.parent ? 1 : 2) / Math.max(1, a.depth));
         treeLayoutR(root);
-        // After layout, force d.y = depth * ringStep so each depth gets its
-        // own concentric ring. d3.tree's default y is depth-based but with
-        // its own scaling; we override for predictable concentric rings.
+        // After layout, force d.y = depth * compressed-ring-step so each
+        // depth gets its own concentric ring AT A SHRINKING DISTANCE as
+        // the zoom level increases (per user 「拡大すると居地が縮む」).
+        // Visual ring-to-ring distance = (RING_STEP_BASE / k) * k = constant
+        // when compression = 1/k, or shrinks when compression < 1/k.
+        const k = (lastTransform && lastTransform.k) || 1;
+        const ringStep = currentRingStep(k);
         root.each(d => { d.y = d.depth * ringStep; });
 
         // === Links === Smooth Bezier curves between parent and child via
