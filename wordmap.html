@@ -2767,9 +2767,9 @@
             // Audit Task 76: pronunciation-type note before the word table
             // tells the user what kind of notation the IPA column actually is.
             if (m.pronunciationType && PRONUNCIATION_LABEL[m.pronunciationType]) {
-                const ptLabel = PRONUNCIATION_LABEL[m.pronunciationType][uiLang]
-                    || PRONUNCIATION_LABEL[m.pronunciationType].en;
-                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
+                const ptObj = PRONUNCIATION_LABEL[m.pronunciationType];
+                const ptLabel = ptObj[uiLang] || ptObj[uiLang.split('_')[0]] || ptObj.en;
+                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER[uiLang.split('_')[0]] || PRONUNCIATION_HEADER.en;
                 const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
                 html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
             }
@@ -2781,7 +2781,7 @@
             if (m.surfaceType && SURFACE_TYPE_LABEL[m.surfaceType]) {
                 const stObj = SURFACE_TYPE_LABEL[m.surfaceType];
                 const stLabel = stObj[uiLang] || stObj[uiLang.split('_')[0]] || stObj.en;
-                const stHeader = SURFACE_TYPE_HEADER[uiLang] || SURFACE_TYPE_HEADER.en;
+                const stHeader = SURFACE_TYPE_HEADER[uiLang] || SURFACE_TYPE_HEADER[uiLang.split('_')[0]] || SURFACE_TYPE_HEADER.en;
                 const tone = (m.surfaceType === 'mixed' || m.surfaceType === 'unknown' || m.surfaceType === 'phonetic') ? '#a04020' : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(stHeader)}:</b> ${escapeHtml(stLabel)}</div>`;
             }
@@ -2792,18 +2792,19 @@
                 const lbLabel = LOCATION_BASIS_LABEL[locBasis][uiLang]
                     || LOCATION_BASIS_LABEL[locBasis][uiLang.split('_')[0]]
                     || LOCATION_BASIS_LABEL[locBasis].en;
-                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER.en;
+                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER[uiLang.split('_')[0]] || LOCATION_BASIS_HEADER.en;
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:#888"><b>${escapeHtml(lbHeader)}:</b> ${escapeHtml(lbLabel)}</div>`;
             }
             // Audit Task 79: coverage flag for regional variant rows
             if (m.coverage && COVERAGE_LABEL[m.coverage]) {
-                let cvLabel = COVERAGE_LABEL[m.coverage][uiLang] || COVERAGE_LABEL[m.coverage].en;
+                const cvObj = COVERAGE_LABEL[m.coverage];
+                let cvLabel = cvObj[uiLang] || cvObj[uiLang.split('_')[0]] || cvObj.en;
                 if (m.baseLang) {
                     const baseLang = LANG_DATA[m.baseLang];
                     const baseName = baseLang ? ((LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.baseLang] || baseLang.name) : m.baseLang;
                     cvLabel = cvLabel.replace('{base}', baseName);
                 }
-                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
+                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER[uiLang.split('_')[0]] || COVERAGE_HEADER.en;
                 const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
                 // Audit Task 88: show coverageNote when present (translated)
@@ -2815,7 +2816,7 @@
             if (m.reviewStatus && REVIEW_STATUS_LABEL[m.reviewStatus]) {
                 const rsObj = REVIEW_STATUS_LABEL[m.reviewStatus];
                 const rsLabel = rsObj[uiLang] || rsObj[uiLang.split('_')[0]] || rsObj.en;
-                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER.en;
+                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER[uiLang.split('_')[0]] || REVIEW_STATUS_HEADER.en;
                 const rsTone = (m.reviewStatus === 'needs-rebuild') ? '#a04020'
                             : (m.reviewStatus === 'source-checked') ? '#3a8a3a'
                             : '#888';
