@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 617 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 627 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -3592,6 +3592,9 @@ const DATA_STATUS_OVERRIDES = {
     ett:       'fragmentary',      // Etruscan — ~13K inscriptions, partly understood
     xht:       'fragmentary',      // Hattic — Hittite-Hattic bilinguals only
     txr:       'fragmentary',      // Tartessian — ~95 inscriptions, decipherment disputed
+    // Pass 35: 2 critically-endangered isolates with fragmentary documentation
+    yuc:       'fragmentary',      // Yuchi — ~5 fluent speakers; Linn 2001 + Wagner 1934 only
+    kgg:       'fragmentary',      // Kusunda — ~3 partial speakers; Watters 2006 only
 };
 
 // === HIST_DESCENDANT (Audit Task 122) ================================

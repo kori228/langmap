@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
-<meta name="description" content="Browse 617 languages organized by their genealogical family tree.">
+<meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
 <link rel="stylesheet" href="styles.css?v=54">
 <style>
     html, body { margin: 0; height: 100%; }
@@ -149,8 +149,8 @@
 </div>
 <div class="tooltip" id="tooltip"></div>
 
-<script src="wordmap_data.js?v=102"></script>
-<script src="lang_names.js?v=11"></script>
+<script src="wordmap_data.js?v=103"></script>
+<script src="lang_names.js?v=12"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script>
 (function () {
@@ -253,7 +253,7 @@
 
     // Lazy-load wordmap_meta.js
     const metaScript = document.createElement('script');
-    metaScript.src = 'wordmap_meta.js?v=55';
+    metaScript.src = 'wordmap_meta.js?v=56';
     metaScript.onload = init;
     metaScript.onerror = () => { document.getElementById('loading').textContent = 'Failed to load wordmap_meta.js.'; };
     document.head.appendChild(metaScript);
