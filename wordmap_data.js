@@ -294,7 +294,15 @@ const LANG_DATA = {
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะวัน','ta˨˩wan˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิ๋น','kin˩˧'], drink:['ดื่ม','dɯːm˥˩'], love:['ฮัก','hak˧˥'], heart:['ใจ๋','t͡ɕaj˩˧'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['เฮือน','hɯːan˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ต๋า','taː˩˧'], hello:['สวัสดี','sa˨˩wat˨˩diː˥'], thanks:['ขอบคุณ','kʰɔːp˨˩kʰun˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
   th_s: { name: 'Thai (Southern)', native: 'ภาษาใต้', lat: 7.88, lng: 98.39,
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะวัน','ta˨˩wan˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิน','kin˥'], drink:['ดื่ม','dɯːm˥˩'], love:['รัก','rak˧˥'], heart:['ใจ','t͡ɕaj˥'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['บ้าน','baːn˧˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ตา','taː˥'], hello:['สวัสดี','sa˨˩wat˨˩diː˥'], thanks:['ขอบคุณ','kʰɔːp˨˩kʰun˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
-  za: { name: 'Zhuang', native: '話僮 (Vahcuengh)', lat: 23.16, lng: 108.27, // Wuming (western Guangxi Zhuang heartland)
+  za: { name: 'Zhuang', native: 'Vahcuengh', lat: 23.16, lng: 108.27, // Wuming (western Guangxi Zhuang heartland)
+    // altWordForms — Sawndip (古壮字 / 方块壮字) variants for cells where za.wiki
+    // documents specific historical character forms. Sawndip is regionally
+    // unstandardised, so multiple variants per word are normal. Sources:
+    // za.wikipedia.org per-word entries; Sawndip Sawdenj 1989 (古壮字字典).
+    altWordForms: {
+      water: [{ form: '淰 / 𭜯 / 淋', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Raemx; Sawndip Sawdenj 1989' }],
+      house: [{ form: '𭓨 / 兰 / 栏', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Ranz; Sawndip Sawdenj 1989' }],
+    },
     words: { water:['raemx','ɣam˦'], fire:['feiz','fei˧˥'], sun:['daengzngoenz','taːŋ˧˥ŋɯn˧˥'], moon:['ndaen','daːn˥'], mother:['meh','me˨'], father:['boh','po˨'], eat:['gwn','kʷɤn˥'], drink:['gwnraemx','kʷɤn˥ɣam˦'], love:['gyaez','kjai˧˥'], heart:['sim','ɕim˥'], tree:['faex','fai˦'], house:['ranz','ɣan˧˥'], dog:['ma','maː˥'], cat:['meuz','meu˧˥'], hand:['fwngz','fɯŋ˧˥'], eye:['da','taː˥'], hello:['mwngz ndei','mɯŋ˧˥dei˥'], thanks:['dwgrengz mwngz','tuk˧ɣeŋ˧˥mɯŋ˧˥'], one:['it','it˧'], good:['ndei','dei˥'] }},
   hmn: { name: 'Hmong', native: 'Hmoob', lat: 26.65, lng: 104.25,
     words: { water:['dej','te˧'], fire:['taws','tɑ˧˩'], sun:['hnub','nu˧˥'], moon:['hli','ɬi˥'], mother:['niam','niã˥'], father:['txiv','tɕi˧˩'], eat:['noj','nɔ˧'], drink:['haus','hɑu˧˩'], love:['hlub','ɬu˧˥'], heart:['siab','ɕiã˧˥'], tree:['ntoo','tɔː˥'], house:['tsev','tɕɛ˧˩'], dog:['dev','te˧˩'], cat:['miv','mi˧˩'], hand:['tes','te˧˩'], eye:['qhov muag','kʰɔ˧˩muã˧'], hello:['nyob zoo','ɲɔ˧˥tɕɔː˥'], thanks:['ua tsaug','uã˥tɕɑu˧'], one:['ib','i˧˥'], good:['zoo','tɕɔː˥'] }},
@@ -2802,7 +2810,7 @@ const LANG_DATA = {
   sad: { name: 'Sandawe', native: 'Sandawe', lat: -4.91, lng: 35.78, // Kondoa
     words: { water:['tsʼa','tsʼa'], fire:['cʼoo','tsʼoː'], sun:['kʼɔɔ','kʼɔː'], moon:['tsoa','tsoa'], mother:['yei','jei'], father:['ai','ai'], eat:['ǁee','ǁeː'], drink:['ʔee','ʔeː'], love:['kalokisi','kalokisi'], heart:['ǁʼampoo','ǁʼampoː'], tree:['hetsʼee','hetsʼeː'], house:['ge','ɡe'], dog:['ǀɔɔ','ǀɔː'], cat:['misho','miʃo'], hand:['kxʼaa','kxʼaː'], eye:['gaa','ɡaː'], hello:['gabaeesa','ɡabaeːsa'], thanks:['musʼokoyo','muʃokojo'], one:['tsʼekʼe','tsʼekʼe'], good:['tlʼobe','tɬʼobe'] }},
   // Tai-Kadai (China, related to Zhuang)
-  pcc: { name: 'Bouyei', native: 'Haausqyaix / 布依', lat: 26.58, lng: 106.71, // Anshun
+  pcc: { name: 'Bouyei', native: 'Haausqyaix', lat: 26.58, lng: 106.71, // Anshun
     words: { water:['raamx','raːm˧˩'], fire:['feih','fei˧˩'], sun:['ngonzbyaaiz','ŋon˩˩pjaːi˩˩'], moon:['ronh','roːn˧˩'], mother:['meeh','meː˧˩'], father:['poh','poː˧˩'], eat:['gianl','ɡian˧˥'], drink:['gunl','ɡuŋ˧˥'], love:['gaais','ɡaːi˥˧'], heart:['saamh','saːm˧˩'], tree:['faix','fai˧˩'], house:['ranz','raŋ˩˩'], dog:['ma','ma˨˦'], cat:['meeuq','meːu˧˧'], hand:['faengz','faŋ˩˩'], eye:['daa','daː˨˦'], hello:['meez ndil','meː˩˩ ndi˧˥'], thanks:['gangzhainh','ɡaŋ˩˩haiŋ˧˩'], one:['ndeeul','ndeːu˧˥'], good:['ndil','ndi˧˥'] },
     wordEvidence: {
       water:  { evidence: 'direct', source: 'Bouyei standard pinyin tone letters (Wikipedia + Omniglot); -x = tone 4 (˧˩)' },
@@ -3113,7 +3121,7 @@ const LANG_DATA = {
   // zkt Khitan wordEvidence: Codex 3 noted 17/20 cells are too strong for partly-
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
-  zkt: { name: 'Khitan', native: '𘱿𘱤 (qid.i)', lat: 43.97, lng: 119.41,
+  zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
     // scriptDisplayPolicy (Audit Task 119): Khitan Small Script
     // (U+18B00–U+18CFF, Unicode 13.0, ~470 chars in the Noto Sans Khitan
     // Small Script font) is only partially deciphered. Most published
