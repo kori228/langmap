@@ -573,17 +573,29 @@ function detectUILang() {
     return 'en';
 }
 
+// Native-name labels for the header UI-lang dropdown. Same set + spelling
+// as wordmap.html's WM_UI_LABELS so the three pages show identical options.
+// (Pre-fix: this dropdown reused langName() over the LANGUAGES data list,
+// which produced labels like "日本語(標準)" instead of the clean "日本語"
+// shown on wordmap/tree.html.)
+const HEADER_UI_LANG_NATIVE = {
+    ja:'日本語', ko:'한국어', zh:'中文', yue:'粤语', vi:'Tiếng Việt',
+    th:'ไทย', id:'Indonesia', hi:'हिन्दी', en:'English', de:'Deutsch',
+    fr:'Français', it:'Italiano',
+    es_eu:'Español(ES)', es_mx:'Español(MX)',
+    pt_eu:'Português(PT)', pt_br:'Português(BR)',
+    ru:'Русский', uk:'Українська', ar:'العربية', he:'עברית', sw:'Kiswahili',
+};
 function initUILangSelect() {
     const sel = document.getElementById('header-ui-lang');
     if (!sel) return;
-    LANGUAGES.forEach(lang => {
-        if (UI_STRINGS[lang.code]) {
-            const opt = document.createElement('option');
-            opt.value = lang.code;
-            opt.textContent = langName(lang.code);
-            sel.appendChild(opt);
-        }
-    });
+    for (const code of Object.keys(HEADER_UI_LANG_NATIVE)) {
+        if (!UI_STRINGS[code]) continue;
+        const opt = document.createElement('option');
+        opt.value = code;
+        opt.textContent = HEADER_UI_LANG_NATIVE[code];
+        sel.appendChild(opt);
+    }
     sel.value = currentUILang;
     sel.addEventListener('change', () => {
         currentUILang = sel.value;
@@ -647,7 +659,13 @@ function applyUILang() {
     const uiSel = document.getElementById('header-ui-lang');
     if (uiSel) {
         uiSel.value = currentUILang;
-        Array.from(uiSel.options).forEach(opt => { opt.textContent = langName(opt.value); });
+        // Labels stay in each option's own native name (HEADER_UI_LANG_NATIVE)
+        // — same convention as wordmap/tree.html. Don't re-translate via the
+        // current UI lang's LANG_NAMES (that was the source of "日本語(標準)"
+        // showing up in the dropdown).
+        Array.from(uiSel.options).forEach(opt => {
+            opt.textContent = HEADER_UI_LANG_NATIVE[opt.value] || opt.value;
+        });
     }
     // Set RTL on body for Arabic/Hebrew UI
     document.body.dir = (currentUILang === 'ar' || currentUILang === 'he') ? 'rtl' : 'ltr';
