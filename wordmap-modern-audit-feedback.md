@@ -1584,3 +1584,39 @@ modern 言語で `cat = '—'` の行は **0 件**。すべて歴史言語の ex
 - **Task 150 Batch H/I**: jrb (Anvita Abbi), nmn Taa (Traill)
 
 Pass 8〜25 累計 **62 タスク対応 + 28 言語追加 + 4 言語 IPA rebuild + 4 言語 reclassification + 5 座標分散** (591 → 619)。
+
+---
+
+## Pass 26 Sequential Cleanup (2026-05-06 part 19)
+
+### Task 159 — Family taxonomy 大規模統一
+
+| 統一前 | 統一後 | 件数 |
+|---|---|---|
+| `Sino-Tibetan (Min Nan\|Wu\|Yue)` | `Sinitic (Min Nan\|Wu\|Yue)` | 3 行 (nan_pn/wuu_nb/yue_gz) |
+| `Niger-Congo (Bantu, ...)` | `Atlantic-Congo (Bantu, ...)` | 28 行 → 32 行 (4 既存 + 28 統一) |
+| `Indo-European (Romance, Gallo-Romance\|Iberian)` | `Romance (Gallo-Romance\|Iberian)` | 2 行 (fro/osp) |
+| `Indo-European (Iranian, ...)` | `Iranian (...)` | 9 行 → 21 行統一 |
+
+`lang-filter.js` の family-default も新エイリアスを追加 (`Sinitic (Min Nan/Wu/Yue)` の SVO/tonal/isolating)、`Niger-Congo (Bantu, ...)` 全件を `Atlantic-Congo (Bantu, ...)` にリネーム。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 17 (変動なし)
+- Languages: 619
+- Cache-buster: filter 24→25, meta 47→48
+
+### Task 159 残（要 policy 決定）
+- macro Sinitic 行 (zh/yue/nan/hak_cn/cdo) は依然 `Sino-Tibetan` (no parens)。Audit recommends → `Sinitic (Mandarin)` 等。各行ごとの sub-branch 確定が必要 (zh = Mandarin, yue = Yue 等)
+- Saami → 既に Pass 25 で統一済 (`Uralic (Saami)`)
+
+### 残（次回以降）
+- Task 159 残: Sinitic 上位行 sub-branch 確定 + Indo-Aryan/Iranian 並列パターン点検
+- Task 160 残: zh_tang/och Baxter-Sagart 73+ cells (Option 選択要)
+- Task 162 残: thanks/hello unattested 文化的 vs unsourced
+- Task 163: ASCII affricate → IPA tie-bar
+- Task 164: 再構形表記整合
+- Task 144: UI 多言語化（別スレッド）
+- Task 146 残: khb/shn/id/ms/tl/ta/te (要 source または policy 確定)
+- Task 149/150: oto/jrb/nmn (外部出典待ち)
+
+Pass 8〜26 累計 **63 タスク対応 + 28 言語追加 + 4 IPA rebuild + 4 reclassification + 5 座標分散 + 60+ family token 統一** (591 → 619)。
