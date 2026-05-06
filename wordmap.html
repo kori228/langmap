@@ -2381,8 +2381,11 @@
                     // which census/year it came from.
                     // Localize speakerBasis values across all UI langs.
                     const SPEAKER_BASIS_LBL = {
-                        'L1':                  { en:'L1', ja:'L1', ko:'L1', zh:'L1', yue:'L1', vi:'L1', th:'L1', id:'L1', hi:'L1', de:'L1', fr:'L1', it:'L1', es:'L1', pt:'L1', ru:'L1', uk:'L1', ar:'L1', he:'L1', sw:'L1' },
-                        'L2':                  { en:'L2', ja:'L2', ko:'L2', zh:'L2', yue:'L2', vi:'L2', th:'L2', id:'L2', hi:'L2', de:'L2', fr:'L2', it:'L2', es:'L2', pt:'L2', ru:'L2', uk:'L2', ar:'L2', he:'L2', sw:'L2' },
+                        // L1/L2: kept as conventional 'L1'/'L2' in scripts where
+                        // the abbreviation reads natively (en/de/fr/it/es/pt/id/sw),
+                        // localized in CJK/Cyrillic/Indic/Thai/Vietnamese/Arabic/Hebrew.
+                        'L1':                  { en:'L1', ja:'母語',     ko:'모어',      zh:'母语',     yue:'母語',     vi:'tiếng mẹ đẻ',      th:'ภาษาแม่',      id:'L1', hi:'मातृभाषा',     de:'L1', fr:'L1', it:'L1', es:'L1', pt:'L1', ru:'родной язык',  uk:'рідна мова',  ar:'اللغة الأم',     he:'שפת אם',     sw:'L1' },
+                        'L2':                  { en:'L2', ja:'第二言語', ko:'제2언어',   zh:'第二语言', yue:'第二語言', vi:'ngôn ngữ thứ hai', th:'ภาษาที่สอง',  id:'L2', hi:'दूसरी भाषा',  de:'L2', fr:'L2', it:'L2', es:'L2', pt:'L2', ru:'второй язык', uk:'друга мова', ar:'اللغة الثانية', he:'שפה שנייה', sw:'L2' },
                         'total':               { en:'total',     ja:'合計',     ko:'합계',     zh:'合计',    yue:'合計',    vi:'tổng',         th:'รวม',          id:'total',          hi:'कुल',           de:'gesamt',     fr:'total',     it:'totale',     es:'total',      pt:'total',     ru:'всего',        uk:'усього',     ar:'إجمالي',     he:'סה"כ',       sw:'jumla' },
                         'aggregate':           { en:'aggregate', ja:'総計',     ko:'총계',     zh:'综合',    yue:'綜合',    vi:'tổng hợp',     th:'รวมทั้งหมด',   id:'agregat',        hi:'समग्र',         de:'aggregiert', fr:'agrégé',    it:'aggregato',  es:'agregado',   pt:'agregado',  ru:'совокупно',    uk:'сукупно',    ar:'إجمالي',     he:'מצרפי',     sw:'jumlisho' },
                         'regional-population': { en:'regional-population', ja:'地域人口', ko:'지역 인구', zh:'地区人口', yue:'地區人口', vi:'dân số vùng', th:'ประชากรในภูมิภาค', id:'populasi regional', hi:'क्षेत्रीय जनसंख्या', de:'Regionsbevölkerung', fr:'population régionale', it:'popolazione regionale', es:'población regional', pt:'população regional', ru:'население региона', uk:'населення регіону', ar:'سكان المنطقة', he:'אוכלוסיית האזור', sw:'idadi ya watu wa eneo' },
