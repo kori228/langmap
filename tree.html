@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Family Tree — LangMap</title>
+<meta name="description" content="Browse 619 languages organized by their genealogical family tree.">
+<link rel="stylesheet" href="styles.css?v=54">
+<style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #222; background: #fafbfc; }
+    .site-header-bar {
+        position: sticky; top: 0; z-index: 10; background: #fff;
+        padding: 8px 16px; border-bottom: 1px solid #e0e0e0;
+        display: flex; align-items: center; gap: 18px;
+    }
+    .site-header-bar .logo { font-weight: 700; color: #1a73e8; text-decoration: none; font-size: 16px; }
+    .header-nav { display: flex; align-items: center; gap: 6px; flex: 1; font-size: 13px; }
+    .header-nav-link, .header-nav-current { color: #444; text-decoration: none; padding: 4px 8px; border-radius: 4px; }
+    .header-nav-link:hover { background: #f1f3f4; }
+    .header-nav-current { font-weight: 600; color: #1a73e8; background: #e8f0fe; }
+    .nav-sep { color: #ccc; }
+    .header-url { color: #888; font-size: 12px; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    h1 { font-size: 22px; margin: 16px 0 4px; }
+    .subtitle { color: #666; font-size: 13px; margin: 0 0 16px; }
+    .controls {
+        display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;
+        align-items: center;
+    }
+    .controls input[type="text"] {
+        flex: 1; min-width: 180px; padding: 6px 10px; font-size: 13px;
+        border: 1px solid #d0d0d0; border-radius: 4px; background: #fff;
+    }
+    .controls button {
+        padding: 6px 12px; font-size: 12px; border: 1px solid #d0d0d0;
+        background: #fff; color: #444; border-radius: 4px; cursor: pointer;
+    }
+    .controls button:hover { background: #f1f3f4; }
+    .stats { color: #888; font-size: 12px; margin-left: auto; }
+    .tree { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.7; }
+    .tree ul { list-style: none; padding-left: 18px; margin: 0; }
+    .tree > ul { padding-left: 0; }
+    .tree li { position: relative; }
+    .node { display: inline-block; cursor: pointer; user-select: none; padding: 1px 4px; border-radius: 3px; }
+    .node:hover { background: #f1f3f4; }
+    .node .toggle { display: inline-block; width: 12px; color: #888; font-size: 10px; transform: translateY(-1px); }
+    .node.expanded > .toggle::before { content: '▾'; }
+    .node.collapsed > .toggle::before { content: '▸'; }
+    .node.leaf > .toggle { visibility: hidden; }
+    .node .label { font-weight: 600; color: #333; }
+    .node .count { color: #888; font-size: 11px; margin-left: 4px; }
+    .lang-leaf { color: #444; }
+    .lang-leaf a { color: #1a73e8; text-decoration: none; }
+    .lang-leaf a:hover { text-decoration: underline; }
+    .lang-leaf .native-name { color: #888; font-size: 12px; margin-left: 6px; }
+    .lang-leaf .code { color: #aaa; font-size: 11px; margin-left: 6px; font-family: monospace; }
+    .lang-leaf.match { background: #fff8d8; }
+    li.collapsed > ul { display: none; }
+    .empty { color: #888; padding: 20px; text-align: center; }
+    @media (max-width: 600px) {
+        .container { padding: 10px; }
+        .tree { font-size: 12px; line-height: 1.6; }
+    }
+</style>
+</head>
+<body>
+<div class="site-header-bar">
+    <a href="wordmap.html" class="logo">LangMap</a>
+    <nav class="header-nav">
+        <a href="index.html" class="header-nav-link">Word Order</a>
+        <span class="nav-sep">/</span>
+        <a href="wordmap.html" class="header-nav-link">Word Map</a>
+        <span class="nav-sep">/</span>
+        <span class="header-nav-current">Tree</span>
+    </nav>
+    <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
+</div>
+
+<div class="container">
+    <h1>Language Family Tree</h1>
+    <p class="subtitle" id="subtitle">Loading…</p>
+    <div class="controls">
+        <input type="text" id="search" placeholder="🔍 Filter by language name or code…" autocomplete="off">
+        <button type="button" id="expand-all">Expand all</button>
+        <button type="button" id="collapse-all">Collapse all</button>
+        <span class="stats" id="stats"></span>
+    </div>
+    <div class="tree" id="tree-root">Loading data…</div>
+</div>
+
+<script src="wordmap_data.js?v=99"></script>
+<script src="lang_names.js?v=10"></script>
+<script>
+(function () {
+    'use strict';
+    if (typeof LANG_DATA === 'undefined') {
+        document.getElementById('tree-root').innerHTML = '<div class="empty">Failed to load LANG_DATA.</div>';
+        return;
+    }
+    // Lazy-load wordmap_meta.js (full meta needed for family strings)
+    const metaScript = document.createElement('script');
+    metaScript.src = 'wordmap_meta.js?v=53';
+    metaScript.onload = init;
+    metaScript.onerror = () => {
+        document.getElementById('tree-root').innerHTML = '<div class="empty">Failed to load wordmap_meta.js.</div>';
+    };
+    document.head.appendChild(metaScript);
+
+    // Higher-level family promotion. Branches like "Germanic" or "Slavic" are
+    // attested in the data without their parent ("Indo-European"). Adding the
+    // parent here gives a single connected tree per macro-family.
+    const FAMILY_PROMOTE = {
+        // Indo-European branches
+        'Germanic': 'Indo-European',
+        'Romance': 'Indo-European',
+        'Slavic': 'Indo-European',
+        'Indo-Aryan': 'Indo-European',
+        'Iranian': 'Indo-European',
+        'Celtic': 'Indo-European',
+        'Hellenic': 'Indo-European',
+        'Albanian': 'Indo-European',
+        'Armenian': 'Indo-European',
+        'Baltic': 'Indo-European',
+        'Anatolian': 'Indo-European',
+        'Tocharian': 'Indo-European',
+        // Sino-Tibetan
+        'Sinitic': 'Sino-Tibetan',
+        'Tibeto-Burman': 'Sino-Tibetan',
+        'Bodish': 'Sino-Tibetan',
+        // Atlantic-Congo
+        'Bantu': 'Atlantic-Congo',
+        'Mel': 'Atlantic-Congo',
+        'Kru': 'Atlantic-Congo',
+        'Gur': 'Atlantic-Congo',
+        'Kwa': 'Atlantic-Congo',
+        'Volta-Niger': 'Atlantic-Congo',
+        'Adamawa': 'Atlantic-Congo',
+        // Afro-Asiatic
+        'Semitic': 'Afro-Asiatic',
+        'Cushitic': 'Afro-Asiatic',
+        'Berber': 'Afro-Asiatic',
+        'Chadic': 'Afro-Asiatic',
+        'Egyptian': 'Afro-Asiatic',
+        // Tai-Kadai (Kra-Dai is the modern term, but legacy data uses both)
+        'Tai': 'Kra-Dai',
+        'Hlai': 'Kra-Dai',
+        'Kam-Sui': 'Kra-Dai',
+        // Austronesian
+        'Polynesian': 'Austronesian',
+        'Micronesian': 'Austronesian',
+        'Malayo-Polynesian': 'Austronesian',
+        'Formosan': 'Austronesian',
+        // Nilo-Saharan
+        'Nilotic': 'Nilo-Saharan',
+        'Saharan': 'Nilo-Saharan',
+        'Songhai': 'Nilo-Saharan',
+    };
+
+    // Parse "Atlantic-Congo (Bantu, JE Runyakitara)" → ['Atlantic-Congo','Bantu','JE Runyakitara']
+    function parseFamilyPath(famStr) {
+        if (!famStr) return ['Unclassified'];
+        // Strip outer "(…)" and split on commas
+        const m = famStr.match(/^([^()]+?)(?:\s*\(([^)]+)\))?$/);
+        if (!m) return [famStr];
+        const top = m[1].trim();
+        const inner = (m[2] || '').trim();
+        const subs = inner ? inner.split(',').map(s => s.trim()).filter(Boolean) : [];
+        let path = [top, ...subs];
+        // Promote to higher-level family if applicable
+        if (FAMILY_PROMOTE[path[0]]) path.unshift(FAMILY_PROMOTE[path[0]]);
+        return path;
+    }
+
+    // Build a nested tree: { children: Map<name,node>, langs: [code, code, ...] }
+    function buildTree() {
+        const root = { name: '(root)', children: new Map(), langs: [] };
+        for (const code of Object.keys(LANG_DATA)) {
+            const lang = LANG_DATA[code];
+            const fam = (lang.meta && lang.meta.family) || 'Unclassified';
+            const path = parseFamilyPath(fam);
+            let node = root;
+            for (const segment of path) {
+                if (!node.children.has(segment)) {
+                    node.children.set(segment, { name: segment, children: new Map(), langs: [] });
+                }
+                node = node.children.get(segment);
+            }
+            node.langs.push(code);
+        }
+        return root;
+    }
+
+    function countLangs(node) {
+        let n = node.langs.length;
+        for (const child of node.children.values()) n += countLangs(child);
+        return n;
+    }
+
+    let uiLang = 'en';
+    try {
+        // Pick UI lang from URL or localStorage to share with main map
+        const params = new URLSearchParams(location.search || location.hash.replace(/^#/, ''));
+        const ui = params.get('ui') || localStorage.getItem('wm.uiLang');
+        if (ui && typeof LANG_NAMES !== 'undefined' && LANG_NAMES[ui]) uiLang = ui;
+    } catch (e) {}
+
+    function escapeHtml(s) {
+        return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function langDisplayName(code) {
+        const names = (typeof LANG_NAMES !== 'undefined') && (LANG_NAMES[uiLang] || LANG_NAMES.en) || {};
+        return names[code] || (LANG_DATA[code] && LANG_DATA[code].name) || code;
+    }
+
+    function renderNode(node, isRoot) {
+        let html = '';
+        // Sort children alphabetically by name; sort lang leaves by display name
+        const childEntries = Array.from(node.children.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+        const langSorted = node.langs.slice().sort((a, b) =>
+            langDisplayName(a).localeCompare(langDisplayName(b))
+        );
+
+        if (!isRoot) {
+            // Parent node line is rendered by the caller (inside <li>); this function
+            // is called for descendants. We render <ul> with child <li>s only.
+        }
+
+        html += '<ul>';
+        for (const [name, child] of childEntries) {
+            const total = countLangs(child);
+            const initialCollapsed = total > 25;  // collapse big subtrees by default
+            html += '<li class="' + (initialCollapsed ? 'collapsed' : '') + '">';
+            html += '<span class="node ' + (initialCollapsed ? 'collapsed' : 'expanded') + '">';
+            html += '<span class="toggle"></span>';
+            html += '<span class="label">' + escapeHtml(name) + '</span>';
+            html += '<span class="count">(' + total + ')</span>';
+            html += '</span>';
+            html += renderNode(child, false);
+            html += '</li>';
+        }
+        for (const code of langSorted) {
+            const lang = LANG_DATA[code];
+            const display = langDisplayName(code);
+            const native = lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '';
+            html += '<li class="lang-leaf" data-code="' + escapeHtml(code) + '" data-search="' + escapeHtml((display + ' ' + (lang.native || '') + ' ' + code).toLowerCase()) + '">';
+            html += '<span class="node leaf"><span class="toggle"></span>';
+            html += '<a href="wordmap.html#lang=' + encodeURIComponent(code) + '">' + escapeHtml(display) + '</a>';
+            html += native;
+            html += '<span class="code">[' + escapeHtml(code) + ']</span>';
+            html += '</span>';
+            html += '</li>';
+        }
+        html += '</ul>';
+        return html;
+    }
+
+    function init() {
+        const tree = buildTree();
+        const totalLangs = countLangs(tree);
+        document.getElementById('subtitle').textContent =
+            totalLangs + ' languages organized by genealogical family. Click a family to expand; click a language to open its modal on the map.';
+        document.getElementById('stats').textContent = totalLangs + ' langs';
+        const root = document.getElementById('tree-root');
+        root.innerHTML = renderNode(tree, true);
+
+        // Toggle expand/collapse on node click
+        root.addEventListener('click', e => {
+            const node = e.target.closest('.node:not(.leaf)');
+            if (!node) return;
+            const li = node.closest('li');
+            if (!li) return;
+            li.classList.toggle('collapsed');
+            node.classList.toggle('collapsed');
+            node.classList.toggle('expanded');
+        });
+
+        // Expand-all / Collapse-all
+        document.getElementById('expand-all').addEventListener('click', () => {
+            root.querySelectorAll('li.collapsed').forEach(li => li.classList.remove('collapsed'));
+            root.querySelectorAll('.node.collapsed').forEach(n => { n.classList.remove('collapsed'); n.classList.add('expanded'); });
+        });
+        document.getElementById('collapse-all').addEventListener('click', () => {
+            // Collapse all interior nodes that have children (keeps top-level
+            // family rows visible since they're at depth 0).
+            root.querySelectorAll('li').forEach(li => {
+                if (li.querySelector(':scope > ul')) li.classList.add('collapsed');
+            });
+            root.querySelectorAll('.node:not(.leaf)').forEach(n => {
+                n.classList.remove('expanded'); n.classList.add('collapsed');
+            });
+        });
+
+        // Search filter: show only matching leaves; auto-expand ancestors
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            const allLi = root.querySelectorAll('li.lang-leaf');
+            if (!q) {
+                allLi.forEach(li => { li.style.display = ''; li.classList.remove('match'); });
+                root.querySelectorAll('li').forEach(li => li.style.display = '');
+                return;
+            }
+            // Hide all interior <li>s, then show matching leaves + ancestors
+            root.querySelectorAll('li').forEach(li => li.style.display = 'none');
+            allLi.forEach(li => {
+                const sd = li.getAttribute('data-search') || '';
+                if (sd.includes(q)) {
+                    li.style.display = '';
+                    li.classList.add('match');
+                    // Expand all ancestors
+                    let p = li.parentElement;
+                    while (p && p !== root) {
+                        if (p.tagName === 'LI') {
+                            p.style.display = '';
+                            p.classList.remove('collapsed');
+                            const node = p.querySelector(':scope > .node');
+                            if (node) { node.classList.remove('collapsed'); node.classList.add('expanded'); }
+                        } else if (p.tagName === 'UL') {
+                            p.style.display = '';
+                        }
+                        p = p.parentElement;
+                    }
+                } else {
+                    li.classList.remove('match');
+                }
+            });
+        });
+    }
+})();
+</script>
+</body>
+</html>
