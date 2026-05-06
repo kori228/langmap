@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=59">
+<link rel="stylesheet" href="styles.css?v=60">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -131,27 +131,34 @@
 <body>
 <div class="site-header-bar">
     <a href="index.html" class="logo">LangMap</a>
+    <!-- Audit Task 124/161: nav default labels are English so the header
+         renders correctly when JavaScript is disabled or before applyI18n()
+         runs. UI_I18N[uiLang].navOrder/navMap/navTree swap them at init. -->
     <nav class="header-nav">
-        <a href="index.html" class="header-nav-link" id="nav-order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
+        <a href="index.html" class="header-nav-link" id="nav-order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
         <span class="nav-sep">/</span>
-        <a href="wordmap.html" class="header-nav-link" id="nav-map"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</a>
+        <a href="wordmap.html" class="header-nav-link" id="nav-map"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</a>
         <span class="nav-sep">/</span>
-        <span class="header-nav-current" id="nav-tree"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>系統樹</span>
+        <span class="header-nav-current" id="nav-tree"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</span>
     </nav>
     <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
     <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
 </div>
 
 <div class="controls-bar">
-    <input type="text" id="search" placeholder="🔍 Filter…" autocomplete="off">
-    <button type="button" id="expand-all">Expand all</button>
-    <button type="button" id="collapse-all">Collapse all</button>
+    <!-- Audit Task 161: ARIA labels match the visible button text and
+         applyI18n() updates aria-label whenever the UI lang changes so
+         screen-reader users hear the localized control name. -->
+    <input type="text" id="search" placeholder="🔍 Filter…" autocomplete="off"
+           aria-label="Filter languages">
+    <button type="button" id="expand-all" aria-label="Expand all">Expand all</button>
+    <button type="button" id="collapse-all" aria-label="Collapse all">Collapse all</button>
     <span class="legend" id="legend">Click a family to expand · click a language to open it on the map</span>
-    <span class="stats" id="stats"></span>
+    <span class="stats" id="stats" aria-live="polite"></span>
 </div>
 
 <div class="tree-wrap">
-    <div class="tree" id="tree-root">
+    <div class="tree" id="tree-root" role="tree" aria-label="Language family tree">
         <div class="empty" id="loading">Loading…</div>
     </div>
 </div>
@@ -239,10 +246,20 @@
 
     function applyI18n() {
         document.title = t('title') + ' — LangMap';
-        document.getElementById('search').placeholder = t('search');
-        document.getElementById('expand-all').textContent = t('expand');
-        document.getElementById('collapse-all').textContent = t('collapse');
+        const searchEl = document.getElementById('search');
+        searchEl.placeholder = t('search');
+        // Audit Task 161: keep aria-label aligned with the visible
+        // placeholder so screen-reader users hear the localized prompt.
+        searchEl.setAttribute('aria-label', t('search').replace(/^[\s🔍]+/, ''));
+        const expandEl = document.getElementById('expand-all');
+        const collapseEl = document.getElementById('collapse-all');
+        expandEl.textContent = t('expand');
+        expandEl.setAttribute('aria-label', t('expand'));
+        collapseEl.textContent = t('collapse');
+        collapseEl.setAttribute('aria-label', t('collapse'));
         document.getElementById('legend').textContent = t('legend');
+        const treeRoot = document.getElementById('tree-root');
+        if (treeRoot) treeRoot.setAttribute('aria-label', t('title'));
         function setNavText(el, text) {
             if (!el) return;
             const last = el.lastChild;

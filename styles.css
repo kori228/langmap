@@ -55,13 +55,21 @@ body {
 }
 .site-header-bar .header-url:hover { color: #0366d6; text-decoration: underline; }
 /* Header UI-lang select (Pass 34/36: unified position + fixed-width
-   right-aligned style across index/wordmap/tree pages) */
+   right-aligned style across index/wordmap/tree pages).
+   max-width caps the select so long native names like "Bahasa Indonesia"
+   or "日本語(標準)" don't let it auto-stretch across the leftover flex
+   space. Without max-width, native <select> elements size to fit their
+   widest option and the right-side dropdown ends up spanning the entire
+   header. wordmap.html had a separate `.site-header-bar select` rule
+   that capped it; promote the cap to the shared class so index.html /
+   tree.html inherit it too. */
 .site-header-bar .header-ui-lang {
     padding: 4px 8px; font-size: 12px;
     border: 1px solid #d0d0d0; border-radius: 4px;
     background: #fff; color: #444; cursor: pointer;
     margin-left: auto;
     min-width: 140px;
+    max-width: 200px;
 }
 .site-header-bar .header-ui-lang + .header-url { margin-left: 12px; }
 @media (max-width: 720px) {

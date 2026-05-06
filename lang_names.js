@@ -335,4 +335,99 @@ const LANG_NAMES = {
             }
         }
     }
+    // Kirundi (rn), Swiss German (gsw), Sukuma (suk) — high-speaker family-coverage gaps.
+    const ADDED10 = {
+        rn:  { en: 'Kirundi', ja: 'キルンディ語', ko: '키룬디어', zh: '基隆迪语', yue: '基隆迪語',
+               vi: 'Tiếng Kirundi', th: 'ภาษาคีรุนดี', id: 'Kirundi', hi: 'किरुंदी',
+               de: 'Kirundi', fr: 'Kirundi', it: 'Kirundi',
+               es_eu: 'Kirundi', es_mx: 'Kirundi', pt_eu: 'Quirundi', pt_br: 'Quirundi',
+               ru: 'Рунди', uk: 'Рунді', ar: 'الكيروندية', he: 'קירונדי', sw: 'Kirundi' },
+        gsw: { en: 'Swiss German', ja: 'スイス・ドイツ語', ko: '스위스 독일어', zh: '瑞士德语', yue: '瑞士德語',
+               vi: 'Tiếng Đức Thụy Sĩ', th: 'ภาษาเยอรมันสวิส', id: 'Jerman Swiss', hi: 'स्विस जर्मन',
+               de: 'Schweizerdeutsch', fr: 'Suisse alémanique', it: 'Tedesco svizzero',
+               es_eu: 'Alemán suizo', es_mx: 'Alemán suizo', pt_eu: 'Alemão suíço', pt_br: 'Alemão suíço',
+               ru: 'Швейцарский немецкий', uk: 'Швейцарська німецька', ar: 'الألمانية السويسرية', he: 'גרמנית שוויצרית', sw: 'Kijerumani cha Uswisi' },
+        suk: { en: 'Sukuma', ja: 'スクマ語', ko: '수쿠마어', zh: '苏库马语', yue: '蘇庫馬語',
+               vi: 'Tiếng Sukuma', th: 'ภาษาซูคูมา', id: 'Sukuma', hi: 'सुकुमा',
+               de: 'Sukuma', fr: 'Sukuma', it: 'Sukuma',
+               es_eu: 'Sukuma', es_mx: 'Sukuma', pt_eu: 'Sucumá', pt_br: 'Sucumá',
+               ru: 'Сукума', uk: 'Сукума', ar: 'السوكوما', he: 'סוקומה', sw: 'Kisukuma' },
+    };
+    for (const code of Object.keys(ADDED10)) {
+        for (const ui of Object.keys(ADDED10[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED10[code][ui];
+            }
+        }
+    }
+    // Zarma (dje), Meru (mer) — Niger + Kenya gaps.
+    const ADDED11 = {
+        dje: { en: 'Zarma', ja: 'ザルマ語', ko: '자르마어', zh: '扎尔马语', yue: '扎爾馬語',
+               vi: 'Tiếng Zarma', th: 'ภาษาซาร์มา', id: 'Zarma', hi: 'ज़ार्मा',
+               de: 'Zarma', fr: 'Zarma', it: 'Zarma',
+               es_eu: 'Zarma', es_mx: 'Zarma', pt_eu: 'Zarma', pt_br: 'Zarma',
+               ru: 'Зарма', uk: 'Зарма', ar: 'الزرما', he: 'זרמה', sw: 'Kizarma' },
+        mer: { en: 'Meru', ja: 'メル語', ko: '메루어', zh: '梅鲁语', yue: '梅魯語',
+               vi: 'Tiếng Meru', th: 'ภาษาเมรู', id: 'Meru', hi: 'मेरू',
+               de: 'Meru', fr: 'Méru', it: 'Meru',
+               es_eu: 'Meru', es_mx: 'Meru', pt_eu: 'Meru', pt_br: 'Meru',
+               ru: 'Меру', uk: 'Меру', ar: 'الميرو', he: 'מרו', sw: 'Kimeru' },
+    };
+    for (const code of Object.keys(ADDED11)) {
+        for (const ui of Object.keys(ADDED11[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED11[code][ui];
+            }
+        }
+    }
+    // Nyamwezi (nym), Embu (ebu), Limbu (lif) — Tanzania + Kenya + Nepal Bantu/Sino-Tibetan gaps.
+    const ADDED12 = {
+        nym: { en: 'Nyamwezi', ja: 'ニャムウェジ語', ko: '냠웨지어', zh: '尼亚姆韦齐语', yue: '尼亞姆韋齊語',
+               vi: 'Tiếng Nyamwezi', th: 'ภาษาเนียมเวซี', id: 'Nyamwezi', hi: 'न्यामवेज़ी',
+               de: 'Nyamwezi', fr: 'Nyamwezi', it: 'Nyamwezi',
+               es_eu: 'Nyamwezi', es_mx: 'Nyamwezi', pt_eu: 'Nyamwezi', pt_br: 'Nyamwezi',
+               ru: 'Ньямвези', uk: 'Ньямвезі', ar: 'النيامويزية', he: 'ניאמווזי', sw: 'Kinyamwezi' },
+        ebu: { en: 'Embu', ja: 'エンブ語', ko: '엠부어', zh: '恩布语', yue: '恩布語',
+               vi: 'Tiếng Embu', th: 'ภาษาเอ็มบู', id: 'Embu', hi: 'एम्बु',
+               de: 'Embu', fr: 'Embu', it: 'Embu',
+               es_eu: 'Embu', es_mx: 'Embu', pt_eu: 'Embu', pt_br: 'Embu',
+               ru: 'Эмбу', uk: 'Ембу', ar: 'الإمبو', he: 'אמבו', sw: 'Kiembu' },
+        lif: { en: 'Limbu', ja: 'リンブー語', ko: '림부어', zh: '林布语', yue: '林布語',
+               vi: 'Tiếng Limbu', th: 'ภาษาลิมบู', id: 'Limbu', hi: 'लिम्बू',
+               de: 'Limbu', fr: 'Limbou', it: 'Limbu',
+               es_eu: 'Limbu', es_mx: 'Limbu', pt_eu: 'Limbu', pt_br: 'Limbu',
+               ru: 'Лимбу', uk: 'Лімбу', ar: 'اللمبو', he: 'לימבו', sw: 'Kilimbu' },
+    };
+    for (const code of Object.keys(ADDED12)) {
+        for (const ui of Object.keys(ADDED12[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED12[code][ui];
+            }
+        }
+    }
+    // Northern Ndebele (nd), Kuanyama (kj), Luvale (lue) — Southern African Bantu.
+    const ADDED13 = {
+        nd:  { en: 'Northern Ndebele', ja: '北ンデベレ語', ko: '북부 응데벨레어', zh: '北恩德贝勒语', yue: '北恩德貝勒語',
+               vi: 'Tiếng Ndebele Bắc', th: 'ภาษาเอ็นเดเบเลเหนือ', id: 'Ndebele Utara', hi: 'उत्तरी न्डेबेले',
+               de: 'Nord-Ndebele', fr: 'Ndébélé du Nord', it: 'Ndebele del Nord',
+               es_eu: 'Ndebele del Norte', es_mx: 'Ndebele del Norte', pt_eu: 'Ndebele do Norte', pt_br: 'Ndebele do Norte',
+               ru: 'Северный ндебеле', uk: 'Північна ндебеле', ar: 'الندبيلية الشمالية', he: 'נדבלה צפונית', sw: 'Kindebele cha Kaskazini' },
+        kj:  { en: 'Kuanyama', ja: 'クワニヤマ語', ko: '콰니야마어', zh: '夸尼亚马语', yue: '誇尼亞馬語',
+               vi: 'Tiếng Kuanyama', th: 'ภาษาควานยามา', id: 'Kuanyama', hi: 'कुआन्यामा',
+               de: 'Kwanyama', fr: 'Kwanyama', it: 'Kuanyama',
+               es_eu: 'Kuanyama', es_mx: 'Kuanyama', pt_eu: 'Cuanhama', pt_br: 'Cuanhama',
+               ru: 'Кваньяма', uk: 'Кваньяма', ar: 'الكوانياما', he: 'קוואניאמה', sw: 'Kikwanyama' },
+        lue: { en: 'Luvale', ja: 'ルヴァレ語', ko: '루발레어', zh: '卢瓦莱语', yue: '盧瓦萊語',
+               vi: 'Tiếng Luvale', th: 'ภาษาลูวาเล', id: 'Luvale', hi: 'लुवाले',
+               de: 'Luvale', fr: 'Luvale', it: 'Luvale',
+               es_eu: 'Luvale', es_mx: 'Luvale', pt_eu: 'Luvale', pt_br: 'Luvale',
+               ru: 'Луваль', uk: 'Лувале', ar: 'اللوفالية', he: 'לובלה', sw: 'Kiluvale' },
+    };
+    for (const code of Object.keys(ADDED13)) {
+        for (const ui of Object.keys(ADDED13[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED13[code][ui];
+            }
+        }
+    }
 })();
