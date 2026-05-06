@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 619 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 617 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1426,12 +1426,9 @@ const LANG_DATA = {
     words: { water:['apâ','ˈapɨ'], fire:['foc','fok'], sun:['soare','ˈsoare'], moon:['lunâ','ˈlunɨ'], mother:['dadâ','ˈdadɨ'], father:['tatâ','ˈtatɨ'], eat:['mâcari','mɨˈkari'], drink:['beari','ˈbeari'], love:['vreari','ˈvreari'], heart:['inimâ','ˈinimɨ'], tree:['arbur','ˈarbur'], house:['casâ','ˈkasɨ'], dog:['câni','ˈkɨni'], cat:['cãtushã','kɨˈtuʃɨ'], hand:['mânâ','ˈmɨnɨ'], eye:['oclju','ˈokʎu'], hello:['bunâ-vã ziuâ','ˈbunɨ vɨ ˈziwɨ'], thanks:['harauâ','haˈrawɨ'], one:['unu','ˈunu'], good:['bun','bun'] }},
   wa: { name: 'Walloon', native: 'Walon', lat: 50.63, lng: 5.57, // Liège
     words: { water:['aiwe','ˈajwə'], fire:['feu','fø'], sun:['solea','soˈlea'], moon:['lune','ˈlyn'], mother:['mame','mam'], father:['peure','pœːr'], eat:['magnî','maˈɲi'], drink:['boere','bweːr'], love:['amour','aˈmuːr'], heart:['cour','kuːr'], tree:['åbe','ˈɔːb'], house:['måjhon','mwaˈʒõ'], dog:['tchin','tʃɛ̃'], cat:['tchèt','tʃɛ'], hand:['min','mɛ̃'], eye:['ouy','uj'], hello:['bondjoû','bõˈd͡ʒu'], thanks:['mèrci','mɛɾˈsi'], one:['onk','õk'], good:['bon','bõ'] }},
-  // Uralic minor (Russia)
-  kv: { name: 'Komi', native: 'Коми кыв', lat: 61.67, lng: 50.84, // Syktyvkar
-    words: { water:['ва','va'], fire:['би','bi'], sun:['шонді','ʃondi'], moon:['тӧлысь','tɵlɨɕ'], mother:['мам','mam'], father:['бать','batʲ'], eat:['сёйны','ɕɵjnɨ'], drink:['юны','junɨ'], love:['радейтны','radʲɛjtnɨ'], heart:['сьӧлӧм','sʲɵlɵm'], tree:['пу','pu'], house:['керка','kerka'], dog:['пон','pon'], cat:['кань','kanʲ'], hand:['ки','ki'], eye:['син','sin'], hello:['видза олан','vidza olan'], thanks:['аттьӧ','atʲtʲɵ'], one:['ӧти','ɵti'], good:['бур','bur'] }},
-  // Permic split (Audit Task 141): Komi-Zyrian (kpv) is the more standard
-  // ISO 639-3 code that the macro `kv` actually represents; Komi-Permyak
-  // (koi) is a distinct Permic language spoken in Komi-Permyak Okrug.
+  // Uralic minor (Russia) — Audit Task 179: kv (ISO 639-1 macro for Komi)
+  // removed; kpv (ISO 639-3 Komi-Zyrian) is the canonical specific code.
+  // koi Komi-Permyak below is a distinct Permic language.
   kpv: { name: 'Komi-Zyrian', native: 'Коми кыв', lat: 61.67, lng: 50.84, // Syktyvkar
     words: { water:['ва','va'], fire:['би','bi'], sun:['шонді','ʃondi'], moon:['тӧлысь','tɵlɨɕ'], mother:['мам','mam'], father:['бать','batʲ'], eat:['сёйны','ɕɵjnɨ'], drink:['юны','junɨ'], love:['радейтны','radʲɛjtnɨ'], heart:['сьӧлӧм','sʲɵlɵm'], tree:['пу','pu'], house:['керка','kerka'], dog:['пон','pon'], cat:['кань','kanʲ'], hand:['ки','ki'], eye:['син','sin'], hello:['видза олан','vidza olan'], thanks:['аттьӧ','atʲtʲɵ'], one:['ӧти','ɵti'], good:['бур','bur'] }},
   koi: { name: 'Komi-Permyak', native: 'Перем коми кыв', lat: 60.40, lng: 56.10, // Kudymkar
@@ -2857,8 +2854,10 @@ const LANG_DATA = {
     words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceŋ','tʃeŋ'], moon:['dwe','dwe'], mother:['mego','meɡo'], father:['papo','papo'], eat:['camo','tʃamo'], drink:['matho','matʰo'], love:['amara','amara'], heart:['cwiny','tʃwiɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['gwok','ɡwok'], cat:['mbweko','mbweko'], hand:['cing','tʃiŋ'], eye:['waŋ','waŋ'], hello:['itye nining','itje niniŋ'], thanks:['apwoyo','apwojo'], one:['acel','atʃel'], good:['ber','ber'] }},
   ach: { name: 'Acholi', native: 'Lwoo', lat: 2.78, lng: 32.30, // Gulu
     words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceng','tʃeŋ'], moon:['dwe','dwe'], mother:['mego','meɡo'], father:['baba','baba'], eat:['cam','tʃam'], drink:['mat','mat'], love:['mar','mar'], heart:['cwiny','tʃwiɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['gwok','ɡʷok'], cat:['ngabu','ŋabu'], hand:['cing','tʃiŋ'], eye:['wang','waŋ'], hello:['itye nining','itje niniŋ'], thanks:['apwoyo','apʷojo'], one:['acel','atʃel'], good:['ber','ber'] }},
-  lag: { name: 'Lango', native: 'Lëblaŋo', lat: 2.25, lng: 32.90, // Lira
-    words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceŋ','tʃeŋ'], moon:['dwe','dwe'], mother:['maa','maː'], father:['papa','papa'], eat:['cam','tʃam'], drink:['mat','mat'], love:['mar','mar'], heart:['cwiny','tʃwiɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['gwok','ɡʷok'], cat:['ngao','ŋao'], hand:['ciŋ','tʃiŋ'], eye:['waŋ','waŋ'], hello:['itye nining','itje niniŋ'], thanks:['apwoyo','apʷojo'], one:['acel','atʃel'], good:['ber','ber'] }},
+  // Audit Task 181: lag row removed — was a copy-paste duplicate of laj Lango.
+  // ISO 639-3 'lag' is Langi (Rangi), Bantu of Tanzania (~370K speakers in
+  // Kondoa District), totally different language. Re-add as a proper Langi row
+  // when sourced data is available (Stegen 2002 or similar).
   // === Phase 8: East / SE Asian major dialects ===
   // Burmese variety
   rki: { name: 'Rakhine', native: 'ရခိုင်ဘာသာ', lat: 20.15, lng: 92.90, // Sittwe

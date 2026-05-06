@@ -1213,6 +1213,60 @@ for (const code of codes) {
     I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
 }
 
+// === RTL textDirection backfill audit (Audit Task 193) ===
+// Detect rows whose surface uses RTL Unicode blocks; verify meta.textDirection='rtl'
+// is set (the runtime initializer in wordmap_meta.js does this automatically).
+{
+    const RTL_RE = /[֐-׿؀-ۿ܀-ݏݐ-ݿހ-޿߀-߿ࠀ-࠿ࡀ-࡟ࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
+    let rtlCount = 0, rtlMarked = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        let isRtl = false;
+        for (const k of Object.keys(w)) {
+            if (Array.isArray(w[k]) && typeof w[k][0] === 'string' && RTL_RE.test(w[k][0])) { isRtl = true; break; }
+        }
+        if (!isRtl) continue;
+        rtlCount++;
+        const td = lang.meta && lang.meta.textDirection;
+        if (td === 'rtl') rtlMarked++;
+        else {
+            missing++;
+            if (missing <= 5) W(`[#193] ${code}: surface uses RTL script but meta.textDirection != 'rtl' (Audit Task 193)`);
+        }
+    }
+    if (missing > 5) W(`[#193] (${missing - 5} more RTL rows missing textDirection)`);
+    I(`textDirection='rtl' coverage: ${rtlMarked}/${rtlCount} RTL-script rows (Audit Task 193)`);
+}
+
+// === formType coverage for hyphen/star surface cells (Audit Task 191) ===
+// Surface forms starting with '*' or ending with '-' or starting with '-' should
+// have wordEvidence.formType set ('reconstructed-root' / 'bound-stem' / etc.).
+{
+    let total = 0, withForm = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const we = lang.wordEvidence || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surface = w[k][0];
+            if (typeof surface !== 'string' || surface === '—') continue;
+            if (!/^\*|^-|-$/.test(surface)) continue;
+            total++;
+            if (we[k] && we[k].formType) withForm++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#191] ${code}.${k}: hyphen/star surface "${surface}" without wordEvidence.formType (Audit Task 191)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#191] (${missing - 5} more hyphen/star cells without formType)`);
+    I(`formType coverage on hyphen/star cells: ${withForm}/${total} (Audit Task 191)`);
+}
+
 // === Unattested-cell reason documentation (Audit Task 162) ===
 // Every `—` cell must have meta.unattestedReason[concept] set to one of the
 // allowed reasons. The runtime initializer in wordmap_meta.js applies sensible
