@@ -737,6 +737,80 @@ The second element in `[surface, ipa]` is governed by `meta.pronunciationType` (
 
 **Do NOT** mark a row as `'ipa'` without checking it actually represents IPA (e.g. Indonesian `air/air` is orthography, not IPA).
 
+#### Per-language `pronunciationType` reference (Audit Task 144 docs extension)
+
+Use this table when adding a new row or auditing an existing one. The
+*default* column is what the validator expects unless `meta.coverageNote`
+documents an explicit deviation.
+
+| Language family / group | Default `pronunciationType` | Rationale |
+|---|---|---|
+| Sinitic (Mandarin, Cantonese, Wu, Min, Hakka) | `'ipa'` | Tone is contrastive — must be marked with Chao tone letters (˥˦˧˨˩). |
+| Tai-Kadai (Thai, Lao, Zhuang, Shan, Bouyei) | `'ipa'` | Tone contrastive. Same Chao notation as Sinitic. |
+| Vietnamese / Vietic | `'ipa'` | Tone contrastive, register-tone system. |
+| Japonic / Koreanic | `'ipa'` | Pitch-accent (Japanese) or syllable-final consonants (Korean) are non-trivial; broad orthographic copy is ambiguous. |
+| Mongolic / Tungusic / Turkic | `'broad'` | Vowel harmony is predictable; broad transcription is accepted unless a narrow phonetic detail is being recorded (e.g. Kazakh ə vs e). |
+| Slavic (most regional varieties) | `'broad'` | ASCII digraphs `ts`/`dz` accepted at broad level. Promote to `'ipa'` only when tie-bar `t͡s`/`d͡z` is enforced row-wide. |
+| Romance (Italian, Spanish, Portuguese, French, Romanian) | `'ipa'` | Stress is contrastive (Italian, Spanish) or near-contrastive (Portuguese); narrow IPA needed to make stress visible. |
+| Germanic (English, German, Dutch, Frisian, Nordic) | `'ipa'` | Phonemic length, vowel quality contrasts, and English diphthongs need narrow IPA. |
+| Celtic | `'ipa'` | Initial mutations + complex vowel system require narrow IPA. |
+| Hellenic / Albanian / Armenian / Baltic | `'ipa'` | Stress / pitch patterns must be marked. |
+| Indo-Aryan (Hindi, Bengali, Punjabi, Marathi, Gujarati, Sinhala) | `'broad'` for most rows; `'ipa'` once schwa-deletion + retroflex contrasts are sourced per cell. |
+| Iranian (Persian, Tajik, Kurdish, Pashto) | `'broad'` (default); `'ipa'` once stress and ezafe are documented. |
+| Semitic (Arabic, Hebrew, Aramaic, Maltese, Amharic) | `'ipa'` | Pharyngeals + emphatics (ʕħʔ + ṭ ḍ ṣ ẓ) require narrow IPA. |
+| Cushitic / Berber / Chadic | `'ipa'` | Tone (Chadic), ejectives (Cushitic), pharyngealization (Berber) all need narrow notation. |
+| Bantu (any sub-branch) | `'ipa'` | Tone is contrastive in nearly every Bantu language. Use IPA tone diacritics (´ ` ´` `´) since Chao bars are over-precise for grammatical tone. |
+| Niger-Congo Atlantic / Mande / Kwa / Volta-Niger | `'ipa'` | All have lexical tone. Same diacritic convention as Bantu. |
+| Nilo-Saharan / Nilotic | `'ipa'` | Lexical tone + ATR vowel harmony need explicit notation. |
+| Austronesian (Malayo-Polynesian) | `'orthography'` for shallow-orthography rows (Indonesian, Malay, Tagalog, Cebuano); `'broad'` for Polynesian (long-vowel macrons cannot be omitted); `'ipa'` for Formosan. |
+| Austroasiatic (Khmer, Mon, Munda) | `'broad'` (default); promote to `'ipa'` only after register / phonation contrasts (Khmer) are sourced per cell. |
+| Hmong-Mien | `'ipa'` | Tone contrastive; multi-tone systems (Hmong White/Green) need Chao notation. |
+| Dravidian (Tamil, Telugu, Kannada, Malayalam) | `'broad'` (default); `'ipa'` once retroflex laterals (ḷ ḻ) and gemination are sourced. |
+| Tibeto-Burman / Karenic / Loloish | `'ipa'` | Tone contrastive. Use Chao for Karenic + Loloish; IPA diacritics for non-tonal Bodish dialects. |
+| Indigenous Americas (Quechua, Aymara, Guarani, Maya, Nahuatl, Navajo) | `'ipa'` | Glottalization, pharyngealization, ejectives, and tone (Otomanguean) all need narrow IPA. |
+| Pacific (Australian Aboriginal, Papuan) | `'broad'` (default); promote to `'ipa'` once retroflex / lamino-dental / nasal-place contrasts are sourced per row. |
+| Constructed (Esperanto, Toki Pona, Lojban, Klingon) | `'orthography'` (Esperanto, Toki Pona — phonemic spelling); `'broad'` for Lojban; `'ipa'` for Klingon (canonical IPA defined by Okrand). |
+| Creoles / pidgins | `'broad'` (default) — substrate-influenced phonology not always captured by lexifier orthography. |
+| Sign languages | not applicable; see C4. |
+| Reconstructed proto-languages | `'ipa'` for the IPA column (`*` prefix kept on surface only — see "Reconstructed-form notation"). |
+| Historical attested (Old/Middle stages) | `'ipa'` if the source provides one (Latin, Old English, Sanskrit, Greek); `'broad'` if only orthographic transliteration is available; `'mixed'` if scholarly conventions (e.g. Baxter-Sagart `X`/`H`) are kept. |
+
+**When "broad" is the right answer** even for an IPA-strong language:
+- The 20 cells were sourced from a teaching grammar that uses broad
+  phonemic notation throughout (no allophone detail).
+- The row is a `regional-variety` of an IPA-typed parent, where
+  re-transcribing every cell with narrow IPA would invent precision
+  the source doesn't support.
+- The language has *no* monolingual phonetic dictionary and the IPA
+  column would be derived from spelling — `'broad'` is honest about
+  that.
+
+**When `'mixed'` is the right answer**:
+- Some cells use IPA, others use romanization, and the discrepancy is
+  source-driven (e.g. Old Chinese `och` keeps Baxter-Sagart `X`/`H`
+  finals in the IPA column for scholarly continuity per Audit Task
+  160). Document the mix in `meta.coverageNote` and reference the
+  source convention by name (Baxter-Sagart 2014, Hepburn, RR2000,
+  Wylie, etc.).
+
+#### Outstanding pronunciation rebuilds (Audit Task 146 deferred)
+
+The following rows still need a full per-cell pronunciation rebuild
+(20 cells each, sourced):
+
+| Code | Language | Action | Source |
+|---|---|---|---|
+| `my` | Burmese | Tone / phonation row-wide consistency | Cambridge JIPA Burmese (2014) |
+| `km` | Khmer | All-cell IPA rebuild from Royal Phnom Penh standard | Headley 1977 |
+| `id` / `ms` / `tl` | Indonesian / Malay / Tagalog | Column-policy decision: stay `'orthography'` or add genuine broad transcription | (decision pending; default = `'orthography'`) |
+| `ta` / `te` | Tamil / Telugu | Concept-level register policy (literary vs colloquial) | (policy pending) |
+| `bo` | Tibetan | Lhasa Central per-cell verification | Wylie + IPA mapping |
+
+While these rebuilds are pending, **do not** flip the row to `'ipa'`.
+Keep the existing value (typically `'broad'` or `'orthography'`) until
+the per-cell rebuild lands together with `meta.sources` and
+`reviewStatus: 'source-checked'`.
+
 ### C3. Column conventions and concept policies (Audit Task 147)
 
 The following conventions resolve the long-running policy questions that
@@ -847,6 +921,171 @@ Proto-Ryukyuan `pry`, Proto-Japonic-Koreanic `pjk`):
   `fr` with `coverage: 'partial'`. Differences from `fr` should focus on
   lexical items that distinguish Québec usage (e.g., `bonjour` vs `allô`)
   rather than full phonetic re-transcription.
+
+#### Arabic MSA vs dialect labeling (Audit feedback §31)
+
+- `ar` represents **Modern Standard Arabic (MSA)**. Use Cairo
+  pronunciation values for the IPA column where dialects diverge (e.g.
+  *ǧīm* as `[g]` is a Cairo realisation; *qāf* `[q]` is the MSA target,
+  not the Cairo `[ʔ]`).
+- Dialect rows (`ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_ma`,
+  `ar_tn`, `ar_sd`) should reflect *that dialect's* phonology, not
+  MSA. Do not copy MSA forms into a dialect row "for completeness."
+  Mark dialect rows with `parentCode: 'ar'`,
+  `coverage: 'regional-variety'`, and `pronunciationType: 'ipa'` once
+  per-cell sourcing is in place.
+- Disambiguator: when a native name is shared (e.g. modern MSA
+  `العربية` vs `العربية الفصحى`), set `meta.disambiguator` (Audit
+  Task 188) to differentiate.
+
+#### Orthographic-IPA family review (Audit feedback §19/§20/§21)
+
+For families where the IPA column was historically populated from
+spelling rather than from a transcribed source — Lakota / Dakota
+(`lkt`/`dak`), Navajo (`nv`), Inuit-Yupik (`iu`/`ik`/`kal`/`yup`/
+`ess`/`ipk`), and any new Sioux-cluster row — use:
+
+- `pronunciationType: 'broad'` until per-cell narrow IPA is sourced
+  from a published reference grammar (Boas, de Reuse, Young & Morgan,
+  etc.).
+- Mark the row with `meta.coverageNote: 'orthographic-derived; awaiting
+  per-cell phonetic source.'`
+- Do **not** silently add stress / tone / nasalization marks until the
+  source is named in `meta.sources`.
+
+#### Georgian transliteration vs IPA (Audit feedback §23)
+
+- `ka` IPA column uses Georgian-IPA, **not** romanization.
+  Specifically: ejectives written as `pʼ tʼ kʼ tsʼ tʃʼ qʼ`; uvular
+  `q` (`ყ`) is `[qʼ]` (ejective uvular stop), not `[q]`.
+- The validator does **not** accept `kh` / `gh` / `tsʼ` written with
+  ASCII apostrophe (`'`); use the modifier letter apostrophe `ʼ`
+  (U+02BC).
+- Georgian transliteration (e.g. ISO 9984, Mkhedruli-to-Latin) belongs
+  in the *surface* column only when the row is romanized — for `ka`
+  itself, surface stays Mkhedruli script.
+
+#### Regional-variety coverage flag (Audit feedback §38-§43)
+
+Rows marked `meta.coverage: 'regional-variety'` (e.g. `es_mx`, `fr_qc`,
+`zh_db`, `en_app`) should:
+
+- Inherit pronunciation type from the parent unless the variety has a
+  documented phonological difference. Set
+  `meta.varietyRole: 'regional-variant'` (Audit Task 170).
+- Use `meta.coverageNote` to describe what differs from the parent
+  ("`fr_qc` differs from `fr` lexically [`allô`, `dépanneur`] but
+  shares the standard French phonology in the IPA column.").
+- Avoid fabricating differences. If a variety is identical to the
+  parent for the 20 concept words, that's a legitimate result —
+  document with `coverage: 'base-copy-with-notes'` (Audit Task 90 family).
+
+#### Asian minority-language tone omission (Audit feedback §51-§58)
+
+Per-family tone-source policy for the deferred minority-language
+batch:
+
+| Family / language | Source for tone | Status |
+|---|---|---|
+| Naxi (`nxq`) | Michaud (Lijiang A-sher Naxi phonology) | ✅ done |
+| Bouyei (`pcc`) | Snyder & Long 1983, modern SIL | ✅ done |
+| Tujia (`tji`) | Brassett & Brassett 2005 | ✅ done |
+| Iu Mien (`ium`) | Court 1985, Wiktionary | ✅ done |
+| Tai Lue (`khb`) | Hartmann & Owens, SIL Mainland-SE-Asia | ⏳ pending |
+| Shan (`shn`) | Cushing 1887, Sai Kham Mong (modern SIL) | ⏳ pending |
+| Lahu (`lhu`) | Matisoff 1973, 1988 | ⏳ pending |
+| Mlabri (`mra`) | Rischel 1995 | ⏳ pending |
+| Khmu (`kjg`) | Suwilai Premsrirat | ⏳ pending |
+| Wa (`prk`) | Watkins 2002 | ⏳ pending |
+| Hmong (`hmn`) | Heimbach 1969, Mortensen | ⏳ pending |
+| Zhuang (`za`) | Zhang Junru, modern Wuming-standard | ⏳ pending |
+| Jingpo (`kac`) | Hanson 1906, modern reference | ⏳ pending |
+| Akha (`ahk`) | Lewis 1968, Hansson 1989 | ⏳ pending |
+
+Until a row in this list is sourced, keep `pronunciationType: 'broad'`
+and **do not** mechanically add tone marks from cognate sources.
+
+#### Coverage / confidence flag schema (Audit feedback §43)
+
+The schema field `meta.coverage` (Audit Task 90/170/172) accepts:
+
+| Value | Meaning |
+|---|---|
+| `'full'` (or unset) | All 20 cells sourced and reviewed. Default. |
+| `'partial'` | Some cells unsourced; row otherwise reviewed. Set `meta.coverageNote` listing which concepts are partial. |
+| `'base-copy-with-notes'` | Variety row that copies from `parentCode` for most cells; documented differences in note form. |
+| `'regional-variety'` | The row is a regional/dialectal variety with substantive lexical or phonetic differences. Pair with `meta.varietyRole`. |
+| `'orthographic-derived'` | IPA column derived from spelling, not from a transcribed source. Treat as `pronunciationType: 'broad'` until rebuilt. |
+| `'machine-seeded'` | Initial bulk import, not yet reviewed. Use only with `reviewStatus: 'machine-seeded'`. |
+| `'fragmentary'` | Historical / endangered / very-low-data row where some concepts are genuinely unattested (`'—'` cells). |
+
+### C5. Word-cell evidence schemas (Audit Tasks 97 / 133 / 195)
+
+`wordEvidence` is a per-cell sub-record on each language row. It carries
+the *why-this-form*, *what-was-the-source*, and *what-confidence* signal
+that the validator and modal display use. Two shapes are supported:
+
+#### Preferred (split) schema — Audit Task 195
+
+Use the split schema when the form, pronunciation, and concept come
+from different sources, or when a cell deserves explicit evidence in
+each of the three streams. This is the **preferred form for new entries**:
+
+```js
+words: { eat: ['먹다', 'mʌktɐ'] },
+wordEvidence: {
+  eat: {
+    formEvidence: 'direct',           // direct | proxy | reconstructed | inferred | disputed | pedagogical | noted
+    pronunciationEvidence: 'direct',  // same enum
+    conceptEvidence: 'direct',        // same enum
+    formType: 'inflected-form',       // free-word | bound-stem | root | inflected-form | phrase | reconstructed-root | agreement-stem | greeting-formula | thanks-formula | compound | light-verb-construction
+    citation: {
+      short: 'Lee 2003',              // display label (validator: required)
+      type: 'grammar',                // dictionary | grammar | inscription | wordlist | database | article | internal-review | reference
+      author: 'Lee, K-M.',
+      year: 2003,
+      title: 'A History of the Korean Language',
+      page: 'p. 47',
+    },
+    note: 'Standard verb-stem 먹- with the active-converbial -다.',
+    accessed: '2026-04-01',           // ISO date when the URL/source was checked
+    url: 'https://example.com/...',
+  },
+}
+```
+
+#### Legacy (unified) schema — still accepted
+
+The legacy unified shape is the historical default and remains
+supported. Migrate to the split schema only when the three streams
+genuinely diverge:
+
+```js
+wordEvidence: {
+  eat: { evidence: 'direct', source: 'Lee 2003', note: 'Standard verb stem.' },
+}
+```
+
+#### Pilot guidance (Audit Task 195)
+
+- **When to use split**: rows where form / pronunciation / concept
+  come from clearly distinct sources. Old Korean (`oko`) and Old
+  Japanese (`ojp`) are good pilots — Hyangchal/Manyōgana corpus for
+  the form, reconstructed phonology for the pronunciation,
+  semantic interpretation for the concept.
+- **When NOT to use split**: rows where one source covers all three
+  streams (a normal modern dictionary entry). The split is more
+  verbose; redundant detail is noise.
+- **Citation object**: required when `citation` is set. `short` and
+  `type` are mandatory (validator `[#13t]`). `year`, `author`,
+  `title`, `page`, `url`, `accessed` optional but encouraged.
+- **`accessed`**: ISO date `YYYY-MM-DD` (validator `[#13r]` warns on
+  other formats).
+- **`url`**: must be `http://` or `https://` (validator `[#13r]`
+  errors otherwise).
+- **Coverage**: track adoption via the validator's INFO line
+  `split-evidence adoption: N/M cells use split schema; K still on
+  legacy unified form`.
 
 ### C4. Languages intentionally not represented as rows (Audit Task 150 Batch J)
 
@@ -1031,3 +1270,172 @@ The validator (#12b' / #12b") requires:
 Previously embedded in `app.js` and extracted by `wordmap.html` via `fetch + regex + new Function` (per `wordmap-check.md §12`). Now in a standalone file `lang_names.js`, loaded by both `index.html` and `wordmap.html` via a normal `<script>` tag.
 
 When adding a new language: append the new code to the appropriate per-UI-lang dict in `lang_names.js` for all 21 UI langs. The dedup-aware Python helpers in `/tmp/add_*_lang_names*.py` handle this.
+
+### M. Coverage roadmap to 1,000 languages — Tiers 5 through 13 (Audit Task 197)
+
+The Word Map currently covers ~620 languages and is on a long-running
+expansion path to 1,000+. Tiers 1–4 (Tasks 141 / 142 / 149 / 150 / 196)
+proposed ~63 languages on top of the current count. Tiers 5–13 below
+plan the remaining ~318. **Treat each tier as a sequence of 5–10 lang
+sub-batches; never land an entire tier in one commit.**
+
+#### Tier list
+
+| Tier | Region / family | Count | Cumulative | Notes |
+|---|---|---:|---:|---|
+| 5 | Sign languages (ase / bfi / jsl / asf already; +nzs, lsf, gsg, kvk, csl, bzs, ins, psl, lsc, lse, tsq, gss, dse, ils, slf, pks, ssp, cse) | +30 | 712 | Requires Tier 2 modality decision (Audit Task 142) before any signed lang lands. Atom translations must tag `modality: 'signed'`. |
+| 6 | Australian Aboriginal — Pama-Nyungan + non-PN (wbp, kld, xrr, gbb, mwf, dhg, djr, gnn, gun, ahw, tcs, Tiwi, etc.) | +25 | 737 | Cite Glottolog + AIATSIS for every row. Make Ngumpin-Yapa / Wati / Arandic sub-branches explicit in `meta.family`. ICIP-aware sourcing. |
+| 7 | Papuan — Trans-New Guinea (Engan, Mountain Ok, Madang, Eastern Highlands, Asmat-Kamoro, West Papuan, Sepik, Lakes Plain) + Skou / Kwomtari | +30 | 767 | Initial `reviewStatus: 'machine-seeded'`; SIL PNG/Indonesia databases primary. |
+| 8 | Native American extension — California (Pomo, Maidu, Yokuts, Wintu, Hupa); Mesoamerican (Mixe, Mazatec, Totonac, Chinantec, Huave); Salishan, Iroquoian; Algic ext.; Plains | +50 | 817 | Cite tribal language programs where they exist; document L1/L2/heritage distinctions for revitalization-stage rows. |
+| 9 | Bantu extension — E40-50, F, J, L, M, N, R sub-branches (Embu, Meru, Sukuma, Nyamwezi, Soga, Luba, Hemba, Tumbuka, Kuanyama, etc.) | +50 | 867 | Set `meta.grammarCapsule.gender.system: 'noun-class'` with the count per row (Audit Task 153 schema). |
+| 10 | Pacific & Austronesian completion — Philippine (mrw, mdh, tsg, ifb, xsb), Indonesian regional (btx), Polynesian completion (wls, fud), Micronesian (cal, gil, kos), Melanesian | +40 | 907 | Many already exist — Tier 10 fills regional sub-batches rather than starting from zero. |
+| 11 | Sino-Tibetan minor + Karenic — Naga (nbt, aii, nbe, kne, lhm), Karen (pwo, kjp, pdu, kyu), Lolo-Burmese (lis, mwq), Tibetan (adx, khg, dre, loy), Bodish minor (bft, lbj) | +40 | 947 | Tone systems differ per language; per-row tone sourcing required. |
+| 12 | Niger-Congo extension — Atlantic (srr, bsc, Pulaar dialects), Mande (mlq, snk, sus), Volta-Niger (idu, iji, hag), Adamawa-Ubangi (dyo) | +30 | 977 | Use **Atlantic-Congo** convention per Task 159; don't reintroduce `Niger-Congo (Bantu, ...)`. |
+| 13 | Mesoamerican / Andes / isolates — Maya (kek, cak, poc, usp), Otomanguean (mim, trs, top), Andean (qul, quz, quy), South American (gug, tpw), isolates (hai, tar, way) | +25 | 1,002 | Quechua varieties differ at IPA level — source each individually, never copy from `qu` macro. |
+
+#### Cross-cutting requirements (every tier, every row)
+
+These map directly to the per-batch checklist in §B above. **Skipping any
+of these regenerates lang_names backlogs and family-string drift that
+later tasks (Tasks 143, 159, 175, 184) have to clean up.**
+
+1. **`lang_names.js` — all 21 UI sections.** Not 4 (`en/ja/ko/zh`); 21
+   (`en, ja, ko, zh, yue, vi, th, id, hi, de, fr, it, es_eu, es_mx,
+   pt_eu, pt_br, ru, uk, ar, he, sw`). Validator's `lang_names.<UI>:
+   N/M` warning catches every regression.
+2. **`meta.description` — multilingual object.** Plain string is
+   deprecated (Audit Task 145). Fill `en/ja/ko/zh/de/fr` minimum.
+   Tiers 9 (Bantu) and 12 (Niger-Congo): also fill `sw`.
+3. **`meta_i18n_coverage.js` + `meta_i18n_ext.js` atoms.** When a tier
+   introduces a new family/script/region token, add the atom translation
+   in **all 11 UI langs covered by `META_I18N_COVERAGE_ATOMS`**, not
+   just `en/ja/ko/zh`. Alternatively, add a `META_I18N` full-string
+   entry in `wordmap_meta.js` covering all 22 UI langs.
+4. **`WORD_LIST.label` — all 21 UI langs.** Already balanced (Task 175).
+   New concepts must add labels in all 21 UI sections.
+5. **`WORD_LIST.definition` — all 21 UI langs (Task 176).** Required
+   when a tier introduces a previously-uncovered domain (e.g. Tier 5
+   sign-language modality scope).
+6. **`meta.parentCode` or `meta.varietyRole`.** Per Task 170: every
+   underscore code needs one of the two. Non-underscore codes can leave
+   both unset if they have no map-anchored parent.
+7. **`HIST_DESCENDANT` updates** for any historical-stage row added
+   (Audit Task 122). Forgetting this leaves the historical row as an
+   isolated marker without modern reflexes.
+8. **`meta.family` — normalized per Task 159.** Use the convention
+   chosen there (Sinitic vs Sino-Tibetan, Atlantic-Congo vs Niger-Congo,
+   Saami vs Sámi, etc.). Don't introduce a third spelling.
+9. **`meta.scriptTags` — typed array per Task 130.** Required on every
+   new row. The prose `script` field is for display; `scriptTags`
+   drives the filter UI.
+10. **`meta.disambiguator`** — set if the new row's native name
+    collides with an existing row (Tasks 115 / 188). Run the
+    native-name multimap scan after every batch.
+11. **`lang-filter.js`** — add the new family/script/region tokens to
+    the curated taxonomy if not already covered (Task 159 anchor).
+
+#### Per-tier validator gates
+
+No batch merges until:
+
+- `node validate_wordmap_data.js` reports **0 ERRORs and no NEW WARNs**
+  vs the pre-batch baseline.
+- `lang_names.<UI>: N/M` warning count is **exactly the same** as
+  before the batch — i.e. every new lang is covered in all 21 UI
+  sections.
+- `[#13b']` description-i18n coverage threshold (95%) is **not
+  breached** for any UI lang.
+- Family-string consistency check (Task 159) shows **no new variants**
+  of already-existing taxonomies (no Sinitic + Sino-Tibetan(Sinitic, X)
+  for the same X; no Saami + Sámi; no Niger-Congo (Bantu) + Atlantic-
+  Congo (Bantu)).
+
+#### Validator-driven progress checkpoints
+
+- **At 700 langs** (Tier 5 complete): re-run Tasks 143–146 to clear any
+  fresh `lang_names` backlog.
+- **At 800 langs** (Tier 7 complete): re-run Task 159 — Pama-Nyungan
+  and Trans-New Guinea sub-branches multiply taxonomies.
+- **At 900 langs** (Tier 9 complete): re-run Task 165 — Bantu adds many
+  script combinations.
+- **At 1,000 langs**: full re-validation including Tasks 167 (speakers),
+  171 (speakerYear), 173 (wordEvidence), 177 (glottocode/iso6393),
+  188 (disambiguator after every native-name collision), 190 (vitality),
+  193 (textDirection), 194 (formType compound).
+
+#### Quality safeguards (Tier 5–13)
+
+- **`reviewStatus: 'machine-seeded'`** is the default for new rows;
+  promote to `'human-reviewed'` / `'source-checked'` only after
+  per-cell verification.
+- **`pronunciationType: 'broad'` or `'orthography'`** is the default;
+  `'ipa'` requires sourced narrow-IPA per cell (Task 76 rule).
+- **`audioRef: null`** initially — Task 151 audio backfill is a
+  separate pass.
+- **`vitality`** must be set per Task 190; many Tier 5–13 candidates
+  are endangered.
+- **`textDirection: 'rtl'`** must be set for any RTL-script row
+  (Task 193).
+- **`disambiguator`** must be checked after every batch via the
+  native-name multimap scan.
+
+#### Per-tier execution checklist
+
+1. **Pre-batch**: `node validate_wordmap_data.js`; record the baseline
+   (errors / warnings / INFOs).
+2. **Add wordmap_data row** with full 20-cell `words` block, sourced.
+3. **Add wordmap_meta meta block** with all required fields:
+   `family`, `speakers`, `speakerBasis`, `speakerSource`,
+   `speakerYear`, `iso6393`, `glottocode`, `countries`,
+   `officialStatus` (Task 166), `officialIn`, `script`, **`scriptTags`**
+   (Task 130, mandatory), `description: { en, ja, ko, zh }` minimum,
+   `pronunciationType`, `surfaceType`, `locationBasis`, lat/lng,
+   **`parentCode` or `varietyRole`** (Task 170, mandatory if underscore
+   code), **`vitality`** (Task 190, mandatory), **`textDirection`** if
+   RTL (Task 193, mandatory if applicable), `reviewStatus:
+   'machine-seeded'`, `sources: [{ type: 'reference', title: ..., url:
+   ..., accessed: 'YYYY-MM-DD' }]`, `aliases` if applicable,
+   `disambiguator` if native name collides.
+4. **Add `lang_names.js` entry in ALL 21 UI sections** — no
+   exceptions.
+5. **Add `meta_i18n_coverage.js` atom translations** for any new
+   family / script / region tokens, in all 11 covered UI langs (Task
+   184) or via `META_I18N` full-string in 22 langs.
+6. **Update `lang-filter.js`** if a new family/script/region category
+   appears.
+7. **Update `HIST_DESCENDANT`** if the row is a historical stage with
+   modern descendants.
+8. **Bump `WM_ASSET_VERSION`** for `data`, `meta`, `names`.
+9. **Run validator** and confirm: 0 ERRORs, 0 new WARNs, no
+   `lang_names.<UI>: N/M` regression.
+10. **Update `changelog.html`** with credit and language list.
+
+#### Anti-patterns (do NOT)
+
+- Do not add a tier in one giant commit. Split each tier into 5–10
+  langs per commit, scoped by sub-family or sub-region.
+- Do not skip the i18n step "for now" — the lang_names backlog grows
+  exponentially. Tier 5 alone is 30 langs × 21 UI sections = 630
+  entries that must land at the same time.
+- Do not introduce family-taxonomy variants ("Pama-Nyungan, Wati
+  subgroup" vs "Pama-Nyungan (Wati)" vs "Pama-Nyungan Wati") within a
+  tier. Pick one and apply.
+- Do not skip `scriptTags` even for languages with familiar scripts.
+  The filter UI relies on it.
+- Do not rush to 1,000 by lowering quality. `'machine-seeded'` rows
+  are acceptable; **fabricated rows are not.**
+- Do not skip the post-batch validator run. Catching issues per-batch
+  avoids cascade.
+- Do not let any tier introduce more than 10 new family-string tokens.
+  If a tier needs more, the family taxonomy needs revision in a
+  separate task before the tier proceeds.
+
+#### Done when
+
+- All 9 tiers (5 through 13) are complete.
+- Total language count ≥ 1,000.
+- Validator total WARNs do not exceed pre-Tier-5 baseline + 5%.
+- Family taxonomy normalization (Task 159) has been re-run after every
+  tier.
+- `lang_names.js` has 1,000+ entries in every one of the 21 UI
+  sections.
