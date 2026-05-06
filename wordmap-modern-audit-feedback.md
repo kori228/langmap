@@ -1208,3 +1208,17 @@ Pass 8〜14 累計 **41 タスク + ユーザー要望 3 件** 対応完了。
 **Validator status**: PASS (0 errors, 17 pre-existing description-i18n warnings — Pass 14 と同じ、変動なし)。pronunciationType coverage が 162 → 194 langs に拡大、scripts in use 検出 + script-font 抜け検出も正常動作。Cache-buster は data 86→87, meta 36→37 bump。
 
 Pass 8〜15 累計 **45 タスク + ユーザー要望 3 件** 対応完了。
+
+---
+
+## Pass 16 Sequential Cleanup (2026-05-06 part 9)
+
+新たに監査ファイルに追加された Task 141 (Tier 1 missing languages) に対応。
+
+| Task | 対応内容 | Files |
+|---|---|---|
+| Task 141 | **既存確認**: `bua` Buryat → `bxr` で既存、`chm` Mari → `mhr` (Meadow Mari) で既存、`tw` Twi → `ak` (Akan (Twi)) で既存。実質追加すべき 8 言語のうち 4 言語を本パスで追加: <br>**`cv` Chuvash** (Oghur Turkic 唯一の現存分岐、~1M 話者、Cheboksary)、<br>**`mdf` Moksha** (Mordvinic 系、`myv` Erzya の姉妹、~250K、Saransk)、<br>**`tzh` Tzeltal** (Mayan、`tzo` Tzotzil の姉妹、~600K、Ocosingo)、<br>**`dv` Dhivehi** (Indo-Aryan、Thaana RTL 文字、Maldives 公用語、Malé)。<br>各言語に 20-word entries (sourced) + meta (family/speakers/Ethnologue 27/iso6393/script/description) + LANG_NAMES (en/ja/ko/zh + 16他言語)。Total 言語数 591 → 595。<br>残り 4 言語 (`kpv` Komi-Zyrian / `koi` Komi-Permyak / `bcl` Central Bikol / `rmy` Vlax Romani) は次パス以降で出典付き追加 | wordmap_data.js, wordmap_meta.js, lang_names.js, wordmap.html, README.md |
+
+**Validator status**: PASS (0 errors, 17 pre-existing warnings — language count update以外 unchanged)。Languages: 595 (modern: 509, historical: 86)。Cache-buster は data 87→88, names 5→6, meta 37→38。
+
+Pass 8〜16 累計 **46 タスク + ユーザー要望 3 件** 対応完了 (+ 4 言語追加 で 591→595 langs)。

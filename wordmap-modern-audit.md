@@ -5503,3 +5503,102 @@ Done when:
 - Every PR/push can automatically run `node validate_wordmap_data.js`.
 - The validation command is documented and discoverable.
 - Future schema regressions are caught without relying on manual memory.
+
+### New Task 141. Add Tier 1 missing high-speaker / linguistically anchoring languages
+
+Goal:
+Close family-coverage gaps where a notable speaker base or a unique typological/historical role makes the absence visible to linguists. Each entry below either anchors a major sub-branch that the map currently leaves dangling or pairs with a sibling row that is already present.
+
+Current issue I checked (codes verified absent at top level of `wordmap_data.js` on 2026-05-06):
+- `cv` Chuvash — ~1M speakers; sole surviving Oghur Turkic branch. Preserves Proto-Turkic features (rhotacism r↔z, lambdacism l↔š). Without it, the Turkic axis on the map collapses the deepest split.
+- `bua` Buryat — Mongolic, ~440K. Russia / Mongolia / China cross-border. Conservative Mongolic, complements `mn`, `xal`.
+- `chm` Mari — Volga-Finnic Uralic, ~470K. Major Uralic branch currently unrepresented.
+- `mdf` Moksha — Mordvinic, ~250K. Sister to `myv` Erzya, which is already present; the Mordvinic pair is incomplete without it.
+- `kpv` Komi-Zyrian + `koi` Komi-Permyak — Permic Uralic, combined ~160K. Permic branch otherwise absent.
+- `dv` Dhivehi / Maldivian — Indo-Aryan, ~340K. Official language of the Maldives. Distinct island-state development from Sinhala (`si`).
+- `bcl` Central Bikol — Philippine Austronesian, ~2.5M. Visible gap next to `tl`, `ceb`, `hil`, `war`, `pam`, `ilo`, `bik`, `pag`.
+- `tzh` Tzeltal — Mayan, ~600K. Direct sister to `tzo` Tzotzil, which is already present.
+- `rmy` Vlax Romani — most-spoken Romani variety, ~1.5M. The macrolanguage `rom` is present but does not represent Vlax phonology/lexicon.
+- `tw` Twi (Asante / Akuapem) — ~9M. `ak` Akan macro is present, but Twi is commonly cited as a separate label and is the most visible Akan variety to non-specialists.
+
+Files to change:
+- `wordmap_data.js` — add 20-word entries for each new code (with IPA + romanization where applicable).
+- `wordmap_meta.js` — add per-language metadata: family, region, scriptHints, sources, parentCode where appropriate, locationBasis.
+- `lang_names.js` — add display names (English + native) for each.
+- `meta_i18n_coverage.js` / `meta_i18n_ext.js` — add translations for the new language descriptions where the existing coverage matrix expects them.
+- `lang-filter.js` — confirm new family/region tags are recognized; extend filter taxonomies if a new family bucket is needed (e.g. Permic).
+- `changelog.html` — credit the suggestion + list the additions.
+
+Implementation instructions:
+- Source data only from named, citeable references (Glottolog, Ethnologue, peer-reviewed grammars, UNESCO Atlas). Record the source in `wordmap_meta.js` `sources` per language. Avoid uncited web aggregators.
+- Set `parentCode` only when there is an actual immediate parent on the map (e.g. `mdf` → no parent; `bcl` → no parent unless a Philippine macro is added).
+- Use the same per-concept structure as existing entries: `{ word, ipa, romanization?, evidence?, wordEvidence? }`.
+- For IPA, follow the project's conventions: real IPA only, no capital `N` placeholders (see Task 2).
+- For RTL or non-Latin scripts: confirm `scriptHints` and that the row passes Task 129 (RTL/bidi) and Task 130 (script tags) expectations.
+- Coordinates: choose a representative city, not a country centroid. Add `locationBasis` per Task 127 if the choice is non-obvious (e.g. Buryat → Ulan-Ude; Mari → Yoshkar-Ola; Tzeltal → Ocosingo or San Cristóbal; Dhivehi → Malé; Vlax Romani → diaspora-aware note rather than a single coordinate).
+- For Vlax Romani specifically: document why it is added next to the existing `rom` macro row and what dialect base (e.g. Kalderash, Lovari) the surface forms reflect.
+- Run `node validate_wordmap_data.js` after each language is added; do not batch-merge before validation passes.
+- Bump the cache-buster in `wordmap.html` per Task 134 once added.
+
+Validator / static check:
+- Extend `validate_wordmap_data.js` (or a follow-up check) to warn when `myv` is present but `mdf` is absent (and similar paired-sibling expectations: `tzo`/`tzh`, `kpv`/`koi`, `sma`/`smj`/`smn`/`sms`).
+- Continue to require the schema fields already enforced for existing rows.
+
+Do not:
+- Do not invent IPA. If a reliable transcription cannot be cited, mark the field unattested and leave evidence notes rather than guessing.
+- Do not collapse `mdf` and `myv` into one row; they are mutually unintelligible enough that linguists treat them separately.
+- Do not add `tw` Twi as a duplicate of `ak` Akan — choose the Asante or Akuapem standard explicitly and note it in `wordmap_meta.js`.
+- Do not pick a coordinate inside Russia for `bua` without acknowledging the cross-border distribution in metadata.
+
+Done when:
+- All 10 codes (`cv`, `bua`, `chm`, `mdf`, `kpv`, `koi`, `dv`, `bcl`, `tzh`, `rmy`, `tw`) have full word + meta + name entries.
+- `node validate_wordmap_data.js` passes with no new warnings introduced.
+- Family-coverage gaps for Oghur Turkic, Mongolic (Buryat), Volga-Finnic, Permic, Mordvinic pair completion, island Indo-Aryan, Mayan pair completion, and Vlax Romani are visibly closed in the language filter UI.
+- Changelog credits the gap analysis (2026-05-06).
+
+### New Task 142. Add Tier 2 linguistically significant but smaller-corpus languages
+
+Goal:
+Improve typological / endangerment / modality coverage with languages that, while smaller in speaker count than Tier 1, are repeatedly cited in linguistic literature, are critically endangered, or represent a modality (signed) entirely absent from the map.
+
+Current issue I checked (codes verified absent or partially absent on 2026-05-06):
+- Sign languages — completely absent. No `ase` (American Sign Language), `bfi` (British Sign Language), `jsl` (Japanese Sign Language), `fsl` (French Sign Language), `gsg` / `gss` (German / Greek), `csl` (Chinese), `kvk` (Korean). The map currently has zero signed-modality rows.
+- Saami varieties — `sma` Southern and `se` Northern are present; `smj` Lule, `smn` Inari, `sms` Skolt are missing. The Saami sub-branch coverage is uneven.
+- `vep` Veps and `vot` Votic — endangered Finnic. Both are heavily studied for Balto-Finnic typology and language-death cases.
+- `rhg` Rohingya — Indo-Aryan, ~1.8M, sociolinguistically and politically prominent; often cited in script-choice and refugee-language discussions.
+- `ctg` Chittagonian — ~13M speakers, frequently raised in debates about Bengali macrolanguage boundaries.
+- Optional add-ons (lower priority but recurring in linguistic typology): `itl` Itelmen (Chukotko-Kamchatkan, near-extinct), `yux` Yukaghir (isolate / small family).
+
+Files to change:
+- `wordmap_data.js`, `wordmap_meta.js`, `lang_names.js`, `meta_i18n_coverage.js`, `meta_i18n_ext.js`, `lang-filter.js`, `changelog.html` (same set as Task 141).
+- `wordmap.html` — add modality handling for sign languages if added (see Implementation instructions).
+- `styles.css` — sign-language rows likely need a different presentation style (image/video placeholder, or explicit modality badge).
+
+Implementation instructions:
+- Decide modality policy for sign languages before adding rows:
+  - **Option A:** Add sign languages with a `modality: "signed"` field in `wordmap_meta.js`, render a clear badge in the row, and use SignWriting (`Sutton SignWriting` Unicode block) or a citable gloss + free-form notation for the surface field. Treat the IPA field as a structured handshape/movement notation, not phonetic IPA, and document that in CONTRIBUTING.
+  - **Option B:** Add sign languages with the surface field linking to a curated video URL (Wikimedia Commons / SignBank) and leave IPA empty, with metadata flagging modality.
+  - **Option C (defer):** Document the gap, do not add rows yet, but reserve the codes in metadata so they are not forgotten.
+  - Pick one option in this task; do not mix policies across rows.
+- For Saami varieties, follow the same source/IPA standards as Tier 1.
+- For Rohingya, prefer the Hanifi Rohingya script for the surface where attested; provide Latin and Arabic alternates per Task 119.
+- For Veps and Votic, mark as critically endangered in `wordmap_meta.js` (`vitality: "endangered"` if the schema supports it, otherwise free-form note + source).
+- For Chittagonian, document the macrolanguage relationship to Bengali (`bn`) explicitly in `wordmap_meta.js` notes rather than guessing.
+
+Validator / static check:
+- If sign languages are added, extend the validator to require `modality` to be set when a row is signed, and to skip phonetic-IPA checks for those rows.
+- Warn if `sma` or `se` exists but no other Saami varieties — current state.
+
+Do not:
+- Do not silently treat sign-language IPA as phonetic IPA; the existing IPA validation rules will produce false positives.
+- Do not add Rohingya in only Latin script when Hanifi attestations exist for the same lexical items.
+- Do not mark Veps or Votic as "regional dialects" of Finnish or Estonian; they are distinct languages.
+- Do not let optional add-ons (Itelmen, Yukaghir) block merging the rest of Tier 2.
+
+Done when:
+- Saami sub-branch is balanced: `smj`, `smn`, `sms` added next to existing `sma`, `se`.
+- Endangered Finnic pair `vep`, `vot` is present with explicit endangerment metadata.
+- Rohingya and Chittagonian are present with script and macrolanguage notes.
+- Sign-language modality decision is documented in CONTRIBUTING and at least the chosen option is implemented for `ase` and `bfi` as the first two pilots — or, if Option C is chosen, the deferral and reasoning are recorded in this audit file.
+- `node validate_wordmap_data.js` passes; modality-aware rules (if added) cover the new rows.
+- Changelog credits the gap analysis (2026-05-06) and lists the additions.
