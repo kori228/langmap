@@ -489,6 +489,25 @@
         }
         .compare-add-btn:hover { background: #e8f0fe; }
         .compare-add-btn.added { background: #1a73e8; color: #fff; }
+        /* Header position: compact, sits right under the title before the native name */
+        .compare-add-btn.header {
+            margin-top: 0; margin-bottom: 6px;
+            padding: 2px 8px; font-size: 11px;
+        }
+        /* Reorder arrows in compare table column headers */
+        .compare-table thead .col-controls {
+            display: flex; gap: 2px; margin-top: 2px; align-items: center;
+        }
+        .compare-table thead .move-col {
+            background: none; border: 1px solid #ccc; cursor: pointer; color: #666;
+            font-size: 10px; padding: 1px 5px; border-radius: 3px; line-height: 1;
+        }
+        .compare-table thead .move-col:hover:not(:disabled) {
+            background: #e8f0fe; color: #1a73e8; border-color: #1a73e8;
+        }
+        .compare-table thead .move-col:disabled {
+            opacity: 0.3; cursor: not-allowed;
+        }
         @media (max-width: 600px) {
             .compare-panel { max-height: 80vh; }
             .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
@@ -2530,6 +2549,20 @@
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+            // Pass 32 (header position): Add-to-compare button right under the title
+            (() => {
+                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+                const cmpI18n = {
+                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
+                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
+                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
+                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
+                };
+                const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
+                const lbl = inCmp ? lObj.remove : lObj.add;
+                const cls = inCmp ? 'compare-add-btn header added' : 'compare-add-btn header';
+                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+            })();
             html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
             // Audit Task 115: disambiguator for rows that share a display
             // or native name with another row (e.g. mn_cn/xng both show
@@ -2914,20 +2947,6 @@
                     sourceItems.map(renderItem).join(' · ') +
                     `</div>`;
             }
-            // Pass 32: Add-to-compare button (renders before sources/footer area)
-            (() => {
-                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
-                const cmpI18n = {
-                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
-                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
-                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
-                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
-                };
-                const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
-                const lbl = inCmp ? lObj.remove : lObj.add;
-                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
-                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
-            })();
             infoContent.innerHTML = html;
         }
 
@@ -3335,6 +3354,18 @@
             const panel = document.getElementById('compare-panel');
             if (panel && panel.classList.contains('visible')) renderCompare();
         }
+        function moveInCompare(code, delta) {
+            const i = _compareList.indexOf(code);
+            if (i === -1) return;
+            const j = i + delta;
+            if (j < 0 || j >= _compareList.length) return;
+            const tmp = _compareList[i];
+            _compareList[i] = _compareList[j];
+            _compareList[j] = tmp;
+            saveCompareList();
+            renderCompare();
+        }
+
         function renderCompare() {
             const body = document.getElementById('compare-body');
             if (!body) return;
@@ -3342,13 +3373,21 @@
             const names = (typeof LANG_NAMES !== 'undefined' && LANG_NAMES[uiLang]) || (typeof LANG_NAMES !== 'undefined' && LANG_NAMES.en) || {};
             const conceptLangFb = uiLang.split('_')[0];
             let html = '<table class="compare-table"><thead><tr><th></th>';
-            for (const code of _compareList) {
+            const len = _compareList.length;
+            for (let idx = 0; idx < len; idx++) {
+                const code = _compareList[idx];
                 const lang = LANG_DATA[code]; if (!lang) continue;
                 const display = names[code] || lang.name || code;
+                const leftDis = idx === 0 ? ' disabled' : '';
+                const rightDis = idx === len - 1 ? ' disabled' : '';
                 html += '<th>'
                      + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
                      + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
-                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
+                     + '<div class="col-controls">'
+                     +   '<button class="move-col" data-code="' + escapeHtml(code) + '" data-dir="-1" type="button" aria-label="Move left"' + leftDis + '>◀</button>'
+                     +   '<button class="move-col" data-code="' + escapeHtml(code) + '" data-dir="1" type="button" aria-label="Move right"' + rightDis + '>▶</button>'
+                     +   '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
+                     + '</div>'
                      + '</th>';
             }
             html += '</tr></thead><tbody>';
@@ -3374,6 +3413,9 @@
             // Wire interactions
             body.querySelectorAll('.remove-col').forEach(btn => {
                 btn.addEventListener('click', () => removeFromCompare(btn.dataset.code));
+            });
+            body.querySelectorAll('.move-col').forEach(btn => {
+                btn.addEventListener('click', () => moveInCompare(btn.dataset.code, parseInt(btn.dataset.dir)));
             });
             body.querySelectorAll('.lang-name[data-code]').forEach(el => {
                 el.style.cursor = 'pointer';
