@@ -335,4 +335,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Kirundi (rn), Swiss German (gsw), Sukuma (suk) — high-speaker family-coverage gaps.
+    const ADDED10 = {
+        rn:  { en: 'Kirundi', ja: 'キルンディ語', ko: '키룬디어', zh: '基隆迪语', yue: '基隆迪語',
+               vi: 'Tiếng Kirundi', th: 'ภาษาคีรุนดี', id: 'Kirundi', hi: 'किरुंदी',
+               de: 'Kirundi', fr: 'Kirundi', it: 'Kirundi',
+               es_eu: 'Kirundi', es_mx: 'Kirundi', pt_eu: 'Quirundi', pt_br: 'Quirundi',
+               ru: 'Рунди', uk: 'Рунді', ar: 'الكيروندية', he: 'קירונדי', sw: 'Kirundi' },
+        gsw: { en: 'Swiss German', ja: 'スイス・ドイツ語', ko: '스위스 독일어', zh: '瑞士德语', yue: '瑞士德語',
+               vi: 'Tiếng Đức Thụy Sĩ', th: 'ภาษาเยอรมันสวิส', id: 'Jerman Swiss', hi: 'स्विस जर्मन',
+               de: 'Schweizerdeutsch', fr: 'Suisse alémanique', it: 'Tedesco svizzero',
+               es_eu: 'Alemán suizo', es_mx: 'Alemán suizo', pt_eu: 'Alemão suíço', pt_br: 'Alemão suíço',
+               ru: 'Швейцарский немецкий', uk: 'Швейцарська німецька', ar: 'الألمانية السويسرية', he: 'גרמנית שוויצרית', sw: 'Kijerumani cha Uswisi' },
+        suk: { en: 'Sukuma', ja: 'スクマ語', ko: '수쿠마어', zh: '苏库马语', yue: '蘇庫馬語',
+               vi: 'Tiếng Sukuma', th: 'ภาษาซูคูมา', id: 'Sukuma', hi: 'सुकुमा',
+               de: 'Sukuma', fr: 'Sukuma', it: 'Sukuma',
+               es_eu: 'Sukuma', es_mx: 'Sukuma', pt_eu: 'Sucumá', pt_br: 'Sucumá',
+               ru: 'Сукума', uk: 'Сукума', ar: 'السوكوما', he: 'סוקומה', sw: 'Kisukuma' },
+    };
+    for (const code of Object.keys(ADDED10)) {
+        for (const ui of Object.keys(ADDED10[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED10[code][ui];
+            }
+        }
+    }
 })();
