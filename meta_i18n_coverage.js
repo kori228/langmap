@@ -15993,6 +15993,69 @@ const COMMON_PHRASES_LATIN = [
     ['Ranjana', 'Ranjana', 'rañjana', 'ranjana', 'ranjana', 'ranjana', 'Ranjana', 'Ranjana'],
     ['Prachalit Nepal', 'Prachalit-Nepal', 'prachalit népalais', 'prachalit nepalí', 'prachalit nepalese', 'prachalit nepalês', 'Prachalit Nepal', 'Prachalit Nepal'],
     ['Devanagari / Ranjana / Prachalit Nepal', 'Devanagari / Ranjana / Prachalit-Nepal', 'devanagari / rañjana / prachalit népalais', 'devanagari / ranjana / prachalit nepalí', 'devanagari / ranjana / prachalit nepalese', 'devanagari / ranjana / prachalit nepalês', 'Devanagari / Ranjana / Prachalit Nepal', 'Devanagari / Ranjana / Prachalit Nepal'],
+
+    // === Round 28: more atoms — Mesopotamia, de facto, abugida, Ethiopic ===
+    ['Mesopotamia', 'Mesopotamien', 'Mésopotamie', 'Mesopotamia', 'Mesopotamia', 'Mesopotâmia', 'Mesopotamia', 'Mesopotamia'],
+    ['Mesopotamia (Iraq)', 'Mesopotamien (Irak)', 'Mésopotamie (Irak)', 'Mesopotamia (Iraq)', 'Mesopotamia (Iraq)', 'Mesopotâmia (Iraque)', 'Mesopotamia (Iraq)', 'Mesopotamia (Iraq)'],
+    ['de facto', 'de facto', 'de fait', 'de facto', 'di fatto', 'de fato', 'de facto', 'kweli'],
+    ['Australia (de facto)', 'Australien (de facto)', 'Australie (de fait)', 'Australia (de facto)', 'Australia (di fatto)', 'Austrália (de fato)', 'Australia (de facto)', 'Australia (kweli)'],
+    ['Iraq', 'Irak', 'Irak', 'Iraq', 'Iraq', 'Iraque', 'Irak', 'Iraq'],
+    ['Iran', 'Iran', 'Iran', 'Irán', 'Iran', 'Irã', 'Iran', 'Iran'],
+    // Niger-Congo (de capitalizes Kongo)
+    ['Niger-Congo', 'Niger-Kongo', 'Niger-Congo', 'Níger-Congo', 'Niger-Congo', 'Níger-Congo', 'Niger-Kongo', 'Niger-Kongo'],
+    ['Atlantic-Congo', 'Atlantik-Kongo', 'atlantique-congo', 'atlántico-congo', 'atlantico-congo', 'atlântico-congo', 'Atlantik-Kongo', 'Atlantiki-Kongo'],
+    ['Niger-Congo (Adamawa-Ubangian)', 'Niger-Kongo (Adamawa-Ubangi)', 'niger-congo (adamawa-oubanguien)', 'níger-congo (adamawa-ubangui)', 'niger-congo (adamawa-ubangi)', 'níger-congo (adamawa-ubangui)', 'Niger-Kongo (Adamawa-Ubangi)', 'Niger-Kongo (Adamawa-Ubangi)'],
+    // diaspora
+    ['diaspora', 'Diaspora', 'diaspora', 'diáspora', 'diaspora', 'diáspora', 'diaspora', 'diaspora'],
+    // Abugida / Ethiopic
+    ['abugida', 'Abugida', 'abougida', 'abugida', 'abugida', 'abugida', 'abugida', 'abugida'],
+    ['Ethiopic', 'Äthiopisch', 'éthiopien', 'etiópico', 'etiopico', 'etíope', 'Etiopia', 'Kihabeshi'],
+    ['Ethiopic abugida', 'Äthiopisch-Abugida', 'abougida éthiopien', 'abugida etiópico', 'abugida etiopico', 'abugida etíope', 'abugida Etiopia', 'abugida ya Kihabeshi'],
+    ['Ge\'ez script (Ethiopic abugida) ግዕዝ', 'Ge\'ez-Schrift (Äthiopisch-Abugida) ግዕዝ', 'écriture ge\'ez (abougida éthiopien) ግዕዝ', 'escritura ge\'ez (abugida etiópico) ግዕዝ', 'scrittura ge\'ez (abugida etiopico) ግዕዝ', 'escrita ge\'ez (abugida etíope) ግዕዝ', 'aksara Ge\'ez (abugida Etiopia) ግዕዝ', 'maandishi ya Ge\'ez (abugida ya Kihabeshi) ግዕዝ'],
+    // Bantu (Nguni)
+    ['Nguni', 'Nguni', 'nguni', 'nguni', 'nguni', 'nguni', 'Nguni', 'Nguni'],
+    ['Bantu (Nguni)', 'Bantu (Nguni)', 'bantou (nguni)', 'bantú (nguni)', 'bantu (nguni)', 'banto (nguni)', 'Bantu (Nguni)', 'Bantu (Nguni)'],
+    // ~16M (Ethnologue) — sometimes counted as Hindi dialect
+    // Provincial / regional
+    ['provincial', 'provinziell', 'provincial', 'provincial', 'provinciale', 'provincial', 'provinsi', 'mkoa'],
+    ['Pakistan (provincial)', 'Pakistan (provinziell)', 'Pakistan (provincial)', 'Pakistán (provincial)', 'Pakistan (provinciale)', 'Paquistão (provincial)', 'Pakistan (provinsi)', 'Pakistani (mkoa)'],
+    // Hangul / Hanja
+    ['Hangul', 'Hangul', 'hangeul', 'hangul', 'hangul', 'hangul', 'Hangul', 'Hangul'],
+    ['Hanja', 'Hanja', 'hanja', 'hanja', 'hanja', 'hanja', 'Hanja', 'Hanja'],
+    ['Hangul / Hanja', 'Hangul / Hanja', 'hangeul / hanja', 'hangul / hanja', 'hangul / hanja', 'hangul / hanja', 'Hangul / Hanja', 'Hangul / Hanja'],
+    // Hiragana + Katakana / Kanji + Hiragana
+    ['Hiragana', 'Hiragana', 'hiragana', 'hiragana', 'hiragana', 'hiragana', 'Hiragana', 'Hiragana'],
+    ['Katakana', 'Katakana', 'katakana', 'katakana', 'katakana', 'katakana', 'Katakana', 'Katakana'],
+    ['Kanji', 'Kanji', 'kanji', 'kanji', 'kanji', 'kanji', 'Kanji', 'Kanji'],
+    ['Hiragana + Katakana', 'Hiragana + Katakana', 'hiragana + katakana', 'hiragana + katakana', 'hiragana + katakana', 'hiragana + katakana', 'Hiragana + Katakana', 'Hiragana + Katakana'],
+    ['Kanji + Hiragana + Katakana', 'Kanji + Hiragana + Katakana', 'kanji + hiragana + katakana', 'kanji + hiragana + katakana', 'kanji + hiragana + katakana', 'kanji + hiragana + katakana', 'Kanji + Hiragana + Katakana', 'Kanji + Hiragana + Katakana'],
+    ['Man\'yogana', 'Man\'yōgana', 'man\'yōgana', 'man\'yōgana', 'man\'yōgana', 'man\'yōgana', 'Man\'yogana', 'Man\'yogana'],
+    ['Hiragana (Man\'yogana)', 'Hiragana (Man\'yōgana)', 'hiragana (man\'yōgana)', 'hiragana (man\'yōgana)', 'hiragana (man\'yōgana)', 'hiragana (man\'yōgana)', 'Hiragana (Man\'yogana)', 'Hiragana (Man\'yogana)'],
+    ['Kanji + Hiragana (Man\'yogana)', 'Kanji + Hiragana (Man\'yōgana)', 'kanji + hiragana (man\'yōgana)', 'kanji + hiragana (man\'yōgana)', 'kanji + hiragana (man\'yōgana)', 'kanji + hiragana (man\'yōgana)', 'Kanji + Hiragana (Man\'yogana)', 'Kanji + Hiragana (Man\'yogana)'],
+    // Tibetan (Uchen)
+    ['Uchen', 'Uchen', 'uchen', 'uchen', 'uchen', 'uchen', 'Uchen', 'Uchen'],
+    ['Tibetan (Uchen) ྑ', 'Tibetisch (Uchen) ྑ', 'tibétain (uchen) ྑ', 'tibetano (uchen) ྑ', 'tibetano (uchen) ྑ', 'tibetano (uchen) ྑ', 'Tibet (Uchen) ྑ', 'Kitibeti (Uchen) ྑ'],
+    // Latin scripts: Latin (Qubee/Rumi/RPA), Lontara, Sawndip
+    ['Qubee', 'Qubee', 'qubee', 'qubee', 'qubee', 'qubee', 'Qubee', 'Qubee'],
+    ['Rumi', 'Rumi', 'rumi', 'rumi', 'rumi', 'rumi', 'Rumi', 'Rumi'],
+    ['Jawi', 'Jawi', 'jawi', 'jawi', 'jawi', 'jawi', 'Jawi', 'Jawi'],
+    ['Sawndip', 'Sawndip', 'sawndip', 'sawndip', 'sawndip', 'sawndip', 'Sawndip', 'Sawndip'],
+    ['Lontara', 'Lontara', 'lontara', 'lontara', 'lontara', 'lontara', 'Lontara', 'Lontara'],
+    ['Latin (Qubee)', 'Lateinisch (Qubee)', 'latin (qubee)', 'latín (qubee)', 'latino (qubee)', 'latim (qubee)', 'Latin (Qubee)', 'Kilatini (Qubee)'],
+    ['Latin (Rumi) / Jawi', 'Lateinisch (Rumi) / Jawi', 'latin (rumi) / jawi', 'latín (rumi) / jawi', 'latino (rumi) / jawi', 'latim (rumi) / jawi', 'Latin (Rumi) / Jawi', 'Kilatini (Rumi) / Jawi'],
+    ['Latin / Sawndip', 'Lateinisch / Sawndip', 'latin / sawndip', 'latín / sawndip', 'latino / sawndip', 'latim / sawndip', 'Latin / Sawndip', 'Kilatini / Sawndip'],
+    ['Lontara / Latin', 'Lontara / Lateinisch', 'lontara / latin', 'lontara / latín', 'lontara / latino', 'lontara / latim', 'Lontara / Latin', 'Lontara / Kilatini'],
+    ['Latin / Thai', 'Lateinisch / Thai', 'latin / thaï', 'latín / tailandés', 'latino / thai', 'latim / tailandês', 'Latin / Thai', 'Kilatini / Thai'],
+    ['Latin/Katakana', 'Lateinisch/Katakana', 'latin/katakana', 'latín/katakana', 'latino/katakana', 'latim/katakana', 'Latin/Katakana', 'Kilatini/Katakana'],
+    ['Devanagari / Latin / Ol Chiki', 'Devanagari / Lateinisch / Ol Chiki', 'devanagari / latin / ol chiki', 'devanagari / latín / ol chiki', 'devanagari / latino / ol chiki', 'devanagari / latim / ol chiki', 'Devanagari / Latin / Ol Chiki', 'Devanagari / Kilatini / Ol Chiki'],
+    // Central African Republic
+    ['Central African Republic', 'Zentralafrikanische Republik', 'République centrafricaine', 'República Centroafricana', 'Repubblica Centrafricana', 'República Centro-Africana', 'Republik Afrika Tengah', 'Jamhuri ya Afrika ya Kati'],
+    // French Polynesia
+    ['French Polynesia', 'Französisch-Polynesien', 'Polynésie française', 'Polinesia Francesa', 'Polinesia Francese', 'Polinésia Francesa', 'Polinesia Prancis', 'Polinesia ya Kifaransa'],
+    // Marshall Islands
+    ['Marshall Islands', 'Marshallinseln', 'Îles Marshall', 'Islas Marshall', 'Isole Marshall', 'Ilhas Marshall', 'Kepulauan Marshall', 'Visiwa vya Marshall'],
+    // Sri Lanka
+    ['Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
