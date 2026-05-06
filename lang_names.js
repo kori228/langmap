@@ -255,4 +255,84 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 142 (Tier 2 optional): Itelmen (itl), Tundra Yukaghir (ykg)
+    const ADDED7 = {
+        itl: { en: 'Itelmen', ja: 'イテリメン語', ko: '이텔멘어', zh: '伊捷尔缅语', yue: '伊捷爾緬語',
+               vi: 'Tiếng Itelmen', th: 'ภาษาอีเทลเมน', id: 'Itelmen', hi: 'इतेलमेन',
+               de: 'Itelmenisch', fr: 'Itelmène', it: 'Itelmeno',
+               es_eu: 'Itelmeno', es_mx: 'Itelmeno', pt_eu: 'Itelmeno', pt_br: 'Itelmeno',
+               ru: 'Ительменский', uk: 'Ітельменська', ar: 'الإيتلمن', he: 'איטלמן', sw: 'Kiitelmen' },
+        ykg: { en: 'Tundra Yukaghir', ja: 'ツンドラ・ユカギール語', ko: '툰드라 유카기르어', zh: '苔原尤卡吉尔语', yue: '苔原尤卡吉爾語',
+               vi: 'Tiếng Yukaghir Lãnh Nguyên', th: 'ภาษายูคากีร์ทุนดรา', id: 'Yukaghir Tundra', hi: 'टुंड्रा युकागिर',
+               de: 'Tundra-Jukagirisch', fr: 'Iukaguir de la toundra', it: 'Yukaghir della tundra',
+               es_eu: 'Yucaguir de la tundra', es_mx: 'Yucaguir de la tundra', pt_eu: 'Yukaghir da tundra', pt_br: 'Yukaghir da tundra',
+               ru: 'Тундренный юкагирский', uk: 'Тундровий юкагирський', ar: 'يوكاغيرية التندرا', he: 'יוקאגיר טונדרה', sw: 'Kiyukaghir cha Tundra' },
+    };
+    for (const code of Object.keys(ADDED7)) {
+        for (const ui of Object.keys(ADDED7[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED7[code][ui];
+            }
+        }
+    }
+    // Pennsylvania German (pdc), Livonian (liv), Aleut (ale)
+    const ADDED8 = {
+        pdc: { en: 'Pennsylvania German', ja: 'ペンシルベニア・ドイツ語', ko: '펜실베이니아 독일어', zh: '宾夕法尼亚德语', yue: '賓夕法尼亞德語',
+               vi: 'Tiếng Đức Pennsylvania', th: 'ภาษาเยอรมันเพนซิลเวเนีย', id: 'Jerman Pennsylvania', hi: 'पेंसिल्वेनिया जर्मन',
+               de: 'Pennsylvaniadeutsch', fr: 'Allemand de Pennsylvanie', it: 'Tedesco di Pennsylvania',
+               es_eu: 'Alemán de Pensilvania', es_mx: 'Alemán de Pensilvania', pt_eu: 'Alemão da Pensilvânia', pt_br: 'Alemão da Pensilvânia',
+               ru: 'Пенсильванский немецкий', uk: 'Пенсильванська німецька', ar: 'الألمانية البنسلفانية', he: 'גרמנית פנסילבניה', sw: 'Kijerumani cha Pennsylvania' },
+        liv: { en: 'Livonian', ja: 'リーヴ語', ko: '리보니아어', zh: '利沃尼亚语', yue: '利沃尼亞語',
+               vi: 'Tiếng Liv', th: 'ภาษาลิโวเนีย', id: 'Liv', hi: 'लिवोनियन',
+               de: 'Livisch', fr: 'Live', it: 'Livone',
+               es_eu: 'Livonio', es_mx: 'Livonio', pt_eu: 'Livónio', pt_br: 'Livônio',
+               ru: 'Ливский', uk: 'Лівська', ar: 'الليفية', he: 'ליבונית', sw: 'Kiliv' },
+        ale: { en: 'Aleut', ja: 'アリュート語', ko: '알류트어', zh: '阿留申语', yue: '阿留申語',
+               vi: 'Tiếng Aleut', th: 'ภาษาอาเลอุต', id: 'Aleut', hi: 'अलेउत',
+               de: 'Aleutisch', fr: 'Aléoute', it: 'Aleutino',
+               es_eu: 'Aleutiano', es_mx: 'Aleutiano', pt_eu: 'Aleúte', pt_br: 'Aleúte',
+               ru: 'Алеутский', uk: 'Алеутська', ar: 'الأليوتية', he: 'אלאוטית', sw: 'Kialeut' },
+    };
+    for (const code of Object.keys(ADDED8)) {
+        for (const ui of Object.keys(ADDED8[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED8[code][ui];
+            }
+        }
+    }
+    // Corsican (co), Ligurian (lij), Arpitan (frp), Limburgish (li), Shipibo-Conibo (shp)
+    const ADDED9 = {
+        co: { en: 'Corsican', ja: 'コルシカ語', ko: '코르시카어', zh: '科西嘉语', yue: '科西嘉語',
+              vi: 'Tiếng Corse', th: 'ภาษาคอร์ซิกา', id: 'Korsika', hi: 'कोर्सीकन',
+              de: 'Korsisch', fr: 'Corse', it: 'Corso',
+              es_eu: 'Corso', es_mx: 'Corso', pt_eu: 'Corso', pt_br: 'Corso',
+              ru: 'Корсиканский', uk: 'Корсиканська', ar: 'الكورسيكية', he: 'קורסיקנית', sw: 'Kikorsika' },
+        lij: { en: 'Ligurian', ja: 'リグーリア語', ko: '리구리아어', zh: '利古里亚语', yue: '利古里亞語',
+               vi: 'Tiếng Liguria', th: 'ภาษาลิกูเรีย', id: 'Liguria', hi: 'लिगुरियन',
+               de: 'Ligurisch', fr: 'Ligurien', it: 'Ligure',
+               es_eu: 'Ligur', es_mx: 'Ligur', pt_eu: 'Lígure', pt_br: 'Lígure',
+               ru: 'Лигурский', uk: 'Лігурська', ar: 'الليغورية', he: 'ליגורית', sw: 'Kiliguria' },
+        frp: { en: 'Arpitan', ja: 'アルピタン語', ko: '아르피탄어', zh: '阿尔皮坦语', yue: '阿爾皮坦語',
+               vi: 'Tiếng Arpitan', th: 'ภาษาอาร์ปีตัน', id: 'Arpitan', hi: 'अर्पीतान',
+               de: 'Frankoprovenzalisch', fr: 'Arpitan', it: 'Arpitano',
+               es_eu: 'Arpitano', es_mx: 'Arpitano', pt_eu: 'Arpitano', pt_br: 'Arpitano',
+               ru: 'Арпитанский', uk: 'Арпітанська', ar: 'الأربيتانية', he: 'ארפיטנית', sw: 'Kiarpitan' },
+        li: { en: 'Limburgish', ja: 'リンブルフ語', ko: '림뷔르흐어', zh: '林堡语', yue: '林堡語',
+              vi: 'Tiếng Limburg', th: 'ภาษาลิมเบิร์ก', id: 'Limburg', hi: 'लिमबर्गिश',
+              de: 'Limburgisch', fr: 'Limbourgeois', it: 'Limburghese',
+              es_eu: 'Limburgués', es_mx: 'Limburgués', pt_eu: 'Limburguês', pt_br: 'Limburguês',
+              ru: 'Лимбургский', uk: 'Лімбурзька', ar: 'الليمبورغية', he: 'לימבורגית', sw: 'Kilimburg' },
+        shp: { en: 'Shipibo-Conibo', ja: 'シピボ・コニボ語', ko: '시피보-코니보어', zh: '希皮博-科尼博语', yue: '希皮博-科尼博語',
+               vi: 'Tiếng Shipibo-Conibo', th: 'ภาษาชิปีโบ-โคนีโบ', id: 'Shipibo-Conibo', hi: 'शिपीबो-कोनीबो',
+               de: 'Shipibo-Conibo', fr: 'Shipibo-Conibo', it: 'Shipibo-Conibo',
+               es_eu: 'Shipibo-Conibo', es_mx: 'Shipibo-Conibo', pt_eu: 'Shipibo-Conibo', pt_br: 'Shipibo-Conibo',
+               ru: 'Шипибо-конибо', uk: 'Шипібо-коніво', ar: 'الشيبيبو-كونيبو', he: 'שיפיבו-קוניבו', sw: 'Kishipibo-Conibo' },
+    };
+    for (const code of Object.keys(ADDED9)) {
+        for (const ui of Object.keys(ADDED9[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED9[code][ui];
+            }
+        }
+    }
 })();

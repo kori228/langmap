@@ -8843,3 +8843,452 @@ Done when:
 - Validator structural checks for split fields fire and pass on those cells.
 - CONTRIBUTING.md marks split as preferred.
 - Modal correctly renders the split tags on pilot cells.
+
+---
+
+## Coverage Roadmap to 1,000 (2026-05-06 part 19)
+
+A unified plan to grow coverage from the current ~620 languages to 1,000. Each tier below is a focused batch with concrete language candidates. **The cross-cutting i18n and tree-update requirements are non-negotiable for every batch** — they are the most common reason previous additions (`cv`/`dv`/`tzh`/`mdf` in Task 141 first wave) generated downstream warnings and lang_names mismatches.
+
+### New Task 197. Master roadmap — Tiers 5 through 13 to reach 1,000 languages
+
+Goal:
+Coordinate the 9-tier expansion plan (~318 additional languages on top of the ~63 already proposed in Tier 1–4) under one task to ensure every added language meets the same i18n, tree-update, and validator gates. Without a single coordinator, batches drift on conventions, lang_names backlogs accumulate (cf. Task 143's cleanup of 21 fresh warnings from 4 incomplete additions), and the family taxonomy fragments further.
+
+Current issue I checked (2026-05-06):
+- Coverage: 619 (modern 509, historical 86, +4 uncommitted Tier 1).
+- Already proposed: Tier 1 (Task 141, 10 langs) + Tier 2 (Task 142, 12 langs) + Tier 3 (Task 149, 14 langs) + Tier 3.5 (Task 150, 6 langs) + Tier 4 (Task 196, 21 langs) = 63 langs → 682.
+- Gap to 1,000: 318 languages.
+- Per-language cost (sourced data + meta + i18n): ~70 minutes; total ~370 hours.
+- Recurring failure mode in past batches: data + meta added without `lang_names` 21-UI backfill, generating per-UI-lang validator warnings (cf. Tasks 143, 175).
+
+Files to change (per tier, every time):
+- `wordmap_data.js` — add row.
+- `wordmap_meta.js` — add meta block.
+- **`lang_names.js` — add to ALL 21 UI sections** (mandatory; Task 143's lesson).
+- **`meta_i18n_coverage.js` + `meta_i18n_ext.js` — add atom translations for new family/script/region tokens** (mandatory; Tasks 183/184 lesson).
+- **`WORD_LIST.label` and `WORD_LIST.definition` — verify all 21 UI langs covered for new atoms** (Task 175/176).
+- **`lang-filter.js` — add new family/script tokens to the curated taxonomy if not already** (Task 159).
+- **HIST_DESCENDANT mapping in `wordmap_data.js` — update parent/child links for any new historical-stage row** (Task 122).
+- **`scriptTags` — set per Task 130 for any new script encountered**.
+- **`disambiguator` — set per Task 115 if the native name collides with an existing row** (Task 188).
+- `changelog.html` — credit the addition.
+- `CONTRIBUTING.md` — extend the conscious-omissions section if any candidate is intentionally deferred.
+
+### Cross-cutting requirements (non-negotiable for every language added under any tier)
+
+**A. Multilingualization (i18n) — every added language MUST satisfy:**
+
+1. **`lang_names.js` — all 21 UI sections.** Not just `en`; not just `en/ja/ko/zh`. The 21 UI lang sections (`en`, `ja`, `ko`, `zh`, `yue`, `vi`, `th`, `id`, `hi`, `de`, `fr`, `it`, `es_eu`, `es_mx`, `pt_eu`, `pt_br`, `ru`, `uk`, `ar`, `he`, `sw`) all need an entry for the new code. Validator's `lang_names.<UI>: N/M` warning explicitly catches this.
+
+2. **`meta.description` — multilingual object form.** Use the `{ en, ja, ko, zh, ... }` object shape per Task 145. Plain string descriptions are deprecated; the object form supports per-UI-lang fallback. At minimum, fill `en/ja/ko/zh`. For Tier 9 (Bantu) and Tier 12 (Niger-Congo), also fill `sw` Swahili.
+
+3. **`meta_i18n_coverage.js` and `meta_i18n_ext.js` atom additions.** When a new family token is introduced (e.g., "Pama-Nyungan (Wati)" for Tier 6, "Trans-New Guinea (West Papuan Highlands)" for Tier 7), add an atom translation in **all UI langs covered by `META_I18N_COVERAGE_ATOMS` (currently 11 UI langs)**, NOT just `en/ja/ko/zh`. Per Task 183, the bottom-tier UI langs (de/fr/it/es/pt/id/sw) are already at 161-285 atoms — adding a new family atom only in 4 UI langs widens the spread. Either add to all 11 UI langs OR add a `META_I18N` full-string entry that covers all 22 UI langs (per `META_I18N` block in `wordmap_meta.js:1212`).
+
+4. **`WORD_LIST.label` — all 21 UI langs covered.** Already balanced (Task 175 added the `es_eu/es_mx/pt_eu/pt_br` regional splits). When a tier introduces a new word concept (none planned in Tiers 5–13, but if revising existing word concepts), the label must be added in all 21 UI langs.
+
+5. **`WORD_LIST.definition` — same 21 UI langs (Task 176).** If a tier requires re-explaining a concept's scope for a previously-uncovered domain (e.g., Tier 5 sign languages need a definition that covers the modality), update all 21 UI langs.
+
+**B. Tree updates (genealogical and historical) — every added language MUST satisfy:**
+
+1. **`meta.parentCode` or `meta.varietyRole`.** Per Task 170: every underscore code needs either `parentCode` (regional variant of an existing row) or `varietyRole: 'sibling-language' | 'continuum-member' | 'base-variety' | 'historical-stage'`. Non-underscore codes can leave both unset if they have no map-anchored parent.
+
+2. **`HIST_DESCENDANT` updates for historical-stage rows.** Per Task 122: if a tier adds a historical-stage row (e.g., Old Aramaic → modern Aramaic, Old Tibetan → modern Tibetan dialects), update the `HIST_DESCENDANT` mapping in `wordmap_data.js` so the historical-mode overlay correctly draws the descendant chain. Forgetting this means the new historical row appears as an isolated marker without its modern reflexes.
+
+3. **`meta.family` — normalized per Task 159.** New family strings must follow the convention chosen in Task 159 (Sinitic vs Sino-Tibetan, Atlantic-Congo vs Niger-Congo, Saami vs Sámi, etc.). Do not introduce a third spelling. If the new language belongs to a sub-branch not yet represented, document the new sub-branch label in the family-string normalization rule.
+
+4. **`meta.scriptTags` — typed array per Task 130.** Every new row must have `scriptTags` (e.g., `['Latin']`, `['Han']`, `['Brahmic', 'Latin']`). The prose `script` field is for display; `scriptTags` drives the filter UI. Never add a row with only the prose script field.
+
+5. **`meta.disambiguator` if native-name collision.** Per Task 115/188: run the native-name multimap check after every batch. If a new row's native name matches any existing row, both rows need `disambiguator` populated in 4 UI langs (en/ja/ko/zh) at minimum.
+
+6. **Family-tree visualization data (Task 161 anchor).** When adding sub-branches (e.g., new Pama-Nyungan languages introduce "Wati", "Yapa", "Ngumpin" sub-branches), the family-tree filter UI's hierarchy must reflect them. Update `lang-filter.js`'s curated taxonomy.
+
+**C. Validator gates per tier — no batch merges until:**
+
+- `node validate_wordmap_data.js` shows 0 ERRORs and no NEW WARNs vs the pre-batch baseline.
+- `lang_names.<UI>: N/M` warning count is exactly the same as before the batch (i.e., new languages are fully covered in all 21 UI sections).
+- `[#13b']` description i18n coverage threshold (95%) is not breached for any UI lang.
+- Family-string consistency check (Task 159) shows no new variants of already-existing taxonomies.
+
+### Tier 5 — Sign language batch (~30 languages)
+
+Languages: `ase` ASL, `bfi` BSL, `jsl` JSL (Tier 2), `asf` Auslan (Tier 4 NZ-pair) + new: `nzs` NZSL, `lsf` LSF, `gsg` German Sign Language, `kvk` Korean SL, `csl` Chinese SL, `bzs` Brazilian SL, `ins` Indo-Pakistani SL, `psl` Polish SL, `lsc` Catalan SL, `lse` Spanish SL, `tsq` Thai SL, `gss` Greek SL, `dse` Dutch SL, `ils` International Sign, `kvk` Korean, `slf` Swiss-French SL, `pks` Pakistan SL, `ssp` Spanish SL, `cse` Czech SL.
+
+Tier 5-specific gates: requires Tier 2 modality decision (Option A/B/C in Task 142) before any sign language is added. Sign language atom translations must explicitly tag `modality: 'signed'` so `META_I18N_ATOMS` does not silently treat sign lang families like spoken.
+
+### Tier 6 — Australian Aboriginal batch (~25 languages)
+
+Languages: Pama-Nyungan major (`pjt` Pitjantjatjara already present, add `wbp` Warlpiri, `kld` Gamilaraay/Yuwaalaraay, `pjt` already, `xrr` Yorta Yorta revitalization, `gbb` Kayardild, `mwf` Murrinhpatha, `gay` Gayardilt, `wbp` already if), Yolŋu cluster (`dhg` Dhuwal, `djr` Djinba, `gnn` Gunnai/Kurnai), Western Desert sub-branches, non-Pama-Nyungan (`gun` Bininj Gunwok, `ahw` Ngandi, `tcs` Torres Strait Creole), Tasmanian languages (extinct, attested), Tiwi, etc.
+
+Tier 6-specific gates: cite Glottolog and AIATSIS (Australian Institute of Aboriginal and Torres Strait Islander Studies) for every row. Ngumpin-Yapa, Wati, Arandic sub-branches must be explicit in `meta.family`. Many languages have ICIP (Indigenous Cultural Intellectual Property) considerations — confirm sources are open or community-approved.
+
+### Tier 7 — Papuan languages batch (~30 languages)
+
+Languages: Trans-New Guinea — Engan (Enga `enq` already, Huli `hui` already, Ipili `ipi`), Mountain Ok (Mian `mpt` already), Madang, Eastern Highlands (Foe, Kewa, Mendi, Wahgi `wgi`), Asmat-Kamoro (Asmat `asy`), West Papuan (Ekari `ekg`, Yali `nlk`, Korowai `khe`), Sepik languages (Iatmul `ian`), Lakes Plain (Awera). Plus non-Trans-New-Guinea: Skou family, Kwomtari.
+
+Tier 7-specific gates: very limited published lexical sources for many. Use SIL PNG/Indonesia language databases. `dataStatus: 'modern'` but `reviewStatus: 'machine-seeded'` initially — Tier 7 has the most uncertain wordlists.
+
+### Tier 8 — Native American extension (~50 languages)
+
+Languages: California (Pomo `pej`, Maidu `nmu`/`mjd`, Yokuts `yok`, Wintu `wnw`, Hupa `hup`), Mesoamerican (Mixe `mxq`, Mazatec `mau`, Totonac `tot`, Chinantec `cnl`, Huave `huv`), Salishan (`hur` Halkomelem, `oka` Okanagan, `lil` Lillooet), Iroquoian (`onn` Onondaga, `cay` Cayuga, `tus` Tuscarora), Algic extension (`crk` Plains Cree, `mic` Mi'kmaq, `umu` Munsee Lenape), Plains languages (`com` Comanche, `kio` Kiowa).
+
+Tier 8-specific gates: every row cite the relevant tribal language program where it exists (e.g., Mi'kmaq Education Authority, Wukchumni Yokuts revival). For revitalization-stage languages (Mohegan-Pequot, Wampanoag), document the L1/L2/heritage distinction explicitly in meta.
+
+### Tier 9 — Bantu extension (~50 languages)
+
+Languages: Bantu E40-50 (Kamba `kam` already from Tier 3, Embu `ebu`, Meru `mer`, Daiso `dav`), F (Sukuma `suk`, Nyamwezi `nym`), J (Buganda `lg` already, Soga `xog`, Lugbara `lgg` already), L (Luba `lub`, Hemba `hem`, Yaka `iyx`), M (Tumbuka `tum`, Mambwe `mgr`), N (Sotho `st` already, Pedi `nso` already, Tswana `tn` already, but split into varieties), R (Ndonga `ng` already, Kwanyama `kj`, Herero `her` already, Kuanyama).
+
+Tier 9-specific gates: Bantu noun-class system (1-23) varies dramatically. `meta.grammarCapsule.gender.system: 'noun-class'` (Task 153 schema) must be set per row with the count.
+
+### Tier 10 — Pacific & Austronesian completion (~40 languages)
+
+Languages: Philippine (`mrw` Maranao, `mdh` Maguindanao, `tsg` Tausug, `ifb` Batak, `xsb` Sambal, `agt` Central Cagayan Agta — many present), Indonesian regional (`bbc` Toba Batak already, `btx` Karo Batak, `bjn` Banjar already, `mad` Madurese already), Polynesian completion (`wls` Wallisian, `fud` Futunan, `pim` Powhatan), Micronesian (`yap` Yapese already, `cal` Carolinian, `gil` Gilbertese already, `kos` Kosraean from Task 149), Melanesian (`mwc` Are, Solomons regional varieties).
+
+Tier 10-specific gates: Many of these are already present; the Tier 10 work focuses on completing regional sub-batches rather than starting from zero.
+
+### Tier 11 — Sino-Tibetan minor + Karenic (~40 languages)
+
+Languages: Naga (`nbt` Tangkhul Naga, `aii` Ao Naga, `nbe` Konyak, `kne` Mao Naga, `lhm` Lhota Naga), Karen (`ksw` Sgaw Karen already, `pwo` Western Pwo, `kjp` Eastern Pwo already, `pdu` Kayan, `kyu` Western Kayah), Lolo-Burmese (`ahk` Akha already, `lhu` Lahu already, `lis` Lisu, `mwq` Mün Chin), Tibetan dialects (`adx` Amdo, `khg` Khams, `dre` Dolpo, `loy` Loke), Bodish minor (`tdg` Western Panjabi-related, `bft` Balti, `lbj` Ladakhi).
+
+Tier 11-specific gates: tone systems vary per language; do not copy tone notation from one Karen language to another. Each row needs sourced tone documentation.
+
+### Tier 12 — Niger-Congo extension (~30 languages)
+
+Languages: Atlantic (`wo` Wolof already, `srr` Serer-Sine, `bsc` Bassari, `pap` Pulaar dialects), Mande (`mlq` Western Maninkakan, `ses` Koyraboro Senni Tier 3, `snk` Soninke, `sus` Susu, `mey` Hassaniya Arabic — wait Mey is Arabic), Volta-Niger (`idu` Idoma, `iji` Igala, `niy` Ngiyambaa — wait that's Australian, `hag` Hanga), Adamawa-Ubangi (`fan` Fang already, `nya` Nyanja already, `dyo` Jola-Fonyi, `umb` Umbundu already).
+
+Tier 12-specific gates: Atlantic group has long-standing classification disputes (Niger-Congo vs Atlantic-Congo vs simply "Atlantic"). Use the Atlantic-Congo convention per Task 159.
+
+### Tier 13 — Mesoamerican / Andes / isolates completion (~25 languages)
+
+Languages: Maya completion (`mam` already, `kek` Q'eqchi', `cak` Kaqchikel, `poc` Pocomam, `usp` Uspantek), Otomanguean completion (`mim` Mixtec varieties, `trs` Triqui, `top` Totonac), Andes (`qul` Bolivian Quechua, `quz` Cusco Quechua, `quy` Ayacucho Quechua, `aym` already, `quc` already), South American (`gug` Paraguayan Guarani, `gun` Mbya Guarani, `tpw` Old Tupi, `mai` Aymara already), isolate completion (`hai` Haida, `tar` Tarahumara, `way` Wayuu/Wayuunaiki).
+
+Tier 13-specific gates: Many Quechua varieties differ at the IPA level. Each Quechua variant must be sourced individually, not copied from `qu` macro.
+
+---
+
+### Per-tier rollout schedule
+
+| Tier | Languages | Est. effort | Cumulative count |
+|---|---:|---:|---:|
+| Current | 619 | — | 619 |
+| 1 (Task 141) | +10 | done in flight | 629 |
+| 2 (Task 142) | +12 | requires modality decision | 641 |
+| 3 (Task 149) | +14 | 5 sub-batches | 655 |
+| 3.5 (Task 150) | +6 | small batch | 661 |
+| 4 (Task 196 candidate) | +21 | 9 sub-batches | 682 |
+| **5** | **+30** | **modality dependent** | **712** |
+| **6** | **+25** | **AIATSIS / community sourcing** | **737** |
+| **7** | **+30** | **SIL PNG/Indonesia** | **767** |
+| **8** | **+50** | **per-row tribal program** | **817** |
+| **9** | **+50** | **Bantu noun-class detail** | **867** |
+| **10** | **+40** | **mostly regional completion** | **907** |
+| **11** | **+40** | **per-row tone sourcing** | **947** |
+| **12** | **+30** | **Atlantic-Congo classification** | **977** |
+| **13** | **+25** | **mesoamerican + andean + isolates** | **1,002** |
+
+### Validator-driven progress checkpoints
+
+- **At 700 langs** (Tier 5 complete): re-run Tasks 143–146 for any new lang_names backlog.
+- **At 800 langs** (Tier 7 complete): re-run Tasks 159 (family normalization) — Pama-Nyungan and Trans-New Guinea sub-branches multiply taxonomies.
+- **At 900 langs** (Tier 9 complete): re-run Tasks 165 (script normalization) — Bantu adds many script combinations.
+- **At 1000 langs**: full re-validation including Tasks 167 (speakers), 171 (speakerYear), 173 (wordEvidence), 177 (glottocode/iso6393), 188 (disambiguator after every native-name collision), 190 (vitality), 193 (textDirection), 194 (formType compound).
+
+### Quality safeguards (Tier 5–13 specific)
+
+- **`reviewStatus: 'machine-seeded'`** is the default for new Tier 5–13 additions; promote only after per-cell verification.
+- **`pronunciationType: 'broad'` or `'orthography'`** is the default; `'ipa'` requires sourced narrow-IPA per cell (Task 76 rule).
+- **`audioRef: null`** initially; Task 151 audio backfill is a separate pass.
+- **`vitality`** must be set per Task 190 — many Tier 5–13 candidates are endangered.
+- **`textDirection: 'rtl'`** must be set for any RTL-script row (Task 193).
+- **`disambiguator`** must be checked after every batch via the native-name multimap scan.
+
+Implementation instructions:
+
+**Per-tier execution checklist:**
+
+1. **Pre-batch:** Run `node validate_wordmap_data.js` and record the baseline (errors, warnings, INFOs).
+2. **Add wordmap_data row** with full 20-cell `words` block, sourced.
+3. **Add wordmap_meta meta block** with all required fields:
+   - `family`, `speakers`, `speakerBasis`, `speakerSource`, `speakerYear`.
+   - `iso6393`, `glottocode`.
+   - `countries`, `officialStatus` (Task 166), `officialIn`.
+   - `script`, **`scriptTags`** (Task 130, mandatory).
+   - `description: { en, ja, ko, zh }` minimum.
+   - `pronunciationType`, `surfaceType`.
+   - `locationBasis`, lat/lng.
+   - **`parentCode` or `varietyRole`** (Task 170, mandatory if underscore code).
+   - **`vitality`** (Task 190, mandatory).
+   - **`textDirection`** if RTL (Task 193, mandatory if applicable).
+   - `reviewStatus: 'machine-seeded'`.
+   - `sources: [{type:'reference', title:..., url:..., accessed:'YYYY-MM-DD'}]`.
+   - `aliases` if applicable.
+   - `disambiguator` if native name collides.
+4. **Add `lang_names.js` entry in ALL 21 UI sections** (mandatory; no exceptions).
+5. **Add `meta_i18n_coverage.js` atom translations** for any new family/script/region tokens, in all 11 covered UI langs (Task 184) or via `META_I18N` full-string in 22 langs.
+6. **Update `lang-filter.js`** if a new family/script/region category appears.
+7. **Update `HIST_DESCENDANT`** if the new row is a historical stage with modern descendants.
+8. **Bump `WM_ASSET_VERSION`** for `data`, `meta`, `names`.
+9. **Run validator** and confirm: 0 ERRORs, 0 new WARNs, no `lang_names.<UI>: N/M` regression.
+10. **Update `changelog.html`** with credit and language list.
+
+Validator / static check:
+- `[#197]` after each batch, the validator must show no regression in `lang_names` coverage, no new family-string variants, no `disambiguator` missing on shared-native-name pairs.
+- Coverage line: `Tier roadmap progress: <current>/1000 (X%)`.
+
+Do not:
+- Do not add a tier in one giant commit. Split each tier into its sub-batches per language family/region (typically 5–10 langs per commit).
+- Do not skip the i18n step "for now". Lang_names backlog accumulates exponentially — Tier 5 alone adds 30 langs × 21 UI sections = 630 entries that must land at the same time.
+- Do not introduce family taxonomy variants ("Pama-Nyungan, Wati subgroup" vs "Pama-Nyungan (Wati)" vs "Pama-Nyungan Wati") within a tier. Pick one and apply.
+- Do not skip `scriptTags` even for languages with familiar scripts. The filter UI relies on it.
+- Do not rush to 1,000 by lowering quality. `'machine-seeded'` rows are acceptable; **fabricated rows are not**.
+- Do not skip the post-batch validator run. Catching issues per-batch avoids cascade.
+- Do not let any tier introduce more than 10 new family-string tokens. If a tier needs more, the family taxonomy needs revision in a separate task before the tier proceeds.
+
+Done when:
+- All 9 tiers (5 through 13) are complete.
+- Total language count reaches 1,000+.
+- Validator total WARNs do not exceed pre-Tier-5 baseline + 5%.
+- Family taxonomy normalization (Task 159) has been re-run after every tier.
+- `lang_names.js` has 1000+ entries in every one of the 21 UI sections.
+- `meta_i18n_coverage.js` atom coverage spread (Task 183) has not widened.
+- HIST_DESCENDANT mapping covers every new historical-stage row.
+- `scriptTags` is set on all 1000+ rows.
+- Cumulative status documented in this audit file under a "Coverage 1000 reached" section with date.
+
+---
+
+## Status Sweep (2026-05-07)
+
+A 24-hour-after-baseline status check confirmed substantial completion across the audit roadmap (Tasks 145, 146, 148, 159, 161, 162, 163, 164, 170, 172, 174, 175, 178, 179, 180, 181, 187, 188, 190, 193, 194 all closed; 619→630 languages with 11 added across Tiers 1–3). The validator reports 0 errors and 29 warnings, all of which are tracked. This block records three newly-surfaced issues plus the explicit list of still-open sub-tasks that the validator's own warnings now flag concretely.
+
+### New Task 198. Resolve `WM_ASSET_VERSION` drift between cache-buster registry and HTML (Task 134 regression)
+
+Goal:
+The Task 134 cache-buster centralization is regressing. The validator warning `[#19]` now flags two drift cases:
+- `styles.css?v=59` in `wordmap.html` ≠ `WM_ASSET_VERSION.styles=54`.
+- `wordmap_data.js?v=104` in `wordmap.html` ≠ `WM_ASSET_VERSION.data=103`.
+
+Each represents a contributor manually bumping the static `<link>`/`<script>` tag without updating the `WM_ASSET_VERSION` registry, OR vice versa. The drift is small (1 in data, 5 in styles) but the validator was added precisely to prevent this drift category, and it is now firing.
+
+Current issue I checked (2026-05-07 validator output):
+- `wordmap.html` static tag uses `?v=59` for styles.css and `?v=104` for wordmap_data.js.
+- `WM_ASSET_VERSION` has `styles: 54` and `data: 103`.
+- Validator `[#19]` fires twice.
+
+Files to change:
+- `wordmap.html` — confirm the actual current asset version intent (likely 59 for styles and 104 for data — they're newer).
+- Update `WM_ASSET_VERSION` block in `wordmap.html` to match: `styles: 59`, `data: 104`.
+- OR, conversely, lower the static tags to `?v=54` and `?v=103` if the registry is the authority.
+
+Implementation instructions:
+- Verify which value is correct by checking when the underlying file last changed.
+- `git log -1 --format='%ai %h' styles.css wordmap_data.js` shows recent commits.
+- The newer value (59 / 104) is almost certainly the intent — bump the registry to match.
+- Add a pre-commit script (or strengthen Task 134's check) that rejects any PR introducing this drift.
+
+Validator / static check:
+- `[#19]` already exists; ensure it ERRORs (not WARNs) once the drift is acknowledged as the antipattern.
+
+Do not:
+- Do not silently accept the drift. The point of `WM_ASSET_VERSION` is single-source-of-truth.
+- Do not bump only the static tags or only the registry. They must move in lockstep.
+
+Done when:
+- `[#19]` validator warning reports 0 drift cases.
+- A pre-commit or CI guard prevents future drift.
+
+### New Task 199. Add `yuc` and `kgg` to `HIST_DESCENDANT` so they classify correctly under the historical filter
+
+Goal:
+The validator warning `[#17]` flags two languages — `yuc` (Yuchi) and `kgg` (Kusunda) — that are tagged `dataStatus: 'fragmentary'` but absent from `HIST_DESCENDANT`. The UI's era-toggle filter relies on `HIST_DESCENDANT` to route fragmentary/extinct languages to the historical view. Without the mapping, these two rows appear in the modern view despite their fragmentary status.
+
+Current issue I checked:
+- `yuc` Yuchi (North American isolate, near-extinct, 2 fluent speakers): `dataStatus = 'fragmentary'`, no `HIST_DESCENDANT` entry.
+- `kgg` Kusunda (Nepal isolate, ~1 fluent speaker): `dataStatus = 'fragmentary'`, no `HIST_DESCENDANT` entry.
+- The validator's "Session 29 inverse invariant" check correctly identifies the routing gap.
+
+Files to change:
+- `wordmap_data.js` — extend `HIST_DESCENDANT` to include `yuc` and `kgg`.
+
+Implementation instructions:
+- For `yuc` Yuchi: the language has no direct modern descendant (it IS the language; "fragmentary" reflects its near-extinction). Map it to itself or to an empty descendant set, depending on schema convention.
+- For `kgg` Kusunda: same situation — isolate, no descendants.
+- The existing `HIST_DESCENDANT` schema may need a self-referential or `null`-descendant convention for "extinct/fragmentary, no descendants" cases. Check schema docs.
+
+Validator / static check:
+- After fix, `[#17]` warning disappears for both rows.
+
+Do not:
+- Do not change `dataStatus` to `'modern'` to silence the warning. The fragmentary status is correct.
+- Do not invent a fictional descendant. Yuchi has no descendants; misrouting to Cherokee or another nearby language would be a fact error.
+
+Done when:
+- `[#17]` warnings for `yuc` and `kgg` are gone.
+- Both rows correctly appear under the historical filter view.
+
+### New Task 200. Backfill `wordEvidence` for the 29 `'source-checked'` rows (Task 173 explicit follow-up)
+
+Goal:
+The validator now actively warns `[#173]` on 29 specific rows that claim `reviewStatus: 'source-checked'` but have 0/20 cells of per-cell `wordEvidence`. This was previously only an INFO line under Task 173; with `reviewStatus` now at 100% coverage (Task 172), the inconsistency has crystallized into 29 named warnings.
+
+Current issue I checked:
+- 29 rows tagged `'source-checked'` in the runtime overlay (`REVIEW_STATUS` map per Task 172 migration to runtime — note: this is a Task 192 candidate for static migration too).
+- Of those, 0 rows have all 20 cells annotated with `wordEvidence`.
+- Validator output shows the first 5 explicitly and "(24 more 'source-checked' rows with < 20-cell wordEvidence — backfill needed)".
+
+Named rows from validator (top 5 listed):
+- `ja` Japanese
+- `zh` Mandarin
+- `wuu` Wu
+- `sa` Sanskrit
+- `my` Burmese
++ 24 more (likely: nv, haw, pjt, nxq, tji, pcc, iuu, kwk, pwn, bnn, trv, la, el_grc, en_ang, non, pal, xct, glk, lrc, bqi, juc, bo, lo, km).
+
+Files to change:
+- `wordmap_data.js` — add `wordEvidence` blocks per row, with per-cell evidence + source citation for all 20 concepts.
+- `wordmap_meta.js` — extend `meta.sources` per Task 80 if not already.
+- `validate_wordmap_data.js` — already warning; no change needed.
+
+Implementation instructions:
+
+**Phase 1 — pilot 5 rows.** Take `nv` Navajo, `haw` Hawaiian, `la` Latin, `el_grc` Ancient Greek, `en_ang` Old English. These are well-documented and have stable reference sources.
+
+**Phase 2 — extend to remaining 24 rows.** Each requires 20 cells × `wordEvidence: { evidence, source }` minimum. Total: 24 × 20 = 480 cells of new evidence.
+
+**Phase 3 — split-evidence migration (Task 195).** For the rows newly with 20-cell coverage, optionally upgrade legacy `wordEvidence: {evidence, source}` to split form `{formEvidence, pronunciationEvidence, conceptEvidence}` per Task 97/195.
+
+**Verification:**
+- Each cell's source must be citeable (book, paper, online dictionary with stable URL).
+- Validator coverage line should report `source-checked wordEvidence coverage: 29/29` after backfill.
+
+Validator / static check:
+- `[#173]` warning count drops from 29 to 0.
+- `wordEvidence overlay: N languages, M cells` count grows from 543 to 543 + (29 × 20 - already_present) ≈ 1100+.
+
+Do not:
+- Do not demote `'source-checked'` to `'human-reviewed'` to silence the warning. The status promotion was a deliberate claim; backing the claim with evidence is the correct response.
+- Do not bulk-fill with placeholder sources. Each cell needs a real citeable source.
+- Do not use the same source for all 20 cells of a row unless that source genuinely covers all 20. For Latin, a single dictionary (Lewis & Short) reasonably covers all; for Navajo, multiple sources are likely needed.
+
+Done when:
+- All 29 `'source-checked'` rows have 20-cell `wordEvidence`.
+- Validator `[#173]` reports 0.
+- Coverage line shows `29/29` source-checked rows fully evidenced.
+
+---
+
+### Comprehensive open-task summary (post-2026-05-07 status)
+
+After the 2026-05-06 audit and 2026-05-07 status check, the following are the still-open tasks ranked by validator-warning visibility:
+
+**Validator-visible warnings (concrete, immediately actionable):**
+- Task 144: description i18n 86–91% in 15 UI langs (cv, dv, azb, gag, arq + 49–108 historical/recent codes). Highest-impact i18n gap.
+- Task 173 (now Task 200): 29 source-checked rows with 0/20 wordEvidence.
+- Task 191: cmg.eat, cmg.drink hyphen surface without formType (2 cells).
+- Task 198: WM_ASSET_VERSION drift (styles 59 vs 54, data 104 vs 103).
+- Task 199: yuc, kgg fragmentary not in HIST_DESCENDANT.
+
+**Coverage-tally gaps (visible in INFOs, not warnings):**
+- Task 76 follow-through: pronunciationType 223/630 (35%).
+- Task 84 follow-through: surfaceType 470/630 (75%).
+- Task 99 follow-through: locationBasis 170/630 (27%).
+- Task 118 follow-through: languageKind 102/630 (16%).
+- Task 151: audioRef 0 (not started).
+- Task 166: officialStatus 0/630.
+- Task 167: speakers numeric structure 0/630.
+- Task 171: speakerYear 72/630 (11%).
+- Task 177: glottocode 28/630 (4%).
+- Task 189: accessed dates 0.
+- Task 195: split evidence schemas 0 cells.
+
+**Schema-only follow-ups (architecture, not user-visible):**
+- Task 165: meta.script 277 distinct strings (still).
+- Task 168: 16 multi-line declarations (still).
+- Task 169: 147 cells with surface == IPA (still).
+- Task 182: aliases runtime → static migration.
+- Task 183: atom coverage 8–13× spread.
+- Task 184: 9 UI langs absent from META_I18N_COVERAGE_ATOMS.
+- Task 185: 712 orphan meta strings without atom translation.
+- Task 186: es/pt regional aliasing runtime → static.
+- Task 192: 14 remaining runtime overlay maps to migrate.
+
+**Language-addition gaps:**
+- Tier 1 remaining: chm Mari, tw Twi (2 of 10).
+- Tier 2 remaining: ase/bfi/jsl sign langs, nmn Taa, jrb Andamanese (5 of 12+; sign langs require modality decision).
+- Tier 3 remaining: tah, ho, en_nz, oto (4 of 14).
+- Tier 4 (Task 196 — proposed but not started): 21 langs.
+- Tier 5–13 (Task 197 roadmap to 1000): 318 langs.
+
+**Educational tasks (not started):**
+- Task 151 (audio playback).
+- Task 152 (cognate sets / sound-correspondence).
+- Task 153 (grammar capsules).
+- Task 154 (sample sentences with Leipzig glossing).
+- Task 155 (IPA tutor + glossary).
+- Task 156 (curated lesson tours).
+- Task 157 (citation export BibTeX/APA/MLA).
+- Task 158 (interactive quiz mode).
+
+---
+
+## Progress notes — Tasks 144 / 145 / 146 (2026-05-07)
+
+### Task 145 — string→object description migration ✓ Phase A & C
+
+- Phase A: 559 string descriptions in `wordmap_meta.js` mechanically converted to `{ en: '...' }` shape. Validator-detected zero string-form descriptions remain.
+- Phase C: validator's `string-description` warning now enumerates the full offender list (no `…N more` truncation). Migration is mechanical; a contributor running the validator now sees every code that needs conversion.
+- Phase B (ja/ko/zh fill on the converted blocks) overlaps with Task 144; partially addressed there.
+
+### Task 144 — description i18n gap ⚠ partial
+
+8 codes that previously had only `{ en }` (no translations in any of the 20 non-en UI langs) now have `{ en, ja, ko, zh }`: `itl`, `ykg`, `pdc`, `mrj`, `liv`, `rhg`, `ctg`, `ale`. This pushes `ja`/`ko`/`zh` toward 100%.
+
+Still open: `de` / `fr` (91%) need ~28 more codes each; `es_*` / `pt_*` (82%) need ~86 more. The full list of missing codes for each UI lang is now visible in the validator output (no truncation per Phase C). Realistically a dedicated translation pass: focus on `de` + `fr` first (smallest gap, 59 shared codes), then `ru`, then bottom-tier. Recommend grouping per UI lang (not per code) to minimize context-switching cost.
+
+### Task 146 — Pass-7 deferred IPA rebuilds ⚠ deferred (multi-session, expert)
+
+Each of `my` / `km` / `id-ms-tl` / `ta-te` / `bo` requires:
+
+1. A primary IPA reference (e.g. *Cambridge JIPA Burmese* 2014 for `my`; Headley 1977 for `km`; Lhasa Central source for `bo`).
+2. Per-cell verification — all 20 Swadesh-style cells reread against the reference; tone/phonation marks normalized.
+3. A column-policy decision for the multi-language `id`/`ms`/`tl` group (orthography-only vs. add genuine broad transcription) recorded in `CONTRIBUTING.md` *before* data edits.
+4. After rebuild: `meta.reviewStatus: 'source-checked'` + full `meta.sources` + per-cell `wordEvidence.citation` (Audit Task 133).
+
+Rebuilding all five in one session is unrealistic without dedicated source access. Recommended order: `km` (most contained, single standard) → `my` (well-documented Cambridge JIPA reference) → `bo` → `ta`/`te` → `id`/`ms`/`tl` (column policy first). Each is its own commit / session.
+
+---
+
+## Progress notes — Tasks 151-158, 160-163 (2026-05-07)
+
+### Tasks 151-158 — education-readiness features ⚠ multi-session, deferred
+
+These are major feature additions (audio playback, cognate tagging, grammar capsules, sample sentences with Leipzig glossing, IPA tutor, lesson tours, citation export, quiz mode). Each requires substantial:
+- Content authoring (audio sourcing, sample-sentence corpus, IPA descriptions, tour commentary in priority UI langs).
+- Schema design + validator extensions.
+- UI work (modal sections, dialog overlays, side panels).
+
+A single session cannot complete any to "Done when" criteria. Recommended order (per audit's Phase A-D rollup):
+- **Phase A (minimum viable teaching):** 151 (audio for 30 priority langs) + 153 (grammar capsules for 30) + 154 (samples for 30).
+- **Phase B (historical-linguistics):** 152 (cognate sets).
+- **Phase C (guided learning):** 156 (tours) + 158 (quizzes).
+- **Phase D (academic adoption):** 155 (IPA tutor) + 157 (citation export).
+
+Each task needs its own dedicated session(s) with content-sourcing time. The audit-doc sections (lines 6066-6612) are already detailed implementation specs.
+
+### Task 160 — IPA-column ASCII A-Z residue ✓ validator added
+
+- Verified `ja_edo.mother` is correct: `okkasaɴ` (small-cap ɴ, U+0274) — not the `okkasaN` ASCII residue the audit reported.
+- `zh_tang` (Baxter-Sagart Middle Chinese tone letters X/H) and `och` (Old Chinese Baxter-Sagart `*C.` syllabicism) already have `pronunciationType: 'mixed'` set, which is the audit's recommended Option C.
+- New validator check `[#160]`: flags ASCII uppercase A-Z in IPA cells of `'ipa'`-tagged rows. Initial run: zero offenders. The check covers regression risk for future Pass-N cleanups.
+
+### Task 161 — Korean / English historical-stage coordinates ✓ already done
+
+- Verified all stages are at distinct coordinates: `ko_mid` at Kaesong (37.97/126.55), `ko_em` at Suwon area (37.27/127.01), `en_ang` at Winchester (51.06/-1.31), `enm` at Canterbury (51.28/1.08), `en_ck` at Bow (51.53/-0.02). Validator `[#14]` cluster check fires zero warnings on these rows.
+
+### Task 162 — unattested `—` cell documentation ✓ already done
+
+- Validator INFO line confirms: `unattestedReason coverage: 231/231 '—' cells documented`. All `—` cells have a categorized reason.
+
+### Task 163 — affricate tie-bar normalization ✓ validator already in place
+
+- Existing validator check `[#163]` (lines 1121-1151 of validate_wordmap_data.js) flags bare ASCII affricates (`ts`/`dz`/`tʃ`/`dʒ`/`tɕ`/`dʑ`/`tʂ`/`dʐ`) in `'ipa'`-tagged rows. Coverage line: `affricate tie-bar coverage: 214/1920 cells in 'ipa' rows contain U+0361`. Per-cell rebuilds remain opportunistic — not blocking.

@@ -366,7 +366,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Eskimo-Aleut','Algic','Iroquoian','Siouan','Salishan','Wakashan','Na-Dené','Muskogean','Uto-Aztecan','Oto-Manguean','Mayan','Tsimshianic',
     'Quechuan','Aymaran','Tupian','Araucanian','Arawakan','Chibchan','Chocoan','Mura',
     'Pama-Nyungan','Trans-New Guinea','Iwaidjan or unclassified',
-    'Yeniseian','Chukotko-Kamchatkan','Hurro-Urartian','Meroitic',
+    'Yeniseian','Chukotko-Kamchatkan','Hurro-Urartian','Meroitic','Yukaghir','Pano',
     'Language isolate','Constructed','Creole','English-based creole','French-based creole','Iberian-based creole','Pidgin','Mixed','Proto-language',
     'Tocharian','Anatolian (Indo-European)','Indo-European (Armenian)','Indo-European (isolate branch)','Tocharian (Indo-European)',
     'Germanic (East)','Germanic (creole-influenced)',
@@ -666,10 +666,10 @@ const legacyDescCodesList = codes.filter(c => {
     return m && typeof m.description === 'string';
 });
 if (legacyDescCodesList.length) {
-    const list = legacyDescCodesList.length <= 12
-        ? legacyDescCodesList.join(', ')
-        : legacyDescCodesList.slice(0, 12).join(', ') + `, …${legacyDescCodesList.length - 12} more`;
-    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${list} (Audit Task 145)`);
+    // Audit Task 145 Phase C: enumerate ALL offenders. Past truncation
+    // ("…87 more") hid the migration scope; full list lets a contributor
+    // batch-convert in one mechanical pass.
+    W(`${legacyDescCodesList.length} languages still have description as a string (not object): ${legacyDescCodesList.join(', ')} (Audit Task 145)`);
 }
 
 // ---- 13b'. Description i18n coverage threshold warnings (Audit Task 121) ----
@@ -1116,6 +1116,30 @@ for (const code of codes) {
         }
     }
     if (nfcIssues > 3) W(`[#116] (${nfcIssues - 3} more NFC issues — fix all)`);
+}
+
+// === ASCII uppercase A-Z residue in 'ipa'-tagged rows (Audit Task 160) ===
+// Strict IPA has no ASCII uppercase letters. The IPA small-caps (ɴ ɪ ʏ ʊ ʟ ɢ ʀ
+// ʁ ɶ etc.) are all U+02xx codepoints, not ASCII A-Z, so flagging A-Z catches
+// real residue (Pass-2 leftover capital N, Baxter-Sagart X/H tone letters).
+// 'mixed'/'romanization'/'broad'/'orthography' rows are exempt — they
+// legitimately carry transcription conventions outside strict IPA.
+{
+    const ipaCodes = codes.filter(c => ctx.LANG_DATA[c]?.meta?.pronunciationType === 'ipa');
+    let asciiResidue = 0;
+    for (const code of ipaCodes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string' || ipa === '—' || !ipa) continue;
+            if (/[A-Z]/.test(ipa)) {
+                asciiResidue++;
+                if (asciiResidue <= 5) W(`[#160] ${code}.${k}: ASCII uppercase A-Z in IPA "${ipa}" — strict IPA uses small-cap codepoints (Audit Task 160)`);
+            }
+        }
+    }
+    if (asciiResidue > 5) W(`[#160] (${asciiResidue - 5} more ASCII-A-Z residue cells in 'ipa' rows)`);
 }
 
 // === Affricate tie-bar enforcement for 'ipa'-tagged rows (Audit Task 163) ===
