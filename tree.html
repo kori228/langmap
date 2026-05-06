@@ -908,11 +908,11 @@
     // Base ring distance between depth levels (pixels in layout coordinates).
     const RING_STEP_BASE = 130;
     // Compression exponent applied via the inner "compress" g layer.
-    //   EXP = 0   → ring distance scales linearly with k (raw zoom growth)
-    //   EXP = 1   → ring distance constant in pixels (no visible zoom)
-    //   EXP = 0.3 → distances grow with k^0.7 — meaningfully responsive to
-    //               zoom without the "things ballooning" feeling at high k.
-    const RING_COMPRESSION_EXP = 0.3;
+    //   EXP = 0    → ring distance scales linearly with k (raw zoom growth)
+    //   EXP = 1    → ring distance constant in pixels (no visible zoom)
+    //   EXP = 0.75 → at k=64 distance is ~2.83× base — visible zoom without
+    //                the "rings flying apart" complaint.
+    const RING_COMPRESSION_EXP = 0.75;
 
     // Helper for radial layout: convert (angle in radians, radius) → (x, y) in
     // SVG coordinates. Angle 0 = up (12 o'clock), increases clockwise.
@@ -925,31 +925,11 @@
         const nodes = root.descendants();
         const links = root.links();
 
-        // CUSTOM radial layout: each node distributes its angular slot
-        // EQUALLY among its children (visible + hidden _children combined),
-        // so node positions are invariant under expand/collapse AND each
-        // ring shows uniformly-spaced siblings (no compressed slots from
-        // small-leaf-count subtrees).
-        //
-        // This fixes two reported issues at once:
-        //  1. Indo-European no longer drifts when descendants are revealed
-        //     — its slot is fixed at 1/N of 2π (N = top-level child count),
-        //     regardless of how many leaves are visible underneath.
-        //  2. Adjacent sibling spacing is uniform per ring — the "non-uniform
-        //     distance" complaint from the previous total-leaves layout.
-        function assignRadial(node, startAngle, endAngle, depth) {
-            node.x = (startAngle + endAngle) / 2;
-            node.y = depth * RING_STEP_BASE;
-            const kids = (node.children || node._children) || [];
-            if (kids.length === 0) return;
-            const slot = (endAngle - startAngle) / kids.length;
-            let cur = startAngle;
-            for (const c of kids) {
-                assignRadial(c, cur, cur + slot, depth + 1);
-                cur += slot;
-            }
-        }
-        assignRadial(root, 0, 2 * Math.PI, 0);
+        // Use the angles cached at init from the full-tree d3.tree run.
+        // This is invariant under expand/collapse — newly-revealed nodes
+        // already have d._cachedX set from when they were briefly visible
+        // during the precompute pass.
+        root.each(d => { d.x = d._cachedX; d.y = d.depth * RING_STEP_BASE; });
 
         // === Links === Smooth Bezier curves between parent and child via
         // d3.linkRadial — naturally curves through the polar plane.
@@ -1223,9 +1203,21 @@
         const data = buildHierarchy();
         root = d3.hierarchy(data, d => d.children);
         root.x0 = 0; root.y0 = 0;
-        // Initial collapse: top-level family rows visible, subfamilies collapsed (depth 2 cutoff)
-        // Initial state: only show top-level family nodes (per user
-        // request 「最初開いた時は１階層までにしといて」).
+        // Precompute a proportional radial layout on the FULLY-EXPANDED tree
+        // (all .children visible since we haven't collapsed yet). Cache each
+        // node's angle (d.x) so update() can reuse it without re-running
+        // d3.tree on every expand/collapse. This is the actual fix for the
+        // Indo-European oscillation: angles are LOCKED IN at init time and
+        // cannot drift when descendants are revealed/hidden.
+        // It also gives leaf-count-proportional spacing (d3.tree's natural
+        // look) which the user said felt right "2 versions ago".
+        const totalDepth = root.height || 1;
+        d3.tree()
+            .size([2 * Math.PI, RING_STEP_BASE * totalDepth])
+            .separation((a, b) => (a.parent === b.parent ? 1 : 2))
+            (root);
+        root.each(n => { n._cachedX = n.x; });
+        // Now collapse to initial state.
         collapseDeepHierarchy(root, 0, 1);
         document.getElementById('loading')?.remove();
         makeSvg();
