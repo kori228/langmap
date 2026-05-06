@@ -873,21 +873,24 @@
         // Cache positions for next transition's animation origin
         root.each(d => { d.x0 = d.x; d.y0 = d.y; });
 
-        // Apply map-like counter-scaling AFTER the transition completes so it
-        // doesn't compete with the in-flight transition on circle r / text x.
-        // (Calling applyMapLikeScale immediately caused visible oscillation
-        // on the largest top-level family node — its position was animated
-        // by d3.tree, then nudged by inline style overrides while the
-        // transition was still running, then settled, repeatedly.)
+        // Apply map-like counter-scaling for ENTERING nodes immediately so
+        // they start at the right pixel size. EXISTING nodes are left to
+        // their in-flight 500ms transition (their counter-scaling already
+        // matches the previous zoom level, which is unchanged during an
+        // expand/collapse). A page-wide refresh is deferred via setTimeout
+        // to AFTER the transition completes — using setTimeout (not d3
+        // transition) so we don't interrupt the in-flight d3 transition
+        // queue on the same selection.
         const currentK = (lastTransform && lastTransform.k) || 1;
-        nodeUpdate.transition().duration(0).delay(520).on('end', () => {
-            applyMapLikeScale(currentK);
-        });
-        // Also apply immediately to ENTERING nodes only, so they start at
-        // the right scale (the transition above only fires once on each
-        // selection, so newly-entering nodes need their initial scale set).
         applyMapLikeScaleToSelection(nodeEnter, currentK);
         gLinks.selectAll('path.link').style('stroke-width', (1.5 / currentK) + 'px');
+        // Schedule a final reconciliation after transitions complete so any
+        // newly-shifted text positions are corrected for left/right side
+        // (text rotation flips at angle = π).
+        clearTimeout(window.__treeMapScaleTimer);
+        window.__treeMapScaleTimer = setTimeout(() => {
+            applyMapLikeScale(currentK);
+        }, 540);
     }
     let linkSeq = 0, nodeSeq = 0;
 
@@ -1014,13 +1017,21 @@
         document.getElementById('reset-view').addEventListener('click', () => {
             centerInitialView();
         });
-        // Zoom in/out buttons (programmatic d3.zoom transitions; the zoom
-        // handler will fire applyMapLikeScale automatically).
+        // Zoom in/out buttons. Use the THIRD argument to scaleBy so the
+        // zoom is centered on the current viewport center — that way the
+        // visual focus stays in the middle of the screen instead of
+        // drifting toward the SVG origin (top-left). 2× factor per click
+        // (was 1.5×) for a snappier zoom.
+        const ZOOM_FACTOR = 2;
+        function viewCenterPoint() {
+            const c = document.getElementById('tree-canvas');
+            return [(c.clientWidth || 800) / 2, (c.clientHeight || 600) / 2];
+        }
         document.getElementById('zoom-in').addEventListener('click', () => {
-            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, 1.5);
+            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, ZOOM_FACTOR, viewCenterPoint());
         });
         document.getElementById('zoom-out').addEventListener('click', () => {
-            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, 1 / 1.5);
+            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, 1 / ZOOM_FACTOR, viewCenterPoint());
         });
 
         const searchInput = document.getElementById('search');
