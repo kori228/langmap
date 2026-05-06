@@ -2304,6 +2304,35 @@ for (const code of Object.keys(SPEAKER_BACKFILL)) {
 //   'human-reviewed'  — checked manually but without full source coverage
 //   'source-checked'  — has meaningful sources and no major open issues
 //   'needs-rebuild'   — flagged for full rebuild (Tasks 78/94/120 family)
+// === Audit Task 162: unattested-cell reason categorization ============
+// Every `—` cell needs documentation for *why* the form is missing. Possible values:
+//   'cultural-absence'      — language genuinely lacks a basic word for this concept
+//   'unsourced'             — form likely exists but is not yet documented
+//   'recent-loanword'       — only an external loanword exists; project policy keeps —
+//   'has-only-derived-form' — language uses a derived/compound form, no monomorphemic word
+//   'unknown'               — not yet researched
+// Defaults below apply when `meta.unattestedReason[concept]` is not explicitly set.
+// All current 154 `—` cells live in historical/proto languages where:
+//   - thanks/hello: the modern single-word greeting/thanks formula didn't exist
+//   - other content words: typically not attested in surviving corpora
+const UNATTESTED_REASON_DEFAULTS = {
+    // Universally cultural-absence concepts in historical/proto contexts
+    thanks: 'cultural-absence',
+    hello:  'cultural-absence',
+    // Content words that are usually 'unsourced' (the form likely existed)
+    cat:    'unsourced',
+    love:   'unsourced',
+    drink:  'unsourced',
+    eat:    'unsourced',
+    heart:  'unsourced',
+    tree:   'unsourced',
+    house:  'unsourced',
+    good:   'unsourced',
+    sun:    'unsourced', fire: 'unsourced', moon: 'unsourced', dog: 'unsourced',
+    hand:   'unsourced', eye:  'unsourced', one:  'unsourced',
+    mother: 'unsourced', father: 'unsourced', water: 'unsourced',
+};
+
 const REVIEW_STATUS = {
     // Rows with sources + recent corrections — source-checked
     ja:      'source-checked', zh: 'source-checked', wuu: 'source-checked',
@@ -2482,6 +2511,26 @@ for (const code of Object.keys(LANG_DATA)) {
         lang.meta.reviewStatus = 'human-reviewed';
     } else {
         lang.meta.reviewStatus = 'machine-seeded';
+    }
+}
+
+// === Audit Task 162: backfill meta.unattestedReason for all `—` cells ===
+// For each `—` cell, set meta.unattestedReason[concept] from defaults if not
+// already set. Languages can override via explicit assignment in their meta.
+for (const code of Object.keys(LANG_DATA)) {
+    const lang = LANG_DATA[code];
+    if (!lang || !lang.meta) continue;
+    const w = lang.words || {};
+    let dashCells = [];
+    for (const k of Object.keys(w)) {
+        if (Array.isArray(w[k]) && w[k][0] === '—') dashCells.push(k);
+    }
+    if (dashCells.length === 0) continue;
+    if (!lang.meta.unattestedReason) lang.meta.unattestedReason = {};
+    for (const concept of dashCells) {
+        if (!lang.meta.unattestedReason[concept]) {
+            lang.meta.unattestedReason[concept] = UNATTESTED_REASON_DEFAULTS[concept] || 'unknown';
+        }
     }
 }
 

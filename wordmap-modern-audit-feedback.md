@@ -1827,3 +1827,43 @@ CONTRIBUTING.md に Task 172/177 の note を追加。
 - Task 173: wordEvidence 拡充 — Step 2 (24 'source-checked' rows を 20-cell coverage へ)
 
 Pass 8〜30 累計 **72 タスク対応 + iso6393 619/619 + reviewStatus 619/619 + canonicalCode 廃止 + 12 historical-stage 整備** (591 → 619).
+
+## Pass 31 (2026-05-06)
+
+UI 多言語化以外の残課題から 2 タスクを処理。
+
+### Task 173 — `'source-checked'` 行の wordEvidence カバレッジ可視化
+29 source-checked 行のうち、20-cell wordEvidence を満たすのは **0/29**。`juc` (18/20) のみ高水準、他は 0-5 cells。
+
+実装: validator `[#173]` を追加 — source-checked 行で wordEvidence < 20 cells を WARN。INFO line: `source-checked wordEvidence coverage: 0/29 rows with full 20-cell evidence`。
+
+これは即時 backfill が困難な per-language research task のため、validator で技術負債を可視化するに留め、demote はせず。Pass 32+ で priority languages から段階的に backfill 予定。
+
+### Task 162 — `—` (未収録) cell の unattestedReason 体系化
+全 154 `—` cells が historical/proto languages にあり (modern languages の `—` は 0 cells に削減済)。Audit が想定した「modern langs に 133 cells」は過去 pass で既に解消済。
+
+Schema 追加: `meta.unattestedReason: { concept: 'cultural-absence' | 'unsourced' | 'recent-loanword' | 'has-only-derived-form' | 'unknown' }`.
+
+Runtime initializer (`UNATTESTED_REASON_DEFAULTS`):
+- `thanks`/`hello` → `'cultural-absence'` (modern formula は historical 言語に存在しない)
+- 他全 concept (cat, love, drink, eat, heart, tree, house, good, sun, fire, moon, dog, hand, eye, one, mother, father, water) → `'unsourced'` (form は存在した可能性が高いが survival corpora にない)
+
+Validator `[#162]` 追加: `—` cell が `meta.unattestedReason[concept]` を持たない/enum 外なら WARN。INFO line: `unattestedReason coverage: 154/154 '—' cells documented`。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 23 (新 `[#173]` ×6: 5 個別 + 1 集約)
+- Languages: 619
+- 新 INFO line × 2: `[#162]`、`[#173]`
+- Cache-buster: meta 51→52
+
+### 残（次回以降）
+- Task 144/176: UI 多言語化（別スレッド）
+- Task 159 残: Indo-Aryan/Iranian 並列パターン
+- Task 160 part 1 残: zh_tang/och per-cell scholarly tone → Chao bar
+- Task 146 残: khb/shn/id/ms/tl/ta/te
+- Task 149 Batch 4: oto Otomi (Lastra 1992/1997 必要)
+- Task 150 Batch H/I: jrb (Anvita Abbi 2012)、nmn Taa (Traill 1985)
+- Task 171: speakerYear backfill (552 rows、Ethnologue 27 一括輸入要)
+- Task 173 backfill: 24+ source-checked 行の per-cell wordEvidence (per-lang research)
+
+Pass 8〜31 累計 **74 タスク対応 + 4 統合 schema (iso6393/reviewStatus/unattestedReason/canonicalCode 整理)** (591 → 619).

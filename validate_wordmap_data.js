@@ -1213,6 +1213,63 @@ for (const code of codes) {
     I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
 }
 
+// === Unattested-cell reason documentation (Audit Task 162) ===
+// Every `—` cell must have meta.unattestedReason[concept] set to one of the
+// allowed reasons. The runtime initializer in wordmap_meta.js applies sensible
+// defaults so this should be 0 missing in normal operation; warn if any cell
+// slipped through (e.g., a new `—` added without re-running the initializer).
+{
+    const REASON_ENUM = new Set(['cultural-absence','unsourced','recent-loanword','has-only-derived-form','unknown']);
+    let dashTotal = 0, withReason = 0, badEnum = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const reasons = lang.meta?.unattestedReason || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k]) || w[k][0] !== '—') continue;
+            dashTotal++;
+            const r = reasons[k];
+            if (!r) {
+                missing++;
+                if (missing <= 5) W(`[#162] ${code}.${k}: '—' cell without meta.unattestedReason (Audit Task 162)`);
+            } else if (!REASON_ENUM.has(r)) {
+                badEnum++;
+                if (badEnum <= 5) W(`[#162] ${code}.${k}: meta.unattestedReason='${r}' not in enum (Audit Task 162)`);
+            } else {
+                withReason++;
+            }
+        }
+    }
+    if (missing > 5) W(`[#162] (${missing - 5} more '—' cells without unattestedReason)`);
+    if (badEnum > 5) W(`[#162] (${badEnum - 5} more cells with bad enum value)`);
+    I(`unattestedReason coverage: ${withReason}/${dashTotal} '—' cells documented (Audit Task 162)`);
+}
+
+// === source-checked rows must have ~20-cell wordEvidence coverage (Audit Task 173) ===
+// Per audit: source-checked is a strong claim and should be backed by per-cell evidence.
+// WARN when a row claims source-checked but has < 20 cells annotated. Coverage info shows
+// the gap so reviewers can prioritize backfill.
+{
+    let scTotal = 0, scFull = 0, scShort = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const m = lang?.meta || {};
+        if (m.reviewStatus !== 'source-checked') continue;
+        scTotal++;
+        const we = lang?.wordEvidence || {};
+        const weCount = Object.keys(we).length;
+        if (weCount >= 20) {
+            scFull++;
+        } else {
+            scShort++;
+            if (scShort <= 5) W(`[#173] ${code}: reviewStatus='source-checked' but only ${weCount}/20 cells of wordEvidence (Audit Task 173)`);
+        }
+    }
+    if (scShort > 5) W(`[#173] (${scShort - 5} more 'source-checked' rows with < 20-cell wordEvidence — backfill needed)`);
+    I(`source-checked wordEvidence coverage: ${scFull}/${scTotal} rows with full 20-cell evidence (Audit Task 173)`);
+}
+
 // === reviewStatus distribution + consistency (Audit Task 172) ===
 // Every row should have an explicit reviewStatus after the 172 backfill.
 // Cross-check: rows with rich evidence (sources or wordEvidence) should not be
