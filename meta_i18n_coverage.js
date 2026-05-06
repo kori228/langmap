@@ -16307,6 +16307,32 @@ const COMMON_PHRASES_LATIN = [
     ['Arawakan (Northern, with Carib lexical layer)', 'Arawak (Nord, mit Carib-lexikalischer Schicht)', 'arawak (Nord, avec couche lexicale caribe)', 'arawak (Norte, con estrato léxico caribe)', 'arawak (Nord, con strato lessicale caribe)', 'arawak (Norte, com camada léxica caribe)', 'Arawak (Utara, dengan lapisan leksikal Carib)', 'Arawak (Kaskazini, na safu ya msamiati ya Carib)'],
     ['Recognized minority language (Norway, Sweden)', 'Anerkannte Minderheitensprache (Norwegen, Schweden)', 'Langue minoritaire reconnue (Norvège, Suède)', 'Lengua minoritaria reconocida (Noruega, Suecia)', 'Lingua minoritaria riconosciuta (Norvegia, Svezia)', 'Língua minoritária reconhecida (Noruega, Suécia)', 'Bahasa minoritas yang diakui (Norwegia, Swedia)', 'Lugha ya wachache iliyotambuliwa (Norway, Sweden)'],
     ['Canada (recognized aboriginal language)', 'Kanada (anerkannte Aboriginal-Sprache)', 'Canada (langue autochtone reconnue)', 'Canadá (lengua aborigen reconocida)', 'Canada (lingua aborigena riconosciuta)', 'Canadá (língua aborígine reconhecida)', 'Kanada (bahasa aborigin yang diakui)', 'Kanada (lugha asilia iliyotambuliwa)'],
+    // === Round 34: 'X language' compound atoms — national / indigenous / working / teaching / state ===
+    ['national language', 'Nationalsprache', 'langue nationale', 'lengua nacional', 'lingua nazionale', 'língua nacional', 'bahasa nasional', 'lugha ya kitaifa'],
+    ['indigenous language', 'indigene Sprache', 'langue autochtone', 'lengua indígena', 'lingua indigena', 'língua indígena', 'bahasa pribumi', 'lugha asilia'],
+    ['working language', 'Arbeitssprache', 'langue de travail', 'lengua de trabajo', 'lingua di lavoro', 'língua de trabalho', 'bahasa kerja', 'lugha ya kazi'],
+    ['teaching language', 'Unterrichtssprache', 'langue d\'enseignement', 'lengua de enseñanza', 'lingua di insegnamento', 'língua de ensino', 'bahasa pengantar', 'lugha ya kufundisha'],
+    ['medium of instruction', 'Unterrichtssprache', 'langue d\'instruction', 'medio de instrucción', 'lingua di istruzione', 'meio de instrução', 'bahasa pengantar', 'njia ya kufundisha'],
+    ['state language', 'Staatssprache', 'langue d\'État', 'lengua del estado', 'lingua dello stato', 'língua do estado', 'bahasa negara bagian', 'lugha ya jimbo'],
+    ['indigenous', 'indigen', 'autochtone', 'indígena', 'indigeno', 'indígena', 'pribumi', 'asilia'],
+    ['Indigenous', 'Indigene', 'Autochtone', 'Indígena', 'Indigena', 'Indígena', 'Pribumi', 'Asilia'],
+    // 'language isolate' singular form
+    ['language isolate', 'Sprachisolat', 'isolat linguistique', 'lengua aislada', 'lingua isolata', 'língua isolada', 'bahasa terisolasi', 'lugha pekee'],
+    ['within', 'innerhalb von', 'dans', 'dentro de', 'all\'interno di', 'dentro de', 'di dalam', 'ndani ya'],
+    // Compound patterns frequent in countries field
+    ['national language of', 'Nationalsprache von', 'langue nationale de', 'lengua nacional de', 'lingua nazionale di', 'língua nacional de', 'bahasa nasional', 'lugha ya kitaifa ya'],
+    ['working language of', 'Arbeitssprache von', 'langue de travail de', 'lengua de trabajo de', 'lingua di lavoro di', 'língua de trabalho de', 'bahasa kerja', 'lugha ya kazi ya'],
+    // Full-phrase overrides for the most common patterns (capture residual context)
+    ['Tyrsenian (language isolate within Italy)', 'Tyrsenisch (Sprachisolat innerhalb Italiens)', 'tyrsénien (isolat linguistique au sein de l\'Italie)', 'tirsénico (lengua aislada dentro de Italia)', 'tirsenico (lingua isolata all\'interno dell\'Italia)', 'tirsénio (língua isolada dentro da Itália)', 'Tirsenia (bahasa terisolasi di dalam Italia)', 'Kityrsenia (lugha pekee ndani ya Italia)'],
+    ['No (national language of Benin)', 'Nein (Nationalsprache von Benin)', 'Non (langue nationale du Bénin)', 'No (lengua nacional de Benín)', 'No (lingua nazionale del Benin)', 'Não (língua nacional do Benim)', 'Tidak (bahasa nasional Benin)', 'Hapana (lugha ya kitaifa ya Benin)'],
+    ['India (state language of Chhattisgarh)', 'Indien (Staatssprache von Chhattisgarh)', 'Inde (langue d\'État du Chhattisgarh)', 'India (lengua del estado de Chhattisgarh)', 'India (lingua dello stato del Chhattisgarh)', 'Índia (língua do estado de Chhattisgarh)', 'India (bahasa negara bagian Chhattisgarh)', 'India (lugha ya jimbo la Chhattisgarh)'],
+    ['Ethiopia (working language of Sidama Region)', 'Äthiopien (Arbeitssprache der Sidama-Region)', 'Éthiopie (langue de travail de la région Sidama)', 'Etiopía (lengua de trabajo de la Región Sidama)', 'Etiopia (lingua di lavoro della regione Sidama)', 'Etiópia (língua de trabalho da região Sidama)', 'Etiopia (bahasa kerja Wilayah Sidama)', 'Ethiopia (lugha ya kazi ya Eneo la Sidama)'],
+    ['Myanmar (Mon State; teaching language)', 'Myanmar (Mon-Staat; Unterrichtssprache)', 'Myanmar (État Môn ; langue d\'enseignement)', 'Myanmar (Estado Mon; lengua de enseñanza)', 'Myanmar (Stato Mon; lingua di insegnamento)', 'Myanmar (Estado Mon; língua de ensino)', 'Myanmar (Negara Mon; bahasa pengantar)', 'Myanmar (Jimbo la Mon; lugha ya kufundisha)'],
+    ['Taiwan (recognized indigenous language)', 'Taiwan (anerkannte indigene Sprache)', 'Taïwan (langue autochtone reconnue)', 'Taiwán (lengua indígena reconocida)', 'Taiwan (lingua indigena riconosciuta)', 'Taiwan (língua indígena reconhecida)', 'Taiwan (bahasa pribumi yang diakui)', 'Taiwan (lugha asilia iliyotambuliwa)'],
+    ['Meghalaya (with Garo and English)', 'Meghalaya (mit Garo und Englisch)', 'Meghalaya (avec garo et anglais)', 'Meghalaya (con garo e inglés)', 'Meghalaya (con garo e inglese)', 'Meghalaya (com garo e inglês)', 'Meghalaya (dengan Garo dan Inggris)', 'Meghalaya (na Garo na Kiingereza)'],
+    // Common "since YEAR Act/Law" pattern (act / law atoms)
+    ['Act', 'Gesetz', 'loi', 'ley', 'legge', 'lei', 'undang-undang', 'sheria'],
+    ['Law', 'Gesetz', 'loi', 'ley', 'legge', 'lei', 'undang-undang', 'sheria'],
     // Empires / kingdoms / courts
     ['Empire', 'Reich', 'Empire', 'Imperio', 'Impero', 'Império', 'Kekaisaran', 'Milki'],
     ['empire', 'Reich', 'empire', 'imperio', 'impero', 'império', 'kekaisaran', 'milki'],
