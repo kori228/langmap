@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LangMap — Word Map: 226 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 226 languages with IPA pronunciations. 2D map and 3D globe views.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangMap — Word Map: 591 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 591 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 226 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 591 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 226 languages on an interactive world map with IPA pronunciations and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 591 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -24,8 +24,14 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=52">
+    <link rel="stylesheet" href="styles.css?v=54">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
+         Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
+         characters render as tofu boxes on most systems. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&display=swap">
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -53,6 +59,38 @@
             border-radius: 20px; background: rgba(255,255,255,0.92);
             backdrop-filter: blur(6px); cursor: pointer;
             box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+        }
+        /* Word selector — fixed width so the dropdown doesn't resize as
+           the user picks different words (some labels are much longer
+           than others, e.g. Japanese 食べる vs short 'good'). */
+        .top-left-controls #word-select { width: 240px; }
+        /* Word definition — fixed width matching the selector and a fixed
+           height so that the era switch / language search below it never
+           shift vertically when the user picks a concept with a longer
+           or shorter definition. */
+        .top-left-controls #word-definition {
+            width: 240px;
+            box-sizing: border-box;
+            height: 88px;
+            margin-top: 2px;
+            margin-bottom: 6px;
+            padding: 4px 8px;
+            font-size: 10px;
+            color: #333;
+            font-style: italic;
+            line-height: 1.35;
+            background: transparent;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+            overflow: hidden;
+        }
+        body.is-3d .top-left-controls #word-definition {
+            color: #f5f5f5;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+        }
+        @media (max-width: 480px) {
+            /* Hide the definition box on phones to save vertical space;
+               the modal still shows it once a language is selected. */
+            .top-left-controls #word-definition { display: none; }
         }
 
         /* --- Bottom-left: UI lang only --- */
@@ -153,6 +191,155 @@
 
         /* --- Language labels on map --- */
         :root { --label-scale: 1; }
+        /* Map-label font chain (formal serif).
+           "Gentium Plus" leads — SIL's scholarly Latin/IPA serif with full
+           combining-mark coverage, so ɨ̂ etc. stay in one font run. Noto
+           Serif (+ JP/SC/TC/KR) backs it for CJK. Charis SIL is a
+           diacritic safety net. Ancient-script Noto fonts last. Setting
+           font-family on the parent so .word, .ipa, .name all inherit. */
+        /* Presence-only marker for languages without word data for the
+           current concept. Small grayed dot, clickable → opens modal so
+           user can still discover the language even when its cell is '—'. */
+        .unattested-marker {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(120,120,130,0.55);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 0 1px rgba(0,0,0,0.4);
+            cursor: pointer;
+        }
+        .unattested-marker:hover {
+            background: rgba(120,120,130,0.85);
+            transform: scale(1.4);
+            transition: transform 0.12s ease, background 0.12s ease;
+        }
+        body.is-3d .unattested-marker {
+            background: rgba(180,180,200,0.6);
+            border-color: rgba(255,255,255,0.5);
+        }
+        /* Unattested-but-named label: shows the language name in a muted
+           style so users can recognize the language even when its word for
+           the current concept is '—'. Compact, clearly distinct from regular
+           labels (lighter, italic, smaller). User request 2026-05-06. */
+        .unattested-label {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-size: calc(10px * var(--label-scale, 1));
+            color: #999;
+            font-style: italic;
+            background: rgba(255,255,255,0.55);
+            padding: 1px 4px;
+            border-radius: 3px;
+            white-space: nowrap;
+            cursor: pointer;
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                Georgia, "Times New Roman", serif;
+        }
+        .unattested-label:hover {
+            color: #555;
+            background: rgba(255,255,255,0.9);
+        }
+        body.is-3d .unattested-label {
+            background: rgba(0,0,0,0.45);
+            color: #ccc;
+        }
+        body.is-3d .unattested-label:hover {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+        }
+        .unattested-label:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 2px;
+        }
+        .lang-label, .globe-label {
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Noto Sans Tibetan",
+                "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
+                "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
+                "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
+                "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
+                "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
+                Georgia, "Times New Roman", serif;
+        }
+        /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
+        .lang-label:focus-visible,
+        .globe-label:focus-visible,
+        .unattested-marker:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 2px;
+        }
+        /* Selected language (info panel open) — looks like a miniature
+           version of the info modal: same translucent white card,
+           same shadow style, scaled-down padding/radius. The connector
+           line (#4a6cf7) joins two visually-coherent cards. */
+        .lang-label.selected, .globe-label.selected {
+            background: rgba(255,255,255,0.97);
+            border-radius: 7px;
+            padding: 6px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.22),
+                        0 0 0 1px rgba(74,108,247,0.6);
+            outline: none;
+            z-index: 10;
+        }
+        /* In 3D mode drop the muddy heavy shadow + soft white glow; just
+           keep the 1px blue ring + white card so the selection is
+           identifiable without halo bleed against the dark globe.
+           Also clear the dark text-shadow (set on .globe-label for
+           legibility against the dark sky) so dark text on the white
+           selected-card doesn't have an ugly black blur halo around it. */
+        body.is-3d .globe-label.selected {
+            box-shadow: 0 0 0 1px rgba(74,108,247,0.85);
+        }
+        body.is-3d .globe-label.selected,
+        body.is-3d .globe-label.selected .word,
+        body.is-3d .globe-label.selected .ipa,
+        body.is-3d .globe-label.selected .name {
+            text-shadow: none;
+        }
+        /* The white drop-shadow halo around the connector path was tuned for
+           the light 2D map; on the 3D night-sky background it leaves an
+           ugly bright outline. Drop the white halo in 3D and let the line's
+           own color do the work. */
+        body.is-3d #connector-line .conn-path {
+            stroke: rgba(255,255,255,0.85);
+            filter: none;
+        }
+        body.is-3d #connector-line marker path {
+            fill: rgba(255,255,255,0.95);
+        }
+        /* When the label has no inline color (era-default), use these readable
+           defaults inside the selected card. When the lang has a custom color
+           (e.g. red for historical), the inline style on .word/.ipa/.name wins
+           because :not([style]) doesn't apply — preserving the original color. */
+        .lang-label.selected .word:not([style]), .globe-label.selected .word:not([style]) { color: #1a1a2e; }
+        .lang-label.selected .ipa:not([style]),  .globe-label.selected .ipa:not([style])  { color: #555; }
+        .lang-label.selected .name:not([style]), .globe-label.selected .name:not([style]) { color: #888; }
+        /* Connector — drawn ABOVE the info modal (z-index 1011 vs panel
+           1010) so the line visibly terminates on the panel surface
+           rather than sliding behind it. A small filled circle at the
+           panel side acts as the "attachment" marker. */
+        #connector-line {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1011;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+        }
+        #connector-line.visible { opacity: 1; }
+        #connector-line .conn-path {
+            fill: none;
+            stroke: rgba(40, 50, 70, 0.55);
+            stroke-width: 1.25;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.9))
+                    drop-shadow(0 0 1px rgba(255,255,255,0.6));
+        }
+        #connector-line marker path {
+            fill: rgba(40, 50, 70, 0.7);
+            stroke: none;
+        }
         .lang-label {
             position: absolute; left: 50%; top: 50%;
             text-align: center; white-space: nowrap; cursor: pointer;
@@ -161,12 +348,24 @@
             width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        /* When the label is already selected (white card), plain
+           background-on-hover is invisible. Switch the text color to the
+           selection blue so hover state is still readable. */
+        .lang-label.selected:hover .word,
+        .lang-label.selected:hover .ipa,
+        .lang-label.selected:hover .name,
+        .globe-label.selected:hover .word,
+        .globe-label.selected:hover .ipa,
+        .globe-label.selected:hover .name {
+            color: #4a6cf7;
+        }
         .lang-label .word {
             font-size: calc(15px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
             line-height: 1.2;
+            /* font-family inherited from .lang-label parent */
         }
         .lang-label .ipa {
-            font-size: calc(10px * var(--label-scale)); color: #555; font-style: italic;
+            font-size: calc(10px * var(--label-scale)); color: #555;
             line-height: 1.2;
         }
         .lang-label .name {
@@ -208,6 +407,27 @@
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
         .lang-info-panel td:first-child { font-weight: 600; color: #555; width: 90px; white-space: nowrap; }
         .lang-info-panel .desc { color: #444; font-size: 12px; line-height: 1.5; }
+        /* Audit Task 129: RTL/bidi isolation for Arabic/Hebrew/Perso-Arabic
+           word cells. unicode-bidi:isolate prevents RTL text from reordering
+           neighboring LTR punctuation (slashes, brackets, evidence markers).
+           dir="auto" on the wrapper lets the browser detect direction
+           per-cell. IPA cells stay LTR. */
+        .wm-form { unicode-bidi: isolate; }
+        .wm-ipa  { unicode-bidi: isolate; direction: ltr; }
+        /* Audit Task 101: keyboard focus for inline evidence markers */
+        .lang-info-panel .ev-marker:focus-visible {
+            outline: 2px solid #1a73e8;
+            outline-offset: 1px;
+            border-radius: 2px;
+        }
+        .lang-info-panel .ev-detail {
+            font-size: 11px;
+            color: #666;
+            background: #f5f5f8;
+            padding: 4px 8px;
+            border-left: 2px solid #ccc;
+            margin: 2px 0 2px 16px;
+        }
 
         /* --- URL watermark --- */
         .url-watermark {
@@ -244,7 +464,7 @@
             font-size: calc(13px * var(--label-scale)); font-weight: 700; color: #fff; line-height: 1.2;
         }
         .globe-label .ipa {
-            font-size: calc(9px * var(--label-scale)); color: #aab; font-style: italic; line-height: 1.2;
+            font-size: calc(9px * var(--label-scale)); color: #aab; line-height: 1.2;
         }
         .globe-label .name {
             font-size: calc(8px * var(--label-scale)); color: #889; line-height: 1.3;
@@ -289,85 +509,203 @@
     <div class="site-header-bar">
         <a href="wordmap.html" class="logo">LangMap</a>
         <nav class="header-nav">
-            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
+            <!-- Audit Task 124: nav default label is English; applyUILang()
+                 swaps to NAV_ORDER[uiLang] / NAV_WORD[uiLang] on load. -->
+            <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
             <span class="nav-sep">/</span>
-            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</span>
+            <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
         </nav>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
 
-    <!-- Top-left controls (below header): word select + era -->
+    <!-- Top-left controls (below header): word select + era + lang search -->
     <div class="top-left-controls">
-        <select id="word-select"></select>
-        <div class="radio-switch" id="era-switch">
-            <button class="radio-opt active" id="era-modern" data-val="modern"></button>
-            <button class="radio-opt" id="era-historical" data-val="historical"></button>
+        <select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
+        <div id="word-definition"></div>
+        <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
+            <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
+            <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
+            <!-- Audit Task 112: legend explaining what each era shows.
+                 Compact help icon; tooltip describes that historical mode
+                 also overlays modern descendants as cross-reference. -->
+            <span id="era-help" tabindex="0" role="button" aria-label=""
+                  style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
+                  title="">?</span>
+        </div>
+        <div class="lang-search-wrap" style="position:relative">
+            <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
+                   role="combobox" aria-autocomplete="list" aria-expanded="false"
+                   aria-controls="lang-search-results" aria-activedescendant=""
+                   style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
+            <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
     </div>
 
     <!-- Bottom-left: UI language only -->
     <div class="map-controls">
-        <select id="ui-lang" class="ui-lang-select"></select>
+        <select id="ui-lang" class="ui-lang-select" aria-label="UI language"></select>
     </div>
 
     <!-- Right-side controls: all stacked, centered -->
     <div class="right-controls">
-        <div class="map-zoom-controls" id="map-zoom">
-            <button id="map-zoom-in">+</button>
-            <button id="map-zoom-out">&minus;</button>
+        <div class="map-zoom-controls" id="map-zoom" role="group" aria-label="Map zoom">
+            <button id="map-zoom-in" aria-label="Zoom in">+</button>
+            <button id="map-zoom-out" aria-label="Zoom out">&minus;</button>
         </div>
-        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D">2D</button>
+        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
         <div style="height:8px"></div>
-        <button class="toggle-btn active" id="toggle-word"><span class="label">Word</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-ipa"><span class="label">IPA</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-name"><span class="label">Name</span><span class="onoff">ON</span></button>
-        <div class="radio-switch radio-switch-v" id="name-switch">
-            <button class="radio-opt" id="name-native"></button>
-            <button class="radio-opt active" id="name-translated"></button>
+        <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
+        <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
+            <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
+            <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
         </div>
         <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
-            <span class="ctrl-label" id="size-label" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</span>
-            <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider">
+            <label class="ctrl-label" id="size-label" for="font-size" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</label>
+            <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider" aria-label="Label font size">
         </div>
     </div>
 
     <!-- Credit watermark -->
     <div class="url-watermark">
-        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;" aria-label="GitHub repository"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
     </div>
 
     <!-- Language info panel -->
-    <div id="lang-info" class="lang-info-panel">
-        <button class="close-btn" id="info-close">&times;</button>
+    <div id="lang-info" class="lang-info-panel" role="dialog" aria-labelledby="lang-info-heading" aria-modal="false" tabindex="-1">
+        <button class="close-btn" id="info-close" aria-label="Close language info">&times;</button>
         <div id="info-content"></div>
     </div>
 
     <div id="map"></div>
     <div id="globe"></div>
+    <!-- Connector from selected map label to the open info panel -->
+    <svg id="connector-line" aria-hidden="true">
+        <defs>
+            <!-- Triangle arrowhead, auto-rotated to follow the path's end tangent -->
+            <marker id="conn-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7"
+                    markerUnits="userSpaceOnUse" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+            </marker>
+        </defs>
+        <path class="conn-path" d="" marker-end="url(#conn-arrow)"></path>
+    </svg>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
-    <script src="wordmap_data.js"></script>
+    <!-- Audit Task 125: graceful CDN fallback. If Leaflet fails to load,
+         show a clear error panel instead of leaving a blank map. If only
+         Globe.gl fails, the 2D map still works; the 3D toggle is disabled. -->
     <script>
-    // Load LANG_NAMES from app.js for translated language names
-    let LANG_NAMES = {};
-    let langNamesReady = false;
-    fetch('app.js').then(r => r.text()).then(code => {
-        const m = code.match(/const LANG_NAMES = \{([\s\S]*?)\n\};/);
-        if (m) { try { LANG_NAMES = new Function('return {' + m[1] + '\n};')(); } catch(e) {} }
-        langNamesReady = true;
-        // Re-render markers now that LANG_NAMES is loaded
-        if (typeof _refreshMarkers === 'function') _refreshMarkers();
-    });
+    (function () {
+        const missingDeps = [];
+        if (typeof L === 'undefined') missingDeps.push('Leaflet');
+        if (typeof Globe === 'undefined') missingDeps.push('Globe.gl');
+        if (missingDeps.length === 0) return;
+        // Defer the rest of init so we can show a friendly message.
+        window.__langmapMissingDeps = missingDeps;
+        if (missingDeps.includes('Leaflet')) {
+            // Leaflet missing: hide the map div, show a localized error.
+            // Inline-fallback message in English (UI labels not yet loaded).
+            window.addEventListener('DOMContentLoaded', () => {
+                const mapEl = document.getElementById('map');
+                if (mapEl) {
+                    mapEl.style.background = '#f7f7f8';
+                    mapEl.innerHTML = '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:system-ui,sans-serif;color:#666"><div><div style="font-size:32px;margin-bottom:12px">🗺️</div><div style="font-size:16px;font-weight:600;color:#333;margin-bottom:6px">Map could not load</div><div style="font-size:13px;line-height:1.5">External map library (Leaflet) is unavailable.<br>Check your network connection or content blockers, then reload.<br><br><span style="color:#999;font-size:11px">If you are on a restricted network, the CDN at <code>unpkg.com</code> may be blocked.</span></div></div></div>';
+                }
+            });
+            // Stop further init — Leaflet is required for both 2D and 3D paths.
+            throw new Error('Leaflet not loaded; halting wordmap init');
+        }
+        if (missingDeps.includes('Globe.gl')) {
+            // Globe missing: 2D works fine; we'll disable the 3D toggle once it exists.
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn3D = document.getElementById('toggle-3d');
+                if (btn3D) {
+                    btn3D.disabled = true;
+                    btn3D.style.opacity = '0.4';
+                    btn3D.style.cursor = 'not-allowed';
+                    btn3D.title = '3D globe unavailable (Globe.gl CDN failed to load)';
+                    btn3D.setAttribute('aria-disabled', 'true');
+                }
+            });
+        }
+    })();
+    </script>
+    <script src="wordmap_data.js?v=86"></script>
+    <script src="meta_i18n_ext.js?v=8"></script>
+    <script src="lang-filter.js?v=23"></script>
+    <script src="lang_names.js?v=5"></script>
+    <script>
+    // LANG_NAMES is loaded synchronously via lang_names.js above.
+    // (Was previously extracted from app.js via fetch+regex+new Function.
+    //  See wordmap-check.md §12.) Make `langNamesReady` a constant true so
+    //  any legacy guard short-circuits.
+    let langNamesReady = true;
     </script>
     <script>
     (function() {
         'use strict';
 
+        // --- Rough initial location from browser timezone (no GPS permission) ---
+        // Maps IANA timezone → [lat, lng] of a representative city. Falls back to
+        // continent prefix, then world center.
+        const TZ_LOCATIONS = {
+            'Asia/Tokyo':[35.68,139.69], 'Asia/Seoul':[37.57,126.98], 'Asia/Shanghai':[31.23,121.47],
+            'Asia/Hong_Kong':[22.28,114.16], 'Asia/Taipei':[25.03,121.57], 'Asia/Singapore':[1.35,103.82],
+            'Asia/Bangkok':[13.76,100.50], 'Asia/Jakarta':[-6.21,106.85], 'Asia/Manila':[14.60,120.98],
+            'Asia/Kolkata':[28.61,77.21], 'Asia/Calcutta':[28.61,77.21], 'Asia/Karachi':[24.86,67.01],
+            'Asia/Dhaka':[23.81,90.41], 'Asia/Ho_Chi_Minh':[10.82,106.63], 'Asia/Yangon':[16.84,96.18],
+            'Asia/Dubai':[25.20,55.27], 'Asia/Tehran':[35.69,51.39], 'Asia/Riyadh':[24.71,46.68],
+            'Asia/Almaty':[43.22,76.85], 'Asia/Tashkent':[41.30,69.24], 'Asia/Kathmandu':[27.72,85.32],
+            'Asia/Kuala_Lumpur':[3.14,101.69], 'Asia/Colombo':[6.93,79.86], 'Asia/Jerusalem':[31.78,35.22],
+            'Europe/London':[51.51,-0.13], 'Europe/Paris':[48.86,2.35], 'Europe/Berlin':[52.52,13.41],
+            'Europe/Rome':[41.90,12.50], 'Europe/Madrid':[40.42,-3.70], 'Europe/Amsterdam':[52.37,4.90],
+            'Europe/Moscow':[55.75,37.62], 'Europe/Istanbul':[41.01,28.98], 'Europe/Athens':[37.98,23.73],
+            'Europe/Stockholm':[59.33,18.07], 'Europe/Helsinki':[60.17,24.94], 'Europe/Warsaw':[52.23,21.01],
+            'Europe/Kyiv':[50.45,30.52], 'Europe/Kiev':[50.45,30.52], 'Europe/Lisbon':[38.72,-9.14],
+            'Europe/Vienna':[48.21,16.37], 'Europe/Zurich':[47.38,8.55], 'Europe/Copenhagen':[55.68,12.57],
+            'Europe/Oslo':[59.91,10.75], 'Europe/Brussels':[50.85,4.35], 'Europe/Dublin':[53.35,-6.26],
+            'Europe/Prague':[50.08,14.44], 'Europe/Budapest':[47.50,19.04], 'Europe/Bucharest':[44.43,26.10],
+            'America/New_York':[40.71,-74.01], 'America/Detroit':[42.33,-83.05], 'America/Toronto':[43.65,-79.38],
+            'America/Chicago':[41.88,-87.63], 'America/Denver':[39.74,-104.99], 'America/Phoenix':[33.45,-112.07],
+            'America/Los_Angeles':[34.05,-118.24], 'America/Vancouver':[49.28,-123.12], 'America/Mexico_City':[19.43,-99.13],
+            'America/Sao_Paulo':[-23.55,-46.63], 'America/Buenos_Aires':[-34.61,-58.40],
+            'America/Argentina/Buenos_Aires':[-34.61,-58.40], 'America/Lima':[-12.05,-77.04],
+            'America/Bogota':[4.71,-74.07], 'America/Santiago':[-33.45,-70.67], 'America/Caracas':[10.50,-66.92],
+            'America/Halifax':[44.65,-63.58], 'America/Anchorage':[61.22,-149.90], 'America/Honolulu':[21.31,-157.86],
+            'Africa/Cairo':[30.04,31.24], 'Africa/Lagos':[6.52,3.38], 'Africa/Johannesburg':[-26.20,28.05],
+            'Africa/Nairobi':[-1.29,36.82], 'Africa/Addis_Ababa':[9.03,38.74], 'Africa/Casablanca':[33.57,-7.59],
+            'Africa/Algiers':[36.75,3.06], 'Africa/Tunis':[36.81,10.18], 'Africa/Khartoum':[15.50,32.56],
+            'Africa/Accra':[5.55,-0.20],
+            'Australia/Sydney':[-33.87,151.21], 'Australia/Melbourne':[-37.81,144.96],
+            'Australia/Brisbane':[-27.47,153.03], 'Australia/Perth':[-31.95,115.86],
+            'Pacific/Auckland':[-36.85,174.76], 'Pacific/Fiji':[-18.14,178.44],
+            'Atlantic/Reykjavik':[64.13,-21.82],
+        };
+        const TZ_PREFIX_FALLBACK = {
+            'Asia':[25,100], 'Europe':[50,10], 'America':[25,-90],
+            'Africa':[0,20], 'Australia':[-25,135], 'Pacific':[0,170], 'Atlantic':[40,-30],
+        };
+        function detectInitialView() {
+            try {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (tz && TZ_LOCATIONS[tz]) return TZ_LOCATIONS[tz];
+                if (tz) {
+                    const region = tz.split('/')[0];
+                    if (TZ_PREFIX_FALLBACK[region]) return TZ_PREFIX_FALLBACK[region];
+                }
+            } catch (e) {}
+            return [25, 20];
+        }
+        const _initialCenter = detectInitialView();
+
         // --- Map setup ---
         const map = L.map('map', {
-            center: [25, 20],
-            zoom: 3,
+            center: _initialCenter,
+            zoom: 5,
             minZoom: 2,
             maxZoom: 10,
             worldCopyJump: true,
@@ -381,6 +719,18 @@
             attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
             maxZoom: 18,
         }).addTo(map);
+
+        // Audit Task 135: keyboard activation for 2D map labels.
+        // Labels are rendered as Leaflet divIcons with role=button + tabindex=0.
+        // We need a delegated keydown handler at the map container level since
+        // markers are rebuilt on every word/zoom change.
+        map.getContainer().addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const label = e.target.closest('.lang-label, .unattested-marker, .unattested-label');
+            if (!label || !label.dataset.code) return;
+            e.preventDefault();
+            showLangInfo(label.dataset.code);
+        });
 
         // Country borders
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
@@ -426,6 +776,24 @@
             }
             return 'en';
         }
+        // Audit Task 134: Central cache-buster version registry. Static
+        // <script src="...?v=N"> and <link href="...?v=N"> tags above must
+        // be kept in sync with this object. validate_wordmap_data.js #19
+        // checks that the HTML versions match these values, so drift is
+        // caught at validation time. The dynamic wordmap_meta.js load
+        // below uses assetUrl() so its version is always read from here.
+        const WM_ASSET_VERSION = {
+            styles:    54,
+            data:      86,
+            metaI18n:  8,
+            filter:    23,
+            names:     5,
+            meta:      34,
+        };
+        function assetUrl(path, key) {
+            return `${path}?v=${WM_ASSET_VERSION[key]}`;
+        }
+
         let uiLang = detectBrowserLang();
         const uiLangSelect = document.getElementById('ui-lang');
         for (const [code, label] of Object.entries(WM_UI_LABELS)) {
@@ -435,6 +803,10 @@
             uiLangSelect.appendChild(opt);
         }
         uiLangSelect.value = uiLang;
+
+        // Expose UI language so external scripts (lang-filter.js) can read it
+        window.__langmap = window.__langmap || {};
+        window.__langmap.uiLang = uiLang;
 
         function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
 
@@ -468,6 +840,81 @@
             he:'מפת מילים', sw:'Ramani ya maneno',
         };
 
+        // Audit i18n: centralized localized UI strings. Moved here (before
+        // applyUILang) so the i18n() helper is available during initial
+        // loadHash → applyUILang call (was previously after, causing a
+        // ReferenceError on first paint).
+        const I18N_STRINGS = {
+            modernDescendant: { en: 'Modern descendant', ja: '近代後裔', ko: '현대 후손', zh: '现代后裔',
+                yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
+                id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
+                fr: 'Descendant moderne', it: 'Discendente moderno',
+                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
+                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
+                ru: 'Совр. потомок', uk: 'Сучасний нащадок',
+                ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
+            historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
+                yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
+                id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
+                fr: 'Ancêtres hist.', it: 'Antenati storici',
+                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
+                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
+                ru: 'Ист. предки', uk: 'Іст. предки',
+                ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
+            sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
+                yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
+                de: 'Quellen', fr: 'Sources', it: 'Fonti',
+                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
+                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
+                ru: 'Источники', uk: 'Джерела',
+                ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
+            searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
+                yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
+                id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
+                fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
+                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
+                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
+                ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
+                ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
+            modernLangTooltip: { en: 'modern lang', ja: '現代言語', ko: '현대어', zh: '现代语言' },
+            historicalLangTooltip: { en: 'historical lang', ja: '歴史言語', ko: '역사 언어', zh: '历史语言' },
+            // Audit Task 112: era legend explanation. Modern mode shows
+            // only modern languages; historical mode adds historical
+            // entries plus their modern descendants as cross-reference
+            // markers (drawn in red).
+            eraHelpModern: {
+                en: 'Modern mode: shows modern languages and varieties.',
+                ja: '現代モード: 現代言語・地方変種のみ表示します。',
+                ko: '현대 모드: 현대 언어와 지역 변종을 표시합니다.',
+                zh: '现代模式：只显示现代语言和地区变体。',
+            },
+            eraHelpHistorical: {
+                en: 'Historical mode: shows historical languages plus modern descendants (red) as cross-reference.',
+                ja: '歴史モード: 歴史言語に加え、現代後裔言語（赤色）を参照として併せて表示します。',
+                ko: '역사 모드: 역사 언어와 함께 현대 후손 언어(빨간색)를 참조용으로 표시합니다.',
+                zh: '历史模式：显示历史语言以及作为参照的现代后裔语言（红色）。',
+            },
+            noMatch: { en: 'No match', ja: '該当なし', ko: '일치 항목 없음', zh: '无匹配',
+                de: 'Kein Treffer', fr: 'Aucun résultat', es: 'Sin resultados',
+                pt: 'Sem resultados', ru: 'Нет совпадений', uk: 'Немає збігів',
+                ar: 'لا توجد نتائج', he: 'אין תוצאות', sw: 'Hakuna inayolingana',
+                vi: 'Không tìm thấy', th: 'ไม่พบรายการ', id: 'Tidak ada' },
+            eraFilterOffHint: { en: 'Toggle off the {era} filter to select',
+                ja: '{era}フィルターをオフにしてください',
+                ko: '{era} 필터를 끄세요', zh: '请关闭{era}过滤器后再选择',
+                de: '{era}-Filter ausschalten, um auszuwählen',
+                fr: 'Désactivez le filtre {era} pour sélectionner',
+                es: 'Desactiva el filtro {era} para seleccionar',
+                pt: 'Desative o filtro {era} para selecionar',
+                ru: 'Отключите фильтр {era} для выбора',
+                ar: 'أوقف فلتر {era} للاختيار', he: 'בטל את מסנן ה־{era} לבחירה' },
+        };
+        function i18n(key) {
+            const m = I18N_STRINGS[key];
+            if (!m) return key;
+            return m[uiLang] || m[uiLang.split('_')[0]] || m.en;
+        }
+
         function applyUILang() {
             const subtitleEl = document.getElementById('ui-subtitle');
             if (subtitleEl) subtitleEl.textContent = SUBTITLES[uiLang] || SUBTITLES.en;
@@ -487,23 +934,47 @@
                 const text = wt(key);
                 const lbl = el.querySelector('.label');
                 if (lbl) lbl.textContent = text;
-                el.title = text;
+                // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
+                // when available, falling back to the short label.
+                el.title = wt(key + 'Col') || text;
             });
-            document.getElementById('era-modern').textContent = wt('modern') || 'Modern';
-            document.getElementById('era-historical').textContent = wt('historical') || 'Historical';
+            // Localize search input placeholder (Audit i18n gap fix)
+            const searchInput = document.getElementById('lang-search');
+            if (searchInput) searchInput.placeholder = i18n('searchPlaceholder');
+            // Append per-era language counts in parens: "現代言語 (478)" / "歴史言語 (79)"
+            let modernCount = 0, historicalCount = 0;
+            if (typeof HIST_CODE_SET !== 'undefined' && typeof LANG_DATA !== 'undefined') {
+                for (const c of Object.keys(LANG_DATA)) {
+                    if (HIST_CODE_SET.has(c)) historicalCount++;
+                    else if (typeof EXCLUDED_CODES !== 'undefined' && EXCLUDED_CODES.has(c)) continue;
+                    else modernCount++;
+                }
+            }
+            const modernLabel = wt('modern') || 'Modern';
+            const histLabel   = wt('historical') || 'Historical';
+            document.getElementById('era-modern').textContent     = modernCount     ? `${modernLabel} (${modernCount})`     : modernLabel;
+            document.getElementById('era-historical').textContent = historicalCount ? `${histLabel} (${historicalCount})`   : histLabel;
             if (typeof updateNameSwitch === 'function') updateNameSwitch();
             rebuildWordSelect();
+            // Audit Task 112: refresh era help tooltip after labels update
+            if (typeof updateEraHelp === 'function') updateEraHelp();
         }
 
         uiLangSelect.addEventListener('change', () => {
             uiLang = uiLangSelect.value;
+            window.__langmap.uiLang = uiLang;
+            window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
             applyUILang();
             updateMarkers(currentWord);
             updateHash();
-            // Refresh open modal
+            // Refresh open modal in the new UI lang. Use direct render path
+            // (not showLangInfo) because showLangInfo has a same-code toggle
+            // that would close the modal instead of re-rendering.
             const panel = document.getElementById('lang-info');
             if (panel.classList.contains('visible') && panel.dataset.code) {
-                showLangInfo(panel.dataset.code);
+                renderLangInfo(panel.dataset.code);
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                if (typeof updateConnectorLine === 'function') updateConnectorLine();
             }
         });
 
@@ -516,19 +987,54 @@
             WORD_LIST.forEach(w => {
                 const opt = document.createElement('option');
                 opt.value = w.id;
-                const wKey = uiLang === 'id' ? 'ind' : uiLang;
-                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
-                opt.textContent = (uiLang === 'en' ? w.en : localWord + ' / ' + w.en);
+                // w.label is { en, ja, id, ... } — `id` here is Indonesian, not entry id
+                const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
+                opt.textContent = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
                 select.appendChild(opt);
             });
             if (curVal) select.value = curVal;
         }
         rebuildWordSelect();
 
+        // Audit Task 95/128: visible concept definition under the word
+        // selector. Localized en/ja/ko/zh with English fallback marked
+        // (reuses Task 121 fallback-label pattern).
+        function updateWordDefinition() {
+            const wd = document.getElementById('word-definition');
+            if (!wd) return;
+            const w = WORD_LIST.find(x => x.id === select.value);
+            if (!w || !w.definition) { wd.textContent = ''; return; }
+            const def = w.definition;
+            if (typeof def === 'string') {
+                wd.textContent = def;
+                return;
+            }
+            const baseLang = uiLang.split('_')[0];
+            const text = def[uiLang] || def[baseLang] || def.en || '';
+            const isFallback = uiLang !== 'en' && !def[uiLang] && !def[baseLang] && !!def.en;
+            wd.textContent = '';
+            wd.appendChild(document.createTextNode(text));
+            if (isFallback && text) {
+                const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                    || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                    || ENGLISH_FALLBACK_LABEL.en;
+                const fb = document.createElement('span');
+                fb.style.color = '#aaa';
+                fb.style.fontSize = '9px';
+                fb.style.marginLeft = '4px';
+                fb.textContent = `(${fbLabel})`;
+                wd.appendChild(fb);
+            }
+        }
+
         select.addEventListener('change', () => {
             updateMarkers(select.value);
+            updateWordDefinition();
             updateHash();
         });
+        updateWordDefinition();
+        // Refresh definition text when UI lang changes
+        window.addEventListener('langmap:uichange', updateWordDefinition);
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
@@ -543,11 +1049,25 @@
 
         function setEra(historical) {
             showHistorical = historical;
+            window.__langmap.historical = historical;
             eraModern.classList.toggle('active', !historical);
             eraHistorical.classList.toggle('active', historical);
+            eraModern.setAttribute('aria-checked', String(!historical));
+            eraHistorical.setAttribute('aria-checked', String(historical));
+            updateEraHelp();
+            window.dispatchEvent(new CustomEvent('langmap:erachange', { detail: { historical } }));
             updateMarkers(currentWord);
             updateHash();
         }
+        // Audit Task 112: refresh the era-help tooltip whenever era or UI lang changes.
+        function updateEraHelp() {
+            const helpEl = document.getElementById('era-help');
+            if (!helpEl) return;
+            const text = showHistorical ? i18n('eraHelpHistorical') : i18n('eraHelpModern');
+            helpEl.title = text;
+            helpEl.setAttribute('aria-label', text);
+        }
+        window.addEventListener('langmap:uichange', updateEraHelp);
         eraModern.addEventListener('click', () => setEra(false));
         eraHistorical.addEventListener('click', () => setEra(true));
 
@@ -559,6 +1079,7 @@
             btn.addEventListener('click', () => {
                 setter(!getter());
                 btn.classList.toggle('active', getter());
+                btn.setAttribute('aria-pressed', String(getter()));
                 updateOnOff(btn, getter());
                 updateMarkers(currentWord);
             });
@@ -570,6 +1091,8 @@
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
             nameTranslated.classList.toggle('active', !showNative);
+            nameNative.setAttribute('aria-checked', String(showNative));
+            nameTranslated.setAttribute('aria-checked', String(!showNative));
             nameNative.textContent = wt('native') || 'Native';
             const uiName = WM_UI_LABELS[uiLang] || 'English';
             nameTranslated.textContent = uiName;
@@ -593,6 +1116,8 @@
         const fontSizeSlider = document.getElementById('font-size');
         fontSizeSlider.addEventListener('input', () => {
             document.documentElement.style.setProperty('--label-scale', parseInt(fontSizeSlider.value) / 100);
+            // Re-layout collision groups since label box size depends on scale.
+            updateMarkers(currentWord);
         });
         fontSizeSlider.addEventListener('change', () => { updateHash(); });
 
@@ -641,16 +1166,21 @@
                 if (label && label.dataset.code) {
                     e.stopPropagation();
                     _labelClickedAt = Date.now();
-                    const panel = document.getElementById('lang-info');
-                    // Toggle: if same language is already showing, close it
-                    if (panel.classList.contains('visible') && panel.dataset.code === label.dataset.code) {
-                        panel.classList.remove('visible');
-                        panel.dataset.code = '';
-                    } else {
-                        showLangInfo(label.dataset.code);
-                        panel.dataset.code = label.dataset.code;
-                    }
+                    // showLangInfo already handles the same-code toggle
+                    // (calling closeInfoPanel for cleanup of selected highlight,
+                    // connector line, and URL `lang` param). Use it instead of
+                    // the manual visible/dataset.code mutation that left state
+                    // partially stale.
+                    showLangInfo(label.dataset.code);
                 }
+            });
+            // Audit Task 135: keyboard activation for globe labels.
+            globeEl.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const label = e.target.closest('.globe-label');
+                if (!label || !label.dataset.code) return;
+                e.preventDefault();
+                showLangInfo(label.dataset.code);
             });
 
             // Sync globe size
@@ -673,6 +1203,12 @@
                 controls.addEventListener('end', () => {
                     clearTimeout(hashTimer);
                     hashTimer = setTimeout(updateHash, 300);
+                    // Re-layout label collisions; degree-spacing depends on altitude.
+                    updateMarkers(currentWord);
+                });
+                // Update connector line continuously while user rotates/zooms.
+                controls.addEventListener('change', () => {
+                    if (typeof scheduleConnectorUpdate === 'function') scheduleConnectorUpdate();
                 });
             }
         }
@@ -704,9 +1240,15 @@
 
         const btn3D = document.getElementById('toggle-3d');
         btn3D.addEventListener('click', () => {
+            // Audit Task 125: refuse if Globe.gl CDN failed to load.
+            if (typeof Globe === 'undefined') return;
             is3D = !is3D;
             btn3D.classList.toggle('active', is3D);
+            btn3D.setAttribute('aria-pressed', String(is3D));
             btn3D.textContent = is3D ? '3D' : '2D';
+            // Body class so CSS can theme the connector + selected label
+            // differently in 3D (dark background needs different shadow).
+            document.body.classList.toggle('is-3d', is3D);
             if (is3D) {
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
@@ -720,6 +1262,8 @@
             }
             updateMarkers(currentWord);
             updateHash();
+            // Connector line CSS depends on body.is-3d; refresh.
+            if (typeof updateConnectorLine === 'function') updateConnectorLine();
         });
 
         // --- Language markers ---
@@ -727,26 +1271,88 @@
         let currentWord = WORD_LIST[0].id;
         const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
-        // Historical → representative modern descendant
-        const HIST_DESCENDANT = {
-            la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
-            got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
-            sa:'hi', mnc:'zh',
-            sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
-            ine:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
-            ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
+        // Historical-mode codes → representative modern descendant (or null).
+        // Used both as the canonical list of "show in historical mode" languages
+        // and as the parent→descendant map for the era toggle. Entries are not
+        // strictly extinct: 'arc' (Aramaic) has modern descendant varieties,
+        // 'sa' (Sanskrit) is liturgical/classical with revived/scholarly use,
+        // 'mnc' (Manchu) is critically endangered. They live here because they
+        // belong on the historical map regardless of any present-day speakers.
+        // Per wordmap-check-3.md §8.
+        // HIST_DESCENDANT is defined in wordmap_data.js (Audit Task 122).
+        // Loaded as a global from that script tag; referenced here as-is.
+
+        const VERTICAL_LANGS = new Set(['mnc', 'mn_cn', 'xng']);
+
+        // DATA_STATUS_OVERRIDES is now defined in wordmap_data.js (data
+        // layer) per wordmap-check-2.md §8 so the validator can also read
+        // it. Reference it via the global from there.
+        function getDataStatus(code) {
+            if (DATA_STATUS_OVERRIDES[code]) return DATA_STATUS_OVERRIDES[code];
+            if (!HIST_CODE_SET || !HIST_CODE_SET.has(code)) return 'modern';
+            // Heuristic: count "—" entries
+            const lang = LANG_DATA[code];
+            if (!lang || !lang.words) return 'attested';
+            let dashes = 0, total = 0;
+            for (const id of WORD_LIST.map(w => w.id)) {
+                const e = lang.words[id];
+                if (!e) continue;
+                total++;
+                if (isUnattestedEntry(e)) dashes++;
+            }
+            if (total > 0 && dashes / total >= 0.3) return 'fragmentary';
+            return 'attested';
+        }
+
+        // Expose era-aware code set so lang-filter.js can scope its
+        // chip counts to the currently visible cohort.
+        const HIST_CODE_SET = new Set(Object.keys(HIST_DESCENDANT));
+
+        // Phase 3b (Session 37): build reverse map for ancestor lookup.
+        // For each modern lang code, list historical ancestors that descend to it.
+        const ANCESTORS_OF = {};
+        for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
+            if (!modern) continue;
+            (ANCESTORS_OF[modern] = ANCESTORS_OF[modern] || []).push(hist);
+        }
+        window.__langmap.historical = showHistorical;
+        window.__langmap.getActiveCodes = function () {
+            const out = new Set();
+            if (showHistorical) {
+                for (const c of HIST_CODE_SET) if (LANG_DATA[c]) out.add(c);
+            } else {
+                for (const c of Object.keys(LANG_DATA)) {
+                    if (HIST_CODE_SET.has(c)) continue;
+                    if (EXCLUDED_CODES.has(c)) continue;
+                    out.add(c);
+                }
+            }
+            return out;
         };
 
-        const VERTICAL_LANGS = new Set(['mnc', 'mn_cn']);
+        // True if both surface and IPA are dash/empty — the entry is
+        // explicitly unattested (common in fragmentary historical languages
+        // like Meroitic, Pyu, Khitan, PIE for non-basic vocab). Skip these
+        // to avoid showing "—" as a fake word on the map. Per wordmap-check.md §3.
+        function isUnattestedEntry(entry) {
+            if (!Array.isArray(entry) || entry.length !== 2) return true;
+            const [w, ipa] = entry;
+            const dashOrEmpty = v => !v || v === '—' || v === '-';
+            return dashOrEmpty(w) && dashOrEmpty(ipa);
+        }
 
         function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
+            const unattestedLangs = [];
             const descendantCodes = new Set();
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
-                    if (LANG_DATA[hist] && LANG_DATA[hist].words[wordId]) {
+                    if (!LANG_DATA[hist] || !LANG_DATA[hist].words[wordId]) continue;
+                    if (isUnattestedEntry(LANG_DATA[hist].words[wordId])) {
+                        unattestedLangs.push(hist);
+                    } else {
                         visibleLangs.push(hist);
-                        if (modern && LANG_DATA[modern] && LANG_DATA[modern].words[wordId]) {
+                        if (modern && LANG_DATA[modern] && LANG_DATA[modern].words[wordId] && !isUnattestedEntry(LANG_DATA[modern].words[wordId])) {
                             descendantCodes.add(modern);
                         }
                     }
@@ -757,18 +1363,50 @@
                     if (EXCLUDED_CODES.has(code)) continue;
                     if (!lang.words[wordId]) continue;
                     if (zoom < 4 && !MAJOR.has(code)) continue;
-                    visibleLangs.push(code);
+                    if (isUnattestedEntry(lang.words[wordId])) {
+                        unattestedLangs.push(code);
+                    } else {
+                        visibleLangs.push(code);
+                    }
                 }
             }
-            return { visibleLangs, descendantCodes };
+            return { visibleLangs, unattestedLangs, descendantCodes };
         }
+
+        // HTML-escape utility (per wordmap-check-4.md §5). All data values
+        // (word, ipa, displayName, native, descriptions, etc.) MUST go
+        // through this before being inserted into innerHTML strings.
+        // Color values (descColor) are validated against an allow-list
+        // since they're set by code, not by data — an attribute escape
+        // would also work but is unnecessary for fixed enum values.
+        const ESCAPE_HTML_MAP = { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' };
+        function escapeHtml(s) {
+            if (s == null) return '';
+            return String(s).replace(/[&<>"']/g, c => ESCAPE_HTML_MAP[c]);
+        }
+        const ALLOWED_DESC_COLORS = new Set(['#c0392b', '#ff6b6b', '']);
+        function safeColor(c) { return ALLOWED_DESC_COLORS.has(c) ? c : ''; }
 
         function buildLabelHtml(code, word, ipa, displayName, descColor, cssClass) {
             const isVertical = VERTICAL_LANGS.has(code);
-            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}">`;
-            if (showWord) html += `<div class="word" ${descColor ? `style="color:${descColor}"` : ''}>${word}</div>`;
-            if (showIpa) html += `<div class="ipa" ${descColor ? `style="color:${descColor}"` : ''}>/${ipa}/</div>`;
-            if (showName) html += `<div class="name" ${descColor ? `style="color:${descColor}"` : ''}>${displayName}</div>`;
+            const c = safeColor(descColor);
+            const codeAttr = escapeHtml(code);
+            const w = escapeHtml(word), i = escapeHtml(ipa), n = escapeHtml(displayName);
+            // Audit Task 135: keyboard-accessible labels.
+            // role="button" + tabindex="0" lets keyboard users tab to the
+            // label and Enter/Space to open the language modal. aria-label
+            // includes display name + word + IPA so screen readers announce
+            // a meaningful summary.
+            const ariaParts = [n];
+            if (showWord && word) ariaParts.push(word);
+            if (showIpa && ipa) ariaParts.push('/' + ipa + '/');
+            const ariaLabel = escapeHtml(ariaParts.filter(Boolean).join(' — '));
+            let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}" role="button" tabindex="0" aria-label="${ariaLabel}">`;
+            // Audit Task 129: dir="auto" on word + name so RTL labels render
+            // in correct order; IPA stays LTR.
+            if (showWord) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
+            if (showIpa) html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
+            if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
         }
@@ -790,16 +1428,43 @@
             markers.forEach(m => map.removeLayer(m));
             markers.length = 0;
             const zoom = map.getZoom();
+            const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
 
-            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
+            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
 
-            // Group by coordinates
-            const coordGroups = {};
+            // --- Pixel-grid-based grouping ---
+            // Project every visible marker to container pixel coords at the
+            // current zoom, then bucket into a coarse grid whose cell size
+            // matches the estimated label box. Markers in the same cell get
+            // stacked vertically. Grid bucketing avoids chain-expansion of
+            // overlapping pairs into huge groups across the map.
+            let baseLineH = 0;
+            if (showWord) baseLineH += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
+            if (showIpa)  baseLineH += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
+            if (showName) baseLineH += (zoom <= 3 ? 9  : zoom <= 5 ? 10 : 11);
+            const labelH = (baseLineH * labelScale) + 4;
+            const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
+
+            // When a filter is active, only ACTIVE labels compete for cell
+            // slots. Dimmed (filtered-out) labels stay at their natural
+            // position and don't push active labels around. (Per user
+            // request 2026-05-04: "filter で非活性化された言語は退ける
+            // 対応から外す。活性化された言語のみかぶらないように退ける".)
+            const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                && window.__langmap.anyFilterActive();
+            const isActive = (code) => !filterActive
+                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+
+            const ppx = {};
+            const cellGroups = {};
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                if (!coordGroups[key]) coordGroups[key] = [];
-                coordGroups[key].push(code);
+                const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
+                ppx[code] = pt;
+                if (!isActive(code)) continue;  // dimmed labels don't compete
+                const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
+                if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
+                cellGroups[cellKey].push(code);
             }
 
             for (const code of visibleLangs) {
@@ -807,18 +1472,16 @@
                 const entry = lang.words[wordId];
                 const [word, ipa] = entry;
 
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                const group = coordGroups[key];
+                const pt = ppx[code];
+                const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
+                const group = cellGroups[cellKey];
                 let yOffset = 0;
-                if (group.length > 1) {
-                    let lineHeight = 0;
-                    if (showWord) lineHeight += (zoom <= 3 ? 13 : zoom <= 5 ? 15 : 17);
-                    if (showIpa) lineHeight += (zoom <= 3 ? 10 : zoom <= 5 ? 11 : 12);
-                    if (showName) lineHeight += (zoom <= 3 ? 9 : zoom <= 5 ? 10 : 11);
-                    const spacing = Math.max(lineHeight + 10, 20);
+                if (group && group.length > 1) {
                     const idx = group.indexOf(code);
-                    const center = (group.length - 1) / 2;
-                    yOffset = (idx - center) * spacing;
+                    if (idx >= 0) {  // dimmed labels weren't bucketed
+                        const center = (group.length - 1) / 2;
+                        yOffset = (idx - center) * (labelH + 4);
+                    }
                 }
 
                 const displayName = getDisplayName(code, lang);
@@ -826,7 +1489,6 @@
                 const descColor = isDescendant ? '#c0392b' : '';
 
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, 'lang-label');
-                const wrappedHtml = `<div style="transform:translate(-50%,calc(-50% + ${yOffset}px))">${html.slice(html.indexOf('>') + 1)}`; // re-wrap with offset
                 const labelHtml = html.replace('>', ` style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`);
 
                 const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
@@ -836,19 +1498,84 @@
                 marker.addTo(map);
                 markers.push(marker);
             }
+            // Render unattested-cell langs so the user can still see the
+            // language exists at that location even when its word for the
+            // current concept is '—'. At zoom <= 3 we keep the compact dot
+            // (otherwise low-zoom views would clutter); at zoom >= 4 we
+            // render the language name in a muted style so users can
+            // immediately identify *which* language the marker is.
+            // Per user request 2026-05-06: language existence must be
+            // recognizable, not just a generic dot.
+            for (const code of unattestedLangs) {
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const codeAttr = escapeHtml(code);
+                const displayName = getDisplayName(code, lang);
+                const ariaLabel = escapeHtml(displayName);
+                let icon;
+                if (zoom <= 3) {
+                    // Compact dot for far-zoom views to avoid label clutter
+                    icon = L.divIcon({
+                        className: 'unattested-icon',
+                        html: `<div class="unattested-marker" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}"></div>`,
+                        iconSize: [9, 9], iconAnchor: [4, 4],
+                    });
+                } else {
+                    // Muted name label so the language is clearly identifiable
+                    const nameHtml = escapeHtml(displayName);
+                    icon = L.divIcon({
+                        className: 'unattested-icon',
+                        html: `<div class="unattested-label" data-code="${codeAttr}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${nameHtml}</div>`,
+                        iconSize: [0, 0], iconAnchor: [0, 0],
+                    });
+                }
+                const dotMarker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
+                dotMarker._langCode = code;
+                dotMarker.on('click', () => showLangInfo(code));
+                dotMarker.addTo(map);
+                markers.push(dotMarker);
+            }
+            // Re-apply selected highlight + connector after re-render
+            // (markers are torn down and re-added each updateMarkers call).
+            if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+            if (typeof updateConnectorLine === 'function') updateConnectorLine();
         }
 
         function updateGlobeLabels(wordId) {
             if (!globe) return;
-            const { visibleLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+            const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
+            // Globe altitude in [0.1, 6]; lower = zoomed-in, labels appear
+            // larger relative to globe, so they need MORE degree separation.
+            // Higher altitude = labels appear small, need LESS separation.
+            const pov = globe.pointOfView();
+            const altScale = Math.max(0.4, Math.min(2.5, 1 / Math.sqrt(pov.altitude)));
 
-            // Group by coordinates (same as 2D)
-            const coordGroups = {};
+            // --- Lat/lng grid bucketing (degree cells scale with altitude and font) ---
+            // Avoid chain-expansion: bucket by fixed cell size; only labels
+            // landing in the same cell get stacked.
+            let lines = 0;
+            if (showWord) lines++;
+            if (showIpa) lines++;
+            if (showName) lines++;
+            const baseSpacingDeg = (0.4 + lines * 0.3) * labelScale * altScale;
+            const cellSizeDeg = baseSpacingDeg * 1.2;
+
+            // When a filter is active, only ACTIVE labels compete for cell
+            // slots — dimmed labels stay at their natural lat (consistent
+            // with the 2D map behavior).
+            const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                && window.__langmap.anyFilterActive();
+            const isActive = (code) => !filterActive
+                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+
+            const cellGroups = {};
             for (const code of visibleLangs) {
+                if (!isActive(code)) continue;  // dimmed labels don't compete
                 const lang = LANG_DATA[code];
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                if (!coordGroups[key]) coordGroups[key] = [];
-                coordGroups[key].push(code);
+                const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
+                if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
+                cellGroups[cellKey].push(code);
             }
 
             const elements = [];
@@ -861,19 +1588,16 @@
                 const isDescendant = showHistorical && descendantCodes.has(code);
                 const descColor = isDescendant ? '#ff6b6b' : '';
 
-                // Offset co-located labels by shifting latitude
-                const key = lang.lat.toFixed(1) + ',' + lang.lng.toFixed(1);
-                const group = coordGroups[key];
+                // Offset co-located labels by shifting latitude (zoom + scale aware)
+                const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
+                const group = cellGroups[cellKey];
                 let latOffset = 0;
-                if (group.length > 1) {
+                if (group && group.length > 1) {
                     const idx = group.indexOf(code);
-                    const center = (group.length - 1) / 2;
-                    // Wider spacing: scale by how many lines are visible
-                    let lines = 0;
-                    if (showWord) lines++;
-                    if (showIpa) lines++;
-                    if (showName) lines++;
-                    latOffset = (idx - center) * (0.4 + lines * 0.3);
+                    if (idx >= 0) {  // dimmed labels weren't bucketed
+                        const center = (group.length - 1) / 2;
+                        latOffset = (idx - center) * baseSpacingDeg;
+                    }
                 }
 
                 const el = document.createElement('div');
@@ -882,75 +1606,216 @@
 
                 elements.push({ el: el.firstChild, lat: lang.lat + latOffset, lng: lang.lng, code });
             }
+            // 3D presence labels for unattested cells (mirrors 2D version).
+            // Per user request 2026-05-06: show the language name so users
+            // can identify which language exists at the marker, even when
+            // its word for the current concept is '—'.
+            for (const code of unattestedLangs) {
+                if (!isActive(code)) continue;
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const displayName = getDisplayName(code, lang);
+                const ariaLabel = escapeHtml(displayName);
+                const el = document.createElement('div');
+                el.innerHTML = `<div class="unattested-label" data-code="${escapeHtml(code)}" title="${ariaLabel}" role="button" tabindex="0" aria-label="${ariaLabel}">${escapeHtml(displayName)}</div>`;
+                el.firstChild.dataset.code = code;
+                el.firstChild.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showLangInfo(code);
+                });
+                elements.push({ el: el.firstChild, lat: lang.lat, lng: lang.lng, code });
+            }
             globe.htmlElementsData(elements);
+            // Re-apply selected highlight + connector after globe re-renders
+            // (labels are managed by globe.gl; defer one tick for DOM update)
+            requestAnimationFrame(() => {
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                if (typeof updateConnectorLine === 'function') updateConnectorLine();
+            });
         }
 
         // --- URL hash ---
-        function updateHash() {
+        // URL hash management — uses URLSearchParams + history.replaceState
+        // (per wordmap-check-4.md §6 + §11). Preserves filter-state param
+        // owned by lang-filter.js. replaceState avoids polluting back-button
+        // history on every map move/zoom.
+        function updateHash(opts) {
+            opts = opts || {};
+            // Audit Task 123: don't write hash while we're applying one
+            // from popstate/hashchange — that would bounce-back loop.
+            if (window.__langmap && window.__langmap.isApplyingHash && window.__langmap.isApplyingHash()) return;
             let lat, lng, z;
             if (is3D && globe) {
                 const pov = globe.pointOfView();
                 lat = pov.lat; lng = pov.lng;
-                // Convert altitude back to approximate zoom
                 z = Math.round(2 + Math.log(4.0 / Math.max(0.2, pov.altitude)) / Math.log(1 / 0.55));
             } else {
                 const c = map.getCenter();
                 lat = c.lat; lng = c.lng;
                 z = map.getZoom();
             }
-            const s = fontSizeSlider.value;
-            const alt = (is3D && globe) ? globe.pointOfView().altitude.toFixed(2) : '';
-            let hash = `w=${currentWord}&z=${z}&lat=${lat.toFixed(2)}&lng=${lng.toFixed(2)}&nat=${showNative?1:0}&hist=${showHistorical?1:0}&fs=${s}&ui=${uiLang}&g3d=${is3D?1:0}`;
-            if (alt) hash += `&alt=${alt}`;
-            location.hash = hash;
+            const params = new URLSearchParams();
+            params.set('w', currentWord);
+            params.set('z', String(z));
+            params.set('lat', lat.toFixed(2));
+            params.set('lng', lng.toFixed(2));
+            params.set('nat', showNative ? '1' : '0');
+            params.set('hist', showHistorical ? '1' : '0');
+            params.set('fs', String(fontSizeSlider.value));
+            params.set('ui', uiLang);
+            params.set('g3d', is3D ? '1' : '0');
+            if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
+            // Persist open language modal so reload restores it.
+            const openCode = infoPanel && infoPanel.classList.contains('visible')
+                ? infoPanel.dataset.code : '';
+            if (openCode) params.set('lang', openCode);
+            // Preserve the filter param owned by lang-filter.js
+            const fParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
+                ? window.__langmap.getFilterHashParam() : '';
+            if (fParam) {
+                const eq = fParam.indexOf('=');
+                params.set(fParam.slice(0, eq), fParam.slice(eq + 1));
+            }
+            const hash = '#' + params.toString();
+            // replaceState by default — avoids history bloat from continuous
+            // moveend/zoomend. Caller can pass {push:true} for explicit nav.
+            try {
+                if (opts.push) history.pushState(null, '', hash);
+                else          history.replaceState(null, '', hash);
+            } catch (e) { location.hash = hash; }
         }
 
         function loadHash() {
-            const h = location.hash.slice(1);
-            const params = Object.fromEntries(h.split('&').map(s => s.split('=')));
-            if (params.w && WORD_LIST.find(w => w.id === params.w)) {
-                select.value = params.w;
-                currentWord = params.w;
+            const params = new URLSearchParams(location.hash.slice(1));
+            const w = params.get('w');
+            if (w && WORD_LIST.find(item => item.id === w)) {
+                select.value = w;
+                currentWord = w;
             }
-            if (params.z && params.lat && params.lng) {
-                map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z));
+            const z = parseInt(params.get('z'));
+            const latStr = params.get('lat'); const lngStr = params.get('lng');
+            const lat = parseFloat(latStr); const lng = parseFloat(lngStr);
+            if (Number.isFinite(z) && Number.isFinite(lat) && Number.isFinite(lng)) {
+                map.setView([lat, lng], z);
             }
-            if (params.nat !== undefined) {
-                showNative = params.nat === '1';
+            const nat = params.get('nat');
+            if (nat === '0' || nat === '1') {
+                showNative = nat === '1';
                 updateNameSwitch();
             }
-            if (params.hist !== undefined) {
-                showHistorical = params.hist === '1';
+            const hist = params.get('hist');
+            if (hist === '0' || hist === '1') {
+                showHistorical = hist === '1';
                 eraModern.classList.toggle('active', !showHistorical);
                 eraHistorical.classList.toggle('active', showHistorical);
+                eraModern.setAttribute('aria-checked', String(!showHistorical));
+                eraHistorical.setAttribute('aria-checked', String(showHistorical));
             }
-            if (params.fs) {
-                fontSizeSlider.value = params.fs;
-                document.documentElement.style.setProperty('--label-scale', parseInt(params.fs) / 100);
+            const fs = parseInt(params.get('fs'));
+            if (Number.isFinite(fs) && fs >= 50 && fs <= 200) {
+                fontSizeSlider.value = String(fs);
+                document.documentElement.style.setProperty('--label-scale', fs / 100);
             }
-            if (params.ui && WM_UI[params.ui]) {
-                uiLang = params.ui;
-                uiLangSelect.value = params.ui;
+            const ui = params.get('ui');
+            if (ui && WM_UI[ui]) {
+                uiLang = ui;
+                uiLangSelect.value = ui;
+                window.__langmap.uiLang = uiLang;
+                window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
                 applyUILang();
             }
-            if (params.g3d === '1') {
+            if (params.get('g3d') === '1') {
                 is3D = true;
                 btn3D.classList.add('active');
+                btn3D.setAttribute('aria-pressed', 'true');
                 btn3D.textContent = '3D';
+                document.body.classList.add('is-3d');
                 mapEl.style.display = 'none';
                 globeEl.style.display = 'block';
                 initGlobe();
-                if (params.lat && params.lng) {
-                    const alt = params.alt ? parseFloat(params.alt) : zoomToAltitude(parseInt(params.z) || 3);
-                    globe.pointOfView({ lat: parseFloat(params.lat), lng: parseFloat(params.lng), altitude: alt });
+                if (Number.isFinite(lat) && Number.isFinite(lng)) {
+                    const altParam = parseFloat(params.get('alt'));
+                    const alt = Number.isFinite(altParam) ? altParam : zoomToAltitude(Number.isFinite(z) ? z : 3);
+                    globe.pointOfView({ lat, lng, altitude: alt });
                 }
+            }
+            // Restore open language modal (after everything else is loaded so
+            // map markers exist by the time we look up the label DOM).
+            const langCode = params.get('lang');
+            if (langCode && LANG_DATA[langCode]) {
+                // Defer until after initial markers are rendered.
+                setTimeout(() => { showLangInfo(langCode); }, 100);
             }
         }
         loadHash();
         applyUILang(); // Apply detected/loaded UI language
+        // Notify subscribers (lang-filter.js) of the resolved initial UI lang.
+        // lang-filter.js loads before this inline script via <script src> in
+        // the head, so its filter panel is built before __langmap.uiLang is
+        // assigned here. Dispatching after loadHash() lets the filter pick
+        // up the resolved (possibly hash-loaded) UI lang and rebuild its
+        // chip translations. Per wordmap-check-4.md §12.
+        window.__langmap.uiLang = uiLang;
+        window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
 
-        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); });
-        map.on('moveend', () => { updateHash(); });
+        // Audit Task 123: respond to browser back/forward + manual hash edits.
+        // Without this, copying a state URL to a new tab works (loadHash runs
+        // at page load) but back/forward navigation does not restore state.
+        // Guard against the feedback loop: applyHashState should not trigger
+        // updateHash() for transient state changes during application.
+        let _applyingHashState = false;
+        function applyHashState() {
+            if (_applyingHashState) return;
+            _applyingHashState = true;
+            try {
+                loadHash();
+                updateMarkers(currentWord);
+            } finally {
+                _applyingHashState = false;
+            }
+        }
+        window.addEventListener('popstate',   applyHashState);
+        window.addEventListener('hashchange', applyHashState);
+        // Also expose so other code paths (search/option) can guard if needed.
+        window.__langmap.isApplyingHash = () => _applyingHashState;
+
+        // rAF-throttled connector update — keeps line glued to the label
+        // during continuous map drag/zoom without re-layout thrashing.
+        let _connRafPending = false;
+        function scheduleConnectorUpdate() {
+            if (_connRafPending) return;
+            _connRafPending = true;
+            requestAnimationFrame(() => {
+                _connRafPending = false;
+                // UX fix #4: refresh selectedLabel ref before redrawing so the
+                // connector tracks fresh DOM position during/after zoom layout.
+                if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+                updateConnectorLine();
+            });
+        }
+        map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); scheduleConnectorUpdate(); });
+        map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
+        // Continuous events for smooth tracking during drag
+        map.on('move', scheduleConnectorUpdate);
+        map.on('viewreset', scheduleConnectorUpdate);
+        window.addEventListener('resize', scheduleConnectorUpdate);
+        window.addEventListener('scroll', scheduleConnectorUpdate, true);
+        // UX fix #4 (revised): Leaflet's `zoom`/`zoomanim` only fire once at the
+        // start; they don't tick per-frame during the CSS-transform zoom animation.
+        // Run a self-driving rAF loop from zoomstart to zoomend so the connector
+        // tracks the label every frame while the map animates.
+        let _zoomLoopActive = false;
+        function zoomLoop() {
+            if (!_zoomLoopActive) return;
+            if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
+            updateConnectorLine();
+            requestAnimationFrame(zoomLoop);
+        }
+        map.on('zoomstart', () => {
+            _zoomLoopActive = true;
+            requestAnimationFrame(zoomLoop);
+        });
+        map.on('zoomend', () => { _zoomLoopActive = false; });
 
         // Expose refresh for async LANG_NAMES load
         window._refreshMarkers = () => updateMarkers(currentWord);
@@ -973,50 +1838,1021 @@
         // --- Language info panel ---
         const infoPanel = document.getElementById('lang-info');
         const infoContent = document.getElementById('info-content');
-        document.getElementById('info-close').addEventListener('click', () => {
+        // Audit Task 137: track the element that opened the dialog so focus
+        // can be restored on close. document.activeElement at close time is
+        // unreliable because Leaflet markers are recreated on every render.
+        let _lastDialogOpener = null;
+        function closeInfoPanel() {
             infoPanel.classList.remove('visible');
+            // Clear dataset.code so the open-language state is consistent
+            // (per wordmap-check-4.md §19).
+            delete infoPanel.dataset.code;
+            updateSelectedLabel();
+            updateConnectorLine();
+            updateHash();  // remove `lang` param from URL
+            // Audit Task 137: restore focus to the opener if still in DOM.
+            // Falls back to language search input if opener has been removed.
+            if (_lastDialogOpener && document.contains(_lastDialogOpener) && typeof _lastDialogOpener.focus === 'function') {
+                try { _lastDialogOpener.focus(); } catch (_) { /* ignore */ }
+            } else {
+                const search = document.getElementById('lang-search');
+                if (search) try { search.focus(); } catch (_) { /* ignore */ }
+            }
+            _lastDialogOpener = null;
+        }
+
+        // === Selected-language highlight + connector line to info panel ===
+        // When the info panel is open, mark the corresponding map label
+        // with .selected (yellow ring) and draw a dashed line from the
+        // label to the panel's left edge. Recomputed on map move/zoom,
+        // marker re-render, panel open/close, and window resize.
+        // Lazy DOM lookups — these helpers can be called during initial
+        // updateMarkers() before the const infoPanel above is in TDZ scope,
+        // so resolve via getElementById each call. Cheap enough.
+        function _infoPanel()    { return document.getElementById('lang-info'); }
+        function _connectorSvg() { return document.getElementById('connector-line'); }
+        function getSelectedLabelEl() {
+            const ip = _infoPanel();
+            if (!ip) return null;
+            const code = ip.dataset.code;
+            if (!code || !ip.classList.contains('visible')) return null;
+            // Try 2D label first, then 3D globe label
+            return document.querySelector(`.lang-label[data-code="${CSS.escape(code)}"]`)
+                || document.querySelector(`.globe-label[data-code="${CSS.escape(code)}"]`);
+        }
+        // Track retries so updateSelectedLabel doesn't keep retrying forever
+        // when the lang's marker is genuinely off-screen (e.g. far from the
+        // current map center on reload). Reset every time the modal opens.
+        let _selRetries = 0;
+        function updateSelectedLabel() {
+            const ip = _infoPanel();
+            if (!ip) return;
+            const open = ip.classList.contains('visible');
+            // Clear previous selection AND restore the Leaflet marker's natural
+            // z-index (the CSS z-index on `.selected` doesn't escape the marker
+            // icon container — we have to bump the marker icon itself).
+            document.querySelectorAll('.lang-label.selected, .globe-label.selected').forEach(el => {
+                el.classList.remove('selected');
+                const marker = el.closest('.leaflet-marker-icon');
+                if (marker) marker.style.zIndex = '';
+            });
+            if (!open) return;
+            const el = getSelectedLabelEl();
+            if (el) {
+                _selRetries = 0;
+                el.classList.add('selected');
+                // Bring selected label's marker icon to front so overlapping
+                // nearby labels don't cover it (per user request).
+                const marker = el.closest('.leaflet-marker-icon');
+                if (marker) marker.style.zIndex = '1000';
+            } else if (_selRetries < 20) {
+                // The lang's marker hasn't been added to DOM yet (race between
+                // loadHash showLangInfo and Leaflet marker rendering). Retry on
+                // the next animation frame, up to ~20 frames (~333ms @ 60fps).
+                // Common cause: page reload with `lang=xxx` in URL.
+                _selRetries++;
+                requestAnimationFrame(updateSelectedLabel);
+            }
+        }
+        function updateConnectorLine() {
+            const ip = _infoPanel();
+            const svg = _connectorSvg();
+            if (!ip || !svg) return;
+            const open = ip.classList.contains('visible');
+            const labelEl = open ? getSelectedLabelEl() : null;
+            if (!open || !labelEl) {
+                svg.classList.remove('visible');
+                return;
+            }
+            const lr = labelEl.getBoundingClientRect();
+            const pr = ip.getBoundingClientRect();
+            // UX fix #3 (Session 53): in 3D mode, when the selected language
+            // is on the far side of the globe, globe.gl sets the html-label
+            // to display:none. getBoundingClientRect() then returns
+            // (0,0,0,0), which would make the connector arrow originate from
+            // the top-left corner of the viewport. Treat zero-size or
+            // off-screen labels as "no source" and hide the line.
+            const labelHidden = (lr.width === 0 && lr.height === 0)
+                              || lr.right <= 0 || lr.bottom <= 0
+                              || lr.left >= window.innerWidth
+                              || lr.top >= window.innerHeight;
+            if (labelHidden) {
+                svg.classList.remove('visible');
+                return;
+            }
+            // UX fix #2 (Session 38): if the label is fully behind the modal panel,
+            // don't draw the line.
+            const labelCx = lr.left + lr.width / 2;
+            const labelCy = lr.top + lr.height / 2;
+            const labelOccluded = labelCx >= pr.left && labelCx <= pr.right
+                                && labelCy >= pr.top && labelCy <= pr.bottom;
+            if (labelOccluded) {
+                svg.classList.remove('visible');
+                return;
+            }
+            // UX fix #2b (Session 39): mobile breakpoint matches CSS (768px) where
+            // the modal docks to the bottom edge full-width. On mobile we draw a
+            // vertical connector (label-bottom → modal-top); on desktop we draw a
+            // horizontal-ish bezier (label-side → modal-vertical-center).
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            const PANEL_INSET = 2;  // tip flush to modal edge
+            let x1, y1, x2, y2;
+            if (isMobile) {
+                // Mobile: label-bottom-center → modal-top-center (vertical drop)
+                x1 = labelCx;
+                y1 = lr.bottom;
+                x2 = pr.left + pr.width / 2;
+                y2 = pr.top + PANEL_INSET;
+            } else {
+                // Desktop: label-side → modal-left/right-edge (vertical center)
+                const panelOnLeft = pr.left + pr.width / 2 < labelCx;
+                x1 = panelOnLeft ? lr.left : lr.right;
+                y1 = labelCy;
+                x2 = panelOnLeft ? pr.right - PANEL_INSET : pr.left + PANEL_INSET;
+                y2 = pr.top + pr.height / 2;
+            }
+            // Single quadratic bezier — gentle curve. Control point logic differs
+            // for vertical (mobile) vs horizontal (desktop) layouts.
+            let cpx, cpy;
+            if (isMobile) {
+                // Mobile: bow horizontally a bit, mostly vertical line
+                cpx = (x1 + x2) / 2 + (x1 < x2 ? 12 : -12);
+                cpy = (y1 + y2) / 2;
+            } else {
+                // Desktop: bow upward
+                cpx = (x1 + x2) / 2;
+                cpy = (y1 + y2) / 2 - Math.min(40, Math.abs(y2 - y1) * 0.25 + 8);
+            }
+            const path = `M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`;
+            // marker-end on the path auto-orients the triangle arrowhead
+            // to the tangent at the endpoint — no JS rotation needed.
+            svg.querySelector('.conn-path').setAttribute('d', path);
+            svg.classList.add('visible');
+        }
+        document.getElementById('info-close').addEventListener('click', closeInfoPanel);
+        // Escape key closes the info panel and the filter panel
+        // (per wordmap-check-4.md §3).
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            if (infoPanel.classList.contains('visible')) closeInfoPanel();
+            const lf = document.querySelector('.lf-panel.open');
+            if (lf) lf.classList.remove('open');
         });
 
         function translateMeta(val) {
             if (!val || uiLang === 'en') return val;
+            // Smart composite translator (handles "X (Y, Z)", "X / Y", etc.)
+            if (typeof translateMetaSmart === 'function') {
+                return translateMetaSmart(val, uiLang);
+            }
             const dict = (typeof META_I18N !== 'undefined') ? META_I18N[uiLang] : null;
             if (!dict) return val;
             return dict[val] || val;
         }
 
-        function showLangInfo(code) {
+        // Lazy-load wordmap_meta.js (~1.3 MB raw / 406 KB gzip) only when the
+        // user first opens a language detail modal.
+        let _metaLoadPromise = null;
+        function loadMeta() {
+            if (_metaLoadPromise) return _metaLoadPromise;
+            _metaLoadPromise = new Promise((resolve, reject) => {
+                if (window._wmMetaLoaded) return resolve();
+                window._wmMetaResolve = resolve;
+                const s = document.createElement('script');
+                s.src = assetUrl('wordmap_meta.js', 'meta');
+                s.onerror = () => reject(new Error('meta load failed'));
+                document.head.appendChild(s);
+            });
+            return _metaLoadPromise;
+        }
+
+        // Per Session 31 (Schema Revolution Phase 1): each status carries a
+        // short pedagogical description shown inline next to the badge.
+        // Per Session 32 (Phase 1.5): labels translated to all 21 UI langs,
+        // descriptions to major 7 (en/ja/zh/ko/de/fr/ru); others fall back to en.
+        // Lookup helpers: pickLabel(badge) / pickDesc(badge) below.
+        const DATA_STATUS_BADGE = {
+            modern: null,
+            attested: {
+                bg:'#e8f0fe', fg:'#1a73e8',
+                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es_eu:'atestiguado', es_mx:'atestiguado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
+                descs: {
+                    en:'Direct primary text corpus exists; values cite real sources.',
+                    ja:'直接的な原典コーパスあり、値は実在の出典に依拠。',
+                    zh:'存在直接的原始文本语料，值引自真实出处。',
+                    ko:'직접적인 원전 코퍼스가 존재, 값은 실제 출처에 의거.',
+                    de:'Direkte Primärquellen vorhanden; Werte beruhen auf echten Belegen.',
+                    fr:'Corpus de textes primaires existant ; valeurs sourcées.',
+                    ru:'Существует прямой первичный корпус; значения из реальных источников.',
+                },
+            },
+            fragmentary: {
+                bg:'#fef0e0', fg:'#c0392b',
+                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es_eu:'fragmentario', es_mx:'fragmentario', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
+                descs: {
+                    en:'Limited isolated attestations; many cells use related-language proxies.',
+                    ja:'断片的な isolated 資料のみ、多くのセルは近縁言語の proxy。',
+                    zh:'仅有少量孤立的证据，许多词条采用近缘语言的代用形式。',
+                    ko:'고립적인 단편 자료만 존재, 많은 셀은 근연 언어의 proxy.',
+                    de:'Nur vereinzelte Belege; viele Zellen nutzen verwandtsprachliche Proxys.',
+                    fr:'Attestations isolées limitées ; nombreuses cellules par proxy de langues apparentées.',
+                    ru:'Лишь отдельные засвидетельствованные слова; многие ячейки — прокси из родственных языков.',
+                },
+            },
+            reconstructed: {
+                bg:'#fff5e0', fg:'#b56500',
+                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es_eu:'reconstruido', es_mx:'reconstruido', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
+                descs: {
+                    en:'Comparative reconstruction; no direct text record.',
+                    ja:'比較言語学による再構形、直接的な text record なし。',
+                    zh:'比较语言学重构，无直接文本记录。',
+                    ko:'비교언어학에 의한 재구형, 직접적인 텍스트 기록 없음.',
+                    de:'Komparative Rekonstruktion; keine direkten Textbelege.',
+                    fr:'Reconstitution comparative ; aucun témoignage textuel direct.',
+                    ru:'Сравнительная реконструкция; прямых текстовых свидетельств нет.',
+                },
+            },
+            undeciphered: {
+                bg:'#fae0e0', fg:'#a02020',
+                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es_eu:'no descifrado', es_mx:'no descifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
+                descs: {
+                    en:'Script not yet readable.',
+                    ja:'文字が未解読の言語。',
+                    zh:'文字尚未被解读。',
+                    ko:'문자가 아직 해독되지 않은 언어.',
+                    de:'Schrift noch nicht entziffert.',
+                    fr:'Écriture pas encore déchiffrée.',
+                    ru:'Письменность ещё не расшифрована.',
+                },
+            },
+            'partly-understood': {
+                bg:'#fff0d0', fg:'#a06000',
+                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
+                descs: {
+                    en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
+                    ja:'文字は読めるが lexicon/grammar 未完成、多くのセルが暫定的。',
+                    zh:'文字可读，但词汇/语法尚不完备，许多词条暂定。',
+                    ko:'문자는 읽을 수 있으나 어휘·문법은 미완성, 많은 셀이 잠정적.',
+                    de:'Schrift lesbar, aber Wortschatz/Grammatik unvollständig; viele Zellen unsicher.',
+                    fr:'Écriture lisible mais lexique/grammaire incomplets ; nombreuses cellules incertaines.',
+                    ru:'Письменность читается, но лексика/грамматика неполные; многие ячейки предварительные.',
+                },
+            },
+            pedagogical: {
+                bg:'#eee0fa', fg:'#6020a0',
+                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es_eu:'pedagógico', es_mx:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
+                descs: {
+                    en:'Teaching approximation; not actual attested historical forms.',
+                    ja:'教育用近似、実際に attested された歴史的形態ではない。',
+                    zh:'教学用近似形式，并非实际历史所证的语言形态。',
+                    ko:'교육용 근사형, 실제로 attested된 역사적 형태가 아님.',
+                    de:'Didaktische Annäherung; keine tatsächlich belegten historischen Formen.',
+                    fr:'Approximation pédagogique ; pas de formes historiques réellement attestées.',
+                    ru:'Учебное приближение; не реальные засвидетельствованные исторические формы.',
+                },
+            },
+        };
+        // Look up label/desc for current uiLang with English fallback.
+        function pickBadgeLabel(badge) {
+            if (!badge || !badge.labels) return '';
+            return badge.labels[uiLang] || badge.labels[uiLang.split('_')[0]] || badge.labels.en || '';
+        }
+        function pickBadgeDesc(badge) {
+            if (!badge || !badge.descs) return '';
+            return badge.descs[uiLang] || badge.descs[uiLang.split('_')[0]] || badge.descs.en || '';
+        }
+        // For these statuses, IPA cells are rendered in italic to signal
+        // "this is reconstructed/uncertain notation, not direct phonemic transcription".
+        const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
+
+        // Per Phase 2 (Session 33): per-cell evidence overlay markers.
+        // Compact symbol shown next to each cell value; hover tooltip carries source.
+        // Audit Task 76: pronunciationType label for the IPA column.
+        // Localized at en/ja/ko/zh; other UI langs fall back to en.
+        const PRONUNCIATION_LABEL = {
+            ipa:          { en: 'IPA',                    ja: 'IPA',          ko: 'IPA',         zh: 'IPA' },
+            broad:        { en: 'broad transcription',    ja: '広めの音写',    ko: '광역 전사',    zh: '宽式音写' },
+            romanization: { en: 'romanization',           ja: 'ローマ字転写',  ko: '로마자 전사',  zh: '罗马字转写' },
+            orthography:  { en: 'spelling-based',         ja: '綴り由来',      ko: '철자 기반',    zh: '拼写转写' },
+            mixed:        { en: 'mixed / needs review',   ja: '混在/要確認',   ko: '혼합/재검토 필요', zh: '混合/待修订' },
+            unknown:      { en: 'not yet reviewed',       ja: '未確認',        ko: '미검토',       zh: '未审核' },
+        };
+        const PRONUNCIATION_HEADER = { en: 'Pronunciation', ja: '発音表記', ko: '발음 표기', zh: '发音标注' };
+
+        // Audit Task 79: coverage flag for regional variant rows
+        const COVERAGE_LABEL = {
+            full:                   { en: 'fully reviewed',          ja: '全体検証済み',     ko: '전면 검증',      zh: '全面审核' },
+            partial:                { en: 'partial',                 ja: '部分的',           ko: '부분적',         zh: '部分覆盖' },
+            'accent-only':          { en: 'accent/pronunciation only', ja: 'アクセント・発音のみ', ko: '발음·억양만',  zh: '仅口音/发音' },
+            'base-copy-with-notes': { en: 'mostly inherited from {base}', ja: '主に{base}から継承', ko: '대부분 {base}에서 상속', zh: '主要继承自{base}' },
+        };
+        const COVERAGE_HEADER = { en: 'Coverage', ja: '網羅度', ko: '커버리지', zh: '覆盖度' };
+        // Audit Task 108: review status (separate from dataStatus)
+        const REVIEW_STATUS_LABEL = {
+            'unreviewed':      { en: 'not reviewed',     ja: '未レビュー',     ko: '미검토',         zh: '未审核' },
+            'machine-seeded':  { en: 'machine-seeded',   ja: '機械生成初期値', ko: '기계 생성 초기',  zh: '机器初始值' },
+            'human-reviewed':  { en: 'human-reviewed',   ja: '人手レビュー済', ko: '수동 검토',       zh: '人工审核' },
+            'source-checked':  { en: 'source-checked',   ja: '出典確認済',     ko: '출처 확인',       zh: '已核对来源' },
+            'needs-rebuild':   { en: 'needs rebuild',    ja: '再構築要',       ko: '재구축 필요',     zh: '需重建' },
+        };
+        const REVIEW_STATUS_HEADER = { en: 'Review', ja: 'レビュー状況', ko: '검토 상태', zh: '审核状态' };
+        // Audit Task 99: locationBasis label tells users that the marker is
+        // a representative point, not a speaker-distribution map.
+        const LOCATION_BASIS_LABEL = {
+            'capital':         { en: 'capital city',       ja: '首都',         ko: '수도',         zh: '首都' },
+            'prestige-center': { en: 'prestige center',    ja: '威信地',       ko: '위신 중심',    zh: '威望中心' },
+            'historical-site': { en: 'historical site',    ja: '歴史的所在地', ko: '역사적 장소',  zh: '历史遗迹' },
+            'largest-city':    { en: 'largest-speaker city', ja: '最大話者数都市', ko: '최대 화자 도시', zh: '最大使用者城市' },
+            'approx-region':   { en: 'approximate region', ja: '概略地域',     ko: '대략 지역',    zh: '大致区域' },
+        };
+        const LOCATION_BASIS_HEADER = { en: 'Map point', ja: 'マップ位置', ko: '지도 위치', zh: '地图标点' };
+
+        // Audit Task 118: languageKind badge for non-default kinds.
+        // Natural and historical-attested rows don't get a separate badge —
+        // dataStatus already covers those. Constructed / pidgin-creole /
+        // pedagogical-stage / reconstructed-proto do get a small badge.
+        const LANGUAGE_KIND_BADGE = {
+            'constructed':         { bg: '#7a3a8c', fg: '#fff', en: 'constructed',         ja: '人工言語',     ko: '인공어',       zh: '人工语言' },
+            'pidgin-creole':       { bg: '#0d6e6b', fg: '#fff', en: 'pidgin / creole',     ja: 'ピジン・クレオール', ko: '피진/크리올', zh: '皮钦语/克里奥尔语' },
+            'pedagogical-stage':   { bg: '#995500', fg: '#fff', en: 'pedagogical stage',   ja: '教材用前段階', ko: '교재용 단계',  zh: '教学用阶段' },
+            'reconstructed-proto': { bg: '#404060', fg: '#fff', en: 'reconstructed proto', ja: '再構祖語',     ko: '재구 조어',    zh: '构拟原始语' },
+        };
+
+        // Audit Task 100: localize "— (unattested)" cell label
+        const UNATTESTED_LABEL = {
+            en: 'unattested',  ja: '未確認',  ko: '미확인',  zh: '未确认',
+            yue: '未確認',     vi: 'không có chứng cứ', th: 'ไม่มีหลักฐาน',
+            id: 'tak terbukti', hi: 'अप्रमाणित', de: 'unbelegt',
+            fr: 'non attesté', it: 'non attestato', es: 'no atestiguado',
+            es_eu: 'no atestiguado', es_mx: 'no atestiguado',
+            pt: 'não atestado', pt_eu: 'não atestado', pt_br: 'não atestado',
+            ru: 'не засвидетельствовано', uk: 'не засвідчено',
+            ar: 'غير مُثَبَّت', he: 'לא מתועد', sw: 'haijathibitishwa',
+        };
+
+        // Audit Task 121: visible fallback label when description is shown
+        // in English instead of the user's UI language.
+        const ENGLISH_FALLBACK_LABEL = {
+            en: 'English fallback',
+            ja: '説明は英語で表示中', ko: '설명은 영어로 표시 중', zh: '说明暂以英语显示',
+            yue: '說明暫以英文顯示', vi: 'Mô tả tạm thời bằng tiếng Anh',
+            th: 'แสดงเป็นภาษาอังกฤษชั่วคราว', id: 'Sementara dalam bahasa Inggris',
+            hi: 'विवरण फ़िलहाल अंग्रेज़ी में', de: 'Englischer Ersatztext',
+            fr: 'Texte de repli en anglais', it: 'Descrizione temporaneamente in inglese',
+            es: 'Texto en inglés (provisional)', es_eu: 'Texto en inglés (provisional)',
+            es_mx: 'Texto en inglés (provisional)',
+            pt: 'Texto provisório em inglês', pt_eu: 'Texto provisório em inglês',
+            pt_br: 'Texto provisório em inglês',
+            ru: 'Описание временно на английском', uk: 'Опис тимчасово англійською',
+            ar: 'الوصف معروض بالإنجليزية مؤقتًا', he: 'התיאור מוצג כעת באנגלית',
+            sw: 'Maelezo bado kwa Kiingereza',
+        };
+
+        // Audit Task 132: evidence marker labels localized en/ja/ko/zh/de/fr/es.
+        // Removed English-only "attested", "proxy", "lexicon" leakage from
+        // ja and added ko/zh/de/fr/es so non-English UI users see localized labels.
+        const EVIDENCE_MARKER = {
+            direct:        { sym: '✓', color: '#1a7a1a', labels: {
+                en: 'directly attested', ja: '直接確認', ko: '직접 확인됨', zh: '直接证实',
+                de: 'direkt belegt',     fr: 'attesté directement', es: 'atestiguado directamente' } },
+            proxy:         { sym: '~', color: '#c0392b', labels: {
+                en: 'proxy from related lang', ja: '近縁言語からの代用', ko: '근연 언어에서의 대용', zh: '近亲语言代理',
+                de: 'Stellvertreter aus verwandter Sprache', fr: 'substitut depuis langue apparentée',
+                es: 'sustituto de lengua emparentada' } },
+            reconstructed: { sym: '*', color: '#b56500', labels: {
+                en: 'reconstructed', ja: '再構形', ko: '재구형', zh: '构拟形式',
+                de: 'rekonstruiert', fr: 'reconstruit', es: 'reconstruido' } },
+            inferred:      { sym: '?', color: '#a06000', labels: {
+                en: 'inferred from context', ja: '文脈から推測', ko: '문맥에서 추정', zh: '依文脉推断',
+                de: 'aus Kontext erschlossen', fr: 'déduit du contexte', es: 'inferido del contexto' } },
+            disputed:      { sym: '⁉', color: '#a02020', labels: {
+                en: 'disputed reading', ja: '異読あり', ko: '이견 있음', zh: '存在异读',
+                de: 'umstrittene Lesart', fr: 'lecture contestée', es: 'lectura disputada' } },
+            pedagogical:   { sym: '◇', color: '#6020a0', labels: {
+                en: 'pedagogical approx.', ja: '教育用近似', ko: '교육용 근사', zh: '教学用近似',
+                de: 'pädagogische Näherung', fr: 'approximation pédagogique', es: 'aproximación pedagógica' } },
+        };
+        const EVIDENCE_PREFIX = {
+            source: { en: 'Source', ja: '出典', ko: '출처', zh: '来源', de: 'Quelle', fr: 'Source', es: 'Fuente' },
+            note:   { en: 'Note',   ja: '注',   ko: '주',   zh: '注',   de: 'Hinweis', fr: 'Note',  es: 'Nota' },
+        };
+        function evidenceTooltip(ev) {
+            if (!ev || !EVIDENCE_MARKER[ev.evidence]) return '';
+            const m = EVIDENCE_MARKER[ev.evidence];
+            const ui = uiLang.split('_')[0];
+            const label = (m.labels[ui] || m.labels.en);
+            const srcPrefix = (EVIDENCE_PREFIX.source[ui] || EVIDENCE_PREFIX.source.en);
+            const notePrefix = (EVIDENCE_PREFIX.note[ui] || EVIDENCE_PREFIX.note.en);
+            // Audit Task 103: surface formType so users know the displayed
+            // form is a bound stem / root, not a free word.
+            const formTypeLabels = {
+                'free-word':           { en: 'free word' },
+                'bound-stem':          { en: 'bound stem (requires suffix)', ja: '拘束語幹（接辞要）', ko: '구속 어간 (접사 필요)', zh: '黏着词干（需后缀）' },
+                'root':                { en: 'root',                       ja: '語根' },
+                'inflected-form':      { en: 'inflected form',             ja: '屈折形' },
+                'phrase':              { en: 'phrase',                     ja: '句' },
+                'reconstructed-root':  { en: 'reconstructed root',         ja: '再構語根', ko: '재구 어근', zh: '重构词根' },
+                'agreement-stem':      { en: 'noun-class agreement stem',  ja: '名詞クラス一致語幹', ko: '명사 부류 일치 어간', zh: '名词类一致词干' },
+            };
+            let formNote = '';
+            if (ev.formType && formTypeLabels[ev.formType]) {
+                const ftObj = formTypeLabels[ev.formType];
+                const ft = ftObj[ui] || ftObj.en;
+                formNote = ` [${ft}]`;
+            }
+            const src = ev.source ? ` — ${srcPrefix}: ${ev.source}` : '';
+            const note = ev.note ? ` (${notePrefix}: ${ev.note})` : '';
+            return label + formNote + src + note;
+        }
+
+        function renderLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
             const m = lang.meta || {};
-            // Use translated language name
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
             const displayName = names[code] || lang.name;
-            let html = `<h2>${displayName}</h2>`;
-            html += `<div class="native-name">${lang.native} [${code}]</div>`;
-            html += '<table>';
-            if (m.family) html += `<tr><td>${wt('family')}</td><td>${translateMeta(m.family)}</td></tr>`;
-            if (m.speakers) html += `<tr><td>${wt('speakers')}</td><td>${m.speakers}</td></tr>`;
-            if (m.countries) html += `<tr><td>${wt('countries')}</td><td>${translateMeta(m.countries)}</td></tr>`;
-            if (m.official) html += `<tr><td>${wt('official')}</td><td>${translateMeta(m.official)}</td></tr>`;
-            if (m.script) html += `<tr><td>${wt('script')}</td><td>${translateMeta(m.script)}</td></tr>`;
-            html += '</table>';
-            if (m.description) {
-                const desc = typeof m.description === 'object' ? (m.description[uiLang] || m.description.en || '') : m.description;
-                html += `<div class="desc">${desc}</div>`;
+            // All data values escaped (per wordmap-check-4.md §5).
+            let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
+            // Audit Task 115: disambiguator for rows that share a display
+            // or native name with another row (e.g. mn_cn/xng both show
+            // ᠮᠣᠩᠭᠣᠯ; omx/mnw both show ဘာသာ မန်).
+            if (m.disambiguator) {
+                const dis = (typeof m.disambiguator === 'object')
+                    ? (m.disambiguator[uiLang] || m.disambiguator[uiLang.split('_')[0]] || m.disambiguator.en || '')
+                    : String(m.disambiguator);
+                if (dis) {
+                    html += `<div style="margin:-4px 0 8px;font-size:11px;color:#a04020;font-style:italic">${escapeHtml(dis)}</div>`;
+                }
+            }
+            // Data-status badge (per wordmap-check.md §8) — only shown for non-modern.
+            // Session 31 (Schema Revolution Phase 1): also show pedagogical description
+            // inline so users understand the data's evidentiary level.
+            const status = getDataStatus(code);
+            const badge = DATA_STATUS_BADGE[status];
+            const kindBadge = m.languageKind && LANGUAGE_KIND_BADGE[m.languageKind];
+            if (badge || kindBadge) {
+                html += `<div style="margin:4px 0 8px;line-height:1.4">`;
+                if (badge) {
+                    const label = pickBadgeLabel(badge);
+                    const desc = pickBadgeDesc(badge);
+                    html += `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${badge.bg};color:${badge.fg};vertical-align:middle">${escapeHtml(label)}</span>`;
+                    if (desc) html += ` <span style="font-size:10px;color:#777;vertical-align:middle">${escapeHtml(desc)}</span>`;
+                }
+                if (kindBadge) {
+                    const kLabel = kindBadge[uiLang] || kindBadge[uiLang.split('_')[0]] || kindBadge.en;
+                    if (badge) html += ' ';
+                    html += `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:${kindBadge.bg};color:${kindBadge.fg};vertical-align:middle">${escapeHtml(kLabel)}</span>`;
+                }
+                html += `</div>`;
+            }
+            if (lang.meta) {
+                html += '<table>';
+                if (m.family) html += `<tr><td>${escapeHtml(wt('family'))}</td><td>${escapeHtml(translateMeta(m.family))}</td></tr>`;
+                if (m.speakers) html += `<tr><td>${escapeHtml(wt('speakers'))}</td><td>${escapeHtml(translateMeta(m.speakers))}</td></tr>`;
+                if (m.countries) html += `<tr><td>${escapeHtml(wt('countries'))}</td><td>${escapeHtml(translateMeta(m.countries))}</td></tr>`;
+                if (m.official) html += `<tr><td>${escapeHtml(wt('official'))}</td><td>${escapeHtml(translateMeta(m.official))}</td></tr>`;
+                if (m.script) html += `<tr><td>${escapeHtml(wt('script'))}</td><td>${escapeHtml(translateMeta(m.script))}</td></tr>`;
+                html += '</table>';
+                if (m.description) {
+                    // Audit Task 121: visible fallback label when localized
+                    // description is missing and English is shown instead.
+                    let desc, isFallback = false;
+                    if (typeof m.description === 'object') {
+                        const baseLang = uiLang.split('_')[0];
+                        desc = m.description[uiLang] || m.description[baseLang] || m.description.en || '';
+                        // Only show fallback note when uiLang isn't English and we
+                        // had to fall back from missing localization. Empty desc
+                        // (no localization at all) still shows the English text
+                        // with the note when m.description.en exists.
+                        isFallback = uiLang !== 'en' && !m.description[uiLang] && !m.description[baseLang]
+                                     && !!m.description.en;
+                    } else {
+                        desc = m.description;
+                        // String-only description is implicitly English; flag
+                        // fallback when UI is non-English.
+                        isFallback = uiLang !== 'en';
+                    }
+                    html += `<div class="desc">${escapeHtml(desc)}`;
+                    if (isFallback && desc) {
+                        const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                            || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                            || ENGLISH_FALLBACK_LABEL.en;
+                        html += ` <span style="color:#aaa;font-size:10px;font-style:italic">(${escapeHtml(fbLabel)})</span>`;
+                    }
+                    html += `</div>`;
+                }
+            } else {
+                html += '<div class="meta-loading" style="padding:10px 0;color:#aaa;font-size:11px">…</div>';
+            }
+            // Audit Task 76: pronunciation-type note before the word table
+            // tells the user what kind of notation the IPA column actually is.
+            if (m.pronunciationType && PRONUNCIATION_LABEL[m.pronunciationType]) {
+                const ptLabel = PRONUNCIATION_LABEL[m.pronunciationType][uiLang]
+                    || PRONUNCIATION_LABEL[m.pronunciationType].en;
+                const ptHeader = PRONUNCIATION_HEADER[uiLang] || PRONUNCIATION_HEADER.en;
+                const tone = m.pronunciationType === 'mixed' || m.pronunciationType === 'unknown' ? '#a04020' : '#888';
+                html += `<div style="margin:8px 0 -2px;font-size:10px;color:${tone}"><b>${escapeHtml(ptHeader)}:</b> ${escapeHtml(ptLabel)}</div>`;
+            }
+            // Audit Task 99: locationBasis — representative-point semantics.
+            // Read from meta.locationBasis (canonical) or lang.locationBasis (legacy).
+            const locBasis = m.locationBasis || lang.locationBasis;
+            if (locBasis && LOCATION_BASIS_LABEL[locBasis]) {
+                const lbLabel = LOCATION_BASIS_LABEL[locBasis][uiLang]
+                    || LOCATION_BASIS_LABEL[locBasis][uiLang.split('_')[0]]
+                    || LOCATION_BASIS_LABEL[locBasis].en;
+                const lbHeader = LOCATION_BASIS_HEADER[uiLang] || LOCATION_BASIS_HEADER.en;
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:#888"><b>${escapeHtml(lbHeader)}:</b> ${escapeHtml(lbLabel)}</div>`;
+            }
+            // Audit Task 79: coverage flag for regional variant rows
+            if (m.coverage && COVERAGE_LABEL[m.coverage]) {
+                let cvLabel = COVERAGE_LABEL[m.coverage][uiLang] || COVERAGE_LABEL[m.coverage].en;
+                if (m.baseLang) {
+                    const baseLang = LANG_DATA[m.baseLang];
+                    const baseName = baseLang ? ((LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.baseLang] || baseLang.name) : m.baseLang;
+                    cvLabel = cvLabel.replace('{base}', baseName);
+                }
+                const cvHeader = COVERAGE_HEADER[uiLang] || COVERAGE_HEADER.en;
+                const cvTone = (m.coverage === 'base-copy-with-notes') ? '#a04020' : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${cvTone}"><b>${escapeHtml(cvHeader)}:</b> ${escapeHtml(cvLabel)}</div>`;
+                // Audit Task 88: show coverageNote when present
+                if (m.coverageNote && typeof m.coverageNote === 'string') {
+                    html += `<div style="margin:1px 0 -2px;padding-left:8px;font-size:10px;color:#888;font-style:italic">${escapeHtml(m.coverageNote)}</div>`;
+                }
+            }
+            // Audit Task 108: review status badge (separate from coverage / dataStatus)
+            if (m.reviewStatus && REVIEW_STATUS_LABEL[m.reviewStatus]) {
+                const rsObj = REVIEW_STATUS_LABEL[m.reviewStatus];
+                const rsLabel = rsObj[uiLang] || rsObj[uiLang.split('_')[0]] || rsObj.en;
+                const rsHeader = REVIEW_STATUS_HEADER[uiLang] || REVIEW_STATUS_HEADER.en;
+                const rsTone = (m.reviewStatus === 'needs-rebuild') ? '#a04020'
+                            : (m.reviewStatus === 'source-checked') ? '#3a8a3a'
+                            : '#888';
+                html += `<div style="margin:2px 0 -2px;font-size:10px;color:${rsTone}"><b>${escapeHtml(rsHeader)}:</b> ${escapeHtml(rsLabel)}</div>`;
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
+            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
+            // Session 31: italic IPA for reconstructed/partly-understood/pedagogical/fragmentary
+            // signals "this notation is not direct phonemic transcription" (textbook convention).
+            const ipaStyle = IPA_ITALIC_STATUSES.has(status)
+                ? 'color:#888;font-size:11px;font-style:italic'
+                : 'color:#888;font-size:11px';
+            // Phase 2 (Session 33): per-cell evidence overlay
+            const wEv = lang.wordEvidence || {};
+            // Audit Task 119 / user request 2026-05-06: alternate script
+            // forms (e.g. Jurchen 女真譯語 Chinese-character transliterations,
+            // Khitan small script, Sawndip for Zhuang). Shown as a second
+            // line below the main word when present.
+            const altWF = lang.altWordForms || {};
             for (const w of WORD_LIST) {
                 const entry = lang.words[w.id];
                 if (entry) {
-                    const wKey = uiLang === 'id' ? 'ind' : uiLang;
-                    const localWord = w[wKey] || w[wKey.split('_')[0]] || w.en;
-                    const wLabel = (uiLang === 'en' ? w.en : localWord);
-                    html += `<tr><td>${wLabel}</td><td>${entry[0]}</td><td style="color:#888;font-size:11px">/${entry[1]}/</td></tr>`;
+                    const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
+                    const wLabel = (uiLang === 'en' ? w.label.en : localWord);
+                    if (isUnattestedEntry(entry)) {
+                        const unattLabel = UNATTESTED_LABEL[uiLang] || UNATTESTED_LABEL[uiLang.split('_')[0]] || UNATTESTED_LABEL.en;
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td colspan="2" style="color:#bbb;font-size:11px;font-style:italic">— (${escapeHtml(unattLabel)})</td></tr>`;
+                    } else {
+                        const ev = wEv[w.id];
+                        // Audit Task 101: evidence markers are keyboard-accessible.
+                        // role=button + tabindex=0 + aria-label so screen readers
+                        // and keyboard users can read the evidence note (not just
+                        // hover-only). Native button avoided to keep table layout.
+                        const evMark = ev && EVIDENCE_MARKER[ev.evidence]
+                            ? ` <span role="button" tabindex="0" class="ev-marker" style="color:${EVIDENCE_MARKER[ev.evidence].color};font-size:10px;cursor:help" title="${escapeHtml(evidenceTooltip(ev))}" aria-label="${escapeHtml(evidenceTooltip(ev))}">${EVIDENCE_MARKER[ev.evidence].sym}</span>`
+                            : '';
+                        // Build optional alt-script line (under main word cell)
+                        let altLine = '';
+                        const alts = altWF[w.id];
+                        if (Array.isArray(alts) && alts.length > 0) {
+                            const altParts = alts.map(a => {
+                                const formHtml = escapeHtml(a.form || '');
+                                const scriptTip = escapeHtml((a.script || '') + (a.source ? ' — ' + a.source : ''));
+                                return `<span style="font-size:11px;color:#888" title="${scriptTip}">${formHtml}</span>`;
+                            });
+                            altLine = `<div style="margin-top:2px;padding-left:0">${altParts.join(' / ')}</div>`;
+                        }
+                        // Audit Task 129: wrap word in dir="auto" + bidi
+                        // isolation so RTL forms (Arabic/Hebrew/Perso-Arabic)
+                        // don't reorder adjacent slashes/markers; IPA forced LTR.
+                        html += `<tr><td>${escapeHtml(wLabel)}</td><td><span class="wm-form" dir="auto">${escapeHtml(entry[0])}</span>${evMark}${altLine}</td><td style="${ipaStyle}"><span class="wm-ipa">/${escapeHtml(entry[1])}/</span></td></tr>`;
+                    }
                 }
             }
             html += '</table>';
+            // Phase 3b (Session 37): genealogical context — ancestors (for modern lang)
+            // or modern descendant (for historical lang). Uses HIST_DESCENDANT mapping.
+            (() => {
+                const isHist = HIST_CODE_SET.has(code);
+                const ancestors = ANCESTORS_OF[code] || [];
+                let chain = '';
+                if (isHist && HIST_DESCENDANT[code]) {
+                    const desc = HIST_DESCENDANT[code];
+                    const descLang = LANG_DATA[desc];
+                    if (descLang) {
+                        const descName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[desc] || descLang.name;
+                        const lbl = i18n('modernDescendant');
+                        chain += `<span style="color:#666"><b>${escapeHtml(lbl)}:</b> → <a href="#" data-langcode="${escapeHtml(desc)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(descName)}</a> (${escapeHtml(desc)})</span>`;
+                    }
+                }
+                if (!isHist && ancestors.length > 0) {
+                    const lbl = i18n('historicalAncestors');
+                    const items = ancestors
+                        .filter(a => LANG_DATA[a])
+                        .map(a => {
+                            const aName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[a] || LANG_DATA[a].name;
+                            return `<a href="#" data-langcode="${escapeHtml(a)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(aName)}</a> (${escapeHtml(a)})`;
+                        })
+                        .join(' · ');
+                    if (items) chain += `<span style="color:#666"><b>${escapeHtml(lbl)}:</b> ← ${items}</span>`;
+                }
+                if (chain) {
+                    html += `<div style="margin-top:8px;padding-top:6px;border-top:1px dotted #ddd;font-size:11px;line-height:1.5">${chain}</div>`;
+                }
+            })();
+            // Audit Task 113/126: parent variety relation (modern variant rows)
+            (() => {
+                if (m.parentCode && LANG_DATA[m.parentCode]) {
+                    const parent = LANG_DATA[m.parentCode];
+                    const parentName = (LANG_NAMES[uiLang] || LANG_NAMES.en || {})[m.parentCode] || parent.name;
+                    const roleLabels = {
+                        'regional-variety':   { en: 'Regional variety of', ja: '地方変種', ko: '지역 변종', zh: '地方变体' },
+                        'dialect':            { en: 'Dialect of',          ja: '方言',     ko: '방언',     zh: '方言' },
+                        'sibling-language':   { en: 'Related branch',      ja: '姉妹言語', ko: '자매 언어', zh: '姊妹语言' },
+                        'continuum-member':   { en: 'Continuum member',    ja: '連続体',   ko: '연속체',   zh: '连续体' },
+                    };
+                    const role = m.varietyRole || 'regional-variety';
+                    const lblObj = roleLabels[role] || roleLabels['regional-variety'];
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}:</b> <a href="#" data-langcode="${escapeHtml(m.parentCode)}" style="color:#1a73e8;text-decoration:none">${escapeHtml(parentName)}</a> (${escapeHtml(m.parentCode)})</div>`;
+                } else if (m.varietyRole === 'base') {
+                    const lblObj = { en: 'Base variety', ja: '基準変種', ko: '기준 변종', zh: '基准变体' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
+                } else if (m.varietyRole === 'sibling-language') {
+                    const lblObj = { en: 'Sibling language (separate from related main language)', ja: '姉妹言語（関連する主要言語とは別個）', ko: '자매 언어 (관련 주요 언어와 별개)', zh: '姊妹语言（与相关主要语言独立）' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
+                } else if (m.varietyRole === 'continuum-member') {
+                    const lblObj = { en: 'Continuum member (between related languages)', ja: '連続体メンバー（関連言語の間）', ko: '연속체 구성원 (관련 언어 사이)', zh: '连续体成员（关联语言之间）' };
+                    const lbl = lblObj[uiLang] || lblObj[uiLang.split('_')[0]] || lblObj.en;
+                    html += `<div style="margin-top:6px;font-size:11px;color:#666"><b>${escapeHtml(lbl)}</b></div>`;
+                }
+            })();
+            // Phase 3a (Session 36): bibliography footer — dedupe sources from
+            // wordEvidence, plus optional explicit meta.references and the
+            // structured meta.sources array. Per Audit Task 91 the canonical
+            // structured field is meta.sources; meta.references (legacy
+            // string-only) is still supported for migration.
+            // Per Audit Task 96 — entries are dedup'd by `title|url` pair so
+            // the same title from two different URLs both render. Items are
+            // rendered as links only when URL is http(s); other schemes are
+            // dropped (validator #13j' also flags them).
+            const sourceItems = [];
+            const sourceKeys = new Set();
+            const addSource = (title, url) => {
+                title = (title || '').trim();
+                if (!title && !url) return;
+                const key = `${title}|${url || ''}`;
+                if (sourceKeys.has(key)) return;
+                sourceKeys.add(key);
+                sourceItems.push({ title, url });
+            };
+            for (const ev of Object.values(wEv)) {
+                if (ev && ev.source) addSource(ev.source, null);
+            }
+            if (m && Array.isArray(m.references)) {
+                for (const r of m.references) {
+                    if (typeof r === 'string') addSource(r, null);
+                    else if (r) addSource(r.title || '', r.url);
+                }
+            }
+            if (m && Array.isArray(m.sources)) {
+                for (const s of m.sources) {
+                    if (!s) continue;
+                    if (typeof s === 'string') addSource(s, null);
+                    else addSource(s.title || '', s.url);
+                }
+            }
+            if (sourceItems.length > 0) {
+                const srcLabel = i18n('sources');
+                const safeUrl = u => (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null;
+                const renderItem = it => {
+                    const url = safeUrl(it.url);
+                    const safeTitle = escapeHtml(it.title || it.url || '');
+                    if (url) {
+                        return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#4a6cf7;text-decoration:none">${safeTitle}</a>`;
+                    }
+                    return safeTitle;
+                };
+                html += `<div style="margin-top:10px;padding-top:6px;border-top:1px dotted #ddd;font-size:10px;color:#888;line-height:1.5">` +
+                    `<span style="font-weight:600;color:#666">${escapeHtml(srcLabel)}:</span> ` +
+                    sourceItems.map(renderItem).join(' · ') +
+                    `</div>`;
+            }
             infoContent.innerHTML = html;
+        }
+
+        function showLangInfo(code) {
+            const lang = LANG_DATA[code];
+            if (!lang) return;
+            // Audit Task 137: capture the opener BEFORE state changes so we
+            // can restore focus on close. activeElement is the most reliable
+            // signal for keyboard openers; pointer openers may have already
+            // shifted focus, in which case the search input is a sane default.
+            const opener = document.activeElement;
+            if (opener && opener !== document.body) _lastDialogOpener = opener;
+            // UX fix #1: toggle — second click on same code closes the modal.
+            if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
+                closeInfoPanel();
+                return;
+            }
+            infoPanel.dataset.code = code;
+            renderLangInfo(code);
             infoPanel.classList.add('visible');
+            // Reset scroll to top when opening a new lang or switching from
+            // another lang — the modal is the scroll container, not infoContent.
+            infoPanel.scrollTop = 0;
+            _selRetries = 0;
+            updateSelectedLabel();
+            updateConnectorLine();
+            updateHash();  // persist `lang` to URL so reload restores
+            if (!lang.meta) {
+                loadMeta().then(() => {
+                    if (infoPanel.classList.contains('visible') && infoPanel.dataset.code === code) {
+                        renderLangInfo(code);
+                    }
+                }).catch(() => {
+                    const sp = infoContent.querySelector('.meta-loading');
+                    if (sp) sp.textContent = '⚠';
+                });
+            }
+        }
+
+        // === Language name search ===
+        // Filter LANG_DATA by display name (current UI lang), native name, and code.
+        // Show top 10 matches in a dropdown; click pans the map and opens the modal.
+        (function setupLangSearch() {
+            const input = document.getElementById('lang-search');
+            const results = document.getElementById('lang-search-results');
+            if (!input || !results) return;
+            // Audit Task 114: accent-insensitive search via Unicode NFD
+            // decomposition + combining-mark removal. Lets users type
+            // "Yoruba" and find "Yorùbá", "Maori" and find "Māori", etc.
+            // Also matches against meta.aliases / iso6393 / canonicalCode.
+            function normalizeSearchText(s) {
+                return String(s || '')
+                    .normalize('NFD')
+                    .replace(/\p{M}/gu, '')
+                    .toLowerCase();
+            }
+            function renderResults(q) {
+                if (!q || q.length < 1) {
+                    results.style.display = 'none'; results.innerHTML = '';
+                    input.setAttribute('aria-expanded', 'false');
+                    input.setAttribute('aria-activedescendant', '');
+                    return;
+                }
+                const ql = normalizeSearchText(q);
+                const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+                const enNames = LANG_NAMES.en || {};
+                const matches = [];
+                for (const code of Object.keys(LANG_DATA)) {
+                    const lang = LANG_DATA[code];
+                    const display = names[code] || lang.name;
+                    const en = enNames[code] || lang.name;
+                    const native = lang.native || '';
+                    const m = lang.meta || {};
+                    // Build searchable strings — main fields + aliases +
+                    // iso6393 + canonicalCode (all NFD-normalized)
+                    const dispN = normalizeSearchText(display);
+                    const enN   = normalizeSearchText(en);
+                    const natN  = normalizeSearchText(native);
+                    const codeN = normalizeSearchText(code);
+                    const aliasArr = Array.isArray(m.aliases) ? m.aliases : [];
+                    const aliasNs = aliasArr.map(normalizeSearchText);
+                    const isoN = normalizeSearchText(m.iso6393 || '');
+                    const canonN = normalizeSearchText(m.canonicalCode || '');
+                    const aliasHit = aliasNs.some(a => a && a.includes(ql));
+                    if (dispN.includes(ql) || enN.includes(ql) ||
+                        natN.includes(ql) || codeN.includes(ql) ||
+                        aliasHit ||
+                        (isoN && isoN.includes(ql)) ||
+                        (canonN && canonN.includes(ql))) {
+                        // Score: exact prefix > prefix > alias > substring
+                        let score = 100;
+                        if (dispN.startsWith(ql)) score = 0;
+                        else if (enN.startsWith(ql)) score = 1;
+                        else if (codeN.startsWith(ql)) score = 2;
+                        else if (natN.startsWith(ql)) score = 3;
+                        else if (aliasNs.some(a => a && a.startsWith(ql))) score = 4;
+                        else if (isoN.startsWith(ql) || canonN.startsWith(ql)) score = 5;
+                        // Audit Task 115: capture disambiguator for the
+                        // search result tooltip if the row has one.
+                        let disambig = '';
+                        if (m.disambiguator) {
+                            disambig = (typeof m.disambiguator === 'object')
+                                ? (m.disambiguator[uiLang] || m.disambiguator[uiLang.split('_')[0]] || m.disambiguator.en || '')
+                                : String(m.disambiguator);
+                        }
+                        matches.push({ code, display, en, native, score, disambig });
+                    }
+                }
+                // Mark each match's era so we can disable non-selected era entries.
+                // showHistorical = true → only historical langs are clickable.
+                // showHistorical = false → only modern langs are clickable.
+                for (const m of matches) {
+                    const isHist = HIST_CODE_SET.has(m.code);
+                    m.isHist = isHist;
+                    m.disabled = isHist !== showHistorical;
+                }
+                matches.sort((a, b) => a.score - b.score || a.display.localeCompare(b.display));
+                const top = matches.slice(0, 12);
+                if (top.length === 0) {
+                    const noMatchLabel = i18n('noMatch');
+                    results.innerHTML = `<div style="padding:8px;color:#999">${escapeHtml(noMatchLabel)}</div>`;
+                } else {
+                    // The era label here is the *opposite* of current era —
+                    // it tells the user "this match is in the [other] era".
+                    const eraLbl = showHistorical
+                        ? i18n('modernLangTooltip')
+                        : i18n('historicalLangTooltip');
+                    results.innerHTML = top.map((m, idx) => {
+                        const native = m.native && m.native !== m.display ? ` <span style="color:#999;font-size:11px">${escapeHtml(m.native)}</span>` : '';
+                        const en = m.en !== m.display ? ` <span style="color:#aaa;font-size:11px">(${escapeHtml(m.en)})</span>` : '';
+                        // Audit Task 115: append disambiguator hint after the row
+                        // when present so duplicate-name groups (mn_cn/xng,
+                        // omx/mnw) are visually distinguishable in search.
+                        const dis = m.disambig
+                            ? ` <span style="color:#a04020;font-size:10px;font-style:italic"> — ${escapeHtml(m.disambig)}</span>`
+                            : '';
+                        const baseStyle = 'padding:6px 9px;border-bottom:1px solid #f0f0f0';
+                        // Audit Task 136: combobox/listbox semantics — each
+                        // visible result is a role="option" with a stable id.
+                        const optId = `lang-search-opt-${idx}`;
+                        if (m.disabled) {
+                            const tooltip = i18n('eraFilterOffHint').replace('{era}', eraLbl);
+                            return `<div id="${optId}" class="lang-search-item disabled" role="option" aria-disabled="true" aria-selected="false" data-code="${escapeHtml(m.code)}" data-disabled="1" title="${escapeHtml(tooltip)}" style="${baseStyle};opacity:0.4;cursor:not-allowed">${escapeHtml(m.display)}${native}${en}${dis} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)} · ${escapeHtml(eraLbl)}</span></div>`;
+                        }
+                        return `<div id="${optId}" class="lang-search-item" role="option" aria-selected="false" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en}${dis} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
+                    }).join('');
+                    // Live preview: open the modal for the top *enabled* match
+                    // (no map pan while typing — that only happens on explicit click).
+                    const topEnabled = top.find(m => !m.disabled);
+                    if (topEnabled && LANG_DATA[topEnabled.code]) {
+                        // Only re-open if the top match changed (avoids
+                        // re-rendering the same modal on every keystroke).
+                        if (infoPanel.dataset.code !== topEnabled.code) {
+                            showLangInfo(topEnabled.code);
+                        }
+                    }
+                }
+                results.style.display = 'block';
+                input.setAttribute('aria-expanded', 'true');
+            }
+            input.addEventListener('input', e => renderResults(e.target.value.trim()));
+            input.addEventListener('focus', e => { if (e.target.value.trim()) renderResults(e.target.value.trim()); });
+            input.addEventListener('blur', () => setTimeout(() => {
+                results.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+                input.setAttribute('aria-activedescendant', '');
+            }, 200));
+            // Audit Task 136: keyboard navigation for the listbox.
+            //   ArrowDown / ArrowUp moves the active option (visual highlight + aria-activedescendant)
+            //   Enter selects the active enabled option
+            //   Escape closes without opening the modal
+            let activeOptionIdx = -1;
+            function setActiveOption(newIdx) {
+                const items = results.querySelectorAll('.lang-search-item');
+                if (items.length === 0) { activeOptionIdx = -1; return; }
+                if (newIdx < 0) newIdx = items.length - 1;
+                if (newIdx >= items.length) newIdx = 0;
+                activeOptionIdx = newIdx;
+                items.forEach((it, i) => {
+                    if (i === newIdx) {
+                        it.style.background = '#f0f4ff';
+                        it.setAttribute('aria-selected', 'true');
+                        input.setAttribute('aria-activedescendant', it.id || '');
+                        // Scroll into view
+                        if (it.scrollIntoView) it.scrollIntoView({block: 'nearest'});
+                    } else {
+                        it.style.background = '';
+                        it.setAttribute('aria-selected', 'false');
+                    }
+                });
+            }
+            input.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown') { e.preventDefault(); setActiveOption(activeOptionIdx + 1); }
+                else if (e.key === 'ArrowUp')   { e.preventDefault(); setActiveOption(activeOptionIdx - 1); }
+                else if (e.key === 'Escape')    {
+                    if (results.style.display !== 'none') {
+                        results.style.display = 'none';
+                        input.setAttribute('aria-expanded', 'false');
+                        input.setAttribute('aria-activedescendant', '');
+                        e.stopPropagation();
+                    }
+                }
+                else if (e.key === 'Enter') {
+                    if (activeOptionIdx >= 0) {
+                        const items = results.querySelectorAll('.lang-search-item');
+                        const it = items[activeOptionIdx];
+                        if (it && it.getAttribute('data-disabled') !== '1') {
+                            e.preventDefault();
+                            const code = it.getAttribute('data-code');
+                            if (code && LANG_DATA[code]) {
+                                showLangInfo(code);
+                                input.value = '';
+                                results.style.display = 'none';
+                                input.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    }
+                }
+            });
+            // Reset active option whenever results re-render
+            input.addEventListener('input', () => { activeOptionIdx = -1; });
+            results.addEventListener('mousedown', e => e.preventDefault());  // prevent input blur before click
+            results.addEventListener('click', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (!item) return;
+                if (item.getAttribute('data-disabled') === '1') return;  // off-era item
+                const code = item.getAttribute('data-code');
+                if (!code || !LANG_DATA[code]) return;
+                const lang = LANG_DATA[code];
+                if (typeof map !== 'undefined' && map && map.setView) {
+                    map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
+                }
+                // If modal already shows this lang (from live preview), avoid
+                // calling showLangInfo (which would toggle it closed).
+                if (infoPanel.dataset.code !== code || !infoPanel.classList.contains('visible')) {
+                    showLangInfo(code);
+                }
+                input.value = '';
+                results.style.display = 'none';
+            });
+            results.addEventListener('mouseover', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (item) item.style.background = '#f5f5f5';
+            });
+            results.addEventListener('mouseout', e => {
+                const item = e.target.closest('.lang-search-item');
+                if (item) item.style.background = '';
+            });
+        })();
+
+        // Phase 3b (Session 37): clicking ancestor/descendant link navigates modal
+        // to that lang. Map jumps to its coords too.
+        infoContent.addEventListener('click', e => {
+            const a = e.target.closest('a[data-langcode]');
+            if (a) {
+                e.preventDefault();
+                const target = a.getAttribute('data-langcode');
+                if (target && LANG_DATA[target]) {
+                    showLangInfo(target);
+                    if (typeof map !== 'undefined' && map && map.setView) {
+                        const t = LANG_DATA[target];
+                        map.setView([t.lat, t.lng], Math.max(map.getZoom(), 4));
+                    }
+                }
+                return;
+            }
+            // Audit Task 101: clicking an evidence marker expands its
+            // detail inline (under the row) so it is reachable without hover.
+            const ev = e.target.closest('.ev-marker');
+            if (ev) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleEvDetail(ev);
+            }
+        });
+        // Audit Task 101: keyboard activation for evidence markers.
+        infoContent.addEventListener('keydown', e => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const ev = e.target.closest('.ev-marker');
+            if (!ev) return;
+            e.preventDefault();
+            toggleEvDetail(ev);
+        });
+        function toggleEvDetail(ev) {
+            const tr = ev.closest('tr');
+            if (!tr) return;
+            const next = tr.nextElementSibling;
+            if (next && next.classList.contains('ev-detail-row')) {
+                next.parentNode.removeChild(next);
+                return;
+            }
+            const detail = ev.getAttribute('aria-label') || ev.getAttribute('title') || '';
+            if (!detail) return;
+            const detailRow = document.createElement('tr');
+            detailRow.className = 'ev-detail-row';
+            const td = document.createElement('td');
+            td.colSpan = 3;
+            const div = document.createElement('div');
+            div.className = 'ev-detail';
+            div.textContent = detail;
+            td.appendChild(div);
+            detailRow.appendChild(td);
+            tr.parentNode.insertBefore(detailRow, tr.nextSibling);
         }
 
     })();

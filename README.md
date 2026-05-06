@@ -24,7 +24,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
-- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in all 226 languages with IPA, 2D/3D globe toggle, language info panel, full i18n
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 591 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations all translate via composite atom translator), and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
 
 ## Languages (226 total, ordered by similarity)
 
@@ -97,12 +97,17 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 ```
 langmap/
   index.html         — Main HTML page (Word Order Map)
-  wordmap.html       — Word Map page (20 words × 226 languages on a world map)
-  wordmap_data.js    — Word Map data (words, IPA, coordinates, meta, i18n descriptions)
+  wordmap.html       — Word Map page (20 words × 591 languages on a world map)
+  wordmap_data.js    — Word Map core data (words, IPA, coordinates, native names, UI strings)
+  wordmap_meta.js    — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
   styles.css         — Styles (including RTL support)
   app.js             — Rendering engine, controls, drag-and-drop, export, i18n
   data.js            — 100 sentences × 226 languages with segment alignments
-  validate_data.py   — Data validation script
+  lang_names.js      — Word Map language display names (per UI language)
+  meta_i18n_ext.js   — Word Map metadata translation extensions
+  lang-filter.js     — Word Map typology filter (word order / tone / morphology)
+  validate_data.py   — Sentence/Word-Order Map validator (data.js)
+  validate_wordmap_data.js — Word Map validator (wordmap_data.js + wordmap_meta.js + lang_names.js)
   CONTRIBUTING.md    — Data contribution guidelines
 ```
 
@@ -134,7 +139,17 @@ Each language lists the same segment IDs in its own natural word order. The visu
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding sentences or languages.
 
-Run `python3 validate_data.py` before committing to check for common errors.
+### Sentence / Word Order Map validation
+
+Run `python3 validate_data.py` to check `data.js` and the sentence segmentation/order map.
+
+### Word Map validation
+
+Run `node validate_wordmap_data.js` to check `wordmap_data.js`, `wordmap_meta.js`, `lang_names.js`, historical-language status, word-entry shape, metadata, i18n coverage, and Word Map-specific invariants.
+
+If you changed Word Map files (`wordmap.html`, `wordmap_data.js`, `wordmap_meta.js`, `meta_i18n_ext.js`, `lang_names.js`, `lang-filter.js`, `validate_wordmap_data.js`), run `node validate_wordmap_data.js`.
+If you changed sentence/order-map files (`data.js`, `app.js`, etc.), run `python3 validate_data.py`.
+If you changed both, run both.
 
 ### Chữ Nôm Standardization
 
@@ -250,11 +265,18 @@ npx serve .
 
 ```
 langmap/
-  index.html        — メインHTMLページ
+  index.html         — メインHTMLページ（語順マップ）
+  wordmap.html       — 単語マップページ（20語 × 591言語の世界地図）
+  wordmap_data.js    — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
+  wordmap_meta.js    — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
   styles.css         — スタイル（RTL対応含む）
   app.js             — 描画エンジン、コントロール、ドラッグ&ドロップ、エクスポート、i18n
   data.js            — 100文 × 226言語のセグメントアラインメントデータ
-  validate_data.py   — データバリデーションスクリプト
+  lang_names.js      — 単語マップの言語表示名（UI言語別）
+  meta_i18n_ext.js   — 単語マップメタデータの翻訳拡張
+  lang-filter.js     — 単語マップ類型論フィルタ（語順／声調／形態論）
+  validate_data.py   — 文／語順マップ用バリデータ（data.js）
+  validate_wordmap_data.js — 単語マップ用バリデータ（wordmap_data.js + wordmap_meta.js + lang_names.js）
   CONTRIBUTING.md    — データ追加ガイドライン
 ```
 
@@ -286,7 +308,17 @@ langmap/
 
 文章や言語の追加については [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
-コミット前に `python3 validate_data.py` を実行してエラーチェックを行ってください。
+### 文／語順マップのバリデーション
+
+`python3 validate_data.py` で `data.js`（文・語順マップ）をチェックします。
+
+### 単語マップのバリデーション
+
+`node validate_wordmap_data.js` で `wordmap_data.js`、`wordmap_meta.js`、`lang_names.js`、歴史言語ステータス、単語エントリ形式、メタデータ、i18n カバレッジ、単語マップ固有の不変条件をチェックします。
+
+単語マップのファイル（`wordmap.html`、`wordmap_data.js`、`wordmap_meta.js`、`meta_i18n_ext.js`、`lang_names.js`、`lang-filter.js`、`validate_wordmap_data.js`）を変更した場合は `node validate_wordmap_data.js` を実行してください。
+文／語順マップのファイル（`data.js`、`app.js` 等）を変更した場合は `python3 validate_data.py` を実行してください。
+両方変更した場合は両方実行してください。
 
 ### チューノム標準化
 

@@ -92,29 +92,65 @@ body {
 .controls {
     background: #fff;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .control-row {
     display: flex;
-    gap: 15px;
-    align-items: flex-end;
-    margin-bottom: 15px;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 .control-row:last-child { margin-bottom: 0; }
 
-.control-group {
+/* Sentence row: label + nav buttons inline with select */
+.sentence-label {
+    font-weight: 600;
+    font-size: 12px;
+    color: #888;
+    white-space: nowrap;
+}
+.sentence-nav {
+    display: flex;
+    gap: 4px;
+    align-items: center;
     flex: 1;
 }
-.control-group label {
-    display: block;
-    font-weight: 600;
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 6px;
+.sentence-nav select { flex: 1; min-width: 0; font-size: 13px; padding: 6px 8px; }
+.nav-icon {
+    background: none;
+    border: none;
+    padding: 4px 6px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
 }
+.nav-icon:hover { color: #333; }
+.nav-random { display: inline-flex; align-items: center; gap: 3px; font-size: 13px; }
+.random-icon { font-size: 16px; }
+.random-text { font-size: 12px; color: #888; }
+@media (max-width: 768px) {
+    .random-text { display: none; }
+}
+
+/* Language row */
+.lang-row-ctrl { flex-wrap: wrap; }
+.btn-lang-select {
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: #4a90d9;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.btn-lang-select:hover { background: #3a7bc8; }
+
 .hint {
     font-weight: 400;
     color: #999;
@@ -890,7 +926,8 @@ select:focus { border-color: #4a90d9; outline: none; }
     .container { max-width: 100vw; }
     .control-row { flex-direction: column; align-items: stretch; }
     .map-container { padding: 15px 10px; min-width: 0; }
-    .lang-label { min-width: 80px; width: 80px; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 0; margin-right: 8px; }
+    /* Language name: allow wrapping on mobile */
+    .lang-label { min-width: 70px; width: 70px; font-size: 10px; white-space: normal; word-break: break-word; line-height: 1.3; flex-shrink: 0; margin-right: 6px; }
     .segment { font-size: 16px; }
     .lang-row { margin-bottom: 40px; flex-wrap: nowrap; white-space: nowrap; }
     /* Export mode: override mobile constraints for full-width export */
@@ -981,8 +1018,76 @@ select:focus { border-color: #4a90d9; outline: none; }
         max-height: 50vh;
     }
 
-    /* Edit button always visible on mobile */
-    .edit-btn {
-        opacity: 1 !important;
+    /* Mobile: hide copy/edit buttons, show on tap below text */
+    .edit-btn, .copy-btn {
+        display: none !important;
     }
+    .lang-row { position: relative; }
+    .lang-row.show-actions .mobile-action-bar {
+        display: flex !important;
+    }
+    .mobile-action-bar {
+        display: none;
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        gap: 8px;
+    }
+    .mobile-action-bar button {
+        background: rgba(255,255,255,0.97);
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 6px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        white-space: nowrap;
+    }
+    .mobile-action-bar button:active { background: #f0f0f0; }
+
+    /* Sentence row compact on mobile */
+    .sentence-row { flex-direction: column; align-items: stretch; gap: 4px; }
+    .sentence-label { font-size: 11px; }
+    .sentence-nav select { font-size: 12px; padding: 5px 6px; }
+
+    /* Lang select button compact */
+    .btn-lang-select { font-size: 11px; padding: 5px 10px; }
+
+    /* Editing: horizontal scroll for segments + reorder buttons */
+    .lang-row.editing .lang-text {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+    }
+    .segment-input-wrapper {
+        flex-shrink: 0;
+    }
+    /* Hide drag handle on mobile, show move buttons instead */
+    .drag-handle { display: none; }
+    .seg-move-btns { display: flex !important; }
 }
+
+/* Segment move buttons (for mobile, hidden on desktop) */
+.seg-move-btns {
+    display: none;
+    flex-direction: column;
+    gap: 1px;
+    margin-right: 2px;
+}
+.seg-move-btn {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 0 3px;
+    font-size: 9px;
+    line-height: 1.2;
+    cursor: pointer;
+    color: #999;
+}
+.seg-move-btn:hover { background: #f0f2f5; color: #333; }

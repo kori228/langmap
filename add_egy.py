@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
-"""Merge missing egy (Ancient Egyptian) sentences into data.js."""
+"""LEGACY SENTENCE MAP TOOL.
 
-import json, re, sys
-sys.path.insert(0, '/home/jounlai/langmap')
+This edits data.js (sentence/order map), NOT wordmap_data.js.
+Do not use for Word Map language data.
+
+Merge missing egy (Ancient Egyptian) sentences into data.js.
+"""
+
+import json, os, re, sys
+
+if '--i-know-this-edits-data-js' not in sys.argv:
+    raise SystemExit('Refusing to edit data.js without explicit legacy flag --i-know-this-edits-data-js')
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from data_egy import EGY_DATA
 

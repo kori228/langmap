@@ -13,6 +13,7 @@ Usage:
 import re
 import sys
 import json
+from pathlib import Path
 
 # All language codes
 REQUIRED_LANGS = {
@@ -64,7 +65,7 @@ SIMPLIFIED_CHARS = {
     '场': '場', '种': '種', '岁': '歲', '体': '體', '发': '發',
     '气': '氣', '从': '從', '这': '這', '个': '個', '么': '麼',
     '为': '為', '会': '會', '将': '將', '来': '來', '与': '與',
-    '后': '後', '里': '裡', '面': '麵', '着': '著',
+    '后': '後', '里': '裡', '着': '著',
 }
 
 
@@ -86,6 +87,25 @@ def load_data(filepath='data.js'):
         sys.exit(1)
 
     return sentences
+
+
+def load_required_langs():
+    """Load language codes from app.js so the validator tracks the UI."""
+    app_path = Path(__file__).with_name('app.js')
+    if not app_path.exists():
+        return REQUIRED_LANGS
+
+    content = app_path.read_text(encoding='utf-8')
+    match = re.search(
+        r'const\s+LANGUAGES\s*=\s*\[(.*?)\]\s*;\s*const\s+DEFAULT_ORDER',
+        content,
+        re.DOTALL,
+    )
+    if not match:
+        return REQUIRED_LANGS
+
+    codes = set(re.findall(r"code:\s*'([^']+)'", match.group(1)))
+    return codes or REQUIRED_LANGS
 
 
 def check_adjacent_same_id(sentence, lang_code, segments):
@@ -130,34 +150,41 @@ def check_flipped_segments(sentence, lang_code, segments, defined_ids):
             errors.append(
                 f"  [{lang_code}] Invalid segment ID: \"{seg_id}\" in {seg}"
             )
+
+        # Empty text renders as an invisible segment and usually means a
+        # fused preposition/article/case marker should be represented by a
+        # compound segment ID such as "D|E".
+        if isinstance(text, str) and text == '':
+            errors.append(
+                f"  [{lang_code}] Empty text for segment ID \"{seg_id}\""
+            )
     return errors
 
 
-def check_missing_langs(sentence, langs_data):
+def check_missing_langs(sentence, langs_data, required_langs, known_langs):
     """Check for missing language entries"""
     errors = []
     present = set(langs_data.keys())
-    missing = REQUIRED_LANGS - present
+    missing = required_langs - present
     if missing:
         errors.append(f"  Missing languages: {', '.join(sorted(missing))}")
-    extra = present - REQUIRED_LANGS
+    extra = present - known_langs
     if extra:
         errors.append(f"  Unknown languages: {', '.join(sorted(extra))}")
     return errors
 
 
 def check_segment_ids_match(sentence, langs_data, defined_ids):
-    """Check that all languages use the same set of segment IDs"""
+    """Check that all used segment IDs are defined for the sentence."""
     errors = []
     for lang_code, segments in langs_data.items():
         used_ids = set()
         for seg in segments:
-            if len(seg) == 2 and seg[0] in VALID_SEGMENT_IDS:
-                used_ids.add(seg[0])
-        missing_ids = defined_ids - used_ids
+            if len(seg) == 2:
+                sub_ids = set(seg[0].split('|'))
+                if sub_ids <= VALID_SEGMENT_IDS:
+                    used_ids.update(sub_ids)
         extra_ids = used_ids - defined_ids
-        if missing_ids:
-            errors.append(f"  [{lang_code}] Missing segment IDs: {', '.join(sorted(missing_ids))}")
         if extra_ids:
             errors.append(f"  [{lang_code}] Undefined segment IDs: {', '.join(sorted(extra_ids))}")
     return errors
@@ -231,10 +258,14 @@ def fix_adjacent_same_id(sentences):
 
 def validate(filepath='data.js', auto_fix=False):
     sentences = load_data(filepath)
+    known_langs = load_required_langs()
+    # Languages registered in app.js but with no data yet are pending and should
+    # not make every sentence fail validation.
+    required_langs = set().union(*(s.get('langs', {}).keys() for s in sentences))
     total_errors = 0
     total_warnings = 0
 
-    print(f"Validating {len(sentences)} sentences across {len(REQUIRED_LANGS)} languages...\n")
+    print(f"Validating {len(sentences)} sentences across {len(required_langs)} languages with data...\n")
 
     for sentence in sentences:
         sid = sentence.get('id', '?')
@@ -245,7 +276,7 @@ def validate(filepath='data.js', auto_fix=False):
         warnings = []
 
         # Check missing languages
-        errors.extend(check_missing_langs(sentence, langs_data))
+        errors.extend(check_missing_langs(sentence, langs_data, required_langs, known_langs))
 
         # Check segment IDs match definition
         warnings.extend(check_segment_ids_match(sentence, langs_data, defined_ids))

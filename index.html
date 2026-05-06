@@ -15,7 +15,7 @@
     <meta name="twitter:title" id="twTitle" content="LangMap - Multilingual Word Order Map">
     <meta name="twitter:description" id="twDesc" content="An interactive map comparing word order across 220+ languages, dialects, and historical stages.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
-    <link rel="stylesheet" href="styles.css?v=51">
+    <link rel="stylesheet" href="styles.css?v=58">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ7JJBCCHG"></script>
@@ -39,31 +39,20 @@
     <div class="container">
 
         <div class="controls">
-            <div class="control-row">
-                <div class="control-group" style="flex:2">
-                    <label id="lblSentence" for="sampleSelect">文章選択</label>
+            <div class="control-row sentence-row">
+                <label id="lblSentence" for="sampleSelect" class="sentence-label">文章選択</label>
+                <div class="sentence-nav">
+                    <button class="nav-icon" onclick="prevSentence()" title="Previous">‹</button>
                     <select id="sampleSelect"></select>
-                </div>
-                <div class="control-group" style="flex:0">
-                    <label>&nbsp;</label>
-                    <div class="btn-group">
-                        <button class="btn" onclick="prevSentence()">◀</button>
-                        <button class="btn" onclick="nextSentence()">▶</button>
-                        <button class="btn btn-accent" id="btnRandom" onclick="randomSentence()">ランダム</button>
-                    </div>
+                    <button class="nav-icon" onclick="nextSentence()" title="Next">›</button>
+                    <button class="nav-icon nav-random" id="btnRandom" onclick="randomSentence()" title="Random"><span class="random-icon">🎲</span><span class="random-text" id="lblRandom">Random</span></button>
                 </div>
             </div>
 
-            <div class="control-row">
-                <div class="control-group" style="flex:1">
-                    <label>
-                        <span id="lblLangToggle">表示言語</span>
-                        <button class="btn-open-modal" id="btnOpenLangModal" onclick="openLangModal()">言語選択</button>
-                    </label>
-                    <div class="lang-summary" id="langSummary"></div>
-                </div>
+            <div class="control-row lang-row-ctrl">
+                <button class="btn-lang-select" id="btnOpenLangModal" onclick="openLangModal()">言語選択</button>
+                <div class="lang-summary" id="langSummary"></div>
             </div>
-
         </div>
 
         <div class="map-toolbar">
@@ -140,7 +129,45 @@
         </div>
     </div>
 
-    <script src="data.js?v=53"></script>
-    <script src="app.js?v=53"></script>
+    <!-- Edit History Modal -->
+    <div class="edit-history-overlay" id="editHistoryOverlay">
+        <div class="edit-history-modal">
+            <div class="edit-history-header">
+                <span class="edit-history-title" id="lblEditHistory">Edit History</span>
+                <button class="btn btn-sm" onclick="closeEditHistory()">×</button>
+            </div>
+            <div class="edit-history-body" id="editHistoryBody"></div>
+            <div class="edit-history-footer">
+                <button class="btn" id="btnEditHistoryClose" onclick="closeEditHistory()">Close</button>
+                <button class="btn btn-accent" id="btnSubmitChanges" onclick="openSubmitModal()">Submit Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Modal -->
+    <div class="submit-overlay" id="submitOverlay">
+        <div class="submit-modal">
+            <div class="submit-header">
+                <span id="lblSubmitTitle">Submit Your Corrections</span>
+                <button class="btn btn-sm" onclick="closeSubmitModal()">×</button>
+            </div>
+            <div class="submit-body">
+                <p id="lblSubmitDesc" style="color:#666;font-size:13px;margin-bottom:12px;">Your corrections help make LangMap better for everyone. Name and email are optional.</p>
+                <label id="lblSubmitName">Name / Nickname (optional)<br><input type="text" id="submitName" placeholder="Anonymous" style="width:100%;padding:6px 8px;margin:4px 0 12px;border:1px solid #ddd;border-radius:4px;"></label>
+                <label id="lblSubmitEmail">Email (optional)<br><input type="email" id="submitEmail" placeholder="you@example.com" style="width:100%;padding:6px 8px;margin:4px 0 12px;border:1px solid #ddd;border-radius:4px;"></label>
+                <input type="text" id="submitWebsite" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+                <div id="submitStatus" class="submit-status"></div>
+            </div>
+            <div class="submit-footer">
+                <button class="btn" id="btnSubmitCancel" onclick="closeSubmitModal()">Cancel</button>
+                <button class="btn btn-accent" id="btnSubmitDo" onclick="submitChanges()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js?v=58"></script>
+    <script src="lang_names.js?v=2"></script>
+    <script src="app.js?v=58"></script>
+    <script>initCtaBanner();</script>
 </body>
 </html>
