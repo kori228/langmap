@@ -3113,7 +3113,7 @@ const LANG_DATA = {
   // zkt Khitan wordEvidence: Codex 3 noted 17/20 cells are too strong for partly-
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
-  zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
+  zkt: { name: 'Khitan', native: '𘱿𘱤 (qid.i)', lat: 43.97, lng: 119.41,
     // scriptDisplayPolicy (Audit Task 119): Khitan Small Script
     // (U+18B00–U+18CFF, Unicode 13.0, ~470 chars in the Noto Sans Khitan
     // Small Script font) is only partially deciphered. Most published
