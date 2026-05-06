@@ -427,7 +427,22 @@
         }
         .lang-info-panel .close-btn:hover { color: #333; }
         .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; padding-right: 130px; }
-        .lang-info-panel .native-name { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .lang-info-panel .native-name {
+            font-size: 14px; color: #666; margin-bottom: 10px;
+            /* Carry the same historical-script font stack as map labels so
+               native names like 𘱿𘱤 (Khitan Small Script), 𐎈 (Ugaritic),
+               etc. render where the corresponding Noto font is installed. */
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Noto Sans Tibetan",
+                "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
+                "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
+                "Noto Sans Khitan Small Script", "BabelStone Khitan Small Glyphs",
+                "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
+                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
+                "Noto Sans Coptic", "Noto Sans New Tai Lue",
+                Georgia, "Times New Roman", serif;
+        }
         .lang-info-panel table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
         .lang-info-panel td:first-child { font-weight: 600; color: #555; width: 90px; white-space: nowrap; }
@@ -504,6 +519,17 @@
         .compare-table thead .lang-name { display: block; }
         .compare-table thead .native-name {
             font-size: 11px; color: #888; font-weight: 400; display: block;
+            /* Same historical-script fallback chain as the modal native-name. */
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Noto Sans Tibetan",
+                "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
+                "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
+                "Noto Sans Khitan Small Script", "BabelStone Khitan Small Glyphs",
+                "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
+                "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
+                "Noto Sans Coptic", "Noto Sans New Tai Lue",
+                Georgia, "Times New Roman", serif;
         }
         .compare-table thead .remove-col {
             background: none; border: none; cursor: pointer; color: #bbb;
@@ -780,7 +806,7 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=103"></script>
+    <script src="wordmap_data.js?v=104"></script>
     <script src="meta_i18n_ext.js?v=8"></script>
     <script src="meta_i18n_coverage.js?v=1"></script>
     <script src="lang-filter.js?v=25"></script>
