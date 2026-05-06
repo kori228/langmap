@@ -380,4 +380,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Nyamwezi (nym), Embu (ebu), Limbu (lif) — Tanzania + Kenya + Nepal Bantu/Sino-Tibetan gaps.
+    const ADDED12 = {
+        nym: { en: 'Nyamwezi', ja: 'ニャムウェジ語', ko: '냠웨지어', zh: '尼亚姆韦齐语', yue: '尼亞姆韋齊語',
+               vi: 'Tiếng Nyamwezi', th: 'ภาษาเนียมเวซี', id: 'Nyamwezi', hi: 'न्यामवेज़ी',
+               de: 'Nyamwezi', fr: 'Nyamwezi', it: 'Nyamwezi',
+               es_eu: 'Nyamwezi', es_mx: 'Nyamwezi', pt_eu: 'Nyamwezi', pt_br: 'Nyamwezi',
+               ru: 'Ньямвези', uk: 'Ньямвезі', ar: 'النيامويزية', he: 'ניאמווזי', sw: 'Kinyamwezi' },
+        ebu: { en: 'Embu', ja: 'エンブ語', ko: '엠부어', zh: '恩布语', yue: '恩布語',
+               vi: 'Tiếng Embu', th: 'ภาษาเอ็มบู', id: 'Embu', hi: 'एम्बु',
+               de: 'Embu', fr: 'Embu', it: 'Embu',
+               es_eu: 'Embu', es_mx: 'Embu', pt_eu: 'Embu', pt_br: 'Embu',
+               ru: 'Эмбу', uk: 'Ембу', ar: 'الإمبو', he: 'אמבו', sw: 'Kiembu' },
+        lif: { en: 'Limbu', ja: 'リンブー語', ko: '림부어', zh: '林布语', yue: '林布語',
+               vi: 'Tiếng Limbu', th: 'ภาษาลิมบู', id: 'Limbu', hi: 'लिम्बू',
+               de: 'Limbu', fr: 'Limbou', it: 'Limbu',
+               es_eu: 'Limbu', es_mx: 'Limbu', pt_eu: 'Limbu', pt_br: 'Limbu',
+               ru: 'Лимбу', uk: 'Лімбу', ar: 'اللمبو', he: 'לימבו', sw: 'Kilimbu' },
+    };
+    for (const code of Object.keys(ADDED12)) {
+        for (const ui of Object.keys(ADDED12[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED12[code][ui];
+            }
+        }
+    }
 })();

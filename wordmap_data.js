@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 645 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 648 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -167,6 +167,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'suk'; Glottolog suku1261; Maganga & Schadeberg (1992) Kanuri Comparative Lexicon.
   suk: { name: 'Sukuma', native: 'Kisukuma', lat: -2.52, lng: 32.90, // Mwanza
     words: { water:['minzi','minzi'], fire:['moto','moto'], sun:['ilyuva','iʎuβa'], moon:['ng\'wezi','ŋweːzi'], mother:['mayu','majʊ'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kuhwa','kuhwa'], love:['butogwa','βutoɡwa'], heart:['ngholo','ŋɡoːlo'], tree:['mti','mti'], house:['kaya','kaja'], dog:['mbwa','mbwa'], cat:['kalulu','kalulu'], hand:['nkhono','ŋkono'], eye:['liso','liso'], hello:['mwangaluka','mwaŋɡaluka'], thanks:['nakulumba','nakulumba'], one:['imo','imo'], good:['shihi','ʃihi'] }},
+  // Nyamwezi — Bantu F22, sister to Sukuma in dialect continuum, ~1M speakers, Tanzania (Tabora region).
+  // Sources: Ethnologue 27 'nym'; Glottolog nyam1276; Maganga & Schadeberg (1992).
+  nym: { name: 'Nyamwezi', native: 'Kinyamwezi', lat: -5.07, lng: 32.83, // Tabora
+    words: { water:['minzi','minzi'], fire:['moto','moto'], sun:['izuβa','izuβa'], moon:['ng\'wezi','ŋweːzi'], mother:['mayu','majʊ'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunywa','kuɲwa'], love:['butogwa','butoɡwa'], heart:['mtima','mtima'], tree:['mti','mti'], house:['kaya','kaja'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ikoβo','ikoβo'], eye:['liso','liso'], hello:['mwadita','mwadita'], thanks:['twaβakaβa','twabakaba'], one:['imo','imo'], good:['lihi','liçi'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -1263,6 +1267,10 @@ const LANG_DATA = {
   // Kamba — Kenyan Bantu E70 (Audit Task 149 Batch 3 partial)
   kam: { name: 'Kamba', native: 'Kĩkamba', lat: -1.52, lng: 37.27, // Machakos
     words: { water:['kĩw\'ũ','kiwu'], fire:['mwaki','mwaki'], sun:['syũa','sjua'], moon:['mwei','mwei'], mother:['mwaitũ','mwaitu'], father:['asa','asa'], eat:['kũya','kuja'], drink:['kũnywa','kuɲwa'], love:['wendo','wendo'], heart:['ngoo','ŋɡoː'], tree:['mũtĩ','muti'], house:['nyũmba','ɲumba'], dog:['ngitĩ','ŋɡiti'], cat:['mbaka','mbaka'], hand:['kw\'oko','kʼoko'], eye:['ĩtho','iθo'], hello:['mwĩaĩle','mwiaile'], thanks:['nĩ vinya','ni viɲa'], one:['ĩmwe','imwe'], good:['museo','museo'] }},
+  // Embu — Bantu E52, Mount Kenya cluster, ~430K speakers, Kenya. Sister to Meru (mer) and Kikuyu (ki).
+  // Sources: Ethnologue 27 'ebu'; Glottolog embu1242.
+  ebu: { name: 'Embu', native: 'Kĩembu', lat: -0.53, lng: 37.45, // Embu
+    words: { water:['mai','mai'], fire:['mwaki','mwaki'], sun:['rĩũa','ɾiua'], moon:['mweri','mweɾi'], mother:['mami','mami'], father:['baba','baba'], eat:['kũrĩa','kuɾia'], drink:['kũnyua','kuɲua'], love:['wendo','wendo'], heart:['ngoro','ŋɡoɾo'], tree:['mũtĩ','muti'], house:['nyũmba','ɲumba'], dog:['ngui','ŋɡui'], cat:['nyau','ɲau'], hand:['guoko','ɡuoko'], eye:['riitho','ɾiːθo'], hello:['mwega','mweɡa'], thanks:['nĩ baba','ni baba'], one:['ĩmwe','imwe'], good:['mwega','mweɡa'] }},
   tn: { name: 'Tswana', native: 'Setswana', lat: -24.65, lng: 25.91, // Gaborone
     words: { water:['metsi','metsi'], fire:['molelo','moleːlo'], sun:['letsatsi','letsatsi'], moon:['ngwedi','ŋwedi'], mother:['mmê','mːɛ'], father:['rrê','rːɛ'], eat:['ja','dʒa'], drink:['nwa','nwa'], love:['lerato','leɾato'], heart:['pelo','peːlo'], tree:['setlhare','setɬʼaɾe'], house:['ntlo','ntɬo'], dog:['ntša','ntʃa'], cat:['katse','katse'], hand:['seatla','seatɬa'], eye:['leitlho','leitɬʼo'], hello:['dumela','dumeːla'], thanks:['ke a leboga','ke a leboɣa'], one:['nngwe','ŋːwe'], good:['siame','siaːme'] }},
   st: { name: 'Sesotho', native: 'Sesotho', lat: -29.31, lng: 27.49, // Maseru
@@ -1395,6 +1403,10 @@ const LANG_DATA = {
     words: { water:['ꯏꯁꯤꯡ','isiŋ'], fire:['ꯃꯩ','mei'], sun:['ꯅꯨꯃꯤꯠ','numit'], moon:['ꯊꯥ','tʰaː'], mother:['ꯏꯃꯥ','ima'], father:['ꯏꯄꯥ','ipa'], eat:['ꯆꯥꯕ','tʃaːba'], drink:['ꯊꯛꯄ','tʰakpa'], love:['ꯅꯨꯡꯁꯤꯕ','nuŋsiba'], heart:['ꯊꯋꯥꯏ','tʰawai'], tree:['ꯐꯨꯂꯥꯡ','pʰulaŋ'], house:['ꯌꯨꯝ','jum'], dog:['ꯍꯨꯏ','hui'], cat:['ꯍꯧꯗꯣꯡ','houdoŋ'], hand:['ꯈꯨꯠ','kʰut'], eye:['ꯃꯤꯠ','mit'], hello:['ꯈꯨꯔꯨꯝꯖꯔꯤ','kʰuɾumdʒaɾi'], thanks:['ꯊꯥꯒꯠꯆꯔꯤ','tʰaːɡattʃaɾi'], one:['ꯑꯃ','ama'], good:['ꯐꯕ','pʰaba'] }},
   new: { name: 'Newari', native: 'नेपाल भाषा', lat: 27.71, lng: 85.32, // Kathmandu
     words: { water:['ला','la'], fire:['मि','mi'], sun:['सूर्य','surja'], moon:['तिमिला','timila'], mother:['मां','maː'], father:['बौ','bau'], eat:['नये','naje'], drink:['तये','taje'], love:['माय','maj'], heart:['नुगः','nuɡʌ'], tree:['सिमा','sima'], house:['छें','tʃʰẽ'], dog:['खिचा','kʰitʃa'], cat:['भौंचा','bʰaũtʃa'], hand:['ल्हाः','lʱaː'], eye:['मिखा','mikʰa'], hello:['ज्वजलपा','dʒwadʒalpa'], thanks:['सुभाय','subʱaj'], one:['छ','tʃʰa'], good:['बःलाः','bʌlaː'] }},
+  // Limbu — Sino-Tibetan (Kiranti), ~340K speakers, eastern Nepal + Sikkim. Has its own native Sirijanga script (Unicode 5.1).
+  // Sources: Ethnologue 27 'lif'; Glottolog limb1266; van Driem (1987) A Grammar of Limbu.
+  lif: { name: 'Limbu', native: 'ᤕᤰᤌᤢᤱ ᤐᤠᤴ', lat: 26.66, lng: 87.27, // Dhankuta
+    words: { water:['ᤁᤡᤱ','tʃʰwaɾaŋ'], fire:['ᤔᤡ','mi'], sun:['ᤛᤡᤥᤔᤡ','ɲaːmpʰʌ'], moon:['ᤍᤣ','laːba'], mother:['ᤔᤠᤔᤠ','aːmaː'], father:['ᤐᤠᤐᤠ','aːbaː'], eat:['ᤆᤠᤔᤠ','tʃaːmaː'], drink:['ᤌᤢᤴᤔᤠ','tʰuŋmaː'], love:['ᤔᤡᤌᤡ','mitʰi'], heart:['ᤛᤡᤰ','sik'], tree:['ᤛᤡᤱ','siŋ'], house:['ᤜᤡᤶ','him'], dog:['ᤁᤣᤳᤇᤡ','keptʃi'], cat:['ᤐᤡᤛᤡ','pisi'], hand:['ᤜᤢᤰ','huk'], eye:['ᤔᤡᤰ','mik'], hello:['ᤐᤣᤜᤢᤙᤣ','peːhuːje'], thanks:['ᤐᤡᤍᤠᤱ','pidaːŋ'], one:['ᤏᤡᤳ','tʰik'], good:['ᤖᤣ','nuba'] }},
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
   lus: { name: 'Mizo', native: 'Mizo ṭawng', lat: 23.73, lng: 92.72, // Aizawl
