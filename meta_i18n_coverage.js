@@ -15766,6 +15766,19 @@ const COMMON_OVERRIDES = [
      'लैटिन (/q/ के लिए q)',
      'ละติน (ใช้ q แทน /q/)',
      'La-tinh (q cho /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Same compositional bug.
+    ['Latin (with ṭ for /tʰ/)',
+     'ラテン（/tʰ/ に ṭ を使用）',
+     '라틴 문자 (/tʰ/에 ṭ 사용)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     '拉丁(以 ṭ 表示 /tʰ/)',
+     'латиница (ṭ для /tʰ/)',
+     'латиниця (ṭ для /tʰ/)',
+     'اللاتينية (ṭ لـ /tʰ/)',
+     'לטינית (ṭ לפונמת /tʰ/)',
+     'लैटिन (/tʰ/ के लिए ṭ)',
+     'ละติน (ใช้ ṭ แทน /tʰ/)',
+     'La-tinh (ṭ cho /tʰ/)'],
     // Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)
     ['Latin (with apostrophes for ejectives, x̱ for /x/, ƛ for /tɬ/)',
      'ラテン（放出音用アポストロフィ、/x/にx̱、/tɬ/にƛ）',
@@ -16293,6 +16306,12 @@ const COMMON_PHRASES_LATIN = [
     ['Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka'],
     // Latin (with q for /q/) — Greenlandic (kl). Latin-UI version for de/fr/es/it/pt/id/sw.
     ['Latin (with q for /q/)', 'Lateinisch (mit q für /q/)', 'latin (avec q pour /q/)', 'latín (con q para /q/)', 'latino (con q per /q/)', 'latim (com q para /q/)', 'Latin (dengan q untuk /q/)', 'Kilatini (q kwa /q/)'],
+    // Latin (with ṭ for /tʰ/) — Mizo (lus). Latin-UI version.
+    ['Latin (with ṭ for /tʰ/)', 'Lateinisch (mit ṭ für /tʰ/)', 'latin (avec ṭ pour /tʰ/)', 'latín (con ṭ para /tʰ/)', 'latino (con ṭ per /tʰ/)', 'latim (com ṭ para /tʰ/)', 'Latin (dengan ṭ untuk /tʰ/)', 'Kilatini (ṭ kwa /tʰ/)'],
+    // Latin (with ʼ for clicks/glottal) — Hadza (hts). Latin-UI version.
+    ['Latin (with ʼ for clicks/glottal)', 'Lateinisch (mit ʼ für Klicks/Stimmritzenverschluss)', 'latin (avec ʼ pour clics/coup de glotte)', 'latín (con ʼ para chasquidos/oclusiva glotal)', 'latino (con ʼ per click/occlusiva glottidale)', 'latim (com ʼ para clique/oclusiva glotal)', 'Latin (dengan ʼ untuk klik/glotal)', 'Kilatini (ʼ kwa milio ya kibofyo / kifaranga)'],
+    // Latin (with mw, ng, oa for special phonemes) — Pohnpeian (pon). Latin-UI version.
+    ['Latin (with mw, ng, oa for special phonemes)', 'Lateinisch (mit mw, ng, oa für besondere Phoneme)', 'latin (avec mw, ng, oa pour phonèmes spéciaux)', 'latín (con mw, ng, oa para fonemas especiales)', 'latino (con mw, ng, oa per fonemi speciali)', 'latim (com mw, ng, oa para fonemas especiais)', 'Latin (dengan mw, ng, oa untuk fonem khusus)', 'Kilatini (mw, ng, oa kwa fonimu maalum)'],
 ];
 
 const LATIN_LANG_ORDER = ['de','fr','es','it','pt','id','sw'];
