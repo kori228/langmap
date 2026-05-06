@@ -360,4 +360,24 @@ const LANG_NAMES = {
             }
         }
     }
+    // Zarma (dje), Meru (mer) — Niger + Kenya gaps.
+    const ADDED11 = {
+        dje: { en: 'Zarma', ja: 'ザルマ語', ko: '자르마어', zh: '扎尔马语', yue: '扎爾馬語',
+               vi: 'Tiếng Zarma', th: 'ภาษาซาร์มา', id: 'Zarma', hi: 'ज़ार्मा',
+               de: 'Zarma', fr: 'Zarma', it: 'Zarma',
+               es_eu: 'Zarma', es_mx: 'Zarma', pt_eu: 'Zarma', pt_br: 'Zarma',
+               ru: 'Зарма', uk: 'Зарма', ar: 'الزرما', he: 'זרמה', sw: 'Kizarma' },
+        mer: { en: 'Meru', ja: 'メル語', ko: '메루어', zh: '梅鲁语', yue: '梅魯語',
+               vi: 'Tiếng Meru', th: 'ภาษาเมรู', id: 'Meru', hi: 'मेरू',
+               de: 'Meru', fr: 'Méru', it: 'Meru',
+               es_eu: 'Meru', es_mx: 'Meru', pt_eu: 'Meru', pt_br: 'Meru',
+               ru: 'Меру', uk: 'Меру', ar: 'الميرو', he: 'מרו', sw: 'Kimeru' },
+    };
+    for (const code of Object.keys(ADDED11)) {
+        for (const ui of Object.keys(ADDED11[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED11[code][ui];
+            }
+        }
+    }
 })();
