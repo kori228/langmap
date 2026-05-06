@@ -604,6 +604,7 @@
                    aria-controls="lang-search-results" aria-activedescendant=""
                    style="width:200px;padding:5px 9px;font-size:12px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#333">
             <button type="button" id="lang-random" title="Random language"
+                    aria-label="Random language"
                     style="padding:5px 8px;font-size:14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#555;cursor:pointer;line-height:1">🎲</button>
             <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
@@ -974,6 +975,7 @@
             ariaEraGroup:      { en:'Era (modern / historical)', ja:'時代（現代/歴史）', ko:'시대 (현대/역사)', zh:'时代（现代/历史）', yue:'時代（現代／歷史）', vi:'Thời kỳ (hiện đại / lịch sử)', th:'ยุค (สมัยใหม่ / ประวัติศาสตร์)', id:'Era (modern / historis)', hi:'युग (आधुनिक / ऐतिहासिक)', de:'Epoche (modern / historisch)', fr:'Époque (moderne / historique)', it:'Epoca (moderna / storica)', es:'Época (moderna / histórica)', pt:'Era (moderna / histórica)', ru:'Эпоха (современная / историческая)', uk:'Епоха (сучасна / історична)', ar:'الحقبة (حديثة / تاريخية)', he:'תקופה (מודרני / היסטורי)', sw:'Enzi (kisasa / kihistoria)' },
             modernLangTooltip: { en:'modern lang', ja:'現代言語', ko:'현대어', zh:'现代语言', yue:'現代語言', vi:'ngôn ngữ hiện đại', th:'ภาษาสมัยใหม่', id:'bahasa modern', hi:'आधुनिक भाषा', de:'moderne Sprache', fr:'langue moderne', it:'lingua moderna', es:'idioma moderno', pt:'idioma moderno', ru:'современный язык', uk:'сучасна мова', ar:'لغة حديثة', he:'שפה מודרנית', sw:'lugha ya kisasa' },
             historicalLangTooltip: { en:'historical lang', ja:'歴史言語', ko:'역사 언어', zh:'历史语言', yue:'歷史語言', vi:'ngôn ngữ lịch sử', th:'ภาษาประวัติศาสตร์', id:'bahasa historis', hi:'ऐतिहासिक भाषा', de:'historische Sprache', fr:'langue historique', it:'lingua storica', es:'idioma histórico', pt:'idioma histórico', ru:'исторический язык', uk:'історична мова', ar:'لغة تاريخية', he:'שפה היסטורית', sw:'lugha ya kihistoria' },
+            ariaRandomLang:    { en:'Random language', ja:'ランダムな言語', ko:'무작위 언어', zh:'随机语言', yue:'隨機語言', vi:'Ngôn ngữ ngẫu nhiên', th:'ภาษาแบบสุ่ม', id:'Bahasa acak', hi:'यादृच्छिक भाषा', de:'Zufällige Sprache', fr:'Langue aléatoire', it:'Lingua casuale', es:'Idioma aleatorio', pt:'Idioma aleatório', ru:'Случайный язык', uk:'Випадкова мова', ar:'لغة عشوائية', he:'שפה אקראית', sw:'Lugha ya nasibu' },
             // Audit Task 112: era legend explanation. Modern mode shows
             // only modern languages; historical mode adds historical
             // entries plus their modern descendants as cross-reference
@@ -1069,6 +1071,10 @@
                 // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
+                // Refresh the ON/OFF text in the user's UI language.
+                if (typeof updateOnOff === 'function') {
+                    updateOnOff(el, el.classList.contains('active'));
+                }
             });
             // Localize search input placeholder (Audit i18n gap fix)
             const searchInput = document.getElementById('lang-search');
@@ -1091,6 +1097,8 @@
                 ['font-size',       'ariaFontSize',    'aria-label'],
                 ['info-close',      'ariaCloseInfo',   'aria-label'],
                 ['era-switch',      'ariaEraGroup',    'aria-label'],
+                ['lang-random',     'ariaRandomLang',  'aria-label'],
+                ['lang-random',     'ariaRandomLang',  'title'],
             ];
             for (const [id, key, attr] of ariaTargets) {
                 const el = document.getElementById(id);
@@ -1113,6 +1121,22 @@
             rebuildWordSelect();
             // Audit Task 112: refresh era help tooltip after labels update
             if (typeof updateEraHelp === 'function') updateEraHelp();
+            // Refresh Compare UI labels for the current UI lang.
+            try {
+                const fabLbl = document.querySelector('#compare-fab .compare-fab-label');
+                if (fabLbl && typeof compareT === 'function') fabLbl.textContent = compareT('fab');
+                const fabBtn = document.getElementById('compare-fab');
+                if (fabBtn && typeof compareT === 'function') {
+                    fabBtn.setAttribute('aria-label', compareT('fab'));
+                    fabBtn.title = compareT('fab');
+                }
+                const cmpTitle = document.querySelector('#compare-panel .compare-title');
+                if (cmpTitle && typeof compareT === 'function') cmpTitle.textContent = compareT('title');
+                const cmpClear = document.getElementById('compare-clear');
+                if (cmpClear && typeof compareT === 'function') cmpClear.textContent = compareT('clear');
+                const cmpClose = document.getElementById('compare-close');
+                if (cmpClose && typeof compareT === 'function') cmpClose.setAttribute('aria-label', compareT('title'));
+            } catch (e) { /* compareT may not yet be defined during early init */ }
         }
 
         uiLangSelect.addEventListener('change', () => {
@@ -1226,9 +1250,14 @@
         eraModern.addEventListener('click', () => setEra(false));
         eraHistorical.addEventListener('click', () => setEra(true));
 
+        const ON_LBL  = { en:'ON',  ja:'オン',  ko:'켜짐',   zh:'开',    yue:'開',    vi:'BẬT', th:'เปิด',  id:'AKTIF',   hi:'चालू',     de:'EIN',   fr:'ACTIF',  it:'ATTIVO',  es:'ACT.',  pt:'LIG.',  ru:'ВКЛ', uk:'УВІМК', ar:'تشغيل',   he:'פעיל',  sw:'WASHA' };
+        const OFF_LBL = { en:'OFF', ja:'オフ',  ko:'꺼짐',   zh:'关',    yue:'關',    vi:'TẮT', th:'ปิด',   id:'NONAKTIF', hi:'बंद',      de:'AUS',   fr:'INACTIF', it:'INATTIVO', es:'INACT.', pt:'DESLIG.', ru:'ВЫКЛ', uk:'ВИМКН', ar:'إيقاف',  he:'כבוי',  sw:'ZIMA' };
         function updateOnOff(btn, on) {
             const oo = btn.querySelector('.onoff');
-            if (oo) oo.textContent = on ? 'ON' : 'OFF';
+            if (!oo) return;
+            const ui = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            const map = on ? ON_LBL : OFF_LBL;
+            oo.textContent = map[ui] || map.en;
         }
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
@@ -2917,14 +2946,8 @@
             // Pass 32: Add-to-compare button (renders before sources/footer area)
             (() => {
                 const inCmp = (window.__compareList || []).indexOf(code) !== -1;
-                const cmpI18n = {
-                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
-                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
-                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
-                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
-                };
-                const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
-                const lbl = inCmp ? lObj.remove : lObj.add;
+                // Reuse the global COMPARE_I18N table (full UI-lang coverage).
+                const lbl = inCmp ? compareT('remove') : compareT('add');
                 const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
                 html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
             })();
@@ -3244,10 +3267,29 @@
 
         // i18n labels for compare UI (subset; falls back to en)
         const COMPARE_I18N = {
-            en: { title: 'Language comparison', clear: 'Clear', fab: 'Compare', add: '+ Add to compare', remove: '✓ In comparison (remove)', max: 'Maximum 8 languages' },
-            ja: { title: '言語比較', clear: 'クリア', fab: '比較', add: '+ 比較に追加', remove: '✓ 比較中（削除）', max: '最大 8 言語まで' },
-            ko: { title: '언어 비교', clear: '초기화', fab: '비교', add: '+ 비교에 추가', remove: '✓ 비교 중 (제거)', max: '최대 8개 언어' },
-            zh: { title: '语言对比', clear: '清空', fab: '对比', add: '+ 加入对比', remove: '✓ 对比中（移除）', max: '最多 8 种语言' },
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
         };
         function compareT(key) {
             const base = uiLang.split('_')[0];
