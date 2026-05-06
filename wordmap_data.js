@@ -211,8 +211,10 @@ const LANG_DATA = {
   // beh/pteah) with IPA. Phnom Penh standard.
   km: { name: 'Khmer', native: 'ខ្មែរ', lat: 11.56, lng: 104.92, // Phnom Penh
     words: { water:['ទឹក','tɨk'], fire:['ភ្លើង','pʰlɤːŋ'], sun:['ព្រះអាទិត្យ','prĕəh ʔaːtɨt'], moon:['ព្រះចន្ទ','prĕəh cɑn'], mother:['ម៉ែ','mæː'], father:['ប៉ា','paː'], eat:['ញ៉ាំ','ɲam'], drink:['ផឹក','pʰək'], love:['ស្នេហា','sneːhaː'], heart:['បេះដូង','bɛh doːŋ'], tree:['ដើមឈើ','daəm cʰɤː'], house:['ផ្ទះ','pdɛəh'], dog:['ឆ្កែ','cʰkæː'], cat:['ឆ្មា','cʰmaː'], hand:['ដៃ','daj'], eye:['ភ្នែក','pnɛːk'], hello:['សួស្តី','suəsdəj'], thanks:['អរគុណ','ʔɔːkun'], one:['មួយ','muəj'], good:['ល្អ','lʔɑː'] }},
+  // Audit Task 146: Lao tones added per Wiktionary Vientiane standard (6-tone
+  // system, Chao tone letters consistent with the Thai row above).
   lo: { name: 'Lao', native: 'ລາວ', lat: 17.97, lng: 102.63, // Vientiane
-    words: { water:['ນ້ຳ','nam'], fire:['ໄຟ','faj'], sun:['ຕາເວັນ','taːwen'], moon:['ດວງເດືອນ','duaŋ dɯːan'], mother:['ແມ່','mɛː'], father:['ພໍ່','pʰɔː'], eat:['ກິນ','kin'], drink:['ດື່ມ','dɯːm'], love:['ຮັກ','hak'], heart:['ໃຈ','tɕaj'], tree:['ຕົ້ນໄມ້','ton maj'], house:['ເຮືອນ','hɯːan'], dog:['ໝາ','maː'], cat:['ແມວ','mɛːw'], hand:['ມື','mɯː'], eye:['ຕາ','taː'], hello:['ສະບາຍດີ','sabaj diː'], thanks:['ຂອບໃຈ','kʰɔːp tɕaj'], one:['ໜຶ່ງ','nɯŋ'], good:['ດີ','diː'] }},
+    words: { water:['ນ້ຳ','naːm˥˩'], fire:['ໄຟ','faj˩˧'], sun:['ຕາເວັນ','taː˩˧ ven˩'], moon:['ດວງເດືອນ','duaŋ˧ dɯːan˨˩'], mother:['ແມ່','mɛː˩'], father:['ພໍ່','pʰɔː˩'], eat:['ກິນ','kin˩˧'], drink:['ດື່ມ','dɯːm˩'], love:['ຮັກ','hak˥'], heart:['ໃຈ','tɕaj˩˧'], tree:['ຕົ້ນໄມ້','ton˥˩ maj˥˩'], house:['ເຮືອນ','hɯːan˥'], dog:['ໝາ','maː˩˧'], cat:['ແມວ','mɛːw˥'], hand:['ມື','mɯː˥'], eye:['ຕາ','taː˩˧'], hello:['ສະບາຍດີ','sa˨ baːj˩˧ diː˩˧'], thanks:['ຂອບໃຈ','kʰɔːp˥ tɕaj˩˧'], one:['ໜຶ່ງ','nɯŋ˩'], good:['ດີ','diː˩˧'] }},
   // === African ===
   yo: { name: 'Yoruba', native: 'Yorùbá', lat: 7.39, lng: 3.93, // Ibadan (Yoruba historical/cultural center)
     words: { water:['omi','omi'], fire:['iná','iná'], sun:['oòrùn','oòɾùn'], moon:['oṣù','oʃù'], mother:['ìyá','ìjá'], father:['bàbá','bàbá'], eat:['jẹ','dʒɛ'], drink:['mu','mu'], love:['ìfẹ́','ìfɛ́'], heart:['ọkàn','ɔkàn'], tree:['igi','iɡi'], house:['ilé','ilé'], dog:['ajá','adʒá'], cat:['ológbò','olóɡbò'], hand:['ọwọ́','ɔwɔ́'], eye:['ojú','odʒú'], hello:['ẹ kú','ɛ kú'], thanks:['ẹ ṣé','ɛ ʃé'], one:['ọ̀kan','ɔ̀kan'], good:['dára','dáɾa'] }},
@@ -1468,8 +1470,12 @@ const LANG_DATA = {
   // Tibeto-Burman / Karen (Kra-Dai for shn)
   ksw: { name: 'Sgaw Karen', native: 'ကညီကျိာ်', lat: 16.89, lng: 97.63, // Hpa-an
     words: { water:['ထံ','tʰaŋ'], fire:['မ့ၣ်ဖီ','mʔiŋ pʰi'], sun:['မုၢ်','mu'], moon:['လါ','la'], mother:['မိၢ်','mi'], father:['ပၢ်','pa'], eat:['အီၣ်','ʔiŋ'], drink:['အီ','ʔi'], love:['အဲၣ်','ʔeŋ'], heart:['သး','θa'], tree:['သ့ၣ်','θiŋ'], house:['ဟံၣ်','haŋ'], dog:['ထွံၣ်','tʰwiŋ'], cat:['သိမံၣ်','θimaŋ'], hand:['စု','su'], eye:['မဲာ်ချံ','mɛ tʃʰa'], hello:['ဘၣ်တၢ်ဆၢ','baŋ ta sa'], thanks:['တၢ်ဘျုး','ta bju'], one:['တ','ta'], good:['ဂ့ၤ','ɣɛ'] }},
+  // Audit Task 146: Lahu surface normalized to consistent Matisoff
+  // romanization with POST-vowel tone markers (no combining diacritics
+  // in surface). Matisoff conventions: ˆ = high, ˇ = low, ˉ = mid,
+  // unmarked = mid. IPA column unchanged (combining diacritics OK there).
   lhu: { name: 'Lahu', native: 'Lahu hkâw', lat: 22.97, lng: 100.05, // Mengmang
-    words: { water:['ɨ̂','ɯ̂'], fire:['a-mí','amí'], sun:['mvuhˇ-nyiˉ','mvuʔ ɲí'], moon:['ha-pa','hapa'], mother:['e','e'], father:['a-pa','apa'], eat:['caˆ','tsâ'], drink:['dawˇ','dàʔ'], love:['hâˆ','hâ'], heart:['nyiˉ-ma','ɲíma'], tree:['shi-pa','ʃìpa'], house:['yâˇ','jâʔ'], dog:['phuˇ-pheh','pʰùpʰeh'], cat:['maˇ-niˆ','mâníʔ'], hand:['lɔˆ','lɔ̂'], eye:['mɛhˇ','mɛ̂ʔ'], hello:['ô-bo-haˇ','óbohâʔ'], thanks:['a-bo-shaˇ','abôʃâʔ'], one:['tê','tê'], good:['dâˇ','dâʔ'] }},
+    words: { water:['ɨˆ','ɯ̂'], fire:['a-mí','amí'], sun:['mvuhˇ-nyiˉ','mvuʔ ɲí'], moon:['ha-pa','hapa'], mother:['e','e'], father:['a-pa','apa'], eat:['caˆ','tsâ'], drink:['dawˇ','dàʔ'], love:['haˆ','hâ'], heart:['nyiˉ-ma','ɲíma'], tree:['shi-pa','ʃìpa'], house:['yaˇ','jâʔ'], dog:['phuˇ-pheh','pʰùpʰeh'], cat:['maˇ-niˆ','mâníʔ'], hand:['lɔˆ','lɔ̂'], eye:['mɛhˇ','mɛ̂ʔ'], hello:['ô-bo-haˇ','óbohâʔ'], thanks:['a-bo-shaˇ','abôʃâʔ'], one:['tê','tê'], good:['daˇ','dâʔ'] }},
   lis: { name: 'Lisu', native: 'Lisu', lat: 25.85, lng: 98.86, // Nujiang
     words: { water:['yi','ji'], fire:['a-mi','ami'], sun:['mei-lo','mejlo'], moon:['cha-mi','tʃami'], mother:['ma','ma'], father:['a-pa','apa'], eat:['dza','tsa'], drink:['dao','dao'], love:['gu-hpa','ɡupʰa'], heart:['ni-ma','nima'], tree:['shi-pa','ʃipa'], house:['hkyim','tɕim'], dog:['kwe','kwɛ'], cat:['a-nyi','aɲi'], hand:['la','la'], eye:['mai-mei','majmei'], hello:['ngo-lan','ŋolan'], thanks:['ti-tu','titu'], one:['ti','ti'], good:['nyi','ɲi'] }},
   nxq: { name: 'Naxi', native: 'Naqxi', lat: 26.86, lng: 100.23, // Lijiang

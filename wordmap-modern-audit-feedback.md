@@ -1498,3 +1498,42 @@ Pass 8〜22 累計 **54 タスク + 28 言語追加 + ja/ko/zh 100% i18n 達成*
 - Task 150 Batch H/I: jrb (Anvita Abbi 2012), nmn Taa (Traill 1985)
 
 Pass 8〜23 累計 **57 タスク + 28 言語追加 + 3 言語 IPA rebuild** (591 → 619、bo/my/km source-checked)。
+
+---
+
+## Pass 24 Sequential Cleanup (2026-05-06 part 17)
+
+### Task 146 — Lao 声調追加 + Lahu/Khmu/Mlabri/Wa 再分類
+
+| Code | 言語 | 内容 |
+|---|---|---|
+| `lo` | Lao | **Vientiane 6-tone を全 20 cells に追加**。Wiktionary Lao IPA + Enfield 2007 出典。pronunciationType: 'broad' → 'ipa'、reviewStatus: needs-rebuild → source-checked |
+| `lhu` | Lahu | Surface field を Matisoff romanization に正規化 (combining diacritics → following tone markers: ɨ̂→ɨˆ, yâˇ→yaˇ, dâˇ→daˇ)。reviewStatus: needs-rebuild → human-reviewed |
+| `mra` | Mlabri | Surface IS academic romanization (Latin + extended IPA chars per Mlabri 慣行)。surfaceType: phonetic → romanization、pronunciationType: mixed → broad、reviewStatus: needs-rebuild → human-reviewed |
+| `xkk` | Khmu | 同上。Khmu Latin orthography uses ɔ/ʔ/ɲ as part of standard alphabet |
+| `wbm` | Wa | 同上。20世紀中盤 Wa Latin orthography (cangaiʔ, khaiʔ, nyiex) is romanization |
+
+### Task 146 延期 (要 per-cell Wiktionary lookup)
+- `khb` Tai Lue: 6-tone system、声調マークの per-cell 確認が必要
+- `shn` Shan: 5-tone、同様
+
+これらは Wiktionary 各エントリーの声調番号を per-cell 確認するという本来の作業を要する。推測でマークするのは監査の禁則。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 17 (変動なし — 全 description-i18n)
+- Languages: 619
+- needs-rebuild: 8 → 4 (lo/lhu/mra/xkk/wbm 解消)
+- 残 needs-rebuild: khb/shn/zkt/(その他)
+- Cache-buster: data 94→95, meta 45→46
+
+### Task 146 残（次回以降、要 source）
+- `khb` Tai Lue, `shn` Shan: per-cell Wiktionary tone lookup 待ち
+- `id`/`ms`/`tl`: column-policy 確認 (orthography で確定済を re-verify)
+- `ta`/`te`: register/POS 決定 + per-cell rebuild
+
+### 残（外部出典待ち）
+- Task 144: UI 多言語化（別スレッド進行中）
+- Task 149 Batch 4: oto Otomi (Lastra 1992/1997)
+- Task 150 Batch H/I: jrb (Anvita Abbi 2012), nmn Taa (Traill 1985)
+
+Pass 8〜24 累計 **57 タスク + 28 言語追加 + 4 言語 IPA rebuild + 4 言語 reclassification** (591 → 619、needs-rebuild 11 → 4)。

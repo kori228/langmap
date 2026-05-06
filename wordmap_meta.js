@@ -51,7 +51,7 @@ LANG_DATA['ceb'].meta = { family:'Austronesian', speakers:'~27M', countries:'Phi
 LANG_DATA['ilo'].meta = { family:'Austronesian', speakers:'~10M', countries:'Philippines', official:'No (regional)', script:'Latin', description:'Ilocano is the third most-spoken native language in the Philippines, dominant in the Ilocos Region of northern Luzon.' };
 LANG_DATA['tl'].meta = { family:'Austronesian', speakers:'~82M (total)', countries:'Philippines', official:'Philippines (as Filipino)', script:'Latin', description:'Tagalog is the basis for Filipino, the national language of the Philippines. It features a complex verb focus system and extensive affixation.' };
 LANG_DATA['km'].meta = { family:'Austroasiatic', speakers:'~16M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'khm', countries:'Cambodia', official:'Cambodia', script:'Khmer', description:'Khmer is non-tonal, unlike its neighbors, and has one of the largest alphabets in the world. Inscriptions date to the 7th century. IPA rebuilt per Audit Task 146 to remove romanization-style forms (preah/mae/snaehaː/beh/pteah) — Phnom Penh standard.', sources:[{type:'reference', title:'Headley (1977) — Cambodian-English Dictionary'},{type:'reference', title:'Wiktionary Khmer IPA conventions', url:'https://en.wiktionary.org/wiki/Wiktionary:Khmer_transliteration'},{type:'reference', title:'Ethnologue 27: Khmer', url:'https://www.ethnologue.com/language/khm/'}] };
-LANG_DATA['lo'].meta = { family:'Kra-Dai', speakers:'~7M', countries:'Laos', official:'Laos', script:'Lao', description:'Lao is closely related to Thai, sharing significant mutual intelligibility especially with Isan. It has six tones.' };
+LANG_DATA['lo'].meta = { family:'Kra-Dai', speakers:'~7M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'lao', countries:'Laos', official:'Laos', script:'Lao', description:'Lao is closely related to Thai, sharing significant mutual intelligibility especially with Isan. It has six tones in the Vientiane standard. Tones added per Audit Task 146 source-checked rebuild (Wiktionary Lao IPA conventions).', sources:[{type:'reference', title:'Enfield (2007) — A Grammar of Lao'},{type:'reference', title:'Wiktionary Lao IPA conventions', url:'https://en.wiktionary.org/wiki/Wiktionary:Lao_entry_guidelines'},{type:'reference', title:'Ethnologue 27: Lao', url:'https://www.ethnologue.com/language/lao/'}] };
 LANG_DATA['my'].meta = { family:'Sino-Tibetan', speakers:'~33M', speakerBasis:'L1', speakerSource:'Ethnologue 27', speakerYear:2024, iso6393:'mya', countries:'Myanmar', official:'Myanmar', script:'Myanmar (Burmese)', description:'Burmese is written in a distinctive rounded script derived from Mon. It is tonal with four tones (low ̀, high ́, creaky ̰, checked ʔ-final) and has significant Pali-Sanskrit vocabulary. Tone notation normalized per Audit Task 146 source-checked rebuild.', sources:[{type:'reference', title:'Watkins (2001) — Burmese, JIPA 31(2)'},{type:'reference', title:'Ethnologue 27: Burmese', url:'https://www.ethnologue.com/language/mya/'}] };
 LANG_DATA['mn'].meta = { family:'Mongolic', speakers:'~5M', countries:'Mongolia, China', official:'Mongolia', script:'Cyrillic / Traditional Mongolian', description:'Mongolian traces its literary tradition to the 13th-century Secret History of the Mongols. Efforts are underway to revive the traditional vertical script.' };
 LANG_DATA['fj'].meta = { family:'Austronesian', speakers:'~350,000', countries:'Fiji', official:'Fiji', script:'Latin', description:'Fijian has a relatively simple phonology, inclusive/exclusive pronoun distinction, and an important oral tradition.' };
@@ -1284,7 +1284,7 @@ const PRONUNCIATION_TYPE = {
     my: 'broad', // tone diacritics inconsistent — audit §62
     rki: 'broad',
     km: 'mixed', // audit §63 — transliteration mixed with IPA
-    lo: 'broad', // audit §61 — tones omitted
+    lo: 'ipa', // Pass 24: Vientiane tones added (audit Task 146)
     bo: 'ipa', // Pass 23: Lhasa tones added (audit Task 146)
     // Japanese / Korean
     ja: 'ipa', ja_osa: 'ipa', ja_aom: 'ipa', ja_oki: 'ipa',
@@ -1333,7 +1333,10 @@ const PRONUNCIATION_TYPE = {
     iu: 'romanization', ipk: 'romanization', kl: 'romanization',
     esu: 'romanization',
     // Surface-IPA cases (audit §54-55)
-    mra: 'mixed', xkk: 'mixed', wbm: 'mixed', lhu: 'mixed',
+    // Audit Task 146 Pass 24: surface IS academic romanization (with extended
+    // IPA chars per Khmu/Mlabri/Wa/Lahu Matisoff convention). The IPA column
+    // is consistent. Reclassified from 'mixed' to 'broad'.
+    mra: 'broad', xkk: 'broad', wbm: 'broad', lhu: 'broad',
     // Other tone-omitted Asian rows still pending (audit §51-52)
     khb: 'broad', shn: 'broad',
     // Audit Task 94 backfill: 27 non-Latin-script rows whose IPA column
@@ -1875,7 +1878,7 @@ const SURFACE_TYPE = {
     tlh: 'romanization', // Klingon Latin orthography
     jbo: 'romanization', // Lojban Latin
     // Phonetic surface (no standard orthography)
-    mra: 'phonetic', xkk: 'phonetic',
+    mra: 'romanization', xkk: 'romanization',
     // Mixed (audit §53/§55 surface contamination)
     // lhu and wbm are mainly native-script; some cells contaminated
     // — keep native-script labeling but cleanup is per-cell work
@@ -2262,7 +2265,9 @@ const REVIEW_STATUS = {
     bqi:     'source-checked', juc: 'source-checked',
     bo:      'source-checked', // Pass 23: Lhasa tones added per Wiktionary Tournadre notation
     // Rows flagged in audit Task 78 / Pass 7 as needing tone/IPA rebuild
-    lo:      'needs-rebuild',  // Lao tones almost entirely missing
+    // lo Lao: tones added in Pass 24 — promoted to source-checked
+    // (Wiktionary Vientiane 6-tone system, Chao notation)
+    lo:      'source-checked',
     // my Burmese: tone notation normalized in Pass 23 — promoted to source-checked
     // (Watkins 2001 JIPA 4-tone system: low ̀ / high ́ / creaky ̰ / checked ʔ)
     my:      'source-checked',
@@ -2273,10 +2278,14 @@ const REVIEW_STATUS = {
     // (Wiktionary Lhasa Tibetan binary HIGH/LOW notation, written-initial-derived)
     khb:     'needs-rebuild',  // Tai Lue tone marks omitted
     shn:     'needs-rebuild',  // Shan tone omitted
-    lhu:     'needs-rebuild',  // Lahu surface field has IPA/tone notation
-    mra:     'needs-rebuild',  // Mlabri uses IPA-as-surface
-    xkk:     'needs-rebuild',  // Khmu uses IPA-as-surface
-    wbm:     'needs-rebuild',  // Wa has IPA in surface forms
+    // lhu Lahu: surface normalized to Matisoff romanization in Pass 24
+    lhu:     'human-reviewed',
+    // mra/xkk/wbm: surface reclassified as academic romanization in Pass 24
+    // (each language uses extended IPA chars as part of its standard
+    // romanization, not as phonetic notation).
+    mra:     'human-reviewed',
+    xkk:     'human-reviewed',
+    wbm:     'human-reviewed',
     // Khitan: scriptDisplayPolicy not yet implemented per Audit Task 119
     zkt:     'needs-rebuild',
 };
