@@ -16186,6 +16186,33 @@ for (const [enKey, byLang] of Object.entries(COVERAGE_NOTES)) {
 // are unambiguously translatable.
 const COMMON_PHRASES_LATIN = [
     // [key, de, fr, es, it, pt, id, sw]
+    // === Round 31: basic prepositions / connectives for Latin UIs ===
+    // These let the recursive composer translate 'Latin (with X)' style
+    // strings cleanly without an explicit override per variant.
+    ['with', 'mit', 'avec', 'con', 'con', 'com', 'dengan', 'na'],
+    ['for', 'für', 'pour', 'para', 'per', 'para', 'untuk', 'kwa'],
+    ['and', 'und', 'et', 'y', 'e', 'e', 'dan', 'na'],
+    ['or', 'oder', 'ou', 'o', 'o', 'ou', 'atau', 'au'],
+    ['the', 'die', 'le', 'el', 'il', 'o', '', ''],
+    ['of', 'von', 'de', 'de', 'di', 'de', 'dari', 'wa'],
+    ['in', 'in', 'en', 'en', 'in', 'em', 'di', 'katika'],
+    ['on', 'auf', 'sur', 'en', 'su', 'em', 'di', 'juu ya'],
+    ['by', 'von', 'par', 'por', 'da', 'por', 'oleh', 'kwa'],
+    ['as', 'als', 'comme', 'como', 'come', 'como', 'sebagai', 'kama'],
+    // Common adjectives
+    ['historical', 'historisch', 'historique', 'histórico', 'storico', 'histórico', 'historis', 'kihistoria'],
+    ['extra', 'zusätzlich', 'supplémentaire', 'extra', 'extra', 'extra', 'tambahan', 'ziada'],
+    ['letters', 'Buchstaben', 'lettres', 'letras', 'lettere', 'letras', 'huruf', 'herufi'],
+    ['extra letters', 'zusätzliche Buchstaben', 'lettres supplémentaires', 'letras extra', 'lettere extra', 'letras extra', 'huruf tambahan', 'herufi za ziada'],
+    ['glottal stop', 'Stimmritzenverschluss', 'coup de glotte', 'oclusiva glotal', 'occlusiva glottidale', 'oclusiva glotal', 'glotal', 'kifaranga'],
+    ['ejectives', 'Ejektive', 'éjectives', 'eyectivas', 'eiettive', 'ejetivas', 'ejektif', 'milio'],
+    ['apostrophes', 'Apostrophen', 'apostrophes', 'apóstrofos', 'apostrofi', 'apóstrofos', 'apostrof', 'alama za apostrofi'],
+    ['retroflexes', 'retroflexe Konsonanten', 'rétroflexes', 'retroflejas', 'retroflesse', 'retroflexas', 'retrofleks', 'sauti za retroflex'],
+    ['tone diacritics', 'Tonzeichen', 'diacritiques tonals', 'diacríticos tonales', 'diacritici tonali', 'diacríticos tonais', 'diakritik nada', 'alama za toni'],
+    ['recognized minority', 'anerkannte Minderheit', 'minorité reconnue', 'minoría reconocida', 'minoranza riconosciuta', 'minoria reconhecida', 'minoritas yang diakui', 'wachache wanaotambuliwa'],
+    ['recognized', 'anerkannt', 'reconnu', 'reconocido', 'riconosciuto', 'reconhecido', 'diakui', 'kutambuliwa'],
+    ['minority', 'Minderheit', 'minorité', 'minoría', 'minoranza', 'minoria', 'minoritas', 'wachache'],
+    ['Co-official in', 'co-amtlich in', 'co-officiel en', 'cooficial en', 'co-ufficiale in', 'cooficial em', 'resmi bersama di', 'rasmi pamoja katika'],
     // Empires / kingdoms / courts
     ['Empire', 'Reich', 'Empire', 'Imperio', 'Impero', 'Império', 'Kekaisaran', 'Milki'],
     ['empire', 'Reich', 'empire', 'imperio', 'impero', 'império', 'kekaisaran', 'milki'],
