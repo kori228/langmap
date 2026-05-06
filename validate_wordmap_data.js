@@ -1213,6 +1213,113 @@ for (const code of codes) {
     I(`underscore-code parentCode/varietyRole coverage: ${covered}/${underscoreCodes.length} (Audit Task 170)`);
 }
 
+// === Tone-bar within-row notation consistency (Audit Task 187) ===
+// A row that mixes single (˥) and doubled (˥˥) level tones for the SAME pitch is
+// internally inconsistent. Pass 32 normalized 11 tonal rows to doubled; warn if
+// any future edit reintroduces the mix.
+{
+    let mixed = 0;
+    for (const code of codes) {
+        const w = ctx.LANG_DATA[code]?.words || {};
+        const singles = new Set(), doubles = new Set();
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const ipa = w[k][1];
+            if (typeof ipa !== 'string') continue;
+            const runs = ipa.match(/[˥˦˧˨˩]+/g) || [];
+            for (const r of runs) {
+                if (r.length === 1) singles.add(r);
+                else if (r.length === 2 && r[0] === r[1]) doubles.add(r);
+            }
+        }
+        for (const s of singles) if (doubles.has(s + s)) {
+            mixed++;
+            if (mixed <= 5) W(`[#187] ${code}: row mixes "${s}" and "${s+s}" level-tone notations (Audit Task 187)`);
+            break;
+        }
+    }
+    if (mixed > 5) W(`[#187] (${mixed - 5} more rows mix single/doubled tone letters)`);
+}
+
+// === Disambiguator coverage for shared-native-name pairs (Audit Task 188) ===
+{
+    const byNative = {};
+    for (const code of codes) {
+        const native = ctx.LANG_DATA[code]?.native;
+        if (!native) continue;
+        if (!byNative[native]) byNative[native] = [];
+        byNative[native].push(code);
+    }
+    let covered = 0, total = 0, missing = 0;
+    for (const native of Object.keys(byNative)) {
+        const group = byNative[native];
+        if (group.length < 2) continue;
+        for (const code of group) {
+            total++;
+            const m = ctx.LANG_DATA[code]?.meta;
+            if (m && m.disambiguator) covered++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#188] ${code}: shares native name "${native}" with ${group.filter(c=>c!==code).join('/')} but has no meta.disambiguator (Audit Task 188)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#188] (${missing - 5} more shared-native rows missing disambiguator)`);
+    I(`disambiguator coverage on shared-native rows: ${covered}/${total} (Audit Task 188)`);
+}
+
+// === Vitality coverage (Audit Task 190) ===
+{
+    const VITALITY_ENUM = new Set(['safe','vulnerable','definitely-endangered','severely-endangered','critically-endangered','extinct','unknown']);
+    const counts = {};
+    let total = 0, missing = 0, badEnum = 0;
+    for (const code of codes) {
+        const m = ctx.LANG_DATA[code]?.meta;
+        if (!m) continue;
+        const v = m.vitality;
+        if (!v) {
+            missing++;
+            if (missing <= 5) W(`[#190] ${code}: missing meta.vitality (Audit Task 190)`);
+            continue;
+        }
+        if (!VITALITY_ENUM.has(v)) {
+            badEnum++;
+            if (badEnum <= 5) W(`[#190] ${code}: meta.vitality '${v}' not in enum (Audit Task 190)`);
+            continue;
+        }
+        counts[v] = (counts[v] || 0) + 1;
+        total++;
+    }
+    if (missing > 5) W(`[#190] (${missing - 5} more rows missing vitality)`);
+    if (badEnum > 5) W(`[#190] (${badEnum - 5} more rows with bad vitality enum)`);
+    const breakdown = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v]) => `${k}=${v}`).join(', ');
+    I(`vitality coverage: ${total}/${codes.length} (${breakdown}) (Audit Task 190)`);
+}
+
+// === Multi-word formType coverage (Audit Task 194) ===
+{
+    let total = 0, withFt = 0, missing = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        if (!lang) continue;
+        const w = lang.words || {};
+        const we = lang.wordEvidence || {};
+        for (const k of Object.keys(w)) {
+            if (!Array.isArray(w[k])) continue;
+            const surface = w[k][0];
+            if (typeof surface !== 'string' || surface === '—' || !/\s/.test(surface)) continue;
+            total++;
+            if (we[k] && we[k].formType) withFt++;
+            else {
+                missing++;
+                if (missing <= 5) W(`[#194] ${code}.${k}: multi-word surface "${surface}" without formType (Audit Task 194)`);
+            }
+        }
+    }
+    if (missing > 5) W(`[#194] (${missing - 5} more multi-word cells without formType)`);
+    I(`multi-word formType coverage: ${withFt}/${total} (Audit Task 194)`);
+}
+
 // === RTL textDirection backfill audit (Audit Task 193) ===
 // Detect rows whose surface uses RTL Unicode blocks; verify meta.textDirection='rtl'
 // is set (the runtime initializer in wordmap_meta.js does this automatically).
@@ -1343,7 +1450,12 @@ for (const code of codes) {
         }
         counts[rs] = (counts[rs] || 0) + 1;
         const we = lang?.wordEvidence || {};
-        const weCount = Object.keys(we).length;
+        // Substantive evidence count: skip auto-tagged Task 194 entries
+        let weCount = 0;
+        for (const k of Object.keys(we)) {
+            if (we[k] && we[k].autoTag) continue;
+            weCount++;
+        }
         const hasSources = m.sources && m.sources.length > 0;
         if ((rs === 'unreviewed' || rs === 'machine-seeded') && (hasSources || weCount > 0)) {
             inconsistencies++;

@@ -31,35 +31,73 @@
         flex: 1; min-width: 180px; padding: 6px 10px; font-size: 13px;
         border: 1px solid #d0d0d0; border-radius: 4px; background: #fff;
     }
+    .controls select {
+        padding: 6px 10px; font-size: 12px; border: 1px solid #d0d0d0;
+        background: #fff; color: #444; border-radius: 4px;
+    }
     .controls button {
         padding: 6px 12px; font-size: 12px; border: 1px solid #d0d0d0;
         background: #fff; color: #444; border-radius: 4px; cursor: pointer;
     }
     .controls button:hover { background: #f1f3f4; }
     .stats { color: #888; font-size: 12px; margin-left: auto; }
-    .tree { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.7; }
-    .tree ul { list-style: none; padding-left: 18px; margin: 0; }
-    .tree > ul { padding-left: 0; }
+
+    /* Tree with curved branch connectors. Each li uses ::before to draw an
+       L-shape with rounded corner from its parent's vertical guide down/right
+       to itself; ::after extends the vertical guide to the next sibling. */
+    .tree { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 14px 18px 18px; font-size: 13px; line-height: 1.7; }
+    .tree ul { list-style: none; padding-left: 22px; margin: 0; position: relative; }
+    .tree > ul { padding-left: 4px; }
+    .tree > ul > li::before, .tree > ul > li::after { display: none; }  /* top-level: no parent connector */
     .tree li { position: relative; }
+    .tree li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -14px;
+        width: 12px;
+        height: 14px;  /* curves into node center vertically */
+        border-left: 1.5px solid #b8c8e0;
+        border-bottom: 1.5px solid #b8c8e0;
+        border-bottom-left-radius: 10px;
+        pointer-events: none;
+    }
+    .tree li::after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        bottom: 0;
+        left: -14px;
+        border-left: 1.5px solid #b8c8e0;
+        pointer-events: none;
+    }
+    .tree li:last-child::after { display: none; }
+    .tree li.collapsed > ul { display: none; }
+    .tree li.collapsed::after { display: none; }  /* don't continue line into collapsed children */
+
     .node { display: inline-block; cursor: pointer; user-select: none; padding: 1px 4px; border-radius: 3px; }
     .node:hover { background: #f1f3f4; }
-    .node .toggle { display: inline-block; width: 12px; color: #888; font-size: 10px; transform: translateY(-1px); }
+    .node .toggle { display: inline-block; width: 12px; color: #6b88b8; font-size: 10px; transform: translateY(-1px); }
     .node.expanded > .toggle::before { content: '▾'; }
     .node.collapsed > .toggle::before { content: '▸'; }
     .node.leaf > .toggle { visibility: hidden; }
-    .node .label { font-weight: 600; color: #333; }
+    .node .label { font-weight: 600; color: #2c4a7a; }
     .node .count { color: #888; font-size: 11px; margin-left: 4px; }
     .lang-leaf { color: #444; }
     .lang-leaf a { color: #1a73e8; text-decoration: none; }
     .lang-leaf a:hover { text-decoration: underline; }
-    .lang-leaf .native-name { color: #888; font-size: 12px; margin-left: 6px; }
+    .lang-leaf .native-name { color: #888; font-size: 12px; margin-left: 6px; unicode-bidi: isolate; }
     .lang-leaf .code { color: #aaa; font-size: 11px; margin-left: 6px; font-family: monospace; }
     .lang-leaf.match { background: #fff8d8; }
-    li.collapsed > ul { display: none; }
+    .lang-leaf .node .label { color: #333; font-weight: 400; }
+
     .empty { color: #888; padding: 20px; text-align: center; }
     @media (max-width: 600px) {
         .container { padding: 10px; }
-        .tree { font-size: 12px; line-height: 1.6; }
+        .tree { font-size: 12px; line-height: 1.6; padding: 10px 12px 12px; }
+        .tree ul { padding-left: 18px; }
+        .tree li::before { left: -10px; width: 10px; }
+        .tree li::after { left: -10px; }
     }
 </style>
 </head>
@@ -67,20 +105,21 @@
 <div class="site-header-bar">
     <a href="wordmap.html" class="logo">LangMap</a>
     <nav class="header-nav">
-        <a href="index.html" class="header-nav-link">Word Order</a>
+        <a href="index.html" class="header-nav-link" id="nav-order">Word Order</a>
         <span class="nav-sep">/</span>
-        <a href="wordmap.html" class="header-nav-link">Word Map</a>
+        <a href="wordmap.html" class="header-nav-link" id="nav-map">Word Map</a>
         <span class="nav-sep">/</span>
-        <span class="header-nav-current">Tree</span>
+        <span class="header-nav-current" id="nav-tree">Tree</span>
     </nav>
     <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
 </div>
 
 <div class="container">
-    <h1>Language Family Tree</h1>
+    <h1 id="page-title">Language Family Tree</h1>
     <p class="subtitle" id="subtitle">Loading…</p>
     <div class="controls">
-        <input type="text" id="search" placeholder="🔍 Filter by language name or code…" autocomplete="off">
+        <input type="text" id="search" placeholder="🔍 Filter…" autocomplete="off">
+        <select id="ui-lang" aria-label="UI language"></select>
         <button type="button" id="expand-all">Expand all</button>
         <button type="button" id="collapse-all">Collapse all</button>
         <span class="stats" id="stats"></span>
@@ -88,7 +127,7 @@
     <div class="tree" id="tree-root">Loading data…</div>
 </div>
 
-<script src="wordmap_data.js?v=100"></script>
+<script src="wordmap_data.js?v=101"></script>
 <script src="lang_names.js?v=11"></script>
 <script>
 (function () {
@@ -97,9 +136,113 @@
         document.getElementById('tree-root').innerHTML = '<div class="empty">Failed to load LANG_DATA.</div>';
         return;
     }
+
+    // === i18n strings ====================================================
+    // Translations for UI labels. Keys: page title, subtitle, search
+    // placeholder, buttons, footer-style strings, "languages" suffix.
+    const UI_I18N = {
+        en: { title:'Language Family Tree', subtitle:n=>n+' languages organized by genealogical family. Click a family to expand; click a language to open its modal on the map.', search:'🔍 Filter by language name or code…', expand:'Expand all', collapse:'Collapse all', stats:n=>n+' langs', navOrder:'Word Order', navMap:'Word Map', navTree:'Tree', uiLangLabel:'UI language' },
+        ja: { title:'言語系統樹', subtitle:n=>n+' 言語を系統別に整理。系統名をクリックで展開、言語名クリックで地図上のモーダルを開く。', search:'🔍 言語名・コードで絞り込み…', expand:'すべて展開', collapse:'すべて折りたたむ', stats:n=>n+' 言語', navOrder:'語順', navMap:'語彙地図', navTree:'系統樹', uiLangLabel:'UI 言語' },
+        ko: { title:'언어 계통수', subtitle:n=>n+'개 언어를 계통별로 정리. 계통명을 클릭하면 펼쳐지고, 언어명을 클릭하면 지도 모달이 열립니다.', search:'🔍 언어 이름/코드로 필터…', expand:'모두 펼치기', collapse:'모두 접기', stats:n=>n+'개 언어', navOrder:'어순', navMap:'어휘 지도', navTree:'계통수', uiLangLabel:'UI 언어' },
+        zh: { title:'语言谱系树', subtitle:n=>'按谱系整理的 '+n+' 种语言。点击谱系展开；点击语言打开地图模态框。', search:'🔍 按语言名或代码过滤…', expand:'全部展开', collapse:'全部折叠', stats:n=>n+' 种', navOrder:'语序', navMap:'词汇地图', navTree:'谱系树', uiLangLabel:'界面语言' },
+        yue:{ title:'語言譜系樹', subtitle:n=>'按譜系整理嘅 '+n+' 種語言。撳譜系名展開；撳語言開地圖模態框。', search:'🔍 按語言名或代碼過濾…', expand:'全部展開', collapse:'全部摺疊', stats:n=>n+' 種', navOrder:'語序', navMap:'詞彙地圖', navTree:'譜系樹', uiLangLabel:'介面語言' },
+        vi: { title:'Cây phả hệ ngôn ngữ', subtitle:n=>n+' ngôn ngữ được tổ chức theo họ ngôn ngữ. Nhấp vào họ để mở rộng; nhấp vào ngôn ngữ để mở hộp thoại trên bản đồ.', search:'🔍 Lọc theo tên hoặc mã ngôn ngữ…', expand:'Mở rộng tất cả', collapse:'Thu gọn tất cả', stats:n=>n+' ngôn ngữ', navOrder:'Trật tự từ', navMap:'Bản đồ từ vựng', navTree:'Cây phả hệ', uiLangLabel:'Ngôn ngữ giao diện' },
+        th: { title:'แผนภูมิตระกูลภาษา', subtitle:n=>'จัด '+n+' ภาษาตามตระกูลทางพันธุกรรม คลิกตระกูลเพื่อขยาย; คลิกภาษาเพื่อเปิดหน้าต่างบนแผนที่', search:'🔍 กรองตามชื่อหรือรหัสภาษา…', expand:'ขยายทั้งหมด', collapse:'ยุบทั้งหมด', stats:n=>n+' ภาษา', navOrder:'ลำดับคำ', navMap:'แผนที่คำ', navTree:'แผนภูมิ', uiLangLabel:'ภาษา UI' },
+        id: { title:'Pohon Keluarga Bahasa', subtitle:n=>n+' bahasa diorganisir berdasarkan keluarga genealogis. Klik keluarga untuk memperluas; klik bahasa untuk membuka modal di peta.', search:'🔍 Filter berdasarkan nama/kode bahasa…', expand:'Perluas semua', collapse:'Ciutkan semua', stats:n=>n+' bahasa', navOrder:'Urutan kata', navMap:'Peta kosakata', navTree:'Pohon', uiLangLabel:'Bahasa UI' },
+        hi: { title:'भाषा परिवार वृक्ष', subtitle:n=>n+' भाषाएँ वंशानुगत परिवार के अनुसार व्यवस्थित। परिवार पर क्लिक करके विस्तार करें; भाषा पर क्लिक करके मानचित्र पर मोडल खोलें।', search:'🔍 भाषा नाम या कोड से फ़िल्टर…', expand:'सभी का विस्तार करें', collapse:'सभी को संक्षिप्त करें', stats:n=>n+' भाषाएँ', navOrder:'शब्द क्रम', navMap:'शब्द मानचित्र', navTree:'वृक्ष', uiLangLabel:'UI भाषा' },
+        de: { title:'Sprachstammbaum', subtitle:n=>n+' Sprachen, organisiert nach Sprachfamilien. Familie anklicken zum Erweitern; Sprache anklicken, um das Modal auf der Karte zu öffnen.', search:'🔍 Nach Sprachname oder Code filtern…', expand:'Alle erweitern', collapse:'Alle einklappen', stats:n=>n+' Sprachen', navOrder:'Wortstellung', navMap:'Wortkarte', navTree:'Stammbaum', uiLangLabel:'UI-Sprache' },
+        fr: { title:'Arbre des familles linguistiques', subtitle:n=>n+' langues organisées par famille génétique. Cliquez sur une famille pour la développer ; cliquez sur une langue pour ouvrir la fenêtre sur la carte.', search:'🔍 Filtrer par nom ou code de langue…', expand:'Tout développer', collapse:'Tout réduire', stats:n=>n+' langues', navOrder:'Ordre des mots', navMap:'Carte des mots', navTree:'Arbre', uiLangLabel:'Langue de l’IU' },
+        it: { title:'Albero genealogico delle lingue', subtitle:n=>n+' lingue organizzate per famiglia genealogica. Clicca su una famiglia per espandere; clicca su una lingua per aprire il modale sulla mappa.', search:'🔍 Filtra per nome o codice…', expand:'Espandi tutto', collapse:'Comprimi tutto', stats:n=>n+' lingue', navOrder:'Ordine delle parole', navMap:'Mappa parole', navTree:'Albero', uiLangLabel:'Lingua UI' },
+        es: { title:'Árbol genealógico de lenguas', subtitle:n=>n+' lenguas organizadas por familia genética. Haga clic en una familia para expandir; haga clic en una lengua para abrir el modal en el mapa.', search:'🔍 Filtrar por nombre o código…', expand:'Expandir todo', collapse:'Contraer todo', stats:n=>n+' lenguas', navOrder:'Orden de palabras', navMap:'Mapa de palabras', navTree:'Árbol', uiLangLabel:'Idioma UI' },
+        pt: { title:'Árvore genealógica das línguas', subtitle:n=>n+' línguas organizadas por família genealógica. Clique em uma família para expandir; clique em uma língua para abrir o modal no mapa.', search:'🔍 Filtrar por nome ou código…', expand:'Expandir tudo', collapse:'Recolher tudo', stats:n=>n+' línguas', navOrder:'Ordem das palavras', navMap:'Mapa de palavras', navTree:'Árvore', uiLangLabel:'Idioma da UI' },
+        ru: { title:'Языковое генеалогическое древо', subtitle:n=>n+' языков, упорядоченных по генеалогической семье. Нажмите на семью, чтобы развернуть; нажмите на язык, чтобы открыть окно на карте.', search:'🔍 Фильтр по имени или коду…', expand:'Развернуть всё', collapse:'Свернуть всё', stats:n=>n+' языков', navOrder:'Порядок слов', navMap:'Карта слов', navTree:'Древо', uiLangLabel:'Язык интерфейса' },
+        uk: { title:'Мовне генеалогічне дерево', subtitle:n=>n+' мов, упорядкованих за генеалогічною родиною. Натисніть на родину, щоб розгорнути; натисніть на мову, щоб відкрити вікно на карті.', search:'🔍 Фільтр за назвою або кодом…', expand:'Розгорнути все', collapse:'Згорнути все', stats:n=>n+' мов', navOrder:'Порядок слів', navMap:'Карта слів', navTree:'Дерево', uiLangLabel:'Мова інтерфейсу' },
+        ar: { title:'شجرة عائلات اللغات', subtitle:n=>n+' لغة مصنفة حسب العائلات اللغوية الجينية. انقر على عائلة لتوسيعها؛ انقر على لغة لفتح النافذة على الخريطة.', search:'🔍 تصفية حسب الاسم أو الرمز…', expand:'توسيع الكل', collapse:'طي الكل', stats:n=>n+' لغة', navOrder:'ترتيب الكلمات', navMap:'خريطة الكلمات', navTree:'الشجرة', uiLangLabel:'لغة الواجهة' },
+        he: { title:'אילן יוחסין של שפות', subtitle:n=>n+' שפות מאורגנות לפי משפחה גנאלוגית. לחץ על משפחה כדי להרחיב; לחץ על שפה כדי לפתוח את החלון במפה.', search:'🔍 סנן לפי שם שפה או קוד…', expand:'הרחב הכל', collapse:'כווץ הכל', stats:n=>n+' שפות', navOrder:'סדר מילים', navMap:'מפת מילים', navTree:'אילן', uiLangLabel:'שפת ממשק' },
+        sw: { title:'Mti wa Kifamilia wa Lugha', subtitle:n=>n+' lugha zilizopangwa kwa familia ya nasaba. Bofya familia kupanua; bofya lugha kufungua dirisha kwenye ramani.', search:'🔍 Chuja kwa jina au msimbo…', expand:'Panua zote', collapse:'Kunja zote', stats:n=>n+' lugha', navOrder:'Mpangilio wa maneno', navMap:'Ramani ya maneno', navTree:'Mti', uiLangLabel:'Lugha ya UI' },
+    };
+
+    // Pick a UI language. Resolution order: ?ui=… → localStorage('wm.uiLang')
+    // → navigator.language → 'en'.
+    function resolveUiLang() {
+        try {
+            const params = new URLSearchParams(location.search || location.hash.replace(/^#/, ''));
+            const u = params.get('ui'); if (u && UI_I18N[u]) return u;
+        } catch (e) {}
+        try {
+            const u = localStorage.getItem('wm.uiLang'); if (u && UI_I18N[u]) return u;
+            // Strip region from full code (es_eu → es, pt_br → pt)
+            if (u) { const base = u.split('_')[0]; if (UI_I18N[base]) return base; }
+        } catch (e) {}
+        const nav = (navigator.language || 'en').toLowerCase().split('-')[0];
+        if (UI_I18N[nav]) return nav;
+        return 'en';
+    }
+    let uiLang = resolveUiLang();
+    function t(key, ...args) {
+        const dict = UI_I18N[uiLang] || UI_I18N.en;
+        const v = dict[key];
+        if (typeof v === 'function') return v(...args);
+        return v != null ? v : (UI_I18N.en[key] || key);
+    }
+
+    // Set RTL direction for Arabic / Hebrew UI
+    if (uiLang === 'ar' || uiLang === 'he') {
+        document.documentElement.dir = 'rtl';
+    }
+
+    // Populate UI lang dropdown
+    function populateUiLangSelect() {
+        const sel = document.getElementById('ui-lang');
+        const langs = Object.keys(UI_I18N);
+        // Native names for the dropdown options
+        const NATIVE = {
+            en:'English', ja:'日本語', ko:'한국어', zh:'中文', yue:'粵語',
+            vi:'Tiếng Việt', th:'ภาษาไทย', id:'Bahasa Indonesia', hi:'हिन्दी',
+            de:'Deutsch', fr:'Français', it:'Italiano', es:'Español', pt:'Português',
+            ru:'Русский', uk:'Українська', ar:'العربية', he:'עברית', sw:'Kiswahili'
+        };
+        for (const u of langs) {
+            const opt = document.createElement('option');
+            opt.value = u;
+            opt.textContent = NATIVE[u] || u;
+            if (u === uiLang) opt.selected = true;
+            sel.appendChild(opt);
+        }
+        sel.title = t('uiLangLabel');
+        sel.addEventListener('change', () => {
+            uiLang = sel.value;
+            try { localStorage.setItem('wm.uiLang', uiLang); } catch (e) {}
+            // Update URL hash
+            try {
+                const params = new URLSearchParams(location.hash.slice(1));
+                params.set('ui', uiLang);
+                location.hash = params.toString();
+            } catch (e) {}
+            applyI18n();
+            // Re-render so language names switch UI
+            if (window.__treeData) renderTree(window.__treeData);
+        });
+    }
+
+    function applyI18n() {
+        document.title = t('title') + ' — LangMap';
+        document.getElementById('page-title').textContent = t('title');
+        document.getElementById('search').placeholder = t('search');
+        document.getElementById('expand-all').textContent = t('expand');
+        document.getElementById('collapse-all').textContent = t('collapse');
+        document.getElementById('nav-order').textContent = t('navOrder');
+        document.getElementById('nav-map').textContent = t('navMap');
+        document.getElementById('nav-tree').textContent = t('navTree');
+        const sub = document.getElementById('subtitle');
+        if (window.__treeTotal) sub.textContent = t('subtitle', window.__treeTotal);
+        const stats = document.getElementById('stats');
+        if (window.__treeTotal) stats.textContent = t('stats', window.__treeTotal);
+    }
+
     // Lazy-load wordmap_meta.js (full meta needed for family strings)
     const metaScript = document.createElement('script');
-    metaScript.src = 'wordmap_meta.js?v=54';
+    metaScript.src = 'wordmap_meta.js?v=55';
     metaScript.onload = init;
     metaScript.onerror = () => {
         document.getElementById('tree-root').innerHTML = '<div class="empty">Failed to load wordmap_meta.js.</div>';
@@ -110,68 +253,34 @@
     // attested in the data without their parent ("Indo-European"). Adding the
     // parent here gives a single connected tree per macro-family.
     const FAMILY_PROMOTE = {
-        // Indo-European branches
-        'Germanic': 'Indo-European',
-        'Romance': 'Indo-European',
-        'Slavic': 'Indo-European',
-        'Indo-Aryan': 'Indo-European',
-        'Iranian': 'Indo-European',
-        'Celtic': 'Indo-European',
-        'Hellenic': 'Indo-European',
-        'Albanian': 'Indo-European',
-        'Armenian': 'Indo-European',
-        'Baltic': 'Indo-European',
-        'Anatolian': 'Indo-European',
-        'Tocharian': 'Indo-European',
-        // Sino-Tibetan
-        'Sinitic': 'Sino-Tibetan',
-        'Tibeto-Burman': 'Sino-Tibetan',
-        'Bodish': 'Sino-Tibetan',
-        // Atlantic-Congo
-        'Bantu': 'Atlantic-Congo',
-        'Mel': 'Atlantic-Congo',
-        'Kru': 'Atlantic-Congo',
-        'Gur': 'Atlantic-Congo',
-        'Kwa': 'Atlantic-Congo',
-        'Volta-Niger': 'Atlantic-Congo',
+        'Germanic': 'Indo-European', 'Romance': 'Indo-European', 'Slavic': 'Indo-European',
+        'Indo-Aryan': 'Indo-European', 'Iranian': 'Indo-European', 'Celtic': 'Indo-European',
+        'Hellenic': 'Indo-European', 'Albanian': 'Indo-European', 'Armenian': 'Indo-European',
+        'Baltic': 'Indo-European', 'Anatolian': 'Indo-European', 'Tocharian': 'Indo-European',
+        'Sinitic': 'Sino-Tibetan', 'Tibeto-Burman': 'Sino-Tibetan', 'Bodish': 'Sino-Tibetan',
+        'Bantu': 'Atlantic-Congo', 'Mel': 'Atlantic-Congo', 'Kru': 'Atlantic-Congo',
+        'Gur': 'Atlantic-Congo', 'Kwa': 'Atlantic-Congo', 'Volta-Niger': 'Atlantic-Congo',
         'Adamawa': 'Atlantic-Congo',
-        // Afro-Asiatic
-        'Semitic': 'Afro-Asiatic',
-        'Cushitic': 'Afro-Asiatic',
-        'Berber': 'Afro-Asiatic',
-        'Chadic': 'Afro-Asiatic',
-        'Egyptian': 'Afro-Asiatic',
-        // Tai-Kadai (Kra-Dai is the modern term, but legacy data uses both)
-        'Tai': 'Kra-Dai',
-        'Hlai': 'Kra-Dai',
-        'Kam-Sui': 'Kra-Dai',
-        // Austronesian
-        'Polynesian': 'Austronesian',
-        'Micronesian': 'Austronesian',
-        'Malayo-Polynesian': 'Austronesian',
-        'Formosan': 'Austronesian',
-        // Nilo-Saharan
-        'Nilotic': 'Nilo-Saharan',
-        'Saharan': 'Nilo-Saharan',
-        'Songhai': 'Nilo-Saharan',
+        'Semitic': 'Afro-Asiatic', 'Cushitic': 'Afro-Asiatic', 'Berber': 'Afro-Asiatic',
+        'Chadic': 'Afro-Asiatic', 'Egyptian': 'Afro-Asiatic',
+        'Tai': 'Kra-Dai', 'Hlai': 'Kra-Dai', 'Kam-Sui': 'Kra-Dai',
+        'Polynesian': 'Austronesian', 'Micronesian': 'Austronesian',
+        'Malayo-Polynesian': 'Austronesian', 'Formosan': 'Austronesian',
+        'Nilotic': 'Nilo-Saharan', 'Saharan': 'Nilo-Saharan', 'Songhai': 'Nilo-Saharan',
     };
 
-    // Parse "Atlantic-Congo (Bantu, JE Runyakitara)" → ['Atlantic-Congo','Bantu','JE Runyakitara']
     function parseFamilyPath(famStr) {
         if (!famStr) return ['Unclassified'];
-        // Strip outer "(…)" and split on commas
         const m = famStr.match(/^([^()]+?)(?:\s*\(([^)]+)\))?$/);
         if (!m) return [famStr];
         const top = m[1].trim();
         const inner = (m[2] || '').trim();
         const subs = inner ? inner.split(',').map(s => s.trim()).filter(Boolean) : [];
         let path = [top, ...subs];
-        // Promote to higher-level family if applicable
         if (FAMILY_PROMOTE[path[0]]) path.unshift(FAMILY_PROMOTE[path[0]]);
         return path;
     }
 
-    // Build a nested tree: { children: Map<name,node>, langs: [code, code, ...] }
     function buildTree() {
         const root = { name: '(root)', children: new Map(), langs: [] };
         for (const code of Object.keys(LANG_DATA)) {
@@ -196,14 +305,6 @@
         return n;
     }
 
-    let uiLang = 'en';
-    try {
-        // Pick UI lang from URL or localStorage to share with main map
-        const params = new URLSearchParams(location.search || location.hash.replace(/^#/, ''));
-        const ui = params.get('ui') || localStorage.getItem('wm.uiLang');
-        if (ui && typeof LANG_NAMES !== 'undefined' && LANG_NAMES[ui]) uiLang = ui;
-    } catch (e) {}
-
     function escapeHtml(s) {
         return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
@@ -215,21 +316,15 @@
 
     function renderNode(node, isRoot) {
         let html = '';
-        // Sort children alphabetically by name; sort lang leaves by display name
         const childEntries = Array.from(node.children.entries()).sort((a, b) => a[0].localeCompare(b[0]));
         const langSorted = node.langs.slice().sort((a, b) =>
             langDisplayName(a).localeCompare(langDisplayName(b))
         );
 
-        if (!isRoot) {
-            // Parent node line is rendered by the caller (inside <li>); this function
-            // is called for descendants. We render <ul> with child <li>s only.
-        }
-
         html += '<ul>';
         for (const [name, child] of childEntries) {
             const total = countLangs(child);
-            const initialCollapsed = total > 25;  // collapse big subtrees by default
+            const initialCollapsed = total > 25;
             html += '<li class="' + (initialCollapsed ? 'collapsed' : '') + '">';
             html += '<span class="node ' + (initialCollapsed ? 'collapsed' : 'expanded') + '">';
             html += '<span class="toggle"></span>';
@@ -255,16 +350,13 @@
         return html;
     }
 
-    function init() {
-        const tree = buildTree();
-        const totalLangs = countLangs(tree);
-        document.getElementById('subtitle').textContent =
-            totalLangs + ' languages organized by genealogical family. Click a family to expand; click a language to open its modal on the map.';
-        document.getElementById('stats').textContent = totalLangs + ' langs';
+    function renderTree(tree) {
         const root = document.getElementById('tree-root');
         root.innerHTML = renderNode(tree, true);
+        wireTreeInteractions(root);
+    }
 
-        // Toggle expand/collapse on node click
+    function wireTreeInteractions(root) {
         root.addEventListener('click', e => {
             const node = e.target.closest('.node:not(.leaf)');
             if (!node) return;
@@ -274,15 +366,26 @@
             node.classList.toggle('collapsed');
             node.classList.toggle('expanded');
         });
+    }
 
-        // Expand-all / Collapse-all
+    function init() {
+        populateUiLangSelect();
+        applyI18n();
+        const tree = buildTree();
+        const totalLangs = countLangs(tree);
+        window.__treeData = tree;
+        window.__treeTotal = totalLangs;
+        document.getElementById('subtitle').textContent = t('subtitle', totalLangs);
+        document.getElementById('stats').textContent = t('stats', totalLangs);
+        renderTree(tree);
+
         document.getElementById('expand-all').addEventListener('click', () => {
+            const root = document.getElementById('tree-root');
             root.querySelectorAll('li.collapsed').forEach(li => li.classList.remove('collapsed'));
             root.querySelectorAll('.node.collapsed').forEach(n => { n.classList.remove('collapsed'); n.classList.add('expanded'); });
         });
         document.getElementById('collapse-all').addEventListener('click', () => {
-            // Collapse all interior nodes that have children (keeps top-level
-            // family rows visible since they're at depth 0).
+            const root = document.getElementById('tree-root');
             root.querySelectorAll('li').forEach(li => {
                 if (li.querySelector(':scope > ul')) li.classList.add('collapsed');
             });
@@ -291,9 +394,9 @@
             });
         });
 
-        // Search filter: show only matching leaves; auto-expand ancestors
         const searchInput = document.getElementById('search');
         searchInput.addEventListener('input', () => {
+            const root = document.getElementById('tree-root');
             const q = searchInput.value.trim().toLowerCase();
             const allLi = root.querySelectorAll('li.lang-leaf');
             if (!q) {
@@ -301,14 +404,12 @@
                 root.querySelectorAll('li').forEach(li => li.style.display = '');
                 return;
             }
-            // Hide all interior <li>s, then show matching leaves + ancestors
             root.querySelectorAll('li').forEach(li => li.style.display = 'none');
             allLi.forEach(li => {
                 const sd = li.getAttribute('data-search') || '';
                 if (sd.includes(q)) {
                     li.style.display = '';
                     li.classList.add('match');
-                    // Expand all ancestors
                     let p = li.parentElement;
                     while (p && p !== root) {
                         if (p.tagName === 'LI') {

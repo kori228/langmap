@@ -1913,3 +1913,61 @@ PIE (`ine`)、Proto-Ryukyuan (`pry`)、Proto-Japonic-Koreanic (`pjk`) の recons
 - Task 187/188/190/192/194/195 (新 audit batch 残り): tone-bar normalization, disambiguator backfill, vitality backfill, runtime overlay → static migration, multi-word formType compound, split evidence schemas
 
 Pass 8〜32 累計 **79 タスク対応 + 重複 2 行解消 + 誤分類 1 行修正 + RTL textDirection 35 行 + formType backfill 63 cells** (591 → 617).
+
+## Pass 33 (2026-05-06)
+
+audit batch 第 5 弾 (Tasks 187/188/190/194) と tree.html 大幅改装。
+
+### Task 187 — Tone-bar notation 内部整合
+11 行の声調語 (cdo, ii, nan_te, yue_ts, zh_jh, nan_pn, yue_gz, wuu_sz, nan_qz, hak_hl, cpx) で single (`˥`) と doubled (`˥˥`) の level tone notation が混在。Option A (常に doubled) を採用、74 文字を `˥˥` 形式に正規化。Validator `[#187]`: 行内で `<X>` と `<XX>` が共存したら WARN。
+
+### Task 188 — Shared-native disambiguator backfill
+ネイティブ名が複数行で重複する 4 行 (mn_cn / xng / omx / mnw) に `meta.disambiguator: { en, ja, ko, zh }` を追加。検索 UI でモンゴル語/モン語の現代/中世/古代を区別可能に。Validator `[#188]`: shared-native 行が disambiguator なし → WARN。Coverage `4/4`.
+
+### Task 190 — Vitality runtime backfill
+Speaker count + dataStatus の heuristic で全 617 行に `meta.vitality` を自動 assign:
+- L1 ≥ 100K → `'safe'`
+- L1 10K-100K → `'vulnerable'`
+- L1 1K-10K → `'definitely-endangered'`
+- L1 100-1K → `'severely-endangered'`
+- L1 < 100 → `'critically-endangered'`
+- 'extinct' / 歴史言語 → `'extinct'`
+- 'critically endangered' 等の prose があれば優先
+
+Distribution: safe=430, extinct=86, vulnerable=41, definitely-endangered=28, severely-endangered=17, critically-endangered=15。Validator `[#190]`: 全 619 行で必須。
+
+### Task 194 — Multi-word formType backfill
+Surface に whitespace を含む全 cell に `formType` を自動 assign:
+- `hello` → `'greeting-formula'`
+- `thanks` → `'thanks-formula'`
+- 他 → `'compound'`
+
+249 cells 自動タグ化。`autoTag: 'task-194-multi-word'` を付けて [#172] reviewStatus heuristic では substantive 証拠としてカウントされないよう除外。Validator `[#194]`: multi-word surface が formType なし → WARN。Coverage `249/249`.
+
+### tree.html 大幅改装
+- **曲線分岐**: 各 li の `::before` `::after` を CSS で描画。L 字 + `border-bottom-left-radius: 10px` で滑らかな曲線。最後の child は `::after` を非表示にして枝分かれが自然に。
+- **i18n**: `UI_I18N` で 19 UI lang (en/ja/ko/zh/yue/vi/th/id/hi/de/fr/it/es/pt/ru/uk/ar/he/sw) に対応。タイトル/サブタイトル/検索 placeholder/expand/collapse ボタン/stats/nav リンクを翻訳。Auto detect from URL `?ui=` → `localStorage('wm.uiLang')` → `navigator.language` → `'en'`。
+- **UI lang 切替 dropdown**: 検索ボックス横で UI 言語を切替、選択は localStorage + URL hash に保存。
+- ar/he UI 選択時は `<html dir="rtl">` を自動設定。
+- 言語名表示も切替: `LANG_NAMES[uiLang]` を引いて leaf 表示も翻訳。
+
+### Validator/数値
+- ERRORS: 0, WARNINGS: 24 (微増、新 [#187] 等の自動 INFO line 追加分)
+- Languages: 617
+- 新 INFO line × 4: `[#187]` `[#188]` `[#190]` `[#194]`
+- Cache-buster: data 100→101, meta 54→55
+
+### 残（次回以降）
+- Task 144/176: UI 多言語化（別スレッド）
+- Task 159 残: Indo-Aryan/Iranian 並列パターン
+- Task 160 part 1 残: zh_tang/och per-cell scholarly tone → Chao bar
+- Task 146 残: khb/shn/id/ms/tl/ta/te per-cell verification
+- Task 149 Batch 4: oto Otomi (Lastra)
+- Task 150 Batch H/I: jrb (Anvita Abbi 2012)、nmn Taa (Traill 1985)
+- Task 171: speakerYear backfill (552 rows)
+- Task 173 backfill: 24+ source-checked 行 per-cell wordEvidence
+- Task 189: wordEvidence.accessed ISO 8601 dates
+- Task 192: 14 runtime overlay → static migration (大規模 refactor)
+- Task 195: split evidence schemas pilot
+
+Pass 8〜33 累計 **83 タスク対応 + tree.html 多言語化 + 曲線分岐 + 自動 vitality/formType backfill** (591 → 617).
