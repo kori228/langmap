@@ -195,4 +195,39 @@ const LANG_NAMES = {
             }
         }
     }
+    // Audit Task 149 Batch 2/3 remaining: 5 more languages
+    const ADDED5 = {
+        rcf: { en: 'Réunion Creole', ja: 'レユニオン・クレオール', ko: '레위니옹 크레올어', zh: '留尼汪克里奥尔语', yue: '留尼汪克里奧爾語',
+               vi: 'Tiếng Creole Réunion', th: 'ภาษาครีโอลเรอูนียง', id: 'Kreol Réunion', hi: 'रेयूनियन क्रियोल',
+               de: 'Réunion-Kreolisch', fr: 'Créole réunionnais', it: 'Creolo riunionese',
+               es_eu: 'Criollo reunionés', es_mx: 'Criollo reunionés', pt_eu: 'Crioulo reunionês', pt_br: 'Crioulo reunionês',
+               ru: 'Реюньонский креольский', uk: 'Реюньйонська креольська', ar: 'الكريولية الريونيونية', he: 'קריאולית ראוניון', sw: 'Kikreol cha Reunion' },
+        crs: { en: 'Seychellois Creole', ja: 'セーシェル・クレオール', ko: '세이셸 크레올어', zh: '塞舌尔克里奥尔语', yue: '塞舌爾克里奧爾語',
+               vi: 'Tiếng Creole Seychelles', th: 'ภาษาครีโอลเซเชลส์', id: 'Kreol Seychelles', hi: 'सेशेल्स क्रियोल',
+               de: 'Seychellen-Kreolisch', fr: 'Créole seychellois', it: 'Creolo seychellese',
+               es_eu: 'Criollo seychellense', es_mx: 'Criollo seychellense', pt_eu: 'Crioulo seichelense', pt_br: 'Crioulo seichelense',
+               ru: 'Сейшельский креольский', uk: 'Сейшельська креольська', ar: 'الكريولية السيشلية', he: 'קריאולית סיישל', sw: 'Kikreol cha Seychelles' },
+        gcf: { en: 'Guadeloupean Creole', ja: 'グアドループ・クレオール', ko: '과들루프 크레올어', zh: '瓜德罗普克里奥尔语', yue: '瓜德羅普克里奧爾語',
+               vi: 'Tiếng Creole Guadeloupe', th: 'ภาษาครีโอลกวาเดอลูป', id: 'Kreol Guadeloupe', hi: 'गुआडेलूप क्रियोल',
+               de: 'Guadeloupe-Kreolisch', fr: 'Créole guadeloupéen', it: 'Creolo guadalupeño',
+               es_eu: 'Criollo guadalupeño', es_mx: 'Criollo guadalupeño', pt_eu: 'Crioulo guadalupense', pt_br: 'Crioulo guadalupense',
+               ru: 'Гваделупский креольский', uk: 'Гваделупська креольська', ar: 'الكريولية الغوادلوبية', he: 'קריאולית גוואדלופ', sw: 'Kikreol cha Guadeloupe' },
+        tem: { en: 'Themne', ja: 'テムネ語', ko: '템네어', zh: '泰姆奈语', yue: '泰姆奈語',
+               vi: 'Tiếng Themne', th: 'ภาษาเทมเน', id: 'Themne', hi: 'टेमने',
+               de: 'Themne', fr: 'Themné', it: 'Themne',
+               es_eu: 'Themne', es_mx: 'Themne', pt_eu: 'Themne', pt_br: 'Themne',
+               ru: 'Темне', uk: 'Темне', ar: 'التمنية', he: 'תמנה', sw: 'Kithemne' },
+        ses: { en: 'Koyraboro Senni', ja: 'コイラボロ・センニ語', ko: '코이라보로 센니어', zh: '科伊拉博罗森尼语', yue: '科伊拉博羅森尼語',
+               vi: 'Tiếng Koyraboro Senni', th: 'ภาษาคอยราโบโรเซนนี', id: 'Koyraboro Senni', hi: 'कोयराबोरो सेन्नी',
+               de: 'Koyraboro Senni', fr: 'Koyraboro senni', it: 'Koyraboro Senni',
+               es_eu: 'Koyraboro senni', es_mx: 'Koyraboro senni', pt_eu: 'Koyraboro senni', pt_br: 'Koyraboro senni',
+               ru: 'Койраборо-сенни', uk: 'Койраборо сенні', ar: 'الكويرابورو سنّي', he: 'קוירבורו סני', sw: 'Kikoyraboro Senni' },
+    };
+    for (const code of Object.keys(ADDED5)) {
+        for (const ui of Object.keys(ADDED5[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED5[code][ui];
+            }
+        }
+    }
 })();

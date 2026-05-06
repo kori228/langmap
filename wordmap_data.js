@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 614 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 619 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1196,6 +1196,10 @@ const LANG_DATA = {
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
   bm: { name: 'Bambara', native: 'Bamanankan', lat: 12.65, lng: -7.99, // Bamako
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dumuni','dumuni'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['jiri','dʒiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni ce','i ni tʃe'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
+  // Koyraboro Senni (Eastern Songhai) — Mali, Saharan trade-corridor
+  // (Audit Task 149 Batch 3). Heath (1999) per cell.
+  ses: { name: 'Koyraboro Senni', native: 'Koyraboro Senni', lat: 16.27, lng: -0.05, // Gao
+    words: { water:['hari','hari'], fire:['nuune','nuːne'], sun:['wayna','wajna'], moon:['handu','handu'], mother:['nya','ɲa'], father:['baaba','baːba'], eat:['ŋwa','ŋwa'], drink:['hane','hane'], love:['baŋa','baŋa'], heart:['bine','bine'], tree:['tuuri','tuːri'], house:['huu','huː'], dog:['hansi','hansi'], cat:['muusu','muːsu'], hand:['kambe','kambe'], eye:['mo','mo'], hello:['fofo','fofo'], thanks:['barka','barka'], one:['afo','afo'], good:['boori','boːri'] }},
   // Berber (Afro-Asiatic)
   kab: { name: 'Kabyle', native: 'Taqbaylit', lat: 36.71, lng: 4.05, // Tizi Ouzou
     words: { water:['aman','aman'], fire:['times','times'], sun:['iṭij','itˤidʒ'], moon:['aggur','agːuɾ'], mother:['yemma','jemːa'], father:['baba','baba'], eat:['eçç','eʃː'], drink:['sew','sew'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['ttejra','tːedʒɾa'], house:['axxam','aχːam'], dog:['aydi','ajdi'], cat:['amcic','amʃiʃ'], hand:['afus','afus'], eye:['tiṭ','titˤ'], hello:['azul','azul'], thanks:['tanemmirt','tanemːiɾt'], one:['yiwen','jiwen'], good:['yelha','jelha'] }},
@@ -1506,6 +1510,9 @@ const LANG_DATA = {
   // Niger-Congo (Mande, Atlantic)
   men: { name: 'Mende', native: 'Mende', lat: 7.96, lng: -11.74, // Bo, Sierra Leone
     words: { water:['njei','ndʒei'], fire:['ngombu','ŋɡombu'], sun:['foni','foni'], moon:['ngewɔ','ŋɡewɔ'], mother:['nje','ndʒe'], father:['nya','ɲa'], eat:['mɛ','mɛ'], drink:['ngu','ŋɡu'], love:['ndolo','ndolo'], heart:['mola','mola'], tree:['ngulu','ŋɡulu'], house:['pɛlɛ','pɛlɛ'], dog:['nguje','ŋɡudʒe'], cat:['gɔngɔ','ɡɔŋɡɔ'], hand:['lɔkɔ','lɔkɔ'], eye:['ngama','ŋɡama'], hello:['bua','bua'], thanks:['bisɛ','bisɛ'], one:['yila','jila'], good:['nyande','ɲande'] }},
+  // Themne — Atlantic-Congo Mel branch, Sierra Leone (Audit Task 149 Batch 3)
+  tem: { name: 'Themne', native: 'KʌThemnɛ', lat: 8.88, lng: -12.05, // Makeni
+    words: { water:['mant','mant'], fire:['anang','anaŋ'], sun:['arɛ','arɛ'], moon:['arai','arai'], mother:['ya','ja'], father:['pa','pa'], eat:['ði','ði'], drink:['di','di'], love:['ka-haŋkə','kahaŋkə'], heart:['ka-yɔn','kajɔn'], tree:['kʌ-ant','kʌant'], house:['anseth','ansetʰ'], dog:['kabul','kabul'], cat:['kanaŋ','kanaŋ'], hand:['anpa','anpa'], eye:['ari','ari'], hello:['seke','seke'], thanks:['sɔŋ','sɔŋ'], one:['piɲ','piɲ'], good:['lɔŋ','lɔŋ'] }},
   dyu: { name: 'Dyula', native: 'Julakan', lat: 11.18, lng: -4.30, // Bobo-Dioulasso
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dun','dun'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiri'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni soɣoma','i ni soɣoma'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ɲuman','ɲuman'] }},
   // === Phase 3L: more Indigenous Americas + remaining S Asian/SE Asian ===
@@ -2662,6 +2669,15 @@ const LANG_DATA = {
   // French-based creole (Indian Ocean)
   mfe: { name: 'Mauritian Creole', native: 'Kreol Morisien', lat: -20.16, lng: 57.49, // Port Louis
     words: { water:['dilo','dilo'], fire:['dife','dife'], sun:['soley','soleɪ'], moon:['lalinn','lalin'], mother:['mama','mama'], father:['papa','papa'], eat:['manze','mãze'], drink:['bwar','bwaɾ'], love:['lamour','lamuɾ'], heart:['leker','lekeɾ'], tree:['pye','pje'], house:['lakaz','lakaz'], dog:['lisien','lisjen'], cat:['lisat','lisat'], hand:['lame','lame'], eye:['lizie','lizje'], hello:['bonzour','bõzuɾ'], thanks:['mersi','meɾsi'], one:['enn','ẽn'], good:['bon','bõ'] }},
+  // Indian Ocean French-based creole triad (Audit Task 149 Batch 2):
+  // Réunion + Seychellois pair with Mauritian above.
+  rcf: { name: 'Réunion Creole', native: 'Kreol Réyoné', lat: -20.88, lng: 55.45, // Saint-Denis
+    words: { water:['dlo','dlo'], fire:['dofé','dofe'], sun:['soley','solej'], moon:['lalune','lalyn'], mother:['manmon','mãmõ'], father:['papa','papa'], eat:['manz','mãz'], drink:['bwar','bwaʁ'], love:['lamour','lamuʁ'], heart:['ker','kɛʁ'], tree:['pyébwa','pjebwa'], house:['kaz','kaz'], dog:['lisien','lisjɛ̃'], cat:['shat','ʃat'], hand:['lamin','lamɛ̃'], eye:['zié','zje'], hello:['bonzour','bõzuʁ'], thanks:['mersi','mɛʁsi'], one:['inn','in'], good:['bon','bõ'] }},
+  crs: { name: 'Seychellois Creole', native: 'Kreol Seselwa', lat: -4.62, lng: 55.45, // Victoria, Mahé
+    words: { water:['delo','delo'], fire:['dife','dife'], sun:['soley','solej'], moon:['lalin','lalin'], mother:['manman','mãmã'], father:['papa','papa'], eat:['manze','mãze'], drink:['bwar','bwaʁ'], love:['lanmour','lãmuʁ'], heart:['leker','lekeʁ'], tree:['pye dibwa','pje dibwa'], house:['lakaz','lakaz'], dog:['lisyen','lisjɛ̃'], cat:['lisat','lisat'], hand:['lanmen','lãmɛ̃'], eye:['lizye','lizje'], hello:['bonzour','bõzuʁ'], thanks:['mersi','mɛʁsi'], one:['enn','ɛ̃n'], good:['bon','bõ'] }},
+  // Caribbean French-based creole anchor
+  gcf: { name: 'Guadeloupean Creole', native: 'Kréyòl Gwadloupéyen', lat: 16.24, lng: -61.53, // Pointe-à-Pitre
+    words: { water:['dlo','dlo'], fire:['difé','dife'], sun:['solèy','solɛj'], moon:['lalin','lalin'], mother:['manman','mãmã'], father:['papa','papa'], eat:['manjé','mãʒe'], drink:['bwè','bwɛ'], love:['lanmou','lãmu'], heart:['kè','kɛ'], tree:['pyé bwa','pje bwa'], house:['kay','kaj'], dog:['chyen','tʃjɛ̃'], cat:['chat','ʃat'], hand:['men','mɛ̃'], eye:['zyé','zje'], hello:['bonjou','bõʒu'], thanks:['mèsi','mɛsi'], one:['yon','jõ'], good:['bon','bõ'] }},
   // Niger-Congo Mande (Senegal/Gambia)
   mnk: { name: 'Mandinka', native: 'Mandinka', lat: 13.45, lng: -16.58, // Banjul
     words: { water:['jiyo','dʒijo'], fire:['dimbaa','dimbaː'], sun:['tilo','tilo'], moon:['karoo','karoː'], mother:['baa','baː'], father:['faa','faː'], eat:['domo','domo'], drink:['miŋ','miŋ'], love:['kanu','kanu'], heart:['sondomoo','sondomoː'], tree:['yiroo','jiroː'], house:['buŋo','buŋo'], dog:['wuloo','wuloː'], cat:['ñankuma','ɲankuma'], hand:['buloo','buloː'], eye:['ɲaa','ɲaː'], hello:['salaam','salaːm'], thanks:['abaraka','abaraka'], one:['kiliŋ','kiliŋ'], good:['beteyaa','betejaː'] }},

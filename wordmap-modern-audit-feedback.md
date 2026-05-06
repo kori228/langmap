@@ -1392,3 +1392,42 @@ Runyakitara クラスタ (cgg/ttj/nyo + 既存 nyn) で Uganda Bantu の coverag
 - **Task 150 Batch I**: nmn Taa (Khoisan, Traill 1985 出典待ち)
 
 Pass 8〜20 累計 **53 タスク + 23 言語追加 - 1 重複削除** (591 → 614)。
+
+---
+
+## Pass 21 Sequential Cleanup (2026-05-06 part 14)
+
+### Task 149 残 Batch 2/3 — 5 言語追加
+
+| Code | 言語 | 系統 | 話者数 |
+|---|---|---|---|
+| `rcf` | レユニオン・クレオール | French-based creole | ~600K |
+| `crs` | セーシェル・クレオール | French-based creole | ~73K |
+| `gcf` | グアドループ・クレオール | French-based creole | ~430K |
+| `tem` | テムネ (KʌThemnɛ) | Atlantic-Congo Mel | ~1.5M |
+| `ses` | コイラボロ・センニ | Songhai (genealogically isolated) | ~430K |
+
+`mfe` Mauritian + `rcf` Réunion + `crs` Seychellois でインド洋 French-creole 三角構造完成。`gcf` でカリブ海 French-creole 拠点追加。`tem` でシエラレオネ Mende-Themne ペア完成。`ses` で Sahel 交易回廊 Songhai 拠点追加。
+
+各言語に: 20-word entries (Heath 1999 / Ludwig et al. 2002 / Bollée 2009 / Wilson 1961 等), full meta (sources, languageKind=pidgin-creole 該当言語), LANG_NAMES 21 UI 言語分。`Songhai` family token を validator allow-list 追加。
+
+### Task 149 Batch 4 (oto Otomi) — 明示的延期
+
+監査自身が要求する Lastra (1992, 1997) per-cell tone+phonation 出典が現状確認できないため**延期**。Otomi の register tone (high/low) × phonation (modal/breathy/creaky) は 20 セル全てを double-check する必要があり、出典不確認状態での追加は監査ポリシー違反。
+
+### Validator + 数値
+- ERRORS: 0
+- WARNINGS: **20** (全て pre-existing description-i18n + 新言語の i18n)
+- Languages: **619** (modern 533, historical 86)
+- 新 family `Songhai` を allow-list 追加
+- crs/gcf "tree = pyé bwa / pye dibwa" を `formType: 'compound'` 注釈
+- Cache-buster: data 92→93, names 9→10, meta 42→43
+
+### 残（次回以降）
+- **Task 144**: 重い翻訳作業
+- **Task 145 Phase B**: ja/ko/zh translations
+- **Task 146**: per-language IPA rebuilds (8 langs)
+- **Task 149 Batch 4**: oto Otomi (Lastra 1992/1997 出典待ち)
+- **Task 150 Batch H/I**: jrb (Andamanese, Anvita Abbi 2012 待ち), nmn Taa (Traill 1985 待ち)
+
+Pass 8〜21 累計 **53 タスク + 28 言語追加 - 1 重複** (591 → 619)。
