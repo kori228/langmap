@@ -394,7 +394,7 @@
             background: none; border: none; font-size: 18px; cursor: pointer; color: #999;
         }
         .lang-info-panel .close-btn:hover { color: #333; }
-        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; }
+        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; padding-right: 130px; }
         .lang-info-panel .native-name { font-size: 14px; color: #666; margin-bottom: 10px; }
         .lang-info-panel table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
         .lang-info-panel td { padding: 3px 0; vertical-align: top; }
@@ -489,25 +489,28 @@
         }
         .compare-add-btn:hover { background: #e8f0fe; }
         .compare-add-btn.added { background: #1a73e8; color: #fff; }
-        /* Header position: compact, sits right under the title before the native name */
+        /* Header position: top-right of the modal, immediately left of the × close button. */
         .compare-add-btn.header {
-            margin-top: 0; margin-bottom: 6px;
-            padding: 2px 8px; font-size: 11px;
+            position: absolute; top: 6px; right: 36px; z-index: 1;
+            margin: 0; padding: 2px 8px; font-size: 11px;
         }
-        /* Reorder arrows in compare table column headers */
-        .compare-table thead .col-controls {
-            display: flex; gap: 2px; margin-top: 2px; align-items: center;
+        /* Compare-table column headers are draggable for reorder */
+        .compare-table thead th[draggable="true"] {
+            cursor: grab; user-select: none;
         }
-        .compare-table thead .move-col {
-            background: none; border: 1px solid #ccc; cursor: pointer; color: #666;
-            font-size: 10px; padding: 1px 5px; border-radius: 3px; line-height: 1;
+        .compare-table thead th[draggable="true"]:active { cursor: grabbing; }
+        .compare-table thead th.dragging { opacity: 0.4; }
+        .compare-table thead th.drop-before {
+            box-shadow: inset 3px 0 0 0 #1a73e8;
         }
-        .compare-table thead .move-col:hover:not(:disabled) {
-            background: #e8f0fe; color: #1a73e8; border-color: #1a73e8;
+        .compare-table thead th.drop-after {
+            box-shadow: inset -3px 0 0 0 #1a73e8;
         }
-        .compare-table thead .move-col:disabled {
-            opacity: 0.3; cursor: not-allowed;
+        .compare-table thead .drag-handle {
+            color: #bbb; font-size: 12px; margin-right: 4px; vertical-align: middle;
+            cursor: grab;
         }
+        .compare-table thead th[draggable="true"]:hover .drag-handle { color: #1a73e8; }
         @media (max-width: 600px) {
             .compare-panel { max-height: 80vh; }
             .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
@@ -2950,6 +2953,40 @@
             infoContent.innerHTML = html;
         }
 
+        // Pan the map (or globe) to a language's coordinate, accounting for the
+        // bottom-mounted modal on mobile. On mobile, the lang-info-panel covers
+        // the bottom 50-60% of the viewport, so we use fitBounds with
+        // paddingBottomRight to push the coord into the visible upper region.
+        function centerLangOnMap(code) {
+            const lang = LANG_DATA[code];
+            if (!lang || !Number.isFinite(lang.lat) || !Number.isFinite(lang.lng)) return;
+            if (is3D && globe) {
+                globe.pointOfView({ lat: lang.lat, lng: lang.lng, altitude: 1.2 }, 800);
+                return;
+            }
+            if (!map) return;
+            const targetZoom = Math.max(map.getZoom(), 5);
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile) {
+                // Estimate modal height: 50vh per the @media (max-width: 768px) rule
+                // (60vh at ≤480px). Add a small buffer so the marker isn't right on the seam.
+                const isSmall = window.matchMedia('(max-width: 480px)').matches;
+                const modalFraction = isSmall ? 0.6 : 0.5;
+                const modalH = Math.round(window.innerHeight * modalFraction) + 16;
+                try {
+                    map.fitBounds([[lang.lat, lang.lng], [lang.lat, lang.lng]], {
+                        paddingBottomRight: [0, modalH],
+                        maxZoom: targetZoom,
+                        animate: true,
+                    });
+                } catch (e) {
+                    map.setView([lang.lat, lang.lng], targetZoom);
+                }
+            } else {
+                map.setView([lang.lat, lang.lng], targetZoom);
+            }
+        }
+
         function showLangInfo(code) {
             const lang = LANG_DATA[code];
             if (!lang) return;
@@ -3176,9 +3213,7 @@
                 const code = item.getAttribute('data-code');
                 if (!code || !LANG_DATA[code]) return;
                 const lang = LANG_DATA[code];
-                if (typeof map !== 'undefined' && map && map.setView) {
-                    map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
-                }
+                centerLangOnMap(code);
                 // If modal already shows this lang (from live preview), avoid
                 // calling showLangInfo (which would toggle it closed).
                 if (infoPanel.dataset.code !== code || !infoPanel.classList.contains('visible')) {
@@ -3354,14 +3389,14 @@
             const panel = document.getElementById('compare-panel');
             if (panel && panel.classList.contains('visible')) renderCompare();
         }
-        function moveInCompare(code, delta) {
-            const i = _compareList.indexOf(code);
-            if (i === -1) return;
-            const j = i + delta;
-            if (j < 0 || j >= _compareList.length) return;
-            const tmp = _compareList[i];
-            _compareList[i] = _compareList[j];
-            _compareList[j] = tmp;
+        // Reorder: move source code so it lands at toIdx (clamped)
+        function reorderCompare(srcCode, toIdx) {
+            const from = _compareList.indexOf(srcCode);
+            if (from === -1) return;
+            let to = Math.max(0, Math.min(toIdx, _compareList.length - 1));
+            if (from === to) return;
+            _compareList.splice(from, 1);
+            _compareList.splice(to, 0, srcCode);
             saveCompareList();
             renderCompare();
         }
@@ -3378,16 +3413,11 @@
                 const code = _compareList[idx];
                 const lang = LANG_DATA[code]; if (!lang) continue;
                 const display = names[code] || lang.name || code;
-                const leftDis = idx === 0 ? ' disabled' : '';
-                const rightDis = idx === len - 1 ? ' disabled' : '';
-                html += '<th>'
+                html += '<th draggable="true" data-code="' + escapeHtml(code) + '" data-idx="' + idx + '" title="Drag to reorder">'
+                     + '<span class="drag-handle" aria-hidden="true">⋮⋮</span>'
                      + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
                      + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
-                     + '<div class="col-controls">'
-                     +   '<button class="move-col" data-code="' + escapeHtml(code) + '" data-dir="-1" type="button" aria-label="Move left"' + leftDis + '>◀</button>'
-                     +   '<button class="move-col" data-code="' + escapeHtml(code) + '" data-dir="1" type="button" aria-label="Move right"' + rightDis + '>▶</button>'
-                     +   '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
-                     + '</div>'
+                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
                      + '</th>';
             }
             html += '</tr></thead><tbody>';
@@ -3412,17 +3442,61 @@
             body.innerHTML = html;
             // Wire interactions
             body.querySelectorAll('.remove-col').forEach(btn => {
-                btn.addEventListener('click', () => removeFromCompare(btn.dataset.code));
-            });
-            body.querySelectorAll('.move-col').forEach(btn => {
-                btn.addEventListener('click', () => moveInCompare(btn.dataset.code, parseInt(btn.dataset.dir)));
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    removeFromCompare(btn.dataset.code);
+                });
+                // Don't let the remove-button start a drag (the parent <th> is draggable)
+                btn.addEventListener('mousedown', e => e.stopPropagation());
             });
             body.querySelectorAll('.lang-name[data-code]').forEach(el => {
                 el.style.cursor = 'pointer';
                 el.style.textDecoration = 'underline';
-                el.addEventListener('click', () => {
-                    const code = el.dataset.code;
-                    showLangInfo(code);
+                el.addEventListener('click', e => {
+                    e.stopPropagation();
+                    showLangInfo(el.dataset.code);
+                });
+            });
+
+            // Drag-and-drop reordering on column headers
+            let dragSrcCode = null;
+            body.querySelectorAll('th[draggable="true"]').forEach(th => {
+                th.addEventListener('dragstart', e => {
+                    dragSrcCode = th.dataset.code;
+                    th.classList.add('dragging');
+                    if (e.dataTransfer) {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', dragSrcCode);
+                    }
+                });
+                th.addEventListener('dragend', () => {
+                    th.classList.remove('dragging');
+                    body.querySelectorAll('th.drop-before, th.drop-after')
+                        .forEach(el => el.classList.remove('drop-before', 'drop-after'));
+                    dragSrcCode = null;
+                });
+                th.addEventListener('dragover', e => {
+                    if (!dragSrcCode || th.dataset.code === dragSrcCode) return;
+                    e.preventDefault();
+                    if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+                    const rect = th.getBoundingClientRect();
+                    const before = (e.clientX - rect.left) < rect.width / 2;
+                    th.classList.toggle('drop-before', before);
+                    th.classList.toggle('drop-after', !before);
+                });
+                th.addEventListener('dragleave', () => {
+                    th.classList.remove('drop-before', 'drop-after');
+                });
+                th.addEventListener('drop', e => {
+                    e.preventDefault();
+                    if (!dragSrcCode || th.dataset.code === dragSrcCode) return;
+                    const targetIdx = parseInt(th.dataset.idx);
+                    const srcIdx = _compareList.indexOf(dragSrcCode);
+                    const rect = th.getBoundingClientRect();
+                    const before = (e.clientX - rect.left) < rect.width / 2;
+                    let toIdx = targetIdx + (before ? 0 : 1);
+                    if (srcIdx < toIdx) toIdx -= 1;  // account for the splice removing src first
+                    reorderCompare(dragSrcCode, toIdx);
                 });
             });
         }
@@ -3463,21 +3537,29 @@
         });
 
         // === Random language button (next to search) ===========================
+        // Picks a random language from the *currently visible* set:
+        //   - respects the era toggle (modern vs historical) via getActiveCodes()
+        //   - respects active lang-filter selections via passesFilter()
         const randomBtn = document.getElementById('lang-random');
         if (randomBtn) {
             randomBtn.addEventListener('click', () => {
-                const codes = Object.keys(LANG_DATA);
-                if (!codes.length) return;
-                const code = codes[Math.floor(Math.random() * codes.length)];
-                // Pan to the language and open its modal
-                const lang = LANG_DATA[code];
-                if (lang && Number.isFinite(lang.lat) && Number.isFinite(lang.lng)) {
-                    if (is3D && globe) {
-                        globe.pointOfView({ lat: lang.lat, lng: lang.lng, altitude: 1.2 }, 800);
-                    } else if (map) {
-                        map.setView([lang.lat, lang.lng], Math.max(map.getZoom(), 5));
-                    }
+                // Step 1: era-aware base set
+                let pool;
+                if (window.__langmap && typeof window.__langmap.getActiveCodes === 'function') {
+                    pool = Array.from(window.__langmap.getActiveCodes());
+                } else {
+                    pool = Object.keys(LANG_DATA);
                 }
+                // Step 2: intersect with active filter (only if any filter is active)
+                if (window.__langmap
+                    && typeof window.__langmap.anyFilterActive === 'function'
+                    && typeof window.__langmap.passesFilter === 'function'
+                    && window.__langmap.anyFilterActive()) {
+                    pool = pool.filter(c => window.__langmap.passesFilter(c));
+                }
+                if (!pool.length) return;
+                const code = pool[Math.floor(Math.random() * pool.length)];
+                centerLangOnMap(code);
                 showLangInfo(code);
             });
         }
