@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=54">
+<link rel="stylesheet" href="styles.css?v=59">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -22,12 +22,8 @@
         margin: 0;  /* override styles.css negative margin */
         z-index: 10;
     }
-    /* Pin the UI-lang select to a fixed width on the right (matches
-       wordmap.html's right-aligned style). margin-left:auto comes from
-       styles.css. */
-    .site-header-bar .header-ui-lang {
-        min-width: 140px;
-    }
+    /* UI-lang select styling now lives in styles.css
+       (.site-header-bar .header-ui-lang) for cross-page consistency. */
 
     .controls-bar {
         flex: 0 0 auto;
@@ -141,13 +137,15 @@
     <input type="text" id="search" placeholder="🔍 Filter…" autocomplete="off">
     <button type="button" id="expand-all">Expand all</button>
     <button type="button" id="collapse-all">Collapse all</button>
+    <button type="button" id="zoom-in" title="Zoom in" style="font-size:14px;font-weight:600;line-height:1">＋</button>
+    <button type="button" id="zoom-out" title="Zoom out" style="font-size:14px;font-weight:600;line-height:1">－</button>
     <button type="button" id="reset-view" title="Reset view">⟲</button>
     <span class="legend" id="legend">Click to expand/collapse · drag to pan · scroll to zoom</span>
     <span class="stats" id="stats"></span>
 </div>
 
 <div class="tree-canvas" id="tree-canvas">
-    <div class="empty" id="loading">Loading data…</div>
+    <div class="empty" id="loading">Loading…</div>
 </div>
 <div class="tooltip" id="tooltip"></div>
 
@@ -163,26 +161,29 @@
     }
 
     // === i18n strings ====================================================
+    // Note: navOrder / navMap / navTree are kept in lockstep with index.html
+    // (app.js woLabels/wmLabels/trLabels) and wordmap.html (NAV_ORDER/NAV_MAP/
+    // NAV_TREE). All 3 pages MUST display identical text per UI lang.
     const UI_I18N = {
-        en: { title:'Language Family Tree', subtitle:n=>n+' languages organized by family.', search:'🔍 Filter by language name or code…', expand:'Expand all', collapse:'Collapse all', reset:'Reset view', legend:'Click to expand/collapse · drag to pan · scroll to zoom · click leaf to open on map', stats:n=>n+' langs', navOrder:'Word Order', navMap:'Word Map', navTree:'Tree', uiLangLabel:'UI language' },
-        ja: { title:'言語系統樹', subtitle:n=>n+' 言語を系統別に整理。', search:'🔍 言語名・コードで絞り込み…', expand:'すべて展開', collapse:'すべて折りたたむ', reset:'表示リセット', legend:'クリックで展開・折りたたみ／ドラッグで移動／スクロールで拡大／葉をクリックで地図', stats:n=>n+' 言語', navOrder:'語順', navMap:'語彙地図', navTree:'系統樹', uiLangLabel:'UI 言語' },
-        ko: { title:'언어 계통수', subtitle:n=>n+'개 언어를 계통별로 정리.', search:'🔍 언어 이름/코드로 필터…', expand:'모두 펼치기', collapse:'모두 접기', reset:'보기 초기화', legend:'클릭으로 펼침/접기 · 드래그로 이동 · 스크롤로 확대 · 잎 클릭으로 지도', stats:n=>n+'개 언어', navOrder:'어순', navMap:'어휘 지도', navTree:'계통수', uiLangLabel:'UI 언어' },
-        zh: { title:'语言谱系树', subtitle:n=>'按谱系整理的 '+n+' 种语言。', search:'🔍 按语言名或代码过滤…', expand:'全部展开', collapse:'全部折叠', reset:'重置视图', legend:'点击展开/折叠 · 拖拽平移 · 滚轮缩放 · 点击叶子在地图上打开', stats:n=>n+' 种', navOrder:'语序', navMap:'词汇地图', navTree:'谱系树', uiLangLabel:'界面语言' },
-        yue:{ title:'語言譜系樹', subtitle:n=>'按譜系整理嘅 '+n+' 種語言。', search:'🔍 按語言名或代碼過濾…', expand:'全部展開', collapse:'全部摺疊', reset:'重設視圖', legend:'撳展開/摺疊 · 拖拽平移 · 滾輪縮放 · 撳葉子喺地圖上打開', stats:n=>n+' 種', navOrder:'語序', navMap:'詞彙地圖', navTree:'譜系樹', uiLangLabel:'介面語言' },
-        vi: { title:'Cây phả hệ ngôn ngữ', subtitle:n=>n+' ngôn ngữ theo họ.', search:'🔍 Lọc theo tên hoặc mã…', expand:'Mở rộng tất cả', collapse:'Thu gọn tất cả', reset:'Đặt lại', legend:'Nhấp để mở rộng · kéo để pan · cuộn để zoom · nhấp lá để mở bản đồ', stats:n=>n+' ngôn ngữ', navOrder:'Trật tự từ', navMap:'Bản đồ từ vựng', navTree:'Cây phả hệ', uiLangLabel:'Ngôn ngữ giao diện' },
-        th: { title:'แผนภูมิตระกูลภาษา', subtitle:n=>'จัด '+n+' ภาษา', search:'🔍 กรอง…', expand:'ขยายทั้งหมด', collapse:'ยุบทั้งหมด', reset:'รีเซ็ต', legend:'คลิกเพื่อขยาย · ลากเพื่อแพน · เลื่อนเพื่อซูม · คลิกใบเพื่อเปิดบนแผนที่', stats:n=>n+' ภาษา', navOrder:'ลำดับคำ', navMap:'แผนที่คำ', navTree:'แผนภูมิ', uiLangLabel:'ภาษา UI' },
-        id: { title:'Pohon Keluarga Bahasa', subtitle:n=>n+' bahasa berdasarkan keluarga.', search:'🔍 Filter…', expand:'Perluas semua', collapse:'Ciutkan semua', reset:'Atur ulang', legend:'Klik untuk perluas · seret untuk pan · gulir untuk zoom · klik daun untuk peta', stats:n=>n+' bahasa', navOrder:'Urutan kata', navMap:'Peta kosakata', navTree:'Pohon', uiLangLabel:'Bahasa UI' },
-        hi: { title:'भाषा परिवार वृक्ष', subtitle:n=>n+' भाषाएँ परिवार अनुसार।', search:'🔍 फ़िल्टर…', expand:'सभी विस्तार करें', collapse:'सभी संक्षिप्त', reset:'रीसेट', legend:'विस्तार/संक्षिप्त के लिए क्लिक · पैन के लिए खींचें · ज़ूम के लिए स्क्रॉल · पत्ती क्लिक से मानचित्र', stats:n=>n+' भाषाएँ', navOrder:'शब्द क्रम', navMap:'शब्द मानचित्र', navTree:'वृक्ष', uiLangLabel:'UI भाषा' },
-        de: { title:'Sprachstammbaum', subtitle:n=>n+' Sprachen nach Familie.', search:'🔍 Nach Name/Code filtern…', expand:'Alle erweitern', collapse:'Alle einklappen', reset:'Zurücksetzen', legend:'Klicken zum Erweitern · Ziehen zum Schwenken · Scrollen zum Zoomen · Blatt-Klick öffnet Karte', stats:n=>n+' Sprachen', navOrder:'Wortstellung', navMap:'Wortkarte', navTree:'Stammbaum', uiLangLabel:'UI-Sprache' },
-        fr: { title:'Arbre des familles linguistiques', subtitle:n=>n+' langues par famille.', search:'🔍 Filtrer…', expand:'Tout développer', collapse:'Tout réduire', reset:'Réinitialiser', legend:'Cliquer pour développer · glisser pour panoramique · molette pour zoom · cliquer feuille pour la carte', stats:n=>n+' langues', navOrder:'Ordre des mots', navMap:'Carte des mots', navTree:'Arbre', uiLangLabel:'Langue de l’IU' },
-        it: { title:'Albero delle lingue', subtitle:n=>n+' lingue per famiglia.', search:'🔍 Filtra…', expand:'Espandi tutto', collapse:'Comprimi tutto', reset:'Reimposta', legend:'Clic per espandere · trascina per pan · rotella per zoom · clic foglia apre mappa', stats:n=>n+' lingue', navOrder:'Ordine parole', navMap:'Mappa parole', navTree:'Albero', uiLangLabel:'Lingua UI' },
-        es: { title:'Árbol de lenguas', subtitle:n=>n+' lenguas por familia.', search:'🔍 Filtrar…', expand:'Expandir todo', collapse:'Contraer todo', reset:'Restablecer', legend:'Clic para expandir · arrastrar para mover · rueda para zoom · clic hoja abre mapa', stats:n=>n+' lenguas', navOrder:'Orden palabras', navMap:'Mapa palabras', navTree:'Árbol', uiLangLabel:'Idioma UI' },
-        pt: { title:'Árvore de línguas', subtitle:n=>n+' línguas por família.', search:'🔍 Filtrar…', expand:'Expandir tudo', collapse:'Recolher tudo', reset:'Redefinir', legend:'Clique para expandir · arraste para deslocar · roda para zoom · clique folha para mapa', stats:n=>n+' línguas', navOrder:'Ordem palavras', navMap:'Mapa palavras', navTree:'Árvore', uiLangLabel:'Idioma UI' },
-        ru: { title:'Языковое древо', subtitle:n=>n+' языков по семьям.', search:'🔍 Фильтр…', expand:'Развернуть всё', collapse:'Свернуть всё', reset:'Сброс', legend:'Клик — развернуть · перетащить — панорама · колесо — масштаб · клик листа — карта', stats:n=>n+' языков', navOrder:'Порядок слов', navMap:'Карта слов', navTree:'Древо', uiLangLabel:'Язык интерфейса' },
-        uk: { title:'Мовне дерево', subtitle:n=>n+' мов за родинами.', search:'🔍 Фільтр…', expand:'Розгорнути все', collapse:'Згорнути все', reset:'Скинути', legend:'Клік — розгорнути · перетягування — панорама · колесо — масштаб · клік листа — карта', stats:n=>n+' мов', navOrder:'Порядок слів', navMap:'Карта слів', navTree:'Дерево', uiLangLabel:'Мова інтерфейсу' },
-        ar: { title:'شجرة عائلات اللغات', subtitle:n=>n+' لغة حسب العائلة.', search:'🔍 تصفية…', expand:'توسيع الكل', collapse:'طي الكل', reset:'إعادة تعيين', legend:'انقر لتوسيع · اسحب للتحريك · مرر للتكبير · انقر ورقة للخريطة', stats:n=>n+' لغة', navOrder:'ترتيب الكلمات', navMap:'خريطة الكلمات', navTree:'الشجرة', uiLangLabel:'لغة الواجهة' },
-        he: { title:'אילן השפות', subtitle:n=>n+' שפות לפי משפחה.', search:'🔍 סנן…', expand:'הרחב הכל', collapse:'כווץ הכל', reset:'איפוס', legend:'לחיצה להרחבה · גרירה להזזה · גלילה לזום · לחיצה על עלה למפה', stats:n=>n+' שפות', navOrder:'סדר מילים', navMap:'מפת מילים', navTree:'אילן', uiLangLabel:'שפת ממשק' },
-        sw: { title:'Mti wa Lugha', subtitle:n=>n+' lugha kwa familia.', search:'🔍 Chuja…', expand:'Panua zote', collapse:'Kunja zote', reset:'Weka upya', legend:'Bofya kupanua · vuta kuhamisha · sogeza kukuza · bofya jani kufungua ramani', stats:n=>n+' lugha', navOrder:'Mpangilio', navMap:'Ramani', navTree:'Mti', uiLangLabel:'Lugha UI' },
+        en: { title:'Language Family Tree', subtitle:n=>n+' languages organized by family.', search:'🔍 Filter by language name or code…', expand:'Expand all', collapse:'Collapse all', reset:'Reset view', zoomIn:'Zoom in', zoomOut:'Zoom out', loading:'Loading data…', langsWord:'languages', legend:'Click to expand/collapse · drag to pan · scroll to zoom · click leaf to open on map', stats:n=>n+' langs', navOrder:'Word Order', navMap:'Word Map', navTree:'Tree', uiLangLabel:'UI language' },
+        ja: { title:'言語系統樹', subtitle:n=>n+' 言語を系統別に整理。', search:'🔍 言語名・コードで絞り込み…', expand:'すべて展開', collapse:'すべて折りたたむ', reset:'表示リセット', zoomIn:'拡大', zoomOut:'縮小', loading:'読み込み中…', langsWord:'言語', legend:'クリックで展開・折りたたみ／ドラッグで移動／スクロールで拡大／葉をクリックで地図', stats:n=>n+' 言語', navOrder:'語順マップ', navMap:'単語マップ', navTree:'系統樹', uiLangLabel:'UI 言語' },
+        ko: { title:'언어 계통수', subtitle:n=>n+'개 언어를 계통별로 정리.', search:'🔍 언어 이름/코드로 필터…', expand:'모두 펼치기', collapse:'모두 접기', reset:'보기 초기화', zoomIn:'확대', zoomOut:'축소', loading:'로딩 중…', langsWord:'개 언어', legend:'클릭으로 펼침/접기 · 드래그로 이동 · 스크롤로 확대 · 잎 클릭으로 지도', stats:n=>n+'개 언어', navOrder:'어순 맵', navMap:'단어 맵', navTree:'계통수', uiLangLabel:'UI 언어' },
+        zh: { title:'语言谱系树', subtitle:n=>'按谱系整理的 '+n+' 种语言。', search:'🔍 按语言名或代码过滤…', expand:'全部展开', collapse:'全部折叠', reset:'重置视图', zoomIn:'放大', zoomOut:'缩小', loading:'加载中…', langsWord:'种语言', legend:'点击展开/折叠 · 拖拽平移 · 滚轮缩放 · 点击叶子在地图上打开', stats:n=>n+' 种', navOrder:'语序图', navMap:'词汇地图', navTree:'谱系树', uiLangLabel:'界面语言' },
+        yue:{ title:'語言譜系樹', subtitle:n=>'按譜系整理嘅 '+n+' 種語言。', search:'🔍 按語言名或代碼過濾…', expand:'全部展開', collapse:'全部摺疊', reset:'重設視圖', zoomIn:'放大', zoomOut:'縮小', loading:'載入中…', langsWord:'種語言', legend:'撳展開/摺疊 · 拖拽平移 · 滾輪縮放 · 撳葉子喺地圖上打開', stats:n=>n+' 種', navOrder:'語序圖', navMap:'詞彙地圖', navTree:'譜系樹', uiLangLabel:'介面語言' },
+        vi: { title:'Cây phả hệ ngôn ngữ', subtitle:n=>n+' ngôn ngữ theo họ.', search:'🔍 Lọc theo tên hoặc mã…', expand:'Mở rộng tất cả', collapse:'Thu gọn tất cả', reset:'Đặt lại', zoomIn:'Phóng to', zoomOut:'Thu nhỏ', loading:'Đang tải…', langsWord:'ngôn ngữ', legend:'Nhấp để mở rộng · kéo để pan · cuộn để zoom · nhấp lá để mở bản đồ', stats:n=>n+' ngôn ngữ', navOrder:'Trật tự từ', navMap:'Bản đồ từ', navTree:'Cây phả hệ', uiLangLabel:'Ngôn ngữ giao diện' },
+        th: { title:'แผนภูมิตระกูลภาษา', subtitle:n=>'จัด '+n+' ภาษา', search:'🔍 กรอง…', expand:'ขยายทั้งหมด', collapse:'ยุบทั้งหมด', reset:'รีเซ็ต', zoomIn:'ขยาย', zoomOut:'ย่อ', loading:'กำลังโหลด…', langsWord:'ภาษา', legend:'คลิกเพื่อขยาย · ลากเพื่อแพน · เลื่อนเพื่อซูม · คลิกใบเพื่อเปิดบนแผนที่', stats:n=>n+' ภาษา', navOrder:'ลำดับคำ', navMap:'แผนที่คำ', navTree:'แผนภูมิ', uiLangLabel:'ภาษา UI' },
+        id: { title:'Pohon Keluarga Bahasa', subtitle:n=>n+' bahasa berdasarkan keluarga.', search:'🔍 Filter…', expand:'Perluas semua', collapse:'Ciutkan semua', reset:'Atur ulang', zoomIn:'Perbesar', zoomOut:'Perkecil', loading:'Memuat…', langsWord:'bahasa', legend:'Klik untuk perluas · seret untuk pan · gulir untuk zoom · klik daun untuk peta', stats:n=>n+' bahasa', navOrder:'Urutan Kata', navMap:'Peta Kata', navTree:'Pohon', uiLangLabel:'Bahasa UI' },
+        hi: { title:'भाषा परिवार वृक्ष', subtitle:n=>n+' भाषाएँ परिवार अनुसार।', search:'🔍 फ़िल्टर…', expand:'सभी विस्तार करें', collapse:'सभी संक्षिप्त', reset:'रीसेट', zoomIn:'ज़ूम इन', zoomOut:'ज़ूम आउट', loading:'लोड हो रहा है…', langsWord:'भाषाएँ', legend:'विस्तार/संक्षिप्त के लिए क्लिक · पैन के लिए खींचें · ज़ूम के लिए स्क्रॉल · पत्ती क्लिक से मानचित्र', stats:n=>n+' भाषाएँ', navOrder:'शब्द क्रम', navMap:'शब्द मानचित्र', navTree:'वृक्ष', uiLangLabel:'UI भाषा' },
+        de: { title:'Sprachstammbaum', subtitle:n=>n+' Sprachen nach Familie.', search:'🔍 Nach Name/Code filtern…', expand:'Alle erweitern', collapse:'Alle einklappen', reset:'Zurücksetzen', zoomIn:'Vergrößern', zoomOut:'Verkleinern', loading:'Lade Daten…', langsWord:'Sprachen', legend:'Klicken zum Erweitern · Ziehen zum Schwenken · Scrollen zum Zoomen · Blatt-Klick öffnet Karte', stats:n=>n+' Sprachen', navOrder:'Wortstellung', navMap:'Wortkarte', navTree:'Stammbaum', uiLangLabel:'UI-Sprache' },
+        fr: { title:'Arbre des familles linguistiques', subtitle:n=>n+' langues par famille.', search:'🔍 Filtrer…', expand:'Tout développer', collapse:'Tout réduire', reset:'Réinitialiser', zoomIn:'Zoom avant', zoomOut:'Zoom arrière', loading:'Chargement…', langsWord:'langues', legend:'Cliquer pour développer · glisser pour panoramique · molette pour zoom · cliquer feuille pour la carte', stats:n=>n+' langues', navOrder:'Ordre des mots', navMap:'Carte des mots', navTree:'Arbre', uiLangLabel:'Langue de l’IU' },
+        it: { title:'Albero delle lingue', subtitle:n=>n+' lingue per famiglia.', search:'🔍 Filtra…', expand:'Espandi tutto', collapse:'Comprimi tutto', reset:'Reimposta', zoomIn:'Ingrandisci', zoomOut:'Riduci', loading:'Caricamento…', langsWord:'lingue', legend:'Clic per espandere · trascina per pan · rotella per zoom · clic foglia apre mappa', stats:n=>n+' lingue', navOrder:'Ordine parole', navMap:'Mappa parole', navTree:'Albero', uiLangLabel:'Lingua UI' },
+        es: { title:'Árbol de lenguas', subtitle:n=>n+' lenguas por familia.', search:'🔍 Filtrar…', expand:'Expandir todo', collapse:'Contraer todo', reset:'Restablecer', zoomIn:'Acercar', zoomOut:'Alejar', loading:'Cargando…', langsWord:'lenguas', legend:'Clic para expandir · arrastrar para mover · rueda para zoom · clic hoja abre mapa', stats:n=>n+' lenguas', navOrder:'Orden de palabras', navMap:'Mapa de palabras', navTree:'Árbol', uiLangLabel:'Idioma UI' },
+        pt: { title:'Árvore de línguas', subtitle:n=>n+' línguas por família.', search:'🔍 Filtrar…', expand:'Expandir tudo', collapse:'Recolher tudo', reset:'Redefinir', zoomIn:'Aproximar', zoomOut:'Afastar', loading:'A carregar…', langsWord:'línguas', legend:'Clique para expandir · arraste para deslocar · roda para zoom · clique folha para mapa', stats:n=>n+' línguas', navOrder:'Ordem das palavras', navMap:'Mapa de palavras', navTree:'Árvore', uiLangLabel:'Idioma UI' },
+        ru: { title:'Языковое древо', subtitle:n=>n+' языков по семьям.', search:'🔍 Фильтр…', expand:'Развернуть всё', collapse:'Свернуть всё', reset:'Сброс', zoomIn:'Приблизить', zoomOut:'Отдалить', loading:'Загрузка…', langsWord:'языков', legend:'Клик — развернуть · перетащить — панорама · колесо — масштаб · клик листа — карта', stats:n=>n+' языков', navOrder:'Порядок слов', navMap:'Карта слов', navTree:'Древо', uiLangLabel:'Язык интерфейса' },
+        uk: { title:'Мовне дерево', subtitle:n=>n+' мов за родинами.', search:'🔍 Фільтр…', expand:'Розгорнути все', collapse:'Згорнути все', reset:'Скинути', zoomIn:'Наблизити', zoomOut:'Віддалити', loading:'Завантаження…', langsWord:'мов', legend:'Клік — розгорнути · перетягування — панорама · колесо — масштаб · клік листа — карта', stats:n=>n+' мов', navOrder:'Порядок слів', navMap:'Карта слів', navTree:'Дерево', uiLangLabel:'Мова інтерфейсу' },
+        ar: { title:'شجرة عائلات اللغات', subtitle:n=>n+' لغة حسب العائلة.', search:'🔍 تصفية…', expand:'توسيع الكل', collapse:'طي الكل', reset:'إعادة تعيين', zoomIn:'تكبير', zoomOut:'تصغير', loading:'جارٍ التحميل…', langsWord:'لغة', legend:'انقر لتوسيع · اسحب للتحريك · مرر للتكبير · انقر ورقة للخريطة', stats:n=>n+' لغة', navOrder:'ترتيب الكلمات', navMap:'خريطة الكلمات', navTree:'الشجرة', uiLangLabel:'لغة الواجهة' },
+        he: { title:'אילן השפות', subtitle:n=>n+' שפות לפי משפחה.', search:'🔍 סנן…', expand:'הרחב הכל', collapse:'כווץ הכל', reset:'איפוס', zoomIn:'הגדל', zoomOut:'הקטן', loading:'טוען…', langsWord:'שפות', legend:'לחיצה להרחבה · גרירה להזזה · גלילה לזום · לחיצה על עלה למפה', stats:n=>n+' שפות', navOrder:'סדר מילים', navMap:'מפת מילים', navTree:'אילן', uiLangLabel:'שפת ממשק' },
+        sw: { title:'Mti wa Lugha', subtitle:n=>n+' lugha kwa familia.', search:'🔍 Chuja…', expand:'Panua zote', collapse:'Kunja zote', reset:'Weka upya', zoomIn:'Kuza', zoomOut:'Punguza', loading:'Inapakia…', langsWord:'lugha', legend:'Bofya kupanua · vuta kuhamisha · sogeza kukuza · bofya jani kufungua ramani', stats:n=>n+' lugha', navOrder:'Mpangilio wa maneno', navMap:'Ramani ya maneno', navTree:'Mti', uiLangLabel:'Lugha UI' },
     };
 
     // Cookie helpers (shared cross-page persistence; cookie 'wm_uilang')
@@ -246,8 +247,12 @@
         document.getElementById('search').placeholder = t('search');
         document.getElementById('expand-all').textContent = t('expand');
         document.getElementById('collapse-all').textContent = t('collapse');
+        const zin = document.getElementById('zoom-in');   if (zin) zin.title = t('zoomIn');
+        const zout = document.getElementById('zoom-out'); if (zout) zout.title = t('zoomOut');
         document.getElementById('reset-view').title = t('reset');
         document.getElementById('legend').textContent = t('legend');
+        const loading = document.getElementById('loading');
+        if (loading) loading.textContent = t('loading');
         // Update nav labels while preserving the leading SVG icon (mirrors
         // index.html's app.js setNavText behavior).
         function setNavText(el, text) {
@@ -500,15 +505,28 @@
                 isInternal: false,
             });
         }
-        // Sort children: internals first (alphabetical), then leaves (alphabetical).
+        // Sort children by genealogical-cluster proximity rather than pure
+        // alphabetical (per user request 「系統が近いもの同士で並べて」).
+        // Within each parent: internals first, then leaves; both ranked by
+        // descendant-leaf count descending (so larger and arguably more
+        // typologically-significant subtrees cluster together at the top of
+        // each ring), with alphabetical name as tiebreaker.
+        function countLeaves(n) {
+            if (!n.children || n.children.length === 0) return 1;
+            return n.children.reduce((s, c) => s + countLeaves(c), 0);
+        }
         function sortNode(n) {
             if (!n.children) return;
+            n.children.forEach(sortNode);  // recurse first so leaf counts are ready
             n.children.sort((a, b) => {
                 if (a.isInternal && !b.isInternal) return -1;
                 if (!a.isInternal && b.isInternal) return 1;
+                if (a.isInternal && b.isInternal) {
+                    const la = countLeaves(a), lb = countLeaves(b);
+                    if (la !== lb) return lb - la;  // larger family first
+                }
                 return a.name.localeCompare(b.name);
             });
-            n.children.forEach(sortNode);
         }
         sortNode(root);
         // Attach descendant counts
@@ -558,29 +576,38 @@
 
     // Map-like zoom: positions scale with k, but visual sizes (circle radius,
     // text font-size, line stroke width, text-to-circle offset) are
-    // counter-scaled by 1/k so they stay constant on screen — like the way
-    // a map's roads spread out when you zoom in but the road labels and
-    // pin icons keep their pixel size.
+    // counter-scaled by 1/k so they stay constant on screen — like a map's
+    // road labels and pin icons stay the same pixel size when you zoom.
+    //
+    // IMPORTANT: must use .style() not .attr() so inline CSS beats the
+    // external stylesheet (CSS properties have higher cascade priority than
+    // SVG presentation attributes).
     function applyMapLikeScale(k) {
         if (!g) return;
-        // Circles
-        g.selectAll('.node circle')
-            .attr('r', d => (d.data.isInternal ? (d._children ? 6 : 5) : 4) / k);
-        // Link stroke
-        g.selectAll('.link').attr('stroke-width', 1.5 / k);
+        // Link stroke (px so it overrides the .link { stroke-width: 1.5px } rule)
+        g.selectAll('.link').style('stroke-width', (1.5 / k) + 'px');
         // Text font-sizes per class
-        g.selectAll('.node-internal text').attr('font-size', 12 / k);
-        g.selectAll('.node-leaf text:not(.native):not(.code)').attr('font-size', 12 / k);
-        g.selectAll('.node-leaf text.native').attr('font-size', 11 / k);
-        g.selectAll('.node-leaf text.code').attr('font-size', 10 / k);
-        // Text-to-circle offset (counter-scale so labels stay close to their circle)
+        g.selectAll('.node-internal text').style('font-size', (12 / k) + 'px');
+        g.selectAll('.node-leaf text:not(.native):not(.code)').style('font-size', (12 / k) + 'px');
+        g.selectAll('.node-leaf text.native').style('font-size', (11 / k) + 'px');
+        g.selectAll('.node-leaf text.code').style('font-size', (10 / k) + 'px');
+        // Text white halo (overrides .node text { stroke-width: 3px })
+        g.selectAll('.node text').style('stroke-width', (3 / k) + 'px');
+        // Circle outline width (overrides .node circle { stroke-width: 2px })
+        g.selectAll('.node circle').style('stroke-width', (2 / k) + 'px');
+        // Circle radius — set as both attr and style to defeat CSS `.node-leaf
+        // circle { r: 4 }` and similar.
+        g.selectAll('.node circle').each(function(d) {
+            const baseR = d.data.isInternal ? (d._children ? 6 : 5) : 4;
+            d3.select(this).style('r', (baseR / k) + 'px').attr('r', baseR / k);
+        });
+        // Text-to-circle offset (counter-scale so labels stay close to circles).
+        // x is a positional attribute, not a styled one, so attr() is correct here.
         g.selectAll('.node text').each(function() {
             const parentDatum = d3.select(this.parentNode).datum();
             const sign = (parentDatum.x >= Math.PI) ? -1 : 1;
             d3.select(this).attr('x', (sign * 9) / k);
         });
-        // Text-stroke (the white halo around labels) — counter-scale too
-        g.selectAll('.node text').attr('stroke-width', 3 / k);
     }
 
     function collapseDeep(node, currentDepth, maxDepth) {
@@ -810,7 +837,7 @@
     function showTooltip(event, d) {
         if (d.data.isInternal) {
             const total = d.data.descendantLeaves || (d.descendants().length - 1);
-            tooltip.innerHTML = '<div class="name">' + escapeHtml(d.data.name) + '</div><div class="meta">' + total + ' ' + (uiLang === 'ja' ? '言語' : (uiLang === 'ko' ? '개 언어' : (uiLang === 'zh' ? '种语言' : 'languages'))) + '</div>';
+            tooltip.innerHTML = '<div class="name">' + escapeHtml(d.data.name) + '</div><div class="meta">' + total + ' ' + escapeHtml(t('langsWord')) + '</div>';
         } else {
             const lang = LANG_DATA[d.data.code]; if (!lang) return;
             const m = lang.meta || {};
@@ -893,7 +920,9 @@
         root = d3.hierarchy(data, d => d.children);
         root.x0 = 0; root.y0 = 0;
         // Initial collapse: top-level family rows visible, subfamilies collapsed (depth 2 cutoff)
-        collapseDeepHierarchy(root, 0, 2);
+        // Initial state: only show top-level family nodes (per user
+        // request 「最初開いた時は１階層までにしといて」).
+        collapseDeepHierarchy(root, 0, 1);
         document.getElementById('loading')?.remove();
         makeSvg();
         update(root);
@@ -927,6 +956,14 @@
         });
         document.getElementById('reset-view').addEventListener('click', () => {
             centerInitialView();
+        });
+        // Zoom in/out buttons (programmatic d3.zoom transitions; the zoom
+        // handler will fire applyMapLikeScale automatically).
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, 1.5);
+        });
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            if (svg && zoom) svg.transition().duration(250).call(zoom.scaleBy, 1 / 1.5);
         });
 
         const searchInput = document.getElementById('search');
