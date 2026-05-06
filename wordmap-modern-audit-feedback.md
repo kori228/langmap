@@ -1431,3 +1431,31 @@ Pass 8〜20 累計 **53 タスク + 23 言語追加 - 1 重複削除** (591 → 
 - **Task 150 Batch H/I**: jrb (Andamanese, Anvita Abbi 2012 待ち), nmn Taa (Traill 1985 待ち)
 
 Pass 8〜21 累計 **53 タスク + 28 言語追加 - 1 重複** (591 → 619)。
+
+---
+
+## Pass 22 Sequential Cleanup (2026-05-06 part 15)
+
+### Task 145 Phase B 完了
+
+35 言語 (cv/dv/azb/gag/arq/mey/en_nz/kea/rmy/pis/sma/smj/smn/sms/vro/vo/ia/kam/ses/tzh/kpv/koi/mdf/vep/vot/cgg/ttj/nyo/tem/tmh/rcf/crs/gcf/laj/byn) に **ja/ko/zh の description translations** を追加。`DESC_JKZ` block を `wordmap_meta.js` の Phase A 直後に挿入し、欠如分のみ補完(冪等)。
+
+#### 翻訳の方針
+- 1-2 文に圧縮、modal 表示に最適化
+- 言語学的に意味のある特徴(Oghur Turkic で唯一の現存、ALUPEC 正書法 2009、IALA 1951、ATR vowel system 等)を保持
+- 出典・年代・話者数などの数字情報は en と整合
+- 危機言語/復興運動状態を明記
+
+### Validator/数値
+- ERRORS: 0
+- WARNINGS: **17** ↓ (20 → 17、description-i18n の ja/ko/zh threshold 抜けが解消)
+- **ja/ko/zh description coverage: 100% (619/619 言語)** ← Pass 22 で達成
+- Cache-buster: meta 43→44
+
+### 残（重い作業のみ）
+- **Task 144**: 残 13 UI lang (yue/vi/th/id/hi/it/es_eu/es_mx/pt_eu/pt_br/ru/uk/ar/he/sw) の description-i18n threshold 達成
+- **Task 146**: my/km/id/ms/tl/ta/te/bo per-language IPA rebuilds
+- **Task 149 Batch 4**: oto Otomi (Lastra 1992/1997 待ち)
+- **Task 150 Batch H/I**: jrb (Anvita Abbi 2012 待ち), nmn Taa (Traill 1985 待ち)
+
+Pass 8〜22 累計 **54 タスク + 28 言語追加 + ja/ko/zh 100% i18n 達成** (591 → 619)。
