@@ -474,18 +474,151 @@
         },
     };
 
+    // Generic directional / structural sub-branch words that appear under
+    // many families. Translated separately so we don't duplicate them in
+    // every family-specific entry.
+    const FAMILY_GENERIC_I18N = {
+        ja: {
+            'North':'北', 'South':'南', 'East':'東', 'West':'西',
+            'Northern':'北部', 'Southern':'南部', 'Eastern':'東部', 'Western':'西部',
+            'Central':'中央', 'Northeastern':'北東', 'Northwestern':'北西',
+            'Southeastern':'南東', 'Southwestern':'南西',
+            'Eastern Nilotic':'東ナイル', 'Western Nilotic':'西ナイル',
+            'Eastern Bantu':'東バントゥー', 'Western Bantu':'西バントゥー',
+            'Eastern Romance':'東ロマンス', 'Western Romance':'西ロマンス',
+            'Eastern Slavic':'東スラヴ', 'Western Slavic':'西スラヴ', 'Southern Slavic':'南スラヴ',
+            'East Slavic':'東スラヴ', 'West Slavic':'西スラヴ', 'South Slavic':'南スラヴ',
+            'North Germanic':'北ゲルマン', 'West Germanic':'西ゲルマン', 'East Germanic':'東ゲルマン',
+            'Min Nan':'閩南', 'Min Dong':'閩東', 'Min Bei':'閩北',
+            'Wu':'呉', 'Xiang':'湘', 'Gan':'贛', 'Jin':'晋', 'Hakka':'客家',
+            'Mandarin':'官話', 'Cantonese':'広東',
+            'Loloish':'ロロ系', 'Karen':'カレン', 'Naic':'ナシ系', 'Lolo':'ロロ',
+            'Ryukyuan':'琉球', 'Saami':'サーミ', 'Finnic':'フィン', 'Permic':'ペルム',
+            'Mande':'マンデ', 'Mel':'メル', 'Kru':'クル', 'Gur':'グル', 'Kwa':'クワ',
+            'Adamawa':'アダマワ', 'Volta-Niger':'ヴォルタ・ニジェール',
+            'Atlantic':'大西洋', 'Nguni':'ングニ', 'Sotho-Tswana':'ソト・ツワナ',
+            'Tai':'タイ', 'Hlai':'リー', 'Kam-Sui':'カム・スイ',
+            'Tibeto-Burman':'チベット・ビルマ', 'Bodish':'チベット系', 'Burmic':'ビルマ系',
+            'Polynesian':'ポリネシア', 'Micronesian':'ミクロネシア',
+            'Malayo-Polynesian':'マレー・ポリネシア', 'Formosan':'台湾諸語', 'Malayic':'マレー',
+            'Kipchak':'キプチャク', 'Oghuz':'オグズ', 'Karluk':'カルルク',
+            'Siberian Turkic':'シベリア・チュルク', 'Common Turkic':'共通チュルク',
+            'JE Runyakitara':'JE ルニャキタラ',
+            'Akkadian':'アッカド系', 'Aramaic':'アラム系',
+            'Hindi':'ヒンディー', 'Punjabi':'パンジャブ系', 'Pahari':'パハール',
+            'Mon-Khmer':'モン・クメール', 'Monic':'モン系', 'Khmuic':'クム系',
+            'Mochica':'モチカ', 'Pidgin':'ピジン', 'Creole':'クレオール',
+            'a posteriori':'後験系', 'philosophical':'哲学系',
+            'artistic':'芸術系', 'logical':'論理系', 'auxiliary':'国際補助',
+            'Cushitic':'クシ', 'Berber':'ベルベル', 'Chadic':'チャド', 'Egyptian':'エジプト',
+            'Agaw':'アガウ',
+        },
+        ko: {
+            'North':'북', 'South':'남', 'East':'동', 'West':'서',
+            'Northern':'북부', 'Southern':'남부', 'Eastern':'동부', 'Western':'서부',
+            'Central':'중앙', 'Northeastern':'북동', 'Northwestern':'북서',
+            'Southeastern':'남동', 'Southwestern':'남서',
+            'Eastern Nilotic':'동닐로', 'Western Nilotic':'서닐로',
+            'Eastern Bantu':'동반투', 'Western Bantu':'서반투',
+            'Eastern Romance':'동로망스', 'Western Romance':'서로망스',
+            'East Slavic':'동슬라브', 'West Slavic':'서슬라브', 'South Slavic':'남슬라브',
+            'North Germanic':'북게르만', 'West Germanic':'서게르만', 'East Germanic':'동게르만',
+            'Min Nan':'민난', 'Min Dong':'민동', 'Min Bei':'민북',
+            'Wu':'오', 'Xiang':'상', 'Gan':'간', 'Jin':'진', 'Hakka':'객가',
+            'Mandarin':'관화', 'Cantonese':'광둥',
+            'Loloish':'로로계', 'Karen':'카렌', 'Naic':'나시계',
+            'Ryukyuan':'류큐', 'Saami':'사미', 'Finnic':'핀', 'Permic':'페름',
+            'Mande':'만데', 'Mel':'멜', 'Kru':'크루',
+            'Atlantic':'대서양', 'Nguni':'응구니', 'Sotho-Tswana':'소토츠와나',
+            'Tai':'타이', 'Tibeto-Burman':'티베트버마',
+            'Polynesian':'폴리네시아', 'Micronesian':'미크로네시아',
+            'Kipchak':'킵차크', 'JE Runyakitara':'JE 룬야키타라',
+            'Mon-Khmer':'몬크메르', 'Pidgin':'피진', 'Creole':'크레올',
+        },
+        zh: {
+            'North':'北', 'South':'南', 'East':'东', 'West':'西',
+            'Northern':'北部', 'Southern':'南部', 'Eastern':'东部', 'Western':'西部',
+            'Central':'中央', 'Northeastern':'东北', 'Northwestern':'西北',
+            'Southeastern':'东南', 'Southwestern':'西南',
+            'Eastern Nilotic':'东尼罗', 'Western Nilotic':'西尼罗',
+            'East Slavic':'东斯拉夫', 'West Slavic':'西斯拉夫', 'South Slavic':'南斯拉夫',
+            'North Germanic':'北日耳曼', 'West Germanic':'西日耳曼', 'East Germanic':'东日耳曼',
+            'Min Nan':'闽南', 'Min Dong':'闽东', 'Min Bei':'闽北',
+            'Wu':'吴', 'Xiang':'湘', 'Gan':'赣', 'Jin':'晋', 'Hakka':'客家',
+            'Mandarin':'官话', 'Cantonese':'粤',
+            'Loloish':'彝语支', 'Karen':'克伦', 'Naic':'纳系',
+            'Ryukyuan':'琉球', 'Saami':'萨米', 'Finnic':'芬兰', 'Permic':'彼尔姆',
+            'Mande':'曼德', 'Mel':'梅尔', 'Kru':'克鲁',
+            'Atlantic':'大西洋', 'Nguni':'恩古尼', 'Sotho-Tswana':'索托茨瓦纳',
+            'Tai':'台', 'Tibeto-Burman':'藏缅',
+            'Polynesian':'波利尼西亚', 'Micronesian':'密克罗尼西亚',
+            'Kipchak':'钦察', 'JE Runyakitara':'JE 鲁尼亚基塔拉',
+            'Mon-Khmer':'孟高棉', 'Pidgin':'皮钦', 'Creole':'克里奥尔',
+        },
+    };
+
     function familyDisplayName(name) {
         const dict = FAMILY_NAMES_I18N[uiLang] || FAMILY_NAMES_I18N[uiLang.split('_')[0]];
         if (dict && dict[name]) return dict[name];
-        return name;  // fall back to original (English/source) name
+        const generic = FAMILY_GENERIC_I18N[uiLang] || FAMILY_GENERIC_I18N[uiLang.split('_')[0]];
+        if (generic && generic[name]) return generic[name];
+        return name;  // fall back to original
+    }
+
+    // i18n suffix labels for the dialect-grouping nodes.
+    const DIALECT_LABELS = {
+        en: { std:'standard', dialects:'dialects' },
+        ja: { std:'標準',     dialects:'方言' },
+        ko: { std:'표준',     dialects:'방언' },
+        zh: { std:'标准',     dialects:'方言' },
+        yue:{ std:'標準',     dialects:'方言' },
+        vi: { std:'chuẩn',    dialects:'phương ngữ' },
+        th: { std:'มาตรฐาน', dialects:'ภาษาถิ่น' },
+        id: { std:'standar',  dialects:'dialek' },
+        hi: { std:'मानक',     dialects:'बोलियाँ' },
+        de: { std:'Standard', dialects:'Dialekte' },
+        fr: { std:'standard', dialects:'dialectes' },
+        it: { std:'standard', dialects:'dialetti' },
+        es: { std:'estándar', dialects:'dialectos' },
+        pt: { std:'padrão',   dialects:'dialetos' },
+        ru: { std:'стандарт', dialects:'диалекты' },
+        uk: { std:'стандарт', dialects:'діалекти' },
+        ar: { std:'فصحى',     dialects:'لهجات' },
+        he: { std:'תקני',     dialects:'ניבים' },
+        sw: { std:'sanifu',   dialects:'lahaja' },
+    };
+    function dialectLabel(key) {
+        const dict = DIALECT_LABELS[uiLang] || DIALECT_LABELS[uiLang.split('_')[0]] || DIALECT_LABELS.en;
+        return dict[key] || DIALECT_LABELS.en[key];
     }
 
     // Build a hierarchy compatible with d3.hierarchy().
-    // Each internal node carries both `name` (display, possibly translated) and
-    // `nameKey` (English original) so search can match both.
+    // Codes that share a prefix-before-underscore with another base code
+    // (e.g. ja / ja_osa / ja_aom) are grouped under a synthetic
+    // "language" node containing two children:
+    //   - "<Lang> (standard)" — the base code as a leaf
+    //   - "<Lang> (dialects)" — an internal node with each variant as a leaf
+    // This keeps closely-related variants visually clustered, per user
+    // 「日本語(ノード)の下に、日本語(標準)(末端)＋日本語(方言)(ノード)」.
     function buildHierarchy() {
         const root = { name: familyDisplayName('All Languages'), nameKey: 'All Languages', children: [], _byKey: new Map(), depth: 0, isInternal: true };
+
+        // Pre-pass: identify dialect groups by prefix-before-underscore.
+        const dialectsOf = new Map();  // baseCode → [variantCode, ...]
         for (const code of Object.keys(LANG_DATA)) {
+            const us = code.indexOf('_');
+            if (us <= 0) continue;
+            const base = code.substring(0, us);
+            if (!LANG_DATA[base]) continue;
+            if (!dialectsOf.has(base)) dialectsOf.set(base, []);
+            dialectsOf.get(base).push(code);
+        }
+
+        for (const code of Object.keys(LANG_DATA)) {
+            // Skip codes that will be grouped under their base.
+            const us = code.indexOf('_');
+            if (us > 0 && LANG_DATA[code.substring(0, us)]) continue;
+
             const lang = LANG_DATA[code];
             const fam = (lang.meta && lang.meta.family) || 'Unclassified';
             const path = parseFamilyPath(fam);
@@ -498,12 +631,55 @@
                 }
                 node = node._byKey.get(segment);
             }
-            node.children.push({
-                name: langDisplayName(code),
-                code: code,
-                native: lang.native || '',
-                isInternal: false,
-            });
+
+            const variants = dialectsOf.get(code);
+            if (variants && variants.length > 0) {
+                // Create a language-group internal node with Standard leaf + Dialects sub-node.
+                const langName = langDisplayName(code);
+                const langGroup = {
+                    name: langName,
+                    nameKey: langName,
+                    children: [],
+                    _byKey: new Map(),
+                    isInternal: true,
+                    isLanguageGroup: true,
+                };
+                // Standard variant leaf (uses the base code).
+                langGroup.children.push({
+                    name: langName + '（' + dialectLabel('std') + '）',
+                    code: code,
+                    native: lang.native || '',
+                    isInternal: false,
+                });
+                // Dialects sub-node (internal) with each variant as a leaf.
+                const dialectsNode = {
+                    name: langName + '（' + dialectLabel('dialects') + '）',
+                    nameKey: langName + ' dialects',
+                    children: [],
+                    _byKey: new Map(),
+                    isInternal: true,
+                    isDialectGroup: true,
+                };
+                for (const vCode of variants) {
+                    const vLang = LANG_DATA[vCode];
+                    dialectsNode.children.push({
+                        name: langDisplayName(vCode),
+                        code: vCode,
+                        native: vLang.native || '',
+                        isInternal: false,
+                    });
+                }
+                langGroup.children.push(dialectsNode);
+                node.children.push(langGroup);
+            } else {
+                // Plain leaf — no dialect siblings.
+                node.children.push({
+                    name: langDisplayName(code),
+                    code: code,
+                    native: lang.native || '',
+                    isInternal: false,
+                });
+            }
         }
         // Sort children by genealogical-cluster proximity rather than pure
         // alphabetical (per user request 「系統が近いもの同士で並べて」).
@@ -574,7 +750,7 @@
         gLinks = gCompress.append('g').attr('class', 'links');
         gNodes = gCompress.append('g').attr('class', 'nodes');
         zoom = d3.zoom()
-            .scaleExtent([0.2, 8])
+            .scaleExtent([0.1, 32])  // wider range — was [0.2, 8] which the user hit after only 3 zoom-in clicks
             .on('zoom', (event) => {
                 g.attr('transform', event.transform);
                 lastTransform = event.transform;
@@ -731,18 +907,21 @@
         const node = gNodes.selectAll('g.node')
             .data(nodes, d => d.__id || (d.__id = ++nodeSeq));
 
-        // Initial position for entering nodes: at the parent's previous position
+        // Both start and final transforms use IDENTICAL `rotate(deg) translate(r,0)`
+        // format so d3.interpolateTransformSvg can decompose-and-interpolate
+        // cleanly. (Previously startTransform was Cartesian translate-only,
+        // which forced d3 to interpolate between two structurally-different
+        // transform strings — sometimes producing a wobble visible on the
+        // largest top-family node, Indo-European, when its descendants
+        // re-laid out around it.)
         const startTransform = d => {
             const ax = source.x0 ?? source.x ?? 0;
             const ay = source.y0 ?? source.y ?? 0;
-            const [cx, cy] = polarToCartesian(ax, ay);
-            return `translate(${cx},${cy})`;
+            const angleDeg = ax * 180 / Math.PI - 90;
+            return `rotate(${angleDeg}) translate(${ay},0)`;
         };
-        // Final radial transform: rotate+translate puts node at (angle, radius).
-        // Then text is rotated within the node's local frame so it reads outward
-        // (right side of disk: text reads left-to-right; left side: rotate 180°).
         const finalTransform = d => {
-            const angleDeg = d.x * 180 / Math.PI - 90;  // rotate so radial axis points "right"
+            const angleDeg = d.x * 180 / Math.PI - 90;
             return `rotate(${angleDeg}) translate(${d.y},0)`;
         };
 
