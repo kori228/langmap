@@ -2469,6 +2469,9 @@ const FORM_TYPE_OVERLAY = {
     xsc: { heart: 'bound-stem' },
     sog: { drink: 'bound-stem' },
     otk: { eat: 'bound-stem', drink: 'bound-stem', love: 'bound-stem' },
+    // Kalam (kmh) Trans-New Guinea — verb roots ñ- (drink) and kn- (love) require
+    // suffix to form citation; bound-stem applies.
+    kmh: { drink: 'bound-stem', love: 'bound-stem' },
     // Audit Task 104: lexical compound annotations (multiword surface forms
     // that are nonetheless a single lexical item — a single concept).
     vi:    { sun: 'compound', moon: 'compound', heart: 'compound' },           // mặt trời, mặt trăng, trái tim
