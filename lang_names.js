@@ -1335,4 +1335,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED50 = {
+        kio: { en: 'Kiowa', ja: 'カイオワ語', ko: '키오와어', zh: '凯欧瓦语', yue: '凱歐瓦語',
+               vi: 'Tiếng Kiowa', th: 'ภาษาไคโอวา', id: 'Bahasa Kiowa', hi: 'कायोवा',
+               de: 'Kiowa', fr: 'Kiowa', it: 'Kiowa',
+               es_eu: 'Kiowa', es_mx: 'Kiowa', pt_eu: 'Kiowa', pt_br: 'Kiowa',
+               ru: 'Кайова', uk: 'Кайова', ar: 'الكايوا', he: 'קיובה', sw: 'Kikiowa' },
+        xtm: { en: 'Mixtepec Mixtec', ja: 'ミクステペック・ミクステコ語', ko: '믹스테펙 믹스테코어', zh: '米斯特佩克米斯特克语', yue: '米斯特佩克米斯特克語',
+               vi: 'Tiếng Mixtec Mixtepec', th: 'ภาษามิกซ์เตเปกมิกซ์เตค', id: 'Mixtec Mixtepec', hi: 'मिक्सटेपेक मिक्सटेक',
+               de: 'Mixtepec-Mixteco', fr: 'Mixtèque de Mixtepec', it: 'Mixteco di Mixtepec',
+               es_eu: 'Mixteco de Mixtepec', es_mx: 'Mixteco de Mixtepec', pt_eu: 'Mixteco de Mixtepec', pt_br: 'Mixteco de Mixtepec',
+               ru: 'Мистепек-миштекский', uk: 'Мікстепек-міштекська', ar: 'الميشتيكية ميشتبيك', he: 'מישטק מיקסטפק', sw: 'Kimixtec cha Mixtepec' },
+        bbo: { en: 'Konabéré', ja: 'コナベレ語', ko: '코나베레어', zh: '科纳贝雷语', yue: '科納貝雷語',
+               vi: 'Tiếng Konabéré', th: 'ภาษาโคนาเบเร', id: 'Bahasa Konabéré', hi: 'कोनाबेरे',
+               de: 'Konabéré', fr: 'Konabéré', it: 'Konabéré',
+               es_eu: 'Konabéré', es_mx: 'Konabéré', pt_eu: 'Konabéré', pt_br: 'Konabéré',
+               ru: 'Конабере', uk: 'Конабере', ar: 'الكوناباري', he: 'קונאברה', sw: 'Kikonabere' },
+    };
+    for (const code of Object.keys(ADDED50)) {
+        for (const ui of Object.keys(ADDED50[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED50[code][ui];
+            }
+        }
+    }
 })();

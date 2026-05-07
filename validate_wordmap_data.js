@@ -396,6 +396,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Atlantic-Congo',                  // Bantu E70/JE Runyakitara cluster
     'Portuguese-based creole',         // kea Cape Verdean
     'Spanish-based creole',            // cbk Chavacano (Zamboangueño)
+    'Kiowa-Tanoan',                    // kio Kiowa (Plains-Pueblo connection)
     'Songhai',                         // ses Koyraboro Senni — genealogically isolated
     // Pass 35: new family top-tokens
     'Tyrsenian',                       // ett Etruscan + (potentially) Lemnian/Raetic

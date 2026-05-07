@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 760 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 763 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1640,6 +1640,10 @@ const LANG_DATA = {
     words: { water:['ndute','nduteʔ'], fire:['ñu\'u','ɲuʔu'], sun:['nikandii','nikandiː'], moon:['yoo','joː'], mother:['na\'án','naʔán'], father:['tatá','tatá'], eat:['kasi','kasi'], drink:['kohó','koʔó'], love:['kúu ini','kúu iniʔ'], heart:['ini','iniʔ'], tree:['yutu','jutu'], house:['ve\'e','βeʔe'], dog:['tina','tina'], cat:['vilú','βilú'], hand:['ndo\'ó','ndoʔó'], eye:['nduchi','ndutʃi'], hello:['nasáa','nasáː'], thanks:['tachu\'un','tatʃuʔun'], one:['in','iʔn'], good:['vate','βate'] }},
   zap: { name: 'Zapotec', native: 'Diidxazá', lat: 16.43, lng: -95.02, // Juchitán
     words: { water:['nisa','nisa'], fire:['gi','ɡi'], sun:['gubidxa','ɡubidʒa'], moon:['beeu','beːu'], mother:['jñaa','xɲaː'], father:['bixhoze','biʒoze'], eat:['ro','ɾo'], drink:['ge','ɡe'], love:['ranaxhii','ɾanaʒiː'], heart:['ladxi','ladʒi'], tree:['yaga','jaɡa'], house:['lidxi','lidʒi'], dog:['bi\'cu\'','biʔkʼuʔ'], cat:['mistuu','mistuː'], hand:['na','naʔ'], eye:['lú','lú'], hello:['padixhe','padiʒe'], thanks:['xtiozenu','ʃtjozenu'], one:['tobi','tobi'], good:['nazaaca','nazaːka'] }},
+  // Mixtepec Mixtec — Otomanguean (Mixtecan, Eastern Mixtec — sister to mix Mixtec macro-language varieties), ~7K, Mexico (Oaxaca — San Juan Mixtepec area, Sierra Sur).
+  // Sources: Ethnologue 27 'xtm'; Glottolog mixt1422; Pankratz & Pike (1967) Phonology and morphotonemics of Ayutla Mixtec.
+  xtm: { name: 'Mixtepec Mixtec', native: 'Sa\'an Sàvǐ Sa San Juan Mixtepec', lat: 16.64, lng: -97.92, // San Juan Mixtepec, Oaxaca
+    words: { water:['ndute','nduteʔ'], fire:['ñu\'u','ɲuʔu'], sun:['nikan','nikan'], moon:['yoo','joː'], mother:['na\'ān','naʔán'], father:['tatá','tatá'], eat:['kashi','kaʃi'], drink:['kohó','koʔó'], love:['kúu ini','kúu iniʔ'], heart:['ini','iniʔ'], tree:['yutu','jutu'], house:['veʔe','veʔe'], dog:['ina','ina'], cat:['vilú','vilú'], hand:['ndo\'ó','ndoʔó'], eye:['nduchi','ndutʃi'], hello:['nasáa','nasáː'], thanks:['tachu\'un','tatʃuʔun'], one:['in','iʔn'], good:['vaha','vahaʔ'] }},
   // Quechuan / Aymaran
   ay: { name: 'Aymara', native: 'Aymar aru', lat: -16.49, lng: -68.15, // La Paz
     words: { water:['uma','uma'], fire:['nina','nina'], sun:['inti','inti'], moon:['phaxsi','pʰaχsi'], mother:['mama','mama'], father:['tata','tata'], eat:['manq\'aña','manqʼaɲa'], drink:['umaña','umaɲa'], love:['munasiña','munasiɲa'], heart:['chuyma','tʃujma'], tree:['quqa','quqa'], house:['uta','uta'], dog:['anu','anu'], cat:['phisi','pʰisi'], hand:['ampara','ampaɾa'], eye:['nayra','najɾa'], hello:['kamisaki','kamisaki'], thanks:['yuspagara','juspaɣaɾa'], one:['maya','maja'], good:['suma','suma'] }},
@@ -2090,6 +2094,10 @@ const LANG_DATA = {
     words: { water:['mant','mant'], fire:['anang','anaŋ'], sun:['arɛ','arɛ'], moon:['arai','arai'], mother:['ya','ja'], father:['pa','pa'], eat:['ði','ði'], drink:['di','di'], love:['ka-haŋkə','kahaŋkə'], heart:['ka-yɔn','kajɔn'], tree:['kʌ-ant','kʌant'], house:['anseth','ansetʰ'], dog:['kabul','kabul'], cat:['kanaŋ','kanaŋ'], hand:['anpa','anpa'], eye:['ari','ari'], hello:['seke','seke'], thanks:['sɔŋ','sɔŋ'], one:['piɲ','piɲ'], good:['lɔŋ','lɔŋ'] }},
   dyu: { name: 'Dyula', native: 'Julakan', lat: 11.18, lng: -4.30, // Bobo-Dioulasso
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dun','dun'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiri'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni soɣoma','i ni soɣoma'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ɲuman','ɲuman'] }},
+  // Konabéré (Konabéré-Sangué, "Bobo Konabéré") — Niger-Congo Mande Western (Bobo-Konabéré subgroup), ~32K, Burkina Faso (around Bobo-Dioulasso).
+  // Sources: Ethnologue 27 'bbo'; Glottolog kona1268; Le Bris (1986) Bobo Konabéré phonology.
+  bbo: { name: 'Konabéré', native: 'Konabéré', lat: 11.17, lng: -4.30, // Bobo-Dioulasso area, Burkina Faso
+    words: { water:['ji','dʒi'], fire:['ta','ta'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['don','don'], drink:['min','min'], love:['kana','kana'], heart:['dusu','dusu'], tree:['yiri','jiri'], house:['so','so'], dog:['fugo','fuɡo'], cat:['nyukuma','ɲukuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['ka kɛ','ka kɛ'], thanks:['baraka','baɾaka'], one:['kelen','kelen'], good:['ɲuman','ɲuman'] }},
   // Susu (Soso) — Mande, ~1.2M speakers, coastal Guinea + Sierra Leone. National language of Guinea.
   // Sources: Ethnologue 27 'sus'; Glottolog susu1250; Houis (1963) Etude descriptive de la langue Susu.
   sus: { name: 'Susu', native: 'Sosokuye', lat: 9.51, lng: -13.71, // Conakry, Guinea
@@ -2157,6 +2165,10 @@ const LANG_DATA = {
     words: { water:['mní','mní'], fire:['phéta','pʰéta'], sun:['aŋpétuwí','aŋpétuwí'], moon:['haŋyétuwí','haŋjétuwí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yatkáŋ','jatkáŋ'], love:['thečhíhida','tʰetʃʰíhida'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋ','iɡmúŋ'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['pidámayaye','pidámajaje'], one:['waŋžidaŋ','waŋʒidaŋ'], good:['wašté','waʃté'] }},
   chy: { name: 'Cheyenne', native: 'Tsêhésenêstsestôtse', lat: 45.62, lng: -106.66, // Lame Deer
     words: { water:['mahpe','mahpe'], fire:['ho\'ėstá','hoʔɛsta'], sun:['éše\'he','eˀʃeˀhe'], moon:['ame\'háo\'o','ameˀhaˀoʔo'], mother:['néhe\'e','néheʔe'], father:['néhyo','néhjo'], eat:['mésehe','méʔsehe'], drink:['mane','mane'], love:['méhotó\'o','meˀhotoʔo'], heart:['ohtsé','ohtse'], tree:['hohtsestse','hohtsestse'], house:['vee\'e','veːʔe'], dog:['oeškeso','oːʃkeso'], cat:['pó\'po','poʔpo'], hand:['ma\'kahko','maʔkahko'], eye:['vóome','voːme'], hello:['Haaahe','haːhe'], thanks:['néá\'eše','néáʔeʃe'], one:['no\'ka','noʔka'], good:['pevohto','pevohto'] }},
+  // Kiowa — Kiowa-Tanoan family (sister to Tanoan languages: Tewa, Tiwa, Towa), ~20-100 (heritage learners), Oklahoma USA (Kiowa Tribe headquarters at Carnegie).
+  // Sources: Ethnologue 27 'kio'; Glottolog kiow1267; Watkins (1984) A Grammar of Kiowa.
+  kio: { name: 'Kiowa', native: 'Cáuijògà', lat: 35.10, lng: -98.60, // Carnegie, Oklahoma (Kiowa Tribe headquarters)
+    words: { water:['ko̱:','kɔ̃ː'], fire:['phi̱','pʰĩ'], sun:['phî','pʰîː'], moon:['phé:','pʰéː'], mother:['gì:','ɡǐː'], father:['gò:','ɡòː'], eat:['gè:','ɡèː'], drink:['kʰò:','kʰòː'], love:['gàum','ɡàum'], heart:['á:de','áːde'], tree:['á:du','áːdu'], house:['tóu:','tóuː'], dog:['tsê:','tsêː'], cat:['mò:sò','mòːsò'], hand:['mò:tʼɔ̄','mòːtʼɔ̄'], eye:['tô:','tôː'], hello:['hâ:tô:','hâːtôː'], thanks:['gàu','ɡàu'], one:['páun','páun'], good:['hôn','hôn'] }},
   // === Phase 3M: Italian regional + S Asian + Pacific ===
   // Romance (Italian regional)
   lmo: { name: 'Lombard', native: 'Lombard', lat: 45.46, lng: 9.19, // Milan
