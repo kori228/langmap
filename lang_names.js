@@ -2426,4 +2426,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED101 = {
+        itz: { en: 'Itzá Maya', ja: 'イツァ・マヤ語', ko: '이차 마야어', zh: '伊察玛雅语', yue: '伊察瑪雅語',
+               vi: 'Tiếng Itzá Maya', th: 'ภาษาอิตซามายา', id: 'Bahasa Itzá Maya', hi: 'इत्ज़ा माया',
+               de: 'Itzá-Maya', fr: 'Maya itzá', it: 'Maya itzá',
+               es_eu: 'Maya itzá', es_mx: 'Maya itzá', pt_eu: 'Maia itzá', pt_br: 'Maia itzá',
+               ru: 'Ица', uk: 'Іца', ar: 'الإيتزا', he: "איצא", sw: 'Kiitza' },
+        usp: { en: 'Uspanteko', ja: 'ウスパンテコ語', ko: '우스판테코어', zh: '乌斯潘特科语', yue: '烏斯潘特科語',
+               vi: 'Tiếng Uspanteko', th: 'ภาษาอุสปันเทโก', id: 'Bahasa Uspanteko', hi: 'उस्पान्तेको',
+               de: 'Uspantekisch', fr: 'Uspantèque', it: 'Uspanteko',
+               es_eu: 'Uspanteko', es_mx: 'Uspanteko', pt_eu: 'Uspanteco', pt_br: 'Uspanteco',
+               ru: 'Успантекский', uk: 'Успантекська', ar: 'الأوسبانتيكية', he: 'אוספנטקו', sw: 'Kiuspanteko' },
+        xsr: { en: 'Sherpa', ja: 'シェルパ語', ko: '셰르파어', zh: '夏尔巴语', yue: '夏爾巴語',
+               vi: 'Tiếng Sherpa', th: 'ภาษาเชอร์ปา', id: 'Bahasa Sherpa', hi: 'शेरपा',
+               de: 'Sherpa', fr: 'Sherpa', it: 'Sherpa',
+               es_eu: 'Sherpa', es_mx: 'Sherpa', pt_eu: 'Sherpa', pt_br: 'Sherpa',
+               ru: 'Шерпский', uk: 'Шерпа', ar: 'الشيربا', he: 'שרפה', sw: 'Kisherpa' },
+    };
+    for (const code of Object.keys(ADDED101)) {
+        for (const ui of Object.keys(ADDED101[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED101[code][ui];
+            }
+        }
+    }
 })();

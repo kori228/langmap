@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 889 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 892 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2033,6 +2033,14 @@ const LANG_DATA = {
   // (quc K'iche' / kek Q'eqchi' moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)
   yua: { name: 'Yucatec Maya', native: 'Maya tʼaan', lat: 20.97, lng: -89.62, // Mérida
     words: { water:['jaʼ','haʔ'], fire:['kʼáakʼ','kʼaːkʼ'], sun:['kʼiin','kʼiːn'], moon:['uj','uh'], mother:['naʼ','naʔ'], father:['taata','taːta'], eat:['jaant','haːnt'], drink:['ukʼul','ukʼul'], love:['yaakuntej','jaːkuntex'], heart:['puksiʼikʼal','puksiʔikʼal'], tree:['cheʼ','tʃeʔ'], house:['naj','nax'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼabʼ','kʼaɓ'], eye:['ich','itʃ'], hello:['baʼax ka waʼalik','baʔaʃ ka waʔalik'], thanks:['dios boʼotik','dios boʔotik'], one:['jun','hun'], good:['maʼalob','maʔalob'] }},
+  // Itzá Maya — Mayan Yucatecan (sister to Yucatec yua and Mopan within the Yucatecan branch; the language of the historic Itzá Maya kingdom of Tayasal that was the last independent Maya state until Spanish conquest in 1697 — Tayasal/Petén Itzá fell 200+ years after the rest of the Maya world), ~1K (critically endangered — UNESCO critically endangered; only elderly speakers remain, primarily in San José village), Guatemala (Petén department — San José Petén, the last Itzá-speaking village on the Petén Itzá lake).
+  // Sources: Ethnologue 27 'itz'; Glottolog itza1241; Hofling (1991) Itzá Maya Texts.
+  itz: { name: 'Itzá Maya', native: "Itzaj T'an", lat: 16.97, lng: -89.95, // San José, Petén, Guatemala (the historic Tayasal site on Lake Petén Itzá)
+    words: { water:["ja'","haʔ"], fire:["k'ak'","kʼakʼ"], sun:["k'in","kʼin"], moon:["uj","uχ"], mother:["na'","naʔ"], father:["tat","tat"], eat:["jant","χant"], drink:["uk'","ukʼ"], love:["yakunti","jakunti"], heart:["puk'sik'al","pukʼsikʼal"], tree:["che'","tʃeʔ"], house:["nah","nah"], dog:["pek'","pekʼ"], cat:["mis","mis"], hand:["k'ab","kʼab"], eye:["ich","itʃ"], hello:["b'ix a t'an","biʃ a tʼan"], thanks:["dios b'otik","dios botik"], one:["jun","hun"], good:["malob'","malob"] }},
+  // Uspanteko — Mayan K'ichean (sister to K'iche', Tz'utujil, Kaqchikel, Sakapulteko within the K'ichean branch; the only Mayan language with grammatical tone), ~5K (endangered — UNESCO definitely endangered), Guatemala (El Quiché department — Uspantán municipality in the highlands north of Sacapulas).
+  // Sources: Ethnologue 27 'usp'; Glottolog uspa1245; Bennett (2009) Uspanteko Phonology and Phonetics.
+  usp: { name: 'Uspanteko', native: "Tz'unun K'iche'", lat: 15.34, lng: -90.87, // Uspantán, El Quiché, Guatemala
+    words: { water:["ja'","haʔ"], fire:["q'aq'","qʼaqʼ"], sun:["q'iij","qʼiːh"], moon:["ik'","ikʼ"], mother:["nan","nan"], father:["tat","tat"], eat:["wa'","waʔ"], drink:["uk'","ukʼ"], love:["lóq'","lóqʼ"], heart:["k'u'x","kʼuʔʃ"], tree:["che'","tʃeʔ"], house:["jaa","haː"], dog:["tz'i'","tsʼiʔ"], cat:["mis","mis"], hand:["q'ab","qʼab"], eye:["wach","watʃ"], hello:["sa'b'al","saʔbal"], thanks:["maltyox","maltjoʃ"], one:["jun","hun"], good:["utz","uts"] }},
   tzo: { name: 'Tzotzil', native: 'Batsʼi kʼop', lat: 16.74, lng: -92.64, // San Cristóbal
     words: { water:['voʼ','voʔ'], fire:['kʼokʼ','kʼokʼ'], sun:['kʼakʼal','kʼakʼal'], moon:['u','u'], mother:['meʼ','meʔ'], father:['tot','tot'], eat:['veʼel','veʔel'], drink:['uchʼ','utʃʼ'], love:['kʼanel','kʼanel'], heart:['oʼon','oʔon'], tree:['teʼ','teʔ'], house:['na','na'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mis','mis'], hand:['kʼob','kʼob'], eye:['sat','sat'], hello:['kʼusi avokoluk','kʼusi avokoluk'], thanks:['kolaval','kolaval'], one:['jun','xun'], good:['lek','lek'] }},
   // Tzeltal — direct Mayan sister to Tzotzil (Audit Task 141)
@@ -2340,6 +2348,10 @@ const LANG_DATA = {
     }},
   dz: { name: 'Dzongkha', native: 'རྫོང་ཁ', lat: 27.47, lng: 89.64, // Thimphu
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཀུ་ཟུ་ཟངས་པོ་ལ','kuzu zaŋpo la'], thanks:['བཀྲིན་ཆེ','kadrintɕe'], one:['གཅིག','tɕik'], good:['ལེགས་ཤོམ','lekɕom'] }},
+  // Sherpa (Sharpa, Khumbu) — Sino-Tibetan Tibetic (sister to Standard Tibetan bo and Dzongkha dz within the Tibetic branch; the language of the Sherpa people of the Khumbu Mt Everest region — internationally famous as the elite mountaineers and porters who have accompanied virtually every successful Everest summit since the 1953 Hillary-Tenzing Norgay expedition), ~200K, Nepal (Solukhumbu, Sankhuwasabha, Taplejung, Sindhupalchowk districts) + India (Sikkim, Darjeeling) + Bhutan + Tibet (China) borderlands; significant diaspora (USA, UK, France).
+  // Sources: Ethnologue 27 'xsr'; Glottolog shar1245; Schöttelndreyer (1980) Sherpa Texts.
+  xsr: { name: 'Sherpa', native: 'ཤར་པའི་སྐད་ཡིག', lat: 27.81, lng: 86.71, // Namche Bazaar, Solukhumbu, Nepal (Sherpa heartland in the Mt Everest region)
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['ཟ','za'], drink:['འཐུང','tʰuŋ'], love:['བློ་ཆོ','locho'], heart:['སྙིང','ɲiŋ'], tree:['སྡོང་པོ','dompo'], house:['ནང','naŋ'], dog:['ཁྱི','kʰi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཏ་ཤེས་ཏེ་ལེ','tashi dele'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuktɕetɕʰe'], one:['ཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   // Kurtöp — Sino-Tibetan East Bodish (sister to Bumthang, Khengkha, Chocha-ngachakha within East Bodish — distinct from Tibetic dz Dzongkha despite Bhutan location), ~10K, Bhutan (Lhuntse Dzongkhag — Kurtoe gewog, eastern Bhutan highlands).
   // Sources: Ethnologue 27 'xkz'; Glottolog kurt1248; Hyslop (2017) A Grammar of Kurtöp.
   xkz: { name: 'Kurtöp', native: 'ཀུར་ཏོབ་ཁ', lat: 27.66, lng: 91.18, // Lhuntse, Bhutan
