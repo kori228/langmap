@@ -1235,4 +1235,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED46 = {
+        yux: { en: 'Kolyma Yukaghir', ja: 'コリマ・ユカギール語', ko: '콜리마 유카기르어', zh: '科雷马尤卡吉尔语', yue: '科雷馬尤卡吉爾語',
+               vi: 'Tiếng Yukaghir Kolyma', th: 'ภาษายูคากีร์โคลีมา', id: 'Yukaghir Kolyma', hi: 'कोलिमा युकाघिर',
+               de: 'Kolyma-Jukagirisch', fr: 'Youkaghir de Kolyma', it: 'Yucaghir di Kolyma',
+               es_eu: 'Yukaghir de Kolimá', es_mx: 'Yukaghir de Kolimá', pt_eu: 'Iucaguir de Kolyma', pt_br: 'Iucaguir de Kolyma',
+               ru: 'Колымский юкагирский', uk: 'Колимська юкагірська', ar: 'اليوكاجيرية كوليمية', he: 'יוקגירית קולימה', sw: 'Kiyukaghir cha Kolyma' },
+        acu: { en: 'Achuar', ja: 'アチュアル語', ko: '아추아르어', zh: '阿丘阿尔语', yue: '阿丘阿爾語',
+               vi: 'Tiếng Achuar', th: 'ภาษาอาชัวร์', id: 'Bahasa Achuar', hi: 'आचुआर',
+               de: 'Achuar', fr: 'Achuar', it: 'Achuar',
+               es_eu: 'Achuar', es_mx: 'Achuar', pt_eu: 'Achuar', pt_br: 'Achuar',
+               ru: 'Ачуар', uk: 'Ачуар', ar: 'الأتشوار', he: 'אצ׳ואר', sw: 'Kiachuar' },
+        akb: { en: 'Batak Angkola', ja: 'バタック・アンコラ語', ko: '바타크 앙골라어', zh: '巴塔克安戈拉语', yue: '巴塔克安戈拉語',
+               vi: 'Tiếng Batak Angkola', th: 'ภาษาบาตัคอังโกลา', id: 'Bahasa Batak Angkola', hi: 'बाटक अंगकोला',
+               de: 'Angkola-Batak', fr: 'Batak angkola', it: 'Batak angkola',
+               es_eu: 'Batak angkola', es_mx: 'Batak angkola', pt_eu: 'Batak angkola', pt_br: 'Batak angkola',
+               ru: 'Батак-Ангкола', uk: 'Батак-Ангкола', ar: 'الباتاك الأنغكولا', he: 'בטק אנגקולה', sw: 'Kibatak cha Angkola' },
+    };
+    for (const code of Object.keys(ADDED46)) {
+        for (const ui of Object.keys(ADDED46[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED46[code][ui];
+            }
+        }
+    }
 })();

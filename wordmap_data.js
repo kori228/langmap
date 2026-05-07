@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 748 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 751 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -356,6 +356,10 @@ const LANG_DATA = {
   // Grammar of Kolyma Yukaghir" + community Yukaghir-Russian materials.
   ykg: { name: 'Tundra Yukaghir', native: 'Wadul aruu', lat: 68.74, lng: 161.30, // Andryushkino
     words: { water:['ɔӡ','odʒ'], fire:[ 'лɔчил','lɔtʃil'], sun:['пугэ','puɣe'], moon:['киӈэ','kiŋe'], mother:['эмэй','emej'], father:['эчэ','etʃe'], eat:['ленди-','lendi-'], drink:['ӧйрэ-','øjre-'], love:['—','—'], heart:['чугэ','tʃuɣe'], tree:['—','—'], house:['нумэ','nume'], dog:['тажвэ','taʒwe'], cat:['кошка','koʂka'], hand:['нэмэ','neme'], eye:['ӈǝбур','ŋǝbur'], hello:['—','—'], thanks:['—','—'], one:['ирки','irki'], good:['амдур','amdur'] }},
+  // Kolyma Yukaghir (Forest / Upper Kolyma Yukaghir) — Yukaghir family (sister to Tundra Yukaghir ykg), ~30-50, Russia (Sakha Republic — Upper Kolyma River). Severely endangered.
+  // Sources: Ethnologue 27 'yux'; Glottolog koly1245; Maslova (2003) A Grammar of Kolyma Yukaghir.
+  yux: { name: 'Kolyma Yukaghir', native: 'Odul aruu', lat: 65.74, lng: 152.33, // Nelemnoye, Verkhnekolymsky District, Sakha
+    words: { water:['ɔӡ','odʒ'], fire:['ло́чил','lóʧil'], sun:['пугэ','puɣe'], moon:['киӈэ','kiŋe'], mother:['эмэй','emej'], father:['эчиэ','etʃiə'], eat:['чидиргэ-','tʃidirɣe'], drink:['ӧгэйи-','øɡejii'], love:['чомолбэн','tʃomolben'], heart:['чугэ','tʃuɣe'], tree:['чалдьэ','tʃaldʒe'], house:['нумэ','nume'], dog:['таҥжэ','taŋʒe'], cat:['кошка','koʂka'], hand:['нэмэ','neme'], eye:['ӈөбур','ŋøbur'], hello:['льуоркэн','lʲuorken'], thanks:['пасьпе','pasʲpe'], one:['иркэ','irke'], good:['амлур','amlur'] }},
   // Language isolate
   niv: { name: 'Nivkh', native: 'Нивхгу диф', lat: 51.83, lng: 143.16, // Nogliki, Sakhalin
     words: { water:['чхар','tʃxar'], fire:['тур','tur'], sun:['керк','kerk'], moon:['лоӈ','loŋ'], mother:['ымык','ɯmɯk'], father:['ытык','ɯtɯk'], eat:['вид','vid'], drink:['ракь','rakʲ'], love:['орх','orx'], heart:['ыӈ','ɯŋ'], tree:['ча','tʃa'], house:['тыф','tɯf'], dog:['каӈ','kaŋ'], cat:['кошка','koʂka'], hand:['кы','kɯ'], eye:['ӈак','ŋak'], hello:['ӈафӄа','ŋafqa'], thanks:['туьмг','tumɡ'], one:['нён','ɲon'], good:['пах','pax'] }},
@@ -1631,6 +1635,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'agr'; Glottolog agua1253; Wipio (1978) Diccionario Aguaruna-Castellano.
   agr: { name: 'Aguaruna', native: 'Awajún chichám', lat: -5.13, lng: -78.44, // Bagua / Condorcanqui, Peru
     words: { water:['yumi','jumi'], fire:['úkam','úkam'], sun:['etsá','etsá'], moon:['nántu','nántu'], mother:['dukú','dukú'], father:['apá','apá'], eat:['yuwámu','juwámu'], drink:['úmag','úmaɡ'], love:['amaja','amaha'], heart:['anéntai','anɛ́ntaj'], tree:['númi','númi'], house:['jegámu','heɡámu'], dog:['yawá','jawá'], cat:['micha','mitʃa'], hand:['uwéj','uwéh'], eye:['jíi','híː'], hello:['pujámek','puhámɛk'], thanks:['see','sɛː'], one:['makichik','makitʃik'], good:['ímia','ímia'] }},
+  // Achuar (also Achuar-Shiwiar) — Jivaroan, ~5K (Peru ~3K + Ecuador ~2K), Marañón–Pastaza ecotone. Cousin to Shuar (jiv) and Aguaruna (agr).
+  // Sources: Ethnologue 27 'acu'; Glottolog achu1248; Fast et al. (1996) Diccionario achuar-shiwiar/castellano.
+  acu: { name: 'Achuar', native: 'Achuar Chicham', lat: -2.30, lng: -77.45, // Wasakentsa, Morona-Santiago, Ecuador
+    words: { water:['yumi','jumi'], fire:['ji','dʒi'], sun:['etsa','etsa'], moon:['nantu','nantu'], mother:['nukur','nukuɾ'], father:['apar','apaɾ'], eat:['yuata','juata'], drink:['umarta','umaɾta'], love:['anentin','anentin'], heart:['enentai','enentai'], tree:['numi','numi'], house:['jea','dʒea'], dog:['yawa','jawa'], cat:['micha','mitʃa'], hand:['uwej','uwedʒ'], eye:['jii','dʒiː'], hello:['pujamek','pudʒamek'], thanks:['mai-tikut','majtikut'], one:['kichik','kitʃik'], good:['penker','peŋkeɾ'] }},
   // Páez (Nasa Yuwe) — language isolate, Cauca Colombia, ~60K. Tonal, indigenous to pre-Inca Andes.
   // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
   pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca
@@ -2209,6 +2217,10 @@ const LANG_DATA = {
   // Austronesian (Indonesia, additional)
   bbc: { name: 'Toba Batak', native: 'Batak Toba', lat: -2.62, lng: 98.83, // Balige, Lake Toba
     words: { water:['aek','aek'], fire:['api','api'], sun:['mata ni ari','mata ni ari'], moon:['bulan','bulan'], mother:['ina','ina'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['holong','holoŋ'], heart:['roha','roha'], tree:['hau','hau'], house:['jabu','dʒabu'], dog:['biang','biaŋ'], cat:['huting','hutiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['horas','horas'], thanks:['mauliate','mauliate'], one:['sada','sada'], good:['denggan','deŋːan'] }},
+  // Batak Angkola — Austronesian Sumatran (Batak cluster, sister to bbc Toba and btx Karo), ~750K, Indonesia (North Sumatra — Tapanuli Selatan / Padang Sidempuan).
+  // Sources: Ethnologue 27 'akb'; Glottolog batt1247; Eades & Hajek (2006) Batak Angkola Phonology; van der Tuuk (1864).
+  akb: { name: 'Batak Angkola', native: 'Hata Angkola', lat: 1.38, lng: 99.27, // Padang Sidempuan, North Sumatra
+    words: { water:['aek','aek'], fire:['api','api'], sun:['ari','ari'], moon:['bulan','bulan'], mother:['inang','inaŋ'], father:['amang','amaŋ'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['holong','holoŋ'], heart:['roha','roha'], tree:['hayu','haju'], house:['bagas','baɡas'], dog:['asu','asu'], cat:['huting','hutiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['horas','horas'], thanks:['mauliate','maulate'], one:['sada','sada'], good:['denggan','deŋːan'] }},
   bjn: { name: 'Banjar', native: 'Bahasa Banjar', lat: -3.32, lng: 114.59, // Banjarmasin
     words: { water:['banyu','baɲu'], fire:['api','api'], sun:['matahari','matahari'], moon:['bulan','bulan'], mother:['uma','uma'], father:['abah','abah'], eat:['makan','makan'], drink:['nginum','ŋinum'], love:['sayang','sajaŋ'], heart:['ati','ati'], tree:['batang','bataŋ'], house:['rumah','rumah'], dog:['hadupan','hadupan'], cat:['pusa','pusa'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['salam','salam'], thanks:['tarima kasih','tarima kasih'], one:['asa','asa'], good:['bagus','baɡus'] }},
   sas: { name: 'Sasak', native: 'Bahasa Sasak', lat: -8.58, lng: 116.10, // Mataram
