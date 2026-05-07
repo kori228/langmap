@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 848 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 850 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1028,6 +1028,10 @@ const LANG_DATA = {
     words: { water:['water','wɔːtə'], fire:['fire','fajə'], sun:['sun','san'], moon:['moon','muːn'], mother:['mother','madə'], father:['father','fadə'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','laf'], heart:['heart','hat'], tree:['tree','tɹiː'], house:['house','haʊs'], dog:['dog','dɔk'], cat:['cat','kɛt'], hand:['hand','hɛn'], eye:['eye','aɪ'], hello:['hello lah','hɛlo lɑː'], thanks:['thanks','tɛŋks'], one:['one','wan'], good:['good','ɡʊt'] }},
   fy: { name: 'West Frisian', native: 'Frysk', lat: 53.20, lng: 5.80,
     words: { water:['wetter','vɛtər'], fire:['fjoer','fjuːr'], sun:['sinne','sɪnə'], moon:['moanne','mwɑnə'], mother:['mem','mɛm'], father:['heit','hait'], eat:['ite','iːtə'], drink:['drinke','drɪŋkə'], love:['leafde','lɪəfdə'], heart:['hert','hɛrt'], tree:['beam','bɪəm'], house:['hûs','huːs'], dog:['hûn','huːn'], cat:['kat','kɑt'], hand:['hân','hɔːn'], eye:['each','ɪəx'], hello:['hoi','hɔi'], thanks:['tankewol','tɑŋkəvɔl'], one:['ien','iːn'], good:['goed','ɡuːd'] }},
+  // North Frisian (Frasch/Fering/Halunder/Mooring) — Indo-European Germanic Anglo-Frisian (sister to fy West Frisian and stq Saterland Frisian), ~10K, Germany (Schleswig-Holstein, North Frisian Islands).
+  // Sources: Ethnologue 27 'frr'; Glottolog nort2626; Walker (1990) The Languages of Schleswig.
+  frr: { name: 'North Frisian', native: 'Frasch', lat: 54.50, lng: 8.40, // Husum / Bredstedt, Nordfriesland
+    words: { water:['weeter','vɛːtər'], fire:['jüür','jyːr'], sun:['saanj','saːɲ'], moon:['muune','muːnə'], mother:['mam','mɑm'], father:['baabe','baːbə'], eat:['äte','ɛtə'], drink:['drinke','drɪŋkə'], love:['liiwd','liːwd'], heart:['hört','høɾt'], tree:['boom','boːm'], house:['hüs','hyːs'], dog:['hünj','hyɲ'], cat:['kaat','kaːt'], hand:['häänj','hɛːɲ'], eye:['oog','oːx'], hello:['moin','mɔin'], thanks:['toonk','toːŋk'], one:['ian','iːan'], good:['gud','ɡud'] }},
   // Limburgish — West Germanic, ~1.3M, NL Limburg + Belgium + Germany.
   // Tonal (uniquely among major Germanic varieties — pitch accent like
   // Norwegian/Swedish but contrastive). Maastricht standard.
@@ -2401,6 +2405,10 @@ const LANG_DATA = {
     words: { water:['ведь','vedʲ'], fire:['тол','tol'], sun:['ши','ʃi'], moon:['ков','kov'], mother:['тядя','tʲadʲa'], father:['аля','alʲa'], eat:['ярхцамс','jarxtsams'], drink:['симомс','simoms'], love:['кельгомс','kelʲɡoms'], heart:['седи','sedʲi'], tree:['шуфта','ʃufta'], house:['куд','kud'], dog:['пине','pinʲe'], cat:['катка','katka'], hand:['кядь','kʲadʲ'], eye:['сельме','sʲelʲmʲe'], hello:['шумбрат','ʃumbrat'], thanks:['сюкпря','sʲukprʲa'], one:['фкя','fkʲa'], good:['цебярь','tsʲebʲarʲ'] }},
   krl: { name: 'Karelian', native: 'Karjalan kieli', lat: 61.79, lng: 34.36, // Petrozavodsk
     words: { water:['vesi','ˈvesi'], fire:['tuli','ˈtuli'], sun:['päivy','ˈpæjvy'], moon:['kuu','kuː'], mother:['muamo','ˈmuamo'], father:['tuatto','ˈtuatto'], eat:['syvvä','ˈsyvvæ'], drink:['juvva','ˈjuvva'], love:['suvaita','ˈsuvaita'], heart:['süväin','ˈsyvæin'], tree:['puu','puː'], house:['kodi','ˈkodi'], dog:['koiru','ˈkoiru'], cat:['kažin','ˈkaʒin'], hand:['käzi','ˈkæzi'], eye:['silmü','ˈsilmy'], hello:['terveh','ˈterveh'], thanks:['passibo','ˈpassibo'], one:['yksi','ˈyksi'], good:['hyvä','ˈhyvæ'] }},
+  // Livvi-Karelian (Olonets, Aunus) — Uralic Finnic (sister to krl Karelian; some classifications treat as one Karelian language with sub-dialects), ~14K, Russia (Karelia — Olonets/Aunus south of Lake Ladoga).
+  // Sources: Ethnologue 27 'olo'; Glottolog livv1244; Pyöli (1996) Russian-Karelian Dictionary (Olonets).
+  olo: { name: 'Livvi-Karelian', native: 'Livvinkarjala', lat: 61.00, lng: 32.99, // Olonets, Republic of Karelia
+    words: { water:['vezi','ˈvezi'], fire:['tuli','ˈtuli'], sun:['päivy','ˈpæjvy'], moon:['kuu','kuː'], mother:['mama','ˈmama'], father:['tuatto','ˈtuatto'], eat:['syvvä','ˈsyvvæ'], drink:['juvva','ˈjuvva'], love:['suvaita','ˈsuvaita'], heart:['süväin','ˈsyvæin'], tree:['puu','puː'], house:['koti','ˈkoti'], dog:['koira','ˈkoiɾa'], cat:['kazi','ˈkazi'], hand:['käzi','ˈkæzi'], eye:['silmü','ˈsilmy'], hello:['terveh','ˈterveh'], thanks:['passibo','ˈpassibo'], one:['yksi','ˈyksi'], good:['hüvä','ˈhyvæ'] }},
   // Endangered Finnic (Audit Task 142): Veps + Votic
   vep: { name: 'Veps', native: 'vepsän kel\'', lat: 60.33, lng: 35.63, // Sheltozero
     words: { water:['vezi','ˈvezi'], fire:['lämoi','ˈlæmoi'], sun:['päiväine','ˈpæivæine'], moon:['kuu','kuː'], mother:['mam','mam'], father:['tat','tat'], eat:['söda','ˈsødæ'], drink:['joda','ˈjoda'], love:['armaztada','armasˈtada'], heart:['südäin','ˈsydæin'], tree:['pu','pu'], house:['pert\'','pertʲ'], dog:['koir','koir'], cat:['kaži','ˈkaʒi'], hand:['käzi','ˈkæzi'], eye:['silm','silm'], hello:['tervhen','ˈtervhen'], thanks:['spasib','ˈspasib'], one:['üks\'','yksʲ'], good:['hüvä','ˈhyvæ'] }},

@@ -2081,4 +2081,24 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED89 = {
+        frr: { en: 'North Frisian', ja: '北フリジア語', ko: '북프리지아어', zh: '北弗里西语', yue: '北弗里西語',
+               vi: 'Tiếng Bắc Frisia', th: 'ภาษาฟริเซียนเหนือ', id: 'Bahasa Frisia Utara', hi: 'उत्तरी फ़्रिसियाई',
+               de: 'Nordfriesisch', fr: 'Frison septentrional', it: 'Frisone settentrionale',
+               es_eu: 'Frisón septentrional', es_mx: 'Frisón septentrional', pt_eu: 'Frísio setentrional', pt_br: 'Frísio setentrional',
+               ru: 'Севернофризский', uk: 'Північнофризька', ar: 'الفريزية الشمالية', he: 'פריזית צפונית', sw: 'Kifrisia cha Kaskazini' },
+        olo: { en: 'Livvi-Karelian', ja: 'リヴヴィ・カレリア語', ko: '리비-카렐리아어', zh: '利维-卡累利阿语', yue: '利維-卡累利阿語',
+               vi: 'Tiếng Livvi-Karelia', th: 'ภาษาลิฟวี-คาเรเลีย', id: 'Bahasa Livvi-Karelia', hi: 'लिव्वि-करेलियाई',
+               de: 'Olonetzisch', fr: 'Carélien livvi', it: 'Careliano livvi',
+               es_eu: 'Carelio livvi', es_mx: 'Carelio livvi', pt_eu: 'Cario livvi', pt_br: 'Cário livvi',
+               ru: 'Ливвиковский', uk: 'Ливвиківська', ar: 'الليفية الكاريلية', he: 'ליווי-קארלית', sw: 'Kikarjala cha Livvi' },
+    };
+    for (const code of Object.keys(ADDED89)) {
+        for (const ui of Object.keys(ADDED89[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED89[code][ui];
+            }
+        }
+    }
 })();
