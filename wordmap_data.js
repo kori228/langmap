@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 651 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 655 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -420,6 +420,10 @@ const LANG_DATA = {
     words: { water:['ilma','ilma'], fire:['nar','naːɾ'], sun:['xemx','ʃɛmʃ'], moon:['qamar','ʔamaɾ'], mother:['omm','omm'], father:['missier','missiɛɾ'], eat:['jiekol','jiɛkol'], drink:['jixrob','jiʃɾop'], love:['imħabba','imħabːa'], heart:['qalb','ʔalp'], tree:['siġra','sid͡ʒɾa'], house:['dar','daːɾ'], dog:['kelb','kɛlp'], cat:['qattus','ʔattus'], hand:['id','iːt'], eye:['għajn','ajn'], hello:['merħba','mɛɾħba'], thanks:['grazzi','ɡɾatt͡si'], one:['wieħed','wiɛħɛt'], good:['tajjeb','tajːɛp'] }},
   ig: { name: 'Igbo', native: 'Igbo', lat: 6.17, lng: 6.79, // Onitsha (Igbo historical/commercial center)
     words: { water:['mmiri','mːiɾi'], fire:['ọkụ','ɔkʊ'], sun:['anyanwụ','aɲaŋwʊ'], moon:['ọnwa','ɔŋwa'], mother:['nne','nːɛ'], father:['nna','nːa'], eat:['iri','iɾi'], drink:['aṅụ','aŋʊ'], love:['ịhụnanya','ɪhʊnaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ụlọ','ʊlɔ'], dog:['nkịta','ŋkɪta'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['nnọọ','nːɔː'], thanks:['daalụ','daːlʊ'], one:['otu','otu'], good:['ọma','ɔma'] }},
+  // Ibibio — Cross River, ~5M speakers, southeastern Nigeria. Major Niger-Congo language.
+  // Sources: Ethnologue 27 'ibb'; Glottolog ibib1240; Essien (1990) Grammar of Ibibio.
+  ibb: { name: 'Ibibio', native: 'Ibibio', lat: 5.04, lng: 7.91, // Uyo, Akwa Ibom State
+    words: { water:['mmọñ','mːɔŋ'], fire:['ikañ','ikaŋ'], sun:['utin','utin'], moon:['ọfiọñ','ɔfiɔŋ'], mother:['eka','eka'], father:['ete','ete'], eat:['dia','dia'], drink:['ñwọñ','ŋwɔŋ'], love:['ima','ima'], heart:['esit','esit'], tree:['eto','eto'], house:['ufọk','ufɔk'], dog:['ebua','ebua'], cat:['ekpe','ekpe'], hand:['ubọk','ubɔk'], eye:['enyin','eɲin'], hello:['mesiere','mesiere'], thanks:['sọsọñọ','sɔsɔŋɔ'], one:['kiet','kiet'], good:['mfọn','mfɔn'] }},
   ha: { name: 'Hausa', native: 'Hausa', lat: 12.00, lng: 8.52,
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
   wo: { name: 'Wolof', native: 'Wolof', lat: 14.69, lng: -17.44,
@@ -1235,11 +1239,19 @@ const LANG_DATA = {
     words: { water:['पानि','paːni'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəd͡ʒ'], moon:['चान','tʃaːn'], mother:['माय','maːj'], father:['बाबू','baːbuː'], eat:['खाएब','kʰaːeb'], drink:['पीयब','piːjəb'], love:['प्रेम','preːm'], heart:['हृदय','hridəj'], tree:['गाछ','ɡaːtʃʰ'], house:['घर','ɡʱər'], dog:['कुकुर','kukur'], cat:['बिलाइ','bilaːi'], hand:['हाथ','haːtʰ'], eye:['आँखि','ãːkʰi'], hello:['प्रणाम','prəɳaːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
   awa: { name: 'Awadhi', native: 'अवधी', lat: 26.78, lng: 82.13, // Ayodhya
     words: { water:['पानी','paːniː'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəd͡ʒ'], moon:['चान','tʃaːn'], mother:['मइया','məjjaː'], father:['बाबू','baːbuː'], eat:['खाई','kʰaːiː'], drink:['पीई','piːiː'], love:['पिरेम','pirem'], heart:['हियाँ','hijãː'], tree:['रूख','ruːkʰ'], house:['घर','ɡʱər'], dog:['कुक्कुर','kukːur'], cat:['बिलारि','bilaːri'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['राम राम','raːm raːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['निक','nik'] }},
+  // Braj Bhasha — Indo-Aryan, Krishna-devotional literary language of medieval North India.
+  // Sources: Ethnologue 27 'bra'; Glottolog braj1242; Snell (1991) The Hindi Classical Tradition.
+  bra: { name: 'Braj Bhasha', native: 'ब्रज भाषा', lat: 27.50, lng: 77.67, // Mathura/Vrindavan (Krishna heartland)
+    words: { water:['पानी','paːniː'], fire:['आग','aːɡ'], sun:['सूरज','suːrəd͡ʒ'], moon:['चंद्र','tʃəndɾ'], mother:['मैया','məjjaː'], father:['बाप','baːp'], eat:['खाइबौ','kʰaːibaʊ'], drink:['पीबौ','piːbaʊ'], love:['प्रेम','preːm'], heart:['हियौ','hijaʊ'], tree:['पेड़','peːɽ'], house:['घर','ɡʱər'], dog:['कूकर','kuːkər'], cat:['बिलाई','bilaːiː'], hand:['हाथ','haːtʰ'], eye:['नैन','nain'], hello:['राधे राधे','raːdʱe raːdʱe'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['नीकौ','niːkaʊ'] }},
   skr: { name: 'Saraiki', native: 'سرائیکی', lat: 30.20, lng: 71.47, // Multan
     words: { water:['پاݨی','paːɳiː'], fire:['اَگ','əɡ'], sun:['سُورج','suːrəd͡ʒ'], moon:['چن','tʃən'], mother:['ماں','maːŋ'], father:['ابا','əbbaː'], eat:['کھاوݨ','kʰaːʋəɳ'], drink:['پیوݨ','piːʋəɳ'], love:['پیار','pjaːr'], heart:['دل','dɪl'], tree:['ٻوٹا','ɓoːʈaː'], house:['گھر','kʰər'], dog:['کتا','kuttaː'], cat:['ٻلی','ɓɪlːiː'], hand:['ہتھ','hətʰ'], eye:['اکھ','əkʰ'], hello:['السلام علیکم','əssəlaːm əleːkum'], thanks:['شکریہ','ʃukrijaː'], one:['ہک','hɪk'], good:['چنگا','tʃəŋɡaː'] }},
   // Munda (Austroasiatic)
   sat: { name: 'Santali', native: 'ᱥᱟᱱᱛᱟᱲᱤ', lat: 24.27, lng: 87.25, // Dumka, Jharkhand
     words: { water:['ᱫᱟᱜ','daːk'], fire:['ᱥᱮᱝᱜᱮᱞ','seŋɡel'], sun:['ᱥᱤᱸᱜᱤ','siŋɡi'], moon:['ᱪᱟᱸᱫᱳ','tʃãndo'], mother:['ᱟᱭᱳ','ajo'], father:['ᱟᱯᱟᱹ','apa'], eat:['ᱡᱳᱢ','d͡ʒom'], drink:['ᱧᱩ','ɲu'], love:['ᱫᱩᱞᱟᱲᱤ','dulaɽi'], heart:['ᱢᱳᱱ','mon'], tree:['ᱫᱟᱨᱮ','dare'], house:['ᱳᱲᱟᱜ','oɽaːk'], dog:['ᱥᱮᱛᱟ','seta'], cat:['ᱯᱩᱥᱤ','pusi'], hand:['ᱛᱤ','tiː'], eye:['ᱢᱮᱫ','med'], hello:['ᱡᱳᱦᱟᱨ','d͡ʒohar'], thanks:['ᱫᱷᱚᱱᱭᱚᱵᱟᱫ','dʱonjobad'], one:['ᱢᱤᱫ','mit'], good:['ᱵᱮᱥ','bes'] }},
+  // Kurukh — Northern Dravidian, ~2M speakers, Jharkhand/West Bengal/Odisha + Bangladesh + Nepal.
+  // Sources: Ethnologue 27 'kru'; Glottolog kuru1301; Hahn (1900) Kurukh Grammar.
+  kru: { name: 'Kurukh', native: 'कुड़ुख', lat: 23.34, lng: 85.31, // Ranchi, Jharkhand
+    words: { water:['आम','aːm'], fire:['चिच','tʃitʃ'], sun:['बेरी','beɾiː'], moon:['चांदी','tʃaːndiː'], mother:['अयो','ajoː'], father:['बाबा','baːbaː'], eat:['ओनना','onːaː'], drink:['ओंकना','oŋkːnaː'], love:['मरटी','maɾʈiː'], heart:['ठांगरा','tʰaːŋɡɾaː'], tree:['मन्ना','manːaː'], house:['एरपा','eɾpaː'], dog:['अल्ला','alːaː'], cat:['बिलि','bilːiː'], hand:['खेकोल','kʰekol'], eye:['खेन','xen'], hello:['खद्दी','kʰadːiː'], thanks:['धोन्नोबाद','dʱonːobaːd'], one:['ओंटा','oːnʈaː'], good:['होय','hoːj'] }},
   // Austronesian — Indonesia & Philippines
   mad: { name: 'Madurese', native: 'Madhurâ', lat: -7.16, lng: 113.47, // Pamekasan
     words: { water:['aèng','aɛŋ'], fire:['apoy','apɔj'], sun:['are','are'], moon:['bulen','bulən'], mother:['ebu','əbu'], father:['eppa\'','əppaʔ'], eat:['ngakan','ŋakan'], drink:['ngenom','ŋənɔm'], love:['tresna','tresna'], heart:['ate','atɛ'], tree:['kajuh','kaju'], house:['bengko','bəŋkɔ'], dog:['pate\'','patɛʔ'], cat:['koceng','kɔtʃɛŋ'], hand:['tanang','tanaŋ'], eye:['mata','mata'], hello:['salam','salam'], thanks:['tarèma kasè','tarɛma kasɛ'], one:['settong','səttɔŋ'], good:['bagus','baɡus'] }},
@@ -1591,6 +1603,10 @@ const LANG_DATA = {
     words: { water:['ၼမ်ႉ','nam'], fire:['ၾႆး','faj'], sun:['ဝၼ်း','wan'], moon:['လိူၼ်','lyn'], mother:['မႄႈ','me'], father:['ပေႃႈ','pə'], eat:['ၵိၼ်','kin'], drink:['ဢိုၵ်ႇ','ʔuk'], love:['ႁၵ်ႉ','haq'], heart:['ၸႂ်','tsai'], tree:['တူၼ်ႈမႆႉ','tum maj'], house:['ႁိူၼ်း','hen'], dog:['မႃ','ma'], cat:['မႅဝ်','mɛw'], hand:['မိုဝ်း','miw'], eye:['တႃ','ta'], hello:['မႂ်ႇသုင်','maj suŋ'], thanks:['ၶွပ်ႈၸႂ်','kɔp tsai'], one:['ၼိုင်ႈ','nuŋ'], good:['လီ','li'] }},
   // === Phase 3K: African Bantu/Khoisan/W. African (more) ===
   // Niger-Congo (Kwa, additional)
+  // Kabiye — Gur language, ~1.2M, Togo (one of two national languages alongside Ewe).
+  // Sources: Ethnologue 27 'kbp'; Glottolog kabi1261.
+  kbp: { name: 'Kabiye', native: 'Kabɩyɛ', lat: 9.55, lng: 1.18, // Kara, Togo
+    words: { water:['lɩm','lɩm'], fire:['miŋ','miŋ'], sun:['wɩsɩ','wɩsɩ'], moon:['fenaɣ','fenaɣ'], mother:['ɖoo','ɖoː'], father:['caa','tʃaː'], eat:['tɔɔ','tɔː'], drink:['ñɔɔ','ɲɔː'], love:['sɔɔlɩm','sɔːlɩm'], heart:['laŋɩyɛ','laŋɩjɛ'], tree:['tɩʋ','tɩʋ'], house:['ɖɩɣa','ɖɩɣa'], dog:['hayʋ','hajʋ'], cat:['takpaŋ','takpaŋ'], hand:['nesi','nesi'], eye:['ɛsɩ','ɛsɩ'], hello:['ndɩ na','ndɩ na'], thanks:['agɔndɩ','aɡɔndɩ'], one:['kʋyʋmaɣ','kʋjʋmaɣ'], good:['ɖeu','ɖeu'] }},
   ee: { name: 'Ewe', native: 'Eʋegbe', lat: 6.13, lng: 1.22, // Lomé
     words: { water:['tsi','tsi'], fire:['dzo','dzo'], sun:['ɣe','ɣe'], moon:['ɣleti','ɣleti'], mother:['dada','dada'], father:['fofo','fofo'], eat:['ɖu','ɖu'], drink:['no','no'], love:['lɔ̃lɔ̃','lɔ̃lɔ̃'], heart:['dzi','dzi'], tree:['ati','ati'], house:['aƒe','aƒe'], dog:['avu','avu'], cat:['dadi','dadi'], hand:['asi','asi'], eye:['ŋku','ŋku'], hello:['ŋdi','ŋdi'], thanks:['akpe','akpe'], one:['ɖeka','ɖeka'], good:['nyo','ɲo'] }},
   // Niger-Congo (Bantu, additional)

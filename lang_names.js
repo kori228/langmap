@@ -430,4 +430,34 @@ const LANG_NAMES = {
             }
         }
     }
+    // Ibibio (ibb), Kabiye (kbp), Kurukh (kru), Braj Bhasha (bra) — Nigeria + Togo + India.
+    const ADDED14 = {
+        ibb: { en: 'Ibibio', ja: 'イビビオ語', ko: '이비비오어', zh: '伊比比奥语', yue: '伊比比奧語',
+               vi: 'Tiếng Ibibio', th: 'ภาษาอีบีบีโอ', id: 'Ibibio', hi: 'इबिबियो',
+               de: 'Ibibio', fr: 'Ibibio', it: 'Ibibio',
+               es_eu: 'Ibibio', es_mx: 'Ibibio', pt_eu: 'Ibibio', pt_br: 'Ibibio',
+               ru: 'Ибибио', uk: 'Ібібіо', ar: 'الإيبيبيو', he: 'איביביו', sw: 'Kiibibio' },
+        kbp: { en: 'Kabiye', ja: 'カビエ語', ko: '카비예어', zh: '卡比耶语', yue: '卡比耶語',
+               vi: 'Tiếng Kabiyè', th: 'ภาษากาบีเย', id: 'Kabiyè', hi: 'काबीये',
+               de: 'Kabiye', fr: 'Kabiyè', it: 'Kabiyè',
+               es_eu: 'Kabiyé', es_mx: 'Kabiyé', pt_eu: 'Cabiê', pt_br: 'Cabiê',
+               ru: 'Кабийе', uk: 'Кабіє', ar: 'الكابية', he: 'קביה', sw: 'Kikabiye' },
+        kru: { en: 'Kurukh', ja: 'クルク語', ko: '쿠루크어', zh: '库鲁克语', yue: '庫魯克語',
+               vi: 'Tiếng Kurukh', th: 'ภาษากุรุข', id: 'Kurukh', hi: 'कुरुख़',
+               de: 'Kurukh', fr: 'Kurukh', it: 'Kurukh',
+               es_eu: 'Kurukh', es_mx: 'Kurukh', pt_eu: 'Kurukh', pt_br: 'Kurukh',
+               ru: 'Курух', uk: 'Курух', ar: 'الكوروخية', he: 'קורוך', sw: 'Kikurukh' },
+        bra: { en: 'Braj Bhasha', ja: 'ブラジ・バーシャ', ko: '브라지 바샤', zh: '布拉吉语', yue: '布拉吉語',
+               vi: 'Tiếng Braj', th: 'ภาษาพรัช', id: 'Braj Bhasha', hi: 'ब्रज भाषा',
+               de: 'Braj-Bhasha', fr: 'Braj bhasha', it: 'Braj bhasha',
+               es_eu: 'Braj bhasha', es_mx: 'Braj bhasha', pt_eu: 'Braj-bhasha', pt_br: 'Braj-bhasha',
+               ru: 'Браджа-бхаша', uk: 'Браджа-бгаша', ar: 'البراج بهاشا', he: 'בראג׳ בהאשה', sw: 'Braj Bhasha' },
+    };
+    for (const code of Object.keys(ADDED14)) {
+        for (const ui of Object.keys(ADDED14[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED14[code][ui];
+            }
+        }
+    }
 })();
