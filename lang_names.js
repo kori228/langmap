@@ -885,4 +885,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Irula (iru), Dii (dur), Thulung (tdh) — S India Dravidian + Cameroon Adamawa + Nepal Kiranti.
+    const ADDED32 = {
+        iru: { en: 'Irula', ja: 'イルラ語', ko: '이룰라어', zh: '伊鲁拉语', yue: '伊魯拉語',
+               vi: 'Tiếng Irula', th: 'ภาษาอิรูลา', id: 'Irula', hi: 'इरुला',
+               de: 'Irula', fr: 'Irula', it: 'Irula',
+               es_eu: 'Irula', es_mx: 'Irula', pt_eu: 'Irula', pt_br: 'Irula',
+               ru: 'Ирула', uk: 'Ірула', ar: 'الإيرولا', he: 'אירולה', sw: 'Kiirula' },
+        dur: { en: 'Dii', ja: 'ディー語', ko: '디어', zh: '迪伊语', yue: '迪伊語',
+               vi: 'Tiếng Dii', th: 'ภาษาดิอิ', id: 'Dii', hi: 'डी',
+               de: 'Dii', fr: 'Dii', it: 'Dii',
+               es_eu: 'Dii', es_mx: 'Dii', pt_eu: 'Dii', pt_br: 'Dii',
+               ru: 'Дии', uk: 'Дії', ar: 'الديي', he: 'דיי', sw: 'Kidii' },
+        tdh: { en: 'Thulung', ja: 'トゥルン語', ko: '툴룽어', zh: '图隆语', yue: '圖隆語',
+               vi: 'Tiếng Thulung', th: 'ภาษาทูลุง', id: 'Thulung', hi: 'थुलुङ',
+               de: 'Thulung', fr: 'Thoulung', it: 'Thulung',
+               es_eu: 'Thulung', es_mx: 'Thulung', pt_eu: 'Thulung', pt_br: 'Thulung',
+               ru: 'Тхулунг', uk: 'Тхулунг', ar: 'الثولونغ', he: 'תולונג', sw: 'Kithulung' },
+    };
+    for (const code of Object.keys(ADDED32)) {
+        for (const ui of Object.keys(ADDED32[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED32[code][ui];
+            }
+        }
+    }
 })();

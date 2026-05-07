@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 706 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 709 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -217,6 +217,10 @@ const LANG_DATA = {
     words: { water:['پانی','paːniː'], fire:['آگ','aːɡ'], sun:['سورج','suːɾad͡ʒ'], moon:['چاند','t͡ɕãːd'], mother:['ماں','mãː'], father:['والد','vaːlid'], eat:['کھانا','kʰaːnaː'], drink:['پینا','piːnaː'], love:['محبت','mohabːat'], heart:['دل','dil'], tree:['درخت','daɾaxt'], house:['گھر','ɡʱaɾ'], dog:['کتا','kuttaː'], cat:['بلی','bilːiː'], hand:['ہاتھ','haːtʰ'], eye:['آنکھ','ãːkʰ'], hello:['السلام علیکم','assalaːmu ʕalaikum'], thanks:['شکریہ','ʃukrijaː'], one:['ایک','eːk'], good:['اچھا','at͡ʃt͡ʃʰaː'] }},
   ta: { name: 'Tamil', native: 'தமிழ்', lat: 13.08, lng: 80.27, // Chennai
     words: { water:['நீர்','niːɾ'], fire:['தீ','tiː'], sun:['சூரியன்','suːɾijan'], moon:['நிலா','nilaː'], mother:['அம்மா','ammaː'], father:['அப்பா','appaː'], eat:['சாப்பிடு','saːpːiɖu'], drink:['குடி','kuɖi'], love:['காதல்','kaːdal'], heart:['இதயம்','idajam'], tree:['மரம்','maɾam'], house:['வீடு','viːɖu'], dog:['நாய்','naːj'], cat:['பூனை','puːnai'], hand:['கை','kaj'], eye:['கண்','kaɳ'], hello:['வணக்கம்','ʋaɳakkam'], thanks:['நன்றி','nanri'], one:['ஒன்று','ondru'], good:['நல்ல','nalla'] }},
+  // Irula — Dravidian Southern (Tamil-Kannada), ~200K speakers, Tamil Nadu/Kerala/Karnataka. Distinctive Adivasi tribal language.
+  // Sources: Ethnologue 27 'iru'; Glottolog irul1241; Zvelebil (1973) Comparative Dravidian Phonology.
+  iru: { name: 'Irula', native: 'இருளர் மொழி', lat: 11.45, lng: 76.71, // Nilgiri Hills (Irula heartland)
+    words: { water:['nīr','niːɾ'], fire:['tī','tiː'], sun:['čūriyen','tʃuːɾijen'], moon:['niLā','niɭaː'], mother:['ammā','amːaː'], father:['ayyā','ajːaː'], eat:['činnu','tʃinːu'], drink:['kuDi','kuɖi'], love:['kāhal','kaːhal'], heart:['idayam','idajam'], tree:['maram','maɾam'], house:['vīDu','viːɖu'], dog:['nāyi','naːji'], cat:['pūne','puːne'], hand:['kayyu','kajːu'], eye:['kaNN','kaɳː'], hello:['vannakkam','vanːakːam'], thanks:['nanri','nanɾi'], one:['onnu','onːu'], good:['nalla','nalːa'] }},
   // === European ===
   en: { name: 'English', native: 'English', lat: 51.51, lng: -0.13, // London
     words: { water:['water','ˈwɔːtə'], fire:['fire','faɪə'], sun:['sun','sʌn'], moon:['moon','muːn'], mother:['mother','ˈmʌðə'], father:['father','ˈfɑːðə'], eat:['eat','iːt'], drink:['drink','drɪŋk'], love:['love','lʌv'], heart:['heart','hɑːt'], tree:['tree','triː'], house:['house','haʊs'], dog:['dog','dɒɡ'], cat:['cat','kæt'], hand:['hand','hænd'], eye:['eye','aɪ'], hello:['hello','həˈləʊ'], thanks:['thank you','θæŋk juː'], one:['one','wʌn'], good:['good','ɡʊd'] }},
@@ -1635,6 +1639,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'lif'; Glottolog limb1266; van Driem (1987) A Grammar of Limbu.
   lif: { name: 'Limbu', native: 'ᤕᤰᤌᤢᤱ ᤐᤠᤴ', lat: 26.66, lng: 87.27, // Dhankuta
     words: { water:['ᤁᤡᤱ','tʃʰwaɾaŋ'], fire:['ᤔᤡ','mi'], sun:['ᤛᤡᤥᤔᤡ','ɲaːmpʰʌ'], moon:['ᤍᤣ','laːba'], mother:['ᤔᤠᤔᤠ','aːmaː'], father:['ᤐᤠᤐᤠ','aːbaː'], eat:['ᤆᤠᤔᤠ','tʃaːmaː'], drink:['ᤌᤢᤴᤔᤠ','tʰuŋmaː'], love:['ᤔᤡᤌᤡ','mitʰi'], heart:['ᤛᤡᤰ','sik'], tree:['ᤛᤡᤱ','siŋ'], house:['ᤜᤡᤶ','him'], dog:['ᤁᤣᤳᤇᤡ','keptʃi'], cat:['ᤐᤡᤛᤡ','pisi'], hand:['ᤜᤢᤰ','huk'], eye:['ᤔᤡᤰ','mik'], hello:['ᤐᤣᤜᤢᤙᤣ','peːhuːje'], thanks:['ᤐᤡᤍᤠᤱ','pidaːŋ'], one:['ᤏᤡᤳ','tʰik'], good:['ᤖᤣ','nuba'] }},
+  // Thulung — Sino-Tibetan Western Kiranti, ~33K speakers, Solu-Khumbu region E Nepal.
+  // Sources: Ethnologue 27 'tdh'; Glottolog thul1244; Allen (1975) Thulung grammar.
+  tdh: { name: 'Thulung', native: 'थुलुङ', lat: 27.45, lng: 86.65, // Solukhumbu (Thulung heartland)
+    words: { water:['भु','bʱu'], fire:['मे','me'], sun:['नाम','nam'], moon:['लामी','lami'], mother:['मामा','mama'], father:['पापा','papa'], eat:['च-','tʃa'], drink:['तुङ-','tʰuŋ'], love:['सेय्यु','sejːu'], heart:['सीक','siːk'], tree:['सीङ','siːŋ'], house:['खिम','kʰim'], dog:['ख्ली','kʰliː'], cat:['पुसी','pusi'], hand:['गुर','ɡur'], eye:['मिक','mik'], hello:['नमस्ते','nəməste'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['कोङ','koŋ'], good:['नुम्स','nums'] }},
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
   // Adi — Sino-Tibetan Tani, ~250K speakers, Arunachal Pradesh + Assam India + adjoining China.
@@ -3376,6 +3384,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'agq'; Glottolog aghe1239; Hyman (1979) Aghem Grammatical Structure.
   agq: { name: 'Aghem', native: 'Aghem', lat: 6.16, lng: 10.10, // Wum, Cameroon
     words: { water:['mê\'','meʔ'], fire:['ìmáa\'','imáaʔ'], sun:['kû\'','kuʔ'], moon:['nâa\'','naːʔ'], mother:['mò','mo'], father:['tâ','ta'], eat:['nîa','nia'], drink:['nyâa','ɲaː'], love:['nkòŋ','ŋkoŋ'], heart:['mwâ','mwa'], tree:['kpa\'','kpaʔ'], house:['ndô','ndo'], dog:['mbî','mbi'], cat:['gò','ɡo'], hand:['kwô\'','kwoʔ'], eye:['dyiá','djia'], hello:['kâa\'','kaːʔ'], thanks:['ŋyaa\'','ŋjaːʔ'], one:['mò','mo'], good:['mwâ\'','mwaʔ'] }},
+  // Dii (Duru, Dourou) — Niger-Congo Adamawa, ~50K speakers, North Cameroon (Adamaoua region).
+  // Sources: Ethnologue 27 'dur'; Glottolog dury1238; Bohnhoff (1986) Yag Dii grammar.
+  dur: { name: 'Dii', native: 'Yag Dii', lat: 7.32, lng: 13.58, // Ngaoundéré, Adamawa Cameroon
+    words: { water:['mam','mam'], fire:['mvə̀','mvə'], sun:['ngə̄ə̀','ŋɡəə'], moon:['mboɔn','mbɔɔn'], mother:['na','na'], father:['ba','ba'], eat:['kpén','kpen'], drink:['kpɔ̀','kpɔ'], love:['kūngí','kuŋɡi'], heart:['ngēli','ŋɡeli'], tree:['ngà','ŋɡa'], house:['gā','ɡa'], dog:['mvù','mvu'], cat:['ngwā','ŋɡwa'], hand:['paà','paa'], eye:['ngə̀ə','ŋɡəə'], hello:['mbóò','mboo'], thanks:['vɛɛɛ','vɛːɛ'], one:['hīn','hin'], good:['gáà','ɡaa'] }},
   ndc: { name: 'Ndau', native: 'ChiNdau', lat: -19.12, lng: 33.48, // Chimoio
     words: { water:['mvura','mvuɾa'], fire:['muriro','muɾiɾo'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudʒa'], drink:['kunwa','kunwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['nyumba','ɲumba'], dog:['imbga','imbɡa'], cat:['kiti','kiti'], hand:['chanza','tʃanza'], eye:['ziso','ziso'], hello:['mhoroi','mhoɾoji'], thanks:['ndatenda','ndatenda'], one:['chimwe','tʃimwe'], good:['kanaka','kanaka'] }},
   ote: { name: 'Otomi', native: 'Hñähñu', lat: 20.48, lng: -99.22, // Ixmiquilpan
