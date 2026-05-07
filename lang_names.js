@@ -1360,4 +1360,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED51 = {
+        prg: { en: 'Old Prussian', ja: '古プロイセン語', ko: '고대 프로이센어', zh: '古普鲁士语', yue: '古普魯士語',
+               vi: 'Tiếng Phổ cổ', th: 'ภาษาปรัสเซียโบราณ', id: 'Bahasa Prusia Kuno', hi: 'पुरानी प्रशियाई',
+               de: 'Altpreußisch', fr: 'Vieux-prussien', it: 'Antico prussiano',
+               es_eu: 'Antiguo prusiano', es_mx: 'Antiguo prusiano', pt_eu: 'Antigo prussiano', pt_br: 'Antigo prussiano',
+               ru: 'Прусский', uk: 'Прусська', ar: 'البروسية القديمة', he: 'פרוסית עתיקה', sw: 'Kiprussia cha Kale' },
+        aqc: { en: 'Archi', ja: 'アルチ語', ko: '아르치어', zh: '阿尔奇语', yue: '阿爾奇語',
+               vi: 'Tiếng Archi', th: 'ภาษาอาร์ชี', id: 'Bahasa Archi', hi: 'आर्ची',
+               de: 'Archi', fr: 'Artchi', it: 'Archi',
+               es_eu: 'Archi', es_mx: 'Archi', pt_eu: 'Archi', pt_br: 'Archi',
+               ru: 'Арчинский', uk: 'Арчинська', ar: 'الأرشية', he: 'ארצ׳י', sw: 'Kiarchi' },
+        adt: { en: 'Adnyamathanha', ja: 'アドニャマザンハ語', ko: '아드니아마탄하어', zh: '阿德尼亚玛塔哈语', yue: '阿德尼亞瑪塔哈語',
+               vi: 'Tiếng Adnyamathanha', th: 'ภาษาแอดเนียมาทันฮา', id: 'Bahasa Adnyamathanha', hi: 'अद्न्यमथन्हा',
+               de: 'Adnyamathanha', fr: 'Adnyamathanha', it: 'Adnyamathanha',
+               es_eu: 'Adnyamathanha', es_mx: 'Adnyamathanha', pt_eu: 'Adnyamathanha', pt_br: 'Adnyamathanha',
+               ru: 'Аднямаятанха', uk: 'Аднямаятанха', ar: 'الأدنياماتانها', he: 'אדנימתנהה', sw: 'Kiadnyamathanha' },
+    };
+    for (const code of Object.keys(ADDED51)) {
+        for (const ui of Object.keys(ADDED51[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED51[code][ui];
+            }
+        }
+    }
 })();

@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 763 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 766 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -765,6 +765,10 @@ const LANG_DATA = {
     words: { water:['vondou','vɔnduː'], fire:['ognės','ɔɡneːs'], sun:['saulė','sauleː'], moon:['mienou','mʲeːnuː'], mother:['mama','mama'], father:['tievs','tʲieːvs'], eat:['valgītė','vaɫɡʲiːteː'], drink:['gertė','ɡʲɛrteː'], love:['meilė','mʲɛːileː'], heart:['šėrdės','ʃʲɛːrdʲɛːs'], tree:['medis','mʲɛdʲɪs'], house:['noms','nɔms'], dog:['šou','ʃoː'], cat:['katė','katʲeː'], hand:['ronka','rɔŋka'], eye:['akės','akʲɛːs'], hello:['labs','labs'], thanks:['ačiū','atʃuː'], one:['vins','vʲɪns'], good:['gers','ɡʲɛrs'] }},
   lv: { name: 'Latvian', native: 'Latviešu', lat: 56.95, lng: 24.11,
     words: { water:['ūdens','uːdɛns'], fire:['uguns','uɡuns'], sun:['saule','saulɛ'], moon:['mēness','meːnɛs'], mother:['māte','maːtɛ'], father:['tēvs','teːvs'], eat:['ēst','eːst'], drink:['dzert','dzɛrt'], love:['mīlestība','miːlɛstiːba'], heart:['sirds','sirds'], tree:['koks','kuɔks'], house:['māja','maːja'], dog:['suns','suns'], cat:['kaķis','kaʲcis'], hand:['roka','ruɔka'], eye:['acs','ats'], hello:['sveiki','svɛiki'], thanks:['paldies','paldiɛs'], one:['viens','viɛns'], good:['labs','labs'] }},
+  // Old Prussian (Pruzziska) — Baltic (Western, sister to East Baltic Lithuanian/Latvian), historical (extinct early 18th c.). Reconstructed from 14th-16th c. Catechisms.
+  // Sources: Ethnologue 27 'prg'; Glottolog prus1238; Mažiulis (1981) Old Prussian Etymological Dictionary; Schmalstieg (1976).
+  prg: { name: 'Old Prussian', native: 'Prūsiska bila', lat: 54.71, lng: 20.51, // Königsberg / Kaliningrad (historical Pruzzia heartland)
+    words: { water:['undan','undan'], fire:['panno','panːo'], sun:['saule','saule'], moon:['menins','menins'], mother:['mūti','muːti'], father:['tāws','taːws'], eat:['īst','iːst'], drink:['poūton','poʊton'], love:['milīt','miliːt'], heart:['sīran','siːran'], tree:['garbs','ɡarbs'], house:['butt','butː'], dog:['sūns','suːns'], cat:['katto','katːo'], hand:['rancko','rantsko'], eye:['ackis','atskis'], hello:['kaīls','kaiːls'], thanks:['dīnkun','diːnkun'], one:['ains','ains'], good:['labs','labs'] }},
   sq: { name: 'Albanian', native: 'Shqip', lat: 41.33, lng: 19.82,
     words: { water:['ujë','ujə'], fire:['zjarr','zjar'], sun:['diell','diɛɫ'], moon:['hënë','hənə'], mother:['nënë','nənə'], father:['baba','baba'], eat:['ha','ha'], drink:['pi','pi'], love:['dashuri','daʃuɾi'], heart:['zemër','zɛmər'], tree:['pemë','pɛmə'], house:['shtëpi','ʃtəpi'], dog:['qen','cɛn'], cat:['mace','mat͡sɛ'], hand:['dorë','dɔɾə'], eye:['sy','sy'], hello:['përshëndetje','pəɾʃəndɛtjɛ'], thanks:['faleminderit','falɛmindɛɾit'], one:['një','ɲə'], good:['mirë','miɾə'] }},
   et: { name: 'Estonian', native: 'Eesti', lat: 59.44, lng: 24.75,
@@ -1725,6 +1729,10 @@ const LANG_DATA = {
     words: { water:['щин','ʃin'], fire:['цӏу','tsʼu'], sun:['бургъ','burʁ'], moon:['барз','barz'], mother:['нину','ninu'], father:['ппу','pːu'], eat:['ккаву','kːavu'], drink:['гьавхь','ʕavħ'], love:['ччан','tʃːan'], heart:['дакӏ','dakʼ'], tree:['мурхь','muɾħ'], house:['къатта','qatːa'], dog:['ккун','kːun'], cat:['ккац','kːats'], hand:['ка','ka'], eye:['я','ja'], hello:['салам','salam'], thanks:['барчаллагь','baɾtʃalːaʁ'], one:['ца','tsa'], good:['хъинсса','qinsːa'] }},
   tab: { name: 'Tabasaran', native: 'Табасаран чӀал', lat: 41.93, lng: 48.04, // Khiv
     words: { water:['штар','ʃtar'], fire:['цӏа','tsʼa'], sun:['рагъ','raʁ'], moon:['варз','varz'], mother:['бай','baj'], father:['дад','dad'], eat:['ипӏуб','ipʼub'], drink:['ужуб','uʒub'], love:['ккунивал','kːunival'], heart:['юкӏ','jukʼ'], tree:['гар','ɡar'], house:['хал','xal'], dog:['хю','xy'], cat:['кет','ket'], hand:['хил','xil'], eye:['ул','ul'], hello:['салам','salam'], thanks:['чухсагъул','tʃuxsaʁul'], one:['саб','sab'], good:['ужу','uʒu'] }},
+  // Archi — NE Caucasian (Lezgic, isolated within Lezgic), ~1K, Russia (Daghestan — Charoda District, Archi village). One of world's most morphologically complex languages: ~1.5M possible verb forms.
+  // Sources: Ethnologue 27 'aqc'; Glottolog arch1244; Kibrik (1977) Archi: Phonology & Morphology; Chumakina (2008).
+  aqc: { name: 'Archi', native: 'Аршаттен чӀат', lat: 42.18, lng: 46.73, // Archi village, Charoda District, Daghestan
+    words: { water:['кьᴉам','qʼjam'], fire:['цӏай','tsʼaj'], sun:['бараг','baɾaɡ'], moon:['батӀ','batʼ'], mother:['буба','buba'], father:['аба','aba'], eat:['аркьᴉлᴉ','aɾqʼili'], drink:['а́ккур','ʔakːur'], love:['икан','ikan'], heart:['ракӀ','ɾakʼ'], tree:['гард','ɡaɾd'], house:['хъоʔ','qoʔ'], dog:['хӀваᴉ','ħʷaj'], cat:['к̄ет','kʼet'], hand:['кӏанас','kʼanas'], eye:['пӏарак','pʼaɾak'], hello:['аᴉмбᴉр','ambiɾ'], thanks:['хӀама','ħama'], one:['ос','os'], good:['баᴉлъᴉ','baɫi'] }},
   // Udi — NE Caucasian (Lezgic), ~6K, Azerbaijan (Niž village, Qabala) + Georgia. Linear descendant of Caucasian Albanian (5th c. literary language).
   // Sources: Ethnologue 27 'udi'; Glottolog udii1243; Schulze (1982) Die Sprache der Uden; Maisak (2008).
   udi: { name: 'Udi', native: 'удин муз', lat: 41.30, lng: 48.31, // Niž (Nij), Qabala District, Azerbaijan
@@ -1801,6 +1809,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nha'; Glottolog nhan1238; Blevins (2001) Nhanda Aboriginal Language; Pama-Nyungan reconstructions.
   nha: { name: 'Nhanda', native: 'Nhanda', lat: -28.78, lng: 114.61, // Geraldton, Western Australia
     words: { water:['kapi','kapi'], fire:['warla','waɻla'], sun:['ngama','ŋama'], moon:['kanyala','kaɲala'], mother:['ngamaji','ŋamadʒi'], father:['kuthurra','kutʰuɻa'], eat:['ngarna','ŋaɻna'], drink:['nyuna','ɲuna'], love:['kanyji','kaɲdʒi'], heart:['pulpara','pulpaɻa'], tree:['parntany','paɳʈaɲ'], house:['nhurra','ɳuɻa'], dog:['kuwiyarl','kuwijaɻl'], cat:['paka','paka'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','paʎa'], thanks:['marlu','maɻlu'], one:['kuyu','kuju'], good:['walykumarra','waʎkumaɻa'] }},
+  // Adnyamathanha — Pama-Nyungan (Thura-Yura, sister to Kaurna), ~10 fluent + ~150 partial speakers, Australia (South Australia — Flinders Ranges, Nepabunna).
+  // Sources: Ethnologue 27 'adt'; Glottolog adny1238; Schebeck (1973) Texts on the Social System of the Atyñamatana People.
+  adt: { name: 'Adnyamathanha', native: 'Adnyamathanha-na yarta', lat: -30.78, lng: 138.83, // Nepabunna, Flinders Ranges, SA
+    words: { water:['awi','awi'], fire:['warlu','waɻlu'], sun:['yidnu','jidnu'], moon:['vuyu','vuju'], mother:['nyangka','ɲaŋka'], father:['arndu','aɳɖu'], eat:['ngalkanha','ŋalkaɲa'], drink:['ulpanha','ulpaɲa'], love:['mukunha','mukuɲa'], heart:['kurda','kuɖa'], tree:['urtu','uʈu'], house:['vakali','vakali'], dog:['vurlpu','vuɻlpu'], cat:['vunmara','vunmaɻa'], hand:['mara','maɻa'], eye:['mina','mina'], hello:['palya','paʎa'], thanks:['mukunha','mukuɲa'], one:['mukuna','mukuna'], good:['ngarrkanha','ŋaɻkaɲa'] }},
   // === Phase 3F: Tibeto-Burman, Indonesian/Philippine, misc ===
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal
