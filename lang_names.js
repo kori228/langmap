@@ -460,4 +460,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Mi'kmaq (mic), Asháninka (cni), Páez (pbb) — Algic + Arawakan + Colombia isolate.
+    const ADDED15 = {
+        mic: { en: "Mi'kmaq", ja: 'ミクマク語', ko: '미크마크어', zh: '米克马克语', yue: '米克馬克語',
+               vi: "Tiếng Mi'kmaq", th: 'ภาษามิคมัก', id: "Mi'kmaq", hi: 'मिक्माक',
+               de: "Mi'kmaq", fr: 'Mi’gmaq', it: "Mi'kmaq",
+               es_eu: "Mi'kmaq", es_mx: "Mi'kmaq", pt_eu: "Mi'kmaq", pt_br: "Mi'kmaq",
+               ru: 'Микмак', uk: 'Мікмак', ar: 'الميكماك', he: 'מיקמאק', sw: "Mi'kmaq" },
+        cni: { en: 'Asháninka', ja: 'アシャニンカ語', ko: '아샤닌카어', zh: '阿沙宁卡语', yue: '阿沙寧卡語',
+               vi: 'Tiếng Asháninka', th: 'ภาษาอาชานินกา', id: 'Asháninka', hi: 'आशानिंका',
+               de: 'Asháninka', fr: 'Asháninka', it: 'Asháninka',
+               es_eu: 'Asháninka', es_mx: 'Asháninka', pt_eu: 'Axaninca', pt_br: 'Axaninca',
+               ru: 'Ашанинка', uk: 'Ашанінка', ar: 'الأشانينكا', he: 'אשנינקה', sw: 'Asháninka' },
+        pbb: { en: 'Páez', ja: 'パエス語', ko: '파에스어', zh: '帕埃斯语', yue: '帕埃斯語',
+               vi: 'Tiếng Páez', th: 'ภาษาปาเอซ', id: 'Páez', hi: 'पाएज़',
+               de: 'Páez', fr: 'Páez', it: 'Páez',
+               es_eu: 'Páez (nasa yuwe)', es_mx: 'Páez (nasa yuwe)', pt_eu: 'Páez', pt_br: 'Páez',
+               ru: 'Паэс (наса юве)', uk: 'Паес (наса юве)', ar: 'الباييث', he: 'פאאס', sw: 'Páez' },
+    };
+    for (const code of Object.keys(ADDED15)) {
+        for (const ui of Object.keys(ADDED15[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED15[code][ui];
+            }
+        }
+    }
 })();

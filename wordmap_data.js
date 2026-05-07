@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 655 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 658 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1331,6 +1331,14 @@ const LANG_DATA = {
   // Quechuan / Aymaran
   ay: { name: 'Aymara', native: 'Aymar aru', lat: -16.49, lng: -68.15, // La Paz
     words: { water:['uma','uma'], fire:['nina','nina'], sun:['inti','inti'], moon:['phaxsi','pʰaχsi'], mother:['mama','mama'], father:['tata','tata'], eat:['manq\'aña','manqʼaɲa'], drink:['umaña','umaɲa'], love:['munasiña','munasiɲa'], heart:['chuyma','tʃujma'], tree:['quqa','quqa'], house:['uta','uta'], dog:['anu','anu'], cat:['phisi','pʰisi'], hand:['ampara','ampaɾa'], eye:['nayra','najɾa'], hello:['kamisaki','kamisaki'], thanks:['yuspagara','juspaɣaɾa'], one:['maya','maja'], good:['suma','suma'] }},
+  // Asháninka — Arawakan (Kampan), Peruvian Amazon, ~25K-50K speakers. Largest Arawakan in Peru.
+  // Sources: Ethnologue 27 'cni'; Glottolog asha1243; Mihas (2010) Asháninka grammar.
+  cni: { name: 'Asháninka', native: 'Asháninka', lat: -10.85, lng: -73.81, // Satipo, Peru
+    words: { water:['nija','nidʒa'], fire:['paamari','paːmaɾi'], sun:['oorya','oːɾja'], moon:['kashiri','kaʃiɾi'], mother:['ina','ina'], father:['apa','apa'], eat:['noyaki','nojaki'], drink:['noiri','noiɾi'], love:['nonintsi','nonintsi'], heart:['nosanto','nosanto'], tree:['inchato','intʃato'], house:['pankotsi','paŋkotsi'], dog:['otsiti','otsiti'], cat:['mishito','miʃito'], hand:['nako','nako'], eye:['noki','noki'], hello:['aviro','aβiɾo'], thanks:['naranki','naɾaŋki'], one:['aparoni','apaɾoni'], good:['kameetsa','kameːtsa'] }},
+  // Páez (Nasa Yuwe) — language isolate, Cauca Colombia, ~60K. Tonal, indigenous to pre-Inca Andes.
+  // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
+  pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca
+    words: { water:['ɨkh','ɨkʰ'], fire:['ipx','ipʰ'], sun:['sek','seɡ'], moon:['a\'','aʔ'], mother:['mama','mama'], father:['tata','tata'], eat:['ku\'','kuʔ'], drink:['ɨçx','ɨçʰ'], love:['wala','wala'], heart:['weçx','weçʰ'], tree:['kli','kli'], house:['yat','jat'], dog:['ul','ul'], cat:['nasame\'','nasameʔ'], hand:['ku\'çx','kuʔçʰ'], eye:['yafx','jafʰ'], hello:['mañi','maɲi'], thanks:['pay','paj'], one:['teʼ','teʔ'], good:['eçxa','eçʰa'] }},
   // Araucanian
   arn: { name: 'Mapudungun', native: 'Mapuzugun', lat: -38.74, lng: -72.59, // Temuco
     words: { water:['ko','ko'], fire:['kütral','kɨtɾal'], sun:['antü','antɨ'], moon:['küyen','kɨjen'], mother:['ñuke','ɲuke'], father:['chao','tʃao'], eat:['in','in'], drink:['pütun','pɨtun'], love:['poyen','pojen'], heart:['piwke','piwke'], tree:['aliwen','aliwen'], house:['ruka','ɾuka'], dog:['trewa','tɾewa'], cat:['ñayki','ɲajki'], hand:['kuwü','kuwɨ'], eye:['nge','ŋe'], hello:['mari mari','maɾi maɾi'], thanks:['chaltu','tʃaltu'], one:['kiñe','kiɲe'], good:['küme','kɨme'] }},
@@ -1339,6 +1347,10 @@ const LANG_DATA = {
     words: { water:['ᓂᐱᕀ','nipij'], fire:['ᐃᐢᑯᑌᐤ','iskotew'], sun:['ᐱᓯᒼ','piːsim'], moon:['ᑎᐱᐢᑲᐍᐱᓯᒼ','tipiskaːwi piːsim'], mother:['ᓂᑲᐎᕀ','nikaːwij'], father:['ᓄᐦᑖᐎᕀ','noːhtaːwij'], eat:['ᒨᐍᐤ','miːtʃiw'], drink:['ᒥᓂᐦᐠᐌᐤ','minihkweːw'], love:['ᓵᑭᐦᐃᐍᐏᐣ','saːkihiweːwin'], heart:['ᒥᑌᐦ','miteːh'], tree:['ᒥᐢᑎᐠ','mistik'], house:['ᐗᐢᑲᐦᐃᑲᐣ','waːskahikan'], dog:['ᐊᑎᒼ','atim'], cat:['ᒥᓅᐢ','minoːs'], hand:['ᒥᒋᒋᕀ','mitʃihtʃij'], eye:['ᒥᐢᑮᓯᐠ','miskiːsik'], hello:['ᑕᓂᓯ','taːnisi'], thanks:['ᑭᓇᓈᐢᑯᒥᑎᐣ','kinanaːskomitin'], one:['ᐯᔭᐠ','peːjak'], good:['ᒥᔫ','mijo'] }},
   oj: { name: 'Ojibwe', native: 'Anishinaabemowin', lat: 46.50, lng: -84.34, // Sault Ste. Marie
     words: { water:['nibi','nibi'], fire:['ishkode','iʃkode'], sun:['giizis','ɡiːzis'], moon:['dibik-giizis','dibik ɡiːzis'], mother:['nimaamaa','nimaːmaː'], father:['indede','indede'], eat:['wiisini','wiːsini'], drink:['minikwe','minikwe'], love:['zaagi\'iwewin','zaːɡiʔiweːwin'], heart:['ode\'','odeʔ'], tree:['mitig','mitiɡ'], house:['wiigiwaam','wiːɡiwaːm'], dog:['animosh','animoʃ'], cat:['gaazhagens','ɡaːʒaɡens'], hand:['ninij','ninidʒ'], eye:['oshkiinzhig','oʃkiːnʒiɡ'], hello:['boozhoo','boːʒoː'], thanks:['miigwech','miːɡʷetʃ'], one:['bezhig','beʒiɡ'], good:['mino','mino'] }},
+  // Mi'kmaq — Algic, Atlantic Canada + Maine, ~7K speakers. Has its own historical syllabary.
+  // Sources: Ethnologue 27 'mic'; Glottolog mikm1235; Inglis (1991) Mi'kmaq Online Dictionary.
+  mic: { name: "Mi'kmaq", native: "Mi'kmawi'simk", lat: 46.10, lng: -64.78, // Eskasoni / Cape Breton
+    words: { water:['samqwan','samɡʷan'], fire:["puktew",'puɡdew'], sun:['naku\'set','naɡuʔset'], moon:['tepkunaset','tebɡunaset'], mother:['nikij','nidʒidʒ'], father:["nujj",'nudʒː'], eat:['mij','midʒ'], drink:["sa'q",'saʔɡ'], love:['kesalk','ɡesalɡ'], heart:["ukamlamun",'uɡamlamun'], tree:['nipi','nibi'], house:['wikuom','wiɡuom'], dog:['lmu\'j','lmuʔdʒ'], cat:["mia\'wj",'miaʔwdʒ'], hand:['piten','biden'], eye:["pukweck",'buɡʷedʒɡ'], hello:["kwe'",'ɡʷeʔ'], thanks:["wela'lin",'welaʔlin'], one:["newt",'newt'], good:['kelu\'lk','ɡeluʔlɡ'] }},
   // Siouan
   lkt: { name: 'Lakota', native: 'Lakȟótiyapi', lat: 43.02, lng: -102.55, // Pine Ridge
     words: { water:['mní','mní'], fire:['pȟéta','pʰéta'], sun:['wí','wí'], moon:['haŋhépi wí','haŋhépi wí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yátkaŋ','játkaŋ'], love:['thečhíȟila','tʰetʃʰíʁila'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋke','iɡmúŋke'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['philámayaye','pʰilámajaje'], one:['waŋží','waŋʒí'], good:['wašté','waʃté'] }},
