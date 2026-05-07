@@ -1210,4 +1210,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED45 = {
+        srr: { en: 'Serer', ja: 'セレル語', ko: '세레르어', zh: '塞雷尔语', yue: '塞雷爾語',
+               vi: 'Tiếng Serer', th: 'ภาษาเซเรอร์', id: 'Bahasa Serer', hi: 'सेरेर',
+               de: 'Serer', fr: 'Sérère', it: 'Serer',
+               es_eu: 'Serer', es_mx: 'Serer', pt_eu: 'Serer', pt_br: 'Serer',
+               ru: 'Серер', uk: 'Серер', ar: 'السيريرية', he: 'סרר', sw: 'Kiserer' },
+        abq: { en: 'Abaza', ja: 'アバザ語', ko: '아바자어', zh: '阿巴扎语', yue: '阿巴扎語',
+               vi: 'Tiếng Abaza', th: 'ภาษาอาบาซา', id: 'Bahasa Abaza', hi: 'अबाज़ा',
+               de: 'Abasinisch', fr: 'Abaza', it: 'Abaza',
+               es_eu: 'Abasino', es_mx: 'Abasino', pt_eu: 'Abazá', pt_br: 'Abazá',
+               ru: 'Абазинский', uk: 'Абазинська', ar: 'الأباظية', he: 'אבזה', sw: 'Kiabaza' },
+        agr: { en: 'Aguaruna', ja: 'アグアルナ語', ko: '아구아루나어', zh: '阿瓜鲁纳语', yue: '阿瓜魯納語',
+               vi: 'Tiếng Aguaruna', th: 'ภาษาอกัวรูนา', id: 'Bahasa Aguaruna', hi: 'अगुआरुना',
+               de: 'Aguaruna', fr: 'Aguaruna', it: 'Aguaruna',
+               es_eu: 'Aguaruna', es_mx: 'Aguaruna', pt_eu: 'Aguaruna', pt_br: 'Aguaruna',
+               ru: 'Агуаруна', uk: 'Агуаруна', ar: 'الأغوارونا', he: 'אגוארונה', sw: 'Kiawajun' },
+    };
+    for (const code of Object.keys(ADDED45)) {
+        for (const ui of Object.keys(ADDED45[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED45[code][ui];
+            }
+        }
+    }
 })();

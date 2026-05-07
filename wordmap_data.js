@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 745 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 748 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -620,6 +620,10 @@ const LANG_DATA = {
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
   wo: { name: 'Wolof', native: 'Wolof', lat: 14.69, lng: -17.44,
     words: { water:['ndox','ndɔx'], fire:['safara','safaɾa'], sun:['jant','dʒant'], moon:['weer','weːɾ'], mother:['yaay','jaːj'], father:['baay','baːj'], eat:['lekk','lɛkː'], drink:['naan','naːn'], love:['mbëggeel','mbəɡeːl'], heart:['xol','xol'], tree:['garab','ɡaɾab'], house:['kër','kəɾ'], dog:['xaj','xaj'], cat:['muus','muːs'], hand:['loxo','lɔxɔ'], eye:['bët','bət'], hello:['na nga def','na ŋɡa dɛf'], thanks:['jërëjëf','dʒəɾədʒəf'], one:['benn','bɛnː'], good:['baax','baːx'] }},
+  // Serer — Niger-Congo (Atlantic, Senegambian — sister to Fula and Wolof but Cangin subgroup), ~1.4M, Senegal (Sine-Saloum + Petite Côte). Tonal, ~12 noun classes.
+  // Sources: Ethnologue 27 'srr'; Glottolog sere1260; Faye (1980) Lexique Sereer-Sine; McLaughlin (1992).
+  srr: { name: 'Serer', native: 'Seereer', lat: 14.41, lng: -16.97, // Diourbel / Sine-Saloum, Senegal
+    words: { water:['mbox','mbɔx'], fire:['ngir','ŋɡiɾ'], sun:['naangu','naːŋɡu'], moon:['weer','weːɾ'], mother:['yaay','jaːj'], father:['baay','baːj'], eat:['niam','ɲam'], drink:['ñam','ɲam'], love:['mbutu','mbutu'], heart:['xol','xɔl'], tree:['garab','ɡaɾab'], house:['kër','kəɾ'], dog:['xaj','xaj'], cat:['mboor','mboːɾ'], hand:['ɓod','ɓɔd'], eye:['kën','kən'], hello:['na nga def','na ŋɡa dɛf'], thanks:['jaaraama','dʒaːɾaːma'], one:['leeng','leːŋɡ'], good:['xaal','xaːl'] }},
   so: { name: 'Somali', native: 'Soomaali', lat: 2.05, lng: 45.32,
     words: { water:['biyo','bijo'], fire:['dab','dab'], sun:['qorrax','qɔɾːax'], moon:['dayax','dajax'], mother:['hooyo','hoːjo'], father:['aabo','aːbo'], eat:['cun','tʃun'], drink:['cab','tʃab'], love:['jacayl','dʒatʃajl'], heart:['wadne','wadnɛ'], tree:['geed','ɡeːd'], house:['guri','ɡuɾi'], dog:['eey','eːj'], cat:['bisad','bisad'], hand:['gacmo','ɡatʃmo'], eye:['il','il'], hello:['salaan','salaːn'], thanks:['mahadsanid','maħadsanid'], one:['kow','kow'], good:['wanaagsan','wanaːɡsan'] }},
   om: { name: 'Oromo', native: 'Afaan Oromoo', lat: 8.55, lng: 39.27, // Adama (Oromia regional center)
@@ -1623,6 +1627,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'jiv'; Glottolog shua1257; Pellizzaro & Náwech (2005) Chicham Shuar.
   jiv: { name: 'Shuar', native: 'Shuar Chicham', lat: -2.50, lng: -78.07, // Macas, Ecuador
     words: { water:['yumi','jumi'], fire:['ji','dʒi'], sun:['etsa','etsa'], moon:['nantu','nantu'], mother:['nukur','nukuɾ'], father:['apar','apaɾ'], eat:['yuata','juata'], drink:['umarta','umaɾta'], love:['anentaiti','anentaiti'], heart:['enentai','enentai'], tree:['numi','numi'], house:['jea','dʒea'], dog:['yawá','jawá'], cat:['micha','mitʃa'], hand:['uwej','uwedʒ'], eye:['jii','dʒiː'], hello:['pujamek','pudʒamek'], thanks:['yuminsajme','juminsadʒme'], one:['chikichik','tʃikitʃik'], good:['penker','peŋkeɾ'] }},
+  // Aguaruna (Awajún) — Jivaroan, ~55K (Peru ~50K + Ecuador ~5K), Amazon Andes ecotone (Marañón River basin). Largest Jivaroan.
+  // Sources: Ethnologue 27 'agr'; Glottolog agua1253; Wipio (1978) Diccionario Aguaruna-Castellano.
+  agr: { name: 'Aguaruna', native: 'Awajún chichám', lat: -5.13, lng: -78.44, // Bagua / Condorcanqui, Peru
+    words: { water:['yumi','jumi'], fire:['úkam','úkam'], sun:['etsá','etsá'], moon:['nántu','nántu'], mother:['dukú','dukú'], father:['apá','apá'], eat:['yuwámu','juwámu'], drink:['úmag','úmaɡ'], love:['amaja','amaha'], heart:['anéntai','anɛ́ntaj'], tree:['númi','númi'], house:['jegámu','heɡámu'], dog:['yawá','jawá'], cat:['micha','mitʃa'], hand:['uwéj','uwéh'], eye:['jíi','híː'], hello:['pujámek','puhámɛk'], thanks:['see','sɛː'], one:['makichik','makitʃik'], good:['ímia','ímia'] }},
   // Páez (Nasa Yuwe) — language isolate, Cauca Colombia, ~60K. Tonal, indigenous to pre-Inca Andes.
   // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
   pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca
@@ -1696,6 +1704,10 @@ const LANG_DATA = {
     words: { water:['псы','psə'], fire:['маф1э','mafʼa'], sun:['дыгъэ','dəʁa'], moon:['мазэ','maza'], mother:['анэ','ana'], father:['адэ','ada'], eat:['шхэн','ʃxan'], drink:['ефэн','jafan'], love:['лъагъуныгъэ','ɬaːʁʷənəʁa'], heart:['гу','ɡʷə'], tree:['жыг','ʒəɡ'], house:['унэ','wəna'], dog:['хьэ','ħa'], cat:['джэду','dʒadu'], hand:['ӏэ','ʔa'], eye:['нэ','na'], hello:['фӏэхъус','fʼaqʷəs'], thanks:['фӏыщӏэ','fʼɪʃʼa'], one:['зы','zə'], good:['фӏы','fʼə'] }},
   ab: { name: 'Abkhaz', native: 'Аҧсуа бызшәа', lat: 43.00, lng: 41.02, // Sukhumi
     words: { water:['аӡы','aːdzə'], fire:['амца','amtsa'], sun:['амра','amra'], moon:['амза','amza'], mother:['ан','an'], father:['аб','ab'], eat:['афара','afara'], drink:['ажәра','aʒʷra'], love:['абзиабара','abziabara'], heart:['агәы','aɡʷə'], tree:['аҵла','atsʼla'], house:['аҩны','aːɥnə'], dog:['ала','aːla'], cat:['ацгәы','atsɡʷə'], hand:['анапы','anapə'], eye:['абла','abla'], hello:['мшыбзиа','mʃəbzia'], thanks:['иҭабуп','itʼabup'], one:['акы','akə'], good:['абзиа','abzia'] }},
+  // Abaza — NW Caucasian (Abkhaz-Adyghe, Abaza-Abkhaz subgroup; sister to Abkhaz ab), ~50K, Russia (Karachay-Cherkess Republic — Inzhich-Chukun area).
+  // Sources: Ethnologue 27 'abq'; Glottolog abaz1241; Tabulova (1976) Grammar of Abaza; Genko (1955).
+  abq: { name: 'Abaza', native: 'Абаза бызшва', lat: 44.07, lng: 41.95, // Inzhich-Chukun area, Karachay-Cherkessia
+    words: { water:['дзы','dzə'], fire:['мца','mtsa'], sun:['амра','amra'], moon:['мыза','məza'], mother:['ан','an'], father:['аб','ab'], eat:['фара','fara'], drink:['жвара','ʒwara'], love:['бзиабара','bziabara'], heart:['гвы','ɡʷə'], tree:['тла','tla'], house:['айни','ajni'], dog:['ла','la'], cat:['цгва','tsɡwa'], hand:['напы','napə'], eye:['ла','la'], hello:['мшыбзи','mʃəbzi'], thanks:['таабит','taːbit'], one:['заку','zaku'], good:['бзи','bzi'] }},
   // Kartvelian
   xmf: { name: 'Mingrelian', native: 'მარგალური ნინა', lat: 42.50, lng: 41.87, // Zugdidi
     words: { water:['წყარი','tsʼqari'], fire:['დაჩხირი','datʃxiri'], sun:['ბჟა','bʒa'], moon:['თუთა','tuta'], mother:['დიდა','dida'], father:['მუმა','muma'], eat:['ჭკომუა','tʃʼkʼomua'], drink:['შუა','ʃua'], love:['ჸოროფა','ʔorofa'], heart:['გური','ɡuri'], tree:['ჯა','dʒa'], house:['ოშქური','oʃkʼuri'], dog:['ჯოღორი','dʒoʁori'], cat:['კატა','kʼatʼa'], hand:['ხე','xe'], eye:['თოლი','tʼoli'], hello:['გეგაჯანას','ɡeɡadʒanas'], thanks:['გიდიდი','ɡididi'], one:['არ','ar'], good:['ჯგირი','dʒɡiri'] }},
