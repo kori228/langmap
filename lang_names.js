@@ -735,4 +735,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Machame (jmc), Sebat Bet Gurage (sgw), Dotyali (dty) — Tanzania Chaga + Ethiopia Semitic + Nepal Indo-Aryan.
+    const ADDED26 = {
+        jmc: { en: 'Machame', ja: 'マチャメ語', ko: '마차메어', zh: '马查梅语', yue: '馬查梅語',
+               vi: 'Tiếng Machame', th: 'ภาษามาชาเม', id: 'Machame', hi: 'मचमे',
+               de: 'Machame', fr: 'Machame', it: 'Machame',
+               es_eu: 'Machame', es_mx: 'Machame', pt_eu: 'Machame', pt_br: 'Machame',
+               ru: 'Мачаме', uk: 'Мачаме', ar: 'الماشامي', he: 'מצ׳מה', sw: 'Kimashami' },
+        sgw: { en: 'Sebat Bet Gurage', ja: 'セバト・ベト・グラゲ語', ko: '세바트 베트 구라게어', zh: '七家古拉格语', yue: '七家古拉格語',
+               vi: 'Tiếng Sebat Bet Gurage', th: 'ภาษากูราเก', id: 'Sebat Bet Gurage', hi: 'सेबत बेत गुरागे',
+               de: 'Sebat-Bet-Gurage', fr: 'Sebat Bet Gourage', it: 'Sebat Bet Gurage',
+               es_eu: 'Gurage de Sebat Bet', es_mx: 'Gurage de Sebat Bet', pt_eu: 'Gurage de Sebat Bet', pt_br: 'Gurage de Sebat Bet',
+               ru: 'Себат-Бет гураге', uk: 'Себат-Бет гураге', ar: 'سبات بت غوراجي', he: 'סבט בט גוראג׳ה', sw: 'Sebat Bet Gurage' },
+        dty: { en: 'Dotyali', ja: 'ドティアーリ語', ko: '도티알리어', zh: '多帝亚利语', yue: '多帝亞利語',
+               vi: 'Tiếng Dotyali', th: 'ภาษาโดเทียลี', id: 'Dotyali', hi: 'डोटेली',
+               de: 'Doteli', fr: 'Dotyali', it: 'Dotyali',
+               es_eu: 'Dotyali', es_mx: 'Dotyali', pt_eu: 'Dotyali', pt_br: 'Dotyali',
+               ru: 'Дотьяли', uk: 'Дотьялі', ar: 'الدوتيالية', he: 'דוטיאלי', sw: 'Kidotyali' },
+    };
+    for (const code of Object.keys(ADDED26)) {
+        for (const ui of Object.keys(ADDED26[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED26[code][ui];
+            }
+        }
+    }
 })();
