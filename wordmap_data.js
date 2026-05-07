@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 682 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 685 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -171,6 +171,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nym'; Glottolog nyam1276; Maganga & Schadeberg (1992).
   nym: { name: 'Nyamwezi', native: 'Kinyamwezi', lat: -5.07, lng: 32.83, // Tabora
     words: { water:['minzi','minzi'], fire:['moto','moto'], sun:['izuβa','izuβa'], moon:['ng\'wezi','ŋweːzi'], mother:['mayu','majʊ'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunywa','kuɲwa'], love:['butogwa','butoɡwa'], heart:['mtima','mtima'], tree:['mti','mti'], house:['kaya','kaja'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ikoβo','ikoβo'], eye:['liso','liso'], hello:['mwadita','mwadita'], thanks:['twaβakaβa','twabakaba'], one:['imo','imo'], good:['lihi','liçi'] }},
+  // Shambala — Bantu G23, ~660K speakers, Tanga region NE Tanzania (Usambara mountains).
+  // Sources: Ethnologue 27 'ksb'; Glottolog sham1283; Roehl (1911) Wörterbuch der Schambala-Sprache.
+  ksb: { name: 'Shambala', native: 'Kishambaa', lat: -4.76, lng: 38.30, // Lushoto, Usambara mts
+    words: { water:['mazi','mazi'], fire:['moto','moto'], sun:['zuwa','zuwa'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kuya','kuja'], drink:['kunywa','kuɲwa'], love:['kwenda','kwenda'], heart:['mwoyo','mwojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ukono','ukono'], eye:['izo','izo'], hello:['nashukuru','naʃukuɾu'], thanks:['ahsante','ahsante'], one:['imo','imo'], good:['hedi','hedi'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -1481,6 +1485,10 @@ const LANG_DATA = {
     words: { water:['ᤁᤡᤱ','tʃʰwaɾaŋ'], fire:['ᤔᤡ','mi'], sun:['ᤛᤡᤥᤔᤡ','ɲaːmpʰʌ'], moon:['ᤍᤣ','laːba'], mother:['ᤔᤠᤔᤠ','aːmaː'], father:['ᤐᤠᤐᤠ','aːbaː'], eat:['ᤆᤠᤔᤠ','tʃaːmaː'], drink:['ᤌᤢᤴᤔᤠ','tʰuŋmaː'], love:['ᤔᤡᤌᤡ','mitʰi'], heart:['ᤛᤡᤰ','sik'], tree:['ᤛᤡᤱ','siŋ'], house:['ᤜᤡᤶ','him'], dog:['ᤁᤣᤳᤇᤡ','keptʃi'], cat:['ᤐᤡᤛᤡ','pisi'], hand:['ᤜᤢᤰ','huk'], eye:['ᤔᤡᤰ','mik'], hello:['ᤐᤣᤜᤢᤙᤣ','peːhuːje'], thanks:['ᤐᤡᤍᤠᤱ','pidaːŋ'], one:['ᤏᤡᤳ','tʰik'], good:['ᤖᤣ','nuba'] }},
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
+  // Adi — Sino-Tibetan Tani, ~250K speakers, Arunachal Pradesh + Assam India + adjoining China.
+  // Sources: Ethnologue 27 'adi'; Glottolog adii1235; Sun (1993) Tani branch grammars.
+  adi: { name: 'Adi', native: 'Adi Agom', lat: 28.05, lng: 95.32, // Pasighat, Arunachal Pradesh
+    words: { water:['ihi','ihi'], fire:['emi','emi'], sun:['donyi','doɲi'], moon:['polo','polo'], mother:['ane','ane'], father:['abu','abu'], eat:['dod','dod'], drink:['tunam','tunam'], love:['kanom','kanom'], heart:['gangki','ɡaŋki'], tree:['ane','ane'], house:['oekum','oekum'], dog:['eki','eki'], cat:['mero','meɾo'], hand:['ali','ali'], eye:['amik','amik'], hello:['nasi sukna','nasi sukna'], thanks:['nasi','nasi'], one:['ako','ako'], good:['atom','atom'] }},
   // Nagamese — Assamese-based pidgin/creole, Naga lingua franca, ~30K L1 + 1.4M L2.
   // Sources: Ethnologue 27 'nag'; Glottolog naga1394; Sreedhar (1974) Naga Pidgin.
   nag: { name: 'Nagamese', native: 'Nagamese', lat: 25.67, lng: 94.11, // Kohima, Nagaland
@@ -3192,6 +3200,10 @@ const LANG_DATA = {
     words: { water:['medzim','medzim'], fire:['ndoa','ndoa'], sun:['dzōb','dʒoːb'], moon:['ngɔn','ŋɡɔn'], mother:['nyia','ɲia'], father:['tara','taɾa'], eat:['di','di'], drink:['nyu','ɲu'], love:['nye\'e','ɲeʔe'], heart:['nlem','nlem'], tree:['elé','ele'], house:['nda','nda'], dog:['mvu','mvu'], cat:['esìŋga','esiŋɡa'], hand:['woó','woʔo'], eye:['dzìs','dʒis'], hello:['mbɔlɔ','mbɔlɔ'], thanks:['akiba','akiba'], one:['fok','fok'], good:['mbaŋ','mbaŋ'] }},
   bum: { name: 'Bulu', native: 'Bulu', lat: 2.93, lng: 11.99, // Sangmélima
     words: { water:['medim','medim'], fire:['ndoa','ndoa'], sun:['zobé','zobe'], moon:['ngon','ŋɡon'], mother:['nyia','ɲia'], father:['tata','tata'], eat:['dzia','dʒia'], drink:['nyu','ɲu'], love:['nye\'a','ɲeʔa'], heart:['nlem','nlem'], tree:['élé','ele'], house:['nda','nda'], dog:['mvu','mvu'], cat:['esinga','esiŋɡa'], hand:['wo','wo'], eye:['zis','zis'], hello:['mbolo','mbolo'], thanks:['akiba','akiba'], one:['fok','fok'], good:['mbamba','mbamba'] }},
+  // Aghem — Cameroon Grassfields Bantu (Ring), ~30K speakers, NW Region.
+  // Sources: Ethnologue 27 'agq'; Glottolog aghe1239; Hyman (1979) Aghem Grammatical Structure.
+  agq: { name: 'Aghem', native: 'Aghem', lat: 6.16, lng: 10.10, // Wum, Cameroon
+    words: { water:['mê\'','meʔ'], fire:['ìmáa\'','imáaʔ'], sun:['kû\'','kuʔ'], moon:['nâa\'','naːʔ'], mother:['mò','mo'], father:['tâ','ta'], eat:['nîa','nia'], drink:['nyâa','ɲaː'], love:['nkòŋ','ŋkoŋ'], heart:['mwâ','mwa'], tree:['kpa\'','kpaʔ'], house:['ndô','ndo'], dog:['mbî','mbi'], cat:['gò','ɡo'], hand:['kwô\'','kwoʔ'], eye:['dyiá','djia'], hello:['kâa\'','kaːʔ'], thanks:['ŋyaa\'','ŋjaːʔ'], one:['mò','mo'], good:['mwâ\'','mwaʔ'] }},
   ndc: { name: 'Ndau', native: 'ChiNdau', lat: -19.12, lng: 33.48, // Chimoio
     words: { water:['mvura','mvuɾa'], fire:['muriro','muɾiɾo'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudʒa'], drink:['kunwa','kunwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['nyumba','ɲumba'], dog:['imbga','imbɡa'], cat:['kiti','kiti'], hand:['chanza','tʃanza'], eye:['ziso','ziso'], hello:['mhoroi','mhoɾoji'], thanks:['ndatenda','ndatenda'], one:['chimwe','tʃimwe'], good:['kanaka','kanaka'] }},
   ote: { name: 'Otomi', native: 'Hñähñu', lat: 20.48, lng: -99.22, // Ixmiquilpan
