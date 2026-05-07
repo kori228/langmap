@@ -985,4 +985,579 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED36 = {
+        prs: { en: 'Dari', ja: 'ダリー語', ko: '다리어', zh: '达里语', yue: '達里語',
+               vi: 'Tiếng Dari', th: 'ภาษาดารี', id: 'Bahasa Dari', hi: 'दारी',
+               de: 'Dari', fr: 'Dari', it: 'Dari',
+               es_eu: 'Dari', es_mx: 'Dari', pt_eu: 'Dari', pt_br: 'Dari',
+               ru: 'Дари', uk: 'Дарі', ar: 'الدرية', he: 'דארי', sw: 'Kidari' },
+        szl: { en: 'Silesian', ja: 'シレジア語', ko: '실레시아어', zh: '西里西亚语', yue: '西里西亞語',
+               vi: 'Tiếng Silesia', th: 'ภาษาซิลีเซีย', id: 'Bahasa Silesia', hi: 'सिलेसियाई',
+               de: 'Schlesisch', fr: 'Silésien', it: 'Slesiano',
+               es_eu: 'Silesio', es_mx: 'Silesio', pt_eu: 'Silesiano', pt_br: 'Silesiano',
+               ru: 'Силезский', uk: 'Сілезька', ar: 'السيليزية', he: 'שלזית', sw: 'Kisilesia' },
+        udi: { en: 'Udi', ja: 'ウディ語', ko: '우디어', zh: '乌迪语', yue: '烏迪語',
+               vi: 'Tiếng Udi', th: 'ภาษาอูดี', id: 'Bahasa Udi', hi: 'उदी',
+               de: 'Udisch', fr: 'Oudi', it: 'Udi',
+               es_eu: 'Udi', es_mx: 'Udi', pt_eu: 'Udi', pt_br: 'Udi',
+               ru: 'Удинский', uk: 'Удинська', ar: 'الأودية', he: 'אודית', sw: 'Kiudi' },
+    };
+    for (const code of Object.keys(ADDED36)) {
+        for (const ui of Object.keys(ADDED36[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED36[code][ui];
+            }
+        }
+    }
+
+    const ADDED37 = {
+        sva: { en: 'Svan', ja: 'スヴァン語', ko: '스반어', zh: '斯瓦涅季亚语', yue: '斯瓦涅季亞語',
+               vi: 'Tiếng Svan', th: 'ภาษาสวาน', id: 'Bahasa Svan', hi: 'स्वान',
+               de: 'Swanisch', fr: 'Svane', it: 'Svano',
+               es_eu: 'Svano', es_mx: 'Svano', pt_eu: 'Svano', pt_br: 'Svano',
+               ru: 'Сванский', uk: 'Сванська', ar: 'السفانية', he: 'סוואנית', sw: 'Kisvani' },
+        sdh: { en: 'Southern Kurdish', ja: '南クルド語', ko: '남쿠르드어', zh: '南库尔德语', yue: '南庫爾德語',
+               vi: 'Tiếng Kurd Miền Nam', th: 'ภาษาเคิร์ดใต้', id: 'Kurdi Selatan', hi: 'दक्षिणी कुर्दी',
+               de: 'Südkurdisch', fr: 'Kurde méridional', it: 'Curdo meridionale',
+               es_eu: 'Kurdo meridional', es_mx: 'Kurdo meridional', pt_eu: 'Curdo meridional', pt_br: 'Curdo meridional',
+               ru: 'Южнокурдский', uk: 'Південнокурдська', ar: 'الكردية الجنوبية', he: 'כורדית דרומית', sw: 'Kikurdi cha Kusini' },
+        crk: { en: 'Plains Cree', ja: 'プレーンズ・クリー語', ko: '평원 크리어', zh: '平原克里语', yue: '平原克里語',
+               vi: 'Tiếng Cree Đồng Bằng', th: 'ภาษาเพลนส์ครี', id: 'Cree Dataran', hi: 'प्लेन्स क्री',
+               de: 'Plains-Cree', fr: 'Cri des Plaines', it: 'Cree delle Pianure',
+               es_eu: 'Cree de las Llanuras', es_mx: 'Cree de las Llanuras', pt_eu: 'Cree das Planícies', pt_br: 'Cree das Planícies',
+               ru: 'Равнинный кри', uk: 'Рівнинна крі', ar: 'الكرية السهلية', he: 'קרי הערבות', sw: 'Kicree cha Mwambao' },
+    };
+    for (const code of Object.keys(ADDED37)) {
+        for (const ui of Object.keys(ADDED37[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED37[code][ui];
+            }
+        }
+    }
+
+    const ADDED38 = {
+        laz: { en: 'Laz', ja: 'ラズ語', ko: '라즈어', zh: '拉兹语', yue: '拉茲語',
+               vi: 'Tiếng Laz', th: 'ภาษาลาซ', id: 'Bahasa Laz', hi: 'लाज़',
+               de: 'Lasisch', fr: 'Laze', it: 'Laz',
+               es_eu: 'Laz', es_mx: 'Laz', pt_eu: 'Laz', pt_br: 'Laz',
+               ru: 'Лазский', uk: 'Лазька', ar: 'اللازية', he: 'לאזית', sw: 'Kilaz' },
+        aii: { en: 'Assyrian Neo-Aramaic', ja: 'アッシリア新アラム語', ko: '아시리아 신아람어', zh: '亚述新阿拉米语', yue: '亞述新阿拉米語',
+               vi: 'Tiếng Aram Tân Assyria', th: 'ภาษาอราเมอิกใหม่อัสซีเรีย', id: 'Aram Neo-Asyur', hi: 'असीरियन नव-अरामी',
+               de: 'Assyrisch-Neuaramäisch', fr: 'Néo-araméen assyrien', it: 'Neoaramaico assiro',
+               es_eu: 'Neoarameo asirio', es_mx: 'Neoarameo asirio', pt_eu: 'Neoaramaico assírio', pt_br: 'Neoaramaico assírio',
+               ru: 'Ассирийский новоарамейский', uk: 'Ассирійська новоарамейська', ar: 'الآشورية الحديثة', he: 'ארמית חדשה אשורית', sw: 'Kiaramu Kipya cha Kiashuru' },
+        jaq: { en: 'Jaqaru', ja: 'ハカル語', ko: '하카루어', zh: '哈卡鲁语', yue: '哈卡魯語',
+               vi: 'Tiếng Jaqaru', th: 'ภาษาฮาการู', id: 'Bahasa Jaqaru', hi: 'जाकारू',
+               de: 'Jaqaru', fr: 'Jaqaru', it: 'Jaqaru',
+               es_eu: 'Jaqaru', es_mx: 'Jaqaru', pt_eu: 'Jaqaru', pt_br: 'Jaqaru',
+               ru: 'Хакару', uk: 'Хакару', ar: 'الجاكارو', he: 'ג׳קארו', sw: 'Kijaqaru' },
+    };
+    for (const code of Object.keys(ADDED38)) {
+        for (const ui of Object.keys(ADDED38[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED38[code][ui];
+            }
+        }
+    }
+
+    const ADDED39 = {
+        tkr: { en: 'Tsakhur', ja: 'ツァフール語', ko: '차후르어', zh: '查胡尔语', yue: '查胡爾語',
+               vi: 'Tiếng Tsakhur', th: 'ภาษาซาคูร์', id: 'Bahasa Tsakhur', hi: 'त्साखुर',
+               de: 'Tsachurisch', fr: 'Tsakhour', it: 'Tsakhur',
+               es_eu: 'Tsajur', es_mx: 'Tsajur', pt_eu: 'Tsacur', pt_br: 'Tsacur',
+               ru: 'Цахурский', uk: 'Цахурська', ar: 'التساخورية', he: 'צאחורית', sw: 'Kitsakur' },
+        kmh: { en: 'Kalam', ja: 'カラム語', ko: '칼람어', zh: '卡兰姆语', yue: '卡蘭姆語',
+               vi: 'Tiếng Kalam', th: 'ภาษากาลัม', id: 'Bahasa Kalam', hi: 'कलाम',
+               de: 'Kalam', fr: 'Kalam', it: 'Kalam',
+               es_eu: 'Kalam', es_mx: 'Kalam', pt_eu: 'Kalam', pt_br: 'Kalam',
+               ru: 'Калам', uk: 'Калам', ar: 'الكالامية', he: 'קלאם', sw: 'Kikalam' },
+        wba: { en: 'Warao', ja: 'ワラオ語', ko: '와라오어', zh: '瓦劳语', yue: '瓦勞語',
+               vi: 'Tiếng Warao', th: 'ภาษาวาราโอ', id: 'Bahasa Warao', hi: 'वाराओ',
+               de: 'Warao', fr: 'Warao', it: 'Warao',
+               es_eu: 'Warao', es_mx: 'Warao', pt_eu: 'Warao', pt_br: 'Warao',
+               ru: 'Варао', uk: 'Варао', ar: 'الواراو', he: 'ווראו', sw: 'Kiwarao' },
+    };
+    for (const code of Object.keys(ADDED39)) {
+        for (const ui of Object.keys(ADDED39[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED39[code][ui];
+            }
+        }
+    }
+
+    const ADDED40 = {
+        sjd: { en: 'Kildin Sámi', ja: 'キルディン・サーミ語', ko: '킬딘 사미어', zh: '希尔丁萨米语', yue: '希爾丁薩米語',
+               vi: 'Tiếng Sami Kildin', th: 'ภาษาซามีคิลดิน', id: 'Sami Kildin', hi: 'किल्डिन सामी',
+               de: 'Kildinsamisch', fr: 'Same de Kildin', it: 'Sami di Kildin',
+               es_eu: 'Sami de Kildin', es_mx: 'Sami de Kildin', pt_eu: 'Sami de Kildin', pt_br: 'Sami de Kildin',
+               ru: 'Кильдинский саамский', uk: 'Кільдинська саамська', ar: 'الصامي الكلديني', he: 'סאמית קילדינית', sw: 'Kisami cha Kildin' },
+        cbk: { en: 'Chavacano', ja: 'チャバカノ語', ko: '차바카노어', zh: '查瓦卡诺语', yue: '查瓦卡諾語',
+               vi: 'Tiếng Chavacano', th: 'ภาษาชาวากาโน', id: 'Bahasa Chavacano', hi: 'चावाकानो',
+               de: 'Chavacano', fr: 'Chavacano', it: 'Chavacano',
+               es_eu: 'Chabacano', es_mx: 'Chabacano', pt_eu: 'Chavacano', pt_br: 'Chavacano',
+               ru: 'Чавакано', uk: 'Чавакано', ar: 'التشافاكانو', he: 'צ׳וואקאנו', sw: 'Kichavacano' },
+        djk: { en: 'Aukan (Ndyuka)', ja: 'アウカン語', ko: '아우칸어', zh: '奥坎语', yue: '奧坎語',
+               vi: 'Tiếng Aukan', th: 'ภาษาอูคัน', id: 'Bahasa Aukan', hi: 'औकान',
+               de: 'Aukanisch', fr: 'Aukan', it: 'Aukan',
+               es_eu: 'Aukan', es_mx: 'Aukan', pt_eu: 'Aukan', pt_br: 'Aukan',
+               ru: 'Ауканский', uk: 'Ауканська', ar: 'الأوكان', he: 'אאוקאן', sw: 'Kiaukan' },
+    };
+    for (const code of Object.keys(ADDED40)) {
+        for (const ui of Object.keys(ADDED40[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED40[code][ui];
+            }
+        }
+    }
+
+    const ADDED41 = {
+        bzj: { en: 'Belize Kriol', ja: 'ベリーズ・クリオール語', ko: '벨리즈 크리올어', zh: '伯利兹克里奥尔语', yue: '伯利茲克里奧爾語',
+               vi: 'Tiếng Kriol Belize', th: 'ภาษาครีโอลเบลีซ', id: 'Kriol Belize', hi: 'बेलीज़ क्रिओल',
+               de: 'Belize-Kreol', fr: 'Créole bélizien', it: 'Creolo del Belize',
+               es_eu: 'Criollo beliceño', es_mx: 'Criollo beliceño', pt_eu: 'Crioulo belizenho', pt_br: 'Crioulo belizenho',
+               ru: 'Белизский креольский', uk: 'Белізька креольська', ar: 'الكريولية البليزية', he: 'קריאולית בליז', sw: 'Kikriol cha Belize' },
+        ude: { en: 'Udege', ja: 'ウデゲ語', ko: '우데게어', zh: '乌德盖语', yue: '烏德蓋語',
+               vi: 'Tiếng Udege', th: 'ภาษาอูเดเก', id: 'Bahasa Udege', hi: 'उडेगे',
+               de: 'Udehe', fr: 'Oudihé', it: 'Udege',
+               es_eu: 'Udege', es_mx: 'Udege', pt_eu: 'Udege', pt_br: 'Udege',
+               ru: 'Удэгейский', uk: 'Удегейська', ar: 'الأوديغية', he: 'אודגית', sw: 'Kiudege' },
+        rmf: { en: 'Finnish Romani', ja: 'フィンランド・ロマ語', ko: '핀란드 로마어', zh: '芬兰罗姆语', yue: '芬蘭羅姆語',
+               vi: 'Tiếng Romani Phần Lan', th: 'ภาษาโรมานีฟินแลนด์', id: 'Romani Finlandia', hi: 'फिनिश रोमानी',
+               de: 'Finnisches Romani', fr: 'Romani finlandais', it: 'Romaní finlandese',
+               es_eu: 'Romaní finés', es_mx: 'Romaní finés', pt_eu: 'Romani finlandês', pt_br: 'Romani finlandês',
+               ru: 'Финский цыганский', uk: 'Фінська циганська', ar: 'الغجرية الفنلندية', he: 'רומאני פיני', sw: 'Kiromani cha Kifini' },
+    };
+    for (const code of Object.keys(ADDED41)) {
+        for (const ui of Object.keys(ADDED41[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED41[code][ui];
+            }
+        }
+    }
+
+    const ADDED42 = {
+        rwk: { en: 'Rwa', ja: 'ルワ語', ko: '르와어', zh: '卢瓦语', yue: '盧瓦語',
+               vi: 'Tiếng Rwa', th: 'ภาษารวา', id: 'Bahasa Rwa', hi: 'रवा',
+               de: 'Rwa', fr: 'Rwa', it: 'Rwa',
+               es_eu: 'Rwa', es_mx: 'Rwa', pt_eu: 'Rwa', pt_br: 'Rwa',
+               ru: 'Рва', uk: 'Рва', ar: 'الروا', he: 'רווה', sw: 'Kirwa' },
+        sel: { en: 'Selkup', ja: 'セリクプ語', ko: '셀쿠프어', zh: '塞尔库普语', yue: '塞爾庫普語',
+               vi: 'Tiếng Selkup', th: 'ภาษาเซลคุป', id: 'Bahasa Selkup', hi: 'सेल्कुप',
+               de: 'Selkupisch', fr: 'Selkoupe', it: 'Selkup',
+               es_eu: 'Selkup', es_mx: 'Selkup', pt_eu: 'Selkup', pt_br: 'Selkup',
+               ru: 'Селькупский', uk: 'Селькупська', ar: 'السلكوبية', he: 'סלקופית', sw: 'Kiselkup' },
+        yur: { en: 'Yurok', ja: 'ユロク語', ko: '유록어', zh: '尤罗克语', yue: '尤羅克語',
+               vi: 'Tiếng Yurok', th: 'ภาษายูร็อก', id: 'Bahasa Yurok', hi: 'युरोक',
+               de: 'Yurok', fr: 'Yurok', it: 'Yurok',
+               es_eu: 'Yurok', es_mx: 'Yurok', pt_eu: 'Yurok', pt_br: 'Yurok',
+               ru: 'Юрок', uk: 'Юрок', ar: 'اليوروك', he: 'יורוק', sw: 'Kiyurok' },
+    };
+    for (const code of Object.keys(ADDED42)) {
+        for (const ui of Object.keys(ADDED42[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED42[code][ui];
+            }
+        }
+    }
+
+    const ADDED43 = {
+        kxc: { en: 'Konso', ja: 'コンソ語', ko: '콘소어', zh: '孔索语', yue: '孔索語',
+               vi: 'Tiếng Konso', th: 'ภาษาคอนโซ', id: 'Bahasa Konso', hi: 'कोंसो',
+               de: 'Konso', fr: 'Konso', it: 'Konso',
+               es_eu: 'Konso', es_mx: 'Konso', pt_eu: 'Konso', pt_br: 'Konso',
+               ru: 'Консо', uk: 'Консо', ar: 'الكونسو', he: 'קונסו', sw: 'Kikonso' },
+        ess: { en: 'Central Siberian Yupik', ja: '中央シベリア・ユピック語', ko: '중앙 시베리아 유픽어', zh: '中西伯利亚尤皮克语', yue: '中西伯利亞尤皮克語',
+               vi: 'Tiếng Yupik Trung Siberia', th: 'ภาษายูปิกไซบีเรียกลาง', id: 'Yupik Siberia Tengah', hi: 'मध्य साइबेरियाई युपिक',
+               de: 'Zentralsibirisches Yupik', fr: 'Youpik de Sibérie centrale', it: 'Yupik della Siberia centrale',
+               es_eu: 'Yupik de Siberia central', es_mx: 'Yupik de Siberia central', pt_eu: 'Iúpique da Sibéria central', pt_br: 'Iúpique da Sibéria central',
+               ru: 'Центральносибирский юпикский', uk: 'Центральносибірська юпіцька', ar: 'اليوبيكية السيبيرية الوسطى', he: 'יופיק סיבירי מרכזי', sw: 'Kiyupik cha Siberia ya Kati' },
+        srm: { en: 'Saramaccan', ja: 'サラマッカ語', ko: '사라마카어', zh: '萨拉马卡语', yue: '薩拉馬卡語',
+               vi: 'Tiếng Saramaca', th: 'ภาษาซารามักกัน', id: 'Bahasa Saramaccan', hi: 'सरमक्कन',
+               de: 'Saramaccan', fr: 'Saramaca', it: 'Saramaccano',
+               es_eu: 'Saramacano', es_mx: 'Saramacano', pt_eu: 'Saramacano', pt_br: 'Saramacano',
+               ru: 'Сарамаккский', uk: 'Сарамакканська', ar: 'السرامكانية', he: 'סרמקנית', sw: 'Kisaramakkani' },
+    };
+    for (const code of Object.keys(ADDED43)) {
+        for (const ui of Object.keys(ADDED43[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED43[code][ui];
+            }
+        }
+    }
+
+    const ADDED44 = {
+        sjo: { en: 'Xibe', ja: 'シボ語', ko: '시보어', zh: '锡伯语', yue: '錫伯語',
+               vi: 'Tiếng Tích Bá', th: 'ภาษาซีเป่อ', id: 'Bahasa Xibe', hi: 'शिबे',
+               de: 'Sibo', fr: 'Sibe', it: 'Sibe',
+               es_eu: 'Sibe', es_mx: 'Sibe', pt_eu: 'Sibe', pt_br: 'Sibe',
+               ru: 'Сибинский', uk: 'Сибінська', ar: 'الشيبية', he: 'שיבית', sw: 'Kixibe' },
+        atj: { en: 'Atikamekw', ja: 'アティカメク語', ko: '아티카멕어', zh: '阿蒂卡梅克语', yue: '阿蒂卡梅克語',
+               vi: 'Tiếng Atikamekw', th: 'ภาษาอาทิคาเมก', id: 'Bahasa Atikamekw', hi: 'अतिकामेक्व',
+               de: 'Atikamekw', fr: 'Atikamekw', it: 'Atikamekw',
+               es_eu: 'Atikamekw', es_mx: 'Atikamekw', pt_eu: 'Atikamekw', pt_br: 'Atikamekw',
+               ru: 'Атикамеки', uk: 'Атикамек', ar: 'الأتيكامكوية', he: 'אטיקמקווית', sw: 'Kiatikamekw' },
+        bsq: { en: 'Bassa', ja: 'バサ語', ko: '바사어', zh: '巴萨语', yue: '巴薩語',
+               vi: 'Tiếng Bassa', th: 'ภาษาบาซา', id: 'Bahasa Bassa', hi: 'बासा',
+               de: 'Bassa', fr: 'Bassa', it: 'Bassa',
+               es_eu: 'Bassa', es_mx: 'Bassa', pt_eu: 'Bassa', pt_br: 'Bassa',
+               ru: 'Басса', uk: 'Басса', ar: 'الباسا', he: 'בסה', sw: 'Kibassa' },
+    };
+    for (const code of Object.keys(ADDED44)) {
+        for (const ui of Object.keys(ADDED44[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED44[code][ui];
+            }
+        }
+    }
+
+    const ADDED45 = {
+        srr: { en: 'Serer', ja: 'セレル語', ko: '세레르어', zh: '塞雷尔语', yue: '塞雷爾語',
+               vi: 'Tiếng Serer', th: 'ภาษาเซเรอร์', id: 'Bahasa Serer', hi: 'सेरेर',
+               de: 'Serer', fr: 'Sérère', it: 'Serer',
+               es_eu: 'Serer', es_mx: 'Serer', pt_eu: 'Serer', pt_br: 'Serer',
+               ru: 'Серер', uk: 'Серер', ar: 'السيريرية', he: 'סרר', sw: 'Kiserer' },
+        abq: { en: 'Abaza', ja: 'アバザ語', ko: '아바자어', zh: '阿巴扎语', yue: '阿巴扎語',
+               vi: 'Tiếng Abaza', th: 'ภาษาอาบาซา', id: 'Bahasa Abaza', hi: 'अबाज़ा',
+               de: 'Abasinisch', fr: 'Abaza', it: 'Abaza',
+               es_eu: 'Abasino', es_mx: 'Abasino', pt_eu: 'Abazá', pt_br: 'Abazá',
+               ru: 'Абазинский', uk: 'Абазинська', ar: 'الأباظية', he: 'אבזה', sw: 'Kiabaza' },
+        agr: { en: 'Aguaruna', ja: 'アグアルナ語', ko: '아구아루나어', zh: '阿瓜鲁纳语', yue: '阿瓜魯納語',
+               vi: 'Tiếng Aguaruna', th: 'ภาษาอกัวรูนา', id: 'Bahasa Aguaruna', hi: 'अगुआरुना',
+               de: 'Aguaruna', fr: 'Aguaruna', it: 'Aguaruna',
+               es_eu: 'Aguaruna', es_mx: 'Aguaruna', pt_eu: 'Aguaruna', pt_br: 'Aguaruna',
+               ru: 'Агуаруна', uk: 'Агуаруна', ar: 'الأغوارونا', he: 'אגוארונה', sw: 'Kiawajun' },
+    };
+    for (const code of Object.keys(ADDED45)) {
+        for (const ui of Object.keys(ADDED45[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED45[code][ui];
+            }
+        }
+    }
+
+    const ADDED46 = {
+        yux: { en: 'Kolyma Yukaghir', ja: 'コリマ・ユカギール語', ko: '콜리마 유카기르어', zh: '科雷马尤卡吉尔语', yue: '科雷馬尤卡吉爾語',
+               vi: 'Tiếng Yukaghir Kolyma', th: 'ภาษายูคากีร์โคลีมา', id: 'Yukaghir Kolyma', hi: 'कोलिमा युकाघिर',
+               de: 'Kolyma-Jukagirisch', fr: 'Youkaghir de Kolyma', it: 'Yucaghir di Kolyma',
+               es_eu: 'Yukaghir de Kolimá', es_mx: 'Yukaghir de Kolimá', pt_eu: 'Iucaguir de Kolyma', pt_br: 'Iucaguir de Kolyma',
+               ru: 'Колымский юкагирский', uk: 'Колимська юкагірська', ar: 'اليوكاجيرية كوليمية', he: 'יוקגירית קולימה', sw: 'Kiyukaghir cha Kolyma' },
+        acu: { en: 'Achuar', ja: 'アチュアル語', ko: '아추아르어', zh: '阿丘阿尔语', yue: '阿丘阿爾語',
+               vi: 'Tiếng Achuar', th: 'ภาษาอาชัวร์', id: 'Bahasa Achuar', hi: 'आचुआर',
+               de: 'Achuar', fr: 'Achuar', it: 'Achuar',
+               es_eu: 'Achuar', es_mx: 'Achuar', pt_eu: 'Achuar', pt_br: 'Achuar',
+               ru: 'Ачуар', uk: 'Ачуар', ar: 'الأتشوار', he: 'אצ׳ואר', sw: 'Kiachuar' },
+        akb: { en: 'Batak Angkola', ja: 'バタック・アンコラ語', ko: '바타크 앙골라어', zh: '巴塔克安戈拉语', yue: '巴塔克安戈拉語',
+               vi: 'Tiếng Batak Angkola', th: 'ภาษาบาตัคอังโกลา', id: 'Bahasa Batak Angkola', hi: 'बाटक अंगकोला',
+               de: 'Angkola-Batak', fr: 'Batak angkola', it: 'Batak angkola',
+               es_eu: 'Batak angkola', es_mx: 'Batak angkola', pt_eu: 'Batak angkola', pt_br: 'Batak angkola',
+               ru: 'Батак-Ангкола', uk: 'Батак-Ангкола', ar: 'الباتاك الأنغكولا', he: 'בטק אנגקולה', sw: 'Kibatak cha Angkola' },
+    };
+    for (const code of Object.keys(ADDED46)) {
+        for (const ui of Object.keys(ADDED46[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED46[code][ui];
+            }
+        }
+    }
+
+    const ADDED47 = {
+        saq: { en: 'Samburu', ja: 'サンブル語', ko: '삼부루어', zh: '桑布鲁语', yue: '桑布魯語',
+               vi: 'Tiếng Samburu', th: 'ภาษาซัมบูรู', id: 'Bahasa Samburu', hi: 'साम्बुरू',
+               de: 'Samburu', fr: 'Samburu', it: 'Samburu',
+               es_eu: 'Samburu', es_mx: 'Samburu', pt_eu: 'Samburu', pt_br: 'Samburu',
+               ru: 'Самбуру', uk: 'Самбуру', ar: 'السامبورو', he: 'סמבורו', sw: 'Kisamburu' },
+        dsh: { en: 'Daasanach', ja: 'ダーサナック語', ko: '다사나치어', zh: '达萨纳奇语', yue: '達薩納奇語',
+               vi: 'Tiếng Daasanach', th: 'ภาษาดาซานาช', id: 'Bahasa Daasanach', hi: 'दासनाच',
+               de: 'Daasanach', fr: 'Daasanach', it: 'Daasanach',
+               es_eu: 'Daasanach', es_mx: 'Daasanach', pt_eu: 'Daasanach', pt_br: 'Daasanach',
+               ru: 'Дасанач', uk: 'Дасанач', ar: 'الدسناخية', he: 'דסנך', sw: 'Kidasanach' },
+        kao: { en: 'Xaasongaxango', ja: 'カソンケ語', ko: '카손케어', zh: '卡松凯语', yue: '卡松凱語',
+               vi: 'Tiếng Khassonké', th: 'ภาษาคาซอนเก', id: 'Bahasa Khassonké', hi: 'खासोंके',
+               de: 'Khassonké', fr: 'Khassonké', it: 'Khassonké',
+               es_eu: 'Khassonké', es_mx: 'Khassonké', pt_eu: 'Khassonké', pt_br: 'Khassonké',
+               ru: 'Хасонке', uk: 'Хасонке', ar: 'الخاسونكة', he: 'חסונקה', sw: 'Kikhassonke' },
+    };
+    for (const code of Object.keys(ADDED47)) {
+        for (const ui of Object.keys(ADDED47[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED47[code][ui];
+            }
+        }
+    }
+
+    const ADDED48 = {
+        xed: { en: 'Hdi', ja: 'ヒディ語', ko: '흐디어', zh: '赫迪语', yue: '赫迪語',
+               vi: 'Tiếng Hdi', th: 'ภาษาฮดี', id: 'Bahasa Hdi', hi: 'हदी',
+               de: 'Hdi', fr: 'Hdi', it: 'Hdi',
+               es_eu: 'Hdi', es_mx: 'Hdi', pt_eu: 'Hdi', pt_br: 'Hdi',
+               ru: 'Хди', uk: 'Хді', ar: 'الهدية', he: 'הדי', sw: 'Kihdi' },
+        bzh: { en: 'Mapos Buang', ja: 'マポス・ブアン語', ko: '마포스 부앙어', zh: '马波斯布昂语', yue: '馬波斯布昂語',
+               vi: 'Tiếng Mapos Buang', th: 'ภาษามาโพสบวง', id: 'Bahasa Mapos Buang', hi: 'मापोस बुआंग',
+               de: 'Mapos-Buang', fr: 'Buang de Mapos', it: 'Buang di Mapos',
+               es_eu: 'Buang de Mapos', es_mx: 'Buang de Mapos', pt_eu: 'Buang de Mapos', pt_br: 'Buang de Mapos',
+               ru: 'Мапос-буанг', uk: 'Мапос-буанг', ar: 'بوانج مابوس', he: 'בואנג מאפוס', sw: 'Kibuang cha Mapos' },
+        pqm: { en: 'Maliseet-Passamaquoddy', ja: 'マリシート＝パッサマクオディ語', ko: '말리싯-파사마쿼디어', zh: '马利赛特-帕萨马夸迪语', yue: '馬利賽特-帕薩馬夸迪語',
+               vi: 'Tiếng Maliseet-Passamaquoddy', th: 'ภาษามาลีซีท-พาสซามาควอดดี', id: 'Maliseet-Passamaquoddy', hi: 'मलिसीट-पसमक्वोडी',
+               de: 'Maliseet-Passamaquoddy', fr: 'Malécite-Passamaquoddy', it: 'Maliseet-Passamaquoddy',
+               es_eu: 'Maliseet-Passamaquoddy', es_mx: 'Maliseet-Passamaquoddy', pt_eu: 'Maliseet-Passamaquoddy', pt_br: 'Maliseet-Passamaquoddy',
+               ru: 'Малисет-пассамакуодди', uk: 'Малісет-пассамакводді', ar: 'الماليسيت-البساماكودي', he: 'מליסט-פסמקווודי', sw: 'Kimaliseet-Passamaquoddy' },
+    };
+    for (const code of Object.keys(ADDED48)) {
+        for (const ui of Object.keys(ADDED48[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED48[code][ui];
+            }
+        }
+    }
+
+    const ADDED49 = {
+        kpy: { en: 'Koryak', ja: 'コリャーク語', ko: '코랴크어', zh: '科里亚克语', yue: '科里亞克語',
+               vi: 'Tiếng Koryak', th: 'ภาษาคอร์ยัค', id: 'Bahasa Koryak', hi: 'कोर्याक',
+               de: 'Korjakisch', fr: 'Koriak', it: 'Coriaco',
+               es_eu: 'Koriaco', es_mx: 'Koriaco', pt_eu: 'Coriaque', pt_br: 'Coriaque',
+               ru: 'Корякский', uk: 'Коряцька', ar: 'الكورياكية', he: 'קוריאקית', sw: 'Kikoryak' },
+        nha: { en: 'Nhanda', ja: 'ナンダ語', ko: '난다어', zh: '恩汉达语', yue: '恩漢達語',
+               vi: 'Tiếng Nhanda', th: 'ภาษาเอ็นฮันดา', id: 'Bahasa Nhanda', hi: 'न्हाण्डा',
+               de: 'Nhanda', fr: 'Nhanda', it: 'Nhanda',
+               es_eu: 'Nhanda', es_mx: 'Nhanda', pt_eu: 'Nhanda', pt_br: 'Nhanda',
+               ru: 'Нанда', uk: 'Нанда', ar: 'النهاندا', he: 'נהאנדה', sw: 'Kinhanda' },
+        azo: { en: 'Azhe', ja: 'アジェ語', ko: '아제어', zh: '阿哲语', yue: '阿哲語',
+               vi: 'Tiếng Azhe', th: 'ภาษาอาเซ๋อ', id: 'Bahasa Azhe', hi: 'अझे',
+               de: 'Azhe', fr: 'Azhe', it: 'Azhe',
+               es_eu: 'Azhe', es_mx: 'Azhe', pt_eu: 'Azhe', pt_br: 'Azhe',
+               ru: 'Аже', uk: 'Аже', ar: 'الأزهية', he: 'אז׳ה', sw: 'Kiazhe' },
+    };
+    for (const code of Object.keys(ADDED49)) {
+        for (const ui of Object.keys(ADDED49[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED49[code][ui];
+            }
+        }
+    }
+
+    const ADDED50 = {
+        kio: { en: 'Kiowa', ja: 'カイオワ語', ko: '키오와어', zh: '凯欧瓦语', yue: '凱歐瓦語',
+               vi: 'Tiếng Kiowa', th: 'ภาษาไคโอวา', id: 'Bahasa Kiowa', hi: 'कायोवा',
+               de: 'Kiowa', fr: 'Kiowa', it: 'Kiowa',
+               es_eu: 'Kiowa', es_mx: 'Kiowa', pt_eu: 'Kiowa', pt_br: 'Kiowa',
+               ru: 'Кайова', uk: 'Кайова', ar: 'الكايوا', he: 'קיובה', sw: 'Kikiowa' },
+        xtm: { en: 'Mixtepec Mixtec', ja: 'ミクステペック・ミクステコ語', ko: '믹스테펙 믹스테코어', zh: '米斯特佩克米斯特克语', yue: '米斯特佩克米斯特克語',
+               vi: 'Tiếng Mixtec Mixtepec', th: 'ภาษามิกซ์เตเปกมิกซ์เตค', id: 'Mixtec Mixtepec', hi: 'मिक्सटेपेक मिक्सटेक',
+               de: 'Mixtepec-Mixteco', fr: 'Mixtèque de Mixtepec', it: 'Mixteco di Mixtepec',
+               es_eu: 'Mixteco de Mixtepec', es_mx: 'Mixteco de Mixtepec', pt_eu: 'Mixteco de Mixtepec', pt_br: 'Mixteco de Mixtepec',
+               ru: 'Мистепек-миштекский', uk: 'Мікстепек-міштекська', ar: 'الميشتيكية ميشتبيك', he: 'מישטק מיקסטפק', sw: 'Kimixtec cha Mixtepec' },
+        bbo: { en: 'Konabéré', ja: 'コナベレ語', ko: '코나베레어', zh: '科纳贝雷语', yue: '科納貝雷語',
+               vi: 'Tiếng Konabéré', th: 'ภาษาโคนาเบเร', id: 'Bahasa Konabéré', hi: 'कोनाबेरे',
+               de: 'Konabéré', fr: 'Konabéré', it: 'Konabéré',
+               es_eu: 'Konabéré', es_mx: 'Konabéré', pt_eu: 'Konabéré', pt_br: 'Konabéré',
+               ru: 'Конабере', uk: 'Конабере', ar: 'الكوناباري', he: 'קונאברה', sw: 'Kikonabere' },
+    };
+    for (const code of Object.keys(ADDED50)) {
+        for (const ui of Object.keys(ADDED50[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED50[code][ui];
+            }
+        }
+    }
+
+    const ADDED51 = {
+        prg: { en: 'Old Prussian', ja: '古プロイセン語', ko: '고대 프로이센어', zh: '古普鲁士语', yue: '古普魯士語',
+               vi: 'Tiếng Phổ cổ', th: 'ภาษาปรัสเซียโบราณ', id: 'Bahasa Prusia Kuno', hi: 'पुरानी प्रशियाई',
+               de: 'Altpreußisch', fr: 'Vieux-prussien', it: 'Antico prussiano',
+               es_eu: 'Antiguo prusiano', es_mx: 'Antiguo prusiano', pt_eu: 'Antigo prussiano', pt_br: 'Antigo prussiano',
+               ru: 'Прусский', uk: 'Прусська', ar: 'البروسية القديمة', he: 'פרוסית עתיקה', sw: 'Kiprussia cha Kale' },
+        aqc: { en: 'Archi', ja: 'アルチ語', ko: '아르치어', zh: '阿尔奇语', yue: '阿爾奇語',
+               vi: 'Tiếng Archi', th: 'ภาษาอาร์ชี', id: 'Bahasa Archi', hi: 'आर्ची',
+               de: 'Archi', fr: 'Artchi', it: 'Archi',
+               es_eu: 'Archi', es_mx: 'Archi', pt_eu: 'Archi', pt_br: 'Archi',
+               ru: 'Арчинский', uk: 'Арчинська', ar: 'الأرشية', he: 'ארצ׳י', sw: 'Kiarchi' },
+        adt: { en: 'Adnyamathanha', ja: 'アドニャマザンハ語', ko: '아드니아마탄하어', zh: '阿德尼亚玛塔哈语', yue: '阿德尼亞瑪塔哈語',
+               vi: 'Tiếng Adnyamathanha', th: 'ภาษาแอดเนียมาทันฮา', id: 'Bahasa Adnyamathanha', hi: 'अद्न्यमथन्हा',
+               de: 'Adnyamathanha', fr: 'Adnyamathanha', it: 'Adnyamathanha',
+               es_eu: 'Adnyamathanha', es_mx: 'Adnyamathanha', pt_eu: 'Adnyamathanha', pt_br: 'Adnyamathanha',
+               ru: 'Аднямаятанха', uk: 'Аднямаятанха', ar: 'الأدنياماتانها', he: 'אדנימתנהה', sw: 'Kiadnyamathanha' },
+    };
+    for (const code of Object.keys(ADDED51)) {
+        for (const ui of Object.keys(ADDED51[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED51[code][ui];
+            }
+        }
+    }
+
+    const ADDED52 = {
+        bft: { en: 'Balti', ja: 'バルティ語', ko: '발티어', zh: '巴尔蒂语', yue: '巴爾蒂語',
+               vi: 'Tiếng Balti', th: 'ภาษาบัลติ', id: 'Bahasa Balti', hi: 'बल्ती',
+               de: 'Balti', fr: 'Balti', it: 'Balti',
+               es_eu: 'Baltí', es_mx: 'Baltí', pt_eu: 'Balti', pt_br: 'Balti',
+               ru: 'Балти', uk: 'Балті', ar: 'البلطية', he: 'בלטית', sw: 'Kibalti' },
+        mwk: { en: 'Kita Maninkakan', ja: 'キタ・マニンカ語', ko: '키타 마닌카어', zh: '基塔曼宁卡语', yue: '基塔曼寧卡語',
+               vi: 'Tiếng Maninkakan Kita', th: 'ภาษามานินกาคันคิตา', id: 'Maninkakan Kita', hi: 'किता मानिनकाकान',
+               de: 'Kita-Maninkakan', fr: 'Kita maninkakan', it: 'Maninkakan di Kita',
+               es_eu: 'Maninkakan de Kita', es_mx: 'Maninkakan de Kita', pt_eu: 'Maninkakan de Kita', pt_br: 'Maninkakan de Kita',
+               ru: 'Кита-манинкакан', uk: 'Кіта-манінкакан', ar: 'المانينكاكان كيتا', he: 'מנינקקאן קיטה', sw: 'Kimaninkakan cha Kita' },
+        nys: { en: 'Noongar', ja: 'ヌンガル語', ko: '눈가르어', zh: '努恩格语', yue: '努恩格語',
+               vi: 'Tiếng Noongar', th: 'ภาษานูงการ์', id: 'Bahasa Noongar', hi: 'नूंगार',
+               de: 'Noongar', fr: 'Noongar', it: 'Noongar',
+               es_eu: 'Noongar', es_mx: 'Noongar', pt_eu: 'Noongar', pt_br: 'Noongar',
+               ru: 'Нунгар', uk: 'Нунгар', ar: 'النوونغار', he: 'נונגר', sw: 'Kinoongar' },
+    };
+    for (const code of Object.keys(ADDED52)) {
+        for (const ui of Object.keys(ADDED52[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED52[code][ui];
+            }
+        }
+    }
+
+    const ADDED53 = {
+        ang: { en: 'Old English', ja: '古英語', ko: '고대 영어', zh: '古英语', yue: '古英語',
+               vi: 'Tiếng Anh cổ', th: 'ภาษาอังกฤษโบราณ', id: 'Bahasa Inggris Kuno', hi: 'पुरानी अंग्रेज़ी',
+               de: 'Altenglisch', fr: 'Vieil anglais', it: 'Anglosassone',
+               es_eu: 'Inglés antiguo', es_mx: 'Inglés antiguo', pt_eu: 'Inglês antigo', pt_br: 'Inglês antigo',
+               ru: 'Древнеанглийский', uk: 'Давньоанглійська', ar: 'الإنجليزية القديمة', he: 'אנגלית עתיקה', sw: 'Kiingereza cha Kale' },
+        rgn: { en: 'Romagnol', ja: 'ロマーニョ語', ko: '로마뇰어', zh: '罗马涅语', yue: '羅馬涅語',
+               vi: 'Tiếng Romagnol', th: 'ภาษาโรมัญญอล', id: 'Bahasa Romagnol', hi: 'रोमान्योल',
+               de: 'Romagnolisch', fr: 'Romagnol', it: 'Romagnolo',
+               es_eu: 'Romañol', es_mx: 'Romañol', pt_eu: 'Romanholo', pt_br: 'Romanholo',
+               ru: 'Романьольский', uk: 'Романьольська', ar: 'الرومانية', he: 'רומאניולית', sw: 'Kiromagnol' },
+        ina: { en: 'Interlingua', ja: 'インテルリングア語', ko: '인터링구아어', zh: '国际语', yue: '國際語',
+               vi: 'Interlingua', th: 'ภาษาอินเตอร์ลิงกัว', id: 'Bahasa Interlingua', hi: 'इंटरलिंगुआ',
+               de: 'Interlingua', fr: 'Interlingua', it: 'Interlingua',
+               es_eu: 'Interlingua', es_mx: 'Interlingua', pt_eu: 'Interlingua', pt_br: 'Interlingua',
+               ru: 'Интерлингва', uk: 'Інтерлінгва', ar: 'الإنترلينغوا', he: 'אינטרלינגואה', sw: 'Interlingua' },
+    };
+    for (const code of Object.keys(ADDED53)) {
+        for (const ui of Object.keys(ADDED53[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED53[code][ui];
+            }
+        }
+    }
+
+    const ADDED54 = {
+        ohu: { en: 'Old Hungarian', ja: '古ハンガリー語', ko: '고대 헝가리어', zh: '古匈牙利语', yue: '古匈牙利語',
+               vi: 'Tiếng Hungary cổ', th: 'ภาษาฮังการีโบราณ', id: 'Bahasa Hungaria Kuno', hi: 'पुरानी हंगेरियन',
+               de: 'Altungarisch', fr: 'Vieux hongrois', it: 'Antico ungherese',
+               es_eu: 'Húngaro antiguo', es_mx: 'Húngaro antiguo', pt_eu: 'Húngaro antigo', pt_br: 'Húngaro antigo',
+               ru: 'Древневенгерский', uk: 'Давньоугорська', ar: 'الهنغارية القديمة', he: 'הונגרית עתיקה', sw: 'Kihungari cha Kale' },
+        egl: { en: 'Emilian', ja: 'エミリア語', ko: '에밀리아어', zh: '艾米利亚语', yue: '艾米利亞語',
+               vi: 'Tiếng Emilia', th: 'ภาษาเอมีเลีย', id: 'Bahasa Emilian', hi: 'एमिलियन',
+               de: 'Emilianisch', fr: 'Émilien', it: 'Emiliano',
+               es_eu: 'Emiliano', es_mx: 'Emiliano', pt_eu: 'Emiliano', pt_br: 'Emiliano',
+               ru: 'Эмильянский', uk: 'Емільянська', ar: 'الإميلية', he: 'אמיליאנית', sw: 'Kiemiliani' },
+        fla: { en: 'Fala', ja: 'ファラ語', ko: '파라어', zh: '法拉语', yue: '法拉語',
+               vi: 'Tiếng Fala', th: 'ภาษาฟาลา', id: 'Bahasa Fala', hi: 'फला',
+               de: 'Fala', fr: 'Fala', it: 'Fala',
+               es_eu: 'Fala', es_mx: 'Fala', pt_eu: 'Fala', pt_br: 'Fala',
+               ru: 'Фала', uk: 'Фала', ar: 'الفالا', he: 'פאלה', sw: 'Kifala' },
+    };
+    for (const code of Object.keys(ADDED54)) {
+        for (const ui of Object.keys(ADDED54[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED54[code][ui];
+            }
+        }
+    }
+
+    const ADDED55 = {
+        ruq: { en: 'Megleno-Romanian', ja: 'メグレノ・ルーマニア語', ko: '메글레노-루마니아어', zh: '梅格莱诺-罗马尼亚语', yue: '梅格萊諾-羅馬尼亞語',
+               vi: 'Tiếng România Megleno', th: 'ภาษาเมเกลโน-โรมาเนีย', id: 'Bahasa Megleno-Rumania', hi: 'मेग्लेनो-रोमानियाई',
+               de: 'Meglenorumänisch', fr: 'Méglénoroumain', it: 'Megleno-romeno',
+               es_eu: 'Meglenorrumano', es_mx: 'Meglenorrumano', pt_eu: 'Meglenorromeno', pt_br: 'Meglenorromeno',
+               ru: 'Мегленорумынский', uk: 'Мегленорумунська', ar: 'الميغلينو-رومانية', he: 'מגלנו-רומנית', sw: 'Kiromania cha Megleno' },
+        nhx: { en: 'Isthmus Nahuatl', ja: 'イスムス・ナワトル語', ko: '이스무스 나우아틀어', zh: '伊斯穆斯纳瓦特尔语', yue: '伊斯穆斯納瓦特爾語',
+               vi: 'Tiếng Nahuatl Eo Đất', th: 'ภาษานาวาตล์อิสมุส', id: 'Nahuatl Tanah Genting', hi: 'इस्थमस नहुआतल',
+               de: 'Isthmus-Nahuatl', fr: 'Nahuatl de l\\'isthme', it: 'Nahuatl dell\\'istmo',
+               es_eu: 'Náhuatl del Istmo', es_mx: 'Náhuatl del Istmo', pt_eu: 'Nauatle do Istmo', pt_br: 'Nauatle do Istmo',
+               ru: 'Истмус-науатль', uk: 'Істмус-науатль', ar: 'النواتل البرزخية', he: 'נאוואטל מצרי', sw: 'Kinahuatl cha Istmo' },
+        dge: { en: 'Degema', ja: 'デゲマ語', ko: '데게마어', zh: '德格马语', yue: '德格馬語',
+               vi: 'Tiếng Degema', th: 'ภาษาดีเกมา', id: 'Bahasa Degema', hi: 'देगेमा',
+               de: 'Degema', fr: 'Dégéma', it: 'Degema',
+               es_eu: 'Degema', es_mx: 'Degema', pt_eu: 'Degema', pt_br: 'Degema',
+               ru: 'Дегема', uk: 'Дегема', ar: 'الدجيمة', he: 'דגמה', sw: 'Kidegema' },
+    };
+    for (const code of Object.keys(ADDED55)) {
+        for (const ui of Object.keys(ADDED55[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED55[code][ui];
+            }
+        }
+    }
+
+    const ADDED56 = {
+        ker: { en: 'Kera', ja: 'ケラ語', ko: '케라어', zh: '凯拉语', yue: '凱拉語',
+               vi: 'Tiếng Kera', th: 'ภาษาเคระ', id: 'Bahasa Kera', hi: 'केरा',
+               de: 'Kera', fr: 'Kera', it: 'Kera',
+               es_eu: 'Kera', es_mx: 'Kera', pt_eu: 'Kera', pt_br: 'Kera',
+               ru: 'Кера', uk: 'Кера', ar: 'الكيرا', he: 'קרה', sw: 'Kikera' },
+        dbq: { en: 'Daba', ja: 'ダバ語', ko: '다바어', zh: '达巴语', yue: '達巴語',
+               vi: 'Tiếng Daba', th: 'ภาษาดาบา', id: 'Bahasa Daba', hi: 'दाबा',
+               de: 'Daba', fr: 'Daba', it: 'Daba',
+               es_eu: 'Daba', es_mx: 'Daba', pt_eu: 'Daba', pt_br: 'Daba',
+               ru: 'Даба', uk: 'Даба', ar: 'الدابا', he: 'דאבה', sw: 'Kidaba' },
+        nzm: { en: 'Zeme Naga', ja: 'ゼメ・ナガ語', ko: '제메 나가어', zh: '泽米那加语', yue: '澤米那加語',
+               vi: 'Tiếng Naga Zeme', th: 'ภาษาเซเมนากา', id: 'Naga Zeme', hi: 'जेमे नागा',
+               de: 'Zeme-Naga', fr: 'Zeme naga', it: 'Zeme naga',
+               es_eu: 'Zeme naga', es_mx: 'Zeme naga', pt_eu: 'Zeme naga', pt_br: 'Zeme naga',
+               ru: 'Земе нага', uk: 'Земе-нага', ar: 'النجاوية الزيمة', he: 'נגה זמה', sw: 'Kinaga cha Zeme' },
+    };
+    for (const code of Object.keys(ADDED56)) {
+        for (const ui of Object.keys(ADDED56[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED56[code][ui];
+            }
+        }
+    }
+
+    const ADDED57 = {
+        cms: { en: 'Messapic', ja: 'メッサピア語', ko: '메사프어', zh: '梅萨皮语', yue: '梅薩皮語',
+               vi: 'Tiếng Messap', th: 'ภาษาเมสซาปิก', id: 'Bahasa Mesapik', hi: 'मेसापिक',
+               de: 'Messapisch', fr: 'Messapien', it: 'Messapico',
+               es_eu: 'Mesápico', es_mx: 'Mesápico', pt_eu: 'Messápico', pt_br: 'Messápico',
+               ru: 'Мессапский', uk: 'Мессапська', ar: 'الميسابية', he: 'מסאפית', sw: 'Kimesapi' },
+        xul: { en: 'Ngunnawal', ja: 'ングンナワル語', ko: '응군나왈어', zh: '恩贡纳沃语', yue: '恩貢納沃語',
+               vi: 'Tiếng Ngunnawal', th: 'ภาษางันนาวัล', id: 'Bahasa Ngunnawal', hi: 'गुनावल',
+               de: 'Ngunnawal', fr: 'Ngunnawal', it: 'Ngunnawal',
+               es_eu: 'Ngunnawal', es_mx: 'Ngunnawal', pt_eu: 'Ngunnawal', pt_br: 'Ngunnawal',
+               ru: 'Нгуннавал', uk: 'Нгуннавал', ar: 'النغوناوال', he: 'נגונוואל', sw: 'Kingunnawal' },
+        soa: { en: 'Thai Song', ja: 'タイ・ソング語', ko: '타이 송어', zh: '泰松语', yue: '泰松語',
+               vi: 'Tiếng Thái Song', th: 'ภาษาไทยซง', id: 'Bahasa Thai Song', hi: 'थाई सोंग',
+               de: 'Thai Song', fr: 'Thaï song', it: 'Thai song',
+               es_eu: 'Tai song', es_mx: 'Tai song', pt_eu: 'Tai song', pt_br: 'Tai song',
+               ru: 'Тай-сонг', uk: 'Тай-сонг', ar: 'التايسونغية', he: 'תאי סונג', sw: 'Kithai cha Song' },
+    };
+    for (const code of Object.keys(ADDED57)) {
+        for (const ui of Object.keys(ADDED57[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED57[code][ui];
+            }
+        }
+    }
+
+    const ADDED58 = {
+        kau: { en: 'Kanuri', ja: 'カヌリ語', ko: '카누리어', zh: '卡努里语', yue: '卡努里語',
+               vi: 'Tiếng Kanuri', th: 'ภาษาคานูรี', id: 'Bahasa Kanuri', hi: 'कनुरी',
+               de: 'Kanuri', fr: 'Kanouri', it: 'Kanuri',
+               es_eu: 'Kanuri', es_mx: 'Kanuri', pt_eu: 'Kanuri', pt_br: 'Kanuri',
+               ru: 'Канури', uk: 'Канурі', ar: 'الكانورية', he: 'קנורי', sw: 'Kikanuri' },
+        trm: { en: 'Tregami', ja: 'トレガミ語', ko: '트레가미어', zh: '特雷加米语', yue: '特雷加米語',
+               vi: 'Tiếng Tregami', th: 'ภาษาเตรกามี', id: 'Bahasa Tregami', hi: 'त्रेगामी',
+               de: 'Tregami', fr: 'Trégami', it: 'Tregami',
+               es_eu: 'Tregami', es_mx: 'Tregami', pt_eu: 'Tregami', pt_br: 'Tregami',
+               ru: 'Трегами', uk: 'Трегамі', ar: 'التريغامية', he: 'טרגאמי', sw: 'Kitregami' },
+        nia: { en: 'Nias', ja: 'ニアス語', ko: '니아스어', zh: '尼亚斯语', yue: '尼亞斯語',
+               vi: 'Tiếng Nias', th: 'ภาษานียัส', id: 'Bahasa Nias', hi: 'नियास',
+               de: 'Nias', fr: 'Nias', it: 'Nias',
+               es_eu: 'Nias', es_mx: 'Nias', pt_eu: 'Nias', pt_br: 'Nias',
+               ru: 'Ниасский', uk: 'Ніаська', ar: 'النياسية', he: 'ניאס', sw: 'Kinias' },
+    };
+    for (const code of Object.keys(ADDED58)) {
+        for (const ui of Object.keys(ADDED58[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED58[code][ui];
+            }
+        }
+    }
 })();

@@ -395,11 +395,15 @@ const FAMILY_TOP_ALLOW = new Set([
     // Audit Task 149/150: new family top-tokens introduced
     'Atlantic-Congo',                  // Bantu E70/JE Runyakitara cluster
     'Portuguese-based creole',         // kea Cape Verdean
+    'Spanish-based creole',            // cbk Chavacano (Zamboangueño)
+    'Kiowa-Tanoan',                    // kio Kiowa (Plains-Pueblo connection)
     'Songhai',                         // ses Koyraboro Senni — genealogically isolated
     // Pass 35: new family top-tokens
     'Tyrsenian',                       // ett Etruscan + (potentially) Lemnian/Raetic
     'Disputed',                        // txr Tartessian — affiliation contested
     'Romance',                         // lld Ladin (Rhaeto-Romance) — already in list above; redundant but explicit
+    // Audit Task 159: jiv Shuar Jivaroan — South American small family
+    'Jivaroan',                        // jiv Shuar (Jivaroan, Ecuador/Peru)
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;
@@ -1004,7 +1008,7 @@ for (const code of codes) {
     // Audit Task 130: meta.scriptTags must be Array<string> from the allowed enum
     if (m.scriptTags !== undefined) {
         const SCRIPT_TAG_ENUM = new Set([
-            'Latin','Han','Kana','Hangul','Cyrillic','Arabic-derived','Hebrew','Syriac','Brahmic','Greek',
+            'Latin','Han','Kana','Hangul','Cyrillic','Arabic-derived','Hebrew','Syriac','Brahmic','Tibetan','Greek',
             'Armenian','Georgian','Ethiopic','Coptic','Cherokee','Tifinagh','Yi','Canadian Aboriginal Syllabics',
             'Mongolian-derived','Cuneiform','Hieroglyphs','Aegean syllabary','Mayan','Old Turkic','Tangut',
             'Khitan','Jurchen','Aramaic-derived','Other historical','None / reconstructed','N\'Ko','Other'

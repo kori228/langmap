@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 718 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 718 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
+    <title>LangMap — Word Map: 787 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 787 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 718 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 787 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 718 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 787 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -547,11 +547,8 @@
         }
         .compare-add-btn:hover { background: #e8f0fe; }
         .compare-add-btn.added { background: #1a73e8; color: #fff; }
-        /* Header position: top-right of the modal, immediately left of the × close button. */
-        .compare-add-btn.header {
-            position: absolute; top: 6px; right: 36px; z-index: 1;
-            margin: 0; padding: 2px 8px; font-size: 11px;
-        }
+        /* Audit Task 216: header positioning removed; button now flows inline
+         * under the native-name line via standard .compare-add-btn rule. */
         /* Compare-table column headers are draggable for reorder */
         .compare-table thead th[draggable="true"] {
             cursor: grab; user-select: none;
@@ -808,11 +805,11 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=132"></script>
+    <script src="wordmap_data.js?v=155"></script>
     <script src="meta_i18n_ext.js?v=9"></script>
     <script src="meta_i18n_coverage.js?v=9"></script>
     <script src="lang-filter.js?v=25"></script>
-    <script src="lang_names.js?v=38"></script>
+    <script src="lang_names.js?v=61"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -974,12 +971,12 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    60,
-            data:      132,
+            styles:    61,
+            data:      155,
             metaI18n:  9,
-            filter:    25,
-            names:    38,
-            meta:      82,
+            filter:    26,
+            names:    61,
+            meta:     106,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2660,7 +2657,9 @@
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
-            // Pass 32 (header position): Add-to-compare button right under the title
+            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
+            // Audit Task 216: Compare button placed inline under native-name
+            // (was previously absolute top-right or duplicated at bottom).
             (() => {
                 const inCmp = (window.__compareList || []).indexOf(code) !== -1;
                 const cmpI18n = {
@@ -2671,10 +2670,9 @@
                 };
                 const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
                 const lbl = inCmp ? lObj.remove : lObj.add;
-                const cls = inCmp ? 'compare-add-btn header added' : 'compare-add-btn header';
+                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
                 html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
             })();
-            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
             // Audit Task 115: disambiguator for rows that share a display
             // or native name with another row (e.g. mn_cn/xng both show
             // ᠮᠣᠩᠭᠣᠯ; omx/mnw both show ဘာသာ မန်).
@@ -3059,14 +3057,8 @@
                     sourceItems.map(renderItem).join(' · ') +
                     `</div>`;
             }
-            // Pass 32: Add-to-compare button (renders before sources/footer area)
-            // (Reuses the global COMPARE_I18N table for full UI-lang coverage.)
-            (() => {
-                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
-                const lbl = inCmp ? compareT('remove') : compareT('add');
-                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
-                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
-            })();
+            // Audit Task 216: bottom Compare button removed; the inline button
+            // under native-name (rendered earlier) is the single canonical control.
             infoContent.innerHTML = html;
         }
 
