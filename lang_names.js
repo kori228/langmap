@@ -2376,4 +2376,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED99 = {
+        aue: { en: 'Sandawe', ja: 'サンダウェ語', ko: '산다웨어', zh: '桑达威语', yue: '桑達威語',
+               vi: 'Tiếng Sandawe', th: 'ภาษาซันดาเว', id: 'Bahasa Sandawe', hi: 'संदावे',
+               de: 'Sandawe', fr: 'Sandawe', it: 'Sandawe',
+               es_eu: 'Sandawe', es_mx: 'Sandawe', pt_eu: 'Sandawe', pt_br: 'Sandawe',
+               ru: 'Сандаве', uk: 'Сандаве', ar: 'الساندوية', he: 'סנדאווה', sw: 'Kisandawe' },
+        emk: { en: 'Eastern Maninka', ja: '東部マニンカ語', ko: '동부 마닌카어', zh: '东部马宁卡语', yue: '東部馬寧卡語',
+               vi: 'Tiếng Maninka Đông', th: 'ภาษามานินกาตะวันออก', id: 'Bahasa Maninka Timur', hi: 'पूर्वी मनिंका',
+               de: 'Ost-Maninka', fr: 'Maninka oriental', it: 'Maninka orientale',
+               es_eu: 'Maninka oriental', es_mx: 'Maninka oriental', pt_eu: 'Maninka oriental', pt_br: 'Maninka oriental',
+               ru: 'Восточный манинка', uk: 'Східна манінка', ar: 'المانينكا الشرقية', he: 'מנינקה מזרחית', sw: 'Kimaninka cha Mashariki' },
+        gum: { en: 'Misak', ja: 'ミサク語', ko: '미삭어', zh: '米萨克语', yue: '米薩克語',
+               vi: 'Tiếng Misak', th: 'ภาษามิซัค', id: 'Bahasa Misak', hi: 'मिसाक',
+               de: 'Misak', fr: 'Guambien', it: 'Misak',
+               es_eu: 'Guambiano', es_mx: 'Guambiano', pt_eu: 'Misak', pt_br: 'Misak',
+               ru: 'Гуамбиано', uk: 'Гуамбіано', ar: 'الميساك', he: 'מיסאק', sw: 'Kimisak' },
+    };
+    for (const code of Object.keys(ADDED99)) {
+        for (const ui of Object.keys(ADDED99[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED99[code][ui];
+            }
+        }
+    }
 })();

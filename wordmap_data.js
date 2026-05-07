@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 883 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 886 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1985,6 +1985,10 @@ const LANG_DATA = {
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
   bm: { name: 'Bambara', native: 'Bamanankan', lat: 12.65, lng: -7.99, // Bamako
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dumuni','dumuni'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['jiri','dʒiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni ce','i ni tʃe'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
+  // Eastern Maninka — Niger-Congo Mande Western Manding (sister to Bambara bm and Western Maninka mlq within the Manding cluster; the prestige variety of Guinea — basis of Guinean state cultural projects), ~3M+, Guinea (Upper Guinea — Kankan, Faranah, Siguiri prefectures, the historical Mali Empire heartland) + small populations in Mali, Côte d'Ivoire, Senegal, Liberia, Sierra Leone.
+  // Sources: Ethnologue 27 'emk'; Glottolog east2542; Spears (1965) The Structure of Faranah-Maninka.
+  emk: { name: 'Eastern Maninka', native: 'Maninkakan', lat: 10.39, lng: -9.31, // Kankan, Upper Guinea (Maninka heartland)
+    words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['domu','domu'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiɾi'], house:['lu','lu'], dog:['wuli','wuli'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲa','ɲa'], hello:['i ni se','i ni se'], thanks:['i ni se','i ni se'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
   // Xaasongaxango (Khassonké, Xaasonga) — Niger-Congo Mande Western (sister to Bambara/Maninka in the Manding cluster), ~120K, Mali (Kayes Region — Khasso area).
   // Sources: Ethnologue 27 'kao'; Glottolog xaas1235; Tellier (1898) Khassonké lexicon.
   kao: { name: 'Xaasongaxango', native: 'Xaasongaxango', lat: 14.45, lng: -11.43, // Kayes, Mali
@@ -2106,6 +2110,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
   pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca
     words: { water:['ɨkh','ɨkʰ'], fire:['ipx','ipʰ'], sun:['sek','seɡ'], moon:['a\'','aʔ'], mother:['mama','mama'], father:['tata','tata'], eat:['ku\'','kuʔ'], drink:['ɨçx','ɨçʰ'], love:['wala','wala'], heart:['weçx','weçʰ'], tree:['kli','kli'], house:['yat','jat'], dog:['ul','ul'], cat:['nasame\'','nasameʔ'], hand:['ku\'çx','kuʔçʰ'], eye:['yafx','jafʰ'], hello:['mañi','maɲi'], thanks:['pay','paj'], one:['teʼ','teʔ'], good:['eçxa','eçʰa'] }},
+  // Misak (Guambiano, Wam) — Barbacoan (sister to Awa Pit, Cha\'palaa, Tsafiki within the Barbacoan family of southwestern Colombia and northwestern Ecuador), ~25K, Colombia (Cauca Department — Silvia, Totoró, Jambaló municipalities; Misak Resguardo de Guambía).
+  // Sources: Ethnologue 27 'gum'; Glottolog guam1247; Vásquez de Ruiz (1988) La predicación en Guambiano.
+  gum: { name: 'Misak', native: 'Wam', lat: 2.61, lng: -76.39, // Silvia, Cauca, Colombia (Misak heartland)
+    words: { water:['unø','unø'], fire:['nipi','nipi'], sun:['shi','ʃi'], moon:['atru','atɾu'], mother:['mama','mama'], father:['tata','tata'], eat:['mɵ','mɵ'], drink:['ushi','uʃi'], love:['kausrap','kawsɾap'], heart:['mun','mun'], tree:['yu','ju'], house:['ya','ja'], dog:['kuchi','kutʃi'], cat:['mishi','miʃi'], hand:['mar','maɾ'], eye:['kab','kab'], hello:['ma\'rik','maʔɾik'], thanks:['payn','pajn'], one:['kan','kan'], good:['kausrik','kawsɾik'] }},
   // Araucanian
   arn: { name: 'Mapudungun', native: 'Mapuzugun', lat: -38.74, lng: -72.59, // Temuco
     words: { water:['ko','ko'], fire:['kütral','kɨtɾal'], sun:['antü','antɨ'], moon:['küyen','kɨjen'], mother:['ñuke','ɲuke'], father:['chao','tʃao'], eat:['in','in'], drink:['pütun','pɨtun'], love:['poyen','pojen'], heart:['piwke','piwke'], tree:['aliwen','aliwen'], house:['ruka','ɾuka'], dog:['trewa','tɾewa'], cat:['ñayki','ɲajki'], hand:['kuwü','kuwɨ'], eye:['nge','ŋe'], hello:['mari mari','maɾi maɾi'], thanks:['chaltu','tʃaltu'], one:['kiñe','kiɲe'], good:['küme','kɨme'] }},
@@ -2395,6 +2403,10 @@ const LANG_DATA = {
     words: { water:['pi','pi'], fire:['mach','matʃ'], sun:['chieng\'','tʃieŋ'], moon:['dwe','dwe'], mother:['mama','mama'], father:['baba','baba'], eat:['chiemo','tʃiemo'], drink:['madho','madʱo'], love:['hera','hera'], heart:['chuny','tʃuɲ'], tree:['yath','jatʰ'], house:['ot','ot'], dog:['guok','ɡuok'], cat:['paka','paka'], hand:['lwedo','lwedo'], eye:['wang\'','waŋ'], hello:['misawa','misawa'], thanks:['erokamano','erokamano'], one:['achiel','atʃiel'], good:['maber','maber'] }},
   mas: { name: 'Maasai', native: 'ɔl Maa', lat: -1.08, lng: 35.86, // Narok
     words: { water:['ɛŋare','ɛŋare'], fire:['ɛnkima','ɛŋkima'], sun:['enkolong','eŋkoloŋ'], moon:['ɔlapa','olapa'], mother:['yieyio','jiejio'], father:['papa','papa'], eat:['anya','aɲa'], drink:['oŋg','oŋɡ'], love:['eitalu','eitalu'], heart:['ɔltau','oltau'], tree:['olchani','oltʃani'], house:['eng\'aji','ɛŋadʒi'], dog:['oldia','oldia'], cat:['paka','paka'], hand:['ɛŋaina','ɛŋaina'], eye:['ɛŋɔnyek','ɛŋɔɲek'], hello:['sopa','sopa'], thanks:['ashe','aʃe'], one:['obo','obo'], good:['sidai','sidai'] }},
+  // Sandawe — Language isolate (sometimes classified with Khoisan or as part of a hypothetical Khoisan macrofamily, but most contemporary linguists consider it an isolate due to lack of strong genealogical evidence; like the Khoe-Kwadi family, Sandawe has clicks but the comparative evidence for Khoisan unity is weak), ~60K, Tanzania (Singida and Dodoma regions, central Tanzania — Kondoa, Singida districts — Sandawe heartland surrounded by Bantu-speaking peoples).
+  // Sources: Ethnologue 27 'sad'/'aue'; Glottolog sand1273; Steeman (2012) A Grammar of Sandawe; Eaton (2010) Sandawe: A Language of Tanzania.
+  aue: { name: 'Sandawe', native: 'Sandaweeki', lat: -4.96, lng: 35.78, // Kondoa, Dodoma Region, Tanzania
+    words: { water:['ŋ‖e','ŋǁe'], fire:['lùle','lúle'], sun:['xìbé','χíbé'], moon:['kìmbé','kímbé'], mother:['ámà','ámà'], father:['‖áè','ǁáè'], eat:['‖èmà','ǁèmà'], drink:['‖èmà','ǁèmà'], love:['k‖ó','kǁó'], heart:['kanà','kanà'], tree:['k!è','kǃè'], house:['máwa','máwa'], dog:['ǂán','ǂán'], cat:['kàttò','káttò'], hand:['ǂán','ǂán'], eye:['hèyò','hèjò'], hello:['ǂòwo','ǂòwo'], thanks:['ho‖é','hoǁé'], one:['neeso','neːso'], good:['‖èmà','ǁèmà'] }},
   // Samburu — Eastern Nilotic (Maa cluster, sister to Maasai mas), ~150K, Kenya (Samburu/Marsabit Counties — semi-nomadic pastoralists in Northern Frontier).
   // Sources: Ethnologue 27 'saq'; Glottolog samb1300; Heine (1980) Samburu Texts; Payne (1995) Samburu phonology.
   // Bari — Nilotic Eastern (sister to Maasai mas, Samburu saq within Maa cluster), ~600K, South Sudan (Central Equatoria — Juba region) + Uganda (West Nile — Moyo District).
