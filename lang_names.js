@@ -2151,4 +2151,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED90 = {
+        bar: { en: 'Bavarian', ja: 'バイエルン語', ko: '바이에른어', zh: '巴伐利亚语', yue: '巴伐利亞語',
+               vi: 'Tiếng Bayern', th: 'ภาษาบาวาเรียน', id: 'Bahasa Bavaria', hi: 'बवेरियन',
+               de: 'Bairisch', fr: 'Bavarois', it: 'Bavarese',
+               es_eu: 'Bávaro', es_mx: 'Bávaro', pt_eu: 'Bávaro', pt_br: 'Bávaro',
+               ru: 'Баварский', uk: 'Баварська', ar: 'البافارية', he: 'בוואריאנית', sw: 'Kibavaria' },
+        agx: { en: 'Aghul', ja: 'アグル語', ko: '아굴어', zh: '阿古尔语', yue: '阿古爾語',
+               vi: 'Tiếng Aghul', th: 'ภาษาอาฆุล', id: 'Bahasa Aghul', hi: 'अगुल',
+               de: 'Aghulisch', fr: 'Aghoul', it: 'Aghul',
+               es_eu: 'Agul', es_mx: 'Agul', pt_eu: 'Agul', pt_br: 'Agul',
+               ru: 'Агульский', uk: 'Агульська', ar: 'الأغولية', he: 'אגולית', sw: 'Kiaghul' },
+        toj: { en: 'Tojolabal', ja: 'トホラバル語', ko: '토홀라발어', zh: '托霍拉巴尔语', yue: '托霍拉巴爾語',
+               vi: "Tiếng Tojol-ab'al", th: 'ภาษาโตโคลาบัล', id: 'Bahasa Tojolabal', hi: 'तोहोलाबाल',
+               de: 'Tojolabal', fr: 'Tojolabal', it: 'Tojolabal',
+               es_eu: 'Tojolabal', es_mx: 'Tojolabal', pt_eu: 'Tojolabal', pt_br: 'Tojolabal',
+               ru: 'Тохолабаль', uk: 'Тохолабаль', ar: 'التوهولابال', he: 'טוחולבל', sw: 'Kitojolabal' },
+    };
+    for (const code of Object.keys(ADDED90)) {
+        for (const ui of Object.keys(ADDED90[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED90[code][ui];
+            }
+        }
+    }
 })();

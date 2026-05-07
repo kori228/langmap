@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 856 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 859 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -812,6 +812,10 @@ const LANG_DATA = {
   // Sources: Christen et al. (2010) Kleiner Sprachatlas der deutschen Schweiz; SDS (Sprachatlas der deutschen Schweiz).
   gsw: { name: 'Swiss German', native: 'Schwiizerdütsch', lat: 47.37, lng: 8.54, // Zürich
     words: { water:['Wasser','vasːər'], fire:['Füür','fyːr'], sun:['Sunne','sʊnə'], moon:['Mond','moːnd'], mother:['Mueter','muə̯tər'], father:['Vatter','fatər'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Härz','hærts'], tree:['Baum','baʊ̯m'], house:['Huus','huːs'], dog:['Hund','hʊnd'], cat:['Chatz','xats'], hand:['Hand','hand'], eye:['Aug','aʊ̯ɡ'], hello:['Grüezi','ɡryə̯tsi'], thanks:['Merci','mɛrsi'], one:['eis','æɪ̯s'], good:['guet','ɡuə̯t'] }},
+  // Bavarian (Boarisch) — Indo-European Germanic Upper German (Austro-Bavarian; sister to East Franconian and Alemannic; co-territorial with Standard German de but distinct vocabulary/phonology), ~14M, Germany (Bavaria) + Austria (most regions) + Italy (South Tyrol).
+  // Sources: Ethnologue 27 'bar'; Glottolog bava1246; Merkle (1976) Bairische Grammatik.
+  bar: { name: 'Bavarian', native: 'Boarisch', lat: 48.14, lng: 11.58, // München, Bayern
+    words: { water:['Wåssa','vɔsɐ'], fire:['Feia','fɔɪɐ'], sun:['Sun','sʊn'], moon:['Moo','moː'], mother:['Muada','muɐdɐ'], father:['Voda','foɐdɐ'], eat:['essn','ɛsn̩'], drink:['dringa','dɾɪŋɡɐ'], love:['Liab','liɐb'], heart:['Heaz','hɛɐts'], tree:['Bam','bãm'], house:['Haus','haʊs'], dog:['Hund','hʊnd'], cat:['Katz','kʰats'], hand:['Hand','hɔnd'], eye:['Aug','aʊɡ'], hello:['Servus','sɛɐvʊs'], thanks:['Vagelts Gott','fɐɡɛlts ɡɔt'], one:['oans','oɐns'], good:['guad','ɡuɐd'] }},
   // East Franconian (Mainfränkisch) — High German Upper East dialect, Bavaria/Thuringia/Hesse.
   // Sources: Ethnologue 27 'vmf'; Glottolog main1267; Wagner (1987) Bairisch-Fränkische Wörterbücher.
   vmf: { name: 'East Franconian', native: 'Mainfränkisch', lat: 49.79, lng: 9.93, // Würzburg (Mainfränkisch heartland)
@@ -2096,6 +2100,10 @@ const LANG_DATA = {
     words: { water:['яд','jad'], fire:['цӏай','tsʼaj'], sun:['рагъ','raʁ'], moon:['варз','varz'], mother:['диде','dide'], father:['буба','buba'], eat:['тӏуьн','tʼyn'], drink:['хъун','qun'], love:['кӏан хьун','kʼan χun'], heart:['рикӏ','rikʼ'], tree:['тар','tar'], house:['кӏвал','kʼval'], dog:['кицӏ','kitsʼ'], cat:['кац','kats'], hand:['гъил','ʁil'], eye:['вил','vil'], hello:['салам','salam'], thanks:['чухсагъул','tʃuxsaʁul'], one:['сад','sad'], good:['хъсан','qsan'] }},
   dar: { name: 'Dargwa', native: 'Дарган мез', lat: 42.36, lng: 47.51, // Sergokala
     words: { water:['шин','ʃin'], fire:['цӏа','tsʼa'], sun:['берхӏи','beɾħi'], moon:['баз','baz'], mother:['нес','nes'], father:['атта','atːa'], eat:['букӏан','bukʼan'], drink:['даркьес','daɾqʼes'], love:['дигай','diɡaj'], heart:['уркӏ','uɾkʼ'], tree:['галга','ɡalɡa'], house:['хъали','qali'], dog:['хя','xja'], cat:['гата','ɡata'], hand:['някӏ','ɲækʼ'], eye:['хӏули','ħuli'], hello:['салам','salam'], thanks:['баркалла','baɾkalːa'], one:['ца','tsa'], good:['гӏяхӏил','ʕaħil'] }},
+  // Aghul — Northeast Caucasian Lezgic (sister to Lezgian lez and Tabasaran tab within the Lezgic branch), ~30K, Russia (Dagestan — Agulsky and Kurakhsky districts in mountainous southeastern Dagestan).
+  // Sources: Ethnologue 27 'agx'; Glottolog aghu1253; Magometov (1970) Aghul'skij jazyk.
+  agx: { name: 'Aghul', native: 'агъул чӏал', lat: 41.82, lng: 47.69, // Tpig, Agulsky District, Dagestan
+    words: { water:['хьед','ɬed'], fire:['цӏай','tsʼaj'], sun:['рагъ','raʁ'], moon:['ваз','vaz'], mother:['баб','bab'], father:['ада','ada'], eat:['ифи','ifi'], drink:['ахъан','aqʼan'], love:['кӏанди','kʼandi'], heart:['юкӏ','jukʼ'], tree:['тар','tar'], house:['кьали','qʼali'], dog:['хвай','xwaj'], cat:['кац','kats'], hand:['хил','xil'], eye:['ул','ul'], hello:['салам','salam'], thanks:['баркалла','baɾkalːa'], one:['са','sa'], good:['хъвай','qwaj'] }},
   lbe: { name: 'Lak', native: 'Лакку маз', lat: 42.10, lng: 47.13, // Kumukh
     words: { water:['щин','ʃin'], fire:['цӏу','tsʼu'], sun:['бургъ','burʁ'], moon:['барз','barz'], mother:['нину','ninu'], father:['ппу','pːu'], eat:['ккаву','kːavu'], drink:['гьавхь','ʕavħ'], love:['ччан','tʃːan'], heart:['дакӏ','dakʼ'], tree:['мурхь','muɾħ'], house:['къатта','qatːa'], dog:['ккун','kːun'], cat:['ккац','kːats'], hand:['ка','ka'], eye:['я','ja'], hello:['салам','salam'], thanks:['барчаллагь','baɾtʃalːaʁ'], one:['ца','tsa'], good:['хъинсса','qinsːa'] }},
   tab: { name: 'Tabasaran', native: 'Табасаран чӀал', lat: 41.93, lng: 48.04, // Khiv
@@ -4534,6 +4542,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ctu'; Glottolog chol1282; Warkentin & Scott (1980) Gramática Ch'ol.
   ctu: { name: "Chol", native: "Lakty'añ", lat: 17.30, lng: -92.42, // Tila, Chiapas, Mexico
     words: { water:["ja'",'haʔ'], fire:['kʼajk','kʼahk'], sun:['kʼajn','kʼahn'], moon:['uw','uw'], mother:['ñaʼ','ɲaʔ'], father:['tat','tat'], eat:["k'ux",'kʼuʃ'], drink:['ucʼ','utsʼ'], love:["k'uxbiñ",'kʼuʃbiɲ'], heart:["pus'ik'al",'pusʼikʼal'], tree:["te'",'teʔ'], house:["otyot",'otjot'], dog:["ts'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["k'ab'",'kʼabʼ'], eye:["wut",'wut'], hello:['kabʼ','kabʼ'], thanks:["wokox",'wokoʃ'], one:['juñ','huɲ'], good:['utsat','utsat'] }},
+  // Tojolabal — Mayan (Q'anjob'alan-Chujean, Chujean — sister to Chuj cac within the Chujean sub-branch; closer to Chuj than to Q'anjob'al kjb), ~70K, Mexico (Chiapas — Las Margaritas, Comitán, Altamirano municipalities; some Guatemala border populations).
+  // Sources: Ethnologue 27 'toj'; Glottolog tojo1241; Furbee-Losee (1976) The Correct Language: Tojolabal.
+  toj: { name: 'Tojolabal', native: "Tojol-ab'al", lat: 16.31, lng: -91.98, // Las Margaritas, Chiapas, Mexico
+    words: { water:["ja'",'haʔ'], fire:["k'ak'",'kʼakʼ'], sun:["k'ak'u",'kʼakʼu'], moon:['ixaw','iʃaw'], mother:["nan",'nan'], father:["tat",'tat'], eat:["wa'el",'waʔel'], drink:["uk'",'ukʼ'], love:["sk'ana",'skʼana'], heart:["alma",'alma'], tree:["te'",'teʔ'], house:['naj','nah'], dog:["ts'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["k'ab'",'kʼabʼ'], eye:["satej",'satex'], hello:["lekiluk'",'lekilukʼ'], thanks:["yuj",'juh'], one:['jun','hun'], good:['lek','lek'] }},
   // Tabasco Chontal (Yokot'an) — Mayan (Cholan-Tzeltalan, Cholan — sister to Chol ctu within the Cholan branch), ~36K, Mexico (Tabasco — Nacajuca, Centla, Centro, Macuspana municipalities; lowland Gulf coast).
   // Sources: Ethnologue 27 'chf'; Glottolog tabz1238; Knowles (1984) A descriptive grammar of Chontal Maya.
   chf: { name: "Tabasco Chontal", native: "Yokot'an", lat: 18.17, lng: -93.02, // Nacajuca, Tabasco, Mexico
