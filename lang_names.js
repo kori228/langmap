@@ -2056,4 +2056,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED88 = {
+        agt: { en: 'Central Cagayan Agta', ja: '中部カガヤン・アグタ語', ko: '중부 카가얀 아그타어', zh: '中部卡加延阿格塔语', yue: '中部卡加延阿格塔語',
+               vi: 'Tiếng Agta Cagayan Trung', th: 'ภาษาอักตากากายันกลาง', id: 'Bahasa Agta Cagayan Tengah', hi: 'मध्य कागायन अग्ता',
+               de: 'Zentral-Cagayan-Agta', fr: 'Agta du Cagayan central', it: 'Agta del Cagayan centrale',
+               es_eu: 'Agta de Cagayán Central', es_mx: 'Agta de Cagayán Central', pt_eu: 'Agta de Cagayán Central', pt_br: 'Agta de Cagayán Central',
+               ru: 'Центральнокагаянский агта', uk: 'Центральнокагаянська агта', ar: 'الأغتا الكاجايان الوسطى', he: 'אגטה קגיין מרכזית', sw: 'Kiagta cha Cagayán cha Kati' },
+        bto: { en: 'Iriga Bicolano', ja: 'イリガ・ビコラノ語', ko: '이리가 비콜라노어', zh: '伊里加比科拉诺语', yue: '伊里加比科拉諾語',
+               vi: 'Tiếng Bicolano Iriga', th: 'ภาษาบีโกลาโนอิริกา', id: 'Bahasa Bicolano Iriga', hi: 'इरिगा बिकोलानो',
+               de: 'Iriga-Bicolano', fr: 'Bicolano d’Iriga', it: 'Bicolano di Iriga',
+               es_eu: 'Bicolano de Iriga', es_mx: 'Bicolano de Iriga', pt_eu: 'Bicolano de Iriga', pt_br: 'Bicolano de Iriga',
+               ru: 'Иригский биколано', uk: 'Іригська біколано', ar: 'البيكولانو الإيريغي', he: 'ביקולנו איריגה', sw: 'Kibicolano cha Iriga' },
+        pll: { en: 'Shwe Palaung', ja: 'シュエ・パラウン語', ko: '슈웨 팔라웅어', zh: '瑞掸佤语', yue: '瑞撣佤語',
+               vi: 'Tiếng Palaung Shwe', th: 'ภาษาปลังชเว', id: 'Bahasa Palaung Shwe', hi: 'श्वे पलाउंग',
+               de: 'Schwe-Palaung', fr: 'Palaung shwe', it: 'Palaung shwe',
+               es_eu: 'Palaung shwe', es_mx: 'Palaung shwe', pt_eu: 'Palaung shwe', pt_br: 'Palaung shwe',
+               ru: 'Шве-палаунг', uk: 'Шве-палаунг', ar: 'البالاونغ الشوي', he: 'שווה פלאונג', sw: 'Kishwepalaung' },
+    };
+    for (const code of Object.keys(ADDED88)) {
+        for (const ui of Object.keys(ADDED88[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED88[code][ui];
+            }
+        }
+    }
 })();
