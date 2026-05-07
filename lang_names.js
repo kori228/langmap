@@ -1110,4 +1110,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED41 = {
+        bzj: { en: 'Belize Kriol', ja: 'ベリーズ・クリオール語', ko: '벨리즈 크리올어', zh: '伯利兹克里奥尔语', yue: '伯利茲克里奧爾語',
+               vi: 'Tiếng Kriol Belize', th: 'ภาษาครีโอลเบลีซ', id: 'Kriol Belize', hi: 'बेलीज़ क्रिओल',
+               de: 'Belize-Kreol', fr: 'Créole bélizien', it: 'Creolo del Belize',
+               es_eu: 'Criollo beliceño', es_mx: 'Criollo beliceño', pt_eu: 'Crioulo belizenho', pt_br: 'Crioulo belizenho',
+               ru: 'Белизский креольский', uk: 'Белізька креольська', ar: 'الكريولية البليزية', he: 'קריאולית בליז', sw: 'Kikriol cha Belize' },
+        ude: { en: 'Udege', ja: 'ウデゲ語', ko: '우데게어', zh: '乌德盖语', yue: '烏德蓋語',
+               vi: 'Tiếng Udege', th: 'ภาษาอูเดเก', id: 'Bahasa Udege', hi: 'उडेगे',
+               de: 'Udehe', fr: 'Oudihé', it: 'Udege',
+               es_eu: 'Udege', es_mx: 'Udege', pt_eu: 'Udege', pt_br: 'Udege',
+               ru: 'Удэгейский', uk: 'Удегейська', ar: 'الأوديغية', he: 'אודגית', sw: 'Kiudege' },
+        rmf: { en: 'Finnish Romani', ja: 'フィンランド・ロマ語', ko: '핀란드 로마어', zh: '芬兰罗姆语', yue: '芬蘭羅姆語',
+               vi: 'Tiếng Romani Phần Lan', th: 'ภาษาโรมานีฟินแลนด์', id: 'Romani Finlandia', hi: 'फिनिश रोमानी',
+               de: 'Finnisches Romani', fr: 'Romani finlandais', it: 'Romaní finlandese',
+               es_eu: 'Romaní finés', es_mx: 'Romaní finés', pt_eu: 'Romani finlandês', pt_br: 'Romani finlandês',
+               ru: 'Финский цыганский', uk: 'Фінська циганська', ar: 'الغجرية الفنلندية', he: 'רומאני פיני', sw: 'Kiromani cha Kifini' },
+    };
+    for (const code of Object.keys(ADDED41)) {
+        for (const ui of Object.keys(ADDED41[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED41[code][ui];
+            }
+        }
+    }
 })();

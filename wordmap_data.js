@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 733 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 736 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -320,6 +320,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'gld'; Glottolog nana1257; Avrorin (1959) Grammar of Nanai.
   gld: { name: 'Nanai', native: 'Нанай', lat: 50.55, lng: 137.0, // Naikhin/Khabarovsk Krai
     words: { water:['муэ','mue'], fire:['това','tova'], sun:['сиун','siun'], moon:['биа','bia'], mother:['энин','enin'], father:['ама','ama'], eat:['депу','depu'], drink:['омичи','omitʃi'], love:['эйини','ejini'], heart:['миаван','miavan'], tree:['мо','mo'], house:['дё','dʒo'], dog:['инда','inda'], cat:['коси','kosi'], hand:['нгала','ŋala'], eye:['насал','nasal'], hello:['банди-банди','bandi bandi'], thanks:['банихан','banihan'], one:['эмун','emun'], good:['ая','aja'] }},
+  // Udege (Удэгейцы) — Tungusic Northern (Udege-Oroch subgroup, sister to Oroch and Negidal), ~100, Russia (Primorsky/Khabarovsk Krai). Severely endangered; tiger-and-taiga hunters.
+  // Sources: Ethnologue 27 'ude'; Glottolog udih1248; Schneider (1936) Udege grammar; Nikolaeva & Tolskaya (2001).
+  ude: { name: 'Udege', native: 'удиэ кэйэвэни', lat: 45.95, lng: 137.04, // Krasnyy Yar (Bikin valley, Primorye — main Udege village)
+    words: { water:['уй','uj'], fire:['тогбо','toɡbo'], sun:['даигаси','daiɡasi'], moon:['биа','bia'], mother:['энэ','ene'], father:['амэ','amə'], eat:['джевэ','dʒevə'], drink:['омимэ','omimə'], love:['чисанай','tʃisanaj'], heart:['миаван','miavan'], tree:['мо','mo'], house:['дзугди','dzuɡdi'], cat:['кошк','koʃk'], dog:['инай','inaj'], hand:['нала','nala'], eye:['писа','pisa'], hello:['бандиба','bandiba'], thanks:['нюхча','ɲuxtʃa'], one:['омо','omo'], good:['ая','aja'] }},
   // Uralic Siberian (Samoyedic + Ob-Ugric)
   yrk: { name: 'Nenets', native: 'Ненэцяˮ вада', lat: 67.64, lng: 53.01, // Naryan-Mar
     words: { water:['ӣд','iːd'], fire:['ту','tu'], sun:['хаер','xajer'], moon:['ирий','iriː'], mother:['небя','nebja'], father:['нися','nisja'], eat:['ёлась','jolasʲ'], drink:['я','ja'], love:['садось','sadosʲ'], heart:['сей','sej'], tree:['пя','pja'], house:['мяˮ','mjaʔ'], dog:['вэно','weno'], cat:['кошка','koʂka'], hand:['ӈуда','ŋuda'], eye:['сэв','sev'], hello:['аньˮторова','anʔtorova'], thanks:['спасибо','spasibo'], one:['ӈопой','ŋopoj'], good:['сава','sawa'] }},
@@ -729,6 +733,10 @@ const LANG_DATA = {
     words: { water:['dlo','dlo'], fire:['dife','dife'], sun:['solèy','sɔlɛj'], moon:['lalin','lalɛ̃'], mother:['manman','mɑ̃mɑ̃'], father:['papa','papa'], eat:['manje','mɑ̃ʒe'], drink:['bwè','bwɛ'], love:['lanmou','lɑ̃mu'], heart:['kè','kɛ'], tree:['pyebwa','pjɛbwa'], house:['kay','kaj'], dog:['chen','ʃɛ̃'], cat:['chat','ʃa'], hand:['men','mɛ̃'], eye:['je','ʒe'], hello:['bonjou','bɔ̃ʒu'], thanks:['mèsi','mɛsi'], one:['youn','jun'], good:['bon','bɔ̃'] }},
   jam: { name: 'Jamaican Patois', native: 'Patwa', lat: 18.00, lng: -76.79,
     words: { water:['wata','wɑːtə'], fire:['faya','fajə'], sun:['son','sɔn'], moon:['muun','muːn'], mother:['mada','mɑdə'], father:['fada','fɑdə'], eat:['nyam','ɲam'], drink:['drink','dɹɪŋk'], love:['lov','lɔv'], heart:['aat','aːt'], tree:['chrii','tʃɹiː'], house:['ous','ʊːs'], dog:['daag','daːɡ'], cat:['puss','pʊs'], hand:['an','an'], eye:['yai','jaɪ'], hello:['wah gwaan','wɑ ɡwɑːn'], thanks:['tanks','taŋks'], one:['wan','wan'], good:['gud','ɡʊd'] }},
+  // Belize Kriol — English-based creole, ~170K (~70K L1 + ~100K L2), Belize. National lingua franca, distinct from Jamaican Patois.
+  // Sources: Ethnologue 27 'bzj'; Glottolog beli1260; Decker (2005) The Song of Kriol; National Kriol Council Belize.
+  bzj: { name: 'Belize Kriol', native: 'Bileez Kriol', lat: 17.50, lng: -88.20, // Belize City
+    words: { water:['waata','wɑːtɑ'], fire:['faiya','fajə'], sun:['son','sɔn'], moon:['moon','muːn'], mother:['mada','mɑdə'], father:['faada','faːdə'], eat:['nyam','ɲam'], drink:['jrink','dʒɾɪŋk'], love:['lov','lɔv'], heart:['haat','aːt'], tree:['chree','tʃɹiː'], house:['hous','aʊs'], dog:['daag','daːɡ'], cat:['kyat','kʲat'], hand:['han','an'], eye:['ai','aj'], hello:['heloh','hɛloʊ'], thanks:['tanks','taŋks'], one:['wan','wan'], good:['gud','ɡʊd'] }},
   pap: { name: 'Papiamento', native: 'Papiamentu', lat: 12.17, lng: -68.98,
     words: { water:['awa','awa'], fire:['kandela','kandela'], sun:['solo','solo'], moon:['luna','luna'], mother:['mama','mama'], father:['tata','tata'], eat:['kome','kome'], drink:['bebe','bebe'], love:['amor','amor'], heart:['kurason','kurason'], tree:['palu','palu'], house:['kas','kas'], dog:['kacho','katʃo'], cat:['pushi','puʃi'], hand:['man','man'], eye:['wowo','wowo'], hello:['bon dia','bon dia'], thanks:['danki','daŋki'], one:['un','un'], good:['bon','bon'] }},
   // Cape Verdean Creole (Audit Task 149 Batch 2 partial). Largest
@@ -741,6 +749,10 @@ const LANG_DATA = {
   // base. Distinct from the macro `rom` row (which uses pan-Romani forms).
   rmy: { name: 'Vlax Romani', native: 'romani čhib (Kalderash)', lat: 44.43, lng: 26.10, // Bucharest area
     words: { water:['paji','paji'], fire:['jag','jaɡ'], sun:['kham','kʰam'], moon:['čhonut','tʃʰonut'], mother:['dej','dej'], father:['dad','dad'], eat:['xav','xav'], drink:['pijav','pijav'], love:['kamel','kamel'], heart:['ilo','ilo'], tree:['kašt','kaʃt'], house:['kher','kʰer'], dog:['žukel','ʒukel'], cat:['mačka','matʃka'], hand:['vast','vast'], eye:['jakh','jakʰ'], hello:['t’aves baxtalo','tʼaves baxtalo'], thanks:['najis tuke','najis tuke'], one:['jek','jek'], good:['mišto','miʃto'] }},
+  // Finnish Romani (Kaale) — Northern Romani (Romanichal-Kaale subgroup), ~10K speakers, Finland (largest concentration in Europe of NorthRomani branch).
+  // Sources: Ethnologue 27 'rmf'; Glottolog kalo1259; Granqvist (2007) Suomen romanit ja heidän kielensä.
+  rmf: { name: 'Finnish Romani', native: 'romaniska tšimb / Kaale', lat: 60.17, lng: 24.94, // Helsinki (cultural center of Finnish Roma)
+    words: { water:['paani','paːni'], fire:['jaak','jaːk'], sun:['kham','kʰam'], moon:['choon','tʃʰoːn'], mother:['daij','daij'], father:['daad','daːd'], eat:['xal','xal'], drink:['piel','piel'], love:['kamel','kamel'], heart:['llo','lːo'], tree:['rukh','rukʰ'], house:['kher','kʰer'], dog:['žukli','ʒukli'], cat:['baari mačka','baːri matʃka'], hand:['vast','vast'], eye:['jakk','jakː'], hello:['šukar diives','ʃukaɾ diːves'], thanks:['naais','naːis'], one:['jekk','jekː'], good:['šukar','ʃukaɾ'] }},
   pcm: { name: 'Nigerian Pidgin', native: 'Naijá', lat: 6.45, lng: 3.40, // Lagos (commercial/media center)
     words: { water:['wọtá','wɔta'], fire:['faya','faja'], sun:['sọn','sɔn'], moon:['mun','muːn'], mother:['mama','mama'], father:['papa','papa'], eat:['chọp','tʃɔp'], drink:['drink','dɾiŋk'], love:['lọv','lɔv'], heart:['hat','hat'], tree:['tri','tɾi'], house:['haus','haʊs'], dog:['dọg','dɔɡ'], cat:['pus','pus'], hand:['hand','hand'], eye:['ai','aɪ'], hello:['how far','haʊ faː'], thanks:['tanx','taŋks'], one:['wan','wan'], good:['fain','faɪn'] }},
   tpi: { name: 'Tok Pisin', native: 'Tok Pisin', lat: -6.73, lng: 147.00,
