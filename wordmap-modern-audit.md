@@ -9863,3 +9863,155 @@ Done when:
 6. (Then) **Task 209 Phase B2-B7** — full description-i18n catch-up across remaining 13 UI langs.
 
 If steps 1-3 are completed first (~5 minutes total), the warning count drops from 29 → 22 immediately. Step 4 drops it to 18.
+
+---
+
+## Status Sweep (2026-05-07 part 6) — first ERRORs since the audit started
+
+After Tasks 198/199/200/201/202/203/204/206/210 cleanup landed, the language count grew 706→712 (+6 in two more batches). For the first time since this audit began, the validator emits **3 ERRORs** instead of warnings only — three new languages were added to `wordmap_data.js` without corresponding meta blocks in `wordmap_meta.js`. Plus Task 211's count-drift problem reappears at a wider gap (709 → 712, drift = 3). And a new Task 130 enum-violation pattern emerged: contributors used non-allow-list script tag names ("Tamil", "Devanagari") that should map to "Brahmic" per the schema.
+
+### New Task 212. Resolve the 3 newly-added languages with no meta entry (rkt / jpr / umu)
+
+Goal:
+The validator now emits **`✗ ERROR`** for three rows added to `wordmap_data.js` without a corresponding `LANG_DATA['xxx'].meta = {…}` block in `wordmap_meta.js`. This is the most severe data integrity issue surfaced by the audit so far — without meta, the row has no family, speakers, script, description, or any of the structured fields. The era-toggle filter, modal display, and all i18n machinery break for these rows.
+
+Current issue I checked (2026-05-07 evening, post-712-langs commit):
+- `✗ rkt: no meta entry` (Rangpuri / Kamta — Indo-Aryan, Bangladesh / India NW frontier)
+- `✗ jpr: no meta entry` (Judeo-Persian — Iranian, Jewish diaspora)
+- `✗ umu: no meta entry` (Munsee — Eastern Algonquian, Eastern Canada / NE USA)
+
+This is the first ERROR-level finding since the audit began. Task 201's per-batch gate has sub-checks `[#201a–f]` for description i18n, scriptTags, varietyRole, family, formType, disambiguator — but **does not have a `[#201g]` or `[#201h]` for "meta block exists at all"**. The 3 rows passed the gate because the existing checks short-circuit when `m` (the meta object) is undefined.
+
+Files to change:
+- `wordmap_meta.js` — add `LANG_DATA['rkt'].meta = { … }`, `LANG_DATA['jpr'].meta = { … }`, `LANG_DATA['umu'].meta = { … }` blocks with full required fields per Task 197 cross-cutting rules.
+- `validate_wordmap_data.js` — add a new `[#201g]` check in the per-batch gate that flags new LANG_DATA entries without corresponding meta blocks. Promote to ERROR (not just WARN) immediately; this is too severe to gate softly.
+- `lang_names.js` — add 21-UI-section entries for each of the 3 codes.
+
+Implementation instructions (per language):
+
+**`rkt` Rangpuri / Kamta:**
+- Family: `'Indo-Aryan (Eastern, Bengali-Assamese)'` or `'Indo-Aryan (Eastern, Kamta)'`.
+- Speakers: ~15M.
+- Countries: Bangladesh (Rangpur Division), India (West Bengal — Cooch Behar, Jalpaiguri).
+- Script: `'Bengali'` (Eastern Brahmic). scriptTags: `['Brahmic']`.
+- Sources: Glottolog, Ethnologue, Toulmin (2009) "From linguistic to sociolinguistic reconstruction: the Kamta historical subgroup of Indo-Aryan".
+
+**`jpr` Judeo-Persian:**
+- Family: `'Indo-European (Iranian, Persian)'`.
+- Speakers: ~10K (mostly Israel; Iran communities largely emigrated).
+- Countries: Israel, Iran (residual), USA (diaspora).
+- Script: `'Hebrew'` (historically), `'Persian (Perso-Arabic)'`. scriptTags: `['Hebrew', 'Arabic-derived']`.
+- Sources: Glottolog, Ethnologue, Lazard (1968) "La dialectologie du judéo-persan", Borjian.
+
+**`umu` Munsee:**
+- Family: `'Algic (Algonquian, Eastern, Lenape)'`.
+- Speakers: ~7 fluent (revitalization underway).
+- Countries: Canada (Ontario — Munsee-Delaware Nation), USA (historical; effectively extinct in NE).
+- Script: `'Latin'` (Sandbox-style Algonquian orthography). scriptTags: `['Latin']`.
+- vitality: `'critically-endangered'`.
+- Sources: Glottolog, Ethnologue, Goddard (1979) "Delaware Verbal Morphology", Munsee Language Project.
+
+Validator / static check:
+- New `[#201g]`: row in `LANG_DATA` without `meta` block → ERROR (not WARN). Promote to ERROR immediately because the gap is too severe.
+- After fix: ERRORS drops from 3 → 0.
+
+Done when:
+- All 3 codes have full meta blocks with description (en/ja/ko/zh), scriptTags, sources.
+- All 3 codes have entries in all 21 UI sections of `lang_names.js`.
+- `[#201g]` validator check is in place and ERRORs on future omissions.
+- `node validate_wordmap_data.js` PASSes (0 errors).
+
+### New Task 213. Document the script-tag enum mapping for non-Latin Indic scripts (Task 130 / 210 follow-up)
+
+Goal:
+Two recently-added languages used `scriptTags` values that aren't in the schema enum: `iru` Irula has `'Tamil'` and `tdh` Thulung has `'Devanagari'`. The intended canonical token for any Brahmi-derived Indic script in this project's taxonomy is `'Brahmic'` (per the enum at `validate_wordmap_data.js:376`). Contributors don't know this — there's no docs explaining that Tamil / Devanagari / Bengali / Kannada / Malayalam / Gujarati / Telugu / Oriya all map to `'Brahmic'`.
+
+Current issue I checked:
+- `[#13l] iru: meta.scriptTags entry "Tamil" not in enum (Audit Task 130)`.
+- `[#13l] tdh: meta.scriptTags entry "Devanagari" not in enum (Audit Task 130)`.
+- The enum has `'Brahmic'` covering all Indic / SE Asian Brahmi-derived scripts, but no contributor-facing documentation says so.
+
+Files to change:
+- `wordmap_meta.js` — fix the 2 violations: `iru` `'Tamil'` → `'Brahmic'`, `tdh` `'Devanagari'` → `'Brahmic'`.
+- `CONTRIBUTING.md` — add a "Script tag enum mapping" subsection under Task 130 docs:
+  - `'Brahmic'` covers: Devanagari, Bengali, Tamil, Telugu, Kannada, Malayalam, Gujarati, Oriya, Sinhala, Tibetan, Burmese, Thai, Lao, Khmer, Lontara, Tai Viet, etc. (all Brahmi-derived).
+  - `'Han'` covers: Simplified, Traditional Chinese; Japanese kanji.
+  - `'Kana'` covers: Hiragana, Katakana.
+  - `'Arabic-derived'` covers: Arabic, Perso-Arabic, Urdu, Pashto, Sindhi, Sindhi (Naskh), Saraiki, Hindko, Pegon (historical Indonesian), Jawi (historical Malay).
+  - Note that the prose `script` field can be more specific (`'Tamil / Latin'` for human display); `scriptTags` is the structured filter array.
+- Optional: extend the `[#13l]` validator error message to suggest the canonical mapping (e.g., `"Tamil" → did you mean "Brahmic"?`).
+
+Implementation instructions:
+- Phase 1: fix the 2 violations.
+- Phase 2: add CONTRIBUTING.md subsection.
+- Phase 3: extend validator error message with mapping suggestion.
+
+Validator / static check:
+- After fix: `[#13l]` warnings drop to 0.
+- INFO line `Script tag adoption: N langs use Brahmic, M use Latin, ...` already in INFOs but could be bolstered.
+
+Do not:
+- Do not add `'Tamil'` / `'Devanagari'` / etc. to the enum. The whole point of `'Brahmic'` is to provide a single filter chip for "Brahmi-derived scripts" — splitting into per-script chips would multiply the filter UI without adding value.
+- Do not lose the prose `script` info. `script: 'Tamil / Latin'` stays for display; only `scriptTags` is constrained to the enum.
+
+Done when:
+- iru and tdh `scriptTags` use `['Brahmic', 'Latin']` and `['Brahmic']` respectively.
+- CONTRIBUTING.md "Script tag enum mapping" subsection exists.
+- Validator `[#13l]` reports 0 violations.
+
+### New Task 214. Auto-bump count strings to prevent Task 211 recurrence
+
+Goal:
+Task 107 (count-string drift) keeps recurring. Within 24 hours we've seen drift at 700→703, 700→706, 709→712. Each time, only the `wordmap_data.js` header is updated; the 4 strings in `wordmap.html` and the README count are missed. The recurrence pattern means the manual-update approach isn't sustainable.
+
+Current issue I checked:
+- Each language batch adds 3 langs but only the contributor's `wordmap_data.js` header is updated.
+- Validator's `[#107]` flags the drift but does not block, so the discrepancy ships.
+- 7 warnings every batch (4 wordmap.html + 1 README + 2 OG/Twitter) until someone manually bumps.
+
+Files to change:
+- New file: `scripts/bump_count.js` — reads the current language count from `wordmap_data.js` and updates the 7 known count-string locations.
+- `.githooks/pre-commit` — run `scripts/bump_count.js --check` and abort the commit if the count strings are stale; suggest running `scripts/bump_count.js --fix` to auto-bump.
+- `.github/workflows/wordmap-validate.yml` — add a `count-string-sync` job that runs `--check` and surfaces drift as a CI annotation.
+- `validate_wordmap_data.js` — `[#107]` check stays as-is, but reference the auto-bump script in the warning message.
+- `CONTRIBUTING.md` — document the bump script.
+
+Implementation instructions:
+- The script enumerates known count-string locations:
+  - `wordmap.html` body text.
+  - `wordmap.html` `<title>`.
+  - `wordmap.html` `<meta name="description">`.
+  - `wordmap.html` `<meta og:description>`.
+  - `wordmap.html` `<meta twitter:description>`.
+  - `README.md`.
+- Source of truth: the actual count from `validate_wordmap_data.js`'s row enumeration (or `wordmap_data.js` header comment, with the script verifying they match).
+- `--check` mode: exit 1 if any drift detected, print which file/line.
+- `--fix` mode: rewrite all 7 locations to match the source of truth.
+
+Validator / static check:
+- New CI job rejects PRs that introduce count-string drift unless `--fix` is run.
+
+Do not:
+- Do not auto-fix in `validate_wordmap_data.js` itself. Validators read; they don't write. The fix script is a separate tool.
+- Do not skip the README. It's the most-visible public artifact.
+
+Done when:
+- `scripts/bump_count.js` exists and works in `--check` and `--fix` modes.
+- Pre-commit hook runs `--check` and blocks with a helpful suggestion.
+- CI `count-string-sync` job surfaces drift as annotation.
+- `[#107]` warnings drop to 0 and stay at 0 across subsequent batches.
+- CONTRIBUTING.md documents the script.
+
+### Cumulative validator state after part 6
+
+- 712 languages.
+- **3 ERRORs** (rkt, jpr, umu missing meta) — first ERROR-level findings since audit began.
+- 54 WARNINGS (16 description-i18n + 7 count drift + 10 formType + 2 scriptTags-enum + 5+21 source-checked + 2 pronunciationType + 1 family allow-list).
+- FAIL status (because of the 3 ERRORs).
+
+**Recommended priority for next 30 minutes:**
+1. **Task 212** — add 3 meta blocks for rkt/jpr/umu + 21 UI sections each. Most severe; FAIL → PASS.
+2. **Task 213 Phase 1** — fix iru/tdh scriptTags. ~30 sec.
+3. **Task 211 Phase 1** — bump 7 count strings 709→712. ~2 min. Or skip if Task 214 is implemented immediately.
+4. **Task 207 / 208 / 159** — formType + pronunciationType + family allow-list backfills. ~3 min total.
+5. **Task 214** — auto-bump infrastructure. ~30 min, prevents future recurrence.
