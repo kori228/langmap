@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 802 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 805 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -843,6 +843,10 @@ const LANG_DATA = {
     words: { water:['dlo','dlo'], fire:['dife','dife'], sun:['solèy','sɔlɛj'], moon:['lalin','lalɛ̃'], mother:['manman','mɑ̃mɑ̃'], father:['papa','papa'], eat:['manje','mɑ̃ʒe'], drink:['bwè','bwɛ'], love:['lanmou','lɑ̃mu'], heart:['kè','kɛ'], tree:['pyebwa','pjɛbwa'], house:['kay','kaj'], dog:['chen','ʃɛ̃'], cat:['chat','ʃa'], hand:['men','mɛ̃'], eye:['je','ʒe'], hello:['bonjou','bɔ̃ʒu'], thanks:['mèsi','mɛsi'], one:['youn','jun'], good:['bon','bɔ̃'] }},
   jam: { name: 'Jamaican Patois', native: 'Patwa', lat: 18.00, lng: -76.79,
     words: { water:['wata','wɑːtə'], fire:['faya','fajə'], sun:['son','sɔn'], moon:['muun','muːn'], mother:['mada','mɑdə'], father:['fada','fɑdə'], eat:['nyam','ɲam'], drink:['drink','dɹɪŋk'], love:['lov','lɔv'], heart:['aat','aːt'], tree:['chrii','tʃɹiː'], house:['ous','ʊːs'], dog:['daag','daːɡ'], cat:['puss','pʊs'], hand:['an','an'], eye:['yai','jaɪ'], hello:['wah gwaan','wɑ ɡwɑːn'], thanks:['tanks','taŋks'], one:['wan','wan'], good:['gud','ɡʊd'] }},
+  // Bahamian Creole (Bahamian Dialect) — English-based creole (Atlantic, Western Caribbean — sister to bzj Belize Kriol and jam Jamaican Patois), ~400K, Bahamas.
+  // Sources: Ethnologue 27 'bah'; Glottolog baha1262; Holm & Shilling (1982) Dictionary of Bahamian English.
+  bah: { name: 'Bahamian Creole', native: 'Bahamian Dialect', lat: 25.05, lng: -77.35, // Nassau, Bahamas
+    words: { water:['watah','wɑːtə'], fire:['fyah','fajə'], sun:['son','sɔn'], moon:['moon','muːn'], mother:['mama','mama'], father:['daddy','dadi'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lɔv'], heart:['hart','hɑːt'], tree:['tree','tɹiː'], house:['house','haus'], dog:['dawg','dɔɡ'], cat:['cat','kat'], hand:['han','han'], eye:['eye','aɪ'], hello:['wuhz hapnin','wʊz hapnɪn'], thanks:['tank ya','tank jə'], one:['one','wan'], good:['good','ɡʊd'] }},
   // Belize Kriol — English-based creole, ~170K (~70K L1 + ~100K L2), Belize. National lingua franca, distinct from Jamaican Patois.
   // Sources: Ethnologue 27 'bzj'; Glottolog beli1260; Decker (2005) The Song of Kriol; National Kriol Council Belize.
   bzj: { name: 'Belize Kriol', native: 'Bileez Kriol', lat: 17.50, lng: -88.20, // Belize City
@@ -1905,6 +1909,10 @@ const LANG_DATA = {
   // English-based creole (Vanuatu)
   bi: { name: 'Bislama', native: 'Bislama', lat: -17.74, lng: 168.31, // Port Vila
     words: { water:['wota','wota'], fire:['faea','faea'], sun:['san','san'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['kakae','kakae'], drink:['dring','driŋ'], love:['laekem','laekem'], heart:['hat','hat'], tree:['tri','tri'], house:['haos','haos'], dog:['dog','doɡ'], cat:['pusi','pusi'], hand:['han','han'], eye:['ae','ae'], hello:['halo','halo'], thanks:['tankyu','taŋkju'], one:['wan','wan'], good:['gud','ɡud'] }},
+  // Pijin (Solomon Islands Pijin) — English-based creole (Pacific, Melanesian Pijin family — sister to tpi Tok Pisin and bi Bislama), ~30K L1 + ~300K L2, Solomon Islands.
+  // Sources: Ethnologue 27 'pis'; Glottolog pidg1255; Jourdan (2002) Pijin: A Trilingual Cultural Dictionary.
+  pip: { name: 'Pijin', native: 'Pijin', lat: -9.43, lng: 159.95, // Honiara, Solomon Islands
+    words: { water:['wata','wata'], fire:['faea','faea'], sun:['san','san'], moon:['mun','mun'], mother:['mami','mami'], father:['dadi','dadi'], eat:['kaikai','kaikai'], drink:['drink','drink'], love:['lavem','lavem'], heart:['hart','hart'], tree:['tri','tri'], house:['haos','haos'], dog:['dogi','doɡi'], cat:['pusi','pusi'], hand:['han','han'], eye:['ae','ae'], hello:['halo','halo'], thanks:['tankyu','taŋkju'], one:['wan','wan'], good:['gud','ɡud'] }},
   // Pama-Nyungan (Australia)
   pjt: { name: 'Pitjantjatjara', native: 'Pitjantjatjara', lat: -25.34, lng: 131.04, // Yulara/Uluru
     words: { water:['kapi','kapi'], fire:['waru','waɻu'], sun:['tjintu','cintu'], moon:['pira','piɻa'], mother:['ngunytju','ŋuɲcu'], father:['mama','mama'], eat:['ngalkuni','ŋalkuni'], drink:['tjikini','cikini'], love:['mukulya','mukulja'], heart:['kurunpa','kuɻunpa'], tree:['punu','punu'], house:['ngura','ŋuɻa'], dog:['papa','papa'], cat:['ngaya','ŋaja'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','palja'], thanks:['palya','palja'], one:['kutju','kucu'], good:['palya','palja'] },
@@ -1931,6 +1939,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'xul'; Glottolog ngun1242; Koch & Hercus (2009) Aboriginal Placenames.
   xul: { name: 'Ngunnawal', native: 'Ngunnawal', lat: -35.28, lng: 149.13, // Canberra, ACT (traditional Ngunnawal country)
     words: { water:['kungal','kuŋal'], fire:['warba','waɻba'], sun:['guma','ɡuma'], moon:['birrang','biɻaŋ'], mother:['guni','ɡuni'], father:['pumba','pumba'], eat:['daring','daɻiŋ'], drink:['nyu','ɲu'], love:['marmit','maɻmit'], heart:['mara','maɻa'], tree:['warabi','waɻabi'], house:['kuni','kuni'], dog:['mirri','miɻi'], cat:['poosi','puːsi'], hand:['mara','maɻa'], eye:['mil','mil'], hello:['yumalundi','jumalundi'], thanks:['miyamala','mijamala'], one:['guma','ɡuma'], good:['walunga','waluŋa'] }},
+  // Warnman — Pama-Nyungan (Western Desert, sister to wbp Warlpiri and pjt Pitjantjatjara within Western Desert subgroup), ~50, Australia (WA — Pilbara/Western Desert).
+  // Sources: Ethnologue 27 'wbt'; Glottolog warn1238; Tindale (1974) Aboriginal Tribes of Australia.
+  wbt: { name: 'Warnman', native: 'Warnman', lat: -22.50, lng: 122.00, // Punmu / Karlamilyi National Park, Western Desert, WA
+    words: { water:['kapi','kapi'], fire:['waru','waɻu'], sun:['tjirntu','cinʈu'], moon:['kintirriny','kinʈiriɲ'], mother:['ngurra','ŋuɻa'], father:['kirrki','kiɻki'], eat:['ngarra','ŋaɻa'], drink:['nyaa','ɲaː'], love:['kanyji','kaɲɟi'], heart:['kurda','kuɖa'], tree:['watiya','watija'], house:['ngurra','ŋuɻa'], dog:['walyamarra','waʎamaɻa'], cat:['ngarda','ŋaɖa'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','paʎa'], thanks:['walytjarra','waʎcaɻa'], one:['kuyu','kuju'], good:['palya','paʎa'] }},
   // === Phase 3F: Tibeto-Burman, Indonesian/Philippine, misc ===
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal

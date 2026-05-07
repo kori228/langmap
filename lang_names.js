@@ -1685,4 +1685,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED64 = {
+        pip: { en: 'Pijin', ja: 'ピジン語', ko: '피진어', zh: '皮金语', yue: '皮金語',
+               vi: 'Tiếng Pijin', th: 'ภาษาพีจิน', id: 'Bahasa Pijin', hi: 'पिजिन',
+               de: 'Pijin', fr: 'Pijin', it: 'Pijin',
+               es_eu: 'Pijin', es_mx: 'Pijin', pt_eu: 'Pijin', pt_br: 'Pijin',
+               ru: 'Пиджин', uk: 'Піджин', ar: 'البيجين', he: 'פיג׳ין', sw: 'Kipijin' },
+        wbt: { en: 'Warnman', ja: 'ワーンマン語', ko: '워언만어', zh: '瓦尔曼语', yue: '瓦爾曼語',
+               vi: 'Tiếng Warnman', th: 'ภาษาวาร์นมัน', id: 'Bahasa Warnman', hi: 'वार्नमान',
+               de: 'Warnman', fr: 'Warnman', it: 'Warnman',
+               es_eu: 'Warnman', es_mx: 'Warnman', pt_eu: 'Warnman', pt_br: 'Warnman',
+               ru: 'Уанман', uk: 'Уанман', ar: 'الوارنمان', he: 'וורנמן', sw: 'Kiwarnman' },
+        bah: { en: 'Bahamian Creole', ja: 'バハマ・クレオール語', ko: '바하마 크리올어', zh: '巴哈马克里奥尔语', yue: '巴哈馬克里奧爾語',
+               vi: 'Tiếng Creole Bahama', th: 'ภาษาครีโอลบาฮามาส', id: 'Kreol Bahama', hi: 'बहामियाई क्रिओल',
+               de: 'Bahamaisch-Kreolisch', fr: 'Créole bahaméen', it: 'Creolo bahamiano',
+               es_eu: 'Criollo bahameño', es_mx: 'Criollo bahameño', pt_eu: 'Crioulo baamiano', pt_br: 'Crioulo baamiano',
+               ru: 'Багамский креольский', uk: 'Багамська креольська', ar: 'الكريولية الباهامية', he: 'קריאולית בהאמית', sw: 'Kikriol cha Bahama' },
+    };
+    for (const code of Object.keys(ADDED64)) {
+        for (const ui of Object.keys(ADDED64[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED64[code][ui];
+            }
+        }
+    }
 })();
