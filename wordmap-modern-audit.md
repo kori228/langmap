@@ -10254,3 +10254,217 @@ Done when:
 The audit comment at line 2655 reads "Pass 32 (header position): Add-to-compare button right under the title" — the intent was the new placement the user is now requesting, but the absolute-positioning CSS overrode the DOM-order placement. The render code expected the button to flow naturally between `<h2>` and `<div class="native-name">`, but the CSS pulled it out of flow and pinned it to the top-right corner. Step 1 + Step 2 fix the original Pass-32 intent.
 
 The bottom-of-modal duplicate (Step 3) appears to be a leftover from before the Pass-32 header-position addition; the original button position was the bottom, then Pass 32 added the new "header" version, and the original bottom render was never removed. Cleanup brings the modal back to a single Compare button.
+
+---
+
+## i18n Audit (2026-05-07 part 9) — `jvn` Caribbean Javanese description not translated
+
+User reported: 「カリブ・ジャワ語ではまだ日本語翻訳がされていない」(Caribbean Javanese has no Japanese translation yet).
+
+Investigation: the **language name** is correctly translated in `lang_names.js` (ja: `カリブ・ジャワ語`, ko: `카리브 자바어`, zh: `加勒比爪哇语`, plus 18 other UI langs). However, the **modal description body** at `wordmap_meta.js:52` has only `description: { en: '...' }` — no `ja`/`ko`/`zh`/etc. translations. So Japanese-UI users see the language name in Japanese ("カリブ・ジャワ語") but the description paragraph in English fallback.
+
+This is a concrete instance of the broader Task 144 / Task 209 description-i18n gap: Task 201's [#201b] gate fires as WARN when a new language is added with `description` missing baseline UI langs (`en/ja/ko/zh`), but Phase 1 = WARN means contributors merge anyway. `jvn` was added in a recent batch with English-only description; the warning was emitted but ignored.
+
+### New Task 217. Translate `jvn` Caribbean Javanese description into `ja`/`ko`/`zh` (and ideally the other 17 UI langs)
+
+Goal:
+Close the immediate user-reported gap by adding Japanese, Korean, and Chinese translations to `LANG_DATA['jvn'].meta.description`. The current state shows English fallback in non-English UIs.
+
+Current issue I checked (2026-05-07 evening):
+- `wordmap_meta.js:52` `LANG_DATA['jvn'].meta.description = { en: '...' }` — only English.
+- `lang_names.js:975` `jvn: { en, ja, ko, zh, yue, vi, th, id, hi, de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk, ar, he, sw }` — all 21 UI langs covered for the language NAME.
+- The Task 201 [#201b] gate would have fired with WARN level when the row was added, listing missing `ja, ko, zh` in baseline UI langs.
+
+Files to change:
+- `wordmap_meta.js:52` — extend the `description` object with `ja`, `ko`, `zh` (minimum). Optionally extend to all 21 UI langs to also resolve Task 209's Phase B.
+
+Implementation instructions:
+
+**Phase 1 — priority 4 UI langs (en + ja + ko + zh):**
+
+Add Japanese, Korean, Chinese description translations preserving the same scholarly tone and key facts:
+- Indentured-worker history (1890-1939, ~33,000 contracted from Dutch East Indies to Suriname).
+- Linguistic divergence from standard Javanese (jv) through 130+ years of isolation.
+- Sranan Tongo + Dutch loanwords, simplified krama-ngoko system, Suriname-specific vocabulary.
+- Heritage-language status in Suriname.
+
+Sample translation outline (refine for natural prose):
+
+```
+ja: 'カリブ・ジャワ語（Bahasa Jawa Suriname）は、1890年から1939年にかけて蘭領東インド（現インドネシア）からスリナムへ年季契約労働者として連れてこられた人々（約33,000人が契約、その多くが永住）の子孫であるジャワ系スリナム人共同体によって話されるジャワ語の変種。130年以上の隔離により標準ジャワ・ジャワ島のジャワ語（jv）から分岐し、スラナン・トンゴ語およびオランダ語からの広範な借用、簡略化された敬語階層（クラマ・ンゴコ）体系、スリナム固有の語彙を持つ。スリナムの主要な文化遺産言語の一つとして認められている。',
+ko: '카리브 자바어(Bahasa Jawa Suriname)는 1890년부터 1939년까지 네덜란드령 동인도(현 인도네시아)에서 수리남으로 데려온 연한계약 노동자(약 33,000명 계약, 대부분 영주 정착)의 후손인 자바계 수리남인 공동체가 사용하는 자바어 변종이다. 130여 년의 고립을 통해 표준 자바섬 자바어(jv)에서 갈라졌으며, 스라난 통고어와 네덜란드어로부터의 광범위한 차용어, 단순화된 화법 단계(크라마-응고코) 체계, 수리남 특유의 어휘를 가진다. 수리남의 주요 유산 언어 중 하나로 인정받고 있다.',
+zh: '加勒比爪哇语（Bahasa Jawa Suriname）是爪哇-苏里南社区使用的爪哇语变体，他们的祖先是 1890 年至 1939 年间从荷属东印度（今印度尼西亚）以契约劳工身份被带到苏里南的人们（约 33,000 人签约，大多数永久定居）。经过 130 多年的隔离，已从标准爪哇岛爪哇语（jv）分化：广泛借用斯拉南通哥语和荷兰语词汇、简化的语言层级（krama-ngoko）系统、以及若干苏里南特有词汇。被认定为苏里南主要的文化遗产语言之一。',
+```
+
+**Phase 2 — extend to all 21 UI langs (optional, ties into Task 209):**
+- yue/vi/th/id/hi/de/fr/it/es_eu/es_mx/pt_eu/pt_br/ru/uk/ar/he/sw — 17 more translations.
+- Same source content, same scholarly register.
+- Same phase-rollout policy as Task 209 (priority European → Asian → remaining).
+
+**Phase 3 — verify the validator's Phase 1 → 2 promotion of [#201b] is realistic.**
+- After this fix, run `WM_VALIDATE_STRICT=1 WM_BATCH_GATE=1 node validate_wordmap_data.js` to confirm `[#201b]` no longer fires for `jvn`.
+- Consider escalating [#201b] from WARN to ERROR for new-language batches so the next "English-only description merged anyway" recurrence is prevented.
+
+Validator / static check:
+- `[#13b']` description i18n coverage rises 1 row across 17 UI langs after Phase 2.
+- `[#201b]` no longer flags `jvn` after Phase 1.
+
+Do not:
+- Do not machine-translate without review. The historical detail (indentured labour, Dutch East Indies, krama-ngoko speech levels) needs natural translation in each language.
+- Do not delete the prose-readable `description.en` — it remains the source of truth for translation.
+- Do not bundle this with Task 209 Phase B execution unless willing to translate all ~180 missing rows simultaneously. Task 217 is the single-row fix for the user's specific complaint.
+
+Done when:
+- `LANG_DATA['jvn'].meta.description` has at least `en/ja/ko/zh` populated.
+- A user with Japanese UI sees the description in Japanese (not English fallback).
+- Validator coverage tally for ja description rises by 1 row.
+- Optional: `LANG_DATA['jvn'].meta.description` has all 21 UI langs populated (Phase 2).
+
+### Why this matters for the broader audit
+
+`jvn` is a single-row report from a user observing a Japanese-UI session. The same gap likely exists on every recent language addition that didn't go through Task 209 Phase B translation. Per the validator INFO line earlier today:
+
+```
+description i18n: ja coverage 627/694 (~90%) — missing 67 rows
+                  ko coverage 627/694 (~90%) — missing 67 rows
+                  zh coverage 627/694 (~90%) — missing 67 rows
+```
+
+So **roughly 67 languages** in priority UI langs (ja/ko/zh) currently show English fallback. `jvn` is one of those 67. The user's report is the visible tip of the iceberg — Task 144 / Task 209 is the systemic fix.
+
+Recommended action sequence:
+1. **Task 217 immediate** — translate `jvn` description (Phase 1 ~5 min).
+2. **Task 209 Phase B follow-through** — batch-translate the other ~66 ja/ko/zh-missing rows. Highest impact: shrinks `[#13b']` warnings ja/ko/zh from 90% to 100%.
+3. **Task 201 [#201b] Phase 2 promotion** — escalate WARN → ERROR for new-language batches so recurrence is prevented. Phase 2 plan already in Task 201.
+
+---
+
+## Metadata-Density Audit (2026-05-07 part 10) — older language entries are far thinner than newer additions
+
+User reported: 「マポス・ブアン語とトク・ピシンを比較すると、前者の方の説明とメタ情報が詳しく情報量が圧倒的に多い。たぶん、後から生成されたものと思われるが、既存の情報にも同じような情報量で書き直すことはできないだろうか？」
+
+Investigation confirmed a stark systemic gap. A 20-language sample (`tpi`, `ht`, `sw`, `vi`, `tl`, `id`, `ms`, `am`, `zu`, `xh`, `yo`, `ig`, `ha`, `my`, `km`, `lo`, `bo`, `jam`, `pcm`, `hwc`) **all 20 are missing**:
+- `description.ja`, `description.ko`, `description.zh` (only `en`).
+- `meta.sources` (no scholarly citations).
+- `meta.scriptTags` (relies on regex inference).
+
+Every one of these 20 is a major world / regional language with rich available scholarship — Swahili (~80M speakers), Vietnamese (~85M), Indonesian, Tagalog, Burmese, Khmer, Tibetan, Yoruba, Hausa, Igbo, Zulu, Xhosa, Amharic, Tok Pisin, Haitian Creole, etc. They were added before the Task 145 / 80 / 130 / 197 cross-cutting standards existed and have not been backfilled.
+
+Meanwhile, recent Tier 4-13 additions like `bzh` Mapos Buang (~10K speakers, much smaller community) follow the new standards and have detailed family/countries/script prose, multilingual descriptions, structured sources, and scriptTags.
+
+### New Task 218. Backfill rich metadata on the ~50–600 older language entries with thin descriptions
+
+Goal:
+Bring the older entries up to the same quality bar as the new Tier 4-13 entries: multilingual descriptions (`en/ja/ko/zh` minimum), scholarly `sources`, structured `scriptTags`, and detailed family/countries prose. The user-visible asymmetry is unfair: a small Oceanic language (`bzh`) has more thoroughly translated meta than a national lingua franca (`tpi`).
+
+Current issue I checked (2026-05-07 evening, 20-lang sample):
+
+| Code | Language | ja desc | sources | scriptTags |
+|---|---|---|---|---|
+| `tpi` | Tok Pisin | ✗ | ✗ | ✗ |
+| `ht` | Haitian Creole | ✗ | ✗ | ✗ |
+| `sw` | Swahili | ✗ | ✗ | ✗ |
+| `vi` | Vietnamese | ✗ | ✗ | ✗ |
+| `tl` | Tagalog | ✗ | ✗ | ✗ |
+| `id` | Indonesian | ✗ | ✗ | ✗ |
+| `ms` | Malay | ✗ | ✗ | ✗ |
+| `am` | Amharic | ✗ | ✗ | ✗ |
+| `zu` | Zulu | ✗ | ✗ | ✗ |
+| `xh` | Xhosa | ✗ | ✗ | ✗ |
+| `yo` | Yoruba | ✗ | ✗ | ✗ |
+| `ig` | Igbo | ✗ | ✗ | ✗ |
+| `ha` | Hausa | ✗ | ✗ | ✗ |
+| `my` | Burmese | ✗ | ✗ | ✗ |
+| `km` | Khmer | ✗ | ✗ | ✗ |
+| `lo` | Lao | ✗ | ✗ | ✗ |
+| `bo` | Tibetan | ✗ | ✗ | ✗ |
+| `jam` | Jamaican Patois | ✗ | ✗ | ✗ |
+| `pcm` | Nigerian Pidgin | ✗ | ✗ | ✗ |
+| `hwc` | Hawaiian Creole | ✗ | ✗ | ✗ |
+
+**`tpi` Tok Pisin specifically (user's example):**
+- Current description: 1 sentence — `'Tok Pisin serves as the main lingua franca in a country with over 800 indigenous languages.'`
+- 4M speakers (~150K L1, rest L2 national lingua franca).
+- One of three official languages of PNG.
+- Substantial scholarly literature: Mihalic 1971, Mühlhäusler 1979, Verhaar 1995.
+- Should have rich multilingual description matching `bzh` Mapos Buang's depth.
+
+Files to change:
+- `wordmap_meta.js` — backfill `description: { en, ja, ko, zh }`, `sources: [...]`, `scriptTags: [...]`, and richer `family`/`countries`/`official`/`script` prose for each affected row.
+
+Implementation instructions:
+
+**Phase A — Top-50 high-traffic / high-population (1M+ speakers or major creoles):**
+
+Languages: `sw, vi, id, tl, ms, am, zu, xh, yo, ig, ha, my, km, lo, bo, ne, mr, gu, kn, ml, pa, ur, ta, te, bn, hi, fa, ur, tr, ku, az, hu, fi, et, lv, lt, ka, hy, sq, mt, gl, ca, eu, bg, sr, hr, sk, cs, ro, sl, mk, da, sv, nb, nn, is, fo, ga, gd, cy, br, fr_qc, en_aave, en_in, ...`
+
+About 50 of these need full backfill. For each:
+- Write a 4-5 sentence English description covering: speaker count + geographic distribution, official status, key linguistic features (typology, script, notable phonology/morphology), 1-2 cultural/historical anchor points.
+- Translate to ja/ko/zh (priority 4) at minimum.
+- Add 2-4 sources (Ethnologue, Glottolog, plus 1-2 scholarly references).
+- Add scriptTags array.
+- Verify family string follows Task 159 normalization.
+
+**Pilot rewrite for `tpi` Tok Pisin** (drafted in audit conversation 2026-05-07):
+
+```js
+LANG_DATA['tpi'].meta = {
+    family: 'English-based creole (Melanesian Pidgin)',
+    speakers: '~4M (~150K L1, rest L2/national lingua franca)',
+    speakerBasis: 'L1+L2',
+    speakerSource: 'Ethnologue 27',
+    speakerYear: 2024,
+    iso6393: 'tpi',
+    glottocode: 'tokp1240',
+    countries: 'Papua New Guinea (national lingua franca; concentrated on coast and in urban centers)',
+    official: 'Papua New Guinea (one of three official languages alongside English and Hiri Motu)',
+    script: 'Latin (Lutheran-Catholic ecumenical orthography standardized 1955; Mihalic dictionary 1971)',
+    scriptTags: ['Latin'],
+    description: {
+        en: 'Tok Pisin (literally "talk pidgin", from English) is one of three official languages of Papua New Guinea (with English and Hiri Motu) and the country\'s primary national lingua franca, spoken by ~4M people across over 800 indigenous-language communities. Originated in 19th-century Bismarck Archipelago plantation labour migration and crystallised in German New Guinea (1884-1914), absorbing substantial Tolai (Kuanua) Austronesian vocabulary plus German loanwords (balus "airplane" ← Bauklotz, raus "out" ← raus). One of the world\'s best-studied creoles thanks to Mihalic\'s 1971 Jacaranda Dictionary, Mühlhäusler\'s 1979 grammar, and Verhaar\'s 1995 reference grammar. Has L1 speakers (~150K) particularly in urban areas and a rich literary tradition including the weekly Wantok newspaper since 1970.',
+        ja: 'トク・ピシン（英語の "talk" + "pidgin" に由来。「ピジン語の話し言葉」の意）はパプアニューギニア（PNG）の3つの公用語の一つ（英語、ヒリ・モトゥ語と並ぶ）であり、800を超える先住民言語コミュニティを横断する国民共通語として約400万人に話される。19世紀のビスマルク諸島プランテーション労働者移住に起源を持ち、ドイツ領ニューギニア時代（1884-1914年）に確立し、トライ（クアヌア）語のオーストロネシア系語彙とドイツ語借用語（例: balus「飛行機」← Bauklotz、raus「外へ」← raus）を大幅に吸収した。Mihalic の 1971年 Jacaranda 辞書、Mühlhäusler の 1979年文法、Verhaar の 1995年参照文法の存在から、世界で最も研究されたクレオール言語の一つ。都市部を中心に約 15万人の母語話者を持ち、1970年創刊の週刊紙 Wantok など豊かな書き言葉の伝統を有する。',
+        ko: '톡 피신(영어 "talk" + "pidgin"에서, "피진어 말씨"의 뜻)은 파푸아뉴기니의 3개 공식어 중 하나이며(영어, 히리 모투어와 함께), 800개 이상의 토착어 공동체를 가로지르는 국가적 공통어로서 약 400만 명이 사용한다. 19세기 비스마르크 제도 농장 노동자 이주에서 기원하여 독일령 뉴기니 시대(1884-1914)에 결정화되었고, 톨라이(쿠아누아)어의 오스트로네시아 어휘와 독일어 차용어(예: balus "비행기" ← Bauklotz, raus "밖으로" ← raus)를 상당히 흡수했다. Mihalic의 1971년 Jacaranda 사전, Mühlhäusler의 1979년 문법, Verhaar의 1995년 참조 문법 덕분에 세계에서 가장 잘 연구된 크리올 언어 중 하나이다. 도시 지역 중심으로 약 15만 명의 모어 화자를 가지며, 1970년 창간된 주간지 Wantok 등 풍부한 문자 전통을 보유한다.',
+        zh: '托克皮辛语（英语 "talk" + "pidgin"，意为"洋泾浜语的话语"）是巴布亚新几内亚三种官方语言之一（与英语和希里莫图语并列），是该国跨越 800 多个土著语言社区的国民通用语，约 400 万人使用。起源于 19 世纪俾斯麦群岛的种植园劳动力迁移，在德属新几内亚时代（1884-1914）定型，吸收了大量托莱（库阿努阿）语的南岛词汇和德语借词（如 balus "飞机" ← Bauklotz, raus "出去" ← raus）。由于 Mihalic 1971 年《Jacaranda 词典》、Mühlhäusler 1979 年语法、Verhaar 1995 年参考语法的存在，是世界上研究最深入的克里奥尔语之一。在城市地区拥有约 15 万母语使用者，并有 1970 年创刊的周报 Wantok 等丰富的书面传统。'
+    },
+    sources: [
+        { type: 'reference', title: 'Mihalic (1971) The Jacaranda Dictionary and Grammar of Melanesian Pidgin' },
+        { type: 'reference', title: 'Mühlhäusler (1979) Growth and Structure of the Lexicon of New Guinea Pidgin' },
+        { type: 'reference', title: 'Verhaar (1995) Toward a Reference Grammar of Tok Pisin' },
+        { type: 'reference', title: 'Ethnologue 27: Tok Pisin', url: 'https://www.ethnologue.com/language/tpi/' },
+        { type: 'reference', title: 'Glottolog: Tok Pisin', url: 'https://glottolog.org/resource/languoid/id/tokp1240' }
+    ]
+};
+```
+
+**Phase B — Mid-tier (100K–1M speakers, ~150 langs):** same approach, lower priority.
+
+**Phase C — Long tail (~400 langs, mostly endangered or recently described):** opportunistic.
+
+**Effort estimate:** ~30-60 minutes per language for a careful rewrite (en draft + ja/ko/zh translations + 2-3 source citations). Phase A (50 langs) ~25-50 hours.
+
+Validator / static check:
+- After fix: `[#13b']` description i18n coverage rises across ja/ko/zh.
+- INFO line: `meta.sources adoption: N/M langs have ≥ 1 source`.
+- INFO line: `description average length: N words` per UI lang (would expose thin/rich asymmetry visually).
+
+Do not:
+- Do not machine-translate at scale. Translation requires native-speaker review for technical terminology (creole / pidgin / agglutinative / tonal / etc.).
+- Do not delete the existing English descriptions when expanding — extend them, don't replace blindly.
+- Do not bundle this with Task 217 single-row jvn fix; Task 218 is the systemic backfill, Task 217 is the immediate user complaint.
+- Do not skip `sources` when writing the description. Every claim should be sourceable.
+
+Done when:
+- Phase A 50 langs reach the Mapos-Buang quality bar (multilingual description, sources, scriptTags, detailed family/countries/script prose).
+- Top-20 sample (validation reference) all pass:
+  - 4-5 sentence en description with citation-grade content.
+  - ja/ko/zh translations of comparable depth.
+  - ≥ 2 sources cited.
+  - scriptTags populated.
+- Validator INFO line `description average length` shows narrowed gap between Phase A langs and bzh Mapos Buang.
+- Cross-link Task 209 Phase B (description-only translation) and Task 80 (sources backfill) since Task 218 covers both in one effort.
+
+### Why this matters for educational use
+
+The user's primary use case is using the Word Map as a linguistics teaching tool (per Tasks 151–158 educational roadmap). A teacher pulling up Tok Pisin on the map sees a one-sentence description that says nothing about Tok Pisin's role in PNG, its origins, or its scholarly heritage. Meanwhile a student pulling up the same teacher's randomly-selected obscure language (bzh) sees a paragraph of detail. The asymmetry undermines the map's pedagogical credibility — the well-known languages should be the *richest* descriptions, not the thinnest.
+
+Task 218 is large but high-leverage: completing Phase A alone delivers a uniform-quality experience across the 50 most-likely-to-be-clicked languages.
