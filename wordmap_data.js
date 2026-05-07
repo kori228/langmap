@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 739 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 742 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -620,6 +620,10 @@ const LANG_DATA = {
     words: { water:['biyo','bijo'], fire:['dab','dab'], sun:['qorrax','qɔɾːax'], moon:['dayax','dajax'], mother:['hooyo','hoːjo'], father:['aabo','aːbo'], eat:['cun','tʃun'], drink:['cab','tʃab'], love:['jacayl','dʒatʃajl'], heart:['wadne','wadnɛ'], tree:['geed','ɡeːd'], house:['guri','ɡuɾi'], dog:['eey','eːj'], cat:['bisad','bisad'], hand:['gacmo','ɡatʃmo'], eye:['il','il'], hello:['salaan','salaːn'], thanks:['mahadsanid','maħadsanid'], one:['kow','kow'], good:['wanaagsan','wanaːɡsan'] }},
   om: { name: 'Oromo', native: 'Afaan Oromoo', lat: 8.55, lng: 39.27, // Adama (Oromia regional center)
     words: { water:['bishaan','biʃaːn'], fire:['ibidda','ibidːa'], sun:['aduu','aduː'], moon:['jiʼa','dʒiʔa'], mother:['haadha','haːdʱa'], father:['abbaa','abːaː'], eat:['nyaachuu','ɲaːtʃuː'], drink:['dhuguu','dʱuɡuː'], love:['jaalala','dʒaːlala'], heart:['onnee','onːeː'], tree:['muka','muka'], house:['mana','mana'], dog:['saree','saɾeː'], cat:['adurree','aduɾːeː'], hand:['harka','haɾka'], eye:['ija','idʒa'], hello:['akkam','akːam'], thanks:['galatoomi','ɡalatoːmi'], one:['tokko','tokːo'], good:['gaarii','ɡaɾiː'] }},
+  // Konso — Cushitic East (Lowland), ~250K, Ethiopia (SNNPR — Konso Special Woreda). Famous for terraced agriculture and stone tower-stelae (UNESCO heritage 2011).
+  // Sources: Ethnologue 27 'kxc'; Glottolog kons1241; Ongaye (2013) Konso grammar; Sasse (1976) East Cushitic.
+  kxc: { name: 'Konso', native: 'Af kawooti', lat: 5.34, lng: 37.43, // Konso town, SNNPR Ethiopia
+    words: { water:['inanta','inanta'], fire:['iya','ija'], sun:['kawa','kawa'], moon:['ayeena','ajeːna'], mother:['eedda','eːdːa'], father:['abba','abːa'], eat:['ihaa','ihaː'], drink:['inakkaa','inakːaː'], love:['jaalla','dʒaːlːa'], heart:['onna','onːa'], tree:['ergaa','erɡaː'], house:['mana','mana'], dog:['kareta','kaɾeta'], cat:['adurree','aduɾːeː'], hand:['harka','haɾka'], eye:['ila','ila'], hello:['akkam','akːam'], thanks:['galta','ɡalta'], one:['takka','takːa'], good:['fayye','fajːe'] }},
   rw: { name: 'Kinyarwanda', native: 'Ikinyarwanda', lat: -1.94, lng: 30.06,
     words: { water:['amazi','amaːzi'], fire:['umuriro','umuɾiɾo'], sun:['izuba','izuba'], moon:['ukwezi','ukwezi'], mother:['mama','maːma'], father:['papa','paːpa'], eat:['kurya','kuɾja'], drink:['kunywa','kuɲwa'], love:['urukundo','uɾukundo'], heart:['umutima','umutima'], tree:['igiti','iɡiti'], house:['inzu','inzu'], dog:['imbwa','imbwa'], cat:['injangwe','indʒaŋɡwe'], hand:['ikiganza','ikiɡanza'], eye:['ijisho','idʒiʃo'], hello:['muraho','muɾaːho'], thanks:['murakoze','muɾakoze'], one:['rimwe','ɾimwe'], good:['byiza','bjiza'] }},
   // Kirundi (Rundi) — Bantu JE61, sister to Kinyarwanda. National language of Burundi.
@@ -2070,6 +2074,10 @@ const LANG_DATA = {
     words: { water:['meq','meq'], fire:['keneq','keneq'], sun:['akerta','akerta'], moon:['iraluq','iraluq'], mother:['aana','aːna'], father:['ata','ata'], eat:['ner\'uq','nerʔuq'], drink:['mertuq','mertuq'], love:['kenka','kenka'], heart:['irua','irua'], tree:['napa','napa'], house:['ena','ena'], dog:['qimugta','qimuxta'], cat:['qassraaraq','qassraːraq'], hand:['unirak','unirak'], eye:['ii','iː'], hello:['waqaa','waqaː'], thanks:['quyana','qujana'], one:['ataucik','atautʃik'], good:['assirtuq','asːirtuq'] }},
   ipk: { name: 'Inupiaq', native: 'Iñupiatun', lat: 71.29, lng: -156.79, // Utqiagvik
     words: { water:['imiq','imiq'], fire:['igniq','iɡniq'], sun:['siqiñiq','siqiɲiq'], moon:['tatqiq','tatqiq'], mother:['aaka','aːka'], father:['aapa','aːpa'], eat:['niġiruq','niʁiruq'], drink:['imiġuq','imiʁuq'], love:['piqpaġiyaa','piqpaʁijaː'], heart:['uumman','uːmːan'], tree:['napaaqtaq','napaːqtaq'], house:['iglu','iɡlu'], dog:['qimmiq','qimːiq'], cat:['pussiq','pusːiq'], hand:['argak','arɡak'], eye:['iri','iri'], hello:['paglagvik','paɡlaɡvik'], thanks:['quyanaq','qujanaq'], one:['atausiq','ataʊʃiq'], good:['nakuuruq','nakuːruq'] }},
+  // Central Siberian Yupik (Yupik, Saint Lawrence Island/Chukchi) — Eskimo-Aleut, ~1K, Russia (Chukotka Coast) + USA (Alaska, Saint Lawrence Island Gambell, Savoonga).
+  // Sources: Ethnologue 27 'ess'; Glottolog cent2127; Jacobson (2001) A Practical Grammar of the Central Yupʼik Eskimo Language.
+  ess: { name: 'Central Siberian Yupik', native: 'Юпик ситвэлкэн', lat: 63.78, lng: -171.74, // Gambell, Saint Lawrence Island
+    words: { water:['мэк','mək'], fire:['кэныг','kənəɡ'], sun:['маасьихта','maːsʲixta'], moon:['аасʼта','aːsʼta'], mother:['аакаг','aːkaɡ'], father:['аатаг','aːtaɡ'], eat:['нэвлэк','nəvlək'], drink:['эвлэк','əvlək'], love:['сахвэк','saxvək'], heart:['эунгэк','əuŋək'], tree:['эивкʼак','əivkʼak'], house:['нэӈэн','nəŋən'], dog:['кагилхак','kaɡilxak'], cat:['пусʼик','pusʼik'], hand:['унаак','unaːk'], eye:['ии','iː'], hello:['аипак','aipak'], thanks:['игамсиқанаӄ','iɡamsiqanaq'], one:['атасʼек','atasʼek'], good:['асʼилкʼа','asʼilkʼa'] }},
   // Aleut — sole surviving Aleut branch of Eskimo-Aleut family,
   // ~150 speakers (severely endangered) split between Alaska
   // (Aleutian/Pribilof Islands) and Russia (Commander Islands —
@@ -3309,6 +3317,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'djk'; Glottolog ndyu1242; Huttar & Huttar (1994) Ndyuka grammar.
   djk: { name: 'Aukan (Ndyuka)', native: 'Okanisi tongo', lat: 4.20, lng: -54.45, // Drietabbetje, upper Tapanahony River
     words: { water:['watra','watra'], fire:['faya','faja'], sun:['son','soŋ'], moon:['mun','mun'], mother:['mma','mːa'], father:['tata','tata'], eat:['njanjan','ɲaɲaŋ'], drink:['diingi','diːŋi'], love:['lobi','lobi'], heart:['ati','ati'], tree:['bon','boŋ'], house:['osu','osu'], dog:['dagu','daɡu'], cat:['poesi','pusi'], hand:['ana','ana'], eye:['ai','ai'], hello:['fa yu de','fa ju de'], thanks:['gaantangi','ɡaːntaŋi'], one:['wan','wan'], good:['boon','boːŋ'] }},
+  // Saramaccan — English-/Portuguese-based maroon creole (~50% English / ~35% Portuguese / ~15% African substrate), ~26K, Suriname (Suriname River) + French Guiana.
+  // Sources: Ethnologue 27 'srm'; Glottolog sara1340; Smith (1987) The Genesis of the Creole Languages of Surinam; Aboh & Smith (2009).
+  srm: { name: 'Saramaccan', native: 'Saamaka tongo', lat: 4.05, lng: -55.50, // Brokopondo / upper Suriname River
+    words: { water:['wáta','wáta'], fire:['fáya','fája'], sun:['masángi','masáŋɡi'], moon:['lúna','lúna'], mother:['mama','mama'], father:['tata','tata'], eat:['njá','ɲá'], drink:['biíki','biíki'], love:['lóbi','lóbi'], heart:['hááti','háːti'], tree:['páu','páu'], house:['wósu','wósu'], dog:['dágu','dáɡu'], cat:['mísi','mísi'], hand:['mãũ','mãũ'], eye:['ái','ái'], hello:['kɔlɔkɔlɔ','kɔlɔkɔlɔ'], thanks:['waáwa','waːwa'], one:['wán','wán'], good:['bunu','bunu'] }},
   // Wakashan (Pacific Northwest Coast)
   kwk: { name: 'Kwak\'wala', native: 'Kwak\'wala', lat: 50.62, lng: -126.93, // Vancouver Island
     words: { water:['\'wap','ʔwap'], fire:['lax̱','lax'], sun:['ƛ\'isa̱la','tɬʼisəla'], moon:['\'mukwa','ʔmukʷa'], mother:['abe','abe'], father:['o̱mp','omp'], eat:['ha̱\'ma̱p','haʔməp'], drink:['na̱\'qa','naʔqa'], love:['\'ya̱x̱is','ʔjəxis'], heart:['ts\'iłas','tsʼiɬas'], tree:['x̱o̱kwa','xokʷa'], house:['g̱ukw','ɡukʷ'], dog:['\'wa̱ts\'i','ʔwətsʼi'], cat:['pi̱s','pis'], hand:['\'wała','ʔwaɬa'], eye:['gigayu','ɡiɡaju'], hello:['gilakas\'la','ɡilakasla'], thanks:['gilakas\'la','ɡilakasla'], one:['\'na̱m','ʔnəm'], good:['ek','ek'] },

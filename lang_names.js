@@ -1160,4 +1160,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED43 = {
+        kxc: { en: 'Konso', ja: 'コンソ語', ko: '콘소어', zh: '孔索语', yue: '孔索語',
+               vi: 'Tiếng Konso', th: 'ภาษาคอนโซ', id: 'Bahasa Konso', hi: 'कोंसो',
+               de: 'Konso', fr: 'Konso', it: 'Konso',
+               es_eu: 'Konso', es_mx: 'Konso', pt_eu: 'Konso', pt_br: 'Konso',
+               ru: 'Консо', uk: 'Консо', ar: 'الكونسو', he: 'קונסו', sw: 'Kikonso' },
+        ess: { en: 'Central Siberian Yupik', ja: '中央シベリア・ユピック語', ko: '중앙 시베리아 유픽어', zh: '中西伯利亚尤皮克语', yue: '中西伯利亞尤皮克語',
+               vi: 'Tiếng Yupik Trung Siberia', th: 'ภาษายูปิกไซบีเรียกลาง', id: 'Yupik Siberia Tengah', hi: 'मध्य साइबेरियाई युपिक',
+               de: 'Zentralsibirisches Yupik', fr: 'Youpik de Sibérie centrale', it: 'Yupik della Siberia centrale',
+               es_eu: 'Yupik de Siberia central', es_mx: 'Yupik de Siberia central', pt_eu: 'Iúpique da Sibéria central', pt_br: 'Iúpique da Sibéria central',
+               ru: 'Центральносибирский юпикский', uk: 'Центральносибірська юпіцька', ar: 'اليوبيكية السيبيرية الوسطى', he: 'יופיק סיבירי מרכזי', sw: 'Kiyupik cha Siberia ya Kati' },
+        srm: { en: 'Saramaccan', ja: 'サラマッカ語', ko: '사라마카어', zh: '萨拉马卡语', yue: '薩拉馬卡語',
+               vi: 'Tiếng Saramaca', th: 'ภาษาซารามักกัน', id: 'Bahasa Saramaccan', hi: 'सरमक्कन',
+               de: 'Saramaccan', fr: 'Saramaca', it: 'Saramaccano',
+               es_eu: 'Saramacano', es_mx: 'Saramacano', pt_eu: 'Saramacano', pt_br: 'Saramacano',
+               ru: 'Сарамаккский', uk: 'Сарамакканська', ar: 'السرامكانية', he: 'סרמקנית', sw: 'Kisaramakkani' },
+    };
+    for (const code of Object.keys(ADDED43)) {
+        for (const ui of Object.keys(ADDED43[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED43[code][ui];
+            }
+        }
+    }
 })();
