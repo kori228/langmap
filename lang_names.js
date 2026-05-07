@@ -1585,4 +1585,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED60 = {
+        bpy: { en: 'Bishnupriya Manipuri', ja: 'ビシュヌプリヤ・マニプリ語', ko: '비슈누프리야 마니푸리어', zh: '比什奴普里亚曼尼普尔语', yue: '比什奴普里亞曼尼普爾語',
+               vi: 'Tiếng Bishnupriya Manipuri', th: 'ภาษาบิชนุปริยามณีปุรี', id: 'Bahasa Bishnupriya Manipuri', hi: 'विष्णुप्रिया मणिपुरी',
+               de: 'Bishnupriya-Manipuri', fr: 'Bishnupriya-manipuri', it: 'Bishnupriya manipuri',
+               es_eu: 'Bishnupriya manipuri', es_mx: 'Bishnupriya manipuri', pt_eu: 'Bishnupriya manipuri', pt_br: 'Bishnupriya manipuri',
+               ru: 'Бишнуприя-манипури', uk: 'Бішнупрія-маніпурі', ar: 'البيشنوبريا الماني펣ورية', he: 'בישנופריה מניפורי', sw: 'Kibishnupriya cha Manipuri' },
+        mch: { en: 'Maquiritari', ja: 'マキリタレ語', ko: '마키리타리어', zh: '马基里塔雷语', yue: '馬基里塔雷語',
+               vi: 'Tiếng Maquiritari', th: 'ภาษามากีรีตารี', id: 'Bahasa Maquiritari', hi: 'मकीरीटारी',
+               de: 'Maquiritari', fr: 'Maquiritari', it: 'Maquiritari',
+               es_eu: 'Maquiritari', es_mx: 'Maquiritari', pt_eu: 'Maquiritari', pt_br: 'Maquiritari',
+               ru: 'Макиритаре', uk: 'Макірітаре', ar: 'الماكيريتارية', he: 'מקיריטרי', sw: 'Kimaquiritari' },
+        drs: { en: 'Gedeo', ja: 'ゲデオ語', ko: '게데오어', zh: '格德奥语', yue: '格德奧語',
+               vi: 'Tiếng Gedeo', th: 'ภาษาเกเดโอ', id: 'Bahasa Gedeo', hi: 'गेदेओ',
+               de: 'Gedeo', fr: 'Gedeo', it: 'Gedeo',
+               es_eu: 'Gedeo', es_mx: 'Gedeo', pt_eu: 'Gedeo', pt_br: 'Gedeo',
+               ru: 'Гедео', uk: 'Гедео', ar: 'الجيديو', he: 'גדאו', sw: 'Kigedeo' },
+    };
+    for (const code of Object.keys(ADDED60)) {
+        for (const ui of Object.keys(ADDED60[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED60[code][ui];
+            }
+        }
+    }
 })();

@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 790 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 793 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -684,6 +684,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'kxc'; Glottolog kons1241; Ongaye (2013) Konso grammar; Sasse (1976) East Cushitic.
   kxc: { name: 'Konso', native: 'Af kawooti', lat: 5.34, lng: 37.43, // Konso town, SNNPR Ethiopia
     words: { water:['inanta','inanta'], fire:['iya','ija'], sun:['kawa','kawa'], moon:['ayeena','ajeːna'], mother:['eedda','eːdːa'], father:['abba','abːa'], eat:['ihaa','ihaː'], drink:['inakkaa','inakːaː'], love:['jaalla','dʒaːlːa'], heart:['onna','onːa'], tree:['ergaa','erɡaː'], house:['mana','mana'], dog:['kareta','kaɾeta'], cat:['adurree','aduɾːeː'], hand:['harka','haɾka'], eye:['ila','ila'], hello:['akkam','akːam'], thanks:['galta','ɡalta'], one:['takka','takːa'], good:['fayye','fajːe'] }},
+  // Gedeo (Derasa) — Afro-Asiatic Cushitic East (Highland — sister to sid Sidamo, omx Hadiyya, kbr Kembata), ~1.8M, Ethiopia (SNNPR — Gedeo Zone south of Awasa).
+  // Sources: Ethnologue 27 'drs'; Glottolog gede1242; Hudson (1989) Highland East Cushitic Dictionary.
+  drs: { name: 'Gedeo', native: 'Gedeʼuffa', lat: 6.10, lng: 38.30, // Dilla, Gedeo Zone, SNNPR
+    words: { water:['woyye','wojːe'], fire:['gira','ɡiɾa'], sun:['ayyaʼne','ajːaʔne'], moon:['agina','aɡina'], mother:['aaki','aːki'], father:['eke','eke'], eat:['ittu','itːu'], drink:['agittu','aɡitːu'], love:['baxxa','baxːa'], heart:['mishi','miʃi'], tree:['haqqa','haqːa'], house:['mine','mine'], dog:['kaneessa','kaneːsːa'], cat:['adurre','aduɾːe'], hand:['anga','aŋɡa'], eye:['ille','ilːe'], hello:['mooye','moːje'], thanks:['galaata','ɡalaːta'], one:['mitto','mitːo'], good:['danee','daneː'] }},
   // Daasanach — Cushitic East (Lowland), ~50K, Kenya/Ethiopia border (Lake Turkana/Omo Delta). Distinctive cattle-pastoral culture (Murle-Daasanach).
   // Sources: Ethnologue 27 'dsh'; Glottolog daas1239; Tosco (2001) The Dhaasanac Language.
   dsh: { name: 'Daasanach', native: 'Daasanach', lat: 4.55, lng: 36.04, // Omorate, South Omo, Ethiopia (centroid Kenya/Ethiopia border)
@@ -1893,6 +1897,10 @@ const LANG_DATA = {
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal
     words: { water:['ꯏꯁꯤꯡ','isiŋ'], fire:['ꯃꯩ','mei'], sun:['ꯅꯨꯃꯤꯠ','numit'], moon:['ꯊꯥ','tʰaː'], mother:['ꯏꯃꯥ','ima'], father:['ꯏꯄꯥ','ipa'], eat:['ꯆꯥꯕ','tʃaːba'], drink:['ꯊꯛꯄ','tʰakpa'], love:['ꯅꯨꯡꯁꯤꯕ','nuŋsiba'], heart:['ꯊꯋꯥꯏ','tʰawai'], tree:['ꯐꯨꯂꯥꯡ','pʰulaŋ'], house:['ꯌꯨꯝ','jum'], dog:['ꯍꯨꯏ','hui'], cat:['ꯍꯧꯗꯣꯡ','houdoŋ'], hand:['ꯈꯨꯠ','kʰut'], eye:['ꯃꯤꯠ','mit'], hello:['ꯈꯨꯔꯨꯝꯖꯔꯤ','kʰuɾumdʒaɾi'], thanks:['ꯊꯥꯒꯠꯆꯔꯤ','tʰaːɡattʃaɾi'], one:['ꯑꯃ','ama'], good:['ꯐꯕ','pʰaba'] }},
+  // Bishnupriya Manipuri — Indo-European Indo-Aryan (Eastern, sister to as Assamese; despite the "Manipuri" name, it's Indo-Aryan, NOT Tibeto-Burman like Meitei/mni), ~120K, India NE (Assam, Tripura) + Bangladesh (Sylhet) + Myanmar.
+  // Sources: Ethnologue 27 'bpy'; Glottolog bish1244; Sinha (1986) The Bishnupriya Manipuri Language.
+  bpy: { name: 'Bishnupriya Manipuri', native: 'বিষ্ণুপ্রিয়া মণিপুরী', lat: 24.34, lng: 92.87, // Cachar district, Assam (Bishnupriya heartland)
+    words: { water:['পানি','paːni'], fire:['আগুন','aːɡun'], sun:['বিল','bil'], moon:['জুনাক','dʒunak'], mother:['মা','maː'], father:['বাবা','baːba'], eat:['খাব','kʰaːb'], drink:['পান কর','paːn kaɾ'], love:['মুতি','muti'], heart:['মন','mon'], tree:['গাছ','ɡaːtʃʰ'], house:['ঘর','ɡʱaɾ'], dog:['কুট্টা','kuʈːaː'], cat:['বিল্লি','bilːi'], hand:['হাত','haːt'], eye:['চোখ','tʃokʰ'], hello:['নমস্কার','nomoskar'], thanks:['ধইন্যবাদ','dʱoinjobaːd'], one:['একতা','ektaː'], good:['ভালা','bʱaːlaː'] }},
   new: { name: 'Newari', native: 'नेपाल भाषा', lat: 27.71, lng: 85.32, // Kathmandu
     words: { water:['ला','la'], fire:['मि','mi'], sun:['सूर्य','surja'], moon:['तिमिला','timila'], mother:['मां','maː'], father:['बौ','bau'], eat:['नये','naje'], drink:['तये','taje'], love:['माय','maj'], heart:['नुगः','nuɡʌ'], tree:['सिमा','sima'], house:['छें','tʃʰẽ'], dog:['खिचा','kʰitʃa'], cat:['भौंचा','bʰaũtʃa'], hand:['ल्हाः','lʱaː'], eye:['मिखा','mikʰa'], hello:['ज्वजलपा','dʒwadʒalpa'], thanks:['सुभाय','subʱaj'], one:['छ','tʃʰa'], good:['बःलाः','bʌlaː'] }},
   // Limbu — Sino-Tibetan (Kiranti), ~340K speakers, eastern Nepal + Sikkim. Has its own native Sirijanga script (Unicode 5.1).
@@ -2341,6 +2349,10 @@ const LANG_DATA = {
   // Arawakan (Caribbean coast)
   guc: { name: 'Wayuu', native: 'Wayuunaiki', lat: 11.54, lng: -72.91, // Riohacha
     words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
+  // Maquiritari (Ye'kwana, Yekuana) — Cariban (Northern), ~6K, Venezuela (Bolívar/Amazonas states — Orinoco/Caura headwaters) + Brazil (Roraima — Auaris, Surucucu villages).
+  // Sources: Ethnologue 27 'mch'; Glottolog yekw1242; Hall (1988) The Morphosyntax of Discourse in De'kwana Carib.
+  mch: { name: "Maquiritari", native: "Ye'kwana", lat: 4.45, lng: -64.42, // Auaris, Brazil (Yekuana center)
+    words: { water:['tuna','tuna'], fire:['kayuwane','kajuwane'], sun:['shi','ʃi'], moon:['nuna','nuna'], mother:['ñawi','ɲawi'], father:['baba','baba'], eat:['äsuukai','ɨsuːkai'], drink:['äsoojai','ɨsoːʒai'], love:['ekädäkä','ekɨdɨkɨ'], heart:['eyiwekä','ejiwekɨ'], tree:['eyu','eju'], house:['ätta','ɨtːa'], dog:['kaikutshi','kaikutʃi'], cat:['mishi','miʃi'], hand:['eñä','eɲɨ'], eye:['enu','enu'], hello:['etämä','etɨmɨ'], thanks:['enaña','enaɲa'], one:['toune','toune'], good:['kataajai','kataːʒai'] }},
   // Warao — language isolate, ~28K (largest isolate in northern South America), Venezuela (Orinoco Delta) + small Guyana/Suriname border population.
   // Sources: Ethnologue 27 'wba'; Glottolog wara1303; Romero-Figueroa (1997) A Reference Grammar of Warao; Vaquero (1965) Idioma Warao.
   wba: { name: 'Warao', native: 'Warao', lat: 9.07, lng: -62.05, // Tucupita, Delta Amacuro (Orinoco Delta)
