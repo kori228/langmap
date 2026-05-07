@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 859 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 862 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1846,6 +1846,10 @@ const LANG_DATA = {
     words: { water:['पानी','paːniː'], fire:['आग','aːɡ'], sun:['सूरज','suːrədʒ'], moon:['चान','tʃaːn'], mother:['मय','maj'], father:['बाबू','baːbuː'], eat:['खाएक','kʰaːek'], drink:['पीयक','piːjak'], love:['मया','majaː'], heart:['मन','man'], tree:['गाछ','ɡaːtʃʰ'], house:['घर','ɡʱər'], dog:['कुक्कर','kukːər'], cat:['बिलार','bilaːr'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['प्रणाम','prəɳaːm'], thanks:['धइन्यवाद','dʱainjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
   awa: { name: 'Awadhi', native: 'अवधी', lat: 26.78, lng: 82.13, // Ayodhya
     words: { water:['पानी','paːniː'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəd͡ʒ'], moon:['चान','tʃaːn'], mother:['मइया','məjjaː'], father:['बाबू','baːbuː'], eat:['खाई','kʰaːiː'], drink:['पीई','piːiː'], love:['पिरेम','pirem'], heart:['हियाँ','hijãː'], tree:['रूख','ruːkʰ'], house:['घर','ɡʱər'], dog:['कुक्कुर','kukːur'], cat:['बिलारि','bilaːri'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['राम राम','raːm raːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['निक','nik'] }},
+  // Tharu (Rana Tharu / Dangaura Tharu) — Indo-European Indo-Aryan (closely related to Bhojpuri bho, Maithili mai, Awadhi awa within Eastern Indo-Aryan; some scholars classify as Outer Indo-Aryan due to peripheral position), ~2M, Nepal (Terai lowlands — Dang, Banke, Bardiya, Kailali, Kanchanpur districts) + India (Uttar Pradesh, Uttarakhand Terai). Dialect cluster spanning multiple ISO codes ('thr' Rana, 'thq' Kochila, 'thl' Dangaura, etc.).
+  // Sources: Ethnologue 27 'thr'; Glottolog rana1247 / dang1240; Boehm (1998) The Tharu of Bardiya National Park.
+  thr: { name: 'Tharu', native: 'थारू', lat: 28.10, lng: 81.62, // Tulsipur, Dang District, Nepal
+    words: { water:['पानी','paːniː'], fire:['आग','aːɡ'], sun:['सूरज','suːrədʒ'], moon:['चांद','tʃãːd'], mother:['माई','maːiː'], father:['बबा','bəbaː'], eat:['खाना','kʰaːnaː'], drink:['पीना','piːnaː'], love:['माया','maːjaː'], heart:['मन','man'], tree:['पेड़','peːɽ'], house:['घर','ɡʱəɾ'], dog:['कुकुर','kukur'], cat:['बिलार','bilaːɾ'], hand:['हाथ','haːtʰ'], eye:['आंख','ãːkʰ'], hello:['राम राम','raːm raːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
   // Braj Bhasha — Indo-Aryan, Krishna-devotional literary language of medieval North India.
   // Sources: Ethnologue 27 'bra'; Glottolog braj1242; Snell (1991) The Hindi Classical Tradition.
   bra: { name: 'Braj Bhasha', native: 'ब्रज भाषा', lat: 27.50, lng: 77.67, // Mathura/Vrindavan (Krishna heartland)
@@ -2104,6 +2108,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'agx'; Glottolog aghu1253; Magometov (1970) Aghul'skij jazyk.
   agx: { name: 'Aghul', native: 'агъул чӏал', lat: 41.82, lng: 47.69, // Tpig, Agulsky District, Dagestan
     words: { water:['хьед','ɬed'], fire:['цӏай','tsʼaj'], sun:['рагъ','raʁ'], moon:['ваз','vaz'], mother:['баб','bab'], father:['ада','ada'], eat:['ифи','ifi'], drink:['ахъан','aqʼan'], love:['кӏанди','kʼandi'], heart:['юкӏ','jukʼ'], tree:['тар','tar'], house:['кьали','qʼali'], dog:['хвай','xwaj'], cat:['кац','kats'], hand:['хил','xil'], eye:['ул','ul'], hello:['салам','salam'], thanks:['баркалла','baɾkalːa'], one:['са','sa'], good:['хъвай','qwaj'] }},
+  // Tsez (Dido) — Northeast Caucasian Tsezic (sister to Hinukh, Khwarshi, Bezhta, Hunzib within the Tsezic branch; one of the most case-rich languages in the world with ~64 case forms), ~15K, Russia (Dagestan — Tsuntinsky District in mountainous western Dagestan).
+  // Sources: Ethnologue 27 'ddo'; Glottolog dido1241; Polinsky (2015) Tsez Syntax.
+  ddo: { name: 'Tsez', native: 'цез мец', lat: 42.20, lng: 46.15, // Tsunta, Tsuntinsky District, Dagestan
+    words: { water:['лъи','ɬi'], fire:['цӏи','tsʼi'], sun:['буцӏ','butsʼ'], moon:['бутӏтӏи','butʼːi'], mother:['баб','bab'], father:['обу','obu'], eat:['ишер','iʃer'], drink:['жекер','ʒeker'], love:['уйла','ujla'], heart:['ракӏ','rakʼ'], tree:['ачӏи','atʃʼi'], house:['ма','ma'], dog:['жек','ʒek'], cat:['кету','ketu'], hand:['рекь','reqʼ'], eye:['оьзи','øzi'], hello:['салам','salam'], thanks:['баркалла','baɾkalːa'], one:['сис','sis'], good:['игу','iɡu'] }},
   lbe: { name: 'Lak', native: 'Лакку маз', lat: 42.10, lng: 47.13, // Kumukh
     words: { water:['щин','ʃin'], fire:['цӏу','tsʼu'], sun:['бургъ','burʁ'], moon:['барз','barz'], mother:['нину','ninu'], father:['ппу','pːu'], eat:['ккаву','kːavu'], drink:['гьавхь','ʕavħ'], love:['ччан','tʃːan'], heart:['дакӏ','dakʼ'], tree:['мурхь','muɾħ'], house:['къатта','qatːa'], dog:['ккун','kːun'], cat:['ккац','kːats'], hand:['ка','ka'], eye:['я','ja'], hello:['салам','salam'], thanks:['барчаллагь','baɾtʃalːaʁ'], one:['ца','tsa'], good:['хъинсса','qinsːa'] }},
   tab: { name: 'Tabasaran', native: 'Табасаран чӀал', lat: 41.93, lng: 48.04, // Khiv
@@ -4546,6 +4554,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'toj'; Glottolog tojo1241; Furbee-Losee (1976) The Correct Language: Tojolabal.
   toj: { name: 'Tojolabal', native: "Tojol-ab'al", lat: 16.31, lng: -91.98, // Las Margaritas, Chiapas, Mexico
     words: { water:["ja'",'haʔ'], fire:["k'ak'",'kʼakʼ'], sun:["k'ak'u",'kʼakʼu'], moon:['ixaw','iʃaw'], mother:["nan",'nan'], father:["tat",'tat'], eat:["wa'el",'waʔel'], drink:["uk'",'ukʼ'], love:["sk'ana",'skʼana'], heart:["alma",'alma'], tree:["te'",'teʔ'], house:['naj','nah'], dog:["ts'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["k'ab'",'kʼabʼ'], eye:["satej",'satex'], hello:["lekiluk'",'lekilukʼ'], thanks:["yuj",'juh'], one:['jun','hun'], good:['lek','lek'] }},
+  // Bribri — Chibchan Talamanca (sister to Cabécar cjp within the Talamanca sub-branch), ~7K, Costa Rica (Talamanca canton, Limón Province + Buenos Aires canton, Puntarenas; small Panama border populations).
+  // Sources: Ethnologue 27 'bzd'; Glottolog brib1243; Constenla Umaña (1998) Gramática de la lengua guatuso (comparative Chibchan reference).
+  bzd: { name: 'Bribri', native: "I-ñe' yiwö", lat: 9.53, lng: -82.94, // Suretka, Talamanca, Costa Rica
+    words: { water:['díʼ','diʔ'], fire:['kö','kø'], sun:['siwa','siwa'], moon:['tulùr','tuluɾ'], mother:["ami'",'amiʔ'], father:["yámi'",'jamiʔ'], eat:["dö'",'døʔ'], drink:['yök','jøk'], love:['shkö','ʃkø'], heart:["sû'",'suʔ'], tree:["kál",'kal'], house:['huʼ','huʔ'], dog:["tchö'",'tʃøʔ'], cat:['mishi','miʃi'], hand:['kjö','kjø'], eye:["wö'",'wøʔ'], hello:["iri'",'iɾiʔ'], thanks:['wëʼs','wəʔs'], one:["ètöm",'etøm'], good:['bua','bua'] }},
   // Tabasco Chontal (Yokot'an) — Mayan (Cholan-Tzeltalan, Cholan — sister to Chol ctu within the Cholan branch), ~36K, Mexico (Tabasco — Nacajuca, Centla, Centro, Macuspana municipalities; lowland Gulf coast).
   // Sources: Ethnologue 27 'chf'; Glottolog tabz1238; Knowles (1984) A descriptive grammar of Chontal Maya.
   chf: { name: "Tabasco Chontal", native: "Yokot'an", lat: 18.17, lng: -93.02, // Nacajuca, Tabasco, Mexico

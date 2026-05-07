@@ -2176,4 +2176,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED91 = {
+        ddo: { en: 'Tsez', ja: 'ツェズ語', ko: '체즈어', zh: '采兹语', yue: '采茲語',
+               vi: 'Tiếng Tsez', th: 'ภาษาเซซ', id: 'Bahasa Tsez', hi: 'त्सेज़',
+               de: 'Tsesisch', fr: 'Tsez', it: 'Tsez',
+               es_eu: 'Tsez', es_mx: 'Tsez', pt_eu: 'Tsez', pt_br: 'Tsez',
+               ru: 'Цезский', uk: 'Цезька', ar: 'الصزية', he: 'צזית', sw: 'Kitsez' },
+        bzd: { en: 'Bribri', ja: 'ブリブリ語', ko: '브리브리어', zh: '布里布里语', yue: '布里布里語',
+               vi: 'Tiếng Bribri', th: 'ภาษาบรีบรี', id: 'Bahasa Bribri', hi: 'ब्रिब्री',
+               de: 'Bribri', fr: 'Bribri', it: 'Bribri',
+               es_eu: 'Bribri', es_mx: 'Bribri', pt_eu: 'Bribri', pt_br: 'Bribri',
+               ru: 'Брибри', uk: 'Брибрі', ar: 'البريبري', he: 'בריברי', sw: 'Kibribri' },
+        thr: { en: 'Tharu', ja: 'タール語', ko: '타루어', zh: '塔鲁语', yue: '塔魯語',
+               vi: 'Tiếng Tharu', th: 'ภาษาทารู', id: 'Bahasa Tharu', hi: 'थारू',
+               de: 'Tharu', fr: 'Tharou', it: 'Tharu',
+               es_eu: 'Tharu', es_mx: 'Tharu', pt_eu: 'Tharu', pt_br: 'Tharu',
+               ru: 'Тхару', uk: 'Тхару', ar: 'الثارو', he: 'תארו', sw: 'Kitharu' },
+    };
+    for (const code of Object.keys(ADDED91)) {
+        for (const ui of Object.keys(ADDED91[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED91[code][ui];
+            }
+        }
+    }
 })();
