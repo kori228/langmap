@@ -510,4 +510,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Rusyn (rue), Kaqchikel (cak), Kumyk (kum) — East Slavic + Mayan + Caucasus Turkic.
+    const ADDED17 = {
+        rue: { en: 'Rusyn', ja: 'ルシン語', ko: '루신어', zh: '卢森尼亚语', yue: '盧森尼亞語',
+               vi: 'Tiếng Rusyn', th: 'ภาษารูซิน', id: 'Rusyn', hi: 'रुसिन',
+               de: 'Russinisch', fr: 'Roussinien', it: 'Ruteno',
+               es_eu: 'Rusyn', es_mx: 'Rusyn', pt_eu: 'Rusyn', pt_br: 'Rusyn',
+               ru: 'Русинский', uk: 'Русинська', ar: 'الروسينية', he: 'רוסינית', sw: 'Kirusyn' },
+        cak: { en: 'Kaqchikel', ja: 'カクチケル語', ko: '카크치켈어', zh: '卡克奇克尔语', yue: '卡克奇克爾語',
+               vi: 'Tiếng Kaqchikel', th: 'ภาษากัคชิเกล', id: 'Kaqchikel', hi: 'काकचिकेल',
+               de: 'Kaqchikel', fr: 'Cakchiquel', it: 'Kaqchikel',
+               es_eu: 'Kaqchikel', es_mx: 'Kaqchikel', pt_eu: 'Cakchiquel', pt_br: 'Cakchiquel',
+               ru: 'Какчикель', uk: 'Какчикель', ar: 'الكاكشيكلية', he: 'קקצ׳יקל', sw: 'Kaqchikel' },
+        kum: { en: 'Kumyk', ja: 'クムク語', ko: '쿠믹어', zh: '库梅克语', yue: '庫梅克語',
+               vi: 'Tiếng Kumyk', th: 'ภาษาคูมีก', id: 'Kumyk', hi: 'कुमिक',
+               de: 'Kumükisch', fr: 'Koumyk', it: 'Kumyk',
+               es_eu: 'Kumyk', es_mx: 'Kumyk', pt_eu: 'Cumique', pt_br: 'Cumique',
+               ru: 'Кумыкский', uk: 'Кумицька', ar: 'القومانية', he: 'קומיקית', sw: 'Kikumyk' },
+    };
+    for (const code of Object.keys(ADDED17)) {
+        for (const ui of Object.keys(ADDED17[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED17[code][ui];
+            }
+        }
+    }
 })();

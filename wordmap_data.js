@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 661 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 664 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1377,6 +1377,10 @@ const LANG_DATA = {
     words: { water:['щин','ʃin'], fire:['цӏу','tsʼu'], sun:['бургъ','burʁ'], moon:['барз','barz'], mother:['нину','ninu'], father:['ппу','pːu'], eat:['ккаву','kːavu'], drink:['гьавхь','ʕavħ'], love:['ччан','tʃːan'], heart:['дакӏ','dakʼ'], tree:['мурхь','muɾħ'], house:['къатта','qatːa'], dog:['ккун','kːun'], cat:['ккац','kːats'], hand:['ка','ka'], eye:['я','ja'], hello:['салам','salam'], thanks:['барчаллагь','baɾtʃalːaʁ'], one:['ца','tsa'], good:['хъинсса','qinsːa'] }},
   tab: { name: 'Tabasaran', native: 'Табасаран чӀал', lat: 41.93, lng: 48.04, // Khiv
     words: { water:['штар','ʃtar'], fire:['цӏа','tsʼa'], sun:['рагъ','raʁ'], moon:['варз','varz'], mother:['бай','baj'], father:['дад','dad'], eat:['ипӏуб','ipʼub'], drink:['ужуб','uʒub'], love:['ккунивал','kːunival'], heart:['юкӏ','jukʼ'], tree:['гар','ɡar'], house:['хал','xal'], dog:['хю','xy'], cat:['кет','ket'], hand:['хил','xil'], eye:['ул','ul'], hello:['салам','salam'], thanks:['чухсагъул','tʃuxsaʁul'], one:['саб','sab'], good:['ужу','uʒu'] }},
+  // Kumyk — Kipchak Turkic, ~440K, Daghestan Russia. Northern lingua franca historically.
+  // Sources: Ethnologue 27 'kum'; Glottolog kumy1244; Bammatov (1969) Kumyk-Russian Dictionary.
+  kum: { name: 'Kumyk', native: 'Къумукъ тил', lat: 42.98, lng: 47.50, // Makhachkala area
+    words: { water:['сув','suv'], fire:['от','ot'], sun:['гюн','ɡʲun'], moon:['ай','aj'], mother:['ана','ana'], father:['ата','ata'], eat:['ашамакъ','aʃamaq'], drink:['ичмек','itʃmek'], love:['сюйюв','syjyv'], heart:['юрек','jyrek'], tree:['терек','terek'], house:['уьй','yj'], dog:['ит','it'], cat:['мишик','miʃik'], hand:['къол','qol'], eye:['гёз','ɡʲøz'], hello:['ассаламу алейкум','asːalamu alejkum'], thanks:['савбол','savbol'], one:['бир','bir'], good:['яхшы','jaχʃə'] }},
   // Northwest Caucasian
   ady: { name: 'Adyghe', native: 'Адыгабзэ', lat: 44.61, lng: 40.10, // Maykop
     words: { water:['псы','psə'], fire:['машӏо','maʃʼo'], sun:['тыгъэ','təʁa'], moon:['мазэ','maza'], mother:['ны','nə'], father:['ты','tə'], eat:['шхэн','ʃxan'], drink:['ефэн','jafan'], love:['шӏу шӏэгъу','ʃʼʷ ʃʼaʁʷ'], heart:['гу','ɡʷə'], tree:['чыгы','tʃəɡə'], house:['унэ','wəna'], dog:['хьэ','ħa'], cat:['чэтыу','tʃatəw'], hand:['ӏэ','ʔa'], eye:['нэ','na'], hello:['шӏуфес','ʃʼwafes'], thanks:['тхьауегъэпсэу','tħawajaʁapsaw'], one:['зы','zə'], good:['дэгъу','daʁʷ'] }},
@@ -1526,6 +1530,10 @@ const LANG_DATA = {
     words: { water:['woda','ˈvɔda'], fire:['woheń','ˈvɔhɛɲ'], sun:['słónco','ˈswʊnt͡sɔ'], moon:['měsačk','ˈmʲɛsat͡ʃk'], mother:['mać','mat͡ɕ'], father:['nan','nan'], eat:['jěsć','jɛst͡ɕ'], drink:['pić','pit͡ɕ'], love:['lubosć','ˈlubɔst͡ɕ'], heart:['wutroba','ˈvutrɔba'], tree:['štom','ʃtɔm'], house:['dom','dom'], dog:['pos','pɔs'], cat:['kóčka','ˈkʊt͡ʃka'], hand:['ruka','ˈruka'], eye:['woko','ˈvɔkɔ'], hello:['witaj','ˈvitaj'], thanks:['dźakuju so','ˈd͡ʑakuju sɔ'], one:['jedyn','ˈjɛdɨn'], good:['dobry','ˈdɔbrɨ'] }},
   csb: { name: 'Kashubian', native: 'Kaszëbsczi', lat: 54.35, lng: 18.65, // Gdańsk area
     words: { water:['woda','ˈvɔda'], fire:['ogniô','ˈɔɡɲɔ'], sun:['słuńce','ˈswuɲt͡sɛ'], moon:['ksãżëc','ˈksɔ̃ʐɨt͡s'], mother:['mëma','ˈmɨma'], father:['tatk','tatk'], eat:['jesc','jɛst͡s'], drink:['pic','pit͡s'], love:['lubota','luˈbɔta'], heart:['serce','ˈsɛrt͡sɛ'], tree:['drzewo','ˈdʐɛvɔ'], house:['chëcz','xɨt͡ʃ'], dog:['pies','pjɛs'], cat:['kòt','kʷɔt'], hand:['rãka','ˈrɔ̃ka'], eye:['òkò','ʷɔkʷɔ'], hello:['witôj','ˈvitwɔj'], thanks:['dzãki','ˈd͡zɔ̃ki'], one:['jeden','ˈjɛdɛn'], good:['dobri','ˈdɔbri'] }},
+  // Rusyn — East Slavic, ~600K speakers across Slovakia, Ukraine (Transcarpathia), Poland, Serbia (Vojvodina).
+  // Sources: Ethnologue 27 'rue'; Glottolog rusy1239; Plišková (2007) Rusyn Language in Slovakia.
+  rue: { name: 'Rusyn', native: 'Русиньскый язык', lat: 49.07, lng: 21.74, // Prešov, Slovakia (codified standard)
+    words: { water:['вода','ˈvoda'], fire:['огень','ˈohenʲ'], sun:['сонце','ˈsont͡se'], moon:['місяць','ˈmʲisʲat͡sʲ'], mother:['мати','ˈmati'], father:['отець','ˈotet͡sʲ'], eat:['їсти','ˈjisti'], drink:['пити','ˈpiti'], love:['любов','lʲuˈbov'], heart:['сердце','ˈserd͡ze'], tree:['древо','ˈdrevo'], house:['хыжа','ˈxɨʐa'], dog:['пес','pes'], cat:['мачка','ˈmat͡ʃka'], hand:['рука','ˈruka'], eye:['око','ˈoko'], hello:['Слава Ісусу Христу','ˈslava ˈjisusu ˈxristu'], thanks:['дякую','ˈdʲakuju'], one:['єден','ˈjeden'], good:['добрый','ˈdobrɨj'] }},
   // Romance minor
   fur: { name: 'Friulian', native: 'Furlan', lat: 46.06, lng: 13.23, // Udine
     words: { water:['aghe','ˈaɡe'], fire:['fûc','fuːk'], sun:['soreli','soˈreːli'], moon:['lune','ˈlune'], mother:['mari','ˈmaːri'], father:['pari','ˈpaːri'], eat:['mangjâ','maɲˈɲaː'], drink:['bevi','ˈbeːvi'], love:['amôr','aˈmoːr'], heart:['cûr','kuːr'], tree:['arbul','ˈarbul'], house:['cjase','ˈcaːse'], dog:['cjan','caŋ'], cat:['gjat','ɟat'], hand:['man','maŋ'], eye:['voli','ˈvoli'], hello:['mandi','ˈmandi'], thanks:['graziis','ˈɡraːt͡sjis'], one:['un','uŋ'], good:['bon','boŋ'] }},
@@ -3537,6 +3545,10 @@ const LANG_DATA = {
     words: { water:['nặm','naːm˨˩'], fire:['fầy','fəj˨˩'], sun:['tha vằn','tʰaː˧˧vən˨˩'], moon:['boon','boːn˧˧'], mother:['mé','mɛ˨˩˧'], father:['pò','pɔ˨˩'], eat:['kin','kin˧˧'], drink:['kin nặm','kin˧˧naːm˨˩'], love:['rắc','rak˧˥'], heart:['cấy','kəj˨˩˧'], tree:['mạy','maːj˨˩'], house:['rườn','zɯən˨˩'], dog:['ma','maː˧˧'], cat:['meo','meo˧˧'], hand:['mừ','mɯ˨˩'], eye:['tha','tʰaː˧˧'], hello:['choà','tʃɔaː˨˩'], thanks:['ơn rể','ɤn˧˧zɛ˨˩˧'], one:['nưng','nɯŋ˧˧'], good:['đây','ɗəj˧˧'] }},
   quc: { name: 'Kʼicheʼ', native: 'Qatzijobʼal', lat: 14.84, lng: -91.52, // Quetzaltenango
     words: { water:['jaʼ','xaʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼih'], moon:['ikʼ','ikʼ'], mother:['nan','nan'], father:['tat','tat'], eat:['tijow','tihow'], drink:['ukʼaaj','ukʼaːh'], love:['loqʼoj','loqʼoh'], heart:['animaʼ','animaʔ'], tree:['cheʼ','tʃeʔ'], house:['ja','xa'], dog:['tzʼiʼ','tsʼiʔ'], cat:['meʼs','meʔs'], hand:['qʼabʼ','qʼaɓ'], eye:['bʼaqʼwach','ɓaqʼwatʃ'], hello:['saqarik','saqaɾik'], thanks:['maltyox','maltjoʃ'], one:['jun','xun'], good:['utz','uts'] }},
+  // Kaqchikel — Mayan K'ichean, ~400K speakers, central Guatemalan highlands. Sister to Kʼicheʼ (quc).
+  // Sources: Ethnologue 27 'cak'; Glottolog kaqc1271; Brown et al. (2006) Kaqchikel-English Dictionary.
+  cak: { name: 'Kaqchikel', native: 'Kaqchikel', lat: 14.74, lng: -90.64, // Patzún (Kaqchikel cultural center)
+    words: { water:['yaʼ','jaʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼih'], moon:['ikʼ','ikʼ'], mother:['teʼ','teʔ'], father:['tataʼ','tataʔ'], eat:['waʼin','waʔin'], drink:['kumun','kumun'], love:['ajowabʼäl','axowaɓæl'], heart:['anima','anima'], tree:['cheʼ','tʃeʔ'], house:['jay','xaj'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['qʼaʼ','qʼaʔ'], eye:['bʼaqʼ wach','ɓaqʼ watʃ'], hello:['utz iwäch','uts iwætʃ'], thanks:['matyox','matjoʃ'], one:['jun','xun'], good:['utz','uts'] }},
   kek: { name: 'Qʼeqchiʼ', native: 'Qʼeqchiʼ', lat: 15.47, lng: -90.37, // Cobán
     words: { water:['haʼ','haʔ'], fire:['xamʼ','ʃam'], sun:['saqʼe','saqʼe'], moon:['poo','poː'], mother:['naʼ','naʔ'], father:['yuwaʼ','juwaʔ'], eat:['taawaʼ','tawaʔ'], drink:['tuʼ','tuʔ'], love:['rahok','rahok'], heart:['chʼoolej','tʃʼoːlej'], tree:['cheʼ','tʃeʔ'], house:['ochoch','otʃotʃ'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['ruqʼ','ruqʼ'], eye:['xnaqʼ ru','ʃnaqʼ ru'], hello:['ma saʼ laachʼool','ma sa laːtʃʼoːl'], thanks:['bantyox','bantjoʃ'], one:['jun','hun'], good:['us','us'] }},
   mam: { name: 'Mam', native: 'Qyool Mam', lat: 15.32, lng: -91.47, // Huehuetenango
