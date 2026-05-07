@@ -1560,4 +1560,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED59 = {
+        anp: { en: 'Angika', ja: 'アンギカ語', ko: '앙기카어', zh: '安格语', yue: '安格語',
+               vi: 'Tiếng Angika', th: 'ภาษาอังคิกา', id: 'Bahasa Angika', hi: 'अंगिका',
+               de: 'Angika', fr: 'Angika', it: 'Angika',
+               es_eu: 'Angika', es_mx: 'Angika', pt_eu: 'Angika', pt_br: 'Angika',
+               ru: 'Ангика', uk: 'Ангіка', ar: 'الأنغية', he: 'אנגיקה', sw: 'Kiangika' },
+        khq: { en: 'Koyra Chiini', ja: 'コイラ・チーニ語', ko: '코이라 치니어', zh: '科伊拉奇尼语', yue: '科伊拉奇尼語',
+               vi: 'Tiếng Koyra Chiini', th: 'ภาษาคอยราชีนี', id: 'Bahasa Koyra Chiini', hi: 'कोइरा चीनी',
+               de: 'Koyra Chiini', fr: 'Koyra chiini', it: 'Koyra chiini',
+               es_eu: 'Koyra chiini', es_mx: 'Koyra chiini', pt_eu: 'Koyra chiini', pt_br: 'Koyra chiini',
+               ru: 'Койра-чиини', uk: 'Койра-чіїні', ar: 'الكويرا تشينية', he: 'קוירה צ׳ייני', sw: 'Kikoyra Chiini' },
+        asu: { en: 'Asu', ja: 'アス語', ko: '아수어', zh: '阿苏语', yue: '阿蘇語',
+               vi: 'Tiếng Asu', th: 'ภาษาอาซู', id: 'Bahasa Asu', hi: 'आसू',
+               de: 'Asu', fr: 'Asu', it: 'Asu',
+               es_eu: 'Asu', es_mx: 'Asu', pt_eu: 'Asu', pt_br: 'Asu',
+               ru: 'Асу', uk: 'Асу', ar: 'الآسو', he: 'אסו', sw: 'Kichasu' },
+    };
+    for (const code of Object.keys(ADDED59)) {
+        for (const ui of Object.keys(ADDED59[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED59[code][ui];
+            }
+        }
+    }
 })();

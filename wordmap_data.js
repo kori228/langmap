@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 787 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 790 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -295,6 +295,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'rwk'; Glottolog rwac1239; Mreta (1998) Rwa grammar; Schadeberg/Sebonego (2010).
   rwk: { name: 'Rwa', native: 'Kirwa', lat: -3.65, lng: 37.75, // Mwanga district, Kilimanjaro Region
     words: { water:['mende','mende'], fire:['msika','msika'], sun:['mlao','mlao'], moon:['mwere','mwere'], mother:['mama','mama'], father:['baba','baba'], eat:['kuria','kuria'], drink:['kunyua','kuɲua'], love:['lumbo','lumbo'], heart:['ngiti','ŋɡiti'], tree:['mte','mte'], house:['nyumba','ɲumba'], dog:['mboha','mboha'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['liso','liso'], hello:['kira','kiɾa'], thanks:['asante','asante'], one:['mongo','moŋɡo'], good:['kya','kja'] }},
+  // Asu (Pare, Chasu) — Bantu E.31 (sister to rwk Rwa within Pare cluster), ~500K, Tanzania (Kilimanjaro Region — South Pare mountains, Same District).
+  // Sources: Ethnologue 27 'asu'; Glottolog pare1247; Mreta (1998) Asu phonology and grammar.
+  asu: { name: 'Asu', native: 'Chasu', lat: -4.07, lng: 37.74, // Same, Kilimanjaro Region, Tanzania
+    words: { water:['mende','mende'], fire:['mshika','mʃika'], sun:['nyu','ɲu'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kurya','kuɾja'], drink:['kunwa','kunwa'], love:['lumba','lumba'], heart:['ngiti','ŋɡiti'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['jicho','dʒitʃo'], hello:['shiloi','ʃiloi'], thanks:['mwasanga','mwasaŋɡa'], one:['imwe','imwe'], good:['mwamba','mwamba'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -1573,6 +1577,10 @@ const LANG_DATA = {
   // Indo-Aryan (large missing)
   mai: { name: 'Maithili', native: 'मैथिली', lat: 26.15, lng: 85.90, // Darbhanga
     words: { water:['पानि','paːni'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəd͡ʒ'], moon:['चान','tʃaːn'], mother:['माय','maːj'], father:['बाबू','baːbuː'], eat:['खाएब','kʰaːeb'], drink:['पीयब','piːjəb'], love:['प्रेम','preːm'], heart:['हृदय','hridəj'], tree:['गाछ','ɡaːtʃʰ'], house:['घर','ɡʱər'], dog:['कुकुर','kukur'], cat:['बिलाइ','bilaːi'], hand:['हाथ','haːtʰ'], eye:['आँखि','ãːkʰi'], hello:['प्रणाम','prəɳaːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
+  // Angika — Indo-European Indo-Aryan (Magadhan, sister to mai Maithili and bho Bhojpuri), ~7M, India (Bihar — Bhagalpur, Munger; Jharkhand — Santhal Pargana; small Nepal Terai).
+  // Sources: Ethnologue 27 'anp'; Glottolog angi1238; Yadav (1996) Maithili-Angika comparative grammar.
+  anp: { name: 'Angika', native: 'अंगिका', lat: 25.24, lng: 86.97, // Bhagalpur, Bihar (historical Anga kingdom)
+    words: { water:['पानी','paːniː'], fire:['आग','aːɡ'], sun:['सूरज','suːrədʒ'], moon:['चान','tʃaːn'], mother:['मय','maj'], father:['बाबू','baːbuː'], eat:['खाएक','kʰaːek'], drink:['पीयक','piːjak'], love:['मया','majaː'], heart:['मन','man'], tree:['गाछ','ɡaːtʃʰ'], house:['घर','ɡʱər'], dog:['कुक्कर','kukːər'], cat:['बिलार','bilaːr'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['प्रणाम','prəɳaːm'], thanks:['धइन्यवाद','dʱainjəbaːd'], one:['एक','eːk'], good:['नीक','niːk'] }},
   awa: { name: 'Awadhi', native: 'अवधी', lat: 26.78, lng: 82.13, // Ayodhya
     words: { water:['पानी','paːniː'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəd͡ʒ'], moon:['चान','tʃaːn'], mother:['मइया','məjjaː'], father:['बाबू','baːbuː'], eat:['खाई','kʰaːiː'], drink:['पीई','piːiː'], love:['पिरेम','pirem'], heart:['हियाँ','hijãː'], tree:['रूख','ruːkʰ'], house:['घर','ɡʱər'], dog:['कुक्कुर','kukːur'], cat:['बिलारि','bilaːri'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['राम राम','raːm raːm'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['निक','nik'] }},
   // Braj Bhasha — Indo-Aryan, Krishna-devotional literary language of medieval North India.
@@ -1678,6 +1686,10 @@ const LANG_DATA = {
   // (Audit Task 149 Batch 3). Heath (1999) per cell.
   ses: { name: 'Koyraboro Senni', native: 'Koyraboro Senni', lat: 16.27, lng: -0.05, // Gao
     words: { water:['hari','hari'], fire:['nuune','nuːne'], sun:['wayna','wajna'], moon:['handu','handu'], mother:['nya','ɲa'], father:['baaba','baːba'], eat:['ŋwa','ŋwa'], drink:['hane','hane'], love:['baŋa','baŋa'], heart:['bine','bine'], tree:['tuuri','tuːri'], house:['huu','huː'], dog:['hansi','hansi'], cat:['muusu','muːsu'], hand:['kambe','kambe'], eye:['mo','mo'], hello:['fofo','fofo'], thanks:['barka','barka'], one:['afo','afo'], good:['boori','boːri'] }},
+  // Koyra Chiini (Western Songhai) — Songhai (sister to Eastern Songhai including ses Koyraboro Senni and zarma), ~200K, Mali (Timbuktu region — Niger River bend).
+  // Sources: Ethnologue 27 'khq'; Glottolog koyr1240; Heath (1999) A Grammar of Koyra Chiini.
+  khq: { name: 'Koyra Chiini', native: 'Koyra Chiini', lat: 16.77, lng: -3.01, // Timbuktu, Mali
+    words: { water:['hari','hari'], fire:['nuune','nuːne'], sun:['wari','wari'], moon:['handu','handu'], mother:['nya','ɲa'], father:['baaba','baːba'], eat:['ŋwa','ŋwa'], drink:['hane','hane'], love:['baŋa','baŋa'], heart:['bine','bine'], tree:['tuuri','tuːri'], house:['huu','huː'], dog:['hansi','hansi'], cat:['muusu','muːsu'], hand:['kambe','kambe'], eye:['mo','mo'], hello:['fofo','fofo'], thanks:['barka','barka'], one:['afo','afo'], good:['boori','boːri'] }},
   // Zarma — Southern Songhai, ~3M speakers, Niger; sister to Koyraboro Senni (Eastern Songhai).
   // Sources: Tersis (1972) Le Zarma; SIL Niger language survey.
   dje: { name: 'Zarma', native: 'Zarmaciine', lat: 13.51, lng: 2.11, // Niamey
