@@ -1983,4 +1983,28 @@ const LANG_NAMES = {
             }
         }
     }
+    const ADDED83 = {
+        mvc: { en: "Central Mam", ja: "中部マム語", ko: "중부 맘어", zh: "中部玛姆语", yue: "中部瑪姆語",
+               vi: "Tiếng Mam Trung", th: "ภาษามัมกลาง", id: "Bahasa Mam Tengah", hi: "मध्य माम",
+               de: "Zentral-Mam", fr: "Mam central", it: "Mam centrale",
+               es_eu: "Mam central", es_mx: "Mam central", pt_eu: "Mam central", pt_br: "Mam central",
+               ru: "Центральный мам", uk: "Центральний мам", ar: "المام الوسطى", he: "מאם מרכזית", sw: "Kimam cha Kati" },
+        zts: { en: "Tlacolula Zapotec", ja: "トラコルラ・サポテク語", ko: "틀라콜룰라 사포텍어", zh: "特拉科卢拉萨波特克语", yue: "特拉科盧拉薩波特克語",
+               vi: "Tiếng Zapotec Tlacolula", th: "ภาษาซาโปเตกตลาโกลูลา", id: "Bahasa Zapotek Tlacolula", hi: "त्लाकोलूला सैपोटेक",
+               de: "Tlacolula-Zapotekisch", fr: "Zapotèque de Tlacolula", it: "Zapoteco di Tlacolula",
+               es_eu: "Zapoteco de Tlacolula", es_mx: "Zapoteco de Tlacolula", pt_eu: "Zapoteca de Tlacolula", pt_br: "Zapoteco de Tlacolula",
+               ru: "Тлаколульский сапотекский", uk: "Тлаколульська сапотекська", ar: "السابوتيك التلاكولولي", he: "זאפוטק טלאקולולה", sw: "Kizapoteki cha Tlacolula" },
+        chf: { en: "Tabasco Chontal", ja: "タバスコ・チョンタル語", ko: "타바스코 촌탈어", zh: "塔巴斯科乔恩塔尔语", yue: "塔巴斯科喬恩塔爾語",
+               vi: "Tiếng Chontal Tabasco", th: "ภาษาชนตัลตาบัสโก", id: "Bahasa Chontal Tabasco", hi: "तबास्को चोंटाल",
+               de: "Tabasco-Chontal", fr: "Chontal de Tabasco", it: "Chontal di Tabasco",
+               es_eu: "Chontal de Tabasco", es_mx: "Chontal de Tabasco", pt_eu: "Chontal de Tabasco", pt_br: "Chontal de Tabasco",
+               ru: "Чонталь Табаско", uk: "Чонталь Табаско", ar: "تشونتال تاباسكو", he: "צ'ונטל טבסקו", sw: "Kichontal cha Tabasco" },
+    };
+    for (const code of Object.keys(ADDED83)) {
+        for (const ui of Object.keys(ADDED83[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED83[code][ui];
+            }
+        }
+    }
 })();

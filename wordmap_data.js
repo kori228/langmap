@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 836 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 839 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1812,6 +1812,10 @@ const LANG_DATA = {
     words: { water:['ndute','nduteʔ'], fire:['ñu\'u','ɲuʔu'], sun:['nikandii','nikandiː'], moon:['yoo','joː'], mother:['na\'án','naʔán'], father:['tatá','tatá'], eat:['kasi','kasi'], drink:['kohó','koʔó'], love:['kúu ini','kúu iniʔ'], heart:['ini','iniʔ'], tree:['yutu','jutu'], house:['ve\'e','βeʔe'], dog:['tina','tina'], cat:['vilú','βilú'], hand:['ndo\'ó','ndoʔó'], eye:['nduchi','ndutʃi'], hello:['nasáa','nasáː'], thanks:['tachu\'un','tatʃuʔun'], one:['in','iʔn'], good:['vate','βate'] }},
   zap: { name: 'Zapotec', native: 'Diidxazá', lat: 16.43, lng: -95.02, // Juchitán
     words: { water:['nisa','nisa'], fire:['gi','ɡi'], sun:['gubidxa','ɡubidʒa'], moon:['beeu','beːu'], mother:['jñaa','xɲaː'], father:['bixhoze','biʒoze'], eat:['ro','ɾo'], drink:['ge','ɡe'], love:['ranaxhii','ɾanaʒiː'], heart:['ladxi','ladʒi'], tree:['yaga','jaɡa'], house:['lidxi','lidʒi'], dog:['bi\'cu\'','biʔkʼuʔ'], cat:['mistuu','mistuː'], hand:['na','naʔ'], eye:['lú','lú'], hello:['padixhe','padiʒe'], thanks:['xtiozenu','ʃtjozenu'], one:['tobi','tobi'], good:['nazaaca','nazaːka'] }},
+  // Tlacolula Zapotec (San Juan Guelavía / Valley Zapotec) — Otomanguean (Zapotecan, Central Zapotec — sister to Isthmus zap and Sierra Norte varieties within the Zapotec language complex), ~6K, Mexico (Oaxaca — Tlacolula Valley east of Oaxaca City; San Juan Guelavía, Tlacolula de Matamoros).
+  // Sources: Ethnologue 27 'zts'; Glottolog tlac1241; Munro & Lopez et al. (1999) Di'csyonaary X:tee'n Dii'zh Sah Sann Lu'uc (San Lucas Quiaviní Zapotec dictionary).
+  zts: { name: "Tlacolula Zapotec", native: "Dizhsa", lat: 16.95, lng: -96.48, // Tlacolula de Matamoros, Oaxaca, Mexico
+    words: { water:['nisi','nisi'], fire:['gui','ɡi'], sun:['gubi','ɡubi'], moon:['beuu','beːu'], mother:['xnan','ʃnan'], father:['xtad','ʃtad'], eat:['rau','ɾau'], drink:['re','ɾe'], love:['nadxiiebia','nadʒiːebia'], heart:['ladxdoo','ladʒdoː'], tree:['yag','jaɡ'], house:['yu','ju'], dog:["bicu'",'bikuʔ'], cat:['mishu','miʃu'], hand:["na'",'naʔ'], eye:['slu','slu'], hello:['padiux','padiuʃ'], thanks:["xclen lo'",'ʃklen loʔ'], one:['tubyabi','tubjabi'], good:['nazac','nazak'] }},
   // Mixtepec Mixtec — Otomanguean (Mixtecan, Eastern Mixtec — sister to mix Mixtec macro-language varieties), ~7K, Mexico (Oaxaca — San Juan Mixtepec area, Sierra Sur).
   // Sources: Ethnologue 27 'xtm'; Glottolog mixt1422; Pankratz & Pike (1967) Phonology and morphotonemics of Ayutla Mixtec.
   xtm: { name: 'Mixtepec Mixtec', native: 'Sa\'an Sàvǐ Sa San Juan Mixtepec', lat: 16.64, lng: -97.92, // San Juan Mixtepec, Oaxaca
@@ -4319,6 +4323,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ctu'; Glottolog chol1282; Warkentin & Scott (1980) Gramática Ch'ol.
   ctu: { name: "Chol", native: "Lakty'añ", lat: 17.30, lng: -92.42, // Tila, Chiapas, Mexico
     words: { water:["ja'",'haʔ'], fire:['kʼajk','kʼahk'], sun:['kʼajn','kʼahn'], moon:['uw','uw'], mother:['ñaʼ','ɲaʔ'], father:['tat','tat'], eat:["k'ux",'kʼuʃ'], drink:['ucʼ','utsʼ'], love:["k'uxbiñ",'kʼuʃbiɲ'], heart:["pus'ik'al",'pusʼikʼal'], tree:["te'",'teʔ'], house:["otyot",'otjot'], dog:["ts'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["k'ab'",'kʼabʼ'], eye:["wut",'wut'], hello:['kabʼ','kabʼ'], thanks:["wokox",'wokoʃ'], one:['juñ','huɲ'], good:['utsat','utsat'] }},
+  // Tabasco Chontal (Yokot'an) — Mayan (Cholan-Tzeltalan, Cholan — sister to Chol ctu within the Cholan branch), ~36K, Mexico (Tabasco — Nacajuca, Centla, Centro, Macuspana municipalities; lowland Gulf coast).
+  // Sources: Ethnologue 27 'chf'; Glottolog tabz1238; Knowles (1984) A descriptive grammar of Chontal Maya.
+  chf: { name: "Tabasco Chontal", native: "Yokot'an", lat: 18.17, lng: -93.02, // Nacajuca, Tabasco, Mexico
+    words: { water:["ja'",'haʔ'], fire:['kʼakʼ','kʼakʼ'], sun:['kʼin','kʼin'], moon:['ä','æ'], mother:['naʼ','naʔ'], father:['tat','tat'], eat:["we'",'weʔ'], drink:["uk'e",'ukʼe'], love:["k'uxbe",'kʼuʃbe'], heart:["pixan",'piʃan'], tree:["te'",'teʔ'], house:["otot",'otot'], dog:["pek'",'pekʼ'], cat:['mis','mis'], hand:["k'ä",'kʼæ'], eye:["wich",'witʃ'], hello:["bin a bel",'bin a bel'], thanks:["dios bo'tik",'dios boʔtik'], one:['un','un'], good:["ts'ak",'tsʼak'] }},
   // Aguacateco (Awakateko) — Mayan (Quichean-Mamean, Mam-Awakateko branch — sister to Mam mam and Ixil ixl), ~17K, Guatemala (Huehuetenango — Aguacatán).
   // Sources: Ethnologue 27 'agu'; Glottolog awak1244; McArthur & McArthur (1956) Aguacatec phonology.
   agu: { name: "Aguacateco", native: "Awakateko", lat: 15.34, lng: -91.32, // Aguacatán, Huehuetenango, Guatemala
@@ -4329,6 +4337,10 @@ const LANG_DATA = {
     words: { water:['aʼ','aʔ'], fire:['tzaʼ','tsaʔ'], sun:['qʼii','qʼiː'], moon:['ich','itʃ'], mother:['naʼ','naʔ'], father:['baʼ','baʔ'], eat:['tza\'b\'i','tsaʔɓi'], drink:['ucha','utʃa'], love:['kuxhewchʼa','kuʃewtʃʼa'], heart:['vatzʼ','vatsʼ'], tree:['tze','tse'], house:['kab\'al','kaɓal'], dog:['tx\'i\'','tʼʃʼiʔ'], cat:['mees','meːs'], hand:['qʼab\'','qʼaɓ'], eye:['vusal','vusal'], hello:['nima\'la kuxhewchʼa','nimaʔla kuʃewtʃʼa'], thanks:['tantixh','tantiʃ'], one:['jun','hun'], good:['utz\'','utsʼ'] }},
   mam: { name: 'Mam', native: 'Qyool Mam', lat: 15.32, lng: -91.47, // Huehuetenango
     words: { water:['aʼ','aʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼiχ'], moon:['xjaw','ʃhaw'], mother:['nan','nan'], father:['mam','mam'], eat:['waan','waːn'], drink:['kʼaan','kʼaːn'], love:['oqxan','oqʃan'], heart:['anma','anma'], tree:['tzeʼ','tseʔ'], house:['jaa','haː'], dog:['txʼyan','tʼʃjan'], cat:['wiix','wiːʃ'], hand:['qʼobʼ','qʼob'], eye:['witz','wits'], hello:['chjonte tey','tʃhonte tej'], thanks:['chjonte','tʃhonte'], one:['jun','hun'], good:['banix','baniʃ'] }},
+  // Central Mam — Mayan (Quichean-Mamean, Mamean — sister variety to Mam mam macrolanguage; spoken in central Huehuetenango department), ~520K, Guatemala (Huehuetenango — Todos Santos Cuchumatán, San Juan Atitán, Concepción Huista, Santiago Chimaltenango).
+  // Sources: Ethnologue 27 'mvc'; Glottolog cent2152; England (1983) A Grammar of Mam, a Mayan Language.
+  mvc: { name: "Central Mam", native: "Qyool Mam", lat: 15.51, lng: -91.60, // Todos Santos Cuchumatán, Huehuetenango, Guatemala
+    words: { water:["a'",'aʔ'], fire:["q'aq'",'qʼaqʼ'], sun:["q'iij",'qʼiːh'], moon:['xjaaw','ʃhaːw'], mother:['nan','nan'], father:['mam','mam'], eat:['waaʼn','waːʔn'], drink:["k'aaʼn",'kʼaːʔn'], love:['oqʼxen','oqʼʃen'], heart:['anmiʼn','anmiʔn'], tree:["tze'",'tseʔ'], house:['jaaʼ','haːʔ'], dog:["txʼyaan",'tʼʃjaːn'], cat:['wiix','wiːʃ'], hand:["q'obʼ",'qʼob'], eye:["witz",'wits'], hello:["chjonte tey",'tʃhonte tej'], thanks:["chjonte",'tʃhonte'], one:['juun','huːn'], good:['baʼnxh','baʔnʃ'] }},
   wal: { name: 'Wolaytta', native: 'Wolayttattuwaa', lat: 6.85, lng: 37.76, // Wolaita Sodo
     words: { water:["haatta",'haːtːa'], fire:['tama','tama'], sun:["awa",'awa'], moon:['ageena','aɡeːna'], mother:['aaya','aːja'], father:['aawa','aːwa'], eat:["miya",'miːja'], drink:["ushiya",'uʃija'], love:["siiqaa",'siːqaː'], heart:['wozanaa','wozanaː'], tree:['mittaa','mitːaː'], house:['keettaa','keːtːaː'], dog:['kanaa','kanaː'], cat:['gaaduwaa','ɡaːduwaː'], hand:['kushiyaa','kuʃijaː'], eye:["ayfee",'ajfeː'], hello:['saro','saro'], thanks:["galatay","ɡalataj"], one:['issino','isːino'], good:["lo'o",'loʔo'] }},
   sid: { name: 'Sidamo', native: 'Sidaamu Afoo', lat: 7.06, lng: 38.48, // Hawassa
