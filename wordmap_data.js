@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 871 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 874 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1913,6 +1913,10 @@ const LANG_DATA = {
   // Bantu (East / Southern / Central)
   lg: { name: 'Luganda', native: 'Luganda', lat: 0.31, lng: 32.58, // Kampala
     words: { water:['amazzi','amaːzːi'], fire:['omuliro','omuliɾo'], sun:['enjuba','eɲɟuba'], moon:['omwezi','omwezi'], mother:['maama','maːma'], father:['taata','taːta'], eat:['kulya','kulja'], drink:['kunywa','kuɲʷa'], love:['okwagala','okwaːɡala'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['ennyumba','eɲɲumba'], dog:['embwa','embwa'], cat:['kkapa','kːapa'], hand:['omukono','omukono'], eye:['eriiso','eɾiːso'], hello:['oli otya','oli otja'], thanks:['webale','weːbale'], one:['emu','emu'], good:['kirungi','tʃiɾuŋɡi'] }},
+  // Zande — Niger-Congo Ubangian (sister to Nzakara and the Ngbandi-Sango cluster within Ubangian; not Bantu despite Central African location), ~1.1M, South Sudan (Western Equatoria, Yambio area) + Democratic Republic of Congo (Bas-Uélé/Haut-Uélé) + Central African Republic (Mbomou Prefecture). Famous as the subject of E.E. Evans-Pritchard's classic 1937 anthropological monograph "Witchcraft, Oracles and Magic Among the Azande".
+  // Sources: Ethnologue 27 'zne'; Glottolog zand1257; Tucker (1959) Le Groupe Linguistique Zandé.
+  zne: { name: 'Zande', native: 'Pa-Zande', lat: 4.57, lng: 28.40, // Yambio, Western Equatoria, South Sudan
+    words: { water:['ime','ime'], fire:['nako','nako'], sun:['urure','uɾuɾe'], moon:['diwi','diwi'], mother:['na','na'], father:['ba','ba'], eat:['ri','ɾi'], drink:['mbira','mbiɾa'], love:['kpinyemu','kpiɲemu'], heart:['ngbongbo','ŋɡboŋɡbo'], tree:['ngua','ŋɡua'], house:['bambu','bambu'], dog:['ango','aŋɡo'], cat:['gbabo','ɡbabo'], hand:['be','be'], eye:['bangiri','baŋɡiɾi'], hello:['mo ima ya','mo ima ja'], thanks:['oni-tambua','oni-tambua'], one:['sa','sa'], good:['wene','wene'] }},
   // Masaaba (Lugisu) — Bantu JE31, ~3M, Mt Elgon eastern Uganda. 4th-largest Ugandan language.
   // Sources: Ethnologue 27 'myx'; Glottolog masa1320; Brown (1972) Lumasaaba grammar.
   myx: { name: 'Masaaba', native: 'Lumasaaba', lat: 1.08, lng: 34.18, // Mbale, Mt Elgon
@@ -2376,6 +2380,10 @@ const LANG_DATA = {
     words: { water:['aman','aman'], fire:['timsi','timsi'], sun:['tafukt','tafukt'], moon:['ayyur','ajːuɾ'], mother:['imma','imːa'], father:['baba','baba'], eat:['čč','tʃː'], drink:['ssu','sːu'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['aseklu','aseklu'], house:['tigemmi','tiɡemːi'], dog:['aydi','ajdi'], cat:['amuš','amuʃ'], hand:['afus','afus'], eye:['tiṭṭ','titˤː'], hello:['azul','azul'], thanks:['tanmmirt','tanmːiɾt'], one:['yan','jan'], good:['ifulki','ifulki'] }},
   rif: { name: 'Tarifit', native: 'Tarifiyt', lat: 35.25, lng: -3.93, // Al Hoceima
     words: { water:['aman','aman'], fire:['thmessi','θmesːi'], sun:['dhish','ðiʃ'], moon:['ayyur','ajːuɾ'], mother:['yemma','jemːa'], father:['baba','baba'], eat:['eč','etʃ'], drink:['su','su'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['asɣar','asʁaɾ'], house:['thaddart','θadːaɾt'], dog:['aydi','ajdi'], cat:['mucc','mutʃː'], hand:['fus','fus'], eye:['thiṭ','θitˤ'], hello:['azul','azul'], thanks:['tanmirt','tanmiɾt'], one:['ijj','idʒː'], good:['šenmu','ʃenmu'] }},
+  // Shawiya (Tachawit, Chaouia) — Afro-Asiatic Berber Northern Berber Zenati (sister to Tarifit rif, Tashelhit shi, Chenoua within the Zenati branch; closely related to Kabyle kab but with distinct lexicon and palatalization patterns), ~2M, Algeria (Aurès Mountains — Batna, Khenchela, Oum El Bouaghi, Souk Ahras, Tébessa wilayas).
+  // Sources: Ethnologue 27 'shy'; Glottolog tach1249; Penchoen (1973) Tamazight of the Ayt Ndhir; Mercier (1896) Le Chaouia de l'Aurès.
+  shy: { name: 'Shawiya', native: 'Tacawit', lat: 35.55, lng: 6.17, // Batna, Aurès, Algeria
+    words: { water:['aman','aman'], fire:['times','times'], sun:['ittij','itʃiʒ'], moon:['ayur','ajuɾ'], mother:['ima','ima'], father:['baba','baba'], eat:['etš','etʃ'], drink:['su','su'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['aseklu','asekːlu'], house:['axxam','axːam'], dog:['aydi','ajdi'], cat:['mucc','mutʃː'], hand:['afus','afus'], eye:['tiṭ','titˤ'], hello:['azul','azul'], thanks:['tanmirt','tanmiɾt'], one:['ijj','idʒː'], good:['ighwdha','iʁʷða'] }},
   // Indo-Aryan (large missing)
   mwr: { name: 'Marwari', native: 'मारवाड़ी', lat: 26.24, lng: 73.02, // Jodhpur
     words: { water:['पाणी','paːɳiː'], fire:['आग','aːɡ'], sun:['सूरज','suːɾədʒ'], moon:['चांद','tʃãːd'], mother:['मा','maː'], father:['बाप','baːp'], eat:['खाणो','kʰaːɳo'], drink:['पीणो','piːɳo'], love:['मायड़','maːjəɽ'], heart:['हियो','hijoʔ'], tree:['रूख','ɾuːkʰ'], house:['घर','ɡʱəɾ'], dog:['कुत्तो','kutːoʔ'], cat:['मीनी','miːniː'], hand:['हाथ','haːtʰ'], eye:['आंख','aːŋkʰ'], hello:['खम्मा घणी','kʰəmːaː ɡʱəɳiː'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','eːk'], good:['बढ़िया','bəɽʱijaː'] }},
@@ -2548,6 +2556,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'gej'; Glottolog mina1268; Bole-Richard (1983) Description du gen.
   gej: { name: 'Gen', native: 'Gengbe', lat: 6.23, lng: 1.59, // Aného, Togo (Mina/Gen heartland)
     words: { water:['tsi','tsi'], fire:['dzo','dzo'], sun:['ɣe','ɣe'], moon:['dzinkɛ','dʒinkɛ'], mother:['nɔ','nɔ'], father:['tɔ','tɔ'], eat:['ɖu','ɖu'], drink:['no','no'], love:['lɔ̃lɔ̃','lɔ̃lɔ̃'], heart:['dzi','dzi'], tree:['ati','ati'], house:['aƒe','aƒe'], dog:['avu','avu'], cat:['agbo','aɡbo'], hand:['alɔ','alɔ'], eye:['ŋku','ŋku'], hello:['ado','ado'], thanks:['akpe','akpe'], one:['ɖeka','ɖeka'], good:['nyo','ɲo'] }},
+  // Aja (Adja-Gbe) — Niger-Congo Volta-Niger Gbe (sister to Ewe ee, Fon fon, Gen gej within the Gbe branch; the historical "ancestral" Gbe variety from which the Ewe and Fon migrated southward in the 17th century), ~600K, Benin (Couffo, Mono, Plateau departments — Aplahoué, Klouékanmè, Dogbo) + Togo (Plateaux Region).
+  // Sources: Ethnologue 27 'aja'; Glottolog ajag1239; Capo (1991) A Comparative Phonology of Gbe.
+  aja: { name: 'Aja', native: 'Ajagbe', lat: 6.93, lng: 1.78, // Aplahoué, Couffo Department, Benin
+    words: { water:['esi','esi'], fire:['ezo','ezo'], sun:['eŋke','eŋke'], moon:['esun','esun'], mother:['no','no'], father:['to','to'], eat:['ɖu','ɖu'], drink:['no','no'], love:['lɔ̃','lɔ̃'], heart:['dzi','dzi'], tree:['ati','ati'], house:['avia','avia'], dog:['avu','avu'], cat:['ami','ami'], hand:['alɔ','alɔ'], eye:['ŋku','ŋku'], hello:['nɛnɛ','nɛnɛ'], thanks:['amɛ akpe','amɛ akpe'], one:['ɖeka','ɖeka'], good:['nyo','ɲo'] }},
   // Niger-Congo (Bantu, additional)
   nyn: { name: 'Runyankole', native: 'Runyankore', lat: -0.61, lng: 30.66, // Mbarara
     words: { water:['amaizi','amaizi'], fire:['omuriro','omuriro'], sun:['izooba','izoːba'], moon:['omwezi','omwezi'], mother:['maawe','maːwe'], father:['tata','tata'], eat:['kurya','kurja'], drink:['kunywa','kuɲwa'], love:['rukundo','rukundo'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['enju','endʒu'], dog:['embwa','embwa'], cat:['kapa','kapa'], hand:['omukono','omukono'], eye:['eriiso','eriːso'], hello:['agandi','aɡandi'], thanks:['webare','webare'], one:['emwe','emwe'], good:['kirungi','kiruŋɡi'] }},

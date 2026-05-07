@@ -2276,4 +2276,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED95 = {
+        aja: { en: 'Aja', ja: 'アジャ語', ko: '아자어', zh: '阿贾语', yue: '阿賈語',
+               vi: 'Tiếng Aja', th: 'ภาษาอะจะ', id: 'Bahasa Aja', hi: 'अजा',
+               de: 'Aja', fr: 'Adja', it: 'Aja',
+               es_eu: 'Adya', es_mx: 'Adya', pt_eu: 'Adja', pt_br: 'Adja',
+               ru: 'Аджа', uk: 'Аджа', ar: 'الأجا', he: 'אג\'ה', sw: 'Kiaja' },
+        shy: { en: 'Shawiya', ja: 'シャウィヤ語', ko: '샤위야어', zh: '沙维亚语', yue: '沙維亞語',
+               vi: 'Tiếng Shawiya', th: 'ภาษาชอวียา', id: 'Bahasa Shawiya', hi: 'शविया',
+               de: 'Schawiya', fr: 'Chaoui', it: 'Sciauiya',
+               es_eu: 'Chaoui', es_mx: 'Chaoui', pt_eu: 'Chaoui', pt_br: 'Chaoui',
+               ru: 'Шауи', uk: 'Шауі', ar: 'الشاوية', he: 'שאוויה', sw: 'Kishawiya' },
+        zne: { en: 'Zande', ja: 'ザンデ語', ko: '잔데어', zh: '赞德语', yue: '贊德語',
+               vi: 'Tiếng Zande', th: 'ภาษาซานเด', id: 'Bahasa Zande', hi: 'ज़ांदे',
+               de: 'Zande', fr: 'Zandé', it: 'Zande',
+               es_eu: 'Zande', es_mx: 'Zande', pt_eu: 'Zande', pt_br: 'Zande',
+               ru: 'Занде', uk: 'Занде', ar: 'الزاندي', he: 'זנדה', sw: 'Kizande' },
+    };
+    for (const code of Object.keys(ADDED95)) {
+        for (const ui of Object.keys(ADDED95[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED95[code][ui];
+            }
+        }
+    }
 })();
