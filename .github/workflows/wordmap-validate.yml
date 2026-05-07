@@ -59,15 +59,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Need history beyond the latest commit so the per-batch gate
+          # (Audit Task 201) can `git diff origin/main..HEAD` to detect
+          # newly-added LANG_DATA codes. fetch-depth=0 = unshallow.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Ensure origin/main is available locally
+        # `actions/checkout` only fetches the triggering ref by default
+        # even with fetch-depth=0. Explicitly fetch main so the diff
+        # works on PRs from feature branches.
+        run: |
+          git fetch origin main:refs/remotes/origin/main || true
       - name: Run Word Map validator (strict mode — Audit Task 198)
         # WM_VALIDATE_STRICT promotes [#19] cache-buster drift WARNs to
         # ERRORs so a stale cache buster blocks PR merge. Local
         # development still sees WARN to avoid blocking iteration.
+        # WM_BASE_REF tells the per-batch gate (Audit Task 201) what
+        # to diff against — in CI we compare the PR/push ref against
+        # main to surface newly-added LANG_DATA codes that lack
+        # cross-cutting metadata.
         env:
           WM_VALIDATE_STRICT: '1'
+          WM_BASE_REF: 'origin/main'
         run: node validate_wordmap_data.js
 
   cache-buster-drift-gate:
