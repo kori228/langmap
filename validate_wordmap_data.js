@@ -400,6 +400,8 @@ const FAMILY_TOP_ALLOW = new Set([
     'Tyrsenian',                       // ett Etruscan + (potentially) Lemnian/Raetic
     'Disputed',                        // txr Tartessian — affiliation contested
     'Romance',                         // lld Ladin (Rhaeto-Romance) — already in list above; redundant but explicit
+    // Audit Task 159: jiv Shuar Jivaroan — South American small family
+    'Jivaroan',                        // jiv Shuar (Jivaroan, Ecuador/Peru)
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;

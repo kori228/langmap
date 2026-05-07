@@ -9292,3 +9292,574 @@ Each task needs its own dedicated session(s) with content-sourcing time. The aud
 ### Task 163 — affricate tie-bar normalization ✓ validator already in place
 
 - Existing validator check `[#163]` (lines 1121-1151 of validate_wordmap_data.js) flags bare ASCII affricates (`ts`/`dz`/`tʃ`/`dʒ`/`tɕ`/`dʑ`/`tʂ`/`dʐ`) in `'ipa'`-tagged rows. Coverage line: `affricate tie-bar coverage: 214/1920 cells in 'ipa' rows contain U+0361`. Per-cell rebuilds remain opportunistic — not blocking.
+
+---
+
+## Implementation Audit (2026-05-07 part 5) — recently-added language batches
+
+After the 700-language milestone (commit c44ec37) plus 3 uncommitted additions (wae Walser / snk Soninke / dnj Dan), the validator went from 29 → 41 warnings. The increase is *not* a new task category — it is recurring instances of pre-existing tasks (107, 130/201c, 191, 94) firing on each batch. This block names the specific implementation gaps so they can be fixed in the next contributor pass.
+
+### New Task 210. Backfill `scriptTags` on the 9 recently-added languages (Task 130 / 201c instance)
+
+Goal:
+The Task 201 [#201c] gate is currently firing on **9 languages** that have no `scriptTags`. Since Phase 1 of Task 201 is WARN (not ERROR), these batches merged anyway — but the warnings will keep firing until each is backfilled. Two of the 9 languages list multiple scripts in their prose `script` field, so simple `['Latin']` is insufficient.
+
+Current issue I checked (2026-05-07 evening validator):
+
+| Lang | Prose `script` | Required `scriptTags` |
+|---|---|---|
+| `sbp` Sangu | `Latin` | `['Latin']` |
+| `vmf` East Franconian | `Latin` | `['Latin']` |
+| `myx` Masaaba | `Latin (Lumasaaba orthography...)` | `['Latin']` |
+| `tll` Tetela | `Latin (Hagendorens 1956 standard)` | `['Latin']` |
+| `mdr` Mandar | `Latin / Lontara (historical)` | `['Latin', 'Lontara']` |
+| `meu` Motu | `Latin` | `['Latin']` |
+| `wae` Walser (uncommitted) | `Latin` | `['Latin']` |
+| `snk` Soninke (uncommitted) | `Latin / N'Ko / Arabic (Ajami)` | `['Latin', 'NKo', 'Arabic']` |
+| `dnj` Dan (uncommitted) | `Latin (extensive tone diacritics)` | `['Latin']` |
+
+Files to change:
+- `wordmap_meta.js` — add `scriptTags: [...]` to each of the 9 meta blocks.
+
+Implementation instructions:
+- Use the canonical script tag tokens that match `lang-filter.js` (e.g., `'Latin'`, `'NKo'`, `'Arabic'`, `'Lontara'`, `'Han'`, `'Hangul'`, `'Devanagari'`, `'Cyrillic'`, etc. — the existing tags).
+- For multi-script rows (`mdr` Latin/Lontara, `snk` Latin/N'Ko/Arabic): include all scripts in the array.
+- Keep the prose `script` field as is — it's the human-readable display.
+
+Validator / static check:
+- After fix: `[#201c]` warnings drop from 9 to 0.
+
+Done when:
+- All 9 rows have `scriptTags` populated.
+
+### New Task 211. Resolve count-string drift between header and public metadata (Task 107 regression)
+
+Goal:
+The header in `wordmap_data.js` was updated to "703 languages" but 7 public-facing strings still say "700". Same antipattern as Task 134 (cache-buster drift) and Task 198 (`WM_ASSET_VERSION` bump) — the source of truth (header comment) was updated but the public-visible strings were not propagated.
+
+Current issue I checked (2026-05-07 evening):
+- `wordmap.html` body text mentions "700 languages".
+- `README.md` mentions "700 languages".
+- `wordmap.html` `<title>` tag mentions 700.
+- `wordmap.html` `<meta name="description">` mentions 700.
+- `wordmap.html` `<meta og:description>` mentions 700.
+- `wordmap.html` `<meta twitter:description>` mentions 700.
+- (1 more occurrence in same file).
+
+Files to change:
+- `wordmap.html` — bump 4 strings from 700 to 703.
+- `README.md` — bump count.
+
+Implementation instructions:
+- Before merging this fix, decide whether to round to a milestone (700) or track exact count (703). The validator's `Audit Task 107` check flags any mismatch, so either approach works as long as the header and public strings agree.
+- A reasonable convention: round to the nearest 50 (700, 750, 800, ...) for marketing strings; track exact in the validator. Document in CONTRIBUTING.md.
+- Either set the validator to allow rounded milestones (700, 750) or always sync to the exact count.
+
+Validator / static check:
+- After fix: 7 count-mismatch warnings drop to 0.
+
+Done when:
+- Public count strings agree with the validator's actual language count.
+- CONTRIBUTING.md documents the round-to-milestone or track-exactly convention.
+
+### Implementation gaps still open (no new task ID needed)
+
+These are previously-tracked tasks where the user mentioned working on them but the implementation has not landed:
+
+- **Task 207** (lue/cmg formType): 4 warnings still active. Adding `lue: { one: 'agreement-stem', good: 'agreement-stem' }` and `cmg: { eat: 'bound-stem', drink: 'bound-stem' }` to `FORM_TYPE_OVERLAY` closes them.
+- **Task 208** (jmc/vai pronunciationType): 2 warnings still active. Setting `jmc.pronunciationType = 'broad'` and `vai.pronunciationType = 'romanization'` closes them.
+- **Task 159** (jiv Jivaroan): 1 warning. Add `'Jivaroan'` to the family allow-list in `validate_wordmap_data.js`.
+- **Task 200** (source-checked wordEvidence): still 3/29. No progress in this batch.
+- **Task 144 / 209** (description i18n): degrading. New langs ship en/ja/ko/zh per Task 201 [#201b] but no other UI langs.
+
+### Data-quality concerns to spot-check
+
+- **`dnj` Dan moon entry**: surface `siŋŋŋ` paired with IPA `siŋːː` uses two consecutive length marks (`ːː`) which is non-standard. Verify whether intent is `siŋː` (long) or `siŋːːː` (extra-long, three length marks) per Erman 2005.
+- **Multi-script rows where `scriptTags` doesn't match prose**: when fixing Task 210, ensure the array enumerates every script the prose claims, not just Latin.
+
+### Cumulative validator state (2026-05-07 part 5)
+
+- 703 languages.
+- 0 errors.
+- 41 warnings (29 baseline + 9 from new langs without scriptTags + 7 count-string drift, with offsetting -2 from elsewhere).
+- 52 INFOs.
+
+**Recommended priority for next 30 minutes (~7 minutes total drops warnings 41 → 18):**
+1. **Task 210** — add `scriptTags` to 9 langs (~3 min).
+2. **Task 211** — bump 7 count strings 700→703 (~2 min).
+3. **Task 159** — add `Jivaroan` to allow-list (~30 sec).
+4. **Task 207** — add 4 formType entries (~1 min).
+5. **Task 208** — set 2 pronunciationType (~30 sec).
+
+---
+
+## Status Sweep follow-up (2026-05-07 part 2)
+
+After Tasks 195 / 189 / 192 landed (validator gates only), 63 new languages were added in parallel, dropping description-i18n coverage and re-opening Tasks 144 / 188 / 191 / 198 / 199 with new instances. The pattern is exactly what Task 197's cross-cutting rules were designed to prevent: language additions outpacing the i18n + tree-update follow-through. The regressions need explicit task entries so the validator gate can be enforced going forward.
+
+### New Task 201. Promote Task 197's cross-cutting rules into validator gates (i18n + tree-update ratio enforcement)
+
+Goal:
+The 63-language addition that landed in 2026-05-07 caused description-i18n coverage to drop from 86–91% to 76–91% across 17 UI languages, plus knock-on regressions to disambiguator / formType / pronunciationType coverage. Task 197 explicitly listed these cross-cutting requirements as non-negotiable per language addition, but they remained advisory text. This task converts the rules into validator gates that fire before a batch can be merged.
+
+Current issue I checked (2026-05-07):
+- 63 new languages added since 2026-05-06 baseline.
+- Description i18n threshold (95%) breached for 17 UI langs; lowest is es_eu/es_mx/pt_eu/pt_br at 76%.
+- Each new language added without:
+  - description translations in 17 of 21 UI langs
+  - disambiguator when sharing native name (suk/smg pair)
+  - formType for hyphen-surface cells (ykg/ale/kj cells)
+  - pronunciationType when ASCII-only IPA in non-Latin script (gld/kum)
+- Result: 38 warnings vs 29 baseline; the warning count grows at ~0.15 per added language.
+
+Files to change:
+- `validate_wordmap_data.js` — strengthen existing checks from WARN to ERROR for the cross-cutting rules.
+- `CONTRIBUTING.md` — add a "Pre-merge checklist for new languages" section that mirrors the validator gates.
+- `.github/workflows/wordmap-validate.yml` (Task 140) — ensure the workflow blocks merges on the new ERRORs.
+
+Implementation instructions:
+
+**Phase 1 — soft gates (this task).**
+- Convert the existing per-row warnings into a *batch-level* warning that counts new-language regressions:
+  - `[#201a]` if a language is added (compared to `git diff HEAD`'s previous version of `wordmap_data.js`) with `description` not covering all UI langs in `lang_names.js`.
+  - `[#201b]` if a new underscore code lacks `parentCode` or `varietyRole`.
+  - `[#201c]` if a new row has `script` containing RTL-script keywords without `textDirection: 'rtl'`.
+  - `[#201d]` if a new row's `family` token is not in the family allow-list.
+  - `[#201e]` if a new row has hyphen-surface cells without `formType`.
+  - `[#201f]` if a new row's native name collides with an existing row and `disambiguator` is unset.
+- Each per-language regression generates one `[#201x]` warning that lists the offending code.
+
+**Phase 2 — hard gates (post-Task 201 deployment).**
+- After Phase 1 stabilizes, promote the gates to ERRORs.
+- CI workflow rejects PRs that introduce new-language regressions until i18n + tree-update is complete.
+
+**Step 3 — pre-merge checklist (CONTRIBUTING.md).**
+- Document the 11 items from Task 197 as a checkbox list contributors run before submitting a language addition.
+- Make the checklist enforceable by reproducing it in the validator's exit message.
+
+Validator / static check:
+- `[#201]` regression count line: `Cross-cutting regressions on N new languages this batch`.
+- Per-rule sub-warnings: `[#201a]` description i18n, `[#201b]` parentCode, `[#201c]` textDirection, `[#201d]` family allow-list, `[#201e]` formType, `[#201f]` disambiguator.
+- Coverage trend INFO line: `i18n coverage delta vs main: yue +N -M, vi +N -M, ...` (positive net = covered; negative = lost ground).
+
+Do not:
+- Do not promote to ERROR until contributors have time to use the soft gates. Sudden ERRORs would block all PRs.
+- Do not let the gates apply to in-progress branches that pre-date this task. Apply only to commits after deployment date.
+- Do not require all 21 UI langs immediately. Use a tiered enforcement: priority UI langs (en/ja/ko/zh) ERROR; secondary UI langs WARN. Rationale: a contributor adding `kru` Kurukh shouldn't need to translate description into Swahili in the same PR.
+
+Done when:
+- Validator emits `[#201a–f]` regressions per added language.
+- CONTRIBUTING.md "Pre-merge checklist" section exists.
+- Phase 1 (soft gates) deployed; Phase 2 (hard gates) scheduled with deadline.
+- Description-i18n warning count stops growing per added language.
+
+### New Task 202. Cache-buster drift widened (Task 198 instance)
+
+Goal:
+The Task 198 drift between `styles.css?v=N` and `WM_ASSET_VERSION.styles` has widened from `59 vs 54` to `60 vs 54`. The static tag was bumped again without bumping the registry — exactly the regression Task 134 was supposed to prevent.
+
+Current issue I checked:
+- `[#19] styles.css?v=60 in wordmap.html doesn't match WM_ASSET_VERSION.styles=54`.
+- Drift interval: 6 (was 5 yesterday).
+
+Files to change:
+- `wordmap.html` — bump `WM_ASSET_VERSION.styles` to 60.
+- Same for any other asset whose static tag exceeds the registry value.
+
+Implementation instructions:
+- Run `git diff HEAD~5 -- wordmap.html` to see all `?v=` changes.
+- Mirror each into `WM_ASSET_VERSION` keys.
+- Add a pre-commit hook that scans for `?v=N` changes without a corresponding registry update.
+
+Validator / static check:
+- `[#19]` warning drops to 0 after bump.
+
+Do not:
+- Do not lower the static tag to match the registry — that would force browsers to re-cache stale assets.
+
+Done when:
+- `[#19]` reports 0 cache-buster drift cases.
+- Pre-commit hook prevents future drift.
+
+### New Task 203. Add `itl` Itelmen and `ykg` Northern Yukaghir to `HIST_DESCENDANT` (Task 199 instance)
+
+Goal:
+Task 199 named `yuc` and `kgg` as fragmentary languages outside `HIST_DESCENDANT`. The 2026-05-07 status check shows 2 more in the same state: `itl` Itelmen (Chukotko-Kamchatkan, Russia, ~80 fluent) and `ykg` Northern Yukaghir (Yukaghir family, ~50 fluent). Both are recently-added rows tagged `dataStatus: 'fragmentary'` without the era-routing.
+
+Current issue I checked:
+- `[#17] itl: DATA_STATUS_OVERRIDES = 'fragmentary' but NOT in HIST_DESCENDANT`.
+- `[#17] ykg: DATA_STATUS_OVERRIDES = 'fragmentary' but NOT in HIST_DESCENDANT`.
+- Plus the still-open `yuc` and `kgg` from Task 199.
+
+Files to change:
+- `wordmap_data.js` `HIST_DESCENDANT` — add 4 rows (itl, ykg, yuc, kgg).
+
+Implementation instructions:
+- Both `itl` and `ykg` are language isolates within their families with no living descendants. Use the same self-or-null convention as Task 199's `yuc`/`kgg` resolution.
+- Document the convention in `wordmap_data.js` so future additions follow it.
+
+Validator / static check:
+- `[#17]` warnings drop to 0 after addition.
+
+Done when:
+- All 4 fragmentary-but-unrouted rows added to `HIST_DESCENDANT`.
+- `[#17]` reports 0.
+
+### New Task 204. Add `meta.disambiguator` for `suk`/`smg` Kisukuma pair (Task 188 instance)
+
+Goal:
+Two newly-added Bantu rows — `suk` Sukuma and `smg` Sumbwa-Kimbu — share the native name `Kisukuma`. Task 188's validator catches this and warns. Need to add `disambiguator` to both.
+
+Current issue I checked:
+- `[#188] suk: shares native name "Kisukuma" with smg`.
+- `[#188] smg: shares native name "Kisukuma" with suk`.
+
+Files to change:
+- `wordmap_meta.js` — add `disambiguator` to both rows (in 4 priority UI langs minimum: en/ja/ko/zh).
+
+Implementation instructions:
+- `suk` Sukuma: `disambiguator: { en: '(Sukuma proper, NW Tanzania)', ja: '（スクマ語、タンザニア北西部）', ko: '(수쿠마어, 탄자니아 북서부)', zh: '（苏库马语，坦桑尼亚西北部）' }`.
+- `smg` Sumbwa-Kimbu: `disambiguator: { en: '(Sumbwa-Kimbu, west of Lake Victoria)', ja: '（スンブワ・キンブ語、ヴィクトリア湖西岸）', ko: '(숨브와-킴부어, 빅토리아호 서안)', zh: '（松布瓦-金布语，维多利亚湖西岸）' }`.
+- Verify the two rows actually share the same Bantu cluster — if they do, document the close relation in `description`.
+
+Validator / static check:
+- `[#188]` reports 0 unresolved shared-native pairs after fix.
+
+Done when:
+- Both rows have `disambiguator` set.
+- Disambiguator coverage tally moves from 6/8 to 8/8.
+
+### New Task 205. Backfill `formType` for `ykg`/`ale`/`kj` hyphen-surface cells (Task 191 instance)
+
+Goal:
+Task 191 reported 63/65 formType coverage. After 63 new language additions, the count is 63/73 — 10 new hyphen/star surface cells without `formType`. Specifically: `ykg.eat`, `ykg.drink`, `ale.drink`, `ale.love`, `kj.one`, plus 5 more not enumerated in the validator's truncated list.
+
+Current issue I checked:
+- `[#191] ykg.eat: hyphen/star surface "ленди-" without formType`.
+- `[#191] ykg.drink: hyphen/star surface "ӧйрэ-" without formType`.
+- `[#191] ale.drink: hyphen/star surface "таӈах̆-" without formType`.
+- `[#191] ale.love: hyphen/star surface "кидук-" without formType`.
+- `[#191] kj.one: hyphen/star surface "-mwe" without formType`.
+- `[#191] (5 more)`.
+
+Files to change:
+- `wordmap_meta.js` `FORM_TYPE_OVERLAY` (or post-migration static fields) — add the 10 missing cells.
+
+Implementation instructions:
+- For Yukaghir `ykg` and Aleut `ale` hyphen-suffix cells: `formType: 'bound-stem'` (verbal stems requiring suffix).
+- For Kuanyama `kj` hyphen-prefix `-mwe`: `formType: 'agreement-stem'` (Bantu noun-class agreement marker).
+- Consult `FORM_TYPE_OVERLAY` for similar entries (Iranian/Turkic bound stems, Bantu agreement stems) to match conventions.
+- For the 5 truncated cells, run validator with verbose mode to enumerate them, then categorize.
+
+Validator / static check:
+- `[#191]` count drops from 10 to 0; coverage 73/73.
+
+Done when:
+- All 10 cells annotated.
+- Coverage tally `formType coverage on hyphen/star cells: 73/73`.
+
+### New Task 206. Set `pronunciationType` for `gld` Nanai and `kum` Kumyk (Task 94 instance)
+
+Goal:
+Task 94's romanization-vs-IPA validator caught 2 new rows with non-Latin surface but ASCII-only IPA: `gld` Nanai (Tungusic, Russia) and `kum` Kumyk (Turkic, Russia). Both lack `pronunciationType`, which means the validator can't distinguish "this is intentionally broad transcription" from "the IPA wasn't filled in properly".
+
+Current issue I checked:
+- `[#94] 2 unlabeled non-Latin-script rows have ASCII-only IPA — likely romanization. Set meta.pronunciationType. Codes: gld, kum`.
+
+Files to change:
+- `wordmap_meta.js` — add `pronunciationType` to both rows.
+
+Implementation instructions:
+- Inspect the IPA cells in each row.
+- If they use academic romanization conventions (Tungusic/Cyrillic-derived for `gld`, Turkic/Latin-or-Cyrillic-derived for `kum`), set `pronunciationType: 'romanization'`.
+- If they're broad phonemic transcriptions, set `'broad'`.
+- Pick based on actual content; do not default.
+
+Validator / static check:
+- `[#94]` reports 0 unlabeled rows after fix.
+- pronunciationType coverage moves from 223/682 to 225/682.
+
+Done when:
+- `gld` and `kum` have `pronunciationType` set.
+- `[#94]` reports 0.
+
+---
+
+## Cumulative status post-Tasks 195/189/192 deployment (2026-05-07)
+
+**38 warnings (was 29 yesterday):** the increase is mostly Task 144 / 188 / 191 / 94 instances on newly-added languages, not regressions in already-correct rows. Tasks 195/189/192 themselves added 0 warnings — their gates fire only when adoption begins.
+
+**Coverage progress:**
+- 619 → 682 languages (+63).
+- vitality 619/619 → 682/682.
+- reviewStatus 619/619 → 682/682.
+- textDirection 36/36 (held; new RTL-script langs picked up correctly).
+- multi-word formType 253/253 → 271/271 (held).
+- WORD_LIST.label 21/21, definition 21/21 (held).
+
+**Validator gates added by 2026-05-07 commit:**
+- `[#195]` legacy/pilot stream-name mixing — currently 0 cells use either, so 0 warnings.
+- `[#189]` accessed date enforcement (URL → required, malformed → ERROR, future-dated → ERROR) — currently 0 cells have URLs, so 0 warnings.
+- `[#192]` runtime overlay tracker (4/17 migrated; 13 remaining).
+
+**Open task summary updated for 2026-05-07:**
+- Validator-warning visible: 144, 173 (now Task 200), 188 (Task 204 instance), 191 (Task 205 instance), 198 (Task 202 instance), 199 (Task 203 instance), 94 (Task 206 instance).
+- New batch-level gate task: Task 201 (cross-cutting i18n/tree enforcement).
+- Coverage-tally still open: 76/84/99/118/151/166/167/171/177/189/195 follow-throughs.
+- Schema follow-up: 165/168/169/182/183/184/185/186/192 continued migration.
+- Language additions: Tier 1–3 remaining (chm/tw/tah/ho/en_nz/oto + sign langs/jrb/nmn).
+- Educational: 151–158 untouched.
+- Roadmap to 1000: Task 197 master plan; Tier 5–13 unstarted (current 682 → goal 1000 = +318).
+
+---
+
+## Status Sweep follow-up (2026-05-07 part 3)
+
+After Tasks 198 / 199 / 203 / 204 / 205 closed and Task 200 partially landed (3/29 source-checked rows now have full wordEvidence), the validator is at 0 errors / 29 warnings / 52 INFOs. Language count rose to 691 (+72 since the 2026-05-06 baseline). Two new instance-class regressions have surfaced from continued language additions: `lue` Luvale formType cells and `jmc`/`vai` pronunciationType. Plus the description-i18n gap (Task 144) is now the largest single warning class and is degrading rather than improving.
+
+### Closed since 2026-05-07 morning sweep
+
+- ✅ Task 198 — cache-buster drift CI gate landed: `WM_VERSION_FLOOR` rollback guard + `WM_VALIDATE_STRICT=1` env + `.githooks/pre-commit` hook + GitHub workflow annotation.
+- ✅ Task 199 — `yuc` Yuchi + `kgg` Kusunda added to `HIST_DESCENDANT` (parallel-thread `d9b1aa6` batch).
+- ✅ Task 203 — `itl` Itelmen + `ykg` Northern Yukaghir HIST_DESCENDANT entries (resolved together with Task 199).
+- ✅ Task 204 — `suk`/`smg` Kisukuma disambiguator: 8/8 shared-native pairs covered (was 6/8).
+- ✅ Task 205 — partial: 5/10 hyphen/star formType cells closed; 4 remain (lue×2, cmg×2 — see Task 207).
+- ⚠️ Task 200 — 3/29 source-checked wordEvidence rows now full (was 0/29). nv plus 2 others.
+
+### New Task 207. Backfill `formType` for `lue` Luvale and `cmg` Khalkha-Mongolian (Task 191/205 follow-up)
+
+Goal:
+After Task 205 closed 6 of 10 hyphen-surface formType gaps, 4 remain. Two are previously-known `cmg` Khalkha-Mongolian cells; two are newly-introduced `lue` Luvale Bantu agreement-stem cells. Both languages are in the recently-added Tier-4-style batch.
+
+Current issue I checked (2026-05-07 evening validator output):
+- `[#191] lue.one: hyphen/star surface "-mwe" without formType`.
+- `[#191] lue.good: hyphen/star surface "-mwaza" without formType`.
+- `[#191] cmg.eat: hyphen/star surface "ᠢᠳᠡ-" without formType`.
+- `[#191] cmg.drink: hyphen/star surface "ᠤᠭᠤ-" without formType`.
+
+Files to change:
+- `wordmap_meta.js` `FORM_TYPE_OVERLAY` (or post-Task-192 static fields).
+
+Implementation instructions:
+- `lue.one` (-mwe), `lue.good` (-mwaza): Bantu noun-class agreement prefix → `formType: 'agreement-stem'`. Same convention as `kj.one` resolved in Task 205. The leading hyphen marks where the noun-class concord prefix attaches.
+- `cmg.eat` (ᠢᠳᠡ-), `cmg.drink` (ᠤᠭᠤ-): Mongolian verbal stems requiring suffix → `formType: 'bound-stem'`. Same convention as Iranian/Turkic bound stems already in the overlay.
+
+Validator / static check:
+- After fix: `formType coverage on hyphen/star cells: 73/73`.
+- `[#191]` warnings drop to 0.
+
+Done when:
+- All 4 cells annotated.
+- Coverage tally complete.
+
+### New Task 208. Set `pronunciationType` for `jmc` Machame and `vai` Vai (Task 94/206 follow-up)
+
+Goal:
+After Task 206 closed `gld` Nanai and `kum` Kumyk, two new entrants — `jmc` Machame (Chaga Bantu, Tanzania) and `vai` Vai (Mande, Liberia, with indigenous syllabary) — trip the same `[#94]` validator. Each has non-Latin or extended-Latin surface but ASCII-only IPA, and the validator can't tell whether the IPA is intentionally broad / romanization or unfilled.
+
+Current issue I checked:
+- `[#94] 2 unlabeled non-Latin-script rows have ASCII-only IPA — likely romanization. Codes: jmc, vai`.
+
+Files to change:
+- `wordmap_meta.js` — add `pronunciationType` to both rows.
+
+Implementation instructions:
+- `vai` Vai: surface uses Vai syllabary (e.g., ꕢ ꕞ ꔉ ...) but IPA cells are ASCII Latin. Set `pronunciationType: 'romanization'`.
+- `jmc` Machame: Bantu Latin orthography may include extended characters (ɛ, ɔ); IPA cells need inspection. If broad transcription, `'broad'`; if a phonemic-orthography copy, `'orthography'`.
+- Pick based on actual cell content; do not default.
+
+Validator / static check:
+- `[#94]` reports 0 unlabeled rows.
+- pronunciationType coverage moves from 223/691 to 225/691.
+
+Done when:
+- Both rows have `pronunciationType` set.
+
+### Cumulative status after 2026-05-07 part 3
+
+**Validator state:**
+- 691 languages (+72 since 2026-05-06 baseline; +9 since this morning's status check).
+- 0 errors, 29 warnings, 52 INFOs.
+
+**Tasks closed in 24 hours:** 198, 199, 203, 204, plus Task 205 (5/10 cells), Task 200 (3/29 rows). Net: 4 tasks fully closed, 2 partially.
+
+**Still-blocking warnings (29 total):**
+- 17 description-i18n threshold breaches (Task 144) — *this category alone is now 59% of all warnings and degrading*.
+- 4 formType cells (Task 207 above).
+- 5 source-checked rows enumerated + 21 elided (Task 200).
+- 2 pronunciationType (Task 208 above).
+- 1 family allow-list token (`jiv` Jivaroan; needs `lang-filter.js` curated taxonomy update per Task 159).
+
+**Coverage trends:**
+- Description i18n 86%→78% in core UI langs, 76%→75% in es/pt regional. Trend is *negative* — language additions are outpacing translation backfill.
+- wordEvidence cell coverage: 543 → 629 cells annotated (+86 / +16%).
+- pronunciationType coverage: 223/691 (32%; absolute count flat, ratio dropping due to denominator growth).
+- locationBasis: 170/691 (25%; same flat-count problem).
+- surfaceType: 472/691 (68%; same).
+- languageKind: 102/691 (15%; same).
+
+**Critical observation: Task 201 must land soon.**
+- The "Tier 4-style language additions without i18n/tree-update follow-through" pattern that Task 201 was created to gate is now actively degrading coverage ratios. Without the soft-gate validator check, every new batch widens the description-i18n gap.
+- Recommendation: deploy Task 201 Phase 1 (soft gates / WARN level) before the next language batch lands. The gate doesn't block additions — it lights up the regressions inline so the contributor can fix them in the same PR.
+
+**Open task table (Tasks 200–208 + ongoing):**
+
+| Task | Status | Notes |
+|---|---|---|
+| 144 | open, *worsening* | 17 UI langs × 110–169 missing codes/UI |
+| 151–158 | not started | educational tasks (audio, cognate, grammar capsule, samples, IPA tutor, tours, citation, quiz) |
+| 165 | open | `meta.script` 277 distinct strings |
+| 166 | open | `officialStatus` 0/691 |
+| 167 | open | `speakers` numeric structure 0/691 |
+| 168 | open | 16 multi-line declarations |
+| 169 | open | 147 surface=IPA cells (slightly grown with new langs) |
+| 171 | open | speakerYear 72/691 (10%) |
+| 173/200 | partial | 3/29 source-checked rows full |
+| 177 | open | glottocode 28/691 (4%) |
+| 182 | open | aliases runtime → static |
+| 183/184/185/186 | open | atom translator coverage |
+| 189 | gate landed | 0 cells with URLs yet |
+| 192 | partial | 4/17 runtime overlays migrated |
+| 195 | gate landed | 0 cells use split or pilot |
+| 196 (Tier 4) | not formally started | 21 langs proposed |
+| 197 (Tier 5–13 to 1000) | not started | 318 langs |
+| 201 | not started, *urgent* | cross-cutting gate validator |
+| 207, 208 | new this part | small instance backfills |
+
+**Recommended next actions in priority order:**
+1. **Task 201 Phase 1** — deploy soft gates ASAP to stop description-i18n degradation per added batch.
+2. **Task 144 backfill in tandem with Task 201** — translate the ~169 missing description entries for es/pt/it (where the gap is widest); this single action recovers the largest warning class.
+3. **Task 207, 208** — small mechanical backfills, ~10 minutes each.
+4. **Task 200** — continue source-checked wordEvidence backfill from 3/29 toward 29/29.
+5. **Task 159** — add Jivaroan to the family allow-list.
+
+---
+
+## Status Sweep follow-up (2026-05-07 part 4)
+
+After Tasks 201–206 cleanup commit landed and 3 more languages were added (691 → 694), the validator state is stable at 0 errors / 29 warnings / 52 INFOs — the same numbers as the part-3 sweep. **Task 201's per-batch gate is now in place and operational, but the description-i18n gap (Task 144) continues to widen** because Task 201's `[#201b]` rule only enforces priority 4 UI langs (en/ja/ko/zh), not the full 21. New languages pass the gate while still failing the 95% threshold for the other 17 UI langs.
+
+### Closed since 2026-05-07 part 3
+
+- ✅ Task 201 — per-batch gate validator deployed: `[#201a–f]` sub-checks, `WM_BASE_REF`/`WM_BATCH_GATE` env knobs, CI workflow with `fetch-depth=0`, CONTRIBUTING.md M section.
+- ✅ Task 202 — cache-buster drift cleared (already done in this morning's user batch but re-confirmed).
+- ✅ Task 203 — itl/ykg HIST_DESCENDANT entries (already in tree, re-confirmed).
+- ✅ Task 204 — suk/smg disambiguator (already done, re-confirmed).
+- ✅ Task 206 — gld/kum pronunciationType (already done, re-confirmed).
+- ⚠️ Task 205 — partial: 6 of 10 cells closed; 4 remaining cells now scoped under Task 207.
+- ⚠️ Task 200 — stalled at 3/29 source-checked rows. No additional rows added wordEvidence in this commit cycle.
+
+### New Task 209. Description-i18n Phase B — backfill the 17 secondary UI langs for the existing 694 rows (Task 144 / 201 follow-through)
+
+Goal:
+Task 201's per-batch gate enforces description-multilingual-object (`[#201b]`) for priority 4 UI langs (en/ja/ko/zh) when a new language is added. It does NOT enforce coverage in the other 17 UI langs (`yue, vi, th, id, hi, de, fr, it, es_eu, es_mx, pt_eu, pt_br, ru, uk, ar, he, sw`). Because of this asymmetry, every new-language batch passes Task 201's gate but breaches Task 144's 95% threshold for the secondary 17 UI langs. Net result: description-i18n warnings widen monotonically with each language batch.
+
+This task closes the gap by extending the gate AND backfilling the existing data.
+
+Current issue I checked (2026-05-07 evening):
+- Per-UI description coverage:
+  - es_eu/es_mx/pt_eu/pt_br: 74% (517/694) — **172 codes missing per UI**.
+  - ru: 79% (548/694) — 141 missing.
+  - de/fr: 83% (576/694) — 113 missing.
+  - yue/vi/th/id/hi/it/uk/ar/he/sw: 78% (540/694) — 149 missing.
+- Trend over 24 hours:
+  - es/pt: 89% → 82% → 76% → **74%** (degrading -15 points).
+  - de/fr: 91% → 91% → 84% → **83%** (degrading -8 points).
+  - yue/vi/th/id/hi: 93% → 86% → 79% → **78%** (degrading -15 points).
+- Each new-language batch adds 3-6 codes that are missing in 17 UI langs simultaneously; the cumulative gap is now **172 × 4 + 149 × 10 + 141 + 113 × 2 = 2,937 missing description translations** across the 17 UI langs.
+- The Task 201 gate's `[#201b]` would catch this if extended, but currently it does not.
+
+Files to change:
+- `meta_i18n_coverage.js` and/or `wordmap_meta.js` — add description translations for the 172 most-missing codes in es_eu/es_mx/pt_eu/pt_br first (one translation lands in 4 UI langs simultaneously since es_eu==es_mx and pt_eu==pt_br at the description level).
+- `validate_wordmap_data.js` — extend `[#201b]` to a tiered enforcement:
+  - `[#201b1]` priority 4 UI langs (en/ja/ko/zh) ERROR (already in place).
+  - `[#201b2]` widely-used 7 UI langs (de/fr/es_eu/pt_br/ru/zh/it) WARN (extend).
+  - `[#201b3]` remaining 14 UI langs (yue/vi/th/id/hi/uk/ar/he/sw/es_mx/pt_eu) INFO only.
+- `CONTRIBUTING.md` M — document the tiered enforcement.
+
+Implementation instructions:
+
+**Phase B1 — Spanish/Portuguese batch (largest gap, lowest cost).**
+- 172 codes missing × 1 translation each (Spanish), shared across es_eu/es_mx → covers 4 UI lang slots.
+- Same for Portuguese: 172 codes × 1 translation, shared across pt_eu/pt_br.
+- Effort: ~250 codes × 30 seconds each = ~2 hours total per language family.
+- Net warning reduction: 4 warnings (es_eu, es_mx, pt_eu, pt_br) cleared.
+
+**Phase B2 — German/French batch.**
+- 113 codes missing each.
+- Effort: ~2 hours.
+- Net warning reduction: 2 warnings cleared.
+
+**Phase B3 — Russian batch.**
+- 141 codes missing.
+- Effort: ~1.5 hours.
+- Net warning reduction: 1 warning cleared.
+
+**Phase B4 — Italian batch.**
+- 149 codes missing.
+- Effort: ~1.5 hours.
+- Net warning reduction: 1 warning cleared (it).
+
+**Phase B5 — Asian batch (yue/vi/th/id/hi/uk).**
+- 6 UI langs × 149 codes each = 894 translation units. The widest gap.
+- Effort: ~10-15 hours total.
+- Net warning reduction: 6 warnings cleared.
+
+**Phase B6 — Remaining (ar/he/sw).**
+- 3 UI langs × 149 codes = 447 translation units.
+- Effort: ~5 hours.
+- Net warning reduction: 3 warnings cleared.
+
+**Phase B7 — Validator extension.**
+- Promote `[#201b2]` to WARN-on-each-UI-lang-coverage so future PRs cannot land without at least de/fr/es/pt translations.
+- Add INFO `[#201b3]` showing per-UI-lang coverage breakdown so the gap is visible per PR.
+
+**Total effort estimate:** 18-23 hours across 7 phases. Phase B1 alone clears 4 warnings (out of 17 description-i18n warnings).
+
+Validator / static check:
+- `[#13b']` warning count drops from 17 toward 0 as each phase lands.
+- New `[#201b2]`/`[#201b3]` checks fire on PR but do not block merges (Phase 1 = WARN/INFO).
+
+Do not:
+- Do not bulk-machine-translate without review. Description text contains technical terminology (`agglutinative`, `ergative`, script names) that MT routinely mistranslates.
+- Do not skip the regional Spanish/Portuguese splits. `es_eu` ≠ `es_mx` for translation overhead but the same source material covers both.
+- Do not gate Phase B1 (the lowest-cost / highest-impact phase) behind Phase B7 (validator extension). Run them in parallel.
+- Do not let new-language batches outpace the backfill. Coordinate with the contributor adding new languages so the description translation lands in the same PR.
+
+Done when:
+- All 17 description-i18n warnings are at 95% or higher.
+- Per-UI coverage tally shows <= 35 missing codes per UI lang (the rough threshold for a stable 95% on a 700-row dataset).
+- Validator `[#201b2]`/`[#201b3]` extensions deployed and CONTRIBUTING.md M updated.
+- Description i18n trend reverses: previously degrading -15 points/24h, target +15 points/24h.
+
+### Cumulative status after part 4 (2026-05-07 evening)
+
+**Open warning categories (29 total):**
+- Task 144/209 description-i18n: **17 warnings** (59% of all warnings, **degrading**).
+- Task 200 source-checked wordEvidence: **5 enumerated + 21 elided** (stalled at 3/29 done).
+- Task 207 hyphen-surface formType: **4 warnings** (lue×2, cmg×2).
+- Task 208 pronunciationType: **2 warnings** (jmc, vai).
+- Task 159 family allow-list: **1 warning** (jiv Jivaroan).
+
+**Coverage trends (last 24-48 hours):**
+- Languages: 619 → 682 → 691 → 694 (+75 since 2026-05-06 baseline).
+- wordEvidence cells: 543 → 629 (+86, mostly from the user's nv-batch backfill in Task 200).
+- pronunciationType: 223/619 (36%) → 223/694 (32%) — **flat absolute count, ratio dropping**.
+- locationBasis: 170/619 (27%) → 170/694 (24%) — same.
+- surfaceType: 472/619 (76%) → 472/694 (68%) — same.
+- languageKind: 102/619 (16%) → 102/694 (15%) — same.
+
+**Critical observation: backfill bottleneck on Tier 4-style additions.**
+- 75 language additions in 48 hours have outpaced every single coverage backfill except wordEvidence (which got a one-off batch).
+- `pronunciationType`/`locationBasis`/`surfaceType`/`languageKind` ratios are dropping not because old data is being lost, but because new languages arrive without these fields set.
+- Task 201's gate addresses *priority* fields (description, scriptTags, parentCode, family, disambiguator). Task 209 above extends to description i18n. **Similar tasks may be needed for pronunciationType/locationBasis/surfaceType/languageKind** if the goal is to maintain >50% coverage on those.
+
+**Recommended priority order for next 24 hours:**
+1. **Task 207** — 4 cells × 30 seconds = 2 minutes work. Fastest single warning reduction.
+2. **Task 208** — 2 langs × 30 seconds = 1 minute. Same.
+3. **Task 159** — 1 family token added to allow-list. ~30 seconds.
+4. **Task 209 Phase B1** — Spanish/Portuguese description translations. Highest-impact (4 warnings cleared, ~2-4 hours).
+5. **Task 200 batch** — backfill 5 more source-checked rows. Cumulative: 8/29 → 13/29 progress.
+6. (Then) **Task 209 Phase B2-B7** — full description-i18n catch-up across remaining 13 UI langs.
+
+If steps 1-3 are completed first (~5 minutes total), the warning count drops from 29 → 22 immediately. Step 4 drops it to 18.
