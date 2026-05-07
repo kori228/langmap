@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 703 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 718 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -213,10 +213,18 @@ const LANG_DATA = {
     } },
   bn: { name: 'Bengali', native: 'বাংলা', lat: 23.81, lng: 90.41, // Dhaka
     words: { water:['জল','d͡ʒɔl'], fire:['আগুন','aɡun'], sun:['সূর্য','ʃuɾd͡ʒo'], moon:['চাঁদ','t͡ʃãd'], mother:['মা','ma'], father:['বাবা','baba'], eat:['খাওয়া','kʰaoa'], drink:['পান করা','pan kɔɾa'], love:['ভালোবাসা','bʰalobasa'], heart:['হৃদয়','hɾidɔe̯'], tree:['গাছ','ɡat͡ʃʰ'], house:['বাড়ি','baɽi'], dog:['কুকুর','kukuɾ'], cat:['বিড়াল','biɽal'], hand:['হাত','hat'], eye:['চোখ','t͡ʃokʰ'], hello:['নমস্কার','nɔmɔʃkaɾ'], thanks:['ধন্যবাদ','dʰɔnnobad'], one:['এক','ek'], good:['ভালো','bʰalo'] }},
+  // Rangpuri (Kamtapuri) — Indo-Aryan Eastern, ~15M speakers, NW Bangladesh + N Bengal/Assam India.
+  // Sources: Ethnologue 27 'rkt'; Glottolog rang1265; Wilde (2008) Sociolinguistic Survey of Rangpuri.
+  rkt: { name: 'Rangpuri', native: 'রংপুরী', lat: 25.74, lng: 89.28, // Rangpur, Bangladesh
+    words: { water:['পানি','pani'], fire:['আগুন','aɡun'], sun:['সুরুজ','suɾud͡ʒ'], moon:['চাইন','tʃain'], mother:['মাও','mao'], father:['বাও','bao'], eat:['খাওয়া','kʰawa'], drink:['খা','kʰa'], love:['মনোয়াব','monojab'], heart:['মন','mon'], tree:['গাছ','ɡatʃʰ'], house:['ঘর','ɡʱoɾ'], dog:['কুকুর','kukuɾ'], cat:['বিরাল','biɾal'], hand:['হাত','haːt'], eye:['চখ','tʃɔkʰ'], hello:['হামার সালাম','hamaɾ salam'], thanks:['ধইন্যা','dʱoinɲa'], one:['এক','ek'], good:['ভালো','bʱalo'] }},
   ur: { name: 'Urdu', native: 'اردو', lat: 31.56, lng: 74.35, // Lahore
     words: { water:['پانی','paːniː'], fire:['آگ','aːɡ'], sun:['سورج','suːɾad͡ʒ'], moon:['چاند','t͡ɕãːd'], mother:['ماں','mãː'], father:['والد','vaːlid'], eat:['کھانا','kʰaːnaː'], drink:['پینا','piːnaː'], love:['محبت','mohabːat'], heart:['دل','dil'], tree:['درخت','daɾaxt'], house:['گھر','ɡʱaɾ'], dog:['کتا','kuttaː'], cat:['بلی','bilːiː'], hand:['ہاتھ','haːtʰ'], eye:['آنکھ','ãːkʰ'], hello:['السلام علیکم','assalaːmu ʕalaikum'], thanks:['شکریہ','ʃukrijaː'], one:['ایک','eːk'], good:['اچھا','at͡ʃt͡ʃʰaː'] }},
   ta: { name: 'Tamil', native: 'தமிழ்', lat: 13.08, lng: 80.27, // Chennai
     words: { water:['நீர்','niːɾ'], fire:['தீ','tiː'], sun:['சூரியன்','suːɾijan'], moon:['நிலா','nilaː'], mother:['அம்மா','ammaː'], father:['அப்பா','appaː'], eat:['சாப்பிடு','saːpːiɖu'], drink:['குடி','kuɖi'], love:['காதல்','kaːdal'], heart:['இதயம்','idajam'], tree:['மரம்','maɾam'], house:['வீடு','viːɖu'], dog:['நாய்','naːj'], cat:['பூனை','puːnai'], hand:['கை','kaj'], eye:['கண்','kaɳ'], hello:['வணக்கம்','ʋaɳakkam'], thanks:['நன்றி','nanri'], one:['ஒன்று','ondru'], good:['நல்ல','nalla'] }},
+  // Irula — Dravidian Southern (Tamil-Kannada), ~200K speakers, Tamil Nadu/Kerala/Karnataka. Distinctive Adivasi tribal language.
+  // Sources: Ethnologue 27 'iru'; Glottolog irul1241; Zvelebil (1973) Comparative Dravidian Phonology.
+  iru: { name: 'Irula', native: 'இருளர் மொழி', lat: 11.45, lng: 76.71, // Nilgiri Hills (Irula heartland)
+    words: { water:['nīr','niːɾ'], fire:['tī','tiː'], sun:['čūriyen','tʃuːɾijen'], moon:['niLā','niɭaː'], mother:['ammā','amːaː'], father:['ayyā','ajːaː'], eat:['činnu','tʃinːu'], drink:['kuDi','kuɖi'], love:['kāhal','kaːhal'], heart:['idayam','idajam'], tree:['maram','maɾam'], house:['vīDu','viːɖu'], dog:['nāyi','naːji'], cat:['pūne','puːne'], hand:['kayyu','kajːu'], eye:['kaNN','kaɳː'], hello:['vannakkam','vanːakːam'], thanks:['nanri','nanɾi'], one:['onnu','onːu'], good:['nalla','nalːa'] }},
   // === European ===
   en: { name: 'English', native: 'English', lat: 51.51, lng: -0.13, // London
     words: { water:['water','ˈwɔːtə'], fire:['fire','faɪə'], sun:['sun','sʌn'], moon:['moon','muːn'], mother:['mother','ˈmʌðə'], father:['father','ˈfɑːðə'], eat:['eat','iːt'], drink:['drink','drɪŋk'], love:['love','lʌv'], heart:['heart','hɑːt'], tree:['tree','triː'], house:['house','haʊs'], dog:['dog','dɒɡ'], cat:['cat','kæt'], hand:['hand','hænd'], eye:['eye','aɪ'], hello:['hello','həˈləʊ'], thanks:['thank you','θæŋk juː'], one:['one','wʌn'], good:['good','ɡʊd'] }},
@@ -249,6 +257,10 @@ const LANG_DATA = {
     words: { water:['su','su'], fire:['ateş','ateʃ'], sun:['güneş','ɟyneʃ'], moon:['ay','aj'], mother:['anne','anːe'], father:['baba','baba'], eat:['yemek','jemek'], drink:['içmek','itʃmek'], love:['aşk','aʃk'], heart:['kalp','kalp'], tree:['ağaç','aːtʃ'], house:['ev','ev'], dog:['köpek','cøpek'], cat:['kedi','cedi'], hand:['el','el'], eye:['göz','ɟøz'], hello:['merhaba','meɾhaba'], thanks:['teşekkürler','teʃecːyɾleɾ'], one:['bir','biɾ'], good:['iyi','iji'] }},
   fa: { name: 'Persian', native: 'فارسی', lat: 35.69, lng: 51.39, // Tehran
     words: { water:['آب','ɒːb'], fire:['آتش','ɒːteʃ'], sun:['خورشید','xorʃiːd'], moon:['ماه','mɒːh'], mother:['مادر','mɒːdær'], father:['پدر','pedær'], eat:['خوردن','xordæn'], drink:['نوشیدن','nuːʃidæn'], love:['عشق','eʃq'], heart:['قلب','qælb'], tree:['درخت','deræxt'], house:['خانه','xɒːne'], dog:['سگ','sæɡ'], cat:['گربه','ɡorbe'], hand:['دست','dæst'], eye:['چشم','t͡ʃeʃm'], hello:['درود','doɾuːd'], thanks:['سپاس','sepɒːs'], one:['یک','jek'], good:['خوب','xuːb'] }},
+  // Judeo-Persian — Iranian Jewish, ~60K, Iran/Israel/USA. Persian written in Hebrew script.
+  // Sources: Ethnologue 27 'jpr'; Glottolog jude1257; Lazard (1968) Judeo-Persian texts.
+  jpr: { name: 'Judeo-Persian', native: 'פארסי יהודי', lat: 32.65, lng: 51.67, // Isfahan (historic Iranian Jewish center)
+    words: { water:['אב','ɒːb'], fire:['אתש','ɒːteʃ'], sun:['חורשיד','xorʃiːd'], moon:['מאה','mɒːh'], mother:['מאדר','mɒːdær'], father:['פדר','pedær'], eat:['חורדן','xordæn'], drink:['נושידן','nuːʃidæn'], love:['עשק','eʃq'], heart:['קלב','qælb'], tree:['דרכת','deræxt'], house:['כאנה','xɒːne'], dog:['סג','sæɡ'], cat:['גורבה','ɡorbe'], hand:['דסת','dæst'], eye:['צ\'שם','t͡ʃeʃm'], hello:['שלום','ʃɒːlom'], thanks:['ספאס','sepɒːs'], one:['יכ','jek'], good:['חוב','xuːb'] }},
   sw: { name: 'Swahili', native: 'Kiswahili', lat: -6.79, lng: 39.28, // Dar es Salaam
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['jua','dʒua'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kula','kula'], drink:['kunywa','kuɲwa'], love:['upendo','upendo'], heart:['moyo','mojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['jicho','dʒitʃo'], hello:['habari','habari'], thanks:['asante','asante'], one:['moja','modʒa'], good:['nzuri','nzuri'] }},
   // Sukuma — Bantu F21, ~5M speakers, Tanzania's largest single Bantu language by speaker count.
@@ -291,6 +303,10 @@ const LANG_DATA = {
   // Siberian Mongolic
   bxr: { name: 'Buryat', native: 'Буряад хэлэн', lat: 51.83, lng: 107.61, // Ulan-Ude
     words: { water:['уһан','uhan'], fire:['гал','ɡal'], sun:['наран','naran'], moon:['һара','hara'], mother:['эхэ','exe'], father:['эсэгэ','esege'], eat:['эдеэлхэ','edeːlxe'], drink:['ууха','uːxa'], love:['дуран','duran'], heart:['зүрхэн','zyrxen'], tree:['модон','modon'], house:['гэр','ɡer'], dog:['нохой','noxoj'], cat:['миисгэй','miːsɡej'], hand:['гар','ɡar'], eye:['нюдэн','ɲuden'], hello:['сайн байна','sajn bajna'], thanks:['баярлаа','bajarlaː'], one:['нэгэн','neɡen'], good:['һайн','hajn'] }},
+  // Mongghul (Mangghuer/Tu) — Mongolic Shirongol, ~150K speakers, Qinghai/Gansu China.
+  // Sources: Ethnologue 27 'mvf'; Glottolog mongh1252 / mong1330; Slater (2003) Mangghuer Reference Grammar.
+  mvf: { name: 'Mongghul', native: 'Mongghul', lat: 36.83, lng: 102.40, // Huzhu Tu Autonomous County, Qinghai
+    words: { water:['usu','usu'], fire:['ghal','ʁal'], sun:['nara','nara'], moon:['sara','sara'], mother:['ana','ana'], father:['ada','ada'], eat:['idi-','idi'], drink:['uu-','uː'], love:['durala-','durala'], heart:['jürige','dʒyriɡe'], tree:['modu','modu'], house:['ger','ɡer'], dog:['noghui','noʁui'], cat:['mau','mau'], hand:['ghar','ʁar'], eye:['nidu','nidu'], hello:['amur sain','amur sain'], thanks:['bayarla-','bajarla'], one:['nige','niɡe'], good:['sain','sain'] }},
   // Tungusic
   evn: { name: 'Evenki', native: 'Эвэды̄ турэ̄н', lat: 64.27, lng: 100.22, // Tura, Evenkia
     words: { water:['му','mu'], fire:['того','toɡo'], sun:['дылача','dɯlatɕa'], moon:['бега','beɡa'], mother:['эни','eni'], father:['ама','ama'], eat:['дептэ','depte'], drink:['умӣ','umiː'], love:['аявдави','ajavdavi'], heart:['меван','mevan'], tree:['мо','mo'], house:['дю','dʒu'], dog:['нгинакин','ŋinakin'], cat:['кошка','koʂka'], hand:['нгалэ','ŋale'], eye:['эса','esa'], hello:['дорообо','doroːbo'], thanks:['пасиба','pasiba'], one:['умун','umun'], good:['ая','aja'] }},
@@ -448,6 +464,10 @@ const LANG_DATA = {
     words: { water:['dej','te˧'], fire:['taws','tɑ˧˩'], sun:['hnub','nu˧˥'], moon:['hli','ɬi˥'], mother:['niam','niã˥'], father:['txiv','tɕi˧˩'], eat:['noj','nɔ˧'], drink:['haus','hɑu˧˩'], love:['hlub','ɬu˧˥'], heart:['siab','ɕiã˧˥'], tree:['ntoo','tɔː˥'], house:['tsev','tɕɛ˧˩'], dog:['dev','te˧˩'], cat:['miv','mi˧˩'], hand:['tes','te˧˩'], eye:['qhov muag','kʰɔ˧˩muã˧'], hello:['nyob zoo','ɲɔ˧˥tɕɔː˥'], thanks:['ua tsaug','uã˥tɕɑu˧'], one:['ib','i˧˥'], good:['zoo','tɕɔː˥'] }},
   jv: { name: 'Javanese', native: 'ꦧꦱꦗꦮ', lat: -7.25, lng: 112.75,
     words: { water:['banyu','banju'], fire:['geni','ɡəni'], sun:['srengéngé','srəŋeŋe'], moon:['bulan','bulan'], mother:['ibu','ibu'], father:['bapak','bapak'], eat:['mangan','maŋan'], drink:['ngombe','ŋombe'], love:['tresna','trɛsna'], heart:['ati','ati'], tree:['wit','wit'], house:['omah','omah'], dog:['asu','asu'], cat:['kucing','kutɕiŋ'], hand:['tangan','taŋan'], eye:['mripat','mripat'], hello:['halo','halo'], thanks:['matur nuwun','matur nuwun'], one:['siji','sidʒi'], good:['apik','apik'] }},
+  // Caribbean Javanese — Suriname Javanese diaspora, ~60K speakers, Suriname + Netherlands.
+  // Sources: Ethnologue 27 'jvn'; Glottolog cari1280; Vruggink (1990) Caribbean Javanese.
+  jvn: { name: 'Caribbean Javanese', native: 'Bahasa Jawa Suriname', lat: 5.85, lng: -55.20, // Paramaribo, Suriname
+    words: { water:['banyu','baɲu'], fire:['geni','ɡəni'], sun:['srengéngé','srəŋeŋe'], moon:['rembulan','rəmbulan'], mother:['mbok','mbɔʔ'], father:['pak','paʔ'], eat:['mangan','maŋan'], drink:['ngombé','ŋombe'], love:['tresno','trɛsno'], heart:['ati','ati'], tree:['wit','wit'], house:['omah','omah'], dog:['asu','asu'], cat:['kucing','kutʃiŋ'], hand:['tangan','taŋan'], eye:['mripat','mripat'], hello:['halo','halo'], thanks:['matur nuwun','matur nuwun'], one:['siji','sidʒi'], good:['apik','apik'] }},
   su: { name: 'Sundanese', native: 'ᮘᮞ ᮞᮥᮔ᮪ᮓ', lat: -6.91, lng: 107.61,
     words: { water:['cai','tɕai'], fire:['seuneu','sɤnɤ'], sun:['panonpoé','panɔnpoe'], moon:['bulan','bulan'], mother:['indung','induŋ'], father:['bapa','bapa'], eat:['dahar','dahar'], drink:['nginum','ŋinum'], love:['bogoh','bɔɡɔh'], heart:['haté','hate'], tree:['tangkal','taŋkal'], house:['imah','imah'], dog:['anjing','andʒiŋ'], cat:['ucing','utɕiŋ'], hand:['leungeun','lɤŋɤn'], eye:['panon','panɔn'], hello:['sampurasun','sampurasun'], thanks:['hatur nuhun','hatur nuhun'], one:['hiji','hidʒi'], good:['hadé','hade'] }},
   ceb: { name: 'Cebuano', native: 'Sinugbuanon', lat: 10.31, lng: 123.89,
@@ -732,6 +752,18 @@ const LANG_DATA = {
     words: { water:['y','ɨ'], fire:['tata','tata'], sun:['kuarahy','kwaɾahɨ'], moon:['jasy','ʒasɨ'], mother:['sy','sɨ'], father:['túva','tuva'], eat:["ka'u",'kaʔu'], drink:["y'u",'ɨʔu'], love:['hayhu','haɨhu'], heart:["py'a",'pɨʔa'], tree:['yvyra','ɨvɨɾa'], house:['óga','oɡa'], dog:['jagua','ʒaɡwa'], cat:['mbarakaja','mbaɾakaʒa'], hand:['po','po'], eye:['tesa','tesa'], hello:["mba'éichapa",'mbaʔeitʃapa'], thanks:['aguyje','aɡuɨʒe'], one:['peteĩ','peteĩ'], good:['porã','poɾã'] }},
   chr: { name: 'Cherokee', native: 'ᏣᎳᎩ', lat: 35.51, lng: -83.52,
     words: { water:['ᎠᎹ','ama'], fire:['ᎠᏥᎳ','atʃila'], sun:['ᏅᏓ','nʌda'], moon:['ᏅᏓ ᏒᏃᏱ','nʌda svnoɪ'], mother:['ᎡᏥ','edʒi'], father:['ᎡᏙᏓ','edoda'], eat:['ᎠᎩᏍᏔ','aɡista'], drink:['ᎠᏗᏔ','adita'], love:['ᎠᏓᎨᏳᎯ','adaɡejuhi'], heart:['ᎤᏬᏱ','uwoji'], tree:['ᏡᎬ','tluɡv'], house:['ᎦᎵᏦᏕ','ɡalitsode'], dog:['ᎩᏟ','ɡitli'], cat:['ᏪᏌ','wesa'], hand:['ᎤᏰᏙᎯ','ujɛdohi'], eye:['ᎠᎦᏘ','aɡati'], hello:['ᎣᏏᏲ','osijo'], thanks:['ᎢᎴᎯᏍᏗ','ilehisdi'], one:['ᏌᏊ','saʔu'], good:['ᎣᏍᏓ','osda'] }},
+  // Cayuga — Iroquoian Northern, ~30 fluent, Six Nations Reserve Ontario.
+  // Sources: Ethnologue 27 'cay'; Glottolog cayu1262; Mithun (1999) Languages of Native North America.
+  cay: { name: 'Cayuga', native: 'Gayogo̱hó:nǫʼ', lat: 42.93, lng: -80.10, // Six Nations of the Grand River
+    words: { water:['ohnekanos','ohnekanos'], fire:['ojistaʼ','odʒistaʔ'], sun:['gaehkwa','ɡaehkwa'], moon:['sǫi:ya','sõːja'], mother:['agniha','aɡniha'], father:['hagʼniha','haɡʔniha'], eat:['gekho','ɡekho'], drink:['gehnegira','ɡehneɡira'], love:['gaihwiyu','ɡaihwiju'], heart:['awéri','aweri'], tree:['gaentaʼ','ɡaentaʔ'], house:['ganǫhsoot','ɡanõhsoːt'], dog:['shǫkáos','ʃõkaos'], cat:['ditshokwáʔ','ditʃokwaʔ'], hand:['onénǫhsa','onenõhsa'], eye:['oga:t','oɡaːt'], hello:['sgë:nǫʼ','skẽːnõʔ'], thanks:['niáwę','niawɛ̃'], one:['skat','skat'], good:['oyanre','ojanre'] }},
+  // Onondaga — Iroquoian Northern, ~20 fluent, Six Nations Reserve + Onondaga Nation NY.
+  // Sources: Ethnologue 27 'ono'; Glottolog onon1246; Woodbury (2003) Onondaga grammar.
+  onn: { name: 'Onondaga', native: 'Onǫdaʼgegáʼ', lat: 43.05, lng: -76.13, // Onondaga Nation, NY
+    words: { water:['ohnekano:s','ohnekanoːs'], fire:['oji:staʼ','odʒiːstaʔ'], sun:['gaeh\'kwa','ɡaehʔkwa'], moon:['gaeh\'kwa enitha','ɡaehʔkwa enitha'], mother:['ekno:ha\'','eknoːhaʔ'], father:['hak\'no:ha\'','hakʔnoːhaʔ'], eat:['ekho:ne\'','ekhoːneʔ'], drink:['ehnega:i\'ron','ehneɡaːiʔron'], love:['gaonihsdá:wę','ɡaonihsdaːwɛ̃'], heart:['awé:ri','aweːri'], tree:['ga:enda\'','ɡaːendaʔ'], house:['ganǫhsoht','ɡanõhsoht'], dog:['só:wa:s','soːwaːs'], cat:['takó:s','takoːs'], hand:['onénǫhsa\'','onenõhsaʔ'], eye:['oga:tha\'','oɡaːthaʔ'], hello:['sgë:nǫʼ','skẽːnõʔ'], thanks:['nya:wę\'','njaːwɛ̃ʔ'], one:['ska:t','skaːt'], good:['oyá:nre','ojaːnre'] }},
+  // Tuscarora — Iroquoian Northern, ~10 fluent, NC homeland → Six Nations Reserve ON.
+  // Sources: Ethnologue 27 'tus'; Glottolog tusc1257; Williams (1976) Tuscarora Vocabulary.
+  tus: { name: 'Tuscarora', native: 'Skarù:rę\'', lat: 43.16, lng: -78.96, // Tuscarora Reservation, NY
+    words: { water:['awę:','awɛ̃ː'], fire:['ujihst','udʒihst'], sun:['hęhts','hɛ̃hts'], moon:['hęhts uri:węh','hɛ̃hts uɾiːwɛ̃h'], mother:['raknų:hak','ɾaknũːhak'], father:['rakhnih','ɾakhnih'], eat:['kré:nuʼ','kɾeːnuʔ'], drink:['kré:hwiʼ','kɾeːhwiʔ'], love:['krunyę:tas','kɾuɲɛ̃ːtas'], heart:['kęhsa\'','kɛ̃hsaʔ'], tree:['nyęt','ɲɛ̃t'], house:['kanéhse\'ę','kanehseʔɛ̃'], dog:['čerʼ','tʃeɾʔ'], cat:['takʼo:s','takʔoːs'], hand:['kéhskweh','kehskweh'], eye:['ka:tæk','kaːtæk'], hello:['skę:nu','skɛ̃ːnu'], thanks:['nyaʼwę:','ɲaʔwɛ̃ː'], one:['ę:cæ','ɛ̃ːtsæ'], good:['unę:tsweht','unɛ̃ːtsweht'] }},
 
   as: { name: 'Assamese', native: 'অসমীয়া', lat: 26.14, lng: 91.74,
     words: { water:['পানী','pani'], fire:['জুই','zui'], sun:['সূৰ্য','xuɹjɔ'], moon:['জোন','zʊn'], mother:['মা','ma'], father:['দেউতা','deuta'], eat:['খোৱা','kʰuwa'], drink:['পান কৰা','pan kɔɹa'], love:['প্ৰেম','pɹem'], heart:['হৃদয়','ɹidɔi'], tree:['গছ','gɔs'], house:['ঘৰ','gʱɔɹ'], dog:['কুকুৰ','kukuɹ'], cat:['মেকুৰী','mekuɹi'], hand:['হাত','hat'], eye:['চকু','sɔku'], hello:['নমস্কাৰ','nɔmɔxkaɹ'], thanks:['ধন্যবাদ','dʱɔnjɔbad'], one:['এক','ek'], good:['ভাল','bʱal'] }},
@@ -1539,6 +1571,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'mic'; Glottolog mikm1235; Inglis (1991) Mi'kmaq Online Dictionary.
   mic: { name: "Mi'kmaq", native: "Mi'kmawi'simk", lat: 46.10, lng: -64.78, // Eskasoni / Cape Breton
     words: { water:['samqwan','samɡʷan'], fire:["puktew",'puɡdew'], sun:['naku\'set','naɡuʔset'], moon:['tepkunaset','tebɡunaset'], mother:['nikij','nidʒidʒ'], father:["nujj",'nudʒː'], eat:['mij','midʒ'], drink:["sa'q",'saʔɡ'], love:['kesalk','ɡesalɡ'], heart:["ukamlamun",'uɡamlamun'], tree:['nipi','nibi'], house:['wikuom','wiɡuom'], dog:['lmu\'j','lmuʔdʒ'], cat:["mia\'wj",'miaʔwdʒ'], hand:['piten','biden'], eye:["pukweck",'buɡʷedʒɡ'], hello:["kwe'",'ɡʷeʔ'], thanks:["wela'lin",'welaʔlin'], one:["newt",'newt'], good:['kelu\'lk','ɡeluʔlɡ'] }},
+  // Munsee — Algonquian Eastern (Lenape branch), critically endangered (~2 fluent), heritage-revival.
+  // Sources: Ethnologue 27 'umu'; Glottolog muns1238; Goddard (1979) Munsee Phonology.
+  umu: { name: 'Munsee', native: 'Lunaapeew', lat: 42.78, lng: -82.05, // Moraviantown, Ontario (Munsee Delaware Nation)
+    words: { water:['mpíi','mbiː'], fire:['lúhsuw','luhsuw'], sun:['kíishux','kiːʃux'], moon:['nipáhum','nipahum'], mother:['nkáhees','ŋkahees'], father:['nóoxw','noːxw'], eat:['mit','mit'], drink:['mneew','mneew'], love:['ahóoluw','ahoːluw'], heart:['ulehyii','ulehjiː'], tree:['hìttuk','hitːuk'], house:['wíikwam','wiːkwam'], dog:['mwáakaneew','mwaːkaneːw'], cat:['póshiis','poʃiːs'], hand:['mléelii','mleːliː'], eye:['wíikšiit','wiːkʃiːt'], hello:['hé','heː'], thanks:['wanìshi','waniʃi'], one:['ngwútii','ŋɡwutiː'], good:['weltóok','weltoːk'] }},
   // Siouan
   lkt: { name: 'Lakota', native: 'Lakȟótiyapi', lat: 43.02, lng: -102.55, // Pine Ridge
     words: { water:['mní','mní'], fire:['pȟéta','pʰéta'], sun:['wí','wí'], moon:['haŋhépi wí','haŋhépi wí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yátkaŋ','játkaŋ'], love:['thečhíȟila','tʰetʃʰíʁila'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋke','iɡmúŋke'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['philámayaye','pʰilámajaje'], one:['waŋží','waŋʒí'], good:['wašté','waʃté'] }},
@@ -1604,6 +1640,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'tdt'; Glottolog tetu1247; Williams-van Klinken (2002) Tetun Dili Grammar.
   tdt: { name: 'Tetun Dili', native: 'Tetun Prasa', lat: -8.56, lng: 125.58, // Dili
     words: { water:['bee','beː'], fire:['ahi','ahi'], sun:['loron','loɾon'], moon:['fulan','fulan'], mother:['mama','mama'], father:['papa','papa'], eat:['han','han'], drink:['hemu','hemu'], love:['domin','domin'], heart:['korasaun','koɾasaun'], tree:['ai','ai'], house:['uma','uma'], dog:['asu','asu'], cat:['busa','busa'], hand:['liman','liman'], eye:['matan','matan'], hello:['olá','ola'], thanks:['obrigadu','obɾiɡadu'], one:['ida','ida'], good:['diak','diak'] }},
+  // Atoni (Uab Meto) — Austronesian Central Malayo-Polynesian, ~700K speakers, West Timor (Indonesian).
+  // Sources: Ethnologue 27 'aoz'; Glottolog uabm1238; Steinhauer (1996) Atoni grammar.
+  aoz: { name: 'Atoni', native: 'Uab Meto', lat: -9.66, lng: 124.10, // Soe, NTT (Atoni heartland)
+    words: { water:['oe','oe'], fire:['ai','ai'], sun:['manas','manas'], moon:['fun','fun'], mother:['ainat','ainat'], father:['amat','amat'], eat:['ah','ah'], drink:['ninu','ninu'], love:['nekat','nekat'], heart:['nesa','nesa'], tree:['hau','hau'], house:['ume','ume'], dog:['asu','asu'], cat:['mose','mose'], hand:['ʼniman','ʔniman'], eye:['matan','matan'], hello:['neut','neut'], thanks:['neno biluk','neno biluk'], one:['mese','mese'], good:['malaek','malaek'] }},
   // English-based creole (Vanuatu)
   bi: { name: 'Bislama', native: 'Bislama', lat: -17.74, lng: 168.31, // Port Vila
     words: { water:['wota','wota'], fire:['faea','faea'], sun:['san','san'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['kakae','kakae'], drink:['dring','driŋ'], love:['laekem','laekem'], heart:['hat','hat'], tree:['tri','tri'], house:['haos','haos'], dog:['dog','doɡ'], cat:['pusi','pusi'], hand:['han','han'], eye:['ae','ae'], hello:['halo','halo'], thanks:['tankyu','taŋkju'], one:['wan','wan'], good:['gud','ɡud'] }},
@@ -1627,6 +1667,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'lif'; Glottolog limb1266; van Driem (1987) A Grammar of Limbu.
   lif: { name: 'Limbu', native: 'ᤕᤰᤌᤢᤱ ᤐᤠᤴ', lat: 26.66, lng: 87.27, // Dhankuta
     words: { water:['ᤁᤡᤱ','tʃʰwaɾaŋ'], fire:['ᤔᤡ','mi'], sun:['ᤛᤡᤥᤔᤡ','ɲaːmpʰʌ'], moon:['ᤍᤣ','laːba'], mother:['ᤔᤠᤔᤠ','aːmaː'], father:['ᤐᤠᤐᤠ','aːbaː'], eat:['ᤆᤠᤔᤠ','tʃaːmaː'], drink:['ᤌᤢᤴᤔᤠ','tʰuŋmaː'], love:['ᤔᤡᤌᤡ','mitʰi'], heart:['ᤛᤡᤰ','sik'], tree:['ᤛᤡᤱ','siŋ'], house:['ᤜᤡᤶ','him'], dog:['ᤁᤣᤳᤇᤡ','keptʃi'], cat:['ᤐᤡᤛᤡ','pisi'], hand:['ᤜᤢᤰ','huk'], eye:['ᤔᤡᤰ','mik'], hello:['ᤐᤣᤜᤢᤙᤣ','peːhuːje'], thanks:['ᤐᤡᤍᤠᤱ','pidaːŋ'], one:['ᤏᤡᤳ','tʰik'], good:['ᤖᤣ','nuba'] }},
+  // Thulung — Sino-Tibetan Western Kiranti, ~33K speakers, Solu-Khumbu region E Nepal.
+  // Sources: Ethnologue 27 'tdh'; Glottolog thul1244; Allen (1975) Thulung grammar.
+  tdh: { name: 'Thulung', native: 'थुलुङ', lat: 27.45, lng: 86.65, // Solukhumbu (Thulung heartland)
+    words: { water:['भु','bʱu'], fire:['मे','me'], sun:['नाम','nam'], moon:['लामी','lami'], mother:['मामा','mama'], father:['पापा','papa'], eat:['च-','tʃa'], drink:['तुङ-','tʰuŋ'], love:['सेय्यु','sejːu'], heart:['सीक','siːk'], tree:['सीङ','siːŋ'], house:['खिम','kʰim'], dog:['ख्ली','kʰliː'], cat:['पुसी','pusi'], hand:['गुर','ɡur'], eye:['मिक','mik'], hello:['नमस्ते','nəməste'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['कोङ','koŋ'], good:['नुम्स','nums'] }},
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
   // Adi — Sino-Tibetan Tani, ~250K speakers, Arunachal Pradesh + Assam India + adjoining China.
@@ -1645,6 +1689,10 @@ const LANG_DATA = {
     }},
   dz: { name: 'Dzongkha', native: 'རྫོང་ཁ', lat: 27.47, lng: 89.64, // Thimphu
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཀུ་ཟུ་ཟངས་པོ་ལ','kuzu zaŋpo la'], thanks:['བཀྲིན་ཆེ','kadrintɕe'], one:['གཅིག','tɕik'], good:['ལེགས་ཤོམ','lekɕom'] }},
+  // Sikkimese (Drenjongke) — Tibetic, ~70K speakers, Sikkim India. Closely related to Dzongkha (dz) and Standard Tibetan (bo).
+  // Sources: Ethnologue 27 'sip'; Glottolog sikk1242; van Driem (1992) Bumthang grammar (regional reference).
+  sik: { name: 'Sikkimese', native: 'འབྲས་ལྗོངས་སྐད', lat: 27.33, lng: 88.61, // Gangtok, Sikkim
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['ཟ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ','ɡa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['ཞི་མི','ʑimi'], hand:['ལག','lak'], eye:['མིག','mik'], hello:['ཁམས་བཟང','kʰamsaŋ'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuktɕetɕe'], one:['གཅིག','tɕik'], good:['ལེགས་པོ','lekpo'] }},
   // Indonesian (large regional)
   min: { name: 'Minangkabau', native: 'Baso Minangkabau', lat: -0.95, lng: 100.35, // Padang
     words: { water:['aia','aia'], fire:['api','api'], sun:['matoari','matoaɾi'], moon:['bulan','bulan'], mother:['amak','amaʔ'], father:['abak','abaʔ'], eat:['makan','makan'], drink:['minum','minum'], love:['cinto','tʃinto'], heart:['ati','ati'], tree:['kayu','kaju'], house:['rumah','ɾumah'], dog:['anjiang','aɲdʒiaŋ'], cat:['kuciang','kutʃiaŋ'], hand:['tangan','taŋan'], eye:['mato','mato'], hello:['salam','salam'], thanks:['tarimo kasiah','taɾimo kasiah'], one:['ciek','tʃie'], good:['rancak','ɾantʃak'] }},
@@ -1998,6 +2046,10 @@ const LANG_DATA = {
   // Old Greek branch + Aramaic Modern
   syr: { name: 'Assyrian Neo-Aramaic', native: 'ܣܘܪܝܬ', lat: 36.36, lng: 43.15, // Mosul plain
     words: { water:['ܡܝ̈ܐ','mæje'], fire:['ܢܘܪܐ','nuɾa'], sun:['ܫܡܫܐ','ʃɛmʃa'], moon:['ܣܗܪܐ','sahɾa'], mother:['ܝܡܐ','jɛmma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','ʔaχɛl'], drink:['ܫܬܐ','ʃate'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','lɛbba'], tree:['ܐܝܠܢܐ','ʔilana'], house:['ܒܝܬܐ','beta'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaʈu'], hand:['ܐܝܕܐ','ʔida'], eye:['ܥܝܢܐ','ʕena'], hello:['ܫܠܡܐ','ʃlama'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒ','ʈav'] }},
+  // Mandaic (Classical) — Aramaic, ~5K liturgical (~50 fluent), Iraq + Iran + diaspora. Unique Mandaic script.
+  // Sources: Ethnologue 27 'myz'; Glottolog clas1252; Macuch (1965) Handbook of Classical and Modern Mandaic.
+  myz: { name: 'Classical Mandaic', native: 'ࡌࡀࡍࡃࡀࡉࡉࡀ', lat: 32.76, lng: 47.08, // Khuzestan, Iran (modern Mandaean homeland)
+    words: { water:['ࡌࡉࡀ','mia'], fire:['ࡍࡅࡓࡀ','nura'], sun:['ࡔࡀࡌࡔࡀ','ʃamʃa'], moon:['ࡎࡉࡓࡀ','sira'], mother:['ࡀࡌࡀ','ama'], father:['ࡀࡁࡀ','aba'], eat:['ࡀࡊࡀࡋ','akal'], drink:['ࡔࡕࡀ','ʃta'], love:['ࡓࡅࡄࡌࡀ','ɾuhma'], heart:['ࡋࡉࡁࡀ','liba'], tree:['ࡀࡊࡀࡍࡀ','akana'], house:['ࡁࡉࡕࡀ','bita'], dog:['ࡊࡀࡋࡁࡀ','kalba'], cat:['ࡔࡅࡍࡀࡓࡀ','ʃunara'], hand:['ࡏࡃࡀ','ʔida'], eye:['ࡏࡉࡍࡀ','ʔina'], hello:['ࡔࡋࡀࡌࡀ','ʃlama'], thanks:['ࡈࡀࡁࡅࡕࡀ','ʈabuta'], one:['ࡄࡀࡃ','had'], good:['ࡈࡀࡁࡀ','ʈaba'] }},
   // Bantu Eastern (Mozambique)
   vmw: { name: 'Makhuwa', native: 'eMakhuwa', lat: -15.12, lng: 39.27, // Nampula
     words: { water:['maasi','maːsi'], fire:['moro','moɾo'], sun:['ettsuwa','etsuwa'], moon:['mweri','mweɾi'], mother:['maama','maːma'], father:['paapa','paːpa'], eat:['ohuula','ohuːla'], drink:['ohwèwa','ohwɛwa'], love:['ophenta','opʰenta'], heart:['murima','muɾima'], tree:['muri','muɾi'], house:['empa','empa'], dog:['mphwa','mpʰwa'], cat:['paaka','paːka'], hand:['nikhono','nikʰono'], eye:['nittho','nitːo'], hello:['salaama','salaːma'], thanks:['kosheni','koʃeni'], one:['mosa','mosa'], good:['ratteene','ɾatːeːne'] }},
@@ -3312,6 +3364,10 @@ const LANG_DATA = {
   // Tai Lue (Sipsongpanna)
   khb: { name: 'Tai Lue', native: 'ᦅᧄᦺᦑᦟᦹᧉ', lat: 22.01, lng: 100.80, // Jinghong, Sipsongpanna
     words: { water:['ᦓᧄᧉ','nam'], fire:['ᦺᦝ','fai'], sun:['ᦋᧁᧉ','tsau'], moon:['ᦟᦲᧃ','liːn'], mother:['ᦡᦲᧈ','meː'], father:['ᦗᦸᧈ','pɔː'], eat:['ᦂᦲᧃ','kin'], drink:['ᦂᦲᧃᦓᧄᧉ','kin nam'], love:['ᦣᧅ','hak'], heart:['ᦗᦸ','pɔ'], tree:['ᦷᦎᧃᦺᦙᧉ','ton mai'], house:['ᦠᦴᧃᧉ','huːn'], dog:['ᦙᦱ','maː'], cat:['ᦙᦦᧁ','mɛw'], hand:['ᦙᦹ','muː'], eye:['ᦎᦱ','taː'], hello:['ᦷᦡᧃᦟᦲ','dɔn liː'], thanks:['ᦀᦸᧃᦷᦓᧁ','ʔɔn nau'], one:['ᦓᦹᧂᧈ','nuŋ'], good:['ᦡᦲ','diː'] }},
+  // Tai Dam (Black Tai) — Tai-Kadai, ~750K speakers, Vietnam (Sơn La, Lai Châu) + Laos + China.
+  // Sources: Ethnologue 27 'blt'; Glottolog taid1247; Fippinger (1971) Tai Dam phonology.
+  blt: { name: 'Tai Dam', native: 'ꪼꪕꪒꪾ', lat: 21.33, lng: 103.92, // Sơn La, NW Vietnam
+    words: { water:['ꪙꪾꫂ','nam˦'], fire:['ꪼꪡ','fai˨˦'], sun:['ꪼꪎ','sai˨˦'], moon:['ꪒꪮꪙ','don˨˦'], mother:['ꪵꪶꪀ','mɛː˨˦'], father:['ꪶꪎ','pɔ˨˦'], eat:['ꪀꪲꪙ','kin˨˦'], drink:['ꪀꪲꪙ ꪙꪾꫂ','kin nam'], love:['ꪥꪮꪀ','hak˧˩'], heart:['ꪈꪲꪒ','tʃai˧'], tree:['ꪶꪕꪙ ꪼꪮꪉ','ton mai˨˦'], house:['ꪙꪮꪙ','hɯan˧˨˨'], dog:['ꪙꪮ','maː˨˦'], cat:['ꪵꪙꪺ','mɛːu˨˦'], hand:['ꪐꪮ','mɯ˨˦'], eye:['ꪁꪎ','taː˨˦'], hello:['ꪎꪺꪎꪒꪲ','sa wad dii'], thanks:['ꪒꪲ ꪎꪶꪙ','dʒɔp tʃai'], one:['ꪙꪲꪮꪉ','nɯŋ˨˦'], good:['ꪒꪲ','diː˨˦'] }},
   // === Phase 9: African + Filipino gap-fillers ===
   pam: { name: 'Kapampangan', native: 'Kapampangan', lat: 15.03, lng: 120.69, // San Fernando
     words: { water:['danum','daˈnum'], fire:['api','ʔaˈpi'], sun:['aldo','ʔalˈdoʔ'], moon:['bulan','buˈlan'], mother:['ima','ˈʔima'], father:['tata','ˈtataʔ'], eat:['mangan','maˈŋan'], drink:['minum','miˈnum'], love:['lugud','luˈɡud'], heart:['pusu','ˈpusoʔ'], tree:['dutung','duˈtuŋ'], house:['bale','baˈle'], dog:['asu','ˈʔasu'], cat:['pusa','ˈpusa'], hand:['gamat','ɡaˈmat'], eye:['mata','maˈta'], hello:['kumusta','kuˈmusta'], thanks:['dakal a salamat','dakal a saˈlamat'], one:['metung','meˈtuŋ'], good:['mayap','maˈjap'] }},
@@ -3364,6 +3420,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'agq'; Glottolog aghe1239; Hyman (1979) Aghem Grammatical Structure.
   agq: { name: 'Aghem', native: 'Aghem', lat: 6.16, lng: 10.10, // Wum, Cameroon
     words: { water:['mê\'','meʔ'], fire:['ìmáa\'','imáaʔ'], sun:['kû\'','kuʔ'], moon:['nâa\'','naːʔ'], mother:['mò','mo'], father:['tâ','ta'], eat:['nîa','nia'], drink:['nyâa','ɲaː'], love:['nkòŋ','ŋkoŋ'], heart:['mwâ','mwa'], tree:['kpa\'','kpaʔ'], house:['ndô','ndo'], dog:['mbî','mbi'], cat:['gò','ɡo'], hand:['kwô\'','kwoʔ'], eye:['dyiá','djia'], hello:['kâa\'','kaːʔ'], thanks:['ŋyaa\'','ŋjaːʔ'], one:['mò','mo'], good:['mwâ\'','mwaʔ'] }},
+  // Dii (Duru, Dourou) — Niger-Congo Adamawa, ~50K speakers, North Cameroon (Adamaoua region).
+  // Sources: Ethnologue 27 'dur'; Glottolog dury1238; Bohnhoff (1986) Yag Dii grammar.
+  dur: { name: 'Dii', native: 'Yag Dii', lat: 7.32, lng: 13.58, // Ngaoundéré, Adamawa Cameroon
+    words: { water:['mam','mam'], fire:['mvə̀','mvə'], sun:['ngə̄ə̀','ŋɡəə'], moon:['mboɔn','mbɔɔn'], mother:['na','na'], father:['ba','ba'], eat:['kpén','kpen'], drink:['kpɔ̀','kpɔ'], love:['kūngí','kuŋɡi'], heart:['ngēli','ŋɡeli'], tree:['ngà','ŋɡa'], house:['gā','ɡa'], dog:['mvù','mvu'], cat:['ngwā','ŋɡwa'], hand:['paà','paa'], eye:['ngə̀ə','ŋɡəə'], hello:['mbóò','mboo'], thanks:['vɛɛɛ','vɛːɛ'], one:['hīn','hin'], good:['gáà','ɡaa'] }},
   ndc: { name: 'Ndau', native: 'ChiNdau', lat: -19.12, lng: 33.48, // Chimoio
     words: { water:['mvura','mvuɾa'], fire:['muriro','muɾiɾo'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudʒa'], drink:['kunwa','kunwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['nyumba','ɲumba'], dog:['imbga','imbɡa'], cat:['kiti','kiti'], hand:['chanza','tʃanza'], eye:['ziso','ziso'], hello:['mhoroi','mhoɾoji'], thanks:['ndatenda','ndatenda'], one:['chimwe','tʃimwe'], good:['kanaka','kanaka'] }},
   ote: { name: 'Otomi', native: 'Hñähñu', lat: 20.48, lng: -99.22, // Ixmiquilpan

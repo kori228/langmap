@@ -860,4 +860,129 @@ const LANG_NAMES = {
             }
         }
     }
+    // Tai Dam (blt), Mongghul (mvf), Atoni (aoz) — Vietnam Tai + China Mongolic + West Timor.
+    const ADDED31 = {
+        blt: { en: 'Tai Dam', ja: 'タイ・ダム語', ko: '타이담어', zh: '傣端语', yue: '傣端語',
+               vi: 'Tiếng Thái Đen', th: 'ภาษาไทดำ', id: 'Tai Dam', hi: 'ताई दाम',
+               de: 'Tai Dam (Schwarz-Tai)', fr: 'Tai dam', it: 'Tai Dam',
+               es_eu: 'Tai dam', es_mx: 'Tai dam', pt_eu: 'Tai dam', pt_br: 'Tai dam',
+               ru: 'Тай-дам', uk: 'Тай-дам', ar: 'الطاي دام', he: 'טאי דם', sw: 'Tai Dam' },
+        mvf: { en: 'Mongghul', ja: 'モングォル語', ko: '몽굴어', zh: '蒙古尔语', yue: '蒙古爾語',
+               vi: 'Tiếng Mongghul', th: 'ภาษามองกูล', id: 'Mongghul', hi: 'मोंगुल',
+               de: 'Mongghul', fr: 'Mongghul', it: 'Mongghul',
+               es_eu: 'Mongghul', es_mx: 'Mongghul', pt_eu: 'Mongol-Tu', pt_br: 'Mongol-Tu',
+               ru: 'Монгор', uk: 'Монгор', ar: 'المنغل', he: 'מונגול', sw: 'Mongghul' },
+        aoz: { en: 'Atoni', ja: 'アトニ語', ko: '아토니어', zh: '阿托尼语', yue: '阿托尼語',
+               vi: 'Tiếng Atoni', th: 'ภาษาอาโตนิ', id: 'Atoni', hi: 'अतोनी',
+               de: 'Atoni', fr: 'Atoni', it: 'Atoni',
+               es_eu: 'Atoni', es_mx: 'Atoni', pt_eu: 'Atoni', pt_br: 'Atoni',
+               ru: 'Атони', uk: 'Атоні', ar: 'الأتوني', he: 'אטוני', sw: 'Atoni' },
+    };
+    for (const code of Object.keys(ADDED31)) {
+        for (const ui of Object.keys(ADDED31[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED31[code][ui];
+            }
+        }
+    }
+    // Irula (iru), Dii (dur), Thulung (tdh) — S India Dravidian + Cameroon Adamawa + Nepal Kiranti.
+    const ADDED32 = {
+        iru: { en: 'Irula', ja: 'イルラ語', ko: '이룰라어', zh: '伊鲁拉语', yue: '伊魯拉語',
+               vi: 'Tiếng Irula', th: 'ภาษาอิรูลา', id: 'Irula', hi: 'इरुला',
+               de: 'Irula', fr: 'Irula', it: 'Irula',
+               es_eu: 'Irula', es_mx: 'Irula', pt_eu: 'Irula', pt_br: 'Irula',
+               ru: 'Ирула', uk: 'Ірула', ar: 'الإيرولا', he: 'אירולה', sw: 'Kiirula' },
+        dur: { en: 'Dii', ja: 'ディー語', ko: '디어', zh: '迪伊语', yue: '迪伊語',
+               vi: 'Tiếng Dii', th: 'ภาษาดิอิ', id: 'Dii', hi: 'डी',
+               de: 'Dii', fr: 'Dii', it: 'Dii',
+               es_eu: 'Dii', es_mx: 'Dii', pt_eu: 'Dii', pt_br: 'Dii',
+               ru: 'Дии', uk: 'Дії', ar: 'الديي', he: 'דיי', sw: 'Kidii' },
+        tdh: { en: 'Thulung', ja: 'トゥルン語', ko: '툴룽어', zh: '图隆语', yue: '圖隆語',
+               vi: 'Tiếng Thulung', th: 'ภาษาทูลุง', id: 'Thulung', hi: 'थुलुङ',
+               de: 'Thulung', fr: 'Thoulung', it: 'Thulung',
+               es_eu: 'Thulung', es_mx: 'Thulung', pt_eu: 'Thulung', pt_br: 'Thulung',
+               ru: 'Тхулунг', uk: 'Тхулунг', ar: 'الثولونغ', he: 'תולונג', sw: 'Kithulung' },
+    };
+    for (const code of Object.keys(ADDED32)) {
+        for (const ui of Object.keys(ADDED32[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED32[code][ui];
+            }
+        }
+    }
+    // Rangpuri (rkt), Judeo-Persian (jpr), Munsee (umu) — Bangladesh + Iranian Jewish + Lenape Algonquian.
+    const ADDED33 = {
+        rkt: { en: 'Rangpuri', ja: 'ラングプリ語', ko: '랑푸리어', zh: '兰格普里语', yue: '蘭格普里語',
+               vi: 'Tiếng Rangpuri', th: 'ภาษารังปุระ', id: 'Rangpuri', hi: 'रंगपुरी',
+               de: 'Rangpuri', fr: 'Rangpuri', it: 'Rangpuri',
+               es_eu: 'Rangpuri', es_mx: 'Rangpuri', pt_eu: 'Rangpuri', pt_br: 'Rangpuri',
+               ru: 'Рангпури', uk: 'Рангпурі', ar: 'الرانغبورية', he: 'רנגפורי', sw: 'Rangpuri' },
+        jpr: { en: 'Judeo-Persian', ja: 'ユダヤ・ペルシア語', ko: '유대 페르시아어', zh: '犹太波斯语', yue: '猶太波斯語',
+               vi: 'Tiếng Ba Tư Do Thái', th: 'ภาษายิว-เปอร์เซีย', id: 'Yahudi-Persia', hi: 'यहूदी फ़ारसी',
+               de: 'Judäo-Persisch', fr: 'Judéo-persan', it: 'Giudeo-persiano',
+               es_eu: 'Judeopersa', es_mx: 'Judeopersa', pt_eu: 'Judeo-persa', pt_br: 'Judeo-persa',
+               ru: 'Еврейско-персидский', uk: 'Єврейсько-перська', ar: 'اليهودية الفارسية', he: 'יהודית-פרסית', sw: 'Kiyahudi-Kiajemi' },
+        umu: { en: 'Munsee', ja: 'ムンジー語', ko: '먼시어', zh: '芒西语', yue: '芒西語',
+               vi: 'Tiếng Munsee', th: 'ภาษามันซี', id: 'Munsee', hi: 'मुंसी',
+               de: 'Munsee', fr: 'Munsee', it: 'Munsee',
+               es_eu: 'Munsee', es_mx: 'Munsee', pt_eu: 'Munsee', pt_br: 'Munsee',
+               ru: 'Манси (делавар)', uk: 'Манси (делавар)', ar: 'الموسني', he: 'מונסי', sw: 'Munsee' },
+    };
+    for (const code of Object.keys(ADDED33)) {
+        for (const ui of Object.keys(ADDED33[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED33[code][ui];
+            }
+        }
+    }
+    // Cayuga (cay), Onondaga (onn), Sikkimese (sik) — Iroquoian + Tibetic.
+    const ADDED34 = {
+        cay: { en: 'Cayuga', ja: 'カユガ語', ko: '카유가어', zh: '卡尤加语', yue: '卡尤加語',
+               vi: 'Tiếng Cayuga', th: 'ภาษาคายูกา', id: 'Cayuga', hi: 'कायुगा',
+               de: 'Cayuga', fr: 'Cayuga', it: 'Cayuga',
+               es_eu: 'Cayuga', es_mx: 'Cayuga', pt_eu: 'Cayuga', pt_br: 'Cayuga',
+               ru: 'Кайюга', uk: 'Каюґа', ar: 'الكايوغا', he: 'קיוגה', sw: 'Cayuga' },
+        onn: { en: 'Onondaga', ja: 'オノンダガ語', ko: '오논다가어', zh: '奥农达加语', yue: '奧農達加語',
+               vi: 'Tiếng Onondaga', th: 'ภาษาโอนอนดากา', id: 'Onondaga', hi: 'ओनोंडागा',
+               de: 'Onondaga', fr: 'Onondaga', it: 'Onondaga',
+               es_eu: 'Onondaga', es_mx: 'Onondaga', pt_eu: 'Onondaga', pt_br: 'Onondaga',
+               ru: 'Онондага', uk: 'Онондага', ar: 'الأونونداغا', he: 'אונונדגה', sw: 'Onondaga' },
+        sik: { en: 'Sikkimese', ja: 'シッキム語', ko: '시킴어', zh: '锡金语', yue: '錫金語',
+               vi: 'Tiếng Sikkim', th: 'ภาษาสิกขิม', id: 'Sikkim', hi: 'सिक्किमी',
+               de: 'Sikkimesisch', fr: 'Sikkimais', it: 'Sikkimese',
+               es_eu: 'Sikkimés', es_mx: 'Sikkimés', pt_eu: 'Siquimês', pt_br: 'Siquimês',
+               ru: 'Сиккимский', uk: 'Сіккімська', ar: 'السيكيمية', he: 'סיקימית', sw: 'Kisikkim' },
+    };
+    for (const code of Object.keys(ADDED34)) {
+        for (const ui of Object.keys(ADDED34[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED34[code][ui];
+            }
+        }
+    }
+    // Tuscarora (tus), Mandaic (myz), Caribbean Javanese (jvn).
+    const ADDED35 = {
+        tus: { en: 'Tuscarora', ja: 'タスカローラ語', ko: '터스커로러어', zh: '塔斯卡罗拉语', yue: '塔斯卡羅拉語',
+               vi: 'Tiếng Tuscarora', th: 'ภาษาทัสคารอรา', id: 'Tuscarora', hi: 'टस्करोरा',
+               de: 'Tuscarora', fr: 'Tuscarora', it: 'Tuscarora',
+               es_eu: 'Tuscarora', es_mx: 'Tuscarora', pt_eu: 'Tuscarora', pt_br: 'Tuscarora',
+               ru: 'Тускарора', uk: 'Тускарора', ar: 'التوسكارورا', he: 'טוסקרורה', sw: 'Tuscarora' },
+        myz: { en: 'Mandaic', ja: 'マンダ語', ko: '만다이어', zh: '曼达语', yue: '曼達語',
+               vi: 'Tiếng Mandaic', th: 'ภาษามันดาอิก', id: 'Mandaic', hi: 'मंडाइक',
+               de: 'Mandäisch', fr: 'Mandéen', it: 'Mandeo',
+               es_eu: 'Mandeo', es_mx: 'Mandeo', pt_eu: 'Mandeu', pt_br: 'Mandeu',
+               ru: 'Мандейский', uk: 'Мандейська', ar: 'المندائية', he: 'מנדאית', sw: 'Kimanda' },
+        jvn: { en: 'Caribbean Javanese', ja: 'カリブ・ジャワ語', ko: '카리브 자바어', zh: '加勒比爪哇语', yue: '加勒比爪哇語',
+               vi: 'Tiếng Java Caribe', th: 'ภาษาชวาแคริบเบียน', id: 'Jawa Suriname', hi: 'कैरिबियन जावानीज़',
+               de: 'Karibisches Javanisch', fr: 'Javanais des Caraïbes', it: 'Giavanese caraibico',
+               es_eu: 'Javanés caribeño', es_mx: 'Javanés caribeño', pt_eu: 'Javanês caribenho', pt_br: 'Javanês caribenho',
+               ru: 'Карибский яванский', uk: 'Карибська яванська', ar: 'الجاوية الكاريبية', he: 'יוואנית קריבית', sw: 'Kijava cha Karibea' },
+    };
+    for (const code of Object.keys(ADDED35)) {
+        for (const ui of Object.keys(ADDED35[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED35[code][ui];
+            }
+        }
+    }
 })();
