@@ -1510,4 +1510,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED57 = {
+        cms: { en: 'Messapic', ja: 'メッサピア語', ko: '메사프어', zh: '梅萨皮语', yue: '梅薩皮語',
+               vi: 'Tiếng Messap', th: 'ภาษาเมสซาปิก', id: 'Bahasa Mesapik', hi: 'मेसापिक',
+               de: 'Messapisch', fr: 'Messapien', it: 'Messapico',
+               es_eu: 'Mesápico', es_mx: 'Mesápico', pt_eu: 'Messápico', pt_br: 'Messápico',
+               ru: 'Мессапский', uk: 'Мессапська', ar: 'الميسابية', he: 'מסאפית', sw: 'Kimesapi' },
+        xul: { en: 'Ngunnawal', ja: 'ングンナワル語', ko: '응군나왈어', zh: '恩贡纳沃语', yue: '恩貢納沃語',
+               vi: 'Tiếng Ngunnawal', th: 'ภาษางันนาวัล', id: 'Bahasa Ngunnawal', hi: 'गुनावल',
+               de: 'Ngunnawal', fr: 'Ngunnawal', it: 'Ngunnawal',
+               es_eu: 'Ngunnawal', es_mx: 'Ngunnawal', pt_eu: 'Ngunnawal', pt_br: 'Ngunnawal',
+               ru: 'Нгуннавал', uk: 'Нгуннавал', ar: 'النغوناوال', he: 'נגונוואל', sw: 'Kingunnawal' },
+        soa: { en: 'Thai Song', ja: 'タイ・ソング語', ko: '타이 송어', zh: '泰松语', yue: '泰松語',
+               vi: 'Tiếng Thái Song', th: 'ภาษาไทยซง', id: 'Bahasa Thai Song', hi: 'थाई सोंग',
+               de: 'Thai Song', fr: 'Thaï song', it: 'Thai song',
+               es_eu: 'Tai song', es_mx: 'Tai song', pt_eu: 'Tai song', pt_br: 'Tai song',
+               ru: 'Тай-сонг', uk: 'Тай-сонг', ar: 'التايسونغية', he: 'תאי סונג', sw: 'Kithai cha Song' },
+    };
+    for (const code of Object.keys(ADDED57)) {
+        for (const ui of Object.keys(ADDED57[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED57[code][ui];
+            }
+        }
+    }
 })();

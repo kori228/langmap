@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 781 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 784 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -385,6 +385,10 @@ const LANG_DATA = {
   // system, Chao tone letters consistent with the Thai row above).
   lo: { name: 'Lao', native: 'ລາວ', lat: 17.97, lng: 102.63, // Vientiane
     words: { water:['ນ້ຳ','naːm˥˩'], fire:['ໄຟ','faj˩˧'], sun:['ຕາເວັນ','taː˩˧ ven˩'], moon:['ດວງເດືອນ','duaŋ˧ dɯːan˨˩'], mother:['ແມ່','mɛː˩'], father:['ພໍ່','pʰɔː˩'], eat:['ກິນ','kin˩˧'], drink:['ດື່ມ','dɯːm˩'], love:['ຮັກ','hak˥'], heart:['ໃຈ','t͡ɕaj˩˧'], tree:['ຕົ້ນໄມ້','ton˥˩ maj˥˩'], house:['ເຮືອນ','hɯːan˥'], dog:['ໝາ','maː˩˧'], cat:['ແມວ','mɛːw˥'], hand:['ມື','mɯː˥'], eye:['ຕາ','taː˩˧'], hello:['ສະບາຍດີ','sa˨ baːj˩˧ diː˩˧'], thanks:['ຂອບໃຈ','kʰɔːp˥ t͡ɕaj˩˧'], one:['ໜຶ່ງ','nɯŋ˩'], good:['ດີ','diː˩˧'] }},
+  // Thai Song (Lao Song, Song Dam) — Tai-Kadai (Southwestern Tai, Black Tai diaspora; sister to bj_blk Black Tai of Vietnam), ~32K, Thailand (central + western — Petchaburi, Suphanburi, Nakhon Pathom).
+  // Sources: Ethnologue 27 'soa'; Glottolog thai1267; Hartmann (1986) Sons of Soung; Theraphan (2007) Tai dialect study.
+  soa: { name: 'Thai Song', native: 'ภาษาไทยซง / Tai Sǒng', lat: 13.85, lng: 100.13, // Nakhon Pathom (Thai Song heartland in Thailand)
+    words: { water:['น้ำ','nam˧˩'], fire:['ไฟ','faj˧˩'], sun:['ตะวัน','ta˩˧ wan˧'], moon:['เดือน','dɯːan˧'], mother:['แม่','mɛː˧˩'], father:['พ่อ','pʰɔː˧˩'], eat:['กิน','kin˧'], drink:['ดื่ม','dɯːm˧˩'], love:['รัก','hak˥'], heart:['ใจ','t͡ɕaj˧'], tree:['ต้นไม้','ton˧˩ maj˧˩'], house:['เรือน','rɯːan˧'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˩˧'], hand:['มือ','mɯː˧'], eye:['ตา','taː˧'], hello:['สบายดี','sa˩˧ baːj˩˧ diː˩˧'], thanks:['ขอบใจ','kʰɔːp˩˧ t͡ɕaj˩˧'], one:['หนึ่ง','nɯŋ˩'], good:['ดี','diː˩˧'] }},
   // === African ===
   yo: { name: 'Yoruba', native: 'Yorùbá', lat: 7.39, lng: 3.93, // Ibadan (Yoruba historical/cultural center)
     words: { water:['omi','omi'], fire:['iná','iná'], sun:['oòrùn','oòɾùn'], moon:['oṣù','oʃù'], mother:['ìyá','ìjá'], father:['bàbá','bàbá'], eat:['jẹ','dʒɛ'], drink:['mu','mu'], love:['ìfẹ́','ìfɛ́'], heart:['ọkàn','ɔkàn'], tree:['igi','iɡi'], house:['ilé','ilé'], dog:['ajá','adʒá'], cat:['ológbò','olóɡbò'], hand:['ọwọ́','ɔwɔ́'], eye:['ojú','odʒú'], hello:['ẹ kú','ɛ kú'], thanks:['ẹ ṣé','ɛ ʃé'], one:['ọ̀kan','ɔ̀kan'], good:['dára','dáɾa'] }},
@@ -1861,6 +1865,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nys'; Glottolog noon1242; Douglas (1968) The Aboriginal Languages of the South-West of Australia.
   nys: { name: 'Noongar', native: 'Noongar wangkiny', lat: -31.95, lng: 115.86, // Perth, Western Australia (cultural center)
     words: { water:['kep','kep'], fire:['kaarl','kaːɻl'], sun:['ngangk','ŋaŋk'], moon:['miyak','mijak'], mother:['ngangk','ŋaŋk'], father:['maam','maːm'], eat:['ngarn','ŋaɻn'], drink:['ngarn','ŋaɻn'], love:['djaadjam','dʒaːdʒam'], heart:['kortang','koɻtaŋ'], tree:['boorn','boːɻn'], house:['mia','mia'], dog:['dwert','dweɻt'], cat:['nguni','ŋuni'], hand:['mar','maɻ'], eye:['mel','mel'], hello:['kaya','kaja'], thanks:['boordawan','boːɻdawan'], one:['keny','keɲ'], good:['kwobidak','kwobidak'] }},
+  // Ngunnawal — Pama-Nyungan (Yuin-Kuric, ACT region), ~5K heritage learners, Australia (ACT — Canberra; SE NSW). Critically endangered with active community-led revival since 1990s.
+  // Sources: Ethnologue 27 'xul'; Glottolog ngun1242; Koch & Hercus (2009) Aboriginal Placenames.
+  xul: { name: 'Ngunnawal', native: 'Ngunnawal', lat: -35.28, lng: 149.13, // Canberra, ACT (traditional Ngunnawal country)
+    words: { water:['kungal','kuŋal'], fire:['warba','waɻba'], sun:['guma','ɡuma'], moon:['birrang','biɻaŋ'], mother:['guni','ɡuni'], father:['pumba','pumba'], eat:['daring','daɻiŋ'], drink:['nyu','ɲu'], love:['marmit','maɻmit'], heart:['mara','maɻa'], tree:['warabi','waɻabi'], house:['kuni','kuni'], dog:['mirri','miɻi'], cat:['poosi','puːsi'], hand:['mara','maɻa'], eye:['mil','mil'], hello:['yumalundi','jumalundi'], thanks:['miyamala','mijamala'], one:['guma','ɡuma'], good:['walunga','waluŋa'] }},
   // === Phase 3F: Tibeto-Burman, Indonesian/Philippine, misc ===
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal
@@ -4172,6 +4180,10 @@ const LANG_DATA = {
   // (2002) "The Etruscan Language: An Introduction" + Pallottino (1968).
   ett: { name: 'Etruscan', native: 'Mech Rasnal', lat: 42.25, lng: 11.76, // Tarquinia (major Etruscan city)
     words: { water:['—','—'], fire:['—','—'], sun:['usil','ˈuzil'], moon:['tiur','ˈtiur'], mother:['ati','ˈati'], father:['apa','ˈapa'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['śuthi','ˈsuθi'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['thu','θu'], good:['—','—'] }},
+  // Messapic — Italic-Illyrian (Indo-European, classified Italic by some, Illyrian by others — debated). Extinct ~1st c. BCE. Southern Italy (Apulia/Calabria).
+  // Sources: Ethnologue 27 'cms'; Glottolog mess1244; Untermann (2000) Wörterbuch des Oskisch-Umbrischen; De Simone (2017) Messapic.
+  cms: { name: 'Messapic', native: 'Messapus', lat: 40.62, lng: 17.93, // Brindisi (Brundisium — major Messapic city)
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['ana','ˈana'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
 
   // Hattic — language isolate of pre-Hittite central Anatolia (~2400-1700 BCE).
   // Preserved only in Hittite-Hattic bilingual ritual texts; very small attested
@@ -4333,6 +4345,7 @@ const DATA_STATUS_OVERRIDES = {
     ett:       'fragmentary',      // Etruscan — ~13K inscriptions, partly understood
     xht:       'fragmentary',      // Hattic — Hittite-Hattic bilinguals only
     txr:       'fragmentary',      // Tartessian — ~95 inscriptions, decipherment disputed
+    cms:       'fragmentary',      // Messapic — ~600 inscriptions, partial decipherment
     // Pass 35: 2 critically-endangered isolates with fragmentary documentation
     yuc:       'fragmentary',      // Yuchi — ~5 fluent speakers; Linn 2001 + Wagner 1934 only
     kgg:       'fragmentary',      // Kusunda — ~3 partial speakers; Watters 2006 only
@@ -4375,7 +4388,7 @@ const HIST_DESCENDANT = {
     omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
     // Pass 35: 5 historical additions (Ottoman→Turkish, Classical Mongolian→Mongolian,
     // Etruscan/Hattic/Tartessian = isolates with no living descendant)
-    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null,
+    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null, cms:null,
     // Audit Task 199 (2026-05-07): yuc Yuchi + kgg Kusunda are
     // critically-endangered isolates flagged `dataStatus: 'fragmentary'`
     // by DATA_STATUS_OVERRIDES. Adding them here with `null` descendant
