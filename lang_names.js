@@ -1010,4 +1010,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED37 = {
+        sva: { en: 'Svan', ja: 'スヴァン語', ko: '스반어', zh: '斯瓦涅季亚语', yue: '斯瓦涅季亞語',
+               vi: 'Tiếng Svan', th: 'ภาษาสวาน', id: 'Bahasa Svan', hi: 'स्वान',
+               de: 'Swanisch', fr: 'Svane', it: 'Svano',
+               es_eu: 'Svano', es_mx: 'Svano', pt_eu: 'Svano', pt_br: 'Svano',
+               ru: 'Сванский', uk: 'Сванська', ar: 'السفانية', he: 'סוואנית', sw: 'Kisvani' },
+        sdh: { en: 'Southern Kurdish', ja: '南クルド語', ko: '남쿠르드어', zh: '南库尔德语', yue: '南庫爾德語',
+               vi: 'Tiếng Kurd Miền Nam', th: 'ภาษาเคิร์ดใต้', id: 'Kurdi Selatan', hi: 'दक्षिणी कुर्दी',
+               de: 'Südkurdisch', fr: 'Kurde méridional', it: 'Curdo meridionale',
+               es_eu: 'Kurdo meridional', es_mx: 'Kurdo meridional', pt_eu: 'Curdo meridional', pt_br: 'Curdo meridional',
+               ru: 'Южнокурдский', uk: 'Південнокурдська', ar: 'الكردية الجنوبية', he: 'כורדית דרומית', sw: 'Kikurdi cha Kusini' },
+        crk: { en: 'Plains Cree', ja: 'プレーンズ・クリー語', ko: '평원 크리어', zh: '平原克里语', yue: '平原克里語',
+               vi: 'Tiếng Cree Đồng Bằng', th: 'ภาษาเพลนส์ครี', id: 'Cree Dataran', hi: 'प्लेन्स क्री',
+               de: 'Plains-Cree', fr: 'Cri des Plaines', it: 'Cree delle Pianure',
+               es_eu: 'Cree de las Llanuras', es_mx: 'Cree de las Llanuras', pt_eu: 'Cree das Planícies', pt_br: 'Cree das Planícies',
+               ru: 'Равнинный кри', uk: 'Рівнинна крі', ar: 'الكرية السهلية', he: 'קרי הערבות', sw: 'Kicree cha Mwambao' },
+    };
+    for (const code of Object.keys(ADDED37)) {
+        for (const ui of Object.keys(ADDED37[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED37[code][ui];
+            }
+        }
+    }
 })();

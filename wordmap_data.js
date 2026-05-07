@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 721 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 724 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -413,6 +413,10 @@ const LANG_DATA = {
     words: { water:['dŵr','duːr'], fire:['tân','tɑːn'], sun:['haul','haɨl'], moon:['lleuad','ɬɛɨ̯ad'], mother:['mam','mam'], father:['tad','tɑːd'], eat:['bwyta','bʊɨta'], drink:['yfed','əvɛd'], love:['cariad','karjad'], heart:['calon','kalon'], tree:['coeden','kɔɨdɛn'], house:['tŷ','tiː'], dog:['ci','kiː'], cat:['cath','kɑːθ'], hand:['llaw','ɬaʊ'], eye:['llygad','ɬəɡad'], hello:['helo','hɛlo'], thanks:['diolch','diːɔlx'], one:['un','iːn'], good:['da','dɑː'] }},
   ka: { name: 'Georgian', native: 'ქართული', lat: 41.72, lng: 44.79, // Tbilisi
     words: { water:['წყალი','t͡sʼqali'], fire:['ცეცხლი','t͡set͡sxli'], sun:['მზე','mze'], moon:['მთვარე','mtʰvare'], mother:['დედა','deda'], father:['მამა','mama'], eat:['ჭამა','tʃʼama'], drink:['დალევა','daleva'], love:['სიყვარული','siqvaruli'], heart:['გული','ɡuli'], tree:['ხე','xe'], house:['სახლი','saxli'], dog:['ძაღლი','dzaɣli'], cat:['კატა','kʼatʼa'], hand:['ხელი','xeli'], eye:['თვალი','tʰvali'], hello:['გამარჯობა','ɡamardʒoba'], thanks:['მადლობა','madloba'], one:['ერთი','ertʰi'], good:['კარგი','kʼarɡi'] }},
+  // Svan — Kartvelian (sister to Zan-Georgian branch), ~14-30K, Svaneti highlands of NW Georgia. Most divergent Kartvelian.
+  // Sources: Ethnologue 27 'sva'; Glottolog svan1245; Tuite (1997) Svan; Schmidt (1991) Kartvelian phonology.
+  sva: { name: 'Svan', native: 'ლუშნუ ნინ', lat: 43.00, lng: 42.72, // Mestia, Svaneti
+    words: { water:['ლიც','lit͡sʼ'], fire:['ლემესგ','lemesɡ'], sun:['მიჟ','miʒ'], moon:['დოშდულ','doʃdul'], mother:['დი','di'], father:['ფუ','pʰu'], eat:['ჭიმედ','tʃʼimed'], drink:['ლიშგი','liʃɡi'], love:['ხოჩა','xotʃa'], heart:['ლიე','lie'], tree:['ხან','xan'], house:['კოჯ','kʼodʒ'], dog:['ჯეღ','dʒeʁ'], cat:['ფისკ','pʰisk'], hand:['შდიხ','ʃdix'], eye:['ნებო','nebo'], hello:['ხოჩაპ','xotʃapʰ'], thanks:['ხოჩამდ','xotʃamd'], one:['ეშხუ','eʃxu'], good:['ხოჩა','xotʃa'] }},
   hy: { name: 'Armenian', native: 'Հայերեն', lat: 40.18, lng: 44.51, // Yerevan
     words: { water:['ջուր','dʒuɾ'], fire:['կրակ','kɾɑk'], sun:['արև','ɑˈɾev'], moon:['լուսին','lusin'], mother:['մայր','majɾ'], father:['հայր','hajɾ'], eat:['ուտել','uˈtel'], drink:['խմել','χəˈmel'], love:['սեր','seɾ'], heart:['սիրտ','siɾt'], tree:['ծառ','tsaɾ'], house:['տուն','tun'], dog:['շուն','ʃun'], cat:['կատու','kɑtu'], hand:['ձեռք','dzeɾkʰ'], eye:['աչք','ɑtʃkʰ'], hello:['բարև','bɑɾev'], thanks:['շնորհակալություն','ʃnoɾhɑkɑlutʰjun'], one:['մեկ','mek'], good:['լավ','lɑv'] }},
   nv: { name: 'Navajo', native: 'Diné bizaad', lat: 36.17, lng: -109.51, // Window Rock
@@ -529,6 +533,10 @@ const LANG_DATA = {
     words: { water:['av','ɑːv'], fire:['agir','ɑɡɪɾ'], sun:['roj','ɾoːʒ'], moon:['heyv','hejv'], mother:['dayik','dɑːjɪk'], father:['bav','bɑːv'], eat:['xwarin','xwɑːɾɪn'], drink:['vexwarin','vɛxwɑːɾɪn'], love:['evîn','ɛviːn'], heart:['dil','dɪl'], tree:['dar','dɑːɾ'], house:['mal','mɑːl'], dog:['se','sɛː'], cat:['pisîk','pɪsiːk'], hand:['dest','dɛst'], eye:['çav','tʃɑːv'], hello:['silav','sɪlɑːv'], thanks:['spas','spɑːs'], one:['yek','jɛk'], good:['baş','bɑːʃ'] }},
   ckb: { name: 'Kurdish (Sorani)', native: 'سۆرانی', lat: 36.19, lng: 44.01,
     words: { water:['ئاو','ɑːw'], fire:['ئاگر','ɑːɡɪɾ'], sun:['خۆر','xoːɾ'], moon:['مانگ','mɑːŋɡ'], mother:['دایک','dɑːjɪk'], father:['باوک','bɑːwɪk'], eat:['خواردن','xwɑːɾdɪn'], drink:['خواردنەوە','xwɑːɾdɪnɛwɛ'], love:['خۆشەویستی','xoʃɛwiːstiː'], heart:['دڵ','dɪɬ'], tree:['دار','dɑːɾ'], house:['ماڵ','mɑːɬ'], dog:['سەگ','sɛɡ'], cat:['پشیلە','pʃiːlɛ'], hand:['دەست','dɛst'], eye:['چاو','tʃɑːw'], hello:['سڵاو','sɬɑːw'], thanks:['سوپاس','supɑːs'], one:['یەک','jɛk'], good:['باش','bɑːʃ'] }},
+  // Southern Kurdish (Kermashani / Pehlewani / Kelhori / Lekî) — Iranian (Northwest), ~3M, western Iran (Kermanshah, Ilam) + Iraqi border.
+  // Sources: Ethnologue 27 'sdh'; Glottolog sout2664; Fattah (2000) Les Dialectes Kurdes Méridionaux.
+  sdh: { name: 'Southern Kurdish', native: 'کوردیی خوارین', lat: 34.31, lng: 47.07, // Kermanshah
+    words: { water:['ئاو','ɑːw'], fire:['ئاگر','ɑːɡɪɾ'], sun:['روژ','ɾoʒ'], moon:['ماهنگ','mɑːhænɡ'], mother:['دالگ','dɑːlɡ'], father:['باوگ','bɑːwɡ'], eat:['خواردن','xwɑːɾdən'], drink:['خواردن','xwɑːɾdən'], love:['عەشق','æʃq'], heart:['دڵ','dɪɫ'], tree:['دار','dɑːɾ'], house:['ماڵ','mɑːɫ'], dog:['سگ','sæɡ'], cat:['پشی','pʃiː'], hand:['دەس','dæs'], eye:['چەو','tʃæw'], hello:['سڵاو','sɫɑːw'], thanks:['سپاس','spɑːs'], one:['یەک','jæk'], good:['خاس','xɑːs'] }},
   ps: { name: 'Pashto', native: 'پښتو', lat: 34.52, lng: 69.17,
     words: { water:['اوبه','obə'], fire:['اور','oːɾ'], sun:['لمر','lmər'], moon:['سپوږمۍ','spuɡmʌj'], mother:['مور','moːɾ'], father:['پلار','plɑːɾ'], eat:['خوړل','xwəɽəl'], drink:['څکل','tskəl'], love:['مینه','miːna'], heart:['زړه','zɽə'], tree:['ونه','wəna'], house:['کور','koːɾ'], dog:['سپی','spaj'], cat:['پیشو','piːʃo'], hand:['لاس','lɑːs'], eye:['سترګه','stərɡa'], hello:['سلام','sɑlɑːm'], thanks:['مننه','mənəna'], one:['یو','jaw'], good:['ښه','ʂə'] }},
   az: { name: 'Azerbaijani', native: 'Azərbaycanca', lat: 40.41, lng: 49.87,
@@ -1583,6 +1591,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'umu'; Glottolog muns1238; Goddard (1979) Munsee Phonology.
   umu: { name: 'Munsee', native: 'Lunaapeew', lat: 42.78, lng: -82.05, // Moraviantown, Ontario (Munsee Delaware Nation)
     words: { water:['mpíi','mbiː'], fire:['lúhsuw','luhsuw'], sun:['kíishux','kiːʃux'], moon:['nipáhum','nipahum'], mother:['nkáhees','ŋkahees'], father:['nóoxw','noːxw'], eat:['mit','mit'], drink:['mneew','mneew'], love:['ahóoluw','ahoːluw'], heart:['ulehyii','ulehjiː'], tree:['hìttuk','hitːuk'], house:['wíikwam','wiːkwam'], dog:['mwáakaneew','mwaːkaneːw'], cat:['póshiis','poʃiːs'], hand:['mléelii','mleːliː'], eye:['wíikšiit','wiːkʃiːt'], hello:['hé','heː'], thanks:['wanìshi','waniʃi'], one:['ngwútii','ŋɡwutiː'], good:['weltóok','weltoːk'] }},
+  // Plains Cree (Y-dialect / Nēhiyawēwin) — Algonquian (Cree-Innu), ~26K, Alberta/Saskatchewan/Manitoba. Largest Cree variety.
+  // Sources: Ethnologue 27 'crk'; Glottolog plai1258; Wolfart (1973) Plains Cree: A Grammatical Study; Wolvengrey (2001) ito Pikiskwêwina.
+  crk: { name: 'Plains Cree', native: 'ᓀᐦᐃᔭᐍᐏᐣ', lat: 53.55, lng: -113.49, // Edmonton, Alberta (regional center)
+    words: { water:['ᓂᐱᕀ','nipiː'], fire:['ᐃᐢᑯᑌᐤ','iskoteːw'], sun:['ᐱᓰᒼ','piːsim'], moon:['ᑎᐱᐢᑳᐃᐧᐱᓰᒼ','tipiskaːwi piːsim'], mother:['ᓂᑳᐃᐧ','nikaːwiː'], father:['ᓅᐦᑖᐃᐧ','noːhtaːwiː'], eat:['ᒨᐍᐤ','moːweːw'], drink:['ᒥᓂᐦᑴᐤ','minihkweːw'], love:['ᓵᑭᐦᐃᐍᐃᐧᐣ','saːkihiweːwin'], heart:['ᒥᑌᐦ','miteh'], tree:['ᒥᐢᑎᐠ','mistik'], house:['ᐊᔅᑭᕁ','askiːhk'], dog:['ᐊᑎᒼ','atim'], cat:['ᒥᓂᔥ ᒥᓰᔮᐢ','minoːs'], hand:['ᒥᒋᒋᕀ','micicij'], eye:['ᒥᐢᑭᓯᐠ','miskisik'], hello:['ᑖᓂᓯ','taːnisi'], thanks:['ᐦᐊᐃᐧ','haj-haj'], one:['ᐯᔭᐠ','peːjak'], good:['ᒥᔼᓯᐣ','mijwaːsin'] }},
   // Siouan
   lkt: { name: 'Lakota', native: 'Lakȟótiyapi', lat: 43.02, lng: -102.55, // Pine Ridge
     words: { water:['mní','mní'], fire:['pȟéta','pʰéta'], sun:['wí','wí'], moon:['haŋhépi wí','haŋhépi wí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yátkaŋ','játkaŋ'], love:['thečhíȟila','tʰetʃʰíʁila'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋke','iɡmúŋke'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['philámayaye','pʰilámajaje'], one:['waŋží','waŋʒí'], good:['wašté','waʃté'] }},
