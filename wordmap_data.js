@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 814 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 816 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -676,10 +676,6 @@ const LANG_DATA = {
     words: { water:['ame','ame'], fire:['erae','eɾae'], sun:['ọvẹ','ɔvɛ'], moon:['ọwa','ɔwa'], mother:['ini','ini'], father:['ọsẹ','ɔsɛ'], eat:['re','ɾe'], drink:['da','da'], love:['ọsuọ','ɔswɔ'], heart:['udu','udu'], tree:['orhan','oɾan'], house:['uwowhe','uwowhe'], dog:['ebọ','ebɔ'], cat:['ọtọmha','ɔtɔmha'], hand:['obọ','obɔ'], eye:['ẹro','ɛɾo'], hello:['mavọ','mavɔ'], thanks:['migwo','miɡwo'], one:['ọvo','ɔvo'], good:['ọwhọ','ɔwhɔ'] }},
   ha: { name: 'Hausa', native: 'Hausa', lat: 12.00, lng: 8.52,
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
-  // Kanuri — Nilo-Saharan (Saharan, Western), ~10M, Nigeria (Borno State — Maiduguri) + Niger + Chad + Cameroon. Major Lake Chad basin language; historic Kanem-Bornu Empire (9th-19th c.).
-  // Sources: Ethnologue 27 'kau'; Glottolog kanu1278; Cyffer (1998) A Sketch of Kanuri.
-  kau: { name: 'Kanuri', native: 'Kànùrí', lat: 11.85, lng: 13.16, // Maiduguri, Borno State, Nigeria
-    words: { water:['nzeli','nzeli'], fire:['kaltakte','kaltakte'], sun:['kau','kau'], moon:['kawu','kawu'], mother:['ya','ja'], father:['ba','ba'], eat:['buktoo','buktoː'], drink:['saktoo','saktoː'], love:['lehe','lehe'], heart:['galge','ɡalɡe'], tree:['kasha','kaʃa'], house:['fato','fato'], dog:['kasua','kasua'], cat:['matanga','mataŋɡa'], hand:['musko','musko'], eye:['shim','ʃim'], hello:['barka','baɾka'], thanks:['warde','waɾde'], one:['tilo','tilo'], good:['ngubo','ŋɡubo'] }},
   // Hdi — Chadic (Central, Mafa-Bata subgroup), ~30K, Cameroon (Far North Region — Mokolo) + Nigeria border. Famous for ATR vowel harmony and rich glottal-consonant inventory.
   // Sources: Ethnologue 27 'xed'; Glottolog hdii1240; Frajzyngier (2002) A Grammar of Hdi.
   xed: { name: 'Hdi', native: 'Hədi', lat: 10.74, lng: 13.80, // Mokolo, Cameroon (Mandara Mountains)
@@ -881,6 +877,10 @@ const LANG_DATA = {
     words: { water:['ñeb','ɲeb'], fire:['nged','ŋged'], sun:['nb','nəb'], moon:['ñag','ɲaɡ'], mother:['ag','aɡ'], father:['mam','mam'], eat:['ñb','ɲəb'], drink:['ñ-','ɲə'], love:['kn-','kən'], heart:['mngm','məŋgəm'], tree:['mon','mon'], house:['kab','kab'], dog:['kayn','kajn'], cat:['pus','pus'], hand:['tn','tən'], eye:['ck','tʃək'], hello:['ñn','ɲən'], thanks:['ñib','ɲib'], one:['mdmagn','mədmaɡən'], good:['kayb','kajb'] }},
   // Mapos Buang — Austronesian (Malayo-Polynesian, Oceanic, Western Oceanic, Buang), ~10K, PNG (Morobe Province — Snake River valley, Mumeng District).
   // Sources: Ethnologue 27 'bzh'; Glottolog mapo1252; Hooley (2002) The Buang of Papua New Guinea.
+  // Mussau-Emira — Austronesian (Oceanic, Western Oceanic, Mussau-Emira), ~5K, PNG (St Matthias Group — Mussau Island, Emira Island, north of New Ireland).
+  // Sources: Ethnologue 27 'emi'; Glottolog muss1246; Ross (1988) Proto Oceanic and the Austronesian Languages of Western Melanesia.
+  emi: { name: 'Mussau-Emira', native: 'Mussau', lat: -1.51, lng: 149.62, // Mussau Island, St Matthias Group, PNG
+    words: { water:['eai','eai'], fire:['kapok','kapok'], sun:['ariu','aɾiu'], moon:['malam','malam'], mother:['nia','nia'], father:['tama','tama'], eat:['anu','anu'], drink:['inum','inum'], love:['talimi','talimi'], heart:['lalota','lalota'], tree:['rikei','ɾikei'], house:['ulemi','ulemi'], dog:['kovur','kovuɾ'], cat:['busi','busi'], hand:['lima','lima'], eye:['mata','mata'], hello:['emua','emua'], thanks:['poasi','poasi'], one:['esa','esa'], good:['rop','ɾop'] }},
   bzh: { name: 'Mapos Buang', native: 'Buang', lat: -7.00, lng: 146.85, // Mumeng, Morobe Province, PNG
     words: { water:['vuur','vuːr'], fire:['ehe','ehe'], sun:['gum','ɡum'], moon:['mha','mha'], mother:['ne','ne'], father:['ma','ma'], eat:['gen','ɡen'], drink:['nung','nuŋ'], love:['vong','voŋ'], heart:['minga','miŋa'], tree:['leng','leŋ'], house:['ya','ja'], dog:['nyam','ɲam'], cat:['pus','pus'], hand:['mok','mok'], eye:['mata','mata'], hello:['miig','miːɡ'], thanks:['vog ehog','voɡ ehoɡ'], one:['lon','lon'], good:['vovo','vovo'] }},
   // Torres Strait Creole (Yumplatok) — English-based creole, ~25K speakers, Torres Strait Islands (Australia).
@@ -2056,6 +2056,10 @@ const LANG_DATA = {
     words: { water:['ɛŋare','ɛŋare'], fire:['ɛnkima','ɛŋkima'], sun:['enkolong','eŋkoloŋ'], moon:['ɔlapa','olapa'], mother:['yieyio','jiejio'], father:['papa','papa'], eat:['anya','aɲa'], drink:['oŋg','oŋɡ'], love:['eitalu','eitalu'], heart:['ɔltau','oltau'], tree:['olchani','oltʃani'], house:['eng\'aji','ɛŋadʒi'], dog:['oldia','oldia'], cat:['paka','paka'], hand:['ɛŋaina','ɛŋaina'], eye:['ɛŋɔnyek','ɛŋɔɲek'], hello:['sopa','sopa'], thanks:['ashe','aʃe'], one:['obo','obo'], good:['sidai','sidai'] }},
   // Samburu — Eastern Nilotic (Maa cluster, sister to Maasai mas), ~150K, Kenya (Samburu/Marsabit Counties — semi-nomadic pastoralists in Northern Frontier).
   // Sources: Ethnologue 27 'saq'; Glottolog samb1300; Heine (1980) Samburu Texts; Payne (1995) Samburu phonology.
+  // Bari — Nilotic Eastern (sister to Maasai mas, Samburu saq within Maa cluster), ~600K, South Sudan (Central Equatoria — Juba region) + Uganda (West Nile — Moyo District).
+  // Sources: Ethnologue 27 'bfa'; Glottolog bari1284; Owen (1908) Bari Grammar.
+  bfa: { name: 'Bari', native: 'Karo Bari', lat: 4.85, lng: 31.61, // Juba, South Sudan (Bari heartland)
+    words: { water:['piong','piɔŋ'], fire:['kima','kima'], sun:['kolong','koloŋ'], moon:['nyepo','ɲepo'], mother:['mama','mama'], father:['baba','baba'], eat:['nyo','ɲo'], drink:['mwoi','mwoi'], love:['ondu','ondu'], heart:['lo','lo'], tree:['kute','kute'], house:['kadi','kadi'], dog:['ngoʼlo','ŋoʼlo'], cat:['lupa','lupa'], hand:['kindiyo','kindijo'], eye:['kongi','koŋɡi'], hello:['gwon','ɡwon'], thanks:['mungari','muŋɡari'], one:['kelo','kelo'], good:['ru','ru'] }},
   saq: { name: 'Samburu', native: 'Sampur', lat: 1.05, lng: 36.69, // Maralal, Samburu County, Kenya
     words: { water:['nkare','ŋkaɾe'], fire:['nkima','ŋkima'], sun:['lakwa','lakʷa'], moon:['lapa','lapa'], mother:['yieyo','jiejo'], father:['papa','papa'], eat:['anya','aɲa'], drink:['oŋg','oŋɡ'], love:['eitalu','eitalu'], heart:['ltau','ltau'], tree:['lchani','ltʃani'], house:['nkang','ŋkaŋ'], dog:['ldia','ldia'], cat:['paka','paka'], hand:['nkaina','ŋkaina'], eye:['nkonyek','ŋkoɲek'], hello:['sopa','sopa'], thanks:['ashe','aʃe'], one:['obo','obo'], good:['supat','supat'] }},
   // Afro-Asiatic (Cushitic)
@@ -2276,6 +2280,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'bbo'; Glottolog kona1268; Le Bris (1986) Bobo Konabéré phonology.
   bbo: { name: 'Konabéré', native: 'Konabéré', lat: 11.17, lng: -4.30, // Bobo-Dioulasso area, Burkina Faso
     words: { water:['ji','dʒi'], fire:['ta','ta'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['don','don'], drink:['min','min'], love:['kana','kana'], heart:['dusu','dusu'], tree:['yiri','jiri'], house:['so','so'], dog:['fugo','fuɡo'], cat:['nyukuma','ɲukuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['ka kɛ','ka kɛ'], thanks:['baraka','baɾaka'], one:['kelen','kelen'], good:['ɲuman','ɲuman'] }},
+  // Senoufo Supyire (Suppire) — Niger-Congo (Atlantic-Congo, Senufo, Senari — sister to Mamara, Sicite, and other Senufo cluster), ~750K, Mali (Sikasso Region — Sikasso, Koutiala) + small Burkina Faso border.
+  // Sources: Ethnologue 27 'spp'; Glottolog supy1237; Carlson (1994) A Grammar of Supyire.
+  spp: { name: 'Senoufo Supyire', native: 'Suppire', lat: 11.32, lng: -5.67, // Sikasso, Mali (Senufo cultural center)
+    words: { water:['lwɔ','lwɔ'], fire:['fyaa','fjaː'], sun:['kanha','kaɲa'], moon:['cuoꞌngo','tʃuoŋɡo'], mother:['naa','naː'], father:['saa','saː'], eat:['kanyi','kaɲi'], drink:['nyaha','ɲaha'], love:['lyɛnɛ','ʎɛnɛ'], heart:['urɔ','uɾɔ'], tree:['kapyiŋi','kapjiŋi'], house:['nyiŋkanaŋa','ɲiŋkanaŋa'], dog:['fwo','fwo'], cat:['baha','baha'], hand:['kya','kja'], eye:['fyaha','fjaha'], hello:['mɛ','mɛ'], thanks:['fenge','feŋɡe'], one:['ni','ni'], good:['nyaha','ɲaha'] }},
   // Susu (Soso) — Mande, ~1.2M speakers, coastal Guinea + Sierra Leone. National language of Guinea.
   // Sources: Ethnologue 27 'sus'; Glottolog susu1250; Houis (1963) Etude descriptive de la langue Susu.
   sus: { name: 'Susu', native: 'Sosokuye', lat: 9.51, lng: -13.71, // Conakry, Guinea

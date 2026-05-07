@@ -1785,4 +1785,32 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED68 = {
+        bfa: { en: 'Bari', ja: 'バリ語', ko: '바리어', zh: '巴里语', yue: '巴里語',
+               vi: 'Tiếng Bari', th: 'ภาษาบารี', id: 'Bahasa Bari', hi: 'बारी',
+               de: 'Bari', fr: 'Bari', it: 'Bari',
+               es_eu: 'Bari', es_mx: 'Bari', pt_eu: 'Bari', pt_br: 'Bari',
+               ru: 'Бари', uk: 'Барі', ar: 'الباري', he: 'ברי', sw: 'Kibari' },
+        spp: { en: 'Senoufo Supyire', ja: 'セヌフォ・スプイレ語', ko: '세누포 수피레어', zh: '塞努福苏皮雷语', yue: '塞努福蘇皮雷語',
+               vi: 'Tiếng Senufo Supyire', th: 'ภาษาเซนูโฟซูปีเร', id: 'Senufo Supyire', hi: 'सेनुफो सुप्यिरे',
+               de: 'Senoufo Supyire', fr: 'Sénoufo supyiré', it: 'Senoufo supyire',
+               es_eu: 'Senufo supyire', es_mx: 'Senufo supyire', pt_eu: 'Senufo supyire', pt_br: 'Senufo supyire',
+               ru: 'Сенуфо супире', uk: 'Сенуфо-супіре', ar: 'السنوفو سوبيري', he: 'סנופו סופירה', sw: 'Kisenufo cha Supyire' },
+        emi: { en: 'Mussau-Emira', ja: 'ムッサウ・エミラ語', ko: '무사우-에미라어', zh: '穆索-埃米拉语', yue: '穆索-埃米拉語',
+               vi: 'Tiếng Mussau-Emira', th: 'ภาษามุสเซา-เอมีรา', id: 'Bahasa Mussau-Emira', hi: 'मुसाउ-एमिरा',
+               de: 'Mussau-Emira', fr: 'Mussau-emira', it: 'Mussau-Emira',
+               es_eu: 'Mussau-emira', es_mx: 'Mussau-emira', pt_eu: 'Mussau-emira', pt_br: 'Mussau-emira',
+               ru: 'Муссау-эмира', uk: 'Муссау-еміра', ar: 'الموسو-إميرا', he: 'מוסאו-אמירה', sw: 'Kimussau-Emira' },
+    };
+    for (const code of Object.keys(ADDED68)) {
+        for (const ui of Object.keys(ADDED68[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED68[code][ui];
+            }
+        }
+    }
+
+    // Batch 59 cleanup: remove kau (Kanuri) from ADDED58 since duplicate of kr
+    delete LANG_NAMES.en.kau;
 })();
