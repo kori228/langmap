@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 816 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 818 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -66,6 +66,8 @@ const EXCLUDED_CODES = new Set([
   'ota', 'cmg', 'ett', 'xht', 'txr',
   // Batches 48 & 54: Messapic + Maharastri Prakrit additions
   'cms', 'pmh',
+  // Batch 60: Old Frisian
+  'ofs',
 ]);
 
 const LANG_DATA = {
@@ -1100,6 +1102,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ang'; Glottolog olde1238; Bosworth-Toller Anglo-Saxon Dictionary; Mitchell & Robinson (1992) Guide to Old English.
   ang: { name: 'Old English', native: 'Englisċ', lat: 51.75, lng: -1.26, // Oxford / Wessex (heartland of West Saxon literary standard)
     words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufian','luviɑn'], heart:['heorte','heorte'], tree:['trēow','treoːw'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','katː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['wes hāl','wes haːl'], thanks:['þancian','θɑntsiɑn'], one:['ān','aːn'], good:['gōd','ɡoːd'] }},
+  // Old Frisian — Indo-European Germanic Anglo-Frisian (sister to ang Old English; together they form the Anglo-Frisian subgroup of West Germanic). Historical (~1100-1500). Reconstructed from law codes (Skeltana-Riucht), the Riustringer Manuscript.
+  // Sources: Ethnologue 27 'ofs'; Glottolog oldf1241; Bremmer (2009) An Introduction to Old Frisian.
+  ofs: { name: 'Old Frisian', native: 'Aldfrysk', lat: 53.20, lng: 5.80, // Leeuwarden, Friesland (Frisian heartland)
+    words: { water:['wetir','vetiɾ'], fire:['fiur','fjuːɾ'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['moder','moːdeɾ'], father:['feder','fædeɾ'], eat:['eta','etɑ'], drink:['drinka','dɾinkɑ'], love:['minne','minːe'], heart:['herte','heɾte'], tree:['bām','baːm'], house:['hūs','huːs'], dog:['hund','hund'], cat:['katte','katːe'], hand:['hond','hond'], eye:['āge','aːɣe'], hello:['heil','heil'], thanks:['thank','θank'], one:['ān','aːn'], good:['gōd','ɡoːd'] }},
   non: { name: 'Old Norse', native: 'Norrǿnt mál', lat: 59.91, lng: 10.75,
     words: { water:['vatn','vɑtn'], fire:['eldr','eldr'], sun:['sól','soːl'], moon:['máni','mɑːni'], mother:['móðir','moːðir'], father:['faðir','fɑðir'], eat:['eta','etɑ'], drink:['drekka','drekːɑ'], love:['ást','ɑːst'], heart:['hjarta','hjɑrtɑ'], tree:['tré','treː'], house:['hús','huːs'], dog:['hundr','hundr'], cat:['kǫttr','kɔtːr'], hand:['hǫnd','hɔnd'], eye:['auga','ɑuɣɑ'], hello:['heill','hɛilː'], thanks:['þǫkk','θɔkː'], one:['einn','ɛinː'], good:['góðr','ɡoːðr'] }},
   got: { name: 'Gothic', native: '𐌲𐌿𐍄𐌹𐍃𐌺', lat: 45.05, lng: 34.10,
@@ -2431,6 +2437,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'wba'; Glottolog wara1303; Romero-Figueroa (1997) A Reference Grammar of Warao; Vaquero (1965) Idioma Warao.
   wba: { name: 'Warao', native: 'Warao', lat: 9.07, lng: -62.05, // Tucupita, Delta Amacuro (Orinoco Delta)
     words: { water:['hoidu','hojdu'], fire:['hekunu','hekunu'], sun:['ya','ja'], moon:['waniku','waniku'], mother:['dani','dani'], father:['daka','daka'], eat:['nahoro','nahoɾo'], drink:['osi','osi'], love:['anaubu','anaubu'], heart:['obonona','oboɲoɲa'], tree:['dau','daw'], house:['hanoko','hanoko'], dog:['aurahu','auɾahu'], cat:['mishi','miʃi'], hand:['mokomoko','mokomoko'], eye:['mu','mu'], hello:['yakera','jakeɾa'], thanks:['kase','kase'], one:['hisaka','hisaka'], good:['yakera','jakeɾa'] }},
+  // Wichí — Matacoan (Mataco-Mataguayan family, Wichí branch — sister to Maká, Chorote, Nivaclé), ~50K, Argentina (Salta, Formosa, Chaco) + Bolivia (Tarija) + Paraguay (Boquerón).
+  // Sources: Ethnologue 27 'mzh'; Glottolog wich1264; Terraza (2009) Gramática del Wichi.
+  mzh: { name: 'Wichí', native: 'Wichí Lhamtés', lat: -22.93, lng: -63.27, // Yacuiba area / Bermejo border, Salta-Tarija
+    words: { water:['inot','inot'], fire:['itoj','itox'], sun:['ifwala','ifʷala'], moon:['hawu','hawu'], mother:['ko','ko'], father:['lo','lo'], eat:['lechek','letʃek'], drink:['yim','jim'], love:['lhayanej','ʎajanex'], heart:['kahayl','kahajl'], tree:['halaj','halax'], house:['wek','wek'], dog:['asinaj','asinax'], cat:['mishi','miʃi'], hand:['kuwej','kuwex'], eye:['titsej','titsex'], hello:['hayej','hajex'], thanks:['nehayij','nehajix'], one:['ifwa','ifʷa'], good:['is','is'] }},
   // Mura (linguistic isolate, Amazonia)
   myp: { name: 'Pirahã', native: 'Xapagí', lat: -7.70, lng: -62.30, // Maici River
     words: { water:['piigi','piiɡi'], fire:['hoa','hoa'], sun:['hisi','hisi'], moon:['kapiigaísao','kapiːɡaísao'], mother:['ʔaaí','ʔaaí'], father:['baíxi','baíʃi'], eat:['ʔaʔaí','ʔaʔaí'], drink:['gao','ɡao'], love:['gí','ɡí'], heart:['aoʔaago','aoʔaaɡo'], tree:['hoí','hoí'], house:['kaiʔii','kaiʔii'], dog:['kobaí','kobaí'], cat:['xowí','ʃowí'], hand:['piíʔai','piíʔai'], eye:['ʔai','ʔai'], hello:['gaíhií','ɡaíhií'], thanks:['kapiíhií','kapiíhií'], one:['hói','hói'], good:['aoʔaago','aoʔaaɡo'] },
@@ -4477,6 +4487,7 @@ const DATA_STATUS_OVERRIDES = {
     txr:       'fragmentary',      // Tartessian — ~95 inscriptions, decipherment disputed
     cms:       'fragmentary',      // Messapic — ~600 inscriptions, partial decipherment
     pmh:       'attested',         // Maharastri Prakrit — extensive Jain literary corpus 1st BCE-13th CE
+    ofs:       'attested',         // Old Frisian — extensive medieval law-code corpus 1100-1500 CE
     // Pass 35: 2 critically-endangered isolates with fragmentary documentation
     yuc:       'fragmentary',      // Yuchi — ~5 fluent speakers; Linn 2001 + Wagner 1934 only
     kgg:       'fragmentary',      // Kusunda — ~3 partial speakers; Watters 2006 only
@@ -4519,7 +4530,7 @@ const HIST_DESCENDANT = {
     omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
     // Pass 35: 5 historical additions (Ottoman→Turkish, Classical Mongolian→Mongolian,
     // Etruscan/Hattic/Tartessian = isolates with no living descendant)
-    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null, cms:null, pmh:'mr',
+    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null, cms:null, pmh:'mr', ofs:'fy',
     // Audit Task 199 (2026-05-07): yuc Yuchi + kgg Kusunda are
     // critically-endangered isolates flagged `dataStatus: 'fragmentary'`
     // by DATA_STATUS_OVERRIDES. Adding them here with `null` descendant

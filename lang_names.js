@@ -1469,7 +1469,7 @@ const LANG_NAMES = {
                ru: 'Мегленорумынский', uk: 'Мегленорумунська', ar: 'الميغلينو-رومانية', he: 'מגלנו-רומנית', sw: 'Kiromania cha Megleno' },
         nhx: { en: 'Isthmus Nahuatl', ja: 'イスムス・ナワトル語', ko: '이스무스 나우아틀어', zh: '伊斯穆斯纳瓦特尔语', yue: '伊斯穆斯納瓦特爾語',
                vi: 'Tiếng Nahuatl Eo Đất', th: 'ภาษานาวาตล์อิสมุส', id: 'Nahuatl Tanah Genting', hi: 'इस्थमस नहुआतल',
-               de: 'Isthmus-Nahuatl', fr: 'Nahuatl de l\\'isthme', it: 'Nahuatl dell\\'istmo',
+               de: 'Isthmus-Nahuatl', fr: "Nahuatl de l'isthme", it: "Nahuatl dell'istmo",
                es_eu: 'Náhuatl del Istmo', es_mx: 'Náhuatl del Istmo', pt_eu: 'Nauatle do Istmo', pt_br: 'Nauatle do Istmo',
                ru: 'Истмус-науатль', uk: 'Істмус-науатль', ar: 'النواتل البرزخية', he: 'נאוואטל מצרי', sw: 'Kinahuatl cha Istmo' },
         dge: { en: 'Degema', ja: 'デゲマ語', ko: '데게마어', zh: '德格马语', yue: '德格馬語',
@@ -1650,7 +1650,7 @@ const LANG_NAMES = {
         yrl: { en: 'Nheengatu', ja: 'ニェンガトゥ語', ko: '녀엔가투어', zh: '尼恩加图语', yue: '尼恩加圖語',
                vi: 'Tiếng Nheengatu', th: 'ภาษาเนงกาตู', id: 'Bahasa Nheengatu', hi: 'न्येंगाटू',
                de: 'Nheengatu', fr: 'Nheengatu', it: 'Nheengatu',
-               es_eu: 'Ñe\\'engatú', es_mx: 'Ñe\\'engatú', pt_eu: 'Nheengatu', pt_br: 'Nheengatu',
+               es_eu: "Ñe'engatú", es_mx: "Ñe'engatú", pt_eu: 'Nheengatu', pt_br: 'Nheengatu',
                ru: 'Ньенгату', uk: 'Ньенгату', ar: 'النيينغاتو', he: 'נייאנגטו', sw: 'Kinheengatu' },
     };
     for (const code of Object.keys(ADDED62)) {
@@ -1813,4 +1813,24 @@ const LANG_NAMES = {
 
     // Batch 59 cleanup: remove kau (Kanuri) from ADDED58 since duplicate of kr
     delete LANG_NAMES.en.kau;
+
+    const ADDED69 = {
+        ofs: { en: 'Old Frisian', ja: '古フリジア語', ko: '고대 프리지아어', zh: '古弗里西语', yue: '古弗里西語',
+               vi: 'Tiếng Frisia cổ', th: 'ภาษาฟรีเซียนโบราณ', id: 'Bahasa Frisia Kuno', hi: 'पुरानी फ्रिशियाई',
+               de: 'Altfriesisch', fr: 'Vieux frison', it: 'Antico frisone',
+               es_eu: 'Frisón antiguo', es_mx: 'Frisón antiguo', pt_eu: 'Frísio antigo', pt_br: 'Frísio antigo',
+               ru: 'Древнефризский', uk: 'Давньофризька', ar: 'الفريزية القديمة', he: 'פריזית עתיקה', sw: 'Kifrisia cha Kale' },
+        mzh: { en: 'Wichí', ja: 'ウィチ語', ko: '위치어', zh: '维奇语', yue: '維奇語',
+               vi: 'Tiếng Wichí', th: 'ภาษาวีชี', id: 'Bahasa Wichí', hi: 'विची',
+               de: 'Wichí', fr: 'Wichí', it: 'Wichí',
+               es_eu: 'Wichí', es_mx: 'Wichí', pt_eu: 'Wichí', pt_br: 'Wichí',
+               ru: 'Вичи', uk: 'Вічі', ar: 'الويتشي', he: 'ויצ׳י', sw: 'Kiwichi' },
+    };
+    for (const code of Object.keys(ADDED69)) {
+        for (const ui of Object.keys(ADDED69[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED69[code][ui];
+            }
+        }
+    }
 })();
