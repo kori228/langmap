@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 824 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 827 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -688,6 +688,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'dge'; Glottolog dege1246; Kari (2004) A Reference Grammar of Degema; Williamson (1989).
   dge: { name: 'Degema', native: 'Atala-mọ', lat: 4.45, lng: 7.18, // Bonny, Rivers State, Nigeria
     words: { water:['mọn','mɔn'], fire:['ọmạrị','ɔmaɾi'], sun:['ọvịnị','ɔvini'], moon:['ọsọ','ɔsɔ'], mother:['inyeyẹ','iɲɛjɛ'], father:['etete','etete'], eat:['re','ɾe'], drink:['da','da'], love:['inyiẹna','iɲjɛna'], heart:['ọkọmpọnị','ɔkɔmpɔni'], tree:['eyo','ejo'], house:['ọsụnẹ','ɔsunɛ'], dog:['ifụnị','ifuni'], cat:['ọchẹ','ɔtʃɛ'], hand:['ọnẹ','ɔnɛ'], eye:['enẹ','enɛ'], hello:['amọn','amɔn'], thanks:['nani','nani'], one:['ọmọ','ɔmɔ'], good:['ekenẹ','ekenɛ'] }},
+  // Yekhee (Etsako, formerly Etsako proper) — Niger-Congo Edoid (North-Central, sister to bin Edo and other Edoid; Yekhee cluster includes Auchi, Avianwu, Uzairue), ~660K, Nigeria (Edo State — Etsako).
+  // Sources: Ethnologue 27 'ets'; Glottolog yekh1235; Williamson (1989) Niger-Congo classification.
+  ets: { name: 'Yekhee', native: 'Yekhee', lat: 7.07, lng: 6.27, // Auchi, Etsako, Edo State, Nigeria
+    words: { water:['amen','amen'], fire:['eria','eɾia'], sun:['ovan','ovan'], moon:['ukpoki','ukpoki'], mother:['iye','ije'], father:['ada','ada'], eat:['gba','ɡba'], drink:['gbo','ɡbo'], love:['gbele','ɡbele'], heart:['itsu','itsu'], tree:['orhan','oɾhan'], house:['ukekpe','ukekpe'], dog:['agbon','aɡbon'], cat:['otsuvua','otsuvua'], hand:['oba','oba'], eye:['evua','evua'], hello:['udze','udze'], thanks:['oyabuwere','ojabuweɾe'], one:['ovo','ovo'], good:['edue','edue'] }},
   // Isoko — Niger-Congo Edoid, ~600K speakers, Delta State Nigeria. Sister to Urhobo (urh).
   // Sources: Ethnologue 27 'iso'; Glottolog isok1238; Williamson (1972) Isoko phonology.
   iso: { name: 'Isoko', native: 'Isoko', lat: 5.66, lng: 6.24, // Oleh, Delta State (Isoko heartland)
@@ -1510,6 +1514,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nhx'; Glottolog isth1238; Wolgemuth (1981) Gramática Náhuatl de Mecayapan.
   nhx: { name: 'Isthmus Nahuatl', native: 'Mexicaneru', lat: 18.00, lng: -94.63, // Mecayapan, Veracruz
     words: { water:['ahtli','aʔtli'], fire:['tit','tit'], sun:['tonal','tonal'], moon:['metz','mets'], mother:['nan','nan'], father:['tat','tat'], eat:['tacua','takʷa'], drink:['ati','ati'], love:['nech-nequi','netʃneki'], heart:['yolio','jolio'], tree:['cuahuit','kʷawit'], house:['cali','kali'], dog:['itzcuintli','itskʷintli'], cat:['miston','miston'], hand:['mahuit','mawit'], eye:['ix','iʃ'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
+  // Eastern Huasteca Nahuatl — Uto-Aztecan (Nahuan, Eastern; one of the largest modern Nahuatl varieties), ~410K, Mexico (Veracruz — Huasteca; Hidalgo — Tantoyuca, Huejutla; San Luis Potosí).
+  // Sources: Ethnologue 27 'nhe'; Glottolog east2541; Hasler (1979) Eastern Huasteca Nahuatl Grammar.
+  nhe: { name: 'Eastern Huasteca Nahuatl', native: 'Mexicaneru', lat: 21.42, lng: -98.25, // Tantoyuca, Veracruz Huasteca
+    words: { water:['atl','atl'], fire:['titl','titl'], sun:['tonatih','tonatih'], moon:['metztli','metstli'], mother:['mama','mama'], father:['tata','tata'], eat:['tlacua','tlakʷa'], drink:['atli','atli'], love:['tlazohtla','tlasoʔtla'], heart:['yollotl','jolːotl'], tree:['cuahuitl','kʷawitl'], house:['calli','kalːi'], dog:['itzcuintli','itskʷintli'], cat:['mizton','miston'], hand:['maitl','maitl'], eye:['ixtli','iʃtli'], hello:['nimitzpaca','nimitspaka'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
   myn: { name: 'Classical Maya', native: 'Maaya Tzij', lat: 14.63, lng: -90.51,
     words: { water:['haʼ','haʔ'], fire:['kʼahkʼ','kʼahkʼ'], sun:['kʼin','kʼin'], moon:['uh','uh'], mother:['naʼ','naʔ'], father:['yuum','juːm'], eat:['wiʼij','wiʔiχ'], drink:['ukʼ','ukʼ'], love:['yaah','jaːh'], heart:['pixan','piʃan'], tree:['cheʼ','tʃeʔ'], house:['otoch','otoːtʃ'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼab','kʼab'], eye:['ich','itʃ'], hello:['bix a beel','biʃ a beːl'], thanks:['nibʼoolal','nibʼoːlal'], one:['jun','χun'], good:['utz','uts'] }},
   ine: { name: 'Proto-Indo-European', native: '*dń̥ǵʰwéh₂s', lat: 47.00, lng: 39.00,
@@ -1815,6 +1823,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'gym'; Glottolog ngab1239; Murillo (2008) Diccionario Bilingüe Ngäbere-Español.
   gym: { name: 'Ngäbere', native: 'Ngäbere', lat: 8.43, lng: -82.13, // Llano Tugrí, Panama (Ngäbe-Buglé capital)
     words: { water:['ñö','ɲø'], fire:['nio','nio'], sun:['ngwen','ŋʷen'], moon:['só','só'], mother:['meye','meje'], father:['rün','rɨn'], eat:['mrö','mrø'], drink:['ñögö','ɲøɡø'], love:['tare','taɾe'], heart:['brukwä','bɾukwɨ'], tree:['krätä','kɾɨtɨ'], house:['ju','dʒu'], dog:['nukro','nukɾo'], cat:['mishi','miʃi'], hand:['kise','kise'], eye:['okwä','okwɨ'], hello:['käre','kɨɾe'], thanks:['kuin','kuin'], one:['krati','kɾati'], good:['kuin','kuin'] }},
+  // Sumo (Mayangna) — Misumalpan (sister to Miskito within the small Misumalpan family of Central America), ~10K, Nicaragua (Bonanza, Rosita) + Honduras (Mosquitia).
+  // Sources: Ethnologue 27 'sum'; Glottolog mayy1239; Norwood (1997) Mayangna grammar.
+  sum: { name: 'Sumo', native: 'Mayangna', lat: 14.18, lng: -84.62, // Bonanza, Nicaragua (Mayangna heartland)
+    words: { water:['was','was'], fire:['kuh','kuh'], sun:['waiku','waiku'], moon:['waikuh','waikuh'], mother:['nuh','nuh'], father:['papang','papaŋ'], eat:['piru','piɾu'], drink:['di','di'], love:['walai','walai'], heart:['mâ','maː'], tree:['âu','aːu'], house:['utla','utla'], dog:['suluk','suluk'], cat:['mistuh','mistuh'], hand:['ting','tiŋ'], eye:['nakra','nakɾa'], hello:['naksa','naksa'], thanks:['yaisi','jaisi'], one:['as','as'], good:['pain','pain'] }},
   // Shuar — Jivaroan, ~35K speakers, Ecuadorian + Peruvian Amazon. Famous historically for tsantsa (shrunken heads).
   // Sources: Ethnologue 27 'jiv'; Glottolog shua1257; Pellizzaro & Náwech (2005) Chicham Shuar.
   jiv: { name: 'Shuar', native: 'Shuar Chicham', lat: -2.50, lng: -78.07, // Macas, Ecuador

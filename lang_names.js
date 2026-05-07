@@ -1883,4 +1883,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED72 = {
+        nhe: { en: 'Eastern Huasteca Nahuatl', ja: '東部ウアステカ・ナワトル語', ko: '동부 우아스테카 나우아틀어', zh: '东瓦斯特卡纳瓦特尔语', yue: '東瓦斯特卡納瓦特爾語',
+               vi: 'Tiếng Nahuatl Huasteca Đông', th: 'ภาษานาวาตล์ฮัวสเตกาตะวันออก', id: 'Nahuatl Huasteca Timur', hi: 'पूर्वी हुआस्तेका नहुआतल',
+               de: 'Östliches Huasteka-Nahuatl', fr: 'Nahuatl huastéca oriental', it: 'Nahuatl huasteca orientale',
+               es_eu: 'Náhuatl huasteca oriental', es_mx: 'Náhuatl de la Huasteca Oriental', pt_eu: 'Nauatle huasteco oriental', pt_br: 'Nauatle huasteca oriental',
+               ru: 'Восточный уастекский науатль', uk: 'Східна гуастекська науатль', ar: 'النواتل الهواستيكية الشرقية', he: 'נאוואטל הואסטקה מזרחי', sw: 'Kinahuatl cha Huasteca cha Mashariki' },
+        sum: { en: 'Sumo', ja: 'スモ語', ko: '수모어', zh: '苏摩语', yue: '蘇摩語',
+               vi: 'Tiếng Sumo', th: 'ภาษาซูโม', id: 'Bahasa Sumo', hi: 'सुमो',
+               de: 'Sumo', fr: 'Sumo', it: 'Sumo',
+               es_eu: 'Sumo', es_mx: 'Sumo', pt_eu: 'Sumo', pt_br: 'Sumo',
+               ru: 'Сумо', uk: 'Сумо', ar: 'السومو', he: 'סומו', sw: 'Kisumo' },
+        ets: { en: 'Yekhee', ja: 'イェキー語', ko: '예키어', zh: '耶克伊语', yue: '耶克伊語',
+               vi: 'Tiếng Yekhee', th: 'ภาษาเยกี', id: 'Bahasa Yekhee', hi: 'येखी',
+               de: 'Yekhee', fr: 'Yekhee', it: 'Yekhee',
+               es_eu: 'Yekhee', es_mx: 'Yekhee', pt_eu: 'Yekhee', pt_br: 'Yekhee',
+               ru: 'Йекхе', uk: 'Єкхе', ar: 'اليخية', he: 'יקה', sw: 'Kiyekhee' },
+    };
+    for (const code of Object.keys(ADDED72)) {
+        for (const ui of Object.keys(ADDED72[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED72[code][ui];
+            }
+        }
+    }
 })();
