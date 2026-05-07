@@ -1610,4 +1610,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED61 = {
+        lmn: { en: 'Lambadi', ja: 'ランバディ語', ko: '람바디어', zh: '兰巴迪语', yue: '蘭巴迪語',
+               vi: 'Tiếng Lambadi', th: 'ภาษาลัมบาดี', id: 'Bahasa Lambadi', hi: 'लम्बाडी',
+               de: 'Lambadi', fr: 'Lambadi', it: 'Lambadi',
+               es_eu: 'Lambadi', es_mx: 'Lambadi', pt_eu: 'Lambadi', pt_br: 'Lambadi',
+               ru: 'Ламбади', uk: 'Ламбаді', ar: 'اللامبادية', he: 'למבדי', sw: 'Kilambadi' },
+        gym: { en: 'Ngäbere', ja: 'ンガベレ語', ko: '응가베레어', zh: '恩加贝雷语', yue: '恩加貝雷語',
+               vi: 'Tiếng Ngäbere', th: 'ภาษางาเบเร', id: 'Bahasa Ngäbere', hi: 'न्गाबेरे',
+               de: 'Ngäbere', fr: 'Ngäbéré', it: 'Ngäbere',
+               es_eu: 'Ngäbere', es_mx: 'Ngäbere', pt_eu: 'Ngäbere', pt_br: 'Ngäbere',
+               ru: 'Нгабере', uk: 'Нгабере', ar: 'النغابري', he: 'נגאברה', sw: 'Kingäbere' },
+        kfx: { en: 'Kullui', ja: 'クルウィー語', ko: '쿨루이어', zh: '库卢伊语', yue: '庫盧伊語',
+               vi: 'Tiếng Kullui', th: 'ภาษากุลลุย', id: 'Bahasa Kullui', hi: 'कुल्लूई',
+               de: 'Kullui', fr: 'Kullui', it: 'Kullui',
+               es_eu: 'Kullui', es_mx: 'Kullui', pt_eu: 'Kullui', pt_br: 'Kullui',
+               ru: 'Куллуи', uk: 'Куллуї', ar: 'الكولوية', he: 'קולואי', sw: 'Kikullui' },
+    };
+    for (const code of Object.keys(ADDED61)) {
+        for (const ui of Object.keys(ADDED61[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED61[code][ui];
+            }
+        }
+    }
 })();

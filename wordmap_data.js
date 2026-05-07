@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 793 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 796 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -559,8 +559,16 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'dty'; Glottolog doty1234; Eppele (2004) Far-Western Nepal sociolinguistic survey.
   dty: { name: 'Dotyali', native: 'डोटेली', lat: 29.27, lng: 80.59, // Dadeldhura, Far-Western Nepal
     words: { water:['पानी','paːniː'], fire:['आगो','aːɡo'], sun:['घाम','ɡʱaːm'], moon:['जुनेली','dʒuneliː'], mother:['आमा','aːmaː'], father:['बाजी','baːdʒiː'], eat:['खानु','kʰaːnu'], drink:['पिउनु','piunu'], love:['प्रेम','preːm'], heart:['हृदय','ɦridəj'], tree:['रूख','ɾuːkʰ'], house:['घर','ɡʱəɾ'], dog:['कुकुर','kukuɾ'], cat:['बिरालो','biɾaːlo'], hand:['हात','haːt'], eye:['आँखि','ãːkʰi'], hello:['नमस्कार','nəməskaːɾ'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','ek'], good:['राम्रो','ɾaːmɾo'] }},
+  // Kullui — Indo-European Indo-Aryan (Northern, Western Pahari, Kullu Valley dialect), ~196K, India (Himachal Pradesh — Kullu District, Beas River valley).
+  // Sources: Ethnologue 27 'kfx'; Glottolog kull1236; Sharma (1980) Kullui Phonology.
+  kfx: { name: 'Kullui', native: 'कुल्लूई', lat: 31.96, lng: 77.11, // Kullu, Himachal Pradesh
+    words: { water:['पाणी','paːɳiː'], fire:['आग','aːɡ'], sun:['सूरज','suːɾədʒ'], moon:['चांद','tʃãːd'], mother:['आमा','aːma'], father:['बाबा','baːba'], eat:['खाणु','kʰaːɳu'], drink:['पीणु','piːɳu'], love:['प्यार','pjaːɾ'], heart:['मन','mən'], tree:['रूख','ɾuːkʰ'], house:['घर','ɡʱəɾ'], dog:['कुकर','kukəɾ'], cat:['बिल्ली','bilːiː'], hand:['हाथ','haːtʰ'], eye:['आँख','ãːkʰ'], hello:['राम राम','ɾaːm ɾaːm'], thanks:['धन्यवाद','dʱənjəʋaːd'], one:['एक','ek'], good:['भलो','bʱəlo'] }},
   mr: { name: 'Marathi', native: 'मराठी', lat: 19.08, lng: 72.88,
     words: { water:['पाणी','paːɳiː'], fire:['अग्नी','əɡniː'], sun:['सूर्य','suːɾjə'], moon:['चंद्र','tʃəndɾə'], mother:['आई','aːiː'], father:['वडील','ʋəɖiːl'], eat:['खाणे','kʰaːɳe'], drink:['पिणे','pɪɳe'], love:['प्रेम','pɾemə'], heart:['हृदय','ɦɾudəjə'], tree:['झाड','dʒʱaːɖ'], house:['घर','gʱəɾ'], dog:['कुत्रा','kutɾaː'], cat:['मांजर','mãːdʒəɾ'], hand:['हात','haːt'], eye:['डोळा','ɖoɭaː'], hello:['नमस्कार','nəməskaːɾ'], thanks:['धन्यवाद','dʱənjəʋaːd'], one:['एक','ek'], good:['चांगले','tʃaːŋɡle'] }},
+  // Lambadi (Banjari, Gor Boli) — Indo-European Indo-Aryan (Northwestern, Rajasthani group; classified Romani-related by some), ~3.6M, India (Andhra Pradesh, Karnataka, Telangana, Maharashtra — diaspora of nomadic Banjara traders).
+  // Sources: Ethnologue 27 'lmn'; Glottolog lamb1271; Trail (1968) Lamani Phonology and Grammar.
+  lmn: { name: 'Lambadi', native: 'गोर बोली', lat: 17.39, lng: 78.49, // Hyderabad / Telangana (Banjara cultural anchor)
+    words: { water:['पानी','paːniː'], fire:['आग','aːɡ'], sun:['सुरज','suɾədʒ'], moon:['चांद','tʃãːd'], mother:['मा','maː'], father:['बाप','baːp'], eat:['खा','kʰaː'], drink:['पी','piː'], love:['प्रेम','pɾem'], heart:['मन','mən'], tree:['पेड़','peːɽ'], house:['घर','ɡʱəɾ'], dog:['कुत्ता','kutːaː'], cat:['बिल्ली','bilːiː'], hand:['हाथ','haːtʰ'], eye:['आंख','ãːkʰ'], hello:['राम राम','ɾaːm ɾaːm'], thanks:['धन्यवाद','dʱənjaβaːd'], one:['एक','ek'], good:['अच्छो','ətʃʰo'] }},
   gu: { name: 'Gujarati', native: 'ગુજરાતી', lat: 23.02, lng: 72.57,
     words: { water:['પાણી','paːɳiː'], fire:['આગ','aːɡ'], sun:['સૂર્ય','suːɾjə'], moon:['ચંદ્ર','tʃəndɾə'], mother:['મા','maː'], father:['પિતા','pɪtaː'], eat:['ખાવું','kʰaːʋũ'], drink:['પીવું','piːʋũ'], love:['પ્રેમ','pɾem'], heart:['હૃદય','ɦɾudəj'], tree:['ઝાડ','dʒʱaːɖ'], house:['ઘર','gʱəɾ'], dog:['કૂતરો','kuːtɾo'], cat:['બિલાડી','bɪlaːɖiː'], hand:['હાથ','haːtʰ'], eye:['આંખ','ãːkʰ'], hello:['નમસ્તે','nəməste'], thanks:['આભાર','aːbʱaːɾ'], one:['એક','ek'], good:['સારું','saːɾũ'] }},
   si: { name: 'Sinhala', native: 'සිංහල', lat: 6.93, lng: 79.85,
@@ -1731,6 +1739,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'cni'; Glottolog asha1243; Mihas (2010) Asháninka grammar.
   cni: { name: 'Asháninka', native: 'Asháninka', lat: -10.85, lng: -73.81, // Satipo, Peru
     words: { water:['nija','nidʒa'], fire:['paamari','paːmaɾi'], sun:['oorya','oːɾja'], moon:['kashiri','kaʃiɾi'], mother:['ina','ina'], father:['apa','apa'], eat:['noyaki','nojaki'], drink:['noiri','noiɾi'], love:['nonintsi','nonintsi'], heart:['nosanto','nosanto'], tree:['inchato','intʃato'], house:['pankotsi','paŋkotsi'], dog:['otsiti','otsiti'], cat:['mishito','miʃito'], hand:['nako','nako'], eye:['noki','noki'], hello:['aviro','aβiɾo'], thanks:['naranki','naɾaŋki'], one:['aparoni','apaɾoni'], good:['kameetsa','kameːtsa'] }},
+  // Ngäbere (Guaymí) — Chibchan (Magdalenic, sister to Buglere/Bocotá), ~170K, Panama (Ngäbe-Buglé Comarca) + Costa Rica (Cordillera de Talamanca). Largest Chibchan language by speakers.
+  // Sources: Ethnologue 27 'gym'; Glottolog ngab1239; Murillo (2008) Diccionario Bilingüe Ngäbere-Español.
+  gym: { name: 'Ngäbere', native: 'Ngäbere', lat: 8.43, lng: -82.13, // Llano Tugrí, Panama (Ngäbe-Buglé capital)
+    words: { water:['ñö','ɲø'], fire:['nio','nio'], sun:['ngwen','ŋʷen'], moon:['só','só'], mother:['meye','meje'], father:['rün','rɨn'], eat:['mrö','mrø'], drink:['ñögö','ɲøɡø'], love:['tare','taɾe'], heart:['brukwä','bɾukwɨ'], tree:['krätä','kɾɨtɨ'], house:['ju','dʒu'], dog:['nukro','nukɾo'], cat:['mishi','miʃi'], hand:['kise','kise'], eye:['okwä','okwɨ'], hello:['käre','kɨɾe'], thanks:['kuin','kuin'], one:['krati','kɾati'], good:['kuin','kuin'] }},
   // Shuar — Jivaroan, ~35K speakers, Ecuadorian + Peruvian Amazon. Famous historically for tsantsa (shrunken heads).
   // Sources: Ethnologue 27 'jiv'; Glottolog shua1257; Pellizzaro & Náwech (2005) Chicham Shuar.
   jiv: { name: 'Shuar', native: 'Shuar Chicham', lat: -2.50, lng: -78.07, // Macas, Ecuador
