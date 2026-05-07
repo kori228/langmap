@@ -1833,4 +1833,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED70 = {
+        tiv: { en: 'Tiv', ja: 'ティブ語', ko: '티브어', zh: '蒂夫语', yue: '蒂夫語',
+               vi: 'Tiếng Tiv', th: 'ภาษาทิฟ', id: 'Bahasa Tiv', hi: 'टिव',
+               de: 'Tiv', fr: 'Tiv', it: 'Tiv',
+               es_eu: 'Tiv', es_mx: 'Tiv', pt_eu: 'Tiv', pt_br: 'Tiv',
+               ru: 'Тив', uk: 'Тів', ar: 'التيفية', he: 'טיב', sw: 'Kitiv' },
+        efi: { en: 'Efik', ja: 'エフィク語', ko: '에피크어', zh: '埃菲克语', yue: '埃菲克語',
+               vi: 'Tiếng Efik', th: 'ภาษาเอฟิก', id: 'Bahasa Efik', hi: 'एफिक',
+               de: 'Efik', fr: 'Efik', it: 'Efik',
+               es_eu: 'Efik', es_mx: 'Efik', pt_eu: 'Efik', pt_br: 'Efik',
+               ru: 'Эфик', uk: 'Ефік', ar: 'الإفيكية', he: 'אפיק', sw: 'Kiefik' },
+        ekp: { en: 'Ekpeye', ja: 'エクペイェ語', ko: '에크페예어', zh: '埃克佩耶语', yue: '埃克佩耶語',
+               vi: 'Tiếng Ekpeye', th: 'ภาษาเอกเปเย', id: 'Bahasa Ekpeye', hi: 'एक्पेये',
+               de: 'Ekpeye', fr: 'Ekpeye', it: 'Ekpeye',
+               es_eu: 'Ekpeye', es_mx: 'Ekpeye', pt_eu: 'Ekpeye', pt_br: 'Ekpeye',
+               ru: 'Экпейе', uk: 'Екпеє', ar: 'الإكبيي', he: 'אקפיה', sw: 'Kiekpeye' },
+    };
+    for (const code of Object.keys(ADDED70)) {
+        for (const ui of Object.keys(ADDED70[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED70[code][ui];
+            }
+        }
+    }
 })();

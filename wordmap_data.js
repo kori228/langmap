@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 818 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 821 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -660,6 +660,18 @@ const LANG_DATA = {
     words: { water:['ilma','ilma'], fire:['nar','naːɾ'], sun:['xemx','ʃɛmʃ'], moon:['qamar','ʔamaɾ'], mother:['omm','omm'], father:['missier','missiɛɾ'], eat:['jiekol','jiɛkol'], drink:['jixrob','jiʃɾop'], love:['imħabba','imħabːa'], heart:['qalb','ʔalp'], tree:['siġra','sid͡ʒɾa'], house:['dar','daːɾ'], dog:['kelb','kɛlp'], cat:['qattus','ʔattus'], hand:['id','iːt'], eye:['għajn','ajn'], hello:['merħba','mɛɾħba'], thanks:['grazzi','ɡɾatt͡si'], one:['wieħed','wiɛħɛt'], good:['tajjeb','tajːɛp'] }},
   ig: { name: 'Igbo', native: 'Igbo', lat: 6.17, lng: 6.79, // Onitsha (Igbo historical/commercial center)
     words: { water:['mmiri','mːiɾi'], fire:['ọkụ','ɔkʊ'], sun:['anyanwụ','aɲaŋwʊ'], moon:['ọnwa','ɔŋwa'], mother:['nne','nːɛ'], father:['nna','nːa'], eat:['iri','iɾi'], drink:['aṅụ','aŋʊ'], love:['ịhụnanya','ɪhʊnaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ụlọ','ʊlɔ'], dog:['nkịta','ŋkɪta'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['nnọọ','nːɔː'], thanks:['daalụ','daːlʊ'], one:['otu','otu'], good:['ọma','ɔma'] }},
+  // Tiv — Niger-Congo (Atlantic-Congo, Bantoid, Tivoid — sister to other Tivoid Cameroonian languages but historically isolated in Nigeria), ~5M, Nigeria (Benue State — Gboko, Makurdi).
+  // Sources: Ethnologue 27 'tiv'; Glottolog tivv1240; Abraham (1940) Tiv-English Dictionary.
+  tiv: { name: 'Tiv', native: 'Tiv', lat: 7.34, lng: 9.00, // Gboko, Benue State, Nigeria
+    words: { water:['mngerem','mŋɡɛɾɛm'], fire:['usu','usu'], sun:['iyange','ijaŋɡe'], moon:['uwer','uwɛɾ'], mother:['ngo','ŋɡo'], father:['ter','tɛɾ'], eat:['yan','jan'], drink:['mba','mba'], love:['dooshima','doːʃima'], heart:['ishima','iʃima'], tree:['kon','kon'], house:['ya','ja'], dog:['iyou','ijou'], cat:['anyam','aɲam'], hand:['ave','ave'], eye:['ishe','iʃe'], hello:['m sugh','m suɣ'], thanks:['m sugh u','m suɣ u'], one:['mom','mom'], good:['dedoo','dedoː'] }},
+  // Efik — Niger-Congo (Atlantic-Congo, Cross River, Lower Cross — sister to ibibio ibb and other Lower Cross), ~2M, Nigeria (Cross River State — Calabar, Akwa Ibom). Historic SE Nigerian literary language.
+  // Sources: Ethnologue 27 'efi'; Glottolog efik1245; Goldie (1862) Dictionary of the Efik Language.
+  efi: { name: 'Efik', native: 'Usem Efik', lat: 4.96, lng: 8.32, // Calabar, Cross River State (historic Efik kingdom)
+    words: { water:['mmọñ','mːɔɲ'], fire:['ikañ','ikaɲ'], sun:['utin','utin'], moon:['ọfiọñ','ɔfiɔɲ'], mother:['eka','eka'], father:['ete','ete'], eat:['dia','dia'], drink:['ñwọñ','ŋwɔɲ'], love:['ima','ima'], heart:['esit','esit'], tree:['eto','eto'], house:['ufọk','ufɔk'], dog:['ebua','ebua'], cat:['nyabudaha','ɲabudaha'], hand:['ubọk','ubɔk'], eye:['enyin','eɲin'], hello:['mọñọ','mɔɲɔ'], thanks:['sọsọñọ','sɔsɔɲɔ'], one:['kiet','kiet'], good:['eti','eti'] }},
+  // Ekpeye — Niger-Congo (Atlantic-Congo, Volta-Niger, Igboid — sister to ig Igbo within Igboid; classified as separate language under Igboid by Ethnologue), ~50K, Nigeria (Rivers State — Ahoada West, Ahoada East).
+  // Sources: Ethnologue 27 'ekp'; Glottolog ekpe1248; Williamson (1989) Niger-Congo classification.
+  ekp: { name: 'Ekpeye', native: 'Ekpeye', lat: 5.05, lng: 6.52, // Ahoada, Rivers State, Nigeria
+    words: { water:['mini','mini'], fire:['oku','oku'], sun:['anwu','aŋwu'], moon:['onwa','oŋwa'], mother:['nne','nːe'], father:['nna','nːa'], eat:['ri','ɾi'], drink:['ñu','ɲu'], love:['ihunanya','ihunaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ulo','ulo'], dog:['nkita','ŋkita'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['nno','nːo'], thanks:['imela','imela'], one:['otu','otu'], good:['oma','oma'] }},
   // Ibibio — Cross River, ~5M speakers, southeastern Nigeria. Major Niger-Congo language.
   // Sources: Ethnologue 27 'ibb'; Glottolog ibib1240; Essien (1990) Grammar of Ibibio.
   ibb: { name: 'Ibibio', native: 'Ibibio', lat: 5.04, lng: 7.91, // Uyo, Akwa Ibom State
