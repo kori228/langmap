@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 694 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 697 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -267,6 +267,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'jmc'; Glottolog mach1266; Augustiny (1914) Kichagga grammar.
   jmc: { name: 'Machame', native: 'Kimashami', lat: -3.20, lng: 37.27, // Machame village, Kilimanjaro
     words: { water:['mringa','mɾiŋɡa'], fire:['mòò','moːʔ'], sun:['ìsùwà','isuwa'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['ìlya','iʎa'], drink:['ìnyo','iɲo'], love:['ìkwenda','ikwenda'], heart:['mòyò','mojo'], tree:['mtí','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['kùoòko','kuoːko'], eye:['rítiò','ɾitio'], hello:['máshàlòmà','maʃalom'], thanks:['ahsànte','ahsante'], one:['ìmwí','imwi'], good:['ìchá','itʃa'] }},
+  // Sangu — Bantu F13, ~75K speakers, Mbeya region SW Tanzania (Usangu plains).
+  // Sources: Ethnologue 27 'sbp'; Glottolog sang1336; Stirnimann (1983) Praktische Grammatik der Sangu-Sprache.
+  sbp: { name: 'Sangu', native: 'Eshisango', lat: -8.91, lng: 33.46, // Mbeya, Tanzania
+    words: { water:['ameenzi','ameːnzi'], fire:['umoto','umoto'], sun:['liluga','liluɡa'], moon:['umwesi','umwesi'], mother:['mama','mama'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['ulungu','uluŋɡu'], heart:['umutima','umutima'], tree:['umuti','umuti'], house:['inyumba','iɲumba'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['ukuboko','ukuboko'], eye:['iliho','iliho'], hello:['mbasala','mbasala'], thanks:['nashukulu','naʃukulu'], one:['imo','imo'], good:['kwifwa','kwifwa'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -1422,6 +1426,10 @@ const LANG_DATA = {
   // Bantu (East / Southern / Central)
   lg: { name: 'Luganda', native: 'Luganda', lat: 0.31, lng: 32.58, // Kampala
     words: { water:['amazzi','amaːzːi'], fire:['omuliro','omuliɾo'], sun:['enjuba','eɲɟuba'], moon:['omwezi','omwezi'], mother:['maama','maːma'], father:['taata','taːta'], eat:['kulya','kulja'], drink:['kunywa','kuɲʷa'], love:['okwagala','okwaːɡala'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['ennyumba','eɲɲumba'], dog:['embwa','embwa'], cat:['kkapa','kːapa'], hand:['omukono','omukono'], eye:['eriiso','eɾiːso'], hello:['oli otya','oli otja'], thanks:['webale','weːbale'], one:['emu','emu'], good:['kirungi','tʃiɾuŋɡi'] }},
+  // Masaaba (Lugisu) — Bantu JE31, ~3M, Mt Elgon eastern Uganda. 4th-largest Ugandan language.
+  // Sources: Ethnologue 27 'myx'; Glottolog masa1320; Brown (1972) Lumasaaba grammar.
+  myx: { name: 'Masaaba', native: 'Lumasaaba', lat: 1.08, lng: 34.18, // Mbale, Mt Elgon
+    words: { water:['kamaatsi','kamaːtsi'], fire:['kamulilo','kamulilo'], sun:['suuba','suːba'], moon:['umweesi','umweːsi'], mother:['mayi','maji'], father:['papa','papa'], eat:['khulya','kʰuʎa'], drink:['khunywa','kʰuɲwa'], love:['khusima','kʰusima'], heart:['umwoyo','umwojo'], tree:['kumusaala','kumusaːla'], house:['nzu','nzu'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['kumukhono','kumukʰono'], eye:['liiso','liːso'], hello:['mulembe','mulembe'], thanks:['ole nise','ole nise'], one:['mulala','mulala'], good:['kalayi','kalaji'] }},
   ki: { name: 'Kikuyu', native: 'Gĩkũyũ', lat: -1.17, lng: 36.83, // Kiambu, Kenya
     words: { water:['maaĩ','maːi'], fire:['mwaki','mwaki'], sun:['rĩũa','ɾiwa'], moon:['mweri','mweɾi'], mother:['maitũ','maitu'], father:['baba','baba'], eat:['kũrĩa','kuɾia'], drink:['kũnyua','kuɲua'], love:['wendo','wendo'], heart:['ngoro','ŋɡoɾo'], tree:['mũtĩ','muti'], house:['nyũmba','ɲumba'], dog:['ngui','ŋɡui'], cat:['nyaũ','ɲau'], hand:['guoko','ɡuoko'], eye:['riitho','riːθo'], hello:['wĩmwega','wimweɡa'], thanks:['nĩ wega','ni weɡa'], one:['ĩmwe','imwe'], good:['wega','weɡa'] }},
   // Meru — Bantu E54, Kenya, ~2M speakers; closely related to Kikuyu (ki) within the
@@ -1453,6 +1461,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'lol'; Glottolog mong1338; Hulstaert (1957) Dictionnaire Lomongo-français.
   lol: { name: 'Mongo', native: 'Lomongo', lat: 0.51, lng: 18.97, // Mbandaka
     words: { water:['nzá','nzá'], fire:['mokɛ́','mokɛ́'], sun:['lokɔlɔ','lokɔlɔ'], moon:['nzɔnzɔ','nzɔnzɔ'], mother:['nyangó','ɲaŋɡó'], father:['ise','ise'], eat:['kolya','koʎa'], drink:['kome\'la','komela'], love:['boláŋo','bolaŋo'], heart:['mongúma','moŋɡúma'], tree:['boléi','boléi'], house:['ndako','ndako'], dog:['mbwa','mbwa'], cat:['nyaú','ɲaú'], hand:['lokáko','lokáko'], eye:['liso','liso'], hello:['losáko','losáko'], thanks:['olɛli','olɛli'], one:['etomelá','etomelá'], good:['mpɔlɔ','mpɔlɔ'] }},
+  // Tetela — Bantu C71, ~750K, Sankuru region central DRC. Patrice Lumumba's mother tongue.
+  // Sources: Ethnologue 27 'tll'; Glottolog tete1259; Hagendorens (1956) Dictionnaire Otetela.
+  tll: { name: 'Tetela', native: 'Otetela', lat: -4.74, lng: 24.05, // Kindu/Lodja, Kasai-Oriental
+    words: { water:['ashi','aʃi'], fire:['lokombu','lokombu'], sun:['ondelo','ondelo'], moon:['ngondo','ŋɡondo'], mother:['nyema','ɲema'], father:['shi','ʃi'], eat:['kolya','koʎa'], drink:['konwa','konwa'], love:['langɔ','laŋɡɔ'], heart:['utema','utema'], tree:['etamba','etamba'], house:['mbongo','mboŋɡo'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['lonya','loɲa'], eye:['diso','diso'], hello:['nyongo','ɲoŋɡo'], thanks:['toleko','toleko'], one:['ɔtɔi','ɔtɔi'], good:['lɔlɔ','lɔlɔ'] }},
   // West African (Niger-Congo Atlantic / Mande)
   ff: { name: 'Fula', native: 'Fulfulde', lat: 12.65, lng: -7.99, // Bamako (representative)
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},

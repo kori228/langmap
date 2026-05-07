@@ -785,4 +785,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Tetela (tll), Sangu (sbp), Masaaba (myx) — DRC Bantu + Tanzania Bantu + Uganda Bantu.
+    const ADDED28 = {
+        tll: { en: 'Tetela', ja: 'テテラ語', ko: '테텔라어', zh: '特特拉语', yue: '特特拉語',
+               vi: 'Tiếng Tetela', th: 'ภาษาเตเตลา', id: 'Tetela', hi: 'टेटेला',
+               de: 'Tetela', fr: 'Tetela', it: 'Tetela',
+               es_eu: 'Tetela', es_mx: 'Tetela', pt_eu: 'Tetela', pt_br: 'Tetela',
+               ru: 'Тетела', uk: 'Тетела', ar: 'التيتيلا', he: 'טטלה', sw: 'Kitetela' },
+        sbp: { en: 'Sangu', ja: 'サング語', ko: '상구어', zh: '桑古语', yue: '桑古語',
+               vi: 'Tiếng Sangu', th: 'ภาษาซางู', id: 'Sangu', hi: 'सांगू',
+               de: 'Sangu', fr: 'Sangu', it: 'Sangu',
+               es_eu: 'Sangu', es_mx: 'Sangu', pt_eu: 'Sangu', pt_br: 'Sangu',
+               ru: 'Сангу', uk: 'Сангу', ar: 'السانغو', he: 'סנגו', sw: 'Kisangu' },
+        myx: { en: 'Masaaba', ja: 'マサーバ語', ko: '마사바어', zh: '马萨巴语', yue: '馬薩巴語',
+               vi: 'Tiếng Masaaba', th: 'ภาษามาซาบา', id: 'Masaaba', hi: 'मसाबा',
+               de: 'Masaaba', fr: 'Masaba', it: 'Masaaba',
+               es_eu: 'Masaaba', es_mx: 'Masaaba', pt_eu: 'Masaba', pt_br: 'Masaba',
+               ru: 'Масаба', uk: 'Масаба', ar: 'الماسابا', he: 'מסאבה', sw: 'Kimasaaba' },
+    };
+    for (const code of Object.keys(ADDED28)) {
+        for (const ui of Object.keys(ADDED28[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED28[code][ui];
+            }
+        }
+    }
 })();
