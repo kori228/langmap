@@ -2551,4 +2551,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED106 = {
+        max: { en: 'North Moluccan Malay', ja: '北モルッカ・マレー語', ko: '북모루카 말레이어', zh: '北马鲁古马来语', yue: '北馬魯古馬來語',
+               vi: 'Tiếng Mã Lai Bắc Maluku', th: 'ภาษามลายูมาลูกูเหนือ', id: 'Bahasa Melayu Maluku Utara', hi: 'उत्तरी मलूकी मलय',
+               de: 'Nord-Maluku-Malay', fr: 'Malais du Nord Maluku', it: 'Malay del Nord Maluku',
+               es_eu: 'Malayo del Maluku Norte', es_mx: 'Malayo del Maluku Norte', pt_eu: 'Malaio do Maluku Norte', pt_br: 'Malaio do Maluku Norte',
+               ru: 'Северномолуккский малайский', uk: 'Північномолукська малайська', ar: 'الملايو المالوكية الشمالية', he: 'מלאית מלוקו צפונית', sw: 'Kimalay cha Maluku Kaskazini' },
+        swg: { en: 'Swabian', ja: 'シュヴァーベン語', ko: '슈바벤어', zh: '施瓦本语', yue: '施瓦本語',
+               vi: 'Tiếng Schwaben', th: 'ภาษาชวาเบีย', id: 'Bahasa Swabia', hi: 'श्वाबियन',
+               de: 'Schwäbisch', fr: 'Souabe', it: 'Svevo',
+               es_eu: 'Suabo', es_mx: 'Suabo', pt_eu: 'Suábio', pt_br: 'Suábio',
+               ru: 'Швабский', uk: 'Швабська', ar: 'الشوابية', he: 'שוואבית', sw: 'Kishwabia' },
+        maw: { en: 'Mampruli', ja: 'マンプルリ語', ko: '맘프룰리어', zh: '曼普鲁利语', yue: '曼普魯利語',
+               vi: 'Tiếng Mampruli', th: 'ภาษามัมปรูลี', id: 'Bahasa Mampruli', hi: 'मम्प्रूली',
+               de: 'Mampruli', fr: 'Mampruli', it: 'Mampruli',
+               es_eu: 'Mampruli', es_mx: 'Mampruli', pt_eu: 'Mampruli', pt_br: 'Mampruli',
+               ru: 'Мампрули', uk: 'Мампрулі', ar: 'الممبروليّة', he: 'ממפרולי', sw: 'Kimampruli' },
+    };
+    for (const code of Object.keys(ADDED106)) {
+        for (const ui of Object.keys(ADDED106[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED106[code][ui];
+            }
+        }
+    }
 })();

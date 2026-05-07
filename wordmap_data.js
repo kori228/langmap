@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 904 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 907 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -836,6 +836,10 @@ const LANG_DATA = {
   // Sources: Christen et al. (2010) Kleiner Sprachatlas der deutschen Schweiz; SDS (Sprachatlas der deutschen Schweiz).
   gsw: { name: 'Swiss German', native: 'Schwiizerdütsch', lat: 47.37, lng: 8.54, // Zürich
     words: { water:['Wasser','vasːər'], fire:['Füür','fyːr'], sun:['Sunne','sʊnə'], moon:['Mond','moːnd'], mother:['Mueter','muə̯tər'], father:['Vatter','fatər'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Härz','hærts'], tree:['Baum','baʊ̯m'], house:['Huus','huːs'], dog:['Hund','hʊnd'], cat:['Chatz','xats'], hand:['Hand','hand'], eye:['Aug','aʊ̯ɡ'], hello:['Grüezi','ɡryə̯tsi'], thanks:['Merci','mɛrsi'], one:['eis','æɪ̯s'], good:['guet','ɡuə̯t'] }},
+  // Swabian (Schwäbisch) — Indo-European Germanic Upper German Alemannic (sister to Swiss German gsw and Alsatian within the Alemannic branch; the prestige variety of southwestern Germany), ~800K, Germany (Baden-Württemberg — Stuttgart region, Schwarzwald, Schwäbische Alb; Bavarian Swabia — Augsburg area). Famously the dialect of Stuttgart and the Mercedes-Benz/Porsche industrial heartland.
+  // Sources: Ethnologue 27 'swg'; Glottolog swab1242; Frey (1989) Schwäbisches Wörterbuch.
+  swg: { name: 'Swabian', native: 'Schwäbisch', lat: 48.78, lng: 9.18, // Stuttgart, Baden-Württemberg
+    words: { water:['Wasser','vasə'], fire:['Feuer','foiɐ'], sun:['Sonne','sonə'], moon:['Mond','moːnd'], mother:['Mädder','mɛdɐ'], father:['Vadder','fadɐ'], eat:['essa','ɛsə'], drink:['drengga','dɾɛŋɡə'], love:['Liab','liə̯b'], heart:['Herz','hɛɐts'], tree:['Baum','baum'], house:['Hous','haus'], dog:['Hond','hond'], cat:['Katz','kats'], hand:['Hand','hand'], eye:['Aug','aʊɡ'], hello:['Grüß Gott','ɡryːs ɡɔt'], thanks:['Danggschee','daŋkʃeː'], one:['oine','ɔinə'], good:['guad','ɡuə̯d'] }},
   // Bavarian (Boarisch) — Indo-European Germanic Upper German (Austro-Bavarian; sister to East Franconian and Alemannic; co-territorial with Standard German de but distinct vocabulary/phonology), ~14M, Germany (Bavaria) + Austria (most regions) + Italy (South Tyrol).
   // Sources: Ethnologue 27 'bar'; Glottolog bava1246; Merkle (1976) Bairische Grammatik.
   bar: { name: 'Bavarian', native: 'Boarisch', lat: 48.14, lng: 11.58, // München, Bayern
@@ -2898,6 +2902,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'abs'; Glottolog ambo1250; van Minde (1997) Malayu Ambong: Phonology, Morphology, Syntax.
   abs: { name: 'Ambon Malay', native: 'Bahasa Melayu Ambon', lat: -3.69, lng: 128.18, // Ambon City, Maluku, Indonesia
     words: { water:['aer','aer'], fire:['api','api'], sun:['mata hari','mata hari'], moon:['bulan','bulan'], mother:['mama','mama'], father:['papa','papa'], eat:['makang','makaŋ'], drink:['minong','minoŋ'], love:['sayang','sajaŋ'], heart:['hati','hati'], tree:['pohon','pohon'], house:['ruma','ruma'], dog:['anjing','andʒiŋ'], cat:['kucing','kutʃiŋ'], hand:['tangang','taŋaŋ'], eye:['mata','mata'], hello:['hela','hela'], thanks:['tarima kase','tarima kase'], one:['satu','satu'], good:['bagus','baɡus'] }},
+  // North Moluccan Malay (Bahasa Pasar Ternate) — Austronesian Malayo-Polynesian Malay-based contact variety (sister to Ambon Malay abs and Manado Malay; descended from Malay-traders\' lingua franca, became the predominant language of the northern Maluku archipelago after Dutch colonial rule replaced indigenous Halmaheran Papuan and West Papuan languages), ~700K L1 + 1M L2, Indonesia (North Maluku province — Ternate, Tidore, Halmahera islands; the Sultanate of Ternate was a major historical Maluku spice-trade power).
+  // Sources: Ethnologue 27 'max'; Glottolog nort2828; Voorhoeve (1983) North Maluku Malay.
+  max: { name: 'North Moluccan Malay', native: 'Bahasa Pasar Ternate', lat: 0.78, lng: 127.37, // Ternate City, North Maluku, Indonesia
+    words: { water:['aer','aer'], fire:['api','api'], sun:['matahari','matahari'], moon:['bulan','bulan'], mother:['mama','mama'], father:['papa','papa'], eat:['makang','makaŋ'], drink:['minong','minoŋ'], love:['cinta','tʃinta'], heart:['hati','hati'], tree:['pohong','pohoŋ'], house:['ruma','ruma'], dog:['anjing','andʒiŋ'], cat:['ikung','ikuŋ'], hand:['tangang','taŋaŋ'], eye:['mata','mata'], hello:['cerang','tʃeraŋ'], thanks:['tarima kase','tarima kase'], one:['satu','satu'], good:['bae','bae'] }},
   // Musi (Palembang Malay) — Austronesian Malayo-Polynesian Malayic (sister to Standard Malay/Indonesian and other Malay varieties; the regional Malay variety of South Sumatra centered on Palembang, the historical capital of the Srivijaya Empire), ~3.1M, Indonesia (South Sumatra province — Palembang city and surrounding regencies; small Lampung border populations).
   // Sources: Ethnologue 27 'mui'; Glottolog musi1242; Adelaar (2005) Malay-Indonesian-related languages.
   mui: { name: 'Musi', native: 'Baso Pelembang', lat: -2.99, lng: 104.76, // Palembang, South Sumatra (historical Srivijaya capital)
@@ -3947,6 +3955,10 @@ const LANG_DATA = {
   // Niger-Congo Gur (Burkina Faso)
   mos: { name: 'Mooré', native: 'Mòoré', lat: 12.37, lng: -1.52, // Ouagadougou
     words: { water:['koom','koːm'], fire:['bʋgʋm','bʊɡʊm'], sun:['wəntinga','wəntinɡa'], moon:['kiuugu','kiuːɡu'], mother:['ma','ma'], father:['ba','ba'], eat:['dɩ','dɪ'], drink:['yʋ','jʊ'], love:['nong','noŋɡ'], heart:['sũur','sũːr'], tree:['tɩɩg','tɪːɡ'], house:['roogo','roːɡo'], dog:['baaga','baːɡa'], cat:['yʋʋga','jʊːɡa'], hand:['nug','nuɡ'], eye:['nin','nin'], hello:['ne y yibeoogo','ne i jibeoɡo'], thanks:['barka','barka'], one:['a yɛmbɛr','a jɛmbɛr'], good:['sõma','sõma'] }},
+  // Mampruli — Niger-Congo Atlantic-Congo Gur (sister to Mooré mos and Dagbani within the Oti-Volta Mole-Gurma branch; the language of the Mamprusi people of northern Ghana, descendants of the medieval Mamprussi Kingdom that gave rise to the Dagomba and Nanumba kingdoms), ~330K, Ghana (Northern Region — Walewale, Gambaga, Nalerigu) + Burkina Faso (small populations along southern border).
+  // Sources: Ethnologue 27 'maw'; Glottolog mamp1244; Naden (1988) Mampruli phonology and grammar.
+  maw: { name: 'Mampruli', native: 'Mampruli', lat: 10.60, lng: -0.85, // Walewale, Northern Region, Ghana
+    words: { water:['kuom','kuom'], fire:['booma','boːma'], sun:['wuntiri','wuntiri'], moon:['gɔoŋ','ɡɔːŋ'], mother:['ma','ma'], father:['ba','ba'], eat:['di','di'], drink:['nyu','ɲu'], love:['paaba','paːba'], heart:['suuri','suːri'], tree:['tia','tia'], house:['yiri','jiri'], dog:['baaga','baːɡa'], cat:['nyusi','ɲusi'], hand:['nuusi','nuːsi'], eye:['nini','nini'], hello:['n na ti bʋɔ','n na ti bʊɔ'], thanks:['barika','barika'], one:['yini','jini'], good:['vɛla','vɛla'] }},
   // Nilo-Saharan (Kenya)
   kln: { name: 'Kalenjin', native: 'Kalenjin', lat: 0.51, lng: 35.27, // Eldoret
     words: { water:['beek','beːk'], fire:['maat','maːt'], sun:['asis','asis'], moon:['arawa','arawa'], mother:['ee\'yu','eːju'], father:['abu','abu'], eat:['am','am'], drink:['ee','eː'], love:['chamuga','tʃamuɡa'], heart:['muguleldo','muɡuleldo'], tree:['keetit','keːtit'], house:['gaa','ɡaː'], dog:['ses','ses'], cat:['paka','paka'], hand:['euondap','euondap'], eye:['kosit','kosit'], hello:['chamege','tʃameɡe'], thanks:['kongoi','koŋoi'], one:['agenge','aɡeŋe'], good:['karaaran','karaːran'] }},
