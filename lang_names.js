@@ -660,4 +660,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Kölsch (ksh), Ixil (ixl), Khams Tibetan (khg) — Cologne Germanic + Guatemala Mayan + East Tibet.
+    const ADDED23 = {
+        ksh: { en: 'Kölsch', ja: 'ケルシュ語', ko: '쾰슈어', zh: '科隆方言', yue: '科隆方言',
+               vi: 'Tiếng Kölsch', th: 'ภาษาเคิลช์', id: 'Kölsch', hi: 'कोलोनिश',
+               de: 'Kölsch', fr: 'Cologné', it: 'Kölsch',
+               es_eu: 'Colonio', es_mx: 'Colonio', pt_eu: 'Colónio', pt_br: 'Colônio',
+               ru: 'Кёльнский', uk: 'Кельнський', ar: 'الكولشية', he: 'קלשית', sw: 'Kikölsch' },
+        ixl: { en: 'Ixil', ja: 'イシル語', ko: '이실어', zh: '伊希尔语', yue: '伊希爾語',
+               vi: 'Tiếng Ixil', th: 'ภาษาอิชิล', id: 'Ixil', hi: 'इशिल',
+               de: 'Ixil', fr: 'Ixil', it: 'Ixil',
+               es_eu: 'Ixil', es_mx: 'Ixil', pt_eu: 'Ixil', pt_br: 'Ixil',
+               ru: 'Иксиль', uk: 'Ішіль', ar: 'الإكسيل', he: 'איקסיל', sw: 'Ixil' },
+        khg: { en: 'Khams Tibetan', ja: 'カム・チベット語', ko: '캄 티베트어', zh: '康巴藏语', yue: '康巴藏語',
+               vi: 'Tiếng Tạng Khams', th: 'ภาษาคาม', id: 'Tibet Khams', hi: 'खाम्स तिब्बती',
+               de: 'Khams-Tibetisch', fr: 'Tibétain Khams', it: 'Tibetano Kham',
+               es_eu: 'Tibetano de Kham', es_mx: 'Tibetano de Kham', pt_eu: 'Tibetano Khams', pt_br: 'Tibetano Khams',
+               ru: 'Хамский тибетский', uk: 'Хамська тибетська', ar: 'تبتية خام', he: 'טיבטית חאמס', sw: 'Kitibet cha Khams' },
+    };
+    for (const code of Object.keys(ADDED23)) {
+        for (const ui of Object.keys(ADDED23[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED23[code][ui];
+            }
+        }
+    }
 })();

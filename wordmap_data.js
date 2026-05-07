@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 679 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 682 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -318,6 +318,10 @@ const LANG_DATA = {
   // → ˩˧ (low); voiceless/aspirated initials → ˥ (high).
   bo: { name: 'Tibetan', native: 'བོད་སྐད', lat: 29.65, lng: 91.10,
     words: { water:['ཆུ','t͡ɕʰu˥'], fire:['མེ','me˩˧'], sun:['ཉི་མ','ɲima˩˧'], moon:['ཟླ་བ','tawa˩˧'], mother:['ཨ་མ','ama˥'], father:['ཨ་ཕ','apʰa˥'], eat:['ཟ','sa˩˧'], drink:['འཐུང་','tʰuŋ˥'], love:['དགའ་པོ','kapo˩˧'], heart:['སྙིང་','ɲiŋ˥'], tree:['ཤིང་སྡོང་','ɕiŋ˥toŋ˥'], house:['ཁང་པ','kʰaŋpa˥'], dog:['ཁྱི','kʰi˥'], cat:['ཞི་མི','ɕimi˥'], hand:['ལག་པ','lakpa˩˧'], eye:['མིག','mik˩˧'], hello:['བཀྲ་ཤིས་བདེ་ལེགས','t͡ʂaɕi˥ telek˩˧'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuːt͡ɕi˥ t͡ɕʰe˥'], one:['གཅིག','t͡ɕik˥'], good:['ཡག་པོ','jakpo˩˧'] }},
+  // Khams Tibetan — Sino-Tibetan Bodish, ~1.5M speakers, eastern Tibet (Kham region) + western Sichuan + NW Yunnan + SE Qinghai.
+  // Sources: Ethnologue 27 'khg'; Glottolog kham1284; Suzuki (2009) Khams Tibetan dialectology.
+  khg: { name: 'Khams Tibetan', native: 'ཁམས་སྐད', lat: 30.04, lng: 99.10, // Kandze (Garzê), Sichuan
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་ཕ','apa'], eat:['ཟ','za'], drink:['འཐུང་','tʰuŋ'], love:['དགའ་པོ','gapo'], heart:['སྙིང་','ɲiŋ'], tree:['ཤིང་','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['ཞི་མི','ʑimi'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཨ་རོ','aɾo'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʑe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   ii: { name: 'Yi (Nuosu)', native: 'ꆈꌠꉙ', lat: 27.90, lng: 102.26,
     words: { water:['ꏂ','ʐɿ˧˧'], fire:['ꃆ','mu˧˧'], sun:['ꉢꁡ','ȵi˧˧mo˧˧'], moon:['ꃅꎖ','mu˧˧hy˧˧'], mother:['ꀊꂿ','a˧˧mo˧˧'], father:['ꀊꀧ','a˧˧da˧˧'], eat:['ꋊ','dza˧˧'], drink:['ꄸ','tu˧˧'], love:['ꉢ','ŋa˧˧'], heart:['ꌋ','si˧˧'], tree:['ꌦ','sɿ˧˧'], house:['ꑳ','ɣɯ˧˧'], dog:['ꈸ','kʰɯ˧˧'], cat:['ꃬ','vi˧˧'], hand:['ꇐ','la˧˧'], eye:['ꉜ','ȵi˧˧'], hello:['ꂿꎆꈐ','mo˧˧su˧˧kɤ˧˧'], thanks:['ꃰꊿ','ka˧˧tɕʰɿ˧˧'], one:['ꊰ','tsʰɿ˧˧'], good:['ꃅ','mu˧˧'] }},
   th_isan: { name: 'Thai (Isan)', native: 'ภาษาอีสาน', lat: 16.43, lng: 102.83,
@@ -489,6 +493,10 @@ const LANG_DATA = {
     words: { water:['Wasser','vasːər'], fire:['Füür','fyːr'], sun:['Sunne','sʊnə'], moon:['Mond','moːnd'], mother:['Mueter','muə̯tər'], father:['Vatter','fatər'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Härz','hærts'], tree:['Baum','baʊ̯m'], house:['Huus','huːs'], dog:['Hund','hʊnd'], cat:['Chatz','xats'], hand:['Hand','hand'], eye:['Aug','aʊ̯ɡ'], hello:['Grüezi','ɡryə̯tsi'], thanks:['Merci','mɛrsi'], one:['eis','æɪ̯s'], good:['guet','ɡuə̯t'] }},
   nds: { name: 'Low German', native: 'Plattdüütsch', lat: 53.55, lng: 9.99,
     words: { water:['Water','vɑːtɐ'], fire:['Füer','fyːɐ'], sun:['Sünn','zʏn'], moon:['Maand','mɑːnt'], mother:['Moder','moːdɐ'], father:['Vader','fɑːdɐ'], eat:['eten','eːtn'], drink:['drinken','dɹɪŋkn'], love:['Leev','leːf'], heart:['Hart','haɐt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Hund','hʊnt'], cat:['Katt','kat'], hand:['Hand','hant'], eye:['Oog','oːx'], hello:['Moin','mɔɪn'], thanks:['Dankschöön','daŋkʃøːn'], one:['een','eːn'], good:['good','ɡoːt'] }},
+  // Kölsch — Ripuarian Franconian (West Central German), Cologne, ~250K speakers.
+  // Sources: Ethnologue 27 'ksh'; Glottolog kols1241; Bhatt & Lindlar (1998) Kölsch Wörterbuch.
+  ksh: { name: 'Kölsch', native: 'Kölsch', lat: 50.94, lng: 6.96, // Cologne
+    words: { water:['Wasser','vasɐ'], fire:['Füer','fyːɐ'], sun:['Sonn','zɔn'], moon:['Mond','moːnt'], mother:['Moder','moːdɐ'], father:['Vatter','fatɐ'], eat:['esse','ɛsə'], drink:['drinke','dʁɪŋkə'], love:['Leev','leːf'], heart:['Hätz','hɛts'], tree:['Boum','baʊm'], house:['Huus','huːs'], dog:['Hongk','hoŋk'], cat:['Katz','kats'], hand:['Hand','hant'], eye:['Auch','aʊx'], hello:['Tach','tax'], thanks:['Dankeschön','daŋkəʃøːn'], one:['ein','aɪn'], good:['joot','joːt'] }},
   // Pennsylvania German — High German (Palatinate origin), spoken by
   // Amish/Mennonite communities across PA/OH/IN/Ontario. Distinct from
   // Standard German with English loanwords + Palatine-German base.
@@ -3611,6 +3619,10 @@ const LANG_DATA = {
     words: { water:['yaʼ','jaʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼih'], moon:['ikʼ','ikʼ'], mother:['teʼ','teʔ'], father:['tataʼ','tataʔ'], eat:['waʼin','waʔin'], drink:['kumun','kumun'], love:['ajowabʼäl','axowaɓæl'], heart:['anima','anima'], tree:['cheʼ','tʃeʔ'], house:['jay','xaj'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['qʼaʼ','qʼaʔ'], eye:['bʼaqʼ wach','ɓaqʼ watʃ'], hello:['utz iwäch','uts iwætʃ'], thanks:['matyox','matjoʃ'], one:['jun','xun'], good:['utz','uts'] }},
   kek: { name: 'Qʼeqchiʼ', native: 'Qʼeqchiʼ', lat: 15.47, lng: -90.37, // Cobán
     words: { water:['haʼ','haʔ'], fire:['xamʼ','ʃam'], sun:['saqʼe','saqʼe'], moon:['poo','poː'], mother:['naʼ','naʔ'], father:['yuwaʼ','juwaʔ'], eat:['taawaʼ','tawaʔ'], drink:['tuʼ','tuʔ'], love:['rahok','rahok'], heart:['chʼoolej','tʃʼoːlej'], tree:['cheʼ','tʃeʔ'], house:['ochoch','otʃotʃ'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['ruqʼ','ruqʼ'], eye:['xnaqʼ ru','ʃnaqʼ ru'], hello:['ma saʼ laachʼool','ma sa laːtʃʼoːl'], thanks:['bantyox','bantjoʃ'], one:['jun','hun'], good:['us','us'] }},
+  // Ixil — Mayan Mamean, ~70K speakers, Cuchumatanes mountains (Guatemala). Survivors of 1980s genocide.
+  // Sources: Ethnologue 27 'ixl'; Glottolog ixil1251; Ayres (1991) Ixil Verb Morphology.
+  ixl: { name: 'Ixil', native: "Ixil", lat: 15.40, lng: -91.06, // Nebaj, Quiché
+    words: { water:['aʼ','aʔ'], fire:['tzaʼ','tsaʔ'], sun:['qʼii','qʼiː'], moon:['ich','itʃ'], mother:['naʼ','naʔ'], father:['baʼ','baʔ'], eat:['tza\'b\'i','tsaʔɓi'], drink:['ucha','utʃa'], love:['kuxhewchʼa','kuʃewtʃʼa'], heart:['vatzʼ','vatsʼ'], tree:['tze','tse'], house:['kab\'al','kaɓal'], dog:['tx\'i\'','tʼʃʼiʔ'], cat:['mees','meːs'], hand:['qʼab\'','qʼaɓ'], eye:['vusal','vusal'], hello:['nima\'la kuxhewchʼa','nimaʔla kuʃewtʃʼa'], thanks:['tantixh','tantiʃ'], one:['jun','hun'], good:['utz\'','utsʼ'] }},
   mam: { name: 'Mam', native: 'Qyool Mam', lat: 15.32, lng: -91.47, // Huehuetenango
     words: { water:['aʼ','aʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼiχ'], moon:['xjaw','ʃhaw'], mother:['nan','nan'], father:['mam','mam'], eat:['waan','waːn'], drink:['kʼaan','kʼaːn'], love:['oqxan','oqʃan'], heart:['anma','anma'], tree:['tzeʼ','tseʔ'], house:['jaa','haː'], dog:['txʼyan','tʼʃjan'], cat:['wiix','wiːʃ'], hand:['qʼobʼ','qʼob'], eye:['witz','wits'], hello:['chjonte tey','tʃhonte tej'], thanks:['chjonte','tʃhonte'], one:['jun','hun'], good:['banix','baniʃ'] }},
   wal: { name: 'Wolaytta', native: 'Wolayttattuwaa', lat: 6.85, lng: 37.76, // Wolaita Sodo
