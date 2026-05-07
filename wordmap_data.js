@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 751 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 754 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -636,6 +636,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'kxc'; Glottolog kons1241; Ongaye (2013) Konso grammar; Sasse (1976) East Cushitic.
   kxc: { name: 'Konso', native: 'Af kawooti', lat: 5.34, lng: 37.43, // Konso town, SNNPR Ethiopia
     words: { water:['inanta','inanta'], fire:['iya','ija'], sun:['kawa','kawa'], moon:['ayeena','ajeːna'], mother:['eedda','eːdːa'], father:['abba','abːa'], eat:['ihaa','ihaː'], drink:['inakkaa','inakːaː'], love:['jaalla','dʒaːlːa'], heart:['onna','onːa'], tree:['ergaa','erɡaː'], house:['mana','mana'], dog:['kareta','kaɾeta'], cat:['adurree','aduɾːeː'], hand:['harka','haɾka'], eye:['ila','ila'], hello:['akkam','akːam'], thanks:['galta','ɡalta'], one:['takka','takːa'], good:['fayye','fajːe'] }},
+  // Daasanach — Cushitic East (Lowland), ~50K, Kenya/Ethiopia border (Lake Turkana/Omo Delta). Distinctive cattle-pastoral culture (Murle-Daasanach).
+  // Sources: Ethnologue 27 'dsh'; Glottolog daas1239; Tosco (2001) The Dhaasanac Language.
+  dsh: { name: 'Daasanach', native: 'Daasanach', lat: 4.55, lng: 36.04, // Omorate, South Omo, Ethiopia (centroid Kenya/Ethiopia border)
+    words: { water:['no','no'], fire:['mes','mes'], sun:['sicho','sitʃo'], moon:['mar','mar'], mother:['waana','waːna'], father:['kaaba','kaːba'], eat:['icho','itʃo'], drink:['ʔurro','ʔuro'], love:['kashed','kaʃed'], heart:['lubeen','lubeːn'], tree:['hecho','hetʃo'], house:['mar','maɾ'], dog:['kashe','kaʃe'], cat:['paka','paka'], hand:['hark','haɾk'], eye:['ill','ilː'], hello:['nagaya','naɡaja'], thanks:['galche','ɡaltʃe'], one:['takka','takːa'], good:['ash','aʃ'] }},
   rw: { name: 'Kinyarwanda', native: 'Ikinyarwanda', lat: -1.94, lng: 30.06,
     words: { water:['amazi','amaːzi'], fire:['umuriro','umuɾiɾo'], sun:['izuba','izuba'], moon:['ukwezi','ukwezi'], mother:['mama','maːma'], father:['papa','paːpa'], eat:['kurya','kuɾja'], drink:['kunywa','kuɲwa'], love:['urukundo','uɾukundo'], heart:['umutima','umutima'], tree:['igiti','iɡiti'], house:['inzu','inzu'], dog:['imbwa','imbwa'], cat:['injangwe','indʒaŋɡwe'], hand:['ikiganza','ikiɡanza'], eye:['ijisho','idʒiʃo'], hello:['muraho','muɾaːho'], thanks:['murakoze','muɾakoze'], one:['rimwe','ɾimwe'], good:['byiza','bjiza'] }},
   // Kirundi (Rundi) — Bantu JE61, sister to Kinyarwanda. National language of Burundi.
@@ -1582,6 +1586,10 @@ const LANG_DATA = {
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
   bm: { name: 'Bambara', native: 'Bamanankan', lat: 12.65, lng: -7.99, // Bamako
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dumuni','dumuni'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['jiri','dʒiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni ce','i ni tʃe'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
+  // Xaasongaxango (Khassonké, Xaasonga) — Niger-Congo Mande Western (sister to Bambara/Maninka in the Manding cluster), ~120K, Mali (Kayes Region — Khasso area).
+  // Sources: Ethnologue 27 'kao'; Glottolog xaas1235; Tellier (1898) Khassonké lexicon.
+  kao: { name: 'Xaasongaxango', native: 'Xaasongaxango', lat: 14.45, lng: -11.43, // Kayes, Mali
+    words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['domu','domu'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲa','ɲa'], hello:['i ni sogoma','i ni soɡoma'], thanks:['i ni baara','i ni baːɾa'], one:['kele','kele'], good:['nyi','ɲi'] }},
   // Soninke — Niger-Congo Mande, ~2.1M speakers, Mali/Senegal/Mauritania Sahel.
   // Sources: Ethnologue 27 'snk'; Glottolog soni1259; Diagana (1995) Soninke phonology.
   snk: { name: 'Soninke', native: 'Sooninkanxannen', lat: 14.92, lng: -10.81, // Kayes, Mali (Soninke heartland)
@@ -1848,6 +1856,10 @@ const LANG_DATA = {
     words: { water:['pi','pi'], fire:['mach','matʃ'], sun:['chieng\'','tʃieŋ'], moon:['dwe','dwe'], mother:['mama','mama'], father:['baba','baba'], eat:['chiemo','tʃiemo'], drink:['madho','madʱo'], love:['hera','hera'], heart:['chuny','tʃuɲ'], tree:['yath','jatʰ'], house:['ot','ot'], dog:['guok','ɡuok'], cat:['paka','paka'], hand:['lwedo','lwedo'], eye:['wang\'','waŋ'], hello:['misawa','misawa'], thanks:['erokamano','erokamano'], one:['achiel','atʃiel'], good:['maber','maber'] }},
   mas: { name: 'Maasai', native: 'ɔl Maa', lat: -1.08, lng: 35.86, // Narok
     words: { water:['ɛŋare','ɛŋare'], fire:['ɛnkima','ɛŋkima'], sun:['enkolong','eŋkoloŋ'], moon:['ɔlapa','olapa'], mother:['yieyio','jiejio'], father:['papa','papa'], eat:['anya','aɲa'], drink:['oŋg','oŋɡ'], love:['eitalu','eitalu'], heart:['ɔltau','oltau'], tree:['olchani','oltʃani'], house:['eng\'aji','ɛŋadʒi'], dog:['oldia','oldia'], cat:['paka','paka'], hand:['ɛŋaina','ɛŋaina'], eye:['ɛŋɔnyek','ɛŋɔɲek'], hello:['sopa','sopa'], thanks:['ashe','aʃe'], one:['obo','obo'], good:['sidai','sidai'] }},
+  // Samburu — Eastern Nilotic (Maa cluster, sister to Maasai mas), ~150K, Kenya (Samburu/Marsabit Counties — semi-nomadic pastoralists in Northern Frontier).
+  // Sources: Ethnologue 27 'saq'; Glottolog samb1300; Heine (1980) Samburu Texts; Payne (1995) Samburu phonology.
+  saq: { name: 'Samburu', native: 'Sampur', lat: 1.05, lng: 36.69, // Maralal, Samburu County, Kenya
+    words: { water:['nkare','ŋkaɾe'], fire:['nkima','ŋkima'], sun:['lakwa','lakʷa'], moon:['lapa','lapa'], mother:['yieyo','jiejo'], father:['papa','papa'], eat:['anya','aɲa'], drink:['oŋg','oŋɡ'], love:['eitalu','eitalu'], heart:['ltau','ltau'], tree:['lchani','ltʃani'], house:['nkang','ŋkaŋ'], dog:['ldia','ldia'], cat:['paka','paka'], hand:['nkaina','ŋkaina'], eye:['nkonyek','ŋkoɲek'], hello:['sopa','sopa'], thanks:['ashe','aʃe'], one:['obo','obo'], good:['supat','supat'] }},
   // Afro-Asiatic (Cushitic)
   // (sid Sidamo moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)
   aa: { name: 'Afar', native: 'Qafaraf', lat: 11.57, lng: 41.43, // Asaita

@@ -1260,4 +1260,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED47 = {
+        saq: { en: 'Samburu', ja: 'サンブル語', ko: '삼부루어', zh: '桑布鲁语', yue: '桑布魯語',
+               vi: 'Tiếng Samburu', th: 'ภาษาซัมบูรู', id: 'Bahasa Samburu', hi: 'साम्बुरू',
+               de: 'Samburu', fr: 'Samburu', it: 'Samburu',
+               es_eu: 'Samburu', es_mx: 'Samburu', pt_eu: 'Samburu', pt_br: 'Samburu',
+               ru: 'Самбуру', uk: 'Самбуру', ar: 'السامبورو', he: 'סמבורו', sw: 'Kisamburu' },
+        dsh: { en: 'Daasanach', ja: 'ダーサナック語', ko: '다사나치어', zh: '达萨纳奇语', yue: '達薩納奇語',
+               vi: 'Tiếng Daasanach', th: 'ภาษาดาซานาช', id: 'Bahasa Daasanach', hi: 'दासनाच',
+               de: 'Daasanach', fr: 'Daasanach', it: 'Daasanach',
+               es_eu: 'Daasanach', es_mx: 'Daasanach', pt_eu: 'Daasanach', pt_br: 'Daasanach',
+               ru: 'Дасанач', uk: 'Дасанач', ar: 'الدسناخية', he: 'דסנך', sw: 'Kidasanach' },
+        kao: { en: 'Xaasongaxango', ja: 'カソンケ語', ko: '카손케어', zh: '卡松凯语', yue: '卡松凱語',
+               vi: 'Tiếng Khassonké', th: 'ภาษาคาซอนเก', id: 'Bahasa Khassonké', hi: 'खासोंके',
+               de: 'Khassonké', fr: 'Khassonké', it: 'Khassonké',
+               es_eu: 'Khassonké', es_mx: 'Khassonké', pt_eu: 'Khassonké', pt_br: 'Khassonké',
+               ru: 'Хасонке', uk: 'Хасонке', ar: 'الخاسونكة', he: 'חסונקה', sw: 'Kikhassonke' },
+    };
+    for (const code of Object.keys(ADDED47)) {
+        for (const ui of Object.keys(ADDED47[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED47[code][ui];
+            }
+        }
+    }
 })();
