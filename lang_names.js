@@ -560,4 +560,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Lomwe (ngl), Gayo (gay), Kosraean (kos) — Mozambique Bantu + Sumatra Austronesian + Micronesia.
+    const ADDED19 = {
+        ngl: { en: 'Lomwe', ja: 'ロムウェ語', ko: '로무에어', zh: '洛姆韦语', yue: '洛姆韋語',
+               vi: 'Tiếng Lomwe', th: 'ภาษาโลมเว', id: 'Lomwe', hi: 'लोम्वे',
+               de: 'Lomwe', fr: 'Lomwé', it: 'Lomwe',
+               es_eu: 'Lomwe', es_mx: 'Lomwe', pt_eu: 'Lomué', pt_br: 'Lomué',
+               ru: 'Ломве', uk: 'Ломве', ar: 'اللومويه', he: 'לומבה', sw: 'Kilomwe' },
+        gay: { en: 'Gayo', ja: 'ガヨ語', ko: '가요어', zh: '加约语', yue: '加約語',
+               vi: 'Tiếng Gayo', th: 'ภาษากาโย', id: 'Gayo', hi: 'गायो',
+               de: 'Gayo', fr: 'Gayo', it: 'Gayo',
+               es_eu: 'Gayo', es_mx: 'Gayo', pt_eu: 'Gayo', pt_br: 'Gayo',
+               ru: 'Гайо', uk: 'Гайо', ar: 'الغايو', he: 'גאיו', sw: 'Gayo' },
+        kos: { en: 'Kosraean', ja: 'コスラエ語', ko: '코스라에어', zh: '科斯拉伊语', yue: '科斯拉伊語',
+               vi: 'Tiếng Kosrae', th: 'ภาษาคอสแร', id: 'Kosrae', hi: 'कोस्राई',
+               de: 'Kosraeisch', fr: 'Kosraéen', it: 'Kosraeano',
+               es_eu: 'Kosraeano', es_mx: 'Kosraeano', pt_eu: 'Kosraeano', pt_br: 'Kosraeano',
+               ru: 'Косраэ', uk: 'Косрае', ar: 'الكوسرايية', he: 'קוסראית', sw: 'Kikosrae' },
+    };
+    for (const code of Object.keys(ADDED19)) {
+        for (const ui of Object.keys(ADDED19[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED19[code][ui];
+            }
+        }
+    }
 })();

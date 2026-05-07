@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 667 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 670 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1464,6 +1464,10 @@ const LANG_DATA = {
     words: { water:['yeh','jeh'], fire:['api','api'], sun:['matanai','matanai'], moon:['bulan','bulan'], mother:['meme','meme'], father:['bapa','bapa'], eat:['ngajeng','ŋadʒeŋ'], drink:['nginem','ŋinem'], love:['tresna','tɾesna'], heart:['manah','manah'], tree:['punyan','puɲan'], house:['umah','umah'], dog:['cicing','tʃitʃiŋ'], cat:['meong','meoŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['om swastiastu','om swastiastu'], thanks:['matur suksma','matuɾ suksma'], one:['besik','besik'], good:['becik','betʃik'] }},
   ace: { name: 'Acehnese', native: 'Bahsa Acèh', lat: 5.55, lng: 95.33, // Banda Aceh
     words: { water:['ie','ie'], fire:['apui','apui'], sun:['mata uroe','mata uɾoe'], moon:['buleun','buleun'], mother:['mak','maʔ'], father:['ayah','ajah'], eat:['pajôh','padʒoh'], drink:['jep','dʒep'], love:['gaséh','ɡasɛh'], heart:['até','atɛ'], tree:['bak','baʔ'], house:['rumoh','ɾumoh'], dog:['asèe','asɛː'], cat:['miong','mioŋ'], hand:['jaroe','dʒaɾoe'], eye:['mata','mata'], hello:['assalamualaikum','assalamualaikum'], thanks:['trimong gaséh','tɾimoŋ ɡasɛh'], one:['sa','sa'], good:['gèt','ɡɛt'] }},
+  // Gayo — Austronesian (Northwest Sumatra), ~85K speakers, central Aceh highlands.
+  // Sources: Ethnologue 27 'gay'; Glottolog gayo1244; Eades (2005) Gayo grammar.
+  gay: { name: 'Gayo', native: 'Basa Gayo', lat: 4.62, lng: 96.85, // Takengon, Aceh Tengah
+    words: { water:['weih','weih'], fire:['rara','ɾaɾa'], sun:['matacana','matatʃana'], moon:['lao','lao'], mother:['ine','ine'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['kunyung','kuɲuŋ'], heart:['ate','ate'], tree:['kayu','kaju'], house:['umah','umah'], dog:['asu','asu'], cat:['kucing','kutʃiŋ'], hand:['pumu','pumu'], eye:['mata','mata'], hello:['salam','salam'], thanks:['matur sangat','matuɾ saŋat'], one:['sara','saɾa'], good:['jeroh','dʒeɾoh'] }},
   bug: { name: 'Buginese', native: 'Basa Ugi', lat: -4.13, lng: 120.00, // Sengkang (Bugis heartland, Wajo regency)
     words: { water:['uwai','uwai'], fire:['api','api'], sun:['mata esso','mata esːo'], moon:['uleng','uleŋ'], mother:['indo','indo'], father:['ambo','ambo'], eat:['manre','manɾe'], drink:['minung','minuŋ'], love:['élo','élo'], heart:['ati','ati'], tree:['aju','adʒu'], house:['bola','bola'], dog:['asu','asu'], cat:['meong','meoŋ'], hand:['lima','lima'], eye:['mata','mata'], hello:['tabe','tabe'], thanks:['kuru sumange','kuɾu sumaŋe'], one:['séddi','sédːi'], good:['makanja','makandʒa'] }},
   // Philippine (Visayan/Bikolano)
@@ -1474,6 +1478,10 @@ const LANG_DATA = {
   // Bantu (filling Phase 3A gap)
   tum: { name: 'Tumbuka', native: 'ChiTumbuka', lat: -11.46, lng: 34.02, // Mzuzu
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['zuva','zuva'], moon:['mwezi','mwezi'], mother:['amama','amama'], father:['adada','adada'], eat:['kurya','kuɾja'], drink:['kumwa','kumwa'], love:['kutemwa','kutemwa'], heart:['mtima','mtima'], tree:['khuni','kʰuni'], house:['nyumba','ɲumba'], dog:['ncheŵe','ntʃewe'], cat:['chona','tʃona'], hand:['woko','woko'], eye:['jiso','dʒiso'], hello:['monire','moniɾe'], thanks:['yewo','jewo'], one:['cimoza','tʃimoza'], good:['cwemi','tʃwemi'] }},
+  // Lomwe — Bantu P32, ~1.5M+ speakers, northern Mozambique + adjoining Malawi.
+  // Sources: Ethnologue 27 'ngl'; Glottolog lomw1238; Kröger (2009) Lomwe-English Dictionary.
+  ngl: { name: 'Lomwe', native: 'Elomwe', lat: -15.10, lng: 39.27, // Nampula, Mozambique
+    words: { water:['mahi','mahi'], fire:['moro','moɾo'], sun:['nsuwa','nsuwa'], moon:['mweri','mweɾi'], mother:['ammai','amːai'], father:['atati','atati'], eat:['olya','oʎa'], drink:['omwa','omwa'], love:['osivela','osivela'], heart:['murima','muɾima'], tree:['mwiri','mwiɾi'], house:['nupa','nupa'], dog:['nampwe','nampwe'], cat:['paka','paka'], hand:['nthata','ntʰata'], eye:['nito','nito'], hello:['salama','salama'], thanks:['ekoshelele','ekoʃelele'], one:['mosaa','mosaː'], good:['orera','oɾeɾa'] }},
   // === Phase 3G: African Nilotic/Cushitic/Berber + South Asian Indo-Aryan ===
   // Nilo-Saharan (Nilotic)
   din: { name: 'Dinka', native: 'Thuɔŋjäŋ', lat: 4.85, lng: 31.58, // Juba area
@@ -1771,6 +1779,10 @@ const LANG_DATA = {
     words: { water:['ranu','ranu'], fire:['lahi','lahi'], sun:['dina','dina'], moon:['hua','hua'], mother:['sina','sina'], father:['tama','tama'], eat:['ania','ania'], drink:['inua','inua'], love:['lalokau','lalokau'], heart:['kudouna','kudouna'], tree:['au','au'], house:['ruma','ruma'], dog:['sisia','sisia'], cat:['pusi','pusi'], hand:['ima','ima'], eye:['mata','mata'], hello:['oi e namo','oi e namo'], thanks:['tanikiu','tanikiu'], one:['ta','ta'], good:['namo','namo'] }},
   pon: { name: 'Pohnpeian', native: 'Lokaiahn Pohnpei', lat: 6.96, lng: 158.21, // Kolonia
     words: { water:['pihl','pihl'], fire:['ahi','ahi'], sun:['ketipin','ketipin'], moon:['maram','maram'], mother:['nohno','nohno'], father:['pahpa','paːpa'], eat:['mwenge','mʷeŋe'], drink:['nim','nim'], love:['limpoak','limpoːk'], heart:['mohngion','mohŋion'], tree:['tuhke','tuhke'], house:['ihmw','ihmʷ'], dog:['kihdi','kihdi'], cat:['kaht','kaht'], hand:['peh','peh'], eye:['mese','mese'], hello:['kaselehlie','kaselehlie'], thanks:['kalahngan','kalahŋan'], one:['ehu','ehu'], good:['mwahu','mʷahu'] }},
+  // Kosraean — Micronesian, ~8K speakers, Kosrae state of FSM. Most divergent surviving Micronesian language.
+  // Sources: Ethnologue 27 'kos'; Glottolog kosr1238; Lee (1976) Kosraean Reference Grammar.
+  kos: { name: 'Kosraean', native: 'Kahnka Kosrae', lat: 5.31, lng: 162.98, // Tofol, Kosrae
+    words: { water:['kof','kof'], fire:['e','e'], sun:['fihl','fihl'], moon:['malem','malem'], mother:['nina','nina'], father:['papa','papa'], eat:['mongo','moŋo'], drink:['nim','nim'], love:['lungse','luŋse'], heart:['insiac','insiats'], tree:['sak','sak'], house:['lohm','lohm'], dog:['kosro','kosɾo'], cat:['katu','katu'], hand:['poun','poun'], eye:['mutahl','mutahl'], hello:['lwen wo','lwen wo'], thanks:['kulo','kulo'], one:['sefac','sefats'], good:['wo','wo'] }},
   // Old Greek branch + Aramaic Modern
   syr: { name: 'Assyrian Neo-Aramaic', native: 'ܣܘܪܝܬ', lat: 36.36, lng: 43.15, // Mosul plain
     words: { water:['ܡܝ̈ܐ','mæje'], fire:['ܢܘܪܐ','nuɾa'], sun:['ܫܡܫܐ','ʃɛmʃa'], moon:['ܣܗܪܐ','sahɾa'], mother:['ܝܡܐ','jɛmma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','ʔaχɛl'], drink:['ܫܬܐ','ʃate'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','lɛbba'], tree:['ܐܝܠܢܐ','ʔilana'], house:['ܒܝܬܐ','beta'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaʈu'], hand:['ܐܝܕܐ','ʔida'], eye:['ܥܝܢܐ','ʕena'], hello:['ܫܠܡܐ','ʃlama'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒ','ʈav'] }},
