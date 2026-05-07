@@ -2476,4 +2476,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED103 = {
+        abs: { en: 'Ambon Malay', ja: 'アンボン・マレー語', ko: '암본 말레이어', zh: '安汶马来语', yue: '安汶馬來語',
+               vi: 'Tiếng Mã Lai Ambon', th: 'ภาษามลายูอัมบน', id: 'Bahasa Melayu Ambon', hi: 'अम्बोन मलय',
+               de: 'Ambon-Malay', fr: 'Malais d\'Ambon', it: 'Malay di Ambon',
+               es_eu: 'Malayo de Ambón', es_mx: 'Malayo de Ambón', pt_eu: 'Malaio de Ambom', pt_br: 'Malaio de Ambom',
+               ru: 'Амбонский малайский', uk: 'Амбонська малайська', ar: 'الملايو الأمبونية', he: 'מלאית אמבון', sw: 'Kimalay cha Ambon' },
+        mui: { en: 'Musi', ja: 'ムシ語', ko: '무시어', zh: '穆西语', yue: '穆西語',
+               vi: 'Tiếng Musi', th: 'ภาษามูซี', id: 'Bahasa Musi', hi: 'मूसी',
+               de: 'Musi', fr: 'Musi', it: 'Musi',
+               es_eu: 'Musi', es_mx: 'Musi', pt_eu: 'Musi', pt_br: 'Musi',
+               ru: 'Муси', uk: 'Мусі', ar: 'الموسي', he: 'מוסי', sw: 'Kimusi' },
+        ho: { en: 'Hiri Motu', ja: 'ヒリ・モツ語', ko: '히리 모투어', zh: '希里莫图语', yue: '希里莫圖語',
+               vi: 'Tiếng Hiri Motu', th: 'ภาษาฮีรีโมตู', id: 'Bahasa Hiri Motu', hi: 'हिरी मोटू',
+               de: 'Hiri Motu', fr: 'Hiri Motu', it: 'Hiri Motu',
+               es_eu: 'Hiri Motu', es_mx: 'Hiri Motu', pt_eu: 'Hiri Motu', pt_br: 'Hiri Motu',
+               ru: 'Хири-моту', uk: 'Хірі-моту', ar: 'الهيري موتو', he: 'הירי מוטו', sw: 'Kihiri Motu' },
+    };
+    for (const code of Object.keys(ADDED103)) {
+        for (const ui of Object.keys(ADDED103[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED103[code][ui];
+            }
+        }
+    }
 })();
