@@ -1858,4 +1858,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED71 = {
+        izi: { en: 'Izii', ja: 'イジ語', ko: '이지어', zh: '伊兹语', yue: '伊茲語',
+               vi: 'Tiếng Izii', th: 'ภาษาอีซี', id: 'Bahasa Izii', hi: 'इज़ी',
+               de: 'Izii', fr: 'Izii', it: 'Izii',
+               es_eu: 'Izii', es_mx: 'Izii', pt_eu: 'Izii', pt_br: 'Izii',
+               ru: 'Изии', uk: 'Іззі', ar: 'الإزية', he: 'איזי', sw: 'Kiizi' },
+        hot: { en: 'Hote', ja: 'ホテ語', ko: '호테어', zh: '霍特语', yue: '霍特語',
+               vi: 'Tiếng Hote', th: 'ภาษาโฮเต', id: 'Bahasa Hote', hi: 'होते',
+               de: 'Hote', fr: 'Hote', it: 'Hote',
+               es_eu: 'Hote', es_mx: 'Hote', pt_eu: 'Hote', pt_br: 'Hote',
+               ru: 'Хоте', uk: 'Хоте', ar: 'الهوتي', he: 'הותה', sw: 'Kihote' },
+        nlc: { en: 'Nalca', ja: 'ナルカ語', ko: '날차어', zh: '纳尔卡语', yue: '納爾卡語',
+               vi: 'Tiếng Nalca', th: 'ภาษานัลคา', id: 'Bahasa Nalca', hi: 'नाल्का',
+               de: 'Nalca', fr: 'Nalca', it: 'Nalca',
+               es_eu: 'Nalca', es_mx: 'Nalca', pt_eu: 'Nalca', pt_br: 'Nalca',
+               ru: 'Налка', uk: 'Налка', ar: 'النالكا', he: 'נלקה', sw: 'Kinalca' },
+    };
+    for (const code of Object.keys(ADDED71)) {
+        for (const ui of Object.keys(ADDED71[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED71[code][ui];
+            }
+        }
+    }
 })();

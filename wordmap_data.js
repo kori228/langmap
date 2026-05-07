@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 821 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 824 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -672,6 +672,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ekp'; Glottolog ekpe1248; Williamson (1989) Niger-Congo classification.
   ekp: { name: 'Ekpeye', native: 'Ekpeye', lat: 5.05, lng: 6.52, // Ahoada, Rivers State, Nigeria
     words: { water:['mini','mini'], fire:['oku','oku'], sun:['anwu','aŋwu'], moon:['onwa','oŋwa'], mother:['nne','nːe'], father:['nna','nːa'], eat:['ri','ɾi'], drink:['ñu','ɲu'], love:['ihunanya','ihunaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ulo','ulo'], dog:['nkita','ŋkita'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['nno','nːo'], thanks:['imela','imela'], one:['otu','otu'], good:['oma','oma'] }},
+  // Izii — Niger-Congo (Atlantic-Congo, Volta-Niger, Igboid — sister to ig Igbo and ekp Ekpeye within Igboid; classified as separate language by Ethnologue), ~600K, Nigeria (Ebonyi State — Abakaliki, Izzi LGA).
+  // Sources: Ethnologue 27 'izi'; Glottolog izii1238; Williamson (1989) Niger-Congo classification.
+  izi: { name: 'Izii', native: 'Izi', lat: 6.32, lng: 8.11, // Abakaliki, Ebonyi State, Nigeria
+    words: { water:['mini','mini'], fire:['oku','oku'], sun:['anwu','aŋwu'], moon:['onwa','oŋwa'], mother:['nne','nːe'], father:['nna','nːa'], eat:['ri','ɾi'], drink:['nu','nu'], love:['ihunanya','ihunaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ulo','ulo'], dog:['nkita','ŋkita'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['ndo','ndo'], thanks:['ima ego','ima eɡo'], one:['otu','otu'], good:['oma','oma'] }},
   // Ibibio — Cross River, ~5M speakers, southeastern Nigeria. Major Niger-Congo language.
   // Sources: Ethnologue 27 'ibb'; Glottolog ibib1240; Essien (1990) Grammar of Ibibio.
   ibb: { name: 'Ibibio', native: 'Ibibio', lat: 5.04, lng: 7.91, // Uyo, Akwa Ibom State
@@ -895,6 +899,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'emi'; Glottolog muss1246; Ross (1988) Proto Oceanic and the Austronesian Languages of Western Melanesia.
   emi: { name: 'Mussau-Emira', native: 'Mussau', lat: -1.51, lng: 149.62, // Mussau Island, St Matthias Group, PNG
     words: { water:['eai','eai'], fire:['kapok','kapok'], sun:['ariu','aɾiu'], moon:['malam','malam'], mother:['nia','nia'], father:['tama','tama'], eat:['anu','anu'], drink:['inum','inum'], love:['talimi','talimi'], heart:['lalota','lalota'], tree:['rikei','ɾikei'], house:['ulemi','ulemi'], dog:['kovur','kovuɾ'], cat:['busi','busi'], hand:['lima','lima'], eye:['mata','mata'], hello:['emua','emua'], thanks:['poasi','poasi'], one:['esa','esa'], good:['rop','ɾop'] }},
+  // Hote — Austronesian (Oceanic, Western Oceanic, North Huon Gulf — sister to bzh Mapos Buang and other Western Oceanic of PNG), ~3K, PNG (Morobe Province — Mumeng District, Lae area).
+  // Sources: Ethnologue 27 'hot'; Glottolog hote1244; Hooley (2002) Western Oceanic linguistics.
+  hot: { name: 'Hote', native: 'Hote', lat: -6.85, lng: 147.05, // Lae area, Morobe Province, PNG
+    words: { water:['lua','lua'], fire:['eve','eve'], sun:['ari','aɾi'], moon:['kalam','kalam'], mother:['ne','ne'], father:['ma','ma'], eat:['gen','ɡen'], drink:['nun','nun'], love:['voŋ','voŋ'], heart:['mun','mun'], tree:['len','len'], house:['ya','ja'], dog:['nyam','ɲam'], cat:['pus','pus'], hand:['mok','mok'], eye:['mata','mata'], hello:['kaye','kaje'], thanks:['fau','fau'], one:['lon','lon'], good:['vovo','vovo'] }},
+  // Nalca — Trans-New Guinea (Mek family, sister to other Mek languages of central Highlands New Guinea), ~10K, Indonesia (Papua Highlands — Yahukimo Regency).
+  // Sources: Ethnologue 27 'nlc'; Glottolog nalc1238; Heeschen (1992) The Mek Languages of Irian Jaya.
+  nlc: { name: 'Nalca', native: 'Nalca', lat: -4.50, lng: 139.63, // Yahukimo Regency, Highlands Papua, Indonesia
+    words: { water:['mi','mi'], fire:['lakil','lakil'], sun:['nyem','ɲem'], moon:['lakum','lakum'], mother:['ne','ne'], father:['ke','ke'], eat:['ne','ne'], drink:['mi ne','mi ne'], love:['ngam','ŋam'], heart:['ngal','ŋal'], tree:['ye','je'], house:['kim','kim'], dog:['ngal','ŋal'], cat:['kucing','kutʃiŋ'], hand:['ku','ku'], eye:['nye','ɲe'], hello:['silok','silok'], thanks:['amole','amole'], one:['mom','mom'], good:['ko','ko'] }},
   bzh: { name: 'Mapos Buang', native: 'Buang', lat: -7.00, lng: 146.85, // Mumeng, Morobe Province, PNG
     words: { water:['vuur','vuːr'], fire:['ehe','ehe'], sun:['gum','ɡum'], moon:['mha','mha'], mother:['ne','ne'], father:['ma','ma'], eat:['gen','ɡen'], drink:['nung','nuŋ'], love:['vong','voŋ'], heart:['minga','miŋa'], tree:['leng','leŋ'], house:['ya','ja'], dog:['nyam','ɲam'], cat:['pus','pus'], hand:['mok','mok'], eye:['mata','mata'], hello:['miig','miːɡ'], thanks:['vog ehog','voɡ ehoɡ'], one:['lon','lon'], good:['vovo','vovo'] }},
   // Torres Strait Creole (Yumplatok) — English-based creole, ~25K speakers, Torres Strait Islands (Australia).
