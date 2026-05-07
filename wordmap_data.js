@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 868 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 871 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -240,6 +240,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'pcd'; Glottolog pica1241; Pooley (1996) Chtimi: The Urban Vernaculars of Northern France.
   pcd: { name: 'Picard', native: 'Picard', lat: 50.63, lng: 3.05, // Lille (Northern Picard zone — Lille/Tourcoing/Roubaix area)
     words: { water:['iau','jo'], fire:['fu','fy'], sun:['solèl','sɔlɛl'], moon:['lune','lyn'], mother:['mère','mɛʁ'], father:['père','pɛʁ'], eat:['minger','mɛ̃ʒe'], drink:['boère','bwɛʁ'], love:['amour','amuʁ'], heart:['cœur','kœʁ'], tree:['abre','abʁ'], house:['mason','masɔ̃'], dog:['kien','kjɛ̃'], cat:['cat','ka'], hand:['main','mɛ̃'], eye:['œil','œj'], hello:['bojour','bɔʒuʁ'], thanks:['merci','mɛʁsi'], one:['un','œ̃'], good:['bon','bɔ̃'] }},
+  // Norman (Jèrriais / Guernésiais / Norman of mainland) — Indo-European Italic Romance Oïl (sister to French fr and Picard pcd within the Oïl sub-branch; preserves Old Norman features lost in Standard French including Latin /k/ before /a/ → /k/ rather than /ʃ/ — same conservatism as Picard), ~50K, UK Channel Islands (Jersey ~3K Jèrriais; Guernsey ~200 Guernésiais speakers) + France (Normandy mainland — Cotentin ~10-30K).
+  // Sources: Ethnologue 27 'nrf' macrolanguage covers Jèrriais, Guernésiais, Cotentinais; Glottolog norm1245; Liddicoat (1994) A Grammar of the Norman French of the Channel Islands.
+  nrf: { name: 'Norman', native: 'Nouormand', lat: 49.19, lng: -2.11, // Saint Helier, Jersey (largest surviving Norman speech community)
+    words: { water:['ieau','jo'], fire:['feu','fø'], sun:['solé','sɔle'], moon:['leune','løn'], mother:['mère','mɛːʁ'], father:['péthe','peːʁ'], eat:['mangi','mɑ̃ʒi'], drink:['baithe','bɛːʁ'], love:['amour','amuʁ'], heart:['tcheu','tʃø'], tree:['arbre','aʁbʁ'], house:['maîson','mɛːzɔ̃'], dog:['tchian','tʃɑ̃'], cat:['cat','ka'], hand:['main','mɛ̃'], eye:['yi','ji'], hello:['bouônjour','bwɔ̃ʒuʁ'], thanks:['mèsi','mɛsi'], one:['ieune','jøn'], good:['boun','bun'] }},
   it: { name: 'Italian', native: 'Italiano', lat: 41.90, lng: 12.50, // Rome
     words: { water:['acqua','ˈakkwa'], fire:['fuoco','ˈfwɔːko'], sun:['sole','ˈsoːle'], moon:['luna','ˈluːna'], mother:['madre','ˈmaːdre'], father:['padre','ˈpaːdre'], eat:['mangiare','manˈd͡ʒaːre'], drink:['bere','ˈbeːre'], love:['amore','aˈmoːre'], heart:['cuore','ˈkwɔːre'], tree:['albero','ˈalbero'], house:['casa','ˈkaːza'], dog:['cane','ˈkaːne'], cat:['gatto','ˈɡatto'], hand:['mano','ˈmaːno'], eye:['occhio','ˈɔkkjo'], hello:['ciao','ˈt͡ʃaːo'], thanks:['grazie','ˈɡratt͡sje'], one:['uno','ˈuːno'], good:['buono','ˈbwɔːno'] }},
   es_eu: { name: 'Spanish (Europe)', native: 'Español', lat: 40.42, lng: -3.70, // Madrid
@@ -1894,6 +1898,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ada'; Glottolog adan1247; Kropp Dakubu (1987) Adangme grammar.
   ada: { name: 'Adangme', native: 'Dangme', lat: 6.07, lng: 0.10, // Ada Foah, Greater Accra
     words: { water:['nyu','ɲu'], fire:['la','la'], sun:['hyɛ','çɛ'], moon:['nyɔnyɔɛ','ɲɔɲɔɛ'], mother:['nyɛ','ɲɛ'], father:['tsɛ','tsɛ'], eat:['ye','je'], drink:['nu','nu'], love:['suomi','suomi'], heart:['tsui','tsui'], tree:['tso','tso'], house:['we','we'], dog:['gbe','ɡbe'], cat:['adi','adi'], hand:['nine','nine'], eye:['hiŋmɛ','hiŋmɛ'], hello:['daa','daː'], thanks:['ojakuɛ','odʒakwɛ'], one:['kake','kake'], good:['hɛŋmi','hɛŋmi'] }},
+  // Ga — Niger-Congo Kwa (Ga-Adangme, sister to Adangme ada within the Ga-Adangme branch; the urban prestige variety of southern Ghana, especially Greater Accra), ~750K, Ghana (Greater Accra Region — Accra, Tema, surrounding Ga traditional areas; small Togo border populations).
+  // Sources: Ethnologue 27 'gaa'; Glottolog gaaa1244; Kropp Dakubu (2002) Ga English Dictionary.
+  gaa: { name: 'Ga', native: 'Gã', lat: 5.55, lng: -0.20, // Accra (Ga heartland)
+    words: { water:['nu','nu'], fire:['la','la'], sun:['hulu','hulu'], moon:['ŋɔɔŋmɔ','ŋɔɔŋmɔ'], mother:['nyɛ','ɲɛ'], father:['tsɛ','tsɛ'], eat:['yɛ','jɛ'], drink:['nu','nu'], love:['suɔmɔ','suɔmɔ'], heart:['tsui','tsui'], tree:['tso','tso'], house:['shia','ʃia'], dog:['gbei','ɡbei'], cat:['adi','adi'], hand:['nine','nine'], eye:['hiŋmɛi','hiŋmɛi'], hello:['ɔ jɔ','ɔ jɔ'], thanks:['oyiwala','ojiwala'], one:['ekome','ekome'], good:['ekpakpa','ekpakpa'] }},
+  // Nzima — Niger-Congo Kwa Bia (sister to Ahanta and more distantly to ak Akan within the Bia/Volta-Comoé branch), ~330K, Ghana (Western Region — Nzema East/West districts) + Côte d'Ivoire (Aboisso area).
+  // Sources: Ethnologue 27 'nzi'; Glottolog nzim1241; Annan (1994) Nzema Phonology and Morphology.
+  nzi: { name: 'Nzima', native: 'Nzɛma', lat: 4.85, lng: -2.49, // Axim, Western Region, Ghana
+    words: { water:['nzule','nzule'], fire:['sinya','sinja'], sun:['ewia','ewia'], moon:['siane','sjane'], mother:['enwo','enwo'], father:['ekyele','ecele'], eat:['di','di'], drink:['nu','nu'], love:['ɛlɔlɛ','ɛlɔlɛ'], heart:['ahonle','ahonle'], tree:['baka','baka'], house:['suakɛ','suakɛ'], dog:['kraman','kraman'], cat:['agyinamoa','adʑinamoa'], hand:['ɛsa','ɛsa'], eye:['anye','anje'], hello:['akwaaba','akʷaːba'], thanks:['medaase','medaase'], one:['kʊ','kʊ'], good:['kpa','kpa'] }},
   // South Slavic
   mk: { name: 'Macedonian', native: 'Македонски', lat: 41.99, lng: 21.43, // Skopje
     words: { water:['вода','ˈvɔda'], fire:['оган','ˈɔɡan'], sun:['сонце','ˈsɔnt͡sɛ'], moon:['месечина','mɛˈsɛt͡ʃina'], mother:['мајка','ˈmajka'], father:['татко','ˈtatkɔ'], eat:['јаде','ˈjadɛ'], drink:['пие','ˈpiɛ'], love:['љубов','ˈʎubɔv'], heart:['срце','ˈsərt͡sɛ'], tree:['дрво','ˈdərvɔ'], house:['куќа','ˈkucca'], dog:['куче','ˈkut͡ʃɛ'], cat:['мачка','ˈmat͡ʃka'], hand:['рака','ˈraka'], eye:['око','ˈɔkɔ'], hello:['здраво','ˈzdravɔ'], thanks:['благодарам','blaˈɡɔdaram'], one:['еден','ˈɛdɛn'], good:['добар','ˈdɔbar'] }},

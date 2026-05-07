@@ -2251,4 +2251,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED94 = {
+        nrf: { en: 'Norman', ja: 'ノルマン語', ko: '노르만어', zh: '诺曼语', yue: '諾曼語',
+               vi: 'Tiếng Norman', th: 'ภาษานอร์มัน', id: 'Bahasa Norman', hi: 'नॉर्मन',
+               de: 'Normannisch', fr: 'Normand', it: 'Normanno',
+               es_eu: 'Normando', es_mx: 'Normando', pt_eu: 'Normando', pt_br: 'Normando',
+               ru: 'Нормандский', uk: 'Нормандська', ar: 'النورمانية', he: 'נורמנית', sw: 'Kinormani' },
+        gaa: { en: 'Ga', ja: 'ガー語', ko: '가어', zh: '加语', yue: '加語',
+               vi: 'Tiếng Ga', th: 'ภาษากา', id: 'Bahasa Ga', hi: 'गा',
+               de: 'Ga', fr: 'Ga', it: 'Ga',
+               es_eu: 'Ga', es_mx: 'Ga', pt_eu: 'Ga', pt_br: 'Ga',
+               ru: 'Га', uk: 'Га', ar: 'الغا', he: 'גא', sw: 'Kiga' },
+        nzi: { en: 'Nzima', ja: 'ンゼマ語', ko: '은제마어', zh: '恩泽马语', yue: '恩澤馬語',
+               vi: 'Tiếng Nzima', th: 'ภาษานเซมา', id: 'Bahasa Nzima', hi: 'न्ज़ेमा',
+               de: 'Nzima', fr: 'Nzéma', it: 'Nzima',
+               es_eu: 'Nzima', es_mx: 'Nzima', pt_eu: 'Nzima', pt_br: 'Nzima',
+               ru: 'Нзима', uk: 'Нзіма', ar: 'النزيمة', he: 'נזימה', sw: 'Kinzima' },
+    };
+    for (const code of Object.keys(ADDED94)) {
+        for (const ui of Object.keys(ADDED94[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED94[code][ui];
+            }
+        }
+    }
 })();
