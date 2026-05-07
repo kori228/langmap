@@ -2526,4 +2526,79 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED105 = {
+        enf: { en: 'Forest Enets', ja: '森林エネツ語', ko: '산림 에네츠어', zh: '林地恩内茨语', yue: '林地恩內茨語',
+               vi: 'Tiếng Enets Rừng', th: 'ภาษาเอเนตส์ป่า', id: 'Bahasa Enets Hutan', hi: 'वन एनेट्स',
+               de: 'Wald-Enzisch', fr: 'Énètse forestier', it: 'Enzo forestale',
+               es_eu: 'Enets del bosque', es_mx: 'Enets del bosque', pt_eu: 'Enets da floresta', pt_br: 'Enets da floresta',
+               ru: 'Лесной энецкий', uk: 'Лісовий енецький', ar: 'الإنتس الغابوية', he: 'אנץ יערית', sw: 'Kienets cha Msitu' },
+        abe: { en: 'Western Abenaki', ja: '西部アベナキ語', ko: '서부 아베나키어', zh: '西阿贝纳基语', yue: '西阿貝納基語',
+               vi: 'Tiếng Abenaki Tây', th: 'ภาษาอาเบนากีตะวันตก', id: 'Bahasa Abenaki Barat', hi: 'पश्चिमी अबेनाकी',
+               de: 'West-Abenaki', fr: 'Abénaquis occidental', it: 'Abenaki occidentale',
+               es_eu: 'Abenaki occidental', es_mx: 'Abenaki occidental', pt_eu: 'Abenaki ocidental', pt_br: 'Abenaki ocidental',
+               ru: 'Западно-абенакский', uk: 'Західноабенакська', ar: 'الأبيناكي الغربية', he: 'אבנקי מערבית', sw: 'Kiabenaki cha Magharibi' },
+        bom: { en: 'Berom', ja: 'ベロム語', ko: '베롬어', zh: '贝罗姆语', yue: '貝羅姆語',
+               vi: 'Tiếng Berom', th: 'ภาษาเบรอม', id: 'Bahasa Berom', hi: 'बेरोम',
+               de: 'Berom', fr: 'Birom', it: 'Berom',
+               es_eu: 'Berom', es_mx: 'Berom', pt_eu: 'Berom', pt_br: 'Berom',
+               ru: 'Беромский', uk: 'Беромська', ar: 'البيروم', he: 'בירום', sw: 'Kiberom' },
+    };
+    for (const code of Object.keys(ADDED105)) {
+        for (const ui of Object.keys(ADDED105[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED105[code][ui];
+            }
+        }
+    }
+
+    const ADDED106 = {
+        max: { en: 'North Moluccan Malay', ja: '北モルッカ・マレー語', ko: '북모루카 말레이어', zh: '北马鲁古马来语', yue: '北馬魯古馬來語',
+               vi: 'Tiếng Mã Lai Bắc Maluku', th: 'ภาษามลายูมาลูกูเหนือ', id: 'Bahasa Melayu Maluku Utara', hi: 'उत्तरी मलूकी मलय',
+               de: 'Nord-Maluku-Malay', fr: 'Malais du Nord Maluku', it: 'Malay del Nord Maluku',
+               es_eu: 'Malayo del Maluku Norte', es_mx: 'Malayo del Maluku Norte', pt_eu: 'Malaio do Maluku Norte', pt_br: 'Malaio do Maluku Norte',
+               ru: 'Северномолуккский малайский', uk: 'Північномолукська малайська', ar: 'الملايو المالوكية الشمالية', he: 'מלאית מלוקו צפונית', sw: 'Kimalay cha Maluku Kaskazini' },
+        swg: { en: 'Swabian', ja: 'シュヴァーベン語', ko: '슈바벤어', zh: '施瓦本语', yue: '施瓦本語',
+               vi: 'Tiếng Schwaben', th: 'ภาษาชวาเบีย', id: 'Bahasa Swabia', hi: 'श्वाबियन',
+               de: 'Schwäbisch', fr: 'Souabe', it: 'Svevo',
+               es_eu: 'Suabo', es_mx: 'Suabo', pt_eu: 'Suábio', pt_br: 'Suábio',
+               ru: 'Швабский', uk: 'Швабська', ar: 'الشوابية', he: 'שוואבית', sw: 'Kishwabia' },
+        maw: { en: 'Mampruli', ja: 'マンプルリ語', ko: '맘프룰리어', zh: '曼普鲁利语', yue: '曼普魯利語',
+               vi: 'Tiếng Mampruli', th: 'ภาษามัมปรูลี', id: 'Bahasa Mampruli', hi: 'मम्प्रूली',
+               de: 'Mampruli', fr: 'Mampruli', it: 'Mampruli',
+               es_eu: 'Mampruli', es_mx: 'Mampruli', pt_eu: 'Mampruli', pt_br: 'Mampruli',
+               ru: 'Мампрули', uk: 'Мампрулі', ar: 'الممبروليّة', he: 'ממפרולי', sw: 'Kimampruli' },
+    };
+    for (const code of Object.keys(ADDED106)) {
+        for (const ui of Object.keys(ADDED106[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED106[code][ui];
+            }
+        }
+    }
+
+    const ADDED107 = {
+        pnb: { en: 'Western Punjabi', ja: '西部パンジャブ語', ko: '서부 펀자브어', zh: '西旁遮普语', yue: '西旁遮普語',
+               vi: 'Tiếng Punjabi Tây', th: 'ภาษาปัญจาบตะวันตก', id: 'Bahasa Punjabi Barat', hi: 'पश्चिमी पंजाबी',
+               de: 'West-Pandschabisch', fr: 'Pendjabi occidental', it: 'Punjabi occidentale',
+               es_eu: 'Panyabí occidental', es_mx: 'Panyabí occidental', pt_eu: 'Panjabi ocidental', pt_br: 'Panjabi ocidental',
+               ru: 'Западный панджаби', uk: 'Західна панджабі', ar: 'البنجابية الغربية', he: 'פונג\'אבית מערבית', sw: 'Kipanjabi cha Magharibi' },
+        jia: { en: 'Jiamao', ja: 'ジアマオ語', ko: '지아마오어', zh: '加茂语', yue: '加茂語',
+               vi: 'Tiếng Jiamao', th: 'ภาษาจาเหมา', id: 'Bahasa Jiamao', hi: 'जियामाओ',
+               de: 'Jiamao', fr: 'Jiamao', it: 'Jiamao',
+               es_eu: 'Jiamao', es_mx: 'Jiamao', pt_eu: 'Jiamao', pt_br: 'Jiamao',
+               ru: 'Цзямао', uk: 'Цзямао', ar: 'الجياماو', he: 'צ\'יאמאו', sw: 'Kijiamao' },
+        hns: { en: 'Caribbean Hindustani', ja: 'カリビアン・ヒンドゥスターニー語', ko: '카리브 힌두스탄어', zh: '加勒比印度斯坦语', yue: '加勒比印度斯坦語',
+               vi: 'Tiếng Hindustani Caribe', th: 'ภาษาฮินดูสตานีแคริบเบียน', id: 'Bahasa Hindustani Karibia', hi: 'कैरिबियाई हिंदुस्तानी',
+               de: 'Karibisches Hindustani', fr: 'Hindoustani caribéen', it: 'Hindustani caraibico',
+               es_eu: 'Hindustaní caribeño', es_mx: 'Hindustaní caribeño', pt_eu: 'Hindustani caribenho', pt_br: 'Hindustani caribenho',
+               ru: 'Карибский хиндустани', uk: 'Карибська гіндустані', ar: 'الهندوستانية الكاريبية', he: 'הינדוסטני קריבי', sw: 'Kihindustani cha Karibia' },
+    };
+    for (const code of Object.keys(ADDED107)) {
+        for (const ui of Object.keys(ADDED107[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED107[code][ui];
+            }
+        }
+    }
 })();
