@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 839 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 842 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1820,6 +1820,18 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'xtm'; Glottolog mixt1422; Pankratz & Pike (1967) Phonology and morphotonemics of Ayutla Mixtec.
   xtm: { name: 'Mixtepec Mixtec', native: 'Sa\'an Sàvǐ Sa San Juan Mixtepec', lat: 16.64, lng: -97.92, // San Juan Mixtepec, Oaxaca
     words: { water:['ndute','nduteʔ'], fire:['ñu\'u','ɲuʔu'], sun:['nikan','nikan'], moon:['yoo','joː'], mother:['na\'ān','naʔán'], father:['tatá','tatá'], eat:['kashi','kaʃi'], drink:['kohó','koʔó'], love:['kúu ini','kúu iniʔ'], heart:['ini','iniʔ'], tree:['yutu','jutu'], house:['veʔe','veʔe'], dog:['ina','ina'], cat:['vilú','vilú'], hand:['ndo\'ó','ndoʔó'], eye:['nduchi','ndutʃi'], hello:['nasáa','nasáː'], thanks:['tachu\'un','tatʃuʔun'], one:['in','iʔn'], good:['vaha','vahaʔ'] }},
+  // Metlatónoc Mixtec — Otomanguean (Mixtecan, Mixtec — sister variety to mix Mixtec macrolanguage and xtm Mixtepec Mixtec; spoken in Guerrero highlands rather than Oaxaca core area).
+  // Sources: Ethnologue 27 'mxv'; Glottolog metl1240; Caballero (2008) Choices and constraints in the analysis of mountain Mixtec.
+  mxv: { name: "Metlatónoc Mixtec", native: "Tu'un Sávi", lat: 17.20, lng: -98.50, // Metlatónoc, Guerrero, Mexico
+    words: { water:['ndute','nduteʔ'], fire:["ñu'un",'ɲuʔun'], sun:['nikandii','nikandiː'], moon:['yoo','joː'], mother:["na'án",'naʔán'], father:['tatá','tatá'], eat:['kasi','kasi'], drink:['kohó','koʔó'], love:['kunduu ini','kundúː iniʔ'], heart:['ini','iniʔ'], tree:['itun','itun'], house:["ve'e",'βeʔe'], dog:['tina','tina'], cat:['vilu','βilu'], hand:["nda'a",'ndaʔa'], eye:['nduchi','ndutʃi'], hello:["sa'a",'saʔa'], thanks:["tatu'un",'tatuʔun'], one:["i'in",'iʔin'], good:['vaha','vahaʔ'] }},
+  // Coyutla Totonac — Totonacan (Totonac branch, Northern/Sierra Totonac — sister to Papantla and Misantla Totonac varieties; the Totonacan family is small and centered in central Mexican Gulf coast), ~50K, Mexico (Veracruz — Coyutla, Coahuitlán, Filomeno Mata, Mecatlán municipalities, north-central Sierra de Papantla).
+  // Sources: Ethnologue 27 'toc'; Glottolog coyu1238; Levy (1987) Fonología del totonaco de Papantla.
+  toc: { name: "Coyutla Totonac", native: "Tachiwíin", lat: 20.25, lng: -97.45, // Coyutla, Veracruz, Mexico
+    words: { water:['xkán','ʃkán'], fire:["lhk'uyat",'ɬkʼujat'], sun:['chichiní','tʃitʃiní'], moon:['papá','papá'], mother:['tsé','tsé'], father:['tlat','tɬat'], eat:['waan','waːn'], drink:['oqoo','oqoː'], love:["pa'ksuu",'paʔksuː'], heart:['naku','naku'], tree:["k'iwi",'kʼiwi'], house:['chiki','tʃiki'], dog:['chichi','tʃitʃi'], cat:["mishtu",'miʃtu'], hand:['maka','maka'], eye:['lakgastapu','lakɡastapu'], hello:["tlen lhítat",'tɬen ɬítat'], thanks:["pa'xkatkatsiniyán",'paʔʃkatkatsinijan'], one:['aktum','aktum'], good:["tlen",'tɬen'] }},
+  // Huave (San Mateo del Mar Huave, Umbeyajts) — language isolate (no proven genealogical relatives, despite areal Mesoamerican features), ~12K, Mexico (Oaxaca — San Mateo del Mar municipality, Pacific coast lagoon system on Tehuantepec Isthmus).
+  // Sources: Ethnologue 27 'huv'; Glottolog sanm1284; Stairs Kreger & Scharfe de Stairs (1981) Diccionario huave de San Mateo del Mar.
+  huv: { name: "San Mateo del Mar Huave", native: "Umbeyajts", lat: 16.21, lng: -94.99, // San Mateo del Mar, Oaxaca, Mexico
+    words: { water:['nadam','nadam'], fire:['mbas','mbas'], sun:['nüt','nɨt'], moon:['kawak','kawak'], mother:['mim','mim'], father:['tat','tat'], eat:['atsaj','atsah'], drink:['amix','amiʃ'], love:['amongoch','amoŋotʃ'], heart:['naxey','naʃej'], tree:['neel','neːl'], house:['nej','neh'], dog:['pet','pet'], cat:['mixt','miʃt'], hand:['witsam','witsam'], eye:['nawi','nawi'], hello:['ngwene','ŋwene'], thanks:["mongoy",'moŋoj'], one:['nop','nop'], good:['nasaj','nasah'] }},
   // Quechuan / Aymaran
   ay: { name: 'Aymara', native: 'Aymar aru', lat: -16.49, lng: -68.15, // La Paz
     words: { water:['uma','uma'], fire:['nina','nina'], sun:['inti','inti'], moon:['phaxsi','pʰaχsi'], mother:['mama','mama'], father:['tata','tata'], eat:['manq\'aña','manqʼaɲa'], drink:['umaña','umaɲa'], love:['munasiña','munasiɲa'], heart:['chuyma','tʃujma'], tree:['quqa','quqa'], house:['uta','uta'], dog:['anu','anu'], cat:['phisi','pʰisi'], hand:['ampara','ampaɾa'], eye:['nayra','najɾa'], hello:['kamisaki','kamisaki'], thanks:['yuspagara','juspaɣaɾa'], one:['maya','maja'], good:['suma','suma'] }},

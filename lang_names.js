@@ -2007,4 +2007,28 @@ const LANG_NAMES = {
             }
         }
     }
+    const ADDED84 = {
+        mxv: { en: "Metlatónoc Mixtec", ja: "メトラトノク・ミシュテコ語", ko: "메틀라토녹 믹스테코어", zh: "梅特拉托诺克米斯特克语", yue: "梅特拉托諾克米斯特克語",
+               vi: "Tiếng Mixtec Metlatónoc", th: "ภาษามิกซ์เตกเมตลาโตน็อก", id: "Bahasa Mixtec Metlatónoc", hi: "मेत्लातोनोक मिक्सटेक",
+               de: "Metlatónoc-Mixtekisch", fr: "Mixtèque de Metlatónoc", it: "Mixteco di Metlatónoc",
+               es_eu: "Mixteco de Metlatónoc", es_mx: "Mixteco de Metlatónoc", pt_eu: "Mixteca de Metlatónoc", pt_br: "Mixteco de Metlatónoc",
+               ru: "Метлатонокский миштекский", uk: "Метлатонокська міштекська", ar: "الميشتيك الميتلاتونوكي", he: "מישטק מטלאטונוק", sw: "Kimixteki cha Metlatónoc" },
+        toc: { en: "Coyutla Totonac", ja: "コユトラ・トトナック語", ko: "코유틀라 토토낙어", zh: "科尤特拉托托纳克语", yue: "科尤特拉托托納克語",
+               vi: "Tiếng Totonac Coyutla", th: "ภาษาโตโตนากโกยุตลา", id: "Bahasa Totonak Coyutla", hi: "कोयुत्ला तोतोनाक",
+               de: "Coyutla-Totonakisch", fr: "Totonaque de Coyutla", it: "Totonaco di Coyutla",
+               es_eu: "Totonaco de Coyutla", es_mx: "Totonaco de Coyutla", pt_eu: "Totonaca de Coyutla", pt_br: "Totonaco de Coyutla",
+               ru: "Коютлинский тотонакский", uk: "Коютланська тотонацька", ar: "التوتوناك الكويوتلي", he: "טוטונאק קויוטלה", sw: "Kitotonaki cha Coyutla" },
+        huv: { en: "San Mateo del Mar Huave", ja: "サン・マテオ・デル・マル・ウアベ語", ko: "산마테오델마르 우아베어", zh: "圣马特奥德尔马尔瓦韦语", yue: "聖馬特奧德爾馬爾瓦韋語",
+               vi: "Tiếng Huave San Mateo del Mar", th: "ภาษาฮัวเวซานมาเตโอเดลมาร์", id: "Bahasa Huave San Mateo del Mar", hi: "सान मातेओ देल मार हुआवे",
+               de: "Huave (San Mateo del Mar)", fr: "Huave de San Mateo del Mar", it: "Huave di San Mateo del Mar",
+               es_eu: "Huave de San Mateo del Mar", es_mx: "Huave de San Mateo del Mar", pt_eu: "Huave de San Mateo del Mar", pt_br: "Huave de San Mateo del Mar",
+               ru: "Уаве Сан-Матео-дель-Мар", uk: "Уаве Сан-Матео-дель-Мар", ar: "الهوافي سان ماتيو ديل مار", he: "וואווה סן מטאו דל מאר", sw: "Kihuave cha San Mateo del Mar" },
+    };
+    for (const code of Object.keys(ADDED84)) {
+        for (const ui of Object.keys(ADDED84[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED84[code][ui];
+            }
+        }
+    }
 })();
