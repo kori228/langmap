@@ -1060,4 +1060,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED39 = {
+        tkr: { en: 'Tsakhur', ja: 'ツァフール語', ko: '차후르어', zh: '查胡尔语', yue: '查胡爾語',
+               vi: 'Tiếng Tsakhur', th: 'ภาษาซาคูร์', id: 'Bahasa Tsakhur', hi: 'त्साखुर',
+               de: 'Tsachurisch', fr: 'Tsakhour', it: 'Tsakhur',
+               es_eu: 'Tsajur', es_mx: 'Tsajur', pt_eu: 'Tsacur', pt_br: 'Tsacur',
+               ru: 'Цахурский', uk: 'Цахурська', ar: 'التساخورية', he: 'צאחורית', sw: 'Kitsakur' },
+        kmh: { en: 'Kalam', ja: 'カラム語', ko: '칼람어', zh: '卡兰姆语', yue: '卡蘭姆語',
+               vi: 'Tiếng Kalam', th: 'ภาษากาลัม', id: 'Bahasa Kalam', hi: 'कलाम',
+               de: 'Kalam', fr: 'Kalam', it: 'Kalam',
+               es_eu: 'Kalam', es_mx: 'Kalam', pt_eu: 'Kalam', pt_br: 'Kalam',
+               ru: 'Калам', uk: 'Калам', ar: 'الكالامية', he: 'קלאם', sw: 'Kikalam' },
+        wba: { en: 'Warao', ja: 'ワラオ語', ko: '와라오어', zh: '瓦劳语', yue: '瓦勞語',
+               vi: 'Tiếng Warao', th: 'ภาษาวาราโอ', id: 'Bahasa Warao', hi: 'वाराओ',
+               de: 'Warao', fr: 'Warao', it: 'Warao',
+               es_eu: 'Warao', es_mx: 'Warao', pt_eu: 'Warao', pt_br: 'Warao',
+               ru: 'Варао', uk: 'Варао', ar: 'الواراو', he: 'ווראו', sw: 'Kiwarao' },
+    };
+    for (const code of Object.keys(ADDED39)) {
+        for (const ui of Object.keys(ADDED39[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED39[code][ui];
+            }
+        }
+    }
 })();

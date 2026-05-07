@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 727 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 730 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -745,6 +745,10 @@ const LANG_DATA = {
     words: { water:['wọtá','wɔta'], fire:['faya','faja'], sun:['sọn','sɔn'], moon:['mun','muːn'], mother:['mama','mama'], father:['papa','papa'], eat:['chọp','tʃɔp'], drink:['drink','dɾiŋk'], love:['lọv','lɔv'], heart:['hat','hat'], tree:['tri','tɾi'], house:['haus','haʊs'], dog:['dọg','dɔɡ'], cat:['pus','pus'], hand:['hand','hand'], eye:['ai','aɪ'], hello:['how far','haʊ faː'], thanks:['tanx','taŋks'], one:['wan','wan'], good:['fain','faɪn'] }},
   tpi: { name: 'Tok Pisin', native: 'Tok Pisin', lat: -6.73, lng: 147.00,
     words: { water:['wara','waɾa'], fire:['paia','paja'], sun:['san','san'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['kaikai','kajkaj'], drink:['dring','dɾiŋ'], love:['laikim','lajkim'], heart:['hat','hat'], tree:['diwai','diwaj'], house:['haus','haʊs'], dog:['dok','dok'], cat:['pusi','pusi'], hand:['han','han'], eye:['ai','aj'], hello:['halo','halo'], thanks:['tenkyu','tɛŋkju'], one:['wanpela','wanpɛla'], good:['gutpela','ɡutpɛla'] }},
+  // Kalam — Trans-New Guinea (Madang, Kalam-Kobon), ~15K-20K, PNG (Madang/Western Highlands border, Schrader Range). Famous for "pandanus language" ritual register and exhaustive ethnobiological lexicon.
+  // Sources: Ethnologue 27 'kmh'; Glottolog kala1397; Pawley & Bulmer (2011) Dictionary of Kalam (with ethnographic notes 1500+ pages).
+  kmh: { name: 'Kalam', native: 'Kalam', lat: -5.05, lng: 144.55, // Schrader Range, Madang, PNG
+    words: { water:['ñeb','ɲeb'], fire:['nged','ŋged'], sun:['nb','nəb'], moon:['ñag','ɲaɡ'], mother:['ag','aɡ'], father:['mam','mam'], eat:['ñb','ɲəb'], drink:['ñ-','ɲə'], love:['kn-','kən'], heart:['mngm','məŋgəm'], tree:['mon','mon'], house:['kab','kab'], dog:['kayn','kajn'], cat:['pus','pus'], hand:['tn','tən'], eye:['ck','tʃək'], hello:['ñn','ɲən'], thanks:['ñib','ɲib'], one:['mdmagn','mədmaɡən'], good:['kayb','kajb'] }},
   // Torres Strait Creole (Yumplatok) — English-based creole, ~25K speakers, Torres Strait Islands (Australia).
   // Sources: Ethnologue 27 'tcs'; Glottolog torr1261; Shnukal (1988) Broken: Torres Strait Creole.
   tcs: { name: 'Torres Strait Creole', native: 'Yumplatok', lat: -10.59, lng: 142.21, // Thursday Island
@@ -1633,6 +1637,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'udi'; Glottolog udii1243; Schulze (1982) Die Sprache der Uden; Maisak (2008).
   udi: { name: 'Udi', native: 'удин муз', lat: 41.30, lng: 48.31, // Niž (Nij), Qabala District, Azerbaijan
     words: { water:['хе','xe'], fire:['ариш','ariʃ'], sun:['бех','beχ'], moon:['уьш','yʃ'], mother:['нана','nana'], father:['бабо','babo'], eat:['уксун','uksun'], drink:['уьгсун','yɡsun'], love:['букӏесун','buqʼesun'], heart:['укӏ','uqʼ'], tree:['хунч','xunt͡ʃ'], house:['кӏойи','qʼoji'], dog:['ха','xa'], cat:['пӏшу','pʼʃu'], hand:['кьил','qʼil'], eye:['пул','pul'], hello:['салам','salam'], thanks:['бахтӏам','baχtʼam'], one:['са','sa'], good:['яхъи','jaqʼi'] }},
+  // Tsakhur (Yiqby) — NE Caucasian (Lezgic, Aghul-Tabasaran-Tsakhur subgroup), ~13K, Russia (Daghestan southern villages) + Azerbaijan (Zaqatala/Qax raions).
+  // Sources: Ethnologue 27 'tkr'; Glottolog tsak1249; Schulze-Fürhoff (1994); Kibrik & Kodzasov (1990).
+  tkr: { name: 'Tsakhur', native: 'ЦӀаIхна миз', lat: 41.49, lng: 47.05, // Tsakhur village, Rutul District, Daghestan
+    words: { water:['хьад','ʜad'], fire:['цӀай','tsʼaj'], sun:['верг','verɡ'], moon:['ваз','vaz'], mother:['йед','jed'], father:['дакӀ','dakʼ'], eat:['аӏкӀвыс','aʕkʷʼəs'], drink:['ийыхьес','iijəʜes'], love:['ыкӀикна','əkʼikna'], heart:['йикӀ','jikʼ'], tree:['йывон','jəvon'], house:['хав','xav'], dog:['хӀвай','ħʷaj'], cat:['кӀет','kʼet'], hand:['хыл','xəl'], eye:['ул','ul'], hello:['салам','salam'], thanks:['бахытыд','baxətəd'], one:['са','sa'], good:['йишда','jiʃda'] }},
   // Kumyk — Kipchak Turkic, ~440K, Daghestan Russia. Northern lingua franca historically.
   // Sources: Ethnologue 27 'kum'; Glottolog kumy1244; Bammatov (1969) Kumyk-Russian Dictionary.
   kum: { name: 'Kumyk', native: 'Къумукъ тил', lat: 42.98, lng: 47.50, // Makhachkala area
@@ -2113,6 +2121,10 @@ const LANG_DATA = {
   // Arawakan (Caribbean coast)
   guc: { name: 'Wayuu', native: 'Wayuunaiki', lat: 11.54, lng: -72.91, // Riohacha
     words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
+  // Warao — language isolate, ~28K (largest isolate in northern South America), Venezuela (Orinoco Delta) + small Guyana/Suriname border population.
+  // Sources: Ethnologue 27 'wba'; Glottolog wara1303; Romero-Figueroa (1997) A Reference Grammar of Warao; Vaquero (1965) Idioma Warao.
+  wba: { name: 'Warao', native: 'Warao', lat: 9.07, lng: -62.05, // Tucupita, Delta Amacuro (Orinoco Delta)
+    words: { water:['hoidu','hojdu'], fire:['hekunu','hekunu'], sun:['ya','ja'], moon:['waniku','waniku'], mother:['dani','dani'], father:['daka','daka'], eat:['nahoro','nahoɾo'], drink:['osi','osi'], love:['anaubu','anaubu'], heart:['obonona','oboɲoɲa'], tree:['dau','daw'], house:['hanoko','hanoko'], dog:['aurahu','auɾahu'], cat:['mishi','miʃi'], hand:['mokomoko','mokomoko'], eye:['mu','mu'], hello:['yakera','jakeɾa'], thanks:['kase','kase'], one:['hisaka','hisaka'], good:['yakera','jakeɾa'] }},
   // Mura (linguistic isolate, Amazonia)
   myp: { name: 'Pirahã', native: 'Xapagí', lat: -7.70, lng: -62.30, // Maici River
     words: { water:['piigi','piiɡi'], fire:['hoa','hoa'], sun:['hisi','hisi'], moon:['kapiigaísao','kapiːɡaísao'], mother:['ʔaaí','ʔaaí'], father:['baíxi','baíʃi'], eat:['ʔaʔaí','ʔaʔaí'], drink:['gao','ɡao'], love:['gí','ɡí'], heart:['aoʔaago','aoʔaaɡo'], tree:['hoí','hoí'], house:['kaiʔii','kaiʔii'], dog:['kobaí','kobaí'], cat:['xowí','ʃowí'], hand:['piíʔai','piíʔai'], eye:['ʔai','ʔai'], hello:['gaíhií','ɡaíhií'], thanks:['kapiíhií','kapiíhií'], one:['hói','hói'], good:['aoʔaago','aoʔaaɡo'] },
