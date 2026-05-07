@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 880 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 883 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -469,6 +469,10 @@ const LANG_DATA = {
     words: { water:['dŵr','duːr'], fire:['tân','tɑːn'], sun:['haul','haɨl'], moon:['lleuad','ɬɛɨ̯ad'], mother:['mam','mam'], father:['tad','tɑːd'], eat:['bwyta','bʊɨta'], drink:['yfed','əvɛd'], love:['cariad','karjad'], heart:['calon','kalon'], tree:['coeden','kɔɨdɛn'], house:['tŷ','tiː'], dog:['ci','kiː'], cat:['cath','kɑːθ'], hand:['llaw','ɬaʊ'], eye:['llygad','ɬəɡad'], hello:['helo','hɛlo'], thanks:['diolch','diːɔlx'], one:['un','iːn'], good:['da','dɑː'] }},
   ka: { name: 'Georgian', native: 'ქართული', lat: 41.72, lng: 44.79, // Tbilisi
     words: { water:['წყალი','t͡sʼqali'], fire:['ცეცხლი','t͡set͡sxli'], sun:['მზე','mze'], moon:['მთვარე','mtʰvare'], mother:['დედა','deda'], father:['მამა','mama'], eat:['ჭამა','tʃʼama'], drink:['დალევა','daleva'], love:['სიყვარული','siqvaruli'], heart:['გული','ɡuli'], tree:['ხე','xe'], house:['სახლი','saxli'], dog:['ძაღლი','dzaɣli'], cat:['კატა','kʼatʼa'], hand:['ხელი','xeli'], eye:['თვალი','tʰvali'], hello:['გამარჯობა','ɡamardʒoba'], thanks:['მადლობა','madloba'], one:['ერთი','ertʰi'], good:['კარგი','kʼarɡi'] }},
+  // Laz (Lazuri) — Kartvelian Zan (sister to Mingrelian xmf within the Zan branch; closer to Mingrelian than to Georgian; together with Mingrelian forms the Zan branch of Kartvelian alongside Georgian and Svan), ~150K, Turkey (Black Sea coast — Rize, Artvin provinces, Pazar/Ardeşen/Hopa/Arhavi districts) + Georgia (Adjara — Sarpi border village; small populations).
+  // Sources: Ethnologue 27 'lzz'; Glottolog lazz1240; Lacroix (2009) Description du dialecte laze d'Arhavi; Holisky (1991) Laz.
+  lzz: { name: 'Laz', native: 'Lazuri', lat: 41.04, lng: 41.41, // Pazar, Rize, Turkey (Laz heartland)
+    words: { water:['წკარი','tsʼkari'], fire:['დაჩხური','dat͡ʃxuri'], sun:['ბჟა','bʒa'], moon:['თუთა','tʰutʰa'], mother:['ნანა','nana'], father:['ბაბა','baba'], eat:['ჩამუ','t͡ʃamu'], drink:['ხცემა','xt͡sʼema'], love:['ნოშქერი','noʃkʼeri'], heart:['გური','ɡuri'], tree:['ჯა','dʒa'], house:['ოხორი','oxori'], dog:['ჯოღორი','dʒoɣori'], cat:['კატუ','kʼatʼu'], hand:['ხე','xe'], eye:['თოლი','tʰoli'], hello:['ბრუნდი','brundi'], thanks:['ბერეკეთი','berekʰetʰi'], one:['არ','ar'], good:['ჯურა','dʒura'] }},
   // Svan — Kartvelian (sister to Zan-Georgian branch), ~14-30K, Svaneti highlands of NW Georgia. Most divergent Kartvelian.
   // Sources: Ethnologue 27 'sva'; Glottolog svan1245; Tuite (1997) Svan; Schmidt (1991) Kartvelian phonology.
   sva: { name: 'Svan', native: 'ლუშნუ ნინ', lat: 43.00, lng: 42.72, // Mestia, Svaneti
@@ -1427,6 +1431,10 @@ const LANG_DATA = {
     words: { water:['ⲙⲟⲟⲩ','moːu'], fire:['ⲕⲣⲱⲙ','krɔːm'], sun:['ⲣⲏ','reː'], moon:['ⲓⲟϩ','joːh'], mother:['ⲙⲁⲁⲩ','maːu'], father:['ⲉⲓⲱⲧ','ejɔːt'], eat:['ⲟⲩⲱⲙ','uɔːm'], drink:['ⲥⲱ','sɔː'], love:['ⲙⲉ','me'], heart:['ϩⲏⲧ','heːt'], tree:['ϣⲏⲛ','ʃeːn'], house:['ⲏⲓ','eːj'], dog:['ⲟⲩϩⲟⲣ','uhɔr'], cat:['ⲉⲙⲟⲩ','emu'], hand:['ϭⲓϫ','tʃidʒ'], eye:['ⲃⲁⲗ','bal'], hello:['ⲛⲟⲩϥⲣⲓ','nufri'], thanks:['ϣⲉⲡϩⲙⲟⲧ','ʃephmot'], one:['ⲟⲩⲁ','ua'], good:['ⲛⲁⲛⲟⲩ','nanu'] }},
   arc: { name: 'Aramaic', native: 'ܐܪܡܝܐ', lat: 33.51, lng: 36.29,
     words: { water:['ܡܝܐ','majaː'], fire:['ܢܘܪܐ','nuːraː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emːaː'], father:['ܐܒܐ','abːaː'], eat:['ܐܟܠ','aːχel'], drink:['ܫܬܐ','ʃtaː'], love:['ܚܘܒܐ','ħubːaː'], heart:['ܠܒܐ','lebːaː'], tree:['ܐܝܠܢܐ','iːlaːnaː'], house:['ܒܝܬܐ','bajtaː'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܫܘܢܪܐ','ʃuːnaːraː'], hand:['ܐܝܕܐ','iːðaː'], eye:['ܥܝܢܐ','ʕajnaː'], hello:['ܫܠܡܐ','ʃlaːmaː'], thanks:['ܬܘܕܝ','tawdiː'], one:['ܚܕ','ħað'], good:['ܛܒܐ','tˤaːβaː'] }},
+  // Western Neo-Aramaic (Maaloula Aramaic) — Afro-Asiatic Semitic Northwest Semitic Aramaic Western (the only surviving Western Aramaic variety; sister to Eastern Aramaic varieties such as Assyrian Neo-Aramaic aii, Chaldean Neo-Aramaic, Turoyo within the broader Aramaic continuum), ~3K (critically endangered — UNESCO critically endangered after the 2013-14 Syrian War battle of Maaloula displaced most speakers), Syria (Maaloula village, Bakhah, Jubb'adin in the Anti-Lebanon mountains north of Damascus); small post-2014 refugee diaspora (Lebanon, Germany, Sweden).
+  // Sources: Ethnologue 27 'amw'; Glottolog west2466; Arnold (1989-91) Das Neuwestaramäische.
+  amw: { name: 'Western Neo-Aramaic', native: 'ܐܪܡܝܬ', lat: 33.83, lng: 36.55, // Maaloula village, Anti-Lebanon, Syria
+    words: { water:['ܡܘܝܐ','mojːa'], fire:['ܐܫܬܐ','iʃtaː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emaː'], father:['ܒܒܐ','babːaː'], eat:['ܐܟܠ','iʔχel'], drink:['ܫܬܐ','ʃetaː'], love:['ܚܘܒܐ','ħubaː'], heart:['ܠܒܐ','lebaː'], tree:['ܐܝܠܢܐ','elona'], house:['ܒܝܬܐ','bajθa'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܩܛܘܢܐ','qatˤuna'], hand:['ܐܝܕܐ','iða'], eye:['ܥܝܢܐ','ʕajna'], hello:['ܫܠܡܐ','ʃlomaː'], thanks:['ܬܘܕܝ','tawdiː'], one:['ܚܕ','xeð'], good:['ܛܒܐ','tˤaːβa'] }},
   // Assyrian Neo-Aramaic — Eastern Aramaic, ~600K worldwide, Iraq/Iran/Syria/diaspora (USA, Sweden, Australia). Largest living Aramaic.
   // Sources: Ethnologue 27 'aii'; Glottolog assy1241; Maclean (1895) Grammar of the Dialects of Vernacular Syriac; Khan (2008) NENA studies.
   aii: { name: 'Assyrian Neo-Aramaic', native: 'ܠܫܢܐ ܐܫܘܪܝܐ', lat: 36.34, lng: 43.13, // Mosul / Nineveh Plains (historical homeland)
@@ -2180,6 +2188,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'kum'; Glottolog kumy1244; Bammatov (1969) Kumyk-Russian Dictionary.
   kum: { name: 'Kumyk', native: 'Къумукъ тил', lat: 42.98, lng: 47.50, // Makhachkala area
     words: { water:['сув','suv'], fire:['от','ot'], sun:['гюн','ɡʲun'], moon:['ай','aj'], mother:['ана','ana'], father:['ата','ata'], eat:['ашамакъ','aʃamaq'], drink:['ичмек','itʃmek'], love:['сюйюв','syjyv'], heart:['юрек','jyrek'], tree:['терек','terek'], house:['уьй','yj'], dog:['ит','it'], cat:['мишик','miʃik'], hand:['къол','qol'], eye:['гёз','ɡʲøz'], hello:['ассаламу алейкум','asːalamu alejkum'], thanks:['савбол','savbol'], one:['бир','bir'], good:['яхшы','jaχʃə'] }},
+  // Nogai — Turkic Kipchak Nogai (sister to Karakalpak kaa and Kazakh kk within the Kipchak-Nogai sub-branch; closely related to Crimean Tatar crh and Kumyk kum), ~90K, Russia (Karachay-Cherkessia, Stavropol Krai, Dagestan, Astrakhan Oblast — three distinct regional subgroups: Karanogai, Akhnogai, Kuban-Nogai); Romania (~5K Dobruja); Turkey (Tatar diaspora).
+  // Sources: Ethnologue 27 'nog'; Glottolog noga1249; Baskakov (1940) Nogai language and grammar.
+  nog: { name: 'Nogai', native: 'Ногай тили', lat: 43.96, lng: 41.93, // Karachayevsk / Cherkessk area, Karachay-Cherkessia (Akhnogai)
+    words: { water:['сув','suv'], fire:['от','ot'], sun:['кьяс','qjas'], moon:['ай','aj'], mother:['ана','ana'], father:['атай','ataj'], eat:['аш','aʃ'], drink:['иш','iʃ'], love:['суьюв','syjyv'], heart:['ярак','jarak'], tree:['терек','terek'], house:['уьй','yj'], dog:['ит','it'], cat:['мысык','məsəq'], hand:['кьол','qol'], eye:['коьз','køz'], hello:['ассаламу алейкум','asːalamu alejkum'], thanks:['саьоьлин','sɵlin'], one:['бир','bir'], good:['яксы','jaksə'] }},
   // Northwest Caucasian
   ady: { name: 'Adyghe', native: 'Адыгабзэ', lat: 44.61, lng: 40.10, // Maykop
     words: { water:['псы','psə'], fire:['машӏо','maʃʼo'], sun:['тыгъэ','təʁa'], moon:['мазэ','maza'], mother:['ны','nə'], father:['ты','tə'], eat:['шхэн','ʃxan'], drink:['ефэн','jafan'], love:['шӏу шӏэгъу','ʃʼʷ ʃʼaʁʷ'], heart:['гу','ɡʷə'], tree:['чыгы','tʃəɡə'], house:['унэ','wəna'], dog:['хьэ','ħa'], cat:['чэтыу','tʃatəw'], hand:['ӏэ','ʔa'], eye:['нэ','na'], hello:['шӏуфес','ʃʼwafes'], thanks:['тхьауегъэпсэу','tħawajaʁapsaw'], one:['зы','zə'], good:['дэгъу','daʁʷ'] }},

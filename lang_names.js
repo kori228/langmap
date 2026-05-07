@@ -2351,4 +2351,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED98 = {
+        lzz: { en: 'Laz', ja: 'ラズ語', ko: '라즈어', zh: '拉兹语', yue: '拉茲語',
+               vi: 'Tiếng Laz', th: 'ภาษาลาซ', id: 'Bahasa Laz', hi: 'लाज़',
+               de: 'Lasisch', fr: 'Laze', it: 'Laz',
+               es_eu: 'Laz', es_mx: 'Laz', pt_eu: 'Laz', pt_br: 'Laz',
+               ru: 'Лазский', uk: 'Лазька', ar: 'اللازية', he: 'לאז', sw: 'Kilaz' },
+        nog: { en: 'Nogai', ja: 'ノガイ語', ko: '노가이어', zh: '诺盖语', yue: '諾蓋語',
+               vi: 'Tiếng Nogai', th: 'ภาษาโนไก', id: 'Bahasa Nogai', hi: 'नोगाई',
+               de: 'Nogaisch', fr: 'Nogaï', it: 'Nogai',
+               es_eu: 'Nogayo', es_mx: 'Nogayo', pt_eu: 'Nogai', pt_br: 'Nogai',
+               ru: 'Ногайский', uk: 'Ногайська', ar: 'النوغاي', he: 'נוגאית', sw: 'Kinogai' },
+        amw: { en: 'Western Neo-Aramaic', ja: '西方新アラム語', ko: '서방 신아람어', zh: '西新亚拉姆语', yue: '西新亞拉姆語',
+               vi: 'Tiếng Aramaic Tân Tây', th: 'ภาษาอราเมอิกใหม่ตะวันตก', id: 'Bahasa Neo-Aram Barat', hi: 'पश्चिमी नवीन-अराइमी',
+               de: 'Westliches Neuaramäisch', fr: 'Néo-araméen occidental', it: 'Neoaramaico occidentale',
+               es_eu: 'Neoarameo occidental', es_mx: 'Neoarameo occidental', pt_eu: 'Neoaramaico ocidental', pt_br: 'Neoaramaico ocidental',
+               ru: 'Западноарамейский', uk: 'Західноарамейська', ar: 'الآرامية الجديدة الغربية', he: 'נאו-ארמית מערבית', sw: 'Kiaramayika cha Magharibi' },
+    };
+    for (const code of Object.keys(ADDED98)) {
+        for (const ui of Object.keys(ADDED98[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED98[code][ui];
+            }
+        }
+    }
 })();
