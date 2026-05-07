@@ -685,4 +685,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Adi (adi), Shambala (ksb), Aghem (agq) — NE India Tani + Tanzania Bantu + Cameroon Grassfields.
+    const ADDED24 = {
+        adi: { en: 'Adi', ja: 'アディ語', ko: '아디어', zh: '阿迪语', yue: '阿迪語',
+               vi: 'Tiếng Adi', th: 'ภาษาอาดี', id: 'Adi', hi: 'आदि',
+               de: 'Adi', fr: 'Adi', it: 'Adi',
+               es_eu: 'Adi', es_mx: 'Adi', pt_eu: 'Adi', pt_br: 'Adi',
+               ru: 'Ади', uk: 'Аді', ar: 'الأدي', he: 'אדי', sw: 'Kiadi' },
+        ksb: { en: 'Shambala', ja: 'シャンバラ語', ko: '샴발라어', zh: '尚巴拉语', yue: '尚巴拉語',
+               vi: 'Tiếng Shambala', th: 'ภาษาชัมบาลา', id: 'Shambala', hi: 'शम्बला',
+               de: 'Schambala', fr: 'Shambala', it: 'Shambala',
+               es_eu: 'Shambala', es_mx: 'Shambala', pt_eu: 'Xambala', pt_br: 'Xambala',
+               ru: 'Шамбала', uk: 'Шамбала', ar: 'الشمبالا', he: 'שמבלה', sw: 'Kishambaa' },
+        agq: { en: 'Aghem', ja: 'アゲム語', ko: '아겜어', zh: '阿盖姆语', yue: '阿蓋姆語',
+               vi: 'Tiếng Aghem', th: 'ภาษาอาเก็ม', id: 'Aghem', hi: 'अगेम',
+               de: 'Aghem', fr: 'Aghem', it: 'Aghem',
+               es_eu: 'Aghem', es_mx: 'Aghem', pt_eu: 'Aguem', pt_br: 'Aguem',
+               ru: 'Агхем', uk: 'Агхем', ar: 'الأغهم', he: 'אגהם', sw: 'Kiaghem' },
+    };
+    for (const code of Object.keys(ADDED24)) {
+        for (const ui of Object.keys(ADDED24[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED24[code][ui];
+            }
+        }
+    }
 })();
