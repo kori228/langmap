@@ -1735,4 +1735,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED66 = {
+        hyw: { en: 'Western Armenian', ja: '西アルメニア語', ko: '서아르메니아어', zh: '西亚美尼亚语', yue: '西亞美尼亞語',
+               vi: 'Tiếng Armenia Tây', th: 'ภาษาอาร์เมเนียตะวันตก', id: 'Armenia Barat', hi: 'पश्चिमी अर्मेनियाई',
+               de: 'Westarmenisch', fr: 'Arménien occidental', it: 'Armeno occidentale',
+               es_eu: 'Armenio occidental', es_mx: 'Armenio occidental', pt_eu: 'Arménio ocidental', pt_br: 'Armênio ocidental',
+               ru: 'Западноармянский', uk: 'Західновірменська', ar: 'الأرمنية الغربية', he: 'ארמנית מערבית', sw: 'Kiarmenia cha Magharibi' },
+        mgo: { en: "Meta'", ja: 'メタ語', ko: '메타어', zh: '梅塔语', yue: '梅塔語',
+               vi: "Tiếng Meta'", th: "ภาษาเมตา'", id: "Bahasa Meta'", hi: 'मेटा',
+               de: "Meta'", fr: "Méta'", it: "Meta'",
+               es_eu: "Meta'", es_mx: "Meta'", pt_eu: "Meta'", pt_br: "Meta'",
+               ru: 'Мета', uk: 'Мета', ar: 'الميتا', he: 'מטה', sw: 'Kimeta' },
+        nmf: { en: 'Tangkhul Naga', ja: 'タングフル・ナガ語', ko: '탕쿨 나가어', zh: '坦库尔那加语', yue: '坦庫爾那加語',
+               vi: 'Tiếng Naga Tangkhul', th: 'ภาษาตังคุลนากา', id: 'Naga Tangkhul', hi: 'तंगखुल नागा',
+               de: 'Tangkhul-Naga', fr: 'Tangkhul naga', it: 'Tangkhul naga',
+               es_eu: 'Tangkhul naga', es_mx: 'Tangkhul naga', pt_eu: 'Tangkhul naga', pt_br: 'Tangkhul naga',
+               ru: 'Тангкхул нага', uk: 'Тангкхул-нага', ar: 'النجاوية تانغكول', he: 'טנגכול נגה', sw: 'Kinaga cha Tangkhul' },
+    };
+    for (const code of Object.keys(ADDED66)) {
+        for (const ui of Object.keys(ADDED66[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED66[code][ui];
+            }
+        }
+    }
 })();

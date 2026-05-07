@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 808 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 811 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -461,6 +461,10 @@ const LANG_DATA = {
     words: { water:['წკარი','t͡sʼkari'], fire:['დაჩხური','dat͡ʃxuri'], sun:['მჟორა','mʒora'], moon:['თუთა','tʰutʰa'], mother:['ნანა','nana'], father:['ბაბა','baba'], eat:['ჭკომა','tʃʼkʼoma'], drink:['შუმუ','ʃumu'], love:['ჸორო','ʔoro'], heart:['გური','ɡuri'], tree:['ნჯა','ndʒa'], house:['ოხორი','oxori'], dog:['ჯოღორი','dʒoɣori'], cat:['კატუ','kʼatʼu'], hand:['ხე','xe'], eye:['თოლი','tʰoli'], hello:['ხამოს','xamos'], thanks:['ნოღამე','noɣame'], one:['არ','ar'], good:['სქირი','skʼiri'] }},
   hy: { name: 'Armenian', native: 'Հայերեն', lat: 40.18, lng: 44.51, // Yerevan
     words: { water:['ջուր','dʒuɾ'], fire:['կրակ','kɾɑk'], sun:['արև','ɑˈɾev'], moon:['լուսին','lusin'], mother:['մայր','majɾ'], father:['հայր','hajɾ'], eat:['ուտել','uˈtel'], drink:['խմել','χəˈmel'], love:['սեր','seɾ'], heart:['սիրտ','siɾt'], tree:['ծառ','tsaɾ'], house:['տուն','tun'], dog:['շուն','ʃun'], cat:['կատու','kɑtu'], hand:['ձեռք','dzeɾkʰ'], eye:['աչք','ɑtʃkʰ'], hello:['բարև','bɑɾev'], thanks:['շնորհակալություն','ʃnoɾhɑkɑlutʰjun'], one:['մեկ','mek'], good:['լավ','lɑv'] }},
+  // Western Armenian (Արեւմտահայերէն Arevmdahayerēn) — Indo-European Armenian (sister to hy Eastern Armenian; the two diverged after the Armenian Genocide of 1915 displaced Western speakers from Anatolian homeland), ~1M+ in diaspora.
+  // Sources: Ethnologue 27 'hyw'; Glottolog west2348; Donabédian (2018) Western Armenian grammar.
+  hyw: { name: 'Western Armenian', native: 'Արեւմտահայերէն', lat: 40.99, lng: 28.96, // Istanbul (largest historical Western Armenian center)
+    words: { water:['ջուր','tʃuɾ'], fire:['կրակ','ɡəɾɑk'], sun:['արեւ','ɑˈɾev'], moon:['լուսին','lusin'], mother:['մայր','majɾ'], father:['հայր','hajɾ'], eat:['ուտել','udel'], drink:['խմել','χəmel'], love:['սէր','sɛɾ'], heart:['սիրտ','siɾd'], tree:['ծառ','dzaɾ'], house:['տուն','dun'], dog:['շուն','ʃun'], cat:['կատու','ɡɑdu'], hand:['ձեռք','dzɛɾkʰ'], eye:['աչք','ɑtʃkʰ'], hello:['բարեւ','bɑɾev'], thanks:['շնորհակալութիւն','ʃnoɾhɑɡɑluˈtʰjun'], one:['մէկ','mɛɡ'], good:['աղուոր','ɑʁvoɾ'] }},
   nv: { name: 'Navajo', native: 'Diné bizaad', lat: 36.17, lng: -109.51, // Window Rock
     words: { water:['tó','tʰóː'], fire:['kǫʼ','kʰõːʔ'], sun:['jóhonaaʼéí','dʒóhonɑːʔéːí'], moon:['tłéhonaaʼéí','tɬʼéhonɑːʔéːí'], mother:['shimá','ʃimáː'], father:['shizhéʼé','ʃiʒéːʔéː'], eat:['yishą́','jiʃã́ː'], drink:['yishdlą́','jiʃtlã́ː'], love:['ayóóʼánóshní','ɑjóːʔɑ́nóʃníː'], heart:['ajéí','ɑdʒéːí'], tree:['tsin','t͡sin'], house:['hooghan','hoːɣɑn'], dog:['łééchąąʼí','ɬéːtʃãːʔí'], cat:['mósí','mósí'], hand:['la','lɑ'], eye:['naá','nɑ́ː'], hello:['yáʼátʼééh','jɑ́ːʔɑ́tʰéːh'], thanks:['ahéheeʼ','ɑhéːheːʔ'], one:['tʼááłáʼí','tʼɑ́ːɬɑ́ːʔí'], good:['yáʼátʼééh','jɑ́ːʔɑ́tʰéːh'] },
     wordEvidence: {
@@ -1983,6 +1987,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nzm'; Glottolog zeme1240; Konow (1903) Linguistic Survey of India Vol. 3.
   nzm: { name: 'Zeme Naga', native: 'Zeme', lat: 25.45, lng: 93.75, // Peren, Nagaland
     words: { water:['nki','nki'], fire:['mei','mei'], sun:['sʰeu','ʃeu'], moon:['kʰu','kʰu'], mother:['nem','nem'], father:['ape','ape'], eat:['so','so'], drink:['hʷu','hʷu'], love:['kihai','kihai'], heart:['heisia','heisia'], tree:['rik','rik'], house:['ki','ki'], dog:['hui','hui'], cat:['kʰemi','kʰemi'], hand:['hak','hak'], eye:['mik','mik'], hello:['hangba','haŋba'], thanks:['kazi','kazi'], one:['kha','kʰa'], good:['ahei','ahei'] }},
+  // Tangkhul Naga — Sino-Tibetan (Tibeto-Burman, Kuki-Chin-Naga, Tangkhulic — sister to other Naga and to Kuki-Chin), ~140K, India (Manipur — Ukhrul District) + Myanmar (Sagaing).
+  // Sources: Ethnologue 27 'nmf'; Glottolog tang1346; Arokianathan (1987) Tangkhul Naga Phonology.
+  nmf: { name: 'Tangkhul Naga', native: 'Tangkhul', lat: 25.10, lng: 94.36, // Ukhrul, Manipur (Tangkhul cultural center)
+    words: { water:['ze','ze'], fire:['mei','mei'], sun:['nyithui','ɲitʰui'], moon:['lai','lai'], mother:['ina','ina'], father:['apa','apa'], eat:['ngui','ŋui'], drink:['rai','rai'], love:['cha','tʃa'], heart:['mokyaba','mokjaba'], tree:['leiyik','leijik'], house:['shim','ʃim'], dog:['ui','ui'], cat:['mibu','mibu'], hand:['phei','pʰei'], eye:['mi','mi'], hello:['hayau','hajau'], thanks:['ase','ase'], one:['kha','kʰa'], good:['kahei','kahei'] }},
   lus: { name: 'Mizo', native: 'Mizo ṭawng', lat: 23.73, lng: 92.72, // Aizawl
     words: { water:['tui','tui'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['in','in'], love:['hmangaih','hmaŋai'], heart:['thinlung','tʰinluŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['in','in'], dog:['ui','ui'], cat:['zawhte','zawʔte'], hand:['kut','kut'], eye:['mit','mit'], hello:['chibai','tʃibai'], thanks:['ka lawm e','ka lawm e'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] },
     wordEvidence: {
@@ -3774,6 +3782,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'agq'; Glottolog aghe1239; Hyman (1979) Aghem Grammatical Structure.
   agq: { name: 'Aghem', native: 'Aghem', lat: 6.16, lng: 10.10, // Wum, Cameroon
     words: { water:['mê\'','meʔ'], fire:['ìmáa\'','imáaʔ'], sun:['kû\'','kuʔ'], moon:['nâa\'','naːʔ'], mother:['mò','mo'], father:['tâ','ta'], eat:['nîa','nia'], drink:['nyâa','ɲaː'], love:['nkòŋ','ŋkoŋ'], heart:['mwâ','mwa'], tree:['kpa\'','kpaʔ'], house:['ndô','ndo'], dog:['mbî','mbi'], cat:['gò','ɡo'], hand:['kwô\'','kwoʔ'], eye:['dyiá','djia'], hello:['kâa\'','kaːʔ'], thanks:['ŋyaa\'','ŋjaːʔ'], one:['mò','mo'], good:['mwâ\'','mwaʔ'] }},
+  // Meta' (Menemo) — Niger-Congo Bantu (Grassfields, Ring sub-branch — sister to agq Aghem within Western Grassfields), ~50K, Cameroon (Northwest Region — Mbengwi, Bali).
+  // Sources: Ethnologue 27 'mgo'; Glottolog meta1238; Welmers (1973) African Language Structures.
+  mgo: { name: "Meta'", native: "Meta'", lat: 6.05, lng: 10.04, // Mbengwi, NW Region, Cameroon
+    words: { water:['mə','mə'], fire:['mɔŋ','mɔŋ'], sun:['nyam','ɲam'], moon:['nuŋ','nuŋ'], mother:['ma','ma'], father:['ta','ta'], eat:['mé','me'], drink:['nyo','ɲo'], love:['kɔŋ','kɔŋ'], heart:['mu','mu'], tree:['ti','ti'], house:['nda','nda'], dog:['mbu','mbu'], cat:['guŋ','ɡuŋ'], hand:['boa','boa'], eye:['dzi','dzi'], hello:['mɔlɔŋ','mɔlɔŋ'], thanks:['nfɔn','nfɔn'], one:['mɔ','mɔ'], good:['mwa','mwa'] }},
   // Dii (Duru, Dourou) — Niger-Congo Adamawa, ~50K speakers, North Cameroon (Adamaoua region).
   // Sources: Ethnologue 27 'dur'; Glottolog dury1238; Bohnhoff (1986) Yag Dii grammar.
   dur: { name: 'Dii', native: 'Yag Dii', lat: 7.32, lng: 13.58, // Ngaoundéré, Adamawa Cameroon
