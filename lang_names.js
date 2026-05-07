@@ -2022,12 +2022,37 @@ const LANG_NAMES = {
                vi: "Tiếng Huave San Mateo del Mar", th: "ภาษาฮัวเวซานมาเตโอเดลมาร์", id: "Bahasa Huave San Mateo del Mar", hi: "सान मातेओ देल मार हुआवे",
                de: "Huave (San Mateo del Mar)", fr: "Huave de San Mateo del Mar", it: "Huave di San Mateo del Mar",
                es_eu: "Huave de San Mateo del Mar", es_mx: "Huave de San Mateo del Mar", pt_eu: "Huave de San Mateo del Mar", pt_br: "Huave de San Mateo del Mar",
-               ru: "Уаве Сан-Матео-дель-Мар", uk: "Уаве Сан-Матео-дель-Мар", ar: "الهوافي سان ماتيو ديل مار", he: "וואווה סן מטאו דל מאר", sw: "Kihuave cha San Mateo del Mar" },
+               ru: "Уаве Сан-Матео-дель-Мар", uk: "Уаве Сан-Матео-дель-Мар", ar: "الهوافي سان ماتيو ديל مار", he: "וואווה סן מטאו דל מאר", sw: "Kihuave cha San Mateo del Mar" },
     };
     for (const code of Object.keys(ADDED84)) {
         for (const ui of Object.keys(ADDED84[code])) {
             if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
                 LANG_NAMES[ui][code] = ADDED84[code][ui];
+            }
+        }
+    }
+
+    const ADDED87 = {
+        lbj: { en: 'Ladakhi', ja: 'ラダック語', ko: '라다크어', zh: '拉达克语', yue: '拉達克語',
+               vi: 'Tiếng Ladakh', th: 'ภาษาลาดักห์', id: 'Bahasa Ladakhi', hi: 'लद्दाखी',
+               de: 'Ladakhi', fr: 'Ladakhi', it: 'Ladakhi',
+               es_eu: 'Ladakhi', es_mx: 'Ladakhi', pt_eu: 'Ladakhi', pt_br: 'Ladakhi',
+               ru: 'Ладакхи', uk: 'Ладакхі', ar: 'اللاداخية', he: 'לדאקית', sw: 'Kiladakhi' },
+        xkz: { en: 'Kurtöp', ja: 'クルテプ語', ko: '쿠르퇴프어', zh: '库尔特普语', yue: '庫爾特普語',
+               vi: 'Tiếng Kurtöp', th: 'ภาษากูร์เติพ', id: 'Bahasa Kurtöp', hi: 'कुर्तेप',
+               de: 'Kurtöp', fr: 'Kurtöp', it: 'Kurtöp',
+               es_eu: 'Kurtöp', es_mx: 'Kurtöp', pt_eu: 'Kurtöp', pt_br: 'Kurtöp',
+               ru: 'Куртёп', uk: 'Куртеп', ar: 'الكورتوب', he: 'קורטופ', sw: 'Kikurtöp' },
+        kmu: { en: 'Kanite', ja: 'カニテ語', ko: '카니테어', zh: '卡尼特语', yue: '卡尼特語',
+               vi: 'Tiếng Kanite', th: 'ภาษาคานีเต', id: 'Bahasa Kanite', hi: 'कनीते',
+               de: 'Kanite', fr: 'Kanite', it: 'Kanite',
+               es_eu: 'Kanite', es_mx: 'Kanite', pt_eu: 'Kanite', pt_br: 'Kanite',
+               ru: 'Каните', uk: 'Каніте', ar: 'الكانيتي', he: 'קניטה', sw: 'Kikanite' },
+    };
+    for (const code of Object.keys(ADDED87)) {
+        for (const ui of Object.keys(ADDED87[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED87[code][ui];
             }
         }
     }

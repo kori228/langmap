@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 842 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 845 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -502,6 +502,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'bft'; Glottolog balt1258; Read (1934) Balti Grammar; Bielmeier (1985).
   bft: { name: 'Balti', native: 'བལ་ཏི་སྐད', lat: 35.30, lng: 75.63, // Skardu, Gilgit-Baltistan
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་ཕ','apʰa'], eat:['ཟ','sa'], drink:['ཐུང་','tʰuŋ'], love:['ཤི','ʃi'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['བྱི་ལ','bjila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཨ་སི་ལམ','asilam'], thanks:['བཀའ་དྲིན་ཆེ','kadrintɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
+  // Ladakhi — Sino-Tibetan Bodish (Western Tibetic, Ladakhi-Balti subgroup — sister to bft Balti within Western Tibetic), ~110K, India (Ladakh — Leh district + lower Kargil; small Tibetan-region populations).
+  // Sources: Ethnologue 27 'lbj'; Glottolog lada1255; Koshal (1979) Ladakhi Grammar; Norman (2010) Ladakhi-English Dictionary.
+  lbj: { name: 'Ladakhi', native: 'ལ་དྭགས་སྐད', lat: 34.16, lng: 77.58, // Leh, Ladakh
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','zlawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['ཟ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ','ga'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ʃiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['བྱི་ལ','pila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཇུ་ལེ','dʒule'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuktɕetɕe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   // Khams Tibetan — Sino-Tibetan Bodish, ~1.5M speakers, eastern Tibet (Kham region) + western Sichuan + NW Yunnan + SE Qinghai.
   // Sources: Ethnologue 27 'khg'; Glottolog kham1284; Suzuki (2009) Khams Tibetan dialectology.
   khg: { name: 'Khams Tibetan', native: 'ཁམས་སྐད', lat: 30.04, lng: 99.10, // Kandze (Garzê), Sichuan
@@ -897,6 +901,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'kmh'; Glottolog kala1397; Pawley & Bulmer (2011) Dictionary of Kalam (with ethnographic notes 1500+ pages).
   kmh: { name: 'Kalam', native: 'Kalam', lat: -5.05, lng: 144.55, // Schrader Range, Madang, PNG
     words: { water:['ñeb','ɲeb'], fire:['nged','ŋged'], sun:['nb','nəb'], moon:['ñag','ɲaɡ'], mother:['ag','aɡ'], father:['mam','mam'], eat:['ñb','ɲəb'], drink:['ñ-','ɲə'], love:['kn-','kən'], heart:['mngm','məŋgəm'], tree:['mon','mon'], house:['kab','kab'], dog:['kayn','kajn'], cat:['pus','pus'], hand:['tn','tən'], eye:['ck','tʃək'], hello:['ñn','ɲən'], thanks:['ñib','ɲib'], one:['mdmagn','mədmaɡən'], good:['kayb','kajb'] }},
+  // Kanite — Trans-New Guinea (Kainantu-Goroka, Kainantu — sister to Kamano, Yagaria, Gadsup within the Kainantu branch of Eastern Highlands), ~6K, PNG (Eastern Highlands Province — Kainantu District around Kanite hamlet/Henganofi area).
+  // Sources: Ethnologue 27 'kmu'; Glottolog kani1281; McCarthy (1965) Kanite Phonology (SIL); Wurm (1975) Eastern Highlands languages.
+  kmu: { name: 'Kanite', native: 'Kanite', lat: -6.30, lng: 145.85, // Kainantu/Henganofi area, Eastern Highlands, PNG
+    words: { water:['nai','nai'], fire:['lo','lo'], sun:['suka','suka'], moon:['ika','ika'], mother:['nene','nene'], father:['nafa','nafa'], eat:['ne','ne'], drink:['ne','ne'], love:['avesi','avesi'], heart:['agu','agu'], tree:['yafa','jafa'], house:['no','no'], dog:['ovava','ovava'], cat:['pusi','pusi'], hand:['azana','azana'], eye:['avu','avu'], hello:['naipa','naipa'], thanks:['susu','susu'], one:['magoke','maɡoke'], good:['knaga','knaɡa'] }},
   // Mapos Buang — Austronesian (Malayo-Polynesian, Oceanic, Western Oceanic, Buang), ~10K, PNG (Morobe Province — Snake River valley, Mumeng District).
   // Sources: Ethnologue 27 'bzh'; Glottolog mapo1252; Hooley (2002) The Buang of Papua New Guinea.
   // Mussau-Emira — Austronesian (Oceanic, Western Oceanic, Mussau-Emira), ~5K, PNG (St Matthias Group — Mussau Island, Emira Island, north of New Ireland).
@@ -2073,6 +2081,10 @@ const LANG_DATA = {
     }},
   dz: { name: 'Dzongkha', native: 'རྫོང་ཁ', lat: 27.47, lng: 89.64, // Thimphu
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཀུ་ཟུ་ཟངས་པོ་ལ','kuzu zaŋpo la'], thanks:['བཀྲིན་ཆེ','kadrintɕe'], one:['གཅིག','tɕik'], good:['ལེགས་ཤོམ','lekɕom'] }},
+  // Kurtöp — Sino-Tibetan East Bodish (sister to Bumthang, Khengkha, Chocha-ngachakha within East Bodish — distinct from Tibetic dz Dzongkha despite Bhutan location), ~10K, Bhutan (Lhuntse Dzongkhag — Kurtoe gewog, eastern Bhutan highlands).
+  // Sources: Ethnologue 27 'xkz'; Glottolog kurt1248; Hyslop (2017) A Grammar of Kurtöp.
+  xkz: { name: 'Kurtöp', native: 'ཀུར་ཏོབ་ཁ', lat: 27.66, lng: 91.18, // Lhuntse, Bhutan
+    words: { water:['khwe','kʰwe'], fire:['mi','mi'], sun:['ningpe','niŋpe'], moon:['lai','lai'], mother:['amai','amai'], father:['apai','apai'], eat:['za','za'], drink:['thung','tʰuŋ'], love:['ga','ga'], heart:['nying','ɲiŋ'], tree:['shing','ɕiŋ'], house:['khim','kʰim'], dog:['khwi','kʰwi'], cat:['byila','bila'], hand:['lak','lak'], eye:['mik','mik'], hello:['kuzu zangpo','kuzu zaŋpo'], thanks:['kadrinche','kadrintɕe'], one:['thê','tʰe'], good:['lekpo','lekpo'] }},
   // Sikkimese (Drenjongke) — Tibetic, ~70K speakers, Sikkim India. Closely related to Dzongkha (dz) and Standard Tibetan (bo).
   // Sources: Ethnologue 27 'sip'; Glottolog sikk1242; van Driem (1992) Bumthang grammar (regional reference).
   sik: { name: 'Sikkimese', native: 'འབྲས་ལྗོངས་སྐད', lat: 27.33, lng: 88.61, // Gangtok, Sikkim
