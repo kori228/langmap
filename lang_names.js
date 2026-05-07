@@ -2576,4 +2576,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED107 = {
+        pnb: { en: 'Western Punjabi', ja: '西部パンジャブ語', ko: '서부 펀자브어', zh: '西旁遮普语', yue: '西旁遮普語',
+               vi: 'Tiếng Punjabi Tây', th: 'ภาษาปัญจาบตะวันตก', id: 'Bahasa Punjabi Barat', hi: 'पश्चिमी पंजाबी',
+               de: 'West-Pandschabisch', fr: 'Pendjabi occidental', it: 'Punjabi occidentale',
+               es_eu: 'Panyabí occidental', es_mx: 'Panyabí occidental', pt_eu: 'Panjabi ocidental', pt_br: 'Panjabi ocidental',
+               ru: 'Западный панджаби', uk: 'Західна панджабі', ar: 'البنجابية الغربية', he: 'פונג\'אבית מערבית', sw: 'Kipanjabi cha Magharibi' },
+        jia: { en: 'Jiamao', ja: 'ジアマオ語', ko: '지아마오어', zh: '加茂语', yue: '加茂語',
+               vi: 'Tiếng Jiamao', th: 'ภาษาจาเหมา', id: 'Bahasa Jiamao', hi: 'जियामाओ',
+               de: 'Jiamao', fr: 'Jiamao', it: 'Jiamao',
+               es_eu: 'Jiamao', es_mx: 'Jiamao', pt_eu: 'Jiamao', pt_br: 'Jiamao',
+               ru: 'Цзямао', uk: 'Цзямао', ar: 'الجياماو', he: 'צ\'יאמאו', sw: 'Kijiamao' },
+        hns: { en: 'Caribbean Hindustani', ja: 'カリビアン・ヒンドゥスターニー語', ko: '카리브 힌두스탄어', zh: '加勒比印度斯坦语', yue: '加勒比印度斯坦語',
+               vi: 'Tiếng Hindustani Caribe', th: 'ภาษาฮินดูสตานีแคริบเบียน', id: 'Bahasa Hindustani Karibia', hi: 'कैरिबियाई हिंदुस्तानी',
+               de: 'Karibisches Hindustani', fr: 'Hindoustani caribéen', it: 'Hindustani caraibico',
+               es_eu: 'Hindustaní caribeño', es_mx: 'Hindustaní caribeño', pt_eu: 'Hindustani caribenho', pt_br: 'Hindustani caribenho',
+               ru: 'Карибский хиндустани', uk: 'Карибська гіндустані', ar: 'الهندوستانية الكاريبية', he: 'הינדוסטני קריבי', sw: 'Kihindustani cha Karibia' },
+    };
+    for (const code of Object.keys(ADDED107)) {
+        for (const ui of Object.keys(ADDED107[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED107[code][ui];
+            }
+        }
+    }
 })();
