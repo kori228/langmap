@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 805 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 808 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1716,6 +1716,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'mwk'; Glottolog kita1244; Vydrin (2009) Manding language family.
   mwk: { name: 'Kita Maninkakan', native: 'Maninkakan', lat: 13.04, lng: -9.49, // Kita, Mali
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tle','tle'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['don','don'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['ñaakuma','ɲaːkuma'], hand:['bolo','bolo'], eye:['ña','ɲa'], hello:['i ni soɣoma','i ni soɣoma'], thanks:['i ni baara','i ni baːɾa'], one:['kelen','kelen'], good:['ñuman','ɲuman'] }},
+  // Western Maninkakan (Maninka of Guinea) — Niger-Congo Mande Western Manding (sister to bm Bambara/mwk Kita Maninka), ~750K-1M, Mali (south) + Guinea (Kankan, Faranah) + Senegal (Tambacounda).
+  // Sources: Ethnologue 27 'mlq'; Glottolog west2421; Vydrin (2009) Manding language family.
+  mlq: { name: 'Western Maninkakan', native: 'Maninkakan', lat: 10.39, lng: -9.30, // Kankan, Guinea (Maninka cultural center)
+    words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['na','na'], father:['fa','fa'], eat:['don','don'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['nyaakuma','ɲaːkuma'], hand:['bolo','bolo'], eye:['nya','ɲa'], hello:['i ni sögöma','i ni soɣoma'], thanks:['i ni baara','i ni baːɾa'], one:['kelen','kelen'], good:['nyuman','ɲuman'] }},
+  // Mano (Maa) — Niger-Congo Mande Southeast (Eastern Mande, sister to dnj Dan Yacouba), ~400K, Liberia (Nimba County) + Guinea (Forest Region) + Côte d'Ivoire (border).
+  // Sources: Ethnologue 27 'mev'; Glottolog mano1276; Khachaturyan (2015) A Grammar of Mano.
+  mev: { name: 'Mano', native: 'Maa', lat: 7.68, lng: -8.88, // Sanniquellie, Nimba County, Liberia
+    words: { water:['yi','ji'], fire:['kɔ','kɔ'], sun:['lɛ','lɛ'], moon:['lɔ','lɔ'], mother:['ɲɛ','ɲɛ'], father:['de','de'], eat:['mɛ','mɛ'], drink:['mi','mi'], love:['ŋalo','ŋalo'], heart:['gba','ɡba'], tree:['ka','ka'], house:['kpɛ','kpɛ'], dog:['gba','ɡba'], cat:['poso','poso'], hand:['kɔ','kɔ'], eye:['mi','mi'], hello:['ye','je'], thanks:['nyɛŋ','ɲɛŋ'], one:['do','do'], good:['kɛlɛ','kɛlɛ'] }},
   // Dan (Yacouba) — Niger-Congo Mande, ~1.6M speakers, western Côte d'Ivoire + Liberia.
   // Sources: Ethnologue 27 'dnj'; Glottolog yacu1238; Erman (2005) Dan tone system.
   dnj: { name: 'Dan', native: 'Yacouba', lat: 7.41, lng: -7.55, // Man, Côte d'Ivoire (Dan heartland)
@@ -4185,6 +4193,10 @@ const LANG_DATA = {
     words: { water:['पानी','paːni'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəj'], moon:['चंदा','tʃəndaː'], mother:['दाई','daːi'], father:['ददा','dadaː'], eat:['खाना','kʰaːnaː'], drink:['पीना','piːnaː'], love:['मया','məjaː'], heart:['हिरदा','hirdaː'], tree:['रूख','ruːkʰ'], house:['घर','ɡʱər'], dog:['कुकुर','kukur'], cat:['बिलई','bilai'], hand:['हाथ','haːtʰ'], eye:['आँखी','aːŋkʰi'], hello:['जोहार','dʒoːɦaːr'], thanks:['धन्यवाद','dʱənjəwaːd'], one:['एक','eːk'], good:['बने','bəne'] }},
   mnw: { name: 'Mon', native: 'ဘာသာ မန်', lat: 16.49, lng: 97.62, // Mawlamyine
     words: { water:['ဍာ်','ɗaʔ'], fire:['ပၟတ်','pəmoʔ'], sun:['တ္ၚဲ','tŋoa'], moon:['ဂိတု','kətoa'], mother:['မိ','mi'], father:['အပါ','ʔəpa'], eat:['ဂစုက်','caʔ'], drink:['သုၚ်','soŋ'], love:['ဍေံ','ɗɛm'], heart:['ဗ္ၜေံ','məɓɛm'], tree:['ဆု','sɔ'], house:['သ္ၚိ','heŋ'], dog:['ပ္ၟိၚ်','klɛp'], cat:['ဗ္ဍိုၚ်','ɓɔŋ'], hand:['တဲ','toa'], eye:['မတ်','mɔʔ'], hello:['ပ္ဍဲဂေါဝ်','ɓɔŋ kaow'], thanks:['တၚ်ဂုဏ်','təŋ ɡɔn'], one:['မွဲ','mwoa'], good:['ခိုဟ်','khɔh'] }},
+  // Eastern Lawa (Lavüa Lavüa) — Mon-Khmer (Palaungic, Eastern — sister to Western Lawa within Lawa cluster), ~17K, Thailand (Mae Hong Son, Chiang Mai — northern hilltribe).
+  // Sources: Ethnologue 27 'lwl'; Glottolog east2333; Mitani (1972) Eastern Lawa Phonology.
+  lwl: { name: 'Eastern Lawa', native: 'Lavüa', lat: 18.30, lng: 98.05, // Bo Luang, Chiang Mai Province
+    words: { water:['lo','lo'], fire:['nem','nem'], sun:['vüa','vɨa'], moon:['mëi','məi'], mother:['ame','ame'], father:['apa','apa'], eat:['ngui','ŋui'], drink:['ndüet','ndɨət'], love:['kruŋ','kɾuŋ'], heart:['kavüa','kavɨa'], tree:['ŋoŋ','ŋoŋ'], house:['nyëa','ɲəa'], dog:['ke','ke'], cat:['mai','mai'], hand:['miŋ','miŋ'], eye:['mat','mat'], hello:['lavüa','lavɨa'], thanks:['kop khun','kop kʰun'], one:['mvüa','mvɨa'], good:['hua','hua'] }},
   grt: { name: 'Garo', native: 'A·chik', lat: 25.51, lng: 90.21, // Tura, Meghalaya
     words: { water:['chi·','tʃi'], fire:['wa·al','waʔal'], sun:['sal','sal'], moon:['ja·tong','dʒatoŋ'], mother:['ama','ama'], father:['apa','apa'], eat:['cha·a','tʃaʔa'], drink:['ring·a','riŋa'], love:['katchea','katʃea'], heart:['ja·rik','dʒarik'], tree:['bol','bol'], house:['nok','nok'], dog:['atcha','atʃa'], cat:['menggo','meŋɡo'], hand:['jak','dʒak'], eye:['mikron','mikron'], hello:['namaste','namaste'], thanks:['mittela','mitːela'], one:['sa','sa'], good:['nama','nama'] }},
   nut: { name: 'Nùng', native: 'Cần Nùng', lat: 21.85, lng: 106.76, // Lạng Sơn

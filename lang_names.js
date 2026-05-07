@@ -1710,4 +1710,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED65 = {
+        mlq: { en: 'Western Maninkakan', ja: '西部マニンカ語', ko: '서부 마닌카어', zh: '西部马宁卡语', yue: '西部馬寧卡語',
+               vi: 'Tiếng Maninka Tây', th: 'ภาษามานินกาตะวันตก', id: 'Maninkakan Barat', hi: 'पश्चिमी मनिंकाकान',
+               de: 'West-Maninkakan', fr: 'Maninkakan occidental', it: 'Maninkakan occidentale',
+               es_eu: 'Maninkakan occidental', es_mx: 'Maninkakan occidental', pt_eu: 'Maninkakan ocidental', pt_br: 'Maninkakan ocidental',
+               ru: 'Западный манинка', uk: 'Західна маніка', ar: 'المانينكاكان الغربية', he: 'מנינקקאן מערבי', sw: 'Kimaninkakan cha Magharibi' },
+        mev: { en: 'Mano', ja: 'マノ語', ko: '마노어', zh: '马诺语', yue: '馬諾語',
+               vi: 'Tiếng Mano', th: 'ภาษามาโน', id: 'Bahasa Mano', hi: 'मानो',
+               de: 'Mano', fr: 'Mano', it: 'Mano',
+               es_eu: 'Mano', es_mx: 'Mano', pt_eu: 'Mano', pt_br: 'Mano',
+               ru: 'Мано', uk: 'Мано', ar: 'المانوية', he: 'מאנו', sw: 'Kimano' },
+        lwl: { en: 'Eastern Lawa', ja: '東部ラワ語', ko: '동부 라와어', zh: '东部拉瓦语', yue: '東部拉瓦語',
+               vi: 'Tiếng Lawa Đông', th: 'ภาษาลัวะตะวันออก', id: 'Lawa Timur', hi: 'पूर्वी लावा',
+               de: 'Ost-Lawa', fr: 'Lawa oriental', it: 'Lawa orientale',
+               es_eu: 'Lawa oriental', es_mx: 'Lawa oriental', pt_eu: 'Lawa oriental', pt_br: 'Lawa oriental',
+               ru: 'Восточный лава', uk: 'Східна лава', ar: 'اللاوا الشرقية', he: 'לאווה מזרחי', sw: 'Kilawa cha Mashariki' },
+    };
+    for (const code of Object.keys(ADDED65)) {
+        for (const ui of Object.keys(ADDED65[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED65[code][ui];
+            }
+        }
+    }
 })();
