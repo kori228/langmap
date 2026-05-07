@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 775 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 778 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -632,6 +632,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'urh'; Glottolog urho1239; Aziza (2003) Urhobo Phonetics.
   urh: { name: 'Urhobo', native: 'Urhobo', lat: 5.51, lng: 5.76, // Ughelli/Delta State, Nigeria
     words: { water:['ame','ame'], fire:['erane','eɾane'], sun:['ọvẹ','ɔvɛ'], moon:['emẹrẹ','emɛɾɛ'], mother:['onie','onie'], father:['ọsẹ','ɔsɛ'], eat:['re','ɾe'], drink:['da','da'], love:['ẹguọnọ','ɛɡwɔnɔ'], heart:['udu','udu'], tree:['orhan','oɾan'], house:['uwevwi','uweβwi'], dog:['ebọ','ebɔ'], cat:['ọtọma','ɔtɔma'], hand:['obọ','obɔ'], eye:['aro','aɾo'], hello:['migwo','miɡwo'], thanks:['miguo','miɡuo'], one:['ọvo','ɔvo'], good:['ọmaẹjẹ','ɔmaɛdʒɛ'] }},
+  // Degema — Niger-Congo Edoid (Delta-Edoid sub-branch, sister to Engenni and Epie), ~25K, Nigeria (Rivers State — Bonny Local Government Area).
+  // Sources: Ethnologue 27 'dge'; Glottolog dege1246; Kari (2004) A Reference Grammar of Degema; Williamson (1989).
+  dge: { name: 'Degema', native: 'Atala-mọ', lat: 4.45, lng: 7.18, // Bonny, Rivers State, Nigeria
+    words: { water:['mọn','mɔn'], fire:['ọmạrị','ɔmaɾi'], sun:['ọvịnị','ɔvini'], moon:['ọsọ','ɔsɔ'], mother:['inyeyẹ','iɲɛjɛ'], father:['etete','etete'], eat:['re','ɾe'], drink:['da','da'], love:['inyiẹna','iɲjɛna'], heart:['ọkọmpọnị','ɔkɔmpɔni'], tree:['eyo','ejo'], house:['ọsụnẹ','ɔsunɛ'], dog:['ifụnị','ifuni'], cat:['ọchẹ','ɔtʃɛ'], hand:['ọnẹ','ɔnɛ'], eye:['enẹ','enɛ'], hello:['amọn','amɔn'], thanks:['nani','nani'], one:['ọmọ','ɔmɔ'], good:['ekenẹ','ekenɛ'] }},
   // Isoko — Niger-Congo Edoid, ~600K speakers, Delta State Nigeria. Sister to Urhobo (urh).
   // Sources: Ethnologue 27 'iso'; Glottolog isok1238; Williamson (1972) Isoko phonology.
   iso: { name: 'Isoko', native: 'Isoko', lat: 5.66, lng: 6.24, // Oleh, Delta State (Isoko heartland)
@@ -1406,6 +1410,10 @@ const LANG_DATA = {
   },
   nci: { name: 'Classical Nahuatl', native: 'Nāhuatl', lat: 19.43, lng: -99.13,
     words: { water:['ātl','aːtɬ'], fire:['tlētl','tɬeːtɬ'], sun:['tōnatiuh','toːnatiw'], moon:['mētztli','meːtstɬi'], mother:['nāntli','naːntɬi'], father:['tāhtli','taːtɬi'], eat:['tlacua','tɬakʷa'], drink:['ātli','aːtɬi'], love:['tlazōhtla','tɬasoːtɬa'], heart:['yōllōtl','joːlːoːtɬ'], tree:['cuahuitl','kʷawitɬ'], house:['calli','kalːi'], dog:['itzcuīntli','itskʷiːntɬi'], cat:['mīztōn','miːstoːn'], hand:['māitl','maːitɬ'], eye:['īxtli','iːʃtɬi'], hello:['niltze','niltse'], thanks:['tlazōhcāmati','tɬasoːʰkaːmati'], one:['cē','seː'], good:['cualli','kʷalːi'] }},
+  // Isthmus-Cosoleacaque Nahuatl (also Mecayapan-Pajapan Nahuatl) — Uto-Aztecan Nahuan, ~25K, Mexico (Veracruz — Cosoleacaque, Pajapan, Mecayapan in the Isthmus of Tehuantepec).
+  // Sources: Ethnologue 27 'nhx'; Glottolog isth1238; Wolgemuth (1981) Gramática Náhuatl de Mecayapan.
+  nhx: { name: 'Isthmus Nahuatl', native: 'Mexicaneru', lat: 18.00, lng: -94.63, // Mecayapan, Veracruz
+    words: { water:['ahtli','aʔtli'], fire:['tit','tit'], sun:['tonal','tonal'], moon:['metz','mets'], mother:['nan','nan'], father:['tat','tat'], eat:['tacua','takʷa'], drink:['ati','ati'], love:['nech-nequi','netʃneki'], heart:['yolio','jolio'], tree:['cuahuit','kʷawit'], house:['cali','kali'], dog:['itzcuintli','itskʷintli'], cat:['miston','miston'], hand:['mahuit','mawit'], eye:['ix','iʃ'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
   myn: { name: 'Classical Maya', native: 'Maaya Tzij', lat: 14.63, lng: -90.51,
     words: { water:['haʼ','haʔ'], fire:['kʼahkʼ','kʼahkʼ'], sun:['kʼin','kʼin'], moon:['uh','uh'], mother:['naʼ','naʔ'], father:['yuum','juːm'], eat:['wiʼij','wiʔiχ'], drink:['ukʼ','ukʼ'], love:['yaah','jaːh'], heart:['pixan','piʃan'], tree:['cheʼ','tʃeʔ'], house:['otoch','otoːtʃ'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼab','kʼab'], eye:['ich','itʃ'], hello:['bix a beel','biʃ a beːl'], thanks:['nibʼoolal','nibʼoːlal'], one:['jun','χun'], good:['utz','uts'] }},
   ine: { name: 'Proto-Indo-European', native: '*dń̥ǵʰwéh₂s', lat: 47.00, lng: 39.00,
@@ -2003,6 +2011,10 @@ const LANG_DATA = {
     words: { water:['augua','ˈawɣwa'], fire:['fuego','ˈfweɣo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['mai','maj'], father:['pai','paj'], eat:['minchar','minˈt͡ʃaɾ'], drink:['beber','beˈβeɾ'], love:['amor','aˈmoɾ'], heart:['corazón','koɾaˈθon'], tree:['árbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['can','kan'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['güello','ˈɣweʎo'], hello:['hola','ˈola'], thanks:['gracias','ˈɡɾaθjas'], one:['un','un'], good:['bueno','ˈbweno'] }},
   rup: { name: 'Aromanian', native: 'Armâneashti', lat: 40.52, lng: 22.20, // Veria area
     words: { water:['apâ','ˈapɨ'], fire:['foc','fok'], sun:['soare','ˈsoare'], moon:['lunâ','ˈlunɨ'], mother:['dadâ','ˈdadɨ'], father:['tatâ','ˈtatɨ'], eat:['mâcari','mɨˈkari'], drink:['beari','ˈbeari'], love:['vreari','ˈvreari'], heart:['inimâ','ˈinimɨ'], tree:['arbur','ˈarbur'], house:['casâ','ˈkasɨ'], dog:['câni','ˈkɨni'], cat:['cãtushã','kɨˈtuʃɨ'], hand:['mânâ','ˈmɨnɨ'], eye:['oclju','ˈokʎu'], hello:['bunâ-vã ziuâ','ˈbunɨ vɨ ˈziwɨ'], thanks:['harauâ','haˈrawɨ'], one:['unu','ˈunu'], good:['bun','bun'] }},
+  // Megleno-Romanian — Eastern Romance (sister to ro Romanian and rup Aromanian, third smallest of 4 Eastern Romance branches), ~5K, Greece (Meglen Valley) + small Republic of North Macedonia.
+  // Sources: Ethnologue 27 'ruq'; Glottolog megl1237; Atanasov (1990) Meglenoromâna.
+  ruq: { name: 'Megleno-Romanian', native: 'Vlaheşte', lat: 41.08, lng: 22.18, // Notia, Pella regional unit (Meglen valley), Greece
+    words: { water:['apâ','ˈapɨ'], fire:['foc','fok'], sun:['soari','ˈsoari'], moon:['lunâ','ˈlunɨ'], mother:['mumâ','ˈmumɨ'], father:['tatâ','ˈtatɨ'], eat:['mocăm','moˈkɨm'], drink:['biem','biem'], love:['ublami','ˈublami'], heart:['inima','ˈinima'], tree:['lemnu','lemnu'], house:['casa','ˈkasa'], dog:['căni','ˈkɨni'], cat:['mâţa','ˈmɨtsa'], hand:['mâna','ˈmɨna'], eye:['ocl','okl'], hello:['ubavu','uˈbavu'], thanks:['hăirau','hɨiˈrau'], one:['unu','ˈunu'], good:['bunu','ˈbunu'] }},
   wa: { name: 'Walloon', native: 'Walon', lat: 50.63, lng: 5.57, // Liège
     words: { water:['aiwe','ˈajwə'], fire:['feu','fø'], sun:['solea','soˈlea'], moon:['lune','ˈlyn'], mother:['mame','mam'], father:['peure','pœːr'], eat:['magnî','maˈɲi'], drink:['boere','bweːr'], love:['amour','aˈmuːr'], heart:['cour','kuːr'], tree:['åbe','ˈɔːb'], house:['måjhon','mwaˈʒõ'], dog:['tchin','tʃɛ̃'], cat:['tchèt','tʃɛ'], hand:['min','mɛ̃'], eye:['ouy','uj'], hello:['bondjoû','bõˈd͡ʒu'], thanks:['mèrci','mɛɾˈsi'], one:['onk','õk'], good:['bon','bõ'] }},
   // Uralic minor (Russia) — Audit Task 179: kv (ISO 639-1 macro for Komi)

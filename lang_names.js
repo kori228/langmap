@@ -1460,4 +1460,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED55 = {
+        ruq: { en: 'Megleno-Romanian', ja: 'メグレノ・ルーマニア語', ko: '메글레노-루마니아어', zh: '梅格莱诺-罗马尼亚语', yue: '梅格萊諾-羅馬尼亞語',
+               vi: 'Tiếng România Megleno', th: 'ภาษาเมเกลโน-โรมาเนีย', id: 'Bahasa Megleno-Rumania', hi: 'मेग्लेनो-रोमानियाई',
+               de: 'Meglenorumänisch', fr: 'Méglénoroumain', it: 'Megleno-romeno',
+               es_eu: 'Meglenorrumano', es_mx: 'Meglenorrumano', pt_eu: 'Meglenorromeno', pt_br: 'Meglenorromeno',
+               ru: 'Мегленорумынский', uk: 'Мегленорумунська', ar: 'الميغلينو-رومانية', he: 'מגלנו-רומנית', sw: 'Kiromania cha Megleno' },
+        nhx: { en: 'Isthmus Nahuatl', ja: 'イスムス・ナワトル語', ko: '이스무스 나우아틀어', zh: '伊斯穆斯纳瓦特尔语', yue: '伊斯穆斯納瓦特爾語',
+               vi: 'Tiếng Nahuatl Eo Đất', th: 'ภาษานาวาตล์อิสมุส', id: 'Nahuatl Tanah Genting', hi: 'इस्थमस नहुआतल',
+               de: 'Isthmus-Nahuatl', fr: 'Nahuatl de l\\'isthme', it: 'Nahuatl dell\\'istmo',
+               es_eu: 'Náhuatl del Istmo', es_mx: 'Náhuatl del Istmo', pt_eu: 'Nauatle do Istmo', pt_br: 'Nauatle do Istmo',
+               ru: 'Истмус-науатль', uk: 'Істмус-науатль', ar: 'النواتل البرزخية', he: 'נאוואטל מצרי', sw: 'Kinahuatl cha Istmo' },
+        dge: { en: 'Degema', ja: 'デゲマ語', ko: '데게마어', zh: '德格马语', yue: '德格馬語',
+               vi: 'Tiếng Degema', th: 'ภาษาดีเกมา', id: 'Bahasa Degema', hi: 'देगेमा',
+               de: 'Degema', fr: 'Dégéma', it: 'Degema',
+               es_eu: 'Degema', es_mx: 'Degema', pt_eu: 'Degema', pt_br: 'Degema',
+               ru: 'Дегема', uk: 'Дегема', ar: 'الدجيمة', he: 'דגמה', sw: 'Kidegema' },
+    };
+    for (const code of Object.keys(ADDED55)) {
+        for (const ui of Object.keys(ADDED55[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED55[code][ui];
+            }
+        }
+    }
 })();
