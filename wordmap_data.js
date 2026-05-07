@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 664 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 667 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -523,6 +523,10 @@ const LANG_DATA = {
     words: { water:['вода','vɔda'], fire:['огън','ɔɡɐn'], sun:['слънце','slɤnt͡sɛ'], moon:['луна','luna'], mother:['майка','majka'], father:['баща','baʃta'], eat:['ям','jam'], drink:['пия','pijɐ'], love:['любов','ljubɔf'], heart:['сърце','sɐrt͡sɛ'], tree:['дърво','dɐrvɔ'], house:['къща','kɐʃtɐ'], dog:['куче','kut͡ʃɛ'], cat:['котка','kɔtka'], hand:['ръка','rɐka'], eye:['око','ɔkɔ'], hello:['здравей','zdravɛj'], thanks:['благодаря','blaɡɔdarʲa'], one:['едно','ɛdnɔ'], good:['добър','dɔbɐr'] }},
   lt: { name: 'Lithuanian', native: 'Lietuvių', lat: 54.69, lng: 25.28,
     words: { water:['vanduo','vɐnduɔ'], fire:['ugnis','uɡʲnʲɪs'], sun:['saulė','sɐʊlʲeː'], moon:['mėnulis','mʲeːnʊlʲɪs'], mother:['motina','mɔːtʲɪnɐ'], father:['tėvas','tʲeːvɐs'], eat:['valgyti','vɐlɡʲiːtʲɪ'], drink:['gerti','ɡʲærtʲɪ'], love:['meilė','mʲæɪlʲeː'], heart:['širdis','ʃʲɪrʲdʲɪs'], tree:['medis','mʲædʲɪs'], house:['namas','nɐːmɐs'], dog:['šuo','ʃuɔ'], cat:['katė','kɐːtʲeː'], hand:['ranka','rɐŋkɐ'], eye:['akis','ɐːkʲɪs'], hello:['labas','lɐːbɐs'], thanks:['ačiū','ɐtʃʲuː'], one:['vienas','vʲɪɛnɐs'], good:['geras','ɡʲærɐs'] }},
+  // Samogitian — Baltic, ~500K, NW Lithuania (Žemaitija). Sister to Lithuanian; preserves archaic features.
+  // Sources: Ethnologue 27 'sgs'; Glottolog samo1265; Pabrėža (2009) Žemaičių rašyba.
+  sgs: { name: 'Samogitian', native: 'Žemaitiu kalba', lat: 55.72, lng: 21.86, // Telšiai (Samogitian cultural center)
+    words: { water:['vondou','vɔnduː'], fire:['ognės','ɔɡneːs'], sun:['saulė','sauleː'], moon:['mienou','mʲeːnuː'], mother:['mama','mama'], father:['tievs','tʲieːvs'], eat:['valgītė','vaɫɡʲiːteː'], drink:['gertė','ɡʲɛrteː'], love:['meilė','mʲɛːileː'], heart:['šėrdės','ʃʲɛːrdʲɛːs'], tree:['medis','mʲɛdʲɪs'], house:['noms','nɔms'], dog:['šou','ʃoː'], cat:['katė','katʲeː'], hand:['ronka','rɔŋka'], eye:['akės','akʲɛːs'], hello:['labs','labs'], thanks:['ačiū','atʃuː'], one:['vins','vʲɪns'], good:['gers','ɡʲɛrs'] }},
   lv: { name: 'Latvian', native: 'Latviešu', lat: 56.95, lng: 24.11,
     words: { water:['ūdens','uːdɛns'], fire:['uguns','uɡuns'], sun:['saule','saulɛ'], moon:['mēness','meːnɛs'], mother:['māte','maːtɛ'], father:['tēvs','teːvs'], eat:['ēst','eːst'], drink:['dzert','dzɛrt'], love:['mīlestība','miːlɛstiːba'], heart:['sirds','sirds'], tree:['koks','kuɔks'], house:['māja','maːja'], dog:['suns','suns'], cat:['kaķis','kaʲcis'], hand:['roka','ruɔka'], eye:['acs','ats'], hello:['sveiki','svɛiki'], thanks:['paldies','paldiɛs'], one:['viens','viɛns'], good:['labs','labs'] }},
   sq: { name: 'Albanian', native: 'Shqip', lat: 41.33, lng: 19.82,
@@ -1678,6 +1682,10 @@ const LANG_DATA = {
     words: { water:['mant','mant'], fire:['anang','anaŋ'], sun:['arɛ','arɛ'], moon:['arai','arai'], mother:['ya','ja'], father:['pa','pa'], eat:['ði','ði'], drink:['di','di'], love:['ka-haŋkə','kahaŋkə'], heart:['ka-yɔn','kajɔn'], tree:['kʌ-ant','kʌant'], house:['anseth','ansetʰ'], dog:['kabul','kabul'], cat:['kanaŋ','kanaŋ'], hand:['anpa','anpa'], eye:['ari','ari'], hello:['seke','seke'], thanks:['sɔŋ','sɔŋ'], one:['piɲ','piɲ'], good:['lɔŋ','lɔŋ'] }},
   dyu: { name: 'Dyula', native: 'Julakan', lat: 11.18, lng: -4.30, // Bobo-Dioulasso
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dun','dun'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiri'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni soɣoma','i ni soɣoma'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ɲuman','ɲuman'] }},
+  // Susu (Soso) — Mande, ~1.2M speakers, coastal Guinea + Sierra Leone. National language of Guinea.
+  // Sources: Ethnologue 27 'sus'; Glottolog susu1250; Houis (1963) Etude descriptive de la langue Susu.
+  sus: { name: 'Susu', native: 'Sosokuye', lat: 9.51, lng: -13.71, // Conakry, Guinea
+    words: { water:['yi','ji'], fire:['te','te'], sun:['soge','soɡe'], moon:['kike','kike'], mother:['nga','ŋɡa'], father:['baba','baba'], eat:['don','don'], drink:['min','min'], love:['xanunteya','xanunteja'], heart:['biye','bije'], tree:['wuri','wuɾi'], house:['banxi','banxi'], dog:['barɛ','baɾɛ'], cat:['nyɛɛsu','ɲɛːsu'], hand:['belexɛ','belexɛ'], eye:['ya','ja'], hello:['inu uxara','inu uxaɾa'], thanks:['inu wali','inu wali'], one:['keren','keɾen'], good:['fanyi','faɲi'] }},
   // === Phase 3L: more Indigenous Americas + remaining S Asian/SE Asian ===
   // Indo-Aryan (more)
   syl: { name: 'Sylheti', native: 'ꠍꠤꠟꠐꠤ', lat: 24.89, lng: 91.87, // Sylhet
@@ -3040,6 +3048,10 @@ const LANG_DATA = {
   // Burmese variety
   rki: { name: 'Rakhine', native: 'ရခိုင်ဘာသာ', lat: 20.15, lng: 92.90, // Sittwe
     words: { water:['ရေ','ɹeː'], fire:['မီး','miː'], sun:['နေ','neː'], moon:['လ','la'], mother:['အမေ','ʔəmeː'], father:['အဖေ','ʔəpʰeː'], eat:['စား','sa'], drink:['သာက်','θaˀ'], love:['အချစ်','ʔəkʰjiˀ'], heart:['နှလုံး','n̥əlóuɴ'], tree:['သစ်ပင်','θiˀpìɴ'], house:['အိမ်','ʔèiɴ'], dog:['ခွေး','kʰwé'], cat:['ကြောင်','tɕàuɴ'], hand:['လက်','lɛˀ'], eye:['မျက်စိ','mjɛˀsì'], hello:['မဂႝလာပါ','mìɴɡəlà pà'], thanks:['ကျေးဇူးတင်ပါတယ်','tɕézú tìɴ pà dɛ̀'], one:['တစ်','tiˀ'], good:['ကောင်း','káuɴ'] }},
+  // Hakha Chin (Lai) — Sino-Tibetan Kuki-Chin, ~125K speakers, Chin State Myanmar + Mizoram India.
+  // Sources: Ethnologue 27 'cnh'; Glottolog haka1240; King (2010) Hakha Lai Grammar.
+  cnh: { name: 'Hakha Chin', native: 'Lai Holh', lat: 22.65, lng: 93.61, // Hakha, Chin State, Myanmar
+    words: { water:['ti','ti'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['din','din'], love:['daw','daw'], heart:['lung','luŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['inn','inn'], dog:['ui','ui'], cat:['minu','minu'], hand:['kut','kut'], eye:['mit','mit'], hello:['na dam maw','na dam maw'], thanks:['ka lawm','ka lawm'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] }},
   // Khmer variety (Thailand-Cambodia border)
   kxm: { name: 'Northern Khmer', native: 'ភាសាខ្មែរ (Surin)', lat: 14.88, lng: 103.49, // Surin
     words: { water:['ទឹក','tək'], fire:['ភ្លើង','pʰlɤːŋ'], sun:['ថ្ងៃ','tŋai'], moon:['ខែ','kʰae'], mother:['ម៉ែ','maɛ'], father:['ប៉ា','paː'], eat:['ស៊ី','siː'], drink:['ផឹក','pʰək'], love:['ស្រឡាញ់','sralaɲ'], heart:['ចិត្ត','tɕit'], tree:['ដើមឈើ','daəm tʃʰəː'], house:['ផ្ទះ','ptʰeah'], dog:['ឆ្កែ','tʃʰkae'], cat:['ឆ្មា','tʃʰmaː'], hand:['ដៃ','daj'], eye:['ភ្នែក','pʰnɛːk'], hello:['សួស្តី','suːəsdəj'], thanks:['អរគុណ','ʔɔːkun'], one:['មួយ','muːj'], good:['ល្អ','lʔɑː'] }},

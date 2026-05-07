@@ -535,4 +535,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Hakha Chin (cnh), Susu (sus), Samogitian (sgs) — Sino-Tibetan + Mande + Baltic.
+    const ADDED18 = {
+        cnh: { en: 'Hakha Chin', ja: 'ハカ・チン語', ko: '하카 친어', zh: '哈卡钦语', yue: '哈卡欽語',
+               vi: 'Tiếng Hakha Chin', th: 'ภาษาฮากาชิน', id: 'Hakha Chin', hi: 'हाखा चिन',
+               de: 'Hakha-Chin', fr: 'Hakha tchin', it: 'Hakha Chin',
+               es_eu: 'Chin de Hakha', es_mx: 'Chin de Hakha', pt_eu: 'Chin de Hakha', pt_br: 'Chin de Hakha',
+               ru: 'Хакха-чин', uk: 'Хакха-чин', ar: 'الشين هاخا', he: 'הקה צ׳ין', sw: 'Hakha Chin' },
+        sus: { en: 'Susu', ja: 'スース語', ko: '수수어', zh: '苏苏语', yue: '蘇蘇語',
+               vi: 'Tiếng Susu', th: 'ภาษาซูซู', id: 'Susu', hi: 'सुसु',
+               de: 'Susu', fr: 'Soussou', it: 'Susu',
+               es_eu: 'Susu', es_mx: 'Susu', pt_eu: 'Sosso', pt_br: 'Sosso',
+               ru: 'Сусу', uk: 'Сусу', ar: 'السوسو', he: 'סוסו', sw: 'Kisusu' },
+        sgs: { en: 'Samogitian', ja: 'サモギティア語', ko: '사모기티아어', zh: '萨莫吉提亚语', yue: '薩莫吉提亞語',
+               vi: 'Tiếng Samogiti', th: 'ภาษาซาโมจิเทีย', id: 'Samogitian', hi: 'समोगिटियन',
+               de: 'Schemaitisch', fr: 'Samogitien', it: 'Samogitico',
+               es_eu: 'Samogitio', es_mx: 'Samogitio', pt_eu: 'Samogício', pt_br: 'Samogício',
+               ru: 'Жемайтский', uk: 'Жемайтська', ar: 'السامويتية', he: 'ז׳מאיטית', sw: 'Kisamogitian' },
+    };
+    for (const code of Object.keys(ADDED18)) {
+        for (const ui of Object.keys(ADDED18[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED18[code][ui];
+            }
+        }
+    }
 })();
