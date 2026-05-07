@@ -48,6 +48,39 @@
             text-decoration: none;
         }
         .changelog .back:hover { text-decoration: underline; }
+        .changelog .milestones {
+            background: #f6f8fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin: 0 0 28px;
+            font-size: 13px;
+        }
+        .changelog .milestones h2 {
+            font-size: 14px;
+            margin: 0 0 8px;
+            color: #333;
+        }
+        .changelog .milestones ul {
+            margin: 0;
+            padding-left: 18px;
+            list-style: none;
+        }
+        .changelog .milestones li {
+            margin-bottom: 2px;
+            color: #555;
+        }
+        .changelog .milestones .count {
+            display: inline-block;
+            min-width: 56px;
+            font-weight: 600;
+            color: #0366d6;
+        }
+        .changelog .milestones .when {
+            color: #999;
+            font-size: 12px;
+            margin-left: 4px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +88,19 @@
         <a href="index.html" class="back">&larr; Back to LangMap</a>
         <h1>Changelog</h1>
         <p class="lead">A running log of fixes, additions, and improvements to LangMap.</p>
+
+        <div class="milestones">
+            <h2>Major milestones — language count</h2>
+            <ul>
+                <li><span class="count">100</span> languages <span class="when">— 2026-03-17 (<code>b221713</code>)</span></li>
+                <li><span class="count">200</span> languages <span class="when">— 2026-04-23 (<code>f4f440d</code>, Word Map launch with 197 langs)</span></li>
+                <li><span class="count">300</span> languages <span class="when">— 2026-05-02 (<code>2e8bf99</code>, 298 → 310)</span></li>
+                <li><span class="count">400</span> languages <span class="when">— 2026-05-02 (<code>76e3c86</code>, 394 → 406)</span></li>
+                <li><span class="count">500</span> languages <span class="when">— 2026-05-02 (<code>5494daa</code>, 490 → 502)</span></li>
+                <li><span class="count">600</span> languages <span class="when">— 2026-05-06 (<code>8c98ed3</code>, 595 → 603)</span></li>
+                <li><span class="count">700</span> languages <span class="when">— 2026-05-07 (<code>c44ec37</code>) — current</span></li>
+            </ul>
+        </div>
 
         <div class="entry">
             <div class="date">2026-05-07 (cont. 3) — Validator hardening: audit Tasks 198–206</div>
