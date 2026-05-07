@@ -860,4 +860,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Tai Dam (blt), Mongghul (mvf), Atoni (aoz) — Vietnam Tai + China Mongolic + West Timor.
+    const ADDED31 = {
+        blt: { en: 'Tai Dam', ja: 'タイ・ダム語', ko: '타이담어', zh: '傣端语', yue: '傣端語',
+               vi: 'Tiếng Thái Đen', th: 'ภาษาไทดำ', id: 'Tai Dam', hi: 'ताई दाम',
+               de: 'Tai Dam (Schwarz-Tai)', fr: 'Tai dam', it: 'Tai Dam',
+               es_eu: 'Tai dam', es_mx: 'Tai dam', pt_eu: 'Tai dam', pt_br: 'Tai dam',
+               ru: 'Тай-дам', uk: 'Тай-дам', ar: 'الطاي دام', he: 'טאי דם', sw: 'Tai Dam' },
+        mvf: { en: 'Mongghul', ja: 'モングォル語', ko: '몽굴어', zh: '蒙古尔语', yue: '蒙古爾語',
+               vi: 'Tiếng Mongghul', th: 'ภาษามองกูล', id: 'Mongghul', hi: 'मोंगुल',
+               de: 'Mongghul', fr: 'Mongghul', it: 'Mongghul',
+               es_eu: 'Mongghul', es_mx: 'Mongghul', pt_eu: 'Mongol-Tu', pt_br: 'Mongol-Tu',
+               ru: 'Монгор', uk: 'Монгор', ar: 'المنغل', he: 'מונגול', sw: 'Mongghul' },
+        aoz: { en: 'Atoni', ja: 'アトニ語', ko: '아토니어', zh: '阿托尼语', yue: '阿托尼語',
+               vi: 'Tiếng Atoni', th: 'ภาษาอาโตนิ', id: 'Atoni', hi: 'अतोनी',
+               de: 'Atoni', fr: 'Atoni', it: 'Atoni',
+               es_eu: 'Atoni', es_mx: 'Atoni', pt_eu: 'Atoni', pt_br: 'Atoni',
+               ru: 'Атони', uk: 'Атоні', ar: 'الأتوني', he: 'אטוני', sw: 'Atoni' },
+    };
+    for (const code of Object.keys(ADDED31)) {
+        for (const ui of Object.keys(ADDED31[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED31[code][ui];
+            }
+        }
+    }
 })();

@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 703 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 706 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -291,6 +291,10 @@ const LANG_DATA = {
   // Siberian Mongolic
   bxr: { name: 'Buryat', native: 'Буряад хэлэн', lat: 51.83, lng: 107.61, // Ulan-Ude
     words: { water:['уһан','uhan'], fire:['гал','ɡal'], sun:['наран','naran'], moon:['һара','hara'], mother:['эхэ','exe'], father:['эсэгэ','esege'], eat:['эдеэлхэ','edeːlxe'], drink:['ууха','uːxa'], love:['дуран','duran'], heart:['зүрхэн','zyrxen'], tree:['модон','modon'], house:['гэр','ɡer'], dog:['нохой','noxoj'], cat:['миисгэй','miːsɡej'], hand:['гар','ɡar'], eye:['нюдэн','ɲuden'], hello:['сайн байна','sajn bajna'], thanks:['баярлаа','bajarlaː'], one:['нэгэн','neɡen'], good:['һайн','hajn'] }},
+  // Mongghul (Mangghuer/Tu) — Mongolic Shirongol, ~150K speakers, Qinghai/Gansu China.
+  // Sources: Ethnologue 27 'mvf'; Glottolog mongh1252 / mong1330; Slater (2003) Mangghuer Reference Grammar.
+  mvf: { name: 'Mongghul', native: 'Mongghul', lat: 36.83, lng: 102.40, // Huzhu Tu Autonomous County, Qinghai
+    words: { water:['usu','usu'], fire:['ghal','ʁal'], sun:['nara','nara'], moon:['sara','sara'], mother:['ana','ana'], father:['ada','ada'], eat:['idi-','idi'], drink:['uu-','uː'], love:['durala-','durala'], heart:['jürige','dʒyriɡe'], tree:['modu','modu'], house:['ger','ɡer'], dog:['noghui','noʁui'], cat:['mau','mau'], hand:['ghar','ʁar'], eye:['nidu','nidu'], hello:['amur sain','amur sain'], thanks:['bayarla-','bajarla'], one:['nige','niɡe'], good:['sain','sain'] }},
   // Tungusic
   evn: { name: 'Evenki', native: 'Эвэды̄ турэ̄н', lat: 64.27, lng: 100.22, // Tura, Evenkia
     words: { water:['му','mu'], fire:['того','toɡo'], sun:['дылача','dɯlatɕa'], moon:['бега','beɡa'], mother:['эни','eni'], father:['ама','ama'], eat:['дептэ','depte'], drink:['умӣ','umiː'], love:['аявдави','ajavdavi'], heart:['меван','mevan'], tree:['мо','mo'], house:['дю','dʒu'], dog:['нгинакин','ŋinakin'], cat:['кошка','koʂka'], hand:['нгалэ','ŋale'], eye:['эса','esa'], hello:['дорообо','doroːbo'], thanks:['пасиба','pasiba'], one:['умун','umun'], good:['ая','aja'] }},
@@ -1604,6 +1608,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'tdt'; Glottolog tetu1247; Williams-van Klinken (2002) Tetun Dili Grammar.
   tdt: { name: 'Tetun Dili', native: 'Tetun Prasa', lat: -8.56, lng: 125.58, // Dili
     words: { water:['bee','beː'], fire:['ahi','ahi'], sun:['loron','loɾon'], moon:['fulan','fulan'], mother:['mama','mama'], father:['papa','papa'], eat:['han','han'], drink:['hemu','hemu'], love:['domin','domin'], heart:['korasaun','koɾasaun'], tree:['ai','ai'], house:['uma','uma'], dog:['asu','asu'], cat:['busa','busa'], hand:['liman','liman'], eye:['matan','matan'], hello:['olá','ola'], thanks:['obrigadu','obɾiɡadu'], one:['ida','ida'], good:['diak','diak'] }},
+  // Atoni (Uab Meto) — Austronesian Central Malayo-Polynesian, ~700K speakers, West Timor (Indonesian).
+  // Sources: Ethnologue 27 'aoz'; Glottolog uabm1238; Steinhauer (1996) Atoni grammar.
+  aoz: { name: 'Atoni', native: 'Uab Meto', lat: -9.66, lng: 124.10, // Soe, NTT (Atoni heartland)
+    words: { water:['oe','oe'], fire:['ai','ai'], sun:['manas','manas'], moon:['fun','fun'], mother:['ainat','ainat'], father:['amat','amat'], eat:['ah','ah'], drink:['ninu','ninu'], love:['nekat','nekat'], heart:['nesa','nesa'], tree:['hau','hau'], house:['ume','ume'], dog:['asu','asu'], cat:['mose','mose'], hand:['ʼniman','ʔniman'], eye:['matan','matan'], hello:['neut','neut'], thanks:['neno biluk','neno biluk'], one:['mese','mese'], good:['malaek','malaek'] }},
   // English-based creole (Vanuatu)
   bi: { name: 'Bislama', native: 'Bislama', lat: -17.74, lng: 168.31, // Port Vila
     words: { water:['wota','wota'], fire:['faea','faea'], sun:['san','san'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['kakae','kakae'], drink:['dring','driŋ'], love:['laekem','laekem'], heart:['hat','hat'], tree:['tri','tri'], house:['haos','haos'], dog:['dog','doɡ'], cat:['pusi','pusi'], hand:['han','han'], eye:['ae','ae'], hello:['halo','halo'], thanks:['tankyu','taŋkju'], one:['wan','wan'], good:['gud','ɡud'] }},
@@ -3312,6 +3320,10 @@ const LANG_DATA = {
   // Tai Lue (Sipsongpanna)
   khb: { name: 'Tai Lue', native: 'ᦅᧄᦺᦑᦟᦹᧉ', lat: 22.01, lng: 100.80, // Jinghong, Sipsongpanna
     words: { water:['ᦓᧄᧉ','nam'], fire:['ᦺᦝ','fai'], sun:['ᦋᧁᧉ','tsau'], moon:['ᦟᦲᧃ','liːn'], mother:['ᦡᦲᧈ','meː'], father:['ᦗᦸᧈ','pɔː'], eat:['ᦂᦲᧃ','kin'], drink:['ᦂᦲᧃᦓᧄᧉ','kin nam'], love:['ᦣᧅ','hak'], heart:['ᦗᦸ','pɔ'], tree:['ᦷᦎᧃᦺᦙᧉ','ton mai'], house:['ᦠᦴᧃᧉ','huːn'], dog:['ᦙᦱ','maː'], cat:['ᦙᦦᧁ','mɛw'], hand:['ᦙᦹ','muː'], eye:['ᦎᦱ','taː'], hello:['ᦷᦡᧃᦟᦲ','dɔn liː'], thanks:['ᦀᦸᧃᦷᦓᧁ','ʔɔn nau'], one:['ᦓᦹᧂᧈ','nuŋ'], good:['ᦡᦲ','diː'] }},
+  // Tai Dam (Black Tai) — Tai-Kadai, ~750K speakers, Vietnam (Sơn La, Lai Châu) + Laos + China.
+  // Sources: Ethnologue 27 'blt'; Glottolog taid1247; Fippinger (1971) Tai Dam phonology.
+  blt: { name: 'Tai Dam', native: 'ꪼꪕꪒꪾ', lat: 21.33, lng: 103.92, // Sơn La, NW Vietnam
+    words: { water:['ꪙꪾꫂ','nam˦'], fire:['ꪼꪡ','fai˨˦'], sun:['ꪼꪎ','sai˨˦'], moon:['ꪒꪮꪙ','don˨˦'], mother:['ꪵꪶꪀ','mɛː˨˦'], father:['ꪶꪎ','pɔ˨˦'], eat:['ꪀꪲꪙ','kin˨˦'], drink:['ꪀꪲꪙ ꪙꪾꫂ','kin nam'], love:['ꪥꪮꪀ','hak˧˩'], heart:['ꪈꪲꪒ','tʃai˧'], tree:['ꪶꪕꪙ ꪼꪮꪉ','ton mai˨˦'], house:['ꪙꪮꪙ','hɯan˧˨˨'], dog:['ꪙꪮ','maː˨˦'], cat:['ꪵꪙꪺ','mɛːu˨˦'], hand:['ꪐꪮ','mɯ˨˦'], eye:['ꪁꪎ','taː˨˦'], hello:['ꪎꪺꪎꪒꪲ','sa wad dii'], thanks:['ꪒꪲ ꪎꪶꪙ','dʒɔp tʃai'], one:['ꪙꪲꪮꪉ','nɯŋ˨˦'], good:['ꪒꪲ','diː˨˦'] }},
   // === Phase 9: African + Filipino gap-fillers ===
   pam: { name: 'Kapampangan', native: 'Kapampangan', lat: 15.03, lng: 120.69, // San Fernando
     words: { water:['danum','daˈnum'], fire:['api','ʔaˈpi'], sun:['aldo','ʔalˈdoʔ'], moon:['bulan','buˈlan'], mother:['ima','ˈʔima'], father:['tata','ˈtataʔ'], eat:['mangan','maˈŋan'], drink:['minum','miˈnum'], love:['lugud','luˈɡud'], heart:['pusu','ˈpusoʔ'], tree:['dutung','duˈtuŋ'], house:['bale','baˈle'], dog:['asu','ˈʔasu'], cat:['pusa','ˈpusa'], hand:['gamat','ɡaˈmat'], eye:['mata','maˈta'], hello:['kumusta','kuˈmusta'], thanks:['dakal a salamat','dakal a saˈlamat'], one:['metung','meˈtuŋ'], good:['mayap','maˈjap'] }},
