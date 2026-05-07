@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 658 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 661 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1297,6 +1297,10 @@ const LANG_DATA = {
     words: { water:['mâyi','maːji'], fire:['kapia','kapia'], sun:['dîba','diːba'], moon:['ngondo','ŋɡondo'], mother:['mâmu','maːmu'], father:['tâtu','taːtu'], eat:['kudia','kudia'], drink:['kunua','kunua'], love:['dinanga','dinaŋɡa'], heart:['mucima','mut͡ʃima'], tree:['mutshi','mut͡ʃi'], house:['nzubu','nzubu'], dog:['mbwa','mbwa'], cat:['nyao','ɲao'], hand:['tshianza','t͡ʃianza'], eye:['dîsu','diːsu'], hello:['moyo','mojo'], thanks:['tuasakidila','tuasakidila'], one:['umue','umue'], good:['bimpe','bimpe'] }},
   kg: { name: 'Kikongo', native: 'Kikongo', lat: -5.81, lng: 13.46, // Matadi
     words: { water:['maza','maza'], fire:['tiya','tija'], sun:['ntangu','ntaŋɡu'], moon:['ngonda','ŋɡonda'], mother:['mama','mama'], father:['tata','tata'], eat:['ku dia','ku dja'], drink:['ku nua','ku nua'], love:['zola','zola'], heart:['ntima','ntima'], tree:['nti','nti'], house:['nzo','nzo'], dog:['mbwa','mbwa'], cat:['nyau','ɲau'], hand:['koko','koko'], eye:['disu','disu'], hello:['mboté','mbote'], thanks:['matondo','matondo'], one:['mosi','mosi'], good:['mbote','mbote'] }},
+  // Mongo (Lomongo) — Bantu C61, Equateur Province DRC, ~400K-500K speakers along the Congo River.
+  // Sources: Ethnologue 27 'lol'; Glottolog mong1338; Hulstaert (1957) Dictionnaire Lomongo-français.
+  lol: { name: 'Mongo', native: 'Lomongo', lat: 0.51, lng: 18.97, // Mbandaka
+    words: { water:['nzá','nzá'], fire:['mokɛ́','mokɛ́'], sun:['lokɔlɔ','lokɔlɔ'], moon:['nzɔnzɔ','nzɔnzɔ'], mother:['nyangó','ɲaŋɡó'], father:['ise','ise'], eat:['kolya','koʎa'], drink:['kome\'la','komela'], love:['boláŋo','bolaŋo'], heart:['mongúma','moŋɡúma'], tree:['boléi','boléi'], house:['ndako','ndako'], dog:['mbwa','mbwa'], cat:['nyaú','ɲaú'], hand:['lokáko','lokáko'], eye:['liso','liso'], hello:['losáko','losáko'], thanks:['olɛli','olɛli'], one:['etomelá','etomelá'], good:['mpɔlɔ','mpɔlɔ'] }},
   // West African (Niger-Congo Atlantic / Mande)
   ff: { name: 'Fula', native: 'Fulfulde', lat: 12.65, lng: -7.99, // Bamako (representative)
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
@@ -1433,6 +1437,10 @@ const LANG_DATA = {
     words: { water:['ᤁᤡᤱ','tʃʰwaɾaŋ'], fire:['ᤔᤡ','mi'], sun:['ᤛᤡᤥᤔᤡ','ɲaːmpʰʌ'], moon:['ᤍᤣ','laːba'], mother:['ᤔᤠᤔᤠ','aːmaː'], father:['ᤐᤠᤐᤠ','aːbaː'], eat:['ᤆᤠᤔᤠ','tʃaːmaː'], drink:['ᤌᤢᤴᤔᤠ','tʰuŋmaː'], love:['ᤔᤡᤌᤡ','mitʰi'], heart:['ᤛᤡᤰ','sik'], tree:['ᤛᤡᤱ','siŋ'], house:['ᤜᤡᤶ','him'], dog:['ᤁᤣᤳᤇᤡ','keptʃi'], cat:['ᤐᤡᤛᤡ','pisi'], hand:['ᤜᤢᤰ','huk'], eye:['ᤔᤡᤰ','mik'], hello:['ᤐᤣᤜᤢᤙᤣ','peːhuːje'], thanks:['ᤐᤡᤍᤠᤱ','pidaːŋ'], one:['ᤏᤡᤳ','tʰik'], good:['ᤖᤣ','nuba'] }},
   brx: { name: 'Bodo', native: 'बर\'', lat: 26.40, lng: 90.27, // Kokrajhar, Assam
     words: { water:['दै','dɔi'], fire:['वाथार','watʰaɾ'], sun:['सान','san'], moon:['ओखाफोर','okʰapʰoɾ'], mother:['आय','aj'], father:['आफा','apʰa'], eat:['जा','dʒa'], drink:['लोङ','loŋ'], love:['मोनदोङ','mondoŋ'], heart:['फिथा','pʰitʰa'], tree:['बिजि','bidʒi'], house:['नो','no'], dog:['सैमा','saima'], cat:['मौजि','maudʒi'], hand:['आखाइ','akʰai'], eye:['मेगन','meɡon'], hello:['खुशी','kʰuʃi'], thanks:['साबार','sabaɾ'], one:['से','se'], good:['मोजां','modʒaŋ'] }},
+  // Nagamese — Assamese-based pidgin/creole, Naga lingua franca, ~30K L1 + 1.4M L2.
+  // Sources: Ethnologue 27 'nag'; Glottolog naga1394; Sreedhar (1974) Naga Pidgin.
+  nag: { name: 'Nagamese', native: 'Nagamese', lat: 25.67, lng: 94.11, // Kohima, Nagaland
+    words: { water:['pani','pani'], fire:['jui','dʒui'], sun:['suruj','suɾudʒ'], moon:['saand','tʃaːnd'], mother:['ma','ma'], father:['baba','baba'], eat:['kha','kʰa'], drink:['pi','pi'], love:['morom','moɾom'], heart:['mon','mon'], tree:['gus','ɡus'], house:['ghor','ɡʱoɾ'], dog:['kukur','kukuɾ'], cat:['mekuri','mekuɾi'], hand:['hath','haːtʰ'], eye:['suku','suku'], hello:['namaskar','namaskaɾ'], thanks:['dhonyobad','dʱoɲobad'], one:['ek','ek'], good:['bhal','bʱal'] }},
   lus: { name: 'Mizo', native: 'Mizo ṭawng', lat: 23.73, lng: 92.72, // Aizawl
     words: { water:['tui','tui'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['in','in'], love:['hmangaih','hmaŋai'], heart:['thinlung','tʰinluŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['in','in'], dog:['ui','ui'], cat:['zawhte','zawʔte'], hand:['kut','kut'], eye:['mit','mit'], hello:['chibai','tʃibai'], thanks:['ka lawm e','ka lawm e'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] },
     wordEvidence: {
@@ -1697,6 +1705,10 @@ const LANG_DATA = {
   // Muskogean (SE North America)
   cho: { name: 'Choctaw', native: 'Chahta anumpa', lat: 32.30, lng: -89.69, // Mississippi Choctaw
     words: { water:['oka','oka'], fire:['lowa','lowa'], sun:['hashi','haʃi'], moon:['hashi ninak','haʃi ninak'], mother:['ishki','iʃki'], father:['inki','inki'], eat:['impa','impa'], drink:['ishko','iʃko'], love:['hullo','hulːo'], heart:['chunkash','tʃunkaʃ'], tree:['itti','itti'], house:['chukka','tʃukka'], dog:['ofi','ofi'], cat:['katos','katos'], hand:['ibbak','ibbak'], eye:['nishkin','niʃkin'], hello:['halito','halito'], thanks:['yakoke','jakoke'], one:['achafa','atʃafa'], good:['chukma','tʃukma'] }},
+  // Muscogee (Creek) — Muskogean, ~4K speakers, Oklahoma + Florida (Seminole). Sister to Choctaw (cho).
+  // Sources: Ethnologue 27 'mus'; Glottolog cree1271; Martin (2011) Grammar of Creek (Muskogee).
+  mus: { name: 'Muscogee (Creek)', native: 'Mvskoke', lat: 35.85, lng: -95.94, // Okmulgee, OK (Muscogee Nation HQ)
+    words: { water:['uewv','oíwa'], fire:['totkv','tótka'], sun:['hvse','hasi'], moon:['hvresse','haɾisːi'], mother:['ecke','itʃki'], father:['erke','iɾki'], eat:['hompetv','hompita'], drink:['eskvketv','iskakita'], love:['vnokeckv','anokitʃka'], heart:['cunkv','tʃonka'], tree:['eto','itoː'], house:['cuko','tʃoko'], dog:['efv','ifa'], cat:['pose','pose'], hand:['enke','iŋki'], eye:['torofke','toɾofki'], hello:['hensci','hinsdʒi'], thanks:['mvto','mato'], one:['hvmken','hamkin'], good:['herv','hiɾa'] }},
   // Eskimo-Aleut (Yupik + Inupiaq)
   esu: { name: 'Central Alaskan Yupik', native: 'Yugtun', lat: 60.79, lng: -161.76, // Bethel
     words: { water:['meq','meq'], fire:['keneq','keneq'], sun:['akerta','akerta'], moon:['iraluq','iraluq'], mother:['aana','aːna'], father:['ata','ata'], eat:['ner\'uq','nerʔuq'], drink:['mertuq','mertuq'], love:['kenka','kenka'], heart:['irua','irua'], tree:['napa','napa'], house:['ena','ena'], dog:['qimugta','qimuxta'], cat:['qassraaraq','qassraːraq'], hand:['unirak','unirak'], eye:['ii','iː'], hello:['waqaa','waqaː'], thanks:['quyana','qujana'], one:['ataucik','atautʃik'], good:['assirtuq','asːirtuq'] }},

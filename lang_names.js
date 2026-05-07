@@ -485,4 +485,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Muscogee (mus), Mongo (lol), Nagamese (nag) — Native American + DRC + NE India.
+    const ADDED16 = {
+        mus: { en: 'Muscogee', ja: 'マスコギ語', ko: '머스코기어', zh: '马斯科吉语', yue: '馬斯科吉語',
+               vi: 'Tiếng Muscogee', th: 'ภาษามัสโคจี', id: 'Muscogee', hi: 'मस्कोगी',
+               de: 'Muskogee', fr: 'Muscogee', it: 'Muscogee',
+               es_eu: 'Muscogui', es_mx: 'Muscogui', pt_eu: 'Muscogui', pt_br: 'Muscogui',
+               ru: 'Маскоги', uk: 'Маскогі', ar: 'الماسكوكية', he: 'מסקוגי', sw: 'Muscogee' },
+        lol: { en: 'Mongo', ja: 'モンゴ語', ko: '몽고어', zh: '蒙戈语', yue: '蒙戈語',
+               vi: 'Tiếng Mongo', th: 'ภาษามองโก', id: 'Mongo', hi: 'मोंगो',
+               de: 'Mongo', fr: 'Mongo', it: 'Mongo',
+               es_eu: 'Mongo', es_mx: 'Mongo', pt_eu: 'Mongo', pt_br: 'Mongo',
+               ru: 'Монго', uk: 'Монго', ar: 'المونغو', he: 'מונגו', sw: 'Kimongo' },
+        nag: { en: 'Nagamese', ja: 'ナガミーズ語', ko: '나가미스어', zh: '纳加米斯语', yue: '納加米斯語',
+               vi: 'Tiếng Nagamese', th: 'ภาษานากามีส', id: 'Nagamese', hi: 'नागामीज़',
+               de: 'Nagamesisch', fr: 'Nagamese', it: 'Nagamese',
+               es_eu: 'Nagamés', es_mx: 'Nagamés', pt_eu: 'Nagamês', pt_br: 'Nagamês',
+               ru: 'Нагамезе', uk: 'Нагамезе', ar: 'الناغاميسية', he: 'נגאמזית', sw: 'Nagamese' },
+    };
+    for (const code of Object.keys(ADDED16)) {
+        for (const ui of Object.keys(ADDED16[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED16[code][ui];
+            }
+        }
+    }
 })();
