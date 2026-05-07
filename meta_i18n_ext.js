@@ -112,6 +112,29 @@ function _resolve(val, dict, atoms, seps) {
         return slashParts.map(p => _resolve(p, dict, atoms, seps)).join(' / ');
     }
 
+    // 3b. Top-level em-dash split (region qualifiers: "X — Y", "X — Y, Z").
+    //     Em-dashes separate a region from a sub-region or qualifier
+    //     ("Chin State — Hakha township"). Only split when surrounded by
+    //     spaces so we don't break "U+AA80–AADF" or "5th-10th c. CE" style
+    //     ranges that use figure dashes / hyphens. Recurse on each side and
+    //     re-assemble with the same separator.
+    if (val.includes(' — ')) {
+        const dashParts = _splitTopLevel(val, '—')
+            .map((s, i, arr) => i === 0 || i === arr.length - 1 ? s : s)
+            .map(s => s.trim())
+            .filter(Boolean);
+        // _splitTopLevel splits on single-char sep — verify we actually had
+        // " — " (space-dash-space) at the top level by checking at least one
+        // resulting part doesn't end/begin with a stray space-removed token.
+        if (dashParts.length > 1) {
+            const translated = dashParts.map(p => _resolve(p, dict, atoms, seps));
+            // Only commit to the em-dash split if we translated at least one
+            // part (otherwise the verbatim assembly is identical to input).
+            const anyChanged = translated.some((t, i) => t !== dashParts[i]);
+            if (anyChanged) return translated.join(' — ');
+        }
+    }
+
     // 4. Parenthetical: "X (Y)" — only if parens balance and there's exactly
     //    one top-level paren group at the end
     const parenMatch = val.match(/^([^()]+?)\s*\((.+)\)\s*$/);
