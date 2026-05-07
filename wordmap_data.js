@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 691 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 694 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -578,6 +578,10 @@ const LANG_DATA = {
     words: { water:['mai','mai'], fire:['mɔ́tɔ','mɔtɔ'], sun:['mói','moi'], moon:['sánzá','sanza'], mother:['mamá','mama'], father:['tatá','tata'], eat:['kolía','kolia'], drink:['komɛ́la','komɛla'], love:['bolíngo','boliŋɡo'], heart:['motéma','motema'], tree:['nzété','nzete'], house:['ndáko','ndako'], dog:['mbwá','mbwa'], cat:['nyáu','ɲau'], hand:['lobɔ́kɔ','lobɔkɔ'], eye:['líso','liso'], hello:['mbóte','mbote'], thanks:['matɔ́ndɔ','matɔndɔ'], one:['mɔ̌kɔ́','mɔkɔ'], good:['malámu','malamu'] }},
   ny: { name: 'Chichewa', native: 'Chicheŵa', lat: -13.96, lng: 33.79,
     words: { water:['madzi','madzi'], fire:['moto','moto'], sun:['dzuwa','dzuwa'], moon:['mwezi','mwezi'], mother:['amayi','amaji'], father:['abambo','abambo'], eat:['kudya','kudja'], drink:['kumwa','kumwa'], love:['chikondi','tʃikondi'], heart:['mtima','mtima'], tree:['mtengo','mteŋɡo'], house:['nyumba','ɲumba'], dog:['galu','ɡalu'], cat:['mphaka','mpʰaka'], hand:['dzanja','dzandʒa'], eye:['diso','diso'], hello:['moni','moni'], thanks:['zikomo','zikomo'], one:['chimodzi','tʃimodzi'], good:['chabwino','tʃabwino'] }},
+  // Yao (Chiyao) — Bantu P21, ~3M, Mozambique + Malawi + Tanzania. Major historical trade lingua franca of Lake Malawi region.
+  // Sources: Ethnologue 27 'yao'; Glottolog yao1252; Sanderson (1922) Yao Grammar.
+  yao: { name: 'Yao', native: 'Chiyao', lat: -15.07, lng: 35.71, // Zomba/Mangochi border (Yao heartland)
+    words: { water:['mesi','mesi'], fire:['moto','moto'], sun:['lyuwa','ʎuwa'], moon:['mwesi','mwesi'], mother:['amao','amaː'], father:['atati','atati'], eat:['kulya','kuʎa'], drink:['kumwa','kumwa'], love:['chikondi','tʃikondi'], heart:['mtima','mtima'], tree:['mtela','mtela'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ngaila','ŋɡaila'], eye:['liso','liso'], hello:['salama','salama'], thanks:['nakwete','nakwete'], one:['mo','mo'], good:['chechete','tʃetʃete'] }},
   en_aave: { name: 'English (AAVE)', native: 'English (AAVE)', lat: 33.75, lng: -84.39,
     words: { water:['water','wɑːɾɚ'], fire:['fire','faːɚ'], sun:['sun','sʌn'], moon:['moon','muːn'], mother:['mama','mɑːmə'], father:['daddy','dæɾi'], eat:['eat','iːt'], drink:['drink','dɹɪŋk'], love:['love','lʌv'], heart:['heart','hɑːɹt'], tree:['tree','tɹiː'], house:['house','haʊs'], dog:['dog','dɔːɡ'], cat:['cat','kæt'], hand:['hand','hæːnd'], eye:['eye','aː'], hello:["what's up",'wʌts ʌp'], thanks:['thanks','θæŋks'], one:['one','wʌn'], good:['good','ɡʊd'] }},
   // New Zealand English (Audit Task 149) — distinctive front-vowel raising
@@ -1568,6 +1572,10 @@ const LANG_DATA = {
   // Austronesian (Timor)
   tet: { name: 'Tetum', native: 'Tetun', lat: -8.56, lng: 125.58, // Dili
     words: { water:['bee','beː'], fire:['ahi','ahi'], sun:['loron','loɾon'], moon:['fulan','fulan'], mother:['inan','inan'], father:['aman','aman'], eat:['han','han'], drink:['hemu','hemu'], love:['domin','domin'], heart:['fuan','fuan'], tree:['ai','ai'], house:['uma','uma'], dog:['asu','asu'], cat:['busa','busa'], hand:['liman','liman'], eye:['matan','matan'], hello:['bondia','bondia'], thanks:['obrigadu','obɾiɡadu'], one:['ida','ida'], good:['di\'ak','diʔak'] }},
+  // Tetun Dili — Portuguese-influenced urban variety of Tetum, working language of Timor-Leste.
+  // Sources: Ethnologue 27 'tdt'; Glottolog tetu1247; Williams-van Klinken (2002) Tetun Dili Grammar.
+  tdt: { name: 'Tetun Dili', native: 'Tetun Prasa', lat: -8.56, lng: 125.58, // Dili
+    words: { water:['bee','beː'], fire:['ahi','ahi'], sun:['loron','loɾon'], moon:['fulan','fulan'], mother:['mama','mama'], father:['papa','papa'], eat:['han','han'], drink:['hemu','hemu'], love:['domin','domin'], heart:['korasaun','koɾasaun'], tree:['ai','ai'], house:['uma','uma'], dog:['asu','asu'], cat:['busa','busa'], hand:['liman','liman'], eye:['matan','matan'], hello:['olá','ola'], thanks:['obrigadu','obɾiɡadu'], one:['ida','ida'], good:['diak','diak'] }},
   // English-based creole (Vanuatu)
   bi: { name: 'Bislama', native: 'Bislama', lat: -17.74, lng: 168.31, // Port Vila
     words: { water:['wota','wota'], fire:['faea','faea'], sun:['san','san'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['kakae','kakae'], drink:['dring','driŋ'], love:['laekem','laekem'], heart:['hat','hat'], tree:['tri','tri'], house:['haos','haos'], dog:['dog','doɡ'], cat:['pusi','pusi'], hand:['han','han'], eye:['ae','ae'], hello:['halo','halo'], thanks:['tankyu','taŋkju'], one:['wan','wan'], good:['gud','ɡud'] }},
@@ -1711,6 +1719,10 @@ const LANG_DATA = {
     words: { water:['aghe','ˈaɡe'], fire:['fûc','fuːk'], sun:['soreli','soˈreːli'], moon:['lune','ˈlune'], mother:['mari','ˈmaːri'], father:['pari','ˈpaːri'], eat:['mangjâ','maɲˈɲaː'], drink:['bevi','ˈbeːvi'], love:['amôr','aˈmoːr'], heart:['cûr','kuːr'], tree:['arbul','ˈarbul'], house:['cjase','ˈcaːse'], dog:['cjan','caŋ'], cat:['gjat','ɟat'], hand:['man','maŋ'], eye:['voli','ˈvoli'], hello:['mandi','ˈmandi'], thanks:['graziis','ˈɡraːt͡sjis'], one:['un','uŋ'], good:['bon','boŋ'] }},
   ast: { name: 'Asturian', native: 'Asturianu', lat: 43.36, lng: -5.85, // Oviedo
     words: { water:['agua','ˈaɣwa'], fire:['fueu','ˈfweu'], sun:['sol','sol'], moon:['lluna','ˈʎuna'], mother:['ma','ma'], father:['pa','pa'], eat:['comer','koˈmeɾ'], drink:['beber','beˈβeɾ'], love:['amor','aˈmoɾ'], heart:['corazón','koɾaˈθon'], tree:['árbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['perru','ˈperu'], cat:['gatu','ˈɡatu'], hand:['mano','ˈmano'], eye:['güeyu','ˈɣweʝu'], hello:['hola','ˈola'], thanks:['gracies','ˈɡɾaθjes'], one:['ún','un'], good:['bonu','ˈbonu'] }},
+  // Extremaduran (Estremeñu) — Iberian-Romance, ~200K speakers, Extremadura Spain.
+  // Sources: Ethnologue 27 'ext'; Glottolog extr1244; Viudas Camarasa (1988) Diccionario Extremeño.
+  ext: { name: 'Extremaduran', native: 'Estremeñu', lat: 39.47, lng: -6.37, // Cáceres, Extremadura
+    words: { water:['agua','ˈaɣwa'], fire:['huegu','ˈweɣu'], sun:['sol','sɔl'], moon:['luna','ˈluna'], mother:['mai','mai'], father:['pai','pai'], eat:['comel','koˈmel'], drink:['bebel','beˈβel'], love:['queré','keˈɾe'], heart:['curaçón','kuɾaˈsɔn'], tree:['arbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['perru','ˈpɛru'], cat:['gatu','ˈɣatu'], hand:['manu','ˈmanu'], eye:['oju','ˈohu'], hello:['salú','saˈlu'], thanks:['gracias','ˈɣɾasjas'], one:['un','un'], good:['bueno','ˈbweno'] }},
   an: { name: 'Aragonese', native: 'Aragonés', lat: 42.57, lng: -0.55, // Jaca
     words: { water:['augua','ˈawɣwa'], fire:['fuego','ˈfweɣo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['mai','maj'], father:['pai','paj'], eat:['minchar','minˈt͡ʃaɾ'], drink:['beber','beˈβeɾ'], love:['amor','aˈmoɾ'], heart:['corazón','koɾaˈθon'], tree:['árbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['can','kan'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['güello','ˈɣweʎo'], hello:['hola','ˈola'], thanks:['gracias','ˈɡɾaθjas'], one:['un','un'], good:['bueno','ˈbweno'] }},
   rup: { name: 'Aromanian', native: 'Armâneashti', lat: 40.52, lng: 22.20, // Veria area

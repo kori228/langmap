@@ -760,4 +760,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Yao (yao), Tetun Dili (tdt), Extremaduran (ext) — Mozambique Bantu + Timor-Leste lingua franca + Spain Iberian-Romance.
+    const ADDED27 = {
+        yao: { en: 'Yao', ja: 'ヤオ語', ko: '야오어', zh: '瑶语', yue: '瑤語',
+               vi: 'Tiếng Yao', th: 'ภาษาเหยา', id: 'Yao', hi: 'याओ',
+               de: 'Yao', fr: 'Yao', it: 'Yao',
+               es_eu: 'Yao', es_mx: 'Yao', pt_eu: 'Iao', pt_br: 'Iao',
+               ru: 'Яо', uk: 'Яо', ar: 'الياو', he: 'יאו', sw: 'Kiyao' },
+        tdt: { en: 'Tetun Dili', ja: 'テトゥン・ディリ語', ko: '테툰 딜리어', zh: '帝力德顿语', yue: '帝力德頓語',
+               vi: 'Tiếng Tetun Dili', th: 'ภาษาเตตุนดิลี', id: 'Tetun Dili', hi: 'तेतुन डिली',
+               de: 'Tetum Dili', fr: 'Tétoum de Dili', it: 'Tetum di Dili',
+               es_eu: 'Tetun Dili', es_mx: 'Tetun Dili', pt_eu: 'Tétum-Praça', pt_br: 'Tétum-Praça',
+               ru: 'Тетун-Дили', uk: 'Тетун-Ділі', ar: 'تيتوم ديلي', he: 'טטון דילי', sw: 'Tetun Dili' },
+        ext: { en: 'Extremaduran', ja: 'エストレマドゥーラ語', ko: '에스트레마두라어', zh: '埃斯特雷马杜拉语', yue: '埃斯特雷馬杜拉語',
+               vi: 'Tiếng Estremenho', th: 'ภาษาเอ็กซ์เตรมาดูรา', id: 'Estremenyo', hi: 'एस्ट्रेमाडुरान',
+               de: 'Extremadurisch', fr: 'Estrémègne', it: 'Estremegno',
+               es_eu: 'Extremeño', es_mx: 'Extremeño', pt_eu: 'Estremenho', pt_br: 'Estremenho',
+               ru: 'Эстремадурский', uk: 'Естремадурська', ar: 'الإكستريمادورية', he: 'אקסטרמדורית', sw: 'Kiekstremadura' },
+    };
+    for (const code of Object.keys(ADDED27)) {
+        for (const ui of Object.keys(ADDED27[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED27[code][ui];
+            }
+        }
+    }
 })();
