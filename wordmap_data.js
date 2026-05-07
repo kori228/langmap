@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 700 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 703 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -611,6 +611,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'vmf'; Glottolog main1267; Wagner (1987) Bairisch-Fränkische Wörterbücher.
   vmf: { name: 'East Franconian', native: 'Mainfränkisch', lat: 49.79, lng: 9.93, // Würzburg (Mainfränkisch heartland)
     words: { water:['Wasser','vasːə'], fire:['Feier','faɪɐ'], sun:['Sunn','sʊn'], moon:['Maa','maː'], mother:['Mudder','mʊdɐ'], father:['Vadder','fadɐ'], eat:['esse','ɛsə'], drink:['trinke','trɪŋkə'], love:['Liebe','liːbə'], heart:['Herz','hɛrts'], tree:['Bauma','baʊmaː'], house:['Haus','haʊs'], dog:['Hund','hʊnt'], cat:['Katz','kats'], hand:['Hand','hand'], eye:['Aach','aːx'], hello:['Grüß Gott','ɡrʏs ɡɔt'], thanks:['Vergelt\'s Gott','fɛɐɡɛlts ɡɔt'], one:['ans','ans'], good:['guad','ɡuə̯d'] }},
+  // Walser — Highest Alemannic German, ~22K speakers, scattered Alpine communities (Switzerland/Italy/Austria/Liechtenstein).
+  // Sources: Ethnologue 27 'wae'; Glottolog wals1238; Bohnenberger (1913) Walser-Wörterbuch.
+  wae: { name: 'Walser', native: 'Wallisertiitsch', lat: 46.30, lng: 7.99, // Saas-Fee, Valais (Walser heartland)
+    words: { water:['Wasser','vasːər'], fire:['Für','fyːr'], sun:['Sunna','sʊnːa'], moon:['Maa','maː'], mother:['Müeter','myə̯tər'], father:['Atti','atːi'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Hërz','hɛrts'], tree:['Boum','boʊm'], house:['Hus','huːs'], dog:['Hund','hʊnt'], cat:['Chatz','xats'], hand:['Hand','hant'], eye:['Oug','oʊɡ'], hello:['Grüössi','ɡryə̯sːi'], thanks:['Vergelts Gott','fɛrɡɛlts ɡɔt'], one:['eins','æɪ̯ns'], good:['guet','ɡuə̯t'] }},
   nds: { name: 'Low German', native: 'Plattdüütsch', lat: 53.55, lng: 9.99,
     words: { water:['Water','vɑːtɐ'], fire:['Füer','fyːɐ'], sun:['Sünn','zʏn'], moon:['Maand','mɑːnt'], mother:['Moder','moːdɐ'], father:['Vader','fɑːdɐ'], eat:['eten','eːtn'], drink:['drinken','dɹɪŋkn'], love:['Leev','leːf'], heart:['Hart','haɐt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Hund','hʊnt'], cat:['Katt','kat'], hand:['Hand','hant'], eye:['Oog','oːx'], hello:['Moin','mɔɪn'], thanks:['Dankschöön','daŋkʃøːn'], one:['een','eːn'], good:['good','ɡoːt'] }},
   // Kölsch — Ripuarian Franconian (West Central German), Cologne, ~250K speakers.
@@ -1474,6 +1478,14 @@ const LANG_DATA = {
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
   bm: { name: 'Bambara', native: 'Bamanankan', lat: 12.65, lng: -7.99, // Bamako
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dumuni','dumuni'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['jiri','dʒiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni ce','i ni tʃe'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
+  // Soninke — Niger-Congo Mande, ~2.1M speakers, Mali/Senegal/Mauritania Sahel.
+  // Sources: Ethnologue 27 'snk'; Glottolog soni1259; Diagana (1995) Soninke phonology.
+  snk: { name: 'Soninke', native: 'Sooninkanxannen', lat: 14.92, lng: -10.81, // Kayes, Mali (Soninke heartland)
+    words: { water:['jiyi','dʒiji'], fire:['ñaaxe','ɲaːxe'], sun:['kiye','kije'], moon:['kullu','kulːu'], mother:['ma','ma'], father:['baba','baba'], eat:['lawu','lawu'], drink:['mini','mini'], love:['ñaxando','ɲaxando'], heart:['nene','nene'], tree:['yiribirinde','jiɾibiɾinde'], house:['ka','ka'], dog:['wulle','wulːe'], cat:['mussu','musːu'], hand:['kitte','kitːe'], eye:['ñaa','ɲaː'], hello:['an na siri','an na siɾi'], thanks:['inkawu','iŋkawu'], one:['baane','baːne'], good:['ñaxa','ɲaxa'] }},
+  // Dan (Yacouba) — Niger-Congo Mande, ~1.6M speakers, western Côte d'Ivoire + Liberia.
+  // Sources: Ethnologue 27 'dnj'; Glottolog yacu1238; Erman (2005) Dan tone system.
+  dnj: { name: 'Dan', native: 'Yacouba', lat: 7.41, lng: -7.55, // Man, Côte d'Ivoire (Dan heartland)
+    words: { water:['yi','ji'], fire:['siŋ','siŋ'], sun:['lai','lai'], moon:['siŋŋŋ','siŋːː'], mother:['da','da'], father:['de','de'], eat:['dɛ','dɛ'], drink:['mi','mi'], love:['be','be'], heart:['gbɔɔ','ɡbɔː'], tree:['gbe','ɡbe'], house:['kɔ','kɔ'], dog:['gbɛ','ɡbɛ'], cat:['nyaa','ɲaː'], hand:['kɔ','kɔ'], eye:['ŋkɛ̃','ŋkɛ̃'], hello:['daka','daka'], thanks:['kpe','kpe'], one:['do','do'], good:['ka','ka'] }},
   // Koyraboro Senni (Eastern Songhai) — Mali, Saharan trade-corridor
   // (Audit Task 149 Batch 3). Heath (1999) per cell.
   ses: { name: 'Koyraboro Senni', native: 'Koyraboro Senni', lat: 16.27, lng: -0.05, // Gao

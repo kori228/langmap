@@ -835,4 +835,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Soninke (snk), Dan/Yacouba (dnj), Walser (wae) — Sahel Mande + Côte d'Ivoire Mande + Alps Highest Alemannic.
+    const ADDED30 = {
+        snk: { en: 'Soninke', ja: 'ソニンケ語', ko: '소닌케어', zh: '索宁克语', yue: '索寧克語',
+               vi: 'Tiếng Soninke', th: 'ภาษาโซนินเก', id: 'Soninke', hi: 'सोनिंके',
+               de: 'Soninke', fr: 'Soninké', it: 'Soninke',
+               es_eu: 'Soninké', es_mx: 'Soninké', pt_eu: 'Soninquê', pt_br: 'Soninquê',
+               ru: 'Сонинке', uk: 'Сонінке', ar: 'السوننكية', he: 'סונינקה', sw: 'Kisoninke' },
+        dnj: { en: 'Dan', ja: 'ダン語', ko: '단어', zh: '丹语', yue: '丹語',
+               vi: 'Tiếng Dan', th: 'ภาษาแดน', id: 'Dan', hi: 'डान',
+               de: 'Dan', fr: 'Dan (Yacouba)', it: 'Dan',
+               es_eu: 'Dan', es_mx: 'Dan', pt_eu: 'Dan', pt_br: 'Dan',
+               ru: 'Дан', uk: 'Дан', ar: 'الدان', he: 'דן', sw: 'Kidan' },
+        wae: { en: 'Walser', ja: 'ヴァルサー語', ko: '발저어', zh: '瓦尔泽语', yue: '瓦爾澤語',
+               vi: 'Tiếng Walser', th: 'ภาษาวอลเซอร์', id: 'Walser', hi: 'वालसर',
+               de: 'Walserdeutsch', fr: 'Walser', it: 'Walser',
+               es_eu: 'Walser', es_mx: 'Walser', pt_eu: 'Walser', pt_br: 'Walser',
+               ru: 'Вальзерский', uk: 'Вальзерська', ar: 'الوالسرية', he: 'וולסרית', sw: 'Kiwalser' },
+    };
+    for (const code of Object.keys(ADDED30)) {
+        for (const ui of Object.keys(ADDED30[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED30[code][ui];
+            }
+        }
+    }
 })();
