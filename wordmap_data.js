@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 712 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 715 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -748,6 +748,14 @@ const LANG_DATA = {
     words: { water:['y','ɨ'], fire:['tata','tata'], sun:['kuarahy','kwaɾahɨ'], moon:['jasy','ʒasɨ'], mother:['sy','sɨ'], father:['túva','tuva'], eat:["ka'u",'kaʔu'], drink:["y'u",'ɨʔu'], love:['hayhu','haɨhu'], heart:["py'a",'pɨʔa'], tree:['yvyra','ɨvɨɾa'], house:['óga','oɡa'], dog:['jagua','ʒaɡwa'], cat:['mbarakaja','mbaɾakaʒa'], hand:['po','po'], eye:['tesa','tesa'], hello:["mba'éichapa",'mbaʔeitʃapa'], thanks:['aguyje','aɡuɨʒe'], one:['peteĩ','peteĩ'], good:['porã','poɾã'] }},
   chr: { name: 'Cherokee', native: 'ᏣᎳᎩ', lat: 35.51, lng: -83.52,
     words: { water:['ᎠᎹ','ama'], fire:['ᎠᏥᎳ','atʃila'], sun:['ᏅᏓ','nʌda'], moon:['ᏅᏓ ᏒᏃᏱ','nʌda svnoɪ'], mother:['ᎡᏥ','edʒi'], father:['ᎡᏙᏓ','edoda'], eat:['ᎠᎩᏍᏔ','aɡista'], drink:['ᎠᏗᏔ','adita'], love:['ᎠᏓᎨᏳᎯ','adaɡejuhi'], heart:['ᎤᏬᏱ','uwoji'], tree:['ᏡᎬ','tluɡv'], house:['ᎦᎵᏦᏕ','ɡalitsode'], dog:['ᎩᏟ','ɡitli'], cat:['ᏪᏌ','wesa'], hand:['ᎤᏰᏙᎯ','ujɛdohi'], eye:['ᎠᎦᏘ','aɡati'], hello:['ᎣᏏᏲ','osijo'], thanks:['ᎢᎴᎯᏍᏗ','ilehisdi'], one:['ᏌᏊ','saʔu'], good:['ᎣᏍᏓ','osda'] }},
+  // Cayuga — Iroquoian Northern, ~30 fluent, Six Nations Reserve Ontario.
+  // Sources: Ethnologue 27 'cay'; Glottolog cayu1262; Mithun (1999) Languages of Native North America.
+  cay: { name: 'Cayuga', native: 'Gayogo̱hó:nǫʼ', lat: 42.93, lng: -80.10, // Six Nations of the Grand River
+    words: { water:['ohnekanos','ohnekanos'], fire:['ojistaʼ','odʒistaʔ'], sun:['gaehkwa','ɡaehkwa'], moon:['sǫi:ya','sõːja'], mother:['agniha','aɡniha'], father:['hagʼniha','haɡʔniha'], eat:['gekho','ɡekho'], drink:['gehnegira','ɡehneɡira'], love:['gaihwiyu','ɡaihwiju'], heart:['awéri','aweri'], tree:['gaentaʼ','ɡaentaʔ'], house:['ganǫhsoot','ɡanõhsoːt'], dog:['shǫkáos','ʃõkaos'], cat:['ditshokwáʔ','ditʃokwaʔ'], hand:['onénǫhsa','onenõhsa'], eye:['oga:t','oɡaːt'], hello:['sgë:nǫʼ','skẽːnõʔ'], thanks:['niáwę','niawɛ̃'], one:['skat','skat'], good:['oyanre','ojanre'] }},
+  // Onondaga — Iroquoian Northern, ~20 fluent, Six Nations Reserve + Onondaga Nation NY.
+  // Sources: Ethnologue 27 'ono'; Glottolog onon1246; Woodbury (2003) Onondaga grammar.
+  onn: { name: 'Onondaga', native: 'Onǫdaʼgegáʼ', lat: 43.05, lng: -76.13, // Onondaga Nation, NY
+    words: { water:['ohnekano:s','ohnekanoːs'], fire:['oji:staʼ','odʒiːstaʔ'], sun:['gaeh\'kwa','ɡaehʔkwa'], moon:['gaeh\'kwa enitha','ɡaehʔkwa enitha'], mother:['ekno:ha\'','eknoːhaʔ'], father:['hak\'no:ha\'','hakʔnoːhaʔ'], eat:['ekho:ne\'','ekhoːneʔ'], drink:['ehnega:i\'ron','ehneɡaːiʔron'], love:['gaonihsdá:wę','ɡaonihsdaːwɛ̃'], heart:['awé:ri','aweːri'], tree:['ga:enda\'','ɡaːendaʔ'], house:['ganǫhsoht','ɡanõhsoht'], dog:['só:wa:s','soːwaːs'], cat:['takó:s','takoːs'], hand:['onénǫhsa\'','onenõhsaʔ'], eye:['oga:tha\'','oɡaːthaʔ'], hello:['sgë:nǫʼ','skẽːnõʔ'], thanks:['nya:wę\'','njaːwɛ̃ʔ'], one:['ska:t','skaːt'], good:['oyá:nre','ojaːnre'] }},
 
   as: { name: 'Assamese', native: 'অসমীয়া', lat: 26.14, lng: 91.74,
     words: { water:['পানী','pani'], fire:['জুই','zui'], sun:['সূৰ্য','xuɹjɔ'], moon:['জোন','zʊn'], mother:['মা','ma'], father:['দেউতা','deuta'], eat:['খোৱা','kʰuwa'], drink:['পান কৰা','pan kɔɹa'], love:['প্ৰেম','pɹem'], heart:['হৃদয়','ɹidɔi'], tree:['গছ','gɔs'], house:['ঘৰ','gʱɔɹ'], dog:['কুকুৰ','kukuɹ'], cat:['মেকুৰী','mekuɹi'], hand:['হাত','hat'], eye:['চকু','sɔku'], hello:['নমস্কাৰ','nɔmɔxkaɹ'], thanks:['ধন্যবাদ','dʱɔnjɔbad'], one:['এক','ek'], good:['ভাল','bʱal'] }},
@@ -1673,6 +1681,10 @@ const LANG_DATA = {
     }},
   dz: { name: 'Dzongkha', native: 'རྫོང་ཁ', lat: 27.47, lng: 89.64, // Thimphu
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཀུ་ཟུ་ཟངས་པོ་ལ','kuzu zaŋpo la'], thanks:['བཀྲིན་ཆེ','kadrintɕe'], one:['གཅིག','tɕik'], good:['ལེགས་ཤོམ','lekɕom'] }},
+  // Sikkimese (Drenjongke) — Tibetic, ~70K speakers, Sikkim India. Closely related to Dzongkha (dz) and Standard Tibetan (bo).
+  // Sources: Ethnologue 27 'sip'; Glottolog sikk1242; van Driem (1992) Bumthang grammar (regional reference).
+  sik: { name: 'Sikkimese', native: 'འབྲས་ལྗོངས་སྐད', lat: 27.33, lng: 88.61, // Gangtok, Sikkim
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་པ','apa'], eat:['ཟ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ','ɡa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['ཞི་མི','ʑimi'], hand:['ལག','lak'], eye:['མིག','mik'], hello:['ཁམས་བཟང','kʰamsaŋ'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuktɕetɕe'], one:['གཅིག','tɕik'], good:['ལེགས་པོ','lekpo'] }},
   // Indonesian (large regional)
   min: { name: 'Minangkabau', native: 'Baso Minangkabau', lat: -0.95, lng: 100.35, // Padang
     words: { water:['aia','aia'], fire:['api','api'], sun:['matoari','matoaɾi'], moon:['bulan','bulan'], mother:['amak','amaʔ'], father:['abak','abaʔ'], eat:['makan','makan'], drink:['minum','minum'], love:['cinto','tʃinto'], heart:['ati','ati'], tree:['kayu','kaju'], house:['rumah','ɾumah'], dog:['anjiang','aɲdʒiaŋ'], cat:['kuciang','kutʃiaŋ'], hand:['tangan','taŋan'], eye:['mato','mato'], hello:['salam','salam'], thanks:['tarimo kasiah','taɾimo kasiah'], one:['ciek','tʃie'], good:['rancak','ɾantʃak'] }},

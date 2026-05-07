@@ -935,4 +935,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Cayuga (cay), Onondaga (onn), Sikkimese (sik) — Iroquoian + Tibetic.
+    const ADDED34 = {
+        cay: { en: 'Cayuga', ja: 'カユガ語', ko: '카유가어', zh: '卡尤加语', yue: '卡尤加語',
+               vi: 'Tiếng Cayuga', th: 'ภาษาคายูกา', id: 'Cayuga', hi: 'कायुगा',
+               de: 'Cayuga', fr: 'Cayuga', it: 'Cayuga',
+               es_eu: 'Cayuga', es_mx: 'Cayuga', pt_eu: 'Cayuga', pt_br: 'Cayuga',
+               ru: 'Кайюга', uk: 'Каюґа', ar: 'الكايوغا', he: 'קיוגה', sw: 'Cayuga' },
+        onn: { en: 'Onondaga', ja: 'オノンダガ語', ko: '오논다가어', zh: '奥农达加语', yue: '奧農達加語',
+               vi: 'Tiếng Onondaga', th: 'ภาษาโอนอนดากา', id: 'Onondaga', hi: 'ओनोंडागा',
+               de: 'Onondaga', fr: 'Onondaga', it: 'Onondaga',
+               es_eu: 'Onondaga', es_mx: 'Onondaga', pt_eu: 'Onondaga', pt_br: 'Onondaga',
+               ru: 'Онондага', uk: 'Онондага', ar: 'الأونونداغا', he: 'אונונדגה', sw: 'Onondaga' },
+        sik: { en: 'Sikkimese', ja: 'シッキム語', ko: '시킴어', zh: '锡金语', yue: '錫金語',
+               vi: 'Tiếng Sikkim', th: 'ภาษาสิกขิม', id: 'Sikkim', hi: 'सिक्किमी',
+               de: 'Sikkimesisch', fr: 'Sikkimais', it: 'Sikkimese',
+               es_eu: 'Sikkimés', es_mx: 'Sikkimés', pt_eu: 'Siquimês', pt_br: 'Siquimês',
+               ru: 'Сиккимский', uk: 'Сіккімська', ar: 'السيكيمية', he: 'סיקימית', sw: 'Kisikkim' },
+    };
+    for (const code of Object.keys(ADDED34)) {
+        for (const ui of Object.keys(ADDED34[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED34[code][ui];
+            }
+        }
+    }
 })();
