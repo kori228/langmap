@@ -1310,4 +1310,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED49 = {
+        kpy: { en: 'Koryak', ja: 'コリャーク語', ko: '코랴크어', zh: '科里亚克语', yue: '科里亞克語',
+               vi: 'Tiếng Koryak', th: 'ภาษาคอร์ยัค', id: 'Bahasa Koryak', hi: 'कोर्याक',
+               de: 'Korjakisch', fr: 'Koriak', it: 'Coriaco',
+               es_eu: 'Koriaco', es_mx: 'Koriaco', pt_eu: 'Coriaque', pt_br: 'Coriaque',
+               ru: 'Корякский', uk: 'Коряцька', ar: 'الكورياكية', he: 'קוריאקית', sw: 'Kikoryak' },
+        nha: { en: 'Nhanda', ja: 'ナンダ語', ko: '난다어', zh: '恩汉达语', yue: '恩漢達語',
+               vi: 'Tiếng Nhanda', th: 'ภาษาเอ็นฮันดา', id: 'Bahasa Nhanda', hi: 'न्हाण्डा',
+               de: 'Nhanda', fr: 'Nhanda', it: 'Nhanda',
+               es_eu: 'Nhanda', es_mx: 'Nhanda', pt_eu: 'Nhanda', pt_br: 'Nhanda',
+               ru: 'Нанда', uk: 'Нанда', ar: 'النهاندا', he: 'נהאנדה', sw: 'Kinhanda' },
+        azo: { en: 'Azhe', ja: 'アジェ語', ko: '아제어', zh: '阿哲语', yue: '阿哲語',
+               vi: 'Tiếng Azhe', th: 'ภาษาอาเซ๋อ', id: 'Bahasa Azhe', hi: 'अझे',
+               de: 'Azhe', fr: 'Azhe', it: 'Azhe',
+               es_eu: 'Azhe', es_mx: 'Azhe', pt_eu: 'Azhe', pt_br: 'Azhe',
+               ru: 'Аже', uk: 'Аже', ar: 'الأزهية', he: 'אז׳ה', sw: 'Kiazhe' },
+    };
+    for (const code of Object.keys(ADDED49)) {
+        for (const ui of Object.keys(ADDED49[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED49[code][ui];
+            }
+        }
+    }
 })();

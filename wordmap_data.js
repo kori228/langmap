@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 757 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 760 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -344,6 +344,10 @@ const LANG_DATA = {
   // Chukotko-Kamchatkan
   ckt: { name: 'Chukchi', native: 'Ԓыгъоравэтԓьэн йиԓыйиԓ', lat: 64.73, lng: 177.49, // Anadyr
     words: { water:['мимыԓ','mimɯɫ'], fire:['пэӈэн','peŋen'], sun:['тиркытир','tirkɯtir'], moon:['йъиԓгын','jʔiɫɣɯn'], mother:['ынньэв','ɯɲɲew'], father:['атԓёӄ','atɫjoq'], eat:['рынтыкэн','rɯntɯken'], drink:['рымԓыӄэн','rɯmɫɯqen'], love:['ԓюнъювык','ɫjunʔjuwɯk'], heart:['ԓиӈыԓ','ɫiŋɯɫ'], tree:['уттуут','utːuːt'], house:['яраӈы','jaraŋɯ'], dog:['ыттъын','ɯtːʔɯn'], cat:['котйо','kotjo'], hand:['мынгыԓгын','mɯŋɯɫɣɯn'], eye:['ԓыԓет','ɫɯɫet'], hello:['етти','jetːi'], thanks:['вэԓынкы','weɫɯnkɯ'], one:['ыннэн','ɯɲɲen'], good:['тангъэв','taŋɣew'] }},
+  // Koryak (Корякский) — Chukotko-Kamchatkan (Northern, sister to Chukchi ckt + Kerek), ~1.5K, Russia (Kamchatka — Tigilsky and Karaginsky Districts).
+  // Sources: Ethnologue 27 'kpy'; Glottolog kory1246; Bogoras (1922) Koryak; Zhukova (1972) Koryak grammar.
+  kpy: { name: 'Koryak', native: 'Чавчывэн йиԓыйиԓ', lat: 60.40, lng: 166.65, // Tigil, Kamchatka Krai
+    words: { water:['мимыԓ','mimɯɫ'], fire:['пэӈӈын','peŋːɯn'], sun:['тиӈытиӈ','tiŋɯtiŋ'], moon:['йъаԓӄа','jʔaɫqa'], mother:['элла','elːa'], father:['элёӄ','eljoq'], eat:['тыки','tɯki'], drink:['кывикви','kɯwikwi'], love:['льуңэвык','lʲuŋewɯk'], heart:['ԓиӈыԓ','ɫiŋɯɫ'], tree:['уттыут','utːɯut'], house:['яяӈа','jajaŋa'], dog:['ӄэйуу','qejuː'], cat:['ката','kata'], hand:['миӈыԓгын','miŋɯɫɣɯn'], eye:['ԓеԓет','ɫeɫet'], hello:['эймэӄ','ejmeq'], thanks:['ныӈэвыквын','nɯŋewɯkwɯn'], one:['ыннэн','ɯnnen'], good:['тӏамгъав','tʔamɣaw'] }},
   // Audit Task 142 (Tier 2 optional): Itelmen — sister branch of Chukchi
   // within Chukotko-Kamchatkan, ~80 fluent speakers (UNESCO: critically
   // endangered). Western Itelmen standard (Sedanka). Cells with confident
@@ -476,6 +480,10 @@ const LANG_DATA = {
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་ཕ','apa'], eat:['ཟ','za'], drink:['འཐུང་','tʰuŋ'], love:['དགའ་པོ','gapo'], heart:['སྙིང་','ɲiŋ'], tree:['ཤིང་','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['ཞི་མི','ʑimi'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཨ་རོ','aɾo'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʑe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   ii: { name: 'Yi (Nuosu)', native: 'ꆈꌠꉙ', lat: 27.90, lng: 102.26,
     words: { water:['ꏂ','ʐɿ˧˧'], fire:['ꃆ','mu˧˧'], sun:['ꉢꁡ','ȵi˧˧mo˧˧'], moon:['ꃅꎖ','mu˧˧hy˧˧'], mother:['ꀊꂿ','a˧˧mo˧˧'], father:['ꀊꀧ','a˧˧da˧˧'], eat:['ꋊ','dza˧˧'], drink:['ꄸ','tu˧˧'], love:['ꉢ','ŋa˧˧'], heart:['ꌋ','si˧˧'], tree:['ꌦ','sɿ˧˧'], house:['ꑳ','ɣɯ˧˧'], dog:['ꈸ','kʰɯ˧˧'], cat:['ꃬ','vi˧˧'], hand:['ꇐ','la˧˧'], eye:['ꉜ','ȵi˧˧'], hello:['ꂿꎆꈐ','mo˧˧su˧˧kɤ˧˧'], thanks:['ꃰꊿ','ka˧˧tɕʰɿ˧˧'], one:['ꊰ','tsʰɿ˧˧'], good:['ꃅ','mu˧˧'] }},
+  // Azhe — Sino-Tibetan (Tibeto-Burman, Loloish, Southeastern), ~50K, China (Yunnan — Mile and Yiliang counties around Honghe Hani-Yi Autonomous Prefecture).
+  // Sources: Ethnologue 27 'azo'; Glottolog azhe1239; Wang & Yu (1994) Yi/Lolo-Burmese phonology.
+  azo: { name: 'Azhe', native: 'Azhepu', lat: 24.41, lng: 103.41, // Mile County, Honghe Prefecture, Yunnan
+    words: { water:['ʑɿ','ʑɿ˧˧'], fire:['mi','mi˧˧'], sun:['ŋᴊni','ŋnʲi˧˧'], moon:['ɬɛ','ɬɛ˧˧'], mother:['amo','amo˧˧'], father:['ada','ada˧˧'], eat:['dza','dza˧˧'], drink:['du','du˧˧'], love:['ŋa','ŋa˧˧'], heart:['si','si˧˧'], tree:['sɿ','sɿ˧˧'], house:['ɣɯ','ɣɯ˧˧'], dog:['kʰɯ','kʰɯ˧˧'], cat:['vi','vi˧˧'], hand:['la','la˧˧'], eye:['ȵi','ȵi˧˧'], hello:['mosu','mosu˧˧'], thanks:['katɕʰɿ','katɕʰɿ˧˧'], one:['tsʰɿ','tsʰɿ˧˧'], good:['mu','mu˧˧'] }},
   th_isan: { name: 'Thai (Isan)', native: 'ภาษาอีสาน', lat: 16.43, lng: 102.83,
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะเว็น','ta˨˩wen˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิน','kin˥'], drink:['ดื่ม','dɯːm˥˩'], love:['ฮัก','hak˧˥'], heart:['ใจ','t͡ɕaj˥'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['เฮือน','hɯːan˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ตา','taː˥'], hello:['สะบายดี','sa˨˩baːj˥diː˥'], thanks:['ขอบใจ','kʰɔːp˨˩t͡ɕaj˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
   th_n: { name: 'Thai (Northern)', native: 'คำเมือง', lat: 18.79, lng: 98.98,
@@ -1785,6 +1793,10 @@ const LANG_DATA = {
     } },
   wbp: { name: 'Warlpiri', native: 'Warlpiri', lat: -22.26, lng: 131.79, // Yuendumu
     words: { water:['ngapa','ŋapa'], fire:['warlu','waɻlu'], sun:['wantajarra','wantadʒaɻa'], moon:['pirli','piɻli'], mother:['ngati','ŋati'], father:['kirda','kiɻda'], eat:['ngarni','ŋaɻni'], drink:['purrami','puɻami'], love:['jaru','dʒaɻu'], heart:['pikirri','pikiɻi'], tree:['watiya','watija'], house:['ngurra','ŋuɻa'], dog:['jarntu','dʒaɳʈu'], cat:['mungalpa','muŋalpa'], hand:['rdaka','ɖaka'], eye:['milpa','milpa'], hello:['palka','palka'], thanks:['ngantitu','ŋantitu'], one:['jinta','dʒinta'], good:['ngumarna','ŋumaɳa'] }},
+  // Nhanda — Pama-Nyungan (Kartu, Western Australia), ~30 fluent + ~60 partial speakers, Australia (Murchison-Gascoyne, mid-coast WA — Geraldton/Kalbarri area).
+  // Sources: Ethnologue 27 'nha'; Glottolog nhan1238; Blevins (2001) Nhanda Aboriginal Language; Pama-Nyungan reconstructions.
+  nha: { name: 'Nhanda', native: 'Nhanda', lat: -28.78, lng: 114.61, // Geraldton, Western Australia
+    words: { water:['kapi','kapi'], fire:['warla','waɻla'], sun:['ngama','ŋama'], moon:['kanyala','kaɲala'], mother:['ngamaji','ŋamadʒi'], father:['kuthurra','kutʰuɻa'], eat:['ngarna','ŋaɻna'], drink:['nyuna','ɲuna'], love:['kanyji','kaɲdʒi'], heart:['pulpara','pulpaɻa'], tree:['parntany','paɳʈaɲ'], house:['nhurra','ɳuɻa'], dog:['kuwiyarl','kuwijaɻl'], cat:['paka','paka'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','paʎa'], thanks:['marlu','maɻlu'], one:['kuyu','kuju'], good:['walykumarra','waʎkumaɻa'] }},
   // === Phase 3F: Tibeto-Burman, Indonesian/Philippine, misc ===
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal
