@@ -1485,4 +1485,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED56 = {
+        ker: { en: 'Kera', ja: 'ケラ語', ko: '케라어', zh: '凯拉语', yue: '凱拉語',
+               vi: 'Tiếng Kera', th: 'ภาษาเคระ', id: 'Bahasa Kera', hi: 'केरा',
+               de: 'Kera', fr: 'Kera', it: 'Kera',
+               es_eu: 'Kera', es_mx: 'Kera', pt_eu: 'Kera', pt_br: 'Kera',
+               ru: 'Кера', uk: 'Кера', ar: 'الكيرا', he: 'קרה', sw: 'Kikera' },
+        dbq: { en: 'Daba', ja: 'ダバ語', ko: '다바어', zh: '达巴语', yue: '達巴語',
+               vi: 'Tiếng Daba', th: 'ภาษาดาบา', id: 'Bahasa Daba', hi: 'दाबा',
+               de: 'Daba', fr: 'Daba', it: 'Daba',
+               es_eu: 'Daba', es_mx: 'Daba', pt_eu: 'Daba', pt_br: 'Daba',
+               ru: 'Даба', uk: 'Даба', ar: 'الدابا', he: 'דאבה', sw: 'Kidaba' },
+        nzm: { en: 'Zeme Naga', ja: 'ゼメ・ナガ語', ko: '제메 나가어', zh: '泽米那加语', yue: '澤米那加語',
+               vi: 'Tiếng Naga Zeme', th: 'ภาษาเซเมนากา', id: 'Naga Zeme', hi: 'जेमे नागा',
+               de: 'Zeme-Naga', fr: 'Zeme naga', it: 'Zeme naga',
+               es_eu: 'Zeme naga', es_mx: 'Zeme naga', pt_eu: 'Zeme naga', pt_br: 'Zeme naga',
+               ru: 'Земе нага', uk: 'Земе-нага', ar: 'النجاوية الزيمة', he: 'נגה זמה', sw: 'Kinaga cha Zeme' },
+    };
+    for (const code of Object.keys(ADDED56)) {
+        for (const ui of Object.keys(ADDED56[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED56[code][ui];
+            }
+        }
+    }
 })();

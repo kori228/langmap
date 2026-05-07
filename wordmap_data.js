@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 778 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 781 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -646,6 +646,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'xed'; Glottolog hdii1240; Frajzyngier (2002) A Grammar of Hdi.
   xed: { name: 'Hdi', native: 'Hədi', lat: 10.74, lng: 13.80, // Mokolo, Cameroon (Mandara Mountains)
     words: { water:['yam','jam'], fire:['hu','hu'], sun:['vah','vah'], moon:['ʔir','ʔir'], mother:['nəh','nəh'], father:['baba','baba'], eat:['za','za'], drink:['sa','sa'], love:['ɓəz','ɓəz'], heart:['ɓal','ɓal'], tree:['ʔən','ʔən'], house:['gay','ɡaj'], dog:['ɓəzaŋ','ɓəzaŋ'], cat:['mərz','mərz'], hand:['xen','xen'], eye:['ɓah','ɓah'], hello:['ʔaza','ʔaza'], thanks:['ʔusi','ʔusi'], one:['kələ','kələ'], good:['ɗəfa','ɗəfa'] }},
+  // Kera — Afro-Asiatic (Chadic, East, A subgroup), ~50K, Chad (Mayo-Kebbi East prefecture) + Cameroon (Far North border).
+  // Sources: Ethnologue 27 'ker'; Glottolog kera1252; Ebert (1979) Sprache und Tradition der Kera.
+  ker: { name: 'Kera', native: 'kura kera', lat: 10.05, lng: 15.42, // Léré, Mayo-Kebbi East, Chad
+    words: { water:['mam','mam'], fire:['ákə̀rə','akərə'], sun:['kêr','keːɾ'], moon:['mə̀sə̀rə','məsərə'], mother:['nâ','naː'], father:['bâ','baː'], eat:['nà','na'], drink:['sā','saː'], love:['kùm','kum'], heart:['gùm','ɡum'], tree:['kòsō','kosoː'], house:['gòl','ɡol'], dog:['kŋā','kŋaː'], cat:['mūsā','muːsaː'], hand:['kéu','keu'], eye:['gìr','ɡir'], hello:['ásālāmā','asaːlaːmaː'], thanks:['shùkūr','ʃukuːɾ'], one:['ká','ka'], good:['kúɗá','kuɗa'] }},
+  // Daba — Afro-Asiatic (Chadic, Central, Daba subgroup), ~30K, Cameroon (Far North Region) + Nigeria (Adamawa State).
+  // Sources: Ethnologue 27 'dbq'; Glottolog daba1262; Mouchet (1966) Le parler daba.
+  dbq: { name: 'Daba', native: 'mə-daba', lat: 10.65, lng: 13.97, // Mokolo area, Cameroon
+    words: { water:['yam','jam'], fire:['kʷu','kʷu'], sun:['ɓa','ɓa'], moon:['paɗ','paɗ'], mother:['mma','mːa'], father:['daa','daː'], eat:['za','za'], drink:['sa','sa'], love:['saw','saw'], heart:['ɓəl','ɓəl'], tree:['hin','hin'], house:['gəy','ɡəj'], dog:['ɓəzaŋ','ɓəzaŋ'], cat:['mərz','mərz'], hand:['xən','xən'], eye:['ɓəh','ɓəh'], hello:['salaŋ','salaŋ'], thanks:['ndzaŋ','ndzaŋ'], one:['mma','mːa'], good:['ɗəfa','ɗəfa'] }},
   wo: { name: 'Wolof', native: 'Wolof', lat: 14.69, lng: -17.44,
     words: { water:['ndox','ndɔx'], fire:['safara','safaɾa'], sun:['jant','dʒant'], moon:['weer','weːɾ'], mother:['yaay','jaːj'], father:['baay','baːj'], eat:['lekk','lɛkː'], drink:['naan','naːn'], love:['mbëggeel','mbəɡeːl'], heart:['xol','xol'], tree:['garab','ɡaɾab'], house:['kër','kəɾ'], dog:['xaj','xaj'], cat:['muus','muːs'], hand:['loxo','lɔxɔ'], eye:['bët','bət'], hello:['na nga def','na ŋɡa dɛf'], thanks:['jërëjëf','dʒəɾədʒəf'], one:['benn','bɛnː'], good:['baax','baːx'] }},
   // Serer — Niger-Congo (Atlantic, Senegambian — sister to Fula and Wolof but Cangin subgroup), ~1.4M, Senegal (Sine-Saloum + Petite Côte). Tonal, ~12 noun classes.
@@ -1877,6 +1885,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nag'; Glottolog naga1394; Sreedhar (1974) Naga Pidgin.
   nag: { name: 'Nagamese', native: 'Nagamese', lat: 25.67, lng: 94.11, // Kohima, Nagaland
     words: { water:['pani','pani'], fire:['jui','dʒui'], sun:['suruj','suɾudʒ'], moon:['saand','tʃaːnd'], mother:['ma','ma'], father:['baba','baba'], eat:['kha','kʰa'], drink:['pi','pi'], love:['morom','moɾom'], heart:['mon','mon'], tree:['gus','ɡus'], house:['ghor','ɡʱoɾ'], dog:['kukur','kukuɾ'], cat:['mekuri','mekuɾi'], hand:['hath','haːtʰ'], eye:['suku','suku'], hello:['namaskar','namaskaɾ'], thanks:['dhonyobad','dʱoɲobad'], one:['ek','ek'], good:['bhal','bʱal'] }},
+  // Zeme Naga — Sino-Tibetan (Tibeto-Burman, Kuki-Chin-Naga, Zeme group), ~70K, India (Nagaland — Peren District, Manipur — Tamenglong, Assam — Dima Hasao).
+  // Sources: Ethnologue 27 'nzm'; Glottolog zeme1240; Konow (1903) Linguistic Survey of India Vol. 3.
+  nzm: { name: 'Zeme Naga', native: 'Zeme', lat: 25.45, lng: 93.75, // Peren, Nagaland
+    words: { water:['nki','nki'], fire:['mei','mei'], sun:['sʰeu','ʃeu'], moon:['kʰu','kʰu'], mother:['nem','nem'], father:['ape','ape'], eat:['so','so'], drink:['hʷu','hʷu'], love:['kihai','kihai'], heart:['heisia','heisia'], tree:['rik','rik'], house:['ki','ki'], dog:['hui','hui'], cat:['kʰemi','kʰemi'], hand:['hak','hak'], eye:['mik','mik'], hello:['hangba','haŋba'], thanks:['kazi','kazi'], one:['kha','kʰa'], good:['ahei','ahei'] }},
   lus: { name: 'Mizo', native: 'Mizo ṭawng', lat: 23.73, lng: 92.72, // Aizawl
     words: { water:['tui','tui'], fire:['mei','mei'], sun:['ni','ni'], moon:['thla','tʰla'], mother:['nu','nu'], father:['pa','pa'], eat:['ei','ei'], drink:['in','in'], love:['hmangaih','hmaŋai'], heart:['thinlung','tʰinluŋ'], tree:['thingkung','tʰiŋkuŋ'], house:['in','in'], dog:['ui','ui'], cat:['zawhte','zawʔte'], hand:['kut','kut'], eye:['mit','mit'], hello:['chibai','tʃibai'], thanks:['ka lawm e','ka lawm e'], one:['pakhat','pakʰat'], good:['ṭha','tʰa'] },
     wordEvidence: {
