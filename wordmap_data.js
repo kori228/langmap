@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 715 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 718 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -464,6 +464,10 @@ const LANG_DATA = {
     words: { water:['dej','te˧'], fire:['taws','tɑ˧˩'], sun:['hnub','nu˧˥'], moon:['hli','ɬi˥'], mother:['niam','niã˥'], father:['txiv','tɕi˧˩'], eat:['noj','nɔ˧'], drink:['haus','hɑu˧˩'], love:['hlub','ɬu˧˥'], heart:['siab','ɕiã˧˥'], tree:['ntoo','tɔː˥'], house:['tsev','tɕɛ˧˩'], dog:['dev','te˧˩'], cat:['miv','mi˧˩'], hand:['tes','te˧˩'], eye:['qhov muag','kʰɔ˧˩muã˧'], hello:['nyob zoo','ɲɔ˧˥tɕɔː˥'], thanks:['ua tsaug','uã˥tɕɑu˧'], one:['ib','i˧˥'], good:['zoo','tɕɔː˥'] }},
   jv: { name: 'Javanese', native: 'ꦧꦱꦗꦮ', lat: -7.25, lng: 112.75,
     words: { water:['banyu','banju'], fire:['geni','ɡəni'], sun:['srengéngé','srəŋeŋe'], moon:['bulan','bulan'], mother:['ibu','ibu'], father:['bapak','bapak'], eat:['mangan','maŋan'], drink:['ngombe','ŋombe'], love:['tresna','trɛsna'], heart:['ati','ati'], tree:['wit','wit'], house:['omah','omah'], dog:['asu','asu'], cat:['kucing','kutɕiŋ'], hand:['tangan','taŋan'], eye:['mripat','mripat'], hello:['halo','halo'], thanks:['matur nuwun','matur nuwun'], one:['siji','sidʒi'], good:['apik','apik'] }},
+  // Caribbean Javanese — Suriname Javanese diaspora, ~60K speakers, Suriname + Netherlands.
+  // Sources: Ethnologue 27 'jvn'; Glottolog cari1280; Vruggink (1990) Caribbean Javanese.
+  jvn: { name: 'Caribbean Javanese', native: 'Bahasa Jawa Suriname', lat: 5.85, lng: -55.20, // Paramaribo, Suriname
+    words: { water:['banyu','baɲu'], fire:['geni','ɡəni'], sun:['srengéngé','srəŋeŋe'], moon:['rembulan','rəmbulan'], mother:['mbok','mbɔʔ'], father:['pak','paʔ'], eat:['mangan','maŋan'], drink:['ngombé','ŋombe'], love:['tresno','trɛsno'], heart:['ati','ati'], tree:['wit','wit'], house:['omah','omah'], dog:['asu','asu'], cat:['kucing','kutʃiŋ'], hand:['tangan','taŋan'], eye:['mripat','mripat'], hello:['halo','halo'], thanks:['matur nuwun','matur nuwun'], one:['siji','sidʒi'], good:['apik','apik'] }},
   su: { name: 'Sundanese', native: 'ᮘᮞ ᮞᮥᮔ᮪ᮓ', lat: -6.91, lng: 107.61,
     words: { water:['cai','tɕai'], fire:['seuneu','sɤnɤ'], sun:['panonpoé','panɔnpoe'], moon:['bulan','bulan'], mother:['indung','induŋ'], father:['bapa','bapa'], eat:['dahar','dahar'], drink:['nginum','ŋinum'], love:['bogoh','bɔɡɔh'], heart:['haté','hate'], tree:['tangkal','taŋkal'], house:['imah','imah'], dog:['anjing','andʒiŋ'], cat:['ucing','utɕiŋ'], hand:['leungeun','lɤŋɤn'], eye:['panon','panɔn'], hello:['sampurasun','sampurasun'], thanks:['hatur nuhun','hatur nuhun'], one:['hiji','hidʒi'], good:['hadé','hade'] }},
   ceb: { name: 'Cebuano', native: 'Sinugbuanon', lat: 10.31, lng: 123.89,
@@ -756,6 +760,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ono'; Glottolog onon1246; Woodbury (2003) Onondaga grammar.
   onn: { name: 'Onondaga', native: 'Onǫdaʼgegáʼ', lat: 43.05, lng: -76.13, // Onondaga Nation, NY
     words: { water:['ohnekano:s','ohnekanoːs'], fire:['oji:staʼ','odʒiːstaʔ'], sun:['gaeh\'kwa','ɡaehʔkwa'], moon:['gaeh\'kwa enitha','ɡaehʔkwa enitha'], mother:['ekno:ha\'','eknoːhaʔ'], father:['hak\'no:ha\'','hakʔnoːhaʔ'], eat:['ekho:ne\'','ekhoːneʔ'], drink:['ehnega:i\'ron','ehneɡaːiʔron'], love:['gaonihsdá:wę','ɡaonihsdaːwɛ̃'], heart:['awé:ri','aweːri'], tree:['ga:enda\'','ɡaːendaʔ'], house:['ganǫhsoht','ɡanõhsoht'], dog:['só:wa:s','soːwaːs'], cat:['takó:s','takoːs'], hand:['onénǫhsa\'','onenõhsaʔ'], eye:['oga:tha\'','oɡaːthaʔ'], hello:['sgë:nǫʼ','skẽːnõʔ'], thanks:['nya:wę\'','njaːwɛ̃ʔ'], one:['ska:t','skaːt'], good:['oyá:nre','ojaːnre'] }},
+  // Tuscarora — Iroquoian Northern, ~10 fluent, NC homeland → Six Nations Reserve ON.
+  // Sources: Ethnologue 27 'tus'; Glottolog tusc1257; Williams (1976) Tuscarora Vocabulary.
+  tus: { name: 'Tuscarora', native: 'Skarù:rę\'', lat: 43.16, lng: -78.96, // Tuscarora Reservation, NY
+    words: { water:['awę:','awɛ̃ː'], fire:['ujihst','udʒihst'], sun:['hęhts','hɛ̃hts'], moon:['hęhts uri:węh','hɛ̃hts uɾiːwɛ̃h'], mother:['raknų:hak','ɾaknũːhak'], father:['rakhnih','ɾakhnih'], eat:['kré:nuʼ','kɾeːnuʔ'], drink:['kré:hwiʼ','kɾeːhwiʔ'], love:['krunyę:tas','kɾuɲɛ̃ːtas'], heart:['kęhsa\'','kɛ̃hsaʔ'], tree:['nyęt','ɲɛ̃t'], house:['kanéhse\'ę','kanehseʔɛ̃'], dog:['čerʼ','tʃeɾʔ'], cat:['takʼo:s','takʔoːs'], hand:['kéhskweh','kehskweh'], eye:['ka:tæk','kaːtæk'], hello:['skę:nu','skɛ̃ːnu'], thanks:['nyaʼwę:','ɲaʔwɛ̃ː'], one:['ę:cæ','ɛ̃ːtsæ'], good:['unę:tsweht','unɛ̃ːtsweht'] }},
 
   as: { name: 'Assamese', native: 'অসমীয়া', lat: 26.14, lng: 91.74,
     words: { water:['পানী','pani'], fire:['জুই','zui'], sun:['সূৰ্য','xuɹjɔ'], moon:['জোন','zʊn'], mother:['মা','ma'], father:['দেউতা','deuta'], eat:['খোৱা','kʰuwa'], drink:['পান কৰা','pan kɔɹa'], love:['প্ৰেম','pɹem'], heart:['হৃদয়','ɹidɔi'], tree:['গছ','gɔs'], house:['ঘৰ','gʱɔɹ'], dog:['কুকুৰ','kukuɹ'], cat:['মেকুৰী','mekuɹi'], hand:['হাত','hat'], eye:['চকু','sɔku'], hello:['নমস্কাৰ','nɔmɔxkaɹ'], thanks:['ধন্যবাদ','dʱɔnjɔbad'], one:['এক','ek'], good:['ভাল','bʱal'] }},
@@ -2038,6 +2046,10 @@ const LANG_DATA = {
   // Old Greek branch + Aramaic Modern
   syr: { name: 'Assyrian Neo-Aramaic', native: 'ܣܘܪܝܬ', lat: 36.36, lng: 43.15, // Mosul plain
     words: { water:['ܡܝ̈ܐ','mæje'], fire:['ܢܘܪܐ','nuɾa'], sun:['ܫܡܫܐ','ʃɛmʃa'], moon:['ܣܗܪܐ','sahɾa'], mother:['ܝܡܐ','jɛmma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','ʔaχɛl'], drink:['ܫܬܐ','ʃate'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','lɛbba'], tree:['ܐܝܠܢܐ','ʔilana'], house:['ܒܝܬܐ','beta'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaʈu'], hand:['ܐܝܕܐ','ʔida'], eye:['ܥܝܢܐ','ʕena'], hello:['ܫܠܡܐ','ʃlama'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒ','ʈav'] }},
+  // Mandaic (Classical) — Aramaic, ~5K liturgical (~50 fluent), Iraq + Iran + diaspora. Unique Mandaic script.
+  // Sources: Ethnologue 27 'myz'; Glottolog clas1252; Macuch (1965) Handbook of Classical and Modern Mandaic.
+  myz: { name: 'Classical Mandaic', native: 'ࡌࡀࡍࡃࡀࡉࡉࡀ', lat: 32.76, lng: 47.08, // Khuzestan, Iran (modern Mandaean homeland)
+    words: { water:['ࡌࡉࡀ','mia'], fire:['ࡍࡅࡓࡀ','nura'], sun:['ࡔࡀࡌࡔࡀ','ʃamʃa'], moon:['ࡎࡉࡓࡀ','sira'], mother:['ࡀࡌࡀ','ama'], father:['ࡀࡁࡀ','aba'], eat:['ࡀࡊࡀࡋ','akal'], drink:['ࡔࡕࡀ','ʃta'], love:['ࡓࡅࡄࡌࡀ','ɾuhma'], heart:['ࡋࡉࡁࡀ','liba'], tree:['ࡀࡊࡀࡍࡀ','akana'], house:['ࡁࡉࡕࡀ','bita'], dog:['ࡊࡀࡋࡁࡀ','kalba'], cat:['ࡔࡅࡍࡀࡓࡀ','ʃunara'], hand:['ࡏࡃࡀ','ʔida'], eye:['ࡏࡉࡍࡀ','ʔina'], hello:['ࡔࡋࡀࡌࡀ','ʃlama'], thanks:['ࡈࡀࡁࡅࡕࡀ','ʈabuta'], one:['ࡄࡀࡃ','had'], good:['ࡈࡀࡁࡀ','ʈaba'] }},
   // Bantu Eastern (Mozambique)
   vmw: { name: 'Makhuwa', native: 'eMakhuwa', lat: -15.12, lng: 39.27, // Nampula
     words: { water:['maasi','maːsi'], fire:['moro','moɾo'], sun:['ettsuwa','etsuwa'], moon:['mweri','mweɾi'], mother:['maama','maːma'], father:['paapa','paːpa'], eat:['ohuula','ohuːla'], drink:['ohwèwa','ohwɛwa'], love:['ophenta','opʰenta'], heart:['murima','muɾima'], tree:['muri','muɾi'], house:['empa','empa'], dog:['mphwa','mpʰwa'], cat:['paaka','paːka'], hand:['nikhono','nikʰono'], eye:['nittho','nitːo'], hello:['salaama','salaːma'], thanks:['kosheni','koʃeni'], one:['mosa','mosa'], good:['ratteene','ɾatːeːne'] }},

@@ -960,4 +960,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Tuscarora (tus), Mandaic (myz), Caribbean Javanese (jvn).
+    const ADDED35 = {
+        tus: { en: 'Tuscarora', ja: 'タスカローラ語', ko: '터스커로러어', zh: '塔斯卡罗拉语', yue: '塔斯卡羅拉語',
+               vi: 'Tiếng Tuscarora', th: 'ภาษาทัสคารอรา', id: 'Tuscarora', hi: 'टस्करोरा',
+               de: 'Tuscarora', fr: 'Tuscarora', it: 'Tuscarora',
+               es_eu: 'Tuscarora', es_mx: 'Tuscarora', pt_eu: 'Tuscarora', pt_br: 'Tuscarora',
+               ru: 'Тускарора', uk: 'Тускарора', ar: 'التوسكارورا', he: 'טוסקרורה', sw: 'Tuscarora' },
+        myz: { en: 'Mandaic', ja: 'マンダ語', ko: '만다이어', zh: '曼达语', yue: '曼達語',
+               vi: 'Tiếng Mandaic', th: 'ภาษามันดาอิก', id: 'Mandaic', hi: 'मंडाइक',
+               de: 'Mandäisch', fr: 'Mandéen', it: 'Mandeo',
+               es_eu: 'Mandeo', es_mx: 'Mandeo', pt_eu: 'Mandeu', pt_br: 'Mandeu',
+               ru: 'Мандейский', uk: 'Мандейська', ar: 'المندائية', he: 'מנדאית', sw: 'Kimanda' },
+        jvn: { en: 'Caribbean Javanese', ja: 'カリブ・ジャワ語', ko: '카리브 자바어', zh: '加勒比爪哇语', yue: '加勒比爪哇語',
+               vi: 'Tiếng Java Caribe', th: 'ภาษาชวาแคริบเบียน', id: 'Jawa Suriname', hi: 'कैरिबियन जावानीज़',
+               de: 'Karibisches Javanisch', fr: 'Javanais des Caraïbes', it: 'Giavanese caraibico',
+               es_eu: 'Javanés caribeño', es_mx: 'Javanés caribeño', pt_eu: 'Javanês caribenho', pt_br: 'Javanês caribenho',
+               ru: 'Карибский яванский', uk: 'Карибська яванська', ar: 'الجاوية الكاريبية', he: 'יוואנית קריבית', sw: 'Kijava cha Karibea' },
+    };
+    for (const code of Object.keys(ADDED35)) {
+        for (const ui of Object.keys(ADDED35[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED35[code][ui];
+            }
+        }
+    }
 })();
