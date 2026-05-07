@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 865 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 868 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -236,6 +236,10 @@ const LANG_DATA = {
     words: { water:['Wasser','vasɐ'], fire:['Feuer','fɔʏ̯ɐ'], sun:['Sonne','zɔnə'], moon:['Mond','moːnt'], mother:['Mutter','mʊtɐ'], father:['Vater','faːtɐ'], eat:['essen','ɛsn̩'], drink:['trinken','tʁɪŋkn̩'], love:['Liebe','liːbə'], heart:['Herz','hɛʁt͡s'], tree:['Baum','baʊ̯m'], house:['Haus','haʊ̯s'], dog:['Hund','hʊnt'], cat:['Katze','kat͡sə'], hand:['Hand','hant'], eye:['Auge','aʊ̯ɡə'], hello:['Hallo','haloː'], thanks:['Danke','daŋkə'], one:['eins','aɪ̯ns'], good:['gut','ɡuːt'] }},
   fr: { name: 'French', native: 'Français', lat: 48.86, lng: 2.35, // Paris
     words: { water:['eau','o'], fire:['feu','fø'], sun:['soleil','sɔlɛj'], moon:['lune','lyn'], mother:['mère','mɛʁ'], father:['père','pɛʁ'], eat:['manger','mɑ̃ʒe'], drink:['boire','bwaʁ'], love:['amour','amuʁ'], heart:['cœur','kœʁ'], tree:['arbre','aʁbʁ'], house:['maison','mɛzɔ̃'], dog:['chien','ʃjɛ̃'], cat:['chat','ʃa'], hand:['main','mɛ̃'], eye:['œil','œj'], hello:['bonjour','bɔ̃ʒuʁ'], thanks:['merci','mɛʁsi'], one:['un','œ̃'], good:['bon','bɔ̃'] }},
+  // Picard (Ch'ti) — Indo-European Italic Romance Oïl (sister to French fr and Walloon wln within the Oïl sub-branch; preserves Old Northern French features lost in Standard French — most famously Latin /k/ before /a/ remained as /k/ rather than becoming /ʃ/ in French), ~700K, France (Hauts-de-France region — Nord, Pas-de-Calais, Somme) + Belgium (Hainaut — Mons, Tournai). Famously the Ch'ti dialect of the popular 2008 film "Bienvenue chez les Ch'tis".
+  // Sources: Ethnologue 27 'pcd'; Glottolog pica1241; Pooley (1996) Chtimi: The Urban Vernaculars of Northern France.
+  pcd: { name: 'Picard', native: 'Picard', lat: 50.63, lng: 3.05, // Lille (Northern Picard zone — Lille/Tourcoing/Roubaix area)
+    words: { water:['iau','jo'], fire:['fu','fy'], sun:['solèl','sɔlɛl'], moon:['lune','lyn'], mother:['mère','mɛʁ'], father:['père','pɛʁ'], eat:['minger','mɛ̃ʒe'], drink:['boère','bwɛʁ'], love:['amour','amuʁ'], heart:['cœur','kœʁ'], tree:['abre','abʁ'], house:['mason','masɔ̃'], dog:['kien','kjɛ̃'], cat:['cat','ka'], hand:['main','mɛ̃'], eye:['œil','œj'], hello:['bojour','bɔʒuʁ'], thanks:['merci','mɛʁsi'], one:['un','œ̃'], good:['bon','bɔ̃'] }},
   it: { name: 'Italian', native: 'Italiano', lat: 41.90, lng: 12.50, // Rome
     words: { water:['acqua','ˈakkwa'], fire:['fuoco','ˈfwɔːko'], sun:['sole','ˈsoːle'], moon:['luna','ˈluːna'], mother:['madre','ˈmaːdre'], father:['padre','ˈpaːdre'], eat:['mangiare','manˈd͡ʒaːre'], drink:['bere','ˈbeːre'], love:['amore','aˈmoːre'], heart:['cuore','ˈkwɔːre'], tree:['albero','ˈalbero'], house:['casa','ˈkaːza'], dog:['cane','ˈkaːne'], cat:['gatto','ˈɡatto'], hand:['mano','ˈmaːno'], eye:['occhio','ˈɔkkjo'], hello:['ciao','ˈt͡ʃaːo'], thanks:['grazie','ˈɡratt͡sje'], one:['uno','ˈuːno'], good:['buono','ˈbwɔːno'] }},
   es_eu: { name: 'Spanish (Europe)', native: 'Español', lat: 40.42, lng: -3.70, // Madrid
@@ -1705,6 +1709,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'hch'; Glottolog huic1243; Iturrioz Leza & Gómez López (2006) Gramática Huichola.
   hch: { name: 'Wixarika', native: 'Wixárika niukieya', lat: 22.13, lng: -104.50, // San Andrés Cohamiata, Jalisco
     words: { water:['ha','ha'], fire:['tai','tai'], sun:['tau','tau'], moon:['metsa','metsa'], mother:['nana','nana'], father:['yawe','jawe'], eat:['kuye','kuje'], drink:['hi\'eka','hiʔeka'], love:['kanenki','kanenki'], heart:['iyari','ijari'], tree:['kiyé','kije'], house:['ki','ki'], dog:['tsïkï','tsɨkɨ'], cat:['mitsu','mitsu'], hand:['mama','mama'], eye:['tukite','tukite'], hello:['kekuanenki','kekwanenki'], thanks:['pa\'iwakaitsie','paʔiwakaitsje'], one:['xevi','ʃevi'], good:['waxa','waʃa'] }},
+  // Cora — Uto-Aztecan Corachol (sister to Wixarika hch within the Corachol sub-branch), ~17K, Mexico (Nayarit — Sierra del Nayar; small Jalisco populations).
+  // Sources: Ethnologue 27 'crn'; Glottolog cora1260; Casad (1984) Cora.
+  crn: { name: 'Cora', native: 'Naáyarite', lat: 22.13, lng: -104.93, // Jesús María, Nayarit
+    words: { water:['hapɨn','hapɨn'], fire:['ta\'ai','taʔai'], sun:['tahaapuá','tahaːpwa'], moon:['mɨhka','mɨhka'], mother:['naana','naːna'], father:['hahuá','hahwa'], eat:['kuá','kwa'], drink:['hi\'i','hiʔi'], love:['ka\'na','kaʔna'], heart:['hɨurí','hɨuri'], tree:['kɨré','kɨre'], house:['kíh','kih'], dog:['tsɨ\'ɨ','tsɨʔɨ'], cat:['mistú','mistu'], hand:['mam','mam'], eye:['húi','hwi'], hello:['ke\'kuanenki','keʔkwanenki'], thanks:['atsipiraá','atsipiraː'], one:['cei','tsei'], good:['huá\'i','hwaʔi'] }},
   myn: { name: 'Classical Maya', native: 'Maaya Tzij', lat: 14.63, lng: -90.51,
     words: { water:['haʼ','haʔ'], fire:['kʼahkʼ','kʼahkʼ'], sun:['kʼin','kʼin'], moon:['uh','uh'], mother:['naʼ','naʔ'], father:['yuum','juːm'], eat:['wiʼij','wiʔiχ'], drink:['ukʼ','ukʼ'], love:['yaah','jaːh'], heart:['pixan','piʃan'], tree:['cheʼ','tʃeʔ'], house:['otoch','otoːtʃ'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼab','kʼab'], eye:['ich','itʃ'], hello:['bix a beel','biʃ a beːl'], thanks:['nibʼoolal','nibʼoːlal'], one:['jun','χun'], good:['utz','uts'] }},
   ine: { name: 'Proto-Indo-European', native: '*dń̥ǵʰwéh₂s', lat: 47.00, lng: 39.00,
@@ -2200,6 +2208,10 @@ const LANG_DATA = {
     } },
   wbp: { name: 'Warlpiri', native: 'Warlpiri', lat: -22.26, lng: 131.79, // Yuendumu
     words: { water:['ngapa','ŋapa'], fire:['warlu','waɻlu'], sun:['wantajarra','wantadʒaɻa'], moon:['pirli','piɻli'], mother:['ngati','ŋati'], father:['kirda','kiɻda'], eat:['ngarni','ŋaɻni'], drink:['purrami','puɻami'], love:['jaru','dʒaɻu'], heart:['pikirri','pikiɻi'], tree:['watiya','watija'], house:['ngurra','ŋuɻa'], dog:['jarntu','dʒaɳʈu'], cat:['mungalpa','muŋalpa'], hand:['rdaka','ɖaka'], eye:['milpa','milpa'], hello:['palka','palka'], thanks:['ngantitu','ŋantitu'], one:['jinta','dʒinta'], good:['ngumarna','ŋumaɳa'] }},
+  // Eastern Arrernte (Mparntwe Arrernte) — Pama-Nyungan Arandic (sister to Western Arrernte/Anmatyerr/Alyawarr/Kaytetye within the Arandic sub-branch; the prestige variety of central Australia's Arandic continuum), ~4K, Australia (Northern Territory — Alice Springs/Mparntwe area, MacDonnell Ranges, Plenty Highway settlements).
+  // Sources: Ethnologue 27 'aer'; Glottolog east2375; Wilkins (1989) Mparntwe Arrernte; Henderson & Dobson (1994) Arrernte Picture Dictionary.
+  aer: { name: 'Eastern Arrernte', native: 'Mparntwe Arrernte', lat: -23.70, lng: 133.88, // Alice Springs / Mparntwe, NT
+    words: { water:['kwatye','kʷatʲe'], fire:['ure','uɾe'], sun:['arrenge','aɾɛŋe'], moon:['arngwe','aɾŋʷe'], mother:['mama','mama'], father:['arrweke','aɾʷɛkɛ'], eat:['arlkenge','aɾlkɛŋe'], drink:['altyere','altʲɛɾe'], love:['mwerre','mʷɛɾɛ'], heart:['atyenge','atʲɛŋe'], tree:['arne','aɾne'], house:['ahentye','ahɛntʲe'], dog:['atyitye','atʲitʲe'], cat:['kele','kɛle'], hand:['iltye','iltʲe'], eye:['alknge','alkŋe'], hello:['werte','wɛɾte'], thanks:['unte mwerre','untɛ mʷɛɾɛ'], one:['anyente','aɲɛnte'], good:['mwerre','mʷɛɾɛ'] }},
   // Nhanda — Pama-Nyungan (Kartu, Western Australia), ~30 fluent + ~60 partial speakers, Australia (Murchison-Gascoyne, mid-coast WA — Geraldton/Kalbarri area).
   // Sources: Ethnologue 27 'nha'; Glottolog nhan1238; Blevins (2001) Nhanda Aboriginal Language; Pama-Nyungan reconstructions.
   nha: { name: 'Nhanda', native: 'Nhanda', lat: -28.78, lng: 114.61, // Geraldton, Western Australia

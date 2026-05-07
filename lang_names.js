@@ -2226,4 +2226,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED93 = {
+        crn: { en: 'Cora', ja: 'コラ語', ko: '코라어', zh: '科拉语', yue: '科拉語',
+               vi: 'Tiếng Cora', th: 'ภาษาโกรา', id: 'Bahasa Cora', hi: 'कोरा',
+               de: 'Cora', fr: 'Cora', it: 'Cora',
+               es_eu: 'Cora', es_mx: 'Cora', pt_eu: 'Cora', pt_br: 'Cora',
+               ru: 'Кора', uk: 'Кора', ar: 'الكورا', he: 'קורה', sw: 'Kicora' },
+        pcd: { en: 'Picard', ja: 'ピカール語', ko: '피카르드어', zh: '皮卡尔语', yue: '皮卡爾語',
+               vi: 'Tiếng Picard', th: 'ภาษาปีการ์', id: 'Bahasa Picard', hi: 'पिकार्ड',
+               de: 'Pikardisch', fr: 'Picard', it: 'Piccardo',
+               es_eu: 'Picardo', es_mx: 'Picardo', pt_eu: 'Picardo', pt_br: 'Picardo',
+               ru: 'Пикардский', uk: 'Пікардська', ar: 'البيكاردية', he: 'פיקארדית', sw: 'Kipicard' },
+        aer: { en: 'Eastern Arrernte', ja: '東部アレンテ語', ko: '동부 아레른테어', zh: '东部阿雷尔特语', yue: '東部阿雷爾特語',
+               vi: 'Tiếng Arrernte Đông', th: 'ภาษาอาร์เรินเตตะวันออก', id: 'Bahasa Arrernte Timur', hi: 'पूर्वी अरेर्न्टे',
+               de: 'Ost-Arrernte', fr: 'Arrernte oriental', it: 'Arrernte orientale',
+               es_eu: 'Arrernte oriental', es_mx: 'Arrernte oriental', pt_eu: 'Arrernte oriental', pt_br: 'Arrernte oriental',
+               ru: 'Восточный аррернте', uk: 'Східна аррернте', ar: 'الأرّيرنتي الشرقية', he: 'אררנטה מזרחית', sw: 'Kiarrernte cha Mashariki' },
+    };
+    for (const code of Object.keys(ADDED93)) {
+        for (const ui of Object.keys(ADDED93[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED93[code][ui];
+            }
+        }
+    }
 })();
