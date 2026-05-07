@@ -10116,3 +10116,141 @@ The fix is the same family-string-normalization rule across all clusters: **the 
 Future task candidates (not yet started):
 - Audit all family strings for "singleton chip" cases (1 language per family chip) — likely 50+ such chips.
 - Either normalize each to the next-broader cluster, OR explicitly tag them as intentional singletons (e.g., language isolates) so the validator knows they are not bugs.
+
+---
+
+## UX Audit (2026-05-07 part 8) — Compare button placement
+
+User requested two changes:
+- Move the "Add to compare" button from its current top-right position (next to the × close button on the language info modal) to **below the native-name line**.
+- Delete the duplicate "Add to compare" button currently rendered at the bottom of the language info modal (above the sources/footer area).
+
+### New Task 216. Reposition the modal Compare button to under the native name and remove the duplicate at the bottom
+
+Goal:
+The language info modal currently shows the same "Add to compare" button at TWO locations: top-right (absolutely positioned next to the × close button) and at the very bottom (before the sources area). The duplicate is confusing UX, and the top-right placement competes visually with the close button. User wants a single button placed directly under the native-name line, where it's visible without scrolling and visually attached to the language identity area.
+
+Current issue I checked (2026-05-07):
+
+**Three compare-related buttons in the language info area:**
+
+| # | Selector | Location | Render code line | CSS line | Action |
+|---|---|---|---|---|---|
+| ① | `#compare-fab` | viewport bottom-right (fixed) — opens the comparison panel | wordmap.html:735-737 | wordmap.html:465-472 | **Keep as-is** (this is the FAB for opening the panel, not a per-language add button) |
+| ② | `.compare-add-btn.header` | **modal top-right** (absolute, `top:6px; right:36px`, next to × close) | wordmap.html:2654-2668 | wordmap.html:543-546 | **Move** to under native-name |
+| ③ | `.compare-add-btn` (no `.header`) | **modal bottom**, before sources/footer area | wordmap.html:3054-3061 | wordmap.html:535-541 | **Delete** entirely |
+
+Note: the comment at wordmap.html:2655 says "Pass 32 (header position): Add-to-compare button right under the title" — but the CSS at line 543 (`position:absolute; top:6px; right:36px`) overrides DOM order and renders the button at the modal's top-right corner, NOT under the title. The intent was apparently to put it below the title, but the absolute positioning broke that.
+
+Files to change:
+- `wordmap.html` — three sub-changes:
+  - **CSS** [wordmap.html:542-546](wordmap.html#L542-L546): remove `.compare-add-btn.header { position: absolute; top: 6px; right: 36px; ... }` block, OR rewrite as `position: static; margin: 4px 0 10px;` for inline flow.
+  - **Render order** [wordmap.html:2654-2669](wordmap.html#L2654-L2669): swap the button render to come AFTER the native-name div, not before.
+  - **Delete duplicate** [wordmap.html:3054-3061](wordmap.html#L3054-L3061): remove the entire bottom-rendering block.
+
+Implementation instructions:
+
+**Step 1 — modal render order** (`wordmap.html` near line 2654):
+
+Current order (snippet, simplified):
+```js
+let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+(() => { /* compare button render */ html += `<button class="compare-add-btn header" ...`; })();
+html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
+```
+
+Target order:
+```js
+let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
+(() => { /* compare button render (drop the 'header' class) */
+    const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+    const cmpI18n = { /* ... unchanged ... */ };
+    const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
+    const lbl = inCmp ? lObj.remove : lObj.add;
+    const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
+    html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+})();
+```
+
+The key changes: (a) move the IIFE block down, after the native-name div; (b) drop `header` from the class list so it falls back to the default `.compare-add-btn` styling (block-flow, with `margin-top:10px`).
+
+**Step 2 — CSS cleanup** (lines 542-546):
+
+Remove this block entirely (or repurpose if needed for some other use):
+```css
+.compare-add-btn.header {
+    position: absolute; top: 6px; right: 36px; z-index: 1;
+    margin: 0; padding: 2px 8px; font-size: 11px;
+}
+```
+
+The default `.compare-add-btn` rule (line 535-541) already provides reasonable inline styling:
+```css
+.compare-add-btn {
+    display: inline-block; margin-top: 10px; padding: 4px 10px;
+    font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
+    border-radius: 4px; cursor: pointer;
+}
+```
+
+If the user wants smaller inline styling (matching the previous 11px font), update the default rule or add a new modifier class like `.compare-add-btn.compact`.
+
+**Step 3 — delete the duplicate render block** (lines 3054-3061):
+
+Remove:
+```js
+// Pass 32: Add-to-compare button (renders before sources/footer area)
+// (Reuses the global COMPARE_I18N table for full UI-lang coverage.)
+(() => {
+    const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+    const lbl = inCmp ? compareT('remove') : compareT('add');
+    const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
+    html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+})();
+```
+
+This is redundant with Step 1's relocated button.
+
+**Step 4 — verify event-handler integrity**.
+
+The compare button click is handled via delegation or direct query. Spot-check at [wordmap.html:3634](wordmap.html#L3634):
+```js
+const btn = infoContent && infoContent.querySelector('.compare-add-btn[data-code="' + (window.CSS ? CSS.escape(code) : code) + '"]');
+```
+
+This is `querySelector` (single result), so reducing from 2 buttons to 1 button per modal is fine — the query still finds the (now single) button.
+
+Also verify [wordmap.html:3486](wordmap.html#L3486) area where the button label gets refreshed when the comparison list changes — same `querySelector` pattern; still works.
+
+**Step 5 — visual check post-change**.
+
+- Click any language on the map → modal opens.
+- Confirm: title `<h2>` at top, native-name immediately below, then "+ Add to compare" button in standard inline style.
+- Confirm: NO button in the top-right corner next to the × close button.
+- Confirm: NO button at the bottom of the modal above the sources/footer.
+- Confirm: clicking the button still adds the language to the comparison list and the `#compare-fab` badge counter increments.
+
+Validator / static check:
+- No new validator gate needed; this is a UI-only change.
+- Optionally add a `[#216]` HTML structural check that flags multiple `.compare-add-btn` data-code matches per modal render — defensive against future regression.
+
+Do not:
+- Do not remove the `#compare-fab` floating button — that one opens the comparison panel and is needed.
+- Do not remove the `.compare-add-btn` default CSS rule (lines 535-541) — Step 1's relocated button uses that styling.
+- Do not change the `data-code` attribute or click handler — only the position/duplicate count.
+- Do not move the button to a position that overlaps with the disambiguator italic text (line 2678) or the badge row (line 2687) — keep it on its own line below native-name.
+
+Done when:
+- Single "+ Add to compare" button rendered directly below the native-name line in every language info modal.
+- No button in the top-right corner of the modal.
+- No button at the bottom of the modal.
+- Click behavior unchanged: adds/removes language from comparison list, FAB badge updates correctly.
+- CSS cleanup: `.compare-add-btn.header` block removed.
+- Pass 32 comment at wordmap.html:2655 updated to reflect the new position (or removed since the position is now the documented default).
+
+### Why Pass 32 ended up with this UX
+
+The audit comment at line 2655 reads "Pass 32 (header position): Add-to-compare button right under the title" — the intent was the new placement the user is now requesting, but the absolute-positioning CSS overrode the DOM-order placement. The render code expected the button to flow naturally between `<h2>` and `<div class="native-name">`, but the CSS pulled it out of flow and pinned it to the top-right corner. Step 1 + Step 2 fix the original Pass-32 intent.
+
+The bottom-of-modal duplicate (Step 3) appears to be a leftover from before the Pass-32 header-position addition; the original button position was the bottom, then Pass 32 added the new "header" version, and the original bottom render was never removed. Cleanup brings the modal back to a single Compare button.

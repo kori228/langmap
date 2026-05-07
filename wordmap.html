@@ -539,11 +539,8 @@
         }
         .compare-add-btn:hover { background: #e8f0fe; }
         .compare-add-btn.added { background: #1a73e8; color: #fff; }
-        /* Header position: top-right of the modal, immediately left of the × close button. */
-        .compare-add-btn.header {
-            position: absolute; top: 6px; right: 36px; z-index: 1;
-            margin: 0; padding: 2px 8px; font-size: 11px;
-        }
+        /* Audit Task 216: header positioning removed; button now flows inline
+         * under the native-name line via standard .compare-add-btn rule. */
         /* Compare-table column headers are draggable for reorder */
         .compare-table thead th[draggable="true"] {
             cursor: grab; user-select: none;
@@ -966,7 +963,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    60,
+            styles:    61,
             data:      152,
             metaI18n:  9,
             filter:    26,
@@ -2652,7 +2649,9 @@
             const displayName = names[code] || lang.name;
             // All data values escaped (per wordmap-check-4.md §5).
             let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
-            // Pass 32 (header position): Add-to-compare button right under the title
+            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
+            // Audit Task 216: Compare button placed inline under native-name
+            // (was previously absolute top-right or duplicated at bottom).
             (() => {
                 const inCmp = (window.__compareList || []).indexOf(code) !== -1;
                 const cmpI18n = {
@@ -2663,10 +2662,9 @@
                 };
                 const lObj = cmpI18n[uiLang] || cmpI18n[uiLang.split('_')[0]] || cmpI18n.en;
                 const lbl = inCmp ? lObj.remove : lObj.add;
-                const cls = inCmp ? 'compare-add-btn header added' : 'compare-add-btn header';
+                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
                 html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
             })();
-            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native)}</span> [${escapeHtml(code)}]</div>`;
             // Audit Task 115: disambiguator for rows that share a display
             // or native name with another row (e.g. mn_cn/xng both show
             // ᠮᠣᠩᠭᠣᠯ; omx/mnw both show ဘာသာ မန်).
@@ -3051,14 +3049,8 @@
                     sourceItems.map(renderItem).join(' · ') +
                     `</div>`;
             }
-            // Pass 32: Add-to-compare button (renders before sources/footer area)
-            // (Reuses the global COMPARE_I18N table for full UI-lang coverage.)
-            (() => {
-                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
-                const lbl = inCmp ? compareT('remove') : compareT('add');
-                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
-                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
-            })();
+            // Audit Task 216: bottom Compare button removed; the inline button
+            // under native-name (rendered earlier) is the single canonical control.
             infoContent.innerHTML = html;
         }
 
