@@ -1760,4 +1760,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED67 = {
+        pyu: { en: 'Puyuma', ja: 'プユマ語', ko: '푸유마어', zh: '卑南语', yue: '卑南語',
+               vi: 'Tiếng Puyuma', th: 'ภาษาพุยุมา', id: 'Bahasa Puyuma', hi: 'पुयुमा',
+               de: 'Puyuma', fr: 'Puyuma', it: 'Puyuma',
+               es_eu: 'Puyuma', es_mx: 'Puyuma', pt_eu: 'Puyuma', pt_br: 'Puyuma',
+               ru: 'Пуюма', uk: 'Пуюма', ar: 'البويوما', he: 'פויומה', sw: 'Kipuyuma' },
+        szy: { en: 'Sakizaya', ja: 'サキザヤ語', ko: '사키자야어', zh: '撒奇莱雅语', yue: '撒奇萊雅語',
+               vi: 'Tiếng Sakizaya', th: 'ภาษาซากิซายา', id: 'Bahasa Sakizaya', hi: 'सकीज़ाया',
+               de: 'Sakizaya', fr: 'Sakizaya', it: 'Sakizaya',
+               es_eu: 'Sakizaya', es_mx: 'Sakizaya', pt_eu: 'Sakizaya', pt_br: 'Sakizaya',
+               ru: 'Сакизая', uk: 'Сакізая', ar: 'الساكيزايا', he: 'סקיזיה', sw: 'Kisakizaya' },
+        ssf: { en: 'Thao', ja: 'サオ語', ko: '사오어', zh: '邵语', yue: '邵語',
+               vi: 'Tiếng Thao', th: 'ภาษาเถา', id: 'Bahasa Thao', hi: 'थाओ',
+               de: 'Thao', fr: 'Thao', it: 'Thao',
+               es_eu: 'Thao', es_mx: 'Thao', pt_eu: 'Thao', pt_br: 'Thao',
+               ru: 'Тхао', uk: 'Тхао', ar: 'التاو', he: 'תאו', sw: 'Kithao' },
+    };
+    for (const code of Object.keys(ADDED67)) {
+        for (const ui of Object.keys(ADDED67[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED67[code][ui];
+            }
+        }
+    }
 })();

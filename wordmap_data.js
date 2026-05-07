@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 811 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 814 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -4145,6 +4145,18 @@ const LANG_DATA = {
     words: { water:['chumu','tsumu'], fire:['poepe','poepe'], sun:['hie','hie'], moon:["yum'au",'jumʔau'], mother:['ino','ino'], father:['amo','amo'], eat:['bonu','bonu'], drink:["'umnu",'ʔumnu'], love:['yainca','jaintsa'], heart:['yofu','jofu'], tree:['evi','evi'], house:['emoo','emoo'], dog:["avo'u",'avoʔu'], cat:['ngiao','ŋiao'], hand:['muu','muu'], eye:['maso','maso'], hello:['yokeoasu','jokeoasu'], thanks:['aveoveoyu','aveoveoju'], one:['cone','tsone'], good:["'aem'aemo",'ʔaemʔaemo'] }},
   tao: { name: 'Tao (Yami)', native: 'Tao', lat: 22.04, lng: 121.55, // Orchid Island (Lanyu)
     words: { water:['ranom','ranom'], fire:['apuy','apui'], sun:['araw','araw'], moon:['vehan','vehan'], mother:['ina','ina'], father:['ama','ama'], eat:['kuman','kuman'], drink:['minum','minum'], love:['makakdeng','makakdəŋ'], heart:['paso','paso'], tree:['kayo','kajo'], house:['vahay','vahai'], dog:['ino','ino'], cat:['koving','koviŋ'], hand:['kamay','kamai'], eye:['mata','mata'], hello:['akokay','akokai'], thanks:['ayoy','ajoi'], one:['asa','asa'], good:['mapia','mapia'] }},
+  // Puyuma (Pinuyumayan) — Austronesian Formosan (one of the 9 primary Austronesian branches; Puyuma is one of the most divergent), ~3K, Taiwan (East Coast — Taitung County, Beinan Township).
+  // Sources: Ethnologue 27 'pyu'; Glottolog puyu1239; Cauquelin (2004) The Aborigines of Taiwan: The Puyuma.
+  pyu: { name: 'Puyuma', native: 'Pinuyumayan', lat: 22.78, lng: 121.13, // Taitung, East Taiwan
+    words: { water:['enay','enai'], fire:['apuy','apui'], sun:['kadaw','kadaw'], moon:['kuwalan','kuwalan'], mother:['ina','ina'], father:['ama','ama'], eat:['kuman','kuman'], drink:['enpa','enpa'], love:['ulaw','ulaw'], heart:['kalumetan','kalumetan'], tree:['kawi','kawi'], house:['ruma','ɾuma'], dog:['suwan','suwan'], cat:['kating','katiŋ'], hand:['lima','lima'], eye:['mata','mata'], hello:['marayas','maɾajas'], thanks:['kasapakan','kasapakan'], one:['sa','sa'], good:['mauruway','mauɾuwai'] }},
+  // Sakizaya — Austronesian Formosan (recognized as Taiwan\\'s 13th aboriginal nation 2007; previously classified within Amis ami), ~600 fluent + ~3K partial, Taiwan (East Coast — Hualien).
+  // Sources: Ethnologue 27 'szy'; Glottolog saki1259; Aboriginal Languages of Taiwan Council Report.
+  szy: { name: 'Sakizaya', native: 'Sakizaya', lat: 23.97, lng: 121.61, // Hualien, East Taiwan
+    words: { water:['nanum','nanum'], fire:['lamal','lamal'], sun:['cidal','tʃidal'], moon:['ʔulalalalal','ʔulalal'], mother:['ina','ina'], father:['ama','ama'], eat:['hekal','hekal'], drink:['mihecak','mihetʃak'], love:['kapah','kapah'], heart:['gawang','ɡawaŋ'], tree:['kilang','kilaŋ'], house:['luma','luma'], dog:['waco','watʃo'], cat:['posi','posi'], hand:['kamay','kamai'], eye:['mata','mata'], hello:['marayas','maɾajas'], thanks:['lalumahan','lalumahan'], one:['cacay','tʃatʃai'], good:['kapah','kapah'] }},
+  // Thao (Sao) — Austronesian Formosan (one of the smallest Formosan languages; classified as Western Plains Formosan), ~5 fluent + ~600 ethnic Thao, Taiwan (Sun Moon Lake — Yuchi Township, Nantou County).
+  // Sources: Ethnologue 27 'ssf'; Glottolog thao1240; Blust (2003) Thao Dictionary.
+  ssf: { name: 'Thao', native: 'Thaw a tnaw', lat: 23.85, lng: 120.92, // Sun Moon Lake (Lake Candidius), Nantou
+    words: { water:['nanum','nanum'], fire:['azpu','azpu'], sun:['fitulha','fituʎa'], moon:['lhmiat','ʎmiat'], mother:['ina','ina'], father:['ama','ama'], eat:['kuman','kuman'], drink:['naqayan','naqajan'], love:['suka','suka'], heart:['putul','putul'], tree:['lhalum','ʎalum'], house:['kayan','kajan'], dog:['atu','atu'], cat:['posi','posi'], hand:['lima','lima'], eye:['mata','mata'], hello:['ya','ja'], thanks:['mihu','mihu'], one:['tata','tata'], good:['kapah','kapah'] }},
   hak_tw: { name: 'Taiwanese Hakka (Sixian)', native: '台灣客家話 (四縣腔)', lat: 24.55, lng: 120.93, // Miaoli (Sixian heartland)
     words: { water:['水','sui˧˩'], fire:['火','fo˧˩'], sun:['日頭','ŋit˨ tʰeu˩˩'], moon:['月光','ŋiet˨ koŋ˨'], mother:['阿姆','a˨ me˨'], father:['阿爸','a˨ pa˨'], eat:['食','sit˨'], drink:['啉','lim˩˩'], love:['惜','siak˨'], heart:['心臟','sim˨ t͡sʰoŋ˥'], tree:['樹仔','su˥ e˧˩'], house:['屋','vuk˨'], dog:['狗','keu˧˩'], cat:['貓仔','meu˨ e˧˩'], hand:['手','su˧˩'], eye:['目珠','muk˨ t͡su˨'], hello:['你好','ŋi˩˩ ho˧˩'], thanks:['承蒙你','sin˩˩ muŋ˩˩ ŋi˩˩'], one:['一','jit˨'], good:['好','ho˧˩'] }},
 
