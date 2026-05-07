@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 862 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 865 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1701,6 +1701,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nhe'; Glottolog east2541; Hasler (1979) Eastern Huasteca Nahuatl Grammar.
   nhe: { name: 'Eastern Huasteca Nahuatl', native: 'Mexicaneru', lat: 21.42, lng: -98.25, // Tantoyuca, Veracruz Huasteca
     words: { water:['atl','atl'], fire:['titl','titl'], sun:['tonatih','tonatih'], moon:['metztli','metstli'], mother:['mama','mama'], father:['tata','tata'], eat:['tlacua','tlakʷa'], drink:['atli','atli'], love:['tlazohtla','tlasoʔtla'], heart:['yollotl','jolːotl'], tree:['cuahuitl','kʷawitl'], house:['calli','kalːi'], dog:['itzcuintli','itskʷintli'], cat:['mizton','miston'], hand:['maitl','maitl'], eye:['ixtli','iʃtli'], hello:['nimitzpaca','nimitspaka'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
+  // Wixarika (Huichol) — Uto-Aztecan Corachol (sister to Cora crn within the Corachol sub-branch; more distantly related to Nahuan and Numic), ~50K, Mexico (Sierra Madre Occidental — Jalisco, Nayarit, Durango, Zacatecas highlands).
+  // Sources: Ethnologue 27 'hch'; Glottolog huic1243; Iturrioz Leza & Gómez López (2006) Gramática Huichola.
+  hch: { name: 'Wixarika', native: 'Wixárika niukieya', lat: 22.13, lng: -104.50, // San Andrés Cohamiata, Jalisco
+    words: { water:['ha','ha'], fire:['tai','tai'], sun:['tau','tau'], moon:['metsa','metsa'], mother:['nana','nana'], father:['yawe','jawe'], eat:['kuye','kuje'], drink:['hi\'eka','hiʔeka'], love:['kanenki','kanenki'], heart:['iyari','ijari'], tree:['kiyé','kije'], house:['ki','ki'], dog:['tsïkï','tsɨkɨ'], cat:['mitsu','mitsu'], hand:['mama','mama'], eye:['tukite','tukite'], hello:['kekuanenki','kekwanenki'], thanks:['pa\'iwakaitsie','paʔiwakaitsje'], one:['xevi','ʃevi'], good:['waxa','waʃa'] }},
   myn: { name: 'Classical Maya', native: 'Maaya Tzij', lat: 14.63, lng: -90.51,
     words: { water:['haʼ','haʔ'], fire:['kʼahkʼ','kʼahkʼ'], sun:['kʼin','kʼin'], moon:['uh','uh'], mother:['naʼ','naʔ'], father:['yuum','juːm'], eat:['wiʼij','wiʔiχ'], drink:['ukʼ','ukʼ'], love:['yaah','jaːh'], heart:['pixan','piʃan'], tree:['cheʼ','tʃeʔ'], house:['otoch','otoːtʃ'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼab','kʼab'], eye:['ich','itʃ'], hello:['bix a beel','biʃ a beːl'], thanks:['nibʼoolal','nibʼoːlal'], one:['jun','χun'], good:['utz','uts'] }},
   ine: { name: 'Proto-Indo-European', native: '*dń̥ǵʰwéh₂s', lat: 47.00, lng: 39.00,
@@ -2484,6 +2488,10 @@ const LANG_DATA = {
   // Tibeto-Burman / Karen (Kra-Dai for shn)
   ksw: { name: 'Sgaw Karen', native: 'ကညီကျိာ်', lat: 16.89, lng: 97.63, // Hpa-an
     words: { water:['ထံ','tʰaŋ'], fire:['မ့ၣ်ဖီ','mʔiŋ pʰi'], sun:['မုၢ်','mu'], moon:['လါ','la'], mother:['မိၢ်','mi'], father:['ပၢ်','pa'], eat:['အီၣ်','ʔiŋ'], drink:['အီ','ʔi'], love:['အဲၣ်','ʔeŋ'], heart:['သး','θa'], tree:['သ့ၣ်','θiŋ'], house:['ဟံၣ်','haŋ'], dog:['ထွံၣ်','tʰwiŋ'], cat:['သိမံၣ်','θimaŋ'], hand:['စု','su'], eye:['မဲာ်ချံ','mɛ tʃʰa'], hello:['ဘၣ်တၢ်ဆၢ','baŋ ta sa'], thanks:['တၢ်ဘျုး','ta bju'], one:['တ','ta'], good:['ဂ့ၤ','ɣɛ'] }},
+  // Western Pwo Karen — Sino-Tibetan Karenic Pwo (sister to Sgaw Karen ksw within the Karenic branch; Pwo is more conservative phonologically), ~1.6M, Myanmar (Irrawaddy Delta and Bago Region) + Thailand (Tak, Mae Hong Son, Kanchanaburi).
+  // Sources: Ethnologue 27 'pwo'; Glottolog wpwo1238; Phillips (2009) Pwo Karen Phonology and Lexicon.
+  pwo: { name: 'Western Pwo Karen', native: 'ဖျိၣ်ၤ', lat: 17.34, lng: 96.49, // Pathein, Ayeyarwady Region, Myanmar
+    words: { water:['ထံ','tʰi'], fire:['မ့ၣ်ဖါ','mei pʰa'], sun:['မုၢ်','mə'], moon:['လါ','la'], mother:['မိၢ်','mo'], father:['ဖါ','pʰa'], eat:['အီၣ်','ʔoŋ'], drink:['အီ','ʔi'], love:['အဲၣ်','ʔain'], heart:['သး','θa'], tree:['သ့ၣ်','θəŋ'], house:['ဟံၣ်','həŋ'], dog:['ထွံၣ်','tʰwəŋ'], cat:['ဆဲၣ်','sʰain'], hand:['စု','sʉ'], eye:['မဲာ်','mɛ'], hello:['ဂ့ၤထီၣ်','ɣɛ tʰi'], thanks:['တၢ်ဘျုး','ta pju'], one:['တ','tə'], good:['ဂ့ၤ','ɣɛ'] }},
   // Audit Task 146: Lahu surface normalized to consistent Matisoff
   // romanization with POST-vowel tone markers (no combining diacritics
   // in surface). Matisoff conventions: ˆ = high, ˇ = low, ˉ = mid,
@@ -2636,6 +2644,10 @@ const LANG_DATA = {
     words: { water:['mní','mní'], fire:['phéta','pʰéta'], sun:['aŋpétuwí','aŋpétuwí'], moon:['haŋyétuwí','haŋjétuwí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yatkáŋ','jatkáŋ'], love:['thečhíhida','tʰetʃʰíhida'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋ','iɡmúŋ'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['pidámayaye','pidámajaje'], one:['waŋžidaŋ','waŋʒidaŋ'], good:['wašté','waʃté'] }},
   chy: { name: 'Cheyenne', native: 'Tsêhésenêstsestôtse', lat: 45.62, lng: -106.66, // Lame Deer
     words: { water:['mahpe','mahpe'], fire:['ho\'ėstá','hoʔɛsta'], sun:['éše\'he','eˀʃeˀhe'], moon:['ame\'háo\'o','ameˀhaˀoʔo'], mother:['néhe\'e','néheʔe'], father:['néhyo','néhjo'], eat:['mésehe','méʔsehe'], drink:['mane','mane'], love:['méhotó\'o','meˀhotoʔo'], heart:['ohtsé','ohtse'], tree:['hohtsestse','hohtsestse'], house:['vee\'e','veːʔe'], dog:['oeškeso','oːʃkeso'], cat:['pó\'po','poʔpo'], hand:['ma\'kahko','maʔkahko'], eye:['vóome','voːme'], hello:['Haaahe','haːhe'], thanks:['néá\'eše','néáʔeʃe'], one:['no\'ka','noʔka'], good:['pevohto','pevohto'] }},
+  // Arapaho — Algonquian Plains (sister to Cheyenne chy and Gros Ventre within the Arapahoan sub-branch), ~1K (critically endangered — UNESCO critically endangered), USA (Wyoming — Wind River Indian Reservation; Oklahoma — Anadarko/Concho area).
+  // Sources: Ethnologue 27 'arp'; Glottolog arap1274; Salzmann (1956) Arapaho grammar.
+  arp: { name: 'Arapaho', native: 'Hinónoʼeitíít', lat: 43.06, lng: -108.64, // Wind River Reservation, Wyoming
+    words: { water:['nec','nets'], fire:['héétee\'','héːteːʔ'], sun:['hiʼíísh','hiʔíːʃ'], moon:['biikóusis','biːkóusis'], mother:['neinó','neinó'], father:['neisónoo','neisónoː'], eat:['betébí','betébí'], drink:['bénee','bénéː'], love:['héétébí','héːtébí'], heart:['betéé','betéː'], tree:['hooxéí','hoːxéí'], house:['biito','biːto'], dog:['héʼ','héʔ'], cat:['cécee','tsétséː'], hand:['hooxóʼ','hoːxóʔ'], eye:['hisí','hisí'], hello:['héébe','héːbe'], thanks:['hohóu','hohóu'], one:['ceeséeʼ','tséeséːʔ'], good:['hetééʼ','hetéːʔ'] }},
   // Kiowa — Kiowa-Tanoan family (sister to Tanoan languages: Tewa, Tiwa, Towa), ~20-100 (heritage learners), Oklahoma USA (Kiowa Tribe headquarters at Carnegie).
   // Sources: Ethnologue 27 'kio'; Glottolog kiow1267; Watkins (1984) A Grammar of Kiowa.
   kio: { name: 'Kiowa', native: 'Cáuijògà', lat: 35.10, lng: -98.60, // Carnegie, Oklahoma (Kiowa Tribe headquarters)

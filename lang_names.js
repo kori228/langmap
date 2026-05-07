@@ -2201,4 +2201,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED92 = {
+        arp: { en: 'Arapaho', ja: 'アラパホ語', ko: '아라파호어', zh: '阿拉帕霍语', yue: '阿拉帕霍語',
+               vi: 'Tiếng Arapaho', th: 'ภาษาอาราปาโฮ', id: 'Bahasa Arapaho', hi: 'अरापाहो',
+               de: 'Arapaho', fr: 'Arapaho', it: 'Arapaho',
+               es_eu: 'Arapaho', es_mx: 'Arapaho', pt_eu: 'Arapaho', pt_br: 'Arapaho',
+               ru: 'Арапахо', uk: 'Арапахо', ar: 'الأراباهو', he: 'אראפהו', sw: 'Kiarapaho' },
+        hch: { en: 'Wixarika', ja: 'ウイチョル語', ko: '위차리카어', zh: '维拉里卡语', yue: '維拉里卡語',
+               vi: 'Tiếng Wixárika', th: 'ภาษาวีฮาริกา', id: 'Bahasa Wixárika', hi: 'विक्सारिका',
+               de: 'Huichol', fr: 'Wixárika', it: 'Wixárika',
+               es_eu: 'Huichol', es_mx: 'Wixárika', pt_eu: 'Huichol', pt_br: 'Wixárika',
+               ru: 'Уичоль', uk: 'Уічоль', ar: 'الويتشول', he: 'ויקסאריקה', sw: 'Kiwixarika' },
+        pwo: { en: 'Western Pwo Karen', ja: '西部ポー・カレン語', ko: '서부 포 카렌어', zh: '西部坡瓦克伦语', yue: '西部坡瓦克倫語',
+               vi: 'Tiếng Pwo Karen Tây', th: 'ภาษาโพว์ตะวันตก', id: 'Bahasa Pwo Karen Barat', hi: 'पश्चिमी पवो करेन',
+               de: 'Westliches Pwo-Karen', fr: 'Karen pwo occidental', it: 'Karen pwo occidentale',
+               es_eu: 'Karen pwo occidental', es_mx: 'Karen pwo occidental', pt_eu: 'Karen pwo ocidental', pt_br: 'Karen pwo ocidental',
+               ru: 'Западный по-карен', uk: 'Західна по-карен', ar: 'الكارن البوية الغربية', he: 'פוו-קארן מערבית', sw: 'Kikareni cha Pwo Magharibi' },
+    };
+    for (const code of Object.keys(ADDED92)) {
+        for (const ui of Object.keys(ADDED92[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED92[code][ui];
+            }
+        }
+    }
 })();
