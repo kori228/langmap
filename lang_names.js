@@ -1933,4 +1933,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED74 = {
+        nch: { en: 'Central Huasteca Nahuatl', ja: '中央ウアステカ・ナワトル語', ko: '중부 우아스테카 나우아틀어', zh: '中瓦斯特卡纳瓦特尔语', yue: '中瓦斯特卡納瓦特爾語',
+               vi: 'Tiếng Nahuatl Huasteca Trung', th: 'ภาษานาวาตล์ฮัวสเตกากลาง', id: 'Nahuatl Huasteca Tengah', hi: 'मध्य हुआस्तेका नहुआतल',
+               de: 'Zentrales Huasteka-Nahuatl', fr: 'Nahuatl huastéca central', it: 'Nahuatl huasteca centrale',
+               es_eu: 'Náhuatl huasteca central', es_mx: 'Náhuatl de la Huasteca Central', pt_eu: 'Nauatle huasteco central', pt_br: 'Nauatle huasteca central',
+               ru: 'Центральный уастекский науатль', uk: 'Центральна гуастекська науатль', ar: 'النواتل الهواستيكية الوسطى', he: 'נאוואטל הואסטקה מרכזי', sw: 'Kinahuatl cha Huasteca cha Kati' },
+        nhw: { en: 'Western Huasteca Nahuatl', ja: '西部ウアステカ・ナワトル語', ko: '서부 우아스테카 나우아틀어', zh: '西瓦斯特卡纳瓦特尔语', yue: '西瓦斯特卡納瓦特爾語',
+               vi: 'Tiếng Nahuatl Huasteca Tây', th: 'ภาษานาวาตล์ฮัวสเตกาตะวันตก', id: 'Nahuatl Huasteca Barat', hi: 'पश्चिमी हुआस्तेका नहुआतल',
+               de: 'Westliches Huasteka-Nahuatl', fr: 'Nahuatl huastéca occidental', it: 'Nahuatl huasteca occidentale',
+               es_eu: 'Náhuatl huasteca occidental', es_mx: 'Náhuatl de la Huasteca Occidental', pt_eu: 'Nauatle huasteco ocidental', pt_br: 'Nauatle huasteca ocidental',
+               ru: 'Западный уастекский науатль', uk: 'Західна гуастекська науатль', ar: 'النواتل الهواستيكية الغربية', he: 'נאוואטל הואסטקה מערבי', sw: 'Kinahuatl cha Huasteca cha Magharibi' },
+        poh: { en: "Poqomchi'", ja: 'ポコムチ語', ko: '포코므치어', zh: '波科姆奇语', yue: '波科姆奇語',
+               vi: 'Tiếng Poqomchi', th: 'ภาษาโปกอมชี', id: 'Bahasa Poqomchi', hi: 'पोकोमची',
+               de: 'Pocomchí', fr: 'Pocomchí', it: 'Pocomchí',
+               es_eu: 'Pocomchí', es_mx: 'Pocomchí', pt_eu: 'Pocomchí', pt_br: 'Pocomchí',
+               ru: 'Покомчи', uk: 'Покомчі', ar: 'البوكومتشي', he: 'פוקומצ׳י', sw: 'Kipoqomchi' },
+    };
+    for (const code of Object.keys(ADDED74)) {
+        for (const ui of Object.keys(ADDED74[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED74[code][ui];
+            }
+        }
+    }
 })();

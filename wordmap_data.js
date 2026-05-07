@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 830 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 833 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1518,6 +1518,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nhx'; Glottolog isth1238; Wolgemuth (1981) Gramática Náhuatl de Mecayapan.
   nhx: { name: 'Isthmus Nahuatl', native: 'Mexicaneru', lat: 18.00, lng: -94.63, // Mecayapan, Veracruz
     words: { water:['ahtli','aʔtli'], fire:['tit','tit'], sun:['tonal','tonal'], moon:['metz','mets'], mother:['nan','nan'], father:['tat','tat'], eat:['tacua','takʷa'], drink:['ati','ati'], love:['nech-nequi','netʃneki'], heart:['yolio','jolio'], tree:['cuahuit','kʷawit'], house:['cali','kali'], dog:['itzcuintli','itskʷintli'], cat:['miston','miston'], hand:['mahuit','mawit'], eye:['ix','iʃ'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
+  // Central Huasteca Nahuatl — Uto-Aztecan (Nahuan, Central Huasteca; sister to nhe Eastern Huasteca Nahuatl), ~210K, Mexico (Hidalgo — Atlapexco; Veracruz — small populations).
+  // Sources: Ethnologue 27 'nch'; Glottolog cent2129; Beller & Beller (1979) Central Huasteca Nahuatl.
+  nch: { name: 'Central Huasteca Nahuatl', native: 'Nahuatl', lat: 21.02, lng: -98.40, // Atlapexco, Hidalgo
+    words: { water:['atl','atl'], fire:['tlitl','tlitl'], sun:['tonati','tonati'], moon:['metztli','metstli'], mother:['nana','nana'], father:['tata','tata'], eat:['tlacua','tlakʷa'], drink:['ati','ati'], love:['tlazohtla','tlasoʔtla'], heart:['yollotl','jolːotl'], tree:['cuahuitl','kʷawitl'], house:['calli','kalːi'], dog:['itzcuintli','itskʷintli'], cat:['mizton','miston'], hand:['maitl','maitl'], eye:['ixtli','iʃtli'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
+  // Western Huasteca Nahuatl — Uto-Aztecan (Nahuan, Western Huasteca; sister to nhe/nch within Huasteca cluster), ~450K, Mexico (San Luis Potosí — Tamazunchale, Tampamolón).
+  // Sources: Ethnologue 27 'nhw'; Glottolog west2632; Stiles (1985) Western Huasteca Nahuatl.
+  nhw: { name: 'Western Huasteca Nahuatl', native: 'Nahuatl', lat: 21.27, lng: -98.79, // Tamazunchale, San Luis Potosí
+    words: { water:['atl','atl'], fire:['tlitl','tlitl'], sun:['tonati','tonati'], moon:['metztli','metstli'], mother:['nana','nana'], father:['tata','tata'], eat:['tlacua','tlakʷa'], drink:['ati','ati'], love:['tlazohtla','tlasoʔtla'], heart:['yollotl','jolːotl'], tree:['cuahuitl','kʷawitl'], house:['calli','kalːi'], dog:['itzcuintli','itskʷintli'], cat:['mizton','miston'], hand:['maitl','maitl'], eye:['ixtli','iʃtli'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['cualli','kʷalːi'] }},
   // Eastern Huasteca Nahuatl — Uto-Aztecan (Nahuan, Eastern; one of the largest modern Nahuatl varieties), ~410K, Mexico (Veracruz — Huasteca; Hidalgo — Tantoyuca, Huejutla; San Luis Potosí).
   // Sources: Ethnologue 27 'nhe'; Glottolog east2541; Hasler (1979) Eastern Huasteca Nahuatl Grammar.
   nhe: { name: 'Eastern Huasteca Nahuatl', native: 'Mexicaneru', lat: 21.42, lng: -98.25, // Tantoyuca, Veracruz Huasteca
@@ -4299,6 +4307,10 @@ const LANG_DATA = {
     words: { water:['yaʼ','jaʔ'], fire:['qʼaqʼ','qʼaqʼ'], sun:['qʼij','qʼih'], moon:['ikʼ','ikʼ'], mother:['teʼ','teʔ'], father:['tataʼ','tataʔ'], eat:['waʼin','waʔin'], drink:['kumun','kumun'], love:['ajowabʼäl','axowaɓæl'], heart:['anima','anima'], tree:['cheʼ','tʃeʔ'], house:['jay','xaj'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['qʼaʼ','qʼaʔ'], eye:['bʼaqʼ wach','ɓaqʼ watʃ'], hello:['utz iwäch','uts iwætʃ'], thanks:['matyox','matjoʃ'], one:['jun','xun'], good:['utz','uts'] }},
   kek: { name: 'Qʼeqchiʼ', native: 'Qʼeqchiʼ', lat: 15.47, lng: -90.37, // Cobán
     words: { water:['haʼ','haʔ'], fire:['xamʼ','ʃam'], sun:['saqʼe','saqʼe'], moon:['poo','poː'], mother:['naʼ','naʔ'], father:['yuwaʼ','juwaʔ'], eat:['taawaʼ','tawaʔ'], drink:['tuʼ','tuʔ'], love:['rahok','rahok'], heart:['chʼoolej','tʃʼoːlej'], tree:['cheʼ','tʃeʔ'], house:['ochoch','otʃotʃ'], dog:['tzʼiʼ','tsʼiʔ'], cat:['mes','mes'], hand:['ruqʼ','ruqʼ'], eye:['xnaqʼ ru','ʃnaqʼ ru'], hello:['ma saʼ laachʼool','ma sa laːtʃʼoːl'], thanks:['bantyox','bantjoʃ'], one:['jun','hun'], good:['us','us'] }},
+  // Poqomchi' — Mayan (Quichean-Mamean, Pocomam — sister to Pocomchi'-East and Pocomam other varieties), ~50K, Guatemala (Alta Verapaz, Baja Verapaz).
+  // Sources: Ethnologue 27 'poh'; Glottolog poco1241; Brown (1979) Pocomchi grammar.
+  poh: { name: "Poqomchi'", native: "Poqomchi'", lat: 15.36, lng: -90.32, // Tactic, Alta Verapaz, Guatemala
+    words: { water:["ha'",'haʔ'], fire:['qʼaaq','qʼaːq'], sun:['qʼij','qʼih'], moon:['ik','ik'], mother:['tuut','tuːt'], father:['ajaab','ahaːb'], eat:['wai','wai'], drink:['uuk','uːk'], love:['rahaal','rahaːl'], heart:["k'uxl",'kʼuʃl'], tree:["chee'",'tʃeʔ'], house:['paat','paːt'], dog:["tz'i'",'tsʼiʔ'], cat:['mees','meːs'], hand:["q'ab",'qʼab'], eye:['nakʼ','nakʼ'], hello:['ma chaa','ma tʃaː'], thanks:['tioxlaab','tjoʃlaːb'], one:['jino','hino'], good:['saqʼwach','saqʼwatʃ'] }},
   // Ixil — Mayan Mamean, ~70K speakers, Cuchumatanes mountains (Guatemala). Survivors of 1980s genocide.
   // Sources: Ethnologue 27 'ixl'; Glottolog ixil1251; Ayres (1991) Ixil Verb Morphology.
   ixl: { name: 'Ixil', native: "Ixil", lat: 15.40, lng: -91.06, // Nebaj, Quiché
