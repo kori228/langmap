@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 766 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 769 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -474,6 +474,10 @@ const LANG_DATA = {
   // → ˩˧ (low); voiceless/aspirated initials → ˥ (high).
   bo: { name: 'Tibetan', native: 'བོད་སྐད', lat: 29.65, lng: 91.10,
     words: { water:['ཆུ','t͡ɕʰu˥'], fire:['མེ','me˩˧'], sun:['ཉི་མ','ɲima˩˧'], moon:['ཟླ་བ','tawa˩˧'], mother:['ཨ་མ','ama˥'], father:['ཨ་ཕ','apʰa˥'], eat:['ཟ','sa˩˧'], drink:['འཐུང་','tʰuŋ˥'], love:['དགའ་པོ','kapo˩˧'], heart:['སྙིང་','ɲiŋ˥'], tree:['ཤིང་སྡོང་','ɕiŋ˥toŋ˥'], house:['ཁང་པ','kʰaŋpa˥'], dog:['ཁྱི','kʰi˥'], cat:['ཞི་མི','ɕimi˥'], hand:['ལག་པ','lakpa˩˧'], eye:['མིག','mik˩˧'], hello:['བཀྲ་ཤིས་བདེ་ལེགས','t͡ʂaɕi˥ telek˩˧'], thanks:['ཐུགས་རྗེ་ཆེ','tʰuːt͡ɕi˥ t͡ɕʰe˥'], one:['གཅིག','t͡ɕik˥'], good:['ཡག་པོ','jakpo˩˧'] }},
+  // Balti — Sino-Tibetan Bodish (Western Tibetic, Ladakhi-Balti subgroup), ~440K, Pakistan (Gilgit-Baltistan — Skardu, Ghanche) + India (Kargil district, Ladakh).
+  // Sources: Ethnologue 27 'bft'; Glottolog balt1258; Read (1934) Balti Grammar; Bielmeier (1985).
+  bft: { name: 'Balti', native: 'བལ་ཏི་སྐད', lat: 35.30, lng: 75.63, // Skardu, Gilgit-Baltistan
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་ཕ','apʰa'], eat:['ཟ','sa'], drink:['ཐུང་','tʰuŋ'], love:['ཤི','ʃi'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['བྱི་ལ','bjila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཨ་སི་ལམ','asilam'], thanks:['བཀའ་དྲིན་ཆེ','kadrintɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   // Khams Tibetan — Sino-Tibetan Bodish, ~1.5M speakers, eastern Tibet (Kham region) + western Sichuan + NW Yunnan + SE Qinghai.
   // Sources: Ethnologue 27 'khg'; Glottolog kham1284; Suzuki (2009) Khams Tibetan dialectology.
   khg: { name: 'Khams Tibetan', native: 'ཁམས་སྐད', lat: 30.04, lng: 99.10, // Kandze (Garzê), Sichuan
@@ -1614,6 +1618,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'snk'; Glottolog soni1259; Diagana (1995) Soninke phonology.
   snk: { name: 'Soninke', native: 'Sooninkanxannen', lat: 14.92, lng: -10.81, // Kayes, Mali (Soninke heartland)
     words: { water:['jiyi','dʒiji'], fire:['ñaaxe','ɲaːxe'], sun:['kiye','kije'], moon:['kullu','kulːu'], mother:['ma','ma'], father:['baba','baba'], eat:['lawu','lawu'], drink:['mini','mini'], love:['ñaxando','ɲaxando'], heart:['nene','nene'], tree:['yiribirinde','jiɾibiɾinde'], house:['ka','ka'], dog:['wulle','wulːe'], cat:['mussu','musːu'], hand:['kitte','kitːe'], eye:['ñaa','ɲaː'], hello:['an na siri','an na siɾi'], thanks:['inkawu','iŋkawu'], one:['baane','baːne'], good:['ñaxa','ɲaxa'] }},
+  // Kita Maninkakan — Niger-Congo Mande Western Manding (sister to Bambara/Maninka/Dyula/Kao), ~430K, Mali (Kita Region — south-central, Cercle de Kita).
+  // Sources: Ethnologue 27 'mwk'; Glottolog kita1244; Vydrin (2009) Manding language family.
+  mwk: { name: 'Kita Maninkakan', native: 'Maninkakan', lat: 13.04, lng: -9.49, // Kita, Mali
+    words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tle','tle'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['don','don'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['yiri','jiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['ñaakuma','ɲaːkuma'], hand:['bolo','bolo'], eye:['ña','ɲa'], hello:['i ni soɣoma','i ni soɣoma'], thanks:['i ni baara','i ni baːɾa'], one:['kelen','kelen'], good:['ñuman','ɲuman'] }},
   // Dan (Yacouba) — Niger-Congo Mande, ~1.6M speakers, western Côte d'Ivoire + Liberia.
   // Sources: Ethnologue 27 'dnj'; Glottolog yacu1238; Erman (2005) Dan tone system.
   dnj: { name: 'Dan', native: 'Yacouba', lat: 7.41, lng: -7.55, // Man, Côte d'Ivoire (Dan heartland)
@@ -1813,6 +1821,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'adt'; Glottolog adny1238; Schebeck (1973) Texts on the Social System of the Atyñamatana People.
   adt: { name: 'Adnyamathanha', native: 'Adnyamathanha-na yarta', lat: -30.78, lng: 138.83, // Nepabunna, Flinders Ranges, SA
     words: { water:['awi','awi'], fire:['warlu','waɻlu'], sun:['yidnu','jidnu'], moon:['vuyu','vuju'], mother:['nyangka','ɲaŋka'], father:['arndu','aɳɖu'], eat:['ngalkanha','ŋalkaɲa'], drink:['ulpanha','ulpaɲa'], love:['mukunha','mukuɲa'], heart:['kurda','kuɖa'], tree:['urtu','uʈu'], house:['vakali','vakali'], dog:['vurlpu','vuɻlpu'], cat:['vunmara','vunmaɻa'], hand:['mara','maɻa'], eye:['mina','mina'], hello:['palya','paʎa'], thanks:['mukunha','mukuɲa'], one:['mukuna','mukuna'], good:['ngarrkanha','ŋaɻkaɲa'] }},
+  // Noongar (Nyungar) — Pama-Nyungan (South-West, sister to Murchison-Gascoyne but heavily diverged), ~370 fluent + ~3K partial, SW Australia (Perth → Esperance Albany → Geraldton).
+  // Sources: Ethnologue 27 'nys'; Glottolog noon1242; Douglas (1968) The Aboriginal Languages of the South-West of Australia.
+  nys: { name: 'Noongar', native: 'Noongar wangkiny', lat: -31.95, lng: 115.86, // Perth, Western Australia (cultural center)
+    words: { water:['kep','kep'], fire:['kaarl','kaːɻl'], sun:['ngangk','ŋaŋk'], moon:['miyak','mijak'], mother:['ngangk','ŋaŋk'], father:['maam','maːm'], eat:['ngarn','ŋaɻn'], drink:['ngarn','ŋaɻn'], love:['djaadjam','dʒaːdʒam'], heart:['kortang','koɻtaŋ'], tree:['boorn','boːɻn'], house:['mia','mia'], dog:['dwert','dweɻt'], cat:['nguni','ŋuni'], hand:['mar','maɻ'], eye:['mel','mel'], hello:['kaya','kaja'], thanks:['boordawan','boːɻdawan'], one:['keny','keɲ'], good:['kwobidak','kwobidak'] }},
   // === Phase 3F: Tibeto-Burman, Indonesian/Philippine, misc ===
   // Tibeto-Burman
   mni: { name: 'Meitei', native: 'ꯃꯩꯇꯩꯂꯣꯟ', lat: 24.81, lng: 93.94, // Imphal

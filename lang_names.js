@@ -1385,4 +1385,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED52 = {
+        bft: { en: 'Balti', ja: 'バルティ語', ko: '발티어', zh: '巴尔蒂语', yue: '巴爾蒂語',
+               vi: 'Tiếng Balti', th: 'ภาษาบัลติ', id: 'Bahasa Balti', hi: 'बल्ती',
+               de: 'Balti', fr: 'Balti', it: 'Balti',
+               es_eu: 'Baltí', es_mx: 'Baltí', pt_eu: 'Balti', pt_br: 'Balti',
+               ru: 'Балти', uk: 'Балті', ar: 'البلطية', he: 'בלטית', sw: 'Kibalti' },
+        mwk: { en: 'Kita Maninkakan', ja: 'キタ・マニンカ語', ko: '키타 마닌카어', zh: '基塔曼宁卡语', yue: '基塔曼寧卡語',
+               vi: 'Tiếng Maninkakan Kita', th: 'ภาษามานินกาคันคิตา', id: 'Maninkakan Kita', hi: 'किता मानिनकाकान',
+               de: 'Kita-Maninkakan', fr: 'Kita maninkakan', it: 'Maninkakan di Kita',
+               es_eu: 'Maninkakan de Kita', es_mx: 'Maninkakan de Kita', pt_eu: 'Maninkakan de Kita', pt_br: 'Maninkakan de Kita',
+               ru: 'Кита-манинкакан', uk: 'Кіта-манінкакан', ar: 'المانينكاكان كيتا', he: 'מנינקקאן קיטה', sw: 'Kimaninkakan cha Kita' },
+        nys: { en: 'Noongar', ja: 'ヌンガル語', ko: '눈가르어', zh: '努恩格语', yue: '努恩格語',
+               vi: 'Tiếng Noongar', th: 'ภาษานูงการ์', id: 'Bahasa Noongar', hi: 'नूंगार',
+               de: 'Noongar', fr: 'Noongar', it: 'Noongar',
+               es_eu: 'Noongar', es_mx: 'Noongar', pt_eu: 'Noongar', pt_br: 'Noongar',
+               ru: 'Нунгар', uk: 'Нунгар', ar: 'النوونغار', he: 'נונגר', sw: 'Kinoongar' },
+    };
+    for (const code of Object.keys(ADDED52)) {
+        for (const ui of Object.keys(ADDED52[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED52[code][ui];
+            }
+        }
+    }
 })();
