@@ -1958,4 +1958,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED75 = {
+        kjb: { en: "Q'anjob'al", ja: 'カンジョバル語', ko: '칸호발어', zh: '康霍巴尔语', yue: '康霍巴爾語',
+               vi: "Tiếng Q'anjob'al", th: 'ภาษาคานโจบาล', id: "Bahasa Q'anjob'al", hi: 'कानहोबाल',
+               de: 'Kanjobal', fr: "Q'anjob'al", it: "Q'anjob'al",
+               es_eu: 'Kanjobal', es_mx: 'Kanjobal', pt_eu: 'Kanjobal', pt_br: 'Kanjobal',
+               ru: 'Канжобаль', uk: 'Канхобаль', ar: 'الكانخوبال', he: 'קנחובאל', sw: 'Kikanjobal' },
+        ctu: { en: 'Chol', ja: 'チョル語', ko: '촐어', zh: '乔尔语', yue: '喬爾語',
+               vi: 'Tiếng Chol', th: 'ภาษาโชล', id: 'Bahasa Chol', hi: 'चोल',
+               de: 'Chol', fr: 'Chol', it: 'Chol',
+               es_eu: "Ch'ol", es_mx: "Ch'ol", pt_eu: 'Chol', pt_br: 'Chol',
+               ru: 'Чоль', uk: 'Чоль', ar: 'التشول', he: "צ'ול", sw: 'Kichol' },
+        agu: { en: 'Aguacateco', ja: 'アグアカテコ語', ko: '아과카테코어', zh: '阿瓜卡特科语', yue: '阿瓜卡特科語',
+               vi: 'Tiếng Aguacateco', th: 'ภาษาอาวากาเตโก', id: 'Bahasa Aguacateco', hi: 'अगुआकातेको',
+               de: 'Aguacateco', fr: 'Aguacatèque', it: 'Aguacateco',
+               es_eu: 'Aguacateco', es_mx: 'Aguacateco', pt_eu: 'Aguacateco', pt_br: 'Aguacateco',
+               ru: 'Агуакатеко', uk: 'Агуакатеко', ar: 'الأغواكاتيكو', he: 'אגוואקטקו', sw: 'Kiaguacateco' },
+    };
+    for (const code of Object.keys(ADDED75)) {
+        for (const ui of Object.keys(ADDED75[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED75[code][ui];
+            }
+        }
+    }
 })();

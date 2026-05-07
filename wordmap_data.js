@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 833 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 836 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -4311,6 +4311,18 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'poh'; Glottolog poco1241; Brown (1979) Pocomchi grammar.
   poh: { name: "Poqomchi'", native: "Poqomchi'", lat: 15.36, lng: -90.32, // Tactic, Alta Verapaz, Guatemala
     words: { water:["ha'",'haʔ'], fire:['qʼaaq','qʼaːq'], sun:['qʼij','qʼih'], moon:['ik','ik'], mother:['tuut','tuːt'], father:['ajaab','ahaːb'], eat:['wai','wai'], drink:['uuk','uːk'], love:['rahaal','rahaːl'], heart:["k'uxl",'kʼuʃl'], tree:["chee'",'tʃeʔ'], house:['paat','paːt'], dog:["tz'i'",'tsʼiʔ'], cat:['mees','meːs'], hand:["q'ab",'qʼab'], eye:['nakʼ','nakʼ'], hello:['ma chaa','ma tʃaː'], thanks:['tioxlaab','tjoʃlaːb'], one:['jino','hino'], good:['saqʼwach','saqʼwatʃ'] }},
+  // Q'anjob'al — Mayan (Q'anjob'alan-Chujean, sister to Akatec, Jakaltek, Chuj), ~80K, Guatemala (Huehuetenango — Santa Eulalia, Soloma).
+  // Sources: Ethnologue 27 'kjb'; Glottolog east2557; Mateo-Toledo (2008) The Family of Complement Constructions in Q'anjob'al.
+  kjb: { name: "Q'anjob'al", native: "Q'anjob'al", lat: 15.83, lng: -91.30, // Santa Eulalia, Huehuetenango, Guatemala
+    words: { water:["ha'",'haʔ'], fire:['qʼaʼ','qʼaʔ'], sun:['kʼuʼ','kʼuʔ'], moon:['ixaw','iʃaw'], mother:['mim','mim'], father:['mam','mam'], eat:['lo','lo'], drink:['uku','uku'], love:['kʼamʼ','kʼamʔ'], heart:['kʼulul','kʼulul'], tree:['teʼ','teʔ'], house:['na','na'], dog:["tz'i'",'tsʼiʔ'], cat:['mes','mes'], hand:["q'ab",'qʼab'], eye:['sat','sat'], hello:['kawal','kawal'], thanks:['yuhwal','juhwal'], one:['jun','hun'], good:['sat','sat'] }},
+  // Chol (Ch'ol) — Mayan (Cholan-Tzeltalan, Cholan — sister to Chontal Maya chf and Tzeltal/Tzotzil), ~250K, Mexico (Chiapas — Tila, Tumbalá, Sabanilla).
+  // Sources: Ethnologue 27 'ctu'; Glottolog chol1282; Warkentin & Scott (1980) Gramática Ch'ol.
+  ctu: { name: "Chol", native: "Lakty'añ", lat: 17.30, lng: -92.42, // Tila, Chiapas, Mexico
+    words: { water:["ja'",'haʔ'], fire:['kʼajk','kʼahk'], sun:['kʼajn','kʼahn'], moon:['uw','uw'], mother:['ñaʼ','ɲaʔ'], father:['tat','tat'], eat:["k'ux",'kʼuʃ'], drink:['ucʼ','utsʼ'], love:["k'uxbiñ",'kʼuʃbiɲ'], heart:["pus'ik'al",'pusʼikʼal'], tree:["te'",'teʔ'], house:["otyot",'otjot'], dog:["ts'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["k'ab'",'kʼabʼ'], eye:["wut",'wut'], hello:['kabʼ','kabʼ'], thanks:["wokox",'wokoʃ'], one:['juñ','huɲ'], good:['utsat','utsat'] }},
+  // Aguacateco (Awakateko) — Mayan (Quichean-Mamean, Mam-Awakateko branch — sister to Mam mam and Ixil ixl), ~17K, Guatemala (Huehuetenango — Aguacatán).
+  // Sources: Ethnologue 27 'agu'; Glottolog awak1244; McArthur & McArthur (1956) Aguacatec phonology.
+  agu: { name: "Aguacateco", native: "Awakateko", lat: 15.34, lng: -91.32, // Aguacatán, Huehuetenango, Guatemala
+    words: { water:["a'",'aʔ'], fire:['qʼaq','qʼaq'], sun:['qʼijl','qʼihl'], moon:['xahaw','ʃahaw'], mother:['naa','naː'], father:['mam','mam'], eat:['wii','wiː'], drink:['uuk','uːk'], love:['xajan','ʃahan'], heart:["k'uum",'kʼuːm'], tree:["tze'",'tseʔ'], house:["nya",'ɲa'], dog:["tx'i'",'tsʼiʔ'], cat:['mis','mis'], hand:["q'ab",'qʼab'], eye:['witzʼ','witsʼ'], hello:['kʼamta','kʼamta'], thanks:['tixwajʼ','tiʃwahʼ'], one:['jun','hun'], good:['saqʼ','saqʼ'] }},
   // Ixil — Mayan Mamean, ~70K speakers, Cuchumatanes mountains (Guatemala). Survivors of 1980s genocide.
   // Sources: Ethnologue 27 'ixl'; Glottolog ixil1251; Ayres (1991) Ixil Verb Morphology.
   ixl: { name: 'Ixil', native: "Ixil", lat: 15.40, lng: -91.06, // Nebaj, Quiché
