@@ -1535,4 +1535,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED58 = {
+        kau: { en: 'Kanuri', ja: 'カヌリ語', ko: '카누리어', zh: '卡努里语', yue: '卡努里語',
+               vi: 'Tiếng Kanuri', th: 'ภาษาคานูรี', id: 'Bahasa Kanuri', hi: 'कनुरी',
+               de: 'Kanuri', fr: 'Kanouri', it: 'Kanuri',
+               es_eu: 'Kanuri', es_mx: 'Kanuri', pt_eu: 'Kanuri', pt_br: 'Kanuri',
+               ru: 'Канури', uk: 'Канурі', ar: 'الكانورية', he: 'קנורי', sw: 'Kikanuri' },
+        trm: { en: 'Tregami', ja: 'トレガミ語', ko: '트레가미어', zh: '特雷加米语', yue: '特雷加米語',
+               vi: 'Tiếng Tregami', th: 'ภาษาเตรกามี', id: 'Bahasa Tregami', hi: 'त्रेगामी',
+               de: 'Tregami', fr: 'Trégami', it: 'Tregami',
+               es_eu: 'Tregami', es_mx: 'Tregami', pt_eu: 'Tregami', pt_br: 'Tregami',
+               ru: 'Трегами', uk: 'Трегамі', ar: 'التريغامية', he: 'טרגאמי', sw: 'Kitregami' },
+        nia: { en: 'Nias', ja: 'ニアス語', ko: '니아스어', zh: '尼亚斯语', yue: '尼亞斯語',
+               vi: 'Tiếng Nias', th: 'ภาษานียัส', id: 'Bahasa Nias', hi: 'नियास',
+               de: 'Nias', fr: 'Nias', it: 'Nias',
+               es_eu: 'Nias', es_mx: 'Nias', pt_eu: 'Nias', pt_br: 'Nias',
+               ru: 'Ниасский', uk: 'Ніаська', ar: 'النياسية', he: 'ניאס', sw: 'Kinias' },
+    };
+    for (const code of Object.keys(ADDED58)) {
+        for (const ui of Object.keys(ADDED58[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED58[code][ui];
+            }
+        }
+    }
 })();

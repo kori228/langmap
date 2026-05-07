@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 784 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 787 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -265,6 +265,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'prs'; Glottolog dari1249; Farhadi (1955) Le Persan Parlé en Afghanistan; Kieffer (2003).
   prs: { name: 'Dari', native: 'دری', lat: 34.53, lng: 69.17, // Kabul
     words: { water:['آب','ɒːb'], fire:['آتش','ɒːtaʃ'], sun:['خورشید','xoɾʃed'], moon:['ماه','mɒːh'], mother:['مادر','mɒːdaɾ'], father:['پدر','padaɾ'], eat:['خوردن','xoɾdan'], drink:['نوشیدن','noʃidan'], love:['عشق','eʃq'], heart:['قلب','qalb'], tree:['درخت','daɾaxt'], house:['خانه','xɒːna'], dog:['سگ','saɡ'], cat:['پشک','puʃak'], hand:['دست','dast'], eye:['چشم','t͡ʃaʃm'], hello:['سلام','salɒːm'], thanks:['تشکر','taʃakkoɾ'], one:['یک','jak'], good:['خوب','xob'] }},
+  // Tregami (Trēgāmī) — Nuristani (sister to Kati and Waigali within the small Nuristani family of Indo-Iranian), ~3.5K, Afghanistan (Nuristan Province — Tregam Valley).
+  // Sources: Ethnologue 27 'trm'; Glottolog treg1245; Morgenstierne (1973) Notes on Tregami.
+  trm: { name: 'Tregami', native: 'Trēgāmī', lat: 35.31, lng: 70.47, // Tregam Valley, Nuristan Province, Afghanistan
+    words: { water:['wo','wo'], fire:['agni','aɡni'], sun:['suri','suɾi'], moon:['mas','mas'], mother:['nani','nani'], father:['tata','tata'], eat:['ji','dʒi'], drink:['piti','piti'], love:['ošti','oʃti'], heart:['hridaya','hɾidaja'], tree:['vrkṣa','vɾkʃa'], house:['kuti','kuti'], dog:['šva','ʃva'], cat:['biri','biɾi'], hand:['hasta','hasta'], eye:['nayan','najan'], hello:['salaam','salaːm'], thanks:['shukria','ʃukɾia'], one:['ek','ek'], good:['shari','ʃaɾi'] }},
   sw: { name: 'Swahili', native: 'Kiswahili', lat: -6.79, lng: 39.28, // Dar es Salaam
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['jua','dʒua'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kula','kula'], drink:['kunywa','kuɲwa'], love:['upendo','upendo'], heart:['moyo','mojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['jicho','dʒitʃo'], hello:['habari','habari'], thanks:['asante','asante'], one:['moja','modʒa'], good:['nzuri','nzuri'] }},
   // Sukuma — Bantu F21, ~5M speakers, Tanzania's largest single Bantu language by speaker count.
@@ -646,6 +650,10 @@ const LANG_DATA = {
     words: { water:['ame','ame'], fire:['erae','eɾae'], sun:['ọvẹ','ɔvɛ'], moon:['ọwa','ɔwa'], mother:['ini','ini'], father:['ọsẹ','ɔsɛ'], eat:['re','ɾe'], drink:['da','da'], love:['ọsuọ','ɔswɔ'], heart:['udu','udu'], tree:['orhan','oɾan'], house:['uwowhe','uwowhe'], dog:['ebọ','ebɔ'], cat:['ọtọmha','ɔtɔmha'], hand:['obọ','obɔ'], eye:['ẹro','ɛɾo'], hello:['mavọ','mavɔ'], thanks:['migwo','miɡwo'], one:['ọvo','ɔvo'], good:['ọwhọ','ɔwhɔ'] }},
   ha: { name: 'Hausa', native: 'Hausa', lat: 12.00, lng: 8.52,
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
+  // Kanuri — Nilo-Saharan (Saharan, Western), ~10M, Nigeria (Borno State — Maiduguri) + Niger + Chad + Cameroon. Major Lake Chad basin language; historic Kanem-Bornu Empire (9th-19th c.).
+  // Sources: Ethnologue 27 'kau'; Glottolog kanu1278; Cyffer (1998) A Sketch of Kanuri.
+  kau: { name: 'Kanuri', native: 'Kànùrí', lat: 11.85, lng: 13.16, // Maiduguri, Borno State, Nigeria
+    words: { water:['nzeli','nzeli'], fire:['kaltakte','kaltakte'], sun:['kau','kau'], moon:['kawu','kawu'], mother:['ya','ja'], father:['ba','ba'], eat:['buktoo','buktoː'], drink:['saktoo','saktoː'], love:['lehe','lehe'], heart:['galge','ɡalɡe'], tree:['kasha','kaʃa'], house:['fato','fato'], dog:['kasua','kasua'], cat:['matanga','mataŋɡa'], hand:['musko','musko'], eye:['shim','ʃim'], hello:['barka','baɾka'], thanks:['warde','waɾde'], one:['tilo','tilo'], good:['ngubo','ŋɡubo'] }},
   // Hdi — Chadic (Central, Mafa-Bata subgroup), ~30K, Cameroon (Far North Region — Mokolo) + Nigeria border. Famous for ATR vowel harmony and rich glottal-consonant inventory.
   // Sources: Ethnologue 27 'xed'; Glottolog hdii1240; Frajzyngier (2002) A Grammar of Hdi.
   xed: { name: 'Hdi', native: 'Hədi', lat: 10.74, lng: 13.80, // Mokolo, Cameroon (Mandara Mountains)
@@ -1912,6 +1920,10 @@ const LANG_DATA = {
   // Indonesian (large regional)
   min: { name: 'Minangkabau', native: 'Baso Minangkabau', lat: -0.95, lng: 100.35, // Padang
     words: { water:['aia','aia'], fire:['api','api'], sun:['matoari','matoaɾi'], moon:['bulan','bulan'], mother:['amak','amaʔ'], father:['abak','abaʔ'], eat:['makan','makan'], drink:['minum','minum'], love:['cinto','tʃinto'], heart:['ati','ati'], tree:['kayu','kaju'], house:['rumah','ɾumah'], dog:['anjiang','aɲdʒiaŋ'], cat:['kuciang','kutʃiaŋ'], hand:['tangan','taŋan'], eye:['mato','mato'], hello:['salam','salam'], thanks:['tarimo kasiah','taɾimo kasiah'], one:['ciek','tʃie'], good:['rancak','ɾantʃak'] }},
+  // Nias — Austronesian (Malayo-Polynesian, Sundic, Nias-Mentawai), ~770K, Indonesia (Nias Island, North Sumatra). Megalithic stone-jumping culture; Nias Latin orthography.
+  // Sources: Ethnologue 27 'nia'; Glottolog nias1242; Brown (2001) A Grammar of Nias Selatan.
+  nia: { name: 'Nias', native: 'Li Niha', lat: 1.27, lng: 97.62, // Gunungsitoli, Nias
+    words: { water:['idanö','idanø'], fire:['galu','ɡalu'], sun:['luo','luo'], moon:['mboro','mboɾo'], mother:['inada','inada'], father:['amada','amada'], eat:['manga','maŋa'], drink:['banua','banua'], love:['fauma','fauma'], heart:['tödö','tødø'], tree:['eu','eu'], house:['omo','omo'], dog:['asu','asu'], cat:['mao','mao'], hand:['tanga','taŋa'], eye:['hörö','høɾø'], hello:['ya\'ahowu','jaʔahowu'], thanks:['saohagölö','saohaɡølø'], one:['sara','saɾa'], good:['sökhi','søkʰi'] }},
   ban: { name: 'Balinese', native: 'Basa Bali', lat: -8.65, lng: 115.21, // Denpasar
     words: { water:['yeh','jeh'], fire:['api','api'], sun:['matanai','matanai'], moon:['bulan','bulan'], mother:['meme','meme'], father:['bapa','bapa'], eat:['ngajeng','ŋadʒeŋ'], drink:['nginem','ŋinem'], love:['tresna','tɾesna'], heart:['manah','manah'], tree:['punyan','puɲan'], house:['umah','umah'], dog:['cicing','tʃitʃiŋ'], cat:['meong','meoŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['om swastiastu','om swastiastu'], thanks:['matur suksma','matuɾ suksma'], one:['besik','besik'], good:['becik','betʃik'] }},
   ace: { name: 'Acehnese', native: 'Bahsa Acèh', lat: 5.55, lng: 95.33, // Banda Aceh
