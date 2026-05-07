@@ -10563,3 +10563,168 @@ A reader looking at `~5,000–10,000` cannot parse it confidently:
 - Or does `~` mean "range" and `–` is a typo for the same? → "5,000 to 10,000"
 
 The user is correct that the current notation is non-self-documenting. Even Option D (single-row fix) is better than leaving it as-is — but Phase 1 of Option B/A delivers the same clarity to all 35 rows in one pass.
+
+---
+
+## Decision recorded: Option C (Task 167 + Task 219 unified) — 2026-05-07
+
+User chose **Option C**: implement Task 167's structured `speakerCount` schema with UI-lang-dependent prose generation. The unified plan is below.
+
+### New Task 220. Implement structured `speakerCount` + UI-lang-dependent prose (Task 167 + Task 219 unified, Option C)
+
+Goal:
+Replace the prose `meta.speakers` field as the source of truth with a structured `meta.speakerCount` object (per Task 167's existing schema). The prose `speakers` becomes a derived display string, formatted per the user's UI language: Japanese UI shows `5,000~10,000`, English UI shows `5,000–10,000`, and other UIs follow their respective conventions. This single change resolves both Task 167 (numeric speaker structure) and Task 219 (range-notation ambiguity) and unlocks numeric range filtering (Task 153 grammar capsule alignment).
+
+The user's specific complaint about `ko_jeju.speakers = '~5,000–10,000'` becomes a non-issue automatically: the prose is generated from `speakerCount: { range: 'range', rangeMin: 5000, rangeMax: 10000, vitality: 'critically-endangered' }` and rendered as `5,000~10,000` in Japanese UI without manual per-row editing.
+
+Current issue I checked (2026-05-07):
+- 706 rows have `meta.speakers` as free-form prose.
+- 35 rows have ambiguous `~N–M` or `~N-M` patterns (Task 219 finding).
+- 67 rows have `meta.speakerYear` set (Task 171 — 9.5% coverage).
+- 71 rows have `meta.speakerBasis` set.
+- 38 rows have `meta.speakerSource` set.
+- The prose field is the only path to the numeric value; numeric filtering (Task 153 plan) is impossible.
+
+Files to change (per the unified plan):
+
+**Schema layer:**
+- `wordmap_meta.js` — add `speakerCount` object to every row's meta, parsed from existing prose.
+- `validate_wordmap_data.js` — extend Task 167 schema check; warn if both `speakers` prose and `speakerCount` structured disagree.
+- `CONTRIBUTING.md` — document `speakerCount` as the source of truth.
+
+**Display layer:**
+- `wordmap.html` — modal renderer reads `speakerCount`, formats per UI lang, falls back to prose `speakers` if `speakerCount` is unset.
+- `meta_i18n_coverage.js` — add per-UI-lang formatter helpers (range separator, "approximate" prefix, vitality qualifier translation).
+- `lang-filter.js` — add numeric range filter (`speakers: 1M+`, `speakers: 100K–1M`, etc.) that reads `speakerCount` directly.
+
+Implementation phases:
+
+**Phase 1 — Schema + bulk-parse from prose (~3-5 hours).**
+
+Add `speakerCount` to every row by parsing the existing `speakers` prose. The parser handles all observed patterns:
+
+```js
+// Pattern A: simple "~N{K|M|B}" → point estimate
+'~125M' → { l1: 125_000_000, range: 'point', source: 'unknown' }
+
+// Pattern B: simple "N{K|M|B}" → exact
+'25K (fluent)' → { l1: 25_000, range: 'point', vitality: 'critically-endangered', notes: 'fluent' }
+
+// Pattern C: "~N–M" or "~N-M" → range (resolves Task 219)
+'~5,000–10,000 (UNESCO: critically endangered)' → { range: 'range', rangeMin: 5000, rangeMax: 10000, vitality: 'critically-endangered', source: 'UNESCO' }
+
+// Pattern D: prose with parenthetical detail
+'~80M (Wu Chinese family total; Shanghainese alone ~15-20M)' → { total: 80_000_000, range: 'point', notes: 'Wu Chinese family total; Shanghainese alone ~15-20M' }
+
+// Pattern E: explicit L1/L2
+'~200M (total; L1 ≈ 25-40M, mostly L2/national)' → { total: 200_000_000, l1RangeMin: 25_000_000, l1RangeMax: 40_000_000, notes: 'mostly L2/national' }
+
+// Pattern F: extinct
+'Extinct as living register (~17-20c. literary)' → { l1: 0, vitality: 'extinct', notes: '~17-20c. literary' }
+```
+
+The parser ships as a one-time migration script (`scripts/migrate_speakers.js`), runs once across all 706 rows, and writes the structured form back. Each parse result is reviewed manually (~30 sec/row) to catch edge cases.
+
+**Phase 2 — Display layer with UI-lang formatters (~2-3 hours).**
+
+The modal speaker renderer becomes:
+
+```js
+function formatSpeakers(speakerCount, uiLang) {
+    if (!speakerCount) return '—';
+    const ranges = uiLang === 'ja' || uiLang === 'ko' || uiLang === 'zh' || uiLang === 'yue';
+    const sep = ranges ? '~' : '–';  // Task 219: ja-CJK uses ~, en/eu uses en-dash
+    const apx = ranges ? '約' : '~';  // Approximate-point prefix
+    
+    if (speakerCount.range === 'range') {
+        const lo = formatNum(speakerCount.rangeMin);
+        const hi = formatNum(speakerCount.rangeMax);
+        return `${lo}${sep}${hi}` + qualifierSuffix(speakerCount, uiLang);
+    }
+    if (speakerCount.l1 != null) {
+        const n = formatNum(speakerCount.l1);
+        return (speakerCount.exact ? n : `${apx}${n}`) + qualifierSuffix(speakerCount, uiLang);
+    }
+    // ... other shapes ...
+}
+```
+
+Where `formatNum` adds locale-aware separators (`125,000,000` in en; `1.25亿` or `1.25 亿` in zh; `1.25億` in ja with optional Han numerals).
+
+**Phase 3 — Filter integration (~1 hour).**
+
+`lang-filter.js`'s speaker-tier filter reads `speakerCount.l1 ?? speakerCount.total ?? speakerCount.rangeMax` and bins into `100M+`, `10M+`, `1M+`, `100K+`, `10K+`, `1K+`, `<1K`. Replaces the current prose-regex parsing.
+
+**Phase 4 — CONTRIBUTING.md documentation (~30 min).**
+
+Section "Speaker count: structured field":
+- `speakerCount` is the source of truth for numeric speaker data.
+- The prose `speakers` field is auto-generated and should NOT be hand-edited; treat it as derived display.
+- Schema:
+  ```
+  speakerCount: {
+      l1?: number,                  // L1 (native) speaker count
+      l2?: number,                  // L2 speaker count (when distinct)
+      total?: number,               // Total speakers (when L1+L2 distinction is unclear)
+      range: 'point' | 'range',     // 'point' for single estimate, 'range' for documented uncertainty
+      rangeMin?: number,            // when range === 'range'
+      rangeMax?: number,
+      exact?: boolean,              // true if value is exact (no leading "~"/"approximately")
+      year: number,                 // ISO year of the cited count
+      source: string,               // 'Ethnologue 27', 'UNESCO', 'census', etc.
+      vitality?: 'safe' | 'vulnerable' | 'definitely-endangered' | 'severely-endangered' | 'critically-endangered' | 'extinct',
+      notes?: string,               // free-form qualifier text (translated per UI lang via meta_i18n_coverage)
+  }
+  ```
+
+**Phase 5 — Migration validation (~1 hour).**
+
+Validator gate `[#220]`:
+- `speakerCount` required when `speakers` prose contains a numeric value.
+- `speakerCount.year` required.
+- `speakerCount.source` required.
+- INFO line: `speakerCount adoption: N/M rows have structured form` — should reach 100% after Phase 1.
+
+Validator / static check:
+- `[#220a]`: row with prose `speakers` containing digits but no `speakerCount` → ERROR after migration deadline.
+- `[#220b]`: `speakerCount.range === 'range'` requires `rangeMin` and `rangeMax` and `rangeMin <= rangeMax`.
+- `[#220c]`: `speakerCount.year > 2024` → ERROR (future-dated).
+- `[#220d]`: `speakerCount.year < 1990` for `dataStatus: 'modern'` → INFO (count is 30+ years old; flag for refresh).
+- Display-layer test: render `ko_jeju` modal in ja UI → expect `5,000~10,000`; in en UI → expect `5,000–10,000`.
+
+Do not:
+- Do not hand-edit the prose `speakers` field after migration. It will be regenerated and your edit will be lost.
+- Do not skip the migration script's manual review step. Patterns like `'~80M (Wu Chinese family total; Shanghainese alone ~15-20M)'` need careful interpretation — what's the "true" speaker count? The 80M (family total) or the 15-20M (Shanghainese specifically)?
+- Do not gate Phase 2 (display) on Phase 1 (full migration) being complete. Phase 1 can backfill in batches; Phase 2's display reads `speakerCount` if present, falls back to prose otherwise.
+- Do not introduce a new range separator beyond what's already used: stick to en-dash `–` for non-CJK UIs and tilde `~` for ja/ko/zh/yue. Avoid hyphen `-` (ambiguous) and em-dash `—` (different semantics).
+
+Done when:
+- All 706 rows have `speakerCount` populated.
+- Display renders Japanese `5,000~10,000` and English `5,000–10,000` from the same underlying data.
+- Speaker-tier filter (`1M+`, etc.) reads from `speakerCount` not prose.
+- Validator `[#220a–d]` checks pass.
+- Tasks 167 and 219 close (this task supersedes both).
+- User's `ko_jeju` complaint is resolved without per-row hand-editing.
+- CONTRIBUTING.md documents `speakerCount` as the source of truth.
+
+### Effort summary
+
+| Phase | Effort | Output |
+|---|---|---|
+| 1 — Bulk parse + write `speakerCount` | 3-5 hours | 706 rows structured |
+| 2 — Display layer per UI lang | 2-3 hours | Modal renders correctly per UI |
+| 3 — Filter integration | 1 hour | Numeric range filter works |
+| 4 — CONTRIBUTING.md | 30 min | Future contributors see schema |
+| 5 — Validator + tests | 1 hour | Regression prevention |
+| **Total** | **~7-10 hours** | Single-source-of-truth + unblocks Tasks 153/167/219 |
+
+### Tasks closed by Task 220
+
+- Task 167 (structurally normalize speakers) — superseded.
+- Task 219 (range notation ambiguity) — resolved automatically by per-UI-lang display.
+- Task 171 (speakerYear backfill) — required as part of `speakerCount.year`.
+- Partial: Task 153 (grammar capsule) speaker-count integration — unblocked.
+
+### Migration risk
+
+The risk is mainly Phase 1's manual review: parsing 706 free-form prose entries can introduce off-by-magnitude errors (`'~10K'` parsed as 10 instead of 10,000) or lose nuance (`'~12-15M (lingua franca; ~50% of Afghanistan population uses Dari)'` collapsing to a single number). Mitigation: Phase 1 produces a side-by-side diff of (original prose) → (regenerated prose from speakerCount). Reviewer signs off when diffs are semantically equivalent.
