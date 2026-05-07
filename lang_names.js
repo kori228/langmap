@@ -1660,4 +1660,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED63 = {
+        hni: { en: 'Hani', ja: 'ハニ語', ko: '하니어', zh: '哈尼语', yue: '哈尼語',
+               vi: 'Tiếng Hà Nhì', th: 'ภาษาฮานี', id: 'Bahasa Hani', hi: 'हानी',
+               de: 'Hani', fr: 'Hani', it: 'Hani',
+               es_eu: 'Hani', es_mx: 'Hani', pt_eu: 'Hani', pt_br: 'Hani',
+               ru: 'Хани', uk: 'Хані', ar: 'الهانية', he: 'האני', sw: 'Kihani' },
+        tsm: { en: 'Turoyo', ja: 'トゥロヨ語', ko: '투로요어', zh: '图罗约语', yue: '圖羅約語',
+               vi: 'Tiếng Turoyo', th: 'ภาษาตูโรโย', id: 'Bahasa Turoyo', hi: 'तुरोयो',
+               de: 'Turoyo', fr: 'Turoyo', it: 'Turoyo',
+               es_eu: 'Turoyo', es_mx: 'Turoyo', pt_eu: 'Turoyo', pt_br: 'Turoyo',
+               ru: 'Туройо', uk: 'Туройо', ar: 'التورويو', he: 'טורויו', sw: 'Kituroyo' },
+        pmh: { en: 'Maharastri Prakrit', ja: 'マハーラーシュトリー・プラークリット語', ko: '마하라슈트리 프라크리트어', zh: '摩诃拉施特利俗语', yue: '摩訶拉施特利俗語',
+               vi: 'Tiếng Maharastri Prakrit', th: 'ภาษามหาราษฏีปรากฤต', id: 'Bahasa Maharastri Prakrit', hi: 'महाराष्ट्री प्राकृत',
+               de: 'Maharashtri-Prakrit', fr: 'Maharashtri prakrit', it: 'Maharashtri prakrit',
+               es_eu: 'Prácrito Maharashtri', es_mx: 'Prácrito Maharashtri', pt_eu: 'Prácrito Maharastri', pt_br: 'Prácrito Maharastri',
+               ru: 'Махараштри пракрит', uk: 'Махараштрі пракрит', ar: 'الماهاراشترية البراكريت', he: 'מהאראשטרי פרקריט', sw: 'Pracrito ya Maharashtri' },
+    };
+    for (const code of Object.keys(ADDED63)) {
+        for (const ui of Object.keys(ADDED63[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED63[code][ui];
+            }
+        }
+    }
 })();

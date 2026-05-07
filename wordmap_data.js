@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 799 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 802 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -64,6 +64,8 @@ const EXCLUDED_CODES = new Set([
   'ja_chu', 'pry',
   // Pass 35: 5 historical additions
   'ota', 'cmg', 'ett', 'xht', 'txr',
+  // Batches 48 & 54: Messapic + Maharastri Prakrit additions
+  'cms', 'pmh',
 ]);
 
 const LANG_DATA = {
@@ -508,6 +510,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'azo'; Glottolog azhe1239; Wang & Yu (1994) Yi/Lolo-Burmese phonology.
   azo: { name: 'Azhe', native: 'Azhepu', lat: 24.41, lng: 103.41, // Mile County, Honghe Prefecture, Yunnan
     words: { water:['ʑɿ','ʑɿ˧˧'], fire:['mi','mi˧˧'], sun:['ŋᴊni','ŋnʲi˧˧'], moon:['ɬɛ','ɬɛ˧˧'], mother:['amo','amo˧˧'], father:['ada','ada˧˧'], eat:['dza','dza˧˧'], drink:['du','du˧˧'], love:['ŋa','ŋa˧˧'], heart:['si','si˧˧'], tree:['sɿ','sɿ˧˧'], house:['ɣɯ','ɣɯ˧˧'], dog:['kʰɯ','kʰɯ˧˧'], cat:['vi','vi˧˧'], hand:['la','la˧˧'], eye:['ȵi','ȵi˧˧'], hello:['mosu','mosu˧˧'], thanks:['katɕʰɿ','katɕʰɿ˧˧'], one:['tsʰɿ','tsʰɿ˧˧'], good:['mu','mu˧˧'] }},
+  // Hani — Sino-Tibetan (Tibeto-Burman, Loloish, Southeastern — sister to Akha ahk and Bisu within Hanoid Loloish), ~1.5M, China (Yunnan — Honghe + Pu'er prefectures) + Vietnam (Lào Cai) + Laos (Phongsaly).
+  // Sources: Ethnologue 27 'hni'; Glottolog hani1247; Lewis (1989) Akha-English Dictionary (Hani context).
+  hni: { name: 'Hani', native: 'Haqniqdoq', lat: 23.37, lng: 102.42, // Honghe County, Yunnan (Hani heartland)
+    words: { water:['lol','lol'], fire:['miq','miq'], sun:['mol','mol'], moon:['hhal','xal'], mother:['amal','amal'], father:['adal','adal'], eat:['za','za'], drink:['dol','dol'], love:['gaq','ɡaq'], heart:['miqsiq','miqsiq'], tree:['siq','siq'], house:['nyul','ɲul'], dog:['kheel','kʰeːl'], cat:['mil','mil'], hand:['leyu','leju'], eye:['ne','ne'], hello:['niahuq mahuq','niaxuq maxuq'], thanks:['gaq sai','ɡaq sai'], one:['tiul','tiul'], good:['xa','xa'] }},
   th_isan: { name: 'Thai (Isan)', native: 'ภาษาอีสาน', lat: 16.43, lng: 102.83,
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะเว็น','ta˨˩wen˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิน','kin˥'], drink:['ดื่ม','dɯːm˥˩'], love:['ฮัก','hak˧˥'], heart:['ใจ','t͡ɕaj˥'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['เฮือน','hɯːan˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ตา','taː˥'], hello:['สะบายดี','sa˨˩baːj˥diː˥'], thanks:['ขอบใจ','kʰɔːp˨˩t͡ɕaj˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
   th_n: { name: 'Thai (Northern)', native: 'คำเมือง', lat: 18.79, lng: 98.98,
@@ -1180,6 +1186,10 @@ const LANG_DATA = {
       ]
     }
   },
+  // Maharastri Prakrit — Indo-European Indo-Aryan (Middle Indic, ~1st BCE-13th CE; main literary Prakrit alongside Pali pi). Reconstructed from Jain Agamas, Jaina Maharashtri texts.
+  // Sources: Ethnologue 27 'pmh'; Glottolog maha1305; Pischel (1900) Grammatik der Prakrit-Sprachen.
+  pmh: { name: 'Maharastri Prakrit', native: 'महाराष्ट्री प्राकृत', lat: 19.08, lng: 72.88, // Mumbai (Maharashtra heartland; Maharastri historic literary center)
+    words: { water:['उदग','udaɡa'], fire:['अग्गि','aɡɡi'], sun:['सूर','suːɾa'], moon:['चंद','tʃanda'], mother:['माय','maːja'], father:['पिअ','piaː'], eat:['खा','kʰaː'], drink:['पिब','piba'], love:['पेम','peːma'], heart:['हिअ','hiaː'], tree:['रुक्ख','rukːʰa'], house:['घर','ɡʱaɾa'], dog:['सुणग','suɳaɡa'], cat:['मज्जार','madʒːaːra'], hand:['हत्थ','hatːʰa'], eye:['अच्छि','atʃːʰi'], hello:['—','—'], thanks:['—','—'], one:['एग','eɡa'], good:['सुंदर','sundara'] }},
   cop: { name: 'Coptic', native: 'ⲙⲉⲧⲣⲉⲙⲛⲕⲏⲙⲉ', lat: 31.20, lng: 29.92,
     words: { water:['ⲙⲟⲟⲩ','moːu'], fire:['ⲕⲣⲱⲙ','krɔːm'], sun:['ⲣⲏ','reː'], moon:['ⲓⲟϩ','joːh'], mother:['ⲙⲁⲁⲩ','maːu'], father:['ⲉⲓⲱⲧ','ejɔːt'], eat:['ⲟⲩⲱⲙ','uɔːm'], drink:['ⲥⲱ','sɔː'], love:['ⲙⲉ','me'], heart:['ϩⲏⲧ','heːt'], tree:['ϣⲏⲛ','ʃeːn'], house:['ⲏⲓ','eːj'], dog:['ⲟⲩϩⲟⲣ','uhɔr'], cat:['ⲉⲙⲟⲩ','emu'], hand:['ϭⲓϫ','tʃidʒ'], eye:['ⲃⲁⲗ','bal'], hello:['ⲛⲟⲩϥⲣⲓ','nufri'], thanks:['ϣⲉⲡϩⲙⲟⲧ','ʃephmot'], one:['ⲟⲩⲁ','ua'], good:['ⲛⲁⲛⲟⲩ','nanu'] }},
   arc: { name: 'Aramaic', native: 'ܐܪܡܝܐ', lat: 33.51, lng: 36.29,
@@ -1188,6 +1198,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'aii'; Glottolog assy1241; Maclean (1895) Grammar of the Dialects of Vernacular Syriac; Khan (2008) NENA studies.
   aii: { name: 'Assyrian Neo-Aramaic', native: 'ܠܫܢܐ ܐܫܘܪܝܐ', lat: 36.34, lng: 43.13, // Mosul / Nineveh Plains (historical homeland)
     words: { water:['ܡܝܐ','mijja'], fire:['ܢܘܪܐ','nura'], sun:['ܫܡܫܐ','ʃimʃa'], moon:['ܣܗܪܐ','sahra'], mother:['ܝܡܐ','jimma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','axil'], drink:['ܫܬܐ','ʃtaja'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','libba'], tree:['ܐܝܠܢܐ','ilana'], house:['ܒܝܬܐ','beθa'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaːtu'], hand:['ܐܝܕܐ','iːða'], eye:['ܥܝܢܐ','ʕajna'], hello:['ܫܠܡܐ','ʃlaːma'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒܐ','tˤaba'] }},
+  // Turoyo (Surayt) — Central Neo-Aramaic (sister to aii Assyrian Neo-Aramaic and other Eastern Neo-Aramaic varieties), ~50K-100K, Tur Abdin Turkey homeland + Sweden/Germany/Netherlands diaspora.
+  // Sources: Ethnologue 27 'tru'/'tsm'; Glottolog turo1239; Jastrow (1992) Lehrbuch der Ṭuroyo-Sprache.
+  tsm: { name: 'Turoyo', native: 'ܛܘܪܝܐ', lat: 37.45, lng: 41.50, // Midyat, Tur Abdin, Turkey (Mardin Province)
+    words: { water:['ܡܝܐ','majo'], fire:['ܢܘܪܐ','nuro'], sun:['ܫܡܫܐ','ʃamʃo'], moon:['ܣܗܪܐ','sahro'], mother:['ܐܡܐ','imo'], father:['ܒܒܐ','babo'], eat:['ܐܟܠ','oxulo'], drink:['ܫܬܐ','ʃote'], love:['ܚܘܒܐ','ħubo'], heart:['ܠܒܐ','lebo'], tree:['ܐܝܠܢܐ','ilono'], house:['ܒܝܬܐ','bajto'], dog:['ܟܠܒܐ','kalbo'], cat:['ܫܘܢܪܐ','ʃunoro'], hand:['ܐܝܕܐ','iðo'], eye:['ܥܝܢܐ','ʕajno'], hello:['ܫܠܡܐ','ʃlomo'], thanks:['ܬܘܕܝ','tawdi'], one:['ܚܕ','ħað'], good:['ܛܒܐ','tˤobo'] }},
   sux: {
     "name": "Sumerian",
     "native": "𒅴𒂠",
@@ -4406,6 +4420,7 @@ const DATA_STATUS_OVERRIDES = {
     xht:       'fragmentary',      // Hattic — Hittite-Hattic bilinguals only
     txr:       'fragmentary',      // Tartessian — ~95 inscriptions, decipherment disputed
     cms:       'fragmentary',      // Messapic — ~600 inscriptions, partial decipherment
+    pmh:       'attested',         // Maharastri Prakrit — extensive Jain literary corpus 1st BCE-13th CE
     // Pass 35: 2 critically-endangered isolates with fragmentary documentation
     yuc:       'fragmentary',      // Yuchi — ~5 fluent speakers; Linn 2001 + Wagner 1934 only
     kgg:       'fragmentary',      // Kusunda — ~3 partial speakers; Watters 2006 only
@@ -4448,7 +4463,7 @@ const HIST_DESCENDANT = {
     omc:null, chb:null, oma:'ms', osu:'su', otl:'tl',
     // Pass 35: 5 historical additions (Ottoman→Turkish, Classical Mongolian→Mongolian,
     // Etruscan/Hattic/Tartessian = isolates with no living descendant)
-    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null, cms:null,
+    ota:'tr', cmg:'mn', ett:null, xht:null, txr:null, cms:null, pmh:'mr',
     // Audit Task 199 (2026-05-07): yuc Yuchi + kgg Kusunda are
     // critically-endangered isolates flagged `dataStatus: 'fragmentary'`
     // by DATA_STATUS_OVERRIDES. Adding them here with `null` descendant
