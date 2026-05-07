@@ -10468,3 +10468,98 @@ Done when:
 The user's primary use case is using the Word Map as a linguistics teaching tool (per Tasks 151–158 educational roadmap). A teacher pulling up Tok Pisin on the map sees a one-sentence description that says nothing about Tok Pisin's role in PNG, its origins, or its scholarly heritage. Meanwhile a student pulling up the same teacher's randomly-selected obscure language (bzh) sees a paragraph of detail. The asymmetry undermines the map's pedagogical credibility — the well-known languages should be the *richest* descriptions, not the thinnest.
 
 Task 218 is large but high-leverage: completing Phase A alone delivers a uniform-quality experience across the 50 most-likely-to-be-clicked languages.
+
+---
+
+## Notation Audit (2026-05-07 part 11) — speaker count range notation ambiguity
+
+User reported: 「済州語の話者数が「~5,000–10,000」のようになっている。「5,000~10,000」が正しい」.
+
+The user's specific complaint: `ko_jeju.speakers = '~5,000–10,000 (UNESCO: critically endangered)'` is ambiguous (tilde-prefixed approximate followed by en-dash range — what does the tilde modify?). They prefer `5,000~10,000` (Japanese tilde-as-range convention).
+
+Investigation reveals this is one of ~35 rows with similar ambiguous range notation. The root cause is a project-wide convention mix.
+
+### New Task 219. Standardize the speaker-count range notation across all rows
+
+Goal:
+The `meta.speakers` prose field uses three incompatible conventions interchangeably for ranges:
+- `~N–M` (5 rows): tilde + en-dash. Example: `ko_jeju` `'~5,000–10,000'`.
+- `~N-M` (~30 rows): tilde + ASCII hyphen. Example: `prs` `'~12-15M'`, `udi` `'~6,000-8,000'`.
+- `~N` only (no range), with parenthetical sub-detail: `'~80M (Wu Chinese family total; Shanghainese alone ~15-20M)'` (`wuu`).
+
+Per Western convention, `~N` means "approximately N" (a point estimate); ranges are written `N–M` (with en-dash) or `N-M` (with hyphen). Combining `~` with a range separator is interpretively ambiguous: `~5,000–10,000` could mean "approximately 5,000–10,000" (the whole range is approximate) or "approximately 5,000 to 10,000" (only the lower bound is approximate). Per Japanese convention, the tilde `〜` (or `~`) IS the range separator: `5,000~10,000` reads naturally as "5,000 から 10,000".
+
+The user's report is specific to `ko_jeju` but the same ambiguity applies to ~35 rows.
+
+Current issue I checked (2026-05-07):
+
+**Tilde + en-dash pattern (5 rows):**
+- `ko_jeju`: `'~5,000–10,000 (UNESCO: critically endangered)'`
+- `azb`: `'~13–15M'`
+- `sma`: `'~500–600'`
+- `ket`: `'~20–200'`
+- `mai`: `'~30–50M'`
+
+**Tilde + ASCII hyphen pattern (~30 rows):**
+- `prs`: `'~12-15M (lingua franca; ~50% of Afghanistan population uses Dari)'`
+- `udi`, `sva`, `kmh`, `rmf`, `sel`, `ess`, `atj`, `abq`, `yux`, `saq`, `dsh`, `kao`, `pqm`, `kio`, `xtm`, `bbo`, plus inline `~15-20M`-style sub-ranges in `wuu`/`id`/`sw` parenthetical detail.
+
+Files to change:
+- `wordmap_meta.js` — every `meta.speakers` value with the ambiguous pattern.
+- `validate_wordmap_data.js` — add a check that warns on the ambiguous form.
+- `CONTRIBUTING.md` — document the chosen convention.
+
+Implementation instructions:
+
+**Step 1 — pick a convention.** Three options:
+
+- **Option A (Japanese tilde-as-range, user's recommendation):** Range = `N~M`. Approximate point = `~N`. Examples: `'5,000~10,000'`, `'13~15M'`, `'~125M'`. Pros: matches user's natural reading; unambiguous. Cons: non-standard in Western linguistic prose; en/de/fr UI users may find tilde-as-range unfamiliar.
+- **Option B (Western en-dash range):** Range = `N–M` (en-dash) or `N-M` (hyphen). Approximate point = `~N`. Drop the leading `~` when the value is already a range. Examples: `'5,000–10,000'`, `'13–15M'`, `'~125M'`. Pros: matches international convention; Wikipedia/Ethnologue style. Cons: doesn't match Japanese reader's expectation; user's complaint stands for ja UI.
+- **Option C (structured speakerCount, Task 167):** Replace prose with `speakerCount: { l1, range, rangeMin, rangeMax }` per Task 167. Prose `speakers` becomes a derived display, formatted per UI lang (ja UI → `5,000~10,000`, en UI → `5,000–10,000`). Best long-term solution. Largest effort.
+- **Option D (ad-hoc, fix ko_jeju only):** Apply user's preferred form to `ko_jeju` only; defer the systematic fix. Pros: 30-second fix. Cons: leaves 34 other rows ambiguous; new contributors continue introducing the same pattern.
+
+**Recommendation: Option B for prose + Option C as long-term.**
+- Phase 1 (immediate, ~1 hour): apply Option B to all 35 rows. Eliminates ambiguity. Drop the leading `~` when the value is already a range; replace tilde-as-range with en-dash.
+- Phase 2 (weeks): implement Option C structurally, with `speakers` prose auto-generated from `speakerCount` per UI lang. UI lang ja can output `~` as range separator; UI lang en outputs en-dash.
+
+**Step 2 — apply the convention (Option B):**
+- `ko_jeju`: `'~5,000–10,000 (UNESCO: critically endangered)'` → `'5,000–10,000 (UNESCO: critically endangered)'` (drop leading `~`; the en-dash already signals range).
+- `azb`: `'~13–15M'` → `'13–15M'`.
+- `sma`: `'~500–600'` → `'500–600'`.
+- `ket`: `'~20–200'` → `'20–200'`.
+- `mai`: `'~30–50M'` → `'30–50M'`.
+- `prs`, `udi`, `sva`, etc.: replace ASCII hyphen with en-dash AND drop leading `~`. `'~12-15M (...)'` → `'12–15M (...)'`.
+
+**Step 3 — validator check.** Add `[#219]` that warns on:
+- `speakers` containing both `~` and `–`/`-` in close proximity (likely the ambiguous combo).
+- ASCII `-` used as range separator instead of en-dash `–` (only when the surrounding context makes it a range, not a hyphen-in-a-name).
+
+**Step 4 — CONTRIBUTING.md.** Add a "Speaker count notation" section:
+- Use `~N` (tilde-prefix) only for point estimates with significant uncertainty.
+- Use `N–M` (en-dash) for ranges. Do NOT prefix the range with `~`.
+- For exact counts use the bare number: `125M`, `4M`, `5,000`.
+- Optional vitality / source qualifiers go in parens: `(UNESCO: critically endangered)`.
+
+Validator / static check:
+- After fix: `[#219]` warns on 0 rows.
+- INFO line: `speakers notation: N rows with point estimate, M rows with range, K rows with parenthetical detail`.
+
+Do not:
+- Do not use `~` as range separator in `speakers` prose if Option B is chosen, or as approximate-point if Option A is chosen — pick one and apply.
+- Do not lose the parenthetical detail when normalizing. `(UNESCO: critically endangered)`, `(L2 lingua franca, L1 ≈ 15-20M)`, etc., stay intact.
+- Do not bundle this with Task 167 structured-speakerCount migration unless willing to do the full Task 167 work simultaneously. Task 219 is the prose-only normalization.
+
+Done when:
+- All ~35 rows with the ambiguous pattern are normalized to the chosen convention.
+- CONTRIBUTING.md "Speaker count notation" section exists.
+- Validator `[#219]` reports 0 violations.
+- For the user's specific complaint: `ko_jeju.speakers` no longer reads as ambiguous; either `5,000–10,000` (Option B) or `5,000~10,000` (Option A) is consistent with all peer rows.
+
+### Why this matters for user trust
+
+A reader looking at `~5,000–10,000` cannot parse it confidently:
+- Does `~` apply to `5,000` only? → "approximately 5,000, up to 10,000"
+- Does `~` apply to the whole range? → "approximately the range 5,000 to 10,000"
+- Or does `~` mean "range" and `–` is a typo for the same? → "5,000 to 10,000"
+
+The user is correct that the current notation is non-self-documenting. Even Option D (single-row fix) is better than leaving it as-is — but Phase 1 of Option B/A delivers the same clarity to all 35 rows in one pass.
