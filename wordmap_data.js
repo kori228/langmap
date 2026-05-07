@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 886 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 889 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2264,6 +2264,10 @@ const LANG_DATA = {
     } },
   wbp: { name: 'Warlpiri', native: 'Warlpiri', lat: -22.26, lng: 131.79, // Yuendumu
     words: { water:['ngapa','ŋapa'], fire:['warlu','waɻlu'], sun:['wantajarra','wantadʒaɻa'], moon:['pirli','piɻli'], mother:['ngati','ŋati'], father:['kirda','kiɻda'], eat:['ngarni','ŋaɻni'], drink:['purrami','puɻami'], love:['jaru','dʒaɻu'], heart:['pikirri','pikiɻi'], tree:['watiya','watija'], house:['ngurra','ŋuɻa'], dog:['jarntu','dʒaɳʈu'], cat:['mungalpa','muŋalpa'], hand:['rdaka','ɖaka'], eye:['milpa','milpa'], hello:['palka','palka'], thanks:['ngantitu','ŋantitu'], one:['jinta','dʒinta'], good:['ngumarna','ŋumaɳa'] }},
+  // Pintupi-Luritja — Pama-Nyungan Western Desert (sister to Pitjantjatjara pjt within the Western Desert dialect cluster; the easternmost Western Desert variety, with Luritja being a contact lect with Arrernte aer), ~1K, Australia (Northern Territory — Papunya, Mt Liebig, Kintore Walungurru; small Western Australia border populations); the homeland Pintupi people emerged from the Gibson Desert into Western Desert settlements in the 1950s-60s.
+  // Sources: Ethnologue 27 'piu'; Glottolog pint1250; Hansen & Hansen (1992) Pintupi/Luritja Dictionary.
+  piu: { name: 'Pintupi-Luritja', native: 'Pintupi-Luritja', lat: -23.25, lng: 131.85, // Papunya, Northern Territory
+    words: { water:['kapi','kapi'], fire:['waru','waɻu'], sun:['tjintu','cintu'], moon:['pira','piɻa'], mother:['ngunytju','ŋuɲcu'], father:['mama','mama'], eat:['ngalkuni','ŋalkuni'], drink:['tjikini','cikini'], love:['mukulya','mukulja'], heart:['kurunpa','kuɻunpa'], tree:['punu','punu'], house:['ngura','ŋuɻa'], dog:['papa','papa'], cat:['ngaya','ŋaja'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','palja'], thanks:['palya','palja'], one:['kutju','kucu'], good:['palya','palja'] }},
   // Eastern Arrernte (Mparntwe Arrernte) — Pama-Nyungan Arandic (sister to Western Arrernte/Anmatyerr/Alyawarr/Kaytetye within the Arandic sub-branch; the prestige variety of central Australia's Arandic continuum), ~4K, Australia (Northern Territory — Alice Springs/Mparntwe area, MacDonnell Ranges, Plenty Highway settlements).
   // Sources: Ethnologue 27 'aer'; Glottolog east2375; Wilkins (1989) Mparntwe Arrernte; Henderson & Dobson (1994) Arrernte Picture Dictionary.
   aer: { name: 'Eastern Arrernte', native: 'Mparntwe Arrernte', lat: -23.70, lng: 133.88, // Alice Springs / Mparntwe, NT
@@ -4187,6 +4191,10 @@ const LANG_DATA = {
     words: { water:['mvura','mvuɾa'], fire:['muriro','muɾiɾo'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudʒa'], drink:['kunwa','kunwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['nyumba','ɲumba'], dog:['imbga','imbɡa'], cat:['kiti','kiti'], hand:['chanza','tʃanza'], eye:['ziso','ziso'], hello:['mhoroi','mhoɾoji'], thanks:['ndatenda','ndatenda'], one:['chimwe','tʃimwe'], good:['kanaka','kanaka'] }},
   ote: { name: 'Otomi', native: 'Hñähñu', lat: 20.48, lng: -99.22, // Ixmiquilpan
     words: { water:['dehe','tehe'], fire:['tsibi','tsʼibi'], sun:['hyadi','hjadi'], moon:['zänä','zãnã'], mother:['nänä','nãnã'], father:['tada','tada'], eat:['ñuni','ɲuni'], drink:['tsi','tsi'], love:['mädi','mãdi'], heart:['mui','mui'], tree:['za','za'], house:['ngu','ŋɡu'], dog:['yo','jo'], cat:['mixi','miʃi'], hand:['\'ye','ʔje'], eye:['da','da'], hello:['hatsi','hatsi'], thanks:['jamädi','hamãdi'], one:['\'ra','ʔɾa'], good:['hño','hɲo'] }},
+  // Querétaro Otomi (Hñöñho) — Otomanguean Otomi-Mazahua Otomi (sister to ote Mezquital Otomi within the Otomi macrolanguage; one of the most-vibrant Otomi varieties), ~30K, Mexico (Querétaro state — Amealco de Bonfil, Tolimán, Cadereyta, Ezequiel Montes municipalities).
+  // Sources: Ethnologue 27 'otq'; Glottolog quer1238; Hekking & Andrés de Jesús (1989) Diccionario Hñähñu-Español Querétaro.
+  otq: { name: 'Querétaro Otomi', native: 'Hñöñho', lat: 20.18, lng: -100.14, // Amealco de Bonfil, Querétaro
+    words: { water:['dehe','tehe'], fire:['tsibi','tsʼibi'], sun:['hyadi','hjadi'], moon:['zänä','zãnã'], mother:['mu','mu'], father:['da','da'], eat:['shi','ʃi'], drink:['tsi','tsi'], love:['mädi','mãdi'], heart:['mui','mui'], tree:['za','za'], house:['ngu','ŋɡu'], dog:['yo','jo'], cat:['mishi','miʃi'], hand:['\'ye','ʔje'], eye:['hmi','hmi'], hello:['hä','hã'], thanks:['jamädi','hamãdi'], one:['\'na','ʔna'], good:['hño','hɲo'] }},
   tar: { name: 'Tarahumara', native: 'Rarámuri', lat: 27.75, lng: -107.63, // Creel
     words: { water:['bawí','bawi'], fire:['nahí','nahi'], sun:['rayó','ɾajo'], moon:['mecá','metʃa'], mother:['iyé','ije'], father:['onó','ono'], eat:['ko\'a','koʔa'], drink:['bahí','bahi'], love:['nakí','naki'], heart:['surí','suɾi'], tree:['gokó','ɡoko'], house:['kalí','kali'], dog:['kochí','kotʃi'], cat:['misí','misi'], hand:['sekuá','sekwa'], eye:['pusí','pusi'], hello:['kuira','kuiɾa'], thanks:['matéterabá','mateteɾaba'], one:['bilé','bile'], good:['galá','ɡala'] }},
 
@@ -4614,6 +4622,10 @@ const LANG_DATA = {
     words: { water:['पानी','paːni'], fire:['आगि','aːɡi'], sun:['सूरज','suːrəj'], moon:['चंदा','tʃəndaː'], mother:['दाई','daːi'], father:['ददा','dadaː'], eat:['खाना','kʰaːnaː'], drink:['पीना','piːnaː'], love:['मया','məjaː'], heart:['हिरदा','hirdaː'], tree:['रूख','ruːkʰ'], house:['घर','ɡʱər'], dog:['कुकुर','kukur'], cat:['बिलई','bilai'], hand:['हाथ','haːtʰ'], eye:['आँखी','aːŋkʰi'], hello:['जोहार','dʒoːɦaːr'], thanks:['धन्यवाद','dʱənjəwaːd'], one:['एक','eːk'], good:['बने','bəne'] }},
   mnw: { name: 'Mon', native: 'ဘာသာ မန်', lat: 16.49, lng: 97.62, // Mawlamyine
     words: { water:['ဍာ်','ɗaʔ'], fire:['ပၟတ်','pəmoʔ'], sun:['တ္ၚဲ','tŋoa'], moon:['ဂိတု','kətoa'], mother:['မိ','mi'], father:['အပါ','ʔəpa'], eat:['ဂစုက်','caʔ'], drink:['သုၚ်','soŋ'], love:['ဍေံ','ɗɛm'], heart:['ဗ္ၜေံ','məɓɛm'], tree:['ဆု','sɔ'], house:['သ္ၚိ','heŋ'], dog:['ပ္ၟိၚ်','klɛp'], cat:['ဗ္ဍိုၚ်','ɓɔŋ'], hand:['တဲ','toa'], eye:['မတ်','mɔʔ'], hello:['ပ္ဍဲဂေါဝ်','ɓɔŋ kaow'], thanks:['တၚ်ဂုဏ်','təŋ ɡɔn'], one:['မွဲ','mwoa'], good:['ခိုဟ်','khɔh'] }},
+  // Eastern Bru — Austroasiatic Mon-Khmer Katuic (sister to Western Bru and Khua within the Bru-So sub-branch; Katuic is a major branch of Mon-Khmer alongside Mon, Khmer, and Vietic), ~135K, Vietnam (Quảng Trị, Quảng Bình provinces — Trường Sơn highlands; ~55K Vietnamese Bru) + Laos (Savannakhet, Khammouane provinces — Phin, Sepon districts; ~75K Lao Bru) + Thailand (small populations along Mukdahan border).
+  // Sources: Ethnologue 27 'bru'; Glottolog east2563; Miller & Miller (1996) The Eastern Bru of Vietnam.
+  bru: { name: 'Eastern Bru', native: 'Bruu', lat: 16.55, lng: 105.78, // Sepon (Tchepone), Savannakhet, Laos (Lao Bru heartland)
+    words: { water:['daak','daːk'], fire:['oih','ʔoiʔ'], sun:['mat plei','mat plei'], moon:['kasai','kasai'], mother:['amey','amej'], father:['amung','amuŋ'], eat:['cha','tʃa'], drink:['ngoot','ŋoːt'], love:['hong','hoŋ'], heart:['plong','ploŋ'], tree:['aleng','aleŋ'], house:['dung','duŋ'], dog:['acho','atʃo'], cat:['miew','mieu'], hand:['ati','ati'], eye:['mat','mat'], hello:['te','te'], thanks:['kuhng','kuhŋ'], one:['muoi','muoi'], good:['huom','huom'] }},
   // Eastern Lawa (Lavüa Lavüa) — Mon-Khmer (Palaungic, Eastern — sister to Western Lawa within Lawa cluster), ~17K, Thailand (Mae Hong Son, Chiang Mai — northern hilltribe).
   // Sources: Ethnologue 27 'lwl'; Glottolog east2333; Mitani (1972) Eastern Lawa Phonology.
   lwl: { name: 'Eastern Lawa', native: 'Lavüa', lat: 18.30, lng: 98.05, // Bo Luang, Chiang Mai Province

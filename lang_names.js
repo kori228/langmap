@@ -2401,4 +2401,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED100 = {
+        otq: { en: 'Querétaro Otomi', ja: 'ケレタロ・オトミ語', ko: '케레타로 오토미어', zh: '克雷塔罗奥托米语', yue: '克雷塔羅奧托米語',
+               vi: 'Tiếng Otomi Querétaro', th: 'ภาษาโอโตมีเกเรทาโร', id: 'Bahasa Otomi Querétaro', hi: 'क्वेरेटारो ओतोमी',
+               de: 'Querétaro-Otomi', fr: 'Otomi de Querétaro', it: 'Otomi di Querétaro',
+               es_eu: 'Otomí de Querétaro', es_mx: 'Otomí de Querétaro', pt_eu: 'Otomi de Querétaro', pt_br: 'Otomi de Querétaro',
+               ru: 'Керетарское отоми', uk: 'Керетарська отомі', ar: 'الأوتومي الكيريتارية', he: 'אוטומי קרטארו', sw: 'Kiotomi cha Querétaro' },
+        piu: { en: 'Pintupi-Luritja', ja: 'ピントゥピ・ルリチャ語', ko: '핀투피-루리차어', zh: '品图皮-卢里查语', yue: '品圖皮-盧里查語',
+               vi: 'Tiếng Pintupi-Luritja', th: 'ภาษาปินตูปี-ลูริชา', id: 'Bahasa Pintupi-Luritja', hi: 'पिंटुपी-लुरीचा',
+               de: 'Pintupi-Luritja', fr: 'Pintupi-Luritja', it: 'Pintupi-Luritja',
+               es_eu: 'Pintupi-Luritja', es_mx: 'Pintupi-Luritja', pt_eu: 'Pintupi-Luritja', pt_br: 'Pintupi-Luritja',
+               ru: 'Пинтупи-Луричья', uk: 'Пінтупі-Лурича', ar: 'البنتوبي-لوريتجا', he: "פינטופי-לוריטג'ה", sw: 'Kipintupi-Luritja' },
+        bru: { en: 'Eastern Bru', ja: '東部ブル語', ko: '동부 브루어', zh: '东部布鲁语', yue: '東部布魯語',
+               vi: 'Tiếng Bru Đông', th: 'ภาษาบรูตะวันออก', id: 'Bahasa Bru Timur', hi: 'पूर्वी ब्रू',
+               de: 'Ost-Bru', fr: 'Bru oriental', it: 'Bru orientale',
+               es_eu: 'Bru oriental', es_mx: 'Bru oriental', pt_eu: 'Bru oriental', pt_br: 'Bru oriental',
+               ru: 'Восточный бру', uk: 'Східна бру', ar: 'البرو الشرقية', he: 'ברו מזרחית', sw: 'Kibru cha Mashariki' },
+    };
+    for (const code of Object.keys(ADDED100)) {
+        for (const ui of Object.keys(ADDED100[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED100[code][ui];
+            }
+        }
+    }
 })();
