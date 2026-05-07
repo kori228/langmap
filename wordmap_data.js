@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 742 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 745 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -575,6 +575,10 @@ const LANG_DATA = {
     words: { water:['ᠤᠰᠤ','usu'], fire:['ᠭᠠᠯ','ɡɑl'], sun:['ᠨᠠᠷᠠ','nɑrɑ'], moon:['ᠰᠠᠷᠠ','sɑrɑ'], mother:['ᠡᠬᠡ','eχe'], father:['ᠠᠪᠤ','ɑβu'], eat:['ᠢᠳᠡᠬᠦ','ideχʉ'], drink:['ᠤᠤᠬᠤ','uːχu'], love:['ᠬᠠᠢᠷ᠎ᠠ','χɑir'], heart:['ᠵᠢᠷᠦᠬᠡ','dʒirʉχe'], tree:['ᠮᠣᠳᠤ','mɔdu'], house:['ᠭᠡᠷ','ɡer'], dog:['ᠨᠣᠬᠠᠢ','nɔχɑi'], cat:['ᠮᠤᠤᠷ','muːr'], hand:['ᠭᠠᠷ','ɡɑr'], eye:['ᠨᠢᠳᠦ','nidʉ'], hello:['ᠰᠠᠢᠨ ᠪᠠᠢᠨ᠎ᠠ','sɑin bɑinɑ'], thanks:['ᠪᠠᠶᠠᠷᠯᠠᠯ᠎ᠠ','bɑjɑrlɑlɑ'], one:['ᠨᠢᠭᠡ','niɡe'], good:['ᠰᠠᠢᠨ','sɑin'] }},
   mnc: { name: 'Manchu', native: 'ᠮᠠᠨᠵᡠ', lat: 45.75, lng: 126.65,
     words: { water:['ᠮᡠᡴᡝ','mukə'], fire:['ᡨᡠᠸᠠ','tuwa'], sun:['ᡧᡠᠨ','ʃun'], moon:['ᠪᡳᠶᠠ','bija'], mother:['ᡝᠨᡳᠶᡝ','ənijə'], father:['ᠠᠮᠠ','ama'], eat:['ᠵᡝᠮᠪᡳ','dʒəmbi'], drink:['ᠣᠮᡳᠪᡳ','omibi'], love:['ᡥᠠᡳᡵᠠᠮᠪᡳ','xairambi'], heart:['ᠨᡳᠶᠠᠮᠠᠨ','nijaman'], tree:['ᠮᠣᠣ','moː'], house:['ᠪᠣᠣ','boː'], dog:['ᡳᠨᡩᠠᡥᡡᠨ','indaxɯːn'], cat:['ᡴᡝᠰᡳᡴᡝ','kəsikə'], hand:['ᡤᠠᠯᠠ','ɡala'], eye:['ᠶᠠᠰᠠ','jasa'], hello:['ᠰᡳ ᠰᠠᡳᠨ','si sain'], thanks:['ᠪᠠᠨᡳᡥᠠ','banixa'], one:['ᠡᠮᡠ','əmu'], good:['ᠰᠠᡳᠨ','sain'] }},
+  // Xibe (Sibe) — Tungusic Manchu-Nanai (sister/dialect of Manchu, mutually intelligible to varying degrees), ~30K, Xinjiang Ili Kazakh AP. Only living Manchu-related language with active literacy.
+  // Sources: Ethnologue 27 'sjo'; Glottolog xibe1242; Norman (1974) The Xibe People; Jin (2000) Xibe Yu Yufa.
+  sjo: { name: 'Xibe', native: 'ᠰᡞᠪᡝ ᡤᡞᠰᡠᠨ', lat: 43.93, lng: 81.32, // Qapqal Xibe AP, Yili, Xinjiang
+    words: { water:['ᠮᡠᡴᡝ','muku'], fire:['ᡨᡠᠸᠠ','tuwa'], sun:['ᠰᡠᠨ','sun'], moon:['ᠪᡳᠶᠠ','bija'], mother:['ᡝᠨᡞᠶᡝ','ənije'], father:['ᠠᠮᠠ','ama'], eat:['ᠵᡝᠮᠪᡞ','dʒəmbi'], drink:['ᠣᠮᡳᠪᡞ','omibi'], love:['ᠴᡳᠯᡨᡠᠮᠪᡳ','tʃiltumbi'], heart:['ᠨᡳᠶᠠᠮᠠᠨ','nijaman'], tree:['ᠮᠣᠯᠣ','molo'], house:['ᠪᠣᠣ','boː'], dog:['ᠨᡳᠨᠳᠠᡥᡡᠨ','nindaxun'], cat:['ᡴᡝᠰᡳᡴᡝ','kəsikə'], hand:['ᡤᠠᠯᠠ','ɡala'], eye:['ᠶᠠᠰᠠ','jasa'], hello:['ᠨᡳᠩᡤᡝ ᠰᠠᡳᠨ','niŋɡe sain'], thanks:['ᠪᠠᠨᡳᡥᠠ','banixa'], one:['ᡝᠮᡠ','əmu'], good:['ᠰᠠᡳᠨ','sain'] }},
 
   ar_eg: { name: 'Arabic (Egyptian)', native: 'مصري', lat: 30.04, lng: 31.24,
     words: { water:['ميّه','majːa'], fire:['نار','naːɾ'], sun:['شمس','ʃams'], moon:['قمر','ʔamaɾ'], mother:['أم','ʔomm'], father:['أب','ʔabb'], eat:['ياكل','jaːkol'], drink:['يشرب','jiʃɾab'], love:['حب','ħobb'], heart:['قلب','ʔalb'], tree:['شجرة','ʃaɡaɾa'], house:['بيت','beːt'], dog:['كلب','kalb'], cat:['قطة','ʔotˤtˤa'], hand:['إيد','ʔiːd'], eye:['عين','ʕeːn'], hello:['أهلاً','ʔahlan'], thanks:['شكراً','ʃokɾan'], one:['واحد','waːħed'], good:['كويّس','kwajːes'] }},
@@ -1631,6 +1635,10 @@ const LANG_DATA = {
     words: { water:['ᓂᐱᕀ','nipij'], fire:['ᐃᐢᑯᑌᐤ','iskotew'], sun:['ᐱᓯᒼ','piːsim'], moon:['ᑎᐱᐢᑲᐍᐱᓯᒼ','tipiskaːwi piːsim'], mother:['ᓂᑲᐎᕀ','nikaːwij'], father:['ᓄᐦᑖᐎᕀ','noːhtaːwij'], eat:['ᒨᐍᐤ','miːtʃiw'], drink:['ᒥᓂᐦᐠᐌᐤ','minihkweːw'], love:['ᓵᑭᐦᐃᐍᐏᐣ','saːkihiweːwin'], heart:['ᒥᑌᐦ','miteːh'], tree:['ᒥᐢᑎᐠ','mistik'], house:['ᐗᐢᑲᐦᐃᑲᐣ','waːskahikan'], dog:['ᐊᑎᒼ','atim'], cat:['ᒥᓅᐢ','minoːs'], hand:['ᒥᒋᒋᕀ','mitʃihtʃij'], eye:['ᒥᐢᑮᓯᐠ','miskiːsik'], hello:['ᑕᓂᓯ','taːnisi'], thanks:['ᑭᓇᓈᐢᑯᒥᑎᐣ','kinanaːskomitin'], one:['ᐯᔭᐠ','peːjak'], good:['ᒥᔫ','mijo'] }},
   oj: { name: 'Ojibwe', native: 'Anishinaabemowin', lat: 46.50, lng: -84.34, // Sault Ste. Marie
     words: { water:['nibi','nibi'], fire:['ishkode','iʃkode'], sun:['giizis','ɡiːzis'], moon:['dibik-giizis','dibik ɡiːzis'], mother:['nimaamaa','nimaːmaː'], father:['indede','indede'], eat:['wiisini','wiːsini'], drink:['minikwe','minikwe'], love:['zaagi\'iwewin','zaːɡiʔiweːwin'], heart:['ode\'','odeʔ'], tree:['mitig','mitiɡ'], house:['wiigiwaam','wiːɡiwaːm'], dog:['animosh','animoʃ'], cat:['gaazhagens','ɡaːʒaɡens'], hand:['ninij','ninidʒ'], eye:['oshkiinzhig','oʃkiːnʒiɡ'], hello:['boozhoo','boːʒoː'], thanks:['miigwech','miːɡʷetʃ'], one:['bezhig','beʒiɡ'], good:['mino','mino'] }},
+  // Atikamekw (Atikamekw Nehiromowin) — Algonquian (Cree branch, distinct R-dialect), ~6K-7K, Quebec (Mauricie region — Manawan, Wemotaci, Opitciwan).
+  // Sources: Ethnologue 27 'atj'; Glottolog atik1240; Atikamekw Conseil de la Nation; Béland (1978) Phonologie atikamekw.
+  atj: { name: 'Atikamekw', native: 'Atikamekw Nehiromowin', lat: 47.40, lng: -73.97, // Wemotaci, Mauricie, Quebec
+    words: { water:['nipi','nipi'], fire:['ickoteo','iʃkoteo'], sun:['pisim','pisim'], moon:['tipikaw pisim','tipikaw pisim'], mother:['okawi','okawi'], father:['ohi','ohi'], eat:['mitikwa','mitikwa'], drink:['minikwa','minikwa'], love:['sakitewin','sakitewin'], heart:['mite','mite'], tree:['mihtikw','mihtikw'], house:['miciwap','mitʃiwap'], dog:['atim','atim'], cat:['minoc','minotʃ'], hand:['kicikon','kitʃikon'], eye:['mickisikw','mitʃkisikʷ'], hello:['kwei','kwej'], thanks:['mikwetc','mikwetʃ'], one:['peikw','pejkʷ'], good:['miloci','milotʃi'] }},
   // Mi'kmaq — Algic, Atlantic Canada + Maine, ~7K speakers. Has its own historical syllabary.
   // Sources: Ethnologue 27 'mic'; Glottolog mikm1235; Inglis (1991) Mi'kmaq Online Dictionary.
   mic: { name: "Mi'kmaq", native: "Mi'kmawi'simk", lat: 46.10, lng: -64.78, // Eskasoni / Cape Breton
@@ -2178,6 +2186,10 @@ const LANG_DATA = {
   // Niger-Congo (Mande, Liberia/Guinea)
   kpe: { name: 'Kpelle', native: 'Kpɛlɛɛ', lat: 7.07, lng: -9.50, // Liberian-Guinean border
     words: { water:['ya','ja'], fire:['kɔ̃a','kõa'], sun:['pelei','pelei'], moon:['kɔŋɔ','kɔŋɔ'], mother:['ngaa','ŋaː'], father:['laai','laai'], eat:['nyii','ɲiː'], drink:['yiti','jiti'], love:['gboma','ɡboma'], heart:['lii','liː'], tree:['woo','woː'], house:['pere','pere'], dog:['nyila','ɲila'], cat:['gbele','ɡbele'], hand:['yee','jeː'], eye:['ŋɛ','ŋɛ'], hello:['halee','haleː'], thanks:['balika','balika'], one:['taa','taː'], good:['nyaŋa','ɲaŋa'] }},
+  // Bassa — Niger-Congo (Kru, Eastern), ~600K, Liberia (coastal Bassa County, Grand Cape Mount). Has indigenous Vah script (1900s, distinctly Kru).
+  // Sources: Ethnologue 27 'bsq'; Glottolog bass1262; Hobley (1965) Bassa-English Dictionary; Vah script documented 1907.
+  bsq: { name: 'Bassa', native: 'Bassa wuɖu', lat: 6.40, lng: -10.10, // Buchanan, Bassa County, Liberia
+    words: { water:['ne','ne'], fire:['so','so'], sun:['plɔ','plɔ'], moon:['hwɔɖɔ','hʷɔɖɔ'], mother:['mãɖe','mãɖe'], father:['gbe','ɡbe'], eat:['gbɔ̃a','ɡbɔ̃a'], drink:['mɔ̃e','mɔ̃e'], love:['wɛ̃ɖaa','wɛ̃ɖaː'], heart:['kẽ','kẽ'], tree:['tu','tu'], house:['kõ','kõ'], dog:['gbo','ɡbo'], cat:['blete','blete'], hand:['kɔ','kɔ'], eye:['di','di'], hello:['nyɔɔnpe','ɲɔːnpe'], thanks:['mɔãĩ','mɔãĩ'], one:['ɖaa','ɖaː'], good:['nõ','nõ'] }},
   // Bantu (Zambia, Lozi)
   loz: { name: 'Lozi', native: 'siLozi', lat: -15.25, lng: 23.14, // Mongu
     words: { water:['mezi','mezi'], fire:['mulilo','mulilo'], sun:['lizazi','lizazi'], moon:['kweli','kweli'], mother:['ma','ma'], father:['ndate','ndate'], eat:['kuca','kut͡sa'], drink:['kunwa','kunwa'], love:['lilato','lilato'], heart:['pilu','pilu'], tree:['kota','kota'], house:['ndu','ndu'], dog:['nja','ndʒa'], cat:['kaze','kaze'], hand:['lizoho','lizoho'], eye:['liito','liːto'], hello:['eni sha','ɛni ʃa'], thanks:['nitumezi','nitumezi'], one:['nyinwi','ɲiŋʷi'], good:['nde','nde'] }},

@@ -1185,4 +1185,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED44 = {
+        sjo: { en: 'Xibe', ja: 'シボ語', ko: '시보어', zh: '锡伯语', yue: '錫伯語',
+               vi: 'Tiếng Tích Bá', th: 'ภาษาซีเป่อ', id: 'Bahasa Xibe', hi: 'शिबे',
+               de: 'Sibo', fr: 'Sibe', it: 'Sibe',
+               es_eu: 'Sibe', es_mx: 'Sibe', pt_eu: 'Sibe', pt_br: 'Sibe',
+               ru: 'Сибинский', uk: 'Сибінська', ar: 'الشيبية', he: 'שיבית', sw: 'Kixibe' },
+        atj: { en: 'Atikamekw', ja: 'アティカメク語', ko: '아티카멕어', zh: '阿蒂卡梅克语', yue: '阿蒂卡梅克語',
+               vi: 'Tiếng Atikamekw', th: 'ภาษาอาทิคาเมก', id: 'Bahasa Atikamekw', hi: 'अतिकामेक्व',
+               de: 'Atikamekw', fr: 'Atikamekw', it: 'Atikamekw',
+               es_eu: 'Atikamekw', es_mx: 'Atikamekw', pt_eu: 'Atikamekw', pt_br: 'Atikamekw',
+               ru: 'Атикамеки', uk: 'Атикамек', ar: 'الأتيكامكوية', he: 'אטיקמקווית', sw: 'Kiatikamekw' },
+        bsq: { en: 'Bassa', ja: 'バサ語', ko: '바사어', zh: '巴萨语', yue: '巴薩語',
+               vi: 'Tiếng Bassa', th: 'ภาษาบาซา', id: 'Bahasa Bassa', hi: 'बासा',
+               de: 'Bassa', fr: 'Bassa', it: 'Bassa',
+               es_eu: 'Bassa', es_mx: 'Bassa', pt_eu: 'Bassa', pt_br: 'Bassa',
+               ru: 'Басса', uk: 'Басса', ar: 'الباسا', he: 'בסה', sw: 'Kibassa' },
+    };
+    for (const code of Object.keys(ADDED44)) {
+        for (const ui of Object.keys(ADDED44[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED44[code][ui];
+            }
+        }
+    }
 })();
