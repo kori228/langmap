@@ -479,9 +479,34 @@ const LANG_DATA = {
     words: { water:['too','toː'], fire:['konh','konh'], sun:['so','so'], moon:['oolts\'enh','ooltsʼenh'], mother:['enaa','enaː'], father:['etaa','etaː'], eat:['ghen','ɣen'], drink:['don','don'], love:['k\'oonejee','kʼooneʒeː'], heart:['heł','heɬ'], tree:['k\'eyh','kʼejh'], house:['kkun','kːun'], dog:['łeek','ɬeːk'], cat:['dotonh','dotonh'], hand:['ela','ela'], eye:['nełtonh','neɬtonh'], hello:['enaa basee\'','enaː baseːʔ'], thanks:['baasee\'','baːseːʔ'], one:['łeek\'eyh','ɬeːkʼejh'], good:['nezoonh','nezoːnh'] }},
   haw: { name: 'Hawaiian', native: 'ʻŌlelo Hawaiʻi', lat: 21.31, lng: -157.86, // Honolulu
     words: { water:['wai','wai'], fire:['ahi','ahi'], sun:['lā','laː'], moon:['mahina','mahina'], mother:['makuahine','makuahine'], father:['makuakāne','makuakaːne'], eat:['ʻai','ʔai'], drink:['inu','inu'], love:['aloha','aloha'], heart:['puʻuwai','puʔuwai'], tree:['lāʻau','laːʔau'], house:['hale','hale'], dog:['ʻīlio','ʔiːlio'], cat:['pōpoki','poːpoki'], hand:['lima','lima'], eye:['maka','maka'], hello:['aloha','aloha'], thanks:['mahalo','mahalo'], one:['ʻekahi','ʔekahi'], good:['maikaʻi','maikaʔi'] },
+    // Audit Task 200: full per-cell wordEvidence for source-checked
+    // row. Sources: Pukui & Elbert (1986) Hawaiian Dictionary
+    // (wehewehe.org); Elbert & Pukui (1979) Hawaiian Grammar for
+    // citation-form conventions; Schütz (1994) Voices of Eden for
+    // historical phonology. ʻokina /ʔ/ is a phonemic glottal stop;
+    // kahakō macron marks long vowel /Vː/. Hawaiian has only
+    // 8 consonants and 5 vowel qualities — minimal phonological inventory.
     wordEvidence: {
-      love:  { evidence: 'direct', note: 'lexical overlap with hello: aloha encompasses love, affection, greeting, and farewell (Hawaiian cultural concept)' },
-      hello: { evidence: 'direct', note: 'lexical overlap with love: aloha is the canonical multi-purpose greeting/love expression' },
+      water:  { evidence: 'direct', source: 'Pukui & Elbert — wai (n.) "water, liquid (any non-saltwater)"; cognate Proto-Polynesian *wai' },
+      fire:   { evidence: 'direct', source: 'Pukui & Elbert — ahi (n.) "fire"; cognate PPn *afi (Hawaiian regular f→h sound change)' },
+      sun:    { evidence: 'direct', source: 'Pukui & Elbert — lā (n.) "sun, day"; long vowel /aː/; cognate PPn *laʔaa', note: 'covers both "sun" and "day" (calendar) per WORD_LIST.definition.sun common Polynesian polysemy' },
+      moon:   { evidence: 'direct', source: 'Pukui & Elbert — mahina (n.) "moon, month"; cognate PPn *masina (Hawaiian s→h)', note: 'also denotes lunar month, as commonly across Polynesian languages' },
+      mother: { evidence: 'direct', source: 'Pukui & Elbert — makuahine (n.) "mother"; compound makua "parent" + hine "female"', formType: 'compound', note: 'kinship term; informal māmā also widely used in modern colloquial Hawaiian (English-influenced)' },
+      father: { evidence: 'direct', source: 'Pukui & Elbert — makua kāne (n.) "father"; compound makua "parent" + kāne "male"', formType: 'compound', note: 'parallel to makuahine; informal pāpā also common in modern colloquial use' },
+      eat:    { evidence: 'direct', source: 'Pukui & Elbert — ʻai (vt.) "to eat, food"; both verb and noun; ʻokina /ʔ/ initial (cognate PPn *kai with regular k→ʔ)' },
+      drink:  { evidence: 'direct', source: 'Pukui & Elbert — inu (vt.) "to drink"; cognate PPn *inu', note: 'no initial ʻokina (contrast ʻai); reflects PPn vowel-initial *inu' },
+      love:   { evidence: 'direct', source: 'Pukui & Elbert — aloha (n./v./interj.) "love, affection, mercy, greeting, farewell"; the central concept of Hawaiian cultural philosophy', note: 'lexical overlap with hello: aloha encompasses love, affection, greeting, and farewell (Hawaiian cultural concept)' },
+      heart:  { evidence: 'direct', source: 'Pukui & Elbert — puʻuwai (n.) "heart" (anatomical and emotional); compound puʻu "hill, mound" + wai "water"', formType: 'compound', note: 'literal: "water-hill" — descriptive of the cardiac mound; both anatomical and emotional senses per WORD_LIST.definition.heart' },
+      tree:   { evidence: 'direct', source: 'Pukui & Elbert — lāʻau (n.) "tree, plant, wood, timber"; compound lā "long object" + ʻau "stem"', formType: 'compound', note: 'broad term covering trees, plants, and wood — matches WORD_LIST.definition.tree default scope' },
+      house:  { evidence: 'direct', source: 'Pukui & Elbert — hale (n.) "house, dwelling, building"; cognate PPn *fale' },
+      dog:    { evidence: 'direct', source: 'Pukui & Elbert — ʻīlio (n.) "dog"; long ī /iː/; PPn *ʔuli or distinct local development', note: 'native Hawaiian poi dog now extinct; modern usage covers all dogs' },
+      cat:    { evidence: 'direct', source: 'Pukui & Elbert — pōpoki (n.) "cat"; long ō /oː/; etymology unclear (possibly onomatopoeic from English "poor pussy" per Pukui & Elbert)', note: 'cats introduced post-contact (late 18th c.); pōpoki adopted as a uniquely Hawaiian-formed term rather than direct English borrowing' },
+      hand:   { evidence: 'direct', source: 'Pukui & Elbert — lima (n.) "hand, arm, sleeve, also: five"; cognate PPn *lima (also "5", from finger-counting)', note: 'lima also means "five" — pan-Polynesian polysemy from finger-based numeration' },
+      eye:    { evidence: 'direct', source: 'Pukui & Elbert — maka (n.) "eye, face, point, edge"; cognate PPn *mata (Hawaiian regular t→k)', note: 'broad term — eye, face, point, edge — sun (mata o ka lā "eye of the sun"). The "eye" sense is the WORD_LIST.definition default' },
+      hello:  { evidence: 'direct', source: 'Pukui & Elbert — aloha (interj.) "greetings, love"; same lexeme as love entry', note: 'lexical overlap with love: aloha is the canonical multi-purpose greeting/love expression' },
+      thanks: { evidence: 'direct', source: 'Pukui & Elbert — mahalo (n./v.) "thanks, gratitude, admiration, praise"; the standard expression of thanks', formType: 'thanks-formula', note: 'extended form mahalo nui loa "many thanks"; widely adopted into Hawaii English and tourism vocabulary' },
+      one:    { evidence: 'direct', source: 'Pukui & Elbert — ʻekahi (num.) "one"; ʻe- prefix marks numerals 1-9 in counting paradigm; kahi "one, single"', formType: 'inflected-form', note: 'bare kahi also used; ʻekahi is the citation counting form per Elbert & Pukui Grammar §3.5' },
+      good:   { evidence: 'direct', source: 'Pukui & Elbert — maikaʻi (adj.) "good, fine, well, beautiful"; medial ʻokina /ʔ/' },
     } },
   mi: { name: 'Māori', native: 'Te Reo Māori', lat: -36.85, lng: 174.76, // Auckland
     words: { water:['wai','wai'], fire:['ahi','ahi'], sun:['rā','ɾaː'], moon:['marama','maɾama'], mother:['whaea','ɸaea'], father:['matua','matua'], eat:['kai','kai'], drink:['inu','inu'], love:['aroha','aɾoha'], heart:['ngākau','ŋaːkau'], tree:['rākau','ɾaːkau'], house:['whare','ɸaɾe'], dog:['kurī','kuɾiː'], cat:['ngeru','ŋeɾu'], hand:['ringa','ɾiŋa'], eye:['kanohi','kanohi'], hello:['kia ora','kia oɾa'], thanks:['ngā mihi','ŋaː mihi'], one:['tahi','tahi'], good:['pai','pai'] }},
@@ -1038,9 +1063,66 @@ const LANG_DATA = {
     words: { water:['ᐃᒪᖅ','imaq'], fire:['ᐃᑯᒪ','ikuma'], sun:['ᓯᕿᓂᖅ','siqiniq'], moon:['ᑕᖅᑭᖅ','taqqiq'], mother:['ᐊᓈᓇ','anaːna'], father:['ᐊᑖᑕ','ataːta'], eat:['ᓂᕆ-','niɣi'], drink:['ᐃᒥᖅ-','imiq'], love:['ᓇᒡᓕᒍᓱᒃ-','naɡliɡusuk'], heart:['ᐆᒻᒪᑦ','uːmːat'], tree:['ᓇᐹᖅᑐᖅ','napaːqtuq'], house:['ᐃᒡᓗ','iɡlu'], dog:['ᕿᒻᒥᖅ','qimːiq'], cat:['ᐱᓯᒃᑎ','pisikti'], hand:['ᐊᒡᒑᖅ','aɡɡaːq'], eye:['ᐃᔨ','iji'], hello:['ᐊᐃ','aj'], thanks:['ᓇᑯᕐᒦᒃ','nakuʁmiːk'], one:['ᐊᑕᐅᓯᖅ','atausiq'], good:['ᐱᐅᔪᖅ','piujuq'] }},
   // === Historical & Ancient Languages ===
   la: { name: 'Latin', native: 'Latina', lat: 41.90, lng: 12.50,
-    words: { water:['aqua','akʷa'], fire:['ignis','iŋnis'], sun:['sōl','soːl'], moon:['lūna','luːna'], mother:['māter','maːter'], father:['pater','pater'], eat:['edere','edere'], drink:['bibere','bibere'], love:['amor','amor'], heart:['cor','kor'], tree:['arbor','arbor'], house:['domus','domʊs'], dog:['canis','kanis'], cat:['fēlēs','feːleːs'], hand:['manus','manʊs'], eye:['oculus','okulʊs'], hello:['salvē','salweː'], thanks:['grātiās','ɡraːtiaːs'], one:['ūnus','uːnʊs'], good:['bonus','bonʊs'] }},
+    words: { water:['aqua','akʷa'], fire:['ignis','iŋnis'], sun:['sōl','soːl'], moon:['lūna','luːna'], mother:['māter','maːter'], father:['pater','pater'], eat:['edere','edere'], drink:['bibere','bibere'], love:['amor','amor'], heart:['cor','kor'], tree:['arbor','arbor'], house:['domus','domʊs'], dog:['canis','kanis'], cat:['fēlēs','feːleːs'], hand:['manus','manʊs'], eye:['oculus','okulʊs'], hello:['salvē','salweː'], thanks:['grātiās','ɡraːtiaːs'], one:['ūnus','uːnʊs'], good:['bonus','bonʊs'] },
+    // Audit Task 200: full per-cell wordEvidence for source-checked
+    // row. Sources: Lewis & Short (1879) A Latin Dictionary for orthography
+    // and gloss; Allen (1965) Vox Latina for Classical Latin pronunciation;
+    // Wiktionary Latin entries (cross-referenced with L&S) for citation forms.
+    // IPA values reflect Classical Latin (Late Republic to early Empire);
+    // long vowels marked with macron orthographically and ː phonetically.
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Lewis & Short — aqua, -ae f. "water"; nominative singular citation form (1st declension)' },
+      fire:   { evidence: 'direct', source: 'Lewis & Short — ignis, -is m. "fire"; nominative singular (3rd declension i-stem)', note: 'IPA /iŋnis/ reflects assimilation of /gn/ → [ŋn] per Allen Vox Latina §III' },
+      sun:    { evidence: 'direct', source: 'Lewis & Short — sōl, sōlis m. "the sun"; nominative singular (3rd declension monosyllable, long ō)', formType: 'inflected-form' },
+      moon:   { evidence: 'direct', source: 'Lewis & Short — lūna, -ae f. "the moon"; nominative singular (1st declension)' },
+      mother: { evidence: 'direct', source: 'Lewis & Short — māter, mātris f. "mother"; nominative singular (3rd declension)', formType: 'inflected-form' },
+      father: { evidence: 'direct', source: 'Lewis & Short — pater, patris m. "father"; nominative singular (3rd declension; cognate with mātēr)', formType: 'inflected-form' },
+      eat:    { evidence: 'direct', source: 'Lewis & Short — edō, edere "to eat"; present infinitive citation form (3rd conjugation)', formType: 'inflected-form', note: 'Latin verbs cited by present infinitive per dictionary convention; 1st-singular present indicative is edō' },
+      drink:  { evidence: 'direct', source: 'Lewis & Short — bibō, bibere "to drink"; present infinitive (3rd conjugation, reduplicated stem from PIE *peh3-)', formType: 'inflected-form' },
+      love:   { evidence: 'direct', source: 'Lewis & Short — amor, amōris m. "love, affection"; nominative singular noun citation', note: 'concept default per WORD_LIST.definition: emotional/affective love (noun); the verb amō, amāre is also widely attested' },
+      heart:  { evidence: 'direct', source: 'Lewis & Short — cor, cordis n. "heart" (anatomical and emotional/seat-of-mind senses); nominative singular (3rd declension neuter)', note: 'covers both emotional (sedes anim) and anatomical senses per WORD_LIST.definition.heart default' },
+      tree:   { evidence: 'direct', source: 'Lewis & Short — arbor, arboris f. "tree"; nominative singular (3rd declension)' },
+      house:  { evidence: 'direct', source: 'Lewis & Short — domus, -ūs f. "house, dwelling"; nominative singular (4th declension irregular, also genitive -ī)' },
+      dog:    { evidence: 'direct', source: 'Lewis & Short — canis, -is c. "dog" (common gender); nominative singular (3rd declension)' },
+      cat:    { evidence: 'direct', source: 'Lewis & Short — fēlēs (also fēlis), -is f. "cat, marten, polecat"; nominative singular (3rd declension)', note: 'fēlēs in Classical period denoted any small carnivore including domestic cat (introduced to Rome late Republic)' },
+      hand:   { evidence: 'direct', source: 'Lewis & Short — manus, -ūs f. "hand"; nominative singular (4th declension feminine)' },
+      eye:    { evidence: 'direct', source: 'Lewis & Short — oculus, -ī m. "eye"; nominative singular (2nd declension); diminutive of *oqʷ-)' },
+      hello:  { evidence: 'direct', source: 'Lewis & Short — salvē "hail!, greetings!"; 2nd-singular imperative of salveō "to be in good health"', formType: 'greeting-formula', note: 'standard Roman greeting; plural form salvēte for multiple addressees' },
+      thanks: { evidence: 'direct', source: 'Lewis & Short — grātiās agere "to give thanks"; grātiās is accusative plural of grātia "favor, gratitude"', formType: 'thanks-formula', note: 'short form grātiās is the conventional dictionary citation for "thanks"; full phrase grātiās tibi agō "I give you thanks"' },
+      one:    { evidence: 'direct', source: 'Lewis & Short — ūnus, -a, -um "one"; masculine nominative singular citation form (irregular pronominal declension)', formType: 'inflected-form' },
+      good:   { evidence: 'direct', source: 'Lewis & Short — bonus, -a, -um "good"; masculine nominative singular (1st/2nd declension adjective; suppletive comparative melior)', formType: 'inflected-form' },
+    } },
   el_grc: { name: 'Ancient Greek', native: 'Ἑλληνική', lat: 37.97, lng: 23.73,
-    words: { water:['ὕδωρ','hýdɔːr'], fire:['πῦρ','pŷːr'], sun:['ἥλιος','hɛ̌ːlios'], moon:['σελήνη','selɛ̌ːnɛː'], mother:['μήτηρ','mɛ̌ːtɛːr'], father:['πατήρ','patɛ̌ːr'], eat:['ἐσθίειν','estʰíeːn'], drink:['πίνειν','píneːn'], love:['ἔρως','érɔːs'], heart:['καρδία','kardía'], tree:['δένδρον','déndron'], house:['οἶκος','oîkos'], dog:['κύων','kýɔːn'], cat:['αἴλουρος','aíluːros'], hand:['χείρ','kʰéːr'], eye:['ὀφθαλμός','optʰalmós'], hello:['χαῖρε','kʰâire'], thanks:['εὐχαριστῶ','eukʰaristɔ̂ː'], one:['εἷς','hêːs'], good:['ἀγαθός','aɡatʰós'] }},
+    words: { water:['ὕδωρ','hýdɔːr'], fire:['πῦρ','pŷːr'], sun:['ἥλιος','hɛ̌ːlios'], moon:['σελήνη','selɛ̌ːnɛː'], mother:['μήτηρ','mɛ̌ːtɛːr'], father:['πατήρ','patɛ̌ːr'], eat:['ἐσθίειν','estʰíeːn'], drink:['πίνειν','píneːn'], love:['ἔρως','érɔːs'], heart:['καρδία','kardía'], tree:['δένδρον','déndron'], house:['οἶκος','oîkos'], dog:['κύων','kýɔːn'], cat:['αἴλουρος','aíluːros'], hand:['χείρ','kʰéːr'], eye:['ὀφθαλμός','optʰalmós'], hello:['χαῖρε','kʰâire'], thanks:['εὐχαριστῶ','eukʰaristɔ̂ː'], one:['εἷς','hêːs'], good:['ἀγαθός','aɡatʰós'] },
+    // Audit Task 200: full per-cell wordEvidence for source-checked
+    // row. Sources: Liddell-Scott-Jones (LSJ) Greek-English Lexicon
+    // (lsj.gr) for Attic/Classical citation forms; Smyth (1920) Greek
+    // Grammar §§28-39 for pitch accent and §§102-180 for declensions;
+    // Allen (1987) Vox Graeca for Classical Attic phonology. IPA values
+    // reflect Classical Attic of the 5th-4th c. BCE (rough breathing /h/
+    // preserved; circumflex realised as long-falling pitch).
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'LSJ — ὕδωρ, ὕδατος (n.) "water"; nominative singular (3rd declension r-stem)', formType: 'inflected-form' },
+      fire:   { evidence: 'direct', source: 'LSJ — πῦρ, πυρός (n.) "fire"; nominative singular (3rd declension r-stem; circumflex on long ῡ)', formType: 'inflected-form' },
+      sun:    { evidence: 'direct', source: 'LSJ — ἥλιος, -ου (m.) "the sun"; nominative singular (2nd declension); the sun-god Helios', formType: 'inflected-form' },
+      moon:   { evidence: 'direct', source: 'LSJ — σελήνη, -ης (f.) "the moon"; nominative singular (1st declension; from σέλας "brightness")', formType: 'inflected-form' },
+      mother: { evidence: 'direct', source: 'LSJ — μήτηρ, μητρός (f.) "mother"; nominative singular (3rd declension r-stem; cognate with Latin māter)', formType: 'inflected-form' },
+      father: { evidence: 'direct', source: 'LSJ — πατήρ, πατρός (m.) "father"; nominative singular (3rd declension r-stem; parallel μήτηρ)', formType: 'inflected-form' },
+      eat:    { evidence: 'direct', source: 'LSJ — ἐσθίω "eat"; present infinitive ἐσθίειν (suppletive paradigm with aorist ἔφαγον)', formType: 'inflected-form', note: 'Greek verbs cited by 1st-singular present indicative ἐσθίω in lexica; infinitive given here for consistency with Latin row' },
+      drink:  { evidence: 'direct', source: 'LSJ — πίνω "drink"; present infinitive πίνειν (root *peh3- shared with Latin bibere)', formType: 'inflected-form' },
+      love:   { evidence: 'direct', source: 'LSJ — ἔρως, ἔρωτος (m.) "love, desire (esp. erotic)"; nominative singular (3rd declension)', formType: 'inflected-form', note: 'Greek distinguishes ἔρως (erotic), φιλία (affection), ἀγάπη (selfless); ἔρως chosen as the prototypical "love" noun' },
+      heart:  { evidence: 'direct', source: 'LSJ — καρδία, -ας (f.) "heart" (anatomical, also seat of emotion/intellect); nominative singular (1st declension)', note: 'Homeric κῆρ also exists; καρδία is the prose Attic citation form per LSJ' },
+      tree:   { evidence: 'direct', source: 'LSJ — δένδρον, -ου (n.) "tree"; nominative singular (2nd declension neuter; epic δένδρεον)' },
+      house:  { evidence: 'direct', source: 'LSJ — οἶκος, -ου (m.) "house, dwelling, household"; nominative singular (2nd declension; circumflex on diphthong)', formType: 'inflected-form' },
+      dog:    { evidence: 'direct', source: 'LSJ — κύων, κυνός (c.) "dog" (common gender); nominative singular (3rd declension n-stem; cognate Latin canis)', formType: 'inflected-form' },
+      cat:    { evidence: 'direct', source: 'LSJ — αἴλουρος, -ου (m.) "cat" (later also "weasel"); nominative singular (2nd declension)', note: 'cats were introduced to Greece relatively late; αἴλουρος originally denoted weasels and similar mustelids' },
+      hand:   { evidence: 'direct', source: 'LSJ — χείρ, χειρός (f.) "hand"; nominative singular (3rd declension r-stem irregular)', formType: 'inflected-form' },
+      eye:    { evidence: 'direct', source: 'LSJ — ὀφθαλμός, -οῦ (m.) "eye"; nominative singular (2nd declension; from ὄψ + θαλμ)', formType: 'inflected-form' },
+      hello:  { evidence: 'direct', source: 'LSJ — χαῖρε "hail!, rejoice!"; 2nd-singular imperative of χαίρω "rejoice"; standard Greek greeting formula', formType: 'greeting-formula', note: 'plural χαίρετε for multiple addressees; common in Plato dialogues and inscriptions' },
+      thanks: { evidence: 'direct', source: 'LSJ — εὐχαριστέω "give thanks"; 1st-singular present εὐχαριστῶ (contracted); the noun εὐχαριστία gives English "Eucharist"', formType: 'thanks-formula', note: 'εὐχαριστῶ is post-Classical (Hellenistic and NT Greek); Classical Attic preferred χάριν ἔχω' },
+      one:    { evidence: 'direct', source: 'LSJ — εἷς, μία, ἕν "one"; masculine nominative singular εἷς (irregular declension; Smyth §349)', formType: 'inflected-form' },
+      good:   { evidence: 'direct', source: 'LSJ — ἀγαθός, -ή, -όν "good, brave, noble"; masculine nominative singular (1st/2nd declension; suppletive comparative ἀμείνων/βελτίων)', formType: 'inflected-form' },
+    } },
   egy: {
     "name": "Ancient Egyptian",
     "native": "𓂋 𓈖 𓆎𓅓𓏏",
@@ -1133,7 +1215,37 @@ const LANG_DATA = {
   // primary Old English prestige center). Acknowledges OE was a dialect
   // continuum across multiple West-Saxon and Anglian centers.
   en_ang: { name: 'Old English', native: 'Englisc', lat: 51.06, lng: -1.31,
-    words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufu','luvu'], heart:['heorte','heorte'], tree:['trēow','treːow'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','kɑtː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['hāl','hɑːl'], thanks:['þancas','θɑnkɑs'], one:['ān','ɑːn'], good:['gōd','ɡoːd'] }},
+    words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufu','luvu'], heart:['heorte','heorte'], tree:['trēow','treːow'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','kɑtː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['hāl','hɑːl'], thanks:['þancas','θɑnkɑs'], one:['ān','ɑːn'], good:['gōd','ɡoːd'] },
+    // Audit Task 200: full per-cell wordEvidence for source-checked
+    // row. Sources: Bosworth-Toller Anglo-Saxon Dictionary
+    // (bosworthtoller.com) for orthography and gloss; Hogg (1992)
+    // Cambridge History of the English Language Vol. 1 for phonology;
+    // Mitchell & Robinson (2012) Guide to Old English for citation
+    // forms. IPA values reflect Late West Saxon (the prestige dialect
+    // of the 9th-11th c., centred on Winchester); long vowels marked
+    // ¯ orthographically and ː phonetically.
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Bosworth-Toller — wæter (n.) "water"; nominative singular neuter a-stem' },
+      fire:   { evidence: 'direct', source: 'Bosworth-Toller — fȳr (n.) "fire"; nominative singular neuter; long ȳ rounded front vowel /yː/' },
+      sun:    { evidence: 'direct', source: 'Bosworth-Toller — sunne (f.) "the sun"; nominative singular weak feminine n-stem', formType: 'inflected-form' },
+      moon:   { evidence: 'direct', source: 'Bosworth-Toller — mōna (m.) "the moon"; nominative singular weak masculine n-stem', formType: 'inflected-form', note: 'cognate German Mond; long ō reflects PGmc *mēnan-' },
+      mother: { evidence: 'direct', source: 'Bosworth-Toller — mōdor (f.) "mother"; nominative singular r-stem; cognate Latin māter', formType: 'inflected-form' },
+      father: { evidence: 'direct', source: 'Bosworth-Toller — fæder (m.) "father"; nominative singular r-stem; cognate Latin pater', formType: 'inflected-form' },
+      eat:    { evidence: 'direct', source: 'Bosworth-Toller — etan (V) "to eat"; infinitive of strong class V verb (cf. preterite æt, æton)', formType: 'inflected-form', note: 'OE verbs cited by infinitive ending -an per dictionary convention; Mitchell & Robinson §§116-120' },
+      drink:  { evidence: 'direct', source: 'Bosworth-Toller — drincan (III) "to drink"; infinitive of strong class III verb (preterite dranc, druncon)', formType: 'inflected-form' },
+      love:   { evidence: 'direct', source: 'Bosworth-Toller — lufu (f.) "love"; nominative singular weak feminine; medial /f/ → [v] intervocalically per Hogg §3.6.2', note: 'noun citation; the verb lufian "to love" is also widely attested' },
+      heart:  { evidence: 'direct', source: 'Bosworth-Toller — heorte (f.) "heart" (anatomical and emotional); nominative singular weak feminine n-stem', note: 'breaking of /e/ → /eo/ before /r/+consonant per Hogg §5.10' },
+      tree:   { evidence: 'direct', source: 'Bosworth-Toller — trēow (n.) "tree, wood"; nominative singular wa-stem neuter (long vowel + w glide)' },
+      house:  { evidence: 'direct', source: 'Bosworth-Toller — hūs (n.) "house, dwelling"; nominative singular neuter a-stem' },
+      dog:    { evidence: 'direct', source: 'Bosworth-Toller — hund (m.) "dog, hound"; nominative singular masculine a-stem', note: 'OE hund is the general "dog"; cognate German Hund; Mod. Eng. hound is the narrowed sense. The word "dog" (OE docga) attested only late and rare' },
+      cat:    { evidence: 'direct', source: 'Bosworth-Toller — catt (m.) "cat"; nominative singular masculine a-stem; geminate /tː/ from PGmc *kattuz', note: 'borrowed via Latin cattus from Late Latin; widespread in Germanic by Christianisation period' },
+      hand:   { evidence: 'direct', source: 'Bosworth-Toller — hand (f.) "hand"; nominative singular feminine u-stem' },
+      eye:    { evidence: 'direct', source: 'Bosworth-Toller — ēage (n.) "eye"; nominative singular weak neuter n-stem; long ē + medial /ɣ/ (intervocalic g)', formType: 'inflected-form' },
+      hello:  { evidence: 'direct', source: 'Bosworth-Toller — hāl "whole, healthy"; element of greeting formula wes hāl "be healthy" (later "wassail")', formType: 'greeting-formula', note: 'OE had no single "hello" word; wes hāl / hāl wes þū were the standard greetings. Surface hāl shown as the lexical citation' },
+      thanks: { evidence: 'direct', source: 'Bosworth-Toller — þanc (m.) "thanks, gratitude"; þancas is nominative/accusative plural masculine a-stem', formType: 'inflected-form', note: 'plural form per OE convention for "thanks" (parallel Modern English "thanks" plural); singular þanc also attested' },
+      one:    { evidence: 'direct', source: 'Bosworth-Toller — ān "one"; nominative singular masculine strong adjective; long ā', formType: 'inflected-form', note: 'ancestral to Mod. Eng. "one" (raising and rounding ā→oː→wʌn) and the indefinite article "a/an"' },
+      good:   { evidence: 'direct', source: 'Bosworth-Toller — gōd "good"; nominative singular masculine strong adjective; long ō', formType: 'inflected-form', note: 'suppletive comparative bet(e)ra "better" — pattern preserved in Mod. Eng.' },
+    } },
   // Audit Task 161: shifted from London to Canterbury (Chaucer-era southern
   // dialect tradition; Canterbury Tales pilgrims reflect Middle English speech).
   enm: { name: 'Middle English', native: 'Englisch', lat: 51.28, lng: 1.08,
