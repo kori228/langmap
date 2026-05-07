@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 676 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 679 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -203,6 +203,10 @@ const LANG_DATA = {
   // Uralic Siberian (Samoyedic + Ob-Ugric)
   yrk: { name: 'Nenets', native: 'Ненэцяˮ вада', lat: 67.64, lng: 53.01, // Naryan-Mar
     words: { water:['ӣд','iːd'], fire:['ту','tu'], sun:['хаер','xajer'], moon:['ирий','iriː'], mother:['небя','nebja'], father:['нися','nisja'], eat:['ёлась','jolasʲ'], drink:['я','ja'], love:['садось','sadosʲ'], heart:['сей','sej'], tree:['пя','pja'], house:['мяˮ','mjaʔ'], dog:['вэно','weno'], cat:['кошка','koʂka'], hand:['ӈуда','ŋuda'], eye:['сэв','sev'], hello:['аньˮторова','anʔtorova'], thanks:['спасибо','spasibo'], one:['ӈопой','ŋopoj'], good:['сава','sawa'] }},
+  // Nganasan — Samoyedic, ~125 speakers, Taymyr Peninsula. Northernmost Eurasian language.
+  // Sources: Ethnologue 27 'nio'; Glottolog ngan1291; Helimski (1998) Nganasan grammar.
+  nio: { name: 'Nganasan', native: 'Ӈаасан', lat: 71.97, lng: 102.50, // Volochanka, Taymyr
+    words: { water:['быʼ','bɨʔ'], fire:['туй','tuj'], sun:['койка','kojka'], moon:['кичеа','kitʃea'], mother:['ниӈӈы','niŋːɨ'], father:['десы','desɨ'], eat:['нягү','ɲaɡu'], drink:['быр','bɨr'], love:['тонды','tondɨ'], heart:['сей','sej'], tree:['та','ta'], house:['мāʼ','maːʔ'], dog:['баӈка','baŋka'], cat:['кокса','koksa'], hand:['кутыр','kutɨr'], eye:['сейми','sejmi'], hello:['нерум','nerum'], thanks:['нюәдыра','ɲuədɨra'], one:['ӈуо','ŋuo'], good:['ӈуойнюй','ŋuojɲuj'] }},
   kca: { name: 'Khanty', native: 'Ханты ясаӈ', lat: 61.00, lng: 69.00, // Khanty-Mansiysk
     words: { water:['йиңк','jiŋk'], fire:['тут','tut'], sun:['хатәл','xatəl'], moon:['тылащ','tɯlaɕ'], mother:['ӑңки','aŋki'], father:['аӂи','adʑi'], eat:['лэты','lətɯ'], drink:['яңхты','jaŋxtɯ'], love:['наматты','namatːɯ'], heart:['сӑм','sam'], tree:['юх','jux'], house:['хӑт','xat'], dog:['ампи','ampi'], cat:['кошка','koʂka'], hand:['йош','joʃ'], eye:['сэм','sem'], hello:['вуща','wuɕa'], thanks:['пӑсиве','pasive'], one:['ит','it'], good:['ям','jam'] }},
   // Chukotko-Kamchatkan
@@ -289,6 +293,10 @@ const LANG_DATA = {
       hello: { evidence: 'direct', note: 'lexical overlap with good: yáʼátʼééh literally "it is good", canonical greeting' },
       good:  { evidence: 'direct', note: 'lexical overlap with hello: yáʼátʼééh = "it is good" used as both greeting and adjective' },
     } },
+  // Koyukon — Na-Dené Athabaskan (Northern), ~65 speakers, central Alaska along the Yukon-Koyukuk-Tanana rivers.
+  // Sources: Ethnologue 27 'koy'; Glottolog koyu1242; Jones (2000) Koyukon Athabaskan Dictionary.
+  koy: { name: 'Koyukon', native: 'Denaakkʼe', lat: 64.74, lng: -156.96, // Galena, Alaska (Yukon River)
+    words: { water:['too','toː'], fire:['konh','konh'], sun:['so','so'], moon:['oolts\'enh','ooltsʼenh'], mother:['enaa','enaː'], father:['etaa','etaː'], eat:['ghen','ɣen'], drink:['don','don'], love:['k\'oonejee','kʼooneʒeː'], heart:['heł','heɬ'], tree:['k\'eyh','kʼejh'], house:['kkun','kːun'], dog:['łeek','ɬeːk'], cat:['dotonh','dotonh'], hand:['ela','ela'], eye:['nełtonh','neɬtonh'], hello:['enaa basee\'','enaː baseːʔ'], thanks:['baasee\'','baːseːʔ'], one:['łeek\'eyh','ɬeːkʼejh'], good:['nezoonh','nezoːnh'] }},
   haw: { name: 'Hawaiian', native: 'ʻŌlelo Hawaiʻi', lat: 21.31, lng: -157.86, // Honolulu
     words: { water:['wai','wai'], fire:['ahi','ahi'], sun:['lā','laː'], moon:['mahina','mahina'], mother:['makuahine','makuahine'], father:['makuakāne','makuakaːne'], eat:['ʻai','ʔai'], drink:['inu','inu'], love:['aloha','aloha'], heart:['puʻuwai','puʔuwai'], tree:['lāʻau','laːʔau'], house:['hale','hale'], dog:['ʻīlio','ʔiːlio'], cat:['pōpoki','poːpoki'], hand:['lima','lima'], eye:['maka','maka'], hello:['aloha','aloha'], thanks:['mahalo','mahalo'], one:['ʻekahi','ʔekahi'], good:['maikaʻi','maikaʔi'] },
     wordEvidence: {
@@ -1279,6 +1287,10 @@ const LANG_DATA = {
   // Niger-Congo (West African)
   ak: { name: 'Akan (Twi)', native: 'Akan', lat: 6.69, lng: -1.62, // Kumasi
     words: { water:['nsuo','nsuo'], fire:['ogya','odʑa'], sun:['owia','oɥia'], moon:['ɔsrane','ɔsrane'], mother:['ɛna','ɛna'], father:['agya','adʑa'], eat:['didi','didi'], drink:['nom','nom'], love:['ɔdɔ','ɔdɔ'], heart:['akoma','akoma'], tree:['dua','dua'], house:['efie','efie'], dog:['kraman','kraman'], cat:['agyinamoa','adʑinamoa'], hand:['nsa','nsa'], eye:['aniwa','aniwa'], hello:['akwaaba','akʷaːba'], thanks:['medaase','medaase'], one:['baako','baːko'], good:['pa','pa'] }},
+  // Adangme — Niger-Congo Kwa (Ga-Adangme), ~1M speakers, southeastern Ghana coastal plain.
+  // Sources: Ethnologue 27 'ada'; Glottolog adan1247; Kropp Dakubu (1987) Adangme grammar.
+  ada: { name: 'Adangme', native: 'Dangme', lat: 6.07, lng: 0.10, // Ada Foah, Greater Accra
+    words: { water:['nyu','ɲu'], fire:['la','la'], sun:['hyɛ','çɛ'], moon:['nyɔnyɔɛ','ɲɔɲɔɛ'], mother:['nyɛ','ɲɛ'], father:['tsɛ','tsɛ'], eat:['ye','je'], drink:['nu','nu'], love:['suomi','suomi'], heart:['tsui','tsui'], tree:['tso','tso'], house:['we','we'], dog:['gbe','ɡbe'], cat:['adi','adi'], hand:['nine','nine'], eye:['hiŋmɛ','hiŋmɛ'], hello:['daa','daː'], thanks:['ojakuɛ','odʒakwɛ'], one:['kake','kake'], good:['hɛŋmi','hɛŋmi'] }},
   // South Slavic
   mk: { name: 'Macedonian', native: 'Македонски', lat: 41.99, lng: 21.43, // Skopje
     words: { water:['вода','ˈvɔda'], fire:['оган','ˈɔɡan'], sun:['сонце','ˈsɔnt͡sɛ'], moon:['месечина','mɛˈsɛt͡ʃina'], mother:['мајка','ˈmajka'], father:['татко','ˈtatkɔ'], eat:['јаде','ˈjadɛ'], drink:['пие','ˈpiɛ'], love:['љубов','ˈʎubɔv'], heart:['срце','ˈsərt͡sɛ'], tree:['дрво','ˈdərvɔ'], house:['куќа','ˈkucca'], dog:['куче','ˈkut͡ʃɛ'], cat:['мачка','ˈmat͡ʃka'], hand:['рака','ˈraka'], eye:['око','ˈɔkɔ'], hello:['здраво','ˈzdravɔ'], thanks:['благодарам','blaˈɡɔdaram'], one:['еден','ˈɛdɛn'], good:['добар','ˈdɔbar'] }},

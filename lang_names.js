@@ -635,4 +635,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Adangme (ada), Nganasan (nio), Koyukon (koy) — Ghana Kwa + Russian Arctic + Alaska Athabaskan.
+    const ADDED22 = {
+        ada: { en: 'Adangme', ja: 'アダンメ語', ko: '아당메어', zh: '阿当梅语', yue: '阿當梅語',
+               vi: 'Tiếng Adangme', th: 'ภาษาอาดังเม', id: 'Adangme', hi: 'आदांगमे',
+               de: 'Adangme', fr: 'Adangme', it: 'Adangme',
+               es_eu: 'Adangme', es_mx: 'Adangme', pt_eu: 'Adangme', pt_br: 'Adangme',
+               ru: 'Адангме', uk: 'Адангме', ar: 'الأدانغمي', he: 'אדנגמה', sw: 'Kiadangme' },
+        nio: { en: 'Nganasan', ja: 'ヌガナサン語', ko: '응가나산어', zh: '恩加纳桑语', yue: '恩加納桑語',
+               vi: 'Tiếng Nganasan', th: 'ภาษางานาซัน', id: 'Nganasan', hi: 'न्गानासान',
+               de: 'Nganasanisch', fr: 'Nganassane', it: 'Nganasan',
+               es_eu: 'Nganasán', es_mx: 'Nganasán', pt_eu: 'Nganassano', pt_br: 'Nganassano',
+               ru: 'Нганасанский', uk: 'Нганасанська', ar: 'النغاناسانية', he: 'נגנסנית', sw: 'Kinganasan' },
+        koy: { en: 'Koyukon', ja: 'コユコン語', ko: '코유콘어', zh: '科尤孔语', yue: '科尤孔語',
+               vi: 'Tiếng Koyukon', th: 'ภาษาคอยูกอน', id: 'Koyukon', hi: 'कोयूकोन',
+               de: 'Koyukon', fr: 'Koyukon', it: 'Koyukon',
+               es_eu: 'Koyukon', es_mx: 'Koyukon', pt_eu: 'Koyukon', pt_br: 'Koyukon',
+               ru: 'Коюкон', uk: 'Коюкон', ar: 'الكويوكون', he: 'קויוקון', sw: 'Kikoyukon' },
+    };
+    for (const code of Object.keys(ADDED22)) {
+        for (const ui of Object.keys(ADDED22[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED22[code][ui];
+            }
+        }
+    }
 })();
