@@ -1263,7 +1263,38 @@ const LANG_DATA = {
   ofs: { name: 'Old Frisian', native: 'Aldfrysk', lat: 53.20, lng: 5.80, // Leeuwarden, Friesland (Frisian heartland)
     words: { water:['wetir','vetiɾ'], fire:['fiur','fjuːɾ'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['moder','moːdeɾ'], father:['feder','fædeɾ'], eat:['eta','etɑ'], drink:['drinka','dɾinkɑ'], love:['minne','minːe'], heart:['herte','heɾte'], tree:['bām','baːm'], house:['hūs','huːs'], dog:['hund','hund'], cat:['katte','katːe'], hand:['hond','hond'], eye:['āge','aːɣe'], hello:['heil','heil'], thanks:['thank','θank'], one:['ān','aːn'], good:['gōd','ɡoːd'] }},
   non: { name: 'Old Norse', native: 'Norrǿnt mál', lat: 59.91, lng: 10.75,
-    words: { water:['vatn','vɑtn'], fire:['eldr','eldr'], sun:['sól','soːl'], moon:['máni','mɑːni'], mother:['móðir','moːðir'], father:['faðir','fɑðir'], eat:['eta','etɑ'], drink:['drekka','drekːɑ'], love:['ást','ɑːst'], heart:['hjarta','hjɑrtɑ'], tree:['tré','treː'], house:['hús','huːs'], dog:['hundr','hundr'], cat:['kǫttr','kɔtːr'], hand:['hǫnd','hɔnd'], eye:['auga','ɑuɣɑ'], hello:['heill','hɛilː'], thanks:['þǫkk','θɔkː'], one:['einn','ɛinː'], good:['góðr','ɡoːðr'] }},
+    words: { water:['vatn','vɑtn'], fire:['eldr','eldr'], sun:['sól','soːl'], moon:['máni','mɑːni'], mother:['móðir','moːðir'], father:['faðir','fɑðir'], eat:['eta','etɑ'], drink:['drekka','drekːɑ'], love:['ást','ɑːst'], heart:['hjarta','hjɑrtɑ'], tree:['tré','treː'], house:['hús','huːs'], dog:['hundr','hundr'], cat:['kǫttr','kɔtːr'], hand:['hǫnd','hɔnd'], eye:['auga','ɑuɣɑ'], hello:['heill','hɛilː'], thanks:['þǫkk','θɔkː'], one:['einn','ɛinː'], good:['góðr','ɡoːðr'] },
+    // Audit Task 200: full per-cell wordEvidence for source-checked
+    // row. Sources: Cleasby & Vigfusson (1874) Icelandic-English
+    // Dictionary (cleasby-vigfusson-dictionary.vercel.app) for citation
+    // forms; Faarlund (2004) The Syntax of Old Norse for grammatical
+    // categorisation; Gordon (1957) Introduction to Old Norse for
+    // phonology and declensions. Citation forms reflect Classical Old
+    // Norse (the West Norse / Old Icelandic prestige form of the
+    // 12th-13th c. saga literature). The hooked ǫ /ɔ/ and ǿ /øː/
+    // diacritics follow standard normalised orthography.
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Cleasby-Vigfusson — vatn (n.) "water"; nominative singular neuter strong noun' },
+      fire:   { evidence: 'direct', source: 'Cleasby-Vigfusson — eldr (m.) "fire"; nominative singular masculine strong noun (a-stem with -r ending)', formType: 'inflected-form' },
+      sun:    { evidence: 'direct', source: 'Cleasby-Vigfusson — sól (f.) "the sun"; nominative singular feminine i-stem; cognate Latin sōl, OE sunne' },
+      moon:   { evidence: 'direct', source: 'Cleasby-Vigfusson — máni (m.) "moon, the personified Moon"; nominative singular weak masculine n-stem', formType: 'inflected-form' },
+      mother: { evidence: 'direct', source: 'Cleasby-Vigfusson — móðir (f.) "mother"; nominative singular r-stem (cognate Latin māter, OE mōdor)', formType: 'inflected-form' },
+      father: { evidence: 'direct', source: 'Cleasby-Vigfusson — faðir (m.) "father"; nominative singular r-stem (parallel móðir; cognate Latin pater)', formType: 'inflected-form' },
+      eat:    { evidence: 'direct', source: 'Cleasby-Vigfusson — eta (V) "to eat"; infinitive of strong class V verb (preterite át, etinn)', formType: 'inflected-form', note: 'ON verbs cited by infinitive (-a / -ja); cognate OE etan, German essen' },
+      drink:  { evidence: 'direct', source: 'Cleasby-Vigfusson — drekka (III) "to drink"; infinitive of strong class III verb (preterite drakk, drukku)', formType: 'inflected-form', note: 'medial geminate /kː/ from Proto-Germanic *drinkanan with later assimilation /nk/ → /kː/' },
+      love:   { evidence: 'direct', source: 'Cleasby-Vigfusson — ást (f.) "love, affection"; nominative singular feminine i-stem; long ā', note: 'noun citation; the verb elska "to love" is also widely attested in saga prose' },
+      heart:  { evidence: 'direct', source: 'Cleasby-Vigfusson — hjarta (n.) "heart" (anatomical and emotional); nominative singular weak neuter n-stem; breaking hj- /j/ glide', formType: 'inflected-form' },
+      tree:   { evidence: 'direct', source: 'Cleasby-Vigfusson — tré (n.) "tree, wood, beam"; nominative singular neuter (irregular ja-stem); cognate OE trēow' },
+      house:  { evidence: 'direct', source: 'Cleasby-Vigfusson — hús (n.) "house, dwelling"; nominative singular neuter a-stem; cognate OE hūs, German Haus' },
+      dog:    { evidence: 'direct', source: 'Cleasby-Vigfusson — hundr (m.) "dog, hound"; nominative singular masculine a-stem with -r ending; cognate OE hund', formType: 'inflected-form' },
+      cat:    { evidence: 'direct', source: 'Cleasby-Vigfusson — kǫttr (m.) "cat, tom-cat"; nominative singular masculine; hooked ǫ /ɔ/ from u-umlaut of /a/; geminate /tː/ from *kattuz', formType: 'inflected-form', note: 'borrowed via Latin cattus (parallel OE catt, German Katze) before the Viking Age' },
+      hand:   { evidence: 'direct', source: 'Cleasby-Vigfusson — hǫnd (f.) "hand"; nominative singular feminine consonant-stem; hooked ǫ /ɔ/ from u-umlaut', formType: 'inflected-form' },
+      eye:    { evidence: 'direct', source: 'Cleasby-Vigfusson — auga (n.) "eye"; nominative singular weak neuter n-stem; medial /ɣ/ intervocalic g per Gordon §61', formType: 'inflected-form' },
+      hello:  { evidence: 'direct', source: 'Cleasby-Vigfusson — heill (adj.) "whole, sound, healthy"; element of greeting heill ok sæll "hale and happy"', formType: 'greeting-formula', note: 'parallel to OE wes hāl (later "wassail"); shared Germanic greeting formula based on the *health* root' },
+      thanks: { evidence: 'direct', source: 'Cleasby-Vigfusson — þǫkk (f.) "thanks, gratitude"; nominative singular feminine consonant-stem; hooked ǫ from u-umlaut', formType: 'inflected-form', note: 'cognate OE þanc; pl. þakkir also common in idioms (hafa þakkir "have thanks")' },
+      one:    { evidence: 'direct', source: 'Cleasby-Vigfusson — einn (num.) "one"; nominative singular masculine strong adjective; geminate /nː/ from *ainaz', formType: 'inflected-form', note: 'feminine ein, neuter eitt; cognate OE ān (whence Mod. Eng. one/an)' },
+      good:   { evidence: 'direct', source: 'Cleasby-Vigfusson — góðr (adj.) "good"; nominative singular masculine strong adjective; long ó; suppletive comparative betri', formType: 'inflected-form' },
+    } },
   got: { name: 'Gothic', native: '𐌲𐌿𐍄𐌹𐍃𐌺', lat: 45.05, lng: 34.10,
     words: { water:['𐍅𐌰𐍄𐍉','wɑtoː'], fire:['𐍆𐍉𐌽','foːn'], sun:['𐍃𐌿𐌽𐌽𐍉','sunːoː'], moon:['𐌼𐌴𐌽𐌰','meːnɑ'], mother:['𐌰𐌹𐌸𐌴𐌹','ɛːθiː'], father:['𐌰𐍄𐍄𐌰','ɑtːɑ'], eat:['𐌼𐌰𐍄𐌾𐌰𐌽','mɑtjɑn'], drink:['𐌳𐍂𐌹𐌲𐌺𐌰𐌽','driŋkɑn'], love:['𐍆𐍂𐌹𐌰𐌸𐍅𐌰','friɑθwɑ'], heart:['𐌷𐌰𐌹𐍂𐍄𐍉','hɛːrtoː'], tree:['𐌱𐌰𐌲𐌼𐍃','bɑɣms'], house:['𐍂𐌰𐌶𐌽','rɑzn'], dog:['𐌷𐌿𐌽𐌳𐍃','hunds'], cat:['𐌺𐌰𐍄𐍄𐍃','kɑtːs'], hand:['𐌷𐌰𐌽𐌳𐌿𐍃','hɑndus'], eye:['𐌰𐌿𐌲𐍉','ɑuɣoː'], hello:['𐌷𐌰𐌹𐌻𐍃','hɛːls'], thanks:['𐌸𐌰𐌲𐌺𐍃','θɑŋks'], one:['𐌰𐌹𐌽𐍃','ɛːns'], good:['𐌲𐍉𐌸𐍃','ɡoːθs'] }},
   cu: { name: 'Old Church Slavonic', native: 'Словѣньскъ', lat: 42.70, lng: 23.32,
