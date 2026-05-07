@@ -2301,4 +2301,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED96 = {
+        aae: { en: 'Arbëresh', ja: 'アルブレシュ語', ko: '아르브레쉬어', zh: '阿尔伯雷什语', yue: '阿爾伯雷什語',
+               vi: 'Tiếng Arbëresh', th: 'ภาษาอาร์เบรซ', id: 'Bahasa Arbëresh', hi: 'अर्बरेश',
+               de: 'Italo-Albanisch', fr: 'Arbërisht', it: 'Arbëresh',
+               es_eu: 'Arbëresh', es_mx: 'Arbëresh', pt_eu: 'Arbërisht', pt_br: 'Arbërisht',
+               ru: 'Арбрешский', uk: 'Арбрешська', ar: 'الأربيريشية', he: 'ארברשית', sw: 'Kiarbëresh' },
+        cuk: { en: 'San Blas Kuna', ja: 'サンブラス・グナ語', ko: '산블라스 구나어', zh: '圣布拉斯古纳语', yue: '聖布拉斯古納語',
+               vi: 'Tiếng Kuna San Blas', th: 'ภาษาคูนาซานบลาส', id: 'Bahasa Kuna San Blas', hi: 'सान ब्लास कूना',
+               de: 'San-Blas-Kuna', fr: 'Kuna de San Blas', it: 'Kuna di San Blas',
+               es_eu: 'Kuna de San Blas', es_mx: 'Kuna de San Blas', pt_eu: 'Kuna de San Blas', pt_br: 'Kuna de San Blas',
+               ru: 'Куна Сан-Бласа', uk: 'Куна Сан-Бласу', ar: 'الكونا سان بلاس', he: 'קונה סן בלאס', sw: 'Kikuna cha San Blas' },
+        chp: { en: 'Chipewyan', ja: 'チペワイアン語', ko: '치페와이언어', zh: '奇佩怀安语', yue: '奇佩懷安語',
+               vi: 'Tiếng Chipewyan', th: 'ภาษาชิเปวิยัน', id: 'Bahasa Chipewyan', hi: 'चिपेवियन',
+               de: 'Chipewyan', fr: 'Chipewyan', it: 'Chipewyan',
+               es_eu: 'Chipewyan', es_mx: 'Chipewyan', pt_eu: 'Chipewyan', pt_br: 'Chipewyan',
+               ru: 'Чипевьян', uk: 'Чіпевян', ar: 'التشيبيوية', he: "צ'יפוויאן", sw: 'Kichipewyan' },
+    };
+    for (const code of Object.keys(ADDED96)) {
+        for (const ui of Object.keys(ADDED96[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED96[code][ui];
+            }
+        }
+    }
 })();
