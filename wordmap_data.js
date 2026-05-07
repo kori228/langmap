@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 827 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 830 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -909,6 +909,10 @@ const LANG_DATA = {
     words: { water:['lua','lua'], fire:['eve','eve'], sun:['ari','aɾi'], moon:['kalam','kalam'], mother:['ne','ne'], father:['ma','ma'], eat:['gen','ɡen'], drink:['nun','nun'], love:['voŋ','voŋ'], heart:['mun','mun'], tree:['len','len'], house:['ya','ja'], dog:['nyam','ɲam'], cat:['pus','pus'], hand:['mok','mok'], eye:['mata','mata'], hello:['kaye','kaje'], thanks:['fau','fau'], one:['lon','lon'], good:['vovo','vovo'] }},
   // Nalca — Trans-New Guinea (Mek family, sister to other Mek languages of central Highlands New Guinea), ~10K, Indonesia (Papua Highlands — Yahukimo Regency).
   // Sources: Ethnologue 27 'nlc'; Glottolog nalc1238; Heeschen (1992) The Mek Languages of Irian Jaya.
+  // Faiwol — Trans-New Guinea (Ok family — sister to Telefol, Mian, Bimin within Ok), ~5K, PNG (Western Province — Olsobip area, Star Mountains).
+  // Sources: Ethnologue 27 'fai'; Glottolog faiw1238; Healey (1964) The Ok Family; Mecklenburg (1974) Faiwol Phonology.
+  fai: { name: 'Faiwol', native: 'Faiwol', lat: -5.42, lng: 141.08, // Olsobip, Star Mountains, Western Province, PNG
+    words: { water:['ok','ok'], fire:['baal','baːl'], sun:['kibel','kibel'], moon:['ulup','ulup'], mother:['anim','anim'], father:['atim','atim'], eat:['nemin','nemin'], drink:['ok ne','ok ne'], love:['kunum','kunum'], heart:['kayem','kajem'], tree:['biin','biːn'], house:['am','am'], dog:['kuyak','kujak'], cat:['kit','kit'], hand:['miim','miːm'], eye:['nin','nin'], hello:['ben kaba','ben kaba'], thanks:['ngam ngam','ŋam ŋam'], one:['kowin','kowin'], good:['kanim','kanim'] }},
   nlc: { name: 'Nalca', native: 'Nalca', lat: -4.50, lng: 139.63, // Yahukimo Regency, Highlands Papua, Indonesia
     words: { water:['mi','mi'], fire:['lakil','lakil'], sun:['nyem','ɲem'], moon:['lakum','lakum'], mother:['ne','ne'], father:['ke','ke'], eat:['ne','ne'], drink:['mi ne','mi ne'], love:['ngam','ŋam'], heart:['ngal','ŋal'], tree:['ye','je'], house:['kim','kim'], dog:['ngal','ŋal'], cat:['kucing','kutʃiŋ'], hand:['ku','ku'], eye:['nye','ɲe'], hello:['silok','silok'], thanks:['amole','amole'], one:['mom','mom'], good:['ko','ko'] }},
   bzh: { name: 'Mapos Buang', native: 'Buang', lat: -7.00, lng: 146.85, // Mumeng, Morobe Province, PNG
@@ -1983,6 +1987,10 @@ const LANG_DATA = {
     words: { water:['kapi','kapi'], fire:['warla','waɻla'], sun:['ngama','ŋama'], moon:['kanyala','kaɲala'], mother:['ngamaji','ŋamadʒi'], father:['kuthurra','kutʰuɻa'], eat:['ngarna','ŋaɻna'], drink:['nyuna','ɲuna'], love:['kanyji','kaɲdʒi'], heart:['pulpara','pulpaɻa'], tree:['parntany','paɳʈaɲ'], house:['nhurra','ɳuɻa'], dog:['kuwiyarl','kuwijaɻl'], cat:['paka','paka'], hand:['mara','maɻa'], eye:['kuru','kuɻu'], hello:['palya','paʎa'], thanks:['marlu','maɻlu'], one:['kuyu','kuju'], good:['walykumarra','waʎkumaɻa'] }},
   // Adnyamathanha — Pama-Nyungan (Thura-Yura, sister to Kaurna), ~10 fluent + ~150 partial speakers, Australia (South Australia — Flinders Ranges, Nepabunna).
   // Sources: Ethnologue 27 'adt'; Glottolog adny1238; Schebeck (1973) Texts on the Social System of the Atyñamatana People.
+  // Olkol — Pama-Nyungan (Paman, Northern — sister to Yir-Yoront and other Cape York Peninsula Paman), ~50 fluent + heritage learners, Australia (Queensland — Cape York Peninsula, Coen, Pormpuraaw).
+  // Sources: Ethnologue 27 'olg'; Glottolog olko1239; Sutton (1976) Cape York Peninsula linguistic survey.
+  olg: { name: 'Olkol', native: 'Olkol', lat: -13.94, lng: 143.20, // Coen, Cape York Peninsula, Queensland
+    words: { water:['kupa','kupa'], fire:['paral','paɻal'], sun:['naŋkari','naŋkaɻi'], moon:['kakal','kakal'], mother:['ngangi','ŋaŋi'], father:['kaba','kaba'], eat:['ngarinya','ŋaɻiɲa'], drink:['kupa nyaa','kupa ɲaː'], love:['kanyji','kaɲɟi'], heart:['piku','piku'], tree:['warray','waɾaj'], house:['mariŋ','maɻiŋ'], dog:['kunpa','kunpa'], cat:['paka','paka'], hand:['mara','maɻa'], eye:['mil','mil'], hello:['palya','paʎa'], thanks:['marlu','maɻlu'], one:['kuyu','kuju'], good:['palya','paʎa'] }},
   adt: { name: 'Adnyamathanha', native: 'Adnyamathanha-na yarta', lat: -30.78, lng: 138.83, // Nepabunna, Flinders Ranges, SA
     words: { water:['awi','awi'], fire:['warlu','waɻlu'], sun:['yidnu','jidnu'], moon:['vuyu','vuju'], mother:['nyangka','ɲaŋka'], father:['arndu','aɳɖu'], eat:['ngalkanha','ŋalkaɲa'], drink:['ulpanha','ulpaɲa'], love:['mukunha','mukuɲa'], heart:['kurda','kuɖa'], tree:['urtu','uʈu'], house:['vakali','vakali'], dog:['vurlpu','vuɻlpu'], cat:['vunmara','vunmaɻa'], hand:['mara','maɻa'], eye:['mina','mina'], hello:['palya','paʎa'], thanks:['mukunha','mukuɲa'], one:['mukuna','mukuna'], good:['ngarrkanha','ŋaɻkaɲa'] }},
   // Noongar (Nyungar) — Pama-Nyungan (South-West, sister to Murchison-Gascoyne but heavily diverged), ~370 fluent + ~3K partial, SW Australia (Perth → Esperance Albany → Geraldton).
@@ -3717,6 +3725,10 @@ const LANG_DATA = {
   // Tsimshianic (Pacific Northwest Coast)
   tsi: { name: 'Coast Tsimshian', native: 'Sm\'algyax', lat: 54.31, lng: -130.32, // Prince Rupert
     words: { water:['ax̱s','aχs'], fire:['laḵw','laqʷ'], sun:['gyemk','ɡjemk'], moon:['gemk','ɡemk'], mother:['naa','naː'], father:['baba','baba'], eat:['lalji','laldʒi'], drink:['hoos','huːs'], love:['ksu\'hahkw','ksuʔhahkʷ'], heart:['ootnasx̱','oːtnasχ'], tree:['gan','ɡan'], house:['walp','walp'], dog:['hashasaa','haʃasaː'], cat:['doosgi','duːsɡi'], hand:['an\'oon','anʔoːn'], eye:['mooḵs','muːqs'], hello:['ndii ne','ndiː ne'], thanks:['t\'oyaxsut nüsm','tʼojaχsut nyzm'], one:['ḵoo\'iyaa','qoːʔijaː'], good:['am\'','amʔ'] }},
+  // Thompson (Nlaka'pamuctsin) — Salishan (Interior, Northern — sister to Lillooet, Shuswap, Okanagan within Northern Interior Salish), ~200 fluent + ~500 partial, Canada (British Columbia — Thompson and Fraser canyons).
+  // Sources: Ethnologue 27 'thp'; Glottolog thom1242; Thompson & Thompson (1992) The Thompson Language.
+  thp: { name: 'Thompson', native: "Nlaka'pamuctsin", lat: 50.21, lng: -121.59, // Lytton, BC (Nlaka'pamux territory confluence of Thompson + Fraser rivers)
+    words: { water:['séwlkwe','seːwlkʷe'], fire:['nlhmín','nɬmin'], sun:['skwekwsim','skʷekʷsim'], moon:['mésmes','mesmes'], mother:['skíxe','skiχe'], father:['skíxa','skiχa'], eat:['ʔíqs','ʔiqs'], drink:['ʔeẃkw','ʔewkʷ'], love:['xámeʔs','χameʔs'], heart:["sn'éxteʔ",'snʔeχteʔ'], tree:["sníxsem",'sniχsem'], house:["citxw",'tsitxʷ'], dog:["sqáxa",'sqaχa'], cat:['púsh','puʃ'], hand:["sxwép",'sxʷep'], eye:["spqáqxn",'spqaqχn'], hello:["weytk",'wejtk'], thanks:["kukstéyp",'kuksteːjp'], one:["paáls",'paʔals'], good:["mín",'min'] }},
   // Iranian (Pamir)
   wbl: { name: 'Wakhi', native: 'x̌ikwor zik', lat: 36.95, lng: 73.52, // Wakhan
     words: { water:['яу','jau'], fire:['ракс','raks'], sun:['йир','jir'], moon:['зимак','zimak'], mother:['нан','nan'], father:['тат','tat'], eat:['йав-','jav'], drink:['пав-','pav'], love:['руб','rub'], heart:['дил','dil'], tree:['ведж','vedʒ'], house:['хун','xun'], dog:['шач','ʃatʃ'], cat:['мушук','muʃuk'], hand:['дос','dos'], eye:['чашм','tʃaʃm'], hello:['салам','salam'], thanks:['ишкур','iʃkur'], one:['йиу','jiu'], good:['байт','bajt'] }},

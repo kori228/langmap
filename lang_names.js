@@ -1908,4 +1908,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED73 = {
+        thp: { en: 'Thompson', ja: 'トンプソン語', ko: '톰슨어', zh: '汤普森语', yue: '湯普森語',
+               vi: 'Tiếng Thompson', th: 'ภาษาทอมป์สัน', id: 'Bahasa Thompson', hi: 'थॉम्पसन',
+               de: 'Thompson', fr: 'Thompson', it: 'Thompson',
+               es_eu: 'Thompson', es_mx: 'Thompson', pt_eu: 'Thompson', pt_br: 'Thompson',
+               ru: 'Томпсон', uk: 'Томпсон', ar: 'التومبسون', he: 'תומפסון', sw: 'Kithompson' },
+        fai: { en: 'Faiwol', ja: 'ファイウォル語', ko: '파이월어', zh: '法伊沃尔语', yue: '法伊沃爾語',
+               vi: 'Tiếng Faiwol', th: 'ภาษาไฟวอล', id: 'Bahasa Faiwol', hi: 'फ़ाइवोल',
+               de: 'Faiwol', fr: 'Faiwol', it: 'Faiwol',
+               es_eu: 'Faiwol', es_mx: 'Faiwol', pt_eu: 'Faiwol', pt_br: 'Faiwol',
+               ru: 'Файвол', uk: 'Файвол', ar: 'الفايول', he: 'פאיוול', sw: 'Kifaiwol' },
+        olg: { en: 'Olkol', ja: 'オルコル語', ko: '올콜어', zh: '奥尔科尔语', yue: '奧爾科爾語',
+               vi: 'Tiếng Olkol', th: 'ภาษาโอลโคล', id: 'Bahasa Olkol', hi: 'ओलकोल',
+               de: 'Olkol', fr: 'Olkol', it: 'Olkol',
+               es_eu: 'Olkol', es_mx: 'Olkol', pt_eu: 'Olkol', pt_br: 'Olkol',
+               ru: 'Олкол', uk: 'Олкол', ar: 'الأولكول', he: 'אולקול', sw: 'Kiolkol' },
+    };
+    for (const code of Object.keys(ADDED73)) {
+        for (const ui of Object.keys(ADDED73[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED73[code][ui];
+            }
+        }
+    }
 })();
