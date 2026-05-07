@@ -585,4 +585,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Makonde (kde), Nanai (gld), Shuar (jiv) — Bantu + Tungusic + Jivaroan.
+    const ADDED20 = {
+        kde: { en: 'Makonde', ja: 'マコンデ語', ko: '마콘데어', zh: '马孔德语', yue: '馬孔德語',
+               vi: 'Tiếng Makonde', th: 'ภาษามาคอนเด', id: 'Makonde', hi: 'माकोंडे',
+               de: 'Makonde', fr: 'Makondé', it: 'Makonde',
+               es_eu: 'Makonde', es_mx: 'Makonde', pt_eu: 'Maconde', pt_br: 'Maconde',
+               ru: 'Маконде', uk: 'Маконде', ar: 'الماكوندي', he: 'מקונדה', sw: 'Kimakonde' },
+        gld: { en: 'Nanai', ja: 'ナナイ語', ko: '나나이어', zh: '那乃语', yue: '那乃語',
+               vi: 'Tiếng Nanai', th: 'ภาษานานาย', id: 'Nanai', hi: 'नानाई',
+               de: 'Nanaiisch', fr: 'Nanaï', it: 'Nanai',
+               es_eu: 'Nanai', es_mx: 'Nanai', pt_eu: 'Nanai', pt_br: 'Nanai',
+               ru: 'Нанайский', uk: 'Нанайська', ar: 'الناناي', he: 'נאנאית', sw: 'Kinanai' },
+        jiv: { en: 'Shuar', ja: 'シュアル語', ko: '슈아르어', zh: '舒阿尔语', yue: '舒阿爾語',
+               vi: 'Tiếng Shuar', th: 'ภาษาชูอาร์', id: 'Shuar', hi: 'शुआर',
+               de: 'Shuar', fr: 'Shuar', it: 'Shuar',
+               es_eu: 'Shuar', es_mx: 'Shuar', pt_eu: 'Xuar', pt_br: 'Xuar',
+               ru: 'Шуар', uk: 'Шуар', ar: 'الشوار', he: 'שואר', sw: 'Kishuar' },
+    };
+    for (const code of Object.keys(ADDED20)) {
+        for (const ui of Object.keys(ADDED20[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED20[code][ui];
+            }
+        }
+    }
 })();

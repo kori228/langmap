@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 670 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 673 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -196,6 +196,10 @@ const LANG_DATA = {
     words: { water:['му','mu'], fire:['того','toɡo'], sun:['дылача','dɯlatɕa'], moon:['бега','beɡa'], mother:['эни','eni'], father:['ама','ama'], eat:['дептэ','depte'], drink:['умӣ','umiː'], love:['аявдави','ajavdavi'], heart:['меван','mevan'], tree:['мо','mo'], house:['дю','dʒu'], dog:['нгинакин','ŋinakin'], cat:['кошка','koʂka'], hand:['нгалэ','ŋale'], eye:['эса','esa'], hello:['дорообо','doroːbo'], thanks:['пасиба','pasiba'], one:['умун','umun'], good:['ая','aja'] }},
   eve: { name: 'Even', native: 'Эвэды торэн', lat: 59.57, lng: 150.80, // Magadan
     words: { water:['му','mu'], fire:['тоог','toːɡ'], sun:['нөлтэн','nølten'], moon:['бяг','bjaɡ'], mother:['эньэн','eɲen'], father:['ама','ama'], eat:['дьэб','dʒeb'], drink:['ум','um'], love:['аякан','ajakan'], heart:['мяван','mjavan'], tree:['мо','mo'], house:['дьу','dʒu'], dog:['нгин','ŋin'], cat:['кошка','koʂka'], hand:['нгал','ŋal'], eye:['яса','jasa'], hello:['дорова','dorova'], thanks:['пасиба','pasiba'], one:['омэн','omen'], good:['ай','aj'] }},
+  // Nanai (Hezhen in China) — Tungusic Southern, ~1500 speakers, lower Amur River. Sister to Manchu.
+  // Sources: Ethnologue 27 'gld'; Glottolog nana1257; Avrorin (1959) Grammar of Nanai.
+  gld: { name: 'Nanai', native: 'Нанай', lat: 50.55, lng: 137.0, // Naikhin/Khabarovsk Krai
+    words: { water:['муэ','mue'], fire:['това','tova'], sun:['сиун','siun'], moon:['биа','bia'], mother:['энин','enin'], father:['ама','ama'], eat:['депу','depu'], drink:['омичи','omitʃi'], love:['эйини','ejini'], heart:['миаван','miavan'], tree:['мо','mo'], house:['дё','dʒo'], dog:['инда','inda'], cat:['коси','kosi'], hand:['нгала','ŋala'], eye:['насал','nasal'], hello:['банди-банди','bandi bandi'], thanks:['банихан','banihan'], one:['эмун','emun'], good:['ая','aja'] }},
   // Uralic Siberian (Samoyedic + Ob-Ugric)
   yrk: { name: 'Nenets', native: 'Ненэцяˮ вада', lat: 67.64, lng: 53.01, // Naryan-Mar
     words: { water:['ӣд','iːd'], fire:['ту','tu'], sun:['хаер','xajer'], moon:['ирий','iriː'], mother:['небя','nebja'], father:['нися','nisja'], eat:['ёлась','jolasʲ'], drink:['я','ja'], love:['садось','sadosʲ'], heart:['сей','sej'], tree:['пя','pja'], house:['мяˮ','mjaʔ'], dog:['вэно','weno'], cat:['кошка','koʂka'], hand:['ӈуда','ŋuda'], eye:['сэв','sev'], hello:['аньˮторова','anʔtorova'], thanks:['спасибо','spasibo'], one:['ӈопой','ŋopoj'], good:['сава','sawa'] }},
@@ -1343,6 +1347,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'cni'; Glottolog asha1243; Mihas (2010) Asháninka grammar.
   cni: { name: 'Asháninka', native: 'Asháninka', lat: -10.85, lng: -73.81, // Satipo, Peru
     words: { water:['nija','nidʒa'], fire:['paamari','paːmaɾi'], sun:['oorya','oːɾja'], moon:['kashiri','kaʃiɾi'], mother:['ina','ina'], father:['apa','apa'], eat:['noyaki','nojaki'], drink:['noiri','noiɾi'], love:['nonintsi','nonintsi'], heart:['nosanto','nosanto'], tree:['inchato','intʃato'], house:['pankotsi','paŋkotsi'], dog:['otsiti','otsiti'], cat:['mishito','miʃito'], hand:['nako','nako'], eye:['noki','noki'], hello:['aviro','aβiɾo'], thanks:['naranki','naɾaŋki'], one:['aparoni','apaɾoni'], good:['kameetsa','kameːtsa'] }},
+  // Shuar — Jivaroan, ~35K speakers, Ecuadorian + Peruvian Amazon. Famous historically for tsantsa (shrunken heads).
+  // Sources: Ethnologue 27 'jiv'; Glottolog shua1257; Pellizzaro & Náwech (2005) Chicham Shuar.
+  jiv: { name: 'Shuar', native: 'Shuar Chicham', lat: -2.50, lng: -78.07, // Macas, Ecuador
+    words: { water:['yumi','jumi'], fire:['ji','dʒi'], sun:['etsa','etsa'], moon:['nantu','nantu'], mother:['nukur','nukuɾ'], father:['apar','apaɾ'], eat:['yuata','juata'], drink:['umarta','umaɾta'], love:['anentaiti','anentaiti'], heart:['enentai','enentai'], tree:['numi','numi'], house:['jea','dʒea'], dog:['yawá','jawá'], cat:['micha','mitʃa'], hand:['uwej','uwedʒ'], eye:['jii','dʒiː'], hello:['pujamek','pudʒamek'], thanks:['yuminsajme','juminsadʒme'], one:['chikichik','tʃikitʃik'], good:['penker','peŋkeɾ'] }},
   // Páez (Nasa Yuwe) — language isolate, Cauca Colombia, ~60K. Tonal, indigenous to pre-Inca Andes.
   // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
   pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca
@@ -1478,6 +1486,10 @@ const LANG_DATA = {
   // Bantu (filling Phase 3A gap)
   tum: { name: 'Tumbuka', native: 'ChiTumbuka', lat: -11.46, lng: 34.02, // Mzuzu
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['zuva','zuva'], moon:['mwezi','mwezi'], mother:['amama','amama'], father:['adada','adada'], eat:['kurya','kuɾja'], drink:['kumwa','kumwa'], love:['kutemwa','kutemwa'], heart:['mtima','mtima'], tree:['khuni','kʰuni'], house:['nyumba','ɲumba'], dog:['ncheŵe','ntʃewe'], cat:['chona','tʃona'], hand:['woko','woko'], eye:['jiso','dʒiso'], hello:['monire','moniɾe'], thanks:['yewo','jewo'], one:['cimoza','tʃimoza'], good:['cwemi','tʃwemi'] }},
+  // Makonde — Bantu P23, ~2M speakers across Tanzania/Mozambique. Famous for ebony carving tradition.
+  // Sources: Ethnologue 27 'kde'; Glottolog mako1247; Leach (2010) Makonde Reference Grammar.
+  kde: { name: 'Makonde', native: 'Chimakonde', lat: -10.66, lng: 39.27, // Mtwara, Tanzania
+    words: { water:['mashi','maʃi'], fire:['moto','moto'], sun:['lyuva','ʎuβa'], moon:['mwedi','mwedi'], mother:['mama','mama'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['kupenda','kupenda'], heart:['mtima','mtima'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['nshenye','nʃeɲe'], cat:['paka','paka'], hand:['nkono','nkono'], eye:['liso','liso'], hello:['nakushukuru','nakuʃukuɾu'], thanks:['nashukuru','naʃukuɾu'], one:['nimo','nimo'], good:['shibwana','ʃibwana'] }},
   // Lomwe — Bantu P32, ~1.5M+ speakers, northern Mozambique + adjoining Malawi.
   // Sources: Ethnologue 27 'ngl'; Glottolog lomw1238; Kröger (2009) Lomwe-English Dictionary.
   ngl: { name: 'Lomwe', native: 'Elomwe', lat: -15.10, lng: 39.27, // Nampula, Mozambique
