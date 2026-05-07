@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 697 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 700 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -607,6 +607,10 @@ const LANG_DATA = {
   // Sources: Christen et al. (2010) Kleiner Sprachatlas der deutschen Schweiz; SDS (Sprachatlas der deutschen Schweiz).
   gsw: { name: 'Swiss German', native: 'Schwiizerdütsch', lat: 47.37, lng: 8.54, // Zürich
     words: { water:['Wasser','vasːər'], fire:['Füür','fyːr'], sun:['Sunne','sʊnə'], moon:['Mond','moːnd'], mother:['Mueter','muə̯tər'], father:['Vatter','fatər'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Härz','hærts'], tree:['Baum','baʊ̯m'], house:['Huus','huːs'], dog:['Hund','hʊnd'], cat:['Chatz','xats'], hand:['Hand','hand'], eye:['Aug','aʊ̯ɡ'], hello:['Grüezi','ɡryə̯tsi'], thanks:['Merci','mɛrsi'], one:['eis','æɪ̯s'], good:['guet','ɡuə̯t'] }},
+  // East Franconian (Mainfränkisch) — High German Upper East dialect, Bavaria/Thuringia/Hesse.
+  // Sources: Ethnologue 27 'vmf'; Glottolog main1267; Wagner (1987) Bairisch-Fränkische Wörterbücher.
+  vmf: { name: 'East Franconian', native: 'Mainfränkisch', lat: 49.79, lng: 9.93, // Würzburg (Mainfränkisch heartland)
+    words: { water:['Wasser','vasːə'], fire:['Feier','faɪɐ'], sun:['Sunn','sʊn'], moon:['Maa','maː'], mother:['Mudder','mʊdɐ'], father:['Vadder','fadɐ'], eat:['esse','ɛsə'], drink:['trinke','trɪŋkə'], love:['Liebe','liːbə'], heart:['Herz','hɛrts'], tree:['Bauma','baʊmaː'], house:['Haus','haʊs'], dog:['Hund','hʊnt'], cat:['Katz','kats'], hand:['Hand','hand'], eye:['Aach','aːx'], hello:['Grüß Gott','ɡrʏs ɡɔt'], thanks:['Vergelt\'s Gott','fɛɐɡɛlts ɡɔt'], one:['ans','ans'], good:['guad','ɡuə̯d'] }},
   nds: { name: 'Low German', native: 'Plattdüütsch', lat: 53.55, lng: 9.99,
     words: { water:['Water','vɑːtɐ'], fire:['Füer','fyːɐ'], sun:['Sünn','zʏn'], moon:['Maand','mɑːnt'], mother:['Moder','moːdɐ'], father:['Vader','fɑːdɐ'], eat:['eten','eːtn'], drink:['drinken','dɹɪŋkn'], love:['Leev','leːf'], heart:['Hart','haɐt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Hund','hʊnt'], cat:['Katt','kat'], hand:['Hand','hant'], eye:['Oog','oːx'], hello:['Moin','mɔɪn'], thanks:['Dankschöön','daŋkʃøːn'], one:['een','eːn'], good:['good','ɡoːt'] }},
   // Kölsch — Ripuarian Franconian (West Central German), Cologne, ~250K speakers.
@@ -1642,6 +1646,10 @@ const LANG_DATA = {
     words: { water:['weih','weih'], fire:['rara','ɾaɾa'], sun:['matacana','matatʃana'], moon:['lao','lao'], mother:['ine','ine'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['kunyung','kuɲuŋ'], heart:['ate','ate'], tree:['kayu','kaju'], house:['umah','umah'], dog:['asu','asu'], cat:['kucing','kutʃiŋ'], hand:['pumu','pumu'], eye:['mata','mata'], hello:['salam','salam'], thanks:['matur sangat','matuɾ saŋat'], one:['sara','saɾa'], good:['jeroh','dʒeɾoh'] }},
   bug: { name: 'Buginese', native: 'Basa Ugi', lat: -4.13, lng: 120.00, // Sengkang (Bugis heartland, Wajo regency)
     words: { water:['uwai','uwai'], fire:['api','api'], sun:['mata esso','mata esːo'], moon:['uleng','uleŋ'], mother:['indo','indo'], father:['ambo','ambo'], eat:['manre','manɾe'], drink:['minung','minuŋ'], love:['élo','élo'], heart:['ati','ati'], tree:['aju','adʒu'], house:['bola','bola'], dog:['asu','asu'], cat:['meong','meoŋ'], hand:['lima','lima'], eye:['mata','mata'], hello:['tabe','tabe'], thanks:['kuru sumange','kuɾu sumaŋe'], one:['séddi','sédːi'], good:['makanja','makandʒa'] }},
+  // Mandar — Austronesian South Sulawesi, ~200K speakers, West Sulawesi province Indonesia.
+  // Sources: Ethnologue 27 'mdr'; Glottolog mand1442; Strømme (1988) Mandar grammar.
+  mdr: { name: 'Mandar', native: 'Bahasa Mandar', lat: -3.55, lng: 118.95, // Majene/Polewali, West Sulawesi
+    words: { water:['uai','uai'], fire:['api','api'], sun:['mata allo','mata alːo'], moon:['bulang','bulaŋ'], mother:['indo','indo'], father:['ama','ama'], eat:['ma\'ande','maʔande'], drink:['minung','minuŋ'], love:['mappinawa','mapːinawa'], heart:['ate','ate'], tree:['kaju','kaju'], house:['boyang','bojaŋ'], dog:['asu','asu'], cat:['mio','mio'], hand:['lima','lima'], eye:['mata','mata'], hello:['salama\' ma\'ondong','salamaʔ maʔondoŋ'], thanks:['kuru\' sumanga\'','kuɾuʔ sumaŋaʔ'], one:['mesa','mesa'], good:['macoa','matʃoa'] }},
   // Philippine (Visayan/Bikolano)
   war: { name: 'Waray', native: 'Wináray', lat: 11.24, lng: 124.99, // Tacloban
     words: { water:['tubig','tubiɡ'], fire:['kalayo','kalajɔ'], sun:['adlaw','adlaw'], moon:['bulan','bulan'], mother:['nanay','nanaj'], father:['tatay','tataj'], eat:['kaon','kaʔon'], drink:['inom','ʔinɔm'], love:['gugma','ɡuɡma'], heart:['kasingkasing','kasiŋkasiŋ'], tree:['kahoy','kahɔj'], house:['balay','balaj'], dog:['ayam','ajam'], cat:['misay','misaj'], hand:['kamot','kamɔt'], eye:['mata','mata'], hello:['maupay nga aga','maʔupaj ŋa aɡa'], thanks:['salamat','salamat'], one:['usa','ʔusa'], good:['maupay','maʔupaj'] }},
@@ -1965,6 +1973,10 @@ const LANG_DATA = {
   // Pacific (Pohnpeian + Hiri Motu)
   hmo: { name: 'Hiri Motu', native: 'Hiri Motu', lat: -9.46, lng: 147.18, // Port Moresby
     words: { water:['ranu','ranu'], fire:['lahi','lahi'], sun:['dina','dina'], moon:['hua','hua'], mother:['sina','sina'], father:['tama','tama'], eat:['ania','ania'], drink:['inua','inua'], love:['lalokau','lalokau'], heart:['kudouna','kudouna'], tree:['au','au'], house:['ruma','ruma'], dog:['sisia','sisia'], cat:['pusi','pusi'], hand:['ima','ima'], eye:['mata','mata'], hello:['oi e namo','oi e namo'], thanks:['tanikiu','tanikiu'], one:['ta','ta'], good:['namo','namo'] }},
+  // Motu — Austronesian Oceanic, ~14K speakers, Central Province PNG. Pure form, distinct from Hiri Motu pidgin (hmo).
+  // Sources: Ethnologue 27 'meu'; Glottolog motu1246; Lister-Turner & Clark (1931) Grammar of the Motu Language.
+  meu: { name: 'Motu', native: 'Motu', lat: -9.50, lng: 147.20, // Hanuabada (Motu heartland) near Port Moresby
+    words: { water:['ranu','ɾanu'], fire:['lahi','lahi'], sun:['dina','dina'], moon:['hua','hua'], mother:['sinana','sinana'], father:['tamana','tamana'], eat:['aniani','aniani'], drink:['inuinu','inuinu'], love:['lalokau','lalokau'], heart:['kudouna','kudouna'], tree:['au','au'], house:['ruma','ɾuma'], dog:['sisia','sisia'], cat:['gosi','ɡosi'], hand:['imana','imana'], eye:['matana','matana'], hello:['namo','namo'], thanks:['oi namo','oi namo'], one:['ta','ta'], good:['namo','namo'] }},
   pon: { name: 'Pohnpeian', native: 'Lokaiahn Pohnpei', lat: 6.96, lng: 158.21, // Kolonia
     words: { water:['pihl','pihl'], fire:['ahi','ahi'], sun:['ketipin','ketipin'], moon:['maram','maram'], mother:['nohno','nohno'], father:['pahpa','paːpa'], eat:['mwenge','mʷeŋe'], drink:['nim','nim'], love:['limpoak','limpoːk'], heart:['mohngion','mohŋion'], tree:['tuhke','tuhke'], house:['ihmw','ihmʷ'], dog:['kihdi','kihdi'], cat:['kaht','kaht'], hand:['peh','peh'], eye:['mese','mese'], hello:['kaselehlie','kaselehlie'], thanks:['kalahngan','kalahŋan'], one:['ehu','ehu'], good:['mwahu','mʷahu'] }},
   // Kosraean — Micronesian, ~8K speakers, Kosrae state of FSM. Most divergent surviving Micronesian language.

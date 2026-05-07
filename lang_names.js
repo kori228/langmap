@@ -810,4 +810,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Mandar (mdr), East Franconian (vmf), Motu (meu) — 700-language milestone! Sulawesi Austronesian + German dialect + PNG Austronesian.
+    const ADDED29 = {
+        mdr: { en: 'Mandar', ja: 'マンダル語', ko: '만다르어', zh: '曼达尔语', yue: '曼達爾語',
+               vi: 'Tiếng Mandar', th: 'ภาษามันดาร์', id: 'Mandar', hi: 'मंदार',
+               de: 'Mandar', fr: 'Mandar', it: 'Mandar',
+               es_eu: 'Mandar', es_mx: 'Mandar', pt_eu: 'Mandar', pt_br: 'Mandar',
+               ru: 'Мандар', uk: 'Мандар', ar: 'الماندار', he: 'מנדר', sw: 'Mandar' },
+        vmf: { en: 'East Franconian', ja: '東フランケン語', ko: '동프랑켄어', zh: '东法兰克语', yue: '東法蘭克語',
+               vi: 'Tiếng Đông Franken', th: 'ภาษาฟรังเคินตะวันออก', id: 'Franken Timur', hi: 'पूर्वी फ्रैंकोनियन',
+               de: 'Ostfränkisch', fr: 'Francique oriental', it: 'Francone orientale',
+               es_eu: 'Franconio oriental', es_mx: 'Franconio oriental', pt_eu: 'Frâncico oriental', pt_br: 'Frâncico oriental',
+               ru: 'Восточнофранкский', uk: 'Східнофранконська', ar: 'الفرنكونية الشرقية', he: 'פרנקונית מזרחית', sw: 'Kifranken cha Mashariki' },
+        meu: { en: 'Motu', ja: 'モツ語', ko: '모투어', zh: '莫图语', yue: '莫圖語',
+               vi: 'Tiếng Motu', th: 'ภาษาโมตู', id: 'Motu', hi: 'मोटू',
+               de: 'Motu', fr: 'Motu', it: 'Motu',
+               es_eu: 'Motu', es_mx: 'Motu', pt_eu: 'Motu', pt_br: 'Motu',
+               ru: 'Моту', uk: 'Моту', ar: 'الموتو', he: 'מוטו', sw: 'Kimotu' },
+    };
+    for (const code of Object.keys(ADDED29)) {
+        for (const ui of Object.keys(ADDED29[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED29[code][ui];
+            }
+        }
+    }
 })();
