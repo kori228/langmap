@@ -2526,4 +2526,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED105 = {
+        enf: { en: 'Forest Enets', ja: '森林エネツ語', ko: '산림 에네츠어', zh: '林地恩内茨语', yue: '林地恩內茨語',
+               vi: 'Tiếng Enets Rừng', th: 'ภาษาเอเนตส์ป่า', id: 'Bahasa Enets Hutan', hi: 'वन एनेट्स',
+               de: 'Wald-Enzisch', fr: 'Énètse forestier', it: 'Enzo forestale',
+               es_eu: 'Enets del bosque', es_mx: 'Enets del bosque', pt_eu: 'Enets da floresta', pt_br: 'Enets da floresta',
+               ru: 'Лесной энецкий', uk: 'Лісовий енецький', ar: 'الإنتس الغابوية', he: 'אנץ יערית', sw: 'Kienets cha Msitu' },
+        abe: { en: 'Western Abenaki', ja: '西部アベナキ語', ko: '서부 아베나키어', zh: '西阿贝纳基语', yue: '西阿貝納基語',
+               vi: 'Tiếng Abenaki Tây', th: 'ภาษาอาเบนากีตะวันตก', id: 'Bahasa Abenaki Barat', hi: 'पश्चिमी अबेनाकी',
+               de: 'West-Abenaki', fr: 'Abénaquis occidental', it: 'Abenaki occidentale',
+               es_eu: 'Abenaki occidental', es_mx: 'Abenaki occidental', pt_eu: 'Abenaki ocidental', pt_br: 'Abenaki ocidental',
+               ru: 'Западно-абенакский', uk: 'Західноабенакська', ar: 'الأبيناكي الغربية', he: 'אבנקי מערבית', sw: 'Kiabenaki cha Magharibi' },
+        bom: { en: 'Berom', ja: 'ベロム語', ko: '베롬어', zh: '贝罗姆语', yue: '貝羅姆語',
+               vi: 'Tiếng Berom', th: 'ภาษาเบรอม', id: 'Bahasa Berom', hi: 'बेरोम',
+               de: 'Berom', fr: 'Birom', it: 'Berom',
+               es_eu: 'Berom', es_mx: 'Berom', pt_eu: 'Berom', pt_br: 'Berom',
+               ru: 'Беромский', uk: 'Беромська', ar: 'البيروم', he: 'בירום', sw: 'Kiberom' },
+    };
+    for (const code of Object.keys(ADDED105)) {
+        for (const ui of Object.keys(ADDED105[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED105[code][ui];
+            }
+        }
+    }
 })();

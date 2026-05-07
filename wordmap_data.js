@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 901 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 904 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -359,6 +359,10 @@ const LANG_DATA = {
   // Uralic Siberian (Samoyedic + Ob-Ugric)
   yrk: { name: 'Nenets', native: 'Ненэцяˮ вада', lat: 67.64, lng: 53.01, // Naryan-Mar
     words: { water:['ӣд','iːd'], fire:['ту','tu'], sun:['хаер','xajer'], moon:['ирий','iriː'], mother:['небя','nebja'], father:['нися','nisja'], eat:['ёлась','jolasʲ'], drink:['я','ja'], love:['садось','sadosʲ'], heart:['сей','sej'], tree:['пя','pja'], house:['мяˮ','mjaʔ'], dog:['вэно','weno'], cat:['кошка','koʂka'], hand:['ӈуда','ŋuda'], eye:['сэв','sev'], hello:['аньˮторова','anʔtorova'], thanks:['спасибо','spasibo'], one:['ӈопой','ŋopoj'], good:['сава','sawa'] }},
+  // Forest Enets — Uralic Samoyedic Northern (sister to Tundra Enets enh and Tundra Nenets yrk within the Northern Samoyedic branch; the Forest Enets community lives in the taiga forest zone south of the Tundra Enets), ~30 fluent (critically endangered — UNESCO critically endangered; on the verge of extinction with only elderly speakers remaining), Russia (Krasnoyarsk Krai — Taymyr Dolgan-Nenets District; Potapovo and Vorontsovo settlements on the lower Yenisei River).
+  // Sources: Ethnologue 27 'enf'; Glottolog fore1281; Sorokina (1995) Forest Enets Reference Grammar.
+  enf: { name: 'Forest Enets', native: 'Бай тоны', lat: 68.71, lng: 86.17, // Potapovo, Taymyr Dolgan-Nenets District, Krasnoyarsk Krai
+    words: { water:['biː','biː'], fire:['too','toː'], sun:['kayua','kajua'], moon:['ireʔ','ireʔ'], mother:['ebya','ebja'], father:['niʃe','niʃe'], eat:['nyaʔ','ɲaʔ'], drink:['ya','ja'], love:['sodaʔ','sodaʔ'], heart:['ʃeyə','ʃejə'], tree:['piʔ','piʔ'], house:['mê','mê'], dog:['weʔ','weʔ'], cat:['katuʔ','katuʔ'], hand:['udaʔ','udaʔ'], eye:['ʃeʔ','ʃeʔ'], hello:['anyo','aɲo'], thanks:['spasibo','spasibo'], one:['ŋoʔ','ŋoʔ'], good:['sawa','sawa'] }},
   // Nganasan — Samoyedic, ~125 speakers, Taymyr Peninsula. Northernmost Eurasian language.
   // Sources: Ethnologue 27 'nio'; Glottolog ngan1291; Helimski (1998) Nganasan grammar.
   nio: { name: 'Nganasan', native: 'Ӈаасан', lat: 71.97, lng: 102.50, // Volochanka, Taymyr
@@ -713,6 +717,10 @@ const LANG_DATA = {
     words: { water:['ilma','ilma'], fire:['nar','naːɾ'], sun:['xemx','ʃɛmʃ'], moon:['qamar','ʔamaɾ'], mother:['omm','omm'], father:['missier','missiɛɾ'], eat:['jiekol','jiɛkol'], drink:['jixrob','jiʃɾop'], love:['imħabba','imħabːa'], heart:['qalb','ʔalp'], tree:['siġra','sid͡ʒɾa'], house:['dar','daːɾ'], dog:['kelb','kɛlp'], cat:['qattus','ʔattus'], hand:['id','iːt'], eye:['għajn','ajn'], hello:['merħba','mɛɾħba'], thanks:['grazzi','ɡɾatt͡si'], one:['wieħed','wiɛħɛt'], good:['tajjeb','tajːɛp'] }},
   ig: { name: 'Igbo', native: 'Igbo', lat: 6.17, lng: 6.79, // Onitsha (Igbo historical/commercial center)
     words: { water:['mmiri','mːiɾi'], fire:['ọkụ','ɔkʊ'], sun:['anyanwụ','aɲaŋwʊ'], moon:['ọnwa','ɔŋwa'], mother:['nne','nːɛ'], father:['nna','nːa'], eat:['iri','iɾi'], drink:['aṅụ','aŋʊ'], love:['ịhụnanya','ɪhʊnaɲa'], heart:['obi','obi'], tree:['osisi','osisi'], house:['ụlọ','ʊlɔ'], dog:['nkịta','ŋkɪta'], cat:['nwamba','ŋwamba'], hand:['aka','aka'], eye:['anya','aɲa'], hello:['nnọọ','nːɔː'], thanks:['daalụ','daːlʊ'], one:['otu','otu'], good:['ọma','ɔma'] }},
+  // Berom (Birom) — Niger-Congo Atlantic-Congo Benue-Congo Plateau (sister to other Plateau languages of Nigeria's Jos Plateau region; the largest of the Plateau languages, with the Berom people being one of the major indigenous groups of Plateau State around Jos), ~1M, Nigeria (Plateau State — Jos South, Barkin Ladi, Riyom, Jos North local government areas; small populations in southern Kaduna and Bauchi states).
+  // Sources: Ethnologue 27 'bom'; Glottolog bero1242; Bouquiaux (1970) La langue Birom.
+  bom: { name: 'Berom', native: 'Cẹn Bẹrom', lat: 9.92, lng: 8.89, // Jos, Plateau State, Nigeria (Berom heartland)
+    words: { water:['bí','bi'], fire:['cá','tʃa'], sun:['kọs','kɔs'], moon:['cwèl','tʃwel'], mother:['ne','ne'], father:['da','da'], eat:['rì','ɾi'], drink:['nyaŋ','ɲaŋ'], love:['shìr','ʃiɾ'], heart:['kúgú','kuɡu'], tree:['kàn','kan'], house:['wùm','wum'], dog:['cà','tʃa'], cat:['mìshí','miʃi'], hand:['kpàá','kpaː'], eye:['nyíí','ɲiː'], hello:['kèèlé','keːle'], thanks:['gèyak','ɡejak'], one:['kòp','kop'], good:['mwa','mwa'] }},
   // Tiv — Niger-Congo (Atlantic-Congo, Bantoid, Tivoid — sister to other Tivoid Cameroonian languages but historically isolated in Nigeria), ~5M, Nigeria (Benue State — Gboko, Makurdi).
   // Sources: Ethnologue 27 'tiv'; Glottolog tivv1240; Abraham (1940) Tiv-English Dictionary.
   tiv: { name: 'Tiv', native: 'Tiv', lat: 7.34, lng: 9.00, // Gboko, Benue State, Nigeria
@@ -2166,6 +2174,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'pqm'; Glottolog male1292; Leavitt (1996) Passamaquoddy-Maliseet grammar.
   pqm: { name: 'Maliseet-Passamaquoddy', native: 'Wolastoqey latuwewakon', lat: 45.96, lng: -67.04, // Tobique First Nation, NB / Pleasant Point, ME
     words: { water:['samaqan','samaːkan'], fire:['skwut','skʷut'], sun:['kisuhs','kisuhs'], moon:['nipawset','nipawset'], mother:['nikuwoss','nikuwoss'], father:['mihtaqs','mihtaqs'], eat:['mititi','mititi'], drink:['mun','mun'], love:['kosi','kosi'], heart:['utʼɩne','utɩnə'], tree:['ʼsupi','supi'], house:['wikkihtit','wikːihtit'], dog:['ʼmuʼs','muʔs'], cat:['mihtukomuhs','mihtukomuhs'], hand:['lukikʼn','lukikən'], eye:['ʼskinekekutu','skinekekutu'], hello:['kʼulasuwiyat','kʼulasuwijat'], thanks:['woliwon','woliwon'], one:['pesokul','pesokul'], good:['woli','woli'] }},
+  // Western Abenaki — Algonquian Eastern Abenakian (sister to Maliseet-Passamaquoddy pqm and Penobscot-Eastern Abenaki within the Abenakian sub-branch; the western variety is the more thoroughly studied Abenakian language thanks to Daniel Day's 1995 dictionary), ~10 fluent (critically endangered — UNESCO critically endangered; vibrant heritage revival via Odanak community language program), Canada (Quebec — Odanak/Saint-François First Nation; Wolinak First Nation) + USA (Vermont — Missisquoi, Cowassuck heritage groups).
+  // Sources: Ethnologue 27 'abe'; Glottolog west2630; Day (1995) Western Abenaki Dictionary; Laurent (1884) New Familiar Abenakis and English Dialogues.
+  abe: { name: 'Western Abenaki', native: 'Aln8baôdwawôgan', lat: 46.05, lng: -72.83, // Odanak/Saint-François, Quebec
+    words: { water:["nebi","nebi"], fire:["skuda","skuda"], sun:["kisos","kisos"], moon:["nanibossad","nanibossad"], mother:["nigueno","niɡweno"], father:["mitôgwes","mitõɡwes"], eat:["midjoda","midʒoda"], drink:["minoda","minoda"], love:["wadjawimaɔ","wadʒawimɔ̃"], heart:["matagua","mataɡwa"], tree:["abazi","abazi"], house:["wigwôm","wiɡwõm"], dog:["alemos","alemos"], cat:["minasso","minasso"], hand:["nelidj","nelidʒ"], eye:["seskaganno","seskaɡanno"], hello:["kwai","kwai"], thanks:["wliwni","wliwni"], one:["ngwedi","ŋɡwedi"], good:["wlaha","wlaha"] }},
   // Munsee — Algonquian Eastern (Lenape branch), critically endangered (~2 fluent), heritage-revival.
   // Sources: Ethnologue 27 'umu'; Glottolog muns1238; Goddard (1979) Munsee Phonology.
   umu: { name: 'Munsee', native: 'Lunaapeew', lat: 42.78, lng: -82.05, // Moraviantown, Ontario (Munsee Delaware Nation)
