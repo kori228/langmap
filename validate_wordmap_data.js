@@ -782,21 +782,39 @@ for (const code of codes) {
         }
     }
     // Audit Task 103/104: wordEvidence.formType enum (when present)
-    // Audit Task 97: split evidence enum (formEvidence / pronunciationEvidence / conceptEvidence)
+    // Audit Task 97 / 195: split evidence enum.
+    //   Legacy stream names (Task 97): formEvidence / pronunciationEvidence / conceptEvidence
+    //   Pilot stream names (Task 195): languageEvidence / pronunciationEvidence / semanticEvidence
+    // Both are accepted by the validator. The pilot uses the new names
+    // for clearer semantics (form is *language-shaped*; concept is
+    // *semantic-shaped*); the legacy names are retained for the cells
+    // already migrated under Task 97.
     if (lang.wordEvidence && typeof lang.wordEvidence === 'object') {
         const FT_ENUM = new Set(['free-word','bound-stem','root','inflected-form','phrase','reconstructed-root','agreement-stem','greeting-formula','thanks-formula','compound','light-verb-construction']);
         const SPLIT_EV_ENUM = new Set(['direct','proxy','reconstructed','inferred','disputed','pedagogical','noted']);
+        const LEGACY_SPLIT = ['formEvidence', 'pronunciationEvidence', 'conceptEvidence'];
+        const PILOT_SPLIT  = ['languageEvidence', 'pronunciationEvidence', 'semanticEvidence'];
+        const ALL_SPLIT    = new Set([...LEGACY_SPLIT, ...PILOT_SPLIT]);
         for (const k of Object.keys(lang.wordEvidence)) {
             const ev = lang.wordEvidence[k];
             if (!ev) continue;
             if (ev.formType !== undefined && !FT_ENUM.has(ev.formType)) {
                 E(`[#13q] ${code}: wordEvidence.${k}.formType "${ev.formType}" not in enum (Audit Task 103/104)`);
             }
-            // Audit Task 97: split-evidence enum check (when present)
-            for (const split of ['formEvidence', 'pronunciationEvidence', 'conceptEvidence']) {
+            // Audit Task 97 / 195: split-evidence enum check (when present)
+            for (const split of ALL_SPLIT) {
                 if (ev[split] !== undefined && !SPLIT_EV_ENUM.has(ev[split])) {
-                    E(`[#13r] ${code}: wordEvidence.${k}.${split} "${ev[split]}" not in enum (Audit Task 97)`);
+                    E(`[#13r] ${code}: wordEvidence.${k}.${split} "${ev[split]}" not in enum (Audit Task 97/195)`);
                 }
+            }
+            // Audit Task 195: a cell that uses pilot stream names should
+            // not also set legacy stream names. Mixing the two within a
+            // single cell makes the modal renderer pick a non-deterministic
+            // stream label. WARN so existing cells aren't broken.
+            const usesPilot  = PILOT_SPLIT.some(s => ev[s] !== undefined && s !== 'pronunciationEvidence');
+            const usesLegacy = LEGACY_SPLIT.some(s => ev[s] !== undefined && s !== 'pronunciationEvidence');
+            if (usesPilot && usesLegacy) {
+                W(`[#195] ${code}: wordEvidence.${k} mixes pilot (languageEvidence/semanticEvidence) and legacy (formEvidence/conceptEvidence) stream names — pick one (Audit Task 195)`);
             }
             // Audit Task 97: url must be http(s) when present
             if (ev.url !== undefined) {
@@ -804,10 +822,28 @@ for (const code of codes) {
                     E(`[#13r] ${code}: wordEvidence.${k}.url "${ev.url}" not http(s) (Audit Task 97)`);
                 }
             }
-            // Audit Task 97: accessed must be ISO date YYYY-MM-DD when present
+            // Audit Task 189: accessed required when url is present, must be
+            // ISO 8601 (YYYY-MM-DD), and must not be future-dated.
+            // Without accessed-on, link rot makes citations un-verifiable.
+            if (ev.url !== undefined && ev.accessed === undefined) {
+                W(`[#189] ${code}: wordEvidence.${k}.url is set but .accessed is missing — add ISO 8601 date (Audit Task 189)`);
+            }
             if (ev.accessed !== undefined) {
                 if (typeof ev.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(ev.accessed)) {
-                    W(`[#13r] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" not ISO date (Audit Task 97)`);
+                    E(`[#189] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" not ISO 8601 YYYY-MM-DD (Audit Task 189)`);
+                } else {
+                    // Future-dated → ERROR. Past > 1 year → INFO (review hint).
+                    const today = new Date().toISOString().slice(0, 10);
+                    if (ev.accessed > today) {
+                        E(`[#189] ${code}: wordEvidence.${k}.accessed "${ev.accessed}" is in the future (today=${today}) (Audit Task 189)`);
+                    } else {
+                        const accessedDate = new Date(ev.accessed + 'T00:00:00Z');
+                        const oneYearAgo = new Date();
+                        oneYearAgo.setUTCFullYear(oneYearAgo.getUTCFullYear() - 1);
+                        if (accessedDate < oneYearAgo) {
+                            // Hold quiet; counted in the coverage line below.
+                        }
+                    }
                 }
             }
             // Audit Task 133: structured citation object (when present).
@@ -831,8 +867,21 @@ for (const code of codes) {
                     if (cit.url !== undefined && (typeof cit.url !== 'string' || !/^https?:\/\//i.test(cit.url))) {
                         E(`[#13t] ${code}: wordEvidence.${k}.citation.url not http(s) (Audit Task 133)`);
                     }
-                    if (cit.accessed !== undefined && (typeof cit.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(cit.accessed))) {
-                        W(`[#13t] ${code}: wordEvidence.${k}.citation.accessed not ISO date (Audit Task 133)`);
+                    // Audit Task 189: citation.accessed has the same rules
+                    // as wordEvidence.accessed — required when citation.url
+                    // is set, ISO 8601, not future-dated.
+                    if (cit.url !== undefined && cit.accessed === undefined) {
+                        W(`[#189] ${code}: wordEvidence.${k}.citation.url set but .citation.accessed missing (Audit Task 189)`);
+                    }
+                    if (cit.accessed !== undefined) {
+                        if (typeof cit.accessed !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(cit.accessed)) {
+                            E(`[#189] ${code}: wordEvidence.${k}.citation.accessed "${cit.accessed}" not ISO 8601 YYYY-MM-DD (Audit Task 189)`);
+                        } else {
+                            const today = new Date().toISOString().slice(0, 10);
+                            if (cit.accessed > today) {
+                                E(`[#189] ${code}: wordEvidence.${k}.citation.accessed "${cit.accessed}" is in the future (today=${today}) (Audit Task 189)`);
+                            }
+                        }
                     }
                 }
             }
@@ -1492,16 +1541,24 @@ for (const code of codes) {
 }
 
 // === Split evidence schemas adoption (Audit Task 195) ===
-// Tracks how many wordEvidence cells use the split form
-// (formEvidence / pronunciationEvidence / conceptEvidence) vs the
-// legacy unified `{ evidence, source }` form. Deprecation is
-// information-only for now; once Task 195's pilot lands the validator
-// can promote legacy-only cells to a WARN.
+// Tracks how many wordEvidence cells use the split form vs the legacy
+// unified `{ evidence, source }` form. Two stream-naming conventions are
+// counted separately so the team can see the pilot landing:
+//   - legacy   (Task 97):  formEvidence / pronunciationEvidence / conceptEvidence
+//   - pilot    (Task 195): languageEvidence / pronunciationEvidence / semanticEvidence
+// `pronunciationEvidence` is shared between the two; for stream
+// identification we look at the form/concept slot names.
+// Coverage of `pilot` languages is tracked too (target: 5 languages
+// per the Task 195 pilot scope). Once 5 languages × 20 cells use the
+// pilot form, the validator can flip the legacy-form INFO into WARN.
 {
     let splitCount = 0;
     let legacyCount = 0;
+    let pilotCount = 0;
+    let unifiedCount = 0;
     let totalCells = 0;
     let citationCount = 0;
+    const pilotLangs = new Set();
     for (const code of codes) {
         const lang = ctx.LANG_DATA[code];
         const we = lang?.wordEvidence;
@@ -1510,17 +1567,111 @@ for (const code of codes) {
             const ev = we[k];
             if (!ev || typeof ev !== 'object') continue;
             totalCells += 1;
-            const hasSplit = ev.formEvidence !== undefined ||
-                             ev.pronunciationEvidence !== undefined ||
-                             ev.conceptEvidence !== undefined;
-            const hasLegacy = ev.evidence !== undefined;
-            if (hasSplit) splitCount += 1;
-            else if (hasLegacy) legacyCount += 1;
+            const hasLegacySplit = ev.formEvidence !== undefined ||
+                                   ev.conceptEvidence !== undefined;
+            const hasPilotSplit  = ev.languageEvidence !== undefined ||
+                                   ev.semanticEvidence !== undefined;
+            const hasAnySplit    = hasLegacySplit || hasPilotSplit ||
+                                   ev.pronunciationEvidence !== undefined;
+            const hasUnified     = ev.evidence !== undefined;
+            if (hasAnySplit) splitCount += 1;
+            if (hasLegacySplit) legacyCount += 1;
+            if (hasPilotSplit) {
+                pilotCount += 1;
+                pilotLangs.add(code);
+            }
+            if (!hasAnySplit && hasUnified) unifiedCount += 1;
             if (ev.citation !== undefined) citationCount += 1;
         }
     }
-    I(`split-evidence adoption: ${splitCount}/${totalCells} cells use split schema; ${legacyCount} still on legacy unified form (Audit Task 195)`);
+    I(`split-evidence adoption: ${splitCount}/${totalCells} cells use split schema (legacy=${legacyCount}, pilot=${pilotCount}); ${unifiedCount} still on unified { evidence, source } form (Audit Task 97/195)`);
+    I(`split-evidence pilot coverage: ${pilotLangs.size}/5 pilot languages adopted (Audit Task 195)`);
+    if (pilotLangs.size > 0) {
+        I(`  pilot languages: ${[...pilotLangs].slice(0, 10).join(', ')}${pilotLangs.size > 10 ? `, …${pilotLangs.size - 10} more` : ''}`);
+    }
     I(`structured citation adoption: ${citationCount}/${totalCells} cells use citation object (Audit Task 133/195)`);
+}
+
+// === Runtime overlay → static migration tracker (Audit Task 192) ===
+// Detects each `for (const code of Object.keys(<MAP>))` overlay setter
+// pattern still present in wordmap_meta.js. Each detected pattern is a
+// candidate for static migration. INFO-level so existing setters keep
+// running; the team can promote to WARN as overlays are migrated.
+{
+    const fs = require('fs');
+    let metaSrc = '';
+    try { metaSrc = fs.readFileSync('wordmap_meta.js', 'utf-8'); }
+    catch (e) { /* skip if file unreadable */ }
+    if (metaSrc) {
+        const overlayPattern = /for \(const code of Object\.keys\(([A-Z_]+)\)\)/g;
+        const found = new Set();
+        let m;
+        while ((m = overlayPattern.exec(metaSrc)) !== null) found.add(m[1]);
+        // Filter out non-overlay loops (overlays write into LANG_DATA[code].meta.X)
+        const KNOWN_OVERLAYS = [
+            'PRONUNCIATION_TYPE', 'COVERAGE', 'LOCATION_BASIS_OVERRIDES',
+            'SURFACE_TYPE', 'LANGUAGE_KIND', 'CANONICAL_CODE', 'ALIASES',
+            'FORM_TYPE_OVERLAY', 'SPEAKER_BACKFILL', 'UNATTESTED_REASON_DEFAULTS',
+            'REVIEW_STATUS', 'VARIETY_REL', 'DISAMBIGUATORS', 'SOURCE_BACKFILL',
+            'SCRIPT_TAGS', 'DESC_JKZ', 'DATA_STATUS_OVERRIDES',
+        ];
+        const remaining = KNOWN_OVERLAYS.filter(o => found.has(o));
+        const migrated = KNOWN_OVERLAYS.filter(o => !found.has(o));
+        I(`runtime overlay maps remaining: ${remaining.length}/${KNOWN_OVERLAYS.length} (Audit Task 192)`);
+        if (migrated.length > 0) {
+            I(`  migrated: ${migrated.join(', ')}`);
+        }
+        if (remaining.length > 0) {
+            I(`  remaining: ${remaining.join(', ')}`);
+        }
+    }
+}
+
+// === wordEvidence.accessed ISO 8601 backfill (Audit Task 189) ===
+// Tracks coverage of `accessed` dates across all wordEvidence cells
+// that carry a `url`. Promote the WARN to ERROR once Phase 1 backfill
+// reaches 100%. Stale-date INFO is a hint to re-verify.
+{
+    let urlCells = 0;
+    let urlWithAccessed = 0;
+    let staleDates = 0;
+    let citationUrls = 0;
+    let citationUrlWithAccessed = 0;
+    const today = new Date().toISOString().slice(0, 10);
+    const oneYearAgoStr = (() => {
+        const d = new Date();
+        d.setUTCFullYear(d.getUTCFullYear() - 1);
+        return d.toISOString().slice(0, 10);
+    })();
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const we = lang?.wordEvidence;
+        if (!we || typeof we !== 'object') continue;
+        for (const k of Object.keys(we)) {
+            const ev = we[k];
+            if (!ev || typeof ev !== 'object') continue;
+            if (ev.url) {
+                urlCells += 1;
+                if (typeof ev.accessed === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(ev.accessed)) {
+                    urlWithAccessed += 1;
+                    if (ev.accessed < oneYearAgoStr) staleDates += 1;
+                }
+            }
+            if (ev.citation && typeof ev.citation === 'object' && ev.citation.url) {
+                citationUrls += 1;
+                if (typeof ev.citation.accessed === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(ev.citation.accessed)) {
+                    citationUrlWithAccessed += 1;
+                    if (ev.citation.accessed < oneYearAgoStr) staleDates += 1;
+                }
+            }
+        }
+    }
+    const totalUrls = urlCells + citationUrls;
+    const totalWithAccessed = urlWithAccessed + citationUrlWithAccessed;
+    I(`wordEvidence.accessed coverage: ${totalWithAccessed}/${totalUrls} URL-bearing cells have accessed date (wordEvidence=${urlWithAccessed}/${urlCells}, citation=${citationUrlWithAccessed}/${citationUrls}) (Audit Task 189)`);
+    if (staleDates > 0) {
+        I(`  ${staleDates} accessed date(s) older than 1 year — consider re-verifying source URL (today=${today})`);
+    }
 }
 
 // === reviewStatus distribution + consistency (Audit Task 172) ===
