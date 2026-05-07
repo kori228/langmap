@@ -395,6 +395,7 @@ const FAMILY_TOP_ALLOW = new Set([
     // Audit Task 149/150: new family top-tokens introduced
     'Atlantic-Congo',                  // Bantu E70/JE Runyakitara cluster
     'Portuguese-based creole',         // kea Cape Verdean
+    'Spanish-based creole',            // cbk Chavacano (Zamboangueño)
     'Songhai',                         // ses Koyraboro Senni — genealogically isolated
     // Pass 35: new family top-tokens
     'Tyrsenian',                       // ett Etruscan + (potentially) Lemnian/Raetic

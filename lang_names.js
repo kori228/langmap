@@ -1085,4 +1085,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED40 = {
+        sjd: { en: 'Kildin Sámi', ja: 'キルディン・サーミ語', ko: '킬딘 사미어', zh: '希尔丁萨米语', yue: '希爾丁薩米語',
+               vi: 'Tiếng Sami Kildin', th: 'ภาษาซามีคิลดิน', id: 'Sami Kildin', hi: 'किल्डिन सामी',
+               de: 'Kildinsamisch', fr: 'Same de Kildin', it: 'Sami di Kildin',
+               es_eu: 'Sami de Kildin', es_mx: 'Sami de Kildin', pt_eu: 'Sami de Kildin', pt_br: 'Sami de Kildin',
+               ru: 'Кильдинский саамский', uk: 'Кільдинська саамська', ar: 'الصامي الكلديني', he: 'סאמית קילדינית', sw: 'Kisami cha Kildin' },
+        cbk: { en: 'Chavacano', ja: 'チャバカノ語', ko: '차바카노어', zh: '查瓦卡诺语', yue: '查瓦卡諾語',
+               vi: 'Tiếng Chavacano', th: 'ภาษาชาวากาโน', id: 'Bahasa Chavacano', hi: 'चावाकानो',
+               de: 'Chavacano', fr: 'Chavacano', it: 'Chavacano',
+               es_eu: 'Chabacano', es_mx: 'Chabacano', pt_eu: 'Chavacano', pt_br: 'Chavacano',
+               ru: 'Чавакано', uk: 'Чавакано', ar: 'التشافاكانو', he: 'צ׳וואקאנו', sw: 'Kichavacano' },
+        djk: { en: 'Aukan (Ndyuka)', ja: 'アウカン語', ko: '아우칸어', zh: '奥坎语', yue: '奧坎語',
+               vi: 'Tiếng Aukan', th: 'ภาษาอูคัน', id: 'Bahasa Aukan', hi: 'औकान',
+               de: 'Aukanisch', fr: 'Aukan', it: 'Aukan',
+               es_eu: 'Aukan', es_mx: 'Aukan', pt_eu: 'Aukan', pt_br: 'Aukan',
+               ru: 'Ауканский', uk: 'Ауканська', ar: 'الأوكان', he: 'אאוקאן', sw: 'Kiaukan' },
+    };
+    for (const code of Object.keys(ADDED40)) {
+        for (const ui of Object.keys(ADDED40[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED40[code][ui];
+            }
+        }
+    }
 })();

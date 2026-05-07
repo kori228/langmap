@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 730 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 733 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -770,6 +770,10 @@ const LANG_DATA = {
     words: { water:['čääci','tʃæːtsi'], fire:['tollâ','tolːa'], sun:['peivi','peivi'], moon:['maanu','maːnu'], mother:['enni','enːi'], father:['eeči','eːtʃi'], eat:['porrâđ','porːað'], drink:['jukkâđ','jukːað'], love:['rähistus','ræhistus'], heart:['vájmu','vaːjmu'], tree:['muorâ','muɔra'], house:['stuobbâ','stuɔbːa'], dog:['peenâg','peːnaɡ'], cat:['kissá','kisːaː'], hand:['kietâ','kieta'], eye:['čalme','tʃalme'], hello:['tiervâ','tiervaː'], thanks:['tiittu','tiːtːu'], one:['ohtâ','ohta'], good:['pyere','pyere'] }},
   sms: { name: 'Skolt Sámi', native: 'sääʹmǩiõll', lat: 68.49, lng: 28.22, // Sevettijärvi
     words: { water:['čääʹcc','tʃæːtsː'], fire:['toll','tolː'], sun:['peeiʹvv','peːjvː'], moon:['mään','mæːn'], mother:['jeäʹnn','jæːnː'], father:['eeʹǩǩ','eːkː'], eat:['poorrâd','porːad'], drink:['juukkâd','juːkːad'], love:['rääʹǩǩes','ræːkːes'], heart:['vueʹmm','vueʹmː'], tree:['muõrr','muɔrː'], house:['kåʹdd','kɔdː'], dog:['piânnaj','pianːaj'], cat:['kõõšš','kɵːʃː'], hand:['ǩeätt','kʲætː'], eye:['čââlm','tʃæːlm'], hello:['tiõrv','tiɵrv'], thanks:['späʹsseb','spæsːeb'], one:['õhtt','ɵhtː'], good:['šiõǥǥ','ʃiɵɣː'] }},
+  // Kildin Sámi — Uralic (Sami, Eastern), ~340 speakers, Russia (Kola Peninsula). Only Russian-territory Sami language with ongoing literacy program.
+  // Sources: Ethnologue 27 'sjd'; Glottolog kild1236; Kuruch (1985) Russian-Kildin Sami Dictionary; Itkonen (1958).
+  sjd: { name: 'Kildin Sámi', native: 'Кӣллт са̄мь кӣлл', lat: 67.65, lng: 33.40, // Lovozero, Murmansk Oblast (cultural center of Kola Sami)
+    words: { water:['чадзь','tʃadzʲ'], fire:['тоалл','toallʲ'], sun:['пе̄ййв','peːjjv'], moon:['ма̄нн','maːnn'], mother:['е̄ннҍ','jeːnnʲ'], father:['а̄джь','aːdʒʲ'], eat:['пӯрраҥе','puːrraŋe'], drink:['югкаҥе','jukkaŋe'], love:['па̄ллай','paːllaj'], heart:['чӯлм','tʃuːlm'], tree:['муэрр','muerr'], house:['пэ̄ҏҏт','peːrrt'], dog:['пенне','penne'], cat:['ке̄ршш','keːrʃː'], hand:['кэдт','kʲedt'], eye:['чальм','tʃalʲm'], hello:['тиерв','tjerv'], thanks:['пасьпе','pasʲpe'], one:['ыкт','ɨkt'], good:['шӣгг','ʃiːɡː'] }},
   vro: { name: 'Võro', native: 'võro kiil', lat: 57.83, lng: 27.02, // Võru
     words: { water:['vesi','vesi'], fire:['tuli','tuli'], sun:['päiv','pæiv'], moon:['kuu','kuː'], mother:['imä','imæ'], father:['esä','esæ'], eat:['süümä','syːmæ'], drink:['juuma','juːma'], love:['armastus','ɑrmɑstus'], heart:['süä','syæ'], tree:['puu','puː'], house:['kotus','kotus'], dog:['pini','pini'], cat:['kass','kɑsː'], hand:['käsi','kæsi'], eye:['silm','silm'], hello:['tere','tere'], thanks:['aitäh','ɑitæh'], one:['üts','yts'], good:['hää','hæː'] }},
   gn: { name: 'Guarani', native: "Avañe'ẽ", lat: -25.26, lng: -57.58,
@@ -1477,6 +1481,10 @@ const LANG_DATA = {
     words: { water:['aèng','aɛŋ'], fire:['apoy','apɔj'], sun:['are','are'], moon:['bulen','bulən'], mother:['ebu','əbu'], father:['eppa\'','əppaʔ'], eat:['ngakan','ŋakan'], drink:['ngenom','ŋənɔm'], love:['tresna','tresna'], heart:['ate','atɛ'], tree:['kajuh','kaju'], house:['bengko','bəŋkɔ'], dog:['pate\'','patɛʔ'], cat:['koceng','kɔtʃɛŋ'], hand:['tanang','tanaŋ'], eye:['mata','mata'], hello:['salam','salam'], thanks:['tarèma kasè','tarɛma kasɛ'], one:['settong','səttɔŋ'], good:['bagus','baɡus'] }},
   hil: { name: 'Hiligaynon', native: 'Ilonggo', lat: 10.72, lng: 122.56, // Iloilo
     words: { water:['tubig','tubiɡ'], fire:['kalayo','kalajɔ'], sun:['adlaw','adlaw'], moon:['bulan','bulan'], mother:['nanay','nanaj'], father:['tatay','tataj'], eat:['kaon','kaʔɔn'], drink:['inom','ʔinɔm'], love:['gugma','ɡuɡma'], heart:['tagipusoon','taɡipusɔʔɔn'], tree:['kahoy','kahɔj'], house:['balay','balaj'], dog:['ido','ʔidɔ'], cat:['kuting','kutiŋ'], hand:['kamot','kamɔt'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','ʔisa'], good:['maayo','maʔajɔ'] }},
+  // Chavacano (Zamboangueño) — Spanish-based creole (only Asian Spanish creole), ~700K, Philippines (Zamboanga City + Mindanao).
+  // Sources: Ethnologue 27 'cbk'; Glottolog chav1241; Lipski (2001) Chabacano/Spanish; Forman (1972) Zamboangueño Texts.
+  cbk: { name: 'Chavacano', native: 'Chavacano', lat: 6.92, lng: 122.07, // Zamboanga City
+    words: { water:['agua','ˈaɡwa'], fire:['fuego','ˈfweɡo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['nana','ˈnana'], father:['tata','ˈtata'], eat:['comê','koˈmeʔ'], drink:['bebê','beˈbeʔ'], love:['ama','ˈama'], heart:['corazón','koraˈson'], tree:['árbol','ˈaɾbol'], house:['casa','ˈkasa'], dog:['perro','ˈpeɾo'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['ojo','ˈoxo'], hello:['buenas','ˈbwenas'], thanks:['gracias','ˈɡɾasjas'], one:['uno','ˈuno'], good:['bueno','ˈbweno'] }},
   // Iranian
   bal: { name: 'Balochi', native: 'بلوچی', lat: 30.18, lng: 67.00, // Quetta
     words: { water:['آپ','aːp'], fire:['آس','aːs'], sun:['روچ','roːtʃ'], moon:['ماہ','maːh'], mother:['ماس','maːs'], father:['پت','pit'], eat:['وارگ','waːraɡ'], drink:['نوشاگ','noʃaːɡ'], love:['مہر','mehr'], heart:['دل','dɪl'], tree:['درچک','daraːtʃk'], house:['لاگ','laːɡ'], dog:['کچک','kut͡ʃək'], cat:['پشی','piʃiː'], hand:['دست','dast'], eye:['چم','tʃam'], hello:['درود','dorud'], thanks:['مہربانی','mehrabaːniː'], one:['یک','jak'], good:['شر','ʃər'] }},
@@ -3273,6 +3281,10 @@ const LANG_DATA = {
   // English-based creole (Suriname)
   srn: { name: 'Sranan Tongo', native: 'Sranan Tongo', lat: 5.85, lng: -55.20, // Paramaribo
     words: { water:['watra','watra'], fire:['faya','faja'], sun:['son','soŋ'], moon:['mun','mun'], mother:['mama','mama'], father:['papa','papa'], eat:['nyan','ɲan'], drink:['dringi','driŋi'], love:['lobi','lobi'], heart:['ati','ati'], tree:['bon','boŋ'], house:['oso','oso'], dog:['dagu','daɡu'], cat:['poesi','pusi'], hand:['anu','anu'], eye:['ai','ai'], hello:['odi','odi'], thanks:['grantangi','ɡrantaŋi'], one:['wan','wan'], good:['bun','buŋ'] }},
+  // Aukan / Ndyuka — English-based maroon creole, ~30K, Suriname (Tapanahony River) + French Guiana. Distinct from Sranan; main maroon language.
+  // Sources: Ethnologue 27 'djk'; Glottolog ndyu1242; Huttar & Huttar (1994) Ndyuka grammar.
+  djk: { name: 'Aukan (Ndyuka)', native: 'Okanisi tongo', lat: 4.20, lng: -54.45, // Drietabbetje, upper Tapanahony River
+    words: { water:['watra','watra'], fire:['faya','faja'], sun:['son','soŋ'], moon:['mun','mun'], mother:['mma','mːa'], father:['tata','tata'], eat:['njanjan','ɲaɲaŋ'], drink:['diingi','diːŋi'], love:['lobi','lobi'], heart:['ati','ati'], tree:['bon','boŋ'], house:['osu','osu'], dog:['dagu','daɡu'], cat:['poesi','pusi'], hand:['ana','ana'], eye:['ai','ai'], hello:['fa yu de','fa ju de'], thanks:['gaantangi','ɡaːntaŋi'], one:['wan','wan'], good:['boon','boːŋ'] }},
   // Wakashan (Pacific Northwest Coast)
   kwk: { name: 'Kwak\'wala', native: 'Kwak\'wala', lat: 50.62, lng: -126.93, // Vancouver Island
     words: { water:['\'wap','ʔwap'], fire:['lax̱','lax'], sun:['ƛ\'isa̱la','tɬʼisəla'], moon:['\'mukwa','ʔmukʷa'], mother:['abe','abe'], father:['o̱mp','omp'], eat:['ha̱\'ma̱p','haʔməp'], drink:['na̱\'qa','naʔqa'], love:['\'ya̱x̱is','ʔjəxis'], heart:['ts\'iłas','tsʼiɬas'], tree:['x̱o̱kwa','xokʷa'], house:['g̱ukw','ɡukʷ'], dog:['\'wa̱ts\'i','ʔwətsʼi'], cat:['pi̱s','pis'], hand:['\'wała','ʔwaɬa'], eye:['gigayu','ɡiɡaju'], hello:['gilakas\'la','ɡilakasla'], thanks:['gilakas\'la','ɡilakasla'], one:['\'na̱m','ʔnəm'], good:['ek','ek'] },
