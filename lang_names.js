@@ -1410,4 +1410,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED53 = {
+        ang: { en: 'Old English', ja: '古英語', ko: '고대 영어', zh: '古英语', yue: '古英語',
+               vi: 'Tiếng Anh cổ', th: 'ภาษาอังกฤษโบราณ', id: 'Bahasa Inggris Kuno', hi: 'पुरानी अंग्रेज़ी',
+               de: 'Altenglisch', fr: 'Vieil anglais', it: 'Anglosassone',
+               es_eu: 'Inglés antiguo', es_mx: 'Inglés antiguo', pt_eu: 'Inglês antigo', pt_br: 'Inglês antigo',
+               ru: 'Древнеанглийский', uk: 'Давньоанглійська', ar: 'الإنجليزية القديمة', he: 'אנגלית עתיקה', sw: 'Kiingereza cha Kale' },
+        rgn: { en: 'Romagnol', ja: 'ロマーニョ語', ko: '로마뇰어', zh: '罗马涅语', yue: '羅馬涅語',
+               vi: 'Tiếng Romagnol', th: 'ภาษาโรมัญญอล', id: 'Bahasa Romagnol', hi: 'रोमान्योल',
+               de: 'Romagnolisch', fr: 'Romagnol', it: 'Romagnolo',
+               es_eu: 'Romañol', es_mx: 'Romañol', pt_eu: 'Romanholo', pt_br: 'Romanholo',
+               ru: 'Романьольский', uk: 'Романьольська', ar: 'الرومانية', he: 'רומאניולית', sw: 'Kiromagnol' },
+        ina: { en: 'Interlingua', ja: 'インテルリングア語', ko: '인터링구아어', zh: '国际语', yue: '國際語',
+               vi: 'Interlingua', th: 'ภาษาอินเตอร์ลิงกัว', id: 'Bahasa Interlingua', hi: 'इंटरलिंगुआ',
+               de: 'Interlingua', fr: 'Interlingua', it: 'Interlingua',
+               es_eu: 'Interlingua', es_mx: 'Interlingua', pt_eu: 'Interlingua', pt_br: 'Interlingua',
+               ru: 'Интерлингва', uk: 'Інтерлінгва', ar: 'الإنترلينغوا', he: 'אינטרלינגואה', sw: 'Interlingua' },
+    };
+    for (const code of Object.keys(ADDED53)) {
+        for (const ui of Object.keys(ADDED53[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED53[code][ui];
+            }
+        }
+    }
 })();

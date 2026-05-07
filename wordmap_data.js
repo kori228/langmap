@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 769 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 772 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -738,6 +738,10 @@ const LANG_DATA = {
   // pronunciation. Reference: Genoese standard.
   lij: { name: 'Ligurian', native: 'Lìgure', lat: 44.41, lng: 8.93, // Genoa
     words: { water:['ægoa','ɛɡwa'], fire:['fêugo','føɡu'], sun:['sô','suː'], moon:['lùn-a','lyna'], mother:['moæ','mwɛ'], father:['poæ','pwɛ'], eat:['mangiâ','mandʒaː'], drink:['béive','bejve'], love:['amô','amuː'], heart:['cuô','kwoː'], tree:['ærbo','ɛrbu'], house:['câza','kaːza'], dog:['can','kaŋ'], cat:['gatto','ɡatːu'], hand:['man','maŋ'], eye:['euggio','ødʒu'], hello:['ciâo','tʃaː'], thanks:['graçie','ɡrasje'], one:['un','uŋ'], good:['bon','buŋ'] }},
+  // Romagnol (Rumagnòl) — Italian regional Gallo-Italic, ~1.1M, Italy (Emilia-Romagna — Romagna sub-region: Forlì, Cesena, Ravenna, Rimini).
+  // Sources: Ethnologue 27 'rgn'; Glottolog roma1328; Foresti (1988) Lessico romagnolo; Manzelli (2007).
+  rgn: { name: 'Romagnol', native: 'Rumagnòl', lat: 44.14, lng: 12.24, // Forlì, Romagna
+    words: { water:['acua','ˈakwa'], fire:['fugh','ˈfuɡ'], sun:['sòl','ˈsɔl'], moon:['lónna','ˈlonːa'], mother:['mêdar','ˈmeːdaɾ'], father:['pêdar','ˈpeːdaɾ'], eat:['mâgna','ˈmaɲa'], drink:['bér','ˈbeɾ'], love:['amour','aˈmouɾ'], heart:['côr','ˈkoːɾ'], tree:['arbal','ˈaɾbal'], house:['ca','ˈka'], dog:['can','ˈkan'], cat:['gâta','ˈɡaːta'], hand:['mân','ˈmaːn'], eye:['ucc','ˈutʃ'], hello:['ciô','ˈtʃoː'], thanks:['gras','ˈɡɾas'], one:['ón','ˈon'], good:['bón','ˈbon'] }},
   // Arpitan / Franco-Provençal — Gallo-Romance, ~150K, France/Italy/Switzerland.
   // Distinct from both French and Occitan; UNESCO endangered. Reference
   // Orthographe de Référence B (ORB).
@@ -1022,6 +1026,10 @@ const LANG_DATA = {
   // dialect tradition; Canterbury Tales pilgrims reflect Middle English speech).
   enm: { name: 'Middle English', native: 'Englisch', lat: 51.28, lng: 1.08,
     words: { water:['water','watər'], fire:['fyr','fyːr'], sun:['sonne','sɔnːə'], moon:['mone','moːnə'], mother:['moder','moːdər'], father:['fader','faːdər'], eat:['eten','eːtən'], drink:['drinken','drɪŋkən'], love:['love','lʊvə'], heart:['herte','hɛrtə'], tree:['tre','treː'], house:['hous','huːs'], dog:['hound','huːnd'], cat:['catte','katːə'], hand:['hand','hand'], eye:['eye','iːə'], hello:['hail','hɛːl'], thanks:['gramercy','ɡraːmɛrsiː'], one:['oon','oːn'], good:['good','ɡoːd'] }},
+  // Old English (Anglo-Saxon, Englisċ) — Germanic Western Anglo-Saxon, ~5-12th c. (extinct as L1 with Norman Conquest 1066). Reconstructed from extensive Anglo-Saxon corpus (Beowulf, Anglo-Saxon Chronicle, etc.).
+  // Sources: Ethnologue 27 'ang'; Glottolog olde1238; Bosworth-Toller Anglo-Saxon Dictionary; Mitchell & Robinson (1992) Guide to Old English.
+  ang: { name: 'Old English', native: 'Englisċ', lat: 51.75, lng: -1.26, // Oxford / Wessex (heartland of West Saxon literary standard)
+    words: { water:['wæter','wæter'], fire:['fȳr','fyːr'], sun:['sunne','sunːe'], moon:['mōna','moːnɑ'], mother:['mōdor','moːdor'], father:['fæder','fæder'], eat:['etan','etɑn'], drink:['drincan','drinkɑn'], love:['lufian','luviɑn'], heart:['heorte','heorte'], tree:['trēow','treoːw'], house:['hūs','huːs'], dog:['hund','hund'], cat:['catt','katː'], hand:['hand','hɑnd'], eye:['ēage','eːɑɣe'], hello:['wes hāl','wes haːl'], thanks:['þancian','θɑntsiɑn'], one:['ān','aːn'], good:['gōd','ɡoːd'] }},
   non: { name: 'Old Norse', native: 'Norrǿnt mál', lat: 59.91, lng: 10.75,
     words: { water:['vatn','vɑtn'], fire:['eldr','eldr'], sun:['sól','soːl'], moon:['máni','mɑːni'], mother:['móðir','moːðir'], father:['faðir','fɑðir'], eat:['eta','etɑ'], drink:['drekka','drekːɑ'], love:['ást','ɑːst'], heart:['hjarta','hjɑrtɑ'], tree:['tré','treː'], house:['hús','huːs'], dog:['hundr','hundr'], cat:['kǫttr','kɔtːr'], hand:['hǫnd','hɔnd'], eye:['auga','ɑuɣɑ'], hello:['heill','hɛilː'], thanks:['þǫkk','θɔkː'], one:['einn','ɛinː'], good:['góðr','ɡoːðr'] }},
   got: { name: 'Gothic', native: '𐌲𐌿𐍄𐌹𐍃𐌺', lat: 45.05, lng: 34.10,
@@ -1505,6 +1513,10 @@ const LANG_DATA = {
   // Volapük — first widely-adopted IAL (Schleyer 1879, predates Esperanto)
   vo: { name: 'Volapük', native: 'Volapük', lat: 47.71, lng: 9.20, // Litzelstetten (Schleyer's home)
     words: { water:['vat','vat'], fire:['fil','fil'], sun:['sol','sol'], moon:['mun','mun'], mother:['mot','mot'], father:['fat','fat'], eat:['fidön','fidøn'], drink:['drinön','drinøn'], love:['löf','løf'], heart:['lad','lad'], tree:['bim','bim'], house:['dom','dom'], dog:['dog','doɡ'], cat:['kat','kat'], hand:['nam','nam'], eye:['log','loɡ'], hello:['glidis','ɡlidis'], thanks:['danö','danø'], one:['bal','bal'], good:['gudik','ɡudik'] }},
+  // Interlingua — IALA-developed naturalistic IAL (1951), based on convergent Romance/Latin features visible across major European languages. ~1.5K active users worldwide.
+  // Sources: Ethnologue 27 'ina'; Glottolog inte1239; Gode (1951) Interlingua-English Dictionary; Union Mundial pro Interlingua.
+  ina: { name: 'Interlingua', native: 'Interlingua', lat: 40.71, lng: -74.01, // New York City (IALA founding location)
+    words: { water:['aqua','akwa'], fire:['foco','foko'], sun:['sol','sol'], moon:['luna','luna'], mother:['matre','matɾe'], father:['patre','patɾe'], eat:['mangiar','mandʒaɾ'], drink:['biber','bibeɾ'], love:['amor','amoɾ'], heart:['corde','koɾde'], tree:['arbore','aɾboɾe'], house:['casa','kasa'], dog:['can','kan'], cat:['catto','katːo'], hand:['mano','mano'], eye:['oculo','okulo'], hello:['salute','salute'], thanks:['gratias','ɡɾatjas'], one:['un','un'], good:['bon','bon'] }},
   // Interlingua — naturalistic IAL (IALA 1951)
   ia: { name: 'Interlingua', native: 'Interlingua', lat: 40.71, lng: -74.01, // New York (IALA HQ)
     words: { water:['aqua','akwa'], fire:['foco','fɔko'], sun:['sol','sɔl'], moon:['luna','luna'], mother:['matre','matre'], father:['patre','patre'], eat:['manducar','mandukar'], drink:['biber','biber'], love:['amor','amor'], heart:['corde','kɔrde'], tree:['arbore','arbore'], house:['casa','kasa'], dog:['can','kan'], cat:['catto','katto'], hand:['mano','mano'], eye:['oculo','okulo'], hello:['salute','salute'], thanks:['gratias','ɡratias'], one:['un','un'], good:['bon','bon'] }},
