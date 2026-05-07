@@ -1435,4 +1435,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED54 = {
+        ohu: { en: 'Old Hungarian', ja: '古ハンガリー語', ko: '고대 헝가리어', zh: '古匈牙利语', yue: '古匈牙利語',
+               vi: 'Tiếng Hungary cổ', th: 'ภาษาฮังการีโบราณ', id: 'Bahasa Hungaria Kuno', hi: 'पुरानी हंगेरियन',
+               de: 'Altungarisch', fr: 'Vieux hongrois', it: 'Antico ungherese',
+               es_eu: 'Húngaro antiguo', es_mx: 'Húngaro antiguo', pt_eu: 'Húngaro antigo', pt_br: 'Húngaro antigo',
+               ru: 'Древневенгерский', uk: 'Давньоугорська', ar: 'الهنغارية القديمة', he: 'הונגרית עתיקה', sw: 'Kihungari cha Kale' },
+        egl: { en: 'Emilian', ja: 'エミリア語', ko: '에밀리아어', zh: '艾米利亚语', yue: '艾米利亞語',
+               vi: 'Tiếng Emilia', th: 'ภาษาเอมีเลีย', id: 'Bahasa Emilian', hi: 'एमिलियन',
+               de: 'Emilianisch', fr: 'Émilien', it: 'Emiliano',
+               es_eu: 'Emiliano', es_mx: 'Emiliano', pt_eu: 'Emiliano', pt_br: 'Emiliano',
+               ru: 'Эмильянский', uk: 'Емільянська', ar: 'الإميلية', he: 'אמיליאנית', sw: 'Kiemiliani' },
+        fla: { en: 'Fala', ja: 'ファラ語', ko: '파라어', zh: '法拉语', yue: '法拉語',
+               vi: 'Tiếng Fala', th: 'ภาษาฟาลา', id: 'Bahasa Fala', hi: 'फला',
+               de: 'Fala', fr: 'Fala', it: 'Fala',
+               es_eu: 'Fala', es_mx: 'Fala', pt_eu: 'Fala', pt_br: 'Fala',
+               ru: 'Фала', uk: 'Фала', ar: 'الفالا', he: 'פאלה', sw: 'Kifala' },
+    };
+    for (const code of Object.keys(ADDED54)) {
+        for (const ui of Object.keys(ADDED54[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED54[code][ui];
+            }
+        }
+    }
 })();

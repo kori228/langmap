@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 772 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 775 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -405,6 +405,10 @@ const LANG_DATA = {
     words: { water:['vesi','ʋesi'], fire:['tuli','tuli'], sun:['aurinko','ɑuɾiŋko'], moon:['kuu','kuː'], mother:['äiti','æiti'], father:['isä','isæ'], eat:['syödä','syødæ'], drink:['juoda','juodɑ'], love:['rakkaus','rɑkkɑus'], heart:['sydän','sydæn'], tree:['puu','puː'], house:['talo','tɑlo'], dog:['koira','koiɾɑ'], cat:['kissa','kissɑ'], hand:['käsi','kæsi'], eye:['silmä','silmæ'], hello:['hei','hei'], thanks:['kiitos','kiːtos'], one:['yksi','yksi'], good:['hyvä','hyʋæ'] }},
   hu: { name: 'Hungarian', native: 'Magyar', lat: 47.50, lng: 19.04, // Budapest
     words: { water:['víz','viːz'], fire:['tűz','tyːz'], sun:['nap','nɒp'], moon:['hold','hold'], mother:['anya','ɒɲɒ'], father:['apa','ɒpɒ'], eat:['enni','ɛnːi'], drink:['inni','inːi'], love:['szerelem','sɛrɛlɛm'], heart:['szív','siːv'], tree:['fa','fɒ'], house:['ház','haːz'], dog:['kutya','kucɒ'], cat:['macska','mɒt͡ʃkɒ'], hand:['kéz','keːz'], eye:['szem','sɛm'], hello:['szia','siɒ'], thanks:['köszönöm','køsønøm'], one:['egy','ɛɟ'], good:['jó','joː'] }},
+  // Old Hungarian (Ómagyar) — Uralic Finno-Ugric Hungarian, ~9th-15th c. (Pannonian Basin). Reconstructed from Halotti beszéd (1192-1195) + Ómagyar Mária-siralom (~1300) + early codices.
+  // Sources: Ethnologue 27 'ohu'; Glottolog oldh1241; Bárczi (1958) Magyar hangtörténet; Benkő (1980).
+  ohu: { name: 'Old Hungarian', native: 'Ómagyar', lat: 47.50, lng: 19.04, // Budapest (Pannonian Basin centroid)
+    words: { water:['vȳz','viːz'], fire:['tȳz','tyːz'], sun:['nȁp','nɒp'], moon:['hȍld','hold'], mother:['ènyē','ɛɲeː'], father:['āpá','aːpaː'], eat:['ènni','ɛnːi'], drink:['ìnni','inːi'], love:['szèrēlm','sɛɾeːlm'], heart:['szīw','siːw'], tree:['fȁ','fɒ'], house:['hāz','haːz'], dog:['kuvasz','kuvas'], cat:['macska','matʃka'], hand:['kéz','keːz'], eye:['szèm','sɛm'], hello:['ìstèn hozott','iʃtɛn hozotː'], thanks:['kȍszȍnèm','køsønɛm'], one:['egy','ɛɟ'], good:['jȍw','joːw'] }},
   el: { name: 'Greek', native: 'Ελληνικά', lat: 37.98, lng: 23.73, // Athens
     words: { water:['νερό','neɾo'], fire:['φωτιά','fotʲa'], sun:['ήλιος','ilios'], moon:['φεγγάρι','feŋɡaɾi'], mother:['μητέρα','miteɾa'], father:['πατέρας','pateɾas'], eat:['τρώω','tɾoo'], drink:['πίνω','pino'], love:['αγάπη','aɣapi'], heart:['καρδιά','kaɾðʲa'], tree:['δέντρο','ðendɾo'], house:['σπίτι','spiti'], dog:['σκύλος','skilos'], cat:['γάτα','ɣata'], hand:['χέρι','çeɾi'], eye:['μάτι','mati'], hello:['γεια σου','ʝa su'], thanks:['ευχαριστώ','efxaɾisto'], one:['ένα','ena'], good:['καλό','kalo'] }},
   nl: { name: 'Dutch', native: 'Nederlands', lat: 52.37, lng: 4.90, // Amsterdam
@@ -742,6 +746,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'rgn'; Glottolog roma1328; Foresti (1988) Lessico romagnolo; Manzelli (2007).
   rgn: { name: 'Romagnol', native: 'Rumagnòl', lat: 44.14, lng: 12.24, // Forlì, Romagna
     words: { water:['acua','ˈakwa'], fire:['fugh','ˈfuɡ'], sun:['sòl','ˈsɔl'], moon:['lónna','ˈlonːa'], mother:['mêdar','ˈmeːdaɾ'], father:['pêdar','ˈpeːdaɾ'], eat:['mâgna','ˈmaɲa'], drink:['bér','ˈbeɾ'], love:['amour','aˈmouɾ'], heart:['côr','ˈkoːɾ'], tree:['arbal','ˈaɾbal'], house:['ca','ˈka'], dog:['can','ˈkan'], cat:['gâta','ˈɡaːta'], hand:['mân','ˈmaːn'], eye:['ucc','ˈutʃ'], hello:['ciô','ˈtʃoː'], thanks:['gras','ˈɡɾas'], one:['ón','ˈon'], good:['bón','ˈbon'] }},
+  // Emilian (Emiliàn) — Italic Romance Gallo-Italic, ~2M, Italy (Emilia-Romagna western part — Bologna, Modena, Reggio, Parma, Piacenza). Distinct from sister Romagnol (rgn).
+  // Sources: Ethnologue 27 'egl'; Glottolog emil1241; Foresti (1988) Lessico bolognese; Foresti (2010) Profilo linguistico dell'Emilia-Romagna.
+  egl: { name: 'Emilian', native: 'Emiliàn', lat: 44.49, lng: 11.34, // Bologna, Emilia
+    words: { water:['âcua','ˈakwa'], fire:['fôg','ˈfoɡ'], sun:['sôl','ˈsoːl'], moon:['lónna','ˈlonːa'], mother:['mèder','ˈmɛdɛɾ'], father:['pèder','ˈpɛdɛɾ'], eat:['magnèr','maɲˈɛɾ'], drink:['bevvre','ˈbevːɾe'], love:['amôr','aˈmoːɾ'], heart:['côr','ˈkoːɾ'], tree:['arbal','ˈaɾbal'], house:['cà','ˈka'], dog:['can','ˈkan'], cat:['gât','ˈɡat'], hand:['mân','ˈman'], eye:['ucc','ˈutʃ'], hello:['cciô','ˈtʃoː'], thanks:['gràzie','ˈɡɾaːtsje'], one:['un','ˈun'], good:['bón','ˈbon'] }},
   // Arpitan / Franco-Provençal — Gallo-Romance, ~150K, France/Italy/Switzerland.
   // Distinct from both French and Occitan; UNESCO endangered. Reference
   // Orthographe de Référence B (ORB).
@@ -1987,6 +1995,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ext'; Glottolog extr1244; Viudas Camarasa (1988) Diccionario Extremeño.
   ext: { name: 'Extremaduran', native: 'Estremeñu', lat: 39.47, lng: -6.37, // Cáceres, Extremadura
     words: { water:['agua','ˈaɣwa'], fire:['huegu','ˈweɣu'], sun:['sol','sɔl'], moon:['luna','ˈluna'], mother:['mai','mai'], father:['pai','pai'], eat:['comel','koˈmel'], drink:['bebel','beˈβel'], love:['queré','keˈɾe'], heart:['curaçón','kuɾaˈsɔn'], tree:['arbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['perru','ˈpɛru'], cat:['gatu','ˈɣatu'], hand:['manu','ˈmanu'], eye:['oju','ˈohu'], hello:['salú','saˈlu'], thanks:['gracias','ˈɣɾasjas'], one:['un','un'], good:['bueno','ˈbweno'] }},
+  // Fala (A Fala de Xálima, Galician-Asturian-Portuguese transition, sometimes "the third Spanish language") — Iberian Romance, ~10K, Spain (Cáceres, Extremadura — Vall de Xálima).
+  // Sources: Ethnologue 27 'fla'; Glottolog fala1241; Costas González (1999) Fala phonology.
+  fla: { name: 'Fala', native: 'A Fala', lat: 40.10, lng: -6.79, // San Martín de Trevejo, Extremadura
+    words: { water:['augua','ˈaɡwa'], fire:['lume','ˈlume'], sun:['sol','sɔl'], moon:['lúa','ˈlua'], mother:['mai','mai'], father:['pai','pai'], eat:['cumel','kuˈmel'], drink:['bebel','beˈβel'], love:['queré','keˈɾe'], heart:['curaçón','kuɾaˈsɔn'], tree:['arbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['can','kan'], cat:['gatu','ˈɣatu'], hand:['mau','mau'], eye:['oju','ˈohu'], hello:['salú','saˈlu'], thanks:['gracias','ˈɣɾasjas'], one:['un','un'], good:['bõ','bõ'] }},
   an: { name: 'Aragonese', native: 'Aragonés', lat: 42.57, lng: -0.55, // Jaca
     words: { water:['augua','ˈawɣwa'], fire:['fuego','ˈfweɣo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['mai','maj'], father:['pai','paj'], eat:['minchar','minˈt͡ʃaɾ'], drink:['beber','beˈβeɾ'], love:['amor','aˈmoɾ'], heart:['corazón','koɾaˈθon'], tree:['árbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['can','kan'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['güello','ˈɣweʎo'], hello:['hola','ˈola'], thanks:['gracias','ˈɡɾaθjas'], one:['un','un'], good:['bueno','ˈbweno'] }},
   rup: { name: 'Aromanian', native: 'Armâneashti', lat: 40.52, lng: 22.20, // Veria area
