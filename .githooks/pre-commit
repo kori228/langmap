@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# LangMap pre-commit hook — Audit Task 198.
+#
+# Runs the Word Map validator on staged changes that touch any of the
+# tracked data / view files. Fails the commit if the validator returns
+# a non-zero exit code (i.e. ERRORs present) or if [#19] cache-buster
+# drift is detected.
+#
+# Strict mode (WM_VALIDATE_STRICT=1) is OFF locally — drift surfaces as
+# a clearly-formatted hint so contributors can decide whether to bump
+# the cache buster before commit. CI runs strict mode and will block PR
+# merge if the drift is still present.
+#
+# To install:
+#   git config core.hooksPath .githooks
+#
+# To bypass once (e.g. work-in-progress commit):
+#   git commit --no-verify
+#
+# Exit codes:
+#   0 — pass (or no relevant files staged)
+#   1 — validator ERROR
+#   2 — validator-runner missing (node not installed, etc.)
+
+set -uo pipefail
+
+# Skip if no relevant file is staged.
+RELEVANT='wordmap.html|wordmap_data\.js|wordmap_meta\.js|meta_i18n_(ext|coverage)\.js|lang_names\.js|lang-filter\.js|tree\.html|index\.html|validate_wordmap_data\.js'
+if ! git diff --cached --name-only --diff-filter=ACM | grep -Eq "(^|/)($RELEVANT)$"; then
+    exit 0
+fi
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "pre-commit: node not found in PATH; skipping Word Map validator." >&2
+    exit 2
+fi
+
+cd "$(git rev-parse --show-toplevel)"
+
+echo "pre-commit: running validate_wordmap_data.js…"
+out=$(node validate_wordmap_data.js 2>&1)
+status=$?
+
+if [ $status -ne 0 ]; then
+    echo "$out"
+    echo
+    echo "❌ pre-commit blocked — validator reported ERRORS."
+    echo "   Fix above issues, or use 'git commit --no-verify' to bypass." >&2
+    exit 1
+fi
+
+drift=$(printf '%s\n' "$out" | grep -E '^[[:space:]]*[!✗][[:space:]]*\[#19\]' || true)
+if [ -n "$drift" ]; then
+    echo
+    echo "⚠ pre-commit hint — cache-buster drift detected ([#19]):"
+    printf '%s\n' "$drift"
+    echo
+    echo "  Bump WM_ASSET_VERSION (or the matching <script src=...?v=N>)"
+    echo "  before opening a PR — CI strict mode will block merge."
+    echo
+fi
+
+exit 0

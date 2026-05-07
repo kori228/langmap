@@ -710,4 +710,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Vai (vai), Isoko (iso), Torres Strait Creole (tcs) — Liberia syllabary + Niger Delta Edoid + Australia creole.
+    const ADDED25 = {
+        vai: { en: 'Vai', ja: 'ヴァイ語', ko: '바이어', zh: '瓦伊语', yue: '瓦伊語',
+               vi: 'Tiếng Vai', th: 'ภาษาวาย', id: 'Vai', hi: 'वाइ',
+               de: 'Vai', fr: 'Vaï', it: 'Vai',
+               es_eu: 'Vai', es_mx: 'Vai', pt_eu: 'Vai', pt_br: 'Vai',
+               ru: 'Ваи', uk: 'Ваї', ar: 'الفاي', he: 'ואי', sw: 'Kivai' },
+        iso: { en: 'Isoko', ja: 'イソコ語', ko: '이소코어', zh: '伊索科语', yue: '伊索科語',
+               vi: 'Tiếng Isoko', th: 'ภาษาอีโซโก', id: 'Isoko', hi: 'इसोको',
+               de: 'Isoko', fr: 'Isoko', it: 'Isoko',
+               es_eu: 'Isoko', es_mx: 'Isoko', pt_eu: 'Isoko', pt_br: 'Isoko',
+               ru: 'Исоко', uk: 'Ісоко', ar: 'الإيسوكو', he: 'איסוקו', sw: 'Kiisoko' },
+        tcs: { en: 'Torres Strait Creole', ja: 'トレス海峡クレオール語', ko: '토레스 해협 크리올어', zh: '托雷斯海峡克里奥尔语', yue: '托雷斯海峽克里奧爾語',
+               vi: 'Tiếng Creole Eo Torres', th: 'ภาษาครีโอลตอร์เรส', id: 'Kreol Selat Torres', hi: 'टोरेस जलडमरूमध्य क्रेओल',
+               de: 'Torres-Strait-Kreolisch', fr: 'Créole du détroit de Torrès', it: 'Creolo dello Stretto di Torres',
+               es_eu: 'Criollo del estrecho de Torres', es_mx: 'Criollo del estrecho de Torres', pt_eu: 'Crioulo do Estreito de Torres', pt_br: 'Crioulo do Estreito de Torres',
+               ru: 'Креол Торресова пролива', uk: 'Креольська Торресової протоки', ar: 'كريولية مضيق توريس', he: 'קריאולית מצרי טורס', sw: 'Kreoli ya Mlango-Torres' },
+    };
+    for (const code of Object.keys(ADDED25)) {
+        for (const ui of Object.keys(ADDED25[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED25[code][ui];
+            }
+        }
+    }
 })();

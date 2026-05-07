@@ -62,8 +62,37 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run Word Map validator
+      - name: Run Word Map validator (strict mode — Audit Task 198)
+        # WM_VALIDATE_STRICT promotes [#19] cache-buster drift WARNs to
+        # ERRORs so a stale cache buster blocks PR merge. Local
+        # development still sees WARN to avoid blocking iteration.
+        env:
+          WM_VALIDATE_STRICT: '1'
         run: node validate_wordmap_data.js
+
+  cache-buster-drift-gate:
+    name: Cache-buster drift gate (Audit Task 198)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Fail PR if [#19] drift warnings present
+        # Dedicated gate that surfaces the drift count separately from
+        # the main validator output so reviewers see the exact ?v=N
+        # mismatches without scrolling. Independent of the strict-mode
+        # validator job — both fail the workflow if drift exists.
+        run: |
+          set -euo pipefail
+          out=$(node validate_wordmap_data.js 2>&1 || true)
+          drift=$(printf '%s\n' "$out" | grep -E '^[[:space:]]*[!✗][[:space:]]*\[#19\]' || true)
+          if [ -n "$drift" ]; then
+            echo "::error title=Cache-buster drift::WM_ASSET_VERSION values disagree with <script src=...?v=N>:"
+            printf '%s\n' "$drift"
+            exit 1
+          fi
+          echo "No [#19] cache-buster drift detected."
 
   validate-sentences:
     name: Validate sentence / Word-Order Map data
