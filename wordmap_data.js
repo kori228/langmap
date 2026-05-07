@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 736 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 739 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -287,6 +287,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'sbp'; Glottolog sang1336; Stirnimann (1983) Praktische Grammatik der Sangu-Sprache.
   sbp: { name: 'Sangu', native: 'Eshisango', lat: -8.91, lng: 33.46, // Mbeya, Tanzania
     words: { water:['ameenzi','ameːnzi'], fire:['umoto','umoto'], sun:['liluga','liluɡa'], moon:['umwesi','umwesi'], mother:['mama','mama'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['ulungu','uluŋɡu'], heart:['umutima','umutima'], tree:['umuti','umuti'], house:['inyumba','iɲumba'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['ukuboko','ukuboko'], eye:['iliho','iliho'], hello:['mbasala','mbasala'], thanks:['nashukulu','naʃukulu'], one:['imo','imo'], good:['kwifwa','kwifwa'] }},
+  // Rwa (North Pare) — Bantu E.301 Pare cluster, ~140K speakers, Tanzania (Mwanga / Same districts, North Pare mountains).
+  // Sources: Ethnologue 27 'rwk'; Glottolog rwac1239; Mreta (1998) Rwa grammar; Schadeberg/Sebonego (2010).
+  rwk: { name: 'Rwa', native: 'Kirwa', lat: -3.65, lng: 37.75, // Mwanga district, Kilimanjaro Region
+    words: { water:['mende','mende'], fire:['msika','msika'], sun:['mlao','mlao'], moon:['mwere','mwere'], mother:['mama','mama'], father:['baba','baba'], eat:['kuria','kuria'], drink:['kunyua','kuɲua'], love:['lumbo','lumbo'], heart:['ngiti','ŋɡiti'], tree:['mte','mte'], house:['nyumba','ɲumba'], dog:['mboha','mboha'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['liso','liso'], hello:['kira','kiɾa'], thanks:['asante','asante'], one:['mongo','moŋɡo'], good:['kya','kja'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -331,6 +335,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nio'; Glottolog ngan1291; Helimski (1998) Nganasan grammar.
   nio: { name: 'Nganasan', native: 'Ӈаасан', lat: 71.97, lng: 102.50, // Volochanka, Taymyr
     words: { water:['быʼ','bɨʔ'], fire:['туй','tuj'], sun:['койка','kojka'], moon:['кичеа','kitʃea'], mother:['ниӈӈы','niŋːɨ'], father:['десы','desɨ'], eat:['нягү','ɲaɡu'], drink:['быр','bɨr'], love:['тонды','tondɨ'], heart:['сей','sej'], tree:['та','ta'], house:['мāʼ','maːʔ'], dog:['баӈка','baŋka'], cat:['кокса','koksa'], hand:['кутыр','kutɨr'], eye:['сейми','sejmi'], hello:['нерум','nerum'], thanks:['нюәдыра','ɲuədɨra'], one:['ӈуо','ŋuo'], good:['ӈуойнюй','ŋuojɲuj'] }},
+  // Selkup — Uralic (Samoyedic, Southern), ~1K, Russia (Tomsk/Krasnoyarsk Krai/Yamalo-Nenets — Taz/Yenisei river basins).
+  // Sources: Ethnologue 27 'sel'; Glottolog selk1253; Helimski (1998) Selkup; Kazakevich (2002) Selkup descriptive sketch.
+  sel: { name: 'Selkup', native: 'Шöльӄумыт әты', lat: 65.40, lng: 80.50, // Krasnoselkup (Yamalo-Nenets, Taz River — northern Selkup)
+    words: { water:['ӱт','yt'], fire:['тӱ','ty'], sun:['нэлмо','nelmo'], moon:['ариаа','ariaː'], mother:['эма','ema'], father:['ача','atʃa'], eat:['амгу','amɡu'], drink:['ӱдыргу','ydɨrɡu'], love:['нанымба','nanɨmba'], heart:['сидя','sidʲa'], tree:['по','po'], house:['мат','mat'], dog:['канак','kanak'], cat:['кетча','ketʃa'], hand:['ӱдо','ydo'], eye:['сай','saj'], hello:['тӱла','tyla'], thanks:['пасьпе','pasʲpe'], one:['уккур','ukːur'], good:['нот','not'] }},
   kca: { name: 'Khanty', native: 'Ханты ясаӈ', lat: 61.00, lng: 69.00, // Khanty-Mansiysk
     words: { water:['йиңк','jiŋk'], fire:['тут','tut'], sun:['хатәл','xatəl'], moon:['тылащ','tɯlaɕ'], mother:['ӑңки','aŋki'], father:['аӂи','adʑi'], eat:['лэты','lətɯ'], drink:['яңхты','jaŋxtɯ'], love:['наматты','namatːɯ'], heart:['сӑм','sam'], tree:['юх','jux'], house:['хӑт','xat'], dog:['ампи','ampi'], cat:['кошка','koʂka'], hand:['йош','joʃ'], eye:['сэм','sem'], hello:['вуща','wuɕa'], thanks:['пӑсиве','pasive'], one:['ит','it'], good:['ям','jam'] }},
   // Chukotko-Kamchatkan
@@ -1631,6 +1639,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'crk'; Glottolog plai1258; Wolfart (1973) Plains Cree: A Grammatical Study; Wolvengrey (2001) ito Pikiskwêwina.
   crk: { name: 'Plains Cree', native: 'ᓀᐦᐃᔭᐍᐏᐣ', lat: 53.55, lng: -113.49, // Edmonton, Alberta (regional center)
     words: { water:['ᓂᐱᕀ','nipiː'], fire:['ᐃᐢᑯᑌᐤ','iskoteːw'], sun:['ᐱᓰᒼ','piːsim'], moon:['ᑎᐱᐢᑳᐃᐧᐱᓰᒼ','tipiskaːwi piːsim'], mother:['ᓂᑳᐃᐧ','nikaːwiː'], father:['ᓅᐦᑖᐃᐧ','noːhtaːwiː'], eat:['ᒨᐍᐤ','moːweːw'], drink:['ᒥᓂᐦᑴᐤ','minihkweːw'], love:['ᓵᑭᐦᐃᐍᐃᐧᐣ','saːkihiweːwin'], heart:['ᒥᑌᐦ','miteh'], tree:['ᒥᐢᑎᐠ','mistik'], house:['ᐊᔅᑭᕁ','askiːhk'], dog:['ᐊᑎᒼ','atim'], cat:['ᒥᓂᔥ ᒥᓰᔮᐢ','minoːs'], hand:['ᒥᒋᒋᕀ','micicij'], eye:['ᒥᐢᑭᓯᐠ','miskisik'], hello:['ᑖᓂᓯ','taːnisi'], thanks:['ᐦᐊᐃᐧ','haj-haj'], one:['ᐯᔭᐠ','peːjak'], good:['ᒥᔼᓯᐣ','mijwaːsin'] }},
+  // Yurok — Algic family but distantly related (Algic = Algonquian + Wiyot + Yurok; Yurok-Wiyot called "Ritwan" branch). ~250 speakers, NW California (Klamath River).
+  // Sources: Ethnologue 27 'yur'; Glottolog yuro1248; Robins (1958) The Yurok Language; Garrett (2014) Basic Yurok.
+  yur: { name: 'Yurok', native: 'Pulik\'la\'', lat: 41.50, lng: -124.04, // Klamath, Yurok Reservation, NW California
+    words: { water:['paaʼ','paːʔ'], fire:['meʼlonok','meʔlonok'], sun:['woygey','wojɡej'], moon:['tepoo','tepoː'], mother:['nepuy','nepuj'], father:['nopew','nopew'], eat:['kepoyi','kepoji'], drink:['kewolepi','kewolepi'], love:['choʼomi','tʃoʔomi'], heart:['skoʼol','skoʔol'], tree:['kʼepoy','kʼepoj'], house:['kerwer','kerwer'], dog:['chishʼah','tʃiʃʔah'], cat:['putuy','putuj'], hand:['mehl','mehl'], eye:['lekwsh','lekwʃ'], hello:['aiy-yue-kwee','aj-juːkweː'], thanks:['wokhlew','wokʰlew'], one:['kohchew','kohtʃew'], good:['skuyahl','skujahl'] }},
   // Siouan
   lkt: { name: 'Lakota', native: 'Lakȟótiyapi', lat: 43.02, lng: -102.55, // Pine Ridge
     words: { water:['mní','mní'], fire:['pȟéta','pʰéta'], sun:['wí','wí'], moon:['haŋhépi wí','haŋhépi wí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yátkaŋ','játkaŋ'], love:['thečhíȟila','tʰetʃʰíʁila'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋke','iɡmúŋke'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['philámayaye','pʰilámajaje'], one:['waŋží','waŋʒí'], good:['wašté','waʃté'] }},

@@ -1135,4 +1135,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED42 = {
+        rwk: { en: 'Rwa', ja: 'ルワ語', ko: '르와어', zh: '卢瓦语', yue: '盧瓦語',
+               vi: 'Tiếng Rwa', th: 'ภาษารวา', id: 'Bahasa Rwa', hi: 'रवा',
+               de: 'Rwa', fr: 'Rwa', it: 'Rwa',
+               es_eu: 'Rwa', es_mx: 'Rwa', pt_eu: 'Rwa', pt_br: 'Rwa',
+               ru: 'Рва', uk: 'Рва', ar: 'الروا', he: 'רווה', sw: 'Kirwa' },
+        sel: { en: 'Selkup', ja: 'セリクプ語', ko: '셀쿠프어', zh: '塞尔库普语', yue: '塞爾庫普語',
+               vi: 'Tiếng Selkup', th: 'ภาษาเซลคุป', id: 'Bahasa Selkup', hi: 'सेल्कुप',
+               de: 'Selkupisch', fr: 'Selkoupe', it: 'Selkup',
+               es_eu: 'Selkup', es_mx: 'Selkup', pt_eu: 'Selkup', pt_br: 'Selkup',
+               ru: 'Селькупский', uk: 'Селькупська', ar: 'السلكوبية', he: 'סלקופית', sw: 'Kiselkup' },
+        yur: { en: 'Yurok', ja: 'ユロク語', ko: '유록어', zh: '尤罗克语', yue: '尤羅克語',
+               vi: 'Tiếng Yurok', th: 'ภาษายูร็อก', id: 'Bahasa Yurok', hi: 'युरोक',
+               de: 'Yurok', fr: 'Yurok', it: 'Yurok',
+               es_eu: 'Yurok', es_mx: 'Yurok', pt_eu: 'Yurok', pt_br: 'Yurok',
+               ru: 'Юрок', uk: 'Юрок', ar: 'اليوروك', he: 'יורוק', sw: 'Kiyurok' },
+    };
+    for (const code of Object.keys(ADDED42)) {
+        for (const ui of Object.keys(ADDED42[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED42[code][ui];
+            }
+        }
+    }
 })();
