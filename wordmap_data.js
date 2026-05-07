@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 853 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 856 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -283,6 +283,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'nym'; Glottolog nyam1276; Maganga & Schadeberg (1992).
   nym: { name: 'Nyamwezi', native: 'Kinyamwezi', lat: -5.07, lng: 32.83, // Tabora
     words: { water:['minzi','minzi'], fire:['moto','moto'], sun:['izuβa','izuβa'], moon:['ng\'wezi','ŋweːzi'], mother:['mayu','majʊ'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunywa','kuɲwa'], love:['butogwa','butoɡwa'], heart:['mtima','mtima'], tree:['mti','mti'], house:['kaya','kaja'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ikoβo','ikoβo'], eye:['liso','liso'], hello:['mwadita','mwadita'], thanks:['twaβakaβa','twabakaba'], one:['imo','imo'], good:['lihi','liçi'] }},
+  // Nyaturu (Kirimi) — Bantu F32, ~570K, Singida Region central Tanzania. Closest neighbours nym Nyamwezi (F22) and lag Langi.
+  // Sources: Ethnologue 27 'rim'; Glottolog nyat1247; Olson (1964) The Structure of Nyaturu.
+  rim: { name: 'Nyaturu', native: 'Kirimi', lat: -4.82, lng: 34.74, // Singida, Tanzania
+    words: { water:['maazi','maːzi'], fire:['moto','moto'], sun:['nzua','nzua'], moon:['umweri','umweɾi'], mother:['mama','mama'], father:['tata','tata'], eat:['kuria','kuɾia'], drink:['kunywa','kuɲwa'], love:['butogwa','butoɡwa'], heart:['umutima','umutima'], tree:['umuti','umuti'], house:['nyumba','ɲumba'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['ukuboko','ukuboko'], eye:['iriiso','iɾiːso'], hello:['mbukire','mbukiɾe'], thanks:['ahsante','ahsante'], one:['umwe','umwe'], good:['kihi','kihi'] }},
   // Shambala — Bantu G23, ~660K speakers, Tanga region NE Tanzania (Usambara mountains).
   // Sources: Ethnologue 27 'ksb'; Glottolog sham1283; Roehl (1911) Wörterbuch der Schambala-Sprache.
   ksb: { name: 'Shambala', native: 'Kishambaa', lat: -4.76, lng: 38.30, // Lushoto, Usambara mts
@@ -775,6 +779,10 @@ const LANG_DATA = {
     words: { water:['amanzi','amaːnzi'], fire:['umlilo','umlilo'], sun:['ilanga','ilaːŋɡa'], moon:['inyanga','iɲaːŋɡa'], mother:['umama','umaːma'], father:['utata','utaːta'], eat:['ukutya','ukutʲa'], drink:['ukusela','ukusɛla'], love:['uthando','utʰando'], heart:['intliziyo','intɬizijo'], tree:['umthi','umtʰi'], house:['indlu','indɬu'], dog:['inja','indʒa'], cat:['ikati','ikati'], hand:['isandla','isandɬa'], eye:['iliso','iliso'], hello:['molo','molo'], thanks:['enkosi','ɛnkosi'], one:['inye','iɲɛ'], good:['lungile','luŋɡilɛ'] }},
   sn: { name: 'Shona', native: 'chiShona', lat: -17.83, lng: 31.05,
     words: { water:['mvura','mvuɾa'], fire:['moto','moto'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudja'], drink:['kunwa','kunwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['imba','imba'], dog:['imbwa','imbwa'], cat:['katsi','katsi'], hand:['ruoko','ɾwoko'], eye:['ziso','ziso'], hello:['mhoro','mhoɾo'], thanks:['maita','maita'], one:['potsi','potsi'], good:['chakanaka','tʃakanaka'] }},
+  // Manyika — Bantu S13a, ~2M, eastern Zimbabwe (Manicaland Province) + western Mozambique. Sister to Shona (sn) — historically classified as a Shona dialect, but increasingly recognised as a distinct cluster member.
+  // Sources: Ethnologue 27 'mxc'; Glottolog many1257; Doke (1931) Report on the Unification of the Shona Dialects.
+  mxc: { name: 'Manyika', native: 'chiManyika', lat: -18.97, lng: 32.67, // Mutare, Manicaland (Manyika heartland)
+    words: { water:['mvura','mvuɾa'], fire:['moto','moto'], sun:['zuva','zuva'], moon:['mwedzi','mwedzi'], mother:['amai','amai'], father:['baba','baba'], eat:['kudya','kudja'], drink:['kumwa','kumwa'], love:['rudo','ɾudo'], heart:['mwoyo','mwojo'], tree:['muti','muti'], house:['mhatso','mhatso'], dog:['mbwa','mbwa'], cat:['katsi','katsi'], hand:['ruoko','ɾwoko'], eye:['ziso','ziso'], hello:['makadii','makadiː'], thanks:['mazviita','mazviita'], one:['rimwe','ɾimwe'], good:['kunaka','kunaka'] }},
   ln: { name: 'Lingala', native: 'Lingála', lat: -4.32, lng: 15.31,
     words: { water:['mai','mai'], fire:['mɔ́tɔ','mɔtɔ'], sun:['mói','moi'], moon:['sánzá','sanza'], mother:['mamá','mama'], father:['tatá','tata'], eat:['kolía','kolia'], drink:['komɛ́la','komɛla'], love:['bolíngo','boliŋɡo'], heart:['motéma','motema'], tree:['nzété','nzete'], house:['ndáko','ndako'], dog:['mbwá','mbwa'], cat:['nyáu','ɲau'], hand:['lobɔ́kɔ','lobɔkɔ'], eye:['líso','liso'], hello:['mbóte','mbote'], thanks:['matɔ́ndɔ','matɔndɔ'], one:['mɔ̌kɔ́','mɔkɔ'], good:['malámu','malamu'] }},
   ny: { name: 'Chichewa', native: 'Chicheŵa', lat: -13.96, lng: 33.79,
@@ -2299,6 +2307,10 @@ const LANG_DATA = {
     words: { water:['piu','piu'], fire:['mac','matʃ'], sun:['akɔ̈l','akɔl'], moon:['pɛɛi','pɛːi'], mother:['man','man'], father:['wun','wun'], eat:['cam','tʃam'], drink:['dek','dek'], love:['nhiär','ɲiar'], heart:['piöu','piɔu'], tree:['tim','tim'], house:['ɣöt','ɣɔt'], dog:['jɔ̈ŋ','dʒɔŋ'], cat:['gec','ɡetʃ'], hand:['cin','tʃin'], eye:['nyin','ɲin'], hello:['ke yïn','ke jin'], thanks:['alanyiek','alaɲiek'], one:['tök','tɔk'], good:['piath','piatʰ'] }},
   nus: { name: 'Nuer', native: 'Thok Nath', lat: 9.56, lng: 31.63, // Bentiu/Malakal
     words: { water:['pi','pi'], fire:['mäc','mɛtʃ'], sun:['caŋ','tʃaŋ'], moon:['pay','paj'], mother:['maar','maːr'], father:['gwaar','ɡwaːr'], eat:['cam','tʃam'], drink:['math','matʰ'], love:['nhok','ɲok'], heart:['lëŋ','lɛŋ'], tree:['jïath','dʒiatʰ'], house:['dööl','dɔːl'], dog:['jiek','dʒiek'], cat:['gec','ɡetʃ'], hand:['tet','tet'], eye:['wäk','wɛk'], hello:['malɛ','malɛ'], thanks:['lɛrnyä','lɛɾɲa'], one:['kɛl','kɛl'], good:['gɔaa','ɡɔaː'] }},
+  // Anuak (Anywaa) — Western Nilotic Lwoo, ~250K, lower Sobat River basin (South Sudan + Ethiopia Gambela). Closely related to Acholi (ach), Lango (laj), Luo (luo) within Lwoo branch.
+  // Sources: Ethnologue 27 'anu'; Glottolog anua1242; Reh (1996) Anywa Language: Description and Internal Reconstructions.
+  anu: { name: 'Anuak', native: 'Dha-Anywaa', lat: 8.25, lng: 34.59, // Gambela, Ethiopia (Anuak heartland)
+    words: { water:['pii','piː'], fire:['mac','matʃ'], sun:['ceeŋ','tʃeːŋ'], moon:['dwee','dweː'], mother:['min','min'], father:['waad','waːd'], eat:['cam','tʃam'], drink:['maath','maːtʰ'], love:['mar','mar'], heart:['cuny','tʃuɲ'], tree:['yat','jat'], house:['ot','ot'], dog:['guok','ɡuok'], cat:['nyamur','ɲamur'], hand:['cing','tʃiŋ'], eye:['waang','waːŋ'], hello:['mali','mali'], thanks:['apwoyo','apwojo'], one:['acel','atʃel'], good:['ber','ber'] }},
   luo: { name: 'Luo', native: 'Dholuo', lat: -0.10, lng: 34.75, // Kisumu
     words: { water:['pi','pi'], fire:['mach','matʃ'], sun:['chieng\'','tʃieŋ'], moon:['dwe','dwe'], mother:['mama','mama'], father:['baba','baba'], eat:['chiemo','tʃiemo'], drink:['madho','madʱo'], love:['hera','hera'], heart:['chuny','tʃuɲ'], tree:['yath','jatʰ'], house:['ot','ot'], dog:['guok','ɡuok'], cat:['paka','paka'], hand:['lwedo','lwedo'], eye:['wang\'','waŋ'], hello:['misawa','misawa'], thanks:['erokamano','erokamano'], one:['achiel','atʃiel'], good:['maber','maber'] }},
   mas: { name: 'Maasai', native: 'ɔl Maa', lat: -1.08, lng: 35.86, // Narok

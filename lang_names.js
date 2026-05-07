@@ -2126,4 +2126,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Batch B2 (2026-05-07): African languages anu / mxc / rim.
+    const ADDED86 = {
+        anu: { ja: 'アヌアク語', en: 'Anuak', ko: '아누아크어', zh: '阿努阿克语', yue: '阿努阿克語',
+               vi: 'Tiếng Anuak', th: 'ภาษาอนูอัก', id: 'Bahasa Anuak', hi: 'अनुआक',
+               de: 'Anuak', fr: 'Anuak', it: 'Anuak',
+               es_eu: 'Anuak', es_mx: 'Anuak', pt_eu: 'Anuak', pt_br: 'Anuak',
+               ru: 'Ануак', uk: 'Ануак', ar: 'الأنواك', he: 'אנואק', sw: 'Kianuak' },
+        mxc: { ja: 'マニカ語', en: 'Manyika', ko: '마니카어', zh: '马尼卡语', yue: '馬尼卡語',
+               vi: 'Tiếng Manyika', th: 'ภาษามานยีกา', id: 'Bahasa Manyika', hi: 'मन्यिका',
+               de: 'Manyika', fr: 'Manyika', it: 'Manyika',
+               es_eu: 'Manyika', es_mx: 'Manyika', pt_eu: 'Manyika', pt_br: 'Manyika',
+               ru: 'Маньика', uk: 'Маньїка', ar: 'الماني-كا', he: 'מאניקה', sw: 'Kimanyika' },
+        rim: { ja: 'ニャトゥル語', en: 'Nyaturu', ko: '냐투루어', zh: '尼亚图鲁语', yue: '尼亞圖魯語',
+               vi: 'Tiếng Nyaturu', th: 'ภาษาญาตูรู', id: 'Bahasa Nyaturu', hi: 'न्यातुरु',
+               de: 'Nyaturu', fr: 'Nyaturu', it: 'Nyaturu',
+               es_eu: 'Nyaturu', es_mx: 'Nyaturu', pt_eu: 'Nyaturu', pt_br: 'Nyaturu',
+               ru: 'Ньятуру', uk: 'Ньятуру', ar: 'النياتورو', he: 'ניאטורו', sw: 'Kinyaturu' },
+    };
+    for (const code of Object.keys(ADDED86)) {
+        for (const ui of Object.keys(ADDED86[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED86[code][ui];
+            }
+        }
+    }
 })();
