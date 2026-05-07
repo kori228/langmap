@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 718 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 721 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -261,6 +261,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'jpr'; Glottolog jude1257; Lazard (1968) Judeo-Persian texts.
   jpr: { name: 'Judeo-Persian', native: 'פארסי יהודי', lat: 32.65, lng: 51.67, // Isfahan (historic Iranian Jewish center)
     words: { water:['אב','ɒːb'], fire:['אתש','ɒːteʃ'], sun:['חורשיד','xorʃiːd'], moon:['מאה','mɒːh'], mother:['מאדר','mɒːdær'], father:['פדר','pedær'], eat:['חורדן','xordæn'], drink:['נושידן','nuːʃidæn'], love:['עשק','eʃq'], heart:['קלב','qælb'], tree:['דרכת','deræxt'], house:['כאנה','xɒːne'], dog:['סג','sæɡ'], cat:['גורבה','ɡorbe'], hand:['דסת','dæst'], eye:['צ\'שם','t͡ʃeʃm'], hello:['שלום','ʃɒːlom'], thanks:['ספאס','sepɒːs'], one:['יכ','jek'], good:['חוב','xuːb'] }},
+  // Dari — Eastern Persian, ~12M, Afghanistan. Lingua franca; preserves classical vowel distinctions ē/ī, ō/ū lost in Iranian Persian.
+  // Sources: Ethnologue 27 'prs'; Glottolog dari1249; Farhadi (1955) Le Persan Parlé en Afghanistan; Kieffer (2003).
+  prs: { name: 'Dari', native: 'دری', lat: 34.53, lng: 69.17, // Kabul
+    words: { water:['آب','ɒːb'], fire:['آتش','ɒːtaʃ'], sun:['خورشید','xoɾʃed'], moon:['ماه','mɒːh'], mother:['مادر','mɒːdaɾ'], father:['پدر','padaɾ'], eat:['خوردن','xoɾdan'], drink:['نوشیدن','noʃidan'], love:['عشق','eʃq'], heart:['قلب','qalb'], tree:['درخت','daɾaxt'], house:['خانه','xɒːna'], dog:['سگ','saɡ'], cat:['پشک','puʃak'], hand:['دست','dast'], eye:['چشم','t͡ʃaʃm'], hello:['سلام','salɒːm'], thanks:['تشکر','taʃakkoɾ'], one:['یک','jak'], good:['خوب','xob'] }},
   sw: { name: 'Swahili', native: 'Kiswahili', lat: -6.79, lng: 39.28, // Dar es Salaam
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['jua','dʒua'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kula','kula'], drink:['kunywa','kuɲwa'], love:['upendo','upendo'], heart:['moyo','mojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['jicho','dʒitʃo'], hello:['habari','habari'], thanks:['asante','asante'], one:['moja','modʒa'], good:['nzuri','nzuri'] }},
   // Sukuma — Bantu F21, ~5M speakers, Tanzania's largest single Bantu language by speaker count.
@@ -387,6 +391,10 @@ const LANG_DATA = {
     words: { water:['water','ʋaːtər'], fire:['vuur','vyːr'], sun:['zon','zɔn'], moon:['maan','maːn'], mother:['moeder','muːdər'], father:['vader','faːdər'], eat:['eten','eːtə'], drink:['drinken','drɪŋkə'], love:['liefde','liːfdə'], heart:['hart','ɦɑrt'], tree:['boom','boːm'], house:['huis','ɦœʏs'], dog:['hond','ɦɔnt'], cat:['kat','kɑt'], hand:['hand','ɦɑnt'], eye:['oog','oːx'], hello:['hallo','hɑloː'], thanks:['dank je','dɑŋk jə'], one:['een','eːn'], good:['goed','xut'] }},
   pl: { name: 'Polish', native: 'Polski', lat: 52.23, lng: 21.01, // Warsaw
     words: { water:['woda','ˈvɔda'], fire:['ogień','ˈɔɡɛɲ'], sun:['słońce','ˈswɔɲt͡sɛ'], moon:['księżyc','ˈkɕɛ̃ʐɨt͡s'], mother:['matka','ˈmatka'], father:['ojciec','ˈɔjt͡ɕɛt͡s'], eat:['jeść','jɛɕt͡ɕ'], drink:['pić','pit͡ɕ'], love:['miłość','ˈmiwɔɕt͡ɕ'], heart:['serce','ˈsɛrt͡sɛ'], tree:['drzewo','ˈd͡ʐɛvɔ'], house:['dom','dɔm'], dog:['pies','pjɛs'], cat:['kot','kɔt'], hand:['ręka','ˈrɛŋka'], eye:['oko','ˈɔkɔ'], hello:['cześć','t͡ʂɛɕt͡ɕ'], thanks:['dziękuję','d͡ʑɛŋˈkujɛ'], one:['jeden','ˈjɛdɛn'], good:['dobry','ˈdɔbrɨ'] }},
+  // Silesian — West Slavic (Lechitic), ~509K (2011 census), Poland (Upper Silesia). Officially recognized as a regional language in 2024.
+  // Sources: Ethnologue 27 'szl'; Glottolog sile1253; Steuer (1934) alphabet; Tambor (2008) Mowa Górnoślązaków.
+  szl: { name: 'Silesian', native: 'Ślōnskŏ gŏdka', lat: 50.27, lng: 19.04, // Katowice
+    words: { water:['woda','ˈvɔda'], fire:['ôgyń','ˈɔɡɨɲ'], sun:['słōńce','ˈswɔɲt͡sɛ'], moon:['miesiōnczek','mʲɛˈɕɔ̃t͡ʂɛk'], mother:['mamulka','maˈmulka'], father:['fater','ˈfatɛr'], eat:['jeść','jɛɕt͡ɕ'], drink:['pić','pit͡ɕ'], love:['miyłość','ˈmʲɨwɔɕt͡ɕ'], heart:['serce','ˈsɛrt͡sɛ'], tree:['strōm','strɔ̃m'], house:['chałpa','ˈxawpa'], dog:['pies','pjɛs'], cat:['kot','kɔt'], hand:['ryncka','ˈrɨnt͡ska'], eye:['ôko','ˈɔkɔ'], hello:['serwus','ˈsɛrvus'], thanks:['dziynkuja','ˈd͡ʑɨŋkuja'], one:['jedyn','ˈjɛdɨn'], good:['dobry','ˈdɔbrɨ'] }},
   uk: { name: 'Ukrainian', native: 'Українська', lat: 50.45, lng: 30.52, // Kyiv
     words: { water:['вода','wɔdɑ'], fire:['вогонь','wɔɦɔnʲ'], sun:['сонце','sɔnt͡sɛ'], moon:['місяць','misʲɑt͡sʲ'], mother:['мати','mɑtɪ'], father:['батько','bɑtʲkɔ'], eat:['їсти','jistɪ'], drink:['пити','pɪtɪ'], love:['любов','lʲubɔw'], heart:['серце','sɛrt͡sɛ'], tree:['дерево','dɛrɛwɔ'], house:['дім','dim'], dog:['собака','sɔbɑkɑ'], cat:['кішка','ˈkiʃkɑ'], hand:['рука','rukɑ'], eye:['око','ɔkɔ'], hello:['привіт','prɪwit'], thanks:['дякую','dʲɑkuju'], one:['один','ɔdɪn'], good:['добрий','ˈdɔbrɪj'] }},
   sv: { name: 'Swedish', native: 'Svenska', lat: 59.33, lng: 18.07, // Stockholm
@@ -1597,6 +1605,10 @@ const LANG_DATA = {
     words: { water:['щин','ʃin'], fire:['цӏу','tsʼu'], sun:['бургъ','burʁ'], moon:['барз','barz'], mother:['нину','ninu'], father:['ппу','pːu'], eat:['ккаву','kːavu'], drink:['гьавхь','ʕavħ'], love:['ччан','tʃːan'], heart:['дакӏ','dakʼ'], tree:['мурхь','muɾħ'], house:['къатта','qatːa'], dog:['ккун','kːun'], cat:['ккац','kːats'], hand:['ка','ka'], eye:['я','ja'], hello:['салам','salam'], thanks:['барчаллагь','baɾtʃalːaʁ'], one:['ца','tsa'], good:['хъинсса','qinsːa'] }},
   tab: { name: 'Tabasaran', native: 'Табасаран чӀал', lat: 41.93, lng: 48.04, // Khiv
     words: { water:['штар','ʃtar'], fire:['цӏа','tsʼa'], sun:['рагъ','raʁ'], moon:['варз','varz'], mother:['бай','baj'], father:['дад','dad'], eat:['ипӏуб','ipʼub'], drink:['ужуб','uʒub'], love:['ккунивал','kːunival'], heart:['юкӏ','jukʼ'], tree:['гар','ɡar'], house:['хал','xal'], dog:['хю','xy'], cat:['кет','ket'], hand:['хил','xil'], eye:['ул','ul'], hello:['салам','salam'], thanks:['чухсагъул','tʃuxsaʁul'], one:['саб','sab'], good:['ужу','uʒu'] }},
+  // Udi — NE Caucasian (Lezgic), ~6K, Azerbaijan (Niž village, Qabala) + Georgia. Linear descendant of Caucasian Albanian (5th c. literary language).
+  // Sources: Ethnologue 27 'udi'; Glottolog udii1243; Schulze (1982) Die Sprache der Uden; Maisak (2008).
+  udi: { name: 'Udi', native: 'удин муз', lat: 41.30, lng: 48.31, // Niž (Nij), Qabala District, Azerbaijan
+    words: { water:['хе','xe'], fire:['ариш','ariʃ'], sun:['бех','beχ'], moon:['уьш','yʃ'], mother:['нана','nana'], father:['бабо','babo'], eat:['уксун','uksun'], drink:['уьгсун','yɡsun'], love:['букӏесун','buqʼesun'], heart:['укӏ','uqʼ'], tree:['хунч','xunt͡ʃ'], house:['кӏойи','qʼoji'], dog:['ха','xa'], cat:['пӏшу','pʼʃu'], hand:['кьил','qʼil'], eye:['пул','pul'], hello:['салам','salam'], thanks:['бахтӏам','baχtʼam'], one:['са','sa'], good:['яхъи','jaqʼi'] }},
   // Kumyk — Kipchak Turkic, ~440K, Daghestan Russia. Northern lingua franca historically.
   // Sources: Ethnologue 27 'kum'; Glottolog kumy1244; Bammatov (1969) Kumyk-Russian Dictionary.
   kum: { name: 'Kumyk', native: 'Къумукъ тил', lat: 42.98, lng: 47.50, // Makhachkala area

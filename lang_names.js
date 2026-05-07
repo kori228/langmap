@@ -985,4 +985,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED36 = {
+        prs: { en: 'Dari', ja: 'ダリー語', ko: '다리어', zh: '达里语', yue: '達里語',
+               vi: 'Tiếng Dari', th: 'ภาษาดารี', id: 'Bahasa Dari', hi: 'दारी',
+               de: 'Dari', fr: 'Dari', it: 'Dari',
+               es_eu: 'Dari', es_mx: 'Dari', pt_eu: 'Dari', pt_br: 'Dari',
+               ru: 'Дари', uk: 'Дарі', ar: 'الدرية', he: 'דארי', sw: 'Kidari' },
+        szl: { en: 'Silesian', ja: 'シレジア語', ko: '실레시아어', zh: '西里西亚语', yue: '西里西亞語',
+               vi: 'Tiếng Silesia', th: 'ภาษาซิลีเซีย', id: 'Bahasa Silesia', hi: 'सिलेसियाई',
+               de: 'Schlesisch', fr: 'Silésien', it: 'Slesiano',
+               es_eu: 'Silesio', es_mx: 'Silesio', pt_eu: 'Silesiano', pt_br: 'Silesiano',
+               ru: 'Силезский', uk: 'Сілезька', ar: 'السيليزية', he: 'שלזית', sw: 'Kisilesia' },
+        udi: { en: 'Udi', ja: 'ウディ語', ko: '우디어', zh: '乌迪语', yue: '烏迪語',
+               vi: 'Tiếng Udi', th: 'ภาษาอูดี', id: 'Bahasa Udi', hi: 'उदी',
+               de: 'Udisch', fr: 'Oudi', it: 'Udi',
+               es_eu: 'Udi', es_mx: 'Udi', pt_eu: 'Udi', pt_br: 'Udi',
+               ru: 'Удинский', uk: 'Удинська', ar: 'الأودية', he: 'אודית', sw: 'Kiudi' },
+    };
+    for (const code of Object.keys(ADDED36)) {
+        for (const ui of Object.keys(ADDED36[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED36[code][ui];
+            }
+        }
+    }
 })();
