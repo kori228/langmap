@@ -572,31 +572,114 @@
         // Afro-Asiatic
         'Semitic':'Afro-Asiatic', 'Cushitic':'Afro-Asiatic', 'Berber':'Afro-Asiatic',
         'Omotic':'Afro-Asiatic', 'Egyptian':'Afro-Asiatic',
-        // Niger-Congo
+        // Niger-Congo / Atlantic-Congo (Audit Task 159: keep both visible
+        // so legacy `Niger-Congo (Bantu, X)` and modern Glottolog
+        // `Atlantic-Congo (Bantu, Y)` tag rows under the same macro).
         'Bantu':'Niger-Congo', 'Atlantic':'Niger-Congo',
+        'Atlantic-Congo':'Niger-Congo',
+        'Mel':'Atlantic-Congo', 'Kru':'Atlantic-Congo', 'Gur':'Atlantic-Congo',
+        'Kwa':'Atlantic-Congo', 'Volta-Niger':'Atlantic-Congo', 'Adamawa':'Atlantic-Congo',
+        'Mande':'Niger-Congo',
         // Sino-Tibetan
-        'Sinitic':'Sino-Tibetan',
+        'Sinitic':'Sino-Tibetan', 'Tibeto-Burman':'Sino-Tibetan', 'Bodish':'Sino-Tibetan',
+        'Loloish':'Sino-Tibetan', 'Karen':'Sino-Tibetan', 'Karenic':'Sino-Tibetan',
+        'Burmish':'Sino-Tibetan', 'Naic':'Sino-Tibetan', 'Bodo-Garo':'Sino-Tibetan',
         // Mayan
         'Quichean':'Mayan', 'Mamean':'Mayan', 'Yucatecan':'Mayan',
+        'Cholan-Tseltalan':'Mayan',
         // Austroasiatic
         'Vietic':'Austroasiatic', 'Palaungic':'Austroasiatic', 'Munda':'Austroasiatic',
         'Mon-Khmer':'Austroasiatic',
+        // Austronesian
+        'Polynesian':'Austronesian', 'Micronesian':'Austronesian',
+        'Malayo-Polynesian':'Austronesian', 'Formosan':'Austronesian',
+        'Malayic':'Austronesian', 'Visayan':'Austronesian', 'Chamic':'Austronesian',
+        // Kra-Dai
+        'Tai':'Kra-Dai', 'Hlai':'Kra-Dai', 'Kam-Sui':'Kra-Dai',
+        // Nilo-Saharan
+        'Nilotic':'Nilo-Saharan', 'Saharan':'Nilo-Saharan', 'Songhai':'Nilo-Saharan',
+        'Western Nilotic':'Nilo-Saharan', 'Eastern Nilotic':'Nilo-Saharan',
+        // Uralic
+        'Finnic':'Uralic', 'Samoyedic':'Uralic', 'Permic':'Uralic', 'Ugric':'Uralic',
+        'Mordvinic':'Uralic', 'Ob-Ugric':'Uralic',
+        'Saami':'Uralic', 'Sámi':'Uralic', 'Sami':'Uralic',
         // Hurro-Urartian (separate macro per the data, but listed)
     };
+
+    // Audit Task 159: spelling normalization. Different rows can use
+    // different spellings of the same family — Saami/Sámi, Atlantic/
+    // Atlantic-Congo, etc. Collapse them to a single canonical chip so
+    // the filter UI does not split a single genealogical group across
+    // two chips. The canonical chip is the right-hand side.
+    const FAMILY_ALIAS = {
+        'Sámi': 'Saami',
+        'Sami': 'Saami',
+        // Atlantic and Atlantic-Congo are NOT collapsed: Atlantic is a
+        // sub-branch (Wolof, Fula); Atlantic-Congo is the macro family
+        // covering Bantu + Atlantic + Volta-Niger + … in modern
+        // Glottolog. Keep both chips visible so users can pick either.
+    };
+
+    // Audit Task 159: sub-branch tokens that should also be added as
+    // chips when they appear inside a parenthetical sub-branch label
+    // (e.g. `Atlantic-Congo (Bantu, S10)` → both `Atlantic-Congo` and
+    // `Bantu` chips). Without this, sub-branches buried inside parens
+    // never get their own chip and a user filtering for `Bantu` would
+    // miss every `Atlantic-Congo (Bantu, …)` row.
+    const SUBBRANCH_TOKENS = new Set([
+        'Bantu', 'Atlantic', 'Mel', 'Mande', 'Kwa', 'Gur', 'Kru',
+        'Volta-Niger', 'Adamawa',
+        'Sinitic', 'Tibeto-Burman', 'Bodish', 'Loloish', 'Karen',
+        'Karenic', 'Burmish', 'Naic', 'Bodo-Garo',
+        'Polynesian', 'Micronesian', 'Malayo-Polynesian', 'Formosan',
+        'Malayic', 'Visayan', 'Chamic',
+        'Tai', 'Hlai', 'Kam-Sui',
+        'Romance', 'Germanic', 'Slavic', 'Celtic', 'Baltic', 'Hellenic',
+        'Indo-Aryan', 'Iranian', 'Italic', 'Anatolian', 'Tocharian',
+        'Semitic', 'Cushitic', 'Berber', 'Omotic', 'Egyptian',
+        'Vietic', 'Palaungic', 'Munda', 'Mon-Khmer', 'Monic', 'Khmuic',
+        'Bahnaric',
+        'Quichean', 'Mamean', 'Yucatecan', 'Cholan-Tseltalan',
+        'Finnic', 'Samoyedic', 'Permic', 'Ugric', 'Mordvinic',
+        'Ob-Ugric', 'Saami',
+        'Nilotic', 'Saharan', 'Songhai', 'Western Nilotic',
+        'Eastern Nilotic',
+    ]);
+
+    function canonicalFamily(t) {
+        return (t && FAMILY_ALIAS[t]) || t;
+    }
+
     function expandFamilies(famStr, code) {
         const overrides = FAMILY_MULTI_OVERRIDES[code];
         if (overrides) {
-            const out = new Set(overrides);
+            const out = new Set();
+            for (const t of overrides) out.add(canonicalFamily(t));
             // Apply parent-family normalization to overrides too
             for (const t of [...out]) {
-                if (PARENT_FAMILY[t]) out.add(PARENT_FAMILY[t]);
+                const parent = PARENT_FAMILY[canonicalFamily(t)];
+                if (parent) out.add(canonicalFamily(parent));
             }
             return [...out];
         }
         if (!famStr) return [];
         const top = topFamily(famStr);
         const out = new Set();
-        if (top) out.add(top);
+        if (top) out.add(canonicalFamily(top));
+        // Audit Task 159: pull explicit sub-branch tokens out of the
+        // parenthetical sub-branch label so a row like
+        // `Atlantic-Congo (Bantu, S10 Shona)` also produces a `Bantu`
+        // chip. Without this, the `Bantu` chip would only catch rows
+        // tagged with `Bantu` as the top token (the legacy convention),
+        // skipping every `Atlantic-Congo (Bantu, …)` row.
+        const parenMatch = famStr.match(/\(([^)]+)\)/);
+        if (parenMatch) {
+            const sub = parenMatch[1].split(/[,/]/).map(s => s.trim());
+            for (const tok of sub) {
+                const canon = canonicalFamily(tok);
+                if (SUBBRANCH_TOKENS.has(canon)) out.add(canon);
+            }
+        }
         // Heuristic decomposition for compound family strings.
         const lower = famStr.toLowerCase();
         if (lower.includes('creole')) {
@@ -615,8 +698,10 @@
         // Parent-family normalization: ensure both sub-branch and parent
         // family tags are present so chips don't fragment (e.g. Semitic +
         // Afro-Asiatic, Iranian + Indo-European, Bantu + Niger-Congo).
+        // Iterate via a snapshot because we mutate `out`.
         for (const t of [...out]) {
-            if (PARENT_FAMILY[t]) out.add(PARENT_FAMILY[t]);
+            const parent = PARENT_FAMILY[t];
+            if (parent) out.add(canonicalFamily(parent));
         }
         return [...out];
     }

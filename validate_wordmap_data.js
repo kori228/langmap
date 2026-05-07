@@ -575,9 +575,12 @@ for (const w of (ctx.WORD_LIST || [])) {
     if (!w.label.es && (w.label.es_eu || w.label.es_mx)) W(`WORD_LIST entry "${w.id}" has es_eu/es_mx but no base 'es' for fallback`);
     if (!w.label.pt && (w.label.pt_eu || w.label.pt_br)) W(`WORD_LIST entry "${w.id}" has pt_eu/pt_br but no base 'pt' for fallback`);
 
-    // ---- 12b'. WORD_LIST.definition shape (audit Task 82/86) ----
+    // ---- 12b'. WORD_LIST.definition shape (audit Task 82/86/176) ----
     // Required shape: { en, ja, ko, zh } (multilingual object). Plain strings
     // are rejected so future Claude sessions don't accidentally regress.
+    // Audit Task 176: track 21-UI-lang coverage as a coverage-line metric
+    // (not yet WARN-gated; the policy is "promote to WARN once Phase 1/2/3
+    // translations land"). Covered langs match the 21 in lang_names.js.
     if (w.definition !== undefined) {
         if (typeof w.definition === 'string') {
             W(`[#12b'] WORD_LIST entry "${w.id}" has string definition; expected object { en, ja, ko, zh }`);
@@ -589,6 +592,30 @@ for (const w of (ctx.WORD_LIST || [])) {
                 if (!w.definition[k]) W(`[#12b'] WORD_LIST entry "${w.id}".definition missing priority UI lang .${k}`);
             }
         }
+    }
+}
+
+// ---- 12b". WORD_LIST.definition 21-UI-lang coverage (audit Task 176) ----
+// Coverage line that mirrors WORD_LIST.label coverage (Task 175). Once
+// every UI lang reaches 20/20 the line shows "21/21 UI langs fully
+// covered" and the team can flip the WARN gate on.
+if (Array.isArray(ctx.WORD_LIST)) {
+    const definitionUiLangs = ['en','ja','ko','zh','yue','vi','th','id','hi','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+    const defCoverage = {};
+    for (const ui of definitionUiLangs) defCoverage[ui] = 0;
+    for (const w of ctx.WORD_LIST) {
+        if (!w.definition || typeof w.definition !== 'object') continue;
+        const baseFallback = (k) => w.definition[k] || w.definition[k.split('_')[0]];
+        for (const ui of definitionUiLangs) {
+            if (baseFallback(ui)) defCoverage[ui] += 1;
+        }
+    }
+    const fullyCovered = definitionUiLangs.filter(ui => defCoverage[ui] === ctx.WORD_LIST.length).length;
+    I(`WORD_LIST.definition coverage: ${fullyCovered}/${definitionUiLangs.length} UI langs fully covered across all ${ctx.WORD_LIST.length} concepts (Audit Task 176)`);
+    const partial = definitionUiLangs.filter(ui => defCoverage[ui] > 0 && defCoverage[ui] < ctx.WORD_LIST.length);
+    if (partial.length > 0) {
+        const detail = partial.map(ui => `${ui} ${defCoverage[ui]}/${ctx.WORD_LIST.length}`).join(', ');
+        I(`  partial coverage: ${detail}`);
     }
 }
 
@@ -1462,6 +1489,38 @@ for (const code of codes) {
     }
     if (scShort > 5) W(`[#173] (${scShort - 5} more 'source-checked' rows with < 20-cell wordEvidence — backfill needed)`);
     I(`source-checked wordEvidence coverage: ${scFull}/${scTotal} rows with full 20-cell evidence (Audit Task 173)`);
+}
+
+// === Split evidence schemas adoption (Audit Task 195) ===
+// Tracks how many wordEvidence cells use the split form
+// (formEvidence / pronunciationEvidence / conceptEvidence) vs the
+// legacy unified `{ evidence, source }` form. Deprecation is
+// information-only for now; once Task 195's pilot lands the validator
+// can promote legacy-only cells to a WARN.
+{
+    let splitCount = 0;
+    let legacyCount = 0;
+    let totalCells = 0;
+    let citationCount = 0;
+    for (const code of codes) {
+        const lang = ctx.LANG_DATA[code];
+        const we = lang?.wordEvidence;
+        if (!we || typeof we !== 'object') continue;
+        for (const k of Object.keys(we)) {
+            const ev = we[k];
+            if (!ev || typeof ev !== 'object') continue;
+            totalCells += 1;
+            const hasSplit = ev.formEvidence !== undefined ||
+                             ev.pronunciationEvidence !== undefined ||
+                             ev.conceptEvidence !== undefined;
+            const hasLegacy = ev.evidence !== undefined;
+            if (hasSplit) splitCount += 1;
+            else if (hasLegacy) legacyCount += 1;
+            if (ev.citation !== undefined) citationCount += 1;
+        }
+    }
+    I(`split-evidence adoption: ${splitCount}/${totalCells} cells use split schema; ${legacyCount} still on legacy unified form (Audit Task 195)`);
+    I(`structured citation adoption: ${citationCount}/${totalCells} cells use citation object (Audit Task 133/195)`);
 }
 
 // === reviewStatus distribution + consistency (Audit Task 172) ===

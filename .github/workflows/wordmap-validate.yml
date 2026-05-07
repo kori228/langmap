@@ -1,10 +1,10 @@
-name: Word Map validation
+name: LangMap validation
 
-# Audit Task 140: automated Word Map data validation on every PR / push to
-# main + develop. Catches schema regressions, missing translations,
-# hardcoded count drift, and other invariants enforced by
-# validate_wordmap_data.js. The script runs entirely offline (no network
-# required), so this CI job stays fast and deterministic.
+# Audit Task 140: automated validation on every PR / push to main +
+# develop. Catches schema regressions, missing translations, hardcoded
+# count drift, inline-script syntax errors, and sentence/segment
+# alignment issues. All scripts run offline (no network), so CI stays
+# fast and deterministic.
 
 on:
   pull_request:
@@ -13,9 +13,16 @@ on:
       - 'wordmap_data.js'
       - 'wordmap_meta.js'
       - 'meta_i18n_ext.js'
+      - 'meta_i18n_coverage.js'
       - 'lang_names.js'
       - 'lang-filter.js'
+      - 'tree.html'
+      - 'index.html'
+      - 'changelog.html'
+      - 'data.js'
+      - 'app.js'
       - 'validate_wordmap_data.js'
+      - 'validate_data.py'
       - 'CONTRIBUTING.md'
       - 'README.md'
       - '.github/workflows/wordmap-validate.yml'
@@ -26,12 +33,25 @@ on:
       - 'wordmap_data.js'
       - 'wordmap_meta.js'
       - 'meta_i18n_ext.js'
+      - 'meta_i18n_coverage.js'
       - 'lang_names.js'
       - 'lang-filter.js'
+      - 'tree.html'
+      - 'index.html'
+      - 'changelog.html'
+      - 'data.js'
+      - 'app.js'
       - 'validate_wordmap_data.js'
+      - 'validate_data.py'
       - 'CONTRIBUTING.md'
       - 'README.md'
       - '.github/workflows/wordmap-validate.yml'
+
+# Cancel any in-flight runs on the same ref when a new push lands —
+# avoids piling up duplicate runs while a PR is being iterated.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-wordmap:
@@ -42,11 +62,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run validator
+      - name: Run Word Map validator
         run: node validate_wordmap_data.js
 
+  validate-sentences:
+    name: Validate sentence / Word-Order Map data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run sentence validator
+        run: python3 validate_data.py
+
   syntax-check:
-    name: Inline-script syntax check
+    name: Inline-script + data-file syntax check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -57,18 +88,55 @@ jobs:
         run: |
           node -e "
             const fs = require('fs');
-            const html = fs.readFileSync('wordmap.html', 'utf-8');
-            const blocks = html.match(/<script(?![^>]*src)[^>]*>([\\s\\S]*?)<\\/script>/g) || [];
-            let i = 0;
-            for (const b of blocks) {
-              i++;
-              const code = b.replace(/<script[^>]*>/, '').replace(/<\\/script>/, '');
-              try { new Function(code); }
-              catch (e) { console.error('Inline script', i, 'syntax error:', e.message); process.exit(1); }
+            const htmlFiles = ['wordmap.html', 'tree.html', 'index.html'];
+            for (const f of htmlFiles) {
+              if (!fs.existsSync(f)) continue;
+              const html = fs.readFileSync(f, 'utf-8');
+              const blocks = html.match(/<script(?![^>]*src)[^>]*>([\\s\\S]*?)<\\/script>/g) || [];
+              let i = 0;
+              for (const b of blocks) {
+                i++;
+                const code = b.replace(/<script[^>]*>/, '').replace(/<\\/script>/, '');
+                try { new Function(code); }
+                catch (e) { console.error(f, 'inline script', i, 'syntax error:', e.message); process.exit(1); }
+              }
+              console.log(f, '— all', i, 'inline scripts parse OK');
             }
-            console.log('All', i, 'inline scripts parse OK');
-            for (const f of ['wordmap_data.js', 'wordmap_meta.js', 'lang-filter.js', 'lang_names.js']) {
+            const jsFiles = ['wordmap_data.js', 'wordmap_meta.js', 'lang-filter.js', 'lang_names.js', 'meta_i18n_ext.js', 'meta_i18n_coverage.js', 'data.js'];
+            for (const f of jsFiles) {
+              if (!fs.existsSync(f)) continue;
               try { new Function(fs.readFileSync(f, 'utf-8')); console.log(f, 'OK'); }
               catch (e) { console.error(f, 'syntax error:', e.message); process.exit(1); }
             }
+          "
+
+  cache-buster-check:
+    name: Cache-buster sanity check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify every <script src="X.js?v=N"> in wordmap.html / tree.html / index.html points at an existing file
+        run: |
+          node -e "
+            const fs = require('fs');
+            const htmls = ['wordmap.html', 'tree.html', 'index.html'].filter(f => fs.existsSync(f));
+            let bad = 0;
+            for (const h of htmls) {
+              const txt = fs.readFileSync(h, 'utf-8');
+              const re = /src=\"([^\"?]+\\.js)(?:\\?v=\\d+)?\"/g;
+              let m;
+              while ((m = re.exec(txt)) !== null) {
+                const path = m[1];
+                if (path.startsWith('http')) continue;
+                if (!fs.existsSync(path)) {
+                  console.error(h, 'references missing file:', path);
+                  bad++;
+                }
+              }
+            }
+            if (bad > 0) process.exit(1);
+            console.log('All script src references resolve.');
           "
