@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 688 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 691 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -263,6 +263,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ksb'; Glottolog sham1283; Roehl (1911) Wörterbuch der Schambala-Sprache.
   ksb: { name: 'Shambala', native: 'Kishambaa', lat: -4.76, lng: 38.30, // Lushoto, Usambara mts
     words: { water:['mazi','mazi'], fire:['moto','moto'], sun:['zuwa','zuwa'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kuya','kuja'], drink:['kunywa','kuɲwa'], love:['kwenda','kwenda'], heart:['mwoyo','mwojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['ukono','ukono'], eye:['izo','izo'], hello:['nashukuru','naʃukuɾu'], thanks:['ahsante','ahsante'], one:['imo','imo'], good:['hedi','hedi'] }},
+  // Machame — Bantu E60 (Chaga), ~470K speakers, Mt Kilimanjaro southern slopes (Tanzania).
+  // Sources: Ethnologue 27 'jmc'; Glottolog mach1266; Augustiny (1914) Kichagga grammar.
+  jmc: { name: 'Machame', native: 'Kimashami', lat: -3.20, lng: 37.27, // Machame village, Kilimanjaro
+    words: { water:['mringa','mɾiŋɡa'], fire:['mòò','moːʔ'], sun:['ìsùwà','isuwa'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['ìlya','iʎa'], drink:['ìnyo','iɲo'], love:['ìkwenda','ikwenda'], heart:['mòyò','mojo'], tree:['mtí','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['kùoòko','kuoːko'], eye:['rítiò','ɾitio'], hello:['máshàlòmà','maʃalom'], thanks:['ahsànte','ahsante'], one:['ìmwí','imwi'], good:['ìchá','itʃa'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -344,6 +348,10 @@ const LANG_DATA = {
     words: { water:['amanzi','amanzi'], fire:['umlilo','umlilo'], sun:['ilanga','ilaŋɡa'], moon:['inyanga','iɲaŋɡa'], mother:['umama','umama'], father:['ubaba','ubaba'], eat:['ukudla','ukuɗla'], drink:['ukuphuza','ukupʰuza'], love:['uthando','utʰando'], heart:['inhliziyo','inɬizijo'], tree:['isihlahla','isiɬaɬa'], house:['indlu','indlu'], dog:['inja','indʒa'], cat:['ikati','ikati'], hand:['isandla','isandla'], eye:['iso','iso'], hello:['sawubona','sawuɓona'], thanks:['ngiyabonga','ŋijaɓoŋɡa'], one:['kunye','kunje'], good:['kuhle','kuɬe'] }},
   am: { name: 'Amharic', native: 'አማርኛ', lat: 9.02, lng: 38.75, // Addis Ababa
     words: { water:['ውሃ','wɨha'], fire:['እሳት','ɨsat'], sun:['ፀሐይ','sʼɛhaj'], moon:['ጨረቃ','t͡ʃʼɛɾɛkʼa'], mother:['እናት','ɨnat'], father:['አባት','abat'], eat:['መብላት','mɛblat'], drink:['መጠጣት','mɛtʼɛtʼat'], love:['ፍቅር','fɨkɨr'], heart:['ልብ','lɨb'], tree:['ዛፍ','zaf'], house:['ቤት','bet'], dog:['ውሻ','wɨʃa'], cat:['ድመት','dɨmɛt'], hand:['እጅ','ɨd͡ʒ'], eye:['ዓይን','ajn'], hello:['ሰላም','sɛlam'], thanks:['አመሰግናለሁ','amɛsɛɡnalɛhu'], one:['አንድ','and'], good:['ጥሩ','tʼɨru'] }},
+  // Sebat Bet Gurage — Ethiopian Semitic, ~440K speakers, Gurage Zone Ethiopia. "Seven Houses" macrolanguage.
+  // Sources: Ethnologue 27 'sgw'; Glottolog seba1240; Hetzron (1972) Ethiopian Semitic.
+  sgw: { name: 'Sebat Bet Gurage', native: 'ሰባት ቤት ጉራጌ', lat: 8.20, lng: 38.20, // Welkite, Gurage Zone
+    words: { water:['ሞዬ','moje'], fire:['እሳት','ɨsat'], sun:['ፀሐይ','sʼɛhaj'], moon:['ጨረቃ','t͡ʃʼɛɾɛkʼa'], mother:['ኤንም','enɨm'], father:['አባ','aba'], eat:['ወቸ','wɛt͡ʃɛ'], drink:['ሰታ','sɛta'], love:['ፍቅር','fɨkɨr'], heart:['ልብ','lɨb'], tree:['ዛፍ','zaf'], house:['ቤት','bet'], dog:['ውሻ','wɨʃa'], cat:['ድመት','dɨmɛt'], hand:['እጅ','ɨd͡ʒ'], eye:['አይን','ajn'], hello:['እንደምን','ɨndɛmɨn'], thanks:['ኣምስከነለንት','amɨskɛnɛlɛnt'], one:['አት','at'], good:['ሞጨ','mot͡ʃɛ'] }},
   mg: { name: 'Malagasy', native: 'Malagasy', lat: -18.91, lng: 47.52, // Antananarivo
     words: { water:['rano','ɾanu'], fire:['afo','afu'], sun:['masoandro','masuandɾu'], moon:['volana','vulana'], mother:['reny','ɾeni'], father:['ray','ɾaj'], eat:['mihinana','mihinana'], drink:['misotro','misutɾu'], love:['fitiavana','fitiavana'], heart:['fo','fu'], tree:['hazo','hazu'], house:['trano','tɾanu'], dog:['alika','alika'], cat:['saka','saka'], hand:['tanana','tanana'], eye:['maso','masu'], hello:['manao ahoana','manau ahoana'], thanks:['misaotra','misautɾa'], one:['iray','iɾaj'], good:['tsara','tsaɾa'] }},
   // === Others ===
@@ -463,6 +471,10 @@ const LANG_DATA = {
     words: { water:['ਪਾਣੀ','pɑːɳiː'], fire:['ਅੱਗ','əɡː'], sun:['ਸੂਰਜ','suːɾədʒ'], moon:['ਚੰਦ','tʃənd'], mother:['ਮਾਂ','mɑ̃ː'], father:['ਪਿਤਾ','pɪtɑː'], eat:['ਖਾਣਾ','kʰɑːɳɑː'], drink:['ਪੀਣਾ','piːɳɑː'], love:['ਪਿਆਰ','pɪɑːɾ'], heart:['ਦਿਲ','dɪl'], tree:['ਰੁੱਖ','ɾʊkʰː'], house:['ਘਰ','kʰəɾ'], dog:['ਕੁੱਤਾ','kʊtːɑː'], cat:['ਬਿੱਲੀ','bɪlːiː'], hand:['ਹੱਥ','hətʰː'], eye:['ਅੱਖ','əkʰː'], hello:['ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ','sət sɾiː əkɑːl'], thanks:['ਧੰਨਵਾਦ','dənːʋɑːd'], one:['ਇੱਕ','ɪkː'], good:['ਚੰਗਾ','tʃəŋɡɑː'] }},
   ne: { name: 'Nepali', native: 'नेपाली', lat: 27.72, lng: 85.32,
     words: { water:['पानी','paːniː'], fire:['आगो','aːɡo'], sun:['सूर्य','suːɾjə'], moon:['चन्द्रमा','tʃəndɾəmaː'], mother:['आमा','aːmaː'], father:['बुबा','bubaː'], eat:['खानु','kʰaːnu'], drink:['पिउनु','piunu'], love:['माया','maːjaː'], heart:['मुटु','muʈu'], tree:['रूख','ɾuːkʰ'], house:['घर','gʱəɾ'], dog:['कुकुर','kukuɾ'], cat:['बिरालो','biɾaːlo'], hand:['हात','haːt'], eye:['आँखा','ãːkʰaː'], hello:['नमस्ते','nəməste'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','ek'], good:['राम्रो','ɾaːmɾo'] }},
+  // Dotyali — Indo-Aryan, ~800K speakers, far-western Nepal. Recognized as separate language since 2018.
+  // Sources: Ethnologue 27 'dty'; Glottolog doty1234; Eppele (2004) Far-Western Nepal sociolinguistic survey.
+  dty: { name: 'Dotyali', native: 'डोटेली', lat: 29.27, lng: 80.59, // Dadeldhura, Far-Western Nepal
+    words: { water:['पानी','paːniː'], fire:['आगो','aːɡo'], sun:['घाम','ɡʱaːm'], moon:['जुनेली','dʒuneliː'], mother:['आमा','aːmaː'], father:['बाजी','baːdʒiː'], eat:['खानु','kʰaːnu'], drink:['पिउनु','piunu'], love:['प्रेम','preːm'], heart:['हृदय','ɦridəj'], tree:['रूख','ɾuːkʰ'], house:['घर','ɡʱəɾ'], dog:['कुकुर','kukuɾ'], cat:['बिरालो','biɾaːlo'], hand:['हात','haːt'], eye:['आँखि','ãːkʰi'], hello:['नमस्कार','nəməskaːɾ'], thanks:['धन्यवाद','dʱənjəbaːd'], one:['एक','ek'], good:['राम्रो','ɾaːmɾo'] }},
   mr: { name: 'Marathi', native: 'मराठी', lat: 19.08, lng: 72.88,
     words: { water:['पाणी','paːɳiː'], fire:['अग्नी','əɡniː'], sun:['सूर्य','suːɾjə'], moon:['चंद्र','tʃəndɾə'], mother:['आई','aːiː'], father:['वडील','ʋəɖiːl'], eat:['खाणे','kʰaːɳe'], drink:['पिणे','pɪɳe'], love:['प्रेम','pɾemə'], heart:['हृदय','ɦɾudəjə'], tree:['झाड','dʒʱaːɖ'], house:['घर','gʱəɾ'], dog:['कुत्रा','kutɾaː'], cat:['मांजर','mãːdʒəɾ'], hand:['हात','haːt'], eye:['डोळा','ɖoɭaː'], hello:['नमस्कार','nəməskaːɾ'], thanks:['धन्यवाद','dʱənjəʋaːd'], one:['एक','ek'], good:['चांगले','tʃaːŋɡle'] }},
   gu: { name: 'Gujarati', native: 'ગુજરાતી', lat: 23.02, lng: 72.57,
@@ -4014,6 +4026,13 @@ const HIST_DESCENDANT = {
     // continue to show on the modern overlay; the HIST_DESCENDANT entry
     // only signals the validator, not the UI era classification.
     yuc:null, kgg:null,
+    // Audit Task 203 (2026-05-07): itl Itelmen + ykg Tundra Yukaghir
+    // are the remaining `dataStatus: 'fragmentary'` rows still flagged
+    // by [#17]. itl (~80 fluent, Kamchatka — Chukotko-Kamchatkan) and
+    // ykg (~370, Sakha Republic — Yukaghir) are likewise living
+    // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
+    // rows (added in Round 2) keeps them visible on the modern map.
+    itl:null, ykg:null,
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)

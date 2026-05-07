@@ -2028,6 +2028,133 @@ if (familyOutsideList.length && familyOutsideList.length <= 8) {
     for (const f of familyOutsideList) I(`family outside allow-list: ${f}`);
 }
 
+// ---- 201. Per-batch cross-cutting gates (Audit Task 197 / 201) --------
+// Detect language codes added since the base ref (default origin/main)
+// and run Task 197's cross-cutting rules against each. Phase 1 = WARN
+// so a regressive PR is visible without immediately blocking merge.
+// Promote to ERROR in a later phase once the team agrees the warnings
+// are routinely cleared per batch.
+//
+// Activate by env:
+//   WM_BASE_REF=origin/main   compare against this ref (default)
+//   WM_BATCH_GATE=1           force-enable even when no codes detected
+//   WM_BATCH_GATE=0           skip entirely (also auto-skipped when git
+//                             is unavailable or the ref doesn't exist)
+//
+// Detection: parses the diff for added object literal keys at the top
+// of LANG_DATA in wordmap_data.js — `<code>: { name: '...'`. Falls
+// back to "no diff" silently if `git` is unreachable.
+{
+    const cp = require('child_process');
+    const baseRef = process.env.WM_BASE_REF || 'origin/main';
+    const skip = process.env.WM_BATCH_GATE === '0';
+
+    function gitDiffText(ref) {
+        try {
+            return cp.execSync(`git diff ${ref}..HEAD -- wordmap_data.js`, {
+                encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'],
+                maxBuffer: 32 * 1024 * 1024,
+            });
+        } catch (e) { return null; }
+    }
+
+    let added = [];
+    if (!skip) {
+        const diff = gitDiffText(baseRef);
+        if (diff !== null) {
+            // Match additions that look like new top-level LANG_DATA entries.
+            // Pattern: a `+` line containing `  <code>: { name: '...'` (2-space
+            // indent inside `const LANG_DATA = {`). Excludes WM_UI / WM_UI_LABELS
+            // entries (which use `native:` not `name:` as the first key).
+            const re = /^\+\s+([a-z][a-z0-9_]*):\s*\{\s*name:/gm;
+            const seen = new Set();
+            let m;
+            while ((m = re.exec(diff)) !== null) {
+                if (!seen.has(m[1])) { seen.add(m[1]); added.push(m[1]); }
+            }
+        }
+    }
+
+    if (added.length === 0) {
+        I(`Per-batch gate (Task 201): no new LANG_DATA entries vs ${baseRef} (or git unavailable / WM_BATCH_GATE=0)`);
+    } else {
+        I(`Per-batch gate (Task 201): ${added.length} new lang(s) vs ${baseRef} — ${added.slice(0, 10).join(', ')}${added.length > 10 ? `, …${added.length - 10} more` : ''}`);
+
+        // Resolve the 21-UI-lang section list once for [#201a].
+        const UI21 = ['en','ja','ko','zh','yue','vi','th','id','hi','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+
+        // Cache native-name multimap to detect collisions for [#201f].
+        const nativeNameMap = new Map();
+        for (const c of codes) {
+            const n = ctx.LANG_DATA[c]?.native;
+            if (!n) continue;
+            if (!nativeNameMap.has(n)) nativeNameMap.set(n, []);
+            nativeNameMap.get(n).push(c);
+        }
+
+        for (const code of added) {
+            const lang = ctx.LANG_DATA[code];
+            if (!lang) {
+                W(`[#201z] new code "${code}" detected in diff but missing from current LANG_DATA — likely a rename or revert (Audit Task 201)`);
+                continue;
+            }
+            const m = lang.meta || {};
+
+            // [#201a] lang_names.js — all 21 UI sections must have an entry.
+            if (LANG_NAMES) {
+                const missingUi = UI21.filter(ui => !(LANG_NAMES[ui] && LANG_NAMES[ui][code]));
+                if (missingUi.length > 0) {
+                    W(`[#201a] new lang "${code}": missing lang_names entries in ${missingUi.length}/21 UI sections (${missingUi.slice(0, 5).join(', ')}${missingUi.length > 5 ? `, …${missingUi.length - 5} more` : ''}) (Audit Task 201)`);
+                }
+            }
+
+            // [#201b] meta.description — multilingual object form.
+            if (!m.description) {
+                W(`[#201b] new lang "${code}": meta.description missing (Audit Task 201)`);
+            } else if (typeof m.description === 'string') {
+                W(`[#201b] new lang "${code}": meta.description is a string; expected { en, ja, ko, zh } object (Audit Task 145/201)`);
+            } else {
+                const baseUi = ['en', 'ja', 'ko', 'zh'];
+                const missingDesc = baseUi.filter(ui => !m.description[ui]);
+                if (missingDesc.length > 0) {
+                    W(`[#201b] new lang "${code}": meta.description missing baseline UI lang(s) ${missingDesc.join(', ')} (Audit Task 201)`);
+                }
+            }
+
+            // [#201c] meta.scriptTags — typed array required (Audit Task 130).
+            if (!Array.isArray(m.scriptTags) || m.scriptTags.length === 0) {
+                W(`[#201c] new lang "${code}": meta.scriptTags missing or empty — must be a non-empty array (Audit Task 130/201)`);
+            }
+
+            // [#201d] meta.parentCode or meta.varietyRole — required if the
+            // code carries an underscore (regional variant). Non-underscore
+            // codes can leave both unset.
+            if (code.includes('_')) {
+                if (!m.parentCode && !m.varietyRole) {
+                    W(`[#201d] new lang "${code}" has underscore code but neither meta.parentCode nor meta.varietyRole is set (Audit Task 170/201)`);
+                }
+            }
+
+            // [#201e] meta.family — must be present and not introduce a brand-new
+            // top token. The full taxonomy check is upstream ([#14]); here we
+            // only flag if `family` is missing entirely on a new lang.
+            if (!m.family) {
+                W(`[#201e] new lang "${code}": meta.family missing (Audit Task 159/201)`);
+            }
+
+            // [#201f] disambiguator — required if the row's native name
+            // collides with any other row (Audit Task 188).
+            const native = lang.native;
+            if (native && nativeNameMap.get(native) && nativeNameMap.get(native).length > 1) {
+                if (!m.disambiguator) {
+                    const others = nativeNameMap.get(native).filter(c => c !== code);
+                    W(`[#201f] new lang "${code}": shares native name "${native}" with ${others.join(', ')} but has no meta.disambiguator (Audit Task 188/201)`);
+                }
+            }
+        }
+    }
+}
+
 // ---- Report -------------------------------------------------------------
 console.log('=== Word Map data validation ===');
 console.log(`Languages: ${N} (modern: ${N - histInData.length}, historical: ${histInData.length})`);

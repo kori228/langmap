@@ -1430,6 +1430,41 @@ No batch merges until:
   for the same X; no Saami + Sámi; no Niger-Congo (Bantu) + Atlantic-
   Congo (Bantu)).
 
+#### Per-batch automated gate (Audit Task 201)
+
+The validator runs an automatic per-batch check that diffs against a
+base ref (default `origin/main`) and runs the cross-cutting rules
+above on every newly-added `LANG_DATA` entry. This catches "added the
+data row but forgot the i18n / scriptTags / parentCode follow-through"
+regressions at PR time, before they accumulate into a backlog.
+
+Gate identifiers (Phase 1 = WARN; promote to ERROR once routinely
+clear):
+
+| ID | Rule | Audit Task |
+|---|---|---|
+| `[#201a]` | New lang has entries in all 21 UI sections of `lang_names.js` | 143 / 197 |
+| `[#201b]` | New lang has `meta.description` as a multilingual object with at least `en`, `ja`, `ko`, `zh` | 145 / 197 |
+| `[#201c]` | New lang has a non-empty `meta.scriptTags` array | 130 / 197 |
+| `[#201d]` | Underscore-coded lang has `meta.parentCode` or `meta.varietyRole` | 170 / 197 |
+| `[#201e]` | New lang has `meta.family` set | 159 / 197 |
+| `[#201f]` | New lang has `meta.disambiguator` if its native name collides with another row | 188 / 197 |
+
+Knobs:
+
+- `WM_BASE_REF=<ref>` overrides the diff base (default `origin/main`).
+  Useful locally: `WM_BASE_REF=HEAD~10 node validate_wordmap_data.js`
+  retrospectively gates the last 10 commits.
+- `WM_BATCH_GATE=0` skips the gate entirely (e.g. when running on a
+  detached working tree without git history).
+- The CI workflow sets `WM_BASE_REF=origin/main` and uses
+  `actions/checkout@v4` with `fetch-depth: 0` so the diff resolves on
+  feature-branch PRs.
+
+When the gate finds nothing to compare against (no diff, git
+unavailable, or `WM_BATCH_GATE=0`), it logs `Per-batch gate (Task
+201): no new LANG_DATA entries vs <ref>` as INFO and continues.
+
 #### Validator-driven progress checkpoints
 
 - **At 700 langs** (Tier 5 complete): re-run Tasks 143–146 to clear any
