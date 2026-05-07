@@ -535,4 +535,154 @@ const LANG_NAMES = {
             }
         }
     }
+    // Hakha Chin (cnh), Susu (sus), Samogitian (sgs) — Sino-Tibetan + Mande + Baltic.
+    const ADDED18 = {
+        cnh: { en: 'Hakha Chin', ja: 'ハカ・チン語', ko: '하카 친어', zh: '哈卡钦语', yue: '哈卡欽語',
+               vi: 'Tiếng Hakha Chin', th: 'ภาษาฮากาชิน', id: 'Hakha Chin', hi: 'हाखा चिन',
+               de: 'Hakha-Chin', fr: 'Hakha tchin', it: 'Hakha Chin',
+               es_eu: 'Chin de Hakha', es_mx: 'Chin de Hakha', pt_eu: 'Chin de Hakha', pt_br: 'Chin de Hakha',
+               ru: 'Хакха-чин', uk: 'Хакха-чин', ar: 'الشين هاخا', he: 'הקה צ׳ין', sw: 'Hakha Chin' },
+        sus: { en: 'Susu', ja: 'スース語', ko: '수수어', zh: '苏苏语', yue: '蘇蘇語',
+               vi: 'Tiếng Susu', th: 'ภาษาซูซู', id: 'Susu', hi: 'सुसु',
+               de: 'Susu', fr: 'Soussou', it: 'Susu',
+               es_eu: 'Susu', es_mx: 'Susu', pt_eu: 'Sosso', pt_br: 'Sosso',
+               ru: 'Сусу', uk: 'Сусу', ar: 'السوسو', he: 'סוסו', sw: 'Kisusu' },
+        sgs: { en: 'Samogitian', ja: 'サモギティア語', ko: '사모기티아어', zh: '萨莫吉提亚语', yue: '薩莫吉提亞語',
+               vi: 'Tiếng Samogiti', th: 'ภาษาซาโมจิเทีย', id: 'Samogitian', hi: 'समोगिटियन',
+               de: 'Schemaitisch', fr: 'Samogitien', it: 'Samogitico',
+               es_eu: 'Samogitio', es_mx: 'Samogitio', pt_eu: 'Samogício', pt_br: 'Samogício',
+               ru: 'Жемайтский', uk: 'Жемайтська', ar: 'السامويتية', he: 'ז׳מאיטית', sw: 'Kisamogitian' },
+    };
+    for (const code of Object.keys(ADDED18)) {
+        for (const ui of Object.keys(ADDED18[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED18[code][ui];
+            }
+        }
+    }
+    // Lomwe (ngl), Gayo (gay), Kosraean (kos) — Mozambique Bantu + Sumatra Austronesian + Micronesia.
+    const ADDED19 = {
+        ngl: { en: 'Lomwe', ja: 'ロムウェ語', ko: '로무에어', zh: '洛姆韦语', yue: '洛姆韋語',
+               vi: 'Tiếng Lomwe', th: 'ภาษาโลมเว', id: 'Lomwe', hi: 'लोम्वे',
+               de: 'Lomwe', fr: 'Lomwé', it: 'Lomwe',
+               es_eu: 'Lomwe', es_mx: 'Lomwe', pt_eu: 'Lomué', pt_br: 'Lomué',
+               ru: 'Ломве', uk: 'Ломве', ar: 'اللومويه', he: 'לומבה', sw: 'Kilomwe' },
+        gay: { en: 'Gayo', ja: 'ガヨ語', ko: '가요어', zh: '加约语', yue: '加約語',
+               vi: 'Tiếng Gayo', th: 'ภาษากาโย', id: 'Gayo', hi: 'गायो',
+               de: 'Gayo', fr: 'Gayo', it: 'Gayo',
+               es_eu: 'Gayo', es_mx: 'Gayo', pt_eu: 'Gayo', pt_br: 'Gayo',
+               ru: 'Гайо', uk: 'Гайо', ar: 'الغايو', he: 'גאיו', sw: 'Gayo' },
+        kos: { en: 'Kosraean', ja: 'コスラエ語', ko: '코스라에어', zh: '科斯拉伊语', yue: '科斯拉伊語',
+               vi: 'Tiếng Kosrae', th: 'ภาษาคอสแร', id: 'Kosrae', hi: 'कोस्राई',
+               de: 'Kosraeisch', fr: 'Kosraéen', it: 'Kosraeano',
+               es_eu: 'Kosraeano', es_mx: 'Kosraeano', pt_eu: 'Kosraeano', pt_br: 'Kosraeano',
+               ru: 'Косраэ', uk: 'Косрае', ar: 'الكوسرايية', he: 'קוסראית', sw: 'Kikosrae' },
+    };
+    for (const code of Object.keys(ADDED19)) {
+        for (const ui of Object.keys(ADDED19[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED19[code][ui];
+            }
+        }
+    }
+    // Makonde (kde), Nanai (gld), Shuar (jiv) — Bantu + Tungusic + Jivaroan.
+    const ADDED20 = {
+        kde: { en: 'Makonde', ja: 'マコンデ語', ko: '마콘데어', zh: '马孔德语', yue: '馬孔德語',
+               vi: 'Tiếng Makonde', th: 'ภาษามาคอนเด', id: 'Makonde', hi: 'माकोंडे',
+               de: 'Makonde', fr: 'Makondé', it: 'Makonde',
+               es_eu: 'Makonde', es_mx: 'Makonde', pt_eu: 'Maconde', pt_br: 'Maconde',
+               ru: 'Маконде', uk: 'Маконде', ar: 'الماكوندي', he: 'מקונדה', sw: 'Kimakonde' },
+        gld: { en: 'Nanai', ja: 'ナナイ語', ko: '나나이어', zh: '那乃语', yue: '那乃語',
+               vi: 'Tiếng Nanai', th: 'ภาษานานาย', id: 'Nanai', hi: 'नानाई',
+               de: 'Nanaiisch', fr: 'Nanaï', it: 'Nanai',
+               es_eu: 'Nanai', es_mx: 'Nanai', pt_eu: 'Nanai', pt_br: 'Nanai',
+               ru: 'Нанайский', uk: 'Нанайська', ar: 'الناناي', he: 'נאנאית', sw: 'Kinanai' },
+        jiv: { en: 'Shuar', ja: 'シュアル語', ko: '슈아르어', zh: '舒阿尔语', yue: '舒阿爾語',
+               vi: 'Tiếng Shuar', th: 'ภาษาชูอาร์', id: 'Shuar', hi: 'शुआर',
+               de: 'Shuar', fr: 'Shuar', it: 'Shuar',
+               es_eu: 'Shuar', es_mx: 'Shuar', pt_eu: 'Xuar', pt_br: 'Xuar',
+               ru: 'Шуар', uk: 'Шуар', ar: 'الشوار', he: 'שואר', sw: 'Kishuar' },
+    };
+    for (const code of Object.keys(ADDED20)) {
+        for (const ui of Object.keys(ADDED20[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED20[code][ui];
+            }
+        }
+    }
+    // Sena (seh), Urhobo (urh), Rotuman (rtm) — Mozambique Bantu + Niger Delta Edoid + Pacific outlier.
+    const ADDED21 = {
+        seh: { en: 'Sena', ja: 'セナ語', ko: '세나어', zh: '塞纳语', yue: '塞納語',
+               vi: 'Tiếng Sena', th: 'ภาษาเซนา', id: 'Sena', hi: 'सेना',
+               de: 'Sena', fr: 'Sena', it: 'Sena',
+               es_eu: 'Sena', es_mx: 'Sena', pt_eu: 'Sena', pt_br: 'Sena',
+               ru: 'Сена', uk: 'Сена', ar: 'السينا', he: 'סנה', sw: 'Kisena' },
+        urh: { en: 'Urhobo', ja: 'ウルホボ語', ko: '우르호보어', zh: '乌尔霍博语', yue: '烏爾霍博語',
+               vi: 'Tiếng Urhobo', th: 'ภาษาอูร์โฮโบ', id: 'Urhobo', hi: 'उर्होबो',
+               de: 'Urhobo', fr: 'Urhobo', it: 'Urhobo',
+               es_eu: 'Urhobo', es_mx: 'Urhobo', pt_eu: 'Urhobo', pt_br: 'Urhobo',
+               ru: 'Урхобо', uk: 'Урхобо', ar: 'الأورهوبو', he: 'אורהובו', sw: 'Kiurhobo' },
+        rtm: { en: 'Rotuman', ja: 'ロツマ語', ko: '로투마어', zh: '罗图马语', yue: '羅圖馬語',
+               vi: 'Tiếng Rotuma', th: 'ภาษาโรทูมา', id: 'Rotuma', hi: 'रोटूमा',
+               de: 'Rotumanisch', fr: 'Rotuman', it: 'Rotumano',
+               es_eu: 'Rotumano', es_mx: 'Rotumano', pt_eu: 'Rotumano', pt_br: 'Rotumano',
+               ru: 'Ротуманский', uk: 'Ротуманська', ar: 'الروتومانية', he: 'רוטומאנית', sw: 'Kirotuma' },
+    };
+    for (const code of Object.keys(ADDED21)) {
+        for (const ui of Object.keys(ADDED21[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED21[code][ui];
+            }
+        }
+    }
+    // Adangme (ada), Nganasan (nio), Koyukon (koy) — Ghana Kwa + Russian Arctic + Alaska Athabaskan.
+    const ADDED22 = {
+        ada: { en: 'Adangme', ja: 'アダンメ語', ko: '아당메어', zh: '阿当梅语', yue: '阿當梅語',
+               vi: 'Tiếng Adangme', th: 'ภาษาอาดังเม', id: 'Adangme', hi: 'आदांगमे',
+               de: 'Adangme', fr: 'Adangme', it: 'Adangme',
+               es_eu: 'Adangme', es_mx: 'Adangme', pt_eu: 'Adangme', pt_br: 'Adangme',
+               ru: 'Адангме', uk: 'Адангме', ar: 'الأدانغمي', he: 'אדנגמה', sw: 'Kiadangme' },
+        nio: { en: 'Nganasan', ja: 'ヌガナサン語', ko: '응가나산어', zh: '恩加纳桑语', yue: '恩加納桑語',
+               vi: 'Tiếng Nganasan', th: 'ภาษางานาซัน', id: 'Nganasan', hi: 'न्गानासान',
+               de: 'Nganasanisch', fr: 'Nganassane', it: 'Nganasan',
+               es_eu: 'Nganasán', es_mx: 'Nganasán', pt_eu: 'Nganassano', pt_br: 'Nganassano',
+               ru: 'Нганасанский', uk: 'Нганасанська', ar: 'النغاناسانية', he: 'נגנסנית', sw: 'Kinganasan' },
+        koy: { en: 'Koyukon', ja: 'コユコン語', ko: '코유콘어', zh: '科尤孔语', yue: '科尤孔語',
+               vi: 'Tiếng Koyukon', th: 'ภาษาคอยูกอน', id: 'Koyukon', hi: 'कोयूकोन',
+               de: 'Koyukon', fr: 'Koyukon', it: 'Koyukon',
+               es_eu: 'Koyukon', es_mx: 'Koyukon', pt_eu: 'Koyukon', pt_br: 'Koyukon',
+               ru: 'Коюкон', uk: 'Коюкон', ar: 'الكويوكون', he: 'קויוקון', sw: 'Kikoyukon' },
+    };
+    for (const code of Object.keys(ADDED22)) {
+        for (const ui of Object.keys(ADDED22[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED22[code][ui];
+            }
+        }
+    }
+    // Kölsch (ksh), Ixil (ixl), Khams Tibetan (khg) — Cologne Germanic + Guatemala Mayan + East Tibet.
+    const ADDED23 = {
+        ksh: { en: 'Kölsch', ja: 'ケルシュ語', ko: '쾰슈어', zh: '科隆方言', yue: '科隆方言',
+               vi: 'Tiếng Kölsch', th: 'ภาษาเคิลช์', id: 'Kölsch', hi: 'कोलोनिश',
+               de: 'Kölsch', fr: 'Cologné', it: 'Kölsch',
+               es_eu: 'Colonio', es_mx: 'Colonio', pt_eu: 'Colónio', pt_br: 'Colônio',
+               ru: 'Кёльнский', uk: 'Кельнський', ar: 'الكولشية', he: 'קלשית', sw: 'Kikölsch' },
+        ixl: { en: 'Ixil', ja: 'イシル語', ko: '이실어', zh: '伊希尔语', yue: '伊希爾語',
+               vi: 'Tiếng Ixil', th: 'ภาษาอิชิล', id: 'Ixil', hi: 'इशिल',
+               de: 'Ixil', fr: 'Ixil', it: 'Ixil',
+               es_eu: 'Ixil', es_mx: 'Ixil', pt_eu: 'Ixil', pt_br: 'Ixil',
+               ru: 'Иксиль', uk: 'Ішіль', ar: 'الإكسيل', he: 'איקסיל', sw: 'Ixil' },
+        khg: { en: 'Khams Tibetan', ja: 'カム・チベット語', ko: '캄 티베트어', zh: '康巴藏语', yue: '康巴藏語',
+               vi: 'Tiếng Tạng Khams', th: 'ภาษาคาม', id: 'Tibet Khams', hi: 'खाम्स तिब्बती',
+               de: 'Khams-Tibetisch', fr: 'Tibétain Khams', it: 'Tibetano Kham',
+               es_eu: 'Tibetano de Kham', es_mx: 'Tibetano de Kham', pt_eu: 'Tibetano Khams', pt_br: 'Tibetano Khams',
+               ru: 'Хамский тибетский', uk: 'Хамська тибетська', ar: 'تبتية خام', he: 'טיבטית חאמס', sw: 'Kitibet cha Khams' },
+    };
+    for (const code of Object.keys(ADDED23)) {
+        for (const ui of Object.keys(ADDED23[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED23[code][ui];
+            }
+        }
+    }
 })();

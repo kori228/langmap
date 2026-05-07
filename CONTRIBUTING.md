@@ -1084,8 +1084,57 @@ wordEvidence: {
 - **`url`**: must be `http://` or `https://` (validator `[#13r]`
   errors otherwise).
 - **Coverage**: track adoption via the validator's INFO line
-  `split-evidence adoption: N/M cells use split schema; K still on
-  legacy unified form`.
+  `split-evidence adoption: N/M cells use split schema (legacy=…,
+  pilot=…); K still on unified { evidence, source } form`.
+
+#### Stream-name conventions: legacy vs pilot (Audit Task 195)
+
+Two stream-name conventions are accepted. New rows should adopt the
+pilot names; legacy names are retained so existing `Task 97`-era cells
+keep validating.
+
+| Slot | Legacy (Task 97) | Pilot (Task 195) |
+|---|---|---|
+| Form / surface evidence | `formEvidence` | `languageEvidence` |
+| Pronunciation evidence | `pronunciationEvidence` | `pronunciationEvidence` |
+| Concept / meaning evidence | `conceptEvidence` | `semanticEvidence` |
+
+The pilot names better describe the *evidence stream*, not the field
+location: `languageEvidence` covers spelling + morphology + grammatical
+shape; `semanticEvidence` covers concept-mapping decisions
+(anatomical-vs-emotional `heart`, citation-form policy, etc.). The
+validator (`[#195]`) warns if a single cell mixes the two conventions.
+
+#### URL citation reproducibility (Audit Task 189)
+
+Every `wordEvidence.url` and every `wordEvidence.citation.url` **must**
+ship with an `accessed` date in ISO 8601 (`YYYY-MM-DD`) format. Without
+it the citation is unverifiable once the upstream content changes.
+
+Validator rules (`[#189]`):
+
+- `wordEvidence.url` set + `wordEvidence.accessed` missing → WARN
+  during the migration window; promote to ERROR after Phase 1 backfill
+  lands.
+- `wordEvidence.accessed` not matching `YYYY-MM-DD` → ERROR.
+- `wordEvidence.accessed` in the future (vs system date) → ERROR.
+- `wordEvidence.accessed` older than 1 year → INFO (counted in the
+  coverage line; consider re-verifying the URL).
+- Same rules apply to `wordEvidence.citation.url` /
+  `wordEvidence.citation.accessed`.
+
+Backfill plan:
+
+- **Phase 1** — the 24 `'source-checked'` rows (per Task 173). Each
+  cell with a URL gets `accessed`. Promote `[#189]` WARN to ERROR at
+  the end of Phase 1.
+- **Phase 2** — next 50 priority rows.
+- **Phase 3** — opportunistic.
+
+When the upstream URL is dead, replace with an `archive.org` snapshot
+and document the substitution in `wordEvidence.note`. Do **not** invent
+accessed dates; if the cell was authored without a recorded date, leave
+the field unset and add it during the next verification pass.
 
 ### C4. Languages intentionally not represented as rows (Audit Task 150 Batch J)
 
