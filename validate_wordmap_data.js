@@ -332,9 +332,25 @@ const dupAssign = Object.entries(metaAssignCount).filter(([, n]) => n > 1);
 for (const [c, n] of dupAssign) E(`${c}: ${n} meta assignments (silent overwrite)`);
 
 // ---- 9. EXCLUDED_CODES vs HIST_DESCENDANT -------------------------------
+// Audit Task 199 (2026-05-07): a `dataStatus: 'fragmentary'` row may
+// appear in HIST_DESCENDANT (to clear the Session-29 inverse-invariant
+// [#17] warning) without being in EXCLUDED_CODES — fragmentary entries
+// like Yuchi (yuc) or Kusunda (kgg) are still living languages and
+// should remain visible on the default modern map. The classic
+// invariant ("historical-stage rows must be excluded from the modern
+// view") still applies to all other HIST_DESCENDANT entries.
+const dsoForHist = ctx.DATA_STATUS_OVERRIDES || {};
 const histInData = HIST_KEYS.filter(c => ctx.LANG_DATA[c]);
 const histNotExcl = histInData.filter(c => !ctx.EXCLUDED_CODES.has(c));
-for (const c of histNotExcl) E(`${c}: in HIST_DESCENDANT but not EXCLUDED_CODES`);
+for (const c of histNotExcl) {
+    const ds = dsoForHist[c] || ctx.LANG_DATA[c]?.meta?.dataStatus;
+    if (ds === 'fragmentary') {
+        // Allowed: fragmentary living language flagged via HIST_DESCENDANT
+        // for [#17] visibility, not hidden via EXCLUDED_CODES.
+        continue;
+    }
+    E(`${c}: in HIST_DESCENDANT but not EXCLUDED_CODES`);
+}
 // HIST entries that don't even exist in LANG_DATA (stale)
 const histStale = HIST_KEYS.filter(c => !ctx.LANG_DATA[c]);
 for (const c of histStale) W(`${c}: in HIST_DESCENDANT but not in LANG_DATA (stale)`);
@@ -504,9 +520,31 @@ if (!i18nBlock) {
     }
 }
 
-// ---- 19. Cache-buster registry drift (Audit Task 134) ----------------
+// ---- 19. Cache-buster registry drift (Audit Tasks 134 / 198) ---------
 // Compare static <script>/<link> ?v= versions in wordmap.html against the
 // central WM_ASSET_VERSION object so drift is caught at validation time.
+//
+// Audit Task 198 (2026-05-07): strict mode promotes drift WARNs to
+// ERRORs for CI gating. Activate with env `WM_VALIDATE_STRICT=1` (the
+// GitHub Actions workflow sets it). Local dev keeps the relaxed WARN
+// behavior so iteration is not blocked while a contributor is mid-bump.
+//
+// Monotonic-baseline check: each WM_ASSET_VERSION value must be ≥ the
+// minimum baseline below. Prevents accidental version rollback (e.g.
+// merge conflict resolved the wrong way). Update WM_VERSION_FLOOR
+// when the current value of a key exceeds the floor by ≥ 10 to keep
+// the floor approximately current without micro-tracking.
+const STRICT = process.env.WM_VALIDATE_STRICT === '1';
+const driftReporter = STRICT ? E : W;
+const WM_VERSION_FLOOR = {
+    // Baseline frozen 2026-05-07; update when a key bumps past floor + 10.
+    styles:   54,
+    data:    120,
+    metaI18n:  8,
+    filter:   24,
+    names:    26,
+    meta:     70,
+};
 const ASSET_KEY_BY_PATH = {
     'styles.css':       'styles',
     'wordmap_data.js':  'data',
@@ -517,15 +555,22 @@ const ASSET_KEY_BY_PATH = {
 };
 const versionRegistryMatch = htmlSrc.match(/const\s+WM_ASSET_VERSION\s*=\s*\{([^}]+)\}/);
 if (!versionRegistryMatch) {
-    W(`[#19] wordmap.html missing WM_ASSET_VERSION registry (Audit Task 134)`);
+    driftReporter(`[#19] wordmap.html missing WM_ASSET_VERSION registry (Audit Task 134)`);
 } else {
     const registry = {};
     for (const m of versionRegistryMatch[1].matchAll(/(\w+)\s*:\s*(\d+)/g)) {
         registry[m[1]] = +m[2];
     }
+    // Audit Task 198: monotonic-baseline guard. Always ERROR (regardless
+    // of strict mode) — a rollback below the floor is never legitimate.
+    for (const [key, floor] of Object.entries(WM_VERSION_FLOOR)) {
+        if (registry[key] !== undefined && registry[key] < floor) {
+            E(`[#19] WM_ASSET_VERSION.${key}=${registry[key]} is below the recorded floor of ${floor} — version rolled back? (Audit Task 198)`);
+        }
+    }
     for (const [path, key] of Object.entries(ASSET_KEY_BY_PATH)) {
         if (registry[key] === undefined) {
-            W(`[#19] WM_ASSET_VERSION missing key '${key}' for ${path}`);
+            driftReporter(`[#19] WM_ASSET_VERSION missing key '${key}' for ${path}`);
             continue;
         }
         // wordmap_meta.js is loaded dynamically via assetUrl(); accept that
@@ -533,23 +578,26 @@ if (!versionRegistryMatch) {
         if (path === 'wordmap_meta.js') {
             const dyn = htmlSrc.match(/assetUrl\(\s*['"]wordmap_meta\.js['"]\s*,\s*['"]meta['"]\s*\)/);
             if (!dyn) {
-                W(`[#19] ${path}: no assetUrl('wordmap_meta.js', 'meta') call found in wordmap.html`);
+                driftReporter(`[#19] ${path}: no assetUrl('wordmap_meta.js', 'meta') call found in wordmap.html`);
             }
             continue;
         }
         const re = new RegExp(`${path.replace(/\./g, '\\.')}\\?v=(\\d+)`, 'g');
         const matches = [...htmlSrc.matchAll(re)];
         if (matches.length === 0) {
-            W(`[#19] ${path}: no cache-buster found in wordmap.html`);
+            driftReporter(`[#19] ${path}: no cache-buster found in wordmap.html`);
             continue;
         }
         const expected = registry[key];
         for (const m of matches) {
             const got = +m[1];
             if (got !== expected) {
-                W(`[#19] ${path}?v=${got} in wordmap.html doesn't match WM_ASSET_VERSION.${key}=${expected}`);
+                driftReporter(`[#19] ${path}?v=${got} in wordmap.html doesn't match WM_ASSET_VERSION.${key}=${expected}`);
             }
         }
+    }
+    if (STRICT) {
+        I(`cache-buster strict mode active (WM_VALIDATE_STRICT=1) — drift escalates to ERROR (Audit Task 198)`);
     }
 }
 

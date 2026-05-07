@@ -1232,6 +1232,37 @@ the <code>COMMON_PHRASES_LATIN</code> table for de/fr/es/it/pt/id/sw. Don't edit
 base atoms in <code>meta_i18n_ext.js</code> for compound phrases; the layered approach
 keeps base translations stable and lets coverage iterate without merge churn.
 
+#### Drift detection (Audit Task 198)
+
+The validator's `[#19]` check compares every `<script src="X.js?v=N">`
+in `wordmap.html` against the central `WM_ASSET_VERSION` registry and
+flags mismatches. Two enforcement modes:
+
+- **Local development (default)**: drift surfaces as WARN. Iteration
+  is not blocked, so you can bump multiple files in one editing
+  session without the validator complaining halfway through.
+- **CI / strict mode (`WM_VALIDATE_STRICT=1`)**: drift escalates to
+  ERROR. The GitHub Actions workflow runs strict mode and fails the
+  PR if any cache-buster value disagrees with `WM_ASSET_VERSION`. A
+  separate `cache-buster-drift-gate` job surfaces the exact
+  mismatched lines in the PR check output.
+- **Monotonic-baseline guard**: each `WM_ASSET_VERSION` value must be
+  ≥ the recorded floor (`WM_VERSION_FLOOR` in
+  `validate_wordmap_data.js`). Always ERROR — a rollback below the
+  floor is never legitimate. Update the floor only when the current
+  value exceeds it by ≥ 10 to avoid micro-tracking.
+
+Optional pre-commit hook (`.githooks/pre-commit`) runs the validator
+before each commit and surfaces drift inline. Install once:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The hook fails the commit only on validator ERROR; drift is shown as a
+warning hint so you can decide whether to bump in this commit or the
+next. Bypass for work-in-progress with `git commit --no-verify`.
+
 ### I. Cantonese must use Traditional Chinese (recap from §5 above)
 
 Applies to `wordmap_data.js` too: `LANG_DATA.yue.native` and any words for `yue`/`yue_*` codes must be Traditional. Same for Taiwanese Hakka (`hak_tw`), Taiwanese (`nan`), and other Traditional-using varieties.
