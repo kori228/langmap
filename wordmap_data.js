@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 850 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 853 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1877,6 +1877,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'myx'; Glottolog masa1320; Brown (1972) Lumasaaba grammar.
   myx: { name: 'Masaaba', native: 'Lumasaaba', lat: 1.08, lng: 34.18, // Mbale, Mt Elgon
     words: { water:['kamaatsi','kamaːtsi'], fire:['kamulilo','kamulilo'], sun:['suuba','suːba'], moon:['umweesi','umweːsi'], mother:['mayi','maji'], father:['papa','papa'], eat:['khulya','kʰuʎa'], drink:['khunywa','kʰuɲwa'], love:['khusima','kʰusima'], heart:['umwoyo','umwojo'], tree:['kumusaala','kumusaːla'], house:['nzu','nzu'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['kumukhono','kumukʰono'], eye:['liiso','liːso'], hello:['mulembe','mulembe'], thanks:['ole nise','ole nise'], one:['mulala','mulala'], good:['kalayi','kalaji'] }},
+  // Bukusu (Lubukusu) — Bantu JE31c (Luhya cluster), ~750K-1.4M, Bungoma County Kenya. Sister to Masaaba (myx).
+  // Sources: Ethnologue 27 'bxk'; Glottolog buku1249; Mutonyi (2000) Aspects of Bukusu morphology.
+  bxk: { name: 'Bukusu', native: 'Lubukusu', lat: 0.57, lng: 34.56, // Bungoma, Kenya
+    words: { water:['kamatsi','kamatsi'], fire:['kamulilo','kamulilo'], sun:['liuba','liuba'], moon:['kumwesi','kumwesi'], mother:['mayi','maji'], father:['papa','papa'], eat:['khulya','kʰuʎa'], drink:['khunywa','kʰuɲwa'], love:['busiani','busiani'], heart:['kumwoyo','kumwojo'], tree:['kumusaala','kumusaːla'], house:['enju','endʒu'], dog:['imbwa','imbwa'], cat:['enyawu','eɲawu'], hand:['kumukhono','kumukʰono'], eye:['liiso','liːso'], hello:['mulembe','mulembe'], thanks:['orio','orio'], one:['ndala','ndala'], good:['kalayi','kalaji'] }},
   ki: { name: 'Kikuyu', native: 'Gĩkũyũ', lat: -1.17, lng: 36.83, // Kiambu, Kenya
     words: { water:['maaĩ','maːi'], fire:['mwaki','mwaki'], sun:['rĩũa','ɾiwa'], moon:['mweri','mweɾi'], mother:['maitũ','maitu'], father:['baba','baba'], eat:['kũrĩa','kuɾia'], drink:['kũnyua','kuɲua'], love:['wendo','wendo'], heart:['ngoro','ŋɡoɾo'], tree:['mũtĩ','muti'], house:['nyũmba','ɲumba'], dog:['ngui','ŋɡui'], cat:['nyaũ','ɲau'], hand:['guoko','ɡuoko'], eye:['riitho','riːθo'], hello:['wĩmwega','wimweɡa'], thanks:['nĩ wega','ni weɡa'], one:['ĩmwe','imwe'], good:['wega','weɡa'] }},
   // Meru — Bantu E54, Kenya, ~2M speakers; closely related to Kikuyu (ki) within the
@@ -1900,6 +1904,10 @@ const LANG_DATA = {
     words: { water:['maḓi','maɖi'], fire:['mulilo','mulilo'], sun:['ḓuvha','ɖuʋa'], moon:['ṅwedzi','ŋwedzi'], mother:['mme','mːe'], father:['khotsi','kʰotsi'], eat:['u ḽa','u ɭa'], drink:['u ṅwa','u ŋwa'], love:['lufuno','lufuno'], heart:['mbilu','mbilu'], tree:['muri','muɾi'], house:['nnḓu','nɖu'], dog:['mmbwa','mbːwa'], cat:['katse','katse'], hand:['tshanḓa','tʃʰaɳɖa'], eye:['ito','ito'], hello:['ndaa','ndaː'], thanks:['ndo livhuwa','ndo livʱuwa'], one:['nthihi','ntʰihi'], good:['zwavhuḓi','zwaʋʱuɖi'] }},
   bem: { name: 'Bemba', native: 'ChiBemba', lat: -10.21, lng: 31.18, // Kasama
     words: { water:['amenshi','ameɲʃi'], fire:['umulilo','umulilo'], sun:['akasuba','akasuba'], moon:['umweshi','umweʃi'], mother:['bamayo','bamajo'], father:['bataata','bataːta'], eat:['ukulya','ukulja'], drink:['ukunwa','ukunwa'], love:['ukutemwa','ukutemwa'], heart:['umutima','umutima'], tree:['icimuti','itʃimuti'], house:['ing\'anda','iŋːanda'], dog:['imbwa','imbwa'], cat:['pushi','puʃi'], hand:['ukuboko','ukuboko'], eye:['ilinso','ilinso'], hello:['muli shani','muli ʃani'], thanks:['natotela','natotela'], one:['cimo','tʃimo'], good:['chisuma','tʃisuma'] }},
+  // Kaonde (Kikaonde) — Bantu L41, ~400K, North-Western Province Zambia. National language of Zambia.
+  // Sources: Ethnologue 27 'kqn'; Glottolog kaon1241; Wright (1985) Kaonde-English Dictionary.
+  kqn: { name: 'Kaonde', native: 'Kikaonde', lat: -13.99, lng: 25.83, // Solwezi, NW Zambia
+    words: { water:['mema','mema'], fire:['mujilo','mudʒilo'], sun:['juba','dʒuba'], moon:['ñondo','ɲondo'], mother:['bama','bama'], father:['batata','batata'], eat:['kuja','kudʒa'], drink:['kutoma','kutoma'], love:['butemwe','butemwe'], heart:['muchima','mutʃima'], tree:['kichi','kitʃi'], house:['nzubo','nzubo'], dog:['mbwa','mbwa'], cat:['kapuso','kapuso'], hand:['kuboko','kuboko'], eye:['jiso','dʒiso'], hello:['mwapoñai','mwapoɲai'], thanks:['nasakwilila','nasakwilila'], one:['umo','umo'], good:['kyawama','kjawama'] }},
   lua: { name: 'Luba-Kasai', native: 'Cilubà', lat: -6.13, lng: 23.59, // Mbuji-Mayi
     words: { water:['mâyi','maːji'], fire:['kapia','kapia'], sun:['dîba','diːba'], moon:['ngondo','ŋɡondo'], mother:['mâmu','maːmu'], father:['tâtu','taːtu'], eat:['kudia','kudia'], drink:['kunua','kunua'], love:['dinanga','dinaŋɡa'], heart:['mucima','mut͡ʃima'], tree:['mutshi','mut͡ʃi'], house:['nzubu','nzubu'], dog:['mbwa','mbwa'], cat:['nyao','ɲao'], hand:['tshianza','t͡ʃianza'], eye:['dîsu','diːsu'], hello:['moyo','mojo'], thanks:['tuasakidila','tuasakidila'], one:['umue','umue'], good:['bimpe','bimpe'] }},
   kg: { name: 'Kikongo', native: 'Kikongo', lat: -5.81, lng: 13.46, // Matadi
@@ -2476,6 +2484,10 @@ const LANG_DATA = {
     words: { water:['lɩm','lɩm'], fire:['miŋ','miŋ'], sun:['wɩsɩ','wɩsɩ'], moon:['fenaɣ','fenaɣ'], mother:['ɖoo','ɖoː'], father:['caa','tʃaː'], eat:['tɔɔ','tɔː'], drink:['ñɔɔ','ɲɔː'], love:['sɔɔlɩm','sɔːlɩm'], heart:['laŋɩyɛ','laŋɩjɛ'], tree:['tɩʋ','tɩʋ'], house:['ɖɩɣa','ɖɩɣa'], dog:['hayʋ','hajʋ'], cat:['takpaŋ','takpaŋ'], hand:['nesi','nesi'], eye:['ɛsɩ','ɛsɩ'], hello:['ndɩ na','ndɩ na'], thanks:['agɔndɩ','aɡɔndɩ'], one:['kʋyʋmaɣ','kʋjʋmaɣ'], good:['ɖeu','ɖeu'] }},
   ee: { name: 'Ewe', native: 'Eʋegbe', lat: 6.13, lng: 1.22, // Lomé
     words: { water:['tsi','tsi'], fire:['dzo','dzo'], sun:['ɣe','ɣe'], moon:['ɣleti','ɣleti'], mother:['dada','dada'], father:['fofo','fofo'], eat:['ɖu','ɖu'], drink:['no','no'], love:['lɔ̃lɔ̃','lɔ̃lɔ̃'], heart:['dzi','dzi'], tree:['ati','ati'], house:['aƒe','aƒe'], dog:['avu','avu'], cat:['dadi','dadi'], hand:['asi','asi'], eye:['ŋku','ŋku'], hello:['ŋdi','ŋdi'], thanks:['akpe','akpe'], one:['ɖeka','ɖeka'], good:['nyo','ɲo'] }},
+  // Gen (Mina) — Niger-Congo Kwa Gbe, ~400-500K, Maritime Region Togo (Aného area). Sister to Ewe (ee) within the Gbe cluster.
+  // Sources: Ethnologue 27 'gej'; Glottolog mina1268; Bole-Richard (1983) Description du gen.
+  gej: { name: 'Gen', native: 'Gengbe', lat: 6.23, lng: 1.59, // Aného, Togo (Mina/Gen heartland)
+    words: { water:['tsi','tsi'], fire:['dzo','dzo'], sun:['ɣe','ɣe'], moon:['dzinkɛ','dʒinkɛ'], mother:['nɔ','nɔ'], father:['tɔ','tɔ'], eat:['ɖu','ɖu'], drink:['no','no'], love:['lɔ̃lɔ̃','lɔ̃lɔ̃'], heart:['dzi','dzi'], tree:['ati','ati'], house:['aƒe','aƒe'], dog:['avu','avu'], cat:['agbo','aɡbo'], hand:['alɔ','alɔ'], eye:['ŋku','ŋku'], hello:['ado','ado'], thanks:['akpe','akpe'], one:['ɖeka','ɖeka'], good:['nyo','ɲo'] }},
   // Niger-Congo (Bantu, additional)
   nyn: { name: 'Runyankole', native: 'Runyankore', lat: -0.61, lng: 30.66, // Mbarara
     words: { water:['amaizi','amaizi'], fire:['omuriro','omuriro'], sun:['izooba','izoːba'], moon:['omwezi','omwezi'], mother:['maawe','maːwe'], father:['tata','tata'], eat:['kurya','kurja'], drink:['kunywa','kuɲwa'], love:['rukundo','rukundo'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['enju','endʒu'], dog:['embwa','embwa'], cat:['kapa','kapa'], hand:['omukono','omukono'], eye:['eriiso','eriːso'], hello:['agandi','aɡandi'], thanks:['webare','webare'], one:['emwe','emwe'], good:['kirungi','kiruŋɡi'] }},

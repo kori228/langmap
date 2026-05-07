@@ -2101,4 +2101,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Batch B1 (2026-05-07): African languages bxk / kqn / gej.
+    const ADDED85 = {
+        bxk: { ja: 'ブクス語', en: 'Bukusu', ko: '부쿠수어', zh: '布库苏语', yue: '布庫蘇語',
+               vi: 'Tiếng Bukusu', th: 'ภาษาบูคูซู', id: 'Bahasa Bukusu', hi: 'बुकुसु',
+               de: 'Bukusu', fr: 'Bukusu', it: 'Bukusu',
+               es_eu: 'Bukusu', es_mx: 'Bukusu', pt_eu: 'Bukusu', pt_br: 'Bukusu',
+               ru: 'Букусу', uk: 'Букусу', ar: 'البوكوسو', he: 'בוקוסו', sw: 'Kibukusu' },
+        kqn: { ja: 'カオンデ語', en: 'Kaonde', ko: '카온데어', zh: '卡翁德语', yue: '卡翁德語',
+               vi: 'Tiếng Kaonde', th: 'ภาษาเคาน์เด', id: 'Bahasa Kaonde', hi: 'काऊन्डे',
+               de: 'Kaonde', fr: 'Kaonde', it: 'Kaonde',
+               es_eu: 'Kaonde', es_mx: 'Kaonde', pt_eu: 'Kaonde', pt_br: 'Kaonde',
+               ru: 'Каонде', uk: 'Каонде', ar: 'الكاوندي', he: 'קאונדה', sw: 'Kikaonde' },
+        gej: { ja: 'ゲン語', en: 'Gen (Mina)', ko: '겐어', zh: '根语', yue: '根語',
+               vi: 'Tiếng Gen', th: 'ภาษาเกน', id: 'Bahasa Gen', hi: 'गेन',
+               de: 'Gen (Mina)', fr: 'Guin (Mina)', it: 'Gen (Mina)',
+               es_eu: 'Gen (Mina)', es_mx: 'Gen (Mina)', pt_eu: 'Gen (Mina)', pt_br: 'Gen (Mina)',
+               ru: 'Ген (мина)', uk: 'Ген (міна)', ar: 'الجن (مينا)', he: 'גן (מינה)', sw: 'Kigen' },
+    };
+    for (const code of Object.keys(ADDED85)) {
+        for (const ui of Object.keys(ADDED85[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED85[code][ui];
+            }
+        }
+    }
 })();
