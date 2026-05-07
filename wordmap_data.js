@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 724 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 727 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -417,6 +417,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'sva'; Glottolog svan1245; Tuite (1997) Svan; Schmidt (1991) Kartvelian phonology.
   sva: { name: 'Svan', native: 'ლუშნუ ნინ', lat: 43.00, lng: 42.72, // Mestia, Svaneti
     words: { water:['ლიც','lit͡sʼ'], fire:['ლემესგ','lemesɡ'], sun:['მიჟ','miʒ'], moon:['დოშდულ','doʃdul'], mother:['დი','di'], father:['ფუ','pʰu'], eat:['ჭიმედ','tʃʼimed'], drink:['ლიშგი','liʃɡi'], love:['ხოჩა','xotʃa'], heart:['ლიე','lie'], tree:['ხან','xan'], house:['კოჯ','kʼodʒ'], dog:['ჯეღ','dʒeʁ'], cat:['ფისკ','pʰisk'], hand:['შდიხ','ʃdix'], eye:['ნებო','nebo'], hello:['ხოჩაპ','xotʃapʰ'], thanks:['ხოჩამდ','xotʃamd'], one:['ეშხუ','eʃxu'], good:['ხოჩა','xotʃa'] }},
+  // Laz — Kartvelian (Zan branch — sister to Mingrelian, with Georgian/Svan as more distant relatives), ~30K, NE Turkey + small Georgia.
+  // Sources: Ethnologue 27 'lzz'; Glottolog lazz1240; Lacroix (2009) Laz grammar; Marr (1910) Lazskaja grammatika.
+  laz: { name: 'Laz', native: 'ლაზური ნენა', lat: 41.27, lng: 41.55, // Pazar, Rize Province (Lazistan)
+    words: { water:['წკარი','t͡sʼkari'], fire:['დაჩხური','dat͡ʃxuri'], sun:['მჟორა','mʒora'], moon:['თუთა','tʰutʰa'], mother:['ნანა','nana'], father:['ბაბა','baba'], eat:['ჭკომა','tʃʼkʼoma'], drink:['შუმუ','ʃumu'], love:['ჸორო','ʔoro'], heart:['გური','ɡuri'], tree:['ნჯა','ndʒa'], house:['ოხორი','oxori'], dog:['ჯოღორი','dʒoɣori'], cat:['კატუ','kʼatʼu'], hand:['ხე','xe'], eye:['თოლი','tʰoli'], hello:['ხამოს','xamos'], thanks:['ნოღამე','noɣame'], one:['არ','ar'], good:['სქირი','skʼiri'] }},
   hy: { name: 'Armenian', native: 'Հայերեն', lat: 40.18, lng: 44.51, // Yerevan
     words: { water:['ջուր','dʒuɾ'], fire:['կրակ','kɾɑk'], sun:['արև','ɑˈɾev'], moon:['լուսին','lusin'], mother:['մայր','majɾ'], father:['հայր','hajɾ'], eat:['ուտել','uˈtel'], drink:['խմել','χəˈmel'], love:['սեր','seɾ'], heart:['սիրտ','siɾt'], tree:['ծառ','tsaɾ'], house:['տուն','tun'], dog:['շուն','ʃun'], cat:['կատու','kɑtu'], hand:['ձեռք','dzeɾkʰ'], eye:['աչք','ɑtʃkʰ'], hello:['բարև','bɑɾev'], thanks:['շնորհակալություն','ʃnoɾhɑkɑlutʰjun'], one:['մեկ','mek'], good:['լավ','lɑv'] }},
   nv: { name: 'Navajo', native: 'Diné bizaad', lat: 36.17, lng: -109.51, // Window Rock
@@ -1044,6 +1048,10 @@ const LANG_DATA = {
     words: { water:['ⲙⲟⲟⲩ','moːu'], fire:['ⲕⲣⲱⲙ','krɔːm'], sun:['ⲣⲏ','reː'], moon:['ⲓⲟϩ','joːh'], mother:['ⲙⲁⲁⲩ','maːu'], father:['ⲉⲓⲱⲧ','ejɔːt'], eat:['ⲟⲩⲱⲙ','uɔːm'], drink:['ⲥⲱ','sɔː'], love:['ⲙⲉ','me'], heart:['ϩⲏⲧ','heːt'], tree:['ϣⲏⲛ','ʃeːn'], house:['ⲏⲓ','eːj'], dog:['ⲟⲩϩⲟⲣ','uhɔr'], cat:['ⲉⲙⲟⲩ','emu'], hand:['ϭⲓϫ','tʃidʒ'], eye:['ⲃⲁⲗ','bal'], hello:['ⲛⲟⲩϥⲣⲓ','nufri'], thanks:['ϣⲉⲡϩⲙⲟⲧ','ʃephmot'], one:['ⲟⲩⲁ','ua'], good:['ⲛⲁⲛⲟⲩ','nanu'] }},
   arc: { name: 'Aramaic', native: 'ܐܪܡܝܐ', lat: 33.51, lng: 36.29,
     words: { water:['ܡܝܐ','majaː'], fire:['ܢܘܪܐ','nuːraː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emːaː'], father:['ܐܒܐ','abːaː'], eat:['ܐܟܠ','aːχel'], drink:['ܫܬܐ','ʃtaː'], love:['ܚܘܒܐ','ħubːaː'], heart:['ܠܒܐ','lebːaː'], tree:['ܐܝܠܢܐ','iːlaːnaː'], house:['ܒܝܬܐ','bajtaː'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܫܘܢܪܐ','ʃuːnaːraː'], hand:['ܐܝܕܐ','iːðaː'], eye:['ܥܝܢܐ','ʕajnaː'], hello:['ܫܠܡܐ','ʃlaːmaː'], thanks:['ܬܘܕܝ','tawdiː'], one:['ܚܕ','ħað'], good:['ܛܒܐ','tˤaːβaː'] }},
+  // Assyrian Neo-Aramaic — Eastern Aramaic, ~600K worldwide, Iraq/Iran/Syria/diaspora (USA, Sweden, Australia). Largest living Aramaic.
+  // Sources: Ethnologue 27 'aii'; Glottolog assy1241; Maclean (1895) Grammar of the Dialects of Vernacular Syriac; Khan (2008) NENA studies.
+  aii: { name: 'Assyrian Neo-Aramaic', native: 'ܠܫܢܐ ܐܫܘܪܝܐ', lat: 36.34, lng: 43.13, // Mosul / Nineveh Plains (historical homeland)
+    words: { water:['ܡܝܐ','mijja'], fire:['ܢܘܪܐ','nura'], sun:['ܫܡܫܐ','ʃimʃa'], moon:['ܣܗܪܐ','sahra'], mother:['ܝܡܐ','jimma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','axil'], drink:['ܫܬܐ','ʃtaja'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','libba'], tree:['ܐܝܠܢܐ','ilana'], house:['ܒܝܬܐ','beθa'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaːtu'], hand:['ܐܝܕܐ','iːða'], eye:['ܥܝܢܐ','ʕajna'], hello:['ܫܠܡܐ','ʃlaːma'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒܐ','tˤaba'] }},
   sux: {
     "name": "Sumerian",
     "native": "𒅴𒂠",
@@ -1563,6 +1571,10 @@ const LANG_DATA = {
   // Quechuan / Aymaran
   ay: { name: 'Aymara', native: 'Aymar aru', lat: -16.49, lng: -68.15, // La Paz
     words: { water:['uma','uma'], fire:['nina','nina'], sun:['inti','inti'], moon:['phaxsi','pʰaχsi'], mother:['mama','mama'], father:['tata','tata'], eat:['manq\'aña','manqʼaɲa'], drink:['umaña','umaɲa'], love:['munasiña','munasiɲa'], heart:['chuyma','tʃujma'], tree:['quqa','quqa'], house:['uta','uta'], dog:['anu','anu'], cat:['phisi','pʰisi'], hand:['ampara','ampaɾa'], eye:['nayra','najɾa'], hello:['kamisaki','kamisaki'], thanks:['yuspagara','juspaɣaɾa'], one:['maya','maja'], good:['suma','suma'] }},
+  // Jaqaru — Aymaran (Tupe-Cauqui branch — sister to Aymara within Aymaran family), ~700, Yauyos Province, Peru.
+  // Sources: Ethnologue 27 'jqr'; Glottolog jaqa1251; Belleza (1995) Vocabulario Jaqaru-Castellano; Hardman (1983) Jaqaru.
+  jaq: { name: 'Jaqaru', native: 'Jaqaru aru', lat: -12.31, lng: -75.83, // Tupe district, Yauyos, Peru
+    words: { water:['uma','uma'], fire:['nina','nina'], sun:['ñiwi','ɲiwi'], moon:['phaxshi','pʰaχʃi'], mother:['maya','maja'], father:['awki','awkʼi'], eat:['mankaña','manqʼaɲa'], drink:['umaña','umaɲa'], love:['munasiña','munasiɲa'], heart:['chuyma','tʃujma'], tree:['qhura','qʰuɾa'], house:['uta','uta'], dog:['anu','anu'], cat:['phishi','pʰiʃi'], hand:['amrra','amɾa'], eye:['nayri','najɾi'], hello:['kamishti','kamiʃti'], thanks:['yuspaa','juspaː'], one:['maya','maja'], good:['shuma','ʃuma'] }},
   // Asháninka — Arawakan (Kampan), Peruvian Amazon, ~25K-50K speakers. Largest Arawakan in Peru.
   // Sources: Ethnologue 27 'cni'; Glottolog asha1243; Mihas (2010) Asháninka grammar.
   cni: { name: 'Asháninka', native: 'Asháninka', lat: -10.85, lng: -73.81, // Satipo, Peru

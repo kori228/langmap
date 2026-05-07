@@ -1035,4 +1035,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED38 = {
+        laz: { en: 'Laz', ja: 'ラズ語', ko: '라즈어', zh: '拉兹语', yue: '拉茲語',
+               vi: 'Tiếng Laz', th: 'ภาษาลาซ', id: 'Bahasa Laz', hi: 'लाज़',
+               de: 'Lasisch', fr: 'Laze', it: 'Laz',
+               es_eu: 'Laz', es_mx: 'Laz', pt_eu: 'Laz', pt_br: 'Laz',
+               ru: 'Лазский', uk: 'Лазька', ar: 'اللازية', he: 'לאזית', sw: 'Kilaz' },
+        aii: { en: 'Assyrian Neo-Aramaic', ja: 'アッシリア新アラム語', ko: '아시리아 신아람어', zh: '亚述新阿拉米语', yue: '亞述新阿拉米語',
+               vi: 'Tiếng Aram Tân Assyria', th: 'ภาษาอราเมอิกใหม่อัสซีเรีย', id: 'Aram Neo-Asyur', hi: 'असीरियन नव-अरामी',
+               de: 'Assyrisch-Neuaramäisch', fr: 'Néo-araméen assyrien', it: 'Neoaramaico assiro',
+               es_eu: 'Neoarameo asirio', es_mx: 'Neoarameo asirio', pt_eu: 'Neoaramaico assírio', pt_br: 'Neoaramaico assírio',
+               ru: 'Ассирийский новоарамейский', uk: 'Ассирійська новоарамейська', ar: 'الآشورية الحديثة', he: 'ארמית חדשה אשורית', sw: 'Kiaramu Kipya cha Kiashuru' },
+        jaq: { en: 'Jaqaru', ja: 'ハカル語', ko: '하카루어', zh: '哈卡鲁语', yue: '哈卡魯語',
+               vi: 'Tiếng Jaqaru', th: 'ภาษาฮาการู', id: 'Bahasa Jaqaru', hi: 'जाकारू',
+               de: 'Jaqaru', fr: 'Jaqaru', it: 'Jaqaru',
+               es_eu: 'Jaqaru', es_mx: 'Jaqaru', pt_eu: 'Jaqaru', pt_br: 'Jaqaru',
+               ru: 'Хакару', uk: 'Хакару', ar: 'الجاكارو', he: 'ג׳קארו', sw: 'Kijaqaru' },
+    };
+    for (const code of Object.keys(ADDED38)) {
+        for (const ui of Object.keys(ADDED38[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED38[code][ui];
+            }
+        }
+    }
 })();
