@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 709 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 712 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -213,6 +213,10 @@ const LANG_DATA = {
     } },
   bn: { name: 'Bengali', native: 'বাংলা', lat: 23.81, lng: 90.41, // Dhaka
     words: { water:['জল','d͡ʒɔl'], fire:['আগুন','aɡun'], sun:['সূর্য','ʃuɾd͡ʒo'], moon:['চাঁদ','t͡ʃãd'], mother:['মা','ma'], father:['বাবা','baba'], eat:['খাওয়া','kʰaoa'], drink:['পান করা','pan kɔɾa'], love:['ভালোবাসা','bʰalobasa'], heart:['হৃদয়','hɾidɔe̯'], tree:['গাছ','ɡat͡ʃʰ'], house:['বাড়ি','baɽi'], dog:['কুকুর','kukuɾ'], cat:['বিড়াল','biɽal'], hand:['হাত','hat'], eye:['চোখ','t͡ʃokʰ'], hello:['নমস্কার','nɔmɔʃkaɾ'], thanks:['ধন্যবাদ','dʰɔnnobad'], one:['এক','ek'], good:['ভালো','bʰalo'] }},
+  // Rangpuri (Kamtapuri) — Indo-Aryan Eastern, ~15M speakers, NW Bangladesh + N Bengal/Assam India.
+  // Sources: Ethnologue 27 'rkt'; Glottolog rang1265; Wilde (2008) Sociolinguistic Survey of Rangpuri.
+  rkt: { name: 'Rangpuri', native: 'রংপুরী', lat: 25.74, lng: 89.28, // Rangpur, Bangladesh
+    words: { water:['পানি','pani'], fire:['আগুন','aɡun'], sun:['সুরুজ','suɾud͡ʒ'], moon:['চাইন','tʃain'], mother:['মাও','mao'], father:['বাও','bao'], eat:['খাওয়া','kʰawa'], drink:['খা','kʰa'], love:['মনোয়াব','monojab'], heart:['মন','mon'], tree:['গাছ','ɡatʃʰ'], house:['ঘর','ɡʱoɾ'], dog:['কুকুর','kukuɾ'], cat:['বিরাল','biɾal'], hand:['হাত','haːt'], eye:['চখ','tʃɔkʰ'], hello:['হামার সালাম','hamaɾ salam'], thanks:['ধইন্যা','dʱoinɲa'], one:['এক','ek'], good:['ভালো','bʱalo'] }},
   ur: { name: 'Urdu', native: 'اردو', lat: 31.56, lng: 74.35, // Lahore
     words: { water:['پانی','paːniː'], fire:['آگ','aːɡ'], sun:['سورج','suːɾad͡ʒ'], moon:['چاند','t͡ɕãːd'], mother:['ماں','mãː'], father:['والد','vaːlid'], eat:['کھانا','kʰaːnaː'], drink:['پینا','piːnaː'], love:['محبت','mohabːat'], heart:['دل','dil'], tree:['درخت','daɾaxt'], house:['گھر','ɡʱaɾ'], dog:['کتا','kuttaː'], cat:['بلی','bilːiː'], hand:['ہاتھ','haːtʰ'], eye:['آنکھ','ãːkʰ'], hello:['السلام علیکم','assalaːmu ʕalaikum'], thanks:['شکریہ','ʃukrijaː'], one:['ایک','eːk'], good:['اچھا','at͡ʃt͡ʃʰaː'] }},
   ta: { name: 'Tamil', native: 'தமிழ்', lat: 13.08, lng: 80.27, // Chennai
@@ -253,6 +257,10 @@ const LANG_DATA = {
     words: { water:['su','su'], fire:['ateş','ateʃ'], sun:['güneş','ɟyneʃ'], moon:['ay','aj'], mother:['anne','anːe'], father:['baba','baba'], eat:['yemek','jemek'], drink:['içmek','itʃmek'], love:['aşk','aʃk'], heart:['kalp','kalp'], tree:['ağaç','aːtʃ'], house:['ev','ev'], dog:['köpek','cøpek'], cat:['kedi','cedi'], hand:['el','el'], eye:['göz','ɟøz'], hello:['merhaba','meɾhaba'], thanks:['teşekkürler','teʃecːyɾleɾ'], one:['bir','biɾ'], good:['iyi','iji'] }},
   fa: { name: 'Persian', native: 'فارسی', lat: 35.69, lng: 51.39, // Tehran
     words: { water:['آب','ɒːb'], fire:['آتش','ɒːteʃ'], sun:['خورشید','xorʃiːd'], moon:['ماه','mɒːh'], mother:['مادر','mɒːdær'], father:['پدر','pedær'], eat:['خوردن','xordæn'], drink:['نوشیدن','nuːʃidæn'], love:['عشق','eʃq'], heart:['قلب','qælb'], tree:['درخت','deræxt'], house:['خانه','xɒːne'], dog:['سگ','sæɡ'], cat:['گربه','ɡorbe'], hand:['دست','dæst'], eye:['چشم','t͡ʃeʃm'], hello:['درود','doɾuːd'], thanks:['سپاس','sepɒːs'], one:['یک','jek'], good:['خوب','xuːb'] }},
+  // Judeo-Persian — Iranian Jewish, ~60K, Iran/Israel/USA. Persian written in Hebrew script.
+  // Sources: Ethnologue 27 'jpr'; Glottolog jude1257; Lazard (1968) Judeo-Persian texts.
+  jpr: { name: 'Judeo-Persian', native: 'פארסי יהודי', lat: 32.65, lng: 51.67, // Isfahan (historic Iranian Jewish center)
+    words: { water:['אב','ɒːb'], fire:['אתש','ɒːteʃ'], sun:['חורשיד','xorʃiːd'], moon:['מאה','mɒːh'], mother:['מאדר','mɒːdær'], father:['פדר','pedær'], eat:['חורדן','xordæn'], drink:['נושידן','nuːʃidæn'], love:['עשק','eʃq'], heart:['קלב','qælb'], tree:['דרכת','deræxt'], house:['כאנה','xɒːne'], dog:['סג','sæɡ'], cat:['גורבה','ɡorbe'], hand:['דסת','dæst'], eye:['צ\'שם','t͡ʃeʃm'], hello:['שלום','ʃɒːlom'], thanks:['ספאס','sepɒːs'], one:['יכ','jek'], good:['חוב','xuːb'] }},
   sw: { name: 'Swahili', native: 'Kiswahili', lat: -6.79, lng: 39.28, // Dar es Salaam
     words: { water:['maji','madʒi'], fire:['moto','moto'], sun:['jua','dʒua'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['kula','kula'], drink:['kunywa','kuɲwa'], love:['upendo','upendo'], heart:['moyo','mojo'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['mkono','mkono'], eye:['jicho','dʒitʃo'], hello:['habari','habari'], thanks:['asante','asante'], one:['moja','modʒa'], good:['nzuri','nzuri'] }},
   // Sukuma — Bantu F21, ~5M speakers, Tanzania's largest single Bantu language by speaker count.
@@ -1547,6 +1555,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'mic'; Glottolog mikm1235; Inglis (1991) Mi'kmaq Online Dictionary.
   mic: { name: "Mi'kmaq", native: "Mi'kmawi'simk", lat: 46.10, lng: -64.78, // Eskasoni / Cape Breton
     words: { water:['samqwan','samɡʷan'], fire:["puktew",'puɡdew'], sun:['naku\'set','naɡuʔset'], moon:['tepkunaset','tebɡunaset'], mother:['nikij','nidʒidʒ'], father:["nujj",'nudʒː'], eat:['mij','midʒ'], drink:["sa'q",'saʔɡ'], love:['kesalk','ɡesalɡ'], heart:["ukamlamun",'uɡamlamun'], tree:['nipi','nibi'], house:['wikuom','wiɡuom'], dog:['lmu\'j','lmuʔdʒ'], cat:["mia\'wj",'miaʔwdʒ'], hand:['piten','biden'], eye:["pukweck",'buɡʷedʒɡ'], hello:["kwe'",'ɡʷeʔ'], thanks:["wela'lin",'welaʔlin'], one:["newt",'newt'], good:['kelu\'lk','ɡeluʔlɡ'] }},
+  // Munsee — Algonquian Eastern (Lenape branch), critically endangered (~2 fluent), heritage-revival.
+  // Sources: Ethnologue 27 'umu'; Glottolog muns1238; Goddard (1979) Munsee Phonology.
+  umu: { name: 'Munsee', native: 'Lunaapeew', lat: 42.78, lng: -82.05, // Moraviantown, Ontario (Munsee Delaware Nation)
+    words: { water:['mpíi','mbiː'], fire:['lúhsuw','luhsuw'], sun:['kíishux','kiːʃux'], moon:['nipáhum','nipahum'], mother:['nkáhees','ŋkahees'], father:['nóoxw','noːxw'], eat:['mit','mit'], drink:['mneew','mneew'], love:['ahóoluw','ahoːluw'], heart:['ulehyii','ulehjiː'], tree:['hìttuk','hitːuk'], house:['wíikwam','wiːkwam'], dog:['mwáakaneew','mwaːkaneːw'], cat:['póshiis','poʃiːs'], hand:['mléelii','mleːliː'], eye:['wíikšiit','wiːkʃiːt'], hello:['hé','heː'], thanks:['wanìshi','waniʃi'], one:['ngwútii','ŋɡwutiː'], good:['weltóok','weltoːk'] }},
   // Siouan
   lkt: { name: 'Lakota', native: 'Lakȟótiyapi', lat: 43.02, lng: -102.55, // Pine Ridge
     words: { water:['mní','mní'], fire:['pȟéta','pʰéta'], sun:['wí','wí'], moon:['haŋhépi wí','haŋhépi wí'], mother:['iná','iná'], father:['até','até'], eat:['yúta','júta'], drink:['yátkaŋ','játkaŋ'], love:['thečhíȟila','tʰetʃʰíʁila'], heart:['čhaŋté','tʃʰaŋté'], tree:['čháŋ','tʃʰáŋ'], house:['thípi','tʰípi'], dog:['šúŋka','ʃúŋka'], cat:['igmúŋke','iɡmúŋke'], hand:['napé','napé'], eye:['ištá','iʃtá'], hello:['háu','háu'], thanks:['philámayaye','pʰilámajaje'], one:['waŋží','waŋʒí'], good:['wašté','waʃté'] }},

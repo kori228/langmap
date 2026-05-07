@@ -910,4 +910,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Rangpuri (rkt), Judeo-Persian (jpr), Munsee (umu) — Bangladesh + Iranian Jewish + Lenape Algonquian.
+    const ADDED33 = {
+        rkt: { en: 'Rangpuri', ja: 'ラングプリ語', ko: '랑푸리어', zh: '兰格普里语', yue: '蘭格普里語',
+               vi: 'Tiếng Rangpuri', th: 'ภาษารังปุระ', id: 'Rangpuri', hi: 'रंगपुरी',
+               de: 'Rangpuri', fr: 'Rangpuri', it: 'Rangpuri',
+               es_eu: 'Rangpuri', es_mx: 'Rangpuri', pt_eu: 'Rangpuri', pt_br: 'Rangpuri',
+               ru: 'Рангпури', uk: 'Рангпурі', ar: 'الرانغبورية', he: 'רנגפורי', sw: 'Rangpuri' },
+        jpr: { en: 'Judeo-Persian', ja: 'ユダヤ・ペルシア語', ko: '유대 페르시아어', zh: '犹太波斯语', yue: '猶太波斯語',
+               vi: 'Tiếng Ba Tư Do Thái', th: 'ภาษายิว-เปอร์เซีย', id: 'Yahudi-Persia', hi: 'यहूदी फ़ारसी',
+               de: 'Judäo-Persisch', fr: 'Judéo-persan', it: 'Giudeo-persiano',
+               es_eu: 'Judeopersa', es_mx: 'Judeopersa', pt_eu: 'Judeo-persa', pt_br: 'Judeo-persa',
+               ru: 'Еврейско-персидский', uk: 'Єврейсько-перська', ar: 'اليهودية الفارسية', he: 'יהודית-פרסית', sw: 'Kiyahudi-Kiajemi' },
+        umu: { en: 'Munsee', ja: 'ムンジー語', ko: '먼시어', zh: '芒西语', yue: '芒西語',
+               vi: 'Tiếng Munsee', th: 'ภาษามันซี', id: 'Munsee', hi: 'मुंसी',
+               de: 'Munsee', fr: 'Munsee', it: 'Munsee',
+               es_eu: 'Munsee', es_mx: 'Munsee', pt_eu: 'Munsee', pt_br: 'Munsee',
+               ru: 'Манси (делавар)', uk: 'Манси (делавар)', ar: 'الموسني', he: 'מונסי', sw: 'Munsee' },
+    };
+    for (const code of Object.keys(ADDED33)) {
+        for (const ui of Object.keys(ADDED33[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED33[code][ui];
+            }
+        }
+    }
 })();
