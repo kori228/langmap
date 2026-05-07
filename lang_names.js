@@ -1285,4 +1285,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED48 = {
+        xed: { en: 'Hdi', ja: 'ヒディ語', ko: '흐디어', zh: '赫迪语', yue: '赫迪語',
+               vi: 'Tiếng Hdi', th: 'ภาษาฮดี', id: 'Bahasa Hdi', hi: 'हदी',
+               de: 'Hdi', fr: 'Hdi', it: 'Hdi',
+               es_eu: 'Hdi', es_mx: 'Hdi', pt_eu: 'Hdi', pt_br: 'Hdi',
+               ru: 'Хди', uk: 'Хді', ar: 'الهدية', he: 'הדי', sw: 'Kihdi' },
+        bzh: { en: 'Mapos Buang', ja: 'マポス・ブアン語', ko: '마포스 부앙어', zh: '马波斯布昂语', yue: '馬波斯布昂語',
+               vi: 'Tiếng Mapos Buang', th: 'ภาษามาโพสบวง', id: 'Bahasa Mapos Buang', hi: 'मापोस बुआंग',
+               de: 'Mapos-Buang', fr: 'Buang de Mapos', it: 'Buang di Mapos',
+               es_eu: 'Buang de Mapos', es_mx: 'Buang de Mapos', pt_eu: 'Buang de Mapos', pt_br: 'Buang de Mapos',
+               ru: 'Мапос-буанг', uk: 'Мапос-буанг', ar: 'بوانج مابوس', he: 'בואנג מאפוס', sw: 'Kibuang cha Mapos' },
+        pqm: { en: 'Maliseet-Passamaquoddy', ja: 'マリシート＝パッサマクオディ語', ko: '말리싯-파사마쿼디어', zh: '马利赛特-帕萨马夸迪语', yue: '馬利賽特-帕薩馬夸迪語',
+               vi: 'Tiếng Maliseet-Passamaquoddy', th: 'ภาษามาลีซีท-พาสซามาควอดดี', id: 'Maliseet-Passamaquoddy', hi: 'मलिसीट-पसमक्वोडी',
+               de: 'Maliseet-Passamaquoddy', fr: 'Malécite-Passamaquoddy', it: 'Maliseet-Passamaquoddy',
+               es_eu: 'Maliseet-Passamaquoddy', es_mx: 'Maliseet-Passamaquoddy', pt_eu: 'Maliseet-Passamaquoddy', pt_br: 'Maliseet-Passamaquoddy',
+               ru: 'Малисет-пассамакуодди', uk: 'Малісет-пассамакводді', ar: 'الماليسيت-البساماكودي', he: 'מליסט-פסמקווודי', sw: 'Kimaliseet-Passamaquoddy' },
+    };
+    for (const code of Object.keys(ADDED48)) {
+        for (const ui of Object.keys(ADDED48[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED48[code][ui];
+            }
+        }
+    }
 })();

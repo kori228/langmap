@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 754 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 757 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -622,6 +622,10 @@ const LANG_DATA = {
     words: { water:['ame','ame'], fire:['erae','eɾae'], sun:['ọvẹ','ɔvɛ'], moon:['ọwa','ɔwa'], mother:['ini','ini'], father:['ọsẹ','ɔsɛ'], eat:['re','ɾe'], drink:['da','da'], love:['ọsuọ','ɔswɔ'], heart:['udu','udu'], tree:['orhan','oɾan'], house:['uwowhe','uwowhe'], dog:['ebọ','ebɔ'], cat:['ọtọmha','ɔtɔmha'], hand:['obọ','obɔ'], eye:['ẹro','ɛɾo'], hello:['mavọ','mavɔ'], thanks:['migwo','miɡwo'], one:['ọvo','ɔvo'], good:['ọwhọ','ɔwhɔ'] }},
   ha: { name: 'Hausa', native: 'Hausa', lat: 12.00, lng: 8.52,
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
+  // Hdi — Chadic (Central, Mafa-Bata subgroup), ~30K, Cameroon (Far North Region — Mokolo) + Nigeria border. Famous for ATR vowel harmony and rich glottal-consonant inventory.
+  // Sources: Ethnologue 27 'xed'; Glottolog hdii1240; Frajzyngier (2002) A Grammar of Hdi.
+  xed: { name: 'Hdi', native: 'Hədi', lat: 10.74, lng: 13.80, // Mokolo, Cameroon (Mandara Mountains)
+    words: { water:['yam','jam'], fire:['hu','hu'], sun:['vah','vah'], moon:['ʔir','ʔir'], mother:['nəh','nəh'], father:['baba','baba'], eat:['za','za'], drink:['sa','sa'], love:['ɓəz','ɓəz'], heart:['ɓal','ɓal'], tree:['ʔən','ʔən'], house:['gay','ɡaj'], dog:['ɓəzaŋ','ɓəzaŋ'], cat:['mərz','mərz'], hand:['xen','xen'], eye:['ɓah','ɓah'], hello:['ʔaza','ʔaza'], thanks:['ʔusi','ʔusi'], one:['kələ','kələ'], good:['ɗəfa','ɗəfa'] }},
   wo: { name: 'Wolof', native: 'Wolof', lat: 14.69, lng: -17.44,
     words: { water:['ndox','ndɔx'], fire:['safara','safaɾa'], sun:['jant','dʒant'], moon:['weer','weːɾ'], mother:['yaay','jaːj'], father:['baay','baːj'], eat:['lekk','lɛkː'], drink:['naan','naːn'], love:['mbëggeel','mbəɡeːl'], heart:['xol','xol'], tree:['garab','ɡaɾab'], house:['kër','kəɾ'], dog:['xaj','xaj'], cat:['muus','muːs'], hand:['loxo','lɔxɔ'], eye:['bët','bət'], hello:['na nga def','na ŋɡa dɛf'], thanks:['jërëjëf','dʒəɾədʒəf'], one:['benn','bɛnː'], good:['baax','baːx'] }},
   // Serer — Niger-Congo (Atlantic, Senegambian — sister to Fula and Wolof but Cangin subgroup), ~1.4M, Senegal (Sine-Saloum + Petite Côte). Tonal, ~12 noun classes.
@@ -789,6 +793,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'kmh'; Glottolog kala1397; Pawley & Bulmer (2011) Dictionary of Kalam (with ethnographic notes 1500+ pages).
   kmh: { name: 'Kalam', native: 'Kalam', lat: -5.05, lng: 144.55, // Schrader Range, Madang, PNG
     words: { water:['ñeb','ɲeb'], fire:['nged','ŋged'], sun:['nb','nəb'], moon:['ñag','ɲaɡ'], mother:['ag','aɡ'], father:['mam','mam'], eat:['ñb','ɲəb'], drink:['ñ-','ɲə'], love:['kn-','kən'], heart:['mngm','məŋgəm'], tree:['mon','mon'], house:['kab','kab'], dog:['kayn','kajn'], cat:['pus','pus'], hand:['tn','tən'], eye:['ck','tʃək'], hello:['ñn','ɲən'], thanks:['ñib','ɲib'], one:['mdmagn','mədmaɡən'], good:['kayb','kajb'] }},
+  // Mapos Buang — Austronesian (Malayo-Polynesian, Oceanic, Western Oceanic, Buang), ~10K, PNG (Morobe Province — Snake River valley, Mumeng District).
+  // Sources: Ethnologue 27 'bzh'; Glottolog mapo1252; Hooley (2002) The Buang of Papua New Guinea.
+  bzh: { name: 'Mapos Buang', native: 'Buang', lat: -7.00, lng: 146.85, // Mumeng, Morobe Province, PNG
+    words: { water:['vuur','vuːr'], fire:['ehe','ehe'], sun:['gum','ɡum'], moon:['mha','mha'], mother:['ne','ne'], father:['ma','ma'], eat:['gen','ɡen'], drink:['nung','nuŋ'], love:['vong','voŋ'], heart:['minga','miŋa'], tree:['leng','leŋ'], house:['ya','ja'], dog:['nyam','ɲam'], cat:['pus','pus'], hand:['mok','mok'], eye:['mata','mata'], hello:['miig','miːɡ'], thanks:['vog ehog','voɡ ehoɡ'], one:['lon','lon'], good:['vovo','vovo'] }},
   // Torres Strait Creole (Yumplatok) — English-based creole, ~25K speakers, Torres Strait Islands (Australia).
   // Sources: Ethnologue 27 'tcs'; Glottolog torr1261; Shnukal (1988) Broken: Torres Strait Creole.
   tcs: { name: 'Torres Strait Creole', native: 'Yumplatok', lat: -10.59, lng: 142.21, // Thursday Island
@@ -1667,6 +1675,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'mic'; Glottolog mikm1235; Inglis (1991) Mi'kmaq Online Dictionary.
   mic: { name: "Mi'kmaq", native: "Mi'kmawi'simk", lat: 46.10, lng: -64.78, // Eskasoni / Cape Breton
     words: { water:['samqwan','samɡʷan'], fire:["puktew",'puɡdew'], sun:['naku\'set','naɡuʔset'], moon:['tepkunaset','tebɡunaset'], mother:['nikij','nidʒidʒ'], father:["nujj",'nudʒː'], eat:['mij','midʒ'], drink:["sa'q",'saʔɡ'], love:['kesalk','ɡesalɡ'], heart:["ukamlamun",'uɡamlamun'], tree:['nipi','nibi'], house:['wikuom','wiɡuom'], dog:['lmu\'j','lmuʔdʒ'], cat:["mia\'wj",'miaʔwdʒ'], hand:['piten','biden'], eye:["pukweck",'buɡʷedʒɡ'], hello:["kwe'",'ɡʷeʔ'], thanks:["wela'lin",'welaʔlin'], one:["newt",'newt'], good:['kelu\'lk','ɡeluʔlɡ'] }},
+  // Maliseet-Passamaquoddy (Wolastoqey-Passamaquoddy) — Algonquian (Eastern, Abenakian — sister to Penobscot abe), ~500-600, Maine USA (Passamaquoddy Bay) + New Brunswick (Wolastoq/Saint John River).
+  // Sources: Ethnologue 27 'pqm'; Glottolog male1292; Leavitt (1996) Passamaquoddy-Maliseet grammar.
+  pqm: { name: 'Maliseet-Passamaquoddy', native: 'Wolastoqey latuwewakon', lat: 45.96, lng: -67.04, // Tobique First Nation, NB / Pleasant Point, ME
+    words: { water:['samaqan','samaːkan'], fire:['skwut','skʷut'], sun:['kisuhs','kisuhs'], moon:['nipawset','nipawset'], mother:['nikuwoss','nikuwoss'], father:['mihtaqs','mihtaqs'], eat:['mititi','mititi'], drink:['mun','mun'], love:['kosi','kosi'], heart:['utʼɩne','utɩnə'], tree:['ʼsupi','supi'], house:['wikkihtit','wikːihtit'], dog:['ʼmuʼs','muʔs'], cat:['mihtukomuhs','mihtukomuhs'], hand:['lukikʼn','lukikən'], eye:['ʼskinekekutu','skinekekutu'], hello:['kʼulasuwiyat','kʼulasuwijat'], thanks:['woliwon','woliwon'], one:['pesokul','pesokul'], good:['woli','woli'] }},
   // Munsee — Algonquian Eastern (Lenape branch), critically endangered (~2 fluent), heritage-revival.
   // Sources: Ethnologue 27 'umu'; Glottolog muns1238; Goddard (1979) Munsee Phonology.
   umu: { name: 'Munsee', native: 'Lunaapeew', lat: 42.78, lng: -82.05, // Moraviantown, Ontario (Munsee Delaware Nation)
