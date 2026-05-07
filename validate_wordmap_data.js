@@ -404,6 +404,15 @@ const FAMILY_TOP_ALLOW = new Set([
     'Romance',                         // lld Ladin (Rhaeto-Romance) — already in list above; redundant but explicit
     // Audit Task 159: jiv Shuar Jivaroan — South American small family
     'Jivaroan',                        // jiv Shuar (Jivaroan, Ecuador/Peru)
+    // Pass 36: legitimately-missing small/regional families surfaced by the
+    // family-top-token allow-list audit (formerly hidden inside long descriptive strings).
+    'Cariban',                         // car Galibí, mch Maquiritari — Northern Amazonian family
+    'Misumalpan',                      // sum Sumo — small Central American family (Sumo + Miskito)
+    'Mataco-Mataguayan',               // mzh Wichí — small Gran Chaco family of South America
+    'Barbacoan',                       // gum Guambiano — small Andean-foothill family (Colombia/Ecuador)
+    'Totonacan',                       // toc Totonac — small Mesoamerican family (Totonac + Tepehua)
+    'Otomanguean',                     // zts Tilquiapan Zapotec, mxv Metlatónoc Mixtec, otq Querétaro Otomi (alt spelling of Oto-Manguean already on list)
+    'Algonquian',                      // abe Western Abenaki, arp Arapaho — major branch of Algic, commonly used as top-level
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;
