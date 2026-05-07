@@ -2451,4 +2451,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED102 = {
+        ngu: { en: 'Guerrero Nahuatl', ja: 'ゲレーロ・ナワトル語', ko: '게레로 나우아틀어', zh: '格雷罗那瓦特尔语', yue: '格雷羅那瓦特爾語',
+               vi: 'Tiếng Nahuatl Guerrero', th: 'ภาษานาวาตล์เกร์เรโร', id: 'Bahasa Nahuatl Guerrero', hi: 'गेरेरो नावाहुआटल',
+               de: 'Guerrero-Nahuatl', fr: 'Nahuatl du Guerrero', it: 'Nahuatl di Guerrero',
+               es_eu: 'Náhuatl de Guerrero', es_mx: 'Náhuatl de Guerrero', pt_eu: 'Náuatle de Guerrero', pt_br: 'Náuatle de Guerrero',
+               ru: 'Герреро науатль', uk: 'Герреро науатль', ar: 'الناهواتل الغيريرية', he: 'נאוואטל גררו', sw: 'Kinahuatl cha Guerrero' },
+        ppl: { en: 'Nawat', ja: 'ナワト語', ko: '나와트어', zh: '纳瓦特语', yue: '納瓦特語',
+               vi: 'Tiếng Nawat', th: 'ภาษานาวาต', id: 'Bahasa Nawat', hi: 'नवात',
+               de: 'Pipil', fr: 'Pipil', it: 'Pipil',
+               es_eu: 'Pipil', es_mx: 'Pipil', pt_eu: 'Pipil', pt_br: 'Pipil',
+               ru: 'Пипиль', uk: 'Піпіль', ar: 'البيبيل', he: 'פיפיל', sw: 'Kipipil' },
+        bts: { en: 'Simalungun Batak', ja: 'シマルングン・バタク語', ko: '시말룽군 바타크어', zh: '西马伦贡巴塔克语', yue: '西馬倫貢巴塔克語',
+               vi: 'Tiếng Batak Simalungun', th: 'ภาษาบาตักซีมาลุงกุน', id: 'Bahasa Batak Simalungun', hi: 'सिमालुंगुन बाताक',
+               de: 'Simalungun', fr: 'Batak simalungun', it: 'Batak simalungun',
+               es_eu: 'Batak simalungun', es_mx: 'Batak simalungun', pt_eu: 'Batak simalungun', pt_br: 'Batak simalungun',
+               ru: 'Сималунгунский батак', uk: 'Сімалунгунська батак', ar: 'الباتاك السيمالنغونية', he: 'בטאק סימלונגון', sw: 'Kibatak cha Simalungun' },
+    };
+    for (const code of Object.keys(ADDED102)) {
+        for (const ui of Object.keys(ADDED102[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED102[code][ui];
+            }
+        }
+    }
 })();

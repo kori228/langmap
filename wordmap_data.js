@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 892 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 895 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1729,6 +1729,14 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'hch'; Glottolog huic1243; Iturrioz Leza & Gómez López (2006) Gramática Huichola.
   hch: { name: 'Wixarika', native: 'Wixárika niukieya', lat: 22.13, lng: -104.50, // San Andrés Cohamiata, Jalisco
     words: { water:['ha','ha'], fire:['tai','tai'], sun:['tau','tau'], moon:['metsa','metsa'], mother:['nana','nana'], father:['yawe','jawe'], eat:['kuye','kuje'], drink:['hi\'eka','hiʔeka'], love:['kanenki','kanenki'], heart:['iyari','ijari'], tree:['kiyé','kije'], house:['ki','ki'], dog:['tsïkï','tsɨkɨ'], cat:['mitsu','mitsu'], hand:['mama','mama'], eye:['tukite','tukite'], hello:['kekuanenki','kekwanenki'], thanks:['pa\'iwakaitsie','paʔiwakaitsje'], one:['xevi','ʃevi'], good:['waxa','waʃa'] }},
+  // Guerrero Nahuatl — Uto-Aztecan Nahuan Central (sister to Classical Nahuatl nci and Huasteca varieties nch/nhw/nhe; the major southern variety preserving Postclassic Nahuatl features), ~150K, Mexico (Guerrero state — Sierra Norte/La Montaña region — Tlapa, Olinalá, Atlixtac, Copanatoyac, Acatepec municipalities; small populations in Puebla and Morelos border areas).
+  // Sources: Ethnologue 27 'ngu'; Glottolog guer1235; Lastra (1986) Las áreas dialectales del náhuatl moderno.
+  ngu: { name: 'Guerrero Nahuatl', native: 'Náhuatl', lat: 17.55, lng: -98.57, // Tlapa de Comonfort, Guerrero
+    words: { water:['atl','atl'], fire:['tletl','tletl'], sun:['tonatih','tonatih'], moon:['metztli','metstli'], mother:['nanan','nanan'], father:['tatah','tatah'], eat:['tlakua','tlakwa'], drink:['atli','atli'], love:['tlazohtla','tlasoʔtla'], heart:['yolotl','jolotl'], tree:['kuauitl','kʷawitl'], house:['kalli','kalːi'], dog:['tsʼkuintli','tsʼkʷintli'], cat:['miston','miston'], hand:['mahpi','mahpi'], eye:['ixtli','iʃtli'], hello:['niltze','niltse'], thanks:['tlazohcamati','tlasoʔkamati'], one:['ce','se'], good:['kuajli','kʷahli'] }},
+  // Nawat (Pipil) — Uto-Aztecan Nahuan (sister to other Nahuan varieties; survived as a "post-Classical" Nahuan offshoot in El Salvador for 800 years before nearly going extinct in the 1932 La Matanza massacre that targeted indigenous Salvadorans), ~500-2000 fluent (critically endangered — UNESCO critically endangered; revival via El Salvador Pipil Communities and IRIN-USAID educational programs), El Salvador (Sonsonate department — Nahuizalco, Santo Domingo de Guzmán, Cuisnahuat municipalities).
+  // Sources: Ethnologue 27 'ppl'; Glottolog pipi1250; Campbell (1985) The Pipil Language of El Salvador.
+  ppl: { name: 'Nawat', native: 'Nawat', lat: 13.78, lng: -89.74, // Santo Domingo de Guzmán, Sonsonate, El Salvador
+    words: { water:['at','at'], fire:['tit','tit'], sun:['tunal','tunal'], moon:['metsti','metsti'], mother:['nan','nan'], father:['tat','tat'], eat:['takwa','takwa'], drink:['ati','ati'], love:['nesa','nesa'], heart:['yulu','julu'], tree:['kwawit','kʷawit'], house:['kal','kal'], dog:['chichi','tʃitʃi'], cat:['mishin','miʃin'], hand:['mey','mei'], eye:['ish','iʃ'], hello:['ne pakua','ne pakwa'], thanks:['padiush','padjuʃ'], one:['se','se'], good:['kwahli','kʷahli'] }},
   // Cora — Uto-Aztecan Corachol (sister to Wixarika hch within the Corachol sub-branch), ~17K, Mexico (Nayarit — Sierra del Nayar; small Jalisco populations).
   // Sources: Ethnologue 27 'crn'; Glottolog cora1260; Casad (1984) Cora.
   crn: { name: 'Cora', native: 'Naáyarite', lat: 22.13, lng: -104.93, // Jesús María, Nayarit
@@ -2852,6 +2860,10 @@ const LANG_DATA = {
   // Austronesian (Indonesia, additional)
   bbc: { name: 'Toba Batak', native: 'Batak Toba', lat: -2.62, lng: 98.83, // Balige, Lake Toba
     words: { water:['aek','aek'], fire:['api','api'], sun:['mata ni ari','mata ni ari'], moon:['bulan','bulan'], mother:['ina','ina'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['holong','holoŋ'], heart:['roha','roha'], tree:['hau','hau'], house:['jabu','dʒabu'], dog:['biang','biaŋ'], cat:['huting','hutiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['horas','horas'], thanks:['mauliate','mauliate'], one:['sada','sada'], good:['denggan','deŋːan'] }},
+  // Simalungun Batak — Austronesian Malayo-Polynesian Batak (sister to Toba Batak bbc and Karo Batak btx within the Batak cluster; the language of Simalungun Regency on the eastern shore of Lake Toba), ~1.2M, Indonesia (North Sumatra province — Simalungun Regency around Pematangsiantar; small populations in surrounding regencies).
+  // Sources: Ethnologue 27 'bts'; Glottolog sima1278; Saragih (1989) Bahasa Simalungun.
+  bts: { name: 'Simalungun Batak', native: 'Hata Simalungun', lat: 2.96, lng: 99.07, // Pematangsiantar, North Sumatra (Simalungun Regency seat)
+    words: { water:['bah','bah'], fire:['apuy','apuj'], sun:['mata ni ari','mata ni ari'], moon:['bulan','bulan'], mother:['inang','inaŋ'], father:['bapa','bapa'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['holong','holoŋ'], heart:['uhur','uhur'], tree:['hayu','haju'], house:['rumah','rumah'], dog:['baliang','baliaŋ'], cat:['huting','hutiŋ'], hand:['tangan','taŋan'], eye:['mata','mata'], hello:['horas','horas'], thanks:['diatebei','diatebei'], one:['sada','sada'], good:['dear','dear'] }},
   // Batak Angkola — Austronesian Sumatran (Batak cluster, sister to bbc Toba and btx Karo), ~750K, Indonesia (North Sumatra — Tapanuli Selatan / Padang Sidempuan).
   // Sources: Ethnologue 27 'akb'; Glottolog batt1247; Eades & Hajek (2006) Batak Angkola Phonology; van der Tuuk (1864).
   akb: { name: 'Batak Angkola', native: 'Hata Angkola', lat: 1.38, lng: 99.27, // Padang Sidempuan, North Sumatra
