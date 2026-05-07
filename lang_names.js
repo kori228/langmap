@@ -785,4 +785,79 @@ const LANG_NAMES = {
             }
         }
     }
+    // Tetela (tll), Sangu (sbp), Masaaba (myx) — DRC Bantu + Tanzania Bantu + Uganda Bantu.
+    const ADDED28 = {
+        tll: { en: 'Tetela', ja: 'テテラ語', ko: '테텔라어', zh: '特特拉语', yue: '特特拉語',
+               vi: 'Tiếng Tetela', th: 'ภาษาเตเตลา', id: 'Tetela', hi: 'टेटेला',
+               de: 'Tetela', fr: 'Tetela', it: 'Tetela',
+               es_eu: 'Tetela', es_mx: 'Tetela', pt_eu: 'Tetela', pt_br: 'Tetela',
+               ru: 'Тетела', uk: 'Тетела', ar: 'التيتيلا', he: 'טטלה', sw: 'Kitetela' },
+        sbp: { en: 'Sangu', ja: 'サング語', ko: '상구어', zh: '桑古语', yue: '桑古語',
+               vi: 'Tiếng Sangu', th: 'ภาษาซางู', id: 'Sangu', hi: 'सांगू',
+               de: 'Sangu', fr: 'Sangu', it: 'Sangu',
+               es_eu: 'Sangu', es_mx: 'Sangu', pt_eu: 'Sangu', pt_br: 'Sangu',
+               ru: 'Сангу', uk: 'Сангу', ar: 'السانغو', he: 'סנגו', sw: 'Kisangu' },
+        myx: { en: 'Masaaba', ja: 'マサーバ語', ko: '마사바어', zh: '马萨巴语', yue: '馬薩巴語',
+               vi: 'Tiếng Masaaba', th: 'ภาษามาซาบา', id: 'Masaaba', hi: 'मसाबा',
+               de: 'Masaaba', fr: 'Masaba', it: 'Masaaba',
+               es_eu: 'Masaaba', es_mx: 'Masaaba', pt_eu: 'Masaba', pt_br: 'Masaba',
+               ru: 'Масаба', uk: 'Масаба', ar: 'الماسابا', he: 'מסאבה', sw: 'Kimasaaba' },
+    };
+    for (const code of Object.keys(ADDED28)) {
+        for (const ui of Object.keys(ADDED28[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED28[code][ui];
+            }
+        }
+    }
+    // Mandar (mdr), East Franconian (vmf), Motu (meu) — 700-language milestone! Sulawesi Austronesian + German dialect + PNG Austronesian.
+    const ADDED29 = {
+        mdr: { en: 'Mandar', ja: 'マンダル語', ko: '만다르어', zh: '曼达尔语', yue: '曼達爾語',
+               vi: 'Tiếng Mandar', th: 'ภาษามันดาร์', id: 'Mandar', hi: 'मंदार',
+               de: 'Mandar', fr: 'Mandar', it: 'Mandar',
+               es_eu: 'Mandar', es_mx: 'Mandar', pt_eu: 'Mandar', pt_br: 'Mandar',
+               ru: 'Мандар', uk: 'Мандар', ar: 'الماندار', he: 'מנדר', sw: 'Mandar' },
+        vmf: { en: 'East Franconian', ja: '東フランケン語', ko: '동프랑켄어', zh: '东法兰克语', yue: '東法蘭克語',
+               vi: 'Tiếng Đông Franken', th: 'ภาษาฟรังเคินตะวันออก', id: 'Franken Timur', hi: 'पूर्वी फ्रैंकोनियन',
+               de: 'Ostfränkisch', fr: 'Francique oriental', it: 'Francone orientale',
+               es_eu: 'Franconio oriental', es_mx: 'Franconio oriental', pt_eu: 'Frâncico oriental', pt_br: 'Frâncico oriental',
+               ru: 'Восточнофранкский', uk: 'Східнофранконська', ar: 'الفرنكونية الشرقية', he: 'פרנקונית מזרחית', sw: 'Kifranken cha Mashariki' },
+        meu: { en: 'Motu', ja: 'モツ語', ko: '모투어', zh: '莫图语', yue: '莫圖語',
+               vi: 'Tiếng Motu', th: 'ภาษาโมตู', id: 'Motu', hi: 'मोटू',
+               de: 'Motu', fr: 'Motu', it: 'Motu',
+               es_eu: 'Motu', es_mx: 'Motu', pt_eu: 'Motu', pt_br: 'Motu',
+               ru: 'Моту', uk: 'Моту', ar: 'الموتو', he: 'מוטו', sw: 'Kimotu' },
+    };
+    for (const code of Object.keys(ADDED29)) {
+        for (const ui of Object.keys(ADDED29[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED29[code][ui];
+            }
+        }
+    }
+    // Soninke (snk), Dan/Yacouba (dnj), Walser (wae) — Sahel Mande + Côte d'Ivoire Mande + Alps Highest Alemannic.
+    const ADDED30 = {
+        snk: { en: 'Soninke', ja: 'ソニンケ語', ko: '소닌케어', zh: '索宁克语', yue: '索寧克語',
+               vi: 'Tiếng Soninke', th: 'ภาษาโซนินเก', id: 'Soninke', hi: 'सोनिंके',
+               de: 'Soninke', fr: 'Soninké', it: 'Soninke',
+               es_eu: 'Soninké', es_mx: 'Soninké', pt_eu: 'Soninquê', pt_br: 'Soninquê',
+               ru: 'Сонинке', uk: 'Сонінке', ar: 'السوننكية', he: 'סונינקה', sw: 'Kisoninke' },
+        dnj: { en: 'Dan', ja: 'ダン語', ko: '단어', zh: '丹语', yue: '丹語',
+               vi: 'Tiếng Dan', th: 'ภาษาแดน', id: 'Dan', hi: 'डान',
+               de: 'Dan', fr: 'Dan (Yacouba)', it: 'Dan',
+               es_eu: 'Dan', es_mx: 'Dan', pt_eu: 'Dan', pt_br: 'Dan',
+               ru: 'Дан', uk: 'Дан', ar: 'الدان', he: 'דן', sw: 'Kidan' },
+        wae: { en: 'Walser', ja: 'ヴァルサー語', ko: '발저어', zh: '瓦尔泽语', yue: '瓦爾澤語',
+               vi: 'Tiếng Walser', th: 'ภาษาวอลเซอร์', id: 'Walser', hi: 'वालसर',
+               de: 'Walserdeutsch', fr: 'Walser', it: 'Walser',
+               es_eu: 'Walser', es_mx: 'Walser', pt_eu: 'Walser', pt_br: 'Walser',
+               ru: 'Вальзерский', uk: 'Вальзерська', ar: 'الوالسرية', he: 'וולסרית', sw: 'Kiwalser' },
+    };
+    for (const code of Object.keys(ADDED30)) {
+        for (const ui of Object.keys(ADDED30[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED30[code][ui];
+            }
+        }
+    }
 })();

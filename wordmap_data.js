@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 694 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 703 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -267,6 +267,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'jmc'; Glottolog mach1266; Augustiny (1914) Kichagga grammar.
   jmc: { name: 'Machame', native: 'Kimashami', lat: -3.20, lng: 37.27, // Machame village, Kilimanjaro
     words: { water:['mringa','mɾiŋɡa'], fire:['mòò','moːʔ'], sun:['ìsùwà','isuwa'], moon:['mwezi','mwezi'], mother:['mama','mama'], father:['baba','baba'], eat:['ìlya','iʎa'], drink:['ìnyo','iɲo'], love:['ìkwenda','ikwenda'], heart:['mòyò','mojo'], tree:['mtí','mti'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['kùoòko','kuoːko'], eye:['rítiò','ɾitio'], hello:['máshàlòmà','maʃalom'], thanks:['ahsànte','ahsante'], one:['ìmwí','imwi'], good:['ìchá','itʃa'] }},
+  // Sangu — Bantu F13, ~75K speakers, Mbeya region SW Tanzania (Usangu plains).
+  // Sources: Ethnologue 27 'sbp'; Glottolog sang1336; Stirnimann (1983) Praktische Grammatik der Sangu-Sprache.
+  sbp: { name: 'Sangu', native: 'Eshisango', lat: -8.91, lng: 33.46, // Mbeya, Tanzania
+    words: { water:['ameenzi','ameːnzi'], fire:['umoto','umoto'], sun:['liluga','liluɡa'], moon:['umwesi','umwesi'], mother:['mama','mama'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['ulungu','uluŋɡu'], heart:['umutima','umutima'], tree:['umuti','umuti'], house:['inyumba','iɲumba'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['ukuboko','ukuboko'], eye:['iliho','iliho'], hello:['mbasala','mbasala'], thanks:['nashukulu','naʃukulu'], one:['imo','imo'], good:['kwifwa','kwifwa'] }},
   tl: { name: 'Tagalog', native: 'Tagalog', lat: 14.60, lng: 120.98, // Manila
     words: { water:['tubig','tubiɡ'], fire:['apoy','apoj'], sun:['araw','aɾaw'], moon:['buwan','buwan'], mother:['ina','ina'], father:['ama','ama'], eat:['kumain','kumain'], drink:['uminom','uminom'], love:['pag-ibig','paɡʔibiɡ'], heart:['puso','puso'], tree:['puno','puno'], house:['bahay','bahaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['kamay','kamaj'], eye:['mata','mata'], hello:['kamusta','kamusta'], thanks:['salamat','salamat'], one:['isa','isa'], good:['mabuti','mabuti'] }},
   mn: { name: 'Mongolian', native: 'Монгол', lat: 47.91, lng: 106.91, // Ulaanbaatar
@@ -603,6 +607,14 @@ const LANG_DATA = {
   // Sources: Christen et al. (2010) Kleiner Sprachatlas der deutschen Schweiz; SDS (Sprachatlas der deutschen Schweiz).
   gsw: { name: 'Swiss German', native: 'Schwiizerdütsch', lat: 47.37, lng: 8.54, // Zürich
     words: { water:['Wasser','vasːər'], fire:['Füür','fyːr'], sun:['Sunne','sʊnə'], moon:['Mond','moːnd'], mother:['Mueter','muə̯tər'], father:['Vatter','fatər'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Härz','hærts'], tree:['Baum','baʊ̯m'], house:['Huus','huːs'], dog:['Hund','hʊnd'], cat:['Chatz','xats'], hand:['Hand','hand'], eye:['Aug','aʊ̯ɡ'], hello:['Grüezi','ɡryə̯tsi'], thanks:['Merci','mɛrsi'], one:['eis','æɪ̯s'], good:['guet','ɡuə̯t'] }},
+  // East Franconian (Mainfränkisch) — High German Upper East dialect, Bavaria/Thuringia/Hesse.
+  // Sources: Ethnologue 27 'vmf'; Glottolog main1267; Wagner (1987) Bairisch-Fränkische Wörterbücher.
+  vmf: { name: 'East Franconian', native: 'Mainfränkisch', lat: 49.79, lng: 9.93, // Würzburg (Mainfränkisch heartland)
+    words: { water:['Wasser','vasːə'], fire:['Feier','faɪɐ'], sun:['Sunn','sʊn'], moon:['Maa','maː'], mother:['Mudder','mʊdɐ'], father:['Vadder','fadɐ'], eat:['esse','ɛsə'], drink:['trinke','trɪŋkə'], love:['Liebe','liːbə'], heart:['Herz','hɛrts'], tree:['Bauma','baʊmaː'], house:['Haus','haʊs'], dog:['Hund','hʊnt'], cat:['Katz','kats'], hand:['Hand','hand'], eye:['Aach','aːx'], hello:['Grüß Gott','ɡrʏs ɡɔt'], thanks:['Vergelt\'s Gott','fɛɐɡɛlts ɡɔt'], one:['ans','ans'], good:['guad','ɡuə̯d'] }},
+  // Walser — Highest Alemannic German, ~22K speakers, scattered Alpine communities (Switzerland/Italy/Austria/Liechtenstein).
+  // Sources: Ethnologue 27 'wae'; Glottolog wals1238; Bohnenberger (1913) Walser-Wörterbuch.
+  wae: { name: 'Walser', native: 'Wallisertiitsch', lat: 46.30, lng: 7.99, // Saas-Fee, Valais (Walser heartland)
+    words: { water:['Wasser','vasːər'], fire:['Für','fyːr'], sun:['Sunna','sʊnːa'], moon:['Maa','maː'], mother:['Müeter','myə̯tər'], father:['Atti','atːi'], eat:['ässe','æsə'], drink:['trinke','trɪŋkə'], love:['Liebi','liə̯bi'], heart:['Hërz','hɛrts'], tree:['Boum','boʊm'], house:['Hus','huːs'], dog:['Hund','hʊnt'], cat:['Chatz','xats'], hand:['Hand','hant'], eye:['Oug','oʊɡ'], hello:['Grüössi','ɡryə̯sːi'], thanks:['Vergelts Gott','fɛrɡɛlts ɡɔt'], one:['eins','æɪ̯ns'], good:['guet','ɡuə̯t'] }},
   nds: { name: 'Low German', native: 'Plattdüütsch', lat: 53.55, lng: 9.99,
     words: { water:['Water','vɑːtɐ'], fire:['Füer','fyːɐ'], sun:['Sünn','zʏn'], moon:['Maand','mɑːnt'], mother:['Moder','moːdɐ'], father:['Vader','fɑːdɐ'], eat:['eten','eːtn'], drink:['drinken','dɹɪŋkn'], love:['Leev','leːf'], heart:['Hart','haɐt'], tree:['Boom','boːm'], house:['Huus','huːs'], dog:['Hund','hʊnt'], cat:['Katt','kat'], hand:['Hand','hant'], eye:['Oog','oːx'], hello:['Moin','mɔɪn'], thanks:['Dankschöön','daŋkʃøːn'], one:['een','eːn'], good:['good','ɡoːt'] }},
   // Kölsch — Ripuarian Franconian (West Central German), Cologne, ~250K speakers.
@@ -1422,6 +1434,10 @@ const LANG_DATA = {
   // Bantu (East / Southern / Central)
   lg: { name: 'Luganda', native: 'Luganda', lat: 0.31, lng: 32.58, // Kampala
     words: { water:['amazzi','amaːzːi'], fire:['omuliro','omuliɾo'], sun:['enjuba','eɲɟuba'], moon:['omwezi','omwezi'], mother:['maama','maːma'], father:['taata','taːta'], eat:['kulya','kulja'], drink:['kunywa','kuɲʷa'], love:['okwagala','okwaːɡala'], heart:['omutima','omutima'], tree:['omuti','omuti'], house:['ennyumba','eɲɲumba'], dog:['embwa','embwa'], cat:['kkapa','kːapa'], hand:['omukono','omukono'], eye:['eriiso','eɾiːso'], hello:['oli otya','oli otja'], thanks:['webale','weːbale'], one:['emu','emu'], good:['kirungi','tʃiɾuŋɡi'] }},
+  // Masaaba (Lugisu) — Bantu JE31, ~3M, Mt Elgon eastern Uganda. 4th-largest Ugandan language.
+  // Sources: Ethnologue 27 'myx'; Glottolog masa1320; Brown (1972) Lumasaaba grammar.
+  myx: { name: 'Masaaba', native: 'Lumasaaba', lat: 1.08, lng: 34.18, // Mbale, Mt Elgon
+    words: { water:['kamaatsi','kamaːtsi'], fire:['kamulilo','kamulilo'], sun:['suuba','suːba'], moon:['umweesi','umweːsi'], mother:['mayi','maji'], father:['papa','papa'], eat:['khulya','kʰuʎa'], drink:['khunywa','kʰuɲwa'], love:['khusima','kʰusima'], heart:['umwoyo','umwojo'], tree:['kumusaala','kumusaːla'], house:['nzu','nzu'], dog:['imbwa','imbwa'], cat:['paka','paka'], hand:['kumukhono','kumukʰono'], eye:['liiso','liːso'], hello:['mulembe','mulembe'], thanks:['ole nise','ole nise'], one:['mulala','mulala'], good:['kalayi','kalaji'] }},
   ki: { name: 'Kikuyu', native: 'Gĩkũyũ', lat: -1.17, lng: 36.83, // Kiambu, Kenya
     words: { water:['maaĩ','maːi'], fire:['mwaki','mwaki'], sun:['rĩũa','ɾiwa'], moon:['mweri','mweɾi'], mother:['maitũ','maitu'], father:['baba','baba'], eat:['kũrĩa','kuɾia'], drink:['kũnyua','kuɲua'], love:['wendo','wendo'], heart:['ngoro','ŋɡoɾo'], tree:['mũtĩ','muti'], house:['nyũmba','ɲumba'], dog:['ngui','ŋɡui'], cat:['nyaũ','ɲau'], hand:['guoko','ɡuoko'], eye:['riitho','riːθo'], hello:['wĩmwega','wimweɡa'], thanks:['nĩ wega','ni weɡa'], one:['ĩmwe','imwe'], good:['wega','weɡa'] }},
   // Meru — Bantu E54, Kenya, ~2M speakers; closely related to Kikuyu (ki) within the
@@ -1453,11 +1469,23 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'lol'; Glottolog mong1338; Hulstaert (1957) Dictionnaire Lomongo-français.
   lol: { name: 'Mongo', native: 'Lomongo', lat: 0.51, lng: 18.97, // Mbandaka
     words: { water:['nzá','nzá'], fire:['mokɛ́','mokɛ́'], sun:['lokɔlɔ','lokɔlɔ'], moon:['nzɔnzɔ','nzɔnzɔ'], mother:['nyangó','ɲaŋɡó'], father:['ise','ise'], eat:['kolya','koʎa'], drink:['kome\'la','komela'], love:['boláŋo','bolaŋo'], heart:['mongúma','moŋɡúma'], tree:['boléi','boléi'], house:['ndako','ndako'], dog:['mbwa','mbwa'], cat:['nyaú','ɲaú'], hand:['lokáko','lokáko'], eye:['liso','liso'], hello:['losáko','losáko'], thanks:['olɛli','olɛli'], one:['etomelá','etomelá'], good:['mpɔlɔ','mpɔlɔ'] }},
+  // Tetela — Bantu C71, ~750K, Sankuru region central DRC. Patrice Lumumba's mother tongue.
+  // Sources: Ethnologue 27 'tll'; Glottolog tete1259; Hagendorens (1956) Dictionnaire Otetela.
+  tll: { name: 'Tetela', native: 'Otetela', lat: -4.74, lng: 24.05, // Kindu/Lodja, Kasai-Oriental
+    words: { water:['ashi','aʃi'], fire:['lokombu','lokombu'], sun:['ondelo','ondelo'], moon:['ngondo','ŋɡondo'], mother:['nyema','ɲema'], father:['shi','ʃi'], eat:['kolya','koʎa'], drink:['konwa','konwa'], love:['langɔ','laŋɡɔ'], heart:['utema','utema'], tree:['etamba','etamba'], house:['mbongo','mboŋɡo'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['lonya','loɲa'], eye:['diso','diso'], hello:['nyongo','ɲoŋɡo'], thanks:['toleko','toleko'], one:['ɔtɔi','ɔtɔi'], good:['lɔlɔ','lɔlɔ'] }},
   // West African (Niger-Congo Atlantic / Mande)
   ff: { name: 'Fula', native: 'Fulfulde', lat: 12.65, lng: -7.99, // Bamako (representative)
     words: { water:['ndiyam','ndijam'], fire:['yiite','jiːte'], sun:['naange','naːŋɡe'], moon:['lewru','lewɾu'], mother:['yumma','jumːa'], father:['baaba','baːba'], eat:['ñaamde','ɲaːmde'], drink:['yarude','jaɾude'], love:['yiɗde','jiɗːe'], heart:['ɓernde','ɓeɾnde'], tree:['lekki','lekːi'], house:['suudu','suːdu'], dog:['rawandu','ɾawandu'], cat:['ullundu','ulːundu'], hand:['junngo','dʒunːɡo'], eye:['yiitere','jiːteɾe'], hello:['jam tan','dʒam tan'], thanks:['a jaaraama','a dʒaːɾaːma'], one:['go\'o','ɡoʔo'], good:['jam','dʒam'] }},
   bm: { name: 'Bambara', native: 'Bamanankan', lat: 12.65, lng: -7.99, // Bamako
     words: { water:['ji','dʒi'], fire:['tasuma','tasuma'], sun:['tile','tile'], moon:['kalo','kalo'], mother:['ba','ba'], father:['fa','fa'], eat:['dumuni','dumuni'], drink:['min','min'], love:['kanu','kanu'], heart:['dusu','dusu'], tree:['jiri','dʒiɾi'], house:['so','so'], dog:['wulu','wulu'], cat:['jakuma','dʒakuma'], hand:['bolo','bolo'], eye:['ɲɛ','ɲɛ'], hello:['i ni ce','i ni tʃe'], thanks:['i ni ce','i ni tʃe'], one:['kelen','kelen'], good:['ka ɲi','ka ɲi'] }},
+  // Soninke — Niger-Congo Mande, ~2.1M speakers, Mali/Senegal/Mauritania Sahel.
+  // Sources: Ethnologue 27 'snk'; Glottolog soni1259; Diagana (1995) Soninke phonology.
+  snk: { name: 'Soninke', native: 'Sooninkanxannen', lat: 14.92, lng: -10.81, // Kayes, Mali (Soninke heartland)
+    words: { water:['jiyi','dʒiji'], fire:['ñaaxe','ɲaːxe'], sun:['kiye','kije'], moon:['kullu','kulːu'], mother:['ma','ma'], father:['baba','baba'], eat:['lawu','lawu'], drink:['mini','mini'], love:['ñaxando','ɲaxando'], heart:['nene','nene'], tree:['yiribirinde','jiɾibiɾinde'], house:['ka','ka'], dog:['wulle','wulːe'], cat:['mussu','musːu'], hand:['kitte','kitːe'], eye:['ñaa','ɲaː'], hello:['an na siri','an na siɾi'], thanks:['inkawu','iŋkawu'], one:['baane','baːne'], good:['ñaxa','ɲaxa'] }},
+  // Dan (Yacouba) — Niger-Congo Mande, ~1.6M speakers, western Côte d'Ivoire + Liberia.
+  // Sources: Ethnologue 27 'dnj'; Glottolog yacu1238; Erman (2005) Dan tone system.
+  dnj: { name: 'Dan', native: 'Yacouba', lat: 7.41, lng: -7.55, // Man, Côte d'Ivoire (Dan heartland)
+    words: { water:['yi','ji'], fire:['siŋ','siŋ'], sun:['lai','lai'], moon:['siŋŋŋ','siŋːː'], mother:['da','da'], father:['de','de'], eat:['dɛ','dɛ'], drink:['mi','mi'], love:['be','be'], heart:['gbɔɔ','ɡbɔː'], tree:['gbe','ɡbe'], house:['kɔ','kɔ'], dog:['gbɛ','ɡbɛ'], cat:['nyaa','ɲaː'], hand:['kɔ','kɔ'], eye:['ŋkɛ̃','ŋkɛ̃'], hello:['daka','daka'], thanks:['kpe','kpe'], one:['do','do'], good:['ka','ka'] }},
   // Koyraboro Senni (Eastern Songhai) — Mali, Saharan trade-corridor
   // (Audit Task 149 Batch 3). Heath (1999) per cell.
   ses: { name: 'Koyraboro Senni', native: 'Koyraboro Senni', lat: 16.27, lng: -0.05, // Gao
@@ -1630,6 +1658,10 @@ const LANG_DATA = {
     words: { water:['weih','weih'], fire:['rara','ɾaɾa'], sun:['matacana','matatʃana'], moon:['lao','lao'], mother:['ine','ine'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['minum','minum'], love:['kunyung','kuɲuŋ'], heart:['ate','ate'], tree:['kayu','kaju'], house:['umah','umah'], dog:['asu','asu'], cat:['kucing','kutʃiŋ'], hand:['pumu','pumu'], eye:['mata','mata'], hello:['salam','salam'], thanks:['matur sangat','matuɾ saŋat'], one:['sara','saɾa'], good:['jeroh','dʒeɾoh'] }},
   bug: { name: 'Buginese', native: 'Basa Ugi', lat: -4.13, lng: 120.00, // Sengkang (Bugis heartland, Wajo regency)
     words: { water:['uwai','uwai'], fire:['api','api'], sun:['mata esso','mata esːo'], moon:['uleng','uleŋ'], mother:['indo','indo'], father:['ambo','ambo'], eat:['manre','manɾe'], drink:['minung','minuŋ'], love:['élo','élo'], heart:['ati','ati'], tree:['aju','adʒu'], house:['bola','bola'], dog:['asu','asu'], cat:['meong','meoŋ'], hand:['lima','lima'], eye:['mata','mata'], hello:['tabe','tabe'], thanks:['kuru sumange','kuɾu sumaŋe'], one:['séddi','sédːi'], good:['makanja','makandʒa'] }},
+  // Mandar — Austronesian South Sulawesi, ~200K speakers, West Sulawesi province Indonesia.
+  // Sources: Ethnologue 27 'mdr'; Glottolog mand1442; Strømme (1988) Mandar grammar.
+  mdr: { name: 'Mandar', native: 'Bahasa Mandar', lat: -3.55, lng: 118.95, // Majene/Polewali, West Sulawesi
+    words: { water:['uai','uai'], fire:['api','api'], sun:['mata allo','mata alːo'], moon:['bulang','bulaŋ'], mother:['indo','indo'], father:['ama','ama'], eat:['ma\'ande','maʔande'], drink:['minung','minuŋ'], love:['mappinawa','mapːinawa'], heart:['ate','ate'], tree:['kaju','kaju'], house:['boyang','bojaŋ'], dog:['asu','asu'], cat:['mio','mio'], hand:['lima','lima'], eye:['mata','mata'], hello:['salama\' ma\'ondong','salamaʔ maʔondoŋ'], thanks:['kuru\' sumanga\'','kuɾuʔ sumaŋaʔ'], one:['mesa','mesa'], good:['macoa','matʃoa'] }},
   // Philippine (Visayan/Bikolano)
   war: { name: 'Waray', native: 'Wináray', lat: 11.24, lng: 124.99, // Tacloban
     words: { water:['tubig','tubiɡ'], fire:['kalayo','kalajɔ'], sun:['adlaw','adlaw'], moon:['bulan','bulan'], mother:['nanay','nanaj'], father:['tatay','tataj'], eat:['kaon','kaʔon'], drink:['inom','ʔinɔm'], love:['gugma','ɡuɡma'], heart:['kasingkasing','kasiŋkasiŋ'], tree:['kahoy','kahɔj'], house:['balay','balaj'], dog:['ayam','ajam'], cat:['misay','misaj'], hand:['kamot','kamɔt'], eye:['mata','mata'], hello:['maupay nga aga','maʔupaj ŋa aɡa'], thanks:['salamat','salamat'], one:['usa','ʔusa'], good:['maupay','maʔupaj'] }},
@@ -1953,6 +1985,10 @@ const LANG_DATA = {
   // Pacific (Pohnpeian + Hiri Motu)
   hmo: { name: 'Hiri Motu', native: 'Hiri Motu', lat: -9.46, lng: 147.18, // Port Moresby
     words: { water:['ranu','ranu'], fire:['lahi','lahi'], sun:['dina','dina'], moon:['hua','hua'], mother:['sina','sina'], father:['tama','tama'], eat:['ania','ania'], drink:['inua','inua'], love:['lalokau','lalokau'], heart:['kudouna','kudouna'], tree:['au','au'], house:['ruma','ruma'], dog:['sisia','sisia'], cat:['pusi','pusi'], hand:['ima','ima'], eye:['mata','mata'], hello:['oi e namo','oi e namo'], thanks:['tanikiu','tanikiu'], one:['ta','ta'], good:['namo','namo'] }},
+  // Motu — Austronesian Oceanic, ~14K speakers, Central Province PNG. Pure form, distinct from Hiri Motu pidgin (hmo).
+  // Sources: Ethnologue 27 'meu'; Glottolog motu1246; Lister-Turner & Clark (1931) Grammar of the Motu Language.
+  meu: { name: 'Motu', native: 'Motu', lat: -9.50, lng: 147.20, // Hanuabada (Motu heartland) near Port Moresby
+    words: { water:['ranu','ɾanu'], fire:['lahi','lahi'], sun:['dina','dina'], moon:['hua','hua'], mother:['sinana','sinana'], father:['tamana','tamana'], eat:['aniani','aniani'], drink:['inuinu','inuinu'], love:['lalokau','lalokau'], heart:['kudouna','kudouna'], tree:['au','au'], house:['ruma','ɾuma'], dog:['sisia','sisia'], cat:['gosi','ɡosi'], hand:['imana','imana'], eye:['matana','matana'], hello:['namo','namo'], thanks:['oi namo','oi namo'], one:['ta','ta'], good:['namo','namo'] }},
   pon: { name: 'Pohnpeian', native: 'Lokaiahn Pohnpei', lat: 6.96, lng: 158.21, // Kolonia
     words: { water:['pihl','pihl'], fire:['ahi','ahi'], sun:['ketipin','ketipin'], moon:['maram','maram'], mother:['nohno','nohno'], father:['pahpa','paːpa'], eat:['mwenge','mʷeŋe'], drink:['nim','nim'], love:['limpoak','limpoːk'], heart:['mohngion','mohŋion'], tree:['tuhke','tuhke'], house:['ihmw','ihmʷ'], dog:['kihdi','kihdi'], cat:['kaht','kaht'], hand:['peh','peh'], eye:['mese','mese'], hello:['kaselehlie','kaselehlie'], thanks:['kalahngan','kalahŋan'], one:['ehu','ehu'], good:['mwahu','mʷahu'] }},
   // Kosraean — Micronesian, ~8K speakers, Kosrae state of FSM. Most divergent surviving Micronesian language.

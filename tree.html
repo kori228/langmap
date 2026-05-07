@@ -76,6 +76,20 @@
     }
     .node:hover { background: #f1f3f4; }
     .node.match { background: #fff3c4; }
+    /* Last-visited language: subtle blue highlight + animated pulse on
+       initial scroll-in so the returning user can find their language
+       in the 700+ tree without scanning by hand. */
+    .node.last-visited {
+        background: #e3f0ff;
+        box-shadow: inset 0 0 0 1px #8ab4f8;
+    }
+    .node.last-visited.flash {
+        animation: lastVisitedPulse 1.6s ease-out 1;
+    }
+    @keyframes lastVisitedPulse {
+        0%   { background: #ffe082; box-shadow: inset 0 0 0 2px #f9a825; }
+        100% { background: #e3f0ff; box-shadow: inset 0 0 0 1px #8ab4f8; }
+    }
     .node .toggle {
         display: inline-block; width: 12px; text-align: center;
         color: #6b88b8; font-size: 10px; transition: transform 0.15s;
@@ -153,6 +167,7 @@
            aria-label="Filter languages">
     <button type="button" id="expand-all" aria-label="Expand all">Expand all</button>
     <button type="button" id="collapse-all" aria-label="Collapse all">Collapse all</button>
+    <button type="button" id="jump-last" aria-label="Jump to last visited language" hidden>Jump to last visited</button>
     <span class="legend" id="legend">Click a family to expand · click a language to open it on the map</span>
     <span class="stats" id="stats" aria-live="polite"></span>
 </div>
@@ -185,25 +200,25 @@
 
     // ===== UI i18n =====
     const UI_I18N = {
-        en: { title:'Language Family Tree', subtitle:n=>n+' languages organized by family.', search:'🔍 Filter by language name or code…', expand:'Expand all', collapse:'Collapse all', legend:'Click a family to expand · click a language to open it on the map', stats:n=>n+' langs', navOrder:'Word Order', navMap:'Word Map', navTree:'Tree' },
-        ja: { title:'言語系統樹', subtitle:n=>n+' 言語を系統別に整理。', search:'🔍 言語名・コードで絞り込み…', expand:'すべて展開', collapse:'すべて折りたたむ', legend:'系統名をクリックで展開 ／ 言語名をクリックで地図を開く', stats:n=>n+' 言語', navOrder:'語順マップ', navMap:'単語マップ', navTree:'系統樹' },
-        ko: { title:'언어 계통수', subtitle:n=>n+'개 언어를 계통별로 정리.', search:'🔍 언어 이름/코드로 필터…', expand:'모두 펼치기', collapse:'모두 접기', legend:'계통명을 클릭하여 펼침 / 언어를 클릭하여 지도 열기', stats:n=>n+'개 언어', navOrder:'어순 맵', navMap:'단어 맵', navTree:'계통수' },
-        zh: { title:'语言谱系树', subtitle:n=>'按谱系整理的 '+n+' 种语言。', search:'🔍 按语言名或代码过滤…', expand:'全部展开', collapse:'全部折叠', legend:'点击谱系展开 · 点击语言在地图上打开', stats:n=>n+' 种', navOrder:'语序图', navMap:'词汇地图', navTree:'谱系树' },
-        yue:{ title:'語言譜系樹', subtitle:n=>'按譜系整理嘅 '+n+' 種語言。', search:'🔍 按語言名或代碼過濾…', expand:'全部展開', collapse:'全部摺疊', legend:'撳譜系展開 · 撳語言喺地圖上打開', stats:n=>n+' 種', navOrder:'語序圖', navMap:'詞彙地圖', navTree:'譜系樹' },
-        vi: { title:'Cây phả hệ ngôn ngữ', subtitle:n=>n+' ngôn ngữ theo họ.', search:'🔍 Lọc theo tên hoặc mã…', expand:'Mở rộng tất cả', collapse:'Thu gọn tất cả', legend:'Nhấp vào họ để mở rộng · nhấp ngôn ngữ để mở bản đồ', stats:n=>n+' ngôn ngữ', navOrder:'Trật tự từ', navMap:'Bản đồ từ', navTree:'Cây phả hệ' },
-        th: { title:'แผนภูมิตระกูลภาษา', subtitle:n=>'จัด '+n+' ภาษา', search:'🔍 กรอง…', expand:'ขยายทั้งหมด', collapse:'ยุบทั้งหมด', legend:'คลิกตระกูลเพื่อขยาย · คลิกภาษาเพื่อเปิดบนแผนที่', stats:n=>n+' ภาษา', navOrder:'ลำดับคำ', navMap:'แผนที่คำ', navTree:'แผนภูมิ' },
-        id: { title:'Pohon Keluarga Bahasa', subtitle:n=>n+' bahasa berdasarkan keluarga.', search:'🔍 Filter…', expand:'Perluas semua', collapse:'Ciutkan semua', legend:'Klik keluarga untuk memperluas · klik bahasa untuk membuka peta', stats:n=>n+' bahasa', navOrder:'Urutan Kata', navMap:'Peta Kata', navTree:'Pohon' },
-        hi: { title:'भाषा परिवार वृक्ष', subtitle:n=>n+' भाषाएँ परिवार अनुसार।', search:'🔍 फ़िल्टर…', expand:'सभी विस्तार करें', collapse:'सभी संक्षिप्त', legend:'परिवार पर क्लिक करें · भाषा पर क्लिक से मानचित्र', stats:n=>n+' भाषाएँ', navOrder:'शब्द क्रम', navMap:'शब्द मानचित्र', navTree:'वृक्ष' },
-        de: { title:'Sprachstammbaum', subtitle:n=>n+' Sprachen nach Familie.', search:'🔍 Nach Name/Code filtern…', expand:'Alle erweitern', collapse:'Alle einklappen', legend:'Klicken zum Erweitern · Sprache anklicken öffnet Karte', stats:n=>n+' Sprachen', navOrder:'Wortstellung', navMap:'Wortkarte', navTree:'Stammbaum' },
-        fr: { title:'Arbre des familles linguistiques', subtitle:n=>n+' langues par famille.', search:'🔍 Filtrer…', expand:'Tout développer', collapse:'Tout réduire', legend:'Cliquer sur une famille · cliquer sur une langue ouvre la carte', stats:n=>n+' langues', navOrder:'Ordre des mots', navMap:'Carte des mots', navTree:'Arbre' },
-        it: { title:'Albero delle lingue', subtitle:n=>n+' lingue per famiglia.', search:'🔍 Filtra…', expand:'Espandi tutto', collapse:'Comprimi tutto', legend:'Clic per espandere · clic foglia apre mappa', stats:n=>n+' lingue', navOrder:'Ordine parole', navMap:'Mappa parole', navTree:'Albero' },
-        es: { title:'Árbol de lenguas', subtitle:n=>n+' lenguas por familia.', search:'🔍 Filtrar…', expand:'Expandir todo', collapse:'Contraer todo', legend:'Clic para expandir · clic en lengua abre mapa', stats:n=>n+' lenguas', navOrder:'Orden de palabras', navMap:'Mapa de palabras', navTree:'Árbol' },
-        pt: { title:'Árvore de línguas', subtitle:n=>n+' línguas por família.', search:'🔍 Filtrar…', expand:'Expandir tudo', collapse:'Recolher tudo', legend:'Clique para expandir · clique na língua abre mapa', stats:n=>n+' línguas', navOrder:'Ordem das palavras', navMap:'Mapa de palavras', navTree:'Árvore' },
-        ru: { title:'Языковое древо', subtitle:n=>n+' языков по семьям.', search:'🔍 Фильтр…', expand:'Развернуть всё', collapse:'Свернуть всё', legend:'Клик на семью — раскрыть · клик на язык — карта', stats:n=>n+' языков', navOrder:'Порядок слов', navMap:'Карта слов', navTree:'Древо' },
-        uk: { title:'Мовне дерево', subtitle:n=>n+' мов за родинами.', search:'🔍 Фільтр…', expand:'Розгорнути все', collapse:'Згорнути все', legend:'Клік на родину — розкрити · клік на мову — карта', stats:n=>n+' мов', navOrder:'Порядок слів', navMap:'Карта слів', navTree:'Дерево' },
-        ar: { title:'شجرة عائلات اللغات', subtitle:n=>n+' لغة حسب العائلة.', search:'🔍 تصفية…', expand:'توسيع الكل', collapse:'طي الكل', legend:'انقر على عائلة للتوسيع · انقر على لغة لفتح الخريطة', stats:n=>n+' لغة', navOrder:'ترتيب الكلمات', navMap:'خريطة الكلمات', navTree:'الشجرة' },
-        he: { title:'אילן השפות', subtitle:n=>n+' שפות לפי משפחה.', search:'🔍 סנן…', expand:'הרחב הכל', collapse:'כווץ הכל', legend:'לחיצה להרחבה · לחיצה על שפה למפה', stats:n=>n+' שפות', navOrder:'סדר מילים', navMap:'מפת מילים', navTree:'אילן' },
-        sw: { title:'Mti wa Lugha', subtitle:n=>n+' lugha kwa familia.', search:'🔍 Chuja…', expand:'Panua zote', collapse:'Kunja zote', legend:'Bofya familia · bofya lugha kufungua ramani', stats:n=>n+' lugha', navOrder:'Mpangilio wa maneno', navMap:'Ramani ya maneno', navTree:'Mti' },
+        en: { title:'Language Family Tree', subtitle:n=>n+' languages organized by family.', search:'🔍 Filter by language name or code…', expand:'Expand all', collapse:'Collapse all', legend:'Click a family to expand · click a language to open it on the map', stats:n=>n+' langs', navOrder:'Word Order', navMap:'Word Map', navTree:'Tree', jumpLast:'Jump to last visited' },
+        ja: { title:'言語系統樹', subtitle:n=>n+' 言語を系統別に整理。', search:'🔍 言語名・コードで絞り込み…', expand:'すべて展開', collapse:'すべて折りたたむ', legend:'系統名をクリックで展開 ／ 言語名をクリックで地図を開く', stats:n=>n+' 言語', navOrder:'語順マップ', navMap:'単語マップ', navTree:'系統樹', jumpLast:'前回の言語へ' },
+        ko: { title:'언어 계통수', subtitle:n=>n+'개 언어를 계통별로 정리.', search:'🔍 언어 이름/코드로 필터…', expand:'모두 펼치기', collapse:'모두 접기', legend:'계통명을 클릭하여 펼침 / 언어를 클릭하여 지도 열기', stats:n=>n+'개 언어', navOrder:'어순 맵', navMap:'단어 맵', navTree:'계통수', jumpLast:'최근 본 언어로' },
+        zh: { title:'语言谱系树', subtitle:n=>'按谱系整理的 '+n+' 种语言。', search:'🔍 按语言名或代码过滤…', expand:'全部展开', collapse:'全部折叠', legend:'点击谱系展开 · 点击语言在地图上打开', stats:n=>n+' 种', navOrder:'语序图', navMap:'词汇地图', navTree:'谱系树', jumpLast:'跳到上次查看的语言' },
+        yue:{ title:'語言譜系樹', subtitle:n=>'按譜系整理嘅 '+n+' 種語言。', search:'🔍 按語言名或代碼過濾…', expand:'全部展開', collapse:'全部摺疊', legend:'撳譜系展開 · 撳語言喺地圖上打開', stats:n=>n+' 種', navOrder:'語序圖', navMap:'詞彙地圖', navTree:'譜系樹', jumpLast:'跳去上次睇嘅語言' },
+        vi: { title:'Cây phả hệ ngôn ngữ', subtitle:n=>n+' ngôn ngữ theo họ.', search:'🔍 Lọc theo tên hoặc mã…', expand:'Mở rộng tất cả', collapse:'Thu gọn tất cả', legend:'Nhấp vào họ để mở rộng · nhấp ngôn ngữ để mở bản đồ', stats:n=>n+' ngôn ngữ', navOrder:'Trật tự từ', navMap:'Bản đồ từ', navTree:'Cây phả hệ', jumpLast:'Đến ngôn ngữ vừa xem' },
+        th: { title:'แผนภูมิตระกูลภาษา', subtitle:n=>'จัด '+n+' ภาษา', search:'🔍 กรอง…', expand:'ขยายทั้งหมด', collapse:'ยุบทั้งหมด', legend:'คลิกตระกูลเพื่อขยาย · คลิกภาษาเพื่อเปิดบนแผนที่', stats:n=>n+' ภาษา', navOrder:'ลำดับคำ', navMap:'แผนที่คำ', navTree:'แผนภูมิ', jumpLast:'ไปยังภาษาล่าสุด' },
+        id: { title:'Pohon Keluarga Bahasa', subtitle:n=>n+' bahasa berdasarkan keluarga.', search:'🔍 Filter…', expand:'Perluas semua', collapse:'Ciutkan semua', legend:'Klik keluarga untuk memperluas · klik bahasa untuk membuka peta', stats:n=>n+' bahasa', navOrder:'Urutan Kata', navMap:'Peta Kata', navTree:'Pohon', jumpLast:'Ke bahasa terakhir' },
+        hi: { title:'भाषा परिवार वृक्ष', subtitle:n=>n+' भाषाएँ परिवार अनुसार।', search:'🔍 फ़िल्टर…', expand:'सभी विस्तार करें', collapse:'सभी संक्षिप्त', legend:'परिवार पर क्लिक करें · भाषा पर क्लिक से मानचित्र', stats:n=>n+' भाषाएँ', navOrder:'शब्द क्रम', navMap:'शब्द मानचित्र', navTree:'वृक्ष', jumpLast:'पिछली भाषा पर जाएँ' },
+        de: { title:'Sprachstammbaum', subtitle:n=>n+' Sprachen nach Familie.', search:'🔍 Nach Name/Code filtern…', expand:'Alle erweitern', collapse:'Alle einklappen', legend:'Klicken zum Erweitern · Sprache anklicken öffnet Karte', stats:n=>n+' Sprachen', navOrder:'Wortstellung', navMap:'Wortkarte', navTree:'Stammbaum', jumpLast:'Zur zuletzt besuchten Sprache' },
+        fr: { title:'Arbre des familles linguistiques', subtitle:n=>n+' langues par famille.', search:'🔍 Filtrer…', expand:'Tout développer', collapse:'Tout réduire', legend:'Cliquer sur une famille · cliquer sur une langue ouvre la carte', stats:n=>n+' langues', navOrder:'Ordre des mots', navMap:'Carte des mots', navTree:'Arbre', jumpLast:'Aller à la dernière langue' },
+        it: { title:'Albero delle lingue', subtitle:n=>n+' lingue per famiglia.', search:'🔍 Filtra…', expand:'Espandi tutto', collapse:'Comprimi tutto', legend:'Clic per espandere · clic foglia apre mappa', stats:n=>n+' lingue', navOrder:'Ordine parole', navMap:'Mappa parole', navTree:'Albero', jumpLast:"Vai all'ultima lingua" },
+        es: { title:'Árbol de lenguas', subtitle:n=>n+' lenguas por familia.', search:'🔍 Filtrar…', expand:'Expandir todo', collapse:'Contraer todo', legend:'Clic para expandir · clic en lengua abre mapa', stats:n=>n+' lenguas', navOrder:'Orden de palabras', navMap:'Mapa de palabras', navTree:'Árbol', jumpLast:'Ir a la última lengua' },
+        pt: { title:'Árvore de línguas', subtitle:n=>n+' línguas por família.', search:'🔍 Filtrar…', expand:'Expandir tudo', collapse:'Recolher tudo', legend:'Clique para expandir · clique na língua abre mapa', stats:n=>n+' línguas', navOrder:'Ordem das palavras', navMap:'Mapa de palavras', navTree:'Árvore', jumpLast:'Ir à última língua' },
+        ru: { title:'Языковое древо', subtitle:n=>n+' языков по семьям.', search:'🔍 Фильтр…', expand:'Развернуть всё', collapse:'Свернуть всё', legend:'Клик на семью — раскрыть · клик на язык — карта', stats:n=>n+' языков', navOrder:'Порядок слов', navMap:'Карта слов', navTree:'Древо', jumpLast:'К последнему языку' },
+        uk: { title:'Мовне дерево', subtitle:n=>n+' мов за родинами.', search:'🔍 Фільтр…', expand:'Розгорнути все', collapse:'Згорнути все', legend:'Клік на родину — розкрити · клік на мову — карта', stats:n=>n+' мов', navOrder:'Порядок слів', navMap:'Карта слів', navTree:'Дерево', jumpLast:'До останньої мови' },
+        ar: { title:'شجرة عائلات اللغات', subtitle:n=>n+' لغة حسب العائلة.', search:'🔍 تصفية…', expand:'توسيع الكل', collapse:'طي الكل', legend:'انقر على عائلة للتوسيع · انقر على لغة لفتح الخريطة', stats:n=>n+' لغة', navOrder:'ترتيب الكلمات', navMap:'خريطة الكلمات', navTree:'الشجرة', jumpLast:'إلى آخر لغة' },
+        he: { title:'אילן השפות', subtitle:n=>n+' שפות לפי משפחה.', search:'🔍 סנן…', expand:'הרחב הכל', collapse:'כווץ הכל', legend:'לחיצה להרחבה · לחיצה על שפה למפה', stats:n=>n+' שפות', navOrder:'סדר מילים', navMap:'מפת מילים', navTree:'אילן', jumpLast:'לשפה האחרונה' },
+        sw: { title:'Mti wa Lugha', subtitle:n=>n+' lugha kwa familia.', search:'🔍 Chuja…', expand:'Panua zote', collapse:'Kunja zote', legend:'Bofya familia · bofya lugha kufungua ramani', stats:n=>n+' lugha', navOrder:'Mpangilio wa maneno', navMap:'Ramani ya maneno', navTree:'Mti', jumpLast:'Kwa lugha ya mwisho' },
     };
 
     function resolveUiLang() {
@@ -241,6 +256,9 @@
             setCookie('wm_uilang', uiLang);
             applyI18n();
             buildAndRender();
+            // Re-apply the last-visited highlight after the tree DOM is
+            // rebuilt under the new UI language.
+            if (getLastVisited()) requestAnimationFrame(() => revealLastVisited({ smooth: false, flash: false }));
         });
     }
 
@@ -257,6 +275,11 @@
         expandEl.setAttribute('aria-label', t('expand'));
         collapseEl.textContent = t('collapse');
         collapseEl.setAttribute('aria-label', t('collapse'));
+        const jumpEl = document.getElementById('jump-last');
+        if (jumpEl) {
+            jumpEl.textContent = t('jumpLast');
+            jumpEl.setAttribute('aria-label', t('jumpLast'));
+        }
         document.getElementById('legend').textContent = t('legend');
         const treeRoot = document.getElementById('tree-root');
         if (treeRoot) treeRoot.setAttribute('aria-label', t('title'));
@@ -640,7 +663,7 @@
                 const isHist = (typeof HIST_DESCENDANT !== 'undefined') &&
                                Object.prototype.hasOwnProperty.call(HIST_DESCENDANT, child.code);
                 const params = lang ? `lang=${encodeURIComponent(child.code)}&z=7&lat=${lang.lat}&lng=${lang.lng}&g3d=0&hist=${isHist?'1':'0'}&ui=${uiLang}` : '';
-                line = '<span class="' + nodeClass + '" data-leaf="1">'
+                line = '<span class="' + nodeClass + '" data-leaf="1" data-code="' + escapeHtml(child.code) + '">'
                     + '<span class="toggle">▶</span>'
                     + '<span class="label"><a href="wordmap.html#' + escapeHtml(params) + '">' + escapeHtml(child.name) + '</a></span>'
                     + (child.native ? '<span class="native" dir="auto">' + escapeHtml(child.native) + '</span>' : '')
@@ -671,8 +694,15 @@
         const root = document.getElementById('tree-root');
         // Toggle expand/collapse on internal-node click
         root.addEventListener('click', e => {
-            // Don't toggle when leaf link is clicked (the link's natural behavior carries the user to wordmap)
-            if (e.target.tagName === 'A') return;
+            // Leaf link click → remember the lang code in localStorage so
+            // when the user comes back from the wordmap we can scroll the
+            // tree to their last-visited language.
+            if (e.target.tagName === 'A') {
+                const node = e.target.closest('.node');
+                const code = node && node.getAttribute('data-code');
+                if (code) saveLastVisited(code);
+                return;
+            }
             const node = e.target.closest('.node');
             if (!node || node.classList.contains('leaf')) return;
             const li = node.parentElement;  // <li>
@@ -680,6 +710,62 @@
             li.classList.toggle('collapsed');
             node.classList.toggle('expanded');
         });
+    }
+
+    // ===== Last-visited language (localStorage) =====
+    const LAST_VISITED_KEY = 'langmap_tree_last_visited';
+    function saveLastVisited(code) {
+        try { localStorage.setItem(LAST_VISITED_KEY, code); } catch (e) {}
+    }
+    function getLastVisited() {
+        try { return localStorage.getItem(LAST_VISITED_KEY); } catch (e) { return null; }
+    }
+
+    // Expand ancestors of `node`, scroll it into view, and pulse-highlight
+    // it. Used both on initial load and when the user clicks the
+    // "Jump to last visited" button.
+    function revealNode(node, opts) {
+        if (!node) return false;
+        opts = opts || {};
+        // Walk up; un-collapse each enclosing <li> and set the parent
+        // .node to expanded so the toggle caret points down.
+        let cur = node.parentElement;  // starting <li>
+        while (cur && cur.id !== 'tree-root') {
+            if (cur.tagName === 'LI') {
+                cur.classList.remove('collapsed');
+                const parentNode = cur.querySelector(':scope > .node');
+                if (parentNode && !parentNode.classList.contains('leaf')) {
+                    parentNode.classList.add('expanded');
+                }
+            }
+            cur = cur.parentElement;
+        }
+        // Clear any prior last-visited marker, then mark this one.
+        document.querySelectorAll('.node.last-visited').forEach(n => {
+            n.classList.remove('last-visited', 'flash');
+        });
+        node.classList.add('last-visited');
+        if (opts.flash !== false) {
+            // Force reflow so the animation re-triggers on repeat clicks.
+            node.classList.remove('flash');
+            void node.offsetWidth;
+            node.classList.add('flash');
+        }
+        // Scroll the .tree-wrap container so the node is visible.
+        try {
+            node.scrollIntoView({ behavior: opts.smooth ? 'smooth' : 'auto', block: 'center' });
+        } catch (e) {
+            node.scrollIntoView();
+        }
+        return true;
+    }
+
+    function revealLastVisited(opts) {
+        const code = getLastVisited();
+        if (!code) return false;
+        const node = document.querySelector('.node.leaf[data-code="' + CSS.escape(code) + '"]');
+        if (!node) return false;
+        return revealNode(node, opts);
     }
 
     function expandAll() {
@@ -764,6 +850,19 @@
             clearTimeout(timer);
             timer = setTimeout(() => searchFilter(searchInput.value), 200);
         });
+
+        // Last-visited: if we have one saved, show the jump button and
+        // auto-scroll to it on first paint. Auto-reveal is silent (no
+        // flash) so it doesn't yank attention if the user came from a
+        // bookmark; the button click does flash for clear feedback.
+        const jumpBtn = document.getElementById('jump-last');
+        const lastCode = getLastVisited();
+        if (lastCode && document.querySelector('.node.leaf[data-code="' + CSS.escape(lastCode) + '"]')) {
+            jumpBtn.hidden = false;
+            jumpBtn.addEventListener('click', () => revealLastVisited({ smooth: true, flash: true }));
+            // Defer one frame so layout is settled before scrollIntoView.
+            requestAnimationFrame(() => revealLastVisited({ smooth: false, flash: true }));
+        }
     }
 })();
 </script>
