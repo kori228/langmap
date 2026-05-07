@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 796 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 799 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -498,6 +498,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'khg'; Glottolog kham1284; Suzuki (2009) Khams Tibetan dialectology.
   khg: { name: 'Khams Tibetan', native: 'ཁམས་སྐད', lat: 30.04, lng: 99.10, // Kandze (Garzê), Sichuan
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཨ་ཕ','apa'], eat:['ཟ','za'], drink:['འཐུང་','tʰuŋ'], love:['དགའ་པོ','gapo'], heart:['སྙིང་','ɲiŋ'], tree:['ཤིང་','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','kʰi'], cat:['ཞི་མི','ʑimi'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['ཨ་རོ','aɾo'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʑe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
+  // Northern Qiang — Sino-Tibetan (Tibeto-Burman, Qiangic — sister to cng Central Qiang and other Qiangic varieties), ~57K, China (Sichuan — Mao County, Wenchuan, Heishui Aba Tibetan AP).
+  // Sources: Ethnologue 27 'cng'/'cnd'; Glottolog nort2722; LaPolla & Huang (2003) A Grammar of Qiang.
+  cnd: { name: 'Northern Qiang', native: 'Rrmea', lat: 31.68, lng: 103.82, // Mao County, Aba Tibetan-Qiang AP, Sichuan
+    words: { water:['cu','tsu'], fire:['mi','mi'], sun:['mu','mu'], moon:['nyi','ɲi'], mother:['ami','ami'], father:['apa','apa'], eat:['ndzu','ndzu'], drink:['ndhu','ndʱu'], love:['halia','halia'], heart:['shulm','ʃulm'], tree:['rrm','ʐm'], house:['stuapa','stuapa'], dog:['kuel','kʷel'], cat:['miu','miu'], hand:['ki','ki'], eye:['mil','mil'], hello:['nia ja','nia dʒa'], thanks:['namaste','namaste'], one:['lhe','ɬe'], good:['stsuq','stsuq'] }},
   ii: { name: 'Yi (Nuosu)', native: 'ꆈꌠꉙ', lat: 27.90, lng: 102.26,
     words: { water:['ꏂ','ʐɿ˧˧'], fire:['ꃆ','mu˧˧'], sun:['ꉢꁡ','ȵi˧˧mo˧˧'], moon:['ꃅꎖ','mu˧˧hy˧˧'], mother:['ꀊꂿ','a˧˧mo˧˧'], father:['ꀊꀧ','a˧˧da˧˧'], eat:['ꋊ','dza˧˧'], drink:['ꄸ','tu˧˧'], love:['ꉢ','ŋa˧˧'], heart:['ꌋ','si˧˧'], tree:['ꌦ','sɿ˧˧'], house:['ꑳ','ɣɯ˧˧'], dog:['ꈸ','kʰɯ˧˧'], cat:['ꃬ','vi˧˧'], hand:['ꇐ','la˧˧'], eye:['ꉜ','ȵi˧˧'], hello:['ꂿꎆꈐ','mo˧˧su˧˧kɤ˧˧'], thanks:['ꃰꊿ','ka˧˧tɕʰɿ˧˧'], one:['ꊰ','tsʰɿ˧˧'], good:['ꃅ','mu˧˧'] }},
   // Azhe — Sino-Tibetan (Tibeto-Burman, Loloish, Southeastern), ~50K, China (Yunnan — Mile and Yiliang counties around Honghe Hani-Yi Autonomous Prefecture).
@@ -894,6 +898,10 @@ const LANG_DATA = {
     words: { water:['vesi','vesi'], fire:['tuli','tuli'], sun:['päiv','pæiv'], moon:['kuu','kuː'], mother:['imä','imæ'], father:['esä','esæ'], eat:['süümä','syːmæ'], drink:['juuma','juːma'], love:['armastus','ɑrmɑstus'], heart:['süä','syæ'], tree:['puu','puː'], house:['kotus','kotus'], dog:['pini','pini'], cat:['kass','kɑsː'], hand:['käsi','kæsi'], eye:['silm','silm'], hello:['tere','tere'], thanks:['aitäh','ɑitæh'], one:['üts','yts'], good:['hää','hæː'] }},
   gn: { name: 'Guarani', native: "Avañe'ẽ", lat: -25.26, lng: -57.58,
     words: { water:['y','ɨ'], fire:['tata','tata'], sun:['kuarahy','kwaɾahɨ'], moon:['jasy','ʒasɨ'], mother:['sy','sɨ'], father:['túva','tuva'], eat:["ka'u",'kaʔu'], drink:["y'u",'ɨʔu'], love:['hayhu','haɨhu'], heart:["py'a",'pɨʔa'], tree:['yvyra','ɨvɨɾa'], house:['óga','oɡa'], dog:['jagua','ʒaɡwa'], cat:['mbarakaja','mbaɾakaʒa'], hand:['po','po'], eye:['tesa','tesa'], hello:["mba'éichapa",'mbaʔeitʃapa'], thanks:['aguyje','aɡuɨʒe'], one:['peteĩ','peteĩ'], good:['porã','poɾã'] }},
+  // Nheengatu (Língua Geral Amazônica, "Modern Tupi") — Tupi-Guarani (Tupinambá-Tupinambá branch — historical lingua franca of Amazonia derived from extinct Coastal Tupinambá), ~6K, Brazil (upper Rio Negro — São Gabriel da Cachoeira) + Colombia + Venezuela.
+  // Sources: Ethnologue 27 'yrl'; Glottolog yrl1239; Cruz (2011) Fonologia e Gramática do Nheengatú.
+  yrl: { name: 'Nheengatu', native: 'Nheengatú', lat: -0.13, lng: -67.09, // São Gabriel da Cachoeira, Amazonas, Brazil
+    words: { water:['ig','iɡ'], fire:['tatá','tata'], sun:['kuarasi','kwaɾasi'], moon:['yasi','jasi'], mother:['mãi','mãi'], father:['paiá','paja'], eat:['ku','ku'], drink:['yú','jú'], love:['saysu','sajsu'], heart:["py'ã",'pɨʔã'], tree:["mira-vra",'miɾavɾa'], house:['oka','oka'], dog:['yawara','jawaɾa'], cat:['mariwa','maɾiwa'], hand:['pó','po'], eye:['sesa','sesa'], hello:['poranga','poɾaŋɡa'], thanks:['katu','katu'], one:['yepé','jepe'], good:['katu','katu'] }},
   chr: { name: 'Cherokee', native: 'ᏣᎳᎩ', lat: 35.51, lng: -83.52,
     words: { water:['ᎠᎹ','ama'], fire:['ᎠᏥᎳ','atʃila'], sun:['ᏅᏓ','nʌda'], moon:['ᏅᏓ ᏒᏃᏱ','nʌda svnoɪ'], mother:['ᎡᏥ','edʒi'], father:['ᎡᏙᏓ','edoda'], eat:['ᎠᎩᏍᏔ','aɡista'], drink:['ᎠᏗᏔ','adita'], love:['ᎠᏓᎨᏳᎯ','adaɡejuhi'], heart:['ᎤᏬᏱ','uwoji'], tree:['ᏡᎬ','tluɡv'], house:['ᎦᎵᏦᏕ','ɡalitsode'], dog:['ᎩᏟ','ɡitli'], cat:['ᏪᏌ','wesa'], hand:['ᎤᏰᏙᎯ','ujɛdohi'], eye:['ᎠᎦᏘ','aɡati'], hello:['ᎣᏏᏲ','osijo'], thanks:['ᎢᎴᎯᏍᏗ','ilehisdi'], one:['ᏌᏊ','saʔu'], good:['ᎣᏍᏓ','osda'] }},
   // Cayuga — Iroquoian Northern, ~30 fluent, Six Nations Reserve Ontario.
@@ -1739,6 +1747,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'cni'; Glottolog asha1243; Mihas (2010) Asháninka grammar.
   cni: { name: 'Asháninka', native: 'Asháninka', lat: -10.85, lng: -73.81, // Satipo, Peru
     words: { water:['nija','nidʒa'], fire:['paamari','paːmaɾi'], sun:['oorya','oːɾja'], moon:['kashiri','kaʃiɾi'], mother:['ina','ina'], father:['apa','apa'], eat:['noyaki','nojaki'], drink:['noiri','noiɾi'], love:['nonintsi','nonintsi'], heart:['nosanto','nosanto'], tree:['inchato','intʃato'], house:['pankotsi','paŋkotsi'], dog:['otsiti','otsiti'], cat:['mishito','miʃito'], hand:['nako','nako'], eye:['noki','noki'], hello:['aviro','aβiɾo'], thanks:['naranki','naɾaŋki'], one:['aparoni','apaɾoni'], good:['kameetsa','kameːtsa'] }},
+  // Yanesha (Amuesha) — Arawakan (Western, isolated within Arawakan but part of broader Maipurean macrofamily), ~9K, Peru (Amazon basin — Pasco, Junín, Huánuco regions; Andes-Amazon ecotone).
+  // Sources: Ethnologue 27 'ame'; Glottolog yane1238; Duff-Tripp (1997) Gramática del Idioma Yanesha'.
+  ame: { name: 'Yanesha', native: "Yanesha'", lat: -10.62, lng: -75.21, // Villa Rica, Pasco Region, Peru
+    words: { water:['acopcho','akopt͡ʃo'], fire:['oña','oɲa'], sun:['mtsho','mt͡so'], moon:['ojets','odʒets'], mother:['neñ','neɲ'], father:['oñ','oɲ'], eat:['epam','epam'], drink:['epcham','ept͡ʃam'], love:['ehueñ','eweɲ'], heart:['nemueñ','nemweɲ'], tree:['ñeñoph','ɲeɲopʰ'], house:['pamoñ','pamoɲ'], dog:['atso','at͡so'], cat:['michi','mit͡ʃi'], hand:['neyepy','nejepɨ'], eye:['oqueño','okeɲo'], hello:['salud','salud'], thanks:['gracia','ɡɾasia'], one:['quesoll','kesoʎ'], good:['paretem','paɾetem'] }},
   // Ngäbere (Guaymí) — Chibchan (Magdalenic, sister to Buglere/Bocotá), ~170K, Panama (Ngäbe-Buglé Comarca) + Costa Rica (Cordillera de Talamanca). Largest Chibchan language by speakers.
   // Sources: Ethnologue 27 'gym'; Glottolog ngab1239; Murillo (2008) Diccionario Bilingüe Ngäbere-Español.
   gym: { name: 'Ngäbere', native: 'Ngäbere', lat: 8.43, lng: -82.13, // Llano Tugrí, Panama (Ngäbe-Buglé capital)

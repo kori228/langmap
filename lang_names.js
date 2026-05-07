@@ -1635,4 +1635,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED62 = {
+        ame: { en: 'Yanesha', ja: 'ヤネシャ語', ko: '야네샤어', zh: '雅内沙语', yue: '雅內沙語',
+               vi: 'Tiếng Yanesha', th: 'ภาษายาเนชา', id: 'Bahasa Yanesha', hi: 'यानेशा',
+               de: 'Yanesha', fr: 'Yanesha', it: 'Yanesha',
+               es_eu: 'Yanesha', es_mx: 'Yanesha', pt_eu: 'Yanesha', pt_br: 'Yanesha',
+               ru: 'Янеша', uk: 'Янеша', ar: 'الياناشية', he: 'יאנשה', sw: 'Kiyanesha' },
+        cnd: { en: 'Northern Qiang', ja: '北部チャン語', ko: '북부 챠어', zh: '北羌语', yue: '北羌語',
+               vi: 'Tiếng Khương Bắc', th: 'ภาษาเชียงเหนือ', id: 'Qiang Utara', hi: 'उत्तरी क्यांग',
+               de: 'Nord-Qiang', fr: 'Qiang du Nord', it: 'Qiang settentrionale',
+               es_eu: 'Qiang del Norte', es_mx: 'Qiang del Norte', pt_eu: 'Qiang do Norte', pt_br: 'Qiang do Norte',
+               ru: 'Северный цян', uk: 'Північна цян', ar: 'القيانغ الشمالية', he: 'צ׳יאנג צפוני', sw: 'Kiqiang cha Kaskazini' },
+        yrl: { en: 'Nheengatu', ja: 'ニェンガトゥ語', ko: '녀엔가투어', zh: '尼恩加图语', yue: '尼恩加圖語',
+               vi: 'Tiếng Nheengatu', th: 'ภาษาเนงกาตู', id: 'Bahasa Nheengatu', hi: 'न्येंगाटू',
+               de: 'Nheengatu', fr: 'Nheengatu', it: 'Nheengatu',
+               es_eu: 'Ñe\\'engatú', es_mx: 'Ñe\\'engatú', pt_eu: 'Nheengatu', pt_br: 'Nheengatu',
+               ru: 'Ньенгату', uk: 'Ньенгату', ar: 'النيينغاتو', he: 'נייאנגטו', sw: 'Kinheengatu' },
+    };
+    for (const code of Object.keys(ADDED62)) {
+        for (const ui of Object.keys(ADDED62[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED62[code][ui];
+            }
+        }
+    }
 })();
