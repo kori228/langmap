@@ -10015,3 +10015,104 @@ Done when:
 3. **Task 211 Phase 1** — bump 7 count strings 709→712. ~2 min. Or skip if Task 214 is implemented immediately.
 4. **Task 207 / 208 / 159** — formType + pronunciationType + family allow-list backfills. ~3 min total.
 5. **Task 214** — auto-bump infrastructure. ~30 min, prevents future recurrence.
+
+---
+
+## Filter Bug Audit (2026-05-07 part 7) — Tibetan-script languages split across filter chips
+
+User reported: "Tibetan script で書かれた言語が 2 言語以上あるのに、フィルターには 1 つしか出てこない" (2+ languages use Tibetan script, but the filter shows only 1).
+
+Investigation confirmed three concurrent issues that make Tibetan-script languages appear under-represented in the filter UI:
+
+### New Task 215. Resolve filter taxonomy fragmentation that hides Tibetan-script (and similarly-grouped) languages
+
+Goal:
+Three languages — `bo` Tibetan, `khg` Khams Tibetan, `dz` Dzongkha — all use Tibetan script and all share the Bodish sub-branch of Sino-Tibetan. Yet the filter UI splits them across chips so a user looking for "Tibetan script" or "Tibetan-language family" sees inconsistent counts (1 in some chips, 2 in others, never all 3 in a single coherent grouping). The same antipattern likely affects other language clusters with mixed-specificity family strings.
+
+Current issue I checked (2026-05-07 evening):
+
+**1. `'Tibetan'` is not a script-tag enum value.**
+- `validate_wordmap_data.js:376` `SCRIPT_TAG_ENUM`: 32 values including `'Brahmic'` but NO `'Tibetan'`.
+- `lang-filter.js:436` `detectScript()`: collapses `'Tibetan'` into `'Brahmic'` along with Devanagari, Bengali, Tamil, Telugu, Kannada, Malayalam, Burmese, Khmer, Thai, Lao, etc. — ~100+ languages all under one chip.
+- Result: a user searching the Script filter for Tibetan-script langs has no specific chip; the Brahmic chip is too broad to be useful.
+
+**2. Family-string fragmentation splits the Bodish cluster.**
+- `bo` family: `'Sino-Tibetan (Tibeto-Burman, Bodish)'`.
+- `dz` family: `'Sino-Tibetan (Tibeto-Burman, Bodish)'`.
+- `khg` family: `'Sino-Tibetan (Tibeto-Burman, Bodish, Tibetic, Eastern)'` — over-specific string.
+- The family filter generates one chip per exact-match family string, so the user sees `'Sino-Tibetan (Tibeto-Burman, Bodish)'` chip with 2 langs (bo+dz) and `'Sino-Tibetan (Tibeto-Burman, Bodish, Tibetic, Eastern)'` chip with 1 lang (khg) — instead of one Bodish bucket with 3.
+
+**3. `'Tibetic'` is missing from `SUBBRANCH_TOKENS`.**
+- `lang-filter.js:629-647` `SUBBRANCH_TOKENS` has `'Bodish'` but not `'Tibetic'` (despite the latter being a real Tibeto-Burman sub-branch label widely used in Glottolog).
+- Even if `expandFamilies()` is called, `'Tibetic'` from khg's family is dropped during sub-branch extraction.
+
+Files to change:
+- `validate_wordmap_data.js` — extend `SCRIPT_TAG_ENUM` to include `'Tibetan'` as a separate tag (NOT replacement for `'Brahmic'`; both can coexist — Tibetan-script langs would have `scriptTags: ['Tibetan']` AND optionally `'Brahmic'` if the project decides Tibetan-is-a-Brahmi descendant logically belongs to both).
+- `lang-filter.js:436` `detectScript()` — split the regex so `Tibetan` matches **before** the catch-all Brahmic regex, with its own `tags.add('Tibetan')`.
+- `wordmap_meta.js` — set `scriptTags: ['Tibetan']` on `bo`, `khg`, `dz`.
+- `wordmap_meta.js` — normalize `khg.family` from `'Sino-Tibetan (Tibeto-Burman, Bodish, Tibetic, Eastern)'` to `'Sino-Tibetan (Tibeto-Burman, Bodish)'` to match `bo`/`dz`. The "Tibetic, Eastern" detail is preserved in the prose `description` already.
+- `lang-filter.js:629` `SUBBRANCH_TOKENS` — add `'Tibetic'` for forward compatibility.
+- `CONTRIBUTING.md` — document the script-tag enum extension and the family-string normalization rule.
+
+Implementation instructions:
+
+**Decision needed first: split-by-script vs. split-by-language-cluster.**
+
+The user's reasonable expectation is that "Tibetan" appears as a discrete filter dimension. Two ways to deliver:
+
+- **Option A — script-tag split (recommended):** Add `'Tibetan'` to `SCRIPT_TAG_ENUM`. Clicking "Tibetan" script chip shows all 3 languages. Brahmic still exists as the broader umbrella. This matches user mental model: "show me languages that use the Tibetan writing system."
+- **Option B — family-string normalization only:** Keep the script taxonomy as-is, but normalize `khg.family` so all 3 Bodish langs share the same family chip. Then user filters by family "Bodish" and sees 3 langs.
+- **Option C — both:** Apply Option A and Option B together. Best UX, slightly more work.
+
+Recommend **Option C**.
+
+**Phase 1: script-tag split.**
+- Add `'Tibetan'` to `SCRIPT_TAG_ENUM` in `validate_wordmap_data.js`.
+- In `lang-filter.js:detectScript()`: add a new specific branch BEFORE the Brahmic catch-all:
+  ```js
+  if (/\bTibetan\b/.test(s)) tags.add('Tibetan');
+  ```
+  And keep the Brahmic regex as fallback (so Tibetan-script langs end up tagged with both `'Tibetan'` AND `'Brahmic'` if the project policy is overlap; or remove "Tibetan" from the Brahmic regex if mutual exclusion is preferred). Recommend overlap.
+- Set `meta.scriptTags = ['Tibetan']` on bo/khg/dz to make the static value authoritative.
+
+**Phase 2: family-string normalization.**
+- Change `khg.family` to `'Sino-Tibetan (Tibeto-Burman, Bodish)'` so it matches bo and dz.
+- Move the "Tibetic, Eastern" sub-branch detail to `description` if not already there.
+- Re-run validator to confirm all 3 Bodish langs share the same family chip.
+
+**Phase 3: SUBBRANCH_TOKENS extension.**
+- Add `'Tibetic'` to `SUBBRANCH_TOKENS` so future rows that legitimately need the more-specific label still expand correctly.
+
+**Phase 4: documentation.**
+- CONTRIBUTING.md: document the script-tag enum (with `'Tibetan'` now distinct from `'Brahmic'`) and the family-string convention (sub-branch detail goes in description, not in family string, to avoid chip fragmentation).
+
+Validator / static check:
+- After fix: `bo`, `khg`, `dz` all surface under the same family chip (Bodish or `'Sino-Tibetan (Tibeto-Burman, Bodish)'`).
+- After fix: all 3 surface under a new `'Tibetan'` script chip.
+- New validator check `[#215]`: warn if a language's family string contains `Bodish` or `Tibetic` but the row is missing the standard Bodish-cluster expansion. (Optional — pattern-specific check.)
+
+Do not:
+- Do not delete `'Brahmic'` as a script chip. It serves the umbrella-Brahmi role for users searching for Brahmi-derived scripts collectively. Add `'Tibetan'` as an additional fine-grained chip.
+- Do not flatten `khg`'s family by deleting "Tibetic, Eastern" — preserve the linguistic detail in `description`.
+- Do not bundle this with other script-tag additions (e.g., adding 'Devanagari', 'Tamil', 'Bengali' as separate chips). The 'Brahmic' umbrella is intentional for the Indic continental cluster; Tibetan is geographically and culturally distinct enough to deserve its own chip while still being a Brahmi descendant.
+
+Done when:
+- `meta.scriptTags = ['Tibetan']` set on bo/khg/dz (plus optionally `'Brahmic'` if project policy is overlap).
+- Filter UI shows a `'Tibetan'` script chip with count = 3.
+- Family chip for Bodish/Tibetan-cluster shows count = 3 (no fragmentation).
+- `'Tibetic'` added to `SUBBRANCH_TOKENS` for forward compatibility.
+- CONTRIBUTING.md documents the script-tag policy and family-string normalization rule.
+
+### Why this matters beyond the 3 Tibetan languages
+
+The same antipattern (over-specific family strings creating singleton chips) likely affects:
+- **Tibetic varieties** (bo / khg / dz / `adx` Amdo if present / `dre` Dolpo / `loy` Loke if added in future Tier 11) — could split into 4+ singleton chips if each gets a unique family string.
+- **Mongolic varieties** (`mn` Khalkha, `mvf` Mongghul, `xal` Kalmyk, `bxr` Buryat, `xng` Middle Mongol, `cmg` Classical) — each might have its own family string.
+- **Bantu sub-branches** (E40, E50, F, G, J, L, M, N, R) — Task 159 partially normalized this but family-string fragmentation may still occur on new Tier 9 additions.
+- **Romance regional varieties** (`es_*`, `pt_*`, `fr_*`) — already handled via parentCode but family-string cohesion should be re-checked.
+
+The fix is the same family-string-normalization rule across all clusters: **the family string should be the lowest-level cluster shared by all languages with that string; sub-branch nuance lives in `description`, not in the family chip ID**.
+
+Future task candidates (not yet started):
+- Audit all family strings for "singleton chip" cases (1 language per family chip) — likely 50+ such chips.
+- Either normalize each to the next-broader cluster, OR explicitly tag them as intentional singletons (e.g., language isolates) so the validator knows they are not bugs.

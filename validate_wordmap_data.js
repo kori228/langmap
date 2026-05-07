@@ -1008,7 +1008,7 @@ for (const code of codes) {
     // Audit Task 130: meta.scriptTags must be Array<string> from the allowed enum
     if (m.scriptTags !== undefined) {
         const SCRIPT_TAG_ENUM = new Set([
-            'Latin','Han','Kana','Hangul','Cyrillic','Arabic-derived','Hebrew','Syriac','Brahmic','Greek',
+            'Latin','Han','Kana','Hangul','Cyrillic','Arabic-derived','Hebrew','Syriac','Brahmic','Tibetan','Greek',
             'Armenian','Georgian','Ethiopic','Coptic','Cherokee','Tifinagh','Yi','Canadian Aboriginal Syllabics',
             'Mongolian-derived','Cuneiform','Hieroglyphs','Aegean syllabary','Mayan','Old Turkic','Tangut',
             'Khitan','Jurchen','Aramaic-derived','Other historical','None / reconstructed','N\'Ko','Other'

@@ -431,6 +431,12 @@
         // Shahmukhi, Saraiki Naskh, etc.)
         if (/Arabic|Nastaliq|Naskh|Jawi|Perso-Arabic|Pegon|Ajami|Adlam|Shahmukhi/i.test(s)) tags.add('Arabic-derived');
 
+        // Tibetan-script chip — distinct from Brahmic umbrella so users can
+        // filter for Tibetan-script langs specifically (Audit Task 215).
+        // Tibetan-script langs are also tagged 'Brahmic' below for the
+        // umbrella chip; both can coexist on the same row.
+        if (/Tibetan|Uchen|Umê|Drutsa/i.test(s)) tags.add('Tibetan');
+
         // Brahmic (Indic + SE Asian Brahmi descendants). Includes Mon,
         // Shan, Karen, Eastern Nagari/Assamese, Cham, Lontara, etc.
         if (/Devanagari|Bengali|Eastern Nagari|Tamil|Telugu|Kannada|Malayalam|Gujarati|Gurmukhi|Oriya|Odia|Sinhala|\bThai\b|\bLao\b|Khmer|Burmese|Tibetan|Brahmi|Brāhmī|Brahmic|Kawi|Balinese|Javanese script|Carakan|Sharada|Mithilakshar|Tirhuta|Sylheti|Kaithi|Ranjana|Bodo Devanagari|Meitei|Tigalari|Mon script|Shan script|Karen script|Cham|Lontara|Aksara Bugis|Hanacaraka|Batak|Surat Batak|Aksara Sasak|Lampung script|Limbu|Takri|Multani|Old Khmer|Brahmi-derived/i.test(s)) tags.add('Brahmic');
@@ -629,7 +635,7 @@
     const SUBBRANCH_TOKENS = new Set([
         'Bantu', 'Atlantic', 'Mel', 'Mande', 'Kwa', 'Gur', 'Kru',
         'Volta-Niger', 'Adamawa',
-        'Sinitic', 'Tibeto-Burman', 'Bodish', 'Loloish', 'Karen',
+        'Sinitic', 'Tibeto-Burman', 'Bodish', 'Tibetic', 'Loloish', 'Karen',
         'Karenic', 'Burmish', 'Naic', 'Bodo-Garo',
         'Polynesian', 'Micronesian', 'Malayo-Polynesian', 'Formosan',
         'Malayic', 'Visayan', 'Chamic',
