@@ -2501,4 +2501,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED104 = {
+        bdq: { en: 'Bahnar', ja: 'バフナル語', ko: '바흐나르어', zh: '巴拿语', yue: '巴拿語',
+               vi: 'Tiếng Ba Na', th: 'ภาษาบานา', id: 'Bahasa Bahnar', hi: 'बाह्नार',
+               de: 'Bahnar', fr: 'Bahnar', it: 'Bahnar',
+               es_eu: 'Bahnar', es_mx: 'Bahnar', pt_eu: 'Bahnar', pt_br: 'Bahnar',
+               ru: 'Бахнар', uk: 'Бахнар', ar: 'الباهنار', he: 'באהנאר', sw: 'Kibahnar' },
+        ddn: { en: 'Donno So', ja: 'ドノ・ソ語', ko: '돈노소어', zh: '多诺索语', yue: '多諾索語',
+               vi: 'Tiếng Donno So', th: 'ภาษาโดนโนโซ', id: 'Bahasa Donno So', hi: 'दोन्नो सो',
+               de: 'Donno So', fr: 'Dogon de Donno So', it: 'Donno So',
+               es_eu: 'Donno So', es_mx: 'Donno So', pt_eu: 'Donno So', pt_br: 'Donno So',
+               ru: 'Донно-со', uk: 'Донно-со', ar: 'الدونو-سو', he: "דונו סו", sw: 'Kidonno So' },
+        aiw: { en: 'Aari', ja: 'アアリ語', ko: '아리어', zh: '阿里语', yue: '阿里語',
+               vi: 'Tiếng Aari', th: 'ภาษาอาริ', id: 'Bahasa Aari', hi: 'आरि',
+               de: 'Aari', fr: 'Aari', it: 'Aari',
+               es_eu: 'Aari', es_mx: 'Aari', pt_eu: 'Aari', pt_br: 'Aari',
+               ru: 'Аари', uk: 'Аарі', ar: 'الآري', he: 'אארי', sw: 'Kiaari' },
+    };
+    for (const code of Object.keys(ADDED104)) {
+        for (const ui of Object.keys(ADDED104[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED104[code][ui];
+            }
+        }
+    }
 })();
