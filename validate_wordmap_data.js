@@ -833,6 +833,69 @@ for (const code of codes) {
             if (typeof a !== 'string' || !a.trim()) E(`[#13k] ${code}: meta.aliases entry not a non-empty string: ${JSON.stringify(a)}`);
         }
     }
+    // Audit Task 220: structured speakerCount object (Phase 2 pilot).
+    // Schema enforced when the field is present; pilot rows checked here,
+    // full migration produces the field on every row.
+    //   speakerCount: {
+    //       l1?, total?, range, rangeMin?, rangeMax?,
+    //       l1RangeMin?, l1RangeMax?,
+    //       year, source, exact?, vitality?, notes?
+    //   }
+    if (m.speakerCount !== undefined) {
+        const sc = m.speakerCount;
+        if (typeof sc !== 'object' || sc === null || Array.isArray(sc)) {
+            E(`[#220] ${code}: meta.speakerCount must be a plain object (Audit Task 220)`);
+        } else {
+            // [#220a] required: range
+            const RANGE_KIND = new Set(['point', 'range']);
+            if (!RANGE_KIND.has(sc.range)) {
+                E(`[#220a] ${code}: speakerCount.range "${sc.range}" not in {'point','range'} (Audit Task 220)`);
+            }
+            // [#220b] range === 'range' requires rangeMin and rangeMax
+            if (sc.range === 'range') {
+                if (typeof sc.rangeMin !== 'number' || typeof sc.rangeMax !== 'number') {
+                    E(`[#220b] ${code}: speakerCount.range='range' requires numeric rangeMin and rangeMax (Audit Task 220)`);
+                } else if (sc.rangeMin > sc.rangeMax) {
+                    E(`[#220b] ${code}: speakerCount.rangeMin (${sc.rangeMin}) > rangeMax (${sc.rangeMax}) (Audit Task 220)`);
+                }
+            }
+            // [#220c] year required and 4-digit; future-dated → ERROR
+            if (typeof sc.year !== 'number' || sc.year < 1900 || sc.year > 2100) {
+                E(`[#220c] ${code}: speakerCount.year "${sc.year}" not a 4-digit year (Audit Task 220)`);
+            } else if (sc.year > 2026) {
+                E(`[#220c] ${code}: speakerCount.year ${sc.year} is future-dated (Audit Task 220)`);
+            }
+            // [#220] source required (string)
+            if (typeof sc.source !== 'string' || !sc.source.trim()) {
+                E(`[#220] ${code}: speakerCount.source missing or empty (Audit Task 220)`);
+            }
+            // [#220] numeric fields must be numbers
+            for (const k of ['l1', 'total', 'rangeMin', 'rangeMax', 'l1RangeMin', 'l1RangeMax']) {
+                if (sc[k] !== undefined && (typeof sc[k] !== 'number' || sc[k] < 0)) {
+                    E(`[#220] ${code}: speakerCount.${k} must be a non-negative number, got ${JSON.stringify(sc[k])} (Audit Task 220)`);
+                }
+            }
+            // [#220] l1Range pair must be consistent
+            if ((sc.l1RangeMin !== undefined) !== (sc.l1RangeMax !== undefined)) {
+                E(`[#220] ${code}: speakerCount.l1RangeMin/l1RangeMax must come as a pair (Audit Task 220)`);
+            }
+            if (sc.l1RangeMin !== undefined && sc.l1RangeMax !== undefined && sc.l1RangeMin > sc.l1RangeMax) {
+                E(`[#220] ${code}: speakerCount.l1RangeMin > l1RangeMax (Audit Task 220)`);
+            }
+            // [#220] vitality enum mirror (when present, must match meta.vitality if both set)
+            if (sc.vitality !== undefined) {
+                const allowed = new Set(['safe','vulnerable','definitely-endangered','severely-endangered','critically-endangered','extinct']);
+                if (!allowed.has(sc.vitality)) {
+                    E(`[#220] ${code}: speakerCount.vitality "${sc.vitality}" not in enum (Audit Task 220)`);
+                }
+            }
+            // [#220] at least one numeric field required (l1, total, or range)
+            const hasNumeric = sc.l1 !== undefined || sc.total !== undefined || sc.range === 'range' || sc.l1RangeMin !== undefined;
+            if (!hasNumeric) {
+                W(`[#220] ${code}: speakerCount has no numeric value (l1/total/rangeMin/l1RangeMin); structure is empty (Audit Task 220)`);
+            }
+        }
+    }
     // Audit Task 103/104: wordEvidence.formType enum (when present)
     // Audit Task 97 / 195: split evidence enum.
     //   Legacy stream names (Task 97): formEvidence / pronunciationEvidence / conceptEvidence
@@ -2168,6 +2231,16 @@ console.log(`Duplicate-coordinate groups: ${dupGroups.length}`);
 console.log(`Codes with meta: ${codesWithMeta.length}/${codes.length}`);
 console.log(`Distinct family top-tokens: ${Object.keys(familyTopHits).length}`);
 console.log(`Optional schema adoption: speakerBasis ${withSpeakerBasis}, iso6393 ${withIso}, sources ${withSources}`);
+// Audit Task 220 Phase 2: speakerCount adoption tally
+let speakerCountTotal = 0, speakerCountRange = 0, speakerCountL1 = 0;
+for (const code of codes) {
+    const sc = (ctx.LANG_DATA[code].meta || {}).speakerCount;
+    if (!sc) continue;
+    speakerCountTotal++;
+    if (sc.range === 'range') speakerCountRange++;
+    if (sc.l1 !== undefined || sc.l1RangeMin !== undefined) speakerCountL1++;
+}
+console.log(`speakerCount adoption (Audit Task 220): ${speakerCountTotal}/${codes.length} rows (point=${speakerCountTotal - speakerCountRange}, range=${speakerCountRange}, with l1=${speakerCountL1})`);
 console.log('');
 console.log('Data status breakdown:');
 const statusOrder = ['modern','attested','fragmentary','reconstructed','undeciphered','partly-understood','pedagogical'];
