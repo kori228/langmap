@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 877 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 880 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -843,6 +843,10 @@ const LANG_DATA = {
   // Standard German with English loanwords + Palatine-German base.
   pdc: { name: 'Pennsylvania German', native: 'Pennsilfaanisch Deitsch', lat: 40.04, lng: -76.30, // Lancaster PA
     words: { water:['Wasser','vasər'], fire:['Feier','faɪər'], sun:['Sunn','sʊn'], moon:['Mund','mʊnt'], mother:['Mudder','mʊdər'], father:['Daadi','daːdi'], eat:['esse','ɛsə'], drink:['drinke','dɾɪŋkə'], love:['liewe','liːvə'], heart:['Hatz','hats'], tree:['Baam','baːm'], house:['Haus','haʊs'], dog:['Hund','hʊnt'], cat:['Katz','kats'], hand:['Hand','hant'], eye:['Aag','aːk'], hello:['Hallo','haloː'], thanks:['Denki','dɛŋki'], one:['eens','eːns'], good:['gut','ɡuːt'] }},
+  // Plautdietsch (Mennonite Low German) — Indo-European Germanic West Germanic Low German (sister to Low Saxon nds; specifically the Mennonite religious diaspora variety descended from 16th c West Prussian Vistula Plautdietsch), ~400K, Russia (~50K Volga Mennonites) + Germany (~80K post-Soviet Aussiedler) + Canada (~80K Manitoba/Saskatchewan Mennonite settlements) + USA (Kansas/Oklahoma) + Mexico (~50K Chihuahua/Durango Old Colony) + Paraguay (~15K Filadelfia) + Brazil (~3K Santa Catarina) + Bolivia (~70K).
+  // Sources: Ethnologue 27 'pdt'; Glottolog plau1238; Mitzka (1968) Niederpreussisch; Epp (1996) Old Colony Plattdietsch.
+  pdt: { name: 'Plautdietsch', native: 'Plautdietsch', lat: 28.55, lng: -106.97, // Cuauhtémoc, Chihuahua, Mexico (largest Old Colony settlement)
+    words: { water:['Wota','vɔta'], fire:['Fia','fia'], sun:['Sonn','zɔn'], moon:['Mond','mɔnt'], mother:['Mama','mama'], father:['Papa','papa'], eat:['äten','ɛːtən'], drink:['drinken','dɾɪŋkən'], love:['leewen','leːvən'], heart:['Hoat','hoat'], tree:['Boom','boːm'], house:['Hus','huːs'], dog:['Hund','hʊnt'], cat:['Kaut','kaʊt'], hand:['Haunt','haʊnt'], eye:['Uag','uak'], hello:['Goondach','ɡoːndax'], thanks:['Donk','dɔŋk'], one:['eent','eːnt'], good:['goot','ɡoːt'] }},
   yi: { name: 'Yiddish', native: 'ייִדיש', lat: 40.71, lng: -74.01,
     words: { water:['וואַסער','vasər'], fire:['פֿײַער','fajər'], sun:['זון','zun'], moon:['לבֿנה','ləvɔnə'], mother:['מאַמע','mamə'], father:['טאַטע','tatə'], eat:['עסן','ɛsn'], drink:['טרינקען','trɪŋkən'], love:['ליבע','libə'], heart:['האַרץ','harts'], tree:['בוים','bɔɪm'], house:['הויז','hɔɪz'], dog:['הונט','hʊnt'], cat:['קאַץ','kats'], hand:['האַנט','hant'], eye:['אויג','ɔɪɡ'], hello:['שלום עליכם','ʃɔləm alɛɪxəm'], thanks:['אַ דאַנק','a daŋk'], one:['איינס','ɛɪns'], good:['גוט','ɡʊt'] }},
   is: { name: 'Icelandic', native: 'Íslenska', lat: 64.15, lng: -21.94,
@@ -2031,6 +2035,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'zts'; Glottolog tlac1241; Munro & Lopez et al. (1999) Di'csyonaary X:tee'n Dii'zh Sah Sann Lu'uc (San Lucas Quiaviní Zapotec dictionary).
   zts: { name: "Tlacolula Zapotec", native: "Dizhsa", lat: 16.95, lng: -96.48, // Tlacolula de Matamoros, Oaxaca, Mexico
     words: { water:['nisi','nisi'], fire:['gui','ɡi'], sun:['gubi','ɡubi'], moon:['beuu','beːu'], mother:['xnan','ʃnan'], father:['xtad','ʃtad'], eat:['rau','ɾau'], drink:['re','ɾe'], love:['nadxiiebia','nadʒiːebia'], heart:['ladxdoo','ladʒdoː'], tree:['yag','jaɡ'], house:['yu','ju'], dog:["bicu'",'bikuʔ'], cat:['mishu','miʃu'], hand:["na'",'naʔ'], eye:['slu','slu'], hello:['padiux','padiuʃ'], thanks:["xclen lo'",'ʃklen loʔ'], one:['tubyabi','tubjabi'], good:['nazac','nazak'] }},
+  // Mazahua (Jñatjo) — Otomanguean Otomi-Mazahua (sister to Otomi varieties such as ote, ots, otq within the Otomian sub-branch; closely related Otomi-Mazahua family is the second-largest branch of Otomanguean by speakers), ~150K, Mexico (Estado de México — Jocotitlán, Atlacomulco, San Felipe del Progreso, Ixtapan del Oro; small Michoacán populations).
+  // Sources: Ethnologue 27 'maz'; Glottolog maza1273; Stewart (1966) Mazahua phonology and morphology.
+  maz: { name: 'Mazahua', native: 'Jñatjo', lat: 19.71, lng: -99.92, // San Felipe del Progreso, Estado de México (Mazahua heartland)
+    words: { water:['ndo','ndo'], fire:['sibi','sibi'], sun:['hyadi','hjadi'], moon:['zana','zana'], mother:['nana','nana'], father:['tata','tata'], eat:['ñe','ɲe'], drink:['theni','tʰeni'], love:['hñu','ɲu'], heart:['mŭiñ','mwiɲ'], tree:['za','za'], house:['ngumi','ŋɡumi'], dog:['nyo','ɲo'], cat:['mishi','miʃi'], hand:['ye','je'], eye:['da','da'], hello:['kjamadhi','kjamaði'], thanks:['ndios','ndios'], one:['nahi','nahi'], good:['nzhomu','nʒomu'] }},
   // Mixtepec Mixtec — Otomanguean (Mixtecan, Eastern Mixtec — sister to mix Mixtec macro-language varieties), ~7K, Mexico (Oaxaca — San Juan Mixtepec area, Sierra Sur).
   // Sources: Ethnologue 27 'xtm'; Glottolog mixt1422; Pankratz & Pike (1967) Phonology and morphotonemics of Ayutla Mixtec.
   xtm: { name: 'Mixtepec Mixtec', native: 'Sa\'an Sàvǐ Sa San Juan Mixtepec', lat: 16.64, lng: -97.92, // San Juan Mixtepec, Oaxaca
@@ -2082,6 +2090,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'acu'; Glottolog achu1248; Fast et al. (1996) Diccionario achuar-shiwiar/castellano.
   acu: { name: 'Achuar', native: 'Achuar Chicham', lat: -2.30, lng: -77.45, // Wasakentsa, Morona-Santiago, Ecuador
     words: { water:['yumi','jumi'], fire:['ji','dʒi'], sun:['etsa','etsa'], moon:['nantu','nantu'], mother:['nukur','nukuɾ'], father:['apar','apaɾ'], eat:['yuata','juata'], drink:['umarta','umaɾta'], love:['anentin','anentin'], heart:['enentai','enentai'], tree:['numi','numi'], house:['jea','dʒea'], dog:['yawa','jawa'], cat:['micha','mitʃa'], hand:['uwej','uwedʒ'], eye:['jii','dʒiː'], hello:['pujamek','pudʒamek'], thanks:['mai-tikut','majtikut'], one:['kichik','kitʃik'], good:['penker','peŋkeɾ'] }},
+  // Galibi Carib (Kari'na) — Cariban (Northern, Coastal Cariban — sister to other Northern Cariban languages such as Macushi, Pemon, Yukpa within the Cariban family; the type-language for the entire Cariban language family which got its name from Spanish "caribe", which in turn became the source of the toponym Caribbean), ~7K, Suriname (~3K) + French Guiana (~3K) + Venezuela (~5K) + Guyana (~500) + Brazil northern (small populations).
+  // Sources: Ethnologue 27 'car'; Glottolog gali1262; Hoff (1968) The Carib Language; Mosonyi (1978) Diccionario Karina-Castellano.
+  car: { name: 'Galibi Carib', native: "Kari'na", lat: 5.93, lng: -55.13, // Galibi, Suriname (Marowijne river mouth — Carib heartland in Suriname)
+    words: { water:['tuna','tuna'], fire:['waktö','waktø'], sun:['weju','weju'], moon:['nuno','nuno'], mother:['sano','sano'], father:["papa",'papa'], eat:["onökö",'onøkø'], drink:['ëne','ɘne'], love:['kataneko','kataneko'], heart:['emanga','emaŋɡa'], tree:['wewe','wewe'], house:['paty','pati'], dog:["pero",'peɾo'], cat:["meu",'meu'], hand:["amu",'amu'], eye:["enu",'enu'], hello:["mary",'maɾi'], thanks:["irombo",'iɾombo'], one:["o:wi",'oːwi'], good:["epoja",'epoja'] }},
   // Páez (Nasa Yuwe) — language isolate, Cauca Colombia, ~60K. Tonal, indigenous to pre-Inca Andes.
   // Sources: Ethnologue 27 'pbb'; Glottolog paez1247; Rojas Curieux (1998) Lengua páez.
   pbb: { name: 'Páez', native: 'Nasa Yuwe', lat: 2.55, lng: -76.32, // Popayán/Tierradentro, Cauca

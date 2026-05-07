@@ -2326,4 +2326,29 @@ const LANG_NAMES = {
             }
         }
     }
+
+    const ADDED97 = {
+        pdt: { en: 'Plautdietsch', ja: 'プラウトディーチェ語', ko: '플라우트디치어', zh: '普劳特迪特语', yue: '普勞特迪特語',
+               vi: 'Tiếng Plautdietsch', th: 'ภาษาเพลาท์ดีตช์', id: 'Bahasa Plautdietsch', hi: 'प्लाउटडीच',
+               de: 'Plautdietsch', fr: 'Plautdietsch', it: 'Plautdietsch',
+               es_eu: 'Plautdietsch', es_mx: 'Plautdietsch', pt_eu: 'Plautdietsch', pt_br: 'Plautdietsch',
+               ru: 'Плаутдич', uk: 'Плаутдіч', ar: 'البلاودييتش', he: 'פלאוטדיטש', sw: 'Kiplautdietsch' },
+        maz: { en: 'Mazahua', ja: 'マサワ語', ko: '마사와어', zh: '马萨瓦语', yue: '馬薩瓦語',
+               vi: 'Tiếng Mazahua', th: 'ภาษามาซาวา', id: 'Bahasa Mazahua', hi: 'मासाहुआ',
+               de: 'Mazahua', fr: 'Mazahua', it: 'Mazahua',
+               es_eu: 'Mazahua', es_mx: 'Mazahua', pt_eu: 'Mazahua', pt_br: 'Mazahua',
+               ru: 'Масауа', uk: 'Масауа', ar: 'الماساهوا', he: 'מסוואה', sw: 'Kimazahua' },
+        car: { en: 'Galibi Carib', ja: 'ガリビ・カリブ語', ko: '갈리비 카리브어', zh: '加利比加勒比语', yue: '加利比加勒比語',
+               vi: "Tiếng Kari'na", th: 'ภาษาคาริบ', id: 'Bahasa Karib', hi: 'कारिब',
+               de: 'Karib', fr: 'Caribe', it: 'Caribe',
+               es_eu: 'Caribe', es_mx: 'Caribe', pt_eu: 'Caribe', pt_br: 'Caribe',
+               ru: 'Кариб', uk: 'Карибська', ar: 'الكاريبية', he: 'קריבית', sw: 'Kikarib' },
+    };
+    for (const code of Object.keys(ADDED97)) {
+        for (const ui of Object.keys(ADDED97[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED97[code][ui];
+            }
+        }
+    }
 })();
