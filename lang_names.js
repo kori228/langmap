@@ -610,4 +610,29 @@ const LANG_NAMES = {
             }
         }
     }
+    // Sena (seh), Urhobo (urh), Rotuman (rtm) — Mozambique Bantu + Niger Delta Edoid + Pacific outlier.
+    const ADDED21 = {
+        seh: { en: 'Sena', ja: 'セナ語', ko: '세나어', zh: '塞纳语', yue: '塞納語',
+               vi: 'Tiếng Sena', th: 'ภาษาเซนา', id: 'Sena', hi: 'सेना',
+               de: 'Sena', fr: 'Sena', it: 'Sena',
+               es_eu: 'Sena', es_mx: 'Sena', pt_eu: 'Sena', pt_br: 'Sena',
+               ru: 'Сена', uk: 'Сена', ar: 'السينا', he: 'סנה', sw: 'Kisena' },
+        urh: { en: 'Urhobo', ja: 'ウルホボ語', ko: '우르호보어', zh: '乌尔霍博语', yue: '烏爾霍博語',
+               vi: 'Tiếng Urhobo', th: 'ภาษาอูร์โฮโบ', id: 'Urhobo', hi: 'उर्होबो',
+               de: 'Urhobo', fr: 'Urhobo', it: 'Urhobo',
+               es_eu: 'Urhobo', es_mx: 'Urhobo', pt_eu: 'Urhobo', pt_br: 'Urhobo',
+               ru: 'Урхобо', uk: 'Урхобо', ar: 'الأورهوبو', he: 'אורהובו', sw: 'Kiurhobo' },
+        rtm: { en: 'Rotuman', ja: 'ロツマ語', ko: '로투마어', zh: '罗图马语', yue: '羅圖馬語',
+               vi: 'Tiếng Rotuma', th: 'ภาษาโรทูมา', id: 'Rotuma', hi: 'रोटूमा',
+               de: 'Rotumanisch', fr: 'Rotuman', it: 'Rotumano',
+               es_eu: 'Rotumano', es_mx: 'Rotumano', pt_eu: 'Rotumano', pt_br: 'Rotumano',
+               ru: 'Ротуманский', uk: 'Ротуманська', ar: 'الروتومانية', he: 'רוטומאנית', sw: 'Kirotuma' },
+    };
+    for (const code of Object.keys(ADDED21)) {
+        for (const ui of Object.keys(ADDED21[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED21[code][ui];
+            }
+        }
+    }
 })();

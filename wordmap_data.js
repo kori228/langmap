@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 673 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 676 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -340,6 +340,10 @@ const LANG_DATA = {
     words: { water:['danum','danum'], fire:['apoy','apoj'], sun:['init','init'], moon:['bulan','bulan'], mother:['ina','ina'], father:['ama','ama'], eat:['mangan','maŋan'], drink:['uminom','uminom'], love:['ayat','ajat'], heart:['puso','puso'], tree:['kayo','kajo'], house:['balay','balaj'], dog:['aso','aso'], cat:['pusa','pusa'], hand:['ima','ima'], eye:['mata','mata'], hello:['kablaaw','kablaːw'], thanks:['agyamanak','aɡjamanak'], one:['maysa','majsa'], good:['nasayaat','nasajaːt'] }},
   fj: { name: 'Fijian', native: 'Na vosa vakaviti', lat: -18.14, lng: 178.44,
     words: { water:['wai','wai'], fire:['buka','mbukaː'], sun:['siga','siŋa'], moon:['vula','vula'], mother:['tina','tina'], father:['tama','tama'], eat:['kana','kana'], drink:['gunu','ɡunu'], love:['loloma','loloma'], heart:['uto','uto'], tree:['kau','kau'], house:['vale','vale'], dog:['koli','koli'], cat:['pusi','pusi'], hand:['liga','liɡa'], eye:['mata','mata'], hello:['bula','mbula'], thanks:['vinaka','vinaka'], one:['dua','ndua'], good:['vinaka','vinaka'] }},
+  // Rotuman — Polynesian outlier with strong Melanesian/Western Polynesian admixture, Rotuma Island (Fiji).
+  // Sources: Ethnologue 27 'rtm'; Glottolog rotu1241; Churchward (1940) Rotuman Grammar.
+  rtm: { name: 'Rotuman', native: 'Fäeag Rotuạm', lat: -12.50, lng: 177.07, // Rotuma Island, Fiji
+    words: { water:['ofu','ofu'], fire:['rerege','ɾeɾeŋe'], sun:['asa','asa'], moon:['hula','hula'], mother:['ö\'ö','øʔø'], father:['öäpö','øæpø'], eat:['te\'a','teʔa'], drink:['inum','inum'], love:['hanis','hanis'], heart:['huga','huŋa'], tree:['rou','ɾou'], house:['ri','ɾi'], dog:['kak\'i','kakʔi'], cat:['kotok','kotok'], hand:['si\'u','siʔu'], eye:['mafa','mafa'], hello:['noa\'ia','noaʔia'], thanks:['fai\'aksia','faiʔaksia'], one:['ta','ta'], good:['lelei','lelei'] }},
   sm: { name: 'Samoan', native: 'Gagana Sāmoa', lat: -13.83, lng: -171.76,
     words: { water:['vai','vai'], fire:['afi','afi'], sun:['lā','laː'], moon:['māsina','maːsina'], mother:['tinā','tinaː'], father:['tamā','tamaː'], eat:['ʻai','ʔai'], drink:['inu','inu'], love:['alofa','alofa'], heart:['loto','loto'], tree:['laʻau','laʔau'], house:['fale','fale'], dog:['maile','maile'], cat:['pusi','pusi'], hand:['lima','lima'], eye:['mata','mata'], hello:['talofa','talofa'], thanks:['faʻafetai','faʔafetai'], one:['tasi','tasi'], good:['lelei','lelei'] }},
   // Tahitian: existing `ty` (ISO 639-1) covers this; `tah` (ISO 639-3) was
@@ -428,6 +432,10 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'ibb'; Glottolog ibib1240; Essien (1990) Grammar of Ibibio.
   ibb: { name: 'Ibibio', native: 'Ibibio', lat: 5.04, lng: 7.91, // Uyo, Akwa Ibom State
     words: { water:['mmọñ','mːɔŋ'], fire:['ikañ','ikaŋ'], sun:['utin','utin'], moon:['ọfiọñ','ɔfiɔŋ'], mother:['eka','eka'], father:['ete','ete'], eat:['dia','dia'], drink:['ñwọñ','ŋwɔŋ'], love:['ima','ima'], heart:['esit','esit'], tree:['eto','eto'], house:['ufọk','ufɔk'], dog:['ebua','ebua'], cat:['ekpe','ekpe'], hand:['ubọk','ubɔk'], eye:['enyin','eɲin'], hello:['mesiere','mesiere'], thanks:['sọsọñọ','sɔsɔŋɔ'], one:['kiet','kiet'], good:['mfọn','mfɔn'] }},
+  // Urhobo — Niger-Congo Edoid, ~550K speakers, Delta State Nigeria.
+  // Sources: Ethnologue 27 'urh'; Glottolog urho1239; Aziza (2003) Urhobo Phonetics.
+  urh: { name: 'Urhobo', native: 'Urhobo', lat: 5.51, lng: 5.76, // Ughelli/Delta State, Nigeria
+    words: { water:['ame','ame'], fire:['erane','eɾane'], sun:['ọvẹ','ɔvɛ'], moon:['emẹrẹ','emɛɾɛ'], mother:['onie','onie'], father:['ọsẹ','ɔsɛ'], eat:['re','ɾe'], drink:['da','da'], love:['ẹguọnọ','ɛɡwɔnɔ'], heart:['udu','udu'], tree:['orhan','oɾan'], house:['uwevwi','uweβwi'], dog:['ebọ','ebɔ'], cat:['ọtọma','ɔtɔma'], hand:['obọ','obɔ'], eye:['aro','aɾo'], hello:['migwo','miɡwo'], thanks:['miguo','miɡuo'], one:['ọvo','ɔvo'], good:['ọmaẹjẹ','ɔmaɛdʒɛ'] }},
   ha: { name: 'Hausa', native: 'Hausa', lat: 12.00, lng: 8.52,
     words: { water:['ruwa','ɾuːwa'], fire:['wuta','wuta'], sun:['rana','ɾana'], moon:['wata','wata'], mother:['uwa','uwa'], father:['uba','uba'], eat:['ci','tʃiː'], drink:['sha','ʃaː'], love:['ƙauna','kʼauna'], heart:['zuciya','zutʃija'], tree:['bishiya','biʃija'], house:['gida','ɡida'], dog:['kare','kaɾɛ'], cat:['kyanwa','kʲanwa'], hand:['hannu','hanːu'], eye:['ido','ido'], hello:['sannu','sanːu'], thanks:['na gode','na ɡode'], one:['ɗaya','dʼaja'], good:['nagari','naɡaɾi'] }},
   wo: { name: 'Wolof', native: 'Wolof', lat: 14.69, lng: -17.44,
@@ -1492,6 +1500,10 @@ const LANG_DATA = {
     words: { water:['mashi','maʃi'], fire:['moto','moto'], sun:['lyuva','ʎuβa'], moon:['mwedi','mwedi'], mother:['mama','mama'], father:['baba','baba'], eat:['kulya','kuʎa'], drink:['kunwa','kunwa'], love:['kupenda','kupenda'], heart:['mtima','mtima'], tree:['mti','mti'], house:['nyumba','ɲumba'], dog:['nshenye','nʃeɲe'], cat:['paka','paka'], hand:['nkono','nkono'], eye:['liso','liso'], hello:['nakushukuru','nakuʃukuɾu'], thanks:['nashukuru','naʃukuɾu'], one:['nimo','nimo'], good:['shibwana','ʃibwana'] }},
   // Lomwe — Bantu P32, ~1.5M+ speakers, northern Mozambique + adjoining Malawi.
   // Sources: Ethnologue 27 'ngl'; Glottolog lomw1238; Kröger (2009) Lomwe-English Dictionary.
+  // Sena — Bantu N44, ~1.4M, central Mozambique + adjoining Malawi.
+  // Sources: Ethnologue 27 'seh'; Glottolog sena1262; Funnell (2004) Sena Grammar.
+  seh: { name: 'Sena', native: 'Cisena', lat: -17.88, lng: 35.04, // Beira/Sofala area, Mozambique
+    words: { water:['madzi','madzi'], fire:['moto','moto'], sun:['dzuwa','dzuwa'], moon:['mwedzi','mwedzi'], mother:['mai','mai'], father:['baba','baba'], eat:['kudya','kudja'], drink:['kumwa','kumwa'], love:['kufuna','kufuna'], heart:['mtima','mtima'], tree:['mtengo','mteŋɡo'], house:['nyumba','ɲumba'], dog:['mbwa','mbwa'], cat:['paka','paka'], hand:['nkono','nkono'], eye:['diso','diso'], hello:['mwadzukabwanji','mwadzukabwandʒi'], thanks:['ndatenda','ndatenda'], one:['posi','posi'], good:['nadidi','nadidi'] }},
   ngl: { name: 'Lomwe', native: 'Elomwe', lat: -15.10, lng: 39.27, // Nampula, Mozambique
     words: { water:['mahi','mahi'], fire:['moro','moɾo'], sun:['nsuwa','nsuwa'], moon:['mweri','mweɾi'], mother:['ammai','amːai'], father:['atati','atati'], eat:['olya','oʎa'], drink:['omwa','omwa'], love:['osivela','osivela'], heart:['murima','muɾima'], tree:['mwiri','mwiɾi'], house:['nupa','nupa'], dog:['nampwe','nampwe'], cat:['paka','paka'], hand:['nthata','ntʰata'], eye:['nito','nito'], hello:['salama','salama'], thanks:['ekoshelele','ekoʃelele'], one:['mosaa','mosaː'], good:['orera','oɾeɾa'] }},
   // === Phase 3G: African Nilotic/Cushitic/Berber + South Asian Indo-Aryan ===
