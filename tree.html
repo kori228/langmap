@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=60">
+<link rel="stylesheet" href="styles.css?v=63">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -533,25 +533,35 @@
     // ===== Hierarchy build =====
     // Internal node: { name, key, children: [], leafCount, isInternal: true }
     // Leaf:          { name, code, native, leafCount: 1, isInternal: false }
-    // Dialect group: { name, isLanguageGroup: true, children: [standardLeaf, dialectsNode] }
+    // Language group: { name, isLanguageGroup: true, children: [standardLeaf, dialect1, dialect2, ...] }
+    //   2026-05-09 restructure: dialects are now SIBLINGS of the standard form, not nested
+    //   under a separate "(dialects)" wrapper.
     function buildHierarchy() {
         const root = { name: familyDisplayName('All Languages'), key: 'All Languages',
                        children: [], _byKey: new Map(), isInternal: true };
 
-        // Pre-pass: detect dialect groups
+        // Pre-pass: detect dialect groups via either underscore-base OR meta.parentCode.
+        // 2026-05-09 fix: also recognize parentCode-based grouping so es_mx/es_co/etc.
+        // group under es_eu (their declared parent), not as separate top-level rows under "Romance".
         const dialectsOf = new Map();
+        const baseOf = new Map();
         for (const code of Object.keys(LANG_DATA)) {
-            const us = code.indexOf('_');
-            if (us <= 0) continue;
-            const base = code.substring(0, us);
-            if (!LANG_DATA[base]) continue;
+            const pc = LANG_DATA[code]?.meta?.parentCode;
+            let base = null;
+            if (pc && LANG_DATA[pc] && pc !== code) {
+                base = pc;
+            } else {
+                const us = code.indexOf('_');
+                if (us > 0 && LANG_DATA[code.substring(0, us)]) base = code.substring(0, us);
+            }
+            if (!base) continue;
             if (!dialectsOf.has(base)) dialectsOf.set(base, []);
             dialectsOf.get(base).push(code);
+            baseOf.set(code, base);
         }
 
         for (const code of Object.keys(LANG_DATA)) {
-            const us = code.indexOf('_');
-            if (us > 0 && LANG_DATA[code.substring(0, us)]) continue;  // dialect — skip, handled via base
+            if (baseOf.has(code)) continue;  // dialect/variant — handled via its base
 
             const lang = LANG_DATA[code];
             const fam = (lang.meta && lang.meta.family) || 'Unclassified';
@@ -579,6 +589,8 @@
             const bareName = fullName.replace(/\s*[（(][^）)]+[）)]\s*$/, '').trim() || fullName;
 
             if (variants && variants.length > 0) {
+                // 2026-05-09: dialects are siblings of the standard form (no nested
+                // "(dialects)" wrapper). Standard form first, then variants alphabetical.
                 const langGroup = {
                     name: bareName, key: bareName,
                     children: [], isInternal: true, isLanguageGroup: true,
@@ -587,20 +599,16 @@
                 langGroup.children.push({
                     name: fullName, code: code, native: lang.native || '', isInternal: false,
                 });
-                // Dialects sub-node
-                const dialectsNode = {
-                    name: bareName + '（' + dialectsLabel() + '）', key: bareName + '_dialects',
-                    children: [], isInternal: true, isDialectGroup: true,
-                };
+                // Add each variant as a direct sibling
+                const dialectLeaves = [];
                 for (const vCode of variants) {
                     const v = LANG_DATA[vCode];
-                    dialectsNode.children.push({
+                    dialectLeaves.push({
                         name: langDisplayName(vCode), code: vCode, native: v.native || '', isInternal: false,
                     });
                 }
-                // Sort dialects alphabetically
-                dialectsNode.children.sort((a, b) => a.name.localeCompare(b.name));
-                langGroup.children.push(dialectsNode);
+                dialectLeaves.sort((a, b) => a.name.localeCompare(b.name));
+                for (const d of dialectLeaves) langGroup.children.push(d);
                 node.children.push(langGroup);
             } else {
                 node.children.push({
