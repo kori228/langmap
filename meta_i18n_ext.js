@@ -202,6 +202,7 @@ const META_I18N_ATOMS = {
         // Countries
         'Russia': '러시아', 'USA': '미국', 'Iran': '이란', 'Canada': '캐나다',
         'Uganda': '우간다', 'Turkey': '터키', 'Namibia': '나미비아', 'Tanzania': '탄자니아',
+        'Papua New Guinea': '파푸아뉴기니', 'Haiti': '아이티', 'Jamaica': '자메이카',
         'Ghana': '가나', 'Kenya': '케냐', 'Angola': '앙골라', 'Burkina Faso': '부르키나파소',
         "Côte d'Ivoire": '코트디부아르', 'Botswana': '보츠와나', 'Zambia': '잠비아',
         'DR Congo': '콩고민주공화국', 'Mali': '말리', 'Cameroon': '카메룬',
@@ -376,6 +377,7 @@ const META_I18N_ATOMS = {
         // Countries
         'Russia': '俄罗斯', 'USA': '美国', 'Iran': '伊朗', 'Canada': '加拿大',
         'Uganda': '乌干达', 'Turkey': '土耳其', 'Namibia': '纳米比亚', 'Tanzania': '坦桑尼亚',
+        'Papua New Guinea': '巴布亚新几内亚', 'Haiti': '海地', 'Jamaica': '牙买加',
         'Ghana': '加纳', 'Kenya': '肯尼亚', 'Angola': '安哥拉', 'Burkina Faso': '布基纳法索',
         "Côte d'Ivoire": '科特迪瓦', 'Botswana': '博茨瓦纳', 'Zambia': '赞比亚',
         'DR Congo': '刚果民主共和国', 'Mali': '马里', 'Cameroon': '喀麦隆',
@@ -548,6 +550,7 @@ const META_I18N_ATOMS = {
         // Countries (Trad. Chinese)
         'Russia': '俄羅斯', 'USA': '美國', 'Iran': '伊朗', 'Canada': '加拿大',
         'Uganda': '烏干達', 'Turkey': '土耳其', 'Namibia': '納米比亞', 'Tanzania': '坦桑尼亞',
+        'Papua New Guinea': '巴布亞紐幾內亞', 'Haiti': '海地', 'Jamaica': '牙買加',
         'Ghana': '加納', 'Kenya': '肯尼亞', 'Angola': '安哥拉', 'Burkina Faso': '布基納法索',
         "Côte d'Ivoire": '科特迪瓦', 'Botswana': '博茨瓦納', 'Zambia': '贊比亞',
         'DR Congo': '剛果民主共和國', 'Mali': '馬里', 'Cameroon': '喀麥隆',
@@ -2447,6 +2450,7 @@ const META_I18N_ATOMS = {
         // --- Country names ---
         'Russia': 'ロシア', 'USA': 'アメリカ合衆国', 'Iran': 'イラン', 'Canada': 'カナダ',
         'Uganda': 'ウガンダ', 'Turkey': 'トルコ', 'Namibia': 'ナミビア', 'Tanzania': 'タンザニア',
+        'Papua New Guinea': 'パプアニューギニア', 'Haiti': 'ハイチ', 'Jamaica': 'ジャマイカ',
         'Ghana': 'ガーナ', 'Kenya': 'ケニア', 'Angola': 'アンゴラ',
         'Burkina Faso': 'ブルキナファソ', "Côte d'Ivoire": 'コートジボワール',
         'Botswana': 'ボツワナ', 'Zambia': 'ザンビア', 'DR Congo': 'コンゴ民主共和国',
