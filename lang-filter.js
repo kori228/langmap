@@ -150,6 +150,33 @@
         'Atlantic (Niger-Congo)':               { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Bantu':                  { wo: 'SVO', tone: true, morph: 'agglutinative' },
         'Bantu (Nguni)':          { wo: 'SVO', tone: true, morph: 'agglutinative' },
+        // Audit follow-up (2026-05-09): top-level Atlantic-Congo top-token defaults
+        // (covers ~30 langs flagged by getFeatures wo coverage check).
+        'Atlantic-Congo':         { wo: 'SVO', tone: true, morph: 'agglutinative' }, // Bantu majority + Cross River + Volta-Niger Edoid + Kwa Ga-Adangme + Senegambian Fula
+        'Songhai':                { wo: 'SOV', tone: true, morph: 'agglutinative' }, // ses/khq/dje
+        'Yukaghir':               { wo: 'SOV', tone: false, morph: 'agglutinative' }, // ykg/yux
+        'Na-Dené':                { wo: 'SOV', tone: true, morph: 'polysynthetic' }, // koy/chp; tone in Athabaskan branch
+        'Athabaskan':             { wo: 'SOV', tone: true, morph: 'polysynthetic' }, // nv Navajo + others
+        'Otomanguean':            { wo: 'VSO', tone: true, morph: 'isolating' }, // zts/maz/mxv
+        'Totonacan':              { wo: 'VSO', tone: false, morph: 'agglutinative' }, // toc
+        'Arawakan':               { wo: 'SVO', tone: false, morph: 'agglutinative' }, // cni/ame
+        'Misumalpan':             { wo: 'SOV', tone: false, morph: 'agglutinative' }, // sum
+        'Jivaroan':               { wo: 'SOV', tone: false, morph: 'agglutinative' }, // jiv/agr/acu
+        'Cariban':                { wo: 'SOV', tone: false, morph: 'agglutinative' }, // car (some OVS too)
+        'Barbacoan':              { wo: 'SOV', tone: true, morph: 'agglutinative' }, // gum
+        'Algonquian':             { wo: 'free', tone: false, morph: 'polysynthetic' }, // abe (free / VOS basic)
+        'Mochica':                { wo: 'SOV', tone: false, morph: 'agglutinative' }, // omc (extinct)
+        'Mande':                  { wo: 'SOV', tone: true, morph: 'isolating' }, // men/dyu/kpe/mnk
+        'Eskimo–Aleut':           { wo: 'SOV', tone: false, morph: 'polysynthetic' }, // esu
+        'Pidgin':                 { wo: 'SVO', tone: false, morph: 'isolating' }, // English-lexified pidgins
+        'Portuguese-based creole': { wo: 'SVO', tone: false, morph: 'isolating' }, // kea
+        'Spanish-based creole':    { wo: 'SVO', tone: false, morph: 'isolating' }, // cbk
+        'Constructed':            { wo: 'SVO', tone: false, morph: 'agglutinative' }, // ina/ia/vo (Esperanto et al.)
+        'Kiowa-Tanoan':           { wo: 'SOV', tone: true, morph: 'agglutinative' }, // kio Kiowa
+        'Mataco-Mataguayan':      { wo: 'SVO', tone: false, morph: 'agglutinative' }, // mzh Wichí
+        'Pano':                   { wo: 'SOV', tone: false, morph: 'agglutinative' }, // shp Shipibo-Konibo
+        'Salishan':               { wo: 'VSO', tone: false, morph: 'polysynthetic' }, // thp Thompson
+        'Tyrsenian':              { wo: 'SOV', tone: false, morph: 'agglutinative' }, // ett Etruscan (extinct)
         // Afro-Asiatic
         'Afro-Asiatic':           { wo: 'VSO', tone: false, morph: 'fusional' },
         'Afro-Asiatic (Chadic)':  { wo: 'SVO', tone: true,  morph: 'fusional' },
