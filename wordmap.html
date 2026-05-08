@@ -16,7 +16,7 @@
     <meta name="twitter:description" content="Explore 20 words in 910 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
-    <link rel="stylesheet" href="styles.css?v=62">
+    <link rel="stylesheet" href="styles.css?v=63">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -963,7 +963,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    62,
+            styles:    63,
             data:      206,
             metaI18n:  11,
             filter:    27,
@@ -3269,9 +3269,14 @@
                         aliasHit ||
                         (isoN && isoN.includes(ql)) ||
                         (canonN && canonN.includes(ql))) {
-                        // Score: exact prefix > prefix > alias > substring
+                        // Score: exact code match > display prefix > en prefix > code prefix > native prefix > alias > iso > substring
+                        // Audit fix 2026-05-08: exact code match always wins so
+                        // 2-letter codes like "ka" (Georgian) aren't pushed
+                        // out of top results by the many English names that
+                        // start with the same prefix (Kabyle, Kannada, etc.).
                         let score = 100;
-                        if (dispN.startsWith(ql)) score = 0;
+                        if (codeN === ql || isoN === ql || canonN === ql) score = -1;
+                        else if (dispN.startsWith(ql)) score = 0;
                         else if (enN.startsWith(ql)) score = 1;
                         else if (codeN.startsWith(ql)) score = 2;
                         else if (natN.startsWith(ql)) score = 3;
