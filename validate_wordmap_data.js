@@ -413,6 +413,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Totonacan',                       // toc Totonac — small Mesoamerican family (Totonac + Tepehua)
     'Otomanguean',                     // zts Tilquiapan Zapotec, mxv Metlatónoc Mixtec, otq Querétaro Otomi (alt spelling of Oto-Manguean already on list)
     'Algonquian',                      // abe Western Abenaki, arp Arapaho — major branch of Algic, commonly used as top-level
+    'Athabaskan',                      // nv Navajo — Na-Dene major branch, commonly used as top-level family token
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;

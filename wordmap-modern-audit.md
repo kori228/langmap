@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-08 evening, 910 langs, validator 0 errors / 19 warnings)
+## Task Status Index (last updated: 2026-05-08 night, 910 langs, validator 0 errors / 23 warnings ✅ Tasks 224/225/227/228 resolved; 226/229/230 + Phase B i18n still open)
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -12062,3 +12062,252 @@ Phase B closure target: brings ~158 langs to the 250-400 char band, dropping the
 4. P10 ordered by likely-traffic: 100K+ speakers first, then endangered, then long-tail
 
 Each sub-task is independently pickable. PR title format: `Audit Task 218.NNN: backfill <code> meta`. Validator gate confirms completion: row's `description.ja` must be 200+ chars and have `description.ko` + `description.zh` to match.
+
+---
+
+## Verification Sweep (2026-05-08 late evening, updated 2026-05-08 night) — Task 218 Phase B partial completion + regressions
+
+User reported "全部対応した" (all completed). Validator-based verification confirms substantial progress on Task 218 but the work is **not complete**.
+
+**Mid-evening sweep (2026-05-08 ~21:00):** identified 5 regression categories + 53 new warnings (19 → 72) introduced by Phase B backfill batches. Created Tasks 224-230.
+
+**Night re-sweep (2026-05-08 ~23:00):** user resolved 4 of 7 regression tasks within hours (warnings 72 → 23). ✅ Tasks 224 (38 scriptTags), 225 (13 parentCode), 227 (2 disambiguator), 228 (4 speakerBasis) all closed. Tasks 226 (4 wordEvidence rows), 229 (cache-buster), 230 (4 family) remain open. Task 218 Phase B description coverage roughly unchanged: 462 langs (51%) still <200 chars ja.
+
+### Task 218 actual progress (2026-05-08 late evening verification)
+
+ja description length distribution after Phase B integration commits (ea1af44, 9131d16, 23f8f8c, 56a57f2, 41c95cc):
+
+| Bucket | 24h ago | Now | Change |
+|---|---:|---:|---:|
+| `<50` chars | 63 | **0** | ✅ -63 (eliminated) |
+| `50-100` | 357 | **149** | -208 |
+| `100-200` | 189 | **313** | +124 |
+| `200-300 ✅` | 102 | 205 | +103 |
+| `300-400 ✅` | 141 | 176 | +35 |
+| `400-600` | 52 | 58 | +6 |
+| `600+` | 0 | 3 | +3 |
+| **Total <200** | **609** | **462 (51%)** | **-147** |
+
+**462 of 910 langs (51%) still have <200 char ja descriptions** — Task 218 Phase B is ~25% complete (147 of 606 sub-tasks done). The user's "完了" assertion is overstated.
+
+**Notably-thin major UI langs still at 50-100 chars:**
+- `en` English = 93 chars (project's primary UI lang!)
+- `es_eu` European Spanish = 94 chars
+- `pt_eu` European Portuguese = 84 chars
+- `tr` Turkish = 80, `fi` Finnish = 82, `hu` Hungarian = 83, `el` Greek = 90, `nl` Dutch = 82, `sv` Swedish = 90, `ro` Romanian = 80
+
+### New Task 224. ✅ DONE Resolve scriptTags ISO 15924 misuse from Phase B backfill (38 langs, Task 213 large-scale instance)
+
+**Status (2026-05-08 night verification):** All 38 [#13l] warnings cleared. The mass scriptTags fix landed. Validator no longer reports any scriptTags enum violations.
+
+Goal:
+The Phase B Task 218 backfill batches introduced scriptTags using ISO 15924 4-letter codes (`Latn`, `Arab`, `Brah`, `Phnx`, `Hebr`, `Avst`, `Xsux`, `Hluw`, `Khmr`, `Ethi`, `Linb`, `Ougr`, `Ugar`) instead of the project's enum tokens. 38 rows now violate `[#13l]` enum check. This is a large-scale recurrence of the Task 213 problem (CONTRIBUTING.md docs for script tag mapping was never written).
+
+Current issue I checked (2026-05-08 late evening, 38 [#13l] warnings):
+
+**Mappings that need fix:**
+
+| Wrong | Correct | Affected codes |
+|---|---|---|
+| `Latn` | `Latin` | fro, goh, gmh, osp, osx, mfe, srn, iuu, squ, mga, cab, tsi, bsk (13 langs) |
+| `Arab` | `Arabic-derived` | xqa, bsk (2 langs) |
+| `Hebr` | `Hebrew` | hbo (1 lang) |
+| `Brah` | `Brahmic` | xto, kho (2 langs) |
+| `Khmr` | `Brahmic` (Khmer is Brahmi-derived) | okz (1 lang) |
+| `Ethi` | `Ethiopic` | gez (1 lang) |
+| `Phnx` | `Other historical` (Phoenician) | phn, hbo (2 langs) |
+| `Ougr` | `Mongolian-derived` (Old Uyghur) | xqa (1 lang) |
+| `Ugar` | `Cuneiform` (Ugaritic cuneiform) | uga (1 lang) |
+| `Xsux` | `Cuneiform` | elx, xhu, xlu (3 langs) |
+| `Hluw` | `Hieroglyphs` (Luwian hieroglyphs) | xlu (1 lang) |
+| `Avst` | `Other historical` | ave (1 lang) |
+| `Linb` | `Aegean syllabary` | gmy (1 lang) |
+| `Kawi` | `Brahmic` (already an enum value? if not, add) | kaw (1 lang) |
+| `Egyptian-hieroglyphs` | `Hieroglyphs` | egy (1 lang) |
+| `Runic` | `Other historical` | non (1 lang) |
+| `Glagolitic` | `Other historical` | cu (1 lang) |
+| `Aboriginal-syllabics` | `Canadian Aboriginal Syllabics` | cr (1 lang) |
+| `Mende-Kikakui` | `Other historical` | men (1 lang) |
+| `Pictographic` | `Other historical` (Naxi Dongba pictographs) | nxq (1 lang) |
+
+Files to change:
+- `wordmap_meta.js` — 38 rows.
+
+Implementation instructions:
+- Mechanical search-and-replace per the table above.
+- After fix: `[#13l]` warnings drop from 38 to 0.
+
+Done when:
+- All 38 [#13l] warnings cleared.
+- Task 213 follow-through (CONTRIBUTING.md docs) prevents recurrence.
+
+### New Task 225. ✅ DONE Restore parentCode/varietyRole on 13 underscore-codes (Task 170 regression)
+
+**Status (2026-05-08 night verification):** Underscore-code parentCode/varietyRole coverage now `88/88` (was 75/88). All 13 [#170] warnings cleared.
+
+Goal:
+Phase B Task 218 backfill batches inadvertently removed `parentCode` or `varietyRole` from 13 underscore-codes that previously had them set (per Task 170 closure). Validator's `[#170]` check now flags these.
+
+Current issue I checked (2026-05-08 late evening, 13 [#170] warnings):
+
+```
+vi_c, vi_s             — should have parentCode='vi'
+th_n                   — should have varietyRole='continuum-member' (per Task 170)
+ar_eg, ar_lev, ar_gulf, ar_iq, ar_ma, ar_sd, ar_tn  — should have parentCode='ar' or canonicalCode set
++ 5 more elided
+```
+
+Files to change:
+- `wordmap_meta.js` — restore parentCode/varietyRole on the 13 underscore-codes.
+
+Done when:
+- `underscore-code parentCode/varietyRole coverage: 88/88` (currently 75/88).
+- `[#170]` warnings drop to 0.
+
+### New Task 226. ⏳ OPEN Restore source-checked wordEvidence cells lost in Phase B backfill (Task 173/200 regression)
+
+**Status (2026-05-08 night verification):** Still open. Source-checked wordEvidence coverage `29/33` rows; the 4 thin rows below remain.
+
+Goal:
+Phase B Task 218 backfill processed `meta` blocks but inadvertently dropped some `wordEvidence` cells in 4 source-checked rows.
+
+Current issue I checked:
+
+```
+[#173] ine:    18/20 cells (was 25/29 source-checked completion claim — regressed)
+[#173] ko_gor: 10/20
+[#173] kha:    9/20
+[#173] pal:    0/20  (still uncovered, was already pending)
+```
+
+Files to change:
+- `wordmap_data.js` — restore the lost `wordEvidence` annotations from git history.
+
+Done when:
+- `source-checked wordEvidence coverage` returns to ≥ 25/29.
+- These 4 rows reach 20/20 cells of evidence.
+
+### New Task 227. ✅ DONE Restore disambiguator on 2 native-name pairs (Task 188 regression)
+
+**Status (2026-05-08 night verification):** Disambiguator coverage on shared-native rows: `29/29`. Both pairs (mn_cn↔xng, de_by↔bar) restored.
+
+Goal:
+Two pairs that previously had disambiguator set lost it during Phase B backfill.
+
+```
+[#188] mn_cn ↔ xng (ᠮᠣᠩᠭᠣᠯ Mongolian script — Inner Mongolian vs. Middle Mongolian)
+[#188] de_by ↔ bar (Boarisch — German Bavarian regional vs. ISO 639-3 Bavarian)
+```
+
+Files to change:
+- `wordmap_meta.js` — restore disambiguator on these 2 pairs.
+
+Done when:
+- `disambiguator coverage on shared-native rows: 29/29` (currently 27/29).
+
+### New Task 228. ✅ DONE Add speakerBasis to 100M+ tier rows (4 rows)
+
+**Status (2026-05-08 night verification):** No tier-coherence warnings remain in validator output. All 4 rows (ar_eg, en_south, en_in, fr_af) now carry `speakerBasis`.
+
+Goal:
+After Phase B speakerCount adjustments, 4 rows in the 100M+ tier lack `speakerBasis` (validator's tier-coherence check fires).
+
+```
+ar_eg:    ~100M (speakerBasis missing)
+en_south: ~100M regional (speakerBasis missing)
+en_in:    ~130M L2/educational (speakerBasis missing)
+fr_af:    ~140M regional aggregate (speakerBasis missing)
+```
+
+These should have `speakerBasis: 'L2'` or `'regional-population'` per Task 98 schema.
+
+Files to change:
+- `wordmap_meta.js` — add `speakerBasis` to the 4 rows.
+
+Done when:
+- 4 tier-coherence warnings cleared.
+
+### New Task 229. ⏳ OPEN Cache-buster drift instance — 4th recurrence (Task 198/202/221 instance)
+
+**Status (2026-05-08 night verification):** Still open. `meta_i18n_ext.js?v=9` in wordmap.html vs `WM_ASSET_VERSION.metaI18n=11`.
+
+Goal:
+Same drift pattern, 4th recurrence in 36 hours. `meta_i18n_ext.js?v=9` in wordmap.html static tag, `WM_ASSET_VERSION.metaI18n=11` in registry.
+
+Files to change:
+- `wordmap.html` — bump `meta_i18n_ext.js?v=9` → `?v=11`.
+
+**Recurrence rate**: 4 drifts in 36 hours. **Task 214 (auto-bump infrastructure) urgent — manual maintenance is unsustainable.**
+
+### New Task 230. ⏳ OPEN Family allow-list 4 outliers (regression, Task 159 instance)
+
+**Status (2026-05-08 night verification):** Still open. Specific outliers identified: `nv` (Athabaskan), `th_isan` (Tai-Kadai), `th_n` (Tai-Kadai), `za` (Tai-Kadai).
+
+Goal:
+4 rows have `meta.family` with top token outside the allow-list. Identified by running the validator (2026-05-08 late evening):
+
+```
+nv:       family="Athabaskan"   → should be "Na-Dene > Athabaskan" (top token = Na-Dene)
+th_isan:  family="Tai-Kadai"    → should be "Kra-Dai" (project allow-list uses Kra-Dai)
+th_n:     family="Tai-Kadai"    → should be "Kra-Dai"
+za:       family="Tai-Kadai"    → should be "Kra-Dai"
+```
+
+Both "Athabaskan" (sub-branch of Na-Dene) and "Tai-Kadai" (older synonym for Kra-Dai) are legitimate linguistic terms but inconsistent with the project's existing allow-list. The Phase B backfill batches reverted these. Three Tai-Kadai entries previously normalized to Kra-Dai (per Task 159 closure) and have regressed.
+
+Files to change:
+- `wordmap_meta.js` — normalize:
+  - `nv`: `family: 'Athabaskan'` → `family: 'Na-Dene > Athabaskan'`
+  - `th_isan`, `th_n`, `za`: `family: 'Tai-Kadai'` → `family: 'Kra-Dai'` (matches existing `th`, `lo`, `nan_zhuang` rows)
+
+Done when:
+- 4 family allow-list warnings cleared.
+- All Tai-Kadai-family rows uniformly say "Kra-Dai" (Task 159 normalization preserved across Phase B).
+
+### Task 218 Phase B — actual remaining work after late-evening verification
+
+After Phase B partial integration: **462 of 910 langs (51%) still have <200 char ja descriptions**. Phase B/C completion requires another ~459 sub-tasks (218.198-218.656 are still ~80% incomplete based on remaining-thin-langs count).
+
+| Bucket | Remaining | % of 910 |
+|---|---:|---:|
+| 50-100 chars | 149 | 16.4% |
+| 100-200 chars | 313 | 34.4% |
+| **<200 total** | **462** | **50.8%** |
+
+Still includes: `en` (93), `es_eu` (94), `pt_eu` (84), `tr` (80), `fi` (82), `hu` (83), `el` (90), `nl` (82), `sv` (90), `ro` (80) — 10 major UI langs needing rewrite.
+
+### Cumulative validator state
+
+- 910 languages.
+- 0 errors.
+- **23 warnings** (down from 72 mid-evening — **49 regressions cleared in <6 hours**, ✅ Tasks 224/225/227/228 all resolved).
+- 59 INFOs.
+- PASS.
+
+**Warning breakdown (2026-05-08 night):**
+- 17: `[#13b']` description i18n threshold (Task 144/218 ongoing — needs Phase B continuation, expected to diminish as <200-char langs are rewritten)
+- 4: `[#173]` source-checked wordEvidence (Task 226, **OPEN** — ine 18/20, ko_gor 10/20, kha 9/20, pal 0/20)
+- 1: `[#19]` cache-buster drift (Task 229, **OPEN** — meta_i18n_ext.js?v=9 vs registry v=11)
+- 4: family allow-list (Task 230, **OPEN** — nv, th_isan, th_n, za)
+- 0: `[#13l]` ✅ resolved (was 38)
+- 0: `[#170]` ✅ resolved (was 13, coverage 88/88)
+- 0: `[#188]` ✅ resolved (was 2, coverage 29/29)
+- 0: 100M+ tier ✅ resolved (was 4)
+
+### Recommended priority (2026-05-08 night, post-resolution)
+
+Quick wins (under 30 min total):
+1. **Task 229** cache-buster drift (~30 sec, mechanical bump `meta_i18n_ext.js?v=9 → ?v=11`)
+2. **Task 230** family allow-list outliers (~5 min, 4 specific edits — `nv` → "Na-Dene > Athabaskan"; `th_isan/th_n/za` → "Kra-Dai")
+3. **Task 226** source-checked wordEvidence backfill on 4 rows (~30 min, restoring lost cells from git history)
+
+After 226/229/230 land: warning count drops 23 → 17 (only Task 144/218 description-i18n threshold warnings remain).
+
+Larger remaining work:
+4. **Task 218 Phase B continuation** — 462 of 910 langs (51%) still <200 chars ja. The 17 [#13b'] threshold warnings only resolve when langs cross the 200-char floor across all 21 UI langs; this is the biggest outstanding item.
+5. **Task 144 / 209** (description i18n coverage on minor UI langs) — coupled to Task 218 Phase B; will track its progress automatically.
+
+Validator outcomes after each phase:
+- After 226/229/230: 23 warnings → 17 warnings, all PASS (only ongoing-translation-work warnings).
+- After Phase B 218 continuation (~459 more langs ≥200 chars): 17 → ~5 warnings (only thinnest minor UI langs remaining).
+- After Phase C 218 (all UI langs ≥200 chars in ALL 21 UI translations): 0 warnings.
