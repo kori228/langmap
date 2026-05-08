@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=63">
+<link rel="stylesheet" href="styles.css?v=64">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -596,8 +596,10 @@
                     children: [], isInternal: true, isLanguageGroup: true,
                 };
                 // Standard child = the base code as a leaf with its full display name
+                // (isStandardForm flag keeps it first within the language group regardless of sort)
                 langGroup.children.push({
                     name: fullName, code: code, native: lang.native || '', isInternal: false,
+                    isStandardForm: true,
                 });
                 // Add each variant as a direct sibling
                 const dialectLeaves = [];
@@ -617,22 +619,70 @@
             }
         }
 
-        // Sort: internals (by leaf count desc), then leaves alphabetically.
+        // Sort:
+        //   - internals (by leaf count desc) — bigger families first
+        //   - leaves by speaker count desc — Spanish before Galician, ja before ainu
+        //   - within a language group: standard form first, then variants by speaker count
+        // (2026-05-09 user request: 重要度順や類似した言語を近く. Family tree already
+        //  groups similar langs; within siblings, sort by importance = speaker count.)
         function countLeaves(n) {
             if (!n.children || n.children.length === 0) return 1;
             return n.children.reduce((s, c) => s + countLeaves(c), 0);
         }
+        function speakerCountFor(node) {
+            if (!node || !node.code) {
+                // For a language group internal node, use its standard form's speaker count
+                if (node && node.isLanguageGroup && node.children && node.children.length > 0) {
+                    const std = node.children.find(c => c.isStandardForm) || node.children[0];
+                    return speakerCountFor(std);
+                }
+                return 0;
+            }
+            const lang = (typeof LANG_DATA !== 'undefined') ? LANG_DATA[node.code] : null;
+            const m = lang && lang.meta;
+            if (!m) return 0;
+            // Prefer structured speakerCount: l1 → total → rangeMax → l1RangeMax
+            const sc = m.speakerCount;
+            if (sc) {
+                const v = sc.l1 ?? sc.total ?? sc.rangeMax ?? sc.l1RangeMax;
+                if (typeof v === 'number' && v > 0) return v;
+            }
+            // Fallback: parse m.speakers prose (e.g. "~125M", "~5K", "12-15M")
+            const sp = String(m.speakers || '').match(/(\d+(?:[.,]\d+)?)\s*([KMB])\b/i);
+            if (sp) {
+                const n = parseFloat(sp[1].replace(/,/g, ''));
+                const u = sp[2].toUpperCase();
+                return n * (u === 'B' ? 1e9 : u === 'M' ? 1e6 : 1e3);
+            }
+            // Fallback: plain number with comma separator
+            const plain = String(m.speakers || '').match(/(\d{1,3}(?:,\d{3})+|\d{4,})/);
+            if (plain) return parseInt(plain[1].replace(/,/g, ''), 10) || 0;
+            return 0;
+        }
         function sortNode(n) {
             if (!n.children) return;
             n.children.forEach(sortNode);
+            const isLangGroup = !!n.isLanguageGroup;
             n.children.sort((a, b) => {
+                // Within a language group: standard form ALWAYS first
+                if (isLangGroup) {
+                    if (a.isStandardForm && !b.isStandardForm) return -1;
+                    if (!a.isStandardForm && b.isStandardForm) return 1;
+                }
                 const aInt = !!a.isInternal, bInt = !!b.isInternal;
                 if (aInt && !bInt) return -1;
                 if (!aInt && bInt) return 1;
                 if (aInt && bInt) {
+                    // Both internal nodes: by leaf count desc, then by speakerCount of representative
                     const la = countLeaves(a), lb = countLeaves(b);
                     if (la !== lb) return lb - la;
+                    const sa = speakerCountFor(a), sb = speakerCountFor(b);
+                    if (sa !== sb) return sb - sa;
+                    return a.name.localeCompare(b.name);
                 }
+                // Both leaves: by speaker count desc (importance order)
+                const sa = speakerCountFor(a), sb = speakerCountFor(b);
+                if (sa !== sb) return sb - sa;
                 return a.name.localeCompare(b.name);
             });
             n.leafCount = countLeaves(n);
