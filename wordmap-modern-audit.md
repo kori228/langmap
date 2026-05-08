@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-08, 910 langs, validator 0 errors / 23 warnings)
+## Task Status Index (last updated: 2026-05-08 night, 910 langs, validator 0 errors / 23 warnings ✅ Tasks 224/225/227/228 resolved; 226/229/230 + Phase B i18n still open)
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -203,7 +203,9 @@ Status legend:
 | 215 | Tibetan filter taxonomy | ❌ NOT-STARTED | scriptTags['Tibetan'] enum + family normalize |
 | 216 | Compare button repositioning | 🟡 PARTIAL | DOM-move done, CSS regression remains (Task 223) |
 | 217 | jvn description ja/ko/zh | ✅ COMPLETE | 4 UIs, 270-char ja |
-| 218 | meta richness Phase A | ❌ NOT-STARTED | en source still thin (tpi=91, am=20, yo=44 chars) |
+| 218 | meta richness Phase A (50 priority langs) | ✅ COMPLETE | 218.01-218.50 backfilled; tpi/am/yo now 250-500 chars ja |
+| 218 | meta richness Phase B (mid-tier ~150 langs) | ❌ NOT-STARTED | 67% of 910 langs still <200 chars ja (verified 2026-05-08 evening) |
+| 218 | meta richness Phase C (long tail ~400 langs) | ❌ NOT-STARTED | majority of dialect/historical/regional rows have 50-100 char ja |
 | 219 | range notation standardize | 🔄 SUPERSEDED | → Task 220 |
 | 220 | speakerCount structured (Option C) | ⏳ REGISTERED | awaiting impl, ~7-10h |
 | 221 | cache-buster drift (Task 198 instance) | ✅ COMPLETE | resolved |
@@ -10562,8 +10564,85 @@ Meanwhile, recent Tier 4-13 additions like `bzh` Mapos Buang (~10K speakers, muc
 
 ### New Task 218. Backfill rich metadata on the ~50–600 older language entries with thin descriptions
 
+**Status: 🟡 PARTIAL — Phase A (50 priority langs) ✅ COMPLETE, Phase B/C ❌ NOT-STARTED.**
+**Updated 2026-05-08 evening: 50 Phase A sub-tasks (218.01-218.50) closed; ja descriptions now 250-500 chars on those rows. However ~609 of 910 langs (67%) still have <200 char ja descriptions — see Phase B/C breakdown below.**
+
+**Critical finding (2026-05-08 evening verification):**
+
+ja description length distribution across all 910 langs:
+- `<50` chars: **63 langs** (Sinitic dialects, dialect rows: zh_sc=40, hmn=48, qu=48, nan=48, ji=45...)
+- `50-100` chars: **357 langs** (incl. ja itself=90, ko=102, ja_osa=95, ja_oki=85, ja_kyo=66, ko_kp=62, ja_aom=64, ja_rys=61...)
+- `100-200` chars: **189 langs** (incl. ko=102, wuu=156, sah=112, cv=119, evn=111, yrk=104, kca=104, ckt=104, itl=116, ket=103)
+- `200-300` chars (target lower edge): 102 langs
+- `300-400` chars (target band): 141 langs
+- `400-600` chars (Phase A done): 52 langs
+- `600+` chars: 0
+
+**67% of 910 langs (609 rows) have ja descriptions below the 200-char target** — the bulk being:
+- Japanese dialects (`ja_*`): all 50-95 chars (`ja` itself is only 90 chars!)
+- Korean dialects (`ko_*`): 52-102 chars
+- Sinitic varieties (`zh_*`, `nan`, `hmn`, `wuu`, `cdo`, `ii`): all <60 chars
+- Mid-tier modern langs (Tier 4-13): 100-200 chars on average
+- Historical/proto langs: variable
+
+**This contradicts the user's reasonable expectation** that the project's primary UI language (`ja`) and its dialect rows would have **the richest** descriptions. Currently Mapos Buang (`bzh`, ~600 chars) is more thoroughly described than `ja` Japanese (`90 chars`).
+
 Goal:
-Bring the older entries up to the same quality bar as the new Tier 4-13 entries: multilingual descriptions (`en/ja/ko/zh` minimum), scholarly `sources`, structured `scriptTags`, and detailed family/countries prose. The user-visible asymmetry is unfair: a small Oceanic language (`bzh`) has more thoroughly translated meta than a national lingua franca (`tpi`).
+Bring the older entries up to a *moderate* quality bar — not the maximally-rich style of the most recent additions (`ddn` Donno So at ~700 chars en is slightly excessive per user feedback 2026-05-08), but a focused 200–400 char en source with structured `sources` (2–3 entries), `scriptTags`, and 4-UI translations (en/ja/ko/zh). The user-visible asymmetry is unfair: a small Oceanic language (`bzh`) currently has substantially more meta than a national lingua franca (`tpi` at 91 chars en, no sources, no scriptTags).
+
+### Length-target calibration (revised 2026-05-08)
+
+User feedback established the following en-description length envelope:
+
+| chars | Verdict | Examples |
+|---:|---|---|
+| ~20–50 | Too thin ❌ — single fragment | `am` Amharic 20 chars, `yo` Yoruba 44 chars, `ig` Igbo 42 chars |
+| 100–150 | Insufficient ⚠️ — one sentence | `tpi` Tok Pisin 91 chars, `ms` Malay 132 chars |
+| **200–400** | **Target band ✅** | `bo` Tibetan 295 chars (lower edge); 2–3 sentences covering family + region + 1 distinctive feature |
+| 400–600 | Rich ✅ — 4 sentences with cultural detail | `bzh` Mapos Buang ~600 chars |
+| 600–800 | Slightly excessive ⚠️ | `ddn` Donno So ~700 chars (user-flagged as bordering on too much) |
+| 800+ | Excessive ❌ — modal occlusion + translation overhead | (none currently) |
+
+**Rationale for 200–400:**
+- Pedagogical core facts fit in 2–3 sentences: family, speakers + region, one distinctive feature.
+- 4 UI-lang translations × 300 chars × ~50 priority langs = ~60K chars total, vs. ~140K chars at the over-rich 700-char target — manageable workload.
+- Modal does not get visually overwhelmed by a single language's description.
+- Niche detail (ethnographic anecdotes, typology debates, contested classification) stays accessible via the `sources` citations rather than embedded in the description.
+
+### Required fields per row (revised quality bar)
+
+| Field | Requirement | Example (~target) |
+|---|---|---|
+| `description.en` | 200–400 chars, 2–3 sentences | family + speakers/region + 1 distinctive feature |
+| `description.ja/ko/zh` | translations of en (each ~same length) | priority CJK UIs |
+| `sources` | 2–3 entries (Glottolog + Ethnologue + 1 grammar/dict) | ≥ 4 entries is allowed but not required |
+| `scriptTags` | ≥ 1 entry from canonical enum | e.g. `['Latin']`, `['Brahmic']` |
+| `family` | per Task 159 normalized form | `'X (Y, Z)'` parens-comma format |
+| `countries` | country + region/state level OK | over-detailed villages list optional |
+| `official` | concise status note | "Mali (recognized national)" — not 12-language list |
+| `script` | concise prose | "Latin" or "Latin / Adlam" — not full standardization history |
+
+### `ddn` Donno So compression candidate (optional)
+
+The current `ddn` entry has ~700 chars en + multi-sibling family prose + 12-language official list + ethnographic anecdote. Recommended compression to ~350 chars (sample):
+
+```
+description.en: "Donno So (also called Tomo Kan Dogon) is a Dogon language of Niger-Congo, spoken by ~50,000 people along the Bandiagara escarpment in Mopti region, Mali. The Dogon are internationally famous for their cliff-dwelling settlements and masked dance traditions for Dama funerary rites. The Dogon family contains ~13 mutually unintelligible languages whose position within Niger-Congo is still debated."
+```
+
+Drops: Marcel Griaule mid-20th c. ethnography note, "partly fanciful" caveat, sister-language enumeration in family field, bilingual primary education materials note. These can stay accessible via `sources` (Plungian 1995) and the modal's link-out.
+
+**Decision:** keep `ddn` as-is for now (it's already merged) but use the compressed form as the **template** for Task 218 Phase A backfills of `tpi`/`sw`/`vi`/etc. Revisit `ddn` in a Phase D cleanup if uniformity becomes important.
+
+### Updated Phase A target (50 priority langs, revised)
+
+Per-language effort revised to ~15–20 min (down from ~30–60 min) using the 200–400 char target:
+- 5 min: write 2–3 sentence en description.
+- 5 min: translate to ja/ko/zh.
+- 3 min: identify 2–3 sources.
+- 2 min: scriptTags + scriptTags-aware family normalization.
+
+Total Phase A: ~15 hours (down from 25–50h with the over-rich target). Phase A delivers ~60 KB of new translation content vs. ~140 KB previously planned — half the workload.
 
 Current issue I checked (2026-05-07 evening, 20-lang sample):
 
@@ -10936,3 +11015,1299 @@ Done when:
 ### Migration risk
 
 The risk is mainly Phase 1's manual review: parsing 706 free-form prose entries can introduce off-by-magnitude errors (`'~10K'` parsed as 10 instead of 10,000) or lose nuance (`'~12-15M (lingua franca; ~50% of Afghanistan population uses Dari)'` collapsing to a single number). Mitigation: Phase 1 produces a side-by-side diff of (original prose) → (regenerated prose from speakerCount). Reviewer signs off when diffs are semantically equivalent.
+
+---
+
+## Task 218 — Per-language sub-task breakdown (2026-05-08)
+
+User requested per-language task decomposition instead of a single bundled Task 218. Below are 50 priority sub-tasks (218.01–218.50), each pickable as a discrete unit. Target: 200–400 chars en + 4 UI translations + 2–3 sources + scriptTags. Effort per row: ~15–20 min.
+
+Each sub-task lists: code, name, current state (en chars, sources, scriptTags), key facts the description should anchor on. Take any sub-task as a self-contained pull-request.
+
+### Group P1 — Major creoles & pidgins (largely undocumented in current data)
+
+#### Task 218.01. `tpi` Tok Pisin
+**Current:** en 91 chars, 0 sources, no scriptTags. **Target:** ~350 chars en + ja/ko/zh + sources + scriptTags=['Latin'].
+**Key facts:** PNG official (alongside English + Hiri Motu); ~4M speakers (~150K L1, rest L2); origin 19th c. Bismarck Archipelago plantations + German colonial era 1884-1914 (German loanwords: balus "airplane" ← Bauklotz, raus "out"); substantial Tolai (Kuanua) Austronesian substrate.
+**Sources:** Mihalic 1971 Jacaranda Dictionary; Verhaar 1995 Reference Grammar; Ethnologue.
+
+#### Task 218.02. `ht` Haitian Creole
+**Current:** en 90 chars, 0 sources, no scriptTags. **Target:** ~350 chars + 4 UIs + sources + scriptTags=['Latin'].
+**Key facts:** ~12M speakers; co-official Haiti (with French); French-lexifier creole, Fon/Wolof/Bantu African substrate; standardized orthography by IPN 1979/Académie Créole 2014.
+**Sources:** Hall 1953; Valdman 2007; Ethnologue.
+
+#### Task 218.03. `jam` Jamaican Patois
+**Current:** en ~100 chars, 0 sources. **Target:** ~350 chars.
+**Key facts:** ~3M speakers Jamaica + ~1M+ diaspora UK/USA/Canada; English-lexifier, West-African-Akan substrate; Cassidy-JLU orthography; nationally recognized but English remains official.
+**Sources:** Cassidy & Le Page 1980 Dictionary of Jamaican English; Patrick 2007 grammar.
+
+#### Task 218.04. `pcm` Nigerian Pidgin (Naija)
+**Current:** en ~123 chars. **Target:** ~350 chars.
+**Key facts:** ~75M speakers (1st L2 of Nigeria); English-lexifier, Edo/Yoruba/Igbo substrate; partially mutually intelligible with Cameroon Pidgin (`wes`); BBC Pidgin News 2017+.
+**Sources:** Faraclas 1996 Nigerian Pidgin grammar; Mensah 2011.
+
+#### Task 218.05. `hwc` Hawaiian Creole (Pidgin English)
+**Current:** en ~140 chars. **Target:** ~350 chars.
+**Key facts:** ~600K speakers; English-lexifier with Hawaiian/Japanese/Cantonese/Portuguese substrate; emerged on 19th c. sugar plantations; ADS recognized as language 2015.
+**Sources:** Sakoda & Siegel 2003 Pidgin Grammar; Ethnologue.
+
+### Group P2 — Major African languages (rich scholarship available)
+
+#### Task 218.06. `sw` Swahili (`sw`)
+**Current:** en 161 chars, 0 sources. **Target:** ~350 chars.
+**Key facts:** ~80M speakers + ~150M L2; Bantu G42, lingua franca East Africa (Tanzania/Kenya/Uganda/DRC/Mozambique); Arabic-influenced lexicon (~30%) from medieval Indian Ocean trade; SOV → SVO with rich noun-class agreement.
+**Sources:** Ashton 1944 grammar; Helsinki Corpus; Ethnologue.
+
+#### Task 218.07. `am` Amharic (`am`)
+**Current:** en **20 chars** (severely thin). **Target:** ~350 chars.
+**Key facts:** ~32M speakers; official Ethiopia; Semitic Ethiopian; Geʽez/Ethiopic abugida (~280 fidel characters); SOV with elaborate verbal morphology; Ethiopian Orthodox liturgical heritage.
+**Sources:** Leslau 1995 Reference Grammar; Appleyard 1995.
+
+#### Task 218.08. `yo` Yoruba (`yo`)
+**Current:** en **44 chars**. **Target:** ~350 chars.
+**Key facts:** ~45M speakers; Nigeria + Benin + Togo + diaspora (Yoruba religion in Brazil/Cuba); 3-tone system (high/mid/low); 7-vowel inventory (i/e/ɛ/a/ɔ/o/u); rich oral traditions (Ifá divination corpus).
+**Sources:** Bamgbose 1966 grammar; Awoyale 2008 dictionary.
+
+#### Task 218.09. `ig` Igbo (`ig`)
+**Current:** en **42 chars**. **Target:** ~350 chars.
+**Key facts:** ~24M speakers; Nigeria SE; tonal (high/low + downstep); vowel harmony (ATR); Onwu orthography 1962; rich proverb/oral literature.
+**Sources:** Welmers 1968 Igbo grammar; Igwe 1999 dictionary.
+
+#### Task 218.10. `ha` Hausa (`ha`)
+**Current:** en ~95 chars. **Target:** ~350 chars.
+**Key facts:** ~80M speakers (~40M L1 + ~40M L2 lingua franca West Africa); Chadic Afro-Asiatic; Latin (Boko) + Arabic-derived (Ajami); 2-tone + vowel length distinction; Hausa Bakar 19th c. literary tradition.
+**Sources:** Newman 2000 Hausa Language; Ethnologue.
+
+#### Task 218.11. `zu` Zulu (`zu`)
+**Current:** en ~125 chars. **Target:** ~350 chars.
+**Key facts:** ~12M L1 + ~16M L2; South Africa official (Nguni Bantu); 3 click consonants (ǀ ǁ ǃ from Khoisan substrate); 17 noun classes; high tone-stress correlation.
+**Sources:** Doke 1955 grammar; Poulos & Msimang 1998.
+
+#### Task 218.12. `xh` Xhosa (`xh`)
+**Current:** en ~119 chars. **Target:** ~350 chars.
+**Key facts:** ~8M L1; South Africa official; sister to Zulu (Nguni); 18 click consonants (most extensive in Bantu); penultimate stress; written tradition since 1820s missionary period.
+**Sources:** Mclaren 1944 grammar; Pahl 1989 dictionary.
+
+#### Task 218.13. `mg` Malagasy (if not done)
+**Target:** ~350 chars.
+**Key facts:** ~25M speakers; Madagascar official; Austronesian (Barito), unique outlier 7000 km from nearest relative (Borneo); SVO with extensive Bantu/Arabic/French loanwords; classical Sora-Bedo orthography.
+**Sources:** Rajemisa-Raolison 1971 grammar.
+
+#### Task 218.14. `ti` Tigrinya
+**Target:** ~350 chars.
+**Key facts:** ~9M speakers; co-official Eritrea, regional Ethiopia (Tigray); Semitic Ethiopian; Geʽez script; sister to Tigre (`tig`).
+**Sources:** Kogan 1997; Berhane 1991 grammar.
+
+#### Task 218.15. `wo` Wolof
+**Target:** ~350 chars.
+**Key facts:** ~12M speakers (mostly L2); de facto national lingua franca Senegal (despite French being official); Atlantic-Congo (Senegambian); Latin orthography 1971; Wolofal Ajami (Arabic) historical.
+**Sources:** Sauvageot 1965 grammar.
+
+### Group P3 — Major Asian languages
+
+#### Task 218.16. `vi` Vietnamese
+**Current:** en ~165 chars. **Target:** ~350 chars.
+**Key facts:** ~85M L1 + 5M diaspora; official Vietnam; Austroasiatic Vietic; 6 tones (Northern) / 5 (Southern); chữ Quốc ngữ Latin orthography 17th c. Jesuit missionary; Sino-Vietnamese ~60% lexicon.
+**Sources:** Thompson 1965 grammar; Nguyen 1997.
+
+#### Task 218.17. `id` Indonesian
+**Current:** en ~155 chars. **Target:** ~350 chars.
+**Key facts:** ~200M L2 (national lingua franca, ~25-40M L1); standardized form of Malay (Bahasa Indonesia); Austronesian Malayic; Latin (van Ophuijsen 1901 → EYD 1972); SVO with verbal affix system; 740K+ Wikipedia articles.
+**Sources:** Sneddon 2010 Indonesian Reference Grammar.
+
+#### Task 218.18. `ms` Malay
+**Current:** en ~132 chars. **Target:** ~350 chars.
+**Key facts:** ~290M L1+L2 across Malaysia + Brunei + Singapore + S. Thailand; Austronesian; Latin (Rumi) + Arabic-derived (Jawi historical, still used in Brunei + Malaysia ceremonial).
+**Sources:** Asmah 1981 reference grammar.
+
+#### Task 218.19. `tl` Tagalog
+**Current:** en ~142 chars. **Target:** ~350 chars.
+**Key facts:** ~28M L1, ~83M L2 (basis of Filipino, national language); Austronesian Central Philippine; Latin (post-1937 ABAKADA); historical Baybayin Brahmic script (1500s).
+**Sources:** Schachter & Otanes 1972 Tagalog Reference Grammar.
+
+#### Task 218.20. `th` Thai (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~60M speakers; official Thailand; Tai-Kadai SW Tai; 5 tones (Bangkok); Thai script Brahmic 1283 King Ramkhamhaeng; SVO; rich Pali-Sanskrit Buddhist vocabulary.
+**Sources:** Smyth 2002 grammar; Royal Institute Dictionary.
+
+#### Task 218.21. `bn` Bengali (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~265M speakers (5th most-spoken globally); official Bangladesh + India (West Bengal/Tripura); Indo-Aryan Eastern; Bengali script Brahmic (Eastern Nagari); rich literary tradition (Tagore Nobel 1913).
+**Sources:** Chatterji 1926 Origin and Development of the Bengali Language.
+
+#### Task 218.22. `hi` Hindi (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~340M L1 + ~270M L2; co-official India; Indo-Aryan Central; Devanagari Brahmic; macrolanguage with Urdu (mutually intelligible spoken, distinct script); Sanskrit literary borrowings.
+**Sources:** McGregor 1972 Outline; Snell 2003.
+
+#### Task 218.23. `my` Burmese
+**Current:** en ~253 chars (better than most). **Target:** maintain or expand to ~350 chars + sources + scriptTags.
+**Key facts:** ~33M speakers; Myanmar official; Sino-Tibetan Tibeto-Burman; Burmese script Brahmic 12th c. Mon-derived; 4 tones (low/high/creaky/checked); diglossic literary vs. colloquial.
+**Sources:** Watkins 2001 JIPA; Wheatley 2003 grammar.
+
+#### Task 218.24. `km` Khmer
+**Current:** en ~249 chars. **Target:** maintain.
+**Key facts:** ~16M speakers; Cambodia official; Austroasiatic Mon-Khmer; Khmer Brahmic abugida (~7th c.); non-tonal (rare in SE Asia); Pali/Sanskrit Buddhist vocabulary; Angkorian inscriptions.
+**Sources:** Headley 1977; Huffman 1970.
+
+#### Task 218.25. `lo` Lao
+**Current:** en ~228 chars. **Target:** maintain.
+**Key facts:** ~30M speakers (Laos + NE Thailand Isan); Tai-Kadai SW Tai; Lao script Brahmic; mutually intelligible with Thai (~80%); 6 tones Vientiane standard.
+**Sources:** Enfield 2007 Lao grammar.
+
+#### Task 218.26. `bo` Tibetan
+**Current:** en ~295 chars. **Target:** maintain or slightly expand.
+**Key facts:** ~6M speakers Plateau + diaspora; co-official Tibet AR; Sino-Tibetan Bodish; Tibetan abugida 7th c. Thonmi Sambhota; binary HIGH/LOW tone (Lhasa); rich Buddhist canonical literature.
+**Sources:** Tournadre & Sangda Dorje Manual; DeLancey 2003.
+
+### Group P4 — Major European regional / minority
+
+#### Task 218.27. `cy` Welsh (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~600K-900K speakers; Wales co-official; Brythonic Celtic; nasal-mutation + soft-mutation system; Welsh language television (S4C 1982); Welsh-medium education revival.
+
+#### Task 218.28. `ga` Irish (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~170K daily L1 + ~1.7M with some ability; Ireland official + EU; Goidelic Celtic; complex consonant mutation; Caighdeán Oifigiúil 1958 standard; Gaeltacht communities.
+
+#### Task 218.29. `gd` Scottish Gaelic (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~57K speakers (Scotland Highlands/Hebrides); Goidelic Celtic; recognized by Gaelic Language Act 2005; sister to Irish (Goidelic, mutually understandable with effort).
+
+#### Task 218.30. `eu` Basque
+**Target:** ~350 chars.
+**Key facts:** ~750K speakers (Basque Country: Spain Pyrenees + France); language isolate (no proven family); ergative-absolutive case system; co-official Basque Autonomous Community + Navarre.
+
+#### Task 218.31. `ca` Catalan
+**Target:** ~350 chars.
+**Key facts:** ~10M speakers; co-official Catalonia + Balearic Islands + Valencia + Andorra; Romance Iberian/Gallo-Iberian transitional; standardized 1913 (Pompeu Fabra orthography); rich literary tradition.
+
+### Group P5 — Major Middle Eastern / Caucasian
+
+#### Task 218.32. `fa` Persian (Farsi) (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~80M L1; official Iran + Tajikistan (Tajiki) + Afghanistan (Dari); Indo-European Iranian; Perso-Arabic abjad (32 letters); SOV; 2500+ year continuous literary tradition (Rudaki, Hafez, Ferdowsi).
+
+#### Task 218.33. `ku` Kurdish (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~30M speakers (Kurmanji + Sorani + Pehlewani); spans Turkey/Iraq/Iran/Syria; Indo-European Iranian; Latin (Hawar) + Perso-Arabic (Sorani) + Cyrillic (former USSR); Iraq Kurdish co-official 2005.
+
+#### Task 218.34. `hy` Armenian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~6.7M speakers; Armenia + Artsakh + diaspora; Indo-European, isolate within IE (own branch); Armenian alphabet 405 CE Mesrop Mashtots; classical/modern diglossia.
+
+#### Task 218.35. `ka` Georgian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~3.7M speakers; Georgia official; Kartvelian (own family with Mingrelian/Svan/Laz); Georgian alphabet (3 historical scripts: Asomtavruli/Nuskhuri/Mkhedruli); ergative split.
+
+### Group P6 — Major South Asian additional
+
+#### Task 218.36. `ta` Tamil (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~75M speakers; classical language status India 2004; Dravidian Southern; Tamil Brahmic abugida; agglutinative SOV; 2000+ year continuous literary tradition (Sangam ~2nd c. BCE).
+
+#### Task 218.37. `te` Telugu (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~83M speakers; co-official India (Andhra Pradesh + Telangana); Dravidian South-Central; Telugu Brahmic; agglutinative; long literary heritage (Nannayya 11th c.).
+
+#### Task 218.38. `kn` Kannada (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~44M speakers; classical India 2008; Dravidian South; Kannada Brahmic; 1500+ year literary tradition (Kavirajamarga 850 CE).
+
+#### Task 218.39. `ml` Malayalam (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~38M speakers; co-official Kerala/Lakshadweep; Dravidian South; Malayalam Brahmic; rich Sanskrit-Tamil Manipravalam tradition; classical India 2013.
+
+#### Task 218.40. `gu` Gujarati (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~57M speakers; co-official India (Gujarat); Indo-Aryan Western; Gujarati Brahmic (modified Devanagari); SOV; literary Bhakti tradition (Narsinh Mehta 15th c.).
+
+#### Task 218.41. `pa` Punjabi (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~125M speakers (E India + Pakistan); India: Gurmukhi Brahmic; Pakistan: Shahmukhi Perso-Arabic; tonal (3 tones — rare among IA langs); Sikh scriptural language (Guru Granth Sahib).
+
+#### Task 218.42. `ur` Urdu (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~70M L1 + ~170M L2; Pakistan official + India 8th Schedule; Indo-Aryan Central (sister to Hindi); Nastaliq Perso-Arabic; Persian/Arabic learned vocabulary heavy.
+
+### Group P7 — Pacific & remaining major
+
+#### Task 218.43. `mi` Māori (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~186K speakers; co-official NZ (Te Reo Māori Act 1987); Austronesian Polynesian Eastern; Latin orthography (1814); 5-vowel inventory; verb-initial VSO; te reo immersion schools (kohanga reo).
+
+#### Task 218.44. `sm` Samoan (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~510K speakers (Samoa + American Samoa + diaspora); co-official Samoa; Polynesian Nuclear Polynesian; Latin orthography from missionary 1830s; T-style vs. K-style register diglossia.
+
+#### Task 218.45. `to` Tongan (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~187K speakers; official Tonga (with English); Polynesian Tongic; SVO; ergative-absolutive alignment; rich oral tradition (faiva).
+
+#### Task 218.46. `fj` Fijian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~640K speakers; co-official Fiji; Austronesian Eastern Fijian; complex vocative-locative system; "Bauan" dialect basis of standard.
+
+#### Task 218.47. `haw` Hawaiian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~24K speakers (revitalization since 1980s; ~2K from "ʻōlelo Hawaiʻi" Pūnana Leo immersion); co-official Hawaiʻi; Polynesian; 13-phoneme inventory (smallest of major langs); ʻokina + kahakō.
+
+#### Task 218.48. `mt` Maltese (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~520K speakers; Malta official + EU; Semitic Maghrebi-Arabic with massive Italian/Sicilian + English superstrate; **only Semitic language in Latin script** + EU; 13th c. Sicilian Arabic origin.
+
+#### Task 218.49. `eo` Esperanto (revisit if thin)
+**Target:** ~350 chars.
+**Key facts:** ~1-2M speakers global; constructed (Zamenhof 1887 Białystok); regular grammar (16 fundamental rules); 5-vowel inventory; pan-European lexicon; UNESCO recognition 1954.
+
+#### Task 218.50. `tok` Toki Pona (revisit if thin)
+**Target:** ~350 chars.
+**Key facts:** ~1K speakers (active community); minimal-vocabulary constructed (137 root words; Sonja Lang 2001 Toronto); 9 phonemes (smallest Latin-orthography lang); philosophical/Taoist minimalism.
+
+### Sub-task progress tracking
+
+Each sub-task above is independently pickable. Recommended ordering:
+1. **Group P2 African** (Tasks 218.06–218.15) — highest visible asymmetry given Task 218 sample showed all 5 langs `am`/`yo`/`ig` at ~20-44 chars.
+2. **Group P1 creoles** (Tasks 218.01–218.05) — Tok Pisin user-flagged.
+3. **Group P3 Asian** (Tasks 218.16–218.26) — high traffic.
+4. **Group P4 European minority** (Tasks 218.27–218.31).
+5. **Group P5 Middle East/Caucasus** (Tasks 218.32–218.35).
+6. **Group P6 South Asian** (Tasks 218.36–218.42).
+7. **Group P7 Pacific + constructed** (Tasks 218.43–218.50).
+
+Completion of all 50 sub-tasks = Task 218 Phase A complete. Phase B (mid-tier 100K-1M speakers) and Phase C (long tail) remain as separate batches for later.
+
+### Cross-task dependencies
+
+- Task 218.x depends on Task 159 (family normalization) — already complete, so family fields can be written without waiting.
+- Task 218.x depends on Task 130 (scriptTags enum) — already complete.
+- Task 220 (speakerCount Option C) is *not* a blocker; sub-tasks can write the structured `speakerCount` AND the prose during the rewrite.
+
+---
+
+## Task 218 — Phase B priority sub-tasks (2026-05-08 evening)
+
+User reported many langs still have short ja descriptions despite Phase A completion. Verified: 609 langs (67%) have <200 char ja descriptions. Phase A only covered 50 priority langs; the bulk of dialect/regional/mid-tier rows remain thin.
+
+Phase B targets the **most user-visible** of the remaining 609. Priority by user-traffic likelihood:
+
+### Group P8 — UI-language self-descriptions (HIGHEST PRIORITY)
+
+These are the project's UI languages themselves — they should have the richest descriptions, not the shortest. Currently they are 50-200 chars. Target: 250-400 chars matching Phase A bar.
+
+#### Task 218.51. `ja` Japanese (UI primary)
+**Current:** ja=90 chars. **Target:** ~350 chars.
+**Key facts:** ~125M speakers; official Japan; Japonic family (with Ryukyuan languages); kanji + hiragana + katakana hybrid script (~3000 daily-use kanji + 46×2 kana); SOV agglutinative; honorific register (keigo) system; 1500+ years of literary tradition (Man'yōshū 759 CE); Sino-Japanese ~60% lexicon.
+
+#### Task 218.52. `ko` Korean (UI primary)
+**Current:** ja=102 chars. **Target:** ~350 chars.
+**Key facts:** ~80M speakers; official S. Korea + N. Korea; Koreanic family (with Jeju); Hangul phonemic alphabet (1443 King Sejong); SOV agglutinative; honorific register; Sino-Korean ~57% lexicon; modern hangul-only convention since 1990s.
+
+#### Task 218.53. `zh` Mandarin Chinese (UI primary)
+**Current:** ja length 90+ probably. **Target:** ~350 chars.
+**Key facts:** ~920M speakers (most-spoken globally); official PRC + Taiwan + Singapore; Sinitic Sino-Tibetan; Han characters (Simplified PRC / Traditional Taiwan-HK); 4-tone Standard Mandarin; SVO; analytic morphology; Pinyin 1958 romanization.
+
+#### Task 218.54. `yue` Cantonese
+**Current:** ja=48 chars. **Target:** ~350 chars.
+**Key facts:** ~85M speakers (Hong Kong + Macau + Guangdong + diaspora); de facto Hong Kong; Sinitic Yue; Traditional Han characters + Cantonese-specific characters (㗎, 嘅, 㩒); 6 tones (8-tone analysis with checked); analytic morphology; rich Cantopop/film cultural footprint.
+
+#### Task 218.55. `vi` Vietnamese (already P3 218.16; verify)
+Already in Task 218.16. Currently ja=572 chars ✅.
+
+#### Task 218.56. `hi` Hindi (already P3 218.22; verify)
+Already in Task 218.22. Verify current ja length.
+
+#### Task 218.57. `de` German (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+**Key facts:** ~95M L1; official DE/AT/CH/LU/LI; West Germanic; Latin orthography (Fraktur historical); 4 cases (nom/gen/dat/acc); 3 grammatical genders; verb-second main clause / verb-final subordinate; rich literary tradition (Goethe).
+
+#### Task 218.58. `fr` French (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+**Key facts:** ~80M L1, ~270M total (with L2); 29 countries official; Romance Gallo-Romance; Latin orthography (Académie 1635); strict spelling-pronunciation divergence; nasalization; literary heritage.
+
+#### Task 218.59. `it` Italian (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+
+#### Task 218.60. `es` Spanish (es_eu/es_mx UI langs)
+Already in P4 area indirectly. Verify es_eu.
+
+#### Task 218.61. `pt` Portuguese (pt_eu/pt_br UI langs)
+Verify.
+
+#### Task 218.62. `ru` Russian (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+
+#### Task 218.63. `uk` Ukrainian (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+
+#### Task 218.64. `ar` Arabic (UI lang) (MSA)
+**Current:** likely thin. **Target:** ~350 chars.
+
+#### Task 218.65. `he` Hebrew (UI lang)
+**Current:** likely thin. **Target:** ~350 chars.
+
+#### Task 218.66. `id` Indonesian (UI lang) (already P3 218.17)
+Verify.
+
+#### Task 218.67. `th` Thai (UI lang) (already P3 218.20)
+Verify.
+
+#### Task 218.68. `sw` Swahili (UI lang) (already P2 218.06)
+Verify ja=251 chars currently — at lower edge of target.
+
+### Group P9 — UI-language regional variants (Japanese/Korean/Chinese dialects)
+
+User-visible because they're displayed in the same modal context as their parent UI lang.
+
+#### Task 218.69 - 218.78. Japanese dialects (10 langs)
+- `ja_osa` Osaka, `ja_aom` Aomori, `ja_oki` Okinawan, `ja_hak` Hakata, `ja_kyo` Kyoto, `ja_hir` Hiroshima, `ja_mvi` Miyako, `ja_rys` Yaeyama, `ja_kg` Kagoshima, `ja_sd` Sendai
+- All currently 50-100 chars ja. Target: ~250-300 chars.
+- Key facts per dialect: regional anchor + distinctive features (e.g. Osaka pitch-accent vs. Tokyo, Okinawan/Ryukyuan ancestry, Hakata particles, etc.).
+
+#### Task 218.79 - 218.88. Korean dialects (10 langs)
+- `ko_kp` DPRK, `ko_bus` Busan, `ko_jeju`, `ko_yb` Yanbian, `ko_yb` etc.
+- 60-100 chars currently. Target: ~250-300 chars.
+
+#### Task 218.89 - 218.108. Sinitic varieties (20 langs)
+- `nan` Min Nan, `wuu` Wu, `hak` Hakka (in hak_cn/hak_tw/hak_hl), `yue` Cantonese, `cdo` Min Dong, `cjy` Jin, `mnp` Min Bei, `gan` Gan, `hsn` Xiang, `cnp` (?), `czh` Hui, etc.
+- All <60 chars currently. Target: ~300 chars.
+- Key facts per variety: speaker count + region + tone count + characteristic features.
+
+### Group P10 — Mid-tier endangered/regional langs (~100 priority sub-tasks)
+
+These are the langs in the validator's `[#13b']` "missing" lists that user is likely to encounter when browsing endangered or specific-region maps:
+
+`prs` Dari, `suk` Sukuma, `nym` Nyamwezi, `rim` Nyaturu, `ksb` Shambala, `rwk` Rwanda, `asu` Asu, `agt` Cagayan Agta, `cv` Chuvash, `dty` Dotyali, etc.
+
+(Full list per validator's missing-set — generate via `node validate_wordmap_data.js | grep -A1 'es_eu coverage 58%'`)
+
+### Estimation
+
+- Phase B P8 (UI lang self-desc): 18 langs × 15-20 min = ~5 hours
+- Phase B P9 (UI-lang dialect rows): 40 langs × 15 min = ~10 hours
+- Phase B P10 (mid-tier): 100 langs × 12 min = ~20 hours
+- **Phase B total: ~35 hours**, brings ~158 priority langs to target band
+
+Phase C (~451 long-tail langs) deferred — these are mostly historical/proto-language rows or very small endangered langs where the cost-benefit ratio is lower.
+
+### Recommended execution
+
+1. **First: P8 UI-lang self-desc (218.51-218.68)** — biggest user-visible asymmetry (project's own UI language is its thinnest description!)
+2. P9 UI-lang dialects (218.69-218.108) — same modal-context pairing
+3. P10 mid-tier endangered (per [#13b'] missing list)
+4. Phase C as opportunistic cleanup
+
+Phase B closure target: brings ~158 langs to the 250-400 char band, dropping the <200-char count from 609 to ~450.
+
+### Phase B Group P8 (11 sub-tasks)
+
+| Sub-task | Code | Name | Current ja chars | Target |
+|---|---|---|---:|---:|
+| 218.51 | `yue` | Cantonese | 63 | 250-350 |
+| 218.52 | `uk` | Ukrainian | 72 | 250-350 |
+| 218.53 | `it` | Italian | 76 | 250-350 |
+| 218.54 | `fr` | French | 84 | 250-350 |
+| 218.55 | `he` | Hebrew | 87 | 250-350 |
+| 218.56 | `de` | German | 88 | 250-350 |
+| 218.57 | `ja` | Japanese | 90 | 250-350 |
+| 218.58 | `ru` | Russian | 90 | 250-350 |
+| 218.59 | `ar` | Arabic (MSA) | 92 | 250-350 |
+| 218.60 | `zh` | Chinese (Mandarin) | 93 | 250-350 |
+| 218.61 | `ko` | Korean | 102 | 250-350 |
+
+### Phase B Group P9-ja (10 sub-tasks)
+
+| Sub-task | Code | Name | Current ja chars | Target |
+|---|---|---|---:|---:|
+| 218.62 | `ja_hir` | Japanese (Hiroshima) | 43 | 250-350 |
+| 218.63 | `ja_hak` | Japanese (Hakata) | 57 | 250-350 |
+| 218.64 | `ja_rys` | Yaeyama | 61 | 250-350 |
+| 218.65 | `ja_aom` | Japanese (Aomori) | 64 | 250-350 |
+| 218.66 | `ja_mvi` | Miyako | 65 | 250-350 |
+| 218.67 | `ja_kyo` | Japanese (Kyoto) | 66 | 250-350 |
+| 218.68 | `ja_sd` | Japanese (Sendai) | 76 | 250-350 |
+| 218.69 | `ja_kg` | Japanese (Kagoshima) | 83 | 250-350 |
+| 218.70 | `ja_oki` | Okinawan | 85 | 250-350 |
+| 218.71 | `ja_osa` | Japanese (Osaka) | 95 | 250-350 |
+
+### Phase B Group P9-ko (9 sub-tasks)
+
+| Sub-task | Code | Name | Current ja chars | Target |
+|---|---|---|---:|---:|
+| 218.72 | `ko_bus` | Korean (Busan) | 52 | 250-350 |
+| 218.73 | `ko_em` | Early Modern Korean | 55 | 250-350 |
+| 218.74 | `ko_yb` | Yanbian Korean | 59 | 250-350 |
+| 218.75 | `ko_kp` | Korean (DPRK) | 62 | 250-350 |
+| 218.76 | `ko_mid` | Medieval Korean | 68 | 250-350 |
+| 218.77 | `ko_jeju` | Jeju | 81 | 250-350 |
+| 218.78 | `ko_jl` | Korean (Jeolla) | 81 | 250-350 |
+| 218.79 | `ko_hg` | Korean (Hamgyong) | 88 | 250-350 |
+| 218.80 | `ko_gor` | Goryeo Korean (Early Middle) | 179 | 250-350 |
+
+### Phase B Group P9-zh (31 sub-tasks)
+
+| Sub-task | Code | Name | Current ja chars | Target |
+|---|---|---|---:|---:|
+| 218.81 | `zh_sc` | Chinese (Sichuan) | 40 | 250-350 |
+| 218.82 | `nan` | Taiwanese | 48 | 250-350 |
+| 218.83 | `cdo` | Min Dong | 49 | 250-350 |
+| 218.84 | `zh_db` | Chinese (Dongbei) | 54 | 250-350 |
+| 218.85 | `hak_cn` | Hakka | 59 | 250-350 |
+| 218.86 | `yue_gz` | Gaozhou Yue | 59 | 250-350 |
+| 218.87 | `mnp` | Min Bei (Northern Min) | 68 | 250-350 |
+| 218.88 | `zh_jh` | Jianghuai Mandarin | 68 | 250-350 |
+| 218.89 | `zh_song` | Classical Chinese (Song) | 69 | 250-350 |
+| 218.90 | `zh_tang` | Tang Chinese | 71 | 250-350 |
+| 218.91 | `zh_lz` | Lanyin Mandarin | 72 | 250-350 |
+| 218.92 | `zh_tj` | Tianjin Mandarin | 73 | 250-350 |
+| 218.93 | `gan` | Gan (Jiangxi) | 75 | 250-350 |
+| 218.94 | `cnp` | Pinghua | 75 | 250-350 |
+| 218.95 | `nan_hai` | Hainanese | 75 | 250-350 |
+| 218.96 | `czh` | Hui Chinese | 80 | 250-350 |
+| 218.97 | `wuu_wz` | Wu (Wenzhou) | 80 | 250-350 |
+| 218.98 | `zh_han` | Han Chinese | 81 | 250-350 |
+| 218.99 | `wuu_nb` | Ningbo Wu | 82 | 250-350 |
+| 218.100 | `wuu_sz` | Wu (Suzhou) | 83 | 250-350 |
+| 218.101 | `nan_qz` | Min Nan (Quanzhou) | 85 | 250-350 |
+| 218.102 | `zh_zz` | Mandarin (Zhongyuan) | 85 | 250-350 |
+| 218.103 | `nan_pn` | Penang Hokkien | 87 | 250-350 |
+| 218.104 | `yue_ts` | Taishanese | 89 | 250-350 |
+| 218.105 | `hsn` | Xiang (Hunan) | 95 | 250-350 |
+| 218.106 | `nan_te` | Teochew | 97 | 250-350 |
+| 218.107 | `zh_wh` | Mandarin (Wuhan) | 97 | 250-350 |
+| 218.108 | `hak_hl` | Taiwanese Hakka (Hailu) | 98 | 250-350 |
+| 218.109 | `cjy` | Jin (Shanxi) | 103 | 250-350 |
+| 218.110 | `hak_tw` | Taiwanese Hakka (Sixian) | 115 | 250-350 |
+| 218.111 | `wuu` | Wu Chinese | 156 | 250-350 |
+
+### Phase B Group P10 (545 sub-tasks)
+
+| Sub-task | Code | Name | Current ja chars | Target |
+|---|---|---|---:|---:|
+| 218.112 | `uz` | Uzbek | 28 | 250-350 |
+| 218.113 | `sn` | Shona | 28 | 250-350 |
+| 218.114 | `fy` | West Frisian | 30 | 250-350 |
+| 218.115 | `ceb` | Cebuano | 32 | 250-350 |
+| 218.116 | `as` | Assamese | 32 | 250-350 |
+| 218.117 | `en_ck` | English (Cockney) | 33 | 250-350 |
+| 218.118 | `ne` | Nepali | 34 | 250-350 |
+| 218.119 | `lv` | Latvian | 34 | 250-350 |
+| 218.120 | `ny` | Chichewa | 35 | 250-350 |
+| 218.121 | `ky` | Kyrgyz | 36 | 250-350 |
+| 218.122 | `nap` | Neapolitan | 36 | 250-350 |
+| 218.123 | `vec` | Venetian | 37 | 250-350 |
+| 218.124 | `es_cl` | Chilean Spanish | 38 | 250-350 |
+| 218.125 | `az` | Azerbaijani | 39 | 250-350 |
+| 218.126 | `or` | Odia | 39 | 250-350 |
+| 218.127 | `en_south` | English (Southern US) | 40 | 250-350 |
+| 218.128 | `en_app` | English (Appalachian) | 40 | 250-350 |
+| 218.129 | `mr` | Marathi | 42 | 250-350 |
+| 218.130 | `es_cu` | Cuban Spanish | 42 | 250-350 |
+| 218.131 | `ilo` | Ilocano | 43 | 250-350 |
+| 218.132 | `tk` | Turkmen | 43 | 250-350 |
+| 218.133 | `de_gsw` | Swiss German | 43 | 250-350 |
+| 218.134 | `is` | Icelandic | 43 | 250-350 |
+| 218.135 | `sl` | Slovenian | 43 | 250-350 |
+| 218.136 | `lt` | Lithuanian | 43 | 250-350 |
+| 218.137 | `rm` | Romansh | 43 | 250-350 |
+| 218.138 | `iu` | Inuktitut | 43 | 250-350 |
+| 218.139 | `sk` | Slovak | 44 | 250-350 |
+| 218.140 | `et` | Estonian | 44 | 250-350 |
+| 218.141 | `se` | Northern Sámi | 44 | 250-350 |
+| 218.142 | `sc` | Sardinian | 44 | 250-350 |
+| 218.143 | `ii` | Yi (Nuosu) | 45 | 250-350 |
+| 218.144 | `ar_gulf` | Arabic (Gulf) | 45 | 250-350 |
+| 218.145 | `fr_qc` | Quebec French | 45 | 250-350 |
+| 218.146 | `fr_af` | African French | 45 | 250-350 |
+| 218.147 | `si` | Sinhala | 46 | 250-350 |
+| 218.148 | `en_au` | English (Australian) | 46 | 250-350 |
+| 218.149 | `de_by` | Bavarian | 46 | 250-350 |
+| 218.150 | `en_in` | English (Indian) | 46 | 250-350 |
+| 218.151 | `en_yk` | English (Yorkshire) | 46 | 250-350 |
+| 218.152 | `th_s` | Thai (Southern) | 47 | 250-350 |
+| 218.153 | `su` | Sundanese | 47 | 250-350 |
+| 218.154 | `tg` | Tajik | 47 | 250-350 |
+| 218.155 | `ps` | Pashto | 47 | 250-350 |
+| 218.156 | `mn_cn` | Mongolian (Inner) | 47 | 250-350 |
+| 218.157 | `ar_lev` | Arabic (Levantine) | 47 | 250-350 |
+| 218.158 | `fo` | Faroese | 47 | 250-350 |
+| 218.159 | `vi_c` | Vietnamese (Central) | 48 | 250-350 |
+| 218.160 | `qu` | Quechua | 48 | 250-350 |
+| 218.161 | `za` | Zhuang | 48 | 250-350 |
+| 218.162 | `hmn` | Hmong | 48 | 250-350 |
+| 218.163 | `kk` | Kazakh | 48 | 250-350 |
+| 218.164 | `ar_sd` | Arabic (Sudanese) | 48 | 250-350 |
+| 218.165 | `sco` | Scots | 48 | 250-350 |
+| 218.166 | `br` | Breton | 49 | 250-350 |
+| 218.167 | `gl` | Galician | 49 | 250-350 |
+| 218.168 | `sq` | Albanian | 49 | 250-350 |
+| 218.169 | `nn` | Norwegian Nynorsk | 49 | 250-350 |
+| 218.170 | `es_an` | Andalusian Spanish | 49 | 250-350 |
+| 218.171 | `mn` | Mongolian | 50 | 250-350 |
+| 218.172 | `nds` | Low German | 50 | 250-350 |
+| 218.173 | `ug` | Uyghur | 51 | 250-350 |
+| 218.174 | `oc` | Occitan | 51 | 250-350 |
+| 218.175 | `be` | Belarusian | 51 | 250-350 |
+| 218.176 | `sr` | Serbian | 51 | 250-350 |
+| 218.177 | `pap` | Papiamento | 51 | 250-350 |
+| 218.178 | `es_pe` | Peruvian Spanish | 51 | 250-350 |
+| 218.179 | `vi_s` | Vietnamese (Southern) | 52 | 250-350 |
+| 218.180 | `om` | Oromo | 52 | 250-350 |
+| 218.181 | `gn` | Guarani | 52 | 250-350 |
+| 218.182 | `pau` | Palauan | 53 | 250-350 |
+| 218.183 | `ar_tn` | Arabic (Tunisian) | 53 | 250-350 |
+| 218.184 | `so` | Somali | 53 | 250-350 |
+| 218.185 | `es_co` | Colombian Spanish | 53 | 250-350 |
+| 218.186 | `no` | Norwegian | 54 | 250-350 |
+| 218.187 | `nv` | Navajo | 54 | 250-350 |
+| 218.188 | `th_n` | Thai (Northern) | 54 | 250-350 |
+| 218.189 | `ar_ma` | Arabic (Moroccan) | 54 | 250-350 |
+| 218.190 | `inh` | Ingush | 54 | 250-350 |
+| 218.191 | `th_isan` | Thai (Isan) | 55 | 250-350 |
+| 218.192 | `ar_iq` | Arabic (Iraqi) | 55 | 250-350 |
+| 218.193 | `da` | Danish | 56 | 250-350 |
+| 218.194 | `en_aave` | English (AAVE) | 56 | 250-350 |
+| 218.195 | `chr` | Cherokee | 56 | 250-350 |
+| 218.196 | `en_sg` | Singlish | 56 | 250-350 |
+| 218.197 | `ar_eg` | Arabic (Egyptian) | 57 | 250-350 |
+| 218.198 | `rw` | Kinyarwanda | 57 | 250-350 |
+| 218.199 | `yi` | Yiddish | 57 | 250-350 |
+| 218.200 | `sd` | Sindhi | 58 | 250-350 |
+| 218.201 | `af` | Afrikaans | 58 | 250-350 |
+| 218.202 | `de_at` | Austrian German | 58 | 250-350 |
+| 218.203 | `bg` | Bulgarian | 58 | 250-350 |
+| 218.204 | `en_sco` | English (Scottish) | 58 | 250-350 |
+| 218.205 | `ckb` | Kurdish (Sorani) | 59 | 250-350 |
+| 218.206 | `scn` | Sicilian | 59 | 250-350 |
+| 218.207 | `fr_ch` | Swiss French | 59 | 250-350 |
+| 218.208 | `jv` | Javanese | 60 | 250-350 |
+| 218.209 | `ain` | Ainu | 61 | 250-350 |
+| 218.210 | `rom` | Romani | 61 | 250-350 |
+| 218.211 | `fr_be` | Belgian French | 61 | 250-350 |
+| 218.212 | `lbe` | Lak | 61 | 250-350 |
+| 218.213 | `en_ie` | English (Irish) | 62 | 250-350 |
+| 218.214 | `lad` | Ladino | 62 | 250-350 |
+| 218.215 | `es_ar` | Argentine Spanish | 63 | 250-350 |
+| 218.216 | `tvl` | Tuvaluan | 63 | 250-350 |
+| 218.217 | `pjt` | Pitjantjatjara | 63 | 250-350 |
+| 218.218 | `min` | Minangkabau | 63 | 250-350 |
+| 218.219 | `koi` | Komi-Permyak | 63 | 250-350 |
+| 218.220 | `doi` | Dogri | 64 | 250-350 |
+| 218.221 | `ljp` | Lampung | 64 | 250-350 |
+| 218.222 | `mnc` | Manchu | 65 | 250-350 |
+| 218.223 | `ln` | Lingala | 65 | 250-350 |
+| 218.224 | `bho` | Bhojpuri | 65 | 250-350 |
+| 218.225 | `lhu` | Lahu | 65 | 250-350 |
+| 218.226 | `bjn` | Banjar | 65 | 250-350 |
+| 218.227 | `la` | Latin | 66 | 250-350 |
+| 218.228 | `got` | Gothic | 66 | 250-350 |
+| 218.229 | `pi` | Pali | 66 | 250-350 |
+| 218.230 | `dar` | Dargwa | 66 | 250-350 |
+| 218.231 | `lus` | Mizo | 66 | 250-350 |
+| 218.232 | `pag` | Pangasinan | 66 | 250-350 |
+| 218.233 | `yua` | Yucatec Maya | 67 | 250-350 |
+| 218.234 | `nus` | Nuer | 67 | 250-350 |
+| 218.235 | `mas` | Maasai | 67 | 250-350 |
+| 218.236 | `sa` | Sanskrit | 69 | 250-350 |
+| 218.237 | `gag` | Gagauz | 69 | 250-350 |
+| 218.238 | `tn` | Tswana | 69 | 250-350 |
+| 218.239 | `ab` | Abkhaz | 69 | 250-350 |
+| 218.240 | `bik` | Bikol Central | 69 | 250-350 |
+| 218.241 | `enm` | Middle English | 70 | 250-350 |
+| 218.242 | `myn` | Classical Maya | 70 | 250-350 |
+| 218.243 | `ja_edo` | Japanese (Edo) | 70 | 250-350 |
+| 218.244 | `niu` | Niuean | 70 | 250-350 |
+| 218.245 | `bhb` | Bhili | 70 | 250-350 |
+| 218.246 | `nci` | Classical Nahuatl | 71 | 250-350 |
+| 218.247 | `tab` | Tabasaran | 71 | 250-350 |
+| 218.248 | `kr` | Kanuri | 71 | 250-350 |
+| 218.249 | `pon` | Pohnpeian | 71 | 250-350 |
+| 218.250 | `toi` | Tonga (Zambia) | 71 | 250-350 |
+| 218.251 | `alt` | Altai | 72 | 250-350 |
+| 218.252 | `nyn` | Runyankole | 72 | 250-350 |
+| 218.253 | `ts` | Tsonga | 73 | 250-350 |
+| 218.254 | `ay` | Aymara | 73 | 250-350 |
+| 218.255 | `ce` | Chechen | 73 | 250-350 |
+| 218.256 | `dyo` | Jola-Fonyi | 73 | 250-350 |
+| 218.257 | `pl` | Polish | 74 | 250-350 |
+| 218.258 | `sma` | Southern Sámi | 74 | 250-350 |
+| 218.259 | `vro` | Võro | 74 | 250-350 |
+| 218.260 | `ine` | Proto-Indo-European | 74 | 250-350 |
+| 218.261 | `rar` | Cook Islands Māori | 74 | 250-350 |
+| 218.262 | `mh` | Marshallese | 74 | 250-350 |
+| 218.263 | `new` | Newari | 74 | 250-350 |
+| 218.264 | `ace` | Acehnese | 74 | 250-350 |
+| 218.265 | `umb` | Umbundu | 74 | 250-350 |
+| 218.266 | `ch` | Chamorro | 75 | 250-350 |
+| 218.267 | `shn` | Shan | 75 | 250-350 |
+| 218.268 | `guc` | Wayuu | 75 | 250-350 |
+| 218.269 | `xng` | Middle Mongolian | 75 | 250-350 |
+| 218.270 | `tly` | Talysh | 75 | 250-350 |
+| 218.271 | `smn` | Inari Sámi | 76 | 250-350 |
+| 218.272 | `el_grc` | Ancient Greek | 76 | 250-350 |
+| 218.273 | `cop` | Coptic | 76 | 250-350 |
+| 218.274 | `sux` | Sumerian | 76 | 250-350 |
+| 218.275 | `ja_heian` | Japanese (Heian) | 76 | 250-350 |
+| 218.276 | `lez` | Lezgian | 76 | 250-350 |
+| 218.277 | `war` | Waray | 76 | 250-350 |
+| 218.278 | `luo` | Luo | 76 | 250-350 |
+| 218.279 | `tem` | Themne | 76 | 250-350 |
+| 218.280 | `kha` | Khasi | 76 | 250-350 |
+| 218.281 | `mak` | Makassarese | 76 | 250-350 |
+| 218.282 | `akk` | Akkadian | 77 | 250-350 |
+| 218.283 | `st` | Sesotho | 77 | 250-350 |
+| 218.284 | `tzh` | Tzeltal | 77 | 250-350 |
+| 218.285 | `xmf` | Mingrelian | 77 | 250-350 |
+| 218.286 | `din` | Dinka | 77 | 250-350 |
+| 218.287 | `mzn` | Mazandarani | 77 | 250-350 |
+| 218.288 | `cgg` | Chiga | 77 | 250-350 |
+| 218.289 | `xkk` | Khmu | 77 | 250-350 |
+| 218.290 | `chy` | Cheyenne | 77 | 250-350 |
+| 218.291 | `iba` | Iban | 77 | 250-350 |
+| 218.292 | `smg` | Sukuma | 77 | 250-350 |
+| 218.293 | `non` | Old Norse | 78 | 250-350 |
+| 218.294 | `jbo` | Lojban | 78 | 250-350 |
+| 218.295 | `lua` | Luba-Kasai | 78 | 250-350 |
+| 218.296 | `tzo` | Tzotzil | 78 | 250-350 |
+| 218.297 | `dng` | Dungan | 78 | 250-350 |
+| 218.298 | `apw` | Western Apache | 78 | 250-350 |
+| 218.299 | `dak` | Dakota | 78 | 250-350 |
+| 218.300 | `kpe` | Kpelle | 78 | 250-350 |
+| 218.301 | `gbm` | Garhwali | 78 | 250-350 |
+| 218.302 | `arc` | Aramaic | 79 | 250-350 |
+| 218.303 | `cr` | Cree (Plains) | 79 | 250-350 |
+| 218.304 | `av` | Avar | 79 | 250-350 |
+| 218.305 | `mni` | Meitei | 79 | 250-350 |
+| 218.306 | `mhr` | Meadow Mari | 79 | 250-350 |
+| 218.307 | `ng` | Ndonga | 79 | 250-350 |
+| 218.308 | `unr` | Mundari | 79 | 250-350 |
+| 218.309 | `tr` | Turkish | 80 | 250-350 |
+| 218.310 | `ro` | Romanian | 80 | 250-350 |
+| 218.311 | `cu` | Old Church Slavonic | 80 | 250-350 |
+| 218.312 | `tum` | Tumbuka | 80 | 250-350 |
+| 218.313 | `tsg` | Tausug | 80 | 250-350 |
+| 218.314 | `chk` | Chuukese | 80 | 250-350 |
+| 218.315 | `mnk` | Mandinka | 80 | 250-350 |
+| 218.316 | `khb` | Tai Lue | 80 | 250-350 |
+| 218.317 | `ssy` | Saho | 80 | 250-350 |
+| 218.318 | `tyv` | Tuvan | 81 | 250-350 |
+| 218.319 | `smj` | Lule Sámi | 81 | 250-350 |
+| 218.320 | `vi_nom` | Vietnamese Chữ Nôm | 81 | 250-350 |
+| 218.321 | `lg` | Luganda | 81 | 250-350 |
+| 218.322 | `bem` | Bemba | 81 | 250-350 |
+| 218.323 | `kg` | Kikongo | 81 | 250-350 |
+| 218.324 | `vep` | Veps | 81 | 250-350 |
+| 218.325 | `nxq` | Naxi | 81 | 250-350 |
+| 218.326 | `luy` | Luhya | 81 | 250-350 |
+| 218.327 | `vmw` | Makhuwa | 81 | 250-350 |
+| 218.328 | `dag` | Dagbani | 81 | 250-350 |
+| 218.329 | `es_mx` | Spanish (Mexico) | 82 | 250-350 |
+| 218.330 | `eve` | Even | 82 | 250-350 |
+| 218.331 | `fi` | Finnish | 82 | 250-350 |
+| 218.332 | `nl` | Dutch | 82 | 250-350 |
+| 218.333 | `rap` | Rapanui | 82 | 250-350 |
+| 218.334 | `brx` | Bodo | 82 | 250-350 |
+| 218.335 | `dz` | Dzongkha | 82 | 250-350 |
+| 218.336 | `nyo` | Nyoro | 82 | 250-350 |
+| 218.337 | `tiw` | Tiwi | 82 | 250-350 |
+| 218.338 | `mra` | Mlabri | 82 | 250-350 |
+| 218.339 | `hu` | Hungarian | 83 | 250-350 |
+| 218.340 | `cs` | Czech | 83 | 250-350 |
+| 218.341 | `ki` | Kikuyu | 83 | 250-350 |
+| 218.342 | `gil` | Gilbertese | 83 | 250-350 |
+| 218.343 | `ban` | Balinese | 83 | 250-350 |
+| 218.344 | `ksw` | Sgaw Karen | 83 | 250-350 |
+| 218.345 | `mrq` | Marquesan | 83 | 250-350 |
+| 218.346 | `bqi` | Bakhtiari | 83 | 250-350 |
+| 218.347 | `hui` | Huli | 83 | 250-350 |
+| 218.348 | `pt_eu` | Portuguese (Europe) | 84 | 250-350 |
+| 218.349 | `azb` | South Azerbaijani | 84 | 250-350 |
+| 218.350 | `tet` | Tetum | 84 | 250-350 |
+| 218.351 | `esu` | Central Alaskan Yupik | 84 | 250-350 |
+| 218.352 | `syr` | Assyrian Neo-Aramaic | 84 | 250-350 |
+| 218.353 | `laj` | Lango | 84 | 250-350 |
+| 218.354 | `teo` | Ateso | 84 | 250-350 |
+| 218.355 | `bci` | Baoulé | 84 | 250-350 |
+| 218.356 | `kek` | Qʼeqchiʼ | 84 | 250-350 |
+| 218.357 | `arq` | Arabic (Algerian) | 85 | 250-350 |
+| 218.358 | `egy` | Ancient Egyptian | 85 | 250-350 |
+| 218.359 | `kbd` | Kabardian | 85 | 250-350 |
+| 218.360 | `os` | Ossetian | 85 | 250-350 |
+| 218.361 | `aa` | Afar | 85 | 250-350 |
+| 218.362 | `lrc` | Lurish | 85 | 250-350 |
+| 218.363 | `dyu` | Dyula | 85 | 250-350 |
+| 218.364 | `sas` | Sasak | 85 | 250-350 |
+| 218.365 | `ady` | Adyghe | 86 | 250-350 |
+| 218.366 | `udm` | Udmurt | 86 | 250-350 |
+| 218.367 | `ssw` | Swazi | 86 | 250-350 |
+| 218.368 | `kmb` | Kimbundu | 86 | 250-350 |
+| 218.369 | `gor` | Gorontalo | 86 | 250-350 |
+| 218.370 | `hit` | Hittite | 87 | 250-350 |
+| 218.371 | `mix` | Mixtec | 87 | 250-350 |
+| 218.372 | `men` | Mende | 87 | 250-350 |
+| 218.373 | `kfy` | Kumaoni | 87 | 250-350 |
+| 218.374 | `fon` | Fon | 87 | 250-350 |
+| 218.375 | `tig` | Tigre | 87 | 250-350 |
+| 218.376 | `mey` | Hassaniya Arabic | 88 | 250-350 |
+| 218.377 | `mad` | Madurese | 88 | 250-350 |
+| 218.378 | `mk` | Macedonian | 88 | 250-350 |
+| 218.379 | `ses` | Koyraboro Senni | 88 | 250-350 |
+| 218.380 | `zap` | Zapotec | 88 | 250-350 |
+| 218.381 | `lkt` | Lakota | 88 | 250-350 |
+| 218.382 | `wbp` | Warlpiri | 88 | 250-350 |
+| 218.383 | `ba` | Bashkir | 88 | 250-350 |
+| 218.384 | `nso` | Northern Sotho | 88 | 250-350 |
+| 218.385 | `cja` | Cham | 88 | 250-350 |
+| 218.386 | `bbc` | Toba Batak | 88 | 250-350 |
+| 218.387 | `xnr` | Kangri | 88 | 250-350 |
+| 218.388 | `her` | Herero | 88 | 250-350 |
+| 218.389 | `wbm` | Wa | 88 | 250-350 |
+| 218.390 | `kjh` | Khakas | 89 | 250-350 |
+| 218.391 | `sms` | Skolt Sámi | 89 | 250-350 |
+| 218.392 | `tlh` | Klingon | 89 | 250-350 |
+| 218.393 | `kam` | Kamba | 89 | 250-350 |
+| 218.394 | `ty` | Tahitian | 89 | 250-350 |
+| 218.395 | `an` | Aragonese | 89 | 250-350 |
+| 218.396 | `fan` | Fang | 89 | 250-350 |
+| 218.397 | `wbl` | Wakhi | 89 | 250-350 |
+| 218.398 | `kxm` | Northern Khmer | 89 | 250-350 |
+| 218.399 | `xog` | Soga | 89 | 250-350 |
+| 218.400 | `el` | Greek | 90 | 250-350 |
+| 218.401 | `sv` | Swedish | 90 | 250-350 |
+| 218.402 | `en_ang` | Old English | 90 | 250-350 |
+| 218.403 | `bal` | Balochi | 90 | 250-350 |
+| 218.404 | `ak` | Akan (Twi) | 90 | 250-350 |
+| 218.405 | `bgc` | Haryanvi | 90 | 250-350 |
+| 218.406 | `wa` | Walloon | 90 | 250-350 |
+| 218.407 | `nbl` | Southern Ndebele | 90 | 250-350 |
+| 218.408 | `zza` | Zaza | 90 | 250-350 |
+| 218.409 | `emp` | Northern Embera | 90 | 250-350 |
+| 218.410 | `tmh` | Tamasheq (Tuareg) | 90 | 250-350 |
+| 218.411 | `ndc` | Ndau | 90 | 250-350 |
+| 218.412 | `pt_br` | Portuguese (Brazil) | 91 | 250-350 |
+| 218.413 | `pis` | Pijin | 91 | 250-350 |
+| 218.414 | `kl` | Greenlandic | 91 | 250-350 |
+| 218.415 | `glk` | Gilaki | 91 | 250-350 |
+| 218.416 | `haz` | Hazaragi | 91 | 250-350 |
+| 218.417 | `bej` | Beja | 91 | 250-350 |
+| 218.418 | `ote` | Otomi | 91 | 250-350 |
+| 218.419 | `myv` | Erzya | 92 | 250-350 |
+| 218.420 | `hno` | Hindko | 92 | 250-350 |
+| 218.421 | `mos` | Mooré | 92 | 250-350 |
+| 218.422 | `kln` | Kalenjin | 92 | 250-350 |
+| 218.423 | `enq` | Enga | 92 | 250-350 |
+| 218.424 | `ewo` | Ewondo | 92 | 250-350 |
+| 218.425 | `en` | English | 93 | 250-350 |
+| 218.426 | `bxr` | Buryat | 93 | 250-350 |
+| 218.427 | `ve` | Venda | 93 | 250-350 |
+| 218.428 | `tt` | Tatar | 93 | 250-350 |
+| 218.429 | `pnt` | Pontic Greek | 93 | 250-350 |
+| 218.430 | `hmo` | Hiri Motu | 93 | 250-350 |
+| 218.431 | `tar` | Tarahumara | 93 | 250-350 |
+| 218.432 | `wal` | Wolaytta | 93 | 250-350 |
+| 218.433 | `es_eu` | Spanish (Europe) | 94 | 250-350 |
+| 218.434 | `kab` | Kabyle | 94 | 250-350 |
+| 218.435 | `vot` | Votic | 94 | 250-350 |
+| 218.436 | `mns` | Mansi | 94 | 250-350 |
+| 218.437 | `bum` | Bulu | 94 | 250-350 |
+| 218.438 | `pwn` | Paiwan | 94 | 250-350 |
+| 218.439 | `ttj` | Tooro | 95 | 250-350 |
+| 218.440 | `mag` | Magahi | 95 | 250-350 |
+| 218.441 | `eml` | Emilian-Romagnol | 95 | 250-350 |
+| 218.442 | `sid` | Sidamo | 95 | 250-350 |
+| 218.443 | `hil` | Hiligaynon | 96 | 250-350 |
+| 218.444 | `oj` | Ojibwe | 96 | 250-350 |
+| 218.445 | `naq` | Nama (Khoekhoe) | 96 | 250-350 |
+| 218.446 | `hts` | Hadza | 96 | 250-350 |
+| 218.447 | `moh` | Mohawk | 96 | 250-350 |
+| 218.448 | `lmo` | Lombard | 96 | 250-350 |
+| 218.449 | `yap` | Yapese | 96 | 250-350 |
+| 218.450 | `sg` | Sango | 96 | 250-350 |
+| 218.451 | `tkl` | Tokelauan | 96 | 250-350 |
+| 218.452 | `mdh` | Maguindanao | 96 | 250-350 |
+| 218.453 | `byn` | Blin | 96 | 250-350 |
+| 218.454 | `skr` | Saraiki | 97 | 250-350 |
+| 218.455 | `mwr` | Marwari | 97 | 250-350 |
+| 218.456 | `krl` | Karelian | 97 | 250-350 |
+| 218.457 | `mwl` | Mirandese | 97 | 250-350 |
+| 218.458 | `brh` | Brahui | 97 | 250-350 |
+| 218.459 | `mrw` | Maranao | 97 | 250-350 |
+| 218.460 | `crs` | Seychellois Creole | 97 | 250-350 |
+| 218.461 | `crx` | Carrier | 97 | 250-350 |
+| 218.462 | `kri` | Krio | 97 | 250-350 |
+| 218.463 | `dtp` | Kadazan-Dusun | 97 | 250-350 |
+| 218.464 | `bug` | Buginese | 98 | 250-350 |
+| 218.465 | `rif` | Tarifit | 98 | 250-350 |
+| 218.466 | `mdf` | Moksha | 98 | 250-350 |
+| 218.467 | `lis` | Lisu | 98 | 250-350 |
+| 218.468 | `cho` | Choctaw | 98 | 250-350 |
+| 218.469 | `bs` | Bosnian | 98 | 250-350 |
+| 218.470 | `rcf` | Réunion Creole | 98 | 250-350 |
+| 218.471 | `mpt` | Mian | 98 | 250-350 |
+| 218.472 | `niv` | Nivkh | 99 | 250-350 |
+| 218.473 | `bm` | Bambara | 99 | 250-350 |
+| 218.474 | `bi` | Bislama | 99 | 250-350 |
+| 218.475 | `mam` | Mam | 99 | 250-350 |
+| 218.476 | `mai` | Maithili | 100 | 250-350 |
+| 218.477 | `fur` | Friulian | 100 | 250-350 |
+| 218.478 | `syl` | Sylheti | 100 | 250-350 |
+| 218.479 | `psi` | Pashai | 100 | 250-350 |
+| 218.480 | `ach` | Acholi | 100 | 250-350 |
+| 218.481 | `cpx` | Pu-Xian Min (Hinghwa) | 100 | 250-350 |
+| 218.482 | `hsb` | Upper Sorbian | 101 | 250-350 |
+| 218.483 | `rki` | Rakhine | 101 | 250-350 |
+| 218.484 | `pms` | Piedmontese | 102 | 250-350 |
+| 218.485 | `pam` | Kapampangan | 102 | 250-350 |
+| 218.486 | `tay` | Atayal | 102 | 250-350 |
+| 218.487 | `sda` | Toraja-Sa'dan | 102 | 250-350 |
+| 218.488 | `ket` | Ket | 103 | 250-350 |
+| 218.489 | `rmy` | Vlax Romani | 103 | 250-350 |
+| 218.490 | `rup` | Aromanian | 103 | 250-350 |
+| 218.491 | `crh` | Crimean Tatar | 103 | 250-350 |
+| 218.492 | `krc` | Karachay-Balkar | 103 | 250-350 |
+| 218.493 | `ee` | Ewe | 103 | 250-350 |
+| 218.494 | `ygr` | Yagaria | 103 | 250-350 |
+| 218.495 | `quy` | Ayacucho Quechua | 103 | 250-350 |
+| 218.496 | `tao` | Tao (Yami) | 103 | 250-350 |
+| 218.497 | `kac` | Jingpo (Kachin) | 103 | 250-350 |
+| 218.498 | `mnw` | Mon | 103 | 250-350 |
+| 218.499 | `grt` | Garo | 103 | 250-350 |
+| 218.500 | `yrk` | Nenets | 104 | 250-350 |
+| 218.501 | `kca` | Khanty | 104 | 250-350 |
+| 218.502 | `ckt` | Chukchi | 104 | 250-350 |
+| 218.503 | `hr` | Croatian | 104 | 250-350 |
+| 218.504 | `gcf` | Guadeloupean Creole | 104 | 250-350 |
+| 218.505 | `ojp` | Old Japanese | 104 | 250-350 |
+| 218.506 | `kok` | Konkani | 105 | 250-350 |
+| 218.507 | `ipk` | Inupiaq | 105 | 250-350 |
+| 218.508 | `hoc` | Ho | 105 | 250-350 |
+| 218.509 | `yag` | Yaghnobi | 105 | 250-350 |
+| 218.510 | `kwk` | Kwak'wala | 105 | 250-350 |
+| 218.511 | `pcc` | Bouyei | 105 | 250-350 |
+| 218.512 | `kpv` | Komi-Zyrian | 106 | 250-350 |
+| 218.513 | `tzm` | Central Atlas Tamazight | 106 | 250-350 |
+| 218.514 | `quz` | Cusco Quechua | 106 | 250-350 |
+| 218.515 | `sat` | Santali | 107 | 250-350 |
+| 218.516 | `arn` | Mapudungun | 107 | 250-350 |
+| 218.517 | `syc` | Classical Syriac | 107 | 250-350 |
+| 218.518 | `och` | Old Chinese | 107 | 250-350 |
+| 218.519 | `quc` | Kʼicheʼ | 107 | 250-350 |
+| 218.520 | `shi` | Tashelhit | 108 | 250-350 |
+| 218.521 | `dsb` | Lower Sorbian | 108 | 250-350 |
+| 218.522 | `kw` | Cornish | 108 | 250-350 |
+| 218.523 | `loz` | Lozi | 108 | 250-350 |
+| 218.524 | `txb` | Tocharian B | 108 | 250-350 |
+| 218.525 | `en_nz` | English (New Zealand) | 109 | 250-350 |
+| 218.526 | `xsa` | Sabaean | 109 | 250-350 |
+| 218.527 | `kaa` | Karakalpak | 109 | 250-350 |
+| 218.528 | `dv` | Dhivehi | 110 | 250-350 |
+| 218.529 | `ia` | Interlingua | 110 | 250-350 |
+| 218.530 | `awa` | Awadhi | 110 | 250-350 |
+| 218.531 | `sad` | Sandawe | 110 | 250-350 |
+| 218.532 | `evn` | Evenki | 111 | 250-350 |
+| 218.533 | `csb` | Kashubian | 111 | 250-350 |
+| 218.534 | `ast` | Asturian | 111 | 250-350 |
+| 218.535 | `mfa` | Patani Malay | 111 | 250-350 |
+| 218.536 | `tyz` | Tày | 111 | 250-350 |
+| 218.537 | `sah` | Sakha | 112 | 250-350 |
+| 218.538 | `bgq` | Bagri | 112 | 250-350 |
+| 218.539 | `ahk` | Akha | 112 | 250-350 |
+| 218.540 | `ks` | Kashmiri | 113 | 250-350 |
+| 218.541 | `gv` | Manx | 113 | 250-350 |
+| 218.542 | `myp` | Pirahã | 113 | 250-350 |
+| 218.543 | `nij` | Ngaju | 113 | 250-350 |
+| 218.544 | `tsu` | Tsou | 114 | 250-350 |
+| 218.545 | `sga` | Old Irish | 115 | 250-350 |
+| 218.546 | `tji` | Tujia | 115 | 250-350 |
+| 218.547 | `itl` | Itelmen | 116 | 250-350 |
+| 218.548 | `ff` | Fula | 116 | 250-350 |
+| 218.549 | `xal` | Kalmyk | 116 | 250-350 |
+| 218.550 | `kjp` | Pwo Karen | 116 | 250-350 |
+| 218.551 | `peo` | Old Persian | 117 | 250-350 |
+| 218.552 | `xct` | Classical Tibetan | 117 | 250-350 |
+| 218.553 | `trv` | Truku (Seediq) | 117 | 250-350 |
+| 218.554 | `xpu` | Punic | 118 | 250-350 |
+| 218.555 | `ami` | Amis | 118 | 250-350 |
+| 218.556 | `cv` | Chuvash | 119 | 250-350 |
+| 218.557 | `xpr` | Parthian | 119 | 250-350 |
+| 218.558 | `nut` | Nùng | 119 | 250-350 |
+| 218.559 | `pal` | Middle Persian | 120 | 250-350 |
+| 218.560 | `tcy` | Tulu | 120 | 250-350 |
+| 218.561 | `hne` | Chhattisgarhi | 120 | 250-350 |
+| 218.562 | `bsk` | Burushaski | 121 | 250-350 |
+| 218.563 | `mfe` | Mauritian Creole | 122 | 250-350 |
+| 218.564 | `bnn` | Bunun | 122 | 250-350 |
+| 218.565 | `mrj` | Hill Mari | 123 | 250-350 |
+| 218.566 | `kgg` | Kusunda | 124 | 250-350 |
+| 218.567 | `xlu` | Luwian | 125 | 250-350 |
+| 218.568 | `obr` | Old Burmese | 125 | 250-350 |
+| 218.569 | `kea` | Cape Verdean Creole | 126 | 250-350 |
+| 218.570 | `xto` | Tocharian A | 126 | 250-350 |
+| 218.571 | `cab` | Garifuna | 126 | 250-350 |
+| 218.572 | `uga` | Ugaritic | 127 | 250-350 |
+| 218.573 | `mga` | Middle Irish | 127 | 250-350 |
+| 218.574 | `ave` | Avestan | 128 | 250-350 |
+| 218.575 | `goh` | Old High German | 130 | 250-350 |
+| 218.576 | `kaw` | Old Javanese (Kawi) | 130 | 250-350 |
+| 218.577 | `hbo` | Biblical Hebrew | 130 | 250-350 |
+| 218.578 | `vo` | Volapük | 131 | 250-350 |
+| 218.579 | `sog` | Sogdian | 131 | 250-350 |
+| 218.580 | `osx` | Old Saxon | 132 | 250-350 |
+| 218.581 | `fro` | Old French | 133 | 250-350 |
+| 218.582 | `elx` | Elamite | 133 | 250-350 |
+| 218.583 | `occ` | Old Cham | 133 | 250-350 |
+| 218.584 | `kho` | Khotanese | 134 | 250-350 |
+| 218.585 | `xsc` | Scythian | 134 | 250-350 |
+| 218.586 | `squ` | Squamish | 135 | 250-350 |
+| 218.587 | `juc` | Jurchen | 135 | 250-350 |
+| 218.588 | `vsa` | Vedic Sanskrit | 135 | 250-350 |
+| 218.589 | `osp` | Old Spanish | 137 | 250-350 |
+| 218.590 | `xqa` | Karakhanid | 137 | 250-350 |
+| 218.591 | `mtq` | Mường | 137 | 250-350 |
+| 218.592 | `tsi` | Coast Tsimshian | 138 | 250-350 |
+| 218.593 | `okz` | Old Khmer | 139 | 250-350 |
+| 218.594 | `srn` | Sranan Tongo | 139 | 250-350 |
+| 218.595 | `iuu` | Iu Mien | 139 | 250-350 |
+| 218.596 | `sukh` | Old Thai (Sukhothai) | 139 | 250-350 |
+| 218.597 | `xhu` | Hurrian | 140 | 250-350 |
+| 218.598 | `stq` | Saterland Frisian | 140 | 250-350 |
+| 218.599 | `xht` | Hattic | 140 | 250-350 |
+| 218.600 | `phn` | Phoenician | 142 | 250-350 |
+| 218.601 | `osu` | Old Sundanese | 142 | 250-350 |
+| 218.602 | `lld` | Ladin | 142 | 250-350 |
+| 218.603 | `gmh` | Middle High German | 143 | 250-350 |
+| 218.604 | `gez` | Ge'ez | 145 | 250-350 |
+| 218.605 | `mer` | Meru | 146 | 250-350 |
+| 218.606 | `txg` | Tangut | 146 | 250-350 |
+| 218.607 | `ebu` | Embu | 149 | 250-350 |
+| 218.608 | `omc` | Mochica | 150 | 250-350 |
+| 218.609 | `suk` | Sukuma | 152 | 250-350 |
+| 218.610 | `pyx` | Pyu | 153 | 250-350 |
+| 218.611 | `otk` | Old Turkic | 153 | 250-350 |
+| 218.612 | `gmy` | Mycenaean Greek | 155 | 250-350 |
+| 218.613 | `oma` | Old Malay | 155 | 250-350 |
+| 218.614 | `yuc` | Yuchi | 155 | 250-350 |
+| 218.615 | `zkt` | Khitan | 157 | 250-350 |
+| 218.616 | `shp` | Shipibo-Conibo | 159 | 250-350 |
+| 218.617 | `ctg` | Chittagonian | 161 | 250-350 |
+| 218.618 | `onn` | Onondaga | 163 | 250-350 |
+| 218.619 | `onw` | Old Nubian | 163 | 250-350 |
+| 218.620 | `omx` | Old Mon | 163 | 250-350 |
+| 218.621 | `nym` | Nyamwezi | 165 | 250-350 |
+| 218.622 | `ykg` | Tundra Yukaghir | 165 | 250-350 |
+| 218.623 | `oko` | Old Korean (Silla) | 165 | 250-350 |
+| 218.624 | `gay` | Gayo | 166 | 250-350 |
+| 218.625 | `wym` | Wymysorys | 167 | 250-350 |
+| 218.626 | `nch` | Central Huasteca Nahuatl | 168 | 250-350 |
+| 218.627 | `ibb` | Ibibio | 169 | 250-350 |
+| 218.628 | `kbp` | Kabiye | 170 | 250-350 |
+| 218.629 | `iru` | Irula | 171 | 250-350 |
+| 218.630 | `cqu` | Classical Quechua | 172 | 250-350 |
+| 218.631 | `ja_chu` | Middle Japanese | 175 | 250-350 |
+| 218.632 | `sik` | Sikkimese | 175 | 250-350 |
+| 218.633 | `lue` | Luvale | 176 | 250-350 |
+| 218.634 | `cni` | Asháninka | 177 | 250-350 |
+| 218.635 | `xmr` | Meroitic | 177 | 250-350 |
+| 218.636 | `dur` | Dii | 178 | 250-350 |
+| 218.637 | `chb` | Chibcha | 178 | 250-350 |
+| 218.638 | `lol` | Mongo | 180 | 250-350 |
+| 218.639 | `sus` | Susu | 181 | 250-350 |
+| 218.640 | `rhg` | Rohingya | 182 | 250-350 |
+| 218.641 | `orv` | Old East Slavic | 182 | 250-350 |
+| 218.642 | `myx` | Masaaba | 186 | 250-350 |
+| 218.643 | `myz` | Classical Mandaic | 187 | 250-350 |
+| 218.644 | `urh` | Urhobo | 188 | 250-350 |
+| 218.645 | `nhw` | Western Huasteca Nahuatl | 191 | 250-350 |
+| 218.646 | `dje` | Zarma | 191 | 250-350 |
+| 218.647 | `rn` | Kirundi | 192 | 250-350 |
+| 218.648 | `liv` | Livonian | 192 | 250-350 |
+| 218.649 | `sbp` | Sangu | 193 | 250-350 |
+| 218.650 | `cak` | Kaqchikel | 196 | 250-350 |
+| 218.651 | `kru` | Kurukh | 197 | 250-350 |
+| 218.652 | `ota` | Ottoman Turkish | 197 | 250-350 |
+| 218.653 | `txr` | Tartessian | 197 | 250-350 |
+| 218.654 | `pdc` | Pennsylvania German | 198 | 250-350 |
+| 218.655 | `cmg` | Classical Mongolian | 198 | 250-350 |
+| 218.656 | `ett` | Etruscan | 199 | 250-350 |
+---
+
+### Task 218 full enumeration summary (2026-05-08 evening)
+
+**Total sub-tasks for Task 218 = 656:**
+
+| Phase | Sub-task range | Group | Count | Status |
+|---|---|---|---:|---|
+| Phase A | 218.01-218.50 | Original priority 50 | 50 | ✅ COMPLETE |
+| Phase B P8 | 218.51-218.61 | UI-lang self-descriptions | 11 | ❌ NOT-STARTED |
+| Phase B P9-ja | 218.62-218.71 | Japanese dialect rows | 10 | ❌ NOT-STARTED |
+| Phase B P9-ko | 218.72-218.80 | Korean dialect rows | 9 | ❌ NOT-STARTED |
+| Phase B P9-zh | 218.81-218.111 | Sinitic varieties | 31 | ❌ NOT-STARTED |
+| Phase B P10 / Phase C | 218.112-218.656 | Mid-tier + long-tail langs | 545 | ❌ NOT-STARTED |
+| **Total** | **218.01-218.656** | | **656** | **50/656 complete (7.6%)** |
+
+**Effort estimate (revised at 200-400 char target, ~12-15 min/lang):**
+
+- Phase B P8 (11 langs × 18 min): ~3 hours
+- Phase B P9-ja (10 langs × 12 min): ~2 hours
+- Phase B P9-ko (9 langs × 12 min): ~2 hours
+- Phase B P9-zh (31 langs × 12 min): ~6 hours
+- Phase B P10 / Phase C (545 langs × 10 min average): ~91 hours
+- **Total Phase B+C: ~104 hours** (≈ 13 work-days at 8h/day)
+
+**Recommended completion order:**
+
+1. P8 (UI-lang self-desc) — highest visibility
+2. P9-ja + P9-ko (J/K dialects) — same modal-context pairing
+3. P9-zh (Sinitic varieties) — visually clustered when viewing China
+4. P10 ordered by likely-traffic: 100K+ speakers first, then endangered, then long-tail
+
+Each sub-task is independently pickable. PR title format: `Audit Task 218.NNN: backfill <code> meta`. Validator gate confirms completion: row's `description.ja` must be 200+ chars and have `description.ko` + `description.zh` to match.
+
+---
+
+## Verification Sweep (2026-05-08 late evening, updated 2026-05-08 night) — Task 218 Phase B partial completion + regressions
+
+User reported "全部対応した" (all completed). Validator-based verification confirms substantial progress on Task 218 but the work is **not complete**.
+
+**Mid-evening sweep (2026-05-08 ~21:00):** identified 5 regression categories + 53 new warnings (19 → 72) introduced by Phase B backfill batches. Created Tasks 224-230.
+
+**Night re-sweep (2026-05-08 ~23:00):** user resolved 4 of 7 regression tasks within hours (warnings 72 → 23). ✅ Tasks 224 (38 scriptTags), 225 (13 parentCode), 227 (2 disambiguator), 228 (4 speakerBasis) all closed. Tasks 226 (4 wordEvidence rows), 229 (cache-buster), 230 (4 family) remain open. Task 218 Phase B description coverage roughly unchanged: 462 langs (51%) still <200 chars ja.
+
+### Task 218 actual progress (2026-05-08 late evening verification)
+
+ja description length distribution after Phase B integration commits (ea1af44, 9131d16, 23f8f8c, 56a57f2, 41c95cc):
+
+| Bucket | 24h ago | Now | Change |
+|---|---:|---:|---:|
+| `<50` chars | 63 | **0** | ✅ -63 (eliminated) |
+| `50-100` | 357 | **149** | -208 |
+| `100-200` | 189 | **313** | +124 |
+| `200-300 ✅` | 102 | 205 | +103 |
+| `300-400 ✅` | 141 | 176 | +35 |
+| `400-600` | 52 | 58 | +6 |
+| `600+` | 0 | 3 | +3 |
+| **Total <200** | **609** | **462 (51%)** | **-147** |
+
+**462 of 910 langs (51%) still have <200 char ja descriptions** — Task 218 Phase B is ~25% complete (147 of 606 sub-tasks done). The user's "完了" assertion is overstated.
+
+**Notably-thin major UI langs still at 50-100 chars:**
+- `en` English = 93 chars (project's primary UI lang!)
+- `es_eu` European Spanish = 94 chars
+- `pt_eu` European Portuguese = 84 chars
+- `tr` Turkish = 80, `fi` Finnish = 82, `hu` Hungarian = 83, `el` Greek = 90, `nl` Dutch = 82, `sv` Swedish = 90, `ro` Romanian = 80
+
+### New Task 224. ✅ DONE Resolve scriptTags ISO 15924 misuse from Phase B backfill (38 langs, Task 213 large-scale instance)
+
+**Status (2026-05-08 night verification):** All 38 [#13l] warnings cleared. The mass scriptTags fix landed. Validator no longer reports any scriptTags enum violations.
+
+Goal:
+The Phase B Task 218 backfill batches introduced scriptTags using ISO 15924 4-letter codes (`Latn`, `Arab`, `Brah`, `Phnx`, `Hebr`, `Avst`, `Xsux`, `Hluw`, `Khmr`, `Ethi`, `Linb`, `Ougr`, `Ugar`) instead of the project's enum tokens. 38 rows now violate `[#13l]` enum check. This is a large-scale recurrence of the Task 213 problem (CONTRIBUTING.md docs for script tag mapping was never written).
+
+Current issue I checked (2026-05-08 late evening, 38 [#13l] warnings):
+
+**Mappings that need fix:**
+
+| Wrong | Correct | Affected codes |
+|---|---|---|
+| `Latn` | `Latin` | fro, goh, gmh, osp, osx, mfe, srn, iuu, squ, mga, cab, tsi, bsk (13 langs) |
+| `Arab` | `Arabic-derived` | xqa, bsk (2 langs) |
+| `Hebr` | `Hebrew` | hbo (1 lang) |
+| `Brah` | `Brahmic` | xto, kho (2 langs) |
+| `Khmr` | `Brahmic` (Khmer is Brahmi-derived) | okz (1 lang) |
+| `Ethi` | `Ethiopic` | gez (1 lang) |
+| `Phnx` | `Other historical` (Phoenician) | phn, hbo (2 langs) |
+| `Ougr` | `Mongolian-derived` (Old Uyghur) | xqa (1 lang) |
+| `Ugar` | `Cuneiform` (Ugaritic cuneiform) | uga (1 lang) |
+| `Xsux` | `Cuneiform` | elx, xhu, xlu (3 langs) |
+| `Hluw` | `Hieroglyphs` (Luwian hieroglyphs) | xlu (1 lang) |
+| `Avst` | `Other historical` | ave (1 lang) |
+| `Linb` | `Aegean syllabary` | gmy (1 lang) |
+| `Kawi` | `Brahmic` (already an enum value? if not, add) | kaw (1 lang) |
+| `Egyptian-hieroglyphs` | `Hieroglyphs` | egy (1 lang) |
+| `Runic` | `Other historical` | non (1 lang) |
+| `Glagolitic` | `Other historical` | cu (1 lang) |
+| `Aboriginal-syllabics` | `Canadian Aboriginal Syllabics` | cr (1 lang) |
+| `Mende-Kikakui` | `Other historical` | men (1 lang) |
+| `Pictographic` | `Other historical` (Naxi Dongba pictographs) | nxq (1 lang) |
+
+Files to change:
+- `wordmap_meta.js` — 38 rows.
+
+Implementation instructions:
+- Mechanical search-and-replace per the table above.
+- After fix: `[#13l]` warnings drop from 38 to 0.
+
+Done when:
+- All 38 [#13l] warnings cleared.
+- Task 213 follow-through (CONTRIBUTING.md docs) prevents recurrence.
+
+### New Task 225. ✅ DONE Restore parentCode/varietyRole on 13 underscore-codes (Task 170 regression)
+
+**Status (2026-05-08 night verification):** Underscore-code parentCode/varietyRole coverage now `88/88` (was 75/88). All 13 [#170] warnings cleared.
+
+Goal:
+Phase B Task 218 backfill batches inadvertently removed `parentCode` or `varietyRole` from 13 underscore-codes that previously had them set (per Task 170 closure). Validator's `[#170]` check now flags these.
+
+Current issue I checked (2026-05-08 late evening, 13 [#170] warnings):
+
+```
+vi_c, vi_s             — should have parentCode='vi'
+th_n                   — should have varietyRole='continuum-member' (per Task 170)
+ar_eg, ar_lev, ar_gulf, ar_iq, ar_ma, ar_sd, ar_tn  — should have parentCode='ar' or canonicalCode set
++ 5 more elided
+```
+
+Files to change:
+- `wordmap_meta.js` — restore parentCode/varietyRole on the 13 underscore-codes.
+
+Done when:
+- `underscore-code parentCode/varietyRole coverage: 88/88` (currently 75/88).
+- `[#170]` warnings drop to 0.
+
+### New Task 226. ⏳ OPEN Restore source-checked wordEvidence cells lost in Phase B backfill (Task 173/200 regression)
+
+**Status (2026-05-08 night verification):** Still open. Source-checked wordEvidence coverage `29/33` rows; the 4 thin rows below remain.
+
+Goal:
+Phase B Task 218 backfill processed `meta` blocks but inadvertently dropped some `wordEvidence` cells in 4 source-checked rows.
+
+Current issue I checked:
+
+```
+[#173] ine:    18/20 cells (was 25/29 source-checked completion claim — regressed)
+[#173] ko_gor: 10/20
+[#173] kha:    9/20
+[#173] pal:    0/20  (still uncovered, was already pending)
+```
+
+Files to change:
+- `wordmap_data.js` — restore the lost `wordEvidence` annotations from git history.
+
+Done when:
+- `source-checked wordEvidence coverage` returns to ≥ 25/29.
+- These 4 rows reach 20/20 cells of evidence.
+
+### New Task 227. ✅ DONE Restore disambiguator on 2 native-name pairs (Task 188 regression)
+
+**Status (2026-05-08 night verification):** Disambiguator coverage on shared-native rows: `29/29`. Both pairs (mn_cn↔xng, de_by↔bar) restored.
+
+Goal:
+Two pairs that previously had disambiguator set lost it during Phase B backfill.
+
+```
+[#188] mn_cn ↔ xng (ᠮᠣᠩᠭᠣᠯ Mongolian script — Inner Mongolian vs. Middle Mongolian)
+[#188] de_by ↔ bar (Boarisch — German Bavarian regional vs. ISO 639-3 Bavarian)
+```
+
+Files to change:
+- `wordmap_meta.js` — restore disambiguator on these 2 pairs.
+
+Done when:
+- `disambiguator coverage on shared-native rows: 29/29` (currently 27/29).
+
+### New Task 228. ✅ DONE Add speakerBasis to 100M+ tier rows (4 rows)
+
+**Status (2026-05-08 night verification):** No tier-coherence warnings remain in validator output. All 4 rows (ar_eg, en_south, en_in, fr_af) now carry `speakerBasis`.
+
+Goal:
+After Phase B speakerCount adjustments, 4 rows in the 100M+ tier lack `speakerBasis` (validator's tier-coherence check fires).
+
+```
+ar_eg:    ~100M (speakerBasis missing)
+en_south: ~100M regional (speakerBasis missing)
+en_in:    ~130M L2/educational (speakerBasis missing)
+fr_af:    ~140M regional aggregate (speakerBasis missing)
+```
+
+These should have `speakerBasis: 'L2'` or `'regional-population'` per Task 98 schema.
+
+Files to change:
+- `wordmap_meta.js` — add `speakerBasis` to the 4 rows.
+
+Done when:
+- 4 tier-coherence warnings cleared.
+
+### New Task 229. ⏳ OPEN Cache-buster drift instance — 4th recurrence (Task 198/202/221 instance)
+
+**Status (2026-05-08 night verification):** Still open. `meta_i18n_ext.js?v=9` in wordmap.html vs `WM_ASSET_VERSION.metaI18n=11`.
+
+Goal:
+Same drift pattern, 4th recurrence in 36 hours. `meta_i18n_ext.js?v=9` in wordmap.html static tag, `WM_ASSET_VERSION.metaI18n=11` in registry.
+
+Files to change:
+- `wordmap.html` — bump `meta_i18n_ext.js?v=9` → `?v=11`.
+
+**Recurrence rate**: 4 drifts in 36 hours. **Task 214 (auto-bump infrastructure) urgent — manual maintenance is unsustainable.**
+
+### New Task 230. ⏳ OPEN Family allow-list 4 outliers (regression, Task 159 instance)
+
+**Status (2026-05-08 night verification):** Still open. Specific outliers identified: `nv` (Athabaskan), `th_isan` (Tai-Kadai), `th_n` (Tai-Kadai), `za` (Tai-Kadai).
+
+Goal:
+4 rows have `meta.family` with top token outside the allow-list. Identified by running the validator (2026-05-08 late evening):
+
+```
+nv:       family="Athabaskan"   → should be "Na-Dene > Athabaskan" (top token = Na-Dene)
+th_isan:  family="Tai-Kadai"    → should be "Kra-Dai" (project allow-list uses Kra-Dai)
+th_n:     family="Tai-Kadai"    → should be "Kra-Dai"
+za:       family="Tai-Kadai"    → should be "Kra-Dai"
+```
+
+Both "Athabaskan" (sub-branch of Na-Dene) and "Tai-Kadai" (older synonym for Kra-Dai) are legitimate linguistic terms but inconsistent with the project's existing allow-list. The Phase B backfill batches reverted these. Three Tai-Kadai entries previously normalized to Kra-Dai (per Task 159 closure) and have regressed.
+
+Files to change:
+- `wordmap_meta.js` — normalize:
+  - `nv`: `family: 'Athabaskan'` → `family: 'Na-Dene > Athabaskan'`
+  - `th_isan`, `th_n`, `za`: `family: 'Tai-Kadai'` → `family: 'Kra-Dai'` (matches existing `th`, `lo`, `nan_zhuang` rows)
+
+Done when:
+- 4 family allow-list warnings cleared.
+- All Tai-Kadai-family rows uniformly say "Kra-Dai" (Task 159 normalization preserved across Phase B).
+
+### Task 218 Phase B — actual remaining work after late-evening verification
+
+After Phase B partial integration: **462 of 910 langs (51%) still have <200 char ja descriptions**. Phase B/C completion requires another ~459 sub-tasks (218.198-218.656 are still ~80% incomplete based on remaining-thin-langs count).
+
+| Bucket | Remaining | % of 910 |
+|---|---:|---:|
+| 50-100 chars | 149 | 16.4% |
+| 100-200 chars | 313 | 34.4% |
+| **<200 total** | **462** | **50.8%** |
+
+Still includes: `en` (93), `es_eu` (94), `pt_eu` (84), `tr` (80), `fi` (82), `hu` (83), `el` (90), `nl` (82), `sv` (90), `ro` (80) — 10 major UI langs needing rewrite.
+
+### Cumulative validator state
+
+- 910 languages.
+- 0 errors.
+- **23 warnings** (down from 72 mid-evening — **49 regressions cleared in <6 hours**, ✅ Tasks 224/225/227/228 all resolved).
+- 59 INFOs.
+- PASS.
+
+**Warning breakdown (2026-05-08 night):**
+- 17: `[#13b']` description i18n threshold (Task 144/218 ongoing — needs Phase B continuation, expected to diminish as <200-char langs are rewritten)
+- 4: `[#173]` source-checked wordEvidence (Task 226, **OPEN** — ine 18/20, ko_gor 10/20, kha 9/20, pal 0/20)
+- 1: `[#19]` cache-buster drift (Task 229, **OPEN** — meta_i18n_ext.js?v=9 vs registry v=11)
+- 4: family allow-list (Task 230, **OPEN** — nv, th_isan, th_n, za)
+- 0: `[#13l]` ✅ resolved (was 38)
+- 0: `[#170]` ✅ resolved (was 13, coverage 88/88)
+- 0: `[#188]` ✅ resolved (was 2, coverage 29/29)
+- 0: 100M+ tier ✅ resolved (was 4)
+
+### Recommended priority (2026-05-08 night, post-resolution)
+
+Quick wins (under 30 min total):
+1. **Task 229** cache-buster drift (~30 sec, mechanical bump `meta_i18n_ext.js?v=9 → ?v=11`)
+2. **Task 230** family allow-list outliers (~5 min, 4 specific edits — `nv` → "Na-Dene > Athabaskan"; `th_isan/th_n/za` → "Kra-Dai")
+3. **Task 226** source-checked wordEvidence backfill on 4 rows (~30 min, restoring lost cells from git history)
+
+After 226/229/230 land: warning count drops 23 → 17 (only Task 144/218 description-i18n threshold warnings remain).
+
+Larger remaining work:
+4. **Task 218 Phase B continuation** — 462 of 910 langs (51%) still <200 chars ja. The 17 [#13b'] threshold warnings only resolve when langs cross the 200-char floor across all 21 UI langs; this is the biggest outstanding item.
+5. **Task 144 / 209** (description i18n coverage on minor UI langs) — coupled to Task 218 Phase B; will track its progress automatically.
+
+Validator outcomes after each phase:
+- After 226/229/230: 23 warnings → 17 warnings, all PASS (only ongoing-translation-work warnings).
+- After Phase B 218 continuation (~459 more langs ≥200 chars): 17 → ~5 warnings (only thinnest minor UI langs remaining).
+- After Phase C 218 (all UI langs ≥200 chars in ALL 21 UI translations): 0 warnings.

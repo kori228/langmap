@@ -499,6 +499,23 @@
         return '<1K';
     }
 
+    // Audit Task 220 Phase 3: prefer structured speakerCount over prose
+    // when present — extract a canonical numeric for tier classification.
+    // Priority: l1 > total > rangeMax > rangeMin > l1RangeMax > l1RangeMin.
+    // Returns null if the structure has no usable number.
+    function speakerTierFromStructured(sc) {
+        if (!sc || typeof sc !== 'object') return null;
+        let n = null;
+        if (typeof sc.l1 === 'number')          n = sc.l1;
+        else if (typeof sc.total === 'number')  n = sc.total;
+        else if (typeof sc.rangeMax === 'number')   n = sc.rangeMax;
+        else if (typeof sc.rangeMin === 'number')   n = sc.rangeMin;
+        else if (typeof sc.l1RangeMax === 'number') n = sc.l1RangeMax;
+        else if (typeof sc.l1RangeMin === 'number') n = sc.l1RangeMin;
+        if (n === null || !isFinite(n)) return null;
+        return tierFor(n);
+    }
+
     function parseSpeakerTier(spkStr) {
         if (!spkStr) return null;
         const s = String(spkStr);
@@ -755,7 +772,7 @@
             tone:    typeof curated.tone === 'boolean' ? curated.tone
                    : typeof fd.tone      === 'boolean' ? fd.tone : null,
             morph:   curated.morph || fd.morph || null,
-            speaker: parseSpeakerTier(meta.speakers),
+            speaker: speakerTierFromStructured(meta.speakerCount) || parseSpeakerTier(meta.speakers),
             // Audit Task 117 provenance
             provenance: { wo: woProv, tone: toneProv, morph: morphProv },
         };

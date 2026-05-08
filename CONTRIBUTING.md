@@ -1276,6 +1276,40 @@ These fields are **optional** for backward compatibility — existing entries do
 speakerBasis: 'L1',                    // 'L1' | 'total' | 'regional-population' | 'aggregate' | 'liturgical' | 'extinct' | 'uncertain'
 speakerSource: 'Ethnologue 26',        // free string (citation)
 speakerYear: 2023,                     // 4-digit year
+
+// Audit Task 220: structured speakerCount supersedes the prose `speakers`
+// + scalar speakerBasis/Source/Year fields. Add new entries here (or via
+// SPEAKER_COUNT_OVERLAY at the bottom of wordmap_meta.js for bulk).
+speakerCount: {
+  // Pick ONE shape:
+  //   point  — single best estimate
+  l1:        125_000_000,        // L1-only count (preferred when the basis is L1)
+  total:     1_500_000_000,      // total incl. L2 (used when L1 unknown / aggregate)
+  l2:        80_000_000,         // optional L2-only count
+  range:     'point',            // 'point' (single number) | 'range' (uncertainty band)
+
+  //   range  — explicit uncertainty band
+  range:     'range',
+  rangeMin:  5_000,
+  rangeMax:  10_000,
+  l1RangeMin: 60_000_000,        // optional: when l1 has its own band but total is point
+  l1RangeMax: 85_000_000,
+
+  // Required metadata
+  year:      2024,                // 4-digit census/source year
+  source:    'Ethnologue 27',     // free citation string
+  exact:     true,                // optional: true if the number is a published exact figure
+                                  // (omit for "≈" / "~" estimates — most cases)
+
+  // Optional vitality flag (used for color-coding in modal display)
+  vitality:  'vulnerable',        // 'extinct' | 'critically-endangered' |
+                                  // 'severely-endangered' | 'definitely-endangered' |
+                                  // 'vulnerable'
+
+  // Optional qualitative notes (rendered as small line below main number)
+  notes:     'L1 ≈ 380M; L2 ≈ 1.1B (the largest L2 community of any language)',
+},
+
 iso6393: 'jpn',                        // ISO 639-3 (3-letter, lowercase)
 glottocode: 'nucl1643',                // Glottocode (4 letters + 4 digits)
 parentCode: 'zh',                      // for varieties — must exist in LANG_DATA
@@ -1299,6 +1333,7 @@ Reference example: see `LANG_DATA['ja']` in `wordmap_meta.js` and `wordmap_data.
 Why these fields:
 - **speakerBasis**: per `wordmap-check.md §5`, the bare speaker number mixes L1, total, regional aggregate, and liturgical bases — making "100M+" fragile. The `speakerBasis` enum makes the basis explicit so downstream tools can compare like-for-like.
 - **speakerSource / speakerYear**: per §15, no source/date in current data. Knowing whether a number is from Ethnologue 2023 vs. a 1980 census matters for endangered-language estimates.
+- **speakerCount** (Audit Task 220): supersedes the prose `meta.speakers`. Lossy-prose ("~125M", "5,000-10,000") becomes a structured shape (`l1` / `total` / `rangeMin` + `rangeMax`) plus required `year` and `source`. The modal renderer (`formatSpeakerCount` in `wordmap.html`) reads it and emits per-UI-lang formatting (ja `5,000〜10,000` / `1.25億`; en `5,000–10,000` / `125M`; zh `1.25亿` / `万`-unit). The filter (`speakerTierFromStructured` in `lang-filter.js`) reads `l1 ?? total ?? rangeMax` to classify the row's tier, falling back to the legacy prose parser when `speakerCount` is missing. As of 2026-05-07 the bulk parser (Phase 1) backfilled 852/910 rows (93.6%); 54 rows with unparseable prose remain in `/tmp/task220_unparseable.txt` for manual review.
 - **iso6393 / glottocode / parentCode**: per §13, the LangMap codes are a mix of ISO 639-3, ISO 639-1, and custom (`zh_sc`, `ja_edo`). Adding canonical IDs makes interop with Glottolog / WALS / Ethnologue trivial. **Note (Audit Task 178): `meta.iso6393` is the canonical field for ISO 639-3 codes. The earlier `meta.canonicalCode` field is deprecated — `CANONICAL_CODE` runtime initializer now writes into `iso6393`. Validator `[#178]` warns if `canonicalCode` is still set on any row.** **Audit Task 177: `iso6393` is auto-backfilled at runtime from a 2-letter→3-letter map (`ISO_639_1_TO_3`) for codes without explicit assignment, plus identity for 3-letter row codes. Coverage is 619/619 (100%); contributors adding new rows do not need to set `iso6393` manually if the row code is already an ISO 639-1 or 639-3 code.**
 - **reviewStatus** (Audit Task 172): every row has an explicit `meta.reviewStatus` after the runtime backfill. Initial value is determined by a heuristic over `wordEvidence` and `meta.sources`: rows with both per-cell evidence (≥5 cells) AND row-level sources → `'source-checked'`; rows with at least one form of evidence → `'human-reviewed'`; otherwise `'machine-seeded'`. Override the default by adding the row to the `REVIEW_STATUS` map at the top of `wordmap_meta.js`. Validator `[#172]` warns when a row has rich evidence but is still flagged `'unreviewed'` or `'machine-seeded'`.
 - **locationBasis**: per §9, the single `lat/lng` mixes capital / prestige center / historical site / approx region. Knowing the basis prevents the map from being misread as "speaker distribution."
