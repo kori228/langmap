@@ -417,6 +417,7 @@ const FAMILY_TOP_ALLOW = new Set([
     'Mande',                           // men/dyu/kpe/mnk — Mande family of West Africa
     'Nilotic',                         // laj/teo — Nilotic family (Sudanic, East Africa)
     'Eskimo–Aleut',                    // esu — Yupik branch of Eskimo-Aleut family
+    'Mochica',                         // omc — Mochica/Yunga, likely isolate, NW Peruvian coast (extinct ~late 19c.)
 ]);
 const familyTopHits = {};
 let familyOutsideAllow = 0;
