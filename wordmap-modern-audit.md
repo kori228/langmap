@@ -10562,8 +10562,65 @@ Meanwhile, recent Tier 4-13 additions like `bzh` Mapos Buang (~10K speakers, muc
 
 ### New Task 218. Backfill rich metadata on the ~50–600 older language entries with thin descriptions
 
+**Status: 🟡 PARTIAL (translations 23 UI ✅, but en source still thin on old priority langs).**
+**Updated 2026-05-08: target length revised to 200–400 chars en (down from "as rich as Mapos Buang").**
+
 Goal:
-Bring the older entries up to the same quality bar as the new Tier 4-13 entries: multilingual descriptions (`en/ja/ko/zh` minimum), scholarly `sources`, structured `scriptTags`, and detailed family/countries prose. The user-visible asymmetry is unfair: a small Oceanic language (`bzh`) has more thoroughly translated meta than a national lingua franca (`tpi`).
+Bring the older entries up to a *moderate* quality bar — not the maximally-rich style of the most recent additions (`ddn` Donno So at ~700 chars en is slightly excessive per user feedback 2026-05-08), but a focused 200–400 char en source with structured `sources` (2–3 entries), `scriptTags`, and 4-UI translations (en/ja/ko/zh). The user-visible asymmetry is unfair: a small Oceanic language (`bzh`) currently has substantially more meta than a national lingua franca (`tpi` at 91 chars en, no sources, no scriptTags).
+
+### Length-target calibration (revised 2026-05-08)
+
+User feedback established the following en-description length envelope:
+
+| chars | Verdict | Examples |
+|---:|---|---|
+| ~20–50 | Too thin ❌ — single fragment | `am` Amharic 20 chars, `yo` Yoruba 44 chars, `ig` Igbo 42 chars |
+| 100–150 | Insufficient ⚠️ — one sentence | `tpi` Tok Pisin 91 chars, `ms` Malay 132 chars |
+| **200–400** | **Target band ✅** | `bo` Tibetan 295 chars (lower edge); 2–3 sentences covering family + region + 1 distinctive feature |
+| 400–600 | Rich ✅ — 4 sentences with cultural detail | `bzh` Mapos Buang ~600 chars |
+| 600–800 | Slightly excessive ⚠️ | `ddn` Donno So ~700 chars (user-flagged as bordering on too much) |
+| 800+ | Excessive ❌ — modal occlusion + translation overhead | (none currently) |
+
+**Rationale for 200–400:**
+- Pedagogical core facts fit in 2–3 sentences: family, speakers + region, one distinctive feature.
+- 4 UI-lang translations × 300 chars × ~50 priority langs = ~60K chars total, vs. ~140K chars at the over-rich 700-char target — manageable workload.
+- Modal does not get visually overwhelmed by a single language's description.
+- Niche detail (ethnographic anecdotes, typology debates, contested classification) stays accessible via the `sources` citations rather than embedded in the description.
+
+### Required fields per row (revised quality bar)
+
+| Field | Requirement | Example (~target) |
+|---|---|---|
+| `description.en` | 200–400 chars, 2–3 sentences | family + speakers/region + 1 distinctive feature |
+| `description.ja/ko/zh` | translations of en (each ~same length) | priority CJK UIs |
+| `sources` | 2–3 entries (Glottolog + Ethnologue + 1 grammar/dict) | ≥ 4 entries is allowed but not required |
+| `scriptTags` | ≥ 1 entry from canonical enum | e.g. `['Latin']`, `['Brahmic']` |
+| `family` | per Task 159 normalized form | `'X (Y, Z)'` parens-comma format |
+| `countries` | country + region/state level OK | over-detailed villages list optional |
+| `official` | concise status note | "Mali (recognized national)" — not 12-language list |
+| `script` | concise prose | "Latin" or "Latin / Adlam" — not full standardization history |
+
+### `ddn` Donno So compression candidate (optional)
+
+The current `ddn` entry has ~700 chars en + multi-sibling family prose + 12-language official list + ethnographic anecdote. Recommended compression to ~350 chars (sample):
+
+```
+description.en: "Donno So (also called Tomo Kan Dogon) is a Dogon language of Niger-Congo, spoken by ~50,000 people along the Bandiagara escarpment in Mopti region, Mali. The Dogon are internationally famous for their cliff-dwelling settlements and masked dance traditions for Dama funerary rites. The Dogon family contains ~13 mutually unintelligible languages whose position within Niger-Congo is still debated."
+```
+
+Drops: Marcel Griaule mid-20th c. ethnography note, "partly fanciful" caveat, sister-language enumeration in family field, bilingual primary education materials note. These can stay accessible via `sources` (Plungian 1995) and the modal's link-out.
+
+**Decision:** keep `ddn` as-is for now (it's already merged) but use the compressed form as the **template** for Task 218 Phase A backfills of `tpi`/`sw`/`vi`/etc. Revisit `ddn` in a Phase D cleanup if uniformity becomes important.
+
+### Updated Phase A target (50 priority langs, revised)
+
+Per-language effort revised to ~15–20 min (down from ~30–60 min) using the 200–400 char target:
+- 5 min: write 2–3 sentence en description.
+- 5 min: translate to ja/ko/zh.
+- 3 min: identify 2–3 sources.
+- 2 min: scriptTags + scriptTags-aware family normalization.
+
+Total Phase A: ~15 hours (down from 25–50h with the over-rich target). Phase A delivers ~60 KB of new translation content vs. ~140 KB previously planned — half the workload.
 
 Current issue I checked (2026-05-07 evening, 20-lang sample):
 
@@ -10936,3 +10993,270 @@ Done when:
 ### Migration risk
 
 The risk is mainly Phase 1's manual review: parsing 706 free-form prose entries can introduce off-by-magnitude errors (`'~10K'` parsed as 10 instead of 10,000) or lose nuance (`'~12-15M (lingua franca; ~50% of Afghanistan population uses Dari)'` collapsing to a single number). Mitigation: Phase 1 produces a side-by-side diff of (original prose) → (regenerated prose from speakerCount). Reviewer signs off when diffs are semantically equivalent.
+
+---
+
+## Task 218 — Per-language sub-task breakdown (2026-05-08)
+
+User requested per-language task decomposition instead of a single bundled Task 218. Below are 50 priority sub-tasks (218.01–218.50), each pickable as a discrete unit. Target: 200–400 chars en + 4 UI translations + 2–3 sources + scriptTags. Effort per row: ~15–20 min.
+
+Each sub-task lists: code, name, current state (en chars, sources, scriptTags), key facts the description should anchor on. Take any sub-task as a self-contained pull-request.
+
+### Group P1 — Major creoles & pidgins (largely undocumented in current data)
+
+#### Task 218.01. `tpi` Tok Pisin
+**Current:** en 91 chars, 0 sources, no scriptTags. **Target:** ~350 chars en + ja/ko/zh + sources + scriptTags=['Latin'].
+**Key facts:** PNG official (alongside English + Hiri Motu); ~4M speakers (~150K L1, rest L2); origin 19th c. Bismarck Archipelago plantations + German colonial era 1884-1914 (German loanwords: balus "airplane" ← Bauklotz, raus "out"); substantial Tolai (Kuanua) Austronesian substrate.
+**Sources:** Mihalic 1971 Jacaranda Dictionary; Verhaar 1995 Reference Grammar; Ethnologue.
+
+#### Task 218.02. `ht` Haitian Creole
+**Current:** en 90 chars, 0 sources, no scriptTags. **Target:** ~350 chars + 4 UIs + sources + scriptTags=['Latin'].
+**Key facts:** ~12M speakers; co-official Haiti (with French); French-lexifier creole, Fon/Wolof/Bantu African substrate; standardized orthography by IPN 1979/Académie Créole 2014.
+**Sources:** Hall 1953; Valdman 2007; Ethnologue.
+
+#### Task 218.03. `jam` Jamaican Patois
+**Current:** en ~100 chars, 0 sources. **Target:** ~350 chars.
+**Key facts:** ~3M speakers Jamaica + ~1M+ diaspora UK/USA/Canada; English-lexifier, West-African-Akan substrate; Cassidy-JLU orthography; nationally recognized but English remains official.
+**Sources:** Cassidy & Le Page 1980 Dictionary of Jamaican English; Patrick 2007 grammar.
+
+#### Task 218.04. `pcm` Nigerian Pidgin (Naija)
+**Current:** en ~123 chars. **Target:** ~350 chars.
+**Key facts:** ~75M speakers (1st L2 of Nigeria); English-lexifier, Edo/Yoruba/Igbo substrate; partially mutually intelligible with Cameroon Pidgin (`wes`); BBC Pidgin News 2017+.
+**Sources:** Faraclas 1996 Nigerian Pidgin grammar; Mensah 2011.
+
+#### Task 218.05. `hwc` Hawaiian Creole (Pidgin English)
+**Current:** en ~140 chars. **Target:** ~350 chars.
+**Key facts:** ~600K speakers; English-lexifier with Hawaiian/Japanese/Cantonese/Portuguese substrate; emerged on 19th c. sugar plantations; ADS recognized as language 2015.
+**Sources:** Sakoda & Siegel 2003 Pidgin Grammar; Ethnologue.
+
+### Group P2 — Major African languages (rich scholarship available)
+
+#### Task 218.06. `sw` Swahili (`sw`)
+**Current:** en 161 chars, 0 sources. **Target:** ~350 chars.
+**Key facts:** ~80M speakers + ~150M L2; Bantu G42, lingua franca East Africa (Tanzania/Kenya/Uganda/DRC/Mozambique); Arabic-influenced lexicon (~30%) from medieval Indian Ocean trade; SOV → SVO with rich noun-class agreement.
+**Sources:** Ashton 1944 grammar; Helsinki Corpus; Ethnologue.
+
+#### Task 218.07. `am` Amharic (`am`)
+**Current:** en **20 chars** (severely thin). **Target:** ~350 chars.
+**Key facts:** ~32M speakers; official Ethiopia; Semitic Ethiopian; Geʽez/Ethiopic abugida (~280 fidel characters); SOV with elaborate verbal morphology; Ethiopian Orthodox liturgical heritage.
+**Sources:** Leslau 1995 Reference Grammar; Appleyard 1995.
+
+#### Task 218.08. `yo` Yoruba (`yo`)
+**Current:** en **44 chars**. **Target:** ~350 chars.
+**Key facts:** ~45M speakers; Nigeria + Benin + Togo + diaspora (Yoruba religion in Brazil/Cuba); 3-tone system (high/mid/low); 7-vowel inventory (i/e/ɛ/a/ɔ/o/u); rich oral traditions (Ifá divination corpus).
+**Sources:** Bamgbose 1966 grammar; Awoyale 2008 dictionary.
+
+#### Task 218.09. `ig` Igbo (`ig`)
+**Current:** en **42 chars**. **Target:** ~350 chars.
+**Key facts:** ~24M speakers; Nigeria SE; tonal (high/low + downstep); vowel harmony (ATR); Onwu orthography 1962; rich proverb/oral literature.
+**Sources:** Welmers 1968 Igbo grammar; Igwe 1999 dictionary.
+
+#### Task 218.10. `ha` Hausa (`ha`)
+**Current:** en ~95 chars. **Target:** ~350 chars.
+**Key facts:** ~80M speakers (~40M L1 + ~40M L2 lingua franca West Africa); Chadic Afro-Asiatic; Latin (Boko) + Arabic-derived (Ajami); 2-tone + vowel length distinction; Hausa Bakar 19th c. literary tradition.
+**Sources:** Newman 2000 Hausa Language; Ethnologue.
+
+#### Task 218.11. `zu` Zulu (`zu`)
+**Current:** en ~125 chars. **Target:** ~350 chars.
+**Key facts:** ~12M L1 + ~16M L2; South Africa official (Nguni Bantu); 3 click consonants (ǀ ǁ ǃ from Khoisan substrate); 17 noun classes; high tone-stress correlation.
+**Sources:** Doke 1955 grammar; Poulos & Msimang 1998.
+
+#### Task 218.12. `xh` Xhosa (`xh`)
+**Current:** en ~119 chars. **Target:** ~350 chars.
+**Key facts:** ~8M L1; South Africa official; sister to Zulu (Nguni); 18 click consonants (most extensive in Bantu); penultimate stress; written tradition since 1820s missionary period.
+**Sources:** Mclaren 1944 grammar; Pahl 1989 dictionary.
+
+#### Task 218.13. `mg` Malagasy (if not done)
+**Target:** ~350 chars.
+**Key facts:** ~25M speakers; Madagascar official; Austronesian (Barito), unique outlier 7000 km from nearest relative (Borneo); SVO with extensive Bantu/Arabic/French loanwords; classical Sora-Bedo orthography.
+**Sources:** Rajemisa-Raolison 1971 grammar.
+
+#### Task 218.14. `ti` Tigrinya
+**Target:** ~350 chars.
+**Key facts:** ~9M speakers; co-official Eritrea, regional Ethiopia (Tigray); Semitic Ethiopian; Geʽez script; sister to Tigre (`tig`).
+**Sources:** Kogan 1997; Berhane 1991 grammar.
+
+#### Task 218.15. `wo` Wolof
+**Target:** ~350 chars.
+**Key facts:** ~12M speakers (mostly L2); de facto national lingua franca Senegal (despite French being official); Atlantic-Congo (Senegambian); Latin orthography 1971; Wolofal Ajami (Arabic) historical.
+**Sources:** Sauvageot 1965 grammar.
+
+### Group P3 — Major Asian languages
+
+#### Task 218.16. `vi` Vietnamese
+**Current:** en ~165 chars. **Target:** ~350 chars.
+**Key facts:** ~85M L1 + 5M diaspora; official Vietnam; Austroasiatic Vietic; 6 tones (Northern) / 5 (Southern); chữ Quốc ngữ Latin orthography 17th c. Jesuit missionary; Sino-Vietnamese ~60% lexicon.
+**Sources:** Thompson 1965 grammar; Nguyen 1997.
+
+#### Task 218.17. `id` Indonesian
+**Current:** en ~155 chars. **Target:** ~350 chars.
+**Key facts:** ~200M L2 (national lingua franca, ~25-40M L1); standardized form of Malay (Bahasa Indonesia); Austronesian Malayic; Latin (van Ophuijsen 1901 → EYD 1972); SVO with verbal affix system; 740K+ Wikipedia articles.
+**Sources:** Sneddon 2010 Indonesian Reference Grammar.
+
+#### Task 218.18. `ms` Malay
+**Current:** en ~132 chars. **Target:** ~350 chars.
+**Key facts:** ~290M L1+L2 across Malaysia + Brunei + Singapore + S. Thailand; Austronesian; Latin (Rumi) + Arabic-derived (Jawi historical, still used in Brunei + Malaysia ceremonial).
+**Sources:** Asmah 1981 reference grammar.
+
+#### Task 218.19. `tl` Tagalog
+**Current:** en ~142 chars. **Target:** ~350 chars.
+**Key facts:** ~28M L1, ~83M L2 (basis of Filipino, national language); Austronesian Central Philippine; Latin (post-1937 ABAKADA); historical Baybayin Brahmic script (1500s).
+**Sources:** Schachter & Otanes 1972 Tagalog Reference Grammar.
+
+#### Task 218.20. `th` Thai (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~60M speakers; official Thailand; Tai-Kadai SW Tai; 5 tones (Bangkok); Thai script Brahmic 1283 King Ramkhamhaeng; SVO; rich Pali-Sanskrit Buddhist vocabulary.
+**Sources:** Smyth 2002 grammar; Royal Institute Dictionary.
+
+#### Task 218.21. `bn` Bengali (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~265M speakers (5th most-spoken globally); official Bangladesh + India (West Bengal/Tripura); Indo-Aryan Eastern; Bengali script Brahmic (Eastern Nagari); rich literary tradition (Tagore Nobel 1913).
+**Sources:** Chatterji 1926 Origin and Development of the Bengali Language.
+
+#### Task 218.22. `hi` Hindi (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~340M L1 + ~270M L2; co-official India; Indo-Aryan Central; Devanagari Brahmic; macrolanguage with Urdu (mutually intelligible spoken, distinct script); Sanskrit literary borrowings.
+**Sources:** McGregor 1972 Outline; Snell 2003.
+
+#### Task 218.23. `my` Burmese
+**Current:** en ~253 chars (better than most). **Target:** maintain or expand to ~350 chars + sources + scriptTags.
+**Key facts:** ~33M speakers; Myanmar official; Sino-Tibetan Tibeto-Burman; Burmese script Brahmic 12th c. Mon-derived; 4 tones (low/high/creaky/checked); diglossic literary vs. colloquial.
+**Sources:** Watkins 2001 JIPA; Wheatley 2003 grammar.
+
+#### Task 218.24. `km` Khmer
+**Current:** en ~249 chars. **Target:** maintain.
+**Key facts:** ~16M speakers; Cambodia official; Austroasiatic Mon-Khmer; Khmer Brahmic abugida (~7th c.); non-tonal (rare in SE Asia); Pali/Sanskrit Buddhist vocabulary; Angkorian inscriptions.
+**Sources:** Headley 1977; Huffman 1970.
+
+#### Task 218.25. `lo` Lao
+**Current:** en ~228 chars. **Target:** maintain.
+**Key facts:** ~30M speakers (Laos + NE Thailand Isan); Tai-Kadai SW Tai; Lao script Brahmic; mutually intelligible with Thai (~80%); 6 tones Vientiane standard.
+**Sources:** Enfield 2007 Lao grammar.
+
+#### Task 218.26. `bo` Tibetan
+**Current:** en ~295 chars. **Target:** maintain or slightly expand.
+**Key facts:** ~6M speakers Plateau + diaspora; co-official Tibet AR; Sino-Tibetan Bodish; Tibetan abugida 7th c. Thonmi Sambhota; binary HIGH/LOW tone (Lhasa); rich Buddhist canonical literature.
+**Sources:** Tournadre & Sangda Dorje Manual; DeLancey 2003.
+
+### Group P4 — Major European regional / minority
+
+#### Task 218.27. `cy` Welsh (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~600K-900K speakers; Wales co-official; Brythonic Celtic; nasal-mutation + soft-mutation system; Welsh language television (S4C 1982); Welsh-medium education revival.
+
+#### Task 218.28. `ga` Irish (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~170K daily L1 + ~1.7M with some ability; Ireland official + EU; Goidelic Celtic; complex consonant mutation; Caighdeán Oifigiúil 1958 standard; Gaeltacht communities.
+
+#### Task 218.29. `gd` Scottish Gaelic (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~57K speakers (Scotland Highlands/Hebrides); Goidelic Celtic; recognized by Gaelic Language Act 2005; sister to Irish (Goidelic, mutually understandable with effort).
+
+#### Task 218.30. `eu` Basque
+**Target:** ~350 chars.
+**Key facts:** ~750K speakers (Basque Country: Spain Pyrenees + France); language isolate (no proven family); ergative-absolutive case system; co-official Basque Autonomous Community + Navarre.
+
+#### Task 218.31. `ca` Catalan
+**Target:** ~350 chars.
+**Key facts:** ~10M speakers; co-official Catalonia + Balearic Islands + Valencia + Andorra; Romance Iberian/Gallo-Iberian transitional; standardized 1913 (Pompeu Fabra orthography); rich literary tradition.
+
+### Group P5 — Major Middle Eastern / Caucasian
+
+#### Task 218.32. `fa` Persian (Farsi) (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~80M L1; official Iran + Tajikistan (Tajiki) + Afghanistan (Dari); Indo-European Iranian; Perso-Arabic abjad (32 letters); SOV; 2500+ year continuous literary tradition (Rudaki, Hafez, Ferdowsi).
+
+#### Task 218.33. `ku` Kurdish (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~30M speakers (Kurmanji + Sorani + Pehlewani); spans Turkey/Iraq/Iran/Syria; Indo-European Iranian; Latin (Hawar) + Perso-Arabic (Sorani) + Cyrillic (former USSR); Iraq Kurdish co-official 2005.
+
+#### Task 218.34. `hy` Armenian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~6.7M speakers; Armenia + Artsakh + diaspora; Indo-European, isolate within IE (own branch); Armenian alphabet 405 CE Mesrop Mashtots; classical/modern diglossia.
+
+#### Task 218.35. `ka` Georgian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~3.7M speakers; Georgia official; Kartvelian (own family with Mingrelian/Svan/Laz); Georgian alphabet (3 historical scripts: Asomtavruli/Nuskhuri/Mkhedruli); ergative split.
+
+### Group P6 — Major South Asian additional
+
+#### Task 218.36. `ta` Tamil (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~75M speakers; classical language status India 2004; Dravidian Southern; Tamil Brahmic abugida; agglutinative SOV; 2000+ year continuous literary tradition (Sangam ~2nd c. BCE).
+
+#### Task 218.37. `te` Telugu (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~83M speakers; co-official India (Andhra Pradesh + Telangana); Dravidian South-Central; Telugu Brahmic; agglutinative; long literary heritage (Nannayya 11th c.).
+
+#### Task 218.38. `kn` Kannada (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~44M speakers; classical India 2008; Dravidian South; Kannada Brahmic; 1500+ year literary tradition (Kavirajamarga 850 CE).
+
+#### Task 218.39. `ml` Malayalam (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~38M speakers; co-official Kerala/Lakshadweep; Dravidian South; Malayalam Brahmic; rich Sanskrit-Tamil Manipravalam tradition; classical India 2013.
+
+#### Task 218.40. `gu` Gujarati (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~57M speakers; co-official India (Gujarat); Indo-Aryan Western; Gujarati Brahmic (modified Devanagari); SOV; literary Bhakti tradition (Narsinh Mehta 15th c.).
+
+#### Task 218.41. `pa` Punjabi (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~125M speakers (E India + Pakistan); India: Gurmukhi Brahmic; Pakistan: Shahmukhi Perso-Arabic; tonal (3 tones — rare among IA langs); Sikh scriptural language (Guru Granth Sahib).
+
+#### Task 218.42. `ur` Urdu (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~70M L1 + ~170M L2; Pakistan official + India 8th Schedule; Indo-Aryan Central (sister to Hindi); Nastaliq Perso-Arabic; Persian/Arabic learned vocabulary heavy.
+
+### Group P7 — Pacific & remaining major
+
+#### Task 218.43. `mi` Māori (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~186K speakers; co-official NZ (Te Reo Māori Act 1987); Austronesian Polynesian Eastern; Latin orthography (1814); 5-vowel inventory; verb-initial VSO; te reo immersion schools (kohanga reo).
+
+#### Task 218.44. `sm` Samoan (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~510K speakers (Samoa + American Samoa + diaspora); co-official Samoa; Polynesian Nuclear Polynesian; Latin orthography from missionary 1830s; T-style vs. K-style register diglossia.
+
+#### Task 218.45. `to` Tongan (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~187K speakers; official Tonga (with English); Polynesian Tongic; SVO; ergative-absolutive alignment; rich oral tradition (faiva).
+
+#### Task 218.46. `fj` Fijian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~640K speakers; co-official Fiji; Austronesian Eastern Fijian; complex vocative-locative system; "Bauan" dialect basis of standard.
+
+#### Task 218.47. `haw` Hawaiian (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~24K speakers (revitalization since 1980s; ~2K from "ʻōlelo Hawaiʻi" Pūnana Leo immersion); co-official Hawaiʻi; Polynesian; 13-phoneme inventory (smallest of major langs); ʻokina + kahakō.
+
+#### Task 218.48. `mt` Maltese (if thin)
+**Target:** ~350 chars.
+**Key facts:** ~520K speakers; Malta official + EU; Semitic Maghrebi-Arabic with massive Italian/Sicilian + English superstrate; **only Semitic language in Latin script** + EU; 13th c. Sicilian Arabic origin.
+
+#### Task 218.49. `eo` Esperanto (revisit if thin)
+**Target:** ~350 chars.
+**Key facts:** ~1-2M speakers global; constructed (Zamenhof 1887 Białystok); regular grammar (16 fundamental rules); 5-vowel inventory; pan-European lexicon; UNESCO recognition 1954.
+
+#### Task 218.50. `tok` Toki Pona (revisit if thin)
+**Target:** ~350 chars.
+**Key facts:** ~1K speakers (active community); minimal-vocabulary constructed (137 root words; Sonja Lang 2001 Toronto); 9 phonemes (smallest Latin-orthography lang); philosophical/Taoist minimalism.
+
+### Sub-task progress tracking
+
+Each sub-task above is independently pickable. Recommended ordering:
+1. **Group P2 African** (Tasks 218.06–218.15) — highest visible asymmetry given Task 218 sample showed all 5 langs `am`/`yo`/`ig` at ~20-44 chars.
+2. **Group P1 creoles** (Tasks 218.01–218.05) — Tok Pisin user-flagged.
+3. **Group P3 Asian** (Tasks 218.16–218.26) — high traffic.
+4. **Group P4 European minority** (Tasks 218.27–218.31).
+5. **Group P5 Middle East/Caucasus** (Tasks 218.32–218.35).
+6. **Group P6 South Asian** (Tasks 218.36–218.42).
+7. **Group P7 Pacific + constructed** (Tasks 218.43–218.50).
+
+Completion of all 50 sub-tasks = Task 218 Phase A complete. Phase B (mid-tier 100K-1M speakers) and Phase C (long tail) remain as separate batches for later.
+
+### Cross-task dependencies
+
+- Task 218.x depends on Task 159 (family normalization) — already complete, so family fields can be written without waiting.
+- Task 218.x depends on Task 130 (scriptTags enum) — already complete.
+- Task 220 (speakerCount Option C) is *not* a blocker; sub-tasks can write the structured `speakerCount` AND the prose during the rewrite.
