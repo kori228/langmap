@@ -291,6 +291,8 @@ const META_I18N_ATOMS = {
         'No': '없음', 'No (recognized minority)': '없음 (소수민족 인정)',
         // Scripts
         'Latin': '라틴 문자', 'Cyrillic': '키릴 문자', 'Devanagari': '데바나가리',
+        'Thai': '태국 문자', 'Bengali': '벵골 문자', 'Arabic': '아랍 문자', 'Filipino': '필리피노어',
+        'Brunei': '브루나이', 'Fiji': '피지', 'Nepal': '네팔', 'Chadic': '차드어파',
         'Tibetan': '티베트 문자', 'Burmese': '버마 문자',
         'Adlam': '아들람 문자', "N'Ko": '응코 문자', 'Tifinagh': '티피나그 문자',
         'Nastaliq': '나스탈리크', 'Bengali script': '벵골 문자',
@@ -465,6 +467,8 @@ const META_I18N_ATOMS = {
         'No': '无', 'No (recognized minority)': '无 (少数民族认可)',
         // Scripts
         'Latin': '拉丁字母', 'Cyrillic': '西里尔字母', 'Devanagari': '天城文',
+        'Thai': '泰文', 'Bengali': '孟加拉文', 'Arabic': '阿拉伯字母', 'Filipino': '菲律宾语',
+        'Brunei': '文莱', 'Fiji': '斐济', 'Nepal': '尼泊尔', 'Chadic': '乍得语支',
         'Tibetan': '藏文', 'Burmese': '缅文',
         'Adlam': '阿德拉姆文字', "N'Ko": '恩科文字', 'Tifinagh': '提非纳文字',
         'Nastaliq': '波斯体', 'Bengali script': '孟加拉文',
@@ -586,6 +590,8 @@ const META_I18N_ATOMS = {
         'with English': '(與英語並列)', 'with French': '(與法語並列)',
         // Scripts
         'Latin': '拉丁字母', 'Cyrillic': '西里爾字母',
+        'Thai': '泰文', 'Bengali': '孟加拉文', 'Arabic': '阿拉伯字母', 'Filipino': '菲律賓語',
+        'Brunei': '汶萊', 'Fiji': '斐濟', 'Nepal': '尼泊爾', 'Chadic': '乍得語支',
         'Devanagari': '天城文', 'Tibetan': '藏文',
         'with diacritics': '帶附加符號', 'script': '文字', 'syllabary': '音節文字',
     
