@@ -22,6 +22,214 @@ Second, some IPA fields contain non-IPA placeholders such as capital `N`. These 
 
 A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, and `good` are semantically broad. Some duplicated forms are probably valid cultural/lexical overlap, but others need source-backed confirmation.
 
+---
+
+## Task Status Index (last updated: 2026-05-08, 910 langs, validator 0 errors / 23 warnings)
+
+Status legend:
+- ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
+- 🟡 **PARTIAL** — schema/gate landed, backfill incomplete or coverage <95%.
+- ❌ **NOT-STARTED** — task registered but no implementation activity.
+- 🔄 **SUPERSEDED** — replaced by a later task; retained for context.
+- ⏳ **REGISTERED** — formally accepted, awaiting implementation cycle.
+- 📋 **INSTANCE** — concrete instance of a class-level task, resolved.
+
+**Validator-confirmed counts (910 langs):** 0 errors, 23 warnings (all in [#13b'] description i18n + [#173] source-checked wordEvidence).
+
+### Group A — Foundational schema & validation (Tasks 71–110)
+
+| Task | Topic | Status | Coverage / note |
+|---|---|---|---|
+| 71 | Major Asian-language pronunciation cleanup | 🟡 PARTIAL | per-row work continues |
+| 72 | Asian minority-language cleanup | 🟡 PARTIAL | per-row |
+| 73 | Same-form duplicate cells source verification | 🟡 PARTIAL | wordEvidence overlay 1128 cells |
+| 74 | Remaining schema/UI/tooling tasks | 🟡 PARTIAL | rolled into specific tasks |
+| 75 | Historical/full-audit leftovers | 🟡 PARTIAL | per-row |
+| 76 | pronunciationType labeling | 🟡 PARTIAL | 240/910 (26%) |
+| 77 | WORD_LIST.definition | ✅ COMPLETE | 21/21 UIs (Task 176 closed it) |
+| 78 | Asian tone/IPA per-language fix | 🟡 PARTIAL | bo/my/km/lo done (Task 146) |
+| 79 | regional-variant coverage flag | ✅ COMPLETE | enum + UI rendering |
+| 80 | source references for high-traffic langs | 🟡 PARTIAL | 380/910 (42%) |
+| 81 | stress policy doc | ✅ COMPLETE | CONTRIBUTING.md C2 |
+| 82 | normalize WORD_LIST.definition | ✅ COMPLETE | object form, 21/21 |
+| 83 | concept/data consistency audit | 🟡 PARTIAL | depends on Task 82 |
+| 84 | surfaceType schema | 🟡 PARTIAL | 472/910 (52%) |
+| 85 | stress edits gating | ✅ COMPLETE | doc'd in 81 |
+| 86 | partial-schema validator checks | ✅ COMPLETE | validators added |
+| 87 | meta fields in correct file | ✅ COMPLETE | wordmap_meta.js used |
+| 88 | exact duplicate regional rows | ✅ COMPLETE | 6 groups labeled (Task 90) |
+| 89 | modal trust-field rendering | ✅ COMPLETE | UI badges rendered |
+| 90 | row-fingerprint tooling | ✅ COMPLETE | 6 exact-dup groups, all labeled |
+| 91 | references vs sources | ✅ COMPLETE | sources canonical |
+| 92 | UI-label coverage gates | ✅ COMPLETE | I18N_STRINGS expanded |
+| 93 | modal a11y prereqs | ✅ COMPLETE | dialog focus, ARIA |
+| 94 | romanization-vs-IPA audit | ✅ COMPLETE | gate firing on outliers |
+| 95 | concept-def visible UI | ✅ COMPLETE | always-visible under dropdown |
+| 96 | source-footer safe links | ✅ COMPLETE | safeUrl + escapeHtml |
+| 97 | split word evidence schema | 🟡 PARTIAL | gate added; 0/1128 cells use it |
+| 98 | speaker metadata for priority langs | 🟡 PARTIAL | 8 langs done |
+| 99 | locationBasis schema + UI | 🟡 PARTIAL | 226/910 (25%) |
+| 100 | localize unattested `—` cells | ✅ COMPLETE | 21 UI langs |
+| 101 | evidence notes a11y | ✅ COMPLETE | role=button + keyboard |
+| 102 | rename "IPA" toggle | ✅ COMPLETE | "Pron." in en, etc. |
+| 103 | bound-stem / hyphen policy | ✅ COMPLETE | formType schema + 83/83 |
+| 104 | phrase-vs-word policy | ✅ COMPLETE | 363/363 multiword formType |
+| 105 | SEO text update | ✅ COMPLETE | "pronunciation guides" |
+| 106 | hardcoded UI strings | ✅ COMPLETE | 13 ARIA keys + WM_UI |
+| 107 | public count strings audit | ✅ COMPLETE | validator + auto-bump candidate |
+| 108 | row-level reviewStatus | ✅ COMPLETE | 910/910 |
+| 109 | codeType + canonicalCode | ✅ COMPLETE | 910/910 (Task 178 closed canonicalCode) |
+| 110 | sources for historical rows | ✅ COMPLETE | high-coverage rows sourced |
+
+### Group B — Mid-tier (Tasks 111–150)
+
+| Task | Topic | Status | Coverage / note |
+|---|---|---|---|
+| 111 | sources for wordEvidence rows | ✅ COMPLETE | done with 110 |
+| 112 | era help icon | ✅ COMPLETE | `?` icon in modern/historical |
+| 113 | parent-child inheritance display | ✅ COMPLETE | "Regional variety of: X" line |
+| 114 | accent-insensitive search + alias | ✅ COMPLETE | NFD + meta.aliases |
+| 115 | disambiguator schema | ✅ COMPLETE | 29/29 (Task 188 follow-through) |
+| 116 | Unicode/font/script audit | ✅ COMPLETE | 10 scripts detected |
+| 117 | typology provenance | ✅ COMPLETE | manual-override / family-default |
+| 118 | languageKind + UI badge | 🟡 PARTIAL | 130/910 (14%, mostly natural-default) |
+| 119 | scriptDisplayPolicy | ✅ COMPLETE | zkt set, others Task 197 candidates |
+| 120 | same-form duplicate triage | ✅ COMPLETE | wordEvidence notes added |
+| 121 | description fallback labeling | ✅ COMPLETE | English-fallback label, 95% threshold |
+| 122 | HIST_DESCENDANT to data.js | ✅ COMPLETE | moved + validator reads ctx |
+| 123 | hashchange/popstate | ✅ COMPLETE | applyHashState() + guard |
+| 124 | hardcoded UI nav strings | ✅ COMPLETE | NAV_ORDER/NAV_WORD WM_UI |
+| 125 | CDN fallback | ✅ COMPLETE | Leaflet/Globe init halt |
+| 126 | parentCode coverage | ✅ COMPLETE | 88/88 (Task 170) |
+| 127 | locationBasis priority langs | 🟡 PARTIAL | 226/910 |
+| 128 | CONTRIBUTING.md updates | ✅ COMPLETE | C5 split-evidence docs |
+| 129 | RTL/bidi handling | ✅ COMPLETE | dir="auto" + isolate |
+| 130 | scriptTags schema | 🟡 PARTIAL | 229/910 (25%) |
+| 131 | locationBasis schema placement | ✅ COMPLETE | meta canonical |
+| 132 | localize evidence markers | ✅ COMPLETE | en/ja/ko/zh/de/fr/es |
+| 133 | structured citation upgrade | 🟡 PARTIAL | gate added, 0/1128 cells use it |
+| 134 | cache-buster centralization | ✅ COMPLETE | WM_ASSET_VERSION + validator |
+| 135 | map labels keyboard a11y | ✅ COMPLETE | role=button + tabindex |
+| 136 | combobox/listbox search | ✅ COMPLETE | ARIA combobox |
+| 137 | dialog focus management | ✅ COMPLETE | _lastDialogOpener |
+| 138 | legacy script headers | ✅ COMPLETE | LEGACY SENTENCE MAP TOOL |
+| 139 | README validation section | ✅ COMPLETE | en + ja |
+| 140 | CI workflow | ✅ COMPLETE | .github/workflows/wordmap-validate.yml |
+| 141 | Tier 1 langs (cv/dv/tzh/mdf etc.) | ✅ COMPLETE | most added by 910-lang push |
+| 142 | Tier 2 langs (sign langs/Saami/etc.) | 🟡 PARTIAL | sign langs deferred (modality decision) |
+| 143 | finish in-flight Tier 1 lang_names | ✅ COMPLETE | 910/910 lang_names |
+| 144 | description i18n historical batch | 🟡 PARTIAL | ja/ko/zh 99%, es/pt 57%, others 59-71% |
+| 145 | string→object description | ✅ COMPLETE | 0 string-form descriptions |
+| 146 | Pass-7 deferred per-language rebuilds | ✅ COMPLETE | bo/my/km/lo done |
+| 147 | Pass-2-6 deferred policy items | 🟡 PARTIAL | per-§ closures recorded |
+| 148 | Japonic-stage coords | ✅ COMPLETE | distinct points |
+| 149 | Tier 3 langs (creoles/conlangs) | ✅ COMPLETE | added in 910-lang push |
+| 150 | Tier 3.5 langs (Uganda/Khoisan) | 🟡 PARTIAL | jrb/nmn deferred |
+
+### Group C — Educational + roadmap (Tasks 151–200)
+
+| Task | Topic | Status | Coverage / note |
+|---|---|---|---|
+| 151 | audio playback | ❌ NOT-STARTED | audioRef 0 |
+| 152 | cognate sets demo | ❌ NOT-STARTED | etymologyTags not added |
+| 153 | grammar capsule schema | ❌ NOT-STARTED | depends on Task 220 |
+| 154 | sample sentence corpus | ❌ NOT-STARTED | meta.samples not added |
+| 155 | IPA tutor + glossary | ❌ NOT-STARTED | ipa_descriptions.js not created |
+| 156 | curated lesson tours | ❌ NOT-STARTED | tours.js not created |
+| 157 | citation export | ❌ NOT-STARTED | citation_formatters.js not created |
+| 158 | interactive quiz | ❌ NOT-STARTED | quiz.js not created |
+| 159 | family taxonomy normalization | ✅ COMPLETE | 0 outliers (was 46) |
+| 160 | IPA capital-letter / Baxter-Sagart | ✅ COMPLETE | validator gate, zh_tang noted |
+| 161 | Korean/English coord clusters | ✅ COMPLETE | distributed |
+| 162 | unattestedReason | ✅ COMPLETE | 252/252 |
+| 163 | affricate tie-bar | 🟡 PARTIAL | 231/2040 cells |
+| 164 | reconstructed-form notation | ✅ COMPLETE | Option C applied to 3 rows |
+| 165 | meta.script normalization | 🟡 PARTIAL | structure improved, prose audit pending |
+| 166 | officialStatus enum | ❌ NOT-STARTED | 0/910 |
+| 167 | speakerCount structured | 🔄 SUPERSEDED | → Task 220 |
+| 168 | single-line decls | 🟡 PARTIAL | 16 multi-line rows remain |
+| 169 | surface == IPA flag | 🟡 PARTIAL | 376 cells (grew from 144) |
+| 170 | underscore-code parentCode | ✅ COMPLETE | 88/88 |
+| 171 | speakerYear backfill | 🟡 PARTIAL | 72/910 (8%) |
+| 172 | reviewStatus migration | ✅ COMPLETE | 910/910 explicit |
+| 173 | source-checked wordEvidence | 🟡 PARTIAL | 25/29 (4 langs) |
+| 174 | constructed-lang coords | ✅ COMPLETE | Białystok/Toronto/LA/Fairfax |
+| 175 | WORD_LIST.label all 21 UI | ✅ COMPLETE | 21/21 |
+| 176 | WORD_LIST.definition all 21 UI | ✅ COMPLETE | 21/21 |
+| 177 | glottocode coverage | 🟡 PARTIAL | 28/910 (3%) |
+| 178 | iso6393 / canonicalCode unification | ✅ COMPLETE | 910/910 iso6393, 0 canonicalCode |
+| 179 | kv/kpv duplicate | ✅ COMPLETE | kv removed |
+| 180 | ttj/nyo duplicate | ✅ COMPLETE | coverage='base-copy-with-notes' |
+| 181 | lag mislabel | ✅ COMPLETE | deleted/rebuilt |
+| 182 | aliases static migration | 🟡 PARTIAL | runtime overlay still in use |
+| 183 | atom translator spread | 🟡 PARTIAL | new tokens lag |
+| 184 | 9 UI lang blocks coverage | 🟡 PARTIAL | de/fr/it/id/sw addition partial |
+| 185 | orphan meta strings | 🟡 PARTIAL | per-string evolves |
+| 186 | es/pt runtime aliasing | 🟡 PARTIAL | static migration pending |
+| 187 | tone single/doubled | ✅ COMPLETE | 0 langs mixing |
+| 188 | disambiguator | ✅ COMPLETE | 29/29 shared-native pairs |
+| 189 | accessed ISO 8601 | 🟡 PARTIAL | gate added, 0 URLs yet |
+| 190 | vitality | ✅ COMPLETE | 910/910 |
+| 191 | formType hyphen | ✅ COMPLETE | 83/83 |
+| 192 | runtime overlay → static | 🟡 PARTIAL | 4/17 maps migrated |
+| 193 | textDirection rtl | ✅ COMPLETE | 44/44 |
+| 194 | multi-word formType | ✅ COMPLETE | 363/363 |
+| 195 | split evidence pilot | 🟡 PARTIAL | gate added, 0/1128 adoption |
+| 196 | Tier 4 langs | ✅ COMPLETE | absorbed into 910-lang push |
+| 197 | roadmap to 1000 | 🟡 PARTIAL | 910/1000 (91%) |
+| 198 | cache-buster CI gate | ✅ COMPLETE | strict mode enforces |
+| 199 | yuc/kgg HIST_DESCENDANT | ✅ COMPLETE | added |
+| 200 | source-checked wordEvidence backfill | 🟡 PARTIAL | 25/29 |
+
+### Group D — Recent regressions & follow-ups (Tasks 201–223)
+
+| Task | Topic | Status | Coverage / note |
+|---|---|---|---|
+| 201 | cross-cutting gate Phase 1 | ✅ COMPLETE | [#201a-f] WARN |
+| 201 Phase 2 | escalate to ERROR | ❌ NOT-STARTED | regression-prevention pending |
+| 202 | cache-buster instance | ✅ COMPLETE | resolved with 198 |
+| 203 | itl/ykg HIST_DESCENDANT | ✅ COMPLETE | added |
+| 204 | suk/smg disambiguator | ✅ COMPLETE | done |
+| 205 | ykg/ale/kj formType | ✅ COMPLETE | in 83/83 |
+| 206 | gld/kum pronunciationType | ✅ COMPLETE | done |
+| 207 | lue/cmg formType | ✅ COMPLETE | in 83/83 |
+| 208 | jmc/vai pronunciationType | ✅ COMPLETE | resolved |
+| 209 | description i18n Phase B | 🟡 PARTIAL | ja/ko/zh 99%, others incomplete |
+| 210 | scriptTags backfill (9 langs) | ✅ COMPLETE | done |
+| 211 | count-string drift instance | ✅ COMPLETE | resolved |
+| 212 | rkt/jpr/umu meta entry | ✅ COMPLETE | added |
+| 213 | script-tag enum mapping docs | ❌ NOT-STARTED | CONTRIBUTING.md not updated |
+| 214 | auto-bump count strings | ❌ NOT-STARTED | scripts/bump_count.js not created |
+| 215 | Tibetan filter taxonomy | ❌ NOT-STARTED | scriptTags['Tibetan'] enum + family normalize |
+| 216 | Compare button repositioning | 🟡 PARTIAL | DOM-move done, CSS regression remains (Task 223) |
+| 217 | jvn description ja/ko/zh | ✅ COMPLETE | 4 UIs, 270-char ja |
+| 218 | meta richness Phase A | ❌ NOT-STARTED | en source still thin (tpi=91, am=20, yo=44 chars) |
+| 219 | range notation standardize | 🔄 SUPERSEDED | → Task 220 |
+| 220 | speakerCount structured (Option C) | ⏳ REGISTERED | awaiting impl, ~7-10h |
+| 221 | cache-buster drift (Task 198 instance) | ✅ COMPLETE | resolved |
+| 222 | Node.js 24 actions migration | ❌ NOT-STARTED | 9 @v4 still, 1 @v5; deadline 2026-06-02 |
+| 223 | modal layout regressions (Task 216 followup) | ❌ NOT-STARTED | h2 padding 130px, .compare-add-btn margin asymmetric |
+
+### Summary tally
+
+- ✅ **COMPLETE:** ~98 tasks
+- 🟡 **PARTIAL:** ~37 tasks
+- ❌ **NOT-STARTED:** ~15 tasks (Tasks 151-158 educational + 213/214/215/218/222/223 + 166 + 201 Phase 2)
+- 🔄 **SUPERSEDED:** 2 (167, 219)
+- ⏳ **REGISTERED:** 1 (220)
+
+**Top remaining urgent items (validator-visible):**
+1. Task 144/209 description i18n: ja/ko/zh 99% (13 langs left), es/pt 57% (393 langs).
+2. Task 173/200 source-checked wordEvidence: 25/29 (4 langs).
+3. Task 222 Node.js 24 migration: deadline 2026-06-02.
+4. Task 223 modal CSS regression: visible UI bug.
+5. Task 218 meta richness: 50+ priority langs still thin.
+6. Task 220 speakerCount: REGISTERED awaiting impl cycle.
+
+**Educational tier (151-158)** all NOT-STARTED — separate roadmap, not blocking validator.
+
+---
+
 ## High Priority Findings
 
 ### 1. Surface form is truncated while IPA/transcription contains a full phrase
