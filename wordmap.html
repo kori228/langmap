@@ -426,7 +426,7 @@
             background: none; border: none; font-size: 18px; cursor: pointer; color: #999;
         }
         .lang-info-panel .close-btn:hover { color: #333; }
-        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; padding-right: 130px; }
+        .lang-info-panel h2 { font-size: 18px; margin: 0 0 2px; padding-right: 36px; /* Audit Task 223: was 130px (left room for top-right Compare btn that has been moved under native-name per Task 216); now only the close × button needs ~36px */ }
         .lang-info-panel .native-name {
             font-size: 14px; color: #666; margin-bottom: 10px;
             /* Carry the same historical-script font stack as map labels so
@@ -541,7 +541,7 @@
         .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
         .compare-table .unattested { color: #aaa; font-style: italic; }
         .compare-add-btn {
-            display: inline-block; margin-top: 10px; padding: 4px 10px;
+            display: inline-block; margin: 10px 0; padding: 4px 10px; /* Audit Task 223: symmetric vertical margin (was margin-top:10px which left no bottom space, causing visual collision with the next block) */
             font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
             border-radius: 4px; cursor: pointer;
         }
@@ -805,7 +805,7 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=202"></script>
+    <script src="wordmap_data.js?v=205"></script>
     <script src="meta_i18n_ext.js?v=9"></script>
     <script src="meta_i18n_coverage.js?v=9"></script>
     <script src="lang-filter.js?v=26"></script>
@@ -972,11 +972,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    61,
-            data:      202,
+            data:      205,
             metaI18n:  9,
             filter:    26,
             names:   103,
-            meta:     154,
+            meta:     158,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
