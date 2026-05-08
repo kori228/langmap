@@ -903,6 +903,38 @@ for (const code of codes) {
             if (!hasNumeric) {
                 W(`[#220] ${code}: speakerCount has no numeric value (l1/total/rangeMin/l1RangeMin); structure is empty (Audit Task 220)`);
             }
+            // [#220d] magnitude sanity: when both prose `meta.speakers` and
+            // structured `speakerCount` are present, their order-of-magnitude
+            // should agree. Catches off-by-1000 import bugs (e.g. "5K" prose
+            // accidentally encoded as `l1: 5_000_000`). Only checks the
+            // canonical numeric: l1 ?? total ?? rangeMax. Skip when either is
+            // 0 (extinct), since prose like "Extinct" has no numeric to compare.
+            if (m.speakers) {
+                const canonical = sc.l1 ?? sc.total ?? sc.rangeMax ?? sc.l1RangeMax;
+                if (typeof canonical === 'number' && canonical > 0) {
+                    // Extract first M/K/B-tagged number from prose for comparison.
+                    const proseStr = (typeof m.speakers === 'object'
+                        ? (m.speakers.en || Object.values(m.speakers)[0] || '')
+                        : String(m.speakers));
+                    // Only check K/M/B-suffixed numbers — plain digits in
+                    // prose can refer to ethnic population, year ranges, etc.
+                    // (e.g. yux: prose mentions ~1,597 ethnic Kolyma but L1 is 50).
+                    const um = proseStr.match(/(\d+(?:[.,]\d+)?)\s*([KMB])\b/i);
+                    let proseN = null;
+                    if (um) {
+                        const n = parseFloat(um[1].replace(/,/g, ''));
+                        const u = um[2].toUpperCase();
+                        proseN = n * (u === 'B' ? 1e9 : u === 'M' ? 1e6 : 1e3);
+                    }
+                    if (typeof proseN === 'number' && proseN > 0) {
+                        const ratio = canonical / proseN;
+                        // Warn on >10× drift in either direction (off-by-magnitude bugs).
+                        if (ratio > 10 || ratio < 0.1) {
+                            W(`[#220d] ${code}: speakerCount canonical (${canonical.toLocaleString()}) drifts >10× from prose meta.speakers (~${proseN.toLocaleString()}) — possible import bug (Audit Task 220)`);
+                        }
+                    }
+                }
+            }
         }
     }
     // Audit Task 103/104: wordEvidence.formType enum (when present)
@@ -2024,6 +2056,27 @@ if (withSurfaceType > 0) {
     const breakdown = Object.entries(surfaceTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}=${v}`).join(', ');
     I(`surfaceType coverage: ${withSurfaceType}/${codes.length} languages (${breakdown}) — Audit Task 84`);
+}
+// Audit Task 220 Phase 5: speakerCount coverage tally + structured-vs-prose diagnostics
+let withSpeakerCount = 0;
+let withSpeakersProse = 0;
+let scShapeCounts = { point: 0, range: 0 };
+for (const code of codes) {
+    const m = ctx.LANG_DATA[code].meta || {};
+    if (m.speakerCount && typeof m.speakerCount === 'object') {
+        withSpeakerCount++;
+        if (m.speakerCount.range === 'range') scShapeCounts.range++;
+        else scShapeCounts.point++;
+    }
+    if (m.speakers) withSpeakersProse++;
+}
+if (withSpeakerCount > 0) {
+    const pct = (100 * withSpeakerCount / codes.length).toFixed(1);
+    I(`speakerCount coverage: ${withSpeakerCount}/${codes.length} languages (${pct}%) — point=${scShapeCounts.point}, range=${scShapeCounts.range} — Audit Task 220`);
+    const lacking = withSpeakersProse - withSpeakerCount;
+    if (lacking > 0) {
+        I(`  · ${lacking} rows have prose meta.speakers but no structured speakerCount (manual review pending — see /tmp/task220_unparseable.txt)`);
+    }
 }
 // Audit Task 118: languageKind coverage tally
 let withLanguageKind = 0;

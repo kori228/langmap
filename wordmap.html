@@ -16,7 +16,7 @@
     <meta name="twitter:description" content="Explore 20 words in 910 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
-    <link rel="stylesheet" href="styles.css?v=61">
+    <link rel="stylesheet" href="styles.css?v=62">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -800,7 +800,7 @@
     <script src="wordmap_data.js?v=206"></script>
     <script src="meta_i18n_ext.js?v=9"></script>
     <script src="meta_i18n_coverage.js?v=9"></script>
-    <script src="lang-filter.js?v=26"></script>
+    <script src="lang-filter.js?v=27"></script>
     <script src="lang_names.js?v=103"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -963,10 +963,10 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    61,
+            styles:    62,
             data:      206,
             metaI18n:  9,
-            filter:    26,
+            filter:    27,
             names:   103,
             meta:     159,
         };
@@ -2471,6 +2471,70 @@
             if (!badge || !badge.descs) return '';
             return badge.descs[uiLang] || badge.descs[uiLang.split('_')[0]] || badge.descs.en || '';
         }
+
+        // Audit Task 220 Phase 2: per-UI-lang formatter for structured
+        // meta.speakerCount. Renders the canonical number with locale
+        // separator (en-dash vs ja '〜') and East Asian unit abbreviations
+        // (万/亿/억) when the value is large; falls back to the legacy
+        // m.speakers prose if the structure is unrecognizable.
+        const SC_RANGE_SEP = { ja: '〜', ko: '~', en: '–' };
+        const SC_VITALITY_LBL = {
+            'extinct':                { en:'extinct',                ja:'死語',          ko:'사어',           zh:'已灭绝',     yue:'已滅絕',     vi:'đã tuyệt chủng',         th:'สูญพันธุ์',                id:'punah',                 hi:'विलुप्त',                de:'ausgestorben',     fr:'éteinte',                it:'estinta',           es:'extinta',             pt:'extinta',          ru:'мёртвый',                  uk:'мертва',                 ar:'منقرضة',           he:'נכחדה',         sw:'imepotea' },
+            'critically-endangered':  { en:'critically endangered',  ja:'極めて深刻な危機', ko:'심각한 위기',     zh:'极度濒危',   yue:'極度瀕危',   vi:'cực kỳ nguy cấp',        th:'ใกล้สูญพันธุ์อย่างยิ่ง', id:'sangat terancam punah', hi:'गंभीर रूप से संकटग्रस्त',  de:'akut bedroht',     fr:'en danger critique',     it:'in grave pericolo', es:'en peligro crítico',  pt:'criticamente ameaçada', ru:'на грани вымирания',     uk:'на межі вимирання',      ar:'مهددة بالانقراض الشديد', he:'בסכנת הכחדה חמורה', sw:'hatari kubwa sana' },
+            'severely-endangered':    { en:'severely endangered',    ja:'重大な危機',     ko:'심각한 위협',     zh:'严重濒危',   yue:'嚴重瀕危',   vi:'bị đe dọa nghiêm trọng', th:'ใกล้สูญพันธุ์รุนแรง',   id:'sangat terancam',       hi:'गंभीर रूप से संकटग्रस्त',  de:'stark bedroht',    fr:'sévèrement en danger',   it:'gravemente in pericolo', es:'severamente en peligro', pt:'gravemente ameaçada', ru:'под серьёзной угрозой', uk:'під серйозною загрозою', ar:'مهددة بشدة',       he:'בסכנה חמורה',   sw:'hatari sana' },
+            'definitely-endangered':  { en:'definitely endangered',  ja:'危機',          ko:'확실한 위협',     zh:'确定濒危',   yue:'確定瀕危',   vi:'bị đe dọa rõ ràng',      th:'ใกล้สูญพันธุ์',          id:'pasti terancam',        hi:'निश्चित रूप से संकटग्रस्त', de:'eindeutig bedroht', fr:'en danger certain',      it:'in pericolo certo', es:'definitivamente en peligro', pt:'definitivamente ameaçada', ru:'определённо под угрозой', uk:'визначено під загрозою', ar:'مهددة قطعا',       he:'בסכנה מובהקת',  sw:'hatari iliyo wazi' },
+            'vulnerable':             { en:'vulnerable',             ja:'脆弱',          ko:'취약',           zh:'易危',       yue:'易危',       vi:'dễ bị tổn thương',       th:'เปราะบาง',                id:'rentan',                hi:'सुभेद्य',                de:'gefährdet',        fr:'vulnérable',             it:'vulnerabile',       es:'vulnerable',          pt:'vulnerável',       ru:'уязвимый',                 uk:'вразлива',               ar:'هشة',              he:'פגיעה',         sw:'iliyo katika hatari' },
+        };
+        function formatSpeakerNumber(n, ui) {
+            if (typeof n !== 'number' || !isFinite(n)) return String(n);
+            if (n === 0) return '0';
+            const trim = (v, p) => {
+                const s = (Number.isInteger(v) ? String(v) : v.toFixed(p).replace(/\.?0+$/, ''));
+                return s;
+            };
+            if (ui === 'ja') {
+                if (n >= 1_0000_0000) return trim(n / 1_0000_0000, 2) + '億';
+                if (n >= 1_0000)      return trim(n / 1_0000, 1) + '万';
+                return n.toLocaleString('ja-JP');
+            }
+            if (ui === 'ko') {
+                if (n >= 1_0000_0000) return trim(n / 1_0000_0000, 2) + '억';
+                if (n >= 1_0000)      return trim(n / 1_0000, 1) + '만';
+                return n.toLocaleString('ko-KR');
+            }
+            if (ui === 'zh' || ui === 'yue') {
+                const yi = ui === 'yue' ? '億' : '亿';
+                if (n >= 1_0000_0000) return trim(n / 1_0000_0000, 2) + yi;
+                if (n >= 1_0000)      return trim(n / 1_0000, 1) + '万';
+                return n.toLocaleString('zh-CN');
+            }
+            if (n >= 1_000_000_000) return trim(n / 1_000_000_000, 2) + 'B';
+            if (n >= 1_000_000)     return trim(n / 1_000_000, 2) + 'M';
+            const localeMap = { vi:'vi-VN', th:'th-TH', id:'id-ID', hi:'hi-IN', de:'de-DE', fr:'fr-FR', it:'it-IT', es:'es-ES', pt:'pt-BR', ru:'ru-RU', uk:'uk-UA', ar:'ar', he:'he-IL', sw:'sw' };
+            return n.toLocaleString(localeMap[ui] || 'en-US');
+        }
+        function formatSpeakerCount(sc, uiLangFull) {
+            if (!sc || typeof sc !== 'object') return null;
+            const ui = (uiLangFull || 'en').split('_')[0];
+            const sep = SC_RANGE_SEP[ui] || SC_RANGE_SEP.en;
+            let mainStr = null;
+            if (sc.range === 'range' && sc.rangeMin != null && sc.rangeMax != null) {
+                mainStr = formatSpeakerNumber(sc.rangeMin, ui) + sep + formatSpeakerNumber(sc.rangeMax, ui);
+            } else if (sc.l1RangeMin != null && sc.l1RangeMax != null) {
+                mainStr = formatSpeakerNumber(sc.l1RangeMin, ui) + sep + formatSpeakerNumber(sc.l1RangeMax, ui);
+            } else if (sc.l1 != null && (sc.l2 != null || sc.total != null)) {
+                const parts = ['L1 ' + formatSpeakerNumber(sc.l1, ui)];
+                if (sc.l2 != null)    parts.push('L2 ' + formatSpeakerNumber(sc.l2, ui));
+                if (sc.total != null) parts.push(formatSpeakerNumber(sc.total, ui) + ' total');
+                mainStr = parts.join(', ');
+            } else if (sc.l1 != null) {
+                mainStr = formatSpeakerNumber(sc.l1, ui);
+            } else if (sc.total != null) {
+                mainStr = formatSpeakerNumber(sc.total, ui);
+            }
+            return mainStr;
+        }
+
         // For these statuses, IPA cells are rendered in italic to signal
         // "this is reconstructed/uncertain notation, not direct phonemic transcription".
         const IPA_ITALIC_STATUSES = new Set(['reconstructed', 'partly-understood', 'pedagogical', 'fragmentary']);
@@ -2700,7 +2764,11 @@
             if (lang.meta) {
                 html += '<table>';
                 if (m.family) html += `<tr><td>${escapeHtml(wt('family'))}</td><td>${escapeHtml(translateMeta(m.family))}</td></tr>`;
-                if (m.speakers) {
+                if (m.speakers || m.speakerCount) {
+                    // Audit Task 220 Phase 2: prefer structured speakerCount
+                    // when available (renders per UI lang: ja '〜' separator,
+                    // east-asian 万/億 unit; en uses '–' and 'M/B'). Falls
+                    // back to legacy prose m.speakers when unstructured.
                     // Audit Task 98: append (basis, source year) when present so
                     // users know whether a number is L1 vs total vs aggregate, and
                     // which census/year it came from.
@@ -2716,16 +2784,43 @@
                         'regional-population': { en:'regional-population', ja:'地域人口', ko:'지역 인구', zh:'地区人口', yue:'地區人口', vi:'dân số vùng', th:'ประชากรในภูมิภาค', id:'populasi regional', hi:'क्षेत्रीय जनसंख्या', de:'Regionsbevölkerung', fr:'population régionale', it:'popolazione regionale', es:'población regional', pt:'população regional', ru:'население региона', uk:'населення регіону', ar:'سكان المنطقة', he:'אוכלוסיית האזור', sw:'idadi ya watu wa eneo' },
                     };
                     const ui = uiLang.split('_')[0];
-                    let speakerCell = escapeHtml(translateMeta(m.speakers));
-                    if (m.speakerBasis || m.speakerSource || m.speakerYear) {
-                        const parts = [];
+                    // Prefer structured speakerCount; fall back to prose.
+                    const sc = m.speakerCount;
+                    const scFormatted = formatSpeakerCount(sc, uiLang);
+                    let speakerCell;
+                    if (scFormatted) {
+                        speakerCell = escapeHtml(scFormatted);
+                    } else if (m.speakers) {
+                        speakerCell = escapeHtml(translateMeta(m.speakers));
+                    } else {
+                        speakerCell = '';
+                    }
+                    // Annotation: from structured (year/source/vitality) when present,
+                    // else from legacy speakerBasis/speakerSource/speakerYear fields.
+                    const annot = [];
+                    if (sc) {
+                        if (sc.vitality && SC_VITALITY_LBL[sc.vitality]) {
+                            const vl = SC_VITALITY_LBL[sc.vitality];
+                            annot.push(escapeHtml(vl[ui] || vl.en || sc.vitality));
+                        }
+                        if (sc.source) annot.push(escapeHtml(sc.source));
+                        if (sc.year)   annot.push(String(sc.year));
+                    } else if (m.speakerBasis || m.speakerSource || m.speakerYear) {
                         if (m.speakerBasis) {
                             const sb = SPEAKER_BASIS_LBL[m.speakerBasis];
-                            parts.push(escapeHtml((sb && (sb[ui] || sb.en)) || m.speakerBasis));
+                            annot.push(escapeHtml((sb && (sb[ui] || sb.en)) || m.speakerBasis));
                         }
-                        if (m.speakerSource) parts.push(escapeHtml(m.speakerSource));
-                        if (m.speakerYear)   parts.push(String(m.speakerYear));
-                        speakerCell += ` <span style="color:#999;font-size:10px">(${parts.join(', ')})</span>`;
+                        if (m.speakerSource) annot.push(escapeHtml(m.speakerSource));
+                        if (m.speakerYear)   annot.push(String(m.speakerYear));
+                    }
+                    if (annot.length) {
+                        speakerCell += ` <span style="color:#999;font-size:10px">(${annot.join(', ')})</span>`;
+                    }
+                    // Show the structured 'notes' field below the main number
+                    // (where present) to surface qualitative detail like
+                    // "L1 ≈ 380M; L2 ≈ 1.1B" without crowding the main cell.
+                    if (sc && sc.notes) {
+                        speakerCell += `<div style="margin-top:2px;font-size:10px;color:#888;line-height:1.4">${escapeHtml(sc.notes)}</div>`;
                     }
                     html += `<tr><td>${escapeHtml(wt('speakers'))}</td><td>${speakerCell}</td></tr>`;
                 }
