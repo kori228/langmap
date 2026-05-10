@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=75">
+    <link rel="stylesheet" href="styles.css?v=76">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -803,16 +803,18 @@
             }
             .lang-info-panel h2 { padding-right: 56px; }
 
-            /* Mobile credit watermark: bottom-LEFT corner so it doesn't
-               overlap with the bottom-right compare FAB. Compact; URL is
-               also in the hamburger menu so mobile users have two ways
-               to find it. */
+            /* Mobile credit watermark: flush against the bottom-LEFT
+               corner. No corner radius / margin so the ribbon hugs the
+               viewport edge. Honors safe-area inset on landscape iPhones
+               so it doesn't sit under the home indicator. */
             .url-watermark {
-                left: max(8px, env(safe-area-inset-left));
+                left: env(safe-area-inset-left, 0);
                 right: auto;
-                bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px));
+                bottom: env(safe-area-inset-bottom, 0);
                 font-size: 9px;
                 gap: 4px;
+                padding: 2px 6px;
+                border-radius: 0 4px 0 0;
             }
 
             /* Audit Task 232: iOS Safari auto-zooms on focus when computed
@@ -1237,7 +1239,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    75,
+            styles:    76,
             data:      206,
             metaI18n:  14,
             filter:    28,
