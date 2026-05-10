@@ -932,15 +932,32 @@
                 cb.dispatchEvent(new Event('change'));
             }
         }, true);
-        // Esc closes any open drawer (keyboard a11y).
+        // Esc closes any open drawer or modal (keyboard a11y).
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
+            // 1. Close drawers first.
+            let closed = false;
             for (const { toggle } of drawers) {
                 const cb = document.getElementById(toggle);
                 if (cb && cb.checked) {
                     cb.checked = false;
                     cb.dispatchEvent(new Event('change'));
+                    closed = true;
                 }
+            }
+            if (closed) return;
+            // 2. Close compare panel if open.
+            const comparePanel = document.getElementById('compare-panel');
+            if (comparePanel && comparePanel.classList.contains('visible')) {
+                const cc = document.getElementById('compare-close');
+                if (cc) cc.click();
+                return;
+            }
+            // 3. Close lang-info modal if open.
+            const langInfo = document.getElementById('lang-info');
+            if (langInfo && langInfo.classList.contains('visible')) {
+                const ic = document.getElementById('info-close');
+                if (ic) ic.click();
             }
         });
     })();
