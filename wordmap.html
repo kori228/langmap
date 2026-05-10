@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=67">
+    <link rel="stylesheet" href="styles.css?v=68">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -584,15 +584,14 @@
                 padding-bottom: max(0px, env(safe-area-inset-bottom));
                 box-shadow: 0 6px 20px rgba(0,0,0,0.18);
             }
+            /* Compare panel header is already sticky:top:0 so the close
+               button stays reachable during scroll without needing to be
+               fixed-positioned. Bump it to a finger-friendly 44×44 with a
+               subtle outline so it's discoverable on touch. */
             .compare-close {
-                position: fixed;
-                top: max(18px, calc(env(safe-area-inset-top) + 8px));
-                right: max(18px, calc(env(safe-area-inset-right) + 8px));
                 width: 44px; height: 44px; line-height: 1;
-                background: rgba(255,255,255,0.95);
-                border: 1px solid #d0d0d0; border-radius: 50%;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-                z-index: 1100;
+                font-size: 22px; color: #444;
+                background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
             }
             .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
             .compare-fab { padding: 8px 12px; }
@@ -1138,7 +1137,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    67,
+            styles:    68,
             data:      206,
             metaI18n:  14,
             filter:    28,
