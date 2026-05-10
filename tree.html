@@ -155,6 +155,24 @@
             font-size: 16px !important;
         }
     }
+
+    /* UI polish: back-to-top floating button (appears after scrolling). */
+    .back-to-top {
+        position: fixed;
+        right: max(16px, calc(env(safe-area-inset-right) + 8px));
+        bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+        width: 44px; height: 44px; line-height: 1;
+        background: rgba(255,255,255,0.97); border: 1px solid #d0d0d0;
+        border-radius: 50%; cursor: pointer;
+        font-size: 22px; color: #444;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 100; user-select: none;
+        transition: background-color 0.15s, transform 0.1s;
+    }
+    .back-to-top:hover { background: #f3f4f6; }
+    .back-to-top:active { transform: scale(0.94); }
+    .back-to-top:focus-visible { outline: 2px solid #4a6cf7; outline-offset: 2px; }
+    .back-to-top[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -225,6 +243,27 @@
         <div class="empty" id="loading">Loading…</div>
     </div>
 </div>
+
+<!-- UI polish: back-to-top button, appears after scrolling past 400px. -->
+<button type="button" id="back-to-top" class="back-to-top" aria-label="Scroll to top" hidden>↑</button>
+<script>
+(function () {
+    const btn = document.getElementById('back-to-top');
+    const wrap = document.querySelector('.tree-wrap');
+    if (!btn || !wrap) return;
+    function update() {
+        // Use the document scrollY since tree-wrap usually doesn't have its
+        // own scrollbar — the page scrolls.
+        const y = window.scrollY || document.documentElement.scrollTop || 0;
+        btn.hidden = y < 400;
+    }
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+})();
+</script>
 
 <script src="wordmap_data.js?v=206"></script>
 <script src="meta_i18n_ext.js?v=14"></script>
