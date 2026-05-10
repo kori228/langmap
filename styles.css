@@ -102,6 +102,9 @@ body {
     .site-header-bar .subtitle { display: none; }
     .site-header-bar .header-url { font-size: 10px; }
 }
+/* Backdrop behind the open hamburger drawer. Stays in DOM; opacity
+   toggles when the checkbox is checked. Hidden on desktop. */
+.header-backdrop { display: none; }
 @media (max-width: 640px) {
     .site-header-bar { position: relative; flex-wrap: nowrap; }
     .hamburger-btn {
@@ -125,22 +128,56 @@ body {
         transform: translateY(-4px);
         transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
         position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; align-items: stretch; gap: 10px;
-        padding: 14px 16px;
+        flex-direction: column; align-items: stretch; gap: 14px;
+        padding: 18px 18px;
         background: #fff;
         border-bottom: 1px solid #e0e0e0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         z-index: 1100;
         /* Honor notch / safe-area on landscape iPhones. */
-        padding-left: max(16px, env(safe-area-inset-left));
-        padding-right: max(16px, env(safe-area-inset-right));
+        padding-left: max(18px, env(safe-area-inset-left));
+        padding-right: max(18px, env(safe-area-inset-right));
     }
     .hdr-menu-toggle:checked ~ .header-collapse {
         opacity: 1; visibility: visible; transform: translateY(0);
     }
-    .header-collapse .header-nav { flex-wrap: wrap; gap: 8px; font-size: 14px; }
+    /* Vertical nav stack: each item on its own row, generous tap target.
+       Hide the "/" separators since they only make sense inline. */
+    .header-collapse .header-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        font-size: 16px;
+    }
+    .header-collapse .header-nav .nav-sep { display: none; }
+    .header-collapse .header-nav-link,
+    .header-collapse .header-nav-current {
+        padding: 10px 4px;
+        border-radius: 6px;
+    }
+    .header-collapse .header-nav-link:hover {
+        background: #f3f4f6; text-decoration: none;
+    }
+    .header-collapse .header-nav-current { background: #f3f4f6; }
     .header-collapse .header-ui-lang { margin-left: 0; width: 100%; max-width: none; }
-    .header-collapse .header-url { margin-left: 0; }
+    .header-collapse .header-url {
+        margin-left: 0;
+        padding-top: 6px; border-top: 1px solid #eee;
+    }
+    /* Semi-transparent black backdrop behind the open drawer. Tappable —
+       click-outside JS handler closes the menu when the backdrop is hit. */
+    .header-backdrop {
+        display: block;
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.45);
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.15s, visibility 0.15s;
+        z-index: 1099;
+        cursor: pointer;
+    }
+    .hdr-menu-toggle:checked ~ .header-backdrop {
+        opacity: 1; visibility: visible;
+    }
 }
 
 .ui-lang-picker {
