@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=65">
+    <link rel="stylesheet" href="styles.css?v=66">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -471,7 +471,10 @@
 
         /* --- Compare panel (Pass 32) --- */
         .compare-fab {
-            position: fixed; bottom: 16px; right: 16px; z-index: 1015;
+            position: fixed;
+            bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+            right: max(16px, calc(env(safe-area-inset-right) + 8px));
+            z-index: 1015;
             background: #1a73e8; color: #fff; border: none; border-radius: 24px;
             padding: 9px 16px; font-size: 13px; cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: none;
@@ -580,7 +583,9 @@
                 box-shadow: 0 6px 20px rgba(0,0,0,0.18);
             }
             .compare-close {
-                position: fixed; top: 18px; right: 18px;
+                position: fixed;
+                top: max(18px, calc(env(safe-area-inset-top) + 8px));
+                right: max(18px, calc(env(safe-area-inset-right) + 8px));
                 width: 44px; height: 44px; line-height: 1;
                 background: rgba(255,255,255,0.95);
                 border: 1px solid #d0d0d0; border-radius: 50%;
@@ -649,10 +654,18 @@
         /* Audit Task 234 Step B: settings drawer (desktop defaults).
            Wrapper inherits its parent's flex layout via display:contents so
            desktop layout is unchanged. The hidden checkbox + gear button
-           only appear on mobile (declared inside the @media block below). */
+           only appear on mobile (declared inside the @media block below).
+           Toggle is offscreen-positioned (not display:none) so keyboard
+           users can Tab to it and toggle with Space. */
         .right-secondary-controls { display: contents; }
-        .settings-toggle { display: none; }
+        .settings-toggle {
+            position: absolute; opacity: 0; pointer-events: none;
+            width: 1px; height: 1px; overflow: hidden;
+        }
         .settings-fab { display: none; }
+        .settings-toggle:focus-visible + .settings-fab {
+            outline: 2px solid #4a6cf7; outline-offset: 2px;
+        }
 
         /* --- Mobile responsive --- */
         @media (max-width: 768px) {
@@ -680,7 +693,13 @@
             .right-secondary-controls { display: none; }
             body:has(.settings-toggle:checked) .right-secondary-controls {
                 display: flex; flex-direction: column;
-                position: fixed; top: 100px; right: 8px;
+                position: fixed; top: 100px;
+                right: max(8px, env(safe-area-inset-right));
+                /* Cap height so the drawer never grows past the FAB row at
+                   the bottom; users can scroll inside if rows ever exceed. */
+                max-height: calc(100vh - 180px);
+                max-height: calc(100dvh - 180px);
+                overflow-y: auto;
                 gap: 8px; padding: 12px 14px;
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 12px;
                 box-shadow: 0 4px 16px rgba(0,0,0,0.15);
@@ -692,7 +711,9 @@
             body:has(.settings-toggle:checked) .ctrl-spacer { display: block; }
             .settings-fab {
                 display: inline-flex; align-items: center; justify-content: center;
-                position: fixed; right: 16px; bottom: 70px;
+                position: fixed;
+                right: max(16px, calc(env(safe-area-inset-right) + 8px));
+                bottom: max(70px, calc(env(safe-area-inset-bottom) + 62px));
                 width: 44px; height: 44px;
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -731,9 +752,13 @@
             }
             /* Float the close button above the modal so it's always reachable
                regardless of internal scroll position. 44×44 matches iOS HIG
-               minimum tap target. */
+               minimum tap target. Honors notch / Dynamic Island safe-area
+               insets so the button never sits underneath the iPhone status
+               bar / camera cutout in landscape or portrait. */
             .lang-info-panel .close-btn {
-                position: fixed; top: 18px; right: 18px;
+                position: fixed;
+                top: max(18px, calc(env(safe-area-inset-top) + 8px));
+                right: max(18px, calc(env(safe-area-inset-right) + 8px));
                 width: 44px; height: 44px; line-height: 1;
                 font-size: 22px; color: #444;
                 background: rgba(255,255,255,0.95);
@@ -1094,7 +1119,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    65,
+            styles:    66,
             data:      206,
             metaI18n:  14,
             filter:    28,

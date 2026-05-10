@@ -77,9 +77,21 @@ body {
    `display: contents` so its children participate in the header flex
    layout exactly as before. On mobile (≤640px) the hamburger button
    appears, the wrapper collapses, and a checked checkbox reveals the
-   wrapper as an absolute-positioned dropdown. CSS-only — no JS. */
-.hdr-menu-toggle { display: none; }
+   wrapper as an absolute-positioned dropdown. CSS-only — no JS.
+
+   Keyboard a11y note: the toggle checkbox is visually hidden via
+   off-screen positioning (not display:none) so it stays in the
+   tab order and Space toggles it. The .hamburger-btn label is
+   visual-only; focus styles below mirror the checkbox state on the
+   label so keyboard users see the affordance. */
+.hdr-menu-toggle {
+    position: absolute; opacity: 0; pointer-events: none;
+    width: 1px; height: 1px; overflow: hidden;
+}
 .hamburger-btn { display: none; }
+.hdr-menu-toggle:focus-visible + .hamburger-btn {
+    outline: 2px solid #4a6cf7; outline-offset: 2px;
+}
 .header-collapse { display: contents; }
 @media (max-width: 720px) {
     body { padding: 10px; }

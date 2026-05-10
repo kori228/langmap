@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=65">
+<link rel="stylesheet" href="styles.css?v=66">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -139,6 +139,13 @@
         .tree ul > li::before { left: -10px; width: 8px; }
         .tree ul > li::after { left: -10px; }
         .node { padding: 2px 6px; }
+        /* Allow long node labels to wrap on narrow screens instead of
+           overflowing the viewport. The native-name and code stay
+           inline but reflow naturally. */
+        .node { flex-wrap: wrap; row-gap: 1px; }
+        .node .label, .node.leaf .label, .node.leaf .native {
+            word-break: break-word; overflow-wrap: anywhere;
+        }
     }
 
     /* Audit Task 232: prevent iOS Safari focus auto-zoom (font < 16px). */
