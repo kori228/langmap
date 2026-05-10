@@ -646,6 +646,14 @@
         }
         .globe-label.unattested:hover { background: rgba(0,0,0,0.7); }
 
+        /* Audit Task 234 Step B: settings drawer (desktop defaults).
+           Wrapper inherits its parent's flex layout via display:contents so
+           desktop layout is unchanged. The hidden checkbox + gear button
+           only appear on mobile (declared inside the @media block below). */
+        .right-secondary-controls { display: contents; }
+        .settings-toggle { display: none; }
+        .settings-fab { display: none; }
+
         /* --- Mobile responsive --- */
         @media (max-width: 768px) {
             .toggle-btn { font-size: 10px; padding: 3px 7px; }
@@ -659,12 +667,53 @@
             .right-controls .toggle-btn { min-width: 44px; font-size: 9px; }
 
             /* Audit Task 234: drop the redundant zoom +/- buttons (pinch-zoom
-               is the iOS-native gesture) and the niche vertical font-size
-               slider on mobile. The 2D/3D toggle and Form/Pron./Name
-               toggles stay since they're essential to the map's primary
-               purpose. Compare FAB stays as-is. */
+               is the iOS-native gesture) on mobile. */
             .map-zoom-controls { display: none; }
-            .size-slider-wrap { display: none; }
+
+            /* Audit Task 234 Step B: settings drawer.
+               The .right-secondary-controls wrapper houses Form/Pron./Name
+               toggles + Native/Translated radio + font-size slider. On
+               mobile it collapses by default; the .settings-fab gear
+               button toggles a hidden checkbox that re-shows the wrapper
+               as a positioned drawer. body:has(...) lets the gear button
+               (sibling of body) drive the drawer state. */
+            .right-secondary-controls { display: none; }
+            body:has(.settings-toggle:checked) .right-secondary-controls {
+                display: flex; flex-direction: column;
+                position: fixed; top: 100px; right: 8px;
+                gap: 8px; padding: 12px 14px;
+                background: #fff; border: 1px solid #d0d0d0; border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                z-index: 1015;
+            }
+            /* Hide the .ctrl-spacer (the 8px gap div) when toggles are
+               collapsed so the 2D/3D button doesn't sit above empty space. */
+            .ctrl-spacer { display: none; }
+            body:has(.settings-toggle:checked) .ctrl-spacer { display: block; }
+            .settings-fab {
+                display: inline-flex; align-items: center; justify-content: center;
+                position: fixed; right: 16px; bottom: 70px;
+                width: 44px; height: 44px;
+                background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                font-size: 22px; line-height: 1; color: #444;
+                cursor: pointer; user-select: none; z-index: 1015;
+            }
+            .settings-toggle:checked + .settings-fab {
+                background: #1a73e8; color: #fff; border-color: #1a73e8;
+            }
+            /* Inside the drawer, force the size-slider-wrap visible and
+               horizontal — the desktop vertical slider doesn't fit. */
+            body:has(.settings-toggle:checked) .right-secondary-controls .size-slider-wrap {
+                display: flex !important; flex-direction: row;
+            }
+            body:has(.settings-toggle:checked) .right-secondary-controls .v-slider {
+                writing-mode: horizontal-tb; orient: horizontal;
+                width: 140px; height: auto;
+            }
+            body:has(.settings-toggle:checked) .right-secondary-controls .ctrl-label {
+                writing-mode: horizontal-tb; font-size: 11px;
+            }
 
             /* Audit Task 233: near-fullscreen modal on mobile.
                iOS Safari URL bar collapses on scroll so use dvh (dynamic
@@ -765,26 +814,39 @@
 
     <!-- (UI lang select moved to header for cross-page consistency, Pass 34) -->
 
-    <!-- Right-side controls: all stacked, centered -->
+    <!-- Right-side controls: all stacked, centered.
+         Audit Task 234 Step B: secondary toggles wrapped in
+         .right-secondary-controls so the mobile settings drawer can
+         show/hide them as a group via the .settings-fab below. The
+         wrapper uses `display: contents` on desktop so layout is
+         identical to before. -->
     <div class="right-controls">
         <div class="map-zoom-controls" id="map-zoom" role="group" aria-label="Map zoom">
             <button id="map-zoom-in" aria-label="Zoom in">+</button>
             <button id="map-zoom-out" aria-label="Zoom out">&minus;</button>
         </div>
         <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
-        <div style="height:8px"></div>
-        <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
-        <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
-        <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
-            <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
-            <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
-        </div>
-        <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
-            <label class="ctrl-label" id="size-label" for="font-size" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</label>
-            <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider" aria-label="Label font size">
+        <div style="height:8px" class="ctrl-spacer"></div>
+        <div class="right-secondary-controls" id="right-secondary">
+            <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
+            <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
+            <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
+            <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
+                <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
+                <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
+            </div>
+            <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
+                <label class="ctrl-label" id="size-label" for="font-size" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</label>
+                <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider" aria-label="Label font size">
+            </div>
         </div>
     </div>
+
+    <!-- Audit Task 234 Step B: mobile-only settings FAB. Toggling the
+         hidden checkbox reveals the .right-secondary-controls drawer
+         via `body:has(.settings-toggle:checked) ...` selector. -->
+    <input type="checkbox" id="settings-toggle" class="settings-toggle" aria-hidden="true">
+    <label for="settings-toggle" class="settings-fab" aria-label="Display settings" tabindex="0">⚙</label>
 
     <!-- Credit watermark -->
     <div class="url-watermark">

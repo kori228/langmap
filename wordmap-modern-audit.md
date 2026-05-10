@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230/231/232/233/235 resolved; 234 🟡 PARTIAL (Step A done))
+## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230/231/232/233/234/235 resolved; only [#13b'] description i18n threshold + Task 226 wordEvidence backfill remain)
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -12407,11 +12407,11 @@ Done when:
 - Modal scrolls internally for long descriptions.
 - Compare panel uses the same near-fullscreen pattern.
 
-### New Task 234. 🟡 PARTIAL Mobile map controls — Step A done
+### New Task 234. ✅ DONE Mobile map controls — Steps A + B complete
 
-Implementation Step A (2026-05-09): on `≤768px`, hide `.map-zoom-controls` (zoom +/-) since pinch-zoom is the iOS-native gesture, and hide `.size-slider-wrap` (vertical font-size slider) since it's a niche tweak. The 2D/3D toggle, Form/Pron./Name toggles, Native/Translated radio, and Compare FAB all stay visible — they're essential to the map's primary purpose.
+Step A (2026-05-09): on `≤768px`, hide `.map-zoom-controls` (zoom +/- — pinch-zoom is the iOS-native gesture).
 
-Step B deferred: full settings drawer (collapse Form/Pron./Name + Native/Translated into a `.settings-fab` menu) requires a markup + JS toggle and isn't strictly needed yet. Reopen if mobile users still report crowding.
+Step B (2026-05-09): added a `.settings-fab` floating gear button (bottom-right, above compare-fab) that toggles a drawer containing Form/Pron./Name buttons, the Native/Translated radio, and the font-size slider. Implementation: wrapped the 5 secondary controls in `.right-secondary-controls` (`display: contents` on desktop = no layout impact) and used CSS-only `body:has(.settings-toggle:checked) .right-secondary-controls { display: flex; ... }` to reveal it as a positioned drawer on mobile. No JS — the `<input type="checkbox">` + `<label>` pattern handles state. Slider is rotated horizontal inside the drawer (vertical orientation only fits the desktop column layout). Falls back gracefully on browsers without `:has()` support (Safari ≥15.4, Chrome ≥105) — the drawer just stays hidden, which means users on older browsers see no secondary controls but the map still works.
 
 Original spec ↓
 
