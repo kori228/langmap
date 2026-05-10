@@ -12227,7 +12227,11 @@ Files to change:
 Done when:
 - 4 tier-coherence warnings cleared.
 
-### New Task 229. ⏳ OPEN Cache-buster drift instance — 4th recurrence (Task 198/202/221 instance)
+### New Task 229. ✅ DONE Cache-buster drift instance — 4th recurrence (Task 198/202/221 instance)
+
+**Resolution (2026-05-09):** Closed during the JA hierarchy-suffix work. `meta_i18n_ext.js?v=14` in both wordmap.html and tree.html now matches `WM_ASSET_VERSION.metaI18n=14`. Coverage script also bumped to `?v=10`. Task 214 (auto-bump infrastructure) remains the durable solution.
+
+Original spec ↓
 
 **Status (2026-05-08 night verification):** Still open. `meta_i18n_ext.js?v=9` in wordmap.html vs `WM_ASSET_VERSION.metaI18n=11`.
 
@@ -12239,7 +12243,11 @@ Files to change:
 
 **Recurrence rate**: 4 drifts in 36 hours. **Task 214 (auto-bump infrastructure) urgent — manual maintenance is unsustainable.**
 
-### New Task 230. ⏳ OPEN Family allow-list 4 outliers (regression, Task 159 instance)
+### New Task 230. ✅ DONE Family allow-list 4 outliers (regression, Task 159 instance)
+
+**Resolution (2026-05-09):** `th_isan`/`th_n`/`za` already normalized to `Kra-Dai` in earlier work. `nv` Navajo updated from bare `Athabaskan` → `Na-Dené (Athabaskan, Southern)` to match the project convention used by `apw` (Western Apache, also Southern Athabaskan) and other Athabaskan rows like `koy`/`crx`/`chp`. Validator confirms 0 family-allow-list warnings.
+
+Original spec ↓
 
 **Status (2026-05-08 night verification):** Still open. Specific outliers identified: `nv` (Athabaskan), `th_isan` (Tai-Kadai), `th_n` (Tai-Kadai), `za` (Tai-Kadai).
 
