@@ -999,6 +999,24 @@ select:focus { border-color: #4a90d9; outline: none; }
 }
 .copy-toast.show { opacity: 1; }
 
+/* UI polish: back-to-top floating button (used by index.html and tree.html). */
+.back-to-top {
+    position: fixed;
+    right: max(16px, calc(env(safe-area-inset-right) + 8px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+    width: 44px; height: 44px; line-height: 1;
+    background: rgba(255,255,255,0.97); border: 1px solid #d0d0d0;
+    border-radius: 50%; cursor: pointer;
+    font-size: 22px; color: #444;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 100; user-select: none;
+    transition: background-color 0.15s, transform 0.1s;
+}
+.back-to-top:hover { background: #f3f4f6; }
+.back-to-top:active { transform: scale(0.94); }
+.back-to-top:focus-visible { outline: 2px solid #4a6cf7; outline-offset: 2px; }
+.back-to-top[hidden] { display: none; }
+
 /* Responsive */
 @media (max-width: 768px) {
     body { padding: 10px; overflow-x: hidden; }

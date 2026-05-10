@@ -15,7 +15,7 @@
     <meta name="twitter:title" id="twTitle" content="LangMap - Multilingual Word Order Map">
     <meta name="twitter:description" id="twDesc" content="An interactive map comparing word order across 220+ languages, dialects, and historical stages.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
-    <link rel="stylesheet" href="styles.css?v=69">
+    <link rel="stylesheet" href="styles.css?v=70">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ7JJBCCHG"></script>
@@ -142,6 +142,22 @@
     </div>
 
     <div class="copy-toast" id="copyToast">URLをコピーしました</div>
+
+    <!-- UI polish: back-to-top button (appears after scrolling past 400px). -->
+    <button type="button" id="back-to-top" class="back-to-top" aria-label="Scroll to top" hidden>↑</button>
+    <script>
+    (function () {
+        const btn = document.getElementById('back-to-top');
+        if (!btn) return;
+        function update() {
+            const y = window.scrollY || document.documentElement.scrollTop || 0;
+            btn.hidden = y < 400;
+        }
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 
     <!-- Language selector modal -->
     <div class="lang-modal-overlay" id="langModalOverlay">
