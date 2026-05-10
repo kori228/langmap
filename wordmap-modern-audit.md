@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-08 night, 910 langs, validator 0 errors / 23 warnings ✅ Tasks 224/225/227/228 resolved; 226/229/230 + Phase B i18n still open)
+## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230 resolved; **Tasks 231-234 NEW: mobile UX overhaul (iPhone Safari report)**)
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -12311,3 +12311,129 @@ Validator outcomes after each phase:
 - After 226/229/230: 23 warnings → 17 warnings, all PASS (only ongoing-translation-work warnings).
 - After Phase B 218 continuation (~459 more langs ≥200 chars): 17 → ~5 warnings (only thinnest minor UI langs remaining).
 - After Phase C 218 (all UI langs ≥200 chars in ALL 21 UI translations): 0 warnings.
+
+## Mobile UX overhaul (2026-05-09, iPhone Safari report)
+
+User reported four concrete mobile-Safari problems that affect all three pages (`index.html`, `wordmap.html`, `tree.html`). The current `@media (max-width: 768px)` and `@media (max-width: 480px)` breakpoints in [styles.css](styles.css) and [wordmap.html](wordmap.html#L631-L657) shrink fonts but do not solve overflow, zoom-on-focus, or modal-coverage issues. Tasks 231-234 below address each report.
+
+### New Task 231. ✅ DONE Mobile header — hamburger menu (3 pages)
+
+Implementation (2026-05-09): CSS-only hamburger pattern using `<input type="checkbox">` + `<label>` toggle. `.header-collapse` wrapper uses `display: contents` on desktop (no layout impact) and `display: none → flex (column)` as an absolute-positioned dropdown at `≤640px`. Added to all three pages (`index.html`, `wordmap.html`, `tree.html`). Cache: styles 64→65.
+
+Original spec ↓
+
+Goal:
+On iPhone (375-430px viewport), the shared `.site-header-bar` overflows: logo + 3 nav items with separators + UI-lang `<select>` (140-200px wide) + `langmap.heuron.com` URL all compete for one row. The current `@media (max-width: 720px)` rule in [styles.css:75-81](styles.css#L75-L81) only shrinks logo/url font-sizes; nav text + the i18n labels for "Word Order / Word Map / Tree" still run past the viewport edge.
+
+Implementation plan:
+- Add a hamburger toggle button (CSS-only or JS) inside `.site-header-bar` that becomes visible at `max-width: 720px` and hides `.header-nav` + `.header-url`.
+- When tapped, slide a panel from the top (or full-screen overlay) showing: nav links, UI-lang select, attribution/URL link.
+- Keep the LangMap logo on the left + UI-lang select compact on the right (or move into the menu entirely).
+- Apply across `index.html`, `wordmap.html`, `tree.html` since all three use the shared header markup pattern.
+
+Files to change:
+- [styles.css](styles.css) — `.site-header-bar` mobile rule (line 75-81); add `.hamburger-toggle` + `.mobile-nav-drawer` styles.
+- [index.html](index.html), [wordmap.html](wordmap.html#L662-L677), [tree.html](tree.html) — insert hamburger button markup before `<nav class="header-nav">`; wrap nav + ui-lang + url in a drawer container that toggles on click.
+- A11y: button needs `aria-expanded`, `aria-controls`, `aria-label` (i18n via NAV_* maps in [meta_i18n_ext.js](meta_i18n_ext.js)).
+
+Done when:
+- iPhone Safari at 375px shows only logo + hamburger; tapping reveals all nav + UI-lang select.
+- Desktop ≥720px unchanged.
+- Cross-page: all 3 pages use the same hamburger pattern.
+
+### New Task 232. ✅ DONE Mobile zoom-on-focus — input font-size ≥16px
+
+Implementation (2026-05-09): added `input/select/textarea { font-size: 16px !important; }` rules inside the `≤768px` media queries of `wordmap.html`, `tree.html`, and `styles.css` (covers `index.html`). The `!important` is required to override existing inline `font-size:12px` on `#lang-search` and `.header-ui-lang`. Visual size still controlled via padding so the chrome stays compact.
+
+Original spec ↓
+
+Goal:
+iOS Safari **auto-zooms the viewport** whenever an `<input>` or `<select>` with computed `font-size < 16px` receives focus. The current language search input ([wordmap.html:697](wordmap.html#L697)) has `font-size:12px`, so tapping the search box zooms the page and the user has to pinch back out manually. This is a well-known iOS quirk with a single fix.
+
+Affected fields:
+- [wordmap.html](wordmap.html#L697) `#lang-search` input → `font-size:12px` (zooms)
+- [wordmap.html](wordmap.html#L675) `.header-ui-lang` select → `font-size:12px` (zooms)
+- [wordmap.html:636](wordmap.html#L636) mobile rule shrinks `.top-left-controls select` to 11px (zooms)
+- Same pattern likely on `index.html` filter inputs and `tree.html` controls — survey needed.
+
+Implementation plan:
+- Option A (recommended): in mobile media query, force `input, select, textarea { font-size: 16px; }` for any field that receives keyboard focus. Visual size can stay compact via padding/height rather than font-size.
+- Option B: set `<meta name="viewport" content="..., maximum-scale=1, user-scalable=no">`. Rejected — breaks accessibility (vision-impaired users rely on pinch-zoom).
+- Option C: keep visual font small but set `font-size:16px` on focus only — flickers, not recommended.
+
+Files to change:
+- [wordmap.html](wordmap.html), [index.html](index.html), [tree.html](tree.html), [styles.css](styles.css) — within `@media (max-width: 768px)` (or 720px), add input/select font-size:16px overrides for all interactive form fields.
+
+Done when:
+- iPhone Safari: tapping any input/select on any of the 3 pages does NOT trigger viewport zoom.
+- Pinch-zoom still works for accessibility.
+- Visual layout unchanged on desktop.
+
+### New Task 233. ⏳ OPEN Mobile language-info modal — switch to near-fullscreen sheet with overlay close button
+
+Goal:
+Current mobile modal ([wordmap.html:643-657](wordmap.html#L643-L657)) is a half-height bottom sheet (50vh at ≤768px, 60vh at ≤480px). User report: it covers the bottom half of the map (so neither the map nor the modal is fully usable), AND is too narrow to comfortably read multi-paragraph descriptions (200-600 char descriptions per Task 218 now exist). User-requested layout: modal fills almost the entire viewport, with a floating close button overlaid in a corner.
+
+Implementation plan:
+- At `max-width: 768px`, change `.lang-info-panel` from `bottom:0; max-height:50vh` to:
+  - Position: `top: 0; left: 0; right: 0; bottom: 0` (or top:8px / bottom:8px for a near-fullscreen card with rounded corners).
+  - Width: `100%`, max-height removed (or `calc(100vh - 16px)`), overflow-y: auto.
+  - Border-radius: 12px on all corners (was top-only).
+- Promote `.close-btn` from inline to overlay:
+  - `position: fixed; top: 14px; right: 14px; z-index: 1100;`
+  - Larger tap target: 44×44px circular button with semi-opaque background (matches iOS HIG minimum).
+  - Stays visible regardless of scroll position.
+- Same treatment for `.compare-panel` ([wordmap.html:570-573](wordmap.html#L570-L573) — currently 80vh max-height at ≤600px).
+- When modal is open on mobile, hide map controllers (Task 234 ties in here).
+
+Files to change:
+- [wordmap.html](wordmap.html#L416-L657) — `.lang-info-panel` mobile rules + `.close-btn` overlay positioning + `.compare-panel` mobile rule.
+
+Done when:
+- Tapping a language opens a near-fullscreen modal that fills ~95% of the viewport.
+- Close button is a thumb-sized button overlaid in top-right corner, always reachable.
+- Modal scrolls internally for long descriptions.
+- Compare panel uses the same near-fullscreen pattern.
+
+### New Task 234. ⏳ OPEN Mobile map controls — hide non-essential controllers, collapse into a settings menu
+
+Goal:
+On `wordmap.html` mobile, the right-side `.right-controls` stack ([wordmap.html:707-726](wordmap.html#L707-L726)) shows: zoom +/-, 2D/3D toggle, Form/Pron./Name toggles (3 buttons), Native/Translated radio, vertical font-size slider — 7+ controls vertically stacked on a 375px viewport, occupying significant map area. User-requested: hide the unnecessary ones (zoom +/- — pinch-zoom is the iOS-native gesture), or collapse into a menu.
+
+Triage:
+- **Drop entirely on mobile:**
+  - `.map-zoom-controls` (+/-) — pinch-zoom is native; the buttons are redundant on touch.
+  - Vertical font-size slider — niche tweak; can move into modal or menu.
+- **Keep visible (essential):**
+  - 2D/3D toggle (significant mode change).
+  - Compare FAB (already a floating button).
+- **Move into a settings menu:**
+  - Form/Pron./Name on/off toggles.
+  - Native/Translated radio.
+  - Font-size slider.
+
+Implementation plan:
+- Add a `.settings-fab` floating button (gear icon) on mobile, similar to `.compare-fab`.
+- Tapping opens a bottom-sheet menu with the moved controls.
+- In `@media (max-width: 768px)`:
+  - `.map-zoom-controls { display: none; }` (already partly hidden — see [wordmap.html:585-586](wordmap.html#L585-L586) which hides Leaflet's default zoom; the custom `.map-zoom-controls` is still shown).
+  - Hide Form/Pron./Name buttons + Native/Translated radio + size slider; surface them in the settings menu instead.
+- Keep the `.top-left-controls` word select + era switch + lang search visible (these are primary navigation).
+
+Files to change:
+- [wordmap.html](wordmap.html#L707-L726) — wrap right-controls in a drawer that's invisible on mobile; add `.settings-fab` markup.
+- Mobile-specific CSS: add `.settings-drawer` styles.
+
+Done when:
+- Mobile: map area is no longer obscured by zoom +/- and tertiary toggles.
+- A single gear button reveals all secondary controls when needed.
+- 2D/3D toggle and compare button remain visible (primary controls).
+- Desktop unchanged.
+
+### Mobile-overhaul cross-cutting notes
+
+- All four tasks should be tested in **iPhone Safari (real device or Web Inspector)**, not Chrome DevTools mobile mode — iOS Safari has unique behaviors (input zoom, safe-area insets, 100vh ≠ visible viewport when address bar is showing).
+- Use `dvh` (dynamic viewport height) units where possible for the modal — `100vh` on iOS includes the URL bar area and gets clipped.
+- Add `env(safe-area-inset-bottom)` padding for iPhone X+ home-indicator area on bottom-anchored elements.
+- Cross-page consistency: hamburger pattern (Task 231) and zoom-on-focus fix (Task 232) must be uniform across `index.html`, `wordmap.html`, `tree.html`. Tasks 233/234 are wordmap-specific.
+- Recommended bundle: 231 + 232 land first (foundational + cheap), then 233 + 234 together (wordmap-specific layout).

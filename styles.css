@@ -72,12 +72,47 @@ body {
     max-width: 200px;
 }
 .site-header-bar .header-ui-lang + .header-url { margin-left: 12px; }
+
+/* Audit Task 231: mobile hamburger menu. On desktop the wrapper is
+   `display: contents` so its children participate in the header flex
+   layout exactly as before. On mobile (≤640px) the hamburger button
+   appears, the wrapper collapses, and a checked checkbox reveals the
+   wrapper as an absolute-positioned dropdown. CSS-only — no JS. */
+.hdr-menu-toggle { display: none; }
+.hamburger-btn { display: none; }
+.header-collapse { display: contents; }
 @media (max-width: 720px) {
     body { padding: 10px; }
     .site-header-bar { margin: -10px -10px 16px; padding: 10px 14px; gap: 8px; }
     .site-header-bar .logo { font-size: 16px; }
     .site-header-bar .subtitle { display: none; }
     .site-header-bar .header-url { font-size: 10px; }
+}
+@media (max-width: 640px) {
+    .site-header-bar { position: relative; flex-wrap: nowrap; }
+    .hamburger-btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        margin-left: auto;
+        width: 40px; height: 40px;
+        background: transparent; border: 1px solid #d0d0d0; border-radius: 6px;
+        font-size: 20px; line-height: 1; color: #444;
+        cursor: pointer; user-select: none;
+    }
+    .hamburger-btn:hover, .hamburger-btn:focus { background: #f3f4f6; outline: none; }
+    .header-collapse {
+        display: none;
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 10px;
+        padding: 14px 16px;
+        background: #fff;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        z-index: 1100;
+    }
+    .hdr-menu-toggle:checked ~ .header-collapse { display: flex; }
+    .header-collapse .header-nav { flex-wrap: wrap; gap: 8px; font-size: 14px; }
+    .header-collapse .header-ui-lang { margin-left: 0; width: 100%; max-width: none; }
+    .header-collapse .header-url { margin-left: 0; }
 }
 
 .ui-lang-picker {
@@ -944,6 +979,12 @@ select:focus { border-color: #4a90d9; outline: none; }
     .container { max-width: 100vw; }
     .control-row { flex-direction: column; align-items: stretch; }
     .map-container { padding: 15px 10px; min-width: 0; }
+    /* Audit Task 232: prevent iOS Safari focus auto-zoom (font < 16px). */
+    input[type="text"], input[type="search"], input[type="number"],
+    input[type="email"], input[type="tel"], input[type="url"],
+    select, textarea {
+        font-size: 16px !important;
+    }
     /* Language name: allow wrapping on mobile */
     .lang-label { min-width: 70px; width: 70px; font-size: 10px; white-space: normal; word-break: break-word; line-height: 1.3; flex-shrink: 0; margin-right: 6px; }
     .segment { font-size: 16px; }
