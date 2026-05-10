@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=66">
+    <link rel="stylesheet" href="styles.css?v=67">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -479,9 +479,11 @@
             padding: 9px 16px; font-size: 13px; cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: none;
             align-items: center; gap: 6px; font-weight: 500;
+            transition: background-color 0.15s, transform 0.1s;
         }
         .compare-fab.visible { display: inline-flex; }
         .compare-fab:hover { background: #1765c4; }
+        .compare-fab:active { transform: scale(0.96); }
         .compare-fab-badge {
             background: #fff; color: #1a73e8; border-radius: 12px;
             padding: 1px 8px; font-weight: 600; font-size: 12px; min-width: 18px; text-align: center;
@@ -690,9 +692,14 @@
                button toggles a hidden checkbox that re-shows the wrapper
                as a positioned drawer. body:has(...) lets the gear button
                (sibling of body) drive the drawer state. */
-            .right-secondary-controls { display: none; }
-            body:has(.settings-toggle:checked) .right-secondary-controls {
+            /* Use opacity + visibility instead of display so the drawer can
+               fade in / slide from the right when toggled. flex stays so
+               children render with the column layout. */
+            .right-secondary-controls {
                 display: flex; flex-direction: column;
+                opacity: 0; visibility: hidden;
+                transform: translateX(8px);
+                transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
                 position: fixed; top: 100px;
                 right: max(8px, env(safe-area-inset-right));
                 /* Cap height so the drawer never grows past the FAB row at
@@ -704,6 +711,11 @@
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 12px;
                 box-shadow: 0 4px 16px rgba(0,0,0,0.15);
                 z-index: 1015;
+                pointer-events: none;
+            }
+            body:has(.settings-toggle:checked) .right-secondary-controls {
+                opacity: 1; visibility: visible; transform: translateX(0);
+                pointer-events: auto;
             }
             /* Hide the .ctrl-spacer (the 8px gap div) when toggles are
                collapsed so the 2D/3D button doesn't sit above empty space. */
@@ -719,7 +731,10 @@
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
                 font-size: 22px; line-height: 1; color: #444;
                 cursor: pointer; user-select: none; z-index: 1015;
+                transition: background-color 0.15s, color 0.15s, transform 0.1s;
             }
+            .settings-fab:hover { background: #f3f4f6; }
+            .settings-fab:active { transform: scale(0.94); }
             .settings-toggle:checked + .settings-fab {
                 background: #1a73e8; color: #fff; border-color: #1a73e8;
             }
@@ -768,7 +783,11 @@
             }
             .lang-info-panel h2 { padding-right: 56px; }
 
-            .url-watermark { font-size: 9px; }
+            /* Audit (UI polish 2026-05-09): hide the bottom-right URL
+               watermark on mobile — the FAB row (compare + settings) sits
+               at the same edge and covers it. The URL is already shown in
+               the hamburger menu, so mobile users don't lose access. */
+            .url-watermark { display: none; }
 
             /* Audit Task 232: iOS Safari auto-zooms on focus when computed
                font-size is < 16px. Force 16px on every keyboard-focusable
@@ -1119,7 +1138,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    66,
+            styles:    67,
             data:      206,
             metaI18n:  14,
             filter:    28,
@@ -3305,10 +3324,10 @@
             infoContent.innerHTML = html;
         }
 
-        // Pan the map (or globe) to a language's coordinate, accounting for the
-        // bottom-mounted modal on mobile. On mobile, the lang-info-panel covers
-        // the bottom 50-60% of the viewport, so we use fitBounds with
-        // paddingBottomRight to push the coord into the visible upper region.
+        // Pan the map (or globe) to a language's coordinate. Since the
+        // mobile modal is now near-fullscreen (Audit Task 233), the map
+        // underneath is fully covered, so a centered marker is fine — when
+        // the modal closes the user sees the marker at the center.
         function centerLangOnMap(code) {
             const lang = LANG_DATA[code];
             if (!lang || !Number.isFinite(lang.lat) || !Number.isFinite(lang.lng)) return;
@@ -3318,25 +3337,7 @@
             }
             if (!map) return;
             const targetZoom = Math.max(map.getZoom(), 5);
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
-            if (isMobile) {
-                // Estimate modal height: 50vh per the @media (max-width: 768px) rule
-                // (60vh at ≤480px). Add a small buffer so the marker isn't right on the seam.
-                const isSmall = window.matchMedia('(max-width: 480px)').matches;
-                const modalFraction = isSmall ? 0.6 : 0.5;
-                const modalH = Math.round(window.innerHeight * modalFraction) + 16;
-                try {
-                    map.fitBounds([[lang.lat, lang.lng], [lang.lat, lang.lng]], {
-                        paddingBottomRight: [0, modalH],
-                        maxZoom: targetZoom,
-                        animate: true,
-                    });
-                } catch (e) {
-                    map.setView([lang.lat, lang.lng], targetZoom);
-                }
-            } else {
-                map.setView([lang.lat, lang.lng], targetZoom);
-            }
+            map.setView([lang.lat, lang.lng], targetZoom);
         }
 
         function showLangInfo(code) {

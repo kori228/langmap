@@ -109,10 +109,19 @@ body {
         background: transparent; border: 1px solid #d0d0d0; border-radius: 6px;
         font-size: 20px; line-height: 1; color: #444;
         cursor: pointer; user-select: none;
+        transition: background-color 0.15s, color 0.15s;
     }
     .hamburger-btn:hover, .hamburger-btn:focus { background: #f3f4f6; outline: none; }
+    .hamburger-btn:active { background: #e5e7eb; }
+    /* Active-state visual when checkbox is checked: invert colors so users
+       see the menu is open even when the dropdown isn't visually obvious. */
+    .hdr-menu-toggle:checked + .hamburger-btn { background: #1a73e8; color: #fff; border-color: #1a73e8; }
     .header-collapse {
-        display: none;
+        /* Use opacity + visibility instead of display so we can transition. */
+        display: flex;
+        opacity: 0; visibility: hidden;
+        transform: translateY(-4px);
+        transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
         position: absolute; top: 100%; left: 0; right: 0;
         flex-direction: column; align-items: stretch; gap: 10px;
         padding: 14px 16px;
@@ -120,8 +129,13 @@ body {
         border-bottom: 1px solid #e0e0e0;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         z-index: 1100;
+        /* Honor notch / safe-area on landscape iPhones. */
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
     }
-    .hdr-menu-toggle:checked ~ .header-collapse { display: flex; }
+    .hdr-menu-toggle:checked ~ .header-collapse {
+        opacity: 1; visibility: visible; transform: translateY(0);
+    }
     .header-collapse .header-nav { flex-wrap: wrap; gap: 8px; font-size: 14px; }
     .header-collapse .header-ui-lang { margin-left: 0; width: 100%; max-width: none; }
     .header-collapse .header-url { margin-left: 0; }
