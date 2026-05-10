@@ -164,8 +164,14 @@ body {
         margin-left: 0;
         padding-top: 6px; border-top: 1px solid #eee;
     }
-    /* Semi-transparent black backdrop behind the open drawer. Tappable —
-       click-outside JS handler closes the menu when the backdrop is hit. */
+    /* Semi-transparent black backdrop behind the open drawer. Lives
+       OUTSIDE .site-header-bar (the header's backdrop-filter creates a
+       containing block that traps fixed-position descendants), so we
+       use body:has() to react to the toggle state. Tappable — the
+       outside-click JS handler closes the menu when the backdrop is hit.
+       Header is raised above the backdrop so the menu chrome stays
+       visible against the dimmed page. */
+    .site-header-bar { z-index: 1101; }
     .header-backdrop {
         display: block;
         position: fixed; inset: 0;
@@ -175,7 +181,7 @@ body {
         z-index: 1099;
         cursor: pointer;
     }
-    .hdr-menu-toggle:checked ~ .header-backdrop {
+    body:has(.hdr-menu-toggle:checked) .header-backdrop {
         opacity: 1; visibility: visible;
     }
 }

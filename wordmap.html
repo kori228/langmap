@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=72">
+    <link rel="stylesheet" href="styles.css?v=73">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -36,9 +36,13 @@
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
 
-        /* --- Header (override for map page: fixed position) --- */
+        /* --- Header (override for map page: fixed position) ---
+             z-index 1101 so it stays above the backdrop (1099) when the
+             hamburger menu is open. Was 1001; nothing else on the page
+             goes that high except .lang-search-results (1100, dropdown
+             that should appear below the header). */
         .site-header-bar {
-            position: absolute; top: 0; left: 0; right: 0; z-index: 1001;
+            position: absolute; top: 0; left: 0; right: 0; z-index: 1101;
             margin: 0;
         }
         .site-header-bar .word-select-wrap {
@@ -835,8 +839,10 @@
             <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
             <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
         </div>
-        <div class="header-backdrop" id="header-backdrop" aria-hidden="true"></div>
     </div>
+    <!-- Backdrop lives OUTSIDE the header bar so backdrop-filter on the
+         header doesn't trap it inside the header's stacking context. -->
+    <div class="header-backdrop" id="header-backdrop" aria-hidden="true"></div>
 
     <!-- Top-left controls (below header): word select + era + lang search -->
     <div class="top-left-controls">
@@ -1216,7 +1222,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    72,
+            styles:    73,
             data:      206,
             metaI18n:  14,
             filter:    28,

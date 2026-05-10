@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=72">
+<link rel="stylesheet" href="styles.css?v=73">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -178,8 +178,10 @@
         <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
         <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
     </div>
-    <div class="header-backdrop" id="header-backdrop" aria-hidden="true"></div>
 </div>
+<!-- Backdrop lives OUTSIDE the header bar so backdrop-filter on the
+     header doesn't trap it inside the header's stacking context. -->
+<div class="header-backdrop" id="header-backdrop" aria-hidden="true"></div>
 
 <!-- UI polish: close hamburger drawer on outside-click / Esc; also
      keeps aria-expanded synced to the toggle state for screen readers. -->
