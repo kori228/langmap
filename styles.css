@@ -79,14 +79,16 @@ body {
    appears, the wrapper collapses, and a checked checkbox reveals the
    wrapper as an absolute-positioned dropdown. CSS-only — no JS.
 
-   Keyboard a11y note: the toggle checkbox is visually hidden via
-   off-screen positioning (not display:none) so it stays in the
-   tab order and Space toggles it. The .hamburger-btn label is
-   visual-only; focus styles below mirror the checkbox state on the
-   label so keyboard users see the affordance. */
+   Keyboard a11y note: the toggle checkbox is visually hidden using
+   the standard sr-only pattern (clip + 1×1px positioned offscreen),
+   not display:none, so it stays in the tab order and Space toggles
+   it. We don't set aria-hidden since the checkbox is the actual
+   interactive control; the label proxies it visually. */
 .hdr-menu-toggle {
-    position: absolute; opacity: 0; pointer-events: none;
-    width: 1px; height: 1px; overflow: hidden;
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 .hamburger-btn { display: none; }
 .hdr-menu-toggle:focus-visible + .hamburger-btn {
