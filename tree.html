@@ -178,21 +178,31 @@
     </div>
 </div>
 
-<!-- UI polish: close hamburger drawer on outside-click / Esc. -->
+<!-- UI polish: close hamburger drawer on outside-click / Esc; also
+     keeps aria-expanded synced to the toggle state for screen readers. -->
 <script>
 (function () {
+    const cb = document.getElementById('hdr-menu-toggle');
+    const btn = document.querySelector('label[for="hdr-menu-toggle"]');
+    function syncAria() {
+        if (cb && btn) btn.setAttribute('aria-expanded', cb.checked ? 'true' : 'false');
+    }
+    syncAria();
+    if (cb) cb.addEventListener('change', syncAria);
     document.addEventListener('click', (e) => {
-        const cb = document.getElementById('hdr-menu-toggle');
         if (!cb || !cb.checked) return;
         const drawer = document.getElementById('header-collapse');
         if (drawer && drawer.contains(e.target)) return;
         if (e.target.closest('.hamburger-btn')) return;
         cb.checked = false;
+        cb.dispatchEvent(new Event('change'));
     }, true);
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
-        const cb = document.getElementById('hdr-menu-toggle');
-        if (cb && cb.checked) cb.checked = false;
+        if (cb && cb.checked) {
+            cb.checked = false;
+            cb.dispatchEvent(new Event('change'));
+        }
     });
 })();
 </script>

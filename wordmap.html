@@ -893,15 +893,25 @@
 
     <!-- Audit (UI polish 2026-05-09): close hamburger / settings drawer
          when user taps outside. Both drawers are CSS-only checkbox
-         toggles, so we just uncheck the box to dismiss them. Also close
-         the hamburger drawer on nav-link tap (which navigates anyway,
-         but the redundant uncheck removes a flicker). -->
+         toggles, so we just uncheck the box to dismiss them. Also keeps
+         aria-expanded on the visible label in sync with the toggle state
+         so screen readers announce open/close. -->
     <script>
     (function () {
         const drawers = [
             { toggle: 'hdr-menu-toggle', drawer: 'header-collapse', btnClass: 'hamburger-btn' },
             { toggle: 'settings-toggle', drawer: 'right-secondary', btnClass: 'settings-fab' },
         ];
+        function syncAria(cb, btnClass) {
+            const btn = document.querySelector('label[for="' + cb.id + '"]');
+            if (btn) btn.setAttribute('aria-expanded', cb.checked ? 'true' : 'false');
+        }
+        for (const { toggle, btnClass } of drawers) {
+            const cb = document.getElementById(toggle);
+            if (!cb) continue;
+            syncAria(cb, btnClass);
+            cb.addEventListener('change', () => syncAria(cb, btnClass));
+        }
         document.addEventListener('click', (e) => {
             for (const { toggle, drawer, btnClass } of drawers) {
                 const cb = document.getElementById(toggle);
@@ -913,6 +923,7 @@
                 if (drawerEl.contains(e.target)) continue;
                 if (e.target.closest('.' + btnClass)) continue;
                 cb.checked = false;
+                cb.dispatchEvent(new Event('change'));
             }
         }, true);
         // Esc closes any open drawer (keyboard a11y).
@@ -920,7 +931,10 @@
             if (e.key !== 'Escape') return;
             for (const { toggle } of drawers) {
                 const cb = document.getElementById(toggle);
-                if (cb && cb.checked) cb.checked = false;
+                if (cb && cb.checked) {
+                    cb.checked = false;
+                    cb.dispatchEvent(new Event('change'));
+                }
             }
         });
     })();
