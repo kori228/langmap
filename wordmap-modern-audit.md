@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230 resolved; **Tasks 231/232/233 ✅ DONE; 234 🟡 PARTIAL (Step A done)**)
+## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230/231/232/233/235 resolved; 234 🟡 PARTIAL (Step A done))
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -12439,6 +12439,49 @@ Done when:
 - A single gear button reveals all secondary controls when needed.
 - 2D/3D toggle and compare button remain visible (primary controls).
 - Desktop unchanged.
+
+### New Task 235. ✅ DONE — index.html "Edit History" / "Submit" modals fully exposed (no CSS hide rule, no JS handlers)
+
+**Resolution (2026-05-09, Option A):** Both unwired modal blocks deleted from [index.html:136-170](index.html). Verified no references in [app.js](app.js) / [lang_names.js](lang_names.js) / [styles.css](styles.css) — the only callers were the inline `onclick=` handlers in the deleted markup itself. Page now loads cleanly with no exposed scaffolding.
+
+If/when the Edit History + Submit Changes feature is revived, restore from git history and address both gaps (CSS overlay hide rule + JS handler implementation + backend submission endpoint).
+
+Original spec ↓
+
+
+Goal:
+[index.html](index.html#L137-L170) declares three modals — `.lang-modal-overlay`, `.edit-history-overlay`, `.submit-overlay` — but **only the first one has CSS**. The other two render as default-visible divs because no `display: none` / `position: fixed` rule exists anywhere in [styles.css](styles.css). On every page load, both the "Edit History" panel and "Submit Your Corrections" form are fully visible inline below the language list — desktop AND mobile.
+
+Verification (2026-05-09):
+- `grep -rn '\.edit-history-overlay\|\.submit-overlay' *.css *.html` → 0 matches in CSS, only the markup itself in index.html.
+- `grep -n 'editHistoryOverlay\|submitOverlay\|openEditHistory\|closeEditHistory\|openSubmitModal\|closeSubmitModal\|submitChanges' app.js` → 0 matches. The HTML `onclick` handlers (`closeEditHistory()`, `openSubmitModal()`, `closeSubmitModal()`, `submitChanges()`) call functions that **do not exist** in [app.js](app.js).
+
+Two failures stacked:
+
+1. **CSS missing**: hide rules + open toggle for both overlays. Must mirror `.lang-modal-overlay` pattern at [styles.css:319-328](styles.css#L319-L328) (`display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:2000;` + `.open { display:flex }`).
+2. **JS missing**: handler functions referenced by inline `onclick=` attributes are undefined → tapping × buttons throws `ReferenceError`. Either implement `openEditHistory()` / `closeEditHistory()` / `openSubmitModal()` / `closeSubmitModal()` / `submitChanges()` in [app.js](app.js), OR remove the markup entirely if the feature isn't ready.
+
+Likely cause:
+The "Edit History" / "Submit Changes" feature was scaffolded in markup but never wired up. Adding the CSS without the JS would still leave broken close buttons. Adding the JS without a backend submission endpoint would leave a non-functional submit form.
+
+Recommended decision (please pick):
+
+| Option | Description | Effort | Result |
+|---|---|---|---|
+| **A** (recommended) | Comment out / delete the two `<div>` blocks at [index.html:137-170](index.html#L137-L170) until the feature is ready | 2 min | Page renders cleanly; no half-built UI shipped. |
+| B | Add CSS hide rules + minimal JS open/close stubs; leave Submit endpoint as TODO | ~30 min | Visible affordance with non-functional submit. |
+| C | Full implementation (requires backend endpoint design — likely a GitHub Issues form or similar) | 1+ day | Working feature. |
+
+Files to change (all options):
+- [index.html](index.html#L137-L170) — delete blocks (Option A) or keep markup (Option B/C).
+- [styles.css](styles.css) — add overlay rules (Option B/C).
+- [app.js](app.js) — implement handlers (Option B/C).
+
+Done when:
+- index.html loads cleanly with no exposed modal content.
+- All onclick handlers in the markup either work or are removed.
+
+Priority: HIGH — this is user-visible broken state on the public site.
 
 ### Mobile-overhaul cross-cutting notes
 

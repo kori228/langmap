@@ -133,42 +133,6 @@
         </div>
     </div>
 
-    <!-- Edit History Modal -->
-    <div class="edit-history-overlay" id="editHistoryOverlay">
-        <div class="edit-history-modal">
-            <div class="edit-history-header">
-                <span class="edit-history-title" id="lblEditHistory">Edit History</span>
-                <button class="btn btn-sm" onclick="closeEditHistory()">×</button>
-            </div>
-            <div class="edit-history-body" id="editHistoryBody"></div>
-            <div class="edit-history-footer">
-                <button class="btn" id="btnEditHistoryClose" onclick="closeEditHistory()">Close</button>
-                <button class="btn btn-accent" id="btnSubmitChanges" onclick="openSubmitModal()">Submit Changes</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Submit Modal -->
-    <div class="submit-overlay" id="submitOverlay">
-        <div class="submit-modal">
-            <div class="submit-header">
-                <span id="lblSubmitTitle">Submit Your Corrections</span>
-                <button class="btn btn-sm" onclick="closeSubmitModal()">×</button>
-            </div>
-            <div class="submit-body">
-                <p id="lblSubmitDesc" style="color:#666;font-size:13px;margin-bottom:12px;">Your corrections help make LangMap better for everyone. Name and email are optional.</p>
-                <label id="lblSubmitName">Name / Nickname (optional)<br><input type="text" id="submitName" placeholder="Anonymous" style="width:100%;padding:6px 8px;margin:4px 0 12px;border:1px solid #ddd;border-radius:4px;"></label>
-                <label id="lblSubmitEmail">Email (optional)<br><input type="email" id="submitEmail" placeholder="you@example.com" style="width:100%;padding:6px 8px;margin:4px 0 12px;border:1px solid #ddd;border-radius:4px;"></label>
-                <input type="text" id="submitWebsite" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-                <div id="submitStatus" class="submit-status"></div>
-            </div>
-            <div class="submit-footer">
-                <button class="btn" id="btnSubmitCancel" onclick="closeSubmitModal()">Cancel</button>
-                <button class="btn btn-accent" id="btnSubmitDo" onclick="submitChanges()">Submit</button>
-            </div>
-        </div>
-    </div>
-
     <script src="data.js?v=58"></script>
     <script src="lang_names.js?v=2"></script>
     <script src="app.js?v=59"></script>
