@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=73">
+    <link rel="stylesheet" href="styles.css?v=74">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -679,11 +679,13 @@
             .toggle-btn { font-size: 10px; padding: 3px 7px; }
             .radio-switch .radio-opt { font-size: 10px; padding: 3px 8px; }
 
-            .top-left-controls { top: 48px; left: 6px; }
+            /* Header is ~60px tall on mobile (hamburger 40px + 10px*2
+               padding); top-left + right controls need to clear it. */
+            .top-left-controls { top: 68px; left: 6px; }
 
             .map-controls { bottom: 12px; left: 6px; }
 
-            .right-controls { top: 48px; }
+            .right-controls { top: 68px; }
             .right-controls .toggle-btn { min-width: 44px; font-size: 9px; }
 
             /* Audit Task 234: drop the redundant zoom +/- buttons (pinch-zoom
@@ -699,13 +701,14 @@
                (sibling of body) drive the drawer state. */
             /* Use opacity + visibility instead of display so the drawer can
                fade in / slide from the right when toggled. flex stays so
-               children render with the column layout. */
+               children render with the column layout. Top sits below the
+               header (~60px) + 2D/3D button row (~40px). */
             .right-secondary-controls {
                 display: flex; flex-direction: column;
                 opacity: 0; visibility: hidden;
                 transform: translateX(8px);
                 transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
-                position: fixed; top: 100px;
+                position: fixed; top: 120px;
                 right: max(8px, env(safe-area-inset-right));
                 /* Cap height so the drawer never grows past the FAB row at
                    the bottom; users can scroll inside if rows ever exceed. */
@@ -1222,7 +1225,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    73,
+            styles:    74,
             data:      206,
             metaI18n:  14,
             filter:    28,
