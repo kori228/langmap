@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=76">
+    <link rel="stylesheet" href="styles.css?v=77">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -603,10 +603,12 @@
 
         /* --- URL watermark --- */
         .url-watermark {
-            position: absolute; bottom: 28px; right: 8px; z-index: 1000;
+            position: absolute;
+            bottom: 0; left: 0; z-index: 1000;
             font-size: 11px; color: rgba(0,0,0,0.5);
-            background: rgba(255,255,255,0.75); padding: 2px 6px; border-radius: 4px;
-            display: flex; align-items: center; gap: 3px;
+            background: rgba(255,255,255,0.75); padding: 3px 8px;
+            border-radius: 0 4px 0 0;
+            display: flex; align-items: center; gap: 4px;
         }
         .url-watermark a { pointer-events: auto; }
 
@@ -1239,7 +1241,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    76,
+            styles:    77,
             data:      206,
             metaI18n:  14,
             filter:    28,
