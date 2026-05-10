@@ -24,7 +24,7 @@ A broader issue is that the concept labels `heart`, `love`, `hello`, `thanks`, a
 
 ---
 
-## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230 resolved; **Tasks 231-234 NEW: mobile UX overhaul (iPhone Safari report)**)
+## Task Status Index (last updated: 2026-05-09, 910 langs, validator 0 errors / 17 warnings PASS ✅ Tasks 224-230 resolved; **Tasks 231/232/233 ✅ DONE; 234 🟡 PARTIAL (Step A done)**)
 
 Status legend:
 - ✅ **COMPLETE** — validator INFO confirms 100% coverage or task structurally satisfied.
@@ -12369,7 +12369,11 @@ Done when:
 - Pinch-zoom still works for accessibility.
 - Visual layout unchanged on desktop.
 
-### New Task 233. ⏳ OPEN Mobile language-info modal — switch to near-fullscreen sheet with overlay close button
+### New Task 233. ✅ DONE Mobile language-info modal — near-fullscreen card
+
+Implementation (2026-05-09): on `≤768px`, `.lang-info-panel` now floats 8px from each viewport edge as a near-fullscreen card (`top/bottom/left/right: 8px; max-height: calc(100dvh - 16px)` with `100vh` fallback). The close button is promoted to a fixed 44×44 floating button at top-right (matches iOS HIG tap-target minimum) so it stays reachable while the modal scrolls. Same treatment applied to `.compare-panel` at `≤600px`. `env(safe-area-inset-bottom)` padding handles iPhone home-indicator area.
+
+Original spec ↓
 
 Goal:
 Current mobile modal ([wordmap.html:643-657](wordmap.html#L643-L657)) is a half-height bottom sheet (50vh at ≤768px, 60vh at ≤480px). User report: it covers the bottom half of the map (so neither the map nor the modal is fully usable), AND is too narrow to comfortably read multi-paragraph descriptions (200-600 char descriptions per Task 218 now exist). User-requested layout: modal fills almost the entire viewport, with a floating close button overlaid in a corner.
@@ -12395,7 +12399,13 @@ Done when:
 - Modal scrolls internally for long descriptions.
 - Compare panel uses the same near-fullscreen pattern.
 
-### New Task 234. ⏳ OPEN Mobile map controls — hide non-essential controllers, collapse into a settings menu
+### New Task 234. 🟡 PARTIAL Mobile map controls — Step A done
+
+Implementation Step A (2026-05-09): on `≤768px`, hide `.map-zoom-controls` (zoom +/-) since pinch-zoom is the iOS-native gesture, and hide `.size-slider-wrap` (vertical font-size slider) since it's a niche tweak. The 2D/3D toggle, Form/Pron./Name toggles, Native/Translated radio, and Compare FAB all stay visible — they're essential to the map's primary purpose.
+
+Step B deferred: full settings drawer (collapse Form/Pron./Name + Native/Translated into a `.settings-fab` menu) requires a markup + JS toggle and isn't strictly needed yet. Reopen if mobile users still report crowding.
+
+Original spec ↓
 
 Goal:
 On `wordmap.html` mobile, the right-side `.right-controls` stack ([wordmap.html:707-726](wordmap.html#L707-L726)) shows: zoom +/-, 2D/3D toggle, Form/Pron./Name toggles (3 buttons), Native/Translated radio, vertical font-size slider — 7+ controls vertically stacked on a 375px viewport, occupying significant map area. User-requested: hide the unnecessary ones (zoom +/- — pinch-zoom is the iOS-native gesture), or collapse into a menu.
