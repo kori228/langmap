@@ -926,10 +926,14 @@
                 if (!cb || !cb.checked) continue;
                 const drawerEl = document.getElementById(drawer);
                 if (!drawerEl) continue;
-                // Don't close if the tap landed on the drawer itself or on
-                // the toggle button (the button toggles via its own label).
+                // Don't close if the tap landed on the drawer itself, on the
+                // toggle button, or on the checkbox itself — when the user
+                // clicks the label, the browser also dispatches a synthetic
+                // click on the linked checkbox; intercepting THAT click
+                // would re-uncheck the checkbox we just toggled open.
                 if (drawerEl.contains(e.target)) continue;
                 if (e.target.closest('.' + btnClass)) continue;
+                if (e.target === cb) continue;
                 cb.checked = false;
                 cb.dispatchEvent(new Event('change'));
             }

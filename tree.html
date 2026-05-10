@@ -195,7 +195,12 @@
         if (!cb || !cb.checked) return;
         const drawer = document.getElementById('header-collapse');
         if (drawer && drawer.contains(e.target)) return;
+        // Don't close on the toggle button OR on the checkbox itself —
+        // when the user clicks the label, the browser also dispatches
+        // a synthetic click on the linked checkbox; intercepting THAT
+        // click would re-uncheck the checkbox we just toggled open.
         if (e.target.closest('.hamburger-btn')) return;
+        if (e.target === cb) return;
         cb.checked = false;
         cb.dispatchEvent(new Event('change'));
     }, true);
