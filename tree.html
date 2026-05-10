@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Language Family Tree — LangMap</title>
 <meta name="description" content="Browse 627 languages organized by their genealogical family tree.">
-<link rel="stylesheet" href="styles.css?v=77">
+<link rel="stylesheet" href="styles.css?v=78">
 <style>
     html, body { margin: 0; height: 100%; }
     body {
@@ -15,7 +15,9 @@
     }
 
     /* Header overrides for full-screen layout (defaults from styles.css) */
-    .site-header-bar { flex: 0 0 auto; margin: 0; z-index: 10; }
+    /* z-index 1101 keeps the header above the hamburger backdrop (1099)
+       so the menu chrome stays visible against the dimmed page. */
+    .site-header-bar { flex: 0 0 auto; margin: 0; z-index: 1101; }
 
     .controls-bar {
         flex: 0 0 auto; background: #fff;
