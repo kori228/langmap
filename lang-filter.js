@@ -585,6 +585,16 @@
 
     const SPEAKER_TIERS = ['100M+', '10M+', '1M+', '100K+', '10K+', '1K+', '<1K'];
 
+    // CJK reads in 億 (10^8) / 万 (10^4) groupings rather than M/K, so the
+    // tier labels above don't translate cleanly. Provide per-UI overrides
+    // for ja/ko/zh/yue. Other UI langs keep the English K/M form.
+    const SPEAKER_TIER_LABELS = {
+        ja:  { '100M+':'1億+', '10M+':'1千万+', '1M+':'100万+', '100K+':'10万+', '10K+':'1万+', '1K+':'1千+', '<1K':'千未満' },
+        ko:  { '100M+':'1억+', '10M+':'천만+',   '1M+':'백만+', '100K+':'십만+', '10K+':'만+',   '1K+':'천+',   '<1K':'천 미만' },
+        zh:  { '100M+':'1亿+', '10M+':'1千万+', '1M+':'100万+', '100K+':'10万+', '10K+':'1万+', '1K+':'1千+', '<1K':'<1千' },
+        yue: { '100M+':'1億+', '10M+':'1千萬+', '1M+':'100萬+', '100K+':'10萬+', '10K+':'1萬+', '1K+':'1千+', '<1K':'<1千' },
+    };
+
     // ----- Family aggregation (top-level only, drop parens) ---------------
 
     function topFamily(famStr) {
@@ -1234,7 +1244,12 @@
         if (cat === 'tone') {
             return val === 'tonal' ? t('val_tonal') : t('val_non_tonal');
         }
-        if (cat === 'wo' || cat === 'speaker') return val; // codes — universal
+        if (cat === 'wo') return val; // SVO/SOV/etc. — universal codes
+        if (cat === 'speaker') {
+            const ui = getUiLang();
+            const dict = SPEAKER_TIER_LABELS[ui];
+            return (dict && dict[val]) || val;
+        }
         const ui = getUiLang();
         if (ui === 'en') return val;
         // Prefer the dedicated chip-labels table (covers script + morph).

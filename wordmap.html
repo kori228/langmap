@@ -1078,7 +1078,7 @@
     <script src="wordmap_data.js?v=206"></script>
     <script src="meta_i18n_ext.js?v=14"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang-filter.js?v=28"></script>
+    <script src="lang-filter.js?v=29"></script>
     <script src="lang_names.js?v=104"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -1244,7 +1244,7 @@
             styles:    78,
             data:      206,
             metaI18n:  14,
-            filter:    28,
+            filter:    29,
             names:   104,
             meta:     182,
         };
@@ -1914,10 +1914,53 @@
             return dashOrEmpty(w) && dashOrEmpty(ipa);
         }
 
+        // Read the canonical speaker count for `code`. Falls back through
+        // the structured speakerCount overlay (Task 220) → prose parsing
+        // → 0. Used by getVisibleLangs() to gate display by zoom level.
+        function langSpeakerCount(code) {
+            const m = LANG_DATA[code] && LANG_DATA[code].meta;
+            if (!m) return 0;
+            const sc = m.speakerCount;
+            if (sc) {
+                if (typeof sc.l1 === 'number')        return sc.l1;
+                if (typeof sc.total === 'number')     return sc.total;
+                if (typeof sc.rangeMax === 'number')  return sc.rangeMax;
+                if (typeof sc.l1RangeMax === 'number') return sc.l1RangeMax;
+            }
+            // Light prose fallback: pull the leading numeric magnitude.
+            const s = m.speakers;
+            if (typeof s !== 'string') return 0;
+            const mat = s.match(/(\d+(?:[.,]\d+)?)\s*([KMB])\b/i);
+            if (mat) {
+                const n = parseFloat(mat[1].replace(',', '.'));
+                const u = mat[2].toUpperCase();
+                if (u === 'K') return n * 1_000;
+                if (u === 'M') return n * 1_000_000;
+                if (u === 'B') return n * 1_000_000_000;
+            }
+            const bare = s.match(/^\D*(\d{4,})/);
+            return bare ? parseInt(bare[1], 10) : 0;
+        }
+
         function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
             const unattestedLangs = [];
             const descendantCodes = new Set();
+            // User request 2026-05-09: if any lang-filter chip is active,
+            // override the zoom-based gate so users see everything that
+            // matches their filter regardless of zoom.
+            const filterActive = (window.__langmap
+                && typeof window.__langmap.anyFilterActive === 'function'
+                && window.__langmap.anyFilterActive());
+            // Speaker-count threshold by zoom (modern path):
+            //   z ≤ 3   → 100M+ only
+            //   z = 4   → 10M+ only
+            //   z ≥ 5   → all
+            // Filter-active overrides this (treated as zoom ≥ 5).
+            const tierMin = filterActive ? 0
+                : zoom <= 3 ? 100_000_000
+                : zoom <= 4 ? 10_000_000
+                : 0;
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
                     if (!LANG_DATA[hist] || !LANG_DATA[hist].words[wordId]) continue;
@@ -1935,7 +1978,7 @@
                 for (const [code, lang] of Object.entries(LANG_DATA)) {
                     if (EXCLUDED_CODES.has(code)) continue;
                     if (!lang.words[wordId]) continue;
-                    if (zoom < 4 && !MAJOR.has(code)) continue;
+                    if (tierMin > 0 && langSpeakerCount(code) < tierMin) continue;
                     if (isUnattestedEntry(lang.words[wordId])) {
                         unattestedLangs.push(code);
                     } else {
@@ -3427,10 +3470,13 @@
             infoContent.innerHTML = html;
         }
 
-        // Pan the map (or globe) to a language's coordinate. Since the
-        // mobile modal is now near-fullscreen (Audit Task 233), the map
-        // underneath is fully covered, so a centered marker is fine — when
-        // the modal closes the user sees the marker at the center.
+        // Pan the map (or globe) to a language's coordinate.
+        //   Mobile: modal is near-fullscreen (Task 233), so simple
+        //     setView is fine — the marker reveals when the modal closes.
+        //   Desktop: modal occupies the right side (top:56, width:340,
+        //     right:12 → ~352px reserved). Use fitBounds with
+        //     paddingBottomRight so the marker centers in the LEFT
+        //     visible portion of the map, not the geometric center.
         function centerLangOnMap(code) {
             const lang = LANG_DATA[code];
             if (!lang || !Number.isFinite(lang.lat) || !Number.isFinite(lang.lng)) return;
@@ -3440,7 +3486,29 @@
             }
             if (!map) return;
             const targetZoom = Math.max(map.getZoom(), 5);
-            map.setView([lang.lat, lang.lng], targetZoom);
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile) {
+                map.setView([lang.lat, lang.lng], targetZoom);
+                return;
+            }
+            // Compute the live modal width so the marker stays centered
+            // in the visible map area even if the modal CSS changes.
+            // Fall back to 352 if the panel isn't measurable yet.
+            const panel = document.getElementById('lang-info');
+            let modalRight = 352;
+            if (panel) {
+                const r = panel.getBoundingClientRect();
+                if (r.width > 0) modalRight = Math.round(r.width + 12);
+            }
+            try {
+                map.fitBounds([[lang.lat, lang.lng], [lang.lat, lang.lng]], {
+                    paddingBottomRight: [modalRight, 0],
+                    maxZoom: targetZoom,
+                    animate: true,
+                });
+            } catch (e) {
+                map.setView([lang.lat, lang.lng], targetZoom);
+            }
         }
 
         function showLangInfo(code) {
