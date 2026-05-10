@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JZ7JJBCCHG');
     </script>
-    <link rel="stylesheet" href="styles.css?v=74">
+    <link rel="stylesheet" href="styles.css?v=75">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -577,12 +577,12 @@
         .compare-table thead th[draggable="true"]:hover .drag-handle { color: #1a73e8; }
         @media (max-width: 600px) {
             /* Audit Task 233: compare panel matches lang-info modal as
-               near-fullscreen card; floats 8px from edges; close button
-               promoted to overlay so it's reachable while scrolling. */
+               near-fullscreen card; sits below the header so the chrome
+               isn't clipped. */
             .compare-panel {
-                top: 8px; bottom: 8px; left: 8px; right: 8px;
-                max-height: none; height: calc(100vh - 16px);
-                height: calc(100dvh - 16px);
+                top: 68px; bottom: 8px; left: 8px; right: 8px;
+                max-height: none; height: calc(100vh - 76px);
+                height: calc(100dvh - 76px);
                 border-top: none;
                 border-radius: 12px;
                 padding-bottom: max(0px, env(safe-area-inset-bottom));
@@ -686,7 +686,14 @@
             .map-controls { bottom: 12px; left: 6px; }
 
             .right-controls { top: 68px; }
-            .right-controls .toggle-btn { min-width: 44px; font-size: 9px; }
+            /* Don't stretch the round toggle buttons (.toggle-3d-btn and
+               .settings-fab); only widen the rectangular Form/Pron./Name
+               toggles that need legible text. */
+            .right-controls .toggle-btn:not(.toggle-3d-btn) { min-width: 44px; font-size: 9px; }
+            .right-controls .toggle-3d-btn {
+                width: 44px; height: 44px; min-width: 44px; max-width: 44px;
+                border-radius: 50%;
+            }
 
             /* Audit Task 234: drop the redundant zoom +/- buttons (pinch-zoom
                is the iOS-native gesture) on mobile. */
@@ -729,16 +736,16 @@
                collapsed so the 2D/3D button doesn't sit above empty space. */
             .ctrl-spacer { display: none; }
             body:has(.settings-toggle:checked) .ctrl-spacer { display: block; }
+            /* Inline settings button — same visual size/style as the round
+               2D/3D button so they read as a button stack. Sits directly
+               below 2D/3D in the .right-controls flex column. */
             .settings-fab {
                 display: inline-flex; align-items: center; justify-content: center;
-                position: fixed;
-                right: max(16px, calc(env(safe-area-inset-right) + 8px));
-                bottom: max(70px, calc(env(safe-area-inset-bottom) + 62px));
-                width: 44px; height: 44px;
+                width: 44px; height: 44px; min-width: 44px;
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-                font-size: 22px; line-height: 1; color: #444;
-                cursor: pointer; user-select: none; z-index: 1015;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+                font-size: 20px; line-height: 1; color: #444;
+                cursor: pointer; user-select: none;
                 transition: background-color 0.15s, color 0.15s, transform 0.1s;
             }
             .settings-fab:hover { background: #f3f4f6; }
@@ -768,26 +775,25 @@
             /* Audit Task 233: near-fullscreen modal on mobile.
                iOS Safari URL bar collapses on scroll so use dvh (dynamic
                viewport height) where supported, with vh fallback. Card
-               sits 8px from each edge so the rounded corners are visible
-               and a finger can grab the edge to dismiss. Compare panel
-               gets the same treatment below. */
+               sits below the header (top:68px) so the close button + h2
+               aren't clipped by the header chrome. Compare panel gets
+               the same treatment below. */
             .lang-info-panel {
-                top: 8px; bottom: 8px; right: 8px; left: 8px;
+                top: 68px; bottom: 8px; right: 8px; left: 8px;
                 width: auto; max-width: none;
-                max-height: calc(100vh - 16px);
-                max-height: calc(100dvh - 16px);
+                max-height: calc(100vh - 76px);
+                max-height: calc(100dvh - 76px);
                 padding-bottom: max(20px, env(safe-area-inset-bottom));
                 border-radius: 12px;
             }
-            /* Float the close button above the modal so it's always reachable
-               regardless of internal scroll position. 44×44 matches iOS HIG
-               minimum tap target. Honors notch / Dynamic Island safe-area
-               insets so the button never sits underneath the iPhone status
-               bar / camera cutout in landscape or portrait. */
+            /* Float the close button at the modal's top-right so it's
+               always reachable regardless of internal scroll position.
+               44×44 matches iOS HIG minimum tap target. Sits below the
+               header (modal starts at top:68px). */
             .lang-info-panel .close-btn {
                 position: fixed;
-                top: max(18px, calc(env(safe-area-inset-top) + 8px));
-                right: max(18px, calc(env(safe-area-inset-right) + 8px));
+                top: max(78px, calc(env(safe-area-inset-top) + 68px));
+                right: max(16px, calc(env(safe-area-inset-right) + 8px));
                 width: 44px; height: 44px; line-height: 1;
                 font-size: 22px; color: #444;
                 background: rgba(255,255,255,0.95);
@@ -797,11 +803,17 @@
             }
             .lang-info-panel h2 { padding-right: 56px; }
 
-            /* Audit (UI polish 2026-05-09): hide the bottom-right URL
-               watermark on mobile — the FAB row (compare + settings) sits
-               at the same edge and covers it. The URL is already shown in
-               the hamburger menu, so mobile users don't lose access. */
-            .url-watermark { display: none; }
+            /* Mobile credit watermark: bottom-LEFT corner so it doesn't
+               overlap with the bottom-right compare FAB. Compact; URL is
+               also in the hamburger menu so mobile users have two ways
+               to find it. */
+            .url-watermark {
+                left: max(8px, env(safe-area-inset-left));
+                right: auto;
+                bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px));
+                font-size: 9px;
+                gap: 4px;
+            }
 
             /* Audit Task 232: iOS Safari auto-zooms on focus when computed
                font-size is < 16px. Force 16px on every keyboard-focusable
@@ -887,6 +899,12 @@
             <button id="map-zoom-out" aria-label="Zoom out">&minus;</button>
         </div>
         <button class="toggle-btn toggle-3d-btn" id="toggle-3d" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
+        <!-- Settings toggle is inline below the 2D/3D button on mobile.
+             The hidden checkbox + label pair drive the secondary-controls
+             drawer the same way as before; only the visual layout moved
+             from floating FAB to inline button-stack member. -->
+        <input type="checkbox" id="settings-toggle" class="settings-toggle" aria-label="Display settings toggle">
+        <label for="settings-toggle" class="settings-fab" aria-label="Display settings" tabindex="0">⚙</label>
         <div style="height:8px" class="ctrl-spacer"></div>
         <div class="right-secondary-controls" id="right-secondary">
             <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
@@ -902,12 +920,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Audit Task 234 Step B: mobile-only settings FAB. Toggling the
-         hidden checkbox reveals the .right-secondary-controls drawer
-         via `body:has(.settings-toggle:checked) ...` selector. -->
-    <input type="checkbox" id="settings-toggle" class="settings-toggle" aria-label="Display settings toggle">
-    <label for="settings-toggle" class="settings-fab" aria-label="Display settings" tabindex="0">⚙</label>
 
     <!-- Audit (UI polish 2026-05-09): close hamburger / settings drawer
          when user taps outside. Both drawers are CSS-only checkbox
@@ -981,7 +993,7 @@
 
     <!-- Credit watermark -->
     <div class="url-watermark">
-        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;" aria-label="GitHub repository"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+        Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;">Heuron Inc.</a> <a href="https://github.com/jounlai/langmap" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto;" aria-label="GitHub repository"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a>
     </div>
 
     <!-- Language info panel -->
@@ -1225,7 +1237,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    74,
+            styles:    75,
             data:      206,
             metaI18n:  14,
             filter:    28,
