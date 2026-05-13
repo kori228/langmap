@@ -1800,7 +1800,7 @@ const LANG_DATA = {
     words: { water:['hari','hari'], fire:['danji','dandʒi'], sun:['wayna','wajna'], moon:['handu','handu'], mother:['ñaa','ɲaː'], father:['baba','baba'], eat:['ŋwa','ŋwa'], drink:['hañu','haɲu'], love:['baa','baː'], heart:['bina','bina'], tree:['tuuri','tuːri'], house:['fu','fu'], dog:['hansi','hansi'], cat:['muusu','muːsu'], hand:['kambe','kambe'], eye:['mo','mo'], hello:['fofo','fofo'], thanks:['fofo','fofo'], one:['affo','afːo'], good:['boori','boːri'] }},
   // Berber (Afro-Asiatic)
   kab: { name: 'Kabyle', native: 'Taqbaylit', lat: 36.71, lng: 4.05, // Tizi Ouzou
-    words: { water:['aman','aman'], fire:['times','times'], sun:['iṭij','itˤidʒ'], moon:['aggur','agːuɾ'], mother:['yemma','jemːa'], father:['baba','baba'], eat:['eçç','eʃː'], drink:['sew','sew'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['ttejra','tːedʒɾa'], house:['axxam','aχːam'], dog:['aydi','ajdi'], cat:['amcic','amʃiʃ'], hand:['afus','afus'], eye:['tiṭ','titˤ'], hello:['azul','azul'], thanks:['tanemmirt','tanemːiɾt'], one:['yiwen','jiwen'], good:['yelha','jelha'] }},
+    words: { water:['aman','æmæn'], fire:['times','timəs'], sun:['iṭij','itˤiʒ'], moon:['aggur','æɡːuɾ'], mother:['yemma','jəmːæ'], father:['baba','baba'], eat:['ečč','ətʃː'], drink:['sew','səw'], love:['tayri','tajɾi'], heart:['ul','ul'], tree:['ttejra','tːəʒɾa'], house:['axxam','æχːæm'], dog:['aydi','ajdi'], cat:['amcic','æmʃiʃ'], hand:['afus','afus'], eye:['tiṭ','θitˤ'], hello:['azul','azul'], thanks:['tanemmirt','tænəmːiɾt'], one:['yiwen','jiwən'], good:['yelha','jəlħæ'] }},
   // === Phase 3C: Indigenous Americas ===
   // Mayan
   // (quc K'iche' / kek Q'eqchi' moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)
