@@ -1102,6 +1102,85 @@
             text-decoration-color: rgba(120,90,30,0.4);
         }
         .trivia-modal .trivia-sources a:hover { color: #1a73e8; }
+        /* Article index — grid of cards, shown when the user first
+           opens the 📚 button (or after clicking "← Articles"). */
+        .trivia-index {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            padding-top: 4px;
+        }
+        @media (max-width: 600px) {
+            .trivia-index { grid-template-columns: 1fr; }
+        }
+        .trivia-index-intro {
+            font-size: 13px; color: #6a4c1c;
+            margin: 0 0 14px;
+            font-style: italic;
+        }
+        .trivia-card {
+            display: block; width: 100%; text-align: left;
+            background: rgba(255,243,205,0.55);
+            border: 1px solid rgba(180,130,30,0.28);
+            border-radius: 10px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            font-family: inherit;
+            color: #3a2e1a;
+        }
+        .trivia-card:hover {
+            background: rgba(255,235,180,0.85);
+            border-color: #b8860b;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(180,130,30,0.25);
+        }
+        .trivia-card:focus-visible {
+            outline: 2px solid #8a5a0e;
+            outline-offset: 2px;
+        }
+        .trivia-card-icon {
+            font-size: 22px; line-height: 1;
+            margin-bottom: 6px;
+        }
+        .trivia-card-title {
+            font-size: 14px; font-weight: 700;
+            color: #4a3416;
+            margin: 0 0 4px;
+            line-height: 1.3;
+        }
+        .trivia-card-summary {
+            font-size: 11.5px; line-height: 1.45;
+            color: #6a4c1c;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        /* "← Articles" link in the tools row, only visible in article view */
+        .trivia-back {
+            margin-right: auto;     /* push other tool buttons to the right */
+            min-width: 0; height: 26px;
+            font-size: 12px; font-weight: 600; line-height: 1;
+            padding: 0 10px;
+            border: 1px solid rgba(180,130,30,0.45);
+            border-radius: 12px;
+            background: rgba(255,247,225,0.85);
+            color: #6a4c1c;
+            cursor: pointer;
+            display: none;
+            align-items: center; justify-content: center;
+            font-family: inherit;
+        }
+        .trivia-modal[data-view="article"] .trivia-back {
+            display: inline-flex;
+        }
+        .trivia-back:hover {
+            background: rgba(255,235,180,0.95);
+            border-color: #b8860b;
+        }
         .trivia-modal .trivia-tags {
             margin-top: 18px;
             display: flex; flex-wrap: wrap; gap: 6px;
@@ -1241,6 +1320,8 @@
          aria-labelledby="trivia-heading" aria-modal="true" tabindex="-1">
         <!-- Tool row pinned to the top of the modal — does NOT scroll. -->
         <div class="trivia-modal-tools">
+            <button type="button" class="trivia-back" id="trivia-back"
+                    aria-label="Back to article list">← Articles</button>
             <button type="button" class="trivia-expand" id="trivia-expand"
                     title="Expand article" aria-label="Expand article">⤢</button>
             <button type="button" class="close-btn" id="trivia-close"
@@ -1255,6 +1336,8 @@
             <div class="trivia-body" id="trivia-body"></div>
             <div class="trivia-sources" id="trivia-sources" hidden></div>
             <div class="trivia-tags" id="trivia-tags"></div>
+            <!-- Index of all articles (shown when no specific article is open) -->
+            <div class="trivia-index" id="trivia-index" hidden></div>
         </div>
     </div>
     <!-- Backdrop lives OUTSIDE the header bar so backdrop-filter on the
@@ -1873,6 +1956,38 @@
                 ru: 'Закрыть', uk: 'Закрити',
                 ar: 'إغلاق', he: 'סגירה', sw: 'Funga',
             },
+            triviaBack: {
+                en: '← Articles', ja: '← 記事一覧',
+                ko: '← 글 목록', zh: '← 文章列表', yue: '← 文章列表',
+                vi: '← Bài viết', th: '← รายการบทความ',
+                id: '← Daftar artikel', hi: '← लेख सूची',
+                de: '← Artikel', fr: '← Articles', it: '← Articoli',
+                es: '← Artículos', pt: '← Artigos',
+                ru: '← Статьи', uk: '← Статті',
+                ar: '← قائمة المقالات', he: '← רשימת מאמרים',
+                sw: '← Makala',
+            },
+            triviaIndexIntro: {
+                en: 'Pick a topic to dive in. Each article is self-contained — the map snaps back when you close it.',
+                ja: '気になるテーマを選んでください。記事を閉じれば地図は元の状態に戻ります。',
+                ko: '관심 가는 주제를 골라보세요. 글을 닫으면 지도는 원래 상태로 돌아갑니다.',
+                zh: '挑一个感兴趣的话题。每篇文章独立，关闭后地图会回到原状。',
+                yue: '揀一個感興趣嘅話題。每篇文章獨立，關閉後地圖會返到原狀。',
+                de: 'Wähle ein Thema. Jeder Artikel ist eigenständig — die Karte kehrt beim Schließen zurück.',
+                fr: 'Choisissez un sujet. Chaque article est indépendant — la carte revient à son état d\'origine à la fermeture.',
+                it: 'Scegli un argomento. Ogni articolo è autonomo — la mappa torna allo stato precedente alla chiusura.',
+                es: 'Elige un tema. Cada artículo es independiente — el mapa vuelve a su estado al cerrar.',
+                pt: 'Escolha um tema. Cada artigo é independente — o mapa volta ao estado original ao fechar.',
+                ru: 'Выберите тему. Каждая статья самостоятельна — при закрытии карта возвращается в исходное состояние.',
+                uk: 'Виберіть тему. Кожна стаття самостійна — після закриття мапа повертається до початкового стану.',
+                ar: 'اختر موضوعًا. كل مقالة قائمة بذاتها — تعود الخريطة إلى حالتها عند الإغلاق.',
+                he: 'בחרו נושא. כל מאמר עומד בפני עצמו — המפה חוזרת למצבה כשסוגרים.',
+                sw: 'Chagua mada. Kila makala ni huru — ramani inarejea ilivyokuwa unapofunga.',
+                vi: 'Chọn một chủ đề. Mỗi bài viết độc lập — bản đồ trở về trạng thái cũ khi đóng.',
+                th: 'เลือกหัวข้อที่สนใจ ทุกบทความเป็นอิสระ — แผนที่จะกลับมาเหมือนเดิมเมื่อปิด',
+                id: 'Pilih topik. Setiap artikel berdiri sendiri — peta kembali seperti semula saat ditutup.',
+                hi: 'कोई विषय चुनें। हर लेख स्वतंत्र है — बंद करने पर मानचित्र पुनःस्थापित होता है।',
+            },
             triviaSources: {
                 en: 'Sources & further reading', ja: '出典・参考文献',
                 ko: '출처 · 참고문헌', zh: '参考资料', yue: '參考資料',
@@ -2019,6 +2134,10 @@
                 const expandTitle = i18n('triviaExpandTitle');
                 tExpand.title = expandTitle;
                 tExpand.setAttribute('aria-label', expandTitle);
+            }
+            const tBack = document.getElementById('trivia-back');
+            if (tBack) {
+                tBack.textContent = i18n('triviaBack');
             }
             // If the trivia modal is currently open, re-render in the new lang
             const tModal = document.getElementById('trivia-modal');
@@ -4764,6 +4883,50 @@
                 tags.appendChild(span);
             });
             modal.dataset.articleId = art.id;
+            modal.dataset.view = 'article';
+            modal.scrollTop = 0;
+            // Show article sections; hide index grid.
+            document.getElementById('trivia-eyebrow').style.display = '';
+            heading.style.display = '';
+            body.style.display = '';
+            tags.style.display = '';
+            const indexEl = document.getElementById('trivia-index');
+            if (indexEl) indexEl.hidden = true;
+        }
+        function renderTriviaIndex() {
+            const modal = document.getElementById('trivia-modal');
+            const heading = document.getElementById('trivia-heading');
+            const summary = document.getElementById('trivia-summary');
+            const body = document.getElementById('trivia-body');
+            const sources = document.getElementById('trivia-sources');
+            const tags = document.getElementById('trivia-tags');
+            const index = document.getElementById('trivia-index');
+            heading.innerHTML =
+                '<span class="trivia-icon" aria-hidden="true">📚</span>' + i18n('triviaButton');
+            // Use the summary slot for the index intro.
+            summary.textContent = i18n('triviaIndexIntro');
+            summary.style.display = '';
+            // Hide article-only sections in index view.
+            body.style.display = 'none';
+            body.innerHTML = '';
+            sources.hidden = true;
+            sources.innerHTML = '';
+            tags.style.display = 'none';
+            tags.innerHTML = '';
+            const list = window.TRIVIA_ARTICLES || [];
+            index.innerHTML = list.map(a => {
+                const iconAttr = a.icon || '📖';
+                const title = pickLocalized(a.title);
+                const sum = pickLocalized(a.summary);
+                return `<button type="button" class="trivia-card" data-article-id="${a.id}">`
+                    + `<div class="trivia-card-icon" aria-hidden="true">${iconAttr}</div>`
+                    + `<div class="trivia-card-title">${title}</div>`
+                    + `<div class="trivia-card-summary">${sum}</div>`
+                    + `</button>`;
+            }).join('');
+            index.hidden = false;
+            delete modal.dataset.articleId;
+            modal.dataset.view = 'index';
             modal.scrollTop = 0;
         }
         function setTriviaCompact(on) {
@@ -4777,10 +4940,13 @@
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
             if (!list.length) return;
-            // Resolve the id: requested → first match → first in list.
-            const targetId = (id && list.find(a => a.id === id)) ? id : list[0].id;
             if (!_triviaSnapshot) _triviaSnapshot = captureMapState();
-            renderTriviaArticle(targetId);
+            // If no specific article requested, show the index. If a
+            // requested id matches an article, open that. Otherwise
+            // fall back to the index (covers stale URL hash too).
+            const match = id && list.find(a => a.id === id);
+            if (match) renderTriviaArticle(match.id);
+            else renderTriviaIndex();
             setTriviaCompact(false);
             const modal = document.getElementById('trivia-modal');
             const backdrop = document.getElementById('trivia-backdrop');
@@ -4797,6 +4963,16 @@
             setTriviaCompact(false);
             if (typeof updateHash === 'function') updateHash({ push: true });
         }
+        function backToTriviaIndex() {
+            // Restore the map state taken at open time (each article
+            // runs against the pre-trivia baseline), then swap to index view.
+            if (_triviaSnapshot) restoreMapState(_triviaSnapshot);
+            renderTriviaIndex();
+            setTriviaCompact(false);
+            const modal = document.getElementById('trivia-modal');
+            modal.scrollTop = 0;
+            if (typeof updateHash === 'function') updateHash();
+        }
         function closeTrivia() {
             const modal = document.getElementById('trivia-modal');
             const backdrop = document.getElementById('trivia-backdrop');
@@ -4805,6 +4981,7 @@
             backdrop.setAttribute('aria-hidden', 'true');
             setTriviaCompact(false);
             delete modal.dataset.articleId;  // so updateHash drops ?trivia=
+            delete modal.dataset.view;
             if (_triviaSnapshot) {
                 restoreMapState(_triviaSnapshot);
                 _triviaSnapshot = null;
@@ -4884,6 +5061,15 @@
         const _triviaExpandBtn = document.getElementById('trivia-expand');
         if (_triviaExpandBtn) _triviaExpandBtn.addEventListener('click', () => {
             setTriviaCompact(false);
+        });
+        const _triviaBackBtn = document.getElementById('trivia-back');
+        if (_triviaBackBtn) _triviaBackBtn.addEventListener('click', () => backToTriviaIndex());
+        // Delegated handler for the article cards in the index grid
+        const _triviaIndex = document.getElementById('trivia-index');
+        if (_triviaIndex) _triviaIndex.addEventListener('click', (e) => {
+            const card = e.target.closest('.trivia-card');
+            if (!card || !card.dataset.articleId) return;
+            navigateTrivia(card.dataset.articleId);
         });
         const _triviaOpenBtn = document.getElementById('trivia-open');
         if (_triviaOpenBtn) _triviaOpenBtn.addEventListener('click', () => openTrivia());
