@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 913 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 916 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -41,7 +41,8 @@ const EXCLUDED_CODES = new Set([
   'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang',
   'vi_nom','sa','mnc',
   // Phase 4: historical / ancient
-  'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','goh','gez',
+  'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','it_dan','goh','gez',
+  'he_mis','hy_grab',
   // Phase 4B: more historical
   'gmy','xct','xpu','xhu','elx','xsa','kaw','kho','gmh','osp','okz','osx',
   // Phase 5 historical
@@ -2869,6 +2870,15 @@ const LANG_DATA = {
   // Old Romance / Old Germanic
   fro: { name: 'Old French', native: 'romans', lat: 48.86, lng: 2.35, // Île-de-France
     words: { water:['eve','ɛːvə'], fire:['feu','fø'], sun:['soleil','soˈleʎ'], moon:['lune','ˈlynə'], mother:['mere','ˈmɛrə'], father:['pere','ˈpɛrə'], eat:['mangier','maɲˈdʒier'], drink:['boivre','ˈbojvrə'], love:['amor','aˈmor'], heart:['cuer','kwɛr'], tree:['arbre','ˈarbrə'], house:['maison','maiˈzõn'], dog:['chien','tʃjɛn'], cat:['chat','tʃat'], hand:['main','mɛ̃j'], eye:['oeil','œʎ'], hello:['salut','saˈlyt'], thanks:['merci','mɛrˈsi'], one:['un','yn'], good:['bon','bõn'] }},
+  // Old Italian (Italiano antico) / Dantesque Tuscan — the literary Florentine
+  // of Dante's Divine Comedy (~1308–1320), Petrarch's Canzoniere (~1350),
+  // and Boccaccio's Decameron (~1353). Foundational to the Italian literary
+  // canon and the basis on which Pietro Bembo's Prose della volgar lingua
+  // (1525) standardized modern Italian. Pedagogical distinctives vs Modern
+  // Italian: foco (vs fuoco), bevere (vs bere), core (vs cuore), mercede
+  // (vs grazie), passato remoto-heavy syntax, archaic articles (lo, li). Coordinate: Florence (Firenze), Dante's birthplace and Tuscan literary center.
+  it_dan: { name: 'Old Italian (Dantesque)', native: 'volgare illustre', lat: 43.77, lng: 11.25,
+    words: { water:['acqua','ˈakːwa'], fire:['foco','ˈfɔko'], sun:['sole','ˈsole'], moon:['luna','ˈluna'], mother:['madre','ˈmadre'], father:['padre','ˈpadre'], eat:['mangiare','manˈdʒare'], drink:['bevere','ˈbevere'], love:['amore','aˈmore'], heart:['core','ˈkɔre'], tree:['albero','ˈalbero'], house:['casa','ˈkasa'], dog:['cane','ˈkane'], cat:['gatto','ˈɡatːo'], hand:['mano','ˈmano'], eye:['occhio','ˈɔkːjo'], hello:['salute','saˈlute'], thanks:['mercede','merˈtʃede'], one:['uno','ˈuno'], good:['buono','ˈbwɔno'] }},
   goh: { name: 'Old High German', native: 'diutisk', lat: 49.99, lng: 8.27, // Mainz
     words: { water:['wazzar','ˈwatsːar'], fire:['fiur','fiur'], sun:['sunna','ˈsunna'], moon:['māno','ˈmaːno'], mother:['muoter','ˈmuotɛr'], father:['fater','ˈfatɛr'], eat:['ezzan','ˈetsːan'], drink:['trinkan','ˈtrinkan'], love:['minna','ˈminna'], heart:['herza','ˈhertsa'], tree:['boum','boum'], house:['hūs','huːs'], dog:['hunt','hunt'], cat:['kazza','ˈkatsːa'], hand:['hant','hant'], eye:['ouga','ˈouga'], hello:['heil','heil'], thanks:['—','—'], one:['ein','ein'], good:['guot','ɡuot'] }},
   // South Semitic (Classical Ethiopic)
@@ -3291,6 +3301,27 @@ const LANG_DATA = {
   // Biblical/Ancient Hebrew (distinct from Modern Hebrew)
   hbo: { name: 'Biblical Hebrew', native: 'עברית מקראית', lat: 31.78, lng: 35.21, // Jerusalem
     words: { water:['מים','majim'], fire:['אש','ʔeʃ'], sun:['שמש','ʃemeʃ'], moon:['ירח','jaːreːaħ'], mother:['אם','ʔeːm'], father:['אב','ʔaːv'], eat:['אכל','ʔaːkal'], drink:['שתה','ʃaːtaː'], love:['אהב','ʔaːhav'], heart:['לב','leːv'], tree:['עץ','ʕeːts'], house:['בית','bajit'], dog:['כלב','kelev'], cat:['—','—'], hand:['יד','jaːd'], eye:['עין','ʕajin'], hello:['שלום','ʃaːloːm'], thanks:['תודה','toːðaː'], one:['אחד','ʔeħaːd'], good:['טוב','tˤoːv'] }},
+  // Mishnaic Hebrew (לשון חכמים "language of the sages", ~70-200 CE) —
+  // post-Biblical Hebrew of the Mishnah (compiled c. 200 CE by Judah ha-Nasi),
+  // Tosefta, early Midrashim, and the Hebrew portions of the Talmud.
+  // Distinct from Biblical Hebrew (hbo): heavy Aramaic and Greek loans
+  // (אילן for "tree", חתול for "cat" — neither in BH), simplified verb
+  // system, fixed word order shifting toward SVO, gemara-era vocabulary.
+  // Survived as written/scholarly language after extinction as vernacular
+  // ~200 CE. Coordinate: Yavne, formative center under Yochanan ben Zakkai
+  // post-70 CE before the Galilean transition.
+  he_mis: { name: 'Mishnaic Hebrew', native: 'לשון חכמים', lat: 31.88, lng: 34.74,
+    words: { water:['מים','majim'], fire:['אש','ʔeʃ'], sun:['חמה','ħamːa'], moon:['לבנה','levɑnɑ'], mother:['אם','ʔem'], father:['אב','ʔɑv'], eat:['אוכל','ʔoχel'], drink:['שותה','ʃote'], love:['אהבה','ʔɑhɑvɑ'], heart:['לב','lev'], tree:['אילן','ʔilɑn'], house:['בית','bajit'], dog:['כלב','kelev'], cat:['חתול','ħɑtul'], hand:['יד','jɑd'], eye:['עין','ʕajin'], hello:['שלום','ʃɑlom'], thanks:['תודה','todɑ'], one:['אחד','ʔeħɑd'], good:['טוב','tov'] }},
+  // Classical Armenian (Grabar, Գրաբար "written language", 5th-12th c. CE) —
+  // standardized literary form of Armenian established by Mesrop Mashtots's
+  // alphabet (~405 CE) and the Bible translation that followed. Continued
+  // as the liturgical language of the Armenian Apostolic Church to this day,
+  // and as the scholarly/literary language alongside Eastern (hye) and
+  // Western (hyw) Modern Armenian. Coordinate: Vagharshapat (Etchmiadzin),
+  // seat of the Armenian Catholicos and where Mashtots's Bible was first
+  // read aloud.
+  hy_grab: { name: 'Classical Armenian (Grabar)', native: 'Գրաբար', lat: 40.16, lng: 44.30,
+    words: { water:['ջուր','dʒuɾ'], fire:['հուր','huɾ'], sun:['արեւ','ɑɾɛw'], moon:['լուսին','lusin'], mother:['մայր','majɾ'], father:['հայր','hajɾ'], eat:['ուտեմ','utem'], drink:['ըմպեմ','əmpem'], love:['սէր','sɛːɾ'], heart:['սիրտ','siɾt'], tree:['ծառ','tsɑr'], house:['տուն','tun'], dog:['շուն','ʃun'], cat:['կատու','kɑtu'], hand:['ձեռն','dzeɾn'], eye:['ակն','ɑkn'], hello:['ողջոյն','oɣdʒujn'], thanks:['շնորհակալութիւն','ʃnoɾhɑkɑlutʰiwn'], one:['մի','mi'], good:['բարի','baɾi'] }},
   // === Phase 7: regional gap-fillers ===
   // Trans-New Guinea (Papuan)
   mpt: { name: 'Mian', native: 'Mian', lat: -5.13, lng: 141.61, // Telefomin
@@ -4287,6 +4318,9 @@ const DATA_STATUS_OVERRIDES = {
     en_em:     'pedagogical',      // Early Modern English (Shakespeare-era; OP reconstruction)
     el_kath:   'pedagogical',      // Katharevousa Greek (puristic literary register, 1834-1976)
     fa_clas:   'pedagogical',      // Classical Persian (Shahnameh-era, ~800-1500 CE; taught canonically in Iran/Tajikistan/Afghanistan)
+    it_dan:    'pedagogical',      // Old Italian / Dantesque Tuscan (13c.-14c., literary canon)
+    hy_grab:   'pedagogical',      // Classical Armenian / Grabar (5c.-12c. CE; liturgical & literary canon)
+    he_mis:    'pedagogical',      // Mishnaic Hebrew (~70-200 CE; Talmudic/rabbinic canon)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4329,7 +4363,8 @@ const HIST_DESCENDANT = {
     oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
     // Phase 4: historical
     peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
-    xlu:null, pal:'fa', fa_clas:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',
+    xlu:null, pal:'fa', fa_clas:'fa', syc:'syr', fro:'fr', it_dan:'it', goh:'de', gez:'am',
+    he_mis:'he', hy_grab:'hy',
     // Phase 4B: more historical
     gmy:'el', xct:'bo', xpu:'ar', xhu:null, elx:null, xsa:'ar',
     kaw:'jv', kho:null, gmh:'de', osp:'es_eu', okz:'km', osx:'nds',

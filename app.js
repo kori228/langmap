@@ -162,6 +162,7 @@ const LANGUAGES = [
     { code: 'ar_tn', name: 'アラビア語(チュニジア方言)', group: 'SEM', experimental: true },
     { code: 'ar_sd', name: 'アラビア語(スーダン方言)', group: 'SEM', experimental: true },
     { code: 'he', name: 'ヘブライ語', group: 'SEM' },
+    { code: 'he_mis', name: 'ヘブライ語(ミシュナー期)', group: 'SEM', experimental: true, historical: true },
     { code: 'arc', name: 'アラム語', group: 'SEM', experimental: true, historical: true },
     { code: 'akk', name: 'アッカド語', group: 'SEM', experimental: true, historical: true },
     { code: 'am', name: 'アムハラ語', group: 'SEM' },
@@ -230,6 +231,7 @@ const LANGUAGES = [
     // Romance: Latin → Italo-Dalmatian → Gallo-Romance → Ibero-Romance → Eastern
     { code: 'la', name: 'ラテン語', group: 'ROM', experimental: true, historical: true },
     { code: 'it', name: 'イタリア語', group: 'ROM' },
+    { code: 'it_dan', name: 'イタリア語(ダンテ期)', group: 'ROM', experimental: true, historical: true },
     { code: 'nap', name: 'ナポリ語', group: 'ROM', experimental: true },
     { code: 'scn', name: 'シチリア語', group: 'ROM', experimental: true },
     { code: 'vec', name: 'ヴェネト語', group: 'ROM', experimental: true },
@@ -277,6 +279,7 @@ const LANGUAGES = [
     { code: 'sq', name: 'アルバニア語', group: 'OEU' },
     // Armenian
     { code: 'hy', name: 'アルメニア語', group: 'OEU' },
+    { code: 'hy_grab', name: '古典アルメニア語(グラバル)', group: 'OEU', experimental: true, historical: true },
     // Uralic: Finnic → Hungarian
     { code: 'fi', name: 'フィンランド語', group: 'OEU' },
     { code: 'et', name: 'エストニア語', group: 'OEU', experimental: true },
