@@ -5418,8 +5418,13 @@
             // subsequent renderTriviaArticle pass on some browsers.
             const fromArticle = modal && modal.dataset.view === 'article';
             if (fromArticle && _triviaSnapshot) restoreMapState(_triviaSnapshot);
+            // Preserve the compact/full layout the user chose. If they
+            // shrank the modal aside (or it auto-shrank from a previous
+            // action), prev/next navigation should keep it shrunk; only
+            // expand when arriving from index → article.
+            const wasCompact = modal && modal.classList.contains('compact');
             renderTriviaArticle(id);
-            setTriviaCompact(false);
+            if (!wasCompact) setTriviaCompact(false);
             const scroll = document.getElementById('trivia-scroll');
             if (scroll) scroll.scrollTop = 0;
             if (typeof updateHash === 'function') updateHash({ push: true });
