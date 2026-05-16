@@ -53,6 +53,7 @@ const LANGUAGES = [
     { code: 'ja_rys', name: '八重山語', group: 'JPN', experimental: true },
     // Japonic Historical (chronological: oldest first)
     { code: 'ja_edo', name: '日本語(江戸時代)', group: 'JPN', experimental: true, historical: true },
+    { code: 'ja_kanbun', name: '漢文訓読', group: 'JPN', experimental: true, historical: true },
     { code: 'ja_heian', name: '日本語(平安時代)', group: 'JPN', experimental: true, historical: true },
     // Ainu (isolate)
     { code: 'ain', name: 'アイヌ語', group: 'JPN' },
@@ -111,6 +112,7 @@ const LANGUAGES = [
     { code: 'pau', name: 'パラオ語', group: 'AUS', experimental: true },
     // Indo-Aryan: Sanskrit → Hindustani → Eastern → Western → Insular
     { code: 'sa', name: 'サンスクリット語', group: 'SAS', experimental: true, historical: true },
+    { code: 'sa_edu', name: '現代会話サンスクリット', group: 'SAS', experimental: true, historical: true },
     { code: 'pi', name: 'パーリ語', group: 'SAS', experimental: true, historical: true },
     { code: 'hi', name: 'ヒンディー語', group: 'SAS' },
     { code: 'ur', name: 'ウルドゥー語', group: 'SAS' },
@@ -154,6 +156,7 @@ const LANGUAGES = [
     { code: 'ka', name: 'グルジア語', group: 'KAR' },
     // Semitic: Arabic → Hebrew → Aramaic → Akkadian → Ethiopic → Maltese
     { code: 'ar', name: 'アラビア語(フスハー)', group: 'SEM' },
+    { code: 'ar_qur', name: 'クルアーン・アラビア語', group: 'SEM', experimental: true, historical: true },
     { code: 'ar_eg', name: 'アラビア語(エジプト方言)', group: 'SEM', experimental: true },
     { code: 'ar_lev', name: 'アラビア語(レバント方言)', group: 'SEM', experimental: true },
     { code: 'ar_gulf', name: 'アラビア語(湾岸方言)', group: 'SEM', experimental: true },

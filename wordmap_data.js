@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 916 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 919 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -37,9 +37,9 @@ const WORD_LIST = [
 // some have small modern speaker communities (e.g. Manchu, Aramaic dialects,
 // liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
-  'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
+  'ja_edo','ja_heian','ja_kanbun','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
   'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang',
-  'vi_nom','sa','mnc',
+  'vi_nom','sa','sa_edu','mnc','ar_qur',
   // Phase 4: historical / ancient
   'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','it_dan','goh','gez',
   'he_mis','hy_grab',
@@ -214,6 +214,19 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'hns'; Glottolog cari1276; Mohan (1990) Trinidad Bhojpuri.
   hns: { name: 'Caribbean Hindustani', native: 'Sarnāmi', lat: 5.83, lng: -55.17, // Paramaribo, Suriname (Sarnami heartland)
     words: { water:['paani','paːni'], fire:['aag','aːɡ'], sun:['suuraj','suːɾadʒ'], moon:['caand','tʃaːnd'], mother:['mai','mai'], father:['baap','baːp'], eat:['khaae','kʰaːe'], drink:['pi','pi'], love:['piaar','piaːr'], heart:['dil','dil'], tree:['ped','peɖ'], house:['ghar','ɡʱar'], dog:['kuttaa','kuttaː'], cat:['billii','billiː'], hand:['haat','haːt'], eye:['ankh','ãːkʰ'], hello:['namaste','namaste'], thanks:['dhanyabaad','dʰanjabaːd'], one:['ek','ek'], good:['accha','attʃʰa'] }},
+  // Modern Spoken Sanskrit (सरल संस्कृतम्) — the pedagogically simplified,
+  // actively oral form of Sanskrit cultivated by the Samskrita Bharati
+  // movement (1981–) and similar revival institutions. Distinct from
+  // canonical Classical Sanskrit (sa) by: simplified sandhi (avoiding
+  // complex Paninian fusions for clarity), conversational lexical
+  // preferences (snehaḥ over prema, kukkuraḥ over śvā, akṣi over netram),
+  // modern technical coinages (saṅgaṇaka "computer", dūrabhāṣa "phone"),
+  // and active spoken pedagogy targeting ~25K self-claimed L1 speakers
+  // and tens of thousands of L2 learners. Distinct from Vedic Sanskrit
+  // (vsa) and from the historical Pāṇinian/Classical corpus (sa).
+  // Anchored at Bangalore, Samskrita Bharati headquarters.
+  sa_edu: { name: 'Modern Spoken Sanskrit', native: 'सरल संस्कृतम्', lat: 12.97, lng: 77.59,
+    words: { water:['जलम्','dʒalam'], fire:['अग्निः','aɡniɦ'], sun:['सूर्यः','suːɾjaɦ'], moon:['चन्द्रः','tɕandɾaɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['खादति','kʰaːdati'], drink:['पिबति','pibati'], love:['स्नेहः','sneːhaɦ'], heart:['हृदयम्','hɾɨdajam'], tree:['वृक्षः','vɾɨkʂaɦ'], house:['गृहम्','ɡɾɨham'], dog:['कुक्कुरः','kukːuɾaɦ'], cat:['मार्जारः','maːɾdʒaːɾaɦ'], hand:['हस्तः','hastaɦ'], eye:['अक्षि','akʂi'], hello:['नमस्कारः','namaskaːɾaɦ'], thanks:['धन्यवादाः','dʰanjaʋaːdaːɦ'], one:['एकम्','eːkam'], good:['साधु','saːdʰu'] }},
   sa: { name: 'Sanskrit', native: 'संस्कृतम्', lat: 27.18, lng: 78.02, // Agra (historical center)
     words: { water:['जलम्','dʒalam'], fire:['अग्निः','aɡniɦ'], sun:['सूर्यः','suːɾjaɦ'], moon:['चन्द्रः','tɕandɾaɦ'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['खादति','kʰaːdati'], drink:['पिबति','pibati'], love:['प्रेम','preːma'], heart:['हृदयम्','hɾɨdajam'], tree:['वृक्षः','vɾɨkʂaɦ'], house:['गृहम्','ɡɾɨham'], dog:['श्वा','ɕvaː'], cat:['मार्जारः','maːɾdʒaːɾaɦ'], hand:['हस्तः','hastaɦ'], eye:['नेत्रम्','neːtɾam'], hello:['नमस्ते','namasteː'], thanks:['धन्यवादः','dʰanjaʋaːdaɦ'], one:['एकम्','eːkam'], good:['उत्तमम्','uttamam'] },
     // Audit Task 200: full per-cell wordEvidence for source-checked
@@ -288,6 +301,16 @@ const LANG_DATA = {
     words: { water:['água','ˈaɡwɐ'], fire:['fogo','foɡu'], sun:['sol','sɔw'], moon:['lua','luɐ'], mother:['mãe','mãj'], father:['pai','paj'], eat:['comer','komeɾ'], drink:['beber','bebeɾ'], love:['amor','amoɾ'], heart:['coração','koɾasãw'], tree:['árvore','aɾvoɾi'], house:['casa','kazɐ'], dog:['cachorro','kaʃohu'], cat:['gato','ɡatu'], hand:['mão','mãw'], eye:['olho','oʎu'], hello:['oi','oj'], thanks:['obrigado','obɾiɡadu'], one:['um','ũ'], good:['bom','bõ'] }},
   ru: { name: 'Russian', native: 'Русский', lat: 55.76, lng: 37.62, // Moscow
     words: { water:['вода','vɐda'], fire:['огонь','ɐɡonʲ'], sun:['солнце','sont͡sɨ'], moon:['луна','ɫʊna'], mother:['мать','matʲ'], father:['отец','ɐtʲet͡s'], eat:['есть','jesʲtʲ'], drink:['пить','pʲitʲ'], love:['любовь','lʲʊbofʲ'], heart:['сердце','sʲert͡sɨ'], tree:['дерево','dʲerʲɪvɐ'], house:['дом','dom'], dog:['собака','sɐbakɐ'], cat:['кошка','ˈkoʂkə'], hand:['рука','rʊka'], eye:['глаз','ɡɫas'], hello:['привет','prʲɪvʲet'], thanks:['спасибо','spɐsʲibɐ'], one:['один','ɐdʲin'], good:['хороший','xɐˈroʂɨj'] }},
+  // Quranic / Classical Arabic (العربية الفصحى التراثية) — the Arabic of the
+  // Qurʾān (610-632 CE revelation; codified ʿUthmānic codex c. 650), pre-Islamic
+  // poetry (al-mu'allaqāt), and classical exegesis. Distinct from Modern Standard
+  // Arabic (ar) in that it preserves Classical morphology fully and is taught
+  // with Tajwid (تجويد) — the codified phonetic recitation rules including
+  // imāla, tafkhīm, idghām, qalqalah. The canonical pedagogical reading tradition
+  // of every madrasa worldwide. Anchored at Mecca (Makkah), site of the Qur'anic
+  // revelation and the linguistic prestige center.
+  ar_qur: { name: 'Quranic Arabic', native: 'العربية الفصحى التراثية', lat: 21.42, lng: 39.83,
+    words: { water:['ماء','maːʔ'], fire:['نار','naːr'], sun:['شمس','ʃams'], moon:['قمر','qamar'], mother:['أم','ʔumm'], father:['أب','ʔab'], eat:['أكل','ʔakala'], drink:['شرب','ʃariba'], love:['حب','ħubb'], heart:['قلب','qalb'], tree:['شجرة','ʃadʒara'], house:['بيت','bajt'], dog:['كلب','kalb'], cat:['قط','qitˤː'], hand:['يد','jad'], eye:['عين','ʕajn'], hello:['السلام عليكم','as.salaːmu ʕalajkum'], thanks:['الحمد لله','al.ħamdu lillaːh'], one:['واحد','waːħid'], good:['طيب','tˤajjib'] }},
   ar: { name: 'Arabic (MSA)', native: 'العربية الفصحى', lat: 24.71, lng: 46.68, // Riyadh (MSA centroid)
     words: { water:['ماء','maːʔ'], fire:['نار','naːr'], sun:['شمس','ʃams'], moon:['قمر','qamar'], mother:['أم','umm'], father:['أب','ab'], eat:['أكل','ʔakala'], drink:['شرب','ʃariba'], love:['حب','ħubb'], heart:['قلب','qalb'], tree:['شجرة','ʃad͡ʒara'], house:['بيت','bajt'], dog:['كلب','kalb'], cat:['قطة','qitˤtˤa'], hand:['يد','jad'], eye:['عين','ʕajn'], hello:['مرحبا','marħaba'], thanks:['شكرا','ʃukran'], one:['واحد','waːħid'], good:['جيد','d͡ʒajːid'] },
     wordEvidence: {
@@ -1536,6 +1559,18 @@ const LANG_DATA = {
     words: { water:['水','ɕyɪX'], fire:['火','xuɑX'], sun:['日','ȵit'], moon:['月','ŋʉɐt'], mother:['母','muX'], father:['父','bɨoX'], eat:['食','ʑik'], drink:['飲','ʔimX'], love:['愛','ʔɑiH'], heart:['心','sim'], tree:['木','muk'], house:['屋','ʔuk'], dog:['犬','kʰiuɛnX'], cat:['貓','mæw'], hand:['手','ɕɨuX'], eye:['目','muk'], hello:['萬福','mʉɐnH piuk'], thanks:['謝','ziɛH'], one:['一','ʔit'], good:['善','dʑiɛnX'] }},
   ja_edo: { name: 'Japanese (Edo)', native: '江戸言葉', lat: 35.68, lng: 139.69,
     words: { water:['水','midzu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['おっかさん','okkasaɴ'], father:['おとっつぁん','otottsaɴ'], eat:['食う','kuː'], drink:['飲む','nomu'], love:['恋','kohi'], heart:['心','kokoro'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['御機嫌よう','ɡokiɡeɴjoː'], thanks:['忝い','katadʑikenai'], one:['一','hitotsu'], good:['良い','joi'] }},
+  // Japanese Kanbun Reading (漢文訓読) — Japanese pedagogical reading tradition
+  // for Classical Chinese texts (文言文) via kun-yomi (semantic readings),
+  // okurigana (送り仮名 inflectional kana), and kaeriten (返り点 return marks).
+  // A hybrid form: source text is Literary Chinese (lzh) but rendering follows
+  // Japanese morphology, particles, and word order. Distinct from any actual
+  // Chinese reading tradition and from any single stage of Japanese. Active
+  // school pedagogy in modern Japan (高校漢文) and historically the channel
+  // through which Confucian, Buddhist, and Tang/Song literature entered Japan
+  // 8c.-19c. Anchored at Yushima Seidō (湯島聖堂), the Tokugawa Confucian
+  // academy in Edo where kanbun pedagogy was institutionalized.
+  ja_kanbun: { name: 'Japanese Kanbun Reading', native: '漢文訓読', lat: 35.7008, lng: 139.7679,
+    words: { water:['水','mizu'], fire:['火','hi'], sun:['日','hi'], moon:['月','tsuki'], mother:['母','haha'], father:['父','chichi'], eat:['食らふ','kuɾau'], drink:['飲む','nomu'], love:['愛す','aisu'], heart:['心','kokoɾo'], tree:['木','ki'], house:['家','ie'], dog:['犬','inu'], cat:['猫','neko'], hand:['手','te'], eye:['目','me'], hello:['拝啓','haikei'], thanks:['謝す','ɕasu'], one:['一','hitotsu'], good:['良し','joɕi'] }},
   // Audit Task 148: shifted from Kyoto Gosho (35.01, 135.77) to Heian-kyō
   // historical western palace area so ja_heian / ja_kyo / ja_chu no longer
   // cluster on a single coordinate. Heian-jingū / former 平安宮 site.
@@ -4321,6 +4356,9 @@ const DATA_STATUS_OVERRIDES = {
     it_dan:    'pedagogical',      // Old Italian / Dantesque Tuscan (13c.-14c., literary canon)
     hy_grab:   'pedagogical',      // Classical Armenian / Grabar (5c.-12c. CE; liturgical & literary canon)
     he_mis:    'pedagogical',      // Mishnaic Hebrew (~70-200 CE; Talmudic/rabbinic canon)
+    ja_kanbun: 'pedagogical',      // Japanese kanbun reading (漢文訓読; pedagogical rendering of Literary Chinese)
+    ar_qur:    'pedagogical',      // Quranic Arabic (Tajwid recitation tradition; classical canon)
+    sa_edu:    'pedagogical',      // Modern Spoken Sanskrit (Samskrita Bharati / simplified-sandhi pedagogy)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4359,7 +4397,8 @@ const HIST_DESCENDANT = {
     sa:'hi', mnc:'zh',
     sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
     ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
-    ja_edo:'ja', ja_heian:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
+    ja_edo:'ja', ja_heian:'ja', ja_kanbun:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
+    ar_qur:'ar', sa_edu:'hi',
     oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
     // Phase 4: historical
     peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
