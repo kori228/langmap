@@ -1127,6 +1127,66 @@
             gap: 12px;
             padding-top: 4px;
         }
+        /* Explicit [hidden] override: the class-level `display: grid`
+           above outranks the UA-stylesheet `[hidden]` rule, so without
+           this the index would leak underneath every article body. */
+        .trivia-index[hidden] { display: none; }
+
+        /* Prev / next article navigation row, shown at the bottom of
+           each article (replaces the previous behaviour where the
+           full 30-card index was bleeding under every article). */
+        .trivia-article-nav {
+            display: flex; gap: 8px;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(180,130,30,0.25);
+        }
+        .trivia-article-nav[hidden] { display: none; }
+        .trivia-article-nav button {
+            flex: 1 1 0; min-width: 0;
+            text-align: left;
+            background: rgba(255,243,205,0.55);
+            border: 1px solid rgba(180,130,30,0.28);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            color: #3a2e1a;
+            transition: all 0.18s ease;
+        }
+        .trivia-article-nav button:hover {
+            background: rgba(255,235,180,0.85);
+            border-color: #b8860b;
+        }
+        .trivia-article-nav button[disabled] {
+            opacity: 0.4; cursor: default;
+        }
+        .trivia-article-nav .nav-dir {
+            display: block;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: #a07c3a;
+            margin-bottom: 2px;
+        }
+        .trivia-article-nav .nav-title {
+            display: block;
+            font-size: 13px; font-weight: 600;
+            color: #4a3416;
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .trivia-article-nav button.next { text-align: right; }
+        .trivia-card-num {
+            display: inline-block;
+            font-size: 10px; font-weight: 700;
+            color: #a07c3a;
+            margin-right: 4px;
+        }
         @media (max-width: 600px) {
             .trivia-index { grid-template-columns: 1fr; }
         }
@@ -1470,6 +1530,18 @@
             <div class="trivia-body" id="trivia-body"></div>
             <div class="trivia-sources" id="trivia-sources" hidden></div>
             <div class="trivia-tags" id="trivia-tags"></div>
+            <!-- Prev / next navigation at the bottom of each article -->
+            <nav class="trivia-article-nav" id="trivia-article-nav" hidden
+                 aria-label="Article navigation">
+                <button type="button" class="prev" id="trivia-nav-prev">
+                    <span class="nav-dir" id="trivia-nav-prev-dir">← Previous</span>
+                    <span class="nav-title" id="trivia-nav-prev-title"></span>
+                </button>
+                <button type="button" class="next" id="trivia-nav-next">
+                    <span class="nav-dir" id="trivia-nav-next-dir">Next →</span>
+                    <span class="nav-title" id="trivia-nav-next-title"></span>
+                </button>
+            </nav>
             <!-- Index of all articles (shown when no specific article is open) -->
             <div class="trivia-index" id="trivia-index" hidden></div>
         </div>
@@ -1917,7 +1989,7 @@
             filter:    29,
             names:   105,
             meta:     184,
-            trivia:   12,
+            trivia:   13,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2178,6 +2250,24 @@
                 th: 'เลือกหัวข้อที่สนใจ ทุกบทความเป็นอิสระ — แผนที่จะกลับมาเหมือนเดิมเมื่อปิด',
                 id: 'Pilih topik. Setiap artikel berdiri sendiri — peta kembali seperti semula saat ditutup.',
                 hi: 'कोई विषय चुनें। हर लेख स्वतंत्र है — बंद करने पर मानचित्र पुनःस्थापित होता है।',
+            },
+            triviaNavPrev: {
+                en: '← Previous', ja: '← 前の記事',
+                ko: '← 이전 글', zh: '← 上一篇', yue: '← 上一篇',
+                vi: '← Trước', th: '← ก่อนหน้า', id: '← Sebelumnya', hi: '← पिछला',
+                de: '← Vorheriger', fr: '← Précédent', it: '← Precedente',
+                es: '← Anterior', pt: '← Anterior',
+                ru: '← Назад', uk: '← Назад',
+                ar: '← السابق', he: '← הקודם', sw: '← Iliyotangulia',
+            },
+            triviaNavNext: {
+                en: 'Next →', ja: '次の記事 →',
+                ko: '다음 글 →', zh: '下一篇 →', yue: '下一篇 →',
+                vi: 'Tiếp →', th: 'ถัดไป →', id: 'Berikutnya →', hi: 'अगला →',
+                de: 'Nächster →', fr: 'Suivant →', it: 'Successivo →',
+                es: 'Siguiente →', pt: 'Próximo →',
+                ru: 'Далее →', uk: 'Далі →',
+                ar: 'التالي →', he: 'הבא →', sw: 'Inayofuata →',
             },
             triviaCompareTitle: {
                 en: 'Compare across languages', ja: '言語間で比較',
@@ -5094,7 +5184,9 @@
 
         function renderTriviaArticle(id) {
             const list = window.TRIVIA_ARTICLES || [];
-            const art = list.find(a => a.id === id) || list[0];
+            const idx = list.findIndex(a => a.id === id);
+            const art = idx >= 0 ? list[idx] : list[0];
+            const pos = idx >= 0 ? idx : 0;
             if (!art) return;
             const modal = document.getElementById('trivia-modal');
             const heading = document.getElementById('trivia-heading');
@@ -5105,7 +5197,10 @@
             const iconHtml = art.icon
                 ? `<span class="trivia-icon" aria-hidden="true">${art.icon}</span>`
                 : '';
-            heading.innerHTML = iconHtml + pickLocalized(art.title);
+            // Prefix the heading with the article's 1-based position so
+            // users see "07 / 30" style numbering at a glance.
+            const numPrefix = `<span class="trivia-card-num">${String(pos + 1).padStart(2, '0')} / ${list.length}</span>`;
+            heading.innerHTML = numPrefix + iconHtml + pickLocalized(art.title);
             const sum = pickLocalized(art.summary);
             summary.textContent = sum;
             summary.style.display = sum ? '' : 'none';
@@ -5146,6 +5241,40 @@
             tags.style.display = '';
             const indexEl = document.getElementById('trivia-index');
             if (indexEl) indexEl.hidden = true;
+            // Populate the prev/next navigation row at the bottom.
+            const nav = document.getElementById('trivia-article-nav');
+            if (nav) {
+                const prev = list[pos - 1] || null;
+                const next = list[pos + 1] || null;
+                const prevBtn = document.getElementById('trivia-nav-prev');
+                const nextBtn = document.getElementById('trivia-nav-next');
+                const prevTitle = document.getElementById('trivia-nav-prev-title');
+                const nextTitle = document.getElementById('trivia-nav-next-title');
+                if (prev) {
+                    prevBtn.disabled = false;
+                    prevBtn.dataset.articleId = prev.id;
+                    prevTitle.textContent = `${String(pos).padStart(2,'0')}. ${pickLocalized(prev.title)}`;
+                } else {
+                    prevBtn.disabled = true;
+                    delete prevBtn.dataset.articleId;
+                    prevTitle.textContent = '';
+                }
+                if (next) {
+                    nextBtn.disabled = false;
+                    nextBtn.dataset.articleId = next.id;
+                    nextTitle.textContent = `${String(pos + 2).padStart(2,'0')}. ${pickLocalized(next.title)}`;
+                } else {
+                    nextBtn.disabled = true;
+                    delete nextBtn.dataset.articleId;
+                    nextTitle.textContent = '';
+                }
+                // Localize the "Previous" / "Next" labels.
+                const prevDir = document.getElementById('trivia-nav-prev-dir');
+                const nextDir = document.getElementById('trivia-nav-next-dir');
+                if (prevDir) prevDir.textContent = i18n('triviaNavPrev');
+                if (nextDir) nextDir.textContent = i18n('triviaNavNext');
+                nav.hidden = false;
+            }
         }
         function renderTriviaIndex() {
             const modal = document.getElementById('trivia-modal');
@@ -5168,13 +5297,14 @@
             tags.style.display = 'none';
             tags.innerHTML = '';
             const list = window.TRIVIA_ARTICLES || [];
-            index.innerHTML = list.map(a => {
+            index.innerHTML = list.map((a, i) => {
                 const iconAttr = a.icon || '📖';
                 const title = pickLocalized(a.title);
                 const sum = pickLocalized(a.summary);
+                const num = String(i + 1).padStart(2, '0');
                 return `<button type="button" class="trivia-card" data-article-id="${a.id}">`
                     + `<div class="trivia-card-icon" aria-hidden="true">${iconAttr}</div>`
-                    + `<div class="trivia-card-title">${title}</div>`
+                    + `<div class="trivia-card-title"><span class="trivia-card-num">${num}.</span> ${title}</div>`
                     + `<div class="trivia-card-summary">${sum}</div>`
                     + `</button>`;
             }).join('');
@@ -5182,6 +5312,9 @@
             delete modal.dataset.articleId;
             modal.dataset.view = 'index';
             modal.scrollTop = 0;
+            // Hide the prev/next nav in index view.
+            const nav = document.getElementById('trivia-article-nav');
+            if (nav) nav.hidden = true;
         }
         function openTriviaComparePanel(codes) {
             if (!Array.isArray(codes)) return;
@@ -5426,6 +5559,18 @@
         if (_tilesRevertBtn) _tilesRevertBtn.addEventListener('click', () => setTilesMode('flat'));
         const _triviaCompareCloseBtn = document.getElementById('trivia-compare-close');
         if (_triviaCompareCloseBtn) _triviaCompareCloseBtn.addEventListener('click', closeTriviaComparePanel);
+        const _triviaNavPrev = document.getElementById('trivia-nav-prev');
+        const _triviaNavNext = document.getElementById('trivia-nav-next');
+        if (_triviaNavPrev) _triviaNavPrev.addEventListener('click', () => {
+            if (_triviaNavPrev.disabled) return;
+            const id = _triviaNavPrev.dataset.articleId;
+            if (id) navigateTrivia(id);
+        });
+        if (_triviaNavNext) _triviaNavNext.addEventListener('click', () => {
+            if (_triviaNavNext.disabled) return;
+            const id = _triviaNavNext.dataset.articleId;
+            if (id) navigateTrivia(id);
+        });
         const _triviaOpenBtn = document.getElementById('trivia-open');
         if (_triviaOpenBtn) _triviaOpenBtn.addEventListener('click', () => openTrivia());
         const _triviaCloseBtn = document.getElementById('trivia-close');
