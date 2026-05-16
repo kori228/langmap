@@ -1076,6 +1076,32 @@
             color: #5a3f15;
             border-radius: 0 6px 6px 0;
         }
+        .trivia-modal .trivia-sources {
+            margin-top: 22px;
+            padding: 12px 14px;
+            background: rgba(255,240,200,0.35);
+            border-left: 2px solid rgba(180,130,30,0.4);
+            border-radius: 0 6px 6px 0;
+            font-size: 11.5px;
+            line-height: 1.55;
+            color: #4a3416;
+        }
+        .trivia-modal .trivia-sources-label {
+            display: block;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 1.2px; text-transform: uppercase;
+            color: #a07c3a;
+            margin-bottom: 6px;
+        }
+        .trivia-modal .trivia-sources ul {
+            margin: 0; padding-left: 18px; list-style: square;
+        }
+        .trivia-modal .trivia-sources li { margin-bottom: 3px; }
+        .trivia-modal .trivia-sources a {
+            color: #5a3f15; text-decoration: underline;
+            text-decoration-color: rgba(120,90,30,0.4);
+        }
+        .trivia-modal .trivia-sources a:hover { color: #1a73e8; }
         .trivia-modal .trivia-tags {
             margin-top: 18px;
             display: flex; flex-wrap: wrap; gap: 6px;
@@ -1227,6 +1253,7 @@
             <h2 id="trivia-heading"></h2>
             <div class="trivia-summary" id="trivia-summary"></div>
             <div class="trivia-body" id="trivia-body"></div>
+            <div class="trivia-sources" id="trivia-sources" hidden></div>
             <div class="trivia-tags" id="trivia-tags"></div>
         </div>
     </div>
@@ -1451,7 +1478,7 @@
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=29"></script>
     <script src="lang_names.js?v=104"></script>
-    <script src="wordmap_trivia.js?v=6"></script>
+    <script src="wordmap_trivia.js?v=7"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -1628,7 +1655,7 @@
             filter:    29,
             names:   104,
             meta:     182,
-            trivia:    6,
+            trivia:    7,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -1845,6 +1872,19 @@
                 pt: 'Fechar', pt_eu: 'Fechar', pt_br: 'Fechar',
                 ru: 'Закрыть', uk: 'Закрити',
                 ar: 'إغلاق', he: 'סגירה', sw: 'Funga',
+            },
+            triviaSources: {
+                en: 'Sources & further reading', ja: '出典・参考文献',
+                ko: '출처 · 참고문헌', zh: '参考资料', yue: '參考資料',
+                vi: 'Nguồn & tài liệu tham khảo', th: 'แหล่งอ้างอิงและอ่านเพิ่มเติม',
+                id: 'Sumber & bacaan lanjutan', hi: 'स्रोत और संदर्भ',
+                de: 'Quellen & Lektüre', fr: 'Sources & lectures',
+                it: 'Fonti & approfondimenti',
+                es: 'Fuentes y lecturas', pt: 'Fontes e leituras',
+                ru: 'Источники и литература', uk: 'Джерела й література',
+                ar: 'المصادر والقراءات الإضافية',
+                he: 'מקורות וקריאה נוספת',
+                sw: 'Vyanzo na masomo zaidi',
             },
             triviaExpand: { en: '⤢' },  // icon-only; full phrase in triviaExpandTitle
             triviaExpandTitle: {
@@ -2728,6 +2768,11 @@
             const openCode = infoPanel && infoPanel.classList.contains('visible')
                 ? infoPanel.dataset.code : '';
             if (openCode) params.set('lang', openCode);
+            // Persist open trivia article so reload / share URL restores it.
+            const triviaModal = document.getElementById('trivia-modal');
+            const openTrivia = triviaModal && triviaModal.classList.contains('visible')
+                ? triviaModal.dataset.articleId : '';
+            if (openTrivia) params.set('trivia', openTrivia);
             // Pass 32: persist compare list
             if (window.__compareList && window.__compareList.length > 0) {
                 params.set('cmp', window.__compareList.join(','));
@@ -2808,6 +2853,16 @@
             if (langCode && LANG_DATA[langCode]) {
                 // Defer until after initial markers are rendered.
                 setTimeout(() => { showLangInfo(langCode); }, 100);
+            }
+            // Restore open trivia article from URL (?trivia=<id>). Deferred
+            // so the trivia setup block at the end of the IIFE has run.
+            const triviaId = params.get('trivia');
+            if (triviaId) {
+                setTimeout(() => {
+                    if (typeof window.openTrivia === 'function') {
+                        window.openTrivia(triviaId);
+                    }
+                }, 150);
             }
         }
         loadHash();
@@ -4672,6 +4727,7 @@
             const heading = document.getElementById('trivia-heading');
             const summary = document.getElementById('trivia-summary');
             const body = document.getElementById('trivia-body');
+            const sources = document.getElementById('trivia-sources');
             const tags = document.getElementById('trivia-tags');
             const iconHtml = art.icon
                 ? `<span class="trivia-icon" aria-hidden="true">${art.icon}</span>`
@@ -4681,6 +4737,25 @@
             summary.textContent = sum;
             summary.style.display = sum ? '' : 'none';
             body.innerHTML = pickLocalized(art.body).trim();
+            // Sources: shared list (citations don't vary by UI lang), but the
+            // section label is localized. Each entry is either a plain string
+            // or { text, url } for a hyperlinked reference.
+            const srcList = art.sources || [];
+            if (srcList.length) {
+                const items = srcList.map(s => {
+                    if (typeof s === 'string') return '<li>' + s + '</li>';
+                    const safeUrl = (s.url || '').replace(/"/g, '&quot;');
+                    const safeText = s.text || s.url || '';
+                    return `<li><a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeText}</a></li>`;
+                }).join('');
+                sources.innerHTML =
+                    `<span class="trivia-sources-label">${i18n('triviaSources')}</span>` +
+                    `<ul>${items}</ul>`;
+                sources.hidden = false;
+            } else {
+                sources.hidden = true;
+                sources.innerHTML = '';
+            }
             tags.innerHTML = '';
             (art.tags || []).forEach(t => {
                 const span = document.createElement('span');
@@ -4702,7 +4777,8 @@
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
             if (!list.length) return;
-            const targetId = id || list[0].id;
+            // Resolve the id: requested → first match → first in list.
+            const targetId = (id && list.find(a => a.id === id)) ? id : list[0].id;
             if (!_triviaSnapshot) _triviaSnapshot = captureMapState();
             renderTriviaArticle(targetId);
             setTriviaCompact(false);
@@ -4713,11 +4789,13 @@
             modal.classList.add('visible');
             modal.scrollTop = 0;
             setTimeout(() => modal.focus(), 0);
+            if (typeof updateHash === 'function') updateHash({ push: true });
         }
         function navigateTrivia(id) {
             if (_triviaSnapshot) restoreMapState(_triviaSnapshot);
             renderTriviaArticle(id);
             setTriviaCompact(false);
+            if (typeof updateHash === 'function') updateHash({ push: true });
         }
         function closeTrivia() {
             const modal = document.getElementById('trivia-modal');
@@ -4726,11 +4804,13 @@
             backdrop.classList.remove('visible');
             backdrop.setAttribute('aria-hidden', 'true');
             setTriviaCompact(false);
+            delete modal.dataset.articleId;  // so updateHash drops ?trivia=
             if (_triviaSnapshot) {
                 restoreMapState(_triviaSnapshot);
                 _triviaSnapshot = null;
             }
             triviaClearBlinks();
+            if (typeof updateHash === 'function') updateHash();
         }
 
         function _runTriviaAction(btn) {
