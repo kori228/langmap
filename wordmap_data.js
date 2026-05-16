@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 911 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 912 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2526,6 +2526,23 @@ const LANG_DATA = {
     words: { water:['ǁgam-i','ǁɡami'], fire:['ǀae-b','ǀaeb'], sun:['sores','soɾes'], moon:['ǁkhâb','ǁkʰaːb'], mother:['ǁgûs','ǁɡũːs'], father:['ǁgûb','ǁɡũːb'], eat:['ǂû','ǂũː'], drink:['ā','aː'], love:['ǀnam','ǀnam'], heart:['ǂgaob','ǂɡaob'], tree:['hai-s','hais'], house:['oms','oms'], dog:['arib','arib'], cat:['ǀores','ǀoɾes'], hand:['ǁôa-s','ǁoːas'], eye:['mûs','mũːs'], hello:['matisâ','matisaː'], thanks:['aios','aios'], one:['ǀui','ǀui'], good:['ǃgâib','ǃɡaːib'] }},
   hts: { name: 'Hadza', native: 'Hadzane', lat: -3.65, lng: 35.05, // Lake Eyasi
     words: { water:['ʼati','ʔati'], fire:['ʼimi','ʔimi'], sun:['ʼisha','ʔiʃa'], moon:['heto','heto'], mother:['ama','ama'], father:['aba','aba'], eat:['ʼicha','ʔitʃa'], drink:['ʼo','ʔoː'], love:['ʼuwakitchi','ʔuwakitʃi'], heart:['ʼaitchi','ʔaitʃi'], tree:['ʼani','ʔani'], house:['ndolo','ndolo'], dog:['kongwesi','koŋɡwesi'], cat:['ʼmiu','ʔmiu'], hand:['kwaʼla','kʷaʔla'], eye:['ʼaha','ʔaha'], hello:['ʼmtana','ʔmtana'], thanks:['ʼmbweko','ʔmbweko'], one:['ihtche','ihtʃe'], good:['ʼiyaʼe','ʔijaʔe'] }},
+  // Tuu (formerly classified as Southern Khoisan). Taa / !Xóõ is the world record-holder for
+  // documented phoneme inventory size — Anthony Traill (1985, 1994) describes ~159 phonemes
+  // including five primary click types: dental (ǀ), alveolar (ǃ), lateral (ǁ), palatal (ǂ),
+  // and the rare bilabial (ʘ), plus pulmonic and click clusters with multiple accompaniments.
+  // Vocabulary partial: only cells with confident Traill (1994) attestation are filled; the
+  // remainder are marked '—' under dataStatus:'fragmentary' (DATA_STATUS_OVERRIDES) rather
+  // than fabricated. Sources: Traill (1985) "Phonetic and Phonological Studies of !XÓÕ
+  // Bushman"; Traill (1994) "A !Xóõ Dictionary"; Glottolog taaa1242.
+  nmn: { name: 'Taa', native: 'Taa', lat: -22.00, lng: 22.00, // eastern Ghanzi District, Botswana
+    words: { water:['—','—'], fire:['ǂʼâa','ǂʼâa'], sun:['ǀqʰâa','ǀqʰâa'], moon:['ǁaˤu','ǁaˤu'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['ǂnúm','ǂnúm'], hello:['—','—'], thanks:['—','—'], one:['ʘnâa','ʘnâa'], good:['—','—'] },
+    wordEvidence: {
+      fire:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with ejective accompaniment' },
+      sun:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — dental click with aspirated uvular accompaniment' },
+      moon:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — lateral click with pharyngealized vowel' },
+      eye:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with nasal accompaniment' },
+      one:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — bilabial click (ʘ), one of the few attested examples in any language' }
+    }},
   // Nilo-Saharan / Saharan
   kr: { name: 'Kanuri', native: 'Kanuri', lat: 11.85, lng: 13.16, // Maiduguri
     words: { water:['njim','ndʒim'], fire:['ru','ɾu'], sun:['kiŋal','kiŋal'], moon:['kau','kau'], mother:['ya','ja'], father:['aba','aba'], eat:['bayem','bajem'], drink:['simem','simem'], love:['nem-shanu','nem ʃanu'], heart:['karkə','karkə'], tree:['kasua','kasua'], house:['fato','fato'], dog:['keri','keri'], cat:['yaba','jaba'], hand:['musko','musko'], eye:['shim','ʃim'], hello:['lafiya','lafija'], thanks:['gushibe','ɡuʃibe'], one:['tilo','tilo'], good:['ngewu','ŋɡewu'] }},
@@ -4164,7 +4181,8 @@ const DATA_STATUS_OVERRIDES = {
     // many '—' placeholders).
     itl:       'fragmentary',    // Itelmen — ~80 fluent speakers, Volodin & Khaloimova partial
     ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
-    roo:       'fragmentary',    // Rotokas — ~4K speakers, Firchow & Firchow (1973) / Robinson (2011) partial Swadesh coverage; only confidently-sourced cells filled
+    roo:       'fragmentary',    // Rotokas — ~4K speakers, Firchow & Firchow (1973) / Robinson (2011) partial Swadesh coverage
+    nmn:       'fragmentary',    // Taa / !Xóõ — ~2,500 speakers, Traill 1994 partial Swadesh coverage (5/20)
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4350,14 +4368,13 @@ const HIST_DESCENDANT = {
     // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
     // rows (added in Round 2) keeps them visible on the modern map.
     itl:null, ykg:null,
-    // Audit Task / Pass 14 follow-on (2026-05-16): roo Rotokas added with
-    // dataStatus: 'fragmentary' because Swadesh coverage from Firchow &
-    // Firchow (1973) / Robinson (2006, 2011) is partial (11/20 cells
-    // sourced; 9 cells deliberately left '—' rather than fabricated).
-    // Rotokas is a living language (~4K speakers, central Bougainville,
-    // Papua New Guinea) — the null descendant signals the validator
-    // ([#17] inverse invariant) without removing it from the modern map.
+    // Living fragmentary languages added with partial Swadesh coverage:
+    //   - roo (Rotokas, ~4K, central Bougainville) — Firchow 1973 / Robinson 2011
+    //   - nmn (Taa / !Xóõ, ~2.5K, Botswana–Namibia border) — Traill 1994
+    // null descendant signals the validator [#17] inverse invariant
+    // without removing them from the modern map.
     roo:null,
+    nmn:null,
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
