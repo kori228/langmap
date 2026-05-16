@@ -1809,7 +1809,6 @@
         // later refreshTriviaBlinks() call would TDZ-throw on the
         // initial updateMarkers() pass.
         var _triviaBlinkCodes = new Set();
-        var _triviaSnapshot = null;
         // Spotlight: when non-empty, getVisibleLangs returns only the
         // listed codes regardless of zoom / speaker tier / era. Set by
         // the compare action so the user actually sees the languages
@@ -1891,8 +1890,8 @@
         //   'terrain' — OpenTopoMap (relief + labels, for 🌋 type actions)
         // Trivia action buttons opt-in via data-tiles=…; trivia panto /
         // focus / compare default to 'labels' so users see where they
-        // are flying. restoreMapState() returns to the mode in effect
-        // before the trivia modal opened.
+        // are flying. Users can revert via the floating "↩ Plain map"
+        // pill (#tiles-revert) — no automatic restoration on close.
         let _currentTilesMode = 'flat';
         let _currentTileLayer = null;
         const TILE_LAYERS = {
@@ -2012,7 +2011,7 @@
             filter:    29,
             names:   105,
             meta:     185,
-            trivia:   18,
+            trivia:   19,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5154,75 +5153,6 @@
             refreshTriviaBlinks();
         }
 
-        function captureMapState() {
-            const c = map.getCenter();
-            const filterParam = (window.__langmap && typeof window.__langmap.getFilterHashParam === 'function')
-                ? window.__langmap.getFilterHashParam() : '';
-            return {
-                lat: c.lat, lng: c.lng, zoom: map.getZoom(),
-                word: currentWord,
-                era: showHistorical,
-                openLang: (infoPanel.classList.contains('visible') && infoPanel.dataset.code)
-                    ? infoPanel.dataset.code : null,
-                filterParam: filterParam || '',
-                tilesMode: _currentTilesMode,
-            };
-        }
-        function restoreMapState(s, opts) {
-            if (!s) return;
-            opts = opts || {};
-            // skipLang: when navigating article→article, don't reopen
-            // the user's original language modal (it would just be
-            // closed again by the next article's _resetTriviaSurface
-            // call, causing a flicker / order-of-ops race). Only the
-            // FULL close (closeTrivia) restores the language modal.
-            const skipLang = !!opts.skipLang;
-            // Clear trivia-only overrides first so the map re-renders cleanly.
-            if (_triviaSpotlight && _triviaSpotlight.size) {
-                _triviaSpotlight.clear();
-            }
-            if (s.tilesMode && s.tilesMode !== _currentTilesMode) {
-                setTilesMode(s.tilesMode);
-            }
-            // Close the trivia-only comparison panel; the user's
-            // .compare-panel is untouched (we never modified it).
-            if (typeof closeTriviaComparePanel === 'function') {
-                try { closeTriviaComparePanel(); } catch (_) {}
-            }
-            if (s.era !== showHistorical) setEra(s.era);
-            if (s.word && currentWord !== s.word) {
-                select.value = s.word;
-                select.dispatchEvent(new Event('change'));
-            } else {
-                // Same word, but spotlight may have changed the visible set
-                if (typeof updateMarkers === 'function') updateMarkers(currentWord);
-            }
-            if (window.__langmap && typeof window.__langmap.setFilterFromHashParam === 'function') {
-                try { window.__langmap.setFilterFromHashParam(s.filterParam || ''); }
-                catch (_) { /* lang-filter may not have a setter */ }
-            }
-            try { map.flyTo([s.lat, s.lng], s.zoom, { duration: 0.7 }); }
-            catch (_) { map.setView([s.lat, s.lng], s.zoom); }
-            if (!skipLang) {
-                if (s.openLang) {
-                    setTimeout(() => {
-                        if (!infoPanel.classList.contains('visible')
-                            || infoPanel.dataset.code !== s.openLang) {
-                            showLangInfo(s.openLang);
-                        }
-                    }, 100);
-                } else if (infoPanel.classList.contains('visible')) {
-                    closeInfoPanel();
-                }
-            } else if (infoPanel.classList.contains('visible')) {
-                // skipLang mode: keep the surface clean by closing any
-                // currently-open language modal, without queuing a
-                // re-open for the snapshot's openLang.
-                closeInfoPanel();
-            }
-            triviaClearBlinks();
-        }
-
         function renderTriviaArticle(id) {
             const list = window.TRIVIA_ARTICLES || [];
             const idx = list.findIndex(a => a.id === id);
@@ -5407,10 +5337,10 @@
             backdrop.classList.toggle('transparent', !!on);
         }
 
-        // Close any panels that would clutter the article surface
-        // before showing a new article. The snapshot was already taken
-        // (so the user's pre-trivia state is preserved), and on close
-        // restoreMapState reopens whatever was originally visible.
+        // Close any panels that would clutter the article surface.
+        // Called when opening trivia, navigating between articles, or
+        // closing trivia — the trivia session is independent of the
+        // user's pre-trivia state (no snapshot / no restore).
         function _resetTriviaSurface() {
             try { if (typeof closeInfoPanel === 'function' && infoPanel
                   && infoPanel.classList.contains('visible')) closeInfoPanel(); } catch (_) {}
@@ -5424,11 +5354,10 @@
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
             if (!list.length) return;
-            if (!_triviaSnapshot) _triviaSnapshot = captureMapState();
             // Each article opens from a clean surface — close any
-            // language modal / compare panel / blinks left from a
-            // previous interaction. restoreMapState (on close) will
-            // bring back the user's original state from the snapshot.
+            // language modal / compare panel / blinks / spotlight from
+            // before. No snapshot is taken; on close the map simply
+            // stays wherever the article left it.
             _resetTriviaSurface();
             // If no specific article requested, show the index. If a
             // requested id matches an article, open that. Otherwise
@@ -5448,20 +5377,9 @@
         }
         function navigateTrivia(id) {
             const modal = document.getElementById('trivia-modal');
-            // Only re-run restoreMapState if we're navigating from an
-            // already-displayed article (article → article via an
-            // in-body link). Coming from the index view, state was
-            // already restored by backToTriviaIndex, so doubling the
-            // restore (a flyTo, updateMarkers, etc.) breaks the
-            // subsequent renderTriviaArticle pass on some browsers.
-            const fromArticle = modal && modal.dataset.view === 'article';
-            // Restore the map view/word/era/tiles to the baseline taken
-            // at trivia-open time — but DON'T reopen the user's
-            // original language modal. We want each article to start
-            // from a clean surface; the user's lang modal only comes
-            // back on the full closeTrivia, not on prev/next or
-            // article→article navigation.
-            if (fromArticle && _triviaSnapshot) restoreMapState(_triviaSnapshot, { skipLang: true });
+            // Each article starts from a clean surface — close any
+            // language modal / compare panel / blinks from the previous
+            // article. Map view stays where the previous article left it.
             _resetTriviaSurface();
             // Preserve the compact/full layout the user chose. If they
             // shrank the modal aside (or it auto-shrank from a previous
@@ -5475,10 +5393,7 @@
             if (typeof updateHash === 'function') updateHash({ push: true });
         }
         function backToTriviaIndex() {
-            // Restore the map view/word/era/tiles to the baseline taken
-            // at trivia-open time — but DON'T reopen the user's
-            // original language modal (kept clean until full close).
-            if (_triviaSnapshot) restoreMapState(_triviaSnapshot, { skipLang: true });
+            _resetTriviaSurface();
             renderTriviaIndex();
             setTriviaCompact(false);
             const modal = document.getElementById('trivia-modal');
@@ -5494,11 +5409,11 @@
             setTriviaCompact(false);
             delete modal.dataset.articleId;  // so updateHash drops ?trivia=
             delete modal.dataset.view;
-            if (_triviaSnapshot) {
-                restoreMapState(_triviaSnapshot);
-                _triviaSnapshot = null;
-            }
-            triviaClearBlinks();
+            // Clean up trivia-specific overlays (blinks / spotlight /
+            // compare panel / language modal opened by an action). Map
+            // view / word / era / tiles are intentionally NOT restored —
+            // the user can navigate from wherever the article left them.
+            _resetTriviaSurface();
             if (typeof updateHash === 'function') updateHash();
         }
 
