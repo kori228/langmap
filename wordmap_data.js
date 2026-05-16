@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 934 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 935 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -70,6 +70,10 @@ const EXCLUDED_CODES = new Set([
   'cms', 'pmh',
   // Batch 60: Old Frisian
   'ofs',
+  // Ubykh — Northwest Caucasian, extinct since 7 October 1992 (last fully fluent
+  // speaker Tevfik Esenç died in Hacıosman, Turkey). dataStatus:'attested' via
+  // Dumézil/Vogt corpus; classified historical so excluded from the modern map.
+  'uby',
 ]);
 
 const LANG_DATA = {
@@ -2174,6 +2178,34 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'abq'; Glottolog abaz1241; Tabulova (1976) Grammar of Abaza; Genko (1955).
   abq: { name: 'Abaza', native: 'Абаза бызшва', lat: 44.07, lng: 41.95, // Inzhich-Chukun area, Karachay-Cherkessia
     words: { water:['дзы','d͡zə'], fire:['мца','mt͡sa'], sun:['амра','amra'], moon:['мыза','məza'], mother:['ан','an'], father:['аб','ab'], eat:['фара','fara'], drink:['жвара','ʒwara'], love:['бзиабара','bziabara'], heart:['гвы','ɡʷə'], tree:['тла','tla'], house:['айни','ajni'], dog:['ла','la'], cat:['цгва','t͡sɡwa'], hand:['напы','napə'], eye:['ла','la'], hello:['мшыбзи','mʃəbzi'], thanks:['таабит','taːbit'], one:['заку','zaku'], good:['бзи','bzi'] }},
+  // Ubykh — Northwest Caucasian (extinct since 7 October 1992, last fully fluent speaker Tevfik Esenç).
+  // Originally spoken on the NE coast of the Black Sea around Sochi; following the Russian conquest of
+  // 1864 the Ubykhs were deported en masse to Ottoman Anatolia, where the language survived for four
+  // generations before dying out in Hacıosman village (Manyas district, near the Sea of Marmara, Turkey).
+  // Famous in phonological typology for having the largest documented consonant inventory of any
+  // language with only ~2 phonemic vowels (a, ə) — Dumézil (1965) counts 84 consonants, including
+  // ejectives, pharyngealized, labialized, and palatalized series. Never had its own orthography;
+  // all forms below are in Latin/IPA transcription per Vogt (1963) and Dumézil's grammar.
+  // Vocabulary partial: only cells with confident Vogt (1963) dictionary attestation are filled;
+  // the remainder are marked '—' under dataStatus:'attested' (DATA_STATUS_OVERRIDES) rather than
+  // fabricated. Sources: Dumézil (1931, 1965, 1975); Vogt (1963) Dictionnaire de la langue Oubykh;
+  // Hewitt (2004); Glottolog ubyk1235.
+  uby: { name: 'Ubykh', native: 'tʷaχəbzɜ', lat: 40.07, lng: 28.05, // Hacıosman, Manyas district, Balıkesir Province, Turkey (where Tevfik Esenç lived)
+    words: { water:['bzə','bzə'], fire:['mzʼə','mzʼə'], sun:['dəɣʷa','dəɣʷa'], moon:['mazə','mazə'], mother:['nan','nan'], father:['tʷə','tʷə'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['gʷə','gʷə'], tree:['—','—'], house:['tʷəna','tʷəna'], dog:['la','la'], cat:['—','—'], hand:['ɂa','ʔa'], eye:['bla','bla'], hello:['—','—'], thanks:['—','—'], one:['za','za'], good:['—','—'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Vogt (1963) Dictionnaire de la langue Oubykh — bzə [bzə]' },
+      fire:   { evidence: 'direct', source: 'Vogt (1963) Dictionnaire de la langue Oubykh — mzʼə (palatalized ejective)' },
+      sun:    { evidence: 'direct', source: 'Vogt (1963) Dictionnaire de la langue Oubykh — dəɣʷa' },
+      moon:   { evidence: 'direct', source: 'Vogt (1963) Dictionnaire de la langue Oubykh — mazə' },
+      mother: { evidence: 'direct', source: 'Vogt (1963) — nan (also short an); standard kinship term' },
+      father: { evidence: 'direct', source: 'Vogt (1963) — tʷə (labialized stop)' },
+      heart:  { evidence: 'direct', source: 'Vogt (1963) — gʷə; cognate with Adyghe ady/Kabardian kbd гу/гу' },
+      house:  { evidence: 'direct', source: 'Vogt (1963) — tʷəna; cognate with Adyghe унэ /wəna/' },
+      dog:    { evidence: 'direct', source: 'Vogt (1963) — la; cognate with Abaza la / Abkhaz а-ла' },
+      hand:   { evidence: 'direct', source: 'Vogt (1963) — ʔa (glottal stop + a); cognate with Adyghe/Kabardian ӏэ /ʔa/' },
+      eye:    { evidence: 'direct', source: 'Vogt (1963) — bla; cognate with Abkhaz абла, Abaza la' },
+      one:    { evidence: 'direct', source: 'Vogt (1963) — za; cognate with Adyghe/Kabardian зы /zə/' }
+    }},
   // Kartvelian
   xmf: { name: 'Mingrelian', native: 'მარგალური ნინა', lat: 42.50, lng: 41.87, // Zugdidi
     words: { water:['წყარი','tsʼqari'], fire:['დაჩხირი','datʃxiri'], sun:['ბჟა','bʒa'], moon:['თუთა','tuta'], mother:['დიდა','dida'], father:['მუმა','muma'], eat:['ჭკომუა','tʃʼkʼomua'], drink:['შუა','ʃua'], love:['ჸოროფა','ʔorofa'], heart:['გური','ɡuri'], tree:['ჯა','dʒa'], house:['ოშქური','oʃkʼuri'], dog:['ჯოღორი','dʒoʁori'], cat:['კატა','kʼatʼa'], hand:['ხე','xe'], eye:['თოლი','tʼoli'], hello:['გეგაჯანას','ɡeɡadʒanas'], thanks:['გიდიდი','ɡididi'], one:['არ','ar'], good:['ჯგირი','dʒɡiri'] }},
@@ -4561,6 +4593,7 @@ const DATA_STATUS_OVERRIDES = {
     blc:       'fragmentary',    // Nuxalk (Bella Coola) — Salishan, all-consonant words (Nater 1984)
     tue:       'fragmentary',    // Tuyuca — Tukanoan, obligatory evidentiality (Barnes 1984)
     ncs:       'fragmentary',    // Nicaraguan Sign Language — spontaneous emergence (Kegl 1999)
+    uby:       'attested',       // Ubykh — extinct 1992 (Esenç d. 7 Oct 1992); Dumézil 1931 + Vogt 1963 + Hewitt 2004
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4776,6 +4809,7 @@ const HIST_DESCENDANT = {
     blc:null,    // Nuxalk (Bella Coola) — all-consonant words
     tue:null,    // Tuyuca — obligatory evidentiality
     ncs:null,    // Nicaraguan Sign Language — spontaneous emergence
+    uby:null,    // Ubykh — extinct sister branch of NW Caucasian (no direct descendant)
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
