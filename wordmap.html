@@ -1363,8 +1363,9 @@
             flex: 0 0 auto;
             display: flex; align-items: center; gap: 8px;
             padding: 8px 12px;
-            border-bottom: 1px solid rgba(180,130,30,0.25);
-            background: linear-gradient(180deg, rgba(255,243,205,0.85), rgba(255,243,205,0.6));
+            border-bottom: 1px solid rgba(180,130,30,0.35);
+            /* Opaque so scrolling content doesn't bleed through */
+            background: #fff3cd;
         }
         .trivia-compare-title {
             font-size: 13px; font-weight: 700;
@@ -1385,7 +1386,9 @@
             flex: 1 1 auto;
             min-height: 0;
             overflow-y: auto;
-            padding: 6px 0;
+            /* No top padding — the sticky table thead must sit flush
+               under the panel header without a translucent gap above. */
+            padding: 0 0 6px 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-color: rgba(120,90,30,0.38) transparent;
@@ -1405,15 +1408,17 @@
             border-bottom: 1px solid rgba(180,130,30,0.16);
         }
         .trivia-compare-table thead th {
-            background: rgba(255,237,190,0.55);
+            /* Opaque + bottom shadow so rows scrolling under it stay hidden */
+            background: #ffedbe;
             position: sticky; top: 0; z-index: 1;
             font-weight: 700; color: #4a3416;
             font-size: 11px;
+            box-shadow: 0 1px 0 rgba(180,130,30,0.35);
         }
         .trivia-compare-table tbody th {
             font-weight: 600; color: #6a4c1c;
             font-size: 11px;
-            background: rgba(255,247,225,0.55);
+            background: #fff7e1;
         }
         .trivia-compare-table .wm-form { font-weight: 600; }
         .trivia-compare-table .wm-ipa  { color: #888; font-size: 10px; }
@@ -2007,7 +2012,7 @@
             filter:    29,
             names:   105,
             meta:     185,
-            trivia:   16,
+            trivia:   17,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
