@@ -344,7 +344,17 @@
         { wo: 'SVO', tone: false, morph: 'fusional' });
     set(['ru','uk','be','pl','cs','sk','sl','bg','mk','sr','hr','bs','cu'],
         { wo: 'SVO', tone: false, morph: 'fusional' });
-    set(['zh','zh_sc','zh_db','wuu','nan','yue','cdo','hak_cn','zh_song','zh_han','zh_tang'],
+    set(['zh','zh_sc','zh_db','wuu','nan','yue','cdo','hak_cn','zh_song','zh_han','zh_tang',
+         // Other Mandarin / Sinitic varieties + pedagogical Sino-readings.
+         // Without these the rows whose family is "Sino-Tibetan (Sinitic, …)"
+         // fall through to the Sino-Tibetan family default (morph: agglutinative),
+         // which is wrong for any Sinitic descendant.
+         'zh_jh','zh_tj','zh_lz','zh_wh','zh_zz',
+         'hak_tw','hak_hl','cjy','hsn','gan','cpx','cnp','czh','dng','mnp',
+         'wuu_nb','wuu_sz','wuu_wz',
+         'nan_hai','nan_pn','nan_qz','nan_te',
+         'yue_gz','yue_ts',
+         'zh_wenyan_edu','vi_han'],
         { wo: 'SVO', tone: true, morph: 'isolating' });
     set(['vi','vi_c','vi_s','vi_nom'], { wo: 'SVO', tone: true, morph: 'isolating' });
     // Old Chinese predates tonogenesis (tones developed in Middle Chinese);
