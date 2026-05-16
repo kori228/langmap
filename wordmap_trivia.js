@@ -139,7 +139,7 @@ const TRIVIA_ARTICLES = [
   <p>The technique pre-dates Spanish itself. The original inhabitants of the Canaries, the <strong>Guanches</strong>, already used a whistled register of their own (Berber-related) language; when Castilian Spanish displaced Guanche after the 15th-century conquest, the whistle was simply re-fitted to the new vocabulary. Anthropologist <strong>Ramón Trujillo</strong> documented this continuity in his 1978 monograph <em>El silbo gomero: análisis lingüístico</em>, which remains the canonical reference.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="spa,ber,kab">🗣 Compare Spanish, Berber and Kabyle</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="es_eu,kab,shi">🗣 Compare Spanish, Berber and Kabyle</button>
   </div>
   
   <p>By the 1980s Silbo was nearly extinct: emigration, paved roads and telephones had hollowed out the shepherding economy that sustained it. The Cabildo Insular de La Gomera responded with a radical move — in 1999 they made <strong>Silbo Gomero a compulsory subject in every public primary school on the island</strong>. Children now spend roughly 25 minutes a week learning to whistle, and tens of thousands of pupils have passed through the programme.</p>
@@ -172,7 +172,7 @@ const TRIVIA_ARTICLES = [
   <p>口笛文化はスペイン語より古い。先住民<strong>グアンチェ族</strong>（ベルベル系）はすでに自分たちの言語の口笛版を持っていた。15世紀のカスティーリャによる征服でグアンチェ語自体は消滅したが、口笛の<em>方式</em>だけは生き残り、新たな言語であるスペイン語に被せ直された。言語学者<strong>ラモン・トルヒージョ</strong>の1978年の研究書がいまも基本文献となっている。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="spa,ber,kab">🗣 スペイン語・ベルベル語・カビル語を比べる</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="es_eu,kab,shi">🗣 スペイン語・ベルベル語・カビル語を比べる</button>
   </div>
   
   <p>1980年代、シルボはほぼ絶滅寸前まで衰えた。離島からの人口流出と舗装道路、そして電話の普及が、口笛を必要としていた牧畜経済を崩したのだ。島政府は1999年、思いきった一手を打つ──<strong>島内すべての公立小学校でシルボ・ゴメロを必修科目化</strong>。子どもたちは週25分ほど口笛を学び、これまでに数万人がこの授業を通過した。</p>
@@ -224,7 +224,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="nmn,naq,xho,zul">🗣 Compare click languages (Taa, Khoekhoe, Xhosa, Zulu)</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="nmn,naq,xh,zu">🗣 Compare click languages (Taa, Khoekhoe, Xhosa, Zulu)</button>
   </div>
   
   <p>The South African linguist <strong>Anthony Traill</strong> spent more than thirty years documenting Taa, beginning with PhD fieldwork in the 1970s and culminating in his 1994 dictionary, <em>A !Xóõ Dictionary</em>. Traill's instrumental work — using fibre-optic laryngoscopy and ultrasound — showed that what early visitors had dismissed as "accidental noises" were in fact <strong>fully voluntary articulations</strong> with distinct closures at the velum, the uvula and the epiglottis. He demonstrated that a single click word can involve <em>four simultaneous airstream mechanisms</em>: an ingressive lingual airstream for the click itself, an egressive pulmonic airstream for voicing, a closed glottis for ejective release, and a lowered velum for nasalisation.</p>
@@ -257,7 +257,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="nmn,naq,xho,zul">🗣 吸着音言語を比べる（タア・コエコエ・コサ・ズールー）</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="nmn,naq,xh,zu">🗣 吸着音言語を比べる（タア・コエコエ・コサ・ズールー）</button>
   </div>
   
   <p>南アフリカの言語学者<strong>アンソニー・トレイル</strong>は1970年代から30年以上タア語を記録し、1994年には『!Xóõ辞典』を完成させた。彼はファイバー喉頭鏡と超音波を駆使し、初期の探検家が「偶然の雑音」と切り捨てた音が、実は軟口蓋・口蓋垂・喉頭蓋で<strong>意図的に閉鎖を作る完全な調音動作</strong>であることを示した。たった一語のタア語が、<em>同時に4つの気流機構</em>──舌の吸気・肺の呼気・声門閉鎖による放出・軟口蓋下降による鼻音化──を使って発音されることもある。</p>
@@ -314,7 +314,7 @@ const TRIVIA_ARTICLES = [
   <p>One immediate consequence is that Rotokas words tend to be <strong>longer</strong> than words in phonologically rich languages — a small vocabulary of sounds requires more combinations to keep words apart. Place names like <em>Rotokas</em>, <em>Pipipaia</em>, <em>Togarao</em> and <em>Keriaka</em> give the flavour: simple syllables, repeated patterns, almost songlike.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="roo,haw,mri">🗣 Compare Rotokas, Hawaiian and Māori</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="roo,haw,mi">🗣 Compare Rotokas, Hawaiian and Māori</button>
   </div>
   
   <p>Rotokas belongs to the <strong>North Bougainville</strong> family, one of two tiny non-Austronesian (Papuan) families on the island. Genealogically it is unrelated to the surrounding Oceanic Austronesian languages of the coast, and to its southern Bougainville neighbours. That isolation may help explain its drift toward such a stripped-down phonology: small, tight-knit speech communities sometimes simplify rather than elaborate, the mirror image of the Kalahari pattern.</p>
@@ -347,7 +347,7 @@ const TRIVIA_ARTICLES = [
   <p>当然の帰結として、ロトカス語の単語は他言語より<strong>長くなる傾向</strong>がある。音の種類が少ない以上、組み合わせで区別をつけるほかない。地名 <em>Rotokas</em>、<em>Pipipaia</em>、<em>Togarao</em>、<em>Keriaka</em> など、単純な音節の反復が歌のようなリズムを生む。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="roo,haw,mri">🗣 ロトカス・ハワイ・マオリを比べる</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="roo,haw,mi">🗣 ロトカス・ハワイ・マオリを比べる</button>
   </div>
   
   <p>ロトカス語は<strong>北ブーゲンビル語族</strong>に属する。島の周囲を取り囲むオーストロネシア語族の海岸諸語とも、南ブーゲンビル諸語とも血縁関係はない。この孤立性が、音体系の徹底的な簡素化を支えた可能性は十分にある──小さく密な共同体は、ときに音を増やすのではなく削ぐ方向に進化する。</p>
@@ -403,7 +403,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="abk,ady,kbd">🗣 Compare Ubykh's surviving cousins (Abkhaz, Adyghe, Kabardian)</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Compare Ubykh's surviving cousins (Abkhaz, Adyghe, Kabardian)</button>
   </div>
   
   <p>Almost everything we know about Ubykh in the 20th century we owe to the French Indo-Europeanist and comparative mythologist <strong>Georges Dumézil</strong>. Beginning in 1930, Dumézil made repeated trips to Anatolia to record the dwindling community, returning year after year for nearly six decades. He produced a series of grammatical descriptions, text collections and the indispensable <em>Dictionnaire de la langue oubykh</em> (1965). Esenç became Dumézil's principal consultant in the 1960s; the two corresponded and worked together until Dumézil's death in 1986.</p>
@@ -436,7 +436,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="abk,ady,kbd">🗣 ウビフ語の生き残った姉妹語を比べる</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 ウビフ語の生き残った姉妹語を比べる</button>
   </div>
   
   <p>20世紀のウビフ語に関する知識のほとんどは、フランスの印欧語学者で比較神話学者の<strong>ジョルジュ・デュメジル</strong>に負っている。1930年から半世紀以上にわたり、彼はアナトリアを何度も訪れ、消えゆく共同体を記録し続けた。文法書、テキスト集、そして決定的著作『ウビフ語辞典』（1965年）を残した。1960年代以降の主要なインフォーマントがエセンチであり、二人は1986年のデュメジル死去まで協働した。</p>
@@ -585,7 +585,7 @@ const TRIVIA_ARTICLES = [
   <p>To these three families one usually adds <strong>two isolates of East Africa</strong>: <strong>Hadza</strong>, spoken by perhaps a thousand hunter-gatherers around Lake Eyasi in Tanzania, and <strong>Sandawe</strong>, a few hundred kilometres to the north. Both have clicks; neither has been shown to be related to the southern groups in any way that withstands close scrutiny. The old umbrella term "Khoisan" lumped all five together, but Tom Güldemann and others have spent the last twenty years arguing — convincingly — that <strong>Khoisan is an areal grouping, not a genetic family</strong>.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xho,zul">🗣 Light up Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Light up Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
   </div>
   
   <p>Phoneticians distinguish <strong>five primary click types</strong> by where the front closure is made:</p>
@@ -634,7 +634,7 @@ const TRIVIA_ARTICLES = [
   <p>これに東アフリカの2つの<strong>孤立言語</strong>──タンザニアのエヤシ湖周辺で約千人の狩猟採集民に話される<strong>ハッザ語</strong>、その北方の<strong>サンダウェ語</strong>──を加える。両者にも吸着音はあるが、南部アフリカの語族との系統関係は厳密な検証に耐えていない。古い総称「コイサン語族」は5系統をひとくくりにしていたが、トム・ギュルデマンらの研究により、近年は<strong>「地域的グループ化であって遺伝的語族ではない」</strong>と結論されている。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xho,zul">🗣 ハッザ・サンダウェ・コエコエ・コサ・ズールーを点灯</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 ハッザ・サンダウェ・コエコエ・コサ・ズールーを点灯</button>
   </div>
   
   <p>音声学的には<strong>5系統の主要吸着音</strong>が区別される。</p>

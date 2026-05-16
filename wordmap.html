@@ -1556,12 +1556,12 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=206"></script>
+    <script src="wordmap_data.js?v=207"></script>
     <script src="meta_i18n_ext.js?v=14"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=29"></script>
     <script src="lang_names.js?v=104"></script>
-    <script src="wordmap_trivia.js?v=7"></script>
+    <script src="wordmap_trivia.js?v=8"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -1733,12 +1733,12 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    78,
-            data:      206,
+            data:      207,
             metaI18n:  14,
             filter:    29,
             names:   104,
-            meta:     182,
-            trivia:    7,
+            meta:     183,
+            trivia:    8,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5047,6 +5047,22 @@
                 if (Number.isFinite(lat) && Number.isFinite(lng)) {
                     try { map.flyTo([lat, lng], Number.isFinite(z) ? z : 3, { duration: 1.0 }); }
                     catch (_) { map.setView([lat, lng], Number.isFinite(z) ? z : 3); }
+                } else {
+                    // No explicit center — auto-fit the map to bounds of
+                    // whichever listed codes are present in LANG_DATA.
+                    // Falls back gracefully if all codes are missing.
+                    const points = codes
+                        .map(c => LANG_DATA[c])
+                        .filter(d => d && Number.isFinite(d.lat) && Number.isFinite(d.lng));
+                    if (points.length === 1) {
+                        const p = points[0];
+                        try { map.flyTo([p.lat, p.lng], 5, { duration: 1.0 }); }
+                        catch (_) { map.setView([p.lat, p.lng], 5); }
+                    } else if (points.length >= 2) {
+                        const bounds = L.latLngBounds(points.map(d => [d.lat, d.lng]));
+                        try { map.flyToBounds(bounds, { padding: [60, 60], maxZoom: 5, duration: 1.0 }); }
+                        catch (_) { map.fitBounds(bounds, { padding: [60, 60], maxZoom: 5 }); }
+                    }
                 }
             } else if (action === 'article') {
                 const targetId = btn.dataset.id;
