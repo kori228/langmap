@@ -75,10 +75,12 @@ const LANGUAGES = [
     { code: 'hak_cn', name: '客家語', group: 'CHN', experimental: true },
     { code: 'cdo', name: '閩東語', group: 'CHN', experimental: true },
     { code: 'zh_song', name: '中国語(宋明文言)', group: 'CHN', experimental: true, historical: true },
+    { code: 'zh_wenyan_edu', name: '文言文(粵音)', group: 'CHN', experimental: true, historical: true },
     { code: 'zh_tang', name: '中国語(唐代漢文)', group: 'CHN', experimental: true, historical: true },
     { code: 'zh_han', name: '中国語(漢代漢文)', group: 'CHN', experimental: true, historical: true },
     // Tibeto-Burman
     { code: 'bo', name: 'チベット語', group: 'TIB' },
+    { code: 'xct_litpr', name: 'チベット語(仏典朗誦)', group: 'TIB', experimental: true, historical: true },
     { code: 'my', name: 'ミャンマー語', group: 'TIB' },
     { code: 'ii', name: 'イ語', group: 'TIB', experimental: true },
     // Austroasiatic
@@ -114,6 +116,7 @@ const LANGUAGES = [
     { code: 'sa', name: 'サンスクリット語', group: 'SAS', experimental: true, historical: true },
     { code: 'sa_edu', name: '現代会話サンスクリット', group: 'SAS', experimental: true, historical: true },
     { code: 'pi', name: 'パーリ語', group: 'SAS', experimental: true, historical: true },
+    { code: 'pi_edu', name: 'パーリ語(教学・上座部僧院)', group: 'SAS', experimental: true, historical: true },
     { code: 'hi', name: 'ヒンディー語', group: 'SAS' },
     { code: 'ur', name: 'ウルドゥー語', group: 'SAS' },
     { code: 'sd', name: 'シンド語', group: 'SAS', experimental: true },

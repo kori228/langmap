@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 919 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 922 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -38,13 +38,13 @@ const WORD_LIST = [
 // liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ja_kanbun','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
-  'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang',
+  'non','en_ang','enm','en_em','got','cu','pi','pi_edu','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang','zh_wenyan_edu',
   'vi_nom','sa','sa_edu','mnc','ar_qur',
   // Phase 4: historical / ancient
   'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','it_dan','goh','gez',
   'he_mis','hy_grab',
   // Phase 4B: more historical
-  'gmy','xct','xpu','xhu','elx','xsa','kaw','kho','gmh','osp','okz','osx',
+  'gmy','xct','xct_litpr','xpu','xhu','elx','xsa','kaw','kho','gmh','osp','okz','osx',
   // Phase 5 historical
   'xpr','xqa','sga',
   // Phase 6 historical
@@ -1490,6 +1490,20 @@ const LANG_DATA = {
   cu: { name: 'Old Church Slavonic', native: 'Словѣньскъ', lat: 42.70, lng: 23.32,
     words: { water:['вода','vodɑ'], fire:['огнь','oɡnʲ'], sun:['слъньце','slɤnʲtse'], moon:['лоуна','lunɑ'], mother:['мати','mɑti'], father:['отьць','otʲɪtsʲ'], eat:['ꙗсти','jɑsti'], drink:['пити','piti'], love:['любъвь','lʲubɤvʲ'], heart:['срьдьце','srʲdʲtse'], tree:['дрѣво','drěvo'], house:['домъ','domɤ'], dog:['пьсъ','pʲsɤ'], cat:['котъка','kotɤkɑ'], hand:['рѫка','rõkɑ'], eye:['око','oko'], hello:['радоуисѧ','rɑdujisẽ'], thanks:['благодарьствоую','blɑɡodɑrʲstvuju'], one:['ѥдинъ','jedinɤ'], good:['добръ','dobrɤ'] }},
   pi: { name: 'Pali', native: 'पालि', lat: 25.28, lng: 83, words: { water:['उदक','udaka'], fire:['अग्गि','aɡɡi'], sun:['सुरिय','surija'], moon:['चन्द','tʃanda'], mother:['माता','maːtaː'], father:['पिता','pitaː'], eat:['खादति','kʰaːdati'], drink:['पिवति','pivati'], love:['पेम','pema'], heart:['हदय','hadaja'], tree:['रुक्ख','rukkʰa'], house:['घर','ɡʰara'], dog:['सुनख','sunakʰa'], cat:['बिळाल','biɭaːla'], hand:['हत्थ','hatːʰa'], eye:['चक्खु','tʃakkʰu'], hello:['नमो','namo'], thanks:['अनुमोदामि','anumodaːmi'], one:['एक','eka'], good:['सुन्दर','sundara'] } },
+  // Pedagogical Pali (Theravada monastic recitation) — the form of Pali
+  // actively recited and taught in Theravada monasteries today across Sri
+  // Lanka, Myanmar, Thailand, Cambodia, Laos, and Western Buddhist centers.
+  // Distinct from canonical Pali (pi, historical-attested Tipitaka corpus
+  // typically written in Devanagari for academic study) by: (1) Romanized
+  // notation common in international monastic pedagogy; (2) loving-kindness
+  // (mettā) vocabulary preferences from canonical chanting; (3) standardized
+  // pronunciation conventions taught in modern bhikkhu/bhikkhuni training,
+  // distinct from regional vernacular pronunciation (Sinhala-Pali, Burmese-
+  // Pali, Thai-Pali). Anchored at Anuradhapura, Sri Lanka — the historical
+  // center of Theravada scholasticism where Buddhaghosa compiled the
+  // Visuddhimagga commentary tradition.
+  pi_edu: { name: 'Pedagogical Pali', native: 'Pāli (Theravāda)', lat: 8.31, lng: 80.40,
+    words: { water:['udaka','udaka'], fire:['aggi','aɡːi'], sun:['suriya','suɾija'], moon:['canda','tɕanda'], mother:['mātā','maːtaː'], father:['pitā','pitaː'], eat:['bhuñjati','bʱuɲd͡ʒati'], drink:['pivati','pivati'], love:['mettā','metːaː'], heart:['hadaya','hadaja'], tree:['rukkha','rukːʰa'], house:['gehā','ɡehaː'], dog:['sunakha','sunakʰa'], cat:['biḷāra','biɭaːɾa'], hand:['hattha','hatːʰa'], eye:['cakkhu','tɕakːʰu'], hello:['namo','namo'], thanks:['anumodanā','anumodanaː'], one:['eka','eka'], good:['kusala','kusala'] }},
   // Maharastri Prakrit — Indo-European Indo-Aryan (Middle Indic, ~1st BCE-13th CE; main literary Prakrit alongside Pali pi). Reconstructed from Jain Agamas, Jaina Maharashtri texts.
   // Sources: Ethnologue 27 'pmh'; Glottolog maha1305; Pischel (1900) Grammatik der Prakrit-Sprachen.
   pmh: { name: 'Maharastri Prakrit', native: 'महाराष्ट्री प्राकृत', lat: 19.48, lng: 75.38, // Pratishthan/Paithan (ancient Satavahana capital and Maharastri historical literary heartland — distinct from mr Mumbai for [#14])
@@ -1553,6 +1567,18 @@ const LANG_DATA = {
     words: { water:['*wódr̥','wódr̩'], fire:['*péh₂wr̥','péh₂wr̩'], sun:['*sóh₂wl̥','sóh₂wl̩'], moon:['*méh₁not','méh₁not'], mother:['*méh₂tēr','méh₂teːr'], father:['*ph₂tḗr','ph₂téːr'], eat:['*h₁ed-','h₁ed'], drink:['*peh₃-','peh₃'], love:['*lewbʰ-','lewbʰ'], heart:['*ḱḗr','ḱéːr'], tree:['*dóru','dóru'], house:['*dṓm','dóːm'], dog:['*ḱwṓ','ḱwóː'], cat:['—','—'], hand:['*ǵʰésr̥','ǵʰésr̩'], eye:['*h₃ékʷ-','h₃ékʷ'], hello:['—','—'], thanks:['—','—'], one:['*Hóynos','hójnos'], good:['*h₁su-','h₁su'] }},
   zh_song: { name: 'Classical Chinese (Song)', native: '文言(宋)', lat: 34.80, lng: 114.31,
     words: { water:['水','ɕy˧˩˧'], fire:['火','xwo˧˩˧'], sun:['日','ʐi˥˩'], moon:['月','ɥɛ˥˩'], mother:['母','mu˧˩˧'], father:['父','fu˥˩'], eat:['食','ʂʐ˧˥'], drink:['飲','jin˧˩˧'], love:['愛','ai˥˩'], heart:['心','ɕin˥'], tree:['木','mu˥˩'], house:['屋','u˥'], dog:['犬','kʰɥɛn˧˩˧'], cat:['貓','mau˧˥'], hand:['手','ʂou˧˩˧'], eye:['目','mu˥˩'], hello:['萬福','wan˥˩fu˧˥'], thanks:['謝','ɕjɛ˥˩'], one:['一','i˥'], good:['善','ʂan˥˩'] }},
+  // Classroom Classical Chinese (Cantonese pedagogical reading) — the
+  // standard Cantonese reading of 文言文 (Literary Chinese) as taught in
+  // Hong Kong and overseas Cantonese-medium Chinese schools. Distinct from:
+  // (1) zh_han / zh_tang (reconstructed Old/Middle Chinese pronunciations
+  // for historical-linguistic study); (2) zh_song (de-facto Mandarin
+  // pedagogical reading of Classical Chinese, despite the "Song" label);
+  // and (3) ja_kanbun (Japanese kun-yomi rendering). The Cantonese 文言
+  // reading is the canonical Sinitic pedagogical reading tradition outside
+  // Mandarin and preserves more Middle Chinese-derived phonological
+  // distinctions than Mandarin (tonal contrasts, final consonants -k/-t/-p).
+  zh_wenyan_edu: { name: 'Classical Chinese (Cantonese pedagogical)', native: '文言文(粵音)', lat: 22.32, lng: 114.17, // Hong Kong
+    words: { water:['水','sɵy˧˥'], fire:['火','fɔ˧˥'], sun:['日','jɐt˨'], moon:['月','jyt˨'], mother:['母','mou˩˧'], father:['父','fu˨'], eat:['食','sɪk˨'], drink:['飲','jɐm˧˥'], love:['愛','ɔi˧'], heart:['心','sɐm˥'], tree:['木','mʊk˨'], house:['屋','ʊk˥'], dog:['犬','hyn˧˥'], cat:['貓','mau˥'], hand:['手','sɐu˧˥'], eye:['目','mʊk˨'], hello:['萬福','man˨ fʊk˥'], thanks:['謝','tsɛ˨'], one:['一','jɐt˥'], good:['善','sin˨'] }},
   zh_han: { name: 'Han Chinese', native: '漢語(漢代)', lat: 34.26, lng: 108.94,
     words: { water:['水','ɕiwiɪʔ'], fire:['火','huɑiʔ'], sun:['日','ȵit'], moon:['月','ŋiuɑt'], mother:['母','muːʔ'], father:['父','biuoʔ'], eat:['食','ʑiək'], drink:['飲','ʔiəm'], love:['愛','ʔɑːi'], heart:['心','siəm'], tree:['木','muok'], house:['屋','ʔuok'], dog:['犬','kʰiuɛn'], cat:['貓','mau'], hand:['手','ɕiuʔ'], eye:['目','miuk'], hello:['萬福','miuɑn piuk'], thanks:['謝','ziɛ'], one:['一','ʔiit'], good:['善','dʑiɛn'] }},
   zh_tang: { name: 'Tang Chinese', native: '漢語(唐代)', lat: 34.26, lng: 108.94,
@@ -2922,6 +2948,20 @@ const LANG_DATA = {
   // === Phase 4B: more Historical / Ancient Languages ===
   // Pre-Greek
   gmy: { name: 'Mycenaean Greek', native: '𐀀𐀐𐀊', lat: 37.73, lng: 22.76, words: { water:['𐀓𐀈','hudɔːr'], fire:['𐀢','pyːr'], sun:['𐀀𐀺𐀂𐀍','haːwelios'], moon:['𐀕','mɛːn'], mother:['𐀔𐀳','maːtɛːr'], father:['𐀞𐀳','patɛːr'], eat:['𐀁𐀈𐀕𐀙','edmenai'], drink:['𐀡𐀜','piːnɔː'], love:['𐀠𐀩𐀍','pʰilos'], heart:['𐀒𐀵𐀆','kardia'], tree:['𐀈𐀏','dorka'], house:['𐀺𐀂𐀒','woikos'], dog:['𐀓𐀺','kuwɔːn'], cat:['—','—'], hand:['𐀐𐀁','kʰɛːr'], eye:['𐀀𐀡𐀰𐀗𐀳','opʰtʰalmos'], hello:['—','—'], thanks:['—','—'], one:['𐀁','hen'], good:['𐀀𐀏𐀳','agatʰos'] } },
+  // Liturgical Classical Tibetan (Dharma-recitation tradition) — the form
+  // of Classical Tibetan recited in Tibetan Buddhist monasteries (Geluk,
+  // Nyingma, Kagyu, Sakya) and taught in modern Tibetan Buddhist
+  // institutions in Dharamsala and Western dharma centers. Distinct from
+  // scholarly Classical Tibetan (xct, historical-attested literary form)
+  // by: (1) honorific/Buddhist liturgical vocabulary (yab vs pha "father",
+  // byams-pa vs dga'-ba "love/loving-kindness", khang-pa vs khyim "house")
+  // preferred for canonical sutra recitation; (2) Dharamsala-standardized
+  // Lhasa pronunciation taught to international students. The Tibetan
+  // Buddhist counterpart of Quranic Arabic recitation and Pali monastic
+  // chanting traditions. Anchored at Dharamsala (Indian-exile Tibetan
+  // pedagogical center; modern Geluk authoritative tradition).
+  xct_litpr: { name: 'Liturgical Classical Tibetan', native: 'ཆོས་སྐད (གྲྭ་པའི)', lat: 32.22, lng: 76.32,
+    words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཡབ','jab'], eat:['བཟའ','sa'], drink:['འཐུང','tʰuŋ'], love:['བྱམས་པ','tɕampa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁང་པ','kʰaŋpa'], dog:['ཁྱི','tɕʰi'], cat:['ཞི་མི','ʑimi'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['བཀྲ་ཤིས་བདེ་ལེགས','tʂaʃi delek'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʑe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] }},
   xct: { name: 'Classical Tibetan', native: 'ཆོས་སྐད', lat: 29.65, lng: 91.10, // Lhasa area
     words: { water:['ཆུ','tɕʰu'], fire:['མེ','me'], sun:['ཉི་མ','ɲima'], moon:['ཟླ་བ','dawa'], mother:['ཨ་མ','ama'], father:['ཕ','pʰa'], eat:['བཟའ','za'], drink:['འཐུང','tʰuŋ'], love:['དགའ་བ','ɡawa'], heart:['སྙིང','ɲiŋ'], tree:['ཤིང','ɕiŋ'], house:['ཁྱིམ','tɕim'], dog:['ཁྱི','tɕi'], cat:['བྱི་ལ','bila'], hand:['ལག་པ','lakpa'], eye:['མིག','mik'], hello:['བཀྲ་ཤིས་བདེ་ལེགས','tʂaʃi deleks'], thanks:['ཐུགས་རྗེ་ཆེ','tʰukdʒe tɕʰe'], one:['གཅིག','tɕik'], good:['ཡག་པོ','jakpo'] },
     // Audit Task 173: per-cell wordEvidence for source-checked Classical
@@ -4359,6 +4399,9 @@ const DATA_STATUS_OVERRIDES = {
     ja_kanbun: 'pedagogical',      // Japanese kanbun reading (漢文訓読; pedagogical rendering of Literary Chinese)
     ar_qur:    'pedagogical',      // Quranic Arabic (Tajwid recitation tradition; classical canon)
     sa_edu:    'pedagogical',      // Modern Spoken Sanskrit (Samskrita Bharati / simplified-sandhi pedagogy)
+    pi_edu:    'pedagogical',      // Pedagogical Pali (Theravada monastic recitation tradition)
+    xct_litpr: 'pedagogical',      // Liturgical Classical Tibetan (Dharamsala-Lhasa Buddhist recitation)
+    zh_wenyan_edu: 'pedagogical',  // Classical Chinese with Cantonese pedagogical reading (Hong Kong tradition)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4398,7 +4441,7 @@ const HIST_DESCENDANT = {
     sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
     ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
     ja_edo:'ja', ja_heian:'ja', ja_kanbun:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
-    ar_qur:'ar', sa_edu:'hi',
+    ar_qur:'ar', sa_edu:'hi', pi_edu:'si', xct_litpr:'bo', zh_wenyan_edu:'yue',
     oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
     // Phase 4: historical
     peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
