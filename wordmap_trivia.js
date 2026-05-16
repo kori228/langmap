@@ -607,7 +607,9 @@ const TRIVIA_ARTICLES = [
   </div>
   
   <p>The most striking sociolinguistic fact about clicks is that they <strong>jumped families</strong>. The Bantu languages <strong>Zulu</strong>, <strong>Xhosa</strong>, <strong>Southern Sotho</strong> and <strong>Swati</strong> all have phonemic clicks — three to five of them — even though their nearest Bantu relatives further north have none whatsoever. The explanation, worked out in detail by historians and linguists from <strong>Anthony Traill</strong> to <strong>Rainer Vossen</strong>, runs roughly as follows: as Bantu-speaking farmers moved south of the Limpopo in the second millennium CE, they encountered, intermarried with and partly absorbed Khoe and San communities. The bilingual generations who grew up in mixed households brought clicks across the family boundary, especially in respectful and ritual vocabulary. The Xhosa word <em>iXhosa</em> itself begins with an alveolar click.</p>
-  
+
+  <p style="background:rgba(255,237,190,0.55);border-left:3px solid #b8860b;padding:10px 14px;font-style:italic;border-radius:0 6px 6px 0">If you click <strong>Compare</strong> above, you'll notice that none of the twenty basic Swadesh-100 words in Xhosa or Zulu actually <em>contain</em> a click. That's the second half of the story: clicks in Bantu live almost entirely in <strong>cultural and respectful vocabulary</strong> — names (<em>iXhosa</em>, <em>uXamu</em>), animals (<em>iqaqa</em> "polecat", <em>ixoxo</em> "frog"), greetings, taboo replacements in <em>hlonipha</em> avoidance speech, and Khoekhoe loans (<em>iCawa</em> "Sunday"). Inherited Bantu words for water / fire / sun / hand / eye remain click-free.</p>
+
   <blockquote>"Clicks are not borrowed sounds in the way loanwords are borrowed. They are inherited features of bilingual childhood — and once they are in the lexicon of a single generation, they become native." — Anthony Traill, 1995 (paraphrased)</blockquote>
   
   <p>Beyond southern Africa, clicks survive only in three places we know of: the East African isolates <strong>Hadza</strong> and <strong>Sandawe</strong>; a few ritual or secret registers like <strong>Damin</strong> in Australia; and the now-extinct ceremonial register <em>El Molo</em> reportedly contained click-like sounds. That makes the southern African click area one of the world's tightest linguistic regions — a place where one extraordinary feature has been maintained, elaborated and traded across four families for at least several thousand years.</p>
@@ -656,7 +658,9 @@ const TRIVIA_ARTICLES = [
   </div>
   
   <p>社会言語学的にもっとも興味深いのは、吸着音が<strong>語族を飛び越えた</strong>事実だ。バントゥー諸語の<strong>ズールー語</strong>、<strong>コサ語</strong>、<strong>南ソト語</strong>、<strong>スワティ語</strong>は3〜5種の吸着音を音素として持つが、北方の近縁バントゥー諸語にはまったくない。歴史言語学者ら（アンソニー・トレイル、ライナー・フォッセンほか）の説明はこうだ──第二千年紀、バントゥー系農耕民がリンポポ川以南に進出する過程でコエ系・サン系の人々と混血・統合し、混合家庭で育ったバイリンガル世代が、敬語や儀礼語彙を中心に吸着音を持ち込んだのである。「コサ」という民族名の頭音そのものが歯茎吸着音である。</p>
-  
+
+  <p style="background:rgba(255,237,190,0.55);border-left:3px solid #b8860b;padding:10px 14px;font-style:italic;border-radius:0 6px 6px 0">上の「比較」ボタンを押すと、コサ語・ズールー語の20の基本語彙には吸着音が一つも入っていないことに気づくはずだ。これがもう一つのポイント。バントゥー語族における吸着音は<strong>文化・敬語・儀礼の語彙</strong>にほぼ集中している──民族名（<em>iXhosa</em>、<em>uXamu</em>）、動物名（<em>iqaqa</em>「ケナガイタチ」、<em>ixoxo</em>「カエル」）、挨拶、義母などへの婉曲語（<em>hlonipha</em> 回避語法）、コエコエ語からの借用語（<em>iCawa</em>「日曜日」）など。「水・火・太陽・手・目」といったバントゥー祖語から継承された基本語彙には吸着音は出てこない。</p>
+
   <blockquote>「吸着音は借用語のように借りられたのではない。バイリンガルな幼少期に受け継がれた要素であり、ひとたび一世代の語彙に入れば、それは母語の音になる」── アンソニー・トレイル（1995年、要約）</blockquote>
   
   <p>南部アフリカ以外で吸着音が生きているのは、東アフリカの<strong>ハッザ</strong>・<strong>サンダウェ</strong>、オーストラリアの儀礼レジスター<strong>ダミン語</strong>など、ごくわずか。南部アフリカの吸着音圏は、4つの語族にわたって少なくとも数千年にわたり一つの特異な音特徴を維持・拡大・交換してきた、世界でもっとも「タイトな」言語地帯のひとつである。</p>
