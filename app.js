@@ -132,6 +132,7 @@ const LANGUAGES = [
     { code: 'ml', name: 'マラヤーラム語', group: 'SAS' },
     // Iranian
     { code: 'fa', name: 'ペルシャ語', group: 'SAS' },
+    { code: 'fa_clas', name: 'ペルシャ語(古典)', group: 'SAS', experimental: true, historical: true },
     { code: 'tg', name: 'タジク語', group: 'SAS', experimental: true },
     { code: 'ku', name: 'クルド語', group: 'SAS' },
     { code: 'ckb', name: 'クルド語(ソラニー)', group: 'SAS', experimental: true },

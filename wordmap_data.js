@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 912 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 913 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -41,7 +41,7 @@ const EXCLUDED_CODES = new Set([
   'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang',
   'vi_nom','sa','mnc',
   // Phase 4: historical / ancient
-  'peo','ave','xto','txb','phn','uga','xlu','pal','syc','fro','goh','gez',
+  'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','goh','gez',
   // Phase 4B: more historical
   'gmy','xct','xpu','xhu','elx','xsa','kaw','kho','gmh','osp','okz','osx',
   // Phase 5 historical
@@ -2851,6 +2851,19 @@ const LANG_DATA = {
   // Indo-European (Anatolian, Hittite-cousin)
   xlu: { name: 'Luwian', native: '𔖻𔑯𔗬𔖻𔓯', lat: 38.4, lng: 33.5, words: { water:['𔓷𔗬𔖻𔑯','wadar'], fire:['𔑭𔖖𔖖𔗬','paːhːur'], sun:['𔖻𔗬𔑯','tiwad'], moon:['𔓯𔗬','arma'], mother:['𔑯𔑯','anna'], father:['𔑯𔑯𔗬','tati'], eat:['𔑯𔗬','ad'], drink:['𔑯𔓷','aku'], love:['𔓷𔗬𔓯','walaːhi'], heart:['𔓷𔗬𔖻','kard'], tree:['𔑯𔓯','alana'], house:['𔑭𔗬𔑯','parna'], dog:['𔖻𔓷𔑯','zuwana'], cat:['—','—'], hand:['𔖻𔑯','iʃʃa'], eye:['𔖖𔗬','hidu'], hello:['—','—'], thanks:['—','—'], one:['𔑯','as'], good:['𔓷𔓷','walwa'] } },
   pal: { name: 'Middle Persian', native: '𐭯𐭠𐭫𐭮𐭩𐭪', lat: 32.65, lng: 51.67, words: { water:['𐭠𐭯','aːb'], fire:['𐭠𐭲𐭱','aːtaʃ'], sun:['𐭧𐭥𐭫𐭱𐭩𐭲','xwarʃeːd'], moon:['𐭬𐭠𐭧','maːh'], mother:['𐭬𐭠𐭲𐭫','maːdar'], father:['𐭯𐭩𐭲𐭫','pidar'], eat:['𐭧𐭥𐭫𐭲𐭭','xwardan'], drink:['𐭭𐭥𐭱𐭩𐭲𐭭','noːʃiːdan'], love:['𐭲𐭥𐭱𐭩','doːʃiː'], heart:['𐭣𐭩𐭫','dil'], tree:['𐭣𐭫𐭧𐭲','draxt'], house:['𐭧𐭠𐭭𐭪','xaːnaɡ'], dog:['𐭮𐭢','saɡ'], cat:['𐭢𐭥𐭫𐭡𐭢','ɡurbaɡ'], hand:['𐭣𐭮𐭲','dast'], eye:['𐭰𐭱𐭬','tʃaʃm'], hello:['𐭣𐭫𐭥𐭲','droːd'], thanks:['𐭮𐭯𐭠𐭮','spaːs'], one:['𐭠𐭩𐭪','eːk'], good:['𐭥𐭩𐭧','weh'] } },
+  // Classical Persian (پارسی, fārsi-ye kelāsik) — the literary New Persian of
+  // the Samanid (819-999), Ghaznavid, Seljuk, and Timurid courts; the
+  // language of Ferdowsi's Shahnameh (~1010), Rumi's Masnavi (~1273), Saadi's
+  // Gulistan (~1258), and Hafez's Divan (~1370). Distinguished from Modern
+  // Persian (fa) by: preserved /xʷ/ (later merged with /x/), preserved
+  // /ē oː/ ~ /iː uː/ contrast (lost in Tehrani, retained in Dari/Tajiki),
+  // preserved /ɣ/ vs /q/ distinction, short /i u/ in syllables that later
+  // lowered to /e o/ (pidar→pedar, dil→del, gurba→gorbe). Taught canonically
+  // throughout Iran, Tajikistan, and Afghanistan; the foundation of Persianate
+  // poetic education from medieval to modern times. Location: Tus, Khorasan
+  // (Ferdowsi's home and Shahnameh composition site).
+  fa_clas: { name: 'Classical Persian', native: 'پارسی', lat: 36.49, lng: 59.55,
+    words: { water:['آب','aːb'], fire:['آتش','aːtaʃ'], sun:['خورشید','xʷarʃeːd'], moon:['ماه','maːh'], mother:['مادر','maːdar'], father:['پدر','pidar'], eat:['خوردن','xʷurdan'], drink:['آشامیدن','aːʃaːmiːdan'], love:['عشق','ʕiʃq'], heart:['دل','dil'], tree:['درخت','diraxt'], house:['خانه','xaːna'], dog:['سگ','saɡ'], cat:['گربه','ɡurba'], hand:['دست','dast'], eye:['چشم','tʃiʃm'], hello:['درود','duruːd'], thanks:['سپاس','sipaːs'], one:['یک','jak'], good:['نیک','neːk'] }},
   syc: { name: 'Classical Syriac', native: 'ܠܫܢܐ ܣܘܪܝܝܐ', lat: 37.16, lng: 38.78, // Edessa
     words: { water:['ܡܝܐ','majjaː'], fire:['ܢܘܪܐ','nuːraː'], sun:['ܫܡܫܐ','ʃemʃaː'], moon:['ܣܗܪܐ','sahraː'], mother:['ܐܡܐ','emmaː'], father:['ܐܒܐ','abbaː'], eat:['ܐܟܠ','ʔeχal'], drink:['ܐܫܬܝ','ʔeʃtiː'], love:['ܚܘܒܐ','ħuːbbaː'], heart:['ܠܒܐ','lebbaː'], tree:['ܐܝܠܢܐ','ʔiːlaːnaː'], house:['ܒܝܬܐ','bajtaː'], dog:['ܟܠܒܐ','kalbaː'], cat:['ܫܘܢܪܐ','ʃuːnaːraː'], hand:['ܐܝܕܐ','ʔiːdaː'], eye:['ܥܝܢܐ','ʕajnaː'], hello:['ܫܠܡܐ','ʃlaːmaː'], thanks:['ܫܘܒܚܐ','ʃubħaː'], one:['ܚܕ','ħad'], good:['ܛܒܐ','tˤaːbaː'] }},
   // Old Romance / Old Germanic
@@ -4273,6 +4286,7 @@ const DATA_STATUS_OVERRIDES = {
     ko_em:     'pedagogical',
     en_em:     'pedagogical',      // Early Modern English (Shakespeare-era; OP reconstruction)
     el_kath:   'pedagogical',      // Katharevousa Greek (puristic literary register, 1834-1976)
+    fa_clas:   'pedagogical',      // Classical Persian (Shahnameh-era, ~800-1500 CE; taught canonically in Iran/Tajikistan/Afghanistan)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4315,7 +4329,7 @@ const HIST_DESCENDANT = {
     oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
     // Phase 4: historical
     peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
-    xlu:null, pal:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',
+    xlu:null, pal:'fa', fa_clas:'fa', syc:'syr', fro:'fr', goh:'de', gez:'am',
     // Phase 4B: more historical
     gmy:'el', xct:'bo', xpu:'ar', xhu:null, elx:null, xsa:'ar',
     kaw:'jv', kho:null, gmh:'de', osp:'es_eu', okz:'km', osx:'nds',
