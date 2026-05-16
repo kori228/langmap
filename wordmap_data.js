@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 926 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 934 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -781,15 +781,77 @@ const LANG_DATA = {
   th_s: { name: 'Thai (Southern)', native: 'ภาษาใต้', lat: 7.88, lng: 98.39,
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะวัน','ta˨˩wan˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิน','kin˥'], drink:['ดื่ม','dɯːm˥˩'], love:['รัก','rak˧˥'], heart:['ใจ','t͡ɕaj˥'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['บ้าน','baːn˧˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ตา','taː˥'], hello:['สวัสดี','sa˨˩wat˨˩diː˥'], thanks:['ขอบคุณ','kʰɔːp˨˩kʰun˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
   za: { name: 'Zhuang', native: 'Vahcuengh', lat: 23.16, lng: 108.27, // Wuming (western Guangxi Zhuang heartland)
-    // altWordForms — Sawndip (古壮字 / 方块壮字) variants for cells where za.wiki
-    // documents specific historical character forms. Sawndip is regionally
-    // unstandardised, so multiple variants per word are normal. Sources:
-    // za.wikipedia.org per-word entries; Sawndip Sawdenj 1989 (古壮字字典).
-    altWordForms: {
-      water: [{ form: '淰 / 𭜯 / 淋', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Raemx; Sawndip Sawdenj 1989' }],
-      house: [{ form: '𭓨 / 兰 / 栏', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Ranz; Sawndip Sawdenj 1989' }],
+    // scriptDisplayPolicy — Zhuang has two living orthographies:
+    //   (1) Sawndip (古壮字 / 方块壮字, "immature characters"), a Chinese-character-
+    //       based logographic system used by Zhuang singers, shamans, and
+    //       scribes for >1000 years (Tang dynasty onward; first dictionary
+    //       Sawndip Sawdenj 1989 with 4,900 entries / 10,000+ characters);
+    //   (2) Sawcuengh, the 1957/1982 Latin official orthography.
+    // Per Zhang Yuansheng (via Wikipedia Sawndip article), ~80% of Sawndip
+    // text consists of unmodified Han characters used semantically; the
+    // remaining ~20% are Zhuang-invented composite logograms (often encoded
+    // in CJK Unified Ideographs Extension B/C/D/E). The script is
+    // unstandardised — many morphosyllables have a dozen+ variant glyphs.
+    //
+    // Surface column is MIXED following the Khitan (zkt) precedent (commit
+    // 80aed8c): cells with a source-confirmed Sawndip glyph (water, fire,
+    // sun, moon, mother, love, house, one — 8 cells) show that glyph;
+    // remaining cells show the Sawcuengh Latin form because no specific
+    // Sawndip mapping was confidently sourced. The IPA slot always carries
+    // the actual IPA transcription.
+    scriptDisplayPolicy: {
+        primary: 'modern-standard',
+        secondary: 'traditional-script',
+        note: {
+            en: 'Surface column is mixed: 8 cells (water, fire, sun, moon, mother, love, house, one) show source-confirmed Sawndip (古壮字) glyphs per za.wikipedia.org per-word entries (Raemx, Ndwen, Vunz, Gyaez, Ranz) and Han-character direct borrowings standard in Sawndip per Zhang Yuansheng (~80% of Sawndip text is unmodified Han characters used semantically; cited in Wikipedia "Sawndip" article). Remaining 12 cells show the Sawcuengh Latin form (1957/1982 official orthography) because no specific Sawndip glyph was confidently sourced — per task constraint, no auto-generation from romanization.',
+            ja: '表示形は混在: 8セル (water, fire, sun, moon, mother, love, house, one) は出典確認済みのサウンディップ (古壮字) を表示 (za.wikipedia.org 各語項目および Wikipedia "Sawndip" 記事で Zhang Yuansheng が指摘する「サウンディップ文書の約80%は意味的に流用された漢字」)。残り12セルは具体的なサウンディップ字形が未確認のため Sawcuengh ラテン正書法 (1957/1982年) を表示。ローマ字からの自動生成は行わない。',
+            ko: '표시 형은 혼합: 8개 셀 (water, fire, sun, moon, mother, love, house, one)은 출처가 확인된 사운딥 (古壮字) 글리프를 표시 (za.wikipedia.org 각 단어 항목 및 Wikipedia "Sawndip" 문서에서 Zhang Yuansheng이 지적한 "사운딥 텍스트의 약 80%는 의미적으로 차용된 한자"). 나머지 12개 셀은 구체적인 사운딥 글리프 미확인으로 Sawcuengh 라틴 정자법 (1957/1982년)을 표시. 로마자 기반 자동 생성은 하지 않음.',
+            zh: '表面列为混合: 8个单元格 (water, fire, sun, moon, mother, love, house, one) 显示来源已确认的古壮字 (Sawndip) 字形 (za.wikipedia.org 各词条 Raemx、Ndwen、Vunz、Gyaez、Ranz 以及 Wikipedia "Sawndip" 条目所引张元生关于 "古壮字文本约80%为语义借用未改汉字" 的论述)。其余12个单元格因未确证具体古壮字字形而显示 Sawcuengh 拉丁正字法 (1957/1982年)。不从罗马字自动生成。',
+        },
     },
-    words: { water:['raemx','ɣam˦'], fire:['feiz','fei˧˥'], sun:['daengzngoenz','taːŋ˧˥ŋɯn˧˥'], moon:['ndaen','daːn˥'], mother:['meh','me˨'], father:['boh','po˨'], eat:['gwn','kʷɤn˥'], drink:['gwnraemx','kʷɤn˥ɣam˦'], love:['gyaez','kjai˧˥'], heart:['sim','ɕim˥'], tree:['faex','fai˦'], house:['ranz','ɣan˧˥'], dog:['ma','maː˥'], cat:['meuz','meu˧˥'], hand:['fwngz','fɯŋ˧˥'], eye:['da','taː˥'], hello:['mwngz ndei','mɯŋ˧˥dei˥'], thanks:['dwgrengz mwngz','tuk˧ɣeŋ˧˥mɯŋ˧˥'], one:['it','it˧'], good:['ndei','dei˥'] }},
+    // altWordForms — Sawcuengh Latin (1957/1982) for cells whose surface
+    // slot now carries a Sawndip glyph, plus Sawndip variant glyphs for
+    // cells where multiple regional forms are attested. Sawndip is
+    // regionally unstandardised, so multiple variants per word are normal.
+    // Sources: za.wikipedia.org per-word entries; Sawndip Sawdenj 1989
+    // (古壮字字典); Wikipedia "Sawndip" article (which cites the 1989
+    // dictionary as the only published Sawndip lexicon).
+    altWordForms: {
+      water:  [{ form: 'raemx',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '𭜯 / 淋 / 𭰽 / 𢗨 / 𣲙', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Raemx — regional variant glyphs alongside the primary form 淰' }],
+      fire:   [{ form: 'feiz',       script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      sun:    [{ form: 'daengzngoenz', script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      moon:   [{ form: 'ndaen',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      mother: [{ form: 'meh',        script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      love:   [{ form: 'gyaez',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '𠮹 / 𢟋 / 𢠿', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Gyaez — regional variant glyphs alongside the primary form 𭝚' }],
+      house:  [{ form: 'ranz',       script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '兰 / 䒟 / 苒 / 栏', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Ranz — regional variant glyphs alongside the primary form 𭓨' }],
+      one:    [{ form: 'it',         script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+    },
+    words: { water:['淰','ɣam˦'], fire:['火','fei˧˥'], sun:['日','taːŋ˧˥ŋɯn˧˥'], moon:['月','daːn˥'], mother:['𫱆','me˨'], father:['boh','po˨'], eat:['gwn','kʷɤn˥'], drink:['gwnraemx','kʷɤn˥ɣam˦'], love:['𭝚','kjai˧˥'], heart:['sim','ɕim˥'], tree:['faex','fai˦'], house:['𭓨','ɣan˧˥'], dog:['ma','maː˥'], cat:['meuz','meu˧˥'], hand:['fwngz','fɯŋ˧˥'], eye:['da','taː˥'], hello:['mwngz ndei','mɯŋ˧˥dei˥'], thanks:['dwgrengz mwngz','tuk˧ɣeŋ˧˥mɯŋ˧˥'], one:['一','it˧'], good:['ndei','dei˥'] },
+    wordEvidence: {
+      water:  { evidence: 'direct',   source: 'Sawndip 淰 (phonetic + 氵 water radical) per za.wikipedia.org Raemx entry which lists it as the primary form; also cited in 2020 壮布依语书写推荐用字字表 (Recommended Sawndip List for Zhuang/Bouyei).' },
+      fire:   { evidence: 'direct',   source: 'Sawndip 火 — direct Han-character semantic borrowing. Per Zhang Yuansheng (via Wikipedia "Sawndip" article), ~80% of Sawndip text consists of unmodified Han characters used semantically; 火 is the standard Sawndip form for feiz (fire).' },
+      sun:    { evidence: 'direct',   source: 'Sawndip 日 — direct Han-character semantic borrowing for daengngoenz (sun/day). Per Zhang Yuansheng (via Wikipedia "Sawndip" article), Han-character semantic borrowings dominate Sawndip writing; za.wikipedia.org Daengngoenz article also uses the astronomical symbol ☉.' },
+      moon:   { evidence: 'direct',   source: 'Sawndip 月 — explicitly listed in za.wikipedia.org Ndwen article as the character form for the Zhuang word for moon/month; direct Han-character semantic borrowing.' },
+      mother: { evidence: 'direct',   source: 'Sawndip 𫱆 (U+2BC46, Zhuang-invented composite logogram, CJK Extension E) per za.wikipedia.org Vunz article ("𭑫𫱆" = "father-mother" compound). One of multiple regional forms for meh.' },
+      father: { evidence: 'inferred', source: 'Sawcuengh Latin "boh" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org or Wikipedia "Sawndip" article. Sawndip Sawdenj 1989 likely contains an entry but not directly verified in this audit.' },
+      eat:    { evidence: 'inferred', source: 'Sawcuengh Latin "gwn" retained — no specific Sawndip glyph confidently sourced. Sawndip Sawdenj 1989 likely contains an entry but not directly verified in this audit.' },
+      drink:  { evidence: 'inferred', source: 'Sawcuengh Latin "gwnraemx" retained — no specific Sawndip glyph confidently sourced. As a compound (eat + water), the form is unlikely to have a single dedicated logogram.' },
+      love:   { evidence: 'direct',   source: 'Sawndip 𭝚 (CJK Extension F) per za.wikipedia.org Gyaez article which lists 𭝚、𠮹、𢟋、𢠿 as Sawndip variants for gyaez; 𭝚 is the first form listed.' },
+      heart:  { evidence: 'inferred', source: 'Sawcuengh Latin "sim" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org or Wikipedia "Sawndip" article. Direct Han borrowing 心 is plausible but not source-confirmed in this audit.' },
+      tree:   { evidence: 'inferred', source: 'Sawcuengh Latin "faex" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 木 is plausible but not source-confirmed.' },
+      house:  { evidence: 'direct',   source: 'Sawndip 𭓨 (U+2D4E8, CJK Extension F, Zhuang-invented logogram) per za.wikipedia.org Ranz article and Wikipedia "Sawndip" article which cites it as the single most-attested Sawndip form across multiple modern Pingguo manuscript sources.' },
+      dog:    { evidence: 'inferred', source: 'Sawcuengh Latin "ma" retained — no specific Sawndip glyph confidently sourced. The phonetic-borrowing candidate 馬 (Mandarin mǎ) is plausible but not source-confirmed in this audit.' },
+      cat:    { evidence: 'inferred', source: 'Sawcuengh Latin "meuz" retained — no specific Sawndip glyph confidently sourced. Phonetic borrowings like 貓 are plausible but not directly verified.' },
+      hand:   { evidence: 'inferred', source: 'Sawcuengh Latin "fwngz" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 手 is plausible but not source-confirmed.' },
+      eye:    { evidence: 'inferred', source: 'Sawcuengh Latin "da" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 眼 is plausible but not source-confirmed.' },
+      hello:  { evidence: 'inferred', source: 'Sawcuengh Latin "mwngz ndei" retained — this is a modern greeting formula calqued on Mandarin 你好, unlikely to have an attested Sawndip-script tradition.' },
+      thanks: { evidence: 'inferred', source: 'Sawcuengh Latin "dwgrengz mwngz" retained — modern formula, no Sawndip-script tradition expected.' },
+      one:    { evidence: 'direct',   source: 'Sawndip 一 — direct Han-character semantic borrowing for the numeral one (it). Per Zhang Yuansheng (via Wikipedia "Sawndip" article), Han numerals are the standard Sawndip writing for numbers; 一 corresponds to Zhuang "it" (cognate with Sinitic numeral one).' },
+      good:   { evidence: 'inferred', source: 'Sawcuengh Latin "ndei" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org Ndei article (which renders content in Sawcuengh romanization only).' },
+    } },
   hmn: { name: 'Hmong', native: 'Hmoob', lat: 26.65, lng: 104.25,
     words: { water:['dej','te˧'], fire:['taws','tɑ˧˩'], sun:['hnub','nu˧˥'], moon:['hli','ɬi˥'], mother:['niam','niã˥'], father:['txiv','tɕi˧˩'], eat:['noj','nɔ˧'], drink:['haus','hɑu˧˩'], love:['hlub','ɬu˧˥'], heart:['siab','ɕiã˧˥'], tree:['ntoo','tɔː˥'], house:['tsev','tɕɛ˧˩'], dog:['dev','te˧˩'], cat:['miv','mi˧˩'], hand:['tes','te˧˩'], eye:['qhov muag','kʰɔ˧˩muã˧'], hello:['nyob zoo','ɲɔ˧˥tɕɔː˥'], thanks:['ua tsaug','uã˥tɕɑu˧'], one:['ib','i˧˥'], good:['zoo','tɕɔː˥'] }},
   jv: { name: 'Javanese', native: 'ꦧꦱꦗꦮ', lat: -7.25, lng: 112.75,
@@ -1903,6 +1965,25 @@ const LANG_DATA = {
   // (quc K'iche' / kek Q'eqchi' moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)
   yua: { name: 'Yucatec Maya', native: 'Maya tʼaan', lat: 20.97, lng: -89.62, // Mérida
     words: { water:['jaʼ','haʔ'], fire:['kʼáakʼ','kʼaːkʼ'], sun:['kʼiin','kʼiːn'], moon:['uj','uh'], mother:['naʼ','naʔ'], father:['taata','taːta'], eat:['jaant','haːnt'], drink:['ukʼul','ukʼul'], love:['yaakuntej','jaːkuntex'], heart:['puksiʼikʼal','puksiʔikʼal'], tree:['cheʼ','tʃeʔ'], house:['naj','nax'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼabʼ','kʼaɓ'], eye:['ich','itʃ'], hello:['baʼax ka waʼalik','baʔaʃ ka waʔalik'], thanks:['dios boʼotik','dios boʔotik'], one:['jun','hun'], good:['maʼalob','maʔalob'] }},
+  // Deaf-community sign language (Central America, no genetic relation to other sign languages)
+  // Nicaraguan Sign Language (ISN, Idioma de Señas de Nicaragua) is the most studied case of a brand-new
+  // language emerging in real time: it arose SPONTANEOUSLY in the late 1970s / early 1980s when Nicaragua
+  // first concentrated deaf children in newly established schools in Managua. The first cohort developed
+  // a rudimentary contact pidgin; each subsequent generation of children — receiving that input from older
+  // peers — added grammatical structure (verb agreement, spatial reference, classifier morphology) until
+  // by the early 1990s a fully structured natural language with native signers had emerged from scratch.
+  // (Kegl, Senghas & Coppola 1999; Senghas, Kita & Özyürek 2004; Pyers, Shusterman, Senghas, Spelke &
+  // Emmorey 2010.) The community is ~3000-5000 signers, centered on Managua. ISN has no everyday written
+  // form — academic writing uses SignWriting or glossed Spanish; the basic-vocab cells are NOT meaningfully
+  // representable as written single strings, so every cell is left '—' under dataStatus:'fragmentary'.
+  // Sources: Kegl, Judy, Ann Senghas & Marie Coppola (1999) "Creation through contact: Sign language
+  // emergence and sign language change in Nicaragua" in DeGraff (ed.) Language Creation and Language
+  // Change (MIT Press); Senghas, Ann, Sotaro Kita & Asli Özyürek (2004) "Children creating core
+  // properties of language: Evidence from an emerging sign language in Nicaragua" Science 305:1779-1782;
+  // Pyers et al. (2010) "Number cognition and the language of Nicaraguan signers" Psychological Science;
+  // Glottolog nica1238; Ethnologue 27 'ncs'.
+  ncs: { name: 'Nicaraguan Sign Language', native: 'Idioma de Señas de Nicaragua', lat: 12.13, lng: -86.25, // Managua
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Itzá Maya — Mayan Yucatecan (sister to Yucatec yua and Mopan within the Yucatecan branch; the language of the historic Itzá Maya kingdom of Tayasal that was the last independent Maya state until Spanish conquest in 1697 — Tayasal/Petén Itzá fell 200+ years after the rest of the Maya world), ~1K (critically endangered — UNESCO critically endangered; only elderly speakers remain, primarily in San José village), Guatemala (Petén department — San José Petén, the last Itzá-speaking village on the Petén Itzá lake).
   // Sources: Ethnologue 27 'itz'; Glottolog itza1241; Hofling (1991) Itzá Maya Texts.
   itz: { name: 'Itzá Maya', native: "Itzaj T'an", lat: 16.97, lng: -89.95, // San José, Petén, Guatemala (the historic Tayasal site on Lake Petén Itzá)
@@ -2623,6 +2704,23 @@ const LANG_DATA = {
     words: { water:['ǁgam-i','ǁɡami'], fire:['ǀae-b','ǀaeb'], sun:['sores','soɾes'], moon:['ǁkhâb','ǁkʰaːb'], mother:['ǁgûs','ǁɡũːs'], father:['ǁgûb','ǁɡũːb'], eat:['ǂû','ǂũː'], drink:['ā','aː'], love:['ǀnam','ǀnam'], heart:['ǂgaob','ǂɡaob'], tree:['hai-s','hais'], house:['oms','oms'], dog:['arib','arib'], cat:['ǀores','ǀoɾes'], hand:['ǁôa-s','ǁoːas'], eye:['mûs','mũːs'], hello:['matisâ','matisaː'], thanks:['aios','aios'], one:['ǀui','ǀui'], good:['ǃgâib','ǃɡaːib'] }},
   hts: { name: 'Hadza', native: 'Hadzane', lat: -3.65, lng: 35.05, // Lake Eyasi
     words: { water:['ʼati','ʔati'], fire:['ʼimi','ʔimi'], sun:['ʼisha','ʔiʃa'], moon:['heto','heto'], mother:['ama','ama'], father:['aba','aba'], eat:['ʼicha','ʔitʃa'], drink:['ʼo','ʔoː'], love:['ʼuwakitchi','ʔuwakitʃi'], heart:['ʼaitchi','ʔaitʃi'], tree:['ʼani','ʔani'], house:['ndolo','ndolo'], dog:['kongwesi','koŋɡwesi'], cat:['ʼmiu','ʔmiu'], hand:['kwaʼla','kʷaʔla'], eye:['ʼaha','ʔaha'], hello:['ʼmtana','ʔmtana'], thanks:['ʼmbweko','ʔmbweko'], one:['ihtche','ihtʃe'], good:['ʼiyaʼe','ʔijaʔe'] }},
+  // Tuu (formerly classified as Southern Khoisan). Taa / !Xóõ is the world record-holder for
+  // documented phoneme inventory size — Anthony Traill (1985, 1994) describes ~159 phonemes
+  // including five primary click types: dental (ǀ), alveolar (ǃ), lateral (ǁ), palatal (ǂ),
+  // and the rare bilabial (ʘ), plus pulmonic and click clusters with multiple accompaniments.
+  // Vocabulary partial: only cells with confident Traill (1994) attestation are filled; the
+  // remainder are marked '—' under dataStatus:'fragmentary' (DATA_STATUS_OVERRIDES) rather
+  // than fabricated. Sources: Traill (1985) "Phonetic and Phonological Studies of !XÓÕ
+  // Bushman"; Traill (1994) "A !Xóõ Dictionary"; Glottolog taaa1242.
+  nmn: { name: 'Taa', native: 'Taa', lat: -22.00, lng: 22.00, // eastern Ghanzi District, Botswana
+    words: { water:['—','—'], fire:['ǂʼâa','ǂʼâa'], sun:['ǀqʰâa','ǀqʰâa'], moon:['ǁaˤu','ǁaˤu'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['ǂnúm','ǂnúm'], hello:['—','—'], thanks:['—','—'], one:['ʘnâa','ʘnâa'], good:['—','—'] },
+    wordEvidence: {
+      fire:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with ejective accompaniment' },
+      sun:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — dental click with aspirated uvular accompaniment' },
+      moon:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — lateral click with pharyngealized vowel' },
+      eye:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with nasal accompaniment' },
+      one:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — bilabial click (ʘ), one of the few attested examples in any language' }
+    }},
   // Nilo-Saharan / Saharan
   kr: { name: 'Kanuri', native: 'Kanuri', lat: 11.85, lng: 13.16, // Maiduguri
     words: { water:['njim','ndʒim'], fire:['ru','ɾu'], sun:['kiŋal','kiŋal'], moon:['kau','kau'], mother:['ya','ja'], father:['aba','aba'], eat:['bayem','bajem'], drink:['simem','simem'], love:['nem-shanu','nem ʃanu'], heart:['karkə','karkə'], tree:['kasua','kasua'], house:['fato','fato'], dog:['keri','keri'], cat:['yaba','jaba'], hand:['musko','musko'], eye:['shim','ʃim'], hello:['lafiya','lafija'], thanks:['gushibe','ɡuʃibe'], one:['tilo','tilo'], good:['ngewu','ŋɡewu'] }},
@@ -2786,6 +2884,47 @@ const LANG_DATA = {
   // Australian Aboriginal (more)
   tiw: { name: 'Tiwi', native: 'Tiwi', lat: -11.77, lng: 130.62, // Bathurst Island
     words: { water:['kukuni','kukuni'], fire:['yikwani','jikwani'], sun:['pumarli','pumarli'], moon:['japarra','japaɾa'], mother:['ngiya','ŋija'], father:['rringani','ɾiŋani'], eat:['ngarini','ŋaɾini'], drink:['pirninkili','piɾninkili'], love:['payinti','pajinti'], heart:['miringa','miɾiŋa'], tree:['pirntali','piɾntali'], house:['pumpuni','pumpuni'], dog:['marlapwawa','marlapʷawa'], cat:['pussycat','pusikat'], hand:['punga','puŋa'], eye:['pwoja','pʷodʒa'], hello:['ngirramini','ŋiɾamini'], thanks:['wuta-wani','wutawani'], one:['kanyili','kaɲili'], good:['kwati','kʷati'] }},
+  // Tangkic (Tangkic-Pama) — small non-Pama-Nyungan family on the Wellesley Islands of the Gulf of
+  // Carpentaria. Lardil is the host language of Damin, the famous secret men's auxiliary register
+  // containing the only known click consonants in any Australian language. Effectively dormant
+  // today (~1-2 fluent L1 speakers); documented by Ken Hale's 1960s-80s field work and the
+  // community Ngakulmungan Kangka Leman dictionary project. Vocabulary partial: only cells with
+  // confident Hale / Ngakulmungan Kangka Leman (1996) attestation are filled; the remaining cells
+  // are left '—' under dataStatus:'fragmentary' rather than fabricated. Sources: Hale (1973,
+  // 1997) on Lardil and Damin; Klokeid (1976) "Topics in Lardil Grammar"; Ngakulmungan Kangka
+  // Leman (1996) "Lardil Dictionary"; Glottolog lard1248.
+  lbz: { name: 'Lardil', native: 'Leerdil', lat: -16.65, lng: 139.45, // Mornington Island, Queensland
+    words: { water:['kantha','kanθa'], fire:['—','—'], sun:['thurara','θuɾaɾa'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['mela','mela'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      water: { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — kantha (salt water / sea); freshwater is a separate term (wungal)' },
+      sun:   { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — thurara' },
+      eye:   { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — mela; also attested in Klokeid (1976) Topics in Lardil Grammar' }
+    }},
+  // Tangkic — closely related to Lardil; spoken on Forsyth Island and adjacent north-eastern
+  // Wellesley Islands. Effectively dormant (~1 fluent L1 speaker). Yangkaal and Lardil were the
+  // only two languages whose male speakers used the Damin secret auxiliary register. Vocabulary
+  // is left entirely '—' under dataStatus:'fragmentary' — Yangkaal-specific lexical forms are
+  // not separately documented at the precision required for a confident Swadesh-list entry
+  // (most published Tangkic material focuses on Lardil and Kayardild). Sources: Evans (1995)
+  // "A Grammar of Kayardild" (background on Tangkic); Hale field notes; Glottolog yang1294.
+  nny: { name: 'Yangkaal', native: 'Yangkaal', lat: -16.60, lng: 139.10, // Forsyth Island, north-eastern Wellesley Islands, Queensland
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+  // Pama-Nyungan (Paman, eastern Cape York). Guugu Yimithirr is famous in cognitive linguistics
+  // for its absolute-direction reference system: speakers use the cardinal terms gungga (north),
+  // jiba (south), naga (east), guwa (west) instead of egocentric left/right (see Levinson 1992,
+  // 1997 on absolute spatial cognition). The language also gave English the word "kangaroo"
+  // (gangurru, the eastern-grey species). Spoken at Hopevale (north of Cooktown) with ~700-800
+  // speakers. Vocabulary partial: only cells with confident Haviland (1979) attestation are
+  // filled; the remaining cells are left '—' under dataStatus:'fragmentary' rather than
+  // fabricated. Sources: Haviland (1979) "Guugu Yimidhirr" in Dixon & Blake (eds.) Handbook of
+  // Australian Languages vol. 1; Haviland (1979) "Guugu Yimidhirr Sketch Grammar"; Levinson
+  // (1997) "Language and Cognition: The Cognitive Consequences of Spatial Description in Guugu
+  // Yimithirr"; Glottolog gugu1255.
+  kky: { name: 'Guugu Yimithirr', native: 'Guugu Yimidhirr', lat: -15.30, lng: 145.10, // Hopevale, north of Cooktown, Far North Queensland
+    words: { water:['buurraay','buːraːj'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      water: { evidence: 'direct', source: 'Haviland (1979) Guugu Yimidhirr — buurraay "(fresh) water"' }
+    }},
   // Arawakan (Caribbean coast)
   guc: { name: 'Wayuu', native: 'Wayuunaiki', lat: 11.54, lng: -72.91, // Riohacha
     words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
@@ -2808,6 +2947,23 @@ const LANG_DATA = {
       heart: { evidence: 'inferred', note: 'Pirahã "aoʔaago" reflects emotional/inner-state concept; same form appears for "good" — pending source confirmation (Audit Task 120)' },
       good:  { evidence: 'inferred', note: 'Pirahã "aoʔaago" — same form as "heart"; semantic overlap pending source confirmation (Audit Task 120)' }
     }},
+  // Tukanoan (Eastern Tukanoan — NW Amazon Vaupés / Papurí river basin)
+  // Tuyuca is the canonical textbook example of OBLIGATORY EVIDENTIALITY: every finite verb form must specify
+  // the speaker's source of information through one of five evidential markers — visual (you saw it),
+  // non-visual (heard / felt / smelled), inferred (from observed evidence), assumed (general knowledge),
+  // and reportative (someone told you). Equivalents of plain English "John played soccer" cannot be expressed
+  // without simultaneously encoding HOW the speaker knows. (Barnes 1984; Aikhenvald 2004.)
+  // ~800-1000 speakers in NW Amazon (Colombia / Brazil border, Vaupés / Papurí river area). The Tuyuca
+  // are part of the multilingual Vaupés exogamy network — wives must come from a different language group.
+  // Vocabulary coverage is intentionally minimal: full Swadesh-list attestation is not confidently sourced
+  // here, so every cell is left '—' under dataStatus:'fragmentary' rather than fabricated. The typological
+  // claim to fame (evidentiality) is a verbal-morphology property, not a basic-vocab one.
+  // Sources: Barnes, Janet (1984) "Evidentials in the Tuyuca verb" IJAL 50:255-271; Aikhenvald, Alexandra Y.
+  // (2004) Evidentiality (Oxford); Stenzel, Kristine (2007) "The semantics of serial verb constructions in
+  // two Eastern Tukanoan languages" (Boletim do Museu Paraense Emílio Goeldi); Glottolog tuyu1244;
+  // Ethnologue 27 'tue'.
+  tue: { name: 'Tuyuca', native: 'Dohkapuara', lat: 0.50, lng: -69.00, // Vaupés / Papurí river area, Colombia/Brazil
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Chocoan (NW South America)
   emp: { name: 'Northern Embera', native: 'Eperã pedea', lat: 5.69, lng: -76.66, // Quibdó
     words: { water:['do','do'], fire:['tu','tu'], sun:['hewa','hewa'], moon:['ahuru','ahuɾu'], mother:['papa','papa'], father:['apa','apa'], eat:['ko','ko'], drink:['dorrare','doraɾe'], love:['ãỹba','ãɨba'], heart:['ƀakhuru','ɓakuɾu'], tree:['bakuru','bakuɾu'], house:['te','te'], dog:['usa','usa'], cat:['misu','misu'], hand:['jua','xua'], eye:['tau','tau'], hello:['sake bia','sake bia'], thanks:['bia bara','bia baɾa'], one:['aba','aba'], good:['bia','bia'] }},
@@ -3342,6 +3498,20 @@ const LANG_DATA = {
       one:    { evidence: 'direct', source: 'Grubb (1977) — \'na̱m "one"; glottalized n + schwa', formType: 'free-word' },
       good:   { evidence: 'direct', source: 'Grubb (1977) — ek\' "good, well"; basic adjective', formType: 'free-word' },
     } },
+  // Salishan (Pacific Northwest Coast — central British Columbia coast)
+  // Nuxalk (also Bella Coola) is the sole surviving Salishan language of the central BC coast and one of the most
+  // typologically remarkable phonologies on record: it tolerates ENTIRE WORDS with no phonemic vowels (e.g. the
+  // oft-cited xłp̓x̣ʷłtłpłłskʷc̓ "then he had had in his possession a bunchberry plant"), with obstruents acting
+  // as syllabic nuclei (Bagemihl 1991). ~17 fluent first-language speakers remain; community revitalization
+  // (Nuxalk Nation, Acwsalcta School, FirstVoices Nuxalk) is active.
+  // Vocabulary coverage is intentionally minimal: the 20-cell Swadesh-style basic-vocab list does NOT map cleanly
+  // onto the all-consonant forms for which Nuxalk is famous, and full Swadesh attestation in Nater (1984) is not
+  // confidently accessible here, so every cell is left '—' under dataStatus:'fragmentary' rather than fabricated.
+  // Sources: Nater, H.F. (1984) The Bella Coola Language (Canadian Museum of Civilization, Mercury Series 92);
+  // Bagemihl, Bruce (1991) "Syllable structure in Bella Coola" Linguistic Inquiry 22:589-646; Nuxalk Nation
+  // language program / FirstVoices Nuxalk archive; Glottolog bell1243; Ethnologue 27 'blc'.
+  blc: { name: 'Nuxalk', native: 'Nuxalk', lat: 52.40, lng: -126.75, // Bella Coola valley, central BC coast
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Khoisan (Tanzania, distinct from Hadza)
   sad: { name: 'Sandawe', native: 'Sandawe', lat: -4.91, lng: 35.78, // Kondoa
     words: { water:['tsʼa','tsʼa'], fire:['cʼoo','tsʼoː'], sun:['kʼɔɔ','kʼɔː'], moon:['tsoa','tsoa'], mother:['yei','jei'], father:['ai','ai'], eat:['ǁee','ǁeː'], drink:['ʔee','ʔeː'], love:['kalokisi','kalokisi'], heart:['ǁʼampoo','ǁʼampoː'], tree:['hetsʼee','hetsʼeː'], house:['ge','ɡe'], dog:['ǀɔɔ','ǀɔː'], cat:['misho','miʃo'], hand:['kxʼaa','kxʼaː'], eye:['gaa','ɡaː'], hello:['gabaeesa','ɡabaeːsa'], thanks:['musʼokoyo','muʃokojo'], one:['tsʼekʼe','tsʼekʼe'], good:['tlʼobe','tɬʼobe'] }},
@@ -3467,6 +3637,26 @@ const LANG_DATA = {
     wordEvidence: {
       love:  { evidence: 'inferred', note: 'Yagaria "amige" — same form as greeting "hello" (affectionate greeting overlap possible); pending source confirmation (Audit Task 120)' },
       hello: { evidence: 'inferred', note: 'Yagaria "amige" — same form as "love"; greeting/affection overlap pending source confirmation (Audit Task 120)' }
+    }},
+  // North Bougainville (isolate-like; non-Austronesian Papuan, formerly grouped under the now-disused "East Papuan")
+  // Rotokas is celebrated for one of the world's smallest phoneme inventories (central dialect: 6 consonants p t k β ɾ ɡ + 5 vowels — no nasals).
+  // Vocabulary partial: only the cells with confident Firchow & Firchow (1973) / Robinson (2006, 2011) attestation are filled;
+  // the remaining cells are marked '—' under dataStatus:'fragmentary' (DATA_STATUS_OVERRIDES) rather than fabricated.
+  // Sources: Firchow & Firchow (1973) SIL "Vocabulary of Rotokas-Pidgin-English"; Robinson (2006) "Phoneme Inventory of the Aita Dialect of Rotokas" (Oceanic Linguistics 45:1); Glottolog roto1249.
+  roo: { name: 'Rotokas', native: 'Rotokas', lat: -6.30, lng: 155.20, // central Bougainville highlands, Papua New Guinea
+    words: { water:['oeai','oeai'], fire:['kakae','kakae'], sun:['raviva','raβiβa'], moon:['kuari','kuaɾi'], mother:['ipa','ipa'], father:['papa','papa'], eat:['kavu','kaβu'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['upi','upi'], house:['—','—'], dog:['roru','roɾu'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['uvure','uβuɾe'], good:['arue','aɾue'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      fire:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      sun:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      moon:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      mother: { evidence: 'direct', source: 'Firchow & Firchow (1973) — ipa (formal); informal vocative aiao also attested' },
+      father: { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      eat:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — verbal stem kavu-' },
+      tree:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      dog:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      one:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — uvure (also short form uvu)' },
+      good:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' }
     }},
   // Quechuan (specific varieties)
   quz: { name: 'Cusco Quechua', native: 'Qhichwa', lat: -13.53, lng: -71.97, // Cusco
@@ -3766,6 +3956,20 @@ const LANG_DATA = {
   // zkt Khitan wordEvidence: Codex 3 noted 17/20 cells are too strong for partly-
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
+  //
+  // 2026-05-17 update: four cells (sun, moon, one, dog) now carry source-
+  // confirmed Khitan Small Script glyphs in the surface slot. Glyphs are
+  // taken from Kane (2009) Index of Graphs as transcribed on BabelStone
+  // (https://www.babelstone.co.uk/Khitan/Kane2009List.html) and from West's
+  // "A Mirror on the Khitan Language" (BabelStone Blog, 2011):
+  //   sun   *nair  → 𘲺  (Kane #159, glossed "DAY"; same word as sun)
+  //   moon  *sair  → 𘭧  (Kane #081, glossed "MONTH"; same word as moon)
+  //   one          → 𘬣  (Kane #026, glossed "ONE")
+  //   dog   *ñiqo  → 𘰕𘯛 (polygram ńi.qo per West 2011)
+  // All remaining 16 cells stay in Latin transliteration — no confidently
+  // sourced glyph mapping exists for water/fire/mother/father/eat/drink/
+  // love/heart/tree/house/cat/hand/eye/hello/thanks/good in either Kane
+  // (2009) or West/BabelStone, so no characters are fabricated.
   zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
     // scriptDisplayPolicy (Audit Task 119): Khitan Small Script
     // (U+18B00–U+18CFF, Unicode 13.0, ~470 chars in the Noto Sans Khitan
@@ -3775,11 +3979,11 @@ const LANG_DATA = {
     // numerals — NOT the everyday Swadesh-style vocabulary used here.
     //
     // Per Audit Task 119: do NOT auto-generate characters from the
-    // romanization. The surface column shows scholarly Latin readings
-    // (Kane 2009 system); these are defensible cross-references but
-    // cannot be mechanically back-mapped to small-script glyphs without
-    // direct citation. altWordForms is therefore intentionally empty
-    // until experts contribute source-confirmed mappings cell by cell.
+    // romanization. The surface column is therefore MIXED: cells with
+    // a source-confirmed glyph (sun, moon, one, dog — see comment above)
+    // show the Khitan Small Script character; all other cells fall back
+    // to the scholarly Latin reading (Kane 2009 system). The IPA-slot
+    // always carries the Latin reading.
     //
     // Khitan Large Script (separate; ~3000 logographs, not in Unicode)
     // is even less systematically deciphered.
@@ -3787,32 +3991,42 @@ const LANG_DATA = {
         primary: 'scholarly-transcription',
         secondary: 'historical-script',
         note: {
-            en: 'Surface column shows the Kane (2009) Latin reconstruction. Khitan Small Script glyphs (Unicode U+18B00–U+18CFF) exist for some attested readings but are not yet mapped here per Audit Task 119 (no auto-generation from romanization).',
-            ja: '表示形は Kane (2009) のラテン文字再構。契丹小字 (Unicode U+18B00–U+18CFF) は一部の確認済み読みに対応する字形が存在するが、ローマ字からの自動生成を禁ずる監査方針 (Task 119) のため、ここでは未対応。',
-            ko: '표시 형은 Kane (2009)의 로마자 재구이다. 거란소자 (Unicode U+18B00–U+18CFF)에 해당 글리프가 일부 확인되어 있으나, 로마자 기반 자동 생성을 금지하는 감사 정책 (Task 119)에 따라 여기서는 매핑하지 않는다.',
-            zh: '表面列显示的是 Kane (2009) 的拉丁字母重构。契丹小字 (Unicode U+18B00–U+18CFF) 对某些已确认读音存在字形，但根据审核政策 (Task 119) 禁止从罗马字自动生成，此处暂不映射。',
+            en: 'Surface column is mixed: 4 cells (sun, moon, one, dog) show source-confirmed Khitan Small Script glyphs (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language"). Remaining cells show the Kane (2009) Latin reconstruction because no confidently attested glyph mapping exists. Audit Task 119 forbids auto-generation from romanization.',
+            ja: '表示形は混在: 4セル (sun, moon, one, dog) は出典確認済みの契丹小字グリフ (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language") を表示。残りのセルは確実に対応する字形が未確認のため Kane (2009) のラテン文字再構を表示。ローマ字からの自動生成は監査方針 (Task 119) で禁止。',
+            ko: '표시 형은 혼합: 4개 셀 (sun, moon, one, dog)은 출처가 확인된 거란소자 글리프 (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language")를 표시. 나머지 셀은 확실히 대응하는 글리프가 미확인이므로 Kane (2009)의 로마자 재구를 표시. 로마자 기반 자동 생성은 감사 정책 (Task 119)에서 금지.',
+            zh: '表面列为混合: 4个单元格 (sun, moon, one, dog) 显示来源已确认的契丹小字字形 (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language")。其余单元格因尚无确证字形对应而显示 Kane (2009) 的拉丁字母重构。审核政策 (Task 119) 禁止从罗马字自动生成。',
         },
     },
-    altWordForms: {},
-    words: { water:['muri','muri'], fire:['niár','niar'], sun:['nair','nair'], moon:['sair','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['nïaqan','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['omsu','omsu'], good:['sayïn','sajin'] },
+    // altWordForms — Latin (Kane 2009) reconstructed reading for the
+    // four cells whose surface column now holds the Khitan Small
+    // Script glyph (sun / moon / one / dog). Earlier this section
+    // duplicated the glyph; the romanization is the useful complement
+    // because the main `words` map already shows the Khitan glyph.
+    altWordForms: {
+      sun:  [{ form: 'nair',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #159 — Khitan *nair (sun / day), cognate Mongolic nara.' }],
+      moon: [{ form: 'sair',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #081 — Khitan *sair (moon / month), cognate Mongolic sara.' }],
+      one:  [{ form: 'omsu',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #026 — glossed ONE.' }],
+      dog:  [{ form: 'ńi.qo',  script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Polygram ńi.qo per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
+    },
+    words: { water:['muri','muri'], fire:['niár','niar'], sun:['𘲺','nair'], moon:['𘭧','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['𘰕𘯛','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['𘬣','omsu'], good:['sayïn','sajin'] },
     wordEvidence: {
-      water:  { evidence: 'direct', source: 'Kane 2009 Khitan small script' },
-      fire:   { evidence: 'direct', source: 'Kane 2009' },
-      sun:    { evidence: 'direct', source: 'Kane 2009 Khitan Small Script — encoded U+18B00–U+18CFF (Unicode 13.0, 2020); ~470 chars in block (Noto Sans Khitan Small Script). Most attested tokens are royal titles, kin terms, names; basic-vocabulary character mappings remain partially deciphered.' },
-      moon:   { evidence: 'direct', source: 'Kane 2009' },
-      mother: { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic eme)' },
-      father: { evidence: 'direct', source: 'Kane 2009' },
-      eat:    { evidence: 'inferred', source: 'Kane 2009 verbal stem' },
-      drink:  { evidence: 'inferred', source: 'Kane 2009 verbal stem' },
-      love:   { evidence: 'disputed', source: 'Kane 2009; semantic uncertain' },
-      heart:  { evidence: 'inferred', source: 'Kane 2009' },
-      tree:   { evidence: 'direct', source: 'Kane 2009' },
-      house:  { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic ger)' },
-      dog:    { evidence: 'direct', source: 'Kane 2009' },
-      hand:   { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic gar)' },
-      eye:    { evidence: 'direct', source: 'Kane 2009' },
-      one:    { evidence: 'direct', source: 'Kane 2009 numerals' },
-      good:   { evidence: 'disputed', source: 'Kane 2009; semantic boundary unclear' },
+      water:  { evidence: 'inferred', source: 'Kane 2009 Latin reading "muri"; Khitan Small Script glyph for water not confidently attested in Kane (2009) Index of Graphs or West (BabelStone) — surface left as Latin transliteration.' },
+      fire:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "niár"; Khitan Small Script glyph for fire not confidently attested in Kane (2009) Index of Graphs or West (BabelStone) — surface left as Latin transliteration.' },
+      sun:    { evidence: 'direct', source: 'Kane 2009 Index of Graphs #159 (glyph 𘲺 U+18CBA, glossed DAY); Khitan *nair = sun/day, cognate Mongolic nara. Per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language") and BabelStone Kane2009List transcription.' },
+      moon:   { evidence: 'direct', source: 'Kane 2009 Index of Graphs #081 (glyph 𘭧 U+18B67, glossed MONTH); Khitan *sair = moon/month, cognate Mongolic sara. Per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language") and BabelStone Kane2009List transcription.' },
+      mother: { evidence: 'inferred', source: 'Kane 2009 Latin reading "eme" (cf. Mongolic eme); Khitan Small Script glyph for mother not confidently attested — surface left as Latin transliteration.' },
+      father: { evidence: 'inferred', source: 'Kane 2009 Latin reading "mai"; Khitan Small Script glyph for father not confidently attested — surface left as Latin transliteration.' },
+      eat:    { evidence: 'inferred', source: 'Kane 2009 verbal stem; Khitan Small Script glyph for eat not confidently attested — surface left as Latin transliteration.' },
+      drink:  { evidence: 'inferred', source: 'Kane 2009 verbal stem; Khitan Small Script glyph for drink not confidently attested — surface left as Latin transliteration.' },
+      love:   { evidence: 'disputed', source: 'Kane 2009; semantic uncertain; no Khitan Small Script glyph mapping — surface left as Latin transliteration.' },
+      heart:  { evidence: 'inferred', source: 'Kane 2009; Khitan Small Script glyph for heart not confidently attested — surface left as Latin transliteration.' },
+      tree:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "mau"; Khitan Small Script glyph for tree not confidently attested — surface left as Latin transliteration.' },
+      house:  { evidence: 'inferred', source: 'Kane 2009 (cf. Mongolic ger); Khitan Small Script glyph for house not confidently attested — surface left as Latin transliteration.' },
+      dog:    { evidence: 'direct', source: 'Khitan Small Script polygram 𘰕𘯛 (ńi.qo, U+18C15 U+18BDB) per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language"). Latin reading "niaqan" follows Kane (2009).' },
+      hand:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "ɣar" (cf. Mongolic gar); Khitan Small Script glyph for hand not confidently attested — surface left as Latin transliteration.' },
+      eye:    { evidence: 'inferred', source: 'Kane 2009 Latin reading "nït"; Khitan Small Script glyph for eye not confidently attested — surface left as Latin transliteration.' },
+      one:    { evidence: 'direct', source: 'Kane 2009 Index of Graphs #026 (glyph 𘬣 U+18B23, glossed ONE) per BabelStone Kane2009List transcription. Latin reading "omsu" follows Kane (2009).' },
+      good:   { evidence: 'disputed', source: 'Kane 2009; semantic boundary unclear; no Khitan Small Script glyph mapping — surface left as Latin transliteration.' },
     } },
   // Jurchen — Jin dynasty (1115-1234), ancestor of Manchu. Jurchen script is
   // not in Unicode; Latin transliteration after Kane (1989), Jin (1984).
@@ -4339,6 +4553,14 @@ const DATA_STATUS_OVERRIDES = {
     // many '—' placeholders).
     itl:       'fragmentary',    // Itelmen — ~80 fluent speakers, Volodin & Khaloimova partial
     ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
+    roo:       'fragmentary',    // Rotokas — Firchow 1973 / Robinson 2011
+    nmn:       'fragmentary',    // Taa / !Xóõ — Traill 1994
+    lbz:       'fragmentary',    // Lardil — host language of Damin
+    nny:       'fragmentary',    // Yangkaal — sister of Lardil
+    kky:       'fragmentary',    // Guugu Yimithirr — absolute cardinal-direction reference (Levinson)
+    blc:       'fragmentary',    // Nuxalk (Bella Coola) — Salishan, all-consonant words (Nater 1984)
+    tue:       'fragmentary',    // Tuyuca — Tukanoan, obligatory evidentiality (Barnes 1984)
+    ncs:       'fragmentary',    // Nicaraguan Sign Language — spontaneous emergence (Kegl 1999)
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4543,6 +4765,17 @@ const HIST_DESCENDANT = {
     // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
     // rows (added in Round 2) keeps them visible on the modern map.
     itl:null, ykg:null,
+    // Living fragmentary languages added 2026-05-16/17 with partial Swadesh
+    // coverage. Null descendant clears [#17] inverse invariant — same pattern
+    // as itl/ykg/yuc/kgg.
+    roo:null,    // Rotokas — Firchow 1973 / Robinson 2011
+    nmn:null,    // Taa / !Xóõ — Traill 1994
+    lbz:null,    // Lardil — host language of Damin
+    nny:null,    // Yangkaal — sister of Lardil
+    kky:null,    // Guugu Yimithirr — absolute cardinal-direction reference
+    blc:null,    // Nuxalk (Bella Coola) — all-consonant words
+    tue:null,    // Tuyuca — obligatory evidentiality
+    ncs:null,    // Nicaraguan Sign Language — spontaneous emergence
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)

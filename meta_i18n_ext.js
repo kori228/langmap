@@ -24,12 +24,24 @@
 // === Smart composite translator ============================================
 
 // Split a string on `sep` only at the top level (depth 0 of parentheses).
+// For commas specifically, also skip thousands separators so "4,000" stays
+// one part rather than splitting into ["4", "000"] (which would otherwise
+// be rejoined with the ja/zh ideographic comma → "4、000").
 function _splitTopLevel(str, sep) {
     const parts = []; let depth = 0, cur = '';
-    for (const ch of str) {
+    for (let i = 0; i < str.length; i++) {
+        const ch = str[i];
         if (ch === '(') depth++;
         else if (ch === ')') depth--;
-        if (ch === sep && depth === 0) { parts.push(cur); cur = ''; continue; }
+        if (ch === sep && depth === 0) {
+            if (sep === ',' && i > 0 && i < str.length - 1
+                && /\d/.test(str[i - 1]) && /\d/.test(str[i + 1])) {
+                cur += ch;
+                continue;
+            }
+            parts.push(cur); cur = '';
+            continue;
+        }
         cur += ch;
     }
     parts.push(cur);

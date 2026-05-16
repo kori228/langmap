@@ -564,12 +564,13 @@ const WM_VERSION_FLOOR = {
     meta:     70,
 };
 const ASSET_KEY_BY_PATH = {
-    'styles.css':       'styles',
-    'wordmap_data.js':  'data',
-    'meta_i18n_ext.js': 'metaI18n',
-    'lang-filter.js':   'filter',
-    'lang_names.js':    'names',
-    'wordmap_meta.js':  'meta',
+    'styles.css':         'styles',
+    'wordmap_data.js':    'data',
+    'meta_i18n_ext.js':   'metaI18n',
+    'lang-filter.js':     'filter',
+    'lang_names.js':      'names',
+    'wordmap_meta.js':    'meta',
+    'wordmap_trivia.js':  'trivia',
 };
 const versionRegistryMatch = htmlSrc.match(/const\s+WM_ASSET_VERSION\s*=\s*\{([^}]+)\}/);
 if (!versionRegistryMatch) {
