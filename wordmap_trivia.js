@@ -489,7 +489,7 @@ const TRIVIA_ARTICLES = [
   <p>What Hale found was extraordinary. Damin was not a separate language: it shared Lardil's grammar more or less wholesale. But it had its own vocabulary of <strong>roughly 200 lexical items</strong>, each one mapping by a clever rule of semantic compression onto a whole class of Lardil words. <em>n!aa</em>, for example, covered every kin term referring to a man of one's own moiety, and <em>didi</em> covered everyone of the opposite moiety. A speaker who knew the 200 Damin items could in principle express anything that Lardil could express — just more abstractly.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="lbz,lrd,yyk">🗣 Compare Lardil and Yangkaal</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="lbz,nny">🗣 Compare Lardil and Yangkaal</button>
   </div>
   
   <p>The phonology, though, was where Damin broke continental norms. It contained:</p>
@@ -523,7 +523,7 @@ const TRIVIA_ARTICLES = [
   <p>ヘイルが見出したのは驚くべき体系だった。ダミン語はラーディル語とは別言語ではない──文法はほぼまるごと共有している。だが語彙だけは独自で、<strong>約200項目</strong>しかない。各項目はラーディル語の語彙クラスをまるごと一語で覆う巧妙な意味圧縮になっている。たとえば <em>n!aa</em> は「自分と同じ半族の男性親族すべて」、<em>didi</em> は「反対半族の人間すべて」を指す。200語を知る者は理屈の上ではラーディル語と同じだけのことを語れる──ただし、より抽象的に。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="lbz,lrd,yyk">🗣 ラーディル語とヤンカール語を比べる</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="lbz,nny">🗣 ラーディル語とヤンカール語を比べる</button>
   </div>
   
   <p>大陸の常識を破ったのは音韻のほうだった。ダミン語は次のような音を持っていた。</p>

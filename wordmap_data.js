@@ -3740,11 +3740,16 @@ const LANG_DATA = {
             zh: '表面列为混合: 4个单元格 (sun, moon, one, dog) 显示来源已确认的契丹小字字形 (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language")。其余单元格因尚无确证字形对应而显示 Kane (2009) 的拉丁字母重构。审核政策 (Task 119) 禁止从罗马字自动生成。',
         },
     },
+    // altWordForms — Latin (Kane 2009) reconstructed reading for the
+    // four cells whose surface column now holds the Khitan Small
+    // Script glyph (sun / moon / one / dog). Earlier this section
+    // duplicated the glyph; the romanization is the useful complement
+    // because the main `words` map already shows the Khitan glyph.
     altWordForms: {
-      sun:  [{ form: '𘲺',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #159 (glossed DAY; Khitan *nair = sun/day, cognate Mongolic nara). Per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
-      moon: [{ form: '𘭧',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #081 (glossed MONTH; Khitan *sair = moon/month, cognate Mongolic sara). Per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
-      one:  [{ form: '𘬣',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #026 (glossed ONE).' }],
-      dog:  [{ form: '𘰕𘯛', script: 'Khitan Small Script', type: 'attested', source: 'Polygram ńi.qo per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
+      sun:  [{ form: 'nair',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #159 — Khitan *nair (sun / day), cognate Mongolic nara.' }],
+      moon: [{ form: 'sair',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #081 — Khitan *sair (moon / month), cognate Mongolic sara.' }],
+      one:  [{ form: 'omsu',   script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Kane (2009) Index of Graphs #026 — glossed ONE.' }],
+      dog:  [{ form: 'ńi.qo',  script: 'Latin (Kane 2009 reading)',  type: 'attested', source: 'Polygram ńi.qo per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
     },
     words: { water:['muri','muri'], fire:['niár','niar'], sun:['𘲺','nair'], moon:['𘭧','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['𘰕𘯛','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['𘬣','omsu'], good:['sayïn','sajin'] },
     wordEvidence: {

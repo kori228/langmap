@@ -1998,12 +1998,12 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    78,
-            data:      208,
+            data:      209,
             metaI18n:  15,
             filter:    29,
             names:   105,
-            meta:     184,
-            trivia:   13,
+            meta:     185,
+            trivia:   14,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2822,7 +2822,11 @@
         // LIVING (Rotokas, Taa, Itelmen, Tundra Yukaghir, Yuchi,
         // Kusunda). Strip them so the modern/historical filter doesn't
         // misclassify them as historical.
-        const LIVING_FRAGMENTARY_CODES = new Set(['roo', 'nmn', 'itl', 'ykg', 'yuc', 'kgg']);
+        const LIVING_FRAGMENTARY_CODES = new Set([
+            'roo', 'nmn', 'itl', 'ykg', 'yuc', 'kgg',
+            // 2026-05-17: trivia-featured Australian + Americas langs.
+            'lbz', 'nny', 'kky', 'blc', 'tue', 'ncs',
+        ]);
         const HIST_CODE_SET = new Set(
             Object.keys(HIST_DESCENDANT).filter(c => !LIVING_FRAGMENTARY_CODES.has(c))
         );
