@@ -2012,7 +2012,7 @@
             filter:    29,
             names:   105,
             meta:     185,
-            trivia:   17,
+            trivia:   18,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5168,8 +5168,15 @@
                 tilesMode: _currentTilesMode,
             };
         }
-        function restoreMapState(s) {
+        function restoreMapState(s, opts) {
             if (!s) return;
+            opts = opts || {};
+            // skipLang: when navigating article→article, don't reopen
+            // the user's original language modal (it would just be
+            // closed again by the next article's _resetTriviaSurface
+            // call, causing a flicker / order-of-ops race). Only the
+            // FULL close (closeTrivia) restores the language modal.
+            const skipLang = !!opts.skipLang;
             // Clear trivia-only overrides first so the map re-renders cleanly.
             if (_triviaSpotlight && _triviaSpotlight.size) {
                 _triviaSpotlight.clear();
@@ -5196,14 +5203,21 @@
             }
             try { map.flyTo([s.lat, s.lng], s.zoom, { duration: 0.7 }); }
             catch (_) { map.setView([s.lat, s.lng], s.zoom); }
-            if (s.openLang) {
-                setTimeout(() => {
-                    if (!infoPanel.classList.contains('visible')
-                        || infoPanel.dataset.code !== s.openLang) {
-                        showLangInfo(s.openLang);
-                    }
-                }, 100);
+            if (!skipLang) {
+                if (s.openLang) {
+                    setTimeout(() => {
+                        if (!infoPanel.classList.contains('visible')
+                            || infoPanel.dataset.code !== s.openLang) {
+                            showLangInfo(s.openLang);
+                        }
+                    }, 100);
+                } else if (infoPanel.classList.contains('visible')) {
+                    closeInfoPanel();
+                }
             } else if (infoPanel.classList.contains('visible')) {
+                // skipLang mode: keep the surface clean by closing any
+                // currently-open language modal, without queuing a
+                // re-open for the snapshot's openLang.
                 closeInfoPanel();
             }
             triviaClearBlinks();
@@ -5441,10 +5455,13 @@
             // restore (a flyTo, updateMarkers, etc.) breaks the
             // subsequent renderTriviaArticle pass on some browsers.
             const fromArticle = modal && modal.dataset.view === 'article';
-            if (fromArticle && _triviaSnapshot) restoreMapState(_triviaSnapshot);
-            // Each article starts from a clean surface (no lingering
-            // language modal / compare panel / blinks from the previous
-            // article's action buttons).
+            // Restore the map view/word/era/tiles to the baseline taken
+            // at trivia-open time — but DON'T reopen the user's
+            // original language modal. We want each article to start
+            // from a clean surface; the user's lang modal only comes
+            // back on the full closeTrivia, not on prev/next or
+            // article→article navigation.
+            if (fromArticle && _triviaSnapshot) restoreMapState(_triviaSnapshot, { skipLang: true });
             _resetTriviaSurface();
             // Preserve the compact/full layout the user chose. If they
             // shrank the modal aside (or it auto-shrank from a previous
@@ -5458,9 +5475,10 @@
             if (typeof updateHash === 'function') updateHash({ push: true });
         }
         function backToTriviaIndex() {
-            // Restore the map state taken at open time (each article
-            // runs against the pre-trivia baseline), then swap to index view.
-            if (_triviaSnapshot) restoreMapState(_triviaSnapshot);
+            // Restore the map view/word/era/tiles to the baseline taken
+            // at trivia-open time — but DON'T reopen the user's
+            // original language modal (kept clean until full close).
+            if (_triviaSnapshot) restoreMapState(_triviaSnapshot, { skipLang: true });
             renderTriviaIndex();
             setTriviaCompact(false);
             const modal = document.getElementById('trivia-modal');
