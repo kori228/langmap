@@ -1429,10 +1429,14 @@
         }
 
         /* Floating "↩ Plain map" pill: visible only when the basemap
-           is NOT 'flat' so users can return without closing trivia. */
+           is NOT 'flat'. Positioned bottom-RIGHT (above the URL
+           watermark) so it doesn't sit under the compact trivia
+           modal (which lives bottom-left) or under the centered
+           full-screen trivia modal. z-index 1502 puts it just above
+           the trivia compact modal (1501) so it stays clickable. */
         .tiles-revert {
-            position: fixed; z-index: 1300;
-            bottom: 60px; left: 12px;
+            position: fixed; z-index: 1502;
+            bottom: 60px; right: 12px;
             font-size: 12px; font-weight: 600;
             padding: 6px 12px;
             border: 1px solid #d0d0d0;
@@ -1447,7 +1451,7 @@
         .tiles-revert.visible { display: inline-flex; align-items: center; gap: 4px; }
         .tiles-revert:hover { background: #fff; color: #1a73e8; border-color: #1a73e8; }
         @media (max-width: 720px) {
-            .tiles-revert { bottom: 12px; left: auto; right: 12px; }
+            .tiles-revert { bottom: 12px; right: 12px; }
         }
 
         @keyframes triviaPulse {
@@ -2003,7 +2007,7 @@
             filter:    29,
             names:   105,
             meta:     185,
-            trivia:   14,
+            trivia:   15,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
