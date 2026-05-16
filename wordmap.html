@@ -486,7 +486,24 @@
            neighboring LTR punctuation (slashes, brackets, evidence markers).
            dir="auto" on the wrapper lets the browser detect direction
            per-cell. IPA cells stay LTR. */
-        .wm-form { unicode-bidi: isolate; }
+        /* Carry the same rare-script font chain that .lang-label and
+           .native-name use, so Tangut / Old Turkic / Mongolian /
+           Sogdian / Phags-pa / Khitan / Manichaean / Egyptian /
+           Meroitic / Coptic glyphs inside word cells render via the
+           Noto webfonts instead of falling back to tofu boxes. */
+        .wm-form {
+            unicode-bidi: isolate;
+            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Noto Sans Tibetan",
+                "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
+                "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
+                "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
+                "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
+                "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
+                "Noto Sans New Tai Lue",
+                serif;
+        }
         .wm-ipa  { unicode-bidi: isolate; direction: ltr; }
         /* Audit Task 101: keyboard focus for inline evidence markers */
         .lang-info-panel .ev-marker:focus-visible {
