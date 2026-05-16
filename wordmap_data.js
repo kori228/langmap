@@ -3608,6 +3608,20 @@ const LANG_DATA = {
   // zkt Khitan wordEvidence: Codex 3 noted 17/20 cells are too strong for partly-
   // understood lang. Cells from Kane 2009 + Aisin Gioro / Wu Yingzhe research.
   // Concrete nouns are reasonably attested; abstracts (love/heart/good) are inferred.
+  //
+  // 2026-05-17 update: four cells (sun, moon, one, dog) now carry source-
+  // confirmed Khitan Small Script glyphs in the surface slot. Glyphs are
+  // taken from Kane (2009) Index of Graphs as transcribed on BabelStone
+  // (https://www.babelstone.co.uk/Khitan/Kane2009List.html) and from West's
+  // "A Mirror on the Khitan Language" (BabelStone Blog, 2011):
+  //   sun   *nair  → 𘲺  (Kane #159, glossed "DAY"; same word as sun)
+  //   moon  *sair  → 𘭧  (Kane #081, glossed "MONTH"; same word as moon)
+  //   one          → 𘬣  (Kane #026, glossed "ONE")
+  //   dog   *ñiqo  → 𘰕𘯛 (polygram ńi.qo per West 2011)
+  // All remaining 16 cells stay in Latin transliteration — no confidently
+  // sourced glyph mapping exists for water/fire/mother/father/eat/drink/
+  // love/heart/tree/house/cat/hand/eye/hello/thanks/good in either Kane
+  // (2009) or West/BabelStone, so no characters are fabricated.
   zkt: { name: 'Khitan', native: 'mos diau-d', lat: 43.97, lng: 119.41,
     // scriptDisplayPolicy (Audit Task 119): Khitan Small Script
     // (U+18B00–U+18CFF, Unicode 13.0, ~470 chars in the Noto Sans Khitan
@@ -3617,11 +3631,11 @@ const LANG_DATA = {
     // numerals — NOT the everyday Swadesh-style vocabulary used here.
     //
     // Per Audit Task 119: do NOT auto-generate characters from the
-    // romanization. The surface column shows scholarly Latin readings
-    // (Kane 2009 system); these are defensible cross-references but
-    // cannot be mechanically back-mapped to small-script glyphs without
-    // direct citation. altWordForms is therefore intentionally empty
-    // until experts contribute source-confirmed mappings cell by cell.
+    // romanization. The surface column is therefore MIXED: cells with
+    // a source-confirmed glyph (sun, moon, one, dog — see comment above)
+    // show the Khitan Small Script character; all other cells fall back
+    // to the scholarly Latin reading (Kane 2009 system). The IPA-slot
+    // always carries the Latin reading.
     //
     // Khitan Large Script (separate; ~3000 logographs, not in Unicode)
     // is even less systematically deciphered.
@@ -3629,32 +3643,37 @@ const LANG_DATA = {
         primary: 'scholarly-transcription',
         secondary: 'historical-script',
         note: {
-            en: 'Surface column shows the Kane (2009) Latin reconstruction. Khitan Small Script glyphs (Unicode U+18B00–U+18CFF) exist for some attested readings but are not yet mapped here per Audit Task 119 (no auto-generation from romanization).',
-            ja: '表示形は Kane (2009) のラテン文字再構。契丹小字 (Unicode U+18B00–U+18CFF) は一部の確認済み読みに対応する字形が存在するが、ローマ字からの自動生成を禁ずる監査方針 (Task 119) のため、ここでは未対応。',
-            ko: '표시 형은 Kane (2009)의 로마자 재구이다. 거란소자 (Unicode U+18B00–U+18CFF)에 해당 글리프가 일부 확인되어 있으나, 로마자 기반 자동 생성을 금지하는 감사 정책 (Task 119)에 따라 여기서는 매핑하지 않는다.',
-            zh: '表面列显示的是 Kane (2009) 的拉丁字母重构。契丹小字 (Unicode U+18B00–U+18CFF) 对某些已确认读音存在字形，但根据审核政策 (Task 119) 禁止从罗马字自动生成，此处暂不映射。',
+            en: 'Surface column is mixed: 4 cells (sun, moon, one, dog) show source-confirmed Khitan Small Script glyphs (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language"). Remaining cells show the Kane (2009) Latin reconstruction because no confidently attested glyph mapping exists. Audit Task 119 forbids auto-generation from romanization.',
+            ja: '表示形は混在: 4セル (sun, moon, one, dog) は出典確認済みの契丹小字グリフ (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language") を表示。残りのセルは確実に対応する字形が未確認のため Kane (2009) のラテン文字再構を表示。ローマ字からの自動生成は監査方針 (Task 119) で禁止。',
+            ko: '표시 형은 혼합: 4개 셀 (sun, moon, one, dog)은 출처가 확인된 거란소자 글리프 (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language")를 표시. 나머지 셀은 확실히 대응하는 글리프가 미확인이므로 Kane (2009)의 로마자 재구를 표시. 로마자 기반 자동 생성은 감사 정책 (Task 119)에서 금지.',
+            zh: '表面列为混合: 4个单元格 (sun, moon, one, dog) 显示来源已确认的契丹小字字形 (Kane 2009 Index of Graphs; West 2011 "Mirror on the Khitan Language")。其余单元格因尚无确证字形对应而显示 Kane (2009) 的拉丁字母重构。审核政策 (Task 119) 禁止从罗马字自动生成。',
         },
     },
-    altWordForms: {},
-    words: { water:['muri','muri'], fire:['niár','niar'], sun:['nair','nair'], moon:['sair','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['nïaqan','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['omsu','omsu'], good:['sayïn','sajin'] },
+    altWordForms: {
+      sun:  [{ form: '𘲺',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #159 (glossed DAY; Khitan *nair = sun/day, cognate Mongolic nara). Per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
+      moon: [{ form: '𘭧',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #081 (glossed MONTH; Khitan *sair = moon/month, cognate Mongolic sara). Per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
+      one:  [{ form: '𘬣',  script: 'Khitan Small Script', type: 'attested', source: 'Kane 2009 Index of Graphs #026 (glossed ONE).' }],
+      dog:  [{ form: '𘰕𘯛', script: 'Khitan Small Script', type: 'attested', source: 'Polygram ńi.qo per West 2011, "A Mirror on the Khitan Language" (BabelStone Blog).' }],
+    },
+    words: { water:['muri','muri'], fire:['niár','niar'], sun:['𘲺','nair'], moon:['𘭧','sair'], mother:['eme','eme'], father:['mai','mai'], eat:['idi','idi'], drink:['umi','umi'], love:['nasun','nasun'], heart:['niyàmen','niaman'], tree:['mau','mau'], house:['boo','boː'], dog:['𘰕𘯛','niaqan'], cat:['—','—'], hand:['ɣar','ɣar'], eye:['nït','nit'], hello:['—','—'], thanks:['—','—'], one:['𘬣','omsu'], good:['sayïn','sajin'] },
     wordEvidence: {
-      water:  { evidence: 'direct', source: 'Kane 2009 Khitan small script' },
-      fire:   { evidence: 'direct', source: 'Kane 2009' },
-      sun:    { evidence: 'direct', source: 'Kane 2009 Khitan Small Script — encoded U+18B00–U+18CFF (Unicode 13.0, 2020); ~470 chars in block (Noto Sans Khitan Small Script). Most attested tokens are royal titles, kin terms, names; basic-vocabulary character mappings remain partially deciphered.' },
-      moon:   { evidence: 'direct', source: 'Kane 2009' },
-      mother: { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic eme)' },
-      father: { evidence: 'direct', source: 'Kane 2009' },
-      eat:    { evidence: 'inferred', source: 'Kane 2009 verbal stem' },
-      drink:  { evidence: 'inferred', source: 'Kane 2009 verbal stem' },
-      love:   { evidence: 'disputed', source: 'Kane 2009; semantic uncertain' },
-      heart:  { evidence: 'inferred', source: 'Kane 2009' },
-      tree:   { evidence: 'direct', source: 'Kane 2009' },
-      house:  { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic ger)' },
-      dog:    { evidence: 'direct', source: 'Kane 2009' },
-      hand:   { evidence: 'direct', source: 'Kane 2009 (cf. Mongolic gar)' },
-      eye:    { evidence: 'direct', source: 'Kane 2009' },
-      one:    { evidence: 'direct', source: 'Kane 2009 numerals' },
-      good:   { evidence: 'disputed', source: 'Kane 2009; semantic boundary unclear' },
+      water:  { evidence: 'inferred', source: 'Kane 2009 Latin reading "muri"; Khitan Small Script glyph for water not confidently attested in Kane (2009) Index of Graphs or West (BabelStone) — surface left as Latin transliteration.' },
+      fire:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "niár"; Khitan Small Script glyph for fire not confidently attested in Kane (2009) Index of Graphs or West (BabelStone) — surface left as Latin transliteration.' },
+      sun:    { evidence: 'direct', source: 'Kane 2009 Index of Graphs #159 (glyph 𘲺 U+18CBA, glossed DAY); Khitan *nair = sun/day, cognate Mongolic nara. Per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language") and BabelStone Kane2009List transcription.' },
+      moon:   { evidence: 'direct', source: 'Kane 2009 Index of Graphs #081 (glyph 𘭧 U+18B67, glossed MONTH); Khitan *sair = moon/month, cognate Mongolic sara. Per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language") and BabelStone Kane2009List transcription.' },
+      mother: { evidence: 'inferred', source: 'Kane 2009 Latin reading "eme" (cf. Mongolic eme); Khitan Small Script glyph for mother not confidently attested — surface left as Latin transliteration.' },
+      father: { evidence: 'inferred', source: 'Kane 2009 Latin reading "mai"; Khitan Small Script glyph for father not confidently attested — surface left as Latin transliteration.' },
+      eat:    { evidence: 'inferred', source: 'Kane 2009 verbal stem; Khitan Small Script glyph for eat not confidently attested — surface left as Latin transliteration.' },
+      drink:  { evidence: 'inferred', source: 'Kane 2009 verbal stem; Khitan Small Script glyph for drink not confidently attested — surface left as Latin transliteration.' },
+      love:   { evidence: 'disputed', source: 'Kane 2009; semantic uncertain; no Khitan Small Script glyph mapping — surface left as Latin transliteration.' },
+      heart:  { evidence: 'inferred', source: 'Kane 2009; Khitan Small Script glyph for heart not confidently attested — surface left as Latin transliteration.' },
+      tree:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "mau"; Khitan Small Script glyph for tree not confidently attested — surface left as Latin transliteration.' },
+      house:  { evidence: 'inferred', source: 'Kane 2009 (cf. Mongolic ger); Khitan Small Script glyph for house not confidently attested — surface left as Latin transliteration.' },
+      dog:    { evidence: 'direct', source: 'Khitan Small Script polygram 𘰕𘯛 (ńi.qo, U+18C15 U+18BDB) per West 2011 (BabelStone Blog, "A Mirror on the Khitan Language"). Latin reading "niaqan" follows Kane (2009).' },
+      hand:   { evidence: 'inferred', source: 'Kane 2009 Latin reading "ɣar" (cf. Mongolic gar); Khitan Small Script glyph for hand not confidently attested — surface left as Latin transliteration.' },
+      eye:    { evidence: 'inferred', source: 'Kane 2009 Latin reading "nït"; Khitan Small Script glyph for eye not confidently attested — surface left as Latin transliteration.' },
+      one:    { evidence: 'direct', source: 'Kane 2009 Index of Graphs #026 (glyph 𘬣 U+18B23, glossed ONE) per BabelStone Kane2009List transcription. Latin reading "omsu" follows Kane (2009).' },
+      good:   { evidence: 'disputed', source: 'Kane 2009; semantic boundary unclear; no Khitan Small Script glyph mapping — surface left as Latin transliteration.' },
     } },
   // Jurchen — Jin dynasty (1115-1234), ancestor of Manchu. Jurchen script is
   // not in Unicode; Latin transliteration after Kane (1989), Jin (1984).
