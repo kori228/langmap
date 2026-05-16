@@ -149,7 +149,7 @@ const TRIVIA_ARTICLES = [
   <p>Neuroscientists have taken notice. A 2005 fMRI study by <strong>Manuel Carreiras</strong> and colleagues at the University of La Laguna showed that experienced silbadores process Silbo using <em>the same left-hemisphere language areas</em> normally reserved for spoken speech — not the right-hemisphere music-and-melody networks that activate when non-silbadores hear the same whistles. In other words, the brain treats Silbo as a language, not as music or birdsong. That single result moved Silbo from "folk curiosity" to a genuine probe of how flexible the human language faculty really is.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="panto" data-lat="28.10" data-lng="-17.20" data-zoom="9">🌋 Zoom into the barrancos</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="28.10" data-lng="-17.20" data-zoom="9" data-tiles="terrain">🌋 Zoom into the barrancos</button>
   </div>
   
   <p>Silbo is not the only surviving whistled register — Kuşköy in Turkey, Hmong courtship whistles, the Mazatec whistled Spanish of Oaxaca and the Akha whistled tones of Yunnan all coexist with their spoken parents — but it is the most institutionalised, the best documented, and the only one that has been formally protected as Intangible Cultural Heritage. The next time you stand on a ridge in La Gomera and hear what sounds like a very chatty bird, listen again: it might be someone telling their cousin what to pick up from the shop.</p>
@@ -300,9 +300,10 @@ const TRIVIA_ARTICLES = [
   <p>If Taa is the maximalist's paradise, <strong>Rotokas</strong> is the minimalist's. Spoken by roughly 4,000 people in the mountainous interior of <strong>Bougainville</strong>, an island that politically belongs to Papua New Guinea but geographically to the Solomons chain, the central dialect of Rotokas has just <strong>eleven distinct phonemes</strong>: six consonants — <em>p, t, k, β, ɾ, ɡ</em> — and five vowels <em>a, e, i, o, u</em>, each of which can be short or long.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="roo" data-zoom="7">📍 Open Rotokas on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-6.30" data-lng="155.20" data-zoom="6">🗺️ Fly to Bougainville</button>
   </div>
-  
+
   <p>Hawaiian — at thirteen phonemes — is sometimes cited as a competitor for the record, and the <strong>Pirahã</strong> male register may dip even lower; but the count that linguists usually reach for is Rotokas, based on the careful 1973 description by Australian missionary linguists <strong>Stuart and Janice Firchow</strong> for the Summer Institute of Linguistics. They identified three places of articulation, no nasal consonants at all, and no consonant clusters beyond a brief glide.</p>
   
   <ul>
@@ -324,7 +325,7 @@ const TRIVIA_ARTICLES = [
   <p>Bougainville has had a difficult late-20th-century history: civil war from 1988 to 1998, the closure of the Panguna mine, and ongoing negotiations toward independence from Papua New Guinea after the 2019 referendum. Rotokas weathered all of it. Today the language is taught in some Tok-Pisin-medium schools alongside English, and a small but active <strong>vernacular literacy programme</strong> has produced storybooks and Bible translations in the language. Speaker numbers are stable, though younger speakers are increasingly bilingual in Tok Pisin.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="panto" data-lat="-6.20" data-lng="155.30" data-zoom="8">🌋 Zoom into the Crown Prince Range</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="-6.20" data-lng="155.30" data-zoom="8" data-tiles="terrain">🌋 Zoom into the Crown Prince Range</button>
   </div>
   
   <p>The lesson of Rotokas is not that simpler languages are "easier" — every Rotokas child still acquires native fluency with the same effort any baby anywhere puts into language learning. It is, rather, that <strong>the human language faculty has remarkable headroom in both directions</strong>. From eleven sounds to one hundred and sixty-four, the underlying system is the same.</p>
@@ -333,9 +334,10 @@ const TRIVIA_ARTICLES = [
   <p>タア語がマキシマリストの楽園なら、<strong>ロトカス語</strong>はミニマリストの聖地である。パプアニューギニア東端の<strong>ブーゲンビル島</strong>──地理的にはソロモン諸島の延長線上にある火山島──の山間部で約4000人に話される。その中央方言の音素はわずか<strong>11個</strong>。子音6（<em>p, t, k, β, ɾ, ɡ</em>）、母音5（<em>a, e, i, o, u</em>。それぞれ長短対立を持つ）。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="roo" data-zoom="7">📍 地図でロトカス語を開く</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-6.30" data-lng="155.20" data-zoom="6">🗺️ ブーゲンビル島へ飛ぶ</button>
   </div>
-  
+
   <p>13音素のハワイ語が最小記録を競うことがあり、<strong>ピダハン語</strong>の男性レジスターはさらに低い可能性もあるが、引き合いに出されるのは多くの場合ロトカス語だ。SIL（夏期言語学研究所）所属のオーストラリア人言語学者夫妻<strong>スチュアート＆ジャニス・ファーチョウ</strong>が1973年に発表した記述が基準となっている。彼らは3つの調音位置・鼻音ゼロ・子音連続なしという、極端なミニマル体系を確認した。</p>
   
   <ul>
@@ -357,7 +359,7 @@ const TRIVIA_ARTICLES = [
   <p>ブーゲンビルは1988〜1998年の内戦、パングナ鉱山の閉鎖、2019年独立住民投票後の交渉と、激動の20世紀末を経た。それでもロトカス語は途絶えなかった。現在はトクピシン語と英語を介して学校で教えられ、聖書翻訳や物語集を出す小規模ながら活発な<strong>母語識字運動</strong>がある。話者数は安定だが、若い世代はトクピシン語との二言語使用が増えている。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="panto" data-lat="-6.20" data-lng="155.30" data-zoom="8">🌋 クラウン・プリンス山脈を拡大</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="-6.20" data-lng="155.30" data-zoom="8" data-tiles="terrain">🌋 クラウン・プリンス山脈を拡大</button>
   </div>
   
   <p>ロトカス語が教えてくれるのは「音が少ない言語は習得が楽」という単純な話ではない。ロトカスの子どもも、世界中の他の子どもと同じ労力で母語を獲得していく。重要なのは、<strong>人類の言語能力は上にも下にも驚くほど余白がある</strong>ということだ。11音から164音まで、根底のシステムは同じなのだ。</p>

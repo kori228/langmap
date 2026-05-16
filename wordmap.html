@@ -1560,8 +1560,8 @@
     <script src="meta_i18n_ext.js?v=14"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=29"></script>
-    <script src="lang_names.js?v=104"></script>
-    <script src="wordmap_trivia.js?v=8"></script>
+    <script src="lang_names.js?v=105"></script>
+    <script src="wordmap_trivia.js?v=9"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -1581,6 +1581,12 @@
         // initial updateMarkers() pass.
         var _triviaBlinkCodes = new Set();
         var _triviaSnapshot = null;
+        // Spotlight: when non-empty, getVisibleLangs returns only the
+        // listed codes regardless of zoom / speaker tier / era. Set by
+        // the compare action so the user actually sees the languages
+        // being compared even at low zoom (where speaker-tier gating
+        // would normally hide them).
+        var _triviaSpotlight = new Set();
 
         // --- Rough initial location from browser timezone (no GPS permission) ---
         // Maps IANA timezone → [lat, lng] of a representative city. Falls back to
@@ -1647,11 +1653,37 @@
 
         // No Leaflet zoom control — we use our own unified buttons
 
-        // Flat tiles (CartoDB Positron, no labels)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-            maxZoom: 18,
-        }).addTo(map);
+        // Switchable basemap. Default 'flat' = CartoDB Positron (no
+        // labels); 'terrain' = OpenTopoMap (relief + country/place
+        // labels). Trivia action buttons can request a temporary
+        // terrain swap via data-tiles="terrain"; restoreMapState
+        // returns to whichever mode was active before trivia opened.
+        let _currentTilesMode = 'flat';
+        let _currentTileLayer = null;
+        const TILE_LAYERS = {
+            flat: {
+                url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+                opts: { attribution: '&copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 18 },
+            },
+            terrain: {
+                url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                opts: {
+                    attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OSM</a> contributors, SRTM | Style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a>',
+                    maxZoom: 17,
+                },
+            },
+        };
+        function setTilesMode(mode) {
+            if (!TILE_LAYERS[mode]) mode = 'flat';
+            if (mode === _currentTilesMode && _currentTileLayer) return;
+            if (_currentTileLayer) map.removeLayer(_currentTileLayer);
+            const spec = TILE_LAYERS[mode];
+            _currentTileLayer = L.tileLayer(spec.url, spec.opts).addTo(map);
+            // Make sure tiles sit at the bottom of the z-order.
+            try { _currentTileLayer.bringToBack && _currentTileLayer.bringToBack(); } catch (_) {}
+            _currentTilesMode = mode;
+        }
+        setTilesMode('flat');
 
         // Audit Task 135: keyboard activation for 2D map labels.
         // Labels are rendered as Leaflet divIcons with role=button + tabindex=0.
@@ -1736,9 +1768,9 @@
             data:      207,
             metaI18n:  14,
             filter:    29,
-            names:   104,
+            names:   105,
             meta:     183,
-            trivia:    8,
+            trivia:    9,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2567,6 +2599,23 @@
             const visibleLangs = [];
             const unattestedLangs = [];
             const descendantCodes = new Set();
+            // Trivia spotlight: when active, ignore the zoom-tier gating
+            // entirely and return only the spotlit codes. Used by the
+            // compare action so the listed languages are visible at any
+            // zoom level (without it, low-zoom views hide tiny-speaker
+            // langs like Rotokas / Hawaiian).
+            if (_triviaSpotlight && _triviaSpotlight.size > 0) {
+                for (const code of _triviaSpotlight) {
+                    const lang = LANG_DATA[code];
+                    if (!lang || !lang.words || !lang.words[wordId]) continue;
+                    if (isUnattestedEntry(lang.words[wordId])) {
+                        unattestedLangs.push(code);
+                    } else {
+                        visibleLangs.push(code);
+                    }
+                }
+                return { visibleLangs, unattestedLangs, descendantCodes };
+            }
             // User request 2026-05-09: if any lang-filter chip is active,
             // override the zoom-based gate so users see everything that
             // matches their filter regardless of zoom.
@@ -4810,14 +4859,37 @@
                 openLang: (infoPanel.classList.contains('visible') && infoPanel.dataset.code)
                     ? infoPanel.dataset.code : null,
                 filterParam: filterParam || '',
+                compareList: (window.__compareList ? [...window.__compareList] : []),
+                tilesMode: _currentTilesMode,
             };
         }
         function restoreMapState(s) {
             if (!s) return;
+            // Clear trivia-only overrides first so the map re-renders cleanly.
+            if (_triviaSpotlight && _triviaSpotlight.size) {
+                _triviaSpotlight.clear();
+            }
+            if (s.tilesMode && s.tilesMode !== _currentTilesMode) {
+                setTilesMode(s.tilesMode);
+            }
+            // Close any compare panel the article may have opened, then
+            // restore the user's pre-trivia compare list (if any).
+            if (typeof closeComparePanel === 'function') {
+                try { closeComparePanel(); } catch (_) {}
+            }
+            if (typeof clearCompare === 'function' && typeof addToCompare === 'function') {
+                try {
+                    clearCompare();
+                    (s.compareList || []).forEach(c => { try { addToCompare(c); } catch (_) {} });
+                } catch (_) {}
+            }
             if (s.era !== showHistorical) setEra(s.era);
             if (s.word && currentWord !== s.word) {
                 select.value = s.word;
                 select.dispatchEvent(new Event('change'));
+            } else {
+                // Same word, but spotlight may have changed the visible set
+                if (typeof updateMarkers === 'function') updateMarkers(currentWord);
             }
             if (window.__langmap && typeof window.__langmap.setFilterFromHashParam === 'function') {
                 try { window.__langmap.setFilterFromHashParam(s.filterParam || ''); }
@@ -4994,6 +5066,14 @@
             const action = (btn.dataset.action || '').toLowerCase();
             if (!action) return;
             triviaClearBlinks();
+            // Optional data-tiles="terrain" swaps the basemap to a
+            // labelled topographic style for the duration of the trivia
+            // session. Useful for buttons that zoom into geography
+            // (e.g. "🌋 Zoom into the Crown Prince Range"). The mode
+            // is restored on closeTrivia/backToTriviaIndex.
+            if (btn.dataset.tiles && typeof setTilesMode === 'function') {
+                setTilesMode(btn.dataset.tiles);
+            }
             // 'article' navigation keeps the modal full-screen (just
             // switching reads); everything else slides the modal aside.
             if (action !== 'article') setTriviaCompact(true);
@@ -5040,7 +5120,14 @@
                 }
             } else if (action === 'compare') {
                 const codes = (btn.dataset.codes || '').split(',').map(c => c.trim()).filter(Boolean);
+                const validCodes = codes.filter(c => LANG_DATA[c]);
+                if (!validCodes.length) return;
+                // Spotlight mode: force-show ONLY these markers on the
+                // map regardless of zoom-tier gating. Cleared on close.
+                _triviaSpotlight.clear();
+                validCodes.forEach(c => _triviaSpotlight.add(c));
                 codes.forEach(triviaBlinkMarker);
+                // Pan/zoom: explicit lat/lng wins, else auto-fit bounds.
                 const lat = parseFloat(btn.dataset.lat);
                 const lng = parseFloat(btn.dataset.lng);
                 const z = parseInt(btn.dataset.zoom, 10);
@@ -5048,21 +5135,28 @@
                     try { map.flyTo([lat, lng], Number.isFinite(z) ? z : 3, { duration: 1.0 }); }
                     catch (_) { map.setView([lat, lng], Number.isFinite(z) ? z : 3); }
                 } else {
-                    // No explicit center — auto-fit the map to bounds of
-                    // whichever listed codes are present in LANG_DATA.
-                    // Falls back gracefully if all codes are missing.
-                    const points = codes
-                        .map(c => LANG_DATA[c])
-                        .filter(d => d && Number.isFinite(d.lat) && Number.isFinite(d.lng));
+                    const points = validCodes.map(c => LANG_DATA[c]);
                     if (points.length === 1) {
                         const p = points[0];
                         try { map.flyTo([p.lat, p.lng], 5, { duration: 1.0 }); }
                         catch (_) { map.setView([p.lat, p.lng], 5); }
-                    } else if (points.length >= 2) {
+                    } else {
                         const bounds = L.latLngBounds(points.map(d => [d.lat, d.lng]));
                         try { map.flyToBounds(bounds, { padding: [60, 60], maxZoom: 5, duration: 1.0 }); }
                         catch (_) { map.fitBounds(bounds, { padding: [60, 60], maxZoom: 5 }); }
                     }
+                }
+                // Force a marker rebuild so the spotlight takes effect now.
+                if (typeof updateMarkers === 'function') updateMarkers(currentWord);
+                // Plug into the existing compare-panel: side-by-side word
+                // table for the listed languages. Reuse the user's normal
+                // language-comparison UI so they get the full word grid.
+                if (typeof clearCompare === 'function'
+                    && typeof addToCompare === 'function'
+                    && typeof openComparePanel === 'function') {
+                    try { clearCompare(); } catch (_) {}
+                    validCodes.forEach(c => { try { addToCompare(c); } catch (_) {} });
+                    try { openComparePanel(); } catch (_) {}
                 }
             } else if (action === 'article') {
                 const targetId = btn.dataset.id;
