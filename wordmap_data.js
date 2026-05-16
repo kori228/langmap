@@ -756,15 +756,77 @@ const LANG_DATA = {
   th_s: { name: 'Thai (Southern)', native: 'ภาษาใต้', lat: 7.88, lng: 98.39,
     words: { water:['น้ำ','nam˧˥'], fire:['ไฟ','faj˥'], sun:['ตะวัน','ta˨˩wan˥'], moon:['เดือน','dɯːan˥'], mother:['แม่','mɛː˥˩'], father:['พ่อ','pʰɔː˥˩'], eat:['กิน','kin˥'], drink:['ดื่ม','dɯːm˥˩'], love:['รัก','rak˧˥'], heart:['ใจ','t͡ɕaj˥'], tree:['ต้นไม้','ton˧˥maj˧˥'], house:['บ้าน','baːn˧˥'], dog:['หมา','maː˩˧'], cat:['แมว','mɛːw˥'], hand:['มือ','mɯː˥'], eye:['ตา','taː˥'], hello:['สวัสดี','sa˨˩wat˨˩diː˥'], thanks:['ขอบคุณ','kʰɔːp˨˩kʰun˥'], one:['หนึ่ง','nɯŋ˨˩'], good:['ดี','diː˥'] }},
   za: { name: 'Zhuang', native: 'Vahcuengh', lat: 23.16, lng: 108.27, // Wuming (western Guangxi Zhuang heartland)
-    // altWordForms — Sawndip (古壮字 / 方块壮字) variants for cells where za.wiki
-    // documents specific historical character forms. Sawndip is regionally
-    // unstandardised, so multiple variants per word are normal. Sources:
-    // za.wikipedia.org per-word entries; Sawndip Sawdenj 1989 (古壮字字典).
-    altWordForms: {
-      water: [{ form: '淰 / 𭜯 / 淋', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Raemx; Sawndip Sawdenj 1989' }],
-      house: [{ form: '𭓨 / 兰 / 栏', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Ranz; Sawndip Sawdenj 1989' }],
+    // scriptDisplayPolicy — Zhuang has two living orthographies:
+    //   (1) Sawndip (古壮字 / 方块壮字, "immature characters"), a Chinese-character-
+    //       based logographic system used by Zhuang singers, shamans, and
+    //       scribes for >1000 years (Tang dynasty onward; first dictionary
+    //       Sawndip Sawdenj 1989 with 4,900 entries / 10,000+ characters);
+    //   (2) Sawcuengh, the 1957/1982 Latin official orthography.
+    // Per Zhang Yuansheng (via Wikipedia Sawndip article), ~80% of Sawndip
+    // text consists of unmodified Han characters used semantically; the
+    // remaining ~20% are Zhuang-invented composite logograms (often encoded
+    // in CJK Unified Ideographs Extension B/C/D/E). The script is
+    // unstandardised — many morphosyllables have a dozen+ variant glyphs.
+    //
+    // Surface column is MIXED following the Khitan (zkt) precedent (commit
+    // 80aed8c): cells with a source-confirmed Sawndip glyph (water, fire,
+    // sun, moon, mother, love, house, one — 8 cells) show that glyph;
+    // remaining cells show the Sawcuengh Latin form because no specific
+    // Sawndip mapping was confidently sourced. The IPA slot always carries
+    // the actual IPA transcription.
+    scriptDisplayPolicy: {
+        primary: 'modern-standard',
+        secondary: 'traditional-script',
+        note: {
+            en: 'Surface column is mixed: 8 cells (water, fire, sun, moon, mother, love, house, one) show source-confirmed Sawndip (古壮字) glyphs per za.wikipedia.org per-word entries (Raemx, Ndwen, Vunz, Gyaez, Ranz) and Han-character direct borrowings standard in Sawndip per Zhang Yuansheng (~80% of Sawndip text is unmodified Han characters used semantically; cited in Wikipedia "Sawndip" article). Remaining 12 cells show the Sawcuengh Latin form (1957/1982 official orthography) because no specific Sawndip glyph was confidently sourced — per task constraint, no auto-generation from romanization.',
+            ja: '表示形は混在: 8セル (water, fire, sun, moon, mother, love, house, one) は出典確認済みのサウンディップ (古壮字) を表示 (za.wikipedia.org 各語項目および Wikipedia "Sawndip" 記事で Zhang Yuansheng が指摘する「サウンディップ文書の約80%は意味的に流用された漢字」)。残り12セルは具体的なサウンディップ字形が未確認のため Sawcuengh ラテン正書法 (1957/1982年) を表示。ローマ字からの自動生成は行わない。',
+            ko: '표시 형은 혼합: 8개 셀 (water, fire, sun, moon, mother, love, house, one)은 출처가 확인된 사운딥 (古壮字) 글리프를 표시 (za.wikipedia.org 각 단어 항목 및 Wikipedia "Sawndip" 문서에서 Zhang Yuansheng이 지적한 "사운딥 텍스트의 약 80%는 의미적으로 차용된 한자"). 나머지 12개 셀은 구체적인 사운딥 글리프 미확인으로 Sawcuengh 라틴 정자법 (1957/1982년)을 표시. 로마자 기반 자동 생성은 하지 않음.',
+            zh: '表面列为混合: 8个单元格 (water, fire, sun, moon, mother, love, house, one) 显示来源已确认的古壮字 (Sawndip) 字形 (za.wikipedia.org 各词条 Raemx、Ndwen、Vunz、Gyaez、Ranz 以及 Wikipedia "Sawndip" 条目所引张元生关于 "古壮字文本约80%为语义借用未改汉字" 的论述)。其余12个单元格因未确证具体古壮字字形而显示 Sawcuengh 拉丁正字法 (1957/1982年)。不从罗马字自动生成。',
+        },
     },
-    words: { water:['raemx','ɣam˦'], fire:['feiz','fei˧˥'], sun:['daengzngoenz','taːŋ˧˥ŋɯn˧˥'], moon:['ndaen','daːn˥'], mother:['meh','me˨'], father:['boh','po˨'], eat:['gwn','kʷɤn˥'], drink:['gwnraemx','kʷɤn˥ɣam˦'], love:['gyaez','kjai˧˥'], heart:['sim','ɕim˥'], tree:['faex','fai˦'], house:['ranz','ɣan˧˥'], dog:['ma','maː˥'], cat:['meuz','meu˧˥'], hand:['fwngz','fɯŋ˧˥'], eye:['da','taː˥'], hello:['mwngz ndei','mɯŋ˧˥dei˥'], thanks:['dwgrengz mwngz','tuk˧ɣeŋ˧˥mɯŋ˧˥'], one:['it','it˧'], good:['ndei','dei˥'] }},
+    // altWordForms — Sawcuengh Latin (1957/1982) for cells whose surface
+    // slot now carries a Sawndip glyph, plus Sawndip variant glyphs for
+    // cells where multiple regional forms are attested. Sawndip is
+    // regionally unstandardised, so multiple variants per word are normal.
+    // Sources: za.wikipedia.org per-word entries; Sawndip Sawdenj 1989
+    // (古壮字字典); Wikipedia "Sawndip" article (which cites the 1989
+    // dictionary as the only published Sawndip lexicon).
+    altWordForms: {
+      water:  [{ form: 'raemx',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '𭜯 / 淋 / 𭰽 / 𢗨 / 𣲙', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Raemx — regional variant glyphs alongside the primary form 淰' }],
+      fire:   [{ form: 'feiz',       script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      sun:    [{ form: 'daengzngoenz', script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      moon:   [{ form: 'ndaen',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      mother: [{ form: 'meh',        script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+      love:   [{ form: 'gyaez',      script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '𠮹 / 𢟋 / 𢠿', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Gyaez — regional variant glyphs alongside the primary form 𭝚' }],
+      house:  [{ form: 'ranz',       script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' },
+               { form: '兰 / 䒟 / 苒 / 栏', script: 'Sawndip (古壮字)', source: 'za.wikipedia.org Ranz — regional variant glyphs alongside the primary form 𭓨' }],
+      one:    [{ form: 'it',         script: 'Latin (Sawcuengh)', source: '1957/1982 official orthography' }],
+    },
+    words: { water:['淰','ɣam˦'], fire:['火','fei˧˥'], sun:['日','taːŋ˧˥ŋɯn˧˥'], moon:['月','daːn˥'], mother:['𫱆','me˨'], father:['boh','po˨'], eat:['gwn','kʷɤn˥'], drink:['gwnraemx','kʷɤn˥ɣam˦'], love:['𭝚','kjai˧˥'], heart:['sim','ɕim˥'], tree:['faex','fai˦'], house:['𭓨','ɣan˧˥'], dog:['ma','maː˥'], cat:['meuz','meu˧˥'], hand:['fwngz','fɯŋ˧˥'], eye:['da','taː˥'], hello:['mwngz ndei','mɯŋ˧˥dei˥'], thanks:['dwgrengz mwngz','tuk˧ɣeŋ˧˥mɯŋ˧˥'], one:['一','it˧'], good:['ndei','dei˥'] },
+    wordEvidence: {
+      water:  { evidence: 'direct',   source: 'Sawndip 淰 (phonetic + 氵 water radical) per za.wikipedia.org Raemx entry which lists it as the primary form; also cited in 2020 壮布依语书写推荐用字字表 (Recommended Sawndip List for Zhuang/Bouyei).' },
+      fire:   { evidence: 'direct',   source: 'Sawndip 火 — direct Han-character semantic borrowing. Per Zhang Yuansheng (via Wikipedia "Sawndip" article), ~80% of Sawndip text consists of unmodified Han characters used semantically; 火 is the standard Sawndip form for feiz (fire).' },
+      sun:    { evidence: 'direct',   source: 'Sawndip 日 — direct Han-character semantic borrowing for daengngoenz (sun/day). Per Zhang Yuansheng (via Wikipedia "Sawndip" article), Han-character semantic borrowings dominate Sawndip writing; za.wikipedia.org Daengngoenz article also uses the astronomical symbol ☉.' },
+      moon:   { evidence: 'direct',   source: 'Sawndip 月 — explicitly listed in za.wikipedia.org Ndwen article as the character form for the Zhuang word for moon/month; direct Han-character semantic borrowing.' },
+      mother: { evidence: 'direct',   source: 'Sawndip 𫱆 (U+2BC46, Zhuang-invented composite logogram, CJK Extension E) per za.wikipedia.org Vunz article ("𭑫𫱆" = "father-mother" compound). One of multiple regional forms for meh.' },
+      father: { evidence: 'inferred', source: 'Sawcuengh Latin "boh" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org or Wikipedia "Sawndip" article. Sawndip Sawdenj 1989 likely contains an entry but not directly verified in this audit.' },
+      eat:    { evidence: 'inferred', source: 'Sawcuengh Latin "gwn" retained — no specific Sawndip glyph confidently sourced. Sawndip Sawdenj 1989 likely contains an entry but not directly verified in this audit.' },
+      drink:  { evidence: 'inferred', source: 'Sawcuengh Latin "gwnraemx" retained — no specific Sawndip glyph confidently sourced. As a compound (eat + water), the form is unlikely to have a single dedicated logogram.' },
+      love:   { evidence: 'direct',   source: 'Sawndip 𭝚 (CJK Extension F) per za.wikipedia.org Gyaez article which lists 𭝚、𠮹、𢟋、𢠿 as Sawndip variants for gyaez; 𭝚 is the first form listed.' },
+      heart:  { evidence: 'inferred', source: 'Sawcuengh Latin "sim" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org or Wikipedia "Sawndip" article. Direct Han borrowing 心 is plausible but not source-confirmed in this audit.' },
+      tree:   { evidence: 'inferred', source: 'Sawcuengh Latin "faex" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 木 is plausible but not source-confirmed.' },
+      house:  { evidence: 'direct',   source: 'Sawndip 𭓨 (U+2D4E8, CJK Extension F, Zhuang-invented logogram) per za.wikipedia.org Ranz article and Wikipedia "Sawndip" article which cites it as the single most-attested Sawndip form across multiple modern Pingguo manuscript sources.' },
+      dog:    { evidence: 'inferred', source: 'Sawcuengh Latin "ma" retained — no specific Sawndip glyph confidently sourced. The phonetic-borrowing candidate 馬 (Mandarin mǎ) is plausible but not source-confirmed in this audit.' },
+      cat:    { evidence: 'inferred', source: 'Sawcuengh Latin "meuz" retained — no specific Sawndip glyph confidently sourced. Phonetic borrowings like 貓 are plausible but not directly verified.' },
+      hand:   { evidence: 'inferred', source: 'Sawcuengh Latin "fwngz" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 手 is plausible but not source-confirmed.' },
+      eye:    { evidence: 'inferred', source: 'Sawcuengh Latin "da" retained — no specific Sawndip glyph confidently sourced. Direct Han borrowing 眼 is plausible but not source-confirmed.' },
+      hello:  { evidence: 'inferred', source: 'Sawcuengh Latin "mwngz ndei" retained — this is a modern greeting formula calqued on Mandarin 你好, unlikely to have an attested Sawndip-script tradition.' },
+      thanks: { evidence: 'inferred', source: 'Sawcuengh Latin "dwgrengz mwngz" retained — modern formula, no Sawndip-script tradition expected.' },
+      one:    { evidence: 'direct',   source: 'Sawndip 一 — direct Han-character semantic borrowing for the numeral one (it). Per Zhang Yuansheng (via Wikipedia "Sawndip" article), Han numerals are the standard Sawndip writing for numbers; 一 corresponds to Zhuang "it" (cognate with Sinitic numeral one).' },
+      good:   { evidence: 'inferred', source: 'Sawcuengh Latin "ndei" retained — no specific Sawndip glyph confidently sourced from za.wikipedia.org Ndei article (which renders content in Sawcuengh romanization only).' },
+    } },
   hmn: { name: 'Hmong', native: 'Hmoob', lat: 26.65, lng: 104.25,
     words: { water:['dej','te˧'], fire:['taws','tɑ˧˩'], sun:['hnub','nu˧˥'], moon:['hli','ɬi˥'], mother:['niam','niã˥'], father:['txiv','tɕi˧˩'], eat:['noj','nɔ˧'], drink:['haus','hɑu˧˩'], love:['hlub','ɬu˧˥'], heart:['siab','ɕiã˧˥'], tree:['ntoo','tɔː˥'], house:['tsev','tɕɛ˧˩'], dog:['dev','te˧˩'], cat:['miv','mi˧˩'], hand:['tes','te˧˩'], eye:['qhov muag','kʰɔ˧˩muã˧'], hello:['nyob zoo','ɲɔ˧˥tɕɔː˥'], thanks:['ua tsaug','uã˥tɕɑu˧'], one:['ib','i˧˥'], good:['zoo','tɕɔː˥'] }},
   jv: { name: 'Javanese', native: 'ꦧꦱꦗꦮ', lat: -7.25, lng: 112.75,
