@@ -31,7 +31,21 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Khitan+Small+Script&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
+    <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
+         for "Noto Serif Khitan Small Script"). Load the Serif variant
+         directly from the notofonts.github.io CDN via jsDelivr so 𘲺 𘭧
+         𘬣 𘰕𘯛 (zkt) actually render instead of becoming □ / ☒. -->
+    <style>
+        @font-face {
+            font-family: 'Noto Serif Khitan Small Script';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io@main/fonts/NotoSerifKhitanSmallScript/hinted/ttf/NotoSerifKhitanSmallScript-Regular.ttf') format('truetype');
+            unicode-range: U+16FE4, U+18B00-18CFF;
+        }
+    </style>
     <style>
         body { padding: 0; background: #fff; min-height: 100vh; }
         #map { width: 100vw; height: 100vh; }
@@ -269,7 +283,7 @@
                 "Noto Serif Tibetan", "Noto Sans Tibetan",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
-                "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
+                "Noto Serif Khitan Small Script", "Noto Sans Manichaean",
                 "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 "Noto Sans New Tai Lue",
@@ -471,7 +485,7 @@
                 "Noto Serif Tibetan", "Noto Sans Tibetan",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
-                "Noto Sans Khitan Small Script", "BabelStone Khitan Small Glyphs",
+                "Noto Serif Khitan Small Script", "BabelStone Khitan Small Glyphs",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
                 "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
                 "Noto Sans Coptic", "Noto Sans New Tai Lue",
@@ -498,7 +512,7 @@
                 "Noto Serif Tibetan", "Noto Sans Tibetan",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
-                "Noto Sans Khitan Small Script", "Noto Sans Manichaean",
+                "Noto Serif Khitan Small Script", "Noto Sans Manichaean",
                 "Noto Sans Egyptian Hieroglyphs", "Noto Sans Meroitic",
                 "Noto Sans Sundanese", "Noto Sans Tagalog", "Noto Sans Coptic",
                 "Noto Sans New Tai Lue",
@@ -595,7 +609,7 @@
                 "Noto Serif Tibetan", "Noto Sans Tibetan",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
-                "Noto Sans Khitan Small Script", "BabelStone Khitan Small Glyphs",
+                "Noto Serif Khitan Small Script", "BabelStone Khitan Small Glyphs",
                 "Noto Sans Manichaean", "Noto Sans Egyptian Hieroglyphs",
                 "Noto Sans Meroitic", "Noto Sans Sundanese", "Noto Sans Tagalog",
                 "Noto Sans Coptic", "Noto Sans New Tai Lue",
