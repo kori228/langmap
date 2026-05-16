@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 935 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 936 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -74,6 +74,10 @@ const EXCLUDED_CODES = new Set([
   // speaker Tevfik Esenç died in Hacıosman, Turkey). dataStatus:'attested' via
   // Dumézil/Vogt corpus; classified historical so excluded from the modern map.
   'uby',
+  // Damin — secret ceremonial men's register of Lardil; effectively dormant since
+  // ~1980 when the last Warama initiations stopped. Classed as historical via
+  // HIST_DESCENDANT['lbz_damin']='lbz' so excluded from the modern map.
+  'lbz_damin',
 ]);
 
 const LANG_DATA = {
@@ -2940,6 +2944,68 @@ const LANG_DATA = {
       eye:   { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — mela; also attested in Klokeid (1976) Topics in Lardil Grammar. (Cf. ASJP wordlist which gives kuwu for eye and lists mela as a variant for water — likely reflects dialectal polysemy)' },
       one:   { evidence: 'direct', source: 'ASJP wordlist for Lardil (Hale et al. 1996) — wangi "one"' }
     }},
+  // Damin (Demiin) — secret ceremonial men's auxiliary register of Lardil (and historically also
+  // Yangkaal). Not a separate language: shares Lardil grammar wholesale but has its own ~200-item
+  // lexicon, each entry semantically compressing a whole class of ordinary Lardil meanings (e.g.
+  // n!aa = any kin of one's own moiety, didi = anyone of the opposite moiety). Phonologically
+  // exotic and deliberately designed to contrast with Lardil's plain phonology: contains click
+  // stops (incl. bilabial ʘ — otherwise only Khoisan and isolated ritual registers), an ingressive
+  // lateral fricative unique cross-linguistically, ejectives, and a nasalised egressive labio-
+  // lingual trill — none of which exist in any other Australian language. Taught only to men who
+  // had completed the second-stage Warama initiation; the last initiations stopped by ~1980 and
+  // the register is now dormant (no active users; some elderly memory). Placed slightly offset
+  // from Lardil's marker so the label doesn't overlap. Words: only ~2-3 of the 20 Swadesh cells
+  // have a defensible Damin form because Damin's 200-item lexicon abstracts semantic CLASSES
+  // rather than naming Swadesh basic-vocab items 1:1 — most cells are left '—' with explanatory
+  // wordEvidence notes. Sources: Hale (1973) "Deep–surface canonical disparities" in Sebeok ed.,
+  // Current Trends in Linguistics 11; Hale & Nash (1997) "Damin and Lardil phonotactics" in
+  // Tryon & Walsh eds., Boundary Rider (Pacific Linguistics); Evans (1995) A Grammar of Kayardild
+  // (historical-comparative Tangkic background).
+  lbz_damin: { name: 'Damin', native: 'Damin', lat: -16.62, lng: 139.50, // offset from Lardil so labels don't overlap
+    words: {
+      water:  ['—','—'],
+      fire:   ['l!ii','l!iː'],
+      sun:    ['—','—'],
+      moon:   ['—','—'],
+      mother: ['—','—'],
+      father: ['—','—'],
+      eat:    ['—','—'],
+      drink:  ['—','—'],
+      love:   ['—','—'],
+      heart:  ['—','—'],
+      tree:   ['—','—'],
+      house:  ['—','—'],
+      dog:    ['—','—'],
+      cat:    ['—','—'],
+      hand:   ['—','—'],
+      eye:    ['—','—'],
+      hello:  ['—','—'],
+      thanks: ['—','—'],
+      one:    ['—','—'],
+      good:   ['—','—']
+    },
+    wordEvidence: {
+      fire:   { evidence: 'direct', source: 'Hale (1973) "Deep–surface canonical disparities…", Current Trends in Linguistics 11; Hale & Nash (1997) "Damin and Lardil phonotactics" — Damin l!ii covers fire/burning; note: l! denotes a click-stop-onset characteristic of the register', note: 'Damin\'s ~200 items each abstract a class of ordinary Lardil meanings; "l!ii" is one of the few items that maps cleanly onto a single Swadesh concept.' },
+      water:  { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      sun:    { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      moon:   { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      mother: { evidence: 'inferred', note: 'Damin doesn\'t lexicalize a single "mother" lexeme — the closest Damin kin term n!aa abstracts over all same-moiety male kin (the inverse term didi covers opposite-moiety kin), so it cross-cuts the Swadesh "mother/father" axis (Hale 1973; Hale & Nash 1997).' },
+      father: { evidence: 'inferred', note: 'Damin doesn\'t lexicalize a single "father" lexeme — Damin kin terms (n!aa, didi) abstract over moiety membership rather than the Swadesh "mother/father" axis (Hale 1973; Hale & Nash 1997).' },
+      eat:    { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      drink:  { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      love:   { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      heart:  { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      tree:   { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      house:  { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      dog:    { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      cat:    { evidence: 'inferred', note: 'Cats post-date Damin\'s active use and were never integrated into the register; no attested Damin form.' },
+      hand:   { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      eye:    { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      hello:  { evidence: 'inferred', note: 'Damin is a ceremonial register confined to post-Warama-initiation seclusion; no Swadesh-style greeting formula is documented (Hale 1973; Hale & Nash 1997).' },
+      thanks: { evidence: 'inferred', note: 'Damin is a ceremonial register confined to post-Warama-initiation seclusion; no Swadesh-style thanks formula is documented (Hale 1973; Hale & Nash 1997).' },
+      one:    { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' },
+      good:   { evidence: 'inferred', note: 'Damin doesn\'t lexicalize this concept directly — its 200-item lexicon abstracts semantic classes rather than naming Swadesh basic-vocab items (Hale 1973; Hale & Nash 1997).' }
+    }},
   // Tangkic — closely related to Lardil; spoken on Forsyth Island and adjacent north-eastern
   // Wellesley Islands. Effectively dormant (~1 fluent L1 speaker). Yangkaal and Lardil were the
   // only two languages whose male speakers used the Damin secret auxiliary register. Yangkaal-
@@ -4625,6 +4691,7 @@ const DATA_STATUS_OVERRIDES = {
     roo:       'fragmentary',    // Rotokas — Firchow 1973 / Robinson 2011
     nmn:       'fragmentary',    // Taa / !Xóõ — Traill 1994
     lbz:       'fragmentary',    // Lardil — host language of Damin
+    lbz_damin: 'fragmentary',    // Damin — secret ceremonial men's register of Lardil; ~200 items, only ~1 cell maps cleanly to Swadesh
     nny:       'fragmentary',    // Yangkaal — sister of Lardil
     kky:       'fragmentary',    // Guugu Yimithirr — absolute cardinal-direction reference (Levinson)
     blc:       'fragmentary',    // Nuxalk (Bella Coola) — Salishan, all-consonant words (Nater 1984)
@@ -4841,6 +4908,7 @@ const HIST_DESCENDANT = {
     roo:null,    // Rotokas — Firchow 1973 / Robinson 2011
     nmn:null,    // Taa / !Xóõ — Traill 1994
     lbz:null,    // Lardil — host language of Damin
+    lbz_damin:'lbz', // Damin descends to its parent Lardil (both effectively dormant); puts Damin in historical era per user spec
     nny:null,    // Yangkaal — sister of Lardil
     kky:null,    // Guugu Yimithirr — absolute cardinal-direction reference
     blc:null,    // Nuxalk (Bella Coola) — all-consonant words
