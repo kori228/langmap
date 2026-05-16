@@ -217,6 +217,7 @@ const LANGUAGES = [
     { code: 'is', name: 'アイスランド語', group: 'GER' },
     { code: 'fo', name: 'フェロー語', group: 'GER', experimental: true },
     { code: 'enm', name: '中英語', group: 'GER', experimental: true, historical: true },
+    { code: 'en_em', name: '初期近代英語', group: 'GER', experimental: true, historical: true },
     { code: 'en_ang', name: '古英語', group: 'GER', experimental: true, historical: true },
     { code: 'non', name: '古ノルド語', group: 'GER', experimental: true, historical: true },
     { code: 'got', name: 'ゴート語', group: 'GER', experimental: true, historical: true },

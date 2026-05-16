@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 910 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 911 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -38,7 +38,7 @@ const WORD_LIST = [
 // liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
-  'non','en_ang','enm','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
+  'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
   'vi_nom','sa','mnc',
   // Phase 4: historical / ancient
   'peo','ave','xto','txb','phn','uga','xlu','pal','syc','fro','goh','gez',
@@ -1399,6 +1399,16 @@ const LANG_DATA = {
   // dialect tradition; Canterbury Tales pilgrims reflect Middle English speech).
   enm: { name: 'Middle English', native: 'Englisch', lat: 51.28, lng: 1.08,
     words: { water:['water','watər'], fire:['fyr','fyːr'], sun:['sonne','sɔnːə'], moon:['mone','moːnə'], mother:['moder','moːdər'], father:['fader','faːdər'], eat:['eten','eːtən'], drink:['drinken','drɪŋkən'], love:['love','lʊvə'], heart:['herte','hɛrtə'], tree:['tre','treː'], house:['hous','huːs'], dog:['hound','huːnd'], cat:['catte','katːə'], hand:['hand','hand'], eye:['eye','iːə'], hello:['hail','hɛːl'], thanks:['gramercy','ɡraːmɛrsiː'], one:['oon','oːn'], good:['good','ɡoːd'] }},
+  // Early Modern English (~1500–1700) — Shakespearean/King James era. Pedagogical
+  // stage: the form taught for reading Shakespeare's First Folio (1623), the
+  // King James Bible (1611), and Marlowe/Donne/Jonson. Pronunciation reconstructions
+  // follow David Crystal's Original Pronunciation (OP) work: Great Vowel Shift
+  // mid-process (long /aː oː uː/ partially shifted, /iː uː/ → diphthongs in
+  // progress), pre-FOOT-STRUT split, retained /r/ in all positions.
+  // Spellings standardized to Folio orthography (loue=love, fyre=fire, etc.).
+  // Location: Shakespeare's Globe Theatre, Bankside, London.
+  en_em: { name: 'Early Modern English', native: 'Early Moderne English', lat: 51.51, lng: -0.10,
+    words: { water:['water','ˈwætər'], fire:['fyre','fəir'], sun:['sunne','sʊn'], moon:['moone','muːn'], mother:['mother','ˈmʊðər'], father:['father','ˈfɑːðər'], eat:['eate','eːt'], drink:['drinke','driŋk'], love:['loue','lʊv'], heart:['heart','hɛrt'], tree:['tree','triː'], house:['house','huːs'], dog:['dogge','dɔɡ'], cat:['cat','kat'], hand:['hand','hand'], eye:['eye','əi'], hello:['good den','ɡuːd dɛn'], thanks:['gramercy','ɡraˈmɛrsi'], one:['one','oːn'], good:['good','ɡʊːd'] }},
   // Old English (Anglo-Saxon, Englisċ) — Germanic Western Anglo-Saxon, ~5-12th c. (extinct as L1 with Norman Conquest 1066). Reconstructed from extensive Anglo-Saxon corpus (Beowulf, Anglo-Saxon Chronicle, etc.).
   // Sources: Ethnologue 27 'ang'; Glottolog olde1238; Bosworth-Toller Anglo-Saxon Dictionary; Mitchell & Robinson (1992) Guide to Old English.
   ang: { name: 'Old English', native: 'Englisċ', lat: 51.75, lng: -1.26, // Oxford / Wessex (heartland of West Saxon literary standard)
@@ -4250,6 +4260,7 @@ const DATA_STATUS_OVERRIDES = {
     ja_heian:  'pedagogical',
     ko_mid:    'pedagogical',
     ko_em:     'pedagogical',
+    en_em:     'pedagogical',      // Early Modern English (Shakespeare-era; OP reconstruction)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4283,7 +4294,7 @@ const DATA_STATUS_OVERRIDES = {
 // Moved from wordmap.html to the data layer so the validator does not need
 // to regex-scrape JS source. The browser also reads this constant.
 const HIST_DESCENDANT = {
-    la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', non:'is',
+    la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', en_em:'en', non:'is',
     got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
     sa:'hi', mnc:'zh',
     sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
