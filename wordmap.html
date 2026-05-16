@@ -2007,7 +2007,7 @@
             filter:    29,
             names:   105,
             meta:     185,
-            trivia:   15,
+            trivia:   16,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5388,10 +5388,29 @@
             backdrop.classList.toggle('transparent', !!on);
         }
 
+        // Close any panels that would clutter the article surface
+        // before showing a new article. The snapshot was already taken
+        // (so the user's pre-trivia state is preserved), and on close
+        // restoreMapState reopens whatever was originally visible.
+        function _resetTriviaSurface() {
+            try { if (typeof closeInfoPanel === 'function' && infoPanel
+                  && infoPanel.classList.contains('visible')) closeInfoPanel(); } catch (_) {}
+            try { if (typeof closeTriviaComparePanel === 'function') closeTriviaComparePanel(); } catch (_) {}
+            try { triviaClearBlinks(); } catch (_) {}
+            try { if (_triviaSpotlight && _triviaSpotlight.size) {
+                  _triviaSpotlight.clear();
+                  if (typeof updateMarkers === 'function') updateMarkers(currentWord);
+            } } catch (_) {}
+        }
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
             if (!list.length) return;
             if (!_triviaSnapshot) _triviaSnapshot = captureMapState();
+            // Each article opens from a clean surface — close any
+            // language modal / compare panel / blinks left from a
+            // previous interaction. restoreMapState (on close) will
+            // bring back the user's original state from the snapshot.
+            _resetTriviaSurface();
             // If no specific article requested, show the index. If a
             // requested id matches an article, open that. Otherwise
             // fall back to the index (covers stale URL hash too).
@@ -5418,6 +5437,10 @@
             // subsequent renderTriviaArticle pass on some browsers.
             const fromArticle = modal && modal.dataset.view === 'article';
             if (fromArticle && _triviaSnapshot) restoreMapState(_triviaSnapshot);
+            // Each article starts from a clean surface (no lingering
+            // language modal / compare panel / blinks from the previous
+            // article's action buttons).
+            _resetTriviaSurface();
             // Preserve the compact/full layout the user chose. If they
             // shrank the modal aside (or it auto-shrank from a previous
             // action), prev/next navigation should keep it shrunk; only
