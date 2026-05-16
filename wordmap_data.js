@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 922 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 926 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -39,7 +39,8 @@ const WORD_LIST = [
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ja_kanbun','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
   'non','en_ang','enm','en_em','got','cu','pi','pi_edu','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang','zh_wenyan_edu',
-  'vi_nom','sa','sa_edu','mnc','ar_qur',
+  'vi_nom','vi_han','sa','sa_edu','mnc','ar_qur',
+  'de_lut','es_sgl','fr_class',
   // Phase 4: historical / ancient
   'peo','ave','xto','txb','phn','uga','xlu','pal','fa_clas','syc','fro','it_dan','goh','gez',
   'he_mis','hy_grab',
@@ -1692,6 +1693,19 @@ const LANG_DATA = {
   // regional prestige center) so Korean stages no longer cluster at Seoul.
   ko_em: { name: 'Early Modern Korean', native: '近世韓國語', lat: 37.27, lng: 127.01,
     words: { water:['물','mul'], fire:['불','pul'], sun:['ᄒᆡ','hɛ'], moon:['달','tal'], mother:['어미','ʌmi'], father:['아비','abi'], eat:['먹다','mʌkta'], drink:['마시다','maɕida'], love:['사랑','saɾaŋ'], heart:['마음','maɯm'], tree:['나무','namu'], house:['집','tɕip'], dog:['개','kɛ'], cat:['고양이','kojaŋi'], hand:['손','son'], eye:['눈','nun'], hello:['안녕하시오','annjʌŋ.ha.si.o'], thanks:['고맙소이다','komap.so.i.da'], one:['하나','hana'], good:['좋다','tɕotta'] }},
+  // Vietnamese Sino-reading of Classical Chinese (Hán văn) — the Sino-
+  // Vietnamese pronunciation tradition for reading Literary Chinese (lzh)
+  // texts in pre-modern Vietnam. The third major East Asian Sino-reading
+  // tradition alongside Japanese kanbun (ja_kanbun), Korean hanmun, and
+  // Cantonese pedagogical (zh_wenyan_edu). Distinct from chữ Nôm (vi_nom,
+  // the demotic Sino-Vietnamese script for native Vietnamese morphemes)
+  // — vi_han reads Chinese characters in Classical Chinese order with
+  // Sino-Vietnamese pronunciation, not Vietnamese morphology. Used in
+  // Confucian education at Văn Miếu Quốc Tử Giám (Temple of Literature,
+  // Hanoi) from the 11th c. to 1919 abolition; survives in modern
+  // Vietnamese historical-Confucian curriculum.
+  vi_han: { name: 'Vietnamese Hán văn (Sino-reading)', native: 'Hán văn (漢文)', lat: 21.03, lng: 105.84, // Văn Miếu, Hanoi
+    words: { water:['水','tʰwi˧˩˧'], fire:['火','hwa˧˩˧'], sun:['日','ɲət˨˩'], moon:['月','ŋwiət˨˩'], mother:['母','məw˧˩˧'], father:['父','fu˨˩'], eat:['食','tʰɨk˨˩'], drink:['飲','əm˧˩˧'], love:['愛','ai˧˥'], heart:['心','təm˧˧'], tree:['木','mok˨˩'], house:['屋','ok˨˩'], dog:['犬','xwien˧˩˧'], cat:['貓','miew˧˧'], hand:['手','tʰu˧˩˧'], eye:['目','muk˨˩'], hello:['萬福','vən˨˩ fuk˨˩'], thanks:['謝','ta˨˩˨'], one:['一','ɲət˨˩'], good:['善','tʰien˨˩˨'] }},
   vi_nom: { name: 'Vietnamese Chữ Nôm', native: 'Tiếng Việt (Chữ Nôm)', lat: 21.03, lng: 105.85,
     words: { water:['渃','nɨək'], fire:['𤏬','lɨə'], sun:['𣎏𡗶','mət tɤj'], moon:['𣎏𢁑','mət taŋ'], mother:['𡞕','mɛ'], father:['𤙗','ɓo'], eat:['𫗒','an'], drink:['㗂','uəŋ'], love:['𢞅','iəw'], heart:['𢣐𢞂','tɤj tim'], tree:['𣘃','kəj'], house:['茹','ɲaː'], dog:['𤝞','tɕɔ'], cat:['猫','mɛw'], hand:['𡬶','taj'], eye:['𥄫','mak'], hello:['吀嘲','sin tɕaːw'], thanks:['感恩','kaːm əːn'], one:['𠬠','mot'], good:['卒','tot'] }},
   // === Constructed Languages ===
@@ -2931,6 +2945,21 @@ const LANG_DATA = {
   // Old Romance / Old Germanic
   fro: { name: 'Old French', native: 'romans', lat: 48.86, lng: 2.35, // Île-de-France
     words: { water:['eve','ɛːvə'], fire:['feu','fø'], sun:['soleil','soˈleʎ'], moon:['lune','ˈlynə'], mother:['mere','ˈmɛrə'], father:['pere','ˈpɛrə'], eat:['mangier','maɲˈdʒier'], drink:['boivre','ˈbojvrə'], love:['amor','aˈmor'], heart:['cuer','kwɛr'], tree:['arbre','ˈarbrə'], house:['maison','maiˈzõn'], dog:['chien','tʃjɛn'], cat:['chat','tʃat'], hand:['main','mɛ̃j'], eye:['oeil','œʎ'], hello:['salut','saˈlyt'], thanks:['merci','mɛrˈsi'], one:['un','yn'], good:['bon','bõn'] }},
+  // Classical French / French of the Grand Siècle (17c., "Le Bel Usage")
+  // — the French of Racine, Corneille, Molière, La Fontaine, Pascal,
+  // Bossuet, La Bruyère, Madame de Sévigné. Codified by the Académie
+  // française (founded 1635) and Vaugelas's Remarques sur la langue
+  // françoise (1647), the authoritative grammar of the period. Distinct
+  // from Old French (fro, 9-14c.) and from Modern French (fr) by:
+  // preserved /we/ for <oi> (le roi as /lœrwe/, became /lœrwa/ ca. 1700),
+  // active liaison of word-final consonants, distinct vowel length
+  // distinctions (chat /ʃaː/ vs cha-cha /ʃa/), formal "vous" vs intimate
+  // "tu" sharply enforced, pre-pejoration of many lexical items
+  // (honnête "decent" still had full positive valence). Anchored at
+  // Versailles — Louis XIV's court, where "le bel usage" was the
+  // linguistic norm of cultured French.
+  fr_class: { name: 'Classical French (17c., Bel Usage)', native: 'Français classique', lat: 48.80, lng: 2.13, // Versailles
+    words: { water:['eau','o'], fire:['feu','fø'], sun:['soleil','sɔlɛj'], moon:['lune','lyn'], mother:['mère','mɛːr'], father:['père','pɛːr'], eat:['manger','mɑ̃ʒe'], drink:['boire','bweːr'], love:['amour','amur'], heart:['cœur','kœːr'], tree:['arbre','aːrbr'], house:['maison','mɛzɔ̃'], dog:['chien','ʃjɛ̃'], cat:['chat','ʃaː'], hand:['main','mɛ̃'], eye:['œil','œːj'], hello:['Dieu vous garde','djø vu ɡard'], thanks:['grâces','ɡraːs'], one:['un','œ̃'], good:['bon','bɔ̃'] }},
   // Old Italian (Italiano antico) / Dantesque Tuscan — the literary Florentine
   // of Dante's Divine Comedy (~1308–1320), Petrarch's Canzoniere (~1350),
   // and Boccaccio's Decameron (~1353). Foundational to the Italian literary
@@ -3116,9 +3145,35 @@ const LANG_DATA = {
   // Old Javanese
   kaw: { name: 'Old Javanese (Kawi)', native: 'ꦨꦴꦰꦏꦮꦶ', lat: -7.79, lng: 110.36, words: { water:['ꦮꦫꦶꦃ','warih'], fire:['ꦄꦒ꧀ꦤꦶ','aɡni'], sun:['ꦱꦸꦂꦪ','suɾja'], moon:['ꦕꦤ꧀ꦢꦿ','tʃandra'], mother:['ꦆꦧꦸ','ibu'], father:['ꦫꦩ','rama'], eat:['ꦄꦩꦔꦤ꧀','amaŋan'], drink:['ꦄꦩꦶꦤꦸꦩ꧀','aminum'], love:['ꦱꦶꦃ','sih'], heart:['ꦲꦠꦶ','hati'], tree:['ꦏꦪꦸ','kaju'], house:['ꦈꦩꦃ','umah'], dog:['ꦄꦱꦸ','asu'], cat:['ꦩꦺꦴꦁ','moŋ'], hand:['ꦠꦔꦤ꧀','taŋan'], eye:['ꦩꦠ','mata'], hello:['ꦫꦲꦪꦸ','rahaju'], thanks:['ꦤꦸꦮꦸꦤ꧀','nuwun'], one:['ꦌꦏ','eka'], good:['ꦲꦪꦸ','haju'] } },
   kho: { name: 'Khotanese', native: '𑀳𑁆𑀯𑀢𑀦𑀽', lat: 37.11, lng: 79.93, words: { water:['𑀊𑀤𑀸','uːdaː'], fire:['𑀆𑀢𑀭','aːtar'], sun:['𑀉𑀭𑁆𑀫','urma'], moon:['𑀫𑀸𑀲𑁆𑀢','maːsta'], mother:['𑀫𑀸𑀢','maːta'], father:['𑀧𑀺𑀢','pita'], eat:['𑀧𑀭𑀢','parætæ'], drink:['𑀧𑀻𑀅','piːa'], love:['𑀅𑀭𑁆𑀭𑀽','arːuː'], heart:['𑀬𑀲𑀻','ðiː'], tree:['𑀤𑁆𑀭𑀼','drːu'], house:['𑀩𑁆𑀬𑀸𑀳','bjaːha'], dog:['𑀰𑀼','ɕu'], cat:['𑀰𑁆𑀰𑁆𑀭𑀅𑀼','ɕːrau'], hand:['𑀤𑀲𑁆𑀢','dasta'], eye:['𑀘𑁂𑀰𑁆𑀫𑀦𑁆','tʃʰeʃman'], hello:['𑀤𑁆𑀭𑀽𑀤𑀻','drːuːdiː'], thanks:['𑀧𑁆𑀬𑀰𑁆𑀢','pjaʃta'], one:['𑀰𑁆𑀰𑀅𑀼','ɕːau'], good:['𑀯𑀺𑀭𑀢𑁆𑀢','viratːa'] } },
+  // Early New High German / Luther-era German (Frühneuhochdeutsch, ENHG,
+  // ~1350-1650) — the German of Luther's Bible (1522 NT, 1534 complete,
+  // 1545 final), of the Protestant Reformation, of the Sachsenspiegel
+  // and ENHG literary corpus. Foundational to Modern Standard German:
+  // Luther's East Central German (ostmitteldeutsch) prose became the
+  // basis on which Hochdeutsch was standardized. Distinct from gmh
+  // (Middle High German, 1050-1350) by the New High German Diphthongization
+  // (MHG mîn → ENHG mein, MHG hûs → ENHG haus, MHG iuwer → ENHG euer)
+  // and from Modern German by archaic spellings (Hauß, Danck, Hertz,
+  // Bawm) and pre-standard regional variation. Anchored at Wittenberg —
+  // Luther's home, posting of the 95 Theses (1517), center of the
+  // Reformation and ENHG literary prestige.
+  de_lut: { name: 'Early New High German (Luther-era)', native: 'Frühneuhochdeutsch (Luthers Sprache)', lat: 51.87, lng: 12.65, // Wittenberg
+    words: { water:['Wasser','ˈvasːər'], fire:['Fewr','foɪ̯r'], sun:['Sonne','ˈzɔnə'], moon:['Mond','moːnt'], mother:['Mutter','ˈmʊtər'], father:['Vater','ˈfaːtər'], eat:['essen','ˈɛsːən'], drink:['trincken','ˈtrɪŋkən'], love:['Liebe','ˈliːbə'], heart:['Hertz','hɛrts'], tree:['Bawm','baʊm'], house:['Hauß','haʊs'], dog:['Hund','hʊnt'], cat:['Katze','ˈkatsə'], hand:['Handt','hant'], eye:['Aug','aʊk'], hello:['Gott zum Gruß','ɡɔt tsʊm ɡruːs'], thanks:['Danck','daŋk'], one:['eyn','aɪ̯n'], good:['gut','ɡuːt'] }},
   gmh: { name: 'Middle High German', native: 'diutsch', lat: 50.00, lng: 8.27, // Mainz / Rhine
     words: { water:['wazzer','watsːer'], fire:['viur','viur'], sun:['sunne','ˈzunːə'], moon:['mâne','ˈmaːnə'], mother:['muoter','ˈmuoːtər'], father:['vater','ˈfatər'], eat:['ezzen','ˈetsːən'], drink:['trinken','ˈtrinkən'], love:['minne','ˈminːə'], heart:['herze','ˈhertsə'], tree:['boum','boum'], house:['hûs','huːs'], dog:['hunt','hunt'], cat:['katze','ˈkatsːə'], hand:['hant','hant'], eye:['ouge','ˈougə'], hello:['gegrüezet','ɡəˈɡryːətsət'], thanks:['—','—'], one:['ein','ein'], good:['guot','ɡuoːt'] }},
   // Old Spanish (Castilian)
+  // Golden Age Spanish / Spanish of the Siglo de Oro (~1500-1681) — the
+  // Castilian of Cervantes (Don Quijote, 1605-1615), Lope de Vega, Calderón
+  // de la Barca, Quevedo, Góngora, Santa Teresa, San Juan de la Cruz.
+  // Distinct from Old Spanish (osp, 12-15c.) and from Modern Spanish (es_eu)
+  // by: pre-merger 4-way sibilant system (s vs ç /t͡s/ vs z /d͡z/ vs ss /s/);
+  // distinct b vs v phonemes pre-merger; preserved /ʃ/ in <x>/<j> pre-shift
+  // to /x/ (Cervantes pronounced his name /miˈɣel de θeɾˈβantes saaˈβeðɾa/
+  // with /ʃ/ for j/x); active formal usted etymon "vuestra merced" still
+  // in transition. Anchored at Madrid, Habsburg court center of the
+  // Siglo de Oro literary world.
+  es_sgl: { name: 'Golden Age Spanish (Siglo de Oro)', native: 'Castellano del Siglo de Oro', lat: 40.42, lng: -3.70, // Madrid (Habsburg court)
+    words: { water:['agua','ˈaɣwa'], fire:['fuego','ˈfweɣo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['madre','ˈmadɾe'], father:['padre','ˈpadɾe'], eat:['comer','koˈmeɾ'], drink:['beuer','beˈβeɾ'], love:['amor','aˈmoɾ'], heart:['coraçón','koɾaˈt͡son'], tree:['árbol','ˈaɾβol'], house:['casa','ˈkasa'], dog:['perro','ˈpero'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['ojo','ˈoʃo'], hello:['Dios os guarde','djos os ˈɡwaɾde'], thanks:['gracias','ˈɡɾat͡sjas'], one:['uno','ˈuno'], good:['bueno','ˈbweno'] }},
   osp: { name: 'Old Spanish', native: 'castellano', lat: 42.34, lng: -3.70, // Burgos
     words: { water:['agua','ˈaɣwa'], fire:['fuego','ˈfweɣo'], sun:['sol','sol'], moon:['luna','ˈluna'], mother:['madre','ˈmaðre'], father:['padre','ˈpaðre'], eat:['comer','koˈmeɾ'], drink:['bever','beˈveɾ'], love:['amor','aˈmoɾ'], heart:['coraçón','koɾaˈʣon'], tree:['árbor','ˈaɾβoɾ'], house:['casa','ˈkaza'], dog:['can','kan'], cat:['gato','ˈɡato'], hand:['mano','ˈmano'], eye:['ojo','ˈodʒo'], hello:['salud','saˈlud'], thanks:['mercedes','meɾˈʦeðes'], one:['uno','ˈuno'], good:['bono','ˈbono'] }},
   // Old Khmer (Angkor era)
@@ -4402,6 +4457,10 @@ const DATA_STATUS_OVERRIDES = {
     pi_edu:    'pedagogical',      // Pedagogical Pali (Theravada monastic recitation tradition)
     xct_litpr: 'pedagogical',      // Liturgical Classical Tibetan (Dharamsala-Lhasa Buddhist recitation)
     zh_wenyan_edu: 'pedagogical',  // Classical Chinese with Cantonese pedagogical reading (Hong Kong tradition)
+    vi_han:    'pedagogical',      // Sino-Vietnamese pedagogical reading of Literary Chinese (Hán văn)
+    de_lut:    'pedagogical',      // Early New High German / Luther-era German (Reformation pedagogical canon)
+    es_sgl:    'pedagogical',      // Golden Age Spanish (Siglo de Oro literary canon — Cervantes, Lope, Calderón)
+    fr_class:  'pedagogical',      // Classical French / Grand Siècle (Académie française "le bel usage")
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4442,6 +4501,7 @@ const HIST_DESCENDANT = {
     ine:null, pjk:null, zh_song:'zh', zh_han:'zh', zh_tang:'zh',
     ja_edo:'ja', ja_heian:'ja', ja_kanbun:'ja', ko_mid:'ko', ko_em:'ko', vi_nom:'vi',
     ar_qur:'ar', sa_edu:'hi', pi_edu:'si', xct_litpr:'bo', zh_wenyan_edu:'yue',
+    vi_han:'vi', de_lut:'de', es_sgl:'es_eu', fr_class:'fr',
     oko:'ko', okg:null, ko_gor:'ko', ja_chu:'ja', pry:'ja_oki',
     // Phase 4: historical
     peo:'fa', ave:'fa', xto:null, txb:null, phn:'he', uga:'he',
