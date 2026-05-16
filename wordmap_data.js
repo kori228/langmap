@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 915 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 918 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -1806,6 +1806,25 @@ const LANG_DATA = {
   // (quc K'iche' / kek Q'eqchi' moved to later block — see end of LANG_DATA, audit §6.28 dedup Session 4)
   yua: { name: 'Yucatec Maya', native: 'Maya tʼaan', lat: 20.97, lng: -89.62, // Mérida
     words: { water:['jaʼ','haʔ'], fire:['kʼáakʼ','kʼaːkʼ'], sun:['kʼiin','kʼiːn'], moon:['uj','uh'], mother:['naʼ','naʔ'], father:['taata','taːta'], eat:['jaant','haːnt'], drink:['ukʼul','ukʼul'], love:['yaakuntej','jaːkuntex'], heart:['puksiʼikʼal','puksiʔikʼal'], tree:['cheʼ','tʃeʔ'], house:['naj','nax'], dog:['peekʼ','peːkʼ'], cat:['miis','miːs'], hand:['kʼabʼ','kʼaɓ'], eye:['ich','itʃ'], hello:['baʼax ka waʼalik','baʔaʃ ka waʔalik'], thanks:['dios boʼotik','dios boʔotik'], one:['jun','hun'], good:['maʼalob','maʔalob'] }},
+  // Deaf-community sign language (Central America, no genetic relation to other sign languages)
+  // Nicaraguan Sign Language (ISN, Idioma de Señas de Nicaragua) is the most studied case of a brand-new
+  // language emerging in real time: it arose SPONTANEOUSLY in the late 1970s / early 1980s when Nicaragua
+  // first concentrated deaf children in newly established schools in Managua. The first cohort developed
+  // a rudimentary contact pidgin; each subsequent generation of children — receiving that input from older
+  // peers — added grammatical structure (verb agreement, spatial reference, classifier morphology) until
+  // by the early 1990s a fully structured natural language with native signers had emerged from scratch.
+  // (Kegl, Senghas & Coppola 1999; Senghas, Kita & Özyürek 2004; Pyers, Shusterman, Senghas, Spelke &
+  // Emmorey 2010.) The community is ~3000-5000 signers, centered on Managua. ISN has no everyday written
+  // form — academic writing uses SignWriting or glossed Spanish; the basic-vocab cells are NOT meaningfully
+  // representable as written single strings, so every cell is left '—' under dataStatus:'fragmentary'.
+  // Sources: Kegl, Judy, Ann Senghas & Marie Coppola (1999) "Creation through contact: Sign language
+  // emergence and sign language change in Nicaragua" in DeGraff (ed.) Language Creation and Language
+  // Change (MIT Press); Senghas, Ann, Sotaro Kita & Asli Özyürek (2004) "Children creating core
+  // properties of language: Evidence from an emerging sign language in Nicaragua" Science 305:1779-1782;
+  // Pyers et al. (2010) "Number cognition and the language of Nicaraguan signers" Psychological Science;
+  // Glottolog nica1238; Ethnologue 27 'ncs'.
+  ncs: { name: 'Nicaraguan Sign Language', native: 'Idioma de Señas de Nicaragua', lat: 12.13, lng: -86.25, // Managua
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Itzá Maya — Mayan Yucatecan (sister to Yucatec yua and Mopan within the Yucatecan branch; the language of the historic Itzá Maya kingdom of Tayasal that was the last independent Maya state until Spanish conquest in 1697 — Tayasal/Petén Itzá fell 200+ years after the rest of the Maya world), ~1K (critically endangered — UNESCO critically endangered; only elderly speakers remain, primarily in San José village), Guatemala (Petén department — San José Petén, the last Itzá-speaking village on the Petén Itzá lake).
   // Sources: Ethnologue 27 'itz'; Glottolog itza1241; Hofling (1991) Itzá Maya Texts.
   itz: { name: 'Itzá Maya', native: "Itzaj T'an", lat: 16.97, lng: -89.95, // San José, Petén, Guatemala (the historic Tayasal site on Lake Petén Itzá)
@@ -2769,6 +2788,23 @@ const LANG_DATA = {
       heart: { evidence: 'inferred', note: 'Pirahã "aoʔaago" reflects emotional/inner-state concept; same form appears for "good" — pending source confirmation (Audit Task 120)' },
       good:  { evidence: 'inferred', note: 'Pirahã "aoʔaago" — same form as "heart"; semantic overlap pending source confirmation (Audit Task 120)' }
     }},
+  // Tukanoan (Eastern Tukanoan — NW Amazon Vaupés / Papurí river basin)
+  // Tuyuca is the canonical textbook example of OBLIGATORY EVIDENTIALITY: every finite verb form must specify
+  // the speaker's source of information through one of five evidential markers — visual (you saw it),
+  // non-visual (heard / felt / smelled), inferred (from observed evidence), assumed (general knowledge),
+  // and reportative (someone told you). Equivalents of plain English "John played soccer" cannot be expressed
+  // without simultaneously encoding HOW the speaker knows. (Barnes 1984; Aikhenvald 2004.)
+  // ~800-1000 speakers in NW Amazon (Colombia / Brazil border, Vaupés / Papurí river area). The Tuyuca
+  // are part of the multilingual Vaupés exogamy network — wives must come from a different language group.
+  // Vocabulary coverage is intentionally minimal: full Swadesh-list attestation is not confidently sourced
+  // here, so every cell is left '—' under dataStatus:'fragmentary' rather than fabricated. The typological
+  // claim to fame (evidentiality) is a verbal-morphology property, not a basic-vocab one.
+  // Sources: Barnes, Janet (1984) "Evidentials in the Tuyuca verb" IJAL 50:255-271; Aikhenvald, Alexandra Y.
+  // (2004) Evidentiality (Oxford); Stenzel, Kristine (2007) "The semantics of serial verb constructions in
+  // two Eastern Tukanoan languages" (Boletim do Museu Paraense Emílio Goeldi); Glottolog tuyu1244;
+  // Ethnologue 27 'tue'.
+  tue: { name: 'Tuyuca', native: 'Dohkapuara', lat: 0.50, lng: -69.00, // Vaupés / Papurí river area, Colombia/Brazil
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Chocoan (NW South America)
   emp: { name: 'Northern Embera', native: 'Eperã pedea', lat: 5.69, lng: -76.66, // Quibdó
     words: { water:['do','do'], fire:['tu','tu'], sun:['hewa','hewa'], moon:['ahuru','ahuɾu'], mother:['papa','papa'], father:['apa','apa'], eat:['ko','ko'], drink:['dorrare','doraɾe'], love:['ãỹba','ãɨba'], heart:['ƀakhuru','ɓakuɾu'], tree:['bakuru','bakuɾu'], house:['te','te'], dog:['usa','usa'], cat:['misu','misu'], hand:['jua','xua'], eye:['tau','tau'], hello:['sake bia','sake bia'], thanks:['bia bara','bia baɾa'], one:['aba','aba'], good:['bia','bia'] }},
@@ -3226,6 +3262,20 @@ const LANG_DATA = {
       one:    { evidence: 'direct', source: 'Grubb (1977) — \'na̱m "one"; glottalized n + schwa', formType: 'free-word' },
       good:   { evidence: 'direct', source: 'Grubb (1977) — ek\' "good, well"; basic adjective', formType: 'free-word' },
     } },
+  // Salishan (Pacific Northwest Coast — central British Columbia coast)
+  // Nuxalk (also Bella Coola) is the sole surviving Salishan language of the central BC coast and one of the most
+  // typologically remarkable phonologies on record: it tolerates ENTIRE WORDS with no phonemic vowels (e.g. the
+  // oft-cited xłp̓x̣ʷłtłpłłskʷc̓ "then he had had in his possession a bunchberry plant"), with obstruents acting
+  // as syllabic nuclei (Bagemihl 1991). ~17 fluent first-language speakers remain; community revitalization
+  // (Nuxalk Nation, Acwsalcta School, FirstVoices Nuxalk) is active.
+  // Vocabulary coverage is intentionally minimal: the 20-cell Swadesh-style basic-vocab list does NOT map cleanly
+  // onto the all-consonant forms for which Nuxalk is famous, and full Swadesh attestation in Nater (1984) is not
+  // confidently accessible here, so every cell is left '—' under dataStatus:'fragmentary' rather than fabricated.
+  // Sources: Nater, H.F. (1984) The Bella Coola Language (Canadian Museum of Civilization, Mercury Series 92);
+  // Bagemihl, Bruce (1991) "Syllable structure in Bella Coola" Linguistic Inquiry 22:589-646; Nuxalk Nation
+  // language program / FirstVoices Nuxalk archive; Glottolog bell1243; Ethnologue 27 'blc'.
+  blc: { name: 'Nuxalk', native: 'Nuxalk', lat: 52.40, lng: -126.75, // Bella Coola valley, central BC coast
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
   // Khoisan (Tanzania, distinct from Hadza)
   sad: { name: 'Sandawe', native: 'Sandawe', lat: -4.91, lng: 35.78, // Kondoa
     words: { water:['tsʼa','tsʼa'], fire:['cʼoo','tsʼoː'], sun:['kʼɔɔ','kʼɔː'], moon:['tsoa','tsoa'], mother:['yei','jei'], father:['ai','ai'], eat:['ǁee','ǁeː'], drink:['ʔee','ʔeː'], love:['kalokisi','kalokisi'], heart:['ǁʼampoo','ǁʼampoː'], tree:['hetsʼee','hetsʼeː'], house:['ge','ɡe'], dog:['ǀɔɔ','ǀɔː'], cat:['misho','miʃo'], hand:['kxʼaa','kxʼaː'], eye:['gaa','ɡaː'], hello:['gabaeesa','ɡabaeːsa'], thanks:['musʼokoyo','muʃokojo'], one:['tsʼekʼe','tsʼekʼe'], good:['tlʼobe','tɬʼobe'] }},
@@ -4241,11 +4291,14 @@ const DATA_STATUS_OVERRIDES = {
     // many '—' placeholders).
     itl:       'fragmentary',    // Itelmen — ~80 fluent speakers, Volodin & Khaloimova partial
     ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
-    roo:       'fragmentary',    // Rotokas — ~4K speakers, Firchow & Firchow (1973) / Robinson (2011) partial Swadesh coverage
-    nmn:       'fragmentary',    // Taa / !Xóõ — ~2,500 speakers, Traill 1994 partial Swadesh coverage (5/20)
-    lbz:       'fragmentary',    // Lardil — ~1-2 fluent (effectively dormant); host language of Damin
-    nny:       'fragmentary',    // Yangkaal — ~1 fluent; sister of Lardil, also Damin-using
-    kky:       'fragmentary',    // Guugu Yimithirr — ~700-800 speakers; absolute cardinal-direction spatial reference (Levinson)
+    roo:       'fragmentary',    // Rotokas — Firchow 1973 / Robinson 2011
+    nmn:       'fragmentary',    // Taa / !Xóõ — Traill 1994
+    lbz:       'fragmentary',    // Lardil — host language of Damin
+    nny:       'fragmentary',    // Yangkaal — sister of Lardil
+    kky:       'fragmentary',    // Guugu Yimithirr — absolute cardinal-direction reference (Levinson)
+    blc:       'fragmentary',    // Nuxalk (Bella Coola) — Salishan, all-consonant words (Nater 1984)
+    tue:       'fragmentary',    // Tuyuca — Tukanoan, obligatory evidentiality (Barnes 1984)
+    ncs:       'fragmentary',    // Nicaraguan Sign Language — spontaneous emergence (Kegl 1999)
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4439,6 +4492,9 @@ const HIST_DESCENDANT = {
     lbz:null,    // Lardil — host language of Damin
     nny:null,    // Yangkaal — sister of Lardil
     kky:null,    // Guugu Yimithirr — absolute cardinal-direction reference
+    blc:null,    // Nuxalk (Bella Coola) — all-consonant words
+    tue:null,    // Tuyuca — obligatory evidentiality
+    ncs:null,    // Nicaraguan Sign Language — spontaneous emergence
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
