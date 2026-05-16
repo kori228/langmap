@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 910 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 911 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -3273,6 +3273,26 @@ const LANG_DATA = {
       love:  { evidence: 'inferred', note: 'Yagaria "amige" — same form as greeting "hello" (affectionate greeting overlap possible); pending source confirmation (Audit Task 120)' },
       hello: { evidence: 'inferred', note: 'Yagaria "amige" — same form as "love"; greeting/affection overlap pending source confirmation (Audit Task 120)' }
     }},
+  // North Bougainville (isolate-like; non-Austronesian Papuan, formerly grouped under the now-disused "East Papuan")
+  // Rotokas is celebrated for one of the world's smallest phoneme inventories (central dialect: 6 consonants p t k β ɾ ɡ + 5 vowels — no nasals).
+  // Vocabulary partial: only the cells with confident Firchow & Firchow (1973) / Robinson (2006, 2011) attestation are filled;
+  // the remaining cells are marked '—' under dataStatus:'fragmentary' (DATA_STATUS_OVERRIDES) rather than fabricated.
+  // Sources: Firchow & Firchow (1973) SIL "Vocabulary of Rotokas-Pidgin-English"; Robinson (2006) "Phoneme Inventory of the Aita Dialect of Rotokas" (Oceanic Linguistics 45:1); Glottolog roto1249.
+  roo: { name: 'Rotokas', native: 'Rotokas', lat: -6.30, lng: 155.20, // central Bougainville highlands, Papua New Guinea
+    words: { water:['oeai','oeai'], fire:['kakae','kakae'], sun:['raviva','raβiβa'], moon:['kuari','kuaɾi'], mother:['ipa','ipa'], father:['papa','papa'], eat:['kavu','kaβu'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['upi','upi'], house:['—','—'], dog:['roru','roɾu'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['uvure','uβuɾe'], good:['arue','aɾue'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      fire:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      sun:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      moon:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      mother: { evidence: 'direct', source: 'Firchow & Firchow (1973) — ipa (formal); informal vocative aiao also attested' },
+      father: { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      eat:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — verbal stem kavu-' },
+      tree:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      dog:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
+      one:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — uvure (also short form uvu)' },
+      good:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' }
+    }},
   // Quechuan (specific varieties)
   quz: { name: 'Cusco Quechua', native: 'Qhichwa', lat: -13.53, lng: -71.97, // Cusco
     words: { water:['unu','unu'], fire:['nina','nina'], sun:['inti','inti'], moon:['killa','kiʎa'], mother:['mama','mama'], father:['tayta','tajta'], eat:['mikhuy','mikʰuj'], drink:['upyay','upjaj'], love:['munay','munaj'], heart:['sunqu','sunqu'], tree:['sach\'a','satʃʼa'], house:['wasi','wasi'], dog:['alqu','alqu'], cat:['misi','misi'], hand:['maki','maki'], eye:['ñawi','ɲawi'], hello:['rimaykullayki','rimajkuʎajki'], thanks:['añay','aɲaj'], one:['huk','huk'], good:['allin','aʎin'] }},
@@ -4144,6 +4164,7 @@ const DATA_STATUS_OVERRIDES = {
     // many '—' placeholders).
     itl:       'fragmentary',    // Itelmen — ~80 fluent speakers, Volodin & Khaloimova partial
     ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
+    roo:       'fragmentary',    // Rotokas — ~4K speakers, Firchow & Firchow (1973) / Robinson (2011) partial Swadesh coverage; only confidently-sourced cells filled
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4329,6 +4350,14 @@ const HIST_DESCENDANT = {
     // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
     // rows (added in Round 2) keeps them visible on the modern map.
     itl:null, ykg:null,
+    // Audit Task / Pass 14 follow-on (2026-05-16): roo Rotokas added with
+    // dataStatus: 'fragmentary' because Swadesh coverage from Firchow &
+    // Firchow (1973) / Robinson (2006, 2011) is partial (11/20 cells
+    // sourced; 9 cells deliberately left '—' rather than fabricated).
+    // Rotokas is a living language (~4K speakers, central Bougainville,
+    // Papua New Guinea) — the null descendant signals the validator
+    // ([#17] inverse invariant) without removing it from the modern map.
+    roo:null,
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
