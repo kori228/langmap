@@ -2749,13 +2749,29 @@ const LANG_DATA = {
   // than fabricated. Sources: Traill (1985) "Phonetic and Phonological Studies of !XÓÕ
   // Bushman"; Traill (1994) "A !Xóõ Dictionary"; Glottolog taaa1242.
   nmn: { name: 'Taa', native: 'Taa', lat: -22.00, lng: 22.00, // eastern Ghanzi District, Botswana
-    words: { water:['—','—'], fire:['ǂʼâa','ǂʼâa'], sun:['ǀqʰâa','ǀqʰâa'], moon:['ǁaˤu','ǁaˤu'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['ǂnúm','ǂnúm'], hello:['—','—'], thanks:['—','—'], one:['ʘnâa','ʘnâa'], good:['—','—'] },
+    // Cell-by-cell forms below are reconciled to the Traill (1994) !Xóõ Dictionary
+    // forms preserved in the Wiktionary !Xóõ Swadesh appendix (which cites Traill
+    // 1994 explicitly). Earlier auto-generated forms (ʘnâa for "one", ǂnúm for
+    // "eye") were not located in Traill 1994 and have been replaced with the
+    // sourced ones (ǂʼûã / ǃʼûĩ). The Wikipedia Taa article also confirms
+    // ǂʼûã = "one" (cf. ǂnûm = "two", ǁâe = "three"; numerals above three are
+    // Tswana/Kgalagadi loans).
+    words: { water:['ǃqhàa','ǃqʰaː'], fire:['ǀʼàã','ǀʼãː'], sun:['ǁʼân','ǁʼã'], moon:['ǃqhàn','ǃqʰã'], mother:['qáe','qae'], father:['a̰a','a̰a'], eat:['ʼâã','ʔãː'], drink:['kxʼāhã','kxʼaːhã'], love:['—','—'], heart:['ǀqʼàn','ǀqʼã'], tree:['ʼʘnàje','ʔʘnaje'], house:['—','—'], dog:['ǂqhài','ǂqʰai'], cat:['—','—'], hand:['ǀkxʼàa','ǀkxʼaː'], eye:['ǃʼûĩ','ǃʼũĩ'], hello:['—','—'], thanks:['—','—'], one:['ǂʼûã','ǂʼũã'], good:['—','—'] },
     wordEvidence: {
-      fire:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with ejective accompaniment' },
-      sun:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — dental click with aspirated uvular accompaniment' },
-      moon:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — lateral click with pharyngealized vowel' },
-      eye:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — palatal click with nasal accompaniment' },
-      one:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary — bilabial click (ʘ), one of the few attested examples in any language' }
+      water:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #62 water)' },
+      fire:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #83 fire) — dental click with ejective accompaniment' },
+      sun:    { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #58 sun) — lateral click with ejective and nasalised vowel' },
+      moon:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #59 moon) — alveolar click with aspirated uvular accompaniment and nasalised vowel' },
+      mother: { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #14 mother)' },
+      father: { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #13 father) — creaky-voiced low vowel' },
+      eat:    { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #93 eat) — glottal stop + nasalised vowel' },
+      drink:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #92 drink) — velar ejective affricate' },
+      heart:  { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #75 heart) — dental click with ejective uvular accompaniment' },
+      tree:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #43 tree) — bilabial click (ʘ), one of the rare languages with phonemic bilabial clicks' },
+      dog:    { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #45 dog) — palatal click with aspirated uvular accompaniment' },
+      hand:   { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #71 hand) — dental click with velar ejective accompaniment' },
+      eye:    { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #68 eye) — alveolar click with ejective and nasalised vowel; supersedes prior ǂnúm form which corresponds to "two" not "eye" per Wikipedia Taa article' },
+      one:    { evidence: 'direct', source: 'Traill (1994) A !Xóõ Dictionary (via Wiktionary !Xóõ Swadesh appendix, item #5 one; confirmed by Wikipedia Taa article) — palatal click with ejective and nasalised vowel; supersedes prior ʘnâa form which was not found in Traill 1994' }
     }},
   // Nilo-Saharan / Saharan
   kr: { name: 'Kanuri', native: 'Kanuri', lat: 11.85, lng: 13.16, // Maiduguri
@@ -3098,7 +3114,25 @@ const LANG_DATA = {
   // two Eastern Tukanoan languages" (Boletim do Museu Paraense Emílio Goeldi); Glottolog tuyu1244;
   // Ethnologue 27 'tue'.
   tue: { name: 'Tuyuca', native: 'Dohkapuara', lat: 0.50, lng: -69.00, // Vaupés / Papurí river area, Colombia/Brazil
-    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+    // Basic-vocab cells filled from the ASJP Database wordlist for Tuyuca (Brown
+    // compiler, sourcing Barnes & Malone via SIL Colombia materials). ASJPcode is
+    // converted to IPA-style transcription here: `3` = ɨ, asterisks mark nasalisation
+    // of the preceding vowel. The Wikipedia Tuyuca article (citing Barnes 1996
+    // "Autosegments with three-way lexical contrasts in Tuyuca" IJAL 62) supplies
+    // pakó /pakó/ "mother" with high pitch on the final syllable. Verb stems are
+    // cited in their bare-stem form (Tuyuca finite verbs additionally inflect for
+    // person and obligatory evidentiality, so the Swadesh-list cell is the root).
+    words: { water:['oko','okó'], fire:['pekãbẽ','pekãbẽ'], sun:['—','—'], moon:['—','—'], mother:['pakó','pakó'], father:['—','—'], eat:['—','—'], drink:['sĩdĩ','sĩdĩ'], love:['—','—'], heart:['—','—'], tree:['yukɨgɨ','jukɨɡɨ'], house:['—','—'], dog:['diayi','diaji'], cat:['—','—'], hand:['—','—'], eye:['kapea','kapea'], hello:['—','—'], thanks:['—','—'], one:['sika','sika'], good:['—','—'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca (Brown comp.) — `oko` "water"; cf. Proto-Tukanoan *okko per Chacon (2014, IJAL 80:275-322)', formType: 'free-word' },
+      fire:   { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `pekabe*` decoded as /pekãbẽ/ "fire"; root peka- + classifier -bẽ "round/cluster", cf. Proto-Tukanoan *peka (Chacon 2014)', formType: 'compound', note: 'ASJP forms the citation as the full surface form; the bare lexical root is peka-' },
+      mother: { evidence: 'direct', source: 'Wikipedia Tuyuca language (citing Barnes 1996 "Autosegments with three-way lexical contrasts in Tuyuca" IJAL 62:31-58) — pakó /pakó/ "mom"; example of word-final high pitch', formType: 'free-word' },
+      drink:  { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `si*di*` decoded as /sĩdĩ/ "drink"; verb stem', formType: 'root' },
+      tree:   { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `yuk3g3` decoded as /yukɨgɨ/ "tree"; cf. Proto-Tukanoan *tjũkkɨ (Chacon 2014)', formType: 'free-word' },
+      dog:    { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `diayi` /diaji/ "dog"; widely cited Tukanoan canine root', formType: 'free-word' },
+      eye:    { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `kapea` "eye"', formType: 'free-word' },
+      one:    { evidence: 'direct', source: 'ASJP Database wordlist Tuyuca — `sika` "one"', formType: 'free-word', note: 'distinct from the commonly cited Tukanoan /nĩkã/ form found in some related languages; ASJP records sika for Tuyuca specifically' }
+    }},
   // Chocoan (NW South America)
   emp: { name: 'Northern Embera', native: 'Eperã pedea', lat: 5.69, lng: -76.66, // Quibdó
     words: { water:['do','do'], fire:['tu','tu'], sun:['hewa','hewa'], moon:['ahuru','ahuɾu'], mother:['papa','papa'], father:['apa','apa'], eat:['ko','ko'], drink:['dorrare','doraɾe'], love:['ãỹba','ãɨba'], heart:['ƀakhuru','ɓakuɾu'], tree:['bakuru','bakuɾu'], house:['te','te'], dog:['usa','usa'], cat:['misu','misu'], hand:['jua','xua'], eye:['tau','tau'], hello:['sake bia','sake bia'], thanks:['bia bara','bia baɾa'], one:['aba','aba'], good:['bia','bia'] }},
@@ -3646,7 +3680,27 @@ const LANG_DATA = {
   // Bagemihl, Bruce (1991) "Syllable structure in Bella Coola" Linguistic Inquiry 22:589-646; Nuxalk Nation
   // language program / FirstVoices Nuxalk archive; Glottolog bell1243; Ethnologue 27 'blc'.
   blc: { name: 'Nuxalk', native: 'Nuxalk', lat: 52.40, lng: -126.75, // Bella Coola valley, central BC coast
-    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+    // Cells filled from forms attested in Nater (1990) A Concise Nuxalk-English
+    // Dictionary as quoted in (a) the basic-vocab summary on Native-Languages.org
+    // /nuxalk_words.htm (water, sun, moon, one) and (b) examples cited in the
+    // Wikipedia Nuxalk language article (dog ƛ̓ikm) and in Mellesmoen (2021)
+    // "Syllables and Reduplication in Bella Coola (Nuxalk)" (ICSNL 56:226-243),
+    // which directly references Nater (1990) for additional forms. The
+    // word /qāχla/ "drink" is attested as the verb-stem citation in the same
+    // Wikipedia example set. Most remaining Swadesh cells (mother, father,
+    // house, eat, hand, eye, heart, hello, thanks, love, good, cat, fire) remain
+    // unfilled because Nater 1984/1990 is not openly accessible here and we
+    // do not have a confident attestation; per Audit Task 162 they are flagged
+    // as `unsourced` in meta.unattestedReason.
+    words: { water:['qla','qla'], fire:['—','—'], sun:['snx','snx'], moon:['tlʼuk','tɬʼuk'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['qāχla','qaːχla'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['ƛ̓ikm','tɬʼikm'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['maw','maw'], good:['—','—'] },
+    wordEvidence: {
+      water:  { evidence: 'direct', source: 'Nater (1990) A Concise Nuxalk-English Dictionary, via Native-Languages.org Nuxalk basic-vocab list — qla "water"', formType: 'free-word' },
+      sun:    { evidence: 'direct', source: 'Nater (1990) A Concise Nuxalk-English Dictionary, via Native-Languages.org Nuxalk basic-vocab list — snx "sun"; an obstruent-only word (no phonemic vowel) per Bagemihl (1991:589-646)', formType: 'free-word', note: 'Nuxalk allows fricatives as syllabic nuclei; here /s/ is the syllable peak (Bagemihl 1991, Mellesmoen 2021)' },
+      moon:   { evidence: 'direct', source: 'Nater (1990) A Concise Nuxalk-English Dictionary, via Native-Languages.org Nuxalk basic-vocab list — tlʼuk "moon"', formType: 'free-word' },
+      drink:  { evidence: 'direct', source: 'Nater (1990) Nuxalk-English Dictionary — qāχla "to drink"; cited in Wikipedia Nuxalk language article phonology examples', formType: 'free-word' },
+      dog:    { evidence: 'direct', source: 'Wikipedia Nuxalk language article (citing Nater 1984/1990) — ƛ̓ikm "dog"; the lateral ejective affricate ƛ̓ = tɬʼ', formType: 'free-word' },
+      one:    { evidence: 'direct', source: 'Nater (1990) A Concise Nuxalk-English Dictionary, via Native-Languages.org Nuxalk basic-vocab list — maw "one"', formType: 'free-word' }
+    }},
   // Khoisan (Tanzania, distinct from Hadza)
   sad: { name: 'Sandawe', native: 'Sandawe', lat: -4.91, lng: 35.78, // Kondoa
     words: { water:['tsʼa','tsʼa'], fire:['cʼoo','tsʼoː'], sun:['kʼɔɔ','kʼɔː'], moon:['tsoa','tsoa'], mother:['yei','jei'], father:['ai','ai'], eat:['ǁee','ǁeː'], drink:['ʔee','ʔeː'], love:['kalokisi','kalokisi'], heart:['ǁʼampoo','ǁʼampoː'], tree:['hetsʼee','hetsʼeː'], house:['ge','ɡe'], dog:['ǀɔɔ','ǀɔː'], cat:['misho','miʃo'], hand:['kxʼaa','kxʼaː'], eye:['gaa','ɡaː'], hello:['gabaeesa','ɡabaeːsa'], thanks:['musʼokoyo','muʃokojo'], one:['tsʼekʼe','tsʼekʼe'], good:['tlʼobe','tɬʼobe'] }},
@@ -3779,19 +3833,32 @@ const LANG_DATA = {
   // the remaining cells are marked '—' under dataStatus:'fragmentary' (DATA_STATUS_OVERRIDES) rather than fabricated.
   // Sources: Firchow & Firchow (1973) SIL "Vocabulary of Rotokas-Pidgin-English"; Robinson (2006) "Phoneme Inventory of the Aita Dialect of Rotokas" (Oceanic Linguistics 45:1); Glottolog roto1249.
   roo: { name: 'Rotokas', native: 'Rotokas', lat: -6.30, lng: 155.20, // central Bougainville highlands, Papua New Guinea
-    words: { water:['oeai','oeai'], fire:['kakae','kakae'], sun:['raviva','raβiβa'], moon:['kuari','kuaɾi'], mother:['ipa','ipa'], father:['papa','papa'], eat:['kavu','kaβu'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['upi','upi'], house:['—','—'], dog:['roru','roɾu'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['uvure','uβuɾe'], good:['arue','aɾue'] },
+    // Cells reconciled to the actual entries in Firchow, Firchow & Akoitai
+    // (1973) "Vocabulary of Rotokas-Pidgin-English" (Summer Institute of
+    // Linguistics, Papua New Guinea), copy available on Internet Archive as
+    // "Rotokas dictionary" (Rotokas Proper / central dialect). Several earlier
+    // forms in this row (oeai, kakae, raviva, kuari, ipa, kavu, roru, upi,
+    // uvure, arue) were not found in the published Firchow dictionary and in
+    // some cases were attested for unrelated meanings (kakae = "small", ipa =
+    // "climb", kavu = "leave/lose", upi only in compound "evao upi" = "core of
+    // tree"). The cells below now use the forms that appear verbatim in the
+    // Firchow 1973 dictionary with their Pidgin/English glosses.
+    words: { water:['ovi','oβi'], fire:['erava','eɾaβa'], sun:['ravireo','raβiɾeo'], moon:['kekira','kekiɾa'], mother:['aako','aːko'], father:['aite','aite'], eat:['aio','aio'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['evaova','eβaoβa'], house:['kepa','kepa'], dog:['kaakau','kaːkau'], cat:['—','—'], hand:['—','—'], eye:['osireito','osiɾeito'], hello:['ega','eɡa'], thanks:['—','—'], one:['katai','katai'], good:['rekoreko','ɾekoɾeko'] },
     wordEvidence: {
-      water:  { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      fire:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      sun:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      moon:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      mother: { evidence: 'direct', source: 'Firchow & Firchow (1973) — ipa (formal); informal vocative aiao also attested' },
-      father: { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      eat:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — verbal stem kavu-' },
-      tree:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      dog:    { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' },
-      one:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — uvure (also short form uvu)' },
-      good:   { evidence: 'direct', source: 'Firchow & Firchow (1973) SIL Rotokas vocabulary' }
+      water:  { evidence: 'direct', source: 'Firchow & Firchow (1973) — ovi "wara" (liquid, juice, water)', formType: 'free-word' },
+      fire:   { evidence: 'direct', source: 'Firchow & Firchow (1973) — erava "paia" (fire)', formType: 'free-word' },
+      sun:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — ravireo "san" (sun, sunshine)', formType: 'free-word' },
+      moon:   { evidence: 'direct', source: 'Firchow & Firchow (1973) — kekira "mun" (moon, month)', formType: 'free-word' },
+      mother: { evidence: 'direct', source: 'Firchow & Firchow (1973) — aako "mama" (mother; also classifier-kin FaBrWi)', formType: 'free-word' },
+      father: { evidence: 'direct', source: 'Firchow & Firchow (1973) — aite "papa" (father; also classifier-kin MoSiHu, FaBr)', formType: 'free-word' },
+      eat:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — aio "kaikai" (to eat); alternant gatasia also attested', formType: 'root' },
+      tree:   { evidence: 'direct', source: 'Firchow & Firchow (1973) — evaova "tri, diwai" (tree)', formType: 'free-word' },
+      house:  { evidence: 'direct', source: 'Firchow & Firchow (1973) — kepa "haus, kebin" (house, cabin, building)', formType: 'free-word' },
+      dog:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — kaakau "dok" (dog)', formType: 'free-word' },
+      eye:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — osireito "ai" (eye)', formType: 'free-word' },
+      hello:  { evidence: 'direct', source: 'Firchow & Firchow (1973) — ega "welkam, sekan" (to greet, welcome); used as greeting formula', formType: 'greeting-formula' },
+      one:    { evidence: 'direct', source: 'Firchow & Firchow (1973) — katai "wan, wanpela" (one)', formType: 'free-word' },
+      good:   { evidence: 'direct', source: 'Firchow & Firchow (1973) — rekoreko "gutpela" (good); alternant rekoto "gutpela man" = "a good man"', formType: 'free-word' }
     }},
   // Quechuan (specific varieties)
   quz: { name: 'Cusco Quechua', native: 'Qhichwa', lat: -13.53, lng: -71.97, // Cusco
