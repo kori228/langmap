@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 912 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 915 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2706,6 +2706,47 @@ const LANG_DATA = {
   // Australian Aboriginal (more)
   tiw: { name: 'Tiwi', native: 'Tiwi', lat: -11.77, lng: 130.62, // Bathurst Island
     words: { water:['kukuni','kukuni'], fire:['yikwani','jikwani'], sun:['pumarli','pumarli'], moon:['japarra','japaɾa'], mother:['ngiya','ŋija'], father:['rringani','ɾiŋani'], eat:['ngarini','ŋaɾini'], drink:['pirninkili','piɾninkili'], love:['payinti','pajinti'], heart:['miringa','miɾiŋa'], tree:['pirntali','piɾntali'], house:['pumpuni','pumpuni'], dog:['marlapwawa','marlapʷawa'], cat:['pussycat','pusikat'], hand:['punga','puŋa'], eye:['pwoja','pʷodʒa'], hello:['ngirramini','ŋiɾamini'], thanks:['wuta-wani','wutawani'], one:['kanyili','kaɲili'], good:['kwati','kʷati'] }},
+  // Tangkic (Tangkic-Pama) — small non-Pama-Nyungan family on the Wellesley Islands of the Gulf of
+  // Carpentaria. Lardil is the host language of Damin, the famous secret men's auxiliary register
+  // containing the only known click consonants in any Australian language. Effectively dormant
+  // today (~1-2 fluent L1 speakers); documented by Ken Hale's 1960s-80s field work and the
+  // community Ngakulmungan Kangka Leman dictionary project. Vocabulary partial: only cells with
+  // confident Hale / Ngakulmungan Kangka Leman (1996) attestation are filled; the remaining cells
+  // are left '—' under dataStatus:'fragmentary' rather than fabricated. Sources: Hale (1973,
+  // 1997) on Lardil and Damin; Klokeid (1976) "Topics in Lardil Grammar"; Ngakulmungan Kangka
+  // Leman (1996) "Lardil Dictionary"; Glottolog lard1248.
+  lbz: { name: 'Lardil', native: 'Leerdil', lat: -16.65, lng: 139.45, // Mornington Island, Queensland
+    words: { water:['kantha','kanθa'], fire:['—','—'], sun:['thurara','θuɾaɾa'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['mela','mela'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      water: { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — kantha (salt water / sea); freshwater is a separate term (wungal)' },
+      sun:   { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — thurara' },
+      eye:   { evidence: 'direct', source: 'Ngakulmungan Kangka Leman (1996) Lardil Dictionary — mela; also attested in Klokeid (1976) Topics in Lardil Grammar' }
+    }},
+  // Tangkic — closely related to Lardil; spoken on Forsyth Island and adjacent north-eastern
+  // Wellesley Islands. Effectively dormant (~1 fluent L1 speaker). Yangkaal and Lardil were the
+  // only two languages whose male speakers used the Damin secret auxiliary register. Vocabulary
+  // is left entirely '—' under dataStatus:'fragmentary' — Yangkaal-specific lexical forms are
+  // not separately documented at the precision required for a confident Swadesh-list entry
+  // (most published Tangkic material focuses on Lardil and Kayardild). Sources: Evans (1995)
+  // "A Grammar of Kayardild" (background on Tangkic); Hale field notes; Glottolog yang1294.
+  nny: { name: 'Yangkaal', native: 'Yangkaal', lat: -16.60, lng: 139.10, // Forsyth Island, north-eastern Wellesley Islands, Queensland
+    words: { water:['—','—'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] }},
+  // Pama-Nyungan (Paman, eastern Cape York). Guugu Yimithirr is famous in cognitive linguistics
+  // for its absolute-direction reference system: speakers use the cardinal terms gungga (north),
+  // jiba (south), naga (east), guwa (west) instead of egocentric left/right (see Levinson 1992,
+  // 1997 on absolute spatial cognition). The language also gave English the word "kangaroo"
+  // (gangurru, the eastern-grey species). Spoken at Hopevale (north of Cooktown) with ~700-800
+  // speakers. Vocabulary partial: only cells with confident Haviland (1979) attestation are
+  // filled; the remaining cells are left '—' under dataStatus:'fragmentary' rather than
+  // fabricated. Sources: Haviland (1979) "Guugu Yimidhirr" in Dixon & Blake (eds.) Handbook of
+  // Australian Languages vol. 1; Haviland (1979) "Guugu Yimidhirr Sketch Grammar"; Levinson
+  // (1997) "Language and Cognition: The Cognitive Consequences of Spatial Description in Guugu
+  // Yimithirr"; Glottolog gugu1255.
+  kky: { name: 'Guugu Yimithirr', native: 'Guugu Yimidhirr', lat: -15.30, lng: 145.10, // Hopevale, north of Cooktown, Far North Queensland
+    words: { water:['buurraay','buːraːj'], fire:['—','—'], sun:['—','—'], moon:['—','—'], mother:['—','—'], father:['—','—'], eat:['—','—'], drink:['—','—'], love:['—','—'], heart:['—','—'], tree:['—','—'], house:['—','—'], dog:['—','—'], cat:['—','—'], hand:['—','—'], eye:['—','—'], hello:['—','—'], thanks:['—','—'], one:['—','—'], good:['—','—'] },
+    wordEvidence: {
+      water: { evidence: 'direct', source: 'Haviland (1979) Guugu Yimidhirr — buurraay "(fresh) water"' }
+    }},
   // Arawakan (Caribbean coast)
   guc: { name: 'Wayuu', native: 'Wayuunaiki', lat: 11.54, lng: -72.91, // Riohacha
     words: { water:['wuin','wuin'], fire:['siki','siki'], sun:['kaʼi','kaʔi'], moon:['kashi','kaʃi'], mother:['ei','ei'], father:['ashi','aʃi'], eat:['ekaa','ekaː'], drink:['asaa','asaː'], love:['alasüin','alasɨin'], heart:['aaʼin','aːʔin'], tree:['wunuʼu','wunuʔu'], house:['miichi','miːtʃi'], dog:['er+','eɾɨː'], cat:['misho','miʃo'], hand:['ajapü','axapɨ'], eye:['oʼu','oʔu'], hello:['jamaya','xamaja'], thanks:['talé','tale'], one:['wanee','waneː'], good:['anasü','anasɨ'] }},
@@ -4202,6 +4243,9 @@ const DATA_STATUS_OVERRIDES = {
     ykg:       'fragmentary',    // Tundra Yukaghir — ~370 speakers, Maslova partial
     roo:       'fragmentary',    // Rotokas — ~4K speakers, Firchow & Firchow (1973) / Robinson (2011) partial Swadesh coverage
     nmn:       'fragmentary',    // Taa / !Xóõ — ~2,500 speakers, Traill 1994 partial Swadesh coverage (5/20)
+    lbz:       'fragmentary',    // Lardil — ~1-2 fluent (effectively dormant); host language of Damin
+    nny:       'fragmentary',    // Yangkaal — ~1 fluent; sister of Lardil, also Damin-using
+    kky:       'fragmentary',    // Guugu Yimithirr — ~700-800 speakers; absolute cardinal-direction spatial reference (Levinson)
     // Attested in primary text records (despite scholarly phonological reconstruction):
     vsa:       'attested',       // Vedic Sanskrit — Rigveda et al. directly transmitted
     xto:       'attested',       // Tocharian A — 5-8c. CE manuscripts
@@ -4387,13 +4431,14 @@ const HIST_DESCENDANT = {
     // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
     // rows (added in Round 2) keeps them visible on the modern map.
     itl:null, ykg:null,
-    // Living fragmentary languages added with partial Swadesh coverage:
-    //   - roo (Rotokas, ~4K, central Bougainville) — Firchow 1973 / Robinson 2011
-    //   - nmn (Taa / !Xóõ, ~2.5K, Botswana–Namibia border) — Traill 1994
-    // null descendant signals the validator [#17] inverse invariant
-    // without removing them from the modern map.
-    roo:null,
-    nmn:null,
+    // Living fragmentary languages added 2026-05-16/17 with partial Swadesh
+    // coverage. Null descendant clears [#17] inverse invariant — same pattern
+    // as itl/ykg/yuc/kgg.
+    roo:null,    // Rotokas — Firchow 1973 / Robinson 2011
+    nmn:null,    // Taa / !Xóõ — Traill 1994
+    lbz:null,    // Lardil — host language of Damin
+    nny:null,    // Yangkaal — sister of Lardil
+    kky:null,    // Guugu Yimithirr — absolute cardinal-direction reference
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
