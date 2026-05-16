@@ -5308,9 +5308,15 @@
                 const code = btn.dataset.code;
                 const lang = LANG_DATA[code];
                 if (!lang) return;
-                if (typeof HIST_CODE_SET !== 'undefined'
-                    && HIST_CODE_SET.has(code) && !showHistorical) {
-                    setEra(true);
+                // Era auto-switch so the focused language is actually
+                // visible. Historical language in modern mode → flip to
+                // historical; modern language in historical mode → flip
+                // to modern. Snapshot system restores the user's
+                // original era on close / back-to-index.
+                if (typeof HIST_CODE_SET !== 'undefined') {
+                    const isHist = HIST_CODE_SET.has(code);
+                    if (isHist && !showHistorical) setEra(true);
+                    else if (!isHist && showHistorical) setEra(false);
                 }
                 const z = parseInt(btn.dataset.zoom, 10);
                 const targetZoom = Number.isFinite(z) ? z : Math.max(map.getZoom(), 5);
