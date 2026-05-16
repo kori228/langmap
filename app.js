@@ -270,6 +270,7 @@ const LANGUAGES = [
     { code: 'lv', name: 'ラトビア語', group: 'OEU', experimental: true },
     // Hellenic
     { code: 'el', name: 'ギリシャ語', group: 'OEU' },
+    { code: 'el_kath', name: 'ギリシャ語(カサレヴサ)', group: 'OEU', experimental: true, historical: true },
     { code: 'el_grc', name: 'ギリシャ語(古代)', group: 'OEU', experimental: true, historical: true },
     // Albanian
     { code: 'sq', name: 'アルバニア語', group: 'OEU' },

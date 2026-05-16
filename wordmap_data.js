@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 911 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 912 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -38,7 +38,7 @@ const WORD_LIST = [
 // liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
-  'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','zh_song','zh_han','zh_tang',
+  'non','en_ang','enm','en_em','got','cu','pi','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang',
   'vi_nom','sa','mnc',
   // Phase 4: historical / ancient
   'peo','ave','xto','txb','phn','uga','xlu','pal','syc','fro','goh','gez',
@@ -1359,6 +1359,17 @@ const LANG_DATA = {
       one:    { evidence: 'direct', source: 'LSJ — εἷς, μία, ἕν "one"; masculine nominative singular εἷς (irregular declension; Smyth §349)', formType: 'inflected-form' },
       good:   { evidence: 'direct', source: 'LSJ — ἀγαθός, -ή, -όν "good, brave, noble"; masculine nominative singular (1st/2nd declension; suppletive comparative ἀμείνων/βελτίων)', formType: 'inflected-form' },
     } },
+  // Katharevousa (καθαρεύουσα "the purifying [language]") — puristic literary
+  // register of Greek, official language of the Greek state 1834-1976 until
+  // Demotic (vernacular) replaced it. Developed by Adamantios Korais and
+  // others during the Greek Enlightenment to archaize Modern Greek morpho-
+  // syntax and lexicon toward Ancient/Koine norms (classical declensions,
+  // dative case, optative, Ancient-derived vocab replacing Turkish/Italian/
+  // Slavic loans). Polytonic script until 1982 monotonic reform. Pedagogical
+  // stage: the form taught for reading 19c.-20c. Greek lit (Roidis, Papadia-
+  // mantis), official documents, and ecclesiastical Greek.
+  el_kath: { name: 'Greek (Katharevousa)', native: 'Καθαρεύουσα', lat: 37.98, lng: 23.73, // Athens (state administration center)
+    words: { water:['ὕδωρ','ˈiðor'], fire:['πῦρ','pir'], sun:['ἥλιος','ˈiʎos'], moon:['σελήνη','seˈlini'], mother:['μήτηρ','ˈmitir'], father:['πατήρ','paˈtir'], eat:['ἐσθίω','esˈθio'], drink:['πίνω','ˈpino'], love:['ἀγαπῶ','aɣaˈpo'], heart:['καρδία','karˈði.a'], tree:['δένδρον','ˈðenðron'], house:['οἶκος','ˈikos'], dog:['κύων','ˈkion'], cat:['αἴλουρος','eˈluros'], hand:['χείρ','çir'], eye:['ὀφθαλμός','ofθalˈmos'], hello:['χαίρετε','ˈçerete'], thanks:['εὐχαριστῶ','efxariˈsto'], one:['εἷς','is'], good:['ἀγαθός','aɣaˈθos'] }},
   egy: { name: 'Ancient Egyptian', native: '𓂋 𓈖 𓆎𓅓𓏏', lat: 25.69, lng: 32.64, words: { water:['𓈗','muː'], fire:['𓊮','sedet'], sun:['𓇳','riːʕa'], moon:['𓇹','jaʕaħ'], mother:['𓅐𓏏','muːt'], father:['𓇋𓏏','jit'], eat:['𓅱𓈖𓏌','wenem'], drink:['𓋴𓅱𓂋','seweɾ'], love:['𓅓𓂋','meɾ'], heart:['𓇋𓃀','jib'], tree:['𓇋𓈎𓏌𓆭','ʕaːʃ'], house:['𓉐','peɾ'], dog:['𓃡','juːjuː'], cat:['𓏇𓇋𓅱𓃠','miːw'], hand:['𓂝𓂋𓏏','dʒeɾet'], eye:['𓁹','iːɾet'], hello:['𓇋𓈖𓂧𓉔𓂋𓎡','jined-ħeɾek'], thanks:['𓂧𓅱𓂝𓎡','duːʕak'], one:['𓏤','waːʕ'], good:['𓄤','nefeɾ'] } },
   // Audit Task 161: shifted from London to Winchester (Wessex capital and
   // primary Old English prestige center). Acknowledges OE was a dialect
@@ -4261,6 +4272,7 @@ const DATA_STATUS_OVERRIDES = {
     ko_mid:    'pedagogical',
     ko_em:     'pedagogical',
     en_em:     'pedagogical',      // Early Modern English (Shakespeare-era; OP reconstruction)
+    el_kath:   'pedagogical',      // Katharevousa Greek (puristic literary register, 1834-1976)
     oko:       'attested',         // Old Korean (Silla) — hyangga corpus + idu
     okg:       'fragmentary',      // Goguryeo — ~80 toponyms only
     ko_gor:    'attested',         // Goryeo Korean — 鶏林類事 corpus
@@ -4294,7 +4306,7 @@ const DATA_STATUS_OVERRIDES = {
 // Moved from wordmap.html to the data layer so the validator does not need
 // to regex-scrape JS source. The browser also reads this constant.
 const HIST_DESCENDANT = {
-    la:'it', el_grc:'el', egy:'ar_eg', en_ang:'en', enm:'en', en_em:'en', non:'is',
+    la:'it', el_grc:'el', el_kath:'el', egy:'ar_eg', en_ang:'en', enm:'en', en_em:'en', non:'is',
     got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
     sa:'hi', mnc:'zh',
     sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
