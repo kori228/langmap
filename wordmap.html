@@ -1459,6 +1459,37 @@
             .tiles-revert { bottom: 12px; right: 12px; }
         }
 
+        /* Temporary place-label balloon shown for ~5s when a panto
+           action ("Fly to X") lands. Visible above the destination
+           with a downward tip; fades and is removed. */
+        .trivia-panto-label {
+            position: absolute;
+            transform: translate(-50%, -135%);
+            background: #b8860b; color: #fff;
+            padding: 6px 14px;
+            border-radius: 14px;
+            font-size: 13px; font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(60,40,10,0.35);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+            font-family: inherit;
+        }
+        .trivia-panto-label::after {
+            content: '';
+            position: absolute;
+            bottom: -7px; left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid #b8860b;
+        }
+        .trivia-panto-label.fading {
+            opacity: 0;
+            transform: translate(-50%, -155%);
+        }
+
         @keyframes triviaPulse {
             0%   { box-shadow: 0 0 0 0   rgba(184,134,11,0.65),
                                 0 0 0 0   rgba(184,134,11,0.45); }
@@ -1785,11 +1816,11 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=210"></script>
+    <script src="wordmap_data.js?v=211"></script>
     <script src="meta_i18n_ext.js?v=14"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=30"></script>
-    <script src="lang_names.js?v=106"></script>
+    <script src="lang_names.js?v=107"></script>
     <script src="wordmap_trivia.js?v=11"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -2006,12 +2037,12 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    78,
-            data:      210,
+            data:      211,
             metaI18n:  15,
             filter:    30,
-            names:   106,
+            names:   107,
             meta:     186,
-            trivia:   19,
+            trivia:   20,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -4520,9 +4551,14 @@
             infoPanel.dataset.code = code;
             renderLangInfo(code);
             infoPanel.classList.add('visible');
-            // Reset scroll to top when opening a new lang or switching from
-            // another lang — the modal is the scroll container, not infoContent.
+            // Reset scroll to top when opening a new lang or switching
+            // from another lang. After the panel-restructure the scroll
+            // container is #info-content, not infoPanel itself, so we
+            // reset both (infoPanel for legacy paths, #info-content
+            // for the current layout).
             infoPanel.scrollTop = 0;
+            const _ic = document.getElementById('info-content');
+            if (_ic) _ic.scrollTop = 0;
             _selRetries = 0;
             updateSelectedLabel();
             updateConnectorLine();
@@ -5170,7 +5206,7 @@
                 : '';
             // Prefix the heading with the article's 1-based position so
             // users see "07 / 30" style numbering at a glance.
-            const numPrefix = `<span class="trivia-card-num">${String(pos + 1).padStart(2, '0')} / ${list.length}</span>`;
+            const numPrefix = `<span class="trivia-card-num">${String(pos + 1).padStart(2, '0')}.</span> `;
             heading.innerHTML = numPrefix + iconHtml + pickLocalized(art.title);
             const sum = pickLocalized(art.summary);
             summary.textContent = sum;
@@ -5329,6 +5365,54 @@
             const panel = document.getElementById('trivia-compare');
             if (panel) panel.classList.remove('visible');
         }
+        // Temporary place-label balloon for panto actions. Held in
+        // _pantoLabelMarker so a new panto replaces the previous one
+        // immediately (no stacking).
+        let _pantoLabelMarker = null;
+        let _pantoLabelTimer1 = null;
+        let _pantoLabelTimer2 = null;
+        function _pantoLabelText(btn) {
+            if (btn.dataset.label) return btn.dataset.label;
+            const raw = (btn.textContent || '').trim();
+            // Strip leading emoji / punctuation up to the first letter
+            // (Latin / CJK / Hiragana / Cyrillic / etc.).
+            try {
+                return raw.replace(/^[^\p{L}]+/u, '').trim();
+            } catch (_) {
+                return raw;
+            }
+        }
+        function _showPantoLabel(lat, lng, text) {
+            if (!text) return;
+            if (_pantoLabelMarker) {
+                try { map.removeLayer(_pantoLabelMarker); } catch (_) {}
+                _pantoLabelMarker = null;
+            }
+            clearTimeout(_pantoLabelTimer1);
+            clearTimeout(_pantoLabelTimer2);
+            const safe = escapeHtml(text);
+            const icon = L.divIcon({
+                className: '',
+                html: `<div class="trivia-panto-label">${safe}</div>`,
+                iconSize: [0, 0],
+                iconAnchor: [0, 0],
+            });
+            _pantoLabelMarker = L.marker([lat, lng], { icon, interactive: false }).addTo(map);
+            _pantoLabelTimer1 = setTimeout(() => {
+                const el = _pantoLabelMarker && _pantoLabelMarker.getElement
+                    && _pantoLabelMarker.getElement();
+                if (el) {
+                    const lab = el.querySelector('.trivia-panto-label');
+                    if (lab) lab.classList.add('fading');
+                }
+            }, 4200);
+            _pantoLabelTimer2 = setTimeout(() => {
+                if (_pantoLabelMarker) {
+                    try { map.removeLayer(_pantoLabelMarker); } catch (_) {}
+                    _pantoLabelMarker = null;
+                }
+            }, 5000);
+        }
         function setTriviaCompact(on) {
             const modal = document.getElementById('trivia-modal');
             const backdrop = document.getElementById('trivia-backdrop');
@@ -5350,6 +5434,15 @@
                   _triviaSpotlight.clear();
                   if (typeof updateMarkers === 'function') updateMarkers(currentWord);
             } } catch (_) {}
+            // Remove any lingering panto label.
+            try {
+                if (_pantoLabelMarker) {
+                    map.removeLayer(_pantoLabelMarker);
+                    _pantoLabelMarker = null;
+                }
+                clearTimeout(_pantoLabelTimer1);
+                clearTimeout(_pantoLabelTimer2);
+            } catch (_) {}
         }
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
@@ -5443,17 +5536,25 @@
                 // Era auto-switch so the focused language is actually
                 // visible. Historical language in modern mode → flip to
                 // historical; modern language in historical mode → flip
-                // to modern. Snapshot system restores the user's
-                // original era on close / back-to-index.
+                // to modern.
                 if (typeof HIST_CODE_SET !== 'undefined') {
                     const isHist = HIST_CODE_SET.has(code);
                     if (isHist && !showHistorical) setEra(true);
                     else if (!isHist && showHistorical) setEra(false);
                 }
+                // Spotlight the target so it renders regardless of the
+                // current zoom's speaker-tier gate. Without this,
+                // small-community languages (Esperanto ~2M, Toki Pona,
+                // Hawaiian) stay invisible at low/medium zoom and the
+                // user can't see "where the flying landed".
+                _triviaSpotlight.clear();
+                _triviaSpotlight.add(code);
                 const z = parseInt(btn.dataset.zoom, 10);
                 const targetZoom = Number.isFinite(z) ? z : Math.max(map.getZoom(), 5);
                 try { map.flyTo([lang.lat, lang.lng], targetZoom, { duration: 1.0 }); }
                 catch (_) { map.setView([lang.lat, lang.lng], targetZoom); }
+                // Re-render markers so the spotlight takes effect now.
+                if (typeof updateMarkers === 'function') updateMarkers(currentWord);
                 setTimeout(() => {
                     triviaBlinkMarker(code);
                     if (!infoPanel.classList.contains('visible')
@@ -5483,6 +5584,13 @@
                     const codes = btn.dataset.codes.split(',').map(c => c.trim()).filter(Boolean);
                     setTimeout(() => codes.forEach(triviaBlinkMarker), 1050);
                 }
+                // Drop a temporary place-label balloon at the target so
+                // the user sees WHAT they flew to. Label text is the
+                // button's text content minus its leading emoji /
+                // punctuation prefix. Auto-removes after ~5s.
+                setTimeout(() => {
+                    _showPantoLabel(lat, lng, _pantoLabelText(btn));
+                }, 950);
             } else if (action === 'compare') {
                 const codes = (btn.dataset.codes || '').split(',').map(c => c.trim()).filter(Boolean);
                 const validCodes = codes.filter(c => LANG_DATA[c]);
