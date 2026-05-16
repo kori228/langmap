@@ -1239,11 +1239,7 @@
         .trivia-action:active { transform: translateY(0); }
         .trivia-actions {
             display: flex; flex-wrap: wrap; gap: 6px;
-            margin: 14px 0 4px;
-            padding: 10px 12px;
-            background: rgba(255,235,180,0.45);
-            border: 1px dashed rgba(180,130,30,0.45);
-            border-radius: 8px;
+            margin: 12px 0;
         }
         /* Tool buttons live in .trivia-modal-tools (flex row, pinned
            at the top of the modal). Both icon-only; the full phrase
@@ -1904,7 +1900,7 @@
             filter:    29,
             names:   105,
             meta:     184,
-            trivia:   11,
+            trivia:   12,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
