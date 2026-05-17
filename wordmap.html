@@ -1839,7 +1839,7 @@
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=31"></script>
     <script src="lang_names.js?v=108"></script>
-    <script src="wordmap_trivia.js?v=24"></script>
+    <script src="wordmap_trivia.js?v=25"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -2060,7 +2060,8 @@
             filter:    31,
             names:   108,
             meta:     190,
-            trivia:   24,
+            trivia:   25,
+            triviaI18n: 1,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2302,25 +2303,25 @@
                 sw: '← Makala',
             },
             triviaIndexIntro: {
-                en: 'Pick a topic to dive in. Each article is self-contained — the map snaps back when you close it.',
-                ja: '気になるテーマを選んでください。記事を閉じれば地図は元の状態に戻ります。',
-                ko: '관심 가는 주제를 골라보세요. 글을 닫으면 지도는 원래 상태로 돌아갑니다.',
-                zh: '挑一个感兴趣的话题。每篇文章独立，关闭后地图会回到原状。',
-                yue: '揀一個感興趣嘅話題。每篇文章獨立，關閉後地圖會返到原狀。',
-                de: 'Wähle ein Thema. Jeder Artikel ist eigenständig — die Karte kehrt beim Schließen zurück.',
-                fr: 'Choisissez un sujet. Chaque article est indépendant — la carte revient à son état d\'origine à la fermeture.',
-                it: 'Scegli un argomento. Ogni articolo è autonomo — la mappa torna allo stato precedente alla chiusura.',
-                es: 'Elige un tema. Cada artículo es independiente — el mapa vuelve a su estado al cerrar.',
-                pt: 'Escolha um tema. Cada artigo é independente — o mapa volta ao estado original ao fechar.',
-                ru: 'Выберите тему. Каждая статья самостоятельна — при закрытии карта возвращается в исходное состояние.',
-                uk: 'Виберіть тему. Кожна стаття самостійна — після закриття мапа повертається до початкового стану.',
-                ar: 'اختر موضوعًا. كل مقالة قائمة بذاتها — تعود الخريطة إلى حالتها عند الإغلاق.',
-                he: 'בחרו נושא. כל מאמר עומד בפני עצמו — המפה חוזרת למצבה כשסוגרים.',
-                sw: 'Chagua mada. Kila makala ni huru — ramani inarejea ilivyokuwa unapofunga.',
-                vi: 'Chọn một chủ đề. Mỗi bài viết độc lập — bản đồ trở về trạng thái cũ khi đóng.',
-                th: 'เลือกหัวข้อที่สนใจ ทุกบทความเป็นอิสระ — แผนที่จะกลับมาเหมือนเดิมเมื่อปิด',
-                id: 'Pilih topik. Setiap artikel berdiri sendiri — peta kembali seperti semula saat ditutup.',
-                hi: 'कोई विषय चुनें। हर लेख स्वतंत्र है — बंद करने पर मानचित्र पुनःस्थापित होता है।',
+                en: 'Pick a topic to dive in.',
+                ja: '気になるテーマを選んでください。',
+                ko: '관심 가는 주제를 골라보세요.',
+                zh: '挑一个感兴趣的话题。',
+                yue: '揀一個感興趣嘅話題。',
+                de: 'Wähle ein Thema.',
+                fr: 'Choisissez un sujet.',
+                it: 'Scegli un argomento.',
+                es: 'Elige un tema.',
+                pt: 'Escolha um tema.',
+                ru: 'Выберите тему.',
+                uk: 'Виберіть тему.',
+                ar: 'اختر موضوعًا.',
+                he: 'בחרו נושא.',
+                sw: 'Chagua mada.',
+                vi: 'Chọn một chủ đề.',
+                th: 'เลือกหัวข้อที่สนใจ',
+                id: 'Pilih topik.',
+                hi: 'कोई विषय चुनें।',
             },
             triviaNavPrev: {
                 en: '← Previous', ja: '← 前の記事',
@@ -2517,6 +2518,9 @@
             _wmSetCookie('wm_uilang', uiLang);  // Pass 34: cross-page cookie persistence
             window.__langmap.uiLang = uiLang;
             window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
+            // Fetch the trivia overlay for the new UI lang (no-op if EN/JA
+            // built-in, already loaded, or unsupported). Fires-and-forgets.
+            if (typeof loadTriviaI18nFor === 'function') loadTriviaI18nFor(uiLang);
             applyUILang();
             updateMarkers(currentWord);
             updateHash();
@@ -3354,6 +3358,9 @@
                 window.dispatchEvent(new CustomEvent('langmap:uichange', { detail: { uiLang } }));
                 applyUILang();
             }
+            // Fetch trivia translation overlay for the resolved uiLang (initial
+            // load — also retriggered when the user picks a different uiLang).
+            if (typeof loadTriviaI18nFor === 'function') loadTriviaI18nFor(uiLang);
             if (params.get('g3d') === '1') {
                 is3D = true;
                 btn3D.classList.add('active');
@@ -5194,6 +5201,64 @@
                 || map[uiLang.split('_')[0]]
                 || map.en || '';
         }
+        // Trivia i18n: translations for each article live in separate
+        // wordmap_trivia_<lang>.js overlay files (loaded on demand based
+        // on uiLang). When an overlay script executes it populates
+        // window.TRIVIA_I18N[lang][articleId] = { title, summary, body };
+        // applyTriviaI18nOverlay merges those fields into the existing
+        // article objects so pickLocalized() finds them via map[uiLang].
+        // EN + JA live inline in wordmap_trivia.js and need no overlay.
+        const TRIVIA_I18N_LANGS = new Set(['ko','zh','yue','vi','th','id','hi','de','fr','it','es','pt','ru','uk','ar','he','sw']);
+        const _loadedTriviaI18n = new Set();
+        function applyTriviaI18nOverlay() {
+            const overlay = window.TRIVIA_I18N;
+            const articles = window.TRIVIA_ARTICLES;
+            if (!overlay || !articles) return;
+            for (const art of articles) {
+                for (const lang of Object.keys(overlay)) {
+                    const tr = overlay[lang] && overlay[lang][art.id];
+                    if (!tr) continue;
+                    art.title = art.title || {};
+                    art.summary = art.summary || {};
+                    art.body = art.body || {};
+                    if (tr.title && !art.title[lang]) art.title[lang] = tr.title;
+                    if (tr.summary && !art.summary[lang]) art.summary[lang] = tr.summary;
+                    if (tr.body && !art.body[lang]) art.body[lang] = tr.body;
+                }
+            }
+        }
+        function loadTriviaI18nFor(lang) {
+            if (!lang) return Promise.resolve();
+            const base = lang.split('_')[0];
+            if (base === 'en' || base === 'ja') return Promise.resolve();
+            if (!TRIVIA_I18N_LANGS.has(base)) return Promise.resolve();
+            if (_loadedTriviaI18n.has(base)) return Promise.resolve();
+            _loadedTriviaI18n.add(base);
+            return new Promise((res) => {
+                const s = document.createElement('script');
+                s.src = assetUrl(`wordmap_trivia_${base}.js`, 'triviaI18n');
+                s.onload = () => {
+                    applyTriviaI18nOverlay();
+                    // If the trivia modal is already open when the overlay
+                    // lands, re-render the current article so the user sees
+                    // the localized text without having to navigate.
+                    const modal = document.getElementById('trivia-modal');
+                    if (modal && modal.classList.contains('visible')) {
+                        const heading = document.getElementById('trivia-heading');
+                        const activeId = heading && heading.dataset && heading.dataset.articleId;
+                        if (activeId) renderTriviaArticle(activeId);
+                        else if (typeof renderTriviaIndex === 'function'
+                                 && document.getElementById('trivia-index')) {
+                            const idx = document.getElementById('trivia-index');
+                            if (idx.classList.contains('visible')) renderTriviaIndex();
+                        }
+                    }
+                    res();
+                };
+                s.onerror = () => { _loadedTriviaI18n.delete(base); res(); };
+                document.head.appendChild(s);
+            });
+        }
         // _triviaBlinkCodes is declared at the top of this IIFE (var,
         // hoisted) so that updateMarkers can call refreshTriviaBlinks
         // during initial render without hitting a TDZ error.
@@ -5240,6 +5305,7 @@
             // users see "07 / 30" style numbering at a glance.
             const numPrefix = `<span class="trivia-card-num">${String(pos + 1).padStart(2, '0')}.</span> `;
             heading.innerHTML = numPrefix + iconHtml + pickLocalized(art.title);
+            heading.dataset.articleId = art.id;
             const sum = pickLocalized(art.summary);
             summary.textContent = sum;
             summary.style.display = sum ? '' : 'none';
@@ -5493,6 +5559,13 @@
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
             if (!list.length) return;
+            // Best-effort load of the trivia translation overlay for the
+            // current uiLang before we open. If the overlay is already
+            // cached this resolves synchronously on the same tick; if it
+            // is still in flight, the first render falls back to EN, and
+            // navigating to the next article (after the script lands)
+            // shows the localized text.
+            if (typeof loadTriviaI18nFor === 'function') loadTriviaI18nFor(uiLang);
             // Each article opens from a clean surface — close any
             // language modal / compare panel / blinks / spotlight from
             // before. No snapshot is taken; on close the map simply
