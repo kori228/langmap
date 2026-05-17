@@ -2036,7 +2036,7 @@
             metaI18n:  15,
             filter:    30,
             names:   108,
-            meta:     188,
+            meta:     189,
             trivia:   22,
         };
         function assetUrl(path, key) {
@@ -4322,6 +4322,20 @@
                             : (m.reviewStatus === 'source-checked') ? '#3a8a3a'
                             : '#888';
                 html += `<div style="margin:2px 0 -2px;font-size:10px;color:${rsTone}"><b>${escapeHtml(rsHeader)}:</b> ${escapeHtml(rsLabel)}</div>`;
+            }
+            // meta.wordsNote: explanatory banner shown above the word table.
+            // Use for languages where every cell is '—' for a structural
+            // reason (sign languages, undeciphered scripts, oral-only
+            // languages without consensus transcription) — without this,
+            // a screen full of '—' looks like incomplete data rather
+            // than an intentional gap. Per-UI-lang object or string.
+            if (m.wordsNote) {
+                const wn = (typeof m.wordsNote === 'object')
+                    ? (m.wordsNote[uiLang] || m.wordsNote[uiLang.split('_')[0]] || m.wordsNote.en || '')
+                    : String(m.wordsNote);
+                if (wn) {
+                    html += `<div style="margin:10px 0 -2px;padding:8px 10px;background:#fff8e1;border-left:3px solid #d4a017;border-radius:3px;font-size:11px;line-height:1.5;color:#5b4a18">${escapeHtml(wn)}</div>`;
+                }
             }
             html += '<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px">';
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em"><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('concept') || 'Concept')}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('wordCol') || wt('word'))}</th><th style="text-align:left;font-weight:500;padding-bottom:4px">${escapeHtml(wt('ipaCol') || wt('ipa'))}</th></tr></thead>`;
