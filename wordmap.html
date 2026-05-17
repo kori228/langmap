@@ -5642,6 +5642,23 @@
             if (typeof updateHash === 'function') updateHash();
         }
 
+        // 2D / 3D aware "fly to" — Leaflet on the 2D map, globe.gl
+        // pointOfView on the 3D globe. Without this, action buttons
+        // pressed while the globe is showing do nothing (Leaflet
+        // operates on a hidden map).
+        function _triviaFlyTo(lat, lng, zoom, durationMs) {
+            durationMs = durationMs == null ? 1000 : durationMs;
+            if (is3D && typeof globe !== 'undefined' && globe) {
+                const alt = (typeof zoomToAltitude === 'function')
+                    ? zoomToAltitude(Number.isFinite(zoom) ? zoom : 3)
+                    : 2.5;
+                try { globe.pointOfView({ lat, lng, altitude: alt }, durationMs); }
+                catch (_) {}
+            } else {
+                try { map.flyTo([lat, lng], zoom, { duration: durationMs / 1000 }); }
+                catch (_) { map.setView([lat, lng], zoom); }
+            }
+        }
         function _runTriviaAction(btn) {
             const action = (btn.dataset.action || '').toLowerCase();
             if (!action) return;
@@ -5682,9 +5699,9 @@
                 _triviaSpotlight.clear();
                 _triviaSpotlight.add(code);
                 const z = parseInt(btn.dataset.zoom, 10);
-                const targetZoom = Number.isFinite(z) ? z : Math.max(map.getZoom(), 5);
-                try { map.flyTo([lang.lat, lang.lng], targetZoom, { duration: 1.0 }); }
-                catch (_) { map.setView([lang.lat, lang.lng], targetZoom); }
+                const currentZoom = is3D ? 4 : map.getZoom();
+                const targetZoom = Number.isFinite(z) ? z : Math.max(currentZoom, 5);
+                _triviaFlyTo(lang.lat, lang.lng, targetZoom, 1000);
                 // Re-render markers so the spotlight takes effect now.
                 if (typeof updateMarkers === 'function') updateMarkers(currentWord);
                 setTimeout(() => {
@@ -5719,20 +5736,21 @@
                 const lng = parseFloat(btn.dataset.lng);
                 const z = parseInt(btn.dataset.zoom, 10);
                 if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
-                const targetZoom = Number.isFinite(z) ? z : map.getZoom();
-                try { map.flyTo([lat, lng], targetZoom, { duration: 1.0 }); }
-                catch (_) { map.setView([lat, lng], targetZoom); }
+                const currentZoom = is3D ? 4 : map.getZoom();
+                const targetZoom = Number.isFinite(z) ? z : currentZoom;
+                _triviaFlyTo(lat, lng, targetZoom, 1000);
                 if (btn.dataset.codes) {
                     const codes = btn.dataset.codes.split(',').map(c => c.trim()).filter(Boolean);
                     setTimeout(() => codes.forEach(triviaBlinkMarker), 1050);
                 }
                 // Drop a temporary place-label balloon at the target so
-                // the user sees WHAT they flew to. Label text is the
-                // button's text content minus its leading emoji /
-                // punctuation prefix. Auto-removes after ~5s.
-                setTimeout(() => {
-                    _showPantoLabel(lat, lng, _pantoLabelText(btn));
-                }, 950);
+                // the user sees WHAT they flew to. 2D only — Leaflet
+                // markers don't render on the 3D globe overlay.
+                if (!is3D) {
+                    setTimeout(() => {
+                        _showPantoLabel(lat, lng, _pantoLabelText(btn));
+                    }, 950);
+                }
             } else if (action === 'compare') {
                 const codes = (btn.dataset.codes || '').split(',').map(c => c.trim()).filter(Boolean);
                 const validCodes = codes.filter(c => LANG_DATA[c]);
@@ -5743,18 +5761,23 @@
                 validCodes.forEach(c => _triviaSpotlight.add(c));
                 codes.forEach(triviaBlinkMarker);
                 // Pan/zoom: explicit lat/lng wins, else auto-fit bounds.
+                // 2D / 3D both supported.
                 const lat = parseFloat(btn.dataset.lat);
                 const lng = parseFloat(btn.dataset.lng);
                 const z = parseInt(btn.dataset.zoom, 10);
                 if (Number.isFinite(lat) && Number.isFinite(lng)) {
-                    try { map.flyTo([lat, lng], Number.isFinite(z) ? z : 3, { duration: 1.0 }); }
-                    catch (_) { map.setView([lat, lng], Number.isFinite(z) ? z : 3); }
+                    _triviaFlyTo(lat, lng, Number.isFinite(z) ? z : 3, 1000);
                 } else {
                     const points = validCodes.map(c => LANG_DATA[c]);
                     if (points.length === 1) {
                         const p = points[0];
-                        try { map.flyTo([p.lat, p.lng], 5, { duration: 1.0 }); }
-                        catch (_) { map.setView([p.lat, p.lng], 5); }
+                        _triviaFlyTo(p.lat, p.lng, 5, 1000);
+                    } else if (is3D) {
+                        // 3D: compute centroid + a wide altitude so all
+                        // points fit on the visible hemisphere.
+                        const latC = points.reduce((s, d) => s + d.lat, 0) / points.length;
+                        const lngC = points.reduce((s, d) => s + d.lng, 0) / points.length;
+                        _triviaFlyTo(latC, lngC, 3, 1000);
                     } else {
                         const bounds = L.latLngBounds(points.map(d => [d.lat, d.lng]));
                         try { map.flyToBounds(bounds, { padding: [60, 60], maxZoom: 5, duration: 1.0 }); }
