@@ -1459,35 +1459,30 @@
             .tiles-revert { bottom: 12px; right: 12px; }
         }
 
-        /* Temporary place-label balloon shown for ~5s when a panto
-           action ("Fly to X") lands. Visible above the destination
-           with a downward tip; fades and is removed. */
+        /* Temporary place-label banner shown for ~5s when a panto
+           action ("Fly to X") lands. Centered on the destination
+           coordinates and styled as an area label (no pin / arrow),
+           since panto targets are usually REGIONS (rivers, ranges,
+           basins) rather than single points. Fades after ~4s. */
         .trivia-panto-label {
             position: absolute;
-            transform: translate(-50%, -135%);
-            background: #b8860b; color: #fff;
-            padding: 6px 14px;
-            border-radius: 14px;
-            font-size: 13px; font-weight: 600;
+            transform: translate(-50%, -50%);
+            background: rgba(184,134,11,0.88);
+            color: #fff;
+            padding: 8px 22px;
+            border-radius: 6px;
+            font-size: 15px; font-weight: 700;
+            letter-spacing: 0.8px;
             white-space: nowrap;
-            box-shadow: 0 4px 14px rgba(60,40,10,0.35);
+            box-shadow: 0 4px 18px rgba(60,40,10,0.45);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.35);
             transition: opacity 0.6s ease, transform 0.6s ease;
             pointer-events: none;
             font-family: inherit;
         }
-        .trivia-panto-label::after {
-            content: '';
-            position: absolute;
-            bottom: -7px; left: 50%;
-            transform: translateX(-50%);
-            width: 0; height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 7px solid #b8860b;
-        }
         .trivia-panto-label.fading {
             opacity: 0;
-            transform: translate(-50%, -155%);
+            transform: translate(-50%, -55%);
         }
 
         @keyframes triviaPulse {
@@ -2042,7 +2037,7 @@
             filter:    30,
             names:   108,
             meta:     188,
-            trivia:   20,
+            trivia:   21,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5373,14 +5368,18 @@
         let _pantoLabelTimer2 = null;
         function _pantoLabelText(btn) {
             if (btn.dataset.label) return btn.dataset.label;
-            const raw = (btn.textContent || '').trim();
-            // Strip leading emoji / punctuation up to the first letter
-            // (Latin / CJK / Hiragana / Cyrillic / etc.).
-            try {
-                return raw.replace(/^[^\p{L}]+/u, '').trim();
-            } catch (_) {
-                return raw;
-            }
+            let s = (btn.textContent || '').trim();
+            // Strip leading emoji / punctuation up to the first letter.
+            try { s = s.replace(/^[^\p{L}]+/u, ''); } catch (_) {}
+            // Strip leading EN verb wrappers ("Fly to ", "Zoom into ",
+            // "Survey ", "Show ", "Open ").
+            s = s.replace(/^(Fly to|Zoom into|Zoom in to|Zoom to|Survey|Visit|Open|Show|Explore|Go to)\s+(the\s+)?/i, '');
+            // Strip trailing JA verb wrappers ("…へ飛ぶ", "…を拡大",
+            // "…を見る", "…へ", "…を訪ねる", "…を縦覧").
+            s = s.replace(/(?:を(?:拡大|見る|訪ねる|縦覧|散策|一望|サーベイ)|へ(?:飛ぶ)?)\s*$/u, '');
+            // Tidy whitespace and trailing punctuation.
+            s = s.trim().replace(/[\s　]+$/u, '');
+            return s;
         }
         function _showPantoLabel(lat, lng, text) {
             if (!text) return;
