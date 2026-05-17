@@ -1864,6 +1864,14 @@
         // being compared even at low zoom (where speaker-tier gating
         // would normally hide them).
         var _triviaSpotlight = new Set();
+        // Trivia per-UI-lang translation overlay registry. Hoisted via
+        // `var` so loadTriviaI18nFor() (a hoisted function declaration)
+        // can be called from loadHash() during initial render — before
+        // the later `const TRIVIA_I18N_LANGS = …` line is reached.
+        // Without this, the `const` declaration TDZ-throws when init
+        // resolves an article id from ?trivia=<id>.
+        var TRIVIA_I18N_LANGS = new Set(['ko','zh','yue','vi','th','id','hi','de','fr','it','es','pt','ru','uk','ar','he','sw']);
+        var _loadedTriviaI18n = new Set();
 
         // --- Rough initial location from browser timezone (no GPS permission) ---
         // Maps IANA timezone → [lat, lng] of a representative city. Falls back to
@@ -5208,8 +5216,8 @@
         // applyTriviaI18nOverlay merges those fields into the existing
         // article objects so pickLocalized() finds them via map[uiLang].
         // EN + JA live inline in wordmap_trivia.js and need no overlay.
-        const TRIVIA_I18N_LANGS = new Set(['ko','zh','yue','vi','th','id','hi','de','fr','it','es','pt','ru','uk','ar','he','sw']);
-        const _loadedTriviaI18n = new Set();
+        // TRIVIA_I18N_LANGS and _loadedTriviaI18n are hoisted at the
+        // top of this IIFE so loadHash()'s init pass doesn't TDZ.
         function applyTriviaI18nOverlay() {
             const overlay = window.TRIVIA_I18N;
             const articles = window.TRIVIA_ARTICLES;
