@@ -2112,7 +2112,7 @@ const TRIVIA_ARTICLES = [
   <p>The implications for cognition are debated. Some researchers, including Lev Vygotsky's intellectual heirs and Aikhenvald herself, argue that habitually marking the source of information cultivates a different orientation to evidence and rumour. Others note that English speakers can express the same distinctions — they just are not <em>forced</em> to. The current consensus is somewhere in between: obligatory grammaticalisation makes a category cognitively salient, but does not make speakers of other languages incapable of the same distinctions.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 See Tuyuca "Hello"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="drink" data-code="tue">🥤 See Tuyuca "Drink" (sĩdĩ)</button>
   </div>
   
   <p>What is clear is that Tuyuca exposes a hidden assumption of much Western philosophy of language: that statements are by default unmarked claims of "fact". For a Tuyuca speaker there is no such default. Every sentence is, in effect, prefaced with the epistemic equivalent of <em>"I saw"</em>, <em>"I heard"</em>, or <em>"I was told"</em>. A grammar of provenance is built into every verb.</p>
@@ -2150,7 +2150,7 @@ const TRIVIA_ARTICLES = [
   <p>認知への含意は議論が続く。「情報源を毎回明示する習慣は、噂や根拠への姿勢を根本から変える」と主張する研究者もいれば、「英語話者も同じ区別を表現できる──ただ義務ではないだけだ」と反論する研究者もいる。現在の合意点はおそらくその中間──義務的な文法化はその概念を認知的に目立たせるが、他言語話者が同じ区別をできなくなるわけではない、というところだ。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 トゥユカ語の「こんにちは」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="drink" data-code="tue">🥤 トゥユカ語の「飲む」（sĩdĩ）</button>
   </div>
   
   <p>はっきりしているのは、トゥヤカ語が西欧言語哲学の暗黙の前提──「平叙文の既定値は無印の事実主張である」──をあぶり出していることだ。トゥヤカ語にそんな既定値はない。すべての文の動詞には、認識論的に言えば「私は見た」「私は聞いた」「人から聞いた」が刻まれている。<strong>情報源の文法</strong>が、動詞そのものに織り込まれているのである。</p>
@@ -2411,8 +2411,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="blc">💧 See Nuxalk "water"</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="blc">🔥 See Nuxalk "fire"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="blc">💧 See Nuxalk "water" (qla)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="blc">☀️ See Nuxalk "sun" (snx)</button>
   </div>
   
   <p>Native speakers themselves do not perceive a "missing vowel". They do not feel they are inserting a covert schwa to make the word pronounceable — recordings and electropalatographic studies confirm the consonants run together with no measurable vocalic transition between them. The word <em>xłp̓x̣ʷłtłpłłskʷc̓</em> takes about a second to pronounce and is, to the speaker, just a word.</p>
@@ -2443,8 +2443,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="blc">💧 ヌハルク語の「水」を見る</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="blc">🔥 ヌハルク語の「火」を見る</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="blc">💧 ヌハルク語の「水」（qla）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="blc">☀️ ヌハルク語の「太陽」（snx）</button>
   </div>
   
   <p>ヌハルク語の母語話者自身は、「母音が抜けている」感覚を持たない。話者意識でも音響計測でも、子音と子音のあいだに母音的な区間は検出されない。<em>xłp̓x̣ʷłtłpłłskʷc̓</em> は約1秒で発音され、話者にとっては「ふつうの一語」である。</p>
@@ -2565,12 +2565,7 @@ const TRIVIA_ARTICLES = [
   <p>The schools taught in spoken Spanish with lip-reading and finger-spelling. Officially, signing was discouraged. The children, however, did what humans always do when forced into proximity: <strong>they communicated</strong>. On the playground and on the school buses, they combined their home signs, invented new ones, and within a few years had built a shared <strong>pidgin sign system</strong>, now called <em>Lenguaje de Signos Nicaragüense (LSN)</em>.</p>
   
   <p>Then came the revolution. When younger children — preschoolers and early primary kids — entered the system in the mid-1980s, they took the older kids' pidgin as input and did something only children can do: <strong>they grammaticalised it</strong>. They added consistent spatial agreement, verb morphology, and discourse markers. By the early 1990s, the younger cohort was signing a fully grammatical, fully natural language — ISN — that the older cohort could only partly follow.</p>
-  
-  <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 See Nicaraguan Sign Language "Thank you"</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 See Nicaraguan Sign Language "Hello"</button>
-  </div>
-  
+
   <p>The American linguist <strong>Judy Kegl</strong> was invited to study the situation in 1986. She quickly realised what she was seeing was unprecedented. Together with <strong>Ann Senghas</strong>, <strong>Marie Coppola</strong>, and others, she has documented the language across cohorts ever since. Their landmark finding:</p>
   
   <blockquote>"The children who arrived younger and in larger numbers signed in ways that were systematically more complex and more grammatical than the signing of the older first-generation cohort who provided their input." — Senghas, Kita & Özyürek, <em>Science</em> 2004</blockquote>
@@ -2592,12 +2587,7 @@ const TRIVIA_ARTICLES = [
   <p>学校は口話法と指文字で指導した。手話の使用は事実上抑圧されていた。しかし、子どもたちは強制的に近接させられた人間がいつもすることをした──<strong>彼らは伝え合った</strong>。校庭やスクールバスで、各自のホームサインを混ぜ、新しいサインを発明し、数年のうちに共有された<strong>ピジン手話</strong>（後に LSN, Lenguaje de Signos Nicaragüense と呼ばれる）を作り上げた。</p>
   
   <p>真の転機は、より幼い世代──幼稚園・小学校低学年──が1980年代半ばに合流したときに起きた。彼らは年長児のピジンを入力として受け取り、子どもにしかできないことをした──<strong>それを文法化した</strong>のである。空間的一致、動詞形態論、談話標識が一貫して導入された。1990年代初頭には、若年層は完全に文法化された自然言語──ISN──を手話していた。皮肉なことに、年長の第一世代にはその一部しか理解できなかった。</p>
-  
-  <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 ニカラグア手話の「ありがとう」</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 ニカラグア手話の「こんにちは」</button>
-  </div>
-  
+
   <p>米国の言語学者<strong>ジュディ・ケグル</strong>は1986年に調査を依頼され、目の前で起きていることが前例のない出来事だと即座に気づいた。以後、<strong>アン・センガス</strong>、<strong>マリー・コッポラ</strong>らとともに世代別記録を続けている。彼らの代表的な発見はこうだ：</p>
   
   <blockquote>「より早期に、より多人数で合流した子どもたちは、入力を提供した年長の第一世代より、体系的により複雑で、より文法的な手話を行った」── センガス、北、オジュレク, <em>Science</em>誌, 2004年</blockquote>
