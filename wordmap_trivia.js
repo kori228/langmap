@@ -210,6 +210,7 @@ const TRIVIA_ARTICLES = [
   <p>If you took every distinct consonant in English — all 24 of them — and stacked them on top of every distinct consonant in French, German, Russian, Arabic and Mandarin, you would still fall short of <strong>Taa</strong>, also written <em>!Xóõ</em>. By the count in Anthony Traill's monumental 1985 grammar, Taa has somewhere between <strong>83 and 164 phonemic consonants</strong> depending on how you slice contour clicks and click accompaniments — and either figure is a world record.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="nmn" data-zoom="5">🌍 Show Taa on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-22" data-lng="20" data-zoom="5">🗺️ Fly to the Taa heartland</button>
   </div>
   
@@ -243,6 +244,7 @@ const TRIVIA_ARTICLES = [
   <p>英語の子音は24個。それにフランス語、ドイツ語、ロシア語、アラビア語、北京官話の子音を全部足しても、まだ<strong>タア語</strong>（<em>!ホーン語</em>とも書く）には届かない。アンソニー・トレイルの記念碑的記述（1985年）によれば、タア語の音素子音は<strong>83〜164個</strong>──吸着音の付随特徴をどう数えるかで揺れる──いずれにせよ世界記録である。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="nmn" data-zoom="5">🌍 地図でタア語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-22" data-lng="20" data-zoom="5">🗺️ タア語の故地へ飛ぶ</button>
   </div>
   
@@ -391,6 +393,7 @@ const TRIVIA_ARTICLES = [
   <p>The exact moment a language dies is rarely datable. <strong>Ubykh</strong> is the exception. On <strong>7 October 1992</strong>, in the Turkish village of <strong>Hacıosman</strong> south of the Sea of Marmara, an 88-year-old farmer named <strong>Tevfik Esenç</strong> went to sleep and did not wake up. He was the last fully fluent speaker of a language that had, until two centuries earlier, been the everyday tongue of tens of thousands of people on the Black Sea coast of the Caucasus.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Show Ubykh on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Fly to Ubykh's lost homeland (Sochi)</button>
   </div>
   
@@ -424,6 +427,7 @@ const TRIVIA_ARTICLES = [
   <p>言語の死を正確な日付で言える例は少ない。<strong>ウビフ語</strong>はその例外だ。<strong>1992年10月7日</strong>、トルコ・マルマラ海南方の村<strong>ハジオスマン</strong>で、88歳の農夫<strong>テヴフィク・エセンチ</strong>が眠りについたまま目を覚まさなかった。彼はウビフ語の最後の完全な話者だった。200年前まで、コーカサスの黒海沿岸で数万人が日常的に話していた言語が、その瞬間に消えた。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 地図でウビフ語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ ウビフ族の失われた故郷（ソチ）へ</button>
   </div>
   
@@ -481,6 +485,7 @@ const TRIVIA_ARTICLES = [
   <p>Across the continent of Australia, more than 250 indigenous languages share, with surprising consistency, a small palette of speech sounds: voiceless stops at four or five places of articulation, matching nasals, a couple of laterals, two rhotics — and absolutely no clicks, no ejectives, no implosives, no ingressive sounds. Then comes <strong>Damin</strong>, and the rules break.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="lbz_damin" data-zoom="6">🌍 Show Damin on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-16.6" data-lng="139.5" data-zoom="6">🗺️ Fly to Mornington Island</button>
   </div>
   
@@ -515,6 +520,7 @@ const TRIVIA_ARTICLES = [
   <p>オーストラリア大陸の250以上の先住民言語は、驚くほど似た音体系を共有している──4〜5箇所の無声破裂音、対応する鼻音、いくつかの側面音、2種の流音。吸着音もなく、放出音もなく、吸気音もない。ところが<strong>ダミン語</strong>はそのすべてを破ってしまう。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="lbz_damin" data-zoom="6">🌍 地図でダミン語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-16.6" data-lng="139.5" data-zoom="6">🗺️ モーニントン島へ飛ぶ</button>
   </div>
   
@@ -2079,6 +2085,7 @@ const TRIVIA_ARTICLES = [
   <p>In <strong>Tuyuca</strong> — an <strong>Eastern Tukanoan</strong> language with about <strong>1,000 speakers</strong> in the Vaupés region on the Brazil–Colombia border — you simply cannot. Every finite verb must carry a small suffix indicating <em>how you know what you are claiming</em>. There is no neutral form. Speak without an evidential and you have not spoken a grammatical sentence.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="tue" data-zoom="6">🌍 Show Tuyuca on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="0.5" data-lng="-69" data-zoom="6">🗺️ Fly to the Vaupés region</button>
   </div>
   
@@ -2116,6 +2123,7 @@ const TRIVIA_ARTICLES = [
   <p>ところが<strong>トゥヤカ語（Tuyuca）</strong>──ブラジル＝コロンビア国境のヴァウペス川流域で<strong>約1000人</strong>が話す<strong>東トゥカノ語派</strong>の言語──では、それが文法的に許されない。定動詞には必ず「どう知ったか」を示す接尾辞が付き、無印の中立形は存在しない。証拠性なしで動詞を発すれば、それは非文である。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="tue" data-zoom="6">🌍 地図でトゥユカ語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="0.5" data-lng="-69" data-zoom="6">🗺️ ヴァウペス川流域へ飛ぶ</button>
   </div>
   
@@ -2177,6 +2185,7 @@ const TRIVIA_ARTICLES = [
   <p>If you sit down with a speaker of <strong>Guugu Yimithirr</strong> — a <strong>Pama-Nyungan</strong> language of Cape York Peninsula in far north Queensland, Australia — they will instead say, in effect, "the cup north of you" or "the cup to your east". Guugu Yimithirr does not just <em>prefer</em> cardinal directions. It has <strong>no productive vocabulary for left or right at all</strong> when describing the location of external objects. The body-relative axes simply are not used in the basic spatial system.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="kky" data-zoom="6">🌍 Show Guugu Yimithirr on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-15.5" data-lng="145.25" data-zoom="6">🗺️ Fly to Hopevale, Cape York</button>
   </div>
   
@@ -2215,6 +2224,7 @@ const TRIVIA_ARTICLES = [
   <p>ところがオーストラリア北部ケープ・ヨーク半島の<strong>グーグ・イミディル語（Guugu Yimithirr）</strong>──<strong>パマ・ニュンガン語族</strong>のアボリジニ言語──では、同じ場面で「あなたの<em>北</em>側のコップ」「あなたの<em>東</em>のコップ」と言う。単に絶対方位を「好む」のではない。グーグ・イミディル語には、外部の物の位置を述べるための<strong>「左／右」に相当する生産的な語彙そのものが存在しない</strong>のだ。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="kky" data-zoom="6">🌍 地図でグーグ・イミディル語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="-15.5" data-lng="145.25" data-zoom="6">🗺️ ホープヴェール（ケープ・ヨーク）へ飛ぶ</button>
   </div>
   
@@ -2383,6 +2393,7 @@ const TRIVIA_ARTICLES = [
   <p>On the rugged inlets of central British Columbia, a few dozen people still speak <strong>Nuxalk</strong> (also called <em>Bella Coola</em>), a Salishan language whose phonology has astonished linguists for more than half a century. Its claim to fame: <strong>words that contain no vowels whatsoever</strong>.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="blc" data-zoom="6">🌍 Show Nuxalk on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="52.40" data-lng="-126.75" data-zoom="6">🗺️ Fly to the Bella Coola valley</button>
   </div>
   
@@ -2414,6 +2425,7 @@ const TRIVIA_ARTICLES = [
   <p>カナダ・ブリティッシュコロンビア州中央部の入り組んだ入江に、いまも数十人の話者を残す<strong>ヌハルク語（Nuxalk、別名 Bella Coola）</strong>がある。サリシュ語族に属するこの言語は、半世紀にわたって音韻論者を驚かせ続けてきた。最大の特徴は、<strong>母音をひとつも含まない単語</strong>が存在することだ。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="blc" data-zoom="6">🌍 地図でヌハルク語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="52.40" data-lng="-126.75" data-zoom="6">🗺️ ベラクーラ渓谷へ飛ぶ</button>
   </div>
   
@@ -2544,6 +2556,7 @@ const TRIVIA_ARTICLES = [
   <p>Imagine being a linguist and getting to watch a brand-new human language come into existence — not borrowed, not creolised from existing languages, but generated from scratch by children in a single generation. That is exactly what happened in Managua, Nicaragua, between 1977 and the early 1990s, producing what we now call <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Nicaraguan Sign Language.</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Show Nicaraguan Sign Language on the map</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="12.13" data-lng="-86.25" data-zoom="7">🗺️ Fly to Managua</button>
   </div>
   
@@ -2570,6 +2583,7 @@ const TRIVIA_ARTICLES = [
   <p>言語学者として、新しい人間言語が生まれる瞬間に立ち会えるとしたら──。借用でもクレオール化でもなく、ひと世代の子どもたちがゼロから生み出した「初期化された言語」を、リアルタイムで観察できるとしたら。1977年から1990年代初頭にかけて、ニカラグアの首都マナグアで、まさにそれが起きた。生まれたのが<strong>Idioma de Señas de Nicaragua（ISN、ニカラグア手話）</strong>である。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 地図でニカラグア手話を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="12.13" data-lng="-86.25" data-zoom="7">🗺️ マナグアへ飛ぶ</button>
   </div>
   
