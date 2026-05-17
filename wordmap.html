@@ -1287,10 +1287,15 @@
         @media (max-width: 600px) {
             .trivia-modal {
                 width: calc(100vw - 16px);
-                padding: 22px 18px 24px;
                 font-size: 13.5px;
             }
             .trivia-modal h2 { font-size: 18px; }
+            /* Tight mobile padding matching the language-info modal
+               (#info-content uses 14px 16px on mobile). Default desktop
+               value is 8px 32px 28px which feels too generous on phones. */
+            .trivia-scroll { padding: 6px 16px 18px; }
+            .trivia-modal.compact .trivia-scroll { padding: 4px 14px 16px; }
+            .trivia-modal-tools { padding: 4px 8px 0; }
         }
         /* In the hamburger drawer (mobile) the trivia button sits in a
            vertical stack with plenty of width — show the label, don't
