@@ -90,24 +90,60 @@
            the user picks different words (some labels are much longer
            than others, e.g. Japanese 食べる vs short 'good'). */
         .top-left-controls #word-select { width: 240px; }
-        /* Word definition — fixed width matching the selector and a fixed
-           height so that the era switch / language search below it never
-           shift vertically when the user picks a concept with a longer
-           or shorter definition. */
+        /* Era switch and filter FAB share one horizontal row so the
+           filter doesn't claim a separate vertical slot under the
+           search field. lang-filter.js's FAB is moved into this row by
+           the era-filter-row shim. */
+        .top-left-controls .era-filter-row {
+            display: flex; flex-direction: row;
+            align-items: center; gap: 6px;
+            flex-wrap: wrap;
+        }
+        .top-left-controls .era-filter-row .lf-fab {
+            margin: 0;
+            /* Shrink both controls one notch on PC so they don't
+               dominate the column (user 2026-05-17). Filter FAB defaults
+               are 13px/5-12 padding — drop to 11px/3-10 to match the
+               era pills below. */
+            font-size: 11px;
+            padding: 3px 10px;
+        }
+        .top-left-controls .era-filter-row .lf-fab svg {
+            width: 11px; height: 11px;
+        }
+        /* Era pills sit on the same baseline as the (now-smaller) filter
+           FAB. The default global .radio-switch rules are already this
+           small; the override exists to keep them aligned should either
+           side change later. */
+        .top-left-controls .era-filter-row .radio-switch .radio-opt {
+            font-size: 11px;
+            padding: 3px 10px;
+        }
+        /* Word definition — fixed width matches the selector; height
+           grows to fit all content so 3+ line definitions aren't
+           truncated (user 2026-05-17). The era switch / lang search
+           below shift down as needed; this trade-off was preferred over
+           hiding meaningful text. Empty concepts collapse via the
+           :empty rule below so the lower controls still hug the
+           selector when there's no description. */
         .top-left-controls #word-definition {
             width: 240px;
             box-sizing: border-box;
-            height: 88px;
-            margin-top: 2px;
-            margin-bottom: 6px;
-            padding: 4px 8px;
+            margin: 0 0 2px;
+            padding: 2px 7px;
             font-size: 10px;
             color: #333;
             font-style: italic;
-            line-height: 1.35;
+            line-height: 1.3;
             background: transparent;
             text-shadow: 0 1px 2px rgba(255,255,255,0.6);
-            overflow: hidden;
+        }
+        /* When the current concept has no definition, collapse the box
+           entirely so the lower controls hug the selector. The :empty
+           selector only matches when there's no whitespace either, which
+           is what `wd.textContent = …` produces. */
+        .top-left-controls #word-definition:empty {
+            margin: 0; padding: 0;
         }
         body.is-3d .top-left-controls #word-definition {
             color: #f5f5f5;
@@ -158,14 +194,40 @@
             border-top: 1px solid #ccc;
         }
         .size-slider-wrap {
-            display: flex; justify-content: center;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 3px;
         }
-        .v-slider {
-            writing-mode: vertical-lr;
-            direction: rtl;
-            width: 28px; height: 80px;
-            cursor: pointer;
-            accent-color: #333;
+        .size-step-btn {
+            width: 26px; height: 22px;
+            border: 1px solid #d0d0d0; border-radius: 6px;
+            background: #fff; color: #555;
+            font-size: 13px; font-weight: 700; line-height: 1;
+            cursor: pointer; user-select: none;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .size-step-btn:hover { background: #f3f4f6; border-color: #bbb; color: #333; }
+        .size-step-btn:active { transform: scale(0.94); }
+        .size-step-btn:disabled {
+            opacity: 0.35; cursor: default; transform: none;
+        }
+        .size-label {
+            font-size: 8px; color: #888;
+            text-align: center; line-height: 1.1;
+            max-width: 36px;
+            user-select: none;
+        }
+        /* Hidden range input keeps the existing read/write surface
+           (fontSizeSlider.value, input/change events, hash persistence)
+           working without forking the API. sr-only style so screen-reader
+           users still see the control. */
+        .size-input-hidden {
+            position: absolute;
+            width: 1px; height: 1px; margin: -1px; padding: 0;
+            overflow: hidden; clip: rect(0,0,0,0); border: 0;
+            white-space: nowrap;
         }
         .toggle-btn {
             font-size: 11px; padding: 4px 10px; border: 1px solid #d0d0d0;
@@ -414,21 +476,11 @@
         .zoom-mid .lang-label .ipa { font-size: calc(9px * var(--label-scale)); }
         .zoom-mid .lang-label .name { font-size: calc(8px * var(--label-scale)); }
 
-        /* Unattested cell: same shape/footprint as a normal .lang-label card
-           (so the connector line still aims at it correctly when the modal
-           opens). Per user request, text colors match attested labels —
-           the dashed outline alone signals "no data for this concept". */
-        .lang-label.unattested {
-            background: rgba(255,255,255,0.55);
-            border: 1px dashed rgba(120,120,140,0.55);
-            border-radius: 4px;
-            padding: 2px 6px;
-        }
-        .lang-label.unattested:hover { background: rgba(255,255,255,0.85); }
-        body.is-3d .lang-label.unattested {
-            background: rgba(0,0,0,0.45);
-            border-color: rgba(200,200,220,0.45);
-        }
+        /* Unattested cell: visually identical to attested .lang-label —
+           the dashed outline used to mark "no data for this concept" was
+           more visually prominent than the regular labels, so it's been
+           removed. The .unattested class is preserved as a hook (for
+           hit-testing, code lookup etc.) but carries no extra decoration. */
 
         /* --- Language info panel --- */
         /* Panel is a flex column with no scroll of its own; the inner
@@ -673,7 +725,14 @@
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
             }
             .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
-            .compare-fab { padding: 8px 12px; }
+            .compare-fab {
+                padding: 8px 12px;
+                /* Lift the compare FAB clear of the OS gesture/home bar
+                   so it's easier to thumb-tap (user 2026-05-17: "조금
+                   더 위로 이동"). 52px keeps it well above iOS home
+                   indicator + Android nav bar without crowding the map. */
+                bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px));
+            }
         }
 
         /* --- URL watermark --- */
@@ -722,16 +781,8 @@
             writing-mode: vertical-lr; text-orientation: mixed;
             display: inline-block; line-height: 1.4; min-height: 2em;
         }
-        /* Globe (3D) unattested cell: dashed outline keeps the visual cue
-           that this lang has no data for the current concept; text colors
-           match attested labels (per user request). */
-        .globe-label.unattested {
-            background: rgba(0,0,0,0.45);
-            border: 1px dashed rgba(200,200,220,0.45);
-            border-radius: 4px;
-            padding: 2px 6px;
-        }
-        .globe-label.unattested:hover { background: rgba(0,0,0,0.7); }
+        /* Globe (3D) unattested cell: matches attested .globe-label styling
+           (no dashed border / persistent background). See the 2D twin above. */
 
         /* Audit Task 234 Step B: settings drawer (desktop defaults).
            Wrapper inherits its parent's flex layout via display:contents so
@@ -792,10 +843,14 @@
                 opacity: 0; visibility: hidden;
                 transform: translateX(8px);
                 transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
-                position: fixed; top: 120px;
+                /* Drawer hangs directly below the gear button (right-controls
+                   top:68 + 44px toggle-3d + 6px gap + 44px gear + 6px gap
+                   ≈ 168). Anchored to viewport so it can extend past the
+                   flex column without participating in its layout. */
+                position: fixed; top: 168px;
                 right: max(8px, env(safe-area-inset-right));
-                /* Cap height so the drawer never grows past the FAB row at
-                   the bottom; users can scroll inside if rows ever exceed. */
+                /* Cap height so the drawer never grows past the bottom of
+                   the viewport; users can scroll inside if rows exceed. */
                 max-height: calc(100vh - 180px);
                 max-height: calc(100dvh - 180px);
                 overflow-y: auto;
@@ -830,17 +885,19 @@
             .settings-toggle:checked + .settings-fab {
                 background: #1a73e8; color: #fff; border-color: #1a73e8;
             }
-            /* Inside the drawer, force the size-slider-wrap visible and
-               horizontal — the desktop vertical slider doesn't fit. */
+            /* Inside the drawer, lay the size controls out horizontally:
+               [−] [Font Size] [＋] — easier to thumb-reach than a vertical
+               stack inside the narrow drawer. */
             body:has(.settings-toggle:checked) .right-secondary-controls .size-slider-wrap {
                 display: flex !important; flex-direction: row;
+                gap: 6px;
             }
-            body:has(.settings-toggle:checked) .right-secondary-controls .v-slider {
-                writing-mode: horizontal-tb; orient: horizontal;
-                width: 140px; height: auto;
+            body:has(.settings-toggle:checked) .right-secondary-controls .size-step-btn {
+                width: 32px; height: 30px; font-size: 16px;
             }
-            body:has(.settings-toggle:checked) .right-secondary-controls .ctrl-label {
-                writing-mode: horizontal-tb; font-size: 11px;
+            body:has(.settings-toggle:checked) .right-secondary-controls .size-label {
+                font-size: 11px; max-width: none;
+                writing-mode: horizontal-tb;
             }
 
             /* Audit (UI polish 2026-05-09): on mobile, the modal covers
@@ -980,7 +1037,10 @@
             flex: 0 0 auto;
             display: flex; justify-content: flex-end; align-items: center;
             gap: 6px;
-            padding: 6px 10px 0;
+            /* Symmetric vertical padding so the header doesn't visually
+               collide with the article body underneath (user 2026-05-17:
+               "header bottom margin is 0; match the top"). */
+            padding: 6px 10px;
         }
         .trivia-scroll {
             flex: 1 1 auto;
@@ -1150,14 +1210,14 @@
            each article (replaces the previous behaviour where the
            full 30-card index was bleeding under every article). */
         .trivia-article-nav {
-            display: flex; gap: 8px;
+            display: flex; flex-direction: column; gap: 8px;
             margin-top: 22px;
             padding-top: 16px;
             border-top: 1px solid rgba(180,130,30,0.25);
         }
         .trivia-article-nav[hidden] { display: none; }
         .trivia-article-nav button {
-            flex: 1 1 0; min-width: 0;
+            display: block; width: 100%;
             text-align: left;
             background: rgba(255,243,205,0.55);
             border: 1px solid rgba(180,130,30,0.28);
@@ -1168,12 +1228,10 @@
             color: #3a2e1a;
             transition: all 0.18s ease;
         }
+        .trivia-article-nav button[hidden] { display: none; }
         .trivia-article-nav button:hover {
             background: rgba(255,235,180,0.85);
             border-color: #b8860b;
-        }
-        .trivia-article-nav button[disabled] {
-            opacity: 0.4; cursor: default;
         }
         .trivia-article-nav .nav-dir {
             display: block;
@@ -1194,7 +1252,21 @@
             line-clamp: 2;
             -webkit-box-orient: vertical;
         }
-        .trivia-article-nav button.next { text-align: right; }
+        /* "Back to articles" row is a single-line link, no big title slot. */
+        .trivia-article-nav button.to-index {
+            background: rgba(255,253,240,0.6);
+            border-style: dashed;
+            text-align: center;
+            font-size: 12px; color: #6a4c1c; font-weight: 600;
+            padding: 7px 12px;
+        }
+        .trivia-article-nav button.to-index .nav-dir {
+            margin: 0;
+            font-size: 12px;
+            text-transform: none;
+            letter-spacing: 0.3px;
+            color: #6a4c1c;
+        }
         .trivia-card-num {
             display: inline-block;
             font-size: 10px; font-weight: 700;
@@ -1295,19 +1367,58 @@
                value is 8px 32px 28px which feels too generous on phones. */
             .trivia-scroll { padding: 6px 16px 18px; }
             .trivia-modal.compact .trivia-scroll { padding: 4px 14px 16px; }
-            .trivia-modal-tools { padding: 4px 8px 0; }
-        }
-        /* In the hamburger drawer (mobile) the trivia button sits in a
-           vertical stack with plenty of width — show the label, don't
-           hide it as we used to when the button was crammed inline in
-           the desktop header. */
-        @media (max-width: 640px) {
-            .header-collapse .trivia-btn {
-                width: 100%; justify-content: flex-start;
-                font-size: 14px; padding: 10px 12px;
-                margin-left: 0;
+            /* Match the desktop symmetric vertical padding so the header
+               doesn't crash into the article body on mobile either
+               (user 2026-05-17). */
+            .trivia-modal-tools { padding: 4px 8px; }
+            /* Sources are reference metadata, not primary reading. Drop a
+               size on mobile so they take less vertical room and signal
+               their secondary status more clearly. */
+            .trivia-modal .trivia-sources {
+                font-size: 10px;
+                line-height: 1.45;
+                padding: 9px 11px;
+                margin-top: 16px;
             }
-            .header-collapse .trivia-btn .trivia-btn-label { display: inline; }
+            .trivia-modal .trivia-sources-label {
+                font-size: 9px;
+                letter-spacing: 1px;
+                margin-bottom: 4px;
+            }
+            .trivia-modal .trivia-sources ul { padding-left: 14px; }
+        }
+        /* Mobile layout shim (see #mobile-layout-shim IIFE near the
+           bottom of <body>): on mobile, the trivia button is relocated
+           OUT of .header-collapse (drawer) and into the header bar so
+           it remains visible without opening the menu. */
+        @media (max-width: 640px) {
+            /* Trivia button when sitting directly in the header bar:
+               icon-only (hide the "Linguistic Trivia" label) to keep the
+               header bar uncluttered next to the hamburger. `margin-left:
+               auto` absorbs all leading flex space so the button hugs
+               the right edge — placing it immediately to the LEFT of the
+               hamburger (which then sits at margin-left: 0). */
+            .site-header-bar > .trivia-btn {
+                margin-left: auto;
+                margin-right: 6px;
+                padding: 5px 9px;
+                font-size: 12px;
+                gap: 3px;
+            }
+            /* Keep the short-form label visible alongside the 📚 icon so
+               users have a word to recognize, not just a glyph. The
+               JS sets it to the `triviaButtonShort` translation on mobile. */
+            .site-header-bar > .trivia-btn .trivia-btn-label {
+                font-size: 11px;
+                font-weight: 600;
+            }
+            /* With trivia absorbing the auto margin, hamburger no longer
+               needs its own — drop it so the two buttons sit flush. */
+            .site-header-bar > .trivia-btn + .hamburger-btn { margin-left: 0; }
+            /* The "?" era-help icon is a desktop-only hover-affordance
+               (tooltip shown on hover/focus); mobile users tap into the
+               pills directly and the icon just adds clutter to the row. */
+            #era-help { display: none !important; }
         }
         .trivia-action {
             display: inline-flex; align-items: center; gap: 4px;
@@ -1476,37 +1587,50 @@
             pointer-events: none;
             font-family: inherit;
             text-align: center;
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            /* Only transition opacity. transform changes every frame when
+               globe.gl re-positions the label (camera move / globe spin);
+               a transform transition would make the label visibly lag the
+               camera by ~0.6s. */
+            transition: opacity 0.6s ease;
             /* container holds the SVG ellipse + the chip below it */
             display: inline-block;
         }
         .trivia-panto-ellipse {
             display: block;
+            /* More circular footprint (aspect ~1.25:1) so the marker
+               reads as "a region", not a stretched oval. The width stays
+               so the chip below has the same anchor. */
             width: 200px;
-            height: 100px;
+            height: 140px;
             /* slight rotation so the "hand-drawn" feel reads */
             transform: rotate(-2deg);
-            filter: drop-shadow(0 2px 4px rgba(60,40,10,0.30));
+            filter: drop-shadow(0 2px 5px rgba(120,20,20,0.30));
         }
         .trivia-panto-ellipse path {
             fill: none;
-            stroke: #b8860b;
+            /* Vivid vermillion — more visible against terrain/labels
+               basemaps than the previous gold. */
+            stroke: #d62828;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
         .trivia-panto-chip {
             display: inline-block;
-            margin-top: -6px;  /* nudge up so the chip sits at the bottom of the ellipse */
+            /* Pull the chip up into the ellipse's lower band so the pill
+               and the sketched outline read as one marker (ellipse height
+               grew from 100→140 to look more circular). */
+            margin-top: -22px;
             background: rgba(255,253,240,0.95);
-            color: #5b4a18;
+            color: #9b1c1c;
             padding: 3px 12px;
             border-radius: 14px;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.4px;
             white-space: nowrap;
-            box-shadow: 0 2px 6px rgba(60,40,10,0.18);
-            border: 1px solid rgba(184,134,11,0.4);
+            box-shadow: 0 2px 6px rgba(120,20,20,0.20);
+            border: 1px solid rgba(214,40,40,0.45);
+            position: relative; z-index: 1;
         }
         .trivia-panto-label.fading {
             opacity: 0;
@@ -1531,6 +1655,17 @@
             animation: triviaPulse 1.4s ease-out infinite;
             border-radius: 6px;
             background: rgba(255,243,205,0.85);
+            /* Padding matches .lang-label.selected (6px 10px) so the
+               yellow blink area has a consistent visible footprint
+               regardless of whether the lang-info modal is also open
+               (reported 2026-05-18: focus shows wide yellow because
+               .selected adds card padding; setword shows narrow yellow
+               because there's no .selected). The transform on the
+               marker is `translate(-50%, -50%)` which scales with the
+               element size, so the text stays anchored to its lat/lng
+               while the highlight box grows symmetrically around it. */
+            padding: 6px 10px;
+            box-sizing: border-box;
         }
         .lang-label.trivia-blink .word,
         .globe-label.trivia-blink .word {
@@ -1610,13 +1745,19 @@
             <!-- Prev / next navigation at the bottom of each article -->
             <nav class="trivia-article-nav" id="trivia-article-nav" hidden
                  aria-label="Article navigation">
+                <!-- Order requested by user 2026-05-17: next → prev →
+                     back-to-index, each on its OWN row (not side-by-side).
+                     Missing rows (no next, no prev) are hidden. -->
+                <button type="button" class="next" id="trivia-nav-next">
+                    <span class="nav-dir" id="trivia-nav-next-dir">Next →</span>
+                    <span class="nav-title" id="trivia-nav-next-title"></span>
+                </button>
                 <button type="button" class="prev" id="trivia-nav-prev">
                     <span class="nav-dir" id="trivia-nav-prev-dir">← Previous</span>
                     <span class="nav-title" id="trivia-nav-prev-title"></span>
                 </button>
-                <button type="button" class="next" id="trivia-nav-next">
-                    <span class="nav-dir" id="trivia-nav-next-dir">Next →</span>
-                    <span class="nav-title" id="trivia-nav-next-title"></span>
+                <button type="button" class="to-index" id="trivia-nav-index">
+                    <span class="nav-dir" id="trivia-nav-index-dir">← Articles</span>
                 </button>
             </nav>
             <!-- Index of all articles (shown when no specific article is open) -->
@@ -1631,15 +1772,21 @@
     <div class="top-left-controls">
         <select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
         <div id="word-definition"></div>
-        <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
-            <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
-            <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
-            <!-- Audit Task 112: legend explaining what each era shows.
-                 Compact help icon; tooltip describes that historical mode
-                 also overlays modern descendants as cross-reference. -->
-            <span id="era-help" tabindex="0" role="button" aria-label=""
-                  style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
-                  title="">?</span>
+        <!-- Era switch + filter button live in the same row so the
+             filter FAB (created by lang-filter.js) doesn't claim its own
+             vertical slot below the search field. The shim near the end
+             of <body> moves the FAB into this wrapper at runtime. -->
+        <div class="era-filter-row" id="era-filter-row">
+            <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
+                <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
+                <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
+                <!-- Audit Task 112: legend explaining what each era shows.
+                     Compact help icon; tooltip describes that historical mode
+                     also overlays modern descendants as cross-reference. -->
+                <span id="era-help" tabindex="0" role="button" aria-label=""
+                      style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
+                      title="">?</span>
+            </div>
         </div>
         <div class="lang-search-wrap" style="position:relative;display:flex;gap:4px">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
@@ -1672,7 +1819,7 @@
              drawer the same way as before; only the visual layout moved
              from floating FAB to inline button-stack member. -->
         <input type="checkbox" id="settings-toggle" class="settings-toggle" aria-label="Display settings toggle">
-        <label for="settings-toggle" class="settings-fab" aria-label="Display settings" tabindex="0">⚙</label>
+        <label for="settings-toggle" class="settings-fab" aria-label="Display settings" tabindex="0"><svg class="settings-fab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></label>
         <div style="height:8px" class="ctrl-spacer"></div>
         <div class="right-secondary-controls" id="right-secondary">
             <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
@@ -1682,9 +1829,19 @@
                 <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
                 <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
             </div>
-            <div class="size-slider-wrap" style="display:flex;align-items:center;justify-content:center;gap:2px">
-                <label class="ctrl-label" id="size-label" for="font-size" style="font-size:7px;color:#888;writing-mode:vertical-lr;text-orientation:mixed;">Font Size</label>
-                <input type="range" id="font-size" min="50" max="200" value="100" orient="vertical" class="v-slider" aria-label="Label font size">
+            <div class="size-slider-wrap">
+                <!-- + on top, − on bottom; the hidden range input keeps the
+                     existing JS surface (fontSizeSlider.value, input/change
+                     events, URL-hash persistence) working unchanged. -->
+                <button type="button" class="size-step-btn" id="size-up"
+                        aria-label="Increase label font size"
+                        aria-controls="font-size">＋</button>
+                <label class="ctrl-label size-label" id="size-label" for="font-size">Font Size</label>
+                <button type="button" class="size-step-btn" id="size-down"
+                        aria-label="Decrease label font size"
+                        aria-controls="font-size">−</button>
+                <input type="range" id="font-size" min="50" max="200" value="100"
+                       aria-label="Label font size" class="size-input-hidden">
             </div>
         </div>
     </div>
@@ -1756,6 +1913,87 @@
                 if (ic) ic.click();
             }
         });
+    })();
+    </script>
+
+    <!-- Mobile layout shim: at ≤640px, move the trivia button out of the
+         hamburger drawer into the header bar (always visible). Search +
+         lang-filter FAB stay on-screen at all viewport widths (the user
+         wants quick access; tucking them into the drawer added a tap). -->
+    <script>
+    (function () {
+        const mq = window.matchMedia('(max-width: 640px)');
+        const headerBar = document.querySelector('.site-header-bar');
+        const drawer = document.getElementById('header-collapse');
+        const triviaBtn = document.getElementById('trivia-open');
+        // Desktop anchor for re-insertion (trivia sits just before the
+        // UI language picker on wide layouts).
+        const desktopTriviaAnchor = drawer ? drawer.querySelector('.header-ui-lang') : null;
+        function apply() {
+            if (!headerBar || !drawer || !triviaBtn) return;
+            if (mq.matches) {
+                // Mobile: trivia button → header bar, immediately to the
+                // LEFT of the hamburger button. Hamburger has
+                // `margin-left: auto`, so visually [logo …gap… trivia hamburger].
+                const hamburgerBtn = headerBar.querySelector('.hamburger-btn');
+                if (hamburgerBtn && triviaBtn !== hamburgerBtn.previousElementSibling) {
+                    headerBar.insertBefore(triviaBtn, hamburgerBtn);
+                }
+            } else if (desktopTriviaAnchor && triviaBtn.parentNode !== drawer) {
+                // Desktop: restore trivia button to the drawer (where it
+                // participates in the header flex layout via display:contents).
+                drawer.insertBefore(triviaBtn, desktopTriviaAnchor);
+            }
+        }
+        apply();
+        mq.addEventListener('change', apply);
+    })();
+    </script>
+
+    <!-- Era-filter-row shim: move the lang-filter FAB (created by
+         lang-filter.js at DOMContentLoaded into .top-left-controls)
+         into the era-switch row so it sits next to the modern/historical
+         toggle instead of stacking below the search field. -->
+    <script>
+    (function () {
+        const row = document.getElementById('era-filter-row');
+        if (!row) return;
+        function move() {
+            const fab = document.querySelector('.lf-fab');
+            if (fab && fab.parentNode !== row) {
+                row.appendChild(fab);
+                return true;
+            }
+            return !!fab;
+        }
+        if (move()) return;
+        document.addEventListener('DOMContentLoaded', () => {
+            if (move()) return;
+            // lang-filter mounts on DOMContentLoaded; a couple of rAF
+            // ticks are enough to catch the FAB in steady state.
+            requestAnimationFrame(() => { if (move()) return; requestAnimationFrame(move); });
+        });
+        window.addEventListener('load', move);
+    })();
+    </script>
+
+    <!-- Era-label viewport shim: applyUILang() decides whether to append
+         "(N)" language counts to the era pills based on viewport width.
+         Without this, crossing the 640px breakpoint by resizing doesn't
+         refresh the labels until the next UI-lang / era change. -->
+    <script>
+    (function () {
+        const mq = window.matchMedia('(max-width: 640px)');
+        function refresh() {
+            if (typeof window.applyUILang === 'function') {
+                try { window.applyUILang(); } catch (_) {}
+            } else {
+                // applyUILang is in the IIFE scope, not on window — dispatch
+                // a uichange event which triggers the same path.
+                window.dispatchEvent(new CustomEvent('langmap:uichange'));
+            }
+        }
+        mq.addEventListener('change', refresh);
     })();
     </script>
 
@@ -1844,7 +2082,7 @@
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=31"></script>
     <script src="lang_names.js?v=108"></script>
-    <script src="wordmap_trivia.js?v=25"></script>
+    <script src="wordmap_trivia.js?v=27"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -1877,6 +2115,11 @@
         // resolves an article id from ?trivia=<id>.
         var TRIVIA_I18N_LANGS = new Set(['ko','zh','yue','vi','th','id','hi','de','fr','it','es','pt','ru','uk','ar','he','sw']);
         var _loadedTriviaI18n = new Set();
+        // Hoisted: read by updateGlobeLabels (which can be called from map
+        // event listeners during initial render). The real assignment lives
+        // in the trivia panto helpers further down; this `var` just primes
+        // the slot so the read can't TDZ-throw.
+        var _pantoGlobeLabel = null;
 
         // --- Rough initial location from browser timezone (no GPS permission) ---
         // Maps IANA timezone → [lat, lng] of a representative city. Falls back to
@@ -2073,8 +2316,8 @@
             filter:    31,
             names:   108,
             meta:     190,
-            trivia:   25,
-            triviaI18n: 1,
+            trivia:   27,
+            triviaI18n: 3,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2269,6 +2512,22 @@
                 ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
                 ar: 'طرائف لغوية', he: 'טריוויה לשונית',
                 sw: 'Mambo ya Kiisimu',
+            },
+            triviaButtonShort: {
+                // Compact label for the mobile header bar where horizontal
+                // room is tight — drops the qualifier ("Linguistic" / "언어학"
+                // / "言語学の" / etc.) and keeps the core noun.
+                en: 'Trivia', ja: '豆知識',
+                ko: '토막상식', zh: '小知识', yue: '小知識',
+                vi: 'Mẹo', th: 'เกร็ด',
+                id: 'Trivia', hi: 'रोचक',
+                de: 'Trivia', fr: 'Anecdotes',
+                it: 'Curiosità',
+                es: 'Curiosidades', es_eu: 'Curiosidades', es_mx: 'Curiosidades',
+                pt: 'Curiosidades', pt_eu: 'Curiosidades', pt_br: 'Curiosidades',
+                ru: 'Факты', uk: 'Факти',
+                ar: 'طرائف', he: 'טריוויה',
+                sw: 'Mambo',
             },
             triviaEyebrow: {
                 en: 'Linguistic Trivia', ja: '言語学の豆知識',
@@ -2473,8 +2732,14 @@
             }
             const modernLabel = wt('modern') || 'Modern';
             const histLabel   = wt('historical') || 'Historical';
-            document.getElementById('era-modern').textContent     = modernCount     ? `${modernLabel} (${modernCount})`     : modernLabel;
-            document.getElementById('era-historical').textContent = historicalCount ? `${histLabel} (${historicalCount})`   : histLabel;
+            // On narrow viewports the language count "(N)" makes the era
+            // pills wide enough to wrap below the row — strip it so the
+            // pills stay short ("현대" / "역사", "Modern" / "Historical").
+            const _eraNarrow = window.matchMedia('(max-width: 640px)').matches;
+            document.getElementById('era-modern').textContent =
+                (!_eraNarrow && modernCount) ? `${modernLabel} (${modernCount})` : modernLabel;
+            document.getElementById('era-historical').textContent =
+                (!_eraNarrow && historicalCount) ? `${histLabel} (${historicalCount})` : histLabel;
             if (typeof updateNameSwitch === 'function') updateNameSwitch();
             rebuildWordSelect();
             // Audit Task 112: refresh era help tooltip after labels update
@@ -2495,9 +2760,14 @@
                 const cmpClose = document.getElementById('compare-close');
                 if (cmpClose && typeof compareT === 'function') cmpClose.setAttribute('aria-label', compareT('title'));
             } catch (e) { /* compareT may not yet be defined during early init */ }
-            // Localize trivia button + modal eyebrow + close/restore/expand
+            // Localize trivia button + modal eyebrow + close/restore/expand.
+            // On mobile the button sits in the header bar with the hamburger
+            // and the qualifier in front of "Trivia/豆知識/토막상식" would
+            // crowd the row, so use the short key there. Title (hover
+            // tooltip) keeps the full phrasing for clarity.
             const tBtnLabel = document.getElementById('trivia-btn-label');
-            if (tBtnLabel) tBtnLabel.textContent = i18n('triviaButton');
+            const _tBtnMobile = window.matchMedia('(max-width: 640px)').matches;
+            if (tBtnLabel) tBtnLabel.textContent = i18n(_tBtnMobile ? 'triviaButtonShort' : 'triviaButton');
             const tBtn = document.getElementById('trivia-open');
             if (tBtn) tBtn.title = i18n('triviaButton');
             const tEyebrow = document.getElementById('trivia-eyebrow');
@@ -2525,6 +2795,10 @@
                 renderTriviaArticle(tModal.dataset.articleId);
             }
         }
+        // Expose so the era-label viewport shim (outside the IIFE) can
+        // re-run applyUILang when the user crosses the mobile breakpoint
+        // by resizing — the era pill copy depends on viewport width.
+        window.applyUILang = applyUILang;
 
         uiLangSelect.addEventListener('change', () => {
             uiLang = uiLangSelect.value;
@@ -2545,6 +2819,15 @@
                 renderLangInfo(panel.dataset.code);
                 if (typeof updateSelectedLabel === 'function') updateSelectedLabel();
                 if (typeof updateConnectorLine === 'function') updateConnectorLine();
+            }
+            // On mobile the UI-lang select lives inside the hamburger drawer.
+            // After a pick the drawer should collapse so the user sees the
+            // map in their new UI language without an extra tap to dismiss.
+            const _hdrToggle = document.getElementById('hdr-menu-toggle');
+            if (_hdrToggle && _hdrToggle.checked
+                && window.matchMedia('(max-width: 640px)').matches) {
+                _hdrToggle.checked = false;
+                _hdrToggle.dispatchEvent(new Event('change'));
             }
         });
 
@@ -2693,8 +2976,37 @@
             document.documentElement.style.setProperty('--label-scale', parseInt(fontSizeSlider.value) / 100);
             // Re-layout collision groups since label box size depends on scale.
             updateMarkers(currentWord);
+            _syncSizeStepButtons();
         });
         fontSizeSlider.addEventListener('change', () => { updateHash(); });
+
+        // +/− step buttons drive the (visually hidden) range input by 10
+        // each click; events dispatched programmatically reuse the
+        // existing input/change handlers above, so URL-hash persistence
+        // and the live --label-scale update keep working unchanged.
+        const _sizeStepBy = 10;
+        const _sizeUpBtn = document.getElementById('size-up');
+        const _sizeDownBtn = document.getElementById('size-down');
+        function _syncSizeStepButtons() {
+            const v = parseInt(fontSizeSlider.value, 10) || 100;
+            const min = parseInt(fontSizeSlider.min, 10) || 50;
+            const max = parseInt(fontSizeSlider.max, 10) || 200;
+            if (_sizeUpBtn)   _sizeUpBtn.disabled   = v >= max;
+            if (_sizeDownBtn) _sizeDownBtn.disabled = v <= min;
+        }
+        function _bumpSize(delta) {
+            const min = parseInt(fontSizeSlider.min, 10) || 50;
+            const max = parseInt(fontSizeSlider.max, 10) || 200;
+            const cur = parseInt(fontSizeSlider.value, 10) || 100;
+            const next = Math.max(min, Math.min(max, cur + delta));
+            if (next === cur) return;
+            fontSizeSlider.value = String(next);
+            fontSizeSlider.dispatchEvent(new Event('input'));
+            fontSizeSlider.dispatchEvent(new Event('change'));
+        }
+        if (_sizeUpBtn)   _sizeUpBtn  .addEventListener('click', () => _bumpSize( _sizeStepBy));
+        if (_sizeDownBtn) _sizeDownBtn.addEventListener('click', () => _bumpSize(-_sizeStepBy));
+        _syncSizeStepButtons();
 
         // --- 3D Globe setup ---
         let is3D = false;
@@ -2811,6 +3123,17 @@
         function zoomToAltitude(z) {
             // Map Leaflet zoom (2-10) to globe altitude (4.0-0.2)
             return Math.max(0.2, 4.0 * Math.pow(0.55, z - 2));
+        }
+        function altitudeToZoom(alt) {
+            // Inverse of zoomToAltitude. Used by updateGlobeLabels so the
+            // 3D globe gates languages by zoom-tier just like the 2D map
+            // (z ≤ 3 → 100M+ speakers only; z = 4 → 10M+; z ≥ 5 → all).
+            // Without this, the globe always showed every language and
+            // tiny-speaker langs cluttered the wide-zoom view.
+            if (!Number.isFinite(alt) || alt <= 0) return 5;
+            const z = 2 + Math.log(alt / 4.0) / Math.log(0.55);
+            // Clamp to the same range the 2D map respects.
+            return Math.max(2, Math.min(10, z));
         }
 
         const btn3D = document.getElementById('toggle-3d');
@@ -2993,15 +3316,27 @@
             const filterActive = (window.__langmap
                 && typeof window.__langmap.anyFilterActive === 'function'
                 && window.__langmap.anyFilterActive());
-            // Speaker-count threshold by zoom (modern path):
+            // Speaker-count threshold by zoom (modern path).
+            // Desktop:
             //   z ≤ 3   → 100M+ only
             //   z = 4   → 10M+ only
             //   z ≥ 5   → all
-            // Filter-active overrides this (treated as zoom ≥ 5).
+            // Mobile: each rule shifts UP by 1 (matches the smaller
+            // physical screen — at any given zoom you have less room for
+            // labels, so the tier gate kicks in later):
+            //   z ≤ 4   → 100M+ only
+            //   z = 5   → 10M+ only
+            //   z ≥ 6   → all
+            // Filter-active overrides this (treated as zoom ≥ 5/6).
+            const _mobileTier = window.matchMedia('(max-width: 640px)').matches;
             const tierMin = filterActive ? 0
-                : zoom <= 3 ? 100_000_000
-                : zoom <= 4 ? 10_000_000
-                : 0;
+                : _mobileTier
+                    ? (zoom <= 4 ? 100_000_000
+                       : zoom <= 5 ? 10_000_000
+                       : 0)
+                    : (zoom <= 3 ? 100_000_000
+                       : zoom <= 4 ? 10_000_000
+                       : 0);
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
                     if (!LANG_DATA[hist] || !LANG_DATA[hist].words[wordId]) continue;
@@ -3182,7 +3517,14 @@
 
         function updateGlobeLabels(wordId) {
             if (!globe) return;
-            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, 5); // show all in 3D
+            // Translate the current globe altitude to a Leaflet-equivalent
+            // zoom and feed it to getVisibleLangs so 3D gates speaker
+            // tiers the same way as the 2D map. This is called from the
+            // globe controls' "end" event (via updateMarkers), so the
+            // displayed set refreshes when the user finishes a zoom.
+            const _pov3D = (globe.pointOfView && globe.pointOfView()) || { altitude: 1.0 };
+            const _equivZoom = altitudeToZoom(_pov3D.altitude);
+            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, _equivZoom);
             const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
             // Globe altitude in [0.1, 6]; lower = zoomed-in, labels appear
             // larger relative to globe, so they need MORE degree separation.
@@ -3261,6 +3603,15 @@
                     showLangInfo(code);
                 });
                 elements.push({ el: el.firstChild, lat: lang.lat, lng: lang.lng, code });
+            }
+            // Trivia panto label (transient place-name balloon). Pushed
+            // last so it stacks on top of language labels at the same lat/lng.
+            if (_pantoGlobeLabel && _pantoGlobeLabel.el) {
+                elements.push({
+                    el: _pantoGlobeLabel.el,
+                    lat: _pantoGlobeLabel.lat,
+                    lng: _pantoGlobeLabel.lng,
+                });
             }
             globe.htmlElementsData(elements);
             // Re-apply selected highlight + connector after globe re-renders
@@ -5188,7 +5539,12 @@
                 if (!pool.length) return;
                 const code = pool[Math.floor(Math.random() * pool.length)];
                 centerLangOnMap(code);
-                showLangInfo(code);
+                // On mobile, skip the lang-info modal — opening it on top of
+                // the (often-already-visible) trivia modal stacks UI, and on
+                // a small viewport the user wants to first SEE where the
+                // random pick landed before deciding to read details.
+                const _mobile = window.matchMedia('(max-width: 640px)').matches;
+                if (!_mobile) showLangInfo(code);
             });
         }
 
@@ -5351,7 +5707,9 @@
             });
             modal.dataset.articleId = art.id;
             modal.dataset.view = 'article';
-            modal.scrollTop = 0;
+            // The modal itself doesn't scroll — the inner .trivia-scroll does.
+            const _scrollArt = document.getElementById('trivia-scroll');
+            if (_scrollArt) _scrollArt.scrollTop = 0;
             // Show article sections; hide index grid.
             document.getElementById('trivia-eyebrow').style.display = '';
             heading.style.display = '';
@@ -5359,38 +5717,47 @@
             tags.style.display = '';
             const indexEl = document.getElementById('trivia-index');
             if (indexEl) indexEl.hidden = true;
-            // Populate the prev/next navigation row at the bottom.
+            // Populate the prev/next/back-to-index navigation rows at
+            // the bottom. Each is its own full-width row (next → prev →
+            // back-to-index). Missing rows are hidden, not disabled, so
+            // an article at either end of the list collapses cleanly.
             const nav = document.getElementById('trivia-article-nav');
             if (nav) {
                 const prev = list[pos - 1] || null;
                 const next = list[pos + 1] || null;
                 const prevBtn = document.getElementById('trivia-nav-prev');
                 const nextBtn = document.getElementById('trivia-nav-next');
+                const indexBtn = document.getElementById('trivia-nav-index');
                 const prevTitle = document.getElementById('trivia-nav-prev-title');
                 const nextTitle = document.getElementById('trivia-nav-next-title');
                 if (prev) {
+                    prevBtn.hidden = false;
                     prevBtn.disabled = false;
                     prevBtn.dataset.articleId = prev.id;
                     prevTitle.textContent = `${String(pos).padStart(2,'0')}. ${pickLocalized(prev.title)}`;
                 } else {
-                    prevBtn.disabled = true;
+                    prevBtn.hidden = true;
                     delete prevBtn.dataset.articleId;
                     prevTitle.textContent = '';
                 }
                 if (next) {
+                    nextBtn.hidden = false;
                     nextBtn.disabled = false;
                     nextBtn.dataset.articleId = next.id;
                     nextTitle.textContent = `${String(pos + 2).padStart(2,'0')}. ${pickLocalized(next.title)}`;
                 } else {
-                    nextBtn.disabled = true;
+                    nextBtn.hidden = true;
                     delete nextBtn.dataset.articleId;
                     nextTitle.textContent = '';
                 }
-                // Localize the "Previous" / "Next" labels.
+                if (indexBtn) indexBtn.hidden = false;
+                // Localize the direction labels.
                 const prevDir = document.getElementById('trivia-nav-prev-dir');
                 const nextDir = document.getElementById('trivia-nav-next-dir');
+                const indexDir = document.getElementById('trivia-nav-index-dir');
                 if (prevDir) prevDir.textContent = i18n('triviaNavPrev');
                 if (nextDir) nextDir.textContent = i18n('triviaNavNext');
+                if (indexDir) indexDir.textContent = i18n('triviaBack');
                 nav.hidden = false;
             }
         }
@@ -5429,7 +5796,8 @@
             index.hidden = false;
             delete modal.dataset.articleId;
             modal.dataset.view = 'index';
-            modal.scrollTop = 0;
+            const _scrollIdx = document.getElementById('trivia-scroll');
+            if (_scrollIdx) _scrollIdx.scrollTop = 0;
             // Hide the prev/next nav in index view.
             const nav = document.getElementById('trivia-article-nav');
             if (nav) nav.hidden = true;
@@ -5477,48 +5845,183 @@
             if (panel) panel.classList.remove('visible');
         }
         // Temporary place-label balloon for panto actions. Held in
-        // _pantoLabelMarker so a new panto replaces the previous one
-        // immediately (no stacking).
+        // _pantoLabelMarker (2D Leaflet marker) and _pantoGlobeLabel
+        // (3D globe.gl html-element) so a new panto replaces the
+        // previous one immediately (no stacking). _pantoGlobeLabel is
+        // read by updateGlobeLabels and rendered alongside language
+        // labels so it remains visible after subsequent re-renders.
         let _pantoLabelMarker = null;
+        // _pantoGlobeLabel is hoisted via `var` at the top of the IIFE so
+        // that updateGlobeLabels (called from map event listeners during
+        // initial render) can read it without TDZ-throwing.
         let _pantoLabelTimer1 = null;
         let _pantoLabelTimer2 = null;
         function _pantoLabelText(btn) {
+            // 1. Explicit override always wins (used when the place name
+            //    can't be derived from the button text — e.g. when the
+            //    target is buried mid-phrase: "Sochi" inside "Ubykh's lost
+            //    homeland (Sochi)").
             if (btn.dataset.label) return btn.dataset.label;
             let s = (btn.textContent || '').trim();
             // Strip leading emoji / punctuation up to the first letter.
             try { s = s.replace(/^[^\p{L}]+/u, ''); } catch (_) {}
-            // Strip leading EN verb wrappers ("Fly to ", "Zoom into ",
-            // "Survey ", "Show ", "Open ").
-            s = s.replace(/^(Fly to|Zoom into|Zoom in to|Zoom to|Survey|Visit|Open|Show|Explore|Go to)\s+(the\s+)?/i, '');
-            // Strip trailing JA verb wrappers ("…へ飛ぶ", "…を拡大",
-            // "…を見る", "…へ", "…を訪ねる", "…を縦覧").
+            // 2. Parenthesized place-name fallback. Many translations put
+            //    the place name in parens after a longer descriptive phrase
+            //    ("Fly to Ubykh's lost homeland (Sochi)" / "…故郷（ソチ）へ").
+            //    If we find one, use its contents directly.
+            const parenMatch = s.match(/[（(]\s*([^（）()]+?)\s*[）)]/u);
+            if (parenMatch && parenMatch[1].length > 0 && parenMatch[1].length < 40) {
+                return parenMatch[1].trim();
+            }
+            // 3. Strip leading verb wrappers in major UI languages. Each
+            //    alternative ends with whitespace so we don't accidentally
+            //    eat part of a place name that starts with one of these
+            //    tokens. Coverage:
+            //      EN  Fly to / Zoom into / Survey / Visit / Open / Show / Explore / Go to
+            //      VI  Bay đến / Đến
+            //      ID  Terbang ke / Pergi ke
+            //      FR  Voler (à|vers|jusqu'à) / Aller (à|jusqu'à)
+            //      IT  Vola a / Vai a
+            //      ES  Volar a / Ir a
+            //      PT  Voar até / Voar a / Ir até
+            //      DE  Nach
+            //      RU  Перенестись (в|на) / Лететь (в|на)
+            //      UK  Перенестися (в|на) / Летіти (в|на)
+            //      AR  الطيران إلى / اذهب إلى
+            //      HE  טוס (ל|אל) / לך ל
+            //      SW  Ruka (hadi|kwa) / Enda
+            //      TH  บินไป / ไปยัง
+            s = s.replace(/^(?:Fly to|Zoom into|Zoom in to|Zoom to|Survey|Visit|Open|Show|Explore|Go to|Bay đến|Đến|Terbang ke|Pergi ke|Voler jusqu['’]à|Voler à|Voler vers|Aller jusqu['’]à|Aller à|Vola a|Vai a|Volar a|Ir a|Voar até|Voar a|Ir até|Nach|Перенестись в|Перенестись на|Лететь в|Лететь на|Перенестися в|Перенестися на|Летіти в|Летіти на|الطيران إلى|اذهب إلى|טוס ל|טוס אל|לך ל|Ruka hadi|Ruka kwa|Enda|บินไป|ไปยัง)\s+(?:the\s+)?/iu, '');
+            // 4. Strip trailing verb wrappers.
+            //    JA: …へ飛ぶ / …を拡大 / …を見る / …へ / …を訪ねる / …を縦覧
+            //    DE: … fliegen / … reisen
+            //    HI: … तक उड़ें / … पर जाएँ
             s = s.replace(/(?:を(?:拡大|見る|訪ねる|縦覧|散策|一望|サーベイ)|へ(?:飛ぶ)?)\s*$/u, '');
+            s = s.replace(/\s+(?:fliegen|reisen)\s*$/iu, '');
+            s = s.replace(/\s+(?:तक उड़ें|पर जाएँ|तक जाएँ)\s*$/u, '');
+            // 5. Strip trailing KO postposition + verb wrappers. Covers
+            //    both directional 로/으로 ("to X") and object-marker
+            //    을/를 ("zoom in to X" / "look at X"). Examples:
+            //      "에트루리아로 날아가기"       → "에트루리아"
+            //      "우비흐족의 잃어버린 고향 소치로" → "...소치"
+            //      "바랑코를 확대"               → "바랑코"
+            //      "워크샵을 답사"               → "워크샵"
+            //    Bare 로/으로 is allowed (verb is optional) so even
+            //    short author phrasing reduces correctly. The 을/를 form
+            //    REQUIRES a verb to avoid stripping random object
+            //    markers in mid-sentence button text.
+            s = s.replace(/\s*(?:으?로)(?:\s+(?:날아가기|이동(?:하기)?|가기|보기|살펴보기|날아가|이동해|가))?\s*$/u, '');
+            // Trailing verb form. Object marker 을/를 is OPTIONAL — covers
+            // both "바랑코를 확대" and bare "크라운 프린스 산맥 확대".
+            // Whitespace before the verb is required so verbs at the very
+            // start of a name aren't accidentally consumed.
+            s = s.replace(/(?:\s*[을를])?\s+(?:확대(?:하기)?|확대해|보기|살펴보기|둘러보기|답사(?:하기)?|방문(?:하기)?|훑어보기)\s*$/u, '');
+            // 6. Strip trailing VI / generic "Bay đến X" / "to X" style
+            //    leading wrappers in other Latin-script langs were already
+            //    handled by step 3 since they share verb+space form.
             // Tidy whitespace and trailing punctuation.
             s = s.trim().replace(/[\s　]+$/u, '');
             return s;
         }
-        function _showPantoLabel(lat, lng, text) {
-            if (!text) return;
+        // Procedurally generated hand-drawn ellipse path. We sample
+        // points around an ideal ellipse and perturb each anchor + control
+        // pair by a random jitter; the result is a different shape every
+        // time, so the user reads it as "rough sketch" rather than "fixed
+        // graphic" (user 2026-05-17: "the hand-drawn circle isn't an
+        // accurate area marker — make it rougher and more random").
+        function _randPantoEllipsePath(cx, cy, rx, ry, anchorJitter) {
+            // More anchors + smaller control-point jitter = the SHAPE
+            // varies between renders while each ARC remains smooth (user
+            // 2026-05-17: "smoother curves"). Control points are placed
+            // tangent-style at 1/3 + 2/3 along each segment with a tiny
+            // perpendicular wobble.
+            const N = 10 + Math.floor(Math.random() * 3); // 10-12 anchors
+            const startAng = Math.random() * Math.PI * 2;
+            const pts = [];
+            for (let i = 0; i <= N; i++) {
+                const a = startAng + (i / N) * Math.PI * 2;
+                const jx = (Math.random() - 0.5) * anchorJitter * 2;
+                const jy = (Math.random() - 0.5) * anchorJitter * 2;
+                pts.push([
+                    cx + (rx + jx) * Math.cos(a),
+                    cy + (ry + jy) * Math.sin(a),
+                ]);
+            }
+            const ctrlJitter = anchorJitter * 0.35;
+            let d = `M ${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+            for (let i = 1; i < pts.length; i++) {
+                const p0 = pts[i - 1], p1 = pts[i];
+                const c1x = p0[0] + (p1[0] - p0[0]) * 0.33 + (Math.random() - 0.5) * ctrlJitter;
+                const c1y = p0[1] + (p1[1] - p0[1]) * 0.33 + (Math.random() - 0.5) * ctrlJitter;
+                const c2x = p0[0] + (p1[0] - p0[0]) * 0.67 + (Math.random() - 0.5) * ctrlJitter;
+                const c2y = p0[1] + (p1[1] - p0[1]) * 0.67 + (Math.random() - 0.5) * ctrlJitter;
+                d += ` C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p1[0].toFixed(1)} ${p1[1].toFixed(1)}`;
+            }
+            return d;
+        }
+        function _pantoLabelHtml(safe) {
+            // viewBox 200×140; ellipse rx=78 ry=58 is close to circular
+            // (aspect 1.34:1) so the marker reads as "a region", not a
+            // stretched oval. Two passes around the shape with independent
+            // jitter give the "drawn twice" pen-on-paper feel.
+            const cx = 100, cy = 65;
+            const path1 = _randPantoEllipsePath(cx, cy, 78, 58, 6);
+            const path2 = _randPantoEllipsePath(
+                cx + (Math.random() - 0.5) * 3,
+                cy + (Math.random() - 0.5) * 3,
+                76, 56,
+                5
+            );
+            const rot = (Math.random() * 6 - 3).toFixed(1); // −3°…+3°
+            const ellipseSvg = `
+                <svg class="trivia-panto-ellipse" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true" style="transform:rotate(${rot}deg)">
+                    <path d="${path1}" stroke-width="3"/>
+                    <path d="${path2}" stroke-width="1.4" opacity="0.55"/>
+                </svg>`;
+            return `<div class="trivia-panto-label">${ellipseSvg}<div class="trivia-panto-chip">${safe}</div></div>`;
+        }
+        function _clearPantoLabel() {
             if (_pantoLabelMarker) {
                 try { map.removeLayer(_pantoLabelMarker); } catch (_) {}
                 _pantoLabelMarker = null;
             }
+            if (_pantoGlobeLabel) {
+                _pantoGlobeLabel = null;
+                // Trigger a re-render so the globe drops the old element.
+                try { if (typeof globe !== 'undefined' && globe) updateGlobeLabels(currentWord); } catch (_) {}
+            }
             clearTimeout(_pantoLabelTimer1);
             clearTimeout(_pantoLabelTimer2);
+        }
+        function _showPantoLabel(lat, lng, text) {
+            if (!text) return;
+            _clearPantoLabel();
             const safe = escapeHtml(text);
-            // Two-stroke hand-drawn ellipse: drawn twice with slightly
-            // offset control points so the line looks pen-on-paper, not
-            // computed. Outer path is the thicker primary stroke; the
-            // inner path adds a faint second pass to reinforce the
-            // "drawn twice" feel.
-            const ellipseSvg = `
-                <svg class="trivia-panto-ellipse" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 14 52 C 12 18, 66 6, 102 8 C 154 11, 192 26, 188 52 C 188 80, 130 96, 96 94 C 50 92, 15 80, 14 52 Z" stroke-width="3"/>
-                    <path d="M 17 50 C 20 16, 70 10, 106 11 C 156 14, 188 28, 186 54 C 184 78, 128 94, 92 92 C 48 89, 18 78, 17 50 Z" stroke-width="1.4" opacity="0.55"/>
-                </svg>`;
+            const html = _pantoLabelHtml(safe);
+            if (is3D) {
+                // 3D: hand the label to globe.gl as an extra html-element
+                // and trigger a label re-render so it appears at lat/lng.
+                const wrap = document.createElement('div');
+                wrap.innerHTML = html;
+                _pantoGlobeLabel = { el: wrap.firstElementChild, lat, lng };
+                if (typeof globe !== 'undefined' && globe) updateGlobeLabels(currentWord);
+                _pantoLabelTimer1 = setTimeout(() => {
+                    if (_pantoGlobeLabel && _pantoGlobeLabel.el) {
+                        _pantoGlobeLabel.el.classList.add('fading');
+                    }
+                }, 4200);
+                _pantoLabelTimer2 = setTimeout(() => {
+                    if (_pantoGlobeLabel) {
+                        _pantoGlobeLabel = null;
+                        if (typeof globe !== 'undefined' && globe) updateGlobeLabels(currentWord);
+                    }
+                }, 5000);
+                return;
+            }
+            // 2D: Leaflet marker as before.
             const icon = L.divIcon({
                 className: '',
-                html: `<div class="trivia-panto-label">${ellipseSvg}<div class="trivia-panto-chip">${safe}</div></div>`,
+                html,
                 iconSize: [0, 0],
                 iconAnchor: [0, 0],
             });
@@ -5559,15 +6062,8 @@
                   _triviaSpotlight.clear();
                   if (typeof updateMarkers === 'function') updateMarkers(currentWord);
             } } catch (_) {}
-            // Remove any lingering panto label.
-            try {
-                if (_pantoLabelMarker) {
-                    map.removeLayer(_pantoLabelMarker);
-                    _pantoLabelMarker = null;
-                }
-                clearTimeout(_pantoLabelTimer1);
-                clearTimeout(_pantoLabelTimer2);
-            } catch (_) {}
+            // Remove any lingering panto label (2D marker AND 3D globe element).
+            try { _clearPantoLabel(); } catch (_) {}
         }
         function openTrivia(id) {
             const list = window.TRIVIA_ARTICLES || [];
@@ -5596,7 +6092,15 @@
             backdrop.classList.add('visible');
             backdrop.setAttribute('aria-hidden', 'false');
             modal.classList.add('visible');
-            modal.scrollTop = 0;
+            // Pin the inner scroll container to the top every time the modal
+            // opens, regardless of where the previous session left it.
+            // Two-tick reset (sync + rAF) defeats any post-mount reflow that
+            // would otherwise restore the prior scroll position.
+            const _scrollOpen = document.getElementById('trivia-scroll');
+            if (_scrollOpen) {
+                _scrollOpen.scrollTop = 0;
+                requestAnimationFrame(() => { _scrollOpen.scrollTop = 0; });
+            }
             setTimeout(() => modal.focus(), 0);
             if (typeof updateHash === 'function') updateHash({ push: true });
         }
@@ -5621,8 +6125,8 @@
             _resetTriviaSurface();
             renderTriviaIndex();
             setTriviaCompact(false);
-            const modal = document.getElementById('trivia-modal');
-            modal.scrollTop = 0;
+            const _scrollBack = document.getElementById('trivia-scroll');
+            if (_scrollBack) _scrollBack.scrollTop = 0;
             if (typeof updateHash === 'function') updateHash();
         }
         function closeTrivia() {
@@ -5636,9 +6140,13 @@
             delete modal.dataset.view;
             // Clean up trivia-specific overlays (blinks / spotlight /
             // compare panel / language modal opened by an action). Map
-            // view / word / era / tiles are intentionally NOT restored —
-            // the user can navigate from wherever the article left them.
+            // view / word / era are NOT restored — the user can navigate
+            // from wherever the article left them. Basemap IS restored
+            // to the plain (flat) tiles, because terrain/labels tiles are
+            // only useful while reading an article and otherwise clutter
+            // the language labels.
             _resetTriviaSurface();
+            if (typeof setTilesMode === 'function') setTilesMode('flat');
             if (typeof updateHash === 'function') updateHash();
         }
 
@@ -5646,17 +6154,77 @@
         // pointOfView on the 3D globe. Without this, action buttons
         // pressed while the globe is showing do nothing (Leaflet
         // operates on a hidden map).
+        //
+        // Mobile + compact trivia modal: the modal occupies the bottom
+        // ~45vh, so centering the target at the viewport's geometric
+        // center would hide it under the modal. We offset the camera so
+        // the target lat/lng lands at the CENTER of the visible (non-modal)
+        // area instead — the top half of the viewport on mobile compact.
         function _triviaFlyTo(lat, lng, zoom, durationMs) {
             durationMs = durationMs == null ? 1000 : durationMs;
+            const modal = document.getElementById('trivia-modal');
+            const compact = modal
+                && modal.classList.contains('visible')
+                && modal.classList.contains('compact');
+            const mobile = window.matchMedia('(max-width: 640px)').matches;
+            const offsetForModal = compact && mobile;
+
+            // Compute the visible map area center on mobile compact. The
+            // "visible area" is the rectangle BELOW the header bar and
+            // ABOVE the trivia modal — the user (2026-05-17) explicitly
+            // wants the header height excluded so e.g. a focus action lands
+            // the target right in the middle of what the user can actually
+            // see, not behind the LangMap chrome.
+            //   visible_top    = bottom edge of .site-header-bar
+            //   visible_bottom = top edge of compact trivia modal (~0.55*vh
+            //                    in steady state; we treat that as the
+            //                    minimum so the calc works even mid-
+            //                    transition while the modal is shrinking)
+            //   dy = pixel shift to push the map center BELOW the target
+            //        so the target appears at visible_center on screen.
+            const vh = window.innerHeight;
+            let dy = 0;
+            if (offsetForModal) {
+                const header = document.querySelector('.site-header-bar');
+                const headerBottom = header
+                    ? Math.max(0, header.getBoundingClientRect().bottom)
+                    : 0;
+                const modalTop = vh * 0.55;
+                const visibleCenter = (headerBottom + modalTop) / 2;
+                dy = vh / 2 - visibleCenter;
+            }
+
             if (is3D && typeof globe !== 'undefined' && globe) {
                 const alt = (typeof zoomToAltitude === 'function')
                     ? zoomToAltitude(Number.isFinite(zoom) ? zoom : 3)
                     : 2.5;
-                try { globe.pointOfView({ lat, lng, altitude: alt }, durationMs); }
+                let camLat = lat;
+                if (offsetForModal) {
+                    // Convert the pixel shift to an approximate latitude
+                    // shift using the angular range of the visible globe
+                    // surface at the target altitude (≈ 2·asin(1/(1+alt))).
+                    const fraction = dy / vh;
+                    const angularRangeDeg =
+                        2 * Math.asin(1 / (1 + Math.max(0.05, alt))) * (180 / Math.PI);
+                    camLat = lat - fraction * angularRangeDeg;
+                }
+                try { globe.pointOfView({ lat: camLat, lng, altitude: alt }, durationMs); }
                 catch (_) {}
             } else {
-                try { map.flyTo([lat, lng], zoom, { duration: durationMs / 1000 }); }
-                catch (_) { map.setView([lat, lng], zoom); }
+                try {
+                    if (offsetForModal) {
+                        // Project to pixels at target zoom, shift the map
+                        // center DOWN by `dy`, unproject — target lands at
+                        // visible_center on screen.
+                        const targetZoom = Number.isFinite(zoom) ? zoom : map.getZoom();
+                        const T = map.project([lat, lng], targetZoom);
+                        const C = L.point(T.x, T.y + dy);
+                        const C_latlng = map.unproject(C, targetZoom);
+                        map.flyTo(C_latlng, targetZoom, { duration: durationMs / 1000 });
+                    } else {
+                        map.flyTo([lat, lng], zoom, { duration: durationMs / 1000 });
+                    }
+                } catch (_) { map.setView([lat, lng], zoom); }
             }
         }
         function _runTriviaAction(btn) {
@@ -5664,20 +6232,72 @@
             if (!action) return;
             triviaClearBlinks();
             // Tile-mode handling. Explicit data-tiles="…" always wins
-            // (terrain / labels / flat). For panto / focus / compare
-            // actions without an explicit data-tiles, default to the
-            // labelled basemap so the user can SEE where they are
-            // flying — the plain Positron basemap is blank.
+            // (terrain / labels / flat). Defaults (user 2026-05-17):
+            //   panto  → terrain  (place-name buttons should reveal the
+            //                       landscape they're sending the user to)
+            //   other  → flat     (any non-geographical action reverts the
+            //                       basemap so terrain residue from a
+            //                       prior panto doesn't clutter the view)
+            //   close  → flat     (handled in closeTrivia)
             if (typeof setTilesMode === 'function') {
                 let mode = btn.dataset.tiles;
-                if (!mode && (action === 'panto' || action === 'focus' || action === 'compare')) {
-                    mode = 'labels';
-                }
-                if (mode) setTilesMode(mode);
+                if (!mode) mode = (action === 'panto') ? 'terrain' : 'flat';
+                setTilesMode(mode);
+            }
+            // Region / language actions take over the surface — close the
+            // standalone compare panel if it's open so the map (or the
+            // language being focused) isn't obscured by stale comparison
+            // data. The 'compare' action itself manages the panel; 'setword'
+            // / 'setera' / 'article' just change reading state and leave
+            // the panel alone.
+            if (action === 'panto' || action === 'focus') {
+                try { if (typeof closeTriviaComparePanel === 'function') closeTriviaComparePanel(); } catch (_) {}
+            }
+            // Close any open language info modal whenever the user invokes
+            // an action OTHER than "open language" (focus). The lang-info
+            // modal was opened by a prior focus click; subsequent panto /
+            // compare / setword / setera / article clicks are unrelated to
+            // that language and should clear the residual modal so it
+            // doesn't sit on top of whatever the new action reveals.
+            if (action !== 'focus') {
+                try {
+                    if (typeof closeInfoPanel === 'function'
+                        && typeof infoPanel !== 'undefined' && infoPanel
+                        && infoPanel.classList.contains('visible')) {
+                        closeInfoPanel();
+                    }
+                } catch (_) {}
             }
             // 'article' navigation keeps the modal full-screen (just
             // switching reads); everything else slides the modal aside.
-            if (action !== 'article') setTriviaCompact(true);
+            // The re-anchor below only runs when the modal is ACTUALLY
+            // transitioning full → compact (i.e. it wasn't already
+            // compact). On a second/third click in compact mode the
+            // viewport doesn't change size, so a forced scroll jump is
+            // just disorienting (user 2026-05-17).
+            const _scrollEl = document.getElementById('trivia-scroll');
+            const _triviaModalEl = document.getElementById('trivia-modal');
+            const _wasCompactBefore = !!(_triviaModalEl && _triviaModalEl.classList.contains('compact'));
+            const _willCompactNow = action !== 'article';
+            const _willResize = _willCompactNow && !_wasCompactBefore;
+            let _btnContentY = null;
+            if (_scrollEl && _willResize) {
+                const _sr = _scrollEl.getBoundingClientRect();
+                const _br = btn.getBoundingClientRect();
+                _btnContentY = (_br.top - _sr.top) + _scrollEl.scrollTop;
+            }
+            if (_willCompactNow) setTriviaCompact(true);
+            if (_scrollEl && _btnContentY != null) {
+                // Re-anchor: put the action button ~28px from the top of
+                // the compact scroll viewport. Run twice: once now (in
+                // case layout already reflows) and once after the 350ms
+                // CSS transition completes (so the final layout sticks).
+                const _anchor = () => {
+                    _scrollEl.scrollTop = Math.max(0, _btnContentY - 28);
+                };
+                _anchor();
+                setTimeout(_anchor, 380);
+            }
             if (action === 'focus') {
                 const code = btn.dataset.code;
                 const lang = LANG_DATA[code];
@@ -5706,6 +6326,12 @@
                 if (typeof updateMarkers === 'function') updateMarkers(currentWord);
                 setTimeout(() => {
                     triviaBlinkMarker(code);
+                    // On mobile, don't auto-open the language modal — it
+                    // would stack on top of the trivia modal. The blink +
+                    // spotlight already mark the language; the user can
+                    // tap the marker to read details if they want.
+                    const _mobile = window.matchMedia('(max-width: 640px)').matches;
+                    if (_mobile) return;
                     if (!infoPanel.classList.contains('visible')
                         || infoPanel.dataset.code !== code) {
                         showLangInfo(code);
@@ -5714,15 +6340,25 @@
             } else if (action === 'setword') {
                 const w = btn.dataset.word;
                 if (!w || !WORD_LIST.find(x => x.id === w)) return;
-                // Clear any active focus-spotlight first, otherwise only
-                // the previously-focused language would still pass the
-                // marker filter and the user would see "just one language
-                // showing its word" instead of the cross-language compare
-                // they expected (reported: clicking 「こんにちは」を比べる
-                // for Tuyuca right after focusing Tuyuca showed only tue
-                // on the map).
-                if (_triviaSpotlight && _triviaSpotlight.size) {
+                // Replace the spotlight set so:
+                //  - data-code="eo"           → spotlight just Esperanto.
+                //    Without this, small-speaker langs (Esperanto ~2M,
+                //    Toki Pona, Hawaiian) vanish from the map at low/mid
+                //    zoom right after the user asks to "see <word> in
+                //    <that language>" (reported 2026-05-17).
+                //  - data-codes="ja,ko,zh,…"  → spotlight all listed
+                //    languages (cross-language compare buttons).
+                //  - neither                  → clear, so the broad word
+                //    switch shows every visible-tier language.
+                if (_triviaSpotlight) {
                     _triviaSpotlight.clear();
+                    if (btn.dataset.code) {
+                        _triviaSpotlight.add(btn.dataset.code);
+                    } else if (btn.dataset.codes) {
+                        btn.dataset.codes.split(',')
+                            .map(c => c.trim()).filter(Boolean)
+                            .forEach(c => _triviaSpotlight.add(c));
+                    }
                 }
                 select.value = w;
                 select.dispatchEvent(new Event('change'));
@@ -5744,13 +6380,12 @@
                     setTimeout(() => codes.forEach(triviaBlinkMarker), 1050);
                 }
                 // Drop a temporary place-label balloon at the target so
-                // the user sees WHAT they flew to. 2D only — Leaflet
-                // markers don't render on the 3D globe overlay.
-                if (!is3D) {
-                    setTimeout(() => {
-                        _showPantoLabel(lat, lng, _pantoLabelText(btn));
-                    }, 950);
-                }
+                // the user sees WHAT they flew to. _showPantoLabel
+                // internally dispatches to a Leaflet marker in 2D and
+                // a globe.gl htmlElement in 3D.
+                setTimeout(() => {
+                    _showPantoLabel(lat, lng, _pantoLabelText(btn));
+                }, 950);
             } else if (action === 'compare') {
                 const codes = (btn.dataset.codes || '').split(',').map(c => c.trim()).filter(Boolean);
                 const validCodes = codes.filter(c => LANG_DATA[c]);
@@ -5844,6 +6479,8 @@
             const id = _triviaNavNext.dataset.articleId;
             if (id) navigateTrivia(id);
         });
+        const _triviaNavIndex = document.getElementById('trivia-nav-index');
+        if (_triviaNavIndex) _triviaNavIndex.addEventListener('click', () => backToTriviaIndex());
         const _triviaOpenBtn = document.getElementById('trivia-open');
         if (_triviaOpenBtn) _triviaOpenBtn.addEventListener('click', () => openTrivia());
         const _triviaCloseBtn = document.getElementById('trivia-close');
