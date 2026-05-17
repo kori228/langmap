@@ -5611,6 +5611,16 @@
             } else if (action === 'setword') {
                 const w = btn.dataset.word;
                 if (!w || !WORD_LIST.find(x => x.id === w)) return;
+                // Clear any active focus-spotlight first, otherwise only
+                // the previously-focused language would still pass the
+                // marker filter and the user would see "just one language
+                // showing its word" instead of the cross-language compare
+                // they expected (reported: clicking 「こんにちは」を比べる
+                // for Tuyuca right after focusing Tuyuca showed only tue
+                // on the map).
+                if (_triviaSpotlight && _triviaSpotlight.size) {
+                    _triviaSpotlight.clear();
+                }
                 select.value = w;
                 select.dispatchEvent(new Event('change'));
                 if (btn.dataset.code) {
