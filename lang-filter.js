@@ -440,6 +440,20 @@
     // --- Morphology overrides for misc ---
     set(['eu','ka'], { morph: 'agglutinative' });
 
+    // --- Under-documented isolates / small families lacking FAMILY_DEFAULTS coverage ---
+    // Tangkic: SOV, atonal, agglutinative case-stacking (Hale, Klokeid; Tangkic-Pama).
+    set(['lbz','lbz_damin','nny'], { wo: 'SOV', tone: false, morph: 'agglutinative' });
+    // Tukanoan: SOV with nasal-prosody and lexical H/L tone (Barnes 1984, Stenzel).
+    set(['tue'], { wo: 'SOV', tone: true, morph: 'agglutinative' });
+    // Ubykh: verb-final, ergative, polysynthetic; ~80 consonants but no lexical tone (Dumézil 1975, Fenwick 2011).
+    set(['uby'], { wo: 'SOV', tone: false, morph: 'polysynthetic' });
+    // ǂ'Amkoe (Tuu/Southern Khoisan): SVO analytic with lexical tone and click consonants (Gerlach & Berthold 2014).
+    set(['nmn'], { wo: 'SVO', tone: true, morph: 'isolating' });
+    // Rotokas (North Bougainville): SOV agglutinative, atonal, famous 11-phoneme inventory (Firchow & Firchow 1969).
+    set(['roo'], { wo: 'SOV', tone: false, morph: 'agglutinative' });
+    // Tartessian: SVO fusional per Koch (2009) Celtic reading; classification disputed (Untermann 1997).
+    set(['txr'], { wo: 'SVO', tone: false, morph: 'fusional' });
+
     // ----- Script type auto-detection from meta.script --------------------
 
     // Returns an Array<string> of script categories. A language with multiple
