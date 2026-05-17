@@ -394,7 +394,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Show Ubykh on the map</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Fly to Ubykh's lost homeland (Sochi)</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Fly to Ubykh's lost homeland (Sochi)</button>
   </div>
   
   <p>Ubykh belonged to the <strong>Northwest Caucasian</strong> family, alongside Abkhaz, Abaza, Adyghe and Kabardian. Its homeland was the strip of coast around what is now the Russian resort city of <strong>Sochi</strong>. After Imperial Russia's conquest of the Caucasus in the 1860s, almost the entire Ubykh population was forcibly deported across the Black Sea to Ottoman territory — a tragedy now remembered as the <em>muhajir</em> exile. Settled in scattered villages in Anatolia, the community switched, generation by generation, to Turkish and to Circassian. By 1900 Ubykh was already a domestic relic; by 1950 it was the speech of a handful of old men.</p>
@@ -428,7 +428,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 地図でウビフ語を見る</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ ウビフ族の失われた故郷（ソチ）へ</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="ソチ">🗺️ ウビフ族の失われた故郷（ソチ）へ</button>
   </div>
   
   <p>ウビフ語は<strong>北西コーカサス語族</strong>に属し、アブハズ語、アバザ語、アディゲ語、カバルド語と姉妹関係にある。本来の故地は、いまロシアのリゾート都市となっている<strong>ソチ</strong>周辺の細い海岸帯だった。1860年代の帝政ロシアによるコーカサス征服の結果、ウビフ族はほぼ全員が黒海の対岸オスマン領へ強制移住させられた──<em>ムハジル</em>（亡命者）と呼ばれる悲劇である。アナトリアの散在する村々に落ち着いた彼らは、世代ごとにトルコ語とチェルケス語へ切り替えていった。1900年にはすでに家庭内の遺物となり、1950年には数人の老人の言葉に縮んでいた。</p>
@@ -791,7 +791,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Show Sumerian on the map</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7">𒀭 Fly to Uruk</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7" data-label="Uruk">𒀭 Fly to Uruk</button>
   </div>
   
   <p>Sumerian is a <strong>language isolate</strong>. Despite a century of effort, no proven relatives have been found — not in Semitic (its much later neighbour Akkadian), not in Indo-European, not in Dravidian, not in any of the Caucasian families. It is also <strong>agglutinative</strong> and largely <strong>ergative</strong>: meaning is built by stacking morphemes onto a verbal root in fixed slots, and the agent of a transitive verb takes a special case ending. A typical verbal chain looks like:</p>
@@ -823,7 +823,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 地図でシュメール語を見る</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7">𒀭 ウルクへ飛ぶ</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7" data-label="ウルク">𒀭 ウルクへ飛ぶ</button>
   </div>
   
   <p>シュメール語は<strong>孤立言語</strong>であり、1世紀以上の研究にもかかわらず親縁関係が証明された言語は一つもない。隣接していたセム系アッカド語ともインド・ヨーロッパ語族ともドラヴィダ語族ともコーカサス諸語とも結びつかない。型としては<strong>膠着語</strong>かつおおむね<strong>能格</strong>で、動詞語根の前後に決まったスロットで形態素を積み重ねて意味を作る。たとえば <em>i-mu-na-an-šúm</em>「彼はそれを彼に与えた」は、相＋方向＋3単与格＋3単能格＋「与える」と分析される。</p>

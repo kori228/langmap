@@ -156,7 +156,7 @@ window.TRIVIA_I18N['zh'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 在地图上查看乌比赫语</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ 飞往乌比赫语失落的家园(索契)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="索契">🗺️ 飞往乌比赫语失落的家园(索契)</button>
 </div>
 
 <p>乌比赫语属<strong>西北高加索语系</strong>,与阿布哈兹语、阿巴扎语、阿迪格语、卡巴尔达语为姐妹。其故地是如今俄罗斯度假城市<strong>索契</strong>周围一带狭长的海岸。1860年代沙俄征服高加索后,乌比赫人几乎被全数强制迁移至黑海对岸的奥斯曼领土——如今被记忆为 <em>muhajir</em>(流亡者)悲剧。定居在安纳托利亚各处分散村落的他们,一代一代地转用了土耳其语和切尔克斯语。1900年乌比赫语已是家庭中的遗物;1950年只是少数几位老人的语言。</p>
@@ -322,7 +322,7 @@ window.TRIVIA_I18N['zh'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 在地图上查看苏美尔语</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7">𒀭 飞往乌鲁克</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7" data-label="乌鲁克">𒀭 飞往乌鲁克</button>
 </div>
 
 <p>苏美尔语是<strong>孤立语</strong>。尽管一个世纪以来的努力,没有发现已证实的亲属——既不在闪米特语(其晚得多的邻居阿卡德语),也不在印欧语、达罗毗荼语,或任何高加索语系。它还是<strong>黏着语</strong>,且大体上是<strong>作格</strong>的:意义通过将语素按固定槽位堆叠到动词词根上而构建,及物动词的施事带有专门的格尾。一个典型动词链如下:</p>

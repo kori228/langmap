@@ -160,7 +160,7 @@ window.TRIVIA_I18N['pt'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Mostrar Ubykh no mapa</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Voar até a pátria perdida do Ubykh (Sochi)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Voar até a pátria perdida do Ubykh (Sochi)</button>
 </div>
 
 <p>O Ubykh pertencia à família <strong>Caucasiana do Noroeste</strong>, ao lado do abecásio, abaza, adigueu e cabardiano. Sua pátria era a faixa costeira ao redor do que hoje é a cidade turística russa de <strong>Sochi</strong>. Após a conquista do Cáucaso pela Rússia Imperial nos anos 1860, quase toda a população ubykh foi deportada à força através do Mar Negro para o território otomano — uma tragédia agora lembrada como o exílio <em>muhajir</em>. Estabelecida em aldeias espalhadas pela Anatólia, a comunidade passou, geração após geração, para o turco e o circassiano. Por volta de 1900, o Ubykh já era uma relíquia doméstica; em 1950, era o discurso de um punhado de homens velhos.</p>

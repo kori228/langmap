@@ -160,7 +160,7 @@ window.TRIVIA_I18N['hi'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 उबीख को मानचित्र पर दिखाएँ</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ उबीख की खोई मातृभूमि (सोची) तक उड़ें</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="सोची">🗺️ उबीख की खोई मातृभूमि (सोची) तक उड़ें</button>
   </div>
 
   <p>उबीख <strong>उत्तर-पश्चिमी कॉकेशियन</strong> परिवार से संबंधित है, अबख़ाज़, अबाज़ा, अदिघे और काबार्दियन के साथ। इसकी मातृभूमि उस तटीय पट्टी के आस-पास थी जो अब रूसी रिज़ॉर्ट शहर <strong>सोची</strong> है। 1860 के दशक में शाही रूस द्वारा कॉकेशस की विजय के बाद, लगभग पूरी उबीख आबादी को काला सागर के पार ओटोमन क्षेत्र में बलात् निर्वासित कर दिया गया — एक त्रासदी जिसे अब <em>मुहाजिर</em> निर्वासन के रूप में याद किया जाता है। अनातोलिया के बिखरे गाँवों में बसी, यह समुदाय पीढ़ी-दर-पीढ़ी तुर्की और चेरकेस में बदल गया। 1900 तक उबीख घरेलू अवशेष बन चुकी थी; 1950 तक यह मुट्ठीभर बूढ़े लोगों की वाणी थी।</p>

@@ -159,7 +159,7 @@ window.TRIVIA_I18N['es'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Mostrar el ubijé en el mapa</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Volar a la tierra natal perdida del ubijé (Sochi)</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Volar a la tierra natal perdida del ubijé (Sochi)</button>
   </div>
 
   <p>El ubijé pertenecía a la familia <strong>caucásica noroccidental</strong>, junto con el abjasio, el abaza, el adigué y el cabardiano. Su tierra natal era la franja costera alrededor de lo que hoy es la ciudad balnearia rusa de <strong>Sochi</strong>. Tras la conquista rusa imperial del Cáucaso en la década de 1860, casi toda la población ubijé fue deportada forzadamente a través del mar Negro al territorio otomano — una tragedia recordada hoy como el exilio <em>muhajir</em>. Asentada en aldeas dispersas de Anatolia, la comunidad cambió, generación tras generación, al turco y al circasiano. Hacia 1900 el ubijé ya era una reliquia doméstica; hacia 1950 era el habla de un puñado de ancianos.</p>

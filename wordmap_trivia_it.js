@@ -358,7 +358,7 @@ window.TRIVIA_I18N['it'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Mostra l\'Ubykh sulla mappa</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Vola alla patria perduta dell\'Ubykh (Soči)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Soči">🗺️ Vola alla patria perduta dell\'Ubykh (Soči)</button>
 </div>
 
 <p>L\'Ubykh apparteneva alla famiglia <strong>caucasica nordoccidentale</strong>, insieme ad abcaso, abazo, adigè e cabardo. La sua patria era la striscia di costa attorno a quella che oggi è la città balneare russa di <strong>Soči</strong>. Dopo la conquista del Caucaso da parte della Russia imperiale negli anni \'60 dell\'800, quasi l\'intera popolazione ubykh fu deportata forzatamente attraverso il Mar Nero in territorio ottomano — una tragedia ora ricordata come l\'esilio dei <em>muhajir</em>. Stabiliti in villaggi sparsi in Anatolia, la comunità passò, generazione dopo generazione, al turco e al circasso. Nel 1900 l\'Ubykh era già una reliquia domestica; nel 1950 era la parlata di una manciata di vecchi.</p>

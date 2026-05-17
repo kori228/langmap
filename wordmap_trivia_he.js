@@ -159,7 +159,7 @@ window.TRIVIA_I18N['he'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 הצג אוביחית במפה</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ טוס למולדת האבודה של האוביחים (סוצ'י)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="סוצ'י">🗺️ טוס למולדת האבודה של האוביחים (סוצ'י)</button>
 </div>
 
 <p>אוביחית שייכה למשפחה ה<strong>צפון-מערב קווקזית</strong>, יחד עם אבחזית, אבזית, אדיגית וקברדית. מולדתה הייתה רצועת החוף סביב מה שהיום הוא עיר הנופש הרוסית <strong>סוצ'י</strong>. לאחר כיבוש הקווקז על ידי רוסיה הקיסרית בשנות ה-60 של המאה ה-19, כמעט כל אוכלוסיית האוביחים גורשה בכוח מעבר לים השחור לטריטוריה העות'מאנית — טרגדיה הנזכרת כיום כגלות ה-<em>מוּהָאג'ִיר</em>. מתיישבים בכפרים מפוזרים באנטוליה, הקהילה עברה, דור אחר דור, לטורקית ולצ'רקסית. עד 1900 אוביחית כבר הייתה שריד ביתי; עד 1950 היא הייתה דיבורם של קומץ זקנים.</p>

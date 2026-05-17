@@ -165,7 +165,7 @@ window.TRIVIA_I18N['de'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Ubychisch auf der Karte zeigen</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Zur verlorenen Heimat der Ubychen (Sotschi) fliegen</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sotschi">🗺️ Zur verlorenen Heimat der Ubychen (Sotschi) fliegen</button>
 </div>
 
 <p>Ubychisch gehörte zur <strong>nordwestkaukasischen</strong> Familie, neben Abchasisch, Abasinisch, Adygeisch und Kabardinisch. Seine Heimat war der Küstenstreifen um die heute russische Ferienstadt <strong>Sotschi</strong>. Nach der Eroberung des Kaukasus durch das zaristische Russland in den 1860er Jahren wurde fast die gesamte ubychische Bevölkerung gewaltsam über das Schwarze Meer auf osmanisches Gebiet deportiert — eine Tragödie, die heute als <em>Muhajir</em>-Exil erinnert wird. In verstreuten Dörfern Anatoliens angesiedelt, wechselte die Gemeinschaft Generation für Generation zum Türkischen und Tscherkessischen. Um 1900 war Ubychisch bereits ein häusliches Relikt; um 1950 die Sprache einer Handvoll alter Männer.</p>

@@ -163,7 +163,7 @@ window.TRIVIA_I18N['ar'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 اعرض الأوبيخ على الخريطة</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ الطيران إلى موطن الأوبيخ المفقود (سوتشي)</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="سوتشي">🗺️ الطيران إلى موطن الأوبيخ المفقود (سوتشي)</button>
   </div>
 
   <p>تنتمي الأوبيخ إلى عائلة <strong>القوقازية الشمالية الغربية</strong>، إلى جانب الأبخازية والأبازية والأديغية والقبردية. كان موطنها الشريط الساحلي حول ما هو الآن مدينة المنتجع الروسية <strong>سوتشي</strong>. بعد فتح روسيا القيصرية للقوقاز في ستينيات القرن التاسع عشر، رُحِّل الشعب الأوبيخي قسرًا برمته تقريبًا عبر البحر الأسود إلى الأراضي العثمانية — مأساة تُذكر الآن بـ<em>المهجر</em>. استقروا في قرى متناثرة في الأناضول، وانتقل المجتمع، جيلًا بعد جيل، إلى التركية والشركسية. بحلول 1900 كانت الأوبيخ قد صارت أثرًا منزليًا؛ وبحلول 1950 كانت لغة حفنة من الشيوخ.</p>

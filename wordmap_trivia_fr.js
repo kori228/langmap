@@ -156,7 +156,7 @@ window.TRIVIA_I18N['fr'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Afficher l\'oubykh sur la carte</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Voler vers la patrie perdue oubykh (Sotchi)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sotchi">🗺️ Voler vers la patrie perdue oubykh (Sotchi)</button>
 </div>
 
 <p>L\'oubykh appartenait à la famille <strong>caucasienne du nord-ouest</strong>, aux côtés de l\'abkhaze, l\'abaza, l\'adyghé et le kabarde. Sa terre natale était la bande côtière autour de l\'actuelle ville balnéaire russe de <strong>Sotchi</strong>. Après la conquête du Caucase par la Russie impériale dans les années 1860, presque toute la population oubykh fut déportée de force à travers la mer Noire vers le territoire ottoman — une tragédie aujourd\'hui rappelée comme l\'exil <em>muhajir</em>. Installée dans des villages dispersés d\'Anatolie, la communauté passa, génération après génération, au turc et au circassien. En 1900, l\'oubykh était déjà une relique domestique ; en 1950, c\'était la parole d\'une poignée de vieillards.</p>

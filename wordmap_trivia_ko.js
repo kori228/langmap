@@ -156,7 +156,7 @@ window.TRIVIA_I18N['ko'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 지도에서 우비흐어 보기</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ 우비흐족의 잃어버린 고향 소치로</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="소치">🗺️ 우비흐족의 잃어버린 고향 소치로</button>
 </div>
 
 <p>우비흐어는 <strong>북서캅카스</strong> 어족에 속하며, 압하스어, 아바자어, 아디게어, 카바르드어와 형제 관계에 있다. 본래의 고향은 지금 러시아 휴양도시 <strong>소치</strong> 주변의 좁은 해안 지대였다. 1860년대 제국 러시아의 캅카스 정복 이후, 우비흐 인구 거의 전체가 흑해 너머 오스만 영토로 강제 추방당했다 — 지금은 <em>무하지르</em>(망명) 비극으로 기억된다. 아나톨리아의 흩어진 마을에 정착한 공동체는 세대를 거치며 터키어와 체르케스어로 옮겨갔다. 1900년경 우비흐어는 이미 가정 내 유물이었고, 1950년경에는 노인 몇 명의 말이 되어 있었다.</p>
@@ -322,7 +322,7 @@ window.TRIVIA_I18N['ko'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 지도에서 수메르어 보기</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7">𒀭 우루크로 날아가기</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7" data-label="우루크">𒀭 우루크로 날아가기</button>
 </div>
 
 <p>수메르어는 <strong>고립어</strong>다. 한 세기에 걸친 노력에도 불구하고, 입증된 친척은 발견되지 않았다 — 셈어(훨씬 후대의 이웃 아카드어)에서도, 인도유럽어에서도, 드라비다어에서도, 어떤 캅카스 어족에서도. 또한 <strong>교착어</strong>이며 대체로 <strong>능격</strong>이다. 의미는 정해진 자리에 형태소를 동사 어근 위로 쌓아 만들어지며, 타동사의 행위자는 특별한 격 어미를 취한다. 일반적인 동사 연쇄는 다음과 같다.</p>

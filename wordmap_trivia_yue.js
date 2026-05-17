@@ -159,7 +159,7 @@ window.TRIVIA_I18N['yue'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 喺地圖上顯示烏比克語</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ 飛去烏比克失去嘅故鄉(索契)</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="索契">🗺️ 飛去烏比克失去嘅故鄉(索契)</button>
   </div>
 
   <p>烏比克語屬於<strong>西北高加索語族</strong>,同阿布哈茲語、阿巴扎語、阿迪格語同卡巴爾達語係姊妹。佢嘅故鄉係而家俄羅斯度假城市<strong>索契</strong>周圍嘅一條海岸帶。1860年代帝俄征服高加索之後,幾乎所有烏比克人都被強制驅逐到黑海對岸嘅奧斯曼領土——呢場悲劇而家叫做 <em>muhajir</em> 流亡。喺安納托利亞散落嘅村莊定居後,呢個社群一代一代咁轉用土耳其語同切爾克斯語。到1900年烏比克語已經係家庭遺物,到1950年就只係少數老人嘅言語。</p>
@@ -325,7 +325,7 @@ window.TRIVIA_I18N['yue'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 喺地圖上顯示蘇美爾語</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7">𒀭 飛去烏魯克</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="31.32" data-lng="45.64" data-zoom="7" data-label="烏魯克">𒀭 飛去烏魯克</button>
   </div>
 
   <p>蘇美爾語係<strong>孤立語言</strong>。雖然經歷咗一個世紀嘅努力,但冇搵到證實嘅親戚——唔喺閃米特語(其後嘅鄰居阿卡德語),唔喺印歐語,唔喺達羅毗荼語,亦唔喺任何高加索語族入面。佢亦係<strong>黏著語</strong>同主要<strong>能格</strong>嘅:意義通過喺動詞詞根上以固定槽位疊加詞素嚟構建,及物動詞嘅施事者帶特殊格尾。一個典型嘅動詞鏈睇起嚟係:</p>

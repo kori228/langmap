@@ -159,7 +159,7 @@ window.TRIVIA_I18N['id'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Tampilkan Ubykh di peta</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Terbang ke tanah air Ubykh yang hilang (Sochi)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Terbang ke tanah air Ubykh yang hilang (Sochi)</button>
 </div>
 
 <p>Ubykh termasuk dalam keluarga <strong>Kaukasus Barat Laut</strong>, bersama dengan Abkhaz, Abaza, Adyghe, dan Kabardian. Tanah airnya adalah jalur pantai di sekitar kota resor Rusia <strong>Sochi</strong> saat ini. Setelah penaklukan Kaukasus oleh Kekaisaran Rusia pada tahun 1860-an, hampir seluruh populasi Ubykh secara paksa dideportasi melintasi Laut Hitam ke wilayah Ottoman — sebuah tragedi yang kini dikenang sebagai pengasingan <em>muhajir</em>. Menetap di desa-desa yang tersebar di Anatolia, komunitas beralih, dari generasi ke generasi, ke bahasa Turki dan Sirkasia. Pada 1900 Ubykh sudah menjadi relik domestik; pada 1950 ia adalah tuturan segelintir orang tua.</p>

@@ -358,7 +358,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Hiển thị Ubykh trên bản đồ</button>
-  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Bay đến quê hương đã mất của Ubykh (Sochi)</button>
+  <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Bay đến quê hương đã mất của Ubykh (Sochi)</button>
 </div>
 
 <p>Ubykh thuộc họ <strong>Tây Bắc Kavkaz</strong>, cùng với Abkhaz, Abaza, Adyghe và Kabardian. Quê hương của nó là dải bờ biển quanh khu vực hiện là thành phố nghỉ dưỡng Nga <strong>Sochi</strong>. Sau cuộc chinh phục Kavkaz của Đế quốc Nga vào những năm 1860, hầu như toàn bộ dân số Ubykh đã bị cưỡng bức trục xuất qua Biển Đen sang lãnh thổ Ottoman — một bi kịch hiện được nhớ đến như cuộc lưu vong <em>muhajir</em>. Định cư tại các làng rải rác ở Anatolia, cộng đồng đã chuyển, thế hệ này sang thế hệ khác, sang tiếng Thổ Nhĩ Kỳ và Circassian. Đến năm 1900, Ubykh đã là di tích trong gia đình; đến năm 1950, nó là tiếng nói của một nhóm nhỏ những người đàn ông già.</p>

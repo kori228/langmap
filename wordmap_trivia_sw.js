@@ -162,7 +162,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="uby" data-zoom="6">🌍 Onyesha Ubykh kwenye ramani</button>
-    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6">🗺️ Ruka hadi nchi iliyopotea ya Ubykh (Sochi)</button>
+    <button type="button" class="trivia-action" data-action="panto" data-lat="43.60" data-lng="39.70" data-zoom="6" data-label="Sochi">🗺️ Ruka hadi nchi iliyopotea ya Ubykh (Sochi)</button>
   </div>
 
   <p>Ubykh ilikuwa ya familia ya <strong>Caucasian ya Kaskazini-Magharibi</strong>, pamoja na Abkhaz, Abaza, Adyghe na Kabardian. Makao yake yalikuwa ukanda wa pwani karibu na mji wa kisasa wa burudani wa Urusi wa <strong>Sochi</strong>. Baada ya ushindi wa Urusi ya Kifalme wa Caucasus katika miaka ya 1860, karibu watu wote wa Ubykh walihamishwa kwa lazima kuvuka Bahari Nyeusi hadi eneo la Ottoman — janga ambalo sasa linakumbukwa kama uhamishaji wa <em>muhajir</em>. Wakikaa katika vijiji vya kutapakaa katika Anatolia, jamii ilibadilika, kizazi kwa kizazi, kuelekea Kituruki na Kicherkess. Kufikia 1900 Ubykh ilikuwa tayari ni mabaki ya kifamilia; kufikia 1950 ilikuwa lugha ya wanaume wachache wazee.</p>
