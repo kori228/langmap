@@ -55,8 +55,8 @@ const TRIVIA_ARTICLES = [
 </ul>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="myp">🔢 Compare "one" across languages</button>
-  <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="myp">👩 Compare "mother"</button>
+  <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="myp">🔢 See "one" across languages</button>
+  <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="myp">👩 See Pirahã "Mother"</button>
 </div>
 
 <p>Stranger still, Pirahã is one of a small handful of languages that can be transmitted across <em>four parallel channels</em>: it can be <strong>spoken, whistled, hummed, or shouted</strong>. Because Pirahã has only three vowels and eight consonants, its prosody (pitch and rhythm) carries an unusually heavy informational load — enough that mothers can hum entire sentences to babies without articulating a single consonant.</p>
@@ -85,8 +85,8 @@ const TRIVIA_ARTICLES = [
 </ul>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="myp">🔢 「1」を世界中の言語で見る</button>
-  <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="myp">👩 「母」を比べる</button>
+  <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="myp">🔢 ピダハン語の「一」</button>
+  <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="myp">👩 ピダハン語の「母」</button>
 </div>
 
 <p>さらに不思議なのは、ピダハン語が世界的にも珍しい<em>四つの並列チャネル</em>で伝達できる言語であることだ。<strong>普通に話す・口笛で吹く・ハミングする・叫ぶ</strong>──そのいずれでも完全な文を伝えられる。母音が3つ、子音がわずか8つしかないため、声調・強勢・音節長といった韻律情報が極端に重い役割を担い、母親は子音を一つも発音せずにメロディだけで赤ん坊にピダハン語を語りかけることができる。</p>
@@ -722,8 +722,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="eu">💧 Compare "water" (Basque: ur)</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="eu">🔢 Compare "one" (Basque: bat)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="eu">💧 See Basque "Water"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="eu">🔢 See Basque "One"</button>
   </div>
   
   <p>Basque came close to extinction in the 20th century. Under Francisco Franco's dictatorship (1939–1975), speaking Basque in public was punished, the language was banned from schools and church, and parents were fined for giving their children Basque names. The post-Franco standardization effort, <strong>Euskara Batua</strong> ("Unified Basque"), was led from the 1960s by the Basque language academy <em>Euskaltzaindia</em> and the linguist <strong>Koldo Mitxelena</strong>. It pulled together divergent dialects — Bizkaian, Gipuzkoan, Navarrese, Lapurdian, Zuberoan — into a written standard usable in schools, newspapers, and government.</p>
@@ -752,8 +752,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="eu">💧 「水」を比べる（バスク語：ur）</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="eu">🔢 「1」を比べる（バスク語：bat）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="eu">💧 バスク語の「水」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="eu">🔢 バスク語の「一」</button>
   </div>
   
   <p>バスク語は20世紀に消滅の危機に瀕した。フランコ独裁政権下（1939–1975）では公の場での使用が処罰され、学校・教会から追放され、子にバスク名をつけた親には罰金が科された。フランコ没後の標準化運動<strong>エウスカラ・バトゥア</strong>（「統一バスク語」）は、1960年代以降、バスク語アカデミー <em>Euskaltzaindia</em> と言語学者<strong>コルド・ミチェレナ</strong>が主導し、ビスカヤ、ギプスコア、ナバラ、ラプルディ、スベロアといった分岐方言を、学校・新聞・行政で使える一つの書記標準にまとめあげた。</p>
@@ -808,8 +808,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="sux">💧 Compare "water" (Sumerian: a)</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="sux">🏠 Compare "house" (Sumerian: é)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="sux">💧 See Sumerian "Water"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="sux">🏠 See Sumerian "House"</button>
   </div>
   
   <p>By around 2000 BCE, after the fall of the Third Dynasty of Ur, Sumerian appears to have died out as anybody's mother tongue, displaced by the Semitic Akkadian of their northern neighbours. But it didn't stop being written. For nearly two thousand more years, Sumerian was kept alive in scribal schools (the <em>edubba</em>) as the prestige language of religion, scholarship, divination, and astronomy — the cuneiform world's Latin. Babylonian and Assyrian scribes copied Sumerian texts down into the 1st century BCE, the last datable Sumerian-language tablets postdating Alexander the Great.</p>
@@ -838,8 +838,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="sux">💧 「水」を比べる（シュメール語：a）</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="sux">🏠 「家」を比べる（シュメール語：é）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="sux">💧 シュメール語の「水」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="sux">🏠 シュメール語の「家」</button>
   </div>
   
   <p>紀元前2000年頃、ウル第三王朝の崩壊後、シュメール語は母語としては消滅し、北方のセム系アッカド語に取って代わられた。だが書かれることはやめなかった。続く約2000年間、シュメール語は書記学校 <em>edubba</em> で教えられ、宗教・学問・占い・天文の威信言語──楔形文字世界のラテン語──として生き続けた。バビロニア人やアッシリア人の書記は紀元前1世紀までシュメール語文書を書写し、確実な年代を持つ最後のシュメール語板はアレクサンドロス大王より後にまで及ぶ。</p>
@@ -892,7 +892,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="ett">🔢 Compare "one" (Etruscan: thu)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="ett">🔢 See Etruscan "One"</button>
   </div>
   
   <p>What we <em>do</em> know is surprising. Etruscan has the numerals <em>thu, zal, ci, huth, mach, śa</em> for 1–6 — though scholars still argue over which numeral pairs with which, partly because four ivory dice found in Tuscany write the numbers out as words rather than dots. Etruscan declines nouns by case (genitive in <em>-s</em> or <em>-l</em>, ablative in <em>-is</em>), conjugates verbs for past and present (<em>-ce</em> past, <em>-e</em> present), and has a striking system of <strong>nominal phrase suffixes that stack</strong>: a noun marked for genitive can take a second genitive on top. The vocabulary that has been securely extracted is around 250 words; the rest of the lexicon, including most of the Liber Linteus's ritual technical terms, is contextual guesswork.</p>
@@ -923,7 +923,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="ett">🔢 「1」を比べる（エトルリア語：thu）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="ett">🔢 エトルリア語の「一」</button>
   </div>
   
   <p>分かっている部分も意外と多い。1から6を表す数詞 <em>thu, zal, ci, huth, mach, śa</em> は知られているが、トスカーナで出土した4個の象牙のサイコロが数字を点ではなく語で書いているため、どの語がどの数字に対応するかをめぐって学者の意見はいまも割れている。エトルリア語は名詞を格変化させ（属格 <em>-s/-l</em>、奪格 <em>-is</em>）、動詞を時制変化させ（過去 <em>-ce</em>、現在 <em>-e</em>）、名詞句接辞を<strong>積み重ねる</strong>独特な体系を持つ──属格に属格をさらにつけられる。確実に解明された語彙は約250語、それ以外、特にリーベル・リンテウスの儀礼専門用語の大半は文脈推定に頼っている。</p>
@@ -1061,8 +1061,8 @@ const TRIVIA_ARTICLES = [
   <p>He compiled the gigantic <em>Complete Dictionary of Ancient and Modern Hebrew</em> in 17 volumes (continued and completed after his death by his son and others), and helped found the <strong>Va'ad ha-Lashon ha-Ivrit</strong> (Hebrew Language Committee, 1890), which became today's <strong>Academy of the Hebrew Language</strong> — still the official Israeli body that coins new technical vocabulary (<em>machshev</em> "computer", <em>klikim</em> "clicks", <em>siyumon</em> "app").</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="he">👋 Compare "hello" (Hebrew: shalom)</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="he">💧 Compare "water" (Hebrew: mayim)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="he">👋 See Hebrew "Hello"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="he">💧 See Hebrew "Water"</button>
   </div>
   
   <p>Modern historians of Hebrew (Ghil'ad Zuckermann, Bernard Spolsky and others) are quick to add nuance. Ben-Yehuda was not alone; he was the loudest voice in a wave of teachers, especially the <strong>Hebrew Teachers Association</strong> from the 1890s onward, who switched their classrooms from Yiddish and Russian to Hebrew, building the first generation of fluent users one schoolroom at a time. Zuckermann has argued that what was actually born is not strictly "revived Hebrew" but a hybrid he calls <em>Israeli</em> — a Semitic surface layer (the morphology, much vocabulary) over a deeply European (especially Yiddish and Slavic) syntactic and phonetic substrate. By that view, native Israeli speakers are heirs both to King David and to the Tsarist-era Vilna yeshiva.</p>
@@ -1094,8 +1094,8 @@ const TRIVIA_ARTICLES = [
   <p>彼は『古代および現代ヘブライ語完全辞典』全17巻を編み（彼の死後、息子らが完成）、1890年に<strong>ヘブライ語委員会</strong>（Va'ad ha-Lashon）を共同創設した。これが今日の<strong>ヘブライ語アカデミー</strong>に発展し、<em>machshev</em>「コンピュータ」、<em>klikim</em>「クリック」、<em>siyumon</em>「アプリ」といった専門語を今も公式に造語している。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="he">👋 「こんにちは」を比べる（ヘブライ語：shalom）</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="he">💧 「水」を比べる（ヘブライ語：mayim）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="he">👋 ヘブライ語の「こんにちは」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="he">💧 ヘブライ語の「水」</button>
   </div>
   
   <p>現代の歴史家たち（ギルアド・ツッカーマン、バーナード・スポルスキーら）は補正を加えるのを忘れない。ベン＝イェフダーは独力ではなく、1890年代以降に教室でイディッシュ語やロシア語からヘブライ語へ切り替えた<strong>ヘブライ語教師組合</strong>の波が、第一世代の流暢な話者を学校単位で育てた。さらにツッカーマンは、生まれたのは厳密には「復活ヘブライ語」ではなく、彼が <em>イスラエル語</em> と呼ぶハイブリッド──セム的な表層（形態論・語彙の多く）の下に、深いヨーロッパ的（特にイディッシュ語・スラヴ語）統語と音韻基層を持つ言語──だと主張する。その視点に立てば、現代の母語話者はダビデ王の継承者であると同時に、帝政ロシア期のヴィルナのイェシバの継承者でもある。</p>
@@ -1151,8 +1151,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="sa">👩 Compare "mother" (Sanskrit: mātṛ)</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="sa">🔥 Compare "fire" (Sanskrit: agni)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="sa">👩 See Sanskrit "Mother"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="sa">🔥 See Sanskrit "Fire"</button>
   </div>
   
   <p>Pāṇini's influence is direct, and not just metaphorical. <strong>Leonard Bloomfield</strong> (1887–1949), one of the founders of American structural linguistics, wrote his 1929 essay "On Some Rules of Pāṇini" in part to import Pāṇinian rule-ordering into Western grammatical theory. The Dutch logician <strong>Frits Staal</strong> argued in <em>The Science of Language</em> (1965) that Pāṇini's metalanguage anticipates the Backus-Naur form used to define programming languages. The Indian-American computer scientist <strong>Rick Briggs</strong>, working at NASA Ames in the 1980s, proposed Sanskrit-style kāraka representations as a natural intermediate language for AI knowledge representation. And in his 1965 <em>Aspects of the Theory of Syntax</em>, <strong>Noam Chomsky</strong> credited Pāṇini and his commentators as the first generative grammarians in history.</p>
@@ -1184,8 +1184,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="sa">👩 「母」を比べる（サンスクリット：mātṛ）</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="sa">🔥 「火」を比べる（サンスクリット：agni）</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="sa">👩 サンスクリット語の「母」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="sa">🔥 サンスクリット語の「火」</button>
   </div>
   
   <p>パーニニの影響は比喩ではなく直接的である。アメリカ構造主義言語学の創始者の一人<strong>レナード・ブルームフィールド</strong>（1887–1949）は1929年の論文「パーニニのいくつかの規則について」で、パーニニ的な規則順序を西洋言語理論に持ち込んだ。オランダの論理学者<strong>フリッツ・スタール</strong>は1965年の『言語の科学』で、パーニニのメタ言語がプログラミング言語の定義に使われる<strong>バッカス＝ナウア記法</strong>を先取りしていると論じた。NASA エイムズ研究所の<strong>リック・ブリッグス</strong>は1980年代、サンスクリット風カーラカ表現を人工知能の知識表現の中間言語として提案した。そして<strong>ノーム・チョムスキー</strong>は1965年の『統辞理論の諸相』で、パーニニとその注釈者たちを「人類最初の生成文法家」と明記した。</p>
@@ -1223,7 +1223,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="eo" data-zoom="4">🌍 Show Esperanto on map</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="eo">👋 "Hello" in Esperanto</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="eo">👋 See Esperanto "Hello"</button>
   </div>
   
   <p>Zamenhof grew up in Białystok, a multi-ethnic town under Russian rule where Jews, Poles, Germans, Russians and Belarusians lived side by side and frequently in mutual distrust. He later wrote that as a boy he had concluded the linguistic Babel was the root cause of human hatred, and that a neutral common tongue might give people a shared, equal footing. The political project was as important to him as the grammatical one.</p>
@@ -1744,7 +1744,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="vai">💧 "Water" — <em>ꕕ (ja)</em></button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="vai">👋 "Hello" — greeting in Vai</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="vai">👋 See Vai "Hello"</button>
   </div>
   
   <p>Vai literacy became the subject of a famous <strong>1981 study by Sylvia Scribner and Michael Cole</strong>, <em>The Psychology of Literacy</em>. Vai society was — and to some extent still is — a natural laboratory: many adults are literate in one, two or three scripts (Vai, Arabic, Latin), each acquired in a different setting (Vai informally from kin, Arabic in Quran schools, Latin in colonial-style schools). Scribner and Cole compared the cognitive effects of each and concluded that the "intellectual benefits of literacy" famously claimed by earlier scholars were largely <em>specific to schooling</em>, not to literacy as such. Vai script literacy, learned informally, did not by itself transform thinking. It was an enormously influential finding in education research.</p>
@@ -1777,7 +1777,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="vai">💧 「水」は<em>ja</em></button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="vai">👋 ヴァイ語の挨拶</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="vai">👋 ヴァイ語の「こんにちは」</button>
   </div>
   
   <p>ヴァイ族の識字は教育学史でも有名な事例となった。<strong>シルヴィア・スクリブナーとマイケル・コールの1981年の研究『The Psychology of Literacy』</strong>がそれだ。ヴァイ社会では多くの成人が1〜3種の文字（ヴァイ／アラビア／ラテン）に通じ、それぞれ異なる場（親族から非公式に／クルアーン学校で／植民地式学校で）で習得していた。スクリブナーとコールは認知効果を比較し、過去の研究者が主張してきた「識字の知的恩恵」は、実は<em>学校教育に特有のもの</em>であって識字そのものの効果ではない、と結論づけた。家庭で習うヴァイ文字識字は思考様式を変容させていなかった。この知見は教育研究に絶大な影響を与えた。</p>
@@ -1829,8 +1829,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="txg">🌙 Compare "moon"</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="txg">💧 Compare "water"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="txg">🌙 See Tangut "Moon"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="txg">💧 See Tangut "Water"</button>
   </div>
   
   <p>The decipherer was <strong>Nikolai Nevsky</strong> (1892–1937), a Russian Japanologist who spent the 1920s in Japan and Taiwan and turned his attention to the Khara-Khoto hoard upon returning to Leningrad. By 1929 Nevsky had cracked the basic phonological structure and built the first working Tangut–Russian dictionary. His masterpiece, <em>Tangutskaya Filologiya</em>, was published posthumously in 1960 — Nevsky himself had been shot in Stalin's Great Purge in 1937. He was awarded the Lenin Prize after death.</p>
@@ -1860,7 +1860,7 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="txg">🌙 「月」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="txg">🌙 西夏語の「月」</button>
   </div>
   
   <p>解読の英雄は<strong>ニコライ・ネフスキー</strong>（1892–1937）。1920年代を日本と台湾で過ごしたロシアの日本学者で、レニングラードに戻ってカラ・ホト文書に着手し、1929年には音韻構造の基礎を解明、最初の西夏語＝ロシア語辞書を完成させる。代表作『西夏文献学』は没後1960年刊──ネフスキー自身は1937年、スターリンの大粛清で銃殺されていた。死後にレーニン賞を受賞している。</p>
@@ -2007,7 +2007,7 @@ const TRIVIA_ARTICLES = [
   <p>The logic, repeatedly given by Aymara speakers when asked, is beautifully consistent: <em>the past is what you have already seen, so it must be in front of you, where eyes look. The future is unseen, unknown — so it lies behind your back, where you cannot see.</em></p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="ay">☀️ Compare "sun" (inti)</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="ay">☀️ See Aymara "Sun"</button>
   </div>
   
   <p>Núñez and Sweetser did not just rely on lexical glosses, which can mislead. They filmed elderly Aymara speakers as they talked about events from many decades back and decades into the future. The gestures are unambiguous: when describing past events, speakers gesture <strong>forward, into the visual field in front of them</strong> — sometimes with a sweep, sometimes pointing at a specific imagined location. When describing future events, they gesture backward, sometimes with a thumb thrown over the shoulder. The further back in time, the further forward the gesture. The further into the future, the further behind.</p>
@@ -2042,7 +2042,7 @@ const TRIVIA_ARTICLES = [
   <p>話者が繰り返し説明する論理は美しい：<em>過去は自分の目で見たもの──だから目の前にある。未来はまだ見えない・分からない──だから自分の背中側にあるしかない。</em></p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="ay">☀️ 太陽（inti）を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="ay">☀️ アイマラ語の「日」</button>
   </div>
   
   <p>ヌニェスらは語義だけに頼らず、高齢のアイマラ語話者がインタビューで身振りを伴いながら時間について語る場面をビデオで分析した。結果は明快だ。過去の出来事を語るとき、話者は<strong>体の前方、視野の中</strong>を指差す──ときに大きく払うように、ときに具体的な位置を示すように。未来の出来事を語るときは、肩越しに親指を後ろへ放り投げるように指す。遠い過去ほど前方深く、遠い未来ほど後方遠く。</p>
@@ -2102,7 +2102,7 @@ const TRIVIA_ARTICLES = [
   <p>The system is more than a politeness convention. It is a hard grammatical constraint, learned early by children, and respected even in casual conversation. A Tuyuca speaker recounting a quarrel is required to flag — every clause — whether they witnessed it, overheard it, or had it reported. To omit the marker is to produce an ill-formed sentence, like saying <em>"yesterday he go store"</em> in English.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ Compare "eye"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ See Tuyuca "Eye"</button>
   </div>
   
   <p>Tuyuca is not unique. <strong>Evidentiality</strong> as a grammatical category is found across the Tukanoan family, in Quechua, Aymara, Turkish (the famous <em>-miş</em>), Bulgarian, Korean, many Tibeto-Burman languages, and across Amazonia. <strong>Alexandra Aikhenvald</strong>'s typological survey (2004) collected nearly 500 languages with grammaticalised evidentials. But Tuyuca stands out for the <em>granularity</em> of its system — five distinctions where most languages make two or three — and for being among the very first to be carefully described.</p>
@@ -2112,7 +2112,7 @@ const TRIVIA_ARTICLES = [
   <p>The implications for cognition are debated. Some researchers, including Lev Vygotsky's intellectual heirs and Aikhenvald herself, argue that habitually marking the source of information cultivates a different orientation to evidence and rumour. Others note that English speakers can express the same distinctions — they just are not <em>forced</em> to. The current consensus is somewhere in between: obligatory grammaticalisation makes a category cognitively salient, but does not make speakers of other languages incapable of the same distinctions.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 Compare "hello"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 See Tuyuca "Hello"</button>
   </div>
   
   <p>What is clear is that Tuyuca exposes a hidden assumption of much Western philosophy of language: that statements are by default unmarked claims of "fact". For a Tuyuca speaker there is no such default. Every sentence is, in effect, prefaced with the epistemic equivalent of <em>"I saw"</em>, <em>"I heard"</em>, or <em>"I was told"</em>. A grammar of provenance is built into every verb.</p>
@@ -2140,7 +2140,7 @@ const TRIVIA_ARTICLES = [
   <p>これは礼儀作法ではなく硬い文法制約だ。子どもは幼少期からこの体系を獲得し、雑談でも厳密に守る。喧嘩を伝え聞いて再話するとき、話者は節ごとに「自分が見たのか／又聞きか」を明示しなければならない。証拠性接辞を落とすことは、英語で「<em>yesterday he go store</em>」と言うのと同じくらい異常な発話になる。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ 「目」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ トゥユカ語の「目」</button>
   </div>
   
   <p>トゥヤカ語だけが特殊なわけではない。<strong>証拠性</strong>はトゥカノ語族全体、ケチュア語、アイマラ語、トルコ語（有名な <em>-miş</em>）、ブルガリア語、韓国語、多くのチベット＝ビルマ系言語、アマゾン諸語に広く文法カテゴリーとして存在する。<strong>アレクサンドラ・アイヘンヴァルト</strong>の類型論的研究（2004）は文法化された証拠性を持つ言語を500近く集めている。ただ、トゥヤカ語は「5段階」というきめ細かさと、最初に詳細に記述された言語の一つであることで際立っている。</p>
@@ -2150,7 +2150,7 @@ const TRIVIA_ARTICLES = [
   <p>認知への含意は議論が続く。「情報源を毎回明示する習慣は、噂や根拠への姿勢を根本から変える」と主張する研究者もいれば、「英語話者も同じ区別を表現できる──ただ義務ではないだけだ」と反論する研究者もいる。現在の合意点はおそらくその中間──義務的な文法化はその概念を認知的に目立たせるが、他言語話者が同じ区別をできなくなるわけではない、というところだ。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 「こんにちは」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="tue">👋 トゥユカ語の「こんにちは」</button>
   </div>
   
   <p>はっきりしているのは、トゥヤカ語が西欧言語哲学の暗黙の前提──「平叙文の既定値は無印の事実主張である」──をあぶり出していることだ。トゥヤカ語にそんな既定値はない。すべての文の動詞には、認識論的に言えば「私は見た」「私は聞いた」「人から聞いた」が刻まれている。<strong>情報源の文法</strong>が、動詞そのものに織り込まれているのである。</p>
@@ -2201,7 +2201,7 @@ const TRIVIA_ARTICLES = [
   <p>These terms combine freely with verbs, postpositions, and even motion morphemes. You can say "I dropped it <em>nagaalu</em>" — meaning "I dropped it on the east side". A man telling a story about a fight does not say "he punched him in the face"; he says "he punched him in the north-side cheek" — and crucially, that "north" is the real-world compass north at the time of the fight, not at the time of telling.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Compare "hand"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ See Guugu Yimithirr "Hand"</button>
   </div>
   
   <p>The cognitive consequence, documented by Levinson, John Haviland and colleagues at the Max Planck Institute, is striking. Speakers of Guugu Yimithirr maintain an unbroken <strong>dead-reckoning</strong> sense of their orientation. In experiments, they can point accurately to distant places (the sea, a neighbouring settlement, a relative's house hundreds of kilometres away) regardless of whether they are sitting in a windowless room, blindfolded, after being driven around in circles, or at the bottom of a cave. Their cardinal compass simply does not switch off.</p>
@@ -2213,7 +2213,7 @@ const TRIVIA_ARTICLES = [
   <p>Comparable absolute-frame systems are now known from <strong>Tzeltal Mayan</strong> in Mexico (uphill/downhill axes), <strong>Marshallese</strong> in Micronesia (seaward/landward), <strong>Balinese</strong> (mountainward/seaward), and numerous Aboriginal Australian languages — Kuuk Thaayorre, Warlpiri and Arrernte among them. The Sapir–Whorf-flavoured debate over whether language drives the spatial cognition or vice versa remains live, but the empirical fact is undisputed: speakers of absolute-frame languages perform on non-verbal orientation tasks in a measurably different way from speakers of egocentric-frame languages.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="kky">☀️ Compare "sun"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="kky">☀️ See Guugu Yimithirr "Sun"</button>
   </div>
   
   <p>Guugu Yimithirr also has another claim to fame: it is the language from which English borrowed the word <strong>"kangaroo"</strong>. James Cook's crew recorded <em>gangurru</em> in 1770 as the name of a particular large grey kangaroo species — and the word travelled the world. The language now has fewer than 1,000 fluent speakers, but its cognitive lessons have reached far further.</p>
@@ -2240,7 +2240,7 @@ const TRIVIA_ARTICLES = [
   <p>これらの語は動詞・後置詞・移動形態素と自由に結合し、「東側に落とした」「南側へ走った」のように使われる。話者が喧嘩を再話するとき、「彼は彼の顔を殴った」ではなく「彼は彼の<em>北側の頬</em>を殴った」と言う──しかもその「北」は喧嘩が起きた現場の絶対方位であって、再話している場所の方位ではない。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ 「手」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ グーグ・イミディル語の「手」</button>
   </div>
   
   <p>レヴィンソン、ジョン・ハヴィランドらマックス・プランク研究所のチームが示した認知への含意は鮮烈だ。グーグ・イミディル語話者は常に<strong>推測航法</strong>的に自分の方位を把握し続けている。窓のない部屋で目隠しをされても、車でぐるぐる回された後でも、洞窟の奥に降ろされても、彼らは数百キロ離れた海や親族の家を正確に指し示すことができる。彼らの体内コンパスは決して止まらない。</p>
@@ -2252,7 +2252,7 @@ const TRIVIA_ARTICLES = [
   <p>同種の絶対基準系は、メキシコの<strong>ツェルタル・マヤ語</strong>（上り／下り）、ミクロネシアの<strong>マーシャル語</strong>（海側／陸側）、<strong>バリ語</strong>（山側／海側）、そしてオーストラリアの多くのアボリジニ諸語──クーク・タヨレ、ワルピリ、アレント──にも見られる。サピア＝ウォーフ的な「言語が空間認知を駆動するのか、逆か」の論争は今も続いているが、絶対基準系言語の話者は非言語的方位課題でも測定可能な差を示す、という事実だけは動かない。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="kky">☀️ 「太陽」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="kky">☀️ グーグ・イミディル語の「日」</button>
   </div>
   
   <p>余談として、英語の <strong>kangaroo</strong> はこのグーグ・イミディル語から借りた語である。1770年、ジェームズ・クック隊が大型の灰色カンガルーの名として <em>gangurru</em> を記録し、世界中に広まった。現在の流暢な話者は1000人未満だが、この言語が認知科学に残した教訓ははるかに広く届いている。</p>
@@ -2309,8 +2309,8 @@ const TRIVIA_ARTICLES = [
   <p>The argument structure of a whole English sentence is packed into the morphology of one verb. Mohawk also exhibits <strong>noun incorporation</strong>: a generic object noun (here, "dress") moves inside the verb stem rather than appearing as a separate word. Wallace Chafe and Mithun have shown that incorporation is governed by discourse-level rules — incorporated nouns are typically backgrounded, while independent nouns highlight a referent.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="moh">🏠 Compare "house" (kanónhsa)</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="moh">👨 Compare "father"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="moh">🏠 See Mohawk "House"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="moh">👨 See Mohawk "Father"</button>
   </div>
   
   <p>Mohawk verbs also obligatorily mark a complex <strong>pronominal prefix</strong> that fuses the person, number and gender of subject and object into one portmanteau morpheme. There are over <strong>60</strong> such prefixes in the paradigm, distinguishing for instance "I → you (sg)" from "I → you (pl)" from "you (sg) → me" — each a single syllable. Learning the prefix table is widely regarded as the steepest climb in the language.</p>
@@ -2350,8 +2350,8 @@ const TRIVIA_ARTICLES = [
   <p>英語1文ぶんの項構造がそのまま1個の動詞形態に圧縮されている。さらに「ドレス」のような一般的目的語が動詞の中に組み込まれる<strong>名詞抱合</strong>の現象も顕著だ。ウォーレス・チェイフとミスンの研究によれば、抱合の有無は談話レベルの規則に従い、抱合された名詞は背景化され、独立名詞は前景化される。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="moh">🏠 「家」（kanónhsa）を比べる</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="moh">👨 「父」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="house" data-code="moh">🏠 モホーク語の「家」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="moh">👨 モホーク語の「父」</button>
   </div>
   
   <p>動詞は<strong>代名詞接頭辞</strong>も義務的に取る。主語・目的語の人称・数・性が1音節の融合形態素として表現され、その総数は<strong>60を超える</strong>。「私→君」「私→君たち」「君→私」がそれぞれ別の1音節接頭辞となる、というわけで、学習者にとっては最大の関門だ。</p>
@@ -2489,7 +2489,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="haw">☀️ See Hawaiian "sun"</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="haw">👋 See "aloha"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="haw">👋 See Hawaiian "Hello"</button>
   </div>
   
   <p>Then came the collapse. The <strong>1893 overthrow of the Hawaiian Kingdom</strong> and the 1898 U.S. annexation set off a generation of cultural repression. In 1896 the Republic of Hawaiʻi passed <strong>Act 57</strong>, requiring English as the sole medium of instruction in schools. Children caught speaking Hawaiian were physically punished. By 1980, fewer than 2,000 native speakers remained, almost all elderly. Linguists wrote it off as moribund.</p>
@@ -2567,8 +2567,8 @@ const TRIVIA_ARTICLES = [
   <p>Then came the revolution. When younger children — preschoolers and early primary kids — entered the system in the mid-1980s, they took the older kids' pidgin as input and did something only children can do: <strong>they grammaticalised it</strong>. They added consistent spatial agreement, verb morphology, and discourse markers. By the early 1990s, the younger cohort was signing a fully grammatical, fully natural language — ISN — that the older cohort could only partly follow.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 ISN "thank you"</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 ISN "hello"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 See Nicaraguan Sign Language "Thank you"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 See Nicaraguan Sign Language "Hello"</button>
   </div>
   
   <p>The American linguist <strong>Judy Kegl</strong> was invited to study the situation in 1986. She quickly realised what she was seeing was unprecedented. Together with <strong>Ann Senghas</strong>, <strong>Marie Coppola</strong>, and others, she has documented the language across cohorts ever since. Their landmark finding:</p>
@@ -2594,8 +2594,8 @@ const TRIVIA_ARTICLES = [
   <p>真の転機は、より幼い世代──幼稚園・小学校低学年──が1980年代半ばに合流したときに起きた。彼らは年長児のピジンを入力として受け取り、子どもにしかできないことをした──<strong>それを文法化した</strong>のである。空間的一致、動詞形態論、談話標識が一貫して導入された。1990年代初頭には、若年層は完全に文法化された自然言語──ISN──を手話していた。皮肉なことに、年長の第一世代にはその一部しか理解できなかった。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 ISN「ありがとう」</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 ISN「こんにちは」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="thanks" data-code="ncs">🙏 ニカラグア手話の「ありがとう」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="hello" data-code="ncs">👋 ニカラグア手話の「こんにちは」</button>
   </div>
   
   <p>米国の言語学者<strong>ジュディ・ケグル</strong>は1986年に調査を依頼され、目の前で起きていることが前例のない出来事だと即座に気づいた。以後、<strong>アン・センガス</strong>、<strong>マリー・コッポラ</strong>らとともに世代別記録を続けている。彼らの代表的な発見はこうだ：</p>
@@ -2648,8 +2648,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="en">👩 Compare "mother" worldwide</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 Compare "father" worldwide</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="en">👩 See "mother" worldwide</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 See "father" worldwide</button>
   </div>
   
   <p>Jakobson's account elegantly explains the exceptions, too. <strong>Georgian</strong> famously swaps the pair: <em>mama</em> means "father" and <em>deda</em> means "mother". This is no embarrassment to the theory — Jakobson's point was that <em>mama</em> is the easiest first word, not that it must mean "mother". Georgian just attached the easiest form to the slightly less expected referent. Likewise, in <strong>Old Japanese</strong>, "mother" was reconstructed as <em>papa</em> (modern <em>haha</em>, with /p/ → /h/ regular sound change), and "father" was <em>titi</em>.</p>
@@ -2675,8 +2675,8 @@ const TRIVIA_ARTICLES = [
   </ul>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="en">👩 世界の「母」を比べる</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 世界の「父」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="mother" data-code="en">👩 世界の「母」を見る</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 世界の「父」を見る</button>
   </div>
   
   <p>例外もうまく説明できる。<strong>ジョージア語</strong>では<em>mama</em>が「父」、<em>deda</em>が「母」だが、これは理論への反証にはならない。ヤコブソンの主張は「<em>mama</em>は乳児にとって最も発音しやすい語である」というだけで、必ず「母」を指すとは言っていない。ジョージア語ではたまたま「父」に最易形が割り当てられただけだ。<strong>上代日本語</strong>では「母」は<em>papa</em>（規則的な p→h 変化で現代の「はは」）、「父」は<em>titi</em>だったと再構される。</p>
@@ -2721,8 +2721,8 @@ const TRIVIA_ARTICLES = [
   <p>The most famous example is <strong>Grimm's Law</strong>, formulated in 1822, which describes the systematic shift of stop consonants in the ancestor of Germanic. PIE <em>*p</em> became Germanic <em>*f</em>: hence Latin <em>pater</em> ↔ English <em>father</em>, Latin <em>piscis</em> ↔ English <em>fish</em>, Latin <em>pēs</em> ↔ English <em>foot</em>. PIE <em>*t</em> became <em>*þ</em> (the <em>th</em> sound): Latin <em>trēs</em> ↔ English <em>three</em>. The correspondences are exception-free once secondary rules (Verner's Law, 1875) are added.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 Compare "father" across Indo-European</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="en">💧 Compare "water"</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 See "father" across Indo-European</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="en">💧 See English "Water"</button>
   </div>
   
   <p>Then comes the moment that, for many linguists, settled the question of whether reconstruction is real science. In 1879, the young Swiss linguist <strong>Ferdinand de Saussure</strong> — twenty-one years old and not yet famous as the founder of modern semiotics — published <em>Mémoire sur le système primitif des voyelles dans les langues indo-européennes</em>. To make PIE vowel alternations work out cleanly, he proposed that PIE had contained mysterious additional <em>coefficients sonantiques</em> that had since disappeared in every known daughter language — sounds we now call <strong>laryngeals</strong> (<em>*h₁, *h₂, *h₃</em>).</p>
@@ -2747,8 +2747,8 @@ const TRIVIA_ARTICLES = [
   <p>もっとも有名な例が1822年に定式化された<strong>グリムの法則</strong>。PIEの<em>*p</em>はゲルマン語で<em>*f</em>になった──ラテン語<em>pater</em>↔英語<em>father</em>、ラテン語<em>piscis</em>↔英語<em>fish</em>、ラテン語<em>pēs</em>↔英語<em>foot</em>。PIEの<em>*t</em>は<em>*þ</em>（th音）になった──ラテン語<em>trēs</em>↔英語<em>three</em>。例外と見えたものもヴェルナーの法則（1875）の追加で残らず説明され、対応は完全に規則的になった。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 印欧諸語の「父」を比べる</button>
-    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="en">💧 「水」を比べる</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="father" data-code="en">👨 印欧諸語の「父」を見る</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="en">💧 英語の「水」</button>
   </div>
   
   <p>そして、比較方法が単なる類推ではなく「予測能力を持つ科学」であることが決定的に示される瞬間が訪れる。1879年、若きスイスの言語学者<strong>フェルディナン・ド・ソシュール</strong>──まだ21歳、現代記号学の創始者として有名になる前──は『印欧諸語における母音原始体系に関する覚書』を発表した。PIEの母音交替を整合的に説明するため、子孫言語すべてから消滅した謎の追加音素<em>coefficients sonantiques</em>の存在を仮定した。これが現在<strong>喉音（laryngeals、<em>*h₁, *h₂, *h₃</em>）</strong>と呼ばれる音である。</p>
