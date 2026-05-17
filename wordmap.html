@@ -1816,7 +1816,7 @@
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=30"></script>
     <script src="lang_names.js?v=108"></script>
-    <script src="wordmap_trivia.js?v=11"></script>
+    <script src="wordmap_trivia.js?v=22"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -2037,7 +2037,7 @@
             filter:    30,
             names:   108,
             meta:     188,
-            trivia:   21,
+            trivia:   22,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -5618,13 +5618,25 @@
                         catch (_) { map.fitBounds(bounds, { padding: [60, 60], maxZoom: 5 }); }
                     }
                 }
-                // Force a marker rebuild so the spotlight takes effect now.
-                if (typeof updateMarkers === 'function') updateMarkers(currentWord);
+                // Optional `data-word` attribute: when present, switch the
+                // active word AND skip the trivia-compare modal — the user
+                // wants map-only view with a specific word selected
+                // (e.g. "🗣 8言語の「母」を地図で見る" should highlight
+                // mother across the spotlighted markers, not open a panel).
+                const word = btn.dataset.word;
+                if (word && typeof updateMarkers === 'function') {
+                    updateMarkers(word);
+                } else if (typeof updateMarkers === 'function') {
+                    // No data-word → just rebuild markers so the spotlight
+                    // takes effect now (existing behavior).
+                    updateMarkers(currentWord);
+                }
                 // Standalone trivia-compare panel — side-by-side word
                 // table for the listed languages. Intentionally separate
                 // from the user's .compare-panel so we don't pollute
                 // their compare list. No add/remove/reorder controls.
-                if (typeof openTriviaComparePanel === 'function') {
+                // Skipped when `data-word` was supplied (map-only intent).
+                if (!word && typeof openTriviaComparePanel === 'function') {
                     openTriviaComparePanel(validCodes);
                 }
             } else if (action === 'article') {

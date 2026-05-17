@@ -2619,7 +2619,7 @@ const TRIVIA_ARTICLES = [
   <p>Pick any language at random. Ask how it says "mother". The odds are uncomfortably high that the word begins with <strong>m</strong> and contains an <em>a</em>: English <em>mama</em>, Mandarin <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Welsh <em>mam</em>, Hebrew <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaiian <em>makuahine</em> / <em>māmā</em>. Now ask how it says "father". Across an equally vast sample you get <strong>papa, baba, tata, dada, abba, atta</strong> — a labial or coronal stop plus <em>a</em>.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw">🗣 Light up "mother" across 8 unrelated languages</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Light up "mother" across 8 unrelated languages</button>
   </div>
   
   <p>This is not chance. The Yale anthropologist <strong>George P. Murdock</strong> assembled a 1959 cross-cultural dataset of 1,072 kin terms from 470 languages and found that words of the <em>mama</em> type were used for "mother" in 52% of the sample, and <em>papa</em>/<em>tata</em>/<em>baba</em>-type words for "father" in 55%. The languages span every family on Earth — Indo-European, Sino-Tibetan, Niger-Congo, Austronesian, Uto-Aztecan, Pama-Nyungan. They cannot all share a common ancestor.</p>
@@ -2646,7 +2646,7 @@ const TRIVIA_ARTICLES = [
   <p>世界の言語からランダムに一つ選び、「母」をどう言うか聞いてみよう。<strong>m</strong>で始まり<em>a</em>を含む語にぶつかる確率は、不気味なほど高い。英語<em>mama</em>、中国語<em>māma</em>、スワヒリ語<em>mama</em>、ケチュア語<em>mama</em>、ナバホ語<em>amá</em>、ウェールズ語<em>mam</em>、ヘブライ語<em>imá</em>、タガログ語<em>nanay</em>/<em>mama</em>、ヒンディー語<em>mā</em>、マラヤーラム語<em>amma</em>、ハワイ語<em>makuahine</em>/<em>māmā</em>。次に「父」を尋ねると、<strong>papa, baba, tata, dada, abba, atta</strong>──唇音または歯茎閉鎖音 + <em>a</em>がやはり並ぶ。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw">🗣 系統の異なる8言語の「母」を地図で見る</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 系統の異なる8言語の「母」を地図で見る</button>
   </div>
   
   <p>これは偶然ではない。エール大学の人類学者<strong>ジョージ・P・マードック</strong>は1959年に470言語1,072件の親族語彙を集計し、<em>mama</em>型が「母」の語として52%、<em>papa/tata/baba</em>型が「父」として55%の言語に現れることを示した。インド・ヨーロッパ、シナ・チベット、ニジェール・コンゴ、オーストロネシア、ユト・アステカ、パマ・ニュンガン──地球上のあらゆる語族にまたがる。共通祖先で説明することは不可能だ。</p>
