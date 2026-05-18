@@ -110,4 +110,4 @@
 - 部分対応／継続: 5（cascade 待ち / 表記方針 / 大規模統一）
 - 部分反論: 3（うち厳密に「誤り」とまでは認めないもの）
 
-レビューは全体としてきわめて高精度で、特に Boxing Day / Hebrew ejective / KO SIL / Tuyuca 表記揺れ / FR 非文法 / IT dattilografia / PT presentado / Ubykh 文献の取り違え といった「明白な誤り」をすべて拾い切っていました。今後この水準のレビューがあれば、cascade まで含めて一度に着手しやすいです。
+レビューは追加指摘を経てかなり網羅的になり、特に Boxing Day / Hebrew ejective / KO SIL / Tuyuca 表記揺れ / FR 非文法 / IT dattilografia / PT presentado / Ubykh 文献の取り違え といった明白な誤りを最終的に洗い出せました。初回レビューでは Korean `권투의 날` 誤訳が見落とされており、ユーザー側の指摘で追加検出された経緯があるため、「すべて拾い切った」とは断定しません。今後この水準のレビューがあれば、cascade まで含めて一度に着手しやすいです。

@@ -35,7 +35,7 @@ window.TRIVIA_I18N['id'] = {
 
 <p>Klaim Everett <strong>diperdebatkan dengan sengit</strong>. Peneliti kemudian, termasuk Andrew Nevins, David Pesetsky, dan Cilene Rodrigues, berargumen bahwa Pirahã memang memiliki rekursi — hanya jarang digunakan — dan bahwa fakta angka dapat dijelaskan tanpa konsekuensi kognitif yang eksotis. Everett membalas; perdebatan masih terbuka.</p>
 
-<p>Yang <em>tidak</em> diperdebatkan adalah pembatasan budaya terhadap berbicara tentang hal-hal yang tidak dialami, dan komunikasi multi-saluran Pirahã yang menakjubkan. Pihak mana pun yang menang dalam perang rekursi, Pirahã telah melakukan apa yang sangat sedikit bahasa pernah lakukan: memaksa para linguis untuk bertanya, sekali lagi, apakah bahasa membentuk pikiran — atau pikiran membentuk bahasa.</p>
+<p>Yang lebih sedikit kontroversinya, meski masih diperdebatkan, adalah norma budaya yang membatasi pembicaraan pada peristiwa yang dialami langsung dan transmisi multi-saluran Pirahã yang menonjol. Pihak mana pun yang menang dalam perang rekursi, Pirahã telah melakukan apa yang sangat sedikit bahasa pernah lakukan: memaksa para linguis untuk bertanya, sekali lagi, apakah bahasa membentuk pikiran — atau pikiran membentuk bahasa.</p>
     `
   },
   'silbo-gomero': {
@@ -72,7 +72,7 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="28.10" data-lng="-17.20" data-zoom="9" data-tiles="terrain">🌋 Perbesar ke barranco</button>
 </div>
 
-<p>Silbo bukan satu-satunya register siulan yang bertahan — Kuşköy di Turki, siulan pacaran Hmong, Spanyol siulan Mazatec di Oaxaca, dan nada siulan Akha di Yunnan semuanya hidup berdampingan dengan induk lisannya — tetapi ia yang paling melembaga, paling terdokumentasi dengan baik, dan satu-satunya yang secara resmi dilindungi sebagai Warisan Budaya Takbenda. Lain kali Anda berdiri di punggung bukit La Gomera dan mendengar suara yang terdengar seperti burung yang sangat cerewet, dengarkan lagi: itu mungkin seseorang yang memberi tahu sepupunya apa yang harus dibeli dari toko.</p>
+<p>Silbo bukan satu-satunya register siulan yang bertahan — Kuşköy di Turki, kebiasaan siulan pacaran Hmong (penggunaan siulan secara sosial dalam konteks merayu, bukan register siulan yang sepenuhnya melembaga seperti Silbo), Spanyol siulan Mazatec di Oaxaca, dan nada siulan Akha di Yunnan semuanya hidup berdampingan dengan induk lisannya — tetapi ia yang paling melembaga, paling terdokumentasi dengan baik, dan satu-satunya yang secara resmi dilindungi sebagai Warisan Budaya Takbenda. Lain kali Anda berdiri di punggung bukit La Gomera dan mendengar suara yang terdengar seperti burung yang sangat cerewet, dengarkan lagi: itu mungkin seseorang yang memberi tahu sepupunya apa yang harus dibeli dari toko.</p>
     `
   },
   'taa-most-consonants': {
@@ -110,7 +110,7 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 Perbesar ke Kalahari</button>
 </div>
 
-<p>UNESCO mengklasifikasikan Taa sebagai <strong>sangat terancam punah</strong>. Beberapa ratus anak yang masih memperolehnya tumbuh berdampingan dengan sekolah berbahasa Tswana dan gaya hidup yang semakin mobile. Jika Taa terdiam di generasi berikutnya, dunia kehilangan bukan hanya warisan satu komunitas tetapi laboratorium alami terkaya yang pernah dimiliki ilmu fonetik.</p>
+<p>Taa secara umum digambarkan sebagai <strong>sangat terancam punah</strong>. Beberapa ratus anak yang masih memperolehnya tumbuh berdampingan dengan sekolah berbahasa Tswana dan gaya hidup yang semakin mobile. Jika Taa terdiam di generasi berikutnya, dunia kehilangan bukan hanya warisan satu komunitas tetapi laboratorium alami terkaya yang pernah dimiliki ilmu fonetik.</p>
     `
   },
   'rotokas-fewest-sounds': {
@@ -176,11 +176,11 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Bandingkan sepupu Ubykh yang masih hidup (Abkhaz, Adyghe, Kabardian)</button>
 </div>
 
-<p>Hampir semua yang kita ketahui tentang Ubykh di abad ke-20 berutang kepada Indo-Eropais dan ahli mitologi komparatif Prancis <strong>Georges Dumézil</strong>. Dimulai pada 1930, Dumézil melakukan perjalanan berulang kali ke Anatolia untuk merekam komunitas yang menyusut, kembali tahun demi tahun selama hampir enam dekade. Dia menghasilkan serangkaian deskripsi tata bahasa, koleksi teks, dan <em>Dictionnaire de la langue oubykh</em> (1965) yang tak tergantikan. Esenç menjadi konsultan utama Dumézil pada 1960-an; keduanya berkorespondensi dan bekerja sama hingga kematian Dumézil pada 1986.</p>
+<p>Hampir semua yang kita ketahui tentang Ubykh di abad ke-20 berutang kepada Indo-Eropais dan ahli mitologi komparatif Prancis <strong>Georges Dumézil</strong>. Dimulai pada 1930, Dumézil melakukan perjalanan berulang kali ke Anatolia untuk merekam komunitas yang menyusut, kembali tahun demi tahun selama hampir enam dekade. Dia menghasilkan serangkaian deskripsi tata bahasa dan koleksi teks — termasuk seri <em>Documents anatoliens sur les langues et les traditions du Caucase</em> (khususnya jilid IV: <em>Récits oubykh</em>, 1965) — yang tetap menjadi dasar. Esenç menjadi konsultan utama Dumézil pada 1960-an; keduanya berkorespondensi dan bekerja sama hingga kematian Dumézil pada 1986.</p>
 
 <blockquote>"Dia tahu bahwa dia adalah yang terakhir. Dia membawa bahasa itu seperti seseorang membawa lilin di ruang tertutup: sendiri, penuh perhatian, dan menyadari bahwa udara tidak akan bertahan." — kenangan parafrase kolaborator Dumézil</blockquote>
 
-<p>Esenç memahami perannya dengan kejernihan yang tidak biasa. Dia menghafal peribahasa, lagu, doa, nama tempat, dan dongeng rakyat khusus agar dapat direkam. Dia bersikeras dimakamkan di bawah batu nisan yang menyebutnya, dalam bahasa Ubykh, sebagai "penutur terakhir", sebuah frasa yang dia sendiri diktekan. Linguis Belanda <strong>Rieks Smeets</strong> dan fonetisian Norwegia <strong>Hans Vogt</strong> melanjutkan dokumentasi setelah Dumézil; <em>Dictionnaire de la langue oubykh</em> 1963 oleh Vogt (karya terpisah dari milik Dumézil) dan studi Smeets kemudian tetap menjadi rujukan standar.</p>
+<p>Esenç memahami perannya dengan kejernihan yang tidak biasa. Dia menghafal peribahasa, lagu, doa, nama tempat, dan dongeng rakyat khusus agar dapat direkam. Dia bersikeras dimakamkan di bawah batu nisan yang menyebutnya, dalam bahasa Ubykh, sebagai "penutur terakhir", sebuah frasa yang dia sendiri diktekan. Fonetisian Norwegia <strong>Hans Vogt</strong> menghasilkan kamus rujukan standar <em>Dictionnaire de la langue oubykh</em> (1963), dan linguis Belanda <strong>Rieks Smeets</strong> melanjutkan dokumentasi sampai akhir abad ke-20; bersama dengan edisi teks Dumézil, karya mereka membentuk landasan dokumenter bagi bahasa ini.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Perbesar ke Hacıosman, Turki</button>
@@ -274,7 +274,7 @@ window.TRIVIA_I18N['id'] = {
 
 <blockquote>"Klik bukanlah bunyi pinjaman dengan cara kata pinjaman dipinjam. Mereka adalah fitur warisan masa kanak-kanak dwibahasa — dan begitu mereka ada di leksikon satu generasi, mereka menjadi asli." — Anthony Traill, 1995 (parafrase)</blockquote>
 
-<p>Di luar Afrika selatan, klik bertahan hanya di tiga tempat yang kita ketahui: isolat Afrika Timur <strong>Hadza</strong> dan <strong>Sandawe</strong>; beberapa register ritual atau rahasia seperti <strong>Damin</strong> di Australia; dan register seremonial yang kini punah <em>El Molo</em> dilaporkan mengandung bunyi mirip klik. Itu menjadikan wilayah klik Afrika selatan salah satu wilayah linguistik paling ketat di dunia — tempat di mana satu fitur luar biasa telah dipertahankan, dielaborasi, dan diperdagangkan di empat keluarga setidaknya selama beberapa ribu tahun.</p>
+<p>Di luar Afrika selatan, kasus yang didokumentasikan dengan kuat adalah isolat Afrika Timur <strong>Hadza</strong> dan <strong>Sandawe</strong>, ditambah register ritual khusus <strong>Damin</strong> di Australia — digunakan oleh laki-laki yang telah diinisiasi di Pulau Mornington, bukan sebagai bahasa lisan biasa. (Laporan tentang bunyi mirip klik dalam register seremonial El Molo yang kini punah memang ada, tetapi belum dipastikan dengan baik.) Itu menjadikan wilayah klik Afrika selatan salah satu wilayah linguistik paling ketat di dunia — tempat di mana satu fitur luar biasa telah dipertahankan, dielaborasi, dan diperdagangkan di empat keluarga setidaknya selama beberapa ribu tahun.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Survei sabuk klik Afrika selatan</button>
@@ -318,10 +318,10 @@ window.TRIVIA_I18N['id'] = {
     `
   },
   'sumerian-first-writing': {
-    title: 'Sumeria — bahasa pertama yang pernah ditulis',
-    summary: 'Bahasa tertulis tertua di dunia: isolat Mesopotamia, direkam pada tanah liat dari ~3200 SM, dan dipertahankan sebagai bahasa ilmiah selama 2.000 tahun setelah penutur asli terakhirnya meninggal.',
+    title: 'Sumeria — salah satu bahasa paling awal yang pernah ditulis',
+    summary: 'Salah satu bahasa tertulis yang dibuktikan secara luas paling awal: isolat Mesopotamia, direkam pada tanah liat dari ~3200 SM, dan dipertahankan sebagai bahasa ilmiah selama 2.000 tahun setelah penutur asli terakhirnya meninggal.',
     body: `
-<p>Sekitar 3200 SM, di kota Mesopotamia selatan <strong>Uruk</strong>, seseorang menekan ujung stilus buluh ke tanah liat basah dan menulis sejumlah jelai. Tablet tanah liat itu, dan ribuan seperti itu, menandai saat bahasa manusia pertama kali lolos dari napas yang membawanya. Bahasa yang direkam adalah <strong>Sumeria</strong> (<em>eme-gir</em>, "lidah asli") — dan 5.200 tahun kemudian kita masih membacanya.</p>
+<p>Sekitar 3200 SM, di kota Mesopotamia selatan <strong>Uruk</strong>, seseorang menekan ujung stilus buluh ke tanah liat basah dan menulis sejumlah jelai. Tablet tanah liat itu, dan ribuan seperti itu, termasuk di antara saat-saat paling awal bahasa manusia lolos dari napas yang membawanya — sejajar dengan perkembangan paralel di Mesir periode Dinasti Awal dan, agak kemudian, di Lembah Indus dan Tiongkok. Bahasa yang direkam adalah <strong>Sumeria</strong> (<em>eme-gir</em>, "lidah asli") — dan 5.200 tahun kemudian kita masih membacanya.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Tampilkan Sumeria di peta</button>
@@ -390,7 +390,7 @@ window.TRIVIA_I18N['id'] = {
   },
   'sentinelese-unknown': {
     title: 'Sentinel — bahasa yang belum pernah kita rekam',
-    summary: 'Di pulau seluas 60 km² di Teluk Benggala hidup orang-orang yang telah menolak semua kontak selama enam puluh ribu tahun — dan bahasa mereka tidak pernah didengar siapa pun dari luar, apalagi didokumentasikan.',
+    summary: 'Di pulau seluas 60 km² di Teluk Benggala hidup orang-orang yang nenek moyangnya diyakini termasuk salah satu lapisan permukiman manusia paling awal di wilayah tersebut — dan bahasa mereka tidak pernah didengar siapa pun dari luar, apalagi didokumentasikan.',
     body: `
 <p>Sekitar 1.200 km timur daratan India, di Teluk Benggala, terletak sebuah pulau berhutan kecil seluas kira-kira 60 kilometer persegi. Itu disebut <strong>Pulau Sentinel Utara</strong>, dan di suatu tempat di dalamnya tinggal mungkin lima puluh hingga beberapa ratus orang — tidak ada yang tahu jumlah sebenarnya — yang telah menolak setiap upaya untuk berbicara dengan mereka. Mereka adalah <strong>orang Sentinel</strong>, dan bahasa mereka adalah satu-satunya bahasa manusia di Bumi yang belum pernah direkam, belum pernah ditranskripsikan, dan bahkan belum pernah diklasifikasikan dengan yakin.</p>
 
@@ -398,7 +398,7 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Terbang ke Pulau Sentinel Utara</button>
 </div>
 
-<p>Orang Sentinel adalah salah satu masyarakat <strong>Andaman</strong> — keturunan dari salah satu penyebaran manusia <em>Keluar Afrika</em> paling awal, yang mencapai Kepulauan Andaman mungkin 60.000 tahun yang lalu dan tetap terisolasi sejak itu. Bukti genetik menempatkan mereka di antara populasi yang paling kuno secara terus-menerus terisolasi di planet ini. Tetangga mereka di kepulauan yang lebih luas — orang Andaman Besar, Onge di Andaman Kecil, dan Jarawa di Andaman Selatan dan Tengah — berbicara bahasa yang termasuk dalam <strong>dua keluarga tidak terkait</strong>: Andaman Besar, dan keluarga Ongan yang lebih kecil (Onge + Jarawa). Sentinel diduga merupakan saudara ketiga, mungkin paling dekat dengan Ongan, tetapi tidak ada yang pernah mendengar cukup kata untuk mengkonfirmasinya.</p>
+<p>Orang Sentinel adalah salah satu masyarakat <strong>Andaman</strong> — diyakini berasal dari salah satu gelombang penyebaran manusia <em>Keluar Afrika</em> paling awal, yang mungkin mencapai Kepulauan Andaman puluhan ribu tahun yang lalu. Bukti genetik menempatkan mereka di antara populasi yang paling lama terisolasi di planet ini, meskipun durasi dan kesinambungan isolasi tersebut tidak dapat dinyatakan dengan pasti. Tetangga mereka di kepulauan yang lebih luas — orang Andaman Besar, Onge di Andaman Kecil, dan Jarawa di Andaman Selatan dan Tengah — berbicara bahasa yang termasuk dalam <strong>dua keluarga tidak terkait</strong>: Andaman Besar, dan keluarga Ongan yang lebih kecil (Onge + Jarawa). Sentinel diduga merupakan saudara ketiga, mungkin paling dekat dengan Ongan, tetapi tidak ada yang pernah mendengar cukup kata untuk mengkonfirmasinya.</p>
 
 <p>Setiap upaya kontak yang terdokumentasi telah gagal atau berakhir dengan kekerasan:</p>
 
@@ -421,10 +421,10 @@ window.TRIVIA_I18N['id'] = {
     `
   },
   'modern-hebrew-revival': {
-    title: 'Ibrani — satu-satunya bahasa kuno yang pernah dihidupkan kembali',
-    summary: 'Selama hampir 1.700 tahun, tidak ada anak yang tumbuh berbicara Ibrani. Hari ini ia adalah bahasa ibu sembilan juta orang — satu-satunya kebangkitan bahasa mati yang sepenuhnya berhasil dalam sejarah manusia.',
+    title: 'Ibrani — bahasa kuno yang dikembalikan ke kehidupan sehari-hari',
+    summary: 'Selama hampir 1.700 tahun, Ibrani bertahan sebagai bahasa liturgi dan kesusastraan tetapi tidak ada anak yang tumbuh mengucapkannya. Hari ini ia adalah bahasa ibu sembilan juta orang — kebangkitan paling besar dan paling berhasil dari sebuah bahasa yang sudah tidak lagi menjadi bahasa sehari-hari komunitas.',
     body: `
-<p>Sekitar tahun <strong>200 M</strong>, rumah tangga terakhir di Palestina Romawi tempat anak-anak tumbuh mendengar Ibrani di meja makan terdiam. Aram telah mengambil alih jalanan; Yunani mendominasi kota-kota; Mishnah sedang disusun dalam Ibrani yang ditulis para sarjana tetapi semakin tidak <em>diucapkan</em>. Selama 1.700 tahun berikutnya, Ibrani bertahan sebagai bahasa sinagoga, buku doa, gulungan Taurat, dan surat dari satu rabi ke rabi lain — bahasa tertulis yang digunakan oleh orang dewasa terpelajar, tetapi bukan kata-kata pertama seorang anak. Kemudian, entah bagaimana, itu berubah. Ibrani kini adalah bahasa lisan sehari-hari sekitar <strong>sembilan juta orang</strong>, sekitar setengahnya penutur asli yang mempelajarinya sebagai bayi. Ini adalah satu-satunya kasus terdokumentasi dalam sejarah manusia tentang bahasa yang sepenuhnya mati dibawa kembali ke penggunaan asli sehari-hari.</p>
+<p>Sekitar tahun <strong>200 M</strong>, rumah tangga terakhir di Palestina Romawi tempat anak-anak tumbuh mendengar Ibrani di meja makan terdiam. Aram telah mengambil alih jalanan; Yunani mendominasi kota-kota; Mishnah sedang disusun dalam Ibrani yang ditulis para sarjana tetapi semakin tidak <em>diucapkan</em>. Selama 1.700 tahun berikutnya, Ibrani bertahan sebagai bahasa sinagoga, buku doa, gulungan Taurat, dan surat dari satu rabi ke rabi lain — bahasa tertulis yang digunakan oleh orang dewasa terpelajar, tetapi bukan kata-kata pertama seorang anak. Kemudian, entah bagaimana, itu berubah. Ibrani kini adalah bahasa lisan sehari-hari sekitar <strong>sembilan juta orang</strong>, sekitar setengahnya penutur asli yang mempelajarinya sebagai bayi. Kebangkitan dalam skala lebih kecil memang ada (Cornish, Manx, Wampanoag), tetapi Ibrani tetap merupakan kasus terbesar dan paling terdokumentasi secara menyeluruh tentang sebuah bahasa yang sudah tidak menjadi bahasa ibu siapa pun dikembalikan ke penggunaan sehari-hari oleh komunitas.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Tampilkan Ibrani di peta</button>
@@ -468,7 +468,7 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ Terbang ke Gandhāra milik Pāṇini</button>
 </div>
 
-<p>Kita hampir tidak tahu apa-apa tentang Pāṇini sebagai pribadi — hanya bahwa ia berasal dari desa Śalātura (Lahor modern, dekat Attock di Pakistan), mungkin bekerja pada abad ke-5 atau ke-4 SM, dan bahwa segala yang ia hasilkan tampaknya dirancang untuk <strong>dihafal dengan keras</strong>. Aṣṭādhyāyī dilestarikan dengan pembacaan selama berabad-abad sebelum ditulis. Untuk menghemat suku kata — dan karenanya napas — Pāṇini menemukan seluruh <strong>metabahasa teknis</strong>: sistem singkatan huruf tunggal, daftar fonem tertib yang disebut <strong>Śiva sūtra</strong>, konvensi untuk penerapan aturan "sensitif konteks", anuvṛtti (warisan aturan dari baris sebelumnya yang tidak perlu dinyatakan ulang), dan sistem prioritas untuk menyelesaikan aturan mana yang berlaku ketika dua aturan bertentangan.</p>
+<p>Kita hampir tidak tahu apa-apa tentang Pāṇini sebagai pribadi — hanya bahwa ia berasal dari desa Śalātura (Lahor / Lahur modern, kadang disebut "Lahore Kecil", dekat Attock di barat laut Pakistan — jangan disamakan dengan kota besar Lahore di Punjab), mungkin bekerja pada abad ke-5 atau ke-4 SM, dan bahwa segala yang ia hasilkan tampaknya dirancang untuk <strong>dihafal dengan keras</strong>. Aṣṭādhyāyī dilestarikan dengan pembacaan selama berabad-abad sebelum ditulis. Untuk menghemat suku kata — dan karenanya napas — Pāṇini menemukan seluruh <strong>metabahasa teknis</strong>: sistem singkatan huruf tunggal, daftar fonem tertib yang disebut <strong>Śiva sūtra</strong>, konvensi untuk penerapan aturan "sensitif konteks", anuvṛtti (warisan aturan dari baris sebelumnya yang tidak perlu dinyatakan ulang), dan sistem prioritas untuk menyelesaikan aturan mana yang berlaku ketika dua aturan bertentangan.</p>
 
 <p>Hasilnya, bagi mata modern, terbaca dengan aneh seperti aturan produksi tata bahasa bebas konteks — hanya lebih kuat. Format aturan Pāṇini pada dasarnya:</p>
 
@@ -491,7 +491,7 @@ window.TRIVIA_I18N['id'] = {
 
 <blockquote>"Tata bahasa deskriptif Sanskerta yang Pāṇini bawa ke kesempurnaannya adalah salah satu monumen terbesar kecerdasan manusia." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
 
-<p>Sanskerta sendiri (<em>saṃskṛta-</em>, "dipoles, halus") sudah menjadi standar sastra dan ritual, bukan vernakular, pada zaman Pāṇini. Setelah dia ia menjadi, secara formal, apa yang dikatakan Pāṇini: sebuah bahasa yang setiap kalimat terbentuk dengan baiknya secara prinsip dapat diturunkan dari 4.000 sūtra-nya. Dua setengah ribu tahun kemudian, itu juga persis yang kita minta dari sebuah parser. Aṣṭādhyāyī tidak hanya mendeskripsikan Sanskerta. Ia diam-diam menemukan gagasan bahwa sebuah bahasa dapat dideskripsikan.</p>
+<p>Sanskerta sendiri (<em>saṃskṛta-</em>, "dipoles, halus") sudah menjadi standar sastra dan ritual, bukan vernakular, pada zaman Pāṇini. Setelah dia ia menjadi, secara formal, apa yang dikatakan Pāṇini: sebuah bahasa yang setiap kalimat terbentuk dengan baiknya secara prinsip dapat diturunkan dari 4.000 sūtra-nya. Dua setengah ribu tahun kemudian, itu juga persis yang kita minta dari sebuah parser. Aṣṭādhyāyī tidak hanya mendeskripsikan Sanskerta. Ia mendorong gagasan tentang deskripsi bahasa yang generatif dan formal ke tingkat ketelitian yang tak tertandingi di zaman kuno — dan bisa dibilang sampai linguistik formal abad ke-20 secara independen menemukan kembali gagasan yang sama.</p>
     `
   },
   'esperanto-zamenhof': {
@@ -531,7 +531,7 @@ window.TRIVIA_I18N['id'] = {
 
 <p>Sejarah abad ke-20 kejam terhadap kaum Esperantis. Hitler mengutuk bahasa itu dalam <em>Mein Kampf</em> sebagai konspirasi Yahudi; tiga anak Zamenhof dibunuh dalam Holocaust. Stalin memenjarakan dan mengeksekusi kaum Esperantis Soviet dalam pembersihan 1937–38 sebagai "mata-mata kosmopolitan". Gerakan itu bertahan dari keduanya.</p>
 
-<p>Hari ini Esperanto mungkin memiliki <strong>dua juta penutur</strong> di berbagai tingkat, dan — unik bagi conlang — sekitar <strong>seribu penutur asli</strong> yang dikenal sebagai <em>denaskuloj</em>, dibesarkan di rumah tangga dwibahasa di mana Esperanto adalah salah satu bahasa rumah. Kursus Esperanto Duolingo sendiri telah mendaftarkan lebih dari satu juta pembelajar. Tidak ada bahasa buatan lain yang pernah menyeberang ke transmisi antar-generasi.</p>
+<p>Hari ini Esperanto mungkin memiliki <strong>dua juta penutur</strong> di berbagai tingkat, dan sekitar <strong>seribu penutur asli</strong> yang dikenal sebagai <em>denaskuloj</em>, dibesarkan di rumah tangga dwibahasa di mana Esperanto adalah salah satu bahasa rumah. Kursus Esperanto Duolingo sendiri telah mendaftarkan lebih dari satu juta pembelajar. Dengan ukuran apa pun — komunitas yang berkelanjutan, keluasan kesusastraan, jumlah penutur asli — Esperanto sejauh ini adalah bahasa buatan paling berhasil yang pernah dicoba.</p>
 
 <p>Zamenhof tidak pernah mengklaim Esperanto akan menggantikan bahasa ibu siapa pun. Dia menginginkan <em>dua lingvo</em> — bahasa kedua — sama-sama asing bagi semua orang, sehingga tidak ada penutur asli yang pernah memiliki keunggulan di meja perundingan. Satu setengah abad kemudian, proyek itu kecil, tetapi masih hidup, masih netral, dan masih penuh harapan — persis seperti pendirinya, <em>Doktoro Esperanto</em>, menandatangani namanya.</p>
     `
@@ -663,12 +663,12 @@ window.TRIVIA_I18N['id'] = {
 
 <p>Rehabilitasi sejati Hangul datang pada akhir abad ke-19 dengan reformator Ju Si-gyeong, yang mensistematiskan namanya (<em>han-geul</em>, "aksara besar") dan ortografi modernnya. Setelah periode kolonial Jepang — di mana Hangul kembali dilarang, kali ini oleh kekuatan luar — Korea Selatan menyatakan Hari Hangul (한글날) sebagai hari libur nasional. Korea Utara menyebutnya <em>Chosŏn'gŭl</em> dan merayakan hari liburnya sendiri pada 15 Januari. Literasi Korea modern secara fungsional 100%.</p>
 
-<p>Linguis Geoffrey Sampson mendeskripsikan Hangul pada 1985 sebagai "mungkin sistem penulisan paling ilmiah yang umum digunakan di negara mana pun". Anak-anak biasanya mempelajarinya dalam sekitar satu jam. Ini adalah satu-satunya aksara utama dunia dengan baik perancang yang dikenal dan dasar pemikiran desain yang terdokumentasi — eksperimen laboratorium berusia 600 tahun yang berhasil.</p>
+<p>Linguis Geoffrey Sampson mendeskripsikan Hangul pada 1985 sebagai "mungkin sistem penulisan paling ilmiah yang umum digunakan di negara mana pun". Bentuk huruf dasarnya terkenal mudah dihafal — anak-anak Korea dapat menguasai alfabet dalam sekali duduk, meskipun kefasihan membaca dan menulis penuh tetap memerlukan waktu bertahun-tahun seperti aksara mana pun. Ini adalah satu-satunya aksara utama dunia dengan baik perancang yang dikenal dan dasar pemikiran desain yang terdokumentasi — eksperimen laboratorium berusia 600 tahun yang berhasil.</p>
     `
   },
   'cherokee-sequoyah': {
     title: 'Sequoyah — jenius buta huruf yang menemukan sistem penulisan dari nol',
-    summary: 'Pada 1821 seorang pandai perak Cherokee yang tidak dapat membaca bahasa Inggris mengungkap silabari 85 karakter yang ia bangun sendiri selama 12 tahun. Dalam satu dekade, literasi Cherokee melampaui pemukim kulit putih di sekitarnya.',
+    summary: 'Pada 1821 seorang pandai perak Cherokee yang tidak dapat membaca bahasa Inggris mengungkap silabari 85 karakter yang ia bangun sendiri selama 12 tahun. Dalam satu dekade, pengamat sezaman melaporkan bahwa literasi Cherokee menyamai atau melampaui pemukim kulit putih di sekitarnya.',
     body: `
 <p><strong>Sequoyah</strong> (juga ditulis ᏍᏏᏉᏯ <em>Ssiquoya</em>, atau dalam bahasa Inggris George Guess, sekitar 1770–1843) adalah salah satu dari sedikit orang dalam sejarah tercatat yang diketahui telah menemukan sistem penulisan yang sepenuhnya berfungsi dari ketiadaan, sambil secara pribadi buta huruf dalam bahasa apa pun. Kisah ini begitu tidak mungkin sehingga para komentator abad ke-19 terus mencoba menjelaskannya. Itu terjadi tetap saja.</p>
 
@@ -900,7 +900,7 @@ window.TRIVIA_I18N['id'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — bahasa tanpa kiri atau kanan',
-    summary: 'Bahasa Aborigin Australia di Queensland Utara Jauh yang hanya menggunakan arah mata angin absolut — utara, selatan, timur, barat — bahkan untuk benda di atas meja. Penutur mempertahankan orientasi dead-reckoning setiap saat.',
+    summary: 'Bahasa Aborigin Australia di Queensland Utara Jauh yang hanya menggunakan arah mata angin absolut — utara, selatan, timur, barat — bahkan untuk benda di atas meja. Penutur mempertahankan orientasi <em>dead-reckoning (navigasi perkiraan)</em> setiap saat.',
     body: `
 <p>Jika Anda duduk di meja dengan penutur bahasa Inggris dan mereka ingin Anda memberi mereka cangkir, mereka akan mengatakan "cangkir di sebelah kiri Anda" atau "cangkir di depan Anda". Kerangka referensi adalah <strong>egosentris</strong> — tertambat pada tubuh Anda. Hampir setiap bahasa Eropa bekerja dengan cara ini.</p>
 
@@ -926,7 +926,7 @@ window.TRIVIA_I18N['id'] = {
   <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Lihat Guugu Yimithirr "Tangan"</button>
 </div>
 
-<p>Konsekuensi kognitif, didokumentasikan oleh Levinson, John Haviland, dan rekan-rekan di Institut Max Planck, mencolok. Penutur Guugu Yimithirr mempertahankan rasa orientasi <strong>dead-reckoning</strong> yang tak terputus. Dalam eksperimen, mereka dapat menunjuk dengan akurat ke tempat-tempat jauh (laut, pemukiman tetangga, rumah kerabat ratusan kilometer jauhnya) terlepas dari apakah mereka duduk di ruangan tanpa jendela, ditutup matanya, setelah dikendarai berputar-putar, atau di dasar gua. Kompas mata angin mental mereka sekadar tidak mati.</p>
+<p>Konsekuensi kognitif, didokumentasikan oleh Levinson, John Haviland, dan rekan-rekan di Institut Max Planck, mencolok. Penutur Guugu Yimithirr mempertahankan rasa orientasi yang tak terputus melalui <strong>dead-reckoning (navigasi perkiraan)</strong>. Dalam eksperimen, mereka dapat menunjuk dengan akurat ke tempat-tempat jauh (laut, pemukiman tetangga, rumah kerabat ratusan kilometer jauhnya) terlepas dari apakah mereka duduk di ruangan tanpa jendela, ditutup matanya, setelah dikendarai berputar-putar, atau di dasar gua. Kompas mata angin mental mereka sekadar tidak mati.</p>
 
 <p>Ini bukan keterampilan khusus beberapa sesepuh. Ini adalah <strong>properti universal penutur fasih</strong>, dipelajari pada masa kanak-kanak awal. Anak berusia tiga tahun memberi isyarat dalam arah mata angin. Mesin mental dibangun oleh bahasa dan terus-menerus dilatih oleh tuntutan untuk membicarakannya.</p>
 
@@ -1055,9 +1055,9 @@ window.TRIVIA_I18N['id'] = {
   },
   'nicaraguan-sign-language': {
     title: 'Bahasa Isyarat Nikaragua — bahasa yang lahir secara langsung',
-    summary: 'Satu-satunya kasus terdokumentasi dalam sejarah bahasa manusia yang sepenuhnya alami lahir — diciptakan secara spontan oleh anak-anak tuli Nikaragua ketika mereka akhirnya disatukan pada 1970-an dan 80-an.',
+    summary: 'Salah satu kasus paling terdokumentasi dari sebuah bahasa manusia alami baru yang terbentuk secara langsung — muncul di kalangan anak-anak tuli Nikaragua ketika mereka akhirnya disatukan pada 1970-an dan 80-an.',
     body: `
-<p>Bayangkan menjadi seorang linguis dan dapat menyaksikan bahasa manusia baru muncul ke keberadaan — bukan dipinjam, bukan dikreolkan dari bahasa yang ada, tetapi dihasilkan dari nol oleh anak-anak dalam satu generasi. Itulah persis yang terjadi di Managua, Nikaragua, antara 1977 dan awal 1990-an, menghasilkan apa yang sekarang kita sebut <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Bahasa Isyarat Nikaragua.</p>
+<p>Bayangkan menjadi seorang linguis dan dapat menyaksikan bahasa manusia baru terbentuk secara langsung — bukan dikreolkan dari bahasa lisan yang sudah ada, tetapi dihasilkan oleh anak-anak dalam satu generasi, dengan banyak yang berangkat dari sistem isyarat rumah dan gestur mereka sendiri. Kurang lebih itulah yang terjadi di Managua, Nikaragua, antara 1977 dan awal 1990-an, menghasilkan apa yang sekarang kita sebut <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Bahasa Isyarat Nikaragua. Bahasa-bahasa isyarat baru lainnya yang baru-baru ini terbentuk (Bahasa Isyarat Badui Al-Sayyid di Israel, Kata Kolok di Bali) telah dipelajari sejak itu, tetapi ISN tetap menjadi kasus yang paling terdokumentasi dari kemunculan kohort demi kohort.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Tampilkan Bahasa Isyarat Nikaragua di peta</button>
@@ -1076,7 +1076,7 @@ window.TRIVIA_I18N['id'] = {
 
 <p>Ini adalah dukungan empiris langsung untuk gagasan bahwa <strong>bahasa adalah keluaran kreatif dari pikiran anak</strong>, bukan sekadar perekaman pasif dari masukan. Anak-anak dalam kohort berturut-turut secara independen menemukan fitur — seperti mendekomposisi peristiwa gerakan menjadi komponen "jalur" dan "cara" — yang tidak diberikan orang dewasa kepada mereka, dan yang tampak luar biasa mirip dengan fitur yang didokumentasikan dalam bahasa isyarat mapan lainnya.</p>
 
-<p>Hari ini ISN mungkin memiliki 3.000 penanda dan komunitas Tuli yang kokoh yang terorganisir melalui <em>Asociación Nacional de Sordos de Nicaragua</em>. Itu adalah bahasa alami sepenuhnya termuda di Bumi — dan satu-satunya yang seluruh kelahirannya ditangkap di kamera, di atas kertas, dan dalam catatan lapangan linguistik.</p>
+<p>Hari ini ISN mungkin memiliki 3.000 penanda dan komunitas Tuli yang kokoh yang terorganisir melalui <em>Asociación Nacional de Sordos de Nicaragua</em>. Itu adalah salah satu bahasa alami sepenuhnya yang paling baru terbentuk — dan kasus yang proses pembentukannya paling lengkap ditangkap di kamera, di atas kertas, dan dalam catatan lapangan linguistik.</p>
     `
   },
   'mama-papa-universals': {

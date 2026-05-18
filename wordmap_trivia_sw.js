@@ -34,7 +34,7 @@ window.TRIVIA_I18N['sw'] = {
 
 <p>Madai ya Everett <strong>yanapingwa vikali</strong>. Watafiti wa baadaye, akiwemo Andrew Nevins, David Pesetsky na Cilene Rodrigues, wamedai kuwa Pirahã ina urudufu — ila hutumika mara chache tu — na kwamba ukweli wa nambari unaweza kuelezwa bila athari zisizo za kawaida za kiakili. Everett amejibu; mjadala bado uko wazi.</p>
 
-<p>Yale ambayo <em>hayabishaniwi</em> ni vizuizi vya kitamaduni dhidi ya kusema kuhusu mambo yasiyoonekana, na mawasiliano ya ajabu ya Pirahã kupitia njia nyingi. Bila kujali ni upande gani utashinda vita ya urudufu, Pirahã imefanya kile lugha chache sana zinafanya: imelazimisha wanaisimu kuuliza tena, je lugha hutengeneza fikra — au fikra hutengeneza lugha.</p>
+<p>Mambo yanayobishaniwa kidogo, ingawa bado yamo katika mjadala, ni kanuni ya kitamaduni inayozuia mazungumzo kwa matukio yaliyopatikana moja kwa moja na utumaji wa Pirahã wa njia nyingi unaovutia. Bila kujali ni upande gani utashinda vita ya urudufu, Pirahã imefanya kile lugha chache sana zinafanya: imelazimisha wanaisimu kuuliza tena, je lugha hutengeneza fikra — au fikra hutengeneza lugha.</p>
     `
   },
 
@@ -111,7 +111,7 @@ window.TRIVIA_I18N['sw'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 Vuta karibu Kalahari</button>
   </div>
 
-  <p>UNESCO inakaida Taa kama <strong>iliyo hatarini sana</strong>. Watoto wachache mia kadhaa ambao bado wanajifunza wanakua pamoja na shule ya Kitswana na mitindo ya maisha ya kuhama zaidi. Iwapo Taa itanyamaza katika kizazi kijacho, dunia inapoteza si tu urithi wa jamii bali maabara tajiri zaidi ya asili ambayo sayansi ya fonetiki imepata.</p>
+  <p>Taa kwa kawaida huelezewa kuwa <strong>iliyo hatarini sana</strong>. Watoto wachache mia kadhaa ambao bado wanajifunza wanakua pamoja na shule ya Kitswana na mitindo ya maisha ya kuhama zaidi. Iwapo Taa itanyamaza katika kizazi kijacho, dunia inapoteza si tu urithi wa jamii bali maabara tajiri zaidi ya asili ambayo sayansi ya fonetiki imepata.</p>
     `
   },
 
@@ -179,11 +179,11 @@ window.TRIVIA_I18N['sw'] = {
     <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Linganisha binamu wa Ubykh waliosalia (Abkhaz, Adyghe, Kabardian)</button>
   </div>
 
-  <p>Karibu kila kitu tunachojua kuhusu Ubykh katika karne ya 20 tunadaiwa kwa mwanaisimu wa Indo-Ulaya wa Kifaransa na mtaalam wa hadithi za kulinganisha <strong>Georges Dumézil</strong>. Kuanzia 1930, Dumézil alifanya safari za kurudi-rudi kuelekea Anatolia kurekodi jamii inayopungua, akirudi mwaka kwa mwaka kwa karibu miongo sita. Alitoa mfululizo wa maelezo ya kisarufi, makusanyo ya maandiko na <em>Dictionnaire de la langue oubykh</em> isiyoweza kuepukika (1965). Esenç alikuwa mshauri mkuu wa Dumézil katika miaka ya 1960; wawili hao waliandikiana barua na kufanya kazi pamoja hadi kifo cha Dumézil mwaka 1986.</p>
+  <p>Karibu kila kitu tunachojua kuhusu Ubykh katika karne ya 20 tunadaiwa kwa mwanaisimu wa Indo-Ulaya wa Kifaransa na mtaalam wa hadithi za kulinganisha <strong>Georges Dumézil</strong>. Kuanzia 1930, Dumézil alifanya safari za kurudi-rudi kuelekea Anatolia kurekodi jamii inayopungua, akirudi mwaka kwa mwaka kwa karibu miongo sita. Alitoa mfululizo wa maelezo ya kisarufi na makusanyo ya maandiko — ikiwemo mfululizo wa <em>Documents anatoliens sur les langues et les traditions du Caucase</em> (hasa juzuu ya IV: <em>Récits oubykh</em>, 1965) — ambayo bado ni msingi. Esenç alikuwa mshauri mkuu wa Dumézil katika miaka ya 1960; wawili hao waliandikiana barua na kufanya kazi pamoja hadi kifo cha Dumézil mwaka 1986.</p>
 
   <blockquote>"Alijua kuwa alikuwa wa mwisho. Aliibeba lugha kama mtu anavyobeba mshumaa katika chumba kilichofungwa: peke yake, makini, na anajua kuwa hewa haitadumu." — kumbukumbu iliyofupishwa ya wafanyikazi wa Dumézil</blockquote>
 
-  <p>Esenç alielewa jukumu lake kwa uwazi usio wa kawaida. Alikumbuka methali, nyimbo, sala, majina ya mahali na hadithi haswa ili ziweze kurekodiwa. Alisisitiza kuzikwa chini ya jiwe la kichwa lililomtaja, kwa Ubykh, kama "msemaji wa mwisho", maneno ambayo yeye mwenyewe aliyaeleza. Mwanaisimu wa Uholanzi <strong>Rieks Smeets</strong> na mwanafonetiki wa Norway <strong>Hans Vogt</strong> waliendelea na maandishi baada ya Dumézil; <em>Dictionnaire de la langue oubykh</em> ya Vogt ya 1963 (kazi tofauti na ya Dumézil) na masomo ya baadaye ya Smeets bado ni rejea za kawaida.</p>
+  <p>Esenç alielewa jukumu lake kwa uwazi usio wa kawaida. Alikumbuka methali, nyimbo, sala, majina ya mahali na hadithi haswa ili ziweze kurekodiwa. Alisisitiza kuzikwa chini ya jiwe la kichwa lililomtaja, kwa Ubykh, kama "msemaji wa mwisho", maneno ambayo yeye mwenyewe aliyaeleza. Mwanafonetiki wa Norway <strong>Hans Vogt</strong> alitoa kamusi ya kawaida ya rejea <em>Dictionnaire de la langue oubykh</em> (1963), na mwanaisimu wa Uholanzi <strong>Rieks Smeets</strong> aliendelea na maandishi hadi mwishoni mwa karne ya 20; pamoja na matoleo ya maandiko ya Dumézil, kazi zao zinaunda msingi wa hati wa lugha hii.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Vuta karibu na Hacıosman, Uturuki</button>
@@ -280,7 +280,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <blockquote>"Mibofyo si sauti zilizokopwa kwa njia ambayo maneno yaliyokopwa hukopwa. Ni vipengele vilivyorithiwa vya utoto wa lugha mbili — na mara tu vinapokuwa katika msamiati wa kizazi kimoja, vinakuwa vya kuzaliwa." — Anthony Traill, 1995 (kwa kufupisha)</blockquote>
 
-  <p>Zaidi ya Afrika ya kusini, mibofyo huishi tu katika sehemu tatu tunazojua: lugha pekee za Afrika Mashariki <strong>Hadza</strong> na <strong>Sandawe</strong>; vipindi vichache vya sherehe au siri kama <strong>Damin</strong> katika Australia; na kiwango cha sherehe sasa kilichotoweka <em>El Molo</em> kilichoripotiwa kuwa na sauti kama za mibofyo. Hiyo inafanya eneo la mibofyo la Afrika ya kusini kuwa mojawapo ya maeneo ya lugha yenye nguvu zaidi duniani — mahali ambapo kipengele kimoja cha ajabu kimekuwa kikidumishwa, kikielimika na kibadilishwana katika familia nne kwa angalau miaka elfu kadhaa.</p>
+  <p>Zaidi ya Afrika ya kusini, kesi zilizoandikwa kwa uthabiti ni lugha pekee za Afrika Mashariki <strong>Hadza</strong> na <strong>Sandawe</strong>, pamoja na kiwango maalum cha sherehe <strong>Damin</strong> katika Australia — kinachotumiwa na wanaume waliojahizwa wa Kisiwa cha Mornington, si kama lugha ya kuzungumzwa ya kawaida. (Taarifa kuhusu sauti kama za mibofyo katika kiwango cha sherehe cha El Molo kilichotoweka zipo lakini hazijathibitishwa vizuri.) Hiyo inafanya eneo la mibofyo la Afrika ya kusini kuwa mojawapo ya maeneo ya lugha yenye nguvu zaidi duniani — mahali ambapo kipengele kimoja cha ajabu kimekuwa kikidumishwa, kikielimika na kibadilishwana katika familia nne kwa angalau miaka elfu kadhaa.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Chunguza ukanda wa mibofyo wa Afrika ya kusini</button>
@@ -327,10 +327,10 @@ window.TRIVIA_I18N['sw'] = {
 
 
   'sumerian-first-writing': {
-    title: 'Kisumerian — lugha ya kwanza kuwahi kuandikwa',
-    summary: 'Lugha ya kale zaidi iliyoandikwa duniani: lugha pekee ya Mesopotamia, iliyorekodiwa kwenye udongo tangu ~3200 KK, na kuhifadhiwa hai kama lugha ya kitaaluma kwa miaka 2,000 baada ya mzungumzaji wa mwisho wa asili kufa.',
+    title: 'Kisumerian — miongoni mwa lugha za awali kabisa kuwahi kuandikwa',
+    summary: 'Mojawapo ya lugha za awali kabisa zilizoshuhudiwa kwa wingi kwa maandishi: lugha pekee ya Mesopotamia, iliyorekodiwa kwenye udongo tangu ~3200 KK, na kuhifadhiwa hai kama lugha ya kitaaluma kwa miaka 2,000 baada ya mzungumzaji wa mwisho wa asili kufa.',
     body: `
-  <p>Karibu 3200 KK, katika mji wa kusini wa Mesopotamia wa <strong>Uruk</strong>, mtu fulani alishinikiza mwisho wa kalamu ya mwanzi katika udongo wenye unyevu na kuandika kiasi cha shayiri. Kibao hicho cha udongo, na maelfu kama hicho, vinaashiria wakati ambapo lugha ya binadamu ilitoroka kwa mara ya kwanza pumzi iliyoibeba. Lugha iliyokuwa ikirekodiwa ilikuwa <strong>Kisumerian</strong> (<em>eme-gir</em>, "lugha ya asili") — na miaka 5,200 baadaye bado tunaisoma.</p>
+  <p>Karibu 3200 KK, katika mji wa kusini wa Mesopotamia wa <strong>Uruk</strong>, mtu fulani alishinikiza mwisho wa kalamu ya mwanzi katika udongo wenye unyevu na kuandika kiasi cha shayiri. Kibao hicho cha udongo, na maelfu kama hicho, ni miongoni mwa wakati wa awali kabisa ambapo lugha ya binadamu ilitoroka pumzi iliyoibeba — sambamba na maendeleo ya kufanana katika Misri ya nasaba za mwanzo, na baadaye kidogo katika Bonde la Indus na China. Lugha iliyokuwa ikirekodiwa ilikuwa <strong>Kisumerian</strong> (<em>eme-gir</em>, "lugha ya asili") — na miaka 5,200 baadaye bado tunaisoma.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Onyesha Kisumerian kwenye ramani</button>
@@ -401,7 +401,7 @@ window.TRIVIA_I18N['sw'] = {
 
   'sentinelese-unknown': {
     title: 'Kisentinelese — lugha ambayo hatujaiwahi kurekodi',
-    summary: 'Katika kisiwa cha kilomita za mraba 60 katika Ghuba ya Bengali wanaishi watu ambao wamekataa mawasiliano yote kwa miaka elfu sitini — na lugha yao hakuna mgeni amewahi kuisikia, sembuse kuiandika.',
+    summary: 'Katika kisiwa cha kilomita za mraba 60 katika Ghuba ya Bengali wanaishi watu ambao mababu zao wanaaminika kuwa miongoni mwa tabaka za awali kabisa za makazi ya binadamu katika eneo hilo — na lugha yao hakuna mgeni amewahi kuisikia, sembuse kuiandika.',
     body: `
   <p>Karibu kilomita 1,200 mashariki mwa bara la India, katika Ghuba ya Bengali, kuna kisiwa kidogo chenye misitu cha takriban kilomita za mraba 60. Kinaitwa <strong>Kisiwa cha North Sentinel</strong>, na mahali fulani ndani yake huishi labda watu hamsini hadi mia kadhaa — hakuna anayejua idadi halisi — ambao wamekataa kila jaribio moja la kuzungumza nao. Wao ni <strong>Wasentinelese</strong>, na lugha yao ni lugha pekee ya kibinadamu duniani ambayo haijawahi kurekodiwa, haijawahi kunakiliwa, na haijawahi hata kuwekwa kwa uhakika katika familia.</p>
 
@@ -409,7 +409,7 @@ window.TRIVIA_I18N['sw'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Ruka hadi Kisiwa cha North Sentinel</button>
   </div>
 
-  <p>Wasentinelese ni mojawapo ya watu wa <strong>Kiandamani</strong> — wazao wa mojawapo ya migawanyo ya kwanza ya binadamu kutoka <em>Out of Africa</em>, ambao walifika Visiwa vya Andaman labda miaka 60,000 iliyopita na walibaki wakitengwa tangu hapo. Ushahidi wa kigenetiki unawaweka miongoni mwa watu wa kale wa zamani zaidi wanaoendelea kutengwa kwenye sayari. Majirani zao katika visiwa kipana — Great Andamanese, Onge wa Little Andaman, na Jarawa wa South na Middle Andaman — husema lugha zinazoanguka katika <strong>familia mbili zisizo na uhusiano</strong>: Great Andamanese, na familia ndogo ya Kiongan (Onge + Jarawa). Kisentinelese kinashukiwa kuwa dada wa tatu, labda karibu zaidi na Kiongan, lakini hakuna mtu amewahi kusikia maneno ya kutosha kuthibitisha.</p>
+  <p>Wasentinelese ni mojawapo ya watu wa <strong>Kiandamani</strong> — wanaaminika kuwa wazao wa mojawapo ya mawimbi ya kwanza kabisa ya migawanyo ya binadamu <em>Out of Africa</em>, ambao huenda walifika Visiwa vya Andaman makumi ya maelfu ya miaka iliyopita. Ushahidi wa kigenetiki unawaweka miongoni mwa makundi yaliyobaki yakitengwa muda mrefu zaidi kwenye sayari, ingawa muda halisi wa kutengwa kwao na mwendelezo wake hauwezi kuthibitishwa kwa uhakika. Majirani zao katika visiwa kipana — Great Andamanese, Onge wa Little Andaman, na Jarawa wa South na Middle Andaman — husema lugha zinazoanguka katika <strong>familia mbili zisizo na uhusiano</strong>: Great Andamanese, na familia ndogo ya Kiongan (Onge + Jarawa). Kisentinelese kinashukiwa kuwa dada wa tatu, labda karibu zaidi na Kiongan, lakini hakuna mtu amewahi kusikia maneno ya kutosha kuthibitisha.</p>
 
   <p>Kila jaribio lililoandikwa la mawasiliano lilishindwa au kuishia katika vurugu:</p>
 
@@ -434,10 +434,10 @@ window.TRIVIA_I18N['sw'] = {
 
 
   'modern-hebrew-revival': {
-    title: 'Kiebrania — lugha pekee ya kale iliyopata kufufuliwa kabisa',
-    summary: 'Kwa karibu miaka 1,700, hakuna mtoto aliyekua akizungumza Kiebrania. Leo ni lugha ya mama ya watu milioni tisa — ufufuo pekee uliofaulu kabisa wa lugha iliyokufa katika historia ya binadamu.',
+    title: 'Kiebrania — lugha ya kale iliyorudishwa katika maisha ya kila siku',
+    summary: 'Kwa karibu miaka 1,700, Kiebrania kiliendelea kama lugha ya ibada na fasihi lakini hakuna mtoto aliyekua akikizungumza. Leo ni lugha ya mama ya watu milioni tisa — ufufuo mkubwa zaidi kwa kiwango na uliofanikiwa zaidi wa lugha ambayo ilikuwa imekoma kuwa lugha ya kila siku ya jamii.',
     body: `
-  <p>Karibu mwaka <strong>200 BK</strong>, kaya ya mwisho katika Palestina ya Kirumi ambayo watoto walikua wakisikia Kiebrania mezani imenyamaza. Kiaramaic kilikuwa tayari kimechukua barabara; Kigiriki kilitawala miji; Mishnah ilikuwa ikiundwa kwa Kiebrania ambacho wasomi waliandika lakini hawakuzungumza zaidi. Kwa miaka 1,700 iliyofuata, Kiebrania kiliendelea kama lugha ya sinagogi, kitabu cha maombi, gombo la Torah, na barua kutoka kwa rabbi mmoja kwenda kwa mwingine — lugha iliyoandikwa iliyotumiwa na watu wazima wenye kusoma, lakini si maneno ya kwanza ya mtoto yoyote. Kisha, kwa namna fulani, hiyo ilibadilika. Kiebrania sasa ni lugha ya kila siku ya kuzungumza ya watu wapata <strong>milioni tisa</strong>, takriban nusu yao ni wasemaji wa kuzaliwa walioifunza wakiwa watoto wachanga. Ndio kesi pekee iliyoandikwa katika historia ya binadamu ya lugha iliyokufa kabisa kuletwa nyuma kwa matumizi ya kila siku ya kuzaliwa.</p>
+  <p>Karibu mwaka <strong>200 BK</strong>, kaya ya mwisho katika Palestina ya Kirumi ambayo watoto walikua wakisikia Kiebrania mezani imenyamaza. Kiaramaic kilikuwa tayari kimechukua barabara; Kigiriki kilitawala miji; Mishnah ilikuwa ikiundwa kwa Kiebrania ambacho wasomi waliandika lakini hawakuzungumza zaidi. Kwa miaka 1,700 iliyofuata, Kiebrania kiliendelea kama lugha ya sinagogi, kitabu cha maombi, gombo la Torah, na barua kutoka kwa rabbi mmoja kwenda kwa mwingine — lugha iliyoandikwa iliyotumiwa na watu wazima wenye kusoma, lakini si maneno ya kwanza ya mtoto yoyote. Kisha, kwa namna fulani, hiyo ilibadilika. Kiebrania sasa ni lugha ya kila siku ya kuzungumza ya watu wapata <strong>milioni tisa</strong>, takriban nusu yao ni wasemaji wa kuzaliwa walioifunza wakiwa watoto wachanga. Pia kuna ufufuo wa kiwango kidogo (Kikorni, Kimanksi, Wampanoag), lakini Kiebrania kinaendelea kuwa kesi kubwa zaidi na iliyoandikwa kwa undani zaidi ya lugha ambayo haikuwa tena lugha ya mama ya yeyote kurudishwa katika matumizi ya kila siku ya jamii.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Onyesha Kiebrania kwenye ramani</button>
@@ -482,7 +482,7 @@ window.TRIVIA_I18N['sw'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ Ruka hadi Gandhāra ya Pāṇini</button>
   </div>
 
-  <p>Tunajua karibu chochote kuhusu Pāṇini mtu — tu kwamba alikuwa kutoka kijiji cha Śalātura (Lahor ya kisasa, karibu na Attock katika Pakistan), labda alifanya kazi katika karne ya 5 au 4 KK, na kwamba kila kitu alichotoa kilionekana kuundwa kukumbukwa kwa sauti. Aṣṭādhyāyī ilihifadhiwa kwa kusoma kwa kurudia kwa karne kabla ya kuandikwa. Kuokoa silabi — na kwa hiyo pumzi — Pāṇini alibuni <strong>lugha-meta nzima ya kiufundi</strong>: mfumo wa vifupisho vya herufi moja, orodha za fonimu zilizoamuriwa zinazoitwa <strong>Śiva sūtras</strong>, mikataba ya matumizi ya sheria "tegemea-muktadha", anuvṛtti (urithi wa sheria kutoka mstari uliotangulia ambao hauhitaji kutamkwa tena), na mfumo wa kipaumbele wa kutatua sheria gani inatumika wakati sheria mbili zinapingana.</p>
+  <p>Tunajua karibu chochote kuhusu Pāṇini mtu — tu kwamba alikuwa kutoka kijiji cha Śalātura (Lahor / Lahur ya sasa, mara kwa mara hujulikana kama "Lahore Ndogo", karibu na Attock kaskazini-magharibi mwa Pakistan — isichanganywe na mji mkubwa wa Punjabi wa Lahore), labda alifanya kazi katika karne ya 5 au 4 KK, na kwamba kila kitu alichotoa kilionekana kuundwa kukumbukwa kwa sauti. Aṣṭādhyāyī ilihifadhiwa kwa kusoma kwa kurudia kwa karne kabla ya kuandikwa. Kuokoa silabi — na kwa hiyo pumzi — Pāṇini alibuni <strong>lugha-meta nzima ya kiufundi</strong>: mfumo wa vifupisho vya herufi moja, orodha za fonimu zilizoamuriwa zinazoitwa <strong>Śiva sūtras</strong>, mikataba ya matumizi ya sheria "tegemea-muktadha", anuvṛtti (urithi wa sheria kutoka mstari uliotangulia ambao hauhitaji kutamkwa tena), na mfumo wa kipaumbele wa kutatua sheria gani inatumika wakati sheria mbili zinapingana.</p>
 
   <p>Tokeo linasomeka, kwa jicho la kisasa, kwa ajabu kama sheria za uzalishaji wa sarufi isiyo na muktadha — tu yenye nguvu zaidi. Muundo wa sheria wa Pāṇini kimsingi ni:</p>
 
@@ -505,7 +505,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <blockquote>"Sarufi ya maelezo ya Kisanskrit ambayo Pāṇini aliifikisha ukamilifu ni mojawapo ya makumbusho makubwa zaidi ya akili ya binadamu." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
 
-  <p>Kisanskrit chenyewe (<em>saṃskṛta-</em>, "iliyong'arishwa, iliyoboreshwa") ilikuwa tayari kawaida ya kifasihi na ya kisherehe, si lugha ya kawaida, kufikia siku za Pāṇini. Baada yake ikawa, kwa kawaida, kile Pāṇini alichosema ilikuwa: lugha ambayo kila sentensi yake iliyoundwa vizuri inaweza, kwa kanuni, kutoa kutoka kwa sūtras zake 4,000. Miaka elfu mbili na nusu baadaye, hicho pia ndio hasa tunachoomba kutoka kwa parser. Aṣṭādhyāyī haikuelezea tu Kisanskrit. Ilibuni kimya kimya wazo kwamba lugha inaweza kuelezewa.</p>
+  <p>Kisanskrit chenyewe (<em>saṃskṛta-</em>, "iliyong'arishwa, iliyoboreshwa") ilikuwa tayari kawaida ya kifasihi na ya kisherehe, si lugha ya kawaida, kufikia siku za Pāṇini. Baada yake ikawa, kwa kawaida, kile Pāṇini alichosema ilikuwa: lugha ambayo kila sentensi yake iliyoundwa vizuri inaweza, kwa kanuni, kutoa kutoka kwa sūtras zake 4,000. Miaka elfu mbili na nusu baadaye, hicho pia ndio hasa tunachoomba kutoka kwa parser. Aṣṭādhyāyī haikuelezea tu Kisanskrit. Ilisukuma wazo la maelezo ya kizalishaji na ya kifomu ya lugha hadi kiwango cha usahihi ambacho hakikuwa na mfano wake katika kale — na ambacho hakijapata mlinganishi, inaweza kusemwa, hadi isimu ya kifomu ya karne ya 20 ilipogundua tena mawazo hayohayo kwa kujitegemea.</p>
     `
   },
 
@@ -547,7 +547,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Historia ya karne ya ishirini ilikuwa kali kwa Waesperantist. Hitler aliilaani lugha katika <em>Mein Kampf</em> kama njama ya Kiyahudi; watoto watatu wa Zamenhof waliuawa katika Holocaust. Stalin alifunga na kunyonga Waesperantist wa Sovieti katika usafishaji wa 1937–38 kama "wapelelezi wa kicosmopolitan". Harakati ilinusurika zote mbili.</p>
 
-  <p>Leo Esperanto ina labda <strong>wasemaji milioni mbili</strong> katika viwango mbalimbali, na — kwa kipekee kwa lugha bunifu — karibu <strong>wasemaji elfu moja wa kuzaliwa</strong> wanaojulikana kama <em>denaskuloj</em>, waliokulia katika kaya za lugha mbili ambapo Esperanto ni mojawapo ya lugha za nyumbani. Kozi ya Duolingo ya Esperanto pekee imeandikisha zaidi ya wanafunzi milioni moja. Hakuna lugha nyingine ya bandia ambayo imevuka katika upitishaji wa kati ya vizazi.</p>
+  <p>Leo Esperanto ina labda <strong>wasemaji milioni mbili</strong> katika viwango mbalimbali, na karibu <strong>wasemaji elfu moja wa kuzaliwa</strong> wanaojulikana kama <em>denaskuloj</em>, waliokulia katika kaya za lugha mbili ambapo Esperanto ni mojawapo ya lugha za nyumbani. Kozi ya Duolingo ya Esperanto pekee imeandikisha zaidi ya wanafunzi milioni moja. Kwa kipimo chochote — jamii inayoendelea, upana wa fasihi, idadi ya wasemaji wa kuzaliwa — Esperanto ndiyo lugha bunifu iliyofanikiwa zaidi kuwahi kujaribiwa, kwa tofauti kubwa.</p>
 
   <p>Zamenhof hakuwahi kudai Esperanto ingebadilisha lugha ya mama ya mtu yeyote. Alitaka <em>dua lingvo</em> — lugha ya pili — sawa ya kigeni kwa kila mtu, ili hakuna msemaji wa kuzaliwa angekuwa na faida juu kwenye meza ya mazungumzo. Karne na nusu baadaye, mradi ni mdogo, lakini bado uko hai, bado hauna upande, na bado una matumaini — kama vile mwanzilishi wake, <em>Doktoro Esperanto</em>, alivyosaini jina lake.</p>
     `
@@ -683,13 +683,13 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Urejesho wa kweli wa Hangul ulikuja mwishoni mwa karne ya 19 na mrekebishaji Ju Si-gyeong, ambaye alipanga jina lake (<em>han-geul</em>, "hati kuu") na orthografia yake ya kisasa. Baada ya kipindi cha kikoloni cha Kijapani — wakati ambapo Hangul ilipigwa marufuku tena, wakati huu na nguvu ya nje — Korea Kusini ilitangaza Siku ya Hangul (한글날) kuwa likizo ya kitaifa. Korea Kaskazini huiita <em>Chosŏn'gŭl</em> na huadhimisha likizo yake mwenyewe tarehe 15 Januari. Kusoma na kuandika kwa Kikorea cha kisasa ni 100% kwa utendaji.</p>
 
-  <p>Mwanaisimu Geoffrey Sampson alielezea Hangul mwaka 1985 kama "labda mfumo wa kisayansi zaidi wa kuandika unaotumika kwa jumla katika nchi yoyote". Watoto kawaida hujifunza katika takriban saa moja. Ni hati pekee kuu ya dunia yenye mbunifu anayejulikana na mantiki ya muundo iliyoandikwa — jaribio la maabara la miaka 600 lililofanya kazi.</p>
+  <p>Mwanaisimu Geoffrey Sampson alielezea Hangul mwaka 1985 kama "labda mfumo wa kisayansi zaidi wa kuandika unaotumika kwa jumla katika nchi yoyote". Maumbo ya msingi ya herufi yanajulikana sana kwa kuwa rahisi kukariri — watoto wa Korea wanaweza kuelewa alfabeti katika kikao kimoja, ingawa ufasaha kamili wa kusoma na kuandika unahitaji miaka kadhaa kama hati nyingine yoyote. Ni hati pekee kuu ya dunia yenye mbunifu anayejulikana na mantiki ya muundo iliyoandikwa — jaribio la maabara la miaka 600 lililofanya kazi.</p>
     `
   },
 
   'cherokee-sequoyah': {
     title: 'Sequoyah — fundi mahiri asiyejua kusoma aliyebuni mfumo wa kuandika kutoka mwanzo',
-    summary: 'Mwaka 1821 fundi wa fedha wa Cherokee ambaye hakuweza kusoma Kiingereza alifunua syllabary ya herufi 85 aliyokuwa amejenga peke yake kwa miaka 12. Ndani ya muongo kusoma na kuandika kwa Cherokee kulizidi ya wakaaji weupe waliokuwa karibu.',
+    summary: 'Mwaka 1821 fundi wa fedha wa Cherokee ambaye hakuweza kusoma Kiingereza alifunua syllabary ya herufi 85 aliyokuwa amejenga peke yake kwa miaka 12. Ndani ya muongo, waangalizi wa wakati huo waliripoti kwamba kiwango cha kusoma na kuandika kwa Cherokee kililingana na au kuzidi kile cha wakaaji weupe waliokuwa karibu.',
     body: `
   <p><strong>Sequoyah</strong> (pia anaandikwa ᏍᏏᏉᏯ <em>Ssiquoya</em>, au kwa Kiingereza George Guess, k. 1770–1843) ni mmoja wa watu pekee katika historia iliyoandikwa anayejulikana kuwa amebuni mfumo wa kuandika unaofanya kazi kikamilifu kutoka kwa chochote, akiwa binafsi hajui kusoma na kuandika katika lugha yoyote. Hadithi haina uwezekano kiasi kwamba wafafanuzi wa karne ya 19 waliendelea kujaribu kuielezea mbali. Ilitokea hata hivyo.</p>
 
@@ -929,7 +929,7 @@ window.TRIVIA_I18N['sw'] = {
 
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — lugha bila kushoto au kulia',
-    summary: 'Lugha ya Aborigine wa Australia ya Mbali Kaskazini ya Queensland inayotumia tu maelekezo kamili ya kardinali — kaskazini, kusini, mashariki, magharibi — hata kwa vitu kwenye meza. Wasemaji huhifadhi mwelekeo wa "dead-reckoning" wakati wote.',
+    summary: 'Lugha ya Aborigine wa Australia ya Mbali Kaskazini ya Queensland inayotumia tu maelekezo kamili ya kardinali — kaskazini, kusini, mashariki, magharibi — hata kwa vitu kwenye meza. Wasemaji huhifadhi mwelekeo wa <em>dead-reckoning</em> (urambazaji wa makadirio) wakati wote.',
     body: `
   <p>Iwapo unakaa kwenye meza na msemaji wa Kiingereza na wanataka uwapitishie kikombe, watasema "kikombe upande wako wa kushoto" au "kikombe mbele yako". Mfumo wa marejeleo ni <strong>egocentric</strong> — umewekwa kwenye mwili wako. Karibu kila lugha ya Kizungu hufanya kazi hivi.</p>
 
@@ -955,7 +955,7 @@ window.TRIVIA_I18N['sw'] = {
     <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Ona Guugu Yimithirr "Mkono"</button>
   </div>
 
-  <p>Tokeo la kifikra, lililothibitishwa na Levinson, John Haviland na wenzake katika Taasisi ya Max Planck, ni la kushangaza. Wasemaji wa Guugu Yimithirr huhifadhi hisia isiyovunjika ya <strong>dead-reckoning</strong> ya mwelekeo wao. Katika majaribio, wanaweza kuelekeza kwa usahihi mahali pa mbali (bahari, makazi ya jirani, nyumba ya jamaa kilomita mia kadhaa mbali) bila kujali kama wameketi katika chumba kisicho na madirisha, wamefungwa kupofusha, baada ya kuendeshwa katika mizunguko, au chini ya pango. Kompasi yao ya kardinali haijazimika tu.</p>
+  <p>Tokeo la kifikra, lililothibitishwa na Levinson, John Haviland na wenzake katika Taasisi ya Max Planck, ni la kushangaza. Wasemaji wa Guugu Yimithirr huhifadhi hisia isiyovunjika ya mwelekeo wao kwa <strong>dead-reckoning (urambazaji wa makadirio)</strong>. Katika majaribio, wanaweza kuelekeza kwa usahihi mahali pa mbali (bahari, makazi ya jirani, nyumba ya jamaa kilomita mia kadhaa mbali) bila kujali kama wameketi katika chumba kisicho na madirisha, wamefungwa kupofusha, baada ya kuendeshwa katika mizunguko, au chini ya pango. Kompasi yao ya kardinali haijazimika tu.</p>
 
   <p>Hii si ujuzi maalum wa wachache wazee. Ni <strong>mali ya ulimwengu wote ya wasemaji wenye ufasaha</strong>, iliyojifunzwa katika utoto wa mapema. Watoto wa miaka mitatu wanaashiria kikardinali. Mashine ya kiakili imejengwa na lugha na inafanyiwa mazoezi mara kwa mara na hitaji la kuzungumza juu yake.</p>
 
@@ -1089,9 +1089,9 @@ window.TRIVIA_I18N['sw'] = {
 
   'nicaraguan-sign-language': {
     title: 'Lugha ya Ishara ya Nicaragua — lugha iliyozaliwa kwa wakati halisi',
-    summary: 'Kesi pekee iliyoandikwa katika historia ya lugha ya binadamu kamili ya asili kuzaliwa — iliyoundwa kwa hiari na watoto wa Nicaragua viziwi wakati hatimaye walipoletwa pamoja katika miaka ya 1970 na 80.',
+    summary: 'Mojawapo ya kesi zilizoandikwa kwa kina zaidi za lugha mpya ya binadamu ya asili ikichukua sura kwa wakati halisi — iliibuka miongoni mwa watoto wa Nicaragua viziwi wakati hatimaye walipoletwa pamoja katika miaka ya 1970 na 80.',
     body: `
-  <p>Fikiria kuwa mwanaisimu na kupata kuangalia lugha mpya kabisa ya binadamu ikija kuwepo — isiyokopwa, isiyo iliyoundwa kutoka kwa lugha zilizopo, bali iliyozalishwa kutoka mwanzo na watoto katika kizazi kimoja. Hivyo ndivyo ilivyotokea Managua, Nicaragua, kati ya 1977 na mapema miaka ya 1990, ikizalisha kile tunachoita sasa <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Lugha ya Ishara ya Nicaragua.</p>
+  <p>Fikiria kuwa mwanaisimu na kupata kuangalia lugha mpya ya binadamu ikichukua sura kwa wakati halisi — isiyo iliyoundwa kutoka kwa lugha ya kuzungumzwa iliyopo, bali iliyozalishwa na watoto katika kizazi kimoja, kwa sehemu kubwa kuanzia mifumo yao wenyewe ya ishara za nyumbani na ishara za mwili. Hivi ndivyo, kwa kiasi kikubwa, ilivyotokea Managua, Nicaragua, kati ya 1977 na mapema miaka ya 1990, ikizalisha kile tunachoita sasa <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Lugha ya Ishara ya Nicaragua. Lugha zingine za ishara zilizoundwa hivi karibuni (Lugha ya Ishara ya Wabedui wa Al-Sayyid huko Israel, Kata Kolok huko Bali) zimechunguzwa tangu wakati huo, lakini ISN bado ni kesi iliyoandikwa kwa kina zaidi ya kujitokeza kwa kizazi baada ya kizazi.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Onyesha Lugha ya Ishara ya Nicaragua kwenye ramani</button>
@@ -1110,7 +1110,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Hii ni msaada wa moja kwa moja wa kihalisi kwa wazo kwamba <strong>lugha ni tokeo la ubunifu la akili ya mtoto</strong>, si tu kurekodi kwa upole kwa mchango. Watoto katika makundi yanayofuatana kwa kujitegemea walibuni vipengele — kama kuvunja matukio ya mwendo katika vipengele vya "njia" na "namna" — ambavyo hakuna mtu mzima alikuwa amewapa, na ambavyo vinaonekana kwa kushangaza kama vipengele vilivyoandikwa katika lugha zingine za ishara zilizoanzishwa.</p>
 
-  <p>Leo ISN ina labda watu 3,000 wanaofanya ishara na jamii ya Viziwi yenye nguvu inayoandaliwa kupitia <em>Asociación Nacional de Sordos de Nicaragua</em>. Ni lugha ya asili kamili ya mdogo zaidi duniani — na pekee ambayo kuzaliwa kwake kwote kulikamatwa kwenye kamera, kwenye karatasi, na kwenye kumbukumbu za shamba za kiisimu.</p>
+  <p>Leo ISN ina labda watu 3,000 wanaofanya ishara na jamii ya Viziwi yenye nguvu inayoandaliwa kupitia <em>Asociación Nacional de Sordos de Nicaragua</em>. Ni mojawapo ya lugha za asili kamili zilizoundwa hivi karibuni zaidi — na kesi ambayo mchakato wake mzima wa kuunda umekamatwa kwa ukamilifu zaidi kwenye kamera, kwenye karatasi, na kwenye kumbukumbu za shamba za kiisimu.</p>
     `
   },
 

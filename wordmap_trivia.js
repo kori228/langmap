@@ -203,7 +203,7 @@ const TRIVIA_ARTICLES = [
       tags: ['clicks', 'phonology', 'africa', 'extreme'],
       title: {
         en: 'Taa (!Xóõ) — the language with more consonants than any other',
-        ja: 'タア語（!ホーン語）— 世界一子音が多い言語',
+        ja: 'タア語（!Xóõ）— 世界一子音が多い言語',
       },
       summary: {
         en: 'Spoken by perhaps 2,500 people on the Botswana–Namibia border, Taa packs around 160 distinct consonants, including five fully developed click types, into a single phonemic inventory — by some measures the largest sound system ever described.',
@@ -245,7 +245,7 @@ const TRIVIA_ARTICLES = [
   <p>Taa is generally described as <strong>severely endangered</strong>. The few hundred children who still acquire it grow up alongside Tswana-medium schooling and increasingly mobile lifestyles. If Taa goes silent in the next generation, the world loses not only a community's heritage but the single richest natural laboratory the science of phonetics has ever had.</p>
         `,
         ja: `
-  <p>英語の子音は24個。それにフランス語、ドイツ語、ロシア語、アラビア語、北京官話の子音を全部足しても、まだ<strong>タア語</strong>（<em>!ホーン語</em>とも書く）には届かない。アンソニー・トレイルの記念碑的記述（1985年）によれば、タア語の音素子音は<strong>83〜164個</strong>──吸着音の付随特徴をどう数えるかで揺れる──いずれにせよ世界記録である。</p>
+  <p>英語の子音は24個。それにフランス語、ドイツ語、ロシア語、アラビア語、北京官話の子音を全部足しても、まだ<strong>タア語</strong>（原綴り <em>!Xóõ</em>）には届かない。アンソニー・トレイルの記念碑的記述（1985年）によれば、タア語の音素子音は<strong>83〜164個</strong>──吸着音の付随特徴をどう数えるかで揺れる──いずれにせよ世界記録である。</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="nmn" data-zoom="5">🌍 地図でタア語を見る</button>
@@ -641,7 +641,7 @@ const TRIVIA_ARTICLES = [
   
   <ul>
     <li><strong>コエ語族</strong>──ナミビアのコエコエゴワブ語（ナマ＝ダマラ語）、ボツワナのナロ語、カラハリ縁辺のいくつかの言語。</li>
-    <li><strong>トゥー語族</strong>──子音記録のタア語（!ホーン語）や、瀕死状態の南アフリカのン｜ウー語など。</li>
+    <li><strong>トゥー語族</strong>──子音記録のタア語（!Xóõ）や、瀕死状態の南アフリカのンウー語（N|uu）など。</li>
     <li><strong>クサ語族</strong>──ジュホアン語、ホアン語など。豊富な吸着音体系を持つ。</li>
   </ul>
   
@@ -2027,7 +2027,7 @@ const TRIVIA_ARTICLES = [
   
   <p>The finding mattered far beyond Andean linguistics. Together with George Lakoff's work on conceptual metaphor and Lera Boroditsky's experiments on time and language, the Aymara case became a cornerstone of the modern argument that <strong>basic spatial metaphors for abstract domains are not universal</strong> — they are deeply shaped by culture and embodied experience. Time, the most relentless abstraction we have, may not even point the same way for everyone.</p>
   
-  <p>Aymara is also remarkable in other ways: a <em>three-valued logic</em> debated by computer scientists in the 1980s, an obligatory evidential system not unlike Tuyuca's, and a vibrant indigenous-language publishing scene. But the front-facing past remains its most famous gift to cognitive science.</p>
+  <p>Aymara is also remarkable in other ways: a much-debated proposal — most prominently by Iván Guzmán de Rojas in the 1980s — that its grammar reflects a <em>three-valued logic</em> (a claim still disputed among linguists), an obligatory evidential system not unlike Tuyuca's, and a vibrant indigenous-language publishing scene. But the front-facing past remains its most famous gift to cognitive science.</p>
         `,
         ja: `
   <p>英語話者に「先（ahead）」とは何かと聞けば、来週の会議、迫る締切、楽しみな未来──と答えるだろう。未来は前、過去は後ろ。印欧諸語のほぼすべてが時間をこの向きで切り取っており、認知科学者たちは長らく「これは人類の思考に普遍の比喩だ」と考えていた。</p>
@@ -2062,7 +2062,7 @@ const TRIVIA_ARTICLES = [
   
   <p>この発見はアンデス研究の枠を超えて重要だった。ジョージ・レイコフの概念メタファー研究、レラ・ボロディツキーの時間言語実験と並んで、「抽象概念の空間メタファーは人類普遍ではなく、文化と身体経験に深く規定される」という現代的主張の中核となっている。最も逃れがたい抽象である<strong>時間</strong>でさえ、全人類で同じ向きを指してはいないのである。</p>
   
-  <p>アイマラ語にはほかにも興味深い特徴が多い──1980年代に計算機科学者が議論した三値論理、トゥユカ語に似た義務的な証拠性、活発な先住民出版文化。だが、「目の前に過去がある」というこの一点は、今も認知科学への最大の贈り物として語り継がれている。</p>
+  <p>アイマラ語にはほかにも興味深い特徴が多い──1980年代にイバン・グスマン・デ・ロハスらが提唱した「アイマラ文法には三値論理が反映されている」とする説（現在も言語学者の間で議論が続く論争的な主張）、トゥユカ語に似た義務的な証拠性、活発な先住民出版文化。だが、「目の前に過去がある」というこの一点は、今も認知科学への最大の贈り物として語り継がれている。</p>
         `,
       },
       sources: [
