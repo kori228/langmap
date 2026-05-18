@@ -35,7 +35,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <p>Các tuyên bố của Everett bị <strong>tranh cãi gay gắt</strong>. Các nhà nghiên cứu sau này, bao gồm Andrew Nevins, David Pesetsky và Cilene Rodrigues, đã lập luận rằng Pirahã có đệ quy — chỉ là hiếm khi được sử dụng — và rằng các sự kiện về số có thể được giải thích mà không cần các hệ quả nhận thức kỳ lạ. Everett đã phản pháo; cuộc tranh luận vẫn đang tiếp diễn.</p>
 
-<p>Điều <em>không</em> bị tranh cãi là sự hạn chế văn hóa đối với việc nói về những điều chưa trải nghiệm, và phương thức giao tiếp đa kênh đáng kinh ngạc của Pirahã. Bất kể bên nào thắng trong cuộc chiến đệ quy, Pirahã đã làm được điều mà rất ít ngôn ngữ làm được: một lần nữa buộc các nhà ngôn ngữ học phải đặt câu hỏi liệu ngôn ngữ định hình tư duy — hay tư duy định hình ngôn ngữ.</p>
+<p>Ít bị tranh cãi hơn, dù vẫn còn được thảo luận, là chuẩn mực văn hóa giới hạn lời nói trong những điều đã trải nghiệm trực tiếp và phương thức truyền tải đa kênh đáng chú ý của Pirahã. Bất kể bên nào thắng trong cuộc chiến đệ quy, Pirahã đã làm được điều mà rất ít ngôn ngữ làm được: một lần nữa buộc các nhà ngôn ngữ học phải đặt câu hỏi liệu ngôn ngữ định hình tư duy — hay tư duy định hình ngôn ngữ.</p>
     `,
   },
   'silbo-gomero': {
@@ -110,7 +110,7 @@ window.TRIVIA_I18N['vi'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 Phóng to vào Kalahari</button>
 </div>
 
-<p>UNESCO phân loại Taa là <strong>cực kỳ nguy cấp</strong>. Số ít trẻ em vẫn tiếp thu nó lớn lên cùng với trường học bằng tiếng Tswana và lối sống ngày càng di động. Nếu Taa im lặng trong thế hệ tiếp theo, thế giới mất không chỉ di sản của một cộng đồng mà còn là phòng thí nghiệm tự nhiên giàu nhất duy nhất mà khoa học âm vị học từng có.</p>
+<p>Taa thường được mô tả là <strong>cực kỳ nguy cấp</strong>. Số ít trẻ em vẫn tiếp thu nó lớn lên cùng với trường học bằng tiếng Tswana và lối sống ngày càng di động. Nếu Taa im lặng trong thế hệ tiếp theo, thế giới mất không chỉ di sản của một cộng đồng mà còn là phòng thí nghiệm tự nhiên giàu nhất duy nhất mà khoa học âm vị học từng có.</p>
     `,
   },
   'rotokas-fewest-sounds': {
@@ -211,7 +211,7 @@ window.TRIVIA_I18N['vi'] = {
 <p>Với ba họ này, người ta thường thêm <strong>hai ngôn ngữ biệt lập của Đông Phi</strong>: <strong>Hadza</strong>, được khoảng một nghìn người săn bắt-hái lượm nói quanh Hồ Eyasi ở Tanzania, và <strong>Sandawe</strong>, vài trăm km về phía bắc. Cả hai đều có click; không ngôn ngữ nào đã được chứng minh là có liên quan đến các nhóm phía nam theo bất kỳ cách nào chịu được sự xem xét kỹ lưỡng. Thuật ngữ chung cũ "Khoisan" gộp cả năm lại với nhau, nhưng Tom Güldemann và những người khác đã dành hai mươi năm qua để lập luận — một cách thuyết phục — rằng <strong>Khoisan là một nhóm khu vực, không phải là một họ phả hệ</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Bật Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 So sánh Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
 </div>
 
 <p>Các nhà ngữ âm học phân biệt <strong>năm loại click chính</strong> theo nơi đóng phía trước được thực hiện:</p>
@@ -236,7 +236,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <blockquote>"Click không phải là âm thanh được vay mượn theo cách các từ vay được vay mượn. Chúng là các đặc điểm kế thừa của thời thơ ấu song ngữ — và một khi chúng đã ở trong từ vựng của một thế hệ duy nhất, chúng trở thành bản ngữ." — Anthony Traill, 1995 (diễn giải)</blockquote>
 
-<p>Ngoài miền nam châu Phi, click chỉ tồn tại ở ba nơi chúng ta biết: các ngôn ngữ biệt lập Đông Phi <strong>Hadza</strong> và <strong>Sandawe</strong>; một vài thanh vực nghi lễ hoặc bí mật như <strong>Damin</strong> ở Úc; và thanh vực nghi lễ hiện đã tuyệt chủng <em>El Molo</em> được báo cáo là có chứa các âm giống click. Điều đó làm cho khu vực click miền nam châu Phi trở thành một trong những khu vực ngôn ngữ chặt chẽ nhất thế giới — một nơi mà một đặc điểm phi thường đã được duy trì, phát triển và trao đổi qua bốn họ trong ít nhất vài nghìn năm.</p>
+<p>Ngoài miền nam châu Phi, các trường hợp được ghi chép vững chắc là các ngôn ngữ biệt lập Đông Phi <strong>Hadza</strong> và <strong>Sandawe</strong>, cùng với thanh vực nghi lễ đặc biệt <strong>Damin</strong> ở Úc — được những người đàn ông được nhập môn của Đảo Mornington sử dụng, không phải như một ngôn ngữ nói thông thường. (Các báo cáo về âm giống click trong thanh vực nghi lễ El Molo có tồn tại nhưng không được kiểm chứng đầy đủ.) Điều đó làm cho khu vực click miền nam châu Phi trở thành một trong những khu vực ngôn ngữ chặt chẽ nhất thế giới — một nơi mà một đặc điểm phi thường đã được duy trì, phát triển và trao đổi qua bốn họ trong ít nhất vài nghìn năm.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Khảo sát vành đai click miền nam châu Phi</button>
@@ -280,10 +280,10 @@ window.TRIVIA_I18N['vi'] = {
     `,
   },
   'sumerian-first-writing': {
-    title: 'Sumerian — ngôn ngữ đầu tiên từng được viết ra',
-    summary: 'Ngôn ngữ viết cổ nhất thế giới: một biệt lập Lưỡng Hà, được ghi trên đất sét từ ~3200 TCN, và được giữ sống như một tiếng nói học thuật trong 2.000 năm sau khi người nói bản ngữ cuối cùng của nó qua đời.',
+    title: 'Sumerian — một trong những ngôn ngữ được viết ra sớm nhất',
+    summary: 'Một trong những ngôn ngữ viết được chứng thực sớm và rộng rãi nhất: một biệt lập Lưỡng Hà, được ghi trên đất sét từ ~3200 TCN, và được giữ sống như một tiếng nói học thuật trong 2.000 năm sau khi người nói bản ngữ cuối cùng của nó qua đời.',
     body: `
-<p>Vào khoảng năm 3200 TCN, ở thành phố Lưỡng Hà phía nam <strong>Uruk</strong>, ai đó đã ấn đầu một bút lông sậy vào đất sét ướt và viết xuống một số lượng lúa mạch. Tấm đất sét đó, và hàng nghìn cái tương tự, đánh dấu khoảnh khắc ngôn ngữ loài người lần đầu tiên thoát khỏi hơi thở mang nó. Ngôn ngữ được ghi lại là <strong>Sumerian</strong> (<em>eme-gir</em>, "tiếng nói bản địa") — và 5.200 năm sau chúng ta vẫn đang đọc nó.</p>
+<p>Vào khoảng năm 3200 TCN, ở thành phố Lưỡng Hà phía nam <strong>Uruk</strong>, ai đó đã ấn đầu một bút lông sậy vào đất sét ướt và viết xuống một số lượng lúa mạch. Tấm đất sét đó, và hàng nghìn cái tương tự, nằm trong số những khoảnh khắc sớm nhất ngôn ngữ loài người thoát khỏi hơi thở mang nó — song hành với những phát triển song song ở Ai Cập thời sơ vương triều và, muộn hơn một chút, ở thung lũng Indus và Trung Quốc. Ngôn ngữ được ghi lại là <strong>Sumerian</strong> (<em>eme-gir</em>, "tiếng nói bản địa") — và 5.200 năm sau chúng ta vẫn đang đọc nó.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Hiển thị Sumerian trên bản đồ</button>
@@ -375,11 +375,11 @@ window.TRIVIA_I18N['vi'] = {
   <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 So sánh các anh em họ còn sống của Ubykh (Abkhaz, Adyghe, Kabardian)</button>
 </div>
 
-<p>Hầu như tất cả những gì chúng ta biết về Ubykh trong thế kỷ 20 chúng ta đều nợ nhà nghiên cứu Ấn-Âu và thần thoại học so sánh người Pháp <strong>Georges Dumézil</strong>. Bắt đầu từ năm 1930, Dumézil đã thực hiện các chuyến đi lặp lại đến Anatolia để ghi âm cộng đồng đang suy tàn, trở lại năm này qua năm khác trong gần sáu thập kỷ. Ông đã sản xuất một loạt mô tả ngữ pháp, các bộ sưu tập văn bản và cuốn <em>Dictionnaire de la langue oubykh</em> không thể thiếu (1965). Esenç trở thành người tư vấn chính của Dumézil vào những năm 1960; cả hai đã trao đổi thư từ và làm việc cùng nhau cho đến khi Dumézil qua đời năm 1986.</p>
+<p>Hầu như tất cả những gì chúng ta biết về Ubykh trong thế kỷ 20 chúng ta đều nợ nhà nghiên cứu Ấn-Âu và thần thoại học so sánh người Pháp <strong>Georges Dumézil</strong>. Bắt đầu từ năm 1930, Dumézil đã thực hiện các chuyến đi lặp lại đến Anatolia để ghi âm cộng đồng đang suy tàn, trở lại năm này qua năm khác trong gần sáu thập kỷ. Ông đã sản xuất một loạt mô tả ngữ pháp và bộ sưu tập văn bản — bao gồm bộ <em>Documents anatoliens sur les langues et les traditions du Caucase</em> (đặc biệt là quyển IV: <em>Récits oubykh</em>, 1965) — vẫn là nền tảng cho đến nay. Esenç trở thành người tư vấn chính của Dumézil vào những năm 1960; cả hai đã trao đổi thư từ và làm việc cùng nhau cho đến khi Dumézil qua đời năm 1986.</p>
 
 <blockquote>"Ông biết rằng mình là người cuối cùng. Ông mang ngôn ngữ đó như mang một ngọn nến trong căn phòng kín: một mình, chăm chú, và ý thức rằng không khí sẽ không kéo dài." — hồi ức diễn giải từ các cộng tác viên của Dumézil</blockquote>
 
-<p>Esenç hiểu vai trò của mình với sự rõ ràng bất thường. Ông đã ghi nhớ các câu tục ngữ, bài hát, lời cầu nguyện, tên địa danh và truyện dân gian cụ thể để chúng có thể được ghi âm. Ông khăng khăng được chôn dưới một bia mộ nêu tên ông, bằng tiếng Ubykh, là "người nói cuối cùng", một cụm từ mà chính ông đọc chính tả. Nhà ngôn ngữ học người Hà Lan <strong>Rieks Smeets</strong> và nhà ngữ âm học người Na Uy <strong>Hans Vogt</strong> đã tiếp tục tài liệu sau Dumézil; <em>Dictionnaire de la langue oubykh</em> năm 1963 của Vogt (một tác phẩm riêng biệt với của Dumézil) và các nghiên cứu sau này của Smeets vẫn là tài liệu tham khảo tiêu chuẩn.</p>
+<p>Esenç hiểu vai trò của mình với sự rõ ràng bất thường. Ông đã ghi nhớ các câu tục ngữ, bài hát, lời cầu nguyện, tên địa danh và truyện dân gian cụ thể để chúng có thể được ghi âm. Ông khăng khăng được chôn dưới một bia mộ nêu tên ông, bằng tiếng Ubykh, là "người nói cuối cùng", một cụm từ mà chính ông đọc chính tả. Nhà ngữ âm học người Na Uy <strong>Hans Vogt</strong> đã biên soạn cuốn từ điển tham khảo tiêu chuẩn <em>Dictionnaire de la langue oubykh</em> (1963), và nhà ngôn ngữ học người Hà Lan <strong>Rieks Smeets</strong> đã tiếp tục công việc ghi chép trong nửa sau thế kỷ 20; cùng với các bản biên tập văn bản của Dumézil, thành quả của họ tạo nên nền tảng tài liệu cho ngôn ngữ này.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Phóng to vào Hacıosman, Thổ Nhĩ Kỳ</button>
@@ -390,7 +390,7 @@ window.TRIVIA_I18N['vi'] = {
   },
   'sentinelese-unknown': {
     title: 'Sentinelese — ngôn ngữ chúng ta chưa bao giờ ghi âm',
-    summary: 'Trên một hòn đảo rộng 60 km² ở Vịnh Bengal sống một dân tộc đã từ chối mọi tiếp xúc trong sáu mươi nghìn năm — và ngôn ngữ của họ chưa có người ngoài nào từng nghe, chứ đừng nói đến ghi chép.',
+    summary: 'Trên một hòn đảo rộng 60 km² ở Vịnh Bengal sống một dân tộc mà tổ tiên được tin là thuộc về một trong những lớp định cư sớm nhất của con người trong khu vực — và ngôn ngữ của họ chưa có người ngoài nào từng nghe, chứ đừng nói đến ghi chép.',
     body: `
 <p>Khoảng 1.200 km về phía đông đất liền Ấn Độ, ở Vịnh Bengal, nằm một hòn đảo nhỏ có rừng rộng khoảng 60 km². Nó được gọi là <strong>Đảo Bắc Sentinel</strong>, và đâu đó bên trong sống có lẽ từ năm mươi đến vài trăm người — không ai biết con số thực — những người đã từ chối mọi nỗ lực giao tiếp với họ. Họ là <strong>người Sentinel</strong>, và ngôn ngữ của họ là ngôn ngữ loài người duy nhất trên Trái Đất chưa bao giờ được ghi âm, chưa bao giờ được phiên âm, và thậm chí chưa bao giờ được phân loại một cách tự tin.</p>
 
@@ -398,7 +398,7 @@ window.TRIVIA_I18N['vi'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Bay đến Đảo Bắc Sentinel</button>
 </div>
 
-<p>Người Sentinel là một trong những dân tộc <strong>Andaman</strong> — hậu duệ của một trong những đợt phân tán <em>Ra Khỏi Châu Phi</em> sớm nhất của con người, những người đã đến Andaman có lẽ 60.000 năm trước và vẫn cô lập kể từ đó. Bằng chứng di truyền đặt họ trong số những quần thể cô lập liên tục cổ xưa nhất trên hành tinh. Các láng giềng của họ trên quần đảo rộng hơn — Người Đại Andaman, Onge của Đảo Tiểu Andaman, và Jarawa của Nam và Trung Andaman — nói các ngôn ngữ thuộc <strong>hai họ không liên quan</strong>: Đại Andaman, và họ Ongan nhỏ hơn (Onge + Jarawa). Sentinelese được nghi là chị em thứ ba, có thể gần gũi nhất với Ongan, nhưng không ai từng nghe đủ từ để xác nhận điều đó.</p>
+<p>Người Sentinel là một trong những dân tộc <strong>Andaman</strong> — được tin là hậu duệ của một trong những đợt phân tán <em>Ra Khỏi Châu Phi</em> sớm nhất của loài người, có thể đã đến Andaman cách đây hàng chục nghìn năm. Bằng chứng di truyền xếp họ vào số những quần thể cô lập lâu đời nhất trên hành tinh, mặc dù không thể khẳng định chắc chắn về thời lượng chính xác và tính liên tục của sự cô lập đó. Các láng giềng của họ trên quần đảo rộng hơn — Người Đại Andaman, Onge của Đảo Tiểu Andaman, và Jarawa của Nam và Trung Andaman — nói các ngôn ngữ thuộc <strong>hai họ không liên quan</strong>: Đại Andaman, và họ Ongan nhỏ hơn (Onge + Jarawa). Sentinelese được nghi là chị em thứ ba, có thể gần gũi nhất với Ongan, nhưng không ai từng nghe đủ từ để xác nhận điều đó.</p>
 
 <p>Mọi nỗ lực tiếp xúc được ghi chép đều hoặc thất bại hoặc kết thúc bằng bạo lực:</p>
 
@@ -406,7 +406,7 @@ window.TRIVIA_I18N['vi'] = {
   <li><strong>1880</strong>: Sĩ quan thuộc địa Anh <strong>Maurice Vidal Portman</strong> đã đổ bộ với một nhóm tìm kiếm, bắt một cặp vợ chồng cao tuổi và bốn đứa trẻ, và đưa họ đến Port Blair. Người lớn chết trong vòng vài ngày, gần như chắc chắn vì các bệnh nhiễm trùng thông thường mà người Sentinel không có miễn dịch. Những đứa trẻ được trả lại đảo cùng với quà tặng. Bất cứ điều gì Portman ghi lại về lời nói của họ chỉ tồn tại như các mảnh vỡ và ghi chú thứ cấp.</li>
   <li><strong>1974</strong>: Một đội quay phim của National Geographic bị đẩy lùi bởi mũi tên. Đạo diễn bị một mũi tên 2,4m vào đùi.</li>
   <li><strong>1991</strong>: Nhà nhân học Ấn Độ <strong>Madhumala Chattopadhyay</strong> đã dẫn đầu một loạt "thả quà" dừa đạt được tiếp xúc hòa bình duy nhất được biết — người Sentinel lội ra thuyền không vũ trang để thu thập dừa. Các chuyến thăm bị dừng vào năm 1996 do lo ngại lây truyền bệnh.</li>
-  <li><strong>Sóng thần 2004</strong>: Một trực thăng Tuần duyên đã bay qua đảo vài ngày sau sóng thần Boxing Day để kiểm tra người sống sót. Nó bị mũi tên đón. Cư dân đã di chuyển đến nơi cao hơn và không bị thương.</li>
+  <li><strong>Sóng thần 2004</strong>: Một trực thăng Tuần duyên đã bay qua đảo vài ngày sau sóng thần Ấn Độ Dương năm 2004 để kiểm tra người sống sót. Nó bị mũi tên đón. Cư dân đã di chuyển đến nơi cao hơn và không bị thương.</li>
   <li><strong>2006</strong>: Hai ngư dân trôi dạt vào bờ bị giết.</li>
   <li><strong>2018</strong>: Nhà truyền giáo Mỹ <strong>John Allen Chau</strong> bị giết khi cố gắng truyền giáo cho người Sentinel, đã bất hợp pháp hối lộ ngư dân địa phương đưa anh ta đến đó.</li>
 </ul>
@@ -421,10 +421,10 @@ window.TRIVIA_I18N['vi'] = {
     `,
   },
   'modern-hebrew-revival': {
-    title: 'Hebrew — ngôn ngữ cổ duy nhất từng được hồi sinh',
-    summary: 'Trong gần 1.700 năm, không có đứa trẻ nào lớn lên nói tiếng Hebrew. Ngày nay nó là tiếng mẹ đẻ của chín triệu người — sự hồi sinh hoàn toàn thành công duy nhất của một ngôn ngữ chết trong lịch sử loài người.',
+    title: 'Hebrew — một ngôn ngữ cổ được đưa trở lại đời sống hàng ngày',
+    summary: 'Trong gần 1.700 năm, Hebrew tồn tại như ngôn ngữ phụng vụ và văn học nhưng không có đứa trẻ nào lớn lên nói nó. Ngày nay nó là tiếng mẹ đẻ của chín triệu người — đợt hồi sinh quy mô lớn nhất và thành công nhất đối với một ngôn ngữ đã không còn là tiếng nói thường ngày của cộng đồng.',
     body: `
-<p>Vào khoảng năm <strong>200 sau Công nguyên</strong>, hộ gia đình cuối cùng ở Palestine La Mã trong đó trẻ em lớn lên nghe Hebrew tại bàn ăn tối đã im lặng. Aramaic đã chiếm lĩnh đường phố; Hy Lạp thống trị các thành phố; Mishnah đang được biên soạn bằng tiếng Hebrew mà các học giả viết nhưng ngày càng không <em>nói</em>. Trong 1.700 năm tiếp theo, Hebrew tồn tại như ngôn ngữ của giáo đường, sách cầu nguyện, cuộn Torah, và bức thư từ rabbi này đến rabbi khác — một ngôn ngữ viết được sử dụng bởi người lớn biết chữ, nhưng không phải lời nói đầu tiên của bất kỳ đứa trẻ nào. Sau đó, không hiểu sao, điều đó đã thay đổi. Hebrew hiện là ngôn ngữ nói hàng ngày của khoảng <strong>chín triệu người</strong>, khoảng một nửa trong số họ là người nói bản ngữ học nó từ khi còn là em bé. Đây là trường hợp được ghi chép duy nhất trong lịch sử loài người về một ngôn ngữ hoàn toàn chết được đưa trở lại sử dụng bản ngữ hàng ngày.</p>
+<p>Vào khoảng năm <strong>200 sau Công nguyên</strong>, hộ gia đình cuối cùng ở Palestine La Mã trong đó trẻ em lớn lên nghe Hebrew tại bàn ăn tối đã im lặng. Aramaic đã chiếm lĩnh đường phố; Hy Lạp thống trị các thành phố; Mishnah đang được biên soạn bằng tiếng Hebrew mà các học giả viết nhưng ngày càng không <em>nói</em>. Trong 1.700 năm tiếp theo, Hebrew tồn tại như ngôn ngữ của giáo đường, sách cầu nguyện, cuộn Torah, và bức thư từ rabbi này đến rabbi khác — một ngôn ngữ viết được sử dụng bởi người lớn biết chữ, nhưng không phải lời nói đầu tiên của bất kỳ đứa trẻ nào. Sau đó, không hiểu sao, điều đó đã thay đổi. Hebrew hiện là ngôn ngữ nói hàng ngày của khoảng <strong>chín triệu người</strong>, khoảng một nửa trong số họ là người nói bản ngữ học nó từ khi còn là em bé. Có những cuộc hồi sinh quy mô nhỏ hơn (Cornish, Manx, Wampanoag), nhưng Hebrew vẫn là trường hợp quy mô lớn nhất và được ghi chép kỹ lưỡng nhất về một ngôn ngữ không còn là tiếng mẹ đẻ của bất kỳ ai được đưa trở lại sử dụng hàng ngày trong cộng đồng.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Hiển thị Hebrew trên bản đồ</button>
@@ -468,7 +468,7 @@ window.TRIVIA_I18N['vi'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ Bay đến Gandhāra của Pāṇini</button>
 </div>
 
-<p>Chúng ta hầu như không biết gì về con người Pāṇini — chỉ rằng ông đến từ làng Śalātura (Lahor hiện đại, gần Attock ở Pakistan), có lẽ làm việc vào thế kỷ thứ 5 hoặc thứ 4 TCN, và rằng mọi thứ ông sản xuất rõ ràng được thiết kế để được <strong>ghi nhớ to</strong>. Aṣṭādhyāyī được bảo tồn bằng đọc thuộc lòng trong nhiều thế kỷ trước khi được viết xuống. Để tiết kiệm âm tiết — và do đó hơi thở — Pāṇini đã phát minh ra cả một <strong>siêu ngôn ngữ kỹ thuật</strong>: một hệ thống các chữ viết tắt một chữ cái, các danh sách âm vị có thứ tự gọi là <strong>Śiva sūtra</strong>, các quy ước cho việc áp dụng quy tắc "nhạy cảm theo ngữ cảnh", anuvṛtti (sự kế thừa quy tắc từ một dòng trước không cần được phát biểu lại), và một hệ thống ưu tiên để giải quyết quy tắc nào áp dụng khi hai quy tắc xung đột.</p>
+<p>Chúng ta hầu như không biết gì về con người Pāṇini — chỉ rằng ông đến từ làng Śalātura (Lahor / Lahur hiện đại, đôi khi được gọi là "Lahore Nhỏ", gần Attock ở tây bắc Pakistan — không nên nhầm với thành phố lớn Lahore ở Punjab), có lẽ làm việc vào thế kỷ thứ 5 hoặc thứ 4 TCN, và rằng mọi thứ ông sản xuất rõ ràng được thiết kế để được <strong>ghi nhớ to</strong>. Aṣṭādhyāyī được bảo tồn bằng đọc thuộc lòng trong nhiều thế kỷ trước khi được viết xuống. Để tiết kiệm âm tiết — và do đó hơi thở — Pāṇini đã phát minh ra cả một <strong>siêu ngôn ngữ kỹ thuật</strong>: một hệ thống các chữ viết tắt một chữ cái, các danh sách âm vị có thứ tự gọi là <strong>Śiva sūtra</strong>, các quy ước cho việc áp dụng quy tắc "nhạy cảm theo ngữ cảnh", anuvṛtti (sự kế thừa quy tắc từ một dòng trước không cần được phát biểu lại), và một hệ thống ưu tiên để giải quyết quy tắc nào áp dụng khi hai quy tắc xung đột.</p>
 
 <p>Kết quả đọc, đối với mắt hiện đại, kỳ lạ giống như các quy tắc sản xuất của một ngữ pháp phi ngữ cảnh — chỉ có điều mạnh mẽ hơn. Định dạng quy tắc của Pāṇini về cơ bản là:</p>
 
@@ -491,7 +491,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <blockquote>"Ngữ pháp mô tả của Sanskrit mà Pāṇini đã hoàn thiện là một trong những tượng đài vĩ đại nhất của trí thông minh con người." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
 
-<p>Bản thân Sanskrit (<em>saṃskṛta-</em>, "được mài giũa, tinh chế") đã là một chuẩn văn học và nghi lễ, không phải tiếng địa phương, vào thời Pāṇini. Sau ông, nó trở thành, một cách hình thức, những gì Pāṇini nói nó là: một ngôn ngữ mà mọi câu được tạo thành tốt, về nguyên tắc, có thể suy ra từ 4.000 sūtra của ông. Hai nghìn năm trăm năm sau, đó cũng chính là điều chúng ta yêu cầu từ một trình phân tích cú pháp. Aṣṭādhyāyī không chỉ mô tả Sanskrit. Nó âm thầm phát minh ra ý tưởng rằng một ngôn ngữ có thể được mô tả.</p>
+<p>Bản thân Sanskrit (<em>saṃskṛta-</em>, "được mài giũa, tinh chế") đã là một chuẩn văn học và nghi lễ, không phải tiếng địa phương, vào thời Pāṇini. Sau ông, nó trở thành, một cách hình thức, những gì Pāṇini nói nó là: một ngôn ngữ mà mọi câu được tạo thành tốt, về nguyên tắc, có thể suy ra từ 4.000 sūtra của ông. Hai nghìn năm trăm năm sau, đó cũng chính là điều chúng ta yêu cầu từ một trình phân tích cú pháp. Aṣṭādhyāyī không chỉ mô tả Sanskrit. Nó đã đẩy ý tưởng về sự mô tả ngôn ngữ một cách sinh sản và hình thức tới một mức độ chính xác chưa từng thấy trong thời cổ đại — và có lẽ phải đến khi ngôn ngữ học hình thức thế kỷ 20 độc lập tái phát hiện chính những ý tưởng đó mới được sánh ngang.</p>
     `,
   },
   'esperanto-zamenhof': {
@@ -531,7 +531,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <p>Lịch sử thế kỷ 20 tàn nhẫn với những người nói Esperanto. Hitler đã lên án ngôn ngữ này trong <em>Mein Kampf</em> như một âm mưu Do Thái; ba người con của Zamenhof bị sát hại trong Holocaust. Stalin đã giam giữ và xử tử những người nói Esperanto Liên Xô trong các cuộc thanh trừng 1937–38 như "gián điệp quốc tế". Phong trào đã sống sót qua cả hai.</p>
 
-<p>Ngày nay Esperanto có lẽ <strong>hai triệu người nói</strong> ở các cấp độ khác nhau, và — duy nhất đối với một ngôn ngữ nhân tạo — khoảng <strong>một nghìn người nói bản ngữ</strong> được biết đến như <em>denaskuloj</em>, được nuôi dạy trong các hộ gia đình song ngữ nơi Esperanto là một trong những ngôn ngữ trong nhà. Riêng khóa học Esperanto của Duolingo đã ghi danh hơn một triệu người học. Không có ngôn ngữ nhân tạo nào khác từng vượt qua được truyền tải giữa các thế hệ.</p>
+<p>Ngày nay Esperanto có lẽ <strong>hai triệu người nói</strong> ở các cấp độ khác nhau, và khoảng <strong>một nghìn người nói bản ngữ</strong> được biết đến như <em>denaskuloj</em>, được nuôi dạy trong các hộ gia đình song ngữ nơi Esperanto là một trong những ngôn ngữ trong nhà. Riêng khóa học Esperanto của Duolingo đã ghi danh hơn một triệu người học. Xét theo bất kỳ tiêu chí nào — cộng đồng bền vững, bề rộng văn học, số lượng người nói bản ngữ — Esperanto là ngôn ngữ nhân tạo thành công nhất từng được thử nghiệm cho đến nay.</p>
 
 <p>Zamenhof không bao giờ tuyên bố Esperanto sẽ thay thế tiếng mẹ đẻ của bất kỳ ai. Ông muốn một <em>dua lingvo</em> — ngôn ngữ thứ hai — xa lạ như nhau đối với tất cả mọi người, để không người nói bản ngữ nào có lợi thế trên bàn đàm phán. Một thế kỷ rưỡi sau, dự án nhỏ, nhưng nó vẫn sống, vẫn trung lập, và vẫn hy vọng — đúng như người sáng lập của nó, <em>Doktoro Esperanto</em>, đã ký tên.</p>
     `,
@@ -663,12 +663,12 @@ window.TRIVIA_I18N['vi'] = {
 
 <p>Sự phục hồi thực sự của Hangul đến vào cuối thế kỷ 19 với nhà cải cách Ju Si-gyeong, người đã hệ thống hóa tên của nó (<em>han-geul</em>, "chữ viết vĩ đại") và chính tả hiện đại của nó. Sau thời kỳ thuộc địa Nhật Bản — trong đó Hangul lại bị cấm, lần này bởi một cường quốc bên ngoài — Hàn Quốc đã tuyên bố Ngày Hangul (한글날) là một ngày lễ quốc gia. Bắc Triều Tiên gọi nó là <em>Chosŏn'gŭl</em> và quan sát ngày lễ riêng vào ngày 15 tháng 1. Tỷ lệ biết chữ Hàn Quốc hiện đại về mặt chức năng là 100%.</p>
 
-<p>Nhà ngôn ngữ học Geoffrey Sampson đã mô tả Hangul vào năm 1985 là "có lẽ là hệ thống chữ viết khoa học nhất đang được sử dụng phổ biến ở bất kỳ quốc gia nào". Trẻ em thường học nó trong khoảng một giờ. Đây là chữ viết lớn duy nhất trên thế giới có cả nhà thiết kế được biết đến và lý do thiết kế được ghi chép — một thí nghiệm phòng thí nghiệm 600 năm tuổi đã hoạt động.</p>
+<p>Nhà ngôn ngữ học Geoffrey Sampson đã mô tả Hangul vào năm 1985 là "có lẽ là hệ thống chữ viết khoa học nhất đang được sử dụng phổ biến ở bất kỳ quốc gia nào". Hình dáng các chữ cái cơ bản nổi tiếng dễ ghi nhớ — trẻ em Hàn Quốc có thể nắm bắt bảng chữ cái chỉ trong một buổi ngồi, mặc dù để đạt được sự lưu loát đọc viết đầy đủ vẫn cần nhiều năm như mọi chữ viết khác. Đây là chữ viết lớn duy nhất trên thế giới có cả nhà thiết kế được biết đến và lý do thiết kế được ghi chép — một thí nghiệm phòng thí nghiệm 600 năm tuổi đã hoạt động.</p>
     `,
   },
   'cherokee-sequoyah': {
     title: 'Sequoyah — thiên tài mù chữ phát minh hệ thống chữ viết từ con số không',
-    summary: 'Năm 1821, một thợ kim hoàn Cherokee không biết đọc tiếng Anh đã trình bày một bảng âm tiết 85 ký tự mà ông đã xây dựng một mình trong 12 năm. Trong vòng một thập kỷ, biết chữ Cherokee vượt qua biết chữ của những người định cư da trắng xung quanh.',
+    summary: 'Năm 1821, một thợ kim hoàn Cherokee không biết đọc tiếng Anh đã trình bày một bảng âm tiết 85 ký tự mà ông đã xây dựng một mình trong 12 năm. Trong vòng một thập kỷ, các quan sát viên đương thời báo cáo rằng tỷ lệ biết chữ của người Cherokee đã ngang bằng hoặc vượt qua tỷ lệ biết chữ của những người định cư da trắng xung quanh.',
     body: `
 <p><strong>Sequoyah</strong> (cũng viết là ᏍᏏᏉᏯ <em>Ssiquoya</em>, hoặc trong tiếng Anh là George Guess, khoảng 1770–1843) là một trong những người duy nhất trong lịch sử được ghi chép đã phát minh ra một hệ thống chữ viết hoạt động đầy đủ từ con số không, trong khi bản thân mù chữ ở bất kỳ ngôn ngữ nào. Câu chuyện không thể tin đến mức các nhà bình luận thế kỷ 19 liên tục cố giải thích nó đi. Nó đã xảy ra dù sao.</p>
 
@@ -900,7 +900,7 @@ window.TRIVIA_I18N['vi'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — ngôn ngữ không có trái hay phải',
-    summary: 'Một ngôn ngữ Thổ dân Úc của miền Bắc xa Queensland chỉ sử dụng các hướng tuyệt đối cố định — bắc, nam, đông, tây — ngay cả cho các vật thể trên bàn. Người nói duy trì định hướng dead-reckoning mọi lúc.',
+    summary: 'Một ngôn ngữ Thổ dân Úc của miền Bắc xa Queensland chỉ sử dụng các hướng tuyệt đối cố định — bắc, nam, đông, tây — ngay cả cho các vật thể trên bàn. Người nói duy trì định hướng theo <em>hàng hải ước lượng (dead-reckoning)</em> mọi lúc.',
     body: `
 <p>Nếu bạn ngồi xuống bàn với một người nói tiếng Anh và họ muốn bạn đưa cho họ một cái cốc, họ sẽ nói "cốc bên trái bạn" hoặc "cốc trước mặt bạn". Khung tham chiếu là <strong>vị kỷ</strong> — neo vào cơ thể bạn. Hầu như mọi ngôn ngữ châu Âu đều hoạt động theo cách này.</p>
 
@@ -926,7 +926,7 @@ window.TRIVIA_I18N['vi'] = {
   <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Xem "Tay" trong Guugu Yimithirr</button>
 </div>
 
-<p>Hậu quả nhận thức, được Levinson, John Haviland và các đồng nghiệp tại Viện Max Planck ghi chép, thật nổi bật. Người nói Guugu Yimithirr duy trì một cảm giác <strong>dead-reckoning</strong> không gián đoạn về định hướng của họ. Trong các thí nghiệm, họ có thể chỉ chính xác đến những nơi xa xôi (biển, một khu định cư lân cận, nhà của một người thân cách xa hàng trăm km) bất kể họ đang ngồi trong một căn phòng không có cửa sổ, bịt mắt, sau khi được lái xe vòng tròn, hay ở dưới đáy hang động. La bàn cố định của họ đơn giản là không tắt.</p>
+<p>Hậu quả nhận thức, được Levinson, John Haviland và các đồng nghiệp tại Viện Max Planck ghi chép, thật nổi bật. Người nói Guugu Yimithirr duy trì một cảm giác không gián đoạn về định hướng của họ thông qua <strong>hàng hải ước lượng (dead-reckoning)</strong>. Trong các thí nghiệm, họ có thể chỉ chính xác đến những nơi xa xôi (biển, một khu định cư lân cận, nhà của một người thân cách xa hàng trăm km) bất kể họ đang ngồi trong một căn phòng không có cửa sổ, bịt mắt, sau khi được lái xe vòng tròn, hay ở dưới đáy hang động. La bàn cố định của họ đơn giản là không tắt.</p>
 
 <p>Đây không phải là một kỹ năng đặc biệt của một số ít trưởng lão. Đây là <strong>thuộc tính phổ quát của những người nói lưu loát</strong>, được học từ thời thơ ấu. Trẻ ba tuổi ra cử chỉ cố định. Máy móc tinh thần được xây dựng bởi ngôn ngữ và được tập luyện liên tục bởi yêu cầu nói về nó.</p>
 
@@ -1055,9 +1055,9 @@ window.TRIVIA_I18N['vi'] = {
   },
   'nicaraguan-sign-language': {
     title: 'Ngôn ngữ Ký hiệu Nicaragua — một ngôn ngữ ra đời trong thời gian thực',
-    summary: 'Trường hợp duy nhất được ghi chép trong lịch sử về một ngôn ngữ loài người tự nhiên hoàn toàn được ra đời — được tạo ra một cách tự phát bởi trẻ em điếc Nicaragua khi cuối cùng họ được tập hợp lại với nhau vào những năm 1970 và 80.',
+    summary: 'Một trong những trường hợp được ghi chép đầy đủ nhất về một ngôn ngữ loài người tự nhiên mới đang định hình trong thời gian thực — xuất hiện giữa những trẻ em điếc Nicaragua khi cuối cùng họ được tập hợp lại với nhau vào những năm 1970 và 80.',
     body: `
-<p>Hãy tưởng tượng bạn là một nhà ngôn ngữ học và được xem một ngôn ngữ loài người mới toanh xuất hiện — không vay mượn, không creole hóa từ các ngôn ngữ hiện có, mà được tạo ra từ con số không bởi trẻ em trong một thế hệ duy nhất. Đó chính xác là những gì đã xảy ra ở Managua, Nicaragua, giữa năm 1977 và đầu những năm 1990, tạo ra cái mà chúng ta hiện gọi là <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Ngôn ngữ Ký hiệu Nicaragua.</p>
+<p>Hãy tưởng tượng bạn là một nhà ngôn ngữ học và được xem một ngôn ngữ loài người mới định hình trong thời gian thực — không phải được creole hóa từ một ngôn ngữ nói có sẵn, mà được tạo ra bởi trẻ em trong một thế hệ duy nhất, phần lớn khởi đầu từ chính các hệ thống ký hiệu nhà và cử chỉ của chúng. Đó đại khái là những gì đã xảy ra ở Managua, Nicaragua, giữa năm 1977 và đầu những năm 1990, tạo ra cái mà chúng ta hiện gọi là <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Ngôn ngữ Ký hiệu Nicaragua. Các ngôn ngữ ký hiệu mới hình thành khác (Ngôn ngữ Ký hiệu Bedouin Al-Sayyid ở Israel, Kata Kolok ở Bali) đã được nghiên cứu kể từ đó, nhưng ISN vẫn là trường hợp được ghi chép đầy đủ nhất về quá trình nổi lên theo từng thế hệ.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Hiển thị Ngôn ngữ Ký hiệu Nicaragua trên bản đồ</button>
@@ -1076,7 +1076,7 @@ window.TRIVIA_I18N['vi'] = {
 
 <p>Đây là sự hỗ trợ thực nghiệm trực tiếp cho ý tưởng rằng <strong>ngôn ngữ là một đầu ra sáng tạo của tâm trí trẻ em</strong>, không chỉ là một bản ghi thụ động của đầu vào. Trẻ em trong các lứa kế tiếp đã độc lập phát minh ra các đặc điểm — như phân hủy các sự kiện chuyển động thành các thành phần "đường đi" và "cách thức" — mà không có người lớn nào đã cho chúng, và trông giống đáng kể như các đặc điểm được ghi chép trong các ngôn ngữ ký hiệu được thiết lập khác.</p>
 
-<p>Ngày nay ISN có lẽ 3.000 người ký và một cộng đồng Người điếc mạnh mẽ được tổ chức thông qua <em>Asociación Nacional de Sordos de Nicaragua</em>. Đây là ngôn ngữ tự nhiên hoàn toàn trẻ nhất trên Trái Đất — và là ngôn ngữ duy nhất mà toàn bộ sự ra đời của nó đã được ghi lại trên máy quay, trên giấy, và trong các ghi chú thực địa ngôn ngữ học.</p>
+<p>Ngày nay ISN có lẽ 3.000 người ký và một cộng đồng Người điếc mạnh mẽ được tổ chức thông qua <em>Asociación Nacional de Sordos de Nicaragua</em>. Đây là một trong những ngôn ngữ tự nhiên hoàn toàn mới hình thành gần đây nhất — và là trường hợp mà toàn bộ quá trình định hình của nó đã được ghi lại đầy đủ nhất trên máy quay, trên giấy, và trong các ghi chú thực địa ngôn ngữ học.</p>
     `,
   },
   'mama-papa-universals': {
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['vi'] = {
 <p>Hãy chọn bất kỳ ngôn ngữ nào ngẫu nhiên. Hỏi nó nói "mẹ" như thế nào. Xác suất không thoải mái cao rằng từ bắt đầu bằng <strong>m</strong> và chứa <em>a</em>: tiếng Anh <em>mama</em>, Quan Thoại <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Welsh <em>mam</em>, Hebrew <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaii <em>makuahine</em> / <em>māmā</em>. Bây giờ hỏi nó nói "cha" như thế nào. Trên một mẫu rộng lớn không kém, bạn nhận được <strong>papa, baba, tata, dada, abba, atta</strong> — một âm tắc môi hoặc đỉnh răng cộng với <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Bật "mẹ" qua 8 ngôn ngữ không liên quan</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 So sánh "mẹ" qua 8 ngôn ngữ không liên quan</button>
 </div>
 
 <p>Đây không phải là tình cờ. Nhà nhân học Yale <strong>George P. Murdock</strong> đã tập hợp một bộ dữ liệu xuyên văn hóa năm 1959 gồm 1.072 thuật ngữ thân tộc từ 470 ngôn ngữ và phát hiện ra rằng các từ kiểu <em>mama</em> được sử dụng cho "mẹ" trong 52% mẫu, và các từ kiểu <em>papa</em>/<em>tata</em>/<em>baba</em> cho "cha" trong 55%. Các ngôn ngữ trải dài mọi họ trên Trái Đất — Ấn-Âu, Hán-Tạng, Niger-Congo, Austronesian, Uto-Aztec, Pama-Nyungan. Chúng không thể tất cả đều chia sẻ một tổ tiên chung.</p>

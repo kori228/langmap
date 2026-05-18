@@ -78,6 +78,11 @@ const EXCLUDED_CODES = new Set([
   // ~1980 when the last Warama initiations stopped. Classed as historical via
   // HIST_DESCENDANT['lbz_damin']='lbz' so excluded from the modern map.
   'lbz_damin',
+  // 2026-05-18: 4 historical-named langs that were defaulting to modern.
+  // See HIST_DESCENDANT comment for details. `prg` Old Prussian is classified
+  // historical (fragmentary) — keep separate from EXCLUDED_CODES if it's marked
+  // fragmentary elsewhere; ang/ohu/myz are well-attested.
+  'ang', 'ohu', 'myz',
 ]);
 
 const LANG_DATA = {
@@ -4909,6 +4914,12 @@ const DATA_STATUS_OVERRIDES = {
     // Pass 35: 2 critically-endangered isolates with fragmentary documentation
     yuc:       'fragmentary',      // Yuchi — ~5 fluent speakers; Linn 2001 + Wagner 1934 only
     kgg:       'fragmentary',      // Kusunda — ~3 partial speakers; Watters 2006 only
+    // 2026-05-18: 4 historical codes that were missing both HIST_DESCENDANT
+    // and DATA_STATUS_OVERRIDES — see HIST_DESCENDANT comment below for context.
+    ang:       'attested',         // Old English (ISO code; duplicate with en_ang)
+    ohu:       'attested',         // Old Hungarian — Funeral Sermon (c. 1192) + medieval corpus
+    prg:       'fragmentary',      // Old Prussian — Elbing Vocabulary + 3 catechisms only
+    myz:       'attested',         // Classical Mandaic — Ginza Rabba + extensive religious corpus
 };
 
 // === HIST_DESCENDANT (Audit Task 122) ================================
@@ -4969,6 +4980,15 @@ const HIST_DESCENDANT = {
     // languages, so the [#9] EXCLUDED_CODES carve-out for fragmentary
     // rows (added in Round 2) keeps them visible on the modern map.
     itl:null, ykg:null,
+    // 2026-05-18: 4 historical-named langs were missing from HIST_DESCENDANT
+    // and therefore showing on the modern map. Per user report ("古英語が
+    // 現代言語に分類されている"). The `ang` ISO code coexists with the
+    // legacy underscore form `en_ang` — both are kept for now; consolidate
+    // in a follow-up.
+    ang:'en',      // Old English ISO code (legacy duplicate `en_ang` already mapped above)
+    ohu:'hu',      // Old Hungarian → modern Hungarian
+    prg:null,      // Old Prussian — extinct Baltic branch, no direct living descendant
+    myz:null,      // Classical Mandaic — Modern Mandaic (mid) is the living descendant but not in our data; null for now
     // Living fragmentary languages added 2026-05-16/17 with partial Swadesh
     // coverage. Null descendant clears [#17] inverse invariant — same pattern
     // as itl/ykg/yuc/kgg.

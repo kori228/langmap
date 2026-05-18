@@ -37,7 +37,7 @@ window.TRIVIA_I18N['de'] = {
 
 <p>Everetts Behauptungen sind <strong>heftig umstritten</strong>. Spätere Forscher, darunter Andrew Nevins, David Pesetsky und Cilene Rodrigues, haben argumentiert, dass Pirahã sehr wohl Rekursion besitzt — nur selten genutzt — und dass die Zahlentatsachen ohne exotische kognitive Konsequenzen erklärt werden können. Everett hat zurückgeschossen; die Debatte ist noch offen.</p>
 
-<p>Was <em>nicht</em> umstritten ist, ist die kulturelle Beschränkung gegen das Sprechen über Nicht-Erlebtes und Pirahãs erstaunliche Mehrkanal-Kommunikation. Wer auch immer den Rekursionskrieg gewinnt, Pirahã hat geschafft, was nur wenige Sprachen je tun: Es zwang die Linguisten, einmal mehr zu fragen, ob die Sprache das Denken formt — oder das Denken die Sprache.</p>
+<p>Weniger umstritten, wenn auch nach wie vor diskutiert, sind die kulturelle Norm, das Sprechen auf direkt Erlebtes zu beschränken, und Pirahãs auffällige Mehrkanalübertragung. Wer auch immer den Rekursionskrieg gewinnt, Pirahã hat geschafft, was nur wenige Sprachen je tun: Es zwang die Linguisten, einmal mehr zu fragen, ob die Sprache das Denken formt — oder das Denken die Sprache.</p>
     `,
   },
 
@@ -75,7 +75,7 @@ window.TRIVIA_I18N['de'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="28.10" data-lng="-17.20" data-zoom="9" data-tiles="terrain">🌋 In die Barrancos hineinzoomen</button>
 </div>
 
-<p>Silbo ist nicht das einzige überlebende Pfeifregister — Kuşköy in der Türkei, Hmong-Werbepfeife, das gepfiffene Mazatec-Spanisch in Oaxaca und die gepfiffenen Akha-Töne in Yunnan koexistieren alle mit ihren gesprochenen Eltern — aber es ist das am stärksten institutionalisierte, das am besten dokumentierte und das einzige, das offiziell als immaterielles Kulturerbe geschützt wurde. Wenn Sie das nächste Mal auf einem Bergrücken auf La Gomera stehen und hören, was wie ein sehr gesprächiger Vogel klingt, hören Sie noch einmal hin: Es könnte jemand sein, der seinem Cousin sagt, was er aus dem Laden mitbringen soll.</p>
+<p>Silbo ist nicht das einzige überlebende Pfeifregister — Kuşköy in der Türkei, die Hmong-Werbepfeifbräuche (eine paarungsbezogene Pfeifpraxis, kein vollständig institutionalisiertes Pfeifregister wie Silbo), das gepfiffene Mazatec-Spanisch in Oaxaca und die gepfiffenen Akha-Töne in Yunnan koexistieren alle mit ihren gesprochenen Eltern — aber es ist das am stärksten institutionalisierte, das am besten dokumentierte und das einzige, das offiziell als immaterielles Kulturerbe geschützt wurde. Wenn Sie das nächste Mal auf einem Bergrücken auf La Gomera stehen und hören, was wie ein sehr gesprächiger Vogel klingt, hören Sie noch einmal hin: Es könnte jemand sein, der seinem Cousin sagt, was er aus dem Laden mitbringen soll.</p>
     `,
   },
 
@@ -114,7 +114,7 @@ window.TRIVIA_I18N['de'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 In die Kalahari hineinzoomen</button>
 </div>
 
-<p>Die UNESCO klassifiziert Taa als <strong>schwer bedroht</strong>. Die wenigen hundert Kinder, die es noch erwerben, wachsen mit Tswana-sprachiger Schulbildung und zunehmend mobilen Lebensstilen auf. Wenn Taa in der nächsten Generation verstummt, verliert die Welt nicht nur das Erbe einer Gemeinschaft, sondern das einzigartig reichste natürliche Labor, das die Phonetikwissenschaft je hatte.</p>
+<p>Taa wird allgemein als <strong>schwer bedroht</strong> beschrieben. Die wenigen hundert Kinder, die es noch erwerben, wachsen mit Tswana-sprachiger Schulbildung und zunehmend mobilen Lebensstilen auf. Wenn Taa in der nächsten Generation verstummt, verliert die Welt nicht nur das Erbe einer Gemeinschaft, sondern das einzigartig reichste natürliche Labor, das die Phonetikwissenschaft je hatte.</p>
     `,
   },
 
@@ -182,11 +182,11 @@ window.TRIVIA_I18N['de'] = {
   <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Die überlebenden Cousins des Ubychischen vergleichen (Abchasisch, Adygeisch, Kabardinisch)</button>
 </div>
 
-<p>Fast alles, was wir über Ubychisch im 20. Jahrhundert wissen, verdanken wir dem französischen Indogermanisten und vergleichenden Mythologen <strong>Georges Dumézil</strong>. Ab 1930 unternahm Dumézil wiederholte Reisen nach Anatolien, um die schwindende Gemeinschaft aufzunehmen, und kehrte Jahr für Jahr fast sechs Jahrzehnte lang zurück. Er produzierte eine Reihe grammatischer Beschreibungen, Textsammlungen und das unentbehrliche <em>Dictionnaire de la langue oubykh</em> (1965). Esenç wurde in den 1960er Jahren Dumézils Hauptkonsultant; die beiden korrespondierten und arbeiteten zusammen bis zu Dumézils Tod 1986.</p>
+<p>Fast alles, was wir über Ubychisch im 20. Jahrhundert wissen, verdanken wir dem französischen Indogermanisten und vergleichenden Mythologen <strong>Georges Dumézil</strong>. Ab 1930 unternahm Dumézil wiederholte Reisen nach Anatolien, um die schwindende Gemeinschaft aufzunehmen, und kehrte Jahr für Jahr fast sechs Jahrzehnte lang zurück. Er produzierte eine Reihe grammatischer Beschreibungen und Textsammlungen — darunter die Reihe <em>Documents anatoliens sur les langues et les traditions du Caucase</em> (insbesondere Band IV: <em>Récits oubykh</em>, 1965) —, die bis heute grundlegend sind. Esenç wurde in den 1960er Jahren Dumézils Hauptkonsultant; die beiden korrespondierten und arbeiteten zusammen bis zu Dumézils Tod 1986.</p>
 
 <blockquote>"Er wusste, dass er der Letzte war. Er trug die Sprache, wie man eine Kerze in einem versiegelten Raum trägt: allein, aufmerksam und im Bewusstsein, dass die Luft nicht ewig reichen würde." — paraphrasierte Erinnerung von Dumézils Mitarbeitern</blockquote>
 
-<p>Esenç verstand seine Rolle mit ungewöhnlicher Klarheit. Er prägte sich Sprichwörter, Lieder, Gebete, Ortsnamen und Volksmärchen eigens deshalb ein, damit sie aufgezeichnet werden konnten. Er bestand darauf, unter einem Grabstein begraben zu werden, der ihn auf Ubychisch als "den letzten Sprecher" nannte — ein Satz, den er selbst diktierte. Der niederländische Linguist <strong>Rieks Smeets</strong> und der norwegische Phonetiker <strong>Hans Vogt</strong> setzten die Dokumentation nach Dumézil fort; Vogts <em>Dictionnaire de la langue oubykh</em> von 1963 (ein von Dumézils unabhängiges Werk) und Smeets' spätere Studien bleiben die Standardreferenzen.</p>
+<p>Esenç verstand seine Rolle mit ungewöhnlicher Klarheit. Er prägte sich Sprichwörter, Lieder, Gebete, Ortsnamen und Volksmärchen eigens deshalb ein, damit sie aufgezeichnet werden konnten. Er bestand darauf, unter einem Grabstein begraben zu werden, der ihn auf Ubychisch als "den letzten Sprecher" nannte — ein Satz, den er selbst diktierte. Der norwegische Phonetiker <strong>Hans Vogt</strong> verfasste das Standard-Referenzwörterbuch <em>Dictionnaire de la langue oubykh</em> (1963), und der niederländische Linguist <strong>Rieks Smeets</strong> setzte die Dokumentation bis ins späte 20. Jahrhundert fort; zusammen mit Dumézils Textausgaben bilden ihre Arbeiten das dokumentarische Fundament der Sprache.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Nach Hacıosman, Türkei, zoomen</button>
@@ -257,7 +257,7 @@ window.TRIVIA_I18N['de'] = {
 <p>Zu diesen drei Familien fügt man gewöhnlich <strong>zwei Isolate Ostafrikas</strong> hinzu: <strong>Hadza</strong>, gesprochen von vielleicht tausend Jägern und Sammlern rund um den Eyasisee in Tansania, und <strong>Sandawe</strong>, einige hundert Kilometer nördlich davon. Beide haben Klicks; keines wurde nachweislich auf eine Weise mit den südlichen Gruppen verwandt gezeigt, die einer genauen Prüfung standhält. Der alte Sammelbegriff "Khoisan" warf alle fünf in einen Topf, doch Tom Güldemann und andere haben in den letzten zwanzig Jahren überzeugend argumentiert, dass <strong>Khoisan eine areale Gruppierung ist, keine genetische Familie</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Hadza, Sandawe, Khoekhoe, Xhosa, Zulu aufleuchten lassen</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Hadza, Sandawe, Khoekhoe, Xhosa, Zulu vergleichen</button>
 </div>
 
 <p>Phonetiker unterscheiden <strong>fünf primäre Klicktypen</strong> danach, wo der vordere Verschluss gebildet wird:</p>
@@ -282,7 +282,7 @@ window.TRIVIA_I18N['de'] = {
 
 <blockquote>"Klicks sind keine entlehnten Laute in dem Sinne, wie Lehnwörter entlehnt werden. Sie sind geerbte Merkmale zweisprachiger Kindheit — und sobald sie im Lexikon einer einzigen Generation sind, werden sie nativ." — Anthony Traill, 1995 (paraphrasiert)</blockquote>
 
-<p>Außerhalb des südlichen Afrikas überleben Klicks nur an drei uns bekannten Orten: den ostafrikanischen Isolaten <strong>Hadza</strong> und <strong>Sandawe</strong>; einigen rituellen oder geheimen Registern wie <strong>Damin</strong> in Australien; und das jetzt ausgestorbene zeremonielle Register <em>El Molo</em> enthielt Berichten zufolge klickähnliche Laute. Das macht die südafrikanische Klickregion zu einem der engsten linguistischen Gebiete der Welt — ein Ort, an dem ein außergewöhnliches Merkmal mindestens mehrere tausend Jahre lang über vier Familien hinweg erhalten, ausgearbeitet und gehandelt wurde.</p>
+<p>Außerhalb des südlichen Afrikas sind die fest dokumentierten Fälle die ostafrikanischen Isolate <strong>Hadza</strong> und <strong>Sandawe</strong> sowie das besondere Ritualregister <strong>Damin</strong> in Australien — verwendet von eingeweihten Männern von Mornington Island, nicht als gewöhnliche gesprochene Sprache. (Berichte über klickähnliche Laute im zeremoniellen Register des heute ausgestorbenen El Molo existieren, sind aber nicht gut belegt.) Das macht die südafrikanische Klickregion zu einem der engsten linguistischen Gebiete der Welt — ein Ort, an dem ein außergewöhnliches Merkmal mindestens mehrere tausend Jahre lang über vier Familien hinweg erhalten, ausgearbeitet und gehandelt wurde.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Den Klickgürtel des südlichen Afrikas überblicken</button>
@@ -328,10 +328,10 @@ window.TRIVIA_I18N['de'] = {
   },
 
   'sumerian-first-writing': {
-    title: 'Sumerisch — die erste je niedergeschriebene Sprache',
-    summary: 'Die älteste Schriftsprache der Welt: ein mesopotamisches Isolat, auf Ton aufgezeichnet ab etwa 3200 v. Chr. und 2.000 Jahre nach dem Tod seines letzten Muttersprachlers als Gelehrtensprache am Leben gehalten.',
+    title: 'Sumerisch — zu den frühesten je niedergeschriebenen Sprachen',
+    summary: 'Eine der frühesten umfangreich bezeugten Schriftsprachen: ein mesopotamisches Isolat, auf Ton aufgezeichnet ab etwa 3200 v. Chr. und 2.000 Jahre nach dem Tod seines letzten Muttersprachlers als Gelehrtensprache am Leben gehalten.',
     body: `
-<p>Um 3200 v. Chr. drückte in der südmesopotamischen Stadt <strong>Uruk</strong> jemand das Ende eines Schilfstifts in feuchten Ton und notierte eine Menge Gerste. Diese Tontafel und Tausende andere wie sie markieren den Moment, in dem die menschliche Sprache erstmals dem Atem entkam, der sie trug. Die aufgezeichnete Sprache war <strong>Sumerisch</strong> (<em>eme-gir</em>, "die einheimische Zunge") — und 5.200 Jahre später lesen wir sie immer noch.</p>
+<p>Um 3200 v. Chr. drückte in der südmesopotamischen Stadt <strong>Uruk</strong> jemand das Ende eines Schilfstifts in feuchten Ton und notierte eine Menge Gerste. Diese Tontafel und Tausende andere wie sie zählen zu den frühesten Momenten, in denen die menschliche Sprache dem Atem entkam, der sie trug — neben parallelen Entwicklungen im frühdynastischen Ägypten und, etwas später, im Industal und in China. Die aufgezeichnete Sprache war <strong>Sumerisch</strong> (<em>eme-gir</em>, "die einheimische Zunge") — und 5.200 Jahre später lesen wir sie immer noch.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Sumerisch auf der Karte zeigen</button>
@@ -402,7 +402,7 @@ window.TRIVIA_I18N['de'] = {
 
   'sentinelese-unknown': {
     title: 'Sentinelesisch — die Sprache, die wir nie aufgezeichnet haben',
-    summary: 'Auf einer 60 km² großen Insel im Golf von Bengalen lebt ein Volk, das seit sechzigtausend Jahren jeden Kontakt abgelehnt hat — und dessen Sprache kein Außenstehender je gehört, geschweige denn dokumentiert hat.',
+    summary: 'Auf einer 60 km² großen Insel im Golf von Bengalen lebt ein Volk, dessen Vorfahren zu einer der frühesten Schichten menschlicher Besiedlung der Region zu gehören scheinen — und dessen Sprache kein Außenstehender je gehört, geschweige denn dokumentiert hat.',
     body: `
 <p>Etwa 1.200 km östlich des indischen Festlands, im Golf von Bengalen, liegt eine kleine bewaldete Insel von etwa 60 Quadratkilometern. Sie heißt <strong>North Sentinel Island</strong>, und irgendwo im Inneren leben vielleicht fünfzig bis mehrere hundert Menschen — niemand kennt die wirkliche Zahl —, die jeden einzelnen Versuch, mit ihnen zu sprechen, abgelehnt haben. Sie sind die <strong>Sentinelesen</strong>, und ihre Sprache ist die einzige menschliche Sprache auf der Erde, die nie aufgezeichnet, nie transkribiert und nicht einmal mit Sicherheit klassifiziert wurde.</p>
 
@@ -410,7 +410,7 @@ window.TRIVIA_I18N['de'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Nach North Sentinel Island fliegen</button>
 </div>
 
-<p>Die Sentinelesen gehören zu den <strong>Andamanesen</strong> — Nachkommen einer der frühesten <em>Out-of-Africa</em>-Ausbreitungen, die die Andamanen vor vielleicht 60.000 Jahren erreichten und seitdem isoliert blieben. Genetische Belege ordnen sie unter die ältesten kontinuierlich isolierten Populationen des Planeten ein. Ihre Nachbarn auf dem breiteren Archipel — die Großen Andamanesen, die Onge von Klein-Andaman und die Jarawa von Süd- und Mittel-Andaman — sprechen Sprachen, die in <strong>zwei nicht verwandte Familien</strong> fallen: Groß-Andamanesisch und die kleinere Ongan-Familie (Onge + Jarawa). Es wird vermutet, dass Sentinelesisch eine dritte Schwester ist, möglicherweise dem Ongan am nächsten, doch niemand hat je genug Wörter gehört, um das zu bestätigen.</p>
+<p>Die Sentinelesen gehören zu den <strong>Andamanesen</strong> — vermutlich Nachkommen einer der frühesten <em>Out-of-Africa</em>-Ausbreitungen, die die Andamanen möglicherweise vor zehntausenden Jahren erreichten. Genetische Belege ordnen sie unter die am längsten isolierten Populationen des Planeten ein, auch wenn sich die genaue Dauer und Kontinuität dieser Isolation nicht mit Sicherheit feststellen lässt. Ihre Nachbarn auf dem breiteren Archipel — die Großen Andamanesen, die Onge von Klein-Andaman und die Jarawa von Süd- und Mittel-Andaman — sprechen Sprachen, die in <strong>zwei nicht verwandte Familien</strong> fallen: Groß-Andamanesisch und die kleinere Ongan-Familie (Onge + Jarawa). Es wird vermutet, dass Sentinelesisch eine dritte Schwester ist, möglicherweise dem Ongan am nächsten, doch niemand hat je genug Wörter gehört, um das zu bestätigen.</p>
 
 <p>Jeder dokumentierte Kontaktversuch ist entweder gescheitert oder endete in Gewalt:</p>
 
@@ -434,10 +434,10 @@ window.TRIVIA_I18N['de'] = {
   },
 
   'modern-hebrew-revival': {
-    title: 'Hebräisch — die einzige antike Sprache, die je wieder zum Leben erweckt wurde',
-    summary: 'Fast 1.700 Jahre lang wuchs kein Kind mit Hebräisch als Muttersprache auf. Heute ist es die Muttersprache von neun Millionen Menschen — die einzige vollständig erfolgreiche Wiederbelebung einer toten Sprache in der Menschheitsgeschichte.',
+    title: 'Hebräisch — eine antike Sprache, ins Alltagsleben zurückgeholt',
+    summary: 'Fast 1.700 Jahre lang überlebte Hebräisch als liturgische und literarische Sprache, aber kein Kind wuchs damit als Muttersprache auf. Heute ist es die Muttersprache von neun Millionen Menschen — die in Umfang und Erfolg umfassendste Wiederbelebung einer Sprache, die kein gemeinschaftlich gesprochenes Idiom mehr war.',
     body: `
-<p>Irgendwann um das Jahr <strong>200 n. Chr.</strong> verstummte der letzte Haushalt im römischen Palästina, in dem Kinder Hebräisch am Esstisch hörten. Das Aramäische hatte bereits die Straßen übernommen; das Griechische dominierte die Städte; die Mischna wurde in einem Hebräisch zusammengestellt, das Gelehrte schrieben, aber zunehmend nicht mehr <em>sprachen</em>. In den nächsten 1.700 Jahren überlebte Hebräisch als Sprache der Synagoge, des Gebetbuchs, der Tora-Rolle und des Briefes von einem Rabbi an einen anderen — eine geschriebene Sprache, von gebildeten Erwachsenen benutzt, aber nicht die ersten Worte eines Kindes. Dann änderte sich das irgendwie. Hebräisch ist heute die alltägliche gesprochene Sprache von etwa <strong>neun Millionen Menschen</strong>, etwa die Hälfte davon Muttersprachler, die es als Babys gelernt haben. Es ist der einzige dokumentierte Fall in der Menschheitsgeschichte, in dem eine vollständig tote Sprache zum vollen täglichen muttersprachlichen Gebrauch zurückgebracht wurde.</p>
+<p>Irgendwann um das Jahr <strong>200 n. Chr.</strong> verstummte der letzte Haushalt im römischen Palästina, in dem Kinder Hebräisch am Esstisch hörten. Das Aramäische hatte bereits die Straßen übernommen; das Griechische dominierte die Städte; die Mischna wurde in einem Hebräisch zusammengestellt, das Gelehrte schrieben, aber zunehmend nicht mehr <em>sprachen</em>. In den nächsten 1.700 Jahren überlebte Hebräisch als Sprache der Synagoge, des Gebetbuchs, der Tora-Rolle und des Briefes von einem Rabbi an einen anderen — eine geschriebene Sprache, von gebildeten Erwachsenen benutzt, aber nicht die ersten Worte eines Kindes. Dann änderte sich das irgendwie. Hebräisch ist heute die alltägliche gesprochene Sprache von etwa <strong>neun Millionen Menschen</strong>, etwa die Hälfte davon Muttersprachler, die es als Babys gelernt haben. Es gibt kleinere Wiederbelebungen (Kornisch, Manx, Wampanoag), aber Hebräisch bleibt der umfangreichste und am gründlichsten dokumentierte Fall einer Sprache, die für niemanden mehr Muttersprache war und in den täglichen Gebrauch einer Gemeinschaft zurückgeführt wurde.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Hebräisch auf der Karte zeigen</button>
@@ -482,7 +482,7 @@ window.TRIVIA_I18N['de'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ In Pāṇinis Gandhāra fliegen</button>
 </div>
 
-<p>Wir wissen fast nichts über Pāṇini, die Person — nur dass er aus dem Dorf Śalātura (heute Lahor bei Attock in Pakistan) stammte, wahrscheinlich im 5. oder 4. Jh. v. Chr. wirkte, und dass alles, was er produzierte, offenbar darauf ausgelegt war, <strong>laut auswendig gelernt</strong> zu werden. Die Aṣṭādhyāyī wurde jahrhundertelang durch Rezitation bewahrt, bevor sie niedergeschrieben wurde. Um Silben zu sparen — und damit Atem — erfand Pāṇini eine ganze <strong>technische Metasprache</strong>: ein System einbuchstabiger Abkürzungen, geordnete Phonemlisten namens <strong>Śiva-Sūtras</strong>, Konventionen für "kontextsensitive" Regelanwendung, anuvṛtti (Regelerbe aus einer vorhergehenden Zeile, die nicht wiederholt werden muss) und ein Vorrangsystem zur Lösung, welche Regel gilt, wenn zwei Regeln in Konflikt geraten.</p>
+<p>Wir wissen fast nichts über Pāṇini, die Person — nur dass er aus dem Dorf Śalātura (heute Lahor / Lahur, manchmal "Klein-Lahore" genannt, bei Attock im Nordwesten Pakistans — nicht zu verwechseln mit der großen Punjabi-Stadt Lahore) stammte, wahrscheinlich im 5. oder 4. Jh. v. Chr. wirkte, und dass alles, was er produzierte, offenbar darauf ausgelegt war, <strong>laut auswendig gelernt</strong> zu werden. Die Aṣṭādhyāyī wurde jahrhundertelang durch Rezitation bewahrt, bevor sie niedergeschrieben wurde. Um Silben zu sparen — und damit Atem — erfand Pāṇini eine ganze <strong>technische Metasprache</strong>: ein System einbuchstabiger Abkürzungen, geordnete Phonemlisten namens <strong>Śiva-Sūtras</strong>, Konventionen für "kontextsensitive" Regelanwendung, anuvṛtti (Regelerbe aus einer vorhergehenden Zeile, die nicht wiederholt werden muss) und ein Vorrangsystem zur Lösung, welche Regel gilt, wenn zwei Regeln in Konflikt geraten.</p>
 
 <p>Das Ergebnis liest sich für ein modernes Auge unheimlich wie die Produktionsregeln einer kontextfreien Grammatik — nur mächtiger. Pāṇinis Regelformat ist im Wesentlichen:</p>
 
@@ -505,7 +505,7 @@ window.TRIVIA_I18N['de'] = {
 
 <blockquote>"Die deskriptive Grammatik des Sanskrit, die Pāṇini zur Vollendung brachte, ist eines der größten Denkmäler menschlicher Intelligenz." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
 
-<p>Sanskrit selbst (<em>saṃskṛta-</em>, "poliert, verfeinert") war zu Pāṇinis Zeit bereits ein literarischer und ritueller Standard, keine Volkssprache. Nach ihm wurde es formal das, was Pāṇini sagte, dass es sei: eine Sprache, deren jeder wohlgeformter Satz im Prinzip aus seinen 4.000 Sūtras ableitbar ist. Zweitausendfünfhundert Jahre später ist das auch genau das, was wir von einem Parser verlangen. Die Aṣṭādhyāyī beschrieb nicht nur das Sanskrit. Sie erfand stillschweigend die Idee, dass eine Sprache überhaupt beschrieben werden kann.</p>
+<p>Sanskrit selbst (<em>saṃskṛta-</em>, "poliert, verfeinert") war zu Pāṇinis Zeit bereits ein literarischer und ritueller Standard, keine Volkssprache. Nach ihm wurde es formal das, was Pāṇini sagte, dass es sei: eine Sprache, deren jeder wohlgeformter Satz im Prinzip aus seinen 4.000 Sūtras ableitbar ist. Zweitausendfünfhundert Jahre später ist das auch genau das, was wir von einem Parser verlangen. Die Aṣṭādhyāyī beschrieb nicht nur das Sanskrit. Sie trieb die Idee der generativen, formalen Sprachbeschreibung in der Antike zu einer Präzision, die ihresgleichen sucht — und wohl erst von der formalen Linguistik des 20. Jahrhunderts unabhängig wieder erreicht wurde.</p>
     `,
   },
 
@@ -546,7 +546,7 @@ window.TRIVIA_I18N['de'] = {
 
 <p>Die Geschichte des 20. Jahrhunderts war grausam zu Esperantisten. Hitler verurteilte die Sprache in <em>Mein Kampf</em> als jüdische Verschwörung; Zamenhofs drei Kinder wurden im Holocaust ermordet. Stalin ließ sowjetische Esperantisten in den Säuberungen von 1937–38 als "kosmopolitische Spione" inhaftieren und hinrichten. Die Bewegung überlebte beides.</p>
 
-<p>Heute hat Esperanto vielleicht <strong>zwei Millionen Sprecher</strong> auf verschiedenen Niveaus, und — einzigartig für eine Plansprache — etwa <strong>tausend Muttersprachler</strong>, bekannt als <em>denaskuloj</em>, die in zweisprachigen Haushalten aufgewachsen sind, in denen Esperanto eine der Familiensprachen ist. Allein der Esperanto-Kurs von Duolingo hat über eine Million Lernende eingeschrieben. Keine andere künstliche Sprache hat je die intergenerationelle Weitergabe geschafft.</p>
+<p>Heute hat Esperanto vielleicht <strong>zwei Millionen Sprecher</strong> auf verschiedenen Niveaus, und etwa <strong>tausend Muttersprachler</strong>, bekannt als <em>denaskuloj</em>, die in zweisprachigen Haushalten aufgewachsen sind, in denen Esperanto eine der Familiensprachen ist. Allein der Esperanto-Kurs von Duolingo hat über eine Million Lernende eingeschrieben. Nach jedem Maßstab — anhaltende Sprechergemeinschaft, Breite der Literatur, Anzahl der Muttersprachler — ist Esperanto bei Weitem die erfolgreichste konstruierte Sprache, die je versucht wurde.</p>
 
 <p>Zamenhof behauptete nie, Esperanto würde irgendjemandes Muttersprache ersetzen. Er wollte eine <em>dua lingvo</em> — eine zweite Sprache — die für alle gleichermaßen fremd ist, damit kein Muttersprachler je die Oberhand am Verhandlungstisch hat. Anderthalb Jahrhunderte später ist das Projekt klein, aber es ist immer noch lebendig, immer noch neutral und immer noch hoffnungsvoll — genau wie sein Gründer, <em>Doktoro Esperanto</em>, seinen Namen unterzeichnete.</p>
     `,
@@ -681,13 +681,13 @@ window.TRIVIA_I18N['de'] = {
 
 <p>Die wahre Rehabilitation von Hangul kam Ende des 19. Jahrhunderts mit dem Reformer Ju Si-gyeong, der seinen Namen (<em>han-geul</em>, "große Schrift") und seine moderne Orthographie systematisierte. Nach der japanischen Kolonialzeit — in der Hangul wiederum verboten war, diesmal durch eine fremde Macht — erklärte Südkorea den Hangul-Tag (한글날) zum Nationalfeiertag. Nordkorea nennt es <em>Chosŏn'gŭl</em> und hält seinen eigenen Feiertag am 15. Januar ab. Die moderne koreanische Alphabetisierung ist funktional zu 100 %.</p>
 
-<p>Der Linguist Geoffrey Sampson bezeichnete Hangul 1985 als "vielleicht das wissenschaftlichste in einem Land allgemein verwendete Schriftsystem". Kinder lernen es typischerweise in etwa einer Stunde. Es ist die einzige bedeutende Schrift der Welt mit sowohl einem bekannten Designer als auch einer dokumentierten Designbegründung — ein 600 Jahre altes Laborexperiment, das funktioniert hat.</p>
+<p>Der Linguist Geoffrey Sampson bezeichnete Hangul 1985 als "vielleicht das wissenschaftlichste in einem Land allgemein verwendete Schriftsystem". Die Grundbuchstabenformen sind bekanntlich schnell einzuprägen — koreanische Kinder können das Alphabet in einer einzigen Sitzung erfassen, auch wenn voll entwickelte Lese- und Schreibkompetenz wie bei jeder Schrift Jahre braucht. Es ist die einzige bedeutende Schrift der Welt mit sowohl einem bekannten Designer als auch einer dokumentierten Designbegründung — ein 600 Jahre altes Laborexperiment, das funktioniert hat.</p>
     `,
   },
 
   'cherokee-sequoyah': {
     title: 'Sequoyah — das analphabetische Genie, das ein Schriftsystem aus dem Nichts erfand',
-    summary: 'Im Jahr 1821 enthüllte ein Cherokee-Silberschmied, der kein Englisch lesen konnte, eine 85-Zeichen-Silbenschrift, die er allein in 12 Jahren entwickelt hatte. Innerhalb eines Jahrzehnts übertraf die Cherokee-Alphabetisierung die der umliegenden weißen Siedler.',
+    summary: 'Im Jahr 1821 enthüllte ein Cherokee-Silberschmied, der kein Englisch lesen konnte, eine 85-Zeichen-Silbenschrift, die er allein in 12 Jahren entwickelt hatte. Innerhalb eines Jahrzehnts berichteten zeitgenössische Beobachter, dass die Cherokee-Alphabetisierung der umliegenden weißen Siedler ebenbürtig war oder sie übertraf.',
     body: `
 <p><strong>Sequoyah</strong> (auch ᏍᏏᏉᏯ <em>Ssiquoya</em> geschrieben, oder auf Englisch George Guess, ca. 1770–1843) ist eine der einzigen Personen in der aufgezeichneten Geschichte, von denen bekannt ist, dass sie ein voll funktionsfähiges Schriftsystem aus dem Nichts erfunden haben, während sie selbst in jeder Sprache Analphabet war. Die Geschichte ist so unwahrscheinlich, dass Kommentatoren des 19. Jahrhunderts immer wieder versuchten, sie wegzuerklären. Sie geschah trotzdem.</p>
 
@@ -1084,9 +1084,9 @@ window.TRIVIA_I18N['de'] = {
 
   'nicaraguan-sign-language': {
     title: 'Nicaraguanische Gebärdensprache — eine Sprache, in Echtzeit geboren',
-    summary: 'Der einzige dokumentierte Fall in der Geschichte, in dem eine vollständig natürliche menschliche Sprache geboren wurde — spontan von gehörlosen nicaraguanischen Kindern geschaffen, als sie in den 1970er und 80er Jahren endlich zusammengebracht wurden.',
+    summary: 'Einer der am besten dokumentierten Fälle, in denen eine neue natürliche menschliche Sprache in Echtzeit Gestalt annimmt — entstanden unter gehörlosen nicaraguanischen Kindern, als sie in den 1970er und 80er Jahren endlich zusammengebracht wurden.',
     body: `
-<p>Stellen Sie sich vor, Sie wären Linguist und dürften zusehen, wie eine brandneue menschliche Sprache entsteht — nicht entlehnt, nicht aus bestehenden Sprachen kreolisiert, sondern von Kindern in einer einzigen Generation aus dem Nichts erzeugt. Genau das geschah in Managua, Nicaragua, zwischen 1977 und Anfang der 1990er Jahre und brachte das hervor, was wir heute <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Nicaraguanische Gebärdensprache, nennen.</p>
+<p>Stellen Sie sich vor, Sie wären Linguist und dürften in Echtzeit zusehen, wie eine neue menschliche Sprache Gestalt annimmt — nicht aus einer bestehenden gesprochenen Sprache kreolisiert, sondern von Kindern in einer einzigen Generation erzeugt, weitgehend ausgehend von ihren eigenen Hauszeichen und Gesten. Genau dies geschah in groben Zügen in Managua, Nicaragua, zwischen 1977 und Anfang der 1990er Jahre und brachte das hervor, was wir heute <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Nicaraguanische Gebärdensprache, nennen. Andere neu entstandene Gebärdensprachen (die Al-Sayyid-Beduinen-Gebärdensprache in Israel, Kata Kolok in Bali) sind seither untersucht worden, doch ISN bleibt der am besten dokumentierte Fall einer schrittweisen, kohortenweisen Entstehung.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Nicaraguanische Gebärdensprache auf der Karte zeigen</button>
@@ -1105,7 +1105,7 @@ window.TRIVIA_I18N['de'] = {
 
 <p>Das ist direkte empirische Unterstützung für die Idee, dass <strong>Sprache eine kreative Ausgabe des kindlichen Geistes ist</strong>, nicht nur eine passive Aufzeichnung des Inputs. Kinder in aufeinanderfolgenden Kohorten erfanden unabhängig Merkmale — wie das Zerlegen von Bewegungsereignissen in "Pfad"- und "Art-und-Weise"-Komponenten —, die ihnen kein Erwachsener gegeben hatte und die bemerkenswert wie Merkmale anderer etablierter Gebärdensprachen aussehen.</p>
 
-<p>Heute hat ISN vielleicht 3.000 Gebärdende und eine robuste Gehörlosengemeinschaft, organisiert durch die <em>Asociación Nacional de Sordos de Nicaragua</em>. Es ist die jüngste vollständig natürliche Sprache der Erde — und die einzige, deren gesamte Geburt mit Kamera, Papier und linguistischen Feldnotizen festgehalten wurde.</p>
+<p>Heute hat ISN vielleicht 3.000 Gebärdende und eine robuste Gehörlosengemeinschaft, organisiert durch die <em>Asociación Nacional de Sordos de Nicaragua</em>. Sie ist eine der jüngsten vollständig natürlichen Sprachen — und der Fall, dessen gesamter Entstehungsprozess am vollständigsten mit Kamera, Papier und linguistischen Feldnotizen festgehalten wurde.</p>
     `,
   },
 
@@ -1116,7 +1116,7 @@ window.TRIVIA_I18N['de'] = {
 <p>Wählen Sie eine beliebige Sprache aus. Fragen Sie, wie sie "Mutter" sagt. Die Chance ist unangenehm hoch, dass das Wort mit <strong>m</strong> beginnt und ein <em>a</em> enthält: Englisch <em>mama</em>, Mandarin <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Walisisch <em>mam</em>, Hebräisch <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaiianisch <em>makuahine</em> / <em>māmā</em>. Fragen Sie nun, wie sie "Vater" sagt. Über eine ebenso umfangreiche Stichprobe bekommen Sie <strong>papa, baba, tata, dada, abba, atta</strong> — ein labialer oder koronaler Verschlusslaut plus <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 "Mutter" in 8 unverwandten Sprachen aufleuchten lassen</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 "Mutter" in 8 unverwandten Sprachen vergleichen</button>
 </div>
 
 <p>Das ist kein Zufall. Der Yale-Anthropologe <strong>George P. Murdock</strong> stellte 1959 einen interkulturellen Datensatz von 1.072 Verwandtschaftsbegriffen aus 470 Sprachen zusammen und fand heraus, dass Wörter vom Typ <em>mama</em> in 52 % der Stichprobe für "Mutter" verwendet wurden, und Wörter vom Typ <em>papa</em>/<em>tata</em>/<em>baba</em> in 55 % für "Vater". Die Sprachen umfassen jede Familie der Erde — Indogermanisch, Sino-Tibetisch, Niger-Kongo, Austronesisch, Uto-Aztekisch, Pama-Nyungan. Sie können nicht alle einen gemeinsamen Vorfahren haben.</p>

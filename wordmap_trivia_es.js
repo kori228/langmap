@@ -35,7 +35,7 @@ window.TRIVIA_I18N['es'] = {
 
 <p>Las afirmaciones de Everett son <strong>muy controvertidas</strong>. Investigadores posteriores, entre ellos Andrew Nevins, David Pesetsky y Cilene Rodrigues, han argumentado que el pirahã sí tiene recursión — simplemente poco usada — y que los hechos sobre los números pueden explicarse sin consecuencias cognitivas exóticas. Everett ha replicado; el debate sigue abierto.</p>
 
-<p>Lo que <em>no</em> se discute es la restricción cultural contra hablar de cosas no experimentadas y la asombrosa comunicación multicanal del pirahã. Sea cual sea el ganador de la guerra de la recursión, el pirahã ha hecho lo que muy pocas lenguas hacen: forzar a los lingüistas a preguntarse, una vez más, si el lenguaje moldea el pensamiento — o el pensamiento moldea el lenguaje.</p>
+<p>Menos controvertidas, aunque todavía discutidas, son la norma cultural que restringe el habla a sucesos vividos directamente y la notable transmisión multicanal del pirahã. Sea cual sea el ganador de la guerra de la recursión, el pirahã ha hecho lo que muy pocas lenguas hacen: forzar a los lingüistas a preguntarse, una vez más, si el lenguaje moldea el pensamiento — o el pensamiento moldea el lenguaje.</p>
     `,
   },
   'silbo-gomero': {
@@ -110,7 +110,7 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 Acercar al Kalahari</button>
   </div>
 
-  <p>La UNESCO clasifica el taa como <strong>severamente en peligro</strong>. Los pocos cientos de niños que aún lo adquieren crecen junto a una escolarización en tswana y estilos de vida cada vez más móviles. Si el taa se silencia en la próxima generación, el mundo perderá no solo el patrimonio de una comunidad sino el laboratorio natural más rico que la ciencia de la fonética ha tenido jamás.</p>
+  <p>El taa se describe generalmente como <strong>severamente en peligro</strong>. Los pocos cientos de niños que aún lo adquieren crecen junto a una escolarización en tswana y estilos de vida cada vez más móviles. Si el taa se silencia en la próxima generación, el mundo perderá no solo el patrimonio de una comunidad sino el laboratorio natural más rico que la ciencia de la fonética ha tenido jamás.</p>
     `,
   },
   'rotokas-fewest-sounds': {
@@ -176,11 +176,11 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Comparar las primas vivas del ubijé (abjasio, adigué, cabardiano)</button>
   </div>
 
-  <p>Casi todo lo que sabemos sobre el ubijé en el siglo XX se lo debemos al indoeuropeísta y mitólogo comparativo francés <strong>Georges Dumézil</strong>. Comenzando en 1930, Dumézil hizo viajes repetidos a Anatolia para registrar a la menguante comunidad, regresando año tras año durante casi seis décadas. Produjo una serie de descripciones gramaticales, colecciones de textos y el indispensable <em>Dictionnaire de la langue oubykh</em> (1965). Esenç se convirtió en el principal consultor de Dumézil en los años 60; los dos se comunicaron y trabajaron juntos hasta la muerte de Dumézil en 1986.</p>
+  <p>Casi todo lo que sabemos sobre el ubijé en el siglo XX se lo debemos al indoeuropeísta y mitólogo comparativo francés <strong>Georges Dumézil</strong>. Comenzando en 1930, Dumézil hizo viajes repetidos a Anatolia para registrar a la menguante comunidad, regresando año tras año durante casi seis décadas. Produjo una serie de descripciones gramaticales y colecciones de textos — incluida la serie <em>Documents anatoliens sur les langues et les traditions du Caucase</em> (en particular el vol. IV: <em>Récits oubykh</em>, 1965) — que siguen siendo fundamentales. Esenç se convirtió en el principal consultor de Dumézil en los años 60; los dos se comunicaron y trabajaron juntos hasta la muerte de Dumézil en 1986.</p>
 
   <blockquote>"Él sabía que era el último. Cargaba la lengua como se carga una vela en una habitación sellada: solo, atento, y consciente de que el aire no duraría." — recuerdo parafraseado de los colaboradores de Dumézil</blockquote>
 
-  <p>Esenç entendía su papel con una claridad inusual. Memorizó proverbios, canciones, oraciones, topónimos y cuentos populares específicamente para que pudieran registrarse. Insistió en ser enterrado bajo una lápida que lo nombrara, en ubijé, como "el último hablante", una frase que él mismo dictó. El lingüista holandés <strong>Rieks Smeets</strong> y el fonetista noruego <strong>Hans Vogt</strong> continuaron la documentación tras Dumézil; el <em>Dictionnaire de la langue oubykh</em> de Vogt de 1963 (una obra separada de la de Dumézil) y los estudios posteriores de Smeets siguen siendo las referencias estándar.</p>
+  <p>Esenç entendía su papel con una claridad inusual. Memorizó proverbios, canciones, oraciones, topónimos y cuentos populares específicamente para que pudieran registrarse. Insistió en ser enterrado bajo una lápida que lo nombrara, en ubijé, como "el último hablante", una frase que él mismo dictó. El fonetista noruego <strong>Hans Vogt</strong> elaboró el diccionario estándar de referencia <em>Dictionnaire de la langue oubykh</em> (1963), y el lingüista holandés <strong>Rieks Smeets</strong> continuó la documentación hasta finales del siglo XX; junto con las ediciones de textos de Dumézil, sus trabajos constituyen el cimiento documental de la lengua.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Acercar a Hacıosman, Turquía</button>
@@ -249,7 +249,7 @@ window.TRIVIA_I18N['es'] = {
   <p>A estas tres familias normalmente se añaden <strong>dos lenguas aisladas de África Oriental</strong>: el <strong>hadza</strong>, hablado por quizás mil cazadores-recolectores en torno al lago Eyasi en Tanzania, y el <strong>sandawe</strong>, unos cientos de kilómetros al norte. Ambos tienen chasquidos; ninguno se ha demostrado relacionado con los grupos meridionales de manera que resista un escrutinio detallado. El antiguo término paraguas "khoisan" agrupaba los cinco juntos, pero Tom Güldemann y otros han pasado los últimos veinte años argumentando — de forma convincente — que el <strong>khoisan es una agrupación areal, no una familia genética</strong>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Iluminar hadza, sandawe, khoekhoe, xhosa, zulú</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Comparar hadza, sandawe, khoekhoe, xhosa, zulú</button>
   </div>
 
   <p>Los foneticistas distinguen <strong>cinco tipos primarios de chasquidos</strong> según dónde se realiza el cierre frontal:</p>
@@ -274,7 +274,7 @@ window.TRIVIA_I18N['es'] = {
 
   <blockquote>"Los chasquidos no son sonidos prestados como se prestan los préstamos léxicos. Son rasgos heredados de una infancia bilingüe — y una vez que están en el léxico de una sola generación, se vuelven nativos." — Anthony Traill, 1995 (parafraseado)</blockquote>
 
-  <p>Más allá del sur de África, los chasquidos sobreviven solo en tres lugares que conocemos: las lenguas aisladas de África Oriental <strong>hadza</strong> y <strong>sandawe</strong>; unos pocos registros rituales o secretos como el <strong>damin</strong> en Australia; y el ahora extinto registro ceremonial <em>el molo</em> que reportadamente contenía sonidos similares a chasquidos. Eso hace del área de chasquidos del sur de África una de las regiones lingüísticas más cohesionadas del mundo — un lugar donde un rasgo extraordinario se ha mantenido, elaborado e intercambiado a lo largo de cuatro familias durante al menos varios miles de años.</p>
+  <p>Más allá del sur de África, los casos sólidamente documentados son las lenguas aisladas de África Oriental <strong>hadza</strong> y <strong>sandawe</strong>, junto con el registro ritual especial <strong>damin</strong> en Australia — utilizado por los hombres iniciados de la isla Mornington, no como lengua hablada ordinaria. (Existen informes sobre sonidos similares a chasquidos en el registro ceremonial hoy extinto del el molo, pero no están bien establecidos.) Eso hace del área de chasquidos del sur de África una de las regiones lingüísticas más cohesionadas del mundo — un lugar donde un rasgo extraordinario se ha mantenido, elaborado e intercambiado a lo largo de cuatro familias durante al menos varios miles de años.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Recorrer el cinturón de chasquidos del sur de África</button>
@@ -318,10 +318,10 @@ window.TRIVIA_I18N['es'] = {
     `,
   },
   'sumerian-first-writing': {
-    title: 'Sumerio — la primera lengua jamás escrita',
-    summary: 'La lengua escrita más antigua del mundo: una lengua aislada mesopotámica, registrada en arcilla desde ~3200 a.C., y mantenida viva como lengua académica durante 2.000 años después de la muerte de su último hablante nativo.',
+    title: 'Sumerio — entre las primeras lenguas jamás escritas',
+    summary: 'Una de las lenguas escritas ampliamente atestiguadas más tempranas: una lengua aislada mesopotámica, registrada en arcilla desde ~3200 a.C., y mantenida viva como lengua académica durante 2.000 años después de la muerte de su último hablante nativo.',
     body: `
-  <p>Alrededor del 3200 a.C., en la ciudad sumeria meridional de <strong>Uruk</strong>, alguien presionó el extremo de un estilete de caña en arcilla húmeda y registró una cantidad de cebada. Esa tablilla de arcilla, y miles como ella, marcan el momento en que el lenguaje humano se liberó por primera vez del aliento que lo portaba. La lengua que se registraba era el <strong>sumerio</strong> (<em>eme-gir</em>, "la lengua nativa") — y 5.200 años después seguimos leyéndola.</p>
+  <p>Alrededor del 3200 a.C., en la ciudad sumeria meridional de <strong>Uruk</strong>, alguien presionó el extremo de un estilete de caña en arcilla húmeda y registró una cantidad de cebada. Esa tablilla de arcilla, y miles como ella, se cuentan entre los primeros momentos en que el lenguaje humano se liberó del aliento que lo portaba — junto a los desarrollos paralelos en el Egipto protodinástico y, algo más tarde, en el valle del Indo y en China. La lengua que se registraba era el <strong>sumerio</strong> (<em>eme-gir</em>, "la lengua nativa") — y 5.200 años después seguimos leyéndola.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Mostrar el sumerio en el mapa</button>
@@ -390,7 +390,7 @@ window.TRIVIA_I18N['es'] = {
   },
   'sentinelese-unknown': {
     title: 'Sentinelés — la lengua que nunca hemos registrado',
-    summary: 'En una isla de 60 km² en la bahía de Bengala vive un pueblo que ha rechazado todo contacto durante sesenta mil años — y cuya lengua ningún forastero ha oído jamás, mucho menos documentado.',
+    summary: 'En una isla de 60 km² en la bahía de Bengala vive un pueblo cuyos antepasados se cree pertenecen a uno de los estratos más tempranos del poblamiento humano de la región — y cuya lengua ningún forastero ha oído jamás, mucho menos documentado.',
     body: `
   <p>A unos 1.200 km al este de la India continental, en la bahía de Bengala, se encuentra una pequeña isla boscosa de aproximadamente 60 kilómetros cuadrados. Se llama <strong>isla Sentinel del Norte</strong>, y en algún lugar de su interior viven quizás de cincuenta a varios cientos de personas — nadie sabe el número real — que han rechazado cada intento de hablar con ellas. Son los <strong>sentineleses</strong>, y la suya es la única lengua humana en la Tierra que nunca ha sido grabada, nunca transcrita, y nunca clasificada con confianza.</p>
 
@@ -398,7 +398,7 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Volar a la isla Sentinel del Norte</button>
   </div>
 
-  <p>Los sentineleses son uno de los pueblos <strong>andamaneses</strong> — descendientes de una de las primeras dispersiones humanas <em>fuera de África</em>, que llegaron a las Andamán quizás hace 60.000 años y permanecieron aisladas desde entonces. La evidencia genética los sitúa entre las poblaciones aisladas continuamente más antiguas del planeta. Sus vecinos en el archipiélago más amplio — los gran andamaneses, los onge de la Pequeña Andamán, y los jarawa de Andamán Sur y Media — hablan lenguas que caen en <strong>dos familias no emparentadas</strong>: gran andamanés, y la familia menor ongan (onge + jarawa). Se sospecha que el sentinelés es una tercera hermana, posiblemente más cercana al ongan, pero nadie ha oído jamás suficientes palabras para confirmarlo.</p>
+  <p>Los sentineleses son uno de los pueblos <strong>andamaneses</strong> — se cree que descienden de una de las primeras dispersiones humanas <em>fuera de África</em>, que pudieron llegar a las Andamán hace decenas de miles de años. La evidencia genética los sitúa entre las poblaciones aisladas durante más tiempo del planeta, aunque no puede afirmarse con certeza la duración exacta ni la continuidad de ese aislamiento. Sus vecinos en el archipiélago más amplio — los gran andamaneses, los onge de la Pequeña Andamán, y los jarawa de Andamán Sur y Media — hablan lenguas que caen en <strong>dos familias no emparentadas</strong>: gran andamanés, y la familia menor ongan (onge + jarawa). Se sospecha que el sentinelés es una tercera hermana, posiblemente más cercana al ongan, pero nadie ha oído jamás suficientes palabras para confirmarlo.</p>
 
   <p>Cada intento de contacto documentado ha fracasado o terminado en violencia:</p>
 
@@ -406,7 +406,7 @@ window.TRIVIA_I18N['es'] = {
     <li><strong>1880</strong>: El oficial colonial británico <strong>Maurice Vidal Portman</strong> desembarcó con una partida de búsqueda, capturó a una pareja anciana y cuatro niños, y los llevó a Port Blair. Los adultos murieron en cuestión de días, casi con seguridad de infecciones comunes ante las que los sentineleses no tienen inmunidad. Los niños fueron devueltos a la isla con regalos. Lo que Portman registró de su habla sobrevive solo como fragmentos y notas de segunda mano.</li>
     <li><strong>1974</strong>: Un equipo de filmación de National Geographic fue rechazado por flechas. El director recibió una flecha de 2,4 m en el muslo.</li>
     <li><strong>1991</strong>: La antropóloga india <strong>Madhumala Chattopadhyay</strong> dirigió una serie de "entregas de regalos" de cocos que lograron el único contacto pacífico conocido — sentineleses vadeando hasta los barcos desarmados para recoger cocos. Las visitas se detuvieron en 1996 por preocupaciones de transmisión de enfermedades.</li>
-    <li><strong>Tsunami de 2004</strong>: Un helicóptero de la Guardia Costera sobrevoló la isla días después del tsunami del Boxing Day para buscar sobrevivientes. Fue recibido con flechas. Los isleños se habían trasladado a terrenos más altos y estaban ilesos.</li>
+    <li><strong>Tsunami de 2004</strong>: Un helicóptero de la Guardia Costera sobrevoló la isla días después del tsunami del océano Índico de 2004 para buscar sobrevivientes. Fue recibido con flechas. Los isleños se habían trasladado a terrenos más altos y estaban ilesos.</li>
     <li><strong>2006</strong>: Dos pescadores que llegaron a la deriva fueron asesinados.</li>
     <li><strong>2018</strong>: El misionero estadounidense <strong>John Allen Chau</strong> fue asesinado intentando evangelizar a los sentineleses, habiendo sobornado ilegalmente a pescadores locales para que lo llevaran allí.</li>
   </ul>
@@ -421,10 +421,10 @@ window.TRIVIA_I18N['es'] = {
     `,
   },
   'modern-hebrew-revival': {
-    title: 'Hebreo — la única lengua antigua jamás devuelta a la vida',
-    summary: 'Durante casi 1.700 años, ningún niño creció hablando hebreo. Hoy es la lengua materna de nueve millones de personas — la única revitalización plenamente exitosa de una lengua muerta en la historia humana.',
+    title: 'Hebreo — una lengua antigua devuelta a la vida cotidiana',
+    summary: 'Durante casi 1.700 años, el hebreo sobrevivió como lengua litúrgica y literaria pero ningún niño creció hablándolo. Hoy es la lengua materna de nueve millones de personas — la mayor y más exitosa revitalización de una lengua que había dejado de ser el habla cotidiana de una comunidad.',
     body: `
-  <p>En algún momento alrededor del año <strong>200 d.C.</strong>, el último hogar en la Palestina romana en el que los niños crecían oyendo hebreo en la mesa quedó en silencio. El arameo ya se había apoderado de las calles; el griego dominaba las ciudades; la Mishná se compilaba en un hebreo que los eruditos escribían pero cada vez más no <em>hablaban</em>. Durante los siguientes 1.700 años, el hebreo sobrevivió como lengua de la sinagoga, del libro de oraciones, del rollo de la Torá y de la carta de un rabino a otro — una lengua escrita usada por adultos alfabetizados, pero no las primeras palabras de ningún niño. Entonces, de algún modo, eso cambió. El hebreo es ahora la lengua hablada cotidiana de unos <strong>nueve millones de personas</strong>, alrededor de la mitad de ellas hablantes nativos que la aprendieron de bebés. Es el único caso documentado en la historia humana de una lengua completamente muerta devuelta al uso diario nativo.</p>
+  <p>En algún momento alrededor del año <strong>200 d.C.</strong>, el último hogar en la Palestina romana en el que los niños crecían oyendo hebreo en la mesa quedó en silencio. El arameo ya se había apoderado de las calles; el griego dominaba las ciudades; la Mishná se compilaba en un hebreo que los eruditos escribían pero cada vez más no <em>hablaban</em>. Durante los siguientes 1.700 años, el hebreo sobrevivió como lengua de la sinagoga, del libro de oraciones, del rollo de la Torá y de la carta de un rabino a otro — una lengua escrita usada por adultos alfabetizados, pero no las primeras palabras de ningún niño. Entonces, de algún modo, eso cambió. El hebreo es ahora la lengua hablada cotidiana de unos <strong>nueve millones de personas</strong>, alrededor de la mitad de ellas hablantes nativos que la aprendieron de bebés. Existen revitalizaciones de menor escala (córnico, manés, wampanoag), pero el hebreo sigue siendo el caso de mayor envergadura y mejor documentado de una lengua que había dejado de ser la lengua materna de nadie devuelta al uso cotidiano de una comunidad.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Mostrar el hebreo en el mapa</button>
@@ -468,7 +468,7 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ Volar a la Gandhāra de Pāṇini</button>
   </div>
 
-  <p>No sabemos casi nada de Pāṇini la persona — solo que era de la aldea de Śalātura (la moderna Lahor, cerca de Attock en Pakistán), probablemente trabajó en el siglo V o IV a.C., y que todo lo que produjo aparentemente fue diseñado para ser <strong>memorizado en voz alta</strong>. El Aṣṭādhyāyī se preservó por recitación durante siglos antes de ser escrito. Para ahorrar sílabas — y por tanto aliento — Pāṇini inventó todo un <strong>metalenguaje técnico</strong>: un sistema de abreviaturas de una sola letra, listas ordenadas de fonemas llamadas <strong>Śiva sūtras</strong>, convenciones para la aplicación "sensible al contexto" de reglas, anuvṛtti (herencia de reglas desde una línea anterior sin necesidad de repetirse), y un sistema de precedencia para resolver qué regla aplica cuando dos reglas entran en conflicto.</p>
+  <p>No sabemos casi nada de Pāṇini la persona — solo que era de la aldea de Śalātura (la actual Lahor / Lahur, a veces llamada "Pequeña Lahore", cerca de Attock, en el noroeste de Pakistán — no debe confundirse con la gran ciudad punyabí de Lahore), probablemente trabajó en el siglo V o IV a.C., y que todo lo que produjo aparentemente fue diseñado para ser <strong>memorizado en voz alta</strong>. El Aṣṭādhyāyī se preservó por recitación durante siglos antes de ser escrito. Para ahorrar sílabas — y por tanto aliento — Pāṇini inventó todo un <strong>metalenguaje técnico</strong>: un sistema de abreviaturas de una sola letra, listas ordenadas de fonemas llamadas <strong>Śiva sūtras</strong>, convenciones para la aplicación "sensible al contexto" de reglas, anuvṛtti (herencia de reglas desde una línea anterior sin necesidad de repetirse), y un sistema de precedencia para resolver qué regla aplica cuando dos reglas entran en conflicto.</p>
 
   <p>El resultado se lee, a ojos modernos, sospechosamente como las reglas de producción de una gramática libre de contexto — solo que más potente. El formato de regla de Pāṇini es esencialmente:</p>
 
@@ -491,7 +491,7 @@ window.TRIVIA_I18N['es'] = {
 
   <blockquote>"La gramática descriptiva del sánscrito que Pāṇini llevó a su perfección es uno de los mayores monumentos de la inteligencia humana." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
 
-  <p>El sánscrito mismo (<em>saṃskṛta-</em>, "pulido, refinado") ya era un estándar literario y ritual, no una lengua vernácula, en tiempos de Pāṇini. Después de él se convirtió, formalmente, en lo que Pāṇini dijo que era: una lengua cuya cada oración bien formada es, en principio, derivable de sus 4.000 sūtras. Dos mil quinientos años después, eso es también exactamente lo que pedimos de un analizador sintáctico. El Aṣṭādhyāyī no solo describió el sánscrito. Inventó silenciosamente la idea de que una lengua puede describirse.</p>
+  <p>El sánscrito mismo (<em>saṃskṛta-</em>, "pulido, refinado") ya era un estándar literario y ritual, no una lengua vernácula, en tiempos de Pāṇini. Después de él se convirtió, formalmente, en lo que Pāṇini dijo que era: una lengua cuya cada oración bien formada es, en principio, derivable de sus 4.000 sūtras. Dos mil quinientos años después, eso es también exactamente lo que pedimos de un analizador sintáctico. El Aṣṭādhyāyī no solo describió el sánscrito. Llevó la idea de una descripción generativa y formal de una lengua a un grado de precisión sin parangón en la Antigüedad — y probablemente sin equivalente hasta que la lingüística formal del siglo XX redescubrió, de forma independiente, esas mismas ideas.</p>
     `,
   },
   'esperanto-zamenhof': {
@@ -531,7 +531,7 @@ window.TRIVIA_I18N['es'] = {
 
   <p>La historia del siglo XX fue cruel con los esperantistas. Hitler condenó la lengua en <em>Mein Kampf</em> como una conspiración judía; los tres hijos de Zamenhof fueron asesinados en el Holocausto. Stalin encarceló y ejecutó a esperantistas soviéticos en las purgas de 1937-38 como "espías cosmopolitas". El movimiento sobrevivió a ambos.</p>
 
-  <p>Hoy el esperanto tiene quizás <strong>dos millones de hablantes</strong> en niveles variables, y — únicamente para una conlang — alrededor de <strong>mil hablantes nativos</strong> conocidos como <em>denaskuloj</em>, criados en hogares bilingües donde el esperanto es una de las lenguas del hogar. Solo el curso de esperanto de Duolingo ha inscrito a más de un millón de estudiantes. Ninguna otra lengua artificial ha cruzado a la transmisión intergeneracional.</p>
+  <p>Hoy el esperanto tiene quizás <strong>dos millones de hablantes</strong> en niveles variables, y alrededor de <strong>mil hablantes nativos</strong> conocidos como <em>denaskuloj</em>, criados en hogares bilingües donde el esperanto es una de las lenguas del hogar. Solo el curso de esperanto de Duolingo ha inscrito a más de un millón de estudiantes. Por cualquier medida — comunidad sostenida, amplitud de la literatura, número de hablantes nativos — el esperanto es con diferencia la lengua construida de mayor éxito jamás intentada.</p>
 
   <p>Zamenhof nunca afirmó que el esperanto reemplazaría la lengua materna de nadie. Quería una <em>dua lingvo</em> — una segunda lengua — igualmente extranjera para todos, para que ningún hablante nativo tuviera ventaja en la mesa de negociaciones. Un siglo y medio después, el proyecto es pequeño, pero sigue vivo, sigue neutro y sigue esperanzado — exactamente como su fundador, <em>Doktoro Esperanto</em>, firmaba con su nombre.</p>
     `,
@@ -663,12 +663,12 @@ window.TRIVIA_I18N['es'] = {
 
   <p>La verdadera rehabilitación del hangul vino a finales del siglo XIX con el reformador Ju Si-gyeong, quien sistematizó su nombre (<em>han-geul</em>, "gran escritura") y su ortografía moderna. Después del período colonial japonés — durante el cual el hangul fue prohibido de nuevo, esta vez por un poder externo — Corea del Sur declaró el Día del Hangul (한글날) feriado nacional. Corea del Norte lo llama <em>Chosŏn'gŭl</em> y celebra su propio feriado el 15 de enero. La alfabetización coreana moderna es funcionalmente del 100%.</p>
 
-  <p>El lingüista Geoffrey Sampson describió el hangul en 1985 como "quizá el sistema de escritura más científico de uso general en cualquier país". Los niños suelen aprenderlo en aproximadamente una hora. Es la única escritura mayor del mundo con un diseñador conocido y una justificación de diseño documentada — un experimento de laboratorio de 600 años que funcionó.</p>
+  <p>El lingüista Geoffrey Sampson describió el hangul en 1985 como "quizá el sistema de escritura más científico de uso general en cualquier país". Las formas básicas de las letras son célebres por lo fáciles de memorizar — los niños coreanos pueden hacerse con el alfabeto en una sola sesión, aunque alcanzar plena soltura lectora y escrita lleva, como con cualquier escritura, varios años. Es la única escritura mayor del mundo con un diseñador conocido y una justificación de diseño documentada — un experimento de laboratorio de 600 años que funcionó.</p>
     `,
   },
   'cherokee-sequoyah': {
     title: 'Sequoyah — el genio analfabeto que inventó un sistema de escritura desde cero',
-    summary: 'En 1821 un platero cheroqui que no sabía leer en inglés presentó un silabario de 85 caracteres que había construido solo durante 12 años. En una década, la alfabetización cheroqui superó la de los colonos blancos circundantes.',
+    summary: 'En 1821 un platero cheroqui que no sabía leer en inglés presentó un silabario de 85 caracteres que había construido solo durante 12 años. En una década, observadores contemporáneos informaron de que la alfabetización cheroqui igualaba o superaba a la de los colonos blancos circundantes.',
     body: `
   <p><strong>Sequoyah</strong> (también escrito ᏍᏏᏉᏯ <em>Ssiquoya</em>, o en inglés George Guess, c. 1770-1843) es una de las únicas personas en la historia registrada conocida por haber inventado un sistema de escritura plenamente funcional desde la nada, siendo personalmente analfabeto en cualquier lengua. La historia es tan improbable que los comentaristas del siglo XIX seguían intentando explicarla. Sucedió de todos modos.</p>
 
@@ -900,7 +900,7 @@ window.TRIVIA_I18N['es'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — la lengua sin izquierda ni derecha',
-    summary: 'Una lengua aborigen australiana del extremo norte de Queensland que usa solo direcciones cardinales absolutas — norte, sur, este, oeste — incluso para objetos sobre una mesa. Los hablantes mantienen una orientación por estima en todo momento.',
+    summary: 'Una lengua aborigen australiana del extremo norte de Queensland que usa solo direcciones cardinales absolutas — norte, sur, este, oeste — incluso para objetos sobre una mesa. Los hablantes mantienen una orientación por navegación a estima en todo momento.',
     body: `
   <p>Si te sientas en una mesa con un hispanohablante y quiere que le pases una taza, te dirá "la taza a tu izquierda" o "la taza frente a ti". El marco de referencia es <strong>egocéntrico</strong> — anclado a tu cuerpo. Casi todas las lenguas europeas funcionan de esta manera.</p>
 
@@ -926,7 +926,7 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Ver "mano" en guugu yimithirr</button>
   </div>
 
-  <p>La consecuencia cognitiva, documentada por Levinson, John Haviland y colegas del Instituto Max Planck, es sorprendente. Los hablantes de guugu yimithirr mantienen un sentido ininterrumpido de <strong>estima</strong> de su orientación. En experimentos, pueden señalar con precisión a lugares distantes (el mar, un asentamiento vecino, la casa de un pariente a cientos de kilómetros de distancia) sin importar si están sentados en una habitación sin ventanas, con los ojos vendados, después de ser conducidos en círculos, o en el fondo de una cueva. Su brújula cardinal simplemente no se apaga.</p>
+  <p>La consecuencia cognitiva, documentada por Levinson, John Haviland y colegas del Instituto Max Planck, es sorprendente. Los hablantes de guugu yimithirr mantienen un sentido ininterrumpido de su orientación por <strong>navegación a estima</strong>. En experimentos, pueden señalar con precisión a lugares distantes (el mar, un asentamiento vecino, la casa de un pariente a cientos de kilómetros de distancia) sin importar si están sentados en una habitación sin ventanas, con los ojos vendados, después de ser conducidos en círculos, o en el fondo de una cueva. Su brújula cardinal simplemente no se apaga.</p>
 
   <p>Esta no es una habilidad especial de unos pocos ancianos. Es una <strong>propiedad universal de los hablantes fluidos</strong>, aprendida en la primera infancia. Los niños de tres años gesticulan cardinalmente. La maquinaria mental es construida por la lengua y constantemente ejercitada por la demanda de hablar de ello.</p>
 
@@ -1055,9 +1055,9 @@ window.TRIVIA_I18N['es'] = {
   },
   'nicaraguan-sign-language': {
     title: 'Lengua de Señas Nicaragüense — una lengua nacida en tiempo real',
-    summary: 'El único caso documentado en la historia de una lengua humana plenamente natural naciendo — creada espontáneamente por niños sordos nicaragüenses cuando finalmente fueron reunidos en los años 70 y 80.',
+    summary: 'Uno de los casos mejor documentados de una nueva lengua humana natural tomando forma en tiempo real — surgida entre los niños sordos nicaragüenses cuando finalmente fueron reunidos en los años 70 y 80.',
     body: `
-  <p>Imagina ser lingüista y poder presenciar el surgimiento de una lengua humana completamente nueva — no prestada, no criollizada de lenguas existentes, sino generada desde cero por niños en una sola generación. Eso es exactamente lo que sucedió en Managua, Nicaragua, entre 1977 y principios de los años 90, produciendo lo que ahora llamamos <strong>Idioma de Señas de Nicaragua (ISN)</strong>.</p>
+  <p>Imagina ser lingüista y poder presenciar en tiempo real cómo toma forma una nueva lengua humana — no criollizada a partir de una lengua hablada existente, sino generada por niños en una sola generación, partiendo en gran medida de sus propios sistemas de señas caseras y gestos. Eso es, a grandes rasgos, lo que sucedió en Managua, Nicaragua, entre 1977 y principios de los años 90, produciendo lo que ahora llamamos <strong>Idioma de Señas de Nicaragua (ISN)</strong>. Otras lenguas de señas surgidas recientemente (la lengua de señas beduina Al-Sayyid en Israel, el kata kolok en Bali) se han estudiado desde entonces, pero el ISN sigue siendo el caso mejor documentado de emergencia cohorte a cohorte.</p>
 
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Mostrar el ISN en el mapa</button>
@@ -1076,7 +1076,7 @@ window.TRIVIA_I18N['es'] = {
 
   <p>Este es apoyo empírico directo a la idea de que <strong>el lenguaje es una salida creativa de la mente del niño</strong>, no solo un registro pasivo de la entrada. Niños en cohortes sucesivas inventaron independientemente rasgos — como descomponer eventos de movimiento en componentes de "trayectoria" y "manera" — que ningún adulto les había dado, y que se parecen notablemente a rasgos documentados en otras lenguas de señas establecidas.</p>
 
-  <p>Hoy el ISN tiene quizás 3.000 señantes y una robusta comunidad sorda organizada a través de la <em>Asociación Nacional de Sordos de Nicaragua</em>. Es la lengua plenamente natural más joven de la Tierra — y la única cuyo nacimiento entero fue capturado en cámara, en papel, y en notas de campo lingüísticas.</p>
+  <p>Hoy el ISN tiene quizás 3.000 señantes y una robusta comunidad sorda organizada a través de la <em>Asociación Nacional de Sordos de Nicaragua</em>. Es una de las lenguas plenamente naturales surgidas más recientemente — y el caso cuyo proceso de formación entero fue capturado de manera más completa en cámara, en papel y en notas de campo lingüísticas.</p>
     `,
   },
   'mama-papa-universals': {
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['es'] = {
   <p>Elige cualquier lengua al azar. Pregunta cómo dice "madre". Las probabilidades son incómodamente altas de que la palabra comience con <strong>m</strong> y contenga una <em>a</em>: inglés <em>mama</em>, mandarín <em>māma</em>, suajili <em>mama</em>, quechua <em>mama</em>, navajo <em>amá</em>, galés <em>mam</em>, hebreo <em>imá</em>, tagalo <em>nanay</em> / <em>mama</em>, hindi <em>mā</em>, malayalam <em>amma</em>, hawaiano <em>makuahine</em> / <em>māmā</em>. Ahora pregunta cómo dice "padre". A lo largo de una muestra igualmente vasta obtienes <strong>papa, baba, tata, dada, abba, atta</strong> — una oclusiva labial o coronal más <em>a</em>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Iluminar "madre" en 8 lenguas no emparentadas</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Comparar "madre" en 8 lenguas no emparentadas</button>
   </div>
 
   <p>Esto no es casualidad. El antropólogo de Yale <strong>George P. Murdock</strong> reunió en 1959 un conjunto de datos transculturales de 1.072 términos de parentesco de 470 lenguas y encontró que palabras del tipo <em>mama</em> se usaban para "madre" en el 52% de la muestra, y palabras del tipo <em>papa</em>/<em>tata</em>/<em>baba</em> para "padre" en el 55%. Las lenguas abarcan cada familia de la Tierra — indoeuropea, sino-tibetana, níger-congoleña, austronesia, uto-azteca, pama-ñungana. No pueden compartir todas un ancestro común.</p>
