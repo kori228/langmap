@@ -65,7 +65,7 @@ const TRIVIA_ARTICLES = [
 
 <p>Everett's claims are <strong>hotly contested</strong>. Later researchers, including Andrew Nevins, David Pesetsky and Cilene Rodrigues, have argued that Pirahã does have recursion — just rarely used — and that the number facts can be explained without exotic cognitive consequences. Everett has fired back; the debate is still open.</p>
 
-<p>What is <em>not</em> contested is the cultural restriction against speaking about non-experienced things, and Pirahã's astonishing multi-channel communication. Whichever side wins the recursion war, Pirahã has done what very few languages ever do: forced linguists to ask, once again, whether language shapes thought — or thought shapes language.</p>
+<p>Less controversial, though still discussed, are the cultural norm restricting speech to directly-experienced events and Pirahã's striking multi-channel transmission. Whichever side wins the recursion war, Pirahã has done what very few languages ever do: forced linguists to ask, once again, whether language shapes thought — or thought shapes language.</p>
       `,
       ja: `
 <p>ブラジル・アマゾンの奥地に、話者わずか700〜800人の<strong>ピダハン語（Pirahã）</strong>がある。世界のどの言語とも親縁関係が証明されていない孤立言語で、現代言語学でもっとも激しい論争を呼んでいる言語のひとつだ。</p>
@@ -95,7 +95,7 @@ const TRIVIA_ARTICLES = [
 
 <p>エヴェレットの主張は<strong>学界で激しく争われている</strong>。アンドリュー・ネヴィンス、デイヴィッド・ペセツキー、シレーネ・ロドリゲスらは「ピダハン語にも再帰はある、ただ頻度が低いだけだ」「数詞の事実は奇抜な認知含意なしに説明できる」と反論し、エヴェレットも応戦している。論争はまだ決着していない。</p>
 
-<p>しかし、「経験していないことは語らない」という文化規範と、口笛・ハミング・叫びによる多チャネル伝達は、誰も否定しない事実である。再帰論争の勝者がどちらになるにせよ、ピダハン語は「言語が思考を形作るのか、それとも思考が言語を形作るのか」──サピア＝ウォーフ以来60年来の問いを、もう一度言語学の中心に押し戻した、稀有な言語なのだ。</p>
+<p>論争の少ない、しかしなお議論の余地のある事柄として──「経験していないことは語らない」という文化規範と、口笛・ハミング・叫びによる多チャネル伝達がある。再帰論争の勝者がどちらになるにせよ、ピダハン語は「言語が思考を形作るのか、それとも思考が言語を形作るのか」──サピア＝ウォーフ以来60年来の問いを、もう一度言語学の中心に押し戻した、稀有な言語なのだ。</p>
       `,
     },
     sources: [
@@ -180,7 +180,11 @@ const TRIVIA_ARTICLES = [
   <blockquote>「相当規模の共同体によって完全に発達し、実践されている唯一の口笛言語であり、人類の文化的創造性を示す例外的な例である」── ユネスコ無形文化遺産登録文（2009年）</blockquote>
   
   <p>脳科学者も注目した。ラ・ラグナ大学の<strong>マヌエル・カレイラス</strong>らによる2005年のfMRI研究では、熟達したシルバドールは口笛を聞くとき<em>左半球の言語野</em>を活性化させていた──同じ口笛を非話者が聞いたときに反応する「右半球の音楽処理野」ではなく。脳はシルボを<strong>音楽でも鳥のさえずりでもなく、言語そのもの</strong>として処理しているのだ。この一本の論文によって、シルボは「民俗的な珍奇例」から「人間の言語能力の柔軟性を測る格好の実験対象」へと格上げされた。</p>
-  
+
+  <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="panto" data-lat="28.10" data-lng="-17.20" data-zoom="9" data-tiles="terrain">🌋 バランコ（峡谷地形）にズーム</button>
+  </div>
+
   <p>世界には他にも口笛言語が残っている──トルコのクシュキョイ、メキシコ・オアハカのマサテコ口笛、雲南のアカ族の口笛声調など。しかしシルボ・ゴメロほど制度化され、記録され、文化遺産として保護されている口笛は他にない。ラ・ゴメラの尾根道で、よくしゃべる鳥のような音が聞こえたら、もう一度耳を澄ましてほしい。それは誰かが従姉妹に「帰りにパンを買ってきて」と頼んでいる声かもしれない。</p>
         `,
       },
@@ -238,7 +242,7 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="panto" data-lat="-23.5" data-lng="21.5" data-zoom="6">🌵 Zoom into the Kalahari</button>
   </div>
   
-  <p>UNESCO classifies Taa as <strong>severely endangered</strong>. The few hundred children who still acquire it grow up alongside Tswana-medium schooling and increasingly mobile lifestyles. If Taa goes silent in the next generation, the world loses not only a community's heritage but the single richest natural laboratory the science of phonetics has ever had.</p>
+  <p>Taa is generally described as <strong>severely endangered</strong>. The few hundred children who still acquire it grow up alongside Tswana-medium schooling and increasingly mobile lifestyles. If Taa goes silent in the next generation, the world loses not only a community's heritage but the single richest natural laboratory the science of phonetics has ever had.</p>
         `,
         ja: `
   <p>英語の子音は24個。それにフランス語、ドイツ語、ロシア語、アラビア語、北京官話の子音を全部足しても、まだ<strong>タア語</strong>（<em>!ホーン語</em>とも書く）には届かない。アンソニー・トレイルの記念碑的記述（1985年）によれば、タア語の音素子音は<strong>83〜164個</strong>──吸着音の付随特徴をどう数えるかで揺れる──いずれにせよ世界記録である。</p>
@@ -411,11 +415,11 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="compare" data-codes="ab,ady,kbd">🗣 Compare Ubykh's surviving cousins (Abkhaz, Adyghe, Kabardian)</button>
   </div>
   
-  <p>Almost everything we know about Ubykh in the 20th century we owe to the French Indo-Europeanist and comparative mythologist <strong>Georges Dumézil</strong>. Beginning in 1930, Dumézil made repeated trips to Anatolia to record the dwindling community, returning year after year for nearly six decades. He produced a series of grammatical descriptions, text collections and the indispensable <em>Dictionnaire de la langue oubykh</em> (1965). Esenç became Dumézil's principal consultant in the 1960s; the two corresponded and worked together until Dumézil's death in 1986.</p>
+  <p>Almost everything we know about Ubykh in the 20th century we owe to the French Indo-Europeanist and comparative mythologist <strong>Georges Dumézil</strong>. Beginning in 1930, Dumézil made repeated trips to Anatolia to record the dwindling community, returning year after year for nearly six decades. He produced a series of grammatical descriptions and text collections — including the <em>Documents anatoliens sur les langues et les traditions du Caucase</em> series (vol. IV: <em>Récits oubykh</em>, 1965) — that remain foundational. Esenç became Dumézil's principal consultant in the 1960s; the two corresponded and worked together until Dumézil's death in 1986.</p>
   
   <blockquote>"He knew that he was the last. He carried the language as one carries a candle in a sealed room: alone, attentive, and aware that the air would not last." — paraphrased recollection of Dumézil's collaborators</blockquote>
   
-  <p>Esenç understood his role with unusual clarity. He memorised proverbs, songs, prayers, place names and folktales specifically so that they could be recorded. He insisted on being buried under a headstone naming him, in Ubykh, as "the last speaker", a phrase he himself dictated. Dutch linguist <strong>Rieks Smeets</strong> and Norwegian phonetician <strong>Hans Vogt</strong> continued the documentation after Dumézil; Vogt's 1963 <em>Dictionnaire de la langue oubykh</em> (a separate work from Dumézil's) and Smeets's later studies remain the standard references.</p>
+  <p>Esenç understood his role with unusual clarity. He memorised proverbs, songs, prayers, place names and folktales specifically so that they could be recorded. He insisted on being buried under a headstone naming him, in Ubykh, as "the last speaker", a phrase he himself dictated. Norwegian phonetician <strong>Hans Vogt</strong> produced the standard reference dictionary, <em>Dictionnaire de la langue oubykh</em> (1963), and Dutch linguist <strong>Rieks Smeets</strong> continued the documentation through the late 20th century; together with Dumézil's text editions, their work forms the documentary bedrock for the language.</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="40.50" data-lng="29.20" data-zoom="7">🕯️ Zoom into Hacıosman, Turkey</button>
@@ -618,7 +622,7 @@ const TRIVIA_ARTICLES = [
 
   <blockquote>"Clicks are not borrowed sounds in the way loanwords are borrowed. They are inherited features of bilingual childhood — and once they are in the lexicon of a single generation, they become native." — Anthony Traill, 1995 (paraphrased)</blockquote>
   
-  <p>Beyond southern Africa, clicks survive only in three places we know of: the East African isolates <strong>Hadza</strong> and <strong>Sandawe</strong>; a few ritual or secret registers like <strong>Damin</strong> in Australia; and the now-extinct ceremonial register <em>El Molo</em> reportedly contained click-like sounds. That makes the southern African click area one of the world's tightest linguistic regions — a place where one extraordinary feature has been maintained, elaborated and traded across four families for at least several thousand years.</p>
+  <p>Beyond southern Africa, robust documented cases are the East African isolates <strong>Hadza</strong> and <strong>Sandawe</strong>, plus the special ritual register <strong>Damin</strong> in Australia — used by initiated men of Mornington Island rather than as an ordinary spoken language. (Reports of click-like sounds in the ceremonial register of El Molo exist but are not well established.) That makes the southern African click area one of the world's tightest linguistic regions — a place where one extraordinary feature has been maintained, elaborated and traded across four families for at least several thousand years.</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="panto" data-lat="-25" data-lng="22" data-zoom="4">🌍 Survey the click belt of southern Africa</button>
@@ -778,16 +782,16 @@ const TRIVIA_ARTICLES = [
       icon: '𒀭',
       tags: ['isolate', 'mesopotamia', 'writing', 'ancient'],
       title: {
-        en: 'Sumerian — the first language ever written down',
-        ja: '人類が最初に書き記した言語、シュメール語',
+        en: 'Sumerian — among the earliest languages ever written down',
+        ja: '人類最古級の文字言語、シュメール語',
       },
       summary: {
-        en: 'The world\'s oldest written language: a Mesopotamian isolate, recorded on clay from ~3200 BCE, and kept alive as a scholarly tongue for 2,000 years after its last native speaker died.',
-        ja: '人類最古の文字言語。紀元前3200年頃にメソポタミアの粘土板に刻まれ、最後の母語話者が死んでから2000年もの間、学術言語として生き続けた孤立言語。',
+        en: 'Among the earliest extensively attested written languages: a Mesopotamian isolate recorded on clay from ~3200 BCE, and kept alive as a scholarly tongue for 2,000 years after its last native speaker died.',
+        ja: '人類最古級の文字言語の一つ。紀元前3200年頃にメソポタミアの粘土板に大量に刻まれ、最後の母語話者が死んでから2000年もの間、学術言語として生き続けた孤立言語。',
       },
       body: {
         en: `
-  <p>Around 3200 BCE, in the southern Mesopotamian city of <strong>Uruk</strong>, somebody pressed the end of a reed stylus into wet clay and wrote down a quantity of barley. That clay tablet, and thousands like it, mark the moment human language first escaped the breath that carried it. The language being recorded was <strong>Sumerian</strong> (<em>eme-gir</em>, "the native tongue") — and 5,200 years later we are still reading it.</p>
+  <p>Around 3200 BCE, in the southern Mesopotamian city of <strong>Uruk</strong>, somebody pressed the end of a reed stylus into wet clay and wrote down a quantity of barley. That clay tablet, and thousands like it, are among the earliest moments human language escaped the breath that carried it — alongside parallel developments in early dynastic Egypt and, somewhat later, in the Indus Valley and China. The language being recorded was <strong>Sumerian</strong> (<em>eme-gir</em>, "the native tongue") — and 5,200 years later we are still reading it.</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="sux" data-zoom="6">🌍 Show Sumerian on the map</button>
@@ -954,8 +958,8 @@ const TRIVIA_ARTICLES = [
         ja: '一度も録音されたことのない言語、センチネル語',
       },
       summary: {
-        en: 'On a 60 km² island in the Bay of Bengal lives a people who have refused all contact for sixty thousand years — and whose language no outsider has ever heard, let alone documented.',
-        ja: 'ベンガル湾の60平方キロの島で、6万年間あらゆる接触を拒み続けてきた人々が話す言語。外部の誰も聞いたことも記録したこともない。',
+        en: 'On a 60 km² island in the Bay of Bengal lives a people whose ancestors may belong to one of the earliest layers of human settlement in the region — and whose language no outsider has ever heard, let alone documented.',
+        ja: 'ベンガル湾の60平方キロの島で、地域における人類最古の定住層に連なるとされる人々が話す言語。外部の誰も聞いたことも記録したこともない。',
       },
       body: {
         en: `
@@ -965,7 +969,7 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="panto" data-lat="11.55" data-lng="92.24" data-zoom="8">🗺️ Fly to North Sentinel Island</button>
   </div>
   
-  <p>The Sentinelese are one of the <strong>Andamanese</strong> peoples — descendants of one of the earliest <em>Out of Africa</em> human dispersals, who reached the Andamans perhaps 60,000 years ago and remained isolated ever since. Genetic evidence puts them among the most ancient continuously isolated populations on the planet. Their neighbours on the wider archipelago — the Great Andamanese, the Onge of Little Andaman, and the Jarawa of South and Middle Andaman — speak languages that fall into <strong>two unrelated families</strong>: Great Andamanese, and the smaller Ongan family (Onge + Jarawa). Sentinelese is suspected to be a third sister, possibly closest to Ongan, but no one has ever heard enough words to confirm it.</p>
+  <p>The Sentinelese are one of the <strong>Andamanese</strong> peoples — believed to descend from one of the earliest <em>Out of Africa</em> human dispersals that may have reached the Andamans tens of thousands of years ago. Genetic evidence places them among the most long-isolated populations on the planet, though the precise duration and continuity of their isolation cannot be stated with certainty. Their neighbours on the wider archipelago — the Great Andamanese, the Onge of Little Andaman, and the Jarawa of South and Middle Andaman — speak languages that fall into <strong>two unrelated families</strong>: Great Andamanese, and the smaller Ongan family (Onge + Jarawa). Sentinelese is suspected to be a third sister, possibly closest to Ongan, but no one has ever heard enough words to confirm it.</p>
   
   <p>Every documented attempt at contact has either failed or ended in violence:</p>
   
@@ -1030,16 +1034,16 @@ const TRIVIA_ARTICLES = [
       icon: '✡️',
       tags: ['revival', 'hebrew', 'israel', 'liturgical'],
       title: {
-        en: 'Hebrew — the only ancient language ever brought back to life',
-        ja: '蘇った唯一の古代言語、ヘブライ語',
+        en: 'Hebrew — an ancient language brought back to everyday life',
+        ja: '日常語として蘇った古代言語、ヘブライ語',
       },
       summary: {
-        en: 'For nearly 1,700 years, no child grew up speaking Hebrew. Today it is the mother tongue of nine million people — the only fully successful revival of a dead language in human history.',
-        ja: '約1,700年間、誰一人としてヘブライ語を母語として育たなかった。今やそれは900万人の母語である──人類史上唯一、完全に成功した死語の蘇生例。</br>',
+        en: 'For nearly 1,700 years, Hebrew survived as a liturgical and literary language but no child grew up speaking it. Today it is the mother tongue of nine million people — the largest-scale and most successful revival of a language that had ceased to be a community vernacular.',
+        ja: '約1,700年にわたりヘブライ語は典礼・文献の言語として残り続けたが、母語として育つ子供はいなかった。今やそれは900万人の母語となっている──共同体の日常語として途絶えた言語を再び生活語として復活させた、もっとも大規模で成功した事例。',
       },
       body: {
         en: `
-  <p>Sometime around the year <strong>200 CE</strong>, the last household in Roman Palestine in which children grew up hearing Hebrew at the dinner table fell silent. Aramaic had already taken over the streets; Greek dominated the cities; the Mishnah was being compiled in a Hebrew that scholars wrote but increasingly did not <em>speak</em>. For the next 1,700 years, Hebrew survived as the language of the synagogue, the prayer book, the Torah scroll, and the letter from one rabbi to another — a written language used by literate adults, but no child's first words. Then, somehow, that changed. Hebrew is now the everyday spoken language of about <strong>nine million people</strong>, around half of them native speakers who learned it as babies. It is the only documented case in human history of a fully dead language being brought back to native daily use.</p>
+  <p>Sometime around the year <strong>200 CE</strong>, the last household in Roman Palestine in which children grew up hearing Hebrew at the dinner table fell silent. Aramaic had already taken over the streets; Greek dominated the cities; the Mishnah was being compiled in a Hebrew that scholars wrote but increasingly did not <em>speak</em>. For the next 1,700 years, Hebrew survived as the language of the synagogue, the prayer book, the Torah scroll, and the letter from one rabbi to another — a written language used by literate adults, but no child's first words. Then, somehow, that changed. Hebrew is now the everyday spoken language of about <strong>nine million people</strong>, around half of them native speakers who learned it as babies. Smaller-scale revivals exist (Cornish, Manx, Wampanoag), but Hebrew remains the largest-scale and most thoroughly documented case of a language that had ceased to be anyone's mother tongue being brought back to daily community use.</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="he" data-zoom="7">🌍 Show Hebrew on the map</button>
@@ -1136,7 +1140,7 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ Fly to Pāṇini's Gandhāra</button>
   </div>
   
-  <p>We know almost nothing about Pāṇini the person — only that he was from the village of Śalātura (modern Lahor, near Attock in Pakistan), probably worked in the 5th or 4th century BCE, and that everything he produced was apparently designed to be <strong>memorized aloud</strong>. The Aṣṭādhyāyī was preserved by recitation for centuries before being written down. To save syllables — and therefore breath — Pāṇini invented an entire <strong>technical metalanguage</strong>: a system of single-letter abbreviations, ordered phoneme lists called the <strong>Śiva sūtras</strong>, conventions for "context-sensitive" rule application, anuvṛtti (rule inheritance from a previous line that need not be re-stated), and a precedence system for resolving which rule applies when two rules conflict.</p>
+  <p>We know almost nothing about Pāṇini the person — only that he was from the village of Śalātura (modern Lahor / Lahur, sometimes called "Little Lahore", near Attock in northwestern Pakistan — not to be confused with the major Punjabi city of Lahore), probably worked in the 5th or 4th century BCE, and that everything he produced was apparently designed to be <strong>memorized aloud</strong>. The Aṣṭādhyāyī was preserved by recitation for centuries before being written down. To save syllables — and therefore breath — Pāṇini invented an entire <strong>technical metalanguage</strong>: a system of single-letter abbreviations, ordered phoneme lists called the <strong>Śiva sūtras</strong>, conventions for "context-sensitive" rule application, anuvṛtti (rule inheritance from a previous line that need not be re-stated), and a precedence system for resolving which rule applies when two rules conflict.</p>
   
   <p>The result reads, to a modern eye, uncannily like the production rules of a context-free grammar — only more powerful. Pāṇini's rule format is essentially:</p>
   
@@ -1159,7 +1163,7 @@ const TRIVIA_ARTICLES = [
   
   <blockquote>"The descriptive grammar of Sanskrit which Pāṇini brought to its perfection is one of the greatest monuments of human intelligence." — Leonard Bloomfield, <em>Language</em> (1933)</blockquote>
   
-  <p>Sanskrit itself (<em>saṃskṛta-</em>, "polished, refined") was already a literary and ritual standard, not a vernacular, by Pāṇini's day. After him it became, formally, what Pāṇini said it was: a language whose every well-formed sentence is, in principle, derivable from his 4,000 sūtras. Two and a half thousand years later, that is also exactly what we ask of a parser. The Aṣṭādhyāyī did not just describe Sanskrit. It quietly invented the idea that a language can be described.</p>
+  <p>Sanskrit itself (<em>saṃskṛta-</em>, "polished, refined") was already a literary and ritual standard, not a vernacular, by Pāṇini's day. After him it became, formally, what Pāṇini said it was: a language whose every well-formed sentence is, in principle, derivable from his 4,000 sūtras. Two and a half thousand years later, that is also exactly what we ask of a parser. The Aṣṭādhyāyī did not just describe Sanskrit. It pushed the idea of generative, formal description of language to a degree of precision unmatched in antiquity — and arguably until 20th-century formal linguistics rediscovered the same ideas independently.</p>
         `,
         ja: `
   <p>20世紀の計算機科学者をタイムマシンで困惑させる一冊を選ぶとしたら、<strong>パーニニ</strong>の『<strong>アシュターディヤーイー</strong>』（八章篇）以上の候補を挙げるのは難しい。紀元前500〜400年頃、現在のパキスタン北西部で書かれたこの書は、わずか<strong>約4,000のスートラ</strong>（極度に圧縮された規則）で、サンスクリット語の生成的記述を完全に与える。全文が現代の活字でわずか35ページほどに収まるほど密度が高い。レナード・ブルームフィールドからポール・キパルスキー、ノーム・チョムスキーに至るまで、近現代の言語学者がこぞって「20世紀以前に書かれた、最も完成度の高い言語の形式記述」と呼ぶ書物である。</p>
@@ -1252,7 +1256,7 @@ const TRIVIA_ARTICLES = [
   
   <p>Twentieth-century history was cruel to Esperantists. Hitler condemned the language in <em>Mein Kampf</em> as a Jewish conspiracy; Zamenhof's three children were murdered in the Holocaust. Stalin imprisoned and executed Soviet Esperantists in the 1937–38 purges as "cosmopolitan spies". The movement survived both.</p>
   
-  <p>Today Esperanto has perhaps <strong>two million speakers</strong> at varying levels, and — uniquely for a conlang — around <strong>a thousand native speakers</strong> known as <em>denaskuloj</em>, raised in bilingual households where Esperanto is one of the home languages. Duolingo's Esperanto course alone has enrolled over a million learners. No other artificial language has ever crossed into intergenerational transmission.</p>
+  <p>Today Esperanto has perhaps <strong>two million speakers</strong> at varying levels, and around <strong>a thousand native speakers</strong> known as <em>denaskuloj</em>, raised in bilingual households where Esperanto is one of the home languages. Duolingo's Esperanto course alone has enrolled over a million learners. By any measure — sustained community, breadth of literature, native-speaker population — Esperanto is by far the most successful constructed language ever attempted.</p>
   
   <p>Zamenhof never claimed Esperanto would replace anyone's mother tongue. He wanted a <em>dua lingvo</em> — a second language — equally foreign to everyone, so that no native speaker would ever have the upper hand at the negotiating table. A century and a half later, the project is small, but it is still alive, still neutral, and still hopeful — exactly as its founder, <em>Doktoro Esperanto</em>, signed his name.</p>
         `,
@@ -1280,6 +1284,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="love" data-code="eo">❤️ 「愛」は<em>amo</em></button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="eo">💧 「水」は<em>akvo</em></button>
     <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="eo">1️⃣ 「1」は<em>unu</em></button>
   </div>
   
@@ -1395,6 +1400,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="tok">💧 「水」は<em>telo</em></button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="sun" data-code="tok">☀️ 「太陽」は<em>suno</em></button>
     <button type="button" class="trivia-action" data-action="setword" data-word="love" data-code="tok">❤️ 「愛」は<em>olin</em></button>
   </div>
   
@@ -1557,7 +1563,7 @@ const TRIVIA_ARTICLES = [
   
   <p>Hangul's true rehabilitation came at the end of the 19th century with reformer Ju Si-gyeong, who systematized its name (<em>han-geul</em>, "great script") and its modern orthography. After the Japanese colonial period — during which Hangul was again banned, this time by an outside power — South Korea declared Hangul Day (한글날) a national holiday. North Korea calls it <em>Chosŏn'gŭl</em> and observes its own holiday on 15 January. Modern Korean literacy is functionally 100%.</p>
   
-  <p>The linguist Geoffrey Sampson described Hangul in 1985 as "perhaps the most scientific system of writing in general use in any country". Children typically learn it in about an hour. It is the world's only major script with both a known designer and a documented design rationale — a 600-year-old laboratory experiment that worked.</p>
+  <p>The linguist Geoffrey Sampson described Hangul in 1985 as "perhaps the most scientific system of writing in general use in any country". The basic letter shapes are famously quick to memorize — Korean children can grasp the alphabet in a single sitting, though full reading and writing fluency takes the usual years. It is the world's only major script with both a known designer and a documented design rationale — a 600-year-old laboratory experiment that worked.</p>
         `,
         ja: `
   <p>たいていの文字体系は「進化」する。何百年もかけて絵文字から抽象記号へ漂流し、誰も「なぜBはこの形なのか」を覚えていない。<strong>ハングル</strong>はそうではない。ハングルには誕生日がある──<strong>1446年10月9日</strong>、解説書『<em>訓民正音解例本</em>』が頒布された日だ。そして名前のある単独の発明者がいる。朝鮮王朝第4代国王、<strong>世宗大王</strong>（재위 1418〜1450）と、彼の集賢殿（<em>チピョンジョン</em>）の学者たちである。</p>
@@ -1587,6 +1593,7 @@ const TRIVIA_ARTICLES = [
   <p>母音はさらに思想的だ。基本要素は三つ──横線 ─（地）、縦線 │（人）、点 ·（天、後に短線に）。儒教的三才のこの三要素の組み合わせで、すべての母音 ㅏ・ㅓ・ㅗ・ㅜ などが生み出される。</p>
   
   <div class="trivia-actions">
+    <button type="button" class="trivia-action" data-action="setword" data-word="one" data-code="ko">1️⃣ 「1」は<em>하나</em>／<em>일</em></button>
     <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="ko">🌙 「月」は<em>달</em></button>
     <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="ko">💧 「水」は<em>물</em></button>
   </div>
@@ -1617,7 +1624,7 @@ const TRIVIA_ARTICLES = [
         ja: 'シクウォイア──文字を知らぬまま文字を発明した男',
       },
       summary: {
-        en: 'In 1821 a Cherokee silversmith who could not read English unveiled an 85-character syllabary he had built alone over 12 years. Within a decade Cherokee literacy outstripped that of the surrounding white settlers.',
+        en: 'In 1821 a Cherokee silversmith who could not read English unveiled an 85-character syllabary he had built alone over 12 years. Within a decade, contemporary observers reported that Cherokee literacy rivaled or exceeded that of the surrounding white settlers.',
         ja: '1821年、英語の読み書きができなかったチェロキー族の銀細工師シクウォイアが、12年かけて独力で完成させた85文字の音節文字を披露した。10年後、チェロキー族の識字率は周囲の白人入植者を上回っていた。',
       },
       body: {
@@ -1686,6 +1693,7 @@ const TRIVIA_ARTICLES = [
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="chr">💧 「水」は<em>ᎠᎹ (ama)</em></button>
     <button type="button" class="trivia-action" data-action="setword" data-word="fire" data-code="chr">🔥 「火」は<em>ᎠᏥᎳ (atsila)</em></button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="chr">🌙 「月」は<em>ᏃᏓ (nvda)</em></button>
   </div>
   
   <p>そこから先は識字史上類を見ない事態が起きた。チェロキー国は1825年、シラバリーを公式採用。1828年には全米初の先住民新聞<em>『Tsalagi Tsulehisanvhi / チェロキー・フェニックス』</em>がチェロキー語・英語併載で刊行された。シクウォイアの実証から10年程度の間に、宣教師を含む同時代の観察者は「<strong>チェロキー族のチェロキー文字識字率は、周囲の白人入植者の英語識字率を上回っている</strong>」と報告するに至る。</p>
@@ -1861,6 +1869,7 @@ const TRIVIA_ARTICLES = [
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="setword" data-word="moon" data-code="txg">🌙 西夏語の「月」</button>
+    <button type="button" class="trivia-action" data-action="setword" data-word="water" data-code="txg">💧 西夏語の「水」</button>
   </div>
   
   <p>解読の英雄は<strong>ニコライ・ネフスキー</strong>（1892–1937）。1920年代を日本と台湾で過ごしたロシアの日本学者で、レニングラードに戻ってカラ・ホト文書に着手し、1929年には音韻構造の基礎を解明、最初の西夏語＝ロシア語辞書を完成させる。代表作『西夏文献学』は没後1960年刊──ネフスキー自身は1937年、スターリンの大粛清で銃殺されていた。死後にレーニン賞を受賞している。</p>
@@ -2548,12 +2557,12 @@ const TRIVIA_ARTICLES = [
         ja: 'ニカラグア手話──研究者の目の前で誕生した言語',
       },
       summary: {
-        en: 'The only documented case in history of a fully natural human language being born — created spontaneously by deaf Nicaraguan children when they were finally brought together in the 1970s and 80s.',
+        en: 'One of the best-documented cases of a new natural human language taking shape in real time — emerging among deaf Nicaraguan children when they were finally brought together in the 1970s and 80s.',
         ja: '人類言語が「ゼロから自然に生まれる」瞬間を研究者がリアルタイムで観察した、史上唯一の記録。1970〜80年代のニカラグアで、ろう児たちが集まったときに自然発生した。',
       },
       body: {
         en: `
-  <p>Imagine being a linguist and getting to watch a brand-new human language come into existence — not borrowed, not creolised from existing languages, but generated from scratch by children in a single generation. That is exactly what happened in Managua, Nicaragua, between 1977 and the early 1990s, producing what we now call <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Nicaraguan Sign Language.</p>
+  <p>Imagine being a linguist and getting to watch a brand-new human language take shape in real time — not creolised from an existing spoken language, but generated by children in a single generation, starting largely from their own home-sign systems and gestures. That is roughly what happened in Managua, Nicaragua, between 1977 and the early 1990s, producing what we now call <strong>Idioma de Señas de Nicaragua (ISN)</strong>, Nicaraguan Sign Language. Other recently-formed sign languages (Al-Sayyid Bedouin Sign Language in Israel, Kata Kolok in Bali) have since been studied, but ISN remains the best-documented case for cohort-by-cohort emergence.</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="ncs" data-zoom="7">🌍 Show Nicaraguan Sign Language on the map</button>

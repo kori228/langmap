@@ -347,7 +347,7 @@ window.TRIVIA_I18N['fr'] = {
 
 <p>La langue fut entièrement oubliée après la mort du cunéiforme lui-même, vers le 1er siècle de notre ère. Elle ne réintégra la mémoire humaine qu\'au 19e siècle, quand <strong>Henry Rawlinson</strong>, <strong>Edward Hincks</strong> et <strong>Jules Oppert</strong> — trois des déchiffreurs du cunéiforme — réalisèrent que les listes lexicales bilingues qu\'ils lisaient enregistraient non seulement l\'akkadien mais aussi une langue plus ancienne et non sémitique derrière celui-ci. Oppert proposa le nom « sumérien » en 1869, d\'après le terme <em>kengir</em> « Sumer » utilisé par les Sumériens eux-mêmes.</p>
 
-<p>Aujourd\'hui le <strong>Pennsylvania Sumerian Dictionary</strong> et l\'<strong>Electronic Text Corpus of Sumerian Literature</strong> (ETCSL, Oxford) permettent de lire la plus ancienne poésie du monde sur un téléphone. L\'<strong>Épopée de Gilgamesh</strong>, dans ses prédécesseurs en langue sumérienne comme « Gilgamesh et le Taureau céleste », fut la première littérature jamais écrite par l\'humanité — et elle est encore en cours de traduction.</p>
+<p>Aujourd\'hui le <strong>Pennsylvania Sumerian Dictionary</strong> et l\'<strong>Electronic Text Corpus of Sumerian Literature</strong> (ETCSL, Oxford) permettent de lire la plus ancienne poésie du monde sur un téléphone. L\'<strong>Épopée de Gilgamesh</strong>, dans ses prédécesseurs en langue sumérienne comme « Gilgamesh et le Taureau céleste », compte parmi les plus anciennes littératures connues — et elle est encore en cours de traduction.</p>
     `
   },
   'etruscan-mystery': {
@@ -897,7 +897,7 @@ window.TRIVIA_I18N['fr'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — la langue sans gauche ni droite',
-    summary: 'Une langue aborigène australienne du nord du Queensland qui n\'utilise que des directions cardinales absolues — nord, sud, est, ouest — même pour des objets sur une table. Les locuteurs maintiennent en permanence une orientation par estimation.',
+    summary: 'Une langue aborigène australienne du nord du Queensland qui n\'utilise que des directions cardinales absolues — nord, sud, est, ouest — même pour des objets sur une table. Les locuteurs maintiennent en permanence une orientation par navigation à l\'estime.',
     body: `
 <p>Si vous vous asseyez à une table avec un francophone et qu'il veut que vous lui passiez une tasse, il dira « la tasse à votre gauche » ou « la tasse devant vous ». Le cadre de référence est <strong>égocentrique</strong> — ancré à votre corps. Presque toutes les langues européennes fonctionnent ainsi.</p>
 
@@ -923,7 +923,7 @@ window.TRIVIA_I18N['fr'] = {
   <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Voir « main » en Guugu Yimithirr</button>
 </div>
 
-<p>La conséquence cognitive, documentée par Levinson, John Haviland et leurs collègues à l'Institut Max Planck, est frappante. Les locuteurs du Guugu Yimithirr maintiennent un sens ininterrompu d'<strong>estime</strong> de leur orientation. Dans des expériences, ils peuvent pointer avec précision vers des lieux distants (la mer, une localité voisine, la maison d'un parent à des centaines de kilomètres) qu'ils soient assis dans une pièce sans fenêtres, les yeux bandés, après avoir été conduits en rond, ou au fond d'une grotte. Leur boussole cardinale ne s'éteint simplement pas.</p>
+<p>La conséquence cognitive, documentée par Levinson, John Haviland et leurs collègues à l'Institut Max Planck, est frappante. Les locuteurs du Guugu Yimithirr maintiennent un sens ininterrompu de leur orientation par <strong>navigation à l'estime</strong>. Dans des expériences, ils peuvent pointer avec précision vers des lieux distants (la mer, une localité voisine, la maison d'un parent à des centaines de kilomètres) qu'ils soient assis dans une pièce sans fenêtres, les yeux bandés, après avoir été conduits en rond, ou au fond d'une grotte. Leur boussole cardinale ne s'éteint simplement pas.</p>
 
 <p>Ce n'est pas une compétence spéciale de quelques anciens. C'est une <strong>propriété universelle des locuteurs courants</strong>, apprise dans la petite enfance. Les enfants de trois ans gestent cardinalement. La machinerie mentale est construite par la langue et constamment exercée par l'exigence d'en parler.</p>
 
@@ -979,7 +979,7 @@ window.TRIVIA_I18N['fr'] = {
 
 <blockquote>« En mohawk, le verbe est un petit théâtre. Les acteurs entrent avant que le rideau ne se lève et quittent rarement la scène. » — paraphrase de Marianne Mithun, 1999</blockquote>
 
-<p>Le mouvement de revitalisation compte ici. Les écoles d'immersion Kanien'kéha — la Kahnawà:ke Survival School et la Akwesasne Freedom School sont les mieux connues — ont produit une nouvelle génération de locuteurs qui manient cette table pronominale de 60 cases avec une aisance native. Le mohawk montre que la polysynthèse n'est pas un fossile du passé ; c'est une stratégie grammaticale vivante, aussi expressive que toute analytique, et maintenant consciemment reconstruite par des communautés déterminées à ce que <em>Kanien'kéha</em> continue.</p>
+<p>Le mouvement de revitalisation compte ici. Les écoles d'immersion Kanien'kéha — la Kahnawà:ke Survival School et la Akwesasne Freedom School sont les mieux connues — ont produit une nouvelle génération de locuteurs qui manient cette table pronominale de 60 cases avec une aisance native. Le mohawk montre que la polysynthèse n'est pas un fossile du passé ; c'est une stratégie grammaticale vivante, aussi expressive que toute langue analytique, et maintenant consciemment reconstruite par des communautés déterminées à ce que <em>Kanien'kéha</em> continue.</p>
 
 <p>D'autres langues polysynthétiques classiques — inuktitut, yupik central de Sibérie, tchouktche, aïnou, sora — confirment que le modèle est récurrent à travers les continents. Mais pour la pure densité d'information grammaticale par mot, les langues iroquoises, et le mohawk en particulier, sont toujours le prototype que les manuels invoquent en premier.</p>
     `

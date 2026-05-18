@@ -722,9 +722,9 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Kile kilichofuata hakijawahi kutokea katika historia ya kusoma na kuandika. Taifa la Cherokee lilipitisha syllabary kwa amri rasmi mwaka 1825. Kufikia 1828 walikuwa wameanza kuchapisha <em>Tsalagi Tsulehisanvhi / Cherokee Phoenix</em>, gazeti la kwanza la Wamarekani wa Asili, lililochapishwa kwa lugha mbili katika Cherokee na Kiingereza kwenye chapa ya syllabary iliyotengenezwa maalum. Ndani ya miaka kumi tangu maandamano ya Sequoyah ya 1821, waangalizi wa wakati huo — wakiwemo wamishionari wa Marekani — walikadiria kwamba <strong>kusoma na kuandika kwa Cherokee katika hati yao wenyewe kulizidi kiwango cha kusoma na kuandika cha wakaaji weupe waliokuwa karibu katika Kiingereza</strong>.</p>
 
-  <blockquote>"Katika miezi michache alikuwa amekamilisha mfumo wake... na taifa zima lilipigwa stima na ugunduzi." — Samuel Lorenzo Knapp, <em>Lectures on American Literature</em>, 1829</blockquote>
+  <blockquote>"Katika miezi michache alikuwa amekamilisha mfumo wake... na taifa zima lilisisimka kwa ugunduzi huo." — Samuel Lorenzo Knapp, <em>Lectures on American Literature</em>, 1829</blockquote>
 
-  <p>Ushindi ulifuatwa na msiba. Mwaka 1838–1839, licha ya jimbo la kisasa la kitaifa la Cherokee linalosoma na kuandika, lenye katiba, linalochapisha gazeti, utawala wa Rais Andrew Jackson uliwalazimisha kuondolewa magharibi katika <strong>Trail of Tears</strong>; karibu 4,000 kati ya Wacherokee 16,000 walikufa. Syllabary ilienda nao. Sequoyah mwenyewe alikufa mwaka 1843 huko Mexico, akitafuta bendi ya Cherokee iliyotengwa kwa minong'ono.</p>
+  <p>Ushindi ulifuatwa na msiba. Mwaka 1838–1839, licha ya jimbo la kisasa la kitaifa la Cherokee linalosoma na kuandika, lenye katiba, linalochapisha gazeti, utawala wa Rais Andrew Jackson uliwalazimisha kuondolewa magharibi katika <strong>Trail of Tears</strong>; karibu 4,000 kati ya Wacherokee 16,000 walikufa. Syllabary ilienda nao. Sequoyah mwenyewe alikufa mwaka 1843 huko Mexico, akitafuta bendi ya Cherokee iliyotengwa, kulingana na ripoti zilizoenezwa.</p>
 
   <p>Leo syllabary ya Cherokee inafundishwa katika shule za kuzama huko Tahlequah, Oklahoma na Cherokee, North Carolina. Iko katika Unicode (U+13A0–U+13FF), inasaidiwa na mifumo ya uendeshaji ya Apple na Google, na imetumika kuandika kila kitu kutoka kwa tafsiri za Biblia hadi posts za kisasa za mitandao ya kijamii. Mti mkubwa wa California redwood <em>Sequoia sempervirens</em> umeitwa baada yake. Mtu hakuweza kusoma. Alipa taifa hati.</p>
     `
@@ -817,7 +817,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Hii ndio hali ya kushangaza. Mwaka 1952, msanifu mdogo wa Kiingereza <strong>Michael Ventris</strong>, akifanya kazi na mwanaclassicist John Chadwick, alichakua hati dada iitwayo <strong>Linear B</strong>. Alionyesha, kwa mshangao wa karibu kila mtu, kwamba Linear B ilisimba <em>fomu ya mapema ya Kigiriki</em> — lugha ya Mycenaeans walioichukua Kreta karibu 1450 KK. Linear B hutumia ishara nyingi za silabi sawa na Linear A, tu na tofauti ndogo za kimtindo. Kwa hivyo tunaweza kuchukua kibao cha Linear A, kuangalia kila ishara, na kuipa thamani ya sauti ya Linear B kwa imani ya busara: <em>ku, ro, pi, te, da</em>…</p>
 
-  <p>Na kisha njia inakauka. Mistari ya silabi inayotokea <strong>si Kigiriki</strong>. Si Kisemiti kwa namna yoyote inayotambulika. Hazilingani na Kihiti, Kiluwian, Kihurri, Kimisri, au lugha nyingine yoyote iliyothibitishwa ya Enzi ya Shaba ya eneo. Wao ni tu <strong>lugha ya Minoa</strong> — na hatuna ndugu hai, hatuna ufunguo wa Rosetta wa lugha mbili, na hatuna wazo ambapo Wamonoa walitoka au familia ipi lugha yao ilikuwa.</p>
+  <p>Na kisha njia inakauka. Mistari ya silabi inayotokea <strong>si Kigiriki</strong>. Si Kisemiti kwa namna yoyote inayotambulika. Hazilingani na Kihiti, Kiluwian, Kihurri, Kimisri, au lugha nyingine yoyote iliyothibitishwa ya Enzi ya Shaba ya eneo. Wao ni tu <strong>lugha ya Minoa</strong> — na hatuna ndugu hai, hatuna ufunguo wa Rosetta wa lugha mbili, na hatuna wazo ambapo Waminoa walitoka au familia ipi lugha yao ilikuwa.</p>
 
   <ul>
     <li><strong>Tatizo la kusoma karibu limetatuliwa.</strong> Takriban 70–80% ya ishara za Linear A zina sawa za Linear B zilizokubaliwa. Tunaweza kuhamisha vibao vingi.</li>
@@ -835,7 +835,7 @@ window.TRIVIA_I18N['sw'] = {
 
   <p>Madai mengi ya uchakuzi yamechapishwa — kwamba Minoan ni Kisemiti, Kianatolia, Kityrsenian, Kiindo-Ulaya, hata Proto-Basque. Hakuna iliyoshawishi uwanja. Vizuizi vikuu ni (1) kamusi ndogo na inayorudiwa, (2) kutokuwepo kwa maandiko yoyote ya lugha mbili marefu vya kutosha kuanzisha sarufi, na (3) shaka kwamba Minoa inaweza tu kuwa <strong>pekee</strong> — lugha bila ndugu wanaoendelea popote.</p>
 
-  <blockquote>"Tunaweza kutamka maneno ya Wamonoa. Tu hatujui yanamaanisha nini." — kufupishwa kutoka kwa John Chadwick, The Decipherment of Linear B</blockquote>
+  <blockquote>"Tunaweza kutamka maneno ya Waminoa. Tu hatujui yanamaanisha nini." — kufupishwa kutoka kwa John Chadwick, The Decipherment of Linear B</blockquote>
 
   <p>Linganisha hali na hati ya <strong>Kicypro-Minoan</strong> ya Enzi ya Shaba ya Kupro ambayo bado haijachakuliwa, au <strong>Cretan hieroglyphs</strong> za zamani zaidi ambazo Linear A yenyewe inaonekana kuwa imeegemea. Kuandika kwa Enzi ya Shaba ya Aegean ni msitu mdogo wa hati zinazohusiana zinazosimba angalau lugha mbili na pengine tatu au nne tofauti — na moja tu kati yao, mtoto wa baadaye Linear B, imefanikiwa.</p>
 

@@ -900,7 +900,7 @@ window.TRIVIA_I18N['es'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — la lengua sin izquierda ni derecha',
-    summary: 'Una lengua aborigen australiana del extremo norte de Queensland que usa solo direcciones cardinales absolutas — norte, sur, este, oeste — incluso para objetos sobre una mesa. Los hablantes mantienen una orientación por estima en todo momento.',
+    summary: 'Una lengua aborigen australiana del extremo norte de Queensland que usa solo direcciones cardinales absolutas — norte, sur, este, oeste — incluso para objetos sobre una mesa. Los hablantes mantienen una orientación por navegación a estima en todo momento.',
     body: `
   <p>Si te sientas en una mesa con un hispanohablante y quiere que le pases una taza, te dirá "la taza a tu izquierda" o "la taza frente a ti". El marco de referencia es <strong>egocéntrico</strong> — anclado a tu cuerpo. Casi todas las lenguas europeas funcionan de esta manera.</p>
 
@@ -926,7 +926,7 @@ window.TRIVIA_I18N['es'] = {
     <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Ver "mano" en guugu yimithirr</button>
   </div>
 
-  <p>La consecuencia cognitiva, documentada por Levinson, John Haviland y colegas del Instituto Max Planck, es sorprendente. Los hablantes de guugu yimithirr mantienen un sentido ininterrumpido de <strong>estima</strong> de su orientación. En experimentos, pueden señalar con precisión a lugares distantes (el mar, un asentamiento vecino, la casa de un pariente a cientos de kilómetros de distancia) sin importar si están sentados en una habitación sin ventanas, con los ojos vendados, después de ser conducidos en círculos, o en el fondo de una cueva. Su brújula cardinal simplemente no se apaga.</p>
+  <p>La consecuencia cognitiva, documentada por Levinson, John Haviland y colegas del Instituto Max Planck, es sorprendente. Los hablantes de guugu yimithirr mantienen un sentido ininterrumpido de su orientación por <strong>navegación a estima</strong>. En experimentos, pueden señalar con precisión a lugares distantes (el mar, un asentamiento vecino, la casa de un pariente a cientos de kilómetros de distancia) sin importar si están sentados en una habitación sin ventanas, con los ojos vendados, después de ser conducidos en círculos, o en el fondo de una cueva. Su brújula cardinal simplemente no se apaga.</p>
 
   <p>Esta no es una habilidad especial de unos pocos ancianos. Es una <strong>propiedad universal de los hablantes fluidos</strong>, aprendida en la primera infancia. Los niños de tres años gesticulan cardinalmente. La maquinaria mental es construida por la lengua y constantemente ejercitada por la demanda de hablar de ello.</p>
 

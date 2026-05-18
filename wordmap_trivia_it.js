@@ -900,7 +900,7 @@ window.TRIVIA_I18N['it'] = {
   },
   'guugu-yimithirr-cardinal': {
     title: 'Guugu Yimithirr — la lingua senza sinistra né destra',
-    summary: 'Una lingua aborigena australiana del Queensland del Nord Estremo che usa solo direzioni cardinali assolute — nord, sud, est, ovest — anche per oggetti su un tavolo. I parlanti mantengono in ogni momento l\'orientamento per stima.',
+    summary: 'Una lingua aborigena australiana del Queensland del Nord Estremo che usa solo direzioni cardinali assolute — nord, sud, est, ovest — anche per oggetti su un tavolo. I parlanti mantengono in ogni momento l\'orientamento per navigazione stimata.',
     body: `
 <p>Se vi sedete a un tavolo con un parlante inglese e vuole che gli passiate una tazza, dirà "la tazza alla tua sinistra" o "la tazza di fronte a te". La cornice di riferimento è <strong>egocentrica</strong> — ancorata al vostro corpo. Quasi ogni lingua europea funziona in questo modo.</p>
 
@@ -926,7 +926,7 @@ window.TRIVIA_I18N['it'] = {
   <button type="button" class="trivia-action" data-action="setword" data-word="hand" data-code="kky">✋ Vedi "Mano" in Guugu Yimithirr</button>
 </div>
 
-<p>La conseguenza cognitiva, documentata da Levinson, John Haviland e colleghi del Max Planck Institute, è sorprendente. I parlanti di Guugu Yimithirr mantengono un ininterrotto senso di orientamento per <strong>stima</strong>. Negli esperimenti, possono indicare accuratamente luoghi distanti (il mare, un insediamento vicino, la casa di un parente a centinaia di chilometri di distanza) indipendentemente dal fatto che siano seduti in una stanza senza finestre, bendati, dopo essere stati portati in giro in cerchio, o in fondo a una grotta. La loro bussola cardinale semplicemente non si spegne.</p>
+<p>La conseguenza cognitiva, documentata da Levinson, John Haviland e colleghi del Max Planck Institute, è sorprendente. I parlanti di Guugu Yimithirr mantengono un ininterrotto senso di orientamento per <strong>navigazione stimata</strong>. Negli esperimenti, possono indicare accuratamente luoghi distanti (il mare, un insediamento vicino, la casa di un parente a centinaia di chilometri di distanza) indipendentemente dal fatto che siano seduti in una stanza senza finestre, bendati, dopo essere stati portati in giro in cerchio, o in fondo a una grotta. La loro bussola cardinale semplicemente non si spegne.</p>
 
 <p>Questa non è una speciale abilità di pochi anziani. È una <strong>proprietà universale dei parlanti fluenti</strong>, appresa nella prima infanzia. I bambini di tre anni gesticolano cardinalmente. Il macchinario mentale è costruito dalla lingua e costantemente esercitato dalla richiesta di parlarne.</p>
 
