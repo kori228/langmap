@@ -4599,6 +4599,13 @@
                             agglutinative: { en:'agglutinative', ja:'膠着語',  ko:'교착어',  zh:'黏着语',  yue:'黏著語',  vi:'chắp dính',        th:'ภาษาคำติดต่อ',   id:'aglutinatif',  hi:'श्लिष्टयोगात्मक',     de:'agglutinierend', fr:'agglutinante', it:'agglutinante', es:'aglutinante',  pt:'aglutinante',  ru:'агглютинативный', uk:'аглютинативна',  ar:'إلصاقية',       he:'אגלוטינטיבית', sw:'iliyoambatishwa' },
                             polysynthetic: { en:'polysynthetic', ja:'抱合語',  ko:'포합어',  zh:'复综语',  yue:'複綜語',  vi:'đa tổng hợp',      th:'ภาษาประสาน',    id:'polisintetik', hi:'बहुसंश्लिष्ट',       de:'polysynthetisch',fr:'polysynthétique',it:'polisintetica',es:'polisintética',pt:'polissintética',ru:'полисинтетический',uk:'полісинтетична',ar:'متعدد التركيب', he:'פוליסינתטית',  sw:'iliyoshikamana sana' },
                         };
+                        // Word-order values: acronyms SOV/SVO/VSO/VOS/OVS/OSV are universal
+                        // linguistic shorthand and stay as-is; only the descriptive value
+                        // 'free' needs UI-language translation (per user report 2026-05-18:
+                        // "語順のfreeはUI翻訳されていない").
+                        const WO_LBL = {
+                            free: { en:'free', ja:'自由語順', ko:'자유 어순', zh:'自由语序', yue:'自由語序', vi:'tự do', th:'อิสระ', id:'bebas', hi:'मुक्त', de:'frei', fr:'libre', it:'libero', es:'libre', pt:'livre', ru:'свободный', uk:'вільний', ar:'حر', he:'חופשי', sw:'huria' },
+                        };
                         const ui = uiLang.split('_')[0];
                         const localizeProv = (prov) => {
                             const m = PROV_LBL[prov]; if (!m) return prov;
@@ -4608,6 +4615,7 @@
                             if (typeof val === 'boolean') {
                                 const m = TONE_LBL[val]; return (m && (m[ui] || m.en)) || (val ? 'tonal' : 'non-tonal');
                             }
+                            const wo = WO_LBL[val]; if (wo) return wo[ui] || wo.en || val;
                             const m = MORPH_LBL[val]; if (m) return m[ui] || m.en || val;
                             return String(val);
                         };
@@ -5543,8 +5551,20 @@
                 // the (often-already-visible) trivia modal stacks UI, and on
                 // a small viewport the user wants to first SEE where the
                 // random pick landed before deciding to read details.
+                // Instead spotlight + blink the picked language so the user
+                // can see WHICH lang was selected (mirrors trivia "focus"
+                // action behavior on mobile per user request 2026-05-18).
                 const _mobile = window.matchMedia('(max-width: 640px)').matches;
-                if (!_mobile) showLangInfo(code);
+                if (_mobile) {
+                    if (typeof _triviaSpotlight !== 'undefined') {
+                        _triviaSpotlight.clear();
+                        _triviaSpotlight.add(code);
+                        if (typeof updateMarkers === 'function') updateMarkers(currentWord);
+                    }
+                    setTimeout(() => triviaBlinkMarker(code), 400);
+                } else {
+                    showLangInfo(code);
+                }
             });
         }
 
