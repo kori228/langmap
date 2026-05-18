@@ -249,7 +249,7 @@ window.TRIVIA_I18N['yue'] = {
   <p>除咗呢三個語族,通常再加埋<strong>東非嘅兩個孤立語言</strong>:<strong>哈扎語</strong>(Hadza),坦桑尼亞埃亞西湖周圍大約一千名狩獵採集者講;以及<strong>桑達韋語</strong>(Sandawe),喺幾百公里以北。兩個都有吸氣音;但都未有經得起仔細推敲嘅證據顯示同南部組有任何關係。舊嘅「科伊桑」傘式術語將五者歸為一類,但湯姆·古德曼等人過去二十年嘅論證——而且係令人信服嘅論證——係<strong>科伊桑係地域分組,唔係譜系語族</strong>。</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 點亮哈扎、桑達韋、科伊科伊、科薩、祖魯</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 比較哈扎、桑達韋、科伊科伊、科薩、祖魯</button>
   </div>
 
   <p>語音學家根據前部閉合嘅位置區分<strong>五種主要吸氣音</strong>:</p>
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['yue'] = {
   <p>隨機揀一隻語言。問下佢點樣講「母親」。賠率不舒服咁高,該詞以<strong>m</strong>開頭並包含<em>a</em>:英語 <em>mama</em>、普通話 <em>māma</em>、斯瓦希里語 <em>mama</em>、克丘亞語 <em>mama</em>、納瓦霍語 <em>amá</em>、威爾士語 <em>mam</em>、希伯來語 <em>imá</em>、塔加洛語 <em>nanay</em> / <em>mama</em>、印地語 <em>mā</em>、馬拉雅拉姆語 <em>amma</em>、夏威夷語 <em>makuahine</em> / <em>māmā</em>。家陣問下佢點樣講「父親」。喺同樣龐大嘅樣本中,你會得到<strong>papa, baba, tata, dada, abba, atta</strong>——一個唇音或者冠音塞音加 <em>a</em>。</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 點亮8隻無關語言嘅「母親」</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 比較8隻無關語言嘅「母親」</button>
   </div>
 
   <p>呢個唔係偶然。耶魯人類學家<strong>喬治·P·默多克</strong>1959年集合咗一個跨文化數據集,涵蓋來自470種語言嘅1,072個親屬詞,發現 <em>mama</em> 類型嘅詞喺52%嘅樣本中用作「母親」,而 <em>papa</em>/<em>tata</em>/<em>baba</em> 類型嘅詞喺55%中用作「父親」。語言橫跨地球上每個語族——印歐語、漢藏語、尼日爾-剛果、南島、烏托-阿茲特克、帕馬-紐恩。佢哋唔可能全部都共享一個共同祖先。</p>

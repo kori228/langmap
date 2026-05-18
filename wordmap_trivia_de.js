@@ -257,7 +257,7 @@ window.TRIVIA_I18N['de'] = {
 <p>Zu diesen drei Familien fügt man gewöhnlich <strong>zwei Isolate Ostafrikas</strong> hinzu: <strong>Hadza</strong>, gesprochen von vielleicht tausend Jägern und Sammlern rund um den Eyasisee in Tansania, und <strong>Sandawe</strong>, einige hundert Kilometer nördlich davon. Beide haben Klicks; keines wurde nachweislich auf eine Weise mit den südlichen Gruppen verwandt gezeigt, die einer genauen Prüfung standhält. Der alte Sammelbegriff "Khoisan" warf alle fünf in einen Topf, doch Tom Güldemann und andere haben in den letzten zwanzig Jahren überzeugend argumentiert, dass <strong>Khoisan eine areale Gruppierung ist, keine genetische Familie</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Hadza, Sandawe, Khoekhoe, Xhosa, Zulu aufleuchten lassen</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Hadza, Sandawe, Khoekhoe, Xhosa, Zulu vergleichen</button>
 </div>
 
 <p>Phonetiker unterscheiden <strong>fünf primäre Klicktypen</strong> danach, wo der vordere Verschluss gebildet wird:</p>
@@ -1116,7 +1116,7 @@ window.TRIVIA_I18N['de'] = {
 <p>Wählen Sie eine beliebige Sprache aus. Fragen Sie, wie sie "Mutter" sagt. Die Chance ist unangenehm hoch, dass das Wort mit <strong>m</strong> beginnt und ein <em>a</em> enthält: Englisch <em>mama</em>, Mandarin <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Walisisch <em>mam</em>, Hebräisch <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaiianisch <em>makuahine</em> / <em>māmā</em>. Fragen Sie nun, wie sie "Vater" sagt. Über eine ebenso umfangreiche Stichprobe bekommen Sie <strong>papa, baba, tata, dada, abba, atta</strong> — ein labialer oder koronaler Verschlusslaut plus <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 "Mutter" in 8 unverwandten Sprachen aufleuchten lassen</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 "Mutter" in 8 unverwandten Sprachen vergleichen</button>
 </div>
 
 <p>Das ist kein Zufall. Der Yale-Anthropologe <strong>George P. Murdock</strong> stellte 1959 einen interkulturellen Datensatz von 1.072 Verwandtschaftsbegriffen aus 470 Sprachen zusammen und fand heraus, dass Wörter vom Typ <em>mama</em> in 52 % der Stichprobe für "Mutter" verwendet wurden, und Wörter vom Typ <em>papa</em>/<em>tata</em>/<em>baba</em> in 55 % für "Vater". Die Sprachen umfassen jede Familie der Erde — Indogermanisch, Sino-Tibetisch, Niger-Kongo, Austronesisch, Uto-Aztekisch, Pama-Nyungan. Sie können nicht alle einen gemeinsamen Vorfahren haben.</p>

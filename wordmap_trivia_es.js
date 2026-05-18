@@ -249,7 +249,7 @@ window.TRIVIA_I18N['es'] = {
   <p>A estas tres familias normalmente se añaden <strong>dos lenguas aisladas de África Oriental</strong>: el <strong>hadza</strong>, hablado por quizás mil cazadores-recolectores en torno al lago Eyasi en Tanzania, y el <strong>sandawe</strong>, unos cientos de kilómetros al norte. Ambos tienen chasquidos; ninguno se ha demostrado relacionado con los grupos meridionales de manera que resista un escrutinio detallado. El antiguo término paraguas "khoisan" agrupaba los cinco juntos, pero Tom Güldemann y otros han pasado los últimos veinte años argumentando — de forma convincente — que el <strong>khoisan es una agrupación areal, no una familia genética</strong>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Iluminar hadza, sandawe, khoekhoe, xhosa, zulú</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Comparar hadza, sandawe, khoekhoe, xhosa, zulú</button>
   </div>
 
   <p>Los foneticistas distinguen <strong>cinco tipos primarios de chasquidos</strong> según dónde se realiza el cierre frontal:</p>
@@ -406,7 +406,7 @@ window.TRIVIA_I18N['es'] = {
     <li><strong>1880</strong>: El oficial colonial británico <strong>Maurice Vidal Portman</strong> desembarcó con una partida de búsqueda, capturó a una pareja anciana y cuatro niños, y los llevó a Port Blair. Los adultos murieron en cuestión de días, casi con seguridad de infecciones comunes ante las que los sentineleses no tienen inmunidad. Los niños fueron devueltos a la isla con regalos. Lo que Portman registró de su habla sobrevive solo como fragmentos y notas de segunda mano.</li>
     <li><strong>1974</strong>: Un equipo de filmación de National Geographic fue rechazado por flechas. El director recibió una flecha de 2,4 m en el muslo.</li>
     <li><strong>1991</strong>: La antropóloga india <strong>Madhumala Chattopadhyay</strong> dirigió una serie de "entregas de regalos" de cocos que lograron el único contacto pacífico conocido — sentineleses vadeando hasta los barcos desarmados para recoger cocos. Las visitas se detuvieron en 1996 por preocupaciones de transmisión de enfermedades.</li>
-    <li><strong>Tsunami de 2004</strong>: Un helicóptero de la Guardia Costera sobrevoló la isla días después del tsunami del Boxing Day para buscar sobrevivientes. Fue recibido con flechas. Los isleños se habían trasladado a terrenos más altos y estaban ilesos.</li>
+    <li><strong>Tsunami de 2004</strong>: Un helicóptero de la Guardia Costera sobrevoló la isla días después del tsunami del océano Índico de 2004 para buscar sobrevivientes. Fue recibido con flechas. Los isleños se habían trasladado a terrenos más altos y estaban ilesos.</li>
     <li><strong>2006</strong>: Dos pescadores que llegaron a la deriva fueron asesinados.</li>
     <li><strong>2018</strong>: El misionero estadounidense <strong>John Allen Chau</strong> fue asesinado intentando evangelizar a los sentineleses, habiendo sobornado ilegalmente a pescadores locales para que lo llevaran allí.</li>
   </ul>
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['es'] = {
   <p>Elige cualquier lengua al azar. Pregunta cómo dice "madre". Las probabilidades son incómodamente altas de que la palabra comience con <strong>m</strong> y contenga una <em>a</em>: inglés <em>mama</em>, mandarín <em>māma</em>, suajili <em>mama</em>, quechua <em>mama</em>, navajo <em>amá</em>, galés <em>mam</em>, hebreo <em>imá</em>, tagalo <em>nanay</em> / <em>mama</em>, hindi <em>mā</em>, malayalam <em>amma</em>, hawaiano <em>makuahine</em> / <em>māmā</em>. Ahora pregunta cómo dice "padre". A lo largo de una muestra igualmente vasta obtienes <strong>papa, baba, tata, dada, abba, atta</strong> — una oclusiva labial o coronal más <em>a</em>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Iluminar "madre" en 8 lenguas no emparentadas</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Comparar "madre" en 8 lenguas no emparentadas</button>
   </div>
 
   <p>Esto no es casualidad. El antropólogo de Yale <strong>George P. Murdock</strong> reunió en 1959 un conjunto de datos transculturales de 1.072 términos de parentesco de 470 lenguas y encontró que palabras del tipo <em>mama</em> se usaban para "madre" en el 52% de la muestra, y palabras del tipo <em>papa</em>/<em>tata</em>/<em>baba</em> para "padre" en el 55%. Las lenguas abarcan cada familia de la Tierra — indoeuropea, sino-tibetana, níger-congoleña, austronesia, uto-azteca, pama-ñungana. No pueden compartir todas un ancestro común.</p>

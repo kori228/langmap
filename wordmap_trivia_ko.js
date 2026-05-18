@@ -246,7 +246,7 @@ window.TRIVIA_I18N['ko'] = {
 <p>이 세 어족에 보통 <strong>동아프리카의 두 고립어</strong>를 더한다. 탄자니아 에야시 호수 주변에서 약 천 명의 수렵채집인이 사용하는 <strong>하자어</strong>와, 그 북쪽 수백 킬로미터에 있는 <strong>산다웨어</strong>다. 두 언어 모두 흡착음을 가지고 있지만, 어느 쪽도 남부 집단과의 관계가 면밀한 검토를 통과한 적이 없다. 옛 우산 용어 "코이산"은 다섯을 모두 한데 묶었지만, 톰 귈데만 등은 지난 20년 동안 <strong>코이산이 유전적 어족이 아닌 지역 그룹화</strong>임을 — 설득력 있게 — 논해 왔다.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 하자·산다웨·코에코에·코사·줄루 점등</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 하자·산다웨·코에코에·코사·줄루 비교</button>
 </div>
 
 <p>음성학자들은 앞쪽 폐쇄가 이루어지는 위치에 따라 <strong>다섯 가지 기본 흡착음</strong>을 구분한다.</p>
@@ -403,7 +403,7 @@ window.TRIVIA_I18N['ko'] = {
   <li><strong>1880년</strong>: 영국 식민지 관리 <strong>모리스 비달 포트먼</strong>이 수색대를 이끌고 상륙해 노부부와 어린이 4명을 붙잡아 포트블레어로 데려갔다. 어른들은 며칠 안에 — 거의 확실히 센티넬족이 면역력이 없는 일반 감염병으로 — 사망했다. 아이들은 선물과 함께 섬으로 돌려보냈다. 포트먼이 그들의 말에 대해 기록한 것은 단편과 간접 노트로만 남아 있다.</li>
   <li><strong>1974년</strong>: 내셔널 지오그래픽 촬영팀이 화살에 쫓겨났다. 감독은 8피트 화살을 허벅지에 맞았다.</li>
   <li><strong>1991년</strong>: 인도 인류학자 <strong>마두말라 차토파디야이</strong>가 일련의 코코넛 "선물 투하"를 이끌었고, 알려진 유일한 평화로운 접촉을 이루었다 — 센티넬족이 무장하지 않은 채 보트까지 걸어 나와 코코넛을 받아갔다. 1996년 질병 전파 우려로 방문은 중단되었다.</li>
-  <li><strong>2004년 쓰나미</strong>: 권투의 날 쓰나미 며칠 후 해안경비대 헬리콥터가 생존자 확인을 위해 섬 위를 비행했다. 화살로 응대받았다. 섬 주민들은 고지대로 이동했고 무사했다.</li>
+  <li><strong>2004년 쓰나미</strong>: 2004년 인도양 쓰나미 며칠 후 해안경비대 헬리콥터가 생존자 확인을 위해 섬 위를 비행했다. 화살로 응대받았다. 섬 주민들은 고지대로 이동했고 무사했다.</li>
   <li><strong>2006년</strong>: 표류한 어부 두 명이 살해되었다.</li>
   <li><strong>2018년</strong>: 미국 선교사 <strong>존 앨런 차우</strong>가 센티넬족에게 복음을 전하려고 시도하다가 살해되었다. 그는 지역 어부들을 불법적으로 매수해 그곳으로 데려가게 했다.</li>
 </ul>
@@ -465,7 +465,7 @@ window.TRIVIA_I18N['ko'] = {
   <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ 파니니의 간다라로 날아가기</button>
 </div>
 
-<p>파니니라는 사람에 관해 우리가 아는 것은 거의 없다 — 그저 살라투라 마을(현 파키스탄 아톡 근처의 라호르) 출신이고, 아마 기원전 5세기 또는 4세기에 활동했으며, 그가 만든 모든 것이 명백히 <strong>소리 내어 암기되도록</strong> 설계되었다는 것뿐이다. 아슈타디야이는 수세기 동안 글로 쓰이기 전에 암송으로 보존되었다. 음절을 — 따라서 호흡을 — 아끼기 위해 파니니는 자신의 <strong>전문 메타언어</strong> 전체를 발명했다. 단일 글자 약어 체계, <strong>시바 수트라</strong>라 불리는 순서가 매겨진 음소 목록, "맥락 의존적" 규칙 적용을 위한 관습, anuvṛtti(앞 줄에서 다시 진술할 필요 없이 규칙이 상속됨), 두 규칙이 충돌할 때 어느 것이 적용되는지를 해결하기 위한 우선순위 체계.</p>
+<p>파니니라는 사람에 관해 우리가 아는 것은 거의 없다 — 그저 살라투라 마을(현 파키스탄 북서부, 아톡 근처의 Lahor/Lahur, 이른바 Little Lahore. 펀자브 주의 대도시 Lahore와는 다른 작은 마을) 출신이고, 아마 기원전 5세기 또는 4세기에 활동했으며, 그가 만든 모든 것이 명백히 <strong>소리 내어 암기되도록</strong> 설계되었다는 것뿐이다. 아슈타디야이는 수세기 동안 글로 쓰이기 전에 암송으로 보존되었다. 음절을 — 따라서 호흡을 — 아끼기 위해 파니니는 자신의 <strong>전문 메타언어</strong> 전체를 발명했다. 단일 글자 약어 체계, <strong>시바 수트라</strong>라 불리는 순서가 매겨진 음소 목록, "맥락 의존적" 규칙 적용을 위한 관습, anuvṛtti(앞 줄에서 다시 진술할 필요 없이 규칙이 상속됨), 두 규칙이 충돌할 때 어느 것이 적용되는지를 해결하기 위한 우선순위 체계.</p>
 
 <p>결과는 현대인의 눈에는 문맥자유문법의 생성 규칙과 섬뜩할 정도로 닮아 보인다 — 다만 더 강력할 뿐이다. 파니니의 규칙 형식은 본질적으로 이렇다.</p>
 
@@ -1082,7 +1082,7 @@ window.TRIVIA_I18N['ko'] = {
 <p>아무 언어나 무작위로 골라 보라. 그것이 "어머니"를 어떻게 말하는지 물어보라. 그 단어가 <strong>m</strong>으로 시작하고 <em>a</em>를 포함할 확률이 불편할 정도로 높다. 영어 <em>mama</em>, 중국 표준어 <em>māma</em>, 스와힐리어 <em>mama</em>, 케추아어 <em>mama</em>, 나바호어 <em>amá</em>, 웨일스어 <em>mam</em>, 히브리어 <em>imá</em>, 타갈로그어 <em>nanay</em> / <em>mama</em>, 힌디어 <em>mā</em>, 말라얄람어 <em>amma</em>, 하와이어 <em>makuahine</em> / <em>māmā</em>. 이제 그것이 "아버지"를 어떻게 말하는지 물어보라. 똑같이 광범위한 표본에서 <strong>papa, baba, tata, dada, abba, atta</strong>가 돌아온다 — 양순 또는 치경 폐쇄음에 <em>a</em>가 더해진 것.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 무관한 8개 언어의 "어머니" 점등</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 무관한 8개 언어의 "어머니" 비교</button>
 </div>
 
 <p>이는 우연이 아니다. 예일 대학교의 인류학자 <strong>조지 P. 머독</strong>은 1959년 470개 언어의 친족 용어 1,072개로 된 비교문화 데이터셋을 조립했고, "어머니"에 <em>mama</em> 유형의 단어가 표본의 52%에서, "아버지"에 <em>papa</em>/<em>tata</em>/<em>baba</em> 유형의 단어가 55%에서 쓰임을 발견했다. 그 언어들은 지구상의 모든 어족에 걸쳐 있다 — 인도유럽어, 시노-티베트어, 니제르-콩고어, 오스트로네시아어, 유토-아즈텍어, 파마-늉간어. 그것들이 모두 공통 조상을 공유할 수는 없다.</p>

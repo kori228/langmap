@@ -246,7 +246,7 @@ window.TRIVIA_I18N['zh'] = {
 <p>除上述三族外,通常还加上<strong>东非两种孤立语</strong>:<strong>哈扎语(Hadza)</strong>,坦桑尼亚埃亚西湖周围约一千名狩猎采集者使用;以及北边数百公里的<strong>桑达韦语(Sandawe)</strong>。两者都有搭嘴音,但与南部诸群的任何亲属关系都经不起严格审查。旧的伞状名"科伊桑"把五者捆在一起,但汤姆·居尔德曼等人花了过去二十年令人信服地论证:<strong>"科伊桑"是地域分组,而非谱系语族</strong>。</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 点亮哈扎、桑达韦、科伊科伊、科萨、祖鲁</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 比较哈扎、桑达韦、科伊科伊、科萨、祖鲁</button>
 </div>
 
 <p>语音学家以前部闭合位置区分<strong>五种主要搭嘴音</strong>:</p>

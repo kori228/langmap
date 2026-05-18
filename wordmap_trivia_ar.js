@@ -253,7 +253,7 @@ window.TRIVIA_I18N['ar'] = {
   <p>إلى هذه العائلات الثلاث يضاف عادة <strong>لغتان معزولتان في شرق أفريقيا</strong>: <strong>الهادزا</strong>، يتحدثها ربما ألف من صائدي وجامعي بحيرة إياسي في تنزانيا، و<strong>السنداوي</strong>، على بعد بضع مئات من الكيلومترات إلى الشمال. لكليهما نقرات؛ ولم يَثبُت أن أيًا منهما مرتبط بالمجموعات الجنوبية بأي شكل يصمد أمام التدقيق. كان المصطلح المظلي القديم "خويساني" يجمع الخمسة معًا، لكن توم غولديمان وآخرين قضوا العشرين سنة الأخيرة محاجّين — بإقناع — بأن <strong>الخويسانية تجميع إقليمي، لا عائلة وراثية</strong>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 أَضِئ الهادزا والسنداوي والخويخوي والكوسا والزولو</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 قارن بين الهادزا والسنداوي والخويخوي والكوسا والزولو</button>
   </div>
 
   <p>يميز علماء الأصوات <strong>خمسة أنواع رئيسية من النقرات</strong> بحسب موضع الإغلاق الأمامي:</p>
@@ -1090,7 +1090,7 @@ window.TRIVIA_I18N['ar'] = {
   <p>اختر أي لغة عشوائيًا. اسأل كيف تقول "أم". الاحتمالات مرتفعة بشكل غير مريح أن الكلمة تبدأ بـ<strong>m</strong> وتحوي <em>a</em>: الإنجليزية <em>mama</em>، الماندرين <em>māma</em>، السواحلية <em>mama</em>، الكيتشوا <em>mama</em>، النافاهو <em>amá</em>، الويلزية <em>mam</em>، العبرية <em>imá</em>، التغالوغية <em>nanay</em> / <em>mama</em>، الهندية <em>mā</em>، الماليالامية <em>amma</em>، الهاوايية <em>makuahine</em> / <em>māmā</em>. الآن اسأل كيف تقول "أب". عبر عينة واسعة بالقدر نفسه تحصل على <strong>papa، baba، tata، dada، abba، atta</strong> — وقفية شفوية أو تاجية بالإضافة إلى <em>a</em>.</p>
 
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 أَضِئ "أم" عبر 8 لغات غير مترابطة</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 قارن "أم" عبر 8 لغات غير مترابطة</button>
   </div>
 
   <p>هذا ليس صدفة. جمع الأنثروبولوجي في جامعة ييل <strong>جورج ب. مردوك</strong> مجموعة بيانات تشمل الثقافات في 1959 من 1,072 مصطلح قرابة من 470 لغة ووجد أن كلمات من نوع <em>mama</em> استُخدمت لـ"أم" في 52% من العينة، وكلمات من نوع <em>papa</em>/<em>tata</em>/<em>baba</em> لـ"أب" في 55%. تمتد اللغات على كل عائلة على الأرض — هندوأوروبية، سينو-تبتية، نيجر-كونغو، أوسترونيزية، أوتو-أزتيكية، باما-نيونغية. لا يمكن أن تشترك كلها في سلف مشترك.</p>

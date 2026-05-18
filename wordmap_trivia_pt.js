@@ -250,7 +250,7 @@ window.TRIVIA_I18N['pt'] = {
 <p>A essas três famílias geralmente se adicionam <strong>dois isolados da África Oriental</strong>: o <strong>Hadza</strong>, falado por talvez mil caçadores-coletores ao redor do Lago Eyasi na Tanzânia, e o <strong>Sandawe</strong>, algumas centenas de quilômetros ao norte. Ambos têm cliques; nenhum demonstrou ter relação com os grupos do sul de forma que resista a escrutínio rigoroso. O antigo termo guarda-chuva "Khoisan" agrupava todos os cinco juntos, mas Tom Güldemann e outros passaram os últimos vinte anos argumentando — de forma convincente — que <strong>Khoisan é um agrupamento areal, não uma família genética</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Acender Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Comparar Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
 </div>
 
 <p>Os foneticistas distinguem <strong>cinco tipos primários de cliques</strong> pela posição em que o fechamento frontal é feito:</p>
@@ -641,7 +641,7 @@ window.TRIVIA_I18N['pt'] = {
 
 <p>Antes do Hangul, os coreanos escreviam em <em>Hanja</em> (caracteres chineses clássicos), um sistema tão exigente que a alfabetização era efetivamente restrita à classe aristocrática masculina <em>yangban</em>. Sejong queria uma escrita que os iletrados pudessem aprender em uma única manhã.</p>
 
-<p>O que ele e seus eruditos produziram é, por consenso linguístico, o único <strong>alfabeto presentado por traços</strong> (featural alphabet) em uso ativo hoje — significando que as formas das letras refletem as características fonéticas dos sons que representam:</p>
+<p>O que ele e seus eruditos produziram é, por consenso linguístico, o único <strong>alfabeto featural</strong> (alfabeto baseado em traços distintivos) em uso ativo hoje — significando que as formas das letras refletem as características fonéticas dos sons que representam:</p>
 
 <ul>
   <li><strong>ㄱ</strong> (g/k) é uma vista lateral da parte de trás da língua subindo para bloquear o ar no palato mole.</li>
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['pt'] = {
 <p>Escolha qualquer língua ao acaso. Pergunte como ela diz "mãe". As chances de a palavra começar com <strong>m</strong> e conter um <em>a</em> são desconfortavelmente altas: inglês <em>mama</em>, mandarim <em>māma</em>, suaíli <em>mama</em>, quéchua <em>mama</em>, navajo <em>amá</em>, galês <em>mam</em>, hebraico <em>imá</em>, tagalo <em>nanay</em> / <em>mama</em>, hindi <em>mā</em>, malaiala <em>amma</em>, havaiano <em>makuahine</em> / <em>māmā</em>. Agora pergunte como ela diz "pai". Em uma amostra igualmente vasta você obtém <strong>papa, baba, tata, dada, abba, atta</strong> — uma oclusiva labial ou coronal mais <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Acender "mãe" em 8 línguas não relacionadas</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Comparar "mãe" em 8 línguas não relacionadas</button>
 </div>
 
 <p>Isso não é acaso. O antropólogo de Yale <strong>George P. Murdock</strong> reuniu em 1959 um conjunto de dados translinguísticos de 1.072 termos de parentesco de 470 línguas e descobriu que palavras do tipo <em>mama</em> eram usadas para "mãe" em 52% da amostra, e palavras do tipo <em>papa</em>/<em>tata</em>/<em>baba</em> para "pai" em 55%. As línguas abrangem toda família da Terra — indo-europeia, sino-tibetana, niger-congo, austronésia, uto-asteca, pama-nyunga. Não podem todas compartilhar um ancestral comum.</p>

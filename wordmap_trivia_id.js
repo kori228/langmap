@@ -249,7 +249,7 @@ window.TRIVIA_I18N['id'] = {
 <p>Pada ketiga keluarga ini biasanya ditambahkan <strong>dua isolat Afrika Timur</strong>: <strong>Hadza</strong>, yang dituturkan oleh mungkin seribu pemburu-pengumpul di sekitar Danau Eyasi di Tanzania, dan <strong>Sandawe</strong>, beberapa ratus kilometer ke utara. Keduanya memiliki klik; tak satu pun terbukti terkait dengan kelompok selatan dengan cara yang tahan terhadap pengamatan dekat. Istilah payung lama "Khoisan" menggumpalkan kelima keluarga itu, tetapi Tom Güldemann dan lainnya telah menghabiskan dua puluh tahun terakhir berargumen — secara meyakinkan — bahwa <strong>Khoisan adalah pengelompokan areal, bukan keluarga genetik</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Tampilkan Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Bandingkan Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
 </div>
 
 <p>Para fonetisian membedakan <strong>lima jenis klik utama</strong> berdasarkan tempat penutupan depan dibuat:</p>
@@ -406,7 +406,7 @@ window.TRIVIA_I18N['id'] = {
   <li><strong>1880</strong>: Perwira kolonial Inggris <strong>Maurice Vidal Portman</strong> mendarat dengan tim pencari, menangkap pasangan tua dan empat anak, dan membawa mereka ke Port Blair. Orang dewasa meninggal dalam beberapa hari, hampir pasti karena infeksi umum yang tidak ada kekebalannya pada Sentinel. Anak-anak dikembalikan ke pulau dengan hadiah. Apa pun yang Portman rekam dari tuturan mereka hanya bertahan sebagai fragmen dan catatan tangan kedua.</li>
   <li><strong>1974</strong>: Tim film National Geographic diusir oleh anak panah. Sutradara mendapat anak panah sepanjang 2,4 meter di pahanya.</li>
   <li><strong>1991</strong>: Antropolog India <strong>Madhumala Chattopadhyay</strong> memimpin serangkaian "penurunan hadiah" kelapa yang mencapai satu-satunya kontak damai yang diketahui — orang Sentinel berjalan ke perahu tanpa senjata untuk mengumpulkan kelapa. Kunjungan dihentikan pada 1996 karena kekhawatiran penularan penyakit.</li>
-  <li><strong>Tsunami 2004</strong>: Helikopter Penjaga Pantai terbang di atas pulau beberapa hari setelah tsunami Boxing Day untuk memeriksa korban selamat. Itu disambut dengan anak panah. Penduduk pulau telah pindah ke tempat yang lebih tinggi dan tidak terluka.</li>
+  <li><strong>Tsunami 2004</strong>: Helikopter Penjaga Pantai terbang di atas pulau beberapa hari setelah tsunami Samudra Hindia 2004 untuk memeriksa korban selamat. Itu disambut dengan anak panah. Penduduk pulau telah pindah ke tempat yang lebih tinggi dan tidak terluka.</li>
   <li><strong>2006</strong>: Dua nelayan yang terdampar dibunuh.</li>
   <li><strong>2018</strong>: Misionaris Amerika <strong>John Allen Chau</strong> dibunuh saat mencoba menginjili orang Sentinel, setelah secara ilegal menyuap nelayan lokal untuk membawanya ke sana.</li>
 </ul>
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['id'] = {
 <p>Pilih bahasa apa pun secara acak. Tanyakan bagaimana mengatakan "ibu". Peluangnya sangat tinggi bahwa kata itu dimulai dengan <strong>m</strong> dan mengandung <em>a</em>: Inggris <em>mama</em>, Mandarin <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Welsh <em>mam</em>, Ibrani <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaii <em>makuahine</em> / <em>māmā</em>. Sekarang tanyakan bagaimana mengatakan "ayah". Di sampel yang sama luasnya Anda mendapatkan <strong>papa, baba, tata, dada, abba, atta</strong> — henti labial atau koronal plus <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Tampilkan "ibu" di 8 bahasa tak terkait</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Bandingkan "ibu" di 8 bahasa tak terkait</button>
 </div>
 
 <p>Ini bukan kebetulan. Antropolog Yale <strong>George P. Murdock</strong> mengumpulkan dataset lintas-budaya 1959 dari 1.072 istilah kekerabatan dari 470 bahasa dan menemukan bahwa kata-kata tipe <em>mama</em> digunakan untuk "ibu" dalam 52% sampel, dan kata-kata tipe <em>papa</em>/<em>tata</em>/<em>baba</em> untuk "ayah" dalam 55%. Bahasa-bahasa tersebut mencakup setiap keluarga di Bumi — Indo-Eropa, Sino-Tibet, Niger-Kongo, Austronesia, Uto-Aztec, Pama-Nyungan. Mereka tidak mungkin semuanya berbagi leluhur bersama.</p>

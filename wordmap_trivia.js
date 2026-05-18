@@ -593,7 +593,7 @@ const TRIVIA_ARTICLES = [
   <p>To these three families one usually adds <strong>two isolates of East Africa</strong>: <strong>Hadza</strong>, spoken by perhaps a thousand hunter-gatherers around Lake Eyasi in Tanzania, and <strong>Sandawe</strong>, a few hundred kilometres to the north. Both have clicks; neither has been shown to be related to the southern groups in any way that withstands close scrutiny. The old umbrella term "Khoisan" lumped all five together, but Tom Güldemann and others have spent the last twenty years arguing — convincingly — that <strong>Khoisan is an areal grouping, not a genetic family</strong>.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Light up Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Compare Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
   </div>
   
   <p>Phoneticians distinguish <strong>five primary click types</strong> by where the front closure is made:</p>
@@ -644,7 +644,7 @@ const TRIVIA_ARTICLES = [
   <p>これに東アフリカの2つの<strong>孤立言語</strong>──タンザニアのエヤシ湖周辺で約千人の狩猟採集民に話される<strong>ハッザ語</strong>、その北方の<strong>サンダウェ語</strong>──を加える。両者にも吸着音はあるが、南部アフリカの語族との系統関係は厳密な検証に耐えていない。古い総称「コイサン語族」は5系統をひとくくりにしていたが、トム・ギュルデマンらの研究により、近年は<strong>「地域的グループ化であって遺伝的語族ではない」</strong>と結論されている。</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 ハッザ・サンダウェ・コエコエ・コサ・ズールーを点灯</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 ハッザ・サンダウェ・コエコエ・コサ・ズールーを比較</button>
   </div>
   
   <p>音声学的には<strong>5系統の主要吸着音</strong>が区別される。</p>
@@ -973,7 +973,7 @@ const TRIVIA_ARTICLES = [
     <li><strong>1880</strong>: British colonial officer <strong>Maurice Vidal Portman</strong> landed with a search party, captured an elderly couple and four children, and brought them to Port Blair. The adults died within days, almost certainly of common infections to which Sentinelese have no immunity. The children were returned to the island with gifts. Whatever Portman recorded of their speech survives only as fragments and second-hand notes.</li>
     <li><strong>1974</strong>: A National Geographic film team was driven back by arrows. The director took an 8-foot arrow in his thigh.</li>
     <li><strong>1991</strong>: Indian anthropologist <strong>Madhumala Chattopadhyay</strong> led a series of "gift drops" of coconuts that achieved the only known peaceful contact — Sentinelese wading out to the boats unarmed to collect coconuts. The visits were halted in 1996 over disease-transmission concerns.</li>
-    <li><strong>2004 tsunami</strong>: A Coast Guard helicopter flew over the island days after the Boxing Day tsunami to check for survivors. It was met with arrows. The islanders had moved to higher ground and were unharmed.</li>
+    <li><strong>2004 tsunami</strong>: A Coast Guard helicopter flew over the island days after the 2004 Indian Ocean tsunami to check for survivors. It was met with arrows. The islanders had moved to higher ground and were unharmed.</li>
     <li><strong>2006</strong>: Two fishermen who drifted ashore were killed.</li>
     <li><strong>2018</strong>: American missionary <strong>John Allen Chau</strong> was killed attempting to evangelize the Sentinelese, having illegally bribed local fishermen to take him there.</li>
   </ul>
@@ -1169,7 +1169,7 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="panto" data-lat="34.0" data-lng="72.0" data-zoom="6">🕉️ パーニニのガンダーラへ飛ぶ</button>
   </div>
   
-  <p>パーニニ個人については、シャラートゥラ村（現パキスタンのアトック近郊ラホール）出身、紀元前5〜4世紀活動という以外ほとんど何も分かっていない。確実に言えるのは、彼の書が<strong>暗唱前提</strong>で設計されていたことだ。アシュターディヤーイーは記述後も何世紀ものあいだ口承で伝えられた。音節を──つまり呼吸を──節約するためにパーニニは、<strong>独自の専門メタ言語</strong>を発明した。一文字省略、シヴァ・スートラと呼ばれる音素整列表、文脈依存規則の表記法、前行の規則条件を継承する <em>anuvṛtti</em>、規則衝突を解消する優先度システム──現代の文脈自由文法の生成規則と驚くほど似た形式である。</p>
+  <p>パーニニ個人については、シャラートゥラ村（現パキスタン北西部、アトック近郊の Lahor／Lahur、いわゆる Little Lahore。パンジャーブ州の大都市 Lahore とは別の小村）出身、紀元前5〜4世紀活動という以外ほとんど何も分かっていない。確実に言えるのは、彼の書が<strong>暗唱前提</strong>で設計されていたことだ。アシュターディヤーイーは記述後も何世紀ものあいだ口承で伝えられた。音節を──つまり呼吸を──節約するためにパーニニは、<strong>独自の専門メタ言語</strong>を発明した。一文字省略、シヴァ・スートラと呼ばれる音素整列表、文脈依存規則の表記法、前行の規則条件を継承する <em>anuvṛtti</em>、規則衝突を解消する優先度システム──現代の文脈自由文法の生成規則と驚くほど似た形式である。</p>
   
   <p>パーニニの規則は、近代言語学が1968年に独立に「再発見」した記法と本質的に等価だ:</p>
   
@@ -2053,7 +2053,7 @@ const TRIVIA_ARTICLES = [
   
   <p>この発見はアンデス研究の枠を超えて重要だった。ジョージ・レイコフの概念メタファー研究、レラ・ボロディツキーの時間言語実験と並んで、「抽象概念の空間メタファーは人類普遍ではなく、文化と身体経験に深く規定される」という現代的主張の中核となっている。最も逃れがたい抽象である<strong>時間</strong>でさえ、全人類で同じ向きを指してはいないのである。</p>
   
-  <p>アイマラ語にはほかにも興味深い特徴が多い──1980年代に計算機科学者が議論した三値論理、トゥヤカ語に似た義務的な証拠性、活発な先住民出版文化。だが、「目の前に過去がある」というこの一点は、今も認知科学への最大の贈り物として語り継がれている。</p>
+  <p>アイマラ語にはほかにも興味深い特徴が多い──1980年代に計算機科学者が議論した三値論理、トゥユカ語に似た義務的な証拠性、活発な先住民出版文化。だが、「目の前に過去がある」というこの一点は、今も認知科学への最大の贈り物として語り継がれている。</p>
         `,
       },
       sources: [
@@ -2072,11 +2072,11 @@ const TRIVIA_ARTICLES = [
       tags: ['evidentiality', 'tukanoan', 'amazon', 'grammar', 'obligatory'],
       title: {
         en: 'Tuyuca — the language in which you must reveal how you know',
-        ja: '「どう知ったか」を必ず明かす言語、トゥヤカ語',
+        ja: '「どう知ったか」を必ず明かす言語、トゥユカ語',
       },
       summary: {
         en: 'In Tuyuca of the NW Amazon, every finite verb obligatorily marks evidence: did you see it, hear it, infer it, assume it, or were you told? You cannot say "John played soccer" without specifying which.',
-        ja: 'アマゾン北西部のトゥヤカ語では、全ての定動詞に「どう知ったか」を義務的に付ける。見た／聞いた／推論した／推測した／伝聞、を選ばずに「ジョンがサッカーをした」とは言えない。',
+        ja: 'アマゾン北西部のトゥユカ語では、全ての定動詞に「どう知ったか」を義務的に付ける。見た／聞いた／推論した／推測した／伝聞、を選ばずに「ジョンがサッカーをした」とは言えない。',
       },
       body: {
         en: `
@@ -2120,14 +2120,14 @@ const TRIVIA_ARTICLES = [
         ja: `
   <p>たとえば「ジョンが昨日サッカーをした」と話すとき、英語話者はそれだけで会話を成り立たせられる。聞き手は、話者がグラウンドで見たのか、隣の通りから歓声を聞いたのか、泥だらけのスパイクから推測したのか、友人から聞いたのか──何も知らされない。ヨーロッパ諸語では<em>情報源</em>はほぼ表に出ない。</p>
   
-  <p>ところが<strong>トゥヤカ語（Tuyuca）</strong>──ブラジル＝コロンビア国境のヴァウペス川流域で<strong>約1000人</strong>が話す<strong>東トゥカノ語派</strong>の言語──では、それが文法的に許されない。定動詞には必ず「どう知ったか」を示す接尾辞が付き、無印の中立形は存在しない。証拠性なしで動詞を発すれば、それは非文である。</p>
+  <p>ところが<strong>トゥユカ語（Tuyuca）</strong>──ブラジル＝コロンビア国境のヴァウペス川流域で<strong>約1000人</strong>が話す<strong>東トゥカノ語派</strong>の言語──では、それが文法的に許されない。定動詞には必ず「どう知ったか」を示す接尾辞が付き、無印の中立形は存在しない。証拠性なしで動詞を発すれば、それは非文である。</p>
   
   <div class="trivia-actions">
     <button type="button" class="trivia-action" data-action="focus" data-code="tue" data-zoom="6">🌍 地図でトゥユカ語を見る</button>
     <button type="button" class="trivia-action" data-action="panto" data-lat="0.5" data-lng="-69" data-zoom="6">🗺️ ヴァウペス川流域へ飛ぶ</button>
   </div>
   
-  <p>古典的記述はジャネット・バーンズの1984年論文で、トゥヤカ語には<strong>5種類の証拠性</strong>が動詞接尾辞として体系的に存在することが示された。</p>
+  <p>古典的記述はジャネット・バーンズの1984年論文で、トゥユカ語には<strong>5種類の証拠性</strong>が動詞接尾辞として体系的に存在することが示された。</p>
   
   <ul>
     <li><strong>視覚</strong>──話者が自分の目で見た。<em>díiga apé-wi</em>「ジョンはサッカーをした（私はそれを見た）」</li>
@@ -2143,9 +2143,9 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ トゥユカ語の「目」</button>
   </div>
   
-  <p>トゥヤカ語だけが特殊なわけではない。<strong>証拠性</strong>はトゥカノ語族全体、ケチュア語、アイマラ語、トルコ語（有名な <em>-miş</em>）、ブルガリア語、韓国語、多くのチベット＝ビルマ系言語、アマゾン諸語に広く文法カテゴリーとして存在する。<strong>アレクサンドラ・アイヘンヴァルト</strong>の類型論的研究（2004）は文法化された証拠性を持つ言語を500近く集めている。ただ、トゥヤカ語は「5段階」というきめ細かさと、最初に詳細に記述された言語の一つであることで際立っている。</p>
+  <p>トゥユカ語だけが特殊なわけではない。<strong>証拠性</strong>はトゥカノ語族全体、ケチュア語、アイマラ語、トルコ語（有名な <em>-miş</em>）、ブルガリア語、韓国語、多くのチベット＝ビルマ系言語、アマゾン諸語に広く文法カテゴリーとして存在する。<strong>アレクサンドラ・アイヘンヴァルト</strong>の類型論的研究（2004）は文法化された証拠性を持つ言語を500近く集めている。ただ、トゥユカ語は「5段階」というきめ細かさと、最初に詳細に記述された言語の一つであることで際立っている。</p>
   
-  <blockquote>「トゥヤカ語では気軽に嘘をつけない。すべての主張に『どう手に入れた情報か』の署名が付くからだ」──アイヘンヴァルト 2004 の要約</blockquote>
+  <blockquote>「トゥユカ語では気軽に嘘をつけない。すべての主張に『どう手に入れた情報か』の署名が付くからだ」──アイヘンヴァルト 2004 の要約</blockquote>
   
   <p>認知への含意は議論が続く。「情報源を毎回明示する習慣は、噂や根拠への姿勢を根本から変える」と主張する研究者もいれば、「英語話者も同じ区別を表現できる──ただ義務ではないだけだ」と反論する研究者もいる。現在の合意点はおそらくその中間──義務的な文法化はその概念を認知的に目立たせるが、他言語話者が同じ区別をできなくなるわけではない、というところだ。</p>
   
@@ -2153,7 +2153,7 @@ const TRIVIA_ARTICLES = [
     <button type="button" class="trivia-action" data-action="setword" data-word="drink" data-code="tue">🥤 トゥユカ語の「飲む」（sĩdĩ）</button>
   </div>
   
-  <p>はっきりしているのは、トゥヤカ語が西欧言語哲学の暗黙の前提──「平叙文の既定値は無印の事実主張である」──をあぶり出していることだ。トゥヤカ語にそんな既定値はない。すべての文の動詞には、認識論的に言えば「私は見た」「私は聞いた」「人から聞いた」が刻まれている。<strong>情報源の文法</strong>が、動詞そのものに織り込まれているのである。</p>
+  <p>はっきりしているのは、トゥユカ語が西欧言語哲学の暗黙の前提──「平叙文の既定値は無印の事実主張である」──をあぶり出していることだ。トゥユカ語にそんな既定値はない。すべての文の動詞には、認識論的に言えば「私は見た」「私は聞いた」「人から聞いた」が刻まれている。<strong>情報源の文法</strong>が、動詞そのものに織り込まれているのである。</p>
         `,
       },
       sources: [
@@ -2623,7 +2623,7 @@ const TRIVIA_ARTICLES = [
   <p>Pick any language at random. Ask how it says "mother". The odds are uncomfortably high that the word begins with <strong>m</strong> and contains an <em>a</em>: English <em>mama</em>, Mandarin <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Welsh <em>mam</em>, Hebrew <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaiian <em>makuahine</em> / <em>māmā</em>. Now ask how it says "father". Across an equally vast sample you get <strong>papa, baba, tata, dada, abba, atta</strong> — a labial or coronal stop plus <em>a</em>.</p>
   
   <div class="trivia-actions">
-    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Light up "mother" across 8 unrelated languages</button>
+    <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Compare "mother" across 8 unrelated languages</button>
   </div>
   
   <p>This is not chance. The Yale anthropologist <strong>George P. Murdock</strong> assembled a 1959 cross-cultural dataset of 1,072 kin terms from 470 languages and found that words of the <em>mama</em> type were used for "mother" in 52% of the sample, and <em>papa</em>/<em>tata</em>/<em>baba</em>-type words for "father" in 55%. The languages span every family on Earth — Indo-European, Sino-Tibetan, Niger-Congo, Austronesian, Uto-Aztecan, Pama-Nyungan. They cannot all share a common ancestor.</p>

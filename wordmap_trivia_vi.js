@@ -211,7 +211,7 @@ window.TRIVIA_I18N['vi'] = {
 <p>Với ba họ này, người ta thường thêm <strong>hai ngôn ngữ biệt lập của Đông Phi</strong>: <strong>Hadza</strong>, được khoảng một nghìn người săn bắt-hái lượm nói quanh Hồ Eyasi ở Tanzania, và <strong>Sandawe</strong>, vài trăm km về phía bắc. Cả hai đều có click; không ngôn ngữ nào đã được chứng minh là có liên quan đến các nhóm phía nam theo bất kỳ cách nào chịu được sự xem xét kỹ lưỡng. Thuật ngữ chung cũ "Khoisan" gộp cả năm lại với nhau, nhưng Tom Güldemann và những người khác đã dành hai mươi năm qua để lập luận — một cách thuyết phục — rằng <strong>Khoisan là một nhóm khu vực, không phải là một họ phả hệ</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Bật Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 So sánh Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
 </div>
 
 <p>Các nhà ngữ âm học phân biệt <strong>năm loại click chính</strong> theo nơi đóng phía trước được thực hiện:</p>
@@ -406,7 +406,7 @@ window.TRIVIA_I18N['vi'] = {
   <li><strong>1880</strong>: Sĩ quan thuộc địa Anh <strong>Maurice Vidal Portman</strong> đã đổ bộ với một nhóm tìm kiếm, bắt một cặp vợ chồng cao tuổi và bốn đứa trẻ, và đưa họ đến Port Blair. Người lớn chết trong vòng vài ngày, gần như chắc chắn vì các bệnh nhiễm trùng thông thường mà người Sentinel không có miễn dịch. Những đứa trẻ được trả lại đảo cùng với quà tặng. Bất cứ điều gì Portman ghi lại về lời nói của họ chỉ tồn tại như các mảnh vỡ và ghi chú thứ cấp.</li>
   <li><strong>1974</strong>: Một đội quay phim của National Geographic bị đẩy lùi bởi mũi tên. Đạo diễn bị một mũi tên 2,4m vào đùi.</li>
   <li><strong>1991</strong>: Nhà nhân học Ấn Độ <strong>Madhumala Chattopadhyay</strong> đã dẫn đầu một loạt "thả quà" dừa đạt được tiếp xúc hòa bình duy nhất được biết — người Sentinel lội ra thuyền không vũ trang để thu thập dừa. Các chuyến thăm bị dừng vào năm 1996 do lo ngại lây truyền bệnh.</li>
-  <li><strong>Sóng thần 2004</strong>: Một trực thăng Tuần duyên đã bay qua đảo vài ngày sau sóng thần Boxing Day để kiểm tra người sống sót. Nó bị mũi tên đón. Cư dân đã di chuyển đến nơi cao hơn và không bị thương.</li>
+  <li><strong>Sóng thần 2004</strong>: Một trực thăng Tuần duyên đã bay qua đảo vài ngày sau sóng thần Ấn Độ Dương năm 2004 để kiểm tra người sống sót. Nó bị mũi tên đón. Cư dân đã di chuyển đến nơi cao hơn và không bị thương.</li>
   <li><strong>2006</strong>: Hai ngư dân trôi dạt vào bờ bị giết.</li>
   <li><strong>2018</strong>: Nhà truyền giáo Mỹ <strong>John Allen Chau</strong> bị giết khi cố gắng truyền giáo cho người Sentinel, đã bất hợp pháp hối lộ ngư dân địa phương đưa anh ta đến đó.</li>
 </ul>
@@ -1086,7 +1086,7 @@ window.TRIVIA_I18N['vi'] = {
 <p>Hãy chọn bất kỳ ngôn ngữ nào ngẫu nhiên. Hỏi nó nói "mẹ" như thế nào. Xác suất không thoải mái cao rằng từ bắt đầu bằng <strong>m</strong> và chứa <em>a</em>: tiếng Anh <em>mama</em>, Quan Thoại <em>māma</em>, Swahili <em>mama</em>, Quechua <em>mama</em>, Navajo <em>amá</em>, Welsh <em>mam</em>, Hebrew <em>imá</em>, Tagalog <em>nanay</em> / <em>mama</em>, Hindi <em>mā</em>, Malayalam <em>amma</em>, Hawaii <em>makuahine</em> / <em>māmā</em>. Bây giờ hỏi nó nói "cha" như thế nào. Trên một mẫu rộng lớn không kém, bạn nhận được <strong>papa, baba, tata, dada, abba, atta</strong> — một âm tắc môi hoặc đỉnh răng cộng với <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Bật "mẹ" qua 8 ngôn ngữ không liên quan</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 So sánh "mẹ" qua 8 ngôn ngữ không liên quan</button>
 </div>
 
 <p>Đây không phải là tình cờ. Nhà nhân học Yale <strong>George P. Murdock</strong> đã tập hợp một bộ dữ liệu xuyên văn hóa năm 1959 gồm 1.072 thuật ngữ thân tộc từ 470 ngôn ngữ và phát hiện ra rằng các từ kiểu <em>mama</em> được sử dụng cho "mẹ" trong 52% mẫu, và các từ kiểu <em>papa</em>/<em>tata</em>/<em>baba</em> cho "cha" trong 55%. Các ngôn ngữ trải dài mọi họ trên Trái Đất — Ấn-Âu, Hán-Tạng, Niger-Congo, Austronesian, Uto-Aztec, Pama-Nyungan. Chúng không thể tất cả đều chia sẻ một tổ tiên chung.</p>

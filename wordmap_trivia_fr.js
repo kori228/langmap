@@ -246,7 +246,7 @@ window.TRIVIA_I18N['fr'] = {
 <p>À ces trois familles, on ajoute généralement <strong>deux isolats d\'Afrique de l\'Est</strong> : le <strong>Hadza</strong>, parlé par environ un millier de chasseurs-cueilleurs autour du lac Eyasi en Tanzanie, et le <strong>Sandawe</strong>, à quelques centaines de kilomètres au nord. Tous deux ont des clics ; aucun n\'a été démontré comme apparenté aux groupes méridionaux d\'une manière résistant à un examen approfondi. L\'ancien terme parapluie « khoïsan » regroupait les cinq, mais Tom Güldemann et d\'autres ont passé les vingt dernières années à soutenir — de manière convaincante — que <strong>le khoïsan est un groupement aréal, non une famille génétique</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Activer Hadza, Sandawe, Khoekhoe, Xhosa, Zoulou</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Comparer Hadza, Sandawe, Khoekhoe, Xhosa, Zoulou</button>
 </div>
 
 <p>Les phonéticiens distinguent <strong>cinq types primaires de clics</strong> selon l\'endroit où la fermeture frontale est faite :</p>
@@ -403,7 +403,7 @@ window.TRIVIA_I18N['fr'] = {
   <li><strong>1880</strong> : l\'officier colonial britannique <strong>Maurice Vidal Portman</strong> débarqua avec une équipe de recherche, captura un couple âgé et quatre enfants, et les amena à Port Blair. Les adultes moururent en quelques jours, presque certainement d\'infections courantes contre lesquelles les Sentinelais n\'ont aucune immunité. Les enfants furent ramenés sur l\'île avec des cadeaux. Tout ce que Portman enregistra de leur parole ne survit que sous forme de fragments et de notes de seconde main.</li>
   <li><strong>1974</strong> : une équipe de tournage de National Geographic fut repoussée par des flèches. Le réalisateur reçut une flèche de 2,4 m dans la cuisse.</li>
   <li><strong>1991</strong> : l\'anthropologue indienne <strong>Madhumala Chattopadhyay</strong> dirigea une série de « largages de cadeaux » de noix de coco qui réalisa le seul contact pacifique connu — des Sentinelais pataugeant désarmés jusqu\'aux bateaux pour collecter des noix de coco. Les visites furent arrêtées en 1996 par crainte de transmission de maladies.</li>
-  <li><strong>Tsunami de 2004</strong> : un hélicoptère des garde-côtes survola l\'île quelques jours après le tsunami de Noël pour vérifier les survivants. Il fut accueilli par des flèches. Les insulaires s\'étaient déplacés vers les hauteurs et étaient indemnes.</li>
+  <li><strong>Tsunami de 2004</strong> : un hélicoptère des garde-côtes survola l\'île quelques jours après le tsunami de 2004 dans l\'océan Indien pour vérifier les survivants. Il fut accueilli par des flèches. Les insulaires s\'étaient déplacés vers les hauteurs et étaient indemnes.</li>
   <li><strong>2006</strong> : deux pêcheurs qui dérivèrent à terre furent tués.</li>
   <li><strong>2018</strong> : le missionnaire américain <strong>John Allen Chau</strong> fut tué en tentant d\'évangéliser les Sentinelais, ayant illégalement soudoyé des pêcheurs locaux pour qu\'ils l\'y emmènent.</li>
 </ul>
@@ -855,7 +855,7 @@ window.TRIVIA_I18N['fr'] = {
   },
   'tuyuca-evidentials': {
     title: 'Tuyuca — la langue dans laquelle vous devez révéler comment vous savez',
-    summary: 'En tuyuca du nord-ouest de l\'Amazonie, chaque verbe fini marque obligatoirement les preuves : l\'avez-vous vu, entendu, déduit, supposé, ou vous a-t-on dit ? Vous ne pouvez pas dire « Jean a joué au football » sans préciser lequel.',
+    summary: 'En tuyuca du nord-ouest de l\'Amazonie, chaque verbe fini marque obligatoirement la source de l\'information : l\'avez-vous vu, entendu, déduit, supposé, ou vous a-t-on dit ? Vous ne pouvez pas dire « Jean a joué au football » sans préciser lequel.',
     body: `
 <p>Imaginez que vous ayez à raconter un petit événement — disons, que Jean a joué au football hier. En français vous pouvez simplement dire « Jean a joué au football », et votre auditeur n'a aucune idée si vous étiez sur la touche, avez entendu des acclamations dans la rue voisine, l'avez déduit de ses chaussures boueuses, ou avez été informé par un ami. Les langues d'Europe laissent la <em>source</em> de l'information presque entièrement non marquée.</p>
 
@@ -876,7 +876,7 @@ window.TRIVIA_I18N['fr'] = {
   <li><strong>Rapporté</strong> — on a dit au locuteur. <em>díiga apé-yigi</em> « il a joué au football (à ce qu'on dit) ».</li>
 </ul>
 
-<p>Le système est plus qu'une convention de politesse. C'est une contrainte grammaticale stricte, apprise tôt par les enfants, et respectée même dans la conversation décontractée. Un locuteur tuyuca racontant une querelle est tenu de signaler — à chaque proposition — s'il l'a témoignée, surprise par hasard ou si on la lui a rapportée. Omettre le marqueur, c'est produire une phrase mal formée, comme dire <em>« hier il aller magasin »</em> en français.</p>
+<p>Le système est plus qu'une convention de politesse. C'est une contrainte grammaticale stricte, apprise tôt par les enfants, et respectée même dans la conversation décontractée. Un locuteur tuyuca racontant une querelle est tenu de signaler — à chaque proposition — s'il en a été témoin, l'a surprise par hasard ou se l'est fait rapporter. Omettre le marqueur, c'est produire une phrase mal formée, comme dire <em>« hier il aller magasin »</em> en français.</p>
 
 <div class="trivia-actions">
   <button type="button" class="trivia-action" data-action="setword" data-word="eye" data-code="tue">👁️ Voir « œil » en tuyuca</button>
@@ -1083,7 +1083,7 @@ window.TRIVIA_I18N['fr'] = {
 <p>Choisissez une langue au hasard. Demandez comment elle dit « mère ». Les chances sont inconfortablement élevées que le mot commence par <strong>m</strong> et contienne un <em>a</em> : anglais <em>mama</em>, mandarin <em>māma</em>, swahili <em>mama</em>, quechua <em>mama</em>, navajo <em>amá</em>, gallois <em>mam</em>, hébreu <em>imá</em>, tagalog <em>nanay</em> / <em>mama</em>, hindi <em>mā</em>, malayalam <em>amma</em>, hawaïen <em>makuahine</em> / <em>māmā</em>. Demandez maintenant comment elle dit « père ». Sur un échantillon tout aussi vaste vous obtenez <strong>papa, baba, tata, dada, abba, atta</strong> — une labiale ou coronale occlusive plus <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Éclairer « mère » à travers 8 langues non apparentées</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Comparer « mère » à travers 8 langues non apparentées</button>
 </div>
 
 <p>Ce n'est pas le hasard. L'anthropologue de Yale <strong>George P. Murdock</strong> rassembla en 1959 un jeu de données translinguistique de 1 072 termes de parenté de 470 langues et trouva que les mots du type <em>mama</em> étaient utilisés pour « mère » dans 52 % de l'échantillon, et des mots du type <em>papa</em>/<em>tata</em>/<em>baba</em> pour « père » dans 55 %. Les langues couvrent chaque famille sur Terre — indo-européenne, sino-tibétaine, niger-congolaise, austronésienne, uto-aztèque, pama-nyungane. Elles ne peuvent toutes partager un ancêtre commun.</p>

@@ -211,7 +211,7 @@ window.TRIVIA_I18N['it'] = {
 <p>A queste tre famiglie si aggiungono di solito <strong>due isolati dell\'Africa orientale</strong>: l\'<strong>Hadza</strong>, parlato da forse un migliaio di cacciatori-raccoglitori attorno al Lago Eyasi in Tanzania, e il <strong>Sandawe</strong>, qualche centinaio di chilometri a nord. Entrambi hanno i clic; nessuno dei due è stato dimostrato imparentato con i gruppi meridionali in alcun modo che resista a un esame ravvicinato. Il vecchio termine ombrello "khoisan" raggruppava tutti e cinque insieme, ma Tom Güldemann e altri hanno passato gli ultimi vent\'anni a sostenere — in modo convincente — che <strong>"khoisan" è un raggruppamento areale, non una famiglia genetica</strong>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Illumina Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="hts,sad,naq,xh,zu">🗣 Confronta Hadza, Sandawe, Khoekhoe, Xhosa, Zulu</button>
 </div>
 
 <p>I fonetisti distinguono <strong>cinque tipi primari di clic</strong> in base a dove viene fatta la chiusura anteriore:</p>
@@ -1065,7 +1065,7 @@ window.TRIVIA_I18N['it'] = {
 
 <p>Prima del 1977, i nicaraguensi sordi erano isolati. Ogni famiglia inventava i propri "<strong>segni domestici</strong>" — piccoli sistemi gestuali idiolettali usati tra un bambino sordo e i parenti immediati — ma il paese non aveva una comunità sorda, nessuna lingua dei segni, e quasi nessuna istruzione per bambini sordi. Poi, nel 1977, il nuovo <strong>Centro Nacional de Educación Especial</strong> aprì a Managua, seguito da una scuola professionale a Villa Libertad nel 1981. Per la prima volta, centinaia di bambini sordi furono riuniti quotidianamente.</p>
 
-<p>Le scuole insegnavano in spagnolo parlato con lettura labiale e dattilografia. Ufficialmente, il segnare era scoraggiato. I bambini, tuttavia, fecero ciò che gli umani fanno sempre quando costretti alla vicinanza: <strong>comunicarono</strong>. Nel cortile e sugli scuolabus, combinarono i loro segni domestici, ne inventarono di nuovi, e in pochi anni avevano costruito un <strong>sistema di segni pidgin</strong> condiviso, ora chiamato <em>Lenguaje de Signos Nicaragüense (LSN)</em>.</p>
+<p>Le scuole insegnavano in spagnolo parlato con lettura labiale e dattilologia (alfabeto manuale). Ufficialmente, il segnare era scoraggiato. I bambini, tuttavia, fecero ciò che gli umani fanno sempre quando costretti alla vicinanza: <strong>comunicarono</strong>. Nel cortile e sugli scuolabus, combinarono i loro segni domestici, ne inventarono di nuovi, e in pochi anni avevano costruito un <strong>sistema di segni pidgin</strong> condiviso, ora chiamato <em>Lenguaje de Signos Nicaragüense (LSN)</em>.</p>
 
 <p>Poi arrivò la rivoluzione. Quando bambini più giovani — prescolari e bambini delle primarie iniziali — entrarono nel sistema a metà degli anni \'80, presero il pidgin dei bambini più grandi come input e fecero qualcosa che solo i bambini possono fare: <strong>lo grammaticalizzarono</strong>. Aggiunsero accordo spaziale coerente, morfologia verbale, e marcatori del discorso. Nei primi anni \'90, la coorte più giovane stava segnando una lingua pienamente grammaticale, pienamente naturale — l\'ISN — che la coorte più anziana poteva seguire solo parzialmente.</p>
 
@@ -1085,7 +1085,7 @@ window.TRIVIA_I18N['it'] = {
 <p>Scegliete una lingua a caso. Chiedete come dice "madre". Le probabilità sono scomodamente alte che la parola inizi con <strong>m</strong> e contenga una <em>a</em>: inglese <em>mama</em>, mandarino <em>māma</em>, swahili <em>mama</em>, quechua <em>mama</em>, navajo <em>amá</em>, gallese <em>mam</em>, ebraico <em>imá</em>, tagalog <em>nanay</em> / <em>mama</em>, hindi <em>mā</em>, malayalam <em>amma</em>, hawaiano <em>makuahine</em> / <em>māmā</em>. Ora chiedete come dice "padre". In un campione altrettanto vasto si ottengono <strong>papa, baba, tata, dada, abba, atta</strong> — un\'occlusiva labiale o coronale più <em>a</em>.</p>
 
 <div class="trivia-actions">
-  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Illumina "madre" in 8 lingue non imparentate</button>
+  <button type="button" class="trivia-action" data-action="compare" data-codes="ja,ko,zh,en,eu,ar,hi,sw" data-word="mother">🗣 Confronta "madre" in 8 lingue non imparentate</button>
 </div>
 
 <p>Questo non è caso. L\'antropologo di Yale <strong>George P. Murdock</strong> assemblò nel 1959 un dataset transculturale di 1.072 termini di parentela da 470 lingue e scoprì che parole di tipo <em>mama</em> venivano usate per "madre" nel 52% del campione, e parole di tipo <em>papa</em>/<em>tata</em>/<em>baba</em> per "padre" nel 55%. Le lingue si estendono su ogni famiglia sulla Terra — indoeuropea, sino-tibetana, niger-congo, austronesiana, uto-azteca, pama-nyungan. Non possono condividere tutte un antenato comune.</p>
