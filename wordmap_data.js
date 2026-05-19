@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 936 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 935 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2911,8 +2911,10 @@ const LANG_DATA = {
   kos: { name: 'Kosraean', native: 'Kahnka Kosrae', lat: 5.31, lng: 162.98, // Tofol, Kosrae
     words: { water:['kof','kof'], fire:['e','e'], sun:['fihl','fihl'], moon:['malem','malem'], mother:['nina','nina'], father:['papa','papa'], eat:['mongo','moŋo'], drink:['nim','nim'], love:['lungse','luŋse'], heart:['insiac','insiats'], tree:['sak','sak'], house:['lohm','lohm'], dog:['kosro','kosɾo'], cat:['katu','katu'], hand:['poun','poun'], eye:['mutahl','mutahl'], hello:['lwen wo','lwen wo'], thanks:['kulo','kulo'], one:['sefac','sefats'], good:['wo','wo'] }},
   // Old Greek branch + Aramaic Modern
-  syr: { name: 'Assyrian Neo-Aramaic', native: 'ܣܘܪܝܬ', lat: 36.36, lng: 43.15, // Mosul plain
-    words: { water:['ܡܝ̈ܐ','mæje'], fire:['ܢܘܪܐ','nuɾa'], sun:['ܫܡܫܐ','ʃɛmʃa'], moon:['ܣܗܪܐ','sahɾa'], mother:['ܝܡܐ','jɛmma'], father:['ܒܒܐ','baba'], eat:['ܐܟܠ','ʔaχɛl'], drink:['ܫܬܐ','ʃate'], love:['ܚܘܒܐ','xubba'], heart:['ܠܒܐ','lɛbba'], tree:['ܐܝܠܢܐ','ʔilana'], house:['ܒܝܬܐ','beta'], dog:['ܟܠܒܐ','kalba'], cat:['ܩܛܘ','qaʈu'], hand:['ܐܝܕܐ','ʔida'], eye:['ܥܝܢܐ','ʕena'], hello:['ܫܠܡܐ','ʃlama'], thanks:['ܒܣܝܡܐ','basima'], one:['ܚܕ','xa'], good:['ܛܒ','ʈav'] }},
+  // syr: removed 2026-05-13 — duplicate of `aii` (Assyrian Neo-Aramaic),
+  // same coords / 18 of 20 surface forms identical. aii is the canonical
+  // ISO 639-3 entry for the modern spoken language; Classical Syriac
+  // remains covered separately by `syc`.
   // Mandaic (Classical) — Aramaic, ~5K liturgical (~50 fluent), Iraq + Iran + diaspora. Unique Mandaic script.
   // Sources: Ethnologue 27 'myz'; Glottolog clas1252; Macuch (1965) Handbook of Classical and Modern Mandaic.
   myz: { name: 'Classical Mandaic', native: 'ࡌࡀࡍࡃࡀࡉࡉࡀ', lat: 32.76, lng: 47.08, // Khuzestan, Iran (modern Mandaean homeland)

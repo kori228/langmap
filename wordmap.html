@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 910 Languages on a World Map</title>
-    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 910 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
+    <title>LangMap — Word Map: 935 Languages on a World Map</title>
+    <meta name="description" content="An interactive world map showing 20 key words (water, fire, sun, mother, hello…) in 935 languages with pronunciation guides — IPA, broad transcription, and romanization where available. 2D map and 3D globe views.">
     <meta property="og:title" content="LangMap — Word Map">
-    <meta property="og:description" content="Explore 20 words in 910 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta property="og:description" content="Explore 20 words in 935 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/langmap.png">
     <meta property="og:site_name" content="LangMap">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LangMap — Word Map">
-    <meta name="twitter:description" content="Explore 20 words in 910 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
+    <meta name="twitter:description" content="Explore 20 words in 935 languages on an interactive world map with pronunciation guides (IPA / broad / romanization) and 3D globe view.">
     <meta name="twitter:image" content="https://langmap.heuron.com/langmap.png">
     <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -2077,11 +2077,11 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=213"></script>
-    <script src="meta_i18n_ext.js?v=14"></script>
+    <script src="wordmap_data.js?v=214"></script>
+    <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=31"></script>
-    <script src="lang_names.js?v=108"></script>
+    <script src="lang_names.js?v=109"></script>
     <script src="wordmap_trivia.js?v=27"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -2311,11 +2311,11 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    78,
-            data:      213,
+            data:      214,
             metaI18n:  15,
             filter:    31,
-            names:   108,
-            meta:     190,
+            names:   109,
+            meta:     191,
             trivia:   27,
             triviaI18n: 3,
         };
@@ -3289,6 +3289,49 @@
             return bare ? parseInt(bare[1], 10) : 0;
         }
 
+        // Priority-based greedy thinning for the modern map (user request
+        // 2026-05-19). Given a list of language codes and their already-
+        // projected pixel positions, return at most `maxCount` codes such
+        // that no two selected labels are within `minPxDist` of each other.
+        // Selection order is by speakerCount descending so the linguistically
+        // largest representatives always win a contested cell. Cleared by
+        // the existing zoom-tier gate for low zooms; this kicks in once the
+        // gate releases the full ~900-lang pool at z≥5 and prevents Europe /
+        // East Asia / South Asia from looking like a pin explosion while
+        // sub-Saharan / Siberia / Oceania look empty.
+        function selectByPriority(codes, positions, minPxDist, maxCount) {
+            if (codes.length <= maxCount) {
+                // Cap not yet exceeded; still apply overlap thinning so
+                // dense regions don't dominate. Skip if even thinner.
+            }
+            const sorted = codes.slice().sort((a, b) => {
+                const sa = langSpeakerCount(a) || 0;
+                const sb = langSpeakerCount(b) || 0;
+                if (sb !== sa) return sb - sa;
+                // Stable tiebreak by code string so panning doesn't reshuffle
+                return a < b ? -1 : (a > b ? 1 : 0);
+            });
+            const kept = [];
+            const keptPts = [];
+            const minSq = minPxDist * minPxDist;
+            for (const code of sorted) {
+                if (kept.length >= maxCount) break;
+                const pt = positions[code];
+                if (!pt) continue;
+                let blocked = false;
+                for (let i = 0; i < keptPts.length; i++) {
+                    const dx = keptPts[i].x - pt.x;
+                    const dy = keptPts[i].y - pt.y;
+                    if (dx * dx + dy * dy < minSq) { blocked = true; break; }
+                }
+                if (!blocked) {
+                    kept.push(code);
+                    keptPts.push(pt);
+                }
+            }
+            return kept;
+        }
+
         function getVisibleLangs(wordId, zoom) {
             const visibleLangs = [];
             const unattestedLangs = [];
@@ -3448,18 +3491,46 @@
                 || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
 
             const ppx = {};
-            const cellGroups = {};
+            // First pass: project ALL visible langs to pixels.
             for (const code of visibleLangs) {
                 const lang = LANG_DATA[code];
                 const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
                 ppx[code] = pt;
+            }
+
+            // Priority-based greedy thinning for the modern, no-filter,
+            // no-spotlight path (user request 2026-05-19): cap the total
+            // and require minimum pixel separation, so dense regions
+            // (Europe / East Asia / South Asia) only show top-N speakers
+            // and sparse regions keep their full coverage. Skipped when:
+            //   - trivia spotlight is active (already filtered to specific
+            //     codes; user wants those visible at any zoom)
+            //   - any filter chip is active (user wants ALL filter matches)
+            //   - historical mode (different visualization purpose)
+            const _spotlightActive = _triviaSpotlight && _triviaSpotlight.size > 0;
+            const _mobile = window.matchMedia('(max-width: 640px)').matches;
+            let renderLangs = visibleLangs;
+            if (!_spotlightActive && !filterActive && !showHistorical) {
+                // Tuning notes (2026-05-19): user feedback was that mobile
+                // showed too few pins. Raised mobile cap 80→130 and tightened
+                // mobile overlap radius 0.85→0.65 so smaller labels can sit
+                // closer (mobile labels are already narrower per the
+                // @media rules). Desktop kept generous.
+                const MAX_PINS = _mobile ? 130 : 180;
+                const MIN_PX = labelW * (_mobile ? 0.65 : 0.85);
+                renderLangs = selectByPriority(visibleLangs, ppx, MIN_PX, MAX_PINS);
+            }
+
+            const cellGroups = {};
+            for (const code of renderLangs) {
                 if (!isActive(code)) continue;  // dimmed labels don't compete
+                const pt = ppx[code];
                 const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
                 if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
                 cellGroups[cellKey].push(code);
             }
 
-            for (const code of visibleLangs) {
+            for (const code of renderLangs) {
                 const lang = LANG_DATA[code];
                 const entry = lang.words[wordId];
                 const [word, ipa] = entry;
@@ -5562,10 +5633,64 @@
                         if (typeof updateMarkers === 'function') updateMarkers(currentWord);
                     }
                     setTimeout(() => triviaBlinkMarker(code), 400);
+                    // Auto-clear the dice-selected highlight as soon as the user
+                    // changes anything on the map (zoom, pan, click, era/word
+                    // change). Mirrors mobile user request 2026-05-19: "地図に
+                    // 何らかの変更を加えたらすぐに解除"
+                    _wireDiceAutoClear(code);
                 } else {
                     showLangInfo(code);
                 }
             });
+        }
+
+        // Auto-clear the dice-button spotlight/blink when the user interacts
+        // with the map. Attaches one-shot listeners to multiple events; the
+        // first one to fire clears the highlight and unwires the rest.
+        function _wireDiceAutoClear(code) {
+            let cleared = false;
+            const clear = () => {
+                if (cleared) return;
+                cleared = true;
+                try { triviaClearBlinks(); } catch (_) {}
+                try {
+                    if (_triviaSpotlight && _triviaSpotlight.has(code)) {
+                        _triviaSpotlight.delete(code);
+                        if (typeof updateMarkers === 'function') updateMarkers(currentWord);
+                    }
+                } catch (_) {}
+                unwire();
+            };
+            const unwire = () => {
+                try { map && map.off('movestart', clear); } catch (_) {}
+                try { map && map.off('zoomstart', clear); } catch (_) {}
+                try { map && map.off('click', clear); } catch (_) {}
+                try { document.removeEventListener('click', _docClickHandler, true); } catch (_) {}
+                try { const ws = document.getElementById('word-select');
+                      if (ws) ws.removeEventListener('change', clear); } catch (_) {}
+                try { const era = document.getElementById('era-switch');
+                      if (era) era.removeEventListener('click', clear); } catch (_) {}
+            };
+            // Document-level click handler: catches taps on any map control,
+            // toggle button, or marker — anything the user could plausibly do
+            // "to change the map state".
+            const _docClickHandler = (ev) => {
+                // Don't clear when the click is on the dice button itself
+                // (so a re-roll keeps the highlight on the new pick).
+                const tgt = ev.target;
+                if (tgt && tgt.closest && tgt.closest('#lang-random')) return;
+                clear();
+            };
+            if (map) {
+                map.on('movestart', clear);
+                map.on('zoomstart', clear);
+                map.on('click', clear);
+            }
+            document.addEventListener('click', _docClickHandler, true);
+            const ws = document.getElementById('word-select');
+            if (ws) ws.addEventListener('change', clear);
+            const era = document.getElementById('era-switch');
+            if (era) era.addEventListener('click', clear);
         }
 
         // Initialize compare list from hash/localStorage now that everything is wired

@@ -24,7 +24,7 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 - **Keyboard shortcuts** — `←`/`→` to navigate sentences, `r` for random
 - **Inline editing** — click any segment to edit translations directly in the map
 - **Copy text** — copy any language row's text with one click
-- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 910 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations, typology row, badges, ARIA labels, ON/OFF toggles, Compare panel — all 18+ UI languages), drag-to-reorder language comparison view, and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
+- **[Word Map](wordmap.html)** — interactive world map showing 20 key words in 935 languages (incl. Russian Far East / Siberian indigenous, Sinitic varieties & East/SE Asian dialects, Indo-Aryan & Tibeto-Burman, Bantu & West African, Nilotic & Cushitic, Berber, Mesoamerican & Andean indigenous, Caucasian, Pacific & Australian Aboriginal, Indonesian & Philippine regional, ancient Asian: Old Chinese, Old Japanese, Vedic Sanskrit, Tangut, Sogdian, Old Turkic, Khitan, Jurchen, Old Mon, Pyu, Old Burmese, Old Cham, Old East Slavic, Scythian, Old Thai (Sukhothai), Meroitic, Old Nubian, Classical Quechua, Mochica, Chibcha, Old Malay, Old Sundanese, Old Tagalog) with pronunciation guides (IPA / broad transcription / romanization, Chao tone letters where applicable), 2D/3D globe toggle, language info panel, full i18n (panel labels, language descriptions, speaker annotations, typology row, badges, ARIA labels, ON/OFF toggles, Compare panel — all 18+ UI languages), drag-to-reorder language comparison view, and a **fully multilingual linguistic filter panel** for family / script / word order / tonal / morphology / speaker tier — era-aware chip counts, 0-count chips disabled, selections persist in the URL
 - **[Family Tree](tree.html)** — D3-based horizontal dendrogram of all Word Map languages organized by genealogical family, with curved Bezier branches and family-name i18n; click a leaf to jump to the language on the Word Map
 
 ## Languages (226 total, ordered by similarity)
@@ -98,7 +98,7 @@ Example: `#s=0&l=ja,en,zh,ar&ui=en`
 ```
 langmap/
   index.html              — Main HTML page (Word Order Map)
-  wordmap.html            — Word Map page (20 words × 910 languages on a world map)
+  wordmap.html            — Word Map page (20 words × 935 languages on a world map)
   tree.html               — Language Family Tree page (D3 horizontal dendrogram)
   wordmap_data.js         — Word Map core data (words, IPA, coordinates, native names, UI strings)
   wordmap_meta.js         — Word Map metadata (per-language family/speakers/script + multilingual descriptions); lazy-loaded on first modal open
@@ -197,7 +197,7 @@ MIT
 - **キーボードショートカット** — `←`/`→`で文章切替、`r`でランダム
 - **インライン編集** — セグメントをクリックしてマップ上で直接翻訳を編集
 - **テキストコピー** — 各言語行のテキストをワンクリックでコピー
-- **[単語マップ](wordmap.html)** — 910言語で20の基本語を世界地図上に表示。発音ガイド (IPA / 広めの音写 / ローマ字、声調文字)、2D/3Dグローブ切替、言語情報パネル、全UI18言語対応の i18n (パネルラベル、言語説明、話者数注記、類型情報行、各種バッジ、ARIA ラベル、ON/OFFトグル、比較パネル等)、ドラッグ並べ替え可能な言語比較ビュー、語族／文字／語順／声調／形態論／話者規模で絞り込める **多言語類型論フィルタパネル** (時代対応のチップ数表示、0件チップは無効化、選択はURLに保存)
+- **[単語マップ](wordmap.html)** — 935言語で20の基本語を世界地図上に表示。発音ガイド (IPA / 広めの音写 / ローマ字、声調文字)、2D/3Dグローブ切替、言語情報パネル、全UI18言語対応の i18n (パネルラベル、言語説明、話者数注記、類型情報行、各種バッジ、ARIA ラベル、ON/OFFトグル、比較パネル等)、ドラッグ並べ替え可能な言語比較ビュー、語族／文字／語順／声調／形態論／話者規模で絞り込める **多言語類型論フィルタパネル** (時代対応のチップ数表示、0件チップは無効化、選択はURLに保存)
 - **[系統樹](tree.html)** — Word Map 全言語を D3 横向き dendrogram で表示。曲線ベジェ分岐＋語族名i18n、葉をクリックで Word Map の該当言語へジャンプ
 
 ## 言語一覧（226言語、類似言語順）
@@ -271,7 +271,7 @@ npx serve .
 ```
 langmap/
   index.html              — メインHTMLページ（語順マップ）
-  wordmap.html            — 単語マップページ（20語 × 910言語の世界地図）
+  wordmap.html            — 単語マップページ（20語 × 935言語の世界地図）
   tree.html               — 言語系統樹ページ（D3横向き dendrogram）
   wordmap_data.js         — 単語マップのコアデータ（単語、IPA、座標、現地名、UI文字列）
   wordmap_meta.js         — 単語マップのメタデータ（言語系統・話者数・文字・多言語説明）。モーダル初回表示時に遅延ロード
