@@ -3360,26 +3360,18 @@
                 && typeof window.__langmap.anyFilterActive === 'function'
                 && window.__langmap.anyFilterActive());
             // Speaker-count threshold by zoom (modern path).
-            // Desktop:
+            // Desktop & Mobile (unified 2026-05-19 — mobile gate previously
+            // shifted up by 1 to match the smaller screen, but the new
+            // priority-based thinning (selectByPriority) now handles density
+            // uniformly across both, so the candidate pool can be the same):
             //   z ≤ 3   → 100M+ only
             //   z = 4   → 10M+ only
             //   z ≥ 5   → all
-            // Mobile: each rule shifts UP by 1 (matches the smaller
-            // physical screen — at any given zoom you have less room for
-            // labels, so the tier gate kicks in later):
-            //   z ≤ 4   → 100M+ only
-            //   z = 5   → 10M+ only
-            //   z ≥ 6   → all
-            // Filter-active overrides this (treated as zoom ≥ 5/6).
-            const _mobileTier = window.matchMedia('(max-width: 640px)').matches;
+            // Filter-active overrides this (treated as zoom ≥ 5).
             const tierMin = filterActive ? 0
-                : _mobileTier
-                    ? (zoom <= 4 ? 100_000_000
-                       : zoom <= 5 ? 10_000_000
-                       : 0)
-                    : (zoom <= 3 ? 100_000_000
-                       : zoom <= 4 ? 10_000_000
-                       : 0);
+                : (zoom <= 3 ? 100_000_000
+                   : zoom <= 4 ? 10_000_000
+                   : 0);
             if (showHistorical) {
                 for (const [hist, modern] of Object.entries(HIST_DESCENDANT)) {
                     if (!LANG_DATA[hist] || !LANG_DATA[hist].words[wordId]) continue;
@@ -3499,10 +3491,12 @@
             }
 
             // Priority-based greedy thinning for the modern, no-filter,
-            // no-spotlight path (user request 2026-05-19): cap the total
-            // and require minimum pixel separation, so dense regions
-            // (Europe / East Asia / South Asia) only show top-N speakers
-            // and sparse regions keep their full coverage. Skipped when:
+            // no-spotlight path. Updated 2026-05-19 (user feedback that
+            // mobile z=6 still missed many langs): the thinning now scopes
+            // to the VIEWPORT instead of the whole world, so dense visible
+            // regions like Europe can take the full cap budget without
+            // off-screen high-speaker langs (Chinese/Hindi from elsewhere)
+            // eating the slots. Skipped when:
             //   - trivia spotlight is active (already filtered to specific
             //     codes; user wants those visible at any zoom)
             //   - any filter chip is active (user wants ALL filter matches)
@@ -3511,14 +3505,26 @@
             const _mobile = window.matchMedia('(max-width: 640px)').matches;
             let renderLangs = visibleLangs;
             if (!_spotlightActive && !filterActive && !showHistorical) {
-                // Tuning notes (2026-05-19): user feedback was that mobile
-                // showed too few pins. Raised mobile cap 80→130 and tightened
-                // mobile overlap radius 0.85→0.65 so smaller labels can sit
-                // closer (mobile labels are already narrower per the
-                // @media rules). Desktop kept generous.
-                const MAX_PINS = _mobile ? 130 : 180;
-                const MIN_PX = labelW * (_mobile ? 0.65 : 0.85);
-                renderLangs = selectByPriority(visibleLangs, ppx, MIN_PX, MAX_PINS);
+                // Restrict the candidate pool to langs whose marker is in
+                // the visible viewport (with a generous margin so labels
+                // partially extending off-screen still get drawn).
+                const mapContainer = map.getContainer();
+                const cw = mapContainer ? mapContainer.clientWidth : 1024;
+                const ch = mapContainer ? mapContainer.clientHeight : 768;
+                const MARGIN = 200; // px outside viewport still in pool
+                const inViewport = visibleLangs.filter(code => {
+                    const pt = ppx[code];
+                    return pt && pt.x >= -MARGIN && pt.x <= cw + MARGIN
+                                && pt.y >= -MARGIN && pt.y <= ch + MARGIN;
+                });
+                // Tuning notes:
+                //   - viewport-scoped cap: mobile=120, desktop=180 (~good
+                //     density for typical mobile viewport on z=6)
+                //   - overlap radius: mobile 0.55*labelW (allows
+                //     adjacent labels via vertical stacking fallback)
+                const MAX_PINS = _mobile ? 120 : 180;
+                const MIN_PX = labelW * (_mobile ? 0.55 : 0.75);
+                renderLangs = selectByPriority(inViewport, ppx, MIN_PX, MAX_PINS);
             }
 
             const cellGroups = {};
@@ -3876,7 +3882,11 @@
             });
         }
         map.on('zoomend', () => { updateMarkers(currentWord); updateHash(); updateSelectedLabel(); scheduleConnectorUpdate(); });
-        map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
+        // moveend re-runs updateMarkers so the viewport-scoped pin cap
+        // (selectByPriority) re-evaluates which langs are in the visible
+        // area. Without this, after panning, dropped pins stay dropped
+        // and new regions show no pins until the user zooms.
+        map.on('moveend', () => { updateMarkers(currentWord); updateHash(); scheduleConnectorUpdate(); });
         // Continuous events for smooth tracking during drag
         map.on('move', scheduleConnectorUpdate);
         map.on('viewreset', scheduleConnectorUpdate);
