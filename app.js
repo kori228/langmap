@@ -1284,10 +1284,50 @@ function render() {
             row.classList.add('rtl-native');
         }
 
-        // PC hover copy/edit buttons removed per user request — they
-        // were the .copy-btn / .edit-btn that appeared at row hover on
-        // desktop. Mobile users still get the same actions via the tap-
-        // to-reveal .mobile-action-bar below.
+        // Copy button (appears on hover, desktop only — hidden on mobile
+        // via CSS @media rule; mobile uses the .mobile-action-bar below).
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        copyBtn.title = t('copyText');
+        copyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let text = buildFullText(langData, code);
+            if (sentence.type === 'question') {
+                const SPANISH_LANGS = new Set(['es_eu','es_mx','es_ar','es_co','es_cl','es_cu','es_pe','es_an','lad','gl','ca']);
+                const ARABIC_QM_LANGS = new Set(['ar','ar_eg','ar_lev','ar_ma','ar_gulf','ar_iq','ar_tn','ar_sd','fa','ur','sd','ps','ckb']);
+                const GREEK_LANGS = new Set(['el','el_grc']);
+                const ETHIOPIC_LANGS = new Set(['am','ti']);
+                const NO_QM_LANGS = new Set(['th','th_isan','th_n','th_s','lo','km']);
+                if (SPANISH_LANGS.has(code)) { text = '¿' + text + '?'; }
+                else if (ARABIC_QM_LANGS.has(code)) { text += '؟'; }
+                else if (GREEK_LANGS.has(code)) { text += ';'; }
+                else if (ETHIOPIC_LANGS.has(code)) { text += '፧'; }
+                else if (code === 'hy') { text += '՞'; }
+                else if (!NO_QM_LANGS.has(code)) { text += '?'; }
+            }
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.textContent = t('copiedText');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.textContent = t('copied');
+                }, 2000);
+            });
+        });
+        row.appendChild(copyBtn);
+
+        // Edit button (appears on hover, desktop only)
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>';
+        editBtn.title = t('edit');
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            enterEditMode(row, code);
+        });
+        row.appendChild(editBtn);
 
         // Mobile action bar (shown on tap)
         const mobileBar = document.createElement('div');

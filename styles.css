@@ -697,6 +697,13 @@ select:focus { border-color: #4a90d9; outline: none; }
     -webkit-text-fill-color: transparent;
 }
 
+/* Mobile-only action bar — hidden on desktop. Inside the mobile
+   media query below, this gets `display: flex` when the row has
+   .show-actions (tap-toggled). Without this default rule, the bar
+   would render as a default <div> (block) on PC and show the emoji
+   buttons all the time. */
+.mobile-action-bar { display: none; }
+
 /* Copy & Edit buttons */
 .copy-btn, .edit-btn {
     position: absolute;
