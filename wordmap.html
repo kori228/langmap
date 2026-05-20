@@ -714,9 +714,11 @@
                 Georgia, "Times New Roman", serif;
         }
         /* Per-column delete button — bigger tap target, positioned at
-           the top-right corner of the header so the visual area belongs
-           to the × itself, not floating mid-text. */
-        .compare-table thead th { position: relative; }
+           the top-right corner of the header. The parent <th> is already
+           position:sticky (which IS a positioning context for absolute
+           children), so we do NOT add a redundant position:relative here
+           — doing so would override sticky and let the earlier top:44px
+           value visually push the row down by 44px. */
         .compare-table thead .remove-col {
             position: absolute; top: 2px; right: 4px;
             width: 22px; height: 22px; padding: 0;
