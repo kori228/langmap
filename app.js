@@ -975,7 +975,12 @@ function onRowPointerDown(e) {
     pointerDragState = {
         lang: row.dataset.lang,
         row: row,
-        offsetY: e.clientY - rowRect.top
+        offsetY: e.clientY - rowRect.top,
+        // Track the cursor Y at the moment of the last DOM-position reset
+        // (either pointerdown, or just after a swap). The row's visual
+        // translateY is (clientY - startY) — lines follow the visual
+        // position via getBoundingClientRect.
+        startY: e.clientY,
     };
 
     row.classList.add('dragging');
@@ -991,14 +996,18 @@ function onDocPointerMove(e) {
 
     const { row } = pointerDragState;
 
-    // Check if we need to swap with neighbors
+    // 1. Visually translate the dragged row to follow the cursor — its
+    //    segments' getBoundingClientRect reflects the transform, so the
+    //    line redraw below connects to the row's NEW visual position
+    //    every frame, not just on DOM swap.
+    const dy = e.clientY - pointerDragState.startY;
+    row.style.transform = 'translateY(' + dy + 'px)';
+
+    // 2. Check if a DOM swap is needed (cursor crossed a neighbor's midpoint).
     const container = document.getElementById('langRows');
     const rows = Array.from(container.querySelectorAll('.lang-row'));
     const dragIdx = rows.indexOf(row);
-
-    // Use cursor Y to determine swap
     const cursorY = e.clientY;
-
     let swapped = false;
 
     if (dragIdx < rows.length - 1) {
@@ -1009,7 +1018,6 @@ function onDocPointerMove(e) {
             swapped = true;
         }
     }
-
     if (!swapped && dragIdx > 0) {
         const prevRow = rows[dragIdx - 1];
         const prevRect = prevRow.getBoundingClientRect();
@@ -1020,8 +1028,16 @@ function onDocPointerMove(e) {
     }
 
     if (swapped) {
-        scheduleRedrawLines();
+        // The row's DOM position changed, so its base Y is different now.
+        // Re-anchor the cursor offset so the visual position stays under
+        // the cursor (no sudden jump).
+        pointerDragState.startY = e.clientY;
+        row.style.transform = 'translateY(0)';
     }
+
+    // 3. Redraw lines on every move so connecting lines track the row's
+    //    visual position even between swaps.
+    scheduleRedrawLines();
 }
 
 function onDocPointerUp(e) {
@@ -1029,6 +1045,8 @@ function onDocPointerUp(e) {
 
     const { row } = pointerDragState;
     row.classList.remove('dragging');
+    row.style.transform = '';  // Drop the visual translateY now that the
+                               // row is in its final DOM position.
 
     pointerDragState = null;
 
@@ -1419,10 +1437,34 @@ async function fetchHieroFontBase64() {
 async function buildExportSVG() {
     const container = document.getElementById('mapContainer');
 
-    // Temporarily force desktop layout for export (remove mobile constraints)
+    // Temporarily force desktop layout for export (remove mobile constraints).
+    // On mobile, the container is shrunk to viewport width with min-width:0,
+    // so even with .export-mode font-size overrides the captured positions
+    // would still reflect a cramped layout. Add a temporary inline min-width
+    // override AND wait for a full layout/paint cycle so getBoundingClientRect
+    // reads the post-reflow positions.
     container.classList.add('export-mode');
-    // Force reflow so getBoundingClientRect reflects the new layout
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    let mobileWidthOverride = null;
+    if (isMobile) {
+        // Compute the natural width the desktop layout would want for the
+        // current visible content, then force it via min-width so segments
+        // don't wrap and labels render at full size.
+        const langRows = document.getElementById('langRows');
+        // 280px label column + ~80px per segment × max segments + 80px padding
+        const maxSegs = langRows ? Math.max(
+            ...Array.from(langRows.querySelectorAll('.lang-row'))
+                .map(r => r.querySelectorAll('.segment').length || 1)
+        ) : 5;
+        const designWidth = 280 + maxSegs * 110 + 80;
+        mobileWidthOverride = container.style.minWidth;
+        container.style.minWidth = designWidth + 'px';
+    }
+    // Force a synchronous reflow + one async layout/paint tick so any
+    // pending font / layout work settles before we read positions.
+    // eslint-disable-next-line no-unused-expressions
     container.offsetHeight;
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 
     const containerRect = container.getBoundingClientRect();
     const langRows = document.getElementById('langRows');
@@ -1538,6 +1580,9 @@ async function buildExportSVG() {
 
     // Restore mobile layout
     container.classList.remove('export-mode');
+    if (mobileWidthOverride !== null) {
+        container.style.minWidth = mobileWidthOverride;
+    }
 
     return svgContent;
 }
