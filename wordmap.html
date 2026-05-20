@@ -307,8 +307,10 @@
         .radio-switch .radio-opt:hover:not(.active) { background: #e8e8e8; }
         .ctrl-label { font-size: 11px; color: #555; }
 
-        /* --- Language labels on map --- */
-        :root { --label-scale: 1; }
+        /* --- Language labels on map ---
+           Default label scale matches the #font-size slider's default
+           value (140 → 1.4). Keep these two in sync. */
+        :root { --label-scale: 1.4; }
         /* Map-label font chain (formal serif).
            "Gentium Plus" leads — SIL's scholarly Latin/IPA serif with full
            combining-mark coverage, so ɨ̂ etc. stay in one font run. Noto
@@ -973,12 +975,12 @@
             .settings-toggle:checked + .settings-fab {
                 background: #1a73e8; color: #fff; border-color: #1a73e8;
             }
-            /* Inside the drawer, lay the size controls out horizontally:
-               [−] [Font Size] [＋] — easier to thumb-reach than a vertical
-               stack inside the narrow drawer. */
+            /* Inside the drawer, keep the size controls vertical (＋ on top,
+               label in the middle, − on bottom) — same as PC layout. The
+               user prefers the vertical stack in the mobile drawer too. */
             body:has(.settings-toggle:checked) .right-secondary-controls .size-slider-wrap {
-                display: flex !important; flex-direction: row;
-                gap: 6px;
+                display: flex !important; flex-direction: column;
+                gap: 4px;
             }
             body:has(.settings-toggle:checked) .right-secondary-controls .size-step-btn {
                 width: 32px; height: 30px; font-size: 16px;
@@ -1928,7 +1930,7 @@
                 <button type="button" class="size-step-btn" id="size-down"
                         aria-label="Decrease label font size"
                         aria-controls="font-size">−</button>
-                <input type="range" id="font-size" min="50" max="200" value="100"
+                <input type="range" id="font-size" min="50" max="200" value="140"
                        aria-label="Label font size" class="size-input-hidden">
             </div>
         </div>
