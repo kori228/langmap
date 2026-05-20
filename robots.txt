@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /submissions/
+Disallow: /backup/
+Disallow: /.claude/
+Disallow: /__pycache__/
+
+# Internal documentation — also noindex'd via meta tag.
+Disallow: /changelog.html
+
+Sitemap: https://langmap.heuron.com/sitemap.xml
