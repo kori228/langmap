@@ -1506,6 +1506,17 @@ async function buildExportSVG() {
     container.offsetHeight;
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 
+    // CRITICAL: redraw the connector lines NOW so their <path d="..."> values
+    // reflect the new (export-mode) segment positions. Without this, the
+    // SVG copies the lines from before the layout switch — text ends up at
+    // the new positions while lines still point at the old (mobile-narrow)
+    // ones, producing the disconnected-lines artefact reported by the user.
+    const _sentence = SENTENCES[currentSentenceIdx];
+    if (_sentence) {
+        const _rows = document.getElementById('langRows').querySelectorAll('.lang-row');
+        drawLines(_sentence, Array.from(_rows).map(r => r.dataset.lang));
+    }
+
     const containerRect = container.getBoundingClientRect();
     const langRows = document.getElementById('langRows');
     const w = container.scrollWidth;
@@ -1623,6 +1634,11 @@ async function buildExportSVG() {
     if (mobileWidthOverride !== null) {
         container.style.minWidth = mobileWidthOverride;
     }
+
+    // The live #linesSvg currently holds export-mode coordinates from our
+    // redraw above. Schedule another redraw so the live page matches the
+    // (now restored) mobile layout again.
+    scheduleRedrawLines();
 
     return svgContent;
 }
