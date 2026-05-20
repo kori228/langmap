@@ -775,6 +775,11 @@ function insertLangInOrder(code) {
 
 // Temporary set for modal editing (committed on confirm)
 let modalPendingLangs = null;
+// Timestamp of the most recent openLangModal() — used to guard the modal's
+// click handlers against iOS Safari phantom/pass-through clicks that fire
+// the SAME tap that opened the modal onto a now-rendered lang-toggle (the
+// user reported "languages get selected but modal doesn't show" on iOS).
+let modalOpenedAt = 0;
 
 function hasLangData(code) {
     return SENTENCES.some(s => s.langs[code]);
@@ -796,6 +801,11 @@ function createModalToggle(lang) {
         <span>${langName(lang.code)}</span>${badge}
     `;
     label.addEventListener('click', (e) => {
+        // Phantom-click guard: ignore clicks that fire within ~200ms of
+        // the modal opening (iOS Safari sometimes re-dispatches the
+        // original tap onto the newly-rendered modal contents). A real
+        // user tap on a toggle never happens this fast after opening.
+        if (Date.now() - modalOpenedAt < 200) { e.preventDefault(); return; }
         e.preventDefault();
         const cb = label.querySelector('input');
         cb.checked = !cb.checked;
@@ -859,6 +869,7 @@ function updateLangSummary() {
 }
 
 function openLangModal() {
+    modalOpenedAt = Date.now();
     modalPendingLangs = new Set([...enabledLangs].filter(c => hasLangData(c)));
     const body = document.getElementById('langModalBody');
     body.innerHTML = '';
@@ -896,6 +907,8 @@ function openLangModal() {
 
         // Click group label to toggle all selectable languages in this group
         header.addEventListener('click', () => {
+            // Phantom-click guard (see createModalToggle for context).
+            if (Date.now() - modalOpenedAt < 200) return;
             const allOn = selectableLangs.every(l => modalPendingLangs.has(l.code));
             for (const l of selectableLangs) {
                 if (allOn) {
