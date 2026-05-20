@@ -55,11 +55,17 @@
 </script>
 <link rel="stylesheet" href="styles.css?v=81">
 <style>
-    html, body { margin: 0; height: 100%; }
+    html, body { margin: 0; height: 100%; overscroll-behavior: none; }
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         color: #222; background: #fafbfc;
-        display: flex; flex-direction: column; min-height: 100vh; padding: 0;
+        display: flex; flex-direction: column; padding: 0;
+        /* Lock the page to the viewport — only .tree-wrap scrolls.
+           Without overflow:hidden a touch-flick on the header (or the
+           sticky controls bar) can scroll the body on mobile, which
+           feels like a layout glitch since nothing here legitimately
+           needs document-level scroll. */
+        overflow: hidden;
     }
 
     /* Header overrides for full-screen layout (defaults from styles.css) */

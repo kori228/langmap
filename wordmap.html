@@ -77,7 +77,14 @@
         }
     </style>
     <style>
-        body { padding: 0; background: #fff; min-height: 100vh; }
+        /* Lock body to the viewport — the map / globe / panels all
+           position themselves relative to the viewport, nothing here
+           needs document-level scrolling. Without overflow:hidden a
+           touch-flick on the (absolute-positioned) header propagates
+           into body scroll on mobile, giving a small unwanted vertical
+           drift. */
+        html, body { height: 100%; overscroll-behavior: none; }
+        body { margin: 0; padding: 0; background: #fff; overflow: hidden; }
         #map { width: 100vw; height: 100vh; }
 
         /* --- Header (override for map page: fixed position) ---
@@ -825,9 +832,15 @@
             }
         }
 
-        /* --- URL watermark --- */
+        /* --- URL watermark ---
+           position:fixed (not absolute) so the watermark anchors to the
+           visual viewport's bottom. iOS Safari positions absolute
+           descendants against the LAYOUT viewport (which includes the
+           area under the URL bar / home indicator), causing the credit
+           to float well above the visible bottom edge on iPhone. Fixed
+           uses the visual viewport, matching the user's expectation. */
         .url-watermark {
-            position: absolute;
+            position: fixed;
             bottom: 0; left: 0; z-index: 1000;
             font-size: 11px; color: rgba(0,0,0,0.5);
             background: rgba(255,255,255,0.75); padding: 3px 8px;
