@@ -386,28 +386,17 @@ select:focus { border-color: #4a90d9; outline: none; }
     padding: 1px 3px;
 }
 
-/* Language selector modal
-   NOTE: explicit top/left/right/bottom (not just `inset: 0`) so older iOS
-   Safari (< 14.5, ~iOS 14.4 and earlier) positions the overlay properly.
-   Without all four sides, position:fixed defaults each side to auto and
-   the overlay collapses to its natural document position — modal renders
-   off-screen and the user sees nothing, but the now-invisible lang-toggle
-   click handlers still fire on subsequent taps. Width/height as a belt-
-   and-braces fallback. */
+/* Language selector modal */
 .lang-modal-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.4);
     z-index: 2000;
     justify-content: center;
     align-items: center;
 }
 .lang-modal-overlay.open { display: flex; }
-/* Defense in depth: when the overlay is not .open, block any interaction
-   even if a browser quirk leaves it visible/layered. */
-.lang-modal-overlay:not(.open) { pointer-events: none; }
 .lang-modal {
     background: #fff;
     border-radius: 14px;
