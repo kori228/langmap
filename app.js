@@ -1387,10 +1387,25 @@ function drawLines(sentence, activeLangs) {
     const container = document.getElementById('mapContainer');
     const rect = container.getBoundingClientRect();
 
-    svg.setAttribute('width', container.scrollWidth);
-    svg.setAttribute('height', container.scrollHeight);
-    svg.style.width = container.scrollWidth + 'px';
-    svg.style.height = container.scrollHeight + 'px';
+    // Clear the SVG's previous inline sizing BEFORE reading container.scrollWidth.
+    // The SVG is absolutely positioned inside the container with overflow:visible,
+    // so its rendered width contributes to container.scrollWidth. Without this reset
+    // the measurement is self-reinforcing: once buildExportSVG transiently widens
+    // the container (setting svg.style.width to a large pixel value), subsequent
+    // scheduleRedrawLines() calls read scrollWidth that still includes the wide
+    // SVG, so the SVG stays inflated. On mobile this manifests as a large gray
+    // scrollable empty area on the right of the .map-wrapper.
+    svg.style.width = '';
+    svg.style.height = '';
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+
+    const contentW = container.scrollWidth;
+    const contentH = container.scrollHeight;
+    svg.setAttribute('width', contentW);
+    svg.setAttribute('height', contentH);
+    svg.style.width = contentW + 'px';
+    svg.style.height = contentH + 'px';
     svg.innerHTML = '';
 
     // Collect segment positions per language (include both .segment and .segment-input for edit mode)
@@ -1476,6 +1491,7 @@ async function fetchHieroFontBase64() {
 
 async function buildExportSVG() {
     const container = document.getElementById('mapContainer');
+    const wrapper = container.parentElement; // .map-wrapper
 
     // Temporarily force desktop layout for export (remove mobile constraints).
     // On mobile, the container is shrunk to viewport width with min-width:0,
@@ -1500,6 +1516,9 @@ async function buildExportSVG() {
         mobileWidthOverride = container.style.minWidth;
         container.style.minWidth = designWidth + 'px';
     }
+
+    let svgContent;
+    try {
     // Force a synchronous reflow + one async layout/paint tick so any
     // pending font / layout work settles before we read positions.
     // eslint-disable-next-line no-unused-expressions
@@ -1520,9 +1539,24 @@ async function buildExportSVG() {
     const containerRect = container.getBoundingClientRect();
     const langRows = document.getElementById('langRows');
     const w = container.scrollWidth;
-    // Use actual content height (langRows) + padding, not scrollHeight which may include SVG overflow
+    // Use actual content height (langRows) + padding, not scrollHeight which may include SVG overflow.
+    // For the height, derive from the LAST row's bottom relative to container, plus padding —
+    // this accounts for any margin-bottom that offsetHeight may not fully include and ensures
+    // the last row's connector curves are not clipped.
     const padding = 30; // matches CSS padding
-    const h = langRows ? langRows.offsetHeight + padding * 2 : container.scrollHeight;
+    let h;
+    if (langRows) {
+        const rowsList = langRows.querySelectorAll('.lang-row');
+        if (rowsList.length) {
+            const lastRect = rowsList[rowsList.length - 1].getBoundingClientRect();
+            const lastBottom = lastRect.bottom - containerRect.top;
+            h = Math.max(lastBottom + padding, langRows.offsetHeight + padding * 2);
+        } else {
+            h = langRows.offsetHeight + padding * 2;
+        }
+    } else {
+        h = container.scrollHeight;
+    }
 
     // Check if we have Egyptian hieroglyph content
     const hasHiero = container.querySelector('.segment-dual') !== null;
@@ -1534,7 +1568,7 @@ async function buildExportSVG() {
         }
     }
 
-    let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
     svgContent += fontStyle;
     svgContent += `<rect width="${w}" height="${h}" fill="white"/>`;
 
@@ -1628,17 +1662,29 @@ async function buildExportSVG() {
     svgContent += `<text x="${w - 12}" y="${h - 12}" font-family="sans-serif" font-size="12" font-weight="500" fill="#999" text-anchor="end">${watermark}</text>`;
 
     svgContent += `</svg>`;
-
-    // Restore mobile layout
-    container.classList.remove('export-mode');
-    if (mobileWidthOverride !== null) {
-        container.style.minWidth = mobileWidthOverride;
+    // Expose dimensions on the function (read by downloadAsPNG) so the
+    // PNG canvas matches the SVG even after cleanup restores the (narrower)
+    // mobile container width.
+    buildExportSVG.lastWidth = w;
+    buildExportSVG.lastHeight = h;
+    } finally {
+        // Restore mobile layout — runs even if an error is thrown above, so
+        // a transient inline min-width never leaks past export.
+        container.classList.remove('export-mode');
+        if (mobileWidthOverride !== null) {
+            container.style.minWidth = mobileWidthOverride;
+        }
+        // Reset the wrapper's horizontal scroll: after the container shrinks
+        // back, scrollLeft may sit past the (new, narrower) content's right
+        // edge — Chrome doesn't always clamp it, which leaves a visible gray
+        // strip in .map-wrapper. Snap back to 0 so the user sees the start.
+        if (wrapper) wrapper.scrollLeft = 0;
+        // The live #linesSvg currently holds export-mode coordinates from our
+        // redraw above (and its inline width matches the wide layout). Schedule
+        // another redraw against the restored mobile layout — drawLines now
+        // zeroes the SVG's inline sizing first, so the measurement is clean.
+        scheduleRedrawLines();
     }
-
-    // The live #linesSvg currently holds export-mode coordinates from our
-    // redraw above. Schedule another redraw so the live page matches the
-    // (now restored) mobile layout again.
-    scheduleRedrawLines();
 
     return svgContent;
 }
@@ -1649,13 +1695,14 @@ function escapeXml(s) {
 
 async function downloadAsPNG() {
     const svgData = await buildExportSVG();
-    const container = document.getElementById('mapContainer');
-    const langRows = document.getElementById('langRows');
-    const padding = 30;
+    // Use the dimensions captured by buildExportSVG (during export-mode), NOT
+    // the post-cleanup container.scrollWidth — by the time we read them here
+    // the container has shrunk back to mobile width, so the canvas would be
+    // too small and the SVG image would render with its right portion cropped.
     const scale = 2;
     const canvas = document.createElement('canvas');
-    canvas.width = container.scrollWidth * scale;
-    canvas.height = (langRows ? langRows.offsetHeight + padding * 2 : container.scrollHeight) * scale;
+    canvas.width = (buildExportSVG.lastWidth || 0) * scale;
+    canvas.height = (buildExportSVG.lastHeight || 0) * scale;
     const ctx = canvas.getContext('2d');
     ctx.scale(scale, scale);
 
