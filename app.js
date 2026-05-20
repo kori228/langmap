@@ -875,6 +875,11 @@ function openLangModal() {
     }
     for (const groupCode of groups) {
         const langs = groupMap[groupCode];
+        // Drop languages without any sentence data so the modal only
+        // lists rows the user can actually toggle on. A group whose
+        // members all lack sentences is omitted entirely.
+        const selectableLangs = langs.filter(l => hasLangData(l.code));
+        if (selectableLangs.length === 0) continue;
         const groupDiv = document.createElement('div');
         groupDiv.className = 'lang-group';
 
@@ -886,8 +891,7 @@ function openLangModal() {
 
         const toggles = document.createElement('div');
         toggles.className = 'lang-group-toggles';
-        const selectableLangs = langs.filter(l => hasLangData(l.code));
-        langs.forEach(lang => toggles.appendChild(createModalToggle(lang)));
+        selectableLangs.forEach(lang => toggles.appendChild(createModalToggle(lang)));
         groupDiv.appendChild(toggles);
 
         // Click group label to toggle all selectable languages in this group
