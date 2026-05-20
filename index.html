@@ -18,12 +18,20 @@
     <link rel="stylesheet" href="styles.css?v=78">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ7JJBCCHG"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JZ7JJBCCHG');
+        // Production-only GA firing: hostname-gated so dev/local/staging
+        // traffic doesn't pollute the analytics property. Branches (develop
+        // and main) stay identical — no per-branch divergence to maintain.
+        if (location.hostname === 'langmap.heuron.com') {
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JZ7JJBCCHG';
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JZ7JJBCCHG');
+        }
     </script>
 </head>
 <body>
