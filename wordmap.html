@@ -79,12 +79,19 @@
     <style>
         /* Lock body to the viewport — the map / globe / panels all
            position themselves relative to the viewport, nothing here
-           needs document-level scrolling. Without overflow:hidden a
-           touch-flick on the (absolute-positioned) header propagates
-           into body scroll on mobile, giving a small unwanted vertical
-           drift. */
-        html, body { height: 100%; overscroll-behavior: none; }
-        body { margin: 0; padding: 0; background: #fff; overflow: hidden; }
+           needs document-level scrolling. iOS Safari's `overflow:hidden`
+           alone doesn't block touch-flick rubber-banding; combining
+           position:fixed + height:100% + width:100% on html/body is
+           the well-known recipe that DOES hold against rubber band. */
+        html, body {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+            touch-action: pan-x pan-y;
+        }
+        body { margin: 0; padding: 0; background: #fff; }
         #map { width: 100vw; height: 100vh; }
 
         /* --- Header (override for map page: fixed position) ---
@@ -958,7 +965,13 @@
                 max-height: calc(100dvh - 180px);
                 overflow-y: auto;
                 gap: 8px; padding: 12px 14px;
-                background: #fff; border: 1px solid #d0d0d0; border-radius: 12px;
+                /* Semi-transparent panel so the map stays partly visible
+                   behind it; backdrop-filter softens the underlying map
+                   without losing legibility of the controls. */
+                background: rgba(255,255,255,0.78);
+                -webkit-backdrop-filter: blur(10px) saturate(140%);
+                backdrop-filter: blur(10px) saturate(140%);
+                border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;
                 box-shadow: 0 4px 16px rgba(0,0,0,0.15);
                 z-index: 1015;
                 pointer-events: none;
@@ -1046,13 +1059,17 @@
             .lang-info-panel h2 { padding-right: 56px; }
 
             /* Mobile credit watermark: flush against the bottom-LEFT
-               corner. No corner radius / margin so the ribbon hugs the
-               viewport edge. Honors safe-area inset on landscape iPhones
-               so it doesn't sit under the home indicator. */
+               corner. iOS Safari interprets env(safe-area-inset-bottom)
+               generously (URL bar + home indicator combined) which left
+               the credit floating well above the visible bottom — the
+               user-visible bug "だいぶ上に表示されている". With position:
+               fixed the watermark sits against the visual viewport's
+               bottom directly; we keep safe-area for left/right only
+               (landscape notch) and drop it from bottom. */
             .url-watermark {
                 left: env(safe-area-inset-left, 0);
                 right: auto;
-                bottom: env(safe-area-inset-bottom, 0);
+                bottom: 0;
                 font-size: 9px;
                 gap: 4px;
                 padding: 2px 6px;
@@ -2286,6 +2303,15 @@
             worldCopyJump: true,
             zoomControl: false, // we'll position it ourselves
         });
+
+        // On mobile the header + 2D/3D + gear button stack occupy ~120px
+        // at the top, so a geographically-centered initial view leaves
+        // the user's region hidden behind that chrome. Shift the view
+        // ~60px south on first paint so the location lands slightly
+        // below screen center (user request 2026-05-20).
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            map.panBy([0, -60], { animate: false });
+        }
 
         // No Leaflet zoom control — we use our own unified buttons
 
@@ -5106,7 +5132,21 @@
             const targetZoom = Math.max(map.getZoom(), 5);
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
             if (isMobile) {
-                map.setView([lang.lat, lang.lng], targetZoom);
+                // Shift the centered marker slightly below screen center so
+                // it isn't visually obscured by the header (~60px) + 2D/3D
+                // and gear button stack (~108px) at the top — user request
+                // "中央より若干下になるように". paddingTopLeft on fitBounds
+                // moves the effective centering down by half its value, so
+                // ~120px padding → ~60px downward offset from raw center.
+                try {
+                    map.fitBounds([[lang.lat, lang.lng], [lang.lat, lang.lng]], {
+                        paddingTopLeft: [0, 120],
+                        maxZoom: targetZoom,
+                        animate: true,
+                    });
+                } catch (e) {
+                    map.setView([lang.lat, lang.lng], targetZoom);
+                }
                 return;
             }
             // Compute the live modal width so the marker stays centered

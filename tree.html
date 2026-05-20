@@ -55,17 +55,23 @@
 </script>
 <link rel="stylesheet" href="styles.css?v=81">
 <style>
-    html, body { margin: 0; height: 100%; overscroll-behavior: none; }
+    /* Lock the page to the viewport — only .tree-wrap scrolls. iOS
+       Safari's overflow:hidden alone doesn't hold against rubber-band
+       touch on the header; position:fixed + width/height 100% on
+       html+body is the recipe that does. */
+    html, body {
+        position: fixed;
+        top: 0; left: 0;
+        margin: 0;
+        width: 100%; height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         color: #222; background: #fafbfc;
         display: flex; flex-direction: column; padding: 0;
-        /* Lock the page to the viewport — only .tree-wrap scrolls.
-           Without overflow:hidden a touch-flick on the header (or the
-           sticky controls bar) can scroll the body on mobile, which
-           feels like a layout glitch since nothing here legitimately
-           needs document-level scroll. */
-        overflow: hidden;
+        touch-action: pan-x pan-y;
     }
 
     /* Header overrides for full-screen layout (defaults from styles.css) */
