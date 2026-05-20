@@ -1538,22 +1538,36 @@ async function buildExportSVG() {
 
     const containerRect = container.getBoundingClientRect();
     const langRows = document.getElementById('langRows');
-    const w = container.scrollWidth;
-    // Use actual content height (langRows) + padding, not scrollHeight which may include SVG overflow.
-    // For the height, derive from the LAST row's bottom relative to container, plus padding —
-    // this accounts for any margin-bottom that offsetHeight may not fully include and ensures
-    // the last row's connector curves are not clipped.
-    const padding = 30; // matches CSS padding
+    // Derive width AND height from the actual rendered content (labels + segments),
+    // not container.scrollWidth/scrollHeight — the export-mode min-width override can
+    // make the container wider than its content, which would leave a large empty
+    // strip on the right of the exported image (user-reported "横幅が広すぎる").
+    const padding = 30; // matches CSS padding; used as the right/bottom margin
+    let contentRight = 0;
+    let contentBottom = 0;
+    let contentLeft = Infinity;
+    const measureEls = container.querySelectorAll('.lang-label, .segment, .segment-dual, .hist-badge, .exp-badge');
+    measureEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        const left = r.left - containerRect.left;
+        const right = r.right - containerRect.left;
+        const bottom = r.bottom - containerRect.top;
+        if (right > contentRight) contentRight = right;
+        if (bottom > contentBottom) contentBottom = bottom;
+        if (left < contentLeft) contentLeft = left;
+    });
+    if (!isFinite(contentLeft)) contentLeft = padding;
+    // Mirror the left margin on the right so the image has symmetric horizontal padding
+    // (user request: "一番広い言語の幅で左右同じマージンになるように").
+    const leftMargin = Math.max(contentLeft, 12);
+    const w = Math.ceil(contentRight + leftMargin);
+    // For height, also use the deepest rendered element (covers connector curves
+    // that extend below the last row's text baseline) plus matching bottom padding.
     let h;
-    if (langRows) {
-        const rowsList = langRows.querySelectorAll('.lang-row');
-        if (rowsList.length) {
-            const lastRect = rowsList[rowsList.length - 1].getBoundingClientRect();
-            const lastBottom = lastRect.bottom - containerRect.top;
-            h = Math.max(lastBottom + padding, langRows.offsetHeight + padding * 2);
-        } else {
-            h = langRows.offsetHeight + padding * 2;
-        }
+    if (langRows && measureEls.length) {
+        h = Math.ceil(contentBottom + padding);
+    } else if (langRows) {
+        h = langRows.offsetHeight + padding * 2;
     } else {
         h = container.scrollHeight;
     }
