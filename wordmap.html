@@ -3708,10 +3708,17 @@
                     if (!group || group.length < 2) continue;
                     const [cx, cy] = key.split(',').map(Number);
                     // Stack of N extends ((N-1)/2) * STACK_UNIT above and
-                    // below the group's mean y. Express that as a count of
-                    // labelH-tall cells to scan in each direction.
+                    // below the group's mean y, AND each end-label itself
+                    // is labelH/2 tall — so a label sitting at the far edge
+                    // of an adjacent cell (labelH below that boundary) can
+                    // still visually collide with the stack's end label.
+                    // Add +1 cell of headroom on top of the raw stack span
+                    // so the merge absorbs those worst-case adjacents. The
+                    // outer while-loop re-runs until no more merges, so
+                    // chains like {ko_mid+ko_gor → +ko_hg → +ko_kp → +okg}
+                    // pull in all four nearby Korean Peninsula langs.
                     const halfStack = ((group.length - 1) * STACK_UNIT) / 2;
-                    const cellReach = Math.max(1, Math.ceil(halfStack / labelH));
+                    const cellReach = Math.max(1, Math.ceil(halfStack / labelH) + 1);
                     for (let r = 1; r <= cellReach; r++) {
                         for (const dir of [-1, +1]) {
                             const adjKey = cx + ',' + (cy + r * dir);
