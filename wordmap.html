@@ -61,7 +61,7 @@
          characters render as tofu boxes on most systems. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+Tibetan:wght@400;700&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+Tibetan:wght@400;700&family=Noto+Sans+Yi&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
     <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
          for "Noto Serif Khitan Small Script"). Load the Serif variant
          directly from the notofonts.github.io CDN via jsDelivr so 𘲺 𘭧
@@ -74,21 +74,6 @@
             font-display: swap;
             src: url('https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io@main/fonts/NotoSerifKhitanSmallScript/hinted/ttf/NotoSerifKhitanSmallScript-Regular.ttf') format('truetype');
             unicode-range: U+16FE4, U+18B00-18CFF;
-        }
-        /* Tibetan glyphs render slightly smaller than Latin at the same
-           px size, so we wrap the Google-Fonts Tibetan webfont with our
-           own @font-face + size-adjust. unicode-range scopes the scaling
-           to ONLY the Tibetan block (U+0F00-0FFF). Bumped to 145% first
-           (too large per user), tuned down to 115% — modest visual
-           parity without overshadowing surrounding scripts. */
-        @font-face {
-            font-family: 'NotoSerifTibetanScaled';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://fonts.gstatic.com/s/notoseriftibetan/v24/gokGH7nwAEdtF9N45n0Vaz7O-pk0wsvxHeDXMfqguoCmIrYcPS4.ttf') format('truetype');
-            unicode-range: U+0F00-0FFF, U+FE00-FE0F;
-            size-adjust: 115%;
         }
     </style>
     <style>
@@ -403,7 +388,8 @@
         .lang-label, .globe-label {
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
-                "NotoSerifTibetanScaled", "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
                 "Noto Serif Khitan Small Script", "Noto Sans Manichaean",
@@ -595,7 +581,8 @@
                etc. render where the corresponding Noto font is installed. */
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
-                "NotoSerifTibetanScaled", "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
                 "Noto Serif Khitan Small Script", "BabelStone Khitan Small Glyphs",
@@ -622,7 +609,8 @@
             unicode-bidi: isolate;
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
-                "NotoSerifTibetanScaled", "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
                 "Noto Serif Khitan Small Script", "Noto Sans Manichaean",
@@ -748,7 +736,8 @@
             /* Same historical-script fallback chain as the modal native-name. */
             font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
-                "NotoSerifTibetanScaled", "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
                 "Charis SIL", "Noto Serif Tangut", "Noto Sans Old Turkic",
                 "Noto Sans Mongolian", "Noto Sans Sogdian", "Noto Sans Phags Pa",
                 "Noto Serif Khitan Small Script", "BabelStone Khitan Small Glyphs",
