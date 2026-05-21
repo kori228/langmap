@@ -3774,63 +3774,17 @@
                 groupMeanY[key] = sumY / codes.length;
             }
 
-            for (const code of renderLangs) {
-                const lang = LANG_DATA[code];
-                const entry = lang.words[wordId];
-                const [word, ipa] = entry;
-
+            // Compute initial (xOffset, yOffset) for every renderable lang
+            // using cellGroups stacking. Stored in offsets[code] so the
+            // final collision pass below can adjust them as needed.
+            const offsets = {};
+            const unattestedSet = new Set(unattestedLangs);
+            const allRenderable = [...renderLangs, ...unattestedLangs];
+            for (const code of allRenderable) {
+                if (!ppx[code]) continue;
                 const pt = ppx[code];
                 const cellKey = codeToCell[code];
-                const group = cellGroups[cellKey];
-                let xOffset = 0;
-                let yOffset = 0;
-                if (group && group.length > 1) {
-                    const idx = group.indexOf(code);
-                    if (idx >= 0) {  // dimmed labels weren't bucketed
-                        const center = (group.length - 1) / 2;
-                        // Stack centered at the group's mean x/y, each step
-                        // separated vertically by STACK_UNIT (labelH + 14px
-                        // gap). xOffset pulls each stacked label to the
-                        // shared mean-x so the column reads as a clean
-                        // vertical run instead of a zigzag.
-                        const targetX = groupMeanX[cellKey];
-                        const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
-                        xOffset = targetX - pt.x;
-                        yOffset = targetY - pt.y;
-                    }
-                }
-
-                const displayName = getDisplayName(code, lang);
-                const isDescendant = showHistorical && descendantCodes.has(code);
-                const descColor = isDescendant ? '#c0392b' : '';
-
-                const html = buildLabelHtml(code, word, ipa, displayName, descColor, 'lang-label');
-                const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${xOffset}px),calc(-50% + ${yOffset}px))">`);
-
-                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
-                const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
-                marker._langCode = code;
-                marker.on('click', () => showLangInfo(code));
-                marker.addTo(map);
-                markers.push(marker);
-            }
-            // Render unattested-cell langs as full .lang-label cards with
-            // "—" placeholders for word + IPA. This (a) keeps the language
-            // identifiable at any zoom, (b) gives the modal connector line
-            // a target to attach to (it queries .lang-label[data-code]),
-            // and (c) matches user expectation when arriving via a tree
-            // link with z=7&lang=xxx — the cell is still visible.
-            // Re-uses the same cellGroups stacking so an unattested hist
-            // lang at the same point as an attested modern descendant
-            // slots into the shared stack instead of overlapping it.
-            for (const code of unattestedLangs) {
-                const lang = LANG_DATA[code];
-                if (!lang) continue;
-                const displayName = getDisplayName(code, lang);
-                const html = buildLabelHtml(code, '—', '—', displayName, '', 'lang-label unattested');
-                let xOffset = 0;
-                let yOffset = 0;
-                const cellKey = codeToCell[code];
+                let xOff = 0, yOff = 0;
                 if (cellKey != null) {
                     const group = cellGroups[cellKey];
                     if (group && group.length > 1) {
@@ -3839,12 +3793,87 @@
                             const center = (group.length - 1) / 2;
                             const targetX = groupMeanX[cellKey];
                             const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
-                            xOffset = targetX - ppx[code].x;
-                            yOffset = targetY - ppx[code].y;
+                            xOff = targetX - pt.x;
+                            yOff = targetY - pt.y;
                         }
                     }
                 }
-                const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${xOffset}px),calc(-50% + ${yOffset}px))">`);
+                offsets[code] = { x: xOff, y: yOff };
+            }
+
+            // FINAL COLLISION AVOIDANCE PASS — guarantees no overlapping
+            // labels. The cellGroups + merge pass above handles most
+            // co-location cases, but cell-boundary edge cases (two markers
+            // straddling a cell border, or X-adjacent labels missed by the
+            // vertical-only merge) can still leave residual visual overlap.
+            // Walk all labels in priority order (speakers desc) and push
+            // any later label DOWN past the bounding box of any earlier-
+            // placed label it would intersect. This is O(N²) which is fine
+            // for typical viewport sizes (~50-200 labels).
+            const _collisionOrder = allRenderable.filter(c => ppx[c]).slice();
+            _collisionOrder.sort((a, b) => {
+                // Attested before unattested (unattested has lower priority
+                // so it gets pushed in dense areas).
+                const aUna = unattestedSet.has(a) ? 1 : 0;
+                const bUna = unattestedSet.has(b) ? 1 : 0;
+                if (aUna !== bUna) return aUna - bUna;
+                const sa = langSpeakerCount(a) || 0;
+                const sb = langSpeakerCount(b) || 0;
+                if (sb !== sa) return sb - sa;
+                return a < b ? -1 : a > b ? 1 : 0;
+            });
+            // Conservative bounding-box half-extents. Width uses 40% of
+            // labelW (labels are usually 50-60% of labelW in practice),
+            // height matches labelH plus a small safety margin.
+            const _bbHalfW = labelW * 0.4;
+            const _bbHalfH = labelH * 0.5 + 2;
+            const _placedBoxes = [];
+            for (const code of _collisionOrder) {
+                const pt = ppx[code];
+                const off = offsets[code];
+                let cx = pt.x + off.x;
+                let cy = pt.y + off.y;
+                // Try up to a few times to find a clear y slot. Each
+                // collision push moves cy below the colliding box, so the
+                // loop converges as soon as no overlap is found.
+                for (let attempt = 0; attempt < 40; attempt++) {
+                    let collided = null;
+                    for (const p of _placedBoxes) {
+                        if (Math.abs(p.cx - cx) < _bbHalfW * 2 &&
+                            Math.abs(p.cy - cy) < _bbHalfH * 2) {
+                            collided = p;
+                            break;
+                        }
+                    }
+                    if (!collided) break;
+                    // Push current label DOWN so its top edge clears the
+                    // colliding label's bottom edge plus a 4px breathing gap.
+                    cy = collided.cy + _bbHalfH + _bbHalfH + 4;
+                }
+                _placedBoxes.push({ cx, cy });
+                // Persist the post-collision offset for the render step.
+                offsets[code] = { x: cx - pt.x, y: cy - pt.y };
+            }
+
+            // Single render loop for both attested and unattested langs.
+            for (const code of allRenderable) {
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const off = offsets[code] || { x: 0, y: 0 };
+                const isUna = unattestedSet.has(code);
+                let word, ipa;
+                if (isUna) {
+                    word = '—'; ipa = '—';
+                } else {
+                    const entry = lang.words[wordId];
+                    word = entry[0]; ipa = entry[1];
+                }
+                const displayName = getDisplayName(code, lang);
+                const isDescendant = showHistorical && descendantCodes.has(code);
+                const descColor = (isDescendant && !isUna) ? '#c0392b' : '';
+                const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
+                const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
+                const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
                 const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
