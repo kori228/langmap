@@ -3681,12 +3681,66 @@
             }
 
             const cellGroups = {};
+            const codeToCell = {};  // code -> cellKey (post-merge)
             for (const code of renderLangs) {
                 if (!isActive(code)) continue;  // dimmed labels don't compete
                 const pt = ppx[code];
                 const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
                 if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
                 cellGroups[cellKey].push(code);
+                codeToCell[code] = cellKey;
+            }
+
+            // Merge pass: when a cell has a stack of >=2, the stack
+            // visually extends into vertically-adjacent cells. If those
+            // adjacent cells also have labels, the stacked label collides
+            // with them. Pull those adjacent labels into the same stack.
+            // (User report 2026-05-22: "2つがもっと離れていますが、離れた
+            // 後にその場所にある別の言語と表示が被ってしまっているケース".)
+            const STACK_UNIT = labelH + 14;
+            let _mergeChanged = true;
+            let _mergeIter = 0;
+            while (_mergeChanged && _mergeIter < 5) {
+                _mergeChanged = false;
+                _mergeIter++;
+                for (const key of Object.keys(cellGroups)) {
+                    const group = cellGroups[key];
+                    if (!group || group.length < 2) continue;
+                    const [cx, cy] = key.split(',').map(Number);
+                    // Stack of N extends ((N-1)/2) * STACK_UNIT above and
+                    // below the group's mean y. Express that as a count of
+                    // labelH-tall cells to scan in each direction.
+                    const halfStack = ((group.length - 1) * STACK_UNIT) / 2;
+                    const cellReach = Math.max(1, Math.ceil(halfStack / labelH));
+                    for (let r = 1; r <= cellReach; r++) {
+                        for (const dir of [-1, +1]) {
+                            const adjKey = cx + ',' + (cy + r * dir);
+                            if (cellGroups[adjKey] && cellGroups[adjKey].length > 0) {
+                                // Merge — preserve N→S ordering for natural reading
+                                if (dir < 0) {
+                                    cellGroups[key] = [...cellGroups[adjKey], ...group];
+                                } else {
+                                    cellGroups[key] = [...group, ...cellGroups[adjKey]];
+                                }
+                                for (const c of cellGroups[adjKey]) codeToCell[c] = key;
+                                delete cellGroups[adjKey];
+                                _mergeChanged = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Pre-compute each merged group's mean y so stacking centers
+            // on the group's geographic centroid (not just one cell's
+            // arbitrary boundary). Without this, a 3-stack pulled from
+            // cell+1 would render asymmetrically around the original cell.
+            const groupMeanY = {};
+            for (const [key, codes] of Object.entries(cellGroups)) {
+                if (codes.length < 2) continue;
+                let sumY = 0;
+                for (const c of codes) sumY += ppx[c].y;
+                groupMeanY[key] = sumY / codes.length;
             }
 
             for (const code of renderLangs) {
@@ -3695,20 +3749,20 @@
                 const [word, ipa] = entry;
 
                 const pt = ppx[code];
-                const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
+                const cellKey = codeToCell[code];
                 const group = cellGroups[cellKey];
                 let yOffset = 0;
                 if (group && group.length > 1) {
                     const idx = group.indexOf(code);
                     if (idx >= 0) {  // dimmed labels weren't bucketed
                         const center = (group.length - 1) / 2;
-                        // Stack spacing: labelH (estimated label height) +
-                        // 14px gap. The previous +4 left only ~4px between
-                        // stacked labels which the text-shadow (3-6px halo)
-                        // visually consumed, making co-located pairs like
-                        // ga + en_ie at Dublin or yi + ina at NYC look like
-                        // they overlap. 14px keeps the halos clear.
-                        yOffset = (idx - center) * (labelH + 14);
+                        // Stack centered at the group's mean y, each step
+                        // separated by STACK_UNIT (labelH + 14px gap).
+                        // yOffset is the displacement from THIS lang's own
+                        // marker y so the label translates from its native
+                        // position to its slot in the merged stack.
+                        const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
+                        yOffset = targetY - pt.y;
                     }
                 }
 
