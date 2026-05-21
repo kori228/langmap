@@ -3806,10 +3806,13 @@
             // co-location cases, but cell-boundary edge cases (two markers
             // straddling a cell border, or X-adjacent labels missed by the
             // vertical-only merge) can still leave residual visual overlap.
-            // Walk all labels in priority order (speakers desc) and push
-            // any later label DOWN past the bounding box of any earlier-
-            // placed label it would intersect. This is O(N²) which is fine
-            // for typical viewport sizes (~50-200 labels).
+            // Walk all labels in priority order (speakers desc) and find
+            // the nearest non-overlapping y slot (trying both up and down).
+            // If no slot fits within MAX_PUSH of the target position the
+            // label is hidden — better to drop a hard-to-place label than
+            // render it hundreds of pixels away from its true location
+            // (user report 2026-05-22: ko_hg ended up at Daejeon when
+            // pushed far south to find a free slot).
             const _collisionOrder = allRenderable.filter(c => ppx[c]).slice();
             _collisionOrder.sort((a, b) => {
                 // Attested before unattested (unattested has lower priority
@@ -3827,36 +3830,60 @@
             // height matches labelH plus a small safety margin.
             const _bbHalfW = labelW * 0.4;
             const _bbHalfH = labelH * 0.5 + 2;
+            // Cap on how far the collision pass can push a label from its
+            // cellGroups-assigned target. Beyond this the label is hidden
+            // (kept off the map) rather than visually relocated to a
+            // misleading geographic position.
+            const MAX_PUSH = labelH * 1.5;
             const _placedBoxes = [];
+            const hiddenCodes = new Set();
+            const _findFreeY = (cx, startY, _placed, dir) => {
+                // Walk dir=+1 (down) or dir=-1 (up) until we find a y with
+                // no collision against the placed boxes. Return the y, or
+                // Infinity if we exceeded MAX_PUSH from startY.
+                let y = startY;
+                for (let attempt = 0; attempt < 40; attempt++) {
+                    let collided = null;
+                    for (const p of _placed) {
+                        if (Math.abs(p.cx - cx) < _bbHalfW * 2 &&
+                            Math.abs(p.cy - y) < _bbHalfH * 2) {
+                            collided = p; break;
+                        }
+                    }
+                    if (!collided) return y;
+                    if (dir > 0) {
+                        y = collided.cy + _bbHalfH * 2 + 4;
+                    } else {
+                        y = collided.cy - _bbHalfH * 2 - 4;
+                    }
+                    if (Math.abs(y - startY) > MAX_PUSH) return Infinity;
+                }
+                return Infinity;
+            };
             for (const code of _collisionOrder) {
                 const pt = ppx[code];
                 const off = offsets[code];
-                let cx = pt.x + off.x;
-                let cy = pt.y + off.y;
-                // Try up to a few times to find a clear y slot. Each
-                // collision push moves cy below the colliding box, so the
-                // loop converges as soon as no overlap is found.
-                for (let attempt = 0; attempt < 40; attempt++) {
-                    let collided = null;
-                    for (const p of _placedBoxes) {
-                        if (Math.abs(p.cx - cx) < _bbHalfW * 2 &&
-                            Math.abs(p.cy - cy) < _bbHalfH * 2) {
-                            collided = p;
-                            break;
-                        }
-                    }
-                    if (!collided) break;
-                    // Push current label DOWN so its top edge clears the
-                    // colliding label's bottom edge plus a 4px breathing gap.
-                    cy = collided.cy + _bbHalfH + _bbHalfH + 4;
+                const cx = pt.x + off.x;
+                const cyTarget = pt.y + off.y;
+                // Try both directions and take the smaller displacement.
+                const cyDown = _findFreeY(cx, cyTarget, _placedBoxes, +1);
+                const cyUp   = _findFreeY(cx, cyTarget, _placedBoxes, -1);
+                const dDown = isFinite(cyDown) ? Math.abs(cyDown - cyTarget) : Infinity;
+                const dUp   = isFinite(cyUp)   ? Math.abs(cyUp   - cyTarget) : Infinity;
+                const cy = dDown <= dUp ? cyDown : cyUp;
+                if (!isFinite(cy)) {
+                    // No slot within MAX_PUSH in either direction — hide it.
+                    hiddenCodes.add(code);
+                    continue;
                 }
                 _placedBoxes.push({ cx, cy });
-                // Persist the post-collision offset for the render step.
                 offsets[code] = { x: cx - pt.x, y: cy - pt.y };
             }
 
             // Single render loop for both attested and unattested langs.
+            // Skip codes that the collision pass couldn't place.
             for (const code of allRenderable) {
+                if (hiddenCodes.has(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const off = offsets[code] || { x: 0, y: 0 };
