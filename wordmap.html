@@ -3702,7 +3702,13 @@
                     const idx = group.indexOf(code);
                     if (idx >= 0) {  // dimmed labels weren't bucketed
                         const center = (group.length - 1) / 2;
-                        yOffset = (idx - center) * (labelH + 4);
+                        // Stack spacing: labelH (estimated label height) +
+                        // 14px gap. The previous +4 left only ~4px between
+                        // stacked labels which the text-shadow (3-6px halo)
+                        // visually consumed, making co-located pairs like
+                        // ga + en_ie at Dublin or yi + ina at NYC look like
+                        // they overlap. 14px keeps the halos clear.
+                        yOffset = (idx - center) * (labelH + 14);
                     }
                 }
 
