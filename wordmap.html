@@ -3738,15 +3738,21 @@
                 }
             }
 
-            // Pre-compute each merged group's mean y so stacking centers
-            // on the group's geographic centroid (not just one cell's
-            // arbitrary boundary). Without this, a 3-stack pulled from
-            // cell+1 would render asymmetrically around the original cell.
+            // For every merged group, sort by marker y so the stack
+            // reads naturally north→south (top→bottom). Then compute the
+            // mean x AND y so stacked labels share a single column at the
+            // group's centroid — without the x alignment, markers at
+            // slightly different lng (e.g. okg 126.19, ko_mid 126.55,
+            // ko 126.98 around Korea) render the stack as a zigzag and
+            // neighbouring labels collide sideways.
+            const groupMeanX = {};
             const groupMeanY = {};
             for (const [key, codes] of Object.entries(cellGroups)) {
                 if (codes.length < 2) continue;
-                let sumY = 0;
-                for (const c of codes) sumY += ppx[c].y;
+                codes.sort((a, b) => ppx[a].y - ppx[b].y);  // north → south
+                let sumX = 0, sumY = 0;
+                for (const c of codes) { sumX += ppx[c].x; sumY += ppx[c].y; }
+                groupMeanX[key] = sumX / codes.length;
                 groupMeanY[key] = sumY / codes.length;
             }
 
@@ -3758,17 +3764,20 @@
                 const pt = ppx[code];
                 const cellKey = codeToCell[code];
                 const group = cellGroups[cellKey];
+                let xOffset = 0;
                 let yOffset = 0;
                 if (group && group.length > 1) {
                     const idx = group.indexOf(code);
                     if (idx >= 0) {  // dimmed labels weren't bucketed
                         const center = (group.length - 1) / 2;
-                        // Stack centered at the group's mean y, each step
-                        // separated by STACK_UNIT (labelH + 14px gap).
-                        // yOffset is the displacement from THIS lang's own
-                        // marker y so the label translates from its native
-                        // position to its slot in the merged stack.
+                        // Stack centered at the group's mean x/y, each step
+                        // separated vertically by STACK_UNIT (labelH + 14px
+                        // gap). xOffset pulls each stacked label to the
+                        // shared mean-x so the column reads as a clean
+                        // vertical run instead of a zigzag.
+                        const targetX = groupMeanX[cellKey];
                         const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
+                        xOffset = targetX - pt.x;
                         yOffset = targetY - pt.y;
                     }
                 }
@@ -3778,7 +3787,7 @@
                 const descColor = isDescendant ? '#c0392b' : '';
 
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, 'lang-label');
-                const labelHtml = html.replace('>', ` style="transform:translate(-50%,calc(-50% + ${yOffset}px))">`);
+                const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${xOffset}px),calc(-50% + ${yOffset}px))">`);
 
                 const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
