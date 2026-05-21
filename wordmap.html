@@ -3447,6 +3447,16 @@
             const kept = [];
             const keptPts = [];
             const minSq = minPxDist * minPxDist;
+            // Co-located threshold: pairs within this pixel distance are
+            // treated as "same point" and handed off to the cellGroups
+            // vertical-stacking fallback rather than blocked here. Without
+            // this, langs that share a city (e.g. ga + en_ie both at Dublin,
+            // or yi + de both in Berlin, or hy_grab + hy both at Yerevan)
+            // had the higher-speaker partner monopolize the location and
+            // the smaller lang silently vanished. 8px ≈ within the same
+            // labelH-tall cell at typical fs, so stacking will render them
+            // adjacent vertically.
+            const COLOCATED_SQ = 8 * 8;
             for (const code of sorted) {
                 if (kept.length >= maxCount) break;
                 const pt = positions[code];
@@ -3455,7 +3465,8 @@
                 for (let i = 0; i < keptPts.length; i++) {
                     const dx = keptPts[i].x - pt.x;
                     const dy = keptPts[i].y - pt.y;
-                    if (dx * dx + dy * dy < minSq) { blocked = true; break; }
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < minSq && d2 > COLOCATED_SQ) { blocked = true; break; }
                 }
                 if (!blocked) {
                     kept.push(code);
