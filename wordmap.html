@@ -3653,10 +3653,19 @@
                 // Tuning notes:
                 //   - viewport-scoped cap: mobile=120, desktop=180 (~good
                 //     density for typical mobile viewport on z=6)
-                //   - overlap radius: mobile 0.55*labelW (allows
-                //     adjacent labels via vertical stacking fallback)
+                //   - overlap radius: 0.55*labelW (both desktop and mobile).
+                //     labelW is a conservative upper bound on actual label
+                //     width (real native-name text is usually 50-60% of
+                //     labelW), so a multiplier of 0.55 still keeps labels
+                //     from rendering on top of each other while letting
+                //     adjacent langs through. Desktop used 0.75 before but
+                //     that over-blocked at high fs — e.g. at fs=140 z=6,
+                //     Khmer (Phnom Penh) was suppressed because Vietnamese
+                //     Southern (Ho Chi Minh City) is ~85px away while the
+                //     gate demanded 105px. Vertical stacking fallback
+                //     handles any residual overlap.
                 const MAX_PINS = _mobile ? 120 : 180;
-                const MIN_PX = labelW * (_mobile ? 0.55 : 0.75);
+                const MIN_PX = labelW * 0.55;
                 renderLangs = selectByPriority(inViewport, ppx, MIN_PX, MAX_PINS);
             }
 
