@@ -75,14 +75,12 @@
             src: url('https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io@main/fonts/NotoSerifKhitanSmallScript/hinted/ttf/NotoSerifKhitanSmallScript-Regular.ttf') format('truetype');
             unicode-range: U+16FE4, U+18B00-18CFF;
         }
-        /* Tibetan glyphs (Noto Serif Tibetan etc.) render visually much
-           smaller than Latin at the same px size — user reported
-           "チベット文字のフォントがどうしても小さい". Wrap the Google-Fonts
-           Tibetan webfont in our own @font-face with size-adjust so
-           Tibetan characters (U+0F00-0FFF block) render ~1.35× the
-           nominal size, matching the visual weight of surrounding Latin
-           and CJK fonts. unicode-range scopes this @font-face to ONLY
-           Tibetan, so other scripts fall through to the regular fonts. */
+        /* Tibetan glyphs render slightly smaller than Latin at the same
+           px size, so we wrap the Google-Fonts Tibetan webfont with our
+           own @font-face + size-adjust. unicode-range scopes the scaling
+           to ONLY the Tibetan block (U+0F00-0FFF). Bumped to 145% first
+           (too large per user), tuned down to 115% — modest visual
+           parity without overshadowing surrounding scripts. */
         @font-face {
             font-family: 'NotoSerifTibetanScaled';
             font-style: normal;
@@ -90,7 +88,7 @@
             font-display: swap;
             src: url('https://fonts.gstatic.com/s/notoseriftibetan/v24/gokGH7nwAEdtF9N45n0Vaz7O-pk0wsvxHeDXMfqguoCmIrYcPS4.ttf') format('truetype');
             unicode-range: U+0F00-0FFF, U+FE00-FE0F;
-            size-adjust: 145%;
+            size-adjust: 115%;
         }
     </style>
     <style>
