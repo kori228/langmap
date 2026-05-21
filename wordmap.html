@@ -3633,6 +3633,18 @@
                 const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
                 ppx[code] = pt;
             }
+            // Also project unattested historical langs so they participate
+            // in the same cellGroups + merge pass (see below). Without
+            // this, an unattested hist lang sitting on top of an attested
+            // modern descendant rendered at its raw lat/lng and visually
+            // collided with the modern label (user report 2026-05-22:
+            // "歴史言語の場合、現代語に被るケースがある気がします").
+            for (const code of unattestedLangs) {
+                const lang = LANG_DATA[code];
+                if (!lang) continue;
+                const pt = map.latLngToContainerPoint([lang.lat, lang.lng]);
+                ppx[code] = pt;
+            }
 
             // Priority-based greedy thinning for the modern, no-filter,
             // no-spotlight path. Updated 2026-05-19 (user feedback that
@@ -3682,9 +3694,15 @@
 
             const cellGroups = {};
             const codeToCell = {};  // code -> cellKey (post-merge)
-            for (const code of renderLangs) {
+            // Bucketize BOTH attested (renderLangs) and unattested historical
+            // langs into the same cellGroups, so a hist lang with "—"
+            // placeholder co-located with a modern descendant gets stacked
+            // alongside it instead of free-floating.
+            const stackableLangs = [...renderLangs, ...unattestedLangs];
+            for (const code of stackableLangs) {
                 if (!isActive(code)) continue;  // dimmed labels don't compete
                 const pt = ppx[code];
+                if (!pt) continue;
                 const cellKey = Math.floor(pt.x / labelW) + ',' + Math.floor(pt.y / labelH);
                 if (!cellGroups[cellKey]) cellGroups[cellKey] = [];
                 cellGroups[cellKey].push(code);
@@ -3802,12 +3820,32 @@
             // a target to attach to (it queries .lang-label[data-code]),
             // and (c) matches user expectation when arriving via a tree
             // link with z=7&lang=xxx — the cell is still visible.
+            // Re-uses the same cellGroups stacking so an unattested hist
+            // lang at the same point as an attested modern descendant
+            // slots into the shared stack instead of overlapping it.
             for (const code of unattestedLangs) {
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const displayName = getDisplayName(code, lang);
                 const html = buildLabelHtml(code, '—', '—', displayName, '', 'lang-label unattested');
-                const icon = L.divIcon({ className: '', html, iconSize: [0, 0], iconAnchor: [0, 0] });
+                let xOffset = 0;
+                let yOffset = 0;
+                const cellKey = codeToCell[code];
+                if (cellKey != null) {
+                    const group = cellGroups[cellKey];
+                    if (group && group.length > 1) {
+                        const idx = group.indexOf(code);
+                        if (idx >= 0) {
+                            const center = (group.length - 1) / 2;
+                            const targetX = groupMeanX[cellKey];
+                            const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
+                            xOffset = targetX - ppx[code].x;
+                            yOffset = targetY - ppx[code].y;
+                        }
+                    }
+                }
+                const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${xOffset}px),calc(-50% + ${yOffset}px))">`);
+                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
