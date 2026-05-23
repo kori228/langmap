@@ -2375,6 +2375,22 @@
             e.preventDefault();
             showLangInfo(label.dataset.code);
         });
+        // iOS Safari fix (2026-05-23): stacked language labels weren't opening
+        // the info modal — the click never reached Leaflet's per-marker handler.
+        // Root cause: each label is a CSS-transformed child of a 0×0 Leaflet
+        // marker icon (iconSize:[0,0]). The cellGroups + collision-avoidance
+        // passes (commits ba1466a / f98876e) push the visible label far from
+        // its parent's bounding box. iOS Safari's tap dispatch fails to
+        // attribute touches on transformed children when the parent has no
+        // size — non-stacked labels (offset=0,0 — the visible label still
+        // overlaps the marker's pixel) worked, all stacked labels didn't.
+        // Mirror the existing keydown delegation so the click is captured on
+        // the actual .lang-label DOM, not on the empty marker container.
+        map.getContainer().addEventListener('click', (e) => {
+            const label = e.target.closest('.lang-label, .unattested-marker, .unattested-label');
+            if (!label || !label.dataset.code) return;
+            showLangInfo(label.dataset.code);
+        });
 
         // Country borders
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
@@ -3904,6 +3920,13 @@
                 const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
+                // Primary path (desktop / iOS Safari non-stacked labels): the
+                // click reaches the marker icon, Leaflet fires this handler,
+                // and Leaflet stops propagation so the delegated fallback on
+                // map.getContainer() doesn't also fire (which would toggle the
+                // panel closed). For iOS Safari stacked labels the click
+                // never reaches the marker icon — see the delegated handler
+                // near map init for the fallback path.
                 marker.on('click', () => showLangInfo(code));
                 marker.addTo(map);
                 markers.push(marker);
