@@ -251,10 +251,14 @@ No code outside this merge needs to change.
 
 ### Migration
 
-A one-time Python script `tools/migrate_inline_words_to_files.py`:
+A one-time migration script `tools/migrate_inline_words_to_files.mjs`
+(Node, not Python — `wordmap_data.js` is real JS with multi-line
+strings, escape sequences, and template literals, so the cheapest
+reliable parser is the JS engine itself):
 
-1. Parses `wordmap_data.js` (as JS via a minimal AST shim; the structure
-   is regular enough to parse with a hand-rolled scanner).
+1. Loads `wordmap_data.js` under Node (it already only assigns to
+   `LANG_DATA` / `WORD_LIST`, no DOM dependency) and reads the
+   resulting in-memory objects.
 2. For each existing `wordId` in `WORD_LIST`:
    - Collects per-language `[form, ipa]` from `LANG_DATA[code].words[wordId]`.
    - Collects matching `LANG_DATA[code].altWordForms[wordId]` if present
@@ -382,27 +386,22 @@ No consumer in `wordmap.html` or its modals needs to change.
 
 ## Risks / open questions
 
-1. **Parser fragility for migration.** `wordmap_data.js` is hand-written
-   JavaScript with multi-line strings, escape sequences, and
-   inline comments. A hand-rolled scanner is needed; alternatively the
-   migration can run the file under Node to get the resulting objects,
-   then serialize. Open: which is more reliable?
+1. **Region comment preservation.** Existing `wordmap_data.js` groups
+   languages by family/region via section banner comments. Loading the
+   JS under Node loses comments. The migration produces flat
+   (un-grouped) files; a follow-up commit can re-group them by family
+   using the existing `wordmap_meta.js` family data. Decision: ship
+   flat, regroup in a separate commit.
 
-2. **Region comment preservation.** Existing `wordmap_data.js` groups
-   languages by family/region via section banner comments. The migration
-   should preserve those groupings in the output `words/*.js` files. If
-   that's too lossy, the migration produces flat (un-grouped) files and
-   a follow-up commit re-groups them by hand.
+2. **Validator drift check on `words/*.js` glob.** The current
+   `ASSET_KEY_BY_PATH` is a string-to-string map. Globs are new. The
+   validator update extends it to walk `Object.entries(map)` twice —
+   once for exact paths, once for glob patterns (`words/*.js`).
 
-3. **Validator drift check on `words/*.js` glob.** The current
-   `ASSET_KEY_BY_PATH` is a string-to-string map. Globs are new. May
-   need a small extension (`Object.entries(map)` walked twice — once for
-   exact, once for glob).
-
-4. **Auto-generated `LANG_CODES.md` staleness.** If a contributor adds a
-   language but forgets to regenerate, the file lags. A CI check (or the
-   validator itself) can run the generator and diff — fail the build if
-   the file is out of date.
+3. **Auto-generated `LANG_CODES.md` staleness.** If a contributor adds a
+   language but forgets to regenerate, the file lags. The validator
+   runs the generator and diffs the result against the checked-in
+   `LANG_CODES.md` — fails if stale.
 
 ## Implementation order
 
