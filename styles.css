@@ -1,7 +1,17 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', sans-serif;
+    /* Tibetan: no "Noto Sans Tibetan" exists on Google Fonts, so we use
+       Noto Serif Tibetan + system Tibetan fallbacks (Kailasa = iOS,
+       Microsoft Himalaya = Windows, Jomolhari / Tibetan Machine Uni =
+       common cross-platform). Without these, Tibetan codepoints in
+       sentence segments (bo / xct / dz / khg / xsr / sik / lbj / bft /
+       xkz / xct_litpr) fell through to OS LastResort and rendered as
+       tiny generic outlines. Pages using this stack must also load
+       Noto+Serif+Tibetan via their Google Fonts <link>. */
+    font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai',
+        'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
+        sans-serif;
     background: #f0f2f5;
     min-height: 100vh;
     padding: 20px;

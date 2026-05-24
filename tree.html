@@ -55,7 +55,15 @@
         gtag('config', 'G-JZ7JJBCCHG');
     }
 </script>
-<link rel="stylesheet" href="styles.css?v=81">
+<link rel="stylesheet" href="styles.css?v=83">
+<!-- Noto Serif Tibetan for native names of Tibetic languages
+     (bo / xct / dz / khg / xsr / sik / lbj / bft / xkz / xct_litpr).
+     Without this, Tibetan script in .node.leaf .native renders via OS
+     LastResort and looks tiny. No "Noto Sans Tibetan" exists on Google
+     Fonts so the Serif family is the only option. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@400;700&display=swap">
 <style>
     /* Lock the page to the viewport — only .tree-wrap scrolls. iOS
        Safari's overflow:hidden alone doesn't hold against rubber-band
@@ -70,7 +78,9 @@
         overscroll-behavior: none;
     }
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+            'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
+            sans-serif;
         color: #222; background: #fafbfc;
         display: flex; flex-direction: column; padding: 0;
         touch-action: pan-x pan-y;
