@@ -421,7 +421,14 @@
             outline-offset: 2px;
         }
         .lang-label, .globe-label {
-            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+            font-family:
+                /* Self-hosted Han-Nom serif subset (see @font-face above)
+                   — unicode-range scoping means it only matches the 24
+                   Chữ Nôm codepoints used by vi_nom. Without this here,
+                   markers on the map would tofu/gothic on iOS Safari
+                   because Hiragino Mincho lacks CJK Extension B. */
+                "Nom Serif Subset",
+                "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
                 "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
                 "Noto Sans Yi", "Microsoft Yi Baiti",
