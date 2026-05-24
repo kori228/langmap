@@ -2206,36 +2206,26 @@
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
         // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
-        // ReferenceError if WORDS isn't on the window yet. The main IIFE
-        // also reads `window.WORDS` later — same object.
+        // ReferenceError if WORDS isn't on the window yet.
         var WORDS = window.WORDS = window.WORDS || {};
-        // Synthesize one <script> tag per concept in WORD_ORDER. The browser
-        // downloads them in parallel; each file just writes to a different
-        // WORDS[id] slot so load order doesn't matter. We dispatch
-        // `langmap:words-loaded` once every file has loaded; the main app
-        // waits for it before constructing LANG_DATA[*].words lookups.
+        // Emit one <script> tag per concept via document.write. This forces
+        // SYNCHRONOUS sequential execution: the browser blocks subsequent
+        // HTML parsing (including the main IIFE further down) until every
+        // per-word file has loaded and assigned its WORDS.<id> slot. We use
+        // document.write rather than dynamic createElement so the IIFE can
+        // rely on WORDS being fully populated without waiting on an event.
+        // The preload scanner still parallelises the downloads in modern
+        // browsers; only execution is serialised.
         (function () {
             if (typeof WORD_ORDER === 'undefined') {
                 console.error('WORD_ORDER not defined — word_manifest.js failed to load');
                 return;
             }
-            const v = (window.WM_ASSET_VERSION && window.WM_ASSET_VERSION.words) || 1;
-            const remaining = new Set(WORD_ORDER);
-            function done(id) {
-                remaining.delete(id);
-                if (remaining.size === 0) {
-                    document.dispatchEvent(new Event('langmap:words-loaded'));
-                }
-            }
-            for (const id of WORD_ORDER) {
-                const s = document.createElement('script');
-                s.src     = `words/${id}.js?v=${v}`;
-                s.onload  = () => done(id);
-                s.onerror = () => {
-                    console.error('failed to load word', id);
-                    done(id);   // never block the boot on a single missing file
-                };
-                document.head.appendChild(s);
+            var v = (window.WM_ASSET_VERSION && window.WM_ASSET_VERSION.words) || 1;
+            for (var i = 0; i < WORD_ORDER.length; i++) {
+                document.write(
+                    '<script src="words/' + WORD_ORDER[i] + '.js?v=' + v + '"><\/script>'
+                );
             }
         })();
     </script>
@@ -3392,7 +3382,12 @@
 
         // --- Language markers ---
         const markers = [];
-        let currentWord = WORD_LIST[0].id;
+        // WORD_LIST is empty at this point if the per-word <script>s haven't
+        // resolved yet (common — they're async). WORD_ORDER from
+        // word_manifest.js is a sync static script so it's always defined here.
+        let currentWord = (WORD_LIST[0] && WORD_LIST[0].id)
+            || (typeof WORD_ORDER !== 'undefined' && WORD_ORDER[0])
+            || 'water';
         const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
         // Historical-mode codes → representative modern descendant (or null).
