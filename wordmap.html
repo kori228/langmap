@@ -2217,6 +2217,7 @@
     <script>
     (function() {
         'use strict';
+        window.WORDS = window.WORDS || {};
 
         // Forward declarations for trivia state — hoisted via `var` so
         // that updateMarkers() / map event listeners can call
@@ -2451,6 +2452,7 @@
             meta:     191,
             trivia:   27,
             triviaI18n: 3,
+            words:      1,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
