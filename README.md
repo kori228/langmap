@@ -9,6 +9,13 @@ Inspired by [sunjun_kim's language mapping graphic](https://twitter.com/sunjun_k
 **Live site:** [langmap.heuron.com](https://langmap.heuron.com)  
 **GitHub:** [github.com/jounlai/langmap](https://github.com/jounlai/langmap)
 
+## Contributing word data
+
+See [`docs/words/CONTRIBUTING.md`](docs/words/CONTRIBUTING.md) (or the
+[Japanese version](docs/words/CONTRIBUTING.ja.md)) for instructions on
+adding word translations or new concepts to the Word Map. Language
+codes are listed in [`docs/words/LANG_CODES.md`](docs/words/LANG_CODES.md).
+
 ## Features
 
 - **100 sample sentences** across 223 languages/dialects with hand-aligned semantic segments
