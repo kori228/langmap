@@ -33,8 +33,46 @@ globalThis.LANG_DATA = LANG_DATA;
     return { WORD_LIST: sandbox.WORD_LIST, LANG_DATA: sandbox.LANG_DATA };
 }
 
+function buildWords(WORD_LIST, LANG_DATA) {
+    // Result keyed by word ID. Each value:
+    //   { label, definition, data: { langCode: tuple|object } }
+    const WORDS = {};
+    for (const w of WORD_LIST) {
+        WORDS[w.id] = {
+            label:      w.label      || {},
+            definition: w.definition || {},
+            data:       {},
+        };
+    }
+    for (const [code, lang] of Object.entries(LANG_DATA)) {
+        const words    = lang.words        || {};
+        const altForms = lang.altWordForms || {};
+        for (const wid of Object.keys(WORDS)) {
+            const tuple = words[wid];
+            const alt   = altForms[wid];
+            if (!tuple && !alt) continue;
+            if (alt && alt.length > 0) {
+                // Object form: keeps the primary tuple plus alt scripts.
+                WORDS[wid].data[code] = {
+                    form: tuple ? tuple[0] : '',
+                    ipa:  tuple ? tuple[1] : '',
+                    alt:  alt,
+                };
+            } else if (tuple) {
+                WORDS[wid].data[code] = tuple;
+            }
+        }
+    }
+    return WORDS;
+}
+
 function main() {
     const { WORD_LIST, LANG_DATA } = loadDataModule();
-    console.log(`loaded ${WORD_LIST.length} words, ${Object.keys(LANG_DATA).length} languages`);
+    const WORDS = buildWords(WORD_LIST, LANG_DATA);
+    console.log(`built ${Object.keys(WORDS).length} word entries`);
+    for (const w of WORD_LIST) {
+        const filled = Object.keys(WORDS[w.id].data).length;
+        console.log(`  ${w.id}: ${filled} translations`);
+    }
 }
 main();
