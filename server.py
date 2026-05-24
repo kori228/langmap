@@ -111,7 +111,11 @@ class LangMapHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def log_message(self, format, *args):
-        if '/submit.php' in (args[0] if args else ''):
+        # args[0] is a request line for normal requests (str), but for
+        # send_error() it's an HTTPStatus enum. Coerce to str before the
+        # substring check so a 404 doesn't crash the handler.
+        first = str(args[0]) if args else ''
+        if '/submit.php' in first:
             super().log_message(format, *args)
 
 if __name__ == '__main__':

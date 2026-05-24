@@ -2250,6 +2250,11 @@
     (function() {
         'use strict';
         window.WORDS = window.WORDS || {};
+        // Pre-declare WORD_LIST as empty so early init code that iterates
+        // it (e.g. rebuildWordSelect) doesn't ReferenceError when the
+        // per-word <script> tags injected by the loader resolve AFTER this
+        // IIFE starts. _mergeWordsIntoLangData repopulates it later.
+        window.WORD_LIST = window.WORD_LIST || [];
 
         // Forward declarations for trivia state — hoisted via `var` so
         // that updateMarkers() / map event listeners can call
@@ -2520,6 +2525,13 @@
                 const w = window.WORDS[id] || {};
                 return { id, label: w.label || {}, definition: w.definition || {} };
             });
+            // Re-run UI init that depends on WORD_LIST / per-language
+            // words. The initial calls (during IIFE parse) ran against
+            // empty stubs because the per-word <script>s hadn't resolved
+            // yet. These re-runs paint the actual data.
+            try { if (typeof rebuildWordSelect === 'function') rebuildWordSelect(); } catch (_) {}
+            try { if (typeof updateWordDefinition === 'function') updateWordDefinition(); } catch (_) {}
+            try { if (typeof updateMarkers === 'function' && typeof currentWord !== 'undefined') updateMarkers(currentWord); } catch (_) {}
         }
         // Run the merge now if all per-word scripts have already resolved
         // (race: scripts can finish before this IIFE executes). Otherwise
