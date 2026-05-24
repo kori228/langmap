@@ -67,7 +67,58 @@ const metaSrcStripped = metaSrc
 const vm = require('vm');
 const ctx = { window: {}, document: { createElement: () => ({}) } };
 vm.createContext(ctx);
-vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=WORD_LIST;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;this.DATA_STATUS_OVERRIDES=typeof DATA_STATUS_OVERRIDES!==\'undefined\'?DATA_STATUS_OVERRIDES:undefined;this.HIST_DESCENDANT=typeof HIST_DESCENDANT!==\'undefined\'?HIST_DESCENDANT:undefined;', ctx);
+vm.runInContext(dataSrc + '\n;this.LANG_DATA=LANG_DATA;this.EXCLUDED_CODES=EXCLUDED_CODES;this.WORD_LIST=typeof WORD_LIST!==\'undefined\'?WORD_LIST:undefined;this.WM_UI_LABELS=WM_UI_LABELS;this.WM_UI=WM_UI;this.DATA_STATUS_OVERRIDES=typeof DATA_STATUS_OVERRIDES!==\'undefined\'?DATA_STATUS_OVERRIDES:undefined;this.HIST_DESCENDANT=typeof HIST_DESCENDANT!==\'undefined\'?HIST_DESCENDANT:undefined;', ctx);
+
+// Per-word file split: WORD_LIST + per-language words/altWordForms now
+// live in word_manifest.js + words/*.js. Load them into ctx and
+// reconstruct WORD_LIST + merge WORDS data back into ctx.LANG_DATA so
+// later checks in this validator see the same shape they always did.
+try {
+    const manifestSrc = read('word_manifest.js');
+    vm.runInContext(manifestSrc + '\n;this.WORD_ORDER=WORD_ORDER;', ctx);
+} catch (e) { /* manifest not present yet during early migration */ }
+
+try {
+    // Pre-seed WORDS so per-word files can assign WORDS.<id> = {...}.
+    vm.runInContext('this.WORDS = WORDS = window.WORDS = {};', ctx);
+    const wordsDir = path.join(__dirname, 'words');
+    if (fs.existsSync(wordsDir)) {
+        for (const f of fs.readdirSync(wordsDir).filter(f => f.endsWith('.js'))) {
+            vm.runInContext(fs.readFileSync(path.join(wordsDir, f), 'utf8'), ctx);
+        }
+    }
+} catch (e) { /* words/ not present yet during early migration */ }
+
+// Rebuild WORD_LIST from WORD_ORDER + WORDS for downstream checks.
+if (Array.isArray(ctx.WORD_ORDER) && ctx.WORDS) {
+    ctx.WORD_LIST = ctx.WORD_ORDER.map(id => {
+        const w = ctx.WORDS[id] || {};
+        return { id, label: w.label || {}, definition: w.definition || {} };
+    });
+}
+
+// Merge per-word data back into LANG_DATA[code].words / .altWordForms.
+if (ctx.WORDS && Array.isArray(ctx.WORD_ORDER) && ctx.LANG_DATA) {
+    for (const id of ctx.WORD_ORDER) {
+        const w = ctx.WORDS[id];
+        if (!w || !w.data) continue;
+        for (const [code, entry] of Object.entries(w.data)) {
+            const lang = ctx.LANG_DATA[code];
+            if (!lang) continue;
+            lang.words = lang.words || {};
+            if (Array.isArray(entry)) {
+                lang.words[id] = entry;
+            } else {
+                lang.words[id] = [entry.form || '', entry.ipa || ''];
+                if (entry.alt && entry.alt.length) {
+                    lang.altWordForms = lang.altWordForms || {};
+                    lang.altWordForms[id] = entry.alt;
+                }
+            }
+        }
+    }
+}
+
 vm.runInContext(metaSrcStripped, ctx);
 // Load lang_names.js if present
 let LANG_NAMES = null;
@@ -2309,6 +2360,90 @@ if (familyOutsideList.length && familyOutsideList.length <= 8) {
         }
     }
 }
+
+// ---------- per-word file split (Audit Task 235) ------------------
+function checkPerWordSplit() {
+    const manifestPath = 'word_manifest.js';
+    const wordsDir     = 'words';
+
+    if (!fs.existsSync(manifestPath)) {
+        E(`[#WS1] ${manifestPath} not found`);
+        return;
+    }
+    if (!fs.existsSync(wordsDir)) {
+        E(`[#WS2] ${wordsDir}/ not found`);
+        return;
+    }
+
+    const order = ctx.WORD_ORDER;
+    if (!Array.isArray(order)) {
+        E(`[#WS3] ${manifestPath} did not define WORD_ORDER as an array`);
+        return;
+    }
+
+    const WORDS = ctx.WORDS;
+    const LANG_DATA = ctx.LANG_DATA;
+    const files = fs.readdirSync(wordsDir).filter(f => f.endsWith('.js'));
+
+    // (1) Forward coverage
+    for (const id of order) {
+        if (!WORDS[id]) E(`[#WS4] WORD_ORDER lists '${id}' but words/${id}.js did not define WORDS.${id}`);
+        if (!fs.existsSync(path.join(wordsDir, `${id}.js`))) {
+            E(`[#WS5] WORD_ORDER lists '${id}' but words/${id}.js is missing`);
+        }
+    }
+
+    // (2) Reverse coverage
+    for (const f of files) {
+        const id = f.replace(/\.js$/, '');
+        if (!order.includes(id)) E(`[#WS6] words/${f} not registered in WORD_ORDER`);
+    }
+
+    // (3) Language-code integrity
+    for (const id of order) {
+        const w = WORDS[id];
+        if (!w || !w.data) continue;
+        for (const code of Object.keys(w.data)) {
+            if (!LANG_DATA[code]) {
+                E(`[#WS7] words/${id}.js references unknown language code '${code}'`);
+            }
+        }
+    }
+
+    // (4) Label / definition completeness
+    for (const id of order) {
+        const w = WORDS[id] || {};
+        if (!w.label || !w.label.en || !w.label.ja) E(`[#WS8] words/${id}.js missing label.en or label.ja`);
+        if (!w.definition || !w.definition.en || !w.definition.ja) E(`[#WS9] words/${id}.js missing definition.en or definition.ja`);
+    }
+
+    // (5) Entry shape integrity
+    for (const id of order) {
+        const w = WORDS[id];
+        if (!w || !w.data) continue;
+        for (const [code, val] of Object.entries(w.data)) {
+            if (Array.isArray(val)) {
+                if (val.length !== 2 || !val[0]) {
+                    E(`[#WS10] words/${id}.js: ${code} tuple must be [form, ipa] with non-empty form`);
+                }
+            } else if (val && typeof val === 'object') {
+                if (!val.form) E(`[#WS11] words/${id}.js: ${code} object form must have non-empty .form`);
+                if (val.alt && !Array.isArray(val.alt)) E(`[#WS12] words/${id}.js: ${code}.alt must be an array`);
+                if (Array.isArray(val.alt)) {
+                    for (const a of val.alt) {
+                        if (!a.form || !a.script) {
+                            E(`[#WS13] words/${id}.js: ${code}.alt entry missing form or script`);
+                        }
+                    }
+                }
+            } else {
+                E(`[#WS14] words/${id}.js: ${code} must be a tuple or object`);
+            }
+        }
+    }
+}
+checkPerWordSplit();
+// ------------------------------------------------------------------
 
 // ---- Report -------------------------------------------------------------
 console.log('=== Word Map data validation ===');
