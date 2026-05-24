@@ -125,6 +125,18 @@
         </div>
 
         <div class="entry">
+            <div class="date">2026-05-24 — Community corrections: Sendai dialect + Chữ Nôm</div>
+            <ul>
+                <li><strong>Sendai dialect (<code>ja_sd</code>) — corrections across 7 concepts</strong> (commit <code>0877292</code>): <em>mother</em> おっかさん → がが, <em>father</em> おっとさん → おどっつぁん, <em>heart</em> 心 → こごろ, <em>cat</em> 猫 → ねご, <em>hello</em> おばんでがす → こんぬづは (おばんでがす = こんばんは, not こんにちは), <em>thanks</em> ありがとがんす → どうもね, <em>good</em> 良いでがす → いい (良いでがす is unnatural; いがす is the polite form of いい).</li>
+                <li class="contributor">Contributor: <strong>伊吹半兵衛 / 伊杭北(学)</strong> (<a href="https://x.com/Hangbei_ILM" target="_blank" rel="noopener">@Hangbei_ILM</a>). ありがとうございます！</li>
+                <li><strong>Chữ Nôm (<code>vi_nom</code>) — wrong character for <em>mặt</em></strong> (commit <code>0877292</code>): <em>sun</em> 𣎏𡗶 → 𩈘𡗶 (mặt trời), <em>moon</em> 𣎏𢁑 → 𩈘𢁑 (mặt trăng). The original character 𣎏 (U+233CF) is the Nôm for <em>có</em> (to possess), not <em>mặt</em> (face). The correct character is 𩈘 (U+29618, 未 + 面).</li>
+                <li class="contributor">Contributor: <strong>Kazu</strong> (<a href="https://x.com/nqd912" target="_blank" rel="noopener">@nqd912</a>). Cảm ơn bạn!</li>
+                <li><strong>Chữ Nôm (<code>vi_nom</code>) — wrong character for <em>uống</em></strong> (commit <code>374c688</code>): <em>drink</em> 㗂 → 㕵. 㗂 (U+33C2) is the Nôm for <em>tiếng</em> (sound/voice). Correct character per Nôm Foundation / Wiktionary: 㕵 (U+3575).</li>
+                <li><strong>iOS Safari serif rendering for Nôm</strong> (commit <code>491a520</code>): iOS Hiragino Mincho doesn't cover CJK Extension B characters used in Chữ Nôm — the cells fell back to Hiragino Kaku Gothic. Added a per-glyph Noto Serif TC subset (~15 KB woff2 via Google Fonts <code>text=</code> parameter) covering all 24 Nôm characters in use.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
             <div class="date">2026-05-13 — Community PR #1: Kabyle IPA corrections</div>
             <ul>
                 <li><strong>Kabyle (<code>kab</code>) — IPA refinements across all 20 concepts</strong> (PR <a href="https://github.com/jounlai/langmap/pull/1" target="_blank" rel="noopener">#1</a>, commit <code>5277af5</code>): re-transcribed pronunciations to better reflect Kabyle phonology — short-front /æ/ in <em>aman / axxam / amcic / tanemmirt</em>, schwa in <em>times → timəs</em>, <em>sew → səw</em>, <em>yiwen → jiwən</em>, palatalisation /ʒ/ instead of /dʒ/ in <em>iṭij / ttejra</em>, voiceless geminate /ətʃː/ for <em>ečč</em>, dental /θ/ in <em>tiṭ → θitˤ</em>, pharyngeal /ħ/ in <em>yelha → jəlħæ</em>.</li>
