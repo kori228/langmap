@@ -2489,6 +2489,48 @@
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
         }
+        // Expose so the per-word loader (inserted earlier in this file,
+        // OUTSIDE this IIFE) can read the cache-version it should use
+        // when synthesizing <script src="words/<id>.js?v=…"> tags.
+        window.WM_ASSET_VERSION = WM_ASSET_VERSION;
+        // Merge the per-word files' WORDS global into the legacy
+        // LANG_DATA[code].words / .altWordForms shape consumers expect.
+        // Also rebuilds WORD_LIST for any reader that still uses it.
+        function _mergeWordsIntoLangData() {
+            if (typeof WORD_ORDER === 'undefined' || !window.WORDS) return;
+            for (const id of WORD_ORDER) {
+                const w = window.WORDS[id];
+                if (!w || !w.data) continue;
+                for (const [code, entry] of Object.entries(w.data)) {
+                    const lang = LANG_DATA[code];
+                    if (!lang) continue;
+                    lang.words = lang.words || {};
+                    if (Array.isArray(entry)) {
+                        lang.words[id] = entry;
+                    } else {
+                        lang.words[id] = [entry.form || '', entry.ipa || ''];
+                        if (entry.alt && entry.alt.length) {
+                            lang.altWordForms = lang.altWordForms || {};
+                            lang.altWordForms[id] = entry.alt;
+                        }
+                    }
+                }
+            }
+            window.WORD_LIST = WORD_ORDER.map(id => {
+                const w = window.WORDS[id] || {};
+                return { id, label: w.label || {}, definition: w.definition || {} };
+            });
+        }
+        // Run the merge now if all per-word scripts have already resolved
+        // (race: scripts can finish before this IIFE executes). Otherwise
+        // wait for the loader's `langmap:words-loaded` event.
+        if (window.WORDS && typeof WORD_ORDER !== 'undefined'
+            && Object.keys(window.WORDS).length >= WORD_ORDER.length) {
+            _mergeWordsIntoLangData();
+        } else {
+            document.addEventListener('langmap:words-loaded',
+                _mergeWordsIntoLangData, { once: true });
+        }
 
         let uiLang = detectBrowserLang();
         const uiLangSelect = document.getElementById('header-ui-lang');
