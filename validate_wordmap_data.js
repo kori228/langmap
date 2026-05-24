@@ -571,6 +571,8 @@ const ASSET_KEY_BY_PATH = {
     'lang_names.js':      'names',
     'wordmap_meta.js':    'meta',
     'wordmap_trivia.js':  'trivia',
+    'word_manifest.js':   'words',
+    'words/*.js':         'words',   // glob: every concept file
 };
 const versionRegistryMatch = htmlSrc.match(/const\s+WM_ASSET_VERSION\s*=\s*\{([^}]+)\}/);
 if (!versionRegistryMatch) {
@@ -587,31 +589,49 @@ if (!versionRegistryMatch) {
             E(`[#19] WM_ASSET_VERSION.${key}=${registry[key]} is below the recorded floor of ${floor} — version rolled back? (Audit Task 198)`);
         }
     }
-    for (const [path, key] of Object.entries(ASSET_KEY_BY_PATH)) {
+    for (const [pathPattern, key] of Object.entries(ASSET_KEY_BY_PATH)) {
         if (registry[key] === undefined) {
-            driftReporter(`[#19] WM_ASSET_VERSION missing key '${key}' for ${path}`);
+            driftReporter(`[#19] WM_ASSET_VERSION missing key '${key}' for ${pathPattern}`);
+            continue;
+        }
+        if (pathPattern.includes('*')) {
+            // Glob check: every <script src="words/<id>.js?v=N"> must use the
+            // current registry value. Scanning is done with a regex built
+            // from the pattern.
+            const re = new RegExp(
+                `<script[^>]+src=["']${pathPattern.replace(/[.+]/g, '\\$&').replace('*', '[^"\']+')}\\?v=(\\d+)["']`,
+                'g',
+            );
+            let m;
+            while ((m = re.exec(htmlSrc)) !== null) {
+                if (+m[1] !== registry[key]) {
+                    driftReporter(`[#19] ${m[0]}: ?v=${m[1]} != WM_ASSET_VERSION.${key}=${registry[key]}`);
+                }
+            }
+            // Synthesized loader path: any words/${id}.js?v=${variable} is OK if
+            // it's referenced via the loader. Skip — we trust the loader.
             continue;
         }
         // wordmap_meta.js is loaded dynamically via assetUrl(); accept that
         // pattern instead of a literal ?v=N string.
-        if (path === 'wordmap_meta.js') {
+        if (pathPattern === 'wordmap_meta.js') {
             const dyn = htmlSrc.match(/assetUrl\(\s*['"]wordmap_meta\.js['"]\s*,\s*['"]meta['"]\s*\)/);
             if (!dyn) {
-                driftReporter(`[#19] ${path}: no assetUrl('wordmap_meta.js', 'meta') call found in wordmap.html`);
+                driftReporter(`[#19] ${pathPattern}: no assetUrl('wordmap_meta.js', 'meta') call found in wordmap.html`);
             }
             continue;
         }
-        const re = new RegExp(`${path.replace(/\./g, '\\.')}\\?v=(\\d+)`, 'g');
+        const re = new RegExp(`${pathPattern.replace(/\./g, '\\.')}\\?v=(\\d+)`, 'g');
         const matches = [...htmlSrc.matchAll(re)];
         if (matches.length === 0) {
-            driftReporter(`[#19] ${path}: no cache-buster found in wordmap.html`);
+            driftReporter(`[#19] ${pathPattern}: no cache-buster found in wordmap.html`);
             continue;
         }
         const expected = registry[key];
         for (const m of matches) {
             const got = +m[1];
             if (got !== expected) {
-                driftReporter(`[#19] ${path}?v=${got} in wordmap.html doesn't match WM_ASSET_VERSION.${key}=${expected}`);
+                driftReporter(`[#19] ${pathPattern}?v=${got} in wordmap.html doesn't match WM_ASSET_VERSION.${key}=${expected}`);
             }
         }
     }
