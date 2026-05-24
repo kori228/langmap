@@ -8,4 +8,5 @@ fix_*.py
 add_languages.py
 data_*.py
 __pycache__/
-submissions/*.jsonwordmap_data.js.pre-split
+submissions/*.json
+wordmap_data.js.pre-split
