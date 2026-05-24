@@ -842,13 +842,35 @@ function groupLabel(groupCode) {
 function updateLangSummary() {
     const container = document.getElementById('langSummary');
     container.innerHTML = '';
-    // Show pills for enabled languages in LANGUAGES order
+    // Walk groups in LANGUAGES display order. For each group:
+    //   - if ALL selectable members are enabled, emit ONE pill with the
+    //     group's display name (e.g. "Japanese" instead of 13 individual
+    //     dialect pills).
+    //   - otherwise emit individual pills for the enabled members.
+    //   - skip groups with no enabled members.
+    const seenGroups = new Set();
     for (const lang of LANGUAGES) {
-        if (!enabledLangs.has(lang.code)) continue;
-        const pill = document.createElement('span');
-        pill.className = 'lang-pill' + (lang.experimental ? ' experimental' : '');
-        pill.textContent = langName(lang.code);
-        container.appendChild(pill);
+        if (seenGroups.has(lang.group)) continue;
+        seenGroups.add(lang.group);
+        const groupMembers = LANGUAGES.filter(
+            l => l.group === lang.group && hasLangData(l.code)
+        );
+        if (groupMembers.length === 0) continue;
+        const enabledMembers = groupMembers.filter(l => enabledLangs.has(l.code));
+        if (enabledMembers.length === 0) continue;
+        if (enabledMembers.length === groupMembers.length) {
+            const pill = document.createElement('span');
+            pill.className = 'lang-pill lang-group-pill';
+            pill.textContent = groupLabel(lang.group);
+            container.appendChild(pill);
+        } else {
+            for (const l of enabledMembers) {
+                const pill = document.createElement('span');
+                pill.className = 'lang-pill' + (l.experimental ? ' experimental' : '');
+                pill.textContent = langName(l.code);
+                container.appendChild(pill);
+            }
+        }
     }
     // Update the static button text
     const btn = document.getElementById('btnOpenLangModal');
