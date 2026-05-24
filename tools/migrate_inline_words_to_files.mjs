@@ -66,13 +66,77 @@ function buildWords(WORD_LIST, LANG_DATA) {
     return WORDS;
 }
 
+function indent(n) { return ' '.repeat(n); }
+
+function jsValue(v) {
+    // Conservative JSON.stringify-based serializer. Strings → JSON
+    // strings; arrays → JSON arrays; objects → JSON objects. JSON is
+    // a valid subset of JS literals for these payloads (no functions,
+    // no Date, no undefined values flowing through).
+    return JSON.stringify(v);
+}
+
+function serializeWord(id, entry) {
+    const lines = [];
+    lines.push('/**');
+    lines.push(` * ${id} — see docs/words/CONTRIBUTING.md for editing guidance.`);
+    lines.push(' * Language codes: see docs/words/LANG_CODES.md.');
+    lines.push(' */');
+    lines.push(`WORDS.${id} = {`);
+
+    // label
+    lines.push(`${indent(2)}label: {`);
+    for (const [k, v] of Object.entries(entry.label)) {
+        lines.push(`${indent(4)}${k}: ${jsValue(v)},`);
+    }
+    lines.push(`${indent(2)}},`);
+
+    // definition
+    lines.push(`${indent(2)}definition: {`);
+    for (const [k, v] of Object.entries(entry.definition)) {
+        lines.push(`${indent(4)}${k}: ${jsValue(v)},`);
+    }
+    lines.push(`${indent(2)}},`);
+
+    // data
+    lines.push(`${indent(2)}data: {`);
+    for (const [code, val] of Object.entries(entry.data)) {
+        if (Array.isArray(val)) {
+            lines.push(`${indent(4)}${code}: [${jsValue(val[0] ?? '')}, ${jsValue(val[1] ?? '')}],`);
+        } else {
+            // Object form: pretty-print on its own block.
+            lines.push(`${indent(4)}${code}: {`);
+            lines.push(`${indent(6)}form: ${jsValue(val.form ?? '')},`);
+            lines.push(`${indent(6)}ipa:  ${jsValue(val.ipa  ?? '')},`);
+            if (val.alt) {
+                lines.push(`${indent(6)}alt: [`);
+                for (const a of val.alt) {
+                    lines.push(`${indent(8)}{ form: ${jsValue(a.form)}, script: ${jsValue(a.script)}, source: ${jsValue(a.source ?? '')} },`);
+                }
+                lines.push(`${indent(6)}],`);
+            }
+            lines.push(`${indent(4)}},`);
+        }
+    }
+    lines.push(`${indent(2)}},`);
+    lines.push('};');
+    lines.push('');
+    return lines.join('\n');
+}
+
+function writePerWordFiles(WORDS) {
+    const outDir = path.join(ROOT, 'words');
+    fs.mkdirSync(outDir, { recursive: true });
+    for (const [id, entry] of Object.entries(WORDS)) {
+        const file = path.join(outDir, `${id}.js`);
+        fs.writeFileSync(file, serializeWord(id, entry), 'utf8');
+        console.log(`wrote ${file}`);
+    }
+}
+
 function main() {
     const { WORD_LIST, LANG_DATA } = loadDataModule();
     const WORDS = buildWords(WORD_LIST, LANG_DATA);
-    console.log(`built ${Object.keys(WORDS).length} word entries`);
-    for (const w of WORD_LIST) {
-        const filled = Object.keys(WORDS[w.id].data).length;
-        console.log(`  ${w.id}: ${filled} translations`);
-    }
+    writePerWordFiles(WORDS);
 }
 main();
