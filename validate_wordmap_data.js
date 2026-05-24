@@ -2443,6 +2443,34 @@ function checkPerWordSplit() {
     }
 }
 checkPerWordSplit();
+
+// ---- Check LANG_CODES.md staleness (Task 12) ----------------------
+function checkLangCodesMdFresh() {
+    const file = 'docs/words/LANG_CODES.md';
+    if (!fs.existsSync(path.join(ROOT, file))) {
+        W(`[#WS15] ${file} not found — run tools/generate_lang_codes_md.mjs`);
+        return;
+    }
+    // Back up the current (checked-in) version, regenerate, and compare
+    // against the fresh version. If they differ (modulo the date line),
+    // the original was stale.
+    const fullPath = path.join(ROOT, file);
+    const backup = fs.readFileSync(fullPath, 'utf8');
+    try {
+        const { execSync } = require('child_process');
+        execSync('node tools/generate_lang_codes_md.mjs', { stdio: 'pipe' });
+    } catch (e) {
+        W(`[#WS17] could not regenerate LANG_CODES.md: ${e.message}`);
+        return;
+    }
+    const fresh = fs.readFileSync(fullPath, 'utf8');
+    const stripDate = s => s.replace(/Auto-generated.*\n/, '');
+    if (stripDate(backup) !== stripDate(fresh)) {
+        E(`[#WS16] docs/words/LANG_CODES.md was stale — regenerate with: node tools/generate_lang_codes_md.mjs (fresh version now on disk)`);
+    }
+}
+checkLangCodesMdFresh();
+
 // ------------------------------------------------------------------
 
 // ---- Report -------------------------------------------------------------
