@@ -1,0 +1,25 @@
+// word_manifest.js — display order of word concepts.
+// Append a new ID here when adding words/<id>.js.
+
+const WORD_ORDER = [
+    "water",
+    "fire",
+    "sun",
+    "moon",
+    "mother",
+    "father",
+    "eat",
+    "drink",
+    "love",
+    "heart",
+    "tree",
+    "house",
+    "dog",
+    "cat",
+    "hand",
+    "eye",
+    "hello",
+    "thanks",
+    "one",
+    "good",
+];

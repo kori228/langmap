@@ -134,9 +134,63 @@ function writePerWordFiles(WORDS) {
     }
 }
 
+function writeManifest(WORD_LIST) {
+    const lines = [
+        '// word_manifest.js — display order of word concepts.',
+        '// Append a new ID here when adding words/<id>.js.',
+        '',
+        'const WORD_ORDER = [',
+        ...WORD_LIST.map(w => `${indent(4)}${JSON.stringify(w.id)},`),
+        '];',
+        '',
+    ];
+    fs.writeFileSync(path.join(ROOT, 'word_manifest.js'), lines.join('\n'), 'utf8');
+    console.log('wrote word_manifest.js');
+}
+
+function writeStrippedData() {
+    const file = path.join(ROOT, 'wordmap_data.js');
+    const original = fs.readFileSync(file, 'utf8');
+    fs.writeFileSync(file + '.pre-split', original, 'utf8');
+
+    // 1. Remove the leading `const WORD_LIST = [...];` block.
+    // 2. Strip `words: {…}` and `altWordForms: {…}` fields from each language
+    //    entry.  Two cases must be handled separately:
+    //
+    //    Case A — field is on its OWN line (preceded by \n + indent):
+    //      Replace the entire `\n    words: {...},?` line with a bare `\n`
+    //      so that any closing brace or comment on the PREVIOUS line is not
+    //      disrupted.  (The spec's `\s*` also matched the leading newline,
+    //      which caused `},` to collapse into trailing `// city` comments.)
+    //
+    //    Case B — field is INLINE (same line as the lang opening brace,
+    //      preceded by `, `):
+    //      Strip `, words: {...}` — the trailing `,` of the following
+    //      property is left intact as a separator.
+    let out = original;
+    out = out.replace(/(^|\n)const WORD_LIST = \[[\s\S]*?\n\];\n/, '\n');
+
+    // words: Case A (own line)
+    out = out.replace(/\n[ \t]+words:\s*\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\},?/g, '\n');
+    // words: Case B (inline, after comma)
+    out = out.replace(/,[ \t]*words:\s*\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g, '');
+
+    // altWordForms: Case A (own line, multiline block)
+    out = out.replace(/\n[ \t]+altWordForms:\s*\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\},?/g, '\n');
+    // altWordForms: Case B (inline, after comma)
+    out = out.replace(/,[ \t]*altWordForms:\s*\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g, '');
+
+    // Tidy: collapse `, ,` and stray trailing commas inside `{}`.
+    out = out.replace(/,\s*,/g, ',').replace(/\{\s*,/g, '{');
+    fs.writeFileSync(file, out, 'utf8');
+    console.log('wrote stripped wordmap_data.js (backup at wordmap_data.js.pre-split)');
+}
+
 function main() {
     const { WORD_LIST, LANG_DATA } = loadDataModule();
     const WORDS = buildWords(WORD_LIST, LANG_DATA);
     writePerWordFiles(WORDS);
+    writeManifest(WORD_LIST);
+    writeStrippedData();
 }
 main();
