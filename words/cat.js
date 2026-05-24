@@ -862,7 +862,7 @@ WORDS.cat = {
     kxm: ["ឆ្មា", "tʃʰmaː"],
     xng: ["ᠮᠢᠭᠤᠢ", "miɣui"],
     ja_kg: ["猫", "neko"],
-    ja_sd: ["猫", "neko"],
+    ja_sd: ["ねご", "neɡo"],
     ko_hg: ["고양이", "kojaŋi"],
     ko_jl: ["고양이", "kojaŋi"],
     nan_pn: ["貓", "niau˧˧"],

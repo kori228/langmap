@@ -862,7 +862,7 @@ WORDS.good = {
     kxm: ["ល្អ", "lʔɑː"],
     xng: ["ᠰᠠᠶᠢᠨ", "sain"],
     ja_kg: ["良か", "joka"],
-    ja_sd: ["良いでがす", "iːdeɡasɯ"],
+    ja_sd: ["いい", "iː"],
     ko_hg: ["좋다", "t͡ɕot̚t͈a"],
     ko_jl: ["좋아부러", "t͡ɕoabuɾʌ"],
     nan_pn: ["好", "ho˥˧"],

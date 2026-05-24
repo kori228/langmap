@@ -862,7 +862,7 @@ WORDS.hello = {
     kxm: ["សួស្តី", "suːəsdəj"],
     xng: ["ᠠᠮᠤᠷ", "amur"],
     ja_kg: ["おやっとさあ", "ojattosaː"],
-    ja_sd: ["おばんでがす", "obandeɡasɯ"],
+    ja_sd: ["こんぬづは", "konnɯdzɯwa"],
     ko_hg: ["안녕하시꼬마", "annjʌŋhaɕikːoma"],
     ko_jl: ["어이", "ʌi"],
     nan_pn: ["你好", "li˥˧ho˥˧"],

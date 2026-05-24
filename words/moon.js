@@ -441,7 +441,7 @@ WORDS.moon = {
     ko_gor: ["突", "*twol"],
     ko_em: ["달", "tal"],
     vi_han: ["月", "ŋwiət˨˩"],
-    vi_nom: ["𣎏𢁑", "mət taŋ"],
+    vi_nom: ["𩈘𢁑", "mət taŋ"],
     eo: ["luno", "luno"],
     vo: ["mun", "mun"],
     ina: ["luna", "luna"],

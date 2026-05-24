@@ -862,7 +862,7 @@ WORDS.heart = {
     kxm: ["ចិត្ត", "tɕit"],
     xng: ["ᠵᠢᠷᠦᠭᠡ", "dʒirüke"],
     ja_kg: ["心", "kokoɾo"],
-    ja_sd: ["心", "kokoɾo"],
+    ja_sd: ["こごろ", "koɡoɾo"],
     ko_hg: ["마음", "maɯm"],
     ko_jl: ["마음", "maɯm"],
     nan_pn: ["心", "sim˧˧"],

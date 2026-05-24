@@ -862,7 +862,7 @@ WORDS.father = {
     kxm: ["ប៉ា", "paː"],
     xng: ["ᠡᠴᠢᠭᠡ", "etʃiɡe"],
     ja_kg: ["とと", "toto"],
-    ja_sd: ["おっとさん", "otːosaɴ"],
+    ja_sd: ["おどっつぁん", "odottsaɴ"],
     ko_hg: ["아바이", "abai"],
     ko_jl: ["아베", "abe"],
     nan_pn: ["阿爸", "a˧˧pa˥˥"],

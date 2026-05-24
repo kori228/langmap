@@ -441,7 +441,7 @@ WORDS.sun = {
     ko_gor: ["姮", "*hai"],
     ko_em: ["ᄒᆡ", "hɛ"],
     vi_han: ["日", "ɲət˨˩"],
-    vi_nom: ["𣎏𡗶", "mət tɤj"],
+    vi_nom: ["𩈘𡗶", "mət tɤj"],
     eo: ["suno", "suno"],
     vo: ["sol", "sol"],
     ina: ["sol", "sol"],

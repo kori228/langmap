@@ -862,7 +862,7 @@ WORDS.thanks = {
     kxm: ["អរគុណ", "ʔɔːkun"],
     xng: ["ᠪᠠᠶᠠᠷᠯᠠᠪᠠ", "bajarlaba"],
     ja_kg: ["ありがとさげもす", "aɾiɡatosaɡemosɯ"],
-    ja_sd: ["ありがとがんす", "aɾiɡatoɡansɯ"],
+    ja_sd: ["どうもね", "doːmone"],
     ko_hg: ["고마와", "komawa"],
     ko_jl: ["고맙당께", "komap̚t͈aŋkːe"],
     nan_pn: ["多謝", "to˥˥sia˩˩"],

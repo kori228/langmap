@@ -607,7 +607,13 @@
            Noto webfonts instead of falling back to tofu boxes. */
         .wm-form {
             unicode-bidi: isolate;
-            font-family: "Gentium Plus", "Noto Serif", "Noto Serif JP",
+            font-family:
+                /* Han-Nom serif fonts (only render if locally installed) —
+                   cover CJK Extension B/C characters used in Chữ Nôm so a
+                   character like 𩈘 (mặt) doesn't fall back to a system
+                   sans-serif. User request 2026-05-24. */
+                "Nôm Na Tống", "HAN NOM A", "HAN NOM B", "HanaMinA", "HanaMinB",
+                "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
                 "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari", "Tibetan Machine Uni",
                 "Noto Sans Yi", "Microsoft Yi Baiti",
@@ -2484,7 +2490,7 @@
             meta:     191,
             trivia:   27,
             triviaI18n: 3,
-            words:      1,
+            words:      2,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;

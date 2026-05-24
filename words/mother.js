@@ -868,7 +868,7 @@ WORDS.mother = {
     kxm: ["ម៉ែ", "maɛ"],
     xng: ["ᠡᠭᠡ", "eke"],
     ja_kg: ["かか", "kaka"],
-    ja_sd: ["おっかさん", "okːasaɴ"],
+    ja_sd: ["がが", "ɡaɡa"],
     ko_hg: ["어머이", "ʌmʌi"],
     ko_jl: ["어매", "ʌmɛ"],
     nan_pn: ["阿媽", "a˧˧ma˧˧"],
