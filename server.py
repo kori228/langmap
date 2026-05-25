@@ -29,6 +29,17 @@ class LangMapHandler(http.server.SimpleHTTPRequestHandler):
         else:
             super().do_GET()
 
+    def end_headers(self):
+        # HTML files must revalidate on every request so a regular reload
+        # (F5 / pull-to-refresh) picks up new content. Assets with ?v=N
+        # in the URL can stay cached long-term — the version bump in the
+        # HTML naturally invalidates them. Mirrors what the production
+        # nginx config should look like.
+        path = self.path.split('?', 1)[0]
+        if path.endswith('/') or path.endswith('.html') or path == '':
+            self.send_header('Cache-Control', 'no-cache, must-revalidate')
+        super().end_headers()
+
     def do_POST(self):
         if self.path == '/submit.php':
             self._handle_submit()
