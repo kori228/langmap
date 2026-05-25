@@ -955,16 +955,75 @@
            only appear on mobile (declared inside the @media block below).
            Toggle is offscreen-positioned (not display:none) so keyboard
            users can Tab to it and toggle with Space. */
-        .right-secondary-controls { display: contents; }
+        /* Settings drawer — unified across desktop and mobile.
+           User 2026-05-25: PC should also use the gear-button → drawer
+           pattern instead of always-visible inline controls. */
         .settings-toggle {
             position: absolute;
             width: 1px; height: 1px;
             margin: -1px; padding: 0; overflow: hidden;
             clip: rect(0,0,0,0); white-space: nowrap; border: 0;
         }
-        .settings-fab { display: none; }
         .settings-toggle:focus-visible + .settings-fab {
             outline: 2px solid #4a6cf7; outline-offset: 2px;
+        }
+        .settings-fab {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 44px; height: 44px; min-width: 44px;
+            background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            font-size: 20px; line-height: 1; color: #444;
+            cursor: pointer; user-select: none;
+            transition: background-color 0.15s, color 0.15s, transform 0.1s;
+        }
+        .settings-fab:hover { background: #f3f4f6; }
+        .settings-fab:active { transform: scale(0.94); }
+        .settings-toggle:checked + .settings-fab {
+            background: #1a73e8; color: #fff; border-color: #1a73e8;
+        }
+        .right-secondary-controls {
+            display: flex; flex-direction: column;
+            opacity: 0; visibility: hidden;
+            transform: translateX(8px);
+            transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
+            /* Drawer hangs directly below the gear button.
+               Desktop: right-controls top:52 + 44 (toggle-3d) + 6 + 44 (gear) + 6 ≈ 152.
+               Mobile:  right-controls top:68 + 44 + 6 + 44 + 6 ≈ 168 (overridden below). */
+            position: fixed; top: 152px;
+            right: max(8px, env(safe-area-inset-right));
+            max-height: calc(100vh - 180px);
+            max-height: calc(100dvh - 180px);
+            overflow-y: auto;
+            gap: 8px; padding: 12px 14px;
+            background: rgba(255,255,255,0.78);
+            -webkit-backdrop-filter: blur(10px) saturate(140%);
+            backdrop-filter: blur(10px) saturate(140%);
+            border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            z-index: 1015;
+            pointer-events: none;
+        }
+        body:has(.settings-toggle:checked) .right-secondary-controls {
+            opacity: 1; visibility: visible; transform: translateX(0);
+            pointer-events: auto;
+        }
+        /* Hide the .ctrl-spacer (gap between gear and drawer) when the
+           drawer is collapsed so the 2D/3D + gear stack hugs the top. */
+        .ctrl-spacer { display: none; }
+        body:has(.settings-toggle:checked) .ctrl-spacer { display: block; }
+        /* Drawer interior — keep the size controls' default vertical
+           layout (＋ on top, label, − on bottom) and matching size-step
+           button sizing. Same rules previously lived in the @media block. */
+        body:has(.settings-toggle:checked) .right-secondary-controls .size-slider-wrap {
+            display: flex !important; flex-direction: column;
+            gap: 4px;
+        }
+        body:has(.settings-toggle:checked) .right-secondary-controls .size-step-btn {
+            width: 32px; height: 30px; font-size: 16px;
+        }
+        body:has(.settings-toggle:checked) .right-secondary-controls .size-label {
+            font-size: 11px; max-width: none;
+            writing-mode: horizontal-tb;
         }
 
         /* --- Mobile responsive --- */
@@ -992,83 +1051,11 @@
                is the iOS-native gesture) on mobile. */
             .map-zoom-controls { display: none; }
 
-            /* Audit Task 234 Step B: settings drawer.
-               The .right-secondary-controls wrapper houses Form/Pron./Name
-               toggles + Native/Translated radio + font-size slider. On
-               mobile it collapses by default; the .settings-fab gear
-               button toggles a hidden checkbox that re-shows the wrapper
-               as a positioned drawer. body:has(...) lets the gear button
-               (sibling of body) drive the drawer state. */
-            /* Use opacity + visibility instead of display so the drawer can
-               fade in / slide from the right when toggled. flex stays so
-               children render with the column layout. Top sits below the
-               header (~60px) + 2D/3D button row (~40px). */
+            /* Drawer top adjusts because right-controls starts 16px lower
+               on mobile (top:68 vs 52). Drawer + gear styles are now
+               defined unconditionally (see the unified block earlier). */
             .right-secondary-controls {
-                display: flex; flex-direction: column;
-                opacity: 0; visibility: hidden;
-                transform: translateX(8px);
-                transition: opacity 0.15s, visibility 0.15s, transform 0.15s;
-                /* Drawer hangs directly below the gear button (right-controls
-                   top:68 + 44px toggle-3d + 6px gap + 44px gear + 6px gap
-                   ≈ 168). Anchored to viewport so it can extend past the
-                   flex column without participating in its layout. */
-                position: fixed; top: 168px;
-                right: max(8px, env(safe-area-inset-right));
-                /* Cap height so the drawer never grows past the bottom of
-                   the viewport; users can scroll inside if rows exceed. */
-                max-height: calc(100vh - 180px);
-                max-height: calc(100dvh - 180px);
-                overflow-y: auto;
-                gap: 8px; padding: 12px 14px;
-                /* Semi-transparent panel so the map stays partly visible
-                   behind it; backdrop-filter softens the underlying map
-                   without losing legibility of the controls. */
-                background: rgba(255,255,255,0.78);
-                -webkit-backdrop-filter: blur(10px) saturate(140%);
-                backdrop-filter: blur(10px) saturate(140%);
-                border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;
-                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-                z-index: 1015;
-                pointer-events: none;
-            }
-            body:has(.settings-toggle:checked) .right-secondary-controls {
-                opacity: 1; visibility: visible; transform: translateX(0);
-                pointer-events: auto;
-            }
-            /* Hide the .ctrl-spacer (the 8px gap div) when toggles are
-               collapsed so the 2D/3D button doesn't sit above empty space. */
-            .ctrl-spacer { display: none; }
-            body:has(.settings-toggle:checked) .ctrl-spacer { display: block; }
-            /* Inline settings button — same visual size/style as the round
-               2D/3D button so they read as a button stack. Sits directly
-               below 2D/3D in the .right-controls flex column. */
-            .settings-fab {
-                display: inline-flex; align-items: center; justify-content: center;
-                width: 44px; height: 44px; min-width: 44px;
-                background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-                font-size: 20px; line-height: 1; color: #444;
-                cursor: pointer; user-select: none;
-                transition: background-color 0.15s, color 0.15s, transform 0.1s;
-            }
-            .settings-fab:hover { background: #f3f4f6; }
-            .settings-fab:active { transform: scale(0.94); }
-            .settings-toggle:checked + .settings-fab {
-                background: #1a73e8; color: #fff; border-color: #1a73e8;
-            }
-            /* Inside the drawer, keep the size controls vertical (＋ on top,
-               label in the middle, − on bottom) — same as PC layout. The
-               user prefers the vertical stack in the mobile drawer too. */
-            body:has(.settings-toggle:checked) .right-secondary-controls .size-slider-wrap {
-                display: flex !important; flex-direction: column;
-                gap: 4px;
-            }
-            body:has(.settings-toggle:checked) .right-secondary-controls .size-step-btn {
-                width: 32px; height: 30px; font-size: 16px;
-            }
-            body:has(.settings-toggle:checked) .right-secondary-controls .size-label {
-                font-size: 11px; max-width: none;
-                writing-mode: horizontal-tb;
+                top: 168px;
             }
 
             /* Audit (UI polish 2026-05-09): on mobile, the modal covers
