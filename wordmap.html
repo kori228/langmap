@@ -4389,7 +4389,15 @@
         // (selectByPriority) re-evaluates which langs are in the visible
         // area. Without this, after panning, dropped pins stay dropped
         // and new regions show no pins until the user zooms.
-        map.on('moveend', () => { updateMarkers(currentWord); updateHash(); scheduleConnectorUpdate(); });
+        // Pan-only events update the hash + connector but DO NOT re-run
+        // the marker layout (which is O(N²) collision-passing for 935
+        // languages). Markers already on the map track their lat/lng
+        // automatically via Leaflet's translate transforms; only zoom
+        // changes the labelW / MIN_PX / collision metrics that require
+        // a full re-layout. Re-renders triggered by explicit flies (e.g.
+        // search-click → centerLangOnMap → flyTo) still happen because
+        // those callers invoke updateMarkers themselves after the fly.
+        map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
         // Continuous events for smooth tracking during drag
         map.on('move', scheduleConnectorUpdate);
         map.on('viewreset', scheduleConnectorUpdate);
@@ -5503,6 +5511,16 @@
                 return;
             }
             if (!map) return;
+            // After the fly settles, re-layout markers ONCE so the focused
+            // lang appears even when it was previously thinned out of
+            // renderLangs. Done via 'moveend' (one-shot) rather than the
+            // general 'moveend' handler — the general handler no longer
+            // re-renders on pan for perf reasons (see comment there).
+            const _flyDone = () => {
+                map.off('moveend', _flyDone);
+                try { updateMarkers(currentWord); } catch (_) {}
+            };
+            map.on('moveend', _flyDone);
             const targetZoom = Math.max(map.getZoom(), 5);
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
             if (isMobile) {
