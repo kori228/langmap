@@ -58,7 +58,7 @@ WORDS.hello = {
     ja_osa: ["毎度", "maido"],
     ja_aom: ["どうも", "doːmo"],
     ja_oki: ["はいさい", "haisai"],
-    ja_hak: ["何ばしよっと？", "n̪äɴbäɕʲotːo˧˥"],
+    ja_hak: ["何ばしよっと？", "nambaɕotto"],
     ja_kyo: ["おいでやす", "oidejasɯ"],
     ja_hir: ["やあ", "jaː"],
     ja_mvi: ["んみゃーち", "mjaːt͡ɕi"],

@@ -58,7 +58,7 @@ WORDS.father = {
     ja_osa: ["おとん", "otoɴ"],
     ja_aom: ["とっちゃ", "tott͡ɕa"],
     ja_oki: ["すー", "suː"],
-    ja_hak: ["お父しゃん", "otoːɕäɴ"],
+    ja_hak: ["お父しゃん", "otoːɕaɴ"],
     ja_kyo: ["お父さん", "otoːsaɴ"],
     ja_hir: ["親父", "ojad͡ʑi"],
     ja_mvi: ["うや", "uja"],
