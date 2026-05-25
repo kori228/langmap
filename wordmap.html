@@ -3958,9 +3958,14 @@
             // very top of collision priority so a higher-speaker neighbor
             // (e.g. Kyrgyz crowding out Dungan at the same lat/lng)
             // doesn't push it past MAX_PUSH and hide it.
-            const _focusedCode = (typeof infoPanel !== 'undefined' && infoPanel
-                && infoPanel.classList.contains('visible'))
-                ? infoPanel.dataset.code : null;
+            //
+            // Use a fresh DOM lookup instead of the `infoPanel` const —
+            // updateMarkers() runs during boot BEFORE the `const infoPanel`
+            // declaration further down (TDZ), so a direct reference throws.
+            const _focusedPanel = document.getElementById('lang-info');
+            const _focusedCode = (_focusedPanel
+                && _focusedPanel.classList.contains('visible'))
+                ? _focusedPanel.dataset.code : null;
             const _spotlight = (typeof _triviaSpotlight !== 'undefined') ? _triviaSpotlight : null;
             const _collisionOrder = allRenderable.filter(c => ppx[c]).slice();
             _collisionOrder.sort((a, b) => {
