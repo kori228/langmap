@@ -931,7 +931,7 @@ WORDS.water = {
     obr: ["ရိ", "riy"],
     occ: ["ie", "ʔiə"],
     och: ["水", "*s.turʔ"],
-    ojp: ["水", "mintu"],
+    ojp: ["水", "midu"],
     pjk: ["—", "—"],
     vsa: ["आपः", "aːpaɦ"],
     txg: ["𗀚", "tjɨ˧"],
