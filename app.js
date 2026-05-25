@@ -1485,30 +1485,43 @@ function createCurvedLine(x1, y1, x2, y2, color) {
 }
 
 // Export functions
-// Cache for embedded font data
-let _embeddedHieroFont = null;
+// Cache for embedded font data (keyed by Google Fonts family name)
+const _embeddedFonts = {};
 
-async function fetchHieroFontBase64() {
-    if (_embeddedHieroFont) return _embeddedHieroFont;
+async function fetchGoogleFontBase64(familyParam, label) {
+    // PNG export rasterizes the SVG via `new Image()`, which loads in an
+    // isolated context where the page's @font-face / Google Fonts <link>
+    // do NOT apply — so any font referenced by name only falls back to
+    // OS LastResort. We sidestep that by fetching the .woff2 ourselves
+    // and emitting an inline @font-face data URI in the SVG <defs>.
+    if (_embeddedFonts[familyParam]) return _embeddedFonts[familyParam];
     try {
-        // Fetch Google Fonts CSS to get the actual font URL
-        const cssResp = await fetch('https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap');
+        const cssResp = await fetch('https://fonts.googleapis.com/css2?family=' + familyParam + '&display=swap');
         const cssText = await cssResp.text();
         const urlMatch = cssText.match(/url\((https:\/\/[^)]+\.woff2)\)/);
         if (!urlMatch) return null;
-        // Fetch the font binary
         const fontResp = await fetch(urlMatch[1]);
         const fontBuf = await fontResp.arrayBuffer();
         const bytes = new Uint8Array(fontBuf);
         let binary = '';
         for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
         const base64 = btoa(binary);
-        _embeddedHieroFont = base64;
+        _embeddedFonts[familyParam] = base64;
         return base64;
     } catch (e) {
-        console.warn('Failed to fetch hieroglyph font for embedding:', e);
+        console.warn('Failed to fetch ' + (label || familyParam) + ' font for embedding:', e);
         return null;
     }
+}
+
+function fetchHieroFontBase64() {
+    return fetchGoogleFontBase64('Noto+Sans+Egyptian+Hieroglyphs', 'hieroglyph');
+}
+function fetchTibetanFontBase64() {
+    // Single default weight only — the helper's regex grabs the first
+    // url(...) and we don't want to deal with multi-weight CSS responses.
+    // Browsers synthesize bold from the 400 face when text needs it.
+    return fetchGoogleFontBase64('Noto+Serif+Tibetan', 'Tibetan');
 }
 
 async function buildExportSVG() {
@@ -1594,15 +1607,27 @@ async function buildExportSVG() {
         h = container.scrollHeight;
     }
 
-    // Check if we have Egyptian hieroglyph content
+    // Embed any rare-script fonts referenced by the rendered text.
+    // Without this, PNG export (SVG → <img> → canvas) renders these
+    // codepoints via OS LastResort because the SVG-as-image context
+    // can't see the page's Google Fonts <link>.
     const hasHiero = container.querySelector('.segment-dual') !== null;
-    let fontStyle = '';
+    const containerText = container.textContent || '';
+    const hasTibetan = /[ༀ-࿿]/.test(containerText);
+    let fontFaces = '';
     if (hasHiero) {
         const fontBase64 = await fetchHieroFontBase64();
         if (fontBase64) {
-            fontStyle = `<defs><style>@font-face { font-family: 'Noto Sans Egyptian Hieroglyphs'; src: url(data:font/woff2;base64,${fontBase64}) format('woff2'); }</style></defs>`;
+            fontFaces += `@font-face { font-family: 'Noto Sans Egyptian Hieroglyphs'; src: url(data:font/woff2;base64,${fontBase64}) format('woff2'); }`;
         }
     }
+    if (hasTibetan) {
+        const fontBase64 = await fetchTibetanFontBase64();
+        if (fontBase64) {
+            fontFaces += `@font-face { font-family: 'Noto Serif Tibetan'; src: url(data:font/woff2;base64,${fontBase64}) format('woff2'); }`;
+        }
+    }
+    const fontStyle = fontFaces ? `<defs><style>${fontFaces}</style></defs>` : '';
 
     svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
     svgContent += fontStyle;
