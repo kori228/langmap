@@ -1292,6 +1292,15 @@
                 border-top: 5px solid #b8860b;
             }
         }
+        /* iOS Safari quirk: <button> elements get a different default
+           baseline than other browsers — text appears nudged upward
+           inside flex-centered rounded buttons. -webkit-appearance:none
+           disables iOS's button rendering, after which inline-flex +
+           align-items:center centers the text the way we expect. */
+        .trivia-modal button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
         /* Close × sits inside .trivia-modal-tools (flex row), NOT
            absolute — otherwise it floats outside the row and leaves
            the row visually empty in non-compact mode. */
