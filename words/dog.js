@@ -58,7 +58,7 @@ WORDS.dog = {
     ja_osa: ["犬", "inɯ"],
     ja_aom: ["犬", "inɯ"],
     ja_oki: ["犬", "inɯ"],
-    ja_hak: ["犬", "inɯ"],
+    ja_hak: ["犬", "iɴ"],
     ja_kyo: ["犬", "inɯ"],
     ja_hir: ["犬", "inɯ"],
     ja_mvi: ["犬", "in"],

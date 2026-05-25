@@ -58,7 +58,7 @@ WORDS.mother = {
     ja_osa: ["おかん", "okaɴ"],
     ja_aom: ["かっちゃ", "katt͡ɕa"],
     ja_oki: ["あんまー", "ammaː"],
-    ja_hak: ["おかん", "okaɴ"],
+    ja_hak: ["お母しゃん", "okäːɕäɴ"],
     ja_kyo: ["お母さん", "okaːsaɴ"],
     ja_hir: ["おふくろ", "ohɯkɯɾo"],
     ja_mvi: ["あんま", "amma"],
