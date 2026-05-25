@@ -4398,15 +4398,27 @@
         // (selectByPriority) re-evaluates which langs are in the visible
         // area. Without this, after panning, dropped pins stay dropped
         // and new regions show no pins until the user zooms.
-        // Pan-only events update the hash + connector but DO NOT re-run
-        // the marker layout (which is O(N²) collision-passing for 935
-        // languages). Markers already on the map track their lat/lng
-        // automatically via Leaflet's translate transforms; only zoom
-        // changes the labelW / MIN_PX / collision metrics that require
-        // a full re-layout. Re-renders triggered by explicit flies (e.g.
-        // search-click → centerLangOnMap → flyTo) still happen because
-        // those callers invoke updateMarkers themselves after the fly.
-        map.on('moveend', () => { updateHash(); scheduleConnectorUpdate(); });
+        // Pan-only events: update the hash + connector immediately, but
+        // DEBOUNCE the marker re-layout. Continuous panning (drag) skips
+        // re-renders entirely (the user's drag feels smooth, markers
+        // track lat/lng via Leaflet's translate transforms). When the
+        // pan settles for 400ms we re-render once so languages in the
+        // newly-revealed area appear. Explicit flies (centerLangOnMap)
+        // attach their own one-shot moveend listener so they re-render
+        // as soon as the fly settles, regardless of this debounce.
+        let _panDebounceTimer = null;
+        map.on('moveend', () => {
+            updateHash();
+            scheduleConnectorUpdate();
+            clearTimeout(_panDebounceTimer);
+            _panDebounceTimer = setTimeout(() => {
+                try { updateMarkers(currentWord); } catch (_) {}
+            }, 400);
+        });
+        // While the user is actively panning, cancel the pending
+        // re-render so it only fires when motion stops for the full
+        // debounce window.
+        map.on('movestart', () => { clearTimeout(_panDebounceTimer); });
         // Continuous events for smooth tracking during drag
         map.on('move', scheduleConnectorUpdate);
         map.on('viewreset', scheduleConnectorUpdate);
