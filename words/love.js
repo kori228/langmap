@@ -605,7 +605,7 @@ WORDS.love = {
     ban: ["tresna", "tɾesna"],
     ace: ["gaséh", "ɡasɛh"],
     gay: ["kunyung", "kuɲuŋ"],
-    bug: ["élo", "élo"],
+    bug: ["poji", "podʒi"],
     mdr: ["mappinawa", "mapːinawa"],
     war: ["gugma", "ɡuɡma"],
     bik: ["pagkamoot", "paɡkamoʔot"],

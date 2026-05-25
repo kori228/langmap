@@ -598,7 +598,7 @@ WORDS.thanks = {
     ban: ["matur suksma", "matuɾ suksma"],
     ace: ["trimong gaséh", "tɾimoŋ ɡasɛh"],
     gay: ["matur sangat", "matuɾ saŋat"],
-    bug: ["kuru sumange", "kuɾu sumaŋe"],
+    bug: ["kurru sumange", "kurːu sumaŋe"],
     mdr: ["kuru' sumanga'", "kuɾuʔ sumaŋaʔ"],
     war: ["salamat", "salamat"],
     bik: ["dios mabalos", "dios mabalos"],

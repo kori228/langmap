@@ -598,7 +598,7 @@ WORDS.eat = {
     ban: ["ngajeng", "ŋadʒeŋ"],
     ace: ["pajôh", "padʒoh"],
     gay: ["mangan", "maŋan"],
-    bug: ["manre", "manɾe"],
+    bug: ["mandre", "mandɾe"],
     mdr: ["ma'ande", "maʔande"],
     war: ["kaon", "kaʔon"],
     bik: ["kakanon", "kakanon"],
