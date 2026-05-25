@@ -864,7 +864,7 @@ WORDS.eat = {
     ja_kg: ["食ぼっか", "tabokːa"],
     ja_sd: ["食う", "kuː"],
     ko_hg: ["먹다", "mʌk̚t͈a"],
-    ko_jl: ["먹어", "mʌɡʌ"],
+    ko_jl: ["묵어", "muɡʌ"],
     nan_pn: ["食", "tsiaʔ˥˥"],
     mra: ["ʔiʔ", "ʔiʔ"],
     wuu_nb: ["吃", "t͡ɕʰiʔ˩˨"],
