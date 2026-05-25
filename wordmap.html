@@ -64,20 +64,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+Tibetan:wght@400;700&family=Noto+Sans+Yi&family=Charis+SIL:wght@400;700&family=Noto+Serif+Tangut&family=Noto+Sans+Old+Turkic&family=Noto+Sans+Mongolian&family=Noto+Sans+Sogdian&family=Noto+Sans+Phags+Pa&family=Noto+Sans+Manichaean&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Meroitic&family=Noto+Sans+Sundanese&family=Noto+Sans+Tagalog&family=Noto+Sans+Coptic&family=Noto+Sans+New+Tai+Lue&display=swap">
-    <!-- Middle / Early-Modern Korean (ko_mid, ko_em) uses conjoining Old
-         Hangul Jamo (U+1100-11FF, e.g. ᆞ arae-a, ᆡ arae-a-i, ᅀ pansiot)
-         that Google Fonts' default Noto Serif KR subset OMITS — only one
-         @font-face is served covering Latin/CJK basic. iOS Hiragino also
-         lacks these conjoining jamo, so old-Korean cells tofu on iPhone.
-         The text= param below forces Google Fonts to emit a custom
-         subset with exactly the chars we use across all ko_mid + ko_em
-         entries (currently 49 chars including 10 conjoining old jamo).
-         If new old-Korean entries are added, regenerate this URL with:
-         python3 -c "import re,glob,urllib.parse; chars=set();
-           [chars.update(m.group(1)) for f in glob.glob('words/*.js')
-             for m in re.finditer(r'(?:ko_mid|ko_em): \[\"([^\"]+)\"', open(f).read())];
-           print(urllib.parse.quote(''.join(sorted(chars))))" -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap&text=%E1%84%83%E1%84%86%E1%84%89%E1%84%92%E1%85%80%E1%86%9E%E1%86%A1%E1%86%AF%E1%86%B7%E1%86%B8%EA%B0%80%EA%B0%9C%EA%B3%A0%EB%82%98%EB%85%95%EB%88%88%EB%8B%A4%EB%8B%AC%EB%90%B4%EB%9E%91%EB%A7%88%EB%A7%99%EB%A8%B9%EB%AA%A8%EB%AC%B4%EB%AC%BC%EB%AF%88%EB%AF%B8%EB%B6%88%EB%B8%94%EB%B9%84%EC%82%AC%EC%85%94%EC%86%8C%EC%86%90%EC%87%BC%EC%8B%9C%EC%95%84%EC%95%88%EC%96%91%EC%96%B4%EC%98%A4%EC%9D%8C%EC%9D%B4%EC%A2%8B%EC%A7%91%ED%83%80%ED%95%98%ED%9E%88">
+    <!-- Old Hangul Jamo (U+1100-11FF) for ko_mid / ko_em is now served
+         from a self-hosted Noto Serif KR subset with explicit
+         unicode-range scoping; see the @font-face block below. -->
+
     <!-- Chữ Nôm CJK Extension B chars (𩈘 mặt, 𤏬 lửa, 𥄫 mắt, etc.) aren't
          in Google Fonts' Noto Serif TC subset (Google's CJK families don't
          include CJK Extension B at all) and aren't in iOS Hiragino Mincho
@@ -109,6 +99,24 @@
             font-display: swap;
             src: url('fonts/HanaMinB-NomFill-subset.woff2') format('woff2');
             unicode-range: U+228D0, U+24657;
+        }
+        /* Old Hangul Jamo (conjoining, used in Middle Korean ko_mid and
+           Early-Modern Korean ko_em) — ᆞ arae-a, ᆡ arae-a-i, ᅀ pansiot,
+           ᄉ ᄒ ᄃ etc. Google Fonts' default Noto Serif KR subset omits
+           U+1100-11FF entirely; iOS Hiragino lacks it too. Without
+           explicit scoping the chars fall back to system sans-serif on
+           PC Chrome and tofu on iPhone. Self-host a 32 KB Noto Serif KR
+           subset (downloaded via Google Fonts text= API) and scope it
+           with unicode-range so the browser ALWAYS uses it for old jamo,
+           regardless of font-family chain order. The font carries the
+           GPOS rules needed for proper jamo composition. */
+        @font-face {
+            font-family: 'Noto Serif KR Old Jamo';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/NotoSerifKR-OldHangul-subset.ttf') format('truetype');
+            unicode-range: U+1100-11FF;
         }
     </style>
     <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
@@ -436,11 +444,13 @@
         }
         .lang-label, .globe-label {
             font-family:
-                /* Self-hosted Han-Nom serif subset (see @font-face above)
-                   — unicode-range scoping means it only matches the 24
-                   Chữ Nôm codepoints used by vi_nom. Without this here,
-                   markers on the map would tofu/gothic on iOS Safari
-                   because Hiragino Mincho lacks CJK Extension B. */
+                /* Self-hosted serif subsets, scoped via unicode-range:
+                   - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
+                   - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em
+                     conjoining old hangul jamo — arae-a etc).
+                   Both fall through to the broader Noto Serif chain
+                   for any chars outside their scope. */
+                "Noto Serif KR Old Jamo",
                 "Nom Serif Subset",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
@@ -664,12 +674,12 @@
         .wm-form {
             unicode-bidi: isolate;
             font-family:
-                /* Self-hosted Han-Nom serif subset (see @font-face above).
-                   unicode-range scoping means this only loads when one
-                   of the 24 Chữ Nôm codepoints actually appears on the
-                   page. Fall through to local Han-Nom fonts if the user
-                   happens to have them installed, then the rest of the
+                /* Self-hosted serif subsets, scoped via unicode-range:
+                   - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em)
+                   - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
+                   Both load on-demand and fall through to the rest of the
                    Noto Serif chain. */
+                "Noto Serif KR Old Jamo",
                 "Nom Serif Subset",
                 "Nôm Na Tống", "HAN NOM A", "HAN NOM B", "HanaMinA", "HanaMinB",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
