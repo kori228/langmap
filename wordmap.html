@@ -3952,8 +3952,30 @@
             // render it hundreds of pixels away from its true location
             // (user report 2026-05-22: ko_hg ended up at Daejeon when
             // pushed far south to find a free slot).
+            // Selected language (lang-info modal currently open) — user
+            // explicitly chose this one (via search click, marker click,
+            // or ?lang= URL param), so they must SEE it. Promote to the
+            // very top of collision priority so a higher-speaker neighbor
+            // (e.g. Kyrgyz crowding out Dungan at the same lat/lng)
+            // doesn't push it past MAX_PUSH and hide it.
+            const _focusedCode = (typeof infoPanel !== 'undefined' && infoPanel
+                && infoPanel.classList.contains('visible'))
+                ? infoPanel.dataset.code : null;
+            const _spotlight = (typeof _triviaSpotlight !== 'undefined') ? _triviaSpotlight : null;
             const _collisionOrder = allRenderable.filter(c => ppx[c]).slice();
             _collisionOrder.sort((a, b) => {
+                // Focused (lang-info modal open on it) wins outright.
+                if (_focusedCode) {
+                    if (a === _focusedCode && b !== _focusedCode) return -1;
+                    if (b === _focusedCode && a !== _focusedCode) return 1;
+                }
+                // Trivia spotlight: forced-visible langs (compare panel
+                // pinned X languages — they should all stay visible).
+                if (_spotlight) {
+                    const aSpot = _spotlight.has(a) ? 0 : 1;
+                    const bSpot = _spotlight.has(b) ? 0 : 1;
+                    if (aSpot !== bSpot) return aSpot - bSpot;
+                }
                 // Attested before unattested (unattested has lower priority
                 // so it gets pushed in dense areas).
                 const aUna = unattestedSet.has(a) ? 1 : 0;
