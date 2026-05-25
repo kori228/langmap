@@ -2038,6 +2038,33 @@
             syncAria(cb, btnClass);
             cb.addEventListener('change', () => syncAria(cb, btnClass));
         }
+        // Position the settings drawer directly below the gear button by
+        // measuring the gear's live bounding rect. Static CSS top:152px
+        // doesn't account for the variable height of the controls above
+        // the gear on PC (zoom +/- buttons + 2D/3D button) so the drawer
+        // can drift below or overlap them. Measuring the actual gear
+        // position keeps the drawer always anchored 6px below.
+        function positionSettingsDrawer() {
+            const fab = document.querySelector('.settings-fab');
+            const drawer = document.getElementById('right-secondary');
+            if (!fab || !drawer) return;
+            const r = fab.getBoundingClientRect();
+            if (r.height === 0) return; // not yet rendered
+            drawer.style.top   = (r.bottom + 6) + 'px';
+            drawer.style.right = Math.max(8, window.innerWidth - r.right) + 'px';
+        }
+        positionSettingsDrawer();
+        window.addEventListener('resize', positionSettingsDrawer);
+        const _stCb = document.getElementById('settings-toggle');
+        if (_stCb) _stCb.addEventListener('change',
+            () => requestAnimationFrame(positionSettingsDrawer));
+        // Some layout shifts (e.g. lang-filter chip panel rendering)
+        // change the gear's position after first paint; observe and
+        // reposition.
+        if (typeof ResizeObserver !== 'undefined') {
+            const rc = document.querySelector('.right-controls');
+            if (rc) new ResizeObserver(positionSettingsDrawer).observe(rc);
+        }
         document.addEventListener('click', (e) => {
             for (const { toggle, drawer, btnClass } of drawers) {
                 const cb = document.getElementById(toggle);
