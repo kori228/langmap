@@ -5655,10 +5655,16 @@
                         }
                         return `<div id="${optId}" class="lang-search-item" role="option" aria-selected="false" data-code="${escapeHtml(m.code)}" style="${baseStyle};cursor:pointer">${escapeHtml(m.display)}${native}${en}${dis} <span style="float:right;color:#bbb;font-size:10px">${escapeHtml(m.code)}</span></div>`;
                     }).join('');
-                    // Modal only opens on explicit option click (see the
-                    // 'click' handler on .lang-search-item below) —
-                    // typing alone does NOT auto-open. (User reported
-                    // 2026-05-25: live preview while typing was disruptive.)
+                    // Live preview: open the modal for the top *enabled* match
+                    // (no map pan while typing — that only happens on explicit click).
+                    const topEnabled = top.find(m => !m.disabled);
+                    if (topEnabled && LANG_DATA[topEnabled.code]) {
+                        // Only re-open if the top match changed (avoids
+                        // re-rendering the same modal on every keystroke).
+                        if (infoPanel.dataset.code !== topEnabled.code) {
+                            showLangInfo(topEnabled.code);
+                        }
+                    }
                 }
                 results.style.display = 'block';
                 input.setAttribute('aria-expanded', 'true');
