@@ -3829,6 +3829,20 @@
                 const MAX_PINS = _mobile ? 120 : 180;
                 const MIN_PX = labelW * 0.55;
                 renderLangs = selectByPriority(inViewport, ppx, MIN_PX, MAX_PINS);
+                // Ensure the user-focused language survives speaker-tier
+                // thinning. selectByPriority sorts by speaker count and
+                // drops anything within MIN_PX of a higher-speaker neighbor
+                // — so Dungan (~150K) gets thinned out by Kyrgyz (~5M) at
+                // the same lat/lng. The collision pass below already gives
+                // the focused lang top placement priority, but it can only
+                // do that if focused is IN renderLangs.
+                const _fp = document.getElementById('lang-info');
+                const _fc = (_fp && _fp.classList.contains('visible'))
+                    ? _fp.dataset.code : null;
+                if (_fc && visibleLangs.includes(_fc)
+                    && !renderLangs.includes(_fc) && ppx[_fc]) {
+                    renderLangs = renderLangs.concat([_fc]);
+                }
             }
 
             const cellGroups = {};
