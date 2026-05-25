@@ -59,7 +59,7 @@ WORDS.hello = {
     ja_aom: ["どうも", "doːmo"],
     ja_oki: ["はいさい", "haisai"],
     ja_hak: ["何ばしよっと？", "nambaɕotto"],
-    ja_kyo: ["おいでやす", "oidejasɯ"],
+    ja_kyo: ["こんにちは", "konnitɕiwa"],
     ja_hir: ["やあ", "jaː"],
     ja_mvi: ["んみゃーち", "mjaːt͡ɕi"],
     ja_rys: ["おーりとーり", "oːɾitoːɾi"],
