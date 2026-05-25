@@ -133,7 +133,7 @@ const LANG_DATA = {
     wordEvidence: {
       water:  { evidence: 'direct', source: '现代汉语词典 7 — 水 shuǐ (third tone, dipping)' },
       fire:   { evidence: 'direct', source: '现代汉语词典 7 — 火 huǒ (third tone)' },
-      sun:    { evidence: 'direct', source: '现代汉语词典 7 — 太阳 tàiyáng (compound: 太 "great" + 阳 "yang/sun"); single-character 日 rì is literary/written-only', note: 'compound 太阳 chosen as everyday spoken form per WORD_LIST.definition.sun' },
+      sun:    { evidence: 'direct', source: '现代汉语词典 7 — 太·阳 tài·yáng (compound: 太 "great" + 阳 "yang/sun"); dictionary · marker indicates 阳 is everyday neutral tone (轻声), realized as low after 4th tone; single-character 日 rì is literary/written-only', note: 'compound 太阳 chosen as everyday spoken form per WORD_LIST.definition.sun; 阳 neutral-tone reading matches 月亮 yuèliang / 谢谢 xièxie / 爸爸 bàba elsewhere in this row' },
       moon:   { evidence: 'direct', source: '现代汉语词典 7 — 月亮 yuèliang (compound; 月 yuè alone is literary or "month")', note: 'compound 月亮 chosen — single 月 alone has the calendar-month sense per WORD_LIST.definition.moon' },
       mother: { evidence: 'direct', source: '现代汉语词典 7 — 妈妈 māma (informal/everyday); literary 母亲 mǔqīn omitted', note: 'informal 妈妈 chosen per CONTRIBUTING C3: child/familiar register acceptable when formal counterpart is rare in everyday speech' },
       father: { evidence: 'direct', source: '现代汉语词典 7 — 爸爸 bàba (informal/everyday); literary 父亲 fùqīn omitted', note: 'parallel to mother: informal 爸爸 chosen per CONTRIBUTING C3 family-register policy' },
