@@ -916,8 +916,6 @@ Per-cell `wordEvidence.note` records the citation form, e.g.
 `'citation: 食べる; connective 〜て form per regional-variety policy'`.
 
 **Out of scope** of this policy (use their own forms):
-- Miyako (`ja_mvi`), Yaeyama (`ja_rys`) — Ryukyuan sister languages with
-  highly divergent verb paradigms; native-speaker verification needed
 - Historical stages (`ja_edo`, `ja_kanbun`, `ja_heian`, `ja_chu`,
   `ko_mid`, `ko_em`, `ko_gor`) — period grammar
 
@@ -928,12 +926,19 @@ applies using Jeju's own 〜앙/엉 ending — the structural sister of Korean
 visually distinct from mainland Korean (`먹엉` vs `먹어`, `좋앙` vs `좋아`).
 Same `formType: 'connective-eo-a'` is reused.
 
-**Sister-language extension — Okinawan (`ja_oki`), partial**: Shuri/Naha
-Okinawan is a Japonic sister language. The connective form 〜でぃ (-di) is
-the structural sister of Japanese 〜て. Applied to verbs only (eat: `食でぃ`
-kadi, drink: `飲でぃ` nudi) — adjective `まし` left as-is pending native
-verification of the 形容詞 連用形 (`ましく`?). Same `formType: 'connective-te'`
-is reused.
+**Sister-language extension — Ryukyuan languages, partial**: Northern
+Ryukyuan (Okinawan `ja_oki`, Yaeyama `ja_rys`) and Southern Ryukyuan
+(Miyako `ja_mvi`) are Japonic sister languages. Connective forms applied
+to verbs only (eat / drink); adjective `まし` left as-is pending native
+verification.
+- **Okinawan / Yaeyama (Northern Ryukyuan)**: 〜でぃ (-di) connective —
+  the structural sister of Japanese 〜て. eat: `食でぃ` kadi, drink:
+  `飲でぃ` nudi.
+- **Miyako (Southern Ryukyuan)**: 〜み (-mi) 連用形 — Southern Ryukyuan
+  pattern differs. eat: `食み` kami, drink: `飲み` numi. Marked with
+  `evidence: 'inferred'` pending native-speaker verification.
+
+All Ryukyuan cells reuse `formType: 'connective-te'`.
 
 #### Concept scope: heart, mother/father, one
 

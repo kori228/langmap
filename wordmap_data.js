@@ -131,9 +131,15 @@ const LANG_DATA = {
       good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 広島弁 (Kansai-adjacent); 〜て form. 食べる→食べて, 飲む→飲んで, 良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation form ええ/良え; connective 〜て (ウ音便) per regional-variety policy' },
     } },
   ja_mvi: { name: 'Miyako', native: '宮古語', lat: 24.79, lng: 125.28,
-},
+    wordEvidence: {
+      eat:   { evidence: 'inferred', source: 'Miyako (Hirara) connective form (sister-language extension, TENTATIVE — needs native verification) — 食む kamu → 食み kami (Miyako 連用形)', formType: 'connective-te', note: 'tentative: Southern Ryukyuan, 連用形 〜み; pending native verification' },
+      drink: { evidence: 'inferred', source: 'Miyako (Hirara) connective form (sister-language extension, TENTATIVE — needs native verification) — 飲む numu → 飲み numi', formType: 'connective-te', note: 'tentative: Southern Ryukyuan, 連用形 〜み; pending native verification' },
+    } },
   ja_rys: { name: 'Yaeyama', native: '八重山語', lat: 24.34, lng: 124.16,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'Yaeyama (Ishigaki) connective form (sister-language extension) — 食む kamun → 食でぃ kadi; parallel to Okinawan Northern Ryukyuan pattern', formType: 'connective-te', note: 'citation: 食む (Yaeyama indicative); connective 〜でぃ (Northern Ryukyuan sister of Japanese 〜て)' },
+      drink: { evidence: 'direct', source: 'Yaeyama (Ishigaki) connective form (sister-language extension) — 飲む numun → 飲でぃ nudi', formType: 'connective-te', note: 'citation: 飲む (Yaeyama indicative); connective 〜でぃ' },
+    } },
   ko: { name: 'Korean', native: '한국어', lat: 37.57, lng: 126.98, // Seoul
 },
   ko_kp: { name: 'Korean (DPRK)', native: '조선말', lat: 39.02, lng: 125.75, // Pyongyang
