@@ -146,7 +146,11 @@ const LANG_DATA = {
       good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 부산/경상도 방언; 〜아/어 form with stem variant 묵 for 먹. 묵다→묵어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아/어 per regional-variety policy' },
     } },
   ko_jeju: { name: 'Jeju', native: '제주어', lat: 33.50, lng: 126.53,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'Jeju Koreanic connective form (sister-language policy) — 제주어 〜앙/엉 form (Jeju equivalent of Standard Korean 〜아/어). 먹다→먹엉, 마시다→마셩, 좋다→좋앙', formType: 'connective-eo-a', note: 'citation: 먹다; Jeju connective 〜엉 (sister to Korean 〜어) — terminal ŋ is the Jeju hallmark feature' },
+      drink: { evidence: 'direct', source: 'Jeju Koreanic connective form (sister-language policy) — 제주어 〜앙/엉 form. 마시다→마셩 (마시+엉 縮約)', formType: 'connective-eo-a', note: 'citation: 마시다; Jeju connective 마셩 (sister to Korean 마셔)' },
+      good:  { evidence: 'direct', source: 'Jeju Koreanic connective form (sister-language policy) — 제주어 〜앙/엉 form. 좋다→좋앙', formType: 'connective-eo-a', note: 'citation: 좋다; Jeju connective 〜앙 (sister to Korean 〜아)' },
+    } },
   ko_yb: { name: 'Yanbian Korean', native: '연변조선어', lat: 42.90, lng: 129.51,
     wordEvidence: {
       eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 연변 조선어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 먹다; connective 〜아/어 per regional-variety policy' },

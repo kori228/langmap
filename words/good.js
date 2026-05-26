@@ -66,7 +66,7 @@ WORDS.good = {
     ko: ["좋다", "t͡ɕot̚t͈a"],
     ko_kp: ["좋아", "t͡ɕoa"],
     ko_bus: ["좋아", "t͡ɕoa"],
-    ko_jeju: ["좋다", "t͡ɕot̚t͈a"],
+    ko_jeju: ["좋앙", "t͡ɕoaŋ"],
     ko_yb: ["좋아", "t͡ɕoa"],
     zh: ["好", "xaʊ̯˧˩˧"],
     yue: ["好", "hɔːu˧˥"],

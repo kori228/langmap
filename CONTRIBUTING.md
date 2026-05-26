@@ -917,9 +917,15 @@ Per-cell `wordEvidence.note` records the citation form, e.g.
 
 **Out of scope** of this policy (use their own forms):
 - Ryukyuan languages (`ja_oki`, `ja_mvi`, `ja_rys`) — independent family
-- Jeju (`ko_jeju`) — sister language to Korean
 - Historical stages (`ja_edo`, `ja_kanbun`, `ja_heian`, `ja_chu`,
   `ko_mid`, `ko_em`, `ko_gor`) — period grammar
+
+**Sister-language extension — Jeju (`ko_jeju`)**: although Jeju is its own
+Koreanic language (not a Korean dialect), the same connective-form philosophy
+applies using Jeju's own 〜앙/엉 ending — the structural sister of Korean
+〜아/어. The terminal `ŋ` is Jeju's hallmark feature and makes the form
+visually distinct from mainland Korean (`먹엉` vs `먹어`, `좋앙` vs `좋아`).
+Same `formType: 'connective-eo-a'` is reused.
 
 #### Concept scope: heart, mother/father, one
 
