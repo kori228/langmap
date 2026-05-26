@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=95">
+    <link rel="stylesheet" href="styles.css?v=96">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -787,17 +787,19 @@
         /* Default (mobile): table fills the panel. PC override at the
            min-width:601px block below uses width:auto so columns size to
            content. */
-        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.3; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
         .compare-table th, .compare-table td {
             border-bottom: 1px solid #eee; padding: 6px 10px;
             text-align: left; vertical-align: top;
         }
-        /* Stacked form + IPA inside each cell: explicit line-height
-           so iOS Safari's Hiragino leading doesn't inflate the row.
-           The two divs use slightly different metrics — form is the
-           surface word (font-size inherited), IPA is smaller. */
-        .compare-table .wm-form { line-height: 1.25; }
-        .compare-table .wm-ipa  { line-height: 1.2; font-size: 11px; color: #777; }
+        /* Stacked form + IPA inside each cell: line-height stays
+           generous enough that iOS Safari's Hiragino half-leading
+           positions the glyph centred within its line box. Tighter
+           values (1.2-1.25) made text visibly shift toward the top of
+           the cell on iPhone — Hiragino's ascent is taller than its
+           descent, so a tight leading exposes the asymmetry. */
+        .compare-table .wm-form { line-height: 1.4; }
+        .compare-table .wm-ipa  { line-height: 1.35; font-size: 11px; color: #777; }
         .compare-table thead th {
             background: #f8f9fa; position: sticky; top: 44px; z-index: 1;
             font-weight: 600;
@@ -1524,7 +1526,10 @@
         .trivia-back {
             margin-right: auto;     /* push other tool buttons to the right */
             min-width: 0; height: 26px;
-            font-size: 12px; font-weight: 600; line-height: 1;
+            /* line-height kept generous (not 1) so iOS Hiragino's tall
+               ascent doesn't push CJK text "← 記事一覧" toward the top
+               of the flex-centered button. */
+            font-size: 12px; font-weight: 600; line-height: 1.4;
             padding: 0 10px;
             border: 1px solid rgba(180,130,30,0.45);
             border-radius: 12px;
@@ -2663,7 +2668,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    95,
+            styles:    96,
             data:      220,
             metaI18n:  15,
             filter:    32,
