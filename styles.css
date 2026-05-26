@@ -505,6 +505,12 @@ select:focus { border-color: #4a90d9; outline: none; }
     border-radius: 20px;
     background: #f0f2f5;
     font-size: 12px;
+    /* line-height: 1 pins the inner line-box to the em-box so iOS
+       Hiragino's asymmetric ascent (0.88em) / descent (0.22em) doesn't
+       surface as CJK-text-shifted-upward in the flex-centered label.
+       Without this, the inherited default (~1.5 on Hiragino) creates
+       enough half-leading that the asymmetry is visible. */
+    line-height: 1;
     cursor: pointer;
     user-select: none;
     transition: all 0.15s;
