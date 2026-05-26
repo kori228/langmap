@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=94">
+    <link rel="stylesheet" href="styles.css?v=95">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -1308,15 +1308,6 @@
                 border-left: none;
                 border-top: 5px solid #b8860b;
             }
-        }
-        /* iOS Safari quirk: <button> elements get a different default
-           baseline than other browsers — text appears nudged upward
-           inside flex-centered rounded buttons. -webkit-appearance:none
-           disables iOS's button rendering, after which inline-flex +
-           align-items:center centers the text the way we expect. */
-        .trivia-modal button {
-            -webkit-appearance: none;
-            appearance: none;
         }
         /* Close × sits inside .trivia-modal-tools (flex row), NOT
            absolute — otherwise it floats outside the row and leaves
@@ -2666,7 +2657,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    94,
+            styles:    95,
             data:      220,
             metaI18n:  15,
             filter:    32,
