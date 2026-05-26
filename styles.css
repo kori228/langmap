@@ -23,13 +23,12 @@ body {
     font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai',
         'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
         sans-serif;
-    /* Explicit line-height: iOS Safari + Hiragino computes
-       `line-height: normal` ≈ 1.5-1.6 for CJK text, while Chrome's
-       default sans-serif (Segoe UI / Noto Sans) gives ≈ 1.2. Rows in
-       the compare table and the hamburger drawer ended up ~3x taller
-       on iPhone. Pinning body to 1.4 normalises CJK leading across
-       browsers; individual descendants still override where needed. */
-    line-height: 1.4;
+    /* No body line-height override: a global 1.4 cascaded into
+       .lang-toggle, .trivia-action, etc. and on iOS pinched the
+       line-box tighter than Hiragino's natural ~1.1em, surfacing the
+       ascent/descent asymmetry as text-shifted-upward. Row-inflation
+       fixes live on the specific containers that needed them
+       (.compare-table, .header-collapse .header-nav-link). */
     background: #f0f2f5;
     min-height: 100vh;
     padding: 20px;
