@@ -1049,11 +1049,13 @@
             display: inline-flex; align-items: center; gap: 3px;
             line-height: 1.2;
         }
-        .lf-chip:hover:not([disabled]) { background: #eef; border-color: #99c; }
+        .lf-chip:hover:not([disabled]):not(.on) { background: #eef; border-color: #99c; }
         .lf-chip:focus-visible {
             outline: 2px solid #4a6cf7; outline-offset: 1px;
         }
-        .lf-chip.on {
+        .lf-chip.on,
+        .lf-chip.on:hover,
+        .lf-chip.on:focus {
             background: #4a6cf7; color: #fff; border-color: #3a5ce5;
             box-shadow: 0 1px 3px rgba(74,108,247,0.35);
         }
