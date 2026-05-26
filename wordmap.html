@@ -1436,7 +1436,13 @@
             display: block;
             font-size: 13px; font-weight: 600;
             color: #4a3416;
-            line-height: 1.3;
+            /* iOS Safari quirk: -webkit-box + overflow:hidden clips the
+               top of ascending glyphs (digits "02.", kanji tops) when
+               line-height is too tight. 1.45 gives enough room above
+               the cap-height; a hair of padding-top absorbs Hiragino's
+               extra ascender. */
+            line-height: 1.45;
+            padding-top: 1px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
