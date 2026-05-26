@@ -1352,14 +1352,27 @@ html[data-wm-chrome="hidden"] body .settings-fab,
 html[data-wm-chrome="hidden"] body .right-secondary-controls {
     display: none !important;
 }
-/* .header-collapse: hide on PC (where it's display:contents = always-inline)
-   so nav/ui-lang/URL disappear. On mobile, leave it alone — the existing
-   hamburger checkbox controls its open/closed state, so pressing the
-   hamburger reveals the menu even in chrome-hidden mode. */
+/* .header-collapse: on PC (display:contents = always-inline) hide most
+   children when chrome is off, BUT keep .header-url (langmap.heuron.com)
+   visible — per user 2026-05-26 it anchors the right side of the header
+   when chrome-toggle is in the right-controls column, so the header
+   doesn't look bare with just LangMap on the left. On mobile, leave
+   .header-collapse alone — the existing hamburger checkbox controls
+   its open/closed state, so pressing the hamburger reveals the full
+   menu even in chrome-hidden mode. */
 @media (min-width: 641px) {
-    body.chrome-hidden .header-collapse,
-    html[data-wm-chrome="hidden"] body .header-collapse {
+    body.chrome-hidden .header-collapse > *:not(.header-url),
+    html[data-wm-chrome="hidden"] body .header-collapse > *:not(.header-url) {
         display: none !important;
+    }
+    /* Restore .header-url's natural auto-margin so it floats to the right
+       edge of the header. The existing `.header-ui-lang + .header-url
+       { margin-left: 12px }` rule (line 84) still matches even when
+       .header-ui-lang is display:none, which pins the URL right next to
+       LangMap. Override here when ui-lang and friends are hidden. */
+    body.chrome-hidden .site-header-bar .header-url,
+    html[data-wm-chrome="hidden"] body .site-header-bar .header-url {
+        margin-left: auto !important;
     }
 }
 body.chrome-hidden .site-header-bar,
