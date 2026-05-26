@@ -1279,7 +1279,9 @@ select:focus { border-color: #4a90d9; outline: none; }
 .chrome-toggle-btn:focus-visible { outline: 2px solid #4a6cf7; outline-offset: 2px; }
 .chrome-toggle-btn:active { background: #e5e7eb; }
 body.chrome-hidden .chrome-toggle-btn {
-    background: #1a73e8; color: #fff; border-color: #1a73e8;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
 }
 .chrome-toggle-btn .icon-on,
 .chrome-toggle-btn .icon-off { width: 20px; height: 20px; display: block; }
