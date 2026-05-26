@@ -1305,9 +1305,9 @@ body.chrome-hidden .chrome-toggle-btn .icon-off { display: block; }
    only spacing comes from explicit margins below. */
 @media (max-width: 640px) {
     .site-header-bar { gap: 0; }
-    .site-header-bar > .trivia-btn { margin-left: 0; }
+    .site-header-bar > .trivia-btn { margin-left: 6px; }
     .site-header-bar > .chrome-toggle-btn { margin-left: auto; }
-    .site-header-bar > .chrome-toggle-btn + .hamburger-btn { margin-left: 0; }
+    .site-header-bar > .chrome-toggle-btn + .hamburger-btn { margin-left: 6px; }
 }
 
 /* Hide map-chrome components when toggled OFF. !important wins over
@@ -1368,16 +1368,15 @@ html[data-wm-chrome="hidden"] body .site-header-bar {
     box-shadow: none !important;
 }
 
-/* LangMap logo color/shadow adapts to map background in chrome-hidden mode:
-   - 2D mode: black text + black shadow halo (visible on light tile maps)
-   - 3D mode: white text + white shadow halo (visible on darker globe textures) */
+/* LangMap logo color adapts to map background in chrome-hidden mode:
+   - 2D mode: black text — visible against light tile maps
+   - 3D mode: white text — visible against darker globe textures
+   Plain color only; no text-shadow per user direction. */
 body.chrome-hidden:not(.is-3d) .site-header-bar .logo {
     color: #000 !important;
-    text-shadow: 0 0 4px #000, 0 0 8px #000 !important;
 }
 body.chrome-hidden.is-3d .site-header-bar .logo {
     color: #fff !important;
-    text-shadow: 0 0 4px #fff, 0 0 8px #fff !important;
 }
 
 /* Mobile + 3D + chrome-hidden: hamburger's "三" glyph is #444 by default,
