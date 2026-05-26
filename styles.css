@@ -1309,3 +1309,30 @@ html[data-wm-chrome="hidden"] body #compare-fab,
 html[data-wm-chrome="hidden"] body .url-watermark {
     display: none !important;
 }
+
+/* Aggressive-hide additions (2026-05-26): when chrome is hidden, also strip
+   the header chrome itself — hide nav/trivia/ui-lang/url (everything inside
+   .header-collapse), hide the right-side 2D/3D toggle and gear button, and
+   make the header bar background fully transparent. Only the LangMap logo,
+   the hamburger menu, and the chrome-toggle itself remain visible. */
+body.chrome-hidden .header-collapse,
+body.chrome-hidden .trivia-btn,
+body.chrome-hidden .toggle-3d-btn,
+body.chrome-hidden .settings-toggle,
+body.chrome-hidden .settings-fab,
+body.chrome-hidden .right-secondary-controls,
+html[data-wm-chrome="hidden"] body .header-collapse,
+html[data-wm-chrome="hidden"] body .trivia-btn,
+html[data-wm-chrome="hidden"] body .toggle-3d-btn,
+html[data-wm-chrome="hidden"] body .settings-toggle,
+html[data-wm-chrome="hidden"] body .settings-fab,
+html[data-wm-chrome="hidden"] body .right-secondary-controls {
+    display: none !important;
+}
+body.chrome-hidden .site-header-bar,
+html[data-wm-chrome="hidden"] body .site-header-bar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
