@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=99">
+    <link rel="stylesheet" href="styles.css?v=100">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -1701,11 +1701,7 @@
             background: linear-gradient(135deg, #ffefc4, #ffd98a);
             color: #5a3f15;
             cursor: pointer;
-            /* line-height: 1 (was 1.3) — same Hiragino asymmetry reason
-               as .trivia-back / .lang-toggle. With 1.3, the half-leading
-               surfaced the ascent/descent imbalance as CJK text shifted
-               up inside the flex-centered pill. */
-            line-height: 1;
+            line-height: 1.3;
             transition: all 0.18s ease;
             font-family: inherit;
         }
@@ -2740,7 +2736,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    99,
+            styles:   100,
             data:      220,
             metaI18n:  15,
             filter:    32,
