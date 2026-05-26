@@ -887,6 +887,59 @@ Proto-Ryukyuan `pry`, Proto-Japonic-Koreanic `pjk`):
   Burushaski, Wakhi): trailing-hyphen bound stems are acceptable per
   Task 103 with `wordEvidence.formType: 'bound-stem'`.
 
+#### Regional-variety verb/adjective forms (Japonic / Koreanic)
+
+Rows that are regional varieties of Japonic (`ja`) or Koreanic (`ko`) — those
+with `parentCode: 'ja'`/`'ko'` and `coverage: 'regional-variety'` or
+`'base-copy-with-notes'` — display verb/adjective concept words (`eat`, `drink`,
+`good`) in the **connective form** rather than the dictionary citation form:
+
+- **Japonic regional varieties**: 〜て形 / 連用形 (e.g. `食べて`, `飲んで`,
+  `良くて`). Dialect音便 differences become visible in this form:
+  Hakata `飲うで` (ウ音便), Aomori `飲んで` (撥音便), Kagoshima `良かって`
+  (〜か形 + っ + て).
+- **Koreanic regional varieties**: 〜아/어 形 (e.g. `먹어`, `마셔`, `좋아`).
+  Dialect endings and 보조용언 attach naturally here: Jeolla `좋아부러`,
+  Pyongyang `먹어`, Busan stem-variant `묵어`.
+
+The parent rows `ja` and `ko` keep the **dictionary citation form**
+(`食べる`, `먹다`). This preserves cross-language comparability with
+`en: eat`, `de: essen`, etc. The morphological mismatch between parent
+(`ja: 食べる`) and dialect (`ja_osa: 食べて`) is intentional; do **not**
+"normalize" dialect rows back to the citation form.
+
+Per-cell `wordEvidence.formType`:
+- `'connective-te'` for Japonic 〜て / 連用形
+- `'connective-eo-a'` for Koreanic 〜아/어
+
+Per-cell `wordEvidence.note` records the citation form, e.g.
+`'citation: 食べる; connective 〜て form per regional-variety policy'`.
+
+**Out of scope** of this policy (use their own forms):
+- Historical stages (`ja_edo`, `ja_kanbun`, `ja_heian`, `ja_chu`,
+  `ko_mid`, `ko_em`, `ko_gor`) — period grammar
+
+**Sister-language extension — Jeju (`ko_jeju`)**: although Jeju is its own
+Koreanic language (not a Korean dialect), the same connective-form philosophy
+applies using Jeju's own 〜앙/엉 ending — the structural sister of Korean
+〜아/어. The terminal `ŋ` is Jeju's hallmark feature and makes the form
+visually distinct from mainland Korean (`먹엉` vs `먹어`, `좋앙` vs `좋아`).
+Same `formType: 'connective-eo-a'` is reused.
+
+**Sister-language extension — Ryukyuan languages, partial**: Northern
+Ryukyuan (Okinawan `ja_oki`, Yaeyama `ja_rys`) and Southern Ryukyuan
+(Miyako `ja_mvi`) are Japonic sister languages. Connective forms applied
+to verbs only (eat / drink); adjective `まし` left as-is pending native
+verification.
+- **Okinawan / Yaeyama (Northern Ryukyuan)**: 〜でぃ (-di) connective —
+  the structural sister of Japanese 〜て. eat: `食でぃ` kadi, drink:
+  `飲でぃ` nudi.
+- **Miyako (Southern Ryukyuan)**: 〜み (-mi) 連用形 — Southern Ryukyuan
+  pattern differs. eat: `食み` kami, drink: `飲み` numi. Marked with
+  `evidence: 'inferred'` pending native-speaker verification.
+
+All Ryukyuan cells reuse `formType: 'connective-te'`.
+
 #### Concept scope: heart, mother/father, one
 
 - **`heart`**: default is *emotional/cognitive* "heart" where the
