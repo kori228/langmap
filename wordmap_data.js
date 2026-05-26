@@ -108,7 +108,10 @@ const LANG_DATA = {
       good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 津軽弁; 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), 良い→良くて', formType: 'connective-te', note: 'citation form 良い/いい; connective 〜くて per regional-variety policy' },
     } },
   ja_oki: { name: 'Okinawan', native: 'うちなーぐち', lat: 26.33, lng: 127.80,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'Okinawan (Shuri/Naha) connective form (sister-language extension) — 食む kamun (indicative) → 食でぃ kadi (連結形, structural sister of Japanese 〜て)', formType: 'connective-te', note: 'citation: 食む kamun (Shuri indicative); Okinawan connective 〜でぃ' },
+      drink: { evidence: 'direct', source: 'Okinawan (Shuri/Naha) connective form (sister-language extension) — 飲む numun (indicative) → 飲でぃ nudi (連結形)', formType: 'connective-te', note: 'citation: 飲む numun (Shuri indicative); Okinawan connective 〜でぃ' },
+    } },
   ja_hak: { name: 'Japanese (Hakata)', native: '日本語(博多)', lat: 33.59, lng: 130.40,
     wordEvidence: {
       eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 博多弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },

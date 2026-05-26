@@ -57,7 +57,7 @@ WORDS.drink = {
     ja: ["飲む", "nomɯ"],
     ja_osa: ["飲んで", "nonde"],
     ja_aom: ["飲んで", "nonde"],
-    ja_oki: ["飲むん", "numun"],
+    ja_oki: ["飲でぃ", "nudi"],
     ja_hak: ["飲うで", "noːde"],
     ja_kyo: ["飲んで", "nonde"],
     ja_hir: ["飲んで", "nonde"],

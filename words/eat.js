@@ -57,7 +57,7 @@ WORDS.eat = {
     ja: ["食べる", "tabeɾɯ"],
     ja_osa: ["食べて", "tabete"],
     ja_aom: ["食って", "kɯtte"],
-    ja_oki: ["食むん", "kamun"],
+    ja_oki: ["食でぃ", "kadi"],
     ja_hak: ["食うて", "kɯːte"],
     ja_kyo: ["食べて", "tabete"],
     ja_hir: ["食べて", "tabete"],
