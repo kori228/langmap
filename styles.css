@@ -1,5 +1,16 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* iOS Safari auto-inflates font-size in some layouts (e.g. flex
+   children whose container is narrower than the document) — rows in
+   the trivia article-nav, lang-info modal, and compare table came
+   out visibly taller on iPhone vs Chrome desktop. Lock the
+   text-size-adjust ratio to 100% so iOS uses our specified sizes
+   verbatim. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     /* Tibetan: no "Noto Sans Tibetan" exists on Google Fonts, so we use
        Noto Serif Tibetan + system Tibetan fallbacks (Kailasa = iOS,
