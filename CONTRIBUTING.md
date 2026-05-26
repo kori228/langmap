@@ -887,6 +887,40 @@ Proto-Ryukyuan `pry`, Proto-Japonic-Koreanic `pjk`):
   Burushaski, Wakhi): trailing-hyphen bound stems are acceptable per
   Task 103 with `wordEvidence.formType: 'bound-stem'`.
 
+#### Regional-variety verb/adjective forms (Japonic / Koreanic)
+
+Rows that are regional varieties of Japonic (`ja`) or Koreanic (`ko`) — those
+with `parentCode: 'ja'`/`'ko'` and `coverage: 'regional-variety'` or
+`'base-copy-with-notes'` — display verb/adjective concept words (`eat`, `drink`,
+`good`) in the **connective form** rather than the dictionary citation form:
+
+- **Japonic regional varieties**: 〜て形 / 連用形 (e.g. `食べて`, `飲んで`,
+  `良くて`). Dialect音便 differences become visible in this form:
+  Hakata `飲うで` (ウ音便), Aomori `飲んで` (撥音便), Kagoshima `良かって`
+  (〜か形 + っ + て).
+- **Koreanic regional varieties**: 〜아/어 形 (e.g. `먹어`, `마셔`, `좋아`).
+  Dialect endings and 보조용언 attach naturally here: Jeolla `좋아부러`,
+  Pyongyang `먹어`, Busan stem-variant `묵어`.
+
+The parent rows `ja` and `ko` keep the **dictionary citation form**
+(`食べる`, `먹다`). This preserves cross-language comparability with
+`en: eat`, `de: essen`, etc. The morphological mismatch between parent
+(`ja: 食べる`) and dialect (`ja_osa: 食べて`) is intentional; do **not**
+"normalize" dialect rows back to the citation form.
+
+Per-cell `wordEvidence.formType`:
+- `'connective-te'` for Japonic 〜て / 連用形
+- `'connective-eo-a'` for Koreanic 〜아/어
+
+Per-cell `wordEvidence.note` records the citation form, e.g.
+`'citation: 食べる; connective 〜て form per regional-variety policy'`.
+
+**Out of scope** of this policy (use their own forms):
+- Ryukyuan languages (`ja_oki`, `ja_mvi`, `ja_rys`) — independent family
+- Jeju (`ko_jeju`) — sister language to Korean
+- Historical stages (`ja_edo`, `ja_kanbun`, `ja_heian`, `ja_chu`,
+  `ko_mid`, `ko_em`, `ko_gor`) — period grammar
+
 #### Concept scope: heart, mother/father, one
 
 - **`heart`**: default is *emotional/cognitive* "heart" where the

@@ -96,17 +96,37 @@ const LANG_DATA = {
       good:   { evidence: 'direct', source: 'NHK 2016 — 良い yoi (literary) / いい ii (colloquial); attributive citation form per WORD_LIST.definition.good' },
     } },
   ja_osa: { name: 'Japanese (Osaka)', native: '日本語(大阪)', lat: 34.69, lng: 135.50,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — Kansai dialect; 〜て form. 食べる→食べて, 飲む→飲んで (撥音便), ええ/良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — Kansai dialect; 〜て form. 食べる→食べて, 飲む→飲んで (撥音便), ええ/良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — Kansai dialect; 〜て form. 食べる→食べて, 飲む→飲んで (撥音便), ええ/良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation form ええ/良え; connective 〜て (ウ音便) per regional-variety policy' },
+    } },
   ja_aom: { name: 'Japanese (Aomori)', native: '日本語(青森)', lat: 40.82, lng: 140.74,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 津軽弁; 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), 良い→良くて', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 津軽弁; 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), 良い→良くて', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 津軽弁; 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), 良い→良くて', formType: 'connective-te', note: 'citation form 良い/いい; connective 〜くて per regional-variety policy' },
+    } },
   ja_oki: { name: 'Okinawan', native: 'うちなーぐち', lat: 26.33, lng: 127.80,
 },
   ja_hak: { name: 'Japanese (Hakata)', native: '日本語(博多)', lat: 33.59, lng: 130.40,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 博多弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 博多弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 博多弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation form 良か; connective 〜かって per regional-variety policy' },
+    } },
   ja_kyo: { name: 'Japanese (Kyoto)', native: '日本語(京都)', lat: 35.01, lng: 135.77,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 京言葉; 〜て form. 食べる→食べて, 飲む→飲んで, ええ→良うて (replaces pre-existing 宜し)', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 京言葉; 〜て form. 食べる→食べて, 飲む→飲んで, ええ→良うて (replaces pre-existing 宜し)', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 京言葉; 〜て form. 食べる→食べて, 飲む→飲んで, ええ→良うて (replaces pre-existing 宜し)', formType: 'connective-te', note: 'citation form ええ (previous 宜し was incorrect Kyoto form); connective 〜て (ウ音便) per regional-variety policy' },
+    } },
   ja_hir: { name: 'Japanese (Hiroshima)', native: '日本語(広島)', lat: 34.39, lng: 132.46,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 広島弁 (Kansai-adjacent); 〜て form. 食べる→食べて, 飲む→飲んで, 良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 広島弁 (Kansai-adjacent); 〜て form. 食べる→食べて, 飲む→飲んで, 良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 広島弁 (Kansai-adjacent); 〜て form. 食べる→食べて, 飲む→飲んで, 良え→良うて (ウ音便)', formType: 'connective-te', note: 'citation form ええ/良え; connective 〜て (ウ音便) per regional-variety policy' },
+    } },
   ja_mvi: { name: 'Miyako', native: '宮古語', lat: 24.79, lng: 125.28,
 },
   ja_rys: { name: 'Yaeyama', native: '八重山語', lat: 24.34, lng: 124.16,
@@ -114,13 +134,25 @@ const LANG_DATA = {
   ko: { name: 'Korean', native: '한국어', lat: 37.57, lng: 126.98, // Seoul
 },
   ko_kp: { name: 'Korean (DPRK)', native: '조선말', lat: 39.02, lng: 125.75, // Pyongyang
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 평양/문화어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 먹다; connective 〜아/어 per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 평양/문화어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 마시다; connective 〜아/어 (마시+어 縮約) per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 평양/문화어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아/어 per regional-variety policy' },
+    } },
   ko_bus: { name: 'Korean (Busan)', native: '한국어(부산)', lat: 35.18, lng: 129.08,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 부산/경상도 방언; 〜아/어 form with stem variant 묵 for 먹. 묵다→묵어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 묵다 (Busan stem variant of 먹다); connective 묵 + 〜어 per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 부산/경상도 방언; 〜아/어 form with stem variant 묵 for 먹. 묵다→묵어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 마시다; connective 〜아/어 (마시+어 縮約) per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 부산/경상도 방언; 〜아/어 form with stem variant 묵 for 먹. 묵다→묵어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아/어 per regional-variety policy' },
+    } },
   ko_jeju: { name: 'Jeju', native: '제주어', lat: 33.50, lng: 126.53,
 },
   ko_yb: { name: 'Yanbian Korean', native: '연변조선어', lat: 42.90, lng: 129.51,
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 연변 조선어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 먹다; connective 〜아/어 per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 연변 조선어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 마시다; connective 〜아/어 (마시+어 縮約) per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 연변 조선어; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아/어 per regional-variety policy' },
+    } },
   zh: { name: 'Chinese (Mandarin)', native: '中文', lat: 39.90, lng: 116.40, // Beijing
 
     // Audit Task 200: full per-cell wordEvidence for source-checked
@@ -3875,14 +3907,30 @@ const LANG_DATA = {
 },
   // Japanese dialects (additional)
   ja_kg: { name: 'Japanese (Kagoshima)', native: '日本語(鹿児島)', lat: 31.59, lng: 130.55, // Kagoshima
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 鹿児島弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 鹿児島弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 鹿児島弁; 〜て form with 九州ウ音便. 食う→食うて, 飲む→飲うで, 良か→良かって', formType: 'connective-te', note: 'citation form 良か; connective 〜かって per regional-variety policy' },
+    } },
   ja_sd: { name: 'Japanese (Sendai)', native: '日本語(仙台)', lat: 38.27, lng: 140.87, // Sendai
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 仙台弁 (Tohoku); 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), いい→良くて', formType: 'connective-te', note: 'citation: 食べる; connective 〜て per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 仙台弁 (Tohoku); 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), いい→良くて', formType: 'connective-te', note: 'citation: 飲む; connective 〜て per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 仙台弁 (Tohoku); 〜て form. 食う→食って (促音便), 飲む→飲んで (撥音便), いい→良くて', formType: 'connective-te', note: 'citation form 良い/いい; connective 〜くて per regional-variety policy' },
+    } },
   // Korean dialects (additional)
   ko_hg: { name: 'Korean (Hamgyong)', native: '함경방언', lat: 39.92, lng: 127.54, // Hamhung
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 함경도 방언; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 먹다; connective 〜아/어 per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 함경도 방언; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 마시다; connective 〜아/어 (마시+어 縮約) per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 함경도 방언; 〜아/어 form. 먹다→먹어, 마시다→마셔, 좋다→좋아', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아/어 per regional-variety policy' },
+    } },
   ko_jl: { name: 'Korean (Jeolla)', native: '전라방언', lat: 35.16, lng: 126.85, // Gwangju
-},
+    wordEvidence: {
+      eat:   { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 전라도 방언; 〜아/어 form with 보조용언 부러 (완료강조). 묵어 (stem 묵), 마셔 (마시+어 縮約), 좋아부러 (좋아 + 부러)', formType: 'connective-eo-a', note: 'citation: 묵다 (Jeolla stem variant of 먹다); connective 묵 + 〜어 per regional-variety policy' },
+      drink: { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 전라도 방언; 〜아/어 form with 보조용언 부러 (완료강조). 묵어 (stem 묵), 마셔 (마시+어 縮約), 좋아부러 (좋아 + 부러)', formType: 'connective-eo-a', note: 'citation: 마시다; connective 〜아/어 (마시+어 縮約) per regional-variety policy' },
+      good:  { evidence: 'direct', source: 'regional-variety policy (CONTRIBUTING C3) — 전라도 방언; 〜아/어 form with 보조용언 부러 (완료강조). 묵어 (stem 묵), 마셔 (마시+어 縮約), 좋아부러 (좋아 + 부러)', formType: 'connective-eo-a', note: 'citation: 좋다; connective 〜아 + 보조용언 부러 (Jeolla emphatic/completive) per regional-variety policy' },
+    } },
   // Chinese diaspora variant
   nan_pn: { name: 'Penang Hokkien', native: '庇能福建話', lat: 5.41, lng: 100.34, // George Town
 },

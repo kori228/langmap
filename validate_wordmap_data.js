@@ -1023,7 +1023,7 @@ for (const code of codes) {
     // *semantic-shaped*); the legacy names are retained for the cells
     // already migrated under Task 97.
     if (lang.wordEvidence && typeof lang.wordEvidence === 'object') {
-        const FT_ENUM = new Set(['free-word','bound-stem','root','inflected-form','phrase','reconstructed-root','agreement-stem','greeting-formula','thanks-formula','compound','light-verb-construction']);
+        const FT_ENUM = new Set(['free-word','bound-stem','root','inflected-form','phrase','reconstructed-root','agreement-stem','greeting-formula','thanks-formula','compound','light-verb-construction','connective-te','connective-eo-a']);
         const SPLIT_EV_ENUM = new Set(['direct','proxy','reconstructed','inferred','disputed','pedagogical','noted']);
         const LEGACY_SPLIT = ['formEvidence', 'pronunciationEvidence', 'conceptEvidence'];
         const PILOT_SPLIT  = ['languageEvidence', 'pronunciationEvidence', 'semanticEvidence'];

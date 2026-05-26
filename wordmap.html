@@ -2299,8 +2299,8 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=216"></script>
-    <script src="word_manifest.js?v=9"></script>
+    <script src="wordmap_data.js?v=217"></script>
+    <script src="word_manifest.js?v=10"></script>
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
         // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
@@ -2575,14 +2575,14 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    84,
-            data:      216,
+            data:      217,
             metaI18n:  15,
             filter:    31,
             names:   110,
             meta:     191,
             trivia:   27,
             triviaI18n: 3,
-            words:      9,
+            words:      10,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
