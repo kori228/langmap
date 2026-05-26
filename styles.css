@@ -1298,14 +1298,16 @@ body.chrome-hidden .chrome-toggle-btn .icon-off { display: block; }
 }
 
 /* Mobile: chrome-toggle sits BETWEEN trivia and hamburger.
-   User-requested order: [LangMap] [trivia] [gap] [chrome-toggle] [hamburger].
-   Achieved by removing the auto margin from trivia (was pushing the
-   trivia/chrome/hamburger group rightward together) and giving it to
-   chrome-toggle instead (now chrome-toggle absorbs free space, pushing
-   itself + hamburger to the right while trivia stays near LangMap). */
+   User-requested visual: [LangMap trivia] _______________ [chrome-toggle hamburger]
+   — LangMap and trivia stuck together on the LEFT, chrome-toggle and
+   hamburger stuck together on the RIGHT, with the auto-margin gap in
+   between. We zero out .site-header-bar's flex gap on mobile so the
+   only spacing comes from explicit margins below. */
 @media (max-width: 640px) {
-    .site-header-bar > .trivia-btn { margin-left: 8px; }
+    .site-header-bar { gap: 0; }
+    .site-header-bar > .trivia-btn { margin-left: 0; }
     .site-header-bar > .chrome-toggle-btn { margin-left: auto; }
+    .site-header-bar > .chrome-toggle-btn + .hamburger-btn { margin-left: 0; }
 }
 
 /* Hide map-chrome components when toggled OFF. !important wins over
@@ -1336,13 +1338,11 @@ html[data-wm-chrome="hidden"] body .url-watermark {
    .header-collapse), hide the right-side 2D/3D toggle and gear button, and
    make the header bar background fully transparent. Only the LangMap logo,
    the hamburger menu, and the chrome-toggle itself remain visible. */
-body.chrome-hidden .header-collapse,
 body.chrome-hidden .trivia-btn,
 body.chrome-hidden .toggle-3d-btn,
 body.chrome-hidden .settings-toggle,
 body.chrome-hidden .settings-fab,
 body.chrome-hidden .right-secondary-controls,
-html[data-wm-chrome="hidden"] body .header-collapse,
 html[data-wm-chrome="hidden"] body .trivia-btn,
 html[data-wm-chrome="hidden"] body .toggle-3d-btn,
 html[data-wm-chrome="hidden"] body .settings-toggle,
@@ -1350,10 +1350,41 @@ html[data-wm-chrome="hidden"] body .settings-fab,
 html[data-wm-chrome="hidden"] body .right-secondary-controls {
     display: none !important;
 }
+/* .header-collapse: hide on PC (where it's display:contents = always-inline)
+   so nav/ui-lang/URL disappear. On mobile, leave it alone — the existing
+   hamburger checkbox controls its open/closed state, so pressing the
+   hamburger reveals the menu even in chrome-hidden mode. */
+@media (min-width: 641px) {
+    body.chrome-hidden .header-collapse,
+    html[data-wm-chrome="hidden"] body .header-collapse {
+        display: none !important;
+    }
+}
 body.chrome-hidden .site-header-bar,
 html[data-wm-chrome="hidden"] body .site-header-bar {
     background: transparent !important;
     backdrop-filter: none !important;
     border-bottom: none !important;
     box-shadow: none !important;
+}
+
+/* LangMap logo color/shadow adapts to map background in chrome-hidden mode:
+   - 2D mode: black text + black shadow halo (visible on light tile maps)
+   - 3D mode: white text + white shadow halo (visible on darker globe textures) */
+body.chrome-hidden:not(.is-3d) .site-header-bar .logo {
+    color: #000 !important;
+    text-shadow: 0 0 4px #000, 0 0 8px #000 !important;
+}
+body.chrome-hidden.is-3d .site-header-bar .logo {
+    color: #fff !important;
+    text-shadow: 0 0 4px #fff, 0 0 8px #fff !important;
+}
+
+/* Mobile + 3D + chrome-hidden: hamburger's "三" glyph is #444 by default,
+   which blends into the dark globe background. Switch it to white. */
+@media (max-width: 640px) {
+    body.chrome-hidden.is-3d .hamburger-btn {
+        color: #fff !important;
+        border-color: rgba(255,255,255,0.6) !important;
+    }
 }
