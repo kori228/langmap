@@ -808,9 +808,6 @@
             .compare-table { width: auto; }
             .compare-table thead th {
                 min-width: 100px;
-                /* Right padding reserves space for the absolute-positioned
-                   remove-col (22px button + 6px gutter). */
-                padding-right: 32px;
             }
         }
         .compare-table thead .lang-name { display: block; }
@@ -829,37 +826,37 @@
                 "Noto Sans Coptic", "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
-        /* Per-column delete button. Default (mobile): inline-with-text
-           small button — original pre-PC-redesign look. PC override at
-           the min-width:601px block below upgrades it to an absolute-
-           positioned circular button at the top-right corner of the th. */
-        .compare-table thead .remove-col {
-            background: none; border: none; cursor: pointer; color: #bbb;
-            font-size: 13px; padding: 0; margin-left: 4px; vertical-align: super;
+        /* Per-column delete control. Previously a ×-glyph absolute-
+           positioned inside the <th>; now relocated to a dedicated
+           bottom row (.compare-remove-row) so the header stays clean
+           and the delete affordance is consistently sized on mobile
+           and PC. The button keeps the .remove-col class so the existing
+           click handler in renderCompare() still binds. */
+        .compare-table .compare-remove-row td {
+            text-align: center;
+            padding: 8px 6px;
+            border-bottom: none;
+            vertical-align: middle;
         }
-        .compare-table thead .remove-col:hover { color: #d33; }
-        @media (min-width: 601px) {
-            /* PC: bigger tap target at the top-right of the header. The
-               parent <th> is already position:sticky (positioning context
-               for absolute children), so we do NOT add position:relative
-               — that would override sticky and let top:44px push the row
-               down by 44px. */
-            .compare-table thead .remove-col {
-                position: absolute; top: 2px; right: 4px;
-                width: 22px; height: 22px; padding: 0;
-                background: rgba(255,255,255,0.7);
-                border: 1px solid #d0d0d0; border-radius: 50%;
-                color: #888;
-                font-size: 16px; line-height: 1;
-                margin-left: 0; vertical-align: baseline;
-                display: inline-flex; align-items: center; justify-content: center;
-                transition: background-color 0.12s, color 0.12s, border-color 0.12s;
-            }
-            .compare-table thead .remove-col:hover {
-                background: #fdecea; color: #c0392b; border-color: #f0a99b;
-            }
-            .compare-table thead .remove-col:active { transform: scale(0.94); }
+        .compare-table .compare-remove-row .remove-col {
+            background: #fff;
+            border: 1px solid #d0d0d0;
+            border-radius: 12px;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 14px;
+            margin: 0;
+            line-height: 1.4;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: background-color 0.12s, color 0.12s, border-color 0.12s;
         }
+        .compare-table .compare-remove-row .remove-col:hover {
+            background: #fdecea; color: #c0392b; border-color: #f0a99b;
+        }
+        .compare-table .compare-remove-row .remove-col:active { transform: scale(0.96); }
         .compare-table tbody th { background: #fafafa; font-weight: 600; min-width: 80px; }
         .compare-table .surface { font-size: 14px; }
         .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
@@ -6042,29 +6039,29 @@
 
         // i18n labels for compare UI (subset; falls back to en)
         const COMPARE_I18N = {
-            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
-            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
-            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
-            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
-            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
-            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
-            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
-            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
-            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
-            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
-            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
-            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
-            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
-            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
-            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
-            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
-            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages', del:'Remove' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで', del:'削除' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어', del:'제거' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言', del:'移除' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言', del:'移除' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ', del:'Xóa' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา', del:'ลบ' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa', del:'Hapus' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं', del:'हटाएं' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen', del:'Entfernen' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', del:'Retirer' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', del:'Rimuovi' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', del:'Убрать' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', del:'Вилучити' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', del:'إزالة' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות', del:'הסר' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi', del:'Ondoa' },
         };
         function compareT(key) {
             const base = uiLang.split('_')[0];
@@ -6179,7 +6176,6 @@
                 html += '<th draggable="true" data-code="' + escapeHtml(code) + '" data-idx="' + idx + '" title="Drag to reorder">'
                      + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
                      + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
-                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
                      + '</th>';
             }
             html += '</tr></thead><tbody>';
@@ -6200,6 +6196,16 @@
                 }
                 html += '</tr>';
             }
+            // Per-column delete row — replaces the old ×-in-header.
+            // Same .remove-col class so the existing click handler binds.
+            const delLabel = compareT('del');
+            html += '<tr class="compare-remove-row"><th scope="row"></th>';
+            for (const code of _compareList) {
+                const lang = LANG_DATA[code];
+                const display = (lang && (names[code] || lang.name)) || code;
+                html += '<td><button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="' + escapeHtml(delLabel + ' ' + display) + '">' + escapeHtml(delLabel) + '</button></td>';
+            }
+            html += '</tr>';
             html += '</tbody></table>';
             body.innerHTML = html;
             // Wire interactions
