@@ -1260,3 +1260,52 @@ select:focus { border-color: #4a90d9; outline: none; }
     color: #999;
 }
 .seg-move-btn:hover { background: #f0f2f5; color: #333; }
+
+/* ============================================================
+   Chrome-toggle button (clean-view mode) — 2026-05-26
+   Spec: docs/superpowers/specs/2026-05-26-chrome-toggle-design.md
+   ============================================================ */
+.chrome-toggle-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background: transparent; border: 1px solid #d0d0d0; border-radius: 6px;
+    color: #444;
+    cursor: pointer; user-select: none;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    padding: 0;
+    margin-left: 8px;
+}
+.chrome-toggle-btn:hover { background: #f3f4f6; }
+.chrome-toggle-btn:focus-visible { outline: 2px solid #4a6cf7; outline-offset: 2px; }
+.chrome-toggle-btn:active { background: #e5e7eb; }
+body.chrome-hidden .chrome-toggle-btn {
+    background: #1a73e8; color: #fff; border-color: #1a73e8;
+}
+.chrome-toggle-btn .icon-on,
+.chrome-toggle-btn .icon-off { width: 20px; height: 20px; display: block; }
+.chrome-toggle-btn .icon-off { display: none; }
+body.chrome-hidden .chrome-toggle-btn .icon-on  { display: none; }
+body.chrome-hidden .chrome-toggle-btn .icon-off { display: block; }
+
+/* Hide map-chrome components when toggled OFF. !important wins over
+   per-component display rules (e.g. .compare-fab.visible { display: inline-flex }). */
+body.chrome-hidden #word-select,
+body.chrome-hidden #word-definition,
+body.chrome-hidden #era-filter-row,
+body.chrome-hidden .lang-search-wrap,
+body.chrome-hidden #compare-fab,
+body.chrome-hidden .url-watermark {
+    display: none !important;
+}
+
+/* Pre-body-class state for FOUC avoidance: same hide rules apply when
+   <html data-wm-chrome="hidden"> is set by the head script (Task 2 Step 1).
+   Cleared once Task 2 Step 3's body-class transfer runs. */
+html[data-wm-chrome="hidden"] body #word-select,
+html[data-wm-chrome="hidden"] body #word-definition,
+html[data-wm-chrome="hidden"] body #era-filter-row,
+html[data-wm-chrome="hidden"] body .lang-search-wrap,
+html[data-wm-chrome="hidden"] body #compare-fab,
+html[data-wm-chrome="hidden"] body .url-watermark {
+    display: none !important;
+}

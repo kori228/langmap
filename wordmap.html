@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=84">
+    <link rel="stylesheet" href="styles.css?v=85">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -1870,12 +1870,29 @@
             background: rgba(255,213,93,0.35);
         }
     </style>
+    <script>
+        // Chrome-toggle FOUC avoidance: stash the persisted choice on <html>
+        // before <body> parses. Paired with html[data-wm-chrome="hidden"]
+        // rules in styles.css. The body-class transfer happens in Step 3.
+        // Spec: docs/superpowers/specs/2026-05-26-chrome-toggle-design.md
+        (function () {
+            try {
+                if (localStorage.getItem('wm-chrome-hidden') === '1') {
+                    document.documentElement.dataset.wmChrome = 'hidden';
+                }
+            } catch (e) { /* localStorage blocked (private-browsing iOS Safari) — silent */ }
+        })();
+    </script>
 </head>
 <body>
     <!-- Header -->
     <div class="site-header-bar">
         <a href="wordmap.html" class="logo">LangMap</a>
         <input type="checkbox" id="hdr-menu-toggle" class="hdr-menu-toggle" aria-label="Menu toggle">
+        <button type="button" id="chrome-toggle" class="chrome-toggle-btn" aria-label="Hide UI overlays" title="Hide UI overlays">
+            <svg class="icon-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </button>
         <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0">☰</label>
         <div class="header-collapse" id="header-collapse">
             <nav class="header-nav">
@@ -2170,6 +2187,66 @@
         apply();
         mq.addEventListener('change', apply);
     })();
+    </script>
+    <script>
+        // Chrome-toggle: click handler + positioning + FOUC body-class transfer.
+        // Spec: docs/superpowers/specs/2026-05-26-chrome-toggle-design.md
+        (function () {
+            const btn = document.getElementById('chrome-toggle');
+            if (!btn) return;
+            const headerBar = document.querySelector('.site-header-bar');
+            const hamburgerBtn = headerBar && headerBar.querySelector('.hamburger-btn');
+
+            // Part 2 of FOUC: transfer html[data-wm-chrome] to body.chrome-hidden
+            // now that <body> exists. Then clear the html marker so the
+            // pre-body CSS rules cease to apply (body.chrome-hidden takes over).
+            if (document.documentElement.dataset.wmChrome === 'hidden') {
+                document.body.classList.add('chrome-hidden');
+                delete document.documentElement.dataset.wmChrome;
+            }
+
+            // Position the button. On mobile (≤640px) it sits just LEFT of
+            // the hamburger button. On PC the hamburger is display:none, so
+            // moving chrome-toggle to be the LAST child of .site-header-bar
+            // puts it visually at the rightmost (after .header-url).
+            function positionChromeToggle() {
+                if (!headerBar || !hamburgerBtn) return;
+                const isMobile = window.matchMedia('(max-width: 640px)').matches;
+                if (isMobile) {
+                    if (btn.nextElementSibling !== hamburgerBtn) {
+                        headerBar.insertBefore(btn, hamburgerBtn);
+                    }
+                } else {
+                    if (btn !== headerBar.lastElementChild) {
+                        headerBar.appendChild(btn);
+                    }
+                }
+            }
+            positionChromeToggle();
+            window.addEventListener('resize', positionChromeToggle);
+
+            // Click toggles state + persists + refreshes labels.
+            function refreshLabels() {
+                const hidden = document.body.classList.contains('chrome-hidden');
+                const key = hidden ? 'chromeToggleShow' : 'chromeToggleHide';
+                const label = (typeof i18n === 'function') ? i18n(key) : (hidden ? 'Show UI overlays' : 'Hide UI overlays');
+                btn.setAttribute('aria-label', label);
+                btn.setAttribute('title', label);
+            }
+            btn.addEventListener('click', function () {
+                document.body.classList.toggle('chrome-hidden');
+                try {
+                    localStorage.setItem('wm-chrome-hidden',
+                        document.body.classList.contains('chrome-hidden') ? '1' : '0');
+                } catch (e) { /* silent — toggle still works for the session */ }
+                refreshLabels();
+            });
+            refreshLabels();
+
+            // Re-apply labels when UI lang changes. Hook into applyUILang()
+            // via a small global (Step 5 wires the call site).
+            window.__refreshChromeToggleLabels = refreshLabels;
+        })();
     </script>
 
     <!-- Era-filter-row shim: move the lang-filter FAB (created by
@@ -2574,7 +2651,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    84,
+            styles:    85,
             data:      220,
             metaI18n:  15,
             filter:    31,
@@ -2731,6 +2808,8 @@
                 pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
+            chromeToggleHide: { en: 'Hide UI overlays', ja: 'UI を隠す', ko: 'UI 숨기기', zh: '隐藏 UI 覆盖层', yue: '隱藏 UI 覆蓋', vi: 'Ẩn lớp phủ UI', th: 'ซ่อนชั้น UI', id: 'Sembunyikan UI', hi: 'UI ओवरले छिपाएँ', de: 'UI ausblenden', fr: 'Masquer l’UI', it: 'Nascondi UI', es: 'Ocultar UI', pt: 'Ocultar UI', ru: 'Скрыть UI', uk: 'Сховати UI', ar: 'إخفاء واجهة المستخدم', he: 'הסתר את ממשק המשתמש', sw: 'Ficha UI' },
+            chromeToggleShow: { en: 'Show UI overlays', ja: 'UI を表示', ko: 'UI 표시', zh: '显示 UI 覆盖层', yue: '顯示 UI 覆蓋', vi: 'Hiện lớp phủ UI', th: 'แสดงชั้น UI', id: 'Tampilkan UI', hi: 'UI ओवरले दिखाएँ', de: 'UI einblenden', fr: 'Afficher l’UI', it: 'Mostra UI', es: 'Mostrar UI', pt: 'Mostrar UI', ru: 'Показать UI', uk: 'Показати UI', ar: 'إظهار واجهة المستخدم', he: 'הצג את ממשק המשתמש', sw: 'Onyesha UI' },
             // Audit Task 106: ARIA labels for top-bar controls (now full UI-lang coverage)
             ariaSelectWord:    { en:'Select word', ja:'単語を選択', ko:'단어 선택', zh:'选择词', yue:'選擇詞', vi:'Chọn từ', th:'เลือกคำ', id:'Pilih kata', hi:'शब्द चुनें', de:'Wort wählen', fr:'Sélectionner un mot', it:'Seleziona parola', es:'Seleccionar palabra', pt:'Selecionar palavra', ru:'Выбрать слово', uk:'Вибрати слово', ar:'اختر كلمة', he:'בחר מילה', sw:'Chagua neno' },
             ariaUiLanguage:    { en:'UI language', ja:'UI 言語', ko:'UI 언어', zh:'界面语言', yue:'介面語言', vi:'Ngôn ngữ giao diện', th:'ภาษาส่วนติดต่อ', id:'Bahasa antarmuka', hi:'UI भाषा', de:'UI-Sprache', fr:'Langue de l\'interface', it:'Lingua dell\'interfaccia', es:'Idioma de interfaz', pt:'Idioma da interface', ru:'Язык интерфейса', uk:'Мова інтерфейсу', ar:'لغة الواجهة', he:'שפת ממשק', sw:'Lugha ya kiolesura' },
@@ -3107,6 +3186,9 @@
                 && typeof renderTriviaArticle === 'function'
                 && tModal.dataset.articleId) {
                 renderTriviaArticle(tModal.dataset.articleId);
+            }
+            if (typeof window.__refreshChromeToggleLabels === 'function') {
+                window.__refreshChromeToggleLabels();
             }
         }
         // Expose so the era-label viewport shim (outside the IIFE) can
