@@ -1002,6 +1002,11 @@
             background: rgba(255,255,255,0.75); padding: 3px 8px;
             border-radius: 0 4px 0 0;
             display: flex; align-items: center; gap: 4px;
+            /* Pin line-height so iOS Safari doesn't apply Hiragino's
+               ~1.5 default to this Latin-only credit strip — the row
+               was visibly taller than on May 24 once body's blanket
+               line-height: 1.4 was removed. */
+            line-height: 1.2;
         }
         .url-watermark a { pointer-events: auto; }
 
