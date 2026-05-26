@@ -4119,7 +4119,12 @@
                 && _focusedPanel.classList.contains('visible'))
                 ? _focusedPanel.dataset.code : null;
             const _spotlight = (typeof _triviaSpotlight !== 'undefined') ? _triviaSpotlight : null;
-            const _collisionOrder = allRenderable.filter(c => ppx[c]).slice();
+            // When a filter is active, exclude filtered-out (dimmed) langs
+            // from the collision pass: they render at their natural marker
+            // position (offsets[code] = (0,0) from earlier — cellGroups
+            // already excluded them), don't push filtered-in langs around,
+            // and don't get hidden themselves. (User request 2026-05-26.)
+            const _collisionOrder = allRenderable.filter(c => ppx[c] && isActive(c)).slice();
             _collisionOrder.sort((a, b) => {
                 // Focused (lang-info modal open on it) wins outright.
                 if (_focusedCode) {
