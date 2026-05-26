@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=93">
+    <link rel="stylesheet" href="styles.css?v=94">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -787,11 +787,17 @@
         /* Default (mobile): table fills the panel. PC override at the
            min-width:601px block below uses width:auto so columns size to
            content. */
-        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.3; }
         .compare-table th, .compare-table td {
             border-bottom: 1px solid #eee; padding: 6px 10px;
             text-align: left; vertical-align: top;
         }
+        /* Stacked form + IPA inside each cell: explicit line-height
+           so iOS Safari's Hiragino leading doesn't inflate the row.
+           The two divs use slightly different metrics — form is the
+           surface word (font-size inherited), IPA is smaller. */
+        .compare-table .wm-form { line-height: 1.25; }
+        .compare-table .wm-ipa  { line-height: 1.2; font-size: 11px; color: #777; }
         .compare-table thead th {
             background: #f8f9fa; position: sticky; top: 44px; z-index: 1;
             font-weight: 600;
@@ -2660,7 +2666,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    93,
+            styles:    94,
             data:      220,
             metaI18n:  15,
             filter:    32,
