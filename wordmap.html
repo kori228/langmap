@@ -4006,7 +4006,7 @@
             // with them. Pull those adjacent labels into the same stack.
             // (User report 2026-05-22: "2つがもっと離れていますが、離れた
             // 後にその場所にある別の言語と表示が被ってしまっているケース".)
-            const STACK_UNIT = labelH + 14;
+            const STACK_UNIT = labelH + 6;
             let _mergeChanged = true;
             let _mergeIter = 0;
             while (_mergeChanged && _mergeIter < 5) {
@@ -4148,11 +4148,14 @@
                 if (sb !== sa) return sb - sa;
                 return a < b ? -1 : a > b ? 1 : 0;
             });
-            // Conservative bounding-box half-extents. Width uses 40% of
-            // labelW (labels are usually 50-60% of labelW in practice),
-            // height matches labelH plus a small safety margin.
-            const _bbHalfW = labelW * 0.4;
-            const _bbHalfH = labelH * 0.5 + 2;
+            // Bounding-box half-extents for the collision pass.
+            // Width was 0.4 (80% labelW total); reduced to 0.3 (60% labelW)
+            // per user request 2026-05-26 — labels can sit closer
+            // horizontally without visual overlap since real native-name
+            // text is usually 50-60% of labelW. Height was 0.5+2 (labelH+4);
+            // reduced to 0.4+1 (~0.8*labelH+2) for tighter vertical packing.
+            const _bbHalfW = labelW * 0.3;
+            const _bbHalfH = labelH * 0.4 + 1;
             // Cap on how far the collision pass can push a label from its
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
