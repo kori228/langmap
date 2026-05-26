@@ -1287,6 +1287,27 @@ body.chrome-hidden .chrome-toggle-btn {
 body.chrome-hidden .chrome-toggle-btn .icon-on  { display: none; }
 body.chrome-hidden .chrome-toggle-btn .icon-off { display: block; }
 
+/* PC: chrome-toggle lives ABOVE the zoom buttons inside .right-controls.
+   Match the round shape of the 2D/3D toggle so the right-edge column
+   reads as one consistent button stack [chrome-toggle][zoom +/-][2D][gear].
+   margin-left:8px (default) doesn't apply inside the right-controls
+   flex column — its `align-items: center` handles horizontal placement. */
+.right-controls > .chrome-toggle-btn {
+    margin-left: 0;
+    border-radius: 50%;
+}
+
+/* Mobile: chrome-toggle sits BETWEEN trivia and hamburger.
+   User-requested order: [LangMap] [trivia] [gap] [chrome-toggle] [hamburger].
+   Achieved by removing the auto margin from trivia (was pushing the
+   trivia/chrome/hamburger group rightward together) and giving it to
+   chrome-toggle instead (now chrome-toggle absorbs free space, pushing
+   itself + hamburger to the right while trivia stays near LangMap). */
+@media (max-width: 640px) {
+    .site-header-bar > .trivia-btn { margin-left: 8px; }
+    .site-header-bar > .chrome-toggle-btn { margin-left: auto; }
+}
+
 /* Hide map-chrome components when toggled OFF. !important wins over
    per-component display rules (e.g. .compare-fab.visible { display: inline-flex }). */
 body.chrome-hidden #word-select,

@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=86">
+    <link rel="stylesheet" href="styles.css?v=87">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -2206,9 +2206,17 @@
             }
 
             // Position the button. On mobile (≤640px) it sits just LEFT of
-            // the hamburger button. On PC the hamburger is display:none, so
-            // moving chrome-toggle to be the LAST child of .site-header-bar
-            // puts it visually at the rightmost (after .header-url).
+            // the hamburger button (between trivia and hamburger; trivia's
+            // margin-left:auto override sends it left, chrome-toggle's own
+            // margin-left:auto pushes it right against the hamburger).
+            // On PC the chrome-toggle moves into .right-controls ABOVE the
+            // zoom buttons so it lives in the same right-edge column as
+            // zoom/2D/gear — keeps the header from getting taller and
+            // makes the toggle position constant across ON/OFF states
+            // (otherwise on OFF state, with header-collapse hidden, the
+            // toggle would jump leftward to sit next to LangMap).
+            const rightControls = document.querySelector('.right-controls');
+            const mapZoomControls = document.getElementById('map-zoom');
             function positionChromeToggle() {
                 if (!headerBar || !hamburgerBtn) return;
                 const isMobile = window.matchMedia('(max-width: 640px)').matches;
@@ -2216,9 +2224,9 @@
                     if (btn.nextElementSibling !== hamburgerBtn) {
                         headerBar.insertBefore(btn, hamburgerBtn);
                     }
-                } else {
-                    if (btn !== headerBar.lastElementChild) {
-                        headerBar.appendChild(btn);
+                } else if (rightControls && mapZoomControls) {
+                    if (btn !== rightControls.firstElementChild) {
+                        rightControls.insertBefore(btn, mapZoomControls);
                     }
                 }
             }
@@ -2651,7 +2659,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    86,
+            styles:    87,
             data:      220,
             metaI18n:  15,
             filter:    31,
