@@ -1293,10 +1293,10 @@
             flex: 0 0 auto;
             display: flex; justify-content: flex-end; align-items: center;
             gap: 6px;
-            /* No top padding — user 2026-05-27 wanted the header flush
-               with the modal's top edge (a 1-2px iOS gap was visible).
-               Bottom keeps the breathing room from the article body. */
-            padding: 0 10px 6px;
+            /* Symmetric vertical padding so the close × isn't crammed
+               against the modal top edge. The original concern about
+               a 1-2px "gap" was the natural breathing room — keep it. */
+            padding: 6px 10px;
         }
         .trivia-scroll {
             flex: 1 1 auto;
@@ -1632,9 +1632,8 @@
                value is 8px 32px 28px which feels too generous on phones. */
             .trivia-scroll { padding: 6px 16px 18px; }
             .trivia-modal.compact .trivia-scroll { padding: 4px 14px 16px; }
-            /* Mobile mirror of the desktop rule: no top padding, bottom
-               padding keeps the article body off the header. */
-            .trivia-modal-tools { padding: 0 8px 4px; }
+            /* Mobile mirror of the symmetric desktop rule. */
+            .trivia-modal-tools { padding: 4px 8px; }
             /* Sources are reference metadata, not primary reading. Drop a
                size on mobile so they take less vertical room and signal
                their secondary status more clearly. */
