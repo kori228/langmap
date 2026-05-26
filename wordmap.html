@@ -869,22 +869,25 @@
         }
         .compare-table .compare-remove-row .remove-col .rc-label { display: none; }
         .compare-table .compare-remove-row .remove-col .rc-icon  {
-            display: block;
-            /* iOS Safari Helvetica positions the × glyph above its
-               cap-height visual centre; with flex-align-items:center
-               the box centres but the × looks shifted UP. Push down 1px
-               so the visual stroke crosses through the button centre. */
+            /* SVG × — geometric centering, no font-metric drift.
+               Inline-flex so the SVG's 14×14 box is itself flex-centred
+               inside the round 30px button. */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             line-height: 1;
-            margin-top: 1px;
         }
+        .compare-table .compare-remove-row .remove-col .rc-icon svg { display: block; }
         @media (min-width: 601px) {
             /* PC: text pill with the localized delete label (削除 / Remove …).
-               Top-heavy padding (6/3) biases content down to compensate
-               for iOS-style baseline-offset in flex-centred buttons; on
-               Chrome desktop the 3-pixel difference is imperceptible. */
+               Aggressive top-heavy padding (9/1) biases the content
+               markedly down to cancel iOS Safari's persistent
+               button-baseline offset on Latin text — Chrome desktop
+               readers see the text just-below-centre which still reads
+               as centred at this size. */
             .compare-table .compare-remove-row .remove-col {
                 width: auto; height: auto; min-height: 28px;
-                padding: 6px 14px 3px;
+                padding: 9px 14px 1px;
                 border-radius: 14px;
                 font-size: 12px;
                 font-weight: 500;
@@ -1274,10 +1277,10 @@
             flex: 0 0 auto;
             display: flex; justify-content: flex-end; align-items: center;
             gap: 6px;
-            /* Symmetric vertical padding so the header doesn't visually
-               collide with the article body underneath (user 2026-05-17:
-               "header bottom margin is 0; match the top"). */
-            padding: 6px 10px;
+            /* No top padding — user 2026-05-27 wanted the header flush
+               with the modal's top edge (a 1-2px iOS gap was visible).
+               Bottom keeps the breathing room from the article body. */
+            padding: 0 10px 6px;
         }
         .trivia-scroll {
             flex: 1 1 auto;
@@ -1613,10 +1616,9 @@
                value is 8px 32px 28px which feels too generous on phones. */
             .trivia-scroll { padding: 6px 16px 18px; }
             .trivia-modal.compact .trivia-scroll { padding: 4px 14px 16px; }
-            /* Match the desktop symmetric vertical padding so the header
-               doesn't crash into the article body on mobile either
-               (user 2026-05-17). */
-            .trivia-modal-tools { padding: 4px 8px; }
+            /* Mobile mirror of the desktop rule: no top padding, bottom
+               padding keeps the article body off the header. */
+            .trivia-modal-tools { padding: 0 8px 4px; }
             /* Sources are reference metadata, not primary reading. Drop a
                size on mobile so they take less vertical room and signal
                their secondary status more clearly. */
@@ -6252,7 +6254,7 @@
             for (const code of _compareList) {
                 const lang = LANG_DATA[code];
                 const display = (lang && (names[code] || lang.name)) || code;
-                html += '<td><button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="' + escapeHtml(delLabel + ' ' + display) + '"><span class="rc-label">' + escapeHtml(delLabel) + '</span><span class="rc-icon" aria-hidden="true">×</span></button></td>';
+                html += '<td><button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="' + escapeHtml(delLabel + ' ' + display) + '"><span class="rc-label">' + escapeHtml(delLabel) + '</span><span class="rc-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span></button></td>';
             }
             html += '</tr>';
             html += '</tbody></table>';
