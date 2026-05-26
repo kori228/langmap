@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=96">
+    <link rel="stylesheet" href="styles.css?v=97">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -880,14 +880,12 @@
         .compare-table .compare-remove-row .remove-col .rc-icon svg { display: block; }
         @media (min-width: 601px) {
             /* PC: text pill with the localized delete label (削除 / Remove …).
-               Aggressive top-heavy padding (9/1) biases the content
-               markedly down to cancel iOS Safari's persistent
-               button-baseline offset on Latin text — Chrome desktop
-               readers see the text just-below-centre which still reads
-               as centred at this size. */
+               Symmetric padding — without the buggy global appearance:none,
+               iOS Safari uses its native button baseline which centres
+               text correctly on its own. */
             .compare-table .compare-remove-row .remove-col {
                 width: auto; height: auto; min-height: 28px;
-                padding: 9px 14px 1px;
+                padding: 4px 14px;
                 border-radius: 14px;
                 font-size: 12px;
                 font-weight: 500;
@@ -1356,6 +1354,20 @@
                 border-left: none;
                 border-top: 5px solid #b8860b;
             }
+        }
+        /* iOS Safari quirk: <button> elements get a different default
+           baseline than other browsers — text appears nudged upward
+           inside flex-centered rounded buttons. -webkit-appearance:none
+           disables iOS's button rendering, after which inline-flex +
+           align-items:center centers the text the way we expect.
+           Scoped to .trivia-modal button so we don't blanket-strip
+           iOS native chrome from every button on the page — that
+           regressed text centring in .compare-clear / .compare-close
+           and the new compare-remove-row buttons, which had been
+           relying on iOS's own button text-positioning. */
+        .trivia-modal button {
+            -webkit-appearance: none;
+            appearance: none;
         }
         /* Close × sits inside .trivia-modal-tools (flex row), NOT
            absolute — otherwise it floats outside the row and leaves
@@ -2713,7 +2725,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:    96,
+            styles:    97,
             data:      220,
             metaI18n:  15,
             filter:    32,

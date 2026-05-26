@@ -11,19 +11,6 @@ html {
     text-size-adjust: 100%;
 }
 
-/* iOS Safari renders <button> with its own internal baseline metrics —
-   text inside flex-centered rounded buttons (compare FAB, modal close ×,
-   toggle chips, trivia nav) appears nudged upward vs Chrome.
-   -webkit-appearance:none drops iOS's native button chrome so the text
-   uses normal text-layout; combined with each button's existing
-   inline-flex + align-items:center this centers the label as expected.
-   Every button in this codebase is custom-styled, so dropping native
-   chrome globally is safe. */
-button {
-    -webkit-appearance: none;
-    appearance: none;
-}
-
 body {
     /* Tibetan: no "Noto Sans Tibetan" exists on Google Fonts, so we use
        Noto Serif Tibetan + system Tibetan fallbacks (Kailasa = iOS,
