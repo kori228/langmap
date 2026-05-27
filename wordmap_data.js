@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 990 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 1000 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -4783,10 +4783,31 @@ const LANG_DATA = {
 },
 
 
+
 // === Pass 65: 42 new languages added via parallel agents ===
+  alq: { name: 'Algonquin', native: 'Anishinàbemiwin', lat: 47.45, lng: -78.8,
+},
+  ckv: { name: 'Kavalan', native: 'Kebalan', lat: 24.32, lng: 121.81,
+},
+  haj: { name: 'Hajong', native: 'হাজং', lat: 25.5, lng: 90.27,
+},
+  kzj: { name: 'Coastal Kadazan', native: 'Boos Momogun', lat: 5.97, lng: 116.07,
+},
+  mez: { name: 'Menominee', native: 'Mamāceqtaw', lat: 44.91, lng: -88.74,
+},
   nan_xm: { name: 'Xiamen Hokkien', native: '厦门话', lat: 24.48, lng: 118.1,
 },
   nan_zz: { name: 'Zhangzhou Hokkien', native: '漳州话', lat: 24.51, lng: 117.65,
+},
+  osa: { name: 'Osage', native: '𐓏𐓘𐓻𐓘𐓻𐓟 𐒻𐓟', lat: 36.69, lng: -96.34,
+},
+  pgz: { name: 'Papuan Malay', native: 'Bahasa Melayu Papua', lat: -2.53, lng: 140.72,
+},
+  pot: { name: 'Potawatomi', native: 'Bodéwadmimwen', lat: 39.04, lng: -95.74,
+},
+  uun: { name: 'Kulon-Pazeh', native: 'Pazeh', lat: 24.27, lng: 120.95,
+},
+  wch: { name: 'Wichita', native: 'Kirikirʔis', lat: 35.05, lng: -98.4,
 },
   wuu_jh: { name: 'Jinhua Wu', native: '金华话', lat: 29.08, lng: 119.65,
 },
