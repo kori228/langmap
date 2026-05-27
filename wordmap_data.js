@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 991 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 1000 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -4847,6 +4847,27 @@ const LANG_DATA = {
   wls: { name: 'Wallisian', native: 'Faka\'uvea', lat: -13.28, lng: -176.18,
 },
   yug: { name: 'Yugh', native: 'Дюк', lat: 60.5, lng: 88.5,
+},
+
+
+// === Pass 65: 42 new languages added via parallel agents ===
+  nan_xm: { name: 'Xiamen Hokkien', native: '厦门话', lat: 24.48, lng: 118.1,
+},
+  nan_zz: { name: 'Zhangzhou Hokkien', native: '漳州话', lat: 24.51, lng: 117.65,
+},
+  wuu_jh: { name: 'Jinhua Wu', native: '金华话', lat: 29.08, lng: 119.65,
+},
+  wuu_jx: { name: 'Jiaxing Wu', native: '嘉兴话', lat: 30.75, lng: 120.76,
+},
+  yue_zs: { name: 'Zhongshan Yue', native: '中山白话', lat: 22.52, lng: 113.39,
+},
+  zh_cd: { name: 'Chengdu Mandarin', native: '成都话', lat: 30.67, lng: 104.07,
+},
+  zh_hf: { name: 'Hefei Mandarin', native: '合肥话', lat: 31.82, lng: 117.23,
+},
+  zh_kf: { name: 'Kaifeng Mandarin', native: '开封话', lat: 34.8, lng: 114.31,
+},
+  zh_nj: { name: 'Nanjing Mandarin', native: '南京话', lat: 32.06, lng: 118.8,
 },
 
 };
