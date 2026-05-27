@@ -1760,10 +1760,6 @@ const LANG_NAMES = {
     }
 
     const ADDED64 = {
-               vi: 'Tiếng Pijin', th: 'ภาษาพีจิน', id: 'Bahasa Pijin', hi: 'पिजिन',
-               de: 'Pijin', fr: 'Pijin', it: 'Pijin',
-               es_eu: 'Pijin', es_mx: 'Pijin', pt_eu: 'Pijin', pt_br: 'Pijin',
-               ru: 'Пиджин', uk: 'Піджин', ar: 'البيجين', he: 'פיג׳ין', sw: 'Kipijin' },
         wbt: { en: 'Warnman', ja: 'ワーンマン語', ko: '워언만어', zh: '瓦尔曼语', yue: '瓦爾曼語',
                vi: 'Tiếng Warnman', th: 'ภาษาวาร์นมัน', id: 'Bahasa Warnman', hi: 'वार्नमान',
                de: 'Warnman', fr: 'Warnman', it: 'Warnman',
