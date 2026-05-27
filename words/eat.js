@@ -334,6 +334,7 @@ WORDS.eat = {
     tpi: ["kaikai", "kajkaj"],
     ho: ["ania", "ania"],
     kmh: ["ñb", "ɲəb"],
+    nej: ["nei", "nei"],
     kmu: ["ne", "ne"],
     emi: ["anu", "anu"],
     hot: ["gen", "ɡen"],

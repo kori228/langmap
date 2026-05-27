@@ -334,6 +334,7 @@ WORDS.hello = {
     tpi: ["halo", "halo"],
     ho: ["kekehe", "kekehe"],
     kmh: ["ñn", "ɲən"],
+    nej: ["—", "—"],
     kmu: ["naipa", "naipa"],
     emi: ["emua", "emua"],
     hot: ["kaye", "kaje"],

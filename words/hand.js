@@ -334,6 +334,7 @@ WORDS.hand = {
     tpi: ["han", "han"],
     ho: ["imana", "imana"],
     kmh: ["tn", "tən"],
+    nej: ["—", "—"],
     kmu: ["azana", "azana"],
     emi: ["lima", "lima"],
     hot: ["mok", "mok"],

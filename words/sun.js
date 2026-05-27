@@ -340,6 +340,7 @@ WORDS.sun = {
     tpi: ["san", "san"],
     ho: ["dina", "dina"],
     kmh: ["nb", "nəb"],
+    nej: ["aatʌ", "aːtʌ"],
     kmu: ["suka", "suka"],
     emi: ["ariu", "aɾiu"],
     hot: ["ari", "aɾi"],

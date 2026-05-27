@@ -341,6 +341,7 @@ WORDS.water = {
     tpi: ["wara", "waɾa"],
     ho: ["ranu", "ranu"],
     kmh: ["ñeb", "ɲeb"],
+    nej: ["wai", "wai"],
     kmu: ["nai", "nai"],
     emi: ["eai", "eai"],
     hot: ["lua", "lua"],

@@ -334,6 +334,7 @@ WORDS.drink = {
     tpi: ["dring", "dɾiŋ"],
     ho: ["inua", "inua"],
     kmh: ["ñ-", "ɲə"],
+    nej: ["—", "—"],
     kmu: ["ne", "ne"],
     emi: ["inum", "inum"],
     hot: ["nun", "nun"],

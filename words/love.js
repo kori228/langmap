@@ -341,6 +341,7 @@ WORDS.love = {
     tpi: ["laikim", "lajkim"],
     ho: ["lalokau", "lalokaʊ"],
     kmh: ["kn-", "kən"],
+    nej: ["—", "—"],
     kmu: ["avesi", "avesi"],
     emi: ["talimi", "talimi"],
     hot: ["voŋ", "voŋ"],

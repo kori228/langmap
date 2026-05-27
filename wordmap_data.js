@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 935 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 936 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -776,7 +776,7 @@ const LANG_DATA = {
       tree:   { evidence: 'direct', source: 'Goldstein (2001) — ཤིང་སྡོང shing-sdong /ɕiŋtoŋ/ "tree"; compound ཤིང "wood/timber" + སྡོང "trunk/stem"', formType: 'compound', note: 'standard compound; bare ཤིང shing also means "wood/timber"' },
       house:  { evidence: 'direct', source: 'Goldstein (2001) — ཁང་པ khang-pa /kʰaŋpa˥/ "house"; aspirated initial → high tone' },
       dog:    { evidence: 'direct', source: 'Goldstein (2001) — ཁྱི khyi /kʰi˥/ "dog"; aspirated palatalized initial' },
-      cat:    { evidence: 'direct', source: 'Goldstein (2001) — ཞི་མི zhi-mi /ɕimi˥/ "cat"; written initial ཞ /ʑ/ → modern voiceless /ɕ/ with high tone (Lhasa devoicing)', note: 'Lhasa Tibetan devoiced the historical voiced fricative /ʑ/ to /ɕ/, preserved as the high-tone reflex' },
+      cat:    { evidence: 'direct', source: 'Goldstein (2001); Tournadre & Dorje (2003) — ཞི་མི zhi-mi /ɕimi˩˧/ "cat"; written initial ཞ /ʑ/ → modern voiceless /ɕ/ with low tone (Lhasa devoicing preserves the original low-register reflex)', note: 'parallel to ཟ za /sa˩˧/ "eat" above: historically voiced fricative initials devoice in Lhasa but retain the low tone of the voiced-series register per Tournadre §1.4' },
       hand:   { evidence: 'direct', source: 'Goldstein (2001) — ལག་པ lag-pa /lakpa˩˧/ "hand, arm"; classical ལག + nominalizer པ', formType: 'compound', note: 'covers both hand and arm; voiced initial /l/ → low tone' },
       eye:    { evidence: 'direct', source: 'Goldstein (2001) — མིག mig /mik˩˧/ "eye"; voiced /m/ initial → low tone' },
       hello:  { evidence: 'direct', source: 'Goldstein (2001) — བཀྲ་ཤིས་བདེ་ལེགས bkra-shis bde-legs /t͡ʂaɕi˥ telek˩˧/ "auspicious blessings"', formType: 'greeting-formula', note: 'literally "auspicious goodness"; pan-Tibetan greeting formula, also used in Bhutan/Ladakh' },
@@ -1268,6 +1268,10 @@ const LANG_DATA = {
   // Kalam — Trans-New Guinea (Madang, Kalam-Kobon), ~15K-20K, PNG (Madang/Western Highlands border, Schrader Range). Famous for "pandanus language" ritual register and exhaustive ethnobiological lexicon.
   // Sources: Ethnologue 27 'kmh'; Glottolog kala1397; Pawley & Bulmer (2011) Dictionary of Kalam (with ethnographic notes 1500+ pages).
   kmh: { name: 'Kalam', native: 'Kalam', lat: -5.05, lng: 144.55, // Schrader Range, Madang, PNG
+},
+  // Neko — Trans-New Guinea (Madang, Rai Coast — Yaganon family, close to Kalam-Kobon area), ~640 speakers, PNG (Madang Province — Rai Coast District). SOV word order, Latin script.
+  // Sources: Ethnologue 27 'nej'; Glottolog neko1242; Wiktionary; transnewguinea.org/language/neko.
+  nej: { name: 'Neko', native: 'Neko', lat: -5.85, lng: 145.95, // Rai Coast, Madang, PNG
 },
   // Kanite — Trans-New Guinea (Kainantu-Goroka, Kainantu — sister to Kamano, Yagaria, Gadsup within the Kainantu branch of Eastern Highlands), ~6K, PNG (Eastern Highlands Province — Kainantu District around Kanite hamlet/Henganofi area).
   // Sources: Ethnologue 27 'kmu'; Glottolog kani1281; McCarthy (1965) Kanite Phonology (SIL); Wurm (1975) Eastern Highlands languages.

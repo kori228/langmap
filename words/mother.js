@@ -340,6 +340,7 @@ WORDS.mother = {
     tpi: ["mama", "mama"],
     ho: ["sina", "sina"],
     kmh: ["ag", "aɡ"],
+    nej: ["—", "—"],
     kmu: ["nene", "nene"],
     emi: ["nia", "nia"],
     hot: ["ne", "ne"],

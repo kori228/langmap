@@ -340,6 +340,7 @@ WORDS.one = {
     tpi: ["wanpela", "wanpɛla"],
     ho: ["ta", "ta"],
     kmh: ["mdmagn", "mədmaɡən"],
+    nej: ["—", "—"],
     kmu: ["magoke", "maɡoke"],
     emi: ["esa", "esa"],
     hot: ["lon", "lon"],

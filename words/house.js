@@ -341,6 +341,7 @@ WORDS.house = {
     tpi: ["haus", "haʊs"],
     ho: ["ruma", "ruma"],
     kmh: ["kab", "kab"],
+    nej: ["—", "—"],
     kmu: ["no", "no"],
     emi: ["ulemi", "ulemi"],
     hot: ["ya", "ja"],

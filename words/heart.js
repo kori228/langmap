@@ -334,6 +334,7 @@ WORDS.heart = {
     tpi: ["hat", "hat"],
     ho: ["kudouna", "kudoʊna"],
     kmh: ["mngm", "məŋgəm"],
+    nej: ["—", "—"],
     kmu: ["agu", "agu"],
     emi: ["lalota", "lalota"],
     hot: ["mun", "mun"],

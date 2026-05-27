@@ -334,6 +334,7 @@ WORDS.eye = {
     tpi: ["ai", "aj"],
     ho: ["matana", "matana"],
     kmh: ["ck", "tʃək"],
+    nej: ["ta", "ta"],
     kmu: ["avu", "avu"],
     emi: ["mata", "mata"],
     hot: ["mata", "mata"],

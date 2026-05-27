@@ -334,6 +334,7 @@ WORDS.thanks = {
     tpi: ["tenkyu", "tɛŋkju"],
     ho: ["tanikiu", "tanikiʊ"],
     kmh: ["ñib", "ɲib"],
+    nej: ["—", "—"],
     kmu: ["susu", "susu"],
     emi: ["poasi", "poasi"],
     hot: ["fau", "fau"],

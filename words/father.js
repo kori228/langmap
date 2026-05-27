@@ -334,6 +334,7 @@ WORDS.father = {
     tpi: ["papa", "papa"],
     ho: ["tama", "tama"],
     kmh: ["mam", "mam"],
+    nej: ["—", "—"],
     kmu: ["nafa", "nafa"],
     emi: ["tama", "tama"],
     hot: ["ma", "ma"],

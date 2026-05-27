@@ -340,6 +340,7 @@ WORDS.fire = {
     tpi: ["paia", "paja"],
     ho: ["lahi", "lahi"],
     kmh: ["nged", "ŋged"],
+    nej: ["titɛ", "titɛ"],
     kmu: ["lo", "lo"],
     emi: ["kapok", "kapok"],
     hot: ["eve", "eve"],

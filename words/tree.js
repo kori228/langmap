@@ -334,6 +334,7 @@ WORDS.tree = {
     tpi: ["diwai", "diwaj"],
     ho: ["au", "aʊ"],
     kmh: ["mon", "mon"],
+    nej: ["tei", "tei"],
     kmu: ["yafa", "jafa"],
     emi: ["rikei", "ɾikei"],
     hot: ["len", "len"],

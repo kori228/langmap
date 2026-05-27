@@ -334,6 +334,7 @@ WORDS.good = {
     tpi: ["gutpela", "ɡutpɛla"],
     ho: ["namo", "namo"],
     kmh: ["kayb", "kajb"],
+    nej: ["—", "—"],
     kmu: ["knaga", "knaɡa"],
     emi: ["rop", "ɾop"],
     hot: ["vovo", "vovo"],

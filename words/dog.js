@@ -334,6 +334,7 @@ WORDS.dog = {
     tpi: ["dok", "dok"],
     ho: ["sisia", "sisia"],
     kmh: ["kayn", "kajn"],
+    nej: ["gonʌ", "ɡonʌ"],
     kmu: ["ovava", "ovava"],
     emi: ["kovur", "kovuɾ"],
     hot: ["nyam", "ɲam"],

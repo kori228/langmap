@@ -340,6 +340,7 @@ WORDS.moon = {
     tpi: ["mun", "mun"],
     ho: ["hua", "hua"],
     kmh: ["ñag", "ɲaɡ"],
+    nej: ["—", "—"],
     kmu: ["ika", "ika"],
     emi: ["malam", "malam"],
     hot: ["kalam", "kalam"],
