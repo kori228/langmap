@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 978 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 991 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -4818,6 +4818,35 @@ const LANG_DATA = {
   zh_km: { name: 'Kunming Mandarin', native: '昆明话', lat: 25.04, lng: 102.72,
 },
   zh_xa: { name: 'Xi\'an Mandarin', native: '西安话', lat: 34.27, lng: 108.93,
+},
+
+
+// === Pass 65: 42 new languages added via parallel agents ===
+  bbl: { name: 'Bats', native: 'ბაცბური მოტტ', lat: 42.1, lng: 45.65,
+},
+  bzg: { name: 'Babuza', native: 'Favorlang', lat: 23.95, lng: 120.46,
+},
+  dru: { name: 'Rukai', native: 'Drekay', lat: 22.74, lng: 120.71,
+},
+  hup: { name: 'Hupa', native: 'Na:tinixwe Mixine:whe’', lat: 41.1, lng: -123.65,
+},
+  kfa: { name: 'Kodava', native: 'ಕೊಡವ ತಕ್ಕ್', lat: 12.42, lng: 75.74,
+},
+  kfr: { name: 'Kachhi', native: 'કચ્છી', lat: 23.25, lng: 69.66,
+},
+  kry: { name: 'Kryts', native: 'кърыцӀаз кьеланджи', lat: 41.19, lng: 48.27,
+},
+  lrr: { name: 'Southern Luri', native: 'لوری جنوبی', lat: 30.4, lng: 51.55,
+},
+  osc: { name: 'Oscan', native: 'Oscan', lat: 40.75, lng: 14.49,
+},
+  pkp: { name: 'Pukapukan', native: 'Te Reo Pukapuka', lat: -10.88, lng: -165.83,
+},
+  qxq: { name: 'Qashqai', native: 'Qašqāyī (قشقایی)', lat: 29.62, lng: 52.54,
+},
+  wls: { name: 'Wallisian', native: 'Faka\'uvea', lat: -13.28, lng: -176.18,
+},
+  yug: { name: 'Yugh', native: 'Дюк', lat: 60.5, lng: 88.5,
 },
 
 };
