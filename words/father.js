@@ -672,7 +672,6 @@ WORDS.father = {
     tdt: ["papa", "papa"],
     aoz: ["amat", "amat"],
     bi: ["papa", "papa"],
-    pip: ["dadi", "dadi"],
     pjt: ["mama", "mama"],
     wbp: ["kirda", "kiɻda"],
     piu: ["mama", "mama"],

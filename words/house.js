@@ -679,7 +679,6 @@ WORDS.house = {
     tdt: ["uma", "uma"],
     aoz: ["ume", "ume"],
     bi: ["haos", "haos"],
-    pip: ["haos", "haos"],
     pjt: ["ngura", "ŋuɻa"],
     wbp: ["ngurra", "ŋuɻa"],
     piu: ["ngura", "ŋuɻa"],

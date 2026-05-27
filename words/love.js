@@ -679,7 +679,6 @@ WORDS.love = {
     tdt: ["domin", "domin"],
     aoz: ["nekat", "nekat"],
     bi: ["laekem", "laekem"],
-    pip: ["lavem", "lavem"],
     pjt: ["mukulya", "mukulja"],
     wbp: ["jaru", "dʒaɻu"],
     piu: ["mukulya", "mukulja"],

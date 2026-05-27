@@ -678,7 +678,6 @@ WORDS.moon = {
     tdt: ["fulan", "fulan"],
     aoz: ["fun", "fun"],
     bi: ["mun", "mun"],
-    pip: ["mun", "mun"],
     pjt: ["pira", "piɻa"],
     wbp: ["pirli", "piɻli"],
     piu: ["pira", "piɻa"],

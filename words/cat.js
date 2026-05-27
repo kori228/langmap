@@ -672,7 +672,6 @@ WORDS.cat = {
     tdt: ["busa", "busa"],
     aoz: ["mose", "mose"],
     bi: ["pusi", "pusi"],
-    pip: ["pusi", "pusi"],
     pjt: ["ngaya", "ŋaja"],
     wbp: ["mungalpa", "muŋalpa"],
     piu: ["ngaya", "ŋaja"],

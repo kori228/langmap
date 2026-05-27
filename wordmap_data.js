@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 1000 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 999 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -2269,11 +2269,6 @@ const LANG_DATA = {
   // English-based creole (Vanuatu)
   bi: { name: 'Bislama', native: 'Bislama', lat: -17.74, lng: 168.31, // Port Vila
 },
-  // Pijin (Solomon Islands Pijin) — English-based creole (Pacific, Melanesian Pijin family — sister to tpi Tok Pisin and bi Bislama), ~30K L1 + ~300K L2, Solomon Islands.
-  // Sources: Ethnologue 27 'pis'; Glottolog pidg1255; Jourdan (2002) Pijin: A Trilingual Cultural Dictionary.
-  pip: { name: 'Pijin', native: 'Pijin', lat: -9.50, lng: 160.05, // Honiara periphery (slight offset from pis ISO 639-3 anchor for [#15] visual separation; same Solomon Islands Pijin)
-},
-  // Pama-Nyungan (Australia)
   pjt: { name: 'Pitjantjatjara', native: 'Pitjantjatjara', lat: -25.34, lng: 131.04, // Yulara/Uluru
 
     // Audit Task 173: per-cell wordEvidence for source-checked Pitjantjatjara

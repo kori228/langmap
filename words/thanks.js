@@ -672,7 +672,6 @@ WORDS.thanks = {
     tdt: ["obrigadu", "obɾiɡadu"],
     aoz: ["neno biluk", "neno biluk"],
     bi: ["tankyu", "taŋkju"],
-    pip: ["tankyu", "taŋkju"],
     pjt: ["palya", "palja"],
     wbp: ["ngantitu", "ŋantitu"],
     piu: ["palya", "palja"],

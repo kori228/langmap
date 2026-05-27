@@ -679,7 +679,6 @@ WORDS.water = {
     tdt: ["bee", "beː"],
     aoz: ["oe", "oe"],
     bi: ["wota", "wota"],
-    pip: ["wata", "wata"],
     pjt: ["kapi", "kapi"],
     wbp: ["ngapa", "ŋapa"],
     piu: ["kapi", "kapi"],

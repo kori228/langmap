@@ -672,7 +672,6 @@ WORDS.eye = {
     tdt: ["matan", "matan"],
     aoz: ["matan", "matan"],
     bi: ["ae", "ae"],
-    pip: ["ae", "ae"],
     pjt: ["kuru", "kuɻu"],
     wbp: ["milpa", "milpa"],
     piu: ["kuru", "kuɻu"],

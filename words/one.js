@@ -678,7 +678,6 @@ WORDS.one = {
     tdt: ["ida", "ida"],
     aoz: ["mese", "mese"],
     bi: ["wan", "wan"],
-    pip: ["wan", "wan"],
     pjt: ["kutju", "kucu"],
     wbp: ["jinta", "dʒinta"],
     piu: ["kutju", "kucu"],

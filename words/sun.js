@@ -678,7 +678,6 @@ WORDS.sun = {
     tdt: ["loron", "loɾon"],
     aoz: ["manas", "manas"],
     bi: ["san", "san"],
-    pip: ["san", "san"],
     pjt: ["tjintu", "cintu"],
     wbp: ["wantajarra", "wantadʒaɻa"],
     piu: ["tjintu", "cintu"],

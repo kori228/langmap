@@ -678,7 +678,6 @@ WORDS.fire = {
     tdt: ["ahi", "ahi"],
     aoz: ["ai", "ai"],
     bi: ["faea", "faea"],
-    pip: ["faea", "faea"],
     pjt: ["waru", "waɻu"],
     wbp: ["warlu", "waɻlu"],
     piu: ["waru", "waɻu"],

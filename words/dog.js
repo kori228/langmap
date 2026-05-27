@@ -672,7 +672,6 @@ WORDS.dog = {
     tdt: ["asu", "asu"],
     aoz: ["asu", "asu"],
     bi: ["dog", "doɡ"],
-    pip: ["dogi", "doɡi"],
     pjt: ["papa", "papa"],
     wbp: ["jarntu", "dʒaɳʈu"],
     piu: ["papa", "papa"],

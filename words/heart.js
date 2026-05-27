@@ -672,7 +672,6 @@ WORDS.heart = {
     tdt: ["korasaun", "koɾasaun"],
     aoz: ["nesa", "nesa"],
     bi: ["hat", "hat"],
-    pip: ["hart", "hart"],
     pjt: ["kurunpa", "kuɻunpa"],
     wbp: ["pikirri", "pikiɻi"],
     piu: ["kurunpa", "kuɻunpa"],

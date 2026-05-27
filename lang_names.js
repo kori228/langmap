@@ -1756,7 +1756,6 @@ const LANG_NAMES = {
     }
 
     const ADDED64 = {
-        pip: { en: 'Pijin', ja: 'ピジン語', ko: '피진어', zh: '皮金语', yue: '皮金語',
                vi: 'Tiếng Pijin', th: 'ภาษาพีจิน', id: 'Bahasa Pijin', hi: 'पिजिन',
                de: 'Pijin', fr: 'Pijin', it: 'Pijin',
                es_eu: 'Pijin', es_mx: 'Pijin', pt_eu: 'Pijin', pt_br: 'Pijin',

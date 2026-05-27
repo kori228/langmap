@@ -678,7 +678,6 @@ WORDS.mother = {
     tdt: ["mama", "mama"],
     aoz: ["ainat", "ainat"],
     bi: ["mama", "mama"],
-    pip: ["mami", "mami"],
     pjt: ["ngunytju", "ŋuɲcu"],
     wbp: ["ngati", "ŋati"],
     piu: ["ngunytju", "ŋuɲcu"],

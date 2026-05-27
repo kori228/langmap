@@ -672,7 +672,6 @@ WORDS.good = {
     tdt: ["diak", "diak"],
     aoz: ["malaek", "malaek"],
     bi: ["gud", "ɡud"],
-    pip: ["gud", "ɡud"],
     pjt: ["palya", "palja"],
     wbp: ["ngumarna", "ŋumaɳa"],
     piu: ["palya", "palja"],

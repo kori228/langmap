@@ -672,7 +672,6 @@ WORDS.hello = {
     tdt: ["olá", "ola"],
     aoz: ["neut", "neut"],
     bi: ["halo", "halo"],
-    pip: ["halo", "halo"],
     pjt: ["palya", "palja"],
     wbp: ["palka", "palka"],
     piu: ["palya", "palja"],

@@ -672,7 +672,6 @@ WORDS.hand = {
     tdt: ["liman", "liman"],
     aoz: ["ʼniman", "ʔniman"],
     bi: ["han", "han"],
-    pip: ["han", "han"],
     pjt: ["mara", "maɻa"],
     wbp: ["rdaka", "ɖaka"],
     piu: ["mara", "maɻa"],

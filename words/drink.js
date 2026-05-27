@@ -672,7 +672,6 @@ WORDS.drink = {
     tdt: ["hemu", "hemu"],
     aoz: ["ninu", "ninu"],
     bi: ["dring", "driŋ"],
-    pip: ["drink", "drink"],
     pjt: ["tjikini", "cikini"],
     wbp: ["purrami", "puɻami"],
     piu: ["tjikini", "cikini"],

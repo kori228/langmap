@@ -672,7 +672,6 @@ WORDS.eat = {
     tdt: ["han", "han"],
     aoz: ["ah", "ah"],
     bi: ["kakae", "kakae"],
-    pip: ["kaikai", "kaikai"],
     pjt: ["ngalkuni", "ŋalkuni"],
     wbp: ["ngarni", "ŋaɻni"],
     piu: ["ngalkuni", "ŋalkuni"],

@@ -672,7 +672,6 @@ WORDS.tree = {
     tdt: ["ai", "ai"],
     aoz: ["hau", "hau"],
     bi: ["tri", "tri"],
-    pip: ["tri", "tri"],
     pjt: ["punu", "punu"],
     wbp: ["watiya", "watija"],
     piu: ["punu", "punu"],
