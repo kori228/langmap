@@ -1,5 +1,5 @@
 /**
- * Word Map Data — 20 key words × 999 languages/varieties (incl. ~80 historical)
+ * Word Map Data — 20 key words × 990 languages/varieties (incl. ~80 historical)
  * Each language has: coordinates (primary city), native name, and word entries with IPA
  */
 
@@ -16,7 +16,7 @@
 // liturgical Sanskrit). The shared property is "hidden from the modern view by default".
 const EXCLUDED_CODES = new Set([
   'ja_edo','ja_heian','ja_kanbun','ko_mid','ko_em','la','egy','sux','akk','hit','nci','myn','ine',
-  'non','en_ang','enm','en_em','got','cu','pi','pi_edu','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang','zh_wenyan_edu',
+  'non','enm','en_em','got','cu','pi','pi_edu','cop','arc','el_grc','el_kath','zh_song','zh_han','zh_tang','zh_wenyan_edu',
   'vi_nom','vi_han','sa','sa_edu','mnc','ar_qur',
   'de_lut','es_sgl','fr_class',
   // Phase 4: historical / ancient
@@ -664,10 +664,6 @@ const LANG_DATA = {
   // Sources: Ethnologue 27 'sva'; Glottolog svan1245; Tuite (1997) Svan; Schmidt (1991) Kartvelian phonology.
   sva: { name: 'Svan', native: 'ლუშნუ ნინ', lat: 43.00, lng: 42.72, // Mestia, Svaneti
 },
-  // Laz — Kartvelian (Zan branch — sister to Mingrelian, with Georgian/Svan as more distant relatives), ~30K, NE Turkey + small Georgia.
-  // Sources: Ethnologue 27 'lzz'; Glottolog lazz1240; Lacroix (2009) Laz grammar; Marr (1910) Lazskaja grammatika.
-  laz: { name: 'Laz', native: 'ლაზური ნენა', lat: 41.27, lng: 41.55, // Pazar, Rize Province (Lazistan)
-},
   hy: { name: 'Armenian', native: 'Հայերեն', lat: 40.18, lng: 44.51, // Yerevan
 },
   // Western Armenian (Արեւմտահայերէն Arevmdahayerēn) — Indo-European Armenian (sister to hy Eastern Armenian; the two diverged after the Armenian Genocide of 1915 displaced Western speakers from Anatolian homeland), ~1M+ in diaspora.
@@ -1113,11 +1109,7 @@ const LANG_DATA = {
 },
   af: { name: 'Afrikaans', native: 'Afrikaans', lat: -33.93, lng: 18.42,
 },
-  de_gsw: { name: 'Swiss German', native: 'Schwyzerdütsch', lat: 47.38, lng: 8.54,
-},
   de_at: { name: 'Austrian German', native: 'Österreichisch', lat: 48.21, lng: 16.37,
-},
-  de_by: { name: 'Bavarian', native: 'Boarisch', lat: 48.14, lng: 11.58,
 },
   // Swiss German — Alemannic German cluster, ~5M speakers, Switzerland (de facto national variety) + Liechtenstein.
   // Sources: Christen et al. (2010) Kleiner Sprachatlas der deutschen Schweiz; SDS (Sprachatlas der deutschen Schweiz).
@@ -1486,41 +1478,6 @@ const LANG_DATA = {
   el_kath: { name: 'Greek (Katharevousa)', native: 'Καθαρεύουσα', lat: 37.98, lng: 23.73, // Athens (state administration center)
 },
   egy: { name: 'Ancient Egyptian', native: '𓂋 𓈖 𓆎𓅓𓏏', lat: 25.69, lng: 32.64 },
-  // Audit Task 161: shifted from London to Winchester (Wessex capital and
-  // primary Old English prestige center). Acknowledges OE was a dialect
-  // continuum across multiple West-Saxon and Anglian centers.
-  en_ang: { name: 'Old English', native: 'Englisc', lat: 51.06, lng: -1.31,
-
-    // Audit Task 200: full per-cell wordEvidence for source-checked
-    // row. Sources: Bosworth-Toller Anglo-Saxon Dictionary
-    // (bosworthtoller.com) for orthography and gloss; Hogg (1992)
-    // Cambridge History of the English Language Vol. 1 for phonology;
-    // Mitchell & Robinson (2012) Guide to Old English for citation
-    // forms. IPA values reflect Late West Saxon (the prestige dialect
-    // of the 9th-11th c., centred on Winchester); long vowels marked
-    // ¯ orthographically and ː phonetically.
-    wordEvidence: {
-      water:  { evidence: 'direct', source: 'Bosworth-Toller — wæter (n.) "water"; nominative singular neuter a-stem' },
-      fire:   { evidence: 'direct', source: 'Bosworth-Toller — fȳr (n.) "fire"; nominative singular neuter; long ȳ rounded front vowel /yː/' },
-      sun:    { evidence: 'direct', source: 'Bosworth-Toller — sunne (f.) "the sun"; nominative singular weak feminine n-stem', formType: 'inflected-form' },
-      moon:   { evidence: 'direct', source: 'Bosworth-Toller — mōna (m.) "the moon"; nominative singular weak masculine n-stem', formType: 'inflected-form', note: 'cognate German Mond; long ō reflects PGmc *mēnan-' },
-      mother: { evidence: 'direct', source: 'Bosworth-Toller — mōdor (f.) "mother"; nominative singular r-stem; cognate Latin māter', formType: 'inflected-form' },
-      father: { evidence: 'direct', source: 'Bosworth-Toller — fæder (m.) "father"; nominative singular r-stem; cognate Latin pater', formType: 'inflected-form' },
-      eat:    { evidence: 'direct', source: 'Bosworth-Toller — etan (V) "to eat"; infinitive of strong class V verb (cf. preterite æt, æton)', formType: 'inflected-form', note: 'OE verbs cited by infinitive ending -an per dictionary convention; Mitchell & Robinson §§116-120' },
-      drink:  { evidence: 'direct', source: 'Bosworth-Toller — drincan (III) "to drink"; infinitive of strong class III verb (preterite dranc, druncon)', formType: 'inflected-form' },
-      love:   { evidence: 'direct', source: 'Bosworth-Toller — lufu (f.) "love"; nominative singular weak feminine; medial /f/ → [v] intervocalically per Hogg §3.6.2', note: 'noun citation; the verb lufian "to love" is also widely attested' },
-      heart:  { evidence: 'direct', source: 'Bosworth-Toller — heorte (f.) "heart" (anatomical and emotional); nominative singular weak feminine n-stem', note: 'breaking of /e/ → /eo/ before /r/+consonant per Hogg §5.10' },
-      tree:   { evidence: 'direct', source: 'Bosworth-Toller — trēow (n.) "tree, wood"; nominative singular wa-stem neuter (long vowel + w glide)' },
-      house:  { evidence: 'direct', source: 'Bosworth-Toller — hūs (n.) "house, dwelling"; nominative singular neuter a-stem' },
-      dog:    { evidence: 'direct', source: 'Bosworth-Toller — hund (m.) "dog, hound"; nominative singular masculine a-stem', note: 'OE hund is the general "dog"; cognate German Hund; Mod. Eng. hound is the narrowed sense. The word "dog" (OE docga) attested only late and rare' },
-      cat:    { evidence: 'direct', source: 'Bosworth-Toller — catt (m.) "cat"; nominative singular masculine a-stem; geminate /tː/ from PGmc *kattuz', note: 'borrowed via Latin cattus from Late Latin; widespread in Germanic by Christianisation period' },
-      hand:   { evidence: 'direct', source: 'Bosworth-Toller — hand (f.) "hand"; nominative singular feminine u-stem' },
-      eye:    { evidence: 'direct', source: 'Bosworth-Toller — ēage (n.) "eye"; nominative singular weak neuter n-stem; long ē + medial /ɣ/ (intervocalic g)', formType: 'inflected-form' },
-      hello:  { evidence: 'direct', source: 'Bosworth-Toller — hāl "whole, healthy"; element of greeting formula wes hāl "be healthy" (later "wassail")', formType: 'greeting-formula', note: 'OE had no single "hello" word; wes hāl / hāl wes þū were the standard greetings. Surface hāl shown as the lexical citation' },
-      thanks: { evidence: 'direct', source: 'Bosworth-Toller — þanc (m.) "thanks, gratitude"; þancas is nominative/accusative plural masculine a-stem', formType: 'inflected-form', note: 'plural form per OE convention for "thanks" (parallel Modern English "thanks" plural); singular þanc also attested' },
-      one:    { evidence: 'direct', source: 'Bosworth-Toller — ān "one"; nominative singular masculine strong adjective; long ā', formType: 'inflected-form', note: 'ancestral to Mod. Eng. "one" (raising and rounding ā→oː→wʌn) and the indefinite article "a/an"' },
-      good:   { evidence: 'direct', source: 'Bosworth-Toller — gōd "good"; nominative singular masculine strong adjective; long ō', formType: 'inflected-form', note: 'suppletive comparative bet(e)ra "better" — pattern preserved in Mod. Eng.' },
-    } },
   // Audit Task 161: shifted from London to Canterbury (Chaucer-era southern
   // dialect tradition; Canterbury Tales pilgrims reflect Middle English speech).
   enm: { name: 'Middle English', native: 'Englisch', lat: 51.28, lng: 1.08,
@@ -1803,10 +1760,6 @@ const LANG_DATA = {
 },
   // Volapük — first widely-adopted IAL (Schleyer 1879, predates Esperanto)
   vo: { name: 'Volapük', native: 'Volapük', lat: 47.71, lng: 9.20, // Litzelstetten (Schleyer's home)
-},
-  // Interlingua — IALA-developed naturalistic IAL (1951), based on convergent Romance/Latin features visible across major European languages. ~1.5K active users worldwide.
-  // Sources: Ethnologue 27 'ina'; Glottolog inte1239; Gode (1951) Interlingua-English Dictionary; Union Mundial pro Interlingua.
-  ina: { name: 'Interlingua', native: 'Interlingua', lat: 40.71, lng: -74.01, // New York City (IALA founding location)
 },
   // Interlingua — naturalistic IAL (IALA 1951)
   ia: { name: 'Interlingua', native: 'Interlingua', lat: 40.75, lng: -73.99, // New York Midtown (slight offset from ina ISO 639-3 anchor for [#15] visual separation; same language)
@@ -2258,10 +2211,6 @@ const LANG_DATA = {
   // Austronesian (Timor)
   tet: { name: 'Tetum', native: 'Tetun', lat: -8.56, lng: 125.58, // Dili
 },
-  // Tetun Dili — Portuguese-influenced urban variety of Tetum, working language of Timor-Leste.
-  // Sources: Ethnologue 27 'tdt'; Glottolog tetu1247; Williams-van Klinken (2002) Tetun Dili Grammar.
-  tdt: { name: 'Tetun Dili', native: 'Tetun Prasa', lat: -8.56, lng: 125.58, // Dili
-},
   // Atoni (Uab Meto) — Austronesian Central Malayo-Polynesian, ~700K speakers, West Timor (Indonesian).
   // Sources: Ethnologue 27 'aoz'; Glottolog uabm1238; Steinhauer (1996) Atoni grammar.
   aoz: { name: 'Atoni', native: 'Uab Meto', lat: -9.66, lng: 124.10, // Soe, NTT (Atoni heartland)
@@ -2447,10 +2396,6 @@ const LANG_DATA = {
   luo: { name: 'Luo', native: 'Dholuo', lat: -0.10, lng: 34.75, // Kisumu
 },
   mas: { name: 'Maasai', native: 'ɔl Maa', lat: -1.08, lng: 35.86, // Narok
-},
-  // Sandawe — Language isolate (sometimes classified with Khoisan or as part of a hypothetical Khoisan macrofamily, but most contemporary linguists consider it an isolate due to lack of strong genealogical evidence; like the Khoe-Kwadi family, Sandawe has clicks but the comparative evidence for Khoisan unity is weak), ~60K, Tanzania (Singida and Dodoma regions, central Tanzania — Kondoa, Singida districts — Sandawe heartland surrounded by Bantu-speaking peoples).
-  // Sources: Ethnologue 27 'sad'/'aue'; Glottolog sand1273; Steeman (2012) A Grammar of Sandawe; Eaton (2010) Sandawe: A Language of Tanzania.
-  aue: { name: 'Sandawe', native: 'Sandaweeki', lat: -4.96, lng: 35.78, // Kondoa, Dodoma Region, Tanzania
 },
   // Samburu — Eastern Nilotic (Maa cluster, sister to Maasai mas), ~150K, Kenya (Samburu/Marsabit Counties — semi-nomadic pastoralists in Northern Frontier).
   // Sources: Ethnologue 27 'saq'; Glottolog samb1300; Heine (1980) Samburu Texts; Payne (1995) Samburu phonology.
@@ -2906,9 +2851,6 @@ const LANG_DATA = {
 },
   // Austronesian (Cham, Vietnam)
   cja: { name: 'Cham', native: 'Cham', lat: 11.57, lng: 108.99, // Phan Rang
-},
-  // Pacific (Pohnpeian + Hiri Motu)
-  hmo: { name: 'Hiri Motu', native: 'Hiri Motu', lat: -9.46, lng: 147.18, // Port Moresby
 },
   // Motu — Austronesian Oceanic, ~14K speakers, Central Province PNG. Pure form, distinct from Hiri Motu pidgin (hmo).
   // Sources: Ethnologue 27 'meu'; Glottolog motu1246; Lister-Turner & Clark (1931) Grammar of the Motu Language.
@@ -3502,10 +3444,6 @@ const LANG_DATA = {
 },
   // Old Saxon (Heliand era)
   osx: { name: 'Old Saxon', native: 'sahsisk', lat: 51.96, lng: 7.62, // Westphalia (Münster)
-},
-  // === Phase 5: more modern + 3 more historical ===
-  // Bantu (Tanzania)
-  smg: { name: 'Sukuma', native: 'Kisukuma', lat: -2.52, lng: 32.92, // Mwanza
 },
   // Niger-Congo Gur (Burkina Faso)
   mos: { name: 'Mooré', native: 'Mòoré', lat: 12.37, lng: -1.52, // Ouagadougou
@@ -4913,7 +4851,6 @@ const DATA_STATUS_OVERRIDES = {
     // Indo-European Old:
     la:        'attested',       // Latin — extensive Classical/Medieval corpus
     el_grc:    'attested',       // Ancient Greek — Homer + Classical + Hellenistic corpus
-    en_ang:    'attested',       // Old English — Beowulf, Anglo-Saxon Chronicle, etc.
     enm:       'attested',       // Middle English — Canterbury Tales, etc.
     non:       'attested',       // Old Norse — Eddas, sagas
     got:       'attested',       // Gothic — Wulfila Bible
@@ -5060,7 +4997,7 @@ const DATA_STATUS_OVERRIDES = {
 // Moved from wordmap.html to the data layer so the validator does not need
 // to regex-scrape JS source. The browser also reads this constant.
 const HIST_DESCENDANT = {
-    la:'it', el_grc:'el', el_kath:'el', egy:'ar_eg', en_ang:'en', enm:'en', en_em:'en', non:'is',
+    la:'it', el_grc:'el', el_kath:'el', egy:'ar_eg', enm:'en', en_em:'en', non:'is',
     got:'de', cu:'bg', pi:'si', cop:null, arc:'he',
     sa:'hi', mnc:'zh',
     sux:null, akk:null, hit:'tr', nci:'es_mx', myn:'es_mx',
@@ -5112,7 +5049,6 @@ const HIST_DESCENDANT = {
     // 2026-05-18: 4 historical-named langs were missing from HIST_DESCENDANT
     // and therefore showing on the modern map. Per user report ("古英語が
     // 現代言語に分類されている"). The `ang` ISO code coexists with the
-    // legacy underscore form `en_ang` — both are kept for now; consolidate
     // in a follow-up.
     ang:'en',      // Old English ISO code (legacy duplicate `en_ang` already mapped above)
     ohu:'hu',      // Old Hungarian → modern Hungarian

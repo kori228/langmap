@@ -767,11 +767,6 @@ const LANG_NAMES = {
                de: 'Yao', fr: 'Yao', it: 'Yao',
                es_eu: 'Yao', es_mx: 'Yao', pt_eu: 'Iao', pt_br: 'Iao',
                ru: 'Яо', uk: 'Яо', ar: 'الياو', he: 'יאו', sw: 'Kiyao' },
-        tdt: { en: 'Tetun Dili', ja: 'テトゥン・ディリ語', ko: '테툰 딜리어', zh: '帝力德顿语', yue: '帝力德頓語',
-               vi: 'Tiếng Tetun Dili', th: 'ภาษาเตตุนดิลี', id: 'Tetun Dili', hi: 'तेतुन डिली',
-               de: 'Tetum Dili', fr: 'Tétoum de Dili', it: 'Tetum di Dili',
-               es_eu: 'Tetun Dili', es_mx: 'Tetun Dili', pt_eu: 'Tétum-Praça', pt_br: 'Tétum-Praça',
-               ru: 'Тетун-Дили', uk: 'Тетун-Ділі', ar: 'تيتوم ديلي', he: 'טטון דילי', sw: 'Tetun Dili' },
         ext: { en: 'Extremaduran', ja: 'エストレマドゥーラ語', ko: '에스트레마두라어', zh: '埃斯特雷马杜拉语', yue: '埃斯特雷馬杜拉語',
                vi: 'Tiếng Estremenho', th: 'ภาษาเอ็กซ์เตรมาดูรา', id: 'Estremenyo', hi: 'एस्ट्रेमाडुरान',
                de: 'Extremadurisch', fr: 'Estrémègne', it: 'Estremegno',
@@ -1037,11 +1032,6 @@ const LANG_NAMES = {
     }
 
     const ADDED38 = {
-        laz: { en: 'Laz', ja: 'ラズ語', ko: '라즈어', zh: '拉兹语', yue: '拉茲語',
-               vi: 'Tiếng Laz', th: 'ภาษาลาซ', id: 'Bahasa Laz', hi: 'लाज़',
-               de: 'Lasisch', fr: 'Laze', it: 'Laz',
-               es_eu: 'Laz', es_mx: 'Laz', pt_eu: 'Laz', pt_br: 'Laz',
-               ru: 'Лазский', uk: 'Лазька', ar: 'اللازية', he: 'לאזית', sw: 'Kilaz' },
         aii: { en: 'Assyrian Neo-Aramaic', ja: 'アッシリア新アラム語', ko: '아시리아 신아람어', zh: '亚述新阿拉米语', yue: '亞述新阿拉米語',
                vi: 'Tiếng Aram Tân Assyria', th: 'ภาษาอราเมอิกใหม่อัสซีเรีย', id: 'Aram Neo-Asyur', hi: 'असीरियन नव-अरामी',
                de: 'Assyrisch-Neuaramäisch', fr: 'Néo-araméen assyrien', it: 'Neoaramaico assiro',
@@ -1491,11 +1481,6 @@ const LANG_NAMES = {
                de: 'Romagnolisch', fr: 'Romagnol', it: 'Romagnolo',
                es_eu: 'Romañol', es_mx: 'Romañol', pt_eu: 'Romanholo', pt_br: 'Romanholo',
                ru: 'Романьольский', uk: 'Романьольська', ar: 'الرومانية', he: 'רומאניולית', sw: 'Kiromagnol' },
-        ina: { en: 'Interlingua', ja: 'インテルリングア語', ko: '인터링구아어', zh: '国际语', yue: '國際語',
-               vi: 'Interlingua', th: 'ภาษาอินเตอร์ลิงกัว', id: 'Bahasa Interlingua', hi: 'इंटरलिंगुआ',
-               de: 'Interlingua', fr: 'Interlingua', it: 'Interlingua',
-               es_eu: 'Interlingua', es_mx: 'Interlingua', pt_eu: 'Interlingua', pt_br: 'Interlingua',
-               ru: 'Интерлингва', uk: 'Інтерлінгва', ar: 'الإنترلينغوا', he: 'אינטרלינגואה', sw: 'Interlingua' },
     };
     for (const code of Object.keys(ADDED53)) {
         for (const ui of Object.keys(ADDED53[code])) {
@@ -2446,11 +2431,6 @@ const LANG_NAMES = {
     }
 
     const ADDED99 = {
-        aue: { en: 'Sandawe', ja: 'サンダウェ語', ko: '산다웨어', zh: '桑达威语', yue: '桑達威語',
-               vi: 'Tiếng Sandawe', th: 'ภาษาซันดาเว', id: 'Bahasa Sandawe', hi: 'संदावे',
-               de: 'Sandawe', fr: 'Sandawe', it: 'Sandawe',
-               es_eu: 'Sandawe', es_mx: 'Sandawe', pt_eu: 'Sandawe', pt_br: 'Sandawe',
-               ru: 'Сандаве', uk: 'Сандаве', ar: 'الساندوية', he: 'סנדאווה', sw: 'Kisandawe' },
         emk: { en: 'Eastern Maninka', ja: '東部マニンカ語', ko: '동부 마닌카어', zh: '东部马宁卡语', yue: '東部馬寧卡語',
                vi: 'Tiếng Maninka Đông', th: 'ภาษามานินกาตะวันออก', id: 'Bahasa Maninka Timur', hi: 'पूर्वी मनिंका',
                de: 'Ost-Maninka', fr: 'Maninka oriental', it: 'Maninka orientale',
