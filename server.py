@@ -131,7 +131,7 @@ class LangMapHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     os.chdir(Path(__file__).parent)
-    with http.server.HTTPServer(('', PORT), LangMapHandler) as httpd:
+    with http.server.ThreadingHTTPServer(('', PORT), LangMapHandler) as httpd:
         print(f'🌍 LangMap server running at http://localhost:{PORT}')
         print(f'   Static files + POST /submit.php')
         print(f'   Submissions saved to {SUBMISSIONS_DIR}/')
