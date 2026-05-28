@@ -6069,10 +6069,26 @@
             }
             const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
 
+            // Per user (2026-05-28): drop 独自文字 from the per-row table
+            // and surface the current character's native-script form as a
+            // single line above the table. Avoids a sparse column when most
+            // chars share the same native value per language.
+            if (hasNative) {
+                const curBlock = charBlocks.find(b => b.ch === currentWord);
+                const curNatives = curBlock
+                    ? Array.from(new Set(curBlock.rows.map(r => (r.native || '').trim()).filter(Boolean)))
+                    : [];
+                if (curNatives.length) {
+                    html += `<div style="margin:8px 0 0;font-size:11px;color:#888">`
+                        + `<span style="font-weight:500">${escapeHtml(tHead[1])}:</span> `
+                        + `<span style="font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#222">${escapeHtml(curNatives.join(' / '))}</span>`
+                        + `</div>`;
+                }
+            }
+
             html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
-            if (hasNative) html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
@@ -6087,9 +6103,8 @@
                     if (ri === 0) {
                         html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:middle">${escapeHtml(ch)}</td>`;
                     }
-                    if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;vertical-align:middle">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
-                    html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic;vertical-align:middle">${escapeHtml(r.ipa)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#555;vertical-align:middle">${escapeHtml(r.ipa)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px;vertical-align:middle">${escapeHtml(r.label)}</td>`;
                     html += `</tr>`;
                 }
