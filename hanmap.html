@@ -4546,7 +4546,11 @@
                 if (r.native) wordHtml += `<span class="hanmap-native">${escapeHtml(r.native)}</span>`;
                 if (r.label)  wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
                 if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
-                if (showIpa && r.ipa)     html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
+                // Suppress the /ipa/ line when it duplicates the surface
+                // romanisation — e.g. Korean 一 (il/il), 山 (san/san), or
+                // every zh_han Old-Chinese reconstruction where the
+                // surface IS the IPA. Avoids visual repetition on the map.
+                if (showIpa && r.ipa && r.ipa !== r.romanized) html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
             }
             if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
@@ -6064,19 +6068,13 @@
                 if (rows.length) charBlocks.push({ ch, rows });
             }
             const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
-            // When the surface (表記) and IPA (発音) columns are identical
-            // for every row — typical of zh_han (Old Chinese Baxter-Sagart
-            // reconstruction where the reconstruction IS the IPA), the
-            // 発音 column is redundant and gets dropped entirely.
-            const hasIpaDifferent = charBlocks.some(b => b.rows.some(r =>
-                r.ipa && r.ipa.trim() && r.ipa !== r.romanized));
 
             html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
             if (hasNative) html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
-            if (hasIpaDifferent) html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
             html += `</tr></thead><tbody>`;
             for (const block of charBlocks) {
@@ -6091,7 +6089,7 @@
                     }
                     if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444">${escapeHtml(r.romanized)}</td>`;
-                    if (hasIpaDifferent) html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(r.ipa)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(r.ipa)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px">${escapeHtml(r.label)}</td>`;
                     html += `</tr>`;
                 }
