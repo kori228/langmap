@@ -6085,12 +6085,12 @@
                     const r = rows[ri];
                     html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
                     if (ri === 0) {
-                        html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:top">${escapeHtml(ch)}</td>`;
+                        html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:middle">${escapeHtml(ch)}</td>`;
                     }
-                    if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(r.native)}</td>`;
-                    html += `<td style="padding:4px 6px 4px 0;color:#444">${escapeHtml(r.romanized)}</td>`;
-                    html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(r.ipa)}</td>`;
-                    html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px">${escapeHtml(r.label)}</td>`;
+                    if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;vertical-align:middle">${escapeHtml(r.native)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic;vertical-align:middle">${escapeHtml(r.ipa)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px;vertical-align:middle">${escapeHtml(r.label)}</td>`;
                     html += `</tr>`;
                 }
             }
