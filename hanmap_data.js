@@ -10380,6 +10380,9 @@ const HAN_LANG_META = {
   },
   "nan_hai": {
     "reading_type": {
+      "ja": "海南語(海南話)",
+      "ko": "하이난어 (海南話)",
+      "zh": "海南话",
       "en": "Hainanese",
       "yue": "海南話（瓊語）",
       "vi": "Tiếng Hải Nam (Hải Lam)",
@@ -10398,6 +10401,9 @@ const HAN_LANG_META = {
       "sw": "Kihainan"
     },
     "description": {
+      "ja": "海南語は閩語の分枝で、従来は閩南語に分類されることが多いが、海南島独自の発展史を持つ。特徴は内破音の語頭子音 /ɓ/ /ɗ/（中国語諸方言の中ではきわめて稀）で、これはタイ・カダイ系基層言語の影響による。",
+      "ko": "하이난어는 민어의 분지로, 전통적으로 민난어에 묶이지만 하이난섬에서 독자적인 발전사를 가진다. 특징은 내파음 /ɓ/와 /ɗ/(중국 방언에서 매우 드물다)이며, 타이-카다이어 기층 언어의 영향으로 생긴 음운적 특수성이다.",
+      "zh": "海南话是闽语的一个分支，传统上常被归入闽南语，但在海南岛拥有独立的发展史。其显著特征是内爆音声母 /ɓ/ 和 /ɗ/（在汉语方言中极为罕见），系受壮侗语系底层语言影响所致。",
       "en": "Hainanese — divergent Min variety often grouped with Min Nan but with distinct history on Hainan island. Signature: implosive initials /ɓ/ and /ɗ/ (very rare among Sinitic varieties), result of Tai-Kadai substrate influence.",
       "yue": "海南話（瓊語）係海南島上嘅一種閩語，雖然通常歸入閩南語群，但歷史上自成一脈。最顯著嘅特徵係保有內爆音聲母 /ɓ/ 同 /ɗ/，呢兩個音喺漢語方言中極罕見，係受到台-卡岱語系底層語言影響嘅結果。",
       "vi": "Tiếng Hải Nam là một phương ngữ Mân có lịch sử riêng biệt trên đảo Hải Nam, thường được xếp vào nhóm Min Nam nhưng mang nhiều đặc điểm độc lập. Đặc trưng nổi bật nhất là sự hiện diện của phụ âm đầu nổ hầu /ɓ/ và /ɗ/ — hiện tượng cực kỳ hiếm trong các phương ngữ Hán, là kết quả của ảnh hưởng nền từ ngữ hệ Tai-Kadai.",
