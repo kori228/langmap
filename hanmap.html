@@ -1958,6 +1958,116 @@
         body.is-3d .globe-label.trivia-blink {
             background: rgba(255,213,93,0.35);
         }
+        /* ============================================================ */
+        /*  Hanmap language-filter modal styling                        */
+        /* ============================================================ */
+        .hm-lf-group {
+            margin-bottom: 14px;
+            border: 1px solid #ececec;
+            border-radius: 8px;
+            padding: 10px 12px 8px;
+            background: #fafafa;
+        }
+        .hm-lf-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .hm-lf-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        .hm-lf-group-title .hm-lf-group-en {
+            font-size: 11px;
+            font-weight: 500;
+            color: #888;
+            margin-left: 4px;
+        }
+        .hm-lf-group-actions {
+            display: flex;
+            gap: 4px;
+        }
+        .hm-lf-group-actions button {
+            font-size: 10px;
+            padding: 2px 7px;
+            border: 1px solid #d8d8d8;
+            border-radius: 9px;
+            background: #fff;
+            color: #555;
+            cursor: pointer;
+            line-height: 1.3;
+        }
+        .hm-lf-group-actions button:hover { background: #f0f0f0; }
+        .hm-lf-era-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-top: 4px;
+            padding-top: 4px;
+        }
+        .hm-lf-era-row + .hm-lf-era-row {
+            border-top: 1px dashed #e6e6e6;
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+        .hm-lf-era-label {
+            flex: 0 0 auto;
+            font-size: 11px;
+            font-weight: 600;
+            color: #888;
+            min-width: 40px;
+            padding-top: 4px;
+            line-height: 1.3;
+        }
+        .hm-lf-chip-wrap {
+            flex: 1 1 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .hm-lf-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            padding: 3px 8px;
+            border: 1px solid #d0d0d0;
+            border-radius: 11px;
+            background: #fff;
+            color: #444;
+            cursor: pointer;
+            line-height: 1.3;
+            white-space: nowrap;
+            user-select: none;
+            transition: background-color 0.1s, border-color 0.1s, color 0.1s;
+        }
+        .hm-lf-chip:hover { background: #f5f7fa; }
+        .hm-lf-chip.active {
+            background: #1a73e8;
+            border-color: #1765c4;
+            color: #fff;
+        }
+        .hm-lf-chip.active:hover { background: #1765c4; }
+        .hm-lf-tool-btn:hover { background: #f0f0f0; }
+        .hm-lf-chip-code {
+            font-size: 9px;
+            opacity: 0.65;
+            font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        }
+        @media (max-width: 600px) {
+            .hm-lang-filter-modal {
+                padding: 16px 14px 12px !important;
+                width: calc(100vw - 16px) !important;
+                max-height: calc(100vh - 24px) !important;
+                top: 12px !important;
+                left: 8px !important;
+                transform: none !important;
+            }
+        }
     </style>
     <script>
         // Chrome-toggle FOUC avoidance: stash the persisted choice on <html>
@@ -2083,9 +2193,20 @@
                     aria-haspopup="dialog" aria-controls="char-modal"
                     title="Select character"
                     style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
-            <button id="char-random-btn" type="button"
-                    title="Random character"
-                    style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
+            <div style="display:flex;flex-direction:row;gap:6px;align-items:center">
+                <button id="char-random-btn" type="button"
+                        title="Random character"
+                        style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
+                <button id="hm-lang-filter-btn" type="button"
+                        aria-haspopup="dialog" aria-controls="hm-lang-filter-modal"
+                        title="Filter languages"
+                        aria-label="Filter languages"
+                        style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:4px">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                    <span id="hm-lang-filter-label">絞り込み</span>
+                    <span id="hm-lang-filter-badge" style="display:none;background:#1a73e8;color:#fff;border-radius:9px;padding:1px 6px;font-size:10px;font-weight:600;line-height:1.2">0</span>
+                </button>
+            </div>
         </div>
         <select id="word-select" aria-label="Select character (legacy)" style="display:none"></select>
         <div id="word-definition" style="display:none"></div>
@@ -2120,6 +2241,25 @@
                 style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
         <h2 id="char-modal-title" style="font-size:18px;margin:0 0 14px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">漢字を選択</h2>
         <div id="char-modal-body"></div>
+    </div>
+
+    <!-- Hanmap language filter modal: 2-axis grid (family/sub-family × era). -->
+    <div class="hm-lang-filter-backdrop" id="hm-lang-filter-backdrop" aria-hidden="true"
+         style="position:fixed;inset:0;background:rgba(20,25,40,0.55);backdrop-filter:blur(2px);z-index:2000;display:none"></div>
+    <div class="hm-lang-filter-modal" id="hm-lang-filter-modal" role="dialog" aria-modal="true" aria-labelledby="hm-lang-filter-title"
+         style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.35);padding:20px 22px 16px;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 64px);overflow-y:auto;z-index:2001;display:none">
+        <button id="hm-lang-filter-close" type="button" aria-label="Close"
+                style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
+        <h2 id="hm-lang-filter-title" style="font-size:18px;margin:0 0 6px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">言語で絞り込み</h2>
+        <div id="hm-lang-filter-sub" style="font-size:12px;color:#777;margin-bottom:10px;line-height:1.5">系統 × 時代でフィルタリング。チップをタップでON/OFF。</div>
+        <div id="hm-lang-filter-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee">
+            <button type="button" data-act="all"   class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて選択</button>
+            <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
+            <button type="button" data-act="reset" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">リセット</button>
+            <span style="flex:1"></span>
+            <span id="hm-lang-filter-count" style="font-size:11px;color:#777;align-self:center">0 / 0</span>
+        </div>
+        <div id="hm-lang-filter-body"></div>
     </div>
 
     <!-- (UI lang select moved to header for cross-page consistency, Pass 34) -->
@@ -2594,6 +2734,528 @@
     })();
     // No trivia articles for Hanmap.
     window.TRIVIA_ARTICLES = window.TRIVIA_ARTICLES || [];
+
+    // ============================================================
+    //  HANMAP LANGUAGE FILTER
+    //
+    //  Two-axis taxonomy: family/sub-family × era (現代/古代).
+    //  Hanmap doesn't load lang-filter.js (it has its own group
+    //  scheme) so we implement window.__langmap.passesFilter,
+    //  anyFilterActive, and getFilterHashParam directly here.
+    //
+    //  Persistence: localStorage key "hm.langFilter"
+    //  Hash param : "hf" (comma-separated active codes)
+    // ============================================================
+    (function () {
+        const LS_KEY = 'hm.langFilter';
+        const HASH_PARAM = 'hf';
+
+        // Group taxonomy. Each leaf is a code that *may* exist in
+        // HAN_LANGS; we filter at render time so proto-langs still
+        // being generated (pmgl, phm, paa, pko, pja, ptb, ptung,
+        // ptai, vi_han, pst, zh_kanbun) silently drop until they
+        // land in HAN_LANGS.
+        const HAN_GROUPS = [
+            { id: 'mandarin', family: 'sinitic',
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz'],
+              historical: ['zh_yuan','zh_phagspa'] },
+            { id: 'yue', family: 'sinitic',
+              modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo'],
+              historical: [] },
+            { id: 'min', family: 'sinitic',
+              modern: ['nan','nan_qz','nan_te','nan_pn','nan_xm','nan_zz','nan_hai','nan_sg','nan_my','nan_id','cdo','mnp','cpx'],
+              historical: [] },
+            { id: 'wu', family: 'sinitic',
+              modern: ['wuu','wuu_nb','wuu_sz','wuu_wz','wuu_hz','wuu_jx','wuu_jh'],
+              historical: [] },
+            { id: 'hakka', family: 'sinitic',
+              modern: ['hak_cn','hak_tw','hak_hl'],
+              historical: [] },
+            { id: 'sinitic_other', family: 'sinitic',
+              modern: ['cjy','czh','hsn','gan','cnp'],
+              historical: ['zh_han','zh_tang','zh_song','zh_kanbun','pst'] },
+            { id: 'koreanic',
+              modern: ['ko','ko_kp','ko_zai'],
+              historical: ['ko_mid','pko'] },
+            { id: 'japonic',
+              modern: ['ja','ja_kun'],
+              historical: ['ja_ojp','pja'] },
+            { id: 'vietic',
+              modern: ['vi','vi_c','vi_s'],
+              historical: ['vi_han','vi_ohan'] },
+            { id: 'tibeto_burman',
+              modern: ['bca','bo_sino'],
+              historical: ['txg','ptb'] },
+            { id: 'tungusic',
+              modern: ['mnc','sjo'],
+              historical: ['juc','ptung'] },
+            { id: 'mongolic',
+              modern: [],
+              historical: ['pmgl'] },
+            { id: 'tai_kadai',
+              modern: ['za'],
+              historical: ['ptai'] },
+            { id: 'hmong_mien',
+              modern: [],
+              historical: ['phm'] },
+            { id: 'austroasiatic',
+              modern: [],
+              historical: ['paa'] },
+        ];
+
+        // i18n: group display names. Falls back to en, then JA.
+        const HAN_GROUPS_I18N = {
+            ja: {
+                mandarin:       { name: '官話',       parent: '中国語' },
+                yue:            { name: '粵語',       parent: '中国語' },
+                min:            { name: '閩語',       parent: '中国語' },
+                wu:             { name: '呉語',       parent: '中国語' },
+                hakka:          { name: '客家語',     parent: '中国語' },
+                sinitic_other:  { name: 'その他・中国語史音', parent: '中国語' },
+                koreanic:       { name: '朝鮮語族',   parent: null },
+                japonic:        { name: '日本語族',   parent: null },
+                vietic:         { name: 'ベトナム語', parent: null },
+                tibeto_burman:  { name: '蔵緬語族',   parent: null },
+                tungusic:       { name: 'ツングース語族', parent: null },
+                mongolic:       { name: 'モンゴル語族', parent: null },
+                tai_kadai:      { name: 'タイ・カダイ', parent: null },
+                hmong_mien:     { name: '苗瑤語族',   parent: null },
+                austroasiatic:  { name: 'オーストロアジア', parent: null },
+                _modern: '現代', _historical: '古代',
+                _title: '言語で絞り込み', _sub: '系統 × 時代でフィルタリング。チップをタップでON/OFF。',
+                _all: 'すべて選択', _none: 'すべて解除', _reset: 'リセット',
+                _btn: '絞り込み',
+            },
+            en: {
+                mandarin:       { name: 'Mandarin',           parent: 'Sinitic' },
+                yue:            { name: 'Yue / Cantonese',    parent: 'Sinitic' },
+                min:            { name: 'Min',                parent: 'Sinitic' },
+                wu:             { name: 'Wu',                 parent: 'Sinitic' },
+                hakka:          { name: 'Hakka',              parent: 'Sinitic' },
+                sinitic_other:  { name: 'Other / Historical Chinese', parent: 'Sinitic' },
+                koreanic:       { name: 'Koreanic',           parent: null },
+                japonic:        { name: 'Japonic',            parent: null },
+                vietic:         { name: 'Vietic',             parent: null },
+                tibeto_burman:  { name: 'Tibeto-Burman',      parent: null },
+                tungusic:       { name: 'Tungusic',           parent: null },
+                mongolic:       { name: 'Mongolic',           parent: null },
+                tai_kadai:      { name: 'Tai-Kadai',          parent: null },
+                hmong_mien:     { name: 'Hmong-Mien',         parent: null },
+                austroasiatic:  { name: 'Austroasiatic',      parent: null },
+                _modern: 'Modern', _historical: 'Historical',
+                _title: 'Filter languages', _sub: 'Filter by family x era. Tap chips to toggle.',
+                _all: 'Select all', _none: 'Clear all', _reset: 'Reset',
+                _btn: 'Filter',
+            },
+            ko: {
+                mandarin:       { name: '관화 (官話)',  parent: '중국어' },
+                yue:            { name: '월어 (粵語)',  parent: '중국어' },
+                min:            { name: '민어 (閩語)',  parent: '중국어' },
+                wu:             { name: '오어 (吳語)',  parent: '중국어' },
+                hakka:          { name: '객가어 (客家語)', parent: '중국어' },
+                sinitic_other:  { name: '기타·중국어 사적음', parent: '중국어' },
+                koreanic:       { name: '한국어족',    parent: null },
+                japonic:        { name: '일본어족',    parent: null },
+                vietic:         { name: '베트남어',    parent: null },
+                tibeto_burman:  { name: '티베트-버마어족', parent: null },
+                tungusic:       { name: '퉁구스어족',  parent: null },
+                mongolic:       { name: '몽골어족',    parent: null },
+                tai_kadai:      { name: '따이까다이',  parent: null },
+                hmong_mien:     { name: '먀오야오어족', parent: null },
+                austroasiatic:  { name: '오스트로아시아', parent: null },
+                _modern: '현대', _historical: '고대',
+                _title: '언어 필터', _sub: '계통 × 시대로 필터링. 칩을 탭하여 ON/OFF.',
+                _all: '모두 선택', _none: '모두 해제', _reset: '재설정',
+                _btn: '필터',
+            },
+            zh: {
+                mandarin:       { name: '官话',       parent: '汉语' },
+                yue:            { name: '粤语',       parent: '汉语' },
+                min:            { name: '闽语',       parent: '汉语' },
+                wu:             { name: '吴语',       parent: '汉语' },
+                hakka:          { name: '客家语',     parent: '汉语' },
+                sinitic_other:  { name: '其他·汉语史音', parent: '汉语' },
+                koreanic:       { name: '朝鲜语族',   parent: null },
+                japonic:        { name: '日本语族',   parent: null },
+                vietic:         { name: '越南语',     parent: null },
+                tibeto_burman:  { name: '藏缅语族',   parent: null },
+                tungusic:       { name: '通古斯语族', parent: null },
+                mongolic:       { name: '蒙古语族',   parent: null },
+                tai_kadai:      { name: '壮侗语族',   parent: null },
+                hmong_mien:     { name: '苗瑶语族',   parent: null },
+                austroasiatic:  { name: '南亚语系',   parent: null },
+                _modern: '现代', _historical: '古代',
+                _title: '语言筛选', _sub: '按语系 × 时代筛选。点击芯片切换。',
+                _all: '全选', _none: '清除', _reset: '重置',
+                _btn: '筛选',
+            },
+        };
+
+        function uiL() {
+            const u = (window.__langmap && window.__langmap.uiLang) || 'ja';
+            if (HAN_GROUPS_I18N[u]) return u;
+            // Map related UI langs to the closest available
+            if (u === 'yue' || u === 'zh_tw') return 'zh';
+            return 'ja';
+        }
+        function gName(gid) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return (t[gid] && t[gid].name) || gid;
+        }
+        function gParent(gid) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return (t[gid] && t[gid].parent) || null;
+        }
+        function L(key) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return t[key] != null ? t[key] : (HAN_GROUPS_I18N.ja[key] || key);
+        }
+
+        // ----------------------------------------------------------
+        //  State
+        // ----------------------------------------------------------
+        // selected = Set of codes that PASS the filter.
+        // Convention: when "no filter active" (== ALL codes selected,
+        // or filter was never opened), anyFilterActive() returns false
+        // and every marker renders unconditionally.
+        let selected = new Set();
+
+        function allCodes() {
+            const arr = (typeof window.HAN_LANGS !== 'undefined') ? window.HAN_LANGS
+                       : (typeof HAN_LANGS !== 'undefined') ? HAN_LANGS : [];
+            return new Set(arr);
+        }
+
+        // A code "appears in taxonomy" iff it shows up in any group.
+        const taxonomyCodes = new Set();
+        for (const g of HAN_GROUPS) {
+            for (const c of g.modern)     taxonomyCodes.add(c);
+            for (const c of g.historical) taxonomyCodes.add(c);
+        }
+
+        // Compute the set of codes the filter UI actually offers chips
+        // for. = taxonomy ∩ HAN_LANGS. Anything in HAN_LANGS missing
+        // here is "uncovered" and reported on the console.
+        function offeredCodes() {
+            const out = new Set();
+            const han = allCodes();
+            for (const c of taxonomyCodes) if (han.has(c)) out.add(c);
+            return out;
+        }
+
+        // Report uncovered codes (in HAN_LANGS but not in taxonomy)
+        // so future code adds get a heads-up.
+        function reportUncovered() {
+            const han = allCodes();
+            const missing = [];
+            for (const c of han) {
+                if (c === 'en') continue;             // display-only locale
+                if (!taxonomyCodes.has(c)) missing.push(c);
+            }
+            if (missing.length) {
+                console.info('[hanmap.langFilter] codes in HAN_LANGS but NOT in group taxonomy:', missing);
+            }
+            // Also report codes in taxonomy but missing from HAN_LANGS
+            // (proto-langs still being generated).
+            const notYet = [];
+            for (const c of taxonomyCodes) {
+                if (!han.has(c)) notYet.push(c);
+            }
+            if (notYet.length) {
+                console.info('[hanmap.langFilter] taxonomy codes NOT yet in HAN_LANGS (chips skipped):', notYet);
+            }
+        }
+
+        // ----------------------------------------------------------
+        //  Persistence
+        // ----------------------------------------------------------
+        function loadState() {
+            // Order of priority:
+            //  1. URL hash "hf=..." (so shared links work)
+            //  2. localStorage "hm.langFilter"
+            //  3. default = no filter active (selected covers all
+            //     offered codes; anyFilterActive() = false)
+            const offered = offeredCodes();
+            try {
+                const params = new URLSearchParams((location.hash || '').slice(1));
+                const hf = params.get(HASH_PARAM);
+                if (hf != null) {
+                    selected = new Set(hf.split(',').filter(Boolean).filter(c => offered.has(c)));
+                    return;
+                }
+            } catch (_) {}
+            try {
+                const raw = localStorage.getItem(LS_KEY);
+                if (raw) {
+                    const arr = JSON.parse(raw);
+                    if (Array.isArray(arr)) {
+                        selected = new Set(arr.filter(c => offered.has(c)));
+                        return;
+                    }
+                }
+            } catch (_) {}
+            selected = new Set(offered);   // default = all selected = no filter
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(LS_KEY, JSON.stringify(Array.from(selected)));
+            } catch (_) {}
+        }
+
+        // ----------------------------------------------------------
+        //  Public API (window.__langmap)
+        // ----------------------------------------------------------
+        window.__langmap = window.__langmap || {};
+
+        function anyFilterActive() {
+            const offered = offeredCodes();
+            if (selected.size === 0) return true;          // explicit "none"
+            if (selected.size >= offered.size) {
+                // selected is a superset of offered → still need to
+                // check it's NOT a strict subset
+                for (const c of offered) if (!selected.has(c)) return true;
+                return false;                              // exactly = offered
+            }
+            return true;
+        }
+        function passesFilter(code) {
+            if (!anyFilterActive()) return true;
+            return selected.has(code);
+        }
+        function getFilterHashParam() {
+            if (!anyFilterActive()) return '';
+            return HASH_PARAM + '=' + Array.from(selected).sort().join(',');
+        }
+
+        window.__langmap.anyFilterActive    = anyFilterActive;
+        window.__langmap.passesFilter       = passesFilter;
+        window.__langmap.getFilterHashParam = getFilterHashParam;
+
+        // ----------------------------------------------------------
+        //  UI rendering
+        // ----------------------------------------------------------
+        function refreshTriggers() {
+            // Persist, then signal the main wordmap IIFE (it owns the
+            // closure for updateMarkers / updateHash) via a CustomEvent.
+            saveState();
+            try { window.dispatchEvent(new CustomEvent('langmap:filterchange')); } catch (_) {}
+            updateBadge();
+        }
+
+        function updateBadge() {
+            const offered = offeredCodes();
+            const active = anyFilterActive();
+            const badge = document.getElementById('hm-lang-filter-badge');
+            const lbl   = document.getElementById('hm-lang-filter-label');
+            if (lbl) lbl.textContent = L('_btn');
+            if (badge) {
+                if (active) {
+                    badge.textContent = String(selected.size);
+                    badge.style.display = '';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+            const counter = document.getElementById('hm-lang-filter-count');
+            if (counter) counter.textContent = selected.size + ' / ' + offered.size;
+        }
+
+        // Pretty name for a chip. Prefer LANG_NAMES translation; fall
+        // back to the code itself. LANG_NAMES is a top-level `const` in
+        // lang_names.js — accessible via the bare identifier from any
+        // sibling <script> block, but NOT on window (const doesn't
+        // attach to window). Guard with typeof to avoid ReferenceError
+        // if the script hasn't loaded yet.
+        function chipNameFor(code) {
+            try {
+                if (typeof LANG_NAMES === 'object' && LANG_NAMES) {
+                    const u = uiL();
+                    const byLang = LANG_NAMES[u] || LANG_NAMES.ja || LANG_NAMES.en;
+                    if (byLang && byLang[code]) return byLang[code];
+                }
+            } catch (_) {}
+            return code;
+        }
+
+        function renderPanel() {
+            const body = document.getElementById('hm-lang-filter-body');
+            if (!body) return;
+            const offered = offeredCodes();
+            const i18n = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+
+            // Update modal title + toolbar labels for current UI lang
+            const titleEl = document.getElementById('hm-lang-filter-title');
+            if (titleEl) titleEl.textContent = L('_title');
+            const subEl = document.getElementById('hm-lang-filter-sub');
+            if (subEl) subEl.textContent = L('_sub');
+            const toolbar = document.getElementById('hm-lang-filter-toolbar');
+            if (toolbar) {
+                const btns = toolbar.querySelectorAll('.hm-lf-tool-btn');
+                btns.forEach(b => {
+                    const a = b.getAttribute('data-act');
+                    b.textContent = a === 'all' ? L('_all') : a === 'none' ? L('_none') : L('_reset');
+                });
+            }
+
+            body.innerHTML = '';
+
+            // Group by parent family for visual hierarchy
+            const sinitic = HAN_GROUPS.filter(g => g.family === 'sinitic');
+            const others  = HAN_GROUPS.filter(g => g.family !== 'sinitic');
+
+            const blocks = [];
+            // Sinitic super-header (only if any sinitic subgroup has offered codes)
+            const siniticAny = sinitic.some(g => g.modern.concat(g.historical).some(c => offered.has(c)));
+            if (siniticAny) {
+                const sh = document.createElement('div');
+                sh.style.cssText = 'font-size:11px;font-weight:600;color:#888;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 6px;padding-left:2px';
+                sh.textContent = gParent('mandarin') || 'Sinitic';
+                blocks.push(sh);
+                for (const g of sinitic) blocks.push(renderGroup(g, offered));
+            }
+            for (const g of others) {
+                const has = g.modern.concat(g.historical).some(c => offered.has(c));
+                if (!has) continue;
+                blocks.push(renderGroup(g, offered));
+            }
+
+            blocks.forEach(el => body.appendChild(el));
+            updateBadge();
+        }
+
+        function renderGroup(g, offered) {
+            const wrap = document.createElement('div');
+            wrap.className = 'hm-lf-group';
+            wrap.setAttribute('data-group-id', g.id);
+
+            const head = document.createElement('div');
+            head.className = 'hm-lf-group-head';
+            const ttl = document.createElement('div');
+            ttl.className = 'hm-lf-group-title';
+            ttl.textContent = gName(g.id);
+            head.appendChild(ttl);
+
+            const acts = document.createElement('div');
+            acts.className = 'hm-lf-group-actions';
+            const bAll = document.createElement('button'); bAll.type='button'; bAll.textContent = L('_all');
+            const bNone = document.createElement('button'); bNone.type='button'; bNone.textContent = L('_none');
+            bAll.addEventListener('click', () => {
+                for (const c of g.modern.concat(g.historical)) if (offered.has(c)) selected.add(c);
+                renderPanel(); refreshTriggers();
+            });
+            bNone.addEventListener('click', () => {
+                for (const c of g.modern.concat(g.historical)) selected.delete(c);
+                renderPanel(); refreshTriggers();
+            });
+            acts.appendChild(bAll); acts.appendChild(bNone);
+            head.appendChild(acts);
+            wrap.appendChild(head);
+
+            // Modern row
+            const modernCodes = g.modern.filter(c => offered.has(c));
+            if (modernCodes.length) wrap.appendChild(renderEraRow(L('_modern'), modernCodes));
+            // Historical row
+            const histCodes = g.historical.filter(c => offered.has(c));
+            if (histCodes.length) wrap.appendChild(renderEraRow(L('_historical'), histCodes));
+
+            return wrap;
+        }
+
+        function renderEraRow(label, codes) {
+            const row = document.createElement('div');
+            row.className = 'hm-lf-era-row';
+            const lab = document.createElement('div');
+            lab.className = 'hm-lf-era-label';
+            lab.textContent = label;
+            row.appendChild(lab);
+            const wrap = document.createElement('div');
+            wrap.className = 'hm-lf-chip-wrap';
+            for (const code of codes) {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'hm-lf-chip' + (selected.has(code) ? ' active' : '');
+                chip.setAttribute('data-code', code);
+                const nm = document.createElement('span');
+                nm.textContent = chipNameFor(code);
+                chip.appendChild(nm);
+                const cd = document.createElement('span');
+                cd.className = 'hm-lf-chip-code';
+                cd.textContent = code;
+                chip.appendChild(cd);
+                chip.addEventListener('click', () => {
+                    if (selected.has(code)) selected.delete(code);
+                    else selected.add(code);
+                    chip.classList.toggle('active');
+                    refreshTriggers();
+                });
+                wrap.appendChild(chip);
+            }
+            row.appendChild(wrap);
+            return row;
+        }
+
+        // ----------------------------------------------------------
+        //  Modal open/close
+        // ----------------------------------------------------------
+        function open() {
+            renderPanel();
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            const md = document.getElementById('hm-lang-filter-modal');
+            if (bd) bd.style.display = 'block';
+            if (md) md.style.display = 'block';
+        }
+        function close() {
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            const md = document.getElementById('hm-lang-filter-modal');
+            if (bd) bd.style.display = 'none';
+            if (md) md.style.display = 'none';
+        }
+
+        // ----------------------------------------------------------
+        //  Wire DOM
+        // ----------------------------------------------------------
+        function wire() {
+            loadState();
+            reportUncovered();
+            const btn = document.getElementById('hm-lang-filter-btn');
+            if (btn) btn.addEventListener('click', open);
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            if (bd) bd.addEventListener('click', close);
+            const xb = document.getElementById('hm-lang-filter-close');
+            if (xb) xb.addEventListener('click', close);
+            // Escape to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                const md = document.getElementById('hm-lang-filter-modal');
+                if (md && md.style.display !== 'none') { close(); e.stopPropagation(); }
+            }, true);
+            // Toolbar buttons
+            const tb = document.getElementById('hm-lang-filter-toolbar');
+            if (tb) tb.addEventListener('click', (e) => {
+                const b = e.target.closest('button[data-act]'); if (!b) return;
+                const offered = offeredCodes();
+                const act = b.getAttribute('data-act');
+                if (act === 'all' || act === 'reset') {
+                    selected = new Set(offered);
+                } else if (act === 'none') {
+                    selected = new Set();
+                }
+                renderPanel(); refreshTriggers();
+            });
+            updateBadge();
+            // Re-render when UI lang changes (i18n labels)
+            window.addEventListener('langmap:uichange', () => {
+                renderPanel();
+                updateBadge();
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', wire);
+        } else {
+            wire();
+        }
+    })();
     </script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -3482,6 +4144,14 @@
         updateWordDefinition();
         // Refresh definition text when UI lang changes
         window.addEventListener('langmap:uichange', updateWordDefinition);
+
+        // Hanmap language-filter (defined in an outer script): when the
+        // user toggles chips, re-render markers + update URL hash so the
+        // filter state survives reload / sharing.
+        window.addEventListener('langmap:filterchange', () => {
+            try { updateMarkers(select.value); } catch (_) {}
+            try { updateHash(); } catch (_) {}
+        });
 
         // ============================================================
         //  HANMAP: character selector button + modal
@@ -5015,6 +5685,10 @@
             // Skip codes that the collision pass couldn't place.
             for (const code of allRenderable) {
                 if (hiddenCodes.has(code)) continue;
+                // Hanmap language filter: when a filter is active, skip
+                // codes that don't pass. Matches the task requirement
+                // "only those codes' markers render" (vs. dimming).
+                if (filterActive && !isActive(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const off = offsets[code] || { x: 0, y: 0 };
