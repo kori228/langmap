@@ -2391,8 +2391,8 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=220"></script>
-    <script src="word_manifest.js?v=13"></script>
+    <script src="wordmap_data.js?v=221"></script>
+    <script src="word_manifest.js?v=14"></script>
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
         // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
@@ -2422,7 +2422,7 @@
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=32"></script>
-    <script src="lang_names.js?v=110"></script>
+    <script src="lang_names.js?v=111"></script>
     <script src="wordmap_trivia.js?v=27"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -2667,14 +2667,14 @@
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
             styles:    94,
-            data:      220,
+            data:      221,
             metaI18n:  15,
             filter:    32,
-            names:   110,
-            meta:     191,
+            names:   111,
+            meta:     192,
             trivia:   27,
-            triviaI18n: 3,
-            words:      13,
+            triviaI18n: 4,
+            words:      15,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
