@@ -2001,7 +2001,7 @@ const HAN_DATA = {
       "zh_tang": "ɕæn˩˨˧",
       "zh_song": "ʂan˩˧",
       "ko": "san",
-      "vi": "ʂəːn˧˧",
+      "vi": "səːn˧˧",
       "vi_c": "ʂəːn˧˨",
       "vi_s": "ʂəːn˧˧",
       "bca": "sæ˥",
@@ -11945,20 +11945,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "む",
-        "surface": "mu",
-        "ipa": "mɯ",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "むっつ",
-        "surface": "muttsu",
-        "ipa": "mɯt͡t͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "リク",
@@ -11971,12 +11957,6 @@ const HAN_VARIANTS = {
         "surface": "roku",
         "ipa": "ɾokɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "む",
-        "surface": "mu",
-        "ipa": "mɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12021,12 +12001,6 @@ const HAN_VARIANTS = {
         "surface": "ryū",
         "ipa": "ɾjɯː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "たつ",
-        "surface": "tatsu",
-        "ipa": "tat͡sɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12059,20 +12033,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "たつ",
-        "surface": "tatsu",
-        "ipa": "tat͡sɯ",
-        "label": "立つ (intransitive: to stand up)"
-      },
-      {
-        "native": "たてる",
-        "surface": "tateru",
-        "ipa": "tateɾɯ",
-        "label": "立てる (transitive: to set upright)"
-      }
-    ],
     "ja": [
       {
         "native": "リツ",
@@ -12085,12 +12045,6 @@ const HAN_VARIANTS = {
         "surface": "ryū",
         "ipa": "ɾjɯː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "たつ",
-        "surface": "tatsu",
-        "ipa": "tat͡sɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12221,20 +12175,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "ひと",
-        "surface": "hito",
-        "ipa": "çito",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "ひとつ",
-        "surface": "hitotsu",
-        "ipa": "çitot͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "イツ",
@@ -12247,12 +12187,6 @@ const HAN_VARIANTS = {
         "surface": "ichi",
         "ipa": "it͡ɕi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひと",
-        "surface": "hito",
-        "ipa": "çito",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12355,20 +12289,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "ふた",
-        "surface": "futa",
-        "ipa": "ɸɯta",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "ふたつ",
-        "surface": "futatsu",
-        "ipa": "ɸɯtat͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "ジ",
@@ -12381,12 +12301,6 @@ const HAN_VARIANTS = {
         "surface": "ni",
         "ipa": "ni",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ふた",
-        "surface": "futa",
-        "ipa": "ɸɯta",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12489,20 +12403,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "み",
-        "surface": "mi",
-        "ipa": "mi",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "みっつ",
-        "surface": "mittsu",
-        "ipa": "mit͡t͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "サン",
@@ -12515,12 +12415,6 @@ const HAN_VARIANTS = {
         "surface": "san",
         "ipa": "saɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "み",
-        "surface": "mi",
-        "ipa": "mi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12581,20 +12475,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "いつ",
-        "surface": "itsu",
-        "ipa": "it͡sɯ",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "いつつ",
-        "surface": "itsutsu",
-        "ipa": "it͡sɯt͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "ゴ",
@@ -12607,12 +12487,6 @@ const HAN_VARIANTS = {
         "surface": "go",
         "ipa": "go",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "いつ",
-        "surface": "itsu",
-        "ipa": "it͡sɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12701,20 +12575,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "や",
-        "surface": "ya",
-        "ipa": "ja",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "やっつ",
-        "surface": "yattsu",
-        "ipa": "jat͡t͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "ハツ",
@@ -12727,12 +12587,6 @@ const HAN_VARIANTS = {
         "surface": "hachi",
         "ipa": "hat͡ɕi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "や",
-        "surface": "ya",
-        "ipa": "ja",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12793,20 +12647,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "ここの",
-        "surface": "kokono",
-        "ipa": "kokono",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "ここのつ",
-        "surface": "kokonotsu",
-        "ipa": "kokonot͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "キュウ",
@@ -12819,12 +12659,6 @@ const HAN_VARIANTS = {
         "surface": "ku",
         "ipa": "kɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ここの",
-        "surface": "kokono",
-        "ipa": "kokono",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12939,12 +12773,6 @@ const HAN_VARIANTS = {
         "surface": "jū",
         "ipa": "d͡ʑɯː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "とお",
-        "surface": "tō",
-        "ipa": "toː",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -12991,20 +12819,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "ひ",
-        "surface": "hi",
-        "ipa": "çi",
-        "label": "太陽・日 (sun/day)"
-      },
-      {
-        "native": "か",
-        "surface": "ka",
-        "ipa": "ka",
-        "label": "日付 (date suffix, e.g. 二日 futsuka)"
-      }
-    ],
     "ja": [
       {
         "native": "ジツ",
@@ -13017,12 +12831,6 @@ const HAN_VARIANTS = {
         "surface": "nichi",
         "ipa": "nit͡ɕi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひ",
-        "surface": "hi",
-        "ipa": "çi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13067,12 +12875,6 @@ const HAN_VARIANTS = {
         "surface": "gatsu",
         "ipa": "gat͡sɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "つき",
-        "surface": "tsuki",
-        "ipa": "t͡sɯki",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13103,12 +12905,6 @@ const HAN_VARIANTS = {
         "surface": "sen",
         "ipa": "seɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "やま",
-        "surface": "yama",
-        "ipa": "jama",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13139,12 +12935,6 @@ const HAN_VARIANTS = {
         "surface": "sui",
         "ipa": "sɯi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "みず",
-        "surface": "mizu",
-        "ipa": "midzɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13175,12 +12965,6 @@ const HAN_VARIANTS = {
         "surface": "ke",
         "ipa": "ke",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひ",
-        "surface": "hi",
-        "ipa": "çi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13211,12 +12995,6 @@ const HAN_VARIANTS = {
         "surface": "moku",
         "ipa": "mokɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "き",
-        "surface": "ki",
-        "ipa": "ki",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13235,20 +13013,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "あめ",
-        "surface": "ame",
-        "ipa": "ame",
-        "label": "天空 (sky, archaic/poetic)"
-      },
-      {
-        "native": "あま",
-        "surface": "ama",
-        "ipa": "ama",
-        "label": "複合語頭 (prefix in compounds, e.g. 天の川 amanogawa)"
-      }
-    ],
     "ja": [
       {
         "native": "テン",
@@ -13261,12 +13025,6 @@ const HAN_VARIANTS = {
         "surface": "ten",
         "ipa": "teɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "あめ",
-        "surface": "ame",
-        "ipa": "ame",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13285,20 +13043,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "つち",
-        "surface": "tsuchi",
-        "ipa": "t͡sɯt͡ɕi",
-        "label": "土地・大地 (earth/soil)"
-      },
-      {
-        "native": "ち",
-        "surface": "chi",
-        "ipa": "t͡ɕi",
-        "label": "複合語中 (in compounds, e.g. 地震 jishin — but this is on-yomi; standalone kun = tsuchi)"
-      }
-    ],
     "ja": [
       {
         "native": "チ",
@@ -13311,12 +13055,6 @@ const HAN_VARIANTS = {
         "surface": "ji",
         "ipa": "d͡ʑi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "つち",
-        "surface": "tsuchi",
-        "ipa": "t͡sɯt͡ɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13347,12 +13085,6 @@ const HAN_VARIANTS = {
         "surface": "ken",
         "ipa": "keɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "いぬ",
-        "surface": "inu",
-        "ipa": "inɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13425,12 +13157,6 @@ const HAN_VARIANTS = {
         "surface": "me",
         "ipa": "me",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "うま",
-        "surface": "uma",
-        "ipa": "ɯma",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13503,12 +13229,6 @@ const HAN_VARIANTS = {
         "surface": "chō",
         "ipa": "t͡ɕoː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "とり",
-        "surface": "tori",
-        "ipa": "toɾi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13569,20 +13289,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "さかな",
-        "surface": "sakana",
-        "ipa": "sakana",
-        "label": "魚 (fish, modern standard)"
-      },
-      {
-        "native": "うお",
-        "surface": "uo",
-        "ipa": "ɯo",
-        "label": "魚 (fish, classical/compounds)"
-      }
-    ],
     "ja": [
       {
         "native": "ギョ",
@@ -13595,12 +13301,6 @@ const HAN_VARIANTS = {
         "surface": "gyo",
         "ipa": "gjo",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "さかな",
-        "surface": "sakana",
-        "ipa": "sakana",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13631,12 +13331,6 @@ const HAN_VARIANTS = {
         "surface": "go",
         "ipa": "go",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "うし",
-        "surface": "ushi",
-        "ipa": "ɯɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13667,12 +13361,6 @@ const HAN_VARIANTS = {
         "surface": "yō",
         "ipa": "joː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひつじ",
-        "surface": "hitsuji",
-        "ipa": "çit͡sɯd͡ʑi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13703,12 +13391,6 @@ const HAN_VARIANTS = {
         "surface": "myō",
         "ipa": "mjoː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ねこ",
-        "surface": "neko",
-        "ipa": "neko",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13879,12 +13561,6 @@ const HAN_VARIANTS = {
         "surface": "nin",
         "ipa": "niɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひと",
-        "surface": "hito",
-        "ipa": "çito",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -13999,12 +13675,6 @@ const HAN_VARIANTS = {
         "surface": "shu",
         "ipa": "ɕɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "て",
-        "surface": "te",
-        "ipa": "te",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14037,26 +13707,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "あし",
-        "surface": "ashi",
-        "ipa": "aɕi",
-        "label": "足 (foot, leg)"
-      },
-      {
-        "native": "たりる",
-        "surface": "tariru",
-        "ipa": "taɾiɾɯ",
-        "label": "足りる (to be sufficient)"
-      },
-      {
-        "native": "たす",
-        "surface": "tasu",
-        "ipa": "tasɯ",
-        "label": "足す (to add, supplement)"
-      }
-    ],
     "ja": [
       {
         "native": "ショク",
@@ -14069,12 +13719,6 @@ const HAN_VARIANTS = {
         "surface": "soku",
         "ipa": "sokɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "あし",
-        "surface": "ashi",
-        "ipa": "aɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14133,12 +13777,6 @@ const HAN_VARIANTS = {
         "surface": "moku",
         "ipa": "mokɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "め",
-        "surface": "me",
-        "ipa": "me",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14169,12 +13807,6 @@ const HAN_VARIANTS = {
         "surface": "ni",
         "ipa": "ni",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "みみ",
-        "surface": "mimi",
-        "ipa": "mimi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14205,12 +13837,6 @@ const HAN_VARIANTS = {
         "surface": "ku",
         "ipa": "kɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "くち",
-        "surface": "kuchi",
-        "ipa": "kɯt͡ɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14229,20 +13855,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "あたま",
-        "surface": "atama",
-        "ipa": "atama",
-        "label": "頭 (head, general)"
-      },
-      {
-        "native": "かしら",
-        "surface": "kashira",
-        "ipa": "kaɕiɾa",
-        "label": "頭 (head/leader, formal/archaic)"
-      }
-    ],
     "ja": [
       {
         "native": "トウ",
@@ -14255,12 +13867,6 @@ const HAN_VARIANTS = {
         "surface": "zu",
         "ipa": "d͡zɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "あたま",
-        "surface": "atama",
-        "ipa": "atama",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14319,12 +13925,6 @@ const HAN_VARIANTS = {
         "surface": "ketsu",
         "ipa": "ket͡sɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ち",
-        "surface": "chi",
-        "ipa": "t͡ɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14555,32 +14155,6 @@ const HAN_VARIANTS = {
         "label": "上声（古音・書面）"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "うえ",
-        "surface": "ue",
-        "ipa": "ɯe",
-        "label": "場所 (location: above)"
-      },
-      {
-        "native": "うわ",
-        "surface": "uwa",
-        "ipa": "ɯwa",
-        "label": "複合語頭 (compound prefix: e.g. 上着 uwagi)"
-      },
-      {
-        "native": "かみ",
-        "surface": "kami",
-        "ipa": "kami",
-        "label": "上流・上位 (upstream; superior rank)"
-      },
-      {
-        "native": "のぼる",
-        "surface": "noboru",
-        "ipa": "noboɾɯ",
-        "label": "動詞 (verb: to go up)"
-      }
-    ],
     "ja": [
       {
         "native": "ショウ",
@@ -14593,12 +14167,6 @@ const HAN_VARIANTS = {
         "surface": "jō",
         "ipa": "d͡ʑoː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "うえ",
-        "surface": "ue",
-        "ipa": "ɯe",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14743,38 +14311,6 @@ const HAN_VARIANTS = {
         "label": "下巴 / 廈門（音借）"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "した",
-        "surface": "shita",
-        "ipa": "ɕita",
-        "label": "場所 (location: below)"
-      },
-      {
-        "native": "しも",
-        "surface": "shimo",
-        "ipa": "ɕimo",
-        "label": "下流・下位 (downstream; lower rank)"
-      },
-      {
-        "native": "もと",
-        "surface": "moto",
-        "ipa": "moto",
-        "label": "足元・根拠 (base/foot of)"
-      },
-      {
-        "native": "くだる",
-        "surface": "kudaru",
-        "ipa": "kɯdaɾɯ",
-        "label": "動詞 (verb: to go down)"
-      },
-      {
-        "native": "おりる",
-        "surface": "oriru",
-        "ipa": "oɾiɾɯ",
-        "label": "動詞 (verb: to descend)"
-      }
-    ],
     "ja": [
       {
         "native": "カ",
@@ -14787,12 +14323,6 @@ const HAN_VARIANTS = {
         "surface": "ge",
         "ipa": "ge",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "した",
-        "surface": "shita",
-        "ipa": "ɕita",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14853,12 +14383,6 @@ const HAN_VARIANTS = {
         "surface": "sa",
         "ipa": "sa",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひだり",
-        "surface": "hidari",
-        "ipa": "çidaɾi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14889,12 +14413,6 @@ const HAN_VARIANTS = {
         "surface": "u",
         "ipa": "ɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "みぎ",
-        "surface": "migi",
-        "ipa": "migi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14925,12 +14443,6 @@ const HAN_VARIANTS = {
         "surface": "tō",
         "ipa": "toː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "ひがし",
-        "surface": "higashi",
-        "ipa": "çigaɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14961,12 +14473,6 @@ const HAN_VARIANTS = {
         "surface": "sai",
         "ipa": "sai",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "にし",
-        "surface": "nishi",
-        "ipa": "niɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -14997,12 +14503,6 @@ const HAN_VARIANTS = {
         "surface": "nan",
         "ipa": "naɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "みなみ",
-        "surface": "minami",
-        "ipa": "minami",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -15343,20 +14843,6 @@ const HAN_VARIANTS = {
         "label": "商行（銀行）"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "いく",
-        "surface": "iku",
-        "ipa": "ikɯ",
-        "label": "行く (to go)"
-      },
-      {
-        "native": "おこなう",
-        "surface": "okonau",
-        "ipa": "okonaw",
-        "label": "行う (to carry out, perform)"
-      }
-    ],
     "ja": [
       {
         "native": "コウ",
@@ -15375,12 +14861,6 @@ const HAN_VARIANTS = {
         "surface": "an",
         "ipa": "aɴ",
         "label": "唐音 / Tō-on"
-      },
-      {
-        "native": "いく",
-        "surface": "iku",
-        "ipa": "ikɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -15525,26 +15005,6 @@ const HAN_VARIANTS = {
         "label": "來（literary/formal reading）"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "くる",
-        "surface": "kuru",
-        "ipa": "kɯɾɯ",
-        "label": "来る (to come)"
-      },
-      {
-        "native": "きたる",
-        "surface": "kitaru",
-        "ipa": "kitaɾɯ",
-        "label": "来たる (to come, formal/literary)"
-      },
-      {
-        "native": "きたす",
-        "surface": "kitasu",
-        "ipa": "kitasɯ",
-        "label": "来たす (to bring about)"
-      }
-    ],
     "ja": [
       {
         "native": "ライ",
@@ -15557,12 +15017,6 @@ const HAN_VARIANTS = {
         "surface": "rai",
         "ipa": "ɾai",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "くる",
-        "surface": "kuru",
-        "ipa": "kɯɾɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -15679,20 +15133,6 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "さる",
-        "surface": "saru",
-        "ipa": "saɾɯ",
-        "label": "去る (to leave, depart)"
-      },
-      {
-        "native": "いぬ",
-        "surface": "inu",
-        "ipa": "inɯ",
-        "label": "去ぬ (to leave, archaic)"
-      }
-    ],
     "ja": [
       {
         "native": "キョ",
@@ -15705,12 +15145,6 @@ const HAN_VARIANTS = {
         "surface": "ko",
         "ipa": "ko",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "さる",
-        "surface": "saru",
-        "ipa": "saɾɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -15813,26 +15247,6 @@ const HAN_VARIANTS = {
         "label": "文讀 (meet/visit)"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "みる",
-        "surface": "miru",
-        "ipa": "miɾɯ",
-        "label": "見る (to see, look)"
-      },
-      {
-        "native": "みえる",
-        "surface": "mieru",
-        "ipa": "mieɾɯ",
-        "label": "見える (to be visible)"
-      },
-      {
-        "native": "みせる",
-        "surface": "miseru",
-        "ipa": "miseɾɯ",
-        "label": "見せる (to show)"
-      }
-    ],
     "ja": [
       {
         "native": "ケン",
@@ -15845,12 +15259,6 @@ const HAN_VARIANTS = {
         "surface": "ken",
         "ipa": "keɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "みる",
-        "surface": "miru",
-        "ipa": "miɾɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -15967,20 +15375,6 @@ const HAN_VARIANTS = {
         "label": "文讀 (food)"
       }
     ],
-    "ja_kun": [
-      {
-        "native": "くう",
-        "surface": "kuu",
-        "ipa": "kɯː",
-        "label": "食う (to eat, plain/masculine)"
-      },
-      {
-        "native": "たべる",
-        "surface": "taberu",
-        "ipa": "tabeɾɯ",
-        "label": "食べる (to eat, standard modern)"
-      }
-    ],
     "ja": [
       {
         "native": "ショク",
@@ -15993,12 +15387,6 @@ const HAN_VARIANTS = {
         "surface": "jiki",
         "ipa": "d͡ʑiki",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "くう",
-        "surface": "kuu",
-        "ipa": "kɯː",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16029,12 +15417,6 @@ const HAN_VARIANTS = {
         "surface": "on",
         "ipa": "oɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "のむ",
-        "surface": "nomu",
-        "ipa": "nomɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16065,12 +15447,6 @@ const HAN_VARIANTS = {
         "surface": "sō",
         "ipa": "soː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "はしる",
-        "surface": "hashiru",
-        "ipa": "haɕiɾɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16101,12 +15477,6 @@ const HAN_VARIANTS = {
         "surface": "za",
         "ipa": "d͡za",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "すわる",
-        "surface": "suwaru",
-        "ipa": "sɯwaɾɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16137,12 +15507,6 @@ const HAN_VARIANTS = {
         "surface": "hoku",
         "ipa": "hokɯ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "きた",
-        "surface": "kita",
-        "ipa": "kita",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16257,36 +15621,10 @@ const HAN_VARIANTS = {
         "surface": "chū",
         "ipa": "t͡ɕɯː",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "なか",
-        "surface": "naka",
-        "ipa": "naka",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
   "四": {
-    "ja_kun": [
-      {
-        "native": "よ",
-        "surface": "yo",
-        "ipa": "jo",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "よん",
-        "surface": "yon",
-        "ipa": "joɴ",
-        "label": "口語 (colloquial)"
-      },
-      {
-        "native": "よっつ",
-        "surface": "yottsu",
-        "ipa": "jot͡t͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "シ",
@@ -16299,30 +15637,10 @@ const HAN_VARIANTS = {
         "surface": "shi",
         "ipa": "ɕi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "よ",
-        "surface": "yo",
-        "ipa": "jo",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
   "七": {
-    "ja_kun": [
-      {
-        "native": "なな",
-        "surface": "nana",
-        "ipa": "nana",
-        "label": "数詞語根 (numeral root)"
-      },
-      {
-        "native": "ななつ",
-        "surface": "nanatsu",
-        "ipa": "nanat͡sɯ",
-        "label": "独立数詞 (independent counter)"
-      }
-    ],
     "ja": [
       {
         "native": "シツ",
@@ -16335,30 +15653,10 @@ const HAN_VARIANTS = {
         "surface": "shichi",
         "ipa": "ɕit͡ɕi",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "なな",
-        "surface": "nana",
-        "ipa": "nana",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
   "聞": {
-    "ja_kun": [
-      {
-        "native": "きく",
-        "surface": "kiku",
-        "ipa": "kikɯ",
-        "label": "聞く (to hear, listen, ask)"
-      },
-      {
-        "native": "きこえる",
-        "surface": "kikoeru",
-        "ipa": "kikoɾɯ",
-        "label": "聞こえる (to be audible)"
-      }
-    ],
     "ja": [
       {
         "native": "ブン",
@@ -16371,12 +15669,6 @@ const HAN_VARIANTS = {
         "surface": "mon",
         "ipa": "moɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "きく",
-        "surface": "kiku",
-        "ipa": "kikɯ",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16393,12 +15685,6 @@ const HAN_VARIANTS = {
         "surface": "do",
         "ipa": "do",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "つち",
-        "surface": "tsuchi",
-        "ipa": "t͡sɯt͡ɕi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16415,12 +15701,6 @@ const HAN_VARIANTS = {
         "surface": "kai",
         "ipa": "kai",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "うみ",
-        "surface": "umi",
-        "ipa": "ɯmi",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16437,12 +15717,6 @@ const HAN_VARIANTS = {
         "surface": "ko",
         "ipa": "ko",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "とら",
-        "surface": "tora",
-        "ipa": "toɾa",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   },
@@ -16459,12 +15733,6 @@ const HAN_VARIANTS = {
         "surface": "shin",
         "ipa": "ɕiɴ",
         "label": "呉音 / Go-on"
-      },
-      {
-        "native": "こころ",
-        "surface": "kokoro",
-        "ipa": "kokoɾo",
-        "label": "訓読み / Kun-yomi"
       }
     ]
   }
