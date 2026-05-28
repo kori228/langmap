@@ -198,8 +198,8 @@
         }
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
-            #char-current-btn { font-size: 60px !important; padding: 9px 20px !important; min-width: 110px !important; }
-            #char-random-btn { font-size: 12px !important; }
+            #char-current-btn { font-size: 60px !important; padding: 0 !important; width: 88px !important; height: 88px !important; min-width: 88px !important; }
+            #char-random-btn { font-size: 10px !important; padding: 3px 7px !important; }
         }
         body.is-3d #char-current-btn { color: #1a1a2e; }
 
@@ -2063,14 +2063,14 @@
              We keep the legacy `<select id="word-select">` hidden so wordmap
              internals that read select.value continue to work; updateCharSelection()
              keeps the hidden select's value synced with currentChar. -->
-        <div id="hanmap-char-row" style="display:flex;flex-direction:row;gap:8px;align-items:center">
+        <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
             <button id="char-current-btn" type="button"
                     aria-haspopup="dialog" aria-controls="char-modal"
                     title="Select character"
-                    style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:10px 22px;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;min-width:128px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
+                    style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
             <button id="char-random-btn" type="button"
                     title="Random character"
-                    style="font-size:13px;padding:6px 10px;border:1px solid #d0d0d0;border-radius:20px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 4px rgba(0,0,0,0.12);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
+                    style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
         </div>
         <select id="word-select" aria-label="Select character (legacy)" style="display:none"></select>
         <div id="word-definition" style="display:none"></div>
