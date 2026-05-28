@@ -199,7 +199,7 @@
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
             #char-current-btn { font-size: 60px !important; padding: 0 !important; width: 88px !important; height: 88px !important; min-width: 88px !important; }
-            #char-random-btn { font-size: 10px !important; padding: 3px 7px !important; }
+            #char-random-btn { font-size: 20px !important; padding: 0 !important; width: 36px !important; height: 36px !important; }
         }
         body.is-3d #char-current-btn { color: #1a1a2e; }
 
@@ -2189,24 +2189,27 @@
              internals that read select.value continue to work; updateCharSelection()
              keeps the hidden select's value synced with currentChar. -->
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-            <button id="char-current-btn" type="button"
-                    aria-haspopup="dialog" aria-controls="char-modal"
-                    title="Select character"
-                    style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
-            <div style="display:flex;flex-direction:row;gap:6px;align-items:center">
+            <!-- Char button + dice on the right, vertically centered together. -->
+            <div style="display:flex;flex-direction:row;gap:8px;align-items:center">
+                <button id="char-current-btn" type="button"
+                        aria-haspopup="dialog" aria-controls="char-modal"
+                        title="Select character"
+                        style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
                 <button id="char-random-btn" type="button"
                         title="Random character"
-                        style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
-                <button id="hm-lang-filter-btn" type="button"
-                        aria-haspopup="dialog" aria-controls="hm-lang-filter-modal"
-                        title="Filter languages"
-                        aria-label="Filter languages"
-                        style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:4px">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-                    <span id="hm-lang-filter-label">絞り込み</span>
-                    <span id="hm-lang-filter-badge" style="display:none;background:#1a73e8;color:#fff;border-radius:9px;padding:1px 6px;font-size:10px;font-weight:600;line-height:1.2">0</span>
-                </button>
+                        aria-label="Random character"
+                        style="font-size:24px;padding:0;width:40px;height:40px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 3px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;line-height:1">🎲</button>
             </div>
+            <!-- Filter button on its own line below. -->
+            <button id="hm-lang-filter-btn" type="button"
+                    aria-haspopup="dialog" aria-controls="hm-lang-filter-modal"
+                    title="Filter languages"
+                    aria-label="Filter languages"
+                    style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:4px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                <span id="hm-lang-filter-label">絞り込み</span>
+                <span id="hm-lang-filter-badge" style="display:none;background:#1a73e8;color:#fff;border-radius:9px;padding:1px 6px;font-size:10px;font-weight:600;line-height:1.2">0</span>
+            </button>
         </div>
         <select id="word-select" aria-label="Select character (legacy)" style="display:none"></select>
         <div id="word-definition" style="display:none"></div>
@@ -4318,11 +4321,47 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.classList.contains('visible')) closeModal();
             });
+            // Roulette-style random pick: cycle visible char rapidly,
+            // decelerating, and only redraw the map once it settles on
+            // the final character. Per user request 2026-05-29.
+            let _rouletteRunning = false;
             randomBtn.addEventListener('click', () => {
-                let ch;
-                do { ch = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
-                while (ch === currentWord && HAN_LIST.length > 1);
-                setChar(ch);
+                if (_rouletteRunning) return;  // ignore re-clicks mid-spin
+                let finalCh;
+                do { finalCh = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
+                while (finalCh === currentWord && HAN_LIST.length > 1);
+
+                const btn = document.getElementById('char-current-btn');
+                if (!btn) { setChar(finalCh); return; }
+                _rouletteRunning = true;
+                btn.setAttribute('aria-busy', 'true');
+
+                // Animation envelope: ~24 steps, accelerating then
+                // decelerating, total ~1.4s. Last step shows finalCh.
+                const steps = [];
+                const N = 24;
+                for (let i = 0; i < N; i++) {
+                    // Quadratic ease-out: faster at start, slower at end
+                    const t = i / (N - 1);
+                    const delay = 25 + Math.round(140 * t * t);  // 25ms → ~165ms
+                    steps.push(delay);
+                }
+                let i = 0;
+                const tick = () => {
+                    if (i === N - 1) {
+                        btn.textContent = finalCh;
+                        btn.removeAttribute('aria-busy');
+                        _rouletteRunning = false;
+                        setChar(finalCh);   // redraws map with new char
+                        return;
+                    }
+                    // Pick a random char each step (could collide with
+                    // current — that's fine for the roulette feel).
+                    btn.textContent = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)];
+                    i++;
+                    setTimeout(tick, steps[i]);
+                };
+                tick();
             });
             // Localise the modal title + random button on UI-lang change.
             function localizeChrome() {
