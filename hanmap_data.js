@@ -1009,7 +1009,6 @@ const HAN_DATA = {
       "ko_kp": "o",
       "ko_zai": "o",
       "pst": "*ŋāH",
-      "ptb": "*b-ŋa ⪤ *l-ŋa",
       "pko": "*tasə",
       "pja": "*itu",
       "ptung": "*tuɲga",
@@ -1600,7 +1599,6 @@ const HAN_DATA = {
       "ko_kp": "p'al",
       "ko_zai": "pal",
       "pst": "*ryēt",
-      "ptb": "*b-r-gyat ⪤ *b-g-ryat",
       "pko": "*jətərp",
       "pja": "*ja",
       "ptung": "*dʒapkun",
@@ -2381,7 +2379,6 @@ const HAN_DATA = {
       "ko_kp": "wŏl",
       "ko_zai": "wol",
       "pst": "*(s-)lăH",
-      "ptb": "*s-la ⪤ *g-la",
       "pko": "*tʌrk",
       "pja": "*tukuy",
       "ptung": "*bēga",
@@ -6030,7 +6027,6 @@ const HAN_DATA = {
       "ja_ojp": "syu",
       "ko_kp": "su",
       "ko_zai": "su",
-      "ptb": "*l(y)ak ⪤ *dyak",
       "pko": "*son",
       "pja": "*ta",
       "ptung": "*ŋāla",
@@ -6414,7 +6410,6 @@ const HAN_DATA = {
       "ja_ojp": "mo2ku",
       "ko_kp": "mok",
       "ko_zai": "mok",
-      "ptb": "*s-mik ⪤ *s-myak",
       "pko": "*nun",
       "pja": "*ma",
       "ptung": "*jāsa",
@@ -16312,6 +16307,20 @@ const HAN_VARIANTS = {
         "ipa": "go",
         "label": "呉音 / Go-on"
       }
+    ],
+    "ptb": [
+      {
+        "native": "",
+        "surface": "*b-ŋa",
+        "ipa": "*b-ŋa",
+        "label": "b- 形"
+      },
+      {
+        "native": "",
+        "surface": "*l-ŋa",
+        "ipa": "*l-ŋa",
+        "label": "l- 形"
+      }
     ]
   },
   "八": {
@@ -16411,6 +16420,20 @@ const HAN_VARIANTS = {
         "surface": "hachi",
         "ipa": "hat͡ɕi",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "ptb": [
+      {
+        "native": "",
+        "surface": "*b-r-gyat",
+        "ipa": "*b-r-gyat",
+        "label": "*b-r-gyat 形"
+      },
+      {
+        "native": "",
+        "surface": "*b-g-ryat",
+        "ipa": "*b-g-ryat",
+        "label": "*b-g-ryat 形"
       }
     ]
   },
@@ -16713,6 +16736,20 @@ const HAN_VARIANTS = {
         "surface": "ge̍h",
         "ipa": "ɡeʔ˥",
         "label": "文讀"
+      }
+    ],
+    "ptb": [
+      {
+        "native": "",
+        "surface": "*s-la",
+        "ipa": "*s-la",
+        "label": "s- 形"
+      },
+      {
+        "native": "",
+        "surface": "*g-la",
+        "ipa": "*g-la",
+        "label": "g- 形"
       }
     ]
   },
@@ -17584,6 +17621,20 @@ const HAN_VARIANTS = {
         "ipa": "ɕɯ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "ptb": [
+      {
+        "native": "",
+        "surface": "*l(y)ak",
+        "ipa": "*l(y)ak",
+        "label": "l- 形"
+      },
+      {
+        "native": "",
+        "surface": "*dyak",
+        "ipa": "*dyak",
+        "label": "d- 形"
+      }
     ]
   },
   "足": {
@@ -17699,6 +17750,20 @@ const HAN_VARIANTS = {
         "surface": "moku",
         "ipa": "mokɯ",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "ptb": [
+      {
+        "native": "",
+        "surface": "*s-mik",
+        "ipa": "*s-mik",
+        "label": "*s-mik 形"
+      },
+      {
+        "native": "",
+        "surface": "*s-myak",
+        "ipa": "*s-myak",
+        "label": "*s-myak 形"
       }
     ]
   },
