@@ -6021,18 +6021,14 @@
                 vi:  ['Hán', 'Chữ bản địa', 'La-tinh hoá',  'Phát âm',       'Ghi chú'],
             }[uiBase] || ['Char', 'Script', 'Romanization', 'Pronunciation', 'Note'];
 
-            html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
-            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
-            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
-            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
-            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
-            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
-            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
-            html += `</tr></thead><tbody>`;
+            // First pass: collect rows so we can decide whether the
+            // 独自文字 column has any content for this language. Sinitic /
+            // Vietnamese / English produce all-empty native cells via
+            // hanmapNormalizeFull, in which case we drop the column entirely.
+            const charBlocks = [];
             for (const ch of HAN_LIST) {
                 const cd = (typeof HAN_DATA !== 'undefined') ? HAN_DATA[ch] : null;
                 if (!cd) continue;
-                // Build the list of readings to render.
                 // HAN_VARIANTS, when present for (ch, code), REPLACES the
                 // primary single reading and supplies multiple variants
                 // each with its own label.
@@ -6041,13 +6037,10 @@
                 if (variants && variants.length) {
                     for (const v of variants) {
                         let n = v.native || '', s = v.surface || '', ipa = v.ipa || '';
-                        // If a variant's IPA wasn't pre-computed, derive it
-                        // through the same normaliser used for primary cells.
                         if (!ipa || !n) {
                             const derivedSurf = s || n || '';
                             const [dN, dS, dIpa] = hanmapNormalizeFull(code, derivedSurf, derivedSurf, ch);
                             if (!ipa) ipa = dIpa || derivedSurf;
-                            // Don't overwrite an explicit n/s from the variant.
                             if (!n) n = dN || '';
                             if (!s) s = dS || derivedSurf;
                         }
@@ -6063,6 +6056,20 @@
                     if (!native && !romanized && !ipaText) continue;
                     rows.push({ native, romanized, ipa: ipaText, label: '' });
                 }
+                if (rows.length) charBlocks.push({ ch, rows });
+            }
+            const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
+
+            html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
+            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
+            if (hasNative) html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
+            html += `</tr></thead><tbody>`;
+            for (const block of charBlocks) {
+                const { ch, rows } = block;
                 const isCur = (ch === currentWord);
                 const trStyle = isCur ? 'background:#fff8e1' : '';
                 for (let ri = 0; ri < rows.length; ri++) {
@@ -6072,7 +6079,7 @@
                     if (ri === 0) {
                         html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:top">${escapeHtml(ch)}</td>`;
                     }
-                    html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(r.native)}</td>`;
+                    if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444">${escapeHtml(r.romanized)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(r.ipa)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px">${escapeHtml(r.label)}</td>`;
