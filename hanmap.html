@@ -2755,25 +2755,18 @@
                                               //   default" rule (user
                                               //   request 2026-05-29).
         const HASH_PARAM = 'hf';
-        // Kun-yomi-style codes — every reading layer where the value is
-        // a NATIVE word for the concept, not a Sino-loan reading of the
-        // character. Per user confirmation 2026-05-29 this includes:
-        //   - Explicit native-reading layers: ja_kun, ko_hun, vi_nom
-        //   - Non-Sinitic Sinosphere languages (the readings here are
-        //     always the native word, never a Sino-loan):
-        //     mnc/sjo/juc/txg/zkt/za/bca
-        //   - All proto-language reconstructions (predate Chinese
-        //     contact, so by definition native):
-        //     pst/ptb/pko/pja/ptung/paa/ptai/pmgl/phm
-        const KUN_CODES = [
-            'ja_kun', 'ko_hun', 'vi_nom',
-            'mnc', 'sjo', 'juc', 'txg', 'zkt', 'za', 'bca',
-            'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
-        ];
-        // Default-OFF subset: only the explicit *_kun/_hun/_nom layers.
-        // The Sinosphere-non-Sino + proto codes stay ON by default so
-        // they don't disappear unexpectedly for the first-load visitor.
-        const KUN_DEFAULT_OFF = ['ja_kun', 'ko_hun', 'vi_nom'];
+        // Kun-yomi-style codes — the 3 EXPLICIT native-reading layers
+        // (ja_kun, ko_hun, vi_nom). The toggle covers ONLY these three
+        // so it doesn't clash with the 古代語 toggle: proto-languages
+        // and txg/juc/zkt are also native-word linguistically, but
+        // they're already classed as 古代 (historical) and toggled by
+        // the 古代語 button. mnc/sjo/za/bca are modern non-Sinitic
+        // native-word layers — they stay independently toggleable in
+        // their own family groups (no overlap with either master
+        // toggle). This keeps the two master toggles independent so
+        // the user's button-press feedback is unambiguous.
+        const KUN_CODES = ['ja_kun', 'ko_hun', 'vi_nom'];
+        const KUN_DEFAULT_OFF = KUN_CODES;
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -3148,17 +3141,24 @@
                         b.style.borderColor = '#d0d0d0';
                     }
                 };
-                // Ancient = any historical code currently selected.
-                let anyAncient = false;
-                for (const g of HAN_GROUPS) for (const c of g.historical) {
-                    if (offered.has(c) && selected.has(c)) { anyAncient = true; break; }
-                    if (anyAncient) break;
-                }
-                setBtnActive('toggle-ancient', anyAncient);
-                // Kun = any KUN_CODES currently selected.
-                let anyKun = false;
-                for (const c of KUN_CODES) if (offered.has(c) && selected.has(c)) { anyKun = true; break; }
-                setBtnActive('toggle-kun', anyKun);
+                // Visual state uses ALL-selected semantics (every code in
+                // the set is currently visible). This keeps the two
+                // master toggles independent — clicking 訓読み adds 3
+                // explicit kun chips and 訓読み lights up; the 古代語
+                // indicator only follows historical codes.
+                const allInSetSelected = (codes) => {
+                    let any = false;
+                    for (const c of codes) {
+                        if (!offered.has(c)) continue;
+                        any = true;
+                        if (!selected.has(c)) return false;
+                    }
+                    return any;   // false if set is empty
+                };
+                const ancientCodes = [];
+                for (const g of HAN_GROUPS) for (const c of g.historical) ancientCodes.push(c);
+                setBtnActive('toggle-ancient', allInSetSelected(ancientCodes));
+                setBtnActive('toggle-kun',     allInSetSelected(KUN_CODES));
             }
 
             body.innerHTML = '';
