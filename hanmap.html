@@ -4554,24 +4554,50 @@
                 if (r.label)     wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
                 if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
                 if (showWord && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
-                // Suppress the /ipa/ line when it duplicates the surface
-                // romanisation — e.g. Korean 一 (il/il), 山 (san/san), or
-                // every zh_han Old-Chinese reconstruction where the
-                // surface IS the IPA. Avoids visual repetition on the map.
-                if (showIpa && r.ipa && r.ipa !== r.romanized) html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
+                // Suppress the /ipa/ line ONLY when the IPA is a starred
+                // reconstruction (e.g. zh_han Baxter-Sagart "*ʔi[t]") AND
+                // it duplicates the surface — there's no point repeating
+                // the same reconstruction twice. For modern languages
+                // where the surface happens to equal the IPA (Korean
+                // 一 il/il, 山 san/san), keep showing both so the column
+                // structure stays consistent.
+                const isStarredRecon = r.ipa && r.ipa.startsWith('*');
+                if (showIpa && r.ipa && !(isStarredRecon && r.ipa === r.romanized)) {
+                    html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
+                }
             }
             if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
         }
 
-        // Ancient/reconstructed codes — rendered in a distinct sepia tone
-        // on the map so historical/extinct languages are easy to spot
-        // among the dozens of modern dialects.
+        // Ancient/reconstructed codes — rendered in a lighter tone on the
+        // map so historical languages are easy to spot among modern ones.
+        // The color depends on whether the code is Sinitic (sepia) or
+        // non-Sinitic Sinosphere (light red-brown). See hanmapLabelColor().
         const HAN_ANCIENT_CODES = new Set([
-            'zh_han', 'zh_tang', 'zh_song', 'zh_kanbun',
-            'txg', 'juc', 'zkt',  // Tangut / Jurchen / Khitan — extinct
+            // Sinitic historical / reconstructed
+            'zh_han', 'zh_tang', 'zh_song', 'zh_yuan', 'zh_phagspa', 'zh_kanbun',
+            // Sino-xenic historical
+            'ko_mid', 'ja_ojp', 'vi_ohan',
+            // Extinct non-Sinitic in the Sinosphere
+            'txg', 'juc', 'zkt',  // Tangut / Jurchen / Khitan
         ]);
+
+        // Color scheme for map labels (user request 2026-05-29):
+        // - Sinitic modern: default (inherit black)
+        // - Sinitic ancient: light sepia
+        // - Non-Sinitic modern (KO/JA/VI/MNC/SJO/BCA/ZA/BO_SINO etc.):
+        //   slightly tinted dark — gives the Sino-xenic + para-Sinitic
+        //   languages a visual contrast vs the dense Sinitic cluster.
+        // - Non-Sinitic ancient: lighter version of the modern non-Sinitic
+        //   color, same hue so the family relationship reads visually.
+        function hanmapLabelColor(code) {
+            const isSinitic = hanmapIsSinitic(code);
+            const isAncient = HAN_ANCIENT_CODES.has(code);
+            if (isSinitic) return isAncient ? '#998270' : '';
+            return isAncient ? '#a48070' : '#5e1f1f';
+        }
 
         // The four Japanese reading layers (呉音/漢音/唐音/訓読み) used to be
         // separate language codes but are now consolidated under `ja` and
@@ -4979,9 +5005,7 @@
                 }
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const isAncient   = HAN_ANCIENT_CODES.has(code);
-                const descColor = isAncient && !isUna ? '#8B4513'
-                                : (isDescendant && !isUna) ? '#c0392b' : '';
+                const descColor = isUna ? '' : hanmapLabelColor(code);
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
@@ -5051,9 +5075,7 @@
                 const [word, ipa] = entry;
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const isAncient   = HAN_ANCIENT_CODES.has(code);
-                const descColor = isAncient ? '#c08040'
-                                : isDescendant ? '#ff6b6b' : '';
+                const descColor = hanmapLabelColor(code);
 
                 // Offset co-located labels by shifting latitude (zoom + scale aware)
                 const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
