@@ -516,6 +516,22 @@
                 "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
+        /* 独自文字 (native-script) tier on the map label: appears next to
+           the romanization in the same line, slightly smaller so the
+           romanisation stays the primary read. */
+        .hanmap-native {
+            font-size: 0.82em;
+            opacity: 0.78;
+            margin-left: 0.15em;
+            font-weight: 400;
+        }
+        /* HAN_VARIANTS label inline on the map (白讀/文讀, 原音/頭音法則, etc.). */
+        .hanmap-label {
+            font-size: 0.7em;
+            opacity: 0.6;
+            margin-left: 0.3em;
+            font-style: normal;
+        }
         /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
         .lang-label:focus-visible,
         .globe-label:focus-visible,
@@ -2459,7 +2475,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=1"></script>
+    <script src="hanmap_data.js?v=18"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -2481,7 +2497,8 @@
     //  Synthesise wordmap's per-language `.words[id] = [surface, ipa]`
     //  shape from HAN_DATA so the wordmap IIFE rendering logic works
     //  unchanged. Also injects the 5 character-reading-layer "virtual"
-    //  languages (ja_kun, ja_go, ja_kan, ja_to, vi_han) into LANG_DATA.
+    //  languages (vi_han etc.) into LANG_DATA. Japanese reading layers
+    //  (呉音/漢音/唐音/訓読み) live as HAN_VARIANTS entries under `ja`.
     // ============================================================
     (function () {
         if (typeof HAN_DATA === 'undefined' || typeof HAN_LIST === 'undefined'
@@ -2491,14 +2508,21 @@
         }
         // 1. Pre-build `.words` map on every HAN-covered language code already
         //    present in LANG_DATA (e.g. ja, ko, zh, yue, nan, hak_tw, …).
+        // Treat the em-dash placeholder ("—") as "no data" — agents emit it
+        // for unattested readings (notably ja_to which only exists for ~30
+        // chars). Without this filter the language renders as an empty
+        // marker on the map.
+        const HAN_EMPTY = (v) => !v || v === '—' || v === '-';
         for (const code of HAN_LANGS) {
             if (!LANG_DATA[code]) continue;
             LANG_DATA[code].words = LANG_DATA[code].words || {};
             for (const ch of HAN_LIST) {
                 const cd = HAN_DATA[ch];
                 if (!cd) continue;
-                const surf = (cd.surface && cd.surface[code]) || '';
-                const ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                let surf = (cd.surface && cd.surface[code]) || '';
+                let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                if (HAN_EMPTY(surf)) surf = '';
+                if (HAN_EMPTY(ipa))  ipa  = '';
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
@@ -2518,8 +2542,10 @@
             for (const ch of HAN_LIST) {
                 const cd = HAN_DATA[ch];
                 if (!cd) continue;
-                const surf = (cd.surface && cd.surface[code]) || '';
-                const ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                let surf = (cd.surface && cd.surface[code]) || '';
+                let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                if (HAN_EMPTY(surf)) surf = '';
+                if (HAN_EMPTY(ipa))  ipa  = '';
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
@@ -3412,9 +3438,13 @@
             wd.textContent = '';
             wd.appendChild(document.createTextNode(text));
             if (isFallback && text) {
-                const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
-                    || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
-                    || ENGLISH_FALLBACK_LABEL.en;
+                let fbLabel = null;
+                try {
+                    fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                        || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                        || ENGLISH_FALLBACK_LABEL.en;
+                } catch (e) { /* not yet initialized */ }
+                if (!fbLabel) return;
                 const fb = document.createElement('span');
                 fb.style.color = '#aaa';
                 fb.style.fontSize = '9px';
@@ -3436,7 +3466,9 @@
         // ============================================================
         //  HANMAP: character selector button + modal
         // ============================================================
-        (function setupHanmapCharSelector() {
+        // Defer to setTimeout(0) so `currentWord` (declared further down
+        // with `let`) is past its TDZ by the time we read it.
+        setTimeout(function setupHanmapCharSelector() {
             if (typeof HAN_LIST === 'undefined' || typeof HAN_CATEGORIES === 'undefined') return;
             const btn = document.getElementById('char-current-btn');
             const randomBtn = document.getElementById('char-random-btn');
@@ -3549,7 +3581,7 @@
             btn.textContent = currentWord;
             // Expose for hash loader.
             window.__hanmapSetChar = setChar;
-        })();
+        }, 0);
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
@@ -4240,99 +4272,328 @@
             }
             return out;
         }
-        function hanmapNormalize(code, surface, ipa, currentChar) {
-            // 1. Hide surface entirely when it equals the current character
-            //    (the giant character is already shown via the top-left
-            //    button, so duplicating it on every marker is noise).
-            let surfOut = surface || '';
-            let ipaOut  = ipa || '';
-            // 2. zh / zh_*: Pinyin / IPA-ish values live in the ipa field.
-            //    Surface is always the character itself → drop it.
-            if (code === 'zh' || code.startsWith('zh_')) {
-                surfOut = '';
-                ipaOut = hanmapConvertToneDigits(ipaOut);
-            } else if (code === 'yue' || code.startsWith('yue_')
-                       || code.startsWith('nan') || code.startsWith('hak')
-                       || code.startsWith('wuu') || code === 'cdo' || code === 'cpx'
-                       || code === 'mnp' || code === 'cjy' || code === 'czh'
-                       || code === 'hsn' || code === 'gan' || code === 'cnp') {
-                // Other Sinitic varieties: surface is the character, drop it;
-                // ipa carries the romanisation/IPA.
-                surfOut = '';
-                ipaOut = hanmapConvertToneDigits(ipaOut);
-            } else if (code === 'ja_kun') {
-                // 訓読み: surface is the native kun word (e.g. 一つ);
-                // IPA field carries the romaji → render as Hiragana.
-                ipaOut = hanmapRomajiToKana(ipaOut, true);
-            } else if (code === 'ja' || code === 'ja_go' || code === 'ja_kan' || code === 'ja_to') {
-                // 音読み layers: surface stays the character; ipa field is
-                // romaji → render as Katakana for readability.
-                ipaOut = hanmapRomajiToKana(ipaOut, false);
-            } else if (code === 'ko') {
-                // Sino-Korean: surface field carries the character;
-                // ipa field is "romaja (Hangul)" — extract the Hangul into
-                // the surface column, keep romaja in the ipa column.
-                const m = /\(([^)]+)\)/.exec(ipaOut);
-                if (m) {
-                    surfOut = m[1].trim();
-                    ipaOut = ipaOut.replace(/\s*\([^)]+\)\s*/, '').trim();
+        // Detect whether a value looks like IPA vs a romanisation
+        // (Pinyin/Jyutping/POJ). IPA values carry tone-letter chars
+        // (˩˨˧˦˥), the unreleased mark (̚), the syllabic-consonant mark (̩),
+        // or characters from the IPA extension blocks that don't appear in
+        // standard romanisations.
+        // Build a short version of a HAN_VARIANTS label suitable for the
+        // map's tight label tier. Rules:
+        //   1. If a " / " separates a native+roman pair (e.g. "漢音 / Kan-on"),
+        //      keep only the native side.
+        //   2. If a middle-dot or comma separates alternatives
+        //      (e.g. "歩く・行為"), keep only the first piece.
+        //   3. Strip trailing word-formative suffixes like "法則" / "現象".
+        //   4. Truncate to 3 user-visible characters (Array.from to count
+        //      surrogate pairs correctly).
+        function hanmapShortLabel(label) {
+            if (!label) return '';
+            let s = String(label).split(' / ')[0].trim();
+            s = s.split(/[・･,，、/]/)[0].trim();
+            s = s.replace(/法則$|現象$|讀$|読$/, m => m === '法則' || m === '現象' ? '' : m);
+            const chars = Array.from(s);
+            if (chars.length > 3) return chars.slice(0, 3).join('');
+            return s;
+        }
+        function hanmapLooksLikeIpa(s) {
+            if (!s) return false;
+            return /[˩˨˧˦˥̩̚ɐɑɒɔəɛɞɘɜɪɨɵøœʉʊʌʏɤɯɶæɸʃʒɕʑʂʐɖɟɡɢɱɴʀʁʈʔɲŋɓɗ]/.test(s);
+        }
+        // Revised Korean romanisation → approximate Korean IPA. Single-
+        // syllable focus (Han characters are mostly CV/CVC). Sandhi-aware
+        // refinements would go here if needed.
+        function hanmapKoRomajaToIpa(romaja) {
+            if (!romaja) return '';
+            let s = String(romaja).split('/')[0].trim().toLowerCase();
+            if (!s) return '';
+            // Step 1: shield digraphs as placeholders so single-letter
+            // mappings below don't re-process them.
+            s = s.replace(/yeo/g, '①').replace(/yae/g, '②').replace(/yo/g, '③')
+                 .replace(/yu/g, '④').replace(/ya/g, '⑤').replace(/ye/g, '⑥');
+            s = s.replace(/wae/g, 'wɛ').replace(/wa/g, 'wa').replace(/wo/g, 'wʌ')
+                 .replace(/we/g, 'we').replace(/wi/g, 'wi');
+            s = s.replace(/ae/g, 'ɛ').replace(/eo/g, 'ʌ').replace(/eu/g, 'ɯ')
+                 .replace(/oe/g, 'ø').replace(/ui/g, 'ɰi');
+            s = s.replace(/ng/g, 'ŋ').replace(/ch/g, '⑦').replace(/ss/g, 's͈');
+            // Step 2: positional consonant mapping. Initial plain stops are
+            // voiceless unaspirated; aspirated forms (k/t/p/ch) are distinct;
+            // final stops are unreleased.
+            s = s.replace(/^k/, 'kʰ').replace(/k$/, 'k̚')
+                 .replace(/^t/, 'tʰ').replace(/t$/, 't̚')
+                 .replace(/^p/, 'pʰ').replace(/p$/, 'p̚')
+                 .replace(/^j/, 't͡ɕ').replace(/j/g, 't͡ɕ')
+                 .replace(/^g/, 'k').replace(/g/g, 'k')
+                 .replace(/^d/, 't').replace(/d/g, 't')
+                 .replace(/^b/, 'p').replace(/b/g, 'p')
+                 .replace(/r/g, 'ɾ');
+            // Step 3: restore digraph placeholders.
+            s = s.replace(/①/g, 'jʌ').replace(/②/g, 'jɛ').replace(/③/g, 'jo')
+                 .replace(/④/g, 'ju').replace(/⑤/g, 'ja').replace(/⑥/g, 'je')
+                 .replace(/⑦/g, 't͡ɕʰ');
+            // Step 4: /s/ palatalises to /ɕ/ before /i/ or /j/.
+            s = s.replace(/s(?=i|j)/g, 'ɕ');
+            return s;
+        }
+
+        // Hepburn romaji → narrow Japanese IPA. Used for the 発音 column
+        // — the 表記 column keeps Katakana+romaji ("ズ zu").
+        function hanmapJaRomajiToIpa(romaji) {
+            if (!romaji) return '';
+            let s = String(romaji).split('/')[0].trim().toLowerCase();
+            if (!s) return '';
+            // Step 1: expand macron long vowels into doubled letters so digraph
+            // matching below is uniform.
+            s = s.replace(/[ōô]/g, 'oo').replace(/[ūû]/g, 'uu')
+                 .replace(/[āâ]/g, 'aa').replace(/[ēê]/g, 'ee')
+                 .replace(/[īî]/g, 'ii');
+            // Step 2: consonant digraphs.
+            s = s.replace(/shi/g, 'ɕi').replace(/sh([auo])/g, 'ɕ$1')
+                 .replace(/chi/g, 't͡ɕi').replace(/ch([auo])/g, 't͡ɕ$1')
+                 .replace(/tsu/g, 't͡sɯ').replace(/ts([auo])/g, 't͡s$1')
+                 .replace(/ji/g, 'd͡ʑi').replace(/j([auo])/g, 'd͡ʑ$1')
+                 .replace(/ju/g, 'd͡ʑɯ').replace(/je/g, 'd͡ʑe')
+                 .replace(/zu/g, 'd͡zɯ').replace(/z([aeo])/g, 'd͡z$1')
+                 .replace(/fu/g, 'ɸɯ')
+                 .replace(/hi/g, 'çi').replace(/hy([auo])/g, 'ç$1')
+                 .replace(/y([auo])/g, 'j$1');
+            // Step 3: moraic /n/ before consonant or word-end → ɴ.
+            s = s.replace(/n$/g, 'ɴ').replace(/n(?=[^aiueo])/g, 'ɴ');
+            // Step 4: u → ɯ (Japanese close back unrounded).
+            s = s.replace(/u/g, 'ɯ');
+            // Step 5: collapse doubled vowels into a long-vowel mark.
+            s = s.replace(/oo/g, 'oː').replace(/ɯɯ/g, 'ɯː')
+                 .replace(/aa/g, 'aː').replace(/ee/g, 'eː')
+                 .replace(/ii/g, 'iː');
+            return s;
+        }
+        // hanmapNormalizeFull returns the THREE display fields:
+        //   native     — 独自文字 (Katakana/Hangul/Quốc Ngữ/Manchu script/Tangut/…)
+        //   surface    — 表記 (Hepburn / Revised Romanization / Pinyin / Jyutping / POJ / …)
+        //   ipa        — 発音 (IPA)
+        // The audit pass writes these three fields independently into
+        // HAN_DATA[char].{native,surface,ipa}[code]. We prefer the stored
+        // values when present and fall back to legacy conversion for
+        // anything not yet covered.
+        function hanmapNormalizeFull(code, _surfaceArg, ipa, currentChar) {
+            // Step 1 — read authoritative split from HAN_DATA when available.
+            let storedNative = '';
+            let storedSurf   = '';
+            let storedIpa    = '';
+            if (typeof HAN_DATA !== 'undefined' && currentChar && HAN_DATA[currentChar]) {
+                const cd = HAN_DATA[currentChar];
+                storedNative = (cd.native  && cd.native[code])  || '';
+                storedSurf   = (cd.surface && cd.surface[code]) || '';
+                storedIpa    = (cd.ipa     && cd.ipa[code])     || '';
+                if (storedNative === '—' || storedNative === '-') storedNative = '';
+                if (storedSurf   === '—' || storedSurf   === '-') storedSurf   = '';
+                if (storedIpa    === '—' || storedIpa    === '-') storedIpa    = '';
+            }
+            // Fallback to caller-supplied args if the data lookup missed.
+            const surfArg = _surfaceArg || storedSurf || '';
+            const ipaArg  = ipa         || storedIpa  || '';
+
+            let native  = storedNative;
+            let surface = '';
+            let ipaOut  = '';
+
+            const isSinitic = code === 'zh' || code.startsWith('zh_')
+                || code === 'yue' || code.startsWith('yue_')
+                || code.startsWith('nan') || code.startsWith('hak')
+                || code.startsWith('wuu') || code === 'cdo' || code === 'cpx'
+                || code === 'mnp' || code === 'cjy' || code === 'czh'
+                || code === 'hsn' || code === 'gan' || code === 'cnp'
+                || code === 'zh_han' || code === 'zh_tang' || code === 'zh_song'
+                || code === 'zh_kanbun';
+
+            if (isSinitic) {
+                // Sinitic: surface = romanisation, ipa = IPA. Both fields
+                // should now be filled distinctly by the audit pass. For any
+                // legacy row where only one is set, route the lone value into
+                // the correct column by sniffing for IPA-style characters.
+                const haveBoth = storedSurf && storedIpa;
+                if (haveBoth) {
+                    surface = storedSurf;
+                    ipaOut  = hanmapConvertToneDigits(storedIpa);
+                } else {
+                    const lone = ipaArg || surfArg;
+                    const val = hanmapConvertToneDigits(lone);
+                    if (hanmapLooksLikeIpa(val)) { ipaOut = val; surface = ''; }
+                    else                          { surface = val; ipaOut = ''; }
                 }
-            } else if (code === 'vi_han') {
-                // Sino-Vietnamese: surface is the Quốc Ngữ spelling (e.g. Nhất);
-                // ipa is true IPA — leave both as-is.
+                native = '';  // Sinitic 独自文字 = the char itself; omitted.
+            } else if (code === 'ja') {
+                // Japanese: native = Katakana (Hiragana for the kun-yomi
+                // variant — but that arrives as a HAN_VARIANTS row, not the
+                // primary cell, so we always default to Katakana here).
+                const romaji = storedSurf || (ipaArg || '').split('/')[0].trim();
+                if (!native && romaji) {
+                    native = hanmapRomajiToKana(romaji, false);
+                }
+                surface = romaji;
+                ipaOut  = storedIpa || hanmapJaRomajiToIpa(romaji);
+            } else if (code === 'ko') {
+                let romaja = storedSurf;
+                if (!romaja) {
+                    // Legacy fallback: data has "il (일)" or just "sik".
+                    const raw = (ipaArg || '').trim();
+                    const hangul = /([가-힯]+)/.exec(raw);
+                    if (hangul) {
+                        if (!native) native = hangul[1];
+                        romaja = raw.replace(/[가-힯]+/g, '')
+                                    .replace(/[()（）]/g, '').trim();
+                    } else {
+                        romaja = raw;
+                    }
+                }
+                surface = romaja;
+                ipaOut  = storedIpa || hanmapKoRomajaToIpa(romaja);
+            } else if (code === 'vi_han' || code === 'vi' || code === 'vi_c' || code === 'vi_s') {
+                // Vietnamese: Quốc Ngữ is already a Latin spelling, so it
+                // belongs in the 表記 column, not 独自文字. Lowercase the
+                // first letter (Hán-Việt readings are common nouns).
+                const quoc = storedNative || storedSurf || surfArg || '';
+                surface = quoc.replace(/^./, c => c.toLocaleLowerCase('vi'));
+                native  = '';
+                ipaOut  = storedIpa || ipaArg || '';
             } else if (code === 'en') {
-                // English gloss: surface is the gloss, no ipa.
-                // (en isn't in HAN_LANGS by default but tolerate.)
+                surface = surfArg;
+                ipaOut  = '';
             } else {
-                ipaOut = hanmapConvertToneDigits(ipaOut);
+                // mnc / txg / juc / zkt / za / bca / unrecognised: trust the
+                // audit-supplied split as authoritative.
+                surface = storedSurf || surfArg;
+                ipaOut  = storedIpa  || ipaArg;
+                ipaOut  = hanmapConvertToneDigits(ipaOut);
             }
-            // 3. Hide surface that's identical to the current character —
-            //    including simplified/traditional variants.
-            if (surfOut && (surfOut === currentChar
-                || hanmapIsSimpTradVariant(surfOut, currentChar))) {
-                surfOut = '';
+            // Defensive: strip any /…/ broad-transcription wrapper that
+            // slipped through (the data should already be clean, but
+            // belt-and-braces for legacy entries).
+            if (typeof ipaOut === 'string') {
+                ipaOut = ipaOut.replace(/^\s*\/\s*/, '').replace(/\s*\/\s*$/, '');
             }
-            return [surfOut, ipaOut];
+            // Suppress native if it duplicates the current Han character
+            // (incl. simplified/traditional pairs).
+            if (native && (native === currentChar
+                || hanmapIsSimpTradVariant(native, currentChar))) {
+                native = '';
+            }
+            return [native, surface, ipaOut];
+        }
+
+        // Back-compat 2-tuple wrapper used by the map label renderer.
+        // Map labels show one "word" line — combine native + surface as
+        // "romanization (native script)" per user spec, e.g. "ichi (イチ)",
+        // "il (일)". For Sinitic and Vietnamese only one of the two is set.
+        function hanmapNormalize(code, surface, ipa, currentChar) {
+            const [native, romanized, ipaOut] = hanmapNormalizeFull(code, surface, ipa, currentChar);
+            let word = '';
+            if (romanized && native) word = `${romanized} (${native})`;
+            else word = native || romanized || '';
+            return [word, ipaOut];
         }
 
         function buildLabelHtml(code, word, ipa, displayName, descColor, cssClass) {
-            // Hanmap normalisation: rewrite (word, ipa) into the per-language
-            // display convention before escaping & rendering. No-op for the
-            // "—" unattested placeholders.
-            if (word !== '—' && ipa !== '—' && typeof currentWord === 'string') {
-                const norm = hanmapNormalize(code, word, ipa, currentWord);
-                word = norm[0]; ipa = norm[1];
+            // Hanmap normalisation: split each cell into 表記 (romanisation)
+            // and 独自文字 (native script). When HAN_VARIANTS lists multiple
+            // readings (Korean 頭音法則, 文白異讀, 多音字), stack them.
+            const isPlaceholder = (word === '—' || ipa === '—' || typeof currentWord !== 'string');
+            let rows = [];
+            if (!isPlaceholder) {
+                const variants = (typeof HAN_VARIANTS !== 'undefined'
+                    && HAN_VARIANTS[currentWord] && HAN_VARIANTS[currentWord][code]) || null;
+                if (variants && variants.length) {
+                    for (const v of variants) {
+                        let n = v.native || '', s = v.surface || '', vi = v.ipa || '';
+                        if (!vi || !n) {
+                            const derived = s || n || '';
+                            const [dN, dS, dIpa] = hanmapNormalizeFull(code, derived, derived, currentWord);
+                            if (!vi) vi = dIpa || derived;
+                            if (!n)  n  = dN  || '';
+                            if (!s)  s  = dS  || derived;
+                        }
+                        const shortLab = v.label_short || hanmapShortLabel(v.label);
+                        rows.push({ native: n, romanized: s, ipa: vi, label: shortLab });
+                    }
+                } else {
+                    const full = hanmapNormalizeFull(code, word, ipa, currentWord);
+                    rows.push({ native: full[0], romanized: full[1], ipa: full[2], label: '' });
+                }
+            } else {
+                rows.push({ native: '', romanized: word, ipa, label: '' });
             }
             const isVertical = VERTICAL_LANGS.has(code);
             const c = safeColor(descColor);
             const codeAttr = escapeHtml(code);
-            const w = escapeHtml(word), i = escapeHtml(ipa), n = escapeHtml(displayName);
-            // Audit Task 135: keyboard-accessible labels.
-            // role="button" + tabindex="0" lets keyboard users tab to the
-            // label and Enter/Space to open the language modal. aria-label
-            // includes display name + word + IPA so screen readers announce
-            // a meaningful summary.
+            const n = escapeHtml(displayName);
+            // Aria label combines all variants.
             const ariaParts = [n];
-            if (showWord && word) ariaParts.push(word);
-            if (showIpa && ipa) ariaParts.push('/' + ipa + '/');
+            for (const r of rows) {
+                const part = [r.romanized, r.native].filter(Boolean).join(' ');
+                if (showWord && part) ariaParts.push(part);
+                if (showIpa && r.ipa) ariaParts.push('/' + r.ipa + '/');
+            }
             const ariaLabel = escapeHtml(ariaParts.filter(Boolean).join(' — '));
             let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}" role="button" tabindex="0" aria-label="${ariaLabel}">`;
-            // Audit Task 129: dir="auto" on word + name so RTL labels render
-            // in correct order; IPA stays LTR.
-            // Hanmap: only render the surface row when there's actually
-            // something to show (after normalisation many entries collapse
-            // to empty — e.g. surface == current character).
-            if (showWord && word) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
-            if (showIpa && ipa)   html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
-            if (showName)         html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
+            for (const r of rows) {
+                let wordHtml = '';
+                if (r.romanized) wordHtml += escapeHtml(r.romanized);
+                if (r.romanized && r.native) wordHtml += ' ';
+                if (r.native) wordHtml += `<span class="hanmap-native">${escapeHtml(r.native)}</span>`;
+                if (r.label)  wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
+                if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
+                if (showIpa && r.ipa)     html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
+            }
+            if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
+        }
+
+        // Ancient/reconstructed codes — rendered in a distinct sepia tone
+        // on the map so historical/extinct languages are easy to spot
+        // among the dozens of modern dialects.
+        const HAN_ANCIENT_CODES = new Set([
+            'zh_han', 'zh_tang', 'zh_song', 'zh_kanbun',
+            'txg', 'juc', 'zkt',  // Tangut / Jurchen / Khitan — extinct
+        ]);
+
+        // The four Japanese reading layers (呉音/漢音/唐音/訓読み) used to be
+        // separate language codes but are now consolidated under `ja` and
+        // surfaced via HAN_VARIANTS[char].ja entries (with per-row labels).
+
+        // Codes whose name should drop the "Chinese (...)" wrapper — in
+        // Hanmap the parent is already implicit, so e.g. "中国語(贛語)" → "贛語".
+        function hanmapIsSinitic(code) {
+            return code === 'zh' || code.startsWith('zh_')
+                || code === 'yue' || code.startsWith('yue_')
+                || code.startsWith('nan') || code.startsWith('hak')
+                || code.startsWith('wuu') || code === 'cdo' || code === 'cpx'
+                || code === 'mnp' || code === 'cjy' || code === 'czh'
+                || code === 'hsn' || code === 'gan' || code === 'cnp';
+        }
+
+        // Strip a "Foo (Bar)" or "Foo（Bar）" wrapper down to just "Bar".
+        function hanmapStripChineseWrapper(name) {
+            if (!name) return name;
+            const m = /^[^()（）]+[\s]*[(（]([^()（）]+)[)）]\s*$/.exec(name);
+            return m ? m[1].trim() : name;
         }
 
         function getDisplayName(code, lang) {
             if (showNative) return lang.native;
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
-            return names[code] || lang.name;
+            const uiBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            let n = names[code] || lang.name;
+            // Sinitic varieties — drop the "Chinese (…)" wrapper.
+            if (hanmapIsSinitic(code)) {
+                n = hanmapStripChineseWrapper(n);
+            }
+            // Japanese / Korean: drop the "(標準)" / "(標準)" / "(Standard)"
+            // parenthetical — in Hanmap there's only one ja and one ko code,
+            // so the "standard" qualifier is redundant.
+            if (code === 'ja' || code === 'ko') {
+                n = n.replace(/\s*[(（](標準|标准|표준|Standard|estándar|standard)[)）]\s*$/i, '');
+            }
+            return n;
         }
 
         function updateMarkers(wordId) {
@@ -4693,7 +4954,9 @@
                 }
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const descColor = (isDescendant && !isUna) ? '#c0392b' : '';
+                const isAncient   = HAN_ANCIENT_CODES.has(code);
+                const descColor = isAncient && !isUna ? '#8B4513'
+                                : (isDescendant && !isUna) ? '#c0392b' : '';
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
@@ -4763,7 +5026,9 @@
                 const [word, ipa] = entry;
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const descColor = isDescendant ? '#ff6b6b' : '';
+                const isAncient   = HAN_ANCIENT_CODES.has(code);
+                const descColor = isAncient ? '#c08040'
+                                : isDescendant ? '#ff6b6b' : '';
 
                 // Offset co-located labels by shifting latitude (zoom + scale aware)
                 const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
@@ -5686,7 +5951,13 @@
 
             if (hanMeta) {
                 if (hanMeta.reading_type) {
-                    html += `<div style="margin:6px 0 4px;font-size:12px;color:#4a6cf7;font-weight:600">${escapeHtml(hanMeta.reading_type)}</div>`;
+                    let rt = '';
+                    if (typeof hanMeta.reading_type === 'object') {
+                        rt = hanMeta.reading_type[uiBase] || hanMeta.reading_type.en || hanMeta.reading_type.ja || '';
+                    } else {
+                        rt = String(hanMeta.reading_type);
+                    }
+                    if (rt) html += `<div style="margin:6px 0 4px;font-size:12px;color:#4a6cf7;font-weight:600">${escapeHtml(rt)}</div>`;
                 }
                 if (hanMeta.family) {
                     html += `<div style="margin:2px 0;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '系統' : uiBase === 'ko' ? '계통' : uiBase === 'zh' || uiBase === 'yue' ? '语系' : 'Family')}:</b> ${escapeHtml(hanMeta.family)}</div>`;
@@ -5705,40 +5976,108 @@
                         html += `<div class="desc" style="margin:8px 0 12px;font-size:12px;line-height:1.55;color:#444">${escapeHtml(desc)}</div>`;
                     }
                 }
+                if (hanMeta.romanization) {
+                    const romLabel = {
+                        en: 'Romanization', ja: '表記体系', ko: '로마자 표기',
+                        zh: '罗马字', yue: '羅馬字', vi: 'Chữ La-tinh',
+                        th: 'ระบบโรมัน', id: 'Romanisasi', hi: 'रोमनकरण',
+                        de: 'Umschrift', fr: 'Romanisation', it: 'Romanizzazione',
+                        es: 'Romanización', pt: 'Romanização', ru: 'Романизация',
+                        uk: 'Романізація', ar: 'كتابة لاتينية',
+                        he: 'תעתיק לטיני', sw: 'Uandishi Kilatini',
+                    }[uiBase] || 'Romanization';
+                    const r = hanMeta.romanization;
+                    const yearPart = r.year ? ` (${r.year})` : '';
+                    const authPart = r.authority ? ` — ${r.authority}` : '';
+                    html += `<div style="margin:6px 0 4px;font-size:11px;color:#666"><b>${escapeHtml(romLabel)}:</b> ${escapeHtml(r.name || '')}${escapeHtml(authPart)}${escapeHtml(yearPart)}</div>`;
+                }
+                if (hanMeta.sources && hanMeta.sources.length) {
+                    const srcLabel = {
+                        en: 'Sources', ja: '出典', ko: '출처', zh: '出处', yue: '出處',
+                        vi: 'Nguồn', th: 'แหล่งที่มา', id: 'Sumber', hi: 'स्रोत',
+                        de: 'Quellen', fr: 'Sources', it: 'Fonti', es: 'Fuentes',
+                        pt: 'Fontes', ru: 'Источники', uk: 'Джерела',
+                        ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo',
+                    }[uiBase] || 'Sources';
+                    html += `<div style="margin:8px 0 4px;font-size:11px;color:#888"><b>${escapeHtml(srcLabel)}:</b></div>`;
+                    html += '<ul style="margin:0 0 12px 16px;padding:0;font-size:11px;color:#666;line-height:1.5">';
+                    for (const s of hanMeta.sources) {
+                        html += `<li>${escapeHtml(s)}</li>`;
+                    }
+                    html += '</ul>';
+                }
             }
 
             // Character pronunciation table: 60 chars × this language.
+            // Five columns: 漢字 / 独自文字 / 表記 / 発音 / ラベル
+            // (label only renders for characters with multiple readings —
+            // e.g. Korean 頭音法則 (六: 륙/육), Min Nan 文白異讀, 多音字).
             const tHead = {
-                en:  ['Char', 'Surface', 'Pronunciation'],
-                ja:  ['漢字', '表記',     '発音'],
-                ko:  ['한자', '표기',     '발음'],
-                zh:  ['汉字', '字形',     '发音'],
-                yue: ['漢字', '字形',     '發音'],
-                vi:  ['Hán', 'Tự dạng',   'Phát âm'],
-            }[uiBase] || ['Char', 'Surface', 'Pronunciation'];
+                en:  ['Char', 'Script',     'Romanization', 'Pronunciation', 'Note'],
+                ja:  ['漢字', '独自文字',    '表記',          '発音',          '注'],
+                ko:  ['한자', '고유 문자',   '표기',          '발음',          '비고'],
+                zh:  ['汉字', '本族文字',    '罗马字',        '发音',          '备注'],
+                yue: ['漢字', '本族文字',    '羅馬字',        '發音',          '備註'],
+                vi:  ['Hán', 'Chữ bản địa', 'La-tinh hoá',  'Phát âm',       'Ghi chú'],
+            }[uiBase] || ['Char', 'Script', 'Romanization', 'Pronunciation', 'Note'];
 
             html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
             html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
             html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
             html += `</tr></thead><tbody>`;
             for (const ch of HAN_LIST) {
                 const cd = (typeof HAN_DATA !== 'undefined') ? HAN_DATA[ch] : null;
                 if (!cd) continue;
-                let surf = (cd.surface && cd.surface[code]) || '';
-                let ipa  = (cd.ipa     && cd.ipa[code])     || '';
-                if (!surf && !ipa) continue;
-                // Apply the same display normalisation used for map labels.
-                const norm = hanmapNormalize(code, surf, ipa, ch);
-                surf = norm[0]; ipa = norm[1];
+                // Build the list of readings to render.
+                // HAN_VARIANTS, when present for (ch, code), REPLACES the
+                // primary single reading and supplies multiple variants
+                // each with its own label.
+                const variants = (typeof HAN_VARIANTS !== 'undefined' && HAN_VARIANTS[ch] && HAN_VARIANTS[ch][code]) || null;
+                let rows = [];
+                if (variants && variants.length) {
+                    for (const v of variants) {
+                        let n = v.native || '', s = v.surface || '', ipa = v.ipa || '';
+                        // If a variant's IPA wasn't pre-computed, derive it
+                        // through the same normaliser used for primary cells.
+                        if (!ipa || !n) {
+                            const derivedSurf = s || n || '';
+                            const [dN, dS, dIpa] = hanmapNormalizeFull(code, derivedSurf, derivedSurf, ch);
+                            if (!ipa) ipa = dIpa || derivedSurf;
+                            // Don't overwrite an explicit n/s from the variant.
+                            if (!n) n = dN || '';
+                            if (!s) s = dS || derivedSurf;
+                        }
+                        rows.push({ native: n, romanized: s, ipa, label: v.label || '' });
+                    }
+                } else {
+                    let surf = (cd.surface && cd.surface[code]) || '';
+                    let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                    if (surf === '—' || surf === '-') surf = '';
+                    if (ipa  === '—' || ipa  === '-') ipa  = '';
+                    if (!surf && !ipa) continue;
+                    const [native, romanized, ipaText] = hanmapNormalizeFull(code, surf, ipa, ch);
+                    if (!native && !romanized && !ipaText) continue;
+                    rows.push({ native, romanized, ipa: ipaText, label: '' });
+                }
                 const isCur = (ch === currentWord);
                 const trStyle = isCur ? 'background:#fff8e1' : '';
-                html += `<tr style="${trStyle};border-bottom:1px solid #f3f3f3">`;
-                html += `<td style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e">${escapeHtml(ch)}</td>`;
-                html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(surf)}</td>`;
-                html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(ipa)}</td>`;
-                html += `</tr>`;
+                for (let ri = 0; ri < rows.length; ri++) {
+                    const r = rows[ri];
+                    html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
+                    // 漢字 cell — only on first row of a multi-row group.
+                    if (ri === 0) {
+                        html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:top">${escapeHtml(ch)}</td>`;
+                    }
+                    html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif">${escapeHtml(r.native)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#444">${escapeHtml(r.romanized)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#555;font-style:italic">${escapeHtml(r.ipa)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px">${escapeHtml(r.label)}</td>`;
+                    html += `</tr>`;
+                }
             }
             html += `</tbody></table>`;
 
