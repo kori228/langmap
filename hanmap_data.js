@@ -9299,6 +9299,9 @@ const HAN_LANG_META = {
   },
   "zh_db": {
     "reading_type": {
+      "ja": "東北官話",
+      "ko": "둥베이 관화 (동북관화)",
+      "zh": "东北官话",
       "en": "Dongbei Mandarin (Northeastern)",
       "yue": "東北官話（東北話）",
       "vi": "Quan thoại Đông Bắc (Đông Bắc)",
@@ -9317,6 +9320,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Dongbei (Kaskazini-Mashariki)"
     },
     "description": {
+      "ja": "東北官話 — 中国東北部（遼寧・吉林・黒龍江）の官話。北京官話に近いが、捲舌音の語頭子音がより強く、児化が頻繁で、粗めの破擦音寄りの子音が特徴。第1声は北京より低く実現される傾向がある。",
+      "ko": "둥베이 관화 — 중국 동북부(랴오닝/지린/헤이룽장)의 관화. 베이징 표준어와 가깝지만 권설음 성모가 더 강하고 얼화(兒化)가 빈번하며, 거칠고 파찰음 쪽으로 기우는 자음이 특징이다. 1성은 베이징보다 낮게 실현되는 경향이 있다.",
+      "zh": "东北官话 — 中国东北地区（辽宁/吉林/黑龙江）的官话方言。与北京官话接近，但卷舌声母更重、儿化频繁，辅音偏粗厚、带塞擦倾向。阴平（第1声）的调值通常低于北京。",
       "en": "Dongbei Mandarin — northeastern China (Liaoning/Jilin/Heilongjiang). Close to Beijing standard with heavier retroflex onsets, frequent erhua, and characteristic rough/affricate-leaning consonants. Tone 1 typically realized lower than in Beijing.",
       "yue": "東北官話係通行於遼寧、吉林、黑龍江嘅官話方言。同北京標準話好近，但翹舌音更重、兒化更頻繁，輔音傾向粗獷或仄音化。第一聲嘅調值通常低過北京話。",
       "vi": "Quan thoại Đông Bắc — phương ngữ của miền đông bắc Trung Quốc (Liêu Ninh, Cát Lâm, Hắc Long Giang). Gần với tiêu chuẩn Bắc Kinh nhưng có phụ âm cuốn lưỡi nặng hơn, erhua (儿化) phổ biến hơn, và phụ âm đặc trưng thô và thiên về tắc-xát. Thanh 1 thường thực hiện thấp hơn so với Bắc Kinh.",
@@ -9346,6 +9352,9 @@ const HAN_LANG_META = {
   },
   "zh_sc": {
     "reading_type": {
+      "ja": "四川官話",
+      "ko": "쓰촨 관화",
+      "zh": "四川官话",
       "en": "Sichuan Mandarin",
       "yue": "四川話（西南官話）",
       "vi": "Quan thoại Tứ Xuyên",
@@ -9364,6 +9373,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Sichuan"
     },
     "description": {
+      "ja": "四川官話 — 西南官話に属し、四川盆地一帯で話される。捲舌音の語頭子音を持たず（zh/ch/sh は z/c/s に合流）、語頭の /ŋ-/ を保持し、北京とは異なる独自の4声体系を用いる。",
+      "ko": "쓰촨 관화 — 서남관화에 속하며 쓰촨 분지 일대에서 쓰인다. 권설음 성모가 없고(zh/ch/sh가 z/c/s와 합류) /ŋ-/ 성모를 보존하며, 베이징과 다른 독자적인 4성 체계를 가진다.",
+      "zh": "四川官话 — 西南官话的一支，覆盖四川盆地。无卷舌声母（zh/ch/sh 与 z/c/s 合流），保留 /ŋ-/ 声母，使用与北京不同的四声体系。",
       "en": "Sichuan Mandarin — Southwestern Mandarin branch covering Sichuan basin. No retroflex initials (zh/ch/sh merge with z/c/s), preserves an /ŋ-/ onset, and uses a distinctive 4-tone system different from Beijing.",
       "yue": "四川話係西南官話嘅代表，通行於四川盆地一帶。最顯著嘅特點係完全冇捲舌聲母——普通話嘅zh/ch/sh全部併入z/c/s，令讀音聽落輕巧。此外保留咗/ŋ-/聲母，而且四聲格局同北京話明顯不同。",
       "vi": "Quan thoại Tứ Xuyên là đại diện của nhánh Quan thoại Tây Nam, thông dụng trên khắp lưu vực Tứ Xuyên. Đặc điểm nổi bật nhất là hoàn toàn vắng mặt các phụ âm đầu quặt lưỡi — zh/ch/sh của Phổ thông thoại nhập vào z/c/s. Ngoài ra còn bảo lưu âm đầu /ŋ-/ và có hệ thống bốn thanh điệu khác biệt so với Bắc Kinh.",
@@ -9393,6 +9405,9 @@ const HAN_LANG_META = {
   },
   "zh_cd": {
     "reading_type": {
+      "ja": "成都官話",
+      "ko": "청두 관화",
+      "zh": "成都官话",
       "en": "Chengdu Mandarin",
       "yue": "成都話（西南官話）",
       "vi": "Quan thoại Thành Đô",
@@ -9411,6 +9426,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Chengdu"
     },
     "description": {
+      "ja": "成都官話 — 四川盆地西部の方言。西南官話で、捲舌音の語頭子音を持たず、語頭 /ŋ-/ の保持が特徴（我=ngo³）。東部の重慶方言よりも柔らかく、抑揚に富む。",
+      "ko": "청두 관화 — 쓰촨 분지 서부의 방언. 서남관화로 권설음 성모가 없고 /ŋ-/ 성모 보존이 특징이다(我=ngo³). 동부의 충칭 방언보다 부드럽고 선율적인 억양을 가진다.",
+      "zh": "成都官话 — 四川盆地西部方言，属西南官话。无卷舌声母，保留 /ŋ-/ 声母为其标志性特征（我=ngo³）；语调比东部的重庆话更柔和、富有旋律感。",
       "en": "Chengdu Mandarin — Sichuan basin western variety. Southwestern Mandarin with no retroflex initials, signature /ŋ-/ onset preservation (我=ngo³), and a softer, more melodic intonation than the eastern Chongqing variant.",
       "yue": "成都話係四川盆地西部嘅西南官話，係成都市及周邊地區嘅主要方言。同其他西南官話一樣，完全冇捲舌聲母，並保留咗/ŋ-/聲母（「我」讀作ngo³）。相比重慶話，成都話語調較為柔和悅耳，給人較輕盈、婉轉嘅聽覺感受。",
       "vi": "Quan thoại Thành Đô là biến thể Quan thoại Tây Nam ở phía tây lưu vực Tứ Xuyên, là phương ngữ chính của thành phố Thành Đô và vùng phụ cận. Cũng như các biến thể Tây Nam khác, hoàn toàn vắng mặt phụ âm đầu quặt lưỡi và bảo lưu âm đầu /ŋ-/ (我 = ngo³). So với Trùng Khánh, ngữ điệu Thành Đô mềm mại và du dương hơn, tạo cảm giác nhẹ nhàng và uyển chuyển hơn.",
@@ -9440,6 +9458,9 @@ const HAN_LANG_META = {
   },
   "zh_cq": {
     "reading_type": {
+      "ja": "重慶官話",
+      "ko": "충칭 관화",
+      "zh": "重庆官话",
       "en": "Chongqing Mandarin",
       "yue": "重慶話（西南官話）",
       "vi": "Quan thoại Trùng Khánh",
@@ -9458,6 +9479,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Chongqing"
     },
     "description": {
+      "ja": "重慶官話 — 長江上流の西南官話。捲舌音を欠き、語頭 /ŋ-/ を保持する点が特徴。成都方言よりも語調が鋭く力強い。",
+      "ko": "충칭 관화 — 양쯔강 상류의 서남관화. 권설음이 없고 /ŋ-/ 성모를 보존하는 점이 특징이며, 청두 방언보다 어조가 날카롭고 힘있다.",
+      "zh": "重庆官话 — 长江上游的西南官话。无卷舌声母，保留 /ŋ-/ 声母；语调较成都话更为短促、有力。",
       "en": "Chongqing Mandarin — Southwestern Mandarin variety on the upper Yangtze. No retroflex, signature ng- onset preservation, and a punchier, sharper prosody than Chengdu.",
       "yue": "重慶話係揚子江上游嘅西南官話，通行於重慶直轄市一帶。同成都話一樣冇捲舌聲母，同樣保留/ŋ-/聲母。相比成都，重慶話語調更加有力、直接，帶有一種爽脆俐落嘅韻律感，俗稱「硬朗」，令人印象深刻。",
       "vi": "Quan thoại Trùng Khánh là biến thể Quan thoại Tây Nam trên thượng lưu sông Dương Tử, thông dụng ở địa khu trực hạt Trùng Khánh. Giống Thành Đô, hoàn toàn không có phụ âm đầu quặt lưỡi và bảo lưu âm đầu /ŋ-/. So với Thành Đô, ngữ điệu Trùng Khánh mạnh mẽ và dứt khoát hơn, với nhịp điệu sắc bén và có lực hơn — người ta thường gọi là giọng “cứng cỏi”.",
@@ -9487,6 +9511,9 @@ const HAN_LANG_META = {
   },
   "zh_xa": {
     "reading_type": {
+      "ja": "西安官話（中原官話）",
+      "ko": "시안 관화 (중원관화)",
+      "zh": "西安官话（中原官话）",
       "en": "Xi'an Mandarin (Zhongyuan)",
       "yue": "西安話（中原官話）",
       "vi": "Quan thoại Tây An (Trung Nguyên)",
@@ -9505,6 +9532,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Xi'an (Zhongyuan)"
     },
     "description": {
+      "ja": "西安官話 — 関中盆地の中原官話で、唐の長安の地。ts と tʂ を区別するが母音体系は変容している。特徴は北京と逆に、上声系の声調が非常に低く下降することにある。",
+      "ko": "시안 관화 — 관중 분지의 중원관화로, 당나라 장안의 옛 땅. ts와 tʂ를 구분하지만 모음 체계가 변모해 있다. 베이징과 정반대로 상성 계열이 매우 낮게 하강하는 점이 특징이다.",
+      "zh": "西安官话 — 关中盆地的中原官话，唐长安故地。区分 ts/tʂ，但元音系统已发生位移；标志性特征是上声类调值极低下降，与北京方向相反。",
       "en": "Xi'an Mandarin — Zhongyuan Mandarin variety in the Guanzhong basin, historical capital of Tang Chang'an. Distinguishes ts/tʂ but with shifted vowel system; signature feature: rising tones realized very low and falling, opposite of Beijing.",
       "yue": "西安話係中原官話嘅一個方言，分布喺關中盆地，呢度係唐代長安嘅歷史舊都。佢區分 ts/tʂ 兩組聲母，但母音系統有所偏移；最顯著嘅特徵係上聲調值極低、走向降調，與北京話剛好相反。",
       "vi": "Quan thoại Tây An là biến thể thuộc nhánh Trung Nguyên, phân bố trong lưu vực Quan Trung — kinh đô lịch sử của triều Đường tại Trường An. Phương ngữ này phân biệt hai tổ thanh mẫu ts/tʂ nhưng có hệ thống nguyên âm đã dịch chuyển; đặc điểm tiêu biểu là thanh thượng được thực hiện rất thấp và rơi xuống, ngược hoàn toàn so với Bắc Kinh.",
@@ -9534,6 +9564,9 @@ const HAN_LANG_META = {
   },
   "zh_km": {
     "reading_type": {
+      "ja": "昆明官話",
+      "ko": "쿤밍 관화",
+      "zh": "昆明官话",
       "en": "Kunming Mandarin",
       "yue": "昆明話（西南官話）",
       "vi": "Quan thoại Côn Minh",
@@ -9552,6 +9585,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Kunming"
     },
     "description": {
+      "ja": "昆明官話 — 雲南の西南官話。捲舌音を持たず、母音体系は簡素化されており、声調の曲線も平坦。日常語彙にはタイ系・白語系の基層からの借用語が多い。",
+      "ko": "쿤밍 관화 — 윈난의 서남관화. 권설음이 없고 모음 체계가 단순화되어 있으며, 성조 곡선이 평탄하다. 일상 어휘에는 타이계·바이어계 기층 차용어가 다수 들어 있다.",
+      "zh": "昆明官话 — 云南的西南官话。无卷舌声母，元音系统简化，调型较为平直；日常词汇中保留大量来自傣语、白语等底层语言的借词。",
       "en": "Kunming Mandarin — Southwestern Mandarin in Yunnan. No retroflex, simplified vowel inventory, and a flatter tone contour. Many Tai/Bai substrate loanwords in everyday vocabulary.",
       "yue": "昆明話係雲南省嘅西南官話，冇捲舌聲母，母音庫簡化，聲調走向較平坦。日常詞彙中混有唔少傣語同白語底層嘅借詞，反映當地多民族語言接觸。",
       "vi": "Quan thoại Côn Minh là biến thể Tây Nam ở tỉnh Vân Nam. Không có phụ âm cuộn lưỡi, kho nguyên âm đơn giản hóa, và đường nét thanh điệu phẳng hơn. Trong từ vựng hằng ngày có nhiều từ vay mượn từ tầng đế âm Tai và Bạch (Bai).",
@@ -9581,6 +9617,9 @@ const HAN_LANG_META = {
   },
   "zh_jn": {
     "reading_type": {
+      "ja": "済南官話（冀魯官話）",
+      "ko": "지난 관화 (지루관화)",
+      "zh": "济南官话（冀鲁官话）",
       "en": "Jinan Mandarin (Ji-Lu)",
       "yue": "濟南話（冀魯官話）",
       "vi": "Quan thoại Tế Nam (Ký-Lỗ)",
@@ -9599,6 +9638,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Jinan (Ji-Lu)"
     },
     "description": {
+      "ja": "済南官話 — 山東省都の冀魯官話。中古音の平声諸類の合流が広範に進んでいる点で北京と異なり、第1声は北京の高平調に対し低降調で実現されるのが特徴。",
+      "ko": "지난 관화 — 산둥 성도의 지루관화. 중고음 평성 계열의 합류가 광범위하게 진행된 점이 베이징과 다르며, 1성이 베이징의 고평조와 달리 저강조로 실현되는 것이 특징이다.",
+      "zh": "济南官话 — 山东省会的冀鲁官话。与北京相比，中古平声各类的合并范围更广；标志性特征是阴平（第1声）实现为低降调，而非北京的高平调。",
       "en": "Jinan Mandarin — Ji-Lu Mandarin variety of Shandong capital. Distinct from Beijing by extensive merger of MC level-tone categories and a signature low-falling tone 1 versus Beijing's high-level tone 1.",
       "yue": "濟南話係山東省城嘅冀魯官話，與北京話嘅區別在於中古漢語平聲類別大量合併，以及代表性嘅第一聲呈低降調——北京話嘅第一聲則係高平調。呢個聲調差異係兩者最易聽出嚟嘅特徵。",
       "vi": "Quan thoại Tế Nam là biến thể Ký-Lỗ tại thủ phủ tỉnh Sơn Đông. Khác với Bắc Kinh ở chỗ có sự hợp nhất rộng rãi giữa các loại bình thanh trung cổ và thanh điệu 1 đặc trưng hạ thấp-giáng, trái với thanh 1 cao-bằng của Bắc Kinh.",
@@ -9628,6 +9670,9 @@ const HAN_LANG_META = {
   },
   "zh_kf": {
     "reading_type": {
+      "ja": "開封官話（中原官話）",
+      "ko": "카이펑 관화 (중원관화)",
+      "zh": "开封官话（中原官话）",
       "en": "Kaifeng Mandarin (Zhongyuan)",
       "yue": "開封普通話（中原官話）",
       "vi": "Quan thoại Khai Phong (Trung Nguyên)",
@@ -9646,6 +9691,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Kaifeng (Zhongyuan)"
     },
     "description": {
+      "ja": "開封官話 — 河南、北宋の旧都の中原官話。中古音の入声反映が北京よりも明瞭に保たれており、語頭の清濁に応じて陰陽の声調カテゴリーに振り分けられる。",
+      "ko": "카이펑 관화 — 허난, 북송 옛 수도의 중원관화. 중고음 입성의 반영이 베이징보다 뚜렷하게 보존되어 있으며, 성모의 청탁(淸濁)에 따라 음양 성조 범주로 갈라진다.",
+      "zh": "开封官话 — 河南北宋旧都的中原官话。中古入声字的归派比北京清晰，按声母清浊分别归入阴/阳调类。",
       "en": "Kaifeng Mandarin — Zhongyuan Mandarin of the old Song capital in Henan. Preserves a clearer distinction of MC checked-tone reflexes than Beijing, distributing them across light/dark categories by initial type.",
       "yue": "開封話係中原官話嘅代表，位於河南省舊宋朝都城。佢對中古入聲嘅承繼比北京話更清晰，按聲母嘅清濁分別將入聲字分配到陰入／陽入不同類別。聲調格局同北京話有明顯分別，係研究北方漢語歷史演變嘅重要參照點。",
       "vi": "Quan thoại Khai Phong thuộc nhánh Trung Nguyên, bắt nguồn từ cố đô nhà Tống ở tỉnh Hà Nam. Phương ngữ này bảo lưu rõ hơn Bắc Kinh các phản xạ của thanh nhập (入聲) trung cổ, phân phối chúng vào các loại âm dựa trên thanh điệu ban đầu. Đây là điểm tham chiếu lịch sử quan trọng cho sự tiến hóa của quan thoại phương Bắc.",
@@ -9675,6 +9723,9 @@ const HAN_LANG_META = {
   },
   "zh_hf": {
     "reading_type": {
+      "ja": "合肥官話（江淮官話）",
+      "ko": "허페이 관화 (장화이관화)",
+      "zh": "合肥官话（江淮官话）",
       "en": "Hefei Mandarin (Jianghuai)",
       "yue": "合肥官話（江淮官話）",
       "vi": "Quan thoại Hợp Phì (Giang Hoài)",
@@ -9693,6 +9744,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Hefei (Jianghuai)"
     },
     "description": {
+      "ja": "合肥官話 — 安徽省都の江淮官話。北方官話と呉方言の中間的性格を持ち、標準官話で失われた入声（声門閉鎖で実現）を保持し、-n と -ng が合流する傾向にある。",
+      "ko": "허페이 관화 — 안후이 성도의 장화이관화. 북방관화와 오방언의 중간적 성격을 띠며, 표준 관화에서 사라진 입성을 성문 폐쇄음으로 보존하고, -n과 -ng가 합류하는 경향이 있다.",
+      "zh": "合肥官话 — 安徽省会的江淮官话。介于北方官话和吴语之间，保留普通话已经消失的入声（实现为喉塞音），且 -n 与 -ng 韵尾常合流。",
       "en": "Hefei Mandarin — Jianghuai Mandarin of Anhui capital. Transitional between northern Mandarin and Wu; retains a glottal-stop checked tone (入聲) lost in standard Mandarin, and -n/-ng often merge.",
       "yue": "合肥話係江淮官話嘅代表，位於安徽省省會。佢係北方官話同吳語之間嘅過渡性方言：保留咗一個中古入聲嘅喉塞音收尾，而呢個特徵喺普通話已經完全消失。另一個顯著特點係-n同-ng韻尾往往合流，令後鼻音區分模糊化。",
       "vi": "Quan thoại Hợp Phì là đại diện của nhánh Giang Hoài, thủ phủ tỉnh An Huy. Đây là phương ngữ chuyển tiếp giữa quan thoại phương Bắc và tiếng Ngô: nó bảo lưu thanh nhập (入聲) trung cổ dưới dạng phụ âm tắc thanh hầu, vốn đã mất hoàn toàn trong tiếng phổ thông. Đặc điểm đáng chú ý khác là vần -n và -ng thường sáp nhập, làm mờ sự phân biệt phụ âm cuối mũi.",
@@ -9722,6 +9776,9 @@ const HAN_LANG_META = {
   },
   "zh_jh": {
     "reading_type": {
+      "ja": "江淮官話（南京）",
+      "ko": "장화이관화 (난징)",
+      "zh": "江淮官话（南京）",
       "en": "Jianghuai Mandarin (Nanjing)",
       "yue": "江淮官話（南京）",
       "vi": "Quan thoại Giang Hoài (Nam Kinh)",
@@ -9740,6 +9797,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Jianghuai (Nanjing)"
     },
     "description": {
+      "ja": "江淮官話（南京） — 北京官話が標準化される以前、威信ある官話標準であった。入声（声門閉鎖）の保持、n と l の明瞭な区別、/ŋ-/ 声母の保存が特徴。",
+      "ko": "장화이관화(난징) — 베이징 관화가 표준화되기 이전 권위 있는 관화 표준이었다. 입성(성문 폐쇄음) 보존, n과 l의 명확한 구분, /ŋ-/ 성모의 보존이 특징이다.",
+      "zh": "江淮官话（南京） — 北京官话取得标准地位之前的官话权威标准。保留入声（喉塞尾），清晰区分 n/l 声母，并保存 /ŋ-/ 声母。",
       "en": "Jianghuai Mandarin (Nanjing) — historically the prestige Mandarin standard before Beijing took over. Retains the checked tone (入聲) as a glottal stop, distinguishes n/l clearly, and preserves /ŋ-/ initials.",
       "yue": "南京江淮官話係喺北京成為標準之前，歷史上最具威望嘅官話標準。佢保留入聲（中古-p/-t/-k韻尾），以喉塞音收尾；n同l有清晰嘅區分（唔會混淆）；並保留零聲母/ŋ-/。作為明代及清代初期嘅官方標準，呢個方言對近世漢語嘅聲韻研究具有重要意義。",
       "vi": "Quan thoại Giang Hoài (Nam Kinh) từng là chuẩn quan thoại có uy tín nhất về mặt lịch sử trước khi Bắc Kinh thay thế. Nó giữ lại thanh nhập (入聲) dưới dạng phụ âm tắc thanh hầu, phân biệt rõ n/l (không sáp nhập), và bảo lưu âm đầu /ŋ-/. Với tư cách là chuẩn mực chính thức của triều Minh và đầu triều Thanh, phương ngữ này có ý nghĩa đặc biệt trong nghiên cứu lịch sử ngữ âm học Hán ngữ cận đại.",
@@ -9769,6 +9829,9 @@ const HAN_LANG_META = {
   },
   "zh_nj": {
     "reading_type": {
+      "ja": "南京官話",
+      "ko": "난징 관화",
+      "zh": "南京官话",
       "en": "Nanjing Mandarin",
       "yue": "南京官話",
       "vi": "Quan thoại Nam Kinh",
@@ -9787,6 +9850,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Nanjing (Jianghuai)"
     },
     "description": {
+      "ja": "南京官話 — 江淮官話に属し、明代の標準官話の地位にあった。入声（声門閉鎖）の保持、n と l の明確な区別、/-in/ と /-ing/ の合流が特徴。",
+      "ko": "난징 관화 — 장화이관화에 속하며 명대에는 국가 표준 관화의 지위를 가졌다. 입성(성문 폐쇄음)을 보존하고 n과 l을 명확히 구분하며, /-in/과 /-ing/이 합류하는 점이 특징이다.",
+      "zh": "南京官话 — 江淮官话的一支，曾为明代官话标准。标志性特征：保留入声（喉塞尾）、清晰区分 n/l、以及 /-in/ 与 /-ing/ 韵母合流。",
       "en": "Nanjing Mandarin — Jianghuai variety, former Ming-era national standard. Signature: retention of入聲 checked tone (glottal stop), clear n/l distinction, and the merger of /-in/ and /-ing/.",
       "yue": "南京官話係江淮官話嘅一支，歷史上係明朝嘅全國標準語，影響深遠。最突出嘅特徵係保留咗入聲——以喉塞音收尾，呢個喺大多數官話方言早已消失。另外，南京話清晰區分 n 同 l 兩個聲母，唔會混淆，同時 /-in/ 同 /-ing/ 韻尾喺部分詞彙中出現合流。",
       "vi": "Quan thoại Nam Kinh thuộc nhánh Giang-Hoài, từng là chuẩn ngữ quốc gia thời nhà Minh và có ảnh hưởng lịch sử rộng lớn. Đặc trưng nổi bật là sự bảo lưu thanh nhập (入聲) dưới dạng âm tắc thanh hầu, vốn đã mất trong hầu hết các phương ngữ quan thoại khác. Nam Kinh còn phân biệt rõ ràng phụ âm đầu n và l, đồng thời có sự sáp nhập một phần giữa vần /-in/ và /-ing/.",
@@ -9816,6 +9882,9 @@ const HAN_LANG_META = {
   },
   "zh_tj": {
     "reading_type": {
+      "ja": "天津官話",
+      "ko": "톈진 관화",
+      "zh": "天津官话",
       "en": "Tianjin Mandarin",
       "yue": "天津官話",
       "vi": "Quan thoại Thiên Tân",
@@ -9834,6 +9903,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Tianjin (Ji-Lu)"
     },
     "description": {
+      "ja": "天津官話 — 北京に隣接する冀魯官話だが、声調が反転している。北京の第1声（高平）は天津では低降調で実現され、これがこの方言特有の「下がり気味」の印象を生む。",
+      "ko": "톈진 관화 — 베이징에 인접한 지루관화이지만 성조가 역전되어 있다. 베이징의 1성(고평)이 톈진에서는 저강조로 실현되며, 이것이 톈진 방언 특유의 “내려앉는” 느낌을 만들어낸다.",
+      "zh": "天津官话 — 紧邻北京的冀鲁官话，但调值与北京相反：北京的阴平（高平调）在天津实现为低降调，造就了天津话特有的“向下”音感。",
       "en": "Tianjin Mandarin — Ji-Lu Mandarin variety adjacent to Beijing but tonally inverted: Beijing tone 1 (high-level) is realized as a low-falling tone in Tianjin, giving the dialect its signature \"downturned\" feel.",
       "yue": "天津官話係冀魯官話嘅一支，地理上緊鄰北京，但聲調系統同北京話幾乎係顛倒過嚟嘅。北京話嘅一聲（高平調）喺天津話裏實現為低降調，令呢個方言有一種獨特嘅「向下走」嘅韻律感。呢種聲調倒置嘅現象令天津話喺官話方言中顯得格外獨特，儘管詞彙同語法同北京話非常接近。",
       "vi": "Quan thoại Thiên Tân thuộc nhánh Ký-Lỗ, địa lý tiếp giáp Bắc Kinh nhưng hệ thống thanh điệu lại gần như đảo ngược hoàn toàn so với Bắc Kinh. Thanh điệu 1 của Bắc Kinh (bằng phẳng cao) được thực hiện như một thanh giáng thấp ở Thiên Tân, tạo nên cảm giác hạ giọng đặc trưng của phương ngữ này. Sự đảo ngược thanh điệu này khiến tiếng Thiên Tân nổi bật trong nhóm các phương ngữ quan thoại, dù từ vựng và ngữ pháp rất gần với Bắc Kinh.",
@@ -9863,6 +9935,9 @@ const HAN_LANG_META = {
   },
   "zh_lz": {
     "reading_type": {
+      "ja": "蘭銀官話（蘭州）",
+      "ko": "란인관화 (란저우)",
+      "zh": "兰银官话（兰州）",
       "en": "Lanyin Mandarin (Lanzhou)",
       "yue": "蘭銀官話（蘭州）",
       "vi": "Quan thoại Lan-Ngân (Lan Châu)",
@@ -9881,6 +9956,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Lanyin (Lanzhou)"
     },
     "description": {
+      "ja": "蘭銀官話（蘭州） — 甘粛省の西北官話。捲舌音の語頭子音は存在するが減衰しており、接尾辞 -子 の多用、声調パターンが北京よりも中原官話に近いといった特徴を持つ。",
+      "ko": "란인관화 (란저우) — 간쑤 성의 서북관화. 권설음 성모가 존재하지만 약화되어 있으며, 접미사 -子(zi)의 폭넓은 사용과, 베이징보다 중원관화에 가까운 성조 패턴이 특징이다.",
+      "zh": "兰银官话（兰州） — 甘肃的西北官话。卷舌声母虽存在但有所弱化；标志性特征是后缀「-子」用得很重，调型也比北京更接近中原官话。",
       "en": "Lanyin Mandarin (Lanzhou) — northwestern Mandarin in Gansu. Retroflex initials present but reduced, signature heavy use of the suffix -zi, and tonal patterns closer to Zhongyuan than to Beijing.",
       "yue": "蘭銀官話係西北官話嘅一個主要分支，通行於甘肅省蘭州及周邊地區。雖然保留咗捲舌聲母（zh-/ch-/sh-），但比普通話弱化咗好多。最顯眼嘅特徵係後綴「子」(-zi) 嘅大量使用，比北方其他方言更加普遍。聲調格局與中原官話更接近，而唔係北京話，顯示出甘肅地區獨特嘅語音歷史。",
       "vi": "Quan thoại Lan-Ngân là một nhánh lớn của quan thoại Tây Bắc, thông dụng ở Lan Châu, Cam Túc và khu vực lân cận. Tuy vẫn có phụ âm đầu cuộn lưỡi (zh-/ch-/sh-) nhưng đã giảm đáng kể so với tiếng phổ thông. Đặc trưng nổi bật nhất là việc sử dụng rộng rãi hậu tố -zi (子), phổ biến hơn nhiều so với các phương ngữ phía Bắc khác. Các khuôn thanh điệu gần với Trung Nguyên quan thoại hơn là tiếng Bắc Kinh, phản ánh lịch sử ngữ âm đặc thù của vùng Cam Túc.",
@@ -9910,6 +9988,9 @@ const HAN_LANG_META = {
   },
   "zh_wh": {
     "reading_type": {
+      "ja": "武漢官話（西南官話）",
+      "ko": "우한 관화 (서남관화)",
+      "zh": "武汉官话（西南官话）",
       "en": "Wuhan Mandarin (Southwestern)",
       "yue": "武漢話（西南官話）",
       "vi": "Quan thoại Vũ Hán (Tây Nam)",
@@ -9928,6 +10009,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Wuhan (Kusini-Magharibi)"
     },
     "description": {
+      "ja": "武漢官話 — 長江中流の西南官話。捲舌音を持たず（zh/ch/sh = z/c/s）、n と l が合流し、北京よりはるかに鋭い高上昇の「武漢第2声」が特徴的。",
+      "ko": "우한 관화 — 양쯔강 중류의 서남관화. 권설음이 없고(zh/ch/sh = z/c/s) n과 l이 합류하며, 베이징보다 훨씬 날카로운 고상승의 “우한 2성”이 특징적이다.",
+      "zh": "武汉官话 — 长江中游的西南官话。无卷舌声母（zh/ch/sh 与 z/c/s 合流），n/l 合流，标志性的“武汉 2 声”是一个比北京阳平更陡的高升调。",
       "en": "Wuhan Mandarin — Southwestern Mandarin on the middle Yangtze. No retroflex (zh/ch/sh = z/c/s), n/l merger, and a characteristic high-rising \"Wuhan tone 2\" much sharper than Beijing's.",
       "yue": "武漢話屬西南官話，係長江中游嘅主要話，喺湖北講嘅。呢種話冇捲舌音，zh/ch/sh 同 z/c/s 係一樣嘅，而且 n 同 l 不分。最有特色嘅係「武漢二聲」，個升調比北京話嗰個急好多。",
       "vi": "Quan thoại Vũ Hán thuộc nhánh Tây Nam Quan thoại, là tiếng địa phương chính của vùng trung lưu sông Dương Tử ở Hồ Bắc. Không có phụ âm cuốn lưỡi (zh/ch/sh hợp nhất với z/c/s), n và l không phân biệt. Đặc trưng nổi bật: thanh 2 \"Vũ Hán\" có âm điệu lên cao đột ngột, sắc hơn nhiều so với Bắc Kinh.",
@@ -9957,6 +10041,9 @@ const HAN_LANG_META = {
   },
   "zh_zz": {
     "reading_type": {
+      "ja": "中原官話（鄭州）",
+      "ko": "중원관화 (정저우)",
+      "zh": "中原官话（郑州）",
       "en": "Zhongyuan Mandarin (Zhengzhou)",
       "yue": "鄭州話（中原官話）",
       "vi": "Quan thoại Trịnh Châu (Trung Nguyên)",
@@ -9975,6 +10062,9 @@ const HAN_LANG_META = {
       "sw": "Mandarin ya Zhengzhou (Zhongyuan)"
     },
     "description": {
+      "ja": "鄭州官話 — 河南省、中原官話の中心的方言。中古音の入声字は、声母の清濁に応じて現代の第1声・第2声へと再配置され、北京とは異なる配分パターンを示す。",
+      "ko": "정저우 관화 — 허난 성, 중원관화의 핵심 방언. 중고음 입성자는 성모의 청탁에 따라 현대 1성·2성으로 재배치되며, 베이징과 다른 분포 패턴을 보인다.",
+      "zh": "郑州官话 — 河南，中原官话的核心方言。中古入声字按声母清浊重新分派进现代第 1、2 声，分派模式与北京不同。",
       "en": "Zhengzhou Mandarin — central Zhongyuan Mandarin variety in Henan. MC checked-tone syllables redistribute by initial voicing into the modern tone 1/2 categories, distinct from Beijing's redistribution pattern.",
       "yue": "鄭州話係中原官話嘅代表方言，通行於河南。中古漢語嘅入聲字係按照聲母嘅清濁分配落現代嘅陰平（第一聲）同陽平（第二聲），呢個分配模式同北京話嗰個唔一樣。另外，部分地區保留咗古老嘅聲母特徵，詞彙上亦有唔少河南特色。",
       "vi": "Quan thoại Trịnh Châu là phương ngữ đại diện của Quan thoại Trung Nguyên, thông dụng ở Hà Nam. Các âm tiết mang thanh trắc nhập (入聲) của Hán ngữ trung cổ được phân phối lại vào thanh 1 hay thanh 2 hiện đại tùy theo loại phụ âm đầu, theo mô hình khác với Bắc Kinh. Từ vựng mang đậm sắc thái Hà Nam và một số vùng còn giữ nét bảo thủ trong hệ thống âm đầu.",
