@@ -4684,8 +4684,16 @@
             //   - historical mode (different visualization purpose)
             const _spotlightActive = _triviaSpotlight && _triviaSpotlight.size > 0;
             const _mobile = window.matchMedia('(max-width: 640px)').matches;
+            // Hanmap-mode override: skip speaker-count-based thinning entirely.
+            // With ~74 total HAN codes the map isn't crowded, and dropping a
+            // low-speaker variant (e.g. ko_mid, zh_yuan, ja_ojp, vi_ohan) that
+            // shares a city with its modern descendant just makes the new code
+            // invisible until very high zoom (user report 2026-05-29).
+            // The cellGroups + merge stacking below still handles any visual
+            // collision by vertically stacking co-located labels.
+            const _isHanmap = typeof HAN_LANGS !== 'undefined';
             let renderLangs = visibleLangs;
-            if (!_spotlightActive && !filterActive && !showHistorical) {
+            if (!_isHanmap && !_spotlightActive && !filterActive && !showHistorical) {
                 // Restrict the candidate pool to langs whose marker is in
                 // the visible viewport (with a generous margin so labels
                 // partially extending off-screen still get drawn).
