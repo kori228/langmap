@@ -265,8 +265,8 @@ const HAN_DATA = {
       "vi_c": "ɲət˨˩˧",
       "vi_s": "ɲɨt˨˩˦",
       "bca": "ʔit̚²²",
-      "juc": "emʊ",
-      "mnc": "emʊ",
+      "juc": "emu",
+      "mnc": "emu",
       "txg": "lew",
       "za": "ʔjɛt̚˥",
       "zkt": "em",
@@ -413,7 +413,7 @@ const HAN_DATA = {
       "juc": "d͡ʒuwe",
       "mnc": "d͡ʒuwə",
       "txg": "ɲɨː",
-      "za": "ŋei˨˩",
+      "za": "ŋei˨˦",
       "zkt": "d͡ʒur",
       "zh_kanbun": "ni",
       "ja": "d͡ʑi"
@@ -471,7 +471,7 @@ const HAN_DATA = {
       "mnc": "ilan",
       "txg": "soʔ²",
       "za": "sam",
-      "zkt": "ɡur",
+      "zkt": "gur",
       "zh_kanbun": "san",
       "ja": "san",
       "zh_sc": "san⁵⁵",
@@ -906,7 +906,7 @@ const HAN_DATA = {
       "mnc": "ninggun",
       "txg": "khɨw²",
       "za": "roeg",
-      "zkt": "ningɡun",
+      "zkt": "ninggun",
       "zh_kanbun": "roku",
       "ja": "riku",
       "zh_sc": "neu²¹³",
@@ -995,7 +995,7 @@ const HAN_DATA = {
       "txg": "kʰɨw",
       "za": "ɣok̚˨",
       "zkt": "niŋɡun",
-      "zh_kanbun": "ɾoku",
+      "zh_kanbun": "ɾokɯ",
       "ja": "ɾikɯ"
     },
     "en": {
@@ -1430,7 +1430,7 @@ const HAN_DATA = {
       "txg": "ɣew",
       "za": "kou˨˩",
       "zkt": "ujun",
-      "zh_kanbun": "ku",
+      "zh_kanbun": "kɯ",
       "ja": "kjɯː"
     },
     "en": {
@@ -2443,7 +2443,7 @@ const HAN_DATA = {
       "juc": "moː",
       "mnc": "moː",
       "txg": "ɕɨ",
-      "za": "mok̚˩",
+      "za": "mot̚˩",
       "zh_kanbun": "mokɯ",
       "zkt": "—",
       "ja": "bokɯ"
