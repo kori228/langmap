@@ -4321,47 +4321,75 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.classList.contains('visible')) closeModal();
             });
-            // Roulette-style random pick: cycle visible char rapidly,
-            // decelerating, and only redraw the map once it settles on
-            // the final character. Per user request 2026-05-29.
+            // Slot-machine-style roulette: vertical reel of chars
+            // scrolls up past the visible window, decelerating, and
+            // lands on the final char. Total animation ~0.5s.
+            // Per user request 2026-05-29.
             let _rouletteRunning = false;
             randomBtn.addEventListener('click', () => {
-                if (_rouletteRunning) return;  // ignore re-clicks mid-spin
+                if (_rouletteRunning) return;
                 let finalCh;
                 do { finalCh = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
                 while (finalCh === currentWord && HAN_LIST.length > 1);
 
-                const btn = document.getElementById('char-current-btn');
-                if (!btn) { setChar(finalCh); return; }
+                const cbtn = document.getElementById('char-current-btn');
+                if (!cbtn) { setChar(finalCh); return; }
                 _rouletteRunning = true;
-                btn.setAttribute('aria-busy', 'true');
+                cbtn.setAttribute('aria-busy', 'true');
 
-                // Animation envelope: ~24 steps, accelerating then
-                // decelerating, total ~1.4s. Last step shows finalCh.
-                const steps = [];
-                const N = 24;
-                for (let i = 0; i < N; i++) {
-                    // Quadratic ease-out: faster at start, slower at end
-                    const t = i / (N - 1);
-                    const delay = 25 + Math.round(140 * t * t);  // 25ms → ~165ms
-                    steps.push(delay);
+                const cellH = cbtn.clientHeight;
+                // Build reel: current char at top + intermediates + finalCh.
+                const N = 14;   // intermediate random cells
+                const cells = [currentWord];
+                for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
+                cells.push(finalCh);
+
+                // Save existing button styles we override.
+                const prevOverflow = cbtn.style.overflow;
+                const prevPos = cbtn.style.position;
+                cbtn.textContent = '';
+                cbtn.style.overflow = 'hidden';
+                cbtn.style.position = 'relative';
+
+                const reel = document.createElement('div');
+                reel.style.cssText = 'display:flex;flex-direction:column;transition:none;will-change:transform;transform:translateY(0)';
+                for (const ch of cells) {
+                    const c = document.createElement('div');
+                    c.textContent = ch;
+                    c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1';
+                    reel.appendChild(c);
                 }
-                let i = 0;
-                const tick = () => {
-                    if (i === N - 1) {
-                        btn.textContent = finalCh;
-                        btn.removeAttribute('aria-busy');
-                        _rouletteRunning = false;
-                        setChar(finalCh);   // redraws map with new char
-                        return;
-                    }
-                    // Pick a random char each step (could collide with
-                    // current — that's fine for the roulette feel).
-                    btn.textContent = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)];
-                    i++;
-                    setTimeout(tick, steps[i]);
+                cbtn.appendChild(reel);
+
+                // Force reflow before applying transition so the
+                // browser sees the start state at translateY(0).
+                void reel.offsetHeight;
+
+                const totalShift = (cells.length - 1) * cellH;
+                reel.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.7, 0.25, 1)';
+                reel.style.transform = 'translateY(-' + totalShift + 'px)';
+
+                const finish = () => {
+                    // Clean reel and restore button styles.
+                    while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
+                    cbtn.style.overflow = prevOverflow || '';
+                    cbtn.style.position = prevPos || '';
+                    cbtn.textContent = finalCh;
+                    cbtn.removeAttribute('aria-busy');
+                    _rouletteRunning = false;
+                    setChar(finalCh);   // redraws map with new char
                 };
-                tick();
+                // Use transitionend (more reliable than fixed setTimeout
+                // if the browser frame-drops), with a 600ms safety net.
+                let done = false;
+                const onEnd = () => {
+                    if (done) return;
+                    done = true;
+                    reel.removeEventListener('transitionend', onEnd);
+                    finish();
+                };
+                reel.addEventListener('transitionend', onEnd);
+                setTimeout(onEnd, 600);
             });
             // Localise the modal title + random button on UI-lang change.
             function localizeChrome() {
