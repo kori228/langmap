@@ -2778,10 +2778,10 @@
         // land in HAN_LANGS.
         const HAN_GROUPS = [
             { id: 'mandarin', family: 'sinitic',
-              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz'],
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','dng','zh_us'],
               historical: ['zh_yuan','zh_phagspa'] },
             { id: 'yue', family: 'sinitic',
-              modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo'],
+              modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo','yue_us'],
               historical: [] },
             { id: 'min', family: 'sinitic',
               modern: ['nan','nan_qz','nan_te','nan_pn','nan_xm','nan_zz','nan_hai','nan_sg','nan_my','nan_id','cdo','mnp','cpx'],
@@ -6831,7 +6831,34 @@
             const uiBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
             const hanMeta = (typeof HAN_LANG_META !== 'undefined' && HAN_LANG_META[code]) || null;
 
-            let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}</h2>`;
+            // Badges: 古代 (historical), 訓読 (native-word / kun-yomi-equivalent).
+            // The "kun" category is broader than the toolbar toggle: it covers
+            // every code where the reading is a NATIVE word for the concept
+            // (not a Sino-loan), including the explicit *_kun/_hun/_nom layers,
+            // all proto-language reconstructions, and the non-Sinitic
+            // Sinosphere languages (Manchu, Sibe, Jurchen, Tangut, Khitan,
+            // Zhuang, Bai). User-confirmed taxonomy 2026-05-29.
+            const HAN_KUN_BADGE_CODES = new Set([
+                'ja_kun', 'ko_hun', 'vi_nom',
+                'mnc', 'sjo', 'juc', 'txg', 'zkt', 'za', 'bca',
+                'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+            ]);
+            const isAncient = HAN_ANCIENT_CODES.has(code);
+            const isKun = HAN_KUN_BADGE_CODES.has(code);
+            const badgeI18n = {
+                ja: { ancient: '古代', kun: '訓読' },
+                en: { ancient: 'Ancient', kun: 'Native' },
+                ko: { ancient: '고대',   kun: '훈독' },
+                zh: { ancient: '古代',   kun: '训读' },
+                yue:{ ancient: '古代',   kun: '訓讀' },
+            };
+            const bL = badgeI18n[uiBase] || badgeI18n.en;
+            const badgeHtml = (label, bg) => `<span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:9px;background:${bg};color:#fff;margin-left:6px;vertical-align:middle;font-weight:600">${escapeHtml(label)}</span>`;
+            let badges = '';
+            if (isAncient) badges += badgeHtml(bL.ancient, '#998270');
+            if (isKun)     badges += badgeHtml(bL.kun,     '#a48070');
+
+            let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}${badges}</h2>`;
             html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native || '')}</span> [${escapeHtml(code)}]</div>`;
             // Compare button (same shape as wordmap so #compare-fab logic
             // continues to work).
