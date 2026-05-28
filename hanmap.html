@@ -2035,20 +2035,25 @@
             gap: 4px;
             font-size: 11px;
             padding: 3px 8px;
-            border: 1px solid #d0d0d0;
+            border: 1px solid #d8d8d8;
             border-radius: 11px;
-            background: #fff;
-            color: #444;
+            /* Non-active = clearly de-activated, not just "white default".
+               Greyed background + faded text + dashed border so users
+               see at a glance which chips are currently filtered out. */
+            background: #f1f1f1;
+            color: #999;
+            border-style: dashed;
             cursor: pointer;
             line-height: 1.3;
             white-space: nowrap;
             user-select: none;
             transition: background-color 0.1s, border-color 0.1s, color 0.1s;
         }
-        .hm-lf-chip:hover { background: #f5f7fa; }
+        .hm-lf-chip:hover { background: #e6e8ec; color: #555; }
         .hm-lf-chip.active {
             background: #1a73e8;
             border-color: #1765c4;
+            border-style: solid;
             color: #fff;
         }
         .hm-lf-chip.active:hover { background: #1765c4; }
@@ -2753,10 +2758,10 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v2';   // bumped from .v1 to apply
-                                              //   the new "kun-yomi off by
-                                              //   default" rule (user
-                                              //   request 2026-05-29).
+        const LS_KEY = 'hm.langFilter.v3';   // bumped from .v2 — default
+                                              //   now hides BOTH kun-yomi
+                                              //   AND ancient codes
+                                              //   (user request 2026-05-29).
         const HASH_PARAM = 'hf';
         // Kun-yomi-style codes — the 3 EXPLICIT native-reading layers
         // (ja_kun, ko_hun, vi_nom). The toggle covers ONLY these three
@@ -3016,13 +3021,14 @@
                 }
             } catch (_) {}
             // Default: all offered codes EXCEPT the explicit native-
-            // reading layers (ja_kun, ko_hun, vi_nom) per user request
-            // 2026-05-29. The expanded KUN_CODES set is what the toggle
-            // button operates on, but at first load only the explicit
-            // layers are hidden — leaving mnc/txg/zkt/protos/etc.
-            // visible by default since they ARE the main hanmap content.
+            // reading layers (KUN_DEFAULT_OFF) AND all historical /
+            // ancient codes (HAN_GROUPS .historical). User request
+            // 2026-05-29: hanmap defaults to modern Sino-loan readings;
+            // the user opts in to 古代語 / 訓読み via the toolbar
+            // toggles when interested in historical layers.
             selected = new Set(offered);
             for (const c of KUN_DEFAULT_OFF) selected.delete(c);
+            for (const g of HAN_GROUPS) for (const c of g.historical) selected.delete(c);
         }
 
         function saveState() {
@@ -3306,9 +3312,10 @@
                     selected = new Set(offered);
                 } else if (act === 'reset') {
                     // Reset to default: all offered EXCEPT the explicit native-
-                    // reading layers (KUN_DEFAULT_OFF).
+                    // reading layers AND all historical/ancient codes.
                     selected = new Set(offered);
                     for (const c of KUN_DEFAULT_OFF) selected.delete(c);
+                    for (const g of HAN_GROUPS) for (const c of g.historical) selected.delete(c);
                 } else if (act === 'none') {
                     selected = new Set();
                 } else if (act === 'toggle-ancient') {
