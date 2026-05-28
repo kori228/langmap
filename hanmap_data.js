@@ -4766,7 +4766,7 @@ const HAN_DATA = {
       "za": "tsuk̚˨",
       "zh_kanbun": "sokɯ",
       "zkt": "—",
-      "ja": "ɕoku"
+      "ja": "ɕokɯ"
     },
     "en": {
       "gloss": "foot, leg; sufficient",
@@ -8107,7 +8107,7 @@ const HAN_DATA = {
       "za": "kwən˧˧",
       "zh_kanbun": "ɕokɯ / d͡ʑiki",
       "zkt": "—",
-      "ja": "ɕoku"
+      "ja": "ɕokɯ"
     },
     "en": {
       "gloss": "eat / food",
@@ -13711,7 +13711,7 @@ const HAN_VARIANTS = {
       {
         "native": "ショク",
         "surface": "shoku",
-        "ipa": "ɕoku",
+        "ipa": "ɕokɯ",
         "label": "漢音 / Kan-on"
       },
       {
@@ -15379,7 +15379,7 @@ const HAN_VARIANTS = {
       {
         "native": "ショク",
         "surface": "shoku",
-        "ipa": "ɕoku",
+        "ipa": "ɕokɯ",
         "label": "漢音 / Kan-on"
       },
       {
