@@ -10127,6 +10127,9 @@ const HAN_LANG_META = {
   },
   "yue_gz": {
     "reading_type": {
+      "ja": "高州粤語",
+      "ko": "가오저우 광둥어 (高州粤語)",
+      "zh": "高州粤语",
       "en": "Gaozhou Yue",
       "yue": "高州粵語",
       "vi": "Việt ngữ Cao Châu (Quảng Đông tây)",
@@ -10145,6 +10148,9 @@ const HAN_LANG_META = {
       "sw": "Yue ya Gaozhou (Kigwangdungi cha Magharibi)"
     },
     "description": {
+      "ja": "高州粤語は広東省西部（茂名一帯）の勾漏粤語と広府粤語の過渡的方言。香港広東語より保守的な母音体系を持ち、独特な語彙が見られる。",
+      "ko": "가오저우 광둥어는 광둥성 서부(마오밍 일대)의 거우러우(勾漏)–광푸(廣府) 과도형 방언이다. 홍콩 광둥어보다 보수적인 모음 체계를 가지며 독자적인 어휘가 적지 않다.",
+      "zh": "高州粤语属广东西部（茂名一带）的勾漏粤语和广府粤语过渡型方言。元音系统比香港粤语保守，并保留若干独特词汇。",
       "en": "Gaozhou Yue — western Guangdong (Maoming area). A Goulou-Yue/Guangfu transitional variety with more conservative vowel system than Hong Kong Cantonese and distinctive lexical items.",
       "yue": "高州粵語係廣東西部（茂名一帶）嘅一種粵語，屬勾漏粵語同廣府粵語之間嘅過渡品種。同香港廣府話相比，呢種話有更加保守嘅母音系統，仲有唔少獨特嘅詞彙，係研究粵語地理擴散同歷史層次嘅重要資料。",
       "vi": "Việt ngữ Cao Châu là một biến thể tiếng Quảng được nói ở tây Quảng Đông (vùng Mậu Danh), có vị trí chuyển tiếp giữa Câu Lậu Việt và Quảng Phủ Việt. So với tiếng Quảng Hồng Kông, phương ngữ này có hệ thống nguyên âm bảo thủ hơn và nhiều từ vựng đặc trưng riêng, là tư liệu quý để nghiên cứu sự lan tỏa địa lý và tầng lớp lịch sử của tiếng Quảng.",
@@ -10174,6 +10180,9 @@ const HAN_LANG_META = {
   },
   "yue_ts": {
     "reading_type": {
+      "ja": "台山語（四邑粤語）",
+      "ko": "타이산어 (台山話, 四邑 광둥어)",
+      "zh": "台山话（四邑粤语）",
       "en": "Taishanese (Toisan)",
       "yue": "台山話（台山音）",
       "vi": "Tiếng Đài Sơn (Taishanese)",
@@ -10192,6 +10201,9 @@ const HAN_LANG_META = {
       "sw": "Kitatishani (Taishanese)"
     },
     "description": {
+      "ja": "台山語は珠江デルタ西部の四邑粤語の代表方言で、歴史的に在米華人社会の主要言語であった。最大の特徴は香港広東語の /s/ に対応する無声側面摩擦音 /ɬ/ と、低降型の声調を持つ5声体系。",
+      "ko": "타이산어는 주강 삼각주 서부 쓰이(四邑) 광둥어 계열로, 역사적으로 미국·캐나다 화교 사회의 주력 언어였다. 광둥어의 /s/에 해당하는 무성 측 마찰음 /ɬ/, 그리고 저강 하강조를 표지로 갖는 5성 체계가 특징이다.",
+      "zh": "台山话是珠江三角洲西部四邑粤语的代表方言，历史上是北美华人社区的主要语言。最显著特征是与香港粤语 /s/ 对应的清边擦音 /ɬ/，以及带低降标记调的五调系统。",
       "en": "Taishanese — Siyi Yue variety of Taishan in the Pearl Delta, historically the dominant Chinese-American diaspora speech. Signature feature: voiceless lateral /ɬ/ where Cantonese has /s/, and a 5-tone system with low-falling marker tones.",
       "yue": "台山話係四邑粵語嘅代表，係珠三角台山縣嘅方言，歷史上係北美華人移民社區最多人講嘅漢語。最顯著嘅特徵係有清側擦音 /ɬ/，喺廣州話發 /s/ 嘅位置佢哋會發 /ɬ/，另外聲調系統係五個聲調，其中有低降調作為特徵標記調。",
       "vi": "Tiếng Đài Sơn là phương ngữ Tứ Ấp thuộc huyện Tài Sơn vùng đồng bằng châu thổ Châu Giang, từng là tiếng Hán chiếm ưu thế trong cộng đồng người Hoa di cư tại Bắc Mỹ. Đặc điểm nổi bật: phụ âm đầu /ɬ/ (thanh xát bên vô thanh) ở những vị trí mà tiếng Quảng Đông có /s/, và hệ thống 5 thanh điệu với thanh điệu đánh dấu thấp-giảm.",
@@ -10221,6 +10233,9 @@ const HAN_LANG_META = {
   },
   "yue_dg": {
     "reading_type": {
+      "ja": "東莞粤語",
+      "ko": "둥관 광둥어 (東莞粵語)",
+      "zh": "东莞粤语",
       "en": "Dongguan Yue",
       "yue": "東莞粵語",
       "vi": "Tiếng Đông Quản (Dongguan Yue)",
@@ -10239,6 +10254,9 @@ const HAN_LANG_META = {
       "sw": "Kiyue cha Dongguan"
     },
     "description": {
+      "ja": "東莞粤語は広州の東に位置する広府粤語の一方言で、客家地域への過渡的な性格を持つ。香港広東語より保守的な韻尾体系を保ち、客家語起源の語彙も少なくない。",
+      "ko": "둥관 광둥어는 광저우 동쪽 광푸 광둥어의 한 방언으로, 객가어 지역으로 가는 과도적 성격을 띤다. 홍콩 광둥어보다 보수적인 운미 체계를 유지하고, 객가어에서 유입된 어휘도 다수 있다.",
+      "zh": "东莞粤语属广州以东的广府粤语方言，向客家区过渡。其韵尾系统比香港粤语保守，并含有若干客家来源的词汇。",
       "en": "Dongguan Yue — Guangfu Yue variety east of Guangzhou, transitional toward Hakka territory. More conservative coda system than Hong Kong Cantonese and several Hakka-influenced lexical items.",
       "yue": "東莞粵語係廣府粵語嘅一種，位於廣州以東，靠近客家地區。佢嘅韻尾系統比香港廣州話更為保守，入聲韻尾 -p/-t/-k 保留得相當完整。因為地理上毗鄰客家地區，所以詞彙上亦有唔少受客家話影響嘅借詞。",
       "vi": "Tiếng Đông Quản là phương ngữ Quảng Phủ-Yue nằm phía đông Quảng Châu, tiếp giáp vùng nói tiếng Khách Gia. Hệ thống vần cuối bảo thủ hơn tiếng Quảng Đông Hồng Kông, với các vần cuối nhập thanh -p/-t/-k được bảo lưu khá nguyên vẹn. Do giáp ranh với vùng Khách Gia, từ vựng cũng có nhiều từ mượn chịu ảnh hưởng từ tiếng Khách Gia.",
@@ -10268,6 +10286,9 @@ const HAN_LANG_META = {
   },
   "yue_nn": {
     "reading_type": {
+      "ja": "南寧粤語（邕潯粤語）",
+      "ko": "난닝 광둥어 (南寧粵語, 邕潯粵語)",
+      "zh": "南宁粤语（邕浔粤语）",
       "en": "Nanning Yue",
       "yue": "南寧粵語（邕潯粵語）",
       "vi": "Tiếng Quảng Đông Nam Ninh (Yong-Xun Yue)",
@@ -10286,6 +10307,9 @@ const HAN_LANG_META = {
       "sw": "Kiyue cha Nanning (Yongxun)"
     },
     "description": {
+      "ja": "南寧粤語は広西チワン族自治区の首府で話される邕潯粤語であり、西南地区の威信粤語にあたる。広州方言に近いがチワン語（タイ・カダイ系）基層の影響と独特な引用調1声を持つ。",
+      "ko": "난닝 광둥어는 광시 좡족 자치구 수도의 융쉰(邕潯) 광둥어로, 서남부 지역 표준 광둥어로 통한다. 광저우 방언과 가깝지만 좡족어(타이-카다이계) 기층 영향과 독특한 인용조 1성을 보인다.",
+      "zh": "南宁粤语为广西首府的邕浔粤语，是西南地区的权威粤语形态。整体接近广州话，但带有壮语（壮侗语系）底层影响，并具有独特的单字调1声形式。",
       "en": "Nanning Yue — Yongxun Yue variety of Guangxi capital, the prestige Cantonese of the southwest. Close to Guangzhou but with Zhuang/Tai substrate features and a distinctive citation tone 1.",
       "yue": "南寧粵語係廣西首府嘅粵語，屬邕潯片，係西南地區最具代表性嘅粵語變體。佢同廣州話好接近，但因為有壯侗語系嘅底層影響，所以語音上有啲獨特嘅特徵，最明顯係第一個引述聲調嘅調值同廣州話唔同。",
       "vi": "Tiếng Quảng Đông Nam Ninh là biến thể Yue Vĩnh Tầm của thủ phủ Quảng Tây, là biến thể tiếng Quảng Đông có uy thế ở phía tây nam. Phương ngữ này gần gũi với Quảng Châu nhưng mang một số đặc điểm ngữ âm chịu ảnh hưởng từ ngữ tầng Tày-Thái/Choang, trong đó nổi bật nhất là âm điệu trích dẫn bậc 1 khác biệt so với tiếng Quảng Đông Quảng Châu.",
@@ -10315,6 +10339,9 @@ const HAN_LANG_META = {
   },
   "yue_zs": {
     "reading_type": {
+      "ja": "中山粤語（石岐話）",
+      "ko": "중산 광둥어 (中山粵語, 石岐話)",
+      "zh": "中山粤语（石岐话）",
       "en": "Zhongshan Yue",
       "yue": "中山粵語",
       "vi": "Tiếng Quảng Đông Trung Sơn",
@@ -10333,6 +10360,9 @@ const HAN_LANG_META = {
       "sw": "Kantoni ya Zhongshan"
     },
     "description": {
+      "ja": "中山粤語は孫文の故郷でもある珠江デルタの粤語方言で、市中心の石岐話が威信形式とされる。広州方言に対していくつかの母音音価の変化と部分的な声調合流を示す。",
+      "ko": "중산 광둥어는 쑨원의 고향인 주강 삼각주의 광둥어 방언으로, 시 중심부의 스치(石岐) 방언이 권위 형태이다. 광저우 방언과 비교해 몇 가지 모음 음가의 변화와 부분적인 성조 합류가 관찰된다.",
+      "zh": "中山粤语为孙中山故乡所在的珠江三角洲粤语方言，市中心的石岐话为其权威形式。与广州话相比，存在若干元音音值的转变及部分声调的合流。",
       "en": "Zhongshan Yue — Pearl Delta Yue variety from Sun Yat-sen's hometown. Shiqi dialect is the prestige form, distinguished from Guangzhou by several vowel quality shifts and a partly merged tone system.",
       "yue": "中山粵語係珠三角粵語嘅一支，係孫中山先生嘅故鄉石岐話為代表。同廣州話相比，佢有幾個元音音質嘅轉移，聲調系統亦有部分合併，係廣府粵語圈內一個具特色嘅次方言。",
       "vi": "Tiếng Quảng Đông Trung Sơn là một nhánh Việt ngữ thuộc đồng bằng châu thổ Châu Giang, xuất phát từ quê hương của Tôn Trung Sơn. Thổ ngữ Thạch Kỳ (Shiqi) là hình thức chuẩn mực, khác biệt với Quảng Châu ở một số biến đổi chất lượng nguyên âm và hệ thống thanh điệu đã hợp nhất một phần.",
@@ -10362,6 +10392,9 @@ const HAN_LANG_META = {
   },
   "nan_qz": {
     "reading_type": {
+      "ja": "泉州閩南語",
+      "ko": "취안저우 민난어 (泉州閩南語)",
+      "zh": "泉州闽南语",
       "en": "Quanzhou Min Nan",
       "yue": "泉州閩南語",
       "vi": "Tiếng Mân Nam Tuyền Châu",
@@ -10380,6 +10413,9 @@ const HAN_LANG_META = {
       "sw": "Min Nan ya Quanzhou"
     },
     "description": {
+      "ja": "泉州閩南語は閩南語北部の威信方言で、海外華僑（特に東南アジア福建系）福建話の歴史的源流の一つ。廈門・台湾語の /u/ や /i/ に対応する中舌非円唇母音 /ɯ/ を保持し、7声体系を持つ。",
+      "ko": "취안저우 민난어는 민난어 북부의 권위 방언으로, 동남아 화교 푸젠계 호키엔의 역사적 모태 중 하나이다. 샤먼·타이완어의 /u/·/i/에 해당하는 중설 비원순 모음 /ɯ/를 유지하며, 7성 체계를 갖는다.",
+      "zh": "泉州闽南语为闽南语北部的权威方言，是海外华侨（尤其东南亚福建裔）福建话的历史源头之一。其保留与厦门、台湾闽南语 /u/ 或 /i/ 对应的央不圆唇元音 /ɯ/，并使用 7 个声调。",
       "en": "Quanzhou Hokkien — northernmost prestige variety of Min Nan, historical ancestor of overseas Hokkien diaspora. Preserves /ɯ/ (central unrounded vowel) where Xiamen and Taiwanese have /u/ or /i/, and uses 7 tones.",
       "yue": "泉州閩南語係閩南語最北嘅權威方言，係海外福建移民嘅歷史根源。佢保留咗/ɯ/（中央不圓唇元音），而廈門話同台灣閩南語相應位置則用/u/或/i/。聲調系統保留七個聲調，文白異讀現象十分豐富。",
       "vi": "Hokkien Tuyền Châu là biến thể phương ngữ Mân Nam ở cực bắc và có uy tín cao nhất, là tổ tiên lịch sử của cộng đồng hải ngoại Hokkien. Bảo tồn nguyên âm /ɯ/ (nguyên âm trung tâm không tròn môi), trong khi Hạ Môn và tiếng Đài Loan có /u/ hoặc /i/ ở vị trí tương ứng. Hệ thống thanh điệu gồm 7 thanh.",
@@ -10409,6 +10445,9 @@ const HAN_LANG_META = {
   },
   "nan_te": {
     "reading_type": {
+      "ja": "潮州語（潮汕語）",
+      "ko": "차오저우어 (潮州語, 潮汕語)",
+      "zh": "潮州话（潮汕话）",
       "en": "Teochew (Chaozhou)",
       "yue": "潮州話（潮汕閩南語）",
       "vi": "Tiếng Triều Châu (Chaozhou)",
@@ -10427,6 +10466,9 @@ const HAN_LANG_META = {
       "sw": "Teochew (Chaozhou)"
     },
     "description": {
+      "ja": "潮州語は広東省東部の閩南語方言で、廈門の閩南語とほぼ通じない程に乖離している。8声体系と広範な連読変調、有声語頭子音 /b/ /g/ /l/ の保持、独自の語彙が特徴。",
+      "ko": "차오저우어는 광둥성 동부의 민난어 방언으로, 샤먼 호키엔과 거의 통하지 않을 만큼 분화되어 있다. 8성 체계와 광범위한 연독 변조, 유성 어두음 /b/·/g/·/l/의 유지, 그리고 고유 어휘가 특징이다.",
+      "zh": "潮州话为广东东部的闽南语分支，与厦门闽南语几乎无法相互理解。其特征为 8 个声调及广泛的连读变调、保留浊声母 /b/、/g/、/l/，并具有独特词汇。",
       "en": "Teochew — eastern Guangdong Min Nan variety, divergent enough to be near-unintelligible with Xiamen Hokkien. Signature: 8-tone system with extensive sandhi, retention of voiced initial /b/, /g/, /l/, and unique vocabulary.",
       "yue": "潮州話係廣東東部嘅閩南語，同廈門話嘅差異大到幾乎唔能互通。佢嘅特色係八個聲調加上大量連讀變調，保留有聲聲母/b/、/g/、/l/，詞彙亦相當獨特，係海外潮人社群嘅重要認同標誌。",
       "vi": "Tiếng Triều Châu là biến thể Mân Nam ở đông Quảng Đông, khác biệt đến mức gần như không thể hiểu được với Hokkien Hạ Môn. Đặc trưng nổi bật: hệ thống 8 thanh điệu với biến thanh rộng rãi, bảo tồn phụ âm đầu hữu thanh /b/, /g/, /l/, và vốn từ vựng độc đáo.",
@@ -10456,6 +10498,9 @@ const HAN_LANG_META = {
   },
   "nan_pn": {
     "reading_type": {
+      "ja": "檳城閩南語（檳城福建話）",
+      "ko": "페낭 호키엔 (檳城閩南語)",
+      "zh": "槟城闽南语（槟城福建话）",
       "en": "Penang Hokkien",
       "yue": "檳城福建話",
       "vi": "Tiếng Hokkien Penang",
@@ -10474,6 +10519,9 @@ const HAN_LANG_META = {
       "sw": "Hokkien ya Penang"
     },
     "description": {
+      "ja": "檳城閩南語はマレーシア・ペナンで話される漳州系の閩南語で、マレー語からの借用語層が極めて厚い（sabun, balu, tapi など）。本土の閩南語より声調体系が簡略化され、独特の抑揚を持つ。",
+      "ko": "페낭 호키엔은 말레이시아 페낭에서 쓰이는 장저우(漳州) 계통 민난어로, 말레이어 차용어(예: sabun, balu, tapi)가 매우 두텁다. 본토 민난어보다 성조 체계가 단순화되어 있으며 독특한 가락 있는 어조가 표지이다.",
+      "zh": "槟城闽南语为马来西亚槟城使用的漳州系闽南语，马来语借词层（如 sabun、balu、tapi）极为深厚。其声调体系相对大陆变体有所简化，并具有独特的抑扬顿挫式语调。",
       "en": "Penang Hokkien — Zhangzhou-descended Min Nan of Malaysian Penang, with heavy Malay loanword stratum (sabun, balu, tapi). Tone system simplified compared to mainland varieties and a signature sing-song prosody.",
       "yue": "檳城福建話係馬來西亞檳城嘅閩南語，源自漳州系，混入大量馬來語借詞（sabun「番梘」、balu「新近」、tapi「但係」等）。聲調系統比大陸方言簡化，語調帶有獨特嘅吟唱感，係東南亞閩南語中最具特色嘅海外變體之一。",
       "vi": "Tiếng Hokkien Penang là biến thể tiếng Mân Nam gốc Chương Châu được sử dụng tại Penang, Malaysia, chứa đựng lớp từ mượn tiếng Mã Lai phong phú (sabun, balu, tapi). Hệ thống thanh điệu đơn giản hơn so với các biến thể trong lục địa, với ngữ điệu du dương đặc trưng.",
@@ -10556,6 +10604,9 @@ const HAN_LANG_META = {
   },
   "nan_xm": {
     "reading_type": {
+      "ja": "廈門閩南語（アモイ語）",
+      "ko": "샤먼 호키엔 (廈門閩南語)",
+      "zh": "厦门闽南语",
       "en": "Xiamen Hokkien (Amoy)",
       "yue": "廈門閩南語（廈門話）",
       "vi": "Tiếng Hokkien Hạ Môn (Amoy)",
@@ -10574,6 +10625,9 @@ const HAN_LANG_META = {
       "sw": "Hokkien ya Xiamen (Amoy)"
     },
     "description": {
+      "ja": "廈門閩南語は19世紀の開港期以降、閩南語の威信方言となり、白話字（POJ）ローマ字や海外閩南語標準の基礎となった。漳州方言と泉州方言の特徴を融合させたコイネー的性格を持つ。",
+      "ko": "샤먼 호키엔은 19세기 개항 이후 민난어의 권위 방언이 되었으며, 백화자(POJ) 로마자와 해외 호키엔 표준의 기반이다. 장저우와 취안저우 방언의 특징이 혼합된 코이네적 성격을 띤다.",
+      "zh": "厦门闽南语自 19 世纪开埠以来成为闽南语的权威方言，是白话字（POJ）拉丁化方案及海外闽南语标准的基础。其性质为漳州、泉州两系特征融合的共通语（koine）。",
       "en": "Xiamen Hokkien — Min Nan prestige variety since the 19th-c. treaty port era, basis of POJ romanization and most overseas Hokkien standards. A koine blending Zhangzhou and Quanzhou features.",
       "yue": "廈門閩南語係19世紀開埠以來嘅閩南語標準方言，係白話字（POJ）拼音系統嘅基礎，亦係海外大多數閩南語標準嘅依據。廈門話係漳州話同泉州話嘅混合語（koine），融合兩家之長，語音系統兼容並蓄，因此成為通行於東南亞閩南社群嘅共同語。",
       "vi": "Hokkien Hạ Môn là biến thể Min Nan có uy tín kể từ thời kỳ cảng mở cửa thế kỷ 19, là cơ sở của hệ thống chữ Latinh POJ và phần lớn các tiêu chuẩn Hokkien hải ngoại. Đây là một ngôn ngữ thông dụng (koine) hòa trộn các đặc điểm của phương ngữ Chương Châu và Tuyền Châu.",
@@ -10603,6 +10657,9 @@ const HAN_LANG_META = {
   },
   "nan_zz": {
     "reading_type": {
+      "ja": "漳州閩南語",
+      "ko": "장저우 호키엔 (漳州閩南語)",
+      "zh": "漳州闽南语",
       "en": "Zhangzhou Hokkien",
       "yue": "漳州閩南語",
       "vi": "Mân Nam Chương Châu (Hokkien Chương Châu)",
@@ -10621,6 +10678,9 @@ const HAN_LANG_META = {
       "sw": "Hokkien ya Zhangzhou (Min Nan)"
     },
     "description": {
+      "ja": "漳州閩南語は閩南語南部の威信方言で、北部の泉州方言と対をなす。泉州の /e/ に対応する位置で /ɛ/ を用い、（泉州とともに）台湾語の主要な祖型の一つでもある。",
+      "ko": "장저우 호키엔은 민난어 남부의 권위 방언으로, 북부의 취안저우 방언과 대비된다. 취안저우의 /e/에 해당하는 자리에 /ɛ/를 사용하며, (취안저우와 더불어) 타이완 호키엔의 주요 모태 가운데 하나이다.",
+      "zh": "漳州闽南语为闽南语南部的权威方言，与北部的泉州方言相对。其在泉州话 /e/ 出现的位置使用 /ɛ/，并与泉州话同为台湾闽南语的主要源头之一。",
       "en": "Zhangzhou Hokkien — southern prestige variety of Min Nan, contrasting with Quanzhou's northern features. Uses /ɛ/ where Quanzhou has /e/, and is the dominant ancestor of Taiwanese (alongside Quanzhou).",
       "yue": "漳州閩南語係閩南語嘅南部權威方言，同泉州北部特徵形成對比。喺泉州話有/e/嘅地方，漳州話用/ɛ/；同時係台灣話嘅主要祖源（連同泉州話）。具有著名嘅文白異讀（白讀層係閩語中最古老嘅層次），以及豐富嘅鼻化元音體系。",
       "vi": "Hokkien Chương Châu là biến thể miền nam có uy thế của Min Nam, tương phản với các đặc điểm phía bắc của Tuyền Châu. Dùng /ɛ/ ở những nơi Tuyền Châu có /e/, và là nguồn gốc chính của tiếng Đài Loan (cùng với Tuyền Châu). Có sự phân đôi văn/bạch (文白異讀) nổi tiếng, với lớp bạch thoại là lớp cổ xưa nhất trong các phương ngữ Min, cùng hệ thống nguyên âm mũi phong phú.",
@@ -10650,6 +10710,9 @@ const HAN_LANG_META = {
   },
   "wuu_nb": {
     "reading_type": {
+      "ja": "寧波呉語",
+      "ko": "닝보 우어 (寧波吳語)",
+      "zh": "宁波吴语",
       "en": "Ningbo Wu",
       "yue": "寧波吳語",
       "vi": "Ngô ngữ Ninh Ba",
@@ -10668,6 +10731,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Ningbo"
     },
     "description": {
+      "ja": "寧波呉語は上海の南に位置する北部呉語の方言で、初期の上海語の形成に大きく影響した商業言語であった。中古漢語の全濁声母をすべて保持し、7声体系と極めて速い口調を持つ。",
+      "ko": "닝보 우어는 상하이 남쪽 북부 우어 방언으로, 초기 상하이어 형성에 큰 영향을 끼친 상업 언어였다. 중고한어의 전탁 성모를 모두 유지하며, 7성 체계와 매우 빠른 어조를 보인다.",
+      "zh": "宁波吴语为上海以南的北部吴语方言，历史上是塑造早期上海话的重要商业用语。完整保留中古汉语全浊声母，使用 7 个声调，语速极快。",
       "en": "Ningbo Wu — northern Wu variety south of Shanghai, historical commercial speech that heavily shaped early Shanghainese. Preserves all Middle Chinese voiced initials and uses 7 tones; very fast prosody.",
       "yue": "寧波吳語係上海以南嘅北部吳語方言，歷史上係重要商業語言，對早期上海話形成有深遠影響。同上海話一樣，完整保存中古音全部濁聲母（b-, d-, g-, z-, dz-），並有七個聲調。語速極快，韻律節奏明快，係吳語中最具活力嘅城市方言之一。",
       "vi": "Ngô ngữ Ninh Ba là phương ngữ Ngô miền bắc ở phía nam Thượng Hải, vốn là ngôn ngữ thương mại quan trọng đã định hình mạnh mẽ tiếng Thượng Hải thuở sơ khai. Cũng như Thượng Hải, bảo tồn hoàn toàn tất cả phụ âm đầu hữu thanh (b-, d-, g-, z-, dz-) của Trung cổ Hán ngữ và có 7 thanh điệu; phong cách phát âm rất nhanh.",
@@ -10697,6 +10763,9 @@ const HAN_LANG_META = {
   },
   "wuu_sz": {
     "reading_type": {
+      "ja": "蘇州呉語",
+      "ko": "쑤저우 우어 (蘇州吳語)",
+      "zh": "苏州吴语",
       "en": "Suzhou Wu",
       "yue": "蘇州吳語",
       "vi": "Ngô ngữ Tô Châu",
@@ -10715,6 +10784,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Suzhou"
     },
     "description": {
+      "ja": "蘇州呉語は北部呉語の威信方言で、昆曲（崑劇）の文学・舞台標準でもある。呉語の中で最も「柔らかい」とされ、中古漢語の全濁声母を保ち、7声体系と優雅な旋律を持つ。",
+      "ko": "쑤저우 우어는 북부 우어의 권위 방언으로, 곤곡(崑曲) 등 문학·무대 표준이기도 하다. 우어 가운데 가장 「부드러운」 방언으로 여겨지며, 중고한어 전탁 성모 유지, 7성 체계, 우아한 운율을 특징으로 한다.",
+      "zh": "苏州吴语为北部吴语的权威方言，亦是昆曲等文学、戏曲的标准音。被誉为吴语中最「软糯」者，保留中古汉语全浊声母，使用 7 个声调，旋律典雅。",
       "en": "Suzhou Wu — northern Wu prestige variety, the literary/operatic standard (Kunqu opera). Considered the \"softest\" Wu variety, with preserved MC voiced initials, 7-tone system, and an elegant melodic contour.",
       "yue": "蘇州吳語係北部吳語嘅文學及戲曲標準，以崑曲（明代雅樂）聞名。素有「天下最軟」嘅美譽，音調柔和悠揚、旋律感極強。完整保存中古音濁聲母，具有七個聲調，語速從容，韻律優雅，與寧波話嘅快節奏形成鮮明對比。",
       "vi": "Ngô ngữ Tô Châu là chuẩn mực văn học và tuồng cổ của Ngô ngữ miền bắc, nổi tiếng qua kinh kịch Côn Khúc (nhã nhạc đời Minh). Được coi là phương ngữ Ngô \"mềm mại\" nhất, với đường nét giai điệu thanh thoát và từng trải. Bảo tồn đầy đủ phụ âm đầu hữu thanh của Trung cổ Hán ngữ, có hệ thống 7 thanh điệu và đường nét giai điệu tao nhã.",
@@ -10744,6 +10816,9 @@ const HAN_LANG_META = {
   },
   "wuu_wz": {
     "reading_type": {
+      "ja": "温州呉語（甌語）",
+      "ko": "원저우 우어 (溫州吳語, 甌江吳語)",
+      "zh": "温州吴语（瓯语）",
       "en": "Wenzhou Wu (Ou)",
       "yue": "溫州吳語（甌語）",
       "vi": "Phương ngữ Wu Ôn Châu (Ngữ Âu Giang)",
@@ -10762,6 +10837,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Wenzhou (Wu ya Mto Ou)"
     },
     "description": {
+      "ja": "温州呉語（甌江呉語）は南部呉語の代表方言で、難解さで知られ「悪魔の言葉」とも呼ばれる。8声体系と複雑な連読変調を持ち、北部呉語と異なり閩語的特徴も多く有する。",
+      "ko": "원저우 우어(甌江 우어)는 남부 우어를 대표하는 방언으로, 난해함 때문에 「악마의 언어」라는 별명으로도 불린다. 8성 체계와 광범위한 연독 변조를 가지며, 북부 우어와 달리 민어적 특징을 다수 보인다.",
+      "zh": "温州吴语（瓯江吴语）为南部吴语的代表方言，以难解著称，俗有「魔鬼之语」之称。具有 8 个声调和广泛的连读变调，并带有较多闽语影响特征，与北部吴语区别明显。",
       "en": "Wenzhou Wu (Ou Jiang Wu) — southern Wu variety, famously divergent and nicknamed \"devil's tongue.\" Has 8 tones, extensive tone sandhi, and substantial Min-influenced features distinguishing it from northern Wu.",
       "yue": "溫州吳語（又稱甌語）係南部吳語嘅代表，以差異極大而聞名，甚至俾人叫做「鬼語」。佢有8個聲調，連讀變調極為複雜，並且受閩語影響顯著，令佢同北部吳語（例如上海話）有明顯區別。",
       "vi": "Tiếng Wu Ôn Châu (còn gọi là tiếng Âu Giang Wu) là phương ngữ Wu miền nam, nổi tiếng khác biệt đến mức được mệnh danh là \"tiếng quỷ\". Có 8 thanh điệu, hiện tượng biến thanh trong chuỗi lời nói rất phức tạp, và chịu ảnh hưởng đáng kể từ tiếng Min, khiến nó khác biệt rõ rệt so với tiếng Wu miền bắc như tiếng Thượng Hải.",
@@ -10791,6 +10869,9 @@ const HAN_LANG_META = {
   },
   "wuu_hz": {
     "reading_type": {
+      "ja": "杭州呉語",
+      "ko": "항저우 우어 (杭州吳語)",
+      "zh": "杭州吴语",
       "en": "Hangzhou Wu",
       "yue": "杭州吳語",
       "vi": "Phương ngữ Wu Hàng Châu",
@@ -10809,6 +10890,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Hangzhou"
     },
     "description": {
+      "ja": "杭州呉語は南宋の首都期、北方からの宮廷難民により語彙が大幅に置き換えられた特異な呉語方言。中古漢語の全濁声母は依然保つが、官話的な語彙や代名詞を多く用いる。",
+      "ko": "항저우 우어는 남송 수도 시기에 북방 궁정 피난민의 영향으로 어휘가 대폭 치환된 특이한 우어 방언이다. 중고한어 전탁 성모는 여전히 유지하지만, 어휘와 대명사는 관화에 가까운 양상을 보인다.",
+      "zh": "杭州吴语为南宋定都临安期间，因北方宫廷移民大量重塑词汇而形成的特殊吴语方言。其虽保留中古汉语全浊声母，但词汇与代词带有浓厚的官话色彩。",
       "en": "Hangzhou Wu — atypical Wu variety with heavy Mandarin overlay from the Southern Song capital era, when northern court refugees relexified the speech. Still has MC voiced initials but with Mandarin-like vocabulary and pronouns.",
       "yue": "杭州吳語係一種非典型嘅吳語，因南宋定都於此，大批北方宮廷難民南遷，令當地吳語受到大量官話詞彙疊加，詞彙同代詞都帶有濃厚嘅官話色彩。不過，佢依然保留咗中古漢語嘅濁聲母，可見其吳語底層仍在。",
       "vi": "Tiếng Wu Hàng Châu là một biến thể Wu không điển hình với lớp phủ Quan thoại dày đặc, xuất phát từ thời kỳ thủ đô Nam Tống, khi những người tị nạn từ triều đình miền bắc đã thay thế phần lớn từ vựng địa phương. Dù vậy, phương ngữ này vẫn giữ được các phụ âm đầu hữu thanh của tiếng Hán trung cổ cùng với từ vựng và đại từ mang hơi hướng Quan thoại.",
@@ -10838,6 +10922,9 @@ const HAN_LANG_META = {
   },
   "wuu_jx": {
     "reading_type": {
+      "ja": "嘉興呉語",
+      "ko": "자싱 우어 (嘉興吳語)",
+      "zh": "嘉兴吴语",
       "en": "Jiaxing Wu",
       "yue": "嘉興吳語",
       "vi": "Phương ngữ Wu Gia Hưng",
@@ -10856,6 +10943,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Jiaxing"
     },
     "description": {
+      "ja": "嘉興呉語は上海・蘇州・杭州の三大都市の中間に位置する北部呉語方言。中古漢語の全濁声母を完全に保つ保守的な音韻と7声体系を持ち、語彙的には蘇州方言に近い。",
+      "ko": "자싱 우어는 상하이·쑤저우·항저우 세 도시 사이에 위치한 북부 우어 방언이다. 중고한어 전탁 성모를 완전히 유지하는 보수적 음운과 7성 체계를 가지며, 어휘는 쑤저우 방언과 가깝다.",
+      "zh": "嘉兴吴语为位于上海、苏州、杭州三大城市之间的北部吴语方言。其音韵保守，完整保留中古汉语全浊声母，使用 7 个声调，词汇上接近苏州话。",
       "en": "Jiaxing Wu — northern Wu variety between Shanghai, Suzhou and Hangzhou. Conservative phonology with full MC voiced initial preservation and 7 tones; lexically close to Suzhou.",
       "yue": "嘉興吳語係北部吳語之一，位處上海、蘇州同杭州之間。佢保留咗完整嘅中古漢語濁聲母，有7個聲調，語音系統較為保守，詞彙上同蘇州話十分接近。",
       "vi": "Tiếng Wu Gia Hưng là một phương ngữ Wu phía bắc nằm giữa Thượng Hải, Tô Châu và Hàng Châu. Phương ngữ này có âm vị học bảo thủ với đầy đủ các phụ âm đầu hữu thanh của tiếng Hán trung cổ và 7 thanh điệu; về mặt từ vựng rất gần gũi với tiếng Tô Châu.",
@@ -10885,6 +10975,9 @@ const HAN_LANG_META = {
   },
   "wuu_jh": {
     "reading_type": {
+      "ja": "金華呉語",
+      "ko": "진화 우어 (金華吳語)",
+      "zh": "金华吴语",
       "en": "Jinhua Wu",
       "yue": "金華吳語",
       "vi": "Tiếng Ngô Kim Hoa",
@@ -10903,6 +10996,9 @@ const HAN_LANG_META = {
       "sw": "Wu ya Jinhua"
     },
     "description": {
+      "ja": "金華呉語は浙江省内陸の中南部呉語方言。上海語より保守的で入声がより強く保たれ、北部呉語とも温州呉語とも異なる独自の位置を占める。",
+      "ko": "진화 우어는 저장성 내륙의 중남부 우어 방언이다. 상하이어보다 보수적이며 입성 운미가 더 뚜렷이 유지되어, 북부 우어와 원저우 우어 어디에도 속하지 않는 독자적 위치를 차지한다.",
+      "zh": "金华吴语为浙江省内陆的中南部吴语方言。其音韵较上海话保守，入声韵尾保留更完整，介于北部吴语与温州吴语之间，自成一格。",
       "en": "Jinhua Wu — southern-central Wu variety in Zhejiang interior. More conservative than Shanghai with stronger checked tones, distinct from both northern Wu and Wenzhou.",
       "yue": "金華吳語係浙江內陸中南部嘅吳語，比上海話更保守，入聲韻尾保留得更完整，同北部吳語（上海、蘇州）同南部嘅溫州話都有明顯分別。係吳語內部一個重要嘅過渡方言。",
       "vi": "Tiếng Ngô Kim Hoa là phương ngữ Ngô ở vùng nội địa trung-nam Chiết Giang. Bảo thủ hơn tiếng Thượng Hải ở chỗ giữ nguyên âm cuối nhập thanh chắc hơn, và khác biệt rõ với cả tiếng Ngô phía bắc lẫn tiếng Ôn Châu.",
@@ -10932,6 +11028,9 @@ const HAN_LANG_META = {
   },
   "hak_tw": {
     "reading_type": {
+      "ja": "台湾客家語（四縣腔）",
+      "ko": "대만 객가어 (四縣腔)",
+      "zh": "台湾客家话（四县腔）",
       "en": "Taiwanese Hakka (Sixian)",
       "yue": "台灣客家話（四縣腔）",
       "vi": "Tiếng Khách Gia Đài Loan (Tứ Huyện)",
@@ -10950,6 +11049,9 @@ const HAN_LANG_META = {
       "sw": "Hakka ya Taiwan (Sixian)"
     },
     "description": {
+      "ja": "台湾四縣客家語は苗栗を中心とする威信方言で、広東省東北部の四縣（四縣）系統に由来する。6声体系を持ち、-p/-t/-k 入声韻尾を完全に保持し、客家語特有の「全濁→送気」化を示す。",
+      "ko": "대만 사현(四縣) 객가어는 먀오리(苗栗)를 중심으로 한 권위 방언으로, 광둥성 동북부의 사현 계통에서 유래했다. 6성 체계, -p/-t/-k 입성 운미의 완전한 유지, 그리고 객가어 특유의 「전탁→유기음화」 음운 변화를 보인다.",
+      "zh": "台湾四县腔客家话以苗栗为中心，是台湾客家话的权威方言，其源流可上溯至广东东北部的四县地区。具有 6 个声调，完整保留 -p/-t/-k 入声韵尾，并体现客家语典型的「全浊声母→送气化」演变。",
       "en": "Taiwanese Sixian Hakka — Miaoli-centered prestige variety, descended from northeastern Guangdong Sixian (四縣) sub-group. 6-tone system, full retention of -p/-t/-k codas, and the Hakka signature voiced→aspirated shift.",
       "yue": "台灣四縣客家話以苗栗為核心，係由廣東東北部四縣（四縣）支系移民帶嚟嘅。保留六個聲調及完整嘅入聲韻尾-p/-t/-k，同時具備客家話標誌性嘅濁塞音轉有氣清音特徵。係台灣客家話入面最具代表性嘅腔調。",
       "vi": "Tiếng Khách Gia Tứ Huyện Đài Loan là phương ngữ uy tín lấy Miêu Lật làm trung tâm, xuất phát từ nhóm Tứ Huyện (四縣) vùng đông bắc Quảng Đông. Hệ thống 6 thanh điệu, giữ nguyên vẹn các âm cuối nhập thanh -p/-t/-k, và đặc trưng Khách Gia là phụ âm đầu hữu thanh biến thành hữu khí.",
@@ -10980,6 +11082,9 @@ const HAN_LANG_META = {
   },
   "hak_hl": {
     "reading_type": {
+      "ja": "台湾客家語（海陸腔）",
+      "ko": "대만 객가어 (海陸腔)",
+      "zh": "台湾客家话（海陆腔）",
       "en": "Taiwanese Hakka (Hailu)",
       "yue": "台灣客家話（海陸腔）",
       "vi": "Tiếng Khách Gia Đài Loan (Hải Lục)",
@@ -10998,6 +11103,9 @@ const HAN_LANG_META = {
       "sw": "Hakka ya Taiwan (Hailu)"
     },
     "description": {
+      "ja": "台湾海陸客家語は新竹を中心とする方言で、広東省の海豐・陸豐（海陸）地区に由来する。四縣腔より一つ多い7声体系を持ち、四縣腔が平舌音の位置で官話のような口蓋化した歯擦音（sh / zh / ch）を用いるのが大きな特徴。",
+      "ko": "대만 해륙(海陸) 객가어는 신주(新竹)를 중심으로 하는 방언으로, 광둥성 하이펑(海豐)·루펑(陸豐) 지역에서 기원한다. 사현강보다 하나 많은 7성 체계를 가지며, 사현강이 평설음을 쓰는 자리에 관화처럼 구개음화된 치찰음(sh / zh / ch)을 사용하는 점이 두드러진다.",
+      "zh": "台湾海陆腔客家话以新竹为中心，源自广东海丰、陆丰（海陆）地区。其声调比四县腔多一个，共 7 个声调；最显著的特征是在四县腔使用平舌音的位置上采用类似官话的舌叶塞擦音 sh / zh / ch。",
       "en": "Taiwanese Hailu Hakka — Hsinchu-centered variety from Haifeng-Lufeng (海陸) area of Guangdong. Has 7 tones (one more than Sixian) and palatalized sibilants (sh/zh/ch like Mandarin) where Sixian has plain ones.",
       "yue": "台灣海陸客家話以新竹為中心，源自廣東海豐、陸豐（海陸）地區。有七個聲調，比四縣腔多一個，聲母方面有四縣腔所無嘅顎化擦音（sh/zh/ch，近似普通話），係辨別兩者嘅主要語音特徵。",
       "vi": "Tiếng Khách Gia Hải Lục Đài Loan là phương ngữ lấy Tân Trúc làm trung tâm, có nguồn gốc từ vùng Hải Phong–Lục Phong (海陸) của Quảng Đông. Có 7 thanh điệu (nhiều hơn Tứ Huyện một thanh) và phụ âm đầu sibilant khẩu cái hóa (sh/zh/ch như tiếng Phổ thông) mà Tứ Huyện không có.",
