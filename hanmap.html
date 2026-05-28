@@ -2758,23 +2758,42 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v3';   // bumped from .v2 — default
-                                              //   now hides BOTH kun-yomi
-                                              //   AND ancient codes
-                                              //   (user request 2026-05-29).
+        const LS_KEY = 'hm.langFilter.v4';   // bumped — kun set widened
+                                              //   to include mnc/sjo/za/
+                                              //   bca/juc/txg/zkt/protos
+                                              //   (mutually exclusive
+                                              //   with ANCIENT_SINO).
         const HASH_PARAM = 'hf';
-        // Kun-yomi-style codes — the 3 EXPLICIT native-reading layers
-        // (ja_kun, ko_hun, vi_nom). The toggle covers ONLY these three
-        // so it doesn't clash with the 古代語 toggle: proto-languages
-        // and txg/juc/zkt are also native-word linguistically, but
-        // they're already classed as 古代 (historical) and toggled by
-        // the 古代語 button. mnc/sjo/za/bca are modern non-Sinitic
-        // native-word layers — they stay independently toggleable in
-        // their own family groups (no overlap with either master
-        // toggle). This keeps the two master toggles independent so
-        // the user's button-press feedback is unambiguous.
-        const KUN_CODES = ['ja_kun', 'ko_hun', 'vi_nom'];
+        // Two MUTUALLY EXCLUSIVE master sets, partitioning the
+        // "interesting opt-in" languages so the 古代語 and 訓読 toggles
+        // never overlap visually. Refined 2026-05-29 after the user
+        // reported that turning 訓読 OFF should also hide mnc / sjo /
+        // protos / etc., not just the 3 explicit kun chips.
+        //
+        // 訓読 (kun) = every code where the reading is a NATIVE word for
+        // the concept (not a Sino-loan):
+        //   - Explicit native-reading layers: ja_kun, ko_hun, vi_nom
+        //   - Modern non-Sinitic Sinosphere langs: mnc, sjo, za, bca
+        //   - Extinct non-Sinitic in the Sinosphere: juc, txg, zkt
+        //   - Proto-language reconstructions: pst, ptb, pko, pja, ptung,
+        //     paa, ptai, pmgl, phm
+        const KUN_CODES = [
+            'ja_kun', 'ko_hun', 'vi_nom',
+            'mnc', 'sjo', 'za', 'bca',
+            'juc', 'txg', 'zkt',
+            'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+        ];
+        // 古代語 (ancient) = historical Sino-LOAN readings only. Non-Sino
+        // historicals (juc/txg/zkt and the protos) are filed under 訓読
+        // above, NOT here, so the two toggles never overlap.
+        const ANCIENT_SINO_CODES = [
+            'zh_han', 'zh_tang', 'zh_song', 'zh_yuan', 'zh_phagspa', 'zh_kanbun',
+            'ko_mid', 'ja_ojp', 'vi_han', 'vi_ohan',
+        ];
+        // Both sets are OFF by default — the user sees only modern
+        // Sino-loan readings on first load and opts in via the toggles.
         const KUN_DEFAULT_OFF = KUN_CODES;
+        const ANCIENT_DEFAULT_OFF = ANCIENT_SINO_CODES;
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -2783,13 +2802,13 @@
         // land in HAN_LANGS.
         const HAN_GROUPS = [
             { id: 'mandarin', family: 'sinitic',
-              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','dng','zh_us'],
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','dng','zh_us','zh_th'],
               historical: ['zh_yuan','zh_phagspa'] },
             { id: 'yue', family: 'sinitic',
               modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo','yue_us'],
               historical: [] },
             { id: 'min', family: 'sinitic',
-              modern: ['nan','nan_qz','nan_te','nan_pn','nan_xm','nan_zz','nan_hai','nan_sg','nan_my','nan_id','cdo','mnp','cpx'],
+              modern: ['nan','nan_qz','nan_te','nan_pn','nan_xm','nan_zz','nan_hai','nan_sg','nan_my','nan_id','nan_th','nan_pera','cdo','mnp','cpx'],
               historical: [] },
             { id: 'wu', family: 'sinitic',
               modern: ['wuu','wuu_nb','wuu_sz','wuu_wz','wuu_hz','wuu_jx','wuu_jh'],
@@ -3020,15 +3039,14 @@
                     }
                 }
             } catch (_) {}
-            // Default: all offered codes EXCEPT the explicit native-
-            // reading layers (KUN_DEFAULT_OFF) AND all historical /
-            // ancient codes (HAN_GROUPS .historical). User request
-            // 2026-05-29: hanmap defaults to modern Sino-loan readings;
-            // the user opts in to 古代語 / 訓読み via the toolbar
-            // toggles when interested in historical layers.
+            // Default: only modern Sino-loan readings selected. Both
+            // 古代語 (Sino-loan ancient) and 訓読 (any-era native-word)
+            // categories OFF by default. The two sets are mutually
+            // exclusive (no overlap), so the user can opt in to each
+            // independently via the toolbar toggles.
             selected = new Set(offered);
-            for (const c of KUN_DEFAULT_OFF) selected.delete(c);
-            for (const g of HAN_GROUPS) for (const c of g.historical) selected.delete(c);
+            for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
+            for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
         }
 
         function saveState() {
@@ -3164,9 +3182,7 @@
                     }
                     return any;   // false if set is empty
                 };
-                const ancientCodes = [];
-                for (const g of HAN_GROUPS) for (const c of g.historical) ancientCodes.push(c);
-                setBtnActive('toggle-ancient', allInSetSelected(ancientCodes));
+                setBtnActive('toggle-ancient', allInSetSelected(ANCIENT_SINO_CODES));
                 setBtnActive('toggle-kun',     allInSetSelected(KUN_CODES));
             }
 
@@ -3311,24 +3327,23 @@
                 if (act === 'all') {
                     selected = new Set(offered);
                 } else if (act === 'reset') {
-                    // Reset to default: all offered EXCEPT the explicit native-
-                    // reading layers AND all historical/ancient codes.
+                    // Reset to default: only modern Sino-loan readings.
                     selected = new Set(offered);
-                    for (const c of KUN_DEFAULT_OFF) selected.delete(c);
-                    for (const g of HAN_GROUPS) for (const c of g.historical) selected.delete(c);
+                    for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
+                    for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
                 } else if (act === 'none') {
                     selected = new Set();
                 } else if (act === 'toggle-ancient') {
-                    // Compute "ancient" set from HAN_GROUPS .historical arrays.
-                    const ancient = new Set();
-                    for (const g of HAN_GROUPS) for (const c of g.historical) if (offered.has(c)) ancient.add(c);
-                    // Toggle: if any ancient code is NOT selected, add them all; else remove them all.
+                    // Toggle the Sino-loan historical set only. Native-
+                    // word ancient codes (juc/txg/zkt/protos) go through
+                    // the 訓読 toggle, never this one.
                     let anyMissing = false;
-                    for (const c of ancient) if (!selected.has(c)) { anyMissing = true; break; }
-                    if (anyMissing) { for (const c of ancient) selected.add(c); }
-                    else            { for (const c of ancient) selected.delete(c); }
+                    for (const c of ANCIENT_SINO_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
+                    if (anyMissing) { for (const c of ANCIENT_SINO_CODES) if (offered.has(c)) selected.add(c); }
+                    else            { for (const c of ANCIENT_SINO_CODES) selected.delete(c); }
                 } else if (act === 'toggle-kun') {
-                    // Toggle ja_kun + ko_kun together.
+                    // Toggle all native-word codes (explicit kun layers
+                    // + non-Sino langs + proto reconstructions).
                     let anyMissing = false;
                     for (const c of KUN_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
                     if (anyMissing) { for (const c of KUN_CODES) if (offered.has(c)) selected.add(c); }
