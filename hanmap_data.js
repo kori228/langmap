@@ -8713,6 +8713,9 @@ const HAN_LANG_META = {
     "native": "普通话",
     "family": "Sinitic (Mandarin)",
     "reading_type": {
+      "ja": "現代標準中国語・普通話（拼音）",
+      "ko": "현대 표준 중국어 보통화 (병음)",
+      "zh": "现代标准汉语·普通话（拼音）",
       "en": "Modern Standard Mandarin (Pinyin)",
       "yue": "現代標準普通話（拼音）",
       "vi": "Phổ thông thoại tiêu chuẩn hiện đại (Bính âm)",
@@ -8767,6 +8770,9 @@ const HAN_LANG_META = {
     "native": "粵語",
     "family": "Sinitic (Yue)",
     "reading_type": {
+      "ja": "広東語（粵拼／Jyutping）",
+      "ko": "광둥어 (월병／Jyutping)",
+      "zh": "粤语·广州话（粤拼／Jyutping）",
       "en": "Cantonese (Jyutping)",
       "yue": "廣東話（粵拼）",
       "vi": "Tiếng Quảng Đông — Việt ngữ (Jyutping)",
@@ -8821,6 +8827,9 @@ const HAN_LANG_META = {
     "native": "閩南語",
     "family": "Sinitic (Min)",
     "reading_type": {
+      "ja": "閩南語・ホーロー語（白話字 Pe̍h-ōe-jī）",
+      "ko": "민난어·호로어 (백화자 Pe̍h-ōe-jī)",
+      "zh": "闽南语·福佬话（白话字 Pe̍h-ōe-jī）",
       "en": "Min Nan (Pe̍h-ōe-jī)",
       "yue": "閩南語（Pe̍h-ōe-jī）",
       "vi": "Mân Nam (Pe̍h-ōe-jī)",
@@ -8875,6 +8884,9 @@ const HAN_LANG_META = {
     "native": "吳語",
     "family": "Sinitic (Wu)",
     "reading_type": {
+      "ja": "呉語・上海語（Wugniu／吳語拼音）",
+      "ko": "오어·상하이어 (Wugniu／오어 병음)",
+      "zh": "吴语·上海话（吴语拼音 Wugniu）",
       "en": "Wu Chinese — Shanghainese (Wugniu)",
       "yue": "吳語（上海話，Wugniu）",
       "vi": "Ngô ngữ — Thượng Hải (Wugniu)",
@@ -8929,6 +8941,9 @@ const HAN_LANG_META = {
     "native": "客家話",
     "family": "Sinitic (Hakka)",
     "reading_type": {
+      "ja": "客家語（梅県標準・白話字 Pha̍k-fa-sṳ）",
+      "ko": "객가어 (메이셴 표준, 백화자 Pha̍k-fa-sṳ)",
+      "zh": "客家话（梅县标准·白话字 Pha̍k-fa-sṳ）",
       "en": "Hakka (Meixian standard, Pha̍k-fa-sṳ)",
       "yue": "客家話（梅縣標準，Pha̍k-fa-sṳ）",
       "vi": "Khách Gia — Meixian (Pha̍k-fa-sṳ)",
@@ -8983,6 +8998,9 @@ const HAN_LANG_META = {
     "native": "閩東語（福州話）",
     "family": "Sinitic (Min)",
     "reading_type": {
+      "ja": "閩東語・福州語（平話字 Bàng-uâ-cê）",
+      "ko": "민둥어·푸저우어 (평화자 Bàng-uâ-cê)",
+      "zh": "闽东语·福州话（平话字 Bàng-uâ-cê）",
       "en": "Min Dong — Fuzhou (Foochow Romanized)",
       "yue": "閩東語 — 福州話（平話字）",
       "vi": "Mân Đông — Phúc Châu (Bàng-uâ-cê)",
@@ -9037,6 +9055,9 @@ const HAN_LANG_META = {
     "native": "湘語",
     "family": "Sinitic (Xiang)",
     "reading_type": {
+      "ja": "湘語・長沙話（新湘語）",
+      "ko": "샹어·창사어 (신샹어)",
+      "zh": "湘语·长沙话（新湘语）",
       "en": "Xiang — Changsha (New Xiang)",
       "yue": "湘語 — 長沙話（新湘語）",
       "vi": "Tương ngữ — Trường Sa (Tân Tương)",
@@ -9090,6 +9111,9 @@ const HAN_LANG_META = {
     "native": "贛語",
     "family": "Sinitic (Gan)",
     "reading_type": {
+      "ja": "贛語・南昌話",
+      "ko": "간어·난창어",
+      "zh": "赣语·南昌话",
       "en": "Gan — Nanchang",
       "yue": "贛語 — 南昌話",
       "vi": "Cám ngữ — Nam Xương",
@@ -9143,6 +9167,9 @@ const HAN_LANG_META = {
     "native": "晉語",
     "family": "Sinitic (Jin)",
     "reading_type": {
+      "ja": "晋語・太原話",
+      "ko": "진어·타이위안어",
+      "zh": "晋语·太原话",
       "en": "Jin — Taiyuan",
       "yue": "晉語——太原話",
       "vi": "Tiếng Tấn — Thái Nguyên",
@@ -9196,6 +9223,9 @@ const HAN_LANG_META = {
     "native": "閩北語",
     "family": "Sinitic (Min)",
     "reading_type": {
+      "ja": "閩北語・建甌話",
+      "ko": "민베이어·젠어우어",
+      "zh": "闽北语·建瓯话",
       "en": "Min Bei — Jian'ou",
       "yue": "閩北語——建甌話",
       "vi": "Mân Bắc — Kiến Âu",
@@ -9249,6 +9279,9 @@ const HAN_LANG_META = {
     "native": "莆仙話",
     "family": "Sinitic (Min)",
     "reading_type": {
+      "ja": "莆仙語（莆田・仙游話）",
+      "ko": "푸셴어 (푸톈·셴유 방언)",
+      "zh": "莆仙语·莆田／仙游话",
       "en": "Pu-Xian Min — Putian/Xianyou",
       "yue": "莆仙話——莆田／仙游",
       "vi": "Mân Bồ-Tiên — Bồ Điền/Tiên Du",
@@ -11262,6 +11295,9 @@ const HAN_LANG_META = {
   },
   "zh_kanbun": {
     "reading_type": {
+      "ja": "日本の漢文訓読（漢文訓読）",
+      "ko": "일본의 한문 훈독 (漢文訓読 칸분쿤도쿠)",
+      "zh": "日本汉文训读（漢文訓読 训读法）",
       "en": "Japanese kanbun reading (漢文訓読)",
       "yue": "日本漢文訓讀傳統（漢文訓読）",
       "vi": "Truyền thống đọc Hán văn theo kiểu Nhật (訓読 kundoku)",
@@ -11280,6 +11316,9 @@ const HAN_LANG_META = {
       "sw": "Mila ya usomaji wa Kijapani wa maandishi ya Kichina (漢文訓読 kanbun)"
     },
     "description": {
+      "ja": "漢文訓読は、古典中国語（漢文）の本文を日本語として音読する日本独自の読法であり、中国語の方言ではない。返り点（レ点・一二点など）で漢文のSVO語順を日本語のSOV語順に組み替え、送り仮名で活用語尾や助詞を補い、内容語は漢音または訓読みで読む。書記テキスト解読の技法であって話し言葉ではなく、奈良時代以降、公文書・儒仏典の標準的読法として用いられてきた。",
+      "ko": "한문 훈독(漢文訓読)은 고전 한문 텍스트를 일본어로 소리 내어 읽는 일본의 독법으로, 중국어의 방언이 아니다. 가에리텐(返り点)으로 한문의 SVO 어순을 일본어 SOV 어순으로 재배열하고, 오쿠리가나(送り仮名)로 활용 어미와 조사를 보충하며, 내용어는 한음(漢音)이나 훈독(訓読み)으로 읽는다. 구어가 아니라 문자 텍스트 해독의 기법이며, 나라 시대 이후 일본에서 공문서·유불 경전의 표준 독서법으로 사용되어 왔다.",
+      "zh": "汉文训读（漢文訓読）是日本将古典汉语（漢文）按日语朗读的传统读法，并非汉语的某种方言。读者借助返点（返り点）将汉文的 SVO 语序重排为日语的 SOV 语序，以送假名（送り仮名）补足活用词尾与助词，实词则按汉音或训读读出。这是一种书面文本的解读技艺而非口语形式，自奈良时代起即为日本官方文书与儒释典籍的标准读法。",
       "en": "Kanbun (漢文訓読) — the Japanese tradition of reading Classical Chinese texts aloud as Japanese, using reading marks (返り点 kaeriten, 送り仮名) to reorder Chinese SVO into Japanese SOV, with content words read by 漢音 or 訓読み. Not a spoken language but a written-reading praxis.",
       "yue": "漢文訓讀（かんぶんくんどく）係日本閱讀漢文（古典中文）嘅一種傳統做法，並唔係一種獨立嘅中文方言。讀者會用返り点（返點）同送り仮名等標記，將漢文嘅漢語語序（SVO）重新排列成日語語序（SOV），內容詞則按漢音抑或訓讀讀出。呢種做法係一種書面解讀技藝，唔係口語，自奈良時代起成為日本官方文書同儒佛典籍嘅標準閱讀方式。",
       "vi": "Kanbun kundoku (漢文訓読) là truyền thống của Nhật Bản đọc văn bản Hán văn (Cổ văn Trung Quốc) thành tiếng Nhật, chứ không phải một giống tiếng Trung riêng biệt. Người đọc dùng các ký hiệu phụ trợ như 返り点 (kaeriten — dấu đảo trật tự) và 送り仮名 (okurigana — kana bổ sung) để sắp xếp lại trật tự SVO của chữ Hán thành trật tự SOV của tiếng Nhật; các thực từ được đọc theo âm Hán âm (漢音) hoặc âm Nhật thuần (訓読み). Đây là một kỹ thuật giải mã văn bản viết, không phải ngôn ngữ nói, và là chuẩn mực đọc văn thư chính thức cùng kinh điển Nho-Phật tại Nhật từ thời Nara.",
