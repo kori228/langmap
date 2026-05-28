@@ -2256,6 +2256,9 @@
             <button type="button" data-act="all"   class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて選択</button>
             <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
             <button type="button" data-act="reset" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">リセット</button>
+            <span style="border-left:1px solid #ddd;margin:2px 4px"></span>
+            <button type="button" data-act="toggle-ancient" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">古代語</button>
+            <button type="button" data-act="toggle-kun"     class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">訓読み</button>
             <span style="flex:1"></span>
             <span id="hm-lang-filter-count" style="font-size:11px;color:#777;align-self:center">0 / 0</span>
         </div>
@@ -2747,8 +2750,15 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter';
+        const LS_KEY = 'hm.langFilter.v2';   // bumped from .v1 to apply
+                                              //   the new "kun-yomi off by
+                                              //   default" rule (user
+                                              //   request 2026-05-29).
         const HASH_PARAM = 'hf';
+        // Kun-yomi-style codes (native-word readings of Han chars, as
+        // opposed to Sino-loan on-yomi-style). User-controlled toggle
+        // and hidden by default.
+        const KUN_CODES = ['ja_kun', 'ko_kun'];
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -2823,7 +2833,7 @@
                 austroasiatic:  { name: 'オーストロアジア', parent: null },
                 _modern: '現代', _historical: '古代',
                 _title: '言語で絞り込み', _sub: '系統 × 時代でフィルタリング。チップをタップでON/OFF。',
-                _all: 'すべて選択', _none: 'すべて解除', _reset: 'リセット',
+                _all: 'すべて選択', _none: 'すべて解除', _reset: 'リセット', _ancient: '古代語', _kun: '訓読み',
                 _btn: '絞り込み',
             },
             en: {
@@ -2844,7 +2854,7 @@
                 austroasiatic:  { name: 'Austroasiatic',      parent: null },
                 _modern: 'Modern', _historical: 'Historical',
                 _title: 'Filter languages', _sub: 'Filter by family x era. Tap chips to toggle.',
-                _all: 'Select all', _none: 'Clear all', _reset: 'Reset',
+                _all: 'Select all', _none: 'Clear all', _reset: 'Reset', _ancient: 'Ancient', _kun: 'Kun-yomi',
                 _btn: 'Filter',
             },
             ko: {
@@ -2865,7 +2875,7 @@
                 austroasiatic:  { name: '오스트로아시아', parent: null },
                 _modern: '현대', _historical: '고대',
                 _title: '언어 필터', _sub: '계통 × 시대로 필터링. 칩을 탭하여 ON/OFF.',
-                _all: '모두 선택', _none: '모두 해제', _reset: '재설정',
+                _all: '모두 선택', _none: '모두 해제', _reset: '재설정', _ancient: '고대', _kun: '훈독',
                 _btn: '필터',
             },
             zh: {
@@ -2886,7 +2896,7 @@
                 austroasiatic:  { name: '南亚语系',   parent: null },
                 _modern: '现代', _historical: '古代',
                 _title: '语言筛选', _sub: '按语系 × 时代筛选。点击芯片切换。',
-                _all: '全选', _none: '清除', _reset: '重置',
+                _all: '全选', _none: '清除', _reset: '重置', _ancient: '古代', _kun: '训读',
                 _btn: '筛选',
             },
         };
@@ -2994,7 +3004,12 @@
                     }
                 }
             } catch (_) {}
-            selected = new Set(offered);   // default = all selected = no filter
+            // Default: all offered codes EXCEPT kun-yomi (ja_kun, ko_kun).
+            // Per user request 2026-05-29: kun-yomi should be OFF by
+            // default since it's a different layer (native-word readings)
+            // from the Sino-loan readings hanmap centers on.
+            selected = new Set(offered);
+            for (const c of KUN_CODES) selected.delete(c);
         }
 
         function saveState() {
@@ -3094,7 +3109,11 @@
                 const btns = toolbar.querySelectorAll('.hm-lf-tool-btn');
                 btns.forEach(b => {
                     const a = b.getAttribute('data-act');
-                    b.textContent = a === 'all' ? L('_all') : a === 'none' ? L('_none') : L('_reset');
+                    const map = {
+                        all: '_all', none: '_none', reset: '_reset',
+                        'toggle-ancient': '_ancient', 'toggle-kun': '_kun',
+                    };
+                    if (map[a]) b.textContent = L(map[a]);
                 });
             }
 
@@ -3236,10 +3255,29 @@
                 const b = e.target.closest('button[data-act]'); if (!b) return;
                 const offered = offeredCodes();
                 const act = b.getAttribute('data-act');
-                if (act === 'all' || act === 'reset') {
+                if (act === 'all') {
                     selected = new Set(offered);
+                } else if (act === 'reset') {
+                    // Reset to default: all offered EXCEPT kun-yomi codes.
+                    selected = new Set(offered);
+                    for (const c of KUN_CODES) selected.delete(c);
                 } else if (act === 'none') {
                     selected = new Set();
+                } else if (act === 'toggle-ancient') {
+                    // Compute "ancient" set from HAN_GROUPS .historical arrays.
+                    const ancient = new Set();
+                    for (const g of HAN_GROUPS) for (const c of g.historical) if (offered.has(c)) ancient.add(c);
+                    // Toggle: if any ancient code is NOT selected, add them all; else remove them all.
+                    let anyMissing = false;
+                    for (const c of ancient) if (!selected.has(c)) { anyMissing = true; break; }
+                    if (anyMissing) { for (const c of ancient) selected.add(c); }
+                    else            { for (const c of ancient) selected.delete(c); }
+                } else if (act === 'toggle-kun') {
+                    // Toggle ja_kun + ko_kun together.
+                    let anyMissing = false;
+                    for (const c of KUN_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
+                    if (anyMissing) { for (const c of KUN_CODES) if (offered.has(c)) selected.add(c); }
+                    else            { for (const c of KUN_CODES) selected.delete(c); }
                 }
                 renderPanel(); refreshTriggers();
             });
