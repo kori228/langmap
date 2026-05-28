@@ -4339,7 +4339,10 @@
 
                 const cellH = cbtn.clientHeight;
                 // Build reel: current char at top + intermediates + finalCh.
-                const N = 14;   // intermediate random cells
+                // Fewer cells than the earlier 14 so the slowdown phase has
+                // enough time per cell to be readable (user reported the
+                // tail of the previous animation flew by invisibly).
+                const N = 9;
                 const cells = [currentWord];
                 for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
                 cells.push(finalCh);
@@ -4366,7 +4369,11 @@
                 void reel.offsetHeight;
 
                 const totalShift = (cells.length - 1) * cellH;
-                reel.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.7, 0.25, 1)';
+                // 0.8s with a gentler ease-out (cubic) so the deceleration
+                // tail is actually visible instead of snapping to the
+                // final cell. User reported the previous 0.5s + steep
+                // cubic-bezier(0.2,0.7,0.25,1) hid the second half.
+                reel.style.transition = 'transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)';
                 reel.style.transform = 'translateY(-' + totalShift + 'px)';
 
                 const finish = () => {
@@ -4389,7 +4396,7 @@
                     finish();
                 };
                 reel.addEventListener('transitionend', onEnd);
-                setTimeout(onEnd, 600);
+                setTimeout(onEnd, 950);
             });
             // Localise the modal title + random button on UI-lang change.
             function localizeChrome() {
