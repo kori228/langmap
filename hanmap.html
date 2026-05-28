@@ -646,8 +646,18 @@
         .lang-label .name {
             font-size: calc(9px * var(--label-scale)); color: #888; line-height: 1.3;
         }
-        /* Vertical writing for Mongolian Traditional Script / Manchu */
-        .lang-label.vertical .word {
+        /* Vertical writing for Mongolian Traditional Script / Manchu /
+           Sibe / Phags-pa. Per user request 2026-05-29: ONLY the native-
+           script line rotates to vertical; the romanization above and
+           the IPA below stay horizontal so the label reads naturally
+           top-to-bottom: 1) Roman text 2) vertical native script
+           3) IPA. */
+        .lang-label.vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lang-label.vertical .hanmap-native-line {
             writing-mode: vertical-lr;
             text-orientation: mixed;
             display: inline-block;
@@ -3897,6 +3907,10 @@
             'mn_cn',    // Inner Mongolian (Traditional Mongolian script)
             'cmg',      // Classical Mongolian
             'xng',      // Middle Mongolian
+            // Other Yuan/Liao-era ancient scripts written vertically
+            'zh_phagspa', // Phags-pa (designed for vertical layout 1269)
+            'zkt',        // Khitan Small Script (vertical traditional layout)
+            'txg',        // Tangut (often vertical in historical manuscripts)
         ]);
 
         // DATA_STATUS_OVERRIDES is now defined in wordmap_data.js (data
