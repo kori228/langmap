@@ -4151,7 +4151,14 @@
             if (s == null) return '';
             return String(s).replace(/[&<>"']/g, c => ESCAPE_HTML_MAP[c]);
         }
-        const ALLOWED_DESC_COLORS = new Set(['#c0392b', '#ff6b6b', '']);
+        const ALLOWED_DESC_COLORS = new Set([
+            '',          // default — Sinitic modern (inherit black)
+            '#998270',   // Sinitic ancient (light sepia)
+            '#5e1f1f',   // Non-Sinitic modern (dark red-tinted)
+            '#a48070',   // Non-Sinitic ancient (light red-brown)
+            '#c0392b',   // legacy: wordmap descendant red
+            '#ff6b6b',   // legacy: wordmap descendant globe-mode pink
+        ]);
         function safeColor(c) { return ALLOWED_DESC_COLORS.has(c) ? c : ''; }
 
         // ============================================================
