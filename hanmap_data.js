@@ -4178,7 +4178,7 @@ const HAN_DATA = {
       "ko": "jaŋ",
       "vi": "zɨəŋ˧˧",
       "vi_c": "jɨəŋ˧˨",
-      "vi_s": "zɨːŋ˧˧",
+      "vi_s": "jɨːŋ˧˧",
       "bca": "jaŋ˧˥",
       "juc": "xonin",
       "mnc": "xonin",
