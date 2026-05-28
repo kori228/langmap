@@ -7954,7 +7954,7 @@ const HAN_DATA = {
       "ko": "mun",
       "vi": "van˧˧",
       "vi_c": "van˧˨",
-      "vi_s": "van˧˧",
+      "vi_s": "jan˧˧",
       "bca": "wɛn˧˥",
       "juc": "dond͡ʒimbi",
       "mnc": "dond͡ʒimbi",
