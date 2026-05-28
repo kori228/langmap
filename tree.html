@@ -55,7 +55,7 @@
         gtag('config', 'G-JZ7JJBCCHG');
     }
 </script>
-<link rel="stylesheet" href="styles.css?v=94">
+<link rel="stylesheet" href="styles.css?v=101">
 <!-- Noto Serif Tibetan for native names of Tibetic languages
      (bo / xct / dz / khg / xsr / sik / lbj / bft / xkz / xct_litpr).
      Without this, Tibetan script in .node.leaf .native renders via OS
@@ -78,8 +78,14 @@
         overscroll-behavior: none;
     }
     body {
+        /* Tibetan fonts MUST NOT be in the body cascade — Kailasa
+         * (iOS system font) has very large vertical metrics and iOS
+         * Safari uses it to calculate line-boxes for the whole
+         * document, which surfaces as button-text-shifted-upward in
+         * any element with an explicit line-height. Scope Tibetan to
+         * .node.leaf .native below, which is the only selector that
+         * actually contains Tibetan codepoints on this page. */
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-            'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
             sans-serif;
         color: #222; background: #fafbfc;
         display: flex; flex-direction: column; padding: 0;
@@ -181,6 +187,12 @@
     .node.leaf .label a { color: #1a73e8; text-decoration: none; }
     .node.leaf .label a:hover { text-decoration: underline; }
     .node.leaf .native {
+        /* Tibetan-script native names (e.g. བོད་སྐད, ཆོས་སྐད, རྫོང་ཁ)
+         * need a Tibetan font in the cascade. Scoped here — see body
+         * rule for why we can't keep Kailasa in the body chain. */
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+            'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
+            sans-serif;
         color: #888; font-size: 12px; margin-left: 8px;
         unicode-bidi: isolate;
     }
@@ -237,7 +249,7 @@
 <div class="site-header-bar">
     <a href="index.html" class="logo">LangMap</a>
     <input type="checkbox" id="hdr-menu-toggle" class="hdr-menu-toggle" aria-label="Menu toggle">
-    <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0">☰</label>
+    <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></label>
     <div class="header-collapse" id="header-collapse">
         <!-- Audit Task 124/161: nav default labels are English so the header
              renders correctly when JavaScript is disabled or before applyI18n()

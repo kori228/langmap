@@ -1,35 +1,19 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* iOS Safari auto-inflates font-size in some layouts (e.g. flex
-   children whose container is narrower than the document) — rows in
-   the trivia article-nav, lang-info modal, and compare table came
-   out visibly taller on iPhone vs Chrome desktop. Lock the
-   text-size-adjust ratio to 100% so iOS uses our specified sizes
-   verbatim. */
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
 
 body {
-    /* Tibetan: no "Noto Sans Tibetan" exists on Google Fonts, so we use
-       Noto Serif Tibetan + system Tibetan fallbacks (Kailasa = iOS,
-       Microsoft Himalaya = Windows, Jomolhari / Tibetan Machine Uni =
-       common cross-platform). Without these, Tibetan codepoints in
-       sentence segments (bo / xct / dz / khg / xsr / sik / lbj / bft /
-       xkz / xct_litpr) fell through to OS LastResort and rendered as
-       tiny generic outlines. Pages using this stack must also load
-       Noto+Serif+Tibetan via their Google Fonts <link>. */
-    font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai',
-        'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
-        sans-serif;
-    /* Explicit line-height: iOS Safari + Hiragino computes
-       `line-height: normal` ≈ 1.5-1.6 for CJK text, while Chrome's
-       default sans-serif (Segoe UI / Noto Sans) gives ≈ 1.2. Rows in
-       the compare table and the hamburger drawer ended up ~3x taller
-       on iPhone. Pinning body to 1.4 normalises CJK leading across
-       browsers; individual descendants still override where needed. */
-    line-height: 1.4;
+    /* IMPORTANT: do NOT add Tibetan fonts (Kailasa / Microsoft Himalaya /
+       Jomolhari / Tibetan Machine Uni / Noto Serif Tibetan) to the body
+       cascade. iOS Safari resolves Kailasa as a system font and uses
+       its large vertical metrics to compute the line-box for ALL body
+       text — even text rendered in Hiragino. The result was CJK
+       glyphs sitting in the upper part of an oversized line-box,
+       showing up as "text shifted up" inside flex-centred trivia and
+       lang-toggle buttons (root cause traced 2026-05-27 to 8f578fd's
+       body font-family extension). Tibetan fallback is now scoped to
+       the elements that actually contain Tibetan codepoints
+       (.segment, .node.leaf .native) below. */
+    font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', sans-serif;
     background: #f0f2f5;
     min-height: 100vh;
     padding: 20px;
@@ -182,9 +166,6 @@ body {
     .header-collapse .header-nav-current {
         padding: 10px 4px;
         border-radius: 6px;
-        /* Pin line-height so iOS Safari + Hiragino doesn't inflate the
-           highlighted current-page row to ~3x the unhighlighted siblings. */
-        line-height: 1.2;
     }
     .header-collapse .header-nav-link:hover {
         background: #f3f4f6; text-decoration: none;
@@ -682,6 +663,15 @@ select:focus { border-color: #4a90d9; outline: none; }
 }
 
 .segment {
+    /* Tibetan font fallback scoped here (NOT on body — see body rule
+     * for why Kailasa in the global cascade breaks button text
+     * centring on iOS Safari). bo / xct / dz / khg / xsr / sik / lbj /
+     * bft / xkz / xct_litpr sentence segments need this chain.
+     * Inherits everything else from body, then appends Tibetan
+     * options for codepoints body's chain doesn't cover. */
+    font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai',
+        'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
+        sans-serif;
     font-size: 20px;
     font-weight: 600;
     padding: 2px 4px;
