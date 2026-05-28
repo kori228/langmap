@@ -4990,6 +4990,14 @@
         function hanmapShortLabel(label) {
             if (!label) return '';
             let s = String(label).split(' / ')[0].trim();
+            // Strip parenthetical glosses BEFORE doing anything else.
+            // Variant labels like "上面（locative）" or "行走（歩く）" carry the
+            // English / Japanese gloss in parens as supplementary info;
+            // the previous version would 3-char-truncate the WHOLE string
+            // and leave a dangling "（" or "(". User reported this for
+            // yue_gz variants (上面（locative） → "上面（"). Strip both
+            // full-width and half-width parens content first.
+            s = s.replace(/[（(][^）)]*[）)]?/g, '').trim();
             s = s.split(/[・･,，、/]/)[0].trim();
             s = s.replace(/法則$|現象$|讀$|読$/, m => m === '法則' || m === '現象' ? '' : m);
             const chars = Array.from(s);
