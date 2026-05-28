@@ -226,8 +226,18 @@
             text-align: center; white-space: nowrap; cursor: pointer;
             pointer-events: auto;
             text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+            /* Always padded + auto width so hover/selected don't change box size */
+            padding: 1px 4px; border-radius: 4px;
+            width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
-        .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        .lang-label:hover { background: rgba(255,255,255,0.7); }
+        /* Strip Leaflet's default white box + force auto-size on divIcon container */
+        .leaflet-div-icon {
+            background: none !important; border: none !important;
+            overflow: visible !important;
+            width: auto !important; height: auto !important;
+        }
+        .leaflet-marker-icon { overflow: visible !important; }
         .lang-label .word {
             font-size: calc(16px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
             line-height: 1.2;
@@ -241,7 +251,6 @@
         }
         .lang-label.selected {
             background: rgba(255,255,255,0.97);
-            border-radius: 7px; padding: 6px 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.22),
                         0 0 0 1px rgba(74,108,247,0.6);
             outline: none;
@@ -689,7 +698,7 @@
         });
 
         // Use a light, neutral tile layer so Han labels remain readable.
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; OpenStreetMap &copy; CARTO',
             subdomains: 'abcd',
             maxZoom: 19,
@@ -697,14 +706,188 @@
 
         const markers = [];
 
+        // === Surface/IPA display normalization ===
+        // Convert tone-digit sequences (e.g. "tʂʰɨ55", "kau˧˩˧" → ˩˩, ˥˥, etc.)
+        function tonesToChao(s) {
+            if (!s) return s;
+            // Map 1-5 → Chao tone letters
+            const TONE = { '1':'˩', '2':'˨', '3':'˧', '4':'˦', '5':'˥' };
+            // Match runs of plain ASCII digits 1-5 (not preceded by another digit) at end of syllable
+            return s.replace(/(?<![a-zA-Z˥-˩])([1-5]{2,4})(?![0-9])/g, (m, d) =>
+                d.split('').map(c => TONE[c]).join('')
+            );
+        }
+        // Romaji → Katakana (basic on'yomi mapping; handles ichi, sho, kyō, ryō etc.)
+        const KATA = {
+            a:'ア', i:'イ', u:'ウ', e:'エ', o:'オ',
+            ka:'カ', ki:'キ', ku:'ク', ke:'ケ', ko:'コ',
+            sa:'サ', shi:'シ', su:'ス', se:'セ', so:'ソ',
+            ta:'タ', chi:'チ', tsu:'ツ', te:'テ', to:'ト',
+            na:'ナ', ni:'ニ', nu:'ヌ', ne:'ネ', no:'ノ',
+            ha:'ハ', hi:'ヒ', fu:'フ', he:'ヘ', ho:'ホ',
+            ma:'マ', mi:'ミ', mu:'ム', me:'メ', mo:'モ',
+            ya:'ヤ', yu:'ユ', yo:'ヨ',
+            ra:'ラ', ri:'リ', ru:'ル', re:'レ', ro:'ロ',
+            wa:'ワ', wo:'ヲ', n:'ン',
+            ga:'ガ', gi:'ギ', gu:'グ', ge:'ゲ', go:'ゴ',
+            za:'ザ', ji:'ジ', zu:'ズ', ze:'ゼ', zo:'ゾ',
+            da:'ダ', de:'デ', do:'ド',
+            ba:'バ', bi:'ビ', bu:'ブ', be:'ベ', bo:'ボ',
+            pa:'パ', pi:'ピ', pu:'プ', pe:'ペ', po:'ポ',
+            kya:'キャ', kyu:'キュ', kyo:'キョ',
+            sha:'シャ', shu:'シュ', sho:'ショ',
+            cha:'チャ', chu:'チュ', cho:'チョ',
+            nya:'ニャ', nyu:'ニュ', nyo:'ニョ',
+            hya:'ヒャ', hyu:'ヒュ', hyo:'ヒョ',
+            mya:'ミャ', myu:'ミュ', myo:'ミョ',
+            rya:'リャ', ryu:'リュ', ryo:'リョ',
+            gya:'ギャ', gyu:'ギュ', gyo:'ギョ',
+            ja:'ジャ', ju:'ジュ', jo:'ジョ',
+            bya:'ビャ', byu:'ビュ', byo:'ビョ',
+            pya:'ピャ', pyu:'ピュ', pyo:'ピョ'
+        };
+        function romajiToKana(romaji, useHiragana) {
+            if (!romaji) return '';
+            let s = romaji.toLowerCase().replace(/[ʼ'-]/g, '');
+            // Handle long vowels: ō=ou, ū=uu, ē=ei, ā=aa, ī=ii
+            s = s.replace(/ō/g,'ou').replace(/ū/g,'uu').replace(/ē/g,'ei').replace(/ā/g,'aa').replace(/ī/g,'ii');
+            let out = '';
+            let i = 0;
+            while (i < s.length) {
+                // Geminate consonant: "tt" → ッ + t...
+                if (i+1 < s.length && s[i] === s[i+1] && 'kstpbgdjz'.includes(s[i])) {
+                    out += 'ッ';
+                    i++;
+                    continue;
+                }
+                let matched = false;
+                // Try 3-char (kya, sho etc.)
+                if (i+2 < s.length && KATA[s.substr(i,3)]) {
+                    out += KATA[s.substr(i,3)];
+                    i += 3; matched = true;
+                }
+                else if (i+1 < s.length && KATA[s.substr(i,2)]) {
+                    out += KATA[s.substr(i,2)];
+                    i += 2; matched = true;
+                }
+                else if (KATA[s[i]]) {
+                    out += KATA[s[i]];
+                    i++; matched = true;
+                }
+                else { out += s[i]; i++; }
+            }
+            // Replace ウウ → ウー etc. for long vowels
+            out = out.replace(/([アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン])([アイウエオ])/g, (m, a, b) => {
+                const longs = {'カア':'カー','コオ':'コー','スウ':'スー','トオ':'トー','ナア':'ナー','ヌウ':'ヌー','モオ':'モー','ロウ':'ロー','ヨウ':'ヨー','コウ':'コー','シュウ':'シュー','チュウ':'チュー','ジュウ':'ジュー','ニュウ':'ニュー','ソウ':'ソー','ドウ':'ドー','ゴウ':'ゴー','ゾウ':'ゾー','ボウ':'ボー','ホウ':'ホー','モウ':'モー','ノウ':'ノー','ロウ':'ロー','トウ':'トー','ジョウ':'ジョー','キョウ':'キョー','ショウ':'ショー','チョウ':'チョー','ニョウ':'ニョー','ヒョウ':'ヒョー','ミョウ':'ミョー','リョウ':'リョー','ギョウ':'ギョー','ビョウ':'ビョー','ピョウ':'ピョー'};
+                return longs[m] || m;
+            });
+            if (useHiragana) {
+                out = out.replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60));
+            }
+            return out;
+        }
+        // Korean romaja → IPA (covers basic Sino-Korean monosyllables)
+        function koRomajiToIpa(rom) {
+            let s = rom.toLowerCase().trim();
+            // Consonant onset replacements
+            const ons = [
+                ['ng','ŋ'], ['ch','t͡ɕʰ'], ['sh','ɕ'],
+                ['kk','k͈'], ['tt','t͈'], ['pp','p͈'], ['ss','s͈'], ['jj','t͡ɕ͈'],
+                ['kh','kʰ'], ['th','tʰ'], ['ph','pʰ'], ['ch','t͡ɕʰ'],
+                ['g','k'], ['d','t'], ['b','p'], ['j','t͡ɕ'], ['s','sʰ'], ['h','h'],
+                ['k','k'], ['t','t'], ['p','p'], ['l','l'], ['r','ɾ'],
+                ['m','m'], ['n','n']
+            ];
+            // Vowel mappings
+            const vow = [
+                ['eo','ʌ'], ['eu','ɯ'], ['oe','ø'], ['wi','y'], ['ae','ɛ'],
+                ['ya','ja'], ['yeo','jʌ'], ['yo','jo'], ['yu','ju'], ['yi','i'],
+                ['wa','wa'], ['wo','wʌ'], ['wae','wɛ'], ['we','we'], ['ye','je'],
+                ['a','a'], ['i','i'], ['o','o'], ['u','u'], ['e','e']
+            ];
+            // Final consonants — basic check (last char)
+            const finalMap = { 'k':'k̚', 'p':'p̚', 't':'t̚', 'l':'l', 'm':'m', 'n':'n', 'ng':'ŋ' };
+            let out = '';
+            let i = 0;
+            while (i < s.length) {
+                // Try 2-char vowel
+                let matched = false;
+                for (const [v, ipa] of vow) {
+                    if (s.substr(i, v.length) === v) {
+                        out += ipa; i += v.length; matched = true; break;
+                    }
+                }
+                if (matched) continue;
+                // Try consonant
+                for (const [c, ipa] of ons) {
+                    if (s.substr(i, c.length) === c) {
+                        out += ipa; i += c.length; matched = true; break;
+                    }
+                }
+                if (!matched) { out += s[i]; i++; }
+            }
+            // Final stop devoicing — convert last k/p/t to k̚/p̚/t̚ at end
+            out = out.replace(/k$/, 'k̚').replace(/p$/, 'p̚').replace(/t$/, 't̚');
+            // s at start → ɕ before high front vowel; sʰ → ɕʰ before i
+            out = out.replace(/sʰi/g, 'ɕi').replace(/sʰj/g, 'ɕ');
+            // 식 → ɕik̚ (s+i would be ɕi)
+            return out;
+        }
+        // Per-language: derive what should display in the surface column
+        function displaySurface(code, charData) {
+            const rawSurface = (charData.surface && charData.surface[code]) || '';
+            const rawIpa = (charData.ipa && charData.ipa[code]) || '';
+            // Mandarin family: show Pinyin (already in ipa as e.g. "yī")
+            if (code === 'zh' || /^zh_/.test(code)) {
+                if (rawIpa) return rawIpa;
+            }
+            // Japanese family: convert romaji ipa → kana
+            if (code === 'ja' || code === 'ja_go' || code === 'ja_kan' || code === 'ja_to') {
+                return romajiToKana(rawIpa, false); // Katakana for on'yomi
+            }
+            if (code === 'ja_kun') {
+                return romajiToKana(rawIpa, true); // Hiragana for kun'yomi
+            }
+            // Korean: extract Hangul from "il (일)" format, or surface if it's already Hangul
+            if (code === 'ko') {
+                // Try Hangul in parens first
+                const m = rawIpa && rawIpa.match(/\(([가-힣]+)\)/);
+                if (m) return m[1];
+                // Or surface might already be Hangul
+                if (/[가-힣]/.test(rawSurface)) return rawSurface;
+                return '';
+            }
+            // For other Sinitic & vi_han: show surface from data (often the character or local script)
+            return rawSurface;
+        }
+        // Per-language: derive what should display in pronunciation column
+        function displayIpa(code, charData) {
+            const rawIpa = (charData.ipa && charData.ipa[code]) || '';
+            // For Mandarin we already moved pinyin to surface — skip pronunciation
+            if (code === 'zh' || /^zh_/.test(code)) return '';
+            // For Japanese, surface is now kana; show romaji in ipa slot
+            if (/^ja(_|$)/.test(code)) return rawIpa;
+            // Korean: convert romanization or Hangul to proper IPA
+            if (code === 'ko') {
+                let rom = rawIpa.replace(/\s*\([가-힣]+\)/, '').trim();
+                if (!rom) return '';
+                // Basic Revised Romanization → IPA mapping for Sino-Korean monosyllables
+                return koRomajiToIpa(rom);
+            }
+            // Others: apply tone-digit → Chao letter conversion
+            return tonesToChao(rawIpa);
+        }
+
         function buildLabelHTML(code, charData) {
-            const surface = (charData.surface && charData.surface[code]) || '';
-            const ipa = (charData.ipa && charData.ipa[code]) || '';
+            const surface = displaySurface(code, charData);
+            const ipa = displayIpa(code, charData);
             const name = getLangName(code);
+            // Hide surface if identical to the current character (no extra info)
+            const showSurface = showWord && surface && surface !== currentChar;
             let html = '';
-            if (showWord && surface) html += '<div class="word">' + surface + '</div>';
-            if (showIpa && ipa)      html += '<div class="ipa">[' + ipa + ']</div>';
-            if (showName && name)    html += '<div class="name">' + name + '</div>';
+            if (showSurface)       html += '<div class="word">' + surface + '</div>';
+            if (showIpa && ipa)    html += '<div class="ipa">' + ipa + '</div>';
+            if (showName && name)  html += '<div class="name">' + name + '</div>';
             return html;
         }
 
@@ -791,8 +974,14 @@
 
         function getMetaText(code, key) {
             const m = HAN_LANG_META[code];
-            if (!m || !m[key]) return '';
-            return m[key][uiLang] || m[key].en || m[key].ja || '';
+            if (!m) return '';
+            // Map old hanmap.html keys to actual meta field names
+            const actualKey = key === 'kind' ? 'reading_type' : (key === 'desc' ? 'description' : key);
+            const val = m[actualKey];
+            if (!val) return '';
+            // Handle both string and {en, ja, ko, zh} object forms
+            if (typeof val === 'string') return val;
+            return val[uiLang] || val.en || val.ja || '';
         }
 
         function showLangInfo(code) {
@@ -815,10 +1004,21 @@
             if (kind) html += '<div class="kind-line">' + kind + '</div>';
             if (desc) html += '<div class="desc">' + desc + '</div>';
 
+            // Determine whether surface column is informative — hide it if every
+            // surface form equals its character (i.e. no distinct local script)
+            const hasDistinctSurface = HAN_LIST.some(ch => {
+                const data = HAN_DATA[ch];
+                if (!data) return false;
+                const s = (data.surface && data.surface[code]) || '';
+                return s && s !== ch && s !== '—';
+            });
+
             // Readings table for ALL 60 characters
             html += '<div style="font-size:11px;color:#666;font-weight:600;margin:6px 0 4px;">' + ht('readings') + '</div>';
             html += '<table>';
-            html += '<thead><tr><th>' + ht('char') + '</th><th>' + ht('surface') + '</th><th>' + ht('pronunciation') + '</th></tr></thead>';
+            html += '<thead><tr><th>' + ht('char') + '</th>';
+            if (hasDistinctSurface) html += '<th>' + ht('surface') + '</th>';
+            html += '<th>' + ht('pronunciation') + '</th></tr></thead>';
             html += '<tbody>';
             for (const ch of HAN_LIST) {
                 const data = HAN_DATA[ch];
@@ -827,8 +1027,10 @@
                 const i = (data.ipa && data.ipa[code]) || '';
                 html += '<tr>';
                 html += '<td class="char">' + ch + '</td>';
-                html += '<td class="surf">' + s + '</td>';
-                html += '<td class="ipa">' + (i ? '[' + i + ']' : '—') + '</td>';
+                if (hasDistinctSurface) {
+                    html += '<td class="surf">' + (s !== ch ? s : '') + '</td>';
+                }
+                html += '<td class="ipa">' + (i || '—') + '</td>';
                 html += '</tr>';
             }
             html += '</tbody></table>';
