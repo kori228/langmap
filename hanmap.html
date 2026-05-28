@@ -2755,10 +2755,25 @@
                                               //   default" rule (user
                                               //   request 2026-05-29).
         const HASH_PARAM = 'hf';
-        // Kun-yomi-style codes (native-word readings of Han chars, as
-        // opposed to Sino-loan on-yomi-style). User-controlled toggle
-        // and hidden by default.
-        const KUN_CODES = ['ja_kun', 'ko_kun'];
+        // Kun-yomi-style codes — every reading layer where the value is
+        // a NATIVE word for the concept, not a Sino-loan reading of the
+        // character. Per user confirmation 2026-05-29 this includes:
+        //   - Explicit native-reading layers: ja_kun, ko_hun, vi_nom
+        //   - Non-Sinitic Sinosphere languages (the readings here are
+        //     always the native word, never a Sino-loan):
+        //     mnc/sjo/juc/txg/zkt/za/bca
+        //   - All proto-language reconstructions (predate Chinese
+        //     contact, so by definition native):
+        //     pst/ptb/pko/pja/ptung/paa/ptai/pmgl/phm
+        const KUN_CODES = [
+            'ja_kun', 'ko_hun', 'vi_nom',
+            'mnc', 'sjo', 'juc', 'txg', 'zkt', 'za', 'bca',
+            'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+        ];
+        // Default-OFF subset: only the explicit *_kun/_hun/_nom layers.
+        // The Sinosphere-non-Sino + proto codes stay ON by default so
+        // they don't disappear unexpectedly for the first-load visitor.
+        const KUN_DEFAULT_OFF = ['ja_kun', 'ko_hun', 'vi_nom'];
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -2785,13 +2800,13 @@
               modern: ['cjy','czh','hsn','gan','cnp'],
               historical: ['zh_han','zh_tang','zh_song','zh_kanbun','pst'] },
             { id: 'koreanic',
-              modern: ['ko','ko_kp','ko_zai','ko_kun'],
+              modern: ['ko','ko_kp','ko_zai','ko_hun'],
               historical: ['ko_mid','pko'] },
             { id: 'japonic',
               modern: ['ja','ja_kun'],
               historical: ['ja_ojp','pja'] },
             { id: 'vietic',
-              modern: ['vi','vi_c','vi_s'],
+              modern: ['vi','vi_c','vi_s','vi_nom'],
               historical: ['vi_han','vi_ohan'] },
             { id: 'tibeto_burman',
               modern: ['bca','bo_sino'],
@@ -3004,12 +3019,14 @@
                     }
                 }
             } catch (_) {}
-            // Default: all offered codes EXCEPT kun-yomi (ja_kun, ko_kun).
-            // Per user request 2026-05-29: kun-yomi should be OFF by
-            // default since it's a different layer (native-word readings)
-            // from the Sino-loan readings hanmap centers on.
+            // Default: all offered codes EXCEPT the explicit native-
+            // reading layers (ja_kun, ko_hun, vi_nom) per user request
+            // 2026-05-29. The expanded KUN_CODES set is what the toggle
+            // button operates on, but at first load only the explicit
+            // layers are hidden — leaving mnc/txg/zkt/protos/etc.
+            // visible by default since they ARE the main hanmap content.
             selected = new Set(offered);
-            for (const c of KUN_CODES) selected.delete(c);
+            for (const c of KUN_DEFAULT_OFF) selected.delete(c);
         }
 
         function saveState() {
@@ -3115,6 +3132,33 @@
                     };
                     if (map[a]) b.textContent = L(map[a]);
                 });
+                // Reflect current ON/OFF state on the two stateful toggles
+                // so the user can see at a glance which category is
+                // active. Active = solid dark; inactive = outline.
+                const setBtnActive = (act, isActive) => {
+                    const b = toolbar.querySelector('button[data-act="' + act + '"]');
+                    if (!b) return;
+                    if (isActive) {
+                        b.style.background = '#1a1a2e';
+                        b.style.color = '#fff';
+                        b.style.borderColor = '#1a1a2e';
+                    } else {
+                        b.style.background = '#fff';
+                        b.style.color = '#333';
+                        b.style.borderColor = '#d0d0d0';
+                    }
+                };
+                // Ancient = any historical code currently selected.
+                let anyAncient = false;
+                for (const g of HAN_GROUPS) for (const c of g.historical) {
+                    if (offered.has(c) && selected.has(c)) { anyAncient = true; break; }
+                    if (anyAncient) break;
+                }
+                setBtnActive('toggle-ancient', anyAncient);
+                // Kun = any KUN_CODES currently selected.
+                let anyKun = false;
+                for (const c of KUN_CODES) if (offered.has(c) && selected.has(c)) { anyKun = true; break; }
+                setBtnActive('toggle-kun', anyKun);
             }
 
             body.innerHTML = '';
@@ -3258,9 +3302,10 @@
                 if (act === 'all') {
                     selected = new Set(offered);
                 } else if (act === 'reset') {
-                    // Reset to default: all offered EXCEPT kun-yomi codes.
+                    // Reset to default: all offered EXCEPT the explicit native-
+                    // reading layers (KUN_DEFAULT_OFF).
                     selected = new Set(offered);
-                    for (const c of KUN_CODES) selected.delete(c);
+                    for (const c of KUN_DEFAULT_OFF) selected.delete(c);
                 } else if (act === 'none') {
                     selected = new Set();
                 } else if (act === 'toggle-ancient') {
