@@ -8881,7 +8881,7 @@ const HAN_LANG_META = {
   },
   "wuu": {
     "name": "Wu Chinese (Shanghainese)",
-    "native": "吳語",
+    "native": "上海话",
     "family": "Sinitic (Wu)",
     "reading_type": {
       "ja": "呉語・上海語（Wugniu／吳語拼音）",
