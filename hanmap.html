@@ -181,7 +181,7 @@
             font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
             line-height: 1;
             display: flex; align-items: center; justify-content: center;
-            padding: 0;
+            padding: 6px;
         }
         .char-btn:hover {
             background: #e7ebff; border-color: #4a6cf7;
@@ -198,7 +198,7 @@
         }
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
-            #char-current-btn { font-size: 32px !important; padding: 5px 11px !important; min-width: 60px !important; }
+            #char-current-btn { font-size: 60px !important; padding: 9px 20px !important; min-width: 110px !important; }
             #char-random-btn { font-size: 12px !important; }
         }
         body.is-3d #char-current-btn { color: #1a1a2e; }
@@ -395,7 +395,12 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
         .toggle-btn.active:hover { background: #444; }
-        .toggle-3d-btn {
+        /* Hanmap: 3D globe view is hidden (user request 2026-05-28).
+           Globe.gl is still loaded and the toggle markup remains in the
+           DOM so wordmap-inherited init paths don't crash; only the
+           button is suppressed visually. */
+        .toggle-3d-btn { display: none !important; }
+        .toggle-3d-btn-hidden-stub {
             width: 40px; height: 40px; min-width: 40px; max-width: 40px;
             border-radius: 50%; font-size: 12px; font-weight: 700;
             display: flex; align-items: center; justify-content: center;
@@ -2062,7 +2067,7 @@
             <button id="char-current-btn" type="button"
                     aria-haspopup="dialog" aria-controls="char-modal"
                     title="Select character"
-                    style="font-size:38px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:6px 14px;border:1px solid #d0d0d0;border-radius:14px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;min-width:72px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.14);transition:background 0.15s,transform 0.1s">一</button>
+                    style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:10px 22px;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;min-width:128px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
             <button id="char-random-btn" type="button"
                     title="Random character"
                     style="font-size:13px;padding:6px 10px;border:1px solid #d0d0d0;border-radius:20px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 4px rgba(0,0,0,0.12);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap">🎲 <span id="char-random-label">ランダム</span></button>
@@ -2708,11 +2713,11 @@
         let _currentTileLayer = null;
         const TILE_LAYERS = {
             flat: {
-                url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
                 opts: { attribution: '&copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 18 },
             },
             labels: {
-                url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
                 opts: { attribution: '&copy; <a href="https://carto.com/">CARTO</a> &middot; <a href="https://openstreetmap.org">OSM</a>', maxZoom: 18 },
             },
             terrain: {
@@ -6940,7 +6945,11 @@
         // Multi-language side-by-side comparison panel. Users add languages from
         // the modal, the FAB shows count, the bottom panel renders an N×20 table.
         // State persists in localStorage and URL hash (cmp=ja,ko,zh).
-        const COMPARE_STORAGE_KEY = 'wm.compareList';
+        // Hanmap uses its own compare-list storage so it doesn't share
+        // the lang selection with wordmap (different language set, different
+        // intent). Key is "hm.compareList" to avoid collision with wordmap's
+        // "wm.compareList".
+        const COMPARE_STORAGE_KEY = 'hm.compareList';
         const COMPARE_MAX = 8;
         let _compareList = [];
         window.__compareList = _compareList;  // exposed for updateHash to read
