@@ -149,13 +149,13 @@ const HAN_DATA = {
       "zh": "yī",
       "yue": "jat¹",
       "yue_ts": "yat¹",
-      "nan": "tsi̍t⁴",
-      "nan_qz": "tsi̍t⁴¹",
+      "nan": "tsi̍t",
+      "nan_qz": "tsi̍t",
       "nan_te": "tsek⁴",
-      "nan_pn": "tsi̍t³²",
+      "nan_pn": "tsi̍t",
       "nan_hai": "dit⁵",
-      "nan_xm": "tsi̍t⁴",
-      "nan_zz": "tsi̍t¹²¹",
+      "nan_xm": "tsi̍t",
+      "nan_zz": "tsi̍t",
       "cdo": "ék",
       "cpx": "cik",
       "mnp": "ì",
@@ -294,13 +294,13 @@ const HAN_DATA = {
       "zh": "èr",
       "yue": "ji⁶",
       "yue_ts": "ngi⁶",
-      "nan": "nn̄g²¹",
-      "nan_qz": "nn̄g²⁴",
+      "nan": "nn̄g",
+      "nan_qz": "nn̄g",
       "nan_te": "no⁶",
-      "nan_pn": "nn̄g²⁴",
+      "nan_pn": "nn̄g",
       "nan_hai": "no³",
-      "nan_xm": "nn̄g²⁴",
-      "nan_zz": "nn̄g¹³",
+      "nan_xm": "nn̄g",
+      "nan_zz": "nn̄g",
       "cdo": "nê̤i",
       "cpx": "nô",
       "mnp": "nǐ",
@@ -439,13 +439,13 @@ const HAN_DATA = {
       "zh": "sān",
       "yue": "saam¹",
       "yue_ts": "lham³",
-      "nan": "saⁿ⁵⁵",
-      "nan_qz": "saⁿ⁵⁵",
+      "nan": "saⁿ",
+      "nan_qz": "saⁿ",
       "nan_te": "sã¹",
-      "nan_pn": "saⁿ⁴⁴",
+      "nan_pn": "saⁿ",
       "nan_hai": "ta¹",
-      "nan_xm": "saⁿ⁵⁵",
-      "nan_zz": "saⁿ⁴⁴",
+      "nan_xm": "saⁿ",
+      "nan_zz": "saⁿ",
       "cdo": "săng",
       "cpx": "sã",
       "mnp": "sáng",
@@ -874,13 +874,13 @@ const HAN_DATA = {
       "zh": "liù",
       "yue": "luk⁶",
       "yue_ts": "luk³²",
-      "nan": "la̍k⁴",
-      "nan_qz": "la̍k⁴¹",
+      "nan": "la̍k",
+      "nan_qz": "la̍k",
       "nan_te": "lag⁸",
-      "nan_pn": "la̍k³²",
+      "nan_pn": "la̍k",
       "nan_hai": "lag⁷",
-      "nan_xm": "la̍k⁴",
-      "nan_zz": "la̍k¹²¹",
+      "nan_xm": "la̍k",
+      "nan_zz": "la̍k",
       "cdo": "lĕ̤k",
       "cpx": "lo̍k",
       "mnp": "lü̆",
@@ -1019,13 +1019,13 @@ const HAN_DATA = {
       "zh": "qī",
       "yue": "cat¹",
       "yue_ts": "chat¹",
-      "nan": "tshit⁴",
-      "nan_qz": "tshit⁵",
+      "nan": "tshit",
+      "nan_qz": "tshit",
       "nan_te": "tshik⁸",
-      "nan_pn": "tshit³²",
+      "nan_pn": "tshit",
       "nan_hai": "sig⁵",
-      "nan_xm": "tshit³²",
-      "nan_zz": "tshit³²",
+      "nan_xm": "tshit",
+      "nan_zz": "tshit",
       "cdo": "chék",
       "cpx": "cheh",
       "mnp": "chhì",
@@ -1164,13 +1164,13 @@ const HAN_DATA = {
       "zh": "bā",
       "yue": "baat³",
       "yue_ts": "bat³",
-      "nan": "peh⁴",
-      "nan_qz": "peh⁵",
+      "nan": "peh",
+      "nan_qz": "peh",
       "nan_te": "poiʔ⁴",
-      "nan_pn": "peh³²",
+      "nan_pn": "peh",
       "nan_hai": "be⁵",
-      "nan_xm": "peh³²",
-      "nan_zz": "peh³²",
+      "nan_xm": "peh",
+      "nan_zz": "peh",
       "cdo": "báik",
       "cpx": "pah",
       "mnp": "pă",
@@ -1454,13 +1454,13 @@ const HAN_DATA = {
       "zh": "shí",
       "yue": "sap⁶",
       "yue_ts": "lhip³²",
-      "nan": "tsa̍p⁴",
-      "nan_qz": "tsa̍p²⁴",
+      "nan": "tsa̍p",
+      "nan_qz": "tsa̍p",
       "nan_te": "tsap⁸",
-      "nan_pn": "tsa̍p³²",
+      "nan_pn": "tsa̍p",
       "nan_hai": "sab³",
-      "nan_xm": "tsa̍p⁴",
-      "nan_zz": "tsa̍p¹²¹",
+      "nan_xm": "tsa̍p",
+      "nan_zz": "tsa̍p",
       "cdo": "sĕk",
       "cpx": "sa̍p",
       "mnp": "sĭp",
@@ -1599,13 +1599,13 @@ const HAN_DATA = {
       "zh": "rì",
       "yue": "jat⁶",
       "yue_ts": "yat⁶",
-      "nan": "ji̍t⁴",
-      "nan_qz": "li̍t⁴¹",
+      "nan": "ji̍t",
+      "nan_qz": "li̍t",
       "nan_te": "rig⁸",
-      "nan_pn": "ji̍t³²",
+      "nan_pn": "ji̍t",
       "nan_hai": "rig²",
-      "nan_xm": "ji̍t⁴",
-      "nan_zz": "li̍t¹²¹",
+      "nan_xm": "ji̍t",
+      "nan_zz": "li̍t",
       "cdo": "nĭk",
       "cpx": "li̍k",
       "mnp": "nĭk",
@@ -1744,13 +1744,13 @@ const HAN_DATA = {
       "zh": "yuè",
       "yue": "jyut⁶",
       "yue_ts": "yut⁶",
-      "nan": "goe̍h⁴",
-      "nan_qz": "goe̍h⁴¹",
+      "nan": "goe̍h",
+      "nan_qz": "goe̍h",
       "nan_te": "gueʔ⁸",
-      "nan_pn": "gue̍h³²",
+      "nan_pn": "gue̍h",
       "nan_hai": "gue²",
-      "nan_xm": "goe̍h⁴",
-      "nan_zz": "gue̍h¹²¹",
+      "nan_xm": "goe̍h",
+      "nan_zz": "gue̍h",
       "cdo": "nguŏk",
       "cpx": "nguo̍h",
       "mnp": "nguĕk",
@@ -1889,13 +1889,13 @@ const HAN_DATA = {
       "zh": "shān",
       "yue": "saan¹",
       "yue_ts": "san¹",
-      "nan": "soaⁿ⁵⁵",
-      "nan_qz": "suaⁿ⁵⁵",
+      "nan": "soaⁿ",
+      "nan_qz": "suaⁿ",
       "nan_te": "suã¹",
-      "nan_pn": "suaⁿ⁴⁴",
+      "nan_pn": "suaⁿ",
       "nan_hai": "dua²",
-      "nan_xm": "soaⁿ⁵⁵",
-      "nan_zz": "suaⁿ⁴⁴",
+      "nan_xm": "soaⁿ",
+      "nan_zz": "suaⁿ",
       "cdo": "săng",
       "cpx": "sa",
       "mnp": "sâng",
@@ -2324,13 +2324,13 @@ const HAN_DATA = {
       "zh": "mù",
       "yue": "muk⁶",
       "yue_ts": "muk⁶",
-      "nan": "ba̍k⁴",
-      "nan_qz": "ba̍k⁴¹",
+      "nan": "ba̍k",
+      "nan_qz": "ba̍k",
       "nan_te": "bag⁸",
-      "nan_pn": "ba̍k³²",
+      "nan_pn": "ba̍k",
       "nan_hai": "bag⁵",
-      "nan_xm": "ba̍k⁴",
-      "nan_zz": "ba̍k¹²¹",
+      "nan_xm": "ba̍k",
+      "nan_zz": "ba̍k",
       "cdo": "mŭk",
       "cpx": "mo̍h",
       "mnp": "mü̆k",
@@ -2614,13 +2614,13 @@ const HAN_DATA = {
       "zh": "tiān",
       "yue": "tin¹",
       "yue_ts": "thin¹",
-      "nan": "thinn⁵⁵",
-      "nan_qz": "thinn⁵⁵",
+      "nan": "thinn",
+      "nan_qz": "thinn",
       "nan_te": "thi¹",
-      "nan_pn": "thinn⁴⁴",
+      "nan_pn": "thinn",
       "nan_hai": "ti¹",
-      "nan_xm": "thinn⁵⁵",
-      "nan_zz": "thinn⁴⁴",
+      "nan_xm": "thinn",
+      "nan_zz": "thinn",
       "cdo": "tiĕng",
       "cpx": "thieng",
       "mnp": "thíng",
@@ -3049,13 +3049,13 @@ const HAN_DATA = {
       "zh": "lóng",
       "yue": "lung⁴",
       "yue_ts": "lung⁵",
-      "nan": "liông²⁴",
-      "nan_qz": "liông²⁴",
+      "nan": "liông",
+      "nan_qz": "liông",
       "nan_te": "leng⁵",
-      "nan_pn": "liông²⁴",
+      "nan_pn": "liông",
       "nan_hai": "liong¹",
-      "nan_xm": "liông²⁴",
-      "nan_zz": "liông¹³",
+      "nan_xm": "liông",
+      "nan_zz": "liông",
       "cdo": "lè̤ng",
       "cpx": "líng",
       "mnp": "lǒng",
@@ -3774,13 +3774,13 @@ const HAN_DATA = {
       "zh": "yú",
       "yue": "jyu⁴",
       "yue_ts": "yu⁵",
-      "nan": "hî²⁴",
-      "nan_qz": "hû²⁴",
+      "nan": "hî",
+      "nan_qz": "hû",
       "nan_te": "hɯ⁵",
-      "nan_pn": "hî²⁴",
+      "nan_pn": "hî",
       "nan_hai": "hu⁴",
-      "nan_xm": "hî²⁴",
-      "nan_zz": "hî¹³",
+      "nan_xm": "hî",
+      "nan_zz": "hî",
       "cdo": "ngṳ̀",
       "cpx": "ngí",
       "mnp": "ngǚ",
@@ -3919,13 +3919,13 @@ const HAN_DATA = {
       "zh": "niú",
       "yue": "ngau⁴",
       "yue_ts": "ngau⁵",
-      "nan": "gû²⁴",
-      "nan_qz": "gû²⁴",
+      "nan": "gû",
+      "nan_qz": "gû",
       "nan_te": "gu⁵",
-      "nan_pn": "gû²⁴",
+      "nan_pn": "gû",
       "nan_hai": "ku¹",
-      "nan_xm": "gû²⁴",
-      "nan_zz": "gû¹³",
+      "nan_xm": "gû",
+      "nan_zz": "gû",
       "cdo": "ngù",
       "cpx": "ngiú",
       "mnp": "ngiû",
@@ -4064,13 +4064,13 @@ const HAN_DATA = {
       "zh": "yáng",
       "yue": "joeng⁴",
       "yue_ts": "yeung⁵",
-      "nan": "iûⁿ²⁴",
-      "nan_qz": "iûⁿ²⁴",
+      "nan": "iûⁿ",
+      "nan_qz": "iûⁿ",
       "nan_te": "ie⁵",
-      "nan_pn": "iûⁿ²⁴",
+      "nan_pn": "iûⁿ",
       "nan_hai": "dio¹",
-      "nan_xm": "iûⁿ²⁴",
-      "nan_zz": "iôⁿ¹³",
+      "nan_xm": "iûⁿ",
+      "nan_zz": "iôⁿ",
       "cdo": "iòng",
       "cpx": "ióng",
       "mnp": "iông",
@@ -4209,13 +4209,13 @@ const HAN_DATA = {
       "zh": "māo",
       "yue": "maau¹",
       "yue_ts": "mau¹",
-      "nan": "niau⁵⁵",
-      "nan_qz": "niau⁵⁵",
+      "nan": "niau",
+      "nan_qz": "niau",
       "nan_te": "niau¹",
-      "nan_pn": "niau⁴⁴",
+      "nan_pn": "niau",
       "nan_hai": "miau³",
-      "nan_xm": "niau⁵⁵",
-      "nan_zz": "niau⁴⁴",
+      "nan_xm": "niau",
+      "nan_zz": "niau",
       "cdo": "măŭ",
       "cpx": "mau",
       "mnp": "máu",
@@ -4354,13 +4354,13 @@ const HAN_DATA = {
       "zh": "rén",
       "yue": "jan⁴",
       "yue_ts": "nyin⁵",
-      "nan": "lâng²⁴",
-      "nan_qz": "lâng²⁴",
+      "nan": "lâng",
+      "nan_qz": "lâng",
       "nan_te": "nang⁵",
-      "nan_pn": "lâng²⁴",
+      "nan_pn": "lâng",
       "nan_hai": "nang⁴",
-      "nan_xm": "lâng²⁴",
-      "nan_zz": "lâng¹³",
+      "nan_xm": "lâng",
+      "nan_zz": "lâng",
       "cdo": "nè̤ng",
       "cpx": "náng",
       "mnp": "nông",
@@ -4644,13 +4644,13 @@ const HAN_DATA = {
       "zh": "zú",
       "yue": "zuk¹",
       "yue_ts": "juk¹",
-      "nan": "chiok⁴",
-      "nan_qz": "chiok²¹",
+      "nan": "chiok",
+      "nan_qz": "chiok",
       "nan_te": "tsiog⁴",
-      "nan_pn": "tsiok³²",
+      "nan_pn": "tsiok",
       "nan_hai": "tsiog²",
-      "nan_xm": "chiok³²",
-      "nan_zz": "chiok³²",
+      "nan_xm": "chiok",
+      "nan_zz": "chiok",
       "cdo": "cé̤ṳk",
       "cpx": "tso̍k",
       "mnp": "tsǜk",
@@ -4789,13 +4789,13 @@ const HAN_DATA = {
       "zh": "mù",
       "yue": "muk⁶",
       "yue_ts": "muk⁶",
-      "nan": "ba̍k⁴",
-      "nan_qz": "ba̍k⁴¹",
+      "nan": "ba̍k",
+      "nan_qz": "ba̍k",
       "nan_te": "mag⁸",
-      "nan_pn": "ba̍k³²",
+      "nan_pn": "ba̍k",
       "nan_hai": "mag⁵",
-      "nan_xm": "ba̍k⁴",
-      "nan_zz": "ba̍k¹²¹",
+      "nan_xm": "ba̍k",
+      "nan_zz": "ba̍k",
       "cdo": "mŏ̤k",
       "cpx": "ma̍h",
       "mnp": "mü̆k",
@@ -5224,13 +5224,13 @@ const HAN_DATA = {
       "zh": "tóu",
       "yue": "tau⁴",
       "yue_ts": "thau⁵",
-      "nan": "thâu²⁴",
-      "nan_qz": "thâu²⁴",
+      "nan": "thâu",
+      "nan_qz": "thâu",
       "nan_te": "thau⁵",
-      "nan_pn": "thâu²⁴",
+      "nan_pn": "thâu",
       "nan_hai": "thau¹",
-      "nan_xm": "thâu²⁴",
-      "nan_zz": "thâu¹³",
+      "nan_xm": "thâu",
+      "nan_zz": "thâu",
       "cdo": "tàu",
       "cpx": "tháu",
       "mnp": "thǎu",
@@ -5369,13 +5369,13 @@ const HAN_DATA = {
       "zh": "xīn",
       "yue": "sam¹",
       "yue_ts": "sam¹",
-      "nan": "sim⁵⁵",
-      "nan_qz": "sim⁵⁵",
+      "nan": "sim",
+      "nan_qz": "sim",
       "nan_te": "sim¹",
-      "nan_pn": "sim⁴⁴",
+      "nan_pn": "sim",
       "nan_hai": "sim¹",
-      "nan_xm": "sim⁵⁵",
-      "nan_zz": "sim⁴⁴",
+      "nan_xm": "sim",
+      "nan_zz": "sim",
       "cdo": "sĭng",
       "cpx": "sing",
       "mnp": "síng",
@@ -5514,13 +5514,13 @@ const HAN_DATA = {
       "zh": "xuè",
       "yue": "hyut³",
       "yue_ts": "hyut³",
-      "nan": "hueh⁴",
-      "nan_qz": "hueh²¹",
+      "nan": "hueh",
+      "nan_qz": "hueh",
       "nan_te": "huiʔ⁴",
-      "nan_pn": "hueh³²",
+      "nan_pn": "hueh",
       "nan_hai": "hueʔ¹",
-      "nan_xm": "hueh³²",
-      "nan_zz": "hueh³²",
+      "nan_xm": "hueh",
+      "nan_zz": "hueh",
       "cdo": "háik",
       "cpx": "hue̍h",
       "mnp": "huĕk",
@@ -5659,13 +5659,13 @@ const HAN_DATA = {
       "zh": "ròu",
       "yue": "juk⁶",
       "yue_ts": "yuk⁶",
-      "nan": "bah⁴",
-      "nan_qz": "bah²¹",
+      "nan": "bah",
+      "nan_qz": "bah",
       "nan_te": "neʔ⁸",
-      "nan_pn": "bah³²",
+      "nan_pn": "bah",
       "nan_hai": "neʔ⁵",
-      "nan_xm": "bah³²",
-      "nan_zz": "bah³²",
+      "nan_xm": "bah",
+      "nan_zz": "bah",
       "cdo": "nṳ̆k",
       "cpx": "ni̍k",
       "mnp": "nü̆k",
@@ -6094,13 +6094,13 @@ const HAN_DATA = {
       "zh": "zhōng",
       "yue": "zung¹",
       "yue_ts": "jung¹",
-      "nan": "tiong⁵⁵",
-      "nan_qz": "tiong⁵⁵",
+      "nan": "tiong",
+      "nan_qz": "tiong",
       "nan_te": "dong¹",
-      "nan_pn": "tiong⁴⁴",
+      "nan_pn": "tiong",
       "nan_hai": "dong¹",
-      "nan_xm": "tiong⁵⁵",
-      "nan_zz": "tiong⁴⁴",
+      "nan_xm": "tiong",
+      "nan_zz": "tiong",
       "cdo": "dṳ̆ng",
       "cpx": "tíng",
       "mnp": "tō̄ng",
@@ -6239,13 +6239,13 @@ const HAN_DATA = {
       "zh": "yāng",
       "yue": "joeng¹",
       "yue_ts": "yeung¹",
-      "nan": "iong⁵⁵",
-      "nan_qz": "iong⁵⁵",
+      "nan": "iong",
+      "nan_qz": "iong",
       "nan_te": "iong¹",
-      "nan_pn": "iong⁴⁴",
+      "nan_pn": "iong",
       "nan_hai": "iong¹",
-      "nan_xm": "iong⁵⁵",
-      "nan_zz": "iong³⁴",
+      "nan_xm": "iong",
+      "nan_zz": "iong",
       "cdo": "iŏng",
       "cpx": "iong",
       "mnp": "iông",
@@ -6674,13 +6674,13 @@ const HAN_DATA = {
       "zh": "dōng",
       "yue": "dung¹",
       "yue_ts": "dung¹",
-      "nan": "tang⁵⁵",
-      "nan_qz": "tang⁵⁵",
+      "nan": "tang",
+      "nan_qz": "tang",
       "nan_te": "dang¹",
-      "nan_pn": "tang⁴⁴",
+      "nan_pn": "tang",
       "nan_hai": "dang¹",
-      "nan_xm": "tang⁵⁵",
-      "nan_zz": "tang³⁴",
+      "nan_xm": "tang",
+      "nan_zz": "tang",
       "cdo": "dĕ̤ng",
       "cpx": "tong",
       "mnp": "tóng",
@@ -6819,13 +6819,13 @@ const HAN_DATA = {
       "zh": "xī",
       "yue": "sai¹",
       "yue_ts": "sai¹",
-      "nan": "sai⁵⁵",
-      "nan_qz": "sai⁵⁵",
+      "nan": "sai",
+      "nan_qz": "sai",
       "nan_te": "sai¹",
-      "nan_pn": "sai⁴⁴",
+      "nan_pn": "sai",
       "nan_hai": "sai¹",
-      "nan_xm": "sai⁵⁵",
-      "nan_zz": "sai³⁴",
+      "nan_xm": "sai",
+      "nan_zz": "sai",
       "cdo": "să̤",
       "cpx": "sai",
       "mnp": "sí",
@@ -6964,13 +6964,13 @@ const HAN_DATA = {
       "zh": "nán",
       "yue": "naam⁴",
       "yue_ts": "nam⁵",
-      "nan": "lâm²⁴",
-      "nan_qz": "lâm²⁴",
+      "nan": "lâm",
+      "nan_qz": "lâm",
       "nan_te": "lam⁵",
-      "nan_pn": "lâm²⁴",
+      "nan_pn": "lâm",
       "nan_hai": "lam¹",
-      "nan_xm": "lâm²⁴",
-      "nan_zz": "lâm¹³",
+      "nan_xm": "lâm",
+      "nan_zz": "lâm",
       "cdo": "nàng",
       "cpx": "náng",
       "mnp": "nā̄ng",
@@ -7109,13 +7109,13 @@ const HAN_DATA = {
       "zh": "běi",
       "yue": "bak¹",
       "yue_ts": "bak¹",
-      "nan": "pak⁴",
-      "nan_qz": "pak⁴¹",
+      "nan": "pak",
+      "nan_qz": "pak",
       "nan_te": "bag⁴",
-      "nan_pn": "pak³²",
+      "nan_pn": "pak",
       "nan_hai": "bag⁵",
-      "nan_xm": "pak³²",
-      "nan_zz": "pak³²",
+      "nan_xm": "pak",
+      "nan_zz": "pak",
       "cdo": "báe̤k",
       "cpx": "pak",
       "mnp": "bà",
@@ -7254,13 +7254,13 @@ const HAN_DATA = {
       "zh": "xíng",
       "yue": "hang⁴",
       "yue_ts": "hang⁵",
-      "nan": "kiâⁿ²⁴",
-      "nan_qz": "kiâⁿ²⁴",
+      "nan": "kiâⁿ",
+      "nan_qz": "kiâⁿ",
       "nan_te": "kiã⁵",
-      "nan_pn": "kiâⁿ²⁴",
+      "nan_pn": "kiâⁿ",
       "nan_hai": "hia⁴",
-      "nan_xm": "kiâⁿ²⁴",
-      "nan_zz": "kiâⁿ¹³",
+      "nan_xm": "kiâⁿ",
+      "nan_zz": "kiâⁿ",
       "cdo": "giàng",
       "cpx": "giá",
       "mnp": "hâing",
@@ -7399,13 +7399,13 @@ const HAN_DATA = {
       "zh": "lái",
       "yue": "lai⁴",
       "yue_ts": "loi³",
-      "nan": "lâi²⁴",
-      "nan_qz": "lâi²⁴",
+      "nan": "lâi",
+      "nan_qz": "lâi",
       "nan_te": "lai⁵",
-      "nan_pn": "lâi²⁴",
+      "nan_pn": "lâi",
       "nan_hai": "lai⁴",
-      "nan_xm": "lâi²⁴",
-      "nan_zz": "lâi¹³",
+      "nan_xm": "lâi",
+      "nan_zz": "lâi",
       "cdo": "lì",
       "cpx": "lái",
       "mnp": "lâi",
@@ -7840,13 +7840,13 @@ const HAN_DATA = {
       "zh": "wén",
       "yue": "man⁴",
       "yue_ts": "mun⁵",
-      "nan": "bûn²⁴",
-      "nan_qz": "bûn²⁴",
+      "nan": "bûn",
+      "nan_qz": "bûn",
       "nan_te": "bung⁵",
-      "nan_pn": "bûn²⁴",
+      "nan_pn": "bûn",
       "nan_hai": "bung⁵",
-      "nan_xm": "bûn²⁴",
-      "nan_zz": "bûn¹³",
+      "nan_xm": "bûn",
+      "nan_zz": "bûn",
       "cdo": "ùng",
       "cpx": "púng",
       "mnp": "a̿ng",
@@ -7985,13 +7985,13 @@ const HAN_DATA = {
       "zh": "shí",
       "yue": "sik⁶",
       "yue_ts": "shik⁶",
-      "nan": "chia̍h⁴",
-      "nan_qz": "chia̍h²⁴",
+      "nan": "chia̍h",
+      "nan_qz": "chia̍h",
       "nan_te": "tsiaʔ⁸",
-      "nan_pn": "chia̍h³²",
+      "nan_pn": "chia̍h",
       "nan_hai": "tsia⁵",
-      "nan_xm": "chia̍h⁴",
-      "nan_zz": "chia̍h¹²¹",
+      "nan_xm": "chia̍h",
+      "nan_zz": "chia̍h",
       "cdo": "siŏk",
       "cpx": "si̍h",
       "mnp": "sĭk",
@@ -8565,13 +8565,13 @@ const HAN_DATA = {
       "zh": "lì",
       "yue": "lap⁶",
       "yue_ts": "lap⁶",
-      "nan": "la̍p⁴",
-      "nan_qz": "li̍p⁴¹",
+      "nan": "la̍p",
+      "nan_qz": "li̍p",
       "nan_te": "lig⁸",
-      "nan_pn": "li̍p³²",
+      "nan_pn": "li̍p",
       "nan_hai": "tab⁵",
-      "nan_xm": "li̍p⁴",
-      "nan_zz": "li̍p¹²¹",
+      "nan_xm": "li̍p",
+      "nan_zz": "li̍p",
       "cdo": "lĭk",
       "cpx": "lik",
       "mnp": "lìk",
@@ -11878,13 +11878,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "la̍k⁴",
+        "surface": "la̍k",
         "ipa": "lak̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lio̍k⁴",
+        "surface": "lio̍k",
         "ipa": "liɔk̚˦",
         "label": "文讀"
       }
@@ -11892,13 +11892,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "la̍k⁴¹",
+        "surface": "la̍k",
         "ipa": "lak̚˦˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lio̍k⁴¹",
+        "surface": "lio̍k",
         "ipa": "liɔk̚˦˩",
         "label": "文讀"
       }
@@ -11920,13 +11920,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "la̍k⁴",
+        "surface": "la̍k",
         "ipa": "lak̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lio̍k⁴",
+        "surface": "lio̍k",
         "ipa": "liɔk̚˦",
         "label": "文讀"
       }
@@ -11934,13 +11934,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "la̍k¹²¹",
+        "surface": "la̍k",
         "ipa": "lak̚˩˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lio̍k¹²¹",
+        "surface": "lio̍k",
         "ipa": "liɔk̚˩˨˩",
         "label": "文讀"
       }
@@ -11978,13 +11978,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "liông²⁴",
+        "surface": "liông",
         "ipa": "liɔŋ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lêng²⁴",
+        "surface": "lêng",
         "ipa": "leŋ˨˦",
         "label": "文讀"
       }
@@ -12022,13 +12022,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "la̍p⁴",
+        "surface": "la̍p",
         "ipa": "lap̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "li̍p⁴",
+        "surface": "li̍p",
         "ipa": "lip̚˦",
         "label": "文讀"
       }
@@ -12052,13 +12052,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tsi̍t⁴",
+        "surface": "tsi̍t",
         "ipa": "t͡sit̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "it⁴",
+        "surface": "it",
         "ipa": "it̚˦",
         "label": "文讀"
       }
@@ -12066,13 +12066,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "tsi̍t⁴¹",
+        "surface": "tsi̍t",
         "ipa": "t͡sit̚˦˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "it⁴¹",
+        "surface": "it",
         "ipa": "it̚˦˩",
         "label": "文讀"
       }
@@ -12094,13 +12094,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "tsi̍t³²",
+        "surface": "tsi̍t",
         "ipa": "t͡sit̚˧˨",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "it³²",
+        "surface": "it",
         "ipa": "it̚˧˨",
         "label": "文讀"
       }
@@ -12122,13 +12122,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "tsi̍t⁴",
+        "surface": "tsi̍t",
         "ipa": "t͡sit̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "it⁴",
+        "surface": "it",
         "ipa": "it̚˦",
         "label": "文讀"
       }
@@ -12136,13 +12136,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "tsi̍t¹²¹",
+        "surface": "tsi̍t",
         "ipa": "t͡sit̚˩˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "it¹²¹",
+        "surface": "it",
         "ipa": "it̚˩˨˩",
         "label": "文讀"
       }
@@ -12194,13 +12194,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "nn̄g²¹",
+        "surface": "nn̄g",
         "ipa": "n̩˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jī²¹",
+        "surface": "jī",
         "ipa": "d͡ʑi˨˩",
         "label": "文讀"
       }
@@ -12208,13 +12208,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "nn̄g²⁴",
+        "surface": "nn̄g",
         "ipa": "n̩˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lī²¹",
+        "surface": "lī",
         "ipa": "li˨˩",
         "label": "文讀"
       }
@@ -12236,13 +12236,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "nn̄g²⁴",
+        "surface": "nn̄g",
         "ipa": "n̩˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jī²¹",
+        "surface": "jī",
         "ipa": "d͡ʑi˨˩",
         "label": "文讀"
       }
@@ -12278,13 +12278,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "nn̄g¹³",
+        "surface": "nn̄g",
         "ipa": "n̩˩˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jī¹³",
+        "surface": "jī",
         "ipa": "d͡ʑi˩˧",
         "label": "文讀"
       }
@@ -12308,13 +12308,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "saⁿ⁵⁵",
+        "surface": "saⁿ",
         "ipa": "sã˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "sam⁵⁵",
+        "surface": "sam",
         "ipa": "sam˥˥",
         "label": "文讀"
       }
@@ -12322,13 +12322,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "saⁿ⁵⁵",
+        "surface": "saⁿ",
         "ipa": "sã˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "sam⁵⁵",
+        "surface": "sam",
         "ipa": "sam˥˥",
         "label": "文讀"
       }
@@ -12350,13 +12350,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "saⁿ⁴⁴",
+        "surface": "saⁿ",
         "ipa": "sã˦˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "sam⁴⁴",
+        "surface": "sam",
         "ipa": "sam˦˦",
         "label": "文讀"
       }
@@ -12392,13 +12392,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "saⁿ⁴⁴",
+        "surface": "saⁿ",
         "ipa": "sã˦˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "sam⁴⁴",
+        "surface": "sam",
         "ipa": "sam˦˦",
         "label": "文讀"
       }
@@ -12422,13 +12422,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "gō͘²⁴",
+        "surface": "gō͘",
         "ipa": "ɡo˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ngó͘⁵³",
+        "surface": "ngó͘",
         "ipa": "ŋɔ˥˧",
         "label": "文讀"
       }
@@ -12436,13 +12436,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "gō͘²⁴",
+        "surface": "gō͘",
         "ipa": "ɡɔ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ngó͘²⁴",
+        "surface": "ngó͘",
         "ipa": "ŋɔ˨˦",
         "label": "文讀"
       }
@@ -12450,13 +12450,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "gō͘²⁴",
+        "surface": "gō͘",
         "ipa": "ɡo˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ngó͘⁵³",
+        "surface": "ngó͘",
         "ipa": "ŋɔ˥˧",
         "label": "文讀"
       }
@@ -12464,13 +12464,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "gō͘¹³",
+        "surface": "gō͘",
         "ipa": "ɡo˩˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ngó͘⁵³",
+        "surface": "ngó͘",
         "ipa": "ŋɔ˥˧",
         "label": "文讀"
       }
@@ -12494,13 +12494,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "peh⁴",
+        "surface": "peh",
         "ipa": "peʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "pat⁴",
+        "surface": "pat",
         "ipa": "pat̚˦",
         "label": "文讀"
       }
@@ -12508,13 +12508,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "peh⁵",
+        "surface": "peh",
         "ipa": "peʔ˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "pat⁵",
+        "surface": "pat",
         "ipa": "pat̚˥",
         "label": "文讀"
       }
@@ -12550,13 +12550,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "peh³²",
+        "surface": "peh",
         "ipa": "peʔ˧˨",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "pat³²",
+        "surface": "pat",
         "ipa": "pat̚˧˨",
         "label": "文讀"
       }
@@ -12564,13 +12564,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "peh³²",
+        "surface": "peh",
         "ipa": "peʔ˧˨",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "pat³²",
+        "surface": "pat",
         "ipa": "pat̚˧˨",
         "label": "文讀"
       }
@@ -12594,13 +12594,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "káu⁵³",
+        "surface": "káu",
         "ipa": "kau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiú⁵³",
+        "surface": "kiú",
         "ipa": "kiu˥˧",
         "label": "文讀"
       }
@@ -12608,13 +12608,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "káu⁵⁵",
+        "surface": "káu",
         "ipa": "kau˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiú⁵⁵",
+        "surface": "kiú",
         "ipa": "kiu˥˥",
         "label": "文讀"
       }
@@ -12622,13 +12622,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "káu⁵³",
+        "surface": "káu",
         "ipa": "kau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiú⁵³",
+        "surface": "kiú",
         "ipa": "kiu˥˧",
         "label": "文讀"
       }
@@ -12636,13 +12636,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "káu⁵³",
+        "surface": "káu",
         "ipa": "kau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiú⁵³",
+        "surface": "kiú",
         "ipa": "kiu˥˧",
         "label": "文讀"
       }
@@ -12666,13 +12666,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tsa̍p⁴",
+        "surface": "tsa̍p",
         "ipa": "t͡sap̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍p⁴",
+        "surface": "si̍p",
         "ipa": "sip̚˦",
         "label": "文讀"
       }
@@ -12680,13 +12680,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "tsa̍p²⁴",
+        "surface": "tsa̍p",
         "ipa": "t͡sap̚˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍p²⁴",
+        "surface": "si̍p",
         "ipa": "sip̚˨˦",
         "label": "文讀"
       }
@@ -12722,13 +12722,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "tsa̍p⁴",
+        "surface": "tsa̍p",
         "ipa": "t͡sap̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍p⁴",
+        "surface": "si̍p",
         "ipa": "sip̚˦",
         "label": "文讀"
       }
@@ -12736,13 +12736,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "tsa̍p¹²¹",
+        "surface": "tsa̍p",
         "ipa": "t͡sap̚˩˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍p¹²¹",
+        "surface": "si̍p",
         "ipa": "sip̚˩˨˩",
         "label": "文讀"
       }
@@ -12780,13 +12780,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "ji̍t⁴",
+        "surface": "ji̍t",
         "ipa": "d͡ʑit̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "li̍t⁴",
+        "surface": "li̍t",
         "ipa": "lit̚˦",
         "label": "文讀"
       }
@@ -12838,13 +12838,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "goe̍h⁴",
+        "surface": "goe̍h",
         "ipa": "ɡueʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "goa̍t⁴",
+        "surface": "goa̍t",
         "ipa": "ɡuat̚˦",
         "label": "文讀"
       }
@@ -12882,13 +12882,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "soaⁿ⁵⁵",
+        "surface": "soaⁿ",
         "ipa": "suã˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "san⁵⁵",
+        "surface": "san",
         "ipa": "san˥˥",
         "label": "文讀"
       }
@@ -12912,13 +12912,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tsuí⁵³",
+        "surface": "tsuí",
         "ipa": "t͡sui˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "suí⁵³",
+        "surface": "suí",
         "ipa": "sui˥˧",
         "label": "文讀"
       }
@@ -12942,13 +12942,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "hué⁵³",
+        "surface": "hué",
         "ipa": "hue˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hó⁵³",
+        "surface": "hó",
         "ipa": "hɔ˥˧",
         "label": "文讀"
       }
@@ -12972,13 +12972,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "ba̍k⁴",
+        "surface": "ba̍k",
         "ipa": "bak̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "bo̍k⁴",
+        "surface": "bo̍k",
         "ipa": "bɔk̚˦",
         "label": "文讀"
       }
@@ -13002,13 +13002,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "thinn⁵⁵",
+        "surface": "thinn",
         "ipa": "tʰĩ˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "thian⁵⁵",
+        "surface": "thian",
         "ipa": "tʰian˥˥",
         "label": "文讀"
       }
@@ -13032,13 +13032,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tē²¹",
+        "surface": "tē",
         "ipa": "te˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "tī²¹",
+        "surface": "tī",
         "ipa": "ti˨˩",
         "label": "文讀"
       }
@@ -13062,13 +13062,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "khián⁵³",
+        "surface": "khián",
         "ipa": "kʰian˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khoán⁵³",
+        "surface": "khoán",
         "ipa": "kʰuan˥˧",
         "label": "文讀"
       }
@@ -13092,13 +13092,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "bé⁵³",
+        "surface": "bé",
         "ipa": "be˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "má⁵³",
+        "surface": "má",
         "ipa": "ma˥˧",
         "label": "文讀"
       }
@@ -13106,13 +13106,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "bé⁴¹",
+        "surface": "bé",
         "ipa": "be˦˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "má⁴¹",
+        "surface": "má",
         "ipa": "ma˦˩",
         "label": "文讀"
       }
@@ -13120,13 +13120,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "bé⁵³",
+        "surface": "bé",
         "ipa": "be˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "má⁵³",
+        "surface": "má",
         "ipa": "ma˥˧",
         "label": "文讀"
       }
@@ -13134,13 +13134,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "bé⁵³",
+        "surface": "bé",
         "ipa": "be˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "má⁵³",
+        "surface": "má",
         "ipa": "ma˥˧",
         "label": "文讀"
       }
@@ -13164,13 +13164,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "chiáu⁵³",
+        "surface": "chiáu",
         "ipa": "t͡siau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "niáu⁵³",
+        "surface": "niáu",
         "ipa": "niau˥˧",
         "label": "文讀"
       }
@@ -13178,13 +13178,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "chiáu⁵³",
+        "surface": "chiáu",
         "ipa": "t͡siau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "niáu⁵³",
+        "surface": "niáu",
         "ipa": "niau˥˧",
         "label": "文讀"
       }
@@ -13192,13 +13192,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "chiáu⁵³",
+        "surface": "chiáu",
         "ipa": "t͡siau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "niáu⁵³",
+        "surface": "niáu",
         "ipa": "niau˥˧",
         "label": "文讀"
       }
@@ -13206,13 +13206,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "chiáu⁵³",
+        "surface": "chiáu",
         "ipa": "t͡siau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "niáu⁵³",
+        "surface": "niáu",
         "ipa": "niau˥˧",
         "label": "文讀"
       }
@@ -13236,13 +13236,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "hî²⁴",
+        "surface": "hî",
         "ipa": "hi˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "gû²⁴",
+        "surface": "gû",
         "ipa": "ɡu˨˦",
         "label": "文讀"
       }
@@ -13250,13 +13250,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "hû²⁴",
+        "surface": "hû",
         "ipa": "hu˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hî²⁴",
+        "surface": "hî",
         "ipa": "hi˨˦",
         "label": "文讀"
       }
@@ -13264,13 +13264,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "hî²⁴",
+        "surface": "hî",
         "ipa": "hi˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hû²⁴",
+        "surface": "hû",
         "ipa": "hu˨˦",
         "label": "文讀"
       }
@@ -13278,13 +13278,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "hî¹³",
+        "surface": "hî",
         "ipa": "hi˩˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hû¹³",
+        "surface": "hû",
         "ipa": "hu˩˧",
         "label": "文讀"
       }
@@ -13308,13 +13308,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "gû²⁴",
+        "surface": "gû",
         "ipa": "ɡu˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ngiû²⁴",
+        "surface": "ngiû",
         "ipa": "ŋiu˨˦",
         "label": "文讀"
       }
@@ -13338,13 +13338,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "iûⁿ²⁴",
+        "surface": "iûⁿ",
         "ipa": "iũ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "iôⁿ²⁴",
+        "surface": "iôⁿ",
         "ipa": "iõ˨˦",
         "label": "文讀"
       }
@@ -13368,13 +13368,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "niau⁵⁵",
+        "surface": "niau",
         "ipa": "niau˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "bâ²⁴",
+        "surface": "bâ",
         "ipa": "ba˨˦",
         "label": "文讀"
       }
@@ -13398,13 +13398,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "lâng²⁴",
+        "surface": "lâng",
         "ipa": "laŋ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jîn²⁴",
+        "surface": "jîn",
         "ipa": "d͡ʑin˨˦",
         "label": "文讀"
       }
@@ -13412,13 +13412,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "lâng²⁴",
+        "surface": "lâng",
         "ipa": "laŋ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "dzîn²⁴",
+        "surface": "dzîn",
         "ipa": "d͡zin˨˦",
         "label": "文讀"
       }
@@ -13440,13 +13440,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "lâng²⁴",
+        "surface": "lâng",
         "ipa": "laŋ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jîn²⁴",
+        "surface": "jîn",
         "ipa": "d͡ʑin˨˦",
         "label": "文讀"
       }
@@ -13454,13 +13454,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "lâng²⁴",
+        "surface": "lâng",
         "ipa": "laŋ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lîn²⁴",
+        "surface": "lîn",
         "ipa": "lin˨˦",
         "label": "文讀"
       }
@@ -13468,13 +13468,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "lâng¹³",
+        "surface": "lâng",
         "ipa": "laŋ˩˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lîn¹³",
+        "surface": "lîn",
         "ipa": "lin˩˧",
         "label": "文讀"
       }
@@ -13568,13 +13568,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tshiú⁵³",
+        "surface": "tshiú",
         "ipa": "tsʰiu˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siú⁵³",
+        "surface": "siú",
         "ipa": "siu˥˧",
         "label": "文讀"
       }
@@ -13582,13 +13582,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "tshiú⁵⁵",
+        "surface": "tshiú",
         "ipa": "t͡ɕʰiu˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siú⁵⁵",
+        "surface": "siú",
         "ipa": "siu˥˥",
         "label": "文讀"
       }
@@ -13610,13 +13610,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "tshiú⁵³",
+        "surface": "tshiú",
         "ipa": "tsʰiu˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siú⁵³",
+        "surface": "siú",
         "ipa": "siu˥˧",
         "label": "文讀"
       }
@@ -13624,13 +13624,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "tshiú⁵³",
+        "surface": "tshiú",
         "ipa": "tsʰiu˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siú⁵³",
+        "surface": "siú",
         "ipa": "siu˥˧",
         "label": "文讀"
       }
@@ -13682,13 +13682,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "chiok⁴",
+        "surface": "chiok",
         "ipa": "t͡siɔk̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "chok⁴",
+        "surface": "chok",
         "ipa": "t͡sɔk̚˦",
         "label": "文讀"
       }
@@ -13696,13 +13696,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "chiok²¹",
+        "surface": "chiok",
         "ipa": "t͡ɕiɔk̚˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "chok²¹",
+        "surface": "chok",
         "ipa": "t͡sɔk̚˨˩",
         "label": "文讀"
       }
@@ -13726,13 +13726,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "ba̍k⁴",
+        "surface": "ba̍k",
         "ipa": "bak̚˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "bo̍k⁴",
+        "surface": "bo̍k",
         "ipa": "bɔk̚˦",
         "label": "文讀"
       }
@@ -13784,13 +13784,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "hīⁿ²¹",
+        "surface": "hīⁿ",
         "ipa": "hĩ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ní⁵³",
+        "surface": "ní",
         "ipa": "ni˥˧",
         "label": "文讀"
       }
@@ -13814,13 +13814,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "kháu⁵³",
+        "surface": "kháu",
         "ipa": "kʰau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khió⁵³",
+        "surface": "khió",
         "ipa": "kʰiɔ˥˧",
         "label": "文讀"
       }
@@ -13844,13 +13844,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "thâu²⁴",
+        "surface": "thâu",
         "ipa": "tʰau˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "tô͘²⁴",
+        "surface": "tô͘",
         "ipa": "tɔ˨˦",
         "label": "文讀"
       }
@@ -13874,13 +13874,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "hueh⁴",
+        "surface": "hueh",
         "ipa": "hueʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hiat⁴",
+        "surface": "hiat",
         "ipa": "hiat̚˦",
         "label": "文讀"
       }
@@ -13932,13 +13932,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "bah⁴",
+        "surface": "bah",
         "ipa": "baʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "jio̍k⁴",
+        "surface": "jio̍k",
         "ipa": "d͡ʑiɔk̚˦",
         "label": "文讀"
       }
@@ -13962,13 +13962,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "chiūⁿ²¹",
+        "surface": "chiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siōng²¹",
+        "surface": "siōng",
         "ipa": "siɔŋ˨˩",
         "label": "文讀"
       }
@@ -13976,13 +13976,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "chiūⁿ²¹",
+        "surface": "chiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siōng²¹",
+        "surface": "siōng",
         "ipa": "sɔŋ˨˩",
         "label": "文讀"
       }
@@ -14004,13 +14004,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "chiūⁿ²¹",
+        "surface": "chiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siōng²¹",
+        "surface": "siōng",
         "ipa": "siɔŋ˨˩",
         "label": "文讀"
       }
@@ -14018,13 +14018,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "chiūⁿ²¹",
+        "surface": "chiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siōng²¹",
+        "surface": "siōng",
         "ipa": "siɔŋ˨˩",
         "label": "文讀"
       }
@@ -14032,13 +14032,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "chiūⁿ²¹",
+        "surface": "chiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "siōng²¹",
+        "surface": "siōng",
         "ipa": "siɔŋ˨˩",
         "label": "文讀"
       }
@@ -14174,13 +14174,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "ē²¹",
+        "surface": "ē",
         "ipa": "e˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hā²¹",
+        "surface": "hā",
         "ipa": "ha˨˩",
         "label": "文讀"
       }
@@ -14188,13 +14188,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "ē²¹",
+        "surface": "ē",
         "ipa": "e˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hā²¹",
+        "surface": "hā",
         "ipa": "ha˨˩",
         "label": "文讀"
       }
@@ -14216,13 +14216,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "ē²¹",
+        "surface": "ē",
         "ipa": "e˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hā²¹",
+        "surface": "hā",
         "ipa": "ha˨˩",
         "label": "文讀"
       }
@@ -14230,13 +14230,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "ē²¹",
+        "surface": "ē",
         "ipa": "e˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hā²¹",
+        "surface": "hā",
         "ipa": "ha˨˩",
         "label": "文讀"
       }
@@ -14244,13 +14244,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "ē²¹",
+        "surface": "ē",
         "ipa": "e˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hā²¹",
+        "surface": "hā",
         "ipa": "ha˨˩",
         "label": "文讀"
       }
@@ -14330,13 +14330,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "iong⁵⁵",
+        "surface": "iong",
         "ipa": "iɔŋ˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "ng⁵⁵",
+        "surface": "ng",
         "ipa": "ŋ˥˥",
         "label": "文讀"
       }
@@ -14360,13 +14360,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tsó⁵³",
+        "surface": "tsó",
         "ipa": "tsɔ˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "chó⁵³",
+        "surface": "chó",
         "ipa": "t͡sɔ˥˧",
         "label": "文讀"
       }
@@ -14390,13 +14390,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "iū²¹",
+        "surface": "iū",
         "ipa": "iu˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "iú⁵³",
+        "surface": "iú",
         "ipa": "iu˥˧",
         "label": "文讀"
       }
@@ -14420,13 +14420,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "tang⁵⁵",
+        "surface": "tang",
         "ipa": "taŋ˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "tong⁵⁵",
+        "surface": "tong",
         "ipa": "tɔŋ˥˥",
         "label": "文讀"
       }
@@ -14450,13 +14450,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "sai⁵⁵",
+        "surface": "sai",
         "ipa": "sai˥˥",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "se⁵⁵",
+        "surface": "se",
         "ipa": "se˥˥",
         "label": "文讀"
       }
@@ -14480,13 +14480,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "lâm²⁴",
+        "surface": "lâm",
         "ipa": "lam˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "nâ²⁴",
+        "surface": "nâ",
         "ipa": "na˨˦",
         "label": "文讀"
       }
@@ -14510,13 +14510,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "kiâⁿ²⁴",
+        "surface": "kiâⁿ",
         "ipa": "kiã˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hêng²⁴",
+        "surface": "hêng",
         "ipa": "heŋ˨˦",
         "label": "文讀"
       }
@@ -14524,13 +14524,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "kiâⁿ²⁴",
+        "surface": "kiâⁿ",
         "ipa": "kiã˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hêng²⁴",
+        "surface": "hêng",
         "ipa": "heŋ˨˦",
         "label": "文讀"
       }
@@ -14552,13 +14552,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "kiâⁿ²⁴",
+        "surface": "kiâⁿ",
         "ipa": "kiã˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hêng²⁴",
+        "surface": "hêng",
         "ipa": "heŋ˨˦",
         "label": "文讀"
       }
@@ -14580,13 +14580,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "kiâⁿ²⁴",
+        "surface": "kiâⁿ",
         "ipa": "kiã˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hêng²⁴",
+        "surface": "hêng",
         "ipa": "heŋ˨˦",
         "label": "文讀"
       }
@@ -14594,13 +14594,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "kiâⁿ¹³",
+        "surface": "kiâⁿ",
         "ipa": "kiã˩˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "hêng¹³",
+        "surface": "hêng",
         "ipa": "heŋ˩˧",
         "label": "文讀"
       }
@@ -15024,13 +15024,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "khì²¹",
+        "surface": "khì",
         "ipa": "kʰi˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khù²¹",
+        "surface": "khù",
         "ipa": "kʰu˨˩",
         "label": "文讀"
       }
@@ -15038,13 +15038,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "khì²¹",
+        "surface": "khì",
         "ipa": "kʰi˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khù²¹",
+        "surface": "khù",
         "ipa": "kʰu˨˩",
         "label": "文讀"
       }
@@ -15066,13 +15066,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "khì²¹",
+        "surface": "khì",
         "ipa": "kʰi˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khù²¹",
+        "surface": "khù",
         "ipa": "kʰu˨˩",
         "label": "文讀"
       }
@@ -15094,13 +15094,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "khì²¹",
+        "surface": "khì",
         "ipa": "kʰi˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khù²¹",
+        "surface": "khù",
         "ipa": "kʰu˨˩",
         "label": "文讀"
       }
@@ -15108,13 +15108,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "khì²¹",
+        "surface": "khì",
         "ipa": "kʰi˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "khù²¹",
+        "surface": "khù",
         "ipa": "kʰu˨˩",
         "label": "文讀"
       }
@@ -15152,13 +15152,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "kìⁿ²¹",
+        "surface": "kìⁿ",
         "ipa": "kĩ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiàn²¹",
+        "surface": "kiàn",
         "ipa": "kian˨˩",
         "label": "文讀"
       }
@@ -15166,13 +15166,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "kìⁿ⁴¹",
+        "surface": "kìⁿ",
         "ipa": "kĩ˦˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiàn⁴¹",
+        "surface": "kiàn",
         "ipa": "kian˦˩",
         "label": "文讀"
       }
@@ -15194,13 +15194,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "kìⁿ²¹",
+        "surface": "kìⁿ",
         "ipa": "kĩ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiàn²¹",
+        "surface": "kiàn",
         "ipa": "kian˨˩",
         "label": "文讀"
       }
@@ -15208,13 +15208,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "kìⁿ¹¹",
+        "surface": "kìⁿ",
         "ipa": "kĩ˩˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiàn¹¹",
+        "surface": "kiàn",
         "ipa": "kian˩˩",
         "label": "文讀"
       }
@@ -15222,13 +15222,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "kìⁿ²¹",
+        "surface": "kìⁿ",
         "ipa": "kĩ˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "kiàn²¹",
+        "surface": "kiàn",
         "ipa": "kian˨˩",
         "label": "文讀"
       }
@@ -15266,13 +15266,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "chia̍h⁴",
+        "surface": "chia̍h",
         "ipa": "t͡ɕiaʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍t⁴",
+        "surface": "si̍t",
         "ipa": "sit̚˦",
         "label": "文讀"
       }
@@ -15280,13 +15280,13 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "chia̍h²⁴",
+        "surface": "chia̍h",
         "ipa": "t͡ɕiaʔ˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍t²⁴",
+        "surface": "si̍t",
         "ipa": "sit̚˨˦",
         "label": "文讀"
       }
@@ -15308,13 +15308,13 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "chia̍h³²",
+        "surface": "chia̍h",
         "ipa": "t͡ɕiaʔ˧˨",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍t³²",
+        "surface": "si̍t",
         "ipa": "sit̚˧˨",
         "label": "文讀"
       }
@@ -15322,13 +15322,13 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "chia̍h⁴",
+        "surface": "chia̍h",
         "ipa": "t͡ɕiaʔ˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍t⁴",
+        "surface": "si̍t",
         "ipa": "sit̚˦",
         "label": "文讀"
       }
@@ -15336,13 +15336,13 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "chia̍h¹²¹",
+        "surface": "chia̍h",
         "ipa": "t͡ɕiaʔ˩˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "si̍t¹²¹",
+        "surface": "si̍t",
         "ipa": "sit̚˩˨˩",
         "label": "文讀"
       }
@@ -15394,13 +15394,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "ím⁵³",
+        "surface": "ím",
         "ipa": "im˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "lim⁵³",
+        "surface": "lim",
         "ipa": "lim˥˧",
         "label": "文讀"
       }
@@ -15424,13 +15424,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "cháu⁵³",
+        "surface": "cháu",
         "ipa": "t͡sau˥˧",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "chó͘⁵³",
+        "surface": "chó͘",
         "ipa": "t͡sɔ˥˧",
         "label": "文讀"
       }
@@ -15454,13 +15454,13 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "chē²¹",
+        "surface": "chē",
         "ipa": "t͡se˨˩",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "chō²¹",
+        "surface": "chō",
         "ipa": "t͡sɔ˨˩",
         "label": "文讀"
       }
