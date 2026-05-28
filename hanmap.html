@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanmap — Multilingual Han Character Pronunciation Map (Sinosphere)</title>
+    <meta name="description" content="Interactive Sinosphere map of 60 common Han characters (一二三, 日月山, 龍虎犬, 人手足, 上下中, 行来去…) pronounced across Mandarin, Cantonese, Taiwanese (POJ), Hakka, Shanghainese, Japanese on-yomi, Sino-Korean (한자음), Sino-Vietnamese (Hán-Việt), Old Chinese, Middle Chinese, and reconstructed Khitan / Jurchen — IPA, Pinyin, Jyutping, Hangul.">
+    <meta name="keywords" content="Han characters, kanji, hanja, hán tự, pronunciation, IPA, Sinosphere, Sino-Japanese, Sino-Korean, Sino-Vietnamese, on-yomi, Jyutping, Pinyin, POJ, Middle Chinese, Old Chinese, historical phonology">
+    <meta name="author" content="Jounlai Cho, Heuron Inc.">
+    <meta property="og:title" content="Hanmap — Multilingual Han Character Pronunciation Map">
+    <meta property="og:description" content="60 Han characters pronounced across the Sinosphere — Mandarin / Cantonese / Min / Hakka / Wu / Japanese / Korean / Vietnamese, with Old Chinese, Middle Chinese, Khitan, Jurchen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langmap.heuron.com/hanmap.html">
+    <meta property="og:image" content="https://langmap.heuron.com/ogp-wordmap.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="LangMap">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hanmap — Multilingual Han Character Pronunciation Map">
+    <meta name="twitter:description" content="60 Han characters pronounced across the Sinosphere with IPA, Pinyin, Jyutping, POJ, Hangul, Hán-Việt.">
+    <meta name="twitter:image" content="https://langmap.heuron.com/ogp-wordmap.png">
+    <meta name="twitter:creator" content="@jounlai">
+    <link rel="canonical" href="https://langmap.heuron.com/hanmap.html">
+    <link rel="icon" type="image/png" href="/langmap.png">
+    <link rel="apple-touch-icon" href="/langmap.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Hanmap: Multilingual Han Character Pronunciation Map",
+        "url": "https://langmap.heuron.com/hanmap.html",
+        "description": "60 Han characters in 15 Sinosphere languages — IPA, Pinyin, Jyutping, POJ, Sino-Korean, Sino-Vietnamese, Old & Middle Chinese reconstructions.",
+        "isPartOf": {"@id": "https://langmap.heuron.com/#website"},
+        "inLanguage": ["ja","ko","zh","yue","vi","th","id","hi","en","de","fr","it","es","pt","ru","uk","ar","he","sw"]
+    }
+    </script>
+    <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
+    <script>
+        // Production-only GA firing: hostname-gated so dev/local/staging
+        // traffic doesn't pollute the analytics property.
+        if (location.hostname === 'langmap.heuron.com') {
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JZ7JJBCCHG';
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JZ7JJBCCHG');
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css?v=93">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap">
+    <style>
+        /* Khitan Small Script — used by zkt entries. */
+        @font-face {
+            font-family: 'Noto Serif Khitan Small Script';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io@main/fonts/NotoSerifKhitanSmallScript/hinted/ttf/NotoSerifKhitanSmallScript-Regular.ttf') format('truetype');
+            unicode-range: U+16FE4, U+18B00-18CFF;
+        }
+    </style>
+    <style>
+        /* Lock body to the viewport; same recipe as wordmap. */
+        html, body {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+            touch-action: pan-x pan-y;
+        }
+        body { margin: 0; padding: 0; background: #fff; }
+        #map { width: 100vw; height: 100vh; }
+        #globe { width: 100vw; height: 100vh; display: none; position: absolute; top: 0; left: 0; }
+
+        /* Header bar (same as wordmap; absolute so it sits over the map). */
+        .site-header-bar {
+            position: absolute; top: 0; left: 0; right: 0; z-index: 1101;
+            margin: 0;
+        }
+        .site-header-bar .header-ui-lang {
+            padding: 4px 8px; font-size: 12px;
+            border: 1px solid #d0d0d0; border-radius: 4px;
+            background: #fff; color: #444; cursor: pointer;
+            margin-left: auto; min-width: 140px;
+        }
+
+        /* --- Top-left: current character button + random --- */
+        .top-left-controls {
+            position: absolute; top: 52px; left: 12px; z-index: 1000;
+            display: flex; flex-direction: row; gap: 6px; align-items: center;
+        }
+        .char-button {
+            font-size: 36px; line-height: 1;
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
+            font-weight: 700;
+            padding: 6px 12px;
+            border: 1px solid #d0d0d0;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
+            cursor: pointer;
+            color: #1a1a2e;
+            min-width: 64px; text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            transition: background 0.15s, transform 0.1s;
+        }
+        .char-button:hover { background: rgba(255,255,255,1); }
+        .char-button:active { transform: scale(0.97); }
+        .char-button-label {
+            display: block;
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+            font-weight: 500;
+            font-family: system-ui, sans-serif;
+        }
+        .random-button {
+            font-size: 13px; padding: 6px 10px;
+            border: 1px solid #d0d0d0; border-radius: 20px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
+            cursor: pointer; color: #555;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            font-family: system-ui, sans-serif;
+            font-weight: 500;
+        }
+        .random-button:hover { background: #fff; }
+        body.is-3d .char-button-label { color: #ccc; text-shadow: 0 1px 2px rgba(0,0,0,0.7); }
+
+        /* --- Right-side controls --- */
+        .right-controls {
+            position: absolute; top: 52px; right: 10px; z-index: 1001;
+            display: flex; flex-direction: column; gap: 6px; align-items: center;
+        }
+        .right-controls .toggle-btn:not(.toggle-3d-btn) {
+            min-width: 56px; max-width: 56px; text-align: center; font-size: 8px;
+            overflow: hidden; text-overflow: ellipsis;
+            display: flex; flex-direction: column; align-items: center;
+            line-height: 1.2; padding: 3px 6px;
+        }
+        .right-controls .toggle-btn .onoff {
+            font-size: 7px; opacity: 0.6; margin-top: 1px;
+        }
+        .toggle-btn {
+            font-size: 11px; padding: 4px 10px; border: 1px solid #d0d0d0;
+            border-radius: 20px; background: #f0f0f0; cursor: pointer; white-space: nowrap;
+            color: #777; font-weight: 500;
+            transition: all 0.25s ease;
+            user-select: none;
+            font-family: system-ui, sans-serif;
+        }
+        .toggle-btn:hover { background: #e8e8e8; border-color: #bbb; }
+        .toggle-btn.active {
+            background: #333; border-color: #222; color: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+        }
+        .toggle-btn.active:hover { background: #444; }
+        .toggle-3d-btn {
+            width: 40px; height: 40px; min-width: 40px; max-width: 40px;
+            border-radius: 50%; font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            padding: 0;
+        }
+        .toggle-3d-btn.active {
+            background: #4a6cf7; border-color: #3a5ce5;
+            box-shadow: 0 1px 4px rgba(74,108,247,0.35);
+        }
+        .toggle-3d-btn.active:hover { background: #3a5ce5; }
+        .radio-switch.radio-switch-v {
+            display: inline-flex;
+            flex-direction: column; border-radius: 4px; max-width: 56px;
+            border: 1px solid #d0d0d0; background: #f0f0f0;
+        }
+        .radio-switch.radio-switch-v .radio-opt {
+            font-size: 8px; padding: 3px 6px; text-align: center;
+            overflow: hidden; text-overflow: ellipsis;
+            background: transparent; color: #777; border: none; cursor: pointer;
+            font-family: system-ui, sans-serif;
+        }
+        .radio-switch-v .radio-opt + .radio-opt {
+            border-top: 1px solid #ccc;
+        }
+        .radio-switch .radio-opt.active {
+            background: #4a6cf7; color: #fff;
+        }
+        .map-zoom-controls {
+            display: flex; flex-direction: column;
+            border: 1px solid #d0d0d0; border-radius: 6px;
+            background: #fff; overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+        }
+        .map-zoom-controls button {
+            width: 36px; height: 32px;
+            background: #fff; border: none; cursor: pointer;
+            font-size: 16px; font-weight: 700; color: #555;
+            font-family: system-ui, sans-serif;
+        }
+        .map-zoom-controls button:hover { background: #f3f4f6; color: #1a1a2e; }
+        .map-zoom-controls button + button { border-top: 1px solid #e5e7eb; }
+
+        /* --- Map labels --- */
+        :root { --label-scale: 1.4; }
+        .lang-label, .globe-label {
+            font-family:
+                "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Khitan Small Script",
+                Georgia, "Times New Roman", serif;
+        }
+        .lang-label {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; white-space: nowrap; cursor: pointer;
+            pointer-events: auto;
+            text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+        }
+        .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        .lang-label .word {
+            font-size: calc(16px * var(--label-scale)); font-weight: 700; color: #1a1a2e;
+            line-height: 1.2;
+        }
+        .lang-label .ipa {
+            font-size: calc(10px * var(--label-scale)); color: #555;
+            line-height: 1.2;
+        }
+        .lang-label .name {
+            font-size: calc(9px * var(--label-scale)); color: #888; line-height: 1.3;
+        }
+        .lang-label.selected {
+            background: rgba(255,255,255,0.97);
+            border-radius: 7px; padding: 6px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.22),
+                        0 0 0 1px rgba(74,108,247,0.6);
+            outline: none;
+            z-index: 10;
+        }
+        .globe-label {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.85);
+            text-align: center; white-space: nowrap; cursor: pointer;
+            color: #fff;
+        }
+        .globe-label .word { font-size: calc(16px * var(--label-scale)); font-weight: 700; line-height: 1.2; color: #fff; }
+        .globe-label .ipa { font-size: calc(10px * var(--label-scale)); color: #d8d8d8; line-height: 1.2; }
+        .globe-label .name { font-size: calc(9px * var(--label-scale)); color: #b0b0b0; line-height: 1.3; }
+        .globe-label.selected {
+            background: rgba(255,255,255,0.97); border-radius: 7px; padding: 6px 10px;
+            box-shadow: 0 0 0 1px rgba(74,108,247,0.85);
+        }
+        .globe-label.selected .word { color: #1a1a2e; text-shadow: none; }
+        .globe-label.selected .ipa  { color: #555; text-shadow: none; }
+        .globe-label.selected .name { color: #888; text-shadow: none; }
+
+        /* --- Character-selector modal --- */
+        .char-modal-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(20, 25, 40, 0.55);
+            backdrop-filter: blur(2px);
+            z-index: 2000;
+            display: none;
+        }
+        .char-modal-backdrop.visible { display: block; }
+        .char-modal {
+            position: fixed; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff; border-radius: 14px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.35);
+            padding: 22px 24px 18px;
+            max-width: min(640px, calc(100vw - 32px));
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
+            z-index: 2001;
+            display: none;
+        }
+        .char-modal.visible { display: block; }
+        .char-modal h2 {
+            font-size: 18px; margin: 0 0 14px;
+            color: #1a1a2e; font-weight: 700;
+            font-family: "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", "Noto Serif KR", system-ui, sans-serif;
+        }
+        .char-modal-close {
+            position: absolute; top: 10px; right: 14px;
+            background: none; border: none;
+            font-size: 24px; color: #888; cursor: pointer;
+            line-height: 1; padding: 4px 8px;
+        }
+        .char-modal-close:hover { color: #333; }
+        .char-category { margin-bottom: 14px; }
+        .char-category h3 {
+            font-size: 12px; color: #666;
+            font-weight: 600; margin: 0 0 6px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            font-family: system-ui, sans-serif;
+        }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+        }
+        .char-btn {
+            aspect-ratio: 1 / 1;
+            font-size: 24px; font-weight: 600;
+            background: #f7f8fa;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #1a1a2e;
+            transition: all 0.12s ease;
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
+            line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .char-btn:hover {
+            background: #e7ebff; border-color: #4a6cf7;
+            transform: scale(1.05);
+        }
+        .char-btn.active {
+            background: #4a6cf7; color: #fff; border-color: #3a5ce5;
+        }
+        @media (max-width: 480px) {
+            .char-grid { grid-template-columns: repeat(5, 1fr); gap: 5px; }
+            .char-btn { font-size: 22px; }
+            .char-modal { padding: 18px 16px 14px; max-width: calc(100vw - 24px); }
+            .char-modal h2 { font-size: 16px; }
+        }
+
+        /* --- Language info panel --- */
+        .lang-info-panel {
+            position: absolute; right: 20px; top: 80px;
+            width: 360px; max-height: calc(100vh - 120px);
+            background: rgba(255,255,255,0.98);
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            padding: 18px 20px;
+            z-index: 1200;
+            overflow-y: auto;
+            display: none;
+            font-family: system-ui, sans-serif;
+        }
+        .lang-info-panel.visible { display: block; }
+        .lang-info-panel .close-btn {
+            position: absolute; top: 8px; right: 12px;
+            background: none; border: none;
+            font-size: 22px; color: #888; cursor: pointer;
+            line-height: 1; padding: 4px;
+        }
+        .lang-info-panel .close-btn:hover { color: #1a1a2e; }
+        .lang-info-panel h2 {
+            font-size: 18px; margin: 0 0 2px; color: #1a1a2e;
+            padding-right: 30px;
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR", system-ui, sans-serif;
+        }
+        .lang-info-panel .native-name {
+            font-size: 13px; color: #666; margin-bottom: 8px;
+        }
+        .lang-info-panel .kind-line {
+            font-size: 12px; color: #4a6cf7; font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .lang-info-panel .desc {
+            font-size: 12px; color: #444; line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .lang-info-panel table {
+            width: 100%; border-collapse: collapse;
+            font-size: 12px;
+        }
+        .lang-info-panel th, .lang-info-panel td {
+            padding: 4px 6px; vertical-align: top;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .lang-info-panel th {
+            background: #fafafa; color: #555; font-weight: 600;
+            font-size: 11px;
+        }
+        .lang-info-panel td.char {
+            font-size: 20px;
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
+            color: #1a1a2e; width: 32px;
+        }
+        .lang-info-panel td.surf {
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
+            color: #1a1a2e; font-weight: 600;
+        }
+        .lang-info-panel td.ipa { color: #555; font-style: italic; }
+        @media (max-width: 640px) {
+            .lang-info-panel {
+                right: 10px; left: 10px; width: auto;
+                top: auto; bottom: 10px;
+                max-height: 60vh;
+            }
+        }
+
+        /* Credit watermark */
+        .url-watermark {
+            position: absolute; right: 10px; bottom: 8px; z-index: 999;
+            font-size: 10px; color: #999;
+            pointer-events: none;
+            background: rgba(255,255,255,0.7);
+            padding: 3px 8px; border-radius: 10px;
+            font-family: system-ui, sans-serif;
+        }
+        body.is-3d .url-watermark { background: rgba(0,0,0,0.5); color: #aaa; }
+        .url-watermark a { pointer-events: auto; }
+
+        @media (max-width: 640px) {
+            .char-button { font-size: 32px; padding: 5px 10px; min-width: 56px; }
+            .top-left-controls { top: 64px; left: 8px; }
+            .right-controls { top: 64px; right: 8px; }
+            .url-watermark { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="site-header-bar">
+        <a href="hanmap.html" class="logo">LangMap</a>
+        <input type="checkbox" id="hdr-menu-toggle" class="hdr-menu-toggle" aria-label="Menu toggle">
+        <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0">☰</label>
+        <div class="header-collapse" id="header-collapse">
+            <nav class="header-nav">
+                <a href="index.html" class="header-nav-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>語順マップ</a>
+                <span class="nav-sep">/</span>
+                <a href="wordmap.html" class="header-nav-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>単語マップ</a>
+                <span class="nav-sep">/</span>
+                <span class="header-nav-current" id="navHanMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>漢字マップ</span>
+                <span class="nav-sep">/</span>
+                <a href="tree.html" class="header-nav-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>系統樹</a>
+            </nav>
+            <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
+            <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
+        </div>
+    </div>
+
+    <!-- Top-left: current char + random -->
+    <div class="top-left-controls">
+        <button class="char-button" id="char-button" type="button" aria-haspopup="dialog" aria-controls="char-modal" title="Select character">
+            <span id="char-button-glyph">一</span>
+            <span class="char-button-label" id="char-button-label">漢字選択</span>
+        </button>
+        <button class="random-button" id="random-button" type="button" title="Random character">🎲 <span id="random-label">ランダム</span></button>
+    </div>
+
+    <!-- Right-side controls -->
+    <div class="right-controls">
+        <div class="map-zoom-controls" id="map-zoom" role="group" aria-label="Map zoom">
+            <button id="map-zoom-in" aria-label="Zoom in">+</button>
+            <button id="map-zoom-out" aria-label="Zoom out">&minus;</button>
+        </div>
+        <button class="toggle-btn toggle-3d-btn" id="toggle-3d" type="button" title="2D / 3D" aria-pressed="false" aria-label="Toggle 2D / 3D view">2D</button>
+        <div style="height:8px"></div>
+        <button class="toggle-btn active" id="toggle-word" type="button" aria-pressed="true" aria-label="Toggle surface form"><span class="label" id="lbl-word">原文</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-ipa" type="button" aria-pressed="true" aria-label="Toggle pronunciation"><span class="label" id="lbl-ipa">発音</span><span class="onoff">ON</span></button>
+        <button class="toggle-btn active" id="toggle-name" type="button" aria-pressed="true" aria-label="Toggle language name"><span class="label" id="lbl-name">言語名</span><span class="onoff">ON</span></button>
+        <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
+            <button class="radio-opt" id="name-native" type="button" role="radio" aria-checked="false">現地名</button>
+            <button class="radio-opt active" id="name-translated" type="button" role="radio" aria-checked="true">翻訳名</button>
+        </div>
+    </div>
+
+    <!-- Character selector modal -->
+    <div class="char-modal-backdrop" id="char-modal-backdrop" aria-hidden="true"></div>
+    <div class="char-modal" id="char-modal" role="dialog" aria-modal="true" aria-labelledby="char-modal-title">
+        <button class="char-modal-close" id="char-modal-close" type="button" aria-label="Close">&times;</button>
+        <h2 id="char-modal-title">漢字を選択</h2>
+        <div id="char-modal-body"></div>
+    </div>
+
+    <!-- Language info popup -->
+    <div id="lang-info" class="lang-info-panel" role="dialog" aria-modal="false" tabindex="-1">
+        <button class="close-btn" id="info-close" type="button" aria-label="Close language info">&times;</button>
+        <div id="info-content"></div>
+    </div>
+
+    <!-- Credit watermark -->
+    <div class="url-watermark">
+        Hanmap · Made by <a href="https://x.com/jounlai" target="_blank" rel="noopener" style="color:inherit">Jounlai Cho</a> @<a href="https://heuron.com" target="_blank" rel="noopener" style="color:inherit">Heuron Inc.</a>
+    </div>
+
+    <div id="map"></div>
+    <div id="globe"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
+    <script src="wordmap_data.js?v=221"></script>
+    <script src="lang_names.js?v=111"></script>
+    <script src="hanmap_data.js?v=1"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        // ===== UI-language detection (cookie / browser / fallback) =====
+        const SUPPORTED_UI = ['ja','ko','zh','yue','vi','th','id','hi','en','de','fr','it','es_eu','es_mx','pt_eu','pt_br','ru','uk','ar','he','sw'];
+        function detectUILang() {
+            try {
+                const m = document.cookie.match(/(?:^|; )uilang=([^;]+)/);
+                if (m) {
+                    const v = decodeURIComponent(m[1]);
+                    if (WM_UI[v]) return v;
+                }
+            } catch (_) {}
+            const nav = (navigator.language || 'en').toLowerCase();
+            const base = nav.split('-')[0];
+            const map = { 'pt': 'pt_br', 'es': 'es_eu' };
+            if (WM_UI[nav]) return nav;
+            if (WM_UI[base]) return base;
+            if (map[base] && WM_UI[map[base]]) return map[base];
+            return 'ja';
+        }
+        let uiLang = detectUILang();
+        try { document.cookie = 'uilang=' + encodeURIComponent(uiLang) + ';path=/;max-age=' + (60*60*24*365); } catch (_) {}
+
+        function wt(key) { return (WM_UI[uiLang] || WM_UI.en)[key] || WM_UI.en[key]; }
+
+        // ===== Hanmap-specific UI labels (21 UI languages) =====
+        const HM_UI = {
+            ja: { title:'漢字選択', random:'ランダム', form:'原文', pron:'発音', name:'言語名', native:'現地名', translated:'翻訳名', selectChar:'漢字を選択', readings:'全60字の読み', readingKind:'読みの種類', char:'漢字', surface:'表記', pronunciation:'発音' },
+            ko: { title:'한자 선택', random:'랜덤', form:'원문', pron:'발음', name:'언어명', native:'현지어', translated:'번역명', selectChar:'한자 선택', readings:'전체 60자 발음', readingKind:'발음 종류', char:'한자', surface:'표기', pronunciation:'발음' },
+            zh: { title:'选择汉字', random:'随机', form:'原形', pron:'发音', name:'语言名', native:'当地语', translated:'译名', selectChar:'选择汉字', readings:'全60字读音', readingKind:'读音类型', char:'汉字', surface:'写法', pronunciation:'发音' },
+            yue: { title:'揀漢字', random:'隨機', form:'原形', pron:'發音', name:'語言名', native:'當地語', translated:'譯名', selectChar:'揀漢字', readings:'全60字讀音', readingKind:'讀音類型', char:'漢字', surface:'寫法', pronunciation:'發音' },
+            vi: { title:'Chọn chữ Hán', random:'Ngẫu nhiên', form:'Mặt chữ', pron:'Phát âm', name:'Tên ngôn ngữ', native:'Bản địa', translated:'Tên dịch', selectChar:'Chọn chữ Hán', readings:'Phát âm cả 60 chữ', readingKind:'Loại phát âm', char:'Chữ Hán', surface:'Mặt chữ', pronunciation:'Phát âm' },
+            th: { title:'เลือกอักษรจีน', random:'สุ่ม', form:'รูปอักษร', pron:'การออกเสียง', name:'ชื่อภาษา', native:'ท้องถิ่น', translated:'ชื่อแปล', selectChar:'เลือกอักษรจีน', readings:'การอ่านทั้ง 60 ตัว', readingKind:'ประเภทการอ่าน', char:'อักษร', surface:'รูปอักษร', pronunciation:'การออกเสียง' },
+            id: { title:'Pilih Hanzi', random:'Acak', form:'Ejaan', pron:'Lafal', name:'Nama bahasa', native:'Lokal', translated:'Nama terjemahan', selectChar:'Pilih aksara Han', readings:'Bacaan ke-60 aksara', readingKind:'Jenis bacaan', char:'Aksara', surface:'Ejaan', pronunciation:'Lafal' },
+            hi: { title:'हान अक्षर चुनें', random:'यादृच्छिक', form:'लेखन', pron:'उच्चारण', name:'भाषा नाम', native:'स्थानीय', translated:'अनुवाद', selectChar:'हान अक्षर चुनें', readings:'सभी 60 अक्षरों के उच्चारण', readingKind:'उच्चारण प्रकार', char:'अक्षर', surface:'लेखन', pronunciation:'उच्चारण' },
+            en: { title:'Choose character', random:'Random', form:'Form', pron:'Pron.', name:'Name', native:'Native', translated:'Translated', selectChar:'Select Han character', readings:'All 60 readings', readingKind:'Reading type', char:'Char', surface:'Surface', pronunciation:'Pronunciation' },
+            de: { title:'Schriftzeichen wählen', random:'Zufällig', form:'Form', pron:'Aussprache', name:'Sprache', native:'Einheimisch', translated:'Übersetzt', selectChar:'Han-Zeichen wählen', readings:'Alle 60 Lesungen', readingKind:'Lesungsart', char:'Zeichen', surface:'Form', pronunciation:'Aussprache' },
+            fr: { title:'Choisir un caractère', random:'Aléatoire', form:'Forme', pron:'API', name:'Nom', native:'Locale', translated:'Traduit', selectChar:'Choisir un sinogramme', readings:'Lectures des 60 caractères', readingKind:'Type de lecture', char:'Caractère', surface:'Forme', pronunciation:'Prononciation' },
+            it: { title:'Scegli carattere', random:'Casuale', form:'Forma', pron:'IPA', name:'Nome', native:'Locale', translated:'Tradotto', selectChar:'Scegli sinogramma', readings:'Letture dei 60 caratteri', readingKind:'Tipo di lettura', char:'Carattere', surface:'Forma', pronunciation:'Pronuncia' },
+            es_eu: { title:'Elegir carácter', random:'Aleatorio', form:'Forma', pron:'AFI', name:'Nombre', native:'Local', translated:'Traducido', selectChar:'Elegir sinograma', readings:'Lecturas de los 60 caracteres', readingKind:'Tipo de lectura', char:'Carácter', surface:'Forma', pronunciation:'Pronunciación' },
+            es_mx: { title:'Elegir carácter', random:'Aleatorio', form:'Forma', pron:'AFI', name:'Nombre', native:'Local', translated:'Traducido', selectChar:'Elegir sinograma', readings:'Lecturas de los 60 caracteres', readingKind:'Tipo de lectura', char:'Carácter', surface:'Forma', pronunciation:'Pronunciación' },
+            pt_eu: { title:'Escolher carácter', random:'Aleatório', form:'Forma', pron:'AFI', name:'Nome', native:'Local', translated:'Traduzido', selectChar:'Escolher sinograma', readings:'Leituras dos 60 caracteres', readingKind:'Tipo de leitura', char:'Carácter', surface:'Forma', pronunciation:'Pronúncia' },
+            pt_br: { title:'Escolher caractere', random:'Aleatório', form:'Forma', pron:'AFI', name:'Nome', native:'Local', translated:'Traduzido', selectChar:'Escolher sinograma', readings:'Leituras dos 60 caracteres', readingKind:'Tipo de leitura', char:'Caractere', surface:'Forma', pronunciation:'Pronúncia' },
+            ru: { title:'Выбрать иероглиф', random:'Случайно', form:'Форма', pron:'МФА', name:'Название', native:'Местная', translated:'Перевод', selectChar:'Выбрать иероглиф', readings:'Чтения 60 иероглифов', readingKind:'Тип чтения', char:'Иероглиф', surface:'Форма', pronunciation:'Произношение' },
+            uk: { title:'Обрати ієрогліф', random:'Випадково', form:'Форма', pron:'МФА', name:'Назва', native:'Місцева', translated:'Переклад', selectChar:'Обрати ієрогліф', readings:'Читання 60 ієрогліфів', readingKind:'Тип читання', char:'Ієрогліф', surface:'Форма', pronunciation:'Вимова' },
+            ar: { title:'اختر حرفاً', random:'عشوائي', form:'الكتابة', pron:'النطق', name:'اللغة', native:'محلي', translated:'مترجم', selectChar:'اختر حرفاً صينياً', readings:'قراءات الأحرف الستين', readingKind:'نوع القراءة', char:'الحرف', surface:'الكتابة', pronunciation:'النطق' },
+            he: { title:'בחר סימן', random:'אקראי', form:'כתיב', pron:'תעתיק', name:'שם', native:'מקומי', translated:'מתורגם', selectChar:'בחר סימן האן', readings:'הקריאות של כל 60 הסימנים', readingKind:'סוג קריאה', char:'סימן', surface:'כתיב', pronunciation:'הגייה' },
+            sw: { title:'Chagua herufi', random:'Nasibu', form:'Umbo', pron:'Matamshi', name:'Lugha', native:'Asili', translated:'Iliyotafsiriwa', selectChar:'Chagua herufi ya Kihan', readings:'Matamshi ya herufi 60', readingKind:'Aina ya matamshi', char:'Herufi', surface:'Umbo', pronunciation:'Matamshi' },
+        };
+        function ht(key) { return (HM_UI[uiLang] || HM_UI.en)[key] || HM_UI.en[key]; }
+
+        // ===== State =====
+        let currentChar = HAN_LIST[0];
+        let showWord = true;
+        let showIpa = true;
+        let showName = true;
+        let useNative = false;
+        let is3D = false;
+
+        // ===== Header UI lang dropdown =====
+        const headerUiLangSel = document.getElementById('header-ui-lang');
+        for (const code of Object.keys(WM_UI)) {
+            const opt = document.createElement('option');
+            opt.value = code;
+            opt.textContent = (typeof WM_UI_LABELS !== 'undefined' && WM_UI_LABELS[code]) || code;
+            if (code === uiLang) opt.selected = true;
+            headerUiLangSel.appendChild(opt);
+        }
+        headerUiLangSel.addEventListener('change', () => {
+            uiLang = headerUiLangSel.value;
+            try { document.cookie = 'uilang=' + encodeURIComponent(uiLang) + ';path=/;max-age=' + (60*60*24*365); } catch (_) {}
+            applyUILang();
+            renderCharModal();
+            updateMarkers();
+            // Refresh open info panel if any
+            const ip = document.getElementById('lang-info');
+            if (ip.classList.contains('visible') && ip.dataset.code) showLangInfo(ip.dataset.code);
+        });
+
+        function applyUILang() {
+            document.getElementById('char-button-label').textContent = ht('title');
+            document.getElementById('random-label').textContent = ht('random');
+            document.getElementById('char-modal-title').textContent = ht('selectChar');
+            document.getElementById('lbl-word').textContent = ht('form');
+            document.getElementById('lbl-ipa').textContent = ht('pron');
+            document.getElementById('lbl-name').textContent = ht('name');
+            document.getElementById('name-native').textContent = ht('native');
+            document.getElementById('name-translated').textContent = ht('translated');
+            document.documentElement.lang = uiLang;
+            document.title = 'Hanmap — ' + ht('selectChar');
+        }
+        applyUILang();
+
+        // ===== Translated language name helper =====
+        function getLangName(code) {
+            if (useNative && LANG_DATA[code] && LANG_DATA[code].native) {
+                return LANG_DATA[code].native;
+            }
+            if (typeof LANG_NAMES !== 'undefined' && LANG_NAMES[uiLang] && LANG_NAMES[uiLang][code]) {
+                return LANG_NAMES[uiLang][code];
+            }
+            if (typeof LANG_NAMES !== 'undefined' && LANG_NAMES.en && LANG_NAMES.en[code]) {
+                return LANG_NAMES.en[code];
+            }
+            return LANG_DATA[code] ? LANG_DATA[code].name : code;
+        }
+
+        // ===== Character modal =====
+        const charModalBody = document.getElementById('char-modal-body');
+        const charModal = document.getElementById('char-modal');
+        const charModalBackdrop = document.getElementById('char-modal-backdrop');
+
+        function renderCharModal() {
+            charModalBody.innerHTML = '';
+            for (const cat of HAN_CATEGORIES) {
+                const wrap = document.createElement('div');
+                wrap.className = 'char-category';
+                const heading = document.createElement('h3');
+                heading.textContent = cat.label[uiLang] || cat.label.en || cat.label.ja;
+                wrap.appendChild(heading);
+                const grid = document.createElement('div');
+                grid.className = 'char-grid';
+                for (const ch of cat.chars) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'char-btn' + (ch === currentChar ? ' active' : '');
+                    btn.textContent = ch;
+                    btn.dataset.char = ch;
+                    btn.addEventListener('click', () => {
+                        setCurrentChar(ch);
+                        closeCharModal();
+                    });
+                    grid.appendChild(btn);
+                }
+                wrap.appendChild(grid);
+                charModalBody.appendChild(grid.parentElement === wrap ? wrap : wrap);
+            }
+        }
+
+        function openCharModal() {
+            renderCharModal();
+            charModal.classList.add('visible');
+            charModalBackdrop.classList.add('visible');
+            charModalBackdrop.setAttribute('aria-hidden', 'false');
+        }
+        function closeCharModal() {
+            charModal.classList.remove('visible');
+            charModalBackdrop.classList.remove('visible');
+            charModalBackdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        document.getElementById('char-button').addEventListener('click', openCharModal);
+        document.getElementById('char-modal-close').addEventListener('click', closeCharModal);
+        charModalBackdrop.addEventListener('click', closeCharModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCharModal();
+                document.getElementById('lang-info').classList.remove('visible');
+            }
+        });
+
+        // ===== Random button =====
+        document.getElementById('random-button').addEventListener('click', () => {
+            const others = HAN_LIST.filter(c => c !== currentChar);
+            const next = others[Math.floor(Math.random() * others.length)];
+            setCurrentChar(next);
+        });
+
+        function setCurrentChar(ch) {
+            currentChar = ch;
+            document.getElementById('char-button-glyph').textContent = ch;
+            updateMarkers();
+            updateHash();
+            // If the info panel is open, refresh it for the new character
+            const ip = document.getElementById('lang-info');
+            if (ip.classList.contains('visible') && ip.dataset.code) showLangInfo(ip.dataset.code);
+        }
+
+        // ===== Map setup =====
+        const map = L.map('map', {
+            center: [30, 115],
+            zoom: 4,
+            minZoom: 2,
+            maxZoom: 10,
+            zoomControl: false,
+            worldCopyJump: true,
+        });
+
+        // Use a light, neutral tile layer so Han labels remain readable.
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 19,
+        }).addTo(map);
+
+        const markers = [];
+
+        function buildLabelHTML(code, charData) {
+            const surface = (charData.surface && charData.surface[code]) || '';
+            const ipa = (charData.ipa && charData.ipa[code]) || '';
+            const name = getLangName(code);
+            let html = '';
+            if (showWord && surface) html += '<div class="word">' + surface + '</div>';
+            if (showIpa && ipa)      html += '<div class="ipa">[' + ipa + ']</div>';
+            if (showName && name)    html += '<div class="name">' + name + '</div>';
+            return html;
+        }
+
+        // ===== Marker stacking =====
+        // Stack co-located languages vertically so labels don't overlap.
+        function computeStacks(codes) {
+            const STACK_DEG = 1.0;  // grid cell in degrees of latitude
+            const buckets = {};
+            for (const code of codes) {
+                const ld = LANG_DATA[code];
+                if (!ld) continue;
+                const key = Math.round(ld.lat / STACK_DEG) + ',' + Math.round(ld.lng / STACK_DEG);
+                (buckets[key] = buckets[key] || []).push(code);
+            }
+            const out = {};
+            for (const arr of Object.values(buckets)) {
+                arr.sort((a, b) => LANG_DATA[a].lat - LANG_DATA[b].lat);
+                const n = arr.length;
+                const STEP_DEG = 1.6;  // vertical stack offset in degrees lat
+                for (let i = 0; i < n; i++) {
+                    const offset = (i - (n - 1) / 2) * STEP_DEG;
+                    out[arr[i]] = { latOffset: offset, lngOffset: 0 };
+                }
+            }
+            return out;
+        }
+
+        function updateMarkers() {
+            const charData = HAN_DATA[currentChar];
+            if (!charData) return;
+
+            if (is3D) {
+                updateGlobeLabels();
+                return;
+            }
+
+            // Remove old
+            markers.forEach(m => map.removeLayer(m));
+            markers.length = 0;
+
+            const codes = HAN_LANGS.filter(c => LANG_DATA[c] && (charData.surface[c] || charData.ipa[c]));
+            const stacks = computeStacks(codes);
+
+            for (const code of codes) {
+                const ld = LANG_DATA[code];
+                const stack = stacks[code] || { latOffset: 0, lngOffset: 0 };
+                const html = buildLabelHTML(code, charData);
+                if (!html) continue;
+                const icon = L.divIcon({
+                    className: 'lang-label-icon',
+                    html: '<div class="lang-label" data-code="' + code + '" tabindex="0">' + html + '</div>',
+                    iconSize: [120, 60],
+                    iconAnchor: [60, 30],
+                });
+                const m = L.marker([ld.lat + stack.latOffset, ld.lng + stack.lngOffset], { icon, riseOnHover: true });
+                m.on('click', (e) => {
+                    L.DomEvent.stopPropagation(e);
+                    showLangInfo(code);
+                });
+                m.addTo(map);
+                markers.push(m);
+            }
+
+            // Mark the selected one
+            const ip = document.getElementById('lang-info');
+            if (ip.classList.contains('visible') && ip.dataset.code) {
+                markSelected(ip.dataset.code);
+            }
+        }
+
+        function markSelected(code) {
+            document.querySelectorAll('.lang-label.selected, .globe-label.selected').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.lang-label[data-code="' + code + '"], .globe-label[data-code="' + code + '"]').forEach(el => el.classList.add('selected'));
+        }
+
+        // ===== Info panel =====
+        const infoPanel = document.getElementById('lang-info');
+        const infoContent = document.getElementById('info-content');
+        document.getElementById('info-close').addEventListener('click', () => {
+            infoPanel.classList.remove('visible');
+            infoPanel.dataset.code = '';
+            document.querySelectorAll('.lang-label.selected, .globe-label.selected').forEach(el => el.classList.remove('selected'));
+        });
+
+        function getMetaText(code, key) {
+            const m = HAN_LANG_META[code];
+            if (!m || !m[key]) return '';
+            return m[key][uiLang] || m[key].en || m[key].ja || '';
+        }
+
+        function showLangInfo(code) {
+            const ld = LANG_DATA[code];
+            if (!ld) return;
+            infoPanel.dataset.code = code;
+            const name = getLangName(code);
+            const native = ld.native || '';
+            const kind = getMetaText(code, 'kind');
+            const desc = getMetaText(code, 'desc');
+
+            // Country / region brief — derived from LANG_DATA optional fields
+            let region = '';
+            if (ld.countries) region = Array.isArray(ld.countries) ? ld.countries.join(', ') : String(ld.countries);
+            else if (ld.country) region = ld.country;
+
+            let html = '';
+            html += '<h2>' + name + '</h2>';
+            if (native && native !== name) html += '<div class="native-name">' + native + '</div>';
+            if (kind) html += '<div class="kind-line">' + kind + '</div>';
+            if (desc) html += '<div class="desc">' + desc + '</div>';
+
+            // Readings table for ALL 60 characters
+            html += '<div style="font-size:11px;color:#666;font-weight:600;margin:6px 0 4px;">' + ht('readings') + '</div>';
+            html += '<table>';
+            html += '<thead><tr><th>' + ht('char') + '</th><th>' + ht('surface') + '</th><th>' + ht('pronunciation') + '</th></tr></thead>';
+            html += '<tbody>';
+            for (const ch of HAN_LIST) {
+                const data = HAN_DATA[ch];
+                if (!data) continue;
+                const s = (data.surface && data.surface[code]) || '—';
+                const i = (data.ipa && data.ipa[code]) || '';
+                html += '<tr>';
+                html += '<td class="char">' + ch + '</td>';
+                html += '<td class="surf">' + s + '</td>';
+                html += '<td class="ipa">' + (i ? '[' + i + ']' : '—') + '</td>';
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+
+            infoContent.innerHTML = html;
+            infoPanel.classList.add('visible');
+            markSelected(code);
+        }
+
+        // Click outside markers / info → close info
+        map.on('click', () => {
+            infoPanel.classList.remove('visible');
+            infoPanel.dataset.code = '';
+            document.querySelectorAll('.lang-label.selected').forEach(el => el.classList.remove('selected'));
+        });
+
+        // ===== Toggles (form / pron / name / native-vs-translated) =====
+        function bindToggle(id, prop) {
+            const btn = document.getElementById(id);
+            btn.addEventListener('click', () => {
+                window[prop] = !window[prop];  // not used; we just flip the local
+            });
+        }
+        document.getElementById('toggle-word').addEventListener('click', function () {
+            showWord = !showWord;
+            this.classList.toggle('active', showWord);
+            this.setAttribute('aria-pressed', String(showWord));
+            this.querySelector('.onoff').textContent = showWord ? 'ON' : 'OFF';
+            updateMarkers();
+        });
+        document.getElementById('toggle-ipa').addEventListener('click', function () {
+            showIpa = !showIpa;
+            this.classList.toggle('active', showIpa);
+            this.setAttribute('aria-pressed', String(showIpa));
+            this.querySelector('.onoff').textContent = showIpa ? 'ON' : 'OFF';
+            updateMarkers();
+        });
+        document.getElementById('toggle-name').addEventListener('click', function () {
+            showName = !showName;
+            this.classList.toggle('active', showName);
+            this.setAttribute('aria-pressed', String(showName));
+            this.querySelector('.onoff').textContent = showName ? 'ON' : 'OFF';
+            updateMarkers();
+        });
+        document.getElementById('name-native').addEventListener('click', () => {
+            useNative = true;
+            document.getElementById('name-native').classList.add('active');
+            document.getElementById('name-translated').classList.remove('active');
+            document.getElementById('name-native').setAttribute('aria-checked', 'true');
+            document.getElementById('name-translated').setAttribute('aria-checked', 'false');
+            updateMarkers();
+        });
+        document.getElementById('name-translated').addEventListener('click', () => {
+            useNative = false;
+            document.getElementById('name-translated').classList.add('active');
+            document.getElementById('name-native').classList.remove('active');
+            document.getElementById('name-translated').setAttribute('aria-checked', 'true');
+            document.getElementById('name-native').setAttribute('aria-checked', 'false');
+            updateMarkers();
+        });
+
+        // ===== Zoom buttons =====
+        document.getElementById('map-zoom-in').addEventListener('click', () => {
+            if (is3D && globe) {
+                const pov = globe.pointOfView();
+                globe.pointOfView({ altitude: Math.max(0.1, pov.altitude * 0.6) }, 300);
+            } else {
+                map.zoomIn();
+            }
+        });
+        document.getElementById('map-zoom-out').addEventListener('click', () => {
+            if (is3D && globe) {
+                const pov = globe.pointOfView();
+                globe.pointOfView({ altitude: Math.min(6, pov.altitude / 0.6) }, 300);
+            } else {
+                map.zoomOut();
+            }
+        });
+
+        // ===== 3D Globe =====
+        const globeEl = document.getElementById('globe');
+        const mapEl = document.getElementById('map');
+        let globe = null;
+        function initGlobe() {
+            if (globe) return;
+            if (typeof Globe === 'undefined') return;
+            globe = Globe()(globeEl)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+                .showAtmosphere(true)
+                .atmosphereColor('#4488ff')
+                .atmosphereAltitude(0.2)
+                .htmlElementsData([])
+                .htmlElement(d => d.el)
+                .htmlLat(d => d.lat)
+                .htmlLng(d => d.lng)
+                .htmlAltitude(0.01)
+                .onGlobeClick(() => {
+                    infoPanel.classList.remove('visible');
+                    document.querySelectorAll('.globe-label.selected').forEach(el => el.classList.remove('selected'));
+                });
+            function resize() {
+                globe.width(window.innerWidth);
+                globe.height(window.innerHeight);
+            }
+            window.addEventListener('resize', resize);
+            resize();
+            const c = map.getCenter();
+            globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: 1.8 });
+
+            // Click delegation for globe labels
+            globeEl.addEventListener('click', (e) => {
+                const lab = e.target.closest('.globe-label');
+                if (lab && lab.dataset.code) {
+                    e.stopPropagation();
+                    showLangInfo(lab.dataset.code);
+                }
+            });
+        }
+
+        function updateGlobeLabels() {
+            if (!globe) return;
+            const charData = HAN_DATA[currentChar];
+            if (!charData) return;
+            const codes = HAN_LANGS.filter(c => LANG_DATA[c] && (charData.surface[c] || charData.ipa[c]));
+            const stacks = computeStacks(codes);
+            const data = [];
+            for (const code of codes) {
+                const ld = LANG_DATA[code];
+                const stack = stacks[code] || { latOffset: 0, lngOffset: 0 };
+                const html = buildLabelHTML(code, charData);
+                if (!html) continue;
+                const el = document.createElement('div');
+                el.className = 'globe-label';
+                el.dataset.code = code;
+                el.innerHTML = html;
+                data.push({ lat: ld.lat + stack.latOffset, lng: ld.lng + stack.lngOffset, el });
+            }
+            globe.htmlElementsData(data);
+            // Re-mark selected
+            const ip = document.getElementById('lang-info');
+            if (ip.classList.contains('visible') && ip.dataset.code) markSelected(ip.dataset.code);
+        }
+
+        const btn3D = document.getElementById('toggle-3d');
+        btn3D.addEventListener('click', () => {
+            if (typeof Globe === 'undefined') { btn3D.disabled = true; return; }
+            is3D = !is3D;
+            btn3D.classList.toggle('active', is3D);
+            btn3D.setAttribute('aria-pressed', String(is3D));
+            btn3D.textContent = is3D ? '3D' : '2D';
+            document.body.classList.toggle('is-3d', is3D);
+            if (is3D) {
+                mapEl.style.display = 'none';
+                globeEl.style.display = 'block';
+                initGlobe();
+                updateGlobeLabels();
+            } else {
+                globeEl.style.display = 'none';
+                mapEl.style.display = 'block';
+                map.invalidateSize();
+                updateMarkers();
+            }
+        });
+
+        // Graceful fallback if Globe.gl CDN failed
+        if (typeof Globe === 'undefined') {
+            btn3D.disabled = true;
+            btn3D.style.opacity = '0.4';
+            btn3D.title = '3D globe unavailable';
+        }
+
+        // ===== URL hash (char) =====
+        function updateHash() {
+            const params = new URLSearchParams();
+            params.set('c', currentChar);
+            const newHash = '#' + params.toString();
+            if (location.hash !== newHash) history.replaceState(null, '', newHash);
+        }
+        function loadHash() {
+            const h = (location.hash || '').replace(/^#/, '');
+            if (!h) return;
+            const params = new URLSearchParams(h);
+            const c = params.get('c');
+            if (c && HAN_DATA[c]) currentChar = c;
+        }
+        loadHash();
+        document.getElementById('char-button-glyph').textContent = currentChar;
+
+        // ===== Hamburger drawer close-on-outside-click =====
+        (function () {
+            const cb = document.getElementById('hdr-menu-toggle');
+            if (!cb) return;
+            document.addEventListener('click', (e) => {
+                if (!cb.checked) return;
+                if (e.target.closest('.header-collapse')) return;
+                if (e.target.closest('.hamburger-btn')) return;
+                if (e.target === cb) return;
+                cb.checked = false;
+            }, true);
+        })();
+
+        // ===== Initial render =====
+        map.on('zoomend', updateMarkers);
+        map.on('moveend', updateMarkers);
+        updateMarkers();
+
+        // Open the character modal on initial load so the user sees the options.
+        // Skip if the user landed via a deep link with ?c=… in the hash.
+        if (!location.hash) {
+            setTimeout(openCharModal, 200);
+        }
+    })();
+    </script>
+</body>
+</html>
