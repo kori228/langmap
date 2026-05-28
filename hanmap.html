@@ -929,6 +929,11 @@
         .compare-table .surface { font-size: 14px; }
         .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
         .compare-table .unattested { color: #aaa; font-style: italic; }
+        /* Stacked readings inside a single cell (HAN_VARIANTS): each
+           reading block gets a thin separator and its label tag. */
+        .compare-table .cmp-reading { padding: 2px 0; }
+        .compare-table .cmp-reading + .cmp-reading { border-top: 1px dashed #eee; margin-top: 4px; padding-top: 4px; }
+        .compare-table .cmp-label { display: block; font-size: 10px; color: #999; margin-top: 1px; }
         .compare-add-btn {
             display: inline-block; margin: 10px 0; padding: 4px 10px; /* Audit Task 223: symmetric vertical margin (was margin-top:10px which left no bottom space, causing visual collision with the next block) */
             font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
@@ -7119,20 +7124,44 @@
                 const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
                 html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
                 for (const code of _compareList) {
-                    const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
-                    if (!cell || cell[0] === '—') {
+                    // HAN_VARIANTS, when present for (char, code), supplies
+                    // multiple readings (e.g. ja 漢音/呉音/唐音, nan 文白
+                    // 異讀, ko 頭音法則). Stack them vertically in the cell.
+                    const variants = (typeof HAN_VARIANTS !== 'undefined'
+                        && HAN_VARIANTS[w.id] && HAN_VARIANTS[w.id][code]) || null;
+                    let cellRows = [];
+                    if (variants && variants.length) {
+                        for (const v of variants) {
+                            let s = v.surface || '', i = v.ipa || '';
+                            if (typeof hanmapNormalize === 'function') {
+                                const norm = hanmapNormalize(code, s, i, w.id);
+                                s = norm[0]; i = norm[1];
+                            }
+                            cellRows.push({ surface: s, ipa: i, label: v.label || '' });
+                        }
+                    } else {
+                        const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
+                        if (cell && cell[0] !== '—') {
+                            let s = cell[0] || '', i = cell[1] || '';
+                            if (typeof hanmapNormalize === 'function') {
+                                const norm = hanmapNormalize(code, s, i, w.id);
+                                s = norm[0]; i = norm[1];
+                            }
+                            cellRows.push({ surface: s, ipa: i, label: '' });
+                        }
+                    }
+                    if (cellRows.length === 0) {
                         html += '<td class="unattested">—</td>';
                     } else {
-                        let surface = cell[0] || '';
-                        let ipa = cell[1] || '';
-                        // Hanmap normalisation: same rules as map labels.
-                        if (typeof hanmapNormalize === 'function') {
-                            const norm = hanmapNormalize(code, surface, ipa, w.id);
-                            surface = norm[0]; ipa = norm[1];
+                        html += '<td>';
+                        for (const r of cellRows) {
+                            html += '<div class="cmp-reading">';
+                            if (r.surface) html += '<span class="surface" dir="auto">' + escapeHtml(r.surface) + '</span>';
+                            if (r.ipa && r.ipa !== '—') html += '<span class="ipa">' + escapeHtml(r.ipa) + '</span>';
+                            if (r.label) html += '<span class="cmp-label">' + escapeHtml(r.label) + '</span>';
+                            html += '</div>';
                         }
-                        html += '<td>' + (surface ? '<span class="surface" dir="auto">' + escapeHtml(surface) + '</span>' : '')
-                             + (ipa && ipa !== '—' ? '<span class="ipa">' + escapeHtml(ipa) + '</span>' : '')
-                             + '</td>';
+                        html += '</td>';
                     }
                 }
                 html += '</tr>';
