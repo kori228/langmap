@@ -2675,7 +2675,17 @@
     </svg>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
+    <!-- Hanmap: 3D globe view is intentionally hidden (the toggle button is
+         display:none — see styles around line 402). Globe.gl (~1 MB) is NOT
+         loaded on the typical 2D path; the existing missing-deps fallback
+         below disables the 3D toggle and the ?g3d=1 URL guard below loads
+         globe.gl on demand if a user navigates with that param. -->
+    <script>
+    if (location.search.includes('g3d=1') && typeof Globe === 'undefined') {
+        // Synchronous-blocking insert so subsequent inline scripts see Globe.
+        document.write('<script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"><\/script>');
+    }
+    </script>
     <!-- Audit Task 125: graceful CDN fallback. If Leaflet fails to load,
          show a clear error panel instead of leaving a blank map. If only
          Globe.gl fails, the 2D map still works; the 3D toggle is disabled. -->
