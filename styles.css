@@ -50,6 +50,34 @@ body {
     letter-spacing: -0.5px; white-space: nowrap;
 }
 .site-header-bar .logo:hover { color: #333; }
+/* Page-indicator badge sitting just to the right of the LangMap wordmark.
+   Tells the user at a glance which sub-section they're in (語順/単語/漢字/
+   ツリー) using single-char labels (no i18n needed) and a per-section
+   colour. */
+.site-header-bar .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    border-radius: 4px;
+    vertical-align: 5px;
+}
+.site-header-bar .logo-badge svg {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.site-header-bar .logo-badge-han   { background: #c0392b; }   /* Hanmap     */
+.site-header-bar .logo-badge-word  { background: #2e8b57; }   /* Wordmap    */
+.site-header-bar .logo-badge-tree  { background: #8b4513; }   /* Tree       */
+.site-header-bar .logo-badge-order { background: #2563eb; }   /* Word Order */
 .site-header-bar .subtitle {
     font-size: 12px; font-weight: 400; color: #888; margin-left: 4px;
 }

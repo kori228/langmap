@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=93">
+    <link rel="stylesheet" href="styles.css?v=96">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -529,6 +529,24 @@
             opacity: 0.78;
             margin-left: 0.15em;
             font-weight: 400;
+        }
+        /* Popup-table cells that may hold historical / rare scripts
+           (Phags-pa, Tangut, Khitan, Mongolian, Sogdian, Manchu, etc.).
+           Same font stack as the map labels so glyphs actually render. */
+        .hanmap-script-cell {
+            font-family:
+                "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
+                "Noto Serif Tangut",
+                "Noto Sans Phags Pa", "Microsoft PhagsPa",
+                "Noto Sans Mongolian", "Mongolian Baiti",
+                "Noto Sans Old Turkic",
+                "Noto Sans Sogdian",
+                "Noto Serif Khitan Small Script",
+                "Noto Sans Manichaean",
+                "Noto Sans Egyptian Hieroglyphs",
+                "Charis SIL", "Gentium Plus", serif;
         }
         /* HAN_VARIANTS label inline on the map (白讀/文讀, 原音/頭音法則, etc.). */
         .hanmap-label {
@@ -2057,7 +2075,59 @@
             color: #fff;
         }
         .hm-lf-chip.active:hover { background: #1765c4; }
+        /* Category switch (古代 / 訓読) is OFF → chips in that category
+           are visually inert. The user must turn the switch back ON
+           to make them selectable again. */
+        .hm-lf-chip.is-disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            background: #f7f7f9;
+            color: #888;
+            border-style: dashed;
+        }
+        .hm-lf-chip.is-disabled:hover { background: #f7f7f9; color: #888; }
         .hm-lf-tool-btn:hover { background: #f0f0f0; }
+        /* iOS-style switch toggles for category-set master toggles
+           (古代語 / 訓読み etc). Renders a track + sliding thumb so the
+           ON/OFF state is unambiguous. */
+        .hm-lf-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #333;
+            padding: 2px 8px 2px 4px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 14px;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+        }
+        .hm-lf-switch:hover { background: #f3f3f3; }
+        .hm-lf-switch-track {
+            position: relative;
+            width: 30px;
+            height: 16px;
+            border-radius: 999px;
+            background: #d0d0d0;
+            transition: background 0.18s ease;
+            flex-shrink: 0;
+        }
+        .hm-lf-switch-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            transition: left 0.18s ease;
+        }
+        .hm-lf-switch.is-on .hm-lf-switch-track { background: #1a1a2e; }
+        .hm-lf-switch.is-on .hm-lf-switch-thumb { left: 16px; }
+        .hm-lf-switch.is-on { color: #1a1a2e; font-weight: 600; }
         .hm-lf-chip-code {
             font-size: 9px;
             opacity: 0.65;
@@ -2091,7 +2161,7 @@
 <body>
     <!-- Header -->
     <div class="site-header-bar">
-        <a href="wordmap.html" class="logo">LangMap</a>
+        <a href="index.html" class="logo">LangMap<span class="logo-badge logo-badge-han" aria-label="Hanmap" title="Hanmap"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span></a>
         <input type="checkbox" id="hdr-menu-toggle" class="hdr-menu-toggle" aria-label="Menu toggle">
         <button type="button" id="chrome-toggle" class="chrome-toggle-btn" aria-label="Hide UI overlays" title="Hide UI overlays">
             <svg class="icon-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg>
@@ -2265,8 +2335,8 @@
             <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
             <button type="button" data-act="reset" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">リセット</button>
             <span style="border-left:1px solid #ddd;margin:2px 4px"></span>
-            <button type="button" data-act="toggle-ancient" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">古代語</button>
-            <button type="button" data-act="toggle-kun"     class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">訓読み</button>
+            <button type="button" data-act="toggle-ancient" class="hm-lf-tool-btn hm-lf-switch" aria-pressed="false"><span class="hm-lf-switch-track"><span class="hm-lf-switch-thumb"></span></span><span class="hm-lf-switch-text">古代語</span></button>
+            <button type="button" data-act="toggle-kun"     class="hm-lf-tool-btn hm-lf-switch" aria-pressed="false"><span class="hm-lf-switch-track"><span class="hm-lf-switch-thumb"></span></span><span class="hm-lf-switch-text">訓読み</span></button>
             <span style="flex:1"></span>
             <span id="hm-lang-filter-count" style="font-size:11px;color:#777;align-self:center">0 / 0</span>
         </div>
@@ -2646,7 +2716,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=18"></script>
+    <script src="hanmap_data.js?v=26"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -2758,7 +2828,7 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v4';   // bumped — kun set widened
+        const LS_KEY = 'hm.langFilter.v5';   // bumped — HAN_LANGS expanded to 95 codes
                                               //   to include mnc/sjo/za/
                                               //   bca/juc/txg/zkt/protos
                                               //   (mutually exclusive
@@ -2775,19 +2845,24 @@
         //   - Explicit native-reading layers: ja_kun, ko_hun, vi_nom
         //   - Modern non-Sinitic Sinosphere langs: mnc, sjo, za, bca
         //   - Extinct non-Sinitic in the Sinosphere: juc, txg, zkt
-        //   - Proto-language reconstructions: pst, ptb, pko, pja, ptung,
-        //     paa, ptai, pmgl, phm
+        //   - NON-Sino-Tibetan proto-languages (native roots, not Sinitic
+        //     ancestors): pko, pja, ptung, paa, ptai, pmgl, phm
+        //   pst / ptb are Sino-Tibetan family proto-languages — those are
+        //   phonological ancestors of the Chinese reading itself, so they
+        //   belong under 古代語 (ANCIENT_SINO_CODES), NOT here.
         const KUN_CODES = [
             'ja_kun', 'ko_hun', 'vi_nom',
             'mnc', 'sjo', 'za', 'bca',
             'juc', 'txg', 'zkt',
-            'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+            'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
         ];
-        // 古代語 (ancient) = historical Sino-LOAN readings only. Non-Sino
-        // historicals (juc/txg/zkt and the protos) are filed under 訓読
-        // above, NOT here, so the two toggles never overlap.
+        // 古代語 (ancient) = historical Sinitic readings — both direct
+        // borrowings into other languages (ja_ojp / ko_mid / vi_han) AND
+        // Sinitic family ancestors (Old/Middle/Late Chinese reconstructions
+        // plus Proto-Sino-Tibetan, Proto-Tibeto-Burman).
         const ANCIENT_SINO_CODES = [
             'zh_han', 'zh_tang', 'zh_song', 'zh_yuan', 'zh_phagspa', 'zh_kanbun',
+            'pst', 'ptb',
             'ko_mid', 'ja_ojp', 'vi_han', 'vi_ohan',
         ];
         // Both sets are OFF by default — the user sees only modern
@@ -3150,14 +3225,25 @@
                         all: '_all', none: '_none', reset: '_reset',
                         'toggle-ancient': '_ancient', 'toggle-kun': '_kun',
                     };
-                    if (map[a]) b.textContent = L(map[a]);
+                    if (!map[a]) return;
+                    // For switch-style buttons (.hm-lf-switch) only update
+                    // the inner .hm-lf-switch-text span — the track HTML
+                    // around it must survive each i18n refresh.
+                    const txtSpan = b.querySelector('.hm-lf-switch-text');
+                    if (txtSpan) txtSpan.textContent = L(map[a]);
+                    else b.textContent = L(map[a]);
                 });
-                // Reflect current ON/OFF state on the two stateful toggles
-                // so the user can see at a glance which category is
-                // active. Active = solid dark; inactive = outline.
+                // Reflect current ON/OFF state. Switch-style toggles use
+                // the .is-on class; other buttons fall back to inline
+                // dark-fill styling.
                 const setBtnActive = (act, isActive) => {
                     const b = toolbar.querySelector('button[data-act="' + act + '"]');
                     if (!b) return;
+                    if (b.classList.contains('hm-lf-switch')) {
+                        b.classList.toggle('is-on', !!isActive);
+                        b.setAttribute('aria-pressed', String(!!isActive));
+                        return;
+                    }
                     if (isActive) {
                         b.style.background = '#1a1a2e';
                         b.style.color = '#fff';
@@ -3242,15 +3328,15 @@
 
             // Modern row
             const modernCodes = g.modern.filter(c => offered.has(c));
-            if (modernCodes.length) wrap.appendChild(renderEraRow(L('_modern'), modernCodes));
+            if (modernCodes.length) wrap.appendChild(renderEraRow(L('_modern'), modernCodes, offered));
             // Historical row
             const histCodes = g.historical.filter(c => offered.has(c));
-            if (histCodes.length) wrap.appendChild(renderEraRow(L('_historical'), histCodes));
+            if (histCodes.length) wrap.appendChild(renderEraRow(L('_historical'), histCodes, offered));
 
             return wrap;
         }
 
-        function renderEraRow(label, codes) {
+        function renderEraRow(label, codes, offered) {
             const row = document.createElement('div');
             row.className = 'hm-lf-era-row';
             const lab = document.createElement('div');
@@ -3259,11 +3345,23 @@
             row.appendChild(lab);
             const wrap = document.createElement('div');
             wrap.className = 'hm-lf-chip-wrap';
+            // A chip is "disabled" when its category-master switch is OFF
+            // (i.e. NO code in that category is currently selected). The
+            // user can re-enable the whole category from the switch above.
+            const ancientOff = ANCIENT_SINO_CODES.every(c => !selected.has(c) || !offered.has(c));
+            const kunOff     = KUN_CODES.every(c => !selected.has(c) || !offered.has(c));
+            const isDisabled = (code) => {
+                if (ancientOff && ANCIENT_SINO_CODES.includes(code)) return true;
+                if (kunOff && KUN_CODES.includes(code)) return true;
+                return false;
+            };
             for (const code of codes) {
                 const chip = document.createElement('button');
                 chip.type = 'button';
-                chip.className = 'hm-lf-chip' + (selected.has(code) ? ' active' : '');
+                const disabled = isDisabled(code);
+                chip.className = 'hm-lf-chip' + (selected.has(code) ? ' active' : '') + (disabled ? ' is-disabled' : '');
                 chip.setAttribute('data-code', code);
+                if (disabled) chip.setAttribute('aria-disabled', 'true');
                 const nm = document.createElement('span');
                 nm.textContent = chipNameFor(code);
                 chip.appendChild(nm);
@@ -3272,9 +3370,14 @@
                 cd.textContent = code;
                 chip.appendChild(cd);
                 chip.addEventListener('click', () => {
+                    if (chip.classList.contains('is-disabled')) return;
                     if (selected.has(code)) selected.delete(code);
                     else selected.add(code);
                     chip.classList.toggle('active');
+                    // Re-render in case this click flipped a category's
+                    // master-switch state (e.g. last-selected chip in a
+                    // category just got deselected).
+                    renderPanel();
                     refreshTriggers();
                 });
                 wrap.appendChild(chip);
@@ -4294,7 +4397,15 @@
                 if (select.value !== ch) select.value = ch;
                 updateMarkers(ch);
                 try { updateHash && updateHash(); } catch (_) {}
+                // Re-render the lang-info panel if it's open so the new
+                // current-char row gets highlighted.
+                if (window.__hanmapCurrentLangInfo
+                    && typeof hanmapRenderLangInfo === 'function') {
+                    hanmapRenderLangInfo(window.__hanmapCurrentLangInfo);
+                }
             }
+            // Expose so the popup-table click delegate can call it.
+            window.__hanmapSetChar = setChar;
 
             function buildModal() {
                 body.innerHTML = '';
@@ -4360,16 +4471,15 @@
                 cbtn.setAttribute('aria-busy', 'true');
 
                 const cellH = cbtn.clientHeight;
-                // Build reel: current char at top + intermediates + finalCh.
-                // Fewer cells than the earlier 14 so the slowdown phase has
-                // enough time per cell to be readable (user reported the
-                // tail of the previous animation flew by invisibly).
-                const N = 9;
+                // Build the reel sequence: enough cells that the snap-tick
+                // animation has visible motion throughout. The exact count
+                // doesn't matter much — we just need ≥ 1 cell per ~30ms of
+                // duration so the eye sees continuous "ticking".
+                const N = 24;
                 const cells = [currentWord];
                 for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
                 cells.push(finalCh);
 
-                // Save existing button styles we override.
                 const prevOverflow = cbtn.style.overflow;
                 const prevPos = cbtn.style.position;
                 cbtn.textContent = '';
@@ -4377,48 +4487,60 @@
                 cbtn.style.position = 'relative';
 
                 const reel = document.createElement('div');
-                reel.style.cssText = 'display:flex;flex-direction:column;transition:none;will-change:transform;transform:translateY(0)';
+                // position:absolute anchors the reel to the button's
+                // top-left, BYPASSING the parent's align-items:center
+                // (which would otherwise vertically center this tall child
+                // and offset every translateY by half its height — the
+                // reason previous CSS-transition tries appeared "stuck on
+                // whitespace" mid-cell). transition:none guards against any
+                // inherited transform timing.
+                reel.style.cssText = 'position:absolute;top:0;left:0;width:100%;display:flex;flex-direction:column;transition:none;will-change:transform;transform:translateY(0)';
+                // Match the cell font to the button's own font so there's
+                // no visible size jump when the reel is torn down and
+                // replaced with cbtn.textContent = finalCh.
+                const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
                 for (const ch of cells) {
                     const c = document.createElement('div');
                     c.textContent = ch;
-                    c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1';
+                    c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
                     reel.appendChild(c);
                 }
                 cbtn.appendChild(reel);
 
-                // Force reflow before applying transition so the
-                // browser sees the start state at translateY(0).
-                void reel.offsetHeight;
-
-                const totalShift = (cells.length - 1) * cellH;
-                // 0.8s with a gentler ease-out (cubic) so the deceleration
-                // tail is actually visible instead of snapping to the
-                // final cell. User reported the previous 0.5s + steep
-                // cubic-bezier(0.2,0.7,0.25,1) hid the second half.
-                reel.style.transition = 'transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)';
-                reel.style.transform = 'translateY(-' + totalShift + 'px)';
-
                 const finish = () => {
-                    // Clean reel and restore button styles.
                     while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
                     cbtn.style.overflow = prevOverflow || '';
                     cbtn.style.position = prevPos || '';
                     cbtn.textContent = finalCh;
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
-                    setChar(finalCh);   // redraws map with new char
+                    setChar(finalCh);
                 };
-                // Use transitionend (more reliable than fixed setTimeout
-                // if the browser frame-drops), with a 600ms safety net.
-                let done = false;
-                const onEnd = () => {
-                    if (done) return;
-                    done = true;
-                    reel.removeEventListener('transitionend', onEnd);
-                    finish();
+
+                // requestAnimationFrame-driven cell-by-cell snap. Unlike CSS
+                // transition (which interpolates smoothly between two cells
+                // — leaving the viewport showing whitespace at mid-cell
+                // positions), this jumps the reel by exactly cellH each
+                // tick so the user always sees a whole glyph centered in
+                // the viewport. Easing controls how MUCH time between ticks,
+                // not how SMOOTHLY two cells blend.
+                const totalDuration = 700;        // ms
+                const totalCells    = cells.length - 1;  // final cell index
+                const startTime     = performance.now();
+                let lastIdx = -1;
+                const tick = (now) => {
+                    const t = Math.min(1, (now - startTime) / totalDuration);
+                    // easeOutCubic — fast at start, decisive snap at end.
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    const idx = Math.min(totalCells, Math.round(eased * totalCells));
+                    if (idx !== lastIdx) {
+                        lastIdx = idx;
+                        reel.style.transform = 'translateY(-' + (idx * cellH) + 'px)';
+                    }
+                    if (t < 1) requestAnimationFrame(tick);
+                    else finish();
                 };
-                reel.addEventListener('transitionend', onEnd);
-                setTimeout(onEnd, 950);
+                requestAnimationFrame(tick);
             });
             // Localise the modal title + random button on UI-lang change.
             function localizeChrome() {
@@ -5308,7 +5430,15 @@
                     if (hanmapLooksLikeIpa(val)) { ipaOut = val; surface = ''; }
                     else                          { surface = val; ipaOut = ''; }
                 }
-                native = '';  // Sinitic 独自文字 = the char itself; omitted.
+                // Sinitic 独自文字 is usually the Han character itself (so
+                // we drop it to avoid duplicating the giant char), UNLESS
+                // the stored native is a distinct script (Phags-pa for
+                // zh_phagspa, Tangut for zh_tang_xixia, etc.) — keep those.
+                if (storedNative && storedNative !== currentChar) {
+                    native = storedNative;
+                } else {
+                    native = '';
+                }
             } else if (code === 'ja') {
                 // Japanese: native = Katakana (Hiragana for the kun-yomi
                 // variant — but that arrives as a HAN_VARIANTS row, not the
@@ -5501,18 +5631,64 @@
             return m ? m[1].trim() : name;
         }
 
+        // Hanmap-specific short display names for codes whose canonical
+        // lang_names entries are too long for map labels (e.g. ja_ojp
+        // 上代日本語漢字音 → 上代日本音). Other UI langs already use
+        // reasonably compact forms ("Old Japanese on-yomi", "Zainichi
+        // Korean Sino-reading"), so we only override Japanese and a few
+        // other east-asian UIs where the canonical form runs long.
+        const HAN_SHORT_NAMES = {
+            ja_ojp:     { ja:'上代日本音',       ko:'고대 일본음',     zh:'上代日語音',     yue:'上代日語音' },
+            ko_zai:     { ja:'在日韓国音',       ko:'재일 한국음',     zh:'在日韓國音',     yue:'在日韓國音' },
+            ko_mid:     { ja:'中世韓国音',       ko:'중세 한국음',     zh:'中世韓國音',     yue:'中世韓國音' },
+            ko_hun:     { ja:'韓国訓 (固有)',    ko:'한국 훈독',       zh:'韓國訓讀',       yue:'韓國訓讀' },
+            ja_kun:     { ja:'訓読み',           ko:'일본 훈독',       zh:'日語訓讀',       yue:'日語訓讀' },
+            vi_ohan:    { ja:'古漢越音',         ko:'고대 한월음',     zh:'古漢越音',       yue:'古漢越音' },
+            vi_han:     { ja:'漢越音',           ko:'한월음',          zh:'漢越音',         yue:'漢越音' },
+            vi_nom:     { ja:'字喃',             ko:'쯔놈',            zh:'喃字',           yue:'喃字' },
+            bo_sino:    { ja:'現代蔵音',         ko:'현대 티베트음',   zh:'現代藏音',       yue:'現代藏音' },
+            zh_phagspa: { ja:'八思巴字音',       ko:'파스파 음',       zh:'八思巴字音',     yue:'八思巴字音' },
+            zh_yuan:    { ja:'元代官話',         ko:'원대 관화',       zh:'元代官話',       yue:'元代官話' },
+            zh_kanbun:  { ja:'漢文訓読',         ko:'한문 훈독',       zh:'漢文訓讀',       yue:'漢文訓讀' },
+            zh_th:      { ja:'タイ華僑音',       ko:'태국 화교음',     zh:'泰國華僑音',     yue:'泰國華僑音' },
+            zh_us:      { ja:'北米華僑音',       ko:'북미 화교음',     zh:'北美華僑音',     yue:'北美華僑音' },
+            yue_us:     { ja:'北米広東語',       ko:'북미 광동어',     zh:'北美粵語',       yue:'北美粵語' },
+            nan_pera:   { ja:'プラナカン福建語', ko:'프라나칸 민남어', zh:'娘惹福建話',     yue:'娘惹福建話' },
+            nan_id:     { ja:'インドネシア福建語', ko:'인도네시아 민남어', zh:'印尼福建話', yue:'印尼福建話' },
+            nan_my:     { ja:'マレーシア福建語', ko:'말레이시아 민남어', zh:'馬來西亞福建話', yue:'馬來西亞福建話' },
+            nan_sg:     { ja:'シンガポール福建語', ko:'싱가포르 민남어', zh:'新加坡福建話', yue:'新加坡福建話' },
+            nan_th:     { ja:'タイ華僑潮州語',   ko:'태국 화교 조주어', zh:'泰國華僑潮州話', yue:'泰國華僑潮州話' },
+            sjo:        { ja:'シベ語',           ko:'시버어',          zh:'錫伯語',         yue:'錫伯語' },
+            ja_heian:   { ja:'平安日本語',       ko:'헤이안 일본어',   zh:'平安日語',       yue:'平安日語' },
+            ja_edo:     { ja:'江戸日本語',       ko:'에도 일본어',     zh:'江戶日語',       yue:'江戶日語' },
+            wuu:        { ja:'上海語',           ko:'상하이어',        zh:'上海話',         yue:'上海話' },
+            // Proto languages — shorten "祖語" to "祖" suffix for compactness
+            pst:  { ja:'漢蔵祖', ko:'한장조어',     zh:'漢藏祖',     yue:'漢藏祖' },
+            ptb:  { ja:'蔵緬祖', ko:'장면조어',     zh:'藏緬祖',     yue:'藏緬祖' },
+            pko:  { ja:'朝鮮祖', ko:'조선조어',     zh:'朝鮮祖',     yue:'朝鮮祖' },
+            pja:  { ja:'日本祖', ko:'일본조어',     zh:'日本祖',     yue:'日本祖' },
+            ptung:{ ja:'通古斯祖', ko:'퉁구스조어', zh:'通古斯祖',   yue:'通古斯祖' },
+            paa:  { ja:'南亜祖', ko:'남아시아조어', zh:'南亞祖',     yue:'南亞祖' },
+            ptai: { ja:'タイ祖', ko:'타이조어',     zh:'壯侗祖',     yue:'壯侗祖' },
+            pmgl: { ja:'蒙古祖', ko:'몽골조어',     zh:'蒙古祖',     yue:'蒙古祖' },
+            phm:  { ja:'苗瑶祖', ko:'먀오야오조어', zh:'苗瑤祖',     yue:'苗瑤祖' },
+        };
         function getDisplayName(code, lang) {
             if (showNative) return lang.native;
-            const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
             const uiBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            // 1. Hanmap-specific short name overrides (only for UI langs
+            //    we've explicitly shortened; others fall through).
+            if (HAN_SHORT_NAMES[code] && HAN_SHORT_NAMES[code][uiBase]) {
+                return HAN_SHORT_NAMES[code][uiBase];
+            }
+            const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
             let n = names[code] || lang.name;
             // Sinitic varieties — drop the "Chinese (…)" wrapper.
             if (hanmapIsSinitic(code)) {
                 n = hanmapStripChineseWrapper(n);
             }
-            // Japanese / Korean: drop the "(標準)" / "(標準)" / "(Standard)"
-            // parenthetical — in Hanmap there's only one ja and one ko code,
-            // so the "standard" qualifier is redundant.
+            // Japanese / Korean: drop the "(標準)" / "(标准)" / "(Standard)"
+            // parenthetical — only one ja and one ko code in Hanmap.
             if (code === 'ja' || code === 'ko') {
                 n = n.replace(/\s*[(（](標準|标准|표준|Standard|estándar|standard)[)）]\s*$/i, '');
             }
@@ -5733,6 +5909,10 @@
             const offsets = {};
             const unattestedSet = new Set(unattestedLangs);
             const allRenderable = [...renderLangs, ...unattestedLangs];
+            // Horizontal half-step between the left and right zigzag
+            // columns. Wide enough to keep the two columns from visually
+            // overlapping (labelW is the estimated label width).
+            const ZIG_X = Math.round(labelW * 0.55);
             for (const code of allRenderable) {
                 if (!ppx[code]) continue;
                 const pt = ppx[code];
@@ -5743,9 +5923,15 @@
                     if (group && group.length > 1) {
                         const idx = group.indexOf(code);
                         if (idx >= 0) {
-                            const center = (group.length - 1) / 2;
-                            const targetX = groupMeanX[cellKey];
-                            const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
+                            // ZIGZAG: even-idx → left column, odd-idx →
+                            // right column. Two labels per vertical row,
+                            // halving the column height vs a pure stack.
+                            const rowsPerCol = Math.ceil(group.length / 2);
+                            const col = idx % 2;          // 0 = left, 1 = right
+                            const row = Math.floor(idx / 2);
+                            const rowCenter = (rowsPerCol - 1) / 2;
+                            const targetX = groupMeanX[cellKey] + (col === 0 ? -ZIG_X : +ZIG_X);
+                            const targetY = groupMeanY[cellKey] + (row - rowCenter) * STACK_UNIT;
                             xOff = targetX - pt.x;
                             yOff = targetY - pt.y;
                         }
@@ -6853,6 +7039,7 @@
         //  audit metadata).
         // ============================================================
         function hanmapRenderLangInfo(code) {
+            window.__hanmapCurrentLangInfo = code;
             const lang = LANG_DATA[code];
             if (!lang) return;
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
@@ -6867,10 +7054,14 @@
             // all proto-language reconstructions, and the non-Sinitic
             // Sinosphere languages (Manchu, Sibe, Jurchen, Tangut, Khitan,
             // Zhuang, Bai). User-confirmed taxonomy 2026-05-29.
+            // pst (Proto-Sino-Tibetan) and ptb (Proto-Tibeto-Burman) are
+            // Sino-Tibetan family ancestors of the Chinese reading itself
+            // — those get the 古代 badge, not 訓読. All other protos are
+            // non-ST native-root reconstructions → 訓読 badge.
             const HAN_KUN_BADGE_CODES = new Set([
                 'ja_kun', 'ko_hun', 'vi_nom',
                 'mnc', 'sjo', 'juc', 'txg', 'zkt', 'za', 'bca',
-                'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+                'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
             ]);
             const isAncient = HAN_ANCIENT_CODES.has(code);
             const isKun = HAN_KUN_BADGE_CODES.has(code);
@@ -7034,9 +7225,10 @@
                     const r = rows[ri];
                     html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
                     if (ri === 0) {
-                        html += `<td rowspan="${rows.length}" style="padding:4px 6px 4px 0;font-size:20px;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;color:#1a1a2e;vertical-align:middle">${escapeHtml(ch)}</td>`;
+                        const sel = isCur ? ';color:#c0392b;font-weight:600' : '';
+                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(ch)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${escapeHtml(ch)}</td>`;
                     }
-                    if (hasNative) html += `<td style="padding:4px 6px 4px 0;color:#222;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;vertical-align:middle">${escapeHtml(r.native)}</td>`;
+                    if (hasNative) html += `<td class="hanmap-script-cell" style="padding:4px 6px 4px 0;color:#222;vertical-align:middle">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#555;vertical-align:middle">${escapeHtml(r.ipa)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px;vertical-align:middle">${escapeHtml(r.label)}</td>`;
@@ -7046,7 +7238,21 @@
             html += `</tbody></table>`;
 
             const infoContent = document.getElementById('info-content');
-            if (infoContent) infoContent.innerHTML = html;
+            if (infoContent) {
+                infoContent.innerHTML = html;
+                // Bind click → setChar once on this container (idempotent flag).
+                if (!infoContent.__hanmapCharBound) {
+                    infoContent.__hanmapCharBound = true;
+                    infoContent.addEventListener('click', (ev) => {
+                        const cell = ev.target.closest('.hanmap-char-cell');
+                        if (!cell) return;
+                        const ch = cell.getAttribute('data-han-char');
+                        if (ch && typeof window.__hanmapSetChar === 'function') {
+                            window.__hanmapSetChar(ch);
+                        }
+                    });
+                }
+            }
         }
 
         function renderLangInfo(code) {
