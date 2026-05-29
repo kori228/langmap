@@ -5,39 +5,39 @@
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangMap — Word Map: 935 Languages on an Interactive World Map (IPA + Pronunciation)</title>
-    <meta name="description" content="Interactive world map of 20 key words (water, fire, sun, mother, hello, thanks…) in 935 languages with pronunciation — IPA, broad transcription, and romanization. 2D / 3D globe view, compare panel, language family filter, includes ancient and historical languages like Sumerian, Akkadian, Old Chinese, Vedic Sanskrit, Sogdian.">
-    <meta name="keywords" content="world language map, IPA, pronunciation, language comparison, linguistic atlas, language family, historical linguistics, ancient languages, Sumerian, Akkadian, Old Chinese, Vedic Sanskrit, dialectology, language typology">
+    <title>Hanmap — Han Character Pronunciation Atlas (60 chars × 60 languages)</title>
+    <meta name="description" content="Interactive Sinosphere atlas of 60 common Han characters (一二三, 日月山, 龍虎犬, 人手足, 上下中, 行来去…) pronounced across Mandarin, Cantonese, Min Nan/Hokkien (POJ), Hakka, Wu/Shanghainese, Japanese on-yomi (呉音/漢音/唐音) and kun-yomi, Sino-Korean (한자음), Sino-Vietnamese (Hán-Việt), plus Old Chinese, Middle Chinese, Tang and Song reconstructions — with IPA, Pinyin, Jyutping, Hangul.">
+    <meta name="keywords" content="Han characters, kanji, hanja, hán tự, Han character pronunciation, IPA, Sinosphere, Sino-Japanese, Sino-Korean, Sino-Vietnamese, on-yomi, kun-yomi, 呉音, 漢音, 唐音, Jyutping, Pinyin, POJ, Middle Chinese, Old Chinese, historical phonology">
     <meta name="author" content="Jounlai Cho, Heuron Inc.">
-    <meta property="og:title" content="LangMap — Word Map: 935 Languages with Pronunciation">
-    <meta property="og:description" content="20 key words in 935 languages on an interactive world map — IPA, broad transcription, romanization, plus 3D globe view and a compare panel.">
+    <meta property="og:title" content="Hanmap — Han Character Pronunciation Atlas (60 chars × 60 languages)">
+    <meta property="og:description" content="60 Han characters pronounced across the Sinosphere — Mandarin, Cantonese, Min, Hakka, Wu, Japanese on/kun, Korean, Vietnamese, plus Old Chinese, Middle Chinese, Tang and Song reconstructions.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://langmap.heuron.com/wordmap.html">
+    <meta property="og:url" content="https://langmap.heuron.com/hanmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/ogp-wordmap.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="LangMap">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
     <meta property="og:locale:alternate" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="LangMap — Word Map: 935 Languages with Pronunciation">
-    <meta name="twitter:description" content="20 key words in 935 languages on an interactive world map — IPA, broad transcription, romanization, plus 3D globe view.">
+    <meta name="twitter:title" content="Hanmap — Han Character Pronunciation Atlas">
+    <meta name="twitter:description" content="60 Han characters across the Sinosphere — IPA, Pinyin, Jyutping, POJ, Hangul, Hán-Việt, on/kun yomi.">
     <meta name="twitter:image" content="https://langmap.heuron.com/ogp-wordmap.png">
     <meta name="twitter:creator" content="@jounlai">
-    <link rel="canonical" href="https://langmap.heuron.com/wordmap.html">
+    <link rel="canonical" href="https://langmap.heuron.com/hanmap.html">
     <link rel="icon" type="image/png" href="/langmap.png">
     <link rel="apple-touch-icon" href="/langmap.png">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Word Map: 935 Languages with Pronunciation",
-        "url": "https://langmap.heuron.com/wordmap.html",
-        "description": "Interactive world map of 20 key words in 935 languages with IPA, broad transcription, and romanization.",
+        "name": "Hanmap: Han Character Pronunciation Atlas",
+        "url": "https://langmap.heuron.com/hanmap.html",
+        "description": "60 Han characters in ~60 Sinosphere language/variety pronunciations — IPA, Pinyin, Jyutping, POJ, Sino-Korean, Sino-Vietnamese, Old & Middle Chinese reconstructions.",
         "isPartOf": {"@id": "https://langmap.heuron.com/#website"},
-        "inLanguage": ["en", "ja", "ko", "zh", "yue", "vi", "th", "id", "hi", "de", "fr", "it", "es", "pt", "ru", "uk", "ar", "he", "sw"]
+        "inLanguage": ["ja", "ko", "zh", "yue", "vi", "th", "id", "hi", "en", "de", "fr", "it", "es", "pt", "ru", "uk", "ar", "he", "sw"]
     }
     </script>
     <meta name="google-site-verification" content="bv4ffQGbDc_Grf1Ioc8NCotrXWc2mY34wEmL-5yHJyM" />
@@ -56,7 +56,6 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=102">
     <link rel="stylesheet" href="styles.css?v=102">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
@@ -151,6 +150,58 @@
         }
         body { margin: 0; padding: 0; background: #fff; }
         #map { width: 100vw; height: 100vh; }
+
+        /* --- Hanmap character selector modal --- */
+        #char-modal.visible { display: block !important; }
+        #char-modal-backdrop.visible { display: block !important; }
+        #char-current-btn:hover { background: rgba(255,255,255,1) !important; }
+        #char-current-btn:active { transform: scale(0.97); }
+        #char-random-btn:hover { background: #fff !important; }
+        .char-category { margin-bottom: 14px; }
+        .char-category h3 {
+            font-size: 12px; color: #666;
+            font-weight: 600; margin: 0 0 6px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            font-family: system-ui, sans-serif;
+        }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+        }
+        .char-btn {
+            aspect-ratio: 1 / 1;
+            font-size: 24px; font-weight: 600;
+            background: #f7f8fa;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #1a1a2e;
+            transition: all 0.12s ease;
+            font-family: "Noto Serif JP","Noto Serif SC","Noto Serif TC","Noto Serif KR",serif;
+            line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            padding: 6px;
+        }
+        .char-btn:hover {
+            background: #e7ebff; border-color: #4a6cf7;
+            transform: scale(1.05);
+        }
+        .char-btn.active {
+            background: #4a6cf7; color: #fff; border-color: #3a5ce5;
+        }
+        @media (max-width: 480px) {
+            .char-grid { grid-template-columns: repeat(5, 1fr); gap: 5px; }
+            .char-btn { font-size: 22px; }
+            #char-modal { padding: 18px 16px 14px !important; max-width: calc(100vw - 24px) !important; }
+            #char-modal h2 { font-size: 16px; }
+        }
+        @media (max-width: 480px) {
+            /* Compact the char-row a touch on mobile */
+            #char-current-btn { font-size: 60px !important; padding: 0 !important; width: 88px !important; height: 88px !important; min-width: 88px !important; }
+            #char-random-btn { font-size: 20px !important; padding: 0 !important; width: 36px !important; height: 36px !important; }
+        }
+        body.is-3d #char-current-btn { color: #1a1a2e; }
 
         /* --- Header (override for map page: fixed position) ---
              z-index 1101 so it stays above the backdrop (1099) when the
@@ -344,7 +395,12 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
         .toggle-btn.active:hover { background: #444; }
-        .toggle-3d-btn {
+        /* Hanmap: 3D globe view is hidden (user request 2026-05-28).
+           Globe.gl is still loaded and the toggle markup remains in the
+           DOM so wordmap-inherited init paths don't crash; only the
+           button is suppressed visually. */
+        .toggle-3d-btn { display: none !important; }
+        .toggle-3d-btn-hidden-stub {
             width: 40px; height: 40px; min-width: 40px; max-width: 40px;
             border-radius: 50%; font-size: 12px; font-weight: 700;
             display: flex; align-items: center; justify-content: center;
@@ -465,6 +521,40 @@
                 "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
+        /* 独自文字 (native-script) tier on the map label: appears next to
+           the romanization in the same line, slightly smaller so the
+           romanisation stays the primary read. */
+        .hanmap-native {
+            font-size: 0.82em;
+            opacity: 0.78;
+            margin-left: 0.15em;
+            font-weight: 400;
+        }
+        /* Popup-table cells that may hold historical / rare scripts
+           (Phags-pa, Tangut, Khitan, Mongolian, Sogdian, Manchu, etc.).
+           Same font stack as the map labels so glyphs actually render. */
+        .hanmap-script-cell {
+            font-family:
+                "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari",
+                "Noto Sans Yi", "Microsoft Yi Baiti",
+                "Noto Serif Tangut",
+                "Noto Sans Phags Pa", "Microsoft PhagsPa",
+                "Noto Sans Mongolian", "Mongolian Baiti",
+                "Noto Sans Old Turkic",
+                "Noto Sans Sogdian",
+                "Noto Serif Khitan Small Script",
+                "Noto Sans Manichaean",
+                "Noto Sans Egyptian Hieroglyphs",
+                "Charis SIL", "Gentium Plus", serif;
+        }
+        /* HAN_VARIANTS label inline on the map (白讀/文讀, 原音/頭音法則, etc.). */
+        .hanmap-label {
+            font-size: 0.7em;
+            opacity: 0.6;
+            margin-left: 0.3em;
+            font-style: normal;
+        }
         /* Audit Task 135: visible focus ring for keyboard-accessible labels. */
         .lang-label:focus-visible,
         .globe-label:focus-visible,
@@ -574,8 +664,18 @@
         .lang-label .name {
             font-size: calc(9px * var(--label-scale)); color: #888; line-height: 1.3;
         }
-        /* Vertical writing for Mongolian Traditional Script / Manchu */
-        .lang-label.vertical .word {
+        /* Vertical writing for Mongolian Traditional Script / Manchu /
+           Sibe / Phags-pa. Per user request 2026-05-29: ONLY the native-
+           script line rotates to vertical; the romanization above and
+           the IPA below stay horizontal so the label reads naturally
+           top-to-bottom: 1) Roman text 2) vertical native script
+           3) IPA. */
+        .lang-label.vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lang-label.vertical .hanmap-native-line {
             writing-mode: vertical-lr;
             text-orientation: mixed;
             display: inline-block;
@@ -602,7 +702,7 @@
            pinned at the top-right regardless of scroll position. */
         .lang-info-panel {
             position: absolute; top: 56px; right: 12px; z-index: 1010;
-            width: 340px; max-height: calc(100vh - 70px);
+            width: 440px; max-height: calc(100vh - 70px);
             background: rgba(255,255,255,0.97); border-radius: 10px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.25);
             font-size: 13px; line-height: 1.6; display: none;
@@ -737,20 +837,13 @@
                its own @media (min-width: 601px) block below — user feedback
                2026-05-20: "「PCで」と言ったのはモバイルでは問題ないという意味". */
             position: fixed; left: 0; right: 0; bottom: 0; z-index: 1020;
-            /* Fully opaque background. The previous rgba(0.98) bled the
-               map through sub-pixel seams between flex children
-               (compare-header / #compare-body) on iOS retina displays,
-               so the user saw a 1px "see-through gap" above the table
-               header. Solid #fff has no such seam. */
-            background: #fff; border-top: 1px solid #ddd;
+            background: rgba(255,255,255,0.98); border-top: 1px solid #ddd;
             box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
-            max-height: 70vh; display: none;
-            /* Flex column so the header sits OUTSIDE the scroll area
-               (#compare-body owns overflow:auto). With sticky-header on
-               the panel itself, a wide table horizontal-scrolled the
-               header along with it; flex layout pins the header for
-               both axes. */
-            flex-direction: column; overflow: hidden;
+            max-height: 70vh; display: none; overflow: auto;
+            /* iPhone-Safari-style thin scrollbar (Firefox + Chromium) */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.28) transparent;
+            -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
         }
         @media (min-width: 601px) {
@@ -765,29 +858,18 @@
                 box-shadow: 0 4px 24px rgba(0,0,0,0.18);
             }
         }
-        /* Scroll lives on #compare-body, not the panel — see flex layout
-           comment on .compare-panel above. */
-        #compare-body {
-            flex: 1 1 auto;
-            min-height: 0;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0,0,0,0.28) transparent;
-        }
-        #compare-body::-webkit-scrollbar { width: 6px; height: 6px; }
-        #compare-body::-webkit-scrollbar-track { background: transparent; }
-        #compare-body::-webkit-scrollbar-thumb {
+        .compare-panel::-webkit-scrollbar { width: 6px; height: 6px; }
+        .compare-panel::-webkit-scrollbar-track { background: transparent; }
+        .compare-panel::-webkit-scrollbar-thumb {
             background: rgba(0,0,0,0.22);
             border-radius: 10px;
             border: 1px solid transparent;
             background-clip: padding-box;
         }
-        #compare-body:hover::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.38); }
-        .compare-panel.visible { display: flex; }
+        .compare-panel:hover::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.38); }
+        .compare-panel.visible { display: block; }
         .compare-header {
-            flex: 0 0 auto;
-            background: #fff; border-bottom: 1px solid #eee;
+            position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
             padding: 10px 16px; display: flex; align-items: center; gap: 10px; z-index: 2;
         }
         .compare-title { margin: 0; font-size: 15px; flex: 1; }
@@ -806,40 +888,22 @@
         /* Default (mobile): table fills the panel. PC override at the
            min-width:601px block below uses width:auto so columns size to
            content. */
-        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
         .compare-table th, .compare-table td {
-            border-bottom: 1px solid #eee;
-            /* Top-heavy padding so iOS Safari + Hiragino doesn't render
-               the first line of cell content flush against the top
-               border. Chrome desktop already shows a small visual gap
-               via its default half-leading; iOS needs explicit padding. */
-            padding: 9px 10px 5px;
+            border-bottom: 1px solid #eee; padding: 6px 10px;
             text-align: left; vertical-align: top;
         }
-        /* Stacked form + IPA inside each cell: line-height stays
-           generous enough that iOS Safari's Hiragino half-leading
-           positions the glyph centred within its line box. Tighter
-           values (1.2-1.25) made text visibly shift toward the top of
-           the cell on iPhone — Hiragino's ascent is taller than its
-           descent, so a tight leading exposes the asymmetry. */
-        .compare-table .wm-form { line-height: 1.4; }
-        .compare-table .wm-ipa  { line-height: 1.35; font-size: 11px; color: #777; }
         .compare-table thead th {
-            background: #f8f9fa; position: sticky;
-            /* Header now lives outside #compare-body (the scroll
-               container), so thead sticks at the scroll-area top. */
-            top: 0; z-index: 1;
+            background: #f8f9fa; position: sticky; top: 44px; z-index: 1;
             font-weight: 600;
-            /* Opaque box-shadow as the bottom divider — replaces the
-               border-bottom on the cell. A 1px translucent gap was
-               showing through between compare-header and thead on iOS;
-               shadow-as-border has no half-pixel rendering seam. */
-            box-shadow: inset 0 -1px 0 #eee;
         }
         @media (min-width: 601px) {
             .compare-table { width: auto; }
             .compare-table thead th {
                 min-width: 100px;
+                /* Right padding reserves space for the absolute-positioned
+                   remove-col (22px button + 6px gutter). */
+                padding-right: 32px;
             }
         }
         .compare-table thead .lang-name { display: block; }
@@ -858,72 +922,46 @@
                 "Noto Sans Coptic", "Noto Sans New Tai Lue",
                 Georgia, "Times New Roman", serif;
         }
-        /* Per-column delete control. Lives in a dedicated bottom row
-           (.compare-remove-row), keeping the header clean. Mobile shows
-           a compact × icon (avoids horizontal scroll from a wide "Remove"
-           label across 4+ narrow columns); PC shows the localized text
-           label inside a pill. The button keeps the .remove-col class
-           so renderCompare()'s existing click handler binds unchanged. */
-        .compare-table .compare-remove-row td {
-            text-align: center;
-            padding: 8px 6px;
-            border-bottom: none;
-            vertical-align: middle;
+        /* Per-column delete button. Default (mobile): inline-with-text
+           small button — original pre-PC-redesign look. PC override at
+           the min-width:601px block below upgrades it to an absolute-
+           positioned circular button at the top-right corner of the th. */
+        .compare-table thead .remove-col {
+            background: none; border: none; cursor: pointer; color: #bbb;
+            font-size: 13px; padding: 0; margin-left: 4px; vertical-align: super;
         }
-        .compare-table .compare-remove-row .remove-col {
-            background: #fff;
-            border: 1px solid #d0d0d0;
-            color: #555;
-            cursor: pointer;
-            font-family: inherit;
-            margin: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.12s, color 0.12s, border-color 0.12s;
-            /* Default (mobile): round × button, compact enough that 4-8
-               columns still fit on a 390-430px iPhone without h-scroll. */
-            width: 30px; height: 30px;
-            padding: 0;
-            border-radius: 50%;
-            font-size: 20px;
-            line-height: 1;
-        }
-        .compare-table .compare-remove-row .remove-col .rc-label { display: none; }
-        .compare-table .compare-remove-row .remove-col .rc-icon  {
-            /* SVG × — geometric centering, no font-metric drift.
-               Inline-flex so the SVG's 14×14 box is itself flex-centred
-               inside the round 30px button. */
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
-        .compare-table .compare-remove-row .remove-col .rc-icon svg { display: block; }
+        .compare-table thead .remove-col:hover { color: #d33; }
         @media (min-width: 601px) {
-            /* PC: text pill with the localized delete label (削除 / Remove …).
-               Symmetric padding — without the buggy global appearance:none,
-               iOS Safari uses its native button baseline which centres
-               text correctly on its own. */
-            .compare-table .compare-remove-row .remove-col {
-                width: auto; height: auto; min-height: 28px;
-                padding: 4px 14px;
-                border-radius: 14px;
-                font-size: 12px;
-                font-weight: 500;
-                line-height: 1.4;
+            /* PC: bigger tap target at the top-right of the header. The
+               parent <th> is already position:sticky (positioning context
+               for absolute children), so we do NOT add position:relative
+               — that would override sticky and let top:44px push the row
+               down by 44px. */
+            .compare-table thead .remove-col {
+                position: absolute; top: 2px; right: 4px;
+                width: 22px; height: 22px; padding: 0;
+                background: rgba(255,255,255,0.7);
+                border: 1px solid #d0d0d0; border-radius: 50%;
+                color: #888;
+                font-size: 16px; line-height: 1;
+                margin-left: 0; vertical-align: baseline;
+                display: inline-flex; align-items: center; justify-content: center;
+                transition: background-color 0.12s, color 0.12s, border-color 0.12s;
             }
-            .compare-table .compare-remove-row .remove-col .rc-label { display: inline; }
-            .compare-table .compare-remove-row .remove-col .rc-icon  { display: none; }
+            .compare-table thead .remove-col:hover {
+                background: #fdecea; color: #c0392b; border-color: #f0a99b;
+            }
+            .compare-table thead .remove-col:active { transform: scale(0.94); }
         }
-        .compare-table .compare-remove-row .remove-col:hover {
-            background: #fdecea; color: #c0392b; border-color: #f0a99b;
-        }
-        .compare-table .compare-remove-row .remove-col:active { transform: scale(0.96); }
         .compare-table tbody th { background: #fafafa; font-weight: 600; min-width: 80px; }
         .compare-table .surface { font-size: 14px; }
         .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
         .compare-table .unattested { color: #aaa; font-style: italic; }
+        /* Stacked readings inside a single cell (HAN_VARIANTS): each
+           reading block gets a thin separator and its label tag. */
+        .compare-table .cmp-reading { padding: 2px 0; }
+        .compare-table .cmp-reading + .cmp-reading { border-top: 1px dashed #eee; margin-top: 4px; padding-top: 4px; }
+        .compare-table .cmp-label { display: block; font-size: 10px; color: #999; margin-top: 1px; }
         .compare-add-btn {
             display: inline-block; margin: 10px 0; padding: 4px 10px; /* Audit Task 223: symmetric vertical margin (was margin-top:10px which left no bottom space, causing visual collision with the next block) */
             font-size: 12px; border: 1px solid #1a73e8; background: #fff; color: #1a73e8;
@@ -975,10 +1013,7 @@
                 font-size: 22px; color: #444;
                 background: #fff; border: 1px solid #d0d0d0; border-radius: 50%;
             }
-            /* Top-heavy padding mirrors the desktop rule but tighter
-               horizontally — gives the first line of each cell breathing
-               room from the row-top border on iOS Safari (Hiragino). */
-            .compare-table th, .compare-table td { padding: 8px 6px 4px; font-size: 12px; }
+            .compare-table th, .compare-table td { padding: 4px 6px; font-size: 12px; }
             .compare-fab {
                 padding: 8px 12px;
                 /* Lift the compare FAB clear of the OS gesture/home bar
@@ -1003,11 +1038,6 @@
             background: rgba(255,255,255,0.75); padding: 3px 8px;
             border-radius: 0 4px 0 0;
             display: flex; align-items: center; gap: 4px;
-            /* Pin line-height so iOS Safari doesn't apply Hiragino's
-               ~1.5 default to this Latin-only credit strip — the row
-               was visibly taller than on May 24 once body's blanket
-               line-height: 1.4 was removed. */
-            line-height: 1.2;
         }
         .url-watermark a { pointer-events: auto; }
 
@@ -1299,9 +1329,9 @@
             flex: 0 0 auto;
             display: flex; justify-content: flex-end; align-items: center;
             gap: 6px;
-            /* Symmetric vertical padding so the close × isn't crammed
-               against the modal top edge. The original concern about
-               a 1-2px "gap" was the natural breathing room — keep it. */
+            /* Symmetric vertical padding so the header doesn't visually
+               collide with the article body underneath (user 2026-05-17:
+               "header bottom margin is 0; match the top"). */
             padding: 6px 10px;
         }
         .trivia-scroll {
@@ -1378,6 +1408,15 @@
                 border-left: none;
                 border-top: 5px solid #b8860b;
             }
+        }
+        /* iOS Safari quirk: <button> elements get a different default
+           baseline than other browsers — text appears nudged upward
+           inside flex-centered rounded buttons. -webkit-appearance:none
+           disables iOS's button rendering, after which inline-flex +
+           align-items:center centers the text the way we expect. */
+        .trivia-modal button {
+            -webkit-appearance: none;
+            appearance: none;
         }
         /* Close × sits inside .trivia-modal-tools (flex row), NOT
            absolute — otherwise it floats outside the row and leaves
@@ -1506,13 +1545,7 @@
             display: block;
             font-size: 13px; font-weight: 600;
             color: #4a3416;
-            /* iOS Safari quirk: -webkit-box + overflow:hidden clips the
-               top of ascending glyphs (digits "02.", kanji tops) when
-               line-height is too tight. 1.45 gives enough room above
-               the cap-height; a hair of padding-top absorbs Hiragino's
-               extra ascender. */
-            line-height: 1.45;
-            padding-top: 1px;
+            line-height: 1.3;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -1594,12 +1627,6 @@
         .trivia-back {
             margin-right: auto;     /* push other tool buttons to the right */
             min-width: 0; height: 26px;
-            /* line-height: 1 pins the inner line-box to the em-box
-               itself. With Hiragino's natural extent of ~1.1em (ascent
-               0.88 + descent 0.22), any line-height > 1 introduces
-               half-leading that surfaces the ascent/descent asymmetry
-               as CJK-glyph-shifted-upward; line-height: 1 makes the
-               glyph fill the line-box, which is then flex-centered. */
             font-size: 12px; font-weight: 600; line-height: 1;
             padding: 0 10px;
             border: 1px solid rgba(180,130,30,0.45);
@@ -1641,7 +1668,9 @@
                value is 8px 32px 28px which feels too generous on phones. */
             .trivia-scroll { padding: 6px 16px 18px; }
             .trivia-modal.compact .trivia-scroll { padding: 4px 14px 16px; }
-            /* Mobile mirror of the symmetric desktop rule. */
+            /* Match the desktop symmetric vertical padding so the header
+               doesn't crash into the article body on mobile either
+               (user 2026-05-17). */
             .trivia-modal-tools { padding: 4px 8px; }
             /* Sources are reference metadata, not primary reading. Drop a
                size on mobile so they take less vertical room and signal
@@ -1947,6 +1976,173 @@
         body.is-3d .globe-label.trivia-blink {
             background: rgba(255,213,93,0.35);
         }
+        /* ============================================================ */
+        /*  Hanmap language-filter modal styling                        */
+        /* ============================================================ */
+        .hm-lf-group {
+            margin-bottom: 14px;
+            border: 1px solid #ececec;
+            border-radius: 8px;
+            padding: 10px 12px 8px;
+            background: #fafafa;
+        }
+        .hm-lf-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .hm-lf-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        .hm-lf-group-title .hm-lf-group-en {
+            font-size: 11px;
+            font-weight: 500;
+            color: #888;
+            margin-left: 4px;
+        }
+        .hm-lf-group-actions {
+            display: flex;
+            gap: 4px;
+        }
+        .hm-lf-group-actions button {
+            font-size: 10px;
+            padding: 2px 7px;
+            border: 1px solid #d8d8d8;
+            border-radius: 9px;
+            background: #fff;
+            color: #555;
+            cursor: pointer;
+            line-height: 1.3;
+        }
+        .hm-lf-group-actions button:hover { background: #f0f0f0; }
+        .hm-lf-era-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-top: 4px;
+            padding-top: 4px;
+        }
+        .hm-lf-era-row + .hm-lf-era-row {
+            border-top: 1px dashed #e6e6e6;
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+        .hm-lf-era-label {
+            flex: 0 0 auto;
+            font-size: 11px;
+            font-weight: 600;
+            color: #888;
+            min-width: 40px;
+            padding-top: 4px;
+            line-height: 1.3;
+        }
+        .hm-lf-chip-wrap {
+            flex: 1 1 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .hm-lf-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            padding: 3px 8px;
+            border: 1px solid #d8d8d8;
+            border-radius: 11px;
+            /* Non-active = clearly de-activated, not just "white default".
+               Greyed background + faded text + dashed border so users
+               see at a glance which chips are currently filtered out. */
+            background: #f1f1f1;
+            color: #999;
+            border-style: dashed;
+            cursor: pointer;
+            line-height: 1.3;
+            white-space: nowrap;
+            user-select: none;
+            transition: background-color 0.1s, border-color 0.1s, color 0.1s;
+        }
+        .hm-lf-chip:hover { background: #e6e8ec; color: #555; }
+        .hm-lf-chip.active {
+            background: #1a73e8;
+            border-color: #1765c4;
+            border-style: solid;
+            color: #fff;
+        }
+        .hm-lf-chip.active:hover { background: #1765c4; }
+        /* Category switch (古代 / 訓読) is OFF → chips in that category
+           are visually inert. The user must turn the switch back ON
+           to make them selectable again. */
+        .hm-lf-chip.is-disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            background: #f7f7f9;
+            color: #888;
+            border-style: dashed;
+        }
+        .hm-lf-chip.is-disabled:hover { background: #f7f7f9; color: #888; }
+        .hm-lf-tool-btn:hover { background: #f0f0f0; }
+        /* iOS-style switch toggles for category-set master toggles
+           (古代語 / 訓読み etc). Renders a track + sliding thumb so the
+           ON/OFF state is unambiguous. */
+        .hm-lf-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #333;
+            padding: 2px 8px 2px 4px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 14px;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+        }
+        .hm-lf-switch:hover { background: #f3f3f3; }
+        .hm-lf-switch-track {
+            position: relative;
+            width: 30px;
+            height: 16px;
+            border-radius: 999px;
+            background: #d0d0d0;
+            transition: background 0.18s ease;
+            flex-shrink: 0;
+        }
+        .hm-lf-switch-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            transition: left 0.18s ease;
+        }
+        .hm-lf-switch.is-on .hm-lf-switch-track { background: #1a1a2e; }
+        .hm-lf-switch.is-on .hm-lf-switch-thumb { left: 16px; }
+        .hm-lf-switch.is-on { color: #1a1a2e; font-weight: 600; }
+        .hm-lf-chip-code {
+            font-size: 9px;
+            opacity: 0.65;
+            font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        }
+        @media (max-width: 600px) {
+            .hm-lang-filter-modal {
+                padding: 16px 14px 12px !important;
+                width: calc(100vw - 16px) !important;
+                max-height: calc(100vh - 24px) !important;
+                top: 12px !important;
+                left: 8px !important;
+                transform: none !important;
+            }
+        }
     </style>
     <script>
         // Chrome-toggle FOUC avoidance: stash the persisted choice on <html>
@@ -1965,13 +2161,13 @@
 <body>
     <!-- Header -->
     <div class="site-header-bar">
-        <a href="index.html" class="logo">LangMap<span class="logo-badge logo-badge-word" aria-label="Wordmap" title="Wordmap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span></a>
+        <a href="index.html" class="logo">LangMap<span class="logo-badge logo-badge-han" aria-label="Hanmap" title="Hanmap"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span></a>
         <input type="checkbox" id="hdr-menu-toggle" class="hdr-menu-toggle" aria-label="Menu toggle">
         <button type="button" id="chrome-toggle" class="chrome-toggle-btn" aria-label="Hide UI overlays" title="Hide UI overlays">
             <svg class="icon-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg>
             <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6H3M15 3v6h6M9 21v-6H3M15 21v-6h6"/></svg>
         </button>
-        <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></label>
+        <label for="hdr-menu-toggle" class="hamburger-btn" aria-label="Menu" aria-controls="header-collapse" tabindex="0">☰</label>
         <div class="header-collapse" id="header-collapse">
             <nav class="header-nav">
                 <!-- Audit Task 124: nav default label is English so the header
@@ -1980,15 +2176,16 @@
                      NAV_TREE[uiLang] once the page initializes. -->
                 <a href="index.html" class="header-nav-link" id="nav-order-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>Word Order</a>
                 <span class="nav-sep">/</span>
-                <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
+                <a href="wordmap.html" class="header-nav-link" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</a>
                 <span class="nav-sep">/</span>
-                <a href="hanmap.html" class="header-nav-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>漢字マップ</a>
+                <span class="header-nav-current"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>漢字マップ</span>
                 <span class="nav-sep">/</span>
                 <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
             </nav>
             <button type="button" class="trivia-btn" id="trivia-open"
                     aria-haspopup="dialog" aria-controls="trivia-modal"
-                    title="Linguistic trivia">
+                    title="Linguistic trivia"
+                    style="display:none">
                 <span aria-hidden="true">📚</span>
                 <span class="trivia-btn-label" id="trivia-btn-label">Linguistic Trivia</span>
             </button>
@@ -2060,27 +2257,48 @@
          header doesn't trap it inside the header's stacking context. -->
     <div class="header-backdrop" id="header-backdrop" aria-hidden="true"></div>
 
-    <!-- Top-left controls (below header): word select + era + lang search -->
+    <!-- Top-left controls (below header): character button + random + (hidden) wordmap controls -->
     <div class="top-left-controls">
-        <select id="word-select" aria-label="Select word" aria-describedby="word-definition"></select>
-        <div id="word-definition"></div>
-        <!-- Era switch + filter button live in the same row so the
-             filter FAB (created by lang-filter.js) doesn't claim its own
-             vertical slot below the search field. The shim near the end
-             of <body> moves the FAB into this wrapper at runtime. -->
-        <div class="era-filter-row" id="era-filter-row">
+        <!-- Hanmap selector: large clickable character button opens a modal.
+             We keep the legacy `<select id="word-select">` hidden so wordmap
+             internals that read select.value continue to work; updateCharSelection()
+             keeps the hidden select's value synced with currentChar. -->
+        <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+            <!-- Char button + dice on the right, vertically centered together. -->
+            <div style="display:flex;flex-direction:row;gap:8px;align-items:center">
+                <button id="char-current-btn" type="button"
+                        aria-haspopup="dialog" aria-controls="char-modal"
+                        title="Select character"
+                        style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
+                <button id="char-random-btn" type="button"
+                        title="Random character"
+                        aria-label="Random character"
+                        style="font-size:24px;padding:0;width:40px;height:40px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 3px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;line-height:1">🎲</button>
+            </div>
+            <!-- Filter button on its own line below. -->
+            <button id="hm-lang-filter-btn" type="button"
+                    aria-haspopup="dialog" aria-controls="hm-lang-filter-modal"
+                    title="Filter languages"
+                    aria-label="Filter languages"
+                    style="font-size:11px;padding:4px 8px;border:1px solid #d8d8d8;border-radius:14px;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#777;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:system-ui,sans-serif;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:4px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                <span id="hm-lang-filter-label">絞り込み</span>
+                <span id="hm-lang-filter-badge" style="display:none;background:#1a73e8;color:#fff;border-radius:9px;padding:1px 6px;font-size:10px;font-weight:600;line-height:1.2">0</span>
+            </button>
+        </div>
+        <select id="word-select" aria-label="Select character (legacy)" style="display:none"></select>
+        <div id="word-definition" style="display:none"></div>
+        <!-- Era switch + lang filter / search panels hidden on Hanmap;
+             dead UI kept in DOM so wordmap JS init paths don't crash. -->
+        <div class="era-filter-row" id="era-filter-row" style="display:none">
             <div class="radio-switch" id="era-switch" role="radiogroup" aria-label="Era (modern / historical)">
                 <button class="radio-opt active" id="era-modern" data-val="modern" role="radio" aria-checked="true"></button>
                 <button class="radio-opt" id="era-historical" data-val="historical" role="radio" aria-checked="false"></button>
-                <!-- Audit Task 112: legend explaining what each era shows.
-                     Compact help icon; tooltip describes that historical mode
-                     also overlays modern descendants as cross-reference. -->
                 <span id="era-help" tabindex="0" role="button" aria-label=""
-                      style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:4px;border-radius:50%;background:#eee;color:#666;font-size:11px;cursor:help;user-select:none"
-                      title="">?</span>
+                      style="display:none">?</span>
             </div>
         </div>
-        <div class="lang-search-wrap" style="position:relative;display:flex;gap:4px">
+        <div class="lang-search-wrap" style="display:none;position:relative;gap:4px">
             <input type="text" id="lang-search" placeholder="🔍 Search language…" autocomplete="off"
                    role="combobox" aria-autocomplete="list" aria-expanded="false"
                    aria-controls="lang-search-results" aria-activedescendant=""
@@ -2090,6 +2308,39 @@
                     style="padding:5px 8px;font-size:14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;color:#555;cursor:pointer;line-height:1">🎲</button>
             <div id="lang-search-results" role="listbox" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:2px;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.15);max-height:280px;overflow-y:auto;z-index:1100;font-size:12px"></div>
         </div>
+    </div>
+
+    <!-- Hanmap character selector modal -->
+    <div class="char-modal-backdrop" id="char-modal-backdrop" aria-hidden="true"
+         style="position:fixed;inset:0;background:rgba(20,25,40,0.55);backdrop-filter:blur(2px);z-index:2000;display:none"></div>
+    <div class="char-modal" id="char-modal" role="dialog" aria-modal="true" aria-labelledby="char-modal-title"
+         style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.35);padding:22px 24px 18px;max-width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 64px);overflow-y:auto;z-index:2001;display:none">
+        <button class="char-modal-close" id="char-modal-close" type="button" aria-label="Close"
+                style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
+        <h2 id="char-modal-title" style="font-size:18px;margin:0 0 14px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">漢字を選択</h2>
+        <div id="char-modal-body"></div>
+    </div>
+
+    <!-- Hanmap language filter modal: 2-axis grid (family/sub-family × era). -->
+    <div class="hm-lang-filter-backdrop" id="hm-lang-filter-backdrop" aria-hidden="true"
+         style="position:fixed;inset:0;background:rgba(20,25,40,0.55);backdrop-filter:blur(2px);z-index:2000;display:none"></div>
+    <div class="hm-lang-filter-modal" id="hm-lang-filter-modal" role="dialog" aria-modal="true" aria-labelledby="hm-lang-filter-title"
+         style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.35);padding:20px 22px 16px;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 64px);overflow-y:auto;z-index:2001;display:none">
+        <button id="hm-lang-filter-close" type="button" aria-label="Close"
+                style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
+        <h2 id="hm-lang-filter-title" style="font-size:18px;margin:0 0 6px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">言語で絞り込み</h2>
+        <div id="hm-lang-filter-sub" style="font-size:12px;color:#777;margin-bottom:10px;line-height:1.5">系統 × 時代でフィルタリング。チップをタップでON/OFF。</div>
+        <div id="hm-lang-filter-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee">
+            <button type="button" data-act="all"   class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて選択</button>
+            <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
+            <button type="button" data-act="reset" class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">リセット</button>
+            <span style="border-left:1px solid #ddd;margin:2px 4px"></span>
+            <button type="button" data-act="toggle-ancient" class="hm-lf-tool-btn hm-lf-switch" aria-pressed="false"><span class="hm-lf-switch-track"><span class="hm-lf-switch-thumb"></span></span><span class="hm-lf-switch-text">古代語</span></button>
+            <button type="button" data-act="toggle-kun"     class="hm-lf-tool-btn hm-lf-switch" aria-pressed="false"><span class="hm-lf-switch-track"><span class="hm-lf-switch-thumb"></span></span><span class="hm-lf-switch-text">訓読み</span></button>
+            <span style="flex:1"></span>
+            <span id="hm-lang-filter-count" style="font-size:11px;color:#777;align-self:center">0 / 0</span>
+        </div>
+        <div id="hm-lang-filter-body"></div>
     </div>
 
     <!-- (UI lang select moved to header for cross-page consistency, Pass 34) -->
@@ -2465,38 +2716,758 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="word_manifest.js?v=14"></script>
+    <script src="hanmap_data.js?v=26"></script>
     <script>
-        // Reserve the WORDS global BEFORE the per-word <script> tags load,
-        // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
-        // ReferenceError if WORDS isn't on the window yet.
+        // Hanmap stubs: replace the per-word loader. wordmap.html loads
+        // ~20 individual JS files under words/<id>.js (one per concept) and
+        // also pulls in word_manifest.js + wordmap_trivia.js. None of that
+        // applies to Hanmap (we have a fixed character list and no trivia
+        // articles), but the IIFE further down still references WORDS,
+        // WORD_ORDER, and TRIVIA_ARTICLES. Provide empty/synthetic stubs
+        // so existing iteration code is a no-op.
         var WORDS = window.WORDS = window.WORDS || {};
-        // Emit one <script> tag per concept via document.write. This forces
-        // SYNCHRONOUS sequential execution: the browser blocks subsequent
-        // HTML parsing (including the main IIFE further down) until every
-        // per-word file has loaded and assigned its WORDS.<id> slot. We use
-        // document.write rather than dynamic createElement so the IIFE can
-        // rely on WORDS being fully populated without waiting on an event.
-        // The preload scanner still parallelises the downloads in modern
-        // browsers; only execution is serialised.
-        (function () {
-            if (typeof WORD_ORDER === 'undefined') {
-                console.error('WORD_ORDER not defined — word_manifest.js failed to load');
-                return;
-            }
-            var v = (window.WM_ASSET_VERSION && window.WM_ASSET_VERSION.words) || 1;
-            for (var i = 0; i < WORD_ORDER.length; i++) {
-                document.write(
-                    '<script src="words/' + WORD_ORDER[i] + '.js?v=' + v + '"><\/script>'
-                );
-            }
-        })();
+        var WORD_ORDER = window.WORD_ORDER = window.WORD_ORDER || [];
+        window.TRIVIA_ARTICLES = window.TRIVIA_ARTICLES || [];
     </script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang-filter.js?v=32"></script>
     <script src="lang_names.js?v=111"></script>
-    <script src="wordmap_trivia.js?v=27"></script>
+    <script>
+    // ============================================================
+    //  HANMAP DATA ADAPTER
+    //  Synthesise wordmap's per-language `.words[id] = [surface, ipa]`
+    //  shape from HAN_DATA so the wordmap IIFE rendering logic works
+    //  unchanged. Also injects the 5 character-reading-layer "virtual"
+    //  languages (vi_han etc.) into LANG_DATA. Japanese reading layers
+    //  (呉音/漢音/唐音/訓読み) live as HAN_VARIANTS entries under `ja`.
+    // ============================================================
+    (function () {
+        if (typeof HAN_DATA === 'undefined' || typeof HAN_LIST === 'undefined'
+            || typeof HAN_LANGS === 'undefined' || typeof HAN_LANG_META === 'undefined') {
+            console.error('hanmap_data.js failed to load');
+            return;
+        }
+        // 1. Pre-build `.words` map on every HAN-covered language code already
+        //    present in LANG_DATA (e.g. ja, ko, zh, yue, nan, hak_tw, …).
+        // Treat the em-dash placeholder ("—") as "no data" — agents emit it
+        // for unattested readings (notably ja_to which only exists for ~30
+        // chars). Without this filter the language renders as an empty
+        // marker on the map.
+        const HAN_EMPTY = (v) => !v || v === '—' || v === '-';
+        for (const code of HAN_LANGS) {
+            if (!LANG_DATA[code]) continue;
+            LANG_DATA[code].words = LANG_DATA[code].words || {};
+            for (const ch of HAN_LIST) {
+                const cd = HAN_DATA[ch];
+                if (!cd) continue;
+                let surf = (cd.surface && cd.surface[code]) || '';
+                let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                if (HAN_EMPTY(surf)) surf = '';
+                if (HAN_EMPTY(ipa))  ipa  = '';
+                if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
+            }
+        }
+        // 2. Inject HAN-only "virtual" languages that wordmap doesn't carry.
+        //    These read their coordinates / name / native from HAN_LANG_META.
+        for (const [code, m] of Object.entries(HAN_LANG_META)) {
+            if (LANG_DATA[code]) continue; // already present
+            LANG_DATA[code] = {
+                name: m.name || code,
+                native: m.native || '',
+                lat: typeof m.lat === 'number' ? m.lat : 35.0,
+                lng: typeof m.lng === 'number' ? m.lng : 135.0,
+                family: m.family || '',
+                region: m.region || '',
+                words: {},
+            };
+            for (const ch of HAN_LIST) {
+                const cd = HAN_DATA[ch];
+                if (!cd) continue;
+                let surf = (cd.surface && cd.surface[code]) || '';
+                let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                if (HAN_EMPTY(surf)) surf = '';
+                if (HAN_EMPTY(ipa))  ipa  = '';
+                if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
+            }
+        }
+        // 3. Synthetic WORD_LIST so wordmap's `for (const w of WORD_LIST)`
+        //    loops have something to iterate. Each entry's `id` is the
+        //    character itself; en/ja labels also default to the character.
+        const synthList = HAN_LIST.map(ch => ({
+            id: ch,
+            label: { en: ch, ja: ch, ko: ch, zh: ch, yue: ch, vi: ch },
+            definition: { en: (HAN_DATA[ch] && HAN_DATA[ch].en && HAN_DATA[ch].en.gloss) || '' },
+            en: ch, ja: ch,
+        }));
+        window.WORD_LIST = synthList;
+        // Restrict to HAN_LANGS for marker iteration: stash the set so the
+        // IIFE can use it to filter Object.keys(LANG_DATA).
+        window.__HAN_LANG_SET = new Set(HAN_LANGS);
+        // Pre-populate WORDS entries for compatibility (no per-word JS).
+        for (const ch of HAN_LIST) {
+            window.WORDS[ch] = {
+                id: ch,
+                label: { en: ch, ja: ch },
+                definition: { en: (HAN_DATA[ch] && HAN_DATA[ch].en && HAN_DATA[ch].en.gloss) || '' },
+                data: {},
+            };
+        }
+    })();
+    // No trivia articles for Hanmap.
+    window.TRIVIA_ARTICLES = window.TRIVIA_ARTICLES || [];
+
+    // ============================================================
+    //  HANMAP LANGUAGE FILTER
+    //
+    //  Two-axis taxonomy: family/sub-family × era (現代/古代).
+    //  Hanmap doesn't load lang-filter.js (it has its own group
+    //  scheme) so we implement window.__langmap.passesFilter,
+    //  anyFilterActive, and getFilterHashParam directly here.
+    //
+    //  Persistence: localStorage key "hm.langFilter"
+    //  Hash param : "hf" (comma-separated active codes)
+    // ============================================================
+    (function () {
+        const LS_KEY = 'hm.langFilter.v5';   // bumped — HAN_LANGS expanded to 95 codes
+                                              //   to include mnc/sjo/za/
+                                              //   bca/juc/txg/zkt/protos
+                                              //   (mutually exclusive
+                                              //   with ANCIENT_SINO).
+        const HASH_PARAM = 'hf';
+        // Two MUTUALLY EXCLUSIVE master sets, partitioning the
+        // "interesting opt-in" languages so the 古代語 and 訓読 toggles
+        // never overlap visually. Refined 2026-05-29 after the user
+        // reported that turning 訓読 OFF should also hide mnc / sjo /
+        // protos / etc., not just the 3 explicit kun chips.
+        //
+        // 訓読 (kun) = every code where the reading is a NATIVE word for
+        // the concept (not a Sino-loan):
+        //   - Explicit native-reading layers: ja_kun, ko_hun, vi_nom
+        //   - Modern non-Sinitic Sinosphere langs: mnc, sjo, za, bca
+        //   - Extinct non-Sinitic in the Sinosphere: juc, txg, zkt
+        //   - NON-Sino-Tibetan proto-languages (native roots, not Sinitic
+        //     ancestors): pko, pja, ptung, paa, ptai, pmgl, phm
+        //   pst / ptb are Sino-Tibetan family proto-languages — those are
+        //   phonological ancestors of the Chinese reading itself, so they
+        //   belong under 古代語 (ANCIENT_SINO_CODES), NOT here.
+        const KUN_CODES = [
+            'ja_kun', 'ko_hun', 'vi_nom',
+            'mnc', 'sjo', 'za', 'bca',
+            'juc', 'txg', 'zkt',
+            'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+        ];
+        // 古代語 (ancient) = historical Sinitic readings — both direct
+        // borrowings into other languages (ja_ojp / ko_mid / vi_han) AND
+        // Sinitic family ancestors (Old/Middle/Late Chinese reconstructions
+        // plus Proto-Sino-Tibetan, Proto-Tibeto-Burman).
+        const ANCIENT_SINO_CODES = [
+            'zh_han', 'zh_tang', 'zh_song', 'zh_yuan', 'zh_phagspa', 'zh_kanbun',
+            'pst', 'ptb',
+            'ko_mid', 'ja_ojp', 'vi_han', 'vi_ohan',
+        ];
+        // Both sets are OFF by default — the user sees only modern
+        // Sino-loan readings on first load and opts in via the toggles.
+        const KUN_DEFAULT_OFF = KUN_CODES;
+        const ANCIENT_DEFAULT_OFF = ANCIENT_SINO_CODES;
+
+        // Group taxonomy. Each leaf is a code that *may* exist in
+        // HAN_LANGS; we filter at render time so proto-langs still
+        // being generated (pmgl, phm, paa, pko, pja, ptb, ptung,
+        // ptai, vi_han, pst, zh_kanbun) silently drop until they
+        // land in HAN_LANGS.
+        const HAN_GROUPS = [
+            { id: 'mandarin', family: 'sinitic',
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','dng','zh_us','zh_th'],
+              historical: ['zh_yuan','zh_phagspa'] },
+            { id: 'yue', family: 'sinitic',
+              modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo','yue_us'],
+              historical: [] },
+            { id: 'min', family: 'sinitic',
+              modern: ['nan','nan_qz','nan_te','nan_pn','nan_xm','nan_zz','nan_hai','nan_sg','nan_my','nan_id','nan_th','nan_pera','cdo','mnp','cpx'],
+              historical: [] },
+            { id: 'wu', family: 'sinitic',
+              modern: ['wuu','wuu_nb','wuu_sz','wuu_wz','wuu_hz','wuu_jx','wuu_jh'],
+              historical: [] },
+            { id: 'hakka', family: 'sinitic',
+              modern: ['hak_cn','hak_tw','hak_hl'],
+              historical: [] },
+            { id: 'sinitic_other', family: 'sinitic',
+              modern: ['cjy','czh','hsn','gan','cnp'],
+              historical: ['zh_han','zh_tang','zh_song','zh_kanbun','pst'] },
+            { id: 'koreanic',
+              modern: ['ko','ko_kp','ko_zai','ko_hun'],
+              historical: ['ko_mid','pko'] },
+            { id: 'japonic',
+              modern: ['ja','ja_kun'],
+              historical: ['ja_ojp','pja'] },
+            { id: 'vietic',
+              modern: ['vi','vi_c','vi_s','vi_nom'],
+              historical: ['vi_han','vi_ohan'] },
+            { id: 'tibeto_burman',
+              modern: ['bca','bo_sino'],
+              historical: ['txg','ptb'] },
+            { id: 'tungusic',
+              modern: ['mnc','sjo'],
+              historical: ['juc','ptung'] },
+            { id: 'mongolic',
+              modern: [],
+              historical: ['pmgl'] },
+            { id: 'tai_kadai',
+              modern: ['za'],
+              historical: ['ptai'] },
+            { id: 'hmong_mien',
+              modern: [],
+              historical: ['phm'] },
+            { id: 'austroasiatic',
+              modern: [],
+              historical: ['paa'] },
+        ];
+
+        // i18n: group display names. Falls back to en, then JA.
+        const HAN_GROUPS_I18N = {
+            ja: {
+                mandarin:       { name: '官話',       parent: '中国語' },
+                yue:            { name: '粵語',       parent: '中国語' },
+                min:            { name: '閩語',       parent: '中国語' },
+                wu:             { name: '呉語',       parent: '中国語' },
+                hakka:          { name: '客家語',     parent: '中国語' },
+                sinitic_other:  { name: 'その他・中国語史音', parent: '中国語' },
+                koreanic:       { name: '朝鮮語族',   parent: null },
+                japonic:        { name: '日本語族',   parent: null },
+                vietic:         { name: 'ベトナム語', parent: null },
+                tibeto_burman:  { name: '蔵緬語族',   parent: null },
+                tungusic:       { name: 'ツングース語族', parent: null },
+                mongolic:       { name: 'モンゴル語族', parent: null },
+                tai_kadai:      { name: 'タイ・カダイ', parent: null },
+                hmong_mien:     { name: '苗瑤語族',   parent: null },
+                austroasiatic:  { name: 'オーストロアジア', parent: null },
+                _modern: '現代', _historical: '古代',
+                _title: '言語で絞り込み', _sub: '系統 × 時代でフィルタリング。チップをタップでON/OFF。',
+                _all: 'すべて選択', _none: 'すべて解除', _reset: 'リセット', _ancient: '古代語', _kun: '訓読み',
+                _btn: '絞り込み',
+            },
+            en: {
+                mandarin:       { name: 'Mandarin',           parent: 'Sinitic' },
+                yue:            { name: 'Yue / Cantonese',    parent: 'Sinitic' },
+                min:            { name: 'Min',                parent: 'Sinitic' },
+                wu:             { name: 'Wu',                 parent: 'Sinitic' },
+                hakka:          { name: 'Hakka',              parent: 'Sinitic' },
+                sinitic_other:  { name: 'Other / Historical Chinese', parent: 'Sinitic' },
+                koreanic:       { name: 'Koreanic',           parent: null },
+                japonic:        { name: 'Japonic',            parent: null },
+                vietic:         { name: 'Vietic',             parent: null },
+                tibeto_burman:  { name: 'Tibeto-Burman',      parent: null },
+                tungusic:       { name: 'Tungusic',           parent: null },
+                mongolic:       { name: 'Mongolic',           parent: null },
+                tai_kadai:      { name: 'Tai-Kadai',          parent: null },
+                hmong_mien:     { name: 'Hmong-Mien',         parent: null },
+                austroasiatic:  { name: 'Austroasiatic',      parent: null },
+                _modern: 'Modern', _historical: 'Historical',
+                _title: 'Filter languages', _sub: 'Filter by family x era. Tap chips to toggle.',
+                _all: 'Select all', _none: 'Clear all', _reset: 'Reset', _ancient: 'Ancient', _kun: 'Kun-yomi',
+                _btn: 'Filter',
+            },
+            ko: {
+                mandarin:       { name: '관화 (官話)',  parent: '중국어' },
+                yue:            { name: '월어 (粵語)',  parent: '중국어' },
+                min:            { name: '민어 (閩語)',  parent: '중국어' },
+                wu:             { name: '오어 (吳語)',  parent: '중국어' },
+                hakka:          { name: '객가어 (客家語)', parent: '중국어' },
+                sinitic_other:  { name: '기타·중국어 사적음', parent: '중국어' },
+                koreanic:       { name: '한국어족',    parent: null },
+                japonic:        { name: '일본어족',    parent: null },
+                vietic:         { name: '베트남어',    parent: null },
+                tibeto_burman:  { name: '티베트-버마어족', parent: null },
+                tungusic:       { name: '퉁구스어족',  parent: null },
+                mongolic:       { name: '몽골어족',    parent: null },
+                tai_kadai:      { name: '따이까다이',  parent: null },
+                hmong_mien:     { name: '먀오야오어족', parent: null },
+                austroasiatic:  { name: '오스트로아시아', parent: null },
+                _modern: '현대', _historical: '고대',
+                _title: '언어 필터', _sub: '계통 × 시대로 필터링. 칩을 탭하여 ON/OFF.',
+                _all: '모두 선택', _none: '모두 해제', _reset: '재설정', _ancient: '고대', _kun: '훈독',
+                _btn: '필터',
+            },
+            zh: {
+                mandarin:       { name: '官话',       parent: '汉语' },
+                yue:            { name: '粤语',       parent: '汉语' },
+                min:            { name: '闽语',       parent: '汉语' },
+                wu:             { name: '吴语',       parent: '汉语' },
+                hakka:          { name: '客家语',     parent: '汉语' },
+                sinitic_other:  { name: '其他·汉语史音', parent: '汉语' },
+                koreanic:       { name: '朝鲜语族',   parent: null },
+                japonic:        { name: '日本语族',   parent: null },
+                vietic:         { name: '越南语',     parent: null },
+                tibeto_burman:  { name: '藏缅语族',   parent: null },
+                tungusic:       { name: '通古斯语族', parent: null },
+                mongolic:       { name: '蒙古语族',   parent: null },
+                tai_kadai:      { name: '壮侗语族',   parent: null },
+                hmong_mien:     { name: '苗瑶语族',   parent: null },
+                austroasiatic:  { name: '南亚语系',   parent: null },
+                _modern: '现代', _historical: '古代',
+                _title: '语言筛选', _sub: '按语系 × 时代筛选。点击芯片切换。',
+                _all: '全选', _none: '清除', _reset: '重置', _ancient: '古代', _kun: '训读',
+                _btn: '筛选',
+            },
+        };
+
+        function uiL() {
+            const u = (window.__langmap && window.__langmap.uiLang) || 'ja';
+            if (HAN_GROUPS_I18N[u]) return u;
+            // Map related UI langs to the closest available
+            if (u === 'yue' || u === 'zh_tw') return 'zh';
+            return 'ja';
+        }
+        function gName(gid) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return (t[gid] && t[gid].name) || gid;
+        }
+        function gParent(gid) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return (t[gid] && t[gid].parent) || null;
+        }
+        function L(key) {
+            const t = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+            return t[key] != null ? t[key] : (HAN_GROUPS_I18N.ja[key] || key);
+        }
+
+        // ----------------------------------------------------------
+        //  State
+        // ----------------------------------------------------------
+        // selected = Set of codes that PASS the filter.
+        // Convention: when "no filter active" (== ALL codes selected,
+        // or filter was never opened), anyFilterActive() returns false
+        // and every marker renders unconditionally.
+        let selected = new Set();
+
+        function allCodes() {
+            const arr = (typeof window.HAN_LANGS !== 'undefined') ? window.HAN_LANGS
+                       : (typeof HAN_LANGS !== 'undefined') ? HAN_LANGS : [];
+            return new Set(arr);
+        }
+
+        // A code "appears in taxonomy" iff it shows up in any group.
+        const taxonomyCodes = new Set();
+        for (const g of HAN_GROUPS) {
+            for (const c of g.modern)     taxonomyCodes.add(c);
+            for (const c of g.historical) taxonomyCodes.add(c);
+        }
+
+        // Compute the set of codes the filter UI actually offers chips
+        // for. = taxonomy ∩ HAN_LANGS. Anything in HAN_LANGS missing
+        // here is "uncovered" and reported on the console.
+        function offeredCodes() {
+            const out = new Set();
+            const han = allCodes();
+            for (const c of taxonomyCodes) if (han.has(c)) out.add(c);
+            return out;
+        }
+
+        // Report uncovered codes (in HAN_LANGS but not in taxonomy)
+        // so future code adds get a heads-up.
+        function reportUncovered() {
+            const han = allCodes();
+            const missing = [];
+            for (const c of han) {
+                if (c === 'en') continue;             // display-only locale
+                if (!taxonomyCodes.has(c)) missing.push(c);
+            }
+            if (missing.length) {
+                console.info('[hanmap.langFilter] codes in HAN_LANGS but NOT in group taxonomy:', missing);
+            }
+            // Also report codes in taxonomy but missing from HAN_LANGS
+            // (proto-langs still being generated).
+            const notYet = [];
+            for (const c of taxonomyCodes) {
+                if (!han.has(c)) notYet.push(c);
+            }
+            if (notYet.length) {
+                console.info('[hanmap.langFilter] taxonomy codes NOT yet in HAN_LANGS (chips skipped):', notYet);
+            }
+        }
+
+        // ----------------------------------------------------------
+        //  Persistence
+        // ----------------------------------------------------------
+        function loadState() {
+            // Order of priority:
+            //  1. URL hash "hf=..." (so shared links work)
+            //  2. localStorage "hm.langFilter"
+            //  3. default = no filter active (selected covers all
+            //     offered codes; anyFilterActive() = false)
+            const offered = offeredCodes();
+            try {
+                const params = new URLSearchParams((location.hash || '').slice(1));
+                const hf = params.get(HASH_PARAM);
+                if (hf != null) {
+                    selected = new Set(hf.split(',').filter(Boolean).filter(c => offered.has(c)));
+                    return;
+                }
+            } catch (_) {}
+            try {
+                const raw = localStorage.getItem(LS_KEY);
+                if (raw) {
+                    const arr = JSON.parse(raw);
+                    if (Array.isArray(arr)) {
+                        selected = new Set(arr.filter(c => offered.has(c)));
+                        return;
+                    }
+                }
+            } catch (_) {}
+            // Default: only modern Sino-loan readings selected. Both
+            // 古代語 (Sino-loan ancient) and 訓読 (any-era native-word)
+            // categories OFF by default. The two sets are mutually
+            // exclusive (no overlap), so the user can opt in to each
+            // independently via the toolbar toggles.
+            selected = new Set(offered);
+            for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
+            for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(LS_KEY, JSON.stringify(Array.from(selected)));
+            } catch (_) {}
+        }
+
+        // ----------------------------------------------------------
+        //  Public API (window.__langmap)
+        // ----------------------------------------------------------
+        window.__langmap = window.__langmap || {};
+
+        function anyFilterActive() {
+            const offered = offeredCodes();
+            if (selected.size === 0) return true;          // explicit "none"
+            if (selected.size >= offered.size) {
+                // selected is a superset of offered → still need to
+                // check it's NOT a strict subset
+                for (const c of offered) if (!selected.has(c)) return true;
+                return false;                              // exactly = offered
+            }
+            return true;
+        }
+        function passesFilter(code) {
+            if (!anyFilterActive()) return true;
+            return selected.has(code);
+        }
+        function getFilterHashParam() {
+            if (!anyFilterActive()) return '';
+            return HASH_PARAM + '=' + Array.from(selected).sort().join(',');
+        }
+
+        window.__langmap.anyFilterActive    = anyFilterActive;
+        window.__langmap.passesFilter       = passesFilter;
+        window.__langmap.getFilterHashParam = getFilterHashParam;
+
+        // ----------------------------------------------------------
+        //  UI rendering
+        // ----------------------------------------------------------
+        function refreshTriggers() {
+            // Persist, then signal the main wordmap IIFE (it owns the
+            // closure for updateMarkers / updateHash) via a CustomEvent.
+            saveState();
+            try { window.dispatchEvent(new CustomEvent('langmap:filterchange')); } catch (_) {}
+            updateBadge();
+        }
+
+        function updateBadge() {
+            const offered = offeredCodes();
+            const active = anyFilterActive();
+            const badge = document.getElementById('hm-lang-filter-badge');
+            const lbl   = document.getElementById('hm-lang-filter-label');
+            if (lbl) lbl.textContent = L('_btn');
+            if (badge) {
+                if (active) {
+                    badge.textContent = String(selected.size);
+                    badge.style.display = '';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+            const counter = document.getElementById('hm-lang-filter-count');
+            if (counter) counter.textContent = selected.size + ' / ' + offered.size;
+        }
+
+        // Pretty name for a chip. Prefer LANG_NAMES translation; fall
+        // back to the code itself. LANG_NAMES is a top-level `const` in
+        // lang_names.js — accessible via the bare identifier from any
+        // sibling <script> block, but NOT on window (const doesn't
+        // attach to window). Guard with typeof to avoid ReferenceError
+        // if the script hasn't loaded yet.
+        function chipNameFor(code) {
+            try {
+                if (typeof LANG_NAMES === 'object' && LANG_NAMES) {
+                    const u = uiL();
+                    const byLang = LANG_NAMES[u] || LANG_NAMES.ja || LANG_NAMES.en;
+                    if (byLang && byLang[code]) return byLang[code];
+                }
+            } catch (_) {}
+            return code;
+        }
+
+        function renderPanel() {
+            const body = document.getElementById('hm-lang-filter-body');
+            if (!body) return;
+            const offered = offeredCodes();
+            const i18n = HAN_GROUPS_I18N[uiL()] || HAN_GROUPS_I18N.ja;
+
+            // Update modal title + toolbar labels for current UI lang
+            const titleEl = document.getElementById('hm-lang-filter-title');
+            if (titleEl) titleEl.textContent = L('_title');
+            const subEl = document.getElementById('hm-lang-filter-sub');
+            if (subEl) subEl.textContent = L('_sub');
+            const toolbar = document.getElementById('hm-lang-filter-toolbar');
+            if (toolbar) {
+                const btns = toolbar.querySelectorAll('.hm-lf-tool-btn');
+                btns.forEach(b => {
+                    const a = b.getAttribute('data-act');
+                    const map = {
+                        all: '_all', none: '_none', reset: '_reset',
+                        'toggle-ancient': '_ancient', 'toggle-kun': '_kun',
+                    };
+                    if (!map[a]) return;
+                    // For switch-style buttons (.hm-lf-switch) only update
+                    // the inner .hm-lf-switch-text span — the track HTML
+                    // around it must survive each i18n refresh.
+                    const txtSpan = b.querySelector('.hm-lf-switch-text');
+                    if (txtSpan) txtSpan.textContent = L(map[a]);
+                    else b.textContent = L(map[a]);
+                });
+                // Reflect current ON/OFF state. Switch-style toggles use
+                // the .is-on class; other buttons fall back to inline
+                // dark-fill styling.
+                const setBtnActive = (act, isActive) => {
+                    const b = toolbar.querySelector('button[data-act="' + act + '"]');
+                    if (!b) return;
+                    if (b.classList.contains('hm-lf-switch')) {
+                        b.classList.toggle('is-on', !!isActive);
+                        b.setAttribute('aria-pressed', String(!!isActive));
+                        return;
+                    }
+                    if (isActive) {
+                        b.style.background = '#1a1a2e';
+                        b.style.color = '#fff';
+                        b.style.borderColor = '#1a1a2e';
+                    } else {
+                        b.style.background = '#fff';
+                        b.style.color = '#333';
+                        b.style.borderColor = '#d0d0d0';
+                    }
+                };
+                // Visual state uses ALL-selected semantics (every code in
+                // the set is currently visible). This keeps the two
+                // master toggles independent — clicking 訓読み adds 3
+                // explicit kun chips and 訓読み lights up; the 古代語
+                // indicator only follows historical codes.
+                const allInSetSelected = (codes) => {
+                    let any = false;
+                    for (const c of codes) {
+                        if (!offered.has(c)) continue;
+                        any = true;
+                        if (!selected.has(c)) return false;
+                    }
+                    return any;   // false if set is empty
+                };
+                setBtnActive('toggle-ancient', allInSetSelected(ANCIENT_SINO_CODES));
+                setBtnActive('toggle-kun',     allInSetSelected(KUN_CODES));
+            }
+
+            body.innerHTML = '';
+
+            // Group by parent family for visual hierarchy
+            const sinitic = HAN_GROUPS.filter(g => g.family === 'sinitic');
+            const others  = HAN_GROUPS.filter(g => g.family !== 'sinitic');
+
+            const blocks = [];
+            // Sinitic super-header (only if any sinitic subgroup has offered codes)
+            const siniticAny = sinitic.some(g => g.modern.concat(g.historical).some(c => offered.has(c)));
+            if (siniticAny) {
+                const sh = document.createElement('div');
+                sh.style.cssText = 'font-size:11px;font-weight:600;color:#888;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 6px;padding-left:2px';
+                sh.textContent = gParent('mandarin') || 'Sinitic';
+                blocks.push(sh);
+                for (const g of sinitic) blocks.push(renderGroup(g, offered));
+            }
+            for (const g of others) {
+                const has = g.modern.concat(g.historical).some(c => offered.has(c));
+                if (!has) continue;
+                blocks.push(renderGroup(g, offered));
+            }
+
+            blocks.forEach(el => body.appendChild(el));
+            updateBadge();
+        }
+
+        function renderGroup(g, offered) {
+            const wrap = document.createElement('div');
+            wrap.className = 'hm-lf-group';
+            wrap.setAttribute('data-group-id', g.id);
+
+            const head = document.createElement('div');
+            head.className = 'hm-lf-group-head';
+            const ttl = document.createElement('div');
+            ttl.className = 'hm-lf-group-title';
+            ttl.textContent = gName(g.id);
+            head.appendChild(ttl);
+
+            const acts = document.createElement('div');
+            acts.className = 'hm-lf-group-actions';
+            const bAll = document.createElement('button'); bAll.type='button'; bAll.textContent = L('_all');
+            const bNone = document.createElement('button'); bNone.type='button'; bNone.textContent = L('_none');
+            bAll.addEventListener('click', () => {
+                for (const c of g.modern.concat(g.historical)) if (offered.has(c)) selected.add(c);
+                renderPanel(); refreshTriggers();
+            });
+            bNone.addEventListener('click', () => {
+                for (const c of g.modern.concat(g.historical)) selected.delete(c);
+                renderPanel(); refreshTriggers();
+            });
+            acts.appendChild(bAll); acts.appendChild(bNone);
+            head.appendChild(acts);
+            wrap.appendChild(head);
+
+            // Modern row
+            const modernCodes = g.modern.filter(c => offered.has(c));
+            if (modernCodes.length) wrap.appendChild(renderEraRow(L('_modern'), modernCodes, offered));
+            // Historical row
+            const histCodes = g.historical.filter(c => offered.has(c));
+            if (histCodes.length) wrap.appendChild(renderEraRow(L('_historical'), histCodes, offered));
+
+            return wrap;
+        }
+
+        function renderEraRow(label, codes, offered) {
+            const row = document.createElement('div');
+            row.className = 'hm-lf-era-row';
+            const lab = document.createElement('div');
+            lab.className = 'hm-lf-era-label';
+            lab.textContent = label;
+            row.appendChild(lab);
+            const wrap = document.createElement('div');
+            wrap.className = 'hm-lf-chip-wrap';
+            // A chip is "disabled" when its category-master switch is OFF
+            // (i.e. NO code in that category is currently selected). The
+            // user can re-enable the whole category from the switch above.
+            const ancientOff = ANCIENT_SINO_CODES.every(c => !selected.has(c) || !offered.has(c));
+            const kunOff     = KUN_CODES.every(c => !selected.has(c) || !offered.has(c));
+            const isDisabled = (code) => {
+                if (ancientOff && ANCIENT_SINO_CODES.includes(code)) return true;
+                if (kunOff && KUN_CODES.includes(code)) return true;
+                return false;
+            };
+            for (const code of codes) {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                const disabled = isDisabled(code);
+                chip.className = 'hm-lf-chip' + (selected.has(code) ? ' active' : '') + (disabled ? ' is-disabled' : '');
+                chip.setAttribute('data-code', code);
+                if (disabled) chip.setAttribute('aria-disabled', 'true');
+                const nm = document.createElement('span');
+                nm.textContent = chipNameFor(code);
+                chip.appendChild(nm);
+                const cd = document.createElement('span');
+                cd.className = 'hm-lf-chip-code';
+                cd.textContent = code;
+                chip.appendChild(cd);
+                chip.addEventListener('click', () => {
+                    if (chip.classList.contains('is-disabled')) return;
+                    if (selected.has(code)) selected.delete(code);
+                    else selected.add(code);
+                    chip.classList.toggle('active');
+                    // Re-render in case this click flipped a category's
+                    // master-switch state (e.g. last-selected chip in a
+                    // category just got deselected).
+                    renderPanel();
+                    refreshTriggers();
+                });
+                wrap.appendChild(chip);
+            }
+            row.appendChild(wrap);
+            return row;
+        }
+
+        // ----------------------------------------------------------
+        //  Modal open/close
+        // ----------------------------------------------------------
+        function open() {
+            renderPanel();
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            const md = document.getElementById('hm-lang-filter-modal');
+            if (bd) bd.style.display = 'block';
+            if (md) md.style.display = 'block';
+        }
+        function close() {
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            const md = document.getElementById('hm-lang-filter-modal');
+            if (bd) bd.style.display = 'none';
+            if (md) md.style.display = 'none';
+        }
+
+        // ----------------------------------------------------------
+        //  Wire DOM
+        // ----------------------------------------------------------
+        function wire() {
+            loadState();
+            reportUncovered();
+            const btn = document.getElementById('hm-lang-filter-btn');
+            if (btn) btn.addEventListener('click', open);
+            const bd = document.getElementById('hm-lang-filter-backdrop');
+            if (bd) bd.addEventListener('click', close);
+            const xb = document.getElementById('hm-lang-filter-close');
+            if (xb) xb.addEventListener('click', close);
+            // Escape to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                const md = document.getElementById('hm-lang-filter-modal');
+                if (md && md.style.display !== 'none') { close(); e.stopPropagation(); }
+            }, true);
+            // Toolbar buttons
+            const tb = document.getElementById('hm-lang-filter-toolbar');
+            if (tb) tb.addEventListener('click', (e) => {
+                const b = e.target.closest('button[data-act]'); if (!b) return;
+                const offered = offeredCodes();
+                const act = b.getAttribute('data-act');
+                if (act === 'all') {
+                    selected = new Set(offered);
+                } else if (act === 'reset') {
+                    // Reset to default: only modern Sino-loan readings.
+                    selected = new Set(offered);
+                    for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
+                    for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
+                } else if (act === 'none') {
+                    selected = new Set();
+                } else if (act === 'toggle-ancient') {
+                    // Toggle the Sino-loan historical set only. Native-
+                    // word ancient codes (juc/txg/zkt/protos) go through
+                    // the 訓読 toggle, never this one.
+                    let anyMissing = false;
+                    for (const c of ANCIENT_SINO_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
+                    if (anyMissing) { for (const c of ANCIENT_SINO_CODES) if (offered.has(c)) selected.add(c); }
+                    else            { for (const c of ANCIENT_SINO_CODES) selected.delete(c); }
+                } else if (act === 'toggle-kun') {
+                    // Toggle all native-word codes (explicit kun layers
+                    // + non-Sino langs + proto reconstructions).
+                    let anyMissing = false;
+                    for (const c of KUN_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
+                    if (anyMissing) { for (const c of KUN_CODES) if (offered.has(c)) selected.add(c); }
+                    else            { for (const c of KUN_CODES) selected.delete(c); }
+                }
+                renderPanel(); refreshTriggers();
+            });
+            updateBadge();
+            // Re-render when UI lang changes (i18n labels)
+            window.addEventListener('langmap:uichange', () => {
+                renderPanel();
+                updateBadge();
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', wire);
+        } else {
+            wire();
+        }
+    })();
+    </script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
     // (Was previously extracted from app.js via fetch+regex+new Function.
@@ -2630,11 +3601,11 @@
         let _currentTileLayer = null;
         const TILE_LAYERS = {
             flat: {
-                url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
                 opts: { attribution: '&copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 18 },
             },
             labels: {
-                url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
                 opts: { attribution: '&copy; <a href="https://carto.com/">CARTO</a> &middot; <a href="https://openstreetmap.org">OSM</a>', maxZoom: 18 },
             },
             terrain: {
@@ -2739,7 +3710,7 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:   101,
+            styles:    93,
             data:      221,
             metaI18n:  15,
             filter:    32,
@@ -2761,6 +3732,12 @@
         // Also rebuilds WORD_LIST for any reader that still uses it.
         function _mergeWordsIntoLangData() {
             if (typeof WORD_ORDER === 'undefined' || !window.WORDS) return;
+            // Hanmap: WORD_ORDER is empty (no per-word JS files). Skip the
+            // wholesale WORD_LIST rebuild that would otherwise reset our
+            // adapter-built character list to []. The merge loop below is
+            // also effectively a no-op (WORDS slots have empty data), but
+            // run it anyway in case future data backfills.
+            const _isHanmap = (typeof HAN_LIST !== 'undefined' && WORD_ORDER.length === 0);
             for (const id of WORD_ORDER) {
                 const w = window.WORDS[id];
                 if (!w || !w.data) continue;
@@ -2779,10 +3756,12 @@
                     }
                 }
             }
-            window.WORD_LIST = WORD_ORDER.map(id => {
-                const w = window.WORDS[id] || {};
-                return { id, label: w.label || {}, definition: w.definition || {} };
-            });
+            if (!_isHanmap) {
+                window.WORD_LIST = WORD_ORDER.map(id => {
+                    const w = window.WORDS[id] || {};
+                    return { id, label: w.label || {}, definition: w.definition || {} };
+                });
+            }
             // Re-run UI init that depends on WORD_LIST / per-language
             // words. The initial calls (during IIFE parse) ran against
             // empty stubs because the per-word <script>s hadn't resolved
@@ -3352,9 +4331,13 @@
             wd.textContent = '';
             wd.appendChild(document.createTextNode(text));
             if (isFallback && text) {
-                const fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
-                    || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
-                    || ENGLISH_FALLBACK_LABEL.en;
+                let fbLabel = null;
+                try {
+                    fbLabel = ENGLISH_FALLBACK_LABEL[uiLang]
+                        || ENGLISH_FALLBACK_LABEL[uiLang.split('_')[0]]
+                        || ENGLISH_FALLBACK_LABEL.en;
+                } catch (e) { /* not yet initialized */ }
+                if (!fbLabel) return;
                 const fb = document.createElement('span');
                 fb.style.color = '#aaa';
                 fb.style.fontSize = '9px';
@@ -3372,6 +4355,224 @@
         updateWordDefinition();
         // Refresh definition text when UI lang changes
         window.addEventListener('langmap:uichange', updateWordDefinition);
+
+        // Hanmap language-filter (defined in an outer script): when the
+        // user toggles chips, re-render markers + update URL hash so the
+        // filter state survives reload / sharing.
+        window.addEventListener('langmap:filterchange', () => {
+            try { updateMarkers(select.value); } catch (_) {}
+            try { updateHash(); } catch (_) {}
+        });
+
+        // ============================================================
+        //  HANMAP: character selector button + modal
+        // ============================================================
+        // Defer to setTimeout(0) so `currentWord` (declared further down
+        // with `let`) is past its TDZ by the time we read it.
+        setTimeout(function setupHanmapCharSelector() {
+            if (typeof HAN_LIST === 'undefined' || typeof HAN_CATEGORIES === 'undefined') return;
+            const btn = document.getElementById('char-current-btn');
+            const randomBtn = document.getElementById('char-random-btn');
+            const modal = document.getElementById('char-modal');
+            const backdrop = document.getElementById('char-modal-backdrop');
+            const closeBtn = document.getElementById('char-modal-close');
+            const body = document.getElementById('char-modal-body');
+            if (!btn || !modal || !backdrop || !body) return;
+
+            // Make sure the legacy hidden <select> has options for every
+            // Han character so `select.value = …` sticks.
+            select.innerHTML = '';
+            for (const ch of HAN_LIST) {
+                const opt = document.createElement('option');
+                opt.value = ch;
+                opt.textContent = ch;
+                select.appendChild(opt);
+            }
+            select.value = currentWord;
+
+            function setChar(ch) {
+                if (!ch || ch === currentWord) return;
+                currentWord = ch;
+                btn.textContent = ch;
+                if (select.value !== ch) select.value = ch;
+                updateMarkers(ch);
+                try { updateHash && updateHash(); } catch (_) {}
+                // Re-render the lang-info panel if it's open so the new
+                // current-char row gets highlighted.
+                if (window.__hanmapCurrentLangInfo
+                    && typeof hanmapRenderLangInfo === 'function') {
+                    hanmapRenderLangInfo(window.__hanmapCurrentLangInfo);
+                }
+            }
+            // Expose so the popup-table click delegate can call it.
+            window.__hanmapSetChar = setChar;
+
+            function buildModal() {
+                body.innerHTML = '';
+                const uiLangBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+                for (const cat of HAN_CATEGORIES) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'char-category';
+                    const h3 = document.createElement('h3');
+                    const labels = cat.label || {};
+                    h3.textContent = labels[uiLangBase] || labels.ja || labels.en || cat.key;
+                    wrap.appendChild(h3);
+                    const grid = document.createElement('div');
+                    grid.className = 'char-grid';
+                    for (const ch of cat.chars) {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'char-btn' + (ch === currentWord ? ' active' : '');
+                        b.textContent = ch;
+                        b.dataset.char = ch;
+                        b.addEventListener('click', () => {
+                            setChar(ch);
+                            closeModal();
+                        });
+                        grid.appendChild(b);
+                    }
+                    wrap.appendChild(grid);
+                    body.appendChild(wrap);
+                }
+            }
+            function openModal() {
+                buildModal();
+                modal.classList.add('visible');
+                backdrop.classList.add('visible');
+                modal.setAttribute('aria-hidden', 'false');
+                backdrop.setAttribute('aria-hidden', 'false');
+            }
+            function closeModal() {
+                modal.classList.remove('visible');
+                backdrop.classList.remove('visible');
+                modal.setAttribute('aria-hidden', 'true');
+                backdrop.setAttribute('aria-hidden', 'true');
+            }
+            btn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('visible')) closeModal();
+            });
+            // Slot-machine-style roulette: vertical reel of chars
+            // scrolls up past the visible window, decelerating, and
+            // lands on the final char. Total animation ~0.5s.
+            // Per user request 2026-05-29.
+            let _rouletteRunning = false;
+            randomBtn.addEventListener('click', () => {
+                if (_rouletteRunning) return;
+                let finalCh;
+                do { finalCh = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
+                while (finalCh === currentWord && HAN_LIST.length > 1);
+
+                const cbtn = document.getElementById('char-current-btn');
+                if (!cbtn) { setChar(finalCh); return; }
+                _rouletteRunning = true;
+                cbtn.setAttribute('aria-busy', 'true');
+
+                const cellH = cbtn.clientHeight;
+                // Build the reel sequence: enough cells that the snap-tick
+                // animation has visible motion throughout. The exact count
+                // doesn't matter much — we just need ≥ 1 cell per ~30ms of
+                // duration so the eye sees continuous "ticking".
+                const N = 24;
+                const cells = [currentWord];
+                for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
+                cells.push(finalCh);
+
+                const prevOverflow = cbtn.style.overflow;
+                const prevPos = cbtn.style.position;
+                cbtn.textContent = '';
+                cbtn.style.overflow = 'hidden';
+                cbtn.style.position = 'relative';
+
+                const reel = document.createElement('div');
+                // position:absolute anchors the reel to the button's
+                // top-left, BYPASSING the parent's align-items:center
+                // (which would otherwise vertically center this tall child
+                // and offset every translateY by half its height — the
+                // reason previous CSS-transition tries appeared "stuck on
+                // whitespace" mid-cell). transition:none guards against any
+                // inherited transform timing.
+                reel.style.cssText = 'position:absolute;top:0;left:0;width:100%;display:flex;flex-direction:column;transition:none;will-change:transform;transform:translateY(0)';
+                // Match the cell font to the button's own font so there's
+                // no visible size jump when the reel is torn down and
+                // replaced with cbtn.textContent = finalCh.
+                const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
+                for (const ch of cells) {
+                    const c = document.createElement('div');
+                    c.textContent = ch;
+                    c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
+                    reel.appendChild(c);
+                }
+                cbtn.appendChild(reel);
+
+                const finish = () => {
+                    while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
+                    cbtn.style.overflow = prevOverflow || '';
+                    cbtn.style.position = prevPos || '';
+                    cbtn.textContent = finalCh;
+                    cbtn.removeAttribute('aria-busy');
+                    _rouletteRunning = false;
+                    setChar(finalCh);
+                };
+
+                // requestAnimationFrame-driven cell-by-cell snap. Unlike CSS
+                // transition (which interpolates smoothly between two cells
+                // — leaving the viewport showing whitespace at mid-cell
+                // positions), this jumps the reel by exactly cellH each
+                // tick so the user always sees a whole glyph centered in
+                // the viewport. Easing controls how MUCH time between ticks,
+                // not how SMOOTHLY two cells blend.
+                const totalDuration = 700;        // ms
+                const totalCells    = cells.length - 1;  // final cell index
+                const startTime     = performance.now();
+                let lastIdx = -1;
+                const tick = (now) => {
+                    const t = Math.min(1, (now - startTime) / totalDuration);
+                    // easeOutCubic — fast at start, decisive snap at end.
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    const idx = Math.min(totalCells, Math.round(eased * totalCells));
+                    if (idx !== lastIdx) {
+                        lastIdx = idx;
+                        reel.style.transform = 'translateY(-' + (idx * cellH) + 'px)';
+                    }
+                    if (t < 1) requestAnimationFrame(tick);
+                    else finish();
+                };
+                requestAnimationFrame(tick);
+            });
+            // Localise the modal title + random button on UI-lang change.
+            function localizeChrome() {
+                const ui = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+                const TITLES = {
+                    ja:'漢字を選択', ko:'한자 선택', zh:'选择汉字', yue:'選擇漢字',
+                    vi:'Chọn chữ Hán', th:'เลือกอักษรจีน', id:'Pilih karakter Han', hi:'हान वर्ण चुनें',
+                    en:'Select character', de:'Han-Zeichen wählen', fr:'Choisir un caractère han',
+                    it:'Scegli un carattere Han', es:'Elegir carácter Han', pt:'Escolher caractere Han',
+                    ru:'Выбрать иероглиф', uk:'Обрати ієрогліф', ar:'اختر حرفًا',
+                    he:'בחר תו האן', sw:'Chagua herufi ya Han',
+                };
+                const t = document.getElementById('char-modal-title');
+                if (t) t.textContent = TITLES[ui] || TITLES.en;
+                const RAND = {
+                    ja:'ランダム', ko:'무작위', zh:'随机', yue:'隨機',
+                    vi:'Ngẫu nhiên', th:'สุ่ม', id:'Acak', hi:'यादृच्छिक',
+                    en:'Random', de:'Zufall', fr:'Aléatoire', it:'Casuale',
+                    es:'Aleatorio', pt:'Aleatório', ru:'Случайный', uk:'Випадкове',
+                    ar:'عشوائي', he:'אקראי', sw:'Bahatisha',
+                };
+                const r = document.getElementById('char-random-label');
+                if (r) r.textContent = RAND[ui] || RAND.en;
+            }
+            localizeChrome();
+            window.addEventListener('langmap:uichange', localizeChrome);
+
+            // Sync the giant character button on first paint.
+            btn.textContent = currentWord;
+            // Expose for hash loader.
+            window.__hanmapSetChar = setChar;
+        }, 0);
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
@@ -3653,9 +4854,9 @@
         // WORD_LIST is empty at this point if the per-word <script>s haven't
         // resolved yet (common — they're async). WORD_ORDER from
         // word_manifest.js is a sync static script so it's always defined here.
-        let currentWord = (WORD_LIST[0] && WORD_LIST[0].id)
-            || (typeof WORD_ORDER !== 'undefined' && WORD_ORDER[0])
-            || 'water';
+        // Hanmap: initial character is 一 (first in HAN_LIST). The legacy
+        // `select.value` is kept in sync with this via the char-modal handler.
+        let currentWord = (typeof HAN_LIST !== 'undefined' && HAN_LIST[0]) || '一';
         const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
         // Historical-mode codes → representative modern descendant (or null).
@@ -3677,6 +4878,10 @@
             'mn_cn',    // Inner Mongolian (Traditional Mongolian script)
             'cmg',      // Classical Mongolian
             'xng',      // Middle Mongolian
+            // Other Yuan/Liao-era ancient scripts written vertically
+            'zh_phagspa', // Phags-pa (designed for vertical layout 1269)
+            'zkt',        // Khitan Small Script (vertical traditional layout)
+            'txg',        // Tangut (often vertical in historical manuscripts)
         ]);
 
         // DATA_STATUS_OVERRIDES is now defined in wordmap_data.js (data
@@ -3833,6 +5038,26 @@
         }
 
         function getVisibleLangs(wordId, zoom) {
+            // Hanmap override: hard-iterate HAN_LANGS. Ignore the era
+            // toggle, EXCLUDED_CODES, and speaker-tier zoom gating — every
+            // pronunciation should be visible at every zoom level since
+            // there are only ~60 of them and the user explicitly wants to
+            // see character readings across the Sinosphere.
+            if (typeof HAN_LANGS !== 'undefined') {
+                const visibleLangs = [];
+                const unattestedLangs = [];
+                const descendantCodes = new Set();
+                for (const code of HAN_LANGS) {
+                    const lang = LANG_DATA[code];
+                    if (!lang || !lang.words || !lang.words[wordId]) continue;
+                    if (isUnattestedEntry(lang.words[wordId])) {
+                        unattestedLangs.push(code);
+                    } else {
+                        visibleLangs.push(code);
+                    }
+                }
+                return { visibleLangs, unattestedLangs, descendantCodes };
+            }
             const visibleLangs = [];
             const unattestedLangs = [];
             const descendantCodes = new Set();
@@ -3911,37 +5136,563 @@
             if (s == null) return '';
             return String(s).replace(/[&<>"']/g, c => ESCAPE_HTML_MAP[c]);
         }
-        const ALLOWED_DESC_COLORS = new Set(['#c0392b', '#ff6b6b', '']);
+        const ALLOWED_DESC_COLORS = new Set([
+            '',          // default — Sinitic modern (inherit black)
+            '#998270',   // Sinitic ancient (light sepia)
+            '#5e1f1f',   // Non-Sinitic modern (dark red-tinted)
+            '#a48070',   // Non-Sinitic ancient (light red-brown)
+            '#c0392b',   // legacy: wordmap descendant red
+            '#ff6b6b',   // legacy: wordmap descendant globe-mode pink
+        ]);
         function safeColor(c) { return ALLOWED_DESC_COLORS.has(c) ? c : ''; }
 
+        // ============================================================
+        //  Hanmap display normalisation
+        //  - tone-digit Chao IPA conversion (24 → ˨˦)
+        //  - simplified/traditional variant suppression
+        //  - romaji → kana for ja_*
+        //  - romaja → IPA + Hangul extraction for ko
+        //  - hide surface column for zh* (Pinyin lives in ipa field)
+        //  - hide surface entirely if it equals the current character
+        // ============================================================
+        const HAN_TONE_DIGIT_MAP = {
+            '1': '˩', '2': '˨', '3': '˧', '4': '˦', '5': '˥',
+        };
+        const HAN_SUP_DIGIT_MAP = {
+            '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9',
+        };
+        function hanmapConvertToneDigits(s) {
+            if (!s) return s;
+            // Only convert RUNS of 2-4 [1-5] digits to Chao IPA letters
+            // (Mandarin 35, Cantonese 55, Wu 213, …). Leave single digits
+            // alone (Jyutping tone numbers, Min digit-tones, etc.). Convert
+            // 2+ runs of superscript digits to Chao too; single superscript
+            // tones stay as-is.
+            // Plain digits first.
+            let out = s.replace(/([1-5]{2,4})/g, run =>
+                Array.from(run).map(d => HAN_TONE_DIGIT_MAP[d] || d).join(''));
+            // Superscript runs of 2+.
+            out = out.replace(/([¹²³⁰-⁹]{2,4})/g, run =>
+                Array.from(run).map(c => {
+                    const d = HAN_SUP_DIGIT_MAP[c];
+                    return (d && HAN_TONE_DIGIT_MAP[d]) || c;
+                }).join(''));
+            return out;
+        }
+        // Common simplified/traditional doublets among the 60 Han chars and
+        // their immediate neighbours. Used to suppress the surface column
+        // when the only difference is script convention.
+        const HAN_SIMP_TRAD = {
+            '来':'來','龙':'龍','虎':'虎','马':'馬','鸟':'鳥','鱼':'魚',
+            '猫':'貓','头':'頭','见':'見','闻':'聞','饮':'飲','坐':'坐',
+            '东':'東','门':'門','长':'長','车':'車','银':'銀','货':'貨',
+            '语':'語','国':'國','学':'學','门':'門','贝':'貝',
+        };
+        function hanmapIsSimpTradVariant(a, b) {
+            if (!a || !b) return false;
+            if (a === b) return false;
+            return HAN_SIMP_TRAD[a] === b || HAN_SIMP_TRAD[b] === a;
+        }
+        // --- Romaji → Katakana (very small table; covers chars used in
+        //     ja, ja_go, ja_kan, ja_to readings) ---
+        const HAN_KATA_DIGRAPH = {
+            'kya':'キャ','kyu':'キュ','kyo':'キョ','sha':'シャ','shu':'シュ','sho':'ショ','shi':'シ',
+            'cha':'チャ','chu':'チュ','cho':'チョ','chi':'チ','tsu':'ツ','nya':'ニャ','nyu':'ニュ','nyo':'ニョ',
+            'hya':'ヒャ','hyu':'ヒュ','hyo':'ヒョ','mya':'ミャ','myu':'ミュ','myo':'ミョ','rya':'リャ','ryu':'リュ','ryo':'リョ',
+            'gya':'ギャ','gyu':'ギュ','gyo':'ギョ','jya':'ジャ','jyu':'ジュ','jyo':'ジョ','ja':'ジャ','ju':'ジュ','jo':'ジョ','ji':'ジ',
+            'bya':'ビャ','byu':'ビュ','byo':'ビョ','pya':'ピャ','pyu':'ピュ','pyo':'ピョ',
+            'tsa':'ツァ','tse':'ツェ','tso':'ツォ',
+        };
+        const HAN_KATA_MONO = {
+            'a':'ア','i':'イ','u':'ウ','e':'エ','o':'オ',
+            'ka':'カ','ki':'キ','ku':'ク','ke':'ケ','ko':'コ',
+            'sa':'サ','su':'ス','se':'セ','so':'ソ',
+            'ta':'タ','te':'テ','to':'ト',
+            'na':'ナ','ni':'ニ','nu':'ヌ','ne':'ネ','no':'ノ',
+            'ha':'ハ','hi':'ヒ','fu':'フ','he':'ヘ','ho':'ホ',
+            'ma':'マ','mi':'ミ','mu':'ム','me':'メ','mo':'モ',
+            'ya':'ヤ','yu':'ユ','yo':'ヨ',
+            'ra':'ラ','ri':'リ','ru':'ル','re':'レ','ro':'ロ',
+            'wa':'ワ','wo':'ヲ',
+            'ga':'ガ','gi':'ギ','gu':'グ','ge':'ゲ','go':'ゴ',
+            'za':'ザ','zu':'ズ','ze':'ゼ','zo':'ゾ','zi':'ジ',
+            'da':'ダ','de':'デ','do':'ド','di':'ヂ','du':'ヅ',
+            'ba':'バ','bi':'ビ','bu':'ブ','be':'ベ','bo':'ボ',
+            'pa':'パ','pi':'ピ','pu':'プ','pe':'ペ','po':'ポ',
+        };
+        function hanmapRomajiToKana(s, useHiragana) {
+            if (!s) return '';
+            // Lowercase + strip macrons (long vowel = ー or double vowel)
+            // For simplicity convert ō→ou, ū→uu, ā→aa, ī→ii, ē→ei
+            let t = String(s).toLowerCase()
+                .replace(/ō/g, 'ou').replace(/ū/g, 'uu')
+                .replace(/ā/g, 'aa').replace(/ī/g, 'ii').replace(/ē/g, 'ei');
+            // Strip parenthesised content (e.g. "ichi (一)") and slashes (take first).
+            t = t.split('/')[0].split('(')[0].trim();
+            if (!t) return '';
+            let out = '';
+            let i = 0;
+            while (i < t.length) {
+                // sokuon: doubled consonant → ッ
+                if (i + 1 < t.length && t[i] === t[i+1]
+                    && /[kstpcgzbdh]/.test(t[i])) {
+                    out += 'ッ';
+                    i++;
+                    continue;
+                }
+                // syllabic n: 'n' followed by non-vowel/non-y, or end
+                if (t[i] === 'n' && (i+1 >= t.length || !/[aeiouy]/.test(t[i+1]))) {
+                    out += 'ン';
+                    i++;
+                    continue;
+                }
+                // try 3-letter digraph
+                if (i + 2 < t.length + 1) {
+                    const tri = t.slice(i, i+3);
+                    if (HAN_KATA_DIGRAPH[tri]) { out += HAN_KATA_DIGRAPH[tri]; i += 3; continue; }
+                }
+                // try 2-letter (either DIGRAPH table — which holds ja/ji/ju/jo/etc.
+                // — or MONO table for kana/sa/ki/…)
+                if (i + 1 < t.length + 1) {
+                    const bi = t.slice(i, i+2);
+                    if (HAN_KATA_DIGRAPH[bi]) { out += HAN_KATA_DIGRAPH[bi]; i += 2; continue; }
+                    if (HAN_KATA_MONO[bi])    { out += HAN_KATA_MONO[bi];    i += 2; continue; }
+                }
+                // single vowel
+                if (HAN_KATA_MONO[t[i]]) { out += HAN_KATA_MONO[t[i]]; i++; continue; }
+                // unknown char → skip
+                i++;
+            }
+            // long-vowel mark: convert "ou"/"uu" tail back to ー
+            out = out.replace(/オウ/g, 'オー').replace(/ウウ/g, 'ウー')
+                     .replace(/アア/g, 'アー').replace(/イイ/g, 'イー')
+                     .replace(/エイ/g, 'エー');
+            if (useHiragana) {
+                // Katakana → Hiragana (offset 0x60). Skip the long-vowel mark.
+                out = out.replace(/[ァ-ヶ]/g, c =>
+                    String.fromCharCode(c.charCodeAt(0) - 0x60));
+            }
+            return out;
+        }
+        // Detect whether a value looks like IPA vs a romanisation
+        // (Pinyin/Jyutping/POJ). IPA values carry tone-letter chars
+        // (˩˨˧˦˥), the unreleased mark (̚), the syllabic-consonant mark (̩),
+        // or characters from the IPA extension blocks that don't appear in
+        // standard romanisations.
+        // Build a short version of a HAN_VARIANTS label suitable for the
+        // map's tight label tier. Rules:
+        //   1. If a " / " separates a native+roman pair (e.g. "漢音 / Kan-on"),
+        //      keep only the native side.
+        //   2. If a middle-dot or comma separates alternatives
+        //      (e.g. "歩く・行為"), keep only the first piece.
+        //   3. Strip trailing word-formative suffixes like "法則" / "現象".
+        //   4. Truncate to 3 user-visible characters (Array.from to count
+        //      surrogate pairs correctly).
+        function hanmapShortLabel(label) {
+            if (!label) return '';
+            let s = String(label).split(' / ')[0].trim();
+            // Strip parenthetical glosses BEFORE doing anything else.
+            // Variant labels like "上面（locative）" or "行走（歩く）" carry the
+            // English / Japanese gloss in parens as supplementary info;
+            // the previous version would 3-char-truncate the WHOLE string
+            // and leave a dangling "（" or "(". User reported this for
+            // yue_gz variants (上面（locative） → "上面（"). Strip both
+            // full-width and half-width parens content first.
+            s = s.replace(/[（(][^）)]*[）)]?/g, '').trim();
+            s = s.split(/[・･,，、/]/)[0].trim();
+            s = s.replace(/法則$|現象$|讀$|読$/, m => m === '法則' || m === '現象' ? '' : m);
+            const chars = Array.from(s);
+            if (chars.length > 3) return chars.slice(0, 3).join('');
+            return s;
+        }
+        function hanmapLooksLikeIpa(s) {
+            if (!s) return false;
+            return /[˩˨˧˦˥̩̚ɐɑɒɔəɛɞɘɜɪɨɵøœʉʊʌʏɤɯɶæɸʃʒɕʑʂʐɖɟɡɢɱɴʀʁʈʔɲŋɓɗ]/.test(s);
+        }
+        // Revised Korean romanisation → approximate Korean IPA. Single-
+        // syllable focus (Han characters are mostly CV/CVC). Sandhi-aware
+        // refinements would go here if needed.
+        function hanmapKoRomajaToIpa(romaja) {
+            if (!romaja) return '';
+            let s = String(romaja).split('/')[0].trim().toLowerCase();
+            if (!s) return '';
+            // Step 1: shield digraphs as placeholders so single-letter
+            // mappings below don't re-process them.
+            s = s.replace(/yeo/g, '①').replace(/yae/g, '②').replace(/yo/g, '③')
+                 .replace(/yu/g, '④').replace(/ya/g, '⑤').replace(/ye/g, '⑥');
+            s = s.replace(/wae/g, 'wɛ').replace(/wa/g, 'wa').replace(/wo/g, 'wʌ')
+                 .replace(/we/g, 'we').replace(/wi/g, 'wi');
+            s = s.replace(/ae/g, 'ɛ').replace(/eo/g, 'ʌ').replace(/eu/g, 'ɯ')
+                 .replace(/oe/g, 'ø').replace(/ui/g, 'ɰi');
+            s = s.replace(/ng/g, 'ŋ').replace(/ch/g, '⑦').replace(/ss/g, 's͈');
+            // Step 2: positional consonant mapping. Initial plain stops are
+            // voiceless unaspirated; aspirated forms (k/t/p/ch) are distinct;
+            // final stops are unreleased.
+            s = s.replace(/^k/, 'kʰ').replace(/k$/, 'k̚')
+                 .replace(/^t/, 'tʰ').replace(/t$/, 't̚')
+                 .replace(/^p/, 'pʰ').replace(/p$/, 'p̚')
+                 .replace(/^j/, 't͡ɕ').replace(/j/g, 't͡ɕ')
+                 .replace(/^g/, 'k').replace(/g/g, 'k')
+                 .replace(/^d/, 't').replace(/d/g, 't')
+                 .replace(/^b/, 'p').replace(/b/g, 'p')
+                 .replace(/r/g, 'ɾ');
+            // Step 3: restore digraph placeholders.
+            s = s.replace(/①/g, 'jʌ').replace(/②/g, 'jɛ').replace(/③/g, 'jo')
+                 .replace(/④/g, 'ju').replace(/⑤/g, 'ja').replace(/⑥/g, 'je')
+                 .replace(/⑦/g, 't͡ɕʰ');
+            // Step 4: /s/ palatalises to /ɕ/ before /i/ or /j/.
+            s = s.replace(/s(?=i|j)/g, 'ɕ');
+            return s;
+        }
+
+        // Hepburn romaji → narrow Japanese IPA. Used for the 発音 column
+        // — the 表記 column keeps Katakana+romaji ("ズ zu").
+        function hanmapJaRomajiToIpa(romaji) {
+            if (!romaji) return '';
+            let s = String(romaji).split('/')[0].trim().toLowerCase();
+            if (!s) return '';
+            // Step 1: expand macron long vowels into doubled letters so digraph
+            // matching below is uniform.
+            s = s.replace(/[ōô]/g, 'oo').replace(/[ūû]/g, 'uu')
+                 .replace(/[āâ]/g, 'aa').replace(/[ēê]/g, 'ee')
+                 .replace(/[īî]/g, 'ii');
+            // Step 2: consonant digraphs.
+            s = s.replace(/shi/g, 'ɕi').replace(/sh([auo])/g, 'ɕ$1')
+                 .replace(/chi/g, 't͡ɕi').replace(/ch([auo])/g, 't͡ɕ$1')
+                 .replace(/tsu/g, 't͡sɯ').replace(/ts([auo])/g, 't͡s$1')
+                 .replace(/ji/g, 'd͡ʑi').replace(/j([auo])/g, 'd͡ʑ$1')
+                 .replace(/ju/g, 'd͡ʑɯ').replace(/je/g, 'd͡ʑe')
+                 .replace(/zu/g, 'd͡zɯ').replace(/z([aeo])/g, 'd͡z$1')
+                 .replace(/fu/g, 'ɸɯ')
+                 .replace(/hi/g, 'çi').replace(/hy([auo])/g, 'ç$1')
+                 .replace(/y([auo])/g, 'j$1');
+            // Step 3: moraic /n/ before consonant or word-end → ɴ.
+            s = s.replace(/n$/g, 'ɴ').replace(/n(?=[^aiueo])/g, 'ɴ');
+            // Step 4: u → ɯ (Japanese close back unrounded).
+            s = s.replace(/u/g, 'ɯ');
+            // Step 5: collapse doubled vowels into a long-vowel mark.
+            s = s.replace(/oo/g, 'oː').replace(/ɯɯ/g, 'ɯː')
+                 .replace(/aa/g, 'aː').replace(/ee/g, 'eː')
+                 .replace(/ii/g, 'iː');
+            return s;
+        }
+        // hanmapNormalizeFull returns the THREE display fields:
+        //   native     — 独自文字 (Katakana/Hangul/Quốc Ngữ/Manchu script/Tangut/…)
+        //   surface    — 表記 (Hepburn / Revised Romanization / Pinyin / Jyutping / POJ / …)
+        //   ipa        — 発音 (IPA)
+        // The audit pass writes these three fields independently into
+        // HAN_DATA[char].{native,surface,ipa}[code]. We prefer the stored
+        // values when present and fall back to legacy conversion for
+        // anything not yet covered.
+        function hanmapNormalizeFull(code, _surfaceArg, ipa, currentChar) {
+            // Step 1 — read authoritative split from HAN_DATA when available.
+            let storedNative = '';
+            let storedSurf   = '';
+            let storedIpa    = '';
+            if (typeof HAN_DATA !== 'undefined' && currentChar && HAN_DATA[currentChar]) {
+                const cd = HAN_DATA[currentChar];
+                storedNative = (cd.native  && cd.native[code])  || '';
+                storedSurf   = (cd.surface && cd.surface[code]) || '';
+                storedIpa    = (cd.ipa     && cd.ipa[code])     || '';
+                if (storedNative === '—' || storedNative === '-') storedNative = '';
+                if (storedSurf   === '—' || storedSurf   === '-') storedSurf   = '';
+                if (storedIpa    === '—' || storedIpa    === '-') storedIpa    = '';
+            }
+            // Fallback to caller-supplied args if the data lookup missed.
+            const surfArg = _surfaceArg || storedSurf || '';
+            const ipaArg  = ipa         || storedIpa  || '';
+
+            let native  = storedNative;
+            let surface = '';
+            let ipaOut  = '';
+
+            const isSinitic = code === 'zh' || code.startsWith('zh_')
+                || code === 'yue' || code.startsWith('yue_')
+                || code.startsWith('nan') || code.startsWith('hak')
+                || code.startsWith('wuu') || code === 'cdo' || code === 'cpx'
+                || code === 'mnp' || code === 'cjy' || code === 'czh'
+                || code === 'hsn' || code === 'gan' || code === 'cnp'
+                || code === 'zh_han' || code === 'zh_tang' || code === 'zh_song'
+                || code === 'zh_kanbun';
+
+            if (isSinitic) {
+                // Sinitic: surface = romanisation, ipa = IPA. Both fields
+                // should now be filled distinctly by the audit pass. For any
+                // legacy row where only one is set, route the lone value into
+                // the correct column by sniffing for IPA-style characters.
+                const haveBoth = storedSurf && storedIpa;
+                if (haveBoth) {
+                    surface = storedSurf;
+                    ipaOut  = hanmapConvertToneDigits(storedIpa);
+                } else {
+                    const lone = ipaArg || surfArg;
+                    const val = hanmapConvertToneDigits(lone);
+                    if (hanmapLooksLikeIpa(val)) { ipaOut = val; surface = ''; }
+                    else                          { surface = val; ipaOut = ''; }
+                }
+                // Sinitic 独自文字 is usually the Han character itself (so
+                // we drop it to avoid duplicating the giant char), UNLESS
+                // the stored native is a distinct script (Phags-pa for
+                // zh_phagspa, Tangut for zh_tang_xixia, etc.) — keep those.
+                if (storedNative && storedNative !== currentChar) {
+                    native = storedNative;
+                } else {
+                    native = '';
+                }
+            } else if (code === 'ja') {
+                // Japanese: native = Katakana (Hiragana for the kun-yomi
+                // variant — but that arrives as a HAN_VARIANTS row, not the
+                // primary cell, so we always default to Katakana here).
+                const romaji = storedSurf || (ipaArg || '').split('/')[0].trim();
+                if (!native && romaji) {
+                    native = hanmapRomajiToKana(romaji, false);
+                }
+                surface = romaji;
+                ipaOut  = storedIpa || hanmapJaRomajiToIpa(romaji);
+            } else if (code === 'ko') {
+                let romaja = storedSurf;
+                if (!romaja) {
+                    // Legacy fallback: data has "il (일)" or just "sik".
+                    const raw = (ipaArg || '').trim();
+                    const hangul = /([가-힯]+)/.exec(raw);
+                    if (hangul) {
+                        if (!native) native = hangul[1];
+                        romaja = raw.replace(/[가-힯]+/g, '')
+                                    .replace(/[()（）]/g, '').trim();
+                    } else {
+                        romaja = raw;
+                    }
+                }
+                surface = romaja;
+                ipaOut  = storedIpa || hanmapKoRomajaToIpa(romaja);
+            } else if (code === 'vi_han' || code === 'vi' || code === 'vi_c' || code === 'vi_s') {
+                // Vietnamese: Quốc Ngữ is already a Latin spelling, so it
+                // belongs in the 表記 column, not 独自文字. Lowercase the
+                // first letter (Hán-Việt readings are common nouns).
+                const quoc = storedNative || storedSurf || surfArg || '';
+                surface = quoc.replace(/^./, c => c.toLocaleLowerCase('vi'));
+                native  = '';
+                ipaOut  = storedIpa || ipaArg || '';
+            } else if (code === 'en') {
+                surface = surfArg;
+                ipaOut  = '';
+            } else {
+                // mnc / txg / juc / zkt / za / bca / unrecognised: trust the
+                // audit-supplied split as authoritative.
+                surface = storedSurf || surfArg;
+                ipaOut  = storedIpa  || ipaArg;
+                ipaOut  = hanmapConvertToneDigits(ipaOut);
+            }
+            // Defensive: strip any /…/ broad-transcription wrapper that
+            // slipped through (the data should already be clean, but
+            // belt-and-braces for legacy entries).
+            if (typeof ipaOut === 'string') {
+                ipaOut = ipaOut.replace(/^\s*\/\s*/, '').replace(/\s*\/\s*$/, '');
+            }
+            // Suppress native if it duplicates the current Han character
+            // (incl. simplified/traditional pairs).
+            if (native && (native === currentChar
+                || hanmapIsSimpTradVariant(native, currentChar))) {
+                native = '';
+            }
+            return [native, surface, ipaOut];
+        }
+
+        // Back-compat 2-tuple wrapper used by the map label renderer.
+        // Map labels show one "word" line — combine native + surface as
+        // "romanization (native script)" per user spec, e.g. "ichi (イチ)",
+        // "il (일)". For Sinitic and Vietnamese only one of the two is set.
+        function hanmapNormalize(code, surface, ipa, currentChar) {
+            const [native, romanized, ipaOut] = hanmapNormalizeFull(code, surface, ipa, currentChar);
+            let word = '';
+            if (romanized && native) word = `${romanized} (${native})`;
+            else word = native || romanized || '';
+            return [word, ipaOut];
+        }
+
         function buildLabelHtml(code, word, ipa, displayName, descColor, cssClass) {
+            // Hanmap normalisation: split each cell into 表記 (romanisation)
+            // and 独自文字 (native script). When HAN_VARIANTS lists multiple
+            // readings (Korean 頭音法則, 文白異讀, 多音字), stack them.
+            const isPlaceholder = (word === '—' || ipa === '—' || typeof currentWord !== 'string');
+            let rows = [];
+            if (!isPlaceholder) {
+                const variants = (typeof HAN_VARIANTS !== 'undefined'
+                    && HAN_VARIANTS[currentWord] && HAN_VARIANTS[currentWord][code]) || null;
+                if (variants && variants.length) {
+                    for (const v of variants) {
+                        let n = v.native || '', s = v.surface || '', vi = v.ipa || '';
+                        if (!vi || !n) {
+                            const derived = s || n || '';
+                            const [dN, dS, dIpa] = hanmapNormalizeFull(code, derived, derived, currentWord);
+                            if (!vi) vi = dIpa || derived;
+                            if (!n)  n  = dN  || '';
+                            if (!s)  s  = dS  || derived;
+                        }
+                        const shortLab = v.label_short || hanmapShortLabel(v.label);
+                        rows.push({ native: n, romanized: s, ipa: vi, label: shortLab });
+                    }
+                } else {
+                    const full = hanmapNormalizeFull(code, word, ipa, currentWord);
+                    rows.push({ native: full[0], romanized: full[1], ipa: full[2], label: '' });
+                }
+            } else {
+                rows.push({ native: '', romanized: word, ipa, label: '' });
+            }
             const isVertical = VERTICAL_LANGS.has(code);
             const c = safeColor(descColor);
             const codeAttr = escapeHtml(code);
-            const w = escapeHtml(word), i = escapeHtml(ipa), n = escapeHtml(displayName);
-            // Audit Task 135: keyboard-accessible labels.
-            // role="button" + tabindex="0" lets keyboard users tab to the
-            // label and Enter/Space to open the language modal. aria-label
-            // includes display name + word + IPA so screen readers announce
-            // a meaningful summary.
+            const n = escapeHtml(displayName);
+            // Aria label combines all variants.
             const ariaParts = [n];
-            if (showWord && word) ariaParts.push(word);
-            if (showIpa && ipa) ariaParts.push('/' + ipa + '/');
+            for (const r of rows) {
+                const part = [r.romanized, r.native].filter(Boolean).join(' ');
+                if (showWord && part) ariaParts.push(part);
+                if (showIpa && r.ipa) ariaParts.push('/' + r.ipa + '/');
+            }
             const ariaLabel = escapeHtml(ariaParts.filter(Boolean).join(' — '));
             let html = `<div class="${cssClass}${isVertical ? ' vertical' : ''}" data-code="${codeAttr}" role="button" tabindex="0" aria-label="${ariaLabel}">`;
-            // Audit Task 129: dir="auto" on word + name so RTL labels render
-            // in correct order; IPA stays LTR.
-            if (showWord) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${w}</div>`;
-            if (showIpa) html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>/${i}/</div>`;
+            for (const r of rows) {
+                // Build the word line: romanisation only (optionally with
+                // a per-variant label tag). 独自文字 (native script) gets
+                // its OWN dedicated line below the romanisation so the
+                // two scripts don't visually crowd each other on the map.
+                let wordHtml = '';
+                if (r.romanized) wordHtml += escapeHtml(r.romanized);
+                if (r.label)     wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
+                if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
+                if (showWord && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
+                // Suppress the /ipa/ line ONLY when the IPA is a starred
+                // reconstruction (e.g. zh_han Baxter-Sagart "*ʔi[t]") AND
+                // it duplicates the surface — there's no point repeating
+                // the same reconstruction twice. For modern languages
+                // where the surface happens to equal the IPA (Korean
+                // 一 il/il, 山 san/san), keep showing both so the column
+                // structure stays consistent.
+                const isStarredRecon = r.ipa && r.ipa.startsWith('*');
+                if (showIpa && r.ipa && !(isStarredRecon && r.ipa === r.romanized)) {
+                    html += `<div class="ipa" dir="ltr" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.ipa)}</div>`;
+                }
+            }
             if (showName) html += `<div class="name" dir="auto" ${c ? `style="color:${c}"` : ''}>${n}</div>`;
             html += '</div>';
             return html;
         }
 
+        // Ancient/reconstructed codes — rendered in a lighter tone on the
+        // map so historical languages are easy to spot among modern ones.
+        // The color depends on whether the code is Sinitic (sepia) or
+        // non-Sinitic Sinosphere (light red-brown). See hanmapLabelColor().
+        const HAN_ANCIENT_CODES = new Set([
+            // Sinitic historical / reconstructed
+            'zh_han', 'zh_tang', 'zh_song', 'zh_yuan', 'zh_phagspa', 'zh_kanbun',
+            // Sino-xenic historical
+            'ko_mid', 'ja_ojp', 'vi_ohan',
+            // Extinct non-Sinitic in the Sinosphere
+            'txg', 'juc', 'zkt',  // Tangut / Jurchen / Khitan
+            // Proto-language reconstructions (all predate writing — ancient by definition)
+            'pst', 'ptb', 'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+        ]);
+
+        // Color scheme for map labels (user request 2026-05-29):
+        // - Sinitic modern: default (inherit black)
+        // - Sinitic ancient: light sepia
+        // - Non-Sinitic modern (KO/JA/VI/MNC/SJO/BCA/ZA/BO_SINO etc.):
+        //   slightly tinted dark — gives the Sino-xenic + para-Sinitic
+        //   languages a visual contrast vs the dense Sinitic cluster.
+        // - Non-Sinitic ancient: lighter version of the modern non-Sinitic
+        //   color, same hue so the family relationship reads visually.
+        function hanmapLabelColor(code) {
+            const isSinitic = hanmapIsSinitic(code);
+            const isAncient = HAN_ANCIENT_CODES.has(code);
+            if (isSinitic) return isAncient ? '#998270' : '';
+            return isAncient ? '#a48070' : '#5e1f1f';
+        }
+
+        // The four Japanese reading layers (呉音/漢音/唐音/訓読み) used to be
+        // separate language codes but are now consolidated under `ja` and
+        // surfaced via HAN_VARIANTS[char].ja entries (with per-row labels).
+
+        // Codes whose name should drop the "Chinese (...)" wrapper — in
+        // Hanmap the parent is already implicit, so e.g. "中国語(贛語)" → "贛語".
+        function hanmapIsSinitic(code) {
+            return code === 'zh' || code.startsWith('zh_')
+                || code === 'yue' || code.startsWith('yue_')
+                || code.startsWith('nan') || code.startsWith('hak')
+                || code.startsWith('wuu') || code === 'cdo' || code === 'cpx'
+                || code === 'mnp' || code === 'cjy' || code === 'czh'
+                || code === 'hsn' || code === 'gan' || code === 'cnp';
+        }
+
+        // Strip a "Foo (Bar)" or "Foo（Bar）" wrapper down to just "Bar".
+        function hanmapStripChineseWrapper(name) {
+            if (!name) return name;
+            const m = /^[^()（）]+[\s]*[(（]([^()（）]+)[)）]\s*$/.exec(name);
+            return m ? m[1].trim() : name;
+        }
+
+        // Hanmap-specific short display names for codes whose canonical
+        // lang_names entries are too long for map labels (e.g. ja_ojp
+        // 上代日本語漢字音 → 上代日本音). Other UI langs already use
+        // reasonably compact forms ("Old Japanese on-yomi", "Zainichi
+        // Korean Sino-reading"), so we only override Japanese and a few
+        // other east-asian UIs where the canonical form runs long.
+        const HAN_SHORT_NAMES = {
+            ja_ojp:     { ja:'上代日本音',       ko:'고대 일본음',     zh:'上代日語音',     yue:'上代日語音' },
+            ko_zai:     { ja:'在日韓国音',       ko:'재일 한국음',     zh:'在日韓國音',     yue:'在日韓國音' },
+            ko_mid:     { ja:'中世韓国音',       ko:'중세 한국음',     zh:'中世韓國音',     yue:'中世韓國音' },
+            ko_hun:     { ja:'韓国訓 (固有)',    ko:'한국 훈독',       zh:'韓國訓讀',       yue:'韓國訓讀' },
+            ja_kun:     { ja:'訓読み',           ko:'일본 훈독',       zh:'日語訓讀',       yue:'日語訓讀' },
+            vi_ohan:    { ja:'古漢越音',         ko:'고대 한월음',     zh:'古漢越音',       yue:'古漢越音' },
+            vi_han:     { ja:'漢越音',           ko:'한월음',          zh:'漢越音',         yue:'漢越音' },
+            vi_nom:     { ja:'字喃',             ko:'쯔놈',            zh:'喃字',           yue:'喃字' },
+            bo_sino:    { ja:'現代蔵音',         ko:'현대 티베트음',   zh:'現代藏音',       yue:'現代藏音' },
+            zh_phagspa: { ja:'八思巴字音',       ko:'파스파 음',       zh:'八思巴字音',     yue:'八思巴字音' },
+            zh_yuan:    { ja:'元代官話',         ko:'원대 관화',       zh:'元代官話',       yue:'元代官話' },
+            zh_kanbun:  { ja:'漢文訓読',         ko:'한문 훈독',       zh:'漢文訓讀',       yue:'漢文訓讀' },
+            zh_th:      { ja:'タイ華僑音',       ko:'태국 화교음',     zh:'泰國華僑音',     yue:'泰國華僑音' },
+            zh_us:      { ja:'北米華僑音',       ko:'북미 화교음',     zh:'北美華僑音',     yue:'北美華僑音' },
+            yue_us:     { ja:'北米広東語',       ko:'북미 광동어',     zh:'北美粵語',       yue:'北美粵語' },
+            nan_pera:   { ja:'プラナカン福建語', ko:'프라나칸 민남어', zh:'娘惹福建話',     yue:'娘惹福建話' },
+            nan_id:     { ja:'インドネシア福建語', ko:'인도네시아 민남어', zh:'印尼福建話', yue:'印尼福建話' },
+            nan_my:     { ja:'マレーシア福建語', ko:'말레이시아 민남어', zh:'馬來西亞福建話', yue:'馬來西亞福建話' },
+            nan_sg:     { ja:'シンガポール福建語', ko:'싱가포르 민남어', zh:'新加坡福建話', yue:'新加坡福建話' },
+            nan_th:     { ja:'タイ華僑潮州語',   ko:'태국 화교 조주어', zh:'泰國華僑潮州話', yue:'泰國華僑潮州話' },
+            sjo:        { ja:'シベ語',           ko:'시버어',          zh:'錫伯語',         yue:'錫伯語' },
+            ja_heian:   { ja:'平安日本語',       ko:'헤이안 일본어',   zh:'平安日語',       yue:'平安日語' },
+            ja_edo:     { ja:'江戸日本語',       ko:'에도 일본어',     zh:'江戶日語',       yue:'江戶日語' },
+            wuu:        { ja:'上海語',           ko:'상하이어',        zh:'上海話',         yue:'上海話' },
+            // Proto languages — shorten "祖語" to "祖" suffix for compactness
+            pst:  { ja:'漢蔵祖', ko:'한장조어',     zh:'漢藏祖',     yue:'漢藏祖' },
+            ptb:  { ja:'蔵緬祖', ko:'장면조어',     zh:'藏緬祖',     yue:'藏緬祖' },
+            pko:  { ja:'朝鮮祖', ko:'조선조어',     zh:'朝鮮祖',     yue:'朝鮮祖' },
+            pja:  { ja:'日本祖', ko:'일본조어',     zh:'日本祖',     yue:'日本祖' },
+            ptung:{ ja:'通古斯祖', ko:'퉁구스조어', zh:'通古斯祖',   yue:'通古斯祖' },
+            paa:  { ja:'南亜祖', ko:'남아시아조어', zh:'南亞祖',     yue:'南亞祖' },
+            ptai: { ja:'タイ祖', ko:'타이조어',     zh:'壯侗祖',     yue:'壯侗祖' },
+            pmgl: { ja:'蒙古祖', ko:'몽골조어',     zh:'蒙古祖',     yue:'蒙古祖' },
+            phm:  { ja:'苗瑶祖', ko:'먀오야오조어', zh:'苗瑤祖',     yue:'苗瑤祖' },
+        };
         function getDisplayName(code, lang) {
             if (showNative) return lang.native;
+            const uiBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            // 1. Hanmap-specific short name overrides (only for UI langs
+            //    we've explicitly shortened; others fall through).
+            if (HAN_SHORT_NAMES[code] && HAN_SHORT_NAMES[code][uiBase]) {
+                return HAN_SHORT_NAMES[code][uiBase];
+            }
             const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
-            return names[code] || lang.name;
+            let n = names[code] || lang.name;
+            // Sinitic varieties — drop the "Chinese (…)" wrapper.
+            if (hanmapIsSinitic(code)) {
+                n = hanmapStripChineseWrapper(n);
+            }
+            // Japanese / Korean: drop the "(標準)" / "(标准)" / "(Standard)"
+            // parenthetical — only one ja and one ko code in Hanmap.
+            if (code === 'ja' || code === 'ko') {
+                n = n.replace(/\s*[(（](標準|标准|표준|Standard|estándar|standard)[)）]\s*$/i, '');
+            }
+            return n;
         }
 
         function updateMarkers(wordId) {
@@ -4015,8 +5766,16 @@
             //   - historical mode (different visualization purpose)
             const _spotlightActive = _triviaSpotlight && _triviaSpotlight.size > 0;
             const _mobile = window.matchMedia('(max-width: 640px)').matches;
+            // Hanmap-mode override: skip speaker-count-based thinning entirely.
+            // With ~74 total HAN codes the map isn't crowded, and dropping a
+            // low-speaker variant (e.g. ko_mid, zh_yuan, ja_ojp, vi_ohan) that
+            // shares a city with its modern descendant just makes the new code
+            // invisible until very high zoom (user report 2026-05-29).
+            // The cellGroups + merge stacking below still handles any visual
+            // collision by vertically stacking co-located labels.
+            const _isHanmap = typeof HAN_LANGS !== 'undefined';
             let renderLangs = visibleLangs;
-            if (!_spotlightActive && !filterActive && !showHistorical) {
+            if (!_isHanmap && !_spotlightActive && !filterActive && !showHistorical) {
                 // Restrict the candidate pool to langs whose marker is in
                 // the visible viewport (with a generous margin so labels
                 // partially extending off-screen still get drawn).
@@ -4150,6 +5909,10 @@
             const offsets = {};
             const unattestedSet = new Set(unattestedLangs);
             const allRenderable = [...renderLangs, ...unattestedLangs];
+            // Horizontal half-step between the left and right zigzag
+            // columns. Wide enough to keep the two columns from visually
+            // overlapping (labelW is the estimated label width).
+            const ZIG_X = Math.round(labelW * 0.55);
             for (const code of allRenderable) {
                 if (!ppx[code]) continue;
                 const pt = ppx[code];
@@ -4160,9 +5923,15 @@
                     if (group && group.length > 1) {
                         const idx = group.indexOf(code);
                         if (idx >= 0) {
-                            const center = (group.length - 1) / 2;
-                            const targetX = groupMeanX[cellKey];
-                            const targetY = groupMeanY[cellKey] + (idx - center) * STACK_UNIT;
+                            // ZIGZAG: even-idx → left column, odd-idx →
+                            // right column. Two labels per vertical row,
+                            // halving the column height vs a pure stack.
+                            const rowsPerCol = Math.ceil(group.length / 2);
+                            const col = idx % 2;          // 0 = left, 1 = right
+                            const row = Math.floor(idx / 2);
+                            const rowCenter = (rowsPerCol - 1) / 2;
+                            const targetX = groupMeanX[cellKey] + (col === 0 ? -ZIG_X : +ZIG_X);
+                            const targetY = groupMeanY[cellKey] + (row - rowCenter) * STACK_UNIT;
                             xOff = targetX - pt.x;
                             yOff = targetY - pt.y;
                         }
@@ -4289,6 +6058,10 @@
             // Skip codes that the collision pass couldn't place.
             for (const code of allRenderable) {
                 if (hiddenCodes.has(code)) continue;
+                // Hanmap language filter: when a filter is active, skip
+                // codes that don't pass. Matches the task requirement
+                // "only those codes' markers render" (vs. dimming).
+                if (filterActive && !isActive(code)) continue;
                 const lang = LANG_DATA[code];
                 if (!lang) continue;
                 const off = offsets[code] || { x: 0, y: 0 };
@@ -4302,7 +6075,7 @@
                 }
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const descColor = (isDescendant && !isUna) ? '#c0392b' : '';
+                const descColor = isUna ? '' : hanmapLabelColor(code);
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
@@ -4372,7 +6145,7 @@
                 const [word, ipa] = entry;
                 const displayName = getDisplayName(code, lang);
                 const isDescendant = showHistorical && descendantCodes.has(code);
-                const descColor = isDescendant ? '#ff6b6b' : '';
+                const descColor = hanmapLabelColor(code);
 
                 // Offset co-located labels by shifting latitude (zoom + scale aware)
                 const cellKey = Math.floor(lang.lat / cellSizeDeg) + ',' + Math.floor(lang.lng / cellSizeDeg);
@@ -4494,6 +6267,9 @@
             if (w && WORD_LIST.find(item => item.id === w)) {
                 select.value = w;
                 currentWord = w;
+                // Hanmap: also sync the giant character button.
+                const _hbtn = document.getElementById('char-current-btn');
+                if (_hbtn) _hbtn.textContent = w;
             }
             const z = parseInt(params.get('z'));
             const latStr = params.get('lat'); const lngStr = params.get('lng');
@@ -4850,21 +6626,11 @@
             return dict[val] || val;
         }
 
-        // Lazy-load wordmap_meta.js (~1.3 MB raw / 406 KB gzip) only when the
-        // user first opens a language detail modal.
-        let _metaLoadPromise = null;
-        function loadMeta() {
-            if (_metaLoadPromise) return _metaLoadPromise;
-            _metaLoadPromise = new Promise((resolve, reject) => {
-                if (window._wmMetaLoaded) return resolve();
-                window._wmMetaResolve = resolve;
-                const s = document.createElement('script');
-                s.src = assetUrl('wordmap_meta.js', 'meta');
-                s.onerror = () => reject(new Error('meta load failed'));
-                document.head.appendChild(s);
-            });
-            return _metaLoadPromise;
-        }
+        // Hanmap: wordmap_meta.js (1.3 MB) is unused — popup metadata comes
+        // from HAN_LANG_META, not from per-row meta. Stub loadMeta to a
+        // no-op resolved promise so the lazy-loader doesn't fire.
+        let _metaLoadPromise = Promise.resolve();
+        function loadMeta() { return _metaLoadPromise; }
 
         // Per Session 31 (Schema Revolution Phase 1): each status carries a
         // short pedagogical description shown inline next to the badge.
@@ -5267,7 +7033,238 @@
             return label + formNote + split + src + note + url;
         }
 
+        // ============================================================
+        //  HANMAP popup renderer (simplified — character pronunciation
+        //  table + reading_type + description, no speakers / coverage /
+        //  audit metadata).
+        // ============================================================
+        function hanmapRenderLangInfo(code) {
+            window.__hanmapCurrentLangInfo = code;
+            const lang = LANG_DATA[code];
+            if (!lang) return;
+            const names = LANG_NAMES[uiLang] || LANG_NAMES.en || {};
+            const displayName = names[code] || lang.name;
+            const uiBase = (typeof uiLang === 'string' ? uiLang : 'en').split('_')[0];
+            const hanMeta = (typeof HAN_LANG_META !== 'undefined' && HAN_LANG_META[code]) || null;
+
+            // Badges: 古代 (historical), 訓読 (native-word / kun-yomi-equivalent).
+            // The "kun" category is broader than the toolbar toggle: it covers
+            // every code where the reading is a NATIVE word for the concept
+            // (not a Sino-loan), including the explicit *_kun/_hun/_nom layers,
+            // all proto-language reconstructions, and the non-Sinitic
+            // Sinosphere languages (Manchu, Sibe, Jurchen, Tangut, Khitan,
+            // Zhuang, Bai). User-confirmed taxonomy 2026-05-29.
+            // pst (Proto-Sino-Tibetan) and ptb (Proto-Tibeto-Burman) are
+            // Sino-Tibetan family ancestors of the Chinese reading itself
+            // — those get the 古代 badge, not 訓読. All other protos are
+            // non-ST native-root reconstructions → 訓読 badge.
+            const HAN_KUN_BADGE_CODES = new Set([
+                'ja_kun', 'ko_hun', 'vi_nom',
+                'mnc', 'sjo', 'juc', 'txg', 'zkt', 'za', 'bca',
+                'pko', 'pja', 'ptung', 'paa', 'ptai', 'pmgl', 'phm',
+            ]);
+            const isAncient = HAN_ANCIENT_CODES.has(code);
+            const isKun = HAN_KUN_BADGE_CODES.has(code);
+            const badgeI18n = {
+                ja: { ancient: '古代', kun: '訓読' },
+                en: { ancient: 'Ancient', kun: 'Native' },
+                ko: { ancient: '고대',   kun: '훈독' },
+                zh: { ancient: '古代',   kun: '训读' },
+                yue:{ ancient: '古代',   kun: '訓讀' },
+            };
+            const bL = badgeI18n[uiBase] || badgeI18n.en;
+            const badgeHtml = (label, bg) => `<span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:9px;background:${bg};color:#fff;margin-left:6px;vertical-align:middle;font-weight:600">${escapeHtml(label)}</span>`;
+            let badges = '';
+            if (isAncient) badges += badgeHtml(bL.ancient, '#998270');
+            if (isKun)     badges += badgeHtml(bL.kun,     '#a48070');
+
+            let html = `<h2 id="lang-info-heading">${escapeHtml(displayName)}${badges}</h2>`;
+            html += `<div class="native-name"><span class="wm-form" dir="auto">${escapeHtml(lang.native || '')}</span> [${escapeHtml(code)}]</div>`;
+            // Compare button (same shape as wordmap so #compare-fab logic
+            // continues to work).
+            (() => {
+                const inCmp = (window.__compareList || []).indexOf(code) !== -1;
+                const cmpI18n = {
+                    en: { add: '+ Add to compare', remove: '✓ In comparison (remove)' },
+                    ja: { add: '+ 比較に追加',     remove: '✓ 比較中（削除）' },
+                    ko: { add: '+ 비교에 추가',    remove: '✓ 비교 중 (제거)' },
+                    zh: { add: '+ 加入对比',       remove: '✓ 对比中（移除）' },
+                    yue:{ add: '+ 加入對比',       remove: '✓ 對比中（移除）' },
+                    vi: { add: '+ Thêm so sánh',  remove: '✓ Đang so sánh (xóa)' },
+                };
+                const lObj = cmpI18n[uiBase] || cmpI18n.en;
+                const lbl = inCmp ? lObj.remove : lObj.add;
+                const cls = inCmp ? 'compare-add-btn added' : 'compare-add-btn';
+                html += `<button type="button" class="${cls}" data-code="${escapeHtml(code)}">${escapeHtml(lbl)}</button>`;
+            })();
+
+            if (hanMeta) {
+                if (hanMeta.reading_type) {
+                    let rt = '';
+                    if (typeof hanMeta.reading_type === 'object') {
+                        rt = hanMeta.reading_type[uiBase] || hanMeta.reading_type.en || hanMeta.reading_type.ja || '';
+                    } else {
+                        rt = String(hanMeta.reading_type);
+                    }
+                    if (rt) html += `<div style="margin:6px 0 4px;font-size:12px;color:#4a6cf7;font-weight:600">${escapeHtml(rt)}</div>`;
+                }
+                if (hanMeta.family) {
+                    html += `<div style="margin:2px 0;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '系統' : uiBase === 'ko' ? '계통' : uiBase === 'zh' || uiBase === 'yue' ? '语系' : 'Family')}:</b> ${escapeHtml(hanMeta.family)}</div>`;
+                }
+                if (hanMeta.region) {
+                    html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '地域' : uiBase === 'ko' ? '지역' : uiBase === 'zh' || uiBase === 'yue' ? '地区' : 'Region')}:</b> ${escapeHtml(hanMeta.region)}</div>`;
+                }
+                if (hanMeta.description) {
+                    let desc = '';
+                    if (typeof hanMeta.description === 'object') {
+                        desc = hanMeta.description[uiBase] || hanMeta.description.en || hanMeta.description.ja || '';
+                    } else {
+                        desc = String(hanMeta.description);
+                    }
+                    if (desc) {
+                        html += `<div class="desc" style="margin:8px 0 12px;font-size:12px;line-height:1.55;color:#444">${escapeHtml(desc)}</div>`;
+                    }
+                }
+                if (hanMeta.romanization) {
+                    const romLabel = {
+                        en: 'Romanization', ja: '表記体系', ko: '로마자 표기',
+                        zh: '罗马字', yue: '羅馬字', vi: 'Chữ La-tinh',
+                        th: 'ระบบโรมัน', id: 'Romanisasi', hi: 'रोमनकरण',
+                        de: 'Umschrift', fr: 'Romanisation', it: 'Romanizzazione',
+                        es: 'Romanización', pt: 'Romanização', ru: 'Романизация',
+                        uk: 'Романізація', ar: 'كتابة لاتينية',
+                        he: 'תעתיק לטיני', sw: 'Uandishi Kilatini',
+                    }[uiBase] || 'Romanization';
+                    const r = hanMeta.romanization;
+                    const yearPart = r.year ? ` (${r.year})` : '';
+                    const authPart = r.authority ? ` — ${r.authority}` : '';
+                    html += `<div style="margin:6px 0 4px;font-size:11px;color:#666"><b>${escapeHtml(romLabel)}:</b> ${escapeHtml(r.name || '')}${escapeHtml(authPart)}${escapeHtml(yearPart)}</div>`;
+                }
+                if (hanMeta.sources && hanMeta.sources.length) {
+                    const srcLabel = {
+                        en: 'Sources', ja: '出典', ko: '출처', zh: '出处', yue: '出處',
+                        vi: 'Nguồn', th: 'แหล่งที่มา', id: 'Sumber', hi: 'स्रोत',
+                        de: 'Quellen', fr: 'Sources', it: 'Fonti', es: 'Fuentes',
+                        pt: 'Fontes', ru: 'Источники', uk: 'Джерела',
+                        ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo',
+                    }[uiBase] || 'Sources';
+                    html += `<div style="margin:8px 0 4px;font-size:11px;color:#888"><b>${escapeHtml(srcLabel)}:</b></div>`;
+                    html += '<ul style="margin:0 0 12px 16px;padding:0;font-size:11px;color:#666;line-height:1.5">';
+                    for (const s of hanMeta.sources) {
+                        html += `<li>${escapeHtml(s)}</li>`;
+                    }
+                    html += '</ul>';
+                }
+            }
+
+            // Character pronunciation table: 60 chars × this language.
+            // Five columns: 漢字 / 独自文字 / 表記 / 発音 / ラベル
+            // (label only renders for characters with multiple readings —
+            // e.g. Korean 頭音法則 (六: 륙/육), Min Nan 文白異讀, 多音字).
+            const tHead = {
+                en:  ['Char', 'Script',     'Romanization', 'Pronunciation', 'Note'],
+                ja:  ['漢字', '独自文字',    '表記',          '発音',          '注'],
+                ko:  ['한자', '고유 문자',   '표기',          '발음',          '비고'],
+                zh:  ['汉字', '本族文字',    '罗马字',        '发音',          '备注'],
+                yue: ['漢字', '本族文字',    '羅馬字',        '發音',          '備註'],
+                vi:  ['Hán', 'Chữ bản địa', 'La-tinh hoá',  'Phát âm',       'Ghi chú'],
+            }[uiBase] || ['Char', 'Script', 'Romanization', 'Pronunciation', 'Note'];
+
+            // First pass: collect rows so we can decide whether the
+            // 独自文字 column has any content for this language. Sinitic /
+            // Vietnamese / English produce all-empty native cells via
+            // hanmapNormalizeFull, in which case we drop the column entirely.
+            const charBlocks = [];
+            for (const ch of HAN_LIST) {
+                const cd = (typeof HAN_DATA !== 'undefined') ? HAN_DATA[ch] : null;
+                if (!cd) continue;
+                // HAN_VARIANTS, when present for (ch, code), REPLACES the
+                // primary single reading and supplies multiple variants
+                // each with its own label.
+                const variants = (typeof HAN_VARIANTS !== 'undefined' && HAN_VARIANTS[ch] && HAN_VARIANTS[ch][code]) || null;
+                let rows = [];
+                if (variants && variants.length) {
+                    for (const v of variants) {
+                        let n = v.native || '', s = v.surface || '', ipa = v.ipa || '';
+                        if (!ipa || !n) {
+                            const derivedSurf = s || n || '';
+                            const [dN, dS, dIpa] = hanmapNormalizeFull(code, derivedSurf, derivedSurf, ch);
+                            if (!ipa) ipa = dIpa || derivedSurf;
+                            if (!n) n = dN || '';
+                            if (!s) s = dS || derivedSurf;
+                        }
+                        rows.push({ native: n, romanized: s, ipa, label: v.label || '' });
+                    }
+                } else {
+                    let surf = (cd.surface && cd.surface[code]) || '';
+                    let ipa  = (cd.ipa     && cd.ipa[code])     || '';
+                    if (surf === '—' || surf === '-') surf = '';
+                    if (ipa  === '—' || ipa  === '-') ipa  = '';
+                    if (!surf && !ipa) continue;
+                    const [native, romanized, ipaText] = hanmapNormalizeFull(code, surf, ipa, ch);
+                    if (!native && !romanized && !ipaText) continue;
+                    rows.push({ native, romanized, ipa: ipaText, label: '' });
+                }
+                if (rows.length) charBlocks.push({ ch, rows });
+            }
+            const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
+
+            html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
+            html += `<thead><tr style="color:#999;font-size:10px;text-transform:uppercase;letter-spacing:0.04em">`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0;width:36px">${escapeHtml(tHead[0])}</th>`;
+            if (hasNative) html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[1])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[2])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[3])}</th>`;
+            html += `<th style="text-align:left;font-weight:500;padding:4px 6px 6px 0">${escapeHtml(tHead[4])}</th>`;
+            html += `</tr></thead><tbody>`;
+            for (const block of charBlocks) {
+                const { ch, rows } = block;
+                const isCur = (ch === currentWord);
+                const trStyle = isCur ? 'background:#fff8e1' : '';
+                for (let ri = 0; ri < rows.length; ri++) {
+                    const r = rows[ri];
+                    html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
+                    if (ri === 0) {
+                        const sel = isCur ? ';color:#c0392b;font-weight:600' : '';
+                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(ch)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${escapeHtml(ch)}</td>`;
+                    }
+                    if (hasNative) html += `<td class="hanmap-script-cell" style="padding:4px 6px 4px 0;color:#222;vertical-align:middle">${escapeHtml(r.native)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#555;vertical-align:middle">${escapeHtml(r.ipa)}</td>`;
+                    html += `<td style="padding:4px 6px 4px 0;color:#888;font-size:10px;vertical-align:middle">${escapeHtml(r.label)}</td>`;
+                    html += `</tr>`;
+                }
+            }
+            html += `</tbody></table>`;
+
+            const infoContent = document.getElementById('info-content');
+            if (infoContent) {
+                infoContent.innerHTML = html;
+                // Bind click → setChar once on this container (idempotent flag).
+                if (!infoContent.__hanmapCharBound) {
+                    infoContent.__hanmapCharBound = true;
+                    infoContent.addEventListener('click', (ev) => {
+                        const cell = ev.target.closest('.hanmap-char-cell');
+                        if (!cell) return;
+                        const ch = cell.getAttribute('data-han-char');
+                        if (ch && typeof window.__hanmapSetChar === 'function') {
+                            window.__hanmapSetChar(ch);
+                        }
+                    });
+                }
+            }
+        }
+
         function renderLangInfo(code) {
+            // Hanmap override: rebuild the popup from scratch with
+            // reading_type + description + 60-character pronunciation table.
+            // The wordmap full render path is bypassed because most wordmap
+            // metadata (meta.speakers, meta.coverage, …) is irrelevant to
+            // per-character pronunciation perspectives.
+            if (typeof HAN_LANGS !== 'undefined') {
+                hanmapRenderLangInfo(code);
+                return;
+            }
             const lang = LANG_DATA[code];
             if (!lang) return;
             const m = lang.meta || {};
@@ -6106,36 +8103,40 @@
         // Multi-language side-by-side comparison panel. Users add languages from
         // the modal, the FAB shows count, the bottom panel renders an N×20 table.
         // State persists in localStorage and URL hash (cmp=ja,ko,zh).
-        const COMPARE_STORAGE_KEY = 'wm.compareList';
+        // Hanmap uses its own compare-list storage so it doesn't share
+        // the lang selection with wordmap (different language set, different
+        // intent). Key is "hm.compareList" to avoid collision with wordmap's
+        // "wm.compareList".
+        const COMPARE_STORAGE_KEY = 'hm.compareList';
         const COMPARE_MAX = 8;
         let _compareList = [];
         window.__compareList = _compareList;  // exposed for updateHash to read
 
         // i18n labels for compare UI (subset; falls back to en)
         const COMPARE_I18N = {
-            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages', del:'Remove' },
-            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで', del:'削除' },
-            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어', del:'제거' },
-            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言', del:'移除' },
-            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言', del:'移除' },
-            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ', del:'Xóa' },
-            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา', del:'ลบ' },
-            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa', del:'Hapus' },
-            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं', del:'हटाएं' },
-            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen', del:'Entfernen' },
-            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', del:'Retirer' },
-            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', del:'Rimuovi' },
-            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
-            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
-            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', del:'Убрать' },
-            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', del:'Вилучити' },
-            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', del:'إزالة' },
-            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות', del:'הסר' },
-            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi', del:'Ondoa' },
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
         };
         function compareT(key) {
             const base = uiLang.split('_')[0];
@@ -6250,6 +8251,7 @@
                 html += '<th draggable="true" data-code="' + escapeHtml(code) + '" data-idx="' + idx + '" title="Drag to reorder">'
                      + '<span class="lang-name" data-code="' + escapeHtml(code) + '">' + escapeHtml(display) + '</span>'
                      + (lang.native ? '<span class="native-name" dir="auto">' + escapeHtml(lang.native) + '</span>' : '')
+                     + '<button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="Remove ' + escapeHtml(display) + '">×</button>'
                      + '</th>';
             }
             html += '</tr></thead><tbody>';
@@ -6257,32 +8259,48 @@
                 const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
                 html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
                 for (const code of _compareList) {
-                    const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
-                    if (!cell || cell[0] === '—') {
+                    // HAN_VARIANTS, when present for (char, code), supplies
+                    // multiple readings (e.g. ja 漢音/呉音/唐音, nan 文白
+                    // 異讀, ko 頭音法則). Stack them vertically in the cell.
+                    const variants = (typeof HAN_VARIANTS !== 'undefined'
+                        && HAN_VARIANTS[w.id] && HAN_VARIANTS[w.id][code]) || null;
+                    let cellRows = [];
+                    if (variants && variants.length) {
+                        for (const v of variants) {
+                            let s = v.surface || '', i = v.ipa || '';
+                            if (typeof hanmapNormalize === 'function') {
+                                const norm = hanmapNormalize(code, s, i, w.id);
+                                s = norm[0]; i = norm[1];
+                            }
+                            cellRows.push({ surface: s, ipa: i, label: v.label || '' });
+                        }
+                    } else {
+                        const cell = LANG_DATA[code] && LANG_DATA[code].words && LANG_DATA[code].words[w.id];
+                        if (cell && cell[0] !== '—') {
+                            let s = cell[0] || '', i = cell[1] || '';
+                            if (typeof hanmapNormalize === 'function') {
+                                const norm = hanmapNormalize(code, s, i, w.id);
+                                s = norm[0]; i = norm[1];
+                            }
+                            cellRows.push({ surface: s, ipa: i, label: '' });
+                        }
+                    }
+                    if (cellRows.length === 0) {
                         html += '<td class="unattested">—</td>';
                     } else {
-                        const surface = cell[0] || '';
-                        const ipa = cell[1] || '';
-                        html += '<td><span class="surface" dir="auto">' + escapeHtml(surface) + '</span>'
-                             + (ipa && ipa !== '—' ? '<span class="ipa">' + escapeHtml(ipa) + '</span>' : '')
-                             + '</td>';
+                        html += '<td>';
+                        for (const r of cellRows) {
+                            html += '<div class="cmp-reading">';
+                            if (r.surface) html += '<span class="surface" dir="auto">' + escapeHtml(r.surface) + '</span>';
+                            if (r.ipa && r.ipa !== '—') html += '<span class="ipa">' + escapeHtml(r.ipa) + '</span>';
+                            if (r.label) html += '<span class="cmp-label">' + escapeHtml(r.label) + '</span>';
+                            html += '</div>';
+                        }
+                        html += '</td>';
                     }
                 }
                 html += '</tr>';
             }
-            // Per-column delete row — replaces the old ×-in-header.
-            // Same .remove-col class so the existing click handler binds.
-            // The button carries BOTH the text label (visible on PC) and
-            // a × glyph (visible on mobile) — CSS shows whichever fits
-            // the viewport without inducing horizontal scroll.
-            const delLabel = compareT('del');
-            html += '<tr class="compare-remove-row"><th scope="row"></th>';
-            for (const code of _compareList) {
-                const lang = LANG_DATA[code];
-                const display = (lang && (names[code] || lang.name)) || code;
-                html += '<td><button class="remove-col" data-code="' + escapeHtml(code) + '" type="button" aria-label="' + escapeHtml(delLabel + ' ' + display) + '"><span class="rc-label">' + escapeHtml(delLabel) + '</span><span class="rc-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span></button></td>';
-            }
-            html += '</tr>';
             html += '</tbody></table>';
             body.innerHTML = html;
             // Wire interactions
