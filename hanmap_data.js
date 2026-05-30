@@ -245,7 +245,7 @@ const HAN_DATA = {
       "zh_jiao": "yi²¹³",
       "hak_mz": "yit5",
       "zh_gl": "yi³¹",
-      "ko_bus": "il⁵",
+      "ko_bus": "ilH",
       "ja_kgs": "it",
       "ja_okn": "itsu",
       "ja_thk": "itsu"
@@ -380,7 +380,8 @@ const HAN_DATA = {
       "nan_pera": "一",
       "ja_kgs": "イッ",
       "ja_okn": "イツ",
-      "ja_thk": "イツ"
+      "ja_thk": "イツ",
+      "ko_bus": "일"
     }
   },
   "二": {
@@ -478,7 +479,7 @@ const HAN_DATA = {
       "zh_jiao": "er⁵³",
       "hak_mz": "ngi4",
       "zh_gl": "er²⁴",
-      "ko_bus": "i⁵",
+      "ko_bus": "iH",
       "ja_kgs": "ji",
       "ja_okn": "ji",
       "ja_thk": "ji"
@@ -613,7 +614,8 @@ const HAN_DATA = {
       "nan_pera": "二",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
-      "ja_thk": "ジ"
+      "ja_thk": "ジ",
+      "ko_bus": "이"
     }
   },
   "三": {
@@ -713,7 +715,7 @@ const HAN_DATA = {
       "zh_jiao": "san²¹³",
       "hak_mz": "sam1",
       "zh_gl": "san⁴⁴",
-      "ko_bus": "sam⁵",
+      "ko_bus": "samH",
       "ja_kgs": "san",
       "ja_okn": "san",
       "ja_thk": "san"
@@ -850,7 +852,8 @@ const HAN_DATA = {
       "nan_pera": "三",
       "ja_kgs": "サン",
       "ja_okn": "サン",
-      "ja_thk": "サン"
+      "ja_thk": "サン",
+      "ko_bus": "삼"
     }
   },
   "四": {
@@ -950,7 +953,7 @@ const HAN_DATA = {
       "zh_jiao": "si⁵³",
       "hak_mz": "si4",
       "zh_gl": "si²⁴",
-      "ko_bus": "sa:¹³",
+      "ko_bus": "sa:LH",
       "ja_kgs": "shi",
       "ja_okn": "shi",
       "ja_thk": "sï"
@@ -1087,7 +1090,8 @@ const HAN_DATA = {
       "nan_pera": "四",
       "ja_kgs": "シ",
       "ja_okn": "シ",
-      "ja_thk": "シ"
+      "ja_thk": "シ",
+      "ko_bus": "사"
     }
   },
   "五": {
@@ -1185,7 +1189,7 @@ const HAN_DATA = {
       "zh_jiao": "wu⁵⁵",
       "hak_mz": "ng3",
       "zh_gl": "wu⁵³",
-      "ko_bus": "o:¹³",
+      "ko_bus": "o:LH",
       "ja_kgs": "go",
       "ja_okn": "gu",
       "ja_thk": "ŋo"
@@ -1321,7 +1325,8 @@ const HAN_DATA = {
       "nan_pera": "五",
       "ja_kgs": "ゴ",
       "ja_okn": "グ",
-      "ja_thk": "ゴ"
+      "ja_thk": "ゴ",
+      "ko_bus": "오"
     }
   },
   "六": {
@@ -1421,7 +1426,7 @@ const HAN_DATA = {
       "zh_jiao": "liou⁵³",
       "hak_mz": "liuk6",
       "zh_gl": "lou²⁴",
-      "ko_bus": "yuk⁵",
+      "ko_bus": "yukH",
       "ja_kgs": "rik",
       "ja_okn": "riku",
       "ja_thk": "rigu"
@@ -1558,7 +1563,8 @@ const HAN_DATA = {
       "nan_pera": "六",
       "ja_kgs": "リッ",
       "ja_okn": "リク",
-      "ja_thk": "リク"
+      "ja_thk": "リク",
+      "ko_bus": "육"
     }
   },
   "七": {
@@ -1656,7 +1662,7 @@ const HAN_DATA = {
       "zh_jiao": "qi²¹³",
       "hak_mz": "chhit5",
       "zh_gl": "ci³¹",
-      "ko_bus": "chil⁵",
+      "ko_bus": "chilH",
       "ja_kgs": "shit",
       "ja_okn": "shitsu",
       "ja_thk": "sïtsu"
@@ -1791,7 +1797,8 @@ const HAN_DATA = {
       "nan_pera": "七",
       "ja_kgs": "シッ",
       "ja_okn": "シツ",
-      "ja_thk": "シツ"
+      "ja_thk": "シツ",
+      "ko_bus": "칠"
     }
   },
   "八": {
@@ -1889,7 +1896,7 @@ const HAN_DATA = {
       "zh_jiao": "ba²¹³",
       "hak_mz": "pat5",
       "zh_gl": "ba³¹",
-      "ko_bus": "pal⁵",
+      "ko_bus": "palH",
       "ja_kgs": "hat",
       "ja_okn": "hatsu",
       "ja_thk": "hatsu"
@@ -2025,7 +2032,8 @@ const HAN_DATA = {
       "nan_pera": "八",
       "ja_kgs": "ハッ",
       "ja_okn": "ハツ",
-      "ja_thk": "ハツ"
+      "ja_thk": "ハツ",
+      "ko_bus": "팔"
     }
   },
   "九": {
@@ -2122,7 +2130,7 @@ const HAN_DATA = {
       "zh_jiao": "jiu⁵⁵",
       "hak_mz": "kiu3",
       "zh_gl": "jiu⁵³",
-      "ko_bus": "gu⁵",
+      "ko_bus": "guH",
       "ja_kgs": "kyū",
       "ja_okn": "kyū",
       "ja_thk": "kyū"
@@ -2256,7 +2264,8 @@ const HAN_DATA = {
       "nan_pera": "九",
       "ja_kgs": "キュウ",
       "ja_okn": "キュウ",
-      "ja_thk": "キュウ"
+      "ja_thk": "キュウ",
+      "ko_bus": "구"
     }
   },
   "十": {
@@ -2353,7 +2362,7 @@ const HAN_DATA = {
       "zh_jiao": "shi⁴²",
       "hak_mz": "sṳp6",
       "zh_gl": "si³¹",
-      "ko_bus": "sip⁵",
+      "ko_bus": "sipH",
       "ja_kgs": "shū",
       "ja_okn": "shū",
       "ja_thk": "shū"
@@ -2487,7 +2496,8 @@ const HAN_DATA = {
       "nan_pera": "十",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
-      "ja_thk": "シュウ"
+      "ja_thk": "シュウ",
+      "ko_bus": "십"
     }
   },
   "日": {
@@ -2587,7 +2597,7 @@ const HAN_DATA = {
       "zh_jiao": "yi⁵³",
       "hak_mz": "ngit6",
       "zh_gl": "zi²⁴",
-      "ko_bus": "il⁵",
+      "ko_bus": "ilH",
       "ja_kgs": "jit",
       "ja_okn": "jitsu",
       "ja_thk": "jitsu"
@@ -2724,7 +2734,8 @@ const HAN_DATA = {
       "nan_pera": "日",
       "ja_kgs": "ジッ",
       "ja_okn": "ジツ",
-      "ja_thk": "ジツ"
+      "ja_thk": "ジツ",
+      "ko_bus": "일"
     }
   },
   "月": {
@@ -2822,7 +2833,7 @@ const HAN_DATA = {
       "zh_jiao": "yue⁴²",
       "hak_mz": "ngiet6",
       "zh_gl": "yue³¹",
-      "ko_bus": "wol¹",
+      "ko_bus": "wolL",
       "ja_kgs": "get",
       "ja_okn": "gitsu",
       "ja_thk": "ŋetsu"
@@ -2958,7 +2969,8 @@ const HAN_DATA = {
       "nan_pera": "月",
       "ja_kgs": "ゲッ",
       "ja_okn": "ギツ",
-      "ja_thk": "ゲツ"
+      "ja_thk": "ゲツ",
+      "ko_bus": "월"
     }
   },
   "山": {
@@ -3055,7 +3067,7 @@ const HAN_DATA = {
       "zh_jiao": "shan²¹³",
       "hak_mz": "san1",
       "zh_gl": "san⁴⁴",
-      "ko_bus": "san¹",
+      "ko_bus": "sanL",
       "ja_kgs": "san",
       "ja_okn": "san",
       "ja_thk": "san"
@@ -3190,7 +3202,8 @@ const HAN_DATA = {
       "nan_pera": "山",
       "ja_kgs": "サン",
       "ja_okn": "サン",
-      "ja_thk": "サン"
+      "ja_thk": "サン",
+      "ko_bus": "산"
     }
   },
   "水": {
@@ -3289,7 +3302,7 @@ const HAN_DATA = {
       "zh_jiao": "shui⁵⁵",
       "hak_mz": "sui3",
       "zh_gl": "sui⁵³",
-      "ko_bus": "su:¹³",
+      "ko_bus": "su:LH",
       "ja_kgs": "sui",
       "ja_okn": "sui",
       "ja_thk": "sïi"
@@ -3425,7 +3438,8 @@ const HAN_DATA = {
       "nan_pera": "水",
       "ja_kgs": "スイ",
       "ja_okn": "スイ",
-      "ja_thk": "スイ"
+      "ja_thk": "スイ",
+      "ko_bus": "수"
     }
   },
   "火": {
@@ -3522,7 +3536,7 @@ const HAN_DATA = {
       "zh_jiao": "huo⁵⁵",
       "hak_mz": "fo3",
       "zh_gl": "huo⁵³",
-      "ko_bus": "hwa⁵",
+      "ko_bus": "hwaH",
       "ja_kgs": "ka",
       "ja_okn": "ka",
       "ja_thk": "ka"
@@ -3656,7 +3670,8 @@ const HAN_DATA = {
       "nan_pera": "火",
       "ja_kgs": "カ",
       "ja_okn": "カ",
-      "ja_thk": "カ"
+      "ja_thk": "カ",
+      "ko_bus": "화"
     }
   },
   "木": {
@@ -3755,7 +3770,7 @@ const HAN_DATA = {
       "zh_jiao": "mu⁴²",
       "hak_mz": "muk6",
       "zh_gl": "mu³¹",
-      "ko_bus": "mok¹",
+      "ko_bus": "mokL",
       "ja_kgs": "bok",
       "ja_okn": "buku",
       "ja_thk": "bogu"
@@ -3891,7 +3906,8 @@ const HAN_DATA = {
       "nan_pera": "木",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
-      "ja_thk": "ボク"
+      "ja_thk": "ボク",
+      "ko_bus": "목"
     }
   },
   "土": {
@@ -3989,7 +4005,7 @@ const HAN_DATA = {
       "zh_jiao": "tu⁵⁵",
       "hak_mz": "thu3",
       "zh_gl": "tu⁵³",
-      "ko_bus": "tho⁵",
+      "ko_bus": "thoH",
       "ja_kgs": "to",
       "ja_okn": "tu",
       "ja_thk": "to"
@@ -4124,7 +4140,8 @@ const HAN_DATA = {
       "nan_pera": "土",
       "ja_kgs": "ト",
       "ja_okn": "ツ",
-      "ja_thk": "ト"
+      "ja_thk": "ト",
+      "ko_bus": "토"
     }
   },
   "天": {
@@ -4220,7 +4237,7 @@ const HAN_DATA = {
       "zh_jiao": "tian²¹³",
       "hak_mz": "thien1",
       "zh_gl": "tian⁴⁴",
-      "ko_bus": "cheon¹",
+      "ko_bus": "cheonL",
       "ja_kgs": "ten",
       "ja_okn": "tin",
       "ja_thk": "ten"
@@ -4353,7 +4370,8 @@ const HAN_DATA = {
       "nan_pera": "天",
       "ja_kgs": "テン",
       "ja_okn": "チン",
-      "ja_thk": "テン"
+      "ja_thk": "テン",
+      "ko_bus": "천"
     }
   },
   "地": {
@@ -4449,7 +4467,7 @@ const HAN_DATA = {
       "zh_jiao": "di⁵³",
       "hak_mz": "thi4",
       "zh_gl": "di²⁴",
-      "ko_bus": "ji⁵",
+      "ko_bus": "jiH",
       "ja_kgs": "chi",
       "ja_okn": "chi",
       "ja_thk": "tsï"
@@ -4582,7 +4600,8 @@ const HAN_DATA = {
       "nan_pera": "地",
       "ja_kgs": "チ",
       "ja_okn": "チ",
-      "ja_thk": "チ"
+      "ja_thk": "チ",
+      "ko_bus": "지"
     }
   },
   "海": {
@@ -4678,7 +4697,7 @@ const HAN_DATA = {
       "zh_jiao": "hai⁵⁵",
       "hak_mz": "hoi3",
       "zh_gl": "hai⁵³",
-      "ko_bus": "hae:¹³",
+      "ko_bus": "hae:LH",
       "ja_kgs": "kai",
       "ja_okn": "kai",
       "ja_thk": "kai"
@@ -4812,7 +4831,8 @@ const HAN_DATA = {
       "nan_pera": "海",
       "ja_kgs": "カイ",
       "ja_okn": "カイ",
-      "ja_thk": "カイ"
+      "ja_thk": "カイ",
+      "ko_bus": "해"
     }
   },
   "龍": {
@@ -4904,7 +4924,7 @@ const HAN_DATA = {
       "zh_jiao": "long⁴²",
       "hak_mz": "liung2",
       "zh_gl": "long³¹",
-      "ko_bus": "yong¹",
+      "ko_bus": "yongL",
       "ja_kgs": "ryō",
       "ja_okn": "ryū",
       "ja_thk": "ryō"
@@ -5032,7 +5052,8 @@ const HAN_DATA = {
       "nan_pera": "龍",
       "ja_kgs": "リョウ",
       "ja_okn": "リュウ",
-      "ja_thk": "リョウ"
+      "ja_thk": "リョウ",
+      "ko_bus": "용"
     }
   },
   "虎": {
@@ -5128,7 +5149,7 @@ const HAN_DATA = {
       "zh_jiao": "hu⁵⁵",
       "hak_mz": "fu3",
       "zh_gl": "fu⁵³",
-      "ko_bus": "ho:¹³",
+      "ko_bus": "ho:LH",
       "ja_kgs": "ko",
       "ja_okn": "ku",
       "ja_thk": "ko"
@@ -5260,7 +5281,8 @@ const HAN_DATA = {
       "nan_pera": "虎",
       "ja_kgs": "コ",
       "ja_okn": "ク",
-      "ja_thk": "コ"
+      "ja_thk": "コ",
+      "ko_bus": "호"
     }
   },
   "犬": {
@@ -5358,7 +5380,7 @@ const HAN_DATA = {
       "zh_jiao": "quan⁵⁵",
       "hak_mz": "khien3",
       "zh_gl": "quan⁵³",
-      "ko_bus": "gyeon⁵",
+      "ko_bus": "gyeonH",
       "ja_kgs": "ken",
       "ja_okn": "kin",
       "ja_thk": "ken"
@@ -5493,7 +5515,8 @@ const HAN_DATA = {
       "nan_pera": "犬",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
-      "ja_thk": "ケン"
+      "ja_thk": "ケン",
+      "ko_bus": "견"
     }
   },
   "馬": {
@@ -5590,7 +5613,7 @@ const HAN_DATA = {
       "zh_jiao": "ma⁵⁵",
       "hak_mz": "ma1",
       "zh_gl": "ma⁵³",
-      "ko_bus": "ma:¹³",
+      "ko_bus": "ma:LH",
       "ja_kgs": "ba",
       "ja_okn": "ba",
       "ja_thk": "ba"
@@ -5724,7 +5747,8 @@ const HAN_DATA = {
       "nan_pera": "馬",
       "ja_kgs": "バ",
       "ja_okn": "バ",
-      "ja_thk": "バ"
+      "ja_thk": "バ",
+      "ko_bus": "마"
     }
   },
   "鳥": {
@@ -5822,7 +5846,7 @@ const HAN_DATA = {
       "zh_jiao": "liao⁵⁵",
       "hak_mz": "tiau1",
       "zh_gl": "niao⁵³",
-      "ko_bus": "jo⁵",
+      "ko_bus": "joH",
       "ja_kgs": "chō",
       "ja_okn": "chū",
       "ja_thk": "chō"
@@ -5957,7 +5981,8 @@ const HAN_DATA = {
       "nan_pera": "鳥",
       "ja_kgs": "チョウ",
       "ja_okn": "チュウ",
-      "ja_thk": "チョウ"
+      "ja_thk": "チョウ",
+      "ko_bus": "조"
     }
   },
   "魚": {
@@ -6055,7 +6080,7 @@ const HAN_DATA = {
       "zh_jiao": "yu⁴²",
       "hak_mz": "ng2",
       "zh_gl": "yu³¹",
-      "ko_bus": "eo¹",
+      "ko_bus": "eoL",
       "ja_kgs": "gyo",
       "ja_okn": "gyu",
       "ja_thk": "ŋyo"
@@ -6190,7 +6215,8 @@ const HAN_DATA = {
       "nan_pera": "魚",
       "ja_kgs": "ギョ",
       "ja_okn": "ギュ",
-      "ja_thk": "ギョ"
+      "ja_thk": "ギョ",
+      "ko_bus": "어"
     }
   },
   "牛": {
@@ -6285,7 +6311,7 @@ const HAN_DATA = {
       "zh_jiao": "liu⁴²",
       "hak_mz": "ngiu2",
       "zh_gl": "niu³¹",
-      "ko_bus": "u¹",
+      "ko_bus": "uL",
       "ja_kgs": "gyū",
       "ja_okn": "gyū",
       "ja_thk": "ŋyū"
@@ -6417,7 +6443,8 @@ const HAN_DATA = {
       "nan_pera": "牛",
       "ja_kgs": "ギュウ",
       "ja_okn": "ギュウ",
-      "ja_thk": "ギュウ"
+      "ja_thk": "ギュウ",
+      "ko_bus": "우"
     }
   },
   "羊": {
@@ -6508,7 +6535,7 @@ const HAN_DATA = {
       "zh_jiao": "yang⁴²",
       "hak_mz": "yong2",
       "zh_gl": "yang³¹",
-      "ko_bus": "yang¹",
+      "ko_bus": "yangL",
       "ja_kgs": "yō",
       "ja_okn": "yū",
       "ja_thk": "yō",
@@ -6638,7 +6665,8 @@ const HAN_DATA = {
       "ja_kgs": "ヨウ",
       "ja_okn": "ユウ",
       "ja_thk": "ヨウ",
-      "vi_nom": "裘"
+      "vi_nom": "裘",
+      "ko_bus": "양"
     }
   },
   "貓": {
@@ -6729,7 +6757,7 @@ const HAN_DATA = {
       "zh_jiao": "mao²¹³",
       "hak_mz": "meu4",
       "zh_gl": "mao⁴⁴",
-      "ko_bus": "myo⁵",
+      "ko_bus": "myoH",
       "ja_kgs": "byō",
       "ja_okn": "byū",
       "ja_thk": "byō"
@@ -6856,7 +6884,8 @@ const HAN_DATA = {
       "zh_phagspa": "ꡏꡠꡓ",
       "ja_kgs": "ビョウ",
       "ja_okn": "ビュウ",
-      "ja_thk": "ビョウ"
+      "ja_thk": "ビョウ",
+      "ko_bus": "묘"
     }
   },
   "人": {
@@ -6956,7 +6985,7 @@ const HAN_DATA = {
       "zh_jiao": "yin⁴²",
       "hak_mz": "ngin2",
       "zh_gl": "ren³¹",
-      "ko_bus": "in¹",
+      "ko_bus": "inL",
       "ja_kgs": "jin",
       "ja_okn": "jin",
       "ja_thk": "jin"
@@ -7094,7 +7123,8 @@ const HAN_DATA = {
       "nan_pera": "人",
       "ja_kgs": "ジン",
       "ja_okn": "ジン",
-      "ja_thk": "ジン"
+      "ja_thk": "ジン",
+      "ko_bus": "인"
     }
   },
   "手": {
@@ -7191,7 +7221,7 @@ const HAN_DATA = {
       "zh_jiao": "shou⁵⁵",
       "hak_mz": "su3",
       "zh_gl": "sou⁵³",
-      "ko_bus": "su:¹³",
+      "ko_bus": "su:LH",
       "ja_kgs": "shū",
       "ja_okn": "shū",
       "ja_thk": "shū"
@@ -7326,7 +7356,8 @@ const HAN_DATA = {
       "nan_pera": "手",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
-      "ja_thk": "シュウ"
+      "ja_thk": "シュウ",
+      "ko_bus": "수"
     }
   },
   "足": {
@@ -7421,7 +7452,7 @@ const HAN_DATA = {
       "zh_jiao": "zu⁴²",
       "hak_mz": "chiuk6",
       "zh_gl": "zu³¹",
-      "ko_bus": "jok¹",
+      "ko_bus": "jokL",
       "ja_kgs": "shok",
       "ja_okn": "shuku",
       "ja_thk": "shogu"
@@ -7553,7 +7584,8 @@ const HAN_DATA = {
       "nan_pera": "足",
       "ja_kgs": "ショッ",
       "ja_okn": "シュク",
-      "ja_thk": "ショク"
+      "ja_thk": "ショク",
+      "ko_bus": "족"
     }
   },
   "目": {
@@ -7650,7 +7682,7 @@ const HAN_DATA = {
       "zh_jiao": "mu⁴²",
       "hak_mz": "muk6",
       "zh_gl": "mu²⁴",
-      "ko_bus": "mok¹",
+      "ko_bus": "mokL",
       "ja_kgs": "bok",
       "ja_okn": "buku",
       "ja_thk": "bogu"
@@ -7785,7 +7817,8 @@ const HAN_DATA = {
       "nan_pera": "目",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
-      "ja_thk": "ボク"
+      "ja_thk": "ボク",
+      "ko_bus": "목"
     }
   },
   "耳": {
@@ -7882,7 +7915,7 @@ const HAN_DATA = {
       "zh_jiao": "er⁵⁵",
       "hak_mz": "ngi3",
       "zh_gl": "er⁵³",
-      "ko_bus": "i:¹³",
+      "ko_bus": "i:LH",
       "ja_kgs": "ji",
       "ja_okn": "ji",
       "ja_thk": "ji"
@@ -8016,7 +8049,8 @@ const HAN_DATA = {
       "nan_pera": "耳",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
-      "ja_thk": "ジ"
+      "ja_thk": "ジ",
+      "ko_bus": "이"
     }
   },
   "口": {
@@ -8111,7 +8145,7 @@ const HAN_DATA = {
       "zh_jiao": "kou⁵⁵",
       "hak_mz": "kheu3",
       "zh_gl": "kou⁵³",
-      "ko_bus": "gu:¹³",
+      "ko_bus": "gu:LH",
       "ja_kgs": "kō",
       "ja_okn": "kū",
       "ja_thk": "kō"
@@ -8243,7 +8277,8 @@ const HAN_DATA = {
       "nan_pera": "口",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
-      "ja_thk": "コウ"
+      "ja_thk": "コウ",
+      "ko_bus": "구"
     }
   },
   "頭": {
@@ -8340,7 +8375,7 @@ const HAN_DATA = {
       "zh_jiao": "tou⁴²",
       "hak_mz": "theu2",
       "zh_gl": "tou³¹",
-      "ko_bus": "du¹",
+      "ko_bus": "duL",
       "ja_kgs": "tō",
       "ja_okn": "tū",
       "ja_thk": "tō"
@@ -8474,7 +8509,8 @@ const HAN_DATA = {
       "nan_pera": "頭",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
-      "ja_thk": "トウ"
+      "ja_thk": "トウ",
+      "ko_bus": "두"
     }
   },
   "心": {
@@ -8570,7 +8606,7 @@ const HAN_DATA = {
       "zh_jiao": "xin²¹³",
       "hak_mz": "sim1",
       "zh_gl": "xin⁴⁴",
-      "ko_bus": "sim¹",
+      "ko_bus": "simL",
       "ja_kgs": "shin",
       "ja_okn": "shin",
       "ja_thk": "sïn"
@@ -8703,7 +8739,8 @@ const HAN_DATA = {
       "nan_pera": "心",
       "ja_kgs": "シン",
       "ja_okn": "シン",
-      "ja_thk": "シン"
+      "ja_thk": "シン",
+      "ko_bus": "심"
     }
   },
   "血": {
@@ -8801,7 +8838,7 @@ const HAN_DATA = {
       "zh_jiao": "xue²¹³",
       "hak_mz": "hiet5",
       "zh_gl": "xue³¹",
-      "ko_bus": "hyeol¹",
+      "ko_bus": "hyeolL",
       "ja_kgs": "ket",
       "ja_okn": "kitsu",
       "ja_thk": "ketsu"
@@ -8936,7 +8973,8 @@ const HAN_DATA = {
       "nan_pera": "血",
       "ja_kgs": "ケッ",
       "ja_okn": "キツ",
-      "ja_thk": "ケツ"
+      "ja_thk": "ケツ",
+      "ko_bus": "혈"
     }
   },
   "肉": {
@@ -9032,7 +9070,7 @@ const HAN_DATA = {
       "zh_jiao": "rou⁵³",
       "hak_mz": "ngiuk6",
       "zh_gl": "zou²⁴",
-      "ko_bus": "yuk¹",
+      "ko_bus": "yukL",
       "ja_kgs": "jik",
       "ja_okn": "jiku",
       "ja_thk": "jigu"
@@ -9164,7 +9202,8 @@ const HAN_DATA = {
       "nan_pera": "肉",
       "ja_kgs": "ジッ",
       "ja_okn": "ジク",
-      "ja_thk": "ジク"
+      "ja_thk": "ジク",
+      "ko_bus": "육"
     }
   },
   "上": {
@@ -9259,7 +9298,7 @@ const HAN_DATA = {
       "zh_jiao": "shang⁵³",
       "hak_mz": "song4",
       "zh_gl": "sang²⁴",
-      "ko_bus": "sang⁵",
+      "ko_bus": "sangH",
       "ja_kgs": "shō",
       "ja_okn": "shū",
       "ja_thk": "shō"
@@ -9392,7 +9431,8 @@ const HAN_DATA = {
       "nan_pera": "上",
       "ja_kgs": "ショウ",
       "ja_okn": "シュウ",
-      "ja_thk": "ショウ"
+      "ja_thk": "ショウ",
+      "ko_bus": "상"
     }
   },
   "下": {
@@ -9486,7 +9526,7 @@ const HAN_DATA = {
       "zh_jiao": "xia⁵³",
       "hak_mz": "ha4",
       "zh_gl": "xia²⁴",
-      "ko_bus": "ha:¹³",
+      "ko_bus": "ha:LH",
       "ja_kgs": "ka",
       "ja_okn": "ka",
       "ja_thk": "ka"
@@ -9617,7 +9657,8 @@ const HAN_DATA = {
       "nan_pera": "下",
       "ja_kgs": "カ",
       "ja_okn": "カ",
-      "ja_thk": "カ"
+      "ja_thk": "カ",
+      "ko_bus": "하"
     }
   },
   "中": {
@@ -9714,7 +9755,7 @@ const HAN_DATA = {
       "zh_jiao": "zhong²¹³",
       "hak_mz": "chung1",
       "zh_gl": "zong⁴⁴",
-      "ko_bus": "jung¹",
+      "ko_bus": "jungL",
       "ja_kgs": "chū",
       "ja_okn": "chū",
       "ja_thk": "chū"
@@ -9849,7 +9890,8 @@ const HAN_DATA = {
       "nan_pera": "中",
       "ja_kgs": "チュウ",
       "ja_okn": "チュウ",
-      "ja_thk": "チュウ"
+      "ja_thk": "チュウ",
+      "ko_bus": "중"
     }
   },
   "央": {
@@ -9936,7 +9978,7 @@ const HAN_DATA = {
       "zh_jiao": "yang²¹³",
       "hak_mz": "yong1",
       "zh_gl": "yang⁴⁴",
-      "ko_bus": "ang¹",
+      "ko_bus": "angL",
       "ja_kgs": "ō",
       "ja_okn": "ū",
       "ja_thk": "ō",
@@ -10060,7 +10102,8 @@ const HAN_DATA = {
       "ja_kgs": "オウ",
       "ja_okn": "ウウ",
       "ja_thk": "オウ",
-      "vi_nom": "央"
+      "vi_nom": "央",
+      "ko_bus": "앙"
     }
   },
   "左": {
@@ -10155,7 +10198,7 @@ const HAN_DATA = {
       "zh_jiao": "zuo⁵⁵",
       "hak_mz": "cho3",
       "zh_gl": "zuo⁵³",
-      "ko_bus": "jwa:¹³",
+      "ko_bus": "jwa:LH",
       "ja_kgs": "sa",
       "ja_okn": "sa",
       "ja_thk": "sa"
@@ -10287,7 +10330,8 @@ const HAN_DATA = {
       "nan_pera": "左",
       "ja_kgs": "サ",
       "ja_okn": "サ",
-      "ja_thk": "サ"
+      "ja_thk": "サ",
+      "ko_bus": "좌"
     }
   },
   "右": {
@@ -10382,7 +10426,7 @@ const HAN_DATA = {
       "zh_jiao": "you⁵³",
       "hak_mz": "yu4",
       "zh_gl": "you²⁴",
-      "ko_bus": "u:¹³",
+      "ko_bus": "u:LH",
       "ja_kgs": "yū",
       "ja_okn": "yū",
       "ja_thk": "yū"
@@ -10514,7 +10558,8 @@ const HAN_DATA = {
       "nan_pera": "右",
       "ja_kgs": "ユウ",
       "ja_okn": "ユウ",
-      "ja_thk": "ユウ"
+      "ja_thk": "ユウ",
+      "ko_bus": "우"
     }
   },
   "東": {
@@ -10606,7 +10651,7 @@ const HAN_DATA = {
       "zh_jiao": "dong²¹³",
       "hak_mz": "tung1",
       "zh_gl": "dong⁴⁴",
-      "ko_bus": "dong¹",
+      "ko_bus": "dongL",
       "ja_kgs": "tō",
       "ja_okn": "tū",
       "ja_thk": "tō",
@@ -10737,7 +10782,8 @@ const HAN_DATA = {
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
       "ja_thk": "トウ",
-      "vi_nom": "東"
+      "vi_nom": "東",
+      "ko_bus": "동"
     }
   },
   "西": {
@@ -10830,7 +10876,7 @@ const HAN_DATA = {
       "zh_jiao": "xi²¹³",
       "hak_mz": "si1",
       "zh_gl": "xi⁴⁴",
-      "ko_bus": "seo¹",
+      "ko_bus": "seoL",
       "ja_kgs": "sei",
       "ja_okn": "sii",
       "ja_thk": "sei",
@@ -10963,7 +11009,8 @@ const HAN_DATA = {
       "ja_kgs": "セイ",
       "ja_okn": "シイ",
       "ja_thk": "セイ",
-      "vi_nom": "西"
+      "vi_nom": "西",
+      "ko_bus": "서"
     }
   },
   "南": {
@@ -11056,7 +11103,7 @@ const HAN_DATA = {
       "zh_jiao": "lan⁴²",
       "hak_mz": "nam2",
       "zh_gl": "nan³¹",
-      "ko_bus": "nam¹",
+      "ko_bus": "namL",
       "ja_kgs": "dan",
       "ja_okn": "dan",
       "ja_thk": "dan",
@@ -11188,7 +11235,8 @@ const HAN_DATA = {
       "ja_kgs": "ダン",
       "ja_okn": "ダン",
       "ja_thk": "ダン",
-      "vi_nom": "南"
+      "vi_nom": "南",
+      "ko_bus": "남"
     }
   },
   "北": {
@@ -11282,7 +11330,7 @@ const HAN_DATA = {
       "zh_jiao": "bei²¹³",
       "hak_mz": "pet5",
       "zh_gl": "be³¹",
-      "ko_bus": "buk¹",
+      "ko_bus": "bukL",
       "ja_kgs": "hok",
       "ja_okn": "huku",
       "ja_thk": "hogu",
@@ -11416,7 +11464,8 @@ const HAN_DATA = {
       "ja_kgs": "ホッ",
       "ja_okn": "フク",
       "ja_thk": "ホク",
-      "vi_nom": "北"
+      "vi_nom": "北",
+      "ko_bus": "북"
     }
   },
   "行": {
@@ -11512,7 +11561,7 @@ const HAN_DATA = {
       "zh_jiao": "xing⁴²",
       "hak_mz": "hang2",
       "zh_gl": "xing³¹",
-      "ko_bus": "haeng¹",
+      "ko_bus": "haengL",
       "ja_kgs": "kō",
       "ja_okn": "kū",
       "ja_thk": "kō"
@@ -11645,7 +11694,8 @@ const HAN_DATA = {
       "nan_pera": "行",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
-      "ja_thk": "コウ"
+      "ja_thk": "コウ",
+      "ko_bus": "행"
     }
   },
   "来": {
@@ -11741,7 +11791,7 @@ const HAN_DATA = {
       "zh_jiao": "lai⁴²",
       "hak_mz": "loi2",
       "zh_gl": "lai³¹",
-      "ko_bus": "nae¹",
+      "ko_bus": "naeL",
       "ja_kgs": "rai",
       "ja_okn": "rai",
       "ja_thk": "rai"
@@ -11880,7 +11930,8 @@ const HAN_DATA = {
       "nan_pera": "来",
       "ja_kgs": "ライ",
       "ja_okn": "ライ",
-      "ja_thk": "ライ"
+      "ja_thk": "ライ",
+      "ko_bus": "내"
     }
   },
   "去": {
@@ -11975,7 +12026,7 @@ const HAN_DATA = {
       "zh_jiao": "qu⁵³",
       "hak_mz": "hi4",
       "zh_gl": "qu²⁴",
-      "ko_bus": "geo⁵",
+      "ko_bus": "geoH",
       "ja_kgs": "kyo",
       "ja_okn": "kyu",
       "ja_thk": "kyo"
@@ -12107,7 +12158,8 @@ const HAN_DATA = {
       "nan_pera": "去",
       "ja_kgs": "キョ",
       "ja_okn": "キュ",
-      "ja_thk": "キョ"
+      "ja_thk": "キョ",
+      "ko_bus": "거"
     }
   },
   "見": {
@@ -12201,7 +12253,7 @@ const HAN_DATA = {
       "zh_jiao": "jian⁵³",
       "hak_mz": "kien4",
       "zh_gl": "jian²⁴",
-      "ko_bus": "gyeon⁵",
+      "ko_bus": "gyeonH",
       "ja_kgs": "ken",
       "ja_okn": "kin",
       "ja_thk": "ken"
@@ -12332,7 +12384,8 @@ const HAN_DATA = {
       "nan_pera": "見",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
-      "ja_thk": "ケン"
+      "ja_thk": "ケン",
+      "ko_bus": "견"
     }
   },
   "聞": {
@@ -12426,7 +12479,7 @@ const HAN_DATA = {
       "zh_jiao": "wen⁴²",
       "hak_mz": "vun2",
       "zh_gl": "wen³¹",
-      "ko_bus": "mun¹",
+      "ko_bus": "munL",
       "ja_kgs": "bun",
       "ja_okn": "bun",
       "ja_thk": "bun"
@@ -12557,7 +12610,8 @@ const HAN_DATA = {
       "nan_pera": "聞",
       "ja_kgs": "ブン",
       "ja_okn": "ブン",
-      "ja_thk": "ブン"
+      "ja_thk": "ブン",
+      "ko_bus": "문"
     }
   },
   "食": {
@@ -12656,7 +12710,7 @@ const HAN_DATA = {
       "zh_jiao": "shi⁴²",
       "hak_mz": "sṳt6",
       "zh_gl": "si³¹",
-      "ko_bus": "sik¹",
+      "ko_bus": "sikL",
       "ja_kgs": "shok",
       "ja_okn": "shuku",
       "ja_thk": "shogu"
@@ -12792,7 +12846,8 @@ const HAN_DATA = {
       "nan_pera": "食",
       "ja_kgs": "ショッ",
       "ja_okn": "シュク",
-      "ja_thk": "ショク"
+      "ja_thk": "ショク",
+      "ko_bus": "식"
     }
   },
   "飲": {
@@ -12888,7 +12943,7 @@ const HAN_DATA = {
       "zh_jiao": "yin⁵⁵",
       "hak_mz": "yim3",
       "zh_gl": "yin⁵³",
-      "ko_bus": "eu:m¹³",
+      "ko_bus": "eu:mLH",
       "ja_kgs": "in",
       "ja_okn": "in",
       "ja_thk": "in"
@@ -13021,7 +13076,8 @@ const HAN_DATA = {
       "nan_pera": "飲",
       "ja_kgs": "イン",
       "ja_okn": "イン",
-      "ja_thk": "イン"
+      "ja_thk": "イン",
+      "ko_bus": "음"
     }
   },
   "走": {
@@ -13117,7 +13173,7 @@ const HAN_DATA = {
       "zh_jiao": "zou⁵⁵",
       "hak_mz": "cheu3",
       "zh_gl": "zou⁵³",
-      "ko_bus": "ju:¹³",
+      "ko_bus": "ju:LH",
       "ja_kgs": "sō",
       "ja_okn": "sū",
       "ja_thk": "sō"
@@ -13250,7 +13306,8 @@ const HAN_DATA = {
       "nan_pera": "走",
       "ja_kgs": "ソウ",
       "ja_okn": "スウ",
-      "ja_thk": "ソウ"
+      "ja_thk": "ソウ",
+      "ko_bus": "주"
     }
   },
   "坐": {
@@ -13346,7 +13403,7 @@ const HAN_DATA = {
       "zh_jiao": "zuo⁵³",
       "hak_mz": "chho1",
       "zh_gl": "zuo²⁴",
-      "ko_bus": "jwa:¹³",
+      "ko_bus": "jwa:LH",
       "ja_kgs": "sa",
       "ja_okn": "sa",
       "ja_thk": "sa"
@@ -13479,7 +13536,8 @@ const HAN_DATA = {
       "nan_pera": "坐",
       "ja_kgs": "サ",
       "ja_okn": "サ",
-      "ja_thk": "サ"
+      "ja_thk": "サ",
+      "ko_bus": "좌"
     }
   },
   "立": {
@@ -13575,7 +13633,7 @@ const HAN_DATA = {
       "zh_jiao": "li⁵³",
       "hak_mz": "lip6",
       "zh_gl": "li²⁴",
-      "ko_bus": "ip¹",
+      "ko_bus": "ipL",
       "ja_kgs": "rit",
       "ja_okn": "ritsu",
       "ja_thk": "ritsu"
@@ -13708,7 +13766,8 @@ const HAN_DATA = {
       "nan_pera": "立",
       "ja_kgs": "リッ",
       "ja_okn": "リツ",
-      "ja_thk": "リツ"
+      "ja_thk": "リツ",
+      "ko_bus": "입"
     }
   }
 };
