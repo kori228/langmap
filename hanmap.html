@@ -7235,8 +7235,43 @@
                     }[uiBase] || 'Sources';
                     html += `<div style="margin:8px 0 4px;font-size:11px;color:#888"><b>${escapeHtml(srcLabel)}:</b></div>`;
                     html += '<ul style="margin:0 0 12px 16px;padding:0;font-size:11px;color:#666;line-height:1.5">';
+                    // Unwrap mixed-shape source entries so we never render
+                    // "[object Object]". Supported shapes per item:
+                    //   - string                  → literal text
+                    //   - { ja, en, ... } i18n    → pick uiBase, fall back en/ja
+                    //   - { title, url, note? }   → title as link to url (if http(s))
+                    //   - anything else           → JSON.stringify (last resort)
+                    const safeSrcUrl = u => (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null;
                     for (const s of hanMeta.sources) {
-                        html += `<li>${escapeHtml(s)}</li>`;
+                        if (s == null) continue;
+                        let liHtml = '';
+                        if (typeof s === 'string') {
+                            liHtml = escapeHtml(s);
+                        } else if (typeof s === 'object') {
+                            if (typeof s.title === 'string' || typeof s.url === 'string') {
+                                // {title, url, note?} citation shape
+                                const url = safeSrcUrl(s.url);
+                                const title = (typeof s.title === 'string' && s.title) ? s.title : (s.url || '');
+                                const safeTitle = escapeHtml(title);
+                                liHtml = url
+                                    ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#4a6cf7;text-decoration:none">${safeTitle}</a>`
+                                    : safeTitle;
+                                if (typeof s.note === 'string' && s.note) {
+                                    liHtml += ` <span style="color:#999">— ${escapeHtml(s.note)}</span>`;
+                                }
+                            } else {
+                                // i18n object keyed by language code
+                                const pick = s[uiBase] || s[uiLang] || s.en || s.ja || s[Object.keys(s)[0]];
+                                if (typeof pick === 'string') {
+                                    liHtml = escapeHtml(pick);
+                                } else {
+                                    liHtml = escapeHtml(JSON.stringify(s));
+                                }
+                            }
+                        } else {
+                            liHtml = escapeHtml(String(s));
+                        }
+                        if (liHtml) html += `<li>${liHtml}</li>`;
                     }
                     html += '</ul>';
                 }
