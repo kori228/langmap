@@ -2480,9 +2480,9 @@
             </nav>
             <button type="button" class="trivia-btn" id="trivia-open"
                     aria-haspopup="dialog" aria-controls="trivia-modal"
-                    title="Linguistic trivia">
+                    title="Sinosphere trivia">
                 <span aria-hidden="true">📚</span>
-                <span class="trivia-btn-label" id="trivia-btn-label">Linguistic Trivia</span>
+                <span class="trivia-btn-label" id="trivia-btn-label">Sinosphere Trivia</span>
             </button>
             <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
             <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
@@ -2520,7 +2520,7 @@
         <!-- Inner scroll region — only this scrolls, so the close
              button stays visible no matter how far the user scrolls. -->
         <div class="trivia-scroll" id="trivia-scroll">
-            <div class="trivia-eyebrow" id="trivia-eyebrow">Linguistic Trivia</div>
+            <div class="trivia-eyebrow" id="trivia-eyebrow">Sinosphere Trivia</div>
             <h2 id="trivia-heading"></h2>
             <div class="trivia-summary" id="trivia-summary"></div>
             <div class="trivia-body" id="trivia-body"></div>
@@ -3029,7 +3029,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=64"></script>
+    <script src="hanmap_data.js?v=65"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -4358,17 +4358,17 @@
                 ar:'أوقف فلتر {era} للاختيار', he:'בטל את מסנן ה־{era} לבחירה',
                 sw:'Zima kichujio cha {era} ili kuchagua' },
             triviaButton: {
-                en: 'Linguistic Trivia', ja: '言語学の豆知識',
-                ko: '언어학 토막상식', zh: '语言学小知识', yue: '語言學小知識',
-                vi: 'Mẹo ngôn ngữ', th: 'เกร็ดภาษาศาสตร์',
-                id: 'Trivia Linguistik', hi: 'भाषाविज्ञान रोचक',
-                de: 'Sprach-Trivia', fr: 'Anecdotes linguistiques',
-                it: 'Curiosità linguistiche',
-                es: 'Curiosidades lingüísticas', es_eu: 'Curiosidades lingüísticas', es_mx: 'Curiosidades lingüísticas',
-                pt: 'Curiosidades linguísticas', pt_eu: 'Curiosidades linguísticas', pt_br: 'Curiosidades linguísticas',
-                ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
-                ar: 'طرائف لغوية', he: 'טריוויה לשונית',
-                sw: 'Mambo ya Kiisimu',
+                en: 'Sinosphere Trivia', ja: '漢字文化圏の豆知識',
+                ko: '한자문화권 토막상식', zh: '汉字文化圈小知识', yue: '漢字文化圈小知識',
+                vi: 'Mẹo về vùng Hán tự', th: 'เกร็ดวัฒนธรรมอักษรจีน',
+                id: 'Trivia Sinosfer', hi: 'सिनोस्फेयर रोचक',
+                de: 'Sinosphäre-Trivia', fr: 'Anecdotes du monde sinographique',
+                it: 'Curiosità sinosferiche',
+                es: 'Curiosidades sinosféricas', es_eu: 'Curiosidades sinosféricas', es_mx: 'Curiosidades sinosféricas',
+                pt: 'Curiosidades da Sinosfera', pt_eu: 'Curiosidades da Sinosfera', pt_br: 'Curiosidades da Sinosfera',
+                ru: 'Факты о синосфере', uk: 'Факти про синосферу',
+                ar: 'طرائف الفضاء الصيني', he: 'טריוויה על הסינוספרה',
+                sw: 'Mambo ya Sinosphia',
             },
             triviaButtonShort: {
                 // Compact label for the mobile header bar where horizontal
@@ -5147,6 +5147,7 @@
                 updateOnOff(btn, getter());
                 updateMarkers(currentWord);
                 updateTopLeftVisibility();
+                try { if (typeof updateHash === 'function') updateHash(); } catch (_) {}
             });
         }
         setupToggle(btnWord, () => showWord, v => showWord = v);
@@ -6996,6 +6997,13 @@
             params.set('nat', showNative ? '1' : '0');
             params.set('hist', showHistorical ? '1' : '0');
             params.set('fs', String(fontSizeSlider.value));
+            // 2026-05-31: persist the settings-drawer toggles so a reload
+            // keeps the user's display preferences. Only emit when off
+            // (default ON for all four) to keep URLs short on first share.
+            if (!showWord)   params.set('w_form', '0');
+            if (!showScript) params.set('w_script', '0');
+            if (!showIpa)    params.set('w_ipa', '0');
+            if (!showName)   params.set('w_name', '0');
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
             if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
@@ -7067,6 +7075,25 @@
                 fontSizeSlider.value = String(fs);
                 document.documentElement.style.setProperty('--label-scale', fs / 100);
             }
+            // 2026-05-31: restore settings-drawer toggles from URL. Default
+            // is ON; URL only carries the OFF state to keep links short.
+            function _applyToggleFromHash(param, btn, setter) {
+                if (params.get(param) === '0') {
+                    setter(false);
+                    if (btn) {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                        const oo = btn.querySelector('.onoff');
+                        if (oo) updateOnOff(btn, false);
+                    }
+                }
+            }
+            _applyToggleFromHash('w_form',   btnWord,   v => showWord = v);
+            _applyToggleFromHash('w_script', btnScript, v => showScript = v);
+            _applyToggleFromHash('w_ipa',    btnIpa,    v => showIpa = v);
+            _applyToggleFromHash('w_name',   btnName,   v => showName = v);
+            // Re-evaluate all-OFF state for top-left visibility.
+            if (typeof updateTopLeftVisibility === 'function') updateTopLeftVisibility();
             const ui = params.get('ui');
             if (ui && WM_UI[ui]) {
                 uiLang = ui;
@@ -9812,14 +9839,12 @@
             tags.innerHTML = '';
             const list = window.TRIVIA_ARTICLES || [];
             index.innerHTML = list.map((a, i) => {
-                const iconAttr = a.icon || '📖';
+                // 2026-05-31: index shows title only (no icon, no summary)
+                // per user request. Detail view still has the full text.
                 const title = pickLocalized(a.title);
-                const sum = pickLocalized(a.summary);
                 const num = String(i + 1).padStart(2, '0');
                 return `<button type="button" class="trivia-card" data-article-id="${a.id}">`
-                    + `<div class="trivia-card-icon" aria-hidden="true">${iconAttr}</div>`
                     + `<div class="trivia-card-title"><span class="trivia-card-num">${num}.</span> ${title}</div>`
-                    + `<div class="trivia-card-summary">${sum}</div>`
                     + `</button>`;
             }).join('');
             index.hidden = false;
