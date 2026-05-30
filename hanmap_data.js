@@ -22244,6 +22244,62 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ],
+    "wuu_sz": [
+      {
+        "native": "",
+        "surface": "zeq²³",
+        "ipa": "zəʔ²³",
+        "label": "白讀 (sun/day)"
+      },
+      {
+        "native": "",
+        "surface": "nyiq²³",
+        "ipa": "ȵiɪʔ²³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_nb": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (sun/day)"
+      },
+      {
+        "native": "",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_hz": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (sun/day)"
+      },
+      {
+        "native": "",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_jx": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (sun/day)"
+      },
+      {
+        "native": "",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
+        "label": "文讀"
+      }
+    ],
     "ja": [
       {
         "native": "ジツ",
@@ -22397,6 +22453,62 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "hhyeq¹²",
         "ipa": "ɦiɪʔ¹²",
+        "label": "文讀"
+      }
+    ],
+    "wuu_sz": [
+      {
+        "native": "",
+        "surface": "hhyuoq²³",
+        "ipa": "ɦyəʔ²³",
+        "label": "白讀 (moon/month)"
+      },
+      {
+        "native": "",
+        "surface": "hhyeq²³",
+        "ipa": "ɦiɪʔ²³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_nb": [
+      {
+        "native": "",
+        "surface": "hhyuoq²¹³",
+        "ipa": "ɦyɪʔ²¹³",
+        "label": "白讀 (moon/month)"
+      },
+      {
+        "native": "",
+        "surface": "hhyeq²¹³",
+        "ipa": "ɦiɪʔ²¹³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_hz": [
+      {
+        "native": "",
+        "surface": "hhyuoq²¹³",
+        "ipa": "ɦyɪʔ²¹³",
+        "label": "白讀 (moon/month)"
+      },
+      {
+        "native": "",
+        "surface": "hhyeq²¹³",
+        "ipa": "ɦiɪʔ²¹³",
+        "label": "文讀"
+      }
+    ],
+    "wuu_jx": [
+      {
+        "native": "",
+        "surface": "hhyuoq²¹³",
+        "ipa": "ɦyɪʔ²¹³",
+        "label": "白讀 (moon/month)"
+      },
+      {
+        "native": "",
+        "surface": "hhyeq²¹³",
+        "ipa": "ɦiɪʔ²¹³",
         "label": "文讀"
       }
     ],
@@ -27576,6 +27688,62 @@ const HAN_VARIANTS = {
         "label": "文讀 (food)"
       }
     ],
+    "wuu_sz": [
+      {
+        "native": "",
+        "surface": "zeq²³",
+        "ipa": "zəʔ²³",
+        "label": "白讀 (eat)"
+      },
+      {
+        "native": "",
+        "surface": "seq⁴",
+        "ipa": "səʔ⁴",
+        "label": "文讀 (food)"
+      }
+    ],
+    "wuu_nb": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (eat)"
+      },
+      {
+        "native": "",
+        "surface": "seq⁵⁵",
+        "ipa": "səʔ⁵⁵",
+        "label": "文讀 (food)"
+      }
+    ],
+    "wuu_hz": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (eat)"
+      },
+      {
+        "native": "",
+        "surface": "seq⁵⁵",
+        "ipa": "səʔ⁵⁵",
+        "label": "文讀 (food)"
+      }
+    ],
+    "wuu_jx": [
+      {
+        "native": "",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
+        "label": "白讀 (eat)"
+      },
+      {
+        "native": "",
+        "surface": "seq⁵⁵",
+        "ipa": "səʔ⁵⁵",
+        "label": "文讀 (food)"
+      }
+    ],
     "ja": [
       {
         "native": "ショク",
@@ -28099,6 +28267,34 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "phak²",
         "ipa": "pʰak̚˨",
+        "label": "文讀"
+      }
+    ],
+    "hak_hl": [
+      {
+        "native": "",
+        "surface": "pet",
+        "ipa": "pet̚˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "phak",
+        "ipa": "pʰak̚˨",
+        "label": "文讀"
+      }
+    ],
+    "hak_mz": [
+      {
+        "native": "",
+        "surface": "pet",
+        "ipa": "pet̚˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "phak",
+        "ipa": "pʰak̚˩",
         "label": "文讀"
       }
     ],
