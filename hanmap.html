@@ -6054,6 +6054,20 @@
                         const shortLab = v.label_short || hanmapShortLabel(v.label);
                         rows.push({ native: n, romanized: s, ipa: vi, label: shortLab });
                     }
+                    // When every variant ends up with the same surface/IPA/
+                    // native text (e.g. 漢音=呉音 collapsing on chars whose
+                    // Middle-Chinese reflex converged in Japanese — 三/水/天
+                    // etc.), the per-variant labels (Kan-on / Go-on / 文讀 /
+                    // 白讀) are just noise on the map. Collapse to one row
+                    // with no label so the user sees the reading once.
+                    if (rows.length > 1) {
+                        const first = rows[0];
+                        const allEqual = rows.every(r =>
+                            r.native === first.native
+                            && r.romanized === first.romanized
+                            && r.ipa === first.ipa);
+                        if (allEqual) rows = [{ ...first, label: '' }];
+                    }
                 } else {
                     const full = hanmapNormalizeFull(code, word, ipa, currentWord);
                     rows.push({ native: full[0], romanized: full[1], ipa: full[2], label: '' });
