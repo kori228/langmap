@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=50"></script>
+    <script src="hanmap_data.js?v=51"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -7699,7 +7699,12 @@
                     html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
                     if (ri === 0) {
                         const sel = isCur ? ';color:#c0392b;font-weight:600' : '';
-                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(ch)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${escapeHtml(ch)}</td>`;
+                        const cellChar = displayCharOf(ch);
+                        const cellSense = senseBadgeOf(ch);
+                        const cellInner = escapeHtml(cellChar) +
+                            (cellSense ? '<sup style="font-size:0.5em;font-weight:600;color:#c0392b;margin-left:1px">' + escapeHtml(cellSense) + '</sup>' : '');
+                        const cellTitle = senseLabelOf(ch, uiLang) || ch;
+                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(cellTitle)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${cellInner}</td>`;
                     }
                     if (hasNative) html += `<td class="hanmap-script-cell" style="padding:4px 6px 4px 0;color:#222;vertical-align:middle">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
