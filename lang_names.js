@@ -2690,4 +2690,33 @@ const LANG_NAMES = {
             }
         }
     }
+
+    // Pass 109: 3 new Japanese-dialect Sino-Xenic reading layers for Hanmap
+    // (ja_okn = Okinawan Sino-Japanese reading layer; ja_kgs = Kagoshima /
+    // Satsugū Sino-Japanese; ja_thk = Tōhoku zūzū-ben Sino-Japanese).
+    // These are the kanji-reading layers, NOT the dialects themselves.
+    const ADDED109 = {
+        ja_okn: { en: 'Okinawan Sino-Japanese', ja: '沖縄漢字音', ko: '오키나와 한자음', zh: '沖繩漢字音', yue: '沖繩漢字音',
+                  vi: 'Hán-Nhật Okinawa', th: 'จีน-ญี่ปุ่นโอกินาวะ', id: 'Sino-Jepang Okinawa', hi: 'सिनो-जापानी (ओकिनावा)',
+                  de: 'Sino-Japanisch (Okinawa)', fr: 'Sino-japonais d\'Okinawa', it: 'Sino-giapponese di Okinawa',
+                  es_eu: 'Sino-japonés de Okinawa', es_mx: 'Sino-japonés de Okinawa', pt_eu: 'Sino-japonês de Okinawa', pt_br: 'Sino-japonês de Okinawa',
+                  ru: 'Японо-китайское чтение (Окинава)', uk: 'Японо-китайське читання (Окінава)', ar: 'الصينية اليابانية (أوكيناوا)', he: 'סינו-יפנית (אוקינאווה)', sw: 'Sino-Kijapani cha Okinawa' },
+        ja_kgs: { en: 'Kagoshima Sino-Japanese', ja: '鹿児島漢字音', ko: '가고시마 한자음', zh: '鹿兒島漢字音', yue: '鹿兒島漢字音',
+                  vi: 'Hán-Nhật Kagoshima', th: 'จีน-ญี่ปุ่นคาโงชิมะ', id: 'Sino-Jepang Kagoshima', hi: 'सिनो-जापानी (कागोशिमा)',
+                  de: 'Sino-Japanisch (Kagoshima)', fr: 'Sino-japonais de Kagoshima', it: 'Sino-giapponese di Kagoshima',
+                  es_eu: 'Sino-japonés de Kagoshima', es_mx: 'Sino-japonés de Kagoshima', pt_eu: 'Sino-japonês de Kagoshima', pt_br: 'Sino-japonês de Kagoshima',
+                  ru: 'Японо-китайское чтение (Кагосима)', uk: 'Японо-китайське читання (Каґосіма)', ar: 'الصينية اليابانية (كاغوشيما)', he: 'סינו-יפנית (קאגושימה)', sw: 'Sino-Kijapani cha Kagoshima' },
+        ja_thk: { en: 'Tōhoku Sino-Japanese', ja: '東北漢字音', ko: '도호쿠 한자음', zh: '東北漢字音', yue: '東北漢字音',
+                  vi: 'Hán-Nhật Tōhoku', th: 'จีน-ญี่ปุ่นโทโฮกุ', id: 'Sino-Jepang Tōhoku', hi: 'सिनो-जापानी (तोहोकु)',
+                  de: 'Sino-Japanisch (Tōhoku)', fr: 'Sino-japonais du Tōhoku', it: 'Sino-giapponese del Tōhoku',
+                  es_eu: 'Sino-japonés de Tōhoku', es_mx: 'Sino-japonés de Tōhoku', pt_eu: 'Sino-japonês de Tōhoku', pt_br: 'Sino-japonês de Tōhoku',
+                  ru: 'Японо-китайское чтение (Тохоку)', uk: 'Японо-китайське читання (Тохоку)', ar: 'الصينية اليابانية (توهوكو)', he: 'סינו-יפנית (טוהוקו)', sw: 'Sino-Kijapani cha Tōhoku' },
+    };
+    for (const code of Object.keys(ADDED109)) {
+        for (const ui of Object.keys(ADDED109[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED109[code][ui];
+            }
+        }
+    }
 })();

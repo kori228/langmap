@@ -22767,9 +22767,9 @@ const HAN_VARIANTS = {
         "label": "漢音 / Kan-on"
       },
       {
-        "native": "ギョ",
-        "surface": "gyo",
-        "ipa": "gjo",
+        "native": "ゴ",
+        "surface": "go",
+        "ipa": "ɡo",
         "label": "呉音 / Go-on"
       }
     ],
@@ -27094,9 +27094,9 @@ const HAN_VARIANTS = {
         "label": "漢音 / Kan-on"
       },
       {
-        "native": "ソウ",
-        "surface": "sō",
-        "ipa": "soː",
+        "native": "ス",
+        "surface": "su",
+        "ipa": "sɯ",
         "label": "呉音 / Go-on"
       }
     ],
@@ -27686,9 +27686,9 @@ const HAN_VARIANTS = {
         "label": "漢音 / Kan-on"
       },
       {
-        "native": "コ",
-        "surface": "ko",
-        "ipa": "ko",
+        "native": "ク",
+        "surface": "ku",
+        "ipa": "kɯ",
         "label": "呉音 / Go-on"
       }
     ]
