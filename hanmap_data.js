@@ -9086,7 +9086,6 @@ const HAN_DATA = {
       "juc": "—",
       "zkt": "—",
       "sjo": "goibumbi",
-      "bo_sino": "krung",
       "pko": "*kawɨn",
       "pja": "*naka",
       "ptung": "*dulin",
@@ -9180,7 +9179,6 @@ const HAN_DATA = {
       "juc": "—",
       "zkt": "—",
       "sjo": "goibumbi",
-      "bo_sino": "krung",
       "pko": "*kawɨn",
       "pja": "*naka",
       "ptung": "*dulin",
@@ -9213,7 +9211,6 @@ const HAN_DATA = {
       "zkt": "—",
       "txg": "—",
       "sjo": "—",
-      "bo_sino": "ཀྲུང་",
     }
   },
   "央": {

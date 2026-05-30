@@ -259,26 +259,31 @@
             border: 1px solid #d0d0d0;
             border-left: none;
             border-radius: 0 8px 8px 0;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(6px);
+            background: #eaeaea;
             font-family: 'Noto Serif JP', 'Noto Serif SC', 'Noto Serif TC', 'Noto Serif KR', serif;
             font-size: 12px;
             font-weight: 700;
-            color: #888;
+            color: #777;
             cursor: pointer;
             padding: 0 7px;
             line-height: 1;
-            box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
+            box-shadow: inset 2px 0 4px rgba(0,0,0,0.10), 1px 1px 4px rgba(0,0,0,0.10);
             transition: background 0.12s, color 0.12s;
         }
         .sense-tab.active {
-            background: #c0392b;
-            color: #fff;
-            border-color: #c0392b;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(6px);
+            color: #1a1a2e;
+            border-color: #d0d0d0;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
+            /* Selected tab is seamless with the char button — overlap by
+               1px to the left so the dividing border disappears. */
+            margin-left: -1px;
+            padding-left: 8px;
         }
         .sense-tab:not(.active):hover {
-            background: #fff;
-            color: #c0392b;
+            background: #f5f5f5;
+            color: #1a1a2e;
         }
         #sense-tabs.visible { display: flex !important; }
         #char-random-btn:hover { background: #fff !important; }
@@ -2555,7 +2560,7 @@
              keeps the hidden select's value synced with currentChar. -->
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
             <!-- Char button + dice on the right, vertically centered together. -->
-            <div style="display:flex;flex-direction:row;gap:8px;align-items:center">
+            <div style="display:flex;flex-direction:row;gap:36px;align-items:center">
                 <div id="char-current-wrap" style="position:relative;display:inline-block">
                 <button id="char-current-btn" type="button"
                         aria-haspopup="dialog" aria-controls="char-modal"
@@ -3023,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=57"></script>
+    <script src="hanmap_data.js?v=58"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -4836,9 +4841,10 @@
                 }
                 currentWord = ch;
                 {
-                    const {char: cChar, senseIdx: cSense} = senseSplitId(ch);
-                    btn.innerHTML = escapeHtml(cChar) +
-                        (cSense ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(cSense) + '</sup>' : '');
+                    // Tabs on the right edge carry the sense disambiguation;
+                    // the in-frame superscript is dropped (user feedback).
+                    const {char: cChar} = senseSplitId(ch);
+                    btn.innerHTML = escapeHtml(cChar);
                     btn.title = senseLabelOf(ch, uiLang) || ch;
                 }
                 if (select.value !== ch) select.value = ch;
@@ -5067,9 +5073,8 @@
 
             // Sync the giant character button on first paint.
             {
-                const {char: cChar, senseIdx: cSense} = senseSplitId(currentWord);
-                btn.innerHTML = escapeHtml(cChar) +
-                    (cSense ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(cSense) + '</sup>' : '');
+                const {char: cChar} = senseSplitId(currentWord);
+                btn.innerHTML = escapeHtml(cChar);
                 btn.title = senseLabelOf(currentWord, uiLang) || currentWord;
             }
             // Expose for hash loader.
@@ -7792,6 +7797,15 @@
                 }
                 if (rows.length) charBlocks.push({ ch, rows });
             }
+            // 2026-05-31: tally which base chars have multiple senses
+            // visible in this table. Only show the sense badge when 2+
+            // siblings of the same base char are present; otherwise the
+            // disambiguation is redundant — show plain 行 / 中.
+            const _baseInTable = new Map();
+            for (const b of charBlocks) {
+                const dc = displayCharOf(b.ch);
+                _baseInTable.set(dc, (_baseInTable.get(dc) || 0) + 1);
+            }
             const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
 
             html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
@@ -7813,8 +7827,12 @@
                         const sel = isCur ? ';color:#c0392b;font-weight:600' : '';
                         const cellChar = displayCharOf(ch);
                         const cellSense = senseBadgeOf(ch);
+                        // Hide badge when this base char appears only once
+                        // in the current table — the disambiguation is
+                        // useless without a sibling row to contrast.
+                        const showBadge = cellSense && (_baseInTable.get(cellChar) || 0) > 1;
                         const cellInner = escapeHtml(cellChar) +
-                            (cellSense ? '<sup style="font-size:0.5em;font-weight:600;color:#c0392b;margin-left:1px">' + escapeHtml(cellSense) + '</sup>' : '');
+                            (showBadge ? '<sup style="font-size:0.5em;font-weight:600;color:#c0392b;margin-left:1px">' + escapeHtml(cellSense) + '</sup>' : '');
                         const cellTitle = senseLabelOf(ch, uiLang) || ch;
                         html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(cellTitle)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${cellInner}</td>`;
                     }
