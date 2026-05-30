@@ -9244,7 +9244,7 @@ const HAN_DATA = {
       "mnc": "dele",
       "txg": "'jy1",
       "za": "ciengx",
-      "zh_kanbun": "jō / shō",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "shō",
@@ -9364,7 +9364,7 @@ const HAN_DATA = {
       "mnc": "dələ",
       "txg": "ʔjɨ¹",
       "za": "tsʰeŋ˧˩",
-      "zh_kanbun": "d͡ʑoː / ɕoː",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "ɕoː",
@@ -9473,7 +9473,7 @@ const HAN_DATA = {
       "mnc": "fejile",
       "txg": "'jy2",
       "za": "hax",
-      "zh_kanbun": "ka / ge",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "ka",
@@ -9592,7 +9592,7 @@ const HAN_DATA = {
       "mnc": "fəd͡ʒilə",
       "txg": "ʔjɨ²",
       "za": "haː˧˩",
-      "zh_kanbun": "ka / ɡe",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "ka",
@@ -10590,7 +10590,7 @@ const HAN_DATA = {
       "mnc": "ici",
       "txg": "ghjar1",
       "za": "yoix",
-      "zh_kanbun": "yū / u",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "yū",
@@ -10710,7 +10710,7 @@ const HAN_DATA = {
       "mnc": "it͡ʃi",
       "txg": "ɣjar¹",
       "za": "joi˧˩",
-      "zh_kanbun": "jɯː / ɯ",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "jɯː",
@@ -11042,7 +11042,7 @@ const HAN_DATA = {
       "mnc": "wargi",
       "txg": "njy2",
       "za": "sih",
-      "zh_kanbun": "sei / sai",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "sei",
@@ -11161,7 +11161,7 @@ const HAN_DATA = {
       "mnc": "warɡi",
       "txg": "njɨ²",
       "za": "ɬi˨˦",
-      "zh_kanbun": "sei / sai",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "sei",
@@ -11713,9 +11713,9 @@ const HAN_DATA = {
       "hak_cn": "hang",
       "hak_tw": "hang2",
       "hak_hl": "hang",
-      "zh_han": "*Cə-[g]ˤraŋ / *[g]ˤraŋ-s",
-      "zh_tang": "hæng¹²³ / hang⁵¹",
-      "zh_song": "ɣæŋ¹³ / ɣaŋ⁵¹",
+      "zh_han": null,
+      "zh_tang": null,
+      "zh_song": null,
       "ko": "haeng",
       "vi": "Hành",
       "vi_c": "Hành",
@@ -11725,7 +11725,7 @@ const HAN_DATA = {
       "mnc": "yabumbi",
       "txg": "gjy2",
       "za": "hengz",
-      "zh_kanbun": "kō / gyō",
+      "zh_kanbun": null,
       "zkt": "—",
       "ja": "kō",
       "zh_sc": "xin²¹",
@@ -12862,7 +12862,7 @@ const HAN_DATA = {
       "mnc": "donjimbi",
       "txg": "njy1",
       "za": "vwnz",
-      "zh_kanbun": "bun / mon",
+      "zh_kanbun": null,
       "zkt": "—",
       "ja": "bun",
       "zh_sc": "wen²¹",
@@ -12981,7 +12981,7 @@ const HAN_DATA = {
       "mnc": "dond͡ʒimbi",
       "txg": "njɨ¹",
       "za": "wɯn˨˩˧",
-      "zh_kanbun": "bɯɴ / moɴ",
+      "zh_kanbun": null,
       "zkt": "—",
       "ja": "bɯɴ",
       "zh_yuan": "vən˧˥",
@@ -13088,7 +13088,7 @@ const HAN_DATA = {
       "mnc": "jembi",
       "txg": "shjew2",
       "za": "gwn",
-      "zh_kanbun": "shoku / jiki",
+      "zh_kanbun": null,
       "zkt": "—",
       "ja": "shoku",
       "zh_sc": "si²¹",
@@ -13212,7 +13212,7 @@ const HAN_DATA = {
       "mnc": "d͡ʒəmbi",
       "txg": "ɕjew²",
       "za": "kwən˧˧",
-      "zh_kanbun": "ɕokɯ / d͡ʑiki",
+      "zh_kanbun": null,
       "zkt": "—",
       "ja": "ɕokɯ",
       "zh_yuan": "ʂʅ˧˥",
@@ -14013,7 +14013,7 @@ const HAN_DATA = {
       "mnc": "ilimbi",
       "txg": "lhjy2",
       "za": "rip",
-      "zh_kanbun": "ryū / ritsu",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "ritsu",
@@ -14134,7 +14134,7 @@ const HAN_DATA = {
       "mnc": "ilimbi",
       "txg": "lhjɨ²",
       "za": "ɣip̚˧˥",
-      "zh_kanbun": "ɾjɯː / ɾit͡sɯ",
+      "zh_kanbun": null,
       "juc": "—",
       "zkt": "—",
       "ja": "ɾit͡sɯ",
@@ -20590,6 +20590,20 @@ const HAN_VARIANTS = {
         "label": "呉音 / Go-on"
       }
     ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "ritsu",
+        "ipa": "ɾit͡sɯ",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "ryū",
+        "ipa": "ɾjɯː",
+        "label": "呉音"
+      }
+    ],
     "nan_my": [
       {
         "native": "",
@@ -25874,6 +25888,20 @@ const HAN_VARIANTS = {
         "label": "唐音 / Tō-on"
       }
     ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "shō",
+        "ipa": "ɕoː",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "jō",
+        "ipa": "d͡ʑoː",
+        "label": "呉音"
+      }
+    ],
     "nan_my": [
       {
         "native": "",
@@ -26070,6 +26098,20 @@ const HAN_VARIANTS = {
         "surface": "ge",
         "ipa": "ge",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "ka",
+        "ipa": "ka",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "ge",
+        "ipa": "ɡe",
+        "label": "呉音"
       }
     ],
     "nan_my": [
@@ -26315,6 +26357,20 @@ const HAN_VARIANTS = {
         "ipa": "ɯ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "yū",
+        "ipa": "jɯː",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "u",
+        "ipa": "ɯ",
+        "label": "呉音"
+      }
     ]
   },
   "東": {
@@ -26528,6 +26584,20 @@ const HAN_VARIANTS = {
         "surface": "sai",
         "ipa": "sai",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "sei",
+        "ipa": "sei",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai",
+        "label": "呉音"
       }
     ],
     "nan_my": [
@@ -28094,6 +28164,20 @@ const HAN_VARIANTS = {
         "surface": "mon",
         "ipa": "moɴ",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "zh_kanbun": [
+      {
+        "native": "",
+        "surface": "bun",
+        "ipa": "bɯɴ",
+        "label": "漢音"
+      },
+      {
+        "native": "",
+        "surface": "mon",
+        "ipa": "moɴ",
+        "label": "呉音"
       }
     ],
     "nan_my": [
