@@ -2465,7 +2465,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=222"></script>
-    <script src="word_manifest.js?v=14"></script>
+    <script src="word_manifest.js?v=15"></script>
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
         // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
@@ -2739,8 +2739,8 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:   101,
-            data:      221,
+            styles:   104,
+            data:      222,
             metaI18n:  15,
             filter:    32,
             names:   111,
@@ -4170,6 +4170,14 @@
             if (showName) baseLineH += (zoom <= 3 ? 9  : zoom <= 5 ? 10 : 11);
             const labelH = (baseLineH * labelScale) + 4;
             const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
+            // See hanmap.html for the rationale: MAX_PUSH below is
+            // computed from the FULL-toggle box height so the cap
+            // doesn't shrink when the user turns rows off, which
+            // would otherwise make fewer-row layouts hide MORE labels
+            // than richer layouts (counter-intuitive bug).
+            const _fullH_z = (zoom <= 3 ? 32 : zoom <= 5 ? 36 : 40);
+            const labelHFull = (_fullH_z * labelScale) + 4;
+            const collisionBudgetH = Math.max(labelHFull, labelW * 0.55);
 
             // When a filter is active, only ACTIVE labels compete for cell
             // slots. Dimmed (filtered-out) labels stay at their natural
@@ -4438,7 +4446,7 @@
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
             // misleading geographic position.
-            const MAX_PUSH = labelH * 1.5;
+            const MAX_PUSH = collisionBudgetH * 1.5;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {

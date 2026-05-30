@@ -715,7 +715,7 @@ WORDS.hello = {
     ban: ["om swastiastu", "om swastiastu"],
     ace: ["assalamualaikum", "assalamualaikum"],
     gay: ["salam", "salam"],
-    bug: ["—", "—"],
+    bug: ["tabe'", "tabeʔ"],
     mdr: ["salama' ma'ondong", "salamaʔ maʔondoŋ"],
     war: ["maupay nga aga", "maʔupaj ŋa aɡa"],
     bik: ["maugmang aga", "maʔuɡmaŋ aɡa"],
