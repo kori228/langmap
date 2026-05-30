@@ -2664,4 +2664,30 @@ const LANG_NAMES = {
             }
         }
     }
+
+    // Pass 108: 3 new Sinitic dialect codes for Hanmap (zh_jiao, hak_mz, zh_gl).
+    const ADDED108 = {
+        zh_jiao: { en: 'Jiao-Liao Mandarin', ja: '膠遼官話 (青島音)', ko: '자오랴오 관화 (칭다오 음)', zh: '胶辽官话（青岛音）', yue: '膠遼官話（青島音）',
+                   vi: 'Quan thoại Giao-Liêu (Thanh Đảo)', th: 'ภาษาแมนดารินเจียวเหลียว (ชิงเต่า)', id: 'Mandarin Jiao-Liao (Qingdao)', hi: 'जिआओ-लियाओ मंदारिन (छिंगदाओ)',
+                   de: 'Jiao-Liao-Mandarin (Qingdao)', fr: 'Mandarin Jiao-Liao (Qingdao)', it: 'Mandarino Jiao-Liao (Qingdao)',
+                   es_eu: 'Mandarín Jiao-Liao (Qingdao)', es_mx: 'Mandarín Jiao-Liao (Qingdao)', pt_eu: 'Mandarim Jiao-Liao (Qingdao)', pt_br: 'Mandarim Jiao-Liao (Qingdao)',
+                   ru: 'Цзяо-ляоский мандарин (Циндао)', uk: 'Цзяо-ляоський мандарин (Циндао)', ar: 'ماندرين جياو-لياو (تشينغداو)', he: 'מנדרינית ג׳יאו-ליאו (צ׳ינגדאו)', sw: 'Mandarin ya Jiao-Liao (Qingdao)' },
+        hak_mz: { en: 'Meixian Hakka', ja: '梅縣客家語', ko: '메이셴 객가어', zh: '梅县客家话', yue: '梅縣客家話',
+                  vi: 'Tiếng Khách Gia Mai Huyện', th: 'ภาษาแคะเหมยเซี่ยน', id: 'Hakka Meixian', hi: 'मेइसिएन हक्का',
+                  de: 'Meixian-Hakka', fr: 'Hakka de Meixian', it: 'Hakka di Meixian',
+                  es_eu: 'Hakka de Meixian', es_mx: 'Hakka de Meixian', pt_eu: 'Hakka de Meixian', pt_br: 'Hakka de Meixian',
+                  ru: 'Мэйсяньский хакка', uk: 'Мейсяньський хакка', ar: 'هكّا ميشيان', he: 'האקה מייסיאן', sw: 'Hakka ya Meixian' },
+        zh_gl: { en: 'Gui-Liu Mandarin', ja: '桂柳官話 (柳州音)', ko: '구이류 관화 (류저우 음)', zh: '桂柳官话（柳州音）', yue: '桂柳官話（柳州音）',
+                 vi: 'Quan thoại Quế-Liễu (Liễu Châu)', th: 'ภาษาแมนดารินกุ้ย-หลิว (หลิ่วโจว)', id: 'Mandarin Gui-Liu (Liuzhou)', hi: 'गुई-लियू मंदारिन (लिउझोऊ)',
+                 de: 'Gui-Liu-Mandarin (Liuzhou)', fr: 'Mandarin Gui-Liu (Liuzhou)', it: 'Mandarino Gui-Liu (Liuzhou)',
+                 es_eu: 'Mandarín Gui-Liu (Liuzhou)', es_mx: 'Mandarín Gui-Liu (Liuzhou)', pt_eu: 'Mandarim Gui-Liu (Liuzhou)', pt_br: 'Mandarim Gui-Liu (Liuzhou)',
+                 ru: 'Гуй-лючжоуский мандарин (Лючжоу)', uk: 'Гуй-лючжоуський мандарин (Лючжоу)', ar: 'ماندرين غوي-ليو (ليوتشو)', he: 'מנדרינית גוּי-ליוּ (ליוּג׳וֹאוּ)', sw: 'Mandarin ya Gui-Liu (Liuzhou)' },
+    };
+    for (const code of Object.keys(ADDED108)) {
+        for (const ui of Object.keys(ADDED108[code])) {
+            if (LANG_NAMES[ui] && LANG_NAMES[ui][code] === undefined) {
+                LANG_NAMES[ui][code] = ADDED108[code][ui];
+            }
+        }
+    }
 })();
