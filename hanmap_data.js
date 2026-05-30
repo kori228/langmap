@@ -6638,7 +6638,7 @@ const HAN_DATA = {
       "ja_kgs": "ヨウ",
       "ja_okn": "ユウ",
       "ja_thk": "ヨウ",
-      "vi_nom": "羊"
+      "vi_nom": "裘"
     }
   },
   "貓": {
