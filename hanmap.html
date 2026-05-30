@@ -1072,6 +1072,15 @@
         /* Cluster background cells — assigned inline via style="background:#..."
            in renderCompare. Keep border/text legible against pastel. */
         .compare-table td.cmp-cluster { transition: background-color 120ms ease; }
+        /* Approx-match cells share the cluster hue but get a faint diagonal
+           hatch on top so they read as "similar, not identical". */
+        .compare-table td.cmp-cluster-approx {
+            background-image: repeating-linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.55) 0 4px,
+                transparent 4px 8px
+            );
+        }
         @media (max-width: 600px) {
             .compare-simcolor-toggle { font-size: 10px; }
         }
@@ -2980,7 +2989,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=33"></script>
+    <script src="hanmap_data.js?v=39"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -8539,6 +8548,16 @@
             return prev[n];
         }
 
+        // Exact match: tier 1 (raw equal) or tier 2 (skeleton equal).
+        // Used to differentiate full-color cells from striped-overlay cells
+        // within the same cluster.
+        function _hmCellsExact(a, b) {
+            if (!a || !b) return false;
+            if (a.rawLow && a.rawLow === b.rawLow) return true;
+            if (a.skel && b.skel && a.skel === b.skel) return true;
+            return false;
+        }
+
         function _hmCellsSimilar(a, b) {
             if (!a || !b) return false;
             if (a.rawLow && a.rawLow === b.rawLow) return true;
@@ -8609,11 +8628,26 @@
                     slot++;
                 }
             }
+            // Within each colored cluster, mark cells as "exact" if they
+            // share at least one tier-1/2 (raw or skeleton equal) partner.
+            // Cells that joined the cluster ONLY via tier-3/4 (substring or
+            // Lev distance) are flagged "approx" — same hue, striped overlay.
+            const exactCells = new Set();
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                const ri = find(i);
+                if (!rootColor[ri]) continue;
+                for (let j = 0; j < n; j++) {
+                    if (j === i || !entries[j]) continue;
+                    if (find(j) !== ri) continue;
+                    if (_hmCellsExact(entries[i], entries[j])) { exactCells.add(i); break; }
+                }
+            }
             const out = new Array(n).fill(null);
             for (let i = 0; i < n; i++) {
                 if (!entries[i]) continue;
                 const r = find(i);
-                if (rootColor[r]) out[i] = rootColor[r];
+                if (rootColor[r]) out[i] = { color: rootColor[r], exact: exactCells.has(i) };
             }
             return out;
         }
@@ -8787,8 +8821,11 @@
                     if (cellRows.length === 0) {
                         html += '<td class="unattested">—</td>';
                     } else {
-                        const styleAttr = bg ? ' style="background:' + bg + '"' : '';
-                        const classAttr = bg ? ' class="cmp-cluster"' : '';
+                        // bg is { color, exact } | null. Use background-color
+                        // longhand so the approx class can layer a striped
+                        // background-image on top without being clobbered.
+                        const styleAttr = bg ? ' style="background-color:' + bg.color + '"' : '';
+                        const classAttr = bg ? ' class="cmp-cluster' + (bg.exact ? '' : ' cmp-cluster-approx') + '"' : '';
                         html += '<td' + classAttr + styleAttr + '>';
                         for (const r of cellRows) {
                             html += '<div class="cmp-reading">';
