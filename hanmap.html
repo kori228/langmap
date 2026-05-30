@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=52"></script>
+    <script src="hanmap_data.js?v=53"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -4889,19 +4889,50 @@
                 const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
                 for (const ch of cells) {
                     const c = document.createElement('div');
-                    c.textContent = ch;
+                    // 2026-05-30: cells showed raw "行:1" during the spin.
+                    // Render with displayCharOf + sup badge to match the
+                    // settled char button.
+                    const dc = displayCharOf(ch);
+                    const sb = senseBadgeOf(ch);
+                    c.innerHTML = escapeHtml(dc) +
+                        (sb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(sb) + '</sup>' : '');
                     c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
                     reel.appendChild(c);
                 }
                 cbtn.appendChild(reel);
 
+                // 2026-05-30: while the slot reel ticks, jiggle the 🎲 die
+                // so the user gets a paired animation — the button "rolls"
+                // alongside the slot machine.
+                const _diceBtn = randomBtn;
+                if (_diceBtn) {
+                    _diceBtn.style.transition = 'transform 80ms ease-in-out';
+                    let _diceAngle = 0, _diceTimer = null;
+                    _diceTimer = setInterval(() => {
+                        _diceAngle += 90 + Math.floor(Math.random() * 30);
+                        _diceBtn.style.transform = 'rotate(' + _diceAngle + 'deg)';
+                    }, 80);
+                    _diceBtn.dataset.spinTimer = String(_diceTimer);
+                }
+
                 const finish = () => {
                     while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
                     cbtn.style.overflow = prevOverflow || '';
                     cbtn.style.position = prevPos || '';
-                    cbtn.textContent = finalCh;
+                    // Final char render uses sense badge too.
+                    const fdc = displayCharOf(finalCh);
+                    const fsb = senseBadgeOf(finalCh);
+                    cbtn.innerHTML = escapeHtml(fdc) +
+                        (fsb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(fsb) + '</sup>' : '');
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
+                    // Stop dice jiggle.
+                    if (randomBtn && randomBtn.dataset.spinTimer) {
+                        try { clearInterval(parseInt(randomBtn.dataset.spinTimer, 10)); } catch (_) {}
+                        delete randomBtn.dataset.spinTimer;
+                        randomBtn.style.transition = 'transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        randomBtn.style.transform = 'rotate(0deg)';
+                    }
                     setChar(finalCh);
                 };
 
