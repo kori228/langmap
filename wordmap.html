@@ -4061,9 +4061,16 @@
         }
 
         // Build the per-(word,zoom,codes) cache key.
-        function _wmOffsetCacheKey(word, zoom, codes) {
+        function _wmOffsetCacheKey(word, zoom, codes, labelW, labelH) {
             // codes is small (<200) and sorted strings; join is cheap.
-            return word + '|' + zoom + '|' + codes.join(',');
+            // labelW/labelH are part of the key because cached offsets
+            // are sized to the label box; reusing them after a toggle
+            // shrinks the box leaves the post-SA MAX_PUSH*2.2 hide
+            // threshold tripping on offsets that were fine for the
+            // larger box (see hanmap fix on develop, same root cause).
+            return word + '|' + zoom + '|'
+                + Math.round(labelW) + 'x' + Math.round(labelH) + '|'
+                + codes.join(',');
         }
 
         // Run SA to refine offsets[]. Inputs:
@@ -4076,7 +4083,7 @@
         function _wmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
             if (codes.length < 2) return 0;
             const sortedCodes = codes.slice().sort();
-            const cacheKey = _wmOffsetCacheKey(word, zoom, sortedCodes);
+            const cacheKey = _wmOffsetCacheKey(word, zoom, sortedCodes, labelW, labelH);
             const cached = _wmLabelOffsetCache.get(cacheKey);
             if (cached) {
                 // LRU bump: re-insert so it's most-recently-used.

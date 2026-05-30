@@ -329,7 +329,7 @@
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
             #char-current-btn { font-size: 60px !important; padding: 0 !important; width: 88px !important; height: 88px !important; min-width: 88px !important; }
-            #char-random-btn { font-size: 20px !important; padding: 0 !important; width: 36px !important; height: 36px !important; }
+            #char-random-btn { font-size: 18px !important; padding: 0 !important; width: 32px !important; height: 32px !important; bottom: -8px !important; right: -8px !important; }
         }
         body.is-3d #char-current-btn { color: #1a1a2e; }
 
@@ -2556,19 +2556,19 @@
              internals that read select.value continue to work; updateCharSelection()
              keeps the hidden select's value synced with currentChar. -->
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-            <!-- Char button + dice on the right, vertically centered together. -->
-            <div style="display:flex;flex-direction:row;gap:36px;align-items:center">
+            <!-- Char button with dice tucked into its bottom-right corner. -->
+            <div style="display:flex;flex-direction:row;align-items:center">
                 <div id="char-current-wrap" style="position:relative;display:inline-block">
                 <button id="char-current-btn" type="button"
                         aria-haspopup="dialog" aria-controls="char-modal"
                         title="Select character"
                         style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
                 <div id="sense-tabs" style="position:absolute;top:14px;left:100%;display:none;flex-direction:column;gap:4px;z-index:5"></div>
-                </div>
                 <button id="char-random-btn" type="button"
                         title="Random character"
                         aria-label="Random character"
-                        style="font-size:24px;padding:0;width:40px;height:40px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 3px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;line-height:1">🎲</button>
+                        style="position:absolute;bottom:-10px;right:-10px;font-size:22px;padding:0;width:38px;height:38px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 2px 5px rgba(0,0,0,0.12);display:inline-flex;align-items:center;justify-content:center;line-height:1;z-index:4">🎲</button>
+                </div>
             </div>
             <!-- Filter button on its own line below. -->
             <button id="hm-lang-filter-btn" type="button"
@@ -3026,7 +3026,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=66"></script>
+    <script src="hanmap_data.js?v=67"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3041,7 +3041,7 @@
     <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
          TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
          renders these without changes. Must come BEFORE wordmap's IIFE. -->
-    <script src="hanmap_trivia.js?v=5"></script>
+    <script src="hanmap_trivia.js?v=6"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=116"></script>
@@ -6340,9 +6340,17 @@
         }
 
         // Build the per-(word,zoom,codes) cache key.
-        function _hmOffsetCacheKey(word, zoom, codes) {
+        function _hmOffsetCacheKey(word, zoom, codes, labelW, labelH) {
             // codes is small (<200) and sorted strings; join is cheap.
-            return word + '|' + zoom + '|' + codes.join(',');
+            // labelW/labelH are part of the key because the resulting
+            // pixel offsets are sized to the label box — reusing offsets
+            // computed for a bigger box (e.g. when 発音 was on) under a
+            // smaller box (after toggling 発音 off) leaves cached offsets
+            // that overshoot the new MAX_PUSH * 2.2 hide threshold and
+            // hides labels the user expected to still see.
+            return word + '|' + zoom + '|'
+                + Math.round(labelW) + 'x' + Math.round(labelH) + '|'
+                + codes.join(',');
         }
 
         // Run SA to refine offsets[]. Inputs:
@@ -6355,7 +6363,7 @@
         function _hmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
             if (codes.length < 2) return 0;
             const sortedCodes = codes.slice().sort();
-            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes);
+            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes, labelW, labelH);
             const cached = _hmLabelOffsetCache.get(cacheKey);
             if (cached) {
                 // LRU bump: re-insert so it's most-recently-used.
