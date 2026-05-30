@@ -3028,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=61"></script>
+    <script src="hanmap_data.js?v=62"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -6774,23 +6774,22 @@
             }
 
             // SA refinement pass: take the greedy result above as a warm
-            // start and run simulated annealing to mop up residual overlaps
-            // the greedy column-stacking couldn't reach (e.g. labels whose
-            // horizontal extents straddle a cell boundary). Cache key is
-            // (currentWord, zoom) ONLY — _saCodes used to include the
-            // viewport-clipped set, which changed on every pan and
-            // invalidated the cache. Now SA runs on the FULL pre-thinning
-            // visible-langs set so pan doesn't change the input, and the
-            // returned offsets[code] are stable as user pans.
+            // start and run simulated annealing to mop up residual overlaps.
+            // _saCodes must be invariant under pan so the cache key
+            // (word, zoom, sortedCodes) stays stable. Earlier we filtered
+            // by hiddenCodes (greedy's hide decision, which IS viewport-
+            // dependent because cellGroups buckets by floor(px/labelW)).
+            // That made the codes set drift across pans and the cache
+            // missed. Now SA covers EVERY visible+unattested code
+            // regardless of greedy's decision; non-rendered codes get
+            // an offset that's simply unused at render time.
             const _saCodes = [];
             for (const code of visibleLangs) {
-                if (hiddenCodes.has(code)) continue;
                 if (filterActive && !isActive(code)) continue;
                 if (!ppx[code]) continue;
                 _saCodes.push(code);
             }
             for (const code of unattestedLangs) {
-                if (hiddenCodes.has(code)) continue;
                 if (filterActive && !isActive(code)) continue;
                 if (!ppx[code]) continue;
                 _saCodes.push(code);
