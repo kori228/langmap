@@ -4971,13 +4971,13 @@
                 const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
                 for (const ch of cells) {
                     const c = document.createElement('div');
-                    // 2026-05-30: cells showed raw "行:1" during the spin.
-                    // Render with displayCharOf + sup badge to match the
-                    // settled char button.
-                    const dc = displayCharOf(ch);
-                    const sb = senseBadgeOf(ch);
-                    c.innerHTML = escapeHtml(dc) +
-                        (sb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(sb) + '</sup>' : '');
+                    // Cells render the bare display char only — the red
+                    // sense-badge sup that used to ride along here was a
+                    // past-life artifact from when the badge doubled as
+                    // the sense disambiguator. Sense tabs own that job
+                    // now, and the roulette only ever lands on `:1`, so
+                    // the flickering "¹" during the spin was pure noise.
+                    c.innerHTML = escapeHtml(displayCharOf(ch));
                     c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
                     reel.appendChild(c);
                 }
@@ -5001,11 +5001,11 @@
                     while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
                     cbtn.style.overflow = prevOverflow || '';
                     cbtn.style.position = prevPos || '';
-                    // Final char render uses sense badge too.
-                    const fdc = displayCharOf(finalCh);
-                    const fsb = senseBadgeOf(finalCh);
-                    cbtn.innerHTML = escapeHtml(fdc) +
-                        (fsb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(fsb) + '</sup>' : '');
+                    // Final char render: display char only. Sense tabs
+                    // (renderSenseTabs, called via setChar below) carry
+                    // any :1/:2 disambiguation, so the main button stays
+                    // visually quiet.
+                    cbtn.innerHTML = escapeHtml(displayCharOf(finalCh));
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
                     // Stop dice jiggle at the same instant the char snaps.
@@ -7081,9 +7081,8 @@
                 // Hanmap: also sync the giant character button.
                 const _hbtn = document.getElementById('char-current-btn');
                 if (_hbtn) {
-                    const {char: _hc, senseIdx: _hs} = senseSplitId(w);
-                    _hbtn.innerHTML = escapeHtml(_hc) +
-                        (_hs ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(_hs) + '</sup>' : '');
+                    const {char: _hc} = senseSplitId(w);
+                    _hbtn.innerHTML = escapeHtml(_hc);
                     _hbtn.title = senseLabelOf(w, uiLang) || w;
                 }
             }
