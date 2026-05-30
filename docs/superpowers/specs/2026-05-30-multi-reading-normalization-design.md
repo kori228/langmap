@@ -14,7 +14,7 @@ Across `hanmap_data.js` (60 Han characters × ~101 codes = ~6 060 entries), entr
 4. Renderer paths now diverge based on which shape happens to be present, which makes the compare/info/marker UIs subtly inconsistent.
 
 Two distinct phenomena are conflated:
-- **Semantic polyphony** (e.g. 行 = 行進 xíng / 行列 háng) — the two readings track two different morphemes and cross-language comparison only makes sense between the SAME morpheme.
+- **Semantic polyphony** (e.g. 行 = 行為 xíng / 行列 háng) — the two readings track two different morphemes and cross-language comparison only makes sense between the SAME morpheme.
 - **Within-sense polyphony** (e.g. 行 行為 = ja 漢音 kō / 呉音 gyō; 食 nan = 文 si̍p / 白 tsia̍h) — the readings are the SAME morpheme realised through different historical or stylistic layers.
 
 These need orthogonal handling: semantic polyphony lifts to **separate HAN_LIST entries**; within-sense polyphony stays in `HAN_VARIANTS`.
@@ -27,14 +27,14 @@ For each character with documented semantic polyphony across multiple languages,
 
 ```
 HAN_LIST: ... 北, 行:1, 行:2, ... 中:1, 中:2, ...  (was: ... 北, 行, ...中, ...)
-HAN_DATA["行:1"] = { sense: "行進", senseLabel: { ja, en, ko, zh, ... }, surface: {...}, ipa: {...}, native: {...} }
+HAN_DATA["行:1"] = { sense: "行為", senseLabel: { ja, en, ko, zh, ... }, surface: {...}, ipa: {...}, native: {...} }
 HAN_DATA["行:2"] = { sense: "行列", senseLabel: { ja, en, ko, zh, ... }, surface: {...}, ipa: {...}, native: {...} }
 ```
 
 The `:` separator splits "<char>:<sense-index>". Renderer parses the prefix to derive the visual character (`行`) and the suffix as the sense disambiguator (rendered as a superscript badge or in-parens label).
 
 Scope (approved): split only **行** and **中**. Sense definitions:
-- 行:1 = "行進" (movement / behaviour sense)
+- 行:1 = "行為" (movement / behaviour sense)
 - 行:2 = "行列" (column / line sense)
 - 中:1 = "中央" (middle / centre sense)
 - 中:2 = "命中" (hit / strike sense)
@@ -83,10 +83,10 @@ Most HAN_VARIANTS entries after this work will be Japanese 漢音/呉音/唐音 
 Renderer touch points for the compound-ID format:
 
 1. **Char button** (`#char-current-btn`) — show "行 ¹" (character + superscript sense index) when ID contains `:`. The badge tooltip carries the full sense label.
-2. **Char selector modal** — multi-sense chars render as a single tile that expands into 2 sub-tiles labelled with sense (e.g. "行進" / "行列").
+2. **Char selector modal** — multi-sense chars render as a single tile that expands into 2 sub-tiles labelled with sense (e.g. "行為" / "行列").
 3. **Map markers (`buildLabelHtml`, `hanmapShortLabel`)** — strip the `:N` suffix when computing display strings; the char itself (`行`) is what shows on map labels.
 4. **URL hash** — `?w=行:1` instead of `?w=行`. `setChar` validates the full ID; existing `setChar` guard already returns early on unknown IDs.
-5. **Compare table** — each compound ID becomes its own row, label "行 (行進)".
+5. **Compare table** — each compound ID becomes its own row, label "行 (行為)".
 6. **lang_names.js** — no changes; lang-name strings are about codes, not chars.
 
 i18n: each `HAN_DATA[id].senseLabel` is an object `{ ja, en, ko, zh, yue, vi, th, id, hi, de, fr, it, es, pt, ru, uk, ar, he, sw }` so the sense disambiguator can localise.
@@ -193,7 +193,7 @@ for (const id of m.HAN_LIST) {
 ```
 
 Manual eyeball pass:
-- Open hanmap.html in a browser; verify char selector shows "行進" / "行列" as sibling tiles.
+- Open hanmap.html in a browser; verify char selector shows "行為" / "行列" as sibling tiles.
 - Click each; verify map markers use the appropriate reading per code.
 - Open compare modal with 行:1 and 行:2 both selected; verify they render as separate rows.
 
