@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=47"></script>
+    <script src="hanmap_data.js?v=48"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3008,6 +3008,27 @@
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=115"></script>
     <script>
+    // ============================================================
+    //  senseSplit utility — handle compound IDs like "行:1"
+    //  id is the full string in HAN_LIST; the ':<sense>' suffix is
+    //  the disambiguation index. Renderer display strips the suffix.
+    // ============================================================
+    function senseSplitId(id) {
+        if (typeof id !== 'string') return { char: id, senseIdx: null };
+        const i = id.indexOf(':');
+        if (i === -1) return { char: id, senseIdx: null };
+        return { char: id.slice(0, i), senseIdx: id.slice(i + 1) };
+    }
+    function displayCharOf(id) { return senseSplitId(id).char; }
+    function senseBadgeOf(id)  { return senseSplitId(id).senseIdx; }
+    function senseLabelOf(id, uiLang) {
+        if (typeof HAN_SENSE_LABELS === 'undefined') return '';
+        const entry = HAN_SENSE_LABELS[id];
+        if (!entry) return '';
+        const lang = (uiLang || 'en').split('_')[0];
+        return entry[lang] || entry.en || entry.ja || entry.sense || '';
+    }
+
     // ============================================================
     //  HANMAP DATA ADAPTER
     //  Synthesise wordmap's per-language `.words[id] = [surface, ipa]`
@@ -4625,7 +4646,15 @@
                 opt.value = w.id;
                 // w.label is { en, ja, id, ... } — `id` here is Indonesian, not entry id
                 const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
-                opt.textContent = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
+                let txt = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
+                // Compound IDs (e.g. "行:1") — append the sense label so
+                // dropdown options stay disambiguated.
+                const {char: _wCh, senseIdx: _wSn} = senseSplitId(w.id);
+                if (_wSn) {
+                    const senseTxt = senseLabelOf(w.id, uiLang) || _wSn;
+                    txt = _wCh + ' (' + senseTxt + ')';
+                }
+                opt.textContent = txt;
                 select.appendChild(opt);
             });
             if (curVal) select.value = curVal;
@@ -4705,7 +4734,8 @@
             for (const ch of HAN_LIST) {
                 const opt = document.createElement('option');
                 opt.value = ch;
-                opt.textContent = ch;
+                const {char: _oCh, senseIdx: _oSn} = senseSplitId(ch);
+                opt.textContent = _oCh + (_oSn ? ' (' + (senseLabelOf(ch, uiLang) || _oSn) + ')' : '');
                 select.appendChild(opt);
             }
             select.value = currentWord;
@@ -4722,7 +4752,12 @@
                     return;
                 }
                 currentWord = ch;
-                btn.textContent = ch;
+                {
+                    const {char: cChar, senseIdx: cSense} = senseSplitId(ch);
+                    btn.innerHTML = escapeHtml(cChar) +
+                        (cSense ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(cSense) + '</sup>' : '');
+                    btn.title = senseLabelOf(ch, uiLang) || ch;
+                }
                 if (select.value !== ch) select.value = ch;
                 updateMarkers(ch);
                 try { updateHash && updateHash(); } catch (_) {}
@@ -4752,8 +4787,15 @@
                         const b = document.createElement('button');
                         b.type = 'button';
                         b.className = 'char-btn' + (ch === currentWord ? ' active' : '');
-                        b.textContent = ch;
+                        const {char: chDisp, senseIdx: chSense} = senseSplitId(ch);
+                        const chSenseTxt = senseLabelOf(ch, uiLang);
+                        b.innerHTML = '<span class="char-tile-char">' +
+                            escapeHtml(chDisp) +
+                            (chSense ? '<sup style="font-size:0.45em;color:#c0392b;vertical-align:super">' + escapeHtml(chSense) + '</sup>' : '') +
+                            '</span>' +
+                            (chSenseTxt ? '<span class="char-tile-sense" style="display:block;font-size:10px;color:#666;line-height:1.1;margin-top:2px">' + escapeHtml(chSenseTxt) + '</span>' : '');
                         b.dataset.char = ch;
+                        if (chSenseTxt) b.title = chSenseTxt;
                         b.addEventListener('click', () => {
                             setChar(ch);
                             closeModal();
@@ -4898,7 +4940,12 @@
             window.addEventListener('langmap:uichange', localizeChrome);
 
             // Sync the giant character button on first paint.
-            btn.textContent = currentWord;
+            {
+                const {char: cChar, senseIdx: cSense} = senseSplitId(currentWord);
+                btn.innerHTML = escapeHtml(cChar) +
+                    (cSense ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(cSense) + '</sup>' : '');
+                btn.title = senseLabelOf(currentWord, uiLang) || currentWord;
+            }
             // Expose for hash loader.
             window.__hanmapSetChar = setChar;
         }, 0);
@@ -6618,7 +6665,12 @@
                 currentWord = w;
                 // Hanmap: also sync the giant character button.
                 const _hbtn = document.getElementById('char-current-btn');
-                if (_hbtn) _hbtn.textContent = w;
+                if (_hbtn) {
+                    const {char: _hc, senseIdx: _hs} = senseSplitId(w);
+                    _hbtn.innerHTML = escapeHtml(_hc) +
+                        (_hs ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(_hs) + '</sup>' : '');
+                    _hbtn.title = senseLabelOf(w, uiLang) || w;
+                }
             }
             const z = parseInt(params.get('z'));
             const latStr = params.get('lat'); const lngStr = params.get('lng');
@@ -8879,7 +8931,13 @@
                     rowSummary[ci] = cellRows.length ? { surface: cellRows[0].surface, ipa: cellRows[0].ipa } : null;
                 }
                 const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
-                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                // For compound IDs (e.g. "行:1"), display the bare char + the
+                // sense label so the row reads "行 (行為)".
+                const _rowBaseChar = displayCharOf(conceptLabel);
+                const _rowSenseTxt = senseLabelOf(conceptLabel, uiLang);
+                const _rowLabelHtml = escapeHtml(_rowBaseChar) +
+                    (_rowSenseTxt ? ' <span style="font-size:10px;color:#666">(' + escapeHtml(_rowSenseTxt) + ')</span>' : '');
+                html += '<tr><th scope="row">' + _rowLabelHtml + '</th>';
                 for (let ci = 0; ci < _compareList.length; ci++) {
                     const cellRows = rowCellRows[ci];
                     const bg = rowColors[ci];
