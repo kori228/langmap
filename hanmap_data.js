@@ -25196,6 +25196,12 @@ const HAN_VARIANTS = {
         "surface": "zu",
         "ipa": "d͡zɯ",
         "label": "呉音 / Go-on"
+      },
+      {
+        "native": "ジュウ",
+        "surface": "jū",
+        "ipa": "d͡ʑɯː",
+        "label": "唐音 / Tō-on"
       }
     ],
     "nan_xm": [
@@ -25832,6 +25838,12 @@ const HAN_VARIANTS = {
         "surface": "jō",
         "ipa": "d͡ʑoː",
         "label": "呉音 / Go-on"
+      },
+      {
+        "native": "シャン",
+        "surface": "shan",
+        "ipa": "ɕaɴ",
+        "label": "唐音 / Tō-on"
       }
     ],
     "nan_my": [
@@ -26658,6 +26670,12 @@ const HAN_VARIANTS = {
         "surface": "nan",
         "ipa": "naɴ",
         "label": "呉音 / Go-on"
+      },
+      {
+        "native": "ナ",
+        "surface": "na",
+        "ipa": "na",
+        "label": "唐音 / Tō-on"
       }
     ]
   },
@@ -26702,6 +26720,26 @@ const HAN_VARIANTS = {
         "surface": "gyō",
         "ipa": "gjoː",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "vi": [
+      {
+        "native": "",
+        "surface": "hành",
+        "ipa": "haːɲ˨˩",
+        "label": "đi, làm (walk/act)"
+      },
+      {
+        "native": "",
+        "surface": "hàng",
+        "ipa": "haːŋ˨˩",
+        "label": "hàng ngũ, thương hàng (row/business)"
+      },
+      {
+        "native": "",
+        "surface": "hạnh",
+        "ipa": "haːɲ˨˩ʔ",
+        "label": "đức hạnh (conduct/virtue)"
       }
     ],
     "nan_th": [
@@ -27966,6 +28004,20 @@ const HAN_VARIANTS = {
         "surface": "ataru",
         "ipa": "atarɯ",
         "label": "訓読み / Kun-yomi (中る)"
+      }
+    ],
+    "vi": [
+      {
+        "native": "",
+        "surface": "trung",
+        "ipa": "ʈʂuŋ˧",
+        "label": "trung tâm (center/middle)"
+      },
+      {
+        "native": "",
+        "surface": "trúng",
+        "ipa": "ʈʂuŋ˧˥",
+        "label": "trúng đích (to hit/strike)"
       }
     ]
   },
