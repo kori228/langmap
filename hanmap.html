@@ -2991,8 +2991,11 @@
         // so existing iteration code is a no-op.
         var WORDS = window.WORDS = window.WORDS || {};
         var WORD_ORDER = window.WORD_ORDER = window.WORD_ORDER || [];
-        window.TRIVIA_ARTICLES = window.TRIVIA_ARTICLES || [];
     </script>
+    <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
+         TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
+         renders these without changes. Must come BEFORE wordmap's IIFE. -->
+    <script src="hanmap_trivia.js?v=1"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=115"></script>
@@ -9844,6 +9847,18 @@
                 }
                 select.value = w;
                 select.dispatchEvent(new Event('change'));
+                if (btn.dataset.code) {
+                    setTimeout(() => triviaBlinkMarker(btn.dataset.code), 50);
+                }
+            } else if (action === 'setchar') {
+                // Hanmap-specific: change the currently-selected Han
+                // character. Goes through the same setChar pipeline as
+                // the popup-table char cells so the giant char button,
+                // dropdown, hash, and map markers all stay in sync.
+                const ch = btn.dataset.char;
+                if (ch && typeof window.__hanmapSetChar === 'function') {
+                    window.__hanmapSetChar(ch);
+                }
                 if (btn.dataset.code) {
                     setTimeout(() => triviaBlinkMarker(btn.dataset.code), 50);
                 }
