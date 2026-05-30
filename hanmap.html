@@ -2627,7 +2627,7 @@
         <button id="hm-lang-filter-close" type="button" aria-label="Close"
                 style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
         <h2 id="hm-lang-filter-title" style="font-size:18px;margin:0 0 6px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">言語で絞り込み</h2>
-        <div id="hm-lang-filter-sub" style="font-size:12px;color:#777;margin-bottom:10px;line-height:1.5">系統 × 時代でフィルタリング。チップをタップでON/OFF。</div>
+        <div id="hm-lang-filter-sub" style="display:none"></div>
         <div id="hm-lang-filter-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee">
             <button type="button" data-act="all"   class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて選択</button>
             <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
@@ -2664,6 +2664,7 @@
         <div style="height:8px" class="ctrl-spacer"></div>
         <div class="right-secondary-controls" id="right-secondary">
             <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
+            <button class="toggle-btn active" id="toggle-script" aria-pressed="true" aria-label="Toggle native script display"><span class="label">字</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
             <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
@@ -3028,7 +3029,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=63"></script>
+    <script src="hanmap_data.js?v=64"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3181,7 +3182,7 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v6';   // bumped — ko_bus was missing from HAN_GROUPS pre-7b38618; old v5 saves locked it out of the offered set
+        const LS_KEY = 'hm.langFilter.v7';   // bumped — ensure all users get the 古代/訓読 OFF defaults regardless of prior saved state
                                               //   to include mnc/sjo/za/
                                               //   bca/juc/txg/zkt/protos
                                               //   (mutually exclusive
@@ -5082,9 +5083,10 @@
         }, 0);
 
         // --- Toggle buttons ---
-        let showWord = true, showIpa = true, showName = true, showNative = false;
+        let showWord = true, showIpa = true, showName = true, showNative = false, showScript = true;
         let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
+        const btnScript = document.getElementById('toggle-script');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
         const nameNative = document.getElementById('name-native');
@@ -5133,7 +5135,7 @@
         function updateTopLeftVisibility() {
             const filterBtn = document.getElementById('hm-lang-filter-btn');
             const randomBtn = document.getElementById('char-random-btn');
-            const allOff = !showWord && !showIpa && !showName;
+            const allOff = !showWord && !showScript && !showIpa && !showName;
             if (filterBtn) filterBtn.style.display = allOff ? 'none' : '';
             if (randomBtn) randomBtn.style.display = allOff ? 'none' : '';
         }
@@ -5148,6 +5150,7 @@
             });
         }
         setupToggle(btnWord, () => showWord, v => showWord = v);
+        setupToggle(btnScript, () => showScript, v => showScript = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
         updateTopLeftVisibility();
@@ -6082,7 +6085,7 @@
                 if (r.romanized) wordHtml += escapeHtml(r.romanized);
                 if (r.label)     wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
                 if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
-                if (showWord && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
+                if (showScript && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
                 // Suppress the /ipa/ line ONLY when the IPA is a starred
                 // reconstruction (e.g. zh_han Baxter-Sagart "*ʔi[t]") AND
                 // it duplicates the surface — there's no point repeating
