@@ -56,7 +56,7 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=103">
+    <link rel="stylesheet" href="styles.css?v=104">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -249,6 +249,43 @@
         #char-modal-backdrop.visible { display: block !important; }
         #char-current-btn:hover { background: rgba(255,255,255,1) !important; }
         #char-current-btn:active { transform: scale(0.97); }
+        /* Sense tabs — notebook-tab style attached to the right edge of
+           the char button, sticking outward. Visible only when the
+           current base char has 2+ senses (e.g. 行 → 行:1 / 行:2). */
+        .sense-tab {
+            display: block;
+            min-width: 22px;
+            height: 28px;
+            border: 1px solid #d0d0d0;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+            background: #eaeaea;
+            font-family: 'Noto Serif JP', 'Noto Serif SC', 'Noto Serif TC', 'Noto Serif KR', serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #777;
+            cursor: pointer;
+            padding: 0 7px;
+            line-height: 1;
+            box-shadow: inset 2px 0 4px rgba(0,0,0,0.10), 1px 1px 4px rgba(0,0,0,0.10);
+            transition: background 0.12s, color 0.12s;
+        }
+        .sense-tab.active {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(6px);
+            color: #1a1a2e;
+            border-color: #d0d0d0;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
+            /* Selected tab is seamless with the char button — overlap by
+               1px to the left so the dividing border disappears. */
+            margin-left: -1px;
+            padding-left: 8px;
+        }
+        .sense-tab:not(.active):hover {
+            background: #f5f5f5;
+            color: #1a1a2e;
+        }
+        #sense-tabs.visible { display: flex !important; }
         #char-random-btn:hover { background: #fff !important; }
         .char-category { margin-bottom: 14px; }
         .char-category h3 {
@@ -2523,11 +2560,14 @@
              keeps the hidden select's value synced with currentChar. -->
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
             <!-- Char button + dice on the right, vertically centered together. -->
-            <div style="display:flex;flex-direction:row;gap:8px;align-items:center">
+            <div style="display:flex;flex-direction:row;gap:36px;align-items:center">
+                <div id="char-current-wrap" style="position:relative;display:inline-block">
                 <button id="char-current-btn" type="button"
                         aria-haspopup="dialog" aria-controls="char-modal"
                         title="Select character"
                         style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
+                <div id="sense-tabs" style="position:absolute;top:14px;left:100%;display:none;flex-direction:column;gap:4px;z-index:5"></div>
+                </div>
                 <button id="char-random-btn" type="button"
                         title="Random character"
                         aria-label="Random character"
@@ -2988,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=47"></script>
+    <script src="hanmap_data.js?v=63"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3006,8 +3046,29 @@
     <script src="hanmap_trivia.js?v=5"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang_names.js?v=115"></script>
+    <script src="lang_names.js?v=116"></script>
     <script>
+    // ============================================================
+    //  senseSplit utility — handle compound IDs like "行:1"
+    //  id is the full string in HAN_LIST; the ':<sense>' suffix is
+    //  the disambiguation index. Renderer display strips the suffix.
+    // ============================================================
+    function senseSplitId(id) {
+        if (typeof id !== 'string') return { char: id, senseIdx: null };
+        const i = id.indexOf(':');
+        if (i === -1) return { char: id, senseIdx: null };
+        return { char: id.slice(0, i), senseIdx: id.slice(i + 1) };
+    }
+    function displayCharOf(id) { return senseSplitId(id).char; }
+    function senseBadgeOf(id)  { return senseSplitId(id).senseIdx; }
+    function senseLabelOf(id, uiLang) {
+        if (typeof HAN_SENSE_LABELS === 'undefined') return '';
+        const entry = HAN_SENSE_LABELS[id];
+        if (!entry) return '';
+        const lang = (uiLang || 'en').split('_')[0];
+        return entry[lang] || entry.en || entry.ja || entry.sense || '';
+    }
+
     // ============================================================
     //  HANMAP DATA ADAPTER
     //  Synthesise wordmap's per-language `.words[id] = [surface, ipa]`
@@ -3029,6 +3090,15 @@
         // chars). Without this filter the language renders as an empty
         // marker on the map.
         const HAN_EMPTY = (v) => !v || v === '—' || v === '-';
+        // 2026-05-30: when primary surface/ipa are nulled for a (ch, code)
+        // because HAN_VARIANTS owns the readings (per spec invariant 1),
+        // we still need a representative reading in LANG_DATA so the marker
+        // is visible. Fall back to the first variant's surface/ipa.
+        function _hanFallbackFromVariants(ch, code) {
+            const vs = (typeof HAN_VARIANTS !== 'undefined' && HAN_VARIANTS[ch] && HAN_VARIANTS[ch][code]) || null;
+            if (!vs || !vs.length) return ['', ''];
+            return [vs[0].surface || '', vs[0].ipa || ''];
+        }
         for (const code of HAN_LANGS) {
             if (!LANG_DATA[code]) continue;
             LANG_DATA[code].words = LANG_DATA[code].words || {};
@@ -3039,6 +3109,10 @@
                 let ipa  = (cd.ipa     && cd.ipa[code])     || '';
                 if (HAN_EMPTY(surf)) surf = '';
                 if (HAN_EMPTY(ipa))  ipa  = '';
+                if (!surf && !ipa) {
+                    const fb = _hanFallbackFromVariants(ch, code);
+                    surf = fb[0]; ipa = fb[1];
+                }
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
@@ -3062,6 +3136,10 @@
                 let ipa  = (cd.ipa     && cd.ipa[code])     || '';
                 if (HAN_EMPTY(surf)) surf = '';
                 if (HAN_EMPTY(ipa))  ipa  = '';
+                if (!surf && !ipa) {
+                    const fb = _hanFallbackFromVariants(ch, code);
+                    surf = fb[0]; ipa = fb[1];
+                }
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
@@ -3152,7 +3230,7 @@
         // land in HAN_LANGS.
         const HAN_GROUPS = [
             { id: 'mandarin', family: 'sinitic',
-              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','zh_jiao','zh_gl','dng','zh_us','zh_th'],
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','zh_jiao','zh_gl','dng','zh_us','zh_th','zh_tw'],
               historical: ['zh_yuan','zh_phagspa'] },
             { id: 'yue', family: 'sinitic',
               modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo','yue_us'],
@@ -4625,7 +4703,15 @@
                 opt.value = w.id;
                 // w.label is { en, ja, id, ... } — `id` here is Indonesian, not entry id
                 const localWord = w.label[uiLang] || w.label[uiLang.split('_')[0]] || w.label.en;
-                opt.textContent = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
+                let txt = (uiLang === 'en' ? w.label.en : localWord + ' / ' + w.label.en);
+                // Compound IDs (e.g. "行:1") — append the sense label so
+                // dropdown options stay disambiguated.
+                const {char: _wCh, senseIdx: _wSn} = senseSplitId(w.id);
+                if (_wSn) {
+                    const senseTxt = senseLabelOf(w.id, uiLang) || _wSn;
+                    txt = _wCh + ' (' + senseTxt + ')';
+                }
+                opt.textContent = txt;
                 select.appendChild(opt);
             });
             if (curVal) select.value = curVal;
@@ -4705,10 +4791,42 @@
             for (const ch of HAN_LIST) {
                 const opt = document.createElement('option');
                 opt.value = ch;
-                opt.textContent = ch;
+                const {char: _oCh, senseIdx: _oSn} = senseSplitId(ch);
+                opt.textContent = _oCh + (_oSn ? ' (' + (senseLabelOf(ch, uiLang) || _oSn) + ')' : '');
                 select.appendChild(opt);
             }
             select.value = currentWord;
+
+            // 2026-05-31: sense tabs on the upper-right of the char button,
+            // sticking out past the square frame. Only visible when the
+            // current base char has 2+ HAN_LIST entries (e.g. 行 → 行:1 /
+            // 行:2). Each tab is the bare sense index (1, 2, …); the
+            // active tab shows red. Clicking a tab calls setChar(otherId).
+            function renderSenseTabs(currentId) {
+                const wrap = document.getElementById('sense-tabs');
+                if (!wrap || typeof HAN_LIST === 'undefined') return;
+                const base = displayCharOf(currentId);
+                const senses = HAN_LIST.filter(id => displayCharOf(id) === base);
+                if (senses.length <= 1) {
+                    wrap.classList.remove('visible');
+                    wrap.innerHTML = '';
+                    return;
+                }
+                wrap.classList.add('visible');
+                wrap.innerHTML = '';
+                for (const id of senses) {
+                    const tab = document.createElement('button');
+                    tab.type = 'button';
+                    tab.className = 'sense-tab' + (id === currentId ? ' active' : '');
+                    tab.textContent = senseBadgeOf(id) || '·';
+                    tab.title = senseLabelOf(id, uiLang) || id;
+                    tab.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        setChar(id);
+                    });
+                    wrap.appendChild(tab);
+                }
+            }
 
             function setChar(ch) {
                 if (!ch || ch === currentWord) return;
@@ -4722,8 +4840,15 @@
                     return;
                 }
                 currentWord = ch;
-                btn.textContent = ch;
+                {
+                    // Tabs on the right edge carry the sense disambiguation;
+                    // the in-frame superscript is dropped (user feedback).
+                    const {char: cChar} = senseSplitId(ch);
+                    btn.innerHTML = escapeHtml(cChar);
+                    btn.title = senseLabelOf(ch, uiLang) || ch;
+                }
                 if (select.value !== ch) select.value = ch;
+                renderSenseTabs(ch);
                 updateMarkers(ch);
                 try { updateHash && updateHash(); } catch (_) {}
                 // Re-render the lang-info panel if it's open so the new
@@ -4748,14 +4873,27 @@
                     wrap.appendChild(h3);
                     const grid = document.createElement('div');
                     grid.className = 'char-grid';
+                    // 2026-05-30: collapse multi-sense compound IDs back to
+                    // a single base-char button per user request — the modal
+                    // selector should look like a glossary, not a sense
+                    // picker. Click selects the first sense (':1') to match
+                    // legacy behaviour; sense selection happens elsewhere
+                    // (modal table / map markers).
+                    const seenBase = new Set();
                     for (const ch of cat.chars) {
+                        const baseChar = displayCharOf(ch);
+                        if (seenBase.has(baseChar)) continue;
+                        seenBase.add(baseChar);
+                        // First compound ID for this base char in the
+                        // category becomes the click target.
+                        const targetId = ch;
                         const b = document.createElement('button');
                         b.type = 'button';
-                        b.className = 'char-btn' + (ch === currentWord ? ' active' : '');
-                        b.textContent = ch;
-                        b.dataset.char = ch;
+                        b.className = 'char-btn' + (baseChar === displayCharOf(currentWord) ? ' active' : '');
+                        b.innerHTML = '<span class="char-tile-char">' + escapeHtml(baseChar) + '</span>';
+                        b.dataset.char = targetId;
                         b.addEventListener('click', () => {
-                            setChar(ch);
+                            setChar(targetId);
                             closeModal();
                         });
                         grid.appendChild(b);
@@ -4788,11 +4926,16 @@
             // lands on the final char. Total animation ~0.5s.
             // Per user request 2026-05-29.
             let _rouletteRunning = false;
+            // 2026-05-31: roulette picks only "first sense" IDs (no colon
+            // OR colon-1). To see ':2' senses, user must click the sense
+            // tabs explicitly. Same filter applied to the in-flight reel
+            // cells, so the spin never displays a ':2' tile either.
+            const _firstSenseList = HAN_LIST.filter(id => !id.includes(':') || id.endsWith(':1'));
             randomBtn.addEventListener('click', () => {
                 if (_rouletteRunning) return;
                 let finalCh;
-                do { finalCh = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
-                while (finalCh === currentWord && HAN_LIST.length > 1);
+                do { finalCh = _firstSenseList[Math.floor(Math.random() * _firstSenseList.length)]; }
+                while (finalCh === currentWord && _firstSenseList.length > 1);
 
                 const cbtn = document.getElementById('char-current-btn');
                 if (!cbtn) { setChar(finalCh); return; }
@@ -4806,7 +4949,7 @@
                 // duration so the eye sees continuous "ticking".
                 const N = 24;
                 const cells = [currentWord];
-                for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
+                for (let i = 0; i < N; i++) cells.push(_firstSenseList[Math.floor(Math.random() * _firstSenseList.length)]);
                 cells.push(finalCh);
 
                 const prevOverflow = cbtn.style.overflow;
@@ -4830,19 +4973,50 @@
                 const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
                 for (const ch of cells) {
                     const c = document.createElement('div');
-                    c.textContent = ch;
+                    // 2026-05-30: cells showed raw "行:1" during the spin.
+                    // Render with displayCharOf + sup badge to match the
+                    // settled char button.
+                    const dc = displayCharOf(ch);
+                    const sb = senseBadgeOf(ch);
+                    c.innerHTML = escapeHtml(dc) +
+                        (sb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(sb) + '</sup>' : '');
                     c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
                     reel.appendChild(c);
                 }
                 cbtn.appendChild(reel);
 
+                // 2026-05-30: while the slot reel ticks, jiggle the 🎲 die
+                // so the user gets a paired animation — the button "rolls"
+                // alongside the slot machine.
+                const _diceBtn = randomBtn;
+                if (_diceBtn) {
+                    _diceBtn.style.transition = 'transform 80ms ease-in-out';
+                    let _diceAngle = 0, _diceTimer = null;
+                    _diceTimer = setInterval(() => {
+                        _diceAngle += 90 + Math.floor(Math.random() * 30);
+                        _diceBtn.style.transform = 'rotate(' + _diceAngle + 'deg)';
+                    }, 80);
+                    _diceBtn.dataset.spinTimer = String(_diceTimer);
+                }
+
                 const finish = () => {
                     while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
                     cbtn.style.overflow = prevOverflow || '';
                     cbtn.style.position = prevPos || '';
-                    cbtn.textContent = finalCh;
+                    // Final char render uses sense badge too.
+                    const fdc = displayCharOf(finalCh);
+                    const fsb = senseBadgeOf(finalCh);
+                    cbtn.innerHTML = escapeHtml(fdc) +
+                        (fsb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(fsb) + '</sup>' : '');
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
+                    // Stop dice jiggle at the same instant the char snaps.
+                    if (randomBtn && randomBtn.dataset.spinTimer) {
+                        try { clearInterval(parseInt(randomBtn.dataset.spinTimer, 10)); } catch (_) {}
+                        delete randomBtn.dataset.spinTimer;
+                        randomBtn.style.transition = 'none';
+                        randomBtn.style.transform = 'rotate(0deg)';
+                    }
                     setChar(finalCh);
                 };
 
@@ -4898,7 +5072,11 @@
             window.addEventListener('langmap:uichange', localizeChrome);
 
             // Sync the giant character button on first paint.
-            btn.textContent = currentWord;
+            {
+                const {char: cChar} = senseSplitId(currentWord);
+                btn.innerHTML = escapeHtml(cChar);
+                btn.title = senseLabelOf(currentWord, uiLang) || currentWord;
+            }
             // Expose for hash loader.
             window.__hanmapSetChar = setChar;
         }, 0);
@@ -5997,6 +6175,7 @@
             zh_yuan:    { ja:'元代官話',         ko:'원대 관화',       zh:'元代官話',       yue:'元代官話' },
             zh_kanbun:  { ja:'漢文訓読',         ko:'한문 훈독',       zh:'漢文訓讀',       yue:'漢文訓讀' },
             zh_th:      { ja:'タイ華僑音',       ko:'태국 화교음',     zh:'泰國華僑音',     yue:'泰國華僑音' },
+            zh_tw:      { ja:'台灣華語',         ko:'타이완 국어',     zh:'台灣華語',       yue:'台灣華語' },
             zh_us:      { ja:'北米華僑音',       ko:'북미 화교음',     zh:'北美華僑音',     yue:'北美華僑音' },
             yue_us:     { ja:'北米広東語',       ko:'북미 광동어',     zh:'北美粵語',       yue:'北美粵語' },
             nan_pera:   { ja:'プラナカン福建語', ko:'프라나칸 민남어', zh:'娘惹福建話',     yue:'娘惹福建話' },
@@ -6043,6 +6222,197 @@
             }
             return n;
         }
+
+        // ---------------------------------------------------------------
+        // Simulated-annealing label de-overlap (d3-labeler-style, Evans 2014).
+        // The existing cellGroups + greedy collision pass above produces a
+        // good initial layout; this module refines it by accepting/rejecting
+        // small pixel-offset perturbations using the Metropolis criterion
+        // until the residual overlap energy converges.
+        //
+        // Each label is a {x,y,w,h} AABB centered at (anchorX+dx, anchorY+dy).
+        // Energy = sum(pairwise overlap area) + alpha * dist(label, anchor).
+        // Cache key is (currentWord, zoom, sortedVisibleCodes) — same key,
+        // same offsets reused (zero SA cost on cache hit). Pan does not
+        // change the key (anchors move with Leaflet's projection; offsets
+        // are anchor-relative, so cached deltas remain visually correct).
+        // ---------------------------------------------------------------
+        const _hmLabelOffsetCache = new Map();
+        const _HM_SA_CACHE_MAX = 64;  // LRU cap to avoid unbounded growth
+
+        // Pairwise overlap area between two AABBs centered at (cx,cy).
+        function _hmOverlapArea(a, b) {
+            const ox = Math.max(0, (a.w + b.w) / 2 - Math.abs(a.cx - b.cx));
+            const oy = Math.max(0, (a.h + b.h) / 2 - Math.abs(a.cy - b.cy));
+            return ox * oy;
+        }
+
+        // Total energy = sum overlap area + alpha * displacement from anchor.
+        function _hmEnergy(labels, alpha) {
+            let e = 0;
+            const n = labels.length;
+            for (let i = 0; i < n; i++) {
+                const li = labels[i];
+                for (let j = i + 1; j < n; j++) {
+                    e += _hmOverlapArea(li, labels[j]);
+                }
+                const dx = li.cx - li.ax;
+                const dy = li.cy - li.ay;
+                e += alpha * Math.sqrt(dx * dx + dy * dy);
+            }
+            return e;
+        }
+
+        // Incremental energy for ONE label against all others (much faster
+        // than recomputing full energy each iter; SA is O(sweeps * n * n)
+        // instead of O(sweeps * n^3)).
+        function _hmLocalEnergy(labels, i, alpha) {
+            let e = 0;
+            const li = labels[i];
+            const n = labels.length;
+            for (let j = 0; j < n; j++) {
+                if (j === i) continue;
+                e += _hmOverlapArea(li, labels[j]);
+            }
+            const dx = li.cx - li.ax;
+            const dy = li.cy - li.ay;
+            e += alpha * Math.sqrt(dx * dx + dy * dy);
+            return e;
+        }
+
+        // SA solver. Returns labels mutated in place (cx/cy adjusted).
+        //   labels: [{ id, cx, cy, w, h, ax, ay }] — cx/cy = current center,
+        //            ax/ay = anchor (marker pixel position).
+        //   sweeps: number of annealing sweeps (each = one pass over all labels).
+        //   alpha:  weight on anchor-distance term in energy (small = labels
+        //            will move freely to escape overlaps).
+        // mulberry32 PRNG — deterministic given seed. Replaces Math.random
+        // in SA so different page loads of the same (word, zoom, codes)
+        // yield identical label layouts. Without this, vi_c (etc) would
+        // sit in a slightly different spot each visit.
+        function _hmMakeRng(seed) {
+            let a = seed >>> 0;
+            return function () {
+                a = (a + 0x6D2B79F5) >>> 0;
+                let t = a;
+                t = Math.imul(t ^ (t >>> 15), t | 1);
+                t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+        function _hmHashStr(s) {
+            let h = 5381;
+            for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+            return h >>> 0;
+        }
+        function _hmAnnealLabels(labels, sweeps, alpha, rng) {
+            const n = labels.length;
+            if (n < 2) return;
+            // Temperature: scaled to label height — proposed jumps are
+            // ±T*labelH in each axis, so at T=1 the typical proposal is
+            // ~one label-height (~15-20px). Cools by 0.96/sweep → T~0.3
+            // at sweep 30, fine-tuning final positions.
+            let T = 1.0;
+            const cool = 0.96;
+            const random = rng || Math.random;
+            // Sum of label heights as a rough "typical step" scale; per-
+            // label labelH varies but is identical in this codebase.
+            const stepBase = labels[0] ? labels[0].h : 16;
+            for (let s = 0; s < sweeps; s++) {
+                for (let i = 0; i < n; i++) {
+                    const li = labels[i];
+                    const eOld = _hmLocalEnergy(labels, i, alpha);
+                    const oldCx = li.cx, oldCy = li.cy;
+                    // Propose: uniform in [-T*stepBase, +T*stepBase].
+                    li.cx += (random() * 2 - 1) * T * stepBase;
+                    li.cy += (random() * 2 - 1) * T * stepBase;
+                    const eNew = _hmLocalEnergy(labels, i, alpha);
+                    const dE = eNew - eOld;
+                    if (dE <= 0 || random() < Math.exp(-dE / T)) {
+                        // Accept.
+                    } else {
+                        li.cx = oldCx; li.cy = oldCy;
+                    }
+                }
+                T *= cool;
+            }
+        }
+
+        // Build the per-(word,zoom,codes) cache key.
+        function _hmOffsetCacheKey(word, zoom, codes) {
+            // codes is small (<200) and sorted strings; join is cheap.
+            return word + '|' + zoom + '|' + codes.join(',');
+        }
+
+        // Run SA to refine offsets[]. Inputs:
+        //   codes:    array of lang codes to place (visible + active).
+        //   ppx:      code -> {x,y} marker anchor pixel position.
+        //   offsets:  code -> {x,y} current pixel offset (mutated in place).
+        //   labelW, labelH: estimated label box size (px).
+        //   word, zoom: cache key inputs.
+        // Returns: ms spent in SA (or 0 on cache hit).
+        function _hmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
+            if (codes.length < 2) return 0;
+            const sortedCodes = codes.slice().sort();
+            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes);
+            const cached = _hmLabelOffsetCache.get(cacheKey);
+            if (cached) {
+                // LRU bump: re-insert so it's most-recently-used.
+                _hmLabelOffsetCache.delete(cacheKey);
+                _hmLabelOffsetCache.set(cacheKey, cached);
+                for (const code of codes) {
+                    const off = cached.get(code);
+                    if (off) offsets[code] = { x: off.x, y: off.y };
+                }
+                return 0;
+            }
+            const t0 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            // Build labels array. Use the existing offsets as the SA seed.
+            const labels = [];
+            for (const code of codes) {
+                if (!ppx[code]) continue;
+                const pt = ppx[code];
+                const off = offsets[code] || { x: 0, y: 0 };
+                labels.push({
+                    id: code,
+                    ax: pt.x, ay: pt.y,             // anchor (marker)
+                    cx: pt.x + off.x,                // current center
+                    cy: pt.y + off.y,
+                    w: labelW, h: labelH,
+                });
+            }
+            // Sweeps: 30 normally, scaled down for very dense maps so the
+            // ~80ms target on mid-range laptops still holds. n*n*sweeps
+            // grows quickly; 100 labels * 30 sweeps * 100 inner = ~300k ops.
+            let sweeps = 30;
+            if (labels.length > 120) sweeps = 20;
+            if (labels.length > 180) sweeps = 15;
+            const alpha = 0.05;  // small — overlap dominates anchor pull
+            // Seed the SA RNG from the cache key so different page loads
+            // of the same (word, zoom, codes) produce IDENTICAL layouts.
+            _hmAnnealLabels(labels, sweeps, alpha, _hmMakeRng(_hmHashStr(cacheKey)));
+            // Write back offsets + populate cache.
+            const cacheEntry = new Map();
+            for (const lbl of labels) {
+                const dx = lbl.cx - lbl.ax;
+                const dy = lbl.cy - lbl.ay;
+                offsets[lbl.id] = { x: dx, y: dy };
+                cacheEntry.set(lbl.id, { x: dx, y: dy });
+            }
+            // LRU evict if over cap.
+            if (_hmLabelOffsetCache.size >= _HM_SA_CACHE_MAX) {
+                const firstKey = _hmLabelOffsetCache.keys().next().value;
+                if (firstKey != null) _hmLabelOffsetCache.delete(firstKey);
+            }
+            _hmLabelOffsetCache.set(cacheKey, cacheEntry);
+            const t1 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            return t1 - t0;
+        }
+
+        // Expose a manual cache-clear hook for the console / tests.
+        window._hmClearLabelOffsetCache = () => _hmLabelOffsetCache.clear();
 
         function updateMarkers(wordId) {
             currentWord = wordId;
@@ -6403,6 +6773,51 @@
                 offsets[code] = { x: cx - pt.x, y: cy - pt.y };
             }
 
+            // SA refinement pass: take the greedy result above as a warm
+            // start and run simulated annealing to mop up residual overlaps.
+            // _saCodes must be invariant under pan so the cache key
+            // (word, zoom, sortedCodes) stays stable. Earlier we filtered
+            // by hiddenCodes (greedy's hide decision, which IS viewport-
+            // dependent because cellGroups buckets by floor(px/labelW)).
+            // That made the codes set drift across pans and the cache
+            // missed. Now SA covers EVERY visible+unattested code
+            // regardless of greedy's decision; non-rendered codes get
+            // an offset that's simply unused at render time.
+            const _saCodes = [];
+            for (const code of visibleLangs) {
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            for (const code of unattestedLangs) {
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            const _saMs = _hmRefineOffsetsSA(
+                _saCodes, ppx, offsets, labelW, labelH,
+                wordId, zoom
+            );
+            if (_saMs > 0 && typeof window !== 'undefined' && window._hmSaLogTiming) {
+                console.log('[hanmap SA]', _saCodes.length, 'labels in', _saMs.toFixed(1), 'ms');
+            }
+            // 2026-05-31: re-evaluate hiddenCodes based on the FINAL
+            // post-SA offset magnitudes. Earlier we populated hiddenCodes
+            // in the greedy pass using viewport-dependent cellGroups, so
+            // the same label could be hidden at one pan offset and shown
+            // at another — visually it blinked on every pan. Now hide is
+            // determined purely from the offset distance: stable across
+            // pans because the SA output is deterministic given
+            // (word, zoom, codes). Threshold matches the greedy MAX_PUSH.
+            hiddenCodes.clear();
+            for (const code of _saCodes) {
+                const off = offsets[code];
+                if (!off) continue;
+                if (Math.abs(off.x) + Math.abs(off.y) > MAX_PUSH * 2.2) {
+                    hiddenCodes.add(code);
+                }
+            }
+
             // Single render loop for both attested and unattested langs.
             // Skip codes that the collision pass couldn't place.
             for (const code of allRenderable) {
@@ -6618,7 +7033,12 @@
                 currentWord = w;
                 // Hanmap: also sync the giant character button.
                 const _hbtn = document.getElementById('char-current-btn');
-                if (_hbtn) _hbtn.textContent = w;
+                if (_hbtn) {
+                    const {char: _hc, senseIdx: _hs} = senseSplitId(w);
+                    _hbtn.innerHTML = escapeHtml(_hc) +
+                        (_hs ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(_hs) + '</sup>' : '');
+                    _hbtn.title = senseLabelOf(w, uiLang) || w;
+                }
             }
             const z = parseInt(params.get('z'));
             const latStr = params.get('lat'); const lngStr = params.get('lng');
@@ -6787,6 +7207,8 @@
 
         // Initial render
         updateMarkers(currentWord);
+        // Initial sense tabs (in case currentWord starts on a multi-sense ID)
+        try { if (typeof renderSenseTabs === 'function') renderSenseTabs(currentWord); } catch (_) {}
 
         // Zoom class
         function updateZoomClass() {
@@ -7611,6 +8033,15 @@
                 }
                 if (rows.length) charBlocks.push({ ch, rows });
             }
+            // 2026-05-31: tally which base chars have multiple senses
+            // visible in this table. Only show the sense badge when 2+
+            // siblings of the same base char are present; otherwise the
+            // disambiguation is redundant — show plain 行 / 中.
+            const _baseInTable = new Map();
+            for (const b of charBlocks) {
+                const dc = displayCharOf(b.ch);
+                _baseInTable.set(dc, (_baseInTable.get(dc) || 0) + 1);
+            }
             const hasNative = charBlocks.some(b => b.rows.some(r => r.native && r.native.trim()));
 
             html += `<table style="margin-top:10px;border-top:1px solid #eee;padding-top:8px;width:100%;border-collapse:collapse;font-size:12px">`;
@@ -7630,7 +8061,16 @@
                     html += `<tr style="${trStyle};${ri === rows.length - 1 ? 'border-bottom:1px solid #f3f3f3' : ''}">`;
                     if (ri === 0) {
                         const sel = isCur ? ';color:#c0392b;font-weight:600' : '';
-                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(ch)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${escapeHtml(ch)}</td>`;
+                        const cellChar = displayCharOf(ch);
+                        const cellSense = senseBadgeOf(ch);
+                        // Hide badge when this base char appears only once
+                        // in the current table — the disambiguation is
+                        // useless without a sibling row to contrast.
+                        const showBadge = cellSense && (_baseInTable.get(cellChar) || 0) > 1;
+                        const cellInner = escapeHtml(cellChar) +
+                            (showBadge ? '<sup style="font-size:0.5em;font-weight:600;color:#c0392b;margin-left:1px">' + escapeHtml(cellSense) + '</sup>' : '');
+                        const cellTitle = senseLabelOf(ch, uiLang) || ch;
+                        html += `<td rowspan="${rows.length}" class="hanmap-char-cell hanmap-script-cell" data-han-char="${escapeHtml(ch)}" title="${escapeHtml(cellTitle)}" style="padding:4px 6px 4px 0;font-size:20px;color:#1a1a2e;vertical-align:middle;cursor:pointer${sel}">${cellInner}</td>`;
                     }
                     if (hasNative) html += `<td class="hanmap-script-cell" style="padding:4px 6px 4px 0;color:#222;vertical-align:middle">${escapeHtml(r.native)}</td>`;
                     html += `<td style="padding:4px 6px 4px 0;color:#444;vertical-align:middle">${escapeHtml(r.romanized)}</td>`;
@@ -8879,7 +9319,13 @@
                     rowSummary[ci] = cellRows.length ? { surface: cellRows[0].surface, ipa: cellRows[0].ipa } : null;
                 }
                 const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
-                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                // For compound IDs (e.g. "行:1"), display the bare char + the
+                // sense label so the row reads "行 (行為)".
+                const _rowBaseChar = displayCharOf(conceptLabel);
+                const _rowSenseTxt = senseLabelOf(conceptLabel, uiLang);
+                const _rowLabelHtml = escapeHtml(_rowBaseChar) +
+                    (_rowSenseTxt ? ' <span style="font-size:10px;color:#666">(' + escapeHtml(_rowSenseTxt) + ')</span>' : '');
+                html += '<tr><th scope="row">' + _rowLabelHtml + '</th>';
                 for (let ci = 0; ci < _compareList.length; ci++) {
                     const cellRows = rowCellRows[ci];
                     const bg = rowColors[ci];

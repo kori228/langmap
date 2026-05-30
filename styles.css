@@ -1368,7 +1368,9 @@ body.chrome-hidden #word-definition,
 body.chrome-hidden #era-filter-row,
 body.chrome-hidden .lang-search-wrap,
 body.chrome-hidden #compare-fab,
-body.chrome-hidden .url-watermark {
+body.chrome-hidden .url-watermark,
+body.chrome-hidden #hm-lang-filter-btn,
+body.chrome-hidden #char-random-btn {
     display: none !important;
 }
 
@@ -1380,7 +1382,9 @@ html[data-wm-chrome="hidden"] body #word-definition,
 html[data-wm-chrome="hidden"] body #era-filter-row,
 html[data-wm-chrome="hidden"] body .lang-search-wrap,
 html[data-wm-chrome="hidden"] body #compare-fab,
-html[data-wm-chrome="hidden"] body .url-watermark {
+html[data-wm-chrome="hidden"] body .url-watermark,
+html[data-wm-chrome="hidden"] body #hm-lang-filter-btn,
+html[data-wm-chrome="hidden"] body #char-random-btn {
     display: none !important;
 }
 
