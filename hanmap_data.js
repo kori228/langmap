@@ -7675,7 +7675,7 @@ const HAN_DATA = {
       "vi_nom": "mắt",
       "dng": "yanjing¹",
       "yue_us": "muk6",
-      "zh_us": "mù",
+      "zh_us": "mu⁴",
       "nan_th": "mag8",
       "zh_th": "mù",
       "nan_pera": "bak⁵",
@@ -14465,7 +14465,7 @@ const HAN_LANG_META = {
       "東北方言詞典"
     ],
     "romanization": {
-      "name": "Pinyin (with dialect notation)",
+      "name": "Hanyu Pinyin with tone-contour superscripts (東北音)",
       "authority": "CASS Fangyan tradition",
       "year": 1958
     },
@@ -14520,7 +14520,7 @@ const HAN_LANG_META = {
       "四川方言詞典"
     ],
     "romanization": {
-      "name": "Sichuan Pinyin / IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (四川音)",
       "authority": "《四川方言詞典》",
       "year": 1987
     },
@@ -14575,7 +14575,7 @@ const HAN_LANG_META = {
       "成都話音典"
     ],
     "romanization": {
-      "name": "Chengdu Pinyin / IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (成都音)",
       "authority": "Sichuan University dialect studies",
       "year": 1989
     },
@@ -14630,7 +14630,7 @@ const HAN_LANG_META = {
       "重慶方言研究"
     ],
     "romanization": {
-      "name": "Chongqing Pinyin / IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (重慶音)",
       "authority": "CASS Fangyan",
       "year": 1985
     },
@@ -14685,7 +14685,7 @@ const HAN_LANG_META = {
       "西安方言詞典"
     ],
     "romanization": {
-      "name": "Xi'an phonetic notation (IPA)",
+      "name": "Hanyu Pinyin with tone-contour superscripts (西安音)",
       "authority": "Shaanxi Normal Univ.",
       "year": 1990
     },
@@ -14740,7 +14740,7 @@ const HAN_LANG_META = {
       "昆明方言詞典"
     ],
     "romanization": {
-      "name": "Kunming Pinyin / IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (昆明音)",
       "authority": "《昆明方言詞典》",
       "year": 1992
     },
@@ -14795,7 +14795,7 @@ const HAN_LANG_META = {
       "濟南方言詞典"
     ],
     "romanization": {
-      "name": "Jinan phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (濟南音)",
       "authority": "《濟南方言詞典》",
       "year": 1997
     },
@@ -14850,7 +14850,7 @@ const HAN_LANG_META = {
       "開封方言研究"
     ],
     "romanization": {
-      "name": "Kaifeng phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (開封音)",
       "authority": "Henan University dialect studies",
       "year": 1995
     },
@@ -14905,7 +14905,7 @@ const HAN_LANG_META = {
       "合肥方言研究"
     ],
     "romanization": {
-      "name": "Hefei phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (合肥音)",
       "authority": "Anhui dialect survey",
       "year": 1993
     },
@@ -14960,7 +14960,7 @@ const HAN_LANG_META = {
       "江淮官話研究"
     ],
     "romanization": {
-      "name": "Jianghuai Mandarin IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (金衢音)",
       "authority": "Nanjing Normal University",
       "year": 1991
     },
@@ -15015,7 +15015,7 @@ const HAN_LANG_META = {
       "南京方言詞典"
     ],
     "romanization": {
-      "name": "Nanjing phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (南京音)",
       "authority": "《南京方言詞典》",
       "year": 1995
     },
@@ -15070,7 +15070,7 @@ const HAN_LANG_META = {
       "天津方言詞典"
     ],
     "romanization": {
-      "name": "Tianjin phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (天津音)",
       "authority": "《天津方言詞典》",
       "year": 1998
     },
@@ -15125,7 +15125,7 @@ const HAN_LANG_META = {
       "蘭州方言研究"
     ],
     "romanization": {
-      "name": "Lanzhou phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (蘭州音)",
       "authority": "Northwest Normal University",
       "year": 1992
     },
@@ -15180,7 +15180,7 @@ const HAN_LANG_META = {
       "武漢方言詞典"
     ],
     "romanization": {
-      "name": "Wuhan phonetic notation",
+      "name": "Hanyu Pinyin with tone-contour superscripts (武漢音)",
       "authority": "《武漢方言詞典》",
       "year": 1998
     },
@@ -15235,7 +15235,7 @@ const HAN_LANG_META = {
       "中原官話研究"
     ],
     "romanization": {
-      "name": "Zhongyuan Mandarin IPA",
+      "name": "Hanyu Pinyin with tone-contour superscripts (鄭州音)",
       "authority": "Henan dialect studies",
       "year": 1995
     },
@@ -19182,7 +19182,7 @@ const HAN_LANG_META = {
       "He, Agnes Weiyun (ed.) 'Chinese as a Heritage Language' (UH Press 2008)"
     ],
     "romanization": {
-      "name": "Hanyu Pinyin — ABC-pronounced",
+      "name": "Hanyu Pinyin with lexical tone digits (ABC-pronounced)",
       "authority": "PRC Pinyin / ABC speech approximation",
       "year": 1958
     },
@@ -19595,7 +19595,7 @@ const HAN_LANG_META = {
     "speakers": "約 3,500万人",
     "speakersSource": "Wikipedia 膠遼官話 (2026-05-30閲覧)",
     "romanization": {
-      "name": "Hanyu Pinyin with tone digits (青島音)",
+      "name": "Hanyu Pinyin with tone-contour superscripts (青島音)",
       "authority": "钱曾怡《山东方言研究》",
       "year": 2001
     }
@@ -19726,7 +19726,7 @@ const HAN_LANG_META = {
     "speakers": "約 4,000万人",
     "speakersSource": "Wikipedia 桂柳官话 (2026-05-30閲覧)",
     "romanization": {
-      "name": "Hanyu Pinyin with tone digits (柳州音)",
+      "name": "Hanyu Pinyin with tone-contour superscripts (柳州音)",
       "authority": "蓝庆元《柳州方言研究》/ 中国语言地图集",
       "year": 2012
     }
