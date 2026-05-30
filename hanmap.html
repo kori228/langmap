@@ -5,12 +5,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanmap — Han Character Pronunciation Atlas (59 chars × 95 languages)</title>
-    <meta name="description" content="Interactive Sinosphere atlas of 59 Han characters (一二三, 日月山, 龍虎犬, 人手足, 上下中, 行来去…) pronounced across 95 languages and variants — Mandarin, Cantonese, Min Nan/Hokkien (POJ), Hakka, Wu/Shanghainese, Japanese on-yomi (呉音/漢音/唐音) and kun-yomi, Sino-Korean (한자음), Sino-Vietnamese (Hán-Việt), plus Old Chinese, Middle Chinese, Tang and Song reconstructions — with IPA, Pinyin, Jyutping, Hangul.">
+    <title>Hanmap — Han Character Pronunciation Atlas (59 chars × 98 languages)</title>
+    <meta name="description" content="Interactive Sinosphere atlas of 59 Han characters (一二三, 日月山, 龍虎犬, 人手足, 上下中, 行来去…) pronounced across 98 languages and variants — Mandarin, Cantonese, Min Nan/Hokkien (POJ), Hakka, Wu/Shanghainese, Japanese on-yomi (呉音/漢音/唐音) and kun-yomi, Sino-Korean (한자음), Sino-Vietnamese (Hán-Việt), plus Old Chinese, Middle Chinese, Tang and Song reconstructions — with IPA, Pinyin, Jyutping, Hangul.">
     <meta name="keywords" content="Han characters, kanji, hanja, hán tự, Han character pronunciation, IPA, Sinosphere, Sino-Japanese, Sino-Korean, Sino-Vietnamese, on-yomi, kun-yomi, 呉音, 漢音, 唐音, Jyutping, Pinyin, POJ, Middle Chinese, Old Chinese, historical phonology">
     <meta name="author" content="Jounlai Cho, Heuron Inc.">
-    <meta property="og:title" content="Hanmap — Han Character Pronunciation Atlas (59 chars × 95 languages)">
-    <meta property="og:description" content="59 Han characters × 95 languages and variants — Mandarin, Cantonese, Min, Hakka, Wu, Japanese on/kun, Korean, Vietnamese, plus Old Chinese, Middle Chinese, Tang and Song reconstructions.">
+    <meta property="og:title" content="Hanmap — Han Character Pronunciation Atlas (59 chars × 98 languages)">
+    <meta property="og:description" content="59 Han characters × 98 languages and variants — Mandarin, Cantonese, Min, Hakka, Wu, Japanese on/kun, Korean, Vietnamese, plus Old Chinese, Middle Chinese, Tang and Song reconstructions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langmap.heuron.com/hanmap.html">
     <meta property="og:image" content="https://langmap.heuron.com/ogp-wordmap.png">
@@ -23,7 +23,7 @@
     <meta property="og:locale:alternate" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hanmap — Han Character Pronunciation Atlas">
-    <meta name="twitter:description" content="59 Han characters × 95 languages and variants across the Sinosphere — IPA, Pinyin, Jyutping, POJ, Hangul, Hán-Việt, on/kun yomi.">
+    <meta name="twitter:description" content="59 Han characters × 98 languages and variants across the Sinosphere — IPA, Pinyin, Jyutping, POJ, Hangul, Hán-Việt, on/kun yomi.">
     <meta name="twitter:image" content="https://langmap.heuron.com/ogp-wordmap.png">
     <meta name="twitter:creator" content="@jounlai">
     <link rel="canonical" href="https://langmap.heuron.com/hanmap.html">
@@ -117,6 +117,29 @@
             font-display: swap;
             src: url('fonts/NotoSerifKR-OldHangul-subset.ttf') format('truetype');
             unicode-range: U+1100-11FF;
+        }
+        /* Hangul Compatibility Jamo (U+3130-318F) — the modern jamo block
+           ㄱ ㄴ ㄷ … ㅏ ㅑ ㅓ is well-covered by every Korean system font,
+           BUT the archaic letters in this block — ㅸ (U+3178 pieup-soft),
+           ㅭ (U+316D rieul-yeorin-hieuh), ㅿ (U+317F pansiot), ㆁ (U+3181
+           yesieung / old ng), ㆆ (U+3186 yeorin-hieuh / glottal stop) —
+           used by hanmap to describe Dongguk-Jeongun (1448) Sino-Korean
+           initials/finals, are NOT in iOS Hiragino's Hangul subset nor in
+           Apple SD Gothic Neo's default cmap, so they render as tofu on
+           iPhone Safari even though they look fine on macOS/Android.
+           Same self-host-+-unicode-range trick as the old conjoining
+           jamo above: a tiny (~11 KB) Noto Serif KR subset, scoped so
+           the browser is forced to use it for any char in U+3130-318F
+           regardless of font-family chain order. Sister fix to wordmap's
+           Old-Jamo @font-face (hanmap uses Compat Jamo, wordmap uses
+           conjoining — disjoint Unicode blocks, same root cause). */
+        @font-face {
+            font-family: 'Noto Serif KR Compat Jamo';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/NotoSerifKR-CompatJamo-subset.woff2') format('woff2');
+            unicode-range: U+3130-318F;
         }
     </style>
     <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
@@ -505,9 +528,14 @@
                    - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
                    - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em
                      conjoining old hangul jamo — arae-a etc).
-                   Both fall through to the broader Noto Serif chain
+                   - Noto Serif KR Compat Jamo: U+3130-318F (archaic
+                     compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ used in
+                     Dongguk-Jeongun Sino-Korean descriptions; tofu
+                     on iPhone Safari without this scoped subset).
+                   All three fall through to the broader Noto Serif chain
                    for any chars outside their scope. */
                 "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
@@ -707,6 +735,26 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.25);
             font-size: 13px; line-height: 1.6; display: none;
             overflow: hidden;   /* radius clipping; scroll is on #info-content */
+            /* Include 'Noto Serif KR Compat Jamo' (unicode-range U+3130-318F)
+               so archaic Hangul compatibility jamo — ㅸ U+3178, ㅭ U+316D,
+               ㅿ U+317F, ㆁ U+3181, ㆆ U+3186 — used in Dongguk-Jeongun
+               variant descriptions render via the scoped Noto Serif KR
+               subset instead of tofu on iPhone Safari (Hiragino's Hangul
+               cmap omits these archaic glyphs even though it covers the
+               modern compatibility jamo ㄱㄴㄷ). Sister fix to wordmap's
+               Old-Jamo @font-face: hanmap uses Compat Jamo (this block),
+               wordmap uses conjoining jamo (U+1100-11FF) — disjoint Unicode
+               blocks, same self-host-+-unicode-range pattern. The rest of
+               the chain matches `.wm-form` so non-Korean glyphs (Phags-pa,
+               Tangut, Khitan, etc.) inside the panel still pick up their
+               respective Noto webfonts. */
+            font-family:
+                "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
+                "Nom Serif Subset",
+                "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                system-ui, sans-serif;
         }
         .lang-info-panel.visible { display: flex; flex-direction: column; }
         #info-content {
@@ -777,10 +825,14 @@
             font-family:
                 /* Self-hosted serif subsets, scoped via unicode-range:
                    - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em)
+                   - Noto Serif KR Compat Jamo: U+3130-318F (archaic
+                     compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ — tofu on iPhone
+                     without the scoped subset).
                    - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
-                   Both load on-demand and fall through to the rest of the
+                   All load on-demand and fall through to the rest of the
                    Noto Serif chain. */
                 "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
                 "Nôm Na Tống", "HAN NOM A", "HAN NOM B", "HanaMinA", "HanaMinB",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
@@ -885,6 +937,24 @@
             font-size: 22px; color: #999; padding: 0; width: 28px; height: 28px; line-height: 1;
         }
         .compare-close:hover { color: #333; }
+        /* Similarity-color toggle (Pass 33). Sits in the compare-header
+           between title and Clear; checkbox + small label, mobile-friendly. */
+        .compare-simcolor-toggle {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 11px; color: #555; cursor: pointer;
+            user-select: none; -webkit-user-select: none;
+            white-space: nowrap;
+        }
+        .compare-simcolor-toggle input[type="checkbox"] {
+            margin: 0; cursor: pointer; accent-color: #1a73e8;
+        }
+        .compare-simcolor-label { line-height: 1; }
+        /* Cluster background cells — assigned inline via style="background:#..."
+           in renderCompare. Keep border/text legible against pastel. */
+        .compare-table td.cmp-cluster { transition: background-color 120ms ease; }
+        @media (max-width: 600px) {
+            .compare-simcolor-toggle { font-size: 10px; }
+        }
         /* Default (mobile): table fills the panel. PC override at the
            min-width:601px block below uses width:auto so columns size to
            content. */
@@ -2653,6 +2723,10 @@
     <div id="compare-panel" class="compare-panel" role="dialog" aria-labelledby="compare-heading" aria-modal="false" tabindex="-1">
         <div class="compare-header">
             <h3 id="compare-heading" class="compare-title">Language comparison</h3>
+            <label class="compare-simcolor-toggle" id="compare-simcolor-toggle">
+                <input type="checkbox" id="compare-simcolor-cb" />
+                <span class="compare-simcolor-label">Highlight by similarity</span>
+            </label>
             <button class="compare-clear" id="compare-clear" type="button">Clear</button>
             <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">&times;</button>
         </div>
@@ -2726,7 +2800,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=27"></script>
+    <script src="hanmap_data.js?v=32"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -2741,7 +2815,7 @@
     </script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang_names.js?v=111"></script>
+    <script src="lang_names.js?v=114"></script>
     <script>
     // ============================================================
     //  HANMAP DATA ADAPTER
@@ -2838,7 +2912,7 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v5';   // bumped — HAN_LANGS expanded to 95 codes
+        const LS_KEY = 'hm.langFilter.v6';   // bumped — ko_bus was missing from HAN_GROUPS pre-7b38618; old v5 saves locked it out of the offered set
                                               //   to include mnc/sjo/za/
                                               //   bca/juc/txg/zkt/protos
                                               //   (mutually exclusive
@@ -2887,7 +2961,7 @@
         // land in HAN_LANGS.
         const HAN_GROUPS = [
             { id: 'mandarin', family: 'sinitic',
-              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','dng','zh_us','zh_th'],
+              modern: ['zh','zh_sc','zh_cd','zh_cq','zh_xa','zh_km','zh_jn','zh_kf','zh_hf','zh_nj','zh_jh','zh_tj','zh_lz','zh_db','zh_wh','zh_zz','zh_jiao','zh_gl','dng','zh_us','zh_th'],
               historical: ['zh_yuan','zh_phagspa'] },
             { id: 'yue', family: 'sinitic',
               modern: ['yue','yue_ts','yue_gz','yue_dg','yue_nn','yue_zs','yue_hk','yue_mo','yue_us'],
@@ -2899,7 +2973,7 @@
               modern: ['wuu','wuu_nb','wuu_sz','wuu_wz','wuu_hz','wuu_jx','wuu_jh'],
               historical: [] },
             { id: 'hakka', family: 'sinitic',
-              modern: ['hak_cn','hak_tw','hak_hl'],
+              modern: ['hak_cn','hak_tw','hak_hl','hak_mz'],
               historical: [] },
             { id: 'sinitic_other', family: 'sinitic',
               modern: ['cjy','czh','hsn','gan','cnp'],
@@ -2908,7 +2982,7 @@
               modern: ['ko','ko_kp','ko_zai','ko_hun','ko_bus'],
               historical: ['ko_mid','pko'] },
             { id: 'japonic',
-              modern: ['ja','ja_kun'],
+              modern: ['ja','ja_kun','ja_kgs','ja_okn','ja_thk'],
               historical: ['ja_ojp','pja'] },
             { id: 'vietic',
               modern: ['vi','vi_c','vi_s','vi_nom'],
@@ -4229,6 +4303,8 @@
                 if (cmpClear && typeof compareT === 'function') cmpClear.textContent = compareT('clear');
                 const cmpClose = document.getElementById('compare-close');
                 if (cmpClose && typeof compareT === 'function') cmpClose.setAttribute('aria-label', compareT('title'));
+                const cmpSimLbl = document.querySelector('.compare-simcolor-label');
+                if (cmpSimLbl && typeof compareT === 'function') cmpSimLbl.textContent = compareT('simcolor');
             } catch (e) { /* compareT may not yet be defined during early init */ }
             // Localize trivia button + modal eyebrow + close/restore/expand.
             // On mobile the button sits in the header bar with the hamburger
@@ -5653,6 +5729,9 @@
             ko_mid:     { ja:'中世韓国音',       ko:'중세 한국음',     zh:'中世韓國音',     yue:'中世韓國音' },
             ko_hun:     { ja:'韓国訓 (固有)',    ko:'한국 훈독',       zh:'韓國訓讀',       yue:'韓國訓讀' },
             ja_kun:     { ja:'訓読み',           ko:'일본 훈독',       zh:'日語訓讀',       yue:'日語訓讀' },
+            ja_kgs:     { ja:'鹿児島漢字音',     ko:'가고시마 한자음', zh:'鹿兒島漢字音',   yue:'鹿兒島漢字音' },
+            ja_okn:     { ja:'沖縄漢字音',       ko:'오키나와 한자음', zh:'沖繩漢字音',     yue:'沖繩漢字音' },
+            ja_thk:     { ja:'東北漢字音',       ko:'도호쿠 한자음',   zh:'東北漢字音',     yue:'東北漢字音' },
             vi_ohan:    { ja:'古漢越音',         ko:'고대 한월음',     zh:'古漢越音',       yue:'古漢越音' },
             vi_han:     { ja:'漢越音',           ko:'한월음',          zh:'漢越音',         yue:'漢越音' },
             vi_nom:     { ja:'字喃',             ko:'쯔놈',            zh:'喃字',           yue:'喃字' },
@@ -5672,6 +5751,9 @@
             ja_heian:   { ja:'平安日本語',       ko:'헤이안 일본어',   zh:'平安日語',       yue:'平安日語' },
             ja_edo:     { ja:'江戸日本語',       ko:'에도 일본어',     zh:'江戶日語',       yue:'江戶日語' },
             wuu:        { ja:'上海語',           ko:'상하이어',        zh:'上海話',         yue:'上海話' },
+            zh_jiao:    { ja:'膠遼官話',         ko:'자오랴오 관화',   zh:'膠遼官話',       yue:'膠遼官話' },
+            hak_mz:     { ja:'梅縣客家語',       ko:'메이셴 객가어',   zh:'梅縣客家話',     yue:'梅縣客家話' },
+            zh_gl:      { ja:'桂柳官話',         ko:'구이류 관화',     zh:'桂柳官話',       yue:'桂柳官話' },
             // Proto languages — shorten "祖語" to "祖" suffix for compactness
             pst:  { ja:'漢蔵祖', ko:'한장조어',     zh:'漢藏祖',     yue:'漢藏祖' },
             ptb:  { ja:'蔵緬祖', ko:'장면조어',     zh:'藏緬祖',     yue:'藏緬祖' },
@@ -7124,6 +7206,26 @@
                 if (hanMeta.region) {
                     html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '地域' : uiBase === 'ko' ? '지역' : uiBase === 'zh' || uiBase === 'yue' ? '地区' : 'Region')}:</b> ${escapeHtml(hanMeta.region)}</div>`;
                 }
+                if (hanMeta.speakers) {
+                    // 話者数 (speaker count) row — sourced figure with
+                    // citation in muted text. Each entry in HAN_LANG_META has
+                    // a speakers string (Japanese-formatted, e.g. "約1.3億人")
+                    // and a speakersSource label (e.g. "Ethnologue 2024 (jpn)").
+                    const spkLabel = {
+                        en: 'Speakers', ja: '話者数', ko: '화자 수',
+                        zh: '使用人口', yue: '使用人口',
+                        vi: 'Số người nói', th: 'จำนวนผู้พูด',
+                        id: 'Penutur', hi: 'वक्ता',
+                        de: 'Sprecher', fr: 'Locuteurs', it: 'Parlanti',
+                        es: 'Hablantes', pt: 'Falantes',
+                        ru: 'Носители', uk: 'Носії',
+                        ar: 'الناطقون', he: 'דוברים', sw: 'Wasemaji',
+                    }[uiBase] || 'Speakers';
+                    const srcPart = hanMeta.speakersSource
+                        ? ` <span style="color:#999">(${escapeHtml(hanMeta.speakersSource)})</span>`
+                        : '';
+                    html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(spkLabel)}:</b> ${escapeHtml(hanMeta.speakers)}${srcPart}</div>`;
+                }
                 if (hanMeta.description) {
                     let desc = '';
                     if (typeof hanMeta.description === 'object') {
@@ -7160,8 +7262,43 @@
                     }[uiBase] || 'Sources';
                     html += `<div style="margin:8px 0 4px;font-size:11px;color:#888"><b>${escapeHtml(srcLabel)}:</b></div>`;
                     html += '<ul style="margin:0 0 12px 16px;padding:0;font-size:11px;color:#666;line-height:1.5">';
+                    // Unwrap mixed-shape source entries so we never render
+                    // "[object Object]". Supported shapes per item:
+                    //   - string                  → literal text
+                    //   - { ja, en, ... } i18n    → pick uiBase, fall back en/ja
+                    //   - { title, url, note? }   → title as link to url (if http(s))
+                    //   - anything else           → JSON.stringify (last resort)
+                    const safeSrcUrl = u => (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null;
                     for (const s of hanMeta.sources) {
-                        html += `<li>${escapeHtml(s)}</li>`;
+                        if (s == null) continue;
+                        let liHtml = '';
+                        if (typeof s === 'string') {
+                            liHtml = escapeHtml(s);
+                        } else if (typeof s === 'object') {
+                            if (typeof s.title === 'string' || typeof s.url === 'string') {
+                                // {title, url, note?} citation shape
+                                const url = safeSrcUrl(s.url);
+                                const title = (typeof s.title === 'string' && s.title) ? s.title : (s.url || '');
+                                const safeTitle = escapeHtml(title);
+                                liHtml = url
+                                    ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#4a6cf7;text-decoration:none">${safeTitle}</a>`
+                                    : safeTitle;
+                                if (typeof s.note === 'string' && s.note) {
+                                    liHtml += ` <span style="color:#999">— ${escapeHtml(s.note)}</span>`;
+                                }
+                            } else {
+                                // i18n object keyed by language code
+                                const pick = s[uiBase] || s[uiLang] || s.en || s.ja || s[Object.keys(s)[0]];
+                                if (typeof pick === 'string') {
+                                    liHtml = escapeHtml(pick);
+                                } else {
+                                    liHtml = escapeHtml(JSON.stringify(s));
+                                }
+                            }
+                        } else {
+                            liHtml = escapeHtml(String(s));
+                        }
+                        if (liHtml) html += `<li>${liHtml}</li>`;
                     }
                     html += '</ul>';
                 }
@@ -8124,35 +8261,184 @@
 
         // i18n labels for compare UI (subset; falls back to en)
         const COMPARE_I18N = {
-            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
-            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
-            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
-            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
-            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
-            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
-            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
-            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
-            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
-            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
-            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
-            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
-            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
-            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
-            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
-            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
-            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages', simcolor:'Highlight by similarity' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで', simcolor:'発音類似でハイライト' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어', simcolor:'발음 유사도로 강조' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言', simcolor:'按发音相似性高亮' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言', simcolor:'按發音相似性高亮' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ', simcolor:'Tô màu theo độ tương tự' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา', simcolor:'เน้นตามความคล้ายเสียง' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa', simcolor:'Sorot kemiripan bunyi' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं', simcolor:'उच्चारण समानता से हाइलाइट' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen', simcolor:'Nach Ähnlichkeit hervorheben' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', simcolor:'Surligner par similarité' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', simcolor:'Evidenzia per similarità' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', simcolor:'Подсветить по сходству' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', simcolor:'Підсвітити за схожістю' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', simcolor:'إبراز حسب التشابه' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות', simcolor:'הדגש לפי דמיון' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi', simcolor:'Angazia kwa kufanana' },
         };
         function compareT(key) {
             const base = uiLang.split('_')[0];
             return (COMPARE_I18N[uiLang] && COMPARE_I18N[uiLang][key])
                 || (COMPARE_I18N[base] && COMPARE_I18N[base][key])
                 || COMPARE_I18N.en[key];
+        }
+
+        // === Compare-table similarity colorizer (Pass 33) =======================
+        // Cluster cells within a single row whose readings are phonologically
+        // close, and tag each multi-member cluster with a pastel background.
+        // WHY: a row of 30 Sinitic + Sino-xenic readings is visually flat —
+        // the user can't see at a glance which languages inherited a shared
+        // pronunciation vs which diverged. Color makes inheritance lineages
+        // pop out, which is the whole reason to put N languages side-by-side.
+        //
+        // Algorithm (per row):
+        //   1. Build a "skeleton" for each cell by stripping tone marks,
+        //      tone digits, length/nasal marks, IPA tone bars, and glottal
+        //      stops. Only segmental info remains.
+        //   2. Union-find with three predicates (any-match merges):
+        //      EXACT (raw equal after NFC+lower), SKEL (skeletons equal),
+        //      SUBSTRING (one skeleton ⊂ other, e.g. "it" ⊂ "yit"),
+        //      LEV (Levenshtein on skeletons, len-tapered threshold to
+        //      avoid 2-char strings collapsing into one mega-cluster).
+        //   3. Clusters of size ≥ 2 get assigned the next palette slot
+        //      in first-appearance (left-to-right) order. Singletons stay
+        //      uncolored.
+        const COMPARE_SIM_KEY = 'hm.compareSimColor';
+        const COMPARE_SIM_PALETTE = [
+            '#fce7f3', '#dbeafe', '#dcfce7', '#fef3c7',
+            '#e0e7ff', '#fed7aa', '#cffafe', '#fae8ff',
+        ];
+        let _compareSimColor = true;
+        try {
+            const stored = localStorage.getItem(COMPARE_SIM_KEY);
+            if (stored !== null) _compareSimColor = stored === '1';
+        } catch (e) {}
+
+        function _hmSkeleton(s) {
+            if (!s) return '';
+            // NFD splits combining marks (tone diacritics, length, nasal) from
+            // their base letters so we can drop the marks individually.
+            let out = String(s).normalize('NFD');
+            out = out.replace(/[̀-ͯ]/g, '');                // combining marks
+            out = out.replace(/[ˈˌ˥-˩]/g, '');    // IPA stress + tone bars ˥˦˧˨˩
+            out = out.replace(/[0-9¹²³⁴⁵⁶⁷⁸⁹⁰]/g, '');                // Pinyin / superscript tone digits
+            out = out.replace(/[ːˑʼʰʱʷ]/g, '');                       // length / aspiration / labialization
+            out = out.replace(/[ʔʼ']/g, '');                          // glottal stop & apostrophes (drop)
+            out = out.replace(/[\s\-·.\/()\[\]]/g, '');               // separators / punctuation
+            return out.toLowerCase().normalize('NFC');
+        }
+
+        function _hmLev(a, b) {
+            if (a === b) return 0;
+            if (!a.length) return b.length;
+            if (!b.length) return a.length;
+            const m = a.length, n = b.length;
+            let prev = new Array(n + 1);
+            let cur  = new Array(n + 1);
+            for (let j = 0; j <= n; j++) prev[j] = j;
+            for (let i = 1; i <= m; i++) {
+                cur[0] = i;
+                for (let j = 1; j <= n; j++) {
+                    const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+                    cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+                }
+                const tmp = prev; prev = cur; cur = tmp;
+            }
+            return prev[n];
+        }
+
+        function _hmCellsSimilar(a, b) {
+            if (!a || !b) return false;
+            if (a.rawLow && a.rawLow === b.rawLow) return true;
+            if (a.skel && b.skel && a.skel === b.skel) return true;
+            if (a.skel && b.skel) {
+                const minLen = Math.min(a.skel.length, b.skel.length);
+                const maxLen = Math.max(a.skel.length, b.skel.length);
+                // Substring shortcut handles common syllable-shape variation:
+                // "it" ⊂ "yit" (一 nan vs hak), "sam" ⊂ "saam" (三 nan vs yue).
+                if (minLen >= 2 && (a.skel.indexOf(b.skel) !== -1 || b.skel.indexOf(a.skel) !== -1)) return true;
+                // Spec thresh = floor(max(2, len*0.25)). For ≤4-char skeletons
+                // a blanket thresh=2 collapses unrelated 2-char readings, so
+                // we taper: len=2 → Lev≤1 (still catches yi↔il, id↔it), 3-4
+                // → Lev≤1, ≥5 → spec.
+                let thresh;
+                if (minLen < 2) thresh = 0;
+                else if (minLen < 5) thresh = 1;
+                else thresh = Math.floor(Math.max(2, maxLen * 0.25));
+                if (thresh > 0 && _hmLev(a.skel, b.skel) <= thresh) return true;
+            }
+            return false;
+        }
+
+        // values: array of { surface, ipa } | null (one entry per column).
+        // Returns parallel array of color strings (or null for empty/singleton).
+        function _hmClusterRow(values) {
+            const n = values.length;
+            const entries = new Array(n);
+            for (let i = 0; i < n; i++) {
+                const v = values[i];
+                if (!v) { entries[i] = null; continue; }
+                // Prefer surface for clustering (spec: surface primary, IPA tiebreak).
+                // Fall back to IPA only when surface absent.
+                const raw = (v.surface || v.ipa || '').trim();
+                if (!raw) { entries[i] = null; continue; }
+                entries[i] = {
+                    raw,
+                    rawLow: raw.toLowerCase().normalize('NFC'),
+                    skel: _hmSkeleton(raw),
+                };
+            }
+            const parent = new Array(n);
+            for (let i = 0; i < n; i++) parent[i] = i;
+            function find(x) { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
+            function union(a, b) { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; }
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                for (let j = i + 1; j < n; j++) {
+                    if (!entries[j]) continue;
+                    if (_hmCellsSimilar(entries[i], entries[j])) union(i, j);
+                }
+            }
+            // Order roots by first-column appearance for stable left→right color
+            // assignment, and only color clusters of size ≥ 2.
+            const rootOrder = [];
+            const rootCounts = {};
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                const r = find(i);
+                if (rootCounts[r] === undefined) { rootCounts[r] = 0; rootOrder.push(r); }
+                rootCounts[r]++;
+            }
+            const rootColor = {};
+            let slot = 0;
+            for (const r of rootOrder) {
+                if (rootCounts[r] >= 2) {
+                    rootColor[r] = COMPARE_SIM_PALETTE[slot % COMPARE_SIM_PALETTE.length];
+                    slot++;
+                }
+            }
+            const out = new Array(n).fill(null);
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                const r = find(i);
+                if (rootColor[r]) out[i] = rootColor[r];
+            }
+            return out;
+        }
+
+        function setCompareSimColor(on) {
+            _compareSimColor = !!on;
+            try { localStorage.setItem(COMPARE_SIM_KEY, _compareSimColor ? '1' : '0'); } catch (e) {}
+            renderCompareIfOpen();
         }
 
         function loadCompareList() {
@@ -8225,6 +8511,11 @@
             // Update title text per current UI lang
             const t = panel.querySelector('.compare-title'); if (t) t.textContent = compareT('title');
             const c = panel.querySelector('.compare-clear'); if (c) c.textContent = compareT('clear');
+            // Sync the similarity-color checkbox + label.
+            const cb = panel.querySelector('#compare-simcolor-cb');
+            const lbl = panel.querySelector('.compare-simcolor-label');
+            if (cb) cb.checked = _compareSimColor;
+            if (lbl) lbl.textContent = compareT('simcolor');
         }
         function closeComparePanel() {
             const panel = document.getElementById('compare-panel');
@@ -8267,8 +8558,13 @@
             html += '</tr></thead><tbody>';
             for (const w of WORD_LIST) {
                 const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
-                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
-                for (const code of _compareList) {
+                // First pass: collect per-column cellRows for this row so we
+                // can cluster, then a second pass emits the <td> HTML with the
+                // assigned cluster color.
+                const rowCellRows = new Array(_compareList.length);
+                const rowSummary = new Array(_compareList.length);
+                for (let ci = 0; ci < _compareList.length; ci++) {
+                    const code = _compareList[ci];
                     // HAN_VARIANTS, when present for (char, code), supplies
                     // multiple readings (e.g. ja 漢音/呉音/唐音, nan 文白
                     // 異讀, ko 頭音法則). Stack them vertically in the cell.
@@ -8295,10 +8591,23 @@
                             cellRows.push({ surface: s, ipa: i, label: '' });
                         }
                     }
+                    rowCellRows[ci] = cellRows;
+                    // For clustering: use the first variant's surface+IPA as
+                    // the cell's representative reading. Multi-variant cells
+                    // (e.g. ja 漢音/呉音) share a color based on the primary.
+                    rowSummary[ci] = cellRows.length ? { surface: cellRows[0].surface, ipa: cellRows[0].ipa } : null;
+                }
+                const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
+                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                for (let ci = 0; ci < _compareList.length; ci++) {
+                    const cellRows = rowCellRows[ci];
+                    const bg = rowColors[ci];
                     if (cellRows.length === 0) {
                         html += '<td class="unattested">—</td>';
                     } else {
-                        html += '<td>';
+                        const styleAttr = bg ? ' style="background:' + bg + '"' : '';
+                        const classAttr = bg ? ' class="cmp-cluster"' : '';
+                        html += '<td' + classAttr + styleAttr + '>';
                         for (const r of cellRows) {
                             html += '<div class="cmp-reading">';
                             if (r.surface) html += '<span class="surface" dir="auto">' + escapeHtml(r.surface) + '</span>';
@@ -8395,6 +8704,16 @@
         document.getElementById('compare-fab').addEventListener('click', openComparePanel);
         document.getElementById('compare-close').addEventListener('click', closeComparePanel);
         document.getElementById('compare-clear').addEventListener('click', clearCompare);
+        // Similarity-color toggle: live re-renders the open compare table.
+        (function wireSimColorToggle() {
+            const cb = document.getElementById('compare-simcolor-cb');
+            const lbl = document.querySelector('.compare-simcolor-label');
+            if (cb) {
+                cb.checked = _compareSimColor;
+                cb.addEventListener('change', () => setCompareSimColor(cb.checked));
+            }
+            if (lbl) lbl.textContent = compareT('simcolor');
+        })();
         // Delegate compare-add-btn clicks inside the language modal
         infoContent.addEventListener('click', e => {
             const btn = e.target.closest('.compare-add-btn');
