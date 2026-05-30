@@ -22812,6 +22812,12 @@ const HAN_VARIANTS = {
     ],
     "ko": [
       {
+        "native": "행",
+        "surface": "haeng",
+        "ipa": "hɛŋ",
+        "label": "行爲 (行動)"
+      },
+      {
         "native": "항",
         "surface": "hang",
         "ipa": "haŋ",
