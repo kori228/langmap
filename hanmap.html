@@ -2957,7 +2957,7 @@
               modern: ['cjy','czh','hsn','gan','cnp'],
               historical: ['zh_han','zh_tang','zh_song','zh_kanbun','pst'] },
             { id: 'koreanic',
-              modern: ['ko','ko_kp','ko_zai','ko_hun','ko_bus'],
+              modern: ['ko','ko_kp','ko_zai','ko_zai_nk','ko_hun','ko_bus'],
               historical: ['ko_mid','pko'] },
             { id: 'japonic',
               modern: ['ja','ja_kun','ja_kgs','ja_okn','ja_thk'],
@@ -5701,7 +5701,8 @@
         // other east-asian UIs where the canonical form runs long.
         const HAN_SHORT_NAMES = {
             ja_ojp:     { ja:'上代日本音',       ko:'고대 일본음',     zh:'上代日語音',     yue:'上代日語音' },
-            ko_zai:     { ja:'在日韓国音',       ko:'재일 한국음',     zh:'在日韓國音',     yue:'在日韓國音' },
+            ko_zai:     { ja:'在日韓国音(民団)', ko:'재일 한국음(민단)', zh:'在日韓國音(民團)', yue:'在日韓國音(民團)' },
+            ko_zai_nk:  { ja:'在日朝鮮音(総連)', ko:'재일 조선음(총련)', zh:'在日朝鮮音(總聯)', yue:'在日朝鮮音(總聯)' },
             ko_mid:     { ja:'中世韓国音',       ko:'중세 한국음',     zh:'中世韓國音',     yue:'中世韓國音' },
             ko_hun:     { ja:'韓国訓 (固有)',    ko:'한국 훈독',       zh:'韓國訓讀',       yue:'韓國訓讀' },
             ja_kun:     { ja:'訓読み',           ko:'일본 훈독',       zh:'日語訓讀',       yue:'日語訓讀' },
