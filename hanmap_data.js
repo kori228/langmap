@@ -11691,7 +11691,7 @@ const HAN_DATA = {
   "行:1": {
     "surface": {
       "zh": "xíng",
-      "yue": "hang4",
+      "yue": null,
       "yue_ts": "hang3",
       "nan": "kiâⁿ",
       "nan_qz": "kiâⁿ",
@@ -11743,7 +11743,7 @@ const HAN_DATA = {
       "zh_lz": "xing⁵³",
       "zh_db": "xing³⁵",
       "zh_zz": "xing⁴²",
-      "yue_gz": "hang4",
+      "yue_gz": null,
       "yue_dg": "hang4",
       "yue_nn": "hang4",
       "yue_zs": "hang4",
@@ -11754,8 +11754,8 @@ const HAN_DATA = {
       "cnp": "haing³³",
       "zh_yuan": "ɕiŋ²",
       "zh_phagspa": "xiŋ",
-      "yue_hk": "hang4",
-      "yue_mo": "haang4",
+      "yue_hk": null,
+      "yue_mo": null,
       "nan_sg": "kiânn",
       "nan_id": "kiâⁿ",
       "sjo": "yabum",
@@ -11803,8 +11803,8 @@ const HAN_DATA = {
       "zh_lz": "ɕin⁵³",
       "zh_wh": "ɕin²¹³",
       "zh_zz": "ɕiŋ⁴²",
-      "yue": "hɐŋ˨˩",
-      "yue_gz": "hɐŋ²¹",
+      "yue": null,
+      "yue_gz": null,
       "yue_ts": "haŋ³³",
       "yue_dg": "hɐŋ²¹",
       "yue_nn": "haŋ²¹",
@@ -11851,8 +11851,8 @@ const HAN_DATA = {
       "ja": "koː",
       "zh_yuan": "ɕiŋ˧˥",
       "zh_phagspa": "xiŋ",
-      "yue_hk": "hɐŋ˨˩",
-      "yue_mo": "haːŋ˨˩",
+      "yue_hk": null,
+      "yue_mo": null,
       "nan_sg": "kĩãː˨˦",
       "nan_id": "kiã˨˦",
       "sjo": "jawum",
@@ -26802,6 +26802,62 @@ const HAN_VARIANTS = {
         "surface": "iku",
         "ipa": "ikɯ",
         "label": "訓読み / Kun-yomi (行く)"
+      }
+    ],
+    "yue": [
+      {
+        "native": "",
+        "surface": "hang4",
+        "ipa": "hɐŋ˨˩",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "haang4",
+        "ipa": "haːŋ˨˩",
+        "label": "白讀"
+      }
+    ],
+    "yue_hk": [
+      {
+        "native": "",
+        "surface": "hang4",
+        "ipa": "hɐŋ˨˩",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "haang4",
+        "ipa": "haːŋ˨˩",
+        "label": "白讀"
+      }
+    ],
+    "yue_gz": [
+      {
+        "native": "",
+        "surface": "hang4",
+        "ipa": "hɐŋ²¹",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "haang4",
+        "ipa": "haːŋ²¹",
+        "label": "白讀"
+      }
+    ],
+    "yue_mo": [
+      {
+        "native": "",
+        "surface": "hang4",
+        "ipa": "hɐŋ˨˩",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "haang4",
+        "ipa": "haːŋ˨˩",
+        "label": "白讀"
       }
     ]
   },
