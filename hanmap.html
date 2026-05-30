@@ -118,6 +118,29 @@
             src: url('fonts/NotoSerifKR-OldHangul-subset.ttf') format('truetype');
             unicode-range: U+1100-11FF;
         }
+        /* Hangul Compatibility Jamo (U+3130-318F) — the modern jamo block
+           ㄱ ㄴ ㄷ … ㅏ ㅑ ㅓ is well-covered by every Korean system font,
+           BUT the archaic letters in this block — ㅸ (U+3178 pieup-soft),
+           ㅭ (U+316D rieul-yeorin-hieuh), ㅿ (U+317F pansiot), ㆁ (U+3181
+           yesieung / old ng), ㆆ (U+3186 yeorin-hieuh / glottal stop) —
+           used by hanmap to describe Dongguk-Jeongun (1448) Sino-Korean
+           initials/finals, are NOT in iOS Hiragino's Hangul subset nor in
+           Apple SD Gothic Neo's default cmap, so they render as tofu on
+           iPhone Safari even though they look fine on macOS/Android.
+           Same self-host-+-unicode-range trick as the old conjoining
+           jamo above: a tiny (~11 KB) Noto Serif KR subset, scoped so
+           the browser is forced to use it for any char in U+3130-318F
+           regardless of font-family chain order. Sister fix to wordmap's
+           Old-Jamo @font-face (hanmap uses Compat Jamo, wordmap uses
+           conjoining — disjoint Unicode blocks, same root cause). */
+        @font-face {
+            font-family: 'Noto Serif KR Compat Jamo';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/NotoSerifKR-CompatJamo-subset.woff2') format('woff2');
+            unicode-range: U+3130-318F;
+        }
     </style>
     <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
          for "Noto Serif Khitan Small Script"). Load the Serif variant
@@ -505,9 +528,14 @@
                    - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
                    - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em
                      conjoining old hangul jamo — arae-a etc).
-                   Both fall through to the broader Noto Serif chain
+                   - Noto Serif KR Compat Jamo: U+3130-318F (archaic
+                     compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ used in
+                     Dongguk-Jeongun Sino-Korean descriptions; tofu
+                     on iPhone Safari without this scoped subset).
+                   All three fall through to the broader Noto Serif chain
                    for any chars outside their scope. */
                 "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
                 "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
@@ -707,6 +735,26 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.25);
             font-size: 13px; line-height: 1.6; display: none;
             overflow: hidden;   /* radius clipping; scroll is on #info-content */
+            /* Include 'Noto Serif KR Compat Jamo' (unicode-range U+3130-318F)
+               so archaic Hangul compatibility jamo — ㅸ U+3178, ㅭ U+316D,
+               ㅿ U+317F, ㆁ U+3181, ㆆ U+3186 — used in Dongguk-Jeongun
+               variant descriptions render via the scoped Noto Serif KR
+               subset instead of tofu on iPhone Safari (Hiragino's Hangul
+               cmap omits these archaic glyphs even though it covers the
+               modern compatibility jamo ㄱㄴㄷ). Sister fix to wordmap's
+               Old-Jamo @font-face: hanmap uses Compat Jamo (this block),
+               wordmap uses conjoining jamo (U+1100-11FF) — disjoint Unicode
+               blocks, same self-host-+-unicode-range pattern. The rest of
+               the chain matches `.wm-form` so non-Korean glyphs (Phags-pa,
+               Tangut, Khitan, etc.) inside the panel still pick up their
+               respective Noto webfonts. */
+            font-family:
+                "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
+                "Nom Serif Subset",
+                "Gentium Plus", "Noto Serif", "Noto Serif JP",
+                "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                system-ui, sans-serif;
         }
         .lang-info-panel.visible { display: flex; flex-direction: column; }
         #info-content {
@@ -777,10 +825,14 @@
             font-family:
                 /* Self-hosted serif subsets, scoped via unicode-range:
                    - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em)
+                   - Noto Serif KR Compat Jamo: U+3130-318F (archaic
+                     compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ — tofu on iPhone
+                     without the scoped subset).
                    - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
-                   Both load on-demand and fall through to the rest of the
+                   All load on-demand and fall through to the rest of the
                    Noto Serif chain. */
                 "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
                 "Nôm Na Tống", "HAN NOM A", "HAN NOM B", "HanaMinA", "HanaMinB",
                 "Gentium Plus", "Noto Serif", "Noto Serif JP",
