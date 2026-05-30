@@ -2443,8 +2443,7 @@
             </nav>
             <button type="button" class="trivia-btn" id="trivia-open"
                     aria-haspopup="dialog" aria-controls="trivia-modal"
-                    title="Linguistic trivia"
-                    style="display:none">
+                    title="Linguistic trivia">
                 <span aria-hidden="true">📚</span>
                 <span class="trivia-btn-label" id="trivia-btn-label">Linguistic Trivia</span>
             </button>
@@ -2989,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=44"></script>
+    <script src="hanmap_data.js?v=45"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3004,7 +3003,7 @@
     <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
          TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
          renders these without changes. Must come BEFORE wordmap's IIFE. -->
-    <script src="hanmap_trivia.js?v=1"></script>
+    <script src="hanmap_trivia.js?v=2"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=115"></script>
@@ -3907,21 +3906,32 @@
         }
         setTilesMode('flat');
 
-        // Fix blank initial render: when hanmap loads via a same-origin
-        // nav (from tree.html / wordmap.html / index.html), Leaflet
-        // computes the container size before the header chrome / fonts /
-        // language-filter row have finished sizing. The map ends up
-        // with a stale size cache, tiles aren't requested for the visible
-        // area, and the user sees blank until they pan. Force a
-        // size-cache invalidation after each animation frame settles,
-        // and again on window.load when every <link> + <script> has
-        // resolved.
+        // Fix blank initial render. Leaflet computes the tile-grid (which
+        // tiles to fetch for the current view) at tileLayer-attach time,
+        // and on iOS Safari + cold-cache loads the container occasionally
+        // measures at 0×0 before the header / fonts / fixed-position
+        // chrome have committed. The result: 0 tiles requested, blank
+        // map until the user pans. invalidateSize() recomputes size AND
+        // fires moveend, which makes the tile layer redraw — but if
+        // tiles were never fetched, redraw is needed too.
         function _hmInvalidateSize() {
-            try { map.invalidateSize(); } catch (_) {}
+            try {
+                map.invalidateSize();
+                if (typeof _currentTileLayer !== 'undefined' && _currentTileLayer && _currentTileLayer.redraw) {
+                    _currentTileLayer.redraw();
+                }
+            } catch (_) {}
         }
+        // Fire at several deferred ticks so we catch:
+        //  - next animation frame (immediate layout)
+        //  - window.load (all <link>/<script>/CSS resolved)
+        //  - 200ms (web-fonts swap typically completes)
+        //  - 800ms (heavy cold-cache, mobile Safari)
         requestAnimationFrame(() => requestAnimationFrame(_hmInvalidateSize));
         if (document.readyState === 'complete') _hmInvalidateSize();
         else window.addEventListener('load', _hmInvalidateSize);
+        setTimeout(_hmInvalidateSize, 200);
+        setTimeout(_hmInvalidateSize, 800);
         // Belt-and-braces: catch later layout shifts from delayed fonts
         // or the responsive lang-filter dock collapsing.
         if (typeof ResizeObserver !== 'undefined') {
