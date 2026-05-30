@@ -155,6 +155,7 @@ const HAN_DATA = {
   "一": {
     "surface": {
       "zh": "yī",
+      "zh_tw": "yī",
       "yue": "jat1",
       "yue_ts": "yat1",
       "wuu": "iq⁵⁵",
@@ -238,6 +239,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "i˥˥",
+      "zh_tw": "i˥˥",
       "zh_db": "i⁵⁵",
       "zh_sc": "i²¹",
       "zh_cd": "i²¹",
@@ -345,6 +347,7 @@ const HAN_DATA = {
       "yue_us": "一",
       "zh_us": "一",
       "zh_th": "一",
+      "zh_tw": "一",
       "ja_kgs": "イッ",
       "ja_okn": "イツ",
       "ja_thk": "イツ",
@@ -354,6 +357,7 @@ const HAN_DATA = {
   "二": {
     "surface": {
       "zh": "èr",
+      "zh_tw": "èr",
       "yue": "ji6",
       "yue_ts": "ngi6",
       "wuu": "nyi²³",
@@ -437,6 +441,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ɑɻ˥˩",
+      "zh_tw": "ɑɻ˥˩",
       "zh_db": "ɚ⁵¹",
       "zh_sc": "ɚ²¹³",
       "zh_cd": "ɚ²¹³",
@@ -544,6 +549,7 @@ const HAN_DATA = {
       "yue_us": "二",
       "zh_us": "二",
       "zh_th": "二",
+      "zh_tw": "二",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
       "ja_thk": "ジ",
@@ -553,6 +559,7 @@ const HAN_DATA = {
   "三": {
     "surface": {
       "zh": "sān",
+      "zh_tw": "sān",
       "yue": "saam1",
       "yue_ts": "lham3",
       "cdo": "săng⁵³",
@@ -639,6 +646,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "san˥˥",
+      "zh_tw": "san˥˥",
       "zh_db": "san⁵⁵",
       "zh_sc": "san⁵⁵",
       "zh_cd": "san⁵⁵",
@@ -749,6 +757,7 @@ const HAN_DATA = {
       "yue_us": "三",
       "zh_us": "三",
       "zh_th": "三",
+      "zh_tw": "三",
       "ja_kgs": "サン",
       "ja_okn": "サン",
       "ja_thk": "サン",
@@ -758,6 +767,7 @@ const HAN_DATA = {
   "四": {
     "surface": {
       "zh": "sì",
+      "zh_tw": "sì",
       "yue": "sei3",
       "yue_ts": "si3",
       "nan": "sì",
@@ -857,6 +867,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "sɿ˥˩",
+      "zh_tw": "sɿ˥˩",
       "zh_db": "sɿ˥˧",
       "zh_sc": "sɿ˨˩˧",
       "zh_cd": "sɿ˨˩˧",
@@ -981,6 +992,7 @@ const HAN_DATA = {
       "zh_us": "四",
       "nan_th": "四",
       "zh_th": "四",
+      "zh_tw": "四",
       "nan_pera": "四",
       "ja_kgs": "シ",
       "ja_okn": "シ",
@@ -991,6 +1003,7 @@ const HAN_DATA = {
   "五": {
     "surface": {
       "zh": "wǔ",
+      "zh_tw": "wǔ",
       "yue": "ng5",
       "yue_ts": "ng5",
       "nan_te": "ngou6",
@@ -1075,6 +1088,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "u˨˩˦",
+      "zh_tw": "u˨˩˦",
       "zh_db": "u˨˩˦",
       "zh_sc": "u˥˧",
       "zh_cd": "u˥˧",
@@ -1183,6 +1197,7 @@ const HAN_DATA = {
       "yue_us": "五",
       "zh_us": "五",
       "zh_th": "五",
+      "zh_tw": "五",
       "ja_kgs": "ゴ",
       "ja_okn": "グ",
       "ja_thk": "ゴ",
@@ -1192,6 +1207,7 @@ const HAN_DATA = {
   "六": {
     "surface": {
       "zh": "liù",
+      "zh_tw": "liù",
       "yue": "luk6",
       "yue_ts": "luk32",
       "wuu": "loq¹²",
@@ -1276,6 +1292,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ljou˥˩",
+      "zh_tw": "ljou˥˩",
       "zh_db": "liou˥˧",
       "zh_sc": "nəu˨˩˧",
       "zh_cd": "nəu˨˩˧",
@@ -1384,6 +1401,7 @@ const HAN_DATA = {
       "yue_us": "六",
       "zh_us": "六",
       "zh_th": "六",
+      "zh_tw": "六",
       "ja_kgs": "リッ",
       "ja_okn": "リク",
       "ja_thk": "リク",
@@ -1393,6 +1411,7 @@ const HAN_DATA = {
   "七": {
     "surface": {
       "zh": "qī",
+      "zh_tw": "qī",
       "yue": "cat1",
       "yue_ts": "chat1",
       "nan": "tshit",
@@ -1490,6 +1509,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ɕʰi˥˥",
+      "zh_tw": "t͡ɕʰi˥˥",
       "zh_db": "tɕʰi˥",
       "zh_sc": "tsʰɿ˨",
       "zh_cd": "tsʰɿ˨",
@@ -1612,6 +1632,7 @@ const HAN_DATA = {
       "zh_us": "七",
       "nan_th": "七",
       "zh_th": "七",
+      "zh_tw": "七",
       "nan_pera": "七",
       "ja_kgs": "シッ",
       "ja_okn": "シツ",
@@ -1622,6 +1643,7 @@ const HAN_DATA = {
   "八": {
     "surface": {
       "zh": "bā",
+      "zh_tw": "bā",
       "yue": "baat3",
       "yue_ts": "bat3",
       "cdo": "báik",
@@ -1706,6 +1728,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "pa˥˥",
+      "zh_tw": "pa˥˥",
       "zh_db": "pa˥",
       "zh_sc": "pa˨",
       "zh_cd": "pa˨",
@@ -1814,6 +1837,7 @@ const HAN_DATA = {
       "yue_us": "八",
       "zh_us": "八",
       "zh_th": "八",
+      "zh_tw": "八",
       "ja_kgs": "ハッ",
       "ja_okn": "ハツ",
       "ja_thk": "ハツ",
@@ -1823,6 +1847,7 @@ const HAN_DATA = {
   "九": {
     "surface": {
       "zh": "jiǔ",
+      "zh_tw": "jiǔ",
       "yue": "gau2",
       "yue_ts": "gau1",
       "mnp": "giǔ",
@@ -1905,6 +1930,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ɕjou˨˩˦",
+      "zh_tw": "t͡ɕjou˨˩˦",
       "zh_db": "tɕiɤu˨˩˦",
       "zh_sc": "tɕiəu˥˧",
       "zh_cd": "tɕiəu˥˧",
@@ -2011,6 +2037,7 @@ const HAN_DATA = {
       "yue_us": "九",
       "zh_us": "九",
       "zh_th": "九",
+      "zh_tw": "九",
       "ja_kgs": "キュウ",
       "ja_okn": "キュウ",
       "ja_thk": "キュウ",
@@ -2020,6 +2047,7 @@ const HAN_DATA = {
   "十": {
     "surface": {
       "zh": "shí",
+      "zh_tw": "shí",
       "yue": "sap6",
       "yue_ts": "lhip32",
       "mnp": "sĭp²⁴",
@@ -2102,6 +2130,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʂʐ̩˧˥",
+      "zh_tw": "ʂʐ̩˧˥",
       "zh_db": "ʂʐ̩˧˥",
       "zh_sc": "sɿ˨˩",
       "zh_cd": "sɿ˨˩",
@@ -2208,6 +2237,7 @@ const HAN_DATA = {
       "yue_us": "十",
       "zh_us": "十",
       "zh_th": "十",
+      "zh_tw": "十",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
       "ja_thk": "シュウ",
@@ -2217,6 +2247,7 @@ const HAN_DATA = {
   "日": {
     "surface": {
       "zh": "rì",
+      "zh_tw": "rì",
       "yue": "jat6",
       "yue_ts": "yat6",
       "nan_te": "rig8",
@@ -2301,6 +2332,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʐ̩˥˩",
+      "zh_tw": "ʐ̩˥˩",
       "zh_db": "i˥˩",
       "zh_sc": "zəʔ⁵",
       "zh_cd": "zɿ²¹³",
@@ -2410,6 +2442,7 @@ const HAN_DATA = {
       "zh_us": "日",
       "nan_th": "日",
       "zh_th": "日",
+      "zh_tw": "日",
       "nan_pera": "日",
       "ja_kgs": "ジッ",
       "ja_okn": "ジツ",
@@ -2420,6 +2453,7 @@ const HAN_DATA = {
   "月": {
     "surface": {
       "zh": "yuè",
+      "zh_tw": "yuè",
       "yue": "jyut6",
       "yue_ts": "yut6",
       "nan_hai": "gue2",
@@ -2502,6 +2536,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ɥe˥˩",
+      "zh_tw": "ɥe˥˩",
       "zh_db": "ye⁵¹",
       "zh_sc": "yɪʔ⁵",
       "zh_cd": "ye²¹³",
@@ -2608,6 +2643,7 @@ const HAN_DATA = {
       "yue_us": "月",
       "zh_us": "月",
       "zh_th": "月",
+      "zh_tw": "月",
       "ja_kgs": "ゲッ",
       "ja_okn": "ギツ",
       "ja_thk": "ゲツ",
@@ -2617,6 +2653,7 @@ const HAN_DATA = {
   "山": {
     "surface": {
       "zh": "shān",
+      "zh_tw": "shān",
       "yue": "saan1",
       "yue_ts": "san1",
       "nan_hai": "dua2",
@@ -2702,6 +2739,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʂan˥˥",
+      "zh_tw": "ʂan˥˥",
       "zh_db": "san⁴⁴",
       "zh_sc": "sɛ⁵⁵",
       "zh_cd": "san⁵⁵",
@@ -2812,6 +2850,7 @@ const HAN_DATA = {
       "yue_us": "山",
       "zh_us": "山",
       "zh_th": "山",
+      "zh_tw": "山",
       "ja_kgs": "サン",
       "ja_okn": "サン",
       "ja_thk": "サン",
@@ -2821,6 +2860,7 @@ const HAN_DATA = {
   "水": {
     "surface": {
       "zh": "shuǐ",
+      "zh_tw": "shuǐ",
       "yue": "seoi2",
       "yue_ts": "sui2",
       "nan_te": "tsui2",
@@ -2911,6 +2951,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʂueɪ˨˩˦",
+      "zh_tw": "ʂueɪ˨˩˦",
       "zh_db": "ʂueɪ²¹⁴",
       "zh_sc": "suei⁵³",
       "zh_cd": "suei⁵³",
@@ -3026,6 +3067,7 @@ const HAN_DATA = {
       "zh_us": "水",
       "nan_th": "水",
       "zh_th": "水",
+      "zh_tw": "水",
       "ja_kgs": "スイ",
       "ja_okn": "スイ",
       "ja_thk": "スイ",
@@ -3035,6 +3077,7 @@ const HAN_DATA = {
   "火": {
     "surface": {
       "zh": "huǒ",
+      "zh_tw": "huǒ",
       "yue": "fo2",
       "yue_ts": "fo2",
       "nan_te": "hue2",
@@ -3123,6 +3166,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "xuo˨˩˦",
+      "zh_tw": "xuo˨˩˦",
       "zh_db": "xuo²¹⁴",
       "zh_sc": "xo⁵³",
       "zh_cd": "xo⁵³",
@@ -3236,6 +3280,7 @@ const HAN_DATA = {
       "zh_us": "火",
       "nan_th": "火",
       "zh_th": "火",
+      "zh_tw": "火",
       "ja_kgs": "カ",
       "ja_okn": "カ",
       "ja_thk": "カ",
@@ -3245,6 +3290,7 @@ const HAN_DATA = {
   "木": {
     "surface": {
       "zh": "mù",
+      "zh_tw": "mù",
       "yue": "muk6",
       "yue_ts": "muk6",
       "nan_hai": "bag5",
@@ -3335,6 +3381,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "mu˥˩",
+      "zh_tw": "mu˥˩",
       "zh_db": "mu⁵¹",
       "zh_sc": "mu²¹³",
       "zh_cd": "mu³¹",
@@ -3450,6 +3497,7 @@ const HAN_DATA = {
       "zh_us": "木",
       "nan_th": "木",
       "zh_th": "木",
+      "zh_tw": "木",
       "nan_pera": "木",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
@@ -3460,6 +3508,7 @@ const HAN_DATA = {
   "土": {
     "surface": {
       "zh": "tǔ",
+      "zh_tw": "tǔ",
       "yue": "tou2",
       "yue_ts": "tho2",
       "nan": "thó͘",
@@ -3557,6 +3606,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tʰu˨˩˦",
+      "zh_tw": "tʰu˨˩˦",
       "zh_db": "tʰu²¹³",
       "zh_sc": "tʰu⁵³",
       "zh_cd": "tʰu⁵³",
@@ -3679,6 +3729,7 @@ const HAN_DATA = {
       "zh_us": "土",
       "nan_th": "土",
       "zh_th": "土",
+      "zh_tw": "土",
       "nan_pera": "土",
       "ja_kgs": "ト",
       "ja_okn": "ツ",
@@ -3689,6 +3740,7 @@ const HAN_DATA = {
   "天": {
     "surface": {
       "zh": "tiān",
+      "zh_tw": "tiān",
       "yue": "tin1",
       "yue_ts": "thin1",
       "nan_hai": "ti1",
@@ -3773,6 +3825,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tʰjan˥˥",
+      "zh_tw": "tʰjan˥˥",
       "zh_db": "tʰian⁵⁵",
       "zh_sc": "tʰiɛn⁵⁵",
       "zh_cd": "tʰiɛn⁵⁵",
@@ -3881,6 +3934,7 @@ const HAN_DATA = {
       "yue_us": "天",
       "zh_us": "天",
       "zh_th": "天",
+      "zh_tw": "天",
       "ja_kgs": "テン",
       "ja_okn": "チン",
       "ja_thk": "テン",
@@ -3890,6 +3944,7 @@ const HAN_DATA = {
   "地": {
     "surface": {
       "zh": "dì",
+      "zh_tw": "dì",
       "yue": "dei6",
       "yue_ts": "di6",
       "nan_te": "di6",
@@ -3977,6 +4032,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ti˥˩",
+      "zh_tw": "ti˥˩",
       "zh_db": "ti⁵¹",
       "zh_sc": "ti²¹³",
       "zh_cd": "ti¹³",
@@ -4089,6 +4145,7 @@ const HAN_DATA = {
       "zh_us": "地",
       "nan_th": "地",
       "zh_th": "地",
+      "zh_tw": "地",
       "ja_kgs": "チ",
       "ja_okn": "チ",
       "ja_thk": "チ",
@@ -4098,6 +4155,7 @@ const HAN_DATA = {
   "海": {
     "surface": {
       "zh": "hǎi",
+      "zh_tw": "hǎi",
       "yue": "hoi2",
       "yue_ts": "hoi2",
       "nan": "hái",
@@ -4193,6 +4251,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "xaɪ˨˩˦",
+      "zh_tw": "xaɪ˨˩˦",
       "zh_db": "xai²¹³",
       "zh_sc": "xai⁵³",
       "zh_cd": "xai⁵³",
@@ -4314,6 +4373,7 @@ const HAN_DATA = {
       "zh_us": "海",
       "nan_th": "海",
       "zh_th": "海",
+      "zh_tw": "海",
       "nan_pera": "海",
       "ja_kgs": "カイ",
       "ja_okn": "カイ",
@@ -4324,6 +4384,7 @@ const HAN_DATA = {
   "龍": {
     "surface": {
       "zh": "lóng",
+      "zh_tw": "lóng",
       "yue": "lung4",
       "yue_ts": "lung5",
       "nan_te": "leng5",
@@ -4407,6 +4468,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "luŋ˧˥",
+      "zh_tw": "luŋ˧˥",
       "zh_db": "luŋ˧˥",
       "zh_sc": "nong²¹",
       "zh_cd": "noŋ²¹",
@@ -4514,6 +4576,7 @@ const HAN_DATA = {
       "zh_us": "龍",
       "nan_th": "龍",
       "zh_th": "龍",
+      "zh_tw": "龍",
       "ja_kgs": "リョウ",
       "ja_okn": "リュウ",
       "ja_thk": "リョウ",
@@ -4523,6 +4586,7 @@ const HAN_DATA = {
   "虎": {
     "surface": {
       "zh": "hǔ",
+      "zh_tw": "hǔ",
       "yue": "fu2",
       "yue_ts": "fu2",
       "nan": "hó͘",
@@ -4618,6 +4682,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "xu˨˩˦",
+      "zh_tw": "xu˨˩˦",
       "zh_db": "xu˨˩˦",
       "zh_sc": "fu⁵³",
       "zh_cd": "fu⁵³",
@@ -4737,6 +4802,7 @@ const HAN_DATA = {
       "zh_us": "虎",
       "nan_th": "虎",
       "zh_th": "虎",
+      "zh_tw": "虎",
       "nan_pera": "虎",
       "ja_kgs": "コ",
       "ja_okn": "ク",
@@ -4747,6 +4813,7 @@ const HAN_DATA = {
   "犬": {
     "surface": {
       "zh": "quǎn",
+      "zh_tw": "quǎn",
       "yue": "hyun2",
       "yue_ts": "hyun2",
       "nan_qz": "khián",
@@ -4843,6 +4910,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ɕʰyan˨˩˦",
+      "zh_tw": "t͡ɕʰyan˨˩˦",
       "zh_db": "tɕʰyɛn˨¹˦",
       "zh_sc": "tɕʰyan⁵³",
       "zh_cd": "tɕʰyan⁵³",
@@ -4964,6 +5032,7 @@ const HAN_DATA = {
       "zh_us": "犬",
       "nan_th": "犬",
       "zh_th": "犬",
+      "zh_tw": "犬",
       "nan_pera": "犬",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
@@ -4974,6 +5043,7 @@ const HAN_DATA = {
   "馬": {
     "surface": {
       "zh": "mǎ",
+      "zh_tw": "mǎ",
       "yue": "maa5",
       "yue_ts": "ma5",
       "nan_te": "bhê2",
@@ -5061,6 +5131,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ma˨˩˦",
+      "zh_tw": "ma˨˩˦",
       "zh_db": "ma˨˩˦",
       "zh_sc": "ma˥˧",
       "zh_cd": "ma˥˧",
@@ -5173,6 +5244,7 @@ const HAN_DATA = {
       "zh_us": "馬",
       "nan_th": "馬",
       "zh_th": "馬",
+      "zh_tw": "馬",
       "ja_kgs": "バ",
       "ja_okn": "バ",
       "ja_thk": "バ",
@@ -5182,6 +5254,7 @@ const HAN_DATA = {
   "鳥": {
     "surface": {
       "zh": "niǎo",
+      "zh_tw": "niǎo",
       "yue": "niu5",
       "yue_ts": "niu5",
       "nan_te": "tsiau2",
@@ -5270,6 +5343,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "njau˨˩˦",
+      "zh_tw": "njau˨˩˦",
       "zh_db": "niɔ˨˩˦",
       "zh_sc": "niau˥˧",
       "zh_cd": "niau˥˧",
@@ -5383,6 +5457,7 @@ const HAN_DATA = {
       "zh_us": "鳥",
       "nan_th": "鳥",
       "zh_th": "鳥",
+      "zh_tw": "鳥",
       "ja_kgs": "チョウ",
       "ja_okn": "チュウ",
       "ja_thk": "チョウ",
@@ -5392,6 +5467,7 @@ const HAN_DATA = {
   "魚": {
     "surface": {
       "zh": "yú",
+      "zh_tw": "yú",
       "yue": "jyu4",
       "yue_ts": "yu5",
       "nan_te": "hư5",
@@ -5481,6 +5557,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "y˧˥",
+      "zh_tw": "y˧˥",
       "zh_db": "y˧˥",
       "zh_sc": "y˨˩",
       "zh_cd": "y˨˩",
@@ -5595,6 +5672,7 @@ const HAN_DATA = {
       "zh_us": "魚",
       "nan_th": "魚",
       "zh_th": "魚",
+      "zh_tw": "魚",
       "ja_kgs": "ギョ",
       "ja_okn": "ギュ",
       "ja_thk": "ギョ",
@@ -5604,6 +5682,7 @@ const HAN_DATA = {
   "牛": {
     "surface": {
       "zh": "niú",
+      "zh_tw": "niú",
       "yue": "ngau4",
       "yue_ts": "ngau5",
       "nan_te": "gu5",
@@ -5688,6 +5767,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "njou˧˥",
+      "zh_tw": "njou˧˥",
       "zh_db": "niou³⁵",
       "zh_sc": "niəu²¹",
       "zh_cd": "niəu³¹",
@@ -5797,6 +5877,7 @@ const HAN_DATA = {
       "zh_us": "牛",
       "nan_th": "牛",
       "zh_th": "牛",
+      "zh_tw": "牛",
       "ja_kgs": "ギュウ",
       "ja_okn": "ギュウ",
       "ja_thk": "ギュウ",
@@ -5806,6 +5887,7 @@ const HAN_DATA = {
   "羊": {
     "surface": {
       "zh": "yáng",
+      "zh_tw": "yáng",
       "yue": "joeng4",
       "yue_ts": "yeung5",
       "nan_te": "ie5",
@@ -5889,6 +5971,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "jaŋ˧˥",
+      "zh_tw": "jaŋ˧˥",
       "zh_db": "iaŋ³⁵",
       "zh_sc": "yan²¹",
       "zh_cd": "yan³¹",
@@ -5996,6 +6079,7 @@ const HAN_DATA = {
       "zh_us": "羊",
       "nan_th": "羊",
       "zh_th": "羊",
+      "zh_tw": "羊",
       "ja_kgs": "ヨウ",
       "ja_okn": "ユウ",
       "ja_thk": "ヨウ",
@@ -6006,6 +6090,7 @@ const HAN_DATA = {
   "貓": {
     "surface": {
       "zh": "māo",
+      "zh_tw": "māo",
       "yue": "maau1",
       "yue_ts": "mau1",
       "nan_qz": "niau",
@@ -6095,6 +6180,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "mau˥˥",
+      "zh_tw": "mau˥˥",
       "zh_db": "mau⁵⁵",
       "zh_sc": "mau⁵⁵",
       "zh_cd": "mau⁵⁵",
@@ -6207,6 +6293,7 @@ const HAN_DATA = {
       "zh_us": "貓",
       "nan_th": "貓",
       "zh_th": "貓",
+      "zh_tw": "貓",
       "nan_pera": "貓",
       "zh_phagspa": "ꡏꡠꡓ",
       "ja_kgs": "ビョウ",
@@ -6218,6 +6305,7 @@ const HAN_DATA = {
   "人": {
     "surface": {
       "zh": "rén",
+      "zh_tw": "rén",
       "yue": "jan4",
       "yue_ts": "nyin5",
       "wuu_nb": "nyin²³¹",
@@ -6300,6 +6388,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʐən˧˥",
+      "zh_tw": "ʐən˧˥",
       "zh_db": "in˧˥",
       "zh_sc": "zən˨˩",
       "zh_cd": "zən˨˩",
@@ -6407,6 +6496,7 @@ const HAN_DATA = {
       "yue_us": "人",
       "zh_us": "人",
       "zh_th": "人",
+      "zh_tw": "人",
       "ja_kgs": "ジン",
       "ja_okn": "ジン",
       "ja_thk": "ジン",
@@ -6416,6 +6506,7 @@ const HAN_DATA = {
   "手": {
     "surface": {
       "zh": "shǒu",
+      "zh_tw": "shǒu",
       "yue": "sau2",
       "yue_ts": "shau2",
       "nan_hai": "tshiu4",
@@ -6500,6 +6591,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʂou˨˩˦",
+      "zh_tw": "ʂou˨˩˦",
       "zh_db": "sou˨˩˦",
       "zh_sc": "sou˥˧",
       "zh_cd": "sou˥˧",
@@ -6609,6 +6701,7 @@ const HAN_DATA = {
       "zh_us": "手",
       "nan_th": "手",
       "zh_th": "手",
+      "zh_tw": "手",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
       "ja_thk": "シュウ",
@@ -6618,6 +6711,7 @@ const HAN_DATA = {
   "足": {
     "surface": {
       "zh": "zú",
+      "zh_tw": "zú",
       "yue": "zuk1",
       "yue_ts": "juk1",
       "nan_te": "tsiog4",
@@ -6709,6 +6803,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tsu˧˥",
+      "zh_tw": "tsu˧˥",
       "zh_db": "tsu˧˥",
       "zh_sc": "tsu˨˩",
       "zh_cd": "tsu²¹",
@@ -6825,6 +6920,7 @@ const HAN_DATA = {
       "zh_us": "足",
       "nan_th": "足",
       "zh_th": "足",
+      "zh_tw": "足",
       "nan_pera": "足",
       "ja_kgs": "ショッ",
       "ja_okn": "シュク",
@@ -6835,6 +6931,7 @@ const HAN_DATA = {
   "目": {
     "surface": {
       "zh": "mù",
+      "zh_tw": "mù",
       "yue": "muk6",
       "yue_ts": "muk6",
       "nan_te": "mag8",
@@ -6919,6 +7016,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "mu˥˩",
+      "zh_tw": "mu˥˩",
       "zh_db": "mu˥˩",
       "zh_sc": "mu²¹³",
       "zh_cd": "mu²¹",
@@ -7028,6 +7126,7 @@ const HAN_DATA = {
       "zh_us": "目",
       "nan_th": "目",
       "zh_th": "目",
+      "zh_tw": "目",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
       "ja_thk": "ボク",
@@ -7037,6 +7136,7 @@ const HAN_DATA = {
   "耳": {
     "surface": {
       "zh": "ěr",
+      "zh_tw": "ěr",
       "yue": "ji5",
       "yue_ts": "yi5",
       "nan_te": "hĩ5",
@@ -7125,6 +7225,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ɑɻ˨˩˦",
+      "zh_tw": "ɑɻ˨˩˦",
       "zh_db": "ɚ²¹⁴",
       "zh_sc": "ɚ⁵³",
       "zh_cd": "ɚ⁵³",
@@ -7238,6 +7339,7 @@ const HAN_DATA = {
       "zh_us": "耳",
       "nan_th": "耳",
       "zh_th": "耳",
+      "zh_tw": "耳",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
       "ja_thk": "ジ",
@@ -7247,6 +7349,7 @@ const HAN_DATA = {
   "口": {
     "surface": {
       "zh": "kǒu",
+      "zh_tw": "kǒu",
       "yue": "hau2",
       "yue_ts": "hau2",
       "nan_te": "khau2",
@@ -7336,6 +7439,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "kʰou˨˩˦",
+      "zh_tw": "kʰou˨˩˦",
       "zh_db": "kʰou²¹⁴",
       "zh_sc": "kʰəu⁵³",
       "zh_cd": "kʰəu⁵³",
@@ -7450,6 +7554,7 @@ const HAN_DATA = {
       "zh_us": "口",
       "nan_th": "口",
       "zh_th": "口",
+      "zh_tw": "口",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
       "ja_thk": "コウ",
@@ -7459,6 +7564,7 @@ const HAN_DATA = {
   "頭": {
     "surface": {
       "zh": "tóu",
+      "zh_tw": "tóu",
       "yue": "tau4",
       "yue_ts": "thau5",
       "nan_te": "thau5",
@@ -7546,6 +7652,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tʰou˧˥",
+      "zh_tw": "tʰou˧˥",
       "zh_db": "tʰou˧˥",
       "zh_sc": "tʰəu˨˩",
       "zh_cd": "tʰəu˨˩",
@@ -7658,6 +7765,7 @@ const HAN_DATA = {
       "zh_us": "頭",
       "nan_th": "頭",
       "zh_th": "頭",
+      "zh_tw": "頭",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
       "ja_thk": "トウ",
@@ -7667,6 +7775,7 @@ const HAN_DATA = {
   "心": {
     "surface": {
       "zh": "xīn",
+      "zh_tw": "xīn",
       "yue": "sam1",
       "yue_ts": "sam1",
       "nan": "sim",
@@ -7762,6 +7871,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ɕin˥˥",
+      "zh_tw": "ɕin˥˥",
       "zh_db": "ɕin˥˥",
       "zh_sc": "ɕin˥˥",
       "zh_cd": "ɕin˥˥",
@@ -7882,6 +7992,7 @@ const HAN_DATA = {
       "zh_us": "心",
       "nan_th": "心",
       "zh_th": "心",
+      "zh_tw": "心",
       "nan_pera": "心",
       "ja_kgs": "シン",
       "ja_okn": "シン",
@@ -7891,6 +8002,7 @@ const HAN_DATA = {
   },
   "血": {
     "surface": {
+      "zh_tw": "xuè",
       "yue": "hyut3",
       "yue_ts": "hyut3",
       "nan_te": "huih4",
@@ -7978,6 +8090,7 @@ const HAN_DATA = {
       "ja_thk": "ketsu"
     },
     "ipa": {
+      "zh_tw": "ɕye˥˩",
       "zh_db": "ɕye˥˩",
       "zh_sc": "ɕye˨˩˧",
       "zh_cd": "ɕye˨˩˧",
@@ -8091,6 +8204,7 @@ const HAN_DATA = {
       "zh_us": "血",
       "nan_th": "血",
       "zh_th": "血",
+      "zh_tw": "血",
       "ja_kgs": "ケッ",
       "ja_okn": "キツ",
       "ja_thk": "ケツ",
@@ -8100,6 +8214,7 @@ const HAN_DATA = {
   "肉": {
     "surface": {
       "zh": "ròu",
+      "zh_tw": "ròu",
       "yue": "juk6",
       "yue_ts": "yuk6",
       "nan_te": "neh8",
@@ -8187,6 +8302,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʐou˥˩",
+      "zh_tw": "ʐou˥˩",
       "zh_db": "ʐou˥˩",
       "zh_sc": "zu˨˩˧",
       "zh_cd": "zu˨˩˧",
@@ -8298,6 +8414,7 @@ const HAN_DATA = {
       "zh_us": "肉",
       "nan_th": "肉",
       "zh_th": "肉",
+      "zh_tw": "肉",
       "ja_kgs": "ジッ",
       "ja_okn": "ジク",
       "ja_thk": "ジク",
@@ -8306,6 +8423,7 @@ const HAN_DATA = {
   },
   "上": {
     "surface": {
+      "zh_tw": "shàng",
       "nan_hai": "tio3",
       "cdo": "siōng",
       "cpx": "sióng",
@@ -8385,6 +8503,7 @@ const HAN_DATA = {
       "ja_thk": "shō"
     },
     "ipa": {
+      "zh_tw": "ʂaŋ˥˩",
       "zh_db": "ʂaŋ⁵³",
       "zh_sc": "saŋ²¹³",
       "zh_cd": "saŋ¹³",
@@ -8490,6 +8609,7 @@ const HAN_DATA = {
       "yue_us": "上",
       "zh_us": "上",
       "zh_th": "上",
+      "zh_tw": "上",
       "nan_pera": "上",
       "ja_kgs": "ショウ",
       "ja_okn": "シュウ",
@@ -8499,6 +8619,7 @@ const HAN_DATA = {
   },
   "下": {
     "surface": {
+      "zh_tw": "xià",
       "yue": "haa6",
       "yue_ts": "ha6",
       "nan_hai": "e3",
@@ -8580,6 +8701,7 @@ const HAN_DATA = {
       "ja_thk": "ka"
     },
     "ipa": {
+      "zh_tw": "ɕja˥˩",
       "zh_db": "ɕja⁵³",
       "zh_sc": "ɕia²¹³",
       "zh_cd": "xa¹³",
@@ -8686,6 +8808,7 @@ const HAN_DATA = {
       "yue_us": "下",
       "zh_us": "下",
       "zh_th": "下",
+      "zh_tw": "下",
       "ja_kgs": "カ",
       "ja_okn": "カ",
       "ja_thk": "カ",
@@ -8695,6 +8818,7 @@ const HAN_DATA = {
   "中:1": {
     "surface": {
       "zh": "zhōng",
+      "zh_tw": "zhōng",
       "yue": "zung1",
       "yue_ts": "jung1",
       "nan": "tiong",
@@ -8791,6 +8915,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ʂuŋ˥˥",
+      "zh_tw": "t͡ʂuŋ˥˥",
       "zh_db": "tʂʊŋ⁵⁵",
       "zh_sc": "tsoŋ⁵⁵",
       "zh_cd": "tsoŋ⁵⁵",
@@ -8909,6 +9034,7 @@ const HAN_DATA = {
       "zh_us": "中",
       "nan_th": "中",
       "zh_th": "中",
+      "zh_tw": "中",
       "nan_pera": "中",
       "ja_kgs": "チュウ",
       "ja_okn": "チュウ",
@@ -9008,7 +9134,8 @@ const HAN_DATA = {
       "ptung": "*dulin",
       "ptai": "*klaːŋ.A",
       "pmgl": "*dumda",
-      "dng": "jun³"
+      "dng": "jun³",
+      "zh_tw": "zhòng"
     },
     "ipa": {
       "zh": "t͡ʂuŋ˥˩",
@@ -9101,7 +9228,8 @@ const HAN_DATA = {
       "ptung": "*dulin",
       "ptai": "*klaːŋ˧",
       "pmgl": "*dumda",
-      "dng": "tɕuŋ˧"
+      "dng": "tɕuŋ˧",
+      "zh_tw": "t͡ʂʊŋ˥˩"
     },
     "native": {
       "ko": "중",
@@ -9127,12 +9255,14 @@ const HAN_DATA = {
       "zkt": "—",
       "txg": "—",
       "sjo": "—",
-      "bo_sino": "ཀྲུང་"
+      "bo_sino": "ཀྲུང་",
+      "zh_tw": "中"
     }
   },
   "央": {
     "surface": {
       "zh": "yāng",
+      "zh_tw": "yāng",
       "yue": "joeng1",
       "yue_ts": "yeung1",
       "nan_te": "iong1",
@@ -9213,6 +9343,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "jaŋ˥˥",
+      "zh_tw": "jaŋ˥˥",
       "zh_db": "iaŋ⁵⁵",
       "zh_sc": "iaŋ⁵⁵",
       "zh_cd": "iaŋ⁵⁵",
@@ -9315,6 +9446,7 @@ const HAN_DATA = {
       "zh_us": "央",
       "nan_th": "央",
       "zh_th": "央",
+      "zh_tw": "央",
       "ja_kgs": "オウ",
       "ja_okn": "ウウ",
       "ja_thk": "オウ",
@@ -9325,6 +9457,7 @@ const HAN_DATA = {
   "左": {
     "surface": {
       "zh": "zuǒ",
+      "zh_tw": "zuǒ",
       "yue": "zo2",
       "yue_ts": "jo2",
       "nan_qz": "tsó",
@@ -9418,6 +9551,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tsuo˨˩˦",
+      "zh_tw": "tsuo˨˩˦",
       "zh_db": "tsuo²¹³",
       "zh_sc": "tso⁵³",
       "zh_cd": "tso⁵³",
@@ -9536,6 +9670,7 @@ const HAN_DATA = {
       "zh_us": "左",
       "nan_th": "左",
       "zh_th": "左",
+      "zh_tw": "左",
       "nan_pera": "左",
       "ja_kgs": "サ",
       "ja_okn": "サ",
@@ -9546,6 +9681,7 @@ const HAN_DATA = {
   "右": {
     "surface": {
       "zh": "yòu",
+      "zh_tw": "yòu",
       "yue": "jau6",
       "yue_ts": "yau6",
       "nan_qz": "iū",
@@ -9640,6 +9776,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "jou˥˩",
+      "zh_tw": "jou˥˩",
       "zh_db": "iou⁵¹",
       "zh_sc": "iəu²¹³",
       "zh_cd": "iəu¹³",
@@ -9759,6 +9896,7 @@ const HAN_DATA = {
       "zh_us": "右",
       "nan_th": "右",
       "zh_th": "右",
+      "zh_tw": "右",
       "nan_pera": "右",
       "ja_kgs": "ユウ",
       "ja_okn": "ユウ",
@@ -9769,6 +9907,7 @@ const HAN_DATA = {
   "東": {
     "surface": {
       "zh": "dōng",
+      "zh_tw": "dōng",
       "yue": "dung1",
       "yue_ts": "dung1",
       "nan_hai": "dang1",
@@ -9850,6 +9989,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tuŋ˥˥",
+      "zh_tw": "tuŋ˥˥",
       "zh_db": "tuŋ˥",
       "zh_sc": "toŋ˥",
       "zh_cd": "toŋ˥",
@@ -9954,6 +10094,7 @@ const HAN_DATA = {
       "yue_us": "東",
       "zh_us": "東",
       "zh_th": "東",
+      "zh_tw": "東",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
       "ja_thk": "トウ",
@@ -9964,6 +10105,7 @@ const HAN_DATA = {
   "西": {
     "surface": {
       "zh": "xī",
+      "zh_tw": "xī",
       "yue": "sai1",
       "yue_ts": "sai1",
       "nan_hai": "sai1",
@@ -10048,6 +10190,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ɕi˥˥",
+      "zh_tw": "ɕi˥˥",
       "zh_db": "ɕi˥",
       "zh_sc": "ɕi˥",
       "zh_cd": "ɕi˥",
@@ -10156,6 +10299,7 @@ const HAN_DATA = {
       "yue_us": "西",
       "zh_us": "西",
       "zh_th": "西",
+      "zh_tw": "西",
       "ja_kgs": "セイ",
       "ja_okn": "シイ",
       "ja_thk": "セイ",
@@ -10166,6 +10310,7 @@ const HAN_DATA = {
   "南": {
     "surface": {
       "zh": "nán",
+      "zh_tw": "nán",
       "yue": "naam4",
       "yue_ts": "nam5",
       "nan_qz": "lâm",
@@ -10258,6 +10403,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "nan˧˥",
+      "zh_tw": "nan˧˥",
       "zh_db": "nan˧˥",
       "zh_sc": "nan˨˩",
       "zh_cd": "nan˨˩",
@@ -10374,6 +10520,7 @@ const HAN_DATA = {
       "zh_us": "南",
       "nan_th": "南",
       "zh_th": "南",
+      "zh_tw": "南",
       "nan_pera": "南",
       "ja_kgs": "ダン",
       "ja_okn": "ダン",
@@ -10385,6 +10532,7 @@ const HAN_DATA = {
   "北": {
     "surface": {
       "zh": "běi",
+      "zh_tw": "běi",
       "yue": "bak1",
       "yue_ts": "bak1",
       "nan": "pak",
@@ -10476,6 +10624,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "peɪ˨˩˦",
+      "zh_tw": "peɪ˨˩˦",
       "zh_db": "pei˨˩˦",
       "zh_sc": "pe˧˥",
       "zh_cd": "pe˧˩",
@@ -10592,6 +10741,7 @@ const HAN_DATA = {
       "zh_us": "北",
       "nan_th": "北",
       "zh_th": "北",
+      "zh_tw": "北",
       "nan_pera": "北",
       "ja_kgs": "ホッ",
       "ja_okn": "フク",
@@ -10604,6 +10754,7 @@ const HAN_DATA = {
     "surface": {
       "zh": "xíng",
       "yue": null,
+      "zh_tw": "xíng",
       "yue_ts": "hang3",
       "nan": "kiâⁿ",
       "nan_qz": "kiâⁿ",
@@ -10716,6 +10867,7 @@ const HAN_DATA = {
       "zh_zz": "ɕiŋ⁴²",
       "yue": null,
       "yue_gz": null,
+      "zh_tw": "ɕiŋ˧˥",
       "yue_ts": "haŋ³³",
       "yue_dg": "hɐŋ²¹",
       "yue_nn": "haŋ²¹",
@@ -10815,6 +10967,7 @@ const HAN_DATA = {
       "zh_us": "行",
       "nan_th": "行",
       "zh_th": "行",
+      "zh_tw": "行",
       "nan_pera": "行",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
@@ -10910,7 +11063,8 @@ const HAN_DATA = {
       "paa": "*cuːr",
       "ptai": "*paj.A",
       "pmgl": "*yabu-",
-      "dng": "haŋ²"
+      "dng": "haŋ²",
+      "zh_tw": "háng"
     },
     "ipa": {
       "zh": "xɑŋ˧˥",
@@ -10999,7 +11153,8 @@ const HAN_DATA = {
       "paa": "*cuːr",
       "ptai": "*paj˧",
       "pmgl": "*yabu-",
-      "dng": "haŋ˨˦"
+      "dng": "haŋ˨˦",
+      "zh_tw": "xaŋ˧˥"
     },
     "native": {
       "ko": "항",
@@ -11022,12 +11177,14 @@ const HAN_DATA = {
       "zkt": "—",
       "txg": "—",
       "sjo": "—",
-      "zh_phagspa": "ꡜꡨꡃ"
+      "zh_phagspa": "ꡜꡨꡃ",
+      "zh_tw": "行"
     }
   },
   "来": {
     "surface": {
       "zh": "lái",
+      "zh_tw": "lái",
       "yue_ts": "loi3",
       "cpx": "lái",
       "mnp": "lâi³³",
@@ -11114,6 +11271,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "laɪ˧˥",
+      "zh_tw": "laɪ˧˥",
       "zh_db": "lai³⁵",
       "zh_sc": "nai²¹",
       "zh_cd": "nai³¹",
@@ -11230,6 +11388,7 @@ const HAN_DATA = {
       "zh_us": "来",
       "nan_th": "来",
       "zh_th": "来",
+      "zh_tw": "来",
       "nan_pera": "来",
       "ja_kgs": "ライ",
       "ja_okn": "ライ",
@@ -11240,6 +11399,7 @@ const HAN_DATA = {
   "去": {
     "surface": {
       "zh": "qù",
+      "zh_tw": "qù",
       "yue": "heoi3",
       "yue_ts": "hui3",
       "cpx": "khy̍",
@@ -11321,6 +11481,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ɕʰy˥˩",
+      "zh_tw": "t͡ɕʰy˥˩",
       "zh_db": "tɕʰy⁵¹",
       "zh_sc": "tɕʰy²¹³",
       "zh_cd": "tɕʰy²¹³",
@@ -11426,6 +11587,7 @@ const HAN_DATA = {
       "yue_us": "去",
       "zh_us": "去",
       "zh_th": "去",
+      "zh_tw": "去",
       "ja_kgs": "キョ",
       "ja_okn": "キュ",
       "ja_thk": "キョ",
@@ -11435,6 +11597,7 @@ const HAN_DATA = {
   "見": {
     "surface": {
       "zh": "jiàn",
+      "zh_tw": "jiàn",
       "yue": "gin3",
       "yue_ts": "gin3",
       "cdo": "giéng",
@@ -11518,6 +11681,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "t͡ɕjan˥˩",
+      "zh_tw": "t͡ɕjan˥˩",
       "zh_db": "tɕiɛn˥˩",
       "zh_sc": "tɕiɛn˨˩˧",
       "zh_cd": "tɕian˨˩˧",
@@ -11625,6 +11789,7 @@ const HAN_DATA = {
       "yue_us": "見",
       "zh_us": "見",
       "zh_th": "見",
+      "zh_tw": "見",
       "nan_pera": "見",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
@@ -11635,6 +11800,7 @@ const HAN_DATA = {
   "聞": {
     "surface": {
       "zh": "wén",
+      "zh_tw": "wén",
       "yue": "man4",
       "yue_ts": "mun5",
       "nan_hai": "bung5",
@@ -11720,6 +11886,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "uən˧˥",
+      "zh_tw": "uən˧˥",
       "zh_db": "uən˧˥",
       "zh_sc": "uən˨˩",
       "zh_cd": "uən˨˩",
@@ -11829,6 +11996,7 @@ const HAN_DATA = {
       "yue_us": "聞",
       "zh_us": "聞",
       "zh_th": "聞",
+      "zh_tw": "聞",
       "ja_kgs": "ブン",
       "ja_okn": "ブン",
       "ja_thk": "ブン",
@@ -11838,6 +12006,7 @@ const HAN_DATA = {
   "食": {
     "surface": {
       "zh": "shí",
+      "zh_tw": "shí",
       "yue": "sik6",
       "yue_ts": "shik6",
       "nan_hai": "tsia5",
@@ -11919,6 +12088,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "ʂʐ̩˧˥",
+      "zh_tw": "ʂʐ̩˧˥",
       "zh_db": "ʂʐ̩˧˥",
       "zh_sc": "sɿ˨˩",
       "zh_cd": "sɿ˨˩",
@@ -12024,6 +12194,7 @@ const HAN_DATA = {
       "yue_us": "食",
       "zh_us": "食",
       "zh_th": "食",
+      "zh_tw": "食",
       "ja_kgs": "ショッ",
       "ja_okn": "シュク",
       "ja_thk": "ショク",
@@ -12033,6 +12204,7 @@ const HAN_DATA = {
   "飲": {
     "surface": {
       "zh": "yǐn",
+      "zh_tw": "yǐn",
       "yue": "jam2",
       "yue_ts": "yam2",
       "nan_te": "im2",
@@ -12121,6 +12293,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "in˨˩˦",
+      "zh_tw": "in˨˩˦",
       "zh_db": "in˨˩˦",
       "zh_sc": "in˥˧",
       "zh_cd": "in˥˧",
@@ -12234,6 +12407,7 @@ const HAN_DATA = {
       "zh_us": "飲",
       "nan_th": "飲",
       "zh_th": "飲",
+      "zh_tw": "飲",
       "ja_kgs": "イン",
       "ja_okn": "イン",
       "ja_thk": "イン",
@@ -12243,6 +12417,7 @@ const HAN_DATA = {
   "走": {
     "surface": {
       "zh": "zǒu",
+      "zh_tw": "zǒu",
       "yue": "zau2",
       "yue_ts": "jau2",
       "nan_te": "tsau2",
@@ -12329,6 +12504,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tsou˨˩˦",
+      "zh_tw": "tsou˨˩˦",
       "zh_db": "tsou²¹³",
       "zh_sc": "tsəu⁵³",
       "zh_cd": "tsəu⁵³",
@@ -12440,6 +12616,7 @@ const HAN_DATA = {
       "zh_us": "走",
       "nan_th": "走",
       "zh_th": "走",
+      "zh_tw": "走",
       "ja_kgs": "ソウ",
       "ja_okn": "スウ",
       "ja_thk": "ソウ",
@@ -12449,6 +12626,7 @@ const HAN_DATA = {
   "坐": {
     "surface": {
       "zh": "zuò",
+      "zh_tw": "zuò",
       "yue": "co5",
       "yue_ts": "cho5",
       "nan_te": "tso6",
@@ -12536,6 +12714,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "tsuo˥˩",
+      "zh_tw": "tsuo˥˩",
       "zh_db": "tsuo⁵¹",
       "zh_sc": "tso¹³",
       "zh_cd": "tso¹³",
@@ -12648,6 +12827,7 @@ const HAN_DATA = {
       "zh_us": "坐",
       "nan_th": "坐",
       "zh_th": "坐",
+      "zh_tw": "坐",
       "ja_kgs": "サ",
       "ja_okn": "サ",
       "ja_thk": "サ",
@@ -12657,6 +12837,7 @@ const HAN_DATA = {
   "立": {
     "surface": {
       "zh": "lì",
+      "zh_tw": "lì",
       "yue": "lap6",
       "yue_ts": "lap6",
       "nan_te": "lib8",
@@ -12746,6 +12927,7 @@ const HAN_DATA = {
     },
     "ipa": {
       "zh": "li˥˩",
+      "zh_tw": "li˥˩",
       "zh_db": "li⁵¹",
       "zh_sc": "ni²¹³",
       "zh_cd": "ni²¹³",
@@ -12860,6 +13042,7 @@ const HAN_DATA = {
       "zh_us": "立",
       "nan_th": "立",
       "zh_th": "立",
+      "zh_tw": "立",
       "ja_kgs": "リッ",
       "ja_okn": "リツ",
       "ja_thk": "リツ",
@@ -18398,10 +18581,10 @@ const HAN_LANG_META = {
     },
     "description": {
       "en": "Mandarin Chinese as spoken by Thai-Chinese diaspora speakers in Bangkok — primarily 2nd/3rd-generation heritage speakers of Teochew/Hokkien-descended families plus more recent PRC and Taiwan immigrants. Phonologically grounded in Standard Mandarin but reshaped by Thai substrate: retroflex weakening (zh/ch/sh → /tɕ tɕʰ ɕ/ or /s/), tone reduction (4 tones → ~3 with Thai-like pitch contours leaking in), /ɤ/ → /ɤː/ or /əː/ following Thai vowel inventory, /r-/ initial → /l/ ~ /ɹ/ reflecting Thai r-l fluctuation, final -ng weakened (Thai allows -ŋ but the realization is laxer with vowel nasalization). Frequent code-switching with Thai politeness particles (ครับ/ค่ะ) in everyday speech. Distinct from PRC putonghua and Taiwan guoyu.",
-      "ja": "バンコクのタイ華僑が話す普通話。主に潮州系・福建系を起源とする華僑2-3世継承話者と、より新しい中国本土・台湾からの新移民の混合。標準普通話を基盤としつつ、タイ語基層による系統的変化：巻舌音の弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ または /s/）、声調簡略化（4声 → 約3声、タイ語的なピッチ輪郭が混入）、/ɤ/ → /ɤː/ または /əː/、/r-/語頭 → /l/ ～ /ɹ/（タイ語のr-l揺れ）、語末-ngの弱化（タイ語には-ŋがあるが実現が緩く母音の鼻音化を伴う）。日常会話でタイ語の丁寧終助詞（ครับ/ค่ะ）とのコードスイッチが頻発。中国本土普通話・台湾国語とは異なる。",
+      "ja": "バンコクのタイ華僑が話す普通話。主に潮州系・福建系を起源とする華僑2-3世継承話者と、より新しい中国本土・台湾からの新移民の混合。標準普通話を基盤としつつ、タイ語基層による系統的変化：巻舌音の弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ または /s/）、声調簡略化（4声 → 約3声、タイ語的なピッチ輪郭が混入）、/ɤ/ → /ɤː/ または /əː/、/r-/語頭 → /l/ ～ /ɹ/（タイ語のr-l揺れ）、語末-ngの弱化（タイ語には-ŋがあるが実現が緩く母音の鼻音化を伴う）。日常会話でタイ語の丁寧終助詞（ครับ/ค่ะ）とのコードスイッチが頻発。中国本土普通話・台湾華語とは異なる。",
       "ko": "방콕의 태국 화교가 사용하는 표준중국어. 주로 차오저우계·푸젠계 출신의 2-3세 계승 화자와 비교적 새로운 중국 본토·대만 신이민의 혼합. 표준 보통화를 기반으로 태국어 기층에 의한 체계적 변화: 권설음 약화(zh/ch/sh → /tɕ tɕʰ ɕ/ 또는 /s/), 성조 간략화(4성 → 약 3성, 태국어적 피치 윤곽 혼입), /ɤ/ → /ɤː/ 또는 /əː/, /r-/ 어두 → /l/ ~ /ɹ/(태국어 r-l 동요), 어말 -ng의 약화(태국어 -ŋ 있으나 더 느슨한 실현, 모음 비음화 동반). 일상 회화에서 태국어 정중 종조사(ครับ/ค่ะ)와의 코드 스위칭이 빈번. 중국 본토 보통화·대만 국어와는 다르다.",
-      "zh": "曼谷的泰华使用的普通话。主要为潮州系、福建系出身的2-3代继承说话者，与较新的中国大陆和台湾新移民混合。以标准普通话为基础，受泰语基层系统性影响：卷舌音弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ 或 /s/）、声调简化（4声 → 约3声，混入泰式音高轮廓）、/ɤ/ → /ɤː/ 或 /əː/、/r-/词首 → /l/ ~ /ɹ/（泰语r-l摇摆）、词末-ng弱化（泰语虽有/-ŋ/但实现更松，伴元音鼻化）。日常会话中常与泰语礼貌终助词（ครับ/ค่ะ）发生频繁夹码。与中国大陆普通话和台湾国语不同。",
-      "yue": "曼谷嘅泰華所用嘅普通話。主要係潮州系、福建系出身嘅 2-3 代繼承說話者，同較新嘅中國大陸同台灣新移民嘅混合。以標準普通話為基礎，受泰語基層系統性影響：捲舌音弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ 或 /s/）、聲調簡化（4 聲 → 約 3 聲，混入泰式音高輪廓）、/ɤ/ → /ɤː/ 或 /əː/、/r-/ 詞首 → /l/ ~ /ɹ/（泰語 r-l 搖擺）、詞末 -ng 弱化（泰語雖有 /-ŋ/ 但實現更鬆，伴隨元音鼻化）。日常會話中經常同泰語禮貌終助詞（ครับ/ค่ะ）夾碼。同中國大陸普通話、台灣國語唔同。",
+      "zh": "曼谷的泰华使用的普通话。主要为潮州系、福建系出身的2-3代继承说话者，与较新的中国大陆和台湾新移民混合。以标准普通话为基础，受泰语基层系统性影响：卷舌音弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ 或 /s/）、声调简化（4声 → 约3声，混入泰式音高轮廓）、/ɤ/ → /ɤː/ 或 /əː/、/r-/词首 → /l/ ~ /ɹ/（泰语r-l摇摆）、词末-ng弱化（泰语虽有/-ŋ/但实现更松，伴元音鼻化）。日常会话中常与泰语礼貌终助词（ครับ/ค่ะ）发生频繁夹码。与中国大陆普通话和台湾华语不同。",
+      "yue": "曼谷嘅泰華所用嘅普通話。主要係潮州系、福建系出身嘅 2-3 代繼承說話者，同較新嘅中國大陸同台灣新移民嘅混合。以標準普通話為基礎，受泰語基層系統性影響：捲舌音弱化（zh/ch/sh → /tɕ tɕʰ ɕ/ 或 /s/）、聲調簡化（4 聲 → 約 3 聲，混入泰式音高輪廓）、/ɤ/ → /ɤː/ 或 /əː/、/r-/ 詞首 → /l/ ~ /ɹ/（泰語 r-l 搖擺）、詞末 -ng 弱化（泰語雖有 /-ŋ/ 但實現更鬆，伴隨元音鼻化）。日常會話中經常同泰語禮貌終助詞（ครับ/ค่ะ）夾碼。同中國大陸普通話、台灣華語唔同。",
       "vi": "Phổ thông thoại do Hoa kiều Thái Lan ở Bangkok dùng. Chủ yếu là người Hoa thế hệ 2-3 gốc Triều Châu, Phúc Kiến kế thừa, kết hợp với di dân mới hơn từ Trung Quốc đại lục và Đài Loan. Trên nền phổ thông thoại chuẩn nhưng có biến đổi hệ thống do nền tiếng Thái: làm yếu phụ âm cuốn lưỡi (zh/ch/sh → /tɕ tɕʰ ɕ/ hoặc /s/), giản hóa thanh điệu (4 thanh → khoảng 3, lẫn đường thanh kiểu Thái), /ɤ/ → /ɤː/ hoặc /əː/, /r-/ đầu → /l/ ~ /ɹ/ (sự lay động r-l của tiếng Thái), -ng cuối yếu đi (tiếng Thái có /-ŋ/ nhưng thực hiện lỏng hơn, kèm mũi hóa nguyên âm). Trong hội thoại hằng ngày thường code-switch với trợ từ lễ phép tiếng Thái (ครับ/ค่ะ). Khác với phổ thông thoại Trung Quốc đại lục và quốc ngữ Đài Loan.",
       "th": "ภาษาแมนดารินที่ใช้โดยชาวจีน-ไทยในกรุงเทพฯ ส่วนใหญ่เป็นลูกหลานรุ่น 2-3 ของชาวจีนเชื้อสายแต้จิ๋วและฮกเกี้ยน ผสมกับผู้อพยพใหม่จากจีนแผ่นดินใหญ่และไต้หวัน พื้นฐานเป็นแมนดารินมาตรฐานแต่มีการเปลี่ยนแปลงเชิงระบบจากภาษาไทย: เสียงม้วนลิ้นอ่อนลง (zh/ch/sh → /tɕ tɕʰ ɕ/ หรือ /s/) ลดวรรณยุกต์ (4 เสียง → ราว 3 เสียง โดยมีทำนองสูงต่ำแบบไทยปะปน) /ɤ/ → /ɤː/ หรือ /əː/ /r-/ ต้นคำ → /l/ ~ /ɹ/ (การโอนเอน r-l ในภาษาไทย) -ng ท้ายอ่อนลง (ภาษาไทยมี /-ŋ/ แต่การออกเสียงหลวมกว่าและสระมีนาสิกเจือ) ในชีวิตประจำวันมักสลับภาษากับคำลงท้ายสุภาพไทย (ครับ/ค่ะ) ต่างจากแมนดารินมาตรฐานจีนแผ่นดินใหญ่และโกะอวี๋ของไต้หวัน",
       "id": "Mandarin yang dituturkan diaspora Tionghoa-Thai di Bangkok — terutama penutur warisan generasi 2-3 keturunan Teochew/Hokkien plus migran baru dari RRT dan Taiwan. Berbasis Mandarin Standar tetapi dibentuk ulang oleh substrat Thai: pelemahan retrofleks (zh/ch/sh → /tɕ tɕʰ ɕ/ atau /s/), pengurangan nada (4 nada → sekitar 3, dengan kontur pitch ala Thai meresap), /ɤ/ → /ɤː/ atau /əː/ mengikuti vokal Thai, /r-/ awal → /l/ ~ /ɹ/ (fluktuasi r-l Thai), -ng akhir melemah (Thai memiliki /-ŋ/ tetapi realisasinya lebih longgar dengan nasalisasi vokal). Code-switching intensif dengan partikel kesopanan Thai (ครับ/ค่ะ) dalam percakapan sehari-hari. Berbeda dari putonghua RRT dan guoyu Taiwan.",
@@ -18430,6 +18613,69 @@ const HAN_LANG_META = {
     },
     "speakers": "約700万人 (タイ華僑のうち普通話話者は少数)",
     "speakersSource": "Wikipedia (英語版「Thai Chinese」, 2026-05-30閲覧)"
+  },
+  "zh_tw": {
+    "name": "Taiwan Mandarin",
+    "native": "臺灣國語",
+    "lat": 25.04,
+    "lng": 121.56,
+    "family": "Sinitic > Mandarin (Taiwan variety / 中華民國國語)",
+    "region": "臺灣本島・澎湖・金門・馬祖 — 中華民國國語",
+    "reading_type": {
+      "en": "Taiwan Mandarin (國語) — Bopomofo + Hanyu Pinyin",
+      "ja": "台灣華語（中華民國國語、注音符號＋拼音）",
+      "ko": "타이완 국어 (중화민국 국어, 주음부호 + 병음)",
+      "zh": "台灣華語（中華民國國語·注音符號／拼音）",
+      "yue": "台灣華語（中華民國國語，注音符號＋拼音）",
+      "vi": "Quan thoại Đài Loan (Quốc ngữ Trung Hoa Dân Quốc, Bopomofo + Bính âm)",
+      "th": "ภาษาจีนกลางไต้หวัน (กั๋วอวี่ของสาธารณรัฐจีน, โบโปมอฟอ + พินอิน)",
+      "id": "Mandarin Taiwan (Guoyu Republik Tiongkok, Bopomofo + Pinyin)",
+      "hi": "ताइवानी मंदारिन (चीन गणराज्य का गुओयु, बोपोमोफो + पिनयिन)",
+      "de": "Taiwan-Mandarin (Guoyu der Republik China, Bopomofo + Pinyin)",
+      "fr": "Mandarin de Taïwan (guoyu de la République de Chine, bopomofo + pinyin)",
+      "it": "Mandarino taiwanese (guoyu della Repubblica di Cina, bopomofo + pinyin)",
+      "es": "Mandarín taiwanés (guoyu de la República de China, bopomofo + pinyin)",
+      "pt": "Mandarim de Taiwan (guoyu da República da China, bopomofo + pinyin)",
+      "ru": "Тайваньский мандарин (гоюй Китайской Республики, бопомофо + пиньинь)",
+      "uk": "Тайванський мандарин (гоюй Китайської Республіки, бопомофо + піньїнь)",
+      "ar": "الماندرين التايواني (غوإيو جمهورية الصين، بوبوموفو + بينيين)",
+      "he": "מנדרינית טייוואנית (גוּאוֹיוּ של הרפובליקה הסינית, בּוֹפּוֹמוֹפוֹ + פינין)",
+      "sw": "Mandarini ya Taiwan (Guoyu ya Jamhuri ya China, Bopomofo + Pinyin)"
+    },
+    "description": {
+      "en": "Taiwan Mandarin (中華民國國語 / Guoyu) — the prestige Mandarin variety of the Republic of China. Descended from Beijing Mandarin brought by KMT migration in 1949, but reshaped by a heavy Hokkien (Min Nan) substrate plus minor Japanese-era influence. Distinguishing phonological features vs PRC Putonghua: retroflex initials zh-/ch-/sh- frequently weaken to z-/c-/s- in casual speech (textbook standard keeps the distinction); syllabic /-ŋ/ before high vowels may shift -əŋ → -ən; tone 3 has a lighter dip; light tone (輕聲) is much less frequent; some lexical readings differ (e.g. 期 qí in TW vs qī in PRC, 究 in compounds 研究 sometimes yánjiù). Written with Traditional characters. The phonetic system documented in education is Bopomofo (注音符號), used alongside Hanyu Pinyin since the 2009 MOE standard.",
+      "ja": "台灣華語（中華民國國語）— 中華民国の標準普通話。1949年の国民党遷台に伴って持ち込まれた北京官話を基盤としつつ、強い閩南語（台湾語）基層と日本統治期の若干の影響により再形成された。中国本土普通話との主な相違点：(1) 巻舌音 zh-/ch-/sh- は教科書標準では保持されるが、口語では z-/c-/s- に弱化する傾向、(2) 高母音前の音節末 -ŋ で -əŋ → -ən の動揺、(3) 第3声の谷が浅い、(4) 軽声（輕聲）の使用が大幅に少ない、(5) 個別語彙の声調・字音相違（例：期 TW qí ／ PRC qī、研究 TW では yánjiù も）。表記は繁体字。音標は注音符號（ボポモフォ）が教育の中心で、2009年の教育部標準以降は漢語拼音も併用される。",
+      "ko": "타이완 국어 (중화민국 국어 / 國語) — 중화민국의 표준 보통화. 1949년 국민당 천대(遷臺)와 함께 들어온 베이징 관화를 기반으로 하면서, 강한 민난어(타이완어) 기층 및 일본 통치기의 약간의 영향으로 재형성되었다. 중국 본토 보통화와의 주요 차이점: (1) 권설음 zh-/ch-/sh-는 교과서 표준에서는 유지되나 일상어에서는 z-/c-/s-로 약화되는 경향, (2) 고모음 앞의 음절말 -ŋ에서 -əŋ → -ən 동요, (3) 제3성의 골이 얕음, (4) 경성(輕聲) 사용이 크게 적음, (5) 개별 어휘의 성조·자음 차이(예: 期 TW qí / PRC qī, 研究 TW에서는 yánjiù도). 표기는 번체자. 음표 체계는 주음부호(注音符號 / 보포모포)가 교육의 중심이며, 2009년 교육부 표준 이후 한어병음도 병용된다.",
+      "zh": "台灣華語（中華民國國語 / 國語）— 中華民國的標準普通話。以 1949 年國民政府遷臺帶來的北京官話為基礎，但受強烈閩南語（台語）底層及日治時期若干影響重新塑造。與中國大陸普通話的主要差異：(1) 捲舌聲母 zh-/ch-/sh- 在教科書標準中保留，口語常弱化為 z-/c-/s-；(2) 高元音前的韻尾 -ŋ 有 -əŋ → -ən 的動搖；(3) 第三聲谷較淺；(4) 輕聲使用大幅減少；(5) 個別字音聲調差異（如 期 TW qí／PRC qī、研究 TW 亦讀 yánjiù）。書寫採用繁體字。音標系統以注音符號（注音）為教育主流，2009 年教育部標準後漢語拼音亦並用。",
+      "yue": "台灣華語（中華民國國語 / 國語）— 中華民國嘅標準普通話。以 1949 年國民政府遷臺帶嚟嘅北京官話為基礎，但受強烈嘅閩南語（台語）底層同日治時期嘅少少影響重新塑造。同中國大陸普通話嘅主要差異：(1) 捲舌聲母 zh-/ch-/sh- 喺教科書標準保留，口語常弱化為 z-/c-/s-；(2) 高元音前嘅韻尾 -ŋ 有 -əŋ → -ən 嘅動搖；(3) 第三聲嘅谷較淺；(4) 輕聲（輕聲）使用大幅減少；(5) 個別字音聲調差異（如 期 TW qí／PRC qī、研究 TW 都讀 yánjiù）。書寫採用繁體字。音標系統以注音符號（Bopomofo）為教育主流，2009 年教育部標準後漢語拼音亦並用。",
+      "vi": "Quan thoại Đài Loan (Quốc ngữ Trung Hoa Dân Quốc 中華民國國語) — biến thể chuẩn của Mandarin tại Đài Loan. Bắt nguồn từ tiếng Bắc Kinh do làn sóng di cư Quốc Dân Đảng năm 1949 mang đến, nhưng được tái định hình bởi nền tiếng Mân Nam (Đài ngữ) mạnh và một số ảnh hưởng nhỏ từ thời thuộc địa Nhật. Khác biệt chính so với Phổ thông thoại Trung Quốc đại lục: (1) thanh mẫu quặt lưỡi zh-/ch-/sh- giữ trong chuẩn giáo khoa, nhưng trong khẩu ngữ thường yếu thành z-/c-/s-; (2) vận vĩ -ŋ trước nguyên âm cao có chuyển -əŋ → -ən; (3) thanh 3 có hõm cạn hơn; (4) khinh thanh (輕聲) ít dùng hơn nhiều; (5) một số đọc lexical khác (期 TW qí so với qī ở đại lục; 研究 ở TW đôi khi đọc yánjiù). Viết bằng chữ phồn thể. Hệ thống ký âm trong giáo dục là Bopomofo (注音符號), dùng song song với Hán ngữ bính âm kể từ chuẩn MOE 2009.",
+      "th": "ภาษาจีนกลางไต้หวัน (กั๋วอวี่ 中華民國國語) — ภาษาจีนกลางมาตรฐานของสาธารณรัฐจีน สืบทอดจากภาษาจีนกลางปักกิ่งที่นำเข้ามาในการอพยพของพรรคก๊กมินตั๋งปี 1949 แต่ถูกหล่อหลอมใหม่ด้วยพื้นเสียงภาษาฮกเกี้ยน (ไต้หวัน) ที่หนัก และอิทธิพลเล็กน้อยจากยุคอาณานิคมญี่ปุ่น ข้อแตกต่างหลักจากภาษาจีนกลางมาตรฐานของจีนแผ่นดินใหญ่: (1) พยัญชนะม้วนลิ้น zh-/ch-/sh- คงไว้ในมาตรฐานตำราเรียน แต่ในภาษาพูดมักอ่อนลงเป็น z-/c-/s- (2) ท้ายพยางค์ -ŋ ก่อนสระสูงอาจขยับ -əŋ → -ən (3) วรรณยุกต์ที่ 3 มีหลุมตื้นกว่า (4) ใช้เสียงเบา (輕聲) น้อยกว่ามาก (5) คำบางคำอ่านต่างกัน (เช่น 期 TW qí เทียบกับ qī ของจีนแผ่นดินใหญ่, 研究 ในไต้หวันบางทีอ่าน yánjiù) เขียนด้วยอักษรจีนตัวเต็ม ระบบสัทอักษรในระบบการศึกษาคือโบโปมอฟอ (注音符號) และใช้ร่วมกับพินอินตั้งแต่มาตรฐาน MOE ปี 2009",
+      "id": "Mandarin Taiwan (Guoyu Republik Tiongkok 中華民國國語) — varietas Mandarin baku Republik Tiongkok. Berasal dari Mandarin Beijing yang dibawa migrasi KMT 1949, tetapi dibentuk ulang oleh substrat Hokkien (Min Nan) yang kuat dan sedikit pengaruh masa kolonial Jepang. Perbedaan utama dengan Putonghua RRT: (1) konsonan retrofleks zh-/ch-/sh- bertahan dalam standar buku teks tetapi sering melemah menjadi z-/c-/s- dalam tuturan kasual; (2) konsonan akhir -ŋ sebelum vokal tinggi dapat bergeser -əŋ → -ən; (3) nada 3 memiliki lembah lebih dangkal; (4) nada ringan (輕聲) jauh lebih jarang; (5) beberapa bacaan leksikal berbeda (mis. 期 qí di TW vs qī di RRT; 研究 di TW kadang dibaca yánjiù). Ditulis dengan aksara tradisional. Sistem fonetik dalam pendidikan adalah Bopomofo (注音符號), digunakan bersama Hanyu Pinyin sejak standar MOE 2009.",
+      "hi": "ताइवानी मंदारिन (गुओयु 中華民國國語) — चीन गणराज्य की प्रतिष्ठित मंदारिन प्रजाति। 1949 की कुओमिन्तांग प्रवास द्वारा लाई गई बीजिंग मंदारिन से उत्पन्न, परंतु प्रबल होक्किएन (मिन नान) सबस्ट्रेट और जापानी काल के थोड़े प्रभाव से पुनःआकारित। पीआरसी पुटोंगहुआ से प्रमुख अंतर: (1) मूर्धन्य आदि व्यंजन zh-/ch-/sh- पाठ्यपुस्तक मानक में बने रहते हैं पर बोलचाल में अकसर z-/c-/s- में कमज़ोर हो जाते हैं; (2) उच्च स्वरों से पहले अंत्य -ŋ में -əŋ → -ən शिफ्ट; (3) तीसरे स्वर का गड्ढा छोटा; (4) हल्के स्वर (輕聲) का उपयोग बहुत कम; (5) कुछ शाब्दिक पठन अलग (जैसे 期 TW में qí, पीआरसी में qī; 研究 TW में कभी-कभी yánjiù)। पारंपरिक अक्षरों में लिखी जाती है। शिक्षा में ध्वन्यात्मक प्रणाली बोपोमोफो (注音符號) है, 2009 के एमओई मानक से हन्यू पिनयिन के साथ संयुक्त रूप से प्रयुक्त।",
+      "de": "Taiwan-Mandarin (Guoyu 中華民國國語) — die Prestigevarietät des Mandarin in der Republik China. Geht auf das mit der KMT-Migration 1949 mitgebrachte Pekinger Mandarin zurück, wurde aber durch ein starkes Hokkien-(Min-Nan-)Substrat und kleinere Einflüsse aus der japanischen Kolonialzeit umgeformt. Hauptunterschiede zum Putonghua der VR China: (1) Retroflexe zh-/ch-/sh- bleiben im Lehrbuchstandard erhalten, schwächen sich im Alltag aber häufig zu z-/c-/s- ab; (2) Auslautendes -ŋ vor hohen Vokalen kann zu -əŋ → -ən wechseln; (3) Ton 3 hat eine flachere Senkung; (4) der Leichtton (輕聲) wird viel seltener verwendet; (5) einige lexikalische Lesungen weichen ab (z. B. 期 in TW qí gegenüber qī in der VR; 研究 in TW gelegentlich yánjiù). Geschrieben in Langzeichen. Das in der Bildung verwendete phonetische System ist Bopomofo (注音符號), das seit dem MOE-Standard 2009 zusammen mit Hanyu Pinyin verwendet wird.",
+      "fr": "Mandarin de Taïwan (guoyu 中華民國國語) — la variété de prestige du mandarin de la République de Chine. Issu du mandarin de Pékin apporté par la migration du Kuomintang en 1949, mais remodelé par un fort substrat hokkien (min nan) et de modestes influences de la période coloniale japonaise. Principales différences avec le putonghua de la RPC : (1) les initiales rétroflexes zh-/ch-/sh- sont conservées dans la norme scolaire mais s'affaiblissent souvent en z-/c-/s- dans la langue courante ; (2) la coda -ŋ devant voyelles fermées peut passer à -əŋ → -ən ; (3) le ton 3 a un creux moins profond ; (4) le ton neutre (輕聲) est nettement moins fréquent ; (5) certaines lectures lexicales diffèrent (p. ex. 期 qí à Taïwan vs qī en RPC ; 研究 parfois lu yánjiù à Taïwan). Écrit en caractères traditionnels. Le système phonétique de l'enseignement est le bopomofo (注音符號), utilisé conjointement avec le pinyin depuis la norme MOE de 2009.",
+      "it": "Mandarino taiwanese (guoyu 中華民國國語) — la varietà di prestigio del mandarino della Repubblica di Cina. Discende dal mandarino di Pechino portato dalla migrazione del KMT nel 1949, ma è stato rimodellato da un forte substrato hokkien (min nan) e da influenze minori dell'epoca coloniale giapponese. Differenze principali rispetto al putonghua della RPC: (1) le iniziali retroflesse zh-/ch-/sh- si conservano nello standard scolastico ma si indeboliscono spesso in z-/c-/s- nel parlato colloquiale; (2) la coda -ŋ davanti a vocali alte può passare a -əŋ → -ən; (3) il tono 3 ha un avvallamento meno profondo; (4) il tono neutro (輕聲) è molto meno frequente; (5) alcune letture lessicali differiscono (es. 期 qí a Taiwan vs qī nella RPC; 研究 talvolta letto yánjiù a Taiwan). Si scrive con caratteri tradizionali. Il sistema fonetico dell'educazione è il bopomofo (注音符號), usato insieme al pinyin dalla norma MOE del 2009.",
+      "es": "Mandarín taiwanés (guoyu 中華民國國語) — la variedad de prestigio del mandarín de la República de China. Desciende del mandarín de Pekín traído por la migración del KMT en 1949, pero ha sido remodelado por un fuerte sustrato hokkien (min nan) y por influencias menores de la época colonial japonesa. Principales diferencias con el putonghua de la RPC: (1) las iniciales retroflejas zh-/ch-/sh- se conservan en la norma escolar pero suelen debilitarse a z-/c-/s- en el habla coloquial; (2) la coda -ŋ ante vocales altas puede pasar a -əŋ → -ən; (3) el tono 3 presenta un valle menos profundo; (4) el tono neutro (輕聲) es mucho menos frecuente; (5) algunas lecturas léxicas difieren (p. ej. 期 qí en TW vs qī en la RPC; 研究 a veces yánjiù en TW). Se escribe con caracteres tradicionales. El sistema fonético de la enseñanza es bopomofo (注音符號), usado junto con el pinyin desde la norma MOE de 2009.",
+      "pt": "Mandarim de Taiwan (guoyu 中華民國國語) — a variedade de prestígio do mandarim da República da China. Descende do mandarim de Pequim trazido pela migração do KMT em 1949, mas foi remodelado por um forte substrato hokkien (min nan) e por influências menores do período colonial japonês. Principais diferenças relativamente ao putonghua da RPC: (1) as iniciais retroflexas zh-/ch-/sh- mantêm-se na norma escolar mas enfraquecem-se frequentemente em z-/c-/s- na fala coloquial; (2) a coda -ŋ antes de vogais altas pode passar a -əŋ → -ən; (3) o tom 3 tem uma depressão menos profunda; (4) o tom neutro (輕聲) é muito menos frequente; (5) algumas leituras lexicais diferem (p. ex. 期 qí em TW vs qī na RPC; 研究 por vezes yánjiù em TW). Escreve-se com caracteres tradicionais. O sistema fonético do ensino é o bopomofo (注音符號), usado em conjunto com o pinyin desde a norma MOE de 2009.",
+      "ru": "Тайваньский мандарин (гоюй 中華民國國語) — престижный вариант мандарина Китайской Республики. Восходит к пекинскому мандарину, привезённому миграцией Гоминьдана в 1949 году, но был перестроен сильным хоккиенским (миньнаньским) субстратом и небольшим влиянием японского колониального периода. Главные отличия от путунхуа КНР: (1) ретрофлексные начальные zh-/ch-/sh- сохраняются в учебном стандарте, но в разговорной речи часто ослабляются до z-/c-/s-; (2) конечный -ŋ перед закрытыми гласными может переходить -əŋ → -ən; (3) тон 3 имеет более мелкую впадину; (4) лёгкий тон (輕聲) встречается значительно реже; (5) некоторые лексические чтения отличаются (например, 期 в Тайване qí против qī в КНР; 研究 в Тайване иногда yánjiù). Записывается традиционными иероглифами. Фонетическая система в образовании — бопомофо (注音符號), с момента стандарта МО 2009 г. используется параллельно с пиньинем.",
+      "uk": "Тайванський мандарин (гоюй 中華民國國語) — престижний варіант мандарина Китайської Республіки. Походить від пекінського мандарина, привезеного міграцією Гоміньдану 1949 року, але був перебудований сильним хоккієнським (міньнаньським) субстратом і незначним впливом японського колоніального періоду. Головні відмінності від путунхуа КНР: (1) ретрофлексні початкові zh-/ch-/sh- зберігаються в навчальному стандарті, але в розмовному мовленні часто послаблюються до z-/c-/s-; (2) кінцевий -ŋ перед закритими голосними може переходити -əŋ → -ən; (3) тон 3 має дрібнішу западину; (4) легкий тон (輕聲) трапляється значно рідше; (5) деякі лексичні читання відрізняються (наприклад, 期 на Тайвані qí проти qī в КНР; 研究 на Тайвані іноді yánjiù). Записується традиційними ієрогліфами. Фонетична система в освіті — бопомофо (注音符號), починаючи зі стандарту MOE 2009 р. використовується паралельно з піньїнем.",
+      "ar": "الماندرين التايواني (غوإيو 中華民國國語) — اللهجة المرموقة للماندرين في جمهورية الصين. يستند إلى ماندرين بكين الذي جلبته هجرة الكومينتانغ عام 1949، لكنه أُعيد تشكيله بفعل ركيزة هوكين (مين نان) القوية وتأثير طفيف من حقبة الاستعمار الياباني. أهم الفوارق عن بوتنغهوا الصين: (1) تبقى الصوامت اللثوية المقلوبة zh-/ch-/sh- في معيار الكتب المدرسية، لكنها كثيراً ما تضعف إلى z-/c-/s- في الكلام العامي؛ (2) قد ينتقل -ŋ النهائي قبل الحركات المرتفعة من -əŋ إلى -ən؛ (3) للنبرة الثالثة قاعٌ أقل عمقاً؛ (4) النبرة الخفيفة (輕聲) أقل بكثير في الاستخدام؛ (5) تختلف بعض القراءات المعجمية (مثل 期 في تايوان qí مقابل qī في الصين، و研究 يُقرأ أحياناً yánjiù في تايوان). يُكتب بالأحرف التقليدية. النظام الصوتي في التعليم هو البوبوموفو (注音符號)، ويُستخدم جنباً إلى جنب مع البينيين منذ معيار وزارة التعليم لعام 2009.",
+      "he": "מנדרינית טייוואנית (גוּאוֹיוּ 中華民國國語) — הזן היוקרתי של המנדרינית ברפובליקה הסינית. מקורה במנדרינית של בייג'ינג שהובאה בעקבות הגירת הקוּאוֹמינטאנג ב-1949, אך עוצבה מחדש על ידי תשתית הוקיין (מין נאן) חזקה ובהשפעה קלה של תקופת השלטון היפני. הבדלים עיקריים מהפוּטוּנְגְּהוּאָה של סין: (1) עיצורים רטרופלקסיים פותחים zh-/ch-/sh- נשמרים בתקן הספרים אך נחלשים לרוב ל-z-/c-/s- בדיבור היומיומי; (2) -ŋ סופי לפני תנועות גבוהות עשוי לעבור -əŋ → -ən; (3) לטון 3 גומה רדודה יותר; (4) הטון הקל (輕聲) פחות שכיח בהרבה; (5) חלק מהקריאות הלקסיקליות שונות (למשל 期 בטייוואן qí לעומת qī בסין; 研究 לעיתים yánjiù בטייוואן). נכתבת באותיות מסורתיות. שיטת הסימון הפונטי בחינוך היא בּוֹפּוֹמוֹפוֹ (注音符號), ומשמשת לצד פינין מאז תקן ה-MOE של 2009.",
+      "sw": "Mandarini ya Taiwan (Guoyu 中華民國國語) — aina ya kifahari ya Mandarini ya Jamhuri ya China. Inatokana na Mandarini ya Beijing iliyoletwa na uhamiaji wa KMT mwaka 1949, lakini imeundwa upya na msingi mkubwa wa Hokkien (Min Nan) na athari ndogo za enzi ya ukoloni wa Kijapani. Tofauti kuu na Putonghua ya China: (1) konsonanti za nyuma zh-/ch-/sh- huhifadhiwa katika kiwango cha vitabu vya kiada lakini mara nyingi hudhoofika kuwa z-/c-/s- katika usemi wa kawaida; (2) -ŋ ya mwisho kabla ya irabu za juu inaweza kuhamia -əŋ → -ən; (3) toni ya 3 ina shimo lisilo na kina sana; (4) toni nyepesi (輕聲) hutumika kidogo zaidi; (5) baadhi ya usomaji wa kileksika hutofautiana (mfano, 期 Taiwan qí dhidi ya qī ya China; 研究 wakati mwingine yánjiù Taiwan). Imeandikwa kwa herufi za jadi. Mfumo wa kifonetiki katika elimu ni Bopomofo (注音符號), unaotumika sambamba na Hanyu Pinyin tangu kiwango cha MOE cha 2009."
+    },
+    "sources": [
+      "中華民國教育部《重編國語辭典修訂本》",
+      "Wikipedia: Taiwanese Mandarin (en.wikipedia.org/wiki/Taiwanese_Mandarin)",
+      "Cheng, Robert L. (1985) 'A comparison of Taiwanese, Taiwan Mandarin, and Peking Mandarin' (Language 61.2)",
+      "Kubler, Cornelius C. (1985) The Development of Mandarin in Taiwan: A Case Study of Language Contact"
+    ],
+    "romanization": {
+      "name": "Hanyu Pinyin (with Taiwan tone variants) / Bopomofo (注音符號)",
+      "authority": "中華民國教育部 (MOE 2009 standard, adopting Hanyu Pinyin alongside Bopomofo)",
+      "year": 2009
+    },
+    "speakers": "約2300万人 (臺灣総人口、第一・第二言語含む)",
+    "speakersSource": "Wikipedia (英語版「Taiwanese Mandarin」, 2026-05-30閲覧)"
   },
   "nan_pera": {
     "name": "Peranakan Hokkien",
@@ -18849,7 +19095,7 @@ const HAN_LANG_META = {
   }
 };
 
-const HAN_LANGS = ["bca","bo_sino","cdo","cjy","cnp","cpx","czh","dng","gan","hak_cn","hak_hl","hak_mz","hak_tw","hsn","ja","ja_kgs","ja_kun","ja_ojp","ja_okn","ja_thk","juc","ko","ko_bus","ko_hun","ko_kp","ko_mid","ko_zai","mnc","mnp","nan","nan_hai","nan_id","nan_my","nan_pera","nan_pn","nan_qz","nan_sg","nan_te","nan_th","nan_xm","nan_zz","paa","phm","pja","pko","pmgl","pst","ptai","ptb","ptung","sjo","txg","vi","vi_c","vi_nom","vi_ohan","vi_s","wuu","wuu_hz","wuu_jh","wuu_jx","wuu_nb","wuu_sz","wuu_wz","yue","yue_dg","yue_gz","yue_hk","yue_mo","yue_nn","yue_ts","yue_us","yue_zs","za","zh","zh_cd","zh_cq","zh_db","zh_gl","zh_han","zh_hf","zh_jh","zh_jiao","zh_jn","zh_kanbun","zh_kf","zh_km","zh_lz","zh_nj","zh_phagspa","zh_sc","zh_song","zh_tang","zh_th","zh_tj","zh_us","zh_wh","zh_xa","zh_yuan","zh_zz","zkt"];
+const HAN_LANGS = ["bca","bo_sino","cdo","cjy","cnp","cpx","czh","dng","gan","hak_cn","hak_hl","hak_mz","hak_tw","hsn","ja","ja_kgs","ja_kun","ja_ojp","ja_okn","ja_thk","juc","ko","ko_bus","ko_hun","ko_kp","ko_mid","ko_zai","mnc","mnp","nan","nan_hai","nan_id","nan_my","nan_pera","nan_pn","nan_qz","nan_sg","nan_te","nan_th","nan_xm","nan_zz","paa","phm","pja","pko","pmgl","pst","ptai","ptb","ptung","sjo","txg","vi","vi_c","vi_nom","vi_ohan","vi_s","wuu","wuu_hz","wuu_jh","wuu_jx","wuu_nb","wuu_sz","wuu_wz","yue","yue_dg","yue_gz","yue_hk","yue_mo","yue_nn","yue_ts","yue_us","yue_zs","za","zh","zh_cd","zh_cq","zh_db","zh_gl","zh_han","zh_hf","zh_jh","zh_jiao","zh_jn","zh_kanbun","zh_kf","zh_km","zh_lz","zh_nj","zh_phagspa","zh_sc","zh_song","zh_tang","zh_th","zh_tj","zh_tw","zh_us","zh_wh","zh_xa","zh_yuan","zh_zz","zkt"];
 
 const HAN_VARIANTS = {
   "六": {
