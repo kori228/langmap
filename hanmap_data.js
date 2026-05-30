@@ -24349,9 +24349,9 @@ const HAN_VARIANTS = {
         "label": "漢音 / Kan-on"
       },
       {
-        "native": "ケツ",
-        "surface": "ketsu",
-        "ipa": "ket͡sɯ",
+        "native": "ケチ",
+        "surface": "kechi",
+        "ipa": "ket͡ɕi",
         "label": "呉音 / Go-on"
       }
     ],
