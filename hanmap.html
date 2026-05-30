@@ -3028,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=58"></script>
+    <script src="hanmap_data.js?v=59"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -6223,6 +6223,175 @@
             return n;
         }
 
+        // ---------------------------------------------------------------
+        // Simulated-annealing label de-overlap (d3-labeler-style, Evans 2014).
+        // The existing cellGroups + greedy collision pass above produces a
+        // good initial layout; this module refines it by accepting/rejecting
+        // small pixel-offset perturbations using the Metropolis criterion
+        // until the residual overlap energy converges.
+        //
+        // Each label is a {x,y,w,h} AABB centered at (anchorX+dx, anchorY+dy).
+        // Energy = sum(pairwise overlap area) + alpha * dist(label, anchor).
+        // Cache key is (currentWord, zoom, sortedVisibleCodes) — same key,
+        // same offsets reused (zero SA cost on cache hit). Pan does not
+        // change the key (anchors move with Leaflet's projection; offsets
+        // are anchor-relative, so cached deltas remain visually correct).
+        // ---------------------------------------------------------------
+        const _hmLabelOffsetCache = new Map();
+        const _HM_SA_CACHE_MAX = 64;  // LRU cap to avoid unbounded growth
+
+        // Pairwise overlap area between two AABBs centered at (cx,cy).
+        function _hmOverlapArea(a, b) {
+            const ox = Math.max(0, (a.w + b.w) / 2 - Math.abs(a.cx - b.cx));
+            const oy = Math.max(0, (a.h + b.h) / 2 - Math.abs(a.cy - b.cy));
+            return ox * oy;
+        }
+
+        // Total energy = sum overlap area + alpha * displacement from anchor.
+        function _hmEnergy(labels, alpha) {
+            let e = 0;
+            const n = labels.length;
+            for (let i = 0; i < n; i++) {
+                const li = labels[i];
+                for (let j = i + 1; j < n; j++) {
+                    e += _hmOverlapArea(li, labels[j]);
+                }
+                const dx = li.cx - li.ax;
+                const dy = li.cy - li.ay;
+                e += alpha * Math.sqrt(dx * dx + dy * dy);
+            }
+            return e;
+        }
+
+        // Incremental energy for ONE label against all others (much faster
+        // than recomputing full energy each iter; SA is O(sweeps * n * n)
+        // instead of O(sweeps * n^3)).
+        function _hmLocalEnergy(labels, i, alpha) {
+            let e = 0;
+            const li = labels[i];
+            const n = labels.length;
+            for (let j = 0; j < n; j++) {
+                if (j === i) continue;
+                e += _hmOverlapArea(li, labels[j]);
+            }
+            const dx = li.cx - li.ax;
+            const dy = li.cy - li.ay;
+            e += alpha * Math.sqrt(dx * dx + dy * dy);
+            return e;
+        }
+
+        // SA solver. Returns labels mutated in place (cx/cy adjusted).
+        //   labels: [{ id, cx, cy, w, h, ax, ay }] — cx/cy = current center,
+        //            ax/ay = anchor (marker pixel position).
+        //   sweeps: number of annealing sweeps (each = one pass over all labels).
+        //   alpha:  weight on anchor-distance term in energy (small = labels
+        //            will move freely to escape overlaps).
+        function _hmAnnealLabels(labels, sweeps, alpha) {
+            const n = labels.length;
+            if (n < 2) return;
+            // Temperature: scaled to label height — proposed jumps are
+            // ±T*labelH in each axis, so at T=1 the typical proposal is
+            // ~one label-height (~15-20px). Cools by 0.96/sweep → T~0.3
+            // at sweep 30, fine-tuning final positions.
+            let T = 1.0;
+            const cool = 0.96;
+            // Sum of label heights as a rough "typical step" scale; per-
+            // label labelH varies but is identical in this codebase.
+            const stepBase = labels[0] ? labels[0].h : 16;
+            for (let s = 0; s < sweeps; s++) {
+                for (let i = 0; i < n; i++) {
+                    const li = labels[i];
+                    const eOld = _hmLocalEnergy(labels, i, alpha);
+                    const oldCx = li.cx, oldCy = li.cy;
+                    // Propose: uniform in [-T*stepBase, +T*stepBase].
+                    li.cx += (Math.random() * 2 - 1) * T * stepBase;
+                    li.cy += (Math.random() * 2 - 1) * T * stepBase;
+                    const eNew = _hmLocalEnergy(labels, i, alpha);
+                    const dE = eNew - eOld;
+                    if (dE <= 0 || Math.random() < Math.exp(-dE / T)) {
+                        // Accept.
+                    } else {
+                        li.cx = oldCx; li.cy = oldCy;
+                    }
+                }
+                T *= cool;
+            }
+        }
+
+        // Build the per-(word,zoom,codes) cache key.
+        function _hmOffsetCacheKey(word, zoom, codes) {
+            // codes is small (<200) and sorted strings; join is cheap.
+            return word + '|' + zoom + '|' + codes.join(',');
+        }
+
+        // Run SA to refine offsets[]. Inputs:
+        //   codes:    array of lang codes to place (visible + active).
+        //   ppx:      code -> {x,y} marker anchor pixel position.
+        //   offsets:  code -> {x,y} current pixel offset (mutated in place).
+        //   labelW, labelH: estimated label box size (px).
+        //   word, zoom: cache key inputs.
+        // Returns: ms spent in SA (or 0 on cache hit).
+        function _hmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
+            if (codes.length < 2) return 0;
+            const sortedCodes = codes.slice().sort();
+            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes);
+            const cached = _hmLabelOffsetCache.get(cacheKey);
+            if (cached) {
+                // LRU bump: re-insert so it's most-recently-used.
+                _hmLabelOffsetCache.delete(cacheKey);
+                _hmLabelOffsetCache.set(cacheKey, cached);
+                for (const code of codes) {
+                    const off = cached.get(code);
+                    if (off) offsets[code] = { x: off.x, y: off.y };
+                }
+                return 0;
+            }
+            const t0 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            // Build labels array. Use the existing offsets as the SA seed.
+            const labels = [];
+            for (const code of codes) {
+                if (!ppx[code]) continue;
+                const pt = ppx[code];
+                const off = offsets[code] || { x: 0, y: 0 };
+                labels.push({
+                    id: code,
+                    ax: pt.x, ay: pt.y,             // anchor (marker)
+                    cx: pt.x + off.x,                // current center
+                    cy: pt.y + off.y,
+                    w: labelW, h: labelH,
+                });
+            }
+            // Sweeps: 30 normally, scaled down for very dense maps so the
+            // ~80ms target on mid-range laptops still holds. n*n*sweeps
+            // grows quickly; 100 labels * 30 sweeps * 100 inner = ~300k ops.
+            let sweeps = 30;
+            if (labels.length > 120) sweeps = 20;
+            if (labels.length > 180) sweeps = 15;
+            const alpha = 0.05;  // small — overlap dominates anchor pull
+            _hmAnnealLabels(labels, sweeps, alpha);
+            // Write back offsets + populate cache.
+            const cacheEntry = new Map();
+            for (const lbl of labels) {
+                const dx = lbl.cx - lbl.ax;
+                const dy = lbl.cy - lbl.ay;
+                offsets[lbl.id] = { x: dx, y: dy };
+                cacheEntry.set(lbl.id, { x: dx, y: dy });
+            }
+            // LRU evict if over cap.
+            if (_hmLabelOffsetCache.size >= _HM_SA_CACHE_MAX) {
+                const firstKey = _hmLabelOffsetCache.keys().next().value;
+                if (firstKey != null) _hmLabelOffsetCache.delete(firstKey);
+            }
+            _hmLabelOffsetCache.set(cacheKey, cacheEntry);
+            const t1 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            return t1 - t0;
+        }
+
+        // Expose a manual cache-clear hook for the console / tests.
+        window._hmClearLabelOffsetCache = () => _hmLabelOffsetCache.clear();
+
         function updateMarkers(wordId) {
             currentWord = wordId;
 
@@ -6580,6 +6749,29 @@
                 }
                 _placedBoxes.push({ cx, cy });
                 offsets[code] = { x: cx - pt.x, y: cy - pt.y };
+            }
+
+            // SA refinement pass: take the greedy result above as a warm
+            // start and run simulated annealing to mop up residual overlaps
+            // the greedy column-stacking couldn't reach (e.g. labels whose
+            // horizontal extents straddle a cell boundary). Cached per
+            // (currentWord, zoom, sortedCodes) — pan-induced re-renders hit
+            // the cache and skip SA entirely. See _hmRefineOffsetsSA above.
+            const _saCodes = [];
+            for (const code of allRenderable) {
+                if (hiddenCodes.has(code)) continue;
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            const _saMs = _hmRefineOffsetsSA(
+                _saCodes, ppx, offsets, labelW, labelH,
+                wordId, zoom
+            );
+            if (_saMs > 0 && typeof window !== 'undefined' && window._hmSaLogTiming) {
+                // Opt-in console timing for perf measurement; enable by
+                // setting window._hmSaLogTiming = true in DevTools.
+                console.log('[hanmap SA]', _saCodes.length, 'labels in', _saMs.toFixed(1), 'ms');
             }
 
             // Single render loop for both attested and unattested langs.
