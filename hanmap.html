@@ -4700,6 +4700,15 @@
 
             function setChar(ch) {
                 if (!ch || ch === currentWord) return;
+                // 2026-05-30: trivia articles reference characters
+                // (e.g. 生, 文) that aren't in HAN_LIST. Without this
+                // guard, setChar would clobber currentWord with an
+                // unsupported char, markers would render empty, and the
+                // button would appear unresponsive. Bail early instead.
+                if (typeof HAN_DATA !== 'undefined' && !HAN_DATA[ch]) {
+                    console.info('[hanmap] setChar skipped — \"' + ch + '\" not in HAN_LIST');
+                    return;
+                }
                 currentWord = ch;
                 btn.textContent = ch;
                 if (select.value !== ch) select.value = ch;
