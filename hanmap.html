@@ -4800,21 +4800,27 @@
                     wrap.appendChild(h3);
                     const grid = document.createElement('div');
                     grid.className = 'char-grid';
+                    // 2026-05-30: collapse multi-sense compound IDs back to
+                    // a single base-char button per user request — the modal
+                    // selector should look like a glossary, not a sense
+                    // picker. Click selects the first sense (':1') to match
+                    // legacy behaviour; sense selection happens elsewhere
+                    // (modal table / map markers).
+                    const seenBase = new Set();
                     for (const ch of cat.chars) {
+                        const baseChar = displayCharOf(ch);
+                        if (seenBase.has(baseChar)) continue;
+                        seenBase.add(baseChar);
+                        // First compound ID for this base char in the
+                        // category becomes the click target.
+                        const targetId = ch;
                         const b = document.createElement('button');
                         b.type = 'button';
-                        b.className = 'char-btn' + (ch === currentWord ? ' active' : '');
-                        const {char: chDisp, senseIdx: chSense} = senseSplitId(ch);
-                        const chSenseTxt = senseLabelOf(ch, uiLang);
-                        b.innerHTML = '<span class="char-tile-char">' +
-                            escapeHtml(chDisp) +
-                            (chSense ? '<sup style="font-size:0.45em;color:#c0392b;vertical-align:super">' + escapeHtml(chSense) + '</sup>' : '') +
-                            '</span>' +
-                            (chSenseTxt ? '<span class="char-tile-sense" style="display:block;font-size:10px;color:#666;line-height:1.1;margin-top:2px">' + escapeHtml(chSenseTxt) + '</span>' : '');
-                        b.dataset.char = ch;
-                        if (chSenseTxt) b.title = chSenseTxt;
+                        b.className = 'char-btn' + (baseChar === displayCharOf(currentWord) ? ' active' : '');
+                        b.innerHTML = '<span class="char-tile-char">' + escapeHtml(baseChar) + '</span>';
+                        b.dataset.char = targetId;
                         b.addEventListener('click', () => {
-                            setChar(ch);
+                            setChar(targetId);
                             closeModal();
                         });
                         grid.appendChild(b);
