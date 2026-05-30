@@ -6221,6 +6221,14 @@
             if (code === 'ja' || code === 'ko') {
                 n = n.replace(/\s*[(（](標準|标准|표준|Standard|estándar|standard)[)）]\s*$/i, '');
             }
+            // Indonesian UI: drop the leading "Bahasa " prefix on map
+            // labels (user request 2026-05-31 — "地図上の表示が
+            // インドネシア語の場合は、Bahasa要らない"). "Bahasa
+            // Inggris" → "Inggris", "Bahasa Indonesia" → "Indonesia".
+            // Keep the prefix in modals/info panels where space is fine.
+            if (uiBase === 'id') {
+                n = n.replace(/^Bahasa\s+/i, '');
+            }
             return n;
         }
 
