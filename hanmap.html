@@ -249,6 +249,38 @@
         #char-modal-backdrop.visible { display: block !important; }
         #char-current-btn:hover { background: rgba(255,255,255,1) !important; }
         #char-current-btn:active { transform: scale(0.97); }
+        /* Sense tabs — notebook-tab style attached to the right edge of
+           the char button, sticking outward. Visible only when the
+           current base char has 2+ senses (e.g. 行 → 行:1 / 行:2). */
+        .sense-tab {
+            display: block;
+            min-width: 22px;
+            height: 28px;
+            border: 1px solid #d0d0d0;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(6px);
+            font-family: 'Noto Serif JP', 'Noto Serif SC', 'Noto Serif TC', 'Noto Serif KR', serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #888;
+            cursor: pointer;
+            padding: 0 7px;
+            line-height: 1;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.10);
+            transition: background 0.12s, color 0.12s;
+        }
+        .sense-tab.active {
+            background: #c0392b;
+            color: #fff;
+            border-color: #c0392b;
+        }
+        .sense-tab:not(.active):hover {
+            background: #fff;
+            color: #c0392b;
+        }
+        #sense-tabs.visible { display: flex !important; }
         #char-random-btn:hover { background: #fff !important; }
         .char-category { margin-bottom: 14px; }
         .char-category h3 {
@@ -2524,10 +2556,13 @@
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
             <!-- Char button + dice on the right, vertically centered together. -->
             <div style="display:flex;flex-direction:row;gap:8px;align-items:center">
+                <div id="char-current-wrap" style="position:relative;display:inline-block">
                 <button id="char-current-btn" type="button"
                         aria-haspopup="dialog" aria-controls="char-modal"
                         title="Select character"
                         style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
+                <div id="sense-tabs" style="position:absolute;top:14px;left:100%;display:none;flex-direction:column;gap:4px;z-index:5"></div>
+                </div>
                 <button id="char-random-btn" type="button"
                         title="Random character"
                         aria-label="Random character"
@@ -2988,7 +3023,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=53"></script>
+    <script src="hanmap_data.js?v=54"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -4757,6 +4792,37 @@
             }
             select.value = currentWord;
 
+            // 2026-05-31: sense tabs on the upper-right of the char button,
+            // sticking out past the square frame. Only visible when the
+            // current base char has 2+ HAN_LIST entries (e.g. 行 → 行:1 /
+            // 行:2). Each tab is the bare sense index (1, 2, …); the
+            // active tab shows red. Clicking a tab calls setChar(otherId).
+            function renderSenseTabs(currentId) {
+                const wrap = document.getElementById('sense-tabs');
+                if (!wrap || typeof HAN_LIST === 'undefined') return;
+                const base = displayCharOf(currentId);
+                const senses = HAN_LIST.filter(id => displayCharOf(id) === base);
+                if (senses.length <= 1) {
+                    wrap.classList.remove('visible');
+                    wrap.innerHTML = '';
+                    return;
+                }
+                wrap.classList.add('visible');
+                wrap.innerHTML = '';
+                for (const id of senses) {
+                    const tab = document.createElement('button');
+                    tab.type = 'button';
+                    tab.className = 'sense-tab' + (id === currentId ? ' active' : '');
+                    tab.textContent = senseBadgeOf(id) || '·';
+                    tab.title = senseLabelOf(id, uiLang) || id;
+                    tab.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        setChar(id);
+                    });
+                    wrap.appendChild(tab);
+                }
+            }
+
             function setChar(ch) {
                 if (!ch || ch === currentWord) return;
                 // 2026-05-30: trivia articles reference characters
@@ -4776,6 +4842,7 @@
                     btn.title = senseLabelOf(ch, uiLang) || ch;
                 }
                 if (select.value !== ch) select.value = ch;
+                renderSenseTabs(ch);
                 updateMarkers(ch);
                 try { updateHash && updateHash(); } catch (_) {}
                 // Re-render the lang-info panel if it's open so the new
@@ -4853,11 +4920,16 @@
             // lands on the final char. Total animation ~0.5s.
             // Per user request 2026-05-29.
             let _rouletteRunning = false;
+            // 2026-05-31: roulette picks only "first sense" IDs (no colon
+            // OR colon-1). To see ':2' senses, user must click the sense
+            // tabs explicitly. Same filter applied to the in-flight reel
+            // cells, so the spin never displays a ':2' tile either.
+            const _firstSenseList = HAN_LIST.filter(id => !id.includes(':') || id.endsWith(':1'));
             randomBtn.addEventListener('click', () => {
                 if (_rouletteRunning) return;
                 let finalCh;
-                do { finalCh = HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]; }
-                while (finalCh === currentWord && HAN_LIST.length > 1);
+                do { finalCh = _firstSenseList[Math.floor(Math.random() * _firstSenseList.length)]; }
+                while (finalCh === currentWord && _firstSenseList.length > 1);
 
                 const cbtn = document.getElementById('char-current-btn');
                 if (!cbtn) { setChar(finalCh); return; }
@@ -4871,7 +4943,7 @@
                 // duration so the eye sees continuous "ticking".
                 const N = 24;
                 const cells = [currentWord];
-                for (let i = 0; i < N; i++) cells.push(HAN_LIST[Math.floor(Math.random() * HAN_LIST.length)]);
+                for (let i = 0; i < N; i++) cells.push(_firstSenseList[Math.floor(Math.random() * _firstSenseList.length)]);
                 cells.push(finalCh);
 
                 const prevOverflow = cbtn.style.overflow;
@@ -4932,11 +5004,11 @@
                         (fsb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(fsb) + '</sup>' : '');
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
-                    // Stop dice jiggle.
+                    // Stop dice jiggle at the same instant the char snaps.
                     if (randomBtn && randomBtn.dataset.spinTimer) {
                         try { clearInterval(parseInt(randomBtn.dataset.spinTimer, 10)); } catch (_) {}
                         delete randomBtn.dataset.spinTimer;
-                        randomBtn.style.transition = 'transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        randomBtn.style.transition = 'none';
                         randomBtn.style.transform = 'rotate(0deg)';
                     }
                     setChar(finalCh);
@@ -6893,6 +6965,8 @@
 
         // Initial render
         updateMarkers(currentWord);
+        // Initial sense tabs (in case currentWord starts on a multi-sense ID)
+        try { if (typeof renderSenseTabs === 'function') renderSenseTabs(currentWord); } catch (_) {}
 
         // Zoom class
         function updateZoomClass() {
