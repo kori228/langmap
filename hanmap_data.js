@@ -22342,7 +22342,21 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ]
-  },
+  ,
+    "gan": [
+      {
+        "native": "",
+        "surface": "nyit⁵",
+        "ipa": "ȵit̚˥",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "lit⁵",
+        "ipa": "lit̚˥",
+        "label": "白讀"
+      }
+    ]},
   "月": {
     "nan": [
       {
@@ -24458,7 +24472,21 @@ const HAN_VARIANTS = {
         "label": "文讀"
       }
     ]
-  },
+  ,
+    "gan": [
+      {
+        "native": "",
+        "surface": "nyin⁴⁵",
+        "ipa": "ȵin˦˥",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "lin⁴⁵",
+        "ipa": "lin˦˥",
+        "label": "白讀"
+      }
+    ]},
   "手": {
     "nan": [
       {
