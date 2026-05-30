@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=49"></script>
+    <script src="hanmap_data.js?v=50"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3050,6 +3050,15 @@
         // chars). Without this filter the language renders as an empty
         // marker on the map.
         const HAN_EMPTY = (v) => !v || v === '—' || v === '-';
+        // 2026-05-30: when primary surface/ipa are nulled for a (ch, code)
+        // because HAN_VARIANTS owns the readings (per spec invariant 1),
+        // we still need a representative reading in LANG_DATA so the marker
+        // is visible. Fall back to the first variant's surface/ipa.
+        function _hanFallbackFromVariants(ch, code) {
+            const vs = (typeof HAN_VARIANTS !== 'undefined' && HAN_VARIANTS[ch] && HAN_VARIANTS[ch][code]) || null;
+            if (!vs || !vs.length) return ['', ''];
+            return [vs[0].surface || '', vs[0].ipa || ''];
+        }
         for (const code of HAN_LANGS) {
             if (!LANG_DATA[code]) continue;
             LANG_DATA[code].words = LANG_DATA[code].words || {};
@@ -3060,6 +3069,10 @@
                 let ipa  = (cd.ipa     && cd.ipa[code])     || '';
                 if (HAN_EMPTY(surf)) surf = '';
                 if (HAN_EMPTY(ipa))  ipa  = '';
+                if (!surf && !ipa) {
+                    const fb = _hanFallbackFromVariants(ch, code);
+                    surf = fb[0]; ipa = fb[1];
+                }
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
@@ -3083,6 +3096,10 @@
                 let ipa  = (cd.ipa     && cd.ipa[code])     || '';
                 if (HAN_EMPTY(surf)) surf = '';
                 if (HAN_EMPTY(ipa))  ipa  = '';
+                if (!surf && !ipa) {
+                    const fb = _hanFallbackFromVariants(ch, code);
+                    surf = fb[0]; ipa = fb[1];
+                }
                 if (surf || ipa) LANG_DATA[code].words[ch] = [surf, ipa];
             }
         }
