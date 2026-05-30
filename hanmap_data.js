@@ -6512,7 +6512,7 @@ const HAN_DATA = {
       "ja_kgs": "yō",
       "ja_okn": "yū",
       "ja_thk": "yō",
-      "vi_nom": "dương"
+      "vi_nom": "cừu"
     },
     "ipa": {
       "zh": "jaŋ˧˥",
@@ -6605,7 +6605,7 @@ const HAN_DATA = {
       "ja_kgs": "joː",
       "ja_okn": "juː",
       "ja_thk": "joː",
-      "vi_nom": "zɨəŋ˧˧"
+      "vi_nom": "kɨw˨˩"
     },
     "en": {
       "gloss": "sheep, goat",
