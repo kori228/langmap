@@ -2437,7 +2437,7 @@
                 <span class="nav-sep">/</span>
                 <a href="wordmap.html" class="header-nav-link" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</a>
                 <span class="nav-sep">/</span>
-                <span class="header-nav-current"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>漢字マップ</span>
+                <span class="header-nav-current"><span style="display:inline-block;font-family:&apos;Noto Serif JP&apos;,&apos;Noto Serif SC&apos;,&apos;Noto Serif TC&apos;,&apos;Noto Serif KR&apos;,serif;font-weight:700;vertical-align:-1px;margin-right:3px;font-size:13px">字</span>漢字マップ</span>
                 <span class="nav-sep">/</span>
                 <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
             </nav>
@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=46"></script>
+    <script src="hanmap_data.js?v=47"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3003,7 +3003,7 @@
     <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
          TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
          renders these without changes. Must come BEFORE wordmap's IIFE. -->
-    <script src="hanmap_trivia.js?v=4"></script>
+    <script src="hanmap_trivia.js?v=5"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=115"></script>
@@ -3684,6 +3684,18 @@
         function wire() {
             loadState();
             reportUncovered();
+            // 2026-05-30 ROOT CAUSE for blank-map-on-first-load:
+            // the wordmap IIFE that defines updateMarkers and triggers
+            // the very first updateMarkers(currentWord) at line ~6777
+            // runs synchronously during HTML parse — BEFORE wire()
+            // (which fires on DOMContentLoaded). At that point `selected`
+            // is still an empty Set, so anyFilterActive() === true and
+            // EVERY code gets skipped by the `if (filterActive &&
+            // !isActive(code)) continue;` guard. Result: 0 markers
+            // rendered, blank map until the user pans/zooms/clicks.
+            // Fix: fire langmap:filterchange now that loadState has
+            // populated `selected`; the existing listener will redraw.
+            try { window.dispatchEvent(new CustomEvent('langmap:filterchange')); } catch (_) {}
             const btn = document.getElementById('hm-lang-filter-btn');
             if (btn) btn.addEventListener('click', open);
             const bd = document.getElementById('hm-lang-filter-backdrop');
