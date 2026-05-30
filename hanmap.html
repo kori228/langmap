@@ -7176,6 +7176,26 @@
                 if (hanMeta.region) {
                     html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '地域' : uiBase === 'ko' ? '지역' : uiBase === 'zh' || uiBase === 'yue' ? '地区' : 'Region')}:</b> ${escapeHtml(hanMeta.region)}</div>`;
                 }
+                if (hanMeta.speakers) {
+                    // 話者数 (speaker count) row — sourced figure with
+                    // citation in muted text. Each entry in HAN_LANG_META has
+                    // a speakers string (Japanese-formatted, e.g. "約1.3億人")
+                    // and a speakersSource label (e.g. "Ethnologue 2024 (jpn)").
+                    const spkLabel = {
+                        en: 'Speakers', ja: '話者数', ko: '화자 수',
+                        zh: '使用人口', yue: '使用人口',
+                        vi: 'Số người nói', th: 'จำนวนผู้พูด',
+                        id: 'Penutur', hi: 'वक्ता',
+                        de: 'Sprecher', fr: 'Locuteurs', it: 'Parlanti',
+                        es: 'Hablantes', pt: 'Falantes',
+                        ru: 'Носители', uk: 'Носії',
+                        ar: 'الناطقون', he: 'דוברים', sw: 'Wasemaji',
+                    }[uiBase] || 'Speakers';
+                    const srcPart = hanMeta.speakersSource
+                        ? ` <span style="color:#999">(${escapeHtml(hanMeta.speakersSource)})</span>`
+                        : '';
+                    html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(spkLabel)}:</b> ${escapeHtml(hanMeta.speakers)}${srcPart}</div>`;
+                }
                 if (hanMeta.description) {
                     let desc = '';
                     if (typeof hanMeta.description === 'object') {

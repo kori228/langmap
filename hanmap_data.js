@@ -12866,7 +12866,9 @@ const HAN_LANG_META = {
       "name": "Hanyu Pinyin",
       "authority": "中華人民共和国 GB/T 16159",
       "year": 1958
-    }
+    },
+    "speakers": "約9.4億人 (L1) / 約11.4億人 (L1+L2)",
+    "speakersSource": "Ethnologue 2024 (cmn)"
   },
   "yue": {
     "name": "Cantonese",
@@ -12923,7 +12925,9 @@ const HAN_LANG_META = {
       "name": "Jyutping (粵拼)",
       "authority": "Linguistic Society of Hong Kong (LSHK)",
       "year": 1993
-    }
+    },
+    "speakers": "約8600万人 (L1) / 約8700万人 (L1+L2)",
+    "speakersSource": "Ethnologue 2024 (yue)"
   },
   "nan": {
     "name": "Min Nan (Hokkien)",
@@ -12980,7 +12984,9 @@ const HAN_LANG_META = {
       "name": "Pe̍h-ōe-jī (POJ / 白話字)",
       "authority": "Presbyterian Church (Medhurst, Douglas, Barclay)",
       "year": 1832
-    }
+    },
+    "speakers": "約4900万人",
+    "speakersSource": "Ethnologue 2024 (nan)"
   },
   "wuu": {
     "name": "Wu Chinese (Shanghainese)",
@@ -13037,7 +13043,9 @@ const HAN_LANG_META = {
       "name": "Wugniu (吳語拼音)",
       "authority": "Wu Association (民間), based on 上海話拼音方案",
       "year": 2006
-    }
+    },
+    "speakers": "約8300万人",
+    "speakersSource": "Ethnologue 2024 (wuu)"
   },
   "hak_cn": {
     "name": "Hakka",
@@ -13094,7 +13102,9 @@ const HAN_LANG_META = {
       "name": "Pha̍k-fa-sṳ (PFS / 客語白話字)",
       "authority": "Presbyterian Church (Charles Piton)",
       "year": 1860
-    }
+    },
+    "speakers": "約4400万人 (Hakka全体)",
+    "speakersSource": "Ethnologue 2024 (hak)"
   },
   "cdo": {
     "name": "Min Dong (Fuzhou)",
@@ -13151,7 +13161,9 @@ const HAN_LANG_META = {
       "name": "Bàng-uâ-cê (Foochow Romanized / 平話字)",
       "authority": "M. C. White & Methodist Mission",
       "year": 1854
-    }
+    },
+    "speakers": "約900万人",
+    "speakersSource": "Wikipedia (英語版「Eastern Min」, 2026-05-30閲覧) / Ethnologue (cdo)"
   },
   "hsn": {
     "name": "Xiang (Changsha)",
@@ -13207,7 +13219,9 @@ const HAN_LANG_META = {
       "name": "Xiang phonetic notation (湘語拼音)",
       "authority": "Hunan dialect studies",
       "year": 1991
-    }
+    },
+    "speakers": "約3700万人",
+    "speakersSource": "Wikipedia (英語版「Xiang Chinese」, 2026-05-30閲覧) / Ethnologue 2017 (hsn)"
   },
   "gan": {
     "name": "Gan (Nanchang)",
@@ -13263,7 +13277,9 @@ const HAN_LANG_META = {
       "name": "Gan phonetic notation (贛語拼音)",
       "authority": "Jiangxi Normal University",
       "year": 1992
-    }
+    },
+    "speakers": "約2200万人",
+    "speakersSource": "Wikipedia (英語版「Gan Chinese」, 2026-05-30閲覧) / Ethnologue (gan)"
   },
   "cjy": {
     "name": "Jin (Taiyuan)",
@@ -13319,7 +13335,9 @@ const HAN_LANG_META = {
       "name": "Jin phonetic notation (晉語拼音)",
       "authority": "Shanxi Normal University",
       "year": 1990
-    }
+    },
+    "speakers": "約4800万人",
+    "speakersSource": "Wikipedia (英語版「Jin Chinese」, 2026-05-30閲覧) / Ethnologue (cjy)"
   },
   "mnp": {
     "name": "Min Bei (Jian'ou)",
@@ -13375,7 +13393,9 @@ const HAN_LANG_META = {
       "name": "Kienning Colloquial Romanized (建寧府土腔羅馬字)",
       "authority": "Hugh Phillips & Hannah Plummer",
       "year": 1900
-    }
+    },
+    "speakers": "約1100万人",
+    "speakersSource": "Wikipedia (英語版「Northern Min」, 2026-05-30閲覧)"
   },
   "cpx": {
     "name": "Pu-Xian Min",
@@ -13431,7 +13451,9 @@ const HAN_LANG_META = {
       "name": "Hing-hua Romanized (興化平話字)",
       "authority": "William N. Brewster, Methodist Mission",
       "year": 1890
-    }
+    },
+    "speakers": "約260万人",
+    "speakersSource": "Wikipedia (英語版「Pu-Xian Min」, 2026-05-30閲覧)"
   },
   "zh_db": {
     "reading_type": {
@@ -13484,7 +13506,9 @@ const HAN_LANG_META = {
       "name": "Pinyin (with dialect notation)",
       "authority": "CASS Fangyan tradition",
       "year": 1958
-    }
+    },
+    "speakers": "約1億人 (東北官話)",
+    "speakersSource": "Wikipedia (英語版「Northeastern Mandarin」, 2026-05-30閲覧)"
   },
   "zh_sc": {
     "reading_type": {
@@ -13537,7 +13561,9 @@ const HAN_LANG_META = {
       "name": "Sichuan Pinyin / IPA",
       "authority": "《四川方言詞典》",
       "year": 1987
-    }
+    },
+    "speakers": "約1.2億人 (四川官話)",
+    "speakersSource": "Wikipedia (英語版「Sichuanese dialects」, 2026-05-30閲覧)"
   },
   "zh_cd": {
     "reading_type": {
@@ -13590,7 +13616,9 @@ const HAN_LANG_META = {
       "name": "Chengdu Pinyin / IPA",
       "authority": "Sichuan University dialect studies",
       "year": 1989
-    }
+    },
+    "speakers": "約9000万人 (成渝片)",
+    "speakersSource": "Wikipedia (英語版「Chengdu-Chongqing dialect」, 2026-05-30閲覧)"
   },
   "zh_cq": {
     "reading_type": {
@@ -13643,7 +13671,9 @@ const HAN_LANG_META = {
       "name": "Chongqing Pinyin / IPA",
       "authority": "CASS Fangyan",
       "year": 1985
-    }
+    },
+    "speakers": "約9000万人 (成渝片)",
+    "speakersSource": "Wikipedia (英語版「Chengdu-Chongqing dialect」, 2026-05-30閲覧)"
   },
   "zh_xa": {
     "reading_type": {
@@ -13696,7 +13726,9 @@ const HAN_LANG_META = {
       "name": "Xi'an phonetic notation (IPA)",
       "authority": "Shaanxi Normal Univ.",
       "year": 1990
-    }
+    },
+    "speakers": "約4900万人 (中原官話)",
+    "speakersSource": "Wikipedia (英語版「Zhongyuan Mandarin」, 2026-05-30閲覧)"
   },
   "zh_km": {
     "reading_type": {
@@ -13749,7 +13781,9 @@ const HAN_LANG_META = {
       "name": "Kunming Pinyin / IPA",
       "authority": "《昆明方言詞典》",
       "year": 1992
-    }
+    },
+    "speakers": "約2000万人 (昆明・西南官話雲南片)",
+    "speakersSource": "Wikipedia (中文版「昆明话」, 2026-05-30閲覧)"
   },
   "zh_jn": {
     "reading_type": {
@@ -13802,7 +13836,9 @@ const HAN_LANG_META = {
       "name": "Jinan phonetic notation",
       "authority": "《濟南方言詞典》",
       "year": 1997
-    }
+    },
+    "speakers": "約8700万人 (冀魯官話)",
+    "speakersSource": "Wikipedia (英語版「Ji–Lu Mandarin」, 2026-05-30閲覧)"
   },
   "zh_kf": {
     "reading_type": {
@@ -13855,7 +13891,9 @@ const HAN_LANG_META = {
       "name": "Kaifeng phonetic notation",
       "authority": "Henan University dialect studies",
       "year": 1995
-    }
+    },
+    "speakers": "約4900万人 (中原官話)",
+    "speakersSource": "Wikipedia (英語版「Zhongyuan Mandarin」, 2026-05-30閲覧)"
   },
   "zh_hf": {
     "reading_type": {
@@ -13908,7 +13946,9 @@ const HAN_LANG_META = {
       "name": "Hefei phonetic notation",
       "authority": "Anhui dialect survey",
       "year": 1993
-    }
+    },
+    "speakers": "約7300万人 (江淮官話)",
+    "speakersSource": "Wikipedia (英語版「Lower Yangtze Mandarin」, 2026-05-30閲覧)"
   },
   "zh_jh": {
     "reading_type": {
@@ -13961,7 +14001,9 @@ const HAN_LANG_META = {
       "name": "Jianghuai Mandarin IPA",
       "authority": "Nanjing Normal University",
       "year": 1991
-    }
+    },
+    "speakers": "約1100万人 (合肥市域人口、江淮官話)",
+    "speakersSource": "Wikipedia (中文版「合肥话」, 2026-05-30閲覧)"
   },
   "zh_nj": {
     "reading_type": {
@@ -14014,7 +14056,9 @@ const HAN_LANG_META = {
       "name": "Nanjing phonetic notation",
       "authority": "《南京方言詞典》",
       "year": 1995
-    }
+    },
+    "speakers": "約940万人 (南京市人口、江淮官話)",
+    "speakersSource": "Wikipedia (英語版「Nanjing dialect」, 2026-05-30閲覧)"
   },
   "zh_tj": {
     "reading_type": {
@@ -14067,7 +14111,9 @@ const HAN_LANG_META = {
       "name": "Tianjin phonetic notation",
       "authority": "《天津方言詞典》",
       "year": 1998
-    }
+    },
+    "speakers": "約1300万人 (天津市域)",
+    "speakersSource": "Wikipedia (英語版「Tianjin dialect」, 2026-05-30閲覧)"
   },
   "zh_lz": {
     "reading_type": {
@@ -14120,7 +14166,9 @@ const HAN_LANG_META = {
       "name": "Lanzhou phonetic notation",
       "authority": "Northwest Normal University",
       "year": 1992
-    }
+    },
+    "speakers": "約430万人 (蘭州市域、中原官話)",
+    "speakersSource": "Wikipedia (英語版「Lanzhou dialect」, 2026-05-30閲覧)"
   },
   "zh_wh": {
     "reading_type": {
@@ -14173,7 +14221,9 @@ const HAN_LANG_META = {
       "name": "Wuhan phonetic notation",
       "authority": "《武漢方言詞典》",
       "year": 1998
-    }
+    },
+    "speakers": "約1100万人 (武漢市域、西南官話)",
+    "speakersSource": "Wikipedia (英語版「Wuhan dialect」, 2026-05-30閲覧)"
   },
   "zh_zz": {
     "reading_type": {
@@ -14226,7 +14276,9 @@ const HAN_LANG_META = {
       "name": "Zhongyuan Mandarin IPA",
       "authority": "Henan dialect studies",
       "year": 1995
-    }
+    },
+    "speakers": "約1200万人 (鄭州市域、中原官話)",
+    "speakersSource": "Wikipedia (中文版「鄭州話」, 2026-05-30閲覧)"
   },
   "yue_gz": {
     "reading_type": {
@@ -14279,7 +14331,9 @@ const HAN_LANG_META = {
       "name": "IPA (Gaozhou Yue)",
       "authority": "Sun Yat-sen University",
       "year": 1990
-    }
+    },
+    "speakers": "約6200万人 (広府片)",
+    "speakersSource": "Wikipedia (英語版「Yuehai」, 2026-05-30閲覧)"
   },
   "yue_ts": {
     "reading_type": {
@@ -14332,7 +14386,9 @@ const HAN_LANG_META = {
       "name": "Taishanese Romanisation",
       "authority": "Stephen Li & community standards",
       "year": 2010
-    }
+    },
+    "speakers": "約400万人 (台山語・四邑片)",
+    "speakersSource": "Wikipedia (英語版「Taishanese」, 2026-05-30閲覧)"
   },
   "yue_dg": {
     "reading_type": {
@@ -14385,7 +14441,9 @@ const HAN_LANG_META = {
       "name": "IPA (Dongguan Yue)",
       "authority": "Jinan University dialect studies",
       "year": 1995
-    }
+    },
+    "speakers": "約800万人 (東莞市域)",
+    "speakersSource": "Wikipedia (英語版「Dongguan dialect」, 2026-05-30閲覧)"
   },
   "yue_nn": {
     "reading_type": {
@@ -14438,7 +14496,9 @@ const HAN_LANG_META = {
       "name": "IPA (Nanning Yue)",
       "authority": "Guangxi University",
       "year": 1990
-    }
+    },
+    "speakers": "約1400万人 (邕潯片・南寧白話)",
+    "speakersSource": "Wikipedia (中文版「南寧白話」, 2026-05-30閲覧)"
   },
   "yue_zs": {
     "reading_type": {
@@ -14491,7 +14551,9 @@ const HAN_LANG_META = {
       "name": "IPA (Zhongshan Yue)",
       "authority": "Sun Yat-sen University",
       "year": 1995
-    }
+    },
+    "speakers": "約400万人 (中山市域)",
+    "speakersSource": "Wikipedia (中文版「中山話」, 2026-05-30閲覧)"
   },
   "nan_qz": {
     "reading_type": {
@@ -14544,7 +14606,9 @@ const HAN_LANG_META = {
       "name": "Pe̍h-ōe-jī (POJ)",
       "authority": "Quanzhou Presbyterian tradition",
       "year": 1832
-    }
+    },
+    "speakers": "約900万人 (泉州片)",
+    "speakersSource": "Wikipedia (英語版「Quanzhou dialect」, 2026-05-30閲覧)"
   },
   "nan_te": {
     "reading_type": {
@@ -14597,7 +14661,9 @@ const HAN_LANG_META = {
       "name": "Peng'im (汕頭話拼音)",
       "authority": "Guangdong Provincial Department of Education",
       "year": 1960
-    }
+    },
+    "speakers": "約1500万人 (潮州語)",
+    "speakersSource": "Wikipedia (英語版「Teochew dialect」, 2026-05-30閲覧)"
   },
   "nan_pn": {
     "reading_type": {
@@ -14650,7 +14716,9 @@ const HAN_LANG_META = {
       "name": "Penang Hokkien Romanisation",
       "authority": "Penang Hokkien Podcast / Tan Choon Hoe",
       "year": 2007
-    }
+    },
+    "speakers": "約160万人 (浦南方言, 推定値)",
+    "speakersSource": "Wikipedia (中文版「浦城方言」, 2026-05-30閲覧)"
   },
   "nan_hai": {
     "reading_type": {
@@ -14703,7 +14771,9 @@ const HAN_LANG_META = {
       "name": "Hainan Romanisation (海南拼音)",
       "authority": "Hainan Provincial 1956 scheme",
       "year": 1956
-    }
+    },
+    "speakers": "約500万人 (海南語)",
+    "speakersSource": "Wikipedia (英語版「Hainanese」, 2026-05-30閲覧)"
   },
   "nan_xm": {
     "reading_type": {
@@ -14756,7 +14826,9 @@ const HAN_LANG_META = {
       "name": "Pe̍h-ōe-jī (POJ — Amoy)",
       "authority": "London Missionary Society (Carstairs Douglas 1873)",
       "year": 1873
-    }
+    },
+    "speakers": "約500万人 (廈門市域・閩南語)",
+    "speakersSource": "Wikipedia (英語版「Amoy dialect」, 2026-05-30閲覧)"
   },
   "nan_zz": {
     "reading_type": {
@@ -14809,7 +14881,9 @@ const HAN_LANG_META = {
       "name": "Pe̍h-ōe-jī (POJ — Chiang-chiu)",
       "authority": "Presbyterian Mission",
       "year": 1873
-    }
+    },
+    "speakers": "約600万人 (漳州片・閩南語)",
+    "speakersSource": "Wikipedia (英語版「Zhangzhou dialect」, 2026-05-30閲覧)"
   },
   "wuu_nb": {
     "reading_type": {
@@ -14862,7 +14936,9 @@ const HAN_LANG_META = {
       "name": "Ningbo Pinyin / IPA",
       "authority": "Ningbo University dialect group",
       "year": 1988
-    }
+    },
+    "speakers": "約400万人 (寧波市域・甬江片)",
+    "speakersSource": "Wikipedia (英語版「Ningbo dialect」, 2026-05-30閲覧)"
   },
   "wuu_sz": {
     "reading_type": {
@@ -14915,7 +14991,9 @@ const HAN_LANG_META = {
       "name": "Suzhou Romanisation",
       "authority": "Wang Ping & Suzhou linguistic society",
       "year": 1991
-    }
+    },
+    "speakers": "約700万人 (蘇州市域・太湖片)",
+    "speakersSource": "Wikipedia (英語版「Suzhou dialect」, 2026-05-30閲覧)"
   },
   "wuu_wz": {
     "reading_type": {
@@ -14968,7 +15046,9 @@ const HAN_LANG_META = {
       "name": "Wenzhou Pinyin (温州话拼音)",
       "authority": "Wenzhou University & 鄭張尚芳",
       "year": 1990
-    }
+    },
+    "speakers": "約500万人 (温州語・甌江片)",
+    "speakersSource": "Wikipedia (英語版「Wenzhounese」, 2026-05-30閲覧)"
   },
   "wuu_hz": {
     "reading_type": {
@@ -15021,7 +15101,9 @@ const HAN_LANG_META = {
       "name": "Hangzhou Pinyin / IPA",
       "authority": "Zhejiang University dialect group",
       "year": 1989
-    }
+    },
+    "speakers": "約100万人 (杭州市旧城区・太湖片)",
+    "speakersSource": "Wikipedia (英語版「Hangzhou dialect」, 2026-05-30閲覧)"
   },
   "wuu_jx": {
     "reading_type": {
@@ -15074,7 +15156,9 @@ const HAN_LANG_META = {
       "name": "Jiaxing IPA",
       "authority": "Zhejiang dialect survey",
       "year": 1995
-    }
+    },
+    "speakers": "約180万人 (嘉興市域・太湖片)",
+    "speakersSource": "Wikipedia (中文版「嘉興話」, 2026-05-30閲覧)"
   },
   "wuu_jh": {
     "reading_type": {
@@ -15127,7 +15211,9 @@ const HAN_LANG_META = {
       "name": "Jinhua IPA",
       "authority": "Zhejiang Normal University",
       "year": 1992
-    }
+    },
+    "speakers": "約450万人 (金衢片・金華方言)",
+    "speakersSource": "Wikipedia (英語版「Jinhua dialect」, 2026-05-30閲覧)"
   },
   "hak_tw": {
     "reading_type": {
@@ -15181,7 +15267,9 @@ const HAN_LANG_META = {
       "name": "Taiwanese Hakka Romanisation System (臺灣客家語拼音方案)",
       "authority": "台灣教育部",
       "year": 2003
-    }
+    },
+    "speakers": "約250万人 (台湾客家語)",
+    "speakersSource": "Wikipedia (英語版「Taiwanese Hakka」, 2026-05-30閲覧)"
   },
   "hak_hl": {
     "reading_type": {
@@ -15234,7 +15322,9 @@ const HAN_LANG_META = {
       "name": "Taiwanese Hakka Romanisation System (海陸腔)",
       "authority": "台灣教育部",
       "year": 2003
-    }
+    },
+    "speakers": "約30万人 (海陸客家・台湾)",
+    "speakersSource": "Wikipedia (英語版「Hai-Lu Hakka」, 2026-05-30閲覧)"
   },
   "czh": {
     "name": "Hui Chinese",
@@ -15287,7 +15377,9 @@ const HAN_LANG_META = {
       "name": "Hui phonetic notation",
       "authority": "Anhui Provincial dialect survey",
       "year": 1995
-    }
+    },
+    "speakers": "約100万人 (徽語、推定値)",
+    "speakersSource": "Wikipedia (英語版「Huizhou Chinese」, 2026-05-30閲覧) / Ethnologue (czh)"
   },
   "cnp": {
     "name": "Nanning Pinghua",
@@ -15340,7 +15432,9 @@ const HAN_LANG_META = {
       "name": "Pinghua Romanisation (平話拼音)",
       "authority": "Guangxi University",
       "year": 1995
-    }
+    },
+    "speakers": "話者不明 (徽語績歙片の一支)",
+    "speakersSource": "Wikipedia (中文版「徽州方言」, 2026-05-30閲覧)"
   },
   "zh_han": {
     "name": "Han Chinese (reconstructed)",
@@ -15394,7 +15488,9 @@ const HAN_LANG_META = {
       "name": "Baxter–Sagart Old Chinese reconstruction",
       "authority": "Baxter & Sagart",
       "year": 2014
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "上古漢語 (Old Chinese, Baxter-Sagart 2014再構)"
   },
   "zh_tang": {
     "name": "Tang Chinese (Middle Chinese)",
@@ -15448,7 +15544,9 @@ const HAN_LANG_META = {
       "name": "Baxter Middle Chinese transcription",
       "authority": "William H. Baxter",
       "year": 1992
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "中古漢語 (Middle Chinese, 切韻・Baxter 1992再構)"
   },
   "zh_song": {
     "name": "Song-Ming Classical",
@@ -15502,7 +15600,9 @@ const HAN_LANG_META = {
       "name": "Pulleyblank Late Middle Chinese",
       "authority": "Edwin G. Pulleyblank",
       "year": 1991
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "後期中古漢語 (Late Middle Chinese, Pulleyblank 1991再構)"
   },
   "zh_kanbun": {
     "reading_type": {
@@ -15556,7 +15656,9 @@ const HAN_LANG_META = {
       "name": "Hepburn (kanbun training transcription)",
       "authority": "日本伝統訓読の慣用",
       "year": 1885
-    }
+    },
+    "speakers": "話者なし (日本における漢文訓読体系)",
+    "speakersSource": "文字体系 / 話者数該当なし"
   },
   "ko": {
     "name": "Korean Hanja reading",
@@ -15610,7 +15712,9 @@ const HAN_LANG_META = {
       "name": "Revised Romanisation of Korean (국어의 로마자 표기법)",
       "authority": "국립국어원 (NIKL)",
       "year": 2000
-    }
+    },
+    "speakers": "約8100万人 (L1) / 約8200万人 (L1+L2)",
+    "speakersSource": "Ethnologue 2024 (kor)"
   },
   "vi": {
     "reading_type": {
@@ -15662,7 +15766,9 @@ const HAN_LANG_META = {
       "name": "Quốc Ngữ (chữ Quốc Ngữ)",
       "authority": "Alexandre de Rhodes, codified by Bộ Giáo dục",
       "year": 1651
-    }
+    },
+    "speakers": "約8500万人 (L1) / 約8600万人 (L1+L2)",
+    "speakersSource": "Ethnologue 2024 (vie)"
   },
   "vi_c": {
     "reading_type": {
@@ -15714,7 +15820,9 @@ const HAN_LANG_META = {
       "name": "Quốc Ngữ",
       "authority": "Bộ Giáo dục Việt Nam",
       "year": 1651
-    }
+    },
+    "speakers": "約2000万人 (中部ベトナム語、推定)",
+    "speakersSource": "Wikipedia (英語版「Central Vietnamese」, 2026-05-30閲覧)"
   },
   "vi_s": {
     "reading_type": {
@@ -15766,7 +15874,9 @@ const HAN_LANG_META = {
       "name": "Quốc Ngữ",
       "authority": "Bộ Giáo dục Việt Nam",
       "year": 1651
-    }
+    },
+    "speakers": "約4000万人 (南部ベトナム語)",
+    "speakersSource": "Wikipedia (英語版「Southern Vietnamese」, 2026-05-30閲覧)"
   },
   "bca": {
     "name": "Central Bai",
@@ -15823,7 +15933,9 @@ const HAN_LANG_META = {
       "Lee Yeon-ju & Sagart, Laurent 'The reconstruction of Old Chinese' — Bai loan stratum analysis",
       "Xu Erjing & Zhao Yansun《白漢詞典》(1991), 四川民族出版社",
       "Bai Wikipedia (白文維基) — attested modern Bai Wenzi forms"
-    ]
+    ],
+    "speakers": "約100万人 (中央白語)",
+    "speakersSource": "Wikipedia (英語版「Bai language」, 2026-05-30閲覧) / Ethnologue (bca)"
   },
   "juc": {
     "name": "Jurchen",
@@ -15880,7 +15992,9 @@ const HAN_LANG_META = {
       "金啟孮 (Jin Qizong). 女真文辭典 (Dictionary of the Jurchen Script). Wenwu Press, Beijing, 1984.",
       "Grube, Wilhelm. Die Sprache und Schrift der Jučen. Leipzig, 1896.",
       "Wiktionary: Jurchen language entries (cross-checked against Kane and 女真譯語)."
-    ]
+    ],
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "女真語 (12-16世紀、Jin dynasty Tungusic)"
   },
   "mnc": {
     "name": "Manchu",
@@ -15937,7 +16051,9 @@ const HAN_LANG_META = {
       "大清全書 (Daiqing Quanshu, 1683)",
       "Norman, Jerry — A Concise Manchu-English Lexicon (1978)",
       "Wiktionary Manchu entries (mnc)"
-    ]
+    ],
+    "speakers": "約100人 (L1高齢者) / 数千人 (L2)",
+    "speakersSource": "Wikipedia (英語版「Manchu language」, 2026-05-30閲覧)"
   },
   "txg": {
     "name": "Tangut",
@@ -15994,7 +16110,9 @@ const HAN_LANG_META = {
       "Kychanov, E. I. & Arakawa Shintaro — Словарь тангутского (Си Ся) языка (2006)",
       "Li Fanwen (李範文) — 夏漢字典 (2008 revised edition)",
       "Andrew West — BabelStone Tangut resources; 番漢合時掌中珠 (1190) bilingual glossary"
-    ]
+    ],
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "西夏語 / Tangut (1038-1502 推定消滅、Western Xia)"
   },
   "za": {
     "name": "Zhuang",
@@ -16051,7 +16169,9 @@ const HAN_LANG_META = {
       "Lương Văn Tự (1962) — Pinghua-Zhuang phonological correspondence research",
       "Wiktionary Zhuang entries (za.wiktionary.org)",
       "Zhuang Wikipedia (za.wikipedia.org) and Sawndip source materials"
-    ]
+    ],
+    "speakers": "約1600万人 (壮語全方言計)",
+    "speakersSource": "Wikipedia (英語版「Zhuang languages」, 2026-05-30閲覧) / Ethnologue (zha)"
   },
   "zkt": {
     "name": "Khitan",
@@ -16108,7 +16228,9 @@ const HAN_LANG_META = {
       "Liu Fengzhu (劉鳳翥). Qidan Wenzi Yanjiu (契丹文字研究). Zhonghua Shuju, 2014.",
       "Andrew West. BabelStone Khitan Script Resources. babelstone.co.uk/Khitan.",
       "Wu Yingzhe & Janhunen, Juha. New Materials on the Khitan Small Script. SOAS, 2010."
-    ]
+    ],
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "契丹語 / Khitan (10-13世紀、Liao dynasty)"
   },
   "ja": {
     "name": "Japanese",
@@ -16169,7 +16291,9 @@ const HAN_LANG_META = {
       "漢字源 (Gakken)",
       "大漢和辞典 (Morohashi)",
       "日本国語大辞典"
-    ]
+    ],
+    "speakers": "約1.23億人 (L1)",
+    "speakersSource": "Ethnologue 2024 (jpn)"
   },
   "zh_yuan": {
     "name": "Early Mandarin (Zhongyuan Yinyun, 1324)",
@@ -16196,7 +16320,9 @@ const HAN_LANG_META = {
       "name": "Hsueh transcription / Coblin notation",
       "authority": "Hsueh F.S. 1975 / Coblin 2007",
       "year": 1975
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "近世初期マンダリン (中原音韻 1324)"
   },
   "zh_phagspa": {
     "name": "Yuan Mandarin (Phags-pa script)",
@@ -16223,7 +16349,9 @@ const HAN_LANG_META = {
       "name": "Phags-pa script (Coblin transliteration)",
       "authority": "Drogön Chögyal Phagpa / Mongol Yuan court",
       "year": 1269
-    }
+    },
+    "speakers": "文字体系 / 話者数該当なし",
+    "speakersSource": "パスパ文字 (元朝 1269-1368)"
   },
   "yue_hk": {
     "name": "Hong Kong Cantonese",
@@ -16271,7 +16399,9 @@ const HAN_LANG_META = {
       "name": "Jyutping (LSHK 1993)",
       "authority": "Linguistic Society of Hong Kong",
       "year": 1993
-    }
+    },
+    "speakers": "約630万人 (香港人口88.2%)",
+    "speakersSource": "香港2021年人口センサス / Wikipedia「Hong Kong Cantonese」(2026-05-30閲覧)"
   },
   "yue_mo": {
     "name": "Macau Cantonese",
@@ -16304,7 +16434,9 @@ const HAN_LANG_META = {
       "name": "Jyutping (LSHK 1993)",
       "authority": "Linguistic Society of Hong Kong",
       "year": 1993
-    }
+    },
+    "speakers": "約60万人 (マカオ人口85.7%)",
+    "speakersSource": "マカオ統計暨普查局 / Wikipedia「Demographics of Macau」(2026-05-30閲覧)"
   },
   "nan_sg": {
     "name": "Singaporean Hokkien",
@@ -16337,7 +16469,9 @@ const HAN_LANG_META = {
       "name": "POJ (Singapore convention)",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約120万人 (シンガポール福建話)",
+    "speakersSource": "Wikipedia (英語版「Singaporean Hokkien」, 2026-05-30閲覧)"
   },
   "nan_my": {
     "name": "Malaysian Hokkien (KL/Klang)",
@@ -16372,7 +16506,9 @@ const HAN_LANG_META = {
       "name": "POJ (Malaysian convention)",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約190万人 (マレーシア福建話)",
+    "speakersSource": "Wikipedia (英語版「Southern Peninsular Malaysian Hokkien」, 2026-05-30閲覧)"
   },
   "nan_id": {
     "name": "Indonesian Hokkien (Medan)",
@@ -16410,7 +16546,9 @@ const HAN_LANG_META = {
       "name": "POJ (Indonesian convention)",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約100万人 (インドネシア福建話、推定)",
+    "speakersSource": "Wikipedia (英語版「Medan Hokkien」, 2026-05-30閲覧)"
   },
   "sjo": {
     "name": "Sibe",
@@ -16448,7 +16586,9 @@ const HAN_LANG_META = {
       "name": "Möllendorff (Sibe convention) + IPA",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約3万人",
+    "speakersSource": "Wikipedia (英語版「Xibe language」, 2026-05-30閲覧) / Ethnologue (sjo)"
   },
   "ko_mid": {
     "name": "Middle Korean Sino-reading",
@@ -16474,7 +16614,9 @@ const HAN_LANG_META = {
       "name": "Yale (Middle Korean)",
       "authority": "Sin Suk-ju et al. (1448); Yale system adapted for MK by Samuel Martin",
       "year": 1448
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "中期朝鮮語 (15-16世紀、訓民正音以後)"
   },
   "ja_ojp": {
     "name": "Old Japanese on-yomi (7-8c.)",
@@ -16505,7 +16647,9 @@ const HAN_LANG_META = {
       "name": "Frellesvig (8-vowel reconstruction)",
       "authority": "Bjarke Frellesvig 2010",
       "year": 2010
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "上代日本語 (奈良時代、8世紀)"
   },
   "vi_ohan": {
     "name": "Old Sino-Vietnamese (古漢越音)",
@@ -16532,7 +16676,9 @@ const HAN_LANG_META = {
       "name": "Quoc Ngu (reconstructed forms)",
       "authority": "scholarly reconstruction",
       "year": null
-    }
+    },
+    "speakers": "歴史言語 / 現代話者なし",
+    "speakersSource": "古漢越語 (Old Sino-Vietnamese, 唐代借音層)"
   },
   "bo_sino": {
     "name": "Modern Tibetan Sino-reading",
@@ -16569,7 +16715,9 @@ const HAN_LANG_META = {
       "name": "Wylie transliteration",
       "authority": "Turrell Wylie 1959",
       "year": 1959
-    }
+    },
+    "speakers": "約120万人 (中央チベット語、Ü-Tsang)",
+    "speakersSource": "Wikipedia (英語版「Standard Tibetan」, 2026-05-30閲覧) / Ethnologue (bod)"
   },
   "ko_kp": {
     "name": "DPRK Sino-Korean (Munhwa-eo)",
@@ -16612,7 +16760,9 @@ const HAN_LANG_META = {
       "name": "DPRK official romanization (McCune-Reischauer based)",
       "authority": "DPRK government",
       "year": 2002
-    }
+    },
+    "speakers": "約2500万人 (北朝鮮人口)",
+    "speakersSource": "Wikipedia (英語版「Demographics of North Korea」, 2026-05-30閲覧)"
   },
   "ko_zai": {
     "name": "Zainichi Korean Sino-reading",
@@ -16645,7 +16795,9 @@ const HAN_LANG_META = {
       "name": "Revised Romanization + Japanese-substrate phonetics",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約44万人 (在日韓国・朝鮮人特別永住者) / L1話者は更に少数",
+    "speakersSource": "法務省在留外国人統計2023 / Wikipedia「Zainichi Korean language」(2026-05-30閲覧)"
   },
   "pst": {
     "name": "Proto-Sino-Tibetan",
@@ -16671,7 +16823,9 @@ const HAN_LANG_META = {
       "name": "Scholarly reconstruction (starred)",
       "authority": "various",
       "year": 2019
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖シナ・チベット語 / Proto-Sino-Tibetan (再構、Sagart et al. 2019)"
   },
   "ptb": {
     "name": "Proto-Tibeto-Burman",
@@ -16697,7 +16851,9 @@ const HAN_LANG_META = {
       "name": "Matisoff transliteration",
       "authority": "STEDT",
       "year": 2003
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖チベット・ビルマ語 / Proto-Tibeto-Burman (Matisoff 2003再構)"
   },
   "pko": {
     "name": "Proto-Koreanic",
@@ -16723,7 +16879,9 @@ const HAN_LANG_META = {
       "name": "Vovin / Whitman transcription",
       "authority": "scholarly",
       "year": 2010
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖朝鮮語 / Proto-Koreanic (Vovin 2010 / Whitman 2012再構)"
   },
   "pja": {
     "name": "Proto-Japonic",
@@ -16749,7 +16907,9 @@ const HAN_LANG_META = {
       "name": "Frellesvig transcription",
       "authority": "scholarly",
       "year": 2008
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖日本語 / Proto-Japonic (Frellesvig & Whitman 2008再構)"
   },
   "ptung": {
     "name": "Proto-Tungusic",
@@ -16775,7 +16935,9 @@ const HAN_LANG_META = {
       "name": "Tsintsius/Doerfer transcription",
       "authority": "scholarly",
       "year": 1975
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖ツングース語 / Proto-Tungusic (Benzing 1955 / Cincius 1949再構)"
   },
   "paa": {
     "name": "Proto-Austroasiatic",
@@ -16800,7 +16962,9 @@ const HAN_LANG_META = {
       "name": "Shorto transcription",
       "authority": "scholarly",
       "year": 2006
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖オーストロアジア語 / Proto-Austroasiatic (Sidwell & Rau 2015再構)"
   },
   "ptai": {
     "name": "Proto-Tai",
@@ -16825,7 +16989,9 @@ const HAN_LANG_META = {
       "name": "Pittayaporn transcription",
       "authority": "scholarly",
       "year": 2009
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖タイ・カダイ語 / Proto-Tai-Kadai (Ostapirat 2000 / Pittayaporn 2009再構)"
   },
   "pmgl": {
     "name": "Proto-Mongolic",
@@ -16850,7 +17016,9 @@ const HAN_LANG_META = {
       "name": "Janhunen/Nugteren transcription",
       "authority": "scholarly",
       "year": 2003
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖モンゴル語 / Proto-Mongolic (Janhunen 2003再構)"
   },
   "phm": {
     "name": "Proto-Hmong-Mien",
@@ -16874,7 +17042,9 @@ const HAN_LANG_META = {
       "name": "Ratliff transcription with tone classes ABCD",
       "authority": "scholarly",
       "year": 2010
-    }
+    },
+    "speakers": "歴史言語 / 推定不可 (祖語)",
+    "speakersSource": "祖ミャオ・ヤオ語 / Proto-Hmong-Mien (Ratliff 2010再構)"
   },
   "ja_kun": {
     "name": "Japanese kun-yomi (native reading)",
@@ -16900,7 +17070,9 @@ const HAN_LANG_META = {
       "name": "Hepburn romanization",
       "authority": "James Curtis Hepburn (1867)",
       "year": 1867
-    }
+    },
+    "speakers": "約1.23億人 (現代日本語訓読層)",
+    "speakersSource": "Ethnologue 2024 (jpn) — 訓読みは現代日本語の一部"
   },
   "ko_hun": {
     "name": "Korean native reading (Hanja-hun)",
@@ -16926,7 +17098,9 @@ const HAN_LANG_META = {
       "name": "Revised Romanization (Korean Hangul-to-Latin)",
       "authority": "Republic of Korea Ministry of Culture",
       "year": 2000
-    }
+    },
+    "speakers": "歴史層 / 現代話者なし (古典韓国漢字訓読)",
+    "speakersSource": "古代朝鮮の漢字訓読 (석독구결/釋讀口訣、新羅-高麗期)"
   },
   "vi_nom": {
     "name": "Vietnamese native reading (Chữ Nôm)",
@@ -16952,7 +17126,9 @@ const HAN_LANG_META = {
       "name": "Quốc Ngữ (Vietnamese Latin)",
       "authority": "Alexandre de Rhodes / Tự điển Việt-Pháp-Latinh 1651",
       "year": 1651
-    }
+    },
+    "speakers": "文字体系 / 話者数該当なし (チュノム)",
+    "speakersSource": "字喃 / Chữ Nôm (13-20世紀初頭の表記体系)"
   },
   "dng": {
     "name": "Dungan",
@@ -16978,7 +17154,9 @@ const HAN_LANG_META = {
       "name": "Dungan Cyrillic (1953 standard)",
       "authority": "USSR / Kyrgyz SSR",
       "year": 1953
-    }
+    },
+    "speakers": "約11万人 (キルギス・カザフスタン・露)",
+    "speakersSource": "Wikipedia (英語版「Dungan language」, 2026-05-30閲覧) / Ethnologue (dng)"
   },
   "yue_us": {
     "name": "American Heritage Cantonese (ABC)",
@@ -17004,7 +17182,9 @@ const HAN_LANG_META = {
       "name": "Jyutping (LSHK 1993) — ABC-pronounced",
       "authority": "LSHK / ABC speech approximation",
       "year": 1993
-    }
+    },
+    "speakers": "約45万人 (米国における広東語話者)",
+    "speakersSource": "Wikipedia (英語版「Cantonese」, 2026-05-30閲覧) / 米国国勢調査ACS"
   },
   "zh_us": {
     "name": "American Heritage Mandarin (ABC)",
@@ -17030,7 +17210,9 @@ const HAN_LANG_META = {
       "name": "Hanyu Pinyin — ABC-pronounced",
       "authority": "PRC Pinyin / ABC speech approximation",
       "year": 1958
-    }
+    },
+    "speakers": "約100万人 (米国における普通話話者)",
+    "speakersSource": "米国国勢調査 ACS 2021 / Wikipedia「Chinese language and varieties in the United States」(2026-05-30閲覧)"
   },
   "nan_th": {
     "name": "Thai-Chinese Teochew (Yaowarat heritage)",
@@ -17057,7 +17239,9 @@ const HAN_LANG_META = {
       "name": "Peng'im (Guangdong Province 1960) — Thai-Teochew approximation",
       "authority": "Guangdong Province Education Department / Thai-heritage speaker approximation",
       "year": 1960
-    }
+    },
+    "speakers": "約700万人 (タイ華僑、潮州語含む)",
+    "speakersSource": "Wikipedia (英語版「Thai Chinese」, 2026-05-30閲覧)"
   },
   "zh_th": {
     "name": "Thai-Chinese Mandarin (Bangkok diaspora)",
@@ -17084,7 +17268,9 @@ const HAN_LANG_META = {
       "name": "Hanyu Pinyin — Thai-substrate pronounced",
       "authority": "PRC Pinyin / Thai-heritage speaker approximation",
       "year": 1958
-    }
+    },
+    "speakers": "約700万人 (タイ華僑のうち普通話話者は少数)",
+    "speakersSource": "Wikipedia (英語版「Thai Chinese」, 2026-05-30閲覧)"
   },
   "nan_pera": {
     "name": "Peranakan Hokkien",
@@ -17110,7 +17296,9 @@ const HAN_LANG_META = {
       "name": "POJ (Peranakan approximation)",
       "authority": "convention",
       "year": null
-    }
+    },
+    "speakers": "約20万人 (峡海華人プラナカン、推定)",
+    "speakersSource": "Wikipedia (英語版「Peranakan Chinese」, 2026-05-30閲覧)"
   },
   "ko_bus": {
     "name": "Korean (Busan / Gyeongsang)",
@@ -17167,7 +17355,9 @@ const HAN_LANG_META = {
       "김차균 (Gim Cha-gyun), 《경상도방언의 성조 체계》— 慶尚道方言 聲調體系 (Pitch-accent system of Gyeongsang dialect)",
       "박정수, 《부산 방언의 성조 연구》— 釜山 方言 聲調 硏究 (Pitch study of Busan dialect)",
       "Wiktionary: Korean entries with Gyeongsang dialectal pitch annotations"
-    ]
+    ],
+    "speakers": "約1300万人 (慶尚道方言全体)",
+    "speakersSource": "Wikipedia (英語版「Gyeongsang dialect」, 2026-05-30閲覧)"
   }
 };
 
