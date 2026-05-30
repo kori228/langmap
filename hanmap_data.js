@@ -6511,7 +6511,8 @@ const HAN_DATA = {
       "ko_bus": "yang¹",
       "ja_kgs": "yō",
       "ja_okn": "yū",
-      "ja_thk": "yō"
+      "ja_thk": "yō",
+      "vi_nom": "dương"
     },
     "ipa": {
       "zh": "jaŋ˧˥",
@@ -6603,7 +6604,8 @@ const HAN_DATA = {
       "ko_bus": "jaŋ˩",
       "ja_kgs": "joː",
       "ja_okn": "juː",
-      "ja_thk": "joː"
+      "ja_thk": "joː",
+      "vi_nom": "zɨəŋ˧˧"
     },
     "en": {
       "gloss": "sheep, goat",
@@ -6635,7 +6637,8 @@ const HAN_DATA = {
       "nan_pera": "羊",
       "ja_kgs": "ヨウ",
       "ja_okn": "ユウ",
-      "ja_thk": "ヨウ"
+      "ja_thk": "ヨウ",
+      "vi_nom": "羊"
     }
   },
   "貓": {
@@ -9936,7 +9939,8 @@ const HAN_DATA = {
       "ko_bus": "ang¹",
       "ja_kgs": "ō",
       "ja_okn": "ū",
-      "ja_thk": "ō"
+      "ja_thk": "ō",
+      "vi_nom": "ương"
     },
     "ipa": {
       "zh": "jaŋ˥˥",
@@ -10024,7 +10028,8 @@ const HAN_DATA = {
       "ko_bus": "aŋ˩",
       "ja_kgs": "oː",
       "ja_okn": "uː",
-      "ja_thk": "oː"
+      "ja_thk": "oː",
+      "vi_nom": "ɨəŋ˧˧"
     },
     "en": {
       "gloss": "center, middle",
@@ -10054,7 +10059,8 @@ const HAN_DATA = {
       "nan_pera": "央",
       "ja_kgs": "オウ",
       "ja_okn": "ウウ",
-      "ja_thk": "オウ"
+      "ja_thk": "オウ",
+      "vi_nom": "央"
     }
   },
   "左": {
@@ -10603,7 +10609,8 @@ const HAN_DATA = {
       "ko_bus": "dong¹",
       "ja_kgs": "tō",
       "ja_okn": "tū",
-      "ja_thk": "tō"
+      "ja_thk": "tō",
+      "vi_nom": "đông"
     },
     "ipa": {
       "zh": "tuŋ˥˥",
@@ -10696,7 +10703,8 @@ const HAN_DATA = {
       "ko_bus": "toŋ˩",
       "ja_kgs": "toː",
       "ja_okn": "tuː",
-      "ja_thk": "toː"
+      "ja_thk": "toː",
+      "vi_nom": "ɗoŋ˧˧"
     },
     "en": {
       "gloss": "east",
@@ -10728,7 +10736,8 @@ const HAN_DATA = {
       "nan_pera": "東",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
-      "ja_thk": "トウ"
+      "ja_thk": "トウ",
+      "vi_nom": "東"
     }
   },
   "西": {
@@ -10824,7 +10833,8 @@ const HAN_DATA = {
       "ko_bus": "seo¹",
       "ja_kgs": "sei",
       "ja_okn": "sii",
-      "ja_thk": "sei"
+      "ja_thk": "sei",
+      "vi_nom": "tây"
     },
     "ipa": {
       "zh": "ɕi˥˥",
@@ -10918,7 +10928,8 @@ const HAN_DATA = {
       "ko_bus": "sʌ˩",
       "ja_kgs": "sei",
       "ja_okn": "sii",
-      "ja_thk": "sei"
+      "ja_thk": "sei",
+      "vi_nom": "təj˧˧"
     },
     "en": {
       "gloss": "west",
@@ -10951,7 +10962,8 @@ const HAN_DATA = {
       "nan_pera": "西",
       "ja_kgs": "セイ",
       "ja_okn": "シイ",
-      "ja_thk": "セイ"
+      "ja_thk": "セイ",
+      "vi_nom": "西"
     }
   },
   "南": {
@@ -11047,7 +11059,8 @@ const HAN_DATA = {
       "ko_bus": "nam¹",
       "ja_kgs": "dan",
       "ja_okn": "dan",
-      "ja_thk": "dan"
+      "ja_thk": "dan",
+      "vi_nom": "nam"
     },
     "ipa": {
       "zh": "nan˧˥",
@@ -11141,7 +11154,8 @@ const HAN_DATA = {
       "ko_bus": "nam˩",
       "ja_kgs": "daɴ",
       "ja_okn": "daɴ",
-      "ja_thk": "daɴ"
+      "ja_thk": "daɴ",
+      "vi_nom": "naːm˧˧"
     },
     "en": {
       "gloss": "south",
@@ -11173,7 +11187,8 @@ const HAN_DATA = {
       "nan_pera": "南",
       "ja_kgs": "ダン",
       "ja_okn": "ダン",
-      "ja_thk": "ダン"
+      "ja_thk": "ダン",
+      "vi_nom": "南"
     }
   },
   "北": {
@@ -11270,7 +11285,8 @@ const HAN_DATA = {
       "ko_bus": "buk¹",
       "ja_kgs": "hok",
       "ja_okn": "huku",
-      "ja_thk": "hogu"
+      "ja_thk": "hogu",
+      "vi_nom": "bắc"
     },
     "ipa": {
       "zh": "peɪ˨˩˦",
@@ -11365,7 +11381,8 @@ const HAN_DATA = {
       "ko_bus": "puk˩",
       "ja_kgs": "hok̚",
       "ja_okn": "hukɯ",
-      "ja_thk": "hoɡɯ"
+      "ja_thk": "hoɡɯ",
+      "vi_nom": "ɓak˧˥"
     },
     "en": {
       "gloss": "north",
@@ -11398,7 +11415,8 @@ const HAN_DATA = {
       "nan_pera": "北",
       "ja_kgs": "ホッ",
       "ja_okn": "フク",
-      "ja_thk": "ホク"
+      "ja_thk": "ホク",
+      "vi_nom": "北"
     }
   },
   "行": {
