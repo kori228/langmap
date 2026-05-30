@@ -69,6 +69,16 @@ body {
 .site-header-bar .logo-badge-word  { background: #2e8b57; }   /* Wordmap    */
 .site-header-bar .logo-badge-tree  { background: #8b4513; }   /* Tree       */
 .site-header-bar .logo-badge-order { background: #2563eb; }   /* Word Order */
+/* 字 character badge for Hanmap: CJK serif glyph instead of the
+   previous abstract square-rect SVG. Sized to fit inside the 15×15
+   badge with consistent vertical alignment. */
+.site-header-bar .logo-badge-han-char {
+    font-family: 'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1;
+    color: #fff;
+}
 .site-header-bar .subtitle {
     font-size: 12px; font-weight: 400; color: #888; margin-left: 4px;
 }
