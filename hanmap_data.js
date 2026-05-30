@@ -20277,6 +20277,146 @@ const HAN_VARIANTS = {
         "ipa": "ɾokɯ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "la̍k",
+        "ipa": "lak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lio̍k",
+        "ipa": "liɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_hai": [
+      {
+        "native": "",
+        "surface": "lag7",
+        "ipa": "lak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liog7",
+        "ipa": "liɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "lag8",
+        "ipa": "lak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liog8",
+        "ipa": "liɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "la̍k",
+        "ipa": "lak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lio̍k",
+        "ipa": "liɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "la̍k",
+        "ipa": "lak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lio̍k",
+        "ipa": "liɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "la̍k",
+        "ipa": "lak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lio̍k",
+        "ipa": "liɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "lak⁵",
+        "ipa": "lak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liok⁵",
+        "ipa": "liɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "lĕ̤k",
+        "ipa": "lɔyʔ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liŏk",
+        "ipa": "liɔuʔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "lü̆",
+        "ipa": "ly˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liŭ",
+        "ipa": "liu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "la̍k",
+        "ipa": "laʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lo̍k",
+        "ipa": "lɔʔ˥",
+        "label": "文讀"
+      }
     ]
   },
   "龍": {
@@ -20321,6 +20461,104 @@ const HAN_VARIANTS = {
         "ipa": "lioŋ˨˧",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˩˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˩˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "lêng",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liông",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "leng⁵",
+        "ipa": "liŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "liong⁵",
+        "ipa": "liɔŋ˨˦",
+        "label": "文讀"
+      }
     ]
   },
   "立": {
@@ -20362,6 +20600,90 @@ const HAN_VARIANTS = {
       {
         "native": "",
         "surface": "li̍p",
+        "ipa": "lip̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "khiā",
+        "ipa": "kʰia˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "li̍p",
+        "ipa": "lip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "khiā",
+        "ipa": "kʰia˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "li̍p",
+        "ipa": "lip̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "khiā",
+        "ipa": "kʰia˨˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "li̍p",
+        "ipa": "lip̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "khiā",
+        "ipa": "kʰia˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "li̍p",
+        "ipa": "lip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "khiā",
+        "ipa": "kʰia˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "li̍p",
+        "ipa": "lip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "khia³",
+        "ipa": "kʰia˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "lip⁵",
         "ipa": "lip̚˥",
         "label": "文讀"
       }
@@ -20521,6 +20843,76 @@ const HAN_VARIANTS = {
         "ipa": "tsit̚˥",
         "label": "文讀"
       }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsi̍t",
+        "ipa": "t͡sit̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "it",
+        "ipa": "it̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chi̍t",
+        "ipa": "t͡siʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "it",
+        "ipa": "it˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chit⁵",
+        "ipa": "t͡siʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "it⁵",
+        "ipa": "iʔ˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "zêg8",
+        "ipa": "t͡seʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ig4",
+        "ipa": "ik̚˨",
+        "label": "文讀"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "ì",
+        "ipa": "i˧˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ĭ",
+        "ipa": "i˨˦",
+        "label": "文讀"
+      }
     ]
   },
   "二": {
@@ -20649,6 +21041,104 @@ const HAN_VARIANTS = {
         "ipa": "nŋ˨˩",
         "label": "文讀"
       }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "nn̄g",
+        "ipa": "n̩˧˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jī",
+        "ipa": "d͡ʑi˧˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "nn̄g",
+        "ipa": "n̩˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jī",
+        "ipa": "d͡ʑi˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "no³",
+        "ipa": "no˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ji³",
+        "ipa": "d͡ʑi˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "no6",
+        "ipa": "no˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ri6",
+        "ipa": "d͡zi˧˥",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "lâng",
+        "ipa": "laŋ˨˦˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "nê̤i",
+        "ipa": "nei˨˦˨",
+        "label": "文讀"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "lâng",
+        "ipa": "laŋ˧˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "nǐ",
+        "ipa": "ni˨˦",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "nō͘",
+        "ipa": "nɔ³¹",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ñî",
+        "ipa": "ɲi³¹",
+        "label": "文讀"
+      }
     ]
   },
   "三": {
@@ -20763,6 +21253,90 @@ const HAN_VARIANTS = {
         "ipa": "saɴ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "sann",
+        "ipa": "sã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sam",
+        "ipa": "sam˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "saⁿ",
+        "ipa": "sã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sam",
+        "ipa": "sam˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "sa³",
+        "ipa": "sã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sam³",
+        "ipa": "sam˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "sã1",
+        "ipa": "sã˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sam1",
+        "ipa": "sam˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "saⁿ",
+        "ipa": "sã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sam",
+        "ipa": "sam˦",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "sã",
+        "ipa": "sã˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sang",
+        "ipa": "saŋ˥˧",
+        "label": "文讀"
+      }
     ]
   },
   "五": {
@@ -20848,6 +21422,132 @@ const HAN_VARIANTS = {
         "surface": "*l-ŋa",
         "ipa": "*l-ŋa",
         "label": "l- 形"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "gō͘",
+        "ipa": "ɡɔ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngó͘",
+        "ipa": "ŋɔ˥˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "gō͘",
+        "ipa": "ɡɔ˧˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngó͘",
+        "ipa": "ŋɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "gō͘",
+        "ipa": "ɡɔ˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngó͘",
+        "ipa": "ŋɔ˥˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "go²¹",
+        "ipa": "ɡo˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngo²¹",
+        "ipa": "ŋo˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "ngou6",
+        "ipa": "ŋou˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngou2",
+        "ipa": "ŋou˥˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "gō͘",
+        "ipa": "ɡɔ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngó͘",
+        "ipa": "ŋɔ˥˩",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "ngô",
+        "ipa": "ŋou˨˦˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngū",
+        "ipa": "ŋu˧˧",
+        "label": "文讀"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "ngǚ",
+        "ipa": "ŋy˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngǔ",
+        "ipa": "ŋu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "ngô͘",
+        "ipa": "ŋɔ³¹",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngū",
+        "ipa": "ŋu³³",
+        "label": "文讀"
       }
     ]
   },
@@ -20963,6 +21663,104 @@ const HAN_VARIANTS = {
         "ipa": "*b-g-ryat",
         "label": "*b-g-ryat 形"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "peh",
+        "ipa": "peʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat",
+        "ipa": "pat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "boih4",
+        "ipa": "poiʔ˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bag4",
+        "ipa": "pat̚˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "peh",
+        "ipa": "peʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat",
+        "ipa": "pat̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "pueh",
+        "ipa": "pueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat",
+        "ipa": "pat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "peh",
+        "ipa": "peʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat",
+        "ipa": "pat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "poeh⁵",
+        "ipa": "pueʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat⁵",
+        "ipa": "pat̚˥",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "poeh",
+        "ipa": "pɔeʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "pat",
+        "ipa": "pat̚˥",
+        "label": "文讀"
+      }
     ]
   },
   "九": {
@@ -21034,6 +21832,146 @@ const HAN_VARIANTS = {
         "surface": "ku",
         "ipa": "kɯ",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "káu",
+        "ipa": "kau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiú",
+        "ipa": "kiu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "kau2",
+        "ipa": "kau˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiu2",
+        "ipa": "kiu˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_hai": [
+      {
+        "native": "",
+        "surface": "kau4",
+        "ipa": "kau˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiu4",
+        "ipa": "kiu˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "gao2",
+        "ipa": "kau˥˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "giu2",
+        "ipa": "kiu˥˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "káu",
+        "ipa": "kau˥˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiú",
+        "ipa": "kiu˥˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "káu",
+        "ipa": "kau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiú",
+        "ipa": "kiu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "káu",
+        "ipa": "kau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiú",
+        "ipa": "kiu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "kau²¹",
+        "ipa": "kau˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiu²¹",
+        "ipa": "kiu˨˩",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "gāu",
+        "ipa": "kau˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "giū",
+        "ipa": "kiu˧",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "kâu",
+        "ipa": "kau³¹",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiû",
+        "ipa": "kiu³¹",
+        "label": "文讀"
       }
     ]
   },
@@ -21149,6 +22087,104 @@ const HAN_VARIANTS = {
         "ipa": "d͡ʑɯː",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tsa̍p",
+        "ipa": "t͡sap̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍p",
+        "ipa": "sip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "zab8",
+        "ipa": "t͡sap̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sib8",
+        "ipa": "sip̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "cha̍p",
+        "ipa": "t͡sap̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍p",
+        "ipa": "sip̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsa̍p",
+        "ipa": "t͡sap̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍p",
+        "ipa": "sip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "cha̍p",
+        "ipa": "t͡sap̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍p",
+        "ipa": "sip̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chap⁵",
+        "ipa": "t͡sap̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sip⁵",
+        "ipa": "sip̚˥",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "sa̍p",
+        "ipa": "saʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍p",
+        "ipa": "siʔ˥",
+        "label": "文讀"
+      }
     ]
   },
   "日": {
@@ -21206,6 +22242,104 @@ const HAN_VARIANTS = {
         "surface": "nichi",
         "ipa": "nit͡ɕi",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "ji̍t",
+        "ipa": "d͡ʑit̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "li̍t",
+        "ipa": "lit̚˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "li̍t",
+        "ipa": "lit̚˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "ji̍t",
+        "ipa": "d͡ʑit̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "ji̍t",
+        "ipa": "d͡ʑit̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "ji̍t",
+        "ipa": "d͡ʑit̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jit",
+        "ipa": "d͡ʑit̚˦",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "li̍k",
+        "ipa": "liʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ji̍k",
+        "ipa": "d͡ziʔ˥",
+        "label": "文讀"
       }
     ]
   },
@@ -21279,6 +22413,132 @@ const HAN_VARIANTS = {
         "ipa": "*g-la",
         "label": "g- 形"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "goe̍h",
+        "ipa": "ɡueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "goe̍h",
+        "ipa": "ɡueʔ˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "gue̍h",
+        "ipa": "ɡueʔ˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "gue̍h",
+        "ipa": "ɡueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "gueh8",
+        "ipa": "ɡueʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "guag8",
+        "ipa": "ɡuak̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "ghuêh8",
+        "ipa": "ɣueʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ghuag8",
+        "ipa": "ɣuak̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "gue̍h",
+        "ipa": "ɡueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "go̍eh",
+        "ipa": "ɡueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goa̍t",
+        "ipa": "ɡuat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "goeh⁵",
+        "ipa": "ɡueʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "goat⁵",
+        "ipa": "ɡuat̚˥",
+        "label": "文讀"
+      }
     ]
   },
   "山": {
@@ -21309,6 +22569,146 @@ const HAN_VARIANTS = {
         "ipa": "seɴ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "soaⁿ",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "suaⁿ",
+        "ipa": "suã˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "suaⁿ",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "suaⁿ",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "suã1",
+        "ipa": "suã˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sang1",
+        "ipa": "saŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "suan1",
+        "ipa": "suã˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sang1",
+        "ipa": "saŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "soaⁿ",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "suann",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "soaⁿ",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "soa³",
+        "ipa": "suã˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "san³",
+        "ipa": "san˦",
+        "label": "文讀"
+      }
     ]
   },
   "水": {
@@ -21338,6 +22738,104 @@ const HAN_VARIANTS = {
         "surface": "sui",
         "ipa": "sɯi",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "tsuí",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "suí",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "tsuí",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "suí",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "tsuí",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "suí",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tsuí",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "suí",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsuí",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "suí",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chúi",
+        "ipa": "t͡sui˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "súi",
+        "ipa": "sui˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chui²¹",
+        "ipa": "t͡sui˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sui²¹",
+        "ipa": "sui˨˩",
+        "label": "文讀"
       }
     ]
   },
@@ -21383,6 +22881,104 @@ const HAN_VARIANTS = {
         "ipa": "he˥˨",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "hué",
+        "ipa": "hue˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "hé",
+        "ipa": "he˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "hé",
+        "ipa": "he˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "hué",
+        "ipa": "hue˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "hué",
+        "ipa": "hue˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "hóe",
+        "ipa": "hue˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hó",
+        "ipa": "ho˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "hoe²¹",
+        "ipa": "hue˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ho²¹",
+        "ipa": "ho˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "木": {
@@ -21413,6 +23009,104 @@ const HAN_VARIANTS = {
         "ipa": "mokɯ",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "bag8",
+        "ipa": "pak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bog8",
+        "ipa": "pɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
     ]
   },
   "天": {
@@ -21442,6 +23136,146 @@ const HAN_VARIANTS = {
         "surface": "ten",
         "ipa": "teɴ",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "thinn",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "thinn",
+        "ipa": "tʰĩ˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "thinn",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "thinn",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "thi1",
+        "ipa": "tʰĩ˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thiang1",
+        "ipa": "tʰiaŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "tin1",
+        "ipa": "tʰĩ˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tiang1",
+        "ipa": "tʰiaŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "thiⁿ",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "thinn",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "thiⁿ",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian",
+        "ipa": "tʰian˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "thi³",
+        "ipa": "tʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "thian³",
+        "ipa": "tʰian˦",
+        "label": "文讀"
       }
     ]
   },
@@ -21485,6 +23319,104 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "tōe",
         "ipa": "tue˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "tē",
+        "ipa": "te˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tī",
+        "ipa": "ti˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "te⁵³",
+        "ipa": "te˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ti⁵³",
+        "ipa": "ti˥˧",
         "label": "文讀"
       }
     ]
@@ -21589,6 +23521,76 @@ const HAN_VARIANTS = {
         "ipa": "me",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "bé",
+        "ipa": "be˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "má",
+        "ipa": "ma˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "bé",
+        "ipa": "be˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "má",
+        "ipa": "ma˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "bé",
+        "ipa": "be˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "má",
+        "ipa": "ma˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "bé",
+        "ipa": "be˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "má",
+        "ipa": "ma˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "be²¹",
+        "ipa": "be˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ma²¹",
+        "ipa": "ma˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "鳥": {
@@ -21660,6 +23662,76 @@ const HAN_VARIANTS = {
         "surface": "chō",
         "ipa": "t͡ɕoː",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "chiáu",
+        "ipa": "t͡siau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "niáu",
+        "ipa": "niau˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "chiáu",
+        "ipa": "t͡siau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "niáu",
+        "ipa": "niau˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsiáu",
+        "ipa": "t͡siau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "niáu",
+        "ipa": "niau˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chiáu",
+        "ipa": "t͡siau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "niáu",
+        "ipa": "niau˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chiau²¹",
+        "ipa": "t͡siau˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "niau²¹",
+        "ipa": "niau˨˩",
+        "label": "文讀"
       }
     ]
   },
@@ -21747,6 +23819,62 @@ const HAN_VARIANTS = {
         "ipa": "hu˨˧",
         "label": "文讀"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "hî",
+        "ipa": "hi˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hû",
+        "ipa": "hu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "hî",
+        "ipa": "hi˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "gî",
+        "ipa": "ɡi˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "hî",
+        "ipa": "hi˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "hi⁵",
+        "ipa": "hi˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hu⁵",
+        "ipa": "hu˨˦",
+        "label": "文讀"
+      }
     ]
   },
   "牛": {
@@ -21776,6 +23904,132 @@ const HAN_VARIANTS = {
         "surface": "go",
         "ipa": "go",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˩˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˩˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "gû",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiû",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "gu⁵",
+        "ipa": "ɡu˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiu⁵",
+        "ipa": "ŋiu˨˦",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "ngù",
+        "ipa": "ŋu˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ngiù",
+        "ipa": "ŋiu˥˧",
+        "label": "文讀"
       }
     ]
   },
@@ -21819,6 +24073,104 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "iôⁿ",
         "ipa": "ĩɔ̃˨˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "iûⁿ",
+        "ipa": "ĩũ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "iûⁿ",
+        "ipa": "ĩũ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "iôⁿ",
+        "ipa": "iɔ̃˩˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˩˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "iûⁿ",
+        "ipa": "ĩũ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "iûnn",
+        "ipa": "ĩũ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "iûⁿ",
+        "ipa": "ĩũ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iông",
+        "ipa": "iɔŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "io⁵",
+        "ipa": "iɔ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "iong⁵",
+        "ipa": "iɔŋ˨˦",
         "label": "文讀"
       }
     ]
@@ -22035,6 +24387,76 @@ const HAN_VARIANTS = {
         "ipa": "dzin˨˧",
         "label": "文讀"
       }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "lâng",
+        "ipa": "laŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jîn",
+        "ipa": "d͡ʑin˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "lâng",
+        "ipa": "laŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jîn",
+        "ipa": "d͡ʑin˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "lang⁵",
+        "ipa": "laŋ˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jin⁵",
+        "ipa": "d͡ʑin˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "nang5",
+        "ipa": "naŋ˥˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "zîng5",
+        "ipa": "d͡zĩŋ˥˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_hai": [
+      {
+        "native": "",
+        "surface": "nang4",
+        "ipa": "naŋ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "zin4",
+        "ipa": "d͡ʑin˥",
+        "label": "文讀"
+      }
     ]
   },
   "手": {
@@ -22163,6 +24585,76 @@ const HAN_VARIANTS = {
         "ipa": "*dyak",
         "label": "d- 形"
       }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tshiú",
+        "ipa": "t͡sʰiu˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siú",
+        "ipa": "siu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "chhiú",
+        "ipa": "t͡sʰiu˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siú",
+        "ipa": "siu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tshiú",
+        "ipa": "t͡sʰiu˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siú",
+        "ipa": "siu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chhiú",
+        "ipa": "t͡sʰiu˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siú",
+        "ipa": "siu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chiu²¹",
+        "ipa": "t͡sʰiu˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siu²¹",
+        "ipa": "siu˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "足": {
@@ -22219,6 +24711,20 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "kha",
         "ipa": "kʰa˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tsiok",
+        "ipa": "t͡siɔk̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tsok",
+        "ipa": "t͡sɔk̚˦",
         "label": "文讀"
       }
     ]
@@ -22293,6 +24799,132 @@ const HAN_VARIANTS = {
         "ipa": "*s-myak",
         "label": "*s-myak 形"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "ba̍k",
+        "ipa": "bak̚˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bo̍k",
+        "ipa": "bɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "bak⁵",
+        "ipa": "bak̚˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bok⁵",
+        "ipa": "bɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "ma̍h",
+        "ipa": "maʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "mo̍h",
+        "ipa": "mɔʔ˥",
+        "label": "文讀"
+      }
     ]
   },
   "耳": {
@@ -22335,6 +24967,104 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "ní",
         "ipa": "ni˥˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "hīⁿ",
+        "ipa": "hĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "hīⁿ",
+        "ipa": "hĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "hīⁿ",
+        "ipa": "hĩ˨˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "hīⁿ",
+        "ipa": "hĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "hīnn",
+        "ipa": "hĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "hīⁿ",
+        "ipa": "hĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ní",
+        "ipa": "ni˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "hi³",
+        "ipa": "hĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ni²¹",
+        "ipa": "ni˨˩",
         "label": "文讀"
       }
     ]
@@ -22381,6 +25111,62 @@ const HAN_VARIANTS = {
         "ipa": "tsʰui˨˩",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "kháu",
+        "ipa": "kʰau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khió͘",
+        "ipa": "kʰiɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "kháu",
+        "ipa": "kʰau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khió͘",
+        "ipa": "kʰiɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "kháu",
+        "ipa": "kʰau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khió͘",
+        "ipa": "kʰiɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "khau²¹",
+        "ipa": "kʰau˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khio²¹",
+        "ipa": "kʰio˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "頭": {
@@ -22410,6 +25196,118 @@ const HAN_VARIANTS = {
         "surface": "zu",
         "ipa": "d͡zɯ",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˩˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˩˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "thâu",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tô͘",
+        "ipa": "tɔ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "thau⁵",
+        "ipa": "tʰau˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tho⁵",
+        "ipa": "tʰɔ˨˦",
+        "label": "文讀"
       }
     ]
   },
@@ -22483,6 +25381,104 @@ const HAN_VARIANTS = {
         "ipa": "",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "hueh",
+        "ipa": "hueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "hueh",
+        "ipa": "hueʔ˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "hueh",
+        "ipa": "hueʔ˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "hueh",
+        "ipa": "hueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "hueh",
+        "ipa": "hueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "hoeh",
+        "ipa": "hueʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat",
+        "ipa": "hiat̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "hoeh⁵",
+        "ipa": "hueʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hiat⁵",
+        "ipa": "hiat̚˥",
+        "label": "文讀"
+      }
     ]
   },
   "肉": {
@@ -22525,6 +25521,104 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "jio̍k",
         "ipa": "dziɔk̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˦˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˦˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˩˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˩˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "bah",
+        "ipa": "baʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jio̍k",
+        "ipa": "d͡ʑiɔk̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "bah⁵",
+        "ipa": "baʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "jiok⁵",
+        "ipa": "d͡ʑiɔk̚˥",
         "label": "文讀"
       }
     ]
@@ -22753,6 +25847,34 @@ const HAN_VARIANTS = {
         "ipa": "sioŋ˨˩",
         "label": "文讀"
       }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "siên6",
+        "ipa": "sĩẽ˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siang6",
+        "ipa": "siaŋ˧˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsiūnn",
+        "ipa": "t͡siũ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "siōng",
+        "ipa": "siɔŋ˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "下": {
@@ -22923,6 +26045,48 @@ const HAN_VARIANTS = {
         "ipa": "ha˨˩",
         "label": "文讀"
       }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "ê6",
+        "ipa": "e˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hia6",
+        "ipa": "hia˧˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "ē",
+        "ipa": "e˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hā",
+        "ipa": "ha˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "e³",
+        "ipa": "e˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ha³",
+        "ipa": "ha˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "央": {
@@ -22965,6 +26129,90 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "ng",
         "ipa": "ŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "iong",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng",
+        "ipa": "ŋ̍˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "iong",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng",
+        "ipa": "ŋ̍˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "iong",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng",
+        "ipa": "ŋ̍˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "iong",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng",
+        "ipa": "ŋ̍˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "iong",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng",
+        "ipa": "ŋ̍˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "iong³",
+        "ipa": "iɔŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ng³",
+        "ipa": "ŋ̍˦",
         "label": "文讀"
       }
     ]
@@ -23071,6 +26319,146 @@ const HAN_VARIANTS = {
         "ipa": "toŋ˧",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "dang1",
+        "ipa": "taŋ˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "dong1",
+        "ipa": "tɔŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "dang1",
+        "ipa": "taŋ˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "dong1",
+        "ipa": "tɔŋ˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "tang",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "tang³",
+        "ipa": "taŋ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tong³",
+        "ipa": "tɔŋ˦",
+        "label": "文讀"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "dĕ̤ng",
+        "ipa": "tøyŋ˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "dŭng",
+        "ipa": "tuŋ˥˧",
+        "label": "文讀"
+      }
     ]
   },
   "西": {
@@ -23113,6 +26501,132 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "se",
         "ipa": "se˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "sai1",
+        "ipa": "sai˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se1",
+        "ipa": "se˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "sai1",
+        "ipa": "sai˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se1",
+        "ipa": "se˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "sai",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se",
+        "ipa": "se˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "sai³",
+        "ipa": "sai˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "se³",
+        "ipa": "se˦",
         "label": "文讀"
       }
     ]
@@ -23188,6 +26702,62 @@ const HAN_VARIANTS = {
         "surface": "gyō",
         "ipa": "gjoː",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "kiã5",
+        "ipa": "kiã˥˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng5",
+        "ipa": "heŋ˥˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "kiânn",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "kia⁵",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "heng⁵",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
       }
     ]
   },
@@ -23459,6 +27029,76 @@ const HAN_VARIANTS = {
         "ipa": "ko",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "kê3",
+        "ipa": "kʰɯ˥˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khu3",
+        "ipa": "kʰu˥˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "khì",
+        "ipa": "kʰi˥˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khù",
+        "ipa": "kʰu˥˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "khì",
+        "ipa": "kʰi˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khù",
+        "ipa": "kʰu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "khì",
+        "ipa": "kʰi˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khù",
+        "ipa": "kʰu˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "khi⁵³",
+        "ipa": "kʰi˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "khu⁵³",
+        "ipa": "kʰu˥˧",
+        "label": "文讀"
+      }
     ]
   },
   "見": {
@@ -23585,6 +27225,48 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "kiàn",
         "ipa": "kian˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_hai": [
+      {
+        "native": "",
+        "surface": "kĩ4",
+        "ipa": "kĩ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kien4",
+        "ipa": "kien˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "giẽn3",
+        "ipa": "kĩẽ˥˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "giang3",
+        "ipa": "kiaŋ˥˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "kìnn",
+        "ipa": "kĩ˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "kiàn",
+        "ipa": "kian˥˧",
         "label": "文讀"
       }
     ]
@@ -23715,6 +27397,90 @@ const HAN_VARIANTS = {
         "ipa": "d͡ʑiki",
         "label": "呉音 / Go-on"
       }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "ziah8",
+        "ipa": "t͡siaʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sêg8",
+        "ipa": "sek̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "chia̍h",
+        "ipa": "t͡siaʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍t",
+        "ipa": "sit̚˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsia̍h",
+        "ipa": "t͡siaʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍t",
+        "ipa": "sit̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chia̍h",
+        "ipa": "t͡siaʔ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍t",
+        "ipa": "sit̚˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chiah⁵",
+        "ipa": "t͡siaʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "sit⁵",
+        "ipa": "sit̚˥",
+        "label": "文讀"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "si̍h",
+        "ipa": "siʔ˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "si̍k",
+        "ipa": "sik˥",
+        "label": "文讀"
+      }
     ]
   },
   "飲": {
@@ -23759,6 +27525,90 @@ const HAN_VARIANTS = {
         "ipa": "im˥˨",
         "label": "文讀"
       }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "lim",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ím",
+        "ipa": "im˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "lim",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ím",
+        "ipa": "im˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "lim",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ím",
+        "ipa": "im˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "lim",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ím",
+        "ipa": "im˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "lim",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ím",
+        "ipa": "im˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "lim³",
+        "ipa": "lim˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "im²¹",
+        "ipa": "im˨˩",
+        "label": "文讀"
+      }
     ]
   },
   "走": {
@@ -23788,6 +27638,118 @@ const HAN_VARIANTS = {
         "surface": "sō",
         "ipa": "soː",
         "label": "呉音 / Go-on"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_my": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsáu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tsó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "cháu",
+        "ipa": "t͡sau˥˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chó͘",
+        "ipa": "t͡sɔ˥˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "chau²¹",
+        "ipa": "t͡sau˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "cho²¹",
+        "ipa": "t͡sɔ˨˩",
+        "label": "文讀"
       }
     ]
   },
@@ -23831,6 +27793,104 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "chōe",
         "ipa": "tsue˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "chē",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chō",
+        "ipa": "t͡so˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "chē",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chō",
+        "ipa": "t͡so˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "chē",
+        "ipa": "t͡se˨˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chō",
+        "ipa": "t͡so˨˨",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "chē",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chō",
+        "ipa": "t͡so˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "tsē",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "tsō",
+        "ipa": "t͡so˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_id": [
+      {
+        "native": "",
+        "surface": "chē",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "chō",
+        "ipa": "t͡so˨˩",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "che³",
+        "ipa": "t͡se˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "cho³",
+        "ipa": "t͡so˨˩",
         "label": "文讀"
       }
     ]
@@ -23967,6 +28027,132 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "bûn",
         "ipa": "bun˨˧",
+        "label": "文讀"
+      }
+    ],
+    "nan": [
+      {
+        "native": "",
+        "surface": "phīⁿ",
+        "ipa": "pʰĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "phīⁿ",
+        "ipa": "pʰĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "phīⁿ",
+        "ipa": "pʰĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "phīⁿ",
+        "ipa": "pʰĩ˨˨",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˩˧",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "phīⁿ",
+        "ipa": "pʰĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "phĩ6",
+        "ipa": "pʰĩ˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bung5",
+        "ipa": "puŋ˥˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_th": [
+      {
+        "native": "",
+        "surface": "phĩ6",
+        "ipa": "pʰĩ˧˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bhung5",
+        "ipa": "buŋ˥˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_sg": [
+      {
+        "native": "",
+        "surface": "phīnn",
+        "ipa": "pʰĩ˨˩",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bûn",
+        "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_pera": [
+      {
+        "native": "",
+        "surface": "phi³",
+        "ipa": "pʰĩ˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "bun⁵",
+        "ipa": "bun˨˦",
         "label": "文讀"
       }
     ]
