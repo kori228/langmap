@@ -3028,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=62"></script>
+    <script src="hanmap_data.js?v=63"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -6800,6 +6800,22 @@
             );
             if (_saMs > 0 && typeof window !== 'undefined' && window._hmSaLogTiming) {
                 console.log('[hanmap SA]', _saCodes.length, 'labels in', _saMs.toFixed(1), 'ms');
+            }
+            // 2026-05-31: re-evaluate hiddenCodes based on the FINAL
+            // post-SA offset magnitudes. Earlier we populated hiddenCodes
+            // in the greedy pass using viewport-dependent cellGroups, so
+            // the same label could be hidden at one pan offset and shown
+            // at another — visually it blinked on every pan. Now hide is
+            // determined purely from the offset distance: stable across
+            // pans because the SA output is deterministic given
+            // (word, zoom, codes). Threshold matches the greedy MAX_PUSH.
+            hiddenCodes.clear();
+            for (const code of _saCodes) {
+                const off = offsets[code];
+                if (!off) continue;
+                if (Math.abs(off.x) + Math.abs(off.y) > MAX_PUSH * 2.2) {
+                    hiddenCodes.add(code);
+                }
             }
 
             // Single render loop for both attested and unattested langs.
