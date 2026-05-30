@@ -2989,7 +2989,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=43"></script>
+    <script src="hanmap_data.js?v=44"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -4920,6 +4920,18 @@
             const map = on ? ON_LBL : OFF_LBL;
             oo.textContent = map[ui] || map.en;
         }
+        // When ALL THREE display components (Form / Pron. / Name) are OFF
+        // there's nothing on the markers to filter or randomise, so the
+        // 絞り込み (filter) chip and 🎲 (random char) button add visual
+        // noise without function. Hide them in that state; bring them
+        // back as soon as any one toggle goes ON.
+        function updateTopLeftVisibility() {
+            const filterBtn = document.getElementById('hm-lang-filter-btn');
+            const randomBtn = document.getElementById('char-random-btn');
+            const allOff = !showWord && !showIpa && !showName;
+            if (filterBtn) filterBtn.style.display = allOff ? 'none' : '';
+            if (randomBtn) randomBtn.style.display = allOff ? 'none' : '';
+        }
         function setupToggle(btn, getter, setter) {
             btn.addEventListener('click', () => {
                 setter(!getter());
@@ -4927,11 +4939,13 @@
                 btn.setAttribute('aria-pressed', String(getter()));
                 updateOnOff(btn, getter());
                 updateMarkers(currentWord);
+                updateTopLeftVisibility();
             });
         }
         setupToggle(btnWord, () => showWord, v => showWord = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
+        updateTopLeftVisibility();
 
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
