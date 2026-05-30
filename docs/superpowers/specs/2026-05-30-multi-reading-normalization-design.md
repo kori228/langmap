@@ -13,121 +13,197 @@ Across `hanmap_data.js` (60 Han characters × ~101 codes = ~6 060 entries), entr
 3. Some have only one reading registered, ignoring documented polyphony or 文白異讀.
 4. Renderer paths now diverge based on which shape happens to be present, which makes the compare/info/marker UIs subtly inconsistent.
 
-User goal: one canonical storage pattern for multi-reading data, applied uniformly across all language families (Mandarin, Cantonese, Min Nan, Hakka, Wu, Korean, Japanese, Vietnamese, other Sinitic, and non-Sinitic).
+Two distinct phenomena are conflated:
+- **Semantic polyphony** (e.g. 行 = 行進 xíng / 行列 háng) — the two readings track two different morphemes and cross-language comparison only makes sense between the SAME morpheme.
+- **Within-sense polyphony** (e.g. 行 行為 = ja 漢音 kō / 呉音 gyō; 食 nan = 文 si̍p / 白 tsia̍h) — the readings are the SAME morpheme realised through different historical or stylistic layers.
+
+These need orthogonal handling: semantic polyphony lifts to **separate HAN_LIST entries**; within-sense polyphony stays in `HAN_VARIANTS`.
 
 ## Canonical storage shape
 
-When a (char, code) pair has **2 or more** legitimate readings:
+### Semantic polyphony — compound HAN_LIST IDs
+
+For each character with documented semantic polyphony across multiple languages, replace the single HAN_LIST entry with compound-ID entries:
 
 ```
-HAN_DATA[ch].surface[code] = null  (or undefined / absent key)
-HAN_DATA[ch].ipa[code]     = null
-HAN_DATA[ch].native[code]  = null
+HAN_LIST: ... 北, 行:1, 行:2, ... 中:1, 中:2, ...  (was: ... 北, 行, ...中, ...)
+HAN_DATA["行:1"] = { sense: "行進", senseLabel: { ja, en, ko, zh, ... }, surface: {...}, ipa: {...}, native: {...} }
+HAN_DATA["行:2"] = { sense: "行列", senseLabel: { ja, en, ko, zh, ... }, surface: {...}, ipa: {...}, native: {...} }
+```
 
-HAN_VARIANTS[ch][code] = [
+The `:` separator splits "<char>:<sense-index>". Renderer parses the prefix to derive the visual character (`行`) and the suffix as the sense disambiguator (rendered as a superscript badge or in-parens label).
+
+Scope (approved): split only **行** and **中**. Sense definitions:
+- 行:1 = "行進" (movement / behaviour sense)
+- 行:2 = "行列" (column / line sense)
+- 中:1 = "中央" (middle / centre sense)
+- 中:2 = "命中" (hit / strike sense)
+
+Other candidates (上 shàng/shǎng, 見 jiàn/xiàn) are NOT in scope — out of scope.
+
+### Within-sense polyphony — HAN_VARIANTS (unchanged shape)
+
+When a single (compound-ID, code) pair has multiple readings due to historical layer (Japanese 漢音/呉音/唐音), literary-vernacular split (文讀/白讀), or rule application (Korean 두음법칙):
+
+```
+HAN_DATA[id].surface[code] = null  (or undefined / absent key)
+HAN_DATA[id].ipa[code]     = null
+HAN_DATA[id].native[code]  = null
+
+HAN_VARIANTS[id][code] = [
   { surface, ipa, native, label },
   { surface, ipa, native, label },
   ...
 ]
 ```
 
-When a (char, code) pair has **exactly 1** reading: keep the current shape (primary populated, no `HAN_VARIANTS` entry for this code).
-
-Renderer (`hanmap.html`) already prefers `HAN_VARIANTS[ch][code]` when present, so dropping the primary on multi-reading codes eliminates a code path and removes the chance of "primary disagrees with variants" drift.
+When only 1 reading exists for the (id, code) pair: primary populated, no `HAN_VARIANTS` entry.
 
 ## Label conventions per linguistic tradition
 
-| Family / codes | Label format on each variant |
+For `HAN_VARIANTS[id][code]` entries, the `label` field uses:
+
+| Family / codes | Label format |
 |---|---|
-| Mandarin 多音字 (zh, zh_*) | `"<pinyin>"` — e.g. `"zhōng"`, `"zhòng"` |
-| Cantonese 多音字 (yue, yue_*) | `"<Jyutping>"` — e.g. `"hong4"`, `"hang4"` |
+| Mandarin 多音字 within-sense (rare after sense-split) | `"<pinyin>"` — kept only if a single sense has multiple pinyin |
+| Cantonese 多音字 within-sense (rare) | `"<Jyutping>"` |
 | Min Nan 文白異讀 (nan, nan_*, cdo, mnp, cpx) | `"文讀"` / `"白讀"` |
 | Hakka 文白 (hak_*) | `"文讀"` / `"白讀"` |
 | Wu 文白 (wuu, wuu_*) | `"文讀"` / `"白讀"` |
-| Other Sinitic (cjy, gan, hsn, cnp, czh) | `"文讀"` / `"白讀"` — or semantic if 文白 isn't documented |
-| Japanese (ja) | `"漢音"`, `"呉音"`, `"唐音"`, `"訓読み"` — **already established, no change** |
-| Korean (ko, ko_kp, ko_zai, ko_bus, ko_hun) | semantic split where polyphony is semantic: `"行為 (行動)"`, `"行列 (줄·항렬)"`. 頭音法則 handled per-code (ko = rule applied, ko_kp = original) — **already established** |
-| Vietnamese (vi, vi_c, vi_s, vi_nom, vi_han) | `"<Quốc Ngữ>"` — e.g. `"hành"`, `"hàng"`; rare |
-| Non-Sinitic (mnc, sjo, txg, juc, zkt, za, bca, dng, bo_sino) | semantic — typically only one reading per char |
+| Other Sinitic (cjy, gan, hsn, cnp, czh) | `"文讀"` / `"白讀"` |
+| Japanese (ja) | `"漢音"`, `"呉音"`, `"唐音"`, `"訓読み"` |
+| Korean (ko, ko_kp, ko_zai, ko_bus, ko_hun) | semantic split now handled by HAN_LIST; remaining cases get descriptive labels |
+| Vietnamese (vi, vi_c, vi_s, vi_nom, vi_han) | `"<Quốc Ngữ>"` |
+| Non-Sinitic (mnc, sjo, txg, juc, zkt, za, bca, dng, bo_sino) | semantic — typically only one reading per char per code |
 
-## Two-phase detection
+Most HAN_VARIANTS entries after this work will be Japanese 漢音/呉音/唐音 and Min Nan/Hakka/Wu 文白讀.
 
-### Phase A — structural normalisation (script-based, mechanical)
+## UI changes (hanmap.html)
 
-A Node script scans `HAN_DATA` and detects entries needing reshape, with **no linguistic judgement**:
+Renderer touch points for the compound-ID format:
 
-1. Primary `surface[code]` contains `/`, `,`, `;`, `／`, or `、` — already two readings crammed into one string → split, build `HAN_VARIANTS`, null the primary.
-2. Same for `ipa[code]`.
-3. `HAN_VARIANTS[ch][code]` exists AND primary `surface[code]` is non-null → null the primary.
-4. Identical duplicate entries in `HAN_VARIANTS[ch][code]` → de-duplicate.
+1. **Char button** (`#char-current-btn`) — show "行 ¹" (character + superscript sense index) when ID contains `:`. The badge tooltip carries the full sense label.
+2. **Char selector modal** — multi-sense chars render as a single tile that expands into 2 sub-tiles labelled with sense (e.g. "行進" / "行列").
+3. **Map markers (`buildLabelHtml`, `hanmapShortLabel`)** — strip the `:N` suffix when computing display strings; the char itself (`行`) is what shows on map labels.
+4. **URL hash** — `?w=行:1` instead of `?w=行`. `setChar` validates the full ID; existing `setChar` guard already returns early on unknown IDs.
+5. **Compare table** — each compound ID becomes its own row, label "行 (行進)".
+6. **lang_names.js** — no changes; lang-name strings are about codes, not chars.
 
-Outputs a report listing every change made. No new variants invented.
+i18n: each `HAN_DATA[id].senseLabel` is an object `{ ja, en, ko, zh, yue, vi, th, id, hi, de, fr, it, es, pt, ru, uk, ar, he, sw }` so the sense disambiguator can localise.
 
-### Phase B — active addition (linguistic, parallel agents in worktrees)
+## Two-phase implementation
 
-Six worktree-isolated agents, each owning one code family. Each agent's brief:
-- Read `HAN_LIST` and the codes it owns.
-- For each (char × code) pair, look up the canonical dictionary for that variety (Wiktionary as common source; 教育部臺灣閩南語常用詞辭典 / 客家語辭典 / 廣州話正音字典 for the relevant family; Daijirin for Japanese; Naver 한자사전 for Korean; Hồ Ngọc Cẩn Nôm dictionary for Vietnamese).
-- If the dictionary documents 2 or more readings → add them all to `HAN_VARIANTS` with the family's label convention; null the primary.
-- If only one reading → leave primary populated, do not invent.
+### Phase A — semantic sense-split (script + manual edit, fast)
 
-Estimated added entries: 200–400 across all families.
+1. **Extend HAN_LIST**: remove `"行"` and `"中"`; insert `"行:1"`, `"行:2"`, `"中:1"`, `"中:2"` at the same positions.
+2. **Migrate HAN_DATA["行"]** → split into `HAN_DATA["行:1"]` (xíng-class readings) and `HAN_DATA["行:2"]` (háng-class readings) by referencing the existing HAN_VARIANTS data and authoritative dictionaries.
+3. **Migrate HAN_DATA["中"]** → split into `HAN_DATA["中:1"]` (zhōng-class) and `HAN_DATA["中:2"]` (zhòng-class).
+4. **Drop HAN_VARIANTS entries that become redundant** — e.g. the ko `行` haeng/hang variants are now redundant because `HAN_DATA["行:1"].surface.ko = "haeng"` and `HAN_DATA["行:2"].surface.ko = "hang"`.
+5. **Add senseLabel i18n** for each compound entry.
+6. **Add HAN_CATEGORIES mapping** so the char selector modal knows where the new compound IDs belong.
+7. **Renderer edits** in hanmap.html: char button display, modal grouping, marker label strip, URL-hash handling.
 
-### Agent fleet layout
+Result of Phase A: 4 new HAN_LIST entries × 101 codes = ~400 readings populated. HAN_LIST grows 59 → 61.
+
+### Phase B — within-sense polyphony fill (parallel agent fleet)
+
+After Phase A is committed, dispatch 6 worktree-isolated agents:
 
 | Worker | Code family scope |
 |---|---|
-| 1. zh fleet | zh, zh_db, zh_cd, zh_cq, zh_xa, zh_jn, zh_jiao, zh_kf, zh_km, zh_lz, zh_nj, zh_jh, zh_hf, zh_sc, zh_tj, zh_wh, zh_zz, zh_gl, zh_yuan, zh_kanbun, zh_th, zh_us, zh_han, zh_song, zh_tang, zh_phagspa |
+| 1. zh fleet | zh and all 21 zh_* dialects + zh_yuan / zh_phagspa / zh_han / zh_song / zh_tang / zh_kanbun |
 | 2. yue fleet | yue, yue_hk, yue_mo, yue_gz, yue_dg, yue_ts, yue_zs, yue_nn, yue_us |
-| 3. Min Nan + Eastern Min | nan, nan_xm, nan_qz, nan_zz, nan_pn, nan_te, nan_hai, nan_th, nan_my, nan_sg, nan_id, nan_pera, cdo, mnp, cpx |
+| 3. Min Nan + Eastern Min + Pu-Xian | nan, nan_xm, nan_qz, nan_zz, nan_pn, nan_te, nan_hai, nan_th, nan_my, nan_sg, nan_id, nan_pera, cdo, mnp, cpx |
 | 4. Hakka + Wu | hak_cn, hak_tw, hak_hl, hak_mz; wuu, wuu_hz, wuu_jx, wuu_jh, wuu_sz, wuu_nb, wuu_wz |
 | 5. ko / ja / vi | ko, ko_kp, ko_zai, ko_bus, ko_hun, ko_mid; ja, ja_kun, ja_ojp, ja_kgs, ja_okn, ja_thk; vi, vi_c, vi_s, vi_nom, vi_han, vi_ohan |
-| 6. Other Sinitic + non-Sinitic | cjy, gan, hsn, cnp, czh; mnc, sjo, txg, juc, zkt, za, bca, dng, bo_sino; all `p*` proto codes (likely no-op since proto codes give one reconstructed reading per char) |
+| 6. Other Sinitic + non-Sinitic | cjy, gan, hsn, cnp, czh; mnc, sjo, txg, juc, zkt, za, bca, dng, bo_sino; all `p*` proto codes |
+
+Each agent's brief:
+- Read HAN_LIST (now 61 entries) and the codes it owns.
+- For each (id, code) pair, look up the canonical dictionary:
+  - Wiktionary as common source
+  - 教育部臺灣閩南語常用詞辭典 for nan_tw
+  - 客委會 / 廣州話正音字典 for hak / yue
+  - Daijirin / 漢字源 for ja
+  - Naver 한자사전 for ko
+  - 漢喃辭典 for vi_nom
+- If the dictionary documents 2+ readings for THIS sense → add them to `HAN_VARIANTS[id][code]` with labels per the table above; null the primary fields.
+- If only one reading → leave primary populated.
+- DO NOT invent variants. If the dictionary gives one, register one.
+
+Estimated additions: 100–250 within-sense variants across all families (smaller than original spec since sense-split absorbs the big cross-sense cases).
+
+### Phase C — structural cleanup (mechanical, last)
+
+A small Node script over the final merged file:
+1. Detect any primary surface still containing `/`, `,`, `;`, `／`, `、` → flag for manual review (should be zero by this point).
+2. Detect any (id, code) where both primary surface and HAN_VARIANTS exist → null the primary.
+3. De-duplicate identical HAN_VARIANTS entries.
+4. Sort each `HAN_VARIANTS[id][code]` array by label (stable order).
 
 ## Execution rules
 
-- Each agent works in its own worktree branched from `develop`.
-- Each agent modifies only `hanmap_data.js`.
-- Each agent runs `node --check hanmap_data.js` before committing.
-- Final assembly: cherry-pick each agent's commit onto `develop` in fleet order; resolve any `HAN_VARIANTS[ch]` merge conflicts by **union of code keys** (each agent owns disjoint codes, so conflicts should be merge-conflict-marker noise only, not semantic).
-- Bump `hanmap_data.js?v=` after the full sweep.
+- Phase A is one commit on `develop` (does the sense-split + UI plumbing).
+- Phase B: each agent works in its own worktree branched from `develop` AFTER Phase A lands. Each modifies only `hanmap_data.js`. Cherry-pick each agent's commit onto `develop` in fleet order. Conflicts on the same `HAN_VARIANTS[id]` block are resolved by union of code keys (each agent owns disjoint codes).
+- Phase C is one final commit on `develop` (mechanical).
+- Bump `hanmap_data.js?v=` once at the end of the sweep.
+- Merge to `main` only when the user asks (per recent feedback).
 
 ## Verification
 
 After all merges:
 
 ```js
-// Invariant 1: no primary lingering when HAN_VARIANTS owns this (char, code)
-for (const ch of HAN_LIST) {
-  for (const code of HAN_LANGS) {
-    if (HAN_VARIANTS[ch]?.[code]?.length > 0) {
-      assert(!HAN_DATA[ch].surface?.[code] && !HAN_DATA[ch].ipa?.[code]);
+const m = require('./hanmap_data.js');
+
+// Invariant 1: no primary lingering when HAN_VARIANTS owns this (id, code)
+for (const id of m.HAN_LIST) {
+  for (const code of m.HAN_LANGS) {
+    if (m.HAN_VARIANTS[id]?.[code]?.length > 0) {
+      assert(!m.HAN_DATA[id].surface?.[code] && !m.HAN_DATA[id].ipa?.[code]);
     }
   }
 }
 
-// Invariant 2: HAN_LANGS / HAN_LIST size unchanged
-assert(HAN_LANGS.length === 101);
-assert(HAN_LIST.length === 59);
+// Invariant 2: HAN_LANGS unchanged, HAN_LIST grew by 2 (was 59 → now 61)
+assert(m.HAN_LANGS.length === 101);
+assert(m.HAN_LIST.length === 61);
 
-// Invariant 3: every variant entry has a label
-for (const ch of Object.keys(HAN_VARIANTS)) {
-  for (const code of Object.keys(HAN_VARIANTS[ch])) {
-    for (const v of HAN_VARIANTS[ch][code]) {
+// Invariant 3: compound IDs exist; bare 行 and 中 don't
+assert(m.HAN_LIST.includes('行:1') && m.HAN_LIST.includes('行:2'));
+assert(m.HAN_LIST.includes('中:1') && m.HAN_LIST.includes('中:2'));
+assert(!m.HAN_LIST.includes('行'));
+assert(!m.HAN_LIST.includes('中'));
+
+// Invariant 4: every variant entry has a label
+for (const id of Object.keys(m.HAN_VARIANTS)) {
+  for (const code of Object.keys(m.HAN_VARIANTS[id])) {
+    for (const v of m.HAN_VARIANTS[id][code]) {
       assert(typeof v.label === 'string' && v.label.length > 0);
     }
   }
 }
+
+// Invariant 5: every compound ID has a senseLabel.ja
+for (const id of m.HAN_LIST) {
+  if (id.includes(':')) {
+    assert(typeof m.HAN_DATA[id].senseLabel?.ja === 'string');
+  }
+}
 ```
 
-Plus a manual eyeball pass: open hanmap.html in a browser, click a few known multi-reading chars (中, 行, 食, 人, 楽), confirm modal shows readings stacked with labels.
+Manual eyeball pass:
+- Open hanmap.html in a browser; verify char selector shows "行進" / "行列" as sibling tiles.
+- Click each; verify map markers use the appropriate reading per code.
+- Open compare modal with 行:1 and 行:2 both selected; verify they render as separate rows.
 
 ## Out of scope
 
-- Adding 文白 for chars that don't have it (e.g., 一, 二 — they're stable single-reading even in Min Nan).
-- Importing every dictionary's full reading list (we keep to 2–4 most-cited per char).
-- Touching `HAN_LANG_META`, `HAN_CATEGORIES`, `HAN_GROUPS`, or any code-registration data.
-- Touching `hanmap_trivia.js` or `hanmap.html` — renderer already handles the shape.
+- Adding sense-splits beyond 行 and 中.
+- Adding 文白 entries for chars that don't have them in the cited dictionary.
+- Importing every dictionary's full reading list (we keep to 2–4 most-cited per id).
+- Touching `HAN_LANG_META`, `HAN_GROUPS`, or any code-registration data.
+- Touching `hanmap_trivia.js` (trivia articles that reference 行 or 中 stand as-is for now; if they break links the cleanup happens in a follow-up).
 
 ## Follow-up (separate task)
 
