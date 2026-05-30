@@ -141,6 +141,76 @@
             src: url('fonts/NotoSerifKR-CompatJamo-subset.woff2') format('woff2');
             unicode-range: U+3130-318F;
         }
+        /* Hanmap-only Old-Jamo extension (U+1100-11FF). The existing
+           'Noto Serif KR Old Jamo' file (above) was originally subset for
+           wordmap's 11 Middle-Korean jamo and does NOT contain the 17
+           additional conjoining jamo that hanmap uses for Dongguk-Jeongun
+           (1448) Sino-Korean spellings — e.g. ᄅ ᄉ ᅙ ᅩ ᅵ ᆨ ᆫ ᆼ ᇙ, also
+           ᆎ ᆑ ᆔ etc. These tofu on iPhone Safari even after the original
+           commit. Self-host a 25 KB Noto Serif KR subset covering the
+           missing codepoints, declared with the explicit list (not a
+           range) so this @font-face never collides with the wordmap one.
+           A separate family name + chain insertion (see .lang-label etc.
+           below) guarantees this is tried BEFORE 'Noto Serif KR Old Jamo'
+           so hanmap-only jamo always pick up this subset. */
+        @font-face {
+            font-family: 'Noto Serif KR Hanmap Old Jamo';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/NotoSerifKR-OldHangul-hanmap.woff2') format('woff2');
+            unicode-range:
+                U+1105, U+1109, U+1112, U+1140, U+114C, U+1159,
+                U+1163, U+1165, U+1169, U+116E, U+116F, U+1173,
+                U+1175, U+118E, U+1191, U+1194, U+119E, U+11A1,
+                U+11A8, U+11AB, U+11B7, U+11BC, U+11D9;
+        }
+        /* Hanmap-only Chữ Nôm (字喃) extension. The existing 'Nom Serif
+           Subset' family (top of file) was sized for wordmap's 24 Nôm
+           codepoints and is MISSING 44 of the 48 Nôm codepoints hanmap
+           uses — including 蜐 蹎 頭, 𠀧 𠊛 𡎢 𡶀 𢄂 𢚸 𢞖 𢬣 𢵧 𣈜 𣘃
+           𤈜 𤘽 𤞻 𥪝 𦉱 𦊚 𦒹 𦖑 𦝄 𦤾 𧍰 𧖱 𧡊 𧼋 𨒒 𨕭 𩛖 𩵜 𫈳 and more.
+           These tofu on iPhone Safari (Hiragino's CJK cmap has no CJK
+           Ext B/C, no Chữ Nôm-specific glyph forms). Three sources,
+           under one family so chain insertion stays cheap:
+           - NomNaTong (Vietnamese Nôm Preservation Foundation): 41 chars
+           - HanaMinB (Hanazono Mincho B): 𢞖 𤘽 — CJK Ext B chars
+             that NomNaTong omits
+           - HanaMinExC (Hanazono Mincho Ext C): 𫈳 (U+2B233) — only
+             CJK Ext C codepoint hanmap uses
+           Combined transfer: ~14 KB. Inserted BEFORE the wordmap
+           'Nom Serif Subset' so hanmap-specific chars route here first. */
+        @font-face {
+            font-family: 'Nom Serif Hanmap Subset';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/NomNaTong-hanmap.woff2') format('woff2');
+            unicode-range:
+                U+3D1C, U+5766, U+771C, U+8012, U+8710, U+8E4E, U+982D,
+                U+20027, U+20051, U+200E9, U+20129, U+2013C, U+2029B,
+                U+2029D, U+2052D, U+20AFE, U+20C18, U+213A2, U+21D80,
+                U+22102, U+226B8, U+22B23, U+22D67, U+2321C, U+2421C,
+                U+247BB, U+25A9D, U+26271, U+2629A, U+264B9, U+26591,
+                U+26744, U+2693E, U+27370, U+275B1, U+2784A, U+27F0B,
+                U+28492, U+2856D, U+296D6, U+29D5C;
+        }
+        @font-face {
+            font-family: 'Nom Serif Hanmap Subset';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/HanaMinB-hanmap.woff2') format('woff2');
+            unicode-range: U+22796, U+2463D;
+        }
+        @font-face {
+            font-family: 'Nom Serif Hanmap Subset';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/HanaMinExC-hanmap.woff2') format('woff2');
+            unicode-range: U+2B233;
+        }
     </style>
     <!-- Khitan Small Script isn't on Google Fonts (Google Fonts returns 400
          for "Noto Serif Khitan Small Script"). Load the Serif variant
@@ -524,16 +594,27 @@
         }
         .lang-label, .globe-label {
             font-family:
-                /* Self-hosted serif subsets, scoped via unicode-range:
-                   - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
-                   - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em
-                     conjoining old hangul jamo — arae-a etc).
+                /* Self-hosted serif subsets, scoped via unicode-range.
+                   Hanmap-specific subsets are listed FIRST so per-codepoint
+                   matching short-circuits to them before the wordmap-shared
+                   subsets (which lack hanmap's extra Dongguk-Jeongun jamo
+                   and Chữ Nôm Ext-B/C codepoints):
+                   - Noto Serif KR Hanmap Old Jamo: 23 hanmap ko_mid
+                     conjoining jamo (ᄅ ᄉ ᅙ ᆨ ᆫ ᆼ ᇙ …) missing from
+                     the wordmap subset.
+                   - Nom Serif Hanmap Subset: 44 Chữ Nôm chars missing
+                     from the wordmap subset (CJK Ext A/B/C — 𠀧 𢞖 𤘽
+                     𫈳 …); routes through NomNaTong + HanaMinB + HanaMinExC.
+                   - Noto Serif KR Old Jamo: U+1100-11FF (wordmap subset).
                    - Noto Serif KR Compat Jamo: U+3130-318F (archaic
                      compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ used in
                      Dongguk-Jeongun Sino-Korean descriptions; tofu
                      on iPhone Safari without this scoped subset).
-                   All three fall through to the broader Noto Serif chain
+                   - Nom Serif Subset: original 24 Chữ Nôm codepoints.
+                   All five fall through to the broader Noto Serif chain
                    for any chars outside their scope. */
+                "Noto Serif KR Hanmap Old Jamo",
+                "Nom Serif Hanmap Subset",
                 "Noto Serif KR Old Jamo",
                 "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
@@ -563,6 +644,16 @@
            Same font stack as the map labels so glyphs actually render. */
         .hanmap-script-cell {
             font-family:
+                /* Self-hosted unicode-range subsets first — guarantees
+                   archaic Hangul jamo (ko_mid) and Chữ Nôm (vi_nom Ext B/C)
+                   route to the bundled subsets and don't tofu on iPhone
+                   even when this cell is the only place the codepoint
+                   appears (popup tables for r.native). */
+                "Noto Serif KR Hanmap Old Jamo",
+                "Nom Serif Hanmap Subset",
+                "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
+                "Nom Serif Subset",
                 "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
                 "Noto Serif Tibetan", "Kailasa", "Microsoft Himalaya", "Jomolhari",
                 "Noto Sans Yi", "Microsoft Yi Baiti",
@@ -749,6 +840,8 @@
                Tangut, Khitan, etc.) inside the panel still pick up their
                respective Noto webfonts. */
             font-family:
+                "Noto Serif KR Hanmap Old Jamo",
+                "Nom Serif Hanmap Subset",
                 "Noto Serif KR Old Jamo",
                 "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
@@ -823,14 +916,23 @@
         .wm-form {
             unicode-bidi: isolate;
             font-family:
-                /* Self-hosted serif subsets, scoped via unicode-range:
-                   - Noto Serif KR Old Jamo: U+1100-11FF (ko_mid / ko_em)
+                /* Self-hosted serif subsets, scoped via unicode-range.
+                   Hanmap-specific subsets listed FIRST so the per-codepoint
+                   cascade resolves them before the smaller wordmap-shared
+                   subsets:
+                   - Noto Serif KR Hanmap Old Jamo: 23 ko_mid jamo for
+                     Dongguk-Jeongun (the wordmap subset only has 11).
+                   - Nom Serif Hanmap Subset: 44 Chữ Nôm chars across
+                     CJK Ext A/B/C (NomNaTong + HanaMinB + HanaMinExC).
+                   - Noto Serif KR Old Jamo: U+1100-11FF (wordmap subset).
                    - Noto Serif KR Compat Jamo: U+3130-318F (archaic
                      compatibility jamo ㅸ ㅭ ㅿ ㆁ ㆆ — tofu on iPhone
                      without the scoped subset).
-                   - Nom Serif Subset: 24 Chữ Nôm CJK Ext-B codepoints
+                   - Nom Serif Subset: original 24 Chữ Nôm codepoints.
                    All load on-demand and fall through to the rest of the
                    Noto Serif chain. */
+                "Noto Serif KR Hanmap Old Jamo",
+                "Nom Serif Hanmap Subset",
                 "Noto Serif KR Old Jamo",
                 "Noto Serif KR Compat Jamo",
                 "Nom Serif Subset",
@@ -1083,7 +1185,23 @@
         }
         .compare-table .compare-remove-row .remove-col:active { transform: scale(0.96); }
         .compare-table tbody th { background: #fafafa; font-weight: 600; min-width: 80px; }
-        .compare-table .surface { font-size: 14px; }
+        .compare-table .surface {
+            font-size: 14px;
+            /* Compare-table reading cells render r.native (ko_mid jamo,
+               vi_nom Chữ Nôm Ext A/B/C) — without an explicit chain,
+               iOS Safari falls through to Hiragino which lacks these
+               glyphs and shows tofu. Use the same five self-hosted
+               subsets that .lang-label / .wm-form use so each
+               codepoint routes to the bundled woff2 first. */
+            font-family:
+                "Noto Serif KR Hanmap Old Jamo",
+                "Nom Serif Hanmap Subset",
+                "Noto Serif KR Old Jamo",
+                "Noto Serif KR Compat Jamo",
+                "Nom Serif Subset",
+                "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", "Noto Serif KR",
+                serif;
+        }
         .compare-table .ipa { color: #666; font-size: 12px; font-family: 'Charis SIL', 'DejaVu Serif', serif; display: block; }
         .compare-table .unattested { color: #aaa; font-style: italic; }
         /* Stacked readings inside a single cell (HAN_VARIANTS): each
@@ -2862,7 +2980,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=32"></script>
+    <script src="hanmap_data.js?v=33"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -2877,7 +2995,7 @@
     </script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang_names.js?v=114"></script>
+    <script src="lang_names.js?v=115"></script>
     <script>
     // ============================================================
     //  HANMAP DATA ADAPTER
