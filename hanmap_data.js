@@ -17994,20 +17994,6 @@ const HAN_LANGS = ["bca","bo_sino","cdo","cjy","cnp","cpx","czh","dng","gan","ha
 
 const HAN_VARIANTS = {
   "六": {
-    "ko": [
-      {
-        "native": "육",
-        "surface": "yuk",
-        "ipa": "juk̚",
-        "label": "頭音法則"
-      },
-      {
-        "native": "륙",
-        "surface": "ryuk",
-        "ipa": "ɾjuk̚",
-        "label": "原音"
-      }
-    ],
     "nan": [
       {
         "native": "",
@@ -18094,20 +18080,6 @@ const HAN_VARIANTS = {
     ]
   },
   "龍": {
-    "ko": [
-      {
-        "native": "용",
-        "surface": "yong",
-        "ipa": "joŋ",
-        "label": "頭音法則"
-      },
-      {
-        "native": "룡",
-        "surface": "ryong",
-        "ipa": "ɾjoŋ",
-        "label": "原音"
-      }
-    ],
     "nan": [
       {
         "native": "",
@@ -18152,20 +18124,6 @@ const HAN_VARIANTS = {
     ]
   },
   "立": {
-    "ko": [
-      {
-        "native": "입",
-        "surface": "ip",
-        "ipa": "ip̚",
-        "label": "頭音法則"
-      },
-      {
-        "native": "립",
-        "surface": "rip",
-        "ipa": "ɾip̚",
-        "label": "原音"
-      }
-    ],
     "nan": [
       {
         "native": "",
@@ -21458,20 +21416,6 @@ const HAN_VARIANTS = {
         "surface": "lâi",
         "ipa": "",
         "label": "文讀"
-      }
-    ],
-    "ko": [
-      {
-        "native": "내",
-        "surface": "nae",
-        "ipa": "nɛ",
-        "label": "頭音法則"
-      },
-      {
-        "native": "래",
-        "surface": "rae",
-        "ipa": "ɾɛ",
-        "label": "原音"
       }
     ],
     "cdo": [
