@@ -2464,7 +2464,7 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=221"></script>
+    <script src="wordmap_data.js?v=222"></script>
     <script src="word_manifest.js?v=14"></script>
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
@@ -3944,6 +3944,198 @@
             return names[code] || lang.name;
         }
 
+        // ---------------------------------------------------------------
+        // Simulated-annealing label de-overlap (d3-labeler-style, Evans 2014).
+        // The existing cellGroups + greedy collision pass above produces a
+        // good initial layout; this module refines it by accepting/rejecting
+        // small pixel-offset perturbations using the Metropolis criterion
+        // until the residual overlap energy converges.
+        //
+        // Each label is a {x,y,w,h} AABB centered at (anchorX+dx, anchorY+dy).
+        // Energy = sum(pairwise overlap area) + alpha * dist(label, anchor).
+        // Cache key is (currentWord, zoom, sortedVisibleCodes) — same key,
+        // same offsets reused (zero SA cost on cache hit). Pan does not
+        // change the key (anchors move with Leaflet's projection; offsets
+        // are anchor-relative, so cached deltas remain visually correct).
+        // ---------------------------------------------------------------
+        const _wmLabelOffsetCache = new Map();
+        const _WM_SA_CACHE_MAX = 64;  // LRU cap to avoid unbounded growth
+
+        // Pairwise overlap area between two AABBs centered at (cx,cy).
+        function _wmOverlapArea(a, b) {
+            const ox = Math.max(0, (a.w + b.w) / 2 - Math.abs(a.cx - b.cx));
+            const oy = Math.max(0, (a.h + b.h) / 2 - Math.abs(a.cy - b.cy));
+            return ox * oy;
+        }
+
+        // Total energy = sum overlap area + alpha * displacement from anchor.
+        function _wmEnergy(labels, alpha) {
+            let e = 0;
+            const n = labels.length;
+            for (let i = 0; i < n; i++) {
+                const li = labels[i];
+                for (let j = i + 1; j < n; j++) {
+                    e += _wmOverlapArea(li, labels[j]);
+                }
+                const dx = li.cx - li.ax;
+                const dy = li.cy - li.ay;
+                e += alpha * Math.sqrt(dx * dx + dy * dy);
+            }
+            return e;
+        }
+
+        // Incremental energy for ONE label against all others (much faster
+        // than recomputing full energy each iter; SA is O(sweeps * n * n)
+        // instead of O(sweeps * n^3)).
+        function _wmLocalEnergy(labels, i, alpha) {
+            let e = 0;
+            const li = labels[i];
+            const n = labels.length;
+            for (let j = 0; j < n; j++) {
+                if (j === i) continue;
+                e += _wmOverlapArea(li, labels[j]);
+            }
+            const dx = li.cx - li.ax;
+            const dy = li.cy - li.ay;
+            e += alpha * Math.sqrt(dx * dx + dy * dy);
+            return e;
+        }
+
+        // mulberry32 PRNG — deterministic given seed. Replaces Math.random
+        // in SA so different page loads of the same (word, zoom, codes)
+        // yield identical label layouts. Without this, vi_c (etc) would
+        // sit in a slightly different spot each visit.
+        function _wmMakeRng(seed) {
+            let a = seed >>> 0;
+            return function () {
+                a = (a + 0x6D2B79F5) >>> 0;
+                let t = a;
+                t = Math.imul(t ^ (t >>> 15), t | 1);
+                t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+        function _wmHashStr(s) {
+            let h = 5381;
+            for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+            return h >>> 0;
+        }
+
+        // SA solver. Returns labels mutated in place (cx/cy adjusted).
+        //   labels: [{ id, cx, cy, w, h, ax, ay }] — cx/cy = current center,
+        //            ax/ay = anchor (marker pixel position).
+        //   sweeps: number of annealing sweeps (each = one pass over all labels).
+        //   alpha:  weight on anchor-distance term in energy (small = labels
+        //            will move freely to escape overlaps).
+        function _wmAnnealLabels(labels, sweeps, alpha, rng) {
+            const n = labels.length;
+            if (n < 2) return;
+            // Temperature: scaled to label height — proposed jumps are
+            // ±T*labelH in each axis, so at T=1 the typical proposal is
+            // ~one label-height (~15-20px). Cools by 0.96/sweep → T~0.3
+            // at sweep 30, fine-tuning final positions.
+            let T = 1.0;
+            const cool = 0.96;
+            const random = rng || Math.random;
+            // Sum of label heights as a rough "typical step" scale; per-
+            // label labelH varies but is identical in this codebase.
+            const stepBase = labels[0] ? labels[0].h : 16;
+            for (let s = 0; s < sweeps; s++) {
+                for (let i = 0; i < n; i++) {
+                    const li = labels[i];
+                    const eOld = _wmLocalEnergy(labels, i, alpha);
+                    const oldCx = li.cx, oldCy = li.cy;
+                    // Propose: uniform in [-T*stepBase, +T*stepBase].
+                    li.cx += (random() * 2 - 1) * T * stepBase;
+                    li.cy += (random() * 2 - 1) * T * stepBase;
+                    const eNew = _wmLocalEnergy(labels, i, alpha);
+                    const dE = eNew - eOld;
+                    if (dE <= 0 || random() < Math.exp(-dE / T)) {
+                        // Accept.
+                    } else {
+                        li.cx = oldCx; li.cy = oldCy;
+                    }
+                }
+                T *= cool;
+            }
+        }
+
+        // Build the per-(word,zoom,codes) cache key.
+        function _wmOffsetCacheKey(word, zoom, codes) {
+            // codes is small (<200) and sorted strings; join is cheap.
+            return word + '|' + zoom + '|' + codes.join(',');
+        }
+
+        // Run SA to refine offsets[]. Inputs:
+        //   codes:    array of lang codes to place (visible + active).
+        //   ppx:      code -> {x,y} marker anchor pixel position.
+        //   offsets:  code -> {x,y} current pixel offset (mutated in place).
+        //   labelW, labelH: estimated label box size (px).
+        //   word, zoom: cache key inputs.
+        // Returns: ms spent in SA (or 0 on cache hit).
+        function _wmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
+            if (codes.length < 2) return 0;
+            const sortedCodes = codes.slice().sort();
+            const cacheKey = _wmOffsetCacheKey(word, zoom, sortedCodes);
+            const cached = _wmLabelOffsetCache.get(cacheKey);
+            if (cached) {
+                // LRU bump: re-insert so it's most-recently-used.
+                _wmLabelOffsetCache.delete(cacheKey);
+                _wmLabelOffsetCache.set(cacheKey, cached);
+                for (const code of codes) {
+                    const off = cached.get(code);
+                    if (off) offsets[code] = { x: off.x, y: off.y };
+                }
+                return 0;
+            }
+            const t0 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            // Build labels array. Use the existing offsets as the SA seed.
+            const labels = [];
+            for (const code of codes) {
+                if (!ppx[code]) continue;
+                const pt = ppx[code];
+                const off = offsets[code] || { x: 0, y: 0 };
+                labels.push({
+                    id: code,
+                    ax: pt.x, ay: pt.y,             // anchor (marker)
+                    cx: pt.x + off.x,                // current center
+                    cy: pt.y + off.y,
+                    w: labelW, h: labelH,
+                });
+            }
+            // Sweeps: 30 normally, scaled down for very dense maps so the
+            // ~80ms target on mid-range laptops still holds. n*n*sweeps
+            // grows quickly; 100 labels * 30 sweeps * 100 inner = ~300k ops.
+            let sweeps = 30;
+            if (labels.length > 120) sweeps = 20;
+            if (labels.length > 180) sweeps = 15;
+            const alpha = 0.05;  // small — overlap dominates anchor pull
+            // Seed the SA RNG from the cache key so different page loads
+            // of the same (word, zoom, codes) produce IDENTICAL layouts.
+            _wmAnnealLabels(labels, sweeps, alpha, _wmMakeRng(_wmHashStr(cacheKey)));
+            // Write back offsets + populate cache.
+            const cacheEntry = new Map();
+            for (const lbl of labels) {
+                const dx = lbl.cx - lbl.ax;
+                const dy = lbl.cy - lbl.ay;
+                offsets[lbl.id] = { x: dx, y: dy };
+                cacheEntry.set(lbl.id, { x: dx, y: dy });
+            }
+            // LRU evict if over cap.
+            if (_wmLabelOffsetCache.size >= _WM_SA_CACHE_MAX) {
+                const firstKey = _wmLabelOffsetCache.keys().next().value;
+                if (firstKey != null) _wmLabelOffsetCache.delete(firstKey);
+            }
+            _wmLabelOffsetCache.set(cacheKey, cacheEntry);
+            const t1 = (typeof performance !== 'undefined' && performance.now)
+                ? performance.now() : Date.now();
+            return t1 - t0;
+        }
+
+        // Expose a manual cache-clear hook for the console / tests.
+        window._wmClearLabelOffsetCache = () => _wmLabelOffsetCache.clear();
+
         function updateMarkers(wordId) {
             currentWord = wordId;
 
@@ -4283,6 +4475,52 @@
                 }
                 _placedBoxes.push({ cx, cy });
                 offsets[code] = { x: cx - pt.x, y: cy - pt.y };
+            }
+
+            // SA refinement pass: take the greedy result above as a warm
+            // start and run simulated annealing to mop up residual overlaps.
+            // _saCodes must be invariant under pan so the cache key
+            // (word, zoom, sortedCodes) stays stable. We deliberately do
+            // NOT use renderLangs / _collisionOrder here — renderLangs is
+            // viewport-clipped via selectByPriority's `inViewport`, so
+            // panning shifts its membership and the cache misses on every
+            // pan. Instead SA covers the FULL visibleLangs + unattestedLangs
+            // set (filtered only by filterActive and ppx availability).
+            // Non-rendered codes get an offset that's simply unused at
+            // render time.
+            const _saCodes = [];
+            for (const code of visibleLangs) {
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            for (const code of unattestedLangs) {
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            const _saMs = _wmRefineOffsetsSA(
+                _saCodes, ppx, offsets, labelW, labelH,
+                wordId, zoom
+            );
+            if (_saMs > 0 && typeof window !== 'undefined' && window._wmSaLogTiming) {
+                console.log('[wordmap SA]', _saCodes.length, 'labels in', _saMs.toFixed(1), 'ms');
+            }
+            // Re-evaluate hiddenCodes based on the FINAL post-SA offset
+            // magnitudes. Earlier we populated hiddenCodes in the greedy
+            // pass using viewport-dependent cellGroups, so the same label
+            // could be hidden at one pan offset and shown at another —
+            // visually it blinked on every pan. Now hide is determined
+            // purely from the offset distance: stable across pans because
+            // the SA output is deterministic given (word, zoom, codes).
+            // Threshold matches the greedy MAX_PUSH.
+            hiddenCodes.clear();
+            for (const code of _saCodes) {
+                const off = offsets[code];
+                if (!off) continue;
+                if (Math.abs(off.x) + Math.abs(off.y) > MAX_PUSH * 2.2) {
+                    hiddenCodes.add(code);
+                }
             }
 
             // Single render loop for both attested and unattested langs.
