@@ -937,6 +937,24 @@
             font-size: 22px; color: #999; padding: 0; width: 28px; height: 28px; line-height: 1;
         }
         .compare-close:hover { color: #333; }
+        /* Similarity-color toggle (Pass 33). Sits in the compare-header
+           between title and Clear; checkbox + small label, mobile-friendly. */
+        .compare-simcolor-toggle {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 11px; color: #555; cursor: pointer;
+            user-select: none; -webkit-user-select: none;
+            white-space: nowrap;
+        }
+        .compare-simcolor-toggle input[type="checkbox"] {
+            margin: 0; cursor: pointer; accent-color: #1a73e8;
+        }
+        .compare-simcolor-label { line-height: 1; }
+        /* Cluster background cells — assigned inline via style="background:#..."
+           in renderCompare. Keep border/text legible against pastel. */
+        .compare-table td.cmp-cluster { transition: background-color 120ms ease; }
+        @media (max-width: 600px) {
+            .compare-simcolor-toggle { font-size: 10px; }
+        }
         /* Default (mobile): table fills the panel. PC override at the
            min-width:601px block below uses width:auto so columns size to
            content. */
@@ -2705,6 +2723,10 @@
     <div id="compare-panel" class="compare-panel" role="dialog" aria-labelledby="compare-heading" aria-modal="false" tabindex="-1">
         <div class="compare-header">
             <h3 id="compare-heading" class="compare-title">Language comparison</h3>
+            <label class="compare-simcolor-toggle" id="compare-simcolor-toggle">
+                <input type="checkbox" id="compare-simcolor-cb" />
+                <span class="compare-simcolor-label">Highlight by similarity</span>
+            </label>
             <button class="compare-clear" id="compare-clear" type="button">Clear</button>
             <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">&times;</button>
         </div>
@@ -4281,6 +4303,8 @@
                 if (cmpClear && typeof compareT === 'function') cmpClear.textContent = compareT('clear');
                 const cmpClose = document.getElementById('compare-close');
                 if (cmpClose && typeof compareT === 'function') cmpClose.setAttribute('aria-label', compareT('title'));
+                const cmpSimLbl = document.querySelector('.compare-simcolor-label');
+                if (cmpSimLbl && typeof compareT === 'function') cmpSimLbl.textContent = compareT('simcolor');
             } catch (e) { /* compareT may not yet be defined during early init */ }
             // Localize trivia button + modal eyebrow + close/restore/expand.
             // On mobile the button sits in the header bar with the hamburger
@@ -8234,35 +8258,184 @@
 
         // i18n labels for compare UI (subset; falls back to en)
         const COMPARE_I18N = {
-            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages' },
-            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで' },
-            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어' },
-            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言' },
-            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言' },
-            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ' },
-            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา' },
-            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa' },
-            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं' },
-            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen' },
-            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum' },
-            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue' },
-            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas' },
-            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas' },
-            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков' },
-            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов' },
-            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات' },
-            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות' },
-            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi' },
+            en:    { title:'Language comparison', clear:'Clear', fab:'Compare', add:'+ Add to compare', remove:'✓ In comparison (remove)', max:'Maximum 8 languages', simcolor:'Highlight by similarity' },
+            ja:    { title:'言語比較', clear:'クリア', fab:'比較', add:'+ 比較に追加', remove:'✓ 比較中（削除）', max:'最大 8 言語まで', simcolor:'発音類似でハイライト' },
+            ko:    { title:'언어 비교', clear:'초기화', fab:'비교', add:'+ 비교에 추가', remove:'✓ 비교 중 (제거)', max:'최대 8개 언어', simcolor:'발음 유사도로 강조' },
+            zh:    { title:'语言对比', clear:'清空', fab:'对比', add:'+ 加入对比', remove:'✓ 对比中（移除）', max:'最多 8 种语言', simcolor:'按发音相似性高亮' },
+            yue:   { title:'語言對比', clear:'清空', fab:'對比', add:'+ 加入對比', remove:'✓ 對比中（移除）', max:'最多 8 種語言', simcolor:'按發音相似性高亮' },
+            vi:    { title:'So sánh ngôn ngữ', clear:'Xóa', fab:'So sánh', add:'+ Thêm vào so sánh', remove:'✓ Đang so sánh (gỡ)', max:'Tối đa 8 ngôn ngữ', simcolor:'Tô màu theo độ tương tự' },
+            th:    { title:'การเปรียบเทียบภาษา', clear:'ล้าง', fab:'เปรียบเทียบ', add:'+ เพิ่มเพื่อเปรียบเทียบ', remove:'✓ กำลังเปรียบเทียบ (ลบ)', max:'สูงสุด 8 ภาษา', simcolor:'เน้นตามความคล้ายเสียง' },
+            id:    { title:'Perbandingan bahasa', clear:'Hapus', fab:'Bandingkan', add:'+ Tambah ke perbandingan', remove:'✓ Sedang dibandingkan (hapus)', max:'Maksimum 8 bahasa', simcolor:'Sorot kemiripan bunyi' },
+            hi:    { title:'भाषा तुलना', clear:'साफ़ करें', fab:'तुलना', add:'+ तुलना में जोड़ें', remove:'✓ तुलना में (हटाएं)', max:'अधिकतम 8 भाषाएं', simcolor:'उच्चारण समानता से हाइलाइट' },
+            de:    { title:'Sprachvergleich', clear:'Leeren', fab:'Vergleichen', add:'+ Zum Vergleich', remove:'✓ Im Vergleich (entfernen)', max:'Maximal 8 Sprachen', simcolor:'Nach Ähnlichkeit hervorheben' },
+            fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', simcolor:'Surligner par similarité' },
+            it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', simcolor:'Evidenzia per similarità' },
+            es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud' },
+            pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade' },
+            ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', simcolor:'Подсветить по сходству' },
+            uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', simcolor:'Підсвітити за схожістю' },
+            ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', simcolor:'إبراز حسب التشابه' },
+            he:    { title:'השוואת שפות', clear:'נקה', fab:'השווה', add:'+ הוסף להשוואה', remove:'✓ בהשוואה (הסר)', max:'מקסימום 8 שפות', simcolor:'הדגש לפי דמיון' },
+            sw:    { title:'Ulinganishaji wa lugha', clear:'Futa', fab:'Linganisha', add:'+ Ongeza ili kulinganisha', remove:'✓ Inalinganishwa (toa)', max:'Lugha 8 zaidi', simcolor:'Angazia kwa kufanana' },
         };
         function compareT(key) {
             const base = uiLang.split('_')[0];
             return (COMPARE_I18N[uiLang] && COMPARE_I18N[uiLang][key])
                 || (COMPARE_I18N[base] && COMPARE_I18N[base][key])
                 || COMPARE_I18N.en[key];
+        }
+
+        // === Compare-table similarity colorizer (Pass 33) =======================
+        // Cluster cells within a single row whose readings are phonologically
+        // close, and tag each multi-member cluster with a pastel background.
+        // WHY: a row of 30 Sinitic + Sino-xenic readings is visually flat —
+        // the user can't see at a glance which languages inherited a shared
+        // pronunciation vs which diverged. Color makes inheritance lineages
+        // pop out, which is the whole reason to put N languages side-by-side.
+        //
+        // Algorithm (per row):
+        //   1. Build a "skeleton" for each cell by stripping tone marks,
+        //      tone digits, length/nasal marks, IPA tone bars, and glottal
+        //      stops. Only segmental info remains.
+        //   2. Union-find with three predicates (any-match merges):
+        //      EXACT (raw equal after NFC+lower), SKEL (skeletons equal),
+        //      SUBSTRING (one skeleton ⊂ other, e.g. "it" ⊂ "yit"),
+        //      LEV (Levenshtein on skeletons, len-tapered threshold to
+        //      avoid 2-char strings collapsing into one mega-cluster).
+        //   3. Clusters of size ≥ 2 get assigned the next palette slot
+        //      in first-appearance (left-to-right) order. Singletons stay
+        //      uncolored.
+        const COMPARE_SIM_KEY = 'hm.compareSimColor';
+        const COMPARE_SIM_PALETTE = [
+            '#fce7f3', '#dbeafe', '#dcfce7', '#fef3c7',
+            '#e0e7ff', '#fed7aa', '#cffafe', '#fae8ff',
+        ];
+        let _compareSimColor = true;
+        try {
+            const stored = localStorage.getItem(COMPARE_SIM_KEY);
+            if (stored !== null) _compareSimColor = stored === '1';
+        } catch (e) {}
+
+        function _hmSkeleton(s) {
+            if (!s) return '';
+            // NFD splits combining marks (tone diacritics, length, nasal) from
+            // their base letters so we can drop the marks individually.
+            let out = String(s).normalize('NFD');
+            out = out.replace(/[̀-ͯ]/g, '');                // combining marks
+            out = out.replace(/[ˈˌ˥-˩]/g, '');    // IPA stress + tone bars ˥˦˧˨˩
+            out = out.replace(/[0-9¹²³⁴⁵⁶⁷⁸⁹⁰]/g, '');                // Pinyin / superscript tone digits
+            out = out.replace(/[ːˑʼʰʱʷ]/g, '');                       // length / aspiration / labialization
+            out = out.replace(/[ʔʼ']/g, '');                          // glottal stop & apostrophes (drop)
+            out = out.replace(/[\s\-·.\/()\[\]]/g, '');               // separators / punctuation
+            return out.toLowerCase().normalize('NFC');
+        }
+
+        function _hmLev(a, b) {
+            if (a === b) return 0;
+            if (!a.length) return b.length;
+            if (!b.length) return a.length;
+            const m = a.length, n = b.length;
+            let prev = new Array(n + 1);
+            let cur  = new Array(n + 1);
+            for (let j = 0; j <= n; j++) prev[j] = j;
+            for (let i = 1; i <= m; i++) {
+                cur[0] = i;
+                for (let j = 1; j <= n; j++) {
+                    const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+                    cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+                }
+                const tmp = prev; prev = cur; cur = tmp;
+            }
+            return prev[n];
+        }
+
+        function _hmCellsSimilar(a, b) {
+            if (!a || !b) return false;
+            if (a.rawLow && a.rawLow === b.rawLow) return true;
+            if (a.skel && b.skel && a.skel === b.skel) return true;
+            if (a.skel && b.skel) {
+                const minLen = Math.min(a.skel.length, b.skel.length);
+                const maxLen = Math.max(a.skel.length, b.skel.length);
+                // Substring shortcut handles common syllable-shape variation:
+                // "it" ⊂ "yit" (一 nan vs hak), "sam" ⊂ "saam" (三 nan vs yue).
+                if (minLen >= 2 && (a.skel.indexOf(b.skel) !== -1 || b.skel.indexOf(a.skel) !== -1)) return true;
+                // Spec thresh = floor(max(2, len*0.25)). For ≤4-char skeletons
+                // a blanket thresh=2 collapses unrelated 2-char readings, so
+                // we taper: len=2 → Lev≤1 (still catches yi↔il, id↔it), 3-4
+                // → Lev≤1, ≥5 → spec.
+                let thresh;
+                if (minLen < 2) thresh = 0;
+                else if (minLen < 5) thresh = 1;
+                else thresh = Math.floor(Math.max(2, maxLen * 0.25));
+                if (thresh > 0 && _hmLev(a.skel, b.skel) <= thresh) return true;
+            }
+            return false;
+        }
+
+        // values: array of { surface, ipa } | null (one entry per column).
+        // Returns parallel array of color strings (or null for empty/singleton).
+        function _hmClusterRow(values) {
+            const n = values.length;
+            const entries = new Array(n);
+            for (let i = 0; i < n; i++) {
+                const v = values[i];
+                if (!v) { entries[i] = null; continue; }
+                // Prefer surface for clustering (spec: surface primary, IPA tiebreak).
+                // Fall back to IPA only when surface absent.
+                const raw = (v.surface || v.ipa || '').trim();
+                if (!raw) { entries[i] = null; continue; }
+                entries[i] = {
+                    raw,
+                    rawLow: raw.toLowerCase().normalize('NFC'),
+                    skel: _hmSkeleton(raw),
+                };
+            }
+            const parent = new Array(n);
+            for (let i = 0; i < n; i++) parent[i] = i;
+            function find(x) { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
+            function union(a, b) { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; }
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                for (let j = i + 1; j < n; j++) {
+                    if (!entries[j]) continue;
+                    if (_hmCellsSimilar(entries[i], entries[j])) union(i, j);
+                }
+            }
+            // Order roots by first-column appearance for stable left→right color
+            // assignment, and only color clusters of size ≥ 2.
+            const rootOrder = [];
+            const rootCounts = {};
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                const r = find(i);
+                if (rootCounts[r] === undefined) { rootCounts[r] = 0; rootOrder.push(r); }
+                rootCounts[r]++;
+            }
+            const rootColor = {};
+            let slot = 0;
+            for (const r of rootOrder) {
+                if (rootCounts[r] >= 2) {
+                    rootColor[r] = COMPARE_SIM_PALETTE[slot % COMPARE_SIM_PALETTE.length];
+                    slot++;
+                }
+            }
+            const out = new Array(n).fill(null);
+            for (let i = 0; i < n; i++) {
+                if (!entries[i]) continue;
+                const r = find(i);
+                if (rootColor[r]) out[i] = rootColor[r];
+            }
+            return out;
+        }
+
+        function setCompareSimColor(on) {
+            _compareSimColor = !!on;
+            try { localStorage.setItem(COMPARE_SIM_KEY, _compareSimColor ? '1' : '0'); } catch (e) {}
+            renderCompareIfOpen();
         }
 
         function loadCompareList() {
@@ -8335,6 +8508,11 @@
             // Update title text per current UI lang
             const t = panel.querySelector('.compare-title'); if (t) t.textContent = compareT('title');
             const c = panel.querySelector('.compare-clear'); if (c) c.textContent = compareT('clear');
+            // Sync the similarity-color checkbox + label.
+            const cb = panel.querySelector('#compare-simcolor-cb');
+            const lbl = panel.querySelector('.compare-simcolor-label');
+            if (cb) cb.checked = _compareSimColor;
+            if (lbl) lbl.textContent = compareT('simcolor');
         }
         function closeComparePanel() {
             const panel = document.getElementById('compare-panel');
@@ -8377,8 +8555,13 @@
             html += '</tr></thead><tbody>';
             for (const w of WORD_LIST) {
                 const conceptLabel = (w.label && (w.label[uiLang] || w.label[conceptLangFb] || w.label.en)) || w.id;
-                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
-                for (const code of _compareList) {
+                // First pass: collect per-column cellRows for this row so we
+                // can cluster, then a second pass emits the <td> HTML with the
+                // assigned cluster color.
+                const rowCellRows = new Array(_compareList.length);
+                const rowSummary = new Array(_compareList.length);
+                for (let ci = 0; ci < _compareList.length; ci++) {
+                    const code = _compareList[ci];
                     // HAN_VARIANTS, when present for (char, code), supplies
                     // multiple readings (e.g. ja 漢音/呉音/唐音, nan 文白
                     // 異讀, ko 頭音法則). Stack them vertically in the cell.
@@ -8405,10 +8588,23 @@
                             cellRows.push({ surface: s, ipa: i, label: '' });
                         }
                     }
+                    rowCellRows[ci] = cellRows;
+                    // For clustering: use the first variant's surface+IPA as
+                    // the cell's representative reading. Multi-variant cells
+                    // (e.g. ja 漢音/呉音) share a color based on the primary.
+                    rowSummary[ci] = cellRows.length ? { surface: cellRows[0].surface, ipa: cellRows[0].ipa } : null;
+                }
+                const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
+                html += '<tr><th scope="row">' + escapeHtml(conceptLabel) + '</th>';
+                for (let ci = 0; ci < _compareList.length; ci++) {
+                    const cellRows = rowCellRows[ci];
+                    const bg = rowColors[ci];
                     if (cellRows.length === 0) {
                         html += '<td class="unattested">—</td>';
                     } else {
-                        html += '<td>';
+                        const styleAttr = bg ? ' style="background:' + bg + '"' : '';
+                        const classAttr = bg ? ' class="cmp-cluster"' : '';
+                        html += '<td' + classAttr + styleAttr + '>';
                         for (const r of cellRows) {
                             html += '<div class="cmp-reading">';
                             if (r.surface) html += '<span class="surface" dir="auto">' + escapeHtml(r.surface) + '</span>';
@@ -8505,6 +8701,16 @@
         document.getElementById('compare-fab').addEventListener('click', openComparePanel);
         document.getElementById('compare-close').addEventListener('click', closeComparePanel);
         document.getElementById('compare-clear').addEventListener('click', clearCompare);
+        // Similarity-color toggle: live re-renders the open compare table.
+        (function wireSimColorToggle() {
+            const cb = document.getElementById('compare-simcolor-cb');
+            const lbl = document.querySelector('.compare-simcolor-label');
+            if (cb) {
+                cb.checked = _compareSimColor;
+                cb.addEventListener('change', () => setCompareSimColor(cb.checked));
+            }
+            if (lbl) lbl.textContent = compareT('simcolor');
+        })();
         // Delegate compare-add-btn clicks inside the language modal
         infoContent.addEventListener('click', e => {
             const btn = e.target.closest('.compare-add-btn');
