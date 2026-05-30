@@ -3028,7 +3028,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=59"></script>
+    <script src="hanmap_data.js?v=60"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -6754,11 +6754,20 @@
             // SA refinement pass: take the greedy result above as a warm
             // start and run simulated annealing to mop up residual overlaps
             // the greedy column-stacking couldn't reach (e.g. labels whose
-            // horizontal extents straddle a cell boundary). Cached per
-            // (currentWord, zoom, sortedCodes) — pan-induced re-renders hit
-            // the cache and skip SA entirely. See _hmRefineOffsetsSA above.
+            // horizontal extents straddle a cell boundary). Cache key is
+            // (currentWord, zoom) ONLY — _saCodes used to include the
+            // viewport-clipped set, which changed on every pan and
+            // invalidated the cache. Now SA runs on the FULL pre-thinning
+            // visible-langs set so pan doesn't change the input, and the
+            // returned offsets[code] are stable as user pans.
             const _saCodes = [];
-            for (const code of allRenderable) {
+            for (const code of visibleLangs) {
+                if (hiddenCodes.has(code)) continue;
+                if (filterActive && !isActive(code)) continue;
+                if (!ppx[code]) continue;
+                _saCodes.push(code);
+            }
+            for (const code of unattestedLangs) {
                 if (hiddenCodes.has(code)) continue;
                 if (filterActive && !isActive(code)) continue;
                 if (!ppx[code]) continue;
