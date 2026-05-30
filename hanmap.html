@@ -2988,7 +2988,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=45"></script>
+    <script src="hanmap_data.js?v=46"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3003,7 +3003,7 @@
     <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
          TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
          renders these without changes. Must come BEFORE wordmap's IIFE. -->
-    <script src="hanmap_trivia.js?v=2"></script>
+    <script src="hanmap_trivia.js?v=3"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang_names.js?v=115"></script>
@@ -3914,24 +3914,20 @@
         // map until the user pans. invalidateSize() recomputes size AND
         // fires moveend, which makes the tile layer redraw — but if
         // tiles were never fetched, redraw is needed too.
+        // Investigation 2026-05-30: explicit _currentTileLayer.redraw()
+        // was the bug. Leaflet's invalidateSize() already fires move/
+        // moveend → grid recompute + tile fetch. The extra redraw() tore
+        // the just-fetched tile <img>s out of the pane before their load
+        // event fired, and the 200ms / 800ms timer chain orphaned each
+        // subsequent batch. Drop redraw() and the late-tick timers; rely
+        // on invalidateSize() at rAF and load — same pattern wordmap.html
+        // uses (implicitly via Leaflet's own resize) and which works there.
         function _hmInvalidateSize() {
-            try {
-                map.invalidateSize();
-                if (typeof _currentTileLayer !== 'undefined' && _currentTileLayer && _currentTileLayer.redraw) {
-                    _currentTileLayer.redraw();
-                }
-            } catch (_) {}
+            try { map.invalidateSize(); } catch (_) {}
         }
-        // Fire at several deferred ticks so we catch:
-        //  - next animation frame (immediate layout)
-        //  - window.load (all <link>/<script>/CSS resolved)
-        //  - 200ms (web-fonts swap typically completes)
-        //  - 800ms (heavy cold-cache, mobile Safari)
         requestAnimationFrame(() => requestAnimationFrame(_hmInvalidateSize));
         if (document.readyState === 'complete') _hmInvalidateSize();
         else window.addEventListener('load', _hmInvalidateSize);
-        setTimeout(_hmInvalidateSize, 200);
-        setTimeout(_hmInvalidateSize, 800);
         // Belt-and-braces: catch later layout shifts from delayed fonts
         // or the responsive lang-filter dock collapsing.
         if (typeof ResizeObserver !== 'undefined') {
