@@ -208,3 +208,42 @@ Manual eyeball pass:
 ## Follow-up (separate task)
 
 User noted: after this normalisation is complete, add **台灣國語 (Taiwan Mandarin)** as a new code. That's a separate scope and gets its own brainstorm + plan.
+
+---
+
+## Completion notes (2026-05-31)
+
+This spec landed via the plan at
+`docs/superpowers/plans/2026-05-30-multi-reading-normalization.md`.
+The implementation was executed in three phases (A → B fleet → C
+cleanup) and committed to `develop` between 2026-05-30 and 2026-05-31.
+
+Final state (verified on develop tip `1e1e8a1`):
+- HAN_LIST = 61 (sense-split 行/中)
+- HAN_LANGS = 102 (zh_tw / Taiwan Mandarin added per the follow-up note above, renamed 國語→華語 per user feedback)
+- Phase B yielded 343 within-sense polyphony additions across 6
+  parallel agents:
+  - nan family 299, hak/wuu 19, ja/ko/vi 5, yue 4, zh 14, gan 2.
+- Phase C invariant cleanup nulled 557 dirty primaries.
+- All 5 spec invariants pass post-cleanup.
+
+User-driven adjustments during execution (kept in the resulting code):
+- 行:1 sense label 行進 → 行為 (broader semantic root).
+- ko_zai 行:2 IPA haŋ → haɴ (Zainichi velar nasal realisation).
+- zh_kanbun primary readings cleared — the code represents the
+  sentence-level kanbun reading tradition, not per-character on-yomi.
+- zh_yuan superscript tone digits → ASCII (the digits are tone
+  CATEGORY 1=平/2=上/3=去/4=入, not pitch contour).
+- ja HAN_VARIANTS purged of 訓読み entries (those live under ja_kun
+  per the code-level taxonomy).
+- bo_sino 中:2 cleared (Tibetan-Sino has no documented 命中 reading).
+- Hakka audit: 11 PFS corrections (人/北 hak_cn 文白 + 十/食 hak_hl
+  palatalisation, 行 hak_cn label-swap fix, 坐 IPA aspirate, etc.).
+
+Separately landed on the same branch but outside this spec's scope:
+- Sense tabs UI on the big char button (selector restricted to first
+  sense; tabs are the only way to reach :2 readings).
+- 字 nav badge for hanmap across all 4 site pages.
+- d3-labeler-style simulated annealing for non-overlapping label
+  placement, with deterministic seeded RNG and a stable hidden-set
+  evaluated post-SA. Same algorithm ported to wordmap.
