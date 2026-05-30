@@ -2153,7 +2153,7 @@ const HAN_DATA = {
       "wuu_jh": "zəʔ²¹²",
       "hak_cn": "sɨp̚˥",
       "hak_tw": "sɨp̚˥",
-      "hak_hl": "sɨp̚˥",
+      "hak_hl": "ʃip̚˥",
       "cjy": "səʔ˨",
       "czh": "siɪʔ˨˩",
       "hsn": "sɿ˨˦",
@@ -10839,7 +10839,7 @@ const HAN_DATA = {
       "wuu_hz": "ɦɑ̃²¹³",
       "wuu_jx": "ɦɑ̃²³",
       "wuu_jh": "ɦã²⁴",
-      "hak_cn": "haŋ˥˥",
+      "hak_cn": "haŋ˨˦",
       "hak_tw": "haŋ˩˩",
       "hak_hl": "haŋ˥˥",
       "cjy": "ɕiŋ˧˥",
@@ -11249,7 +11249,7 @@ const HAN_DATA = {
       "wuu_hz": "lɛ²¹³",
       "wuu_jx": "lɛ²³",
       "wuu_jh": "lɛ²⁴",
-      "hak_cn": "loi˥˥",
+      "hak_cn": "loi˨˦",
       "hak_tw": "loi˩˩",
       "hak_hl": "loi˥˥",
       "cjy": "lai˧˥",
@@ -12060,7 +12060,7 @@ const HAN_DATA = {
       "wuu_jh": "zəʔ²¹²",
       "hak_cn": "sɨt̚˥",
       "hak_tw": "sɨt̚˥",
-      "hak_hl": "siit̚˥",
+      "hak_hl": "ʃit̚˥",
       "cjy": "səʔ˥",
       "czh": "sɿ˧˧",
       "hsn": "sz̩˨˦",
@@ -12689,7 +12689,7 @@ const HAN_DATA = {
       "wuu_hz": "zo²¹³",
       "wuu_jx": "zu²¹³",
       "wuu_jh": "zo²¹³",
-      "hak_cn": "tso˨˦",
+      "hak_cn": "tsʰo˨˦",
       "hak_tw": "tsʰo˩˩",
       "hak_hl": "tsʰo˩˩",
       "cjy": "tsuo˥˧",
@@ -23263,13 +23263,13 @@ const HAN_VARIANTS = {
     "hak_cn": [
       {
         "native": "",
-        "surface": "ngìn²⁴",
+        "surface": "ngin",
         "ipa": "ŋin˨˦",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "yìn²⁴",
+        "surface": "yin",
         "ipa": "jin˨˦",
         "label": "文讀"
       }
@@ -25663,7 +25663,343 @@ const HAN_VARIANTS = {
       }
     ]
   },
-  "行:1": {
+  "行": {
+    "nan": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_qz": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_te": [
+      {
+        "native": "",
+        "surface": "kiã5",
+        "ipa": "kiã˥˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng5",
+        "ipa": "heŋ˥˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_pn": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_hai": [
+      {
+        "native": "",
+        "surface": "hia4",
+        "ipa": "hia˨˦˥",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hen4",
+        "ipa": "hen˨˦˥",
+        "label": "文讀"
+      }
+    ],
+    "nan_xm": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˨˦",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˨˦",
+        "label": "文讀"
+      }
+    ],
+    "nan_zz": [
+      {
+        "native": "",
+        "surface": "kiâⁿ",
+        "ipa": "kiã˩˧",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "hêng",
+        "ipa": "heŋ˩˧",
+        "label": "文讀"
+      }
+    ],
+    "yue": [
+      {
+        "native": "",
+        "surface": "hang⁴",
+        "ipa": "hɐŋ˨˩",
+        "label": "行走・行動（歩く walk/go）"
+      },
+      {
+        "native": "",
+        "surface": "hong⁴",
+        "ipa": "hɔːŋ˨˩",
+        "label": "行業・銀行（商行 trade/profession）"
+      }
+    ],
+    "zh": [
+      {
+        "native": "",
+        "surface": "xíng³⁵",
+        "ipa": "ɕiŋ˧˥",
+        "label": "行走・行為・可以"
+      },
+      {
+        "native": "",
+        "surface": "háng³⁵",
+        "ipa": "xɑŋ˧˥",
+        "label": "行業・銀行・行列"
+      }
+    ],
+    "hak_cn": [
+      {
+        "native": "",
+        "surface": "hong",
+        "ipa": "hoŋ˨˦",
+        "label": "白讀 (商行)"
+      },
+      {
+        "native": "",
+        "surface": "hang",
+        "ipa": "haŋ˨˦",
+        "label": "文讀 (行走)"
+      }
+    ],
+    "cjy": [
+      {
+        "native": "",
+        "surface": "ɕiŋ³⁵",
+        "ipa": "ɕiŋ˧˥",
+        "label": "文讀 (行走)"
+      },
+      {
+        "native": "",
+        "surface": "xɒ̃¹¹",
+        "ipa": "xɒ̃˩˩",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "czh": [
+      {
+        "native": "",
+        "surface": "ɦiɛ̃²²",
+        "ipa": "ɦiɛ̃˨˨",
+        "label": "文讀 (行走)"
+      },
+      {
+        "native": "",
+        "surface": "ɦɔ̃²²",
+        "ipa": "ɦɔ̃˨˨",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "hsn": [
+      {
+        "native": "",
+        "surface": "ɕin¹³",
+        "ipa": "ɕin˩˧",
+        "label": "文讀 (行走)"
+      },
+      {
+        "native": "",
+        "surface": "xan¹³",
+        "ipa": "xan˩˧",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "gan": [
+      {
+        "native": "",
+        "surface": "hɛn⁴⁵",
+        "ipa": "hɛn˦˥",
+        "label": "文讀 (行走)"
+      },
+      {
+        "native": "",
+        "surface": "hɔŋ⁴⁵",
+        "ipa": "hɔŋ˦˥",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "ko": [
+      {
+        "native": "행",
+        "surface": "haeng",
+        "ipa": "hɛŋ",
+        "label": "行爲 (行動)"
+      },
+      {
+        "native": "항",
+        "surface": "hang",
+        "ipa": "haŋ",
+        "label": "行列 (줄·항렬)"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "giàng",
+        "ipa": "kiaŋ˩˧",
+        "label": "白讀（行走）"
+      },
+      {
+        "native": "",
+        "surface": "hèng",
+        "ipa": "xeŋ˩˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "giá",
+        "ipa": "kia˩˧",
+        "label": "白讀（行走）"
+      },
+      {
+        "native": "",
+        "surface": "héng",
+        "ipa": "xeŋ˩˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "hâing",
+        "ipa": "haiŋ˧˧",
+        "label": "白讀（行走）"
+      },
+      {
+        "native": "",
+        "surface": "ông",
+        "ipa": "ɔŋ˧˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "wuu": [
+      {
+        "native": "",
+        "surface": "hhang²³",
+        "ipa": "ɦɑ̃²³",
+        "label": "行走 (walk)"
+      },
+      {
+        "native": "",
+        "surface": "hhang²³",
+        "ipa": "ɦɑ̃²³",
+        "label": "行業 (trade/business)"
+      }
+    ],
+    "yue_gz": [
+      {
+        "native": "",
+        "surface": "hɐŋ²¹",
+        "ipa": "hɐŋ²¹",
+        "label": "行走（歩く）"
+      },
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_ts": [
+      {
+        "native": "",
+        "surface": "hang³",
+        "ipa": "haŋ³³",
+        "label": "行走（歩く）"
+      },
+      {
+        "native": "",
+        "surface": "hong³",
+        "ipa": "hɔŋ³³",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_dg": [
+      {
+        "native": "",
+        "surface": "hɐŋ²¹",
+        "ipa": "hɐŋ²¹",
+        "label": "行走（歩く）"
+      },
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_nn": [
+      {
+        "native": "",
+        "surface": "haŋ²¹",
+        "ipa": "haŋ²¹",
+        "label": "行走（歩く）"
+      },
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_zs": [
+      {
+        "native": "",
+        "surface": "hɐŋ²¹",
+        "ipa": "hɐŋ²¹",
+        "label": "行走（歩く）"
+      },
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
     "ja": [
       {
         "native": "コウ",
@@ -27026,13 +27362,13 @@ const HAN_VARIANTS = {
     "hak_cn": [
       {
         "native": "",
-        "surface": "ped²",
+        "surface": "pet",
         "ipa": "pet̚˨",
         "label": "白讀"
       },
       {
         "native": "",
-        "surface": "phak²",
+        "surface": "phak",
         "ipa": "pʰak̚˨",
         "label": "文讀"
       }
