@@ -304,3 +304,76 @@ I (Romance specialist) re-verified every claim against the LIVE per-word data vi
 Net: 5 applied fixes verified; majority of stress findings correctly held as conventions (my own inconsistency premise was wrong and I withdraw it); three items moot because live data already differs from what both sides described; **one genuine new actionable inconsistency (N1) remains.**
 
 **File status: OPEN** — Dev team must do ONE thing: resolve the ro stress/diphthong inconsistency, simplest being `words/sun.js` `ro:["soare","ˈso̯are"]` → `["soare","so̯are"]` so the claimed "Romanian uniformly unmarked" convention actually holds in live data (or, if intentional, mark the other 19 ro entries consistently).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the careful live-data re-verification. I re-checked the full `ro` inventory with `grep '    ro: ' words/*.js`. The result confirms your N1 finding exactly: of 20 Romanian entries, **only** `words/sun.js:167` `ro:["soare","ˈso̯are"]` carries a primary-stress mark; the other 19 are unmarked (`foc→fok`, `lună→lunə`, `iubire→jubire`, `mulțumesc→mult͡sumesk`, etc.). This is a genuine internal inconsistency and undermines the "Romanian uniformly unmarked" rationale on which #6/#8/#19 were held.
+
+### Applied
+
+- **N1 — ro `soare` stress-mark outlier** — APPLIED (applied by orchestrator this round). `words/sun.js:167` `["soare","ˈso̯are"]` → `["soare","so̯are"]`. Strips the lone `ˈ` (single outlier of 20) to restore the uniform unmarked convention the team is invoking, exactly per your endorsed minimal fix. The diphthong `o̯` is **retained** — your N1 minimal ask was specifically to remove the stress inconsistency, not the diphthong; and `a bea→a be̯a` (drink.js:167) also marks its diphthong, so keeping `o̯` does not create a new outlier on the diphthong axis. This is a pure IPA-field edit; surface orthography untouched.
+
+### Held / no action (resolved or convention)
+
+- **#6 ro `iubire`, #8 ro `câine`, #19 ro `mulțumesc`** — HELD as convention, now legitimately so. With N1 applied, all 20 `ro` entries are uniformly unmarked for stress, so the convention rationale holds in live data. Mass stress-marking remains a separate, deliberately-scoped system-level pass, out of scope for local fixes.
+- **#9 ro `a bea` diphthong** — NO ACTION. Live value `a be̯a` already marks the diphthong; you folded this into N1 only as reinforcement. Diphthong-marking is not the subject of the minimal consistency fix, and `be̯a` is internally defensible. Not re-opened.
+- **#1 la `ignis`, #5 ca `amor`, #13 vec `łuna`** — moot/withdrawn per your live-data check; no action.
+- **#2/#3 gl seseo, #4 es_ar /x/, #10 oc /w/, #14 wa /r/** — applied & verified in round-1; no further action.
+- **#11 oc `luna`, #12 fro `feu`, #15–#18/#21 stress (la/sc/nap/scn/pt_eu), #20 ro /t͡s/** — accepted as school/reconstruction choices or uniform per-language conventions; held as won't-fix.
+
+Summary: 1 fix applied this round — the single endorsed N1 consistency fix (strip `ˈ` from `ro soare`). With it applied, `ro` is uniformly unmarked across all 20 files and the file's one genuine open item is resolved. The △ uvular-/ʁ/ (wa) and mass stress-marking questions remain deliberately out of scope as system-level passes.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I (Romance specialist) re-verified the worker's round-2 fix and re-checked all earlier items against the LIVE per-word data.
+
+### Verification of the N1 fix
+
+- **N1 — ro `soare` stress outlier** — ✓ VERIFIED APPLIED. Live `words/sun.js:167` = `ro: ["soare", "so̯are"]`. The lone `ˈ` is gone; the diphthong `o̯` is correctly retained. A full sweep `grep '    ro: ' words/*.js | grep 'ˈ'` returns **zero** matches: all 20 ro entries are now uniformly unmarked for stress. This was the exact minimal fix I endorsed in round-1, and it is genuinely present in live data. The single internal inconsistency that kept this file OPEN is resolved.
+
+### Regression check on round-1 applied fixes (all still present)
+
+- **#2 gl `corazón`** — ✓ `words/heart.js:306` = `["corazón","koɾason"]`. Seseo, no /θ/. Intact.
+- **#3 gl `grazas`** — ✓ `words/thanks.js:306` = `["grazas","ɡɾasas"]`. Intact.
+- **#4 es_ar `ojo`** — ✓ `words/eye.js:502` = `["ojo","oxo"]`. Intact.
+- **#10 oc `fuòc`** — ✓ `words/fire.js:313` = `["fuòc","fwɔk"]`. Intact.
+- **#14 wa `mèrci`** — ✓ `words/thanks.js:761` = `["mèrci","mɛrˈsi"]`. Intact.
+
+No regressions.
+
+### Held / moot items — final adjudication
+
+- **#6 ro `iubire`, #8 ro `câine`, #19 ro `mulțumesc`** — ✓ accept-as-convention, now legitimately. With N1 applied, the "Romanian uniformly unmarked" rationale holds in live data (verified above). Mass stress-marking is a separately-scoped system-level pass. Won't-fix.
+- **#9 ro `a bea`** — ✓ no action. Live `a be̯a` marks its diphthong; consistent with `soare→so̯are` retaining `o̯`. Diphthong-marking axis is internally consistent across the two ro diphthong tokens. Accept.
+- **#1 la `ignis`, #5 ca `amor`, #13 vec `łuna`** — ✗ moot/withdrawn in round-1 (live values differed from both sides' descriptions). No change; no action.
+- **#11 oc `luna`, #12 fro `feu`** — accept as school/reconstruction choices (round-1). No change.
+- **#15–#18, #21 stress (la / sc / nap / scn / pt_eu)** — ✓ accept as uniform per-language conventions (my own original "inconsistency" premise was refuted by live data in round-1). No change.
+- **#14 wa uvular /ʁ/** — △ deferred. The local tap-vs-/r/ outlier is fixed; the corpus-wide uvular question is a legitimate future systematic pass, not a local error. Won't-fix here.
+- **#20 ro /t͡s/** — ✓ confirmed not an error.
+
+### New issues raised this round
+
+None. Verification surfaced no new defensible errors.
+
+### Scorecard
+
+| Item | Status after round-3 live-data check |
+|------|--------------------------------------|
+| N1 ro soare outlier | ✓ applied & verified (zero ro stress marks) |
+| #2/#3 gl seseo | ✓ verified intact |
+| #4 es_ar /x/ | ✓ verified intact |
+| #10 oc /w/ | ✓ verified intact |
+| #14 wa /r/ | ✓ verified intact (△ uvular deferred, won't-fix) |
+| #6/#8/#9/#19 ro stress/diphthong | ✓ convention now holds in live data |
+| #1 la, #5 ca, #13 vec | ✗ moot/withdrawn — no action |
+| #11 oc, #12 fro | accept school/reconstruction choice |
+| #15–18/#21 stress conventions | ✓ accept convention |
+| #20 ro /t͡s/ | ✓ no action |
+
+Net: the one genuine open inconsistency (N1) is fixed and verified in live data; all five earlier fixes remain intact with no regressions; every remaining item is an accepted per-language convention, school-level/reconstruction choice, or deferred system-level pass. Nothing actionable remains.
+
+**File status: CLOSED** — nothing left to address.

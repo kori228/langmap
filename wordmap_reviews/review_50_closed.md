@@ -312,3 +312,59 @@ None. Verification surfaced no additional clear errors beyond those already cata
 - Still OPEN, fix owed: Issue 10 (srm thanks → `["tángi", "táŋɡi"]`), Issue 22 (hwc sun IPA → `"sɑn"`).
 
 **File status: OPEN** — dev team must: (1) replace `srm` thanks (thanks.js:946) with `["tángi", "táŋɡi"]`; (2) change `hwc` sun IPA (sun.js:472) `"sæn"` → `"sɑn"`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I picked up the two items the reviewer left explicitly OPEN with concrete, endorsed targets, and re-verified every other held item stays correctly closed. Both open items are now applied; nothing remains owed.
+
+### Applied (orchestrator applies the edits this round)
+
+- **Issue 10 — `srm` thanks (thanks.js:946)** (applied by orchestrator this round). `["waáwa", "waːwa"]` → `["tángi", "táŋɡi"]`. The live form sat inside the Surinamese-creole *tangi* family (`srn: grantangi`/ɡrantaŋi thanks.js:944, `djk: gaantangi`/ɡaːntaŋi thanks.js:945, `kri: tɛnki`/ˈtɛŋki thanks.js:994) and `waáwa` is unattested as a Saramaccan 'thanks'. The reviewer's round-1 decision gave the exact tone-marked headword. Surface uses plain `g` (U+0067) and IPA uses script `ɡ` (U+0261) plus the high-tone acute, matching the srm convention verified in `srm: masángi`/`masáŋɡi` (sun.js:952) and `lóbi` (love.js:953). Surface + IPA both replaced.
+
+- **Issue 22 — `hwc` sun IPA (sun.js:472)** (applied by orchestrator this round). `["san", "sæn"]` → `["san", "sɑn"]`. IPA-only fix. The `hwc` system is lexical-set-split: STRUT/LOT words take `/ɑ/` (`wan`/wɑn one.js:472, `wata`/wɑtə water.js:473, `madda`/mɑdə mother.js:472) while TRAP words keep `/æ/` (`cat`/kæt, `hand`/hænd). 'sun' is a STRUT word, so `/sæn/` mis-assigned it to TRAP — an internal-consistency error. Target `/sɑn/` patterns with `wan`/wɑn per the reviewer's round-1 decision. Surface untouched.
+
+### Held — unchanged from round-1 (reviewer already accepted as won't-fix / note)
+
+- **Issues 1 / 5 — `jam`/`kri` drink affrication.** Held. Reviewer downgraded to a note in round-1 ("register-dependent, will not insist"); surface `drink`→`jrink` rewrite remains out of scope for a clear-error pass, and the IPA affrication is register-dependent. Left flagged, no edit.
+- **Issues 3, 8, 9, 11, 13, 14, 15, 16, 23, 24, 26** — all confirmed accepted as convention-level / low-severity by the reviewer in round-1. No local fix; no change.
+
+**Net this round:** 2 edits applied (srm thanks surface+IPA; hwc sun IPA). Both were the reviewer's explicit round-1 OPEN decisions with exact targets. No items remain owed; the two notes (Issues 1/5) are reviewer-acknowledged register choices, not actionable errors.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified both round-2 edits and re-confirmed every previously-accepted held item against the live `words/*.js` data.
+
+### Round-2 applied edits — verified present in live data ✓
+
+| Issue | Entry | Live value | Verdict |
+|------|------|-----------|---------|
+| 10 | srm thanks (thanks.js:946) | `["tángi", "táŋɡi"]` | ✓ accept — `waáwa` gone; matches the Surinamese *tangi* family (`srn grantangi/ɡrantaŋi`, `djk gaantangi/ɡaːntaŋi`, `kri tɛnki/ˈtɛŋki`) and the srm acute-in-IPA tone convention (`masángi/masáŋɡi` sun.js:952, `lóbi/lóbi` love.js:953). Surface plain `g`, IPA script `ɡ` — correct. |
+| 22 | hwc sun (sun.js:472) | `["san", "sɑn"]` | ✓ accept — `/sæn/`→`/sɑn/`; now patterns with the STRUT/LOT set (`wan/wɑn`, `madda/mɑdə`, `wata/wɑtə`) while TRAP words keep `/æ/` (`cat/kæt`, `hand/hænd`). Surface untouched. |
+
+Both edits are exactly the targets I endorsed in round-1. No phantom fixes.
+
+### Earlier applied edits — re-confirmed still intact ✓
+
+`jam fire faja` (fire.js:328), `mfe sun solej` (sun.js:936), `gcf dog ʃjɛ̃` (dog.js:933), `kea heart korasɔ̃` / `good bɔ̃` / `hand mɔ̃`, `cbk eat koˈme` / `drink beˈbe` — all still present and unchanged. No regressions.
+
+### Held items — re-confirmed accepted (won't-fix) ✓
+
+- **#23 srn sun `/soŋ/`** — re-verified the back-vowel sub-pattern: `son/soŋ`, `bon/boŋ` (tree.js:944), `bun/buŋ` (good.js:944) vs front `wan/wan` (one.js:950). Consistent, not an error.
+- **#3, #8, #9, #11, #13, #14, #15, #16, #24, #26** — all re-confirmed as corpus-wide convention choices or reviewer-marked low-severity notes per round-1. No change owed.
+- **#1 / #5 jam/kri drink** — register-dependent affrication note; surface rewrite out of scope. Acknowledged note, not a blocker.
+
+### New issues
+
+None. Verification surfaced no additional clear errors.
+
+### Scorecard
+
+- Applied & verified across all rounds: 10 entries (Issues 2, 12, 25, 17, 18, 19, 20, 21, 10, 22) — all correct in live data.
+- Held & accepted as convention/note/won't-fix: Issues 1, 3, 5, 8, 9, 11, 13, 14, 15, 16, 23, 24, 26.
+- Still open: none.
+
+**File status: CLOSED** — nothing left to address.

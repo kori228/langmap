@@ -283,3 +283,52 @@ None. Verification surfaced no additional errors beyond those already flagged.
 The worker over-applied the "no-invention" rule to three cases (8, 10, 12) where the script makes the fix single-valued; I have now supplied those values, so they can be applied mechanically.
 
 **File status: OPEN** — Dev team must: (1) apply Issue 8 `words/hello.js:1070` mnw IPA → `pɗɛ kaːo`; (2) apply Issue 10 `words/dog.js:1082` mnw IPA final → `klɛŋ`; (3) apply Issue 12 `words/hand.js:1076` mnw IPA → `tɛ`. Issues 11/13/14 remain open as acknowledged notation defects pending a sourced value.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for disambiguating the three internal-inconsistency defects. The reviewer has now supplied single, well-supported values that are direct readings of the orthography (Issue 8, 10) or established source phonology (Issue 12, Bauer 1982), so these are no longer "invent data" cases. Applying all three. Each is an IPA-only change; surface/display strings are untouched.
+
+**Issue 8 — hello.js mnw `ɓɔŋ kaow` → `pɗɛ kaːo`** — APPLIED (applied by orchestrator this round). Confirmed `words/hello.js:1070` `mnw: ["ပ္ဍဲဂေါဝ်", "ɓɔŋ kaow"]` verbatim. The `ɓɔŋ` was a copy-paste from `cat.js:1070`; ပ္ဍဲ = /pɗɛ/, ဂေါဝ် = /kaːo/. IPA field only: `ɓɔŋ kaow` → `pɗɛ kaːo`. Display string ပ္ဍဲဂေါဝ် unchanged.
+
+**Issue 10 — dog.js mnw `klɛp` → `klɛŋ`** — APPLIED (applied by orchestrator this round). Confirmed `words/dog.js:1082` `mnw: ["ပ္ၟိၚ်", "klɛp"]` verbatim. Final ၚ် is unambiguously /ŋ/, so a final /p/ is impossible for this script form. Only the indefensible final consonant changed: `klɛp` → `klɛŋ`. Onset and display left as the corpus has them.
+
+**Issue 12 — hand.js mnw `toa` → `tɛ`** — APPLIED (applied by orchestrator this round). Confirmed `words/hand.js:1076` `mnw: ["တဲ", "toa"]` verbatim. The vowel ဲ is /ɛ~e/, not `oa`; Bauer (1982) gives /tɛ/. Single-valued IPA fix: `toa` → `tɛ`. Display တဲ unchanged.
+
+**Issues 11, 13, 14 — HELD/OPEN.** The reviewer explicitly left these OPEN as acknowledged notation defects with no single confident value (Issue 11 fire.js `pəmoʔ`: /m/,/o/ have no source in ပၟတ် but no confirmed replacement; Issues 13/14 `mwoa`/`tŋoa`: the `oa` digraph may reflect a genuine diphthongal /òa/ reflex, so `oa`→`ɛ` is not clean). Holding per the reviewer's own decision pending a sourced value. We will apply mechanically once a single IPA is confirmed.
+
+**Issue 27 — bru `oih`/`ʔoiʔ`** — RESOLVED, no edit. The reviewer downgraded this to △ accept: IPA `ʔoiʔ` is correct and the display `h` is the conventional Bru final-glottal romanisation, so the apparent contradiction dissolves. No change needed.
+
+**All other issues (1-7, 9, 15-26, 28-30)** — HELD as accepted convention / system-wide / sourced-data-needed holds, per the reviewer's round-1 scorecard.
+
+### Summary
+3 edits applied this round, all IPA-only, all single-valued reviewer-supplied corrections: Issue 8 (hello.js mnw → `pɗɛ kaːo`), Issue 10 (dog.js mnw → `klɛŋ`), Issue 12 (hand.js mnw → `tɛ`). Issues 11/13/14 remain OPEN as reviewer-acknowledged notation defects awaiting a single sourced value. All convention/system-level holds stand as mutually accepted.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the three round-2 edits verbatim against live `words/*.js` data:
+
+- **Issue 8 — `words/hello.js:1070`**: now `mnw: ["ပ္ဍဲဂေါဝ်", "pɗɛ kaːo"]` ✓ APPLIED & VERIFIED. The erroneous `ɓɔŋ` copy-paste is gone; ပ္ဍဲ→/pɗɛ/, ဂေါဝ်→/kaːo/. Cross-check: `words/cat.js:1070` still legitimately holds `mnw: ["ဗ္ဍိုၚ်", "ɓɔŋ"]`, so the source of the original duplication is intact and the duplication is broken. Correct.
+- **Issue 10 — `words/dog.js:1082`**: now `mnw: ["ပ္ၟိၚ်", "klɛŋ"]` ✓ APPLIED & VERIFIED. The indefensible final /p/ (impossible for a ၚ်=/ŋ/ final) is corrected to /ŋ/. Onset and display untouched as intended. Correct.
+- **Issue 12 — `words/hand.js:1076`**: now `mnw: ["တဲ", "tɛ"]` ✓ APPLIED & VERIFIED. The non-IPA `oa` for ဲ is replaced with /ɛ/ per Bauer (1982). Display unchanged. Correct.
+
+### Per-item adjudication of remaining items
+
+- **Issues 11, 13, 14** (fire.js `pəmoʔ`, one.js `mwoa`, sun.js `tŋoa`): △ DEFERRED — these still read verbatim in live data (`words/fire.js:1082` `pəmoʔ`, `words/one.js:1088` `mwoa`, `words/sun.js:1088` `tŋoa`). I confirm they are genuine notation defects (the `oa` digraph is non-IPA; the /m/,/o/ in `pəmoʔ` have no orthographic source in ပၟတ်). However, in round-1 I explicitly declined to force a single value because Mon ဲ has a genuine diphthongal /ìə~òa/ reflex in some descriptions (so `oa`→`ɛ` is not the clean call it was for Issue 12's တဲ), and ပၟတ် needs the intended source word confirmed. These are **reviewer-side deferrals to a sourced Mon transcription pass**, not outstanding dev actions. The worker correctly held them per my own instruction. No new dev action is required or possible without fabricating data.
+- **Issue 27** (bru `oih`/`ʔoiʔ`): ✓ ACCEPT — I downgraded this in round-1; `h` as Bru final-glottal romanisation stands. No change. Verified `words/fire.js:1083` still `bru: ["oih", "ʔoiʔ"]`.
+- **All convention / system-wide / sourced-data holds (Issues 1-7, 9, 15-26, 28-30)**: ✓ ACCEPT as previously adjudicated — defensible cross-school / corpus-wide notation and data-acquisition choices.
+
+### New issues
+None. Verification surfaced no additional errors.
+
+### Scorecard
+- Applied & verified single-valued fixes: **Issue 8, 10, 12** (all confirmed in live data).
+- Reviewer-deferred notation defects (no single sourced value; not dev-actionable now): Issues 11, 13, 14.
+- Accepted holds (convention / system-wide / out-of-scope): Issues 1-7, 9, 15-30 (incl. 27 downgraded-to-accept).
+
+Every clear, single-valued error I raised has been fixed and verified in live data. The only remaining items are either accepted convention/system-level choices or notation defects I myself deferred pending a sourced transcription pass that I will not fabricate. Nothing is left that the dev team can or must act on this round.
+
+**File status: CLOSED** — nothing left to address.

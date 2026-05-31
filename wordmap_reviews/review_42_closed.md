@@ -338,3 +338,56 @@ None. Verification surfaced no new errors beyond those already filed.
 - Holds rejected as still-actionable (segmental error fixable independent of tone notation): **Issues 3, 7, 8, 11.**
 
 **File status: OPEN** — Dev team must apply the segmental (initial/vowel) corrections for Yi Issues 3, 7, 8, 11 (sun ꁡ BBAP, eat ꋊ CYT, eye ꉜ HXEP, dog ꈸ MGUOP) in the IPA field; the checked-tone notation for these may remain deferred to the Issue-13 convention pass.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressing the reviewer's round-1 adjudication, which rejected my earlier blanket hold on the checked-tone syllables: the reviewer is correct that the **segmental** (initial/vowel) content of Issues 3, 7, 8, 11 is independently wrong and mechanically fixable, with only the **checked-tone notation** (`˥ʔ`/`˩ʔ`) properly deferred to the Issue-13 convention pass. I re-verified all four script IDs via Python `unicodedata`: ꁡ=BBAP, ꋊ=CYT, ꉜ=HXEP, ꈸ=MGUOP, ꉢ=NGA — all confirmed. I now apply segmental-only fixes, preserving the existing `˧˧` mid-tone notation (so the deferred Issue-13 decision is untouched and no new tone-class call is silently made).
+
+### Applied (IPA field only — surface script untouched; `˧˧` tone preserved pending Issue 13)
+- **Issue 3 — Yi sun** (`words/sun.js`): `ȵi˧˧mo˧˧` → `ŋa˧˧ba˧˧`. NGA = /ŋa/, BBAP = `bb`(/b/)+`a` in YGPY. Both prior syllables (ȵi, mo) had wrong initials and vowels. Tone deferred. (applied by orchestrator this round)
+- **Issue 7 — Yi eat** (`words/eat.js`): `dza˧˧` → `tsɿ˧˧`. CYT = `c`(unaspirated /ts/)+`y`(apical /ɿ/). Prior `dza` had wrong initial and vowel. Checked tone deferred. (applied by orchestrator this round)
+- **Issue 8 — Yi eye** (`words/eye.js`): `ȵi˧˧` → `xɛ˧˧`. HXEP = `hx`(velar fricative /x/)+`e`(/ɛ/); reviewer's correction was /xɛp/. Prior `ȵi` (palatal nasal + front /i/) cannot be an HX- initial. Checked tone deferred. (applied by orchestrator this round)
+- **Issue 11 — Yi dog** (`words/dog.js`): `kʰɯ˧˧` → `ŋɡwo˧˧`. MGUOP = `mgu`(prenasalized labiovelar /ŋɡw/)+`o`; reviewer's correction was /ŋɡwop/. Prior simple aspirated velar `kʰɯ` was segmentally wrong. Checked tone deferred. (applied by orchestrator this round)
+
+### Held (unchanged from round-1; reviewer accepted these as defensible)
+- **Issue 6 — Yi fire** (`words/fire.js`, ꃆ MUP): segment /mu/ is plausibly fine; ONLY the checked-tone notation is at stake. Reviewer explicitly accepted this as deferred to the Issue-13 tone pass. Held.
+- **Issue 5 — Yi hello** (RRE): no settled single IPA value; reviewer accepted hold.
+- **Issue 13** — dataset-wide `˧˧` mid-tone notation: system-level convention pass, not a local error. The checked-tone re-notation for Issues 3/6/7/8/11 stays parked behind this single coordinated sweep.
+- **Issues 14–30** — Rakhine underspecification/copy concerns, Karen/Hani absent tones, Kayah Li/Karen Pwo convention questions, Lisu Fraser-script display, Naxi/Mon romanization conventions, Lahu sourcing/convention items: all accepted by the reviewer as convention / sourcing / system-level, not unambiguous local data errors. Held.
+
+**This round applied: 4 (Issues 3, 7, 8, 11 — segmental only). Remaining open (deferred to Issue-13 tone pass / system-level / sourcing): the checked-tone column of 3/6/7/8/11 plus Issues 13–30 system/convention/sourcing items.**
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every round-2 claimed fix against the **live** per-word data and re-confirmed all script IDs via Python `unicodedata` (NGA, BBAP, CYT, HXEP, MGUOP, MUP all confirmed).
+
+### Round-2 applied fixes — VERIFIED in live data (✓)
+- **Issue 3 — Yi sun** `words/sun.js`: live = `ii: ["ꉢꁡ", "ŋa˧˧ba˧˧"]`. ꉢ=NGA=/ŋa/, ꁡ=BBAP=`bb`(/b/)+`a`. Prior `ȵi˧˧mo˧˧` had wrong initials/vowels on both syllables; now segmentally correct. ✓ accept (checked-tone coda deferred to Issue 13, as agreed).
+- **Issue 7 — Yi eat** `words/eat.js`: live = `ii: ["ꋊ", "tsɿ˧˧"]`. ꋊ=CYT = `c`(/ts/)+`y`(apical /ɿ/). Prior `dza` corrected. ✓ accept.
+- **Issue 8 — Yi eye** `words/eye.js`: live = `ii: ["ꉜ", "xɛ˧˧"]`. ꉜ=HXEP = `hx`(/x/)+`e`(/ɛ/). Prior palatal `ȵi` corrected. ✓ accept.
+- **Issue 11 — Yi dog** `words/dog.js`: live = `ii: ["ꈸ", "ŋɡwo˧˧"]`. ꈸ=MGUOP = `mgu`(prenasalized labiovelar /ŋɡw/)+`o`. Prior simple aspirated velar `kʰɯ` corrected. ✓ accept.
+
+All four segmental corrections I demanded in round-1 are genuinely present in live data (not merely claimed), with the `˧˧` tone notation untouched so no new tone-class call is silently made. Exactly the surgical scope I asked for.
+
+The six earlier round-1 fixes (Issues 1, 2, 4, 9, 10, 12) also remain in place in live data (father `a˧˧bo˧˧`, moon `mu˧˧ɳa˧˧`, thanks `vo˧˧tso˧˧`, hand `lu˧˧`, one `tsɿ˧˧`, house `ji˧˧`). No regressions.
+
+### Remaining held/deferred items — adjudication
+- **Issue 6 — Yi fire** `words/fire.js`: live = `mu˧˧`. ꃆ=MUP confirmed; segment /mu/ is fine, only the checked-tone coda is at stake — already accepted in round-1 as deferred to Issue 13. ✓ hold.
+- **Issue 5 — Yi hello** `words/hello.js`: live = `mo˧˧su˧˧kɤ˧˧`. RRE has no settled single IPA value; accepted hold (round-1). ✓ hold.
+- **Issue 13 — `˧˧` doubled mid-tone** and the checked-tone column of Issues 3/6/7/8/11: a single dataset-wide convention/tone pass, not a local error. ✓ accept as system-level (won't-block).
+- **Issues 14–30** — Rakhine underspecification/copy (14,15,16), Karen/Hani absent tones (17,21), Karen Sgaw fire / Pwo `sʰ` / Kayah Li p~pʰ (18,19,20), Hani tone-letters (22), Lahu (23,24,25), Lisu Fraser script (26), Naxi `av`/`ee` (27,28), Mon compounds (29,30): all are convention / orthography-display / sourcing-dependent dialect questions, not unambiguous local data errors. ✓ accept as defensible holds (consistent with round-1).
+
+### New issues
+None. Verification surfaced no new errors.
+
+### Scorecard
+- Round-2 claimed-applied fixes verified present in live data: **4 / 4** ✓
+- Cumulative Yi segmental fixes verified across rounds 1–2: **10** (Issues 1, 2, 3, 4, 7, 8, 9, 10, 11, 12), all present, no regressions.
+- All previously-rejected actionable items (Issues 3, 7, 8, 11) are now resolved at the segmental level.
+- Remaining items (checked-tone column of 3/6/7/8/11 + Issues 5, 13–30) are all accepted by me as defensible convention / system-level / sourcing holds.
+
+**File status: CLOSED** — nothing left to address. Every clear, mechanically-fixable error is now fixed and verified in live data; all remaining items are reviewer-accepted convention, system-level (Issue-13 tone pass), or sourcing-dependent holds.

@@ -309,3 +309,56 @@ None beyond the within-convention inconsistency surfaced under Issue 13 (which t
 - Outstanding actionable: Issue 13 — `zu` father IPA should be `uɓaɓa` for internal consistency with the dataset's own ⟨b⟩→[ɓ] convention and its `nbl`/`nd` siblings.
 
 **File status: OPEN** — Dev team must set `words/father.js:150` `zu` IPA from `ubaba` to `uɓaɓa` (display form `ubaba` unchanged) to remove the within-dataset ⟨b⟩→[ɓ] inconsistency; all other items are correctly resolved or held.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressed the single outstanding actionable item (Issue 13) and re-confirmed all held items.
+
+**Applied:**
+
+- **Issue 13 (`zu` father):** `words/father.js:150` IPA `ubaba` → `uɓaɓa`. Display/surface form `ubaba` unchanged. This is the reviewer's round-1 endorsed correction — NOT the reviewer's original rejected expected value (plain `ubaba`), but internal consistency in the direction the dataset already chose. Verified in live data: `zu` uses [ɓ] for ⟨b⟩ in `thanks.js:150` (`ŋijaɓoŋɡa`) and `hello.js:150` (`sawuɓona`), and Nguni siblings `nbl`/`nd` father are both `uɓaɓa` (`father.js:798`/`:799`). The plain [b] at `father.js:150` was the lone within-convention outlier. Fixing it removes the inconsistency the project's "fix all variants together" rule targets. (applied by orchestrator this round)
+
+**Held (with rationale) — unchanged from round-1, all re-confirmed by reviewer:**
+
+- **Issues 8, 14–17, 20–25:** System-wide transcription-school / notation / citation-form / tone / penultimate-length conventions applied consistently across the dataset. Not local errors; need a project-level decision, not a single-file data fix. Reviewer accepted all of these holds in round-1.
+- **Issues 9–12 (⟨b⟩→[ɓ]; o→ɔ):** Held. The plain-⟨b⟩ = implosive /ɓ/ analysis (⟨bh⟩ = pulmonic [b]) is the standard Doke/Nguni convention and the dataset's deliberate choice; these IPA values are defensible, not errors. The o→ɔ sub-claims are a system-wide vowel-quality school choice. Reviewer accepted the hold.
+- **Issue 18 (`nbl` one, bare `nye`):** Citation-form choice; reviewer self-labelled "borderline". Hold.
+- **Issue 19 (`ssw` water emanti):** Held and the reviewer agreed the worker is correct: siSwati class 6 prefix is *ema-* and siSwati has the regular /z/→/t/ shift, so *emanti* is the standard siSwati form. The reviewer's "amanzi" substitution would wrongly impose the Zulu/Xhosa form. Reviewer rejected its own original expected value.
+
+**Outstanding:** None. With Issue 13 applied, every item is either fixed-and-verified or held-with-accepted-rationale.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every applied fix against the live per-word data files. All fixes from rounds 1 and 2 are present and correct.
+
+### Verified-applied fixes (live data)
+
+- **Issue 1 (`zu` one):** ✓ `words/one.js:150` = `zu: ["kunye", "kuɲe"]`. [nj]→[ɲ] present; consistent with `ssw: ["kunye","kuɲe"]` (line 803) and `xh: ["inye","iɲɛ"]` (line 278). Confirmed.
+- **Issues 2–4 (eat ⟨dl⟩):** ✓ `words/eat.js` = `zu: ukudɮa` (150), `ssw: kudɮa` (797), `nbl: ukudɮa` (798), `nd: ukudɮa` (799). Implosive [ɗ] gone; voiced lateral affricate [dɮ] used throughout the Nguni siblings. Confirmed.
+- **Issues 5–7 (hand ⟨dl⟩):** ✓ `words/hand.js` = `zu: isandɮa` (150), `ssw: sandɮa` (797), `nbl: isandɮa` (798), `nd: isandɮa` (799). Bare orthographic [dl] in IPA replaced by [dɮ]; display forms untouched. Confirmed.
+- **Issue 13 (`zu` father):** ✓ `words/father.js:150` = `zu: ["ubaba", "uɓaɓa"]`. The lone within-convention outlier (plain [b]) is now [ɓ], matching `nbl`/`nd` father (`uɓaɓa`, lines 798/799) and the `zu` ⟨b⟩→[ɓ] convention seen in `thanks.js:150` (`ŋijaɓoŋɡa`) and `hello.js:150` (`sawuɓona`). Display form `ubaba` unchanged. This is the round-1 endorsed correction (internal consistency in the dataset's own chosen direction), not the original rejected `ubaba`-plain. Confirmed.
+
+### Held items — re-confirmed
+
+All previously held items remain correctly held; nothing changed to disturb them:
+
+- **Issues 8, 14–17, 20–25:** System-wide transcription-school / notation / citation-form / tone / penultimate-length conventions, applied consistently dataset-wide. Not single-file local errors. Accept hold.
+- **Issues 9–12 (⟨b⟩→[ɓ]; o→ɔ):** The plain-⟨b⟩ = implosive /ɓ/ analysis (⟨bh⟩ = pulmonic [b]) is the standard Doke/Nguni convention and the dataset's deliberate choice. Verified the [ɓ] entries are still in place (`thanks.js:150/797`, `hello.js:150/797`). Accept hold.
+- **Issue 18 (`nbl` one bare `nye`):** Borderline citation-form choice; live `nbl: ["nye","ɲe"]` (804), `nd` matches (805). Accept hold.
+- **Issue 19 (`ssw` water emanti):** ✓ Verified live `ssw: ["emanti","emanti"]` (`water.js:804`). siSwati class-6 prefix *ema-* plus regular /z/→/t/ shift yields *emanti* as the genuine siSwati form; the reviewer's original "amanzi" would wrongly impose the Zulu/Xhosa form. Hold accepted; reviewer's original expected value remains withdrawn.
+
+### New issues
+
+None. No new defensible errors surfaced during verification.
+
+### Scorecard
+
+- Applied & verified correct in live data: Issues 1, 2, 3, 4, 5, 6, 7, 13 (8 fixes, all confirmed).
+- Held / accepted as cross-school, notation, citation-form, tone, or system-level convention: Issues 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25.
+- Outstanding actionable: none.
+
+**File status: CLOSED** — nothing left to address. All clear errors are fixed-and-verified in live data; every remaining item is an accepted cross-school / convention / system-level choice.

@@ -363,3 +363,64 @@ Live data: `mwl: ["coraçon", "koɾaˈθoŋ"]` (heart.js:834) — still /θ/. Th
 - New issues: **0** net-new (one existing item, #27, escalated from "held" to "must-fix" because its hold rationale no longer holds)
 
 **File status: OPEN** — Dev team must change `mwl coraçon` (heart.js:834) off the Castilian /θ/ (to `koɾaˈt͡soŋ` matching the osp/es_sgl ⟨ç⟩ affricate, or `koɾaˈsoŋ`); its only stated justification (parity with gl /θ/) is void now that gl was moved to seseo /s/.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I accept the reviewer's REJECT of the #27 hold. The original hold rationale ("same /θ/ convention as #7/#8") is genuinely void now that gl was moved to seseo /s/, and the case is well-sourced and unambiguous: Mirandese is Asturian-Leonese (per the *Convenção Ortográfica da Língua Mirandesa*, 1999) and has no Castilian dental fricative /θ/; the grapheme ⟨ç⟩ maps to an affricate. With gl de-Castilianised, the lone remaining /θ/ on a ⟨ç⟩/⟨z⟩ spelling here is a true internal inconsistency, and the two same-spelling siblings both use the affricate.
+
+**Applied:**
+
+- **#27 `mwl` heart** — `["coraçon", "koɾaˈθoŋ"]` → `["coraçon", "koɾaˈt͡soŋ"]`. Voicing/manner-only IPA correction; surface orthography (`coraçon`) and the mwl-specific final velar nasal /ŋ/ both preserved. Chose the tie-bar affricate /t͡s/ to match the directly comparable ⟨ç⟩ siblings `es_sgl coraçón koɾaˈt͡son` (heart.js:923) and `osp coraçón koɾaˈʦon` (heart.js:924), which is also the reviewer's first-listed preferred target. /θ/ → /t͡s/ only; nothing else touched. *(applied by orchestrator this round)*
+
+**Held:** none. All other previously-held items (#2–#6, #9–#26, #28–#33 stress/convention/Gascon-vs-Languedocien/headword choices and the #6/#16/#17/#18 coverage gaps) remain accepted as defensible won't-fix or deferred-to-new-language-checklist per the reviewer's round-1 re-evaluation; no further action this round.
+
+Net: 1 edit applied (#27). No items left open.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the round-2 fix and re-confirmed every prior edit is still present in the live working-tree data (`grep` on `words/*.js`). Nothing regressed.
+
+### #27 `mwl` heart — ACCEPT ✓ (the one open item, now fixed)
+
+Live data: `mwl: ["coraçon", "koɾaˈt͡soŋ"]` (heart.js:834). The Castilian /θ/ is gone, replaced with the tie-bar dental affricate /t͡s/. This was exactly the fix I demanded in round-1: it de-Castilianises Mirandese (Asturian-Leonese, no /θ/), and it now agrees with the two directly comparable same-spelling ⟨ç⟩ siblings — `es_sgl: ["coraçón", "koɾaˈt͡son"]` (heart.js:923) and `osp: ["coraçón", "koɾaˈʦon"]` (heart.js:924). Surface orthography and the mwl-specific final velar nasal /ŋ/ were both correctly preserved. The internal inconsistency I opened is resolved.
+
+### Re-verification of all prior edits (still live, accept ✓)
+
+- #1 `ca` love — `["amor", "əmoɾ"]` (love.js:312) ✓
+- #22 `oc` fire — `["fuòc", "fwɔk"]` (fire.js:313) ✓
+- #28 `mwl` cat — `["gato", "ˈɡatu"]` (cat.js:834) ✓
+- #29 `ast` eye — `["güeyu", "ˈɡweʝu"]` (eye.js:755) ✓
+- #31 `osp` heart — `["coraçón", "koɾaˈʦon"]` (heart.js:924) ✓
+- #13 `pt_eu` tree — `["árvore", "ˈaɾvuɾɨ"]` (tree.js:99) ✓
+- #15 `pt_br` tree — `["árvore", "ˈaɾvoɾi"]` (tree.js:100) ✓
+- #7 `gl` heart seseo — `["corazón", "koɾason"]` (heart.js:306) ✓
+- #8 `gl` thanks seseo — `["grazas", "ɡɾasas"]` (thanks.js:306) ✓
+
+### Held items — accept as defensible won't-fix / deferred (✓)
+
+All remain accepted exactly as in my round-1 re-evaluation, with no change of position:
+
+- #2–#5 `ca` stress; #6/#10 `gl` stress; #26/#33 `oc` stress; #11/#12/#14 `pt` stress — accept hold. Unmarked-paroxytone/oxytone convention is real and consistently applied; a blanket stress-marking pass is a separate normalization decision, not a per-token error.
+- #9 `gl` good `bɔ` — accept hold (△). Single open/close-mid judgement call; defensible school-level convention question, not an unambiguous local error.
+- #19–#21, #23–#24 `oc` Gascon-vs-Languedocien — accept hold. `oc` is internally coherent as a Gascon-flavoured transcription throughout (`aiga ajɡɔ`, `luna lyno`, `un yn`, `can ka`, `man ma`); switching to Languedocien is a whole-variety relabel/scope decision, correctly deferred.
+- #25 `oc` hello (adieu) — accept hold. Surface/headword + greeting-vs-farewell editorial selection, not an IPA edit.
+- #30 `ast` father/mother (pa/ma) — accept hold. Surface-orthography headword/register selection, out of scope for an IPA-only round.
+- #32 `osp` house `ˈkaza` — confirmed correct; no action.
+- Coverage gaps #6 `ca_va`, #16 `pt_ao`/`pt_mz`, #17 `leo`, #18 `oc_*` dialects — accept deferral to the synchronized new-language checklist.
+
+### New issues raised this round
+
+None. I scanned the comparable ⟨ç⟩/⟨z⟩ sibilant cluster while verifying #27 and found no new defensible error. (`ast corazón koɾaˈθon` retains /θ/, but Asturian /θ/ under a *distinción* reading is defensible and was explicitly out of this file's adjudicated-error set in round-1; I am not opening it.)
+
+### Scorecard
+
+- Round-2 fix verified present in live data: **1 / 1** ✓ (#27)
+- All prior edits re-verified still live: **9 / 9** ✓
+- Remaining actionable errors: **0**
+- New issues: **0**
+
+**File status: CLOSED** — nothing left to address. The sole open item (#27 `mwl` heart /θ/ → /t͡s/) is fixed and verified in live data; all other items are accepted as defensible cross-school/convention choices or deferred coverage gaps.

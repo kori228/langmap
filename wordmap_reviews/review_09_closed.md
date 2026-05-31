@@ -290,3 +290,46 @@ I verified every claimed "APPLIED" fix against the live `words/*.js` data and co
 - Held but rejected (clear error still live): 1 ✗ — #11 `tum` sun.
 
 **File status: OPEN** — Dev team must apply the one confirmed lexical fix: `words/sun.js:729` `tum: ["zuva","zuva"]` → `tum: ["zuwa","zuwa"]` (copy-paste contamination from the Shona row; Tumbuka reflex is /w/).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Only one item remained open after reviewer round-1: **#11 `tum` sun**. I accept the reviewer's rejection of my earlier hold and apply the fix.
+
+**#11 `tum` sun "zuva" → "zuwa" — APPLIED (applied by orchestrator this round).** Confirmed in live data: `words/sun.js:729` reads `tum: ["zuva", "zuva"]`, a verbatim duplicate of the Shona row `sn: ["zuva", "zuva"]` (sun.js:279) — clear copy-paste contamination. The Bantu specialist reviewer explicitly confirmed the Tumbuka reflex of Proto-Bantu *\*-dúbà* is uniformly /w/, not /v/, and the dataset's own evidence supports this: the adjacent Sena entry `seh: ["dzuwa", "dzuwa"]` (sun.js:731, a closely related tonal Bantu neighbour) uses /w/, and Tumbuka elsewhere uses /w/ (`tum woko`, hand.js). Applied to both surface and IPA: `tum: ["zuva", "zuva"]` → `tum: ["zuwa", "zuwa"]`. This is a clear lexical error, not a register/cross-school choice, so the round-1 deferral no longer applies.
+
+All other items from review #09 were resolved in round-1 (8 applied, 13 held-and-accepted as system-level/cross-school/register choices). No items remain open after this fix.
+
+**Updated file status: RESOLVED** — the one confirmed lexical error (#11) is now fixed.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the single round-2 fix and re-confirmed all prior applied edits remain live and correct.
+
+**#11 `tum` sun — APPLIED & VERIFIED (✓).** Live data `words/sun.js:729` now reads `tum: ["zuwa", "zuwa"]` — the copy-paste contamination from the Shona row (`sn: ["zuva", "zuva"]`, sun.js:279) is removed and the Tumbuka /w/ reflex of Proto-Bantu *\*-dúbà* is correctly in place. Internally consistent with the neighbouring Sena entry `seh: ["dzuwa", "dzuwa"]` (sun.js:731) and Tumbuka /w/ elsewhere. This was the sole open item from round-1; it is now closed.
+
+**Re-verification of all earlier applied fixes (still live, ✓):**
+
+- #3 `sg` moon `nzë` IPA `nzɛ` (moon.js:901). ✓
+- #4 `tn` eye `leitɬʰo` (eye.js:593), tree `setɬʰaɾe` (tree.js:593). ✓
+- #5 `xh` hand `isandɮa` (hand.js:272). ✓
+- #6 `xh` house `indɮu` (house.js:279). ✓
+- #7 `ln` water surface `máí` (water.js:282, IPA toneless per convention). ✓
+- #14 `bem` water `amenʃi` (water.js:604). ✓
+- #16 `ts` moon `ŋweti` (moon.js:601), one `riŋwe` (one.js:601). ✓
+- #20 `nso` thanks `ke a leboɣa` (thanks.js:800). ✓
+
+**Held & accepted as defensible (✓ won't-fix), unchanged from round-1:** #2 (lg /ɲɟ/ cross-school), #8 (ln IPA toneless convention), #9/#10 (sn/tum no-tone corpus policy), #17/#18 (ki nasality IPA convention), #21 (noun-class metadata out of scope), #22 (regional Swahili expansion out of scope), and lexical/register headword choices #1, #12, #13, #15, #19. None is a mechanical IPA/orthography error.
+
+**New issues:** none. No additional defensible errors surfaced during this verification pass.
+
+### Scorecard
+
+- Applied & verified correct: 9/9 ✓ (8 from round-1 + #11 from round-2)
+- Held & accepted (system-level / cross-school / register): 13 ✓
+- Open errors remaining: 0
+
+**File status: CLOSED** — nothing left to address. The one previously-open error (#11 `tum` sun) is fixed and verified in live data; all remaining items are accepted convention/register/scope choices.

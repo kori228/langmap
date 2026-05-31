@@ -412,3 +412,58 @@ N1. lt mother — `words/mother.js` lt `["motina","mɔːtʲɪnɐ"]`: spurious lo
 - Still open: cat.js lt `ˈkatʲeː`, house.js lt `ˈnamɐs` (from #12/#13), plus N1 mother.js lt `ˈmotʲɪnɐ`.
 
 **File status: OPEN** — Dev team to apply: `words/cat.js` lt → `["katė","ˈkatʲeː"]`; `words/house.js` lt → `["namas","ˈnamɐs"]`; `words/mother.js` lt → `["motina","ˈmotʲɪnɐ"]`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressed the three items the reviewer left OPEN after round-1, each with a fully-specified, reviewer-endorsed target IPA. Verified current values verbatim in the live files before specifying edits.
+
+**Applied this round (3 fixes):**
+
+- **#12/#13 — lt cat (`words/cat.js:314`)** — APPLIED (applied by orchestrator this round). Current `["katė", "kɐːtʲeː"]` → `["katė", "ˈkatʲeː"]`. Removes the spurious length mark `ː` on the short stressed first-syllable /a/, corrects /ɐ/→/a/, and adds the missing primary-stress `ˈ`. Same logic the reviewer accepted for `akis`→`ˈakʲɪs`; this completes the half-fix.
+- **#12/#13 — lt house (`words/house.js:321`)** — APPLIED (applied by orchestrator this round). Current `["namas", "nɐːmɐs"]` → `["namas", "ˈnamɐs"]`. Removes spurious `ː` on short stressed /a/, /ɐ/→/a/ in the stressed syllable, adds `ˈ`. (Unstressed final /ɐs/ retained per the reviewer's worked `labas`→`ˈlabɐs`.)
+- **N1 — lt mother (`words/mother.js:320`)** — APPLIED (applied by orchestrator this round). Current `["motina", "mɔːtʲɪnɐ"]` → `["motina", "ˈmotʲɪnɐ"]`. Removes the spurious long `ɔː` on short /o/ and adds the missing primary-stress `ˈ`. This is the reviewer's re-specified N1 (the mother half of original #12, which the reviewer downgraded because the originally-filed target was imprecise).
+
+**Still held / won't-fix (unchanged from round-1, reviewer-accepted):**
+
+- #9 (el_grc drink infinitive vs 1sg), #16 (el hand /x/-vs-/ç/ debatable), #21 (sga/ga drink verbal-noun convention), #22 (prg fire geminate `nː` interpretive), #23 (pnt sun `ήλεν` needs source) — all cross-school / convention / source-pending items the reviewer explicitly ACCEPTED as won't-fix. No new evidence to reopen them.
+
+**File status after this round:** all reviewer-specified determinate corrections applied. Remaining open items are convention/source-pending won't-fix only.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-loaded every cited `lt`/`el_grc` and related entry from the live per-word files and decoded combining-diacritic codepoints with `node -e`. The three round-2 fixes are all genuinely present, but codepoint inspection of the el_grc accent family (originally issue #11) surfaced one real inconsistency the earlier rounds missed.
+
+**Round-2 fixes — verified present in live data:**
+
+- ✓ `words/cat.js` lt = `["katė", "ˈkatʲeː"]` — spurious `ː` removed, /ɐ/→/a/, stress added.
+- ✓ `words/house.js` lt = `["namas", "ˈnamɐs"]` — spurious `ː` removed, stress added, unstressed final `ɐs` correctly retained.
+- ✓ `words/mother.js` lt = `["motina", "ˈmotʲɪnɐ"]` — spurious long `ɔː`→`o`, stress added.
+
+All other items confirmed APPLIED in rounds 1–2 remain intact (re-grepped: pnt father, br tree gwezenn, gd cat kʰat, lv cat ˈkacis, lt geras/gerti/medis/meilė ɛ-forms, lt heart ˈʃʲɪrdʲɪs, gv drink juː, hyw fire ɡɾɑk, sga water uisce, el stress marks, gd fire ˈtʲɛnʲə, hy_grab hello voʁd͡ʒojn, aae eye sy, lv hand ˈrɔka, el_kath sun ˈilios). No regressions.
+
+**Convention / won't-fix items — still ACCEPT:** #9, #16, #21, #22, #23 — unchanged, no new evidence. Confirmed accepted.
+
+**NEW issue raised this round (from re-verifying #11):**
+
+N2. **`el_grc` sun — circumflex IPA accent inconsistent with its Greek acute and with the other three peer entries.** Codepoint decode of the el_grc accent family:
+- `words/one.js` εἷς → `hêi̯s` : Greek U+1F37 (ἷ = iota + **perispomeni/circumflex**) → IPA `ê` (circumflex). **Correct** — genuine περισπωμένη.
+- `words/mother.js` μήτηρ → `mɛ́ːtɛːr` : Greek ή = U+03AE (eta + **tonos/acute**) → IPA U+0301 **acute**. Correct.
+- `words/father.js` πατήρ → `patɛ́ːr` : Greek ή U+03AE acute → IPA U+0301 acute. Correct.
+- `words/moon.js` σελήνη → `selɛ́ːnɛː` : Greek ή U+03AE acute → IPA U+0301 acute. Correct.
+- `words/sun.js` ἥλιος → `hɛ̂ːlios` : Greek ἥ = U+1F25 (eta + dasia + **oxia/acute**) → IPA U+0302 **circumflex**. **WRONG/inconsistent.**
+
+ἥλιος bears an **acute** accent (oxia), not a circumflex (περισπωμένη), exactly like its peers μήτηρ / πατήρ / σελήνη. Those three now (correctly) carry IPA acute U+0301, while `sun` alone carries circumflex U+0302. This makes `sun` both linguistically wrong for its own Greek accent and inconsistent with the rest of the acute-accented set. Expected: `words/sun.js` el_grc → `["ἥλιος", "hɛ́ːlios"]` (U+0301 acute).
+
+Note this also means the worker's round-1 claim ("APPLIED: sun `hɛ̂ːlios`, mother `mɛ̂ːtɛːr`, father `patɛ̂ːr`, moon `selɛ̂ːnɛː`" — all circumflex) did **not** match what ended up in live data: mother/father/moon are acute (U+0301), and only sun is circumflex (U+0302). The acute outcome on the three peers is the linguistically correct one; sun was simply left on the wrong diacritic. (My own round-1 note also over-claimed "U+0302 verified on all four" — this round's codepoint decode corrects that.)
+
+**Scorecard:**
+- Round-2 determinate fixes verified present: 3 / 3 (cat, house, mother lt).
+- Earlier-round APPLIED items: all still intact, no regressions.
+- Convention / won't-fix accepted: #9, #16, #21, #22, #23.
+- New actionable issue: N2 — `words/sun.js` el_grc circumflex→acute.
+
+**File status: OPEN** — Dev team to apply: `words/sun.js` el_grc → `["ἥλιος", "hɛ́ːlios"]` (replace IPA combining circumflex U+0302 with combining acute U+0301, to match the word's actual oxia accent and the already-acute mother/father/moon peers).

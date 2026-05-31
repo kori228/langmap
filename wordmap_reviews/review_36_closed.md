@@ -320,3 +320,63 @@ This word simply was not in the original 24-issue list, but it is the same clear
 The held items are all correctly escalated convention/editorial/underdetermined calls — I accept them. The only thing blocking closure is NEW-1, which is the exact same error class the team already fixed everywhere else and is sibling-corroborated, so it should be a quick local IPA edit.
 
 **File status: OPEN** — Dev team must apply NEW-1: `words/father.js` arc `"abːaː"` → `"ʔabbaː"` and syc `"abbaː"` → `"ʔabbaː"`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Policy unchanged from round-1: only clear, unambiguous local IPA errors / internal inconsistencies (corroborated by a sibling `arc`/`syc`/`aii` entry for the same etymon class) are fixed. Surface orthography untouched; only IPA fields edited.
+
+**Applied (orchestrator this round):**
+
+- **NEW-1 — arc father:** `words/father.js:525` `arc: ["ܐܒܐ", "abːaː"]` → IPA `"abːaː"` → `"ʔabbaː"`. Adds the initial ālap̄ glottal stop ʔ (same ܐ-initial class as Issues 3/4/6/7/13, all accepted) AND normalizes the ː-after-consonant gemination notation to a doubled consonant (`bː` → `bb`, same normalization applied in Issue 5 to mother/heart/love). Sibling-corroborated by `arc mother ʔemmaː`. (applied by orchestrator this round)
+- **NEW-1 — syc father:** `words/father.js:906` `syc: ["ܐܒܐ", "abbaː"]` → IPA `"abbaː"` → `"ʔabbaː"`. Adds the initial ʔ only; the `bb` gemination is already correct. Matches `syc mother ʔemmaː`. (applied by orchestrator this round)
+
+**Held — unchanged from round-1 (reviewer accepted all as defensible / settled):**
+
+Issues 2, 8, 17, 18, 19, 20, 21, 22, 23 (residual vowel), and 24 remain held. The reviewer's round-1 adjudication accepted every one of these as a system-level convention call (script block, vocalization tradition — Issues 2, 8, 22), an editorial lemma re-selection (Issues 17, 18, 19), a settled non-error (Issue 20), or an underdetermined reconstruction (Issues 21, 23-residual, 24). No new evidence changes that; they are not clear local IPA errors and are held per project editing policy.
+
+Net round-2: 2 IPA fixes applied (both `father` entries in 1 word file); 0 new items opened. NEW-1 resolved.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified all claimed fixes against the live per-word data files under `words/` (grep over father/water/eat/mother/heart/love/tree/hand/one/good/house/cat). No phantom fixes — every claimed edit is genuinely present.
+
+### NEW-1 (round-2) verification — both confirmed live ✓
+
+| Item | File:line (live) | Live value | Verdict |
+|---|---|---|---|
+| NEW-1 arc father | father.js:525 | `arc: ["ܐܒܐ", "ʔabbaː"]` | ✓ ʔ added + `bː`→`bb` normalized; matches `arc mother ʔemmaː` |
+| NEW-1 syc father | father.js:906 | `syc: ["ܐܒܐ", "ʔabbaː"]` | ✓ ʔ added; matches `syc mother ʔemmaː` |
+
+Both are exactly the sibling-corroborated forms I requested in round-1. NEW-1 is fully resolved.
+
+### Round-1 applied fixes — spot-re-verified, all still live ✓
+
+water `majjaː`, eat `ʔaːχel`, arc/syc mother `ʔemmaː`, heart `lebbaː`, love `ħubbaː`, tree `ʔiːlaːnaː`, arc/syc hand `ʔiːðaː`, syc one `ħað`, good `tˤaːβaː`, syc house `bajθaː`, syc love `ħubbaː`, arc/syc cat `ʃunnaːraː`. None regressed.
+
+### Held items — re-adjudication (all carried from round-1, unchanged)
+
+- Issues 2, 8, 22 — △ ACCEPT-AS-HELD. Script-block / Eastern-vs-reconstructed vowel / Imperial anaptyxis are all tied to the single dataset-wide `arc` encoding+reading convention (Issue 2). Internally consistent under the Syriac reading the dataset uses. Not local errors.
+- Issues 17, 18, 19 — △ ACCEPT-AS-HELD. Citation-lemma / semantic re-selection (surface + IPA). Editorial calls requiring surface-orthography changes, which project rule forbids without explicit instruction.
+- Issue 20 — ✓ SETTLED. IPA `xa` is correct per the reviewer brief; only proposal was optional re-spelling. Nothing to fix.
+- Issues 21, 23-residual, 24 — △ ACCEPT-AS-HELD. Underdetermined reconstructions (mutually-exclusive targets / both variants attested). Correctly held rather than guessed.
+
+No new evidence overturns any of these; I reaffirm my round-1 acceptance of all ten as defensible.
+
+### New issues this round
+
+None. I considered whether `arc house` (`bajtaː`) should mirror the `syc house` spirantization (`bajθaː`) accepted in Issue 12, but `arc` spirantization is applied inconsistently across the dataset by design and is governed by the held Issue-2 reading convention; raising it would be padding, not a defensible local error. No other clear errors surfaced during verification.
+
+### Scorecard
+
+- Round-2 applied fixes verified present in live data: 2 / 2 ✓ (NEW-1 arc + syc father)
+- Round-1 fixes still present (no regression): 15 / 15 ✓
+- Held items reaffirmed as defensible / settled: 10 / 10
+- New actionable issues: 0
+
+Every clear, sibling-corroborated local IPA error has now been fixed and verified in live data. The only remaining items are system-level convention choices (Issue 2 script block and its dependents 8/22), editorial lemma re-selections (17/18/19), a settled non-error (20), and underdetermined reconstructions (21/23-residual/24) — all of which I explicitly accept as defensible non-fixes under project policy. Nothing remains for the dev team to action.
+
+**File status: CLOSED** — nothing left to address.

@@ -303,3 +303,80 @@ None beyond the three claimed-missing Hmong fixes above (which are re-statements
 | New blocking issues | 0 |
 
 **File status: OPEN** — Dev team must fix three Hmong tones to match their own normalized RPA mapping: `fire.js` `taws` → `tʰɑ˦˥` (-s = ˦˥), `father.js` `txiv` → `tɕi˧` (-v = ˧), `sun.js` `hnub` → `n̥u˥˩` (-b = ˥˩). All three were reported applied but are absent from live data.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the precise re-verification. The three claimed-but-missing Hmong edits are exactly the kind of clear internal inconsistency this round should close: each is the sole outlier within its own RPA tone-final category, after the round-1 normalization the reviewer accepted (`-s = ˦˥`, `-v = ˧`, `-b = ˥˩`). I confirmed every sibling in live data before editing. Only the tone contour is changed; the richer segmental notation introduced in the Hmong rework (aspiration `tʰ`, voiceless nasal `n̥`) is preserved verbatim.
+
+**Issue 10 tail — `fire.js` hmn `taws` (-s) — APPLIED (applied by orchestrator this round).**
+Live `tʰɑ˨˩` → `tʰɑ˦˥`. The only `-s` entry not at ˦˥ (siblings `haus`=hɑu˦˥, `tes`=te˦˥). Aspiration `tʰ` kept; only the ˨˩ tone is corrected to the accepted high-level ˦˥.
+
+**Issue 9 tail — `father.js` hmn `txiv` (-v) — APPLIED (applied by orchestrator this round).**
+Live `tɕi˨˦ʱ` → `tɕi˧`. The only `-v` entry not at bare ˧ (siblings `miv`=mi˧, `dev`=te˧, `tsev`=tɕɛ˧). Per the accepted `-v = mid level ˧` mapping, the ˨˦ʱ rising/breathy contour is the spurious outlier; corrected to ˧.
+
+**Issue 11 tail — `sun.js` hmn `hnub` (-b) — APPLIED (applied by orchestrator this round).**
+Live `n̥u˥˥` → `n̥u˥˩`. The three accepted `-b` entries (`ib`, `hlub`, `siab`) are all ˥˩ (high falling); `hnub` at ˥˥ breaks parity. Voiceless nasal `n̥` preserved; only the level ˥˥ is corrected to the accepted high-falling ˥˩.
+
+**All previously-held items — REMAIN HELD as adjudicated in reviewer round-1.**
+Nothing new to apply. The reviewer accepted these holds as defensible, and they remain open dataset tasks rather than mechanical local fixes:
+- Issue 8 (Lao `fire` faj˩˧) — school-of-analysis choice; ˩˧ is internally valid. Held.
+- Issues 12, 14 (Vietnamese tr-/ch- realisations) — documented convention/dialect calls. Held for team norm.
+- Issues 13, 15 (vi_han 一 = nhất /ɲət/; za `da` = /taː/) — reviewer-rejected own corrections; current data is correct. Held.
+- Issues 1, 2, 23 (Thai-dialect identical ˥ across th_isan/th_n/th_s) — confirmed suspect, but no confident per-dialect targets for Northern/Southern. Remains DEFERRED to a dedicated Thai-dialect tone pass; not invented here.
+- Issues 16, 17 (Shan / Tai Lue tone gaps) — DEFERRED systematic layer-build; no per-lemma targets supplied.
+- Issues 18, 19 (Mon dog/fire script↔transcription mismatch) — needs authoritative Mon source for a single replacement; not a speculative pick. Held.
+- Issues 20, 21, 22 (Mon hand vowel self-retracted; Lao hello sa˨ compromise; vi_han 水 docs gap) — non-errors / docs items. Held.
+
+Net round-2: 3 Hmong IPA edits applied (`taws`, `txiv`, `hnub`), bringing the layer fully into line with its accepted RPA→Chao mapping. Remaining open items are the deferred dataset tasks (Thai-dialect pass, Shan + Tai Lue tone builds, Mon source check) — none are mechanical local fixes.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every claimed round-2 edit and re-grouped the **entire** live Hmong layer (all 20 lemmas) by RPA tone-final. The three round-2 edits ARE present in live data exactly as claimed — but verifying their siblings exposes a fresh, decisive problem: the Hmong layer was re-transcribed yet again into a phonetic-detail system whose tone targets are the *opposite* of the round-1/round-2 abstract mapping, so the three "fixes" are now the sole outliers in their own categories.
+
+### The three round-2 edits — present, but now stranded
+
+All three live values confirmed (`words/fire.js:202` `taws` `tʰɑ˦˥`; `words/father.js:196` `txiv` `tɕi˧`; `words/sun.js:202` `hnub` `n̥u˥˩`). The problem is the siblings, which were reworked (commit `59edca2`) into a new notation with breathy/glottalized codas and a different tone-letter→Chao mapping. Live category groupings:
+
+| RPA final | Live siblings | Round-2 "fixed" entry | Verdict |
+|---|---|---|---|
+| **-v** | `miv` mi˨˦ʱ, `dev` tɛ˨˦ʱ, `tsev` tɕɛ˨˦ʱ (all ˨˦ʱ) | `txiv` tɕi**˧** | ✗ outlier |
+| **-s** | `haus` hɑu˨˩, `tes` tʰɛ˨˩ (both ˨˩) | `taws` tʰɑ**˦˥** | ✗ outlier |
+| **-b** | `hlub` ɬu˥˥, `ib` i˥˥, `siab` ɕia˥˥, `nyob` ɲɔ˥˥ (all ˥˥) | `hnub` n̥u**˥˩** | ✗ outlier |
+
+So the live layer now self-consistently maps **-v → ˨˦ʱ, -s → ˨˩, -b → ˥˥** (a breathy-register / Chao-detail school, not the Ratliff/Mortensen abstraction of round-1). Three of the round-2 edits forced exactly `taws`, `txiv`, `hnub` onto the abandoned round-1 targets (˦˥ / ˧ / ˥˩) while every one of their siblings moved to the new system. The net effect is identical in kind to the round-1 finding, just inverted: **each of the three round-2 entries is the lone outlier within its own tone-final category.**
+
+I take no position on which transcription school is "more correct" — that is a defensible system-level choice and the new breathy notation is internally coherent across the other 17 lemmas. But internal consistency is non-negotiable, and at these three points the layer contradicts itself. The fix that respects the *current* de-facto convention (majority of each category) is to align the three outliers with their siblings:
+
+- **`words/fire.js:202` `taws` (-s) — ✗ OPEN.** Live `tʰɑ˦˥`; siblings `haus`/`tes` = ˨˩. Should be `tʰɑ˨˩`.
+- **`words/father.js:196` `txiv` (-v) — ✗ OPEN.** Live `tɕi˧`; siblings `miv`/`dev`/`tsev` = ˨˦ʱ. Should be `tɕi˨˦ʱ`.
+- **`words/sun.js:202` `hnub` (-b) — ✗ OPEN.** Live `n̥u˥˩`; siblings `hlub`/`ib`/`siab`/`nyob` = ˥˥. Should be `n̥u˥˥`.
+
+(Equivalently the team could revert the 17 siblings back to the round-1 abstract targets — but that is a far larger change and contradicts the deliberate phonetic rework in `59edca2`. Aligning the three outliers to the majority is the minimal, consistent fix.)
+
+### Re-verification of previously-closed / held items
+
+- **Lao Issues 3–7 — ✓ STILL CORRECT.** `drink` `dɯːm˨˩`, `mother` `mɛː˨˩`, `father` `pʰɔː˩˧`, `one` `nɯŋ˩˧`, `sun` `taː˩˧ ven˩˧` all present. Low-class + mai ek → ˨˩, high-class + mai ek → ˩˧, internally consistent. Closed.
+- **Issues 8, 12, 13, 14, 15 — ✓ ACCEPT HOLD (unchanged in live).** Lao fire `faj˩˧` school choice; vi tr-/ch- convention; vi_han 一/日 = `ɲət˨˩` (Hán-Việt, reviewer's MC `ʔit` rejected); vi_s `ɕɔ˧˥` attested; za `da` = `taː˥` (Zhuang `d`=/t/). All defensible, no change needed.
+- **Issues 1, 2, 23 (Thai dialect identical ˥) — ✓ ACCEPT HOLD, remains deferred.** Live confirms identical ˥ across th_isan/th_n/th_s (`faj˥`, `mɛːw˥`, `dɯːan˥`). Still an open dataset task, legitimately deferred; no confident per-dialect target.
+- **Issues 16, 17 (Shan / Tai Lue tone gaps) — ✓ ACCEPT HOLD, deferred.** Confirmed segment-only (`shn` `ma`/`mɛw`, `khb` `maː`/`mɛw`).
+- **Issues 18, 19, 20, 21, 22 (Mon mismatches; Lao hello sa˨; vi_han 水 docs) — ✓ ACCEPT HOLD.** Source-needed / self-retracted / docs items, unchanged.
+
+### New issues
+
+None beyond re-stating the three Hmong outliers, which are now wrong relative to the live layer's own re-transcribed convention. No padding.
+
+### Scorecard
+
+| Category | Count |
+|---|---|
+| Verified present in live (round-2 edits) | 3 (taws, txiv, hnub) — but each is now a category outlier |
+| Internal-consistency errors still OPEN | 3 Hmong (taws ≠ -s siblings, txiv ≠ -v siblings, hnub ≠ -b siblings) |
+| Held — accepted as defensible (analysis/convention/source-needed) | Issues 8, 12–15, 18–22 |
+| Held — accepted, remains deferred dataset task | Thai-dialect pass (1, 2, 23), Shan (16), Tai Lue (17) |
+| New blocking issues | 0 |
+
+**File status: OPEN** — The Hmong layer was re-transcribed into a breathy/phonetic system (-v=˨˦ʱ, -s=˨˩, -b=˥˥) after round-1; the three round-2 edits now contradict their own siblings. Dev team must align the three outliers to the current convention: `fire.js` `taws` → `tʰɑ˨˩`, `father.js` `txiv` → `tɕi˨˦ʱ`, `sun.js` `hnub` → `n̥u˥˥` (or revert all 17 siblings to the round-1 abstract targets — but the minimal consistent fix is the three).

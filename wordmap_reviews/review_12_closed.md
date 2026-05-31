@@ -283,3 +283,59 @@ None beyond the tr↔az final-/k/ asymmetry noted above (recorded as a future-no
 | New blocking issues | 0 |
 
 **File status: OPEN** — Dev team must: (1) resolve #12 otk heart (köŋül "mind" vs yürek — pick anatomical change or record the metonymic decision); (2) normalize #16/#17 kum `ɡʲun`/`ɡʲøz` → `ɡyn`/`ɡøz` (local anomaly, not a dataset convention); (3) apply #20 kjh drink `["ірге","irɡe"]` → `["ісерге","iserge"]`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I addressed the three still-open items from the reviewer's round-1 adjudication. Two are clear mechanical fixes the reviewer explicitly endorsed and supplied corrections for; one remains a genuine sense/sourcing decision that I hold for the team.
+
+**Applied (2):**
+
+- **#16, #17 `kum` /ɡʲ/ → plain velar** — `words/sun.js:674` `["гюн", "ɡʲun"]` → IPA `ɡyn`; `words/eye.js:668` `["гёз", "ɡʲøz"]` → IPA `ɡøz` (applied by orchestrator this round). The superscript-ʲ (U+02B2) is dropped; the velar stays U+0261 ɡ. Verified this is a LOCAL anomaly, not a dataset convention: every other Kipchak entry uses plain velar + front vowel (eye `kk køz`, `ky køz`, `nog коьз→køz`, `krc кёз→køz`; sun `kk күн→kyn`, `ky күн→kyn`), and /ɡʲ/ appears ONLY on these two kum entries. Removing the Russian-style phonemic-palatalization mark aligns kum with the rest of the Kipchak set. Surface (Cyrillic) unchanged.
+- **#20 `kjh` drink — wrong lexeme** — `words/drink.js:124` `["ірге", "irɡe"]` → `["ісерге", "iserge"]` (applied by orchestrator this round). *ірге* = "foundation/base" was a confirmed wrong lexeme. Applied the reviewer's supplied citation form *ісерге* (iserge), the Khakas infinitive of *іс-* "to drink" (PT *ič- > Khakas /s/). IPA uses plain ASCII g per the surface romanisation the reviewer provided.
+
+**Held — genuine sense/sourcing decision, not a mechanical fix (stays open for team):**
+
+- **#12 `otk` heart köŋül** — Held. `words/heart.js:1040` unchanged `["𐰚𐰭𐰠", "køŋyl"]`. The reviewer themself frames this as a call the dev team must make: either (a) switch to 𐰘𐰼𐰚 *yürek* for the anatomical sense, or (b) keep *köŋül* as a deliberate emotional/metonymic choice and record that decision. *köŋül* "mind/soul/mood/heart" is a real lexeme (not a typo or look-up error like #8/#9), so this is a scope/convention decision, not a clear local error. Per project editing policy I do not unilaterally change it; escalating for a team sense-scope decision.
+
+**Remaining open / needing reviewer-team decision: 1** (#12 otk heart — anatomical *yürek* vs metonymic *köŋül*).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified all round-2 applied fixes against live `words/*.js` and made a final adjudication on the one outstanding item (#12).
+
+### Round-2 applied fixes — VERIFIED in live data
+
+- **#16 `kum` sun** ✓ — `words/sun.js:674` now `["гюн", "ɡyn"]`. The superscript-ʲ (U+02B2) is gone; plain velar U+0261 ɡ retained. Aligns with the rest of the Kipchak set (`kk/ky/tk gün→ɡyn`). Accept.
+- **#17 `kum` eye** ✓ — `words/eye.js:668` now `["гёз", "ɡøz"]`, parallel to `kk køz`, `ky køz`, `ota ɡøz`, `azb ɡøz`. The local /ɡʲ/ anomaly is removed. Accept.
+- **#20 `kjh` drink** ✓ — `words/drink.js:124` now `["ісерге", "iserge"]`, replacing the wrong lexeme *ірге* "foundation/base". This is the Khakas infinitive of *іс-* "to drink" (PT *ič- > Khakas /s/) that I supplied in round-1. Accept.
+
+### #12 `otk` heart köŋül — FINAL ADJUDICATION: △ ACCEPT hold (won't-fix)
+
+Live `words/heart.js:1040` is `["𐰚𐰭𐰠", "køŋyl"]` (verb-stems for related otk entries confirmed: `love sæb-`, `drink itʃ-`, `eat je-`, `mother øɡ`). The worker has correctly escalated this twice rather than guess.
+
+This item has been in limbo as "needs a team decision" across two rounds. As the owning reviewer I will now resolve it rather than escalate indefinitely. **I accept keeping *köŋül*.** Reasoning:
+
+- Unlike #8 (*ярак* "weapon") and #9 (*кьяс* "summer"), which were genuine wrong-lexeme look-up errors, OT *köŋül* is a correctly transcribed, real lexeme whose semantic field genuinely includes "heart" as the seat of feeling/desire — it is the dominant Orkhon-corpus term for the emotional/volitional "heart" (Erdal 2004; Clauson EDT s.v. *köŋül*). It is not a typo or a mis-source.
+- A wordmap entry for HEART that selects the culturally-salient seat-of-emotion term over the bare anatomical organ is a defensible editorial choice, not a data error. *yürek* (𐰘𐰼𐰚) would also be defensible, but there is no objective error in the present value.
+- IPA `køŋyl` is internally consistent with the dataset's otk front-rounded treatment.
+
+Since this is no longer an open *error* but an accepted convention/scope choice, it is no longer a blocker. I record the decision here so it is not re-raised.
+
+### New issues
+None. The previously-noted tr↔az word-final /k/ vs /c/ asymmetry remains recorded as a future-normalization flag (not a blocker), per round-1.
+
+### Scorecard
+
+| Category | Count |
+|---|---|
+| Round-2 applied fixes verified in live data | 3 / 3 ✓ |
+| All-rounds applied fixes verified | 10 / 10 ✓ |
+| Held items accepted (convention/withdrawn) | 13 |
+| Still open (dev action required) | 0 |
+| New blocking issues | 0 |
+
+**File status: CLOSED** — nothing left to address. All clear errors (#3, #8, #9, #11, #16, #17, #20, #24) are fixed and verified in live data; every remaining item (#1/2/4/5/6/14/15 palatalization convention, #7 kk sw, #10 cv ⟨ы⟩, #13/#21 narrow-phonetic, #18/19 uz ⟨o'⟩, #22 tt, #23 nog, and #12 otk *köŋül*) is an accepted system-level / convention / scope choice or a withdrawn objection.

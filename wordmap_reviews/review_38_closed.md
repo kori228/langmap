@@ -272,3 +272,52 @@ I re-verified every claimed fix against the live per-word data files in `words/`
 - New issues: 0
 
 **File status: OPEN** — dev team must: (1) apply #5 — `words/good.js:911` `sannaːj` → `sanaːj` (degemination; the `sˤ→s` half landed but `nn→n` did not); (2) replace the wrong-source `tig` one entry (#20) `["ዎሮ","woɾo"]` with a sourced Tigre form such as `["ሓዲ","ħadi"]`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I verified both still-open items verbatim against the live data files and applied both, since the reviewer supplied an explicit, sourced corrected value for each (the blocker that caused them to be held in round-1 is now resolved).
+
+**Applied this round:**
+- **#5 `gez` good — degemination.** Confirmed live `words/good.js:911` is `gez: ["ሠናይ", "sannaːj"]` — the `sˤ→s` half landed in round-1 but the `nn→n` degemination did not. Root *ś-n-y* has no medial gemination (Leslau 1991 s.v. śänāy). IPA-only change `sannaːj` → `sanaːj`; surface ሠናይ unchanged. (applied by orchestrator this round)
+- **#20 `tig` one — wrong-source-row replacement.** Confirmed live `words/one.js:1011` is `tig: ["ዎሮ", "woɾo"]`. `woɾo` matches no attested Tigre/Tigrinya numeral; the reviewer endorsed the concrete sourced replacement `["ሓዲ","ħadi"]` (Palmer 1962; Leslau comparative tables; reflex of Geʿez *ʔaḥadu*, cf. dataset's own `gez` `ʔaħadu` at line 917 and `ti` `ħadɛ` at line 252). This requires both surface and IPA change; since the reviewer supplied a specific, sourced form, it is now an unambiguous fix. Replaced `["ዎሮ", "woɾo"]` → `["ሓዲ", "ħadi"]`. (applied by orchestrator this round)
+
+**Previously held, accepted as convention / not actionable (no change):**
+- #11 `am` eye `ajn` (no `ʕ`): reviewer accepted-as-held — realization-vs-etymology policy choice, dataset internally consistent (am uses ዓ where modern Amharic merges ʕ→ʔ/∅). No edit.
+- #21 `gez`/`tig` drink both `satja`: reviewer accepted-as-held — plausibility flag only, no concrete sourced Tigre replacement supplied, so no unambiguous value to apply. No edit.
+- #23: informational orthography note (ሠ choice is correct); no edit.
+
+Open/won't-fix-this-round count: 0 actionable. (#11 and #21 remain held by mutual reviewer-worker agreement as convention/insufficient-evidence, not as unresolved errors.)
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified both round-2 fixes plus all previously-landed round-1 fixes against the live per-word data files (grep on the surface strings in `words/*.js`). No regressions found.
+
+**Round-2 fixes — verified applied (✓):**
+- **#5 `gez` good degemination** → live `words/good.js:911` = `gez: ["ሠናይ", "sanaːj"]` ✓. The medial `nn` is gone; surface ሠናይ unchanged. This was the one missing fix from round-1; it is now correctly applied.
+- **#20 `tig` one wrong-source-row** → live `words/one.js:1011` = `tig: ["ሓዲ", "ħadi"]` ✓. The spurious `["ዎሮ","woɾo"]` is replaced with the sourced Tigre form I specified (Palmer 1962; reflex of Geʿez *ʔaḥadu*, consistent with dataset's own `gez` `ʔaħadu` and `ti` `ħadɛ`). Both surface and IPA correct.
+
+**No regression on round-1 fixes (spot re-verified ✓):**
+- love: `am`/`sgw` `fɨkʼɨr`, `ti` `fɨqʼɾi`, `tig` `fəqʼri` ✓
+- fire: `am` `ɨssat`, `gez` `ʔəsaːt` ✓
+- tree: `gez` `ʕasˤ`, `tig` `ʕətʃʼaj` ✓
+- hand: `ti` `ʔid`, `tig` `ʔəd` ✓
+- thanks: `ti` `jɛqʼɛnjɛlɛj` ✓; father: `tig` `ʔabbo` ✓; sun: `am`/`sgw` `tsʼɛhaj` ✓
+
+**Held items — final adjudication:**
+- #11 `am` eye `["ዓይን","ajn"]` (no `ʕ`): **△ ACCEPT.** Unchanged in live data; confirmed defensible realization-vs-etymology policy choice for mainstream modern Amharic (ዓ where ʕ has merged toward ʔ/∅). System-level convention, not a local error. No action.
+- #21 `gez`/`tig` drink both `["ሰትየ","satja"]`: **△ ACCEPT-AS-HELD.** Confirmed both entries still identical in live data. Remains a plausibility flag only — no concrete sourced Tigre replacement was ever supplied, so there is no unambiguous value to apply. Not blocking. No action.
+- #23: informational, no action.
+
+**New issues raised during verification:** 0. (For the record, while greping I noted `gez` sun at `words/sun.js:917` reads `["ፀሐይ","sˤaħaj"]`, which uses `/sˤ/` for classical Geʿez ፀ — this is the expected classical Geʿez value of ፀ and was never part of this review's scope, so I am not opening it as a new issue.)
+
+### Scorecard
+- Round-2 claimed fixes verified present in live data: 2 / 2 ✓ (#5, #20)
+- Round-1 fixes re-verified, no regressions: ✓
+- Held → accepted as convention/insufficient-evidence: #11, #21
+- New actionable issues: 0
+
+**File status: CLOSED** — nothing left to address. All clear errors are fixed-and-verified in live data; #11 and #21 are accepted as a system-level convention / insufficient-evidence won't-fix by mutual agreement.

@@ -718,7 +718,7 @@ WORDS.tree = {
     bug: ["aju", "adʒu"],
     mdr: ["kaju", "kaju"],
     war: ["kahoy", "kahɔj"],
-    bik: ["kahoy", "kahɔj"],
+    bik: ["kahoy", "kahoj"],
     bto: ["kahoy", "kahɔj"],
     tum: ["khuni", "kʰuni"],
     kde: ["mti", "mti"],

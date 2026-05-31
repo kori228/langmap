@@ -253,3 +253,69 @@ I verified every claimed and applied change directly against the live `words/*.j
 | Reject ✗ — NEW regression | 4, 5, 7 (acute η wrongly marked circumflex on father/mother/moon) |
 
 **File status: OPEN** — Dev team must fix the acute→circumflex regression: in `el_grc`, set πατήρ→`patɛ́ːr` (`words/father.js`), μήτηρ→`mɛ́ːtɛːr` (`words/mother.js`), σελήνη→`selɛ́ːnɛː` (`words/moon.js`); leave ἥλιος `hɛ̂ːlios` (genuinely circumflex) untouched.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressing the reviewer's round-1 OPEN status: the only actionable item is the acute→circumflex regression on Issues 4/5/7. The reviewer's correction is clear, well-supported, and internally consistent with the dataset's own acute-on-letter convention (`déndron`, `kardía`, `érɔːs`, `estʰíeːn` in the same `el_grc` column). Applying it.
+
+**Applied:**
+
+- **Issue 4 — `words/father.js` `el_grc` πατήρ (IPA only):** `patɛ̂ːr` → `patɛ́ːr` *(applied by orchestrator this round)*. πατήρ is oxytone (acute on -ήρ); the regression's combining circumflex (U+0302) falsely asserted a falling contour. Replaced with combining acute (U+0301) on the η, matching the column's acute-on-letter practice. Surface spelling unchanged.
+
+- **Issue 5 — `words/mother.js` `el_grc` μήτηρ (IPA only):** `mɛ̂ːtɛːr` → `mɛ́ːtɛːr` *(applied by orchestrator this round)*. μήτηρ is paroxytone with acute on μή-; circumflex on the first η corrected to acute. Second (unaccented) η `ɛːr` left untouched. Surface unchanged.
+
+- **Issue 7 — `words/moon.js` `el_grc` σελήνη (IPA only):** `selɛ̂ːnɛː` → `selɛ́ːnɛː` *(applied by orchestrator this round)*. σελήνη has acute on -λή-; circumflex on the accented η corrected to acute. Final unaccented η `nɛː` left untouched. Surface unchanged.
+
+**Held / no action:**
+
+- **Issue 6 — `words/sun.js` `el_grc` ἥλιος `hɛ̂ːlios`:** ἥ bears a genuine circumflex; the reviewer explicitly instructs leaving it untouched. No change.
+
+- **Issues 2, 3, 8–14, 16–18, 20–23, 25:** reviewer accepted as correct/positive-control or adjudicated as system-level convention choices (pitch-accent notation system, `ʲ` palatalisation superscript, Pontic stress-mark conventions). Out of scope for a local mechanical fix. Held as won't-fix per the round-1 adjudication.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified the worker's round-2 fixes at the Unicode codepoint level (`node` + `vm`, reading the live `words/*.js`), so the acute-vs-circumflex distinction is checked unambiguously rather than by visual rendering.
+
+### Round-2 regression fixes (Issues 4, 5, 7) — verified at codepoint level
+
+- **Issue 4 — `words/father.js` `el_grc` πατήρ:** ✓ Live data = `["πατήρ", "patɛ́ːr"]`, codepoints `… U+025B U+0301 U+02D0 …` — i.e. `ɛ` + combining **acute** (U+0301) + length. The earlier circumflex (U+0302) is gone. Correct for the oxytone -ήρ. Accept.
+- **Issue 5 — `words/mother.js` `el_grc` μήτηρ:** ✓ Live data = `["μήτηρ", "mɛ́ːtɛːr"]`, codepoints show the **first** η = `ɛ` + U+0301 (acute) and the **second** η = bare `ɛː` (no diacritic). Exactly the requested fix: acute on the accented μή-, second η unaccented. Accept.
+- **Issue 7 — `words/moon.js` `el_grc` σελήνη:** ✓ Live data = `["σελήνη", "selɛ́ːnɛː"]`, codepoints show accented η = `ɛ` + U+0301 (acute), final η = bare `ɛː`. Correct (acute on -λή-, final η unaccented). Accept.
+
+### Issue 6 — correctly left untouched
+
+- **`words/sun.js` `el_grc` ἥλιος:** ✓ Live data = `["ἥλιος", "hɛ̂ːlios"]`, codepoints `U+025B U+0302` — `ɛ` + combining **circumflex** (U+0302). The genuine circumflex on ἥ is preserved, as instructed. The acute→circumflex correction was applied to father/mother/moon only and did **not** bleed into sun. Accept.
+
+### Earlier accepted fixes — still intact (regression check)
+
+- **Issue 1 — `words/eye.js`:** ✓ Still `["ὀφθαλμός", "opʰtʰalmós"]`, both `ʰ` (U+02B0) present for ⟨φθ⟩ = /pʰtʰ/.
+- **Issue 19 — `words/father.js` `pnt`:** unchanged from round-1 (πατέρας).
+- **Issue 15 — `words/sun.js` `el_kath`:** unchanged (`ˈilios`, no /ʎ/).
+- **Issue 24 — `words/love.js` `el_kath`:** ✓ Still `["ἀγάπη", "aɣaˈpi"]` (noun, not the verb ἀγαπῶ).
+
+No new regression introduced this round; the targeted U+0302→U+0301 swap hit exactly the three intended entries and nothing else.
+
+### Held / won't-fix — re-affirmed
+
+All convention-level items (Issues 2, 3, 8–14, 16–18, 20–23, 25: el_grc pitch-accent notation system, `ʲ` palatalisation superscript, Pontic stress-mark conventions, reviewer-marked positive controls) stand as adjudicated in round-1. No new actionable problems found on re-verification.
+
+### New issues
+
+None.
+
+### Scorecard
+
+| Verdict | Items |
+|---|---|
+| Accept ✓ (fixed & verified in live data) | 1, 4, 5, 7, 15, 19, 24 |
+| Accept ✓ (correctly left as-is) | 6 |
+| Accept ✓ / △ (convention, won't-fix) | 2, 3, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 20, 21, 22, 23, 25 |
+| Reject ✗ | (none) |
+
+The round-1 regression is fully resolved and codepoint-verified; every remaining item is an accepted convention/positive-control. Nothing left for the dev team.
+
+**File status: CLOSED** — nothing left to address.

@@ -267,3 +267,64 @@ None. No new defensible errors surfaced during verification.
 - Still actionable: **Issue 17** — clear semantic error (`rup` 'mother' = `dadâ` 'father/dad'), reviewer-signed-off fix supplied.
 
 **File status: OPEN** — Dev team must apply Issue 17: in `words/mother.js`, change `rup: ["dadâ", "ˈdadɨ"]` → `rup: ["mumâ", "ˈmumɨ"]` (parallels `ruq` `mumâ`; Capidan 1932 §94).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Editing policy: apply only clear, unambiguous semantic/local errors that the reviewer has explicitly signed off; hold genuine convention/scope choices the reviewer already accepted as won't-fix.
+
+**Applied:**
+
+- **Issue 17 — `rup` mother (`words/mother.js:765`):** Clear semantic inversion. The Aromanian entry `["dadâ", "ˈdadɨ"]` files 'father/dad' (Capidan 1932 §94 lists *dadâ* = 'tată/père') under the 'mother' headword. The reviewer explicitly supplied and signed off the corrected lexeme. Corrected the full entry to the expected Lat. *mamma* reflex, paralleling the dataset's own `ruq` mother `["mumâ", "ˈmumɨ"]` (`mother.js:766`): `rup: ["dadâ", "ˈdadɨ"]` → `rup: ["mumâ", "ˈmumɨ"]`. Both the surface form and the IPA are corrected together (the IPA `ˈdadɨ` was the transcription of the wrong lexeme, so it must change with it). (applied by orchestrator this round)
+
+**Held (reviewer-accepted holds / won't-fix, unchanged this round):**
+
+- **Issues 2, 3, 6, 7, 22, 23 (missing stress marks):** Reviewer confirmed stress diacritics are not a dataset invariant (only ~70/523 entries in `sun.js` carry `ˈ`). System-level convention; held. Reviewer also withdrew the Issue 2 `okʲ` final-vowel concern as analyst's-choice.
+- **Issues 8, 9 (`bun` masc-only; `salut` register):** Lemma-citation / register convention. Reviewer accepted hold. Held.
+- **Issues 11, 12 (`ruq` `mocăm`/`biem` finite forms):** Real citation-form normalization but no authoritatively-attested Megleno-Romanian infinitive supplied (only candidates). Reviewer accepted hold pending an attested source form; not a guess. Held.
+- **Issues 13, 14, 15, 16 (`ubavu`, `ublami`, `lemnu`, `ocl`):** Well-grounded but reviewer explicitly did not force these this round, pending a confirmed attested replacement. Held.
+- **Issue 19 (thanks stress divergence):** Observation only; no single corrected value. Held.
+- **Issues 20, 21 (orthographic tradition / identical `rup`≈`ruq` cognates):** Documentation/verification notes; cognate identity plausible, no differentiated attested form supplied. Held.
+- **Issue 1 (missing `ruo`/`mo`):** Scope/coverage decision, not a defect in existing files. Won't-fix at data level. Held.
+
+**Net this round:** 1 applied (Issue 17). All remaining items are reviewer-accepted holds (need attested source forms or are system-level convention/scope choices), not unilaterally-actionable data errors.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the round-2 fix and re-confirmed that every prior applied fix is still intact in the live `words/*.js` data, then re-adjudicated all remaining held items.
+
+### Verification of the round-2 fix (CONFIRMED in live data)
+
+- **Issue 17 — `rup` mother ✓** `words/mother.js:765` now reads `rup: ["mumâ", "ˈmumɨ"]`, exactly matching the reviewer-signed-off correction and paralleling the dataset's own `ruq` entry `ruq: ["mumâ", "ˈmumɨ"]` (line 766). The wrong-lexeme IPA `ˈdadɨ` was correctly replaced together with the surface. The semantic inversion ('father/dad' filed under 'mother') is resolved. Accept.
+
+### Re-verification of round-1 fixes (still intact)
+
+- **Issue 5 — `ro` drink ✓** `words/drink.js:167` = `ro: ["a bea", "a be̯a"]`. Diphthong [e̯a] still present.
+- **Issue 10 — `ruq` cat ✓** `words/cat.js:760` = `ruq: ["mâța", "ˈmɨtsa"]`. Post-2003 ⟨ț⟩ glyph retained.
+- **Issue 24 — `ruq` dog ✓** `words/dog.js:760` = `ruq: ["câni", "ˈkɨni"]`, matching IPA /ɨ/ and sister `rup` `câni` (line 759).
+- **Issues 4 / 18 — sun diphthong ✓** `words/sun.js:167` `ro: ["soare", "so̯are"]` and `:765` `rup: ["soare", "ˈso̯are"]`. The diphthong [o̯a] is rendered in IPA in both; the orthographic-copy is gone. (The `ro` entry carries no leading `ˈ`, but that is precisely the accepted stress-mark-convention hold, not the diphthong defect that was flagged.)
+
+### Held items — final adjudication
+
+- **Issues 2, 3, 6, 7, 22, 23 (missing stress marks) — △ ACCEPT HOLD.** Confirmed in round-1 that stress diacritics are not a dataset invariant. System-level convention. Won't-fix.
+- **Issues 8, 9 (`bun` masc-only; `salut` register) — △ ACCEPT HOLD.** Lemma-citation / register convention; both forms attested and correct in isolation.
+- **Issues 11, 12 (`ruq` `mocăm`/`biem` finite forms) — △ ACCEPT HOLD.** Live data still shows `eat.js:760 ruq: ["mocăm", "moˈkɨm"]` and `drink.js:760 ruq: ["biem", "biem"]`. These are genuinely 1pl finite forms, inconsistent with the infinitive convention, but I did not supply an authoritatively-attested Megleno-Romanian infinitive (only candidates). The hold is defensible; this is a real but non-blocking normalization awaiting an attested source form, not a guess.
+- **Issues 13, 14, 15, 16 (`ubavu`, `ublami`, `lemnu`, `ocl`) — △ ACCEPT HOLD.** Well-grounded concerns, but I am not forcing a lexeme swap without a confirmed attested replacement. Held as in prior rounds.
+- **Issue 19 (thanks stress divergence) — △ ACCEPT HOLD.** Observation only; no single corrected value.
+- **Issues 20, 21 (orthographic tradition / identical `rup`≈`ruq` cognates) — △ ACCEPT HOLD.** Cognate identity plausible; no differentiated attested form supplied.
+- **Issue 1 (missing `ruo`/`mo`) — △ ACCEPT HOLD.** Scope/coverage decision, not a defect in existing files. Won't-fix at data level.
+
+### New issues
+None. No new defensible errors surfaced during this verification pass.
+
+### Scorecard
+- Applied-and-verified across all rounds: 6/6 (Issues 4, 5, 10, 17, 18, 24) — all confirmed present in live data.
+- Accepted holds (system-level / convention / scope / pending attested form): Issues 1, 2, 3, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23.
+- Still actionable: none.
+
+The one clear, reviewer-signed-off semantic error (Issue 17) is now fixed and verified. Every remaining item is either a system-level convention/scope choice I explicitly accept as won't-fix, or a lexeme-swap/normalization I am choosing not to force absent an attested replacement form. Nothing remains for the dev team to address.
+
+**File status: CLOSED** — nothing left to address.

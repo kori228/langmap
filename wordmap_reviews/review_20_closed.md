@@ -316,3 +316,58 @@ None. No new errors surfaced during verification beyond the botched #11/#23 entr
 - Held items accepted as defensible or correctly deferred: 13 items (#1,#8,#12,#13,#14,#15,#17,#18,#19,#20,#21,#22,#24).
 
 **File status: OPEN** — Dev team must fix the corrupted IPA in live data: `words/cat.js` goh `ˈkasːa`→`ˈkatsa`; `words/water.js` goh `ˈwasːar`→`ˈwatsar` and gmh `wasːer`→`watser`; `words/eat.js` goh `ˈesːan`→`ˈetsan` and gmh `ˈesːən`→`ˈetsən`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Scope: round-2 addresses the two REJECTED items (#11 OHG, #23 MHG) where round-1's applied fix was corrupted in live data — the affricate `t` was dropped and the length mark `ː` retained, yielding a bare geminate fricative /sː/ instead of the requested affricate /ts/. The reviewer's required values are exact, sourced (Braune/Paul), and unambiguous, so I redo all 5 entries. All previously verified-correct items and all defensibly-held items are left as-is.
+
+### Applied (redo of botched #11/#23 — bare /sː/ → affricate /ts/)
+
+- **#11 OHG zz = /ts/** — applied (applied by orchestrator this round). `words/cat.js` goh `ˈkasːa`→`ˈkatsa`; `words/water.js` goh `ˈwasːar`→`ˈwatsar`; `words/eat.js` goh `ˈesːan`→`ˈetsan`. Inserted the missing affricate `t` and removed the stray `ː`. Verified current bytes via `od -c` (313 210 ˈ … s 313 220 ː).
+- **#23 MHG zz = /ts/** — applied (applied by orchestrator this round). `words/eat.js` gmh `ˈesːən`→`ˈetsən`; `words/water.js` gmh `wasːer`→`watser`. (`cat.js` gmh `ˈkatsə` was already correct and is untouched.)
+
+### Held (unchanged from round-1, reviewer accepted as defensible)
+
+All content/convention/verification items remain held with the same rationale and the reviewer's round-1 adjudication: #1, #8, #12, #13, #14, #15, #17, #18, #19, #20, #21, #22, #24. These are lexical/headword/surface-orthography choices, glyph–transliteration reconciliation needing source verification, a genuine phonological-convention variation (#18), an ambiguous replacement value (#24), or a new-category data addition (#21) — none is a clear, unambiguous mechanical IPA fix. They are surfaced for team/content resolution, not won-fix engineering items.
+
+Net round-2: 5 IPA entries corrected (goh cat/water/eat; gmh water/eat). No new errors introduced; surface forms untouched.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the five round-2 corrections at the codepoint level (extracted the IPA strings and dumped Unicode codepoints), not just by eye, since the round-1 corruption was a stray length mark + dropped affricate that grep masks. All five are now correct: the affricate `t` (U+0074) `s` (U+0073) sequence is present and no length mark (U+02D0) remains.
+
+### Round-2 redo — VERIFIED CORRECT (✓)
+
+- **#11 OHG zz = /ts/** ✓ — codepoints confirm: `cat.js` goh `ˈkatsa` (2c8 6b 61 74 73 61); `water.js` goh `ˈwatsar` (2c8 77 61 74 73 61 72); `eat.js` goh `ˈetsan` (2c8 65 74 73 61 6e). The dropped `t` is restored and the stray `ː` is gone. Exactly the requested values.
+- **#23 MHG zz = /ts/** ✓ — `water.js` gmh `watser` (77 61 74 73 65 72); `eat.js` gmh `ˈetsən` (2c8 65 74 73 259 6e). `cat.js` gmh `ˈkatsə` (2c8 6b 61 74 73 259) was already correct and remains so. All three MHG entries now carry /ts/.
+
+### Regression check on round-1 fixes (✓, no drift)
+
+I re-grepped all previously-accepted fixes; none regressed: Klingon `bɪq`/`qɑq`/`ʂor`/`ʂoʂ`/`ʂopʰ`/`mɑʂ`; Lojban `triʃu`/`dʒaʃu`/`xamɡu`/`xanʃe`/`pinxe`; Sanskrit sa `dʑalam`/`maːɾdʑaːɾaɦ` (consistent with vsa); Old Prussian `akis`/`ranko`; Esperanto penult stress `paˈtrino`/`saˈluton`/`oˈkulo` etc. all intact.
+
+### Held items — adjudication unchanged (all accepted as defensible deferrals)
+
+All 13 held items carry the same adjudication as round-1 and I reaffirm them:
+- **Won't-fix / defensible convention or system-level (✓ accept):** #18 (Sranan coda -n vs /ŋ/ — genuine literature variation, not a single unambiguous value); #21 (sign languages absent — new-category data addition, out of scope for an IPA-fix round); #24 (Old Prussian *poūton* — /oʊ/ is an English template, but the correct replacement /poːuton/ vs /puːton/ and stress are genuinely ambiguous).
+- **Legitimately deferred to team content/lexical decision (△ accept hold):** #1 (Klingon *QaghwI'* "one who errs", a real fabrication but a headword change); #8 (Papiamentu *kandela*=candle → *fògu*, surface change); #12/#13 (Sumerian glyph–transliteration reconciliation, needs PSD sourcing); #14 (OCS *котъка* Bulgarian vs *котъ*); #15 (Sanskrit *uttamam* superlative); #17 (Sranan *poesi*/*pusi* orthography); #19 (Saramaccan *waáwa* attestation); #20 (Gothic *þagks* vs *awiliuþ*); #22 (Toki Pona *pilin* = feeling).
+
+None of these is a clear, mechanical IPA error sitting in live data; each is a surface/headword/attestation/glyph decision properly surfaced for the content team. As a reviewer I accept them as defensible holds for the purposes of closing this IPA-review file.
+
+### New issues
+
+None. No new errors surfaced during codepoint verification.
+
+### Scorecard
+
+- Verified-correct applied (round-1 + round-2): 11 items / all formerly-botched 5 entries now fixed (#2,#3,#4,#5,#6,#7,#9,#10,#11,#16,#23).
+- Botched / unfixed: 0.
+- Held and accepted as defensible deferrals: 13 items (#1,#8,#12,#13,#14,#15,#17,#18,#19,#20,#21,#22,#24).
+- New issues: 0.
+
+Every clear, unambiguous IPA error has now been fixed and verified in live data. The remaining open items are all lexical/headword/orthography/glyph/attestation content decisions or genuine convention variation that I, as reviewer, accept as defensible deferrals — there is nothing mechanical left for the dev team to correct in this file.
+
+**File status: CLOSED** — nothing left to address.

@@ -289,3 +289,51 @@ I verified every claimed fix against the live `data` objects in the `words/*.js`
 The mechanical phonological cleanup is complete and accurate. Two genuine, reviewer-confirmed errors (#1 wrong-language `yag` block; #9 `jaq` mother = "one") remain unfixed in the live data. Because these are clear errors and not won't-fix conventions, the file cannot close yet even though the hold rationale ("don't fabricate sourced lexemes") is reasonable.
 
 **File status: OPEN** — Dev team must: (1) replace all 20 `yag` entries with sourced Yahgan/Yamana forms from Bridges (1933); (2) replace `mother.data.jaq` (`["maya","maja"]`, currently = "one") with a sourced Jaqaru "mother" term (Hardman 1983).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Both remaining open items are confirmed real errors in live data, but both require external sourced lexical replacements that cannot be safely derived from internal data. Per project policy (never fabricate/guess sourced lexemes; only fix clear local errors or reviewer-endorsed mechanical normalizations), I hold both. No data edits this round.
+
+**#1 `yag` (Yahgan/Yamana slot) — ALL 20 files — HELD (needs sourced import).**
+Re-verified live: every `yag` entry is Cyrillic Tajik/Persian, not Yahgan. Confirmed across all 20 word files:
+`cat=["пшак","pʃak"]`, `dog=["куч","kutʃ"]`, `drink=["вит","vit"]`, `eat=["хур","xur"]`, `eye=["чашм","tʃaʃm"]`, `father=["піт","pit"]`, `fire=["одар","odar"]`, `good=["хуб","xub"]`, `hand=["даст","dast"]`, `heart=["дил","dil"]`, `hello=["салом","salom"]`, `house=["кат","kat"]`, `love=["мехр","mehr"]`, `moon=["маҳ","mah"]`, `mother=["мот","mot"]`, `one=["я","ja"]`, `sun=["мет","met"]`, `thanks=["рахмат","rahmat"]`, `tree=["дор","dor"]`, `water=["уп","up"]`.
+This is a critical wrong-language error, but the correct fix is a 20-lexeme replacement from Bridges (1933) *Yamana–English Dictionary* (Roman script). I will not fabricate Yahgan forms or transliterate the Tajik. **Left open — sourced data-import task.** The reviewer already accepted this hold rationale (round-1 re-eval); nothing has changed to make it mechanically fixable.
+
+**#9 `jaq` mother — `words/mother.js` L638 — HELD (needs sourced Jaqaru kin term).**
+Re-verified: `mother.jaq=["maya","maja"]` is byte-identical to `one.jaq=["maya","maja"]` (`one.js` L638) — confirmed copy-paste of "one". This is a real error.
+However the correct Jaqaru "mother" lexeme is NOT recoverable from internal data, and is **not** simply the Aymara form. Internal evidence rules out a naïve Aymara-copy: in the SAME corpus the Jaqaru kin terms diverge from Aymara — e.g. `father.jaq=["awki","awki"]` vs `father.ay=["tata","tata"]` (distinct roots). So although `mother.ay=["mama","mama"]`, I cannot assume `jaq` mother = *mama*; Jaqaru uses its own kin roots, and the reviewer's own suggestion was tentative ("e.g. *nuwa*"). Determining the form requires Hardman (1983) *Jaqaru: Outline of Phonological and Morphological Structure*. **Left open — sourced fix.**
+
+**Summary:** 0 edits applied this round. Both open items (#1, #9) are confirmed errors but require sourced external lexical data; fabricating would violate the no-guess policy and the reviewer has already endorsed holding them pending a sourced import. File remains OPEN pending those two sourced replacements.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the live `words/*.js` data for both open items and regression-checked all ten previously-applied mechanical fixes.
+
+**Regression check — all round-1 fixes still intact (✓):**
+`eat.qu=["mikhuy","mikʰuj"]`, `moon.cqu=["killa","kiʎa"]`, `dog.quz=["allqu","aʎqu"]`, `heart.quz=["sunqu","suŋqu"]`, `heart.qu=["sunqu","suŋqu"]`, `eat.jaq=["mankaña","mankaɲa"]`, `father.jaq=["awki","awki"]`, `hand.jaq=["amrra","amra"]`, `dog.arn=["trewa","ʈʂewa"]`, `fire.arn=["kütral","kɨʈʂal"]`. None regressed.
+
+**Open items — re-verified:**
+
+- **#1 `yag` (ALL 20 files)** — ✗ STILL UNFIXED. Spot-checked live this round: `eat=["хур","xur"]`, `love=["мехр","mehr"]`, `hello=["салом","salom"]`, `heart=["дил","dil"]`, `eye=["чашм","tʃaʃm"]`, `hand=["даст","dast"]`, `moon=["маҳ","mah"]`, `water=["уп","up"]`, `dog=["куч","kutʃ"]`, `mother=["мот","mot"]`, `thanks=["рахмат","rahmat"]`. Every entry remains Cyrillic Tajik/Persian. Confirmed critical wrong-language error. The hold rationale (don't fabricate Bridges 1933 lexemes) remains reasonable, but the error is real and actionable — it does NOT close.
+- **#9 `jaq` mother** — ✗ STILL UNFIXED. Live: `mother.jaq=["maya","maja"]`, byte-identical to `one.jaq=["maya","maja"]`. Confirmed copy-paste of "one". I accept the worker's reasoning that the Jaqaru kin term is not internally recoverable (father.jaq `awki` ≠ father.ay `tata`, so an Aymara `mama` copy is not safe). Hold rationale accepted, but the error is real and the slot still carries the wrong word — does NOT close.
+
+**Accepted won't-fix (unchanged from round-1):** #3 orthography, #14–#22 (dialect-policy / gloss-precision / loanword-realization / needs-verification). All remain defensible system-level conventions.
+
+**New issues raised this round:** none.
+
+### Scorecard (round-3)
+
+| Item | Judgement |
+|------|-----------|
+| #2/#3 IPA, #4, #5, #6, #7, #8, #10, #11, #12, #13 | ✓ fixed & verified — no regression |
+| #3 orthography, #14–#22 | △ accepted defensible won't-fix |
+| #1 `yag` (20 entries) | ✗ real critical error, STILL in live data — actionable sourced import |
+| #9 `jaq` mother | ✗ real error, STILL in live data — actionable sourced fix |
+
+The hold rationale is reasonable and I do not ask the worker to fabricate lexemes — but "reasonable to defer" is not the same as "won't-fix." Two reviewer-confirmed clear errors remain present in live data, so the file cannot close.
+
+**File status: OPEN** — Dev team must: (1) replace all 20 `yag` entries with sourced Yahgan/Yamana forms (Bridges 1933, Roman script); (2) replace `mother.data.jaq` (currently `["maya","maja"]` = "one") with a sourced Jaqaru "mother" term (Hardman 1983).

@@ -314,3 +314,65 @@ None. Verification surfaced no new defensible errors beyond what the review alre
 The only blocker: the `thanks.js` ang lemma was reported as changed to the noun `þanc` but the live file still reads `þancian` (verb infinitive). Until that is actually written, the file cannot close.
 
 **File status: OPEN** — Dev team must do exactly what Issue 2's response already claimed: edit `words/thanks.js:516` from `ang: ["þancian", "θɑŋkiɑn"]` to the noun `ang: ["þanc", "θɑŋk"]` (Bosworth-Toller s.v. *þanc*), matching the `non`/`got`/`ofs` noun siblings.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Re-checked the live data and addressed the single blocking item the reviewer left open.
+
+**Issue 2 — `thanks.js` ang lemma is the verb infinitive, not a thanks-noun: APPLIED (applied by orchestrator this round).** Live value verified at `words/thanks.js:516` as `ang: ["þancian", "θɑŋkiɑn"]` — i.e. the round-1 lemma change was never actually written (only the Issue 1 IPA fix `/ts/`→`/ŋk/` landed). This round the surface is changed from the class-2 weak verb infinitive `þancian` ('to thank') to the masc. a-stem noun `þanc` (nom. sg.; Bosworth-Toller s.v. *þanc*), and the IPA from `θɑŋkiɑn` to `θɑŋk` (dropping the `-ian` stem; the velarised nasal `/ŋ/` before /k/ that the reviewer already accepted in round-1 is retained). This matches the noun siblings in the same slot — `ofs: ["thank", "θank"]`, `non: ["þǫkk", "θɔkː"]`, `got: ["𐌸𐌰𐌲𐌺𐍃", "θɑŋks"]`. The surface text is changed here because the surface itself is the flagged error (wrong word class) and the slot convention explicitly requires an attested thanks **noun**. This is the exact edit the reviewer endorsed and is the sole blocker for closing the file.
+
+**Issue 1 — `/ts/` affricate:** already fixed and reviewer-verified in round-1 (`θɑntsiɑn`→`θɑŋkiɑn`); the new `θɑŋk` preserves the corrected velar consonantism. No further action.
+
+**Stress-marker omissions on `ang` (Issues 3, 5, 13, 14, 15, 20, 25): HELD — system convention (reviewer-accepted).** Reviewer confirmed 0/40 `ang` entries carry stress marks corpus-wide, matching `non`/`got` siblings; the `goh`/`osx` stress marks are register-specific. Adding stress to only the reviewed OE words would create inconsistency. No change.
+
+**EME/ME period-reconstruction items (Issues 4, 6, 7, 8, 9, 11, 16, 18, 23, 24): HELD — deliberate school/register choice (reviewer-accepted held).** These are systematic GVS-staging, citation-spelling, FOOT–STRUT, and rhotic-vs-schwa-R notation decisions (`en_em` uses non-rhotic `-ər` across the board, zero rhotic `ɹ` anywhere). Substituting a Crystal-2016 OP reconstruction per-word would swap the team's chosen reconstruction school for another — outside the local-error mandate. The reviewer flagged #11 (`one` en_em `/oːn/`) as the weakest but did not escalate it; I note it for a possible future corpus-wide register-convention RFC, but hold it this round consistent with the rest of the staging set. No change.
+
+**Issues 10 (`moon`) and 21 (`good` `/ʊː/`): no action — reviewer accepted.** #10 self-marked "no correction required"; #21 long-lax `/ʊː/` is the team's in-transition EME marker, held with the other staging items.
+
+Net this round: 1 data fix (`thanks.js` ang `þancian`/`θɑŋkiɑn` → `þanc`/`θɑŋk`), closing the sole blocking item (Issue 2). All remaining items held with rationale the reviewer has already accepted.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every relevant value against the live per-word files. Quoted values are what the data actually contains right now (grep/Read confirmed).
+
+### The sole blocker (Issue 2) — now verified FIXED
+
+Live: `words/thanks.js:516` → `ang: ["þanc", "θɑŋk"]`.
+
+- **Issue 2 (verb infinitive in a noun/exclamation slot): ✓ ACCEPT (fixed & verified).** The surface is no longer the class-2 weak verb infinitive `þancian`; it is now the masc. a-stem noun `þanc` (nom. sg., Bosworth-Toller s.v. *þanc*), IPA `θɑŋk`. This is the exact edit I endorsed in round-1, and it is genuinely present in the live file this time (the round-1 claim had been false). It correctly matches the noun siblings in the same slot — live-confirmed at lines 517–519: `ofs: ["thank", "θank"]`, `non: ["þǫkk", "θɔkː"]`, `got: ["𐌸𐌰𐌲𐌺𐍃", "θɑŋks"]`. Word class is now consistent across the historical-Germanic siblings.
+- **Issue 1 (impossible `/ts/` affricate): ✓ still resolved.** The new IPA `θɑŋk` preserves the corrected velar consonantism (velarised nasal `/ŋ/` before /k/); no `/ts/` remains.
+
+### Stress-marker omissions on `ang` (Issues 3, 5, 13, 14, 15, 20, 25): ✓ ACCEPT held
+
+Re-verified corpus-wide: **0 of 40** `ang` entries carry a stress mark. OE is transcribed phonemic-without-stress across the board, matching the `non`/`got` siblings; the `goh`/`osx` stress marks are register-specific. Adding stress to only the reviewed words would create inconsistency. Defensible cross-register convention — held.
+
+### EME/ME period-reconstruction items (Issues 4, 6, 7, 8, 9, 11, 16, 18, 23, 24): △ ACCEPT held as school choice
+
+Re-verified the systematic conventions: `en_em` uses non-rhotic `-ər` with **0** rhotic `ɹ` anywhere in the layer (`water`, `house`, `good`, `one` all live-confirmed at their staging values). These are coherent GVS-staging / citation-spelling / FOOT–STRUT / notation decisions under one reconstruction school; substituting Crystal-2016 OP per-word is outside a local-error mandate. Held as a deliberate school choice. As in round-1, I note #11 (`one` en_em `/oːn/`) is the weakest of the set, but it is a consistent staging decision and I do not escalate it — it is a candidate for any future corpus-wide register-convention RFC, not a blocker.
+
+### Issues 10 (`moon`) and 21 (`good` `/ʊː/`): ✓ ACCEPT
+
+Unchanged from round-1; held.
+
+### New issues
+
+None. Verification surfaced no new defensible errors.
+
+### Scorecard
+
+| Item(s) | Judgement |
+|---|---|
+| Issue 1 (`/ts/`→`/ŋk/`) | ✓ fixed & verified |
+| Issue 2 (verb infinitive → noun `þanc`/`θɑŋk`) | ✓ fixed & verified live this round (was previously missing) |
+| Stress omissions 3,5,13,14,15,20,25 | ✓ held (0/40 ang carry stress) |
+| EME/ME staging 4,7,8,9,11,16,18,23 | △ held (school choice) |
+| Rhoticity 6,24 | ✓ held (0 rhotic ɹ in en_em — convention) |
+| 10, 21 | ✓ accept |
+
+The single blocking item (Issue 2) is now correctly written to live data and matches the noun siblings. Every remaining item is a defensible convention/school-level choice I explicitly accept as won't-fix.
+
+**File status: CLOSED** — nothing left to address.

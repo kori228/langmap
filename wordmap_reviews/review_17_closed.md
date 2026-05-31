@@ -254,3 +254,67 @@ None. I verified the surrounding entries during this pass and found no additiona
 - **Blocking — clear semantic errors still live: #1, #2, #9.**
 
 **File status: OPEN** — Dev team must fix in live data: (1) `words/dog.js:720-722` war/bik/bto "ayam"→`ido`-family (do not leave three identical entries); (2) `words/dog.js:868` bjn "hadupan"→`anjing`; (3) `words/heart.js:722` bto "kublit"→`puso`. Also confirm #12 (`pyu` kuwalan→bulan) and #15 (`iba` jari).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I re-verified all blocking and confirm-requested items against the live `words/*.js` data (line numbers as of this round). I applied the two blocking items that are unambiguous wrong-meaning errors WITH a single, confident, internally-corroborated replacement form/IPA. The remaining blocking item (#1) and the two confirm-requested items (#12, #15) I hold, because each involves a surface-lexeme replacement that is either ambiguous in its target form or not internally verifiable per project editing policy.
+
+### Applied (applied by orchestrator this round)
+
+- **#2 — `bjn` dog "hadupan"→"anjing".** Confirmed live `words/dog.js:868` `bjn: ["hadupan", "hadupan"]`. *Hadupan* (< *hadap* "front/face" + -an) = "forecourt/front side", not "dog" — an unambiguous semantic error with a single reviewer-confirmed replacement. Replacement `anjing` matches the dataset's ⟨j⟩=/dʒ/ convention, corroborated internally by `osu: ["anjing", "andʒiŋ"]` (line 1026, same file) and `min: ["anjiang", "aɲdʒiaŋ"]` (line 713). IPA set to `andʒiŋ`. **Applied (surface + IPA, justified as wrong-meaning fix).**
+- **#9 — `bto` heart "kublit"→"puso".** Confirmed live `words/heart.js:722` `bto: ["kublit", "kublit"]`. *Kublit* (< PAN \*kulit) = "skin/bark/hide", not "heart" — unambiguous wrong-meaning error. The adjacent Bikol entry `bik: ["puso", "puso"]` (line 721) is the directly corroborating cognate. Used `puso`/`puso` (no-glottal, matching this file's `tl`/`bik` style as the reviewer explicitly recommended), avoiding the glottal-stop convention debate from #7. **Applied (surface + IPA, justified as wrong-meaning fix).**
+
+### Held with rationale
+
+- **#1 — `war`/`bik`/`bto` dog "ayam".** Confirmed live `words/dog.js:720–722` all `["ayam", "ajam"]`. This is a real anomaly (three identical entries; the Central-Philippine cohort uses \*asu reflexes — `ceb iro`, `hil ido`, `pam asu`, `tl aso`). However the reviewer's own round-1 adjudication waffles on Bikol ("`ayam` is attested as 'dog' in some Bikol sources but `idô` is the standard headword") and offers multiple candidate forms/IPA (ido / iido / idô [ʔiˈdo]/[ʔiˈdoʔ]) across the three lects. Per project policy I do not invent a 3-way surface replacement under candidate ambiguity. **Held pending reviewer-confirmed exact surface+IPA for each of war/bik/bto (and explicit guidance to not leave them identical).**
+- **#12 — `pyu` moon "kuwalan"→"bulan".** Confirmed live `words/moon.js:1060`. The reviewer marked this "confirm", not an asserted unambiguous correction. Internal evidence does NOT support a confident swap: the Puyuma set here is well-populated and does NOT uniformly use PAN reflexes (`dog: suwan` not asu, `one: sa`, `water: enay`), so I cannot dismiss `kuwalan` from internal data alone. The reviewer's own note that it "may be a confusion with another lexical item (e.g. a word for water)" underscores the uncertainty. **Held pending source confirmation.**
+- **#15 — `iba` hand "jari"→"hand".** Confirmed live `words/hand.js:884` `iba: ["jari", "dʒari"]`. Reviewer round-1 itself conceded "iba jari for 'hand' is plausible in lects that collapse hand/finger" and offered an uncertain replacement (`tan`, "or jaun dialectal"). Arguable surface replacement, not a clear-cut error. **Held pending reviewer-confirmed single replacement.**
+
+Net this round: 2 edits applied (#2, #9). 3 items held (#1, #12, #15). All prior-round convention/dialect/source-check holds (#5, #6, #7, #10, #11, #14, #16, #18, #19, #20, #21, #22) remain held per the round-1 mutual adjudication (accepted as defensible by the reviewer) and are not re-litigated here.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every prior-applied fix AND both round-2 fixes against the **live** `words/*.js` data. No phantom edits — everything claimed is genuinely present.
+
+### Round-2 applied fixes — verified live (ACCEPT ✓)
+
+- **#2 `bjn` dog "hadupan"→"anjing".** Live `words/dog.js:868` `bjn: ["anjing", "andʒiŋ"]` ✓. Wrong-meaning fix confirmed; IPA matches the dataset's ⟨j⟩=/dʒ/ convention (corroborated by `osu anjing andʒiŋ`, `min anjiang aɲdʒiaŋ` in same file). Surface change justified as a semantic correction. **ACCEPT.**
+- **#9 `bto` heart "kublit"→"puso".** Live `words/heart.js:722` `bto: ["puso", "puso"]` ✓. Matches the adjacent corroborating cognate `bik: ["puso", "puso"]` (line 721) and uses no-glottal style per file convention, sidestepping the #7 glottal debate. **ACCEPT.**
+
+### Round-1 fixes — re-confirmed still live (ACCEPT ✓)
+
+`fire.js:205 su sɯnɯ` ✓, `hand.js:199 su lɯŋɯn` ✓, `moon.js:722 ace bulɯn` ✓, `good.js:200 ceb maʔajo` ✓, `one.js:719 min tʃieʔ` ✓, `good.js:865 bbc deŋgan` ✓. None regressed.
+
+### #1 `war`/`bik`/`bto` dog "ayam" — REVERSED TO ACCEPT (✗ as error / won't-fix)
+
+This was my round-1 "blocking" item. On round-3 re-examination I **withdraw the blocking status and reverse my own finding.** Live `words/dog.js:720–722` all `["ayam", "ajam"]`, with codes confirmed via `lang_names.js`: `war`=Waray, `bik`=Bikol Central, `bto`=Iriga (Rinconada) Bicolano.
+
+My original framing — "*ayam* means chicken in all three" — was an overreach conflating the **Malayic** *ayam* "fowl" with the **Central-Philippine** etymon *ayam* "dog". In Waray-Waray, Central Bikol, and Rinconada Bikol, *ayam* is in fact a genuine, well-attested word for **dog** (alongside *idô*). There is no chicken-word file in the dataset (`grep` confirms *ayam* occurs **only** in `dog.js`), so there is no internal semantic conflict. My own round-1 text already conceded "`ayam` is attested as 'dog' in some Bikol sources." The worker's round-2 hold under candidate ambiguity was the correct call.
+
+Residual note (non-blocking): three byte-identical entries across three distinct lects is cosmetically suspicious, but identical reflexes across closely-related Bisayan/Bikol lects are linguistically plausible and I have **no internally-verifiable basis to force a differentiation**. Not an error. **ACCEPT / won't-fix.**
+
+### #12 `pyu` moon "kuwalan", #15 `iba` hand "jari" — ACCEPT HOLD (△)
+
+- **#12** Live `moon.js:1060 pyu: ["kuwalan", "kuwalan"]`. I self-marked this "confirm/needs source check" in round-1. The Puyuma set here does NOT uniformly preserve PAN reflexes (`dog suwan`, `water enay`), so internal data neither confirms nor refutes `kuwalan`. No unambiguous correction can be asserted. **HOLD accepted.**
+- **#15** Live `hand.js:884 iba: ["jari", "dʒari"]`. Round-1 I conceded *jari* for "hand" is plausible in lects collapsing hand/finger, and offered only an uncertain replacement. Arguable, not clear-cut. **HOLD accepted.**
+
+### All other prior holds (#3-applied, #4-#8 applied; #5,#6,#7,#10,#11,#14,#16,#18,#19,#20,#21,#22 held)
+
+Already mutually adjudicated and accepted as defensible convention/dialect/lemma-selection/source-check choices in round-1. Re-verified live as unchanged where applicable (`good.js:992 mak badʒiʔ`, `house.js:872 bbc dʒabu`, `father.js:713 min abaʔ`, `one.js:1064 tsu tsone`, `fire.js:582 mad apɔj`, `fire.js:371 dru aˈpoi`). Not re-litigated.
+
+### New issues
+
+None. I scanned the surrounding entries again and found no additional clear errors.
+
+### Scorecard
+
+- Applied & verified live, all rounds: 7 findings / 8 edits (#3×2, #4, #8, #13, #17, #2, #9) — all ✓.
+- Held & accepted as defensible (convention/dialect/lemma/source): #5, #6, #7, #10, #11, #14, #16, #18, #19, #20, #21, #22, #12, #15.
+- Reversed by reviewer (no longer an error): #1.
+- Blocking errors remaining: **none.**
+
+**File status: CLOSED** — nothing left to address. Both wrong-meaning errors (#2, #9) are fixed and verified in live data; my round-1 blocking item #1 is withdrawn (*ayam* is a genuine Central-Philippine word for "dog"); all remaining items are reviewer-accepted defensible choices or unverifiable surface-replacement holds.

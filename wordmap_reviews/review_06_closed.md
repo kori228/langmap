@@ -316,3 +316,79 @@ None. I checked the neighboring entries I touched (heart `ave` zərəd, eye ča�
 The 7 applied fixes are all genuinely present in the live data — no phantom fixes. The held items are all internally consistent and I accept them. However, four items remain genuine, sourced errors with confirmed targets that the dev team can now act on.
 
 **File status: OPEN** — Dev team must: (#12) reconcile `kho` heart so Brahmi 𑀬𑀲𑀻/yasī and IPA agree, e.g. ysāra /zaːra/; (#14) fix `wbl` mother нан 'bread' → мом /mom/; (#20) fix `tly` moon /ymyʒ/ → /umuʒ/; (#13) substantiate or replace `wbl` water "яу" with yupk/[jupk].
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the confirmed, sourced targets on the four open items. I verified all four against live data — `kho heart ["𑀬𑀲𑀻","ðiː"]`, `wbl water ["яу","jau"]`, `wbl mother ["нан","nan"]`, `tly moon ["ümüj","ymyʒ"]` are all exactly as quoted. Adjudication below. **1 applied, 3 held.**
+
+### #12 `kho` heart — APPLIED (IPA-only) (applied by orchestrator this round)
+
+Confirmed self-contradiction. I decoded the Brahmi byte-by-byte: U+1102C BRAHMI LETTER YA + U+11032 BRAHMI LETTER SA + U+1103B BRAHMI VOWEL SIGN II = **ya-sa-ī = yasī**. The IPA /ðiː/ cannot stand against this — agreed.
+
+I did **not** adopt your example target `ysāra /zaːra/`, because that requires fabricating a new Brahmi string (you flagged it as "e.g." and gave no verbatim Brahmi for *ysāra*), which violates our rule against changing surface orthography on a non-verbatim target. Instead I took your stated floor — "at minimum the IPA /ðiː/ must not stand against Brahmi yasī" — and applied the minimal, convention-respecting fix: **surface unchanged `𑀬𑀲𑀻`, IPA `ðiː` → `jasiː`** so the IPA now matches the actual Brahmi reading. This removes the internal contradiction without inventing a lexeme. If the team later confirms the Khotanese 'heart' lemma should be ysāra, that is a surface-orthography change for a separate native-verified pass.
+
+### #13 `wbl` water яу — HELD (reviewer downgraded to recommendation)
+
+You explicitly wrote "△ likely error, but I will not force a blind replacement … I record this as a recommended correction to yupk [jupk] rather than a hard blocker," and said the dev team should "either substantiate 'яу' with a source or apply ['юпк','jupk']." That is a conditional recommendation, not an unambiguous endorsed target. The current entry (surface яу + IPA /jau/) is internally consistent. Held pending a sourced replacement decision.
+
+### #14 `wbl` mother нан — HELD (contested lexeme selection, not a local error)
+
+This is a full surface+IPA lexeme swap (нан/nan → мом/mom) resting on a lexical-semantic argument about which adult word is "standard," not on an internal inconsistency: surface нан and IPA /nan/ agree with each other, so there is nothing mechanically wrong to fix. In round-1 the candidate target was itself unsettled (mom / non / nana), and нан/nan is attested as a Wakhi nursery maternal term in some Pamir sources. Per our editing policy (fix only clear, unambiguous local errors/inconsistencies), swapping the surface form on a single source's lexicographic call risks introducing an error. Held for native-speaker / second-source verification before any surface change. The 'bread'-confusion concern is well-taken and recorded.
+
+### #20 `tly` moon ümüj /ymyʒ/ — HELD (corpus-wide convention; one-off fix would break parity)
+
+This is not an isolated typo. The orthographic mapping **ü → /y/** is used in **two** tly entries: `moon ["ümüj","ymyʒ"]` AND `sun ["rüj","ɾyʒ"]` (sun.js:1008), which you did not flag. Your argument — that Talysh ü encodes a backed/centralized /u/, not front /y/ — is a *convention* claim that applies identically to both. Changing only moon (/ymyʒ/ → /umuʒ/) would leave sun at /ɾyʒ/ and create a new internal inconsistency in the very same ü-mapping. This therefore belongs in the same bucket as the accepted system-level holds (#6 prs /ɒː/, #11 tg /ʉː/): a corpus-wide register/convention ruling, not a round-level local fix. Held; recommend the team apply ü → /u/ across all tly entries (moon + sun together) in a convention pass if adopted.
+
+### Summary
+
+| Item | Disposition |
+|------|-------------|
+| #12 kho heart | APPLIED — IPA `ðiː` → `jasiː` (surface unchanged) |
+| #13 wbl water | HELD — reviewer-downgraded recommendation, needs sourced target |
+| #14 wbl mother | HELD — contested lexeme swap, no internal error, needs verification |
+| #20 tly moon | HELD — corpus-wide ü→/y/ convention (also sun rüj); one-off would break parity |
+
+Remaining open for reviewer/team decision: #13, #14, #20 (3).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified the round-2 applied fix and the three remaining held items against the live `words/*.js` data, re-decoded the Brahmi byte-by-byte, and re-confirmed the round-1 fixes are still present (no regressions).
+
+### Round-2 applied fix — VERIFIED
+
+- **#12 `kho` heart ✓ ACCEPT.** Live data `heart.js:920` `kho: ["𑀬𑀲𑀻", "jasiː"]` — confirmed. I independently decoded the surface string: U+1102C (BRAHMI LETTER YA) + U+11032 (BRAHMI LETTER SA) + U+1103B (BRAHMI VOWEL SIGN II) = *ya-sa-ī* = **yasī**. The new IPA `jasiː` (j = ya, s = sa, iː = ī) is a faithful phonetic transcription of the actual Brahmi reading. The internal self-contradiction (script *yasī* vs IPA /ðiː/) that I flagged is now **resolved**. The worker's reasoning is sound: my `ysāra /zaːra/` was given explicitly as an "e.g." with no verbatim Brahmi, and inventing a new surface string to match a lexeme on a single source's call would violate the project's no-unverified-surface-change rule. Reconciling the IPA to the existing script is the correct minimal fix. Whether `yasī` is the best Khotanese 'heart' lemma is a separate native-verified surface question, not an internal error. **Accepted.**
+
+### Re-verification of round-1 applied fixes — NO REGRESSIONS
+
+Spot-checked all seven: `water.js:905 ave ["𐬁𐬞","aːp"]`, `water.js:904 peo ["𐎠𐎱","aːpi"]`, `heart.js:897 peo ["𐏀𐎼𐎭","zard"]`, `house.js:1046 sog ["kṯʾk","kaθaːk"]`, `eye.js:905 fa_clas ["چشم","tʃaʃm"]`, `love.js:912 fa_clas ["عشق","ʔiʃq"]`, `dog.js:222 ku ["se","sɛ"]`. All present and unchanged. No phantom fixes, no regressions.
+
+### Remaining held items — adjudication
+
+- **#13 `wbl` water "яу"/jau — △ ACCEPT held.** Live `water.js:976` confirms `wbl: ["яу", "jau"]`; surface and IPA are internally consistent. In round-1 I myself downgraded this to "△ likely error, but I will not force a blind replacement" and offered yupk/[jupk] only as a *conditional* recommendation pending a source. The worker is correct that this is not an unambiguous endorsed target. I leave my recommendation on record (standard Wakhi 'water' is *yupk*/*yuk* per Edelman 1990 / Morgenstierne 1938) but **do not treat it as a blocker**. Accepted as held.
+
+- **#14 `wbl` mother "нан"/nan — △ ACCEPT held (concede on internal-error grounds).** Live `mother.js:975` confirms `wbl: ["нан", "nan"]`; surface нан and IPA /nan/ agree, so there is no *internal* inconsistency to mechanically fix — this would be a full surface+IPA lexeme swap resting on a contested lexical-semantic argument (which adult lexeme is "standard"), and нан/nan is attested as a nursery maternal term in some Pamir sources. The 'bread'-confusion risk is real and well-documented in my note, but per the project's policy of fixing only clear, unambiguous local errors, I accept the worker's call to defer this to native-speaker / second-source verification rather than swap surface on a single source. My substantive concern stands on the record for a future native-verified pass; it is **not a round-level blocker.**
+
+- **#20 `tly` moon ümüj /ymyʒ/ — △ ACCEPT held (parity argument verified).** I verified the worker's parity claim against live data: the ü → /y/ mapping appears in **two** tly entries — `moon.js:1008 tly ["ümüj","ymyʒ"]` AND `sun.js:1008 tly ["rüj","ɾyʒ"]` — and I did not flag `sun` in any prior round. The worker is correct that fixing only `moon` (/ymyʒ/ → /umuʒ/) while leaving `sun` at /ɾyʒ/ would *create* a new internal inconsistency in the identical ü-mapping. My descriptive point (Southern Talysh /a e i o u/, no front-rounded /y/; Azerbaijani-influenced ü likely encodes backed/centralized /u/) remains valid, but it is a **corpus-wide convention ruling** that must be applied to moon + sun together, placing it in the same accepted bucket as #6 (prs /ɒː/) and #11 (tg /ʉː/). Recommend the team apply ü → /u/ across both tly entries in a convention pass; **not a one-off round-level blocker.**
+
+### New issues raised during verification
+
+None. I re-decoded the Brahmi, checked the tly sun parity entry, and re-confirmed all round-1 and round-2 fixes; no new defects surfaced.
+
+### Scorecard
+
+| Bucket | Count |
+|--------|-------|
+| Applied & verified in live data (all rounds) | 8 (#1,2,3,5,10,12,21,22) |
+| Held, accepted as convention/won't-fix | 11 (#4,6,7,9,11,15,16,17,18,19,20) |
+| My original rejected on reflection (no change) | 1 (#8) |
+| Held as recommendation / contested-lexeme, not a local error | 2 (#13,#14) |
+| Still-open actionable defects | 0 |
+| New issues | 0 |
+
+The one internal self-contradiction that was genuinely actionable (#12) is now fixed and verified in live data. Every remaining item (#13, #14, #20) is either a sourced recommendation I myself downgraded, a contested lexeme swap with no internal inconsistency, or a corpus-wide convention that one-off editing would break — all defensible system-level / verification-deferred calls. There is nothing mechanically broken left for the dev team to fix.
+
+**File status: CLOSED** — nothing left to address.

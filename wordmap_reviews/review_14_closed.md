@@ -267,3 +267,60 @@ None. Verification surfaced no new errors; the original review's #1/#14 were the
 - **Still actionable (open):** #15 (cat → `["괴","kwe"]`), #19 (Miyako one → `["一つ","puːt͡sɨ"]`). #2 bundled with the deferred OJP-scheme decision.
 
 **File status: OPEN** — Dev team to: (1) replace `ko_mid` cat `["고아이","koai"]` with `["괴","kwe"]` in `words/cat.js`; (2) set `ja_mvi` one to `["一つ","puːt͡sɨ"]` in `words/one.js`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Both remaining open items had a concrete, reviewer-specified target form and are well-supported sourcing/consistency fixes. I applied both.
+
+### Applied
+
+- **#15 `ko_mid` cat `["고아이", "koai"]` → `["괴", "kwe"]`** (applied by orchestrator this round). The reviewer specified the target form. 고아이 /koai/ is not attested in 15th-c. sources; 괴 /kwe/ is the documented Middle Korean lexeme for 'cat' (猫, Hunmongjahoe). This is a sourcing correction with a named, attested replacement — both surface and IPA changed per the reviewer's explicit instruction. `words/cat.js` line 552.
+- **#19 `ja_mvi` one `["一つ", "puːt͡s"]` → `["一つ", "puːt͡sɨ"]`** (applied by orchestrator this round). The reviewer (specialist) confirmed the Irabu/Miyako citation form retains the apical/central final vowel (Shimoji 2008), and the parallel `ja_rys` entry in the same file is `puːt͡sɨ`. Surface unchanged; IPA gains the final `ɨ` for consistency with Yonaguni and with `ɨ` already adopted in `ja_mvi` moon/water. `words/one.js` line 64.
+
+### Held (won't-fix / system-level — unchanged from round-1, reviewer-accepted)
+
+- **#2** `ojp` house `ipey`: bundled with the deferred corpus-wide OJP-notation scheme (#12). Reviewer accepted hold pending that decision.
+- **#1, #14** `ojp` fire `pə`: reviewer withdrew the original issue (火 is otsu B-series i₂, distinct from 日 kō A-series i₁). Won't-fix (issue was mistaken).
+- **#4, #8, #9, #10, #11, #12, #16, #17, #18, #21, #22, #23**: all reviewer-accepted as defensible system-level / convention / no-note-field / won't-fix items. No local data error to correct.
+
+All other previously-applied fixes (#3, #5, #6, #7, #13, #20) were verified byte-for-byte by the reviewer in round-1 and need no further action.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-loaded every relevant entry from the live `words/*.js` files (`WORDS.<word>.data[<code>]`) in fresh Node processes to avoid require-cache bleed, and confirmed the two round-2 fixes plus re-confirmed the six earlier fixes.
+
+### Verification of round-2 "Applied" fixes — both confirmed ✓
+
+- **#15** `words/cat.js` `ko_mid` = `["괴","kwe"]` ✓. The unattested 고아이/koai is gone; the reviewer-specified, attested MK lexeme 괴 /kwe/ (Hunmongjahoe, 猫) is now in place. Surface and IPA both updated as instructed.
+- **#19** `words/one.js` `ja_mvi` = `["一つ","puːt͡sɨ"]` ✓. Final apical/central `ɨ` now present; matches the sibling `ja_rys` entry (`["一つ","puːt͡sɨ"]`, re-verified) and the `ɨ` already used in `ja_mvi` moon/water (Shimoji 2008 citation form).
+
+### Re-verification of round-0/1 fixes — all six still correct in live data ✓
+
+- **#3** `fire.js` `pry` = `["*pii","piː"]` ✓
+- **#5** `water.js` `ja_mvi` = `["水","mid͡zɨ"]` ✓
+- **#6** `father.js` `ja_kanbun` = `["父","t͡ɕit͡ɕi"]` ✓
+- **#7** `hello.js` `ja_kyo` = `["こんにちは","konnit͡ɕiwa"]` ✓
+- **#13** `water.js` `ja_kg` = `["水","midzɯ̥"]` ✓ (stop devoicing ring removed, vowel devoicing kept)
+- **#20** `father.js` & `mother.js` `pjk` surface fields = U+0259 schwa (codepoint dump `2a 259 70 61` / `2a 259 6d 61`); U+01DD turned-e gone in both ✓
+
+No phantom/claimed-but-missing fixes. All 8 data-correctable items are now fixed-and-verified.
+
+### Held items — re-affirmed as accepted
+
+The remaining held items (#1/#14 withdrawn as mistaken — 火 is otsu B-series i₂, distinct from 日 kō A-series i₁; #2 bundled with the deferred OJP-notation scheme #12; #4, #8, #9, #10, #11, #16, #17, #18, #23 as defensible narrow-vs-broad / corpus-wide-policy choices; #21, #22 as inline-citation requests the two-element schema cannot carry) all stand as accepted won't-fix / system-level. Nothing among them is a local data error.
+
+### New issues
+
+None. Verification surfaced no new errors.
+
+### Scorecard
+
+- Applied & verified in live data: 8/8 (#3, #5, #6, #7, #13, #15, #19, #20). ✓
+- Held & accepted as defensible system-level / convention / no-note-field / withdrawn: #1, #2, #4, #8, #9, #10, #11, #12, #14, #16, #17, #18, #21, #22, #23.
+- Still actionable (open): none.
+
+**File status: CLOSED** — nothing left to address.

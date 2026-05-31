@@ -276,3 +276,64 @@ None. Verification surfaced no additional clear errors beyond those already item
 | Held for dictionary | #6,#8,#13,#14,#15 | verify then apply |
 
 **File status: OPEN** — Dev team to: (1) normalize `bik` outliers `kalajɔ/kamɔt/kahɔj → kalajo/kamot/kahoj` (fire/hand/tree); (2) apply confirmed lexical swaps #7 `tsg sun→adlaw`, #11 `bto heart→puso`, #12 `mdh moon→bulan`, #9 `mrw heart→["pusoʔ","pusoʔ"]`, #10 `tsg heart→["pusuꞌ","pusuʔ"]`; (3) leave #6,#8,#13,#14,#15 held pending dictionary confirmation.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the explicit, sourced go-aheads. I applied exactly the items you green-lit and held the dictionary-pending set. All `old` strings copied verbatim from live data; targets match each language's own file convention as you confirmed.
+
+**Applied (by orchestrator this round):**
+
+- **#5/#16 `bik` final-/o/ normalization (3 cells)** — `words/fire.js:727` `bik: ["kalayo", "kalajɔ"]` → `["kalayo", "kalajo"]`; `words/hand.js:721` `bik: ["kamot", "kamɔt"]` → `["kamot", "kamot"]`; `words/tree.js:721` `bik: ["kahoy", "kahɔj"]` → `["kahoy", "kahoj"]`. IPA-only, the three [ɔ] outliers in identical final-/o/ environments brought into line with the 8 existing [o] bik entries (`saro→saɾo`, `puso→puso`, etc.). `hil`/`war`/`bto` left untouched per your instruction (internally coherent). *(applied by orchestrator this round)*
+- **#7 `tsg` sun** — `words/sun.js:882` `tsg: ["suga", "suɡa"]` → `["adlaw", "adlaw"]`. Cognate-certain (ceb/hil/war all `adlaw`); no stress/glottal per tsg convention. *(applied by orchestrator this round)*
+- **#11 `bto` heart** — `words/heart.js:722` `bto: ["kublit", "kublit"]` → `["puso", "puso"]`. Matches sibling `bik: ["puso","puso"]` exactly (same file). *(applied by orchestrator this round)*
+- **#12 `mdh` moon** — `words/moon.js:996` `mdh: ["ulan-ulan", "ʔulanʔulan"]` → `["bulan", "bulan"]`. Per your confirmation of `bulan` (PAN *bulaN); sibling `mrw moon` is `bolan`. *(applied by orchestrator this round)*
+- **#9 `mrw` heart** — `words/heart.js:875` `mrw: ["atay", "ataj"]` → `["pusoʔ", "pusoʔ"]`. Your corrected target (no stress diacritic; mrw uses no stress marks). *(applied by orchestrator this round)*
+- **#10 `tsg` heart** — `words/heart.js:876` `tsg: ["hatay", "hataj"]` → `["pusuꞌ", "pusuʔ"]`. Your corrected target: surface glottal `ꞌ` (U+A78C, matching tsg `iruꞌ`/`amaꞌ`), IPA `ʔ`, no stress diacritic. *(applied by orchestrator this round)*
+
+**Held — pending dictionary / native confirmation (unchanged from your adjudication):**
+
+- **#6 `tsg` fire** (`kayu` 'wood' → `api`/`apuy`), **#8 `tsg` love** (`lasa` 'taste' → `kalayni`), **#13 `mrw` love** (`kalimo`; Danao-internal resemblance to live `mdh love` = `kalini` weakens the 'forgetfulness' reading), **#14 `tao` heart** (`paso` → `poso`), **#15 `tao` moon** (`vehan`; Batanic `vulan`/`buan`-type, verify Rau & Dong-yi 2006). Held — multiple candidate forms / explicit verification flag; not unambiguous.
+
+**Held — system-level / convention (accepted won't-fix in your round-1):**
+
+- **#1, #2, #4** (tl/ilo blanket stress + tl love stress), **#5/#16 hil/war/bto /ɔ/** (phonemic-vs-phonetic convention; only the bik intra-language inconsistency was a local error and is now fixed), **#17/#18** (bik patient-voice citation convention), **#20** (cbk comê/bebê contested orthography + travelling final-[ʔ]), **#23** (ceb maayo hiatus analysis), **#24** (mdh stress-placement rule). Held with rationale per project policy on system-level choices.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified every round-2 "applied" fix byte-for-byte against the live `words/*.js` data. All six go-ahead items are present and correct; nothing claimed-applied is missing, and the held set is untouched as documented.
+
+### Verified applied (live-data confirmed)
+
+- **#7 `tsg` sun** ✓ — `words/sun.js:882` now `["adlaw", "adlaw"]`. Cognate-correct (sibling ceb/hil/war `adlaw`); no stress/glottal per tsg convention. Confirmed.
+- **#11 `bto` heart** ✓ — `words/heart.js:722` now `["puso", "puso"]`, matching sibling `bik: ["puso","puso"]` in the same file. Confirmed.
+- **#12 `mdh` moon** ✓ — `words/moon.js:996` now `["bulan", "bulan"]`. Confirmed; sibling `mrw moon` is `bolan`, the whole moon column is now a coherent *bulaN reflex set.
+- **#9 `mrw` heart** ✓ — `words/heart.js:875` now `["pusoʔ", "pusoʔ"]`. My corrected target (no stress diacritic). Confirmed.
+- **#10 `tsg` heart** ✓ — `words/heart.js:876` now `["pusuꞌ", "pusuʔ"]`. Verified by hexdump: surface glottal = `EA 9E 8C` (U+A78C saltillo ꞌ, matching tsg `iruꞌ`/`amaꞌ`), IPA = `CA 94` (U+0294 ʔ), no stress diacritic. Exactly the agreed convention. Confirmed.
+- **#5/#16 `bik` /ɔ/→/o/ (3 cells)** ✓ — `fire.js:727 kalajo`, `hand.js:721 kamot`, `tree.js:721 kahoj`. The three intra-language outliers are now in line with the 8 existing [o] bik entries. `hil`/`war`/`bto` correctly left untouched (`bto fire` is still `kalajɔ`, `bto tree` `kahɔj` — internally coherent, won't-fix). Confirmed.
+
+### Held items — adjudication (unchanged from round-1)
+
+- **Dictionary-pending lexical set #6 (`tsg` fire `kayu`), #8 (`tsg` love `lasa`), #13 (`mrw` love `kalimo`), #14 (`tao` heart `paso`), #15 (`tao` moon `vehan`)** △ — all confirmed still live and unchanged (`fire.js:882 kayu`, `love.js:883 lasa`, `love.js:882 kalimo`, `heart.js:1047 paso`, `moon.js:1059 vehan`). These were flagged "probable"/"requires verification" or carry competing candidate forms (e.g. #13's Danao-internal resemblance to live `mdh love = kalini` undercuts the 'forgetfulness' reading; #15 Batanic is `vulan`/`buan`-type, not a clean `olan`). Replacing under-documented surface forms without a published-dictionary citation would be guessing. **I do not close on these as actionable errors** — they are correctly held pending Rau & Dong-yi (2006) for tao and a Tausug/Maranao dictionary for tsg/mrw. As the reviewer I accept this hold as the responsible disposition; they are not "clear errors with a verified fix" and so do not block closure.
+
+- **System-level / convention #1, #2, #4, #5/#16 (hil/war/bto /ɔ/), #17, #18, #20, #23, #24** ✗/△ accept — re-affirmed as defensible cross-school / corpus-convention / analytical choices, as adjudicated in round-1. No change.
+
+### New issues
+
+None. Re-verification surfaced no additional clear errors. The heart, moon, and sun columns are now internally consistent across the Philippine entries.
+
+### Scorecard
+
+| Class | Count | Disposition |
+|---|---|---|
+| Applied & live-verified (round-1) | 4 (#3,#19,#21,#22) | ✓ confirmed |
+| Applied & live-verified (round-2) | 6 (#5/#16 bik×3, #7, #9, #10, #11, #12) | ✓ confirmed this round |
+| Convention/system held | #1,#2,#4,#5,#16,#17,#18,#20,#23,#24 | accepted won't-fix |
+| Held for dictionary | #6,#8,#13,#14,#15 | reviewer-accepted hold (not a blocking error) |
+
+Every clear, verifiable error raised in this review has now been fixed and confirmed in live data. The only remaining items are (a) accepted system-level conventions and (b) lexical swaps that responsibly require a published dictionary citation before touching under-documented surface forms — neither is an outstanding actionable defect for the dev team.
+
+**File status: CLOSED** — nothing left to address.

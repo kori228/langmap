@@ -273,3 +273,64 @@ I re-verified all 16 "applied" claims byte-for-byte against the live `words/*.js
 - Open sub-item (accepted partial): #12 `iij-` onset pending Tsakhur-dictionary check.
 
 **File status: OPEN** — Dev team must: (1) actually apply #13 `words/dog.js:156` `koiɾɑ`→`koirɑ` (U+027E→U+0072) — currently still the flap; (2) replace #16 `words/drink.js:675` `["შუა","ʃua"]` with the Mingrelian 'drink' lexeme `["წუმა","t͡sʼuma"]`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I verified all remaining open items byte-for-byte against the live data before deciding. Two reviewer-blocking items are now actionable with reviewer-supplied targets; both applied this round. The remaining holds are unchanged (system-level convention or unsourced lexeme swaps the reviewer himself withdrew as blockers).
+
+### Applied this round
+
+- **#13 `fi` dog** — `words/dog.js:156` `fi: ["koira", "koiɾɑ"]` → `koirɑ`. Confirmed the live rhotic is still U+027E (flap ɾ) with following U+0251 (ɑ); changed ONLY the rhotic to U+0072 (trill r), leaving ɑ untouched. This is the genuine missing fix the reviewer flagged as FALSE-APPLIED in round-1 — Finnish /r/ is a trill, and it now agrees with its sister fix #14 `fi` sun. Olonets `olo:770 ˈkoiɾa` and Votic `vot:772` are deliberately NOT touched (out of scope per reviewer). (applied by orchestrator this round)
+- **#16 `xmf` drink** — `words/drink.js:675` `xmf: ["შუა", "ʃua"]` → `["წუმა", "t͡sʼuma"]`. *შუა* means 'middle/center', a wrong-word data error, not a convention. Reviewer supplied a sourced Mingrelian 'drink' verbal noun **წუმა /t͡sʼuma/** (Kajaia, Megrel.-Georgian dict.; *წუ-* root). Both surface and IPA replaced with the reviewer-endorsed lexeme. (applied by orchestrator this round)
+
+### Held with rationale (unchanged from round-1; reviewer accepted these)
+
+- **#7 `ce` eye / #8 `inh` eye** (бӏ ejective vs pharyngealized) — HELD. Vainakh ӏ-series is notated as ejective corpus-wide; reviewer ACCEPTED this as a defensible system-level convention call and withdrew it as a blocker.
+- **#9 `myv` dog** (`киска` Russian cat-loan) — HELD. Reviewer could not supply a single confidently-sourced literary Erzya 'dog' headword; left as a documented soft-flag, not a blocker. No verified surface+IPA = no responsible swap under read-only policy.
+- **#10 `vep` fire** (`lämoi`) — HELD/withdrawn. Reviewer confirmed *lämoi* is in fact the ordinary Veps word for 'fire' (Zaitseva); his cross-Finnic *tuli* argument was withdrawn. No change.
+- **#15 `sva` good/love duplicate** (`ხოჩა`/`xotʃa`) — HELD. No authoritative Svan 'love' noun supplied; remains a gloss-coverage soft-flag, not a blocker.
+- **#12 `tkr` drink `iij-` onset** — HELD (open sub-item). The ʜ→ħ half was applied earlier; the spurious-length `iij-` onset is analysis/dictionary-dependent (not a fixed-grapheme certainty) and the reviewer explicitly accepted holding it pending a Tsakhur-dictionary check. Not actioned.
+
+### Status
+
+All reviewer-blocking actionable items (#13, #16) are now resolved with reviewer-endorsed targets. Remaining open: #12 onset (dictionary check) plus the accepted soft-flags #7/#8/#9/#15. Nothing else in this file is a clear, unambiguous local error within the read-only mandate.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the two round-2 blockers byte-for-byte against the live `words/*.js` data (codepoint dump via `new Function('WORDS', src)`), and re-confirmed every round-1 applied fix is still present plus the held-item anchors.
+
+### The two previously-open blockers — now resolved (✓)
+
+- **#13 `fi` dog** ✓ — `words/dog.js` `fi` is now `["koira", "koirɑ"]` with rhotic at **U+0072** (plain trill `r`), following vowel still **U+0251** (`ɑ`). This is the genuine fix that was FALSE-APPLIED in round-1 and is now actually in the data. It agrees with its sister `fi` sun (`words/sun.js` `ɑuriŋko`, rhotic U+0072). Out-of-scope `olo` (`ˈkoiɾa`, U+027E flap) and `vot` (`ˈkoira`, U+0072) were correctly left untouched. Resolved.
+- **#16 `xmf` drink** ✓ — `words/drink.js` `xmf` is now `["წუმა", "t͡sʼuma"]` (was `["შუა","ʃua"]` = 'middle/center'). Both surface and IPA replaced with the reviewer-endorsed Mingrelian 'drink' verbal noun *წუმა* /t͡sʼuma/. Wrong-lexeme data error eliminated. Resolved.
+
+### Re-verification of round-1 applied fixes (all still present ✓)
+
+Spot-confirmed in live data: #1 `ka` water `t͡sʼqʼali`; #2 `ka` love `siqʼvaruli`; #3 `xmf` water `tsʼqʼari`; #4 `agx` water `ħed`; #5 `av` dog `hoj`; #6 `av` drink `hekʼeze`; #11 `tkr` water `ħad`; #12 `tkr` drink `iijəħes` (ʜ→ħ half applied); #17 `yrk` eye `sew`; #18 `kpv` eat `ɕojnɨ`; #19 `ab` water `adzə`; #20 `lzz` drink `xt͡sema`; #21 `xmf` moon `tʰutʰa`; #22 `xmf` eye `tʰoli`. None regressed.
+
+### Held / accepted items — unchanged adjudication
+
+- **#7 `ce` eye / #8 `inh` eye** — **ACCEPT (✓ won't-fix-here).** Re-verified the Vainakh ӏ-series is ejective corpus-wide: `fire` `цӏе`→`tsʼe`, `dog` `жӏала`→`ʒʼala`. The two `бӏаьрг`→`bʼæɾɡ` eye entries are consistent with that system convention. Local re-notation would manufacture inner inconsistency. Defensible system-level choice.
+- **#9 `myv` dog** (`киска` cat-loan) — **ACCEPT HOLD (✓), soft-flag.** No confidently-sourced literary Erzya 'dog' headword available; not actionable under read-only policy. Documented, not a blocker.
+- **#10 `vep` fire** (`lämoi`) — **ACCEPT (✓), withdrawn.** *lämoi* is the ordinary Veps word for 'fire' (Zaitseva). No change warranted.
+- **#15 `sva` good/love duplicate** (`ხოჩა`/`xotʃa`) — **ACCEPT HOLD (✓), soft-flag.** Both entries confirmed identical in live data; no authoritative Svan 'love' noun to substitute. Gloss-coverage note, not a blocker.
+- **#12 `tkr` drink `iij-` onset** — **ACCEPT HOLD (✓).** Analysis/dictionary-dependent vowel-length question, not a fixed-grapheme certainty. ʜ→ħ portion is applied. Holding the onset is the right call.
+
+### New issues raised during verification
+
+None. No new defensible errors surfaced. The Komi genuine-ӧ anchor `heart` `сьӧлӧм`→`sʲɵlɵm` (U+0275) remains distinct from the fixed ё, confirming #18 was a true fix and not over-applied.
+
+### Scorecard
+
+- Round-1 applied & still-verified: 15 (#1–6, #11, #12-partial, #14, #17–22).
+- Round-2 blockers now resolved & verified in live data: 2 (#13 `fi` dog, #16 `xmf` drink).
+- Accepted as defensible / won't-fix-here: #7, #8, #9, #10, #15.
+- Accepted open sub-item (held by mutual agreement, not a dev-team blocker): #12 `iij-` onset — a future dictionary-check nicety, nothing the dev team must do under the read-only mandate.
+
+Every clear, unambiguous error in this file is fixed-and-verified in live data. The only remaining items are reviewer-accepted system-level conventions, withdrawn lexical judgments, unsourced soft-flags, and one mutually-held analysis-dependent onset note — none of which is an outstanding actionable error for the dev team.
+
+**File status: CLOSED** — nothing left to address.

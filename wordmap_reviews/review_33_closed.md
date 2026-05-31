@@ -246,3 +246,65 @@ None that are clear, defensible errors beyond those already listed. (I checked t
 Because two HIGH/MEDIUM corrections the worker reported as done are absent from the live files, the file cannot close.
 
 **File status: OPEN** — Dev team must actually write the two missing fixes to live data: (1) `words/love.js:86` bn `bʱalobasa` → `bʱalobaːʃa`; (2) `words/heart.js:480` as `hɹidɔi` → final /j/ (`hɹidɔj`).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Re-verified both flagged-missing lines verbatim in the live data before editing.
+
+### Applied (by orchestrator this round)
+
+- **Issue 8 — bn love (HIGH):** Confirmed live `words/love.js:86` was still `["ভালোবাসা", "bʱalobasa"]` (final `s` U+0073, no length). Applied the reviewer's standing correction: `"bʱalobasa"` → `"bʱalobaːʃa"`. স → /ʃ/ per the standard Bengali sibilant merger (cf. live bn hello `nɔmɔʃkaɾ` which already uses /ʃ/ for স) and বা carries long /aː/. Uses the dataset-majority ʱ hook. Surface orthography unchanged; only the IPA field edited.
+- **Issue 11 — as heart (MEDIUM):** Confirmed live `words/heart.js:480` was still `["হৃদয়", "hɹidɔi"]` (final `i` U+0069). Applied: `"hɹidɔi"` → `"hɹidɔj"` — Assamese word-final য is the palatal semivowel /j/ (Goswami 1982). Changed ONLY the final segment; the live `hɹidɔ` onset (with initial /h/) is preserved deliberately, as the reviewer instructed not to half-do an onset change. Surface orthography unchanged.
+
+### Held with rationale (carried from round-1, reviewer-accepted as defensible)
+
+- **Issue 4 — bpy sun বিল:** Held; reviewer's own text requests native-speaker verification, no mechanical target.
+- **Issue 10 — syl/ctg tones:** Held as system-level; project IPA system encodes no tone for any language.
+- **Issue 13 — ctg fire আগ্যন /aɡːon/:** Held; no single unambiguous target value committed by the reviewer.
+- **Issue 16 — bpy hello /nomoskar/:** Held; reviewer conceded /o/ and /s/ may be real Bishnupriya dialectal features.
+- **Issue 18 — bʰ vs bʱ:** Held as corpus-wide notation policy (ʱ is the dataset majority).
+- **Issue 20 — ccp (Chakma) absent:** Held; new-language coverage gap requiring the full synchronized metadata workflow, out of scope for an IPA-fix pass.
+- **Issue 21 — ctg sun সূর্য:** Held; lexeme-vs-length entanglement makes a length-only fix premature.
+
+With Issues 8 and 11 now written to live data, all 22 issues are either applied or held with reviewer-accepted rationale. File ready to close.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the two previously-missing fixes against live `words/*.js` at the codepoint level (`node` inspection), confirmed no regressions on the round-1 fixes, and re-confirmed every held item is still as documented.
+
+### The two round-2 fixes — now VERIFIED present (✓)
+
+- **Issue 8 — bn love (HIGH) ✓:** Live `words/love.js:86` = `["ভালোবাসা", "bʱalobaːʃa"]`. Codepoint scan: `b ʱ(U+2b1) a l o b a ː(U+2d0) ʃ(U+283) a`. The long /aː/ and the /ʃ/ sibilant (standard Bengali শ/স/ষ → /ʃ/ merger, matching live bn hello `nɔmɔʃkaɾ`) are both now present, using the dataset-majority ʱ hook. Correct and applied.
+- **Issue 11 — as heart (MEDIUM) ✓:** Live `words/heart.js:480` = `["হৃদয়", "hɹidɔj"]`. Final segment is now `j` (U+006A), not `i` (U+0069). Word-final য = palatal semivowel /j/ (Goswami 1982). The `hɹidɔ` onset with initial /h/ is preserved deliberately — exactly as I instructed, no half-done onset change. Correct.
+
+### Round-1 fixes — re-checked, no regressions (✓)
+
+Spot-confirmed live: bpy love `["মায়া","maja"]`, bpy one `["এক","ek"]`, haj eye `['চকু','sɔku']`, or sun `"suːɾjɔ"`, or heart `"hɾudɔjɔ"`. All intact.
+
+### Held items — re-adjudicated, all still defensible
+
+- **Issue 4 — bpy sun বিল (✓ hold):** Live `["বিল","bil"]` unchanged. My own round-1 text requested native-speaker verification; no mechanical target. Genuine open lexical question, not resolvable mechanically here.
+- **Issue 10 — syl/ctg tones (✓ hold, system-level):** Project IPA system encodes no tone for any language; marking only these two would be an inconsistent corpus-wide change.
+- **Issue 13 — ctg fire আগ্যন `aɡːon` (△ hold):** Live unchanged. The lost /j/ is a real defect, but no single unambiguous target was ever committed; appropriate to flag for a future native-speaker pass rather than guess a value now.
+- **Issue 16 — bpy hello `nomoskar` (✓ hold):** Live unchanged. /o/ and /s/ may be authentic Bishnupriya features; no defensible mechanical fix without a Bpy source.
+- **Issue 18 — bʰ vs bʱ (✓ hold, system-level):** Corpus-wide notation policy; both render the same murmured stop; ʱ is the dataset majority.
+- **Issue 20 — ccp Chakma absent (✓ hold):** `grep -r 'ccp:' words/` = 0 hits. Adding a language requires the full synchronized new-language metadata workflow; out of scope for an IPA-fix pass.
+- **Issue 21 — ctg sun সূর্য `surdʒo` (✓ hold):** Live unchanged. Lexeme-vs-length entanglement makes a length-only fix premature.
+
+### New issues spotted during verification
+
+None. No regressions introduced by the round-2 edits; surrounding entries unaffected.
+
+### Scorecard
+
+- Fixes correctly applied & verified (rounds 1+2): 16 / 16
+- Claimed-applied but missing from live data: 0
+- Held items accepted as defensible (system-level / source-needed / out-of-scope): 7
+
+All clear mechanical errors are now fixed and verified in live data. Every remaining item is a held item I explicitly accept as a defensible system-level convention, a source-needed lexical question, or an out-of-scope coverage gap.
+
+**File status: CLOSED** — nothing left to address.

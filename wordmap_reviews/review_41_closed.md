@@ -263,3 +263,61 @@ I re-verified every claimed "applied" fix against the live `words/*.js` (loaded 
 Eight applied fixes verified clean. Two outstanding clear errors remain: one claimed-but-absent fix (#14) and one newly found inconsistency (N1), both small one-token IPA edits in `words/thanks.js`.
 
 **File status: OPEN** — dev team must: (1) apply the #14 correction `bo` thanks → `tʰukt͡ɕe˥ t͡ɕʰe˥` (remove the unmotivated long vowel `tʰuː`, line 184); (2) fix N1 `xct` thanks → `tʰukdʑe tɕʰe` (postalveolar `dʒ` → alveolo-palatal `dʑ`, line 914).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Re-verified the two outstanding clear errors against live `words/thanks.js`. Both confirmed present and both are unambiguous one-token IPA fixes; applied.
+
+### Applied
+
+- **#14 `bo` thanks (long vowel `tʰuː`)** — Confirmed live line 184: `bo: ["ཐུགས་རྗེ་ཆེ", "tʰuːt͡ɕe˥ t͡ɕʰe˥"]`. The unmotivated long vowel was still present (the round-1 vowel `i`→`e` fix landed, but the coda/short-vowel half did not). ཐུགས has a short /u/ + reduced -gs coda → [tʰuk], not [tʰuː]. Corrected the first syllable only: `tʰuːt͡ɕe˥` → `tʰukt͡ɕe˥`, leaving the rest of the entry (`t͡ɕʰe˥`, tie-bar + tone style) untouched. Now consistent with `khg` (tʰukdʑe), `lbj` (tʰuktɕetɕʰe), `xct_litpr` (tʰukdʑe). (applied by orchestrator this round)
+- **N1 `xct` (Classical Tibetan) thanks (`dʒ`→`dʑ`)** — Confirmed live line 914: `xct: ["ཐུགས་རྗེ་ཆེ", "tʰukdʒe tɕʰe"]`. Tibetan ཇ/rje is alveolo-palatal /dʑ/, not postalveolar /dʒ/. Same error class as the already-accepted #9 (`lbj` dʒule→dʑule), and internally inconsistent with the adjacent `xct_litpr` (line 913) which already uses `tʰukdʑe`. Corrected `tʰukdʒe`→`tʰukdʑe`; the trailing ` tɕʰe` left untouched. (applied by orchestrator this round)
+
+### Held (unchanged from round-1, reviewer accepted all holds)
+
+All prior holds were accepted by the reviewer in round-1 (#4/#5/#6 systemic tone passes; #11 now moot; #13 register choice; #15/#16 disputed Dzongkha aspiration; #17 Classical vs bare-root; #19 Amdo new-language scope; #20 tied to tone pass; #21 per-syllable tone convention; #18/#22 informational). No further local edits are warranted for these — they remain genuine system-level / convention / scope decisions, not local errors.
+
+With #14 and N1 applied, no clear, unambiguous data errors remain open in this file.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the two round-2 fixes and re-confirmed the round-1 fixes against the live `words/*.js` (loaded each file into Node and read the `data` object directly).
+
+### Verification of round-2 applied fixes
+
+- **#14 `bo` thanks (long vowel `tʰuː` → short coda `tʰuk`)** — ✓ **Accept.** Live `words/thanks.js`: `bo: ["ཐུགས་རྗེ་ཆེ","tʰukt͡ɕe˥ t͡ɕʰe˥"]`. The unmotivated long vowel `tʰuː` is gone; first syllable is now `tʰuk` (short /u/ + reduced -gs coda), tie-bar and tone-mark style preserved. Now consistent with `khg` `tʰukdʑe`, `lbj` `tʰuktɕetɕʰe`, `xct`/`xct_litpr` `tʰukdʑe`. Matches Tournadre/Goldstein. Verified.
+- **N1 `xct` (Classical Tibetan) thanks (`dʒ` → `dʑ`)** — ✓ **Accept.** Live `words/thanks.js`: `xct: ["ཐུགས་རྗེ་ཆེ","tʰukdʑe tɕʰe"]`. The postalveolar `dʒ` is corrected to alveolo-palatal `dʑ`, matching ཇ/rje in all Tibetan dialectology and now identical to the adjacent `xct_litpr` row (`tʰukdʑe tɕʰe`). Same error class as accepted #9. Verified.
+
+### Re-confirmation of round-1 fixes (spot-check, all intact)
+
+- **#1 `bft` love** — Live `["དགའ་བ","gaba"]`. ✓ ("to die" gloss gone.)
+- **#3 `khg` father** — Live `["ཨ་ཕ","apʰa"]`. ✓
+- **#9 `lbj` hello** — Live `["ཇུ་ལེ","dʑule"]`. ✓
+- **#10 `khg` hello** — Live `["ཨ་རོ","aro"]`. ✓ (Romance flap removed.)
+- **#12 `bft` eat** — Live `["ཟ","za"]`. ✓ (voicing preserved.)
+- Incidental: `bo` hello is live `["བཀྲ་ཤིས་བདེ་ལེགས","taɕi˥ telek˩˧"]` — affricate independently simplified to plain `t`, confirming #11/#21 are moot for this entry as noted in round-1.
+
+### Held items — final adjudication
+
+All holds (#4/#5/#6 systemic tone passes; #11 moot; #13 register choice; #15/#16 disputed Dzongkha aspiration; #17 Classical vs bare-root orthography; #19 Amdo new-language scope; #20 tied to tone pass; #21 per-syllable tone convention; #18/#22 informational) remain **✓ accepted as defensible system-level / convention / scope decisions**, unchanged from round-1. None is a clear local data error; each is a legitimately deferred team-convention or new-language-addition task.
+
+### New issues this round
+
+None. No new actionable errors surfaced during verification. (Note: `bft` thanks is live `kadrintɕʰe` with aspirated tɕʰ vs `dz` `kadrintɕe` unaspirated — this reflects the ཆེ/aspirated-ཆ distinction and is plausibly a genuine Balti/Dzongkha contrast, not flagged as an error.)
+
+### Scorecard
+
+| Outcome | Items |
+|---|---|
+| ✓ Verified-applied (round-2) | #14, N1 |
+| ✓ Verified-applied (round-1, re-confirmed) | #1, #2, #3, #7, #8, #9, #10, #12 |
+| ✓ Hold accepted (convention/scope) | #4, #5, #6, #11, #13, #15, #16, #17, #19, #20, #21, #18, #22 |
+| ✗ Outstanding errors | none |
+
+Both outstanding round-2 errors are now fixed-and-verified in live data. No claimed-but-absent fixes, no new actionable issues.
+
+**File status: CLOSED** — nothing left to address.

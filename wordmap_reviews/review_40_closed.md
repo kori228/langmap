@@ -282,3 +282,61 @@ None beyond promoting issue 19 to an actionable internal-consistency fix. (I che
 | 19 (`kare` `ɛ` vs `e`) | △ OPEN — genuine internal inconsistency vs `na ɡode`; must fix |
 
 **File status: OPEN** — Dev team must do one thing: fix the internal vowel-quality inconsistency in `words/dog.js`, Hausa IPA `kaɾɛ` → `kaɾe` (or `kaɾeː`) to match the corpus's own `na ɡode` (`ɡode`) treatment of orthographic word-final `e`. All other held items are upheld as defensible system-level conventions and require no action.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the corpus-wide audit and the clear scorecard. Only one item remains actionable, and I am applying it.
+
+### Applied
+
+**Issue 19 — `ha` / `dog` — `kare` IPA `kaɾɛ` → `kaɾe`** — (applied by orchestrator this round)
+- `words/dog.js` line 259, `ha` IPA field: `kaɾɛ` → `kaɾe`. Surface orthography `kare` unchanged; only the open-mid `ɛ` is corrected to close-mid `e`.
+- This is a genuine internal inconsistency, not a system-level convention. The same orthographic word-final `e` is rendered `e` everywhere else in the corpus: `thanks.js` `ha: ["na gode", "na ɡode"]` (`ɡode`), and within `dog.js` itself both `kxc: ["kareta", "kaɾeta"]` (line 267) and `ssy: ["kare", "kaɾe"]` (line 1007) use `ɾe`. The `kaɾɛ` rendering is an n=1 outlier. Standard Hausa `kare` has close-mid `/e(ː)/`, matching `gode`. I align it to `kaɾe` per the reviewer's endorsed fix; I do not add the length mark `ː`, since vowel-length marking is part of the held system-wide convention (issue 17) and adding it here alone would reintroduce the inconsistency the policy guards against.
+
+### Held with rationale (upheld from round-1 / reviewer-rejected)
+
+All remaining items were REJECTED by the reviewer in round-1 (hold upheld) and require no action:
+- **Issues 1–4, 9–15, 17, 20, 22 (tone-suppression):** internally-consistent broad/orthography-mirroring IPA convention across all 60 entries; corpus-wide transcription-convention change, not a local error. Reviewer upheld the hold.
+- **Issues 8, 15, 23 (`nw-` → `ŋw`):** defensible broad transcription applied uniformly across cat/moon/sun; alternative analysis, not a correction. Held.
+- **Issue 21 (`pcm`/water accent):** defensible system-level broad-IPA choice (n=1 orthographic accent). Held.
+- **Issues 7, 18 (`ɡb` tie-bar / `kʲ` vs `c`):** flagged by reviewer as presentation / valid surface reading. Held.
+- **Issues 5, 6:** confirmed correct by reviewer; no action.
+
+With issue 19 applied, no actionable items remain.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the one outstanding actionable item and re-confirmed the previously-applied fix against the live per-word data files.
+
+### Verification of the round-2 fix
+
+- **Issue 19 (`ha`/`dog` — `kare` `kaɾɛ` → `kaɾe`) — ACCEPTED ✓ and CONFIRMED in live data.** `words/dog.js` line 259 now reads `ha: ["kare", "kaɾe"]`. The open-mid `ɛ` is gone; the close-mid `e` now matches the corpus's own treatment of orthographic word-final `e` in `thanks.js` (`na ɡode`, line 259), and the other `kare`-family entries `kxc` (`kaɾeta`, line 267) and `ssy` (`kaɾe`, line 1007) within `dog.js` itself. I grepped the whole corpus: no `kaɾɛ` (or `kaɾ.ɛ`) outlier remains. The internal inconsistency I raised in round-1 is resolved. Declining the length mark `ː` is correct — adding it alone would reintroduce the very inconsistency the held vowel-length convention (issue 17) guards against.
+
+### Re-confirmation of earlier applied fix
+
+- **Issue 16 (`ha`/`one`) — still verified.** `words/one.js` line 265 reads `ha: ["ɗaya", "ɗaja"]`; implosive `ɗ` intact, no `dʼ` ejective notation anywhere in the corpus.
+
+### Held items — upheld
+
+All remaining items (1–4, 9–15, 17, 20, 22 tone-suppression; 8, 15, 23 `nw-`→`ŋw`; 21 pcm accent; 7, 18 tie-bar/`kʲ`) remain REJECTED as in round-1: each is an internally-consistent, corpus-wide broad-IPA / orthography-mirroring convention or a presentation/valid-reading choice, not a local error. No change required.
+
+### New issues
+
+None.
+
+### Scorecard
+
+| Item(s) | Judgement |
+|---|---|
+| 16 (applied r1) | ✓ accepted, re-verified in live data |
+| 19 (applied r2) | ✓ accepted, verified in live data — internal inconsistency resolved |
+| 1–4, 9–15, 17, 20, 22 (tone-suppression) | ✗ reject — consistent broad-IPA / orthography-mirroring convention |
+| 8, 15, 23 (`ŋw`) | ✗ reject — consistent broad transcription |
+| 21 (pcm accent) | ✗ reject — defensible system-level choice (n=1) |
+| 7, 18 (tie-bar / `kʲ`) | ✗ reject — presentation / valid reading |
+
+**File status: CLOSED** — nothing left to address. The sole actionable fix (issue 19) is applied and verified in live data; all other items are upheld as defensible system-level conventions.

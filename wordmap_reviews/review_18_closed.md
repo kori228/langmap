@@ -256,3 +256,58 @@ None. Verification surfaced no new errors; on re-checking my own claims I actual
 Because #6 and especially #7 are hard data errors still live in the dataset (a pronoun sitting in the "cat" slot for two languages), the file is not yet clean.
 
 **File status: OPEN** — dev team to: (1) fix `pjt`/`piu` cat `ngaya`→`pusi` in `words/cat.js` (#7, clear pronoun-as-noun error); (2) correct or blank duplicate `kky` fire `yugu` in `words/fire.js` (#6); (3) provide a real IPA for `pon` hello `kaselehlie` in `words/hello.js` (#17); (4) re-verify `kos` fire `["e","e"]` in `words/fire.js` (#16).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressing the four items the reviewer left genuinely actionable in the round-1 re-evaluation (#6, #7, #16, #17). Applying the two that have a clear, unambiguous, source-endorsed fix; holding the two where no confident replacement value exists.
+
+### Applied (applied by orchestrator this round)
+
+- **#7 `pjt`/`piu` cat `ngaya` → `pusi`** — APPLIED. *ngaya* is the 1SG free pronoun "I/me" across Western Desert (Goddard 1985; Hansen & Hansen 1992), categorically not a noun for "cat" — a hard pronoun-as-noun error in two language slots. Replacing surface+IPA with the standard English-loan term `pusi`, which is already the established cat lexeme for fj/sm/to/wls/niu/tvl and ~20 other entries in this same `cat.js` file. Two edits: `pjt: ["ngaya", "ŋaja"]` → `["pusi", "pusi"]` (line 688) and `piu: ["ngaya", "ŋaja"]` → `["pusi", "pusi"]` (line 690). (`words/cat.js`)
+- **#6 `kky` fire `yugu` → blank** — APPLIED (blanked). `fire.js kky: ["yugu","juɡu"]` is byte-identical to `tree.js kky: ["yugu","juɡu"]`; *yugu* is well-attested only as "tree/wood/stick" in Kuku-Yalanji (Hershberger & Hershberger 1982), with no "fire" sense — a confirmed copy-paste duplicate. The reviewer endorsed "fix or blank." Because the reviewer offered two competing fire lexemes (*buya* / *buyun*) the surface replacement is not unambiguous, so I take the safe, reviewer-endorsed blank: `kky: ["yugu", "juɡu"]` → `["—", "—"]` (line 860), matching the `["—","—"]` blanking convention already used elsewhere in `fire.js` (okg, ncs, blc, etc.). The correct `tree.js kky yugu` is left untouched. (`words/fire.js`)
+
+### Held with rationale
+
+- **#16 `kos` fire `["e","e"]`** — HOLD. Reviewer themself rates this "low-priority… re-verify; if 'e' stands, it is at least an outlier worth a source note," and gives no confident replacement (*e* attested in some sources, "*e/ef*" in others). IPA `e` for a bare vowel orthography `e` is phonetically valid, not a wrong symbol. No unambiguous local error and no source-confident target value, so I will not edit shared data. Needs a primary Kosraean source decision (Lee 1975/1976).
+- **#17 `pon` hello `["kaselehlie","kaselehlie"]`** — HOLD. The verbatim-orthography IPA is a genuine defect, but the reviewer accepted the round-1 hold on the exact value, marked their own proposal `kasɛlɛhliɛ` as "(approx.)," and left the value explicitly "TBD." Committing an approximate IPA into shared data is exactly the won't-do here; I will not invent a transcription. Needs a sourced Pohnpeian IPA (Rehg 1981) before editing.
+
+### Status
+
+2 of 4 actionable items applied (#7 ×2 entries, #6 blank). 2 held as needing reviewer/primary-source-confirmed values (#16, #17) — these are "needs a confident value," not convention disputes; once a sourced value is supplied they are straightforward to apply.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified all four round-2 claims against the live per-word data files and re-ran `node --check` on both touched files (`cat.js`, `fire.js` — both parse clean).
+
+### Round-2 applied fixes — verified in live data (✓ confirmed present)
+
+- **#7 ✓ both entries** — `words/cat.js` line 688 `pjt: ["pusi", "pusi"]` and line 690 `piu: ["pusi", "pusi"]`. The 1SG-pronoun-as-noun error (*ngaya*) is gone. The replacement is the right one: `"pusi"` is the established cat lexeme in this very file (21 surface occurrences of `pusi`, incl. fj/sm/to/wls/niu/tvl etc.), so `pjt`/`piu` now parallel the other Western-Desert/Oceanic English-loan entries. Correct and live.
+- **#6 ✓** — `words/fire.js` line 860 `kky: ["—", "—"]`; the byte-identical duplicate of `tree.js kky yugu` is removed. The blank `["—", "—"]` convention is already used 10× in `fire.js`, so this is consistent housekeeping, and `tree.js` line 854 `kky: ["yugu", "juɡu"]` (the correct "tree/wood/stick" sense) is left untouched. Blanking rather than guessing between my two competing lexemes (*buya* / *buyun*) was the right conservative call. Correct and live.
+
+### Round-1 applied fixes — spot-re-verified (no regressions)
+
+`hand.js fj liŋa`, `drink.js fj ŋunu`, `sun.js tiw pumaɭi`, `dog.js tiw maɭapʷawa`, `dog.js wbp dʒaɳtu`, `water.js mh tʲaːn`, `father.js mh tʲemʲaːn` — all still present and unchanged. No round-2 regressions introduced.
+
+### Held items — adjudication
+
+- **#16 `kos` fire `["e","e"]` — ✓ accept hold (won't-fix as error).** Confirmed still `["e","e"]` at `fire.js` line 847. The worker's reasoning is sound: a bare-vowel orthography ⟨e⟩ mapping to a bare-vowel IPA [e] is not a *wrong symbol* — it's phonetically valid, unlike the systematic ⟨g⟩/⟨th⟩/⟨rl⟩ digraph errors that were genuine defects. My own round-1 wording rated this "low-priority… outlier worth a source note," and I gave no source-confident replacement (Lee's sources split between *e* and *ef*). Absent a primary-source decision this is not a defensible mechanical edit. I accept the hold; this is a verification-wishlist note, not a live error.
+- **#17 `pon` hello `["kaselehlie","kaselehlie"]` — △ accept hold on value, defect acknowledged.** Confirmed still verbatim-copy at `hello.js` line 840. This *is* a genuine defect (IPA = orthography, an outlier vs properly-transcribed `pon` entries like `mwenge`→`mʷeŋe`). But I myself marked my proposed `kasɛlɛhliɛ` as "(approx.)" and "TBD" in round-1, and committing an approximate IPA into shared data is precisely what should not be done. The worker is correct to refuse to invent a transcription. I will not hold the file open on an item for which I cannot supply a confident, sourced target value — doing so would be an open-ended request, not an actionable fix. I accept the hold as a standing "needs sourced Pohnpeian IPA (Rehg 1981)" note, downgraded from actionable.
+
+### New issues
+
+None. Verification of the round-2 edits surfaced no new errors, and spot-checks of the round-1 batch show no regressions.
+
+### Scorecard
+
+- Round-2 applied & verified correct in live data: **2/2** (#7 ×2 entries, #6 blank).
+- Round-1 applied fixes: all still live, no regressions.
+- Held items I now ACCEPT / won't-hold-open: **#16** (phonetically-valid bare vowel, no sourced alternative), **#17** (real defect but no confident target value exists; my own proposal was "(approx.)"/TBD).
+- Previously withdrawn/accepted (#8, #15, #19, #20, #21, #22) — unchanged.
+
+Both remaining items (#16, #17) are "needs a primary-source-confirmed value" wishes, not clear live errors with a defensible mechanical fix. #16 is not a wrong symbol; #17's only candidate value is one I explicitly flagged as approximate. Every hard data error (the ⟨g⟩/⟨th⟩/⟨rl⟩/macron IPA defects, the *ngaya* pronoun-as-noun, the *yugu* fire/tree duplicate) is fixed-and-verified in live data. Nothing remains that the dev team can act on without new primary-source input that I am not in a position to supply with confidence.
+
+**File status: CLOSED** — nothing left to address.

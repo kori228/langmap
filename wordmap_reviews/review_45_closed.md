@@ -251,3 +251,55 @@ I confirmed each of these is truly dataset-wide, so per-entry edits would break 
 | ✗ Re-opened (must fix) | 17 — orthographic `ă` inside IPA, singleton outlier |
 
 **File status: OPEN** — Dev team must fix `words/moon.js:77` vi_c: replace the orthographic ⟨ă⟩ with IPA `a` (`ʈăːŋ˥` → `ʈaːŋ˥`); it is the sole vi entry mixing quốc-ngữ into IPA, a clean local error rather than a held convention.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I accept the reviewer's re-opened ISSUE 17 and applied it. I re-verified every prior held item; they remain genuine dataset-wide conventions and stay held.
+
+### Applied
+
+- **ISSUE 17 — `moon.js:77` vi_c orthographic ⟨ă⟩ inside IPA** (applied by orchestrator this round). `vi_c: ["mặt trăng", "maːk˨˨ ʈăːŋ˥"]` → IPA `ʈăːŋ˥` → `ʈaːŋ˥`. Verified by hex dump: the IPA second syllable was `ʈ`(ca88) + `ă`(c483 = U+0103, `a`+combining breve U+0306) + `ː`(cb90) + `ŋ`(c58b). A dataset-wide scan (`grep -oP 'vi(_..)?: [..., "..ă.."]'` over all `words/*.js`) confirms this is the ONLY vi IPA string containing ⟨ă⟩ — every other occurrence of ⟨ă⟩ in the corpus is in surface orthography (e.g. "trăng"), never inside an IPA field. It is a lone outlier, not a convention, so the editing policy permits the fix. ⟨ă⟩ is not an IPA symbol; the intended short low vowel is plain `a`. Only the vowel character was changed; the length mark `ː`, the tone `˥`, the retroflex initial `ʈ`, and the surface form "mặt trăng" are untouched.
+
+### Held — confirmed systematic conventions (unchanged from round-1, reviewer-accepted)
+
+- **ISSUE 1/4/30** unreleased final stops, **11/14/25** nặng without glottal/creak marker, **10/12/24/28** ngang notation (`˥` native vs `˧˧` Hán-Việt), **13** 一 *nhất* checked-Hán-Việt `˨˩`, **6** 善 *thiện* `˨˩˨` (reviewer's huyền target not unambiguously correct; nặng-family is plausible), **9/22/23** Central/Southern hỏi-merger & sắc realisations, **19/20** ⟨x⟩=`s` & Southern `siŋ`, **21** 萬 *vạn* vowel/tone. All verified dataset-wide in round-1 by both worker and reviewer; per-entry edits would desync the corpus. These remain candidates for dedicated team-wide convention passes (unreleased stops; nặng marking; Hán-Việt checked-tone/vowel normalisation), not piecemeal fixes.
+
+- **Note-only / defensible (no action):** ISSUES 2, 3, 5, 7, 8, 15, 26, 27, 29 — reviewer-assessed as acceptable or representation preferences.
+
+**Summary:** 1 clear local fix applied (moon.js vi_c `ʈăːŋ˥` → `ʈaːŋ˥`, removing orthographic ⟨ă⟩ from IPA — the sole such outlier). All remaining flagged items are reviewer-confirmed systematic conventions held for team-wide passes.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified the round-2 fix and re-confirmed every held item directly against live data under `words/`.
+
+### Verification of the round-2 applied fix
+
+- **ISSUE 17 (moon.js vi_c orthographic ⟨ă⟩ in IPA) — ✓ ACCEPT, VERIFIED.** Live `words/moon.js:77` now reads `vi_c: ["mặt trăng", "maːk˨˨ ʈaːŋ˥"]`. Hex dump of the IPA confirms the second syllable is now `ʈ`(ca88) + `a`(0x61, plain ASCII) + `ː`(cb90) + `ŋ`(c58b) + `˥`(cba5) — no longer the U+0103 `ă` (c483). The orthographic ⟨ă⟩ (c483) survives only inside the surface form "trăng", which is correct. A fresh dataset-wide scan for `ă` inside any vi/vi_* IPA field across all `words/*.js` returns **zero hits**. The sole outlier is gone; surface form, length mark `ː`, tone `˥`, and retroflex initial `ʈ` are untouched. Clean fix.
+
+### Re-verification of held items (all confirmed unchanged / consistent)
+
+- **ISSUE 16/18 (round-1 fix) — ✓ still correct.** `moon.js:76` `vi: ["mặt trăng", "mət˨˩ taŋ˥"]`; agrees with `vi_nom` `mət taŋ`.
+- **ISSUE 13 (一 *nhất* `˨˩`) — ✓ held confirmed.** `one.js:563` `ɲət˨˩`; consistent with `福 fuk˨˩` (`hello.js:557`) and `目 muk˨˩` (`eye.js:557`). Checked-Hán-Việt convention intact.
+- **ISSUE 6 (善 *thiện* `˨˩˨`) — △ held acceptable.** `good.js:557` still `tʰien˨˩˨`; reviewer's huyền target was never unambiguously correct (善 = 上聲 voiced initial → nặng-family), so mechanical replacement remains unwarranted. Defers to a Hán-Việt normalisation pass.
+- **ISSUE 21 (萬 *vạn*) — ✓ held confirmed.** `hello.js:557` `vən˨˩`; same checked/departing Hán-Việt family.
+- **ISSUE 28 (貓 *miêu* `˧˧`) — ✓ held confirmed.** `cat.js:557` `miew˧˧`; consistent with the Hán-Việt level-tone `˧˧` notation.
+- **ISSUE 1/4/30, 11/14/25, 10/12/24, 9/22/23, 19/20 — ✓ held confirmed** as genuine dataset-wide conventions (unreleased stops; nặng without glottal marker; ngang `˥` native vs `˧˧` Hán-Việt; dialect hỏi-merger; ⟨x⟩=`s`). These are system-level transcription policies, defensibly won't-fix at the per-entry level; appropriately routed to team-wide convention passes rather than piecemeal edits.
+
+No new issues found.
+
+### Scorecard
+
+| Verdict | Items |
+|---|---|
+| ✓ Accept (fix verified) | 17 (round-2), 16/18 (round-1) |
+| ✓ Accept (held = real systematic convention) | 1/4/30, 11/14/25, 10/12/24/28, 13, 9/22/23, 19/20, 21 |
+| ✓ Accept (note-only / defensible) | 2,3,5,7,8,15,26,27,29 |
+| △ Held acceptable (not unambiguously correctable) | 6 |
+
+Both local errors the reviewer identified (rounds 1–2) are now fixed and verified in live data. Every remaining flagged item is a defensible dataset-wide convention or note-only assessment that I accept as won't-fix at the data level.
+
+**File status: CLOSED** — nothing left to address.

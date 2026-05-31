@@ -323,3 +323,66 @@ I verified every claimed "applied" fix against the live data under `words/` (gre
 - Outstanding actionable: **1** — the residual `ⲟⲩⲱⲙ` omega (`uɔːm`→`uoːm`), a leftover from the Issue 8 fix.
 
 **File status: OPEN** — Dev team must apply the one residual omega fix: `eat.js cop` IPA `uɔːm` → `uoːm` (omega /oː/, matching the Issue 8 corpus baseline; ⲟⲩ analysis itself can remain held).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I verified the one outstanding actionable item against live data and applied it.
+
+### Applied (applied by orchestrator this round)
+
+- **Issue 15 / residual omega (applied by orchestrator this round).** `eat.js:524 cop` `["ⲟⲩⲱⲙ", "uɔːm"]` → `["ⲟⲩⲱⲙ", "uoːm"]`. Only the IPA field changes; the omega ⲱ goes from `ɔː`→`oː`, exactly the same single-character correction already applied and accepted in Issue 8 (`ejoːt`, `kroːm`, `soː`). Surface form `ⲟⲩⲱⲙ` untouched; no syllabification change (the ⲟⲩ=/w/ reanalysis remains held per reviewer). This restores internal consistency: every Sahidic ⲱ in the corpus now reads /oː/. Confirmed the reviewer is correct that this is not an "orphan" — it is a surface-safe, mechanical IPA correction of an already-endorsed class.
+
+### Held with rationale (unchanged from round-1, reviewer-accepted)
+
+- **Issues 3, 12 (Hausa tones / Somali pitch accent).** HELD. Suprasegmental corpus-wide transcription-policy decisions, not local errors; reviewer accepted these as flagged convention items. No local-error fix available without a maintainer/convention pass.
+- **Issues 6, 7, 14, 16 (egy reconstruction-depth).** HELD. `mw` final /w/, dog /juːjuː/, heart jb chronology, hello `jined` are all reconstruction-stage/structure choices for the egy-reconstruction owner; reviewer logged them as flagged concerns, not blocking won't-fix corrections.
+- **Issues 9, 13, 17 (surface-dependent).** HELD. bej water `yam`, rif sun `dhish`, sid water `waayyo`: in each case the current IPA faithfully tracks the existing surface orthography; the reviewer's correction would require a surface/lemma change, which is out of IPA-only scope. Reviewer accepted all three holds.
+- **Issues 19, 20, 21.** HELD (no action). Documentation/no-action items by the reviewer's own framing; accepted.
+
+### Status
+
+All eight round-1 fixes remain verified present. The single residual omega fix is now applied. No further actionable IPA-level local errors remain in this file; remaining held items are convention/reconstruction/surface decisions for maintainers, all reviewer-accepted as holds.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every applied fix and every held item directly against the live data under `words/` (grep on the actual entry fields). No phantom fixes — all nine corrections are genuinely present in the current data.
+
+### Applied fixes — RE-VERIFIED in live data (round-3)
+
+- **Issue 1 (✓ accept).** `drink.js so` `["cab","ʕab"]`, `eat.js so` `["cun","ʕun"]`, `hand.js so` `["gacmo","ɡaʕmo"]`, `love.js so` `["jacayl","dʒaʕajl"]` — all four pharyngeals present. Somali `c` = /ʕ/. Correct.
+- **Issue 2 (✓ accept).** `drink.js om` `["dhuguu","ɗuɡuː"]`, `mother.js om` `["haadha","haːɗa"]` — implosive /ɗ/ in both. Correct.
+- **Issue 4 (✓ accept).** `one.js ha` `["ɗaya","ɗaja"]` — implosive ɗ, ejective apostrophe gone. Cross-check: `love.js ha` `["ƙauna","kʼauna"]` correctly retains the genuine ejective. Correct.
+- **Issue 5 (✓ accept).** `hand.js egy` `["𓂝𓂋𓏏","ʕaːɾat"]` — pharyngeal restored. Correct.
+- **Issue 8 (✓ accept).** `father.js cop` `ejoːt`, `fire.js cop` `kroːm`, `drink.js cop` `soː` — all three Sahidic omegas /oː/. Correct.
+- **Issue 10 (✓ accept).** `sun.js shy` `["ittij","itːiʒ"]` — geminate /tː/. Correct.
+- **Issue 11 (✓ accept).** `dog.js tmh` `["aydi","ajdi"]` — glide /j/. Correct.
+- **Issue 18 (✓ accept).** `one.js rif` `["ijj","ijː"]`, `one.js shy` `["ijj","ijː"]` — geminate glides /jː/. Correct.
+- **Issue 15 / residual omega (✓ accept).** `eat.js cop` is now `["ⲟⲩⲱⲙ","uoːm"]` — the round-1 residual is resolved. Every Sahidic ⲱ in the corpus now reads /oː/; internal consistency restored. The ⲟⲩ=/w/ reanalysis correctly remains held (surface/syllabification choice). Confirmed.
+
+### Held items — re-adjudication (round-3)
+
+- **Issue 3 (△ accept-as-held).** Hausa tone still absent corpus-wide — a real linguistic limitation but a suprasegmental corpus-wide policy decision, not a local error. Non-blocking; remains flagged for maintainers.
+- **Issue 12 (✓ accept held).** Somali pitch accent — same suprasegmental class; reviewer-acknowledged "underspecified," not wrong.
+- **Issue 6 (✓ accept held).** `water.js egy` `["𓈗","muː"]` — final-/w/ reconstruction-depth choice.
+- **Issue 7 (△ accept held).** `dog.js egy` `["𓃡","juːjuː"]` still present. The reduplication remains genuinely anomalous (no Egyptological source attests /juːjuː/ for *iw*), but the correction touches structure, so it stays a flagged concern for the egy-reconstruction owner — logged as a real concern, not a won't-fix endorsement.
+- **Issues 9, 13, 17 (✓ accept held).** Verified `water.js bej` `["yam","jam"]`, `sun.js rif` `["dhish","ðiʃ"]`, `water.js sid` `["waayyo","waːjːo"]` — in each case the IPA faithfully tracks the existing surface; my proposed corrections require surface/lemma edits, out of IPA-only scope.
+- **Issues 14, 16 (✓ accept held).** `heart.js egy` `jib`, `hello.js egy` `jined-ħeɾek` — chronological-stage / divergent-citation reconstruction choices.
+- **Issues 19, 20, 21 (✓ accept held).** Documentation/no-action items by my own framing.
+
+### New issues
+
+None. Verification surfaced no new actionable errors.
+
+### Scorecard
+
+- Applied & re-verified in live data: 9/9 (Issues 1, 2, 4, 5, 8, 10, 11, 18, and the Issue 15 residual omega) — all genuinely present.
+- Held & reviewer-accepted: Issues 3, 6, 7, 9, 12, 13, 14, 16, 17, 19, 20, 21 (conventions / reconstruction-depth / surface-dependent / documentation).
+- Outstanding actionable IPA-level local errors: **0**.
+
+Every clear, mechanical, surface-safe IPA error I raised has been fixed and verified. All remaining items are defensible cross-school / suprasegmental-convention / reconstruction-depth / surface-dependent choices that I accept as holds (Issue 7 stays a flagged concern for the egy owner but is not a blocking won't-fix).
+
+**File status: CLOSED** — nothing left to address.

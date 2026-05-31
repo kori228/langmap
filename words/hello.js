@@ -1067,7 +1067,7 @@ WORDS.hello = {
     ahk: ["u du la", "u˧du˧la˧"],
     dtp: ["kopivosian", "kopivosian"],
     hne: ["जोहार", "dʒoːɦaːr"],
-    mnw: ["ပ္ဍဲဂေါဝ်", "ɓɔŋ kaow"],
+    mnw: ["ပ္ဍဲဂေါဝ်", "pɗɛ kaːo"],
     bru: ["te", "te"],
     bdq: ["ô", "o"],
     lwl: ["lavüa", "lavɨa"],

@@ -908,7 +908,7 @@ WORDS.good = {
     fr_class: ["bon", "bɔ̃"],
     it_dan: ["buono", "ˈbwɔno"],
     goh: ["guot", "ɡuot"],
-    gez: ["ሠናይ", "sannaːj"],
+    gez: ["ሠናይ", "sanaːj"],
     gmy: ["𐀀𐀏𐀳", "agatʰos"],
     xct_litpr: ["ཡག་པོ", "jakpo"],
     xct: ["ཡག་པོ", "jakpo"],

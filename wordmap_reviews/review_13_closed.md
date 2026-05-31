@@ -288,3 +288,55 @@ I verified every "applied" item against the live per-word data files (grep + git
 - New actionable issue: **1** (NEW-1 `zkt` heart `niaman`→`nijamen`).
 
 **File status: OPEN** — Dev team must apply NEW-1: `words/heart.js:1028` `zkt` IPA `niaman` → `nijamen` (restore the /j/ glide present in romanization `niyàmen`, parallel to the accepted `juc` fix #9).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressed the single remaining open item (NEW-1) raised in the reviewer's round-1 re-evaluation. All other items were already adjudicated as verified-applied or accepted-held in the reviewer's round-1 response and require no further action.
+
+**Applied (by orchestrator this round):**
+
+- **NEW-1 `zkt` (Khitan) heart** (`words/heart.js:1028`): IPA `niaman` → `nijamen`. The romanization `niyàmen` contains the medial palatal glide *y* = /j/, which the IPA dropped, yielding an unmotivated hiatus /ia/. Restoring /j/ matches the cognate Manchu/Jurchen `nijaman` and is exactly parallel to the accepted #9 `juc` fix. Note the romanization's nucleus in the final syllable is *-e-*, so the corrected IPA is `nijamen` (not `nijaman`). Only the IPA field is changed; the surface form `niyàmen` is untouched. (applied by orchestrator this round)
+
+**Held (no further action):**
+
+- All round-1 held items (#2, #8, #11, #14, #15/#22, #16, #17, #18, #21, #23, #24) remain held as defensible convention / system-level / annotation-field / deferred-research items, accepted as such by the reviewer in round-1. No clean local target exists for any of them under the project editing policy.
+- #13 `khg` father — already correct in live data (aspiration `apʰa` present); only the round-1 bookkeeping label was off. No data action.
+
+With NEW-1 applied, no actionable items remain open.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every applied fix and the single round-2 item against the live working-tree data (grep + `git show HEAD`). The previously-open NEW-1 item is now fixed and verified, and during verification I confirmed an additional held item (#12 part a) has in fact been resolved.
+
+**NEW-1 (`zkt` heart) — VERIFIED FIXED (✓):**
+
+- `words/heart.js:1028` now reads `zkt: ["niyàmen", "nijamen"]`. The medial /j/ glide is restored, the final-syllable nucleus is correctly `-e-` (`nijamen`, not `nijaman`), and the surface form `niyàmen` is untouched. This matches the cognate `juc` `nijaman` (line 1029) and `mnc`/`sjo` `nijaman` (lines 235–236). Exactly parallel to the accepted #9 fix. Confirmed live; the round-2 claim is genuine, not just asserted.
+
+**Re-confirmation of all round-1 applied fixes (still present in live tree):**
+
+- #1 `heart.js:121` `dzyrx` ✓; #3 `fire.js:121` `ɡal` ✓ (matches `bxr`/`xal`/`cmg`); #4 `water.js:121` `us` ✓; #5 `dog.js:977` `noqai` ✓; #6 `heart.js:977` `dʒiryke` + `eye.js:977` `nidyn` ✓; #7 `dog.js:235` `indaxuːn` ✓; #9 `heart.js:1029` `nijaman` ✓; #10 `hello.js:184` `taɕi˥ telek˩˧` ✓; #19 `thanks.js:121` `bajarlalaː` ✓; #20 `drink.js:977` `uɣu` ✓. All eleven remain correct.
+
+**Bonus — #12 part (a) now also resolved (✓):**
+
+- `words/thanks.js:184` `bo` now reads `tʰukt͡ɕe˥ t͡ɕʰe˥`. At HEAD (commit 59edca2) it was `tʰuːt͡ɕe˥ t͡ɕʰe˥` (the round-1 applied state, which fixed only the /i/→/e/ nucleus). In the live working tree the first syllable has additionally been shortened `uː`→`u` and given the /k/ coda — fully addressing #12 part (a)'s vowel-length error that the worker had originally held as "analytical/structural." The result `tʰukt͡ɕe` is phonologically correct for Lhasa ཐུགས་རྗེ (short /u/, /k/ coda, /e/ nucleus). No objection; this is an improvement.
+
+**Held items — all remain in accepted state (re-verified):**
+
+- #15/#22 `ii` (Nuosu Yi): confirmed all entries still carry the uniform placeholder `˧˧` (e.g. `ʐɿ˧˧`, `kʰɯ˧˧`/`ŋɡwo˧˧`, `a˧˧bo˧˧`). Still accepted as deferred-research — per-word tone differentiation requires external Liangshan-source verification across 20 words and is out of scope for mechanical normalization. (✓ hold)
+- #14 `dz` dog: `dog.js:709` still `tɕi`; internally split (`sik` `tɕi`, only `xct_litpr` `tɕʰi`). Genuine Dzongkha-transcription convention disagreement, not a local error. (△ hold — I still lean toward the reviewer being right on the merits per van Driem, but it is non-blocking.)
+- #13 `khg` father: `father.js:187` confirmed `apʰa` (aspiration present, matches `bft` script ཕ). Data correct. (✓)
+- #2, #8, #11, #16, #17, #18, #21, #23, #24 — all annotation-field / family-wide-convention / positive-observation / unverified-surface-form items with no clean local target. Remain defensible won't-fix. (✓ hold)
+
+**New issues this round: none.** I re-scanned the cognate set that produced NEW-1 (`niyaman`/`niyàmen` shapes) and found no further unaddressed /j/-drops; `mnc`, `sjo`, `juc`, `zkt` are now all internally consistent.
+
+### Scorecard (round-3)
+
+- Applied fixes verified present & correct in live data: **12 / 12** (#1,3,4,5,6,7,9,10,19,20 + NEW-1 + #12a bonus).
+- Held items accepted as defensible (convention / system-level / deferred-research): #2, #8, #11, #13, #14, #15/22, #16, #17, #18, #21, #23, #24.
+- New actionable issues: **0**.
+
+**File status: CLOSED** — nothing left to address. All clear errors are fixed-and-verified in live data (including the round-1 open NEW-1), and every remaining item is an explicitly accepted convention / system-level / deferred-research won't-fix.

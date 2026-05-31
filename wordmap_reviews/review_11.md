@@ -310,3 +310,63 @@ Four well-defined internal inconsistencies remain, and for each the corpus's own
 
 **File status: OPEN**
 Dev team next steps: (1) #8 `luo` drink → IPA `maðo`; (2) #11 `mas` moon display → `olapa` (and `mas` heart → `oltau`/`oltau`); (3) #23 `sad` thanks IPA → `musʼokojo`; (4) #25 unify `laj`/`ach` thanks IPA to one of `apwojo`/`apʷojo`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I re-verified all four reviewer-committed targets verbatim against the live data before deciding. The reviewer supplied single committed target values for #8, #11, and #23 — each backed by either a clear phonetic error or the corpus's own dominant in-family convention — so I am applying all three. #25 I am holding because the reviewer explicitly declined to pick a single value ("either is acceptable … the dev team must pick one"); with no committed target and no in-corpus dominant convention I can lean on, silently changing orthography/IPA would violate the project rule against inventing convention choices.
+
+**Applied this round (3 edits):**
+
+- **#8 `luo` drink — `words/drink.js:730` `luo: ["madho", "madʱo"]`** — IPA field `madʱo` → `maðo` (applied by orchestrator this round). The `ʱ` breathy-voice diacritic is an affirmative error (imported South-Asian convention; Dholuo has no phonemic breathy stops). Dholuo orthographic `dh` = voiced dental fricative /ð/, so `maðo` is the correct reading. Display `madho` unchanged.
+
+- **#11 `mas` moon — `words/moon.js:737` `mas: ["ɔlapa", "olapa"]`** — display field `ɔlapa` → `olapa` (applied by orchestrator this round). Genuine display(−ATR `ɔ`)↔IPA(+ATR `o`) mismatch; the corpus's own `ol-` masculine-class entries (`tree` olchani/oltʃani, `dog` oldia/oldia, `drink` oŋg/oŋɡ) uniformly use `o` in both fields, so the display is the erroneous field. IPA `olapa` unchanged.
+
+- **#11 (sibling) `mas` heart — `words/heart.js:731` `mas: ["ɔltau", "oltau"]`** — display field `ɔltau` → `oltau` (applied by orchestrator this round). Fixed together with moon per MEMORY "fix all variants together"; same display↔IPA `ol-` inconsistency, IPA already `oltau`.
+
+- **#23 `sad` thanks — `words/thanks.js:949` `sad: ["musʼokoyo", "muʃokojo"]`** — IPA field `muʃokojo` → `musʼokojo` (applied by orchestrator this round). Genuine internal mismatch: display ejective alveolar `sʼ` dropped to plain `ʃ` in IPA. Every other Sandawe entry preserves the ejective from display into IPA (tlʼobe→tɬʼobe, kʼɔɔ→kʼɔː, etc.); `thanks` was the lone exception. The `y→j` mapping is retained. Display `musʼokoyo` unchanged.
+
+**Held this round (1 item):**
+
+- **#25 `laj`/`ach` thanks — `words/thanks.js:972–973` laj `["apwoyo","apwojo"]` vs ach `["apwoyo","apʷojo"]`** — held. Real inconsistency (identical display, `pw` plain vs `pʷ` labialized in IPA), but the reviewer explicitly declined to commit to a single target ("either … is acceptable, but the dev team must pick one"). With no reviewer-endorsed value and no dominant in-corpus convention to disambiguate (the only other `apwoyo` entry, `anu`, uses plain `apwojo`, which weakly favors plain `pw`, but that is a judgement call, not an unambiguous error), I will not silently alter orthography/IPA. Remains actionable pending a committed value.
+
+**Net:** 3 edits applied (#8, #11 moon, #11 heart, #23 — i.e. the three reviewer-committed findings, with #11 covering two sibling entries). 1 item (#25) held for an explicit reviewer/dev decision on the single target value.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I verified all four round-2 edits verbatim against the live data files. Every claimed fix is present:
+
+- **#8 `luo` drink — `words/drink.js:730`** — live value `["madho", "maðo"]`. The breathy `ʱ` is gone, IPA is now `maðo` (voiced dental fricative). ✓ **Verified, accept.**
+- **#11 `mas` moon — `words/moon.js:737`** — live value `["olapa", "olapa"]`. Display `ɔ`→`o`, both fields now agree. ✓ **Verified, accept.**
+- **#11 (sibling) `mas` heart — `words/heart.js:731`** — live value `["oltau", "oltau"]`. Display `ɔ`→`o`, aligned. ✓ **Verified, accept** (correctly fixed together per MEMORY "fix all variants together").
+- **#23 `sad` thanks — `words/thanks.js:949`** — live value `["musʼokoyo", "musʼokojo"]`. The ejective `sʼ` is restored in the IPA, `y→j` retained. ✓ **Verified, accept.**
+
+All other items (the 20 tone/ATR-convention holds #1, #2, #4–#7, #9, #10, #12–#22, #24, plus #3) remain accepted as system-level convention calls per round-1.
+
+### #25 — adjudication and committed target
+
+The worker correctly held #25 in round-2 because I had declined to commit a value. I am now committing one. Live survey of every `apwoyo`-display entry in `words/thanks.js`:
+
+- `anu` (line 729): `["apwoyo", "apwojo"]` — plain `pw`
+- `laj` (line 972): `["apwoyo", "apwojo"]` — plain `pw`
+- `ach` (line 973): `["apwoyo", "apʷojo"]` — labialized `pʷ`
+
+The corpus **does** supply a dominant convention after all: 2 of 3 identical-display entries (including the other Southern-Lwo sibling `laj`) use plain `apwojo`; `ach` is the lone 1-of-3 outlier. The majority rule disambiguates the direction.
+
+**Committed target: `ach` IPA `apʷojo` → `apwojo`** (align the outlier to the corpus-majority plain `pw` rendering; display `apwoyo` unchanged). This makes all three identical surfaces map to one IPA. **#25 — △ OPEN**, single target now committed.
+
+### New issues
+
+None. Verification of the four applied edits and the `apwoyo` cluster surfaced no additional errors. Not padding.
+
+### Scorecard
+
+- #8, #11 (moon), #11 (heart), #23: **✓ verified fixed in live data, accept.**
+- Tone/ATR convention holds (#1, #2, #4–#7, #9, #10, #12–#22, #24) + #3: **✓ accept** (system-level convention, per round-1).
+- #25: **△ OPEN** — committed target now given: `ach` IPA `apʷojo` → `apwojo`.
+
+**File status: OPEN**
+Dev team next step (single remaining item): #25 — `words/thanks.js:973` `ach` IPA `apʷojo` → `apwojo`, to unify all three `apwoyo`-display entries on the corpus-majority plain `pw` rendering.
