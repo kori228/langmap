@@ -325,6 +325,31 @@
             .char-btn { font-size: 22px; }
             #char-modal { padding: 18px 16px 14px !important; max-width: calc(100vw - 24px) !important; }
             #char-modal h2 { font-size: 16px; }
+            /* Mobile: put the category name on the LEFT (a fixed gutter) instead
+               of on its own line above the grid, so the modal is far less tall.
+               PC layout (label-above) is unchanged. */
+            .char-category {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+            .char-category h3 {
+                flex: 0 0 3.4em;
+                width: 3.4em;
+                margin: 0;
+                padding: 0;
+                text-align: right;
+                font-size: 11px;
+                line-height: 1.15;
+                letter-spacing: 0;
+                word-break: break-word;
+                hyphens: auto;
+            }
+            .char-category .char-grid {
+                flex: 1 1 0;
+                min-width: 0;
+            }
         }
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
@@ -3074,6 +3099,27 @@
     //  unchanged. Also injects the 5 character-reading-layer "virtual"
     //  languages (vi_han etc.) into LANG_DATA. Japanese reading layers
     //  (呉音/漢音/唐音/訓読み) live as HAN_VARIANTS entries under `ja`.
+    //
+    //  Multi-reading design — when to split (HAN_LIST "char:1" / "char:2")
+    //  vs. when to keep one entry with HAN_VARIANTS rows:
+    //
+    //    SPLIT into separate entries when the readings correspond to
+    //    SEMANTICALLY DISTINCT concepts (effectively different lexical
+    //    items that happen to share a glyph):
+    //      - 行:1 (歩く・行為 — yue hang⁴, ja gyō/kō)
+    //      - 行:2 (列・商行    — yue hong⁴, ja kō in 銀行)
+    //      - 中:1 (中央 center)
+    //      - 中:2 (当たる, 命中・中毒)
+    //
+    //    KEEP one entry + HAN_VARIANTS rows when the readings refer to
+    //    the SAME concept and differ only by register / borrowing layer
+    //    / dialect stratum (文白異讀, 呉音/漢音/唐音, 頭音法則, etc.):
+    //      - 血 → xuè (文) / xiě (白), both = "blood"
+    //      - 上 → soeng⁶ (locative) / soeng⁵ (directional verb), all "above"
+    //      - 食 → ja jiki (呉音) / shoku (漢音) / kuu (訓読み), all "eat"
+    //
+    //  Heuristic: if a learner needs to know "which one means X", split.
+    //  If they need "how is this read in context Y", use variants.
     // ============================================================
     (function () {
         if (typeof HAN_DATA === 'undefined' || typeof HAN_LIST === 'undefined'
