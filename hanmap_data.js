@@ -27527,6 +27527,96 @@ const HAN_VARIANTS = {
   }
 };
 
+const HAN_SENSE_LABELS = {
+  "行:1": {
+    sense: "行為",
+    en: "go / behave (行為)",
+    ja: "行為",
+    ko: "행위",
+    zh: "行为",
+    yue: "行為",
+    vi: "Hành (行為)",
+    th: "การกระทำ (行為)",
+    id: "Tindakan (行為)",
+    hi: "क्रिया (行為)",
+    de: "Tat (行為)",
+    fr: "Acte (行為)",
+    it: "Atto (行為)",
+    es: "Acto (行為)",
+    pt: "Ato (行為)",
+    ru: "Действие (行為)",
+    uk: "Дія (行為)",
+    ar: "فعل (行為)",
+    he: "פעולה (行為)",
+    sw: "Tendo (行為)",
+  },
+  "行:2": {
+    sense: "行列",
+    en: "row / column (行列)",
+    ja: "行列",
+    ko: "항렬",
+    zh: "行列",
+    yue: "行列",
+    vi: "Hàng (行列)",
+    th: "แถว (行列)",
+    id: "Barisan (行列)",
+    hi: "पंक्ति (行列)",
+    de: "Reihe (行列)",
+    fr: "Rangée (行列)",
+    it: "Fila (行列)",
+    es: "Fila (行列)",
+    pt: "Fileira (行列)",
+    ru: "Ряд (行列)",
+    uk: "Ряд (行列)",
+    ar: "صف (行列)",
+    he: "טור (行列)",
+    sw: "Safu (行列)",
+  },
+  "中:1": {
+    sense: "中央",
+    en: "centre / middle (中央)",
+    ja: "中央",
+    ko: "중앙",
+    zh: "中央",
+    yue: "中央",
+    vi: "Trung (中央)",
+    th: "ตรงกลาง (中央)",
+    id: "Tengah (中央)",
+    hi: "केंद्र (中央)",
+    de: "Mitte (中央)",
+    fr: "Centre (中央)",
+    it: "Centro (中央)",
+    es: "Centro (中央)",
+    pt: "Centro (中央)",
+    ru: "Центр (中央)",
+    uk: "Центр (中央)",
+    ar: "مركز (中央)",
+    he: "מרכז (中央)",
+    sw: "Katikati (中央)",
+  },
+  "中:2": {
+    sense: "命中",
+    en: "hit / strike (命中)",
+    ja: "命中",
+    ko: "맞다",
+    zh: "命中",
+    yue: "命中",
+    vi: "Trúng (命中)",
+    th: "ถูก (命中)",
+    id: "Mengena (命中)",
+    hi: "लगना (命中)",
+    de: "Treffen (命中)",
+    fr: "Toucher (命中)",
+    it: "Colpire (命中)",
+    es: "Acertar (命中)",
+    pt: "Acertar (命中)",
+    ru: "Попасть (命中)",
+    uk: "Влучити (命中)",
+    ar: "إصابة (命中)",
+    he: "פגיעה (命中)",
+    sw: "Kupiga (命中)",
+  },
+};
 if (typeof window !== 'undefined') {
   window.HAN_LIST = HAN_LIST;
   window.HAN_CATEGORIES = HAN_CATEGORIES;
@@ -27534,7 +27624,8 @@ if (typeof window !== 'undefined') {
   window.HAN_LANG_META = HAN_LANG_META;
   window.HAN_LANGS = HAN_LANGS;
   window.HAN_VARIANTS = HAN_VARIANTS;
+  window.HAN_SENSE_LABELS = HAN_SENSE_LABELS;
 }
 if (typeof module !== 'undefined') {
-  module.exports = { HAN_LIST, HAN_CATEGORIES, HAN_DATA, HAN_LANG_META, HAN_LANGS, HAN_VARIANTS };
+  module.exports = { HAN_LIST, HAN_CATEGORIES, HAN_DATA, HAN_LANG_META, HAN_LANGS, HAN_VARIANTS, HAN_SENSE_LABELS };
 }
