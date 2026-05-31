@@ -3026,7 +3026,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=73"></script>
+    <script src="hanmap_data.js?v=74"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -5950,10 +5950,21 @@
                 // should now be filled distinctly by the audit pass. For any
                 // legacy row where only one is set, route the lone value into
                 // the correct column by sniffing for IPA-style characters.
-                const haveBoth = storedSurf && storedIpa;
+                //
+                // HAN_VARIANTS rows (文白異讀 etc.) carry a per-reading 注
+                // (label) and pass BOTH surface + ipa as args even though the
+                // HAN_DATA top-level cell is empty. Honour those args directly
+                // so the 表記 (romanisation) is kept — collapsing them via the
+                // lone-value sniff below would wrongly blank the surface
+                // whenever the IPA looks IPA-ish (which it always does).
+                const haveBoth     = storedSurf && storedIpa;
+                const haveBothArgs = surfArg && ipaArg && surfArg !== ipaArg;
                 if (haveBoth) {
                     surface = storedSurf;
                     ipaOut  = hanmapConvertToneDigits(storedIpa);
+                } else if (haveBothArgs) {
+                    surface = surfArg;
+                    ipaOut  = hanmapConvertToneDigits(ipaArg);
                 } else {
                     const lone = ipaArg || surfArg;
                     const val = hanmapConvertToneDigits(lone);

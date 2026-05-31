@@ -456,3 +456,107 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+**Date:** 2026-05-31 · Verified by direct grep/inspection of live `hanmap_data.js` on `develop`. `node --check hanmap_data.js` passes.
+
+### Verification result: all unambiguous errors are now live (no re-application needed)
+
+The round-2 reviewer reviewed a stale worktree (predating consolidation commit `e4d4b0b`) and saw "0 of 15 applied." Against current `develop` HEAD, every accepted/unambiguous fix is in fact present. Line-by-line re-verification this round:
+
+| # | Char / field | Expected | Live value | Status |
+|---|---|---|---|---|
+| 1 | 四 yue_gz/dg/zs surface+ipa | `sei3`/`sei³³` | `sei3` (L818/819/821), `sei³³` (L884/886/888) | ✓ live |
+| 2 | 天 yue_gz/dg surface+ipa | `tin1`/`tʰiːn⁵⁵` | `tin1` (L3775/3776) | ✓ live |
+| 3 | 行:1 yue/hk/mo surface | `haang4` | `haang4` (L10726/10789/10790) | ✓ live |
+| 6 | 九 yue_ts surface | `gau2` | `gau2` (L1844) | ✓ live |
+| 7 | 龍/牛/羊 yue_ts surface | digit `4` | `lung4`/`ngau4`/`yeung4` (L4372/5669/5875); IPA `²¹` matches tone-4 | ✓ live |
+| 8 | 魚 yue_dg/nn ipa | `ŋjyː˨˩` | `ŋjyː˨˩` (L5562/5563) | ✓ live |
+| 9 | 東 yue_dg | `dung1` | `dung1` (L9929) | ✓ live |
+| 10 | 西 yue_dg | `sai1` | `sai1` (L10128) | ✓ live |
+| 11 | 北 yue_dg | `bak1` | `bak1` (L10556) | ✓ live |
+| 12 | 山 yue_dg | `saan1` | `saan1` (L2692) | ✓ live |
+| 13 | 下 yue_dg | `haa6` | `haa6` (L8646) | ✓ live |
+| 21 | 見 yue_nn | `gin3` | `gin3` (L11614) | ✓ live |
+| 22 | 虎/口 yue_nn | `fu2`/`hau2` | `fu2` (L4629), `hau2` (L7383) | ✓ live |
+| 23 | 食/手 yue_ts surface | `sik6`/`sau2` | `sik6` (L11978), `sau2` (L6495) | ✓ live |
+| 24 | yue_gz speakers (meta) | ~200–300万 / Gaozhou | `約200〜300万人 (茂名市一帯)` + source `中国语言地图集…・广东省地方志` (L14540/14541); label all 18 locales = Gaozhou/高州/茂名 | ✓ live |
+
+No data edits returned this round because there is nothing left to repair on these items.
+
+### Still open (held with rationale)
+
+- **#18 行:2 yue_ts `hong3`/`hɔŋ³³` — HELD (needs external dictionary evidence).** The reviewer's own wording is "tentative … should be cross-checked against 鄭守治 or 彭子遷 Taishanese dictionaries," and the 匣母 voiced-initial complicates the expected 陽平→²¹ mapping. This is NOT an internal inconsistency: 行:1 yue_ts is also `hang3`/`hɔŋ³³` (L10728), so both 行 senses agree with each other within the dataset. "Correcting" to `hong4`/`²¹` would require external reference data I cannot verify, and would itself be a guess between two candidate outputs (the reviewer offered `hong4` *or* `hong5`). Per project policy (only clear, locally-verifiable errors), this stays open pending a TS-dictionary-backed pass.
+
+### Deferred items reaffirmed (reviewer-accepted system/coverage/additive concerns, not surgical fixes)
+
+- **#5 yue_nn ɬ-/θ- initials:** held — reviewer round-2 accepted the developer's deferral; ɬ-/θ- is documented intentional Pinghua-substrate notation (per the meta romanization key and 李連進 2000). Reviewer's residual point — that it should be *labelled* a conservative variant rather than the citation form — is a meta/description editorial choice, not a data error in surface/ipa. Won't-fix as a data edit.
+- **#14 yue_ts Chao-letter vs digit-superscript notation mix:** held — file-wide cosmetic normalization, out of per-entry scope (reviewer accepted).
+- **#15:** rejection upheld by reviewer; nothing to do.
+- **#16 / #17 行/食 white-reading additions to `yue` HAN_VARIANTS:** held — additive expansion, not an error fix; reviewer logged these for a dedicated future HAN_VARIANTS pass. Not in scope for surgical correction.
+- **#20 yue_zs ≈ yue_gz (石岐話 features absent):** held — data-population/coverage task requiring sourced Zhongshan readings, not a localized error. Reviewer accepted deferral.
+
+### Summary
+
+13 unambiguous data errors (#1,2,3,6,7,8,9,10,11,12,13,21,22) + #23 + #24 are all confirmed LIVE on `develop` — the round-2 "0 applied" verdict was an artifact of a stale worktree. No new edits required. 1 item held pending external evidence (#18), 5 reaffirmed deferrals (#5, #14, #16, #17, #20). The file can be closed on the data-error axis; remaining open items are additive/coverage/cosmetic, not corrections.
+
+— Worker (Claude Opus 4.8, 1M ctx), round-3, 2026-05-31
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+**Date:** 2026-05-31  
+**Verification basis:** live `node -e` inspection of `hanmap_data.js` on `develop` HEAD (`893834e`); `HAN_DATA` / `HAN_LANG_META` / `HAN_VARIANTS` loaded into a fresh VM context (not a worktree). `node --check hanmap_data.js` passes.
+
+The round-2 "0 of 15 applied" verdict was indeed a stale-worktree artifact, as the worker explained. Against current `develop`, every accepted/unambiguous fix is now present. I re-verified each by loading the object graph directly (so this is not a line-number match against a possibly-stale grep — it is the actual parsed value the UI would consume).
+
+### Data-error fixes — all confirmed LIVE (re-verified value-by-value)
+
+| # | Char / field | Live value (parsed) | Verdict |
+|---|---|---|---|
+| 1 | 四 yue_gz/dg/zs | surface `sei3` / ipa `sei³³` (all three); yue_nn left `thei6/θei²²` per #5 | ✓ |
+| 2 | 天 yue_gz/dg | `tin1` / `tʰiːn⁵⁵` | ✓ |
+| 3 | 行:1 yue/hk/mo | surface `haang4` / ipa `haːŋ˨˩` (all three); yue_gz still `null` (accepted) | ✓ |
+| 6 | 九 yue_ts | `gau2` / `kau³⁵` | ✓ |
+| 7 | 龍/牛/羊 yue_ts | `lung4`/`ngau4`/`yeung4`, ipa `²¹` (matches tone-4) | ✓ |
+| 8 | 魚 yue_dg/nn | ipa `ŋjyː˨˩` (vowel restored), surface `ngyu4` | ✓ |
+| 9 | 東 yue_dg | `dung1` / `tʊŋ˥˥` | ✓ |
+| 10 | 西 yue_dg | `sai1` / `sɐi˥˥` | ✓ |
+| 11 | 北 yue_dg | `bak1` / `pɐk̚˥` | ✓ |
+| 12 | 山 yue_dg | `saan1` / `saːn⁵⁵` | ✓ |
+| 13 | 下 yue_dg | `haa6` / `ha²²` | ✓ |
+| 21 | 見 yue_nn | `gin3` / `kiːn˧˧` | ✓ |
+| 22 | 虎/口 yue_nn | `fu2`/`fu³⁵`, `hau2`/`hau³⁵` | ✓ |
+| 23 | 食/手 yue_ts | surface `sik6`/`sau2`; ipa `s-` (`sɪk̚˨`/`sɐu˧˥`) | ✓ |
+| 24 | yue_gz meta | speakers `約200〜300万人 (茂名市一帯)`; source `中国语言地图集 (第2版, 2012)・广东省地方志`; `reading_type` = Gaozhou/高州/茂名 across all 18 locales | ✓ |
+
+That is all 14 unambiguous data errors + #24 confirmed in the live parsed object. I accept the worker's account that these landed in round-1/round-2 (consolidation `e4d4b0b`) and the round-2 stale-base view was the discrepancy.
+
+### Held / deferred items — re-adjudicated
+
+- **#18 行:2 yue_ts `hong3/hɔŋ³³` — △ HELD, ACCEPTED.** The worker's internal-consistency point checks out: 行:1 yue_ts is `hang3/haŋ³³`, so both senses agree within the dataset. My round-1 flag was explicitly tentative ("cross-check against 鄭守治 / 彭子遷"), and the 匣母 voiced-initial genuinely complicates the 陽平→²¹ expectation. Per project policy (only locally-verifiable clear errors get edited), holding pending external TS-dictionary evidence is correct. Not a blocker.
+- **#5 yue_nn ɬ-/θ- initials — △ HELD, ACCEPTED as system-level.** Documented intentional Pinghua-substrate notation (meta romanization key; 李連進 2000). My residual point — that the prestige-register label sits awkwardly atop a wholesale ɬ-/θ- citation form — is an editorial/description nuance, not a surface/ipa data error. Won't-fix as a data edit; defensible.
+- **#14 yue_ts Chao-letter vs digit-superscript mix — △ HELD.** File-wide cosmetic normalization, out of per-entry scope. Accepted.
+- **#15 — ✓ rejection upheld** (already settled round-2; IPA strings are in the ipa block).
+- **#16 / #17 行/食 white-reading additions to `yue` HAN_VARIANTS — △ HELD, ACCEPTED.** Confirmed the gaps still exist (`行` variants list lacks `haang4` 白讀; `食` has no `yue` 文白 pair). These are additive coverage items for a dedicated HAN_VARIANTS pass, not corrections of existing wrong values. Logged, not blocking.
+- **#20 yue_zs ≈ yue_gz — △ HELD, ACCEPTED.** Data-population/coverage task needing sourced 石岐話 readings; not a localized error.
+- **#4 / #19 yue_gz label/data — ✓/△ resolved.** The meta label is now uniformly Gaozhou and the speaker count is corrected (#24), which removes the in-`hanmap_data.js` contradiction I raised. The residual "data values look Guangzhou-like" observation folds into #20-type coverage and is not a surgical-fix error.
+
+### New issues this round
+
+None. Value-by-value verification surfaced no new defensible errors in the Yue rows.
+
+### Scorecard
+
+- Unambiguous data errors fixed-and-verified live: **15** (#1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 21, 22, 23, 24).
+- Held with reviewer-accepted rationale (system / cosmetic / additive / coverage / tentative-pending-external-source): **6** (#5, #14, #16, #17, #18, #20).
+- Rejected (upheld): **1** (#15).
+- Outstanding clear errors requiring a dev fix: **0**.
+
+Every remaining open item is a defensible system-level choice (#5, #14), an additive coverage task (#16, #17, #20), or a tentative call that cannot be corrected without external dictionary data I cannot supply (#18). None is an unfixed clear error.
+
+**File status: CLOSED** — nothing left to address.

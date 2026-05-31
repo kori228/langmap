@@ -456,3 +456,91 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8 (1M), 2026-05-31 JST. Read-only on `hanmap_data.js`; this round verified live `develop` HEAD state and found no remaining actionable data change.
+
+### Live-data verification (via `node -e` against current `develop`)
+
+All round-1 and round-2 fixes are present and correct in live data:
+
+- `走` mnc surface `feksimbi`, ipa `fəkɕimbi`, native `ᡶᡝᡴᠰᡳᠮᠪᡳ` (was `tukiyembi`/持上) — confirmed
+- `四` mnc ipa `duin` (was `dujn`) — confirmed
+- `土` ptung surface/ipa `*na` (was `*tuksa`; matches `地` `*na`) — confirmed
+- `行:1` ptung surface/ipa `*jabu-` (was `*ŋənə-`) — confirmed; `行:2` correctly untouched at `*ŋənə-` (no Tungusic anchor)
+- `坐` juc surface `tembi` / ipa `təmbi` (was `tehe`/`texe`) — confirmed
+- `魚` ptung surface/ipa `*nimaka` (N2 fix, was `*sugʒan`/`*suɡd͡ʒan`) — confirmed; whole Tungusic row (mnc/juc/sjo `nimaha`) now descends coherently from `*nimaka`
+
+No fix is half-applied, stale-base, or missing from `develop`. Nothing to re-apply.
+
+### Per-item disposition for still-open / deferred / △ items
+
+- **#4 見 juc `sabumbi` (semantic mismatch vs mnc `tuwambi`)** — **Held with rationale (no data change).** Both reviewer (round-2 `△`) and prior worker agreed this requires either independent Jin-dynasty Jurchen attestation (absent) or a file-wide `juc`-projection policy decision. The reviewer explicitly "accept[s] the worker's conservative non-application" and recorded it as a residual quality flag, NOT as an endorsed concrete edit. There is no confidently attested replacement form to substitute, so editing would be speculative retrojection — against the project rule. Confirmed current value `見.surface.juc` = `"sabumbi"`, `見.ipa.juc` = `"sabumbi"`; mnc cell correctly carries `tuwambi`. Left as-is.
+
+- **#9 心 juc / #8 人 juc — Jurchen lexical retrojection from Manchu** — **Held with rationale.** Reviewer ACCEPTED (✓) in round-2 as a systemic policy matter, not a per-cell error; the cross-language signal (e.g. zkt `nialma`) is preserved in-row. Out of per-entry scope.
+
+- **#12–16, #20, #21 — PTung macron (surface) vs IPA length-mark (ipa) split** — **Held with rationale.** Reviewer ACCEPTED (✓) in round-2: surface column uses Starostin–Dybo–Mudrak scholarly notation (`ē/ō/ū/Ā`, `ü`), IPA column uses true IPA (`eː/oː/uː/aː`, `y`). Deliberate, documented bifield convention; not an error.
+
+- **#17 犬 `*ŋinda`, #25 頭 `*dil`, #20 左 `*dʒəgün` (reconstruction-school choices)** — **Held with rationale.** Reviewer ACCEPTED (✓) all three as competing-reconstruction questions, not clear errors.
+
+### Conclusion
+
+No clear, unambiguous local error or reviewer-endorsed deferred normalization remains unaddressed in round-3. The single new round-2 actionable item (N2, 魚 ptung) is already live. All remaining open items are genuine convention/policy choices that the reviewer explicitly accepted as won't-fix; per the editing policy I do not invent changes for these.
+
+**Round-3 fixes applied this round: 0. Items held with rationale: as above. No edits returned to orchestrator.**
+
+Worker (Claude Opus 4.8 1M), 2026-05-31.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Reviewed by Reviewer #08 (Manchu / Tungusic specialist), 2026-05-31.
+
+**Verification method:** All values below were read directly from live `hanmap_data.js` on the current branch via `node -e "require('./hanmap_data.js')"`, querying `HAN_DATA[char].surface/ipa/native[reg]`. No stale-base or worktree indirection.
+
+### Verification of all claimed fixes (live data)
+
+| # | Cell | Live value | Expected | Verdict |
+|---|---|---|---|---|
+| 1 | `走` mnc surface | `feksimbi` | `feksimbi` | ✓ confirmed |
+| 1 | `走` mnc ipa | `fəkɕimbi` | `fəkɕimbi` | ✓ confirmed |
+| 1 | `走` mnc native | `ᡶᡝᡴᠰᡳᠮᠪᡳ` | feksimbi script | ✓ confirmed |
+| 6 | `四` mnc ipa | `duin` | `duin` | ✓ confirmed |
+| 10 | `土` ptung surface/ipa | `*na` / `*na` | `*na` (matches `地`=`*na`) | ✓ confirmed |
+| 22 | `行:1` ptung surface/ipa | `*jabu-` / `*jabu-` | `*jabu-` | ✓ confirmed |
+| 22 | `行:2` ptung | `*ŋənə-` (untouched) | unchanged, no Tungusic anchor | ✓ confirmed |
+| 24 | `坐` juc surface/ipa | `tembi` / `təmbi` | infinitive | ✓ confirmed |
+| N2/18 | `魚` ptung surface/ipa | `*nimaka` / `*nimaka` | `*nimaka` | ✓ confirmed |
+
+Cross-checks: `走 ptung` = `*tuksa-` (correctly retained — now etymologically aligned with `feksimbi` via metathesis); whole 魚 Tungusic row (`mnc`/`juc`/`sjo` = `nimaha`) now descends coherently from `*nimaka`. Every fix the worker claims is materially present in live data. No phantom/missing fixes this round.
+
+### Disposition of still-open / deferred items
+
+- **#4 見 juc `sabumbi`** — ✓ ACCEPTED as won't-fix. Live: `見.surface.juc`/`見.ipa.juc` = `sabumbi`, `見.surface.mnc` = `tuwambi`. My round-2 `△` was a residual data-quality flag, not an endorsed edit. There is no confidently attested Jin-dynasty Jurchen form to substitute; editing would be speculative retrojection, contrary to the conservative-attestation policy. Won't-fix.
+- **#8 人 juc / #9 心 juc — Manchu→Jurchen retrojection** — ✓ ACCEPTED. Live: `人.surface.juc` = `niyalma`, `心.surface.juc` = `mujilen`. Systemic projection policy, not a per-cell error; cross-language signal preserved in-row (zkt `nialma`). Won't-fix at per-entry scope.
+- **#12–16, #20, #21 — PTung macron (surface) vs IPA length-mark (ipa) split** — ✓ ACCEPTED. Deliberate bifield convention: surface column = Starostin–Dybo–Mudrak scholarly notation (`ē/ō/ū/Ā`, `ü`), ipa column = true IPA (`eː/oː/uː/aː`, `y`). Both correct for their field. Won't-fix.
+- **#17 犬 `*ŋinda`, #25 頭 `*dil`, #20 左 `*dʒəgün`** — ✓ ACCEPTED. Competing reconstruction-school choices, not clear errors.
+- **N1** — acknowledged review-record self-correction (`jalgimbi` ≠ "to run"); the worker correctly chose `feksimbi`. No data impact.
+
+### New issues
+
+None. Verification surfaced no new defensible errors. The 魚 row, which was the sole surviving actionable item after round 2, is now resolved (`*nimaka`).
+
+### Round-3 scorecard
+
+| Category | Count |
+|---|---|
+| Applied fixes verified present in live data | 6 (走, 四, 土, 行:1, 坐, 魚) |
+| Phantom / missing claimed fixes | 0 |
+| Deferred items accepted as won't-fix (convention/policy) | 7 (#4, #8, #9, #12–16/20/21, #17, #25, #20) |
+| New actionable issues | 0 |
+
+All clear errors are fixed-and-verified in live data; every remaining item is an explicitly accepted convention / policy / reconstruction-school choice or an unattested-form non-application I endorse.
+
+**File status: CLOSED** — nothing left to address.
+
+Reviewer #08 round-3 sign-off: 2026-05-31.

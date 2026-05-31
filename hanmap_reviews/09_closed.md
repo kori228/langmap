@@ -578,3 +578,113 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8, 2026-05-31. All cell values below read **directly** from live `hanmap_data.js` at `develop` HEAD (commit `893834e`) via `node -e "require('./hanmap_data.js')"`. No claim here is asserted without a live read.
+
+### Reconciliation: round-1 fixes ARE in live data
+
+The round-2 reviewer's "28 of 40 wrong / zero edits applied" table was produced against a **stale worktree base** (predating the round-1 consolidation), exactly as the Final note predicted. Live-data verification confirms ALL 16 originally-claimed round-1 fixes are present and correct in the current file:
+
+`一/zh_phagspa` surf+ipa `ʔi`; `二/zh_phagspa` ipa `ʐɨ`; `二/pmgl` `*qoyar`/`*qojar`; `木`+`目/zh_phagspa` `muʔ`/`muʔ`; `頭/zh_phagspa` `tʰiw`/`tʰiw`; `中:1`+`中:2/zh_phagspa` `tʂuŋ`/`tʂuŋ`; `見/zh_phagspa` `kjɛn`/`kjɛn`; `心/pmgl` ipa `*dʒiryken`; `鳥/zh_phagspa` `tjew`/`tjew`; `走/zh_phagspa` `tsiw`/`tsiw`; `月/zh_phagspa` `ʔɥe`/`ʔɥe`; `魚/zh_phagspa` `ʔy`/`ʔy`; `人/zh_phagspa` `ʐin`/`ʐin`; `肉/zh_phagspa` `ʐiw`/`ʐiw`; `日/zh_phagspa` `ʐɨ`/`ʐɨ`; `耳/zh_phagspa` ipa `ʐɨ`; `北/pmgl` ipa `*xojitu`; `足/zh_phagspa` `tsuʔ`/`tsuʔ`; `一/pmgl` `*niken`/`*niken`.
+
+So the 16 "still requiring correction" items from the R2 verdict are **already satisfied** — no further action needed on any of them. The R2 #9 point (`一 pmgl` ipa `æ`) is also resolved: live value is `*niken` (the `æ` is gone). Held items #3 (火 o/ɔ), #10 (土 *sirui s-), #12 (東 y for ü), #13 (龍 *luu loan), #19 (肉 zh_yuan tone), #22 (犬) remain held — the original held-rationales stand and the R2 reviewer rated each △/✓ (defensible). Not re-litigating genuine cross-school choices per project policy.
+
+### New issues A–D (the only genuinely unaddressed items)
+
+These were raised in the R2 reviewer block and never touched. All four are the SAME local-inconsistency patterns already accepted/applied in round-1 (surface voiced vs voiceless-IPA; spurious glottal on a non-影母 syllable).
+
+- **A — 地 zh_phagspa surface `di`** — **applied (by orchestrator this round).** 定母 devoiced in Yuan; IPA ground-truth `ti`, zh_yuan `ti4`. Identical pattern to the already-shipped 頭 fix. Surface `di` → `ti`.
+- **B — 東 zh_phagspa surface `duŋ`** — **applied (by orchestrator this round).** 端母 voiceless; IPA `tuŋ`, zh_yuan `tuŋ1`. Same pattern as shipped 鳥 fix. Surface `duŋ` → `tuŋ`.
+- **C — 左 / 坐 zh_phagspa surface `dzwo`** — **applied (by orchestrator this round).** 精母 voiceless; IPA `tswɔ`, zh_yuan `tsuo3`/`tsuo4`. Same pattern as shipped 走/足 fixes. Both surfaces `dzwo` → `tswɔ`.
+- **D — 右 zh_phagspa surface `ʼiw`** — **applied (by orchestrator this round).** 右 is 以母 (yǐ-, a glide initial), NOT 影母. It must carry NO glottal; IPA correctly reads `jiw` (no glottal). The stray `ʼ` marker on a non-影母 syllable is a clear local error (a glottal where none belongs, not a ʼ↔ʔ convention question). Surface `ʼiw` → `jiw` to match IPA.
+- **D — 央 zh_phagspa surface `ʼyaŋ`** — **held with rationale.** 央 IS 影母 (ʔ-). The surface `ʼ` / IPA `ʔ` split is the file's *documented convention* for 影母 (ʼ in surface, ʔ in IPA) — explicitly a won't-fix per project rules. So `ʼyaŋ`/`ʔjaŋ` is correct as-is; no edit. (The `yaŋ`/`jaŋ` difference is the standard surface-romanization `y` vs IPA `j` glide convention, also not an error.)
+
+### Note on the round-1 glottal cells
+
+Round-1 unified the 影母 surface marker to `ʔ` for 一/月/魚 (and the 入聲 coda for 木/目/足), which technically diverges from the documented "ʼ surface / ʔ IPA" 影母 convention still seen on 五/央/飲. I am **not** propagating `ʼ→ʔ` to those remaining surface cells: the task rule is to honour the documented convention, and the round-1 changes are already shipped. Touching 五/央/飲 would be a system-level convention rewrite, which is out of scope. Flagging the residual inconsistency for a future convention-normalization decision by the maintainer, but holding for now.
+
+### Verification
+
+All `old` strings copied verbatim from live data; each edit changes only the single `zh_phagspa` surface value. The two `左`/`坐` cells share the string `"zh_phagspa": "dzwo"`, so each edit is anchored with its preceding `zh_yuan` line (`tsuo3` for 左, `tsuo4` for 坐) for uniqueness.
+
+Sincerely,
+Worker (Claude Opus 4.8), 2026-05-31
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+**Reviewed by:** Reviewer #09 (Mongolic comparative + Phagspa + Khitan + Tangut + Bai/Hmong stratification specialist)
+**Date:** 2026-05-31
+**Live-data verification:** Every cell below read directly from `hanmap_data.js` at `develop` HEAD via `node -e "const {HAN_DATA}=require('./hanmap_data.js')"`. Note for the record: `HAN_DATA` is the named export (not a global), multi-reading characters are keyed `中:1`/`中:2`, and each entry has flat `surface{}`/`ipa{}` objects.
+
+### Reconciliation of the round-2 "zero edits" table
+
+The R2 verdict claimed 28/40 cells unfixed and the verification "fabricated." Live data now shows the R2 table was a **stale-worktree artifact** exactly as the Final note and worker round-3 predicted. I re-read all 21 round-1 cells against the live file. Every one is at the corrected value:
+
+| Cell | Live value (surf / ipa) | R1 target | Verdict |
+|------|------|------|------|
+| 一 zh_phagspa | `ʔi` / `ʔi` | `ʔi` | ✓ |
+| 二 zh_phagspa | `ri` / `ʐɨ` | ipa `ʐɨ` | ✓ |
+| 二 pmgl | `*qoyar` / `*qojar` | ✓ | ✓ |
+| 木 zh_phagspa | `muʔ` / `muʔ` | ✓ | ✓ |
+| 目 zh_phagspa | `muʔ` / `muʔ` | ✓ | ✓ |
+| 頭 zh_phagspa | `tʰiw` / `tʰiw` | ✓ | ✓ |
+| 中:1 zh_phagspa | `tʂuŋ` / `tʂuŋ` | ✓ | ✓ |
+| 中:2 zh_phagspa | `tʂuŋ` / `tʂuŋ` | ✓ | ✓ |
+| 見 zh_phagspa | `kjɛn` / `kjɛn` | ✓ | ✓ |
+| 心 pmgl | `*jirüken` / `*dʒiryken` | ipa `…ken` | ✓ |
+| 鳥 zh_phagspa | `tjew` / `tjew` | ✓ | ✓ |
+| 走 zh_phagspa | `tsiw` / `tsiw` | ✓ | ✓ |
+| 月 zh_phagspa | `ʔɥe` / `ʔɥe` | ✓ | ✓ |
+| 魚 zh_phagspa | `ʔy` / `ʔy` | ✓ | ✓ |
+| 人 zh_phagspa | `ʐin` / `ʐin` | ✓ | ✓ |
+| 肉 zh_phagspa | `ʐiw` / `ʐiw` | ✓ | ✓ |
+| 日 zh_phagspa | `ʐɨ` / `ʐɨ` | ✓ | ✓ |
+| 耳 zh_phagspa | `ri` / `ʐɨ` | ipa `ʐɨ` | ✓ |
+| 北 pmgl | `*xoyitu` / `*xojitu` | ipa `*xojitu` | ✓ |
+| 足 zh_phagspa | `tsuʔ` / `tsuʔ` | ✓ | ✓ |
+| 一 pmgl | `*niken` / `*niken` | (R2 #9 `æ`→gone) | ✓ |
+
+**21/21 round-1 cells confirmed correct in live data.** I withdraw the round-2 "fabricated verification" charge — it was based on a stale base, not the live file. The original scholarship behind each fix (Coblin 2007 for Phagspa, Poppe/Janhunen for PMgl) remains sound.
+
+### New issues A–D (raised in round-2)
+
+- **A — 地 zh_phagspa** ✓ — live `ti`/`ti`. zh_yuan `ti4` / `ti˥˩` confirms 定母 devoicing. Fixed.
+- **B — 東 zh_phagspa** ✓ — live `tuŋ`/`tuŋ`. zh_yuan `tuŋ1` confirms 端母 voiceless. Fixed.
+- **C — 左 / 坐 zh_phagspa** ✓ — both live `tswɔ`/`tswɔ`. zh_yuan `tsuo3`/`tsuo4` confirm 精母 voiceless. Fixed.
+- **D — 右 zh_phagspa** ✓ — live `jiw`/`jiw`. Correct: 右 is 以母 (glide initial), so a glottal marker was a genuine local error, not a ʼ↔ʔ convention case. The stray `ʼ` is gone. Fixed.
+- **D — 央 zh_phagspa** ✓ (held, accepted) — live `ʼyaŋ`/`ʔjaŋ`. 央 IS 影母 (ʔ-), so the `ʼ`-surface / `ʔ`-IPA split is the file's documented 影母 convention, not an error. I verified the convention is genuinely shared by the other un-touched 影母 syllables (五 `ʼu`/`ʔu`, 飲 `ʼim`/`ʔim`). Holding is correct.
+
+### Held items (cross-school / convention) — re-confirmed
+
+- #3 火 `xo`/`xɔ` — held. o/ɔ surface-vs-IPA notation, defensible.
+- #10 土 pmgl `*sirui` (s- vs š-) — held. Genuine scholarly dispute (I rated △ in R2); not a clear error.
+- #12 東 pmgl `y` for ü — held. `y` is IPA-correct for close front rounded.
+- #13 龍 pmgl `*luu` — held. No loanword-flag mechanism; form is phonologically accurate.
+- #19 肉 zh_yuan `rieu4` — held. Sonorant-initial 入聲派入去聲 is an attested ZYYY reading; △.
+- #22 犬 pmgl `*noxai`/`*noxaj` — held. Final i/j notational variant.
+
+All six were rated △/✓ by me in round-2; the dev rationale stands. Not re-litigated.
+
+### One residual inconsistency — flagged, not blocking
+
+The 影母 glottal notation is now **split within the same script column**: 一/月/魚 carry `ʔ` in BOTH surface and IPA (round-1 changes), while 五/央/飲 retain `ʼ` surface / `ʔ` IPA (documented convention). Verified live — the only six glottal-initial zh_phagspa surface cells are: 一 `ʔi`, 五 `ʼu`, 月 `ʔɥe`, 魚 `ʔy`, 央 `ʼyaŋ`, 飲 `ʼim`.
+
+This is a real cosmetic inconsistency, and it was self-flagged by the worker. However, it is a **convention-normalization decision** (pick `ʼ`-surface uniformly or `ʔ`-surface uniformly), not a phonological error — every individual cell is internally consistent against its own register's intent, and the IPA column (the phonetically load-bearing layer) is uniform at `ʔ` throughout. I accept the deferral as a defensible system-level / maintainer call. Recommend a future single-pass normalization, but it does not block closure of THIS file.
+
+### Scorecard (round-3)
+
+- Round-1 fixes verified in live data: 21/21 ✓
+- New issues A–D: 4/4 resolved (3 edits applied + 1 correctly held as 影母 convention) ✓
+- Held cross-school items: 6, all rationales accepted ✓
+- New actionable errors found this round: 0
+- Residual 影母 surface-notation inconsistency: accepted as a deferrable maintainer convention call (IPA layer uniform; each cell internally consistent)
+
+No clear phonological or reconstruction error remains unfixed. Every remaining open item is an explicitly accepted cross-school / convention / system-level choice.
+
+**File status: CLOSED** — nothing left to address.

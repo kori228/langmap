@@ -339,3 +339,65 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8. Scope this round: the one remaining genuinely-actionable item from the round-2 reviewer's section — **NI-1**. All round-1/round-2 substantive corrections (#1–22) were already verified live by the round-2 reviewer; the two rejections (#14 頭 nan_te aspiration, #15 鳥 文白) are held as won't-fix (cross-school / scholarly-dispute items the team already justified against MOE 教育部臺灣閩南語常用詞辭典 and Norman 1988 — not clear local errors).
+
+### Applied this round
+
+**NI-1 — 人 HAN_VARIANTS nan_te 文讀 IPA nasalized vowel** *(applied by orchestrator this round)*
+- `人.nan_te` 文讀 surface `zing5`, IPA `d͡ʑĩŋ˥˥` → `d͡ʑiŋ˥˥` (oral `i`, nasalization diacritic removed).
+- Justification: clear IPA-only error. The Peng'im surface `zing5` implies an oral vowel; the 白讀 sibling `nang5`/`naŋ˥˥` and the nan/nan_pn 文讀 forms `jîn`/`d͡ʑin˨˦` all show oral vowels. In Min phonology the literary stratum preserves oral-vowel + nasal-coda, so a nasalized vowel in the 文讀 IPA is inconsistent with both the surface field and every sister row. Surface untouched (per project rule: no text change on an IPA-only fix).
+
+**NI-1 (extended) — 人 HAN_VARIANTS nan_th 文讀 IPA same nasalized-vowel error** *(applied by orchestrator this round)*
+- `人.nan_th` 文讀 surface `zîng5`, IPA `d͡zĩŋ˥˥` → `d͡ziŋ˥˥` (oral `i`).
+- Justification: nan_th (Thai Teochew) is the same Teochew variety the reviewer's NI-1 reasoning covers ("No Teochew phonological source records a nasalized vowel in the literary reading of 人"). The identical IPA-only error is present here: surface `zîng5` implies an oral vowel and the 白讀 sibling `nang5`/`naŋ˥˥` is oral. Fixing both Teochew rows together (per fix-all-variants-together rule) rather than leaving the sister row inconsistent. Surface untouched.
+
+### Held / won't-fix
+
+- **#14 頭 nan_te `thau5`** — held. Aspirated /tʰ/ is the documented Teochew colloquial reflex of 定母 平聲; matches existing IPA `tʰau˥˥` and the nan_th cross-check. No clear error.
+- **#15 鳥 文白 assignment** — held. Genuine scholarly dispute; current labels follow MOE usage-based convention (tsiáu = everyday colloquial). Round-2 reviewer accepted the rejection as reasonable.
+
+remainingOpenCount: 2 (both deliberate won't-fix; #14 and #15).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Min 方言学レビュワーとして round-3 を実施。全項目を `develop` HEAD の live `hanmap_data.js`（`HAN_DATA` / `HAN_VARIANTS`、ともに文字キー）に対し `node`+`vm` サンドボックスで直接検証。
+
+### NI-1 verification (the only actionable round-3 item)
+
+| Item | Field | Claimed | Live value | Verdict |
+|---|---|---|---|---|
+| NI-1 | 人 nan_te 文讀 IPA | `d͡ʑĩŋ˥˥`→`d͡ʑiŋ˥˥` | `d͡ʑiŋ˥˥` (oral i) | ✓ confirmed |
+| NI-1 (ext) | 人 nan_th 文讀 IPA | `d͡zĩŋ˥˥`→`d͡ziŋ˥˥` | `d͡ziŋ˥˥` (oral i) | ✓ confirmed |
+
+Both Teochew literary rows now carry oral `i`, consistent with their Peng'im surfaces (`zing5`/`zîng5`), with the 白讀 siblings `nang5/naŋ˥˥` (oral a), and with the reference rows 人 nan / nan_pn 文讀 `jîn`/`d͡ʑin˨˦`. The extension to nan_th was the correct call per the fix-all-variants-together rule — leaving it nasalized would have been an inconsistency. Surfaces untouched (correct: IPA-only fix). **Accepted.**
+
+### Held / won't-fix items re-adjudicated
+
+- **#14 頭 nan_te `thau5`/`tʰau˥˥`** — ✓ rejection upheld. Live data confirms aspirated `thau5`/`tʰau˥˥`. Teochew 頭 (定母 平聲) surfaces as aspirated /tʰ/ in the colloquial reading; this is the documented Teochew reflex and matches the IPA and the nan_th cross-variety form. No clear error. Accept as won't-fix.
+- **#15 鳥 文白 assignment (chiáu=白讀 / niáu=文讀)** — △ rejection upheld as defensible. Live data confirms current labels across nan/nan_xm. This is a genuine usage-vs-theory dispute: MOE 教育部臺灣閩南語常用詞辭典 treats tsiáu as everyday colloquial (鳥仔 tsiáu-á), which the current labeling follows. My theoretical objection (Norman 1988 §8 OC *t- preservation aligning tsiáu with the literary stratum) remains a real scholarly ambiguity but is not a defensible "clear error." I accept the team's MOE-grounded convention as a legitimate system-level choice. No further action.
+
+### Re-confirmation of round-1/round-2 substantive fixes (spot audit, all live)
+
+龍 nan_xm (liông=白讀/lêng=文讀) ✓; 飲 nan (lim=白讀/ím=文讀) ✓; 貓 nan (biâu 文讀) ✓; 足 nan_sg DATA (chiok) ✓ and nan_my 文讀 (chok) ✓; 山 nan_hai DATA (san1) ✓; 立 nan_hai DATA (lib5/lip̚˥) ✓; 羊 nan 文讀 (iông) ✓; 行 mnp 文讀 (hông) ✓; 魚 nan_sg 文讀 (gû) ✓; 手 cpx 文讀 (tshiû) ✓; 二 nan_xm IPA filled (n̩˨˨ / d͡ʑi˨˨) ✓; 龍 nan_te DATA (lêng5) ✓; 魚 nan_te DATA (hê5) ✓; 去 nan_te (khê3/khu3 distinct) ✓; 食 nan_te 白讀 (ziah8/t͡siaʔ˥) ✓; 血 nan_my 文讀 (hiat) ✓; 日 nan_xm/pn/my/sg (ji̍t=白讀/li̍t=文讀, j/l contrast) ✓, nan_qz/zz yang-ru fix ✓. No regressions; no claimed fix missing from live data.
+
+### New issues
+
+None. No further defensible errors found on re-verification.
+
+### Scorecard
+
+- NI-1 (incl. nan_th extension): ✓ verified live (2 rows fixed)
+- Held #14, #15: both accepted as defensible won't-fix (cross-school / MOE-convention)
+- Round-1/2 fixes re-audited: all live, no regressions
+- New issues: 0
+
+Nothing remains for the dev team to address: the only actionable item (NI-1) is fixed-and-verified, and the two remaining items are reviewer-accepted convention choices, not errors.
+
+**File status: CLOSED** — nothing left to address.

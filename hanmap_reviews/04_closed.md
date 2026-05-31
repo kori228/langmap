@@ -509,3 +509,116 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8, 2026-05-31. Read-only on `hanmap_data.js`; the single data edit below is returned to the orchestrator for serial application.
+
+The round-2 reviewer closed out with exactly **one actionable net-new item — N1 (= #13)**: 食 `vi`/`vi_c`/`vi_s` IPA missing the creaky marker ˀ on the velar-final nặng syllable. I re-verified it against live `develop` data and adjudicate it below. N2 is documentation-only (codepoint citations in prior worker comments); no data change. All other findings (#1–#12, #14–#23) were already ✓-accepted in round-2 and remain closed.
+
+### N1 / #13 — 食 IPA creaky-voice marker ˀ — **PARTIALLY APPLIED** (vi only; vi_c/vi_s held with rationale)
+
+Live values confirmed via `node -e`:
+- `食 vi = tʰɨk˧˨ʔ`, `vi_c = tʰɨk˨˩ʔ`, `vi_s = tʰɨk˨˩ʔ`
+
+**`vi` row — APPLIED (applied by orchestrator this round).** Fix `tʰɨk˧˨ʔ` → `tʰɨk˧ˀ˨ʔ`. The reviewer's cross-coda survey is fully reproduced in live data for the Hanoi `vi` (˧ onset) row:
+- -k nặng WITH ˀ: 六 `luk˧ˀ˨ʔ`, 木 `mok˧ˀ˨ʔ`, 目 `muk̚˧ˀ˨ʔ`, 肉 `ɲuk˧ˀ˨ʔ` (4/4)
+- -p nặng WITH ˀ: 十 `tʰəp˧ˀ˨ʔ`, 立 `ləp˧ˀ˨ʔ` (2/2)
+- -t nnặng WITHOUT ˀ: 日 `ɲət˧˨ʔ`, 月 `ŋwiət˧˨ʔ` (2/2 — the documented -t exception)
+- 食 `tʰɨk˧˨ʔ` is the sole -k nặng in the `vi` row lacking ˀ. Genuine, unambiguous local inconsistency. Fixed.
+
+**`vi_c` / `vi_s` rows — HELD (no change). The reviewer's N1 sub-proposal `tʰɨk˨˩ʔ` → `tʰɨk˨˩ˀ` would break a file-wide convention and is declined.** Survey of all vi_c/vi_s cells shows two distinct nặng renderings:
+- Entering-tone (stop-final) nặng → `˨˩ʔ` with glottal-stop coda, NO creaky ˀ: 六/木/目/肉 `…˨˩ʔ`, 十/立 `…˨˩ʔ`, 日/月 `…˨˩ʔ`. 食 vi_c/vi_s = `tʰɨk˨˩ʔ` already matches this peer set exactly.
+- Non-entering nặng → `˨˩ˀ` (creaky, no ʔ): only the open/nasal-final syllables carry it (二 `ɲi˨˩ˀ`, 五 `ŋu˨˩ˀ`, 地 `ɗie˨˩ˀ`, 馬 `maː˨˩ˀ`, 耳 `ɲi˨˩ˀ`, 上 `tʰɨəŋ˨˩ˀ`, 下 `ha˨˩ˀ`, 右 `hɨw˨˩ˀ`, 坐 `twa˨˩ˀ`).
+
+In the vi_c/vi_s registers the ˀ vs ʔ distinction is conditioned by coda type (stop-final entering syllables keep ʔ, never ˀ), NOT by tone alone. Changing 食 vi_c/vi_s to `˨˩ˀ` would make it the only stop-final entering-tone syllable in those registers using the creaky non-stop form — i.e. it would introduce the very kind of anomaly N1 set out to remove. The ˀ creaky marker in the `vi` (Hanoi ˧-onset) row is a separate convention applied there to all -k/-p entering nặng; that is where 食 was anomalous and that is what is now fixed. So only the `vi` cell is corrected.
+
+### N2 — codepoint citations in prior worker comments — held (documentation only)
+
+Reviewer is correct that prior round-1 comments cited wrong codepoints (𡎜 as U+213DC instead of U+2139C; 𡐙 as U+214D9 instead of U+21419). These are comment-text errors only; the actual Nôm characters placed in `hanmap_data.js` are the correct ones and the reviewer confirmed them in round-2. No data change.
+
+### Summary
+
+- 1 data edit returned: 食 `ipa.vi` `tʰɨk˧˨ʔ` → `tʰɨk˧ˀ˨ʔ`.
+- N1 vi_c/vi_s portion declined with file-convention evidence (entering-tone nặng = `˨˩ʔ`, no creaky ˀ, across all peers).
+- N2 documentation-only; no action.
+- Nothing left open as ambiguous. The only deferred items remaining (#9 足 Nôm char, #20 行:1 Southern phonology) were already accepted by the reviewer as defensible conservative no-fix decisions in round-2.
+
+Sincerely,
+Worker (Claude Opus 4.8), 2026-05-31
+
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+**Re-evaluated by:** Reviewer #04 (Sino-Vietnamese specialist), 2026-05-31.
+**Live data verified against:** `develop` HEAD via `node -e "require('./hanmap_data.js')"`, reading `HAN_DATA[char].{surface,ipa,native}.{vi,vi_c,vi_s,vi_nom,vi_ohan}`.
+
+The round-3 worker returned exactly one data edit (食 `ipa.vi`), held the vi_c/vi_s portion of N1 with a convention argument, and left N2 as documentation-only. I verified the single edit, re-verified the held convention, and re-confirmed the previously-accepted fixes are still live.
+
+### N1 / #13 — 食 IPA creaky marker ˀ — **ACCEPT as resolved** ✓
+
+Live data confirms:
+- `食 vi = "tʰɨk˧ˀ˨ʔ"` — the ˀ marker is now present. **Applied and verified.**
+- `食 vi_c = "tʰɨk˨˩ʔ"`, `vi_s = "tʰɨk˨˩ʔ"` — unchanged (held).
+
+The worker's `vi` fix is correct and now matches the four -k nặng peers (六 `luk˧ˀ˨ʔ`, 木 `mok˧ˀ˨ʔ`, 目 `muk̚˧ˀ˨ʔ`, 肉 `ɲuk˧ˀ˨ʔ`) plus the -p nascent peers (十 `tʰəp˧ˀ˨ʔ`, 立 `ləp˧ˀ˨ʔ`). The lone -k anomaly is removed.
+
+**On the held vi_c/vi_s portion — I withdraw my round-2 N1 sub-proposal (`˨˩ʔ` → `˨˩ˀ`).** The worker is correct and I was wrong. Direct survey of every stop-final entering-tone nặng syllable in the `vi_c` register confirms a uniform `˨˩ʔ` (glottal-stop coda, no creaky ˀ):
+
+| char | vi_c |
+|---|---|
+| 六 | `luk˨˩ʔ` |
+| 木 | `mok˨˩ʔ` |
+| 目 | `muk̚˨˩ʔ` |
+| 肉 | `ɲuk˨˩ʔ` |
+| 十 | `tʰəp˨˩ʔ` |
+| 立 | `ləp˨˩ʔ` |
+| 日 | `ɲət˨˩ʔ` |
+| 月 | `ŋwiət˨˩ʔ` |
+| **食** | **`tʰɨk˨˩ʔ`** |
+
+食 vi_c/vi_s already matches this peer set exactly. The `˨˩ˀ` form is reserved in the vi_c register for **non-stop** (open / nasal-final) nặng syllables only (二 `ɲi˨˩ˀ`, 五 `ŋu˨˩ˀ`, 地 `ɗie˨˩ˀ`, 馬 `maː˨˩ˀ`, 上 `tʰɨəŋ˨˩ˀ`, 坐 `twa˨˩ˀ`). Changing 食 vi_c to `˨˩ˀ` would have made it the *only* stop-final entering syllable using the creaky non-stop form — i.e. it would have introduced a new anomaly. The ˀ-vs-ʔ distinction in vi_c/vi_s is coda-conditioned (stop → ʔ), not tone-conditioned. The worker's convention argument is sound and the hold is correct. **N1 fully resolved.**
+
+### Previously-accepted fixes — re-confirmed live ✓
+
+Spot-verified that nothing regressed since round-2:
+- 中:2 `vi = Trúng / ʈuŋ͡m˧˥ / trúng` ✓; 行:2 `vi = Hàng / haŋ˨˩ / hàng` ✓
+- 龍 `vi_ohan = vi_nom = zawŋ͡m˨˩` ✓ (unified)
+- 口 vi/vi_c/vi_s all `xəw…` (no /ɜ/) ✓ — file-wide `ɜ` count = 0
+- 肉 vi/vi_c/vi_s all `ɲuk…` (no /ʊ/ in vi rows) ✓
+- 馬 `vi_ohan = ŋɨə˧ˀ˨ʔ` ✓ — file-wide `˨ˀ` count = 0
+- 行:1 `vi_s = haɲ˨˩` ✓
+- 6 vi_ohan rows live: 月 `trăng/tʂaŋ˧˧`, 牛 `trâu/tʂəw˧˧`, 水 `nước/nɨək̚˧˥`, 天 `trời/tʂəːj˨˩`, 人 `người/ŋɨəj˨˩`, 飲 `uống/uəŋ˧˥` ✓
+- Nôm chars + codepoints re-verified: 坐 `𡎜` = U+2139C, 土/地 `𡐙` = U+21419, 耳 `𦖻` = U+265BB — all the *correct* characters (the wrong codepoints existed only in earlier worker comment prose; N2 confirmed documentation-only). ✓
+- 羊 `vi_nom = 裘 / cừu` preserved (user-verified) ✓
+
+### Deferred items — accepted as defensible no-fix ✓
+
+- **#9 足 `vi_nom = 蹎` for *chân***: 蹎 is Wiktionary-attested as one Nôm spelling for *chân*; Nôm admits multiple valid forms. Phonetically the least motivated option, but not demonstrably wrong. Conservative no-fix accepted (△ standing, not an error).
+- **#20 行:1 `vi_s = haɲ˨˩`**: minimum-edit fix making surface (*hành*) and IPA internally consistent. True Southern velar/dental merger phonology deferred as a data-quality limitation, not an error. Accepted.
+- **#21 聞 / #22 月 -t no-ˀ**: lexicographically correct / coda-pattern-consistent. No fix.
+- **N2**: codepoint citations in prior worker prose; data characters are correct. No data change.
+
+### New issues found in round 3
+
+None. The single net-new item I raised in round-2 (N1) is now resolved, and my vi_c/vi_s sub-proposal is withdrawn as mistaken. No new errors surfaced during verification.
+
+### Round-3 scorecard
+
+| Item | Round-3 judgment |
+|---|---|
+| #13 / N1 — 食 vi ˀ added | ✓ resolved (verified live) |
+| #13 / N1 — 食 vi_c/vi_s held | ✓ correct hold; my R2 sub-proposal withdrawn |
+| #1–#8, #10–#12, #14–#19, #23 | ✓ re-confirmed live |
+| #9 足 Nôm | △ accepted no-fix |
+| #20 行:1 Southern | △ accepted no-fix |
+| #21, #22, N2 | ✓ accepted no-fix / doc-only |
+
+**Verdict:** all clear errors are fixed and verified in live data; every remaining item is an explicitly accepted conservative / convention-level / documentation-only decision.
+
+**File status: CLOSED** — nothing left to address.

@@ -422,3 +422,89 @@ If specific items above are mis-categorized, please raise them by character + fi
 
 Sincerely,
 Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8. This round addresses the three concrete, well-defined items the round-2 reviewer left open (New Issues A, B, C). All values below were copied verbatim from current `develop` HEAD `hanmap_data.js` and verified for uniqueness. I am READ-ONLY on shared data; the edits are returned to the orchestrator and marked **(applied by orchestrator this round)**.
+
+### Applied (4 findings → 11 field edits)
+
+**A. 血 `zh_xa` — re-fix ⁴⁴ → ²¹ (P1)** — **(applied by orchestrator this round)**
+- surface `xueq⁴⁴` → `xueq²¹`; IPA `ɕyə˦˦` → `ɕyə˨˩`.
+- The reviewer's round-2 case is fully supported by the dataset itself: Xi'an entering-tone split is 陰入→T1 ²¹ / 陽入→T4 ⁴⁴. Verified in-file: 陰入 voiceless 一 `yiq²¹`, 七 `qiq²¹`, 八 `baq²¹`; 陽入 sonorant/voiced 日 `riq⁴⁴`, 月 `yueq⁴⁴`, 木 `muq⁴⁴`, 六 `liuq⁴⁴`. 血 is 曉母 (voiceless fricative = 陰入清音) → must land on ²¹. The round-1 fix to ⁴⁴ was a shared reviewer+worker error; this corrects it.
+
+**B. 東/西/七/八 `zh_db` — complete bare ⁵/˥ → ⁵⁵/˥˥ (P2)** — **(applied by orchestrator this round)**
+- 東 surface `dong⁵` → `dong⁵⁵`; IPA `tuŋ˥` → `tuŋ˥˥`.
+- 西 surface `xi⁵` → `xi⁵⁵`; IPA `ɕi˥` → `ɕi˥˥`.
+- 七 surface `qi⁵` → `qi⁵⁵`; IPA `tɕʰi˥` → `tɕʰi˥˥`.
+- 八 surface `ba⁵` → `ba⁵⁵`; IPA `pa˥` → `pa˥˥`.
+- Same incomplete-contour class as the SC/CD/CQ fix already accepted in round-1. 東/西 are 陰平 → Dongbei T1 ⁵⁵ (cf. `zh_db` san⁵⁵, tian⁵⁵, mao⁵⁵, xin⁵⁵, yang⁵⁵, zhong⁵⁵). 七/八 are high-frequency numerals that fall into 陰平 in all northern Mandarin (standard `zh` rows directly above are both ⁵⁵/˥˥). Bare single `⁵`/`˥` is incomplete Chao notation, not a distinct tone in the `zh_db` inventory (which uses ⁵⁵/³⁵/²¹⁴/⁵¹/⁵³). Only the trailing tone is changed; no glottal stop is involved (Dongbei lost 入聲, IPAs already have no ʔ). The ⁵⁵-vs-⁴⁴ height controversy (reviewer's separate P4) is untouched — only the incomplete-notation problem is fixed.
+
+**C. 北 `zh_zz` — remove stray IPA glottal stop (P3)** — **(applied by orchestrator this round)**
+- IPA `pəʔ˨` → `pə˨` (surface `beiq²` deliberately left unchanged).
+- This is the **only** `zh_zz` IPA entry in the entire file containing `ʔ` (verified: `grep -c '"zh_zz": "[^"]*ʔ'` = 1). Central Plains Zhengzhou lost 入聲; every other zz IPA correctly lacks the glottal stop. The reviewer endorsed this exact sub-fix as "unambiguous and low-risk... should not require a source and can be applied." The surface tone-contour question (`beiq²` vs `bei²¹`/`bei²⁴`, and whether to drop the `q` etymological marker) still needs sourcing and is held.
+
+### Held (won't-fix without reviewer decision / sourcing)
+
+- **北 `zh_zz` surface `beiq²`** — tone contour (²¹ vs ²⁴) and `q`-marker removal require a Central Plains source; held per round-2 agreement (only the IPA ʔ was actionable).
+- **六 `zh_jh` `liuq⁵¹`** (△ flag) — co-occurs with 立 `liq⁵¹` in zh_jh; reviewer themselves rated this "△ flag for future audit," not a clear error. Held.
+- **zh_db T1 ⁵⁵ vs ⁴⁴ height (P4)** — genuine cross-source convention question over the whole `zh_db` column; out of scope for a surgical fix. Held.
+- **坐 `zh_sc` `zuo¹³` (P4)** — 3-row pattern (sc/cd/lz) needs re-sourcing; held.
+- **頭 `zh_tj` erhua (P4)** — systematic-pass question; held.
+- All round-1-rejected hedged items (中:1 `pf-`, 人 `zh_nj` len, 食 `cjy` seh⁵, 肉 `zh_kf` rouq, Central Plains q-suffix systematic) — reviewer confirmed these rejections sound in round-2. Held.
+
+Worker (Claude Opus 4.8), 2026-05-31
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+**Branch evaluated**: live `develop` HEAD `hanmap_data.js`. All values below were read directly from the live file via `node -e` loading `HAN_DATA` (61 entries; `node --check` passes). This round verifies the three round-2 New Issues (A, B, C) the worker addressed, re-confirms the round-1 fixes persist in live data, and re-checks the held set.
+
+### Verification of round-3 fixes (New Issues A, B, C)
+
+| Issue | Field(s) | Claimed | Live value | Verdict |
+|---|---|---|---|---|
+| **A** 血 `zh_xa` | surface / ipa | `xueq²¹` / `ɕyə˨˩` | `xueq²¹` / `ɕyə˨˩` | ✓ verified |
+| **B** 東 `zh_db` | surface / ipa | `dong⁵⁵` / `tuŋ˥˥` | `dong⁵⁵` / `tuŋ˥˥` | ✓ verified |
+| **B** 西 `zh_db` | surface / ipa | `xi⁵⁵` / `ɕi˥˥` | `xi⁵⁵` / `ɕi˥˥` | ✓ verified |
+| **B** 七 `zh_db` | surface / ipa | `qi⁵⁵` / `tɕʰi˥˥` | `qi⁵⁵` / `tɕʰi˥˥` | ✓ verified |
+| **B** 八 `zh_db` | surface / ipa | `ba⁵⁵` / `pa˥˥` | `ba⁵⁵` / `pa˥˥` | ✓ verified |
+| **C** 北 `zh_zz` | ipa | `pə˨` | `pə˨` | ✓ verified |
+
+**A — accept ✓.** 血 (曉母, voiceless fricative = 陰入清音) correctly lands on Xi'an T1 ²¹, joining the 陰入 cluster (一 `yiq²¹`, 七 `qiq²¹`, 八 `baq²¹`) and distinguished from the 陽入→⁴⁴ cluster (日 `riq⁴⁴`, 月 `yueq⁴⁴`, 木 `muq⁴⁴`, 六 `liuq⁴⁴`). This corrects the shared round-1 reviewer+worker error (⁵⁵→⁴⁴ was itself wrong; ²¹ is right). Phonologically and dataset-internally sound.
+
+**B — accept ✓.** All four `zh_db` entries completed from bare ⁵/˥ to the full ⁵⁵/˥˥ contour, matching the rest of the `zh_db` T1 column (san⁵⁵, tian⁵⁵, mao⁵⁵, xin⁵⁵, yang⁵⁵, zhong⁵⁵). This is the same incomplete-contour-notation class accepted for SC/CD/CQ in round-1; the ⁵⁵-vs-⁴⁴ height question was correctly left untouched as a separate P4 systematic matter. No 入聲/ʔ involvement (Dongbei lost 入聲; IPAs carry no glottal stop).
+
+**C — accept ✓.** Confirmed via `grep` that `zh_zz` now has **zero** IPA entries containing `ʔ` (was 1). The stray Central Plains glottal stop on 北 is removed. Surface `beiq²` correctly left for the still-held sourcing question (contour ²¹ vs ²⁴, and whether to drop the `q` etymological marker).
+
+### Re-verification of round-1 fixes (persistence in live data)
+
+All 14 round-1 field-edits confirmed present in live `develop`: 一 `zh_tj` `yi²¹`/`i²¹`; 日 `zh_sc/cd/cq` `zi²¹³`; 月 `zh_sc` `yue²¹³`/`ye²¹³`; 東 & 西 `zh_sc/cd/cq` `⁵⁵`/`˥˥`; 血 `zh_km` `xue²¹³`/`ɕyɛ²¹³`; 牛/羊 `zh_km` `³¹`; 目 `zh_km` `mu²¹³`; 木 `zh_hf` IPA `muʔ⁵`; 立 `zh_hf` `liq⁵`/`liɪʔ⁵`; 地 `dng` `di³`; 北 `dng` `byi²`/`pei˨˦`. No regressions; no "claimed-but-missing" cases this round.
+
+### Held items — re-checked and accepted as defensible deferrals
+
+- **北 `zh_zz` surface `beiq²` contour/`q`-marker** — verified still `beiq²`. Choice between ²¹/²⁴ and `q`-removal genuinely needs a Central Plains source; correctly held. The actionable sub-part (IPA ʔ) was the only unambiguous piece and is now fixed.
+- **六 `zh_jh` `liuq⁵¹`** — verified; co-occurs with 立 `liq⁵¹` (both `⁵¹` in live data). My own round-2 rating was △ "flag for future audit," not a clear error. Accept as held.
+- **坐 `zh_sc/cd/lz`** — verified all three are `zuo¹³`; a genuine 3-row pattern, not an isolated typo. Re-sourcing required; accept as held (P4).
+- **頭 `zh_tj` erhua; zh_db T1 ⁵⁵ vs ⁴⁴ height** — systematic-pass / cross-source-convention questions, correctly out of scope for surgical fixes. Accept as held.
+- **Round-1 hedged rejections** (中:1 `pf-`, 人 `zh_nj` `len`, 食 `cjy` `seh⁵`, 肉 `zh_kf` `rouq`, Central Plains `q`-suffix systematic) — these were hedged in my own original wording; rejections stand. Accept as won't-fix.
+
+### New issues (round-3)
+
+None. Verification surfaced no new clear errors.
+
+### Scorecard
+
+- Round-3 fixes verified in live data: **6 / 6 field edits** (A: 2, B: 8 across 4 chars, C: 1) — all ✓
+- Round-1 fixes still persistent: **14 / 14** — all ✓
+- Confirmed wrong fixes remaining: **0**
+- Claimed-but-missing fixes: **0**
+- New issues raised: **0**
+- Remaining open items: all are explicitly-accepted defensible deferrals (sourcing-dependent or cross-school/system-level conventions)
+
+Every clear error raised across three rounds is now fixed-and-verified in live data. The only remaining items are convention/sourcing questions I accept as defensible held decisions.
+
+**File status: CLOSED** — nothing left to address.
