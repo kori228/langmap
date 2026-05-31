@@ -219,3 +219,62 @@ None. (The 9 residual ASCII-g entries are not a new issue — they are unfinishe
 - #14, #16, #17 held: **all accepted** (convention / already-resolved)
 
 **File status: OPEN** — Dev team must finish #15: normalise the remaining 9 ASCII `g` (U+0067) → script `ɡ` (U+0261) in the IPA slots of cat.js `rut`, drink.js `mkz`, good.js `khv`+`uln`, heart.js `kxv`, love.js `khv`, moon.js `nan_xm`+`nan_zz`+`nan_pn` (watch the single-quoted rows). Re-run a slot-`[1]` scan to confirm 0 ASCII g remain; everything else is verified/accepted.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+This round addresses the single remaining OPEN item from the reviewer's round-2 adjudication: **#15 — the 9 residual ASCII `g` (U+0067) entries in IPA slots** that the round-1 g-normalization pass missed. All other items (#1–#13 verified ✓; #14, #16, #17 held and accepted by the reviewer) are closed and require no further action.
+
+### #15 ASCII `g` (U+0067) → script `ɡ` (U+0261), residual 9 entries — APPLIED
+
+I re-ran a full slot-`[1]` (IPA-field) scan across all 20 `words/*.js` files via a regex that parses every `lang: ["surface","ipa"]` / `['surface','ipa']` array value and inspects only the IPA element. This confirms **exactly** the reviewer's 9 logical entries carry ASCII U+0067 in the IPA slot — no more, no fewer. The miss in round-1 was indeed the single-quoted / minority-code rows. Each was byte-verified.
+
+Important: each of these entries is duplicated in the file (the data has two parallel blocks of language rows), so **both** identical occurrences must be normalized. The surface (orthography) `g`'s — e.g. `gehe`, `gut`, `gunde`, and the Hokkien romanizations `goe̍h`/`ge̍h` — are left as ASCII U+0067 untouched; only the IPA-slot glyph is changed, per the IPA typographic policy the reviewer cites (Handbook of the IPA 1999, single-storey ⟨ɡ⟩ is the reference glyph for the voiced velar plosive).
+
+- **cat.js `rut`** (applied by orchestrator this round): IPA `getu` → `ɡetu` (2 occurrences; surface is Cyrillic `гету`, no change).
+- **drink.js `mkz`** (applied by orchestrator this round): IPA `ˈgɛhɛ` → `ˈɡɛhɛ` (2 occ.; surface `gehe` unchanged).
+- **good.js `khv`** (applied by orchestrator this round): IPA `logu` → `loɡu` (2 occ.; surface Cyrillic `логу`).
+- **good.js `uln`** (applied by orchestrator this round): IPA `gut` → `ɡut` (2 occ.; surface `gut` unchanged).
+- **heart.js `kxv`** (applied by orchestrator this round): IPA `gunde` → `ɡunde` (2 occ.; surface `gunde` unchanged).
+- **love.js `khv`** (applied by orchestrator this round): IPA `goqʼa` → `ɡoqʼa` (2 occ.; surface Cyrillic `гокъа`).
+- **moon.js `nan_xm`** (applied by orchestrator this round): IPA `gueʔ̚˦ niũ˨˦` → `ɡueʔ̚˦ niũ˨˦` (2 lines: 346 w/ romanized surface, 360 bare; surface romanization `goe̍h` kept ASCII).
+- **moon.js `nan_zz`** (applied by orchestrator this round): IPA `geʔ̚˩˨˩ niũ˩˧` → `ɡeʔ̚˩˨˩ niũ˩˧` (2 lines: 347, 361; surface `ge̍h` kept ASCII).
+- **moon.js `nan_pn`** (applied by orchestrator this round): IPA `gueʔ˥˥niũ˨˦` → `ɡueʔ˥˥niũ˨˦` (line 988; surface unchanged).
+
+Post-change expectation: a slot-`[1]` scan should report **0** ASCII `g` (U+0067) in any IPA field, corpus moving to script ɡ-only for the voiced velar plosive.
+
+### Held items — no change (reviewer already accepted)
+- **#14 `de` essen**, **#16 `ms` air**, **#17 `ja` konnichiwa** — all previously held; reviewer accepted the holds in round-2 as defensible system-level convention choices. No action.
+
+**Net this round: 9 logical entries normalized (ASCII g → script ɡ) in IPA slots; both duplicate occurrences each. 0 items left open.**
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified against the **live** data only. Method: a slot-`[1]` scanner over all `words/*.js` files that parses every `["surface","ipa"]` / `['surface','ipa']` array value and inspects only the IPA element for ASCII `g` (U+0067); plus a second independent grep over second-element strings; plus byte-level `od` confirmation on a sample of the fixed rows; plus regression checks on the round-1 stress fixes.
+
+### #15 ASCII `g` (U+0067) → script `ɡ` (U+0261) — ✓ VERIFIED COMPLETE IN LIVE DATA
+The single OPEN item from round-2 is now resolved. My slot-`[1]` scanner reports **0** ASCII `g` in any IPA field across all 20 files (down from the 9 I flagged in round-2). All nine of my round-2 flags are fixed, **both duplicate occurrences each**, with surface forms correctly left untouched:
+- `cat.js rut` `ɡetu` (L398, L439); `drink.js mkz` `ˈɡɛhɛ` (L394, L436); `good.js khv` `loɡu` (L385, L427); `good.js uln` `ɡut` (L401, L442); `heart.js kxv` `ɡunde` (L390, L432); `love.js khv` `ɡoqʼa` (L392, L434); `moon.js nan_xm` `ɡueʔ̚˦ niũ˨˦` (L346, L360); `moon.js nan_zz` `ɡeʔ̚˩˨˩ niũ˩˧` (L347, L361); `moon.js nan_pn` `ɡueʔ˥˥niũ˨˦` (L988).
+- Byte-confirmed: e.g. `cat.js:398`, `good.js:401`, `moon.js:988` show octal `311 241` = `0xC9A1` = U+0261 script ɡ, not U+0067. The Hokkien romanized surfaces (`goe̍h`, `ge̍h`) and Latin surfaces (`gehe`, `gut`, `gunde`) correctly remain ASCII.
+
+### Regression check on previously-verified items — ✓ all still in place
+- `el`: water `neˈɾo`, sun `ˈilios`, moon `feˈŋɡaɾi`, etc. — stress marks intact.
+- `pt_eu` fire, `ru` water/moon — unchanged from round-2 verification.
+
+### Held items — adjudication unchanged
+- **#14 `de` essen** — ✗ won't-fix, ACCEPTED (round-2). Modern `de` column marks stress nowhere; defensible system-level convention.
+- **#16 `id`/`ms` air** — △ ACCEPTED. Live: `id: ["air","ˈa.ir"]` (the misleading half, disambiguated); `ms: ["air","air"]` retained as the near-phonemic-Latin orthography≡IPA convention boundary (consistent with `af kat`=`kat`).
+- **#17 `ja` konnichiwa** — ✗ won't-fix, ACCEPTED. Live `konnit͡ɕiwa`; digraph-doubling vs length-mark is a column-wide convention preference, not an error.
+
+### New issues
+None.
+
+### Scorecard
+- #1–#13 stress marks: **13/13 ✓ verified, no regression**
+- #15 g-normalisation: **✓ COMPLETE** — 0 ASCII g remain in any IPA slot (was 9/47 missing in round-2)
+- #14, #16, #17 held: **all accepted** (convention / already-resolved)
+
+**File status: CLOSED** — nothing left to address.

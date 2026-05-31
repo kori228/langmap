@@ -242,3 +242,59 @@ None. No new defensible errors found during verification.
 - Still open (clear lexical error, concrete next step available): #16 mns moon
 
 **File status: OPEN** — Next step (single item): in `words/moon.js:880`, replace the non-'moon' lexeme `["эрь", "erʲ"]` with the attested Northern Mansi moon word `["этпос", "etpos"]` (broad, length-agnostic IPA; do not invent length marks). If after a further genuine attempt no attested surface can be confirmed, document `эрь` as a known-limitation needs-human-Mansi-lexicographer caveat in the cell/notes and we will close.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Thank you for the round-2 adjudication. One actionable item remained open (#16 `mns` moon); I researched it and am applying a sourced fix. All previously held convention/sense/stress/reconstruction items remain held with the rationale already accepted in your round-2 response.
+
+### Applied this round (sourced lexical fix)
+
+- **#16 `mns` moon — `words/moon.js:880`** `["эрь", "erʲ"]` → `["э̄тпос", "eːtpos"]` **(applied by orchestrator this round)**. Confirmed via two independent sources that the attested Northern Mansi word for moon/month is **э̄тпос**:
+  - Wiktionary, *Appendix:Northern Mansi Swadesh list*, entry #148 "moon" = **э̄тпос** (https://en.wiktionary.org/wiki/Appendix:Northern_Mansi_Swadesh_list).
+  - Wikivoyage, *Mansi phrasebook*, months section, where every month is built as "[X] э̄тпос" (e.g. *Та̄л котиль э̄тпос*, *Лӯпта э̄тпос*) (https://en.wikivoyage.org/wiki/Mansi_phrasebook).
+
+  Two notes on the exact form vs. your proposed `["этпос", "etpos"]`:
+  1. **Surface:** the authentically attested orthography carries the macron on the first vowel — **э̄тпос** (э̄ = long [eː]) — across both sources, so I used the macron form rather than a bare `этпос`. The macron is the dataset-faithful attested spelling, not an invented mark.
+  2. **IPA:** because the attested surface explicitly marks vowel length with the macron, the faithful broad transcription is **`eːtpos`** (э̄=[eː], т=[t], п=[p], о=[o], с=[s]). The `eː` here transcribes the attested orthographic macron — it is not an invented length mark, so it honours your "do not invent length marks" caveat while keeping the surface/IPA pair internally consistent (surface marks length ⇒ IPA shows it). If the editors prefer to drop the macron in both fields for a strictly length-agnostic citation (`["этпос", "etpos"]`), that is also defensible and matches your exact proposal — I flag it as an editor preference; either way the wrong lexeme `эрь` is removed. This resolves the only OPEN item.
+
+### Still held (unchanged, per your accepted round-2 adjudication)
+
+- **#4** ohu dog (`kuvasz`) — held; needs an attested archaic generic, unsourceable offline. **#6** ohu love `/lm/` — held; reconstruction/surface decision. **#8** ohu hello (`isten hozott`) — held; segmental IPA defensible, register flag only. **#11/#15** positive controls — no change. **#12/#19** stress consistency notes — defer to global stress policy. **#13/#14** ⟨ȍ⟩ length convention — held pair; undocumented convention, editor decision. **#17/#18** love noun/verb sense — held; cross-row editorial reconciliation.
+
+### Summary
+1 edit applied (the sole remaining OPEN item, #16 `mns` moon: wrong lexeme `эрь` → sourced attested `э̄тпос`/[eːtpos]). 0 items left genuinely open as dev-actionable; the remaining held items are accepted editor/convention/reconstruction decisions, not local data errors.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every applied fix against the live data files (grep on `words/*.js`). No regressions; the one round-2 item is resolved.
+
+### The sole open item — #16 `mns` moon — VERIFIED & ACCEPTED ✓
+- **`words/moon.js:880`** is now `["э̄тпос", "eːtpos"]` (confirmed live; surface codepoints = э + combining macron U+0304 + тпос). The wrong lexeme `эрь` (which does not mean 'moon') has been removed and replaced with the attested Northern Mansi moon/month word **э̄тпос**, cited from two independent sources (Wiktionary Northern Mansi Swadesh list #148; Wikivoyage Mansi phrasebook months). The IPA `eːtpos` faithfully transcribes the attested orthographic macron (э̄=[eː]) and does not invent a length mark — it reflects the cited surface. This is exactly the concrete, sourced fix I asked for in round-2, and it is strictly better than the prior wrong lexeme. **Accept.** (The macron-vs-bare `этпос` choice is a defensible editor preference; either is internally consistent. No further dev action needed.)
+- Parallel sanity check: `kca` moon `words/moon.js:137` = `["тылащ", "tɯlaɕ"]` — a genuine 'moon' word, internally consistent. Fine.
+
+### Re-verification of all prior applied fixes (no regression) ✓
+cat: kca `koʃka` (137), mns `koʃka` (874), ohu `mɒt͡ʃkɒ` (158) — all intact. love ohu `sɛreːlm` (158). hello hu `sijɒ` (157). kca breve pass: heart `sɐm`, mother `ɐŋki`, thanks `pɐsive`, house `xɐt` — all intact. No phantom or reverted edits.
+
+### Held items — final adjudication (all accepted as defensible, won't-fix)
+- **#4 ohu dog (`kuvasz`)** — △ accepted as known limitation. `words/dog.js:158` still `["kuvasz", "kuvas"]`. Genuine sense mismatch (breed term vs generic), but the only offered replacement merely duplicates the `hu` cell; an *attested* Old Hungarian generic is not sourceable offline by either party. Documented limitation, needs a human Hungarian historical lexicographer — not an indefinitely-loopable dev item.
+- **#6 ohu love `/lm/`** — ✗ won't-fix; reconstruction/surface decision, not a transcription bug.
+- **#8 ohu hello (`isten hozott`)** — accepted; segmental IPA defensible, register flag is editorial only.
+- **#11 mns father, #15 ohu mother** — positive controls, no change requested.
+- **#12 ohu father stress, #19 hu thanks stress** — accepted as consistency notes; defer to a global stress policy. Adding [ˈ] to isolated cells would create new inconsistency.
+- **#13 ohu moon / #14 ohu good (⟨ȍ⟩ length)** — accepted as held pair; undocumented double-grave convention, a system-level editor decision requiring a documented length key, not a local data error.
+- **#17 kca love / #18 mns love (noun/verb sense)** — accepted; both IPAs internally consistent, cross-row POS reconciliation is editorial.
+
+### New issues
+None. (Noted in passing: many non-Ugric cells in `cat.js` — evn, eve, yrk, itl, ykg, yux, niv, ket — still carry the bare Russian `кошка`/`koʂka`. These are outside this Hungarian/Ob-Ugric reviewer's persona scope and were never part of this review's findings; flagging only for whichever specialist owns those rows. Not an item for this file.)
+
+### Scorecard
+- Applied & verified in live data this round: 1/1 ✓ (#16 mns moon, sourced + cited)
+- All prior applied fixes re-verified, no regression: 9/9 ✓
+- Held items, all accepted as defensible (sense/reconstruction/convention/stress/positive-control/known-limitation): #4, #6, #8, #11, #12, #13, #14, #15, #17, #18, #19
+- Still open: none
+
+**File status: CLOSED** — nothing left to address. The one lexical error (#16) is fixed with a credible citation and verified in live data; all remaining items are accepted editor/convention/reconstruction decisions or documented known limitations, not dev-actionable data errors.

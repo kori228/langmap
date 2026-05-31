@@ -210,3 +210,64 @@ None. Verification surfaced no additional defensible errors beyond #17.
 | #17 (yux ʧ→t͡ʃ) | △ still live — one concrete fix outstanding |
 
 **File status: OPEN** — one concrete actionable step remains: apply the pure ligature→tie-bar normalization in `words/fire.js` `yux` `lóʧil` → `lót͡ʃil` (do not add a stress mark). All other items are accepted as defensible corpus-wide conventions / documented known limitations.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Round-3 close-out. The reviewer's round-2 adjudication accepts every held item as a defensible corpus-wide convention or documented known limitation, leaving exactly one concrete actionable step: the #17 ligature normalization, with the reviewer explicitly confirming option (a) (pure ligature→tie-bar, no stress mark added).
+
+### Applied
+
+- **#17 `yux` fire — `lóʧil` → `lót͡ʃil`** (IPA field only) **(applied by orchestrator this round).** `words/fire.js:142` `yux: ["ло́чил", "lóʧil"]` → `yux: ["ло́чил", "lót͡ʃil"]`. This replaces the deprecated affricate ligature ⟨ʧ⟩ with the tie-bar ⟨t͡ʃ⟩, bringing this token into line with every other yux affricate in the corpus. Verified in live data this round: `words/heart.js:142` `yux ["чугэ", "t͡ʃuɣe"]` and `words/tree.js:142` `yux ["чалдьэ", "t͡ʃald͡ʒe"]` both use the tie-bar. The acute-stress notation ⟨ó⟩ in the IPA is left untouched (the stress→[ˈ] portion of the original #17 was withdrawn by the reviewer, consistent with the stress-unmarked yux convention). The orthography element ⟨ло́чил⟩ is unchanged; only the IPA cell's ligature was normalized.
+
+### Held — accepted as won't-fix per reviewer round-2
+
+All other findings were accepted by the reviewer as defensible corpus-wide conventions or documented known limitations and require no further action this round:
+
+- **#18, #19, #20(vowel), #21 — ⟨ы⟩ = [ə] vs [ɯ]:** Held. Corpus-wide cardinal-symbol convention (~40 ckt/kpy tokens map ⟨ы⟩→[ɯ]); reviewer recorded the [ə] analysis as a known limitation needing a single coordinated normalization pass.
+- **#1, #2, #3, #9, #10, #11 — Inuit uvular lowering /i u/→[e o]:** Held. Non-application is corpus-wide; system-level transcription-depth choice documented as a known limitation for a future coordinated Inuit pass.
+- **#1, #4–#8, #15 — stress marks / surface=ipa duplicates:** Held. The entire iu/kl/ipk/esu/yux group is stress-unmarked; where orthography already encodes the phonetics (kl ⟨e⟩) no information is lost. Convention, won't-fix.
+- **#12 `ipk` eye — ⟨r⟩=[ʁ]:** Held. Corpus-wide ⟨r⟩→[r] vs ⟨ġ⟩→[ʁ] mapping; revisable only as a set.
+- **#13, #14 — `esu` ⟨e⟩=schwa [ə]:** Held. Uniform ⟨e⟩→[e] across all esu tokens; corpus-wide Yup'ik vocalism decision.
+- **#16 `ess` fire — final ⟨г⟩=[ɣ]:** Held. Single ess token, no internal anchor; stop [ɡ] vs continuant [ɣ] is a depth judgement needing human confirmation. Documented known limitation.
+
+**Net round-3:** 1 fix applied (#17 ligature→tie-bar). 0 items remain open — all other findings are accepted by the reviewer as won't-fix corpus-wide conventions / documented known limitations. File can be closed.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the single round-2 actionable item and re-confirmed the held-item anchors against **live** data.
+
+### #17 `yux` fire — ligature→tie-bar — VERIFIED ✓ APPLIED
+
+`words/fire.js:142` now reads `yux: ["ло́чил", "lót͡ʃil"]`. The deprecated ligature ⟨ʧ⟩ has been replaced with the tie-bar ⟨t͡ʃ⟩, exactly per my confirmed option (a). Cross-checked against the rest of the yux affricate set in live data: `words/heart.js:142` `t͡ʃuɣe` and `words/tree.js:142` `t͡ʃald͡ʒe` both use the tie-bar — internal consistency is now restored. The acute-stress notation ⟨ó⟩ in the IPA was correctly left untouched (the stress→[ˈ] portion I withdrew in round-2 as a convention change), and the orthography element ⟨ло́чил⟩ is unchanged. Accepted.
+
+### Held items — re-confirmed accept (won't-fix)
+
+I re-verified the convention anchors that underpin the held items and they hold in live data:
+
+- **#18/#19/#20(vowel)/#21 — ⟨ы⟩=[ɯ]:** `words/one.js:138-139` `ckt`/`kpy` both `ɯnnen`; the cardinal-symbol mapping is genuinely corpus-wide. The #20 nasal fix from round-1 is still present (`ɯnnen`, not `ɯɲɲen`), and the soft-sign palatalization convention is intact (`words/mother.js:138` `ɯɲɲew`, `words/love.js:139` `lʲuŋewɯk`). Documented known limitation; not a piecemeal-actionable error.
+- **#1–3/#9–11 (Inuit uvular lowering), #1/#4–8/#15 (stress / surface=ipa dup), #12 (ipk ⟨r⟩), #13/#14 (esu ⟨e⟩), #16 (ess ⟨г⟩):** All accepted in round-2 as corpus-wide conventions / documented known limitations. Nothing has regressed; my round-2 reasoning stands unchanged.
+
+### New issues
+
+None. Verification surfaced no additional defensible errors.
+
+### Scorecard
+
+| Item | Judgement |
+|------|-----------|
+| #17 (yux ʧ→t͡ʃ) | ✓ applied & verified in live data |
+| #20 nasal | ✓ applied & verified (still live) |
+| #18/#19/#20v/#21 (ы=ə) | ✓ accept held (known limitation) |
+| #1–3,#9–11 (uvular lowering) | ✓ accept held (known limitation) |
+| #1,#4–8,#15 (stress / dup) | ✓ accept held (convention) |
+| #12 (ipk r) | ✓ accept held (convention) |
+| #13,#14 (esu e) | ✓ accept held (convention) |
+| #16 (ess г) | ✓ accept held (known limitation) |
+
+The one remaining concrete actionable item from round-2 (#17) is now fixed and verified. Every other finding is accepted as a defensible corpus-wide convention or a documented known limitation requiring a future coordinated normalization pass + human-linguist sign-off (not a piecemeal local fix). There is nothing further the dev team must address.
+
+**File status: CLOSED** — nothing left to address.

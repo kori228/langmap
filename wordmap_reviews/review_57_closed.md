@@ -237,3 +237,51 @@ I re-verified every claimed fix against the live per-word data files. Findings b
 Because N1 is a concrete, defensible, one-token IPA error in live data that follows directly from the reviewer's own already-stated rule (and was named in Issue 3), the file cannot close this round.
 
 **File status: OPEN** — dev team must apply: `words/thanks.js:68` `ko_bus` → `["고맙습니다", "komap̚s͈ɯmnida"]` (tense [s͈]), then this file can close.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+I re-verified the live data for the single open item N1 and the previously-held items. Quoted strings read directly from `words/thanks.js`.
+
+**N1. `thanks` `ko_bus` 고맙습니다 [komap̚sɯmnida]→[komap̚s͈ɯmnida]** — applied (applied by orchestrator this round). Verified `words/thanks.js:68` = `ko_bus: ["고맙습니다", "komap̚sɯmnida"]`: coda [p̚] already marked, but the following lax ㅅ is still plain [s]. The Busan/Gyeongsang citation uses the identical standard -습니다 suffix, so post-obstruent tensification (경음화, 표준 발음법 §23) obligatorily tenses ㅅ → [s͈], exactly as in the already-fixed `ko`/`ko_kp`/`ko_yb` siblings (all `komap̚s͈ɯmnida`). This was named in Issue 3 and skipped by the round-1 batch. Clear, in-scope, single-token IPA error. IPA field only; surface orthography unchanged.
+
+All other items (#1–9, #16 applied in round-1 and reviewer-verified; #10–15, #17–18 held as confirmations / convention / system-scope, reviewer-accepted) require no further action. With N1 applied, the `ko_bus` family is internally consistent and the file can close.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the single round-2 open item (N1) plus the full ㅂ+ㅅ 경음화 family and a spot-check of the previously-accepted fixes, reading each value directly from the live `words/*.js`.
+
+### N1 — VERIFIED FIXED
+- **N1 `thanks` `ko_bus` 고맙습니다** → `words/thanks.js:68` = `["고맙습니다", "komap̚s͈ɯmnida"]` ✓ accept. The lax ㅅ is now tense [s͈] after the unreleased coda [p̚], matching the obligatory post-obstruent tensification (경음화, 표준 발음법 §23). The whole -습니다 family is now internally consistent in live data:
+  - `ko` (`:66`) `komap̚s͈ɯmnida` ✓
+  - `ko_kp` (`:67`) `komap̚s͈ɯmnida` ✓
+  - `ko_bus` (`:68`) `komap̚s͈ɯmnida` ✓
+  - `ko_yb` (`:70`) `komap̚s͈ɯmnida` ✓
+  - `ko_jeju` (`:69`) `고맙수다` `komap̚suda` — correctly NOT tensed: the Jeju form has no ㅅ-after-obstruent-coda environment (수다 is intervocalic), so plain [s] is right. Good that this row was left untouched.
+
+### Re-confirmation of earlier accepted fixes (spot-check against live data)
+- `good` `ko` `:66` `t͡ɕotʰa` ✓; `good` `ko_em` `:556` `tɕotʰa` ✓ (격음화).
+- `cat` `ko_jeju` `:69` `kwɛŋi` ✓ (ㅙ nucleus [wɛ]).
+- `eat` `ko_em` `:547` `mʌk̚t͈a` ✓; `ko_mid` `:543` `mʌk̚.ta` ✓ (unreleased-coda floor, tense [t͈] conservatively withheld for MK — accepted as a defensible diachronic call).
+- `hello` `ko_jeju` `:69` `hond͡ʑʌop̚s͈ʌje` ✓; `ko_em` `:547` `annjʌŋ.ha.ɕi.o` ✓ (ㅅ→[ɕ] before /i/).
+- `moon` `oko` `:559` `*tʌɾh` and `ko_mid` `:558` `tʌl` ✓ (ㅎ-final morphophonemic convention held, internally consistent).
+- `heart` `ko` `:66` `maɯm`, `ko_mid` `:552` `mʌzʌm` ✓ (MK ⟨ㅿ⟩ [z] staging sound).
+
+### Held items
+All round-2 holds (#10–15, #17–18) stand as accepted: downstream-tooling consistency audit (#10), dataset-scope pitch/length/tone decisions (#11, #12), corpus-wide ㅐ/ㅔ merger convention (#13), already-uniform ㆍ=[ʌ] (#14), morphophonemic ㅎ-final marker (#15), positive controls (#17, #18). None demand a data change.
+
+### New issues
+None. No new errors surfaced during verification.
+
+### Scorecard
+- N1: VERIFIED FIXED in live data (1/1).
+- All prior applied fixes (#1–9, #16): re-confirmed present, no regressions, no phantom fixes.
+- Held items (#10–15, #17–18): all defensible, accepted.
+- New actionable issues: 0.
+
+The one concrete open item from round-2 is now correctly applied and verified, the -습니다 family is internally consistent, and every remaining item is an accepted convention/scope/confirmation. There is nothing left for the dev team to address.
+
+**File status: CLOSED** — nothing left to address.

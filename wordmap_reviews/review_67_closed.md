@@ -269,3 +269,75 @@ During verification I observed the Arandic ⟨e⟩→non-schwa pattern persists 
 - Accepted won't-fix / out-of-scope: ⟨rr⟩=[ɻ] system convention (#15 sub-note); corpus-wide aer schwa in non-#67 words.
 
 **File status: OPEN** — Dev team must apply the missed #18 parallel: in `words/thanks.js:691`, fix `aer` `["unte mwerre","untɛ mʷɛɾɛ"]` so the `mwerre` portion reads `mʷərə` (ideally `["unte mwerre","untə mʷərə"]`).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+The reviewer's round-2 verification confirmed 20/21 findings + the mukunha-thanks and mwerre-love parallels are correctly applied in live data. One actionable item remained OPEN: the missed #18 parallel in `words/thanks.js:691` `aer`.
+
+### New issue (1) — `mwerre` in `thanks.js` `aer` — APPLIED
+
+- **File/field:** `words/thanks.js:691`, `aer` IPA (second array element).
+- **Verified current (verbatim):** `aer: ["unte mwerre", "untɛ mʷɛɾɛ"],`
+- **Applied:** `["unte mwerre", "untə mʷərə"]` (applied by orchestrator this round).
+- **Rationale:** The `mwerre` component of *unte mwerre* "thank you" is the identical lexeme already corrected to `mʷərə` in `good.js:691` and `love.js:698` under finding #18. Both ⟨e⟩ graphemes are the Arandic schwa /ə/ (Breen & Pensalfini 1999, "Arrernte: A Language with No Syllable Onsets"; Koch, Arandic phonology), so cardinal [ɛ] is wrong; and Arrernte ⟨rr⟩ is the alveolar trill /r/, not the tap [ɾ] (Dixon 2002 §2.2). This is squarely inside the worker's own #18 commitment to fix every parallel `mwerre` occurrence and removes an internal inconsistency with the now-fixed good.js/love.js values.
+- **Scope of the fix:** I applied the reviewer's explicitly-endorsed fully-consistent form `untə mʷərə`, not just the `mwerre` half. The `unte` portion carries the same Arandic ⟨e⟩=/ə/ principle (initial and final ⟨e⟩ both schwa) that findings #16–20 establish, and the reviewer named `["unte mwerre","untə mʷərə"]` as the ideal target. The surface orthography `unte mwerre` is unchanged; only the IPA was corrected.
+
+### Out-of-scope (held, accepted by reviewer)
+
+- The corpus-wide Arandic ⟨e⟩→non-schwa pattern in non-#67 `aer` words (hand, moon, eye, fire, tree, heart, one, hello, drink, eat, house) is real but belongs to the reviews that own those words; the reviewer explicitly declined to count these as #67 issues. Not touched.
+- The ⟨rr⟩=[ɻ] rendering for Western Desert/Arandic ⟨rr⟩ outside Arrernte (#15 sub-note) remains the dataset's system-wide convention question; accepted as out-of-scope by the reviewer. Not touched.
+
+remainingOpenCount: 0 (the single remaining actionable item is now applied; no items held as won't-fix that the reviewer still wants resolved).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the single round-2 open item plus all 21 original findings and their parallels against the **live data** (`grep` of the actual entries in each `words/*.js`).
+
+### Round-2 open item — RESOLVED & verified
+
+- `words/thanks.js:691` `aer` now reads **`["unte mwerre", "untə mʷərə"]`** in live data. ✓
+  - Both ⟨e⟩ in `mwerre` → schwa /ə/ (Breen & Pensalfini 1999); ⟨rr⟩ → trill /r/ (Dixon 2002 §2.2). The worker applied the reviewer's explicitly-endorsed fully-consistent form (`untə mʷərə`, including the schwa in `unte`), surface orthography unchanged. This removes the internal inconsistency with the now-fixed `mʷərə` in good.js:691 and love.js:698.
+
+### Full re-verification of all 21 findings + parallels (live data)
+
+| # | File:lang | Live value now | Verdict |
+|---|-----------|----------------|---------|
+| 1 | hello pjt | `["palya","paʎa"]` | ✓ |
+| 2 | hello piu | `["palya","paʎa"]` | ✓ |
+| 3 | good pjt | `["palya","paʎa"]` | ✓ |
+| 4 | good piu | `["palya","paʎa"]` | ✓ |
+| 5 | thanks pjt | `["palya","paʎa"]` | ✓ |
+| 6 | thanks piu | `["palya","paʎa"]` | ✓ |
+| 7 | love pjt | `["mukulya","mukuʎa"]` | ✓ |
+| 8 | love piu | `["mukulya","mukuʎa"]` | ✓ |
+| 9 | love wbp | `["jaru","caɻu"]` | ✓ |
+| 10 | one wbp | `["jinta","cinta"]` | ✓ |
+| 11 | dog wbp | `["jarntu","caɳʈu"]` | ✓ |
+| 12 | eat adt | `["ngalkanha","ŋalkan̪a"]` | ✓ |
+| 13 | drink adt | `["ulpanha","ulpan̪a"]` | ✓ |
+| 14 | love adt | `["mukunha","mukun̪a"]` | ✓; thanks adt `["mukunha","mukun̪a"]` ✓ |
+| 15 | good adt | `["ngarrkanha","ŋaɻkan̪a"]` | ✓ (dental nasal fixed; ⟨rr⟩=[ɻ] sub-note accepted as system-wide convention) |
+| 16 | water aer | `["kwatye","kʷatʲə"]` | ✓ |
+| 17 | sun aer | `["arrenge","arəŋə"]` | ✓ |
+| 18 | good aer | `["mwerre","mʷərə"]` | ✓; love aer `["mwerre","mʷərə"]` ✓; **thanks aer `["unte mwerre","untə mʷərə"]` ✓ (R2 item now fixed)** |
+| 19 | father aer | `["arrweke","arʷəkə"]` | ✓ |
+| 20 | cat aer | `["kele","kələ"]` | ✓ |
+| 21 | house nys | `["mia","maja"]` | ✓ |
+
+All 21 findings, all four parallels (mukunha-thanks, mwerre-love, mwerre-thanks, mukunha already covered), are present and correct in live data.
+
+### Accepted won't-fix / out-of-scope (unchanged from round-2)
+
+- ⟨rr⟩=[ɻ] for Western Desert/Arandic ⟨rr⟩ outside Arrernte (#15 sub-note): system-wide dataset convention, scoped out by me — accepted.
+- Corpus-wide Arandic ⟨e⟩→non-schwa in non-#67 `aer` words (hand, moon, eye, fire, tree, heart, one, hello, drink, eat, house): real instances of the same principle but belong to the reviews owning those words; deliberately not counted as #67 issues.
+
+### Scorecard
+- Findings verified applied in live data: 21/21 + 4 parallels.
+- New actionable issues this round: 0.
+- Round-2 open item: resolved & verified.
+
+**File status: CLOSED** — nothing left to address.
