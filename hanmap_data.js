@@ -33,6 +33,8 @@
 
 
 
+
+
 const HAN_LIST = ["一","二","三","四","五","六","七","八","九","十","日","月","山","水","火","木","土","天","地","海","龍","虎","犬","馬","鳥","魚","牛","羊","貓","人","手","足","目","耳","口","頭","心","血","肉","上","下","中:1","中:2","央","左","右","東","西","南","北","行:1","行:2","来","去","見","聞","食","飲","走","坐","立"];
 
 const HAN_CATEGORIES = [
@@ -10650,7 +10652,7 @@ const HAN_DATA = {
       "zh_phagspa": "xiŋ",
       "yue_hk": "haang4",
       "yue_mo": "haang4",
-      "nan_sg": "kiânn",
+      "nan_sg": "kiâⁿ",
       "nan_id": "kiâⁿ",
       "sjo": "yabum",
       "ko_mid": "hoyng",
@@ -19937,7 +19939,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "sann",
+        "surface": "saⁿ",
         "ipa": "sã˦",
         "label": "白讀"
       },
@@ -21477,7 +21479,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "suann",
+        "surface": "suaⁿ",
         "ipa": "suã˦",
         "label": "白讀"
       },
@@ -21919,7 +21921,7 @@ const HAN_VARIANTS = {
     "nan": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˥˥",
         "label": "白讀"
       },
@@ -21947,7 +21949,7 @@ const HAN_VARIANTS = {
     "nan_xm": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˦",
         "label": "白讀"
       },
@@ -21961,7 +21963,7 @@ const HAN_VARIANTS = {
     "nan_qz": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˦˩",
         "label": "白讀"
       },
@@ -21975,7 +21977,7 @@ const HAN_VARIANTS = {
     "nan_zz": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˦",
         "label": "白讀"
       },
@@ -21989,7 +21991,7 @@ const HAN_VARIANTS = {
     "nan_pn": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˦",
         "label": "白讀"
       },
@@ -22045,7 +22047,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "thinn",
+        "surface": "thiⁿ",
         "ipa": "tʰĩ˦",
         "label": "白讀"
       },
@@ -22941,7 +22943,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "iûnn",
+        "surface": "iûⁿ",
         "ipa": "ĩũ˨˦",
         "label": "白讀"
       },
@@ -23849,7 +23851,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "hīnn",
+        "surface": "hīⁿ",
         "ipa": "hĩ˨˩",
         "label": "白讀"
       },
@@ -24683,7 +24685,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "tsiūnn",
+        "surface": "tsiūⁿ",
         "ipa": "t͡siũ˨˩",
         "label": "白讀"
       },
@@ -25791,7 +25793,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "kiânn",
+        "surface": "kiâⁿ",
         "ipa": "kiã˨˦",
         "label": "白讀"
       },
@@ -26473,7 +26475,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "kìnn",
+        "surface": "kìⁿ",
         "ipa": "kĩ˥˧",
         "label": "白讀"
       },
@@ -27433,7 +27435,7 @@ const HAN_VARIANTS = {
     "nan_sg": [
       {
         "native": "",
-        "surface": "phīnn",
+        "surface": "phīⁿ",
         "ipa": "pʰĩ˨˩",
         "label": "白讀"
       },
