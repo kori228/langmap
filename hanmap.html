@@ -3054,7 +3054,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=82"></script>
+    <script src="hanmap_data.js?v=83"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -9591,20 +9591,13 @@
                 }
                 const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
                 // For compound IDs (e.g. "行:1"), display the bare char + the
-                // sense INDEX (①②…) so the two senses are distinguishable —
-                // e.g. "行 ①" / "行 ②". Derive both from w.id (the canonical
-                // "行:1"), not conceptLabel, and from the id's own ':N' suffix
-                // so it works even when HAN_SENSE_LABELS is absent. If a sense
-                // label IS available, append it too: "行 ① (行為)".
+                // sense label so the row reads "行 (行為)" / "行 (行列)". Derive
+                // both from w.id (the canonical "行:1") so the sense resolves
+                // via HAN_SENSE_LABELS regardless of conceptLabel.
                 const _rowBaseChar = displayCharOf(w.id);
-                const _rowSenseIdx = senseBadgeOf(w.id);
                 const _rowSenseTxt = senseLabelOf(w.id, uiLang);
-                const _senseCircled = _rowSenseIdx
-                    ? (['①','②','③','④','⑤','⑥','⑦','⑧','⑨'][parseInt(_rowSenseIdx, 10) - 1] || _rowSenseIdx)
-                    : '';
                 const _rowLabelHtml = escapeHtml(_rowBaseChar) +
-                    (_rowSenseIdx ? ' <span style="font-size:13px;color:#4a6cf7;font-weight:700">' + escapeHtml(_senseCircled) + '</span>' : '') +
-                    (_rowSenseTxt ? ' <span style="font-size:10px;color:#666">(' + escapeHtml(_rowSenseTxt) + ')</span>' : '');
+                    (_rowSenseTxt ? ' <span style="font-size:11px;color:#4a6cf7;font-weight:600">(' + escapeHtml(_rowSenseTxt) + ')</span>' : '');
                 html += '<tr><th scope="row">' + _rowLabelHtml + '</th>';
                 for (let ci = 0; ci < _compareList.length; ci++) {
                     const cellRows = rowCellRows[ci];
