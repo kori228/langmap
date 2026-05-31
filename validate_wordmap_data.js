@@ -2514,6 +2514,73 @@ for (const ui of UI_LANGS) {
     console.log(`  ${ui.padEnd(6)} ${c.covered}/${totalDescCodes}  (${pct}%)`);
 }
 console.log('');
+// ── Self-hosted subset-font coverage guard (iPhone tofu prevention) ──
+// Chữ Nôm (CJK Ext B+, ≥U+20000) and Old Hangul conjoining jamo (U+1100–11FF)
+// render as tofu on iOS unless served by the self-hosted @font-face subsets
+// (fonts/NomNaTong-subset.woff2, fonts/NotoSerifKR-OldHangul-subset.ttf). Those
+// subsets are pinned to the exact codepoints in the data, so any NEW special
+// codepoint added to words/*.js without regenerating the subset font silently
+// breaks iPhone. This guard fails the build if that happens.
+(function checkSubsetFontCoverage() {
+    let html;
+    try { html = read('wordmap.html'); } catch (e) { return; } // skip if absent
+    // 1) codepoints declared in @font-face unicode-range blocks
+    const covered = new Set(), rngs = [];
+    for (const blk of (html.match(/@font-face\s*{[^}]*}/g) || [])) {
+        const ur = blk.match(/unicode-range:\s*([^;]+);/i);
+        if (!ur) continue;
+        for (const tok of ur[1].split(',')) {
+            const m = tok.trim().match(/^U\+([0-9A-Fa-f]+)(?:-([0-9A-Fa-f]+))?$/);
+            if (!m) continue;
+            const lo = parseInt(m[1], 16);
+            if (m[2]) rngs.push([lo, parseInt(m[2], 16)]); else covered.add(lo);
+        }
+    }
+    const inDeclared = cp => covered.has(cp) || rngs.some(([a, b]) => cp >= a && cp <= b);
+    // 2) ACTUAL glyph set of the Old Hangul subset .ttf (the U+1100–11FF range
+    //    is broad but the subset only carries the glyphs it was built with —
+    //    read the real cmap, dependency-free).
+    let jamoCmap = null;
+    try {
+        const b = fs.readFileSync(path.join(__dirname, 'fonts', 'NotoSerifKR-OldHangul-subset.ttf'));
+        const u16 = o => b.readUInt16BE(o), u32 = o => b.readUInt32BE(o);
+        let cmapOff = 0; const nt = u16(4);
+        for (let i = 0; i < nt; i++) { const o = 12 + i*16; if (b.toString('ascii', o, o+4) === 'cmap') cmapOff = u32(o+8); }
+        if (cmapOff) {
+            const nSub = u16(cmapOff+2); let best = 0, bestFmt = -1;
+            for (let i = 0; i < nSub; i++) { const o = cmapOff+4+i*8, plat = u16(o), enc = u16(o+2), off = u32(o+4), fmt = u16(cmapOff+off);
+                if (((plat===3 && (enc===1||enc===10)) || plat===0) && fmt >= bestFmt) { bestFmt = fmt; best = cmapOff+off; } }
+            const set = new Set(), fmt = u16(best);
+            if (fmt === 4) { const segX2 = u16(best+6), segc = segX2/2, endO = best+14, startO = endO+segX2+2, deltaO = startO+segX2, rangeO = deltaO+segX2;
+                for (let s = 0; s < segc; s++) { const end = u16(endO+s*2), start = u16(startO+s*2), delta = u16(deltaO+s*2), ro = u16(rangeO+s*2);
+                    for (let c = start; c <= end && c !== 0xffff; c++) { let g; if (ro === 0) g = (c+delta)&0xffff; else { const gi = rangeO+s*2+ro+(c-start)*2; if (gi+1 >= b.length) continue; g = u16(gi); if (g) g = (g+delta)&0xffff; } if (g) set.add(c); } } }
+            else if (fmt === 12) { const ng = u32(best+12); for (let g = 0; g < ng; g++) { const o = best+16+g*12, sc = u32(o), ec = u32(o+4); for (let c = sc; c <= ec; c++) set.add(c); } }
+            jamoCmap = set;
+        }
+    } catch (e) { /* ttf missing — fall back to declared range */ }
+    // 3) scan word surfaces; assert every special codepoint is covered
+    const WORDS = ctx.WORDS || {};
+    let scanned = 0, uncovered = 0;
+    for (const id of Object.keys(WORDS)) {
+        const d = WORDS[id] && WORDS[id].data; if (!d) continue;
+        for (const code of Object.keys(d)) {
+            const surf = d[code] && d[code][0]; if (typeof surf !== 'string') continue;
+            for (const ch of surf) {
+                const cp = ch.codePointAt(0);
+                const isNom = cp >= 0x20000, isJamo = cp >= 0x1100 && cp <= 0x11FF;
+                if (!isNom && !isJamo) continue;
+                scanned++;
+                const ok = (isJamo && jamoCmap) ? jamoCmap.has(cp) : inDeclared(cp);
+                if (!ok) {
+                    uncovered++;
+                    const kind = isNom ? 'Chữ Nôm (CJK Ext B+)' : 'Old Hangul jamo';
+                    E(`subset-font coverage: ${kind} U+${cp.toString(16).toUpperCase()} "${ch}" in ${id}.${code} surface "${surf}" is NOT in the self-hosted subset font → tofu on iPhone. Regenerate the fonts/ subset and its @font-face unicode-range (wordmap.html + hanmap.html) to include it.`);
+                }
+            }
+        }
+    }
+    infos.push(`subset-font coverage: scanned ${scanned} Nôm/Old-Hangul codepoints in word surfaces, ${uncovered} uncovered`);
+})();
 console.log(`ERRORS (${errors.length}):`);
 for (const m of errors) console.log('  ✗ ' + m);
 console.log('');
