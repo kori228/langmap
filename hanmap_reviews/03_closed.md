@@ -565,3 +565,83 @@ The same MK-tone → Gyeongsang-pitch rule the team applied to 北 (#9) and 足 
 The round-3 worker's verification of all prior items was accurate and the C/D/E fixes are correctly applied. However the same systematic audit yields two remaining voiceless/全濁 入聲 mis-assignments (血, 食 `ko_bus`) that fall squarely inside the team's established rule, so I cannot close yet.
 
 **File status: OPEN** — Dev team must fix: (1) `血.surface.ko_bus` `hyeolL`→`hyeolH` and `血.ipa.ko_bus` `hjʌl˩`→`hjʌl˥`; (2) `食.surface.ko_bus` `sikL`→`sikH` and `食.ipa.ko_bus` `ɕik˩`→`ɕik˥`.
+
+---
+
+## Worker round-4 response (作業者round-4)
+
+Processed by Claude Opus 4.8 (1M). READ-ONLY on `hanmap_data.js`; the two fixes below are returned as structured edits for the orchestrator to apply serially. All values verified verbatim against live `hanmap_data.js` on `develop` via `node -e` + `require()` before deciding.
+
+### Round-3 new issues F and G — both APPLIED
+
+Both are clear, unambiguous internal inconsistencies that fall squarely inside the team's own established, consistently-applied rule: **voiceless-/全濁-initial 入聲 → MK 거성 (`·`) → Gyeongsang H**. Live audit confirms the diagnosis exactly.
+
+- **F — 血 `ko_bus` L→H**: APPLIED (applied by orchestrator this round).
+  - Live: `surface.ko_bus = hyeolL`, `ipa.ko_bus = hjʌl˩`.
+  - 血 `zh_tang = xwet` (曉母, voiceless fricative, 入聲). `ko_mid = ·hywelq` carries the `·` (입성/거성) marker; IPA `hjwə́lʔ` carries high pitch — so the 거성 class is already encoded in `ko_mid`. The `ko_bus` L (= 平聲/sonorant reflex) is the lone outlier.
+  - Fixed to `hyeolH` / `hjʌl˥`, matching in-file voiceless-入聲 anchors 一 (`ilH`), 七 (`chilH`), 八 (`palH`), 北 (`bukH`), 足 (`jokH`). Same error class as #9 (北) and #E (足), already fixed in prior rounds.
+
+- **G — 食 `ko_bus` L→H**: APPLIED (applied by orchestrator this round).
+  - Live: `surface.ko_bus = sikL`, `ipa.ko_bus = ɕik˩`.
+  - 食 `zh_tang = zyik` (船/神母, 全濁 voiced sibilant, 職韻 入聲). Its nearest structural analog 十 (`zh_tang = dzyip`, 禪/船母, 全濁 入聲) is `sipH`/`ɕip˥` — H. 食's own `ko_mid = ·zik` (입성 marker, IPA `zík̚` high) already encodes the 거성 class. `ko_bus` L is the outlier; 食 and 十 cannot both be right for the same 全濁 入聲 class.
+  - Fixed to `sikH` / `ɕik˥`, matching 十 (`sipH`/`ɕip˥`). Note: this is the `ko_bus` pitch field only — 食's `ko_mid` pansios initial was a separate fix already done in round-1 (#10); untouched here.
+
+### Scope note confirmed (not flagged — correct as-is)
+
+The reviewer's scope note is verified against live data: sonorant/次濁 入聲 syllables all correctly sit at `ko_bus` L — 月 `wolL` (ŋ-), 木 `mokL` / 目 `mokL` (m-), 肉 `yukL` (ɲ-), 立 `ipL` (l-). These are the correct reflex for voiced-sonorant 入聲 and are rightly NOT changed.
+
+### Held (won't-fix — reviewer already re-affirmed △ ACCEPTED in round-3)
+
+#16/#17 (七/八/水 precomposed-vs-decomposed jamo), #18 (山 `ko_hun` 메 vs 뫼), #20/#21 (去/口 溪母 aspiration = 東國正韻 layer), #22 (飲 romanized `u` for ɯ). All convention/layer choices; reviewer continues to accept each as defensible. No round-4 action.
+
+### Summary
+
+2 fixes applied (血, 食 `ko_bus` pitch — the only genuinely-open items after the round-3 audit). 0 items left deliberately open. All round-1/round-2/round-3 prior fixes confirmed present and correct in live data; 6 convention/layer items held with reviewer-accepted rationale. With F and G applied, every voiceless-/全濁-initial 入聲 syllable in the dataset now resolves to Gyeongsang H, and every voiced-sonorant 入聲 to L — fully consistent.
+
+Sincerely,
+Worker (Claude Opus 4.8 1M), 2026-05-31
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+**Verification date:** 2026-05-31
+**Method:** Full live inspection of `hanmap_data.js` (object `HAN_DATA`) on `develop` HEAD via `node -e` + `require()`. Extracted `surface`/`ipa`/`native` for the two round-4 targets (血, 食) plus a complete **system-wide audit** cross-checking every character's `ko_mid` tone marker (`:`=上聲, `·`=거성/입성, none=平聲) against its `ko_bus` Gyeongsang pitch class, with the 入聲 (`·` + stop coda) rows further filtered by MC initial voicing (from `zh_tang`).
+
+### Round-3 new issues F and G — both VERIFIED FIXED
+
+- **F — 血 `ko_bus`** ✓ **CLOSED**
+  Live data: `surface.ko_bus = hyeolH`, `ipa.ko_bus = hjʌl˥`. Correctly changed from `hyeolL`/`hjʌl˩`. 血 `zh_tang = xwet` (曉母, voiceless fricative, 入聲); `ko_mid = ·hywelq` / `hjwə́lʔ` already encodes the 거성 class. Now matches the voiceless-入聲 anchor set 一 `ilH`, 七 `chilH`, 八 `palH`, 北 `bukH`, 足 `jokH`. Diagnosis and fix are exactly correct.
+
+- **G — 食 `ko_bus`** ✓ **CLOSED**
+  Live data: `surface.ko_bus = sikH`, `ipa.ko_bus = ɕik˥`. Correctly changed from `sikL`/`ɕik˩`. 食 `zh_tang = zyik` (船/神母, 全濁 voiced sibilant, 職韻 入聲); now consistent with its 全濁-入聲 analog 十 `sipH`/`ɕip˥`. `ko_mid = ·zik` / `zík̚` 거성 class confirmed. (The separate round-1 pansios initial fix `·씩→·ᅀᅵᆨ` remains intact — `native.ko_mid = ·ᅀᅵᆨ`.) Correct.
+
+### Independent system-wide consistency audit (all 61 chars)
+
+I re-ran the full `ko_mid`-marker ↔ `ko_bus`-pitch cross-check from scratch. The dataset is now **fully internally consistent** on the Middle-Korean-tone → Gyeongsang-pitch rule:
+
+- **平聲 (no marker) → L:** 三, 山, 天, 龍, 魚, 牛, 羊, 貓, 人, 頭, 心, 央, 東, 西, 南, 中:1, 行:1/2, 来, 聞 — all L. ✓
+- **上聲 (`:`) → LH:** 五, 九, 水, 火, 土, 海, 虎, 犬, 馬, 鳥, 手, 耳, 口, 上, 下, 左, 右, 走, 坐, 飲 — all LH (飲 = `eu:mLH`/`ɯːm˩˧`, correct LH despite coda-internal `:` placement). ✓
+- **去聲 (`·`, non-stop) → H:** 去 `geoH`, 見 `gyeonH`, 二 `iH`, 四 `saH`, 中:2 `jungH`. ✓
+- **入聲, voiceless/全濁 initial → H:** 一 `ilH`, 七 `chilH`, 八 `palH`, 十 `sipH`, 六 `yukH`, 日 `ilH`, 地 `jiH`, 北 `bukH`, 足 `jokH`, 血 `hyeolH`, 食 `sikH`. ✓
+- **入聲, sonorant (次濁) initial → L:** 月 `wolL` (ŋ-), 木 `mokL` / 目 `mokL` (m-), 肉 `yukL` (ɲ-), 立 `ipL` (l-). ✓ Correct reflex for voiced-sonorant 入聲; rightly unchanged.
+
+No remaining mis-assignments. The two voiceless/全濁 入聲 outliers I flagged in round-3 (血, 食) were the last ones, and both are now fixed.
+
+### Held items (convention / layer) — re-affirmed △ ACCEPTED
+
+#16/#17 (七/八/水 precomposed-vs-decomposed jamo — "decompose only when forced by an archaic initial ᅀ/ᅌ/ᅙ"), #18 (山 `ko_hun` 메 vs 뫼 — modern 새김 convention), #20/#21 (去/口 `ko_mid` 溪母 aspiration = 東國正韻 1448 layer, distinct from 訓蒙字會 1527), #22 (飲 romanized `u` for ɯ — file-wide romanization convention, IPA already corrected). All six remain defensible system/layer choices. Accepted; no action.
+
+### Scorecard
+
+| Category | Count | Status |
+|----------|-------|--------|
+| Round-1 fixes verified in live data | 14 | ✓ closed |
+| Round-2 issues A–E verified/applied | 5 | ✓ closed |
+| Round-3 new issues F (血), G (食) `ko_bus` | 2 | ✓ closed (verified live) |
+| Convention/layer items held | 6 | △ accepted |
+| New round-4 issues | 0 | — |
+
+Round-4 fixes F and G are confirmed present and correct in live data. The independent full-dataset audit finds the Sino-Korean tone/pitch system now fully consistent across all 61 characters: every voiceless/全濁 入聲 → H, every sonorant 入聲 → L, every 上聲 → LH, every 去聲 → H, every 平聲 → L. No new actionable issues; all remaining open-by-convention items are reviewer-accepted.
+
+**File status: CLOSED** — nothing left to address.
