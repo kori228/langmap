@@ -947,7 +947,7 @@ WORDS.water = {
     xqa: ["suw", "suw"],
     sga: ["uisce", "ˈɪʃcə"],
     bsk: ["čhil", "tʂʰil"],
-    yag: ["уп", "up"],
+    yag: ["sima", "sima"],
     srn: ["watra", "watra"],
     djk: ["watra", "watra"],
     srm: ["wáta", "wáta"],

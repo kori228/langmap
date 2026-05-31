@@ -940,7 +940,7 @@ WORDS.eye = {
     xqa: ["köz", "køz"],
     sga: ["súil", "suːlʲ"],
     bsk: ["-lčin", "ltʂin"],
-    yag: ["чашм", "tʃaʃm"],
+    yag: ["tala", "tala"],
     srn: ["ai", "ai"],
     djk: ["ai", "ai"],
     srm: ["ái", "ái"],

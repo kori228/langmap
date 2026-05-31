@@ -940,7 +940,7 @@ WORDS.dog = {
     xqa: ["it", "it"],
     sga: ["cú", "kuː"],
     bsk: ["huk", "huk"],
-    yag: ["куч", "kutʃ"],
+    yag: ["yašala", "jaʃala"],
     srn: ["dagu", "daɡu"],
     djk: ["dagu", "daɡu"],
     srm: ["dágu", "dáɡu"],

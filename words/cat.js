@@ -940,7 +940,7 @@ WORDS.cat = {
     xqa: ["piši", "piʃi"],
     sga: ["cat", "kat"],
     bsk: ["bushi", "buʂi"],
-    yag: ["пшак", "pʃak"],
+    yag: ["kyat", "kjat"],
     srn: ["poesi", "pusi"],
     djk: ["poesi", "pusi"],
     srm: ["mísi", "mísi"],

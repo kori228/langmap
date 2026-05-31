@@ -940,7 +940,7 @@ WORDS.heart = {
     xqa: ["yürek", "jyrek"],
     sga: ["cride", "krʲiðʲe"],
     bsk: ["-us", "us"],
-    yag: ["дил", "dil"],
+    yag: ["seskin", "seskin"],
     srn: ["ati", "ati"],
     djk: ["ati", "ati"],
     srm: ["hááti", "háːti"],

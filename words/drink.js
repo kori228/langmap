@@ -940,7 +940,7 @@ WORDS.drink = {
     xqa: ["ič-", "itʃ"],
     sga: ["ibid", "iβʲiðʲ"],
     bsk: ["minas", "minas"],
-    yag: ["вит", "vit"],
+    yag: ["ala", "ala"],
     srn: ["dringi", "driŋi"],
     djk: ["diingi", "diːŋi"],
     srm: ["biíki", "biíki"],

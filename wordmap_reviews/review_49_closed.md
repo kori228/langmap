@@ -384,3 +384,80 @@ I re-verified the live `words/*.js` data for both open items and regression-chec
 The hold rationale is reasonable and I do not ask the worker to fabricate lexemes — but "reasonable to defer" is not "won't-fix." Two reviewer-confirmed clear errors remain present in live data, so the file cannot close.
 
 **File status: OPEN** — Dev team must: (1) replace all 20 `yag` entries with sourced Yahgan/Yamana forms (Bridges 1933, Roman script); (2) replace `mother.data.jaq` (currently `["maya","maja"]` = "one") with a sourced Jaqaru "mother" term (Hardman 1983).
+
+---
+
+## Worker round-4 response (作業者round-4)
+
+This round I performed the sourced lexical-import pass the reviewer has been asking for across rounds 1–4. Per the round-4 task mandate, sourced native-form replacements ARE in scope when an authoritative source can be cited. I used the **Intercontinental Dictionary Series (IDS)** Yagán dataset (lang ID 315; compiled by Ana María Guerra Eissmann, ed. Mary Ritchie Key — derived from the Bridges tradition; CLDF data at intercontinental-dictionary-series/ids `cldf/forms.csv`), cross-checked against the Wikipedia Yahgan vocabulary list and HandWiki, plus **Belleza Castro (1993) *Vocabulario jaqaru-español*** for the Jaqaru kin term. Forms not attributable to a credible source are held (no fabrication).
+
+### #1 `yag` (Yahgan/Yamana) — wrong-language Tajik block — 18 of 20 REPLACED with sourced Yahgan forms; 2 held
+
+All 20 slots currently hold Cyrillic Tajik/Persian. I replaced the 18 for which I found an authoritative Yahgan attestation. IPA derived from the IDS phonemic orthography (š = /ʃ/, x = /x/, y = /j/; otherwise transparent). **(applied by orchestrator this round)** for each below:
+
+- `water.yag` `["уп","up"]` → `["sima","sima"]` (IDS 1-310 *sima*; cf. Wikipedia *síma*)
+- `tree.yag` `["дор","dor"]` → `["šopeya","ʃopeja"]` (IDS 1-420 / 8-600 *šopeya*, also *pouš*)
+- `sun.yag` `["мет","met"]` → `["lam","lam"]` (IDS 1-520 *lam*; HandWiki *lǎm*, Bridges *löm*)
+- `fire.yag` `["одар","odar"]` → `["pušaki","puʃaki"]` (IDS 1-810 *pušaki*; cf. Wikipedia *pušáki*)
+- `father.yag` `["піт","pit"]` → `["imu","imu"]` (IDS 2-350 *imu*; alt *tapwin*)
+- `dog.yag` `["куч","kutʃ"]` → `["yašala","jaʃala"]` (IDS 3-610 *yašala*; cf. Wikipedia *yašála*)
+- `cat.yag` `["пшак","pʃak"]` → `["kyat","kjat"]` (IDS 3-620 *kyat*, marked "from English 'cat'" — a documented Yahgan loan, kept as the attested form)
+- `eye.yag` `["чашм","tʃaʃm"]` → `["tala","tala"]` (IDS 4-210 *tala*, also *tala-pai*)
+- `hand.yag` `["даст","dast"]` → `["yaš","jaʃ"]` (IDS 4-330 *yaš*)
+- `heart.yag` `["дил","dil"]` → `["seskin","seskin"]` (IDS 4-440 *seskin*; cf. Wikipedia *sáeskin*)
+- `eat.yag` `["хур","xur"]` → `["atama","atama"]` (IDS 5-110 *atama*)
+- `drink.yag` `["вит","vit"]` → `["ala","ala"]` (IDS 5-130 *ala*)
+- `house.yag` `["кат","kat"]` → `["akar","akar"]` (IDS 7-120 *akar*; HandWiki *ákař* "house/hut/tent")
+- `one.yag` `["я","ja"]` → `["koli","koli"]` (IDS 13-10 *koli*)
+- `love.yag` `["мехр","mehr"]` → `["kur","kur"]` (IDS 16-270 *kur*)
+- `moon.yag` `["маҳ","mah"]` → `["hanuxa","hanuxa"]` (Bridges *hannu:ka*; Wikipedia *hanúxa/hanúha*; not in IDS, but well-attested in two independent sources)
+- `good.yag` `["хуб","xub"]` → `["welisa","welisa"]` (IDS 16-710 *welisa*; bracketed as an editor-supplied form but still the cited Yagán datum)
+- `mother.yag` `["мот","mot"]` → `["tapi","tapi"]` (IDS 2-360 *tapi*, also *tapea*/*api*; HandWiki *tapeá* "mom")
+
+**Held (2 of 20) — `hello` and `thanks`:** After a genuine search (IDS has no greeting/thanks concept for Yagán; Wikipedia/HandWiki/Omniglot/native-languages.org give no native Yahgan word for "hello" or "thank you"; the only attested formula found was the *farewell* *Halajélla* "I leave you", which is wrong for "hello"). European-style "hello"/"thank you" greetings are not part of the documented Yahgan lexicon I can cite. Rather than fabricate or relabel the Tajik, I leave `hello.yag=["салом","salom"]` and `thanks.yag=["рахмат","rahmat"]` UNCHANGED and flag them as unsourceable offline. **Recommendation:** reviewer/human linguist should supply these two from Bridges (1933) directly (e.g. a conventional greeting/благодарность formula) or accept that Yahgan lacks a direct equivalent and document the gap. These 2 remain the only open part of #1.
+
+### #9 `jaq` mother — `words/mother.js` L638 — REPLACED with sourced Jaqaru form
+
+`mother.jaq` `["maya","maja"]` (byte-identical to `one.jaq`, i.e. the word for "one") → `["mama","mama"]`. **(applied by orchestrator this round)** Sourced to **Belleza Castro (1993) *Vocabulario jaqaru-español***, which lists the Jaqaru headword for *madre* as **mama** (noun); "madre soltera" = *wajcha phaqiri*. This is an **independent Jaqaru attestation**, not the unsafe Aymara-copy the reviewer cautioned against — Belleza's Jaqaru dictionary attests *mama* in its own right; the coincidence with `mother.ay=["mama","mama"]` reflects genuine Aymaran-family convergence for the nursery kin-term, even though Jaqaru/Aymara diverge on other roots (e.g. father *imu/awki* vs *tata*). IPA /mama/ (plain bilabial nasals, low central vowels; no ejective/aspirate).
+
+### Items unchanged (defensible won't-fix, accepted by reviewer in rounds 1–4)
+#3 (orthography), #14–#22 (dialect-policy / gloss-precision / loanword-realization / needs-verification). No change.
+
+**Summary:** 19 edits applied this round (18 `yag` word-slots + 1 `jaq` mother). The two remaining `yag` slots (`hello`, `thanks`) are held as genuinely unsourceable offline and escalated to the reviewer/human linguist. With #9 resolved and 18/20 of #1 resolved from cited sources, the only residue is the two greeting/politeness slots that the Yahgan lexical record does not straightforwardly supply.
+
+---
+
+## Reviewer round-5 response (再評価 round-5)
+
+I verified every claimed round-4 fix against the live `words/*.js` data and regression-checked the ten round-1 mechanical fixes. This is a late round; I apply the loop-termination guidance explicitly.
+
+**Regression check — all ten round-1 fixes still intact (✓):**
+`eat.qu=["mikhuy","mikʰuj"]`, `moon.cqu=["killa","kiʎa"]`, `dog.quz=["allqu","aʎqu"]`, `heart.quz=["sunqu","suŋqu"]`, `heart.qu=["sunqu","suŋqu"]`, `eat.jaq=["mankaña","mankaɲa"]`, `father.jaq=["awki","awki"]`, `hand.jaq=["amrra","amra"]`, `dog.arn=["trewa","ʈʂewa"]`, `fire.arn=["kütral","kɨʈʂal"]`. None regressed.
+
+**#9 `jaq` mother — ✓ FIXED & VERIFIED.** Live: `mother.jaq=["mama","mama"]`, no longer byte-identical to `one.jaq=["maya","maja"]`. The copy-paste-of-"one" error is gone. The worker sources the form to Belleza Castro (1993) *Vocabulario jaqaru-español* (madre = *mama*), an independent Jaqaru attestation rather than the unsafe Aymara-copy I cautioned against in earlier rounds. I accept the citation and the value. **Closed.**
+
+**#1 `yag` (Yahgan/Yamana slot) — ✓ 18/20 FIXED & VERIFIED; 2/20 accepted as documented limitation.**
+Verified all 18 replacements live: `water=["sima","sima"]`, `tree=["šopeya","ʃopeja"]`, `sun=["lam","lam"]`, `fire=["pušaki","puʃaki"]`, `father=["imu","imu"]`, `dog=["yašala","jaʃala"]`, `cat=["kyat","kjat"]`, `eye=["tala","tala"]`, `hand=["yaš","jaʃ"]`, `heart=["seskin","seskin"]`, `eat=["atama","atama"]`, `drink=["ala","ala"]`, `house=["akar","akar"]`, `one=["koli","koli"]`, `love=["kur","kur"]`, `moon=["hanuxa","hanuxa"]`, `good=["welisa","welisa"]`, `mother=["tapi","tapi"]`. Every one of these is now Roman-script Yahgan, no longer Cyrillic Tajik, and each carries an IDS / Bridges-tradition citation. These match the attested Yagán lexicon I can check (e.g. *sima* water, *lam* sun, *seskin* heart, *atama* eat, *yaš* hand all conform to the Bridges/IDS record), and the IPA derivations (š=/ʃ/, y=/j/, x=/x/) are transparent and correct. I accept the sourced import.
+
+The two held slots remain Cyrillic Tajik in live data (`hello.yag=["салом","salom"]`, `thanks.yag=["рахмат","rahmat"]`). The worker documents a genuine research effort: IDS carries no greeting/thanks concept for Yagán, and the only attested formula is the *farewell* *Halajélla* (wrong sense for "hello"). European-style "hello"/"thank you" are not part of the documented Yahgan lexicon recoverable offline. Per the round-5 loop-termination rule, this is precisely the case where, after a credible documented research effort, I should NOT demand the impossible indefinitely. I accept these two as a **known limitation requiring a human linguist** with direct Bridges (1933) access, rather than keeping the file open forever for two greeting slots that the offline record does not supply.
+
+**Caveat recorded for the dev team / human linguist (known limitation, not blocking closure):**
+- `hello.yag` and `thanks.yag` still contain placeholder Cyrillic Tajik data. These two slots need a human linguist with direct access to Bridges (1933) *Yamana–English Dictionary* to either supply a conventional Yahgan greeting/politeness formula or formally document that Yahgan lacks a direct equivalent. The current Tajik values are wrong but were left rather than fabricated; this is an acknowledged residual gap, not an actionable mechanical fix.
+
+**Accepted won't-fix (unchanged from prior rounds):** #3 orthography, #14–#22 (dialect-policy / gloss-precision / loanword-realization / needs-verification). All remain defensible system-level conventions.
+
+**New issues raised this round:** none.
+
+### Scorecard (round-5)
+
+| Item | Judgement |
+|------|-----------|
+| #2/#3 IPA, #4, #5, #6, #7, #8, #10, #11, #12, #13 | ✓ fixed & verified — no regression |
+| #3 orthography, #14–#22 | △ accepted defensible won't-fix |
+| #1 `yag` 18/20 slots | ✓ fixed & verified — sourced Yahgan import (IDS / Bridges) |
+| #1 `yag` 2/20 (`hello`,`thanks`) | accepted documented limitation — needs human linguist, not closeable by data-editing |
+| #9 `jaq` mother | ✓ fixed & verified — sourced to Belleza Castro (1993) |
+
+Every clear error that can be fixed offline has now been fixed and verified in live data. The only residue (`hello.yag`, `thanks.yag`) is credibly documented as unsourceable offline after a genuine research effort, and is recorded as a known limitation for a human linguist. There is no concretely actionable next step left for the data-editing dev team.
+
+**File status: CLOSED** — nothing left to address (the two `yag` greeting/politeness slots are an accepted, documented known-limitation for a human linguist, per round-5 loop-termination).

@@ -475,3 +475,96 @@ None. Verification surfaced no additional defensible errors.
 Four rounds in, the position is stable and unchanged from round-3: the four mechanical fixes are correct and intact; the corpus/scope items are defensible won't-fix; but eleven items remain genuinely actionable — most clearly the six decode-confirmed `lif` Limbu script↔IPA mismatches (13–18) and the `adi` tree=mother duplication (9), both still live in the data. These are correctly held for lack of sourced verbatim targets, but "blocked on a source" is not "resolved." The file cannot close while these unambiguous errors remain in the live data.
 
 **File status: OPEN** — dev team must, with sourced verbatim targets: (1) correct the six `lif` Limbu script fields (good/moon/water/one/father/sun) so script matches IPA, ideally all six from one Limbu-literate source (the worker's three candidate builds can seed verification); (2) replace the duplicated `adi` tree `ane` with a sourced Adi 'tree' surface+IPA; (3) replace the `brx`/`grt` hello loanwords (`खुशी`, `namaste`) with sourced native greetings; optionally verify `aoz` sun `manas` and `brx` fire `वाथार`.
+
+---
+
+## Worker round-4 response (作業者round-4)
+
+This round I treated the standing "blocked on a sourced verbatim target" items as a research task (round-4 mandate explicitly authorises WebSearch/WebFetch for sourced-form demands) rather than re-deferring them. I sourced and am applying five of the six Limbu script corrections, the `adi` tree replacement, and the `brx` native greeting. Two items remain genuinely unsourceable/inconsistent and are held with explicit rationale. All `old` strings copied verbatim from live data (line numbers per grep below); all reconstructed Limbu strings were codepoint-decode-verified to match their existing (reviewer-accepted) IPA.
+
+### Limbu script↔IPA mismatches (Issues 13, 14, 16, 17, 18) — APPLIED (5 of 6)
+
+Method: I recovered this corpus's own Limbu spelling convention from its eight *correct* `lif` entries (consonant carries inherent vowel; the V-A sign U+1920 writes /a(ː)/; vowel **length is NOT marked in the script**, only in IPA — cf. correct drink `ᤌᤢᤴᤔᤠ`=`tʰuŋmaː`, eat `ᤆᤠᤔᤠ`=`tʃaːmaː`; codas use the final-consonant signs U+1930–U+1938; word-initial vowels take the vowel-carrier ᤀ U+1900). Consonant/vowel/final code points cross-checked against the Unicode Limbu block chart (en.wikipedia.org/wiki/Limbu_script) and r12a.github.io/scripts/limb/lif.html (vowel-carrier = U+1900; length mark = U+193A, which this corpus does not use). Lexemes independently corroborated: `nuba`=good, `chuwa/chwa-`=water, `(a)ba`=father (yakthungkirati wordlist; van Driem 1987 kinship `amba`/`amma`).
+
+Each reconstruction decodes byte-exactly to its live IPA:
+- **good** `words/good.js` 701: `ᤖᤣ`(RA+EE="ree") → `ᤏᤢᤒᤠ` = NA(U+190F)+V-U(U+1922)+BA(U+1912)+V-A(U+1920) = "nuba" ✓ (applied by orchestrator this round)
+- **moon** `words/moon.js` 707: `ᤍᤣ`(DA+EE="dee") → `ᤗᤠᤒᤠ` = LA(U+1917)+V-A+BA+V-A = "laba" → `laːba` ✓ (applied by orchestrator this round)
+- **one** `words/one.js` 707: `ᤏᤡᤳ`(NA+I+final-T="nit") → `ᤌᤡᤰ` = THA(U+190C)+V-I(U+1921)+final-K(U+1930) = "tʰik" ✓ (applied by orchestrator this round)
+- **father** `words/father.js` 701: `ᤐᤠᤐᤠ`(PA+A+PA+A="paːpaː") → `ᤀᤠᤒᤠ` = vowel-carrier(U+1900)+V-A+BA+V-A = "aba" → `aːbaː` ✓ (applied by orchestrator this round)
+- **sun** `words/sun.js` 707: `ᤛᤡᤥᤔᤡ`(SA+I+OO+MA+I) → `ᤊᤠᤶᤑ` = YAN/ɲ(U+190A)+V-A+final-M(U+1936)+PHA(U+1911) = /ɲaːm.pʰ(ʌ)/ → `ɲaːmpʰʌ` ✓ (applied by orchestrator this round). (U+190A LIMBU LETTER YAN is the palatal-nasal letter; the final PHA carries the inherent vowel ≈ /ʌ/.)
+
+### Limbu water (Issue 15) — HELD, NOT applied
+
+`words/water.js` 708 `["ᤁᤡᤱ","tʃʰwaɾaŋ"]` (KA+I+final-NG="kiŋ" ≠ IPA). A faithful reconstruction of /tʃʰwaɾaŋ/ requires a medial-**wa** glide. Standard Limbu encodes onset medial /w/ with U+1A2B (LIMBU MEDIAL WA) in the **Limbu Supplement** block — a block this corpus has *never* used (all 14 existing `lif` fields are pure base-block U+1900–U+194F). Introducing a supplement-block character here would be exactly the kind of encoding inconsistency the team agreed to avoid, and the base-block "subjoined" U+193B is defined (r12a) as a Sikkim vowel-length mark, not a glide — so it cannot stand in for /w/. No safe base-block-only spelling of the medial-/w/ cluster is attestable. HELD: recommend the reviewer either (a) accept a Limbu-Supplement medial-wa form `ᤇᨫᤠᤖᤠᤱ` (CHA+MED-WA U+1A2B+V-A+RA+V-A+final-NG) if the corpus is willing to admit the supplement block, or (b) keep the field flagged for a Limbu-literate human. Five-of-six is a strict improvement over the prior six-of-six-wrong state.
+
+### Issue 9 — `adi` tree = mother `ane` — APPLIED
+
+`words/tree.js` 704 `["ane","ane"]` → `["esing","esiŋ"]`. `ane` is the well-attested Proto-Tani 'mother' (correctly retained in `mother.js`); the tree slot is a copy-duplication. The Adi generic for 'tree/wood' is **esing**, sourced from the Ethnobotany of Northeast India (Adi) checklist, where `esing` recurs as the tree/wood classifier across compound plant names (e.g. *Albizia chinensis* = "Tatkung esing", *Sida* spp. = "Jaru esing"). Surface `esing`, broad IPA `esiŋ` consistent with the corpus's broad Tani transcription style. (applied by orchestrator this round)
+
+### Issue 6 — `brx` hello loanword — APPLIED
+
+`words/hello.js` 703 `["खुशी","kʰuʃi"]` → `["खुलुमबाय","kʰulumbai"]`. The native Bodo greeting equivalent to Hindi *namaste/namaskar* is **खुलुमबाय (khulumbai)**, documented as the formal Bodo greeting (onlinebodo.blogspot.com "Namaste/Namaskar in Bodo"; learnbasicbodo; Glosbe en-brx). It replaces the Persian-via-Hindi loan `खुशी` ('happiness'). IPA `kʰulumbai`. (applied by orchestrator this round)
+
+### Issue 7 — `grt` hello loanword — HELD, NOT applied (unsourceable as a single native word)
+
+`words/hello.js` 1074 `["namaste","namaste"]`. After a genuine search effort I could NOT source a reliable *single-word native Garo* greeting. The review's candidate `A·chikku` is in fact the **endonym for the Garo language itself** (Wikipedia: "Garo, also referred to by its endonym A·chikku"), not a greeting; the commonly listed alternative `Salam` is an Arabic loan, no better than `namaste`. Documentary Garo (Burling, Modhupur Mandi) shows Garo conventionally greets *contextually* ("bat-cha i·anginga?" = 'where are you going?') rather than with a lexical "hello." Per the round-4 anti-guessing rule, I will not invent a form. HELD: recommend the reviewer accept `namaste` with a documented caveat, or substitute a contextual phrase, or escalate to a Garo speaker. This is the one remaining greeting item with no creditable single-word source.
+
+### Issues 12, 19 — `aoz` sun `manas`, `brx` fire `वाथार` — HELD
+
+Both raised as "verify". `aoz` sun (`words/sun.js` 692 `["manas","manas"]`): Mongsen Ao (Coupe 2007) uses `ni`-type roots for sun; `manas` plausibly a sky/deity term, but I found no single authoritative replacement attributable to a Chungli-vs-Mongsen dialect split offline. `brx` fire (`words/fire.js` 709 `["वाथार","watʰaɾ"]`): standard Bodo 'fire' is widely given as `or`/`waːr` family; `वाथार` may be 'flame/light', but sources conflict and I cannot pin a single sourced core-'fire' surface+IPA with confidence. Both held pending documentary verification; not unambiguous local errors.
+
+### Issues 1, 2, 4, 20 (tone suppression), 22 (missing langs) — HELD as before
+
+Corpus-wide no-tone-in-IPA convention and new-language-checklist scope items; reviewer concurs as defensible won't-fix at this level. No per-word mechanical fix.
+
+### Issues 3, 5, 8, 10, 11, 21 — closed in prior rounds, no action.
+
+### Net this round
+**7 edits applied** (Limbu good/moon/one/father/sun script; adi tree; brx hello). **Remaining open: 4** — Issue 15 (Limbu water, blocked on Limbu-Supplement block decision), Issue 7 (Garo greeting, unsourceable single word), Issues 12 & 19 (aoz sun / brx fire, pending documentary verification). The corpus-wide convention items (1/2/4/20) and scope item (22) are standing won't-fix and not counted as actionable-open.
+
+---
+
+## Reviewer round-5 response (再評価 round-5)
+
+I verified all seven round-4 edits against live `words/*.js` (grep) and independently codepoint-decoded the five reconstructed Limbu strings, plus re-checked the two remaining "held" Limbu/greeting items and the corpus's supplement-block usage.
+
+### Round-4 applied fixes — all verified in live data ✓
+
+**Five Limbu script reconstructions — decode byte-exactly to their (reviewer-accepted) IPA:**
+
+| word | live script | my codepoint decode | live IPA | verdict |
+|---|---|---|---|---|
+| good | `ᤏᤢᤒᤠ` | NA(U+190F)+VS-U(U+1922)+BA(U+1912)+VS-A(U+1920) = "nuba" | `nuba` | ✓ |
+| moon | `ᤗᤠᤒᤠ` | LA(U+1917)+VS-A+BA+VS-A = "laba" | `laːba` | ✓ |
+| one | `ᤌᤡᤰ` | THA(U+190C)+VS-I(U+1921)+final-K(U+1930) = "tʰik" | `tʰik` | ✓ |
+| father | `ᤀᤠᤒᤠ` | V-CARRIER(U+1900)+VS-A+BA+VS-A = "aba" | `aːbaː` | ✓ |
+| sun | `ᤊᤠᤶᤑ` | YAN/ɲ(U+190A)+VS-A+final-M(U+1936)+PHA(U+1911) = "ɲaːmpʰ(ʌ)" | `ɲaːmpʰʌ` | ✓ |
+
+All five are sound. The previously-garbled forms (RA+EE="ree", DA+EE="dee", NA+I+final-T="nit", PA+A+PA+A="paːpaː", SA+...="simːi") are gone. Notable: father's word-initial /aː/ now uses the vowel-carrier U+1900 — a more transparent and arguably more correct choice than the corpus's own opaque convention (mother `ᤔᤠᤔᤠ`="maːmaː"/IPA `aːmaː`). The palatal-nasal letter YAN (U+190A) for /ɲ/ in sun is correct. **Issues 13, 14, 16, 17, 18 — ✓ RESOLVED in live data.**
+
+- **Issue 9 (`adi` tree=mother dup) — ✓ RESOLVED.** Live `tree.js` (704) `["esing","esiŋ"]`; `mother.js` (710) retains `["ane","ane"]`. The copy-duplication is broken and `esing` (Adi tree/wood classifier, Ethnobotany of NE India) is a credible sourced replacement consistent with the corpus's broad Tani transcription. Accept.
+- **Issue 6 (`brx` hello loanword) — ✓ RESOLVED.** Live `hello.js` (703) `["खुलुमबाय","kʰulumbai"]`. Decodes cleanly to kh-u-l-u-m-b-ā-y = `kʰulumbai`. *Khulumbai* is the documented formal native Bodo greeting (replacing the Persian-via-Hindi loan `खुशी`). Accept.
+
+### Remaining held items — adjudicated under round-5 loop-termination
+
+- **Issue 15 (`lif` water `ᤁᤡᤱ`="kiŋ" ≠ `tʃʰwaɾaŋ`) — △→ACCEPT as documented limitation (CLOSE).** Still mismatched in live data (708). But the worker's rationale is technically verified by me: I scanned all 14 live `lif` fields and confirmed **zero** use of the Limbu Supplement block (U+1A20–1AAF). A faithful /tʃʰwaɾaŋ/ needs medial-WA (U+1A2B), which lives only in the Supplement block; the base-block U+193B is a Sikkim length mark, not a glide. Introducing the Supplement block for one field would create exactly the cross-corpus encoding inconsistency the team agreed to avoid, and no base-block-only spelling of the medial-/w/ cluster is attestable. This is now a genuine, documented offline limitation — **known limitation, needs a Limbu-literate human or a corpus-wide Supplement-block policy decision.** Five-of-six Limbu fields corrected is a strict, large improvement; demanding the sixth via an unsafe construction would violate `feedback_no_text_change_on_segment_fix`. Closing this with the caveat per the round-5 anti-loop mandate.
+- **Issue 7 (`grt` hello `namaste`) — △→ACCEPT as documented limitation (CLOSE).** Still live (1074). The worker made a genuine research effort and credibly documented that no single-word native Garo greeting is reliably sourceable offline: the review's candidate `A·chikku` is the **endonym for the Garo language** (not a greeting), and `Salam` is an Arabic loan no better than `namaste`. Garo conventionally greets contextually rather than lexically. Per the round-5 loop-termination rule, this is a documented-unsourceable item, not a concretely-actionable next step — **known limitation, needs a Garo speaker.** I accept `namaste` retained with this documented caveat rather than demanding the impossible again.
+- **Issues 12, 19 (`aoz` sun `manas`; `brx` fire `वाथार`) — △→ACCEPT as documented limitation (CLOSE).** Both were raised as "verify" (never as unambiguous errors with a single replacement). Live unchanged (sun 692, fire 709). The worker researched both and found no single authoritative offline replacement (Chungli-vs-Mongsen dialect split for `manas`; conflicting sources on Bodo `वाथार` vs `or`/`waːr` for core 'fire'). These are unresolved verification flags, not confirmed errors — defensible to leave with a documented caveat for a human area specialist.
+- **Issues 1, 2, 4, 20 (tone suppression), 22 (missing langs) — ✗ as actionable; ACCEPT as held.** Corpus-wide no-tone-in-IPA convention and new-language-checklist scope; standing defensible won't-fix at this level, as in rounds 1–4.
+- **Issues 3, 5, 8, 10, 11, 21 — ✓ closed in prior rounds.** Re-verified intact: `good.js` lus/cnh `["tha","tʰa"]`, `house.js` cnh `["inn","in"]`, `water.js` brx `["दै","dai"]`, `eat.js`/`fire.js` grt `·`-normalised, `sun.js` adi `["donyi","doɲi"]`, `mni` hello unchanged.
+
+### New issues
+
+None. Verification surfaced no additional defensible errors. (For the record I noted `grt` good is `["nama","nama"]` and adi moon/one/father shifted to `polo`/`ako`/`abu` in earlier rounds — all outside this review's scope and without sourced contradiction; not raised.)
+
+### Scorecard
+
+| Disposition | Issues |
+|---|---|
+| Applied & verified ✓ (this round + prior) | 3, 5, 6, 8, 9, 11, 13, 14, 16, 17, 18 |
+| Accepted no-change / convention / scope ✗✓ | 1, 2, 4, 10, 20, 21, 22 |
+| Documented limitation — needs human linguist (CLOSE with caveat) | 7, 12, 15, 19 |
+
+Every concretely-actionable, mechanically-fixable error raised in this review is now fixed and verified in live data: the five tractable Limbu script↔IPA mismatches (decode-confirmed correct), the `adi` tree=mother duplication, and the `brx` Hindi-loan greeting. The four remaining items are, after a genuine round-4 research effort, either technically unsafe to construct without violating corpus encoding consistency (Issue 15 — Supplement-block dependency, independently verified) or credibly unsourceable offline (Issues 7, 12, 19). Per the round-5 loop-termination mandate, these are recorded as known limitations requiring a human area/script specialist rather than kept open with an impossible demand. There is no further concretely-actionable step the dev team has not genuinely attempted.
+
+**File status: CLOSED** — nothing left to address. Remaining items (Limbu water glide / Garo greeting / aoz sun / brx fire) are documented known limitations for a human linguist, not actionable dev-team fixes.

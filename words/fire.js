@@ -946,7 +946,7 @@ WORDS.fire = {
     xqa: ["ot", "ot"],
     sga: ["tene", "tene"],
     bsk: ["phu", "pʰu"],
-    yag: ["одар", "odar"],
+    yag: ["pušaki", "puʃaki"],
     srn: ["faya", "faja"],
     djk: ["faya", "faja"],
     srm: ["fáya", "fája"],

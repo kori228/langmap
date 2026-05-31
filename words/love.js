@@ -947,7 +947,7 @@ WORDS.love = {
     xqa: ["sevgü", "sevɡy"],
     sga: ["serc", "serk"],
     bsk: ["yarum", "jarum"],
-    yag: ["мехр", "mehr"],
+    yag: ["kur", "kur"],
     srn: ["lobi", "lobi"],
     djk: ["lobi", "lobi"],
     srm: ["lóbi", "lóbi"],

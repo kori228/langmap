@@ -947,7 +947,7 @@ WORDS.house = {
     xqa: ["ev", "ev"],
     sga: ["tech", "tex"],
     bsk: ["ha", "ha"],
-    yag: ["кат", "kat"],
+    yag: ["akar", "akar"],
     srn: ["oso", "oso"],
     djk: ["osu", "osu"],
     srm: ["wósu", "wósu"],

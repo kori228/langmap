@@ -940,7 +940,7 @@ WORDS.eat = {
     xqa: ["yi-", "ji"],
     sga: ["ithid", "iθʲiðʲ"],
     bsk: ["ši-", "ʂi"],
-    yag: ["хур", "xur"],
+    yag: ["atama", "atama"],
     srn: ["nyan", "ɲan"],
     djk: ["njanjan", "ɲaɲaŋ"],
     srm: ["njá", "ɲá"],

@@ -940,7 +940,7 @@ WORDS.hand = {
     xqa: ["qol", "qol"],
     sga: ["lám", "laːv"],
     bsk: ["-rin", "rin"],
-    yag: ["даст", "dast"],
+    yag: ["yaš", "jaʃ"],
     srn: ["anu", "anu"],
     djk: ["ana", "ana"],
     srm: ["mãũ", "mãũ"],

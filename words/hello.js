@@ -700,7 +700,7 @@ WORDS.hello = {
     new: ["ज्वजलपा", "dʒwadʒalpa"],
     lif: ["ᤐᤣᤜᤢᤙᤣ", "peːhuːje"],
     tdh: ["नमस्ते", "nəməste"],
-    brx: ["खुशी", "kʰuʃi"],
+    brx: ["खुलुमबाय", "kʰulumbai"],
     adi: ["nasi sukna", "nasi sukna"],
     nag: ["namaskar", "namaskaɾ"],
     nzm: ["hangba", "haŋba"],
