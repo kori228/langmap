@@ -9590,14 +9590,18 @@
                     rowSummary[ci] = cellRows.length ? { surface: cellRows[0].surface, ipa: cellRows[0].ipa } : null;
                 }
                 const rowColors = _compareSimColor ? _hmClusterRow(rowSummary) : new Array(_compareList.length).fill(null);
-                // For compound IDs (e.g. "行:1"), display the bare char + the
-                // sense label so the row reads "行 (行為)" / "行 (行列)". Derive
-                // both from w.id (the canonical "行:1") so the sense resolves
-                // via HAN_SENSE_LABELS regardless of conceptLabel.
-                const _rowBaseChar = displayCharOf(w.id);
-                const _rowSenseTxt = senseLabelOf(w.id, uiLang);
-                const _rowLabelHtml = escapeHtml(_rowBaseChar) +
-                    (_rowSenseTxt ? ' <span style="font-size:11px;color:#4a6cf7;font-weight:600">(' + escapeHtml(_rowSenseTxt) + ')</span>' : '');
+                // Polyphone rows (行:1/行:2/中:1/中:2) show ONLY the short CJK
+                // sense disambiguator in parentheses, in plain black —
+                // "(行為)" / "(行列)" / "(中央)" / "(命中)". Use the `sense`
+                // field of HAN_SENSE_LABELS (the short CJK form), NOT the
+                // verbose per-language label (which reads e.g.
+                // "centre / middle (中央)"). Non-polyphone rows show the bare
+                // character as before.
+                const _senseShort = (typeof HAN_SENSE_LABELS !== 'undefined'
+                    && HAN_SENSE_LABELS[w.id] && HAN_SENSE_LABELS[w.id].sense) || '';
+                const _rowLabelHtml = _senseShort
+                    ? '(' + escapeHtml(_senseShort) + ')'
+                    : escapeHtml(displayCharOf(w.id));
                 html += '<tr><th scope="row">' + _rowLabelHtml + '</th>';
                 for (let ci = 0; ci < _compareList.length; ci++) {
                     const cellRows = rowCellRows[ci];
