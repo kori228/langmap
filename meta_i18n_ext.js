@@ -1145,7 +1145,7 @@ const META_I18N_ATOMS = {
         '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (varietà di mandarino; si sovrappone con il cinese zh)',
     },
 
-    // === Spanish (base, used for es/es_eu/es_mx) =========================
+    // === Spanish (base, used for es) =====================================
     es: {
         'Northern': 'septentrional', 'Southern': 'meridional', 'Eastern': 'oriental',
         'Western': 'occidental', 'Central': 'central',
@@ -1297,7 +1297,7 @@ const META_I18N_ATOMS = {
         '~120M (Mandarin variety; overlaps with Chinese zh)': '~120M (variedad de mandarín; se solapa con el chino zh)',
     },
 
-    // === Portuguese (base, used for pt/pt_eu/pt_br) =======================
+    // === Portuguese (base, used for pt) ==================================
     pt: {
         'Northern': 'setentrional', 'Southern': 'meridional', 'Eastern': 'oriental',
         'Western': 'ocidental', 'Central': 'central',
@@ -3468,14 +3468,6 @@ const META_I18N_ATOMS = {
     }
 };
 
-// Alias regional variants to their base atom dict (es_eu = es_mx = es,
-// pt_eu = pt_br = pt). META_I18N may have separate entries per regional
-// variant which the smart translator still consults first; atoms are shared.
-META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
-META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
-META_I18N_ATOMS.pt_eu = META_I18N_ATOMS.pt;
-META_I18N_ATOMS.pt_br = META_I18N_ATOMS.pt;
-
 // === Speaker-annotation atoms ============================================
 // Common keywords that appear in speakers:'…' values across many languages.
 // Defined separately and merged into each per-lang dict so they're picked
@@ -4347,13 +4339,13 @@ const AVESTAN_META_FIXES_ALL_LANGS = {
         'origin': 'origine', 'sacred liturgical': 'liturgico sacro',
         'Avestan alphabet': 'alfabeto avestico', 'Sasanian period': 'periodo sasanide',
     },
-    es_eu: {
+    es: {
         'Central Asia': 'Asia Central', 'Eastern Iran': 'Irán oriental', 'Eastern Iran / Central Asia': 'Irán oriental / Asia Central',
         'origin': 'origen', 'sacred liturgical': 'litúrgico sagrado',
         'Avestan alphabet': 'alfabeto avéstico', 'Sasanian period': 'período sasánida',
     },
-    pt_eu: {
-        'Central Asia': 'Ásia Central', 'Eastern Iran': 'Irão oriental', 'Eastern Iran / Central Asia': 'Irão oriental / Ásia Central',
+    pt: {
+        'Central Asia': 'Ásia Central', 'Eastern Iran': 'Irã oriental', 'Eastern Iran / Central Asia': 'Irã oriental / Ásia Central',
         'origin': 'origem', 'sacred liturgical': 'litúrgico sagrado',
         'Avestan alphabet': 'alfabeto avéstico', 'Sasanian period': 'período sassânida',
     },
@@ -4382,12 +4374,6 @@ const AVESTAN_META_FIXES_ALL_LANGS = {
         'origin': 'asili', 'sacred liturgical': 'kiliturujia kitakatifu',
         'Avestan alphabet': 'alfabeti ya Kiavesta', 'Sasanian period': 'kipindi cha Wasasani',
     },
-};
-AVESTAN_META_FIXES_ALL_LANGS.es_mx = AVESTAN_META_FIXES_ALL_LANGS.es_eu;
-AVESTAN_META_FIXES_ALL_LANGS.pt_br = {
-    ...AVESTAN_META_FIXES_ALL_LANGS.pt_eu,
-    'Eastern Iran': 'Irã oriental',
-    'Eastern Iran / Central Asia': 'Irã oriental / Ásia Central',
 };
 for (const lang of Object.keys(AVESTAN_META_FIXES_ALL_LANGS)) {
     if (!META_I18N_ATOMS[lang]) META_I18N_ATOMS[lang] = {};
@@ -4638,8 +4624,3 @@ for (const lang of Object.keys(FAMILY_ATOMS)) {
     }
 }
 
-// Re-apply regional aliases (the previous assignments were before merge).
-META_I18N_ATOMS.es_eu = META_I18N_ATOMS.es;
-META_I18N_ATOMS.es_mx = META_I18N_ATOMS.es;
-META_I18N_ATOMS.pt_eu = META_I18N_ATOMS.pt;
-META_I18N_ATOMS.pt_br = META_I18N_ATOMS.pt;

@@ -5124,7 +5124,7 @@ const WM_UI = {
   he: { native:'מקומי', size:'גודל', word:'כתיב', ipa:'תעתיק', ipaCol:'תעתיק / תמלול', wordCol:'כתיב / תעתיק', concept:'מושג', name:'שם', back:'← LangMap', family:'משפחת שפות', speakers:'דוברים', countries:'מדינות', official:'רשמית ב', script:'כתב', url:'langmap.heuron.com/wordmap.html', modern:'מודרניות', historical:'היסטוריות' },
   sw: { native:'Asili', size:'Ukubwa', word:'Umbo', ipa:'IPA', ipaCol:'IPA / Unukuzi', wordCol:'Umbo / Tafsiri', concept:'Dhana', name:'Jina', back:'← LangMap', family:'Familia ya lugha', speakers:'Wasemaji', countries:'Nchi', official:'Rasmi katika', script:'Hati', url:'langmap.heuron.com/wordmap.html', modern:'Kisasa', historical:'Lugha za kihistoria' },
 };
-const WM_UI_LABELS = { ja:'日本語', ko:'한국어', zh:'中文', yue:'粤语', vi:'Tiếng Việt', th:'ไทย', id:'Indonesia', hi:'हिन्दी', en:'English', de:'Deutsch', fr:'Français', it:'Italiano', es_eu:'Español(ES)', es_mx:'Español(MX)', pt_eu:'Português(PT)', pt_br:'Português(BR)', ru:'Русский', uk:'Українська', ar:'العربية', he:'עברית', sw:'Kiswahili' };
+const WM_UI_LABELS = { ja:'日本語', ko:'한국어', zh:'中文', yue:'粤语', vi:'Tiếng Việt', th:'ไทย', id:'Indonesia', hi:'हिन्दी', en:'English', de:'Deutsch', fr:'Français', it:'Italiano', es:'Español', pt:'Português', ru:'Русский', uk:'Українська', ar:'العربية', he:'עברית', sw:'Kiswahili' };
 
 
 
