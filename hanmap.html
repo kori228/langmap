@@ -335,16 +335,21 @@
                 margin-bottom: 8px;
             }
             .char-category h3 {
-                flex: 0 0 3.4em;
-                width: 3.4em;
+                flex: 0 0 5.5em;
+                width: 5.5em;
                 margin: 0;
                 padding: 0;
                 text-align: right;
                 font-size: 11px;
-                line-height: 1.15;
+                line-height: 1.2;
                 letter-spacing: 0;
-                word-break: break-word;
-                hyphens: auto;
+                /* Keep each label intact — no mid-word break and no mid-CJK
+                   break (方角・位置 stays on one line; English words are not
+                   hyphenated). Wider gutter fits the longest label; drop the
+                   uppercase transform so English labels fit too. */
+                text-transform: none;
+                word-break: keep-all;
+                overflow-wrap: normal;
             }
             .char-category .char-grid {
                 flex: 1 1 0;
