@@ -31,6 +31,8 @@
 
 
 
+
+
 const HAN_LIST = ["一","二","三","四","五","六","七","八","九","十","日","月","山","水","火","木","土","天","地","海","龍","虎","犬","馬","鳥","魚","牛","羊","貓","人","手","足","目","耳","口","頭","心","血","肉","上","下","中:1","中:2","央","左","右","東","西","南","北","行:1","行:2","来","去","見","聞","食","飲","走","坐","立"];
 
 const HAN_CATEGORIES = [
@@ -767,7 +769,7 @@ const HAN_DATA = {
       "nan_zz": "sì",
       "cdo": "sé",
       "cpx": "si̍",
-      "mnp": "sî³³",
+      "mnp": "sî",
       "wuu": "sy³⁵",
       "wuu_nb": "sy⁵¹",
       "wuu_sz": "sy⁵¹²",
@@ -2609,7 +2611,7 @@ const HAN_DATA = {
       "nan_hai": "san1",
       "cdo": "săng⁵³",
       "cpx": "sa⁵³",
-      "mnp": "sâng³³",
+      "mnp": "sâng",
       "wuu": "se⁵³",
       "wuu_nb": "se⁵³",
       "wuu_sz": "se⁴⁴",
@@ -3019,7 +3021,7 @@ const HAN_DATA = {
   },
   "火": {
     "surface": {
-      "nan_pera": "hóe²¹",
+      "nan_pera": "hóe",
       "nan_id": "hóe",
       "nan_sg": "hué",
       "nan_my": "hóe",
@@ -3469,7 +3471,7 @@ const HAN_DATA = {
       "nan_xm": "thó͘",
       "nan_zz": "thó͘",
       "cdo": "tū",
-      "cpx": "thôu³¹",
+      "cpx": "thôu",
       "mnp": "thǔ",
       "wuu": "thu³⁵",
       "wuu_nb": "thu³⁵",
@@ -3891,9 +3893,9 @@ const HAN_DATA = {
       "yue_ts": "ei5",
       "nan_te": "di6",
       "nan_hai": "di1",
-      "cdo": "dê̤¹³",
+      "cdo": "dê̤",
       "cpx": "tí",
-      "mnp": "tî³³",
+      "mnp": "tî",
       "wuu": "ddi²³",
       "wuu_nb": "di²¹³",
       "wuu_sz": "di³¹",
@@ -4100,7 +4102,7 @@ const HAN_DATA = {
       "nan_xm": "hái",
       "nan_zz": "hái",
       "cdo": "hāi",
-      "cpx": "hâi³¹",
+      "cpx": "hâi",
       "mnp": "hǒi",
       "wuu": "he³⁵",
       "wuu_nb": "he³⁵",
@@ -4525,7 +4527,7 @@ const HAN_DATA = {
       "nan_xm": "hó͘",
       "nan_zz": "hó͘",
       "cdo": "hū",
-      "cpx": "hôu³¹",
+      "cpx": "hôu",
       "mnp": "hǚ",
       "wuu": "hu³⁵",
       "wuu_nb": "hu³¹³",
@@ -4746,7 +4748,7 @@ const HAN_DATA = {
       "nan_xm": "khián",
       "nan_zz": "khián",
       "cdo": "kṳ̄ng",
-      "cpx": "khuîng³¹",
+      "cpx": "khuîng",
       "mnp": "khǚing",
       "wuu": "qhioe³⁵",
       "wuu_nb": "tshyoe³¹³",
@@ -4967,7 +4969,7 @@ const HAN_DATA = {
       "nan_te": "bhê2",
       "nan_hai": "be4",
       "cdo": "mā",
-      "cpx": "mâ³¹",
+      "cpx": "mâ",
       "mnp": "mǎ",
       "wuu": "mo²³",
       "wuu_nb": "mo²¹³",
@@ -5173,7 +5175,7 @@ const HAN_DATA = {
       "nan_te": "tsiau2",
       "nan_hai": "tsiau4",
       "cdo": "cēu",
-      "cpx": "tsiâu³¹",
+      "cpx": "tsiâu",
       "mnp": "niǎu",
       "wuu": "tio³⁵",
       "wuu_nb": "tio²¹³",
@@ -5374,7 +5376,7 @@ const HAN_DATA = {
   },
   "魚": {
     "surface": {
-      "nan_pera": "hû⁵",
+      "nan_pera": "hû",
       "nan_id": "hû",
       "nan_sg": "hî",
       "nan_my": "hû",
@@ -5609,7 +5611,7 @@ const HAN_DATA = {
       "nan_te": "gu5",
       "nan_hai": "ku1",
       "cpx": "ngiú",
-      "mnp": "ngiû³³",
+      "mnp": "ngiû",
       "wuu": "nnieu²³",
       "wuu_nb": "nnieu²¹³",
       "wuu_sz": "nnieu²²³",
@@ -5812,7 +5814,7 @@ const HAN_DATA = {
       "nan_hai": "dio1",
       "cdo": "iòng",
       "cpx": "ióng",
-      "mnp": "iông³³",
+      "mnp": "iông",
       "wuu": "hhiang²³",
       "wuu_nb": "hhiang²¹³",
       "wuu_sz": "hhiang²²³",
@@ -7041,7 +7043,7 @@ const HAN_DATA = {
       "nan_te": "hĩ5",
       "nan_hai": "hĩ3",
       "cdo": "ngē",
-      "cpx": "ngî³¹",
+      "cpx": "ngî",
       "mnp": "nǐ",
       "wuu": "hher²³",
       "wuu_nb": "hher²¹³",
@@ -7250,7 +7252,7 @@ const HAN_DATA = {
       "nan_hai": "khau4",
       "nan_zz": "kháu",
       "cdo": "kāu",
-      "cpx": "khâu³¹",
+      "cpx": "khâu",
       "mnp": "khǒi",
       "wuu": "kheu³⁵",
       "wuu_nb": "kheu³⁵",
@@ -8952,7 +8954,7 @@ const HAN_DATA = {
       "nan_id": "tiòng",
       "nan_my": "tiòng",
       "nan_th": "dong3",
-      "nan_pera": "tiòng³",
+      "nan_pera": "tiòng",
       "cdo": "dé̤ng",
       "cpx": "tèng",
       "mnp": "tóng",
@@ -9113,7 +9115,7 @@ const HAN_DATA = {
       "juc": "—",
       "zkt": "—",
       "txg": "—",
-      "sjo": "—",
+      "sjo": "—"
     }
   },
   "央": {
@@ -9126,7 +9128,7 @@ const HAN_DATA = {
       "nan_hai": "iong1",
       "cdo": "iŏng⁵³",
       "cpx": "iong⁵³",
-      "mnp": "iông³³",
+      "mnp": "iông",
       "wuu": "iang⁵³",
       "wuu_nb": "iang⁵³",
       "wuu_sz": "iang⁴⁴",
@@ -9320,7 +9322,7 @@ const HAN_DATA = {
       "nan_xm": "tsó",
       "nan_zz": "tsó",
       "cdo": "cū",
-      "cpx": "tsô³¹",
+      "cpx": "tsô",
       "mnp": "tsǒ",
       "wuu": "tsu³⁵",
       "wuu_nb": "tsu³⁵",
@@ -9541,7 +9543,7 @@ const HAN_DATA = {
       "nan_zz": "iū",
       "cdo": "iú",
       "cpx": "iú",
-      "mnp": "iû³³",
+      "mnp": "iû",
       "wuu": "hheu²³",
       "wuu_nb": "hheu²¹³",
       "wuu_sz": "hheu³¹",
@@ -10595,7 +10597,7 @@ const HAN_DATA = {
       "nan_zz": "kiâⁿ",
       "cdo": "giàng",
       "cpx": "giá",
-      "mnp": "hâing³³",
+      "mnp": "hâing",
       "wuu": "hhang²³",
       "wuu_nb": "hhang²¹³",
       "wuu_sz": "hhang²³",
@@ -11001,7 +11003,7 @@ const HAN_DATA = {
       "zkt": "—",
       "txg": "—",
       "sjo": "—",
-      "zh_phagspa": "ꡜꡨꡃ",
+      "zh_phagspa": "ꡜꡨꡃ"
     }
   },
   "来": {
@@ -11010,7 +11012,7 @@ const HAN_DATA = {
       "zh_tw": "lái",
       "yue_ts": "loi3",
       "cpx": "lái",
-      "mnp": "lâi³³",
+      "mnp": "lâi",
       "wuu": "le²³",
       "wuu_nb": "le²²³",
       "wuu_sz": "le²³",
@@ -11483,7 +11485,7 @@ const HAN_DATA = {
       "yue_us": "gin3",
       "zh_us": "jian⁴",
       "zh_th": "jiàn",
-      "nan_pera": "kì⁵³",
+      "nan_pera": "kì",
       "zh_jiao": "jian⁵³",
       "hak_mz": "kièn",
       "zh_gl": "jian²⁴",
@@ -12010,7 +12012,7 @@ const HAN_DATA = {
       "nan_te": "im2",
       "nan_hai": "im4",
       "cdo": "éng",
-      "cpx": "îng³¹",
+      "cpx": "îng",
       "mnp": "ǐng",
       "wuu": "in³⁵",
       "wuu_nb": "ing³⁵",
@@ -12220,7 +12222,7 @@ const HAN_DATA = {
       "nan_te": "tsau2",
       "nan_hai": "tsau4",
       "cdo": "cāu",
-      "cpx": "tsâu³¹",
+      "cpx": "tsâu",
       "mnp": "tsǎu",
       "wuu": "tseu³⁵",
       "wuu_nb": "tseu³⁵",
@@ -12423,9 +12425,9 @@ const HAN_DATA = {
       "yue_ts": "to1",
       "nan_te": "tso6",
       "nan_hai": "do2",
-      "cdo": "sô̤¹³",
+      "cdo": "sô̤",
       "cpx": "tsó",
-      "mnp": "tshô³³",
+      "mnp": "tshô",
       "wuu": "zzu²³",
       "wuu_nb": "zzu²¹³",
       "wuu_sz": "zzu³¹",
@@ -18580,7 +18582,6 @@ const HAN_LANG_META = {
     "speakers": "約1300万人 (慶尚道方言全体)",
     "speakersSource": "Wikipedia (英語版「Gyeongsang dialect」, 2026-05-30閲覧)"
   },
-
   "ja_kgs": {
     "name": "Kagoshima Japanese (Satsugū dialect)",
     "native": "鹿児島弁・薩隅方言の漢字音",
@@ -18610,10 +18611,7 @@ const HAN_LANG_META = {
     },
     "speakers": "約180万人 (鹿児島県人口に基づく)",
     "speakersSource": "Wikipedia (日本語版「薩隅方言」, 2026-05-30閲覧)"
-  
-  }
-,
-
+  },
   "ja_okn": {
     "name": "Okinawan-substrate Sino-Japanese (Uchinaa-yamatuguchi)",
     "native": "沖縄方言の漢字音（ウチナーヤマトゥグチ）",
@@ -18643,10 +18641,7 @@ const HAN_LANG_META = {
     },
     "speakers": "約100万人 (沖縄県内の話者推定)",
     "speakersSource": "Wikipedia (英語版「Okinawan Japanese」, 2026-05-30閲覧)"
-  
-  }
-,
-
+  },
   "ja_thk": {
     "name": "Tōhoku Japanese (zūzū-ben)",
     "native": "東北方言の漢字音（ズーズー弁）",
@@ -18676,9 +18671,7 @@ const HAN_LANG_META = {
     },
     "speakers": "約900万人 (東北地方人口に基づく)",
     "speakersSource": "Wikipedia (日本語版「東北方言」, 2026-05-30閲覧)"
-  
   },
-
   "zh_jiao": {
     "name": "Jiao-Liao Mandarin",
     "native": "膠遼官話",
@@ -21084,8 +21077,7 @@ const HAN_VARIANTS = {
         "ipa": "d͡ziʔ˥",
         "label": "文讀"
       }
-    ]
-  ,
+    ],
     "gan": [
       {
         "native": "",
@@ -21099,7 +21091,8 @@ const HAN_VARIANTS = {
         "ipa": "lit̚˥",
         "label": "白讀"
       }
-    ]},
+    ]
+  },
   "月": {
     "nan": [
       {
@@ -23270,8 +23263,7 @@ const HAN_VARIANTS = {
         "ipa": "d͡ʑin˥",
         "label": "文讀"
       }
-    ]
-  ,
+    ],
     "gan": [
       {
         "native": "",
@@ -23285,7 +23277,8 @@ const HAN_VARIANTS = {
         "ipa": "lin˦˥",
         "label": "白讀"
       }
-    ]},
+    ]
+  },
   "手": {
     "nan": [
       {
@@ -24176,13 +24169,13 @@ const HAN_VARIANTS = {
     "zh": [
       {
         "native": "",
-        "surface": "xuè⁵¹",
+        "surface": "xuè",
         "ipa": "ɕye˥˩",
         "label": "血液（文讀・書面）"
       },
       {
         "native": "",
-        "surface": "xiě²¹⁴",
+        "surface": "xiě",
         "ipa": "ɕje˨˩˦",
         "label": "流血（白讀・口語）"
       }
@@ -24639,20 +24632,6 @@ const HAN_VARIANTS = {
         "label": "上去（directional verb）"
       }
     ],
-    "zh": [
-      {
-        "native": "",
-        "surface": "shàng⁵¹",
-        "ipa": "ʂaŋ˥˩",
-        "label": "上方・上去（一般）"
-      },
-      {
-        "native": "",
-        "surface": "shǎng²¹⁴",
-        "ipa": "ʂaŋ˨˩˦",
-        "label": "上声（古音・書面）"
-      }
-    ],
     "ja": [
       {
         "native": "ショウ",
@@ -24841,20 +24820,6 @@ const HAN_VARIANTS = {
         "surface": "ha̿",
         "ipa": "xa˩˧",
         "label": "文讀"
-      }
-    ],
-    "zh": [
-      {
-        "native": "",
-        "surface": "xià⁵¹",
-        "ipa": "ɕja˥˩",
-        "label": "下方・下去（一般）"
-      },
-      {
-        "native": "",
-        "surface": "xiá³⁵",
-        "ipa": "ɕja˧˥",
-        "label": "下巴 / 廈門（音借）"
       }
     ],
     "ja": [
@@ -25114,8 +25079,8 @@ const HAN_VARIANTS = {
         "ipa": "ɯ",
         "label": "呉音 / Go-on"
       }
-    ],
-    },
+    ]
+  },
   "東": {
     "nan": [
       {
@@ -25664,7 +25629,7 @@ const HAN_VARIANTS = {
     "zh": [
       {
         "native": "",
-        "surface": "xíng³⁵",
+        "surface": "xíng",
         "ipa": "ɕiŋ˧˥",
         "label": "行走・行為・可以"
       }
@@ -25870,7 +25835,7 @@ const HAN_VARIANTS = {
     "zh": [
       {
         "native": "",
-        "surface": "háng³⁵",
+        "surface": "háng",
         "ipa": "xɑŋ˧˥",
         "label": "行業・銀行・行列"
       }
@@ -27560,97 +27525,6 @@ const HAN_VARIANTS = {
   }
 };
 
-const HAN_SENSE_LABELS = {
-  "行:1": {
-    sense: "行為",
-    en: "go / behave (行為)",
-    ja: "行為",
-    ko: "행위",
-    zh: "行为",
-    yue: "行為",
-    vi: "Hành (行為)",
-    th: "การกระทำ (行為)",
-    id: "Tindakan (行為)",
-    hi: "क्रिया (行為)",
-    de: "Tat (行為)",
-    fr: "Acte (行為)",
-    it: "Atto (行為)",
-    es: "Acto (行為)",
-    pt: "Ato (行為)",
-    ru: "Действие (行為)",
-    uk: "Дія (行為)",
-    ar: "فعل (行為)",
-    he: "פעולה (行為)",
-    sw: "Tendo (行為)",
-  },
-  "行:2": {
-    sense: "行列",
-    en: "row / column (行列)",
-    ja: "行列",
-    ko: "항렬",
-    zh: "行列",
-    yue: "行列",
-    vi: "Hàng (行列)",
-    th: "แถว (行列)",
-    id: "Barisan (行列)",
-    hi: "पंक्ति (行列)",
-    de: "Reihe (行列)",
-    fr: "Rangée (行列)",
-    it: "Fila (行列)",
-    es: "Fila (行列)",
-    pt: "Fileira (行列)",
-    ru: "Ряд (行列)",
-    uk: "Ряд (行列)",
-    ar: "صف (行列)",
-    he: "טור (行列)",
-    sw: "Safu (行列)",
-  },
-  "中:1": {
-    sense: "中央",
-    en: "centre / middle (中央)",
-    ja: "中央",
-    ko: "중앙",
-    zh: "中央",
-    yue: "中央",
-    vi: "Trung (中央)",
-    th: "ตรงกลาง (中央)",
-    id: "Tengah (中央)",
-    hi: "केंद्र (中央)",
-    de: "Mitte (中央)",
-    fr: "Centre (中央)",
-    it: "Centro (中央)",
-    es: "Centro (中央)",
-    pt: "Centro (中央)",
-    ru: "Центр (中央)",
-    uk: "Центр (中央)",
-    ar: "مركز (中央)",
-    he: "מרכז (中央)",
-    sw: "Katikati (中央)",
-  },
-  "中:2": {
-    sense: "命中",
-    en: "hit / strike (命中)",
-    ja: "命中",
-    ko: "맞다",
-    zh: "命中",
-    yue: "命中",
-    vi: "Trúng (命中)",
-    th: "ถูก (命中)",
-    id: "Mengena (命中)",
-    hi: "लगना (命中)",
-    de: "Treffen (命中)",
-    fr: "Toucher (命中)",
-    it: "Colpire (命中)",
-    es: "Acertar (命中)",
-    pt: "Acertar (命中)",
-    ru: "Попасть (命中)",
-    uk: "Влучити (命中)",
-    ar: "إصابة (命中)",
-    he: "פגיעה (命中)",
-    sw: "Kupiga (命中)",
-  },
-};
-
 if (typeof window !== 'undefined') {
   window.HAN_LIST = HAN_LIST;
   window.HAN_CATEGORIES = HAN_CATEGORIES;
@@ -27658,8 +27532,7 @@ if (typeof window !== 'undefined') {
   window.HAN_LANG_META = HAN_LANG_META;
   window.HAN_LANGS = HAN_LANGS;
   window.HAN_VARIANTS = HAN_VARIANTS;
-  window.HAN_SENSE_LABELS = HAN_SENSE_LABELS;
 }
 if (typeof module !== 'undefined') {
-  module.exports = { HAN_LIST, HAN_CATEGORIES, HAN_DATA, HAN_LANG_META, HAN_LANGS, HAN_VARIANTS, HAN_SENSE_LABELS };
+  module.exports = { HAN_LIST, HAN_CATEGORIES, HAN_DATA, HAN_LANG_META, HAN_LANGS, HAN_VARIANTS };
 }
