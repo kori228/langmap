@@ -227,3 +227,50 @@ Specialist in Modern Mandarin sub-groups per 中國語言地圖集 (CASS 1987/20
 | P4 | DB T1 | zh_db | ⁵⁵ vs ⁴⁴ throughout — systematic review | confirm against 東北方言詞典 |
 | P4 | 頭 | zh_tj | tour⁴⁵ erhua — apply consistently or remove | standardize |
 | P4 | 坐 | zh_sc | zuo¹³ — low-rising absent from SC tone inventory | investigate |
+
+---
+
+## Worker comment (2026-05-31)
+
+Branch: `worktree-agent-abfb7fe6ef469e01d` (off `develop`).
+Scope: `hanmap_data.js` only (+ cache bump `?v=63`→`?v=64` in `hanmap.html`). `node --check` passes; 31 spot-checks (changed + unchanged neighbours) pass via node-eval of `HAN_DATA`.
+
+### Applied (14 of 24)
+
+| # | Char | Row(s) | Fix |
+|---|---|---|---|
+| 1 | 一 | `zh_tj` | `yi⁵⁵` → `yi²¹`, IPA `i⁵⁵` → `i²¹`. Tianjin T1 = ²¹ per dataset's own pattern (cf. 七 `qi²¹`, 八 `ba²¹`, 三 `san²¹`, 天 `tian²¹`). Reviewer's `⁵³` (T4) was rejected in favour of `²¹` because every other former-入聲→T1 char in `zh_tj` here uses ²¹, not ⁵³. |
+| 2 | 日 | `zh_sc` | `ze⁵` / IPA `zəʔ⁵` → `zi²¹³` / `zɿ²¹³`. SW Mandarin lost 入聲; aligned with CD/CQ `zi²¹³`. |
+| 3 | 月 | `zh_sc` | `yue⁵` / IPA `yɪʔ⁵` → `yue²¹³` / `ye²¹³`. Same SW 入聲 loss; aligned with CD/CQ. |
+| 4 | 東 | `zh_sc`, `zh_cd`, `zh_cq` | `dong⁵` / IPA `toŋ˥` → `dong⁵⁵` / `toŋ˥˥` for all three rows. SW T1 contour completed to `⁵⁵` per dataset's other 陰平 entries (三/天/陽/中). |
+| 5 | 西 | `zh_sc`, `zh_cd`, `zh_cq` | `xi⁵` / IPA `ɕi˥` → `xi⁵⁵` / `ɕi˥˥`. Same fix as 東. |
+| 6 | 血 | `zh_km` | `xue⁴` / IPA `ɕyɛʔ˦` → `xue²¹³` / `ɕyɛ²¹³`. Removed inadmissible glottal stop (SW Mandarin lost 入聲) and normalised bare `⁴` → `²¹³` matching 木 `mu²¹³`, 日 `ri²¹³`, 月 `yue²¹³`. |
+| 7 | 牛 | `zh_km` | `niu³⁵` / IPA `niou³⁵` → `niu³¹` / `niou³¹`. Kunming 陽平 = ³¹ (cf. 人 `ren³¹`, 貓 `mao³¹`, 来 `lai³¹`); `³⁵` does not occur elsewhere in `zh_km`. |
+| 8 | 羊 | `zh_km` | `yang³⁵` / IPA `iaŋ³⁵` → `yang³¹` / `iaŋ³¹`. Same as 牛. |
+| 9 | 目 | `zh_km` | `mu⁵³` → `mu²¹³` (surface & IPA). Aligns with 木 `mu²¹³` (same 入聲 etym, same Kunming reflex per dataset's own treatment). |
+| 10 | 木 | `zh_hf` | IPA `mu⁵` → `muʔ⁵`. Surface already `muq⁵`; restored missing glottal stop in IPA — all other Hefei 入聲 IPAs carry `ʔ` (`iəʔ⁵`, `lɤʔ⁵`, `paʔ⁵`, `zəʔ⁵`, `yɪʔ⁵`, `ʂəʔ⁵`). |
+| 11 | 立 | `zh_hf` | `liq⁴` / IPA `liɪʔ⁴` → `liq⁵` / `liɪʔ⁵`. Hefei 入聲 is `⁵` for every other entry (typo, ⁵ key adjacent to ⁴). |
+| 12 | 血 | `zh_xa` | `xueq⁵⁵` / IPA `ɕyə˥˥` → `xueq⁴⁴` / `ɕyə˦˦`. ⁵⁵ is absent from the Xi'an 4-tone inventory used in this dataset (T1 ²¹, T2 ²⁴, T3 ⁵³, T4 ⁴⁴); aligned with the 陽入→⁴⁴ cluster (日 riq⁴⁴, 月 yueq⁴⁴, 木 muq⁴⁴, 六 liuq⁴⁴). Reviewer's `⁴⁴` accepted. |
+| 13 | 地 | `dng` | `dis³` → `di³`. Other Dungan surface forms drop the soft-sign ь (cf. native `жырь` → surface `zhyr³`, native `әрь` → surface `er³`); `-s` here was the only such suffix in dng. |
+| 14 | 北 | `dng` | surface `byi¹` → `byi²`. Aligned tone number to IPA `pei˨˦` (T2 = ˨˦; T1 = ˦). Surface kept `byi` since the Cyrillic native form is `бый` (ы → y is the dataset's romanisation convention). |
+
+### Rejected (10 of 24)
+
+- **#13 六 `zh_jh` `liuq⁵¹` → `liuq⁵`:** Jiang-Huai 立 also has `liq⁵¹` in this dataset, so ⁵¹ is not anomalous as the reviewer claims. Possible 陽入 sub-pattern. Skip — pattern not unambiguous.
+- **#14, #16 (Central Plains `q`-suffix systematic):** zh_zz `beiq²` / IPA `pəʔ˨` has multiple issues (bare `²` digit, IPA glottal stop unlike all other zh_zz forms), but choosing between `bei²¹` and `bei²⁴` requires a source we don't have. Other Central Plains rows (zh_kf, zh_xa) consistently use `q` as etymological marker with no IPA `ʔ`, so a systematic re-evaluation belongs to a separate pass. Skip — too uncertain for a surgical fix.
+- **#15 肉 `zh_kf` `rouq³¹²`:** The `q` suffix is the dataset's convention for etymological 入聲 marking even where the synchronic stop is gone (IPA correctly lacks `ʔ`). Not an error.
+- **#17 中:1 `zh_xa` `pfəŋ²¹`:** `pf-` is an attested though atypical Guanzhong feature; reviewer themselves say "should be flagged", not corrected. Skip.
+- **#18 人 `zh_nj` `len²⁴`:** Surface and IPA are internally consistent (both `l-`). Whether Nanjing uses `r-` or `l-` for 人 varies by speaker/source; reviewer hedges ("may conflate"). Skip — not a clear error.
+- **#19 食 `cjy` `seh⁵`:** Reviewer's own evidence is contradictory — they claim Jin 陽入 = ˨ but the dataset has 一 (陰入) `ieh²`, 八 (陰入) `pah²` etc. also at ². The cjy 入聲 split here does not cleanly align with 陰入/陽入 by initial voicing, so the recommended `seh²` may itself be wrong. Skip.
+- **#20 (`dng` 北 surface/IPA mismatch)** — applied as row 14 above.
+- **#22 頭 `zh_tj` `tour⁴⁵` erhua:** P4 "standardize" with no clear right answer (Tianjin is documented as heavy erhua, but applying erhua to every applicable char is its own large pass). Skip.
+- **#23 坐 `zh_sc` `zuo¹³`:** Reviewer flags as P4 "investigate", and CD/LZ both show identical `zuo¹³`, so a 3-row pattern would need to be re-sourced rather than guess-fixed. Skip.
+- **#24 zh_db T1 ⁵⁵ vs ⁴⁴:** Reviewer flags as P4 systematic review across the whole `zh_db` column. Out of scope for a surgical fix; needs a dedicated DB-tone pass.
+
+### Top 5 impact
+
+1. **Three SW Mandarin glottal-stop violations removed** (日/月 `zh_sc`, 血 `zh_km`) — SW Mandarin definitionally lost 入聲, so `ʔ` codas in these IPAs were phonologically impossible.
+2. **Six bare single-digit SC tones completed** (東/西 across sc/cd/cq, surface + IPA) — `⁵`/`˥` was incomplete contour notation inconsistent with every other SC 陰平 entry in the file.
+3. **Two `zh_km` `³⁵` → `³¹` repairs** (牛, 羊) — Kunming 陽平 is ³¹; `³⁵` does not occur elsewhere in the `zh_km` column.
+4. **Tianjin 一 normalised to T1 ²¹** — was a direct copy of Beijing ⁵⁵, ignoring Tianjin's signature T1-inversion (documented in this dataset's own metadata `description.ja`).
+5. **Dungan `dis³` → `di³` and `byi¹` → `byi²`** — restored romanisation consistency (no other dng surface drops/keeps the soft sign inconsistently) and aligned tone digit with IPA.

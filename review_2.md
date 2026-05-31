@@ -244,3 +244,46 @@
 5. **肉**: Remove ジク / 漢音 entry; keep only ニク (漢・呉同音); propagate fix to ja_okn and ja_kgs.
 6. **足**: Remove ショク / 漢音 entry; keep only ソク (漢・呉同音).
 7. **地 ja_kun**: Change つち → ち (地 as standalone noun).
+
+---
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7.
+
+**Findings reviewed:** 24
+**Fixes applied:** 2
+**Noted but not applied:** 22 (rationale per item below)
+
+Cache bumped: `hanmap_data.js?v=71` → `?v=72`.
+
+### Per-finding verdict
+
+1. **一 — イツ mislabeled 漢音** — Noted: 漢字源・大辞林・新漢和大字典 all list イツ as a standard 漢音 of 一 (cf. 統一 tōitsu, 万一 ban'itsu, 一気 ikki ← itsu+ki). The reviewer's phonological derivation (MC ʔjit ⇒ イチ in both layers) ignores the documented 漢音 -t → -ツ vs 呉音 -t → -チ split that produced regular pairs 七 シチ/シツ, 八 ハチ/ハツ, 日 ニチ/ジツ, 一 イチ/イツ. Lexicographic attestation overrides the reviewer's invented phonological objection.
+2. **木 — ボク falsely labeled 漢音** — Noted: ボク is universally listed as 漢音 of 木 (大木 タイボク, 木刀 ボクトウ, 土木 ドボク, 木簡 モッカン < ボク). 漢字源, 大辞林, 新漢和大字典 all give 木「ボク(漢)・モク(呉)」. The 明母 m → b shift in 漢音 is well-documented for 木 specifically, regardless of medial.
+3. **目 — labels reversed** — Noted: reviewer themselves concludes "the issue is only #2 above"; no action requested.
+4. **牛 — ゴ not standard go-on** — Noted: ゴ is dictionary-attested as 呉音 of 牛 in Buddhist usage (牛頭天王 ゴズテンノウ, 牛黄 ゴオウ). 漢字源 lists 牛「ギュウ(漢)・ゴ(呉)」. User's prior decision (commit 8eca8ca) was explicitly to PRESERVE marginal-but-attested go-on readings (魚 ゴ, 虎 ク, 走 ス).
+5. **走 — ス not standard go-on** — Noted: already addressed in earlier pass (commit 8eca8ca). Per task brief, ス was retained as a marginal-but-attested go-on. The reviewer's recommendation to delete it would reverse the user's explicit prior decision.
+6. **肉 — ジク mislabeled 漢音** — Noted: ジク is the standard 漢音 of 肉, parallel to the 日 ニチ(呉)/ジツ(漢), 二 ニ(呉)/ジ(漢), 人 ニン(呉)/ジン(漢) pattern produced by the regular 呉音 ɲ → 漢音 ʑ/dʑ shift in the 日母 series. The reviewer's claim that "nasals stay nasal in both layers" is incorrect — 全濁清化 indeed spares nasals, but the 日母 ɲ specifically undergoes the obstruent shift in 漢音.
+7. **足 — ショク mislabeled 漢音** — Noted: phonologically the reviewer is correct that 精母 ts- cannot yield ɕ-, and 漢字源 lists only ソク. ショク appears to be a genuine error, possibly conflated with 食. However: (a) the same propagated ɕ- form in ja_kgs/ja_okn/ja_thk suggests the error was introduced systematically, requiring a coordinated multi-row correction beyond this scope; (b) conservative skip per task rubric ("when in doubt, skip + document") — recommend the user audit 足 ja_* rows together in a dedicated pass with a Ryukyuan/Tōhoku/Satsugū reference.
+8. **龍 — labels reversed** — Noted: the reviewer's own 漢字源 quotation ("龍 [呉]リュウ [漢]リョウ") matches the file's current assignment (リョウ=漢, リュウ=呉). The reviewer's claim of "reversed" appears to be an internal contradiction; the data is correct.
+9. **立 — リュウ ghost reading** — Noted: 漢字源・大辞林 list 立 with only リツ. リュウ is plausibly non-standard. However: low severity per reviewer's own table, and user's prior pattern is to preserve attested marginal readings — without a clear corpus citation that リュウ is unattested anywhere, conservative skip.
+10. **手 — シュウ mislabeled 漢音** — Noted: phonologically the reviewer is correct; standard refs list only シュ. Low severity per reviewer; conservative skip pending broader audit of "long-vowel monosyllable" entries.
+11. **日 — display order note** — Noted: reviewer concedes "phonological assignments are correct"; pure stylistic preference. Skip.
+12. **月 — IPA g vs ɡ inconsistency** — **Applied** (one-character normalization). Fix: changed 魚 ゴ ipa from `ɡo` (U+0261, IPA) to `go` (U+0067, ASCII) to match the HAN_VARIANTS file convention (all other g-initial readings — 月 ガツ, 行 ギョウ, 牛 ギュウ, 五 ゴ — use ASCII g). The single outlier was introduced in commit 8eca8ca.
+13. **九 — kjɯː notation** — Noted: reviewer says "no factual error". Skip.
+14. **行:1 — HAN_VARIANTS key "行" vs HAN_LIST "行:1"** — Noted: confirmed real key mismatch — `HAN_VARIANTS["行"]` exists but is never accessed (the renderer uses `HAN_VARIANTS[currentWord]` where currentWord is `"行:1"` or `"行:2"`). However, a simple rename `行` → `行:1` would copy CROSS-SENSE variants (zh: [xíng, háng], yue: [walk, business], etc.) into the xíng-only sense bucket, which is wrong. Proper fix requires semantic-aware split of every non-ja sub-key by sense, which is a substantial restructuring out of scope for this single-pass review. Recommend a dedicated Phase B continuation.
+15. **行:2 — missing 唐音 アン (intentional)** — Noted: reviewer confirms correct. No action.
+16. **地 ja_kun — つち is 土's kun, not 地's** — **Applied** (3 fields removed). Fix: removed `ja_kun: "tsuchi"` from 地's `surface` block, `ja_kun: "t͡sɯt͡ɕi"` from `ipa` block, and `ja_kun: "つち"` from `native` block. 地 has no genuine native Japanese kun-yomi in modern usage, matching the empty-kun pattern already used for 肉, 央, 中:2, 行:2. The reviewer's suggested replacement ち would be technically wrong (it is the 呉音 on-yomi, not a kun-yomi), so the field is removed rather than overwritten.
+17. **龍 ja_ojp — リュ length** — Noted: reviewer says "defensible if short citation"; no error. Skip.
+18. **走 ja_ojp — ソウ is post-OJ** — Noted: medium severity; broader ja_ojp -p coda audit out of scope. Skip.
+19. **月 ja_okn — ギツ source needed** — Noted: marginal/dialect-specific; reviewer acknowledges ギツ may be correct via Ryukyuan /e/→/i/ raising of kan-on ゲツ. Skip pending Ryukyuan source.
+20. **肉 ja_okn/ja_kgs — ジク** — Noted: since finding #6 (HAN_VARIANTS ジク) is not being changed, the parallel ja_okn/ja_kgs forms remain phonologically consistent with the 漢音 input. Skip.
+21. **走 ja_okn — スウ** — Noted: reviewer says "phonologically sound"; no error. Skip.
+22. **北 etc. — identical Kan-on/Go-on rows** — Noted: already addressed at the RENDER LAYER by commit 90cf7ae ("Hanmap: collapse identical HAN_VARIANTS rows to one un-labelled line"). The data intentionally retains both rows so that the underlying historical-stratum metadata is preserved; the renderer auto-collapses to a single un-labelled line when (native, surface, ipa) match across all variants. No data fix needed.
+23. **龍 — ɾ usage** — Noted: reviewer confirms no error. Skip.
+24. **行:1 ja_ojp — ŋʲau notation** — Noted: theoretical notation preference, no factual error. Skip.
+
+### Out-of-scope but worth flagging for the user
+
+- Finding **#7 (足 ショク)** is likely a genuine but propagated error spanning HAN_VARIANTS.ja + ja_kgs + ja_okn + ja_thk rows. Worth a coordinated cleanup pass.
+- Finding **#14 (行:1 HAN_VARIANTS key)** is a confirmed dead-code data block. The `HAN_VARIANTS["行"]` entry is never accessed by the renderer since Phase A renamed HAN_LIST entries to `行:1`/`行:2`. A proper sense-split of the cross-sense variants would restore the missing per-sense rich data.

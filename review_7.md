@@ -215,3 +215,79 @@
 - Current: wuu_jh `iu²⁴`/`iu²⁴`
 - Expected: wuu_jh `hhieu²⁴`/`ɦiu²⁴` or similar (voiced fricative/approximant onset, matching MC 匣母 voiced initial)
 - Why: 右 (MC 匣母 ɦ voiced) retains a voiced initial in every other Wu sub-node: wuu `hheu²³`/`jɤ²³`, wuu_sz `hheu³¹`/`jɤ³¹`, wuu_hz `hheu²¹³`/`jɤ²¹³`, wuu_nb `hheu²¹³`/`jɤ²¹³`, wuu_jx `hheu²²`/`jɤ²²`, wuu_wz `hhau²²`/`jau²²`. The Jinhua entry `iu²⁴` lacks any initial consonant in both surface and IPA. Wu's three-way initial contrast (aspirated / unaspirated / voiced) is predicated on voiced initials being preserved; a completely initialless form for a 匣母 word in Jinhua would be anomalous and requires verification against a primary source such as the Jinhua municipal dialect survey (金華方言調查).
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7, 2026-05-31.
+
+**Findings reviewed:** 26
+**Fixes applied:** 15 edits across 11 of the 26 findings
+**Noted but not applied:** 15 findings (rationale below)
+
+Editing policy was conservative: only **clear, unambiguous local errors or internal inconsistencies** were fixed. Speculative additions across many nodes, dialect-specific tone replacements where the exact value was uncertain, or systematic claims requiring file-wide rewrites were documented and skipped. Each entry was verified against the live `hanmap_data.js` via `node -e "const {HAN_DATA}=require(\"./hanmap_data.js\"); ..."` before and after each edit.
+
+### Per-finding verdict
+
+1. **日 — 5 missing nodes** — Noted, not applied: a large data-addition request across 5 sub-nodes (wuu/wuu_sz/wuu_hz/wuu_nb/wuu_jx) from a single reviewer claim. Adding 10 new values per character without independent primary-source verification is beyond a conservative review. Pattern suggests these characters were intentionally deferred; recommend a dedicated data-fill pass.
+
+2. **月 — 5 missing nodes** — Noted, not applied: same rationale as #1.
+
+3. **食 — 5 missing nodes** — Noted, not applied: same rationale as #1.
+
+4. **人 wuu — missing** — **Applied.** All 6 sub-nodes carry data; only the parent `wuu` is empty. Added surface `nyin²³` / IPA `ɲin²³` per reviewer (錢乃榮 上海話大詞典); tone `²³` matches Shanghai 陽平 convention used elsewhere in the file (cf. 二 wuu).
+
+5. **目 wuu — missing** — **Applied.** Added surface `moq¹²` / IPA `moʔ¹²` (Shanghai 陽入 = `¹²`, consistent with 六/十/木/肉 wuu).
+
+6. **血 wuu — missing** — **Applied.** Added surface `xyuoq⁵⁵` / IPA `ɕyəʔ⁵⁵`. All five Wu sub-nodes (nb/sz/hz/jx/jh) carry exactly this form, making the wuu gap a clear oversight.
+
+7. **上 wuu — missing** — **Applied.** Added surface `zang²³` / IPA `zɑŋ²³`. Matches wuu_hz exactly and is consistent with the file's use of `²³` for Shanghai 陽 register.
+
+8. **見 wuu — missing** — Noted, not applied: reviewer's proposed tone `⁵³` does not match Shanghai 陰去 = `³⁵` as used elsewhere in the file (cf. 飲 wuu `in³⁵`). The exact correct value for wuu is uncertain; skipping rather than introducing a wrong tone.
+
+9. **鳥 — wrong register (voiceless + LOW tone)** — **Applied for wuu only.** Changed wuu surface `tio²³`→`tio³⁵` and IPA `tiɔ²³`→`tiɔ³⁵`. Reviewer's core observation (voiceless 端母 上聲 → 陰上 HIGH register; cf. wuu_wz `tie³⁵`) is sound. Limited to wuu where the Shanghai 陰上 = `³⁵` pattern is well-attested in the file (水 `sy³⁵`, 火 `xuo³⁵`, 手 `xiu³⁵`). Skipped wuu_sz/wuu_hz/wuu_nb/wuu_jx where dialect-specific 陰上 contours are less certain.
+
+10. **立 — 入聲 glottal with 陽平 tone numeral** — **Applied for wuu only.** Changed wuu surface `lliq²³`→`lliq¹²` and IPA `liɪʔ²³`→`liɪʔ¹²`. Shanghai 陽入 = `¹²` is consistent (cf. 六/十/木/肉/目 wuu). Skipped wuu_sz: surveying all wuu_sz 入聲 entries shows `²³` is actually the Suzhou 陽入 tone in this file (cf. 十/木/肉/目 wuu_sz all `²³`), so wuu_sz `lliq²³` is in fact correct under the file's Suzhou convention.
+
+11. **六 wuu_nb — voiced 陽入 filed as HIGH (⁵⁵)** — **Applied.** Changed surface `loq⁵⁵`→`loq²¹³` and IPA `loʔ⁵⁵`→`loʔ²¹³`. Confirmed by surveying all wuu_nb 入聲 entries: voiceless 陰入 = `⁵⁵` (一/七/八/足/血/北); voiced 陽入 = `²¹³` (十/月/木/肉/目/立). 六 is voiced 来母, so `²¹³` is the unambiguously correct register.
+
+12. **日 wuu_jh — voiced 陽入 filed as HIGH (⁵⁵)** — **Applied.** Changed surface `niq⁵⁵`→`niq²¹²` and IPA `niʔ⁵⁵`→`niʔ²¹²`. wuu_jh voiced 陽入 = `²¹²` (cf. 十/月/食 wuu_jh). Skipped the alternate `²³` value (also attested in 肉/立 wuu_jh): the reviewer specified `²¹²` and it is the more common 陽入 contour in the data.
+
+13. **耳 wuu_jh — voiced 陽上 filed as HIGH (⁵³)** — Noted, not applied: reviewer's observation (voiced ɦ- requires LOW register) is sound, but the exact replacement tone for wuu_jh 陽上 is ambiguous in the data (馬 `mo²¹`, 鳥 `tio²¹`, 二 `nyi²¹³`, 五 `ngu²¹³` all attested). Skipped rather than guess.
+
+14. **二 wuu — surface/IPA initial mismatch (nyi vs n̩)** — **Applied.** Changed IPA `n̩²³` → `ɲi²³` to match surface `nyi²³` and the convention used by all other Wu sub-nodes. Clear isolated typo.
+
+15. **二 wuu_wz — surface/IPA mismatch (vowel absent)** — **Applied.** Changed IPA `ŋ²²` → `ɲi²²` to match surface `nyi²²`. Reviewer offered two alternatives (`ŋi²²` or `ɲi²²`); picked `ɲi` for consistency with the other 6 Wu sub-nodes which all use `ɲi`.
+
+16. **五 wuu_hz — initial ŋ in surface, absent in IPA** — **Applied.** Changed IPA `u²¹³` → `ŋ̍²¹³`. All other Wu sub-nodes for 五 use `ŋ̍²X` IPA against `ngu` surface; the bare `u` was a clear typo.
+
+17. **肉 wuu_hz — surface nny vs IPA z** — **Applied.** Changed surface `nnyoq²¹³` → `zoq²¹³` (keeping the IPA `zoʔ²¹³`). Hangzhou's Mandarin-influenced sibilant reading for 肉 is well-documented (parallel to 人 wuu_hz `zen²¹³`/`zən²¹³`); harmonising the surface to the IPA matches Hangzhou phonology.
+
+18. **耳 wuu_nb — IPA `ɦŋ̩²¹³` typo** — **Applied.** Changed IPA `ɦŋ̩²¹³` → `ɦɚ²¹³`. All other Wu sub-nodes for 耳 use `ɦɚ` IPA; the `ŋ̩` segment was clearly a copy-paste error.
+
+19. **走 wuu_hz — surface/IPA vowel mismatch** — Noted, not applied: surface `tseu` vs IPA `tsei` is a genuine inconsistency, but the direction of fix is uncertain. Hangzhou's rhyme for 走 is variable across sources; without a primary-source check, harmonising either way risks introducing a wrong vowel.
+
+20. **西 wuu_jx — IPA `si` should be `ɕi`** — **Applied.** Changed IPA `si⁵³` → `ɕi⁵³`. File uses `x` in surface for /ɕ/ consistently (cf. 心 wuu `xin⁵³`/`ɕin⁵³`); all other Wu sub-nodes for 西 have `ɕi` IPA. Clear typo.
+
+21. **坐 wuu_jx — IPA `zu` should be `zo`** — **Applied.** Changed IPA `zu²¹³` → `zo²¹³`. All other `zzo` surface entries (wuu_hz, wuu_jh, wuu_wz) pair with `zo` IPA; wuu_jx was the lone outlier.
+
+22. **wuu_wz — systematic missing ʔ on all 入聲** — Noted, not applied: a substantive systematic claim affecting ~15 entries. The presence/absence of glottal stop in Wenzhou 入聲 is contested in the literature (some sources, especially recent koine descriptions, do report the glottal as largely lost in modern Wenzhou). A file-wide pass touching 15+ entries on a debated point is beyond a conservative single-review fix.
+
+23. **一 wuu_wz tone `³¹³`** — Noted, not applied: tied to #22. Until the broader Wenzhou 入聲 convention is settled, fixing this single tone in isolation risks introducing further inconsistency.
+
+24. **飲 wuu_sz — missing 影母 ʔ initial** — Noted, not applied: adding a `ʔ` onset across one or more sub-nodes is a substantive change. The reviewer's argument (Suzhou is conservative → must preserve what Shanghai preserves) is plausible but not strictly verified against 蘇州方言詞典 here.
+
+25. **三 — missing nasalisation across 4 nodes** — Noted, not applied: the surface forms `se` carry no nasal marker either; the nasalisation would need to be added consistently to both surface (with a digraph or diacritic) and IPA across 4 nodes. Beyond a single-entry consistency fix.
+
+26. **右 wuu_jh — voiced 匣母 initial absent** — Noted, not applied: reviewer themselves notes this "requires verification against a primary source such as 金華方言調查". Without that verification, not safe to add an initial that is genuinely absent in the data.
+
+### Cache version
+
+`hanmap.html`: `hanmap_data.js?v=63` → `?v=64` (data changed).
+
+### Verification
+
+- `node --check hanmap_data.js` → SYNTAX_OK
+- `node -e "require(\"./hanmap_data.js\")"` → loads cleanly
+- Post-edit cross-check via `HAN_DATA[c].surface/ipa[wuu_*]` confirms every applied edit took effect; values match this comment.

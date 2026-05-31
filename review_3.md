@@ -209,3 +209,49 @@
 | `ko_hun` | missing entry for 龍 |
 | `pko` | missing entry for 龍 |
 | Encoding | mixed precomposed+jamo in 七, 八, 水 display rows |
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7.
+
+**Findings reviewed:** 22 numbered issues + summary table (note: task brief said "~99 findings"; this review actually contains 22 numbered items, several of which are paired sub-issues for the same character)
+**Fixes applied:** 14
+**Noted but not applied:** 8
+
+### Per-finding verdict
+
+**Applied (clear errors):**
+
+- **#1 / #14 二 ko_mid tone**: `:zi`/`:ᅀᅵ`/`zǐ` → `·zi`/`·ᅀᅵ`/`zí`. MC 去聲 confirmed by `ko_bus iH`. Resolved internal contradiction with #14.
+- **#2 / #15 去 ko_mid tone**: `:khe`/`:커`/`kʰə̌` → `·khe`/`·커`/`kʰə́`. MC 去聲 confirmed by `ko_bus geoH`. Resolved internal contradiction with #15.
+- **#3 中:2 ko_mid tone**: added 거성 marker → `·tyung`/`·듕`; IPA `tjuŋ` → `tjúŋ`. MC zhòng = 去聲.
+- **#19 中:2 ko_bus pitch**: `jungL`/`tɕuŋ˩` → `jungH`/`tɕuŋ˥`. 去聲 → H.
+- **#4 火 ko_bus pitch**: `hwaH`/`ɸwa˥` → `hwa:LH`/`ɸwaː˩˧`. MC 上聲, format matches 五/海/下.
+- **#5 土 ko_bus pitch**: `thoH`/`tʰo˥` → `tho:LH`/`tʰoː˩˧`.
+- **#6 九 ko_bus pitch**: `guH`/`ku˥` → `gu:LH`/`kuː˩˧`.
+- **#7 上 ko_bus pitch**: `sangH`/`saŋ˥` → `sang:LH`/`saŋː˩˧`.
+- **#8 四 ko_bus pitch**: `sa:LH`/`saː˩˧` → `saH`/`sa˥`. MC 去聲, confirmed by `ko_mid ·sò`.
+- **#9 北 ko_bus pitch**: `bukL`/`puk˩` → `bukH`/`puk˥`. Voiceless 入聲 → 거성, confirmed by `ko_mid ·pwuk`/`·븍`. Patterns with 一/十.
+- **#10 食 ko_mid pansios consistency**: romanized `·zzik` → `·zik`; display `·씩` → `·ᅀᅵᆨ`. Now uniform with 肉/日/耳/二/人 (all 日母). IPA `zík̚` already single-z, left as-is.
+- **#11 飲 IPA vowel**: `ʔǔm` → `ʔɯ̌m`. Display `:ᅙᅳᆷ` uses ᅳ (ɯ), so `u` diacritic was a typo.
+- **#12 龍 ko_hun**: added `mireu` (rom) / `miɾɯ` (IPA) / `미르` (Hangul). Well-attested 15c. word (龍飛御天歌, 月印千江之曲).
+- **#13 龍 pko**: added `*mir` (rom) / `*miɾ` (IPA). Tentative reconstruction based on 미르 attestation.
+
+**Noted but not applied:**
+
+- **#16 七, 八 mixed precomposed+jamo display**: `·치ᇙ`, `·바ᇙ`. The onsets/nuclei (ㅊㅣ, ㅂㅏ) are modern jamo with valid precomposed forms — using them is preferable to fully-decomposed (`ㅊㅣᇙ` would render as broken jamo cluster on most engines). The other "fully-decomposed" examples (日 `·ᅀᅵᇙ`, 月 `·ᅌᅯᇙ`) require decomposition because they contain *archaic* initials (ᅀ, ᅌ) with no precomposed forms. The current convention "decompose only when forced to" is internally consistent. **Skip.**
+- **#17 水 `:슈ᅵ` mixed encoding**: Same rationale — 슈 has a valid precomposed form, the trailing `ᅵ` is a stranded jungseong that represents an archaic vowel sequence (the 슈+ㅣ in 東國正韻 spelling). Fully decomposing 슈 would not improve rendering. **Skip.**
+- **#18 山 ko_hun 메 vs 뫼**: reviewer explicitly says "If the intent is to give the *modern* standard gloss, this is defensible." The data sets `ko_hun` to the modern 새김 dictionary form throughout (e.g. 火 = 불 not Middle Korean 블), so 메 is consistent with that convention. **Skip.**
+- **#20 去 ko_mid `:커` (aspirated) vs 訓蒙字會 「갈 거」 (unaspirated)**: `ko_mid` is **explicitly defined as 東國正韻式漢字音 (1448)** in its `reading_type` and `description` meta — 동국정운 prescribes aspirated 溪母. The 訓蒙字會 unaspirated form is a different layer (descriptive 16c. reading). The current `·커` is correct *by the row's own definition*. (Tone marker fixed under #2.) **Skip the aspiration finding.**
+- **#21 口 ko_mid `:쿠` vs 訓蒙字會 「입 구」**: Same as #20 — 동국정운 prescribes `:쿠`. **Skip.**
+- **#22 飲 romanized `u` for ɯ**: reviewer notes the romanization system overall uses `u` for /u/ but here uses it for /ɯ/. This is a system-wide convention question (`:qum` is internally consistent with other `:q-` 影母 entries' romanization style) rather than a single-character error. IPA mismatch already corrected under #11. **Skip romanized.**
+
+### Summary
+- Tone class fixes (the bulk): 10 (二, 去, 中:2 ×2-row each, plus 火, 土, 九, 上, 四, 北 ko_bus pitch corrections)
+- Initial-consonant consistency: 1 (食 pansios)
+- IPA vowel typo: 1 (飲)
+- New entries: 2 (龍 ko_hun + pko)
+
+All fixes verified with `node -e` round-trip. `node --check hanmap_data.js` passes. Cache bumped `hanmap_data.js?v=63 → v=64` in `hanmap.html`.

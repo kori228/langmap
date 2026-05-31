@@ -217,3 +217,47 @@
 | Contested reading (needs cross-check) | 18 | 1 |
 
 **Total defensible issues: 23**
+
+---
+
+## Worker comment (2026-05-31)
+
+Branch: `worktree-agent-a6219a72f948632a4` (off `develop`).
+Scope: `hanmap_data.js` only (+ cache bump `?v=63`→`?v=64` in `hanmap.html`). `node --check` passes.
+
+### Applied (15 of 23)
+
+| # | Char | Fix |
+|---|---|---|
+| 1 | 四 | `yue_gz`/`yue_dg`/`yue_zs`: `sei6/sei²²` → `sei3/sei³³` (MC 清 去聲 → 陰去 3). `yue_nn` `thei6/θei²²` left alone (entire `yue_nn` 心-class system uses θ-/ɬ- — see #5 rationale). |
+| 2 | 天 | `yue_gz`/`yue_dg`: `tin3/tʰiːn⁵³` → `tin1/tʰiːn⁵⁵` (MC 透 平聲 → 陰平). |
+| 3 | 行:1 | `yue`/`yue_hk`/`yue_mo` surface `null`+ipa `null` → `haang4/haːŋ˨˩` (白讀 "to walk"). `yue_gz` also null but left null (reviewer only flagged the three; out of strict scope, conservative). |
+| 6 | 九 | `yue_ts`: `gau1/kau˥˥` → `gau2/kau³⁵` (陰上 contour). |
+| 7 | 龍/牛/羊 | `yue_ts` surface digit `5` → `4` (IPA `²¹` already matches tone-4 contour). IPA unchanged. |
+| 8 | 魚 | `yue_dg`/`yue_nn` IPA `ŋ˨˩` → `ŋjyː˨˩` (vowel nucleus restored). |
+| 9 | 東 | `yue_dg`: `dung3/tʊŋ˧˧` → `dung1/tʊŋ⁵⁵`. |
+| 10 | 西 | `yue_dg`: `sai3/sɐi˧˧` → `sai1/sɐi⁵⁵`. |
+| 11 | 北 | `yue_dg`: `bak3/pɐk̚˧` → `bak1/pɐk̚˥`. |
+| 12 | 山 | `yue_dg`: `saan4/saːn²¹` → `saan1/saːn⁵⁵`. |
+| 13 | 下 | `yue_dg`: `haa4/ha²¹` → `haa6/ha²²`. |
+| 21 | 見 | `yue_nn`: `gin1/kiːn˥` → `gin3/kiːn³³`. |
+| 22 | 虎/口 | `yue_nn`: `fu3/fu³³` → `fu2/fu³⁵`; `hau3/hau³³` → `hau2/hau³⁵`. |
+| 23 | 食/手 | `yue_ts`: `shik6`→`sik6`, `shau2`→`sau2` (sh- non-standard in TS romanization used here; IPA already `s-`). |
+
+### Rejected (8 of 23)
+
+- **#4, #19 (`yue_gz` Gaozhou vs Guangzhou label/speaker-count):** Out of scope — meta/labels live in `wordmap_data.js` and other locales, not in `hanmap_data.js`. `wordmap_data.js` already pins `yue_gz` to Gaozhou coords (21.92, 110.85). Data values being Guangzhou-like is a separate question best addressed in a meta review.
+- **#5 (`yue_nn` ɬ-/θ- initials):** Reviewer claims these are Pinghua-only, not 南寧白話. Contested — 南寧白話 is heavily Pinghua-substrate-influenced and many sources (including 李連進 2000 cited by the reviewer) document ɬ-/θ- in conservative Nanning 白話 registers. The dataset's romanization key explicitly documents `sl-=/ɬ/, th-=aspirated` as intentional. Conservative: do not strip systematic data feature on disputed grounds.
+- **#14 (`yue_ts` Chao-letter vs digit-superscript mix):** A cosmetic notation inconsistency that pervades many dialect IPA columns in this dataset, not a content error. Out of scope for surgical review fixes; should be a separate normalization pass.
+- **#15 (`yue_ts` IPA strings in surface field):** Verified in current data — `三/山/羊/龍/虎/火/日/一` `yue_ts` surface values are all proper romanization (`lham3, san1, yeung4, lung4, fu2, fo2, yat1, yat6`), NOT IPA. Finding appears outdated relative to current file state. Reject.
+- **#16, #17 (add 行/食 白讀 to `yue` HAN_VARIANTS):** Additive — creating new HAN_VARIANTS entries vs. fixing existing errors. Reviewer wording is suggestive ("expected addition"). Conservative: skip; revisit with explicit HAN_VARIANTS expansion pass.
+- **#18 (`yue_ts` 行:2 `hong3` suspect):** Reviewer's own wording "tentative … should be cross-checked." Skip.
+- **#20 (`yue_zs` is copy of `yue_gz`):** Coverage/data-population concern, not a localized error. Out of scope.
+
+### Top 5 impact
+
+1. 5 systematic `yue_dg` tone-class repairs (東/西/北/山/下) — high-visibility numerals/cardinal-direction characters.
+2. 行:1 `yue`/`yue_hk`/`yue_mo` null → `haang4` — eliminates blank cells on a canonical 文白讀 character.
+3. 四 three-row fix (`sei6`→`sei3`) — phonologically impossible 陽去 reading for MC 清 去聲 across gz/dg/zs.
+4. 天 `yue_gz`/`yue_dg` `tin3`→`tin1` — 陰平 character mis-categorized as 陰去 in two sub-dialects.
+5. `yue_nn` tone-2/tone-3 swap on 見/虎/口 — restores correct 陰上 vs 陰去 distinction.

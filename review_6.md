@@ -187,3 +187,49 @@
 ---
 
 *End of review — 22 issues documented.*
+
+---
+
+## Worker comment (2026-05-31)
+
+Branch: `worktree-agent-a9b042e961f6247bb` (off `develop`).
+Scope: `hanmap_data.js` only (+ cache bump `?v=63`→`?v=64` in `hanmap.html`). `node --check hanmap_data.js` passes.
+
+### Applied (20 of 22)
+
+| # | Char | Fix |
+|---|---|---|
+| 1 | 龍 | HAN_VARIANTS nan_xm/qz/zz/pn/sg/id/my/pera: swapped 白讀/文讀 labels — `liông` now 白讀 (matches `nan` general row and the OC *C.rjoŋ → colloquial Min derivation). |
+| 2 | 飲 | HAN_VARIANTS nan general: swapped — `lim` now 白讀, `ím` now 文讀 (consistent with all eight sub-dialect rows). |
+| 3 | 日 | HAN_VARIANTS nan_xm/pn/my/sg 文讀 surface `jit` (same initial as 白讀, only tone differed) → `li̍t` with IPA `lit̚X` (real l-initial 文讀 form per Quanzhou/Zhangzhou pattern, with correct yang-ru tone marker). Also fixed nan_qz/nan_zz 文讀 `jit` (mis-marked yin-ru) → `ji̍t` (yang-ru) as a bonus consistency fix. |
+| 4 | 貓 | HAN_VARIANTS nan 文讀 `bâ/ba˨˦` (unattested) → `biâu/biau˨˦` (MC *bjew-derived literary form, per MOE 教育部臺灣閩南語常用詞辭典). |
+| 5 | 足 | HAN_DATA nan_sg surface `kha` (=腳) IPA `kʰa˥` → `chiok` IPA `t͡siɔk̚˧˨` (actual character reading of 足). |
+| 6 | 足 | HAN_VARIANTS nan_my 文讀 `kha/kʰa˧` (=腳) → `chok/t͡sɔk̚˧˨` (matches nan general 文讀 form). |
+| 7 | 山 | HAN_DATA nan_hai surface `dua2` (=大) IPA `tua˨˩˧` → `san1/san˨˩˧` (standard Hainanese 山 from MC *srean). |
+| 8 | 去 | HAN_VARIANTS nan_te 白讀 surface `khu3` (identical to 文讀) → `khê3` (Peng'im ê for /ɯ/, matches nan_th `kê3` convention). IPA `kʰɯ˨˩˧` retained. |
+| 9 | 魚 | HAN_DATA nan_te surface `hư5` (POJ romanization) → `hê5` (Teochew Peng'im — matches nan_th `hê5`). |
+| 10 | 羊 | HAN_VARIANTS nan and nan_my 文讀 surface `iôⁿ/iõ˨˦` (nasalised colloquial form) → `iông/iɔŋ˨˦` (oral vowel + velar nasal coda, matching the established Min 文讀 stratum and the seven other sub-dialect rows). |
+| 11 | 血 | HAN_VARIANTS nan_my 文讀 `hueh` (colloquial variant of 白讀) with empty IPA → `hiat/hiat̚˧˨` (correct literary form, matches all other Hokkien sub-dialect rows). |
+| 12 | 食 | HAN_VARIANTS nan_te 白讀 surface `tsiah8`/IPA `t͡ɕiaʔ˥` → `ziah8`/`t͡siaʔ˥` (Peng'im voiced-z convention, alveolar IPA — matches nan_th). |
+| 13 | 頭 | HAN_VARIANTS nan_pera 文讀 surface `tho⁵`/IPA `tʰɔ˨˦` (aspirated) → `to⁵`/`tɔ˨˦` (unaspirated, matching all other sub-dialects' `tô͘`). |
+| 16 | 人 | HAN_VARIANTS nan_te 文讀 `zîng5` (circumflex implies tone 7 in POJ — contradicts tone-5 digit suffix) → `zing5` (Peng'im convention without conflicting diacritic). |
+| 17 | 立 | HAN_DATA nan_hai surface `tab5`/IPA `tap̚˥` (unattested; -b/-a inappropriate for MC *ljip) → `lib5`/`lip̚˥` (standard Hainanese reading from MC *ljip). |
+| 18 | 龍 | HAN_DATA nan_te surface `leng5` → `lêng5` (Peng'im ê; matches both nan_th HAN_DATA and the nan_te HAN_VARIANTS row). |
+| 19 | 魚 | HAN_VARIANTS nan_sg 文讀 `gî/ɡi˨˦` (outlier; no historical basis) → `gû/ɡu˨˦` (matches nan general and nan_id, MC *ŋɨo derivation). |
+| 20 | 手 | HAN_VARIANTS cpx 文讀 surface `tsiû` (unaspirated convention) → `tshiû` (aspirated, matches the existing IPA `tsʰiu˧˩`). |
+| 21 | 二 | HAN_VARIANTS nan_xm: filled empty IPA fields. 白讀 `nn̄g/n̩˨˨`, 文讀 `jī/d͡ʑi˨˨` (Xiamen 7th tone ˨˨ low-level). |
+| 22 | 行 | HAN_VARIANTS mnp 文讀 `ông/ɔŋ˧˧` (unexplained h-dropping) → `hông/hɔŋ˧˧` (匣母 OC *ɣ- → Min /h-/ retained per Norman 1988 Northern Min). |
+
+### Rejected (2 of 22)
+
+- **#14 (頭 nan_te `thau5` → `tau5`):** Reviewer claims Teochew 頭 is unaspirated. This contradicts standard sources — Teochew 頭 is consistently /tʰau/ (定母 OC *d- → literary aspirated /tʰ/ in Min upper register), matching the existing IPA `tʰau˥˥`. The unaspirated `tao5` notation in some Peng'im traditions (cf. nan_th `tao5` with IPA `tʰau˧˥`) reflects orthographic convention, not phoneme. nan_te already correctly writes `thau5` matching its IPA. Reject — no clear error.
+- **#15 (鳥 文白 inversion claim):** Reviewer asserts `niáu` is colloquial and `chiáu/tsiáu` is literary, claiming MOE backs the inversion. Cross-check: MOE 教育部臺灣閩南語常用詞辭典 lists `tsiáu` as the everyday colloquial reading (e.g. 鳥仔 tsiáu-á "bird") and `niáu` as a less common variant (mostly in compounds like 鳥鼠). Existing data (`chiáu/tsiáu` = 白讀, `niáu` = 文讀) is consistent with mainstream Min phonological practice and the Taiwanese MOE. Reject — data is correct as-is.
+
+### Top 5 impact
+
+1. **#1 龍 八方言 label swap** — corrects systematic 文白 inversion across seven sub-dialect rows for a culturally central character; brings nan_xm/qz/zz/pn/sg/id/my/pera into alignment with the `nan` general row's already-correct assignment.
+2. **#3 日 nan_xm/pn/my/sg + bonus nan_qz/zz** — replaces fake tone-only "文白讀 pair" with genuine j/l initial contrast (the actual phonemic distinction), and fixes incorrect tone-4 (陰入) markings on what should be 陽入 (tone 8) literary forms.
+3. **#5 + #7 + #17 wrong-character substitutions** (足 nan_sg `kha`→`chiok`, 山 nan_hai `dua2`→`san1`, 立 nan_hai `tab5`→`lib5`) — eliminates three cases of completely wrong character readings being displayed as if they were the requested character. Highest data-integrity impact.
+4. **#10 羊 nan/nan_my 文讀 `iôⁿ`→`iông`** — corrects the literary-stratum form to show the standard Min oral-vowel+nasal-coda pattern, removing a phonologically intermediate form that was masquerading as the literary reading.
+5. **#22 行 mnp 文讀 `ông`→`hông`** — restores the initial h- (匣母 OC *ɣ-) preservation that defines Northern Min literary readings per Norman 1988, fixing an isolated and unattested h-dropping that contradicted the dialect's own profile.
+

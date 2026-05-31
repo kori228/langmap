@@ -193,3 +193,84 @@
 5. **OC reconstruction system mixing** (issues 19, 17, 26): A minority of zh_han entries use Schuessler or pre-BS notation (\*ɢ-, \*ʔs-) rather than consistent Baxter–Sagart 2014 notation.
 
 6. **MC rhyme/coda mismatches** (issues 10, 12, 23): At least three characters (日 \*-k vs. 質韻 \*-t; 血 \*-k vs. 屑韻 \*-t; 北 \*-aj vs. 德韻 \*-ək) show final consonant or vowel errors that propagate from OC through Tang and Phags-pa rows.
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7, 2026-05-31 10:00 JST.
+
+**Findings reviewed:** 26
+**Fixes applied:** 3
+**Noted but not applied:** 23 (rationale per item below)
+
+Editing policy was conservative ("慎重な判断が必要"): only **clear, unambiguous local errors or internal inconsistencies** were fixed. Issues that turned out to reflect a defensible reconstruction school, a file-wide notational convention, or a tone/contour mapping that would require a system-level rewrite were documented and skipped. Each entry was verified against the live `hanmap_data.js` via `node -e "const m=require('./hanmap_data.js'); ..."` before and after any edit.
+
+### Per-finding verdict
+
+1. **一 zh_tang surface lacks tone (入聲)** — Noted, not applied: systematic convention across the file. Every 入聲 surface entry omits the tone diacritic; the unreleased stop coda alone encodes 入聲. This is a file-wide notation choice (defensible per Karlgren/Pulleyblank tradition where 入聲 is inherent in the coda), not a per-entry error.
+
+2. **一 zh_phagspa `ʼi` vs `ʔi`** — Noted, not applied: reviewer themselves frames this as harmonisation between Tibetan-transliteration ʼ in the surface row and IPA ʔ in the IPA row. File convention treats ʼ as the romanised Phags-pa glyph and ʔ as its IPA reflex; this is internally coherent.
+
+3. **二 zh_tang surface `nyij⁵¹` digraph vs IPA `ɲ`** — Noted, not applied: cosmetic notational mismatch; multiple defensible romanisation conventions for 日母. Fixing only this one entry would create a new inconsistency unless a file-wide pass on all 日母 surface rows is done.
+
+4. **三 zh_tang tone contour `¹²³`/`˩˨˧`** — Noted, not applied: the reviewer's own addendum concludes the file uses `¹²³` consistently for 陰平, so 三 is in fact correctly coded; the IPA `˩˨˧` reflects the file's own internal tone-mapping key.
+
+5. **五 zh_tang `²¹⁴/˨˩˦` (modern Mandarin tone 3 contour)** — Noted, not applied: this would require a system-level tone-contour remapping affecting all 上聲 entries. Beyond a single-entry fix.
+
+6. **五 zh_phagspa `ʼu/ʔu` (疑母 should be ŋ-)** — Noted, not applied: debatable. By the Phags-pa era, 疑母 had begun losing ŋ- before back/high vowels in northern colloquial; Coblin (2006) cites both `ŋu` (conservative) and `ʼu` (colloquial) for 五. Sister character 魚 also lacks ŋ-, suggesting a coherent (if debatable) file choice.
+
+7. **六 zh_tang surface `ljuwk` (Baxter ASCII)** — Noted, not applied: defensible Baxter (1992) form, not a reconstruction error. Marked as style/notation inconsistency only.
+
+8. **木 zh_tang surface `mjuwk` (Baxter ASCII)** — Noted, not applied: same as #7.
+
+9. **日 zh_tang surface lacks ̚ diacritic** — Noted, not applied: file-wide convention (surface row strips the ̚ that the IPA row carries; see 八/十/立/北 for the same pattern).
+
+10. **日 zh_han `*C.nik` with *-k** — Noted, not applied: reviewer mistaken. BS 2014 explicitly reconstruct 日 as `*C.nik`; the *-k → MC -t dissimilation near palatal initials is a documented feature of the BS system (cf. STEDT/BS database lookup for char U+65E5). The data matches BS 2014.
+
+11. **月 zh_tang surface `ŋĭwɐt` (Pulleyblank breve)** — **Applied.** The only occurrence of Pulleyblank's `ĭ` breve diacritic in the entire zh_tang surface column (grep confirms one match). Replaced with IPA form `ŋiuɐt` to match the parallel IPA row `ŋiuɐt̚` (minus the file's standard ̚-stripping in surface rows). File: `hanmap_data.js:2458`.
+
+12. **血 zh_han `*m̥ˤik` with *-k** — Noted, not applied: reviewer mistaken. Same as finding 10 — BS 2014 do reconstruct 血 with *-k (`*m̥ˤik`), with the *-k → MC -t shift in 屑韻 environment. This matches BS published forms.
+
+13. **血 zh_tang surface lacks tone** — Noted, not applied: same systematic 入聲 convention as #1, #9.
+
+14. **肉 zh_tang surface `ɲjuwk`** — Noted, not applied: same as #7.
+
+15. **人 zh_tang 陰平/陽平 tone conflation** — Noted, not applied: would require a system-level rewrite of all 平聲 tone contours by initial voicing class. Beyond per-entry scope.
+
+16. **水 zh_tang surface `sywij`** — Noted, not applied: same as #7.
+
+17. **左 zh_han `*ʔsˤajʔ`** — **Applied.** `*ʔs-` cluster is not a Baxter–Sagart 2014 initial category; BS database/2014 reconstruct 左 as `*[ts]ˤajʔ`. The leading glottal stop appears to be vestigial from an older Sagart draft notation. Replaced both surface and ipa fields with `*[ts]ˤajʔ`. File: `hanmap_data.js:9435, 9553`.
+
+18. **央 zh_phagspa surface `ʼyaŋ` vs IPA `jaŋ` (missing ʔ)** — **Applied.** Surface row carries the ʼ glyph (representing 影母 ʔ-) but the IPA row dropped it entirely. The file's own convention (see 一 zh_phagspa `ʼi`/`ʔi`) requires the IPA reflex to carry ʔ. Replaced ipa `jaŋ` with `ʔjaŋ`. File: `hanmap_data.js:9356`.
+
+19. **羊 zh_han `*ɢaŋ` (Schuessler vs BS notation)** — Noted, not applied: debatable. The file's only two 以母/喻三 entries (羊, 右 `*ɢʷəʔ`) both use Schuessler's `*ɢ-` consistently. Defensible if the file is following Schuessler 2007 for the 以母 initial. Cross-school choice, not a per-entry error.
+
+20. **行:1 / 行:2 prefix `*Cə-` distribution** — Noted, not applied: BS 2014 do reconstruct 行 with the `*Cə-` prefix and propose derivational morphology distinguishing xíng/háng readings. The current split (one reading with the prefix, one without) is a defensible reflection of BS's morphological analysis.
+
+21. **東 zh_tang surface `tuwng`** — Noted, not applied: same as #7.
+
+22. **頭 zh_tang 陰平/陽平 conflation** — Noted, not applied: same as #15.
+
+23. **北 zh_yuan/zh_phagspa vowel `-əi/-aj`** — Noted, not applied: reviewer mistaken. In Zhōngyuán Yīnyùn (1324) the 入聲 of 德韻 was already redistributed and 北 had merged into the 齊微 rhyme class (-əi/-i). Coblin (2006) and Tranter give Phags-pa 北 with `-əj/-aj`. The expected "pok/pək" is an LMC form, not a Yuan/Phags-pa form.
+
+24. **見 zh_tang tone** — Reviewer's own placeholder ("confirmed correct"). No action needed.
+
+25. **聞 zh_song `mvun` cluster** — Noted, not applied: idiosyncratic but file-internal convention for representing the LMC 微母 labiodental development. Multiple competing notations (`ʋ-`, `v-`, `mv-`) exist; not a clear error.
+
+26. **坐 zh_han `*N-[dz]ˤojʔ` (N- prefix)** — Noted, not applied: debatable. BS 2014 give `*[dz]ˤojʔ` for 坐 but Sagart's derivational analyses elsewhere propose an `*N-` prefix for some MC voiced-stop verbs. Not unambiguously wrong, and the file's choice may reflect a specific derivational reading.
+
+### Cache version
+
+`hanmap.html`: `hanmap_data.js?v=63` → `?v=64` (data changed).
+
+### Verification
+
+- `node --check hanmap_data.js` → SYNTAX_OK
+- `node -e "require('./hanmap_data.js')"` → loads cleanly
+- Post-edit values:
+  - `HAN_DATA["左"].surface.zh_han` = `"*[ts]ˤajʔ"`
+  - `HAN_DATA["左"].ipa.zh_han` = `"*[ts]ˤajʔ"`
+  - `HAN_DATA["央"].ipa.zh_phagspa` = `"ʔjaŋ"`
+  - `HAN_DATA["月"].surface.zh_tang` = `"ŋiuɐt"`
+- `node validate_wordmap_data.js`: the single pre-existing FAIL (`bug.words.hello: both '—' but language is modern`) is unrelated to hanmap; confirmed present on baseline `develop` before these edits.

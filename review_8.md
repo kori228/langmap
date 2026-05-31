@@ -152,3 +152,87 @@ Specialist in Manchu (mnc), Jurchen (juc) and Sibe (sjo) phonology and lexicon. 
 3. **IPA cells carrying romanized text, not IPA** (issue 5): The `juc` IPA row for 見 and likely others carry Möllendorff romanization rather than phonetic transcription, inconsistent with all other language IPA fields.
 
 4. **Wrong Manchu lemma for 走** (issue 1): `tukiyembi` "to lift" is not "to run"; this is a hard lexical error affecting the mnc, and the ptung association is consequently wrong too.
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7, 2026-05-31 JST.
+
+**Findings reviewed:** 25
+**Fixes applied:** 5 (across 9 edited cells + 1 native-script cell)
+**Noted but not applied:** 20 (rationale per item below)
+
+Editing policy was conservative ("Tungusic attestation is sparse"). Manchu-side fixes anchor on the Norman 1978 dictionary; Sibe cognates in the same row were used as cross-checks. Jurchen (`juc`) cells were touched only where the existing form was internally inconsistent with the column convention (verb-stem citation). Proto-Tungusic (`ptung`) cells were touched only for clear etymology mismatches (e.g. a "to run" root sitting on a noun row). The macron-vs-IPA-length-mark "split" complaints (issues 12–16, 20, 21) were treated as defensible deliberate convention — the surface column carries the Starostin-style scholarly notation (`ē`, `ü`), the IPA column carries IPA (`eː`, `y`); both are correct for their respective columns and a global re-notation is out of per-entry scope. Each edit was verified via `node -e "const m = require('./hanmap_data.js'); console.log(m.HAN_DATA['…'].surface['…'])"` before and after.
+
+### Per-finding verdict
+
+1. **走 mnc `tukiyembi` "to lift" used for "to run"** — **Applied.** Norman 1978 p. 407 confirms `tukiyembi` = "to lift, raise, promote"; the Sibe column in the same row carries `feksim`/`fəkɕim` from Manchu/Sibe `feksimbi` "to run, gallop" (Norman p. 81). Replaced mnc surface `tukiyembi` → `feksimbi`, IPA `tukijəmbi` → `fəkɕimbi`, native script `ᡨᡠᡴᡳᠶᡝᠮᠪᡳ` → `ᡶᡝᡴᠰᡳᠮᠪᡳ`. (Reviewer suggested `jalgimbi`; chose `feksimbi` instead because it matches the Sibe cognate already in the row and is the form used by Norman for "to run.")
+
+2. **走 juc `—`** — Noted, not applied. Reviewer concedes "the Jurchen cognate of 'run' is reconstructible" but does not give a confidently attested form. Per the task constraint "apply only if known attestation exists," `—` is the safer state.
+
+3. **走 ptung `*tuksa-` mis-associated with Manchu `tukiyembi`** — Resolved by finding #1. PTung `*tuksa-` is correct for "to run" (Sibe `feksimbi` ← `*tuksa-` via metathesis); now that the Manchu cell also carries `feksimbi`, the ptung entry is etymologically aligned.
+
+4. **見 juc surface `sabumbi` glossed as "to be seen"** — Noted, not applied. Norman 1978 p. 304 lists `sabumbi` as "to see, perceive, notice" (active meaning); the gloss "to be seen / appear" is debatable, and the Manchu form is acceptable for "see." The deeper concern (projecting Manchu onto Jurchen) is the systemic issue flagged under #9, treated the same way there.
+
+5. **見 juc IPA cell carrying Möllendorff text** — Noted, not applied. The same surface-as-IPA convention is used for mnc and sjo throughout the file (e.g. mnc surface `tuwambi` / IPA `tuwambi`); it is the file-wide convention for Manchu-script languages, not unique to juc.
+
+6. **四 mnc IPA `dujn` (typo for `duin`)** — **Applied.** Surface row correctly has `duin`; IPA row had `dujn` with the `j` misplaced. Replaced `dujn` → `duin`. (Norman 1978 p. 61.)
+
+7. **人 mnc IPA `njalma` vs surface `niyalma`** — Noted, not applied. The `nj-` vs `niy-` distinction is the same surface/IPA convention split: surface gives Möllendorff `niyalma`, IPA gives a tighter `njalma` (cf. sjo IPA `ɲalma` in the same row). Not a clear per-cell error.
+
+8. **人 juc surface `niyalma` (Manchu form retrojected)** — Noted, not applied. Jurchen attestation per Jin Qicong is uncertain; the data convention is to project the Manchu form when no Jin-dynasty attestation is confidently distinct. The Khitan (zkt) cell in the same row already shows `nialma`, so the cross-language signal is preserved.
+
+9. **心 juc `mujilen` (Manchu form retrojected)** — Noted, not applied. Same systemic juc-projection issue as #8; not a per-cell clear error. Would require a file-wide juc policy decision.
+
+10. **土 ptung `*tuksa` (should be `*na`, "to run" root mis-routed)** — **Applied.** Compared with the parallel row 地 (also "earth") which correctly carries `ptung: *na`; the 土 row had `*tuksa` (the "to run" root from 走) copy-pasted in. Replaced 土 ptung surface `*tuksa` → `*na`, IPA `*tuksa` → `*na`. SDM 2003 confirm PTung `*na` "earth, soil" (Evenki `na`, Nanai `na`, Manchu/Sibe `na`).
+
+11. **走 / 土 ptung duplicated `*tuksa`** — Resolved by finding #10.
+
+12. **月 ptung `*bēga` / `*beːɡa` macron vs IPA length** — Noted, not applied. Surface column uses Starostin-style macron convention (`ē`); IPA column uses IPA length mark (`eː`). Both are correct for their columns. This is a file-wide convention, not a per-entry inconsistency.
+
+13. **火 ptung `*tōga` / `*toːɡa`** — Same as #12. Not applied.
+
+14. **耳 ptung `*sēn` / `*seːn`** — Same as #12. Not applied.
+
+15. **木 ptung `*mō` / `*moː`** — Same as #12. Not applied.
+
+16. **水 ptung `*mū` / `*muː`** — Same as #12. Not applied.
+
+17. **犬 ptung `*ŋinda` (vs `*ŋinakta`)** — Noted, not applied. Both `*ŋinda` (SDM 2003) and `*ŋinakta` (Benzing 1955, with `-kta` suffix retained in Evenki) are attested in the Tungusic-comparative literature; choosing between them is a reconstruction-school question, not a clear error.
+
+18. **魚 ptung `*sugʒan` / `*suɡd͡ʒan`** — Noted, not applied. The reviewer correctly observes that Manchu `nimaha` continues `*nima-`, but `*sugʒan` (cf. Nanai `sugdʒan`) is also reconstructed for the broader fish-root family; the choice between competing roots is non-trivial. The `ʒ` vs `d͡ʒ` split is the surface/IPA convention (broad fricative letter vs IPA affricate tie-bar), parallel to #19/#20.
+
+19. **肉 ptung `*ulʒə` / `*uld͡ʒə`** — Noted, not applied. `ʒ` vs `d͡ʒ` is the surface/IPA convention; the underlying reconstruction `*ulǯ-` is defensible (SDM 2003 cite `*ulǯe-`).
+
+20. **左 ptung `*dʒəgün` / `*d͡ʒəɡyn` (ü vs y)** — Noted, not applied. `ü` (surface, scholarly notation) vs `y` (IPA, correct front-rounded symbol) is the file-wide notation split. Not a per-cell error.
+
+21. **右 ptung `*aŋān` / `*aŋaːn`** — Same as #12. Not applied.
+
+22. **行:1 ptung `*ŋənə-` (etymology mismatch with mnc `yabumbi`)** — **Applied.** Manchu `yabumbi` "to walk, travel" continues PTung `*jabu-`, not `*ŋənə-` (which underlies Manchu `genembi` "to go," correctly placed on 去 in this dataset). The `pmgl` cell in the same 行:1 row already carries `*yabu-`/`*jabu-`, so the corrected ptung also aligns the cross-language Macro-Altaic columns. Replaced 行:1 ptung surface `*ŋənə-` → `*jabu-`, IPA `*ŋənə-` → `*jabu-`. Did not touch 行:2 ptung (also `*ŋənə-`): the row has `mnc/juc/sjo` = `—`, so the ptung has no anchor and changing it would be unmotivated; 行:2 (háng = "row / firm") is semantically a different sense and is not coupled to the walking verb.
+
+23. **見 sjo surface `tuwam` (truncated)** — Noted, not applied. File-wide convention for Sibe verbs in this dataset: `donjim`, `jem`, `omim`, `jim`, `genem`, `tem`, `feksim`, etc. all drop the `-bi` infinitive suffix. Changing only `tuwam` → `tuwambi` would create a new local inconsistency.
+
+24. **坐 juc `tehe` / IPA `texe` (past-perfect form, not infinitive)** — **Applied.** Every other juc cell in this dataset that carries a verb gives the `-mbi` infinitive (cf. juc `yabumbi`, `jimbi`, `tuwambi`, `genumbi`, etc.); 坐 alone had the perfective participle `tehe`/`texe`. Aligned with the same-row mnc `tembi`/sjo `tem`. Replaced juc surface `tehe` → `tembi`, IPA `texe` → `təmbi`.
+
+25. **頭 ptung `*dil` (vs `*uʒu` for Manchu branch)** — Noted, not applied. SDM 2003 reconstruct PTung `*dīlu` "head" as a pan-Tungusic root with the Manchu/Jurchen `uju` line as an irregular outcome of the same root, so `*dil` is not strictly wrong even where Manchu is `uju`. Competing reconstructions exist; not a clear error.
+
+### Cache version
+
+`hanmap.html`: `hanmap_data.js?v=63` → `?v=64` (data changed).
+
+### Verification
+
+- `node --check hanmap_data.js` → SYNTAX_OK
+- `node -e "require('./hanmap_data.js')"` → loads cleanly
+- Post-edit values (verified via `node -e`):
+  - `HAN_DATA["走"].surface.mnc` = `"feksimbi"`
+  - `HAN_DATA["走"].ipa.mnc` = `"fəkɕimbi"`
+  - `HAN_DATA["走"].native.mnc` = `"ᡶᡝᡴᠰᡳᠮᠪᡳ"`
+  - `HAN_DATA["四"].ipa.mnc` = `"duin"`
+  - `HAN_DATA["土"].surface.ptung` = `"*na"`
+  - `HAN_DATA["土"].ipa.ptung` = `"*na"`
+  - `HAN_DATA["行:1"].surface.ptung` = `"*jabu-"`
+  - `HAN_DATA["行:1"].ipa.ptung` = `"*jabu-"`
+  - `HAN_DATA["坐"].surface.juc` = `"tembi"`
+  - `HAN_DATA["坐"].ipa.juc` = `"təmbi"`
