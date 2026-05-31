@@ -1,0 +1,393 @@
+# Wordmap review #42 — Burmese / Karen / Lolo-Burmese specialist
+
+## Reviewer self-introduction
+
+This review applies the following reference works: Wheatley (1985) *Burmese*; Okell (1969) *A Reference Grammar of Colloquial Burmese*; Bradley (1979) *Proto-Loloish*; Burling (1967) *Proto-Lolo-Burmese*; Solnit (1997) *Eastern Kayah Li*; Manson (2010) *A Grammar of Kayan*; Matisoff (2003) *Handbook of Proto-Tibeto-Burman*.
+
+Languages examined: Burmese (my), Rakhine (rki), Mon (mnw), Karen Sgaw (ksw), Karen Pwo (pwo), Kayah Li (kjp), Yi/Nuosu (ii), Hani (hni), Lahu (lhu), Lisu (lis), Naxi (nxq).
+
+---
+
+## Issues
+
+### Yi/Nuosu (ii) — Script-IPA systematic mismatches
+
+**Issue 1 — Yi father: BO syllable transcribed as /da/**
+- File: `words/father.js`
+- Data: `ii: ["ꀊꀧ", "a˧˧da˧˧"]`
+- Unicode: ꀊ = YI SYLLABLE A (/a/), ꀧ = YI SYLLABLE BO (/bo/)
+- Script compound reads /a˧bo˧/ (a-prefix + father root), but IPA column shows `a˧˧da˧˧`
+- The second syllable is written as /da/ which does not match the BO syllable at all
+- Correction: `a˧bo˧` (or per Nuosu Pinyin: a-bo → /a˧bo˧/)
+
+**Issue 2 — Yi moon: NRA syllable transcribed as /hy/**
+- File: `words/moon.js`
+- Data: `ii: ["ꃅꎖ", "mu˧˧hy˧˧"]`
+- Unicode: ꃅ = YI SYLLABLE MU, ꎖ = YI SYLLABLE NRA (/nra/ or /ɳra/)
+- IPA shows `hy˧˧` for the NRA syllable — /hy/ bears no resemblance to /nra/
+- Correction: `mu˧nra˧` or, per Nuosu description of moon (mu + nra = "sky object"), `mu˧ɳa˧`
+
+**Issue 3 — Yi sun: NGA+BBAP transcribed as /ȵi˧˧mo˧˧/**
+- File: `words/sun.js`
+- Data: `ii: ["ꉢꁡ", "ȵi˧˧mo˧˧"]`
+- Unicode: ꉢ = YI SYLLABLE NGA (/ŋa/), ꁡ = YI SYLLABLE BBAP (/bap/, checked high tone)
+- IPA column gives `ȵi˧˧mo˧˧` — both syllables are wrong: ŋ- initial becomes ȵ-, vowels /a/ and /ap/ become /i/ and /o/
+- This looks like an independently sourced IPA for a different form (possibly Sani Yi or another dialect), pasted without cross-checking against the script entry
+- Correction: `ŋa˧bap˥` (with appropriate checked-tone marking on second syllable)
+
+**Issue 4 — Yi thanks: VO+CO transcribed as /ka˧˧tɕʰɿ˧˧/**
+- File: `words/thanks.js`
+- Data: `ii: ["ꃰꊿ", "ka˧˧tɕʰɿ˧˧"]`
+- Unicode: ꃰ = YI SYLLABLE VO (/vo/), ꊿ = YI SYLLABLE CO (/tso/)
+- IPA `ka˧˧tɕʰɿ˧˧` matches neither syllable; /ka/ is not VO, /tɕʰɿ/ is not CO
+- Both syllables have wrong initials and wrong vowels
+- Correction: `vo˧tso˧`
+
+**Issue 5 — Yi hello: RRE+KU transcribed as /su˧˧kɤ˧˧/**
+- File: `words/hello.js`
+- Data: `ii: ["ꂿꎆꈐ", "mo˧˧su˧˧kɤ˧˧"]`
+- Unicode: ꂿ = MO (/mo/ — correct for first syllable), ꎆ = YI SYLLABLE RRE (/rre/ or retroflex), ꈐ = YI SYLLABLE KU (/ku/)
+- Second syllable RRE is transcribed as `su˧˧` — /rre/ ≠ /su/
+- Third syllable KU is transcribed as `kɤ˧˧` — /ku/ ≠ /kɤ/; the back unrounded vowel is wrong
+- Correction: `mo˧rre˧ku˧` (adjusting for dialectal tone)
+
+**Issue 6 — Yi fire: MUP (checked tone) transcribed with mid-level tone ˧˧**
+- File: `words/fire.js`
+- Data: `ii: ["ꃆ", "mu˧˧"]`
+- Unicode: ꃆ = YI SYLLABLE MUP — the `-p` suffix in Yi Government Pinyin (YGPY) marks a high checked (entering) tone, not mid level
+- The correct transcription for a checked syllable is approximately `mu˥ʔ` or `mu˥` depending on analysis; `mu˧˧` is wrong
+- Correction: `mu˥ʔ` (high checked)
+
+**Issue 7 — Yi eat: CYT (checked low tone) transcribed as /dza˧˧/**
+- File: `words/eat.js`
+- Data: `ii: ["ꋊ", "dza˧˧"]`
+- Unicode: ꋊ = YI SYLLABLE CYT — `-t` suffix marks low checked tone; vowel is `y` (apical/retroflex unrounded)
+- IPA `dza˧˧` has wrong initial (dz ≠ cy-type affricate), wrong vowel (a ≠ apical y), and wrong tone (mid level ≠ low checked)
+- Correction: `tsɿ˩ʔ` (or `tsɿ˩` depending on checked-tone analysis in Nuosu)
+
+**Issue 8 — Yi eye: HXEP (checked) transcribed as /ȵi˧˧/**
+- File: `words/eye.js`
+- Data: `ii: ["ꉜ", "ȵi˧˧"]`
+- Unicode: ꉜ = YI SYLLABLE HXEP — initial HX- in YGPY is a voiceless velar or uvular fricative /x~χ/, vowel -e-, `-p` = checked high tone
+- IPA `ȵi˧˧` is palatalized /ȵ/ + front vowel /i/ at mid tone — completely different initial, vowel, and tone
+- Correction: `xep˥` (approximately /xɛp˥/)
+
+**Issue 9 — Yi hand: LU syllable transcribed as /la˧˧/**
+- File: `words/hand.js`
+- Data: `ii: ["ꇐ", "la˧˧"]`
+- Unicode: ꇐ = YI SYLLABLE LU (/lu/)
+- IPA shows `la˧˧` — vowel /a/ ≠ /u/; the syllable is clearly LU not LA
+- Nuosu Yi hand = lu˧ (mid tone), matching the script but not the IPA
+- Correction: `lu˧`
+
+**Issue 10 — Yi one: CI transcribed as /tsʰɿ/ (spurious aspiration)**
+- File: `words/one.js`
+- Data: `ii: ["ꊰ", "tsʰɿ˧˧"]`
+- Unicode: ꊰ = YI SYLLABLE CI — in YGPY, `c` represents an unaspirated affricate /ts/ (not aspirated /tsʰ/)
+- Nuosu Yi 'one' = ci [tsɿ˧], unaspirated; the aspirated /tsʰɿ/ would correspond to YGPY `ch`
+- Correction: `tsɿ˧`
+
+**Issue 11 — Yi dog: MGUOP (labiovelar + checked) transcribed as /kʰɯ˧˧/**
+- File: `words/dog.js`
+- Data: `ii: ["ꈸ", "kʰɯ˧˧"]`
+- Unicode: ꈸ = YI SYLLABLE MGUOP — initial MGU- represents a prenasalized labiovelar /ᵑɡw-/ or /ŋɡu-/; `-p` = checked high tone
+- IPA `kʰɯ˧˧` has wrong initial (simple aspirated velar instead of prenasalized), wrong vowel, and wrong tone class
+- Correction: `ŋɡwop˥` (approximately)
+
+**Issue 12 — Yi house: YI syllable (/ji/) transcribed as /ɣɯ˧˧/**
+- File: `words/house.js`
+- Data: `ii: ["ꑳ", "ɣɯ˧˧"]`
+- Unicode: ꑳ = YI SYLLABLE YI (/ji/) — standard palatal glide + front vowel
+- IPA `ɣɯ˧˧` uses a voiced velar fricative /ɣ/ and back unrounded vowel /ɯ/ — both are wrong
+- Nuosu Yi house = yi [ji˧], matching the script character
+- Correction: `ji˧`
+
+**Issue 13 — Yi: all IPA entries use non-standard double tone letter ˧˧**
+- All Yi IPA entries throughout all word files use doubled mid-level diacritic `˧˧` (e.g., `vi˧˧`, `la˧˧`, `si˧˧`)
+- Standard Chao tone notation for a single mid-level tone is a single `˧`, not doubled `˧˧`
+- A doubled `˧˧` would imply a two-unit level-pitch span, appropriate for Chinese Mandarin-style second-tone contour notation but not for Nuosu Yi single syllables
+- All Yi IPA entries should use single Chao letters: `˥`, `˧`, or `˩` where appropriate
+- This is a cross-cutting notation error affecting every Yi entry
+
+---
+
+### Rakhine (rki)
+
+**Issue 14 — Rakhine moon: tone/phonation absent**
+- File: `words/moon.js`
+- Data: `rki: ["လ", "la"]`
+- Standard Burmese moon = `la̰` (creaky low phonation); Rakhine varieties share the same Burmese script base and the syllable should carry phonation marking
+- The bare `la` gives no information about phonation or tone; at minimum the entry needs a phonation diacritic or tone mark to be comparable to the Standard Burmese entry
+
+**Issue 15 — Rakhine good, cat, heart: transcriptions are copies of Standard Burmese with no Rakhine-specific features**
+- Files: `words/good.js`, `words/cat.js`, `words/heart.js`
+- `rki good`: `káuɴ` — identical to Standard Burmese `káuɴ`
+- `rki cat`: `tɕàuɴ` — identical to Standard Burmese `tɕàuɴ`
+- `rki heart`: `n̥əlóuɴ` — identical to Standard Burmese `n̥əlóuɴ`
+- Rakhine dialect diverges from Standard Burmese in vowel qualities, the preserved rhotic (visible correctly in `rki water ɹeː`), and in register/tone contrasts; identical transcriptions suggest these three were copied rather than independently attested
+- At minimum, the vowel of `rki good` (ကောင်း) should reflect Rakhine phonology; in some analyses Rakhine raises or fronts the /au/ nucleus
+
+**Issue 16 — Rakhine eat: tone/length absent**
+- File: `words/eat.js`
+- Data: `rki: ["စား", "sa"]`
+- Standard Burmese eat = `sá` (high tone, long); Rakhine IPA is just `sa` with no tone or length
+- This is underspecified compared to both the Standard Burmese entry and to the quality of other Rakhine entries like `rki water ɹeː` which does include length
+
+---
+
+### Karen Sgaw (ksw) and Karen Pwo (pwo)
+
+**Issue 17 — Karen Sgaw and Karen Pwo: tones entirely absent across all entries**
+- Both ksw and pwo are tonal languages; Sgaw Karen has at least four tones; Pwo Karen similarly
+- Reviewing all IPA entries: `tʰaŋ`, `θiŋ`, `θa`, `haŋ`, `mi`, `mu`, `la`, `pa`, `su`, `ta`, `ʔiŋ`, `ʔeŋ`, `baŋ ta sa`, `ta bju` — none carries a tone mark
+- This is a systematic omission; Matisoff (2003) and Bradley (1979) both emphasize that tonal distinctions in Karen languages are phonemic and cannot be omitted in any phonological transcription
+- All Karen (ksw, pwo) IPA entries need tonal marking
+
+**Issue 18 — Karen Sgaw fire: glottal stop misplaced in IPA**
+- File: `words/fire.js`
+- Data: `ksw: ["မ့ၣ်ဖီ", "mʔiŋ pʰi"]`
+- The glottal stop in `mʔiŋ` is placed after the onset consonant, yielding a CVC structure with medial glottal — a highly marked and unlikely configuration for this language
+- The Karen Sgaw script `မ့ၣ်` represents a vowel-marked syllable (likely /mɛ̃/ or /mə̃/); the ŋ is a final from the asat-nasalized vowel marker in Sgaw Karen orthography
+- The IPA should be something like `mɛ̃˥ pʰi˧` (fire + classifier); `mʔiŋ` does not reflect the script
+
+**Issue 19 — Karen Pwo cat: sʰ notation is non-standard IPA**
+- File: `words/cat.js`
+- Data: `pwo: ["ဆဲၣ်", "sʰain"]`
+- `sʰ` (aspirated fricative) is not a standard IPA symbol and does not appear in IPA charts; aspirated fricatives in Karen are sometimes cited but transcription should use `sʰ` only as a convention explicitly noted, or better as `ɕ` or `s` with a separate diacritic
+- If the intent is to mark a fortis/aspirated sibilant, the notation needs clarification
+
+---
+
+### Kayah Li (kjp)
+
+**Issue 20 — Kayah Li father: script ဖ- = /pʰ/ but IPA gives unaspirated /p/**
+- File: `words/father.js`
+- Data: `kjp: ["ဖါ", "pa˧"]`
+- In Karen-family scripts including the Kayah Li writing system, ဖ represents an aspirated bilabial stop /pʰ/
+- The IPA transcription `pa˧` gives the unaspirated variant; the correct IPA should be `pʰa˧`
+- Contrast with `pwo father: ဖါ pʰa` (correct aspiration) — Kayah Li has the same script symbol but the aspiration is dropped in the IPA
+
+---
+
+### Hani (hni)
+
+**Issue 21 — Hani: tones entirely absent across all entries**
+- Hani (Akha-Hani branch, Tibeto-Burman) is tonal, with Hani proper typically described as having six tones in some analyses
+- All IPA entries use bare syllables without tone: `mil`, `ne`, `miq`, `xa`, `leju`, `miqsiq`, `ɲul`, `amal`, `xal`, `mol`, `za`, `adal`, `ɡaq`, `ɡaq sai`, `niaxuq maxuq`, `lol`, `tiul`, `dol`
+- The entries ending in `-q` may represent low checked tone (a convention in some Hani romanizations where final -q = glottal stop/low register), but tones on non-checked syllables are uniformly absent
+- The task specification notes: "Hani water = lol oq lol — tone diacritic letters at end"; the data shows only `lol` with no such diacritic letters
+
+**Issue 22 — Hani water: missing tone-diacritic structure**
+- File: `words/water.js`
+- Data: `hni: ["lol", "lol"]`
+- Per the standard Hani tonal romanization, tones are indicated by post-syllabic letters (`q` = low checked, `l` = low level, `v` = low falling, etc. in the Hani orthography used in China)
+- The entry `lol` without any tonal letter gives an incomplete picture; full form should resemble `lo˨q` or the romanization equivalent
+
+---
+
+### Lahu (lhu)
+
+**Issue 23 — Lahu water: vowel /ɯ/ diverges significantly from expected /ɔ/**
+- File: `words/water.js`
+- Data: `lhu: ["ɨˆ", "ɯ̂"]`
+- The task specification explicitly flags that Lahu water = `ɣ̱ɔ́ʔ` (high glottalized)
+- The data gives `ɯ̂` — a high back unrounded vowel, whereas canonical Lahu water has a mid back rounded vowel /ɔ/ with a high glottalized tone
+- This is either a different dialect form or an error; the discrepancy is substantial
+
+**Issue 24 — Lahu thanks: /ʃ/ in IPA is non-native for Lahu**
+- File: `words/thanks.js`
+- Data: `lhu: ["a-bo-shaˇ", "abôʃâʔ"]`
+- Lahu's alveopalatal consonant is typically /ɕ/ (or the affricate /tɕ/), not the postalveolar fricative /ʃ/
+- In Matisoff's Lahu grammar, the relevant series is the alveopalatal fricative; /ʃ/ is a common approximation used in folk romanizations but is inaccurate in strict IPA
+- Correction: `abôɕâʔ`
+
+**Issue 25 — Lahu mother: entry is bare /e/ with no tone**
+- File: `words/mother.js`
+- Data: `lhu: ["e", "e"]`
+- A single toneless `e` is phonologically incomplete for Lahu; all other Lahu entries carry tone diacritics in the romanization column (e.g., `haˆ`, `yaˇ`, `nyiˉ-ma`)
+- The mother entry stands out as anomalous; the expected form would include a tone marker (Matisoff cites Lahu mother forms with tone)
+
+---
+
+### Lisu (lis)
+
+**Issue 26 — Lisu: Fraser script not used; all entries in romanized Latin**
+- Lisu is written in the Fraser script (Lisu syllabary, Unicode block A4D0–A4FF), which has been in official use since the 1910s and is the community-recognized orthography
+- All Lisu entries use a romanized Latin transcription (e.g., `yi`, `a-nyi`, `kwe`, `hkyim`) without Fraser-script display characters
+- The task specification notes that the Fraser script form should be shown for Lisu water as `ꓭꓲꓹ`
+- Other comparable languages in the dataset display their native script; Lisu should too (or at minimum, the issue should be flagged as a deliberate scope decision rather than omission)
+
+---
+
+### Naxi (nxq)
+
+**Issue 27 — Naxi father: romanization av → IPA a˧ (labiodental element dropped)**
+- File: `words/father.js`
+- Data: `nxq: ["av", "a˧"]`
+- The romanization `av` suggests a final labiodental or labial off-glide /v/ or /w/, but the IPA column renders this as bare `a˧` with no trace of the second element
+- This is an inconsistency between the display romanization and the IPA column
+
+**Issue 28 — Naxi: romanization convention 'ee' = /ɯ/ is unexplained**
+- The data uses `ee` in romanization to correspond to IPA `/ɯ/` consistently (water: `gee`→`ɡɯ˧`; fire: `mee`→`mɯ˧`; dog: `kee`→`kʰɯ˧`; house: `pee-mei`→`pɯ˧mi˧`)
+- This is a non-standard folk romanization; the high back unrounded vowel /ɯ/ is not `ee` in any standard Naxi romanization system
+- Users without the IPA column would read `ee` as /iː/, not as /ɯ/; at minimum this convention needs documentation, and ideally should be replaced by a more transparent romanization
+
+---
+
+### Mon (mnw)
+
+**Issue 29 — Mon fire: IPA pəmoʔ appears to be a compound reconstruction, not a phonological transcription**
+- File: `words/fire.js`
+- Data: `mnw: ["ပၟတ်", "pəmoʔ"]`
+- `pəmoʔ` has a structure /pə+moʔ/ that looks like a morphological compound (prefix + root) being written as a single IPA string, which is unusual
+- Standard Mon fire is /poʔ mɔʔ/ (a compound) or simply /mɔʔ/ for the root; `pəmoʔ` conflates prefix and root without a syllable boundary, potentially misleading
+
+**Issue 30 — Mon sun: IPA tŋoa contains the complex onset /tŋ-/**
+- File: `words/sun.js`
+- Data: `mnw: ["တ္ၚဲ", "tŋoa"]`
+- The onset /tŋ-/ is highly marked typologically; Mon does have complex onsets but the notation `tŋoa` should be verified
+- The Mon script တ္ၚ- (ta + stacked nya) would historically give a /tɲ-/ or /tŋ-/ cluster; the IPA might be more accurately rendered as /tŋoa/ but the diphthong `-oa` also warrants verification as a notation convention specific to this dataset's Mon transcription system
+
+---
+
+*Total issues filed: 30*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every Yi (ii) script claim against Unicode (Python `unicodedata`); all syllable identifications in Issues 1–12 are confirmed correct (e.g. ꀧ = YI SYLLABLE BO, ꎖ = NRA, ꃰ = VO, ꊿ = CO, ꇐ = LU, ꊰ = CI, ꑳ = YI). I applied the unambiguous segmental (initial/vowel) corrections on the **plain (unchecked) syllables**, preserving the dataset's existing `˧˧` mid-tone notation so as not to silently merge in the separate Issue-13 convention decision. Checked-tone syllables and uncertain-IPA segments are held with rationale below.
+
+### Applied (IPA field only — surface script untouched)
+- **Issue 1 — Yi father** (`words/father.js`): `a˧˧da˧˧` → `a˧˧bo˧˧`. BO syllable; `da` was plainly wrong. (applied by orchestrator this round)
+- **Issue 2 — Yi moon** (`words/moon.js`): `mu˧˧hy˧˧` → `mu˧˧ɳa˧˧`. NRA = retroflex nasal /ɳ/+a; `hy` bore no relation. (applied by orchestrator this round)
+- **Issue 4 — Yi thanks** (`words/thanks.js`): `ka˧˧tɕʰɿ˧˧` → `vo˧˧tso˧˧`. VO+CO; both initials/vowels were wrong. (applied by orchestrator this round)
+- **Issue 9 — Yi hand** (`words/hand.js`): `la˧˧` → `lu˧˧`. LU syllable; vowel /a/→/u/. (applied by orchestrator this round)
+- **Issue 10 — Yi one** (`words/one.js`): `tsʰɿ˧˧` → `tsɿ˧˧`. CI = unaspirated /ts/ in YGPY; removed spurious aspiration. (applied by orchestrator this round)
+- **Issue 12 — Yi house** (`words/house.js`): `ɣɯ˧˧` → `ji˧˧`. YI syllable = /ji/. (applied by orchestrator this round)
+
+### Held — checked-tone syllables (-p/-t in YGPY)
+- **Issues 3 (sun, BBAP), 6 (fire, MUP), 7 (eat, CYT), 8 (eye, HXEP), 11 (dog, MGUOP).** The script identifications are correct and the current IPA segments are indeed wrong, but the reviewer's proposed corrections introduce a *different tone notation* (`˥ʔ`, `˩ʔ`) and the reviewer themselves hedges ("approximately", "depending on checked-tone analysis"). Re-notating these correctly is entangled with the cross-cutting Issue-13 tone-notation decision (held below) and is a phonological-analysis call, not a clean mechanical fix. Holding pending a coordinated Yi tone-notation pass.
+
+### Held — uncertain IPA
+- **Issue 5 — Yi hello.** MO (already correct) and KU=/ku/ are clear, but RRE has no settled single IPA value (reviewer wrote `rre˧`, which is not valid IPA). To avoid introducing a half-correct/non-standard string I am holding the whole entry rather than emitting a partial fix.
+
+### Held — system-level / convention (won't-fix this round)
+- **Issue 13 — `˧˧` doubled mid-tone notation.** Cross-cutting dataset convention applied uniformly to every Yi entry; this is a notation policy decision for the whole `ii` set, not a local error. Needs a single coordinated pass, not piecemeal edits.
+- **Issues 14, 16 — Rakhine moon/eat underspecified tone/length.** Underspecification, not a demonstrable error; correct Rakhine values are a sourcing/judgement call.
+- **Issue 15 — Rakhine good/cat/heart identical to Standard Burmese.** Possible copy, but no attested Rakhine-specific value supplied; not an unambiguous correction.
+- **Issues 17, 21 — Karen (ksw/pwo) and Hani (hni) tones absent across all entries.** Systematic cross-language transcription policy; out of scope for a local mechanical fix and would require attested per-entry tone data.
+- **Issue 18 — Karen Sgaw fire `mʔiŋ`.** Plausibly wrong, but the reviewer's `mɛ̃˥` is a reconstruction, not an unambiguous correction.
+- **Issue 19 — Karen Pwo `sʰ`.** Notation-convention question; held for a convention decision.
+- **Issue 20 — Kayah Li father p vs pʰ.** Aspiration is a real question but depends on the dataset's Kayah-Li aspiration convention (contrast pwo); deferring to a convention call rather than guessing.
+- **Issues 22, 26, 28, 30 — Hani tone-letter structure, Lisu Fraser-script display, Naxi `ee`=/ɯ/ romanization, Mon `-oa`.** Romanization/orthography-display conventions and scope decisions, not local data errors.
+- **Issue 23 — Lahu water /ɯ̂/ vs /ɔ/.** Possible dialect form vs error; substantial change needs sourcing confirmation, not a mechanical fix.
+- **Issue 24 — Lahu thanks /ʃ/→/ɕ/.** Defensible, but `ʃ` is a deliberate folk-approximation choice elsewhere in the set; holding for a Lahu-wide convention decision rather than touching one entry.
+- **Issue 25 — Lahu mother bare `e`.** Underspecified; correct toned form not supplied.
+- **Issue 27 — Naxi father av→a˧.** Romanization/IPA mismatch but the intended value is unclear; held.
+- **Issue 29 — Mon fire `pəmoʔ` compound.** Analysis/segmentation question, not an unambiguous local error.
+
+**Applied: 6 (Issues 1, 2, 4, 9, 10, 12). Held: 24.**
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified every claimed fix against the **live** per-word data files, and independently re-confirmed every Yi script identification via Python `unicodedata`.
+
+### Applied fixes — VERIFIED in live data (✓)
+- **Issue 1 — Yi father** `words/father.js`: live = `ii: ["ꀊꀧ", "a˧˧bo˧˧"]`. ꀊ=A, ꀧ=BO confirmed. ✓ accept.
+- **Issue 2 — Yi moon** `words/moon.js`: live = `ii: ["ꃅꎖ", "mu˧˧ɳa˧˧"]`. ꃅ=MU, ꎖ=NRA (retroflex nasal /ɳ/) confirmed. ✓ accept.
+- **Issue 4 — Yi thanks** `words/thanks.js`: live = `ii: ["ꃰꊿ", "vo˧˧tso˧˧"]`. ꃰ=VO, ꊿ=CO confirmed. ✓ accept.
+- **Issue 9 — Yi hand** `words/hand.js`: live = `ii: ["ꇐ", "lu˧˧"]`. ꇐ=LU confirmed. ✓ accept.
+- **Issue 10 — Yi one** `words/one.js`: live = `ii: ["ꊰ", "tsɿ˧˧"]`. ꊰ=CI = unaspirated /ts/ in YGPY; spurious aspiration removed. ✓ accept.
+- **Issue 12 — Yi house** `words/house.js`: live = `ii: ["ꑳ", "ji˧˧"]`. ꑳ=YI = /ji/ confirmed. ✓ accept.
+
+All six are genuinely present in the live data (not merely claimed). Good.
+
+### Held items — adjudication
+
+**Issues 3, 6, 7, 8, 11 — Yi checked-tone syllables — PARTIAL (△), still OPEN.**
+I accept that the *tone* re-notation (`˥ʔ`/`˩ʔ`) is entangled with the Issue-13 convention decision and may defensibly wait. BUT the worker's framing understates the problem: in every one of these the **segmental** (initial/vowel) content is also wrong, and the script ID is confirmed, so a clean segmental fix is available *independent* of any tone-notation decision:
+- Issue 7 — eat `words/eat.js`: live = `ꋊ "dza˧˧"`. ꋊ=CYT. The initial should be an apical sibilant /ts/-type and the vowel the apical /ɿ/, not `dza`. Segmental fix `tsɿ` is mechanical; only the checked tone is deferrable.
+- Issue 11 — dog `words/dog.js`: live = `ꈸ "kʰɯ˧˧"`. ꈸ=MGUOP (prenasalized labiovelar). A plain aspirated velar `kʰ` is segmentally wrong; the prenasalized labiovelar onset can be fixed without resolving tone.
+- Issue 8 — eye `words/eye.js`: live = `ꉜ "ȵi˧˧"`. ꉜ=HXEP. Palatal nasal `ȵ` + front `i` cannot be right for an HX- (velar/uvular fricative) initial; segmentally fixable.
+- Issue 3 — sun `words/sun.js`: live = `ꉢꁡ "ȵi˧˧mo˧˧"`. ꁡ=BBAP. Wrong initials and vowels on both syllables.
+- Issue 6 — fire `words/fire.js`: live = `ꃆ "mu˧˧"`. ꃆ=MUP; the segment /mu/ is plausibly fine, so here ONLY the checked-tone notation is at stake — this one I accept as defensibly deferred to Issue 13.
+
+So: Issue 6 → accept the hold (tone-only). Issues 3, 7, 8, 11 → the segmental error remains a real, mechanically-fixable error and should not be parked entirely behind the tone-notation decision. These keep the file OPEN.
+
+**Issue 5 — Yi hello — ACCEPT HOLD (✓ won't-fix this round).** Worker is right that the reviewer's `rre˧` is not valid IPA and RRE has no settled single value; emitting a half-correct string would be worse. Defensible hold.
+
+**Issue 13 — `˧˧` doubled mid-tone — ACCEPT as system-level.** Genuinely a dataset-wide convention pass, not a local error. Defensible to handle in one coordinated sweep. I will not block on this, but note it is the same decision that gates Issues 3/6/7/8/11's tone column.
+
+**Issues 14, 15, 16 — Rakhine — ACCEPT HOLD.** Verified live (`rki moon "la"`, `rki eat "sa"`, `good/cat/heart` identical to Std Burmese). These are underspecification / possible-copy concerns requiring attested Rakhine values; not unambiguous mechanical corrections. Defensible to hold pending sourcing.
+
+**Issues 17, 21 — Karen/Hani tones absent — ACCEPT as system-level.** Requires attested per-entry tone data across whole languages; not a local fix.
+
+**Issues 18, 19, 20 — Karen Sgaw fire / Pwo `sʰ` / Kayah Li p~pʰ — ACCEPT HOLD.** Reconstruction / convention questions; reasonable to defer to a convention decision rather than guess.
+
+**Issues 22–30 — Hani tone-letters, Lisu Fraser script, Naxi `ee`/`av`, Mon compounds, Lahu — ACCEPT HOLD.** These are romanization-display/orthography scope decisions and sourcing-dependent dialect questions, not unambiguous local data errors. Lahu thanks `ʃ`→`ɕ` (Issue 24) and Lahu water `ɯ̂` (Issue 23) verified present in live data; deferring to a Lahu-wide convention/sourcing decision is reasonable.
+
+### New issues
+None. Verification surfaced no new errors beyond those already filed.
+
+### Scorecard
+- Claimed-applied fixes verified present in live data: **6 / 6** ✓
+- Holds accepted as defensible (convention / sourcing / system-level): Issues 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30.
+- Holds rejected as still-actionable (segmental error fixable independent of tone notation): **Issues 3, 7, 8, 11.**
+
+**File status: OPEN** — Dev team must apply the segmental (initial/vowel) corrections for Yi Issues 3, 7, 8, 11 (sun ꁡ BBAP, eat ꋊ CYT, eye ꉜ HXEP, dog ꈸ MGUOP) in the IPA field; the checked-tone notation for these may remain deferred to the Issue-13 convention pass.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Addressing the reviewer's round-1 adjudication, which rejected my earlier blanket hold on the checked-tone syllables: the reviewer is correct that the **segmental** (initial/vowel) content of Issues 3, 7, 8, 11 is independently wrong and mechanically fixable, with only the **checked-tone notation** (`˥ʔ`/`˩ʔ`) properly deferred to the Issue-13 convention pass. I re-verified all four script IDs via Python `unicodedata`: ꁡ=BBAP, ꋊ=CYT, ꉜ=HXEP, ꈸ=MGUOP, ꉢ=NGA — all confirmed. I now apply segmental-only fixes, preserving the existing `˧˧` mid-tone notation (so the deferred Issue-13 decision is untouched and no new tone-class call is silently made).
+
+### Applied (IPA field only — surface script untouched; `˧˧` tone preserved pending Issue 13)
+- **Issue 3 — Yi sun** (`words/sun.js`): `ȵi˧˧mo˧˧` → `ŋa˧˧ba˧˧`. NGA = /ŋa/, BBAP = `bb`(/b/)+`a` in YGPY. Both prior syllables (ȵi, mo) had wrong initials and vowels. Tone deferred. (applied by orchestrator this round)
+- **Issue 7 — Yi eat** (`words/eat.js`): `dza˧˧` → `tsɿ˧˧`. CYT = `c`(unaspirated /ts/)+`y`(apical /ɿ/). Prior `dza` had wrong initial and vowel. Checked tone deferred. (applied by orchestrator this round)
+- **Issue 8 — Yi eye** (`words/eye.js`): `ȵi˧˧` → `xɛ˧˧`. HXEP = `hx`(velar fricative /x/)+`e`(/ɛ/); reviewer's correction was /xɛp/. Prior `ȵi` (palatal nasal + front /i/) cannot be an HX- initial. Checked tone deferred. (applied by orchestrator this round)
+- **Issue 11 — Yi dog** (`words/dog.js`): `kʰɯ˧˧` → `ŋɡwo˧˧`. MGUOP = `mgu`(prenasalized labiovelar /ŋɡw/)+`o`; reviewer's correction was /ŋɡwop/. Prior simple aspirated velar `kʰɯ` was segmentally wrong. Checked tone deferred. (applied by orchestrator this round)
+
+### Held (unchanged from round-1; reviewer accepted these as defensible)
+- **Issue 6 — Yi fire** (`words/fire.js`, ꃆ MUP): segment /mu/ is plausibly fine; ONLY the checked-tone notation is at stake. Reviewer explicitly accepted this as deferred to the Issue-13 tone pass. Held.
+- **Issue 5 — Yi hello** (RRE): no settled single IPA value; reviewer accepted hold.
+- **Issue 13** — dataset-wide `˧˧` mid-tone notation: system-level convention pass, not a local error. The checked-tone re-notation for Issues 3/6/7/8/11 stays parked behind this single coordinated sweep.
+- **Issues 14–30** — Rakhine underspecification/copy concerns, Karen/Hani absent tones, Kayah Li/Karen Pwo convention questions, Lisu Fraser-script display, Naxi/Mon romanization conventions, Lahu sourcing/convention items: all accepted by the reviewer as convention / sourcing / system-level, not unambiguous local data errors. Held.
+
+**This round applied: 4 (Issues 3, 7, 8, 11 — segmental only). Remaining open (deferred to Issue-13 tone pass / system-level / sourcing): the checked-tone column of 3/6/7/8/11 plus Issues 13–30 system/convention/sourcing items.**
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified every round-2 claimed fix against the **live** per-word data and re-confirmed all script IDs via Python `unicodedata` (NGA, BBAP, CYT, HXEP, MGUOP, MUP all confirmed).
+
+### Round-2 applied fixes — VERIFIED in live data (✓)
+- **Issue 3 — Yi sun** `words/sun.js`: live = `ii: ["ꉢꁡ", "ŋa˧˧ba˧˧"]`. ꉢ=NGA=/ŋa/, ꁡ=BBAP=`bb`(/b/)+`a`. Prior `ȵi˧˧mo˧˧` had wrong initials/vowels on both syllables; now segmentally correct. ✓ accept (checked-tone coda deferred to Issue 13, as agreed).
+- **Issue 7 — Yi eat** `words/eat.js`: live = `ii: ["ꋊ", "tsɿ˧˧"]`. ꋊ=CYT = `c`(/ts/)+`y`(apical /ɿ/). Prior `dza` corrected. ✓ accept.
+- **Issue 8 — Yi eye** `words/eye.js`: live = `ii: ["ꉜ", "xɛ˧˧"]`. ꉜ=HXEP = `hx`(/x/)+`e`(/ɛ/). Prior palatal `ȵi` corrected. ✓ accept.
+- **Issue 11 — Yi dog** `words/dog.js`: live = `ii: ["ꈸ", "ŋɡwo˧˧"]`. ꈸ=MGUOP = `mgu`(prenasalized labiovelar /ŋɡw/)+`o`. Prior simple aspirated velar `kʰɯ` corrected. ✓ accept.
+
+All four segmental corrections I demanded in round-1 are genuinely present in live data (not merely claimed), with the `˧˧` tone notation untouched so no new tone-class call is silently made. Exactly the surgical scope I asked for.
+
+The six earlier round-1 fixes (Issues 1, 2, 4, 9, 10, 12) also remain in place in live data (father `a˧˧bo˧˧`, moon `mu˧˧ɳa˧˧`, thanks `vo˧˧tso˧˧`, hand `lu˧˧`, one `tsɿ˧˧`, house `ji˧˧`). No regressions.
+
+### Remaining held/deferred items — adjudication
+- **Issue 6 — Yi fire** `words/fire.js`: live = `mu˧˧`. ꃆ=MUP confirmed; segment /mu/ is fine, only the checked-tone coda is at stake — already accepted in round-1 as deferred to Issue 13. ✓ hold.
+- **Issue 5 — Yi hello** `words/hello.js`: live = `mo˧˧su˧˧kɤ˧˧`. RRE has no settled single IPA value; accepted hold (round-1). ✓ hold.
+- **Issue 13 — `˧˧` doubled mid-tone** and the checked-tone column of Issues 3/6/7/8/11: a single dataset-wide convention/tone pass, not a local error. ✓ accept as system-level (won't-block).
+- **Issues 14–30** — Rakhine underspecification/copy (14,15,16), Karen/Hani absent tones (17,21), Karen Sgaw fire / Pwo `sʰ` / Kayah Li p~pʰ (18,19,20), Hani tone-letters (22), Lahu (23,24,25), Lisu Fraser script (26), Naxi `av`/`ee` (27,28), Mon compounds (29,30): all are convention / orthography-display / sourcing-dependent dialect questions, not unambiguous local data errors. ✓ accept as defensible holds (consistent with round-1).
+
+### New issues
+None. Verification surfaced no new errors.
+
+### Scorecard
+- Round-2 claimed-applied fixes verified present in live data: **4 / 4** ✓
+- Cumulative Yi segmental fixes verified across rounds 1–2: **10** (Issues 1, 2, 3, 4, 7, 8, 9, 10, 11, 12), all present, no regressions.
+- All previously-rejected actionable items (Issues 3, 7, 8, 11) are now resolved at the segmental level.
+- Remaining items (checked-tone column of 3/6/7/8/11 + Issues 5, 13–30) are all accepted by me as defensible convention / system-level / sourcing holds.
+
+**File status: CLOSED** — nothing left to address. Every clear, mechanically-fixable error is now fixed and verified in live data; all remaining items are reviewer-accepted convention, system-level (Issue-13 tone pass), or sourcing-dependent holds.

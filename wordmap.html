@@ -2464,8 +2464,8 @@
         }
     })();
     </script>
-    <script src="wordmap_data.js?v=222"></script>
-    <script src="word_manifest.js?v=14"></script>
+    <script src="wordmap_data.js?v=223"></script>
+    <script src="word_manifest.js?v=15"></script>
     <script>
         // Reserve the WORDS global BEFORE the per-word <script> tags load,
         // since each `words/<id>.js` does `WORDS.<id> = {...}` and would
@@ -2495,7 +2495,7 @@
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
     <script src="lang-filter.js?v=32"></script>
-    <script src="lang_names.js?v=111"></script>
+    <script src="lang_names.js?v=112"></script>
     <script src="wordmap_trivia.js?v=27"></script>
     <script>
     // LANG_NAMES is loaded synchronously via lang_names.js above.
@@ -2706,9 +2706,17 @@
             document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
         }
 
+        // Migration shim: legacy es_eu/es_mx/pt_eu/pt_br UI codes were
+        // collapsed into 'es' / 'pt'. Normalize at every read site so
+        // saved cookies and shared ?ui= URLs keep working.
+        function _normalizeUiLang(code) {
+            if (code === 'es_eu' || code === 'es_mx') return 'es';
+            if (code === 'pt_eu' || code === 'pt_br') return 'pt';
+            return code;
+        }
         function detectBrowserLang() {
             // 1. Cookie first (set by user's previous choice on any page)
-            const cookie = _wmGetCookie('wm_uilang');
+            const cookie = _normalizeUiLang(_wmGetCookie('wm_uilang'));
             if (cookie && WM_UI[cookie]) return cookie;
             if (cookie) {
                 const base = cookie.split('_')[0];
@@ -2717,12 +2725,12 @@
             // 2. navigator.language fallback
             const langs = navigator.languages || [navigator.language || 'en'];
             for (const l of langs) {
-                const code = l.replace('-', '_').toLowerCase();
+                const code = _normalizeUiLang(l.replace('-', '_').toLowerCase());
                 if (WM_UI[code]) return code;
                 const base = code.split('_')[0];
                 const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
                     en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
-                    sw:'sw', pt:'pt_br', es:'es_mx', da:'en', sv:'en', no:'en', nl:'en' };
+                    sw:'sw', pt:'pt', es:'es', da:'en', sv:'en', no:'en', nl:'en' };
                 if (map[base] && WM_UI[map[base]]) return map[base];
                 if (base === 'zh') {
                     if (code.includes('hk') || code.includes('tw') || code.includes('hant')) return 'yue';
@@ -2739,15 +2747,15 @@
         // caught at validation time. The dynamic wordmap_meta.js load
         // below uses assetUrl() so its version is always read from here.
         const WM_ASSET_VERSION = {
-            styles:   101,
-            data:      221,
+            styles:   104,
+            data:      223,
             metaI18n:  15,
             filter:    32,
-            names:   111,
+            names:   112,
             meta:     192,
             trivia:   27,
             triviaI18n: 4,
-            words:      15,
+            words:      19,
         };
         function assetUrl(path, key) {
             return `${path}?v=${WM_ASSET_VERSION[key]}`;
@@ -2824,8 +2832,8 @@
             vi:'Bản đồ từ vựng thế giới', th:'แผนที่คำศัพท์โลก', id:'Atlas Kata Dunia',
             hi:'बहुभाषी विश्व मानचित्र', en:'Multilingual Word Atlas', de:'Mehrsprachiger Weltatlas',
             fr:'Atlas mondial des mots', it:'Atlante mondiale delle parole',
-            es_eu:'Atlas mundial de palabras', es_mx:'Atlas mundial de palabras',
-            pt_eu:'Atlas mundial de palavras', pt_br:'Atlas mundial de palavras',
+            es: 'Atlas mundial de palabras',
+            pt: 'Atlas mundial de palavras',
             ru:'Многоязычный атлас слов', uk:'Багатомовний атлас слів',
             ar:'أطلس الكلمات العالمي', he:'אטלס מילים עולמי', sw:'Atlasi ya Maneno ya Dunia',
         };
@@ -2833,8 +2841,8 @@
             ja:'語順マップ', ko:'어순 맵', zh:'语序图', yue:'語序圖', vi:'Trật tự từ',
             th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', en:'Word Order',
             de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole',
-            es_eu:'Orden de palabras', es_mx:'Orden de palabras',
-            pt_eu:'Ordem das palavras', pt_br:'Ordem das palavras',
+            es: 'Orden de palabras',
+            pt: 'Ordem das palavras',
             ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات',
             he:'סדר מילים', sw:'Mpangilio wa maneno',
         };
@@ -2842,8 +2850,8 @@
             ja:'単語マップ', ko:'단어 맵', zh:'词汇地图', yue:'詞彙地圖', vi:'Bản đồ từ',
             th:'แผนที่คำ', id:'Peta Kata', hi:'शब्द मानचित्र', en:'Word Map',
             de:'Wortkarte', fr:'Carte des mots', it:'Mappa parole',
-            es_eu:'Mapa de palabras', es_mx:'Mapa de palabras',
-            pt_eu:'Mapa de palavras', pt_br:'Mapa de palavras',
+            es: 'Mapa de palabras',
+            pt: 'Mapa de palavras',
             ru:'Карта слов', uk:'Карта слів', ar:'خريطة الكلمات',
             he:'מפת מילים', sw:'Ramani ya maneno',
         };
@@ -2854,8 +2862,8 @@
             ja:'系統樹', ko:'계통수', zh:'谱系树', yue:'譜系樹', vi:'Cây phả hệ',
             th:'แผนภูมิ', id:'Pohon', hi:'वृक्ष', en:'Tree',
             de:'Stammbaum', fr:'Arbre', it:'Albero',
-            es_eu:'Árbol', es_mx:'Árbol',
-            pt_eu:'Árvore', pt_br:'Árvore',
+            es: 'Árbol',
+            pt: 'Árvore',
             ru:'Древо', uk:'Дерево', ar:'الشجرة',
             he:'אילן', sw:'Mti',
         };
@@ -2869,31 +2877,31 @@
                 yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
                 id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
                 fr: 'Descendant moderne', it: 'Discendente moderno',
-                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
-                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
+                es: 'Descendiente moderno', es: 'Descendiente moderno',
+                pt: 'Descendente moderno', pt: 'Descendente moderno',
                 ru: 'Совр. потомок', uk: 'Сучасний нащадок',
                 ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
             historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
                 yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
                 id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
                 fr: 'Ancêtres hist.', it: 'Antenati storici',
-                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
-                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
+                es: 'Antepasados históricos', es: 'Antepasados históricos',
+                pt: 'Ancestrais históricos', pt: 'Ancestrais históricos',
                 ru: 'Ист. предки', uk: 'Іст. предки',
                 ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
             sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
                 yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
                 de: 'Quellen', fr: 'Sources', it: 'Fonti',
-                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
-                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
+                es: 'Fuentes', es: 'Fuentes',
+                pt: 'Fontes', pt: 'Fontes',
                 ru: 'Источники', uk: 'Джерела',
                 ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
             searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
                 yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
                 id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
                 fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
-                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
-                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
+                es: '🔍 Buscar idioma…', es: '🔍 Buscar idioma…',
+                pt: '🔍 Pesquisar idioma…', pt: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
             chromeToggleHide: { en: 'Hide UI overlays', ja: 'UI を隠す', ko: 'UI 숨기기', zh: '隐藏 UI 覆盖层', yue: '隱藏 UI 覆蓋', vi: 'Ẩn lớp phủ UI', th: 'ซ่อนชั้น UI', id: 'Sembunyikan UI', hi: 'UI ओवरले छिपाएँ', de: 'UI ausblenden', fr: 'Masquer l’UI', it: 'Nascondi UI', es: 'Ocultar UI', pt: 'Ocultar UI', ru: 'Скрыть UI', uk: 'Сховати UI', ar: 'إخفاء واجهة المستخدم', he: 'הסתר את ממשק המשתמש', sw: 'Ficha UI' },
@@ -2988,8 +2996,8 @@
                 id: 'Trivia Linguistik', hi: 'भाषाविज्ञान रोचक',
                 de: 'Sprach-Trivia', fr: 'Anecdotes linguistiques',
                 it: 'Curiosità linguistiche',
-                es: 'Curiosidades lingüísticas', es_eu: 'Curiosidades lingüísticas', es_mx: 'Curiosidades lingüísticas',
-                pt: 'Curiosidades linguísticas', pt_eu: 'Curiosidades linguísticas', pt_br: 'Curiosidades linguísticas',
+                es: 'Curiosidades lingüísticas', es: 'Curiosidades lingüísticas',
+                pt: 'Curiosidades linguísticas', pt: 'Curiosidades linguísticas',
                 ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
                 ar: 'طرائف لغوية', he: 'טריוויה לשונית',
                 sw: 'Mambo ya Kiisimu',
@@ -3004,8 +3012,8 @@
                 id: 'Trivia', hi: 'रोचक',
                 de: 'Trivia', fr: 'Anecdotes',
                 it: 'Curiosità',
-                es: 'Curiosidades', es_eu: 'Curiosidades', es_mx: 'Curiosidades',
-                pt: 'Curiosidades', pt_eu: 'Curiosidades', pt_br: 'Curiosidades',
+                es: 'Curiosidades', es: 'Curiosidades',
+                pt: 'Curiosidades', pt: 'Curiosidades',
                 ru: 'Факты', uk: 'Факти',
                 ar: 'طرائف', he: 'טריוויה',
                 sw: 'Mambo',
@@ -3017,8 +3025,8 @@
                 id: 'Trivia Linguistik', hi: 'भाषाविज्ञान रोचक',
                 de: 'Sprach-Trivia', fr: 'Anecdotes linguistiques',
                 it: 'Curiosità linguistiche',
-                es: 'Curiosidades lingüísticas', es_eu: 'Curiosidades lingüísticas', es_mx: 'Curiosidades lingüísticas',
-                pt: 'Curiosidades linguísticas', pt_eu: 'Curiosidades linguísticas', pt_br: 'Curiosidades linguísticas',
+                es: 'Curiosidades lingüísticas', es: 'Curiosidades lingüísticas',
+                pt: 'Curiosidades linguísticas', pt: 'Curiosidades linguísticas',
                 ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
                 ar: 'طرائف لغوية', he: 'טריוויה לשונית',
                 sw: 'Mambo ya Kiisimu',
@@ -3027,8 +3035,8 @@
                 en: 'Close', ja: '閉じる', ko: '닫기', zh: '关闭', yue: '關閉',
                 vi: 'Đóng', th: 'ปิด', id: 'Tutup', hi: 'बंद करें',
                 de: 'Schließen', fr: 'Fermer', it: 'Chiudi',
-                es: 'Cerrar', es_eu: 'Cerrar', es_mx: 'Cerrar',
-                pt: 'Fechar', pt_eu: 'Fechar', pt_br: 'Fechar',
+                es: 'Cerrar', es: 'Cerrar',
+                pt: 'Fechar', pt: 'Fechar',
                 ru: 'Закрыть', uk: 'Закрити',
                 ar: 'إغلاق', he: 'סגירה', sw: 'Funga',
             },
@@ -3656,7 +3664,7 @@
         let currentWord = (WORD_LIST[0] && WORD_LIST[0].id)
             || (typeof WORD_ORDER !== 'undefined' && WORD_ORDER[0])
             || 'water';
-        const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
+        const MAJOR = new Set(['ja','ko','zh','en','de','fr','es','pt','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
         // Historical-mode codes → representative modern descendant (or null).
         // Used both as the canonical list of "show in historical mode" languages
@@ -4061,9 +4069,16 @@
         }
 
         // Build the per-(word,zoom,codes) cache key.
-        function _wmOffsetCacheKey(word, zoom, codes) {
+        function _wmOffsetCacheKey(word, zoom, codes, labelW, labelH) {
             // codes is small (<200) and sorted strings; join is cheap.
-            return word + '|' + zoom + '|' + codes.join(',');
+            // labelW/labelH are part of the key because cached offsets
+            // are sized to the label box; reusing them after a toggle
+            // shrinks the box leaves the post-SA MAX_PUSH*2.2 hide
+            // threshold tripping on offsets that were fine for the
+            // larger box (see hanmap fix on develop, same root cause).
+            return word + '|' + zoom + '|'
+                + Math.round(labelW) + 'x' + Math.round(labelH) + '|'
+                + codes.join(',');
         }
 
         // Run SA to refine offsets[]. Inputs:
@@ -4076,7 +4091,7 @@
         function _wmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
             if (codes.length < 2) return 0;
             const sortedCodes = codes.slice().sort();
-            const cacheKey = _wmOffsetCacheKey(word, zoom, sortedCodes);
+            const cacheKey = _wmOffsetCacheKey(word, zoom, sortedCodes, labelW, labelH);
             const cached = _wmLabelOffsetCache.get(cacheKey);
             if (cached) {
                 // LRU bump: re-insert so it's most-recently-used.
@@ -4163,6 +4178,14 @@
             if (showName) baseLineH += (zoom <= 3 ? 9  : zoom <= 5 ? 10 : 11);
             const labelH = (baseLineH * labelScale) + 4;
             const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
+            // See hanmap.html for the rationale: MAX_PUSH below is
+            // computed from the FULL-toggle box height so the cap
+            // doesn't shrink when the user turns rows off, which
+            // would otherwise make fewer-row layouts hide MORE labels
+            // than richer layouts (counter-intuitive bug).
+            const _fullH_z = (zoom <= 3 ? 32 : zoom <= 5 ? 36 : 40);
+            const labelHFull = (_fullH_z * labelScale) + 4;
+            const collisionBudgetH = Math.max(labelHFull, labelW * 0.55);
 
             // When a filter is active, only ACTIVE labels compete for cell
             // slots. Dimmed (filtered-out) labels stay at their natural
@@ -4431,7 +4454,7 @@
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
             // misleading geographic position.
-            const MAX_PUSH = labelH * 1.5;
+            const MAX_PUSH = collisionBudgetH * 1.5;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {
@@ -4757,7 +4780,7 @@
                 fontSizeSlider.value = String(fs);
                 document.documentElement.style.setProperty('--label-scale', fs / 100);
             }
-            const ui = params.get('ui');
+            const ui = _normalizeUiLang(params.get('ui'));
             if (ui && WM_UI[ui]) {
                 uiLang = ui;
                 uiLangSelect.value = ui;
@@ -5113,7 +5136,7 @@
             modern: null,
             attested: {
                 bg:'#e8f0fe', fg:'#1a73e8',
-                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es:'atestiguado', es_eu:'atestiguado', es_mx:'atestiguado', pt:'atestado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
+                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es:'atestiguado', es: 'atestiguado', pt:'atestado', pt: 'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
                 descs: {
                     en:'Direct primary text corpus exists; values cite real sources.',
                     ja:'直接的な原典コーパスあり、値は実在の出典に依拠。',
@@ -5138,7 +5161,7 @@
             },
             fragmentary: {
                 bg:'#fef0e0', fg:'#c0392b',
-                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es:'fragmentario', es_eu:'fragmentario', es_mx:'fragmentario', pt:'fragmentário', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
+                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es:'fragmentario', es: 'fragmentario', pt:'fragmentário', pt: 'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
                 descs: {
                     en:'Limited isolated attestations; many cells use related-language proxies.',
                     ja:'孤立した断片的資料のみ。多くのセルは近縁言語からの代用形を用いる。',
@@ -5163,7 +5186,7 @@
             },
             reconstructed: {
                 bg:'#fff5e0', fg:'#b56500',
-                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es:'reconstruido', es_eu:'reconstruido', es_mx:'reconstruido', pt:'reconstruído', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
+                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es:'reconstruido', es: 'reconstruido', pt:'reconstruído', pt: 'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
                 descs: {
                     en:'Comparative reconstruction; no direct text record.',
                     ja:'比較言語学による再構形、直接的な文献記録なし。',
@@ -5188,7 +5211,7 @@
             },
             undeciphered: {
                 bg:'#fae0e0', fg:'#a02020',
-                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es:'no descifrado', es_eu:'no descifrado', es_mx:'no descifrado', pt:'não decifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
+                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es:'no descifrado', es: 'no descifrado', pt:'não decifrado', pt: 'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
                 descs: {
                     en:'Script not yet readable.',
                     ja:'文字が未解読の言語。',
@@ -5213,7 +5236,7 @@
             },
             'partly-understood': {
                 bg:'#fff0d0', fg:'#a06000',
-                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es:'parcialmente entendido', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt:'parcialmente compreendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
+                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es:'parcialmente entendido', es: 'parcialmente entendido', pt:'parcialmente compreendido', pt: 'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
                 descs: {
                     en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
                     ja:'文字は読めるが語彙・文法は未完成。多くのセルが暫定的。',
@@ -5238,7 +5261,7 @@
             },
             pedagogical: {
                 bg:'#eee0fa', fg:'#6020a0',
-                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es:'pedagógico', es_eu:'pedagógico', es_mx:'pedagógico', pt:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
+                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es:'pedagógico', es: 'pedagógico', pt:'pedagógico', pt: 'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
                 descs: {
                     en:'Teaching approximation; not actual attested historical forms.',
                     ja:'教育用の近似形であり、実際に文献で確認された歴史的形態ではない。',
@@ -5408,8 +5431,8 @@
             yue: '未確認',     vi: 'không có chứng cứ', th: 'ไม่มีหลักฐาน',
             id: 'tak terbukti', hi: 'अप्रमाणित', de: 'unbelegt',
             fr: 'non attesté', it: 'non attestato', es: 'no atestiguado',
-            es_eu: 'no atestiguado', es_mx: 'no atestiguado',
-            pt: 'não atestado', pt_eu: 'não atestado', pt_br: 'não atestado',
+            es: 'no atestiguado',
+            pt: 'não atestado', pt: 'não atestado',
             ru: 'не засвидетельствовано', uk: 'не засвідчено',
             ar: 'غير مُثَبَّت', he: 'לא מתועد', sw: 'haijathibitishwa',
         };
@@ -5423,10 +5446,8 @@
             th: 'แสดงเป็นภาษาอังกฤษชั่วคราว', id: 'Sementara dalam bahasa Inggris',
             hi: 'विवरण फ़िलहाल अंग्रेज़ी में', de: 'Englischer Ersatztext',
             fr: 'Texte de repli en anglais', it: 'Descrizione temporaneamente in inglese',
-            es: 'Texto en inglés (provisional)', es_eu: 'Texto en inglés (provisional)',
-            es_mx: 'Texto en inglés (provisional)',
-            pt: 'Texto provisório em inglês', pt_eu: 'Texto provisório em inglês',
-            pt_br: 'Texto provisório em inglês',
+            es: 'Texto en inglés (provisional)', es: 'Texto en inglés (provisional)',
+            pt: 'Texto provisório em inglês', pt: 'Texto provisório em inglês',
             ru: 'Описание временно на английском', uk: 'Опис тимчасово англійською',
             ar: 'الوصف معروض بالإنجليزية مؤقتًا', he: 'התיאור מוצג כעת באנגלית',
             sw: 'Maelezo bado kwa Kiingereza',
@@ -6364,11 +6385,7 @@
             fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', del:'Retirer' },
             it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', del:'Rimuovi' },
             es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', del:'Quitar' },
             pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', del:'Remover' },
             ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', del:'Убрать' },
             uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', del:'Вилучити' },
             ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', del:'إزالة' },

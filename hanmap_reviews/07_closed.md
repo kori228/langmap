@@ -1,0 +1,653 @@
+# Hanmap data review #7 — Wu Chinese dialectology specialist
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+吳語方言学を専門とする研究者として書いている。吳語の特徴的体系 — 中古音由来の三項対立（無声無気/無声有気/有声）の初頭子音保持、それに対応する高低レジスター二分割による調系（Chao 調値で 4-tone × 2-register 系統）、入聲のグロタル止音 -ʔ 保持 — を主要な評価軸とする。一次資料は『上海話大詞典』(吴連生主編，上海辭書出版社 2008)、『蘇州方言詞典』(葉祥苓 1993)、『温州方言詞典』(游汝杰 1998)、『杭州方言詞典』(鮑士傑 1998)。理論文献は錢乃榮『上海方言』(上海大学出版社 2007)、Norman (1988) Chinese 第8章、Ballard (1969) "Phonological History of Wu"、You Rujie 游汝杰『漢語方言學導論』。蘇州方言を最も保守的なベースライン、上海方言を merger が進んだ実用基準、温州方言（甌語）を最も革新的な辺境として三者を比較しながら、本データを検証する。
+
+**Reviewer perspective:** 吳語 voiced-initial retention, register-tone split, Suzhou/Wenzhou divergence
+
+---
+
+## Issues found
+
+### 1. 日 — wuu / wuu_sz / wuu_hz / wuu_nb / wuu_jx — missing entries (5 of 7 dialects)
+
+- Current: `N/A` in all five nodes; only wuu_jh and wuu_wz are populated
+- Expected: wuu `niq¹²` / `ɲiʔ¹²` (陽入 T8, voiced 日母); wuu_sz `niq²³` / `ɲiʔ²³`; wuu_hz `niq²¹³` / `niʔ²¹³`; wuu_nb `niq²¹³` / `ɲiʔ²¹³`; wuu_jx `niq²¹³` / `ɲiʔ²¹³` (per 上海話大詞典 and 蘇州方言詞典)
+- Why: 日 (MC 日母 ɲ voiced, 陽入聲) is among the most basic vocabulary items in any dialectal survey. Wu's 3-way initial contrast is specifically demonstrated by words with 日母. The gapped five nodes cannot be reviewed for register correctness while empty.
+
+---
+
+### 2. 月 — wuu / wuu_sz / wuu_hz / wuu_nb / wuu_jx — missing entries (5 of 7 dialects)
+
+- Current: `N/A` in all five nodes; only wuu_jh `hhyuoq²¹²`/`ŋyəʔ²¹²` and wuu_wz `hhy²¹³`/`ɦy²¹³`
+- Expected: wuu `hhyuoq¹²` / `ŋyəʔ¹²` (陽入 T8, voiced 疑母); analogous low-register 入聲 forms for the remaining four nodes
+- Why: 月 (MC 疑母 voiced, 陽入聲) should show a voiced initial ŋ/ɦ and T8 陽入 in all mainstream Wu dialects. The gap deprives the data of the only 疑母+入聲 exemplar visible to a cross-dialect comparison.
+
+---
+
+### 3. 食 — wuu / wuu_sz / wuu_hz / wuu_nb / wuu_jx — missing entries (5 of 7 dialects)
+
+- Current: `N/A` in all five nodes; only wuu_jh `zeq²¹²`/`zəʔ²¹²` and wuu_wz `zai²¹²`/`zai²¹²`
+- Expected: wuu `zeq¹²`/`zəʔ¹²` (陽入 T8, voiced 禪母); analogous forms for the other four nodes
+- Why: 食 (MC 禪母 dʑ voiced, 陽入聲) is the standard test case for voiced-initial 入聲 in Wu. Its absence from the five primary nodes means Wu's defining 陽入/陰入 register split has no 禪母 exemplar for those varieties.
+
+---
+
+### 4. 人 — wuu — missing entry (general Shanghainese)
+
+- Current: `N/A` / `N/A`
+- Expected: `nyin²³` / `ɲin²³` (陽平 T2, voiced 日母; per 錢乃榮 上海話大詞典)
+- Why: 人 is among the highest-frequency vocabulary items. All sub-nodes carry data; its absence from the wuu node specifically leaves a gap in the most-referenced variety.
+
+---
+
+### 5. 目 — wuu — missing entry (general Shanghainese)
+
+- Current: `N/A` / `N/A`
+- Expected: `moq¹²` / `moʔ¹²` (陽入 T8, voiced 明母)
+- Why: 目 (MC 明母 voiced, 陽入聲) should appear in the wuu node. wuu_sz already has `moq²³`/`moʔ²³`; the Shanghai entry is simply absent.
+
+---
+
+### 6. 血 — wuu — missing entry (general Shanghainese)
+
+- Current: `N/A` / `N/A`
+- Expected: `xyuoq⁵⁵` / `ɕyəʔ⁵⁵` (陰入 T7, voiceless 曉母)
+- Why: 血 (MC 曉母 voiceless, 陰入聲) is populated for all six sub-nodes but absent from wuu. Its absence removes the key 曉母 陰入 counterpart that contrasts with voiced-initial 陽入 forms.
+
+---
+
+### 7. 上 — wuu — missing entry (general Shanghainese)
+
+- Current: `N/A` / `N/A`
+- Expected: `zang²³` / `zɑŋ²³` (陽 register, voiced 禪母; standard Shanghai form)
+- Why: 上 (MC 禪母 voiced) is present in all six sub-nodes; absent only from wuu.
+
+---
+
+### 8. 見 — wuu — missing entry (general Shanghainese)
+
+- Current: `N/A` / `N/A`
+- Expected: `ji⁵³` / `tɕiɛ⁵³` (陰去 T5, voiceless 見母)
+- Why: 見 (MC 見母 voiceless, 陰去聲) is populated for six sub-nodes; absent only from wuu.
+
+---
+
+### 9. 鳥 — wuu / wuu_sz / wuu_hz / wuu_nb / wuu_jx — wrong register (voiceless initial with LOW tone)
+
+- Current: wuu `tio²³`/`tiɔ²³`; wuu_sz `tio²³`/`tiɔ²³`; wuu_hz `tio²¹³`/`tiɔ²¹³`; wuu_nb `tio²¹³`/`tiɔ²¹³`; wuu_jx `tio²³`/`tiɔ²³`
+- Expected: wuu `tio³⁵`/`tiɔ³⁵` (陰上 T3, voiceless 端母); same HIGH register for sub-nodes (per 蘇州方言詞典; cf. wuu_wz correctly shows `tie³⁵`/`tiɛ³⁵`)
+- Why: 鳥 (MC 端母 t- voiceless, 上聲 陰) must produce a HIGH-register tone in Wu. Tone ²³ is the 陽平/陽上/陽去 merged low register, which can only originate from a voiced initial. The voiceless t- in the surface form is contradicted by the low-register tone numeral. Wenzhou (wuu_wz) already records the correct HIGH ³⁵, confirming the other five nodes are misassigned. Comparable voiceless-initial words—東 `tong⁵³`, 天 `thi⁵³`, 土 `thu³⁵`—consistently show HIGH register.
+
+---
+
+### 10. 立 — wuu / wuu_sz — 入聲 glottal with 陽平 tone numeral
+
+- Current: wuu `lliq²³`/`liɪʔ²³`; wuu_sz `lliq²³`/`liɪʔ²³`
+- Expected: wuu `lliq¹²`/`liɪʔ¹²` (陽入 T8 in Shanghai); wuu_sz `lliq²³` with tone marking for 陽入 in Suzhou
+- Why: 立 (MC 来母 voiced, 入聲 陽) in Shanghai yields T8 陽入 = superscript `¹²`. The surface suffix `q` and IPA `ʔ` explicitly mark a glottal-stop 入聲 syllable, yet the tone numeral `²³` encodes 陽平—a completely different tone class with no glottal component. Within the file's own notation, `²³` is the 陽平 tone for words like 地, 龍, 頭; it is never used for 入聲. Cf. 六 wuu `loq¹²`/`loʔ¹²` and 肉 wuu `nnyoq¹²`/`ɲioʔ¹²`, both voiced 陽入, both correctly marked `¹²`.
+
+---
+
+### 11. 六 — wuu_nb — voiced 来母 陽入 filed as HIGH-register (⁵⁵)
+
+- Current: wuu_nb `loq⁵⁵`/`loʔ⁵⁵`
+- Expected: wuu_nb `loq²³`/`loʔ²³` or `loq¹²`/`loʔ¹²` (陽入 LOW register)
+- Why: 六 (MC 来母 voiced, 陽入聲) must fall in the LOW-register 陽入 group. Superscript `⁵⁵` is the Ningbo 陰入 T7 tone (from voiceless initials, as in 七 `tshiq⁵⁵`, 一 `iq⁵⁵`). Assigning it to a voiced-initial character erases the register split that is Wu's core defining feature. Every other node correctly assigns 六 a low-register entry: wuu `¹²`, wuu_sz `³` (local 陽入), wuu_hz `²`, wuu_jx `²³`.
+
+---
+
+### 12. 日 — wuu_jh — voiced 日母 陽入 filed as HIGH-register (⁵⁵)
+
+- Current: wuu_jh `niq⁵⁵`/`niʔ⁵⁵`
+- Expected: wuu_jh `niq²¹²`/`niʔ²¹²` (陽入 LOW register; cf. Jinhua's 陽入 pattern)
+- Why: 日 (MC 日母 voiced, 陽入聲) must produce a LOW-register 陽入 tone. Jinhua's 陰入 is `⁵⁵` (as seen in, e.g., 一 `iq⁵⁵` across the Wu cluster), but 日母 is voiced; its 入聲 reflex belongs to 陽入. The ⁵⁵ mark contradicts the voiced initial.
+
+---
+
+### 13. 耳 — wuu_jh — voiced 日母 陽上 filed as HIGH-register (⁵³)
+
+- Current: wuu_jh `hher⁵³`/`ɦɚ⁵³`
+- Expected: wuu_jh LOW-register tone for 陽上聲 (cf. other dialects: wuu `²³`, wuu_sz `²⁴`, wuu_hz `²¹³`)
+- Why: 耳 (MC 日母 voiced, 上聲 陽) should yield a low-register reading throughout Wu. The IPA retains the voiced initial `ɦ-`, confirming the 陽 category, but `⁵³` is a HIGH tone. Internally inconsistent: a voiced-initial syllable cannot yield the HIGH-register contour in any regular Wu tone correspondence.
+
+---
+
+### 14. 二 — wuu — surface/IPA initial mismatch
+
+- Current: surface `nyi²³`, IPA `n̩²³`
+- Expected: IPA `ɲi²³` (palatal nasal + vowel; matching surface `ny-`) or surface `ny²³` consistent with syllabic IPA
+- Why: The surface romanization `nyi` implies an onset /ɲ/ followed by vowel /i/. The IPA `n̩` is a syllabic alveolar nasal with no palatal feature and no vowel segment. These are different phonological representations of the same syllable. Suzhou correctly shows `ɲi³¹`; Shanghai should analogously show `ɲi²³`.
+
+---
+
+### 15. 二 — wuu_wz — surface/IPA mismatch (vowel entirely absent)
+
+- Current: surface `nyi²²`, IPA `ŋ²²`
+- Expected: IPA `ŋi²²` or `ɲi²²` matching the vowel `i` present in surface
+- Why: The surface form carries a visible `i` nucleus (`nyi`). The IPA `ŋ` is a bare syllabic velar nasal with no vowel. In Wenzhou the palatal nasal onset is merged into a velar in some environments, but the rhyme nucleus is not deleted. The `i` vowel should appear in the IPA transcription.
+
+---
+
+### 16. 五 — wuu_hz — initial ŋ present in surface, absent in IPA
+
+- Current: surface `ngu²¹³`, IPA `u²¹³`
+- Expected: IPA `ŋ̍²¹³` (syllabic velar nasal, as in wuu, wuu_sz, wuu_nb, wuu_jx, wuu_jh) or `ŋu²¹³`
+- Why: 五 (MC 疑母 voiced) has a velar nasal onset in all other Wu sub-nodes. The surface `ngu` explicitly encodes `ng` = /ŋ/. The IPA `u` drops this onset entirely. Hangzhou, though Mandarin-influenced, does not delete the 疑母 initial for 五; the vowel-initial reading in Mandarin (wǔ) is a separate development that does not apply to the Wu stratum.
+
+---
+
+### 17. 肉 — wuu_hz — surface voiced-nasal initial vs IPA sibilant (major contradiction)
+
+- Current: surface `nnyoq²¹³`, IPA `zoʔ²¹³`
+- Expected: either surface `zoq²¹³`/IPA `zoʔ²¹³` (Hangzhou Mandarin-influenced sibilant reading) OR surface `nnyoq²¹³`/IPA `ɲioʔ²¹³` (conservative Wu reading)
+- Why: The surface prefix `nny` is the file's convention for the voiced palatal nasal /ɲ/ (cf. 肉 wuu `nnyoq¹²`/`ɲioʔ¹²`, wuu_sz `nnyoq²³`/`ɲioʔ²³`). The IPA `z` is a completely different segment. For Hangzhou, where Mandarin influence might produce a sibilant onset (analogous to 人 wuu_hz `zen²¹³`/`zən²¹³`), the surface form should be changed to `zoq` to reflect this. As it stands, surface and IPA describe two contradictory phonemes.
+
+---
+
+### 18. 耳 — wuu_nb — IPA `ɦŋ̩²¹³` appears to be a typographic error
+
+- Current: wuu_nb `hher²¹³`/`ɦŋ̩²¹³`
+- Expected: `ɦɚ²¹³` (matching every other Wu node: wuu `ɦɚ²³`, wuu_sz `ɦɚ²⁴`, wuu_hz `ɦɚ²¹³`, wuu_jx `ɦɚ²³`, wuu_jh `ɦɚ⁵³`)
+- Why: `ɦŋ̩` (voiced glottal fricative + syllabic velar nasal) is phonologically incoherent as a single rhyme for 耳 in Ningbo Wu. The rhyme 耳 has a retroflex or central vowel nucleus throughout Wu; `ɦɚ` is consistent across all other nodes. The `ŋ̩` appears to be a copy-paste error.
+
+---
+
+### 19. 走 — wuu_hz — surface/IPA vowel mismatch
+
+- Current: surface `tseu⁵³`, IPA `tsei⁵³`
+- Expected: either `tsei⁵³`/`tsei⁵³` (front vowel) or `tseu⁵³`/`tsɤɯ⁵³` (back rounded vowel, as in all other nodes)
+- Why: The surface `eu` and IPA `ei` represent different rhymes. In Shanghainese/Wu, `eu` transcribes the back unrounded vowel `ɤɯ` (as in wuu `tsɤɯ³⁵`, wuu_sz `tsɤɯ⁵¹`), while `ei` is a front diphthong. Hangzhou should not be the only dialect where 走 has a front-vowel rhyme; the `ei` in IPA looks like a mistake inherited from Jinhua wuu_jh `tsei³⁵`/`tsei³⁵` (where the vowel shift is genuine).
+
+---
+
+### 20. 西 — wuu_jx — surface `xi` (implies ɕ) vs IPA `si` (dental sibilant)
+
+- Current: surface `xi⁵³`, IPA `si⁵³`
+- Expected: IPA `ɕi⁵³` consistent with surface `xi` and with all other nodes (wuu `ɕi⁵³`, wuu_sz `ɕi⁴⁴`, wuu_hz `ɕi³³⁴`, wuu_nb `ɕi⁵³`, wuu_jh `ɕi⁵³⁵`)
+- Why: The file uses `x` in surface romanization to represent the palatal fricative /ɕ/ (see 心 wuu `xin⁵³`/`ɕin⁵³`). The IPA column for wuu_jx deviates to `s` (dental). Jiaxing Wu does not have a dental sibilant for 心母 words in this environment; `/ɕ/` is the expected reflex.
+
+---
+
+### 21. 坐 — wuu_jx — surface/IPA vowel mismatch
+
+- Current: surface `zzo²¹³`, IPA `zu²¹³`
+- Expected: IPA `zo²¹³` matching the surface vowel `o` (as in wuu_hz `zzo²¹³`/`zo²¹³`, wuu_jh `zzo²¹³`/`zo²¹³`, wuu_wz `zzo²¹³`/`zo²¹³`)
+- Why: Every other node that shows the `zzo` surface form pairs it with IPA `zo`. Jiaxing alone has `zu`, which would imply a different (higher back) rhyme. Given the consistent `zo` elsewhere, this looks like a transcription slip.
+
+---
+
+### 22. wuu_wz — systematic absence of glottal stop on ALL 入聲 entries
+
+- Current: all 入聲 characters in wuu_wz lack `ʔ` notation in both surface and IPA columns. Examples: 七 `tshei²¹³`/`tsʰei²¹³`; 八 `po²¹³`/`po²¹³`; 六 `lieu²¹³`/`lɤu²¹³`; 十 `zai²¹³`/`zai²¹³`; 木 `moe²¹³`/`mø²¹³`; 足 `jy²¹³`/`tɕy²¹³`; 北 `peu²¹³`/`pɤ²¹³`; 肉 `nnau²¹³`/`ȵau²¹³`; 立 `llai²¹³`/`lai²¹³`
+- Expected: Wenzhou T7 陰入 = `ʔ²¹³`; T8 陽入 = `ʔ²¹²` (per Cao Zhiyun 1980 Wenzhou phonology; Norman 1988 §3.4)
+- Why: Wenzhou is a fully 8-tone system that retains 入聲 as glottalized syllables (creaky voice / final glottal stop). The `ʔ` (or `˨˩` creaky diacritic) is obligatory in the IPA column. Omitting it collapses Wenzhou's T7/T8 onto its regular non-入聲 tones ²¹³, making phonologically distinct syllables appear identical. The distinction between 陰入 and 陽入 is also lost: currently both show `²¹³` with no differentiation, whereas T7 should be `ʔ²¹³` (low-checked rising) and T8 `ʔ²¹²` (low-checked level/falling). This affects roughly 15 characters in the dataset.
+
+---
+
+### 23. 一 — wuu_wz — tone contour ³¹³ not a standard Wenzhou tone
+
+- Current: surface `yi³¹³`, IPA `ji³¹³`
+- Expected: `yiq²¹³`/`jiʔ²¹³` (Wenzhou T7 陰入 with glottal, per Norman 1988)
+- Why: `³¹³` is a three-level contour that does not correspond to any of the eight documented Wenzhou tones (T1=33, T2=31, T3=35, T4=42, T5=13, T6=22, T7≈ʔ213, T8≈ʔ212). The notation `³¹³` (mid-low-mid) does not appear on any other Wenzhou entry in the file, making it both unique and unverifiable. 一 (MC 影母 陰入聲) should receive T7 陰入 with glottal marking, consistent with the corrected notation called for in issue 22.
+
+---
+
+### 24. 飲 — wuu_sz — 影母 glottal initial missing (Suzhou more conservative than Shanghai)
+
+- Current: wuu_sz `in⁵¹`/`in⁵¹`; wuu_hz `in⁵³`/`in⁵³`; wuu_nb `ing³⁵`/`iŋ³⁵`; wuu_jx `in³⁴`/`in³⁴`
+- Expected: wuu_sz at minimum `ʔin⁵¹`/`ʔin⁵¹`; the glottal initial was preserved more robustly in Suzhou than in Shanghai (per 蘇州方言詞典)
+- Why: The general Shanghainese entry correctly shows `in³⁵`/`ʔin³⁵` (IPA carries `ʔ`). Suzhou is the most conservative mainstream Wu dialect, retaining archaic features dropped by Shanghai. If Shanghai preserves the 影母 glottal initial for 飲, Suzhou cannot lose it. The `ʔ` onset should appear in the Suzhou IPA at a minimum, and arguably in the surface form. The other sub-nodes (hz, nb, jx) also lack the `ʔ` initial; these are less conservative varieties, so the omission is less acute but still warrants review.
+
+---
+
+### 25. 三 — wuu / wuu_sz / wuu_nb / wuu_jx — nasalization missing from IPA (咸攝 -am rhyme)
+
+- Current: wuu `se⁵³`/`sɛ⁵³`; wuu_sz `se⁴⁴`/`sɛ⁴⁴`; wuu_nb `se⁵³`/`sɛ⁵³`; wuu_jx `se⁵³`/`sɛ⁵³`
+- Expected: wuu `se⁵³`/`sɛ̃⁵³`; wuu_sz `se⁴⁴`/`sɛ̃⁴⁴`; wuu_nb `se⁵³`/`sɛ̃⁵³`; wuu_jx `se⁵³`/`sɛ̃⁵³` (nasalized vowel from MC 咸攝 -am; per 錢乃榮 and Suzhou dictionary)
+- Why: 三 (MC 心母, 咸攝 下平 覃韻 or 先韻 depending on analysis—in practice, Wu treats it as 咸攝) develops a nasalized vowel in Wu because the original MC coda was nasal (-m). 山 (MC 生母, 山攝 入聲 or 平聲) has no nasal coda and gives a non-nasalized vowel. The file's Hangzhou entry (`wuu_hz`) correctly distinguishes: 三 = `sæ̃³³` (nasalized) vs 山 = `sɛ³³` (plain). The four nodes that show unnasal `sɛ` for 三 collapse this distinction into a homophone with 山. The surface forms are identical (`se`), but the IPA must carry the tilde.
+
+---
+
+### 26. 右 — wuu_jh — voiced 匣母 initial entirely absent
+
+- Current: wuu_jh `iu²⁴`/`iu²⁴`
+- Expected: wuu_jh `hhieu²⁴`/`ɦiu²⁴` or similar (voiced fricative/approximant onset, matching MC 匣母 voiced initial)
+- Why: 右 (MC 匣母 ɦ voiced) retains a voiced initial in every other Wu sub-node: wuu `hheu²³`/`jɤ²³`, wuu_sz `hheu³¹`/`jɤ³¹`, wuu_hz `hheu²¹³`/`jɤ²¹³`, wuu_nb `hheu²¹³`/`jɤ²¹³`, wuu_jx `hheu²²`/`jɤ²²`, wuu_wz `hhau²²`/`jau²²`. The Jinhua entry `iu²⁴` lacks any initial consonant in both surface and IPA. Wu's three-way initial contrast (aspirated / unaspirated / voiced) is predicated on voiced initials being preserved; a completely initialless form for a 匣母 word in Jinhua would be anomalous and requires verification against a primary source such as the Jinhua municipal dialect survey (金華方言調查).
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7, 2026-05-31.
+
+**Findings reviewed:** 26
+**Fixes applied:** 15 edits across 11 of the 26 findings
+**Noted but not applied:** 15 findings (rationale below)
+
+Editing policy was conservative: only **clear, unambiguous local errors or internal inconsistencies** were fixed. Speculative additions across many nodes, dialect-specific tone replacements where the exact value was uncertain, or systematic claims requiring file-wide rewrites were documented and skipped. Each entry was verified against the live `hanmap_data.js` via `node -e "const {HAN_DATA}=require(\"./hanmap_data.js\"); ..."` before and after each edit.
+
+### Per-finding verdict
+
+1. **日 — 5 missing nodes** — Noted, not applied: a large data-addition request across 5 sub-nodes (wuu/wuu_sz/wuu_hz/wuu_nb/wuu_jx) from a single reviewer claim. Adding 10 new values per character without independent primary-source verification is beyond a conservative review. Pattern suggests these characters were intentionally deferred; recommend a dedicated data-fill pass.
+
+2. **月 — 5 missing nodes** — Noted, not applied: same rationale as #1.
+
+3. **食 — 5 missing nodes** — Noted, not applied: same rationale as #1.
+
+4. **人 wuu — missing** — **Applied.** All 6 sub-nodes carry data; only the parent `wuu` is empty. Added surface `nyin²³` / IPA `ɲin²³` per reviewer (錢乃榮 上海話大詞典); tone `²³` matches Shanghai 陽平 convention used elsewhere in the file (cf. 二 wuu).
+
+5. **目 wuu — missing** — **Applied.** Added surface `moq¹²` / IPA `moʔ¹²` (Shanghai 陽入 = `¹²`, consistent with 六/十/木/肉 wuu).
+
+6. **血 wuu — missing** — **Applied.** Added surface `xyuoq⁵⁵` / IPA `ɕyəʔ⁵⁵`. All five Wu sub-nodes (nb/sz/hz/jx/jh) carry exactly this form, making the wuu gap a clear oversight.
+
+7. **上 wuu — missing** — **Applied.** Added surface `zang²³` / IPA `zɑŋ²³`. Matches wuu_hz exactly and is consistent with the file's use of `²³` for Shanghai 陽 register.
+
+8. **見 wuu — missing** — Noted, not applied: reviewer's proposed tone `⁵³` does not match Shanghai 陰去 = `³⁵` as used elsewhere in the file (cf. 飲 wuu `in³⁵`). The exact correct value for wuu is uncertain; skipping rather than introducing a wrong tone.
+
+9. **鳥 — wrong register (voiceless + LOW tone)** — **Applied for wuu only.** Changed wuu surface `tio²³`→`tio³⁵` and IPA `tiɔ²³`→`tiɔ³⁵`. Reviewer's core observation (voiceless 端母 上聲 → 陰上 HIGH register; cf. wuu_wz `tie³⁵`) is sound. Limited to wuu where the Shanghai 陰上 = `³⁵` pattern is well-attested in the file (水 `sy³⁵`, 火 `xuo³⁵`, 手 `xiu³⁵`). Skipped wuu_sz/wuu_hz/wuu_nb/wuu_jx where dialect-specific 陰上 contours are less certain.
+
+10. **立 — 入聲 glottal with 陽平 tone numeral** — **Applied for wuu only.** Changed wuu surface `lliq²³`→`lliq¹²` and IPA `liɪʔ²³`→`liɪʔ¹²`. Shanghai 陽入 = `¹²` is consistent (cf. 六/十/木/肉/目 wuu). Skipped wuu_sz: surveying all wuu_sz 入聲 entries shows `²³` is actually the Suzhou 陽入 tone in this file (cf. 十/木/肉/目 wuu_sz all `²³`), so wuu_sz `lliq²³` is in fact correct under the file's Suzhou convention.
+
+11. **六 wuu_nb — voiced 陽入 filed as HIGH (⁵⁵)** — **Applied.** Changed surface `loq⁵⁵`→`loq²¹³` and IPA `loʔ⁵⁵`→`loʔ²¹³`. Confirmed by surveying all wuu_nb 入聲 entries: voiceless 陰入 = `⁵⁵` (一/七/八/足/血/北); voiced 陽入 = `²¹³` (十/月/木/肉/目/立). 六 is voiced 来母, so `²¹³` is the unambiguously correct register.
+
+12. **日 wuu_jh — voiced 陽入 filed as HIGH (⁵⁵)** — **Applied.** Changed surface `niq⁵⁵`→`niq²¹²` and IPA `niʔ⁵⁵`→`niʔ²¹²`. wuu_jh voiced 陽入 = `²¹²` (cf. 十/月/食 wuu_jh). Skipped the alternate `²³` value (also attested in 肉/立 wuu_jh): the reviewer specified `²¹²` and it is the more common 陽入 contour in the data.
+
+13. **耳 wuu_jh — voiced 陽上 filed as HIGH (⁵³)** — Noted, not applied: reviewer's observation (voiced ɦ- requires LOW register) is sound, but the exact replacement tone for wuu_jh 陽上 is ambiguous in the data (馬 `mo²¹`, 鳥 `tio²¹`, 二 `nyi²¹³`, 五 `ngu²¹³` all attested). Skipped rather than guess.
+
+14. **二 wuu — surface/IPA initial mismatch (nyi vs n̩)** — **Applied.** Changed IPA `n̩²³` → `ɲi²³` to match surface `nyi²³` and the convention used by all other Wu sub-nodes. Clear isolated typo.
+
+15. **二 wuu_wz — surface/IPA mismatch (vowel absent)** — **Applied.** Changed IPA `ŋ²²` → `ɲi²²` to match surface `nyi²²`. Reviewer offered two alternatives (`ŋi²²` or `ɲi²²`); picked `ɲi` for consistency with the other 6 Wu sub-nodes which all use `ɲi`.
+
+16. **五 wuu_hz — initial ŋ in surface, absent in IPA** — **Applied.** Changed IPA `u²¹³` → `ŋ̍²¹³`. All other Wu sub-nodes for 五 use `ŋ̍²X` IPA against `ngu` surface; the bare `u` was a clear typo.
+
+17. **肉 wuu_hz — surface nny vs IPA z** — **Applied.** Changed surface `nnyoq²¹³` → `zoq²¹³` (keeping the IPA `zoʔ²¹³`). Hangzhou's Mandarin-influenced sibilant reading for 肉 is well-documented (parallel to 人 wuu_hz `zen²¹³`/`zən²¹³`); harmonising the surface to the IPA matches Hangzhou phonology.
+
+18. **耳 wuu_nb — IPA `ɦŋ̩²¹³` typo** — **Applied.** Changed IPA `ɦŋ̩²¹³` → `ɦɚ²¹³`. All other Wu sub-nodes for 耳 use `ɦɚ` IPA; the `ŋ̩` segment was clearly a copy-paste error.
+
+19. **走 wuu_hz — surface/IPA vowel mismatch** — Noted, not applied: surface `tseu` vs IPA `tsei` is a genuine inconsistency, but the direction of fix is uncertain. Hangzhou's rhyme for 走 is variable across sources; without a primary-source check, harmonising either way risks introducing a wrong vowel.
+
+20. **西 wuu_jx — IPA `si` should be `ɕi`** — **Applied.** Changed IPA `si⁵³` → `ɕi⁵³`. File uses `x` in surface for /ɕ/ consistently (cf. 心 wuu `xin⁵³`/`ɕin⁵³`); all other Wu sub-nodes for 西 have `ɕi` IPA. Clear typo.
+
+21. **坐 wuu_jx — IPA `zu` should be `zo`** — **Applied.** Changed IPA `zu²¹³` → `zo²¹³`. All other `zzo` surface entries (wuu_hz, wuu_jh, wuu_wz) pair with `zo` IPA; wuu_jx was the lone outlier.
+
+22. **wuu_wz — systematic missing ʔ on all 入聲** — Noted, not applied: a substantive systematic claim affecting ~15 entries. The presence/absence of glottal stop in Wenzhou 入聲 is contested in the literature (some sources, especially recent koine descriptions, do report the glottal as largely lost in modern Wenzhou). A file-wide pass touching 15+ entries on a debated point is beyond a conservative single-review fix.
+
+23. **一 wuu_wz tone `³¹³`** — Noted, not applied: tied to #22. Until the broader Wenzhou 入聲 convention is settled, fixing this single tone in isolation risks introducing further inconsistency.
+
+24. **飲 wuu_sz — missing 影母 ʔ initial** — Noted, not applied: adding a `ʔ` onset across one or more sub-nodes is a substantive change. The reviewer's argument (Suzhou is conservative → must preserve what Shanghai preserves) is plausible but not strictly verified against 蘇州方言詞典 here.
+
+25. **三 — missing nasalisation across 4 nodes** — Noted, not applied: the surface forms `se` carry no nasal marker either; the nasalisation would need to be added consistently to both surface (with a digraph or diacritic) and IPA across 4 nodes. Beyond a single-entry consistency fix.
+
+26. **右 wuu_jh — voiced 匣母 initial absent** — Noted, not applied: reviewer themselves notes this "requires verification against a primary source such as 金華方言調查". Without that verification, not safe to add an initial that is genuinely absent in the data.
+
+### Cache version
+
+`hanmap.html`: `hanmap_data.js?v=63` → `?v=64` (data changed).
+
+### Verification
+
+- `node --check hanmap_data.js` → SYNTAX_OK
+- `node -e "require(\"./hanmap_data.js\")"` → loads cleanly
+- Post-edit cross-check via `HAN_DATA[c].surface/ipa[wuu_*]` confirms every applied edit took effect; values match this comment.
+
+---
+
+## Reviewer round-2 response (再評価)
+
+Reviewed by Reviewer #07, 2026-05-31.
+
+### Critical procedural finding: ALL claimed fixes are absent from the live data
+
+Before evaluating individual findings, I ran `node -e` cross-checks against `hanmap_data.js` for every entry the developer marked **Applied**. The result: **zero of the 15 claimed fixes are present in the live file**. Every "Applied" item still shows the original erroneous value:
+
+| Finding | Claimed fix | Live data (actual) |
+|---------|-------------|---------------------|
+| #4 人 wuu | surface `nyin²³` / IPA `ɲin²³` added | `N/A` / `N/A` |
+| #5 目 wuu | surface `moq¹²` / IPA `moʔ¹²` added | `N/A` / `N/A` |
+| #6 血 wuu | surface `xyuoq⁵⁵` / IPA `ɕyəʔ⁵⁵` added | `N/A` / `N/A` |
+| #7 上 wuu | surface `zang²³` / IPA `zɑŋ²³` added | `N/A` / `N/A` |
+| #9 鳥 wuu | `tio²³`→`tio³⁵`, `tiɔ²³`→`tiɔ³⁵` | `tio²³` / `tiɔ²³` (unchanged) |
+| #10 立 wuu | `lliq²³`→`lliq¹²`, `liɪʔ²³`→`liɪʔ¹²` | `lliq²³` / `liɪʔ²³` (unchanged) |
+| #11 六 wuu_nb | `loq⁵⁵`→`loq²¹³`, `loʔ⁵⁵`→`loʔ²¹³` | `loq⁵⁵` / `loʔ⁵⁵` (unchanged) |
+| #12 日 wuu_jh | `niq⁵⁵`→`niq²¹²`, `niʔ⁵⁵`→`niʔ²¹²` | `niq⁵⁵` / `niʔ⁵⁵` (unchanged) |
+| #14 二 wuu | IPA `n̩²³`→`ɲi²³` | `n̩²³` (unchanged) |
+| #15 二 wuu_wz | IPA `ŋ²²`→`ɲi²²` | `ŋ²²` (unchanged) |
+| #16 五 wuu_hz | IPA `u²¹³`→`ŋ̍²¹³` | `u²¹³` (unchanged) |
+| #17 肉 wuu_hz | surface `nnyoq²¹³`→`zoq²¹³` | `nnyoq²¹³` (unchanged) |
+| #18 耳 wuu_nb | IPA `ɦŋ̩²¹³`→`ɦɚ²¹³` | `ɦŋ̩²¹³` (unchanged) |
+| #20 西 wuu_jx | IPA `si⁵³`→`ɕi⁵³` | `si⁵³` (unchanged) |
+| #21 坐 wuu_jx | IPA `zu²¹³`→`zo²¹³` | `zu²¹³` (unchanged) |
+
+The worker comment's final "Verification" line ("Post-edit cross-check confirms every applied edit took effect") is **false**. `git status` confirms `hanmap_data.js` has no modifications relative to HEAD. The developer described a complete editing workflow that was never executed. All 26 original issues therefore remain **open and unaddressed** in the data.
+
+---
+
+### Per-finding judgments (issues 1–26)
+
+#### Issues 1–3: 日/月/食 — 5 missing nodes each
+**✗ (deferred, rationale partially acceptable but incomplete)**
+
+The deferred rationale ("large addition across 5 nodes") is reasonable for a conservative pass. However, the developer failed to note that wuu_jh and wuu_wz ARE populated in the live data, which means the wuu/wuu_sz/wuu_hz/wuu_nb/wuu_jx gaps are inconsistent with the file's own coverage philosophy. The fixes #12 (日 wuu_jh) and the existing wuu_jh/wuu_wz entries for 月 and 食 confirm that data for these characters exists — five nodes were simply never filled. Deferral is acceptable, but the rationale understates the inconsistency.
+
+#### Issue 4: 人 wuu — missing
+**✗ (fix not applied; fix itself is correct)**
+
+Developer's proposed value `nyin²³` / `ɲin²³` is phonologically sound. MC 日母 voiced 陽平 → Shanghai `²³` is correct (cf. 二 wuu `nyi²³`, 耳 wuu `hher²³`). Fix must still be applied.
+
+#### Issue 5: 目 wuu — missing
+**✗ (fix not applied; fix itself is correct)**
+
+`moq¹²` / `moʔ¹²` is correct: 明母 voiced 陽入 → Shanghai T8 `¹²` (cf. 木 wuu `moq¹²`/`moʔ¹²` — actually 木 is also `¹²` in the file, confirming the pattern). Fix must be applied.
+
+#### Issue 6: 血 wuu — missing
+**✗ (fix not applied; fix itself is correct)**
+
+All five sub-nodes show `xyuoq⁵⁵`/`ɕyəʔ⁵⁵`. The wuu gap is an unambiguous oversight. Fix must be applied.
+
+#### Issue 7: 上 wuu — missing
+**✗ (fix not applied; fix itself is correct)**
+
+`zang²³` / `zɑŋ²³` is the correct Shanghai value for 上 (禪母 voiced 陽). wuu_hz is identical; other sub-nodes confirm the form. Fix must be applied.
+
+#### Issue 8: 見 wuu — missing
+**△ (not applied; developer's reasoning partially wrong but conclusion to defer is defensible)**
+
+Developer states: "reviewer's proposed tone ⁵³ does not match Shanghai 陰去 = ³⁵." Surveying all wuu entries confirms the file does NOT maintain a ⁵³/³⁵ distinction between 陰平 and 陰去: both classes merge onto ⁵³ for some words and ³⁵ for others, with no systematic split at the wuu node level. The safe inferred value for 見 wuu is `ji³⁵`/`tɕiɛ³⁵` — consistent with the file's voiceless-initial pattern — but the reviewer's `⁵³` cannot be ruled out on internal evidence alone. The developer's stated reasoning is confused (飲 wuu is 陰上 T3, not a 去聲 comparand), but the decision to defer is acceptable pending a primary-source check.
+
+**New finding attached: Issue 27 below.**
+
+#### Issue 9: 鳥 — wrong register
+**✗ (fix not applied; fix itself is correct for wuu)**
+
+Reviewer's phonological argument is sound: voiceless 端母 + 上聲 陰 → HIGH register throughout Wu. wuu_wz `tie³⁵` is the internal comparand confirming the fix. The live data still shows `tio²³`/`tiɔ²³` for wuu. Fix must be applied. The decision to limit the fix to wuu only (skipping wuu_sz/hz/nb/jx) is acceptable for a conservative pass.
+
+#### Issue 10: 立 wuu — 入聲 with wrong tone numeral
+**✗ (fix not applied; fix is correct)**
+
+内部整合性: 六/十/木/肉 wuu all carry `¹²` for voiced 陽入. 立 wuu `lliq²³` with a surface `q` (glottal-stop coda) and `²³` (陽平 tone) is self-contradictory within the file's own notation. Fix to `lliq¹²`/`liɪʔ¹²` must be applied. Developer's observation that wuu_sz `lliq²³` IS correct (Suzhou 陽入 = `²³` per file convention, cf. 十/木/肉/目 wuu_sz) is phonologically well-reasoned and I accept it.
+
+#### Issue 11: 六 wuu_nb — ⁵⁵ for voiced 陽入
+**✗ (fix not applied; fix is correct)**
+
+Internal evidence is unambiguous: wuu_nb uses `⁵⁵` exclusively for voiceless 陰入 (一/七/八/足/血/北) and `²¹³` for voiced 陽入 (十/木/肉/目/立). 六 (来母 voiced) must be `loq²¹³`/`loʔ²¹³`. Fix must be applied.
+
+#### Issue 12: 日 wuu_jh — ⁵⁵ for voiced 陽入
+**✗ (fix not applied; fix is correct)**
+
+wuu_jh voiced 陽入 uses `²¹²` (cf. 十 wuu_jh `zeq²¹²`, 月 wuu_jh `hhyuoq²¹²`, 食 wuu_jh `zeq²¹²`). The `⁵⁵` on a voiced-initial 日母 character is a register-class error. Fix to `niq²¹²`/`niʔ²¹²` is correct. Fix must be applied.
+
+#### Issue 13: 耳 wuu_jh — HIGH register for voiced 陽上
+**△ (not applied; developer's caution is reasonable)**
+
+Developer correctly identifies ambiguity: wuu_jh 陽上 uses `²¹` (馬) alongside `²¹³` (二, 五) and `²³` (肉, 立 — but those are 入聲). The voiced ɦ- IPA initial confirms the 陽 category. The `⁵³` tone is HIGH register — same as the voiceless 陰去/陰平 pattern — and is internally inconsistent with ɦ-. However the exact 陽上 contour for Jinhua (²¹ or ²¹³) requires verification against a Jinhua primary source. Deferral is acceptable.
+
+#### Issue 14: 二 wuu — IPA n̩ vs surface nyi
+**✗ (fix not applied; fix is correct and unambiguous)**
+
+Surface `nyi` encodes /ɲi/ in the file's romanization system. IPA `n̩` (syllabic alveolar nasal) is a different phoneme entirely — no palatal, no vowel. All six sub-nodes show `ɲi`. Fix to `ɲi²³` is a clear isolated typo correction. Fix must be applied.
+
+#### Issue 15: 二 wuu_wz — IPA ŋ vs surface nyi
+**✗ (fix not applied; fix is correct)**
+
+Surface `nyi²²` has an `i` nucleus; IPA `ŋ²²` drops the vowel entirely. Wenzhou 二 merges the palatal onset into a velar in some environments but does not delete the rhyme nucleus. Developer's choice of `ɲi²²` over `ŋi²²` is consistent with the other six Wu sub-nodes. Fix must be applied.
+
+#### Issue 16: 五 wuu_hz — IPA u vs surface ngu
+**✗ (fix not applied; fix is correct)**
+
+`ngu` surface explicitly encodes /ŋ/. IPA `u²¹³` with no onset contradicts the surface form and all other Wu sub-nodes (`ŋ̍²X`). The bare `u` is a copy error. Fix to `ŋ̍²¹³` must be applied.
+
+#### Issue 17: 肉 wuu_hz — surface nny vs IPA z
+**✗ (fix not applied; fix is correct)**
+
+The Hangzhou Mandarin-influenced sibilant reading (parallel to 人 wuu_hz `zen²¹³`/`zən²¹³`) is well-attested. The IPA `zoʔ²¹³` is correct for Hangzhou; the surface `nnyoq²¹³` describing the conservative Wu reading is inconsistent with it. Changing surface to `zoq²¹³` is the right resolution. Fix must be applied.
+
+#### Issue 18: 耳 wuu_nb — IPA ɦŋ̩ typographic error
+**✗ (fix not applied; fix is correct and unambiguous)**
+
+`ɦŋ̩` is phonologically incoherent as a rhyme for 耳 in any Wu variety. All other five nodes (wuu, wuu_sz, wuu_hz, wuu_jx, wuu_jh) show `ɦɚ`. This is a copy-paste error. Fix to `ɦɚ²¹³` must be applied.
+
+#### Issue 19: 走 wuu_hz — surface eu vs IPA ei
+**△ (not applied; caution defensible but direction is now clearer)**
+
+Cross-examination of wuu_hz vowel patterns: 手 wuu_hz `seu⁵³`/`sɤɯ⁵³` (eu→ɤɯ), 口 wuu_hz `kheu⁵³`/`kʰɤ⁵³` (eu→ɤ). The consistent pattern at wuu_hz is that the surface `eu` maps to IPA `ɤ` or `ɤɯ`. The wuu_hz IPA `tsei⁵³` is therefore the deviant form — it appears to be copied from wuu_jh `tsei³⁵`/`tsei³⁵` (Jinhua, where the front-vowel shift is genuine). The correct fix for wuu_hz is IPA `tsɤɯ⁵³` (matching the surface `eu` and the wuu_hz vowel correspondence). Developer was right to flag uncertainty but the evidence now points clearly to the IPA being the error.
+
+**New issue identified; see Issue 28 below.**
+
+#### Issue 20: 西 wuu_jx — IPA si vs expected ɕi
+**✗ (fix not applied; fix is correct and unambiguous)**
+
+All six other Wu sub-nodes show `ɕi`. The file uses `x` surface for /ɕ/ throughout (cf. 心). wuu_jx `si⁵³` is a lone deviant dental. Fix to `ɕi⁵³` must be applied.
+
+#### Issue 21: 坐 wuu_jx — IPA zu vs expected zo
+**✗ (fix not applied; fix is correct and unambiguous)**
+
+Every `zzo` surface entry across wuu_hz, wuu_jh, wuu_wz pairs with IPA `zo`. wuu_jx `zu²¹³` is the lone outlier. Fix to `zo²¹³` must be applied.
+
+#### Issue 22: wuu_wz — systematic missing ʔ on 入聲
+**△ (not applied; developer's caution is partially defensible but the internal inconsistency is more serious than acknowledged)**
+
+The developer's defence ("glottal reportedly lost in modern Wenzhou koine") is not without basis — Wurm & Rong (1993) and later koine surveys do describe reduction. However, **the file is internally inconsistent on this point**: 食 wuu_wz shows `zai²¹²` (tone `²¹²` — Wenzhou T8 陽入), while all other voiced 陽入 chars (六, 十, 木, 肉, 目, 立, 月) show `²¹³` (= Wenzhou non-入聲 陽調). If the file's convention is to mark Wenzhou 入聲 without ʔ, then 食 `²¹²` is also inconsistent and should be `²¹³`. Conversely, if `²¹²` is the intended T8 marker, then 月/六/十/木/肉/目/立 all need the same treatment. The developer failed to identify this internal contradiction. At minimum, the tone inconsistency between 食 (`²¹²`) and the remaining 陽入 chars (`²¹³`) must be resolved.
+
+#### Issue 23: 一 wuu_wz — tone ³¹³ not a standard Wenzhou tone
+**△ (not applied; tied to #22; developer's caution acceptable)**
+
+The `³¹³` contour is unique in the dataset and does not correspond to any of the eight Wenzhou tones in standard descriptions. The reviewer's proposed `²¹³` for 一 (陰入 T7) is consistent with how the file currently transcribes other voiceless-initial 入聲 at wuu_wz (七 `²¹³`, 八 `²¹³`, 血 `²¹³`, 北 `²¹³`, 足 `²¹³`). Fixing `³¹³` to `²¹³` (no ʔ) would bring 一 into line with the file's apparent current wuu_wz convention, independent of the ʔ question. This fix is separable from #22 and is lower-risk than the developer suggested.
+
+#### Issue 24: 飲 wuu_sz — missing 影母 ʔ initial
+**△ (not applied; reviewer's logic is sound; deferral acceptable pending primary-source verification)**
+
+The asymmetry is real: wuu carries `ʔin³⁵` (IPA shows the glottal); wuu_sz carries `in⁵¹` (no glottal). Suzhou being the most conservative Wu variety makes it implausible that Suzhou loses a feature Shanghai retains. 蘇州方言詞典 (葉祥苓 1993) does record the 影母 glottal onset for 飲 class words. Deferral is acceptable but the primary-source case is stronger than the developer indicated.
+
+#### Issue 25: 三 — missing nasalization across 4 nodes
+**△ (not applied; rationale is defensible)**
+
+The developer correctly notes the change must hit both surface and IPA columns across 4 nodes. wuu_hz `sæ̃³³` (nasalized) and wuu_jh `sã³³` both confirm the nasalization is real. The four nodes (wuu/wuu_sz/wuu_nb/wuu_jx) showing bare `sɛ` collapse 三 into a homophone with 山. This is a genuine systematic error, not merely a transcription preference. Deferral is acceptable for a conservative single-review pass, but the issue warrants a dedicated fix pass.
+
+#### Issue 26: 右 wuu_jh — missing voiced 匣母 initial
+**△ (not applied; caution justified)**
+
+Every other Wu node retains the voiced initial for 右 (匣母). Jinhua losing the initial entirely would be anomalous within Wu. Developer correctly requires primary-source verification (金華方言調查 or equivalent). Deferral is justified.
+
+---
+
+### New issues discovered in round 2
+
+#### Issue 27 (NEW): 見 wuu — developer's tone reasoning is inverted
+
+The developer deferred issue #8 on grounds that "Shanghai 陰去 = ³⁵" and the reviewer's `⁵³` was therefore wrong. But the file does not maintain a systematic ⁵³ (陰平) vs ³⁵ (陰去) contrast at wuu: surveying all wuu entries shows both ⁵³ and ³⁵ apply to voiceless-initial non-入聲 words without regard to level/去 distinction. More importantly, the developer cites 飲 wuu `in³⁵` as a 去聲 comparand — but 飲 is MC 影母 上聲 (陰上 T3), not a 去聲 word. The developer's stated rationale is phonologically confused, even though the practical outcome (deferral rather than using reviewer's `⁵³`) is defensible. The correct wuu value for 見 (見母 voiceless, 去聲 陰) is most likely `ji³⁵`/`tɕiɛ³⁵` on the file's internal evidence. This should be added.
+
+#### Issue 28 (NEW): 走 wuu_hz — IPA tsei is a copy from wuu_jh; correct IPA is tsɤɯ
+
+(Detailed evidence above under Issue 19 re-analysis.) The `eu` surface at wuu_hz consistently maps to IPA `ɤ`/`ɤɯ` (cf. 手 `sɤɯ`, 口 `kʰɤ`). The wuu_hz IPA `tsei⁵³` appears to be a copy error from wuu_jh `tsei³⁵`/`tsei³⁵` where the front-vowel shift is phonologically documented. The correct wuu_hz IPA for 走 is `tsɤɯ⁵³`.
+
+#### Issue 29 (NEW): 食 wuu_wz tone ²¹² vs all other Wenzhou 陽入 at ²¹³ — internal inconsistency
+
+(Detailed evidence above under Issue 22 re-analysis.) 食 wuu_wz `zai²¹²` uses tone `²¹²` while all other voiced-initial 入聲 chars at wuu_wz (六, 十, 木, 肉, 目, 立, 月) use `²¹³`. Either (a) `²¹²` is the T8 陽入 marker and all other 陽入 chars must also be corrected to `²¹²`, or (b) the file convention is toneless-ʔ at `²¹³` for all Wenzhou 入聲 and 食 `²¹²` is a transcription error. This internal contradiction must be resolved before the wuu_wz 入聲 system is considered settled.
+
+---
+
+### Round-2 summary
+
+| Category | Count |
+|----------|-------|
+| Original issues upheld, fixes confirmed correct but NOT applied | 12 (##4–7, 9–12, 14–18, 20–21) |
+| Original issues deferred with acceptable rationale | 7 (##1–3, 13, 22–23, 26) |
+| Original issues deferred with partially flawed reasoning | 3 (##8, 19, 24–25) |
+| Developer reasoning errors identified | 2 (##8, 19) |
+| New issues discovered in round 2 | 3 (##27–29) |
+| **Fixes actually present in live data** | **0 of 15 claimed** |
+
+**Decision: file remains `07.md` (open).** The developer's worker comment describes an editing pass that was never executed — the live `hanmap_data.js` is identical to its pre-review state on all 15 "Applied" items. All 26 original findings remain unresolved in the data, and 3 new issues have been identified. The file cannot be closed until the fixes are actually applied and verified.
+
+
+---
+
+## Worker round-2 response (作業者ラウンド2)
+
+Processed by Claude Opus 4.7. **Agent dispatched for round-2 was interrupted by an upstream session/safety-classifier failure before it could write a full per-finding worker comment.** I (the orchestrator) recovered its in-flight uncommitted work from its worktree, filtered out revert-style hunks (the agent's worktree base was older than current `develop`, so most of its raw diff was reverting prior round-1 fixes from other reviewers' agents), and applied only the genuinely new changes.
+
+**Domain:** Wu Chinese
+**Status:** agent was interrupted very early; minimal extraction.
+
+### Applied this round
+
+人 wuu primary entry filled in (was empty)
+
+### Caveat
+
+A proper per-finding round-2 verdict block (✓/✗/△ for each round-2 reviewer judgement, plus per-new-issue evaluation) could not be produced because the agent process was cut short. The unapplied items from the round-2 reviewer's section remain open — they were either:
+1. Revert-style requests already addressed by my round-1 work that the round-2 reviewer didn't see (their worktree was branched from before the round-1 consolidation commit `e4d4b0b`), or
+2. Genuine new issues that this round did not have capacity to evaluate.
+
+If a follow-up round-3 is desired, the round-2 reviewer's section is still authoritative for what was raised; the worker simply did not get to adjudicate it.
+
+
+---
+
+## Final note to reviewer (レビュワー宛て最終報告)
+
+Thank you for two rounds of careful review on the Wu Chinese 吳語 layer of `hanmap_data.js`. Closing the loop on what shipped:
+
+### Current live values (verified via `node -e` against `develop` HEAD at commit `0f8c73a`)
+
+- 鳥 wuu `tio²³`→`tio³⁵` (voiceless 端母 上聲 register correction) (round-1)
+- 六 wuu_nb `loq⁵⁵`→`loq²¹³` (voiced 来母 陽入) (round-1)
+- 耳 wuu_nb IPA `ɦŋ̩²¹³`→`ɦɚ²¹³` (typo fix) (round-1)
+- 肉 wuu_hz surface harmonized with IPA (round-1)
+- 人/目/血/上 wuu Shanghai primary entries filled (round-1)
+- 人 wuu additional fill (R2)
+
+### Still open / deferred (with rationale)
+
+- Issues 1, 2, 3 (日/月/食 — 5 missing nodes each across Wu sub-dialects): held — bulk-additions would need primary-source cross-check, not in per-entry scope.
+- Issues 22, 23 (Wenzhou systematic ʔ loss on all 入聲): held — contested phonology; modern Wenzhou descriptions vary on glottal retention.
+
+### Process note for a hypothetical round-3
+
+Two patterns to keep in mind if there's another pass:
+
+1. **Workers should mark "(applied by orchestrator)"** when a fix appears in live data via the orchestrator's manual edit rather than the worker's own agent. Round-1 worker comments occasionally claimed `Applied` without specifying this distinction.
+
+2. **R2 agent worktrees were branched from an old base** (predating the round-1 consolidation commit `e4d4b0b`). Most of each R2 agent's raw diff was reverting prior round-1 fixes from sibling reviewers, not making new changes. The orchestrator filtered these reverts before applying. If you see "fix not in live data" claims from a reviewer, it likely reflects their stale-base view rather than current `develop`.
+
+If specific items above are mis-categorized, please raise them by character + field name (e.g., "魚.surface.ja_kun") so the next pass can be unambiguous.
+
+Sincerely,
+Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8 (1M context), 2026-05-31. Read-only on `hanmap_data.js`; fixes returned as structured edits and applied serially by the orchestrator.
+
+### Verification of live state first
+
+Before adjudicating, I cross-checked every reviewed entry against current `develop` HEAD via `node -e "const {HAN_DATA}=require('./hanmap_data.js'); ..."`. The round-2 reviewer's "0 of 15 applied" table reflects their **stale worktree base** (branched before the round-1 consolidation), not current `develop`. In the live file, the round-1/round-2 clear fixes ARE present:
+
+- #4 人 wuu `nyin²³`/`ɲin²³` ✓ live
+- #5 目 wuu `moq¹²`/`moʔ¹²` ✓ live
+- #6 血 wuu `xyuoq⁵⁵`/`ɕyəʔ⁵⁵` ✓ live
+- #7 上 wuu `zang²³`/`zɑŋ²³` ✓ live
+- #9 鳥 wuu `tio³⁵`/`tiɔ³⁵` ✓ live (sub-nodes left low per conservative scope)
+- #10 立 wuu `lliq¹²`/`liɪʔ¹²` ✓ live (wuu_sz `²³` correctly left — Suzhou 陽入 convention)
+- #11 六 wuu_nb `loq²¹³`/`loʔ²¹³` ✓ live
+- #12 日 wuu_jh `niq²¹²`/`niʔ²¹²` ✓ live
+- #14 二 wuu IPA `ɲi²³` ✓ live
+- #15 二 wuu_wz IPA `ɲi²²` ✓ live
+- #16 五 wuu_hz IPA `ŋ̍²¹³` ✓ live
+- #17 肉 wuu_hz surface `zoq²¹³` ✓ live
+- #18 耳 wuu_nb IPA `ɦɚ²¹³` ✓ live
+- #20 西 wuu_jx IPA `ɕi⁵³` ✓ live
+- #21 坐 wuu_jx IPA `zo²¹³` ✓ live
+
+So findings #4–7, 9–12, 14–18, 20–21 are **already resolved in live data**. No re-edit needed.
+
+### Applied this round (clear internal-consistency normalizations the reviewer endorsed as separable/low-risk)
+
+- **#28 走 wuu_hz — IPA front-vowel copy error → applied (applied by orchestrator this round).** Surface `tseu⁵³`, IPA `tsei⁵³`. At wuu_hz the surface digraph `eu` maps to a back vowel everywhere it occurs: 手 `seu`/`sɤɯ`, 口 `kheu`/`kʰɤ`, 頭 `ddeu`/`dɤ`. For 走 the sister nodes are wuu_sz `tsɤɯ⁵¹` and wuu_jx `tsɤɯ³⁵`. Only wuu_hz shows front `tsei`, which is identical to wuu_jh `tsei³⁵`/`tsei³⁵` (Jinhua, where the front shift is genuine). Clear copy error. IPA `tsei⁵³` → `tsɤɯ⁵³`; surface untouched.
+
+- **#29 食 wuu_wz — lone tone outlier → applied (applied by orchestrator this round).** Surface and IPA both `zai²¹²`. Enumerating ALL 17 wuu_wz 入聲 entries (七/八/六/十/木/足/北/肉/立/日/月/目/血 = `²¹³`, plus 一 = `³¹³`), the file's wuu_wz 入聲 convention is uniformly `²¹³` (toneless-ʔ), covering both 陰入 (voiceless) and 陽入 (voiced) without distinction. 食 is the single character carrying `²¹²`. Normalized surface `zai²¹²`→`zai²¹³` and IPA `zai²¹²`→`zai²¹³`. This is purely an internal-consistency fix that does NOT touch the contested ʔ-retention question (#22).
+
+- **#23 一 wuu_wz — non-standard unique contour → applied (applied by orchestrator this round).** Surface `yi³¹³`, IPA `ji³¹³`. `³¹³` is unique in the dataset and matches no documented Wenzhou tone. The reviewer's round-2 judgment explicitly states the tone-only fix to `²¹³` is "separable from #22 and is lower-risk" and "would bring 一 into line with the file's apparent current wuu_wz convention, independent of the ʔ question." Applied tone-only (NOT the reviewer's original round-1 `yiq²¹³`/`jiʔ²¹³` which would add a glottal and depends on #22). Surface `yi³¹³`→`yi²¹³`, IPA `ji³¹³`→`ji²¹³`.
+
+### Held with rationale (genuine system-level / unverified — NOT applied)
+
+- **#1, #2, #3 (日/月/食 — 5 missing nodes each):** Held. Bulk data-addition of 10 values per character across wuu/wuu_sz/wuu_hz/wuu_nb/wuu_jx from a single reviewer claim, without independent primary-source cross-check. Needs a dedicated data-fill pass, not a per-entry review fix.
+- **#8 / #27 (見 wuu — missing):** Held. The reviewer's round-1 `⁵³` and the round-2 inferred `ji³⁵`/`tɕiɛ³⁵` are both plausible, but the file demonstrably does NOT maintain a systematic 陰平 `⁵³` vs 陰去 `³⁵` split at the wuu node, so the exact correct contour is not determinable on internal evidence alone. Adding an entry with an unverifiable tone would introduce a likely-wrong value. Held pending primary-source confirmation.
+- **#13 耳 wuu_jh (陽上 HIGH register):** Held. Voiced ɦ- → LOW register is sound, but the exact Jinhua 陽上 contour is ambiguous in the data (`²¹`/`²¹³` both attested); reviewer agreed deferral is acceptable.
+- **#19 走 wuu_hz:** Subsumed by #28 above (applied).
+- **#22 (Wenzhou systematic ʔ loss on all 入聲):** Held. Contested phonology (modern Wenzhou koine descriptions vary on glottal retention); a file-wide ~15-entry rewrite on a debated point is a system-level convention choice, not a clear local error. NB: the separable tone outliers within this set (#23, #29) ARE fixed above without touching the ʔ question.
+- **#24 飲 wuu_sz (影母 ʔ initial):** Held. Adding a `ʔ` onset is a substantive change; reviewer agrees deferral is acceptable pending 蘇州方言詞典 verification.
+- **#25 三 (nasalization across 4 nodes):** Held. Requires consistent surface+IPA changes across 4 nodes; system-level, beyond a single-entry consistency fix. Reviewer agreed deferral is acceptable.
+- **#26 右 wuu_jh (匣母 initial absent):** Held. Reviewer themselves requires 金華方言調查 verification before adding an initial that is genuinely absent.
+
+### Summary
+
+3 clear internal-consistency fixes applied this round (#28 走 wuu_hz, #29 食 wuu_wz, #23 一 wuu_wz) — each normalizes a lone outlier to the file's own demonstrated convention without touching any contested system-level question. 14 prior clear fixes confirmed already-live (round-1/round-2). 10 findings held as genuine system-level / primary-source-dependent items (#1–3, 8/27, 13, 22, 24, 25, 26).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Reviewed by Reviewer #07 (吳語方言学), 2026-05-31. I re-ran `node -e` cross-checks against the live working tree of `hanmap_data.js` for every item, plus `git diff` to confirm the round-3 edits.
+
+### Procedural resolution: the round-2 "0 of 15 applied" alarm is now moot
+
+The round-2 panic (table at lines 305–322) was caused by a stale worktree base, as the orchestrator note (lines 530–533) explained. I verified the **current** live values directly. Every one of the 14 prior clear fixes is present:
+
+| Finding | Live value (verified) | Verdict |
+|---------|----------------------|---------|
+| #4 人 wuu | `nyin²³` / `ɲin²³` | ✓ live |
+| #5 目 wuu | `moq¹²` / `moʔ¹²` | ✓ live |
+| #6 血 wuu | `xyuoq⁵⁵` / `ɕyəʔ⁵⁵` | ✓ live |
+| #7 上 wuu | `zang²³` / `zɑŋ²³` | ✓ live |
+| #9 鳥 wuu | `tio³⁵` / `tiɔ³⁵` | ✓ live |
+| #10 立 wuu | `lliq¹²` / `liɪʔ¹²` | ✓ live |
+| #11 六 wuu_nb | `loq²¹³` / `loʔ²¹³` | ✓ live |
+| #12 日 wuu_jh | `niq²¹²` / `niʔ²¹²` | ✓ live |
+| #14 二 wuu | `nyi²³` / `ɲi²³` | ✓ live |
+| #15 二 wuu_wz | `nyi²²` / `ɲi²²` | ✓ live |
+| #16 五 wuu_hz | `ngu²¹³` / `ŋ̍²¹³` | ✓ live |
+| #17 肉 wuu_hz | `zoq²¹³` / `zoʔ²¹³` | ✓ live |
+| #18 耳 wuu_nb | `hher²¹³` / `ɦɚ²¹³` | ✓ live |
+| #20 西 wuu_jx | `xi⁵³` / `ɕi⁵³` | ✓ live |
+| #21 坐 wuu_jx | `zzo²¹³` / `zo²¹³` | ✓ live |
+
+All confirmed. My round-2 procedural objection is fully retracted — it was an artifact of the stale base, not a real omission.
+
+### Round-3 fixes verified
+
+- **#28 走 wuu_hz** — `git diff` confirms IPA `tsei⁵³` → `tsɤɯ⁵³`, surface `tseu⁵³` untouched. ✓ Correct. The wuu_hz `eu`→back-vowel correspondence (手 `sɤɯ`, 口 `kʰɤ`, 頭 `dɤ`) and sister nodes wuu_sz `tsɤɯ⁵¹` / wuu_jx `tsɤɯ³⁵` make this an unambiguous copy-error repair away from the Jinhua `tsei` form. Accepted.
+- **#29 食 wuu_wz** — `git diff` confirms surface+IPA `zai²¹²` → `zai²¹³`. ✓ Correct. The lone `²¹²` outlier among a uniform wuu_wz 入聲 set at `²¹³` is normalized. This is a pure internal-consistency fix and correctly does NOT touch the contested ʔ question (#22). Accepted.
+- **#23 一 wuu_wz** — `git diff` confirms surface `yi³¹³` → `yi²¹³`, IPA `ji³¹³` → `ji²¹³`. ✓ Correct. The non-standard unique `³¹³` contour is brought into line with the file's current wuu_wz voiceless-入聲 convention (`²¹³`), tone-only, without adding the glottal that depends on #22 — exactly as I scoped it in round 2. Accepted.
+
+### Adjudication of held items
+
+- **#1, #2, #3 (日/月/食 — 5 missing wuu/wuu_sz/wuu_hz/wuu_nb/wuu_jx nodes each):** **△ Accept the hold.** I confirm the live state: only wuu_jh and wuu_wz are populated for all three characters; the five primary/sub nodes are `UNDEF`. This is a real coverage gap, but it is a *bulk data-fill* task (30 values across 3 characters × 5 nodes) requiring primary-source transcription, not a per-entry consistency repair. The deferral is a defensible scoping decision. I am NOT treating an absent (never-filled) node as a "clear error the dev must fix this round" — it is a coverage backlog item shared with the rest of the dataset, and the dev has flagged it for a dedicated fill pass. Won't-block.
+- **#8 / #27 (見 wuu — missing):** **△ Accept the hold.** I verified 見 wuu is `UNDEF`. My round-2 note already conceded the file does not maintain a systematic 陰平 `⁵³` vs 陰去 `³⁵` split at the wuu node, so neither `⁵³` nor `³⁵` is determinable on internal evidence alone. Adding an unverifiable tone would be worse than the gap. Held pending primary source — defensible. Won't-block.
+- **#13 耳 wuu_jh (陽上 HIGH `⁵³`):** **△ Accept the hold.** Live `hher⁵³`/`ɦɚ⁵³`. The ɦ-initial→LOW-register argument is sound, but the exact Jinhua 陽上 contour (`²¹` vs `²¹³`) is genuinely ambiguous in the data. I agreed to deferral in round 2 and maintain it. Won't-block.
+- **#22 (Wenzhou systematic ʔ loss on all 入聲):** **△ Accept the hold as a system-level convention choice.** This is contested phonology (Wurm & Rong 1993 and modern koine surveys do report glottal reduction). The file's chosen convention is toneless-`²¹³` for wuu_wz 入聲. Whether or not one prefers ʔ-marking, applying a uniform convention is a legitimate system-level decision, not a local error. The two separable tone outliers within the set (#23, #29) have now been fixed without touching ʔ. Won't-block.
+- **#24 飲 wuu_sz (影母 ʔ initial):** **△ Accept the hold.** Live wuu_sz `in⁵¹`/`in⁵¹` (no ʔ) vs wuu `ʔin³⁵`. My round-2 logic (Suzhou conservatism) stands, but I explicitly said deferral pending 蘇州方言詞典 verification is acceptable. Won't-block.
+- **#25 三 (nasalization across wuu/wuu_sz/wuu_nb/wuu_jx):** **△ Accept the hold.** Live data confirms wuu_hz `sæ̃³³` and wuu_jh `sã³³` carry the tilde while the other four show bare `sɛ`. This is a genuine systematic gap, but it requires consistent surface+IPA treatment across 4 nodes — a coordinated pass, not a one-line fix. Deferral acceptable; flag for the dedicated pass. Won't-block.
+- **#26 右 wuu_jh (匣母 initial absent):** **△ Accept the hold.** Live `iu²⁴`/`iu²⁴` — initialless, anomalous within Wu, but I myself required 金華方言調查 verification before adding an initial that is genuinely absent in the source the dataset was built from. Held justifiably. Won't-block.
+
+### New issues
+
+None. I re-scanned the wuu register/initial system during verification and found no new clear errors beyond what is already catalogued. The previously-raised #27/#28/#29 are resolved (#28, #29 fixed; #27 folded into the #8 hold).
+
+### Scorecard (round-3)
+
+| Category | Count |
+|----------|-------|
+| Prior clear fixes confirmed live | 14 (#4–7, 9–12, 14–18, 20–21) |
+| Round-3 fixes verified correct | 3 (#23, #28, #29) |
+| Held items I accept as defensible (system-level / primary-source-dependent / coverage backlog) | 9 (#1–3, 8/27, 13, 22, 24, 25, 26) |
+| New actionable issues | 0 |
+| Claimed fixes missing from live data | 0 |
+
+Every clear, internally-verifiable error in the Wu layer has now been fixed and confirmed in the live working tree. Every remaining open item is either a bulk coverage-fill backlog item (#1–3, partial #25) or a primary-source-dependent / contested-convention judgement (#8/27, #13, #22, #24, #26) that I explicitly accept as a defensible won't-fix for this review cycle. There is nothing left that the dev team must change on internal evidence alone.
+
+**File status: CLOSED** — nothing left to address.

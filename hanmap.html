@@ -329,7 +329,7 @@
         @media (max-width: 480px) {
             /* Compact the char-row a touch on mobile */
             #char-current-btn { font-size: 60px !important; padding: 0 !important; width: 88px !important; height: 88px !important; min-width: 88px !important; }
-            #char-random-btn { font-size: 20px !important; padding: 0 !important; width: 36px !important; height: 36px !important; }
+            #char-random-btn { font-size: 18px !important; padding: 0 !important; width: 32px !important; height: 32px !important; bottom: -8px !important; right: -8px !important; }
         }
         body.is-3d #char-current-btn { color: #1a1a2e; }
 
@@ -513,7 +513,7 @@
             white-space: nowrap;
         }
         .toggle-btn {
-            font-size: 11px; padding: 4px 10px; border: 1px solid #d0d0d0;
+            font-size: 13px; padding: 6px 12px; border: 1px solid #d0d0d0;
             border-radius: 20px; background: #f0f0f0; cursor: pointer; white-space: nowrap;
             color: #777; font-weight: 500;
             transition: all 0.25s ease;
@@ -1454,7 +1454,7 @@
 
         /* --- Mobile responsive --- */
         @media (max-width: 768px) {
-            .toggle-btn { font-size: 10px; padding: 3px 7px; }
+            .toggle-btn { font-size: 12px; padding: 5px 10px; }
             .radio-switch .radio-opt { font-size: 10px; padding: 3px 8px; }
 
             /* Header is ~60px tall on mobile (hamburger 40px + 10px*2
@@ -1467,7 +1467,7 @@
             /* Don't stretch the round toggle buttons (.toggle-3d-btn and
                .settings-fab); only widen the rectangular Form/Pron./Name
                toggles that need legible text. */
-            .right-controls .toggle-btn:not(.toggle-3d-btn) { min-width: 44px; font-size: 9px; }
+            .right-controls .toggle-btn:not(.toggle-3d-btn) { min-width: 48px; font-size: 11px; }
             .right-controls .toggle-3d-btn {
                 width: 44px; height: 44px; min-width: 44px; max-width: 44px;
                 border-radius: 50%;
@@ -1793,12 +1793,12 @@
         /* Article index — grid of cards, shown when the user first
            opens the 📚 button (or after clicking "← Articles"). */
         .trivia-index {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
             padding-top: 4px;
         }
-        /* Explicit [hidden] override: the class-level `display: grid`
+        /* Explicit [hidden] override: the class-level `display: flex`
            above outranks the UA-stylesheet `[hidden]` rule, so without
            this the index would leak underneath every article body. */
         .trivia-index[hidden] { display: none; }
@@ -1880,20 +1880,17 @@
         }
         .trivia-card {
             display: block; width: 100%; text-align: left;
-            background: rgba(255,243,205,0.55);
-            border: 1px solid rgba(180,130,30,0.28);
-            border-radius: 10px;
-            padding: 12px 14px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 8px 4px;
             cursor: pointer;
-            transition: all 0.18s ease;
+            transition: background 0.12s ease;
             font-family: inherit;
             color: #3a2e1a;
         }
         .trivia-card:hover {
-            background: rgba(255,235,180,0.85);
-            border-color: #b8860b;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(180,130,30,0.25);
+            background: rgba(255,235,180,0.55);
         }
         .trivia-card:focus-visible {
             outline: 2px solid #8a5a0e;
@@ -2480,9 +2477,9 @@
             </nav>
             <button type="button" class="trivia-btn" id="trivia-open"
                     aria-haspopup="dialog" aria-controls="trivia-modal"
-                    title="Linguistic trivia">
+                    title="Sinosphere trivia">
                 <span aria-hidden="true">📚</span>
-                <span class="trivia-btn-label" id="trivia-btn-label">Linguistic Trivia</span>
+                <span class="trivia-btn-label" id="trivia-btn-label">Sinosphere Trivia</span>
             </button>
             <select id="header-ui-lang" class="header-ui-lang" aria-label="UI language"></select>
             <a class="header-url" href="https://langmap.heuron.com">langmap.heuron.com</a>
@@ -2520,7 +2517,7 @@
         <!-- Inner scroll region — only this scrolls, so the close
              button stays visible no matter how far the user scrolls. -->
         <div class="trivia-scroll" id="trivia-scroll">
-            <div class="trivia-eyebrow" id="trivia-eyebrow">Linguistic Trivia</div>
+            <div class="trivia-eyebrow" id="trivia-eyebrow">Sinosphere Trivia</div>
             <h2 id="trivia-heading"></h2>
             <div class="trivia-summary" id="trivia-summary"></div>
             <div class="trivia-body" id="trivia-body"></div>
@@ -2559,19 +2556,19 @@
              internals that read select.value continue to work; updateCharSelection()
              keeps the hidden select's value synced with currentChar. -->
         <div id="hanmap-char-row" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-            <!-- Char button + dice on the right, vertically centered together. -->
-            <div style="display:flex;flex-direction:row;gap:36px;align-items:center">
+            <!-- Char button with dice tucked into its bottom-right corner. -->
+            <div style="display:flex;flex-direction:row;align-items:center">
                 <div id="char-current-wrap" style="position:relative;display:inline-block">
                 <button id="char-current-btn" type="button"
                         aria-haspopup="dialog" aria-controls="char-modal"
                         title="Select character"
                         style="font-size:72px;line-height:1;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',serif;font-weight:700;padding:0;border:1px solid #d0d0d0;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);cursor:pointer;color:#1a1a2e;width:108px;height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.16);transition:background 0.15s,transform 0.1s">一</button>
                 <div id="sense-tabs" style="position:absolute;top:14px;left:100%;display:none;flex-direction:column;gap:4px;z-index:5"></div>
-                </div>
                 <button id="char-random-btn" type="button"
                         title="Random character"
                         aria-label="Random character"
-                        style="font-size:24px;padding:0;width:40px;height:40px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 1px 3px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;line-height:1">🎲</button>
+                        style="position:absolute;bottom:-10px;right:-10px;font-size:22px;padding:0;width:38px;height:38px;border:1px solid #d8d8d8;border-radius:50%;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);cursor:pointer;color:#555;box-shadow:0 2px 5px rgba(0,0,0,0.12);display:inline-flex;align-items:center;justify-content:center;line-height:1;z-index:4">🎲</button>
+                </div>
             </div>
             <!-- Filter button on its own line below. -->
             <button id="hm-lang-filter-btn" type="button"
@@ -2627,7 +2624,7 @@
         <button id="hm-lang-filter-close" type="button" aria-label="Close"
                 style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;color:#888;cursor:pointer;line-height:1;padding:4px 8px">&times;</button>
         <h2 id="hm-lang-filter-title" style="font-size:18px;margin:0 0 6px;color:#1a1a2e;font-weight:700;font-family:'Noto Serif JP','Noto Serif SC','Noto Serif TC','Noto Serif KR',system-ui,sans-serif">言語で絞り込み</h2>
-        <div id="hm-lang-filter-sub" style="font-size:12px;color:#777;margin-bottom:10px;line-height:1.5">系統 × 時代でフィルタリング。チップをタップでON/OFF。</div>
+        <div id="hm-lang-filter-sub" style="display:none"></div>
         <div id="hm-lang-filter-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eee">
             <button type="button" data-act="all"   class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて選択</button>
             <button type="button" data-act="none"  class="hm-lf-tool-btn" style="font-size:11px;padding:5px 10px;border:1px solid #d0d0d0;border-radius:12px;background:#fff;color:#333;cursor:pointer">すべて解除</button>
@@ -2664,6 +2661,7 @@
         <div style="height:8px" class="ctrl-spacer"></div>
         <div class="right-secondary-controls" id="right-secondary">
             <button class="toggle-btn active" id="toggle-word" aria-pressed="true" aria-label="Toggle form display"><span class="label">Form</span><span class="onoff">ON</span></button>
+            <button class="toggle-btn active" id="toggle-script" aria-pressed="true" aria-label="Toggle native script display"><span class="label">字</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
             <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
@@ -3028,7 +3026,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=63"></script>
+    <script src="hanmap_data.js?v=75"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -3043,10 +3041,10 @@
     <!-- Hanmap-specific trivia (40 articles × 19 UI langs). Defines
          TRIVIA_ARTICLES on window so the inherited wordmap trivia modal
          renders these without changes. Must come BEFORE wordmap's IIFE. -->
-    <script src="hanmap_trivia.js?v=5"></script>
+    <script src="hanmap_trivia.js?v=6"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang_names.js?v=116"></script>
+    <script src="lang_names.js?v=118"></script>
     <script>
     // ============================================================
     //  senseSplit utility — handle compound IDs like "行:1"
@@ -3181,7 +3179,7 @@
     //  Hash param : "hf" (comma-separated active codes)
     // ============================================================
     (function () {
-        const LS_KEY = 'hm.langFilter.v6';   // bumped — ko_bus was missing from HAN_GROUPS pre-7b38618; old v5 saves locked it out of the offered set
+        const LS_KEY = 'hm.langFilter.v7';   // bumped — ensure all users get the 古代/訓読 OFF defaults regardless of prior saved state
                                               //   to include mnc/sjo/za/
                                               //   bca/juc/txg/zkt/protos
                                               //   (mutually exclusive
@@ -4073,9 +4071,17 @@
             document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
         }
 
+        // Migration shim: legacy es_eu/es_mx/pt_eu/pt_br UI codes were
+        // collapsed into 'es' / 'pt'. Normalize at every read site so
+        // saved cookies and shared ?ui= URLs keep working.
+        function _normalizeUiLang(code) {
+            if (code === 'es_eu' || code === 'es_mx') return 'es';
+            if (code === 'pt_eu' || code === 'pt_br') return 'pt';
+            return code;
+        }
         function detectBrowserLang() {
             // 1. Cookie first (set by user's previous choice on any page)
-            const cookie = _wmGetCookie('wm_uilang');
+            const cookie = _normalizeUiLang(_wmGetCookie('wm_uilang'));
             if (cookie && WM_UI[cookie]) return cookie;
             if (cookie) {
                 const base = cookie.split('_')[0];
@@ -4084,12 +4090,12 @@
             // 2. navigator.language fallback
             const langs = navigator.languages || [navigator.language || 'en'];
             for (const l of langs) {
-                const code = l.replace('-', '_').toLowerCase();
+                const code = _normalizeUiLang(l.replace('-', '_').toLowerCase());
                 if (WM_UI[code]) return code;
                 const base = code.split('_')[0];
                 const map = { ja:'ja', ko:'ko', zh:'zh', vi:'vi', th:'th', id:'id', hi:'hi',
                     en:'en', de:'de', fr:'fr', it:'it', ru:'ru', uk:'uk', ar:'ar', he:'he',
-                    sw:'sw', pt:'pt_br', es:'es_mx', da:'en', sv:'en', no:'en', nl:'en' };
+                    sw:'sw', pt:'pt', es:'es', da:'en', sv:'en', no:'en', nl:'en' };
                 if (map[base] && WM_UI[map[base]]) return map[base];
                 if (base === 'zh') {
                     if (code.includes('hk') || code.includes('tw') || code.includes('hant')) return 'yue';
@@ -4199,8 +4205,8 @@
             vi:'Bản đồ từ vựng thế giới', th:'แผนที่คำศัพท์โลก', id:'Atlas Kata Dunia',
             hi:'बहुभाषी विश्व मानचित्र', en:'Multilingual Word Atlas', de:'Mehrsprachiger Weltatlas',
             fr:'Atlas mondial des mots', it:'Atlante mondiale delle parole',
-            es_eu:'Atlas mundial de palabras', es_mx:'Atlas mundial de palabras',
-            pt_eu:'Atlas mundial de palavras', pt_br:'Atlas mundial de palavras',
+            es: 'Atlas mundial de palabras',
+            pt: 'Atlas mundial de palavras',
             ru:'Многоязычный атлас слов', uk:'Багатомовний атлас слів',
             ar:'أطلس الكلمات العالمي', he:'אטלס מילים עולמי', sw:'Atlasi ya Maneno ya Dunia',
         };
@@ -4208,8 +4214,8 @@
             ja:'語順マップ', ko:'어순 맵', zh:'语序图', yue:'語序圖', vi:'Trật tự từ',
             th:'ลำดับคำ', id:'Urutan Kata', hi:'शब्द क्रम', en:'Word Order',
             de:'Wortstellung', fr:'Ordre des mots', it:'Ordine parole',
-            es_eu:'Orden de palabras', es_mx:'Orden de palabras',
-            pt_eu:'Ordem das palavras', pt_br:'Ordem das palavras',
+            es: 'Orden de palabras',
+            pt: 'Ordem das palavras',
             ru:'Порядок слов', uk:'Порядок слів', ar:'ترتيب الكلمات',
             he:'סדר מילים', sw:'Mpangilio wa maneno',
         };
@@ -4217,8 +4223,8 @@
             ja:'単語マップ', ko:'단어 맵', zh:'词汇地图', yue:'詞彙地圖', vi:'Bản đồ từ',
             th:'แผนที่คำ', id:'Peta Kata', hi:'शब्द मानचित्र', en:'Word Map',
             de:'Wortkarte', fr:'Carte des mots', it:'Mappa parole',
-            es_eu:'Mapa de palabras', es_mx:'Mapa de palabras',
-            pt_eu:'Mapa de palavras', pt_br:'Mapa de palavras',
+            es: 'Mapa de palabras',
+            pt: 'Mapa de palavras',
             ru:'Карта слов', uk:'Карта слів', ar:'خريطة الكلمات',
             he:'מפת מילים', sw:'Ramani ya maneno',
         };
@@ -4229,8 +4235,8 @@
             ja:'系統樹', ko:'계통수', zh:'谱系树', yue:'譜系樹', vi:'Cây phả hệ',
             th:'แผนภูมิ', id:'Pohon', hi:'वृक्ष', en:'Tree',
             de:'Stammbaum', fr:'Arbre', it:'Albero',
-            es_eu:'Árbol', es_mx:'Árbol',
-            pt_eu:'Árvore', pt_br:'Árvore',
+            es: 'Árbol',
+            pt: 'Árvore',
             ru:'Древо', uk:'Дерево', ar:'الشجرة',
             he:'אילן', sw:'Mti',
         };
@@ -4244,31 +4250,31 @@
                 yue: '現代後裔', vi: 'Hậu duệ hiện đại', th: 'ลูกหลานสมัยใหม่',
                 id: 'Keturunan modern', hi: 'आधुनिक वंशज', de: 'Modern. Nachfahre',
                 fr: 'Descendant moderne', it: 'Discendente moderno',
-                es: 'Descendiente moderno', es_eu: 'Descendiente moderno', es_mx: 'Descendiente moderno',
-                pt: 'Descendente moderno', pt_eu: 'Descendente moderno', pt_br: 'Descendente moderno',
+                es: 'Descendiente moderno', es: 'Descendiente moderno',
+                pt: 'Descendente moderno', pt: 'Descendente moderno',
                 ru: 'Совр. потомок', uk: 'Сучасний нащадок',
                 ar: 'سليل حديث', he: 'צאצא מודרני', sw: 'Wazao wa kisasa' },
             historicalAncestors: { en: 'Historical ancestors', ja: '歴史的祖先', ko: '역사적 조상', zh: '历史祖先',
                 yue: '歷史祖先', vi: 'Tổ tiên lịch sử', th: 'บรรพบุรุษทางประวัติศาสตร์',
                 id: 'Leluhur historis', hi: 'ऐतिहासिक पूर्वज', de: 'Hist. Vorfahren',
                 fr: 'Ancêtres hist.', it: 'Antenati storici',
-                es: 'Antepasados históricos', es_eu: 'Antepasados históricos', es_mx: 'Antepasados históricos',
-                pt: 'Ancestrais históricos', pt_eu: 'Ancestrais históricos', pt_br: 'Ancestrais históricos',
+                es: 'Antepasados históricos', es: 'Antepasados históricos',
+                pt: 'Ancestrais históricos', pt: 'Ancestrais históricos',
                 ru: 'Ист. предки', uk: 'Іст. предки',
                 ar: 'أسلاف تاريخيون', he: 'אבות היסטוריים', sw: 'Mababu wa kihistoria' },
             sources: { en: 'Sources', ja: '参考', ko: '참고', zh: '参考',
                 yue: '參考', vi: 'Nguồn', th: 'แหล่งข้อมูล', id: 'Sumber', hi: 'स्रोत',
                 de: 'Quellen', fr: 'Sources', it: 'Fonti',
-                es: 'Fuentes', es_eu: 'Fuentes', es_mx: 'Fuentes',
-                pt: 'Fontes', pt_eu: 'Fontes', pt_br: 'Fontes',
+                es: 'Fuentes', es: 'Fuentes',
+                pt: 'Fontes', pt: 'Fontes',
                 ru: 'Источники', uk: 'Джерела',
                 ar: 'المصادر', he: 'מקורות', sw: 'Vyanzo' },
             searchPlaceholder: { en: '🔍 Search language…', ja: '🔍 言語を検索…', ko: '🔍 언어 검색…', zh: '🔍 搜索语言…',
                 yue: '🔍 搜尋語言…', vi: '🔍 Tìm ngôn ngữ…', th: '🔍 ค้นหาภาษา…',
                 id: '🔍 Cari bahasa…', hi: '🔍 भाषा खोजें…', de: '🔍 Sprache suchen…',
                 fr: '🔍 Rechercher une langue…', it: '🔍 Cerca lingua…',
-                es: '🔍 Buscar idioma…', es_eu: '🔍 Buscar idioma…', es_mx: '🔍 Buscar idioma…',
-                pt: '🔍 Pesquisar idioma…', pt_eu: '🔍 Pesquisar idioma…', pt_br: '🔍 Pesquisar idioma…',
+                es: '🔍 Buscar idioma…', es: '🔍 Buscar idioma…',
+                pt: '🔍 Pesquisar idioma…', pt: '🔍 Pesquisar idioma…',
                 ru: '🔍 Поиск языка…', uk: '🔍 Пошук мови…',
                 ar: '🔍 ابحث عن لغة…', he: '🔍 חיפוש שפה…', sw: '🔍 Tafuta lugha…' },
             chromeToggleHide: { en: 'Hide UI overlays', ja: 'UI を隠す', ko: 'UI 숨기기', zh: '隐藏 UI 覆盖层', yue: '隱藏 UI 覆蓋', vi: 'Ẩn lớp phủ UI', th: 'ซ่อนชั้น UI', id: 'Sembunyikan UI', hi: 'UI ओवरले छिपाएँ', de: 'UI ausblenden', fr: 'Masquer l’UI', it: 'Nascondi UI', es: 'Ocultar UI', pt: 'Ocultar UI', ru: 'Скрыть UI', uk: 'Сховати UI', ar: 'إخفاء واجهة المستخدم', he: 'הסתר את ממשק המשתמש', sw: 'Ficha UI' },
@@ -4357,17 +4363,17 @@
                 ar:'أوقف فلتر {era} للاختيار', he:'בטל את מסנן ה־{era} לבחירה',
                 sw:'Zima kichujio cha {era} ili kuchagua' },
             triviaButton: {
-                en: 'Linguistic Trivia', ja: '言語学の豆知識',
-                ko: '언어학 토막상식', zh: '语言学小知识', yue: '語言學小知識',
-                vi: 'Mẹo ngôn ngữ', th: 'เกร็ดภาษาศาสตร์',
-                id: 'Trivia Linguistik', hi: 'भाषाविज्ञान रोचक',
-                de: 'Sprach-Trivia', fr: 'Anecdotes linguistiques',
-                it: 'Curiosità linguistiche',
-                es: 'Curiosidades lingüísticas', es_eu: 'Curiosidades lingüísticas', es_mx: 'Curiosidades lingüísticas',
-                pt: 'Curiosidades linguísticas', pt_eu: 'Curiosidades linguísticas', pt_br: 'Curiosidades linguísticas',
-                ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
-                ar: 'طرائف لغوية', he: 'טריוויה לשונית',
-                sw: 'Mambo ya Kiisimu',
+                en: 'Sinosphere Trivia', ja: '漢字文化圏の豆知識',
+                ko: '한자문화권 토막상식', zh: '汉字文化圈小知识', yue: '漢字文化圈小知識',
+                vi: 'Mẹo về vùng Hán tự', th: 'เกร็ดวัฒนธรรมอักษรจีน',
+                id: 'Trivia Sinosfer', hi: 'सिनोस्फेयर रोचक',
+                de: 'Sinosphäre-Trivia', fr: 'Anecdotes du monde sinographique',
+                it: 'Curiosità sinosferiche',
+                es: 'Curiosidades sinosféricas', es: 'Curiosidades sinosféricas',
+                pt: 'Curiosidades da Sinosfera', pt: 'Curiosidades da Sinosfera',
+                ru: 'Факты о синосфере', uk: 'Факти про синосферу',
+                ar: 'طرائف الفضاء الصيني', he: 'טריוויה על הסינוספרה',
+                sw: 'Mambo ya Sinosphia',
             },
             triviaButtonShort: {
                 // Compact label for the mobile header bar where horizontal
@@ -4379,8 +4385,8 @@
                 id: 'Trivia', hi: 'रोचक',
                 de: 'Trivia', fr: 'Anecdotes',
                 it: 'Curiosità',
-                es: 'Curiosidades', es_eu: 'Curiosidades', es_mx: 'Curiosidades',
-                pt: 'Curiosidades', pt_eu: 'Curiosidades', pt_br: 'Curiosidades',
+                es: 'Curiosidades', es: 'Curiosidades',
+                pt: 'Curiosidades', pt: 'Curiosidades',
                 ru: 'Факты', uk: 'Факти',
                 ar: 'طرائف', he: 'טריוויה',
                 sw: 'Mambo',
@@ -4392,8 +4398,8 @@
                 id: 'Trivia Linguistik', hi: 'भाषाविज्ञान रोचक',
                 de: 'Sprach-Trivia', fr: 'Anecdotes linguistiques',
                 it: 'Curiosità linguistiche',
-                es: 'Curiosidades lingüísticas', es_eu: 'Curiosidades lingüísticas', es_mx: 'Curiosidades lingüísticas',
-                pt: 'Curiosidades linguísticas', pt_eu: 'Curiosidades linguísticas', pt_br: 'Curiosidades linguísticas',
+                es: 'Curiosidades lingüísticas', es: 'Curiosidades lingüísticas',
+                pt: 'Curiosidades linguísticas', pt: 'Curiosidades linguísticas',
                 ru: 'Лингвистические факты', uk: 'Лінгвістичні факти',
                 ar: 'طرائف لغوية', he: 'טריוויה לשונית',
                 sw: 'Mambo ya Kiisimu',
@@ -4402,8 +4408,8 @@
                 en: 'Close', ja: '閉じる', ko: '닫기', zh: '关闭', yue: '關閉',
                 vi: 'Đóng', th: 'ปิด', id: 'Tutup', hi: 'बंद करें',
                 de: 'Schließen', fr: 'Fermer', it: 'Chiudi',
-                es: 'Cerrar', es_eu: 'Cerrar', es_mx: 'Cerrar',
-                pt: 'Fechar', pt_eu: 'Fechar', pt_br: 'Fechar',
+                es: 'Cerrar', es: 'Cerrar',
+                pt: 'Fechar', pt: 'Fechar',
                 ru: 'Закрыть', uk: 'Закрити',
                 ar: 'إغلاق', he: 'סגירה', sw: 'Funga',
             },
@@ -4973,13 +4979,13 @@
                 const cellFontPx = parseFloat(getComputedStyle(cbtn).fontSize) || Math.round(cellH * 0.67);
                 for (const ch of cells) {
                     const c = document.createElement('div');
-                    // 2026-05-30: cells showed raw "行:1" during the spin.
-                    // Render with displayCharOf + sup badge to match the
-                    // settled char button.
-                    const dc = displayCharOf(ch);
-                    const sb = senseBadgeOf(ch);
-                    c.innerHTML = escapeHtml(dc) +
-                        (sb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(sb) + '</sup>' : '');
+                    // Cells render the bare display char only — the red
+                    // sense-badge sup that used to ride along here was a
+                    // past-life artifact from when the badge doubled as
+                    // the sense disambiguator. Sense tabs own that job
+                    // now, and the roulette only ever lands on `:1`, so
+                    // the flickering "¹" during the spin was pure noise.
+                    c.innerHTML = escapeHtml(displayCharOf(ch));
                     c.style.cssText = 'height:' + cellH + 'px;flex:0 0 ' + cellH + 'px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:' + cellFontPx + 'px';
                     reel.appendChild(c);
                 }
@@ -5003,11 +5009,11 @@
                     while (cbtn.firstChild) cbtn.removeChild(cbtn.firstChild);
                     cbtn.style.overflow = prevOverflow || '';
                     cbtn.style.position = prevPos || '';
-                    // Final char render uses sense badge too.
-                    const fdc = displayCharOf(finalCh);
-                    const fsb = senseBadgeOf(finalCh);
-                    cbtn.innerHTML = escapeHtml(fdc) +
-                        (fsb ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px">' + escapeHtml(fsb) + '</sup>' : '');
+                    // Final char render: display char only. Sense tabs
+                    // (renderSenseTabs, called via setChar below) carry
+                    // any :1/:2 disambiguation, so the main button stays
+                    // visually quiet.
+                    cbtn.innerHTML = escapeHtml(displayCharOf(finalCh));
                     cbtn.removeAttribute('aria-busy');
                     _rouletteRunning = false;
                     // Stop dice jiggle at the same instant the char snaps.
@@ -5082,9 +5088,10 @@
         }, 0);
 
         // --- Toggle buttons ---
-        let showWord = true, showIpa = true, showName = true, showNative = false;
+        let showWord = true, showIpa = true, showName = true, showNative = false, showScript = true;
         let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
+        const btnScript = document.getElementById('toggle-script');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
         const nameNative = document.getElementById('name-native');
@@ -5133,7 +5140,7 @@
         function updateTopLeftVisibility() {
             const filterBtn = document.getElementById('hm-lang-filter-btn');
             const randomBtn = document.getElementById('char-random-btn');
-            const allOff = !showWord && !showIpa && !showName;
+            const allOff = !showWord && !showScript && !showIpa && !showName;
             if (filterBtn) filterBtn.style.display = allOff ? 'none' : '';
             if (randomBtn) randomBtn.style.display = allOff ? 'none' : '';
         }
@@ -5145,9 +5152,11 @@
                 updateOnOff(btn, getter());
                 updateMarkers(currentWord);
                 updateTopLeftVisibility();
+                try { if (typeof updateHash === 'function') updateHash(); } catch (_) {}
             });
         }
         setupToggle(btnWord, () => showWord, v => showWord = v);
+        setupToggle(btnScript, () => showScript, v => showScript = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
         updateTopLeftVisibility();
@@ -5378,7 +5387,7 @@
         // Hanmap: initial character is 一 (first in HAN_LIST). The legacy
         // `select.value` is kept in sync with this via the char-modal handler.
         let currentWord = (typeof HAN_LIST !== 'undefined' && HAN_LIST[0]) || '一';
-        const MAJOR = new Set(['ja','ko','zh','en','de','fr','es_eu','es_mx','pt_br','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
+        const MAJOR = new Set(['ja','ko','zh','en','de','fr','es','pt','ru','ar','hi','vi','th','id','tr','sw','fa','eo']);
 
         // Historical-mode codes → representative modern descendant (or null).
         // Used both as the canonical list of "show in historical mode" languages
@@ -5941,10 +5950,21 @@
                 // should now be filled distinctly by the audit pass. For any
                 // legacy row where only one is set, route the lone value into
                 // the correct column by sniffing for IPA-style characters.
-                const haveBoth = storedSurf && storedIpa;
+                //
+                // HAN_VARIANTS rows (文白異讀 etc.) carry a per-reading 注
+                // (label) and pass BOTH surface + ipa as args even though the
+                // HAN_DATA top-level cell is empty. Honour those args directly
+                // so the 表記 (romanisation) is kept — collapsing them via the
+                // lone-value sniff below would wrongly blank the surface
+                // whenever the IPA looks IPA-ish (which it always does).
+                const haveBoth     = storedSurf && storedIpa;
+                const haveBothArgs = surfArg && ipaArg && surfArg !== ipaArg;
                 if (haveBoth) {
                     surface = storedSurf;
                     ipaOut  = hanmapConvertToneDigits(storedIpa);
+                } else if (haveBothArgs) {
+                    surface = surfArg;
+                    ipaOut  = hanmapConvertToneDigits(ipaArg);
                 } else {
                     const lone = ipaArg || surfArg;
                     const val = hanmapConvertToneDigits(lone);
@@ -6053,6 +6073,20 @@
                         const shortLab = v.label_short || hanmapShortLabel(v.label);
                         rows.push({ native: n, romanized: s, ipa: vi, label: shortLab });
                     }
+                    // When every variant ends up with the same surface/IPA/
+                    // native text (e.g. 漢音=呉音 collapsing on chars whose
+                    // Middle-Chinese reflex converged in Japanese — 三/水/天
+                    // etc.), the per-variant labels (Kan-on / Go-on / 文讀 /
+                    // 白讀) are just noise on the map. Collapse to one row
+                    // with no label so the user sees the reading once.
+                    if (rows.length > 1) {
+                        const first = rows[0];
+                        const allEqual = rows.every(r =>
+                            r.native === first.native
+                            && r.romanized === first.romanized
+                            && r.ipa === first.ipa);
+                        if (allEqual) rows = [{ ...first, label: '' }];
+                    }
                 } else {
                     const full = hanmapNormalizeFull(code, word, ipa, currentWord);
                     rows.push({ native: full[0], romanized: full[1], ipa: full[2], label: '' });
@@ -6082,7 +6116,7 @@
                 if (r.romanized) wordHtml += escapeHtml(r.romanized);
                 if (r.label)     wordHtml += `<span class="hanmap-label">${escapeHtml(r.label)}</span>`;
                 if (showWord && wordHtml) html += `<div class="word" dir="auto" ${c ? `style="color:${c}"` : ''}>${wordHtml}</div>`;
-                if (showWord && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
+                if (showScript && r.native) html += `<div class="word hanmap-native-line" dir="auto" ${c ? `style="color:${c}"` : ''}>${escapeHtml(r.native)}</div>`;
                 // Suppress the /ipa/ line ONLY when the IPA is a starred
                 // reconstruction (e.g. zh_han Baxter-Sagart "*ʔi[t]") AND
                 // it duplicates the surface — there's no point repeating
@@ -6159,47 +6193,168 @@
         // Korean Sino-reading"), so we only override Japanese and a few
         // other east-asian UIs where the canonical form runs long.
         const HAN_SHORT_NAMES = {
-            ja_ojp:     { ja:'上代日本音',       ko:'고대 일본음',     zh:'上代日語音',     yue:'上代日語音' },
-            ko_zai:     { ja:'在日韓国音',       ko:'재일 한국음',     zh:'在日韓國音',     yue:'在日韓國音' },
-            ko_mid:     { ja:'中世韓国音',       ko:'중세 한국음',     zh:'中世韓國音',     yue:'中世韓國音' },
-            ko_hun:     { ja:'韓国訓 (固有)',    ko:'한국 훈독',       zh:'韓國訓讀',       yue:'韓國訓讀' },
-            ja_kun:     { ja:'訓読み',           ko:'일본 훈독',       zh:'日語訓讀',       yue:'日語訓讀' },
-            ja_kgs:     { ja:'鹿児島漢字音',     ko:'가고시마 한자음', zh:'鹿兒島漢字音',   yue:'鹿兒島漢字音' },
-            ja_okn:     { ja:'沖縄漢字音',       ko:'오키나와 한자음', zh:'沖繩漢字音',     yue:'沖繩漢字音' },
-            ja_thk:     { ja:'東北漢字音',       ko:'도호쿠 한자음',   zh:'東北漢字音',     yue:'東北漢字音' },
-            vi_ohan:    { ja:'古漢越音',         ko:'고대 한월음',     zh:'古漢越音',       yue:'古漢越音' },
-            vi_han:     { ja:'漢越音',           ko:'한월음',          zh:'漢越音',         yue:'漢越音' },
-            vi_nom:     { ja:'字喃',             ko:'쯔놈',            zh:'喃字',           yue:'喃字' },
-            bo_sino:    { ja:'現代蔵音',         ko:'현대 티베트음',   zh:'現代藏音',       yue:'現代藏音' },
-            zh_phagspa: { ja:'八思巴字音',       ko:'파스파 음',       zh:'八思巴字音',     yue:'八思巴字音' },
-            zh_yuan:    { ja:'元代官話',         ko:'원대 관화',       zh:'元代官話',       yue:'元代官話' },
-            zh_kanbun:  { ja:'漢文訓読',         ko:'한문 훈독',       zh:'漢文訓讀',       yue:'漢文訓讀' },
-            zh_th:      { ja:'タイ華僑音',       ko:'태국 화교음',     zh:'泰國華僑音',     yue:'泰國華僑音' },
-            zh_tw:      { ja:'台灣華語',         ko:'타이완 국어',     zh:'台灣華語',       yue:'台灣華語' },
-            zh_us:      { ja:'北米華僑音',       ko:'북미 화교음',     zh:'北美華僑音',     yue:'北美華僑音' },
-            yue_us:     { ja:'北米広東語',       ko:'북미 광동어',     zh:'北美粵語',       yue:'北美粵語' },
-            nan_pera:   { ja:'プラナカン福建語', ko:'프라나칸 민남어', zh:'娘惹福建話',     yue:'娘惹福建話' },
-            nan_id:     { ja:'インドネシア福建語', ko:'인도네시아 민남어', zh:'印尼福建話', yue:'印尼福建話' },
-            nan_my:     { ja:'マレーシア福建語', ko:'말레이시아 민남어', zh:'馬來西亞福建話', yue:'馬來西亞福建話' },
-            nan_sg:     { ja:'シンガポール福建語', ko:'싱가포르 민남어', zh:'新加坡福建話', yue:'新加坡福建話' },
-            nan_th:     { ja:'タイ華僑潮州語',   ko:'태국 화교 조주어', zh:'泰國華僑潮州話', yue:'泰國華僑潮州話' },
-            sjo:        { ja:'シベ語',           ko:'시버어',          zh:'錫伯語',         yue:'錫伯語' },
-            ja_heian:   { ja:'平安日本語',       ko:'헤이안 일본어',   zh:'平安日語',       yue:'平安日語' },
-            ja_edo:     { ja:'江戸日本語',       ko:'에도 일본어',     zh:'江戶日語',       yue:'江戶日語' },
-            wuu:        { ja:'上海語',           ko:'상하이어',        zh:'上海話',         yue:'上海話' },
-            zh_jiao:    { ja:'膠遼官話',         ko:'자오랴오 관화',   zh:'膠遼官話',       yue:'膠遼官話' },
-            hak_mz:     { ja:'梅縣客家語',       ko:'메이셴 객가어',   zh:'梅縣客家話',     yue:'梅縣客家話' },
-            zh_gl:      { ja:'桂柳官話',         ko:'구이류 관화',     zh:'桂柳官話',       yue:'桂柳官話' },
-            // Proto languages — shorten "祖語" to "祖" suffix for compactness
-            pst:  { ja:'漢蔵祖', ko:'한장조어',     zh:'漢藏祖',     yue:'漢藏祖' },
-            ptb:  { ja:'蔵緬祖', ko:'장면조어',     zh:'藏緬祖',     yue:'藏緬祖' },
-            pko:  { ja:'朝鮮祖', ko:'조선조어',     zh:'朝鮮祖',     yue:'朝鮮祖' },
-            pja:  { ja:'日本祖', ko:'일본조어',     zh:'日本祖',     yue:'日本祖' },
-            ptung:{ ja:'通古斯祖', ko:'퉁구스조어', zh:'通古斯祖',   yue:'通古斯祖' },
-            paa:  { ja:'南亜祖', ko:'남아시아조어', zh:'南亞祖',     yue:'南亞祖' },
-            ptai: { ja:'タイ祖', ko:'타이조어',     zh:'壯侗祖',     yue:'壯侗祖' },
-            pmgl: { ja:'蒙古祖', ko:'몽골조어',     zh:'蒙古祖',     yue:'蒙古祖' },
-            phm:  { ja:'苗瑶祖', ko:'먀오야오조어', zh:'苗瑤祖',     yue:'苗瑤祖' },
+            ja_ojp:     { ja:'上代日本音', ko:'고대 일본음', zh:'上代日語音', yue:'上代日語音',
+                          en:'Old Japanese SX', fr:'Vieux jap. SX', de:'Altjap. SJ', es:'Sino-jap. antiguo', pt:'Sino-jap. antigo', it:'Sino-giapp. antico',
+                          ru:'Др.-яп. СЯ', uk:'Давньояп. СЯ', ar:'يابانية قديمة (SX)', he:'יפנית עתיקה SX', sw:'Sino-Kijapani cha kale',
+                          vi:'Hán-Nhật cổ', th:'จีน-ญี่ปุ่นเก่า', id:'Sino-Jepang Kuno', hi:'पुरानी सिनो-जापानी' },
+            ko_zai:     { ja:'在日韓国音', ko:'재일 한국음', zh:'在日韓國音', yue:'在日韓國音',
+                          en:'Zainichi SK', fr:'SC zainichi', de:'Zainichi-SK', es:'Sino-coreano zainichi', pt:'Sino-coreano zainichi', it:'Sino-coreano zainichi',
+                          ru:'Дзайнити СК', uk:'Дзайнічі СК', ar:'سينو-كورية زاينيتشي', he:'סינו-קוריאנית זאיניצ׳י', sw:'Kikorea cha Zainichi',
+                          vi:'Hán-Hàn Zainichi', th:'จีน-เกาหลีไซนิจิ', id:'Sino-Korea Zainichi', hi:'जैनिची सिनो-कोरियाई' },
+            ko_mid:     { ja:'中世韓国音', ko:'중세 한국음', zh:'中世韓國音', yue:'中世韓國音',
+                          en:'M. Korean SK', fr:'SC moy. coréen', de:'M.-Kor. SK', es:'Sino-cor. medio', pt:'Sino-cor. médio', it:'Sino-cor. medio',
+                          ru:'Ср.-кор. СК', uk:'Сер.-кор. СК', ar:'سينو-كورية وسطى', he:'סינו-קוריאנית תיכונה', sw:'Sino-Kikorea cha kati',
+                          vi:'Hán-Hàn trung cổ', th:'จีน-เกาหลีกลาง', id:'Sino-Korea Pertengahan', hi:'मध्य सिनो-कोरियाई' },
+            ko_hun:     { ja:'韓国訓 (固有)', ko:'한국 훈독', zh:'韓國訓讀', yue:'韓國訓讀',
+                          en:'Korean kun', fr:'Kun coréen', de:'Kor. Kun-Lesung', es:'Lectura kun coreana', pt:'Leitura kun coreana', it:'Lettura kun cor.',
+                          ru:'Кор. кун', uk:'Кор. кун', ar:'قراءة كون كورية', he:'קריאת קוּן קוריאנית', sw:'Kun ya Kikorea',
+                          vi:'Huấn đọc Hàn', th:'อ่านคุนเกาหลี', id:'Kun Korea', hi:'कोरियाई कुन' },
+            ja_kun:     { ja:'訓読み', ko:'일본 훈독', zh:'日語訓讀', yue:'日語訓讀',
+                          en:'Kun-yomi', fr:'Kun-yomi', de:'Kun-Lesung', es:'Lectura kun', pt:'Leitura kun', it:'Lettura kun',
+                          ru:'Кунъёми', uk:'Кунйомі', ar:'كون-يومي', he:'קוּן-יוֹמי', sw:'Kun-yomi',
+                          vi:'Kun-yomi', th:'คุนโยมิ', id:'Kun-yomi', hi:'कुन-योमी' },
+            ja_kgs:     { ja:'鹿児島漢字音', ko:'가고시마 한자음', zh:'鹿兒島漢字音', yue:'鹿兒島漢字音',
+                          en:'Kagoshima SJ', fr:'SJ Kagoshima', de:'SJ Kagoshima', es:'SJ Kagoshima', pt:'SJ Kagoshima', it:'SJ Kagoshima',
+                          ru:'СЯ Кагосима', uk:'СЯ Каґосіма', ar:'سينو-يابانية كاغوشيما', he:'סינו-יפנית קאגושימה', sw:'SJ Kagoshima',
+                          vi:'Hán-Nhật Kagoshima', th:'จีน-ญี่ปุ่นคาโงชิมะ', id:'SJ Kagoshima', hi:'सिनो-जा. कागोशिमा' },
+            ja_okn:     { ja:'沖縄漢字音', ko:'오키나와 한자음', zh:'沖繩漢字音', yue:'沖繩漢字音',
+                          en:'Okinawa SJ', fr:'SJ Okinawa', de:'SJ Okinawa', es:'SJ Okinawa', pt:'SJ Okinawa', it:'SJ Okinawa',
+                          ru:'СЯ Окинава', uk:'СЯ Окінава', ar:'سينو-يابانية أوكيناوا', he:'סינו-יפנית אוקינאווה', sw:'SJ Okinawa',
+                          vi:'Hán-Nhật Okinawa', th:'จีน-ญี่ปุ่นโอกินาวะ', id:'SJ Okinawa', hi:'सिनो-जा. ओकिनावा' },
+            ja_thk:     { ja:'東北漢字音', ko:'도호쿠 한자음', zh:'東北漢字音', yue:'東北漢字音',
+                          en:'Tōhoku SJ', fr:'SJ Tōhoku', de:'SJ Tōhoku', es:'SJ Tōhoku', pt:'SJ Tōhoku', it:'SJ Tōhoku',
+                          ru:'СЯ Тохоку', uk:'СЯ Тохоку', ar:'سينو-يابانية توهوكو', he:'סינו-יפנית טוהוקו', sw:'SJ Tōhoku',
+                          vi:'Hán-Nhật Tōhoku', th:'จีน-ญี่ปุ่นโทโฮกุ', id:'SJ Tōhoku', hi:'सिनो-जा. तोहोकु' },
+            vi_ohan:    { ja:'古漢越音', ko:'고대 한월음', zh:'古漢越音', yue:'古漢越音',
+                          en:'Old SV', fr:'Sino-V. anc.', de:'Alt-Sino-V.', es:'Sino-viet. ant.', pt:'Sino-viet. ant.', it:'Sino-viet. ant.',
+                          ru:'Др. сино-вьет.', uk:'Давн. сино-в\'єт.', ar:'سينو-فيتنامية قديمة', he:'סינו-וייטנאמית עתיקה', sw:'Sino-Viet ya kale',
+                          vi:'Cổ Hán-Việt', th:'จีน-เวียดเก่า', id:'Sino-Viet Kuno', hi:'पुरानी सिनो-वियतनामी' },
+            vi_han:     { ja:'漢越音', ko:'한월음', zh:'漢越音', yue:'漢越音',
+                          en:'Sino-Viet', fr:'Sino-V.', de:'Sino-V.', es:'Sino-viet.', pt:'Sino-viet.', it:'Sino-viet.',
+                          ru:'Сино-вьет.', uk:'Сино-в\'єт.', ar:'سينو-فيتنامية', he:'סינו-וייטנאמית', sw:'Sino-Kivietinamu',
+                          vi:'Hán-Việt', th:'จีน-เวียด', id:'Sino-Viet', hi:'सिनो-वियतनामी' },
+            vi_nom:     { ja:'字喃', ko:'쯔놈', zh:'喃字', yue:'喃字',
+                          en:'Chữ Nôm', fr:'Chữ Nôm', de:'Chữ Nôm', es:'Chữ Nôm', pt:'Chữ Nôm', it:'Chữ Nôm',
+                          ru:'Тьы-ном', uk:'Тьи-ном', ar:'تشو نوم', he:'צ׳ו נום', sw:'Chữ Nôm',
+                          vi:'Chữ Nôm', th:'จื๋อโนม', id:'Chữ Nôm', hi:'चु नोम' },
+            bo_sino:    { ja:'現代蔵音', ko:'현대 티베트음', zh:'現代藏音', yue:'現代藏音',
+                          en:'Mod. Tibetan', fr:'Tibét. mod.', de:'Mod. Tib.', es:'Tibet. mod.', pt:'Tibet. mod.', it:'Tibet. mod.',
+                          ru:'Совр. тибет.', uk:'Суч. тибет.', ar:'تبتية حديثة', he:'טיבטית מודרנית', sw:'Kitibeti cha kisasa',
+                          vi:'Tạng hiện đại', th:'ทิเบตสมัยใหม่', id:'Tibet Modern', hi:'आधुनिक तिब्बती' },
+            zh_phagspa: { ja:'八思巴字音', ko:'파스파 음', zh:'八思巴字音', yue:'八思巴字音',
+                          en:'Phags-pa', fr:'Phags-pa', de:'Phags-pa', es:'Phags-pa', pt:'Phags-pa', it:'Phags-pa',
+                          ru:'Пагба', uk:'Паґба', ar:'فاكس-با', he:'פאגס-פא', sw:'Phags-pa',
+                          vi:'Phags-pa', th:'พักปา', id:'Phags-pa', hi:'फग्स-पा' },
+            zh_yuan:    { ja:'元代官話', ko:'원대 관화', zh:'元代官話', yue:'元代官話',
+                          en:'Yuan Mand.', fr:'Mand. Yuan', de:'Yuan-Mand.', es:'Mandarín Yuan', pt:'Mandarim Yuan', it:'Mandarino Yuan',
+                          ru:'Юаньский кит.', uk:'Юанський кит.', ar:'ماندرين يوان', he:'מנדרינית יואן', sw:'Mandarin ya Yuan',
+                          vi:'Quan thoại Nguyên', th:'แมนดารินหยวน', id:'Mandarin Yuan', hi:'युआन मंदारिन' },
+            zh_kanbun:  { ja:'漢文訓読', ko:'한문 훈독', zh:'漢文訓讀', yue:'漢文訓讀',
+                          en:'Kanbun', fr:'Kanbun', de:'Kanbun', es:'Kanbun', pt:'Kanbun', it:'Kanbun',
+                          ru:'Камбун', uk:'Камбун', ar:'كانبون', he:'קאנבון', sw:'Kanbun',
+                          vi:'Kanbun', th:'คันบุน', id:'Kanbun', hi:'कानबुन' },
+            zh_th:      { ja:'タイ華僑音', ko:'태국 화교음', zh:'泰國華僑音', yue:'泰國華僑音',
+                          en:'TH Mandarin', fr:'Mand. TH', de:'TH-Mandarin', es:'Mandarín TH', pt:'Mandarim TH', it:'Mandarino TH',
+                          ru:'Тайск. кит.', uk:'Тайськ. кит.', ar:'ماندرين تايلاند', he:'מנדרינית תאי', sw:'Mandarin ya TH',
+                          vi:'Quan thoại Thái', th:'แมนดารินไทย', id:'Mandarin TH', hi:'थाई मंदारिन' },
+            zh_tw:      { ja:'台灣華語', ko:'타이완 국어', zh:'台灣華語', yue:'台灣華語',
+                          en:'Taiwan Mand.', fr:'Mand. Taïwan', de:'Mand. (TW)', es:'Mandarín TW', pt:'Mandarim TW', it:'Mandarino TW',
+                          ru:'Тайв. кит.', uk:'Тайв. кит.', ar:'ماندرين تايوان', he:'מנדרינית טייוואן', sw:'Mandarin ya Taiwan',
+                          vi:'Quan thoại Đài', th:'แมนดารินไต้หวัน', id:'Mandarin TW', hi:'ताइवानी मंदारिन' },
+            zh_us:      { ja:'北米華僑音', ko:'북미 화교음', zh:'北美華僑音', yue:'北美華僑音',
+                          en:'US Chinese', fr:'Sino-USA', de:'US-Chinesisch', es:'Chino EE.UU.', pt:'Chinês EUA', it:'Cinese USA',
+                          ru:'Амер. кит.', uk:'Амер. кит.', ar:'صينية أمريكية', he:'סינית אמריקאית', sw:'Kichina cha Marekani',
+                          vi:'Hoa kiều Mỹ', th:'จีนอเมริกัน', id:'Mandarin AS', hi:'अमेरिकी चीनी' },
+            yue_us:     { ja:'北米広東語', ko:'북미 광동어', zh:'北美粵語', yue:'北美粵語',
+                          en:'US Cantonese', fr:'Cant. USA', de:'US-Kantones.', es:'Cantonés EE.UU.', pt:'Cantonês EUA', it:'Cantonese USA',
+                          ru:'Амер. кантон.', uk:'Амер. кантон.', ar:'كانتونية أمريكية', he:'קנטונזית אמריקאית', sw:'Kikanton cha Marekani',
+                          vi:'Quảng Đông Mỹ', th:'กวางตุ้งอเมริกัน', id:'Kanton AS', hi:'अमेरिकी कैंटोनी' },
+            nan_pera:   { ja:'プラナカン福建語', ko:'프라나칸 민남어', zh:'娘惹福建話', yue:'娘惹福建話',
+                          en:'Peranakan', fr:'Peranakan', de:'Peranakan', es:'Peranakan', pt:'Peranakan', it:'Peranakan',
+                          ru:'Перанаканский', uk:'Перанаканський', ar:'بيرانكان', he:'פרנקאן', sw:'Peranakan',
+                          vi:'Peranakan', th:'เปอรานากัน', id:'Peranakan', hi:'पेरानाकन' },
+            nan_id:     { ja:'インドネシア福建語', ko:'인도네시아 민남어', zh:'印尼福建話', yue:'印尼福建話',
+                          en:'ID Hokkien', fr:'Hokkien ID', de:'ID-Hokkien', es:'Hokkien ID', pt:'Hoquien ID', it:'Hokkien ID',
+                          ru:'Индонез. хоккиен', uk:'Індонез. хоккієн', ar:'هوكين إندونيسيا', he:'הוקין אינדונזיה', sw:'Hokkien ya ID',
+                          vi:'Hokkien ID', th:'ฮกเกี้ยน ID', id:'Hokkien ID', hi:'इंडोनेशियाई होक्किएन' },
+            nan_my:     { ja:'マレーシア福建語', ko:'말레이시아 민남어', zh:'馬來西亞福建話', yue:'馬來西亞福建話',
+                          en:'MY Hokkien', fr:'Hokkien MY', de:'MY-Hokkien', es:'Hokkien MY', pt:'Hoquien MY', it:'Hokkien MY',
+                          ru:'Малайз. хоккиен', uk:'Малайз. хоккієн', ar:'هوكين ماليزيا', he:'הוקין מלזיה', sw:'Hokkien ya MY',
+                          vi:'Hokkien MY', th:'ฮกเกี้ยน MY', id:'Hokkien MY', hi:'मलेशियाई होक्किएन' },
+            nan_sg:     { ja:'シンガポール福建語', ko:'싱가포르 민남어', zh:'新加坡福建話', yue:'新加坡福建話',
+                          en:'SG Hokkien', fr:'Hokkien SG', de:'SG-Hokkien', es:'Hokkien SG', pt:'Hoquien SG', it:'Hokkien SG',
+                          ru:'Сингап. хоккиен', uk:'Сингап. хоккієн', ar:'هوكين سنغافورة', he:'הוקין סינגפור', sw:'Hokkien ya SG',
+                          vi:'Hokkien SG', th:'ฮกเกี้ยน SG', id:'Hokkien SG', hi:'सिंगापुरी होक्किएन' },
+            nan_th:     { ja:'タイ華僑潮州語', ko:'태국 화교 조주어', zh:'泰國華僑潮州話', yue:'泰國華僑潮州話',
+                          en:'TH Teochew', fr:'Teochew TH', de:'TH-Teochew', es:'Teochew TH', pt:'Teochew TH', it:'Teochew TH',
+                          ru:'Тайск. теочиу', uk:'Тайськ. теочіу', ar:'تيوتشيو تايلاند', he:'צ׳אוצ׳ו תאי', sw:'Teochew ya TH',
+                          vi:'Triều Châu TH', th:'แต้จิ๋วไทย', id:'Teochew TH', hi:'थाई तेओचेव' },
+            sjo:        { ja:'シベ語', ko:'시버어', zh:'錫伯語', yue:'錫伯語',
+                          en:'Xibe', fr:'Xibé', de:'Sibe', es:'Sibe', pt:'Sibe', it:'Sibe',
+                          ru:'Сибо', uk:'Сібо', ar:'الشيبية', he:'שיבה', sw:'Kixibe',
+                          vi:'Tiếng Tích Bá', th:'ภาษาสีโป', id:'Bahasa Xibe', hi:'शिबे' },
+            ja_heian:   { ja:'平安日本語', ko:'헤이안 일본어', zh:'平安日語', yue:'平安日語',
+                          en:'Heian J.', fr:'Jap. Heian', de:'Heian-Jap.', es:'Japonés Heian', pt:'Jap. Heian', it:'Giapp. Heian',
+                          ru:'Хэйанский яп.', uk:'Хейанська яп.', ar:'يابانية هيآن', he:'יפנית הייאן', sw:'Kijapani cha Heian',
+                          vi:'Nhật Heian', th:'ญี่ปุ่นเฮอัน', id:'Jepang Heian', hi:'हेइआन जापानी' },
+            ja_edo:     { ja:'江戸日本語', ko:'에도 일본어', zh:'江戶日語', yue:'江戶日語',
+                          en:'Edo J.', fr:'Jap. Edo', de:'Edo-Jap.', es:'Japonés Edo', pt:'Jap. Edo', it:'Giapp. Edo',
+                          ru:'Эдоский яп.', uk:'Едоська яп.', ar:'يابانية إيدو', he:'יפנית אדו', sw:'Kijapani cha Edo',
+                          vi:'Nhật Edo', th:'ญี่ปุ่นเอโดะ', id:'Jepang Edo', hi:'एदो जापानी' },
+            wuu:        { ja:'上海語', ko:'상하이어', zh:'上海話', yue:'上海話',
+                          en:'Shanghainese', fr:'Shanghaïen', de:'Shanghaiisch', es:'Shanghainés', pt:'Xangainês', it:'Shanghainese',
+                          ru:'Шанхайский', uk:'Шанхайська', ar:'الشانغهاينية', he:'שנגחאית', sw:'Kishanghai',
+                          vi:'Tiếng Thượng Hải', th:'ภาษาเซี่ยงไฮ้', id:'Shanghai', hi:'शंघाईनी' },
+            zh_jiao:    { ja:'膠遼官話', ko:'자오랴오 관화', zh:'膠遼官話', yue:'膠遼官話',
+                          en:'Jiao-Liao M.', fr:'Mand. Jiao-Liao', de:'Jiao-Liao-M.', es:'Mand. Jiao-Liao', pt:'Mand. Jiao-Liao', it:'Mand. Jiao-Liao',
+                          ru:'Цзяо-ляоский', uk:'Цзяо-ляоський', ar:'ماندرين جياو-لياو', he:'מנדרינית ג׳יאו-ליאו', sw:'Mandarin ya Jiao-Liao',
+                          vi:'Giao-Liêu', th:'แมนดารินเจียวเหลียว', id:'Mandarin Jiao-Liao', hi:'जिआओ-लियाओ' },
+            hak_mz:     { ja:'梅縣客家語', ko:'메이셴 객가어', zh:'梅縣客家話', yue:'梅縣客家話',
+                          en:'Meixian Hakka', fr:'Hakka Meixian', de:'Meixian-Hakka', es:'Hakka Meixian', pt:'Hakka Meixian', it:'Hakka Meixian',
+                          ru:'Мэйсяньский хакка', uk:'Мейсяньський хакка', ar:'هكّا ميشيان', he:'האקה מייסיאן', sw:'Hakka ya Meixian',
+                          vi:'Khách Gia Mai', th:'แคะเหมยเซี่ยน', id:'Hakka Meixian', hi:'मेइसिएन हक्का' },
+            zh_gl:      { ja:'桂柳官話', ko:'구이류 관화', zh:'桂柳官話', yue:'桂柳官話',
+                          en:'Guiliu Mand.', fr:'Mand. Guiliu', de:'Guiliu-Mand.', es:'Mand. Guiliu', pt:'Mand. Guiliu', it:'Mand. Guiliu',
+                          ru:'Гуй-лючжоуский', uk:'Гуй-лючжоуський', ar:'ماندرين غوي-ليو', he:'מנדרינית גוּי-ליוּ', sw:'Mandarin ya Gui-Liu',
+                          vi:'Quế-Liễu', th:'แมนดารินกุ้ย-หลิว', id:'Mandarin Gui-Liu', hi:'गुई-लियू' },
+            // Proto languages — shorten "祖語" to "祖" suffix for compactness.
+            // Non-CJK UIs use "Proto-XX" style shorthand.
+            pst:  { ja:'漢蔵祖', ko:'한장조어', zh:'漢藏祖', yue:'漢藏祖',
+                    en:'Proto-ST', fr:'Proto-ST', de:'Proto-ST', es:'Proto-ST', pt:'Proto-ST', it:'Proto-ST',
+                    ru:'Прасино-тибет.', uk:'Прасино-тибет.', ar:'صينو-تبتية أصلية', he:'פרוטו-סינו-טיבטית', sw:'Proto-ST',
+                    vi:'Hán-Tạng nguyên', th:'โปรโต-จีน-ทิเบต', id:'Proto-Sino-Tibet', hi:'प्रोटो-सिनो-तिब्बती' },
+            ptb:  { ja:'蔵緬祖', ko:'장면조어', zh:'藏緬祖', yue:'藏緬祖',
+                    en:'Proto-TB', fr:'Proto-TB', de:'Proto-TB', es:'Proto-TB', pt:'Proto-TB', it:'Proto-TB',
+                    ru:'Пратибето-бирм.', uk:'Пратибето-бірм.', ar:'تبتو-بورمية أصلية', he:'פרוטו-טיבטו-בורמית', sw:'Proto-TB',
+                    vi:'Tạng-Miến nguyên', th:'โปรโต-ทิเบต-พม่า', id:'Proto-Tibet-Burma', hi:'प्रोटो-तिब्बती-बर्मी' },
+            pko:  { ja:'朝鮮祖', ko:'조선조어', zh:'朝鮮祖', yue:'朝鮮祖',
+                    en:'Proto-K', fr:'Proto-K', de:'Proto-K', es:'Proto-K', pt:'Proto-K', it:'Proto-K',
+                    ru:'Пракорейский', uk:'Пракорейська', ar:'كورية أصلية', he:'פרוטו-קוריאנית', sw:'Proto-K',
+                    vi:'Hàn nguyên', th:'โปรโต-เกาหลี', id:'Proto-Korea', hi:'प्रोटो-कोरियाई' },
+            pja:  { ja:'日本祖', ko:'일본조어', zh:'日本祖', yue:'日本祖',
+                    en:'Proto-J', fr:'Proto-J', de:'Proto-J', es:'Proto-J', pt:'Proto-J', it:'Proto-J',
+                    ru:'Праяпонский', uk:'Праяпонська', ar:'يابانية أصلية', he:'פרוטו-יפנית', sw:'Proto-J',
+                    vi:'Nhật nguyên', th:'โปรโต-ญี่ปุ่น', id:'Proto-Jepang', hi:'प्रोटो-जापानी' },
+            ptung:{ ja:'通古斯祖', ko:'퉁구스조어', zh:'通古斯祖', yue:'通古斯祖',
+                    en:'Proto-T', fr:'Proto-T', de:'Proto-T', es:'Proto-T', pt:'Proto-T', it:'Proto-T',
+                    ru:'Пратунгус.', uk:'Пратунгус.', ar:'تونغوسية أصلية', he:'פרוטו-טונגוסית', sw:'Proto-T',
+                    vi:'Tungus nguyên', th:'โปรโต-ตุงกุส', id:'Proto-Tungus', hi:'प्रोटो-तुंगुसी' },
+            paa:  { ja:'南亜祖', ko:'남아시아조어', zh:'南亞祖', yue:'南亞祖',
+                    en:'Proto-AA', fr:'Proto-AA', de:'Proto-AA', es:'Proto-AA', pt:'Proto-AA', it:'Proto-AA',
+                    ru:'Праавстроаз.', uk:'Праавстроаз.', ar:'أسترو-آسيوية أصلية', he:'פרוטו-אוסטרו-אסיאתית', sw:'Proto-AA',
+                    vi:'Nam Á nguyên', th:'โปรโต-ออสโตรเอเชียติก', id:'Proto-Austroasia', hi:'प्रोटो-ऑस्ट्रोएशियाई' },
+            ptai: { ja:'タイ祖', ko:'타이조어', zh:'壯侗祖', yue:'壯侗祖',
+                    en:'Proto-Tai', fr:'Proto-Tai', de:'Proto-Tai', es:'Proto-Tai', pt:'Proto-Tai', it:'Proto-Tai',
+                    ru:'Пратайский', uk:'Пратайська', ar:'تاي أصلية', he:'פרוטו-טאי', sw:'Proto-Tai',
+                    vi:'Tai nguyên', th:'โปรโต-ไท', id:'Proto-Tai', hi:'प्रोटो-ताई' },
+            pmgl: { ja:'蒙古祖', ko:'몽골조어', zh:'蒙古祖', yue:'蒙古祖',
+                    en:'Proto-Mong.', fr:'Proto-Mong.', de:'Proto-Mong.', es:'Proto-Mong.', pt:'Proto-Mong.', it:'Proto-Mong.',
+                    ru:'Прамонгольский', uk:'Прамонгольська', ar:'منغولية أصلية', he:'פרוטו-מונגולית', sw:'Proto-Mongol',
+                    vi:'Mông Cổ nguyên', th:'โปรโต-มองโกล', id:'Proto-Mongol', hi:'प्रोटो-मंगोल' },
+            phm:  { ja:'苗瑶祖', ko:'먀오야오조어', zh:'苗瑤祖', yue:'苗瑤祖',
+                    en:'Proto-HM', fr:'Proto-HM', de:'Proto-HM', es:'Proto-HM', pt:'Proto-HM', it:'Proto-HM',
+                    ru:'Прамяо-яо', uk:'Прамяо-яо', ar:'همونغ-مين أصلية', he:'פרוטו-המונג-מיין', sw:'Proto-HM',
+                    vi:'Miêu-Dao nguyên', th:'โปรโต-ม้ง-เมี่ยน', id:'Proto-Hmong-Mien', hi:'प्रोटो-म्यांग-मियेन' },
         };
         function getDisplayName(code, lang) {
             if (showNative) return lang.native;
@@ -6219,6 +6374,14 @@
             // parenthetical — only one ja and one ko code in Hanmap.
             if (code === 'ja' || code === 'ko') {
                 n = n.replace(/\s*[(（](標準|标准|표준|Standard|estándar|standard)[)）]\s*$/i, '');
+            }
+            // Indonesian UI: drop the leading "Bahasa " prefix on map
+            // labels (user request 2026-05-31 — "地図上の表示が
+            // インドネシア語の場合は、Bahasa要らない"). "Bahasa
+            // Inggris" → "Inggris", "Bahasa Indonesia" → "Indonesia".
+            // Keep the prefix in modals/info panels where space is fine.
+            if (uiBase === 'id') {
+                n = n.replace(/^Bahasa\s+/i, '');
             }
             return n;
         }
@@ -6339,9 +6502,17 @@
         }
 
         // Build the per-(word,zoom,codes) cache key.
-        function _hmOffsetCacheKey(word, zoom, codes) {
+        function _hmOffsetCacheKey(word, zoom, codes, labelW, labelH) {
             // codes is small (<200) and sorted strings; join is cheap.
-            return word + '|' + zoom + '|' + codes.join(',');
+            // labelW/labelH are part of the key because the resulting
+            // pixel offsets are sized to the label box — reusing offsets
+            // computed for a bigger box (e.g. when 発音 was on) under a
+            // smaller box (after toggling 発音 off) leaves cached offsets
+            // that overshoot the new MAX_PUSH * 2.2 hide threshold and
+            // hides labels the user expected to still see.
+            return word + '|' + zoom + '|'
+                + Math.round(labelW) + 'x' + Math.round(labelH) + '|'
+                + codes.join(',');
         }
 
         // Run SA to refine offsets[]. Inputs:
@@ -6354,7 +6525,7 @@
         function _hmRefineOffsetsSA(codes, ppx, offsets, labelW, labelH, word, zoom) {
             if (codes.length < 2) return 0;
             const sortedCodes = codes.slice().sort();
-            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes);
+            const cacheKey = _hmOffsetCacheKey(word, zoom, sortedCodes, labelW, labelH);
             const cached = _hmLabelOffsetCache.get(cacheKey);
             if (cached) {
                 // LRU bump: re-insert so it's most-recently-used.
@@ -6441,6 +6612,20 @@
             if (showName) baseLineH += (zoom <= 3 ? 9  : zoom <= 5 ? 10 : 11);
             const labelH = (baseLineH * labelScale) + 4;
             const labelW = (zoom <= 3 ? 60 : zoom <= 5 ? 80 : 100) * labelScale;
+            // Search budget for collision avoidance: how far a label is
+            // allowed to be pushed from its anchor before we give up and
+            // hide it. This MUST NOT shrink when the user turns off
+            // toggles (user report 2026-05-31: "表記のみの時の表示数 <
+            // 表記+言語名の時の表示数" — counter-intuitive because
+            // smaller labels should fit MORE easily). The fix is to
+            // size MAX_PUSH from the FULL-toggle box height instead of
+            // the current labelH, so the cap reflects "how far is
+            // geographically reasonable" rather than "how tall is the
+            // current row". labelW (toggle-independent) also gives a
+            // sensible floor for narrow-row layouts.
+            const _fullH_z = (zoom <= 3 ? 32 : zoom <= 5 ? 36 : 40);
+            const labelHFull = (_fullH_z * labelScale) + 4;
+            const collisionBudgetH = Math.max(labelHFull, labelW * 0.55);
 
             // When a filter is active, only ACTIVE labels compete for cell
             // slots. Dimmed (filtered-out) labels stay at their natural
@@ -6449,8 +6634,14 @@
             // 対応から外す。活性化された言語のみかぶらないように退ける".)
             const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
                 && window.__langmap.anyFilterActive();
-            const isActive = (code) => !filterActive
-                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+            const isActive = (code) => {
+                // 2026-05-31: trivia spotlight bypasses the filter so the
+                // focus button always brings its target into view, even
+                // when the user has the language filtered out.
+                if (_triviaSpotlight && _triviaSpotlight.has(code)) return true;
+                return !filterActive
+                    || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+            };
 
             const ppx = {};
             // First pass: project ALL visible langs to pixels.
@@ -6727,7 +6918,12 @@
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
             // misleading geographic position.
-            const MAX_PUSH = labelH * 1.5;
+            // MAX_PUSH is sized from the full-toggle box, NOT current
+            // labelH — see comment near collisionBudgetH above. Using
+            // current labelH made the cap shrink when the user turned
+            // off rows, and the post-SA hide threshold (MAX_PUSH * 2.2)
+            // then hid labels that fit fine when more rows were on.
+            const MAX_PUSH = collisionBudgetH * 1.5;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {
@@ -6889,8 +7085,14 @@
             // with the 2D map behavior).
             const filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
                 && window.__langmap.anyFilterActive();
-            const isActive = (code) => !filterActive
-                || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+            const isActive = (code) => {
+                // 2026-05-31: trivia spotlight bypasses the filter so the
+                // focus button always brings its target into view, even
+                // when the user has the language filtered out.
+                if (_triviaSpotlight && _triviaSpotlight.has(code)) return true;
+                return !filterActive
+                    || (window.__langmap.passesFilter && window.__langmap.passesFilter(code));
+            };
 
             const cellGroups = {};
             for (const code of visibleLangs) {
@@ -6993,6 +7195,13 @@
             params.set('nat', showNative ? '1' : '0');
             params.set('hist', showHistorical ? '1' : '0');
             params.set('fs', String(fontSizeSlider.value));
+            // 2026-05-31: persist the settings-drawer toggles so a reload
+            // keeps the user's display preferences. Only emit when off
+            // (default ON for all four) to keep URLs short on first share.
+            if (!showWord)   params.set('w_form', '0');
+            if (!showScript) params.set('w_script', '0');
+            if (!showIpa)    params.set('w_ipa', '0');
+            if (!showName)   params.set('w_name', '0');
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
             if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
@@ -7034,9 +7243,8 @@
                 // Hanmap: also sync the giant character button.
                 const _hbtn = document.getElementById('char-current-btn');
                 if (_hbtn) {
-                    const {char: _hc, senseIdx: _hs} = senseSplitId(w);
-                    _hbtn.innerHTML = escapeHtml(_hc) +
-                        (_hs ? '<sup style="font-size:0.45em;font-weight:600;color:#c0392b;margin-left:2px;vertical-align:super">' + escapeHtml(_hs) + '</sup>' : '');
+                    const {char: _hc} = senseSplitId(w);
+                    _hbtn.innerHTML = escapeHtml(_hc);
                     _hbtn.title = senseLabelOf(w, uiLang) || w;
                 }
             }
@@ -7064,7 +7272,26 @@
                 fontSizeSlider.value = String(fs);
                 document.documentElement.style.setProperty('--label-scale', fs / 100);
             }
-            const ui = params.get('ui');
+            // 2026-05-31: restore settings-drawer toggles from URL. Default
+            // is ON; URL only carries the OFF state to keep links short.
+            function _applyToggleFromHash(param, btn, setter) {
+                if (params.get(param) === '0') {
+                    setter(false);
+                    if (btn) {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                        const oo = btn.querySelector('.onoff');
+                        if (oo) updateOnOff(btn, false);
+                    }
+                }
+            }
+            _applyToggleFromHash('w_form',   btnWord,   v => showWord = v);
+            _applyToggleFromHash('w_script', btnScript, v => showScript = v);
+            _applyToggleFromHash('w_ipa',    btnIpa,    v => showIpa = v);
+            _applyToggleFromHash('w_name',   btnName,   v => showName = v);
+            // Re-evaluate all-OFF state for top-left visibility.
+            if (typeof updateTopLeftVisibility === 'function') updateTopLeftVisibility();
+            const ui = _normalizeUiLang(params.get('ui'));
             if (ui && WM_UI[ui]) {
                 uiLang = ui;
                 uiLangSelect.value = ui;
@@ -7412,7 +7639,7 @@
             modern: null,
             attested: {
                 bg:'#e8f0fe', fg:'#1a73e8',
-                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es:'atestiguado', es_eu:'atestiguado', es_mx:'atestiguado', pt:'atestado', pt_eu:'atestado', pt_br:'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
+                labels: { en:'attested', ja:'文献あり', ko:'문헌 있음', zh:'文献存在', yue:'文獻存在', vi:'có chứng tích', th:'มีหลักฐาน', id:'terdokumentasi', hi:'प्रमाणित', de:'belegt', fr:'attesté', it:'attestato', es:'atestiguado', es: 'atestiguado', pt:'atestado', pt: 'atestado', ru:'засвидетельствовано', uk:'засвідчено', ar:'مُؤكَّد', he:'מתועד', sw:'imethibitishwa' },
                 descs: {
                     en:'Direct primary text corpus exists; values cite real sources.',
                     ja:'直接的な原典コーパスあり、値は実在の出典に依拠。',
@@ -7437,7 +7664,7 @@
             },
             fragmentary: {
                 bg:'#fef0e0', fg:'#c0392b',
-                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es:'fragmentario', es_eu:'fragmentario', es_mx:'fragmentario', pt:'fragmentário', pt_eu:'fragmentário', pt_br:'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
+                labels: { en:'fragmentary', ja:'断片的', ko:'단편적', zh:'残缺', yue:'殘缺', vi:'mảnh vỡ', th:'เศษเสี้ยว', id:'fragmenter', hi:'खंडित', de:'fragmentarisch', fr:'fragmentaire', it:'frammentario', es:'fragmentario', es: 'fragmentario', pt:'fragmentário', pt: 'fragmentário', ru:'фрагментарный', uk:'фрагментарний', ar:'مُتفرّق', he:'מקוטע', sw:'kipande kipande' },
                 descs: {
                     en:'Limited isolated attestations; many cells use related-language proxies.',
                     ja:'孤立した断片的資料のみ。多くのセルは近縁言語からの代用形を用いる。',
@@ -7462,7 +7689,7 @@
             },
             reconstructed: {
                 bg:'#fff5e0', fg:'#b56500',
-                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es:'reconstruido', es_eu:'reconstruido', es_mx:'reconstruido', pt:'reconstruído', pt_eu:'reconstruído', pt_br:'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
+                labels: { en:'reconstructed', ja:'比較再構', ko:'재구', zh:'重构', yue:'重構', vi:'tái dựng', th:'สร้างใหม่', id:'rekonstruksi', hi:'पुनर्निर्मित', de:'rekonstruiert', fr:'reconstitué', it:'ricostruito', es:'reconstruido', es: 'reconstruido', pt:'reconstruído', pt: 'reconstruído', ru:'реконструкция', uk:'реконструйовано', ar:'مُعاد البناء', he:'שוחזר', sw:'imerejeshwa' },
                 descs: {
                     en:'Comparative reconstruction; no direct text record.',
                     ja:'比較言語学による再構形、直接的な文献記録なし。',
@@ -7487,7 +7714,7 @@
             },
             undeciphered: {
                 bg:'#fae0e0', fg:'#a02020',
-                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es:'no descifrado', es_eu:'no descifrado', es_mx:'no descifrado', pt:'não decifrado', pt_eu:'não decifrado', pt_br:'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
+                labels: { en:'undeciphered', ja:'未解読', ko:'미해독', zh:'未解读', yue:'未解讀', vi:'chưa giải mã', th:'ยังไม่ถอดรหัส', id:'belum dipecahkan', hi:'अपठित', de:'unentziffert', fr:'non déchiffré', it:'non decifrato', es:'no descifrado', es: 'no descifrado', pt:'não decifrado', pt: 'não decifrado', ru:'нерасшифровано', uk:'нерозшифроване', ar:'غير مفكوك', he:'לא פוענח', sw:'haijafafanuliwa' },
                 descs: {
                     en:'Script not yet readable.',
                     ja:'文字が未解読の言語。',
@@ -7512,7 +7739,7 @@
             },
             'partly-understood': {
                 bg:'#fff0d0', fg:'#a06000',
-                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es:'parcialmente entendido', es_eu:'parcialmente entendido', es_mx:'parcialmente entendido', pt:'parcialmente compreendido', pt_eu:'parcialmente compreendido', pt_br:'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
+                labels: { en:'partly understood', ja:'部分解読', ko:'부분 해독', zh:'部分解读', yue:'部分解讀', vi:'hiểu một phần', th:'เข้าใจบางส่วน', id:'sebagian dimengerti', hi:'आंशिक समझ', de:'teilweise verstanden', fr:'partiellement compris', it:'parzialmente compreso', es:'parcialmente entendido', es: 'parcialmente entendido', pt:'parcialmente compreendido', pt: 'parcialmente compreendido', ru:'частично понятно', uk:'частково зрозуміле', ar:'مفهوم جزئيًا', he:'מובן חלקית', sw:'inaeleweka kwa sehemu' },
                 descs: {
                     en:'Script readable but lexicon/grammar incomplete; many cells uncertain.',
                     ja:'文字は読めるが語彙・文法は未完成。多くのセルが暫定的。',
@@ -7537,7 +7764,7 @@
             },
             pedagogical: {
                 bg:'#eee0fa', fg:'#6020a0',
-                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es:'pedagógico', es_eu:'pedagógico', es_mx:'pedagógico', pt:'pedagógico', pt_eu:'pedagógico', pt_br:'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
+                labels: { en:'pedagogical', ja:'教育用近似', ko:'교육용 근사치', zh:'教学近似', yue:'教學近似', vi:'mô phỏng giáo dục', th:'ใช้สอน', id:'pendekatan pengajaran', hi:'शैक्षिक', de:'pädagogisch', fr:'pédagogique', it:'pedagogico', es:'pedagógico', es: 'pedagógico', pt:'pedagógico', pt: 'pedagógico', ru:'учебное', uk:'педагогічне', ar:'تعليمي', he:'לימודי', sw:'kielimu' },
                 descs: {
                     en:'Teaching approximation; not actual attested historical forms.',
                     ja:'教育用の近似形であり、実際に文献で確認された歴史的形態ではない。',
@@ -7707,8 +7934,8 @@
             yue: '未確認',     vi: 'không có chứng cứ', th: 'ไม่มีหลักฐาน',
             id: 'tak terbukti', hi: 'अप्रमाणित', de: 'unbelegt',
             fr: 'non attesté', it: 'non attestato', es: 'no atestiguado',
-            es_eu: 'no atestiguado', es_mx: 'no atestiguado',
-            pt: 'não atestado', pt_eu: 'não atestado', pt_br: 'não atestado',
+            es: 'no atestiguado',
+            pt: 'não atestado', pt: 'não atestado',
             ru: 'не засвидетельствовано', uk: 'не засвідчено',
             ar: 'غير مُثَبَّت', he: 'לא מתועد', sw: 'haijathibitishwa',
         };
@@ -7722,10 +7949,8 @@
             th: 'แสดงเป็นภาษาอังกฤษชั่วคราว', id: 'Sementara dalam bahasa Inggris',
             hi: 'विवरण फ़िलहाल अंग्रेज़ी में', de: 'Englischer Ersatztext',
             fr: 'Texte de repli en anglais', it: 'Descrizione temporaneamente in inglese',
-            es: 'Texto en inglés (provisional)', es_eu: 'Texto en inglés (provisional)',
-            es_mx: 'Texto en inglés (provisional)',
-            pt: 'Texto provisório em inglês', pt_eu: 'Texto provisório em inglês',
-            pt_br: 'Texto provisório em inglês',
+            es: 'Texto en inglés (provisional)', es: 'Texto en inglés (provisional)',
+            pt: 'Texto provisório em inglês', pt: 'Texto provisório em inglês',
             ru: 'Описание временно на английском', uk: 'Опис тимчасово англійською',
             ar: 'الوصف معروض بالإنجليزية مؤقتًا', he: 'התיאור מוצג כעת באנגלית',
             sw: 'Maelezo bado kwa Kiingereza',
@@ -8971,11 +9196,7 @@
             fr:    { title:'Comparaison de langues', clear:'Effacer', fab:'Comparer', add:'+ Ajouter à la comparaison', remove:'✓ En comparaison (retirer)', max:'8 langues maximum', simcolor:'Surligner par similarité', del:'Retirer' },
             it:    { title:'Confronto lingue', clear:'Pulisci', fab:'Confronta', add:'+ Aggiungi al confronto', remove:'✓ In confronto (rimuovi)', max:'Massimo 8 lingue', simcolor:'Evidenzia per similarità', del:'Rimuovi' },
             es:    { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud', del:'Quitar' },
-            es_eu: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud', del:'Quitar' },
-            es_mx: { title:'Comparación de idiomas', clear:'Borrar', fab:'Comparar', add:'+ Añadir a comparar', remove:'✓ En comparación (quitar)', max:'Máximo 8 idiomas', simcolor:'Resaltar por similitud', del:'Quitar' },
             pt:    { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade', del:'Remover' },
-            pt_eu: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade', del:'Remover' },
-            pt_br: { title:'Comparação de idiomas', clear:'Limpar', fab:'Comparar', add:'+ Adicionar à comparação', remove:'✓ Em comparação (remover)', max:'Máximo de 8 idiomas', simcolor:'Destacar por similaridade', del:'Remover' },
             ru:    { title:'Сравнение языков', clear:'Очистить', fab:'Сравнить', add:'+ Добавить к сравнению', remove:'✓ В сравнении (убрать)', max:'Максимум 8 языков', simcolor:'Подсветить по сходству', del:'Убрать' },
             uk:    { title:'Порівняння мов', clear:'Очистити', fab:'Порівняти', add:'+ Додати до порівняння', remove:'✓ У порівнянні (вилучити)', max:'Максимум 8 мов', simcolor:'Підсвітити за схожістю', del:'Вилучити' },
             ar:    { title:'مقارنة اللغات', clear:'مسح', fab:'مقارنة', add:'+ إضافة للمقارنة', remove:'✓ قيد المقارنة (إزالة)', max:'بحد أقصى 8 لغات', simcolor:'إبراز حسب التشابه', del:'إزالة' },
@@ -9809,14 +10030,12 @@
             tags.innerHTML = '';
             const list = window.TRIVIA_ARTICLES || [];
             index.innerHTML = list.map((a, i) => {
-                const iconAttr = a.icon || '📖';
+                // 2026-05-31: index shows title only (no icon, no summary)
+                // per user request. Detail view still has the full text.
                 const title = pickLocalized(a.title);
-                const sum = pickLocalized(a.summary);
                 const num = String(i + 1).padStart(2, '0');
                 return `<button type="button" class="trivia-card" data-article-id="${a.id}">`
-                    + `<div class="trivia-card-icon" aria-hidden="true">${iconAttr}</div>`
                     + `<div class="trivia-card-title"><span class="trivia-card-num">${num}.</span> ${title}</div>`
-                    + `<div class="trivia-card-summary">${sum}</div>`
                     + `</button>`;
             }).join('');
             index.hidden = false;

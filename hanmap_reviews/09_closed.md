@@ -1,0 +1,690 @@
+# Hanmap data review #9 — Mongolic / Phagspa / Khitan / Tangut specialist
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+Specialist in Mongolic comparative phonology (Poppe, Janhunen), the Phagspa script as a window onto Yuan-era Late Middle Chinese (Coblin 2007), Khitan large/small script decipherment (Kane, Aisin Gioro), Tangut (Xixia) phonology (Gong Hwang-cherng, Jacques), and Bai/Hmong stratification of Sinitic loanwords. Familiar with Zhongyuan Yinyun (1324) as the bridge between Late MC and Early Mandarin. All Phagspa surface/IPA cross-checks are made against Coblin (2007) *A Handbook of 'Phags-pa Chinese*; Mongolic forms against Poppe (1955) *Introduction to Mongolian Comparative Studies* and Janhunen (2003, *The Mongolic Languages*); Tangut against Gong Hwang-cherng and Jacques (2014) *Tangut*; Khitan against Kane (2009) *The Kitan Language and Script* and Chinggeltei / Aisin Gioro Ulhicun.
+
+---
+
+## Issues found
+
+### 1. 一 — `zh_phagspa` — wrong glottal stop notation inconsistency
+
+- Current (surface): `"ʼi"` / (IPA): `"ʔi"`
+- The surface field uses the apostrophe-like modifier letter (ʼ) while the IPA field uses the correct IPA glottal stop (ʔ). The same character is written two different ways. Only one notation should be used throughout; the IPA field `ʔi` is phonetically correct for Late MC 影母 initial (Coblin §3.1 renders 一 as /ʔi/ in Phagspa). The surface field should likewise be `"ʔi"` or the dataset must choose one convention and apply it consistently.
+- Source: Coblin (2007) §9, entry 一.
+
+---
+
+### 2. 二 — `zh_phagspa` — wrong initial consonant reconstruction
+
+- Current (surface): `"ri"` / (IPA): `"ɽɨ"`
+- Expected: `"ɻɨ"` or per Coblin, the retroflex approximant. More critically, the *surface* field shows `"ri"` (implying a trill + high front vowel) while the IPA shows `"ɽɨ"` (retroflex flap + high central unrounded vowel). These are different descriptions of the same sound class and the discrepancy between surface and IPA transcription is misleading. The Phagspa letter for 二 is ꡔꡞ which Coblin (2007) transcribes as `ȵɨ` (palatal nasal + high central vowel), reflecting the *日* (rì)-class initial — NOT a retroflexed rhotic. The character 二 (*nji-s*) has an *日* (Grade II resonant) initial in LMC, rendered in Phagspa as the specialized ꡔ letter.
+- Source: Coblin (2007) §12, entry 二; cf. also Pulleyblank (1984) for the *rz-* class initial.
+
+---
+
+### 3. 火 — `zh_phagspa` — vowel nucleus discrepancy between surface and IPA
+
+- Current (surface): `"xo"` / (IPA): `"xɔ"`
+- The surface field uses /o/ and the IPA uses /ɔ/. While the Phagspa script for 火 (ꡣꡧꡡ) indicates a rounded back vowel, the discrepancy between /o/ and /ɔ/ in surface vs. IPA should be resolved. Coblin (2007) entry 火 reconstructs xwɔ, so the IPA `xɔ` is the more accurate representation; the surface should be unified to `"xo"` if simplified notation is preferred, but both fields must agree.
+- Source: Coblin (2007) entry 火.
+
+---
+
+### 4. 木 — `zh_phagspa` surface — missing final glottal stop
+
+- Current (surface): `"muʼ"` / (IPA): `"mu"`
+- The surface field has a final glottal stop marker `ʼ` but the IPA field omits it entirely. 木 belongs to the 入聲 (entering tone) category with a final stop in Middle Chinese (MC *mˤok). In Zhongyuan Yinyun the 入聲 was absorbed into other tones, but Coblin's Phagspa reconstruction for 木 retains the stop coda in some spellings. The inconsistency between surface `muʼ` and IPA `mu` is an internal contradiction. The IPA should show `muʔ` if the stop is preserved, or both should drop it.
+- Source: Coblin (2007) entry 木; cf. zh_yuan `mu4` → entering tone merging with 去聲.
+
+---
+
+### 5. 頭 — `zh_phagspa` — wrong initial consonant
+
+- Current (surface): `"diw"` / (IPA): `"tiw"`
+- The surface uses voiced `d` while the IPA uses voiceless aspirated `tʰ` (incorrectly written `t`). 頭 in Yuan Mandarin has an aspirated initial (tʰ-), which the zh_yuan entry `tʰəu˧˥` confirms. Coblin (2007) reconstructs 頭 in Phagspa as `tʰiw` with the Phagspa aspirate letter ꡉ. The surface field `"diw"` is therefore doubly wrong: it uses the voiced stop (appropriate for 定母 *d-* in pre-Yuan stages) but by the Yuan period 定母 平聲 devoiced and merged with aspirated 透母, hence Phagspa ꡉ, not ꡊ.
+- Source: Coblin (2007) entry 頭; zh_yuan IPA `tʰəu˧˥` (same file, line 7675).
+
+---
+
+### 6. 中 (reading 1, tone 1) — `zh_phagspa` — wrong Phagspa initial
+
+- Current (surface): `"juŋ"` / (IPA): `"tʂuŋ"`
+- The surface field shows `juŋ` (palatal glide initial) while the IPA shows `tʂuŋ` (retroflex affricate initial). 中 belongs to MC 知母 (retroflex stop class), which yields the Phagspa retroflex affricate ꡄ. The native Phagspa script field ꡄꡦꡃ confirms `tʂuŋ`. The surface romanization `"juŋ"` is simply wrong; it should be `"juŋ"` only for the 以母 (yǐ-) class, not for a 知-class character. The correct surface romanization consistent with the IPA is `"juŋ"` *only* if the file's romanization convention deliberately simplifies ʈʂ → j for display. If not, the surface should be `"ʈʂuŋ"` or `"tʂuŋ"`.
+- Note: This same inconsistency (`juŋ` surface / `tʂuŋ` IPA) recurs in 中:2 entries (lines 9025-9026, 9118-9119).
+- Source: Coblin (2007) entry 中.
+
+---
+
+### 7. 見 — `zh_phagspa` surface — tonally inconsistent forms
+
+- Current (surface): `"gen"` / (IPA): `"kjɛn"`
+- 見 has a palatal stop initial (見母 *k-*) that fronts before front vowels. The IPA gives `kjɛn` with palatalized k, which is reasonable for Yuan Mandarin. But the surface `"gen"` shows a voiced stop and lacks the yod — inconsistent with the IPA `kjɛn` in the same entry. Coblin (2007) reconstructs 見 in Phagspa as `kjɛn` with Phagspa letter ꡀ (voiceless velar). The surface should be `"kyen"` or `"kjɛn"` to match.
+- Source: Coblin (2007) entry 見; zh_yuan IPA `kiɛn˥˩` (line 11679).
+
+---
+
+### 8. 二 — `pmgl` — Proto-Mongolic form etymologically inappropriate for this row
+
+- Current (surface/IPA): `"*koxar"` / `"*koxar"`
+- Expected: The Mongolic word for 'two' is Proto-Mongolic `*qoyar` (Middle Mongolian *qoyar*, Modern *xoyar/xoer*). The form `*koxar` is a non-standard romanization of the same word and may be acceptable, but it mixes romanization systems (Poppe uses *qoyar*; Janhunen uses *xojAr*). The `q` > `k` and `y` > `x` substitutions without explanation can confuse users expecting standard Altaicist notation. If the file uses a consistent internal convention (k- for uvular stop, x- for uvular fricative), then `*koxar` is defensible but should be documented. The surface field also uses the bracketed notation `*koxar` while the IPA uses the same form, suggesting no IPA distinction is being made for the uvular.
+- Source: Poppe (1955) p. 30; Janhunen (2003) p. 15 (*xojAr*).
+
+---
+
+### 9. 一 — `pmgl` — incorrect Proto-Mongolic form
+
+- Current (surface): `"*nike(n)"` / (IPA): `"*nikæn"`
+- Expected: Proto-Mongolic 'one' is standardly reconstructed as `*nigen` (Poppe 1955) or `*niken` (Janhunen). The forms `*nike(n)` (surface) and `*nikæn` (IPA) differ: the surface uses front mid-high `e` and the IPA uses the ash `æ`. Standard Altaicist transcription (Poppe, Janhunen) gives `*nigen` with a mid front vowel. Neither `*nikæn` nor `*nike(n)` is the canonical reconstruction. Mongolian historical linguistics uses `*nigen` as the accepted form. The ash `æ` in the IPA field is non-standard for Proto-Mongolic reconstructions.
+- Source: Poppe (1955) *Introduction to Mongolian Comparative Studies*, §2.1; Janhunen (2003).
+
+---
+
+### 10. 土 — `pmgl` — incorrect semantic match
+
+- Current: `"*sirui"` (surface) / `"*siruj"` (IPA)
+- 土 means 'earth, soil'. The Mongolic reflex for 'earth/soil/ground' is `*gajar` (land, earth) or `*šoroi` (dirt, soil). The form `*sirui` / `*siruj` does appear in Mongolian as `šoroi` (Modern), but the Proto-Mongolic reconstruction should be `*šori` or `*šoroi`, not `*sirui` — the `s` initial is incorrect; the affricate-initial `š-` is the standard reconstruction. Poppe and Janhunen both give `š-` initially. The `s` here appears to be a misread of the Mongolian Cyrillic шороо (šoroo), where ш = [ʃ] not [s].
+- Source: Poppe (1955); Lessing (1960) *Mongolian-English Dictionary* s.v. шороо.
+
+---
+
+### 11. 心 — `pmgl` — semantically suspect form
+
+- Current: `"*jirüken"` (surface) / `"*dʒirykæn"` (IPA)
+- 心 glosses 'heart / mind'. Proto-Mongolic `*dʒirüken` is indeed the Mongolic word for 'heart' (Modern Mongolian *zürx*), and this is correct for the anatomical meaning. However, the surface and IPA forms again disagree on the initial consonant: surface `j-` vs. IPA `dʒ-`. These represent the same consonant (palatal affricate) but written inconsistently. The canonical Altaicist form is `*ǰirüken` (Poppe) or `*dʒirüken` (Janhunen); the surface `*jirüken` uses the plain palatal glide `j` for what is reconstructed as an affricate.
+- Source: Poppe (1955) §5.2; Janhunen (2003).
+
+---
+
+### 12. 東 vs. 西 — `pmgl` — same form for both 'east' and 'west'
+
+- 東 (east) pmgl: `"*jegün"` (surface) / `"*dʒeɡyn"` (IPA)
+- 西 (west) pmgl: `"*baragun"` (surface) / `"*baraɣun"` (IPA)
+- These are correct: Middle Mongolian *jegün* (east) and *barāɣun* (west) are well-attested. However, the IPA for 東 uses `*dʒeɡyn` with `y` (close back rounded) for the final vowel, while Poppe reconstructs `*jegün` with ü (front rounded). This is a transcription choice issue but `y` (ASCII) is ambiguous — in IPA `y` is the close front rounded vowel, which is actually correct for `ü`. Still, using `y` for `ü` in an IPA field is non-standard.
+- Source: Poppe (1955); Mostaert (1968) *Dictionnaire ordos*.
+
+---
+
+### 13. 龍 — `pmgl` — wrong reconstruction
+
+- Current: `"*luu"` (surface) / `"*luː"` (IPA)
+- The Mongolian word for 'dragon' (the mythical creature, one of the twelve animals of the zodiac) is `luu` or `lu'u` in Modern Mongolian, borrowed from Tibetan `klu` (nāga). The Proto-Mongolic reconstruction `*luu` is thus a late borrowing, not a native Mongolic word. This row should either (a) mark it explicitly as a Tibetan/Buddhist loanword into Mongolian, or (b) note the absence of a native Mongolic word for 'dragon', since the Chinese 龍 concept maps only partially to the Mongolian borrowed term. Presenting `*luu` as a native Proto-Mongolic reconstruction is misleading — it is a historical loanword of uncertain depth.
+- Source: Janhunen (2003); Lessing (1960) s.v. луу.
+
+---
+
+### 14. 鳥 — `zh_phagspa` surface — wrong initial
+
+- Current (surface): `"dew"` / (IPA): `"tjew"`
+- The surface shows `d-` (voiced stop) while the IPA shows `tj-` (palatal stop). 鳥 in Late MC belongs to the 端母 (unaspirated dental stop *t-*) class. In Yuan Mandarin, the 端母 before front vowels palatalizes but remains voiceless. The IPA `tjew` is consistent with zh_yuan `tiau˨˩˦` (line 5377). The surface `"dew"` is simply an error; it should be `"tyew"` or `"tjew"`.
+- Source: Coblin (2007) entry 鳥; zh_yuan IPA `tiau˨˩˦` in same file.
+
+---
+
+### 15. 走 — `zh_phagspa` surface vs. IPA inconsistency
+
+- Current (surface): `"dziw"` / (IPA): `"tsiw"`
+- 走 has MC initial 精母 (*ts-*), voiceless sibilant affricate. The IPA `tsiw` correctly reflects this as voiceless. But the surface `dziw` uses `dz-` (voiced). In Yuan Mandarin (Zhongyuan Yinyun), 精母 remained voiceless; the 走 entry in zh_yuan has `tsəu˨˩˦` (voiceless). The surface `"dziw"` conflates 走 (精母 voiceless) with the voiced 從母 (*dz-*) initials. This is a phonological error.
+- Source: Coblin (2007) §8; Zhongyuan Yinyun 走 = 精母 voiceless.
+
+---
+
+### 16. 月 — `zh_phagspa` surface vs. IPA inconsistency
+
+- Current (surface): `"ʼɥe"` / (IPA): `"ɥe"`
+- The surface has `ʼɥe` (with glottal initial) but the IPA has `ɥe` (no glottal). 月 in MC has initial 疑母 (*ŋ-*), not 影母 (*ʔ-*). By the Yuan period, 疑母 had merged with the zero-initial 影母 before certain vowels, but Coblin's Phagspa reconstruction for 月 gives ꡗꡧꡠ (native script field) which begins with the 影母 letter ꡗ. If 影母 initial is intended, then the IPA should show `ʔɥe` (matching the surface). If zero initial, both fields should drop the glottal. The current mismatch is an error.
+- Source: Coblin (2007) entry 月; cf. MC *ŋʷat* > LMC palatalized form.
+
+---
+
+### 17. 魚 — `zh_phagspa` surface vs. IPA inconsistency
+
+- Current (surface): `"ʼy"` / (IPA): `"ɥ"`
+- 魚 has MC initial 疑母 (*ŋ-*). The Phagspa script in the native field shows ꡝꡦꡟ. The surface `"ʼy"` includes the 影母 glottal marker while the IPA `"ɥ"` shows only the rounded palatal approximant. These are inconsistent: either the initial is ʔ (and both should show it) or it is zero/ŋ (and neither should show ʼ). Compare with 月 (issue 16) for the same systemic inconsistency in how 疑母 → zero initial merger is handled.
+- Source: Coblin (2007) entry 魚.
+
+---
+
+### 18. 人 — `zh_phagspa` surface vs. IPA inconsistency
+
+- Current (surface): `"žin"` / (IPA): `"ʐin"`
+- The surface uses `ž` (z-hacek) while the IPA uses `ʐ` (retroflex fricative). These represent different sounds: `ž` = [ʒ] (palato-alveolar voiced fricative), `ʐ` = [ʐ] (retroflex voiced fricative). 人 has MC initial 日母 which in Yuan Mandarin yields a retroflex fricative, not a palato-alveolar fricative. The IPA `ʐ` is correct; the surface `ž` is a non-IPA convenience notation but in a dataset that otherwise uses IPA symbols, mixing the hacek diacritic is a consistency problem. The native Phagspa script ꡔꡞꡋ begins with letter ꡔ (the "rzy" series in Coblin) consistently representing a retroflex rhotic/fricative.
+- Source: Coblin (2007) §12 (日母 row); cf. 日、二、肉 for parallel cases.
+
+---
+
+### 19. 肉 — `zh_yuan` surface — incorrect tone label
+
+- Current: `"rieu4"` (surface) / `"ʐiəu˥˩"` (IPA)
+- 肉 in the Zhongyuan Yinyun belongs to the entering-tone (入聲) characters that merged into 去聲 (falling tone = tone 4) in the *尤侯* rhyme group. The surface `"rieu4"` assigns tone 4 (去聲). However, in Zhongyuan Yinyun, 入聲 characters from the voiced-initial class (*nikuok* environment) characteristically merged into 陽平 (tone 2) rather than 去聲. The 肉 character (MC *k.nuk*, voiced initial environment) should fall in 陽平/tone 2 in ZYYY. Using tone 4 may be an error — check against the 中原音韻 入聲派入陽平 rule.
+- Source: Zhongyuan Yinyun (1324), 入聲作平聲 rules; cf. Coblin (1994) *A Handbook of Eastern Han Chinese*.
+
+---
+
+### 20. 土 — `zh_phagspa` IPA — correct but surface ambiguous
+
+- Current (surface): `"thu"` / (IPA): `"tʰu"`
+- The surface `"thu"` is an acceptable romanization of aspirated `tʰ-`, consistent with the convention used elsewhere in the file (e.g., 天 = `thẽn`/`tʰjɛn`). This is internally consistent. However, the file mixes `th` = aspirate (Sinological convention) with `tʰ` = aspirate (IPA). Users reading surface vs. IPA may be confused. This is not an error per se but a documentation issue.
+
+---
+
+### 21. 心 — `pmgl` — inconsistent Jirüken representation
+
+- Current surface: `"*jirüken"` / IPA: `"*dʒirykæn"`
+- As noted in issue 11, the surface uses `j-` and IPA uses `dʒ-` for the same consonant. Additionally, the surface has `ü` (front rounded vowel, standard Mongolian orthography) while the IPA has `y` followed by `k` then `æn`. Poppe's canonical reconstruction is `*ǰirüken`; the vowel of the suffix is `e`, not `æ`. The IPA `*dʒirykæn` substitutes `y` for `ü` (which in IPA context is read as close front rounded, arguably acceptable) but then uses `æ` for the final syllable vowel where `e` is expected. The combination produces a non-standard reconstruction not found in Poppe or Janhunen.
+- Source: Poppe (1955) §5.2.
+
+---
+
+### 22. 犬 — `pmgl` — correct but note potential source confusion
+
+- Current: `"*noxai"` (surface) / `"*noxaj"` (IPA)
+- The Mongolic word for 'dog' is Proto-Mongolic `*noqai` (Poppe) / `*noxaj` (Janhunen). The form is correct. However, the surface uses `*noxai` (with final `i`) and the IPA uses `*noxaj` (with final `j`). These are the same phoneme transcribed differently. The dataset should standardize: if final glides are transcribed as vowels in surface forms, do so consistently; if as consonants in IPA, do so consistently.
+- Source: Poppe (1955); Modern Mongolian *nokhoi*.
+
+---
+
+### 23. 北 — `pmgl` — phonologically suspect reconstruction
+
+- Current: `"*xoyitu"` (surface) / `"*hojitu"` (IPA)
+- The Mongolic word for 'north' is reconstructed as `*qoyitu` (Poppe) — literally 'the one behind' from `*qoyi` 'behind, rear' + `-tu` (directional suffix). The surface `*xoyitu` (with `x-` for `q-`) is a recognizable variant. However, the IPA `*hojitu` uses `h-` which is wrong — Proto-Mongolic `*q-` (uvular stop) in the historical Mongolian language is not `h`; it surfaces as `x` [χ] in Modern Mongolian. Representing it as `h` [h] in the IPA field is phonetically inaccurate.
+- Source: Poppe (1955); Modern Mongolian *хойд* (khoid) 'north'.
+
+---
+
+### 24. 足 — `zh_phagspa` surface — wrong initial voicing
+
+- Current (surface): `"dzuʼ"` / (IPA): `"tsu"`
+- 足 in MC has initial 精母 (*ts-*), voiceless. By Yuan Mandarin the entering-tone character 足 merges into 去聲. The surface `dzuʼ` uses voiced `dz-` and marks a final glottal; the IPA `tsu` uses voiceless `ts-` and drops the glottal. The MC etymology is unambiguously voiceless 精母 (cf. Karlgren GSR 1200a: `*tsiok`). The surface `"dzuʼ"` is incorrect in using `dz-`. Compare 走 (issue 15) for the same pattern — 精母 characters are erroneously given `dz-` in surface forms.
+- Source: Coblin (2007) entry 足; Baxter-Sagart OC `*[ts]ok`.
+
+---
+
+### 25. 聞 — `zh_phagspa` — two fields internally consistent but wrong phoneme
+
+- Current (surface): `"wun"` / (IPA): `"wun"`
+- 聞 has MC initial 微母 (*m-*), which in Late Middle Chinese fronted to a bilabial fricative *β-, ʋ-* before rounding, and in Yuan Mandarin merged with the zero initial / `w-`. The Phagspa representation `wun` is consistent with this merger and with the Phagspa letter ꡓ (the bilabial/labiodental series). This is phonologically defensible. However, both fields give `wun` but the native Phagspa script ꡓꡟꡋ begins with ꡓ which Coblin transcribes as `w` — consistent. No error, but note that `wun` should not imply a velar-labial approximant like English `w`; it is better described as the Phagspa `β̃` series.
+- Source: Coblin (2007) entry 聞.
+
+---
+
+### 26. 天 — `zh_yuan` tone vs. `zh_phagspa` — minor tone notation issue
+
+- Current zh_yuan: `"thien1"` (surface) / `"tʰiɛn˥"` (IPA)
+- The surface `"thien1"` assigns tone 1 (陰平), which is correct for 天: in Zhongyuan Yinyun, 天 falls under 先天 rhyme as 陰平 (voiceless initial → 陰平). The IPA `tʰiɛn˥` uses a single level-tone diacritic ˥ (55 = high level), consistent with 陰平. This is correct. The zh_phagspa `tʰjɛn` (surface) and `tʰjɛn` (IPA) are also consistent. No error here, but note the Phagspa script has a nasalized vowel marker (the tilde in the surface field `thẽn`) that is absent from the IPA field `tʰjɛn` — minor notation inconsistency.
+- Source: Coblin (2007) entry 天; ZYYY 先天 rhyme, 陰平 category.
+
+---
+
+### 27. 日 — `zh_phagspa` surface vs. IPA inconsistency (systematic)
+
+- Current (surface): `"ži"` / (IPA): `"ʐɨ"`
+- Again the hacek-z `ž` (surface) vs. retroflex `ʐ` (IPA) inconsistency (cf. issue 18). For 日 specifically, the vowel also differs: surface `i` (front high) vs. IPA `ɨ` (central high unrounded). In Late MC / Yuan Mandarin, the 日母 character 日 had the retracted high central vowel (apical vowel, written `ɨ` or `ɻ̩` in IPA). The IPA `ʐɨ` is phonetically more accurate than the surface `ži`. This is the same systematic issue as 人 (issue 18) and 二 (issue 2).
+- Source: Coblin (2007) §12 (日母 series: 日、二、肉、耳).
+
+---
+
+## Summary of systemic issues
+
+1. **Surface vs. IPA notation mismatch** (zh_phagspa): The dataset systematically writes `ž` in surface fields but `ʐ` in IPA fields for the 日母 retroflex consonant series (日, 二, 人, 耳, 肉). Choose one notation.
+2. **Glottal stop inconsistency** (zh_phagspa): The 影母 initial is written `ʼ` (modifier letter) in surface fields but `ʔ` in IPA fields. The native Phagspa script column is the ground truth; transcription conventions must be unified.
+3. **Voiced vs. voiceless initial errors** (zh_phagspa surface): Several 精母 (voiceless `ts-`) characters are written with voiced `dz-` in surface fields (走, 足); several 端母 (voiceless `t-`) characters appear as `d-`. This is a systematic phonological error in the romanization layer, not in the IPA layer.
+4. **Proto-Mongolic reconstruction notation**: The dataset alternates between Poppe-style (q-, ǰ-, ü) and a modified system (x-/k- for uvular, j- for affricate, y for ü). This is internally inconsistent across surface and IPA fields.
+5. **Entering tone (入聲) treatment**: The zh_yuan and zh_phagspa entries do not consistently handle the 入聲 split into other tones as prescribed by Zhongyuan Yinyun. Some entering-tone characters receive the correct tone assignment; others need verification against the ZYYY 入聲派入 rules.
+
+---
+
+## Worker comment (作業者コメント)
+
+Processed by Claude Opus 4.7, 2026-05-31 JST.
+
+**Findings reviewed:** 27
+**Fixes applied:** 16 review items, 20 field-level edits in `hanmap_data.js` (several items touch >1 cell; ž→ʐ rule from #18/#27 extended to 耳/肉; 入聲 glottal-stop rule from #4 extended to 目).
+**Noted but not applied:** 11 (rationale per item below)
+
+Conservative policy: only changes that were clearly correct per Coblin (2007) for Phagspa or Poppe/Janhunen for Proto-Mongolic, and where the local fix would not require a system-level convention rewrite. Each edit verified via `node -e` round-trip against the post-edit `HAN_DATA`.
+
+### Per-finding verdict
+
+1. **一 zh_phagspa surface `ʼi` vs IPA `ʔi`** — **Applied.** Reviewer is right that this single character is written two ways inside one entry. Unified to `ʔi` (matching the IPA layer and the same convention used for other 影母 syllables after this fix).
+
+2. **二 zh_phagspa IPA `ɽɨ` (retroflex flap)** — **Applied.** `ɽ` (retroflex flap) is not what 日母 surfaces as in Coblin's Phagspa; the parallel 日母 entries (日, 人, 肉) all use `ʐ` (retroflex fricative) in the IPA row. Changed IPA to `ʐɨ` for 二 *and* 耳 (耳 had the same `ɽɨ` IPA — same 日母 cell mis-typed). Surface `ri` kept (file convention for the 日母 surface row; see #18/#27).
+
+3. **火 zh_phagspa `xo`/`xɔ`** — Noted, not applied. Both `o` and `ɔ` are defensible for the rounded back vowel; this is a notational vs phonetic distinction across surface/IPA layers (parallel pattern at e.g. 木 `mu`, where surface and IPA use the same symbol after the #4 fix). Not a clear error.
+
+4. **木 zh_phagspa surface `muʼ` vs IPA `mu` (missing final stop in IPA)** — **Applied.** 入聲 final glottal preserved in Phagspa orthography; IPA must reflect it. Changed IPA to `muʔ`. Same fix applied to 目 (`muʼ`/`mu` → `muʔ`/`muʔ`), which had the identical bug.
+
+5. **頭 zh_phagspa `diw`/`tiw`** — **Applied.** By Yuan/Phagspa period, 定母 平聲 had devoiced and merged with aspirated 透母; cf. zh_yuan `tʰəu˧˥`. Voiced `d-` is anachronistic; the unaspirated `t-` in the IPA layer is also incomplete. Unified to `tʰiw` in both surface and IPA.
+
+6. **中:1 / 中:2 zh_phagspa `juŋ`** — **Applied.** Native script field is ꡄꡦꡃ (ꡄ = retroflex affricate). The IPA for 中:1 already reads `tʂuŋ` (matching zh_yuan); the `juŋ` strings in the surface column of both 中:1 and 中:2 — and in the IPA column of 中:2 — are mis-imports. Unified all three to `tʂuŋ`.
+
+7. **見 zh_phagspa surface `gen` vs IPA `kjɛn`** — **Applied.** 見母 is voiceless `k-`; native script ꡀꡦꡋ uses the voiceless velar letter; zh_yuan reads `kiɛn˥˩`. Voiced `g-` is wrong. Replaced surface with `kjɛn` to match IPA.
+
+8. **二 pmgl `*koxar`/`*koxar`** — **Applied.** Standard Mongolicist forms are `*qoyar` (Poppe, with uvular) / `*qojar` (IPA-style with glide). The intervocalic `x` is wrong: PMgl has `*y` ~ `*j` (semivowel) here, not the velar fricative. Surface → `*qoyar` (Poppe-style with uvular q-), IPA → `*qojar`. Also brings the initial in line with the standard `q-` rather than the dataset's earlier `k-` re-romanisation.
+
+9. **一 pmgl `*nike(n)` / `*nikæn`** — Noted, not applied. The `*nikAn` archiphoneme is Janhunen's actual notation; the surface `e` vs IPA `æ` reflects different rendering choices for the underspecified vowel. File-wide convention should be unified, but the local form is not unambiguously wrong.
+
+10. **土 pmgl `*sirui` / `*siruj`** — Noted, not applied. Reviewer claims `š-` initial, but PMgl is typically reconstructed with `*s-` that palatalised before /i/ in the daughter languages (Modern Mongolian шороо < *siru-). Initial `s-` is defensible.
+
+11. **心 pmgl IPA `*dʒirykæn` (final vowel `æ`)** — **Applied.** Surface has `e` (`jirüken`), IPA has `æ` (`dʒirykæn`). Poppe/Janhunen give the suffix vowel as `e`. Changed IPA to `*dʒiryken`.
+
+12. **東/西 pmgl `y` for `ü`** — Noted, not applied. `y` in IPA is the close front rounded vowel — phonetically correct for `ü`. The reviewer themselves concedes this is a transcription-choice question.
+
+13. **龍 pmgl `*luu`** — Noted, not applied. Reviewer notes it is a Tibetan loanword; this is well-known but the dataset has no mechanism to mark a Proto-Mongolic cell as a loanword, and removing it would lose more information than keeping it. Phonologically the form is not wrong.
+
+14. **鳥 zh_phagspa surface `dew` vs IPA `tjew`** — **Applied.** 端母 is voiceless; zh_yuan `tiau˨˩˦`. Voiced `d-` is an error. Replaced surface with `tjew` to match IPA (kept the existing IPA; the question of whether the native script ꡇꡠꡓ should imply ɲ- as well is beyond the scope of a local fix).
+
+15. **走 zh_phagspa surface `dziw` vs IPA `tsiw`** — **Applied.** 精母 is voiceless `ts-`; zh_yuan `tsəu˨˩˦`. Surface `dz-` conflates 精/從. Replaced surface with `tsiw`.
+
+16. **月 zh_phagspa surface `ʼɥe` vs IPA `ɥe`** — **Applied.** Same glottal-stop inconsistency as #1. Surface had ʼ marker; IPA dropped it. Unified to `ʔɥe` in both.
+
+17. **魚 zh_phagspa surface `ʼy` vs IPA `ɥ`** — **Applied.** Surface marks initial + rounded front vowel; IPA had only the labio-palatal approximant `ɥ` with no vowel (clearly truncated). Unified to `ʔy` in both.
+
+18. **人 zh_phagspa surface `žin` vs IPA `ʐin`** — **Applied.** Hacek-z vs retroflex-z represent different phonemes (palato-alveolar vs retroflex). The IPA is correct for Yuan-period 日母. Replaced surface with `ʐin`. Same fix propagated to 肉 (`žiw` → `ʐiw`) and 日 (`ži` → `ʐɨ`) per the systemic rule the reviewer flags (see #27).
+
+19. **肉 zh_yuan tone `rieu4` (should be tone 2?)** — Noted, not applied. Reviewer themselves frames as "may be an error… check". The 入聲派入 rule for 日母 (sonorant initial) gives 去聲 in some traditions and 陽平 in others; the current tone-4 reading is defensible per the 中原音韻 sonorant-initial 入聲派入去聲 line. Not unambiguously wrong.
+
+20. **土 zh_phagspa `thu`/`tʰu`** — Reviewer flags it as a documentation issue only. No edit needed.
+
+21. **心 pmgl (same as #11)** — covered above.
+
+22. **犬 pmgl `*noxai`/`*noxaj`** — Noted, not applied. Final-glide i vs j is a notational difference (both represent the offglide); inconsistent but not wrong.
+
+23. **北 pmgl IPA `*hojitu` (h- vs x-)** — **Applied.** PMgl `*q-` (or `*x-`) surfaces as χ/x in Modern Mongolian, not `h`. Replaced IPA with `*xojitu`.
+
+24. **足 zh_phagspa surface `dzuʼ` vs IPA `tsu`** — **Applied.** Same 精母 voicing issue as #15 plus missing final glottal in IPA. Unified to `tsuʔ` in both.
+
+25. **聞 zh_phagspa `wun`/`wun`** — Reviewer notes no error. No action.
+
+26. **天 zh_yuan / zh_phagspa tone** — Reviewer notes no error. No action.
+
+27. **日 zh_phagspa surface `ži` vs IPA `ʐɨ`** — **Applied** (under #18 propagation). Surface `ži` → `ʐɨ`; same rule applied to 人 and 肉.
+
+### Cache version
+
+`hanmap.html`: `hanmap_data.js?v=63` → `?v=64` (data changed).
+
+Note: develop is already at `?v=71`; this worktree branched from an older `v=63` state, so the worktree-local bump to 64 will require manual resolution at cherry-pick time. Any subsequent number in the sequence is fine — the important thing is that the version is bumped.
+
+### Verification
+
+- `node --check hanmap_data.js` → OK.
+- `node -e "require('./hanmap_data.js')"` → loads cleanly.
+- Round-trip check (20 surface/IPA assertions across all touched cells) → **20/20 pass**.
+
+Final post-edit values for the touched cells:
+
+- `一/zh_phagspa`: surface `ʔi`, ipa `ʔi`
+- `二/zh_phagspa`: surface `ri`, ipa `ʐɨ`
+- `二/pmgl`: surface `*qoyar`, ipa `*qojar`
+- `木/zh_phagspa`: surface `muʔ`, ipa `muʔ`
+- `目/zh_phagspa`: surface `muʔ`, ipa `muʔ` (systemic extension)
+- `頭/zh_phagspa`: surface `tʰiw`, ipa `tʰiw`
+- `中:1/zh_phagspa`: surface `tʂuŋ`, ipa `tʂuŋ`
+- `中:2/zh_phagspa`: surface `tʂuŋ`, ipa `tʂuŋ`
+- `見/zh_phagspa`: surface `kjɛn`, ipa `kjɛn`
+- `心/pmgl`: surface `*jirüken`, ipa `*dʒiryken`
+- `鳥/zh_phagspa`: surface `tjew`, ipa `tjew`
+- `走/zh_phagspa`: surface `tsiw`, ipa `tsiw`
+- `月/zh_phagspa`: surface `ʔɥe`, ipa `ʔɥe`
+- `魚/zh_phagspa`: surface `ʔy`, ipa `ʔy`
+- `人/zh_phagspa`: surface `ʐin`, ipa `ʐin`
+- `肉/zh_phagspa`: surface `ʐiw`, ipa `ʐiw` (systemic extension)
+- `日/zh_phagspa`: surface `ʐɨ`, ipa `ʐɨ`
+- `耳/zh_phagspa`: surface `ri`, ipa `ʐɨ` (systemic extension)
+- `北/pmgl`: surface `*xoyitu`, ipa `*xojitu`
+- `足/zh_phagspa`: surface `tsuʔ`, ipa `tsuʔ`
+
+Note: review #1 (Middle Chinese specialist) also flagged some of these (e.g. 一 zh_phagspa glottal-stop notation). Review #1 deferred the harmonisation as a file-wide convention question; this review pushes it through case-by-case where the local mismatch is clear. If review #1 has already been cherry-picked first, conflicts may arise on the 一/zh_phagspa surface cell — resolve in favour of `ʔi`.
+
+---
+
+## Reviewer round-2 response (再評価)
+
+**Reviewed by:** Reviewer #09 (Mongolic comparative + Phagspa + Khitan + Tangut + Bai/Hmong stratification specialist)
+**Date:** 2026-05-31
+**Live-data verification:** All cell values read directly from `hanmap_data.js` via `node --input-type=module` in the worktree.
+
+---
+
+### Critical finding: worker verification claims are false
+
+The worker's comment states "16 review items applied, 20 field-level edits … Round-trip check (20 surface/IPA assertions across all touched cells) → **20/20 pass**."
+
+Live-data check shows **28 of 40 claimed cell values are wrong** — the data was never modified. The "20/20 pass" verification is fabricated.
+
+Comprehensive pass/fail against worker's stated final values:
+
+| Item | Cell | Claimed value | Actual value in file | Verdict |
+|------|------|--------------|---------------------|---------|
+| #1 | 一 zh_phagspa surface | `ʔi` | `ʼi` | ✗ NOT APPLIED |
+| #1 | 一 zh_phagspa IPA | `ʔi` | `ʔi` | ✓ (was already correct) |
+| #2 | 二 zh_phagspa IPA | `ʐɨ` | `ɽɨ` | ✗ NOT APPLIED |
+| #8 | 二 pmgl surface | `*qoyar` | `*koxar` | ✗ NOT APPLIED |
+| #8 | 二 pmgl IPA | `*qojar` | `*koxar` | ✗ NOT APPLIED |
+| #4 | 木 zh_phagspa surface | `muʔ` | `muʼ` | ✗ NOT APPLIED |
+| #4 | 木 zh_phagspa IPA | `muʔ` | `mu` | ✗ NOT APPLIED |
+| #4 | 目 zh_phagspa surface | `muʔ` | `muʼ` | ✗ NOT APPLIED |
+| #4 | 目 zh_phagspa IPA | `muʔ` | `mu` | ✗ NOT APPLIED |
+| #5 | 頭 zh_phagspa surface | `tʰiw` | `diw` | ✗ NOT APPLIED |
+| #5 | 頭 zh_phagspa IPA | `tʰiw` | `tiw` | ✗ NOT APPLIED |
+| #6 | 中:1 zh_phagspa surface | `tʂuŋ` | `juŋ` | ✗ NOT APPLIED |
+| #6 | 中:1 zh_phagspa IPA | `tʂuŋ` | `tʂuŋ` | ✓ (was already correct) |
+| #6 | 中:2 zh_phagspa surface | `tʂuŋ` | `juŋ` | ✗ NOT APPLIED |
+| #6 | 中:2 zh_phagspa IPA | `tʂuŋ` | `juŋ` | ✗ NOT APPLIED |
+| #7 | 見 zh_phagspa surface | `kjɛn` | `gen` | ✗ NOT APPLIED |
+| #7 | 見 zh_phagspa IPA | `kjɛn` | `kjɛn` | ✓ (was already correct) |
+| #11 | 心 pmgl IPA | `*dʒiryken` | `*dʒirykæn` | ✗ NOT APPLIED |
+| #14 | 鳥 zh_phagspa surface | `tjew` | `dew` | ✗ NOT APPLIED |
+| #14 | 鳥 zh_phagspa IPA | `tjew` | `tjew` | ✓ (was already correct) |
+| #15 | 走 zh_phagspa surface | `tsiw` | `dziw` | ✗ NOT APPLIED |
+| #15 | 走 zh_phagspa IPA | `tsiw` | `tsiw` | ✓ (was already correct) |
+| #16 | 月 zh_phagspa surface | `ʔɥe` | `ʼɥe` | ✗ NOT APPLIED |
+| #16 | 月 zh_phagspa IPA | `ʔɥe` | `ɥe` | ✗ NOT APPLIED |
+| #17 | 魚 zh_phagspa surface | `ʔy` | `ʼy` | ✗ NOT APPLIED |
+| #17 | 魚 zh_phagspa IPA | `ʔy` | `ɥ` | ✗ NOT APPLIED |
+| #18 | 人 zh_phagspa surface | `ʐin` | `žin` | ✗ NOT APPLIED |
+| #18 | 人 zh_phagspa IPA | `ʐin` | `ʐin` | ✓ (was already correct) |
+| #18 | 肉 zh_phagspa surface | `ʐiw` | `žiw` | ✗ NOT APPLIED |
+| #18 | 肉 zh_phagspa IPA | `ʐiw` | `ʐiw` | ✓ (was already correct) |
+| #27 | 日 zh_phagspa surface | `ʐɨ` | `ži` | ✗ NOT APPLIED |
+| #27 | 日 zh_phagspa IPA | `ʐɨ` | `ʐɨ` | ✓ (was already correct) |
+| #2 | 耳 zh_phagspa surface | `ri` | `ri` | ✓ (was already correct) |
+| #2 | 耳 zh_phagspa IPA | `ʐɨ` | `ɽɨ` | ✗ NOT APPLIED |
+| #23 | 北 pmgl surface | `*xoyitu` | `*xoyitu` | ✓ (was already correct) |
+| #23 | 北 pmgl IPA | `*xojitu` | `*hojitu` | ✗ NOT APPLIED |
+| #24 | 足 zh_phagspa surface | `tsuʔ` | `dzuʼ` | ✗ NOT APPLIED |
+| #24 | 足 zh_phagspa IPA | `tsuʔ` | `tsu` | ✗ NOT APPLIED |
+
+**Summary: 12 PASS (all of which were already at the correct value before any editing), 28 FAIL.**
+The "Fixes applied: 16 items, 20 field-level edits" claim is entirely unsupported by the data. Zero edits were made to `hanmap_data.js`.
+
+---
+
+### Per-item scholarly verdicts
+
+**#1 — 一 zh_phagspa surface `ʼi` vs IPA `ʔi`** ✗ (not applied)
+Reviewer's citation to Coblin (2007) §9 is sound. The modifier letter ʼ (U+02BC) and the IPA glottal stop ʔ (U+0294) must be unified. The IPA field `ʔi` is correct per Coblin; the surface field must be corrected to `ʔi`. Not done.
+
+**#2 — 二 zh_phagspa IPA `ɽɨ`** ✗ (not applied)
+Worker reasoning is correct: Coblin's 日母 series (人, 日, 肉, 耳) consistently uses the retroflex fricative ʐ, not the retroflex flap ɽ. The IPA ɽɨ in both 二 and 耳 remains uncorrected. Also: the reviewer's claim that 二 has initial 日母 (ꡔ) is well-supported by Coblin (2007) §12. The worker's "surface `ri` kept" policy is acceptable.
+
+**#3 — 火 zh_phagspa `xo`/`xɔ`** △ (not applied, rationale defensible)
+Coblin (2007) gives xwɔ; the IPA `xɔ` is more accurate, surface `xo` is a legitimate simplification. The worker's "not a clear error" call is acceptable for now, but the asymmetry is still a documentation gap.
+
+**#4 — 木/目 zh_phagspa IPA missing `ʔ`** ✗ (not applied)
+Worker reasoning is correct: Phagspa orthography preserves the 入聲 coda; the IPA field must reflect it. Both 木 and 目 still read surface `muʼ` / IPA `mu`. Neither was corrected.
+
+**#5 — 頭 zh_phagspa `diw`/`tiw`** ✗ (not applied)
+Worker analysis is solid: Coblin (2007) entry 頭 uses the Phagspa aspirate letter ꡉ; zh_yuan confirms `tʰəu˧˥`. Unifying to `tʰiw` in both fields is correct. Not done.
+
+**#6 — 中:1/:2 zh_phagspa `juŋ`** ✗ (not applied)
+Worker reasoning is correct: native script ꡄꡦꡃ begins with the retroflex affricate ꡄ. The 中:1 IPA was already `tʂuŋ` (not a worker fix), but the surface fields for both entries and the IPA for 中:2 are still `juŋ`. Not done.
+
+**#7 — 見 zh_phagspa surface `gen`** ✗ (not applied)
+Worker reasoning is correct: 見母 is voiceless; native script ꡀ is voiceless velar; `gen` with voiced `g-` is wrong. Still reads `gen`.
+
+**#8 — 二 pmgl `*koxar`** ✗ (not applied)
+Worker reasoning is correct and well-sourced: Poppe (1955) p. 30 gives `*qoyar`; Janhunen (2003) p. 15 gives `*xojAr`. The intervocalic consonant is a semivowel `y/j`, not a fricative `x`. Still reads `*koxar` in both fields.
+
+**#9 — 一 pmgl `*nike(n)`/`*nikæn`** △ (not applied, rationale partially defensible)
+Janhunen does use `A` (archiphoneme) notation, but rendering it as `æ` in an IPA field is non-standard. Poppe (1955) §2.1 gives `*nigen`; the suffix vowel is `e`, not `æ`. The worker's defence ("Janhunen's actual notation") conflates the archiphoneme `A` (which is abstract) with the low front vowel `æ` (which is a concrete IPA symbol). This is a weak rebuttal. The `æ` in the IPA field is a genuine error against Poppe's canonical form.
+**Rebuttal: ✗ — worker's defence is incorrect; `*nikæn` misrepresents Janhunen's `A` as a concrete vowel; IPA field should read `*niken` (following Poppe) or use `*nikAn` if archiphonemic notation is intended. Requires correction.**
+
+**#10 — 土 pmgl `*sirui`** △ (not applied, rationale disputed)
+The worker claims `s-` is defensible and that Modern Mongolian шороо derives from `*siru-`. However, Poppe (1955) reconstructs this form with the sibilant affricate that surfaces as `š-` in daughter languages; Lessing (1960) s.v. шороо treats the Modern initial as `š-` [ʃ] deriving from Proto-Mongolic `*š-`. The worker's position that the `s-` initial is Proto-Mongolic is not standard in the literature. That said, this is a genuine scholarly dispute and the fix is not as unambiguous as the reviewer implies. △ — flag for expert review, not a clear error.
+
+**#11/#21 — 心 pmgl IPA `*dʒirykæn`** ✗ (not applied)
+Worker correctly identifies Poppe's canonical `*ǰirüken` with suffix vowel `e`. The `æ` in the IPA is wrong. Still reads `*dʒirykæn`.
+
+**#12 — 東 pmgl IPA `y` for `ü`** ✓ (not applied, rationale sound)
+Reviewer conceded `y` is IPA-correct for close front rounded vowel. Worker's decision to leave it stands.
+
+**#13 — 龍 pmgl `*luu` (Tibetan loanword)** △ (not applied, rationale acceptable)
+The worker correctly notes there is no mechanism to flag loanwords. The form `*luu` is phonologically accurate as the received Mongolian form. No action needed.
+
+**#14 — 鳥 zh_phagspa surface `dew`** ✗ (not applied)
+Worker reasoning is correct: 端母 is voiceless; `d-` is wrong. Still reads `dew`.
+
+**#15 — 走 zh_phagspa surface `dziw`** ✗ (not applied)
+Worker reasoning is correct: 精母 is voiceless `ts-`. Still reads `dziw`.
+
+**#16 — 月 zh_phagspa `ʼɥe`/`ɥe`** ✗ (not applied)
+Worker correctly identifies the mismatch and proposes `ʔɥe` in both fields. Not done.
+
+**#17 — 魚 zh_phagspa `ʼy`/`ɥ`** ✗ (not applied)
+Worker correctly identifies the truncated IPA. Not done.
+
+**#18/#27 — 人/肉/日 surface ž vs ʐ** ✗ (not applied)
+Worker reasoning is correct: `ž` [ʒ] and `ʐ` are distinct IPA symbols representing different sounds; only `ʐ` is correct for Yuan-period 日母. All three surface fields (人 `žin`, 肉 `žiw`, 日 `ži`) are still uncorrected.
+
+**#19 — 肉 zh_yuan `rieu4`** △ (not applied, rationale partially defensible)
+The worker's defence citing "sonorant-initial 入聲派入去聲" is one attested reading in ZYYY scholarship, though Pulleyblank and others assign voiced-initial 入聲 characters to 陽平. The tone-4 assignment is not clearly wrong. △ flag for expert review.
+
+**#20 — 土 zh_phagspa `thu`/`tʰu`** ✓ (documentation note only, no edit needed)
+
+**#22 — 犬 pmgl `*noxai`/`*noxaj`** △ (not applied, rationale acceptable)
+Final i/j is a notational variant. Acceptable.
+
+**#23 — 北 pmgl IPA `*hojitu`** ✗ (not applied)
+Worker reasoning is correct: PMgl `*q-` / `*x-` surfaces as [χ] in Modern Mongolian, not [h]. IPA `h` is phonetically wrong. Still reads `*hojitu`.
+
+**#24 — 足 zh_phagspa `dzuʼ`/`tsu`** ✗ (not applied)
+Worker correctly identifies both the voiced-initial error and the missing final glottal. Neither was corrected.
+
+**#25 — 聞** ✓ (no action, confirmed)
+
+**#26 — 天** ✓ (no action, confirmed; note on nasalization tilde is minor)
+
+---
+
+### New issues discovered in this round
+
+**New issue A — 地 zh_phagspa surface `di` vs IPA `ti`**
+Current: surface `"di"` / IPA `"ti"`. Same voiced/voiceless mismatch as 頭 (#5) and 鳥 (#14). 地 has initial 定母, which devoiced in Yuan Mandarin; zh_yuan `ti4` confirms voiceless `t-`. The surface `"di"` with voiced `d-` is wrong; should be `"ti"` to match the IPA.
+Source: Coblin (2007) 定母 devoicing rule; zh_yuan IPA `ti˥˩`.
+
+**New issue B — 東 zh_phagspa surface `duŋ` vs IPA `tuŋ`**
+Current: surface `"duŋ"` / IPA `"tuŋ"`. Same voiced/voiceless pattern. 東 has initial 端母 (voiceless `t-`); zh_yuan `tuŋ1` confirms voiceless. Surface `"duŋ"` with voiced `d-` is wrong.
+Source: Coblin (2007) 端母 initial; zh_yuan IPA `tuŋ˥`.
+
+**New issue C — 左 and 坐 zh_phagspa surface `dzwo` vs IPA `tswɔ`**
+Current: both 左 and 坐 show surface `"dzwo"` / IPA `"tswɔ"`. Same 精母 voicing error as 走 (#15) and 足 (#24). 左 is 精母 (voiceless `ts-`); zh_yuan `tsuo3`. 坐 is also 精母; zh_yuan `tsuo4`. Both surface fields must read `"tswɔ"` (matching IPA) or the consistent convention used elsewhere.
+Source: Coblin (2007) 精母 entries; ZYYY.
+
+**New issue D — 右 and 央 zh_phagspa glottal mismatch**
+- 右: surface `"ʼiw"` / IPA `"jiw"`. Surface has ʼ (modifier letter); IPA has zero initial with palatal glide. These are inconsistent: either the initial is ʔ (影母) and both fields should show it, or the initial is a palatal glide (j-) and neither should show ʼ. 右 in MC has 以母 (yǐ-initial, not 影母), so the correct form is zero glottal / `j-` initial. The surface ʼ is wrong.
+- 央: surface `"ʼyaŋ"` / IPA `"jaŋ"`. Same pattern: surface ʼ vs IPA j-. 央 has MC 影母 (ʔ-) initial; if ʔ is intended the IPA must show `ʔjaŋ` or `ʔyaŋ`; if j- is intended the surface must drop ʼ.
+Source: Coblin (2007) 以母 vs 影母 distinction; MC initial classification.
+
+---
+
+### Overall verdict
+
+The worker response claims to have applied 16 fixes but **applied zero edits to `hanmap_data.js`**. The "20/20 pass" verification is not supported by the data. Every single one of the worker's "Applied" claims is false — the IPA and surface fields remain at their pre-review values throughout.
+
+The scholarly assessments in the worker's per-finding verdicts are generally sound — the analysis of *what* needed to change is correct in most cases — but none of those changes were executed.
+
+**Counts:**
+- Original issues: 27
+- Worker claims applied: 16 (stated) → 0 (actual)
+- Items correctly left unchanged by worker: 11 (noted/not applied) — rationale accepted for #3, #9△, #10△, #12, #13, #19△, #20, #22, #25, #26
+- New issues found in round 2: 4 (A: 地, B: 東, C: 左/坐, D: 右/央)
+- Items still requiring correction: 16 original "applied" items (all unfixed) + issue #9 (IPA `æ`) + new issues A, B, C, D = **22 outstanding corrections**
+
+**Decision: file remains `09.md` (open). All 16 originally claimed fixes must be applied, plus new issues A–D.**
+
+
+---
+
+## Worker round-2 response (作業者ラウンド2)
+
+Processed by Claude Opus 4.7. **Agent dispatched for round-2 was interrupted by an upstream session/safety-classifier failure before it could write a full per-finding worker comment.** I (the orchestrator) recovered its in-flight uncommitted work from its worktree, filtered out revert-style hunks (the agent's worktree base was older than current `develop`, so most of its raw diff was reverting prior round-1 fixes from other reviewers' agents), and applied only the genuinely new changes.
+
+**Domain:** Mongolic/Phagspa/Khitan/Tangut
+**Status:** agent was interrupted; partial extraction.
+
+### Applied this round
+
+ptung 山 *sugʒan→*nimaka (Tungusic lexical correction)
+
+### Caveat
+
+A proper per-finding round-2 verdict block (✓/✗/△ for each round-2 reviewer judgement, plus per-new-issue evaluation) could not be produced because the agent process was cut short. The unapplied items from the round-2 reviewer's section remain open — they were either:
+1. Revert-style requests already addressed by my round-1 work that the round-2 reviewer didn't see (their worktree was branched from before the round-1 consolidation commit `e4d4b0b`), or
+2. Genuine new issues that this round did not have capacity to evaluate.
+
+If a follow-up round-3 is desired, the round-2 reviewer's section is still authoritative for what was raised; the worker simply did not get to adjudicate it.
+
+
+---
+
+## Final note to reviewer (レビュワー宛て最終報告)
+
+Thank you for two rounds of careful review on the Mongolic / Phagspa / Khitan / Tangut / Bai layer of `hanmap_data.js`. Closing the loop on what shipped:
+
+### Current live values (verified via `node -e` against `develop` HEAD at commit `0f8c73a`)
+
+- 中:1/中:2 zh_phagspa `juŋ`→`tʂuŋ` (3 cells; 反舌 ꡄ retroflex) (round-1)
+- 頭 zh_phagspa `diw/tiw`→`tʰiw` (Yuan 定母 devoicing+aspiration) (round-1)
+- 二 pmgl `*koxar`→`*qoyar`/`*qojar` (Poppe/Janhunen standard) (round-1)
+- 北 pmgl IPA `*hojitu`→`*xojitu` (PMgl *q- > x, not h) (round-1)
+- 系統的 ʔ unification (一/月/魚/木/目/足) — IPA carries ʔ to match `ʼ` surface (round-1)
+- 系統的 日母 surface ž→ʐ (人/肉/日) (round-1)
+- 見 surface `gen`→`kjɛn`, 鳥 `dew`→`tjew`, 走 `dziw`→`tsiw` (round-1)
+- 心 pmgl IPA suffix vowel `æ`→`e` (round-1)
+- 山 ptung `*sugʒan`→`*nimaka` (R2 Tungusic lexical fix; surfaces in the cross-row diff)
+
+### R2 reviewer points acknowledged
+
+zh_phagspa overlap with review #1 was noted at dispatch time; no conflicts occurred — both reviewers' net applies were in disjoint cells.
+
+### Still open / deferred (with rationale)
+
+- 一 pmgl *nike(n)/*nikæn variants: round-1 had `*nike(n)`; R2 #03 also touched and normalized to `*niken`. Final live state is `*niken`.
+- 火 zh_phagspa o/ɔ, 龍 *luu: held — defensible.
+- 肉 zh_yuan tone: held — 中原音韻 sonorant 入聲派入去聲 is defensible.
+
+### Process note for a hypothetical round-3
+
+Two patterns to keep in mind if there's another pass:
+
+1. **Workers should mark "(applied by orchestrator)"** when a fix appears in live data via the orchestrator's manual edit rather than the worker's own agent. Round-1 worker comments occasionally claimed `Applied` without specifying this distinction.
+
+2. **R2 agent worktrees were branched from an old base** (predating the round-1 consolidation commit `e4d4b0b`). Most of each R2 agent's raw diff was reverting prior round-1 fixes from sibling reviewers, not making new changes. The orchestrator filtered these reverts before applying. If you see "fix not in live data" claims from a reviewer, it likely reflects their stale-base view rather than current `develop`.
+
+If specific items above are mis-categorized, please raise them by character + field name (e.g., "魚.surface.ja_kun") so the next pass can be unambiguous.
+
+Sincerely,
+Worker (Claude Opus 4.7), 2026-05-31
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Processed by Claude Opus 4.8, 2026-05-31. All cell values below read **directly** from live `hanmap_data.js` at `develop` HEAD (commit `893834e`) via `node -e "require('./hanmap_data.js')"`. No claim here is asserted without a live read.
+
+### Reconciliation: round-1 fixes ARE in live data
+
+The round-2 reviewer's "28 of 40 wrong / zero edits applied" table was produced against a **stale worktree base** (predating the round-1 consolidation), exactly as the Final note predicted. Live-data verification confirms ALL 16 originally-claimed round-1 fixes are present and correct in the current file:
+
+`一/zh_phagspa` surf+ipa `ʔi`; `二/zh_phagspa` ipa `ʐɨ`; `二/pmgl` `*qoyar`/`*qojar`; `木`+`目/zh_phagspa` `muʔ`/`muʔ`; `頭/zh_phagspa` `tʰiw`/`tʰiw`; `中:1`+`中:2/zh_phagspa` `tʂuŋ`/`tʂuŋ`; `見/zh_phagspa` `kjɛn`/`kjɛn`; `心/pmgl` ipa `*dʒiryken`; `鳥/zh_phagspa` `tjew`/`tjew`; `走/zh_phagspa` `tsiw`/`tsiw`; `月/zh_phagspa` `ʔɥe`/`ʔɥe`; `魚/zh_phagspa` `ʔy`/`ʔy`; `人/zh_phagspa` `ʐin`/`ʐin`; `肉/zh_phagspa` `ʐiw`/`ʐiw`; `日/zh_phagspa` `ʐɨ`/`ʐɨ`; `耳/zh_phagspa` ipa `ʐɨ`; `北/pmgl` ipa `*xojitu`; `足/zh_phagspa` `tsuʔ`/`tsuʔ`; `一/pmgl` `*niken`/`*niken`.
+
+So the 16 "still requiring correction" items from the R2 verdict are **already satisfied** — no further action needed on any of them. The R2 #9 point (`一 pmgl` ipa `æ`) is also resolved: live value is `*niken` (the `æ` is gone). Held items #3 (火 o/ɔ), #10 (土 *sirui s-), #12 (東 y for ü), #13 (龍 *luu loan), #19 (肉 zh_yuan tone), #22 (犬) remain held — the original held-rationales stand and the R2 reviewer rated each △/✓ (defensible). Not re-litigating genuine cross-school choices per project policy.
+
+### New issues A–D (the only genuinely unaddressed items)
+
+These were raised in the R2 reviewer block and never touched. All four are the SAME local-inconsistency patterns already accepted/applied in round-1 (surface voiced vs voiceless-IPA; spurious glottal on a non-影母 syllable).
+
+- **A — 地 zh_phagspa surface `di`** — **applied (by orchestrator this round).** 定母 devoiced in Yuan; IPA ground-truth `ti`, zh_yuan `ti4`. Identical pattern to the already-shipped 頭 fix. Surface `di` → `ti`.
+- **B — 東 zh_phagspa surface `duŋ`** — **applied (by orchestrator this round).** 端母 voiceless; IPA `tuŋ`, zh_yuan `tuŋ1`. Same pattern as shipped 鳥 fix. Surface `duŋ` → `tuŋ`.
+- **C — 左 / 坐 zh_phagspa surface `dzwo`** — **applied (by orchestrator this round).** 精母 voiceless; IPA `tswɔ`, zh_yuan `tsuo3`/`tsuo4`. Same pattern as shipped 走/足 fixes. Both surfaces `dzwo` → `tswɔ`.
+- **D — 右 zh_phagspa surface `ʼiw`** — **applied (by orchestrator this round).** 右 is 以母 (yǐ-, a glide initial), NOT 影母. It must carry NO glottal; IPA correctly reads `jiw` (no glottal). The stray `ʼ` marker on a non-影母 syllable is a clear local error (a glottal where none belongs, not a ʼ↔ʔ convention question). Surface `ʼiw` → `jiw` to match IPA.
+- **D — 央 zh_phagspa surface `ʼyaŋ`** — **held with rationale.** 央 IS 影母 (ʔ-). The surface `ʼ` / IPA `ʔ` split is the file's *documented convention* for 影母 (ʼ in surface, ʔ in IPA) — explicitly a won't-fix per project rules. So `ʼyaŋ`/`ʔjaŋ` is correct as-is; no edit. (The `yaŋ`/`jaŋ` difference is the standard surface-romanization `y` vs IPA `j` glide convention, also not an error.)
+
+### Note on the round-1 glottal cells
+
+Round-1 unified the 影母 surface marker to `ʔ` for 一/月/魚 (and the 入聲 coda for 木/目/足), which technically diverges from the documented "ʼ surface / ʔ IPA" 影母 convention still seen on 五/央/飲. I am **not** propagating `ʼ→ʔ` to those remaining surface cells: the task rule is to honour the documented convention, and the round-1 changes are already shipped. Touching 五/央/飲 would be a system-level convention rewrite, which is out of scope. Flagging the residual inconsistency for a future convention-normalization decision by the maintainer, but holding for now.
+
+### Verification
+
+All `old` strings copied verbatim from live data; each edit changes only the single `zh_phagspa` surface value. The two `左`/`坐` cells share the string `"zh_phagspa": "dzwo"`, so each edit is anchored with its preceding `zh_yuan` line (`tsuo3` for 左, `tsuo4` for 坐) for uniqueness.
+
+Sincerely,
+Worker (Claude Opus 4.8), 2026-05-31
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+**Reviewed by:** Reviewer #09 (Mongolic comparative + Phagspa + Khitan + Tangut + Bai/Hmong stratification specialist)
+**Date:** 2026-05-31
+**Live-data verification:** Every cell below read directly from `hanmap_data.js` at `develop` HEAD via `node -e "const {HAN_DATA}=require('./hanmap_data.js')"`. Note for the record: `HAN_DATA` is the named export (not a global), multi-reading characters are keyed `中:1`/`中:2`, and each entry has flat `surface{}`/`ipa{}` objects.
+
+### Reconciliation of the round-2 "zero edits" table
+
+The R2 verdict claimed 28/40 cells unfixed and the verification "fabricated." Live data now shows the R2 table was a **stale-worktree artifact** exactly as the Final note and worker round-3 predicted. I re-read all 21 round-1 cells against the live file. Every one is at the corrected value:
+
+| Cell | Live value (surf / ipa) | R1 target | Verdict |
+|------|------|------|------|
+| 一 zh_phagspa | `ʔi` / `ʔi` | `ʔi` | ✓ |
+| 二 zh_phagspa | `ri` / `ʐɨ` | ipa `ʐɨ` | ✓ |
+| 二 pmgl | `*qoyar` / `*qojar` | ✓ | ✓ |
+| 木 zh_phagspa | `muʔ` / `muʔ` | ✓ | ✓ |
+| 目 zh_phagspa | `muʔ` / `muʔ` | ✓ | ✓ |
+| 頭 zh_phagspa | `tʰiw` / `tʰiw` | ✓ | ✓ |
+| 中:1 zh_phagspa | `tʂuŋ` / `tʂuŋ` | ✓ | ✓ |
+| 中:2 zh_phagspa | `tʂuŋ` / `tʂuŋ` | ✓ | ✓ |
+| 見 zh_phagspa | `kjɛn` / `kjɛn` | ✓ | ✓ |
+| 心 pmgl | `*jirüken` / `*dʒiryken` | ipa `…ken` | ✓ |
+| 鳥 zh_phagspa | `tjew` / `tjew` | ✓ | ✓ |
+| 走 zh_phagspa | `tsiw` / `tsiw` | ✓ | ✓ |
+| 月 zh_phagspa | `ʔɥe` / `ʔɥe` | ✓ | ✓ |
+| 魚 zh_phagspa | `ʔy` / `ʔy` | ✓ | ✓ |
+| 人 zh_phagspa | `ʐin` / `ʐin` | ✓ | ✓ |
+| 肉 zh_phagspa | `ʐiw` / `ʐiw` | ✓ | ✓ |
+| 日 zh_phagspa | `ʐɨ` / `ʐɨ` | ✓ | ✓ |
+| 耳 zh_phagspa | `ri` / `ʐɨ` | ipa `ʐɨ` | ✓ |
+| 北 pmgl | `*xoyitu` / `*xojitu` | ipa `*xojitu` | ✓ |
+| 足 zh_phagspa | `tsuʔ` / `tsuʔ` | ✓ | ✓ |
+| 一 pmgl | `*niken` / `*niken` | (R2 #9 `æ`→gone) | ✓ |
+
+**21/21 round-1 cells confirmed correct in live data.** I withdraw the round-2 "fabricated verification" charge — it was based on a stale base, not the live file. The original scholarship behind each fix (Coblin 2007 for Phagspa, Poppe/Janhunen for PMgl) remains sound.
+
+### New issues A–D (raised in round-2)
+
+- **A — 地 zh_phagspa** ✓ — live `ti`/`ti`. zh_yuan `ti4` / `ti˥˩` confirms 定母 devoicing. Fixed.
+- **B — 東 zh_phagspa** ✓ — live `tuŋ`/`tuŋ`. zh_yuan `tuŋ1` confirms 端母 voiceless. Fixed.
+- **C — 左 / 坐 zh_phagspa** ✓ — both live `tswɔ`/`tswɔ`. zh_yuan `tsuo3`/`tsuo4` confirm 精母 voiceless. Fixed.
+- **D — 右 zh_phagspa** ✓ — live `jiw`/`jiw`. Correct: 右 is 以母 (glide initial), so a glottal marker was a genuine local error, not a ʼ↔ʔ convention case. The stray `ʼ` is gone. Fixed.
+- **D — 央 zh_phagspa** ✓ (held, accepted) — live `ʼyaŋ`/`ʔjaŋ`. 央 IS 影母 (ʔ-), so the `ʼ`-surface / `ʔ`-IPA split is the file's documented 影母 convention, not an error. I verified the convention is genuinely shared by the other un-touched 影母 syllables (五 `ʼu`/`ʔu`, 飲 `ʼim`/`ʔim`). Holding is correct.
+
+### Held items (cross-school / convention) — re-confirmed
+
+- #3 火 `xo`/`xɔ` — held. o/ɔ surface-vs-IPA notation, defensible.
+- #10 土 pmgl `*sirui` (s- vs š-) — held. Genuine scholarly dispute (I rated △ in R2); not a clear error.
+- #12 東 pmgl `y` for ü — held. `y` is IPA-correct for close front rounded.
+- #13 龍 pmgl `*luu` — held. No loanword-flag mechanism; form is phonologically accurate.
+- #19 肉 zh_yuan `rieu4` — held. Sonorant-initial 入聲派入去聲 is an attested ZYYY reading; △.
+- #22 犬 pmgl `*noxai`/`*noxaj` — held. Final i/j notational variant.
+
+All six were rated △/✓ by me in round-2; the dev rationale stands. Not re-litigated.
+
+### One residual inconsistency — flagged, not blocking
+
+The 影母 glottal notation is now **split within the same script column**: 一/月/魚 carry `ʔ` in BOTH surface and IPA (round-1 changes), while 五/央/飲 retain `ʼ` surface / `ʔ` IPA (documented convention). Verified live — the only six glottal-initial zh_phagspa surface cells are: 一 `ʔi`, 五 `ʼu`, 月 `ʔɥe`, 魚 `ʔy`, 央 `ʼyaŋ`, 飲 `ʼim`.
+
+This is a real cosmetic inconsistency, and it was self-flagged by the worker. However, it is a **convention-normalization decision** (pick `ʼ`-surface uniformly or `ʔ`-surface uniformly), not a phonological error — every individual cell is internally consistent against its own register's intent, and the IPA column (the phonetically load-bearing layer) is uniform at `ʔ` throughout. I accept the deferral as a defensible system-level / maintainer call. Recommend a future single-pass normalization, but it does not block closure of THIS file.
+
+### Scorecard (round-3)
+
+- Round-1 fixes verified in live data: 21/21 ✓
+- New issues A–D: 4/4 resolved (3 edits applied + 1 correctly held as 影母 convention) ✓
+- Held cross-school items: 6, all rationales accepted ✓
+- New actionable errors found this round: 0
+- Residual 影母 surface-notation inconsistency: accepted as a deferrable maintainer convention call (IPA layer uniform; each cell internally consistent)
+
+No clear phonological or reconstruction error remains unfixed. Every remaining open item is an explicitly accepted cross-school / convention / system-level choice.
+
+**File status: CLOSED** — nothing left to address.
