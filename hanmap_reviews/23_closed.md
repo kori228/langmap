@@ -91,4 +91,37 @@ Re-loaded `hanmap_data.js` in a fresh VM and verified every applied edit verbati
 
 All 7 applied edits are fixed-and-verified: the Penang `chh/ch` and Tâi-lô `ts` orthography is now internally consistent, and both Perak surface↔IPA mismatches are resolved. The actionable orthography/mismatch defects are closed. The owner's "MY/ID/SG look cloned" concern is confirmed to be **substantially a coverage artifact** (empty nan_id cells + absent 漳泉-diagnostic morphemes), not a contamination defect.
 
-**File status: OPEN** — Dev next step (real data work, deferred to a future session): (1) add the absent characters 雞/飯/黃/豬 to `HAN_DATA` and seed the 漳泉-diagnostic morphemes 火/雞/魚/飯/黃/豬 with mainland + SEA-Hokkien nan cells from their `nan_zz` (Zhangzhou) / `nan_qz` (Quanzhou) parents so the 漳/泉 vowel split surfaces in the daughters; (2) seed the empty `nan_id` (Medan) cells on 左/犬/右/足 from the `nan_zz` parent in POJ `chh/ch`. These two seeding tasks are the real fix for the owner's concern.
+**File status: OPEN (round-2)** — Dev next step: seed existing-character cells (NO new characters — owner ruled character-addition out of scope as a heavy synchronized change). See round-3.
+
+---
+
+## Worker round-3 response (作業者round-3) — seeding existing characters
+
+Owner constraint: **no new characters** (adding 雞/飯/黃/豬 would touch HAN_LIST, categories, every language column and cache-busters — declined). So 雞/飯/黃/豬 are dropped from the backlog. The remaining feasible seeding — on characters **already in HAN_LIST** — was done. 44 cells added (verified absent before insertion; `HAN_LIST` count unchanged at 61).
+
+**Group A — 火 / 魚 seeded to expose the 漳泉 split (9 codes each, 36 cells).** Verified against Wiktionary Min-Nan 漳泉 tables + Penang/Medan/Singapore Hokkien sources. The specialist **corrected the initial brief**: the 火 split is Amoy **hé** vs Zhangzhou **hué/hóe** vs Quanzhou **hér** (central vowel ə), not the reverse; and Penang/Medan 魚 is the attested **hû** (海澄/同安 -u reflex), not hî — only Amoy/Zhangzhou/Singapore take **hî**, Quanzhou **hîr** (ɯ).
+- 火: `nan/nan_xm hé /he˥˧/`, `nan_zz hué /hue˥˧/`, `nan_qz hér /hə˥˥/`, `nan_pn hóe /hue˦˨/`, `nan_my hóe /hue˥˨/`, `nan_sg hué /hue˥˧/`, `nan_id hóe /hue˥˧/`, `nan_pera hóe²¹ /hue˨˩/`.
+- 魚: `nan/nan_xm hî /hi˨˦/`, `nan_zz hî /hi˩˧/`, `nan_qz hîr /hɯ˨˦/`, `nan_pn hû /hu˨˦/`, `nan_my hû /hu˨˧/`, `nan_sg hî /hi˨˦/`, `nan_id hû /hu˨˦/`, `nan_pera hû⁵ /hu˥/`.
+- Romanization per file convention: mainland + Singapore = Tâi-lô (hué/hî); Penang/Malaysian/Medan = POJ (hóe/hû); Perak = numbered-tone surface. IPA tone-letters derived from sibling cells (上聲 / 陽平 registers per code).
+
+**Group B — nan_id (Medan) gap-fill on 左/犬/右/足 (8 cells).** Seeded from the `nan_zz` (Zhangzhou) parent in POJ chh/ch with Medan's tone register: 左 `chó /tsɔ˥˧/`, 犬 `khián /kʰian˥˧/`, 右 `iū /iu˨˩/`, 足 `chiok /t͡siɔk̚˧˨/`.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+Re-loaded `hanmap_data.js` fresh and verified all 44 added cells in live data; `HAN_LIST` unchanged at 61 (no character added, per owner constraint). The **漳泉 split is now visible** on the two diagnostic morphemes — 火 hé(廈)/hué(漳)/hér(泉) and 魚 hî(廈漳)/hîr(泉)/hû(檳城·棉蘭) — directly answering the owner's "MY/ID/SG look cloned" concern with attested, sourced differentiation. The nan_id column is no longer one-sided on 左/犬/右/足. The 火/魚 forms are cross-checked against Wiktionary + the Penang/Medan/Singapore Hokkien literature (the Penang/Medan **hû** for 魚 and the Amoy **hé** for 火 are the attested, not the naive, reflexes).
+
+| Item | Verdict |
+|---|---|
+| 火 漳泉 split seeded (9 codes) | ✓ added+verified |
+| 魚 漳泉 split seeded (9 codes, hû for Penang/Medan) | ✓ added+verified |
+| nan_id gap-fill 左/犬/右/足 (Zhangzhou parent, chh/ch) | ✓ added+verified |
+| No new characters added (HAN_LIST = 61) | ✓ owner constraint honored |
+| 雞/飯/黃/豬 character-addition | ✗ out of scope (owner declined) — dropped from backlog |
+| round-1 orthography + Perak mismatch fixes (7) | ✓ still verified |
+| 四/海/虎/心 identity; nan_hai/nan_te distinctness | ✓ certified-correct |
+
+All feasible (no-new-character) seeding is complete and verified; the 漳泉 vowel split and Medan column now differentiate the SEA Hokkien varieties. The only remaining item — adding 雞/飯/黃/豬 as new characters — is explicitly out of scope per the owner.
+
+**File status: CLOSED** — existing-character seeding done and verified; new-character additions declined by owner and removed from the backlog.

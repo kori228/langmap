@@ -3068,6 +3068,15 @@ const HAN_DATA = {
   },
   "火": {
     "surface": {
+      "nan_pera": "hóe²¹",
+      "nan_id": "hóe",
+      "nan_sg": "hué",
+      "nan_my": "hóe",
+      "nan_pn": "hóe",
+      "nan_qz": "hér",
+      "nan_zz": "hué",
+      "nan_xm": "hé",
+      "nan": "hé",
       "zh": "huǒ",
       "zh_tw": "huǒ",
       "yue": "fo2",
@@ -3157,6 +3166,15 @@ const HAN_DATA = {
       "ja_thk": "ka"
     },
     "ipa": {
+      "nan_pera": "hue˨˩",
+      "nan_id": "hue˥˧",
+      "nan_sg": "hue˥˧",
+      "nan_my": "hue˥˨",
+      "nan_pn": "hue˦˨",
+      "nan_qz": "hə˥˥",
+      "nan_zz": "hue˥˧",
+      "nan_xm": "he˥˧",
+      "nan": "he˥˧",
       "zh": "xuo˨˩˦",
       "zh_tw": "xuo˨˩˦",
       "zh_db": "xuo²¹⁴",
@@ -4800,6 +4818,7 @@ const HAN_DATA = {
   },
   "犬": {
     "surface": {
+      "nan_id": "khián",
       "zh": "quǎn",
       "zh_tw": "quǎn",
       "yue": "hyun2",
@@ -4897,6 +4916,7 @@ const HAN_DATA = {
       "ja_thk": "ken"
     },
     "ipa": {
+      "nan_id": "kʰian˥˧",
       "zh": "t͡ɕʰyan˨˩˦",
       "zh_tw": "t͡ɕʰyan˨˩˦",
       "zh_db": "tɕʰyɛn˨¹˦",
@@ -5451,6 +5471,15 @@ const HAN_DATA = {
   },
   "魚": {
     "surface": {
+      "nan_pera": "hû⁵",
+      "nan_id": "hû",
+      "nan_sg": "hî",
+      "nan_my": "hû",
+      "nan_pn": "hû",
+      "nan_qz": "hîr",
+      "nan_zz": "hî",
+      "nan_xm": "hî",
+      "nan": "hî",
       "zh": "yú",
       "zh_tw": "yú",
       "yue": "jyu4",
@@ -5541,6 +5570,15 @@ const HAN_DATA = {
       "ja_thk": "gyo"
     },
     "ipa": {
+      "nan_pera": "hu˥",
+      "nan_id": "hu˨˦",
+      "nan_sg": "hi˨˦",
+      "nan_my": "hu˨˧",
+      "nan_pn": "hu˨˦",
+      "nan_qz": "hɯ˨˦",
+      "nan_zz": "hi˩˧",
+      "nan_xm": "hi˨˦",
+      "nan": "hi˨˦",
       "zh": "y˧˥",
       "zh_tw": "y˧˥",
       "zh_db": "y˧˥",
@@ -6699,6 +6737,7 @@ const HAN_DATA = {
   },
   "足": {
     "surface": {
+      "nan_id": "chiok",
       "zh": "zú",
       "zh_tw": "zú",
       "yue": "zuk1",
@@ -6791,6 +6830,7 @@ const HAN_DATA = {
       "ja_thk": "sogu"
     },
     "ipa": {
+      "nan_id": "t͡siɔk̚˧˨",
       "zh": "tsu˧˥",
       "zh_tw": "tsu˧˥",
       "zh_db": "tsu˧˥",
@@ -9444,6 +9484,7 @@ const HAN_DATA = {
   },
   "左": {
     "surface": {
+      "nan_id": "chó",
       "zh": "zuǒ",
       "zh_tw": "zuǒ",
       "yue": "zo2",
@@ -9538,6 +9579,7 @@ const HAN_DATA = {
       "ja_thk": "sa"
     },
     "ipa": {
+      "nan_id": "tsɔ˥˧",
       "zh": "tsuo˨˩˦",
       "zh_tw": "tsuo˨˩˦",
       "zh_db": "tsuo²¹³",
@@ -9667,6 +9709,7 @@ const HAN_DATA = {
   },
   "右": {
     "surface": {
+      "nan_id": "iū",
       "zh": "yòu",
       "zh_tw": "yòu",
       "yue": "jau6",
@@ -9762,6 +9805,7 @@ const HAN_DATA = {
       "ja_thk": "yū"
     },
     "ipa": {
+      "nan_id": "iu˨˩",
       "zh": "jou˥˩",
       "zh_tw": "jou˥˩",
       "zh_db": "iou⁵¹",
