@@ -98,7 +98,7 @@ WORDS.tree = {
     es_mx: ["árbol", "aɾβol"],
     pt_eu: ["árvore", "ˈaɾvuɾɨ"],
     pt_br: ["árvore", "ˈaɾvoɾi"],
-    ru: ["дерево", "ˈdʲerʲɪvɐ"],
+    ru: ["дерево", "ˈdʲerʲɪvə"],
     ar_qur: ["شجرة", "ʃad͡ʒara"],
     ar: ["شجرة", "ʃad͡ʒara"],
     he: ["עץ", "et͡s"],

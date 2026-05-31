@@ -12524,7 +12524,7 @@ const HAN_DATA = {
       "wuu_jx": "tsɤɯ³⁵",
       "wuu_jh": "tsei³⁵",
       "hak_cn": "tseu˧˩",
-      "hak_tw": "zeu˧˩",
+      "hak_tw": "tseu˧˩",
       "hak_hl": "tseu˧˩",
       "cjy": "tsəu˥˧",
       "czh": "tseu˨˩˧",
@@ -26062,6 +26062,14 @@ const HAN_VARIANTS = {
         "ipa": "aɴ",
         "label": "唐音 / Tō-on"
       }],
+    "vi": [
+      {
+        "native": "",
+        "surface": "hành",
+        "ipa": "haɲ˨˩",
+        "label": "đi, làm (walk/act)"
+      }
+    ],
     "yue": [
       {
         "native": "",
@@ -26137,21 +26145,9 @@ const HAN_VARIANTS = {
     "vi": [
       {
         "native": "",
-        "surface": "hành",
-        "ipa": "haːɲ˨˩",
-        "label": "đi, làm (walk/act)"
-      },
-      {
-        "native": "",
         "surface": "hàng",
         "ipa": "haŋ˨˩",
         "label": "hàng ngũ, thương hàng (row/business)"
-      },
-      {
-        "native": "",
-        "surface": "hạnh",
-        "ipa": "haːɲ˨˩ʔ",
-        "label": "đức hạnh (conduct/virtue)"
       }
     ],
     "nan_th": [

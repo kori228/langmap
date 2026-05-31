@@ -234,3 +234,81 @@ None. The `surface===ipa` re-scan confirms no city-dialect cell retains leaked I
 10 of the original errors are fixed-and-verified in live data; 4 items accepted as defensible convention / known-gap. One concretely actionable restructuring remains: **#6** (re-home `hành` to `行:1.vi`, reduce `行:2.vi` to `hàng`, drop `hạnh`), which also closes out the residual #8 length marks. Because that is a real, not-yet-attempted, mis-homed-data fix with a clear target shape, the file is not yet closed.
 
 **File status: OPEN** — Dev team next step: create `HAN_VARIANTS["行:1"].vi = [{surface:"hành", ipa:"haɲ˨˩", label:"đi, làm (walk/act)"}]`, reduce `HAN_VARIANTS["行:2"].vi` to the single `hàng` entry, and delete the `hạnh` entry (which also resolves the two stray `haː` length marks in #8).
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Re-loaded `hanmap_data.js` into a fresh VM context and verified every "Current" value verbatim. The reviewer's round-2 scorecard closed out all items except **#6**, for which the reviewer supplied an explicit, endorsed target shape ("File status: OPEN" dev next-step). Applied that one restructuring; everything else stands as the reviewer adjudicated.
+
+**#6 — `行:2 vi` three readings (hành/hàng/hạnh) → split — APPLIED (applied by orchestrator this round).** Implemented the reviewer's endorsed target shape exactly:
+- Created `HAN_VARIANTS["行:1"].vi = [{surface:"hành", ipa:"haɲ˨˩", label:"đi, làm (walk/act)"}]` (the 行為 walk/act reading), inserted directly after the `行:1` `ja` key. The IPA uses short `a` (`haɲ˨˩`) to match the main row `HAN_DATA["行:1"].ipa.vi` convention — this simultaneously resolves the residual **#8** length mark (`haːɲ`→`haɲ`) for this row.
+- Reduced `HAN_VARIANTS["行:2"].vi` to the single `hàng` entry (`haŋ˨˩`, the 行列 row/business reading, already short-`a` and untouched).
+- Dropped the phantom-third-sense `hạnh` (`haːɲ˨˩ʔ`): 去聲 Sino-Viet of 行 *xìng* 'virtue', 廣韻 下更切, which maps to neither project sense per `HAN_SENSE_LABELS` (行:1 行為 / 行:2 行列). Dropping it also clears the last stray `haː` length mark flagged in #8.
+
+`hành` is no longer mis-homed under the 行列 sense; `行:1.vi` now resolves on the canonical `行:1` overlay lookup enabled by the #5 rename. Verified `行:1` previously had no `vi` key, so this is a clean add (no clobber). Anchor for the insert is `"ipa": "aɴ"`, which occurs uniquely in the variants table (line 26062), guaranteeing the edit lands in the 行:1 `ja`/唐音 block and nowhere else.
+
+**#8 — residual length marks — fully closed by #6.** The two remaining `haː` marks (`hành`, `hạnh`) sat on rows the reviewer agreed to defer to the #6 move; both are now gone (one normalised to `haɲ˨˩` and re-homed, one dropped). No standalone #8 edit needed.
+
+### Items left as reviewer-adjudicated (no action)
+
+- **#9** (中 ja identical 漢音/呉音 chū) — reviewer ACCEPT as won't-fix (correct phonology, presentation-policy call). Held.
+- **#12** (行:1 null `zh_kanbun`) — reviewer ACCEPT as won't-fix (intentional null placeholder convention). Held.
+- **#13** (`nan_my` one-sided on 行:2) — reviewer ACCEPT as known-gap; colloquial `kiâⁿ` for Malaysian Hokkien not offline-sourceable, will not invent. Held.
+- **#14** (bo_sino mirror onto 中:2) — reviewer ACCEPT as won't-fix (coverage-design call). Held.
+
+Net this round: 1 restructuring applied as 2 structured edits (create `行:1.vi`; reduce `行:2.vi` to `hàng` + drop `hạnh`), which also closes #8. 0 items left open as needing-decision — the 4 remaining items are reviewer-confirmed won't-fix / known-gap.
+
+**File status: ready to CLOSE** — the one concretely actionable defect (#6) is resolved exactly to the reviewer's endorsed target shape; all other findings are either fixed-and-verified in prior rounds or accepted by the reviewer as defensible convention.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Re-loaded `hanmap_data.js` into a fresh VM context and verified every value the worker round-2 claims, plus re-checked all previously-accepted items still stand in live data (guarding against silent regression).
+
+**#6 — `行:2 vi` three-reading split — ✓ ACCEPT (verified in live data).** Confirmed the worker's restructuring landed exactly as the round-2 endorsed target shape:
+- `HAN_VARIANTS["行:1"].vi` now exists and equals `[{native:"", surface:"hành", ipa:"haɲ˨˩", label:"đi, làm (walk/act)"}]` — short `a`, the 行為 reading, resolving on the canonical `行:1` lookup enabled by the #5 rename.
+- `HAN_VARIANTS["行:2"].vi` is now the single `[{surface:"hàng", ipa:"haŋ˨˩", label:"hàng ngũ, thương hàng (row/business)"}]`.
+- The phantom-third-sense `hạnh` is GONE — a JSON scan of both `行:1`/`行:2` variant blocks returns `contains hạnh: false`. `hành` is no longer mis-homed under the 行列 sense. Clean move, no clobber (`行:1` had no prior `vi` key).
+
+**#8 — residual `行:2 vi` length marks — ✓ ACCEPT (fully closed by #6, verified).** The two stray Vietnamese `haː` marks (on `hành` and `hạnh`) are gone: `hành` re-homed as `haɲ˨˩` (short), `hạnh` dropped. I scanned the entire 行 variant block for any remaining `haː`: the only hits are in the **Cantonese** entries (`yue`/`yue_gz`/`yue_hk`/`yue_mo`) where `haang4` → `haːŋ` — this is the correct Yue /aː/ long-vowel 白讀 contrasting with 文讀 `hang4` /hɐŋ/, which is phonemic in Cantonese and entirely unrelated to the Vietnamese #8 finding. Not a defect; no Vietnamese length mark survives.
+
+**Regression re-check of all prior-accepted items (live data, this round):**
+- #1 — `行:2` 13 city surfaces: scan for `[ŋãæ̃]` glyphs returns empty; `zh_xa` = `hang²⁴` etc. Still fixed.
+- #2 — `中:1 bo_sino` ipa = `ʈʂuŋ˥` / surface `krung`. Still fixed (no Mandarin `⁵⁵`).
+- #3 — `中:1 hak_cn` = `chûng`/`tʃuŋ˦˦`. Surface/IPA initials agree. Still fixed.
+- #4 — `中:1 ko_kp` = `jung`/`tsuŋ`. Still fixed.
+- #5 — bare `"行"` key absent; `行:1`/`行:2` present. Still fixed.
+- #7 — `中:2 vi` overlay = `trung`/`ʈuŋ͡m˧`, `trúng`/`ʈuŋ͡m˧˥`. Still fixed.
+- #10 — `北 hak_cn` main row = `pet`/`pet̚˨` present; overlay `pet`(白)/`pak`(文). Base rows present, de-aspirated. Still resolved.
+- #11 — `北` Hakka overlays de-aspirated (`pak`/`pak̚`, no `pʰ`). Still fixed.
+
+**Won't-fix / known-gap items (#9, #12, #13, #14)** — unchanged and re-affirmed as defensible: #9 中 ja non-contrast (correct phonology, presentation policy); #12 `行:1.surface.zh_kanbun=null` placeholder convention; #13 `nan_my` one-sided (colloquial `kiâⁿ` not offline-sourceable — documented known gap, not invented); #14 `bo_sino` single-sense placement (coverage-design call).
+
+### New issues
+
+None. The targeted re-scan surfaced no new defensible errors; the lone surviving `haː` is correct Cantonese, not leakage.
+
+### Scorecard (round-3, final)
+
+| Item | Verdict |
+|---|---|
+| #1 IPA-into-surface ×13 | ✓ fixed+verified |
+| #2 bo_sino IPA | ✓ fixed+verified |
+| #3 hak_cn initial | ✓ fixed+verified |
+| #4 ko_kp surface | ✓ fixed+verified |
+| #5 行 key rename | ✓ fixed+verified |
+| #6 vi three-reading split | ✓ fixed+verified (this round) |
+| #7 中:2 vi IPA | ✓ fixed+verified |
+| #8 行:2 vi length | ✓ fully closed by #6 |
+| #10 北 base rows | ✓ resolved+verified |
+| #11 北 Hakka aspiration | ✓ fixed+verified |
+| #9 中 ja non-contrast | ✓ accept won't-fix |
+| #12 null zh_kanbun | ✓ accept won't-fix |
+| #13 nan_my gap | ✓ accept known-gap (documented) |
+| #14 bo_sino mirror | ✓ accept won't-fix |
+
+All 10 original clear errors are fixed-and-verified in live data. The 4 remaining items are reviewer-accepted as defensible convention or documented known-gaps (the only genuinely-unsourceable one, #13, is closed with a "known limitation, needs human linguist" caveat rather than an impossible demand). Nothing actionable remains.
+
+**File status: CLOSED** — nothing left to address.

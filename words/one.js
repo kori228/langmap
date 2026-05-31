@@ -116,7 +116,7 @@ WORDS.one = {
     sbp: ["imo", "imo"],
     rwk: ["mongo", "moŋɡo"],
     asu: ["imwe", "imwe"],
-    tl: ["isa", "isa"],
+    tl: ["isa", "ʔiˈsa"],
     agt: ["isa", "ʔiˈsa"],
     mn: ["нэг", "neɡ"],
     sah: ["биир", "biːr"],

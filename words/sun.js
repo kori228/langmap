@@ -521,7 +521,7 @@ WORDS.sun = {
     ofs: ["sunne", "sunːe"],
     non: ["sól", "soːl"],
     got: ["𐍃𐌿𐌽𐌽𐍉", "sunːoː"],
-    cu: ["слъньце", "slɤnʲtse"],
+    cu: ["слъньце", "slɤnɪtse"],
     pi: ["सुरिय", "surija"],
     pi_edu: ["suriya", "suɾija"],
     pmh: ["सूर", "suːɾa"],

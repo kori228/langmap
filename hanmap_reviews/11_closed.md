@@ -181,3 +181,38 @@ None. (The 走 `hak_tw` gap is a not-fully-applied instance of existing issue #2
 - New issues: 0.
 
 **File status: OPEN** — dev team must fix the one remaining illegal /z/: 走 `hak_tw` IPA `zeu˧˩` → `tseu˧˩` (surface `zeu3` unchanged). Everything else is verified-applied or accepted-as-held.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Round-2 left exactly one open item: **#2 走 `hak_tw` IPA `zeu˧˩`** (the only remaining word-initial illegal /z/ in any Hakka IPA cell). Re-verified verbatim against live `hanmap_data.js` at line 12527: `"hak_tw": "zeu˧˩"` (preceded by `hak_cn "tseu˧˩"`, followed by `hak_hl "tseu˧˩"`).
+
+**#2 走 `hak_tw` ipa `zeu˧˩` → `tseu˧˩`** — APPLIED (applied by orchestrator this round). 走 is 精母, a voiceless unaspirated alveolar affricate /ts/ in all Hakka; Hakka has no /z/ phoneme (Hashimoto 1973). The fix brings `hak_tw` IPA into line with its three sibling registers, which already read `tseu˧˩` (`hak_cn`, `hak_hl`, `hak_mz`). The MOE surface `zeu3` is LEFT UNCHANGED, since in the Taiwan MOE scheme word-initial `z` spells the voiceless unaspirated /ts/ (not a voiced sibilant) — consistent with the same family-wide fix the worker already applied to 中:1/中:2 `hak_tw` in round-1, and with the project "fix all variants in the same family together" rule.
+
+**#16 whole-register `hak_cn`↔`hak_mz` tone drift (now 28/61)** — REMAINS HELD (accepted-as-held by reviewer in round-2). This is a genuine system-level convention decision (one dialect vs two distinct lects), not a local bug, and the reviewer explicitly accepted deferring it to a single sanctioned normalization pass. No round-3 action; the provable local errors under it (#4, #14) were fixed in round-1. Not a blocker.
+
+With #2 closed, all 16 issues are resolved (15 fully applied, #16 accepted-as-held). No remaining open data errors.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-loaded `HAN_DATA` from live `hanmap_data.js` via `module.exports` and ran three file-wide scans across all four Hakka registers (`hak_cn`, `hak_tw`, `hak_hl`, `hak_mz`): (a) word-initial /z/ in any IPA cell, (b) ASCII superscript-digit tone leaks in Hakka IPA, (c) ring-above diacritics in Hakka surfaces. All three scans returned **zero hits**.
+
+Per-item adjudication:
+
+- **#2 走 `hak_tw` IPA `zeu˧˩` → `tseu˧˩`** (the sole round-2 open item) — ✓ ACCEPT. Live data now: `走 hak_tw surface="zeu3" ipa="tseu˧˩"`, matching all three siblings (`hak_cn`, `hak_hl`, `hak_mz` all `tseu˧˩`). The MOE surface `zeu3` is correctly left unchanged (word-initial `z` = voiceless /ts/ in the Taiwan MOE scheme). The last word-initial illegal /z/ in the Hakka rows is gone — confirmed by the full-register scan.
+- **#1, #3–#15** — ✓ STILL VERIFIED (re-confirmed in live data this round; unchanged since round-2). Spot re-checks: 中:1 cn `tʃuŋ˦˦` / tw `tʃuŋ˨˦`; 中:2 all `…˥˥` Chao letters; 六 cn `liuk̚˥`; 一 hl `jit̚˨`; 人 cn `ngin`/`ŋin˩˩`; 北 cn/hl `pet̚˨`, mz `pet̚˩`, tw `bed5`/`pet̚˨`; 心 tw `sim1`; 七 tw `cid5`; 四/西 tw `si4`/`si1`; 下 hl `hà`; 右 hl `yù`; 月 hl `ŋiet̚˥`; 山/心/天/東 cn all `˦˦`.
+- **#16 whole-register `hak_cn`↔`hak_mz` tone drift** — ✓ ACCEPT AS HELD (final). Re-measured live: cn↔mz diverge on **28/61** characters (consistent with worker's figure). This remains a genuine system-level convention decision — whether `hak_cn` and `hak_mz` denote one dialect or two distinct lects — not a local bug. The provable local errors that sat under it (#4 六, #14 陰平 leakage) were fixed in round-1 and remain fixed. I accepted deferral to a single sanctioned normalization pass in round-2 and reaffirm it here; re-demanding a mass-rewrite is out of scope and not loop-productive. Recorded as a **known limitation for a future sanctioned pass**, not a blocker.
+
+### New issues
+None.
+
+### Scorecard
+- Verified-applied: 16 of 16 items (#1–#15 fully applied and live-verified; #16 accepted-as-held / documented limitation).
+- Partial / missed: 0.
+- New issues: 0.
+- Residual defect scans (illegal /z/, superscript tone leaks, ring diacritics): all clean (0 hits).
+
+**File status: CLOSED** — nothing left to address.

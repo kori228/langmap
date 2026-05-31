@@ -181,3 +181,41 @@ These are not new demands for external data — they are the *same* sourced fix 
 - Partial / rejected: 0.
 
 **File status: OPEN** — Dev team must vocalize the remaining front jers per round-1 issue #8: `words/sun.js` `slɤnʲtse`→`slɤnɪtse`, and `words/love.js` `lʲubɤvʲ`→`lʲubɤvɪ`.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Both round-2 NEW items are the *same* OCS front-jer vocalization fix already accepted for round-1 #7–#9 (Lunt 2001 §2.4: canonical-OCS front jer ь = reduced [ɪ], not bare palatalization). They were pre-identified by round-1 issue #8 as instances of the same systematic gap, so they are clear, well-defined normalizations consistent with the accepted convention — not new external-data demands. Both verified verbatim against the live files and applied.
+
+- **NEW-1. `cu` sun `words/sun.js` L524** — `slɤnʲtse` → `slɤnɪtse`. *слъньце* /slŭnĭce/: back jer ъ→/ɤ/ already vocalized; front jer ь before ц now surfaces as the reduced front vowel [ɪ], matching the accepted `heart`/`dog`/`father` cells. **(applied by orchestrator this round)**
+- **NEW-2. `cu` love `words/love.js` L525** — `lʲubɤvʲ` → `lʲubɤvɪ`. *любъвь* /ljubŭvĭ/: initial `lʲ` (legitimate palatalization before ю) retained; back jer ъ→/ɤ/ already vocalized; word-final front jer ь now [ɪ], exactly paralleling the accepted `father` cell's word-final ь (`otɪtsɪ`). **(applied by orchestrator this round)**
+
+No items held or rejected. Both new items applied; this completes the systematic OCS front-jer vocalization pass the reviewer requested. Remaining open: 0.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-grepped every cited cell in the live data files. Both round-2 NEW fixes are present and correct verbatim, and all 14 round-1 fixes remain in their corrected state (no regression).
+
+Round-2 NEW items:
+- **NEW-1 `cu` sun** `words/sun.js` L524 = `["слъньце", "slɤnɪtse"]` — ✓ accept. Back jer ъ→/ɤ/ retained; front jer ь before ц now the reduced front vowel [ɪ], matching accepted #7–#9 (Lunt 2001 §2.4).
+- **NEW-2 `cu` love** `words/love.js` L525 = `["любъвь", "lʲubɤvɪ"]` — ✓ accept. Initial `lʲ` (legitimate palatalization before ю) kept; back jer ъ→/ɤ/ retained; word-final front jer ь now [ɪ], paralleling the accepted `father` word-final ь in `otɪtsɪ`.
+
+Re-verification of round-1 fixes (no regression):
+- `got` one L523 `ains`; hello L510 `hails`; mother L523 `aiθiː` — ✓ all intact.
+- `ang` eye L514 `æːɑɣe` (`non auga` `ɑuɣɑ` intact); tree L514 `treːow`; heart L514 `ˈheorte` — ✓ all intact.
+- `cu` heart L518 `sɪrɪdɪtse`; dog L518 `pɪsɤ`; father L518 `otɪtsɪ` — ✓ all intact.
+- `sa`/`sa_edu` heart L84/L85 `hr̩dajam` (matches `vsa` L1035); tree L84/L85 `vr̩kʂaɦ` (matches `vsa` L1035) — ✓.
+- `sa_edu` water L84 `dʑalam` (matches `sa` L85); cat L84 `maːɾdʑaːɾaɦ` (matches `sa` L85, `vsa` L1035 `maːrdʑaːraɦ`) — ✓.
+- `el_grc` one L515 `hêːs` (spurious-diphthong long monophthong) — ✓.
+
+The OCS front-jer vocalization is now consistent across the entire named set (heart, dog, father, sun, love). No new issues spotted during verification; the asterisk convention and all cross-referenced sibling cells are clean.
+
+### Scorecard
+- Round-1 items accepted (✓): 14 / 14, verified live.
+- Round-2 NEW items accepted (✓): 2 / 2, verified live.
+- Partial / rejected / new issues: 0.
+
+**File status: CLOSED** — nothing left to address.

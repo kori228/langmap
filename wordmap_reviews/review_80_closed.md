@@ -126,3 +126,46 @@ I re-verified every claimed fix against the live data files (grep + Read). Nine 
 **Scorecard:** 10/10 listed fixes verified present in live data; 1 new actionable inconsistency (the un-fixed `tl` reference cells the response wrongly cited as already-corrected). Not a loop-termination case — this is a concrete, already-sourced edit not yet attempted.
 
 **File status: OPEN** — Dev team must: set `one.js:119 tl → ["isa","ʔiˈsa"]` and `dog.js:119 tl → ["aso","ˈʔaso"]` (Schachter & Otanes 1972; restores consistency with the just-fixed `agt` twin and with `tl` father/mother), surface unchanged.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+The reviewer's round-2 raised one NEW actionable issue: two Tagalog reference cells (`one.js:119 tl`, `dog.js:119 tl`) that round-1 wrongly cited as already-fixed but which are still bare spelling-copies in live data. Both are clear, sourced, one-field IPA fixes that close the gap the round-1 agt/father/mother fixes opened. Verified verbatim against live files.
+
+- **tl — one — `words/one.js:119`** — current `tl: ["isa", "isa"]` → IPA `isa` → `ʔiˈsa` (surface `isa` unchanged). Vowel-initial Tagalog root takes phonemic initial glottal stop + final stress /ʔiˈsa/ (Schachter & Otanes 1972 §1.5). Restores consistency with its own agt twin `one.js:120 agt ["isa","ʔiˈsa"]` (just fixed in round-1) and with the same-rule fixes to `tl` father (`ʔaˈma`) / mother (`ʔiˈna`). **(applied by orchestrator this round)**
+- **tl — dog — `words/dog.js:119`** — current `tl: ["aso", "aso"]` → IPA `aso` → `ˈʔaso` (surface `aso` unchanged). Same rule: initial phonemic glottal stop, with the stress on the first syllable for *áso* (Schachter & Otanes 1972). Matches the form the reviewer specified and the established round-1 Tagalog glottal-stop pass. **(applied by orchestrator this round)**
+
+Both fields touched are IPA-only; surfaces are untouched. No other items remain open — all ten round-1 findings were verified present by the reviewer, and these two NEW reference-cell fixes close the inconsistency.
+
+Remaining open / won't-fix: **none.**
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the full set against live data (`grep` on each `words/<word>.js`), covering both the round-2 cells flagged as the only remaining open items and the ten round-1 fixes (regression check).
+
+**Round-2 NEW issues — now verified applied (✓):**
+- `one.js:119` — `tl: ["isa", "ʔiˈsa"]` ✓. Surface `isa` unchanged; IPA now carries initial glottal stop + final stress, identical to its agt twin `one.js:120 agt ["isa","ʔiˈsa"]`. Internal inconsistency closed (Schachter & Otanes 1972 §1.5).
+- `dog.js:119` — `tl: ["aso", "ˈʔaso"]` ✓. Surface `aso` unchanged; IPA now `ˈʔaso` (initial glottal stop, initial stress), matching the reviewer-specified form and the round-1 Tagalog glottal-stop pass.
+
+**Round-1 fixes — re-verified present, no regressions (✓):**
+1. `sun.js:112` `nym: ["izuba", "izuβa"]` ✓
+2. `thanks.js:112` `nym: ["twabakaba", "twaβakaβa"]` ✓
+3. `hand.js:112` `nym: ["ikobo", "ikoβo"]` ✓
+4. `father.js:119` `tl: ["ama", "ʔaˈma"]` ✓
+5. `mother.js:119` `tl: ["ina", "ʔiˈna"]` ✓
+6. `one.js:120` `agt: ["isa", "ʔiˈsa"]` ✓
+7. `tree.js:191` `hni: ["siq", "si˧˩"]` ✓
+8. `one.js:191` `hni: ["tiul", "tiu˥˥"]` ✓
+9. `good.js:112` `nym: ["lihi", "lihi"]` ✓
+10. `drink.js:91` `en: ["drink", "dɹɪŋk"]` ✓
+
+**Dataset-wide check:** `grep -rEn '\["[^"]*β[^"]*",' words/` returns **zero** rows — no β contamination remains in any surface column across the whole dataset. The Sukuma–Nyamwezi contamination is fully cleared.
+
+**New issues this round:** none. The Tagalog/Agta glottal-stop set is now internally consistent (`ama/ina/isa/aso` reference cells + `agt isa` twin all carry the initial glottal stop), the Hani tone-letter cells are correct, and the English rhotic uses the dataset's ⟨ɹ⟩ convention.
+
+**Scorecard:** 12/12 fixes (10 round-1 + 2 round-2) verified present in live data; 0 regressions; 0 new actionable issues. Nothing left for the dev team to address.
+
+**File status: CLOSED** — nothing left to address.

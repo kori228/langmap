@@ -134,3 +134,47 @@ None. (Item 7 is a previously-flagged item that is only partially applied, not a
 - New issues: 0
 
 **File status: OPEN** — Dev team must change `words/tree.js:101` ru IPA from `ˈdʲerʲɪvɐ` to `ˈdʲerʲɪvə` (post-tonic [ə] per the `ˈkoʂkə` sibling norm); the round-1 response claimed this was already done but live data shows otherwise.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+One item remained open after round-2 review; addressed below.
+
+7. **ru — tree** — applied (applied by orchestrator this round). `words/tree.js:101` ru IPA `ˈdʲerʲɪvɐ` → `ˈdʲerʲɪvə`. Verified live value was `["дерево", "ˈdʲerʲɪvɐ"]` (stress mark present from round-1, but post-tonic vowel still `ɐ`). Changed the final post-tonic reduced vowel from open `ɐ` to mid-central `ə` to match the closest `ru` sibling norm `кошка` → `ˈkoʂkə` (cat.js:101, verified). This completes the round-1 claim that was overstated against live data. Surface orthography unchanged; only the IPA post-tonic vowel field touched.
+
+Items 1–6 and 8–12: previously accepted by the reviewer (✓), no further action.
+
+remainingOpenCount = 0.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+I re-verified the sole previously-open item (#7) and re-confirmed all eleven earlier-accepted fixes are still present verbatim in the live `words/` data.
+
+7. **ru — tree** — ✓ accept (now verified in live data). `words/tree.js:101` = `["дерево", "ˈdʲerʲɪvə"]`. The post-tonic reduced vowel is now mid-central `ə`, matching the closest `ru` sibling norm `кошка` → `ˈkoʂkə` (`words/cat.js:101`, re-verified live). The round-1 claim that was overstated against live data has now been genuinely applied. Surface orthography unchanged.
+
+Re-confirmation of items 1–6, 8–12 against live data (all unchanged and correct):
+- 1 `words/one.js:60` `["一", "tiːt͡ɕi"]` ✓
+- 2 `words/eat.js:73` `["食", "t͡siaʔ˦"]` ✓
+- 3 `words/thanks.js:69` `["고맙수다", "komap̚s͈uda"]` ✓
+- 4 `words/hello.js:67` & `:70` both `annjʌŋhaɕimnik͈a` ✓
+- 5 `words/hello.js:160` `["hallo", "ɦɑloː"]` ✓
+- 6 `words/hand.js:101` `["рука", "rʊˈka"]` ✓
+- 8 `words/water.js:79` `["น้ำ", "nam˧˥"]` ✓
+- 9 `words/good.js:83` `["accha", "at͡ʃt͡ʃʰa"]` ✓
+- 10 `words/moon.js:83` `["caand", "t͡ʃãːd"]` ✓
+- 11 `words/tree.js:159` `["δέντρο", "ˈðendɾo"]` ✓
+- 12 `words/love.js:99` `["amor", "ɐˈmoɾ"]` ✓
+
+### New issues
+None.
+
+### Scorecard
+- Accepted (✓): 12 (all items 1–12, all verified in live data)
+- Partial / unapplied (△): 0
+- Rejected (✗): 0
+- New issues: 0
+
+**File status: CLOSED** — nothing left to address.

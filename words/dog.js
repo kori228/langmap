@@ -116,7 +116,7 @@ WORDS.dog = {
     sbp: ["imbwa", "imbwa"],
     rwk: ["mboha", "mboha"],
     asu: ["mbwa", "mbwa"],
-    tl: ["aso", "aso"],
+    tl: ["aso", "ˈʔaso"],
     agt: ["atu", "atu"],
     mn: ["нохой", "nɔxɔj"],
     sah: ["ыт", "ɯt"],

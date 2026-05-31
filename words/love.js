@@ -522,7 +522,7 @@ WORDS.love = {
     ofs: ["minne", "minːe"],
     non: ["ást", "ɑːst"],
     got: ["𐍆𐍂𐌹𐌰𐌸𐍅𐌰", "friɑθwɑ"],
-    cu: ["любъвь", "lʲubɤvʲ"],
+    cu: ["любъвь", "lʲubɤvɪ"],
     pi: ["पेम", "pema"],
     pi_edu: ["mettā", "metːaː"],
     pmh: ["पेम", "peːma"],
