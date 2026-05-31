@@ -220,7 +220,7 @@ const HAN_DATA = {
       "ptung": "*əmun",
       "paa": "*muəjˀ",
       "ptai": "*ɲɯŋ.A",
-      "pmgl": "*nike(n)",
+      "pmgl": "*niken",
       "phm": "*ʔɨ",
       "ja_kun": "hito",
       "ko_hun": "han",
@@ -304,7 +304,7 @@ const HAN_DATA = {
       "ptung": "*əmun",
       "paa": "*muəjʔ",
       "ptai": "*ɲɯŋ˧",
-      "pmgl": "*nikæn",
+      "pmgl": "*niken",
       "phm": "*ʔɨ",
       "ja_kun": "çito",
       "ko_hun": "han",
@@ -637,7 +637,7 @@ const HAN_DATA = {
       "zh_jiao": "san²¹³",
       "hak_mz": "sâm",
       "zh_gl": "san⁴⁴",
-      "ko_bus": "samH",
+      "ko_bus": "samL",
       "ja_kgs": "san",
       "ja_okn": "san",
       "ja_thk": "san"
@@ -724,7 +724,7 @@ const HAN_DATA = {
       "zh_jiao": "sã²¹³",
       "hak_mz": "sam˦˦",
       "zh_gl": "san˦˦",
-      "ko_bus": "sam˥",
+      "ko_bus": "sam˩",
       "ja_kgs": "saɴ",
       "ja_okn": "saɴ",
       "ja_thk": "saɴ"
@@ -5517,7 +5517,7 @@ const HAN_DATA = {
       "ptb": "*ŋ(y)a",
       "pko": "*koki",
       "pja": "*iwo",
-      "ptung": "*sugʒan",
+      "ptung": "*nimaka",
       "paa": "*kaʔ",
       "ptai": "*plaː.A",
       "pmgl": "*jigasu(n)",
@@ -5607,7 +5607,7 @@ const HAN_DATA = {
       "ptb": "*ŋ(y)a",
       "pko": "*koki",
       "pja": "*iwo",
-      "ptung": "*suɡd͡ʒan",
+      "ptung": "*nimaka",
       "paa": "*kaʔ",
       "ptai": "*plaː˧",
       "pmgl": "*dʒiɣasun",
@@ -6155,7 +6155,7 @@ const HAN_DATA = {
       "zh_jiao": "mao²¹³",
       "hak_mz": "mêu",
       "zh_gl": "mao⁴⁴",
-      "ko_bus": "myoH",
+      "ko_bus": "myoL",
       "ja_kgs": "byō",
       "ja_okn": "byū",
       "ja_thk": "byō"
@@ -6245,7 +6245,7 @@ const HAN_DATA = {
       "zh_jiao": "mau²¹³",
       "hak_mz": "meu˥˧",
       "zh_gl": "mau˦˦",
-      "ko_bus": "mjo˥",
+      "ko_bus": "mjo˩",
       "ja_kgs": "bjoː",
       "ja_okn": "bjuː",
       "ja_thk": "bjoː"
@@ -6780,9 +6780,9 @@ const HAN_DATA = {
       "hak_mz": "chiuk",
       "zh_gl": "zu³¹",
       "ko_bus": "jokL",
-      "ja_kgs": "shok",
-      "ja_okn": "shuku",
-      "ja_thk": "shogu"
+      "ja_kgs": "sok",
+      "ja_okn": "suku",
+      "ja_thk": "sogu"
     },
     "ipa": {
       "zh": "tsu˧˥",
@@ -6872,9 +6872,9 @@ const HAN_DATA = {
       "hak_mz": "tɕiuk̚˥",
       "zh_gl": "tsu˧˩",
       "ko_bus": "tɕok˩",
-      "ja_kgs": "ɕok̚",
-      "ja_okn": "ɕukɯ",
-      "ja_thk": "ɕoɡɯ"
+      "ja_kgs": "sok̚",
+      "ja_okn": "sukɯ",
+      "ja_thk": "soɡɯ"
     },
     "en": {
       "gloss": "foot, leg; sufficient",
@@ -6904,9 +6904,9 @@ const HAN_DATA = {
       "nan_th": "足",
       "zh_th": "足",
       "nan_pera": "足",
-      "ja_kgs": "ショッ",
-      "ja_okn": "シュク",
-      "ja_thk": "ショク",
+      "ja_kgs": "ソッ",
+      "ja_okn": "スク",
+      "ja_thk": "ソク",
       "ko_bus": "족"
     }
   },
@@ -12610,7 +12610,7 @@ const HAN_DATA = {
       "hak_cn": "chho",
       "hak_tw": "co2",
       "hak_hl": "chho",
-      "zh_han": "*N-[dz]ˤojʔ",
+      "zh_han": "*[dz]ˤojʔ",
       "zh_tang": "dzuɑ²¹⁴",
       "zh_song": "dzwa²⁴",
       "ko": "jwa",
@@ -12722,7 +12722,7 @@ const HAN_DATA = {
       "hsn": "tso˦˩",
       "gan": "tsʰo˨˩",
       "cnp": "tsʰo˧˧",
-      "zh_han": "*N-[dz]ˤojʔ",
+      "zh_han": "*[dz]ˤojʔ",
       "zh_tang": "dzuɑ˨˩˦",
       "zh_song": "dzwa˨˦",
       "ko": "t͡ɕwa",
@@ -14537,8 +14537,8 @@ const HAN_LANG_META = {
       "authority": "Sun Yat-sen University",
       "year": 1990
     },
-    "speakers": "約6200万人 (広府片)",
-    "speakersSource": "Wikipedia (英語版「Yuehai」, 2026-05-30閲覧)"
+    "speakers": "約200〜300万人 (茂名市一帯)",
+    "speakersSource": "中国语言地图集 (第2版, 2012) ・ 广东省地方志"
   },
   "yue_ts": {
     "reading_type": {
@@ -19453,9 +19453,9 @@ const HAN_VARIANTS = {
         "label": "漢音 / Kan-on"
       },
       {
-        "native": "リュウ",
-        "surface": "ryū",
-        "ipa": "ɾjɯː",
+        "native": "リツ",
+        "surface": "ritsu",
+        "ipa": "ɾit͡sɯ",
         "label": "呉音 / Go-on"
       }
     ],
@@ -23697,9 +23697,9 @@ const HAN_VARIANTS = {
     ],
     "ja": [
       {
-        "native": "ショク",
-        "surface": "shoku",
-        "ipa": "ɕokɯ",
+        "native": "ソク",
+        "surface": "soku",
+        "ipa": "sokɯ",
         "label": "漢音 / Kan-on"
       },
       {
