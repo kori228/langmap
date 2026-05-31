@@ -3026,7 +3026,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=77"></script>
+    <script src="hanmap_data.js?v=79"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -5411,7 +5411,13 @@
             // Other Yuan/Liao-era ancient scripts written vertically
             'zh_phagspa', // Phags-pa (designed for vertical layout 1269)
             'zkt',        // Khitan Small Script (vertical traditional layout)
-            'txg',        // Tangut (often vertical in historical manuscripts)
+            // NOTE: Tangut (txg) is intentionally NOT vertical. Its glyphs are
+            // square, upright CJK-like characters (Unicode Vertical_Orientation
+            // = Upright). vertical-lr + text-orientation:mixed renders fine on
+            // desktop, but iOS Safari lacks the Tangut block's vertical-orient
+            // data and rotates each glyph 90°. A single-character map marker
+            // gains nothing from vertical mode anyway, so render it horizontal
+            // (matches wordmap.html's VERTICAL_LANGS, which omits txg).
         ]);
 
         // DATA_STATUS_OVERRIDES is now defined in wordmap_data.js (data
