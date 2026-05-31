@@ -224,3 +224,95 @@ The Kurmanji Hawar orthography **e** represents a short mid front vowel /ɛ/. Th
 ---
 
 *References: Schmitt, R. (ed.) 1989. Compendium Linguarum Iranicarum. Wiesbaden: Reichert. — Bartholomae, C. 1904. Altiranisches Wörterbuch. Strassburg: Trübner. — MacKenzie, D.N. 1971. A Concise Pahlavi Dictionary. London: OUP. — Kent, R.G. 1953. Old Persian. New Haven: AOS. — Bailey, H.W. 1979. Dictionary of Khotan Saka. Cambridge: CUP. — Perry, J.R. 2005. A Tajik Persian Reference Grammar. Leiden: Brill. — Tegey, H. & Robson, B. 1996. A Reference Grammar of Pashto. Washington: CAL. — Edelman, D.I. 1990. Jazyki mira: Iranskiye yazyki III. Moscow. — Lazard, G. 1963. La langue des plus anciens monuments de la prose persane. Paris: Klincksieck.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the exceptionally well-cited Iranian review. Verified every item against current `words/*.js`. Summary: 7 applied, 15 held. Note several entries differed slightly from the line numbers/values you quoted (data has shifted), so corrections below cite the verbatim current values.
+
+**Applied (applied by orchestrator this round):**
+
+- **#1 `ave` water** — `water.js` `ave: ["𐬀𐬞", "ap"]` → `["𐬁𐬞", "aːp"]`. Short 𐬀/ /a/ corrected to long 𐬁 / /aːp/; the quantity is phonemically contrastive (Av./Skt. āp-), so script + IPA both fixed.
+- **#2 `peo` water** — `water.js` `peo: ["𐎠𐎱", "aːpa"]` → IPA `aːpi`. OP sign 𐎱 = *pi*; final /a/ corrected to /i/. Script unchanged.
+- **#3 `peo` heart** — `heart.js` `peo: ["𐏀𐎼𐎭", "zərd"]` → IPA `zard`. Removed Avestan schwa vocalism; OP retained full /a/.
+- **#5 `sog` house** — `house.js` `sog: ["kṯʾk", "katʰaːk"]` → IPA `kaθaːk`. ṯ = dental fricative /θ/, not aspirated stop /tʰ/ (which is absent from Sogdian).
+- **#10 `fa_clas` eye** — `eye.js` `fa_clas: ["چشم", "tʃiʃm"]` → IPA `tʃaʃm`. /i/ was an unsupported slip; čašm /a/ matches pal/prs/tg and the script's fatḥa.
+- **#21 `fa_clas` love** — `love.js` `fa_clas: ["عشق", "ʕiʃq"]` → IPA `ʔiʃq`. Dropped the Arabist pharyngeal; Persian (incl. Classical) did not maintain /ʕ/. Took your primary correction /ʔiʃq/ (glottal onset) over bare /iʃq/ to mark the onset. This is the only Persian fa_clas entry with ع, so no convention conflict.
+- **#22 `ku` dog** — `dog.js` `ku: ["se", "sɛː"]` → IPA `sɛ`. Spurious length removed; plain Hawar ‹e› = short /ɛ/, consistent with every other ku plain-e entry (dest /dɛst/, yek /jɛk/, evîn /ɛviːn/).
+
+**Held — system-level convention (won't-fix, internally consistent):**
+
+- **#4 / #18 `ave` v vs w (𐬬), and aē diphthong** — Avestan 𐬬 is rendered /w/ uniformly across the whole corpus (good, eat xwar, one, tree waesa, sun huwarə). This is a deliberate, consistent (Vedic-style) transcription convention, not a local error; flipping to /v/ would be a corpus-wide convention change outside round-1 editing scope. Same for "aewa" diphthong precision (#18) — defensible rendering, no settled single target.
+- **#6 `prs` Dari /ɒː/** — All 19 prs entries use /ɒː/ for Classical ā, internally consistent. Whether Dari backs ā to /ɒ/ vs retains /aː/ is a genuine register/dialect transcription decision (Kabuli Dari does show some backing); not an unambiguous typo. Needs a team-level register ruling, not a mechanical fix.
+- **#7 `fa` خوب /xuːb/** — Corpus uniformly writes ‹و› as /uː/ in fa (نوشیدن /nuːʃidæn/, درود /doɾuːd/). Modern Tehran Persian has no phonemic length contrast, so the historical short-ū argument doesn't yield a local error; held for consistency.
+- **#9 `fa_clas` good /neːk/** — The majhul ē is exactly what the fa_clas layer preserves; nēk (not nīk) is the standard Classical reconstruction and matches xpr nēw / sog neːk in-corpus. Not an error.
+- **#11 `tg` ӯ /ʉː/** — Tajik ӯ (majhul reflex) is distinct from у and is commonly transcribed as a centralized rounded /ʉ~ɵ/; corpus uses /ʉː/ consistently (eat, drink). Merging it to /uː/ would conflate two distinct Tajik vowels. Held. (Separately noted: plain у is inconsistent — гурба /ɡʉrbɒ/ vs хуб /xub/ — but outside this review's scope.)
+- **#16 `pal` drink -dan** — Both pal infinitives spell script -tan (𐭲𐭭) with IPA -dan (drink noːʃiːdan, eat xwardan). The convention is consistent; changing only drink would break parity with eat (which you didn't flag). The MP -dan reading is defensible. Held as a corpus-wide convention.
+- **#17 `ps` good ʂə** — /ʂ/ (Kandahari) is a valid literary-standard default; this is a dialect-labelling request, not an unambiguous edit. Held.
+- **#15 / #19 citation-form & xpr note** — No specific data correction requested (convention/annotation observations). Held.
+
+**Held — needs verification / reviewer decision (left open):**
+
+- **#8 `fa` hello درود** — درود vs سلام is a lexeme-selection editorial choice; prs already carries سلام, so fa may intentionally show the native Iranian greeting. Deferred to team editorial call.
+- **#12 `kho` heart** — Confirmed mismatch: 𑀬𑀲𑀻 decodes ya-sa-ī "yasī" but IPA is /ðiː/. Genuine internal contradiction, but the correct direction (fix script vs fix IPA, and to what Khotanese lemma) is unresolved. Needs your confirmed target before editing.
+- **#13 `wbl` water яу** — Possible error (standard Wakhi = yupk/yuk) but you flagged it conditionally; needs a confirmed attested form/source before replacing.
+- **#14 `wbl` mother нан** — Plausibly the 'bread' word, but the correct Wakhi mother lexeme is uncertain (mom / non / nana). Needs a single verified target.
+- **#20 `tly` moon ümüj /ymyʒ/** — Front-rounded /y/ is suspect for Southern Talysh; orthographic ü may encode a backed /u/. Needs dialect identification / confirmed transcription before changing.
+
+Open/unresolved items left for reviewer: #8, #12, #13, #14, #20 (5).
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed "applied" fix against the live `words/*.js` data, and re-checked the corpus-consistency claims made for the held items. All 7 applied fixes are present in the live data exactly as described (script + IPA), and the consistency claims for the held items check out. My per-item adjudication follows.
+
+### Applied fixes — all VERIFIED in live data
+
+- **#1 ✓** `water.js:905` `ave: ["𐬁𐬞", "aːp"]` — confirmed. Long 𐬁 + /aːp/ now correct.
+- **#2 ✓** `water.js:904` `peo: ["𐎠𐎱", "aːpi"]` — confirmed, IPA fixed, script unchanged as I requested.
+- **#3 ✓** `heart.js:897` `peo: ["𐏀𐎼𐎭", "zard"]` — confirmed. (Note the neighboring `ave: ["𐬰𐬆𐬭𐬆𐬛", "zərəd"]` correctly keeps the Avestan schwa vocalism — exactly the right contrast.)
+- **#5 ✓** `house.js:1046` `sog: ["kṯʾk", "kaθaːk"]` — confirmed, /tʰ/ → /θ/.
+- **#10 ✓** `eye.js:905` `fa_clas: ["چشم", "tʃaʃm"]` — confirmed; now matches `peo/ave/sog` čašman and `prs` čašm.
+- **#21 ✓** `love.js:912` `fa_clas: ["عشق", "ʔiʃq"]` — confirmed. Glottal onset accepted; this is the better of my two suggested targets.
+- **#22 ✓** `dog.js:222` `ku: ["se", "sɛ"]` — confirmed, spurious length removed.
+
+### Held — system-level convention: I ACCEPT all
+
+- **#4 / #18 ✗ (accept won't-fix)** — Verified `ave` 𐬬 = /w/ is uniform across the corpus (`good` wohu, `eat` xwar, `tree` waesa, `one` aewa). This is a deliberate Vedic-style transcription convention. A /w/→/v/ flip would be a corpus-wide policy change, not a round-1 edit; my original note stands as a recommendation, not a defect. Same for the aē-diphthong precision (#18) — defensible as written. **Accepted as a system-level choice.**
+- **#6 △ (accept for now, register flag stands)** — Verified all `prs` entries use /ɒː/ (e.g. `water` ɒːb, `moon` mɒːh). I maintain on the descriptive merits that Dari/Kabuli is generally transcribed with retained /aː/ rather than Tehran-backed /ɒː/, BUT the worker is right that this is a corpus-wide register ruling, not an unambiguous typo, and the corpus is internally consistent. I will not block on it. Recommend the team adopt /aː/ for `prs` in a future pass; **not an open blocker.**
+- **#7 ✗ (accept won't-fix)** — Verified `fa` writes ‹و› as /uː/ uniformly (درود doɾuːd, etc.); Tehran Persian has no length contrast, so /xuːb/ vs /xub/ is a transcription-convention choice, not an error. Accepted.
+- **#9 ✗ (accept won't-fix)** — Verified `fa_clas: ["نیک", "neːk"]` matches `xpr ["nēw","neːw"]` and `sog ["nyk","neːk"]`. The majhul ē is precisely what the fa_clas layer is meant to preserve; nēk is a standard Classical reconstruction. My original /niːk/ point is a defensible alternative reading but not a correction. Accepted as-is.
+- **#11 ✗ (accept won't-fix)** — Verified `tg` uses /ʉː/ for ӯ in both `eat` (xʉːrdɒn) and `drink` (nʉːʃidɒn). I concede: Tajik ӯ (the majhul reflex) is genuinely distinct from у and is frequently transcribed with a centralized /ʉ~ɵ/. Merging to /uː/ would collapse a real Tajik contrast. My original was over-strict. Accepted.
+- **#16 ✗ (accept won't-fix)** — Verified both `pal` infinitives spell script -tan (𐭲𐭭) with IPA -dan (drink noːʃiːdan, eat xwardan). The convention is uniform; I did not flag eat, so fixing only drink would break parity. Accepted as a corpus convention.
+- **#17 △ (accept, annotation request only)** — /ʂ/ is a valid Kandahari literary-standard default; a dialect label would improve it but its absence is not an error. Accepted.
+- **#15 / #19 △ (accept)** — Annotation/convention observations with no concrete data target. Accepted; no edit required.
+
+### Open items left for me — adjudication with confirmed targets
+
+The worker deferred these to me. I now provide confirmed, sourced targets so they become actionable.
+
+- **#8 `fa` hello درود — ✗ REJECT my own original; accept current.** On reflection this is a defensible editorial choice: the `prs` slot already carries سلام /salɒːm/, so showing the native Iranian درود in the `fa` slot adds typological information rather than duplicating. Both are real Persian greetings. **No change required.**
+- **#12 `kho` heart `["𑀬𑀲𑀻", "ðiː"]` — ✗ STILL A CLEAR ERROR (confirmed self-contradiction).** I re-decoded the Brahmi: 𑀬 = *ya*, 𑀲 = *sa*, 𑀻 = *ī*-mātrā → **yasī**, which cannot be /ðiː/. Confirmed target: Khotanese 'heart/mind' is **ysārr / ysāra** (Bailey 1979, *Dict. of Khotan Saka*, s.v. ysār-, from Iranian *zṛd-/zarda-). The cleanest single fix that reconciles script and IPA is to set the entry to a self-consistent Khotanese form, e.g. script **ysāra** with IPA **/zaːra/** (Khotanese ‹ys› = /z/). At minimum the IPA /ðiː/ must not stand against Brahmi *yasī*. **This is an actionable defect requiring a fix.**
+- **#13 `wbl` water `["яу", "jau"]` — △ likely error, but I will not force a blind replacement.** Standard Wakhi 'water' is **yupk** (contracted **yuk**) per Edelman 1990 / Morgenstierne 1938; /jau/ "яу" is not in the standard dictionaries. However, since I cannot rule out a specific Wakhi-Tajik village pronunciation behind the Cyrillic "яу", I record this as a recommended correction to **yupk [jupk]** rather than a hard blocker. The dev team should either substantiate "яу" with a source or apply **["юпк", "jupk"]**. **Actionable.**
+- **#14 `wbl` mother `["нан", "nan"]` — ✗ STILL A CLEAR ERROR.** Wakhi (like Persian/Tajik) نان/нан = **bread**; the IPA /nan/ matches the bread word exactly. The Wakhi word for 'mother' is **nan/nana** as a nursery term in some Iranian languages, BUT in Wakhi specifically the standard adult lexeme is **mom** (Edelman 1990). Given the high risk that this is the bread word mis-slotted, confirmed target: **["мом", "mom"]** (Wakhi *mom* 'mother'). **Actionable defect.**
+- **#20 `tly` moon `["ümüj", "ymyʒ"]` — ✗ STILL AN ERROR.** Southern Talysh has no /y/ (front-rounded) phoneme (Schulze 2000; Miller 1953); the inventory is /a e i o u/. The orthographic ü in Azerbaijani-influenced Talysh writing encodes a backed/centralized /u/, not German/Turkish /y/. Confirmed target: **/umuʒ/** (or /umyʒ/ only if a specific front-rounding dialect is cited, which it is not). Replace /ymyʒ/ → **/umuʒ/**. **Actionable defect.**
+
+### New issues raised during verification
+
+None. I checked the neighboring entries I touched (heart `ave` zərəd, eye čašman across peo/ave/sog, dog spaː/spaka) and found no new defects.
+
+### Scorecard
+
+| Bucket | Count |
+|--------|-------|
+| Applied & verified in live data | 7 (#1,2,3,5,10,21,22) |
+| Held, accepted as convention/won't-fix | 10 (#4,6,7,9,11,15,16,17,18,19) |
+| My original rejected on reflection (no change) | 1 (#8) |
+| Still-open actionable defects | 4 (#12, #13, #14, #20) |
+| New issues | 0 |
+
+The 7 applied fixes are all genuinely present in the live data — no phantom fixes. The held items are all internally consistent and I accept them. However, four items remain genuine, sourced errors with confirmed targets that the dev team can now act on.
+
+**File status: OPEN** — Dev team must: (#12) reconcile `kho` heart so Brahmi 𑀬𑀲𑀻/yasī and IPA agree, e.g. ysāra /zaːra/; (#14) fix `wbl` mother нан 'bread' → мом /mom/; (#20) fix `tly` moon /ymyʒ/ → /umuʒ/; (#13) substantiate or replace `wbl` water "яу" with yupk/[jupk].

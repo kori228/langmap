@@ -175,3 +175,77 @@ The IPA column reproduces the orthographic string verbatim, leaving *qu* unanaly
 ---
 
 *Review completed 2026-05-31. Sources: Young & Morgan (1987), Mithun (1999), Campbell (1997), Adelaar & Muysken (2004), Cerrón-Palomino (1987, 1994), Smeets (2008), England (1983), Ullrich (2008), Bergsland (1997), Kaplan (1981), Jacobson (1984).*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every cited entry verbatim against `words/*.js`. IPA-only corrections applied where the reviewer identified a clear, language-internal phonological error or an ill-formed/inconsistent transcription. System-level convention choices and underspecified additions held with rationale. Surface orthography left untouched throughout.
+
+**Applied (IPA column only):**
+
+- **#1 — `water.js` nv** `tʰóː` → `tóː` (applied by orchestrator this round). Navajo has no aspirated stop series (Young & Morgan 1987); spurious /tʰ/ removed.
+- **#2 — `fire.js` nv** `kʰõːʔ` → `kõːʔ` (applied by orchestrator this round). Same fabrication; /k/ is plain velar.
+- **#3 — `hello.js` & `good.js` nv** `jɑ́ːʔɑ́tʰéːh` → `jɑ́ːʔɑ́tʼéːh` (applied by orchestrator this round, both files). Orthographic `tʼ` is an ejective, not aspirated; /tʰ/ is acoustically opposite and non-phonemic.
+- **#5 — `dog.js` arn** `tɾewa` → `ʈʂewa` (applied by orchestrator this round). Mapudungun `tr` = retroflex affricate /ʈʂ/ (Smeets 2008 §2.1.4), not /t/+tap.
+- **#6 — `eat.js` qu** `mixuj` → `mikʰuj` (applied by orchestrator this round). `kh` = aspirated /kʰ/; no /x/ in Quechua. Sibling `cqu` already correct.
+- **#7 — `dog.js` mam** `tʼʃjan` → `tʃʼjan` (applied by orchestrator this round). `txʼ` is a single palatal ejective affricate /tʃʼ/, not a /tʼ/+/ʃ/ sequence.
+- **#8 — `sun.js` ipk** `siqiɲiq` → `siqiŋiq` (applied by orchestrator this round). Inupiaq `ñ` = velar nasal /ŋ/; the language has no palatal nasal.
+- **#9 — `one.js` ipk** `ataʊʃiq` → `atausiq` (applied by orchestrator this round). /ʊ/ is not an Inupiaq vowel phoneme (inventory /a i u/); /ʃ/ unwarranted — reviewer's /atausiq/ adopted.
+- **#11 — `moon.js` & `sun.js` yuc** `zɛθla` → `zɛhla`, `dɛθla` → `dɛhla` (applied by orchestrator this round). /θ/ is not a Maya phoneme; `th` here = /h/. (Surface forms themselves look non-canonical but were not in scope to change.)
+- **#12 — `sun.js` mam** `qʼiχ` → `qʼih` (applied by orchestrator this round). Word-final `j` = [h] in Mam (England 1983 §1.3.3); sibling `quc` K'iche' already uses /h/.
+- **#13 — `hello.js` moh** `ʃekon` → `ʃeːkon` (applied by orchestrator this round). Orthographic colon marks vowel length, dropped in original IPA.
+- **#14 — `dog.js` esu** `qimuxta` → `qimuɣta` (applied by orchestrator this round). Yup'ik intervocalic `g` = voiced velar fricative /ɣ/ (Jacobson 1984 §2.3).
+- **#15 — `moon.js`/`sun.js`/`love.js` chy** normalize U+02C0 `ˀ` → U+0294 `ʔ` in IPA: `ameˀhaˀoʔo` → `ameʔhaʔoʔo`, `eˀʃeˀhe` → `eʔʃeʔhe`, `meˀhotoʔo` → `meʔhotoʔo` (applied by orchestrator this round). Standard IPA glottal stop is ʔ; the mixed usage was internally inconsistent — clean mechanical normalization.
+- **#16 — `love.js` lkt** `tʰetʃʰíʁila` → `tʰetʃʰíxila` (applied by orchestrator this round). Lakota `ȟ` = voiceless velar fricative /x/ (Ullrich 2008), not voiced uvular /ʁ/.
+- **#17 — `love.js` cak** `axowaɓæl` → `axowaɓəl` (applied by orchestrator this round). Kaqchikel `ä` = mid-central /ə/ (England & Elliot 1990); /æ/ is an anglophone bias. (`aj-` = /ax-/ already correct, left as-is.)
+- **#19 — `thanks.js` nci** `tɬasoːʰkaːmati` → `tɬasoːhkaːmati` (applied by orchestrator this round). Free-floating /ʰ/ is ill-formed IPA; resolved to fricative /h/ reading.
+- **#20 — `cat.js` ale** `koʂkaːχ` → `koʃkaːχ` (applied by orchestrator this round). Aleut has /ʃ/ and /s/ but no retroflex /ʂ/ (Bergsland 1997).
+
+**Held — won't-fix / needs reviewer decision:**
+
+- **#4 — `tree.js` nv tie-bar `t͡sin`.** Held as project-wide convention. The tie-bar /t͡s/ is the dataset's standard affricate notation, used consistently across 17 files (e.g. `ka` t͡set͡sxli, `eu` suhait͡s, `abq` mt͡sa). Reviewer concedes it is "technically redundant." Stripping it for nv alone would create local inconsistency without correcting any phonemic content. Not a local error.
+- **#10 — yuc tone markers system-wide.** Held. Adding phonemic tone to every `yuc` entry is a systematic enrichment requiring per-form tone analysis and reviewer-supplied values, not a mechanical local fix. Several `yuc` surface forms also appear non-canonical, so blanket tone insertion is premature. Needs a dedicated, value-specified pass.
+- **#18 — chr `ɡ` → `k` across the dataset.** Held as a system-level phonemic-convention choice. Reviewer acknowledges intervocalic voicing is allophonic; whether to transcribe surface voiced allophones or underlying voiceless phonemes is a corpus-wide convention decision affecting many `chr` entries, not an isolated error. Defer to a team convention ruling.
+- **#21 — `heart.js` qu `sunqu`.** Held. Reviewer states `/sunqu/` "is passable" and offers no single unambiguous correction (alternatives /sunq/, /sunqu̥/ depend on whether the IPA column is phonemic-with-orthographic-conventions). No clear local error.
+
+**Summary:** 16 findings applied as IPA-only corrections across 13 files; 4 held (1 convention, 1 underspecified system enrichment, 1 system-level convention, 1 no-clear-correction).
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-read every cited entry against the live `words/*.js` data (grep-verified, not taking the worker's word for it). All 16 claimed IPA corrections are genuinely present in the data. Per-item adjudication below.
+
+**Applied corrections — verified in live data, accepted:**
+
+- **#1 ✓** `water.js` nv → `["tó", "tóː"]`. /tʰ/ removed; plain /t/ confirmed. Correct.
+- **#2 ✓** `fire.js` nv → `["kǫʼ", "kõːʔ"]`. /kʰ/ removed. Correct.
+- **#3 ✓** `hello.js` & `good.js` nv → `["yáʼátʼééh", "jɑ́ːʔɑ́tʼéːh"]` in both files. Ejective /tʼ/ restored. Correct.
+- **#5 ✓** `dog.js` arn → `["trewa", "ʈʂewa"]`. Retroflex affricate. Correct (Smeets 2008).
+- **#6 ✓** `eat.js` qu → `["mikhuy", "mikʰuj"]`, now matching sibling `cqu`. Correct.
+- **#7 ✓** `dog.js` mam → `["txʼyan", "tʃʼjan"]`. Single palatal ejective affricate. Correct.
+- **#8 ✓** `sun.js` ipk → `["siqiñiq", "siqiŋiq"]`. Velar nasal. Correct.
+- **#9 ✓** `one.js` ipk → `["atausiq", "atausiq"]`. /ʊ/ and /ʃ/ removed. Correct.
+- **#11 ✓** `moon.js`/`sun.js` yuc → `zɛhla`/`dɛhla`. /θ/ removed. Correct as an IPA-internal fix (caveat: the surface forms themselves are not canonical Yucatec — see #10).
+- **#12 ✓** `sun.js` mam → `["qʼij", "qʼih"]`, matching K'iche' `quc`. Correct.
+- **#13 ✓** `hello.js` moh → `["she:kon", "ʃeːkon"]`. Length restored. Correct.
+- **#14 ✓** `dog.js` esu → `["qimugta", "qimuɣta"]`. Voiced velar fricative. Correct (Jacobson 1984).
+- **#15 ✓** `moon.js`/`sun.js`/`love.js` chy → all glottal stops now U+0294 ʔ (`ameʔhaʔoʔo`, `eʔʃeʔhe`, `meʔhotoʔo`). No residual U+02C0 found. Correct.
+- **#16 ✓** `love.js` lkt → `tʰetʃʰíxila`. ȟ = velar /x/. Correct (Ullrich 2008).
+- **#17 ✓** `love.js` cak → `axowaɓəl`. /æ/ → /ə/. Correct (England & Elliot 1990).
+- **#19 ✓** `thanks.js` nci → `tɬasoːhkaːmati`. Free-floating /ʰ/ resolved to /h/. Ill-formed IPA fixed. Correct.
+- **#20 ✓** `cat.js` ale → `koʃkaːχ`. /ʂ/ → /ʃ/. Correct (Bergsland 1997).
+
+**Held items — adjudicated:**
+
+- **#4 ✓ (accept hold).** `tree.js` nv is live as `["tsin", "t͡sin"]`. I confirmed the tie-bar `t͡s`/`t͡ʃ` is a pervasive dataset-wide convention (19 files, dozens of unrelated languages — Russian `sont͡sɨ`, Polish `ˈswɔɲt͡sɛ`, etc.). My original wording already conceded it is "technically redundant," i.e. not a phonemic error. Stripping it for nv alone would create local inconsistency. Worker's convention hold is correct; I withdraw this as an actionable item.
+- **#10 △ (accept hold, defer).** yuc tone markers absent system-wide — confirmed (e.g. `tʃa`, `tsoda`, `ʃela` carry no tone). Worker correctly flags that the underlying `yuc` *surface* forms are themselves non-canonical/spurious (e.g. `zethla`, `dethla`, `tsoda` are not attested Yucatec lexemes). Blanket tone insertion over corrupt surface data would be premature; this needs a dedicated, value-specified pass (ideally fixing the surface forms first). Not a mechanical IPA fix. Defensible to defer.
+- **#18 ✓ (accept hold).** chr `ɡ` confirmed live (`ɡitli`, `aɡista`, `aɡati`). Whether to transcribe surface intervocalic voiced allophones or underlying voiceless phonemes is a genuine corpus-wide convention question, not an isolated error, and the transcription is phonetically defensible (intervocalic voicing is real allophony). System-level convention call; reasonable to hold.
+- **#21 ✓ (accept; note correction).** The review quoted `qu: ["sunqu", "sunqu"]`, but the LIVE data is `heart.js` qu = `["sunqu", "suŋqu"]` — i.e. it already carries the same /n/→/ŋ/ uvular-assimilation analysis as sibling `cqu: ["sunqu", "suŋqu"]`. So the "no IPA analysis at all" concern in my original #21 does not apply to current data; the IPA is analysed and internally consistent with the sibling. Nothing to fix. (Whether the review's quote was stale or it was corrected earlier, the live state is correct.)
+
+**New issues:** none. Spot-checking adjacent yuc/chr/qu entries during verification surfaced no additional defensible phonological errors beyond what is already catalogued above.
+
+**Scorecard:** 16/16 applied IPA fixes verified present and correct in live data. 4/4 held items adjudicated as defensible (1 dataset convention, 1 underspecified enrichment to defer, 1 system-level convention, 1 already-correct-in-live-data). No claimed fix was missing. No new actionable issues.
+
+**File status: CLOSED** — nothing left to address; all clear errors fixed-and-verified in live data, all remaining items accepted as defensible convention/system-level/defer calls.

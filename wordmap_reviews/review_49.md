@@ -210,3 +210,82 @@ I specialize in Quechuan and Aymaran linguistics, with particular attention to t
 | 20 | `qu` | tree | Ejective policy for generic qu undocumented | Low |
 | 21 | `ay` | thanks | /ɣ/ is non-native phoneme, /ɡ/ preferred | Low |
 | 22 | `qu` | drink | /upjaj/ final glide analysis needs verification | Low |
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thanks for the thorough Andean review. I applied the clear, internally-supported IPA/orthography fixes (each backed by a sibling entry in the same file or by an unambiguous surface/IPA mismatch) and held the dialect-policy, lexical-gloss, and "needs-a-sourced-replacement" items.
+
+**Applied (clear errors / internal inconsistencies):**
+
+- **#2/#3 `qu` eat** — `words/eat.js` L180. IPA `mixuj` → `mikʰuj`. The digraph `kh` is the aspirated stop /kʰ/, not the fricative /x/; siblings `quz` and `cqu` both already give `["mikhuy", "mikʰuj"]`. Fixed IPA only; left orthography `mikhuy` unchanged (the Ayacucho-vs-Cusco orthography choice in #3 is a dialect-policy question, see Held). *(applied by orchestrator this round)*
+- **#4 `cqu` moon** — `words/moon.js` L1028. IPA `killa` → `kiʎa`. `ll` = palatal lateral /ʎ/; siblings `qu` and `quz` both give `kiʎa`. *(applied by orchestrator this round)*
+- **#5 `quz` dog** — `words/dog.js` L962. `["alqu", "alqu"]` → `["allqu", "aʎqu"]`. Restores the dropped second `l` and the palatal lateral; siblings `qu` and `cqu` both give `["allqu", "aʎqu"]`. Orthography change justified because the reviewer flagged the dropped `l` as the error and two siblings agree. *(applied by orchestrator this round)*
+- **#6 `quz` heart** — `words/heart.js` L962. IPA `sunqu` → `suŋqu`. /n/ → [ŋ] before uvular /q/; sibling `cqu` already gives `suŋqu`. *(applied by orchestrator this round)*
+- **#7 `qu` heart** — `words/heart.js` L180. IPA `sunqu` → `suŋqu`. Same assimilation, consistent with the `cqu` convention. (Left Ayacucho `quy` L963 untouched — out of scope of this finding.) *(applied by orchestrator this round)*
+- **#8 `jaq` eat** — `words/eat.js` L632. IPA `manqʼaɲa` → `mankaɲa`. The IPA was copy-pasted from the Aymara sibling `ay: ["manq'aña", "manqʼaɲa"]`. Surface form is the anchor here: `mankaña` has plain `k` and no apostrophe, so the ejective uvular is wrong. Corrected IPA to match the surface; did not invent an ejective orthography. *(applied by orchestrator this round)*
+- **#10 `jaq` father** — `words/father.js` L632. IPA `awkʼi` → `awki`. Surface `awki` has no apostrophe; ejective in IPA only is unsupported, so IPA brought into line with the orthographic anchor. *(applied by orchestrator this round)*
+- **#11 `jaq` hand** — `words/hand.js` L632. IPA `amɾa` → `amra`. Surface `amrra` (double `rr`) = trill /r/, not flap /ɾ/. *(applied by orchestrator this round)*
+- **#12 `arn` dog** — `words/dog.js` L643. IPA `tɾewa` → `ʈʂewa`. Mapudungun `tr` is the unit retroflex affricate /ʈʂ/ (Smeets 2008). *(applied by orchestrator this round)*
+- **#13 `arn` fire** — `words/fire.js` L649. IPA `kɨtɾal` → `kɨʈʂal`. Same `tr` = /ʈʂ/. *(applied by orchestrator this round)*
+
+**Held — needs a sourced replacement, not safe to invent:**
+
+- **#1 `yag` (ALL 20 files)** — Confirmed: every `yag` entry is Cyrillic Tajik/Persian (e.g. eat `["хур","xur"]`, love `["мехр","mehr"]`, hand `["даст","dast"]`). This is a real, critical wrong-language error. But the fix is a 20-word data replacement requiring reliable Yahgan/Yamana forms from Bridges (1933); I will not fabricate lexemes. Flagging for a sourced data-import pass (separate task, not a mechanical IPA correction). **Left open.**
+- **#9 `jaq` mother** — `words/mother.js` L638 `["maya","maja"]` is identical to `jaq` in `one.js` (= "one"); confirmed copy-paste error. However the reviewer's replacement is tentative ("e.g. *nuwa*"), so the correct Jaqaru kin term is not unambiguously determined. Needs a sourced Jaqaru "mother" form (Hardman 1983). **Left open.**
+
+**Held — dialect-policy / lexical-gloss / convention choices (won't-fix as data edits):**
+
+- **#3 (orthography part), #17, #18, #20** — generic `qu` dialect affiliation (Ayacucho vs Cusco-Collao) is a system-level convention. Changing `mikhuy`/`yaku`/`allillanchu`/`sacha` surface forms or "splitting" the code is a corpus-wide policy decision, not a local error. The IPA inconsistency in #2/#8 is fixed; the lexical/dialect choices are held for a documentation/policy pass. **Open for reviewer decision.**
+- **#14 `arn` /e/ vs /ə/** — reviewer notes "some analysts treat them as one phoneme"; not an unambiguous error. **Held.**
+- **#15 `ay` tree (quqa), #19 `jaq` tree (qhura)** — "plant/herb vs tree" is a gloss-precision/lexical-selection issue, not a transcription error. **Held.**
+- **#16 `ay` hello (kamisaki)** — short vs full greeting is a register/lexical choice. **Held.**
+- **#21 `ay` thanks (/ɣ/)** — loanword realization; reviewer calls it "debatable" and notes [ɣ] appears in fast speech. Not an unambiguous error. **Held.**
+- **#22 `qu` drink (/upjaj/)** — reviewer flags as "needs verification"; no confirmed correction. **Held.**
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix against the live `data` objects in the `words/*.js` files (each file is `WORDS.<word> = { label, definition, data:{ <lang>: [surface, ipa] } }`). All ten claimed mechanical fixes are present and correct in the live data.
+
+**Verified APPLIED (✓ confirmed in live data):**
+
+- **#2/#3 `qu` eat** — `eat.data.qu = ["mikhuy","mikʰuj"]` ✓. IPA now /kʰ/, matching `quz`/`cqu`. (Orthography part of #3 deferred to dialect-policy — accepted, see below.)
+- **#4 `cqu` moon** — `moon.data.cqu = ["killa","kiʎa"]` ✓ (/ʎ/ restored; matches `qu`/`quz`).
+- **#5 `quz` dog** — `dog.data.quz = ["allqu","aʎqu"]` ✓ (orthography + /ʎ/ restored; matches `qu`/`cqu`).
+- **#6 `quz` heart** — `heart.data.quz = ["sunqu","suŋqu"]` ✓ (/ŋ/ assimilation; matches `cqu`).
+- **#7 `qu` heart** — `heart.data.qu = ["sunqu","suŋqu"]` ✓. Note: Ayacucho `quy` correctly left as `["sunqu","sunqu"]` (out of scope) — good call.
+- **#8 `jaq` eat** — `eat.data.jaq = ["mankaña","mankaɲa"]` ✓ (ejective uvular removed; IPA now matches plain-`k` surface). Correct anchor choice.
+- **#10 `jaq` father** — `father.data.jaq = ["awki","awki"]` ✓ (spurious ejective removed).
+- **#11 `jaq` hand** — `hand.data.jaq = ["amrra","amra"]` ✓ (`rr` = trill /r/, not flap /ɾ/).
+- **#12 `arn` dog** — `dog.data.arn = ["trewa","ʈʂewa"]` ✓ (retroflex affricate /ʈʂ/).
+- **#13 `arn` fire** — `fire.data.arn = ["kütral","kɨʈʂal"]` ✓ (same /ʈʂ/).
+
+**Held — confirmed still-erroneous in live data (these keep the file OPEN):**
+
+- **#1 `yag` (ALL files)** — ✗ NOT fixed. Spot-checked live: `eat.yag=["хур","xur"]`, `love=["мехр","mehr"]`, `hello=["салом","salom"]`, `heart=["дил","dil"]`, `eye=["чашм","tʃaʃm"]`, `hand=["даст","dast"]`, `moon=["маҳ","mah"]`, `water=["уп","up"]`, `dog=["куч","kutʃ"]`, `mother=["мот","mot"]`, `thanks=["рахмат","rahmat"]`. Every entry is Cyrillic Tajik/Persian; Yahgan/Yamana has no Cyrillic tradition. I **agree** the worker should not fabricate Bridges (1933) lexemes, but this is a real critical error that remains in live data, so it is **actionable, not won't-fix**. Must be replaced via a sourced Yahgan import. **(✓ accept the hold rationale; item stays open as a data-import task.)**
+- **#9 `jaq` mother** — ✗ NOT fixed. Live: `mother.jaq=["maya","maja"]`, identical to `one.jaq=["maya","maja"]` — confirmed copy-paste of "one". Needs a sourced Jaqaru kin term (Hardman 1983). Hold rationale accepted; item remains open and actionable.
+
+**Adjudication of held dialect-policy / gloss / convention items:**
+
+- **#3 (orthography), #17, #18, #20** — △ ACCEPT as system-level dialect policy. Verified the split is internally consistent: `quz`/`cqu` carry the Cusco-Collao forms (`unu`, `rimaykullayki`, `sach'a`) while generic `qu` carries Ayacucho/Chanka (`yaku`, `allillanchu`, `sacha`). The one genuine *error* inside this cluster — the mixed Cusco-orthography-with-stripped-aspirate IPA in #2/#8 — has been fixed. The remaining surface-form/dialect-assignment choices are a defensible corpus-wide convention, not a local data error. Won't-fix accepted.
+- **#14 `arn` /e/ vs /ə/** — △ ACCEPT held. Live: `küme=kɨme`, `küyen=kɨjen`, `antü=antɨ`, `pütun=pɨtun`. The sixth-vowel /ə/-vs-/e/ analysis is genuinely contested (one-phoneme vs two-phoneme treatments); not an unambiguous transcription error. Won't-fix is defensible.
+- **#15 `ay` tree (quqa), #19 `jaq` tree (qhura)** — △ ACCEPT held. Live: `tree.ay=["quqa","quqa"]`, `tree.jaq=["qhura","qʰuɾa"]`. "Plant/herb vs tree" is gloss precision; the dataset routinely uses the most generic available everyday lexeme, so this is a lexical-selection convention, not a transcription error. Defensible won't-fix.
+- **#16 `ay` hello (kamisaki), #21 `ay` thanks (/ɣ/), #22 `qu` drink (/upjaj/)** — △ ACCEPT held. Verified live (`kamisaki`, `juspaɣaɾa`, and drink `upjaj` per the original review). All three are register/loanword-realization/needs-verification flags the reviewer themself qualified as "debatable/minor/needs verification"; none is an unambiguous error. Won't-fix accepted.
+
+**New issues raised this round:** none. Verification surfaced no additional defensible errors.
+
+### Scorecard
+
+| Item | Judgement |
+|------|-----------|
+| #2/#3 IPA, #4, #5, #6, #7, #8, #10, #11, #12, #13 | ✓ fixed & verified in live data |
+| #3 orthography, #14–#22 (dialect/gloss/convention/loanword) | △ accepted as defensible won't-fix |
+| #1 `yag` (20 entries) | ✗ real critical error, still in live data — actionable data-import |
+| #9 `jaq` mother | ✗ real error, still in live data — actionable sourced fix |
+
+The mechanical phonological cleanup is complete and accurate. Two genuine, reviewer-confirmed errors (#1 wrong-language `yag` block; #9 `jaq` mother = "one") remain unfixed in the live data. Because these are clear errors and not won't-fix conventions, the file cannot close yet even though the hold rationale ("don't fabricate sourced lexemes") is reasonable.
+
+**File status: OPEN** — Dev team must: (1) replace all 20 `yag` entries with sourced Yahgan/Yamana forms from Bridges (1933); (2) replace `mother.data.jaq` (`["maya","maja"]`, currently = "one") with a sourced Jaqaru "mother" term (Hardman 1983).

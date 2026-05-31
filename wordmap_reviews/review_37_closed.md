@@ -217,3 +217,96 @@ I am a specialist in Berber/Tamazight linguistics with a focus on phonology, mor
 ---
 
 *Total issues: 26 (including 1 near-duplicate pair: Issues 14–15; Issues 20–21). The most systematic problem is the Kabyle /æ/ vowel error (Issues 1, 6, 7, 8, 9, 10, 11 — seven entries affected), which appears to be a transcriber-level misapplication of Maghrebi Arabic allophony to Berber. The second most significant pattern is the [idʒː] for geminate-glide [ijː] error in Tarifit and Chaouia (Issues 14–15). Tamashek vowel /o/ marginality (Issues 23–24) and geminate notation inconsistency (Issues 17, 20–21) are also notable patterns. Immediate priority fixes: (1) replace all Kabyle [æ] → [a]; (2) replace rif and shy [idʒː] → [ijː]; (3) verify tmh [tˤətˤ] pharyngealization scope; (4) add geminate /mm/ to rif and shy thanks forms.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Policy: applied only clear, unambiguous IPA errors and well-defined IPA normalizations that the reviewer endorsed. Held items that require surface-orthography changes, dialect-form re-decisions, or were flagged by the reviewer as "acceptable / marginal / for-review." All edits are IPA-field-only (no display orthography touched). Edits returned to orchestrator for serial application.
+
+**Applied (IPA field only):**
+
+- **Issue 1+2 — kab water** `["aman", "æmæn"]` → IPA `aman`. /æ/ is not a Kabyle phoneme; both vowels are plain open /a/. (applied by orchestrator this round). Note: I did NOT add the penultimate stress diacritic (Issue 2) — other Berber/corpus entries carry no stress marks, so adding ˈ to one entry would be a new inconsistency rather than a fix. Stress-marking is a corpus-wide convention decision, held.
+- **Issue 3 — kab eye** `θitˤ` → `titˤ`. [θ] is Tarifit spirantization erroneously copied into Kabyle; Kabyle keeps the plain stop onset [t]. (applied by orchestrator this round)
+- **Issue 5 — tmh dog** `aɪdi` → `ajdi`. [ɪ] (vowel) substituted for the palatal glide [j]; all other Berber varieties use [j]. Clear copy error. (applied by orchestrator this round)
+- **Issue 6 — kab house** `æχːæm` → `aχːam`. /æ/→[a] ×2. Geminate [χː] left as reviewer accepts it. (applied by orchestrator this round)
+- **Issue 7 — kab moon** `æɡːuɾ` → `aɡːuɾ`. /æ/→[a]. (applied by orchestrator this round)
+- **Issue 8 — kab cat** `æmʃiʃ` → `amʃiʃ`. /æ/→[a] (masc. prefix a-). (applied by orchestrator this round)
+- **Issue 9 — kab thanks** `tænəmːiɾt` → `tanəmːiɾt`. /æ/→[a] in prefix. (applied by orchestrator this round)
+- **Issue 10 — kab mother** `jəmːæ` → `jəmːa`. final /æ/→[a]. (applied by orchestrator this round)
+- **Issue 11 — kab good** `jəlħæ` → `jəlħa`. final /æ/→[a]. The optional [lˤ] pharyngealized-lateral alternative is a competing analysis, not a clear error — left as [lħ]. (applied by orchestrator this round)
+- **Issue 12 — shy sun** `itʃiʒ` → `itːiʒ`. Plain geminate ⟨tt⟩ is [tː]; the affricate [tʃ] belongs to ⟨č/c⟩, not ⟨tt⟩, in Chaouia. (applied by orchestrator this round)
+- **Issue 14 — rif one** `idʒː` → `ijː`. Geminate glide ⟨jj⟩ = [jː]; [dʒ] is a wrong consonant class (affricate). (applied by orchestrator this round)
+- **Issue 15 — shy one** `idʒː` → `ijː`. Same as 14. (applied by orchestrator this round)
+- **Issue 16 — tmh eye** `tˤətˤ` → `titˤː`. Pharyngealization wrongly placed on the non-emphatic initial /t/; should sit only on the emphatic geminate. Vowel set to [i] to match display *tiṭṭ*; geminate length-mark [ː] added on the emphatic. (applied by orchestrator this round)
+- **Issue 17 — tmh good** `ihossən` → `ihosːən`. Orthographic ⟨ss⟩ converted to IPA geminate [sː]. (applied by orchestrator this round)
+- **Issue 18 — tmh thanks** `tanəmːirt` → `tanəmːiɾt`. r→ɾ (tap) for internal consistency with the other Berber thanks entries (kab/rif/shy all use [ɾ]). The display ⟨ǝ⟩ (U+01DD) vs IPA ə (U+0259) note is editorial convention, not changed. (applied by orchestrator this round)
+- **Issue 25 — tzm drink** `["sew", "sew"]` → IPA `səw`. ⟨e⟩ in Central Atlas Tamazight is the reduced vowel [ə]; the sister kab entry for the same surface *sew* already uses [səw]. Internal-consistency normalization, IPA only. (applied by orchestrator this round)
+
+**Held (won't-fix this round, with rationale):**
+
+- **Issue 4 — rif eye orthography (thiṭ vs tiṭ):** reviewer explicitly says the IPA is acceptable and calls this "marginally an editorial issue, flagged for awareness." Changing display ⟨th⟩→⟨t⟩ is a transcription-convention decision, not a clear error. Held.
+- **Issue 13 — kab sun:** reviewer states the IPA is acceptable and the display correct; no actionable error. Held.
+- **Issue 19 — tmh fire:** reviewer states the IPA is fine; the ⟨ǝ⟩ display is a documented Tamashek-Latin convention. No change. Held.
+- **Issue 20 — rif thanks** and **Issue 21 — shy thanks:** these require changing the *display orthography* (`tanmirt`→`tanmmirt`) and asserting a geminate-/mm/ dialect form. Reviewer concedes the single-m form merely "would be unusual... requiring documentation," not that it is wrong; the corpus may deliberately record the attested single-m variant. Surface-form/dialect-attestation decision, outside the clear-IPA-error remit. Held pending reviewer confirmation that the geminate form is the intended lemma.
+- **Issue 22 — rif fire (θmesːi):** reviewer self-qualifies ("If the Tarifit form genuinely has [θ] here, a phonological explanation is needed") and the proposed fix also rewrites display ⟨thmessi⟩→⟨tmessi⟩. Not unambiguous; needs phonological verification. Held.
+- **Issue 23 — tmh hello (/o/):** reviewer's expected value equals the current value; explicitly "flagged for review." Nothing to apply. Held.
+- **Issue 24 — tmh moon (ajor):** reviewer offers "retain [ajor] if allophonic" as an acceptable outcome; the [o] is a documented surface allophone of /u/ before uvular/pharyngeal. Optional, not a clear error. Held.
+- **Issue 26 — kab tree (ttejra / tːəʒɾa):** reviewer says the initial geminate "should be verified; if genuinely attested... a note." Uncertain, and the proposed fix removes a ⟨t⟩ from the display form. Attestation question, not a clear error. Held.
+
+remainingOpenCount: 9 issues held (4, 13, 19, 20, 21, 22, 23, 24, 26).
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I (the Berber/Tamazight specialist) re-verified every claimed fix against the live `words/*.js` data (entries live under `WORDS.<word>.data.<code>` as `["surface","ipa"]`). All 16 "applied" fixes are genuinely present in the live data — none were phantom.
+
+### Verified applied fixes (live-data confirmed)
+
+| Issue | Word/lang | Live value now | Verdict |
+|---|---|---|---|
+| 1+2 | kab water | `["aman","aman"]` | ✓ /æ/→[a] both vowels. Stress diacritic correctly NOT added (corpus-wide convention; agreed). |
+| 3 | kab eye | `["tiṭ","titˤ"]` | ✓ [θ]→[t]; Tarifit spirantization removed from Kabyle. |
+| 5 | tmh dog | `["aydi","ajdi"]` | ✓ [ɪ]→[j] glide. |
+| 6 | kab house | `["axxam","aχːam"]` | ✓ both /æ/→[a]; geminate [χː] retained as I accept. |
+| 7 | kab moon | `["aggur","aɡːuɾ"]` | ✓ |
+| 8 | kab cat | `["amcic","amʃiʃ"]` | ✓ |
+| 9 | kab thanks | `["tanemmirt","tanəmːiɾt"]` | ✓ |
+| 10 | kab mother | `["yemma","jəmːa"]` | ✓ |
+| 11 | kab good | `["yelha","jəlħa"]` | ✓ final [æ]→[a]; [lˤ] alternative correctly left as a competing analysis, not forced. |
+| 12 | shy sun | `["ittij","itːiʒ"]` | ✓ [tʃ]→[tː]. |
+| 14 | rif one | `["ijj","ijː"]` | ✓ affricate→geminate glide. |
+| 15 | shy one | `["ijj","ijː"]` | ✓ |
+| 16 | tmh eye | `["tiṭṭ","titˤː"]` | ✓ pharyngealization now only on emphatic geminate; vowel [i] matches display. |
+| 17 | tmh good | `["ihossǝn","ihosːən"]` | ✓ orthographic ⟨ss⟩→IPA [sː]. |
+| 18 | tmh thanks | `["tanǝmmirt","tanəmːiɾt"]` | ✓ r→ɾ, now consistent with kab/rif/shy. |
+| 25 | tzm drink | `["sew","səw"]` | ✓ ⟨e⟩→[ə], matches sister kab [səw]. |
+
+Every systematic Kabyle /æ/ error I flagged (Issues 1, 6, 7, 8, 9, 10, 11 — the seven worst) is resolved in live data. The [idʒː]→[ijː] geminate-glide fixes (14, 15) and the tmh pharyngealization-scope fix (16) are correctly applied.
+
+### Held items — adjudication
+
+- **Issue 4 — rif eye orthography (thiṭ vs tiṭ):** ✓ ACCEPT hold. I myself labelled this "marginally an editorial issue, flagged for awareness." The IPA [θitˤ] is correct for Tarifit (genuine spirantization). The ⟨th⟩ digraph is a defensible Tarifit-Latin convention. Won't-fix is correct.
+- **Issue 13 — kab sun:** ✓ ACCEPT hold. Live `["iṭij","itˤiʒ"]` is phonologically sound; I had already called the IPA acceptable. No actionable error.
+- **Issue 19 — tmh fire:** ✓ ACCEPT hold. Live `["tǝmsi","təmsi"]` — IPA correct; ⟨ǝ⟩ (U+01DD) in display is the standard Tamashek-Latin convention. Notational only.
+- **Issues 20 / 21 — rif & shy thanks single /m/:** △ ACCEPT hold as a defensible attestation decision, with a note. I confirmed live values are rif `["tanmirt","tanmiɾt"]` and shy `["tanmirt","tanmiɾt"]`. Notably the **tzm** sister entry is live `["tanmmirt","tanmːiɾt"]` WITH the geminate, so the corpus does carry the geminate lemma elsewhere — meaning the single-m rif/shy forms are a deliberate per-dialect attestation choice, not a blanket omission. My original wording conceded the single-m form "would be unusual… requiring documentation," i.e. not a clear error. I accept the hold; the geminate-vs-single is a lemma-attestation call outside the clear-IPA-error remit. Internally the held entries are at least self-consistent (single ⟨m⟩ ↔ single [m], no length mark), which is the important thing.
+- **Issue 22 — rif fire (θmesːi):** ✓ ACCEPT hold. I self-qualified this ("if the Tarifit form genuinely has [θ] here, a phonological explanation is needed"). The fix would rewrite display ⟨thmessi⟩→⟨tmessi⟩ — a surface/attestation change, not an unambiguous IPA error. Defensible won't-fix.
+- **Issue 23 — tmh hello (/o/):** ✓ ACCEPT hold. My "expected" equalled the current value; explicitly "flagged for review." [o] is a documented surface allophone of /u/ before uvular/pharyngeal. Nothing to apply.
+- **Issue 24 — tmh moon (ajor):** ✓ ACCEPT hold. I offered "retain [ajor] if allophonic" as an acceptable outcome. The surface [o] from /u/ before uvular is documented (Heath 2005). Optional, not a clear error.
+- **Issue 26 — kab tree (ttejra / tːəʒɾa):** ✓ ACCEPT hold. Live `["ttejra","tːəʒɾa"]`. Display ↔ IPA are internally consistent (initial ⟨tt⟩ ↔ [tː]). My concern was whether the initial geminate is the attested base lemma — an attestation/documentation question, not a clear transcription error, and the proposed fix would delete a ⟨t⟩ from the display. Defensible won't-fix.
+
+### New issues
+
+None. During verification I checked all surrounding Berber entries (e.g. tmh/tzm eye both `["tiṭṭ","titˤː"]` — mutually consistent; tzm thanks geminate vs rif/shy single — accounted for above). No new defensible errors found.
+
+### Scorecard
+
+- Applied & live-verified: 16/16 ✓ (zero phantom fixes).
+- Held items: 9/9 accepted as defensible convention / attestation / marginal-allophone / display-orthography decisions.
+- Clear errors remaining unfixed: 0.
+- New actionable issues: 0.
+
+The systematic, unambiguous IPA errors (Kabyle /æ/, Tarifit/Chaouia geminate-glide affricate, Tamashek pharyngealization scope, glide-for-vowel copy errors) are all corrected in live data. Every remaining item is a convention/attestation choice I explicitly accept as won't-fix.
+
+**File status: CLOSED** — nothing left to address.

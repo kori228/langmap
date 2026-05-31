@@ -180,3 +180,77 @@ I am a specialist in Western Austronesian languages (Malayo-Polynesian and Formo
 - **Current:** `dru: ["apoy", "aˈpoi"]`
 - **Expected (to verify):** Rukai (Tona dialect) fire = *apuy* or *apoy* — needs source check
 - **Why:** Rukai occupies an outlier position in Formosan subgrouping (Blust 1999; Ross 2009). PAN \**Sapuy* (fire) is well-attested in Formosan languages. For Rukai specifically, the form *apoy* with final /-oj/ ~ /-oi/ parallels Philippine reflexes (Tagalog *apoy*, Ilocano *apuy*). While contact or coincidence is possible, this is worth cross-checking against the Rukai primary sources (Zeitoun 2000 *Nominalization in Formosan Languages*; Li 1973) to confirm whether *apoy* is indeed the Tona Rukai form or whether it has been borrowed from a Philippine source in the database.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every finding against the actual current data in `words/*.js`. Note: several of the reviewer's quoted "Current" values and line numbers were stale and did not match the live files; I matched against the live data verbatim. I applied only clear, internally-corroborated IPA / transcription errors. Lexeme/surface-form replacements and system-level convention choices are held with rationale below.
+
+### Applied (applied by orchestrator this round)
+
+- **#3 — `su` fire & hand, ⟨eu⟩ /ɤ/→/ɯ/.** Confirmed: `words/fire.js` `su: ["seuneu", "sɤnɤ"]` and `words/hand.js` `su: ["leungeun", "lɤŋɤn"]` are internally inconsistent with their own Old Sundanese counterparts `osu: ["seuneu", "sɯnɯ"]` / `osu: ["leungeun", "lɯŋɯn"]`. Corrected IPA to `sɯnɯ` and `lɯŋɯn`. Surface unchanged. **Applied (2 edits).**
+- **#8 — `ceb` good, *maayo* medial glottal.** Confirmed `ceb: ["maayo", "maːjo"]`. Internally inconsistent with `hil: ["maayo", "maʔajɔ"]` (line 577) and `war: ["maupay", "maʔupaj"]` in the same file, both of which transcribe the *ma-* + vowel-root boundary with /ʔ/. Corrected IPA to `maʔajo` (matching the internal Hiligaynon pattern; no stress mark added, to stay within file convention). Surface unchanged. **Applied.**
+- **#13 — `min` one, *ciek* IPA drops the coda.** Confirmed `min: ["ciek", "tʃie"]`. The IPA omits the final consonant entirely (neither /k/ nor /ʔ/). Internal Minangkabau precedent `father: abak→abaʔ`, `mother: amak→amaʔ` shows final ⟨-ak⟩#→[-aʔ]. Corrected IPA to `tʃieʔ`. Surface unchanged. **Applied.**
+- **#17 — `bbc` good, *denggan* [deŋːan].** Confirmed `bbc: ["denggan", "deŋːan"]`. The surface ⟨nggan⟩ is /ŋ/+/g/; the IPA renders a geminate nasal and drops the /g/ stop entirely — a clear local transcription error independent of any orthographic debate. Corrected IPA to `deŋgan`. Surface unchanged. **Applied.**
+- **#4 — `ace` moon, *buleun* IPA copies orthography.** Confirmed `ace: ["buleun", "buleun"]` — the IPA field merely repeats the romanisation. Acehnese ⟨eu⟩ = /ɯ/, and Acehnese renders real IPA elsewhere in the same file (e.g. dog `["asèe", "asɛː"]`). Corrected IPA to `bulɯn` (no stress mark; ace entries in these files carry none). Surface unchanged. **Applied.**
+
+### Held with rationale
+
+- **#5 `bbc` house *jabu* [dʒabu]→[jabu]; #6 `mak` good *baji'* [badʒiʔ]→[bajiʔ].** These hinge on the claim that ⟨j⟩ = palatal glide /j/ (not /dʒ/) in Toba Batak and Makassarese. Standard orthographic/descriptive practice for both languages commonly treats ⟨j⟩ as /dʒ/, and the data is internally consistent in doing so (e.g. `min anjiang aɲdʒiaŋ`, `osu anjing andʒiŋ`). This is a system-level transcription-convention question, not a clear local error. **Held for team/reviewer decision.**
+- **#7 `tl` final glottal stop (puso/aso/pusa/mabuti/isa).** A dataset-wide Tagalog transcription convention: all Tagalog entries consistently omit final /-ʔ/ and lack stress marks. Adding /-ʔ/ + stress to five entries is a convention change, not a local inconsistency (the Tagalog set is internally self-consistent). **Held for team decision.**
+- **#1 (war/bik/bto dog=ayam), #2 (bjn dog=hadupan), #9 (bto heart=kublit), #11 (mad fire=apoy), #12 (pyu moon=kuwalan), #15 (iba hand=jari), #20 (mak dog=kongkong), #19 (min father abak→apak).** All require replacing a SURFACE lexeme with a new headword. Several are well-argued, but each introduces a surface form I cannot fully verify from internal data, and some offer multiple candidate replacements (e.g. #1 ido/iido vs ido/irô). Per project editing policy these surface/lexeme substitutions are not "clear local IPA errors or internal inconsistencies" and are deferred for reviewer-confirmed replacement forms. **Held.**
+- **#10 (tl eat/drink kumain/uminom as lemmas), #16 (bik eat/drink kakanon/inumon nominalizations), #18 (ilo thanks agyamanak 1SG form).** Citation-form / lemma-selection choices that change surface headwords; affect which morphological form the dataset uses as a concept label. Cross-cutting editorial convention, not a mechanical local fix. **Held for team decision.**
+- **#14 (jv register: matur nuwun krama vs ngoko).** Register-normalization across a lexical set; a deliberate editorial policy choice (which register the Javanese set targets). **Held for team decision.**
+- **#21 (tsu one cone/coni dialect), #22 (dru fire apoy source check).** Reviewer themselves marks these "to verify / needs source check"; no unambiguous correction is asserted. **Held pending source confirmation.**
+
+Net: 6 edits applied across 5 findings (#3 ×2, #4, #8, #13, #17). 13 findings held.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified all 6 claimed edits against the live `words/*.js` data. **All six are genuinely present in the live files** — no phantom "applied" fixes this round:
+
+- #3 `words/fire.js:205` `su: ["seuneu", "sɯnɯ"]` ✓; `words/hand.js:199` `su: ["leungeun", "lɯŋɯn"]` ✓ — now matches their `osu:` counterparts (lines 1032 / 1026).
+- #4 `words/moon.js:722` `ace: ["buleun", "bulɯn"]` ✓
+- #8 `words/good.js:200` `ceb: ["maayo", "maʔajo"]` ✓ — matches `hil:` (line 577) pattern.
+- #13 `words/one.js:719` `min: ["ciek", "tʃieʔ"]` ✓
+- #17 `words/good.js:865` `bbc: ["denggan", "deŋgan"]` ✓
+
+**Applied findings #3, #4, #8, #13, #17 — ACCEPT (✓).** Correctly scoped, internally corroborated, surface forms untouched (consistent with the no-text-change-on-IPA-fix policy).
+
+### Adjudication of held items
+
+**#5 `bbc` jabu [dʒabu], #6 `mak` baji' [badʒiʔ] — ACCEPT HOLD (△, won't-fix without policy).** Verified live: `words/house.js:872` and `words/good.js:992` unchanged. The phonetic argument (Toba Batak / Makassarese ⟨j⟩ = palatal /j/) is linguistically sound, but the dataset is uniformly committed to ⟨j⟩ = /dʒ/ (`min anjiang aɲdʒiaŋ`, `osu anjing andʒiŋ`, `iba jari dʒari`). This is a defensible system-wide transcription convention, not a local error. I accept the hold as a cross-school convention choice.
+
+**#7 `tl` final glottal stop, #14 `jv` register — ACCEPT HOLD (△).** Both are dataset-wide normalization policies. The Tagalog set is internally self-consistent (no final /-ʔ/, no stress marks anywhere); the Javanese set is internally consistent ngoko except `thanks`. Defensible editorial conventions; not mechanical local fixes.
+
+**#10 `tl` kumain/uminom, #16 `bik` kakanon/inumon, #18 `ilo` agyamanak — PARTIAL (△, escalate).** These are stronger than pure convention: #18 `agyamanak` is demonstrably a 1SG-inflected form (*ag-yaman-ak*), and #16 `kakanon`/`inumon` are patient-focus nominalizations, not verbal lemmas. However, the correct lemma form is a genuine editorial lemma-selection decision (root vs AF-form vs loanword *salamat*), and changing it alters the surface headword. I accept deferral but flag these as real lexical-category mismatches the team should resolve, not indefinitely defer.
+
+**#19 `min` father abak vs apak, #21 `tsu` cone/coni, #22 `dru` apoy — ACCEPT HOLD (△).** #19 is a standard-vs-coastal-dialect choice (defensible). #21 and #22 the reviewer self-marked "to verify / needs source check" — no unambiguous correction asserted; hold is correct.
+
+### Items that BLOCK closure — clear errors still in live data
+
+The following are not convention choices; they are clear semantic/lexical errors confirmed present in live data, and cannot be accepted as defensible system-level choices:
+
+- **#1 `war`/`bik`/`bto` dog = "ayam".** Live: `words/dog.js:720-722` all `["ayam", "ajam"]`. In the same file the entire Central-Philippine cohort uses PAN \*asu reflexes: `tl aso`, `ceb iro`, `hil ido`, `pam asu`. Three identical "ayam" entries for three distinct Central-Bikol/Waray lects is anomalous; `bik` is confirmed Central Bikol (`bik tatay` father). At minimum Waray and Bikol "dog" should be `idô`/`ido`-family. This is a clear error the team must address (reviewer-confirmed form: Waray **idô** [ʔiˈdoʔ]; Central Bikol **ayam** is attested as "dog" in some Bikol sources but **idô** is the standard headword used by the rest of the dataset — recommend **ido** for consistency, or at least split so all three are not identical).
+- **#2 `bjn` dog = "hadupan".** Live `words/dog.js:868` unchanged. *Hadupan* (< *hadap* "front/face" + -an) is not "dog". Recommended replacement: **anjing** [ˈandʒiŋ] (matches the dataset's ⟨j⟩=/dʒ/ convention) or dialectal **asu**.
+- **#9 `bto` heart = "kublit".** Live `words/heart.js:722` unchanged. *Kublit* (< PAN \*kulit) = "skin/bark/hide", not heart. Note `bik` (line 721) correctly has `puso`. Recommended: `bto: ["puso", "ˈpusoʔ"]` (or `puso`/`puso` to match the file's no-glottal Tagalog-style `puso`).
+
+These three (#1, #2, #9) are unambiguous wrong-meaning entries — a forecourt, a skin, and a chicken-or-pet word standing in for "dog"/"heart". They are reviewer-confirmed and must be fixed in live data before this file can close.
+
+**#11 `mad` apoy→apu, #12 `pyu` kuwalan→bulan, #15 `iba` jari (finger)→hand, #20 `mak` kongkong→asu** — these remain genuinely arguable (some, like `mad apoy`, could be a defensible regional form; `iba jari` for "hand" is plausible in lects that collapse hand/finger). I do not insist on these for closure, but the team should at least confirm #12 (`kuwalan` is unattested for Puyuma "moon"; `bulan` is the expected PAN reflex) and #15.
+
+### New issues
+
+None. I verified the surrounding entries during this pass and found no additional clear errors beyond those already raised.
+
+### Scorecard
+
+- Applied & verified in live data: 5 findings / 6 edits (#3×2, #4, #8, #13, #17) — all ✓.
+- Held & accepted as defensible convention/dialect/source-check: #5, #6, #7, #14, #19, #21, #22.
+- Held, partial — real lexical-category issues to escalate (not block): #10, #16, #18, #11, #15, #20.
+- **Blocking — clear semantic errors still live: #1, #2, #9.**
+
+**File status: OPEN** — Dev team must fix in live data: (1) `words/dog.js:720-722` war/bik/bto "ayam"→`ido`-family (do not leave three identical entries); (2) `words/dog.js:868` bjn "hadupan"→`anjing`; (3) `words/heart.js:722` bto "kublit"→`puso`. Also confirm #12 (`pyu` kuwalan→bulan) and #15 (`iba` jari).

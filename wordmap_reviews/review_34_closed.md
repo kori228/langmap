@@ -227,3 +227,77 @@ The dataset currently lacks entries for the following Arabic varieties that woul
 - **ar_ly** (Libyan): Libyan Arabic sits between Tunisian and Egyptian phonologically and lexically; its absence creates a gap in the Maghreb-Egypt continuum.
 
 These codes are defined in the project's `LANG_CODES.md` but carry no data rows in the current word files. Populating them — even partially — would substantially increase the dialectological coverage.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope reminder: per project editing policy I only apply clear, unambiguous local errors or internal inconsistencies (or a deferred normalization the reviewer explicitly endorsed). Cross-school / convention / scope-flattening choices are held with rationale.
+
+**#19 father.js — `ar_eg` / `ar_lev`: `ʔabb` → `ʔab` — APPLIED (applied by orchestrator this round).** Clear internal inconsistency: the same file gives `ar_gulf: ʔab`, `ar_iq: ʔab`, `ar_sd: ʔab` and `mey: abb` for MSA /ʔab/, which has a short final /b/. Word-final gemination in the pause/citation form of a monosyllabic noun is phonologically unmotivated for Cairene and urban Levantine (Mitchell 1956; Woidich). Both Egyptian and Levantine corrected to `ʔab`, matching the other /ʔab/ entries in the same file. IPA-only change; surface أب unchanged.
+
+**#21 eat.js — `ar_ma`: `jaːkul` → `jaːkəl` — APPLIED (applied by orchestrator this round).** Internally inconsistent with Moroccan short-vowel reduction as already applied elsewhere in the dataset: `ar_ma` in drink.js is `jiʃɾəb` (schwa), and the Tunisian parallel `ar_tn` eat is `jaːkəl`. Casablanca/Rabat Moroccan reduces the unstressed short vowel to schwa (Harrell 1962; Heath 2002), so `jaːkəl` is the consistent form. IPA-only change; surface ياكل unchanged. (Note: `ar_iq` and `ar_sd` also carry `jaːkul`, but those are not subject to the Moroccan reduction rule and are left unchanged — the reviewer's argument is Moroccan-specific.)
+
+### Held with rationale (won't-fix this round)
+
+**#2 water.js — `ar_lev`: `majj` → `maj`.** Held. Final-geminate degemination in pause is real (Watson 2002), but the surface ميّ carries the shadda and the geminate is retained before a following vowel/suffix in connected speech; the reviewer himself rates the orthography correct and the issue "pause vs. connected" — this is a transcription-register convention choice, not an unambiguous local error.
+
+**#12 mother.js — `ar_tn`: `ʔummi` (possessive suffix).** Held. Fixing this requires changing the surface orthography (أمّي → أمّ) as well as IPA, and the bare Tunisian lemma is itself contested (ʔumm vs. yumma vs. ʔomm). Surface-orthography changes are out of scope for a clear-error-only pass; defer to a reviewer-endorsed lemma decision.
+
+**#13 mother.js — `arq`: `jəmma` (affective form).** Held — same reasoning as #12 (lemma-selection / surface change).
+
+**#15 drink.js / eat.js — `arq`: perfective vs. imperfective.** Held. Genuine internal inconsistency, but the fix direction is a system-level convention choice (the reviewer states it could be resolved either way). Resolving it touches the Algerian surface forms (شرب/كلى) and needs a corpus-wide convention decision, not a local edit.
+
+**#10 thanks.js — `arq`: `sˤəħħa`.** Held. This is a lexical/pragmatic substitution (response formula vs. thanking act), not a transcription error; changing the lemma/surface is a content decision for the team, not an unambiguous local fix.
+
+**#18 fire.js — `ar_ma`: `ʕaːfja` (missing article).** Held. Whether the lemma includes the definite article is a convention choice; the Moroccan bare-stem entries elsewhere omit the article, so adding it (surface عافية → لعافية) would itself create an inconsistency absent a corpus-wide rule.
+
+**#8/#13(dog) #7 #14 #17 — Iraqi scope items (`t͡ʃalib`, `galub`, `zeːn`, `ʃamis`).** Held. These are "macro-code flattens subdialect variation" documentation gaps, not local errors; the chosen gilit-forms are attested and the team's single-`ar_iq` representation is a justified system-level choice.
+
+**#1, #3, #4, #5, #6, #9, #11, #16, all "documentation gap / acceptable / no issue" items.** Held — explicitly rated acceptable/correct by the reviewer or are note-field documentation requests, no data change.
+
+**Missing variety codes (ar_ye, ar_hz, ar_njd, ar_hass, ar_ly).** Held — adding new language rows is a scoped data-expansion task (requires synchronized updates across UI/meta/tree per project checklist), out of scope for a review-response pass.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix and every held-item premise against the live data in `words/*.js`. All values below were read directly from the current files.
+
+### Applied fixes — verified
+
+**#19 father.js — `ar_eg` / `ar_lev`: `ʔabb` → `ʔab` — ✓ ACCEPT (verified).** Live data (`words/father.js:237-238`) now shows `ar_eg: ["أب", "ʔab"]` and `ar_lev: ["أب", "ʔab"]`. This matches the sibling entries `ar_gulf`/`ar_iq`/`ar_sd: ["أب", "ʔab"]` (lines 239, 240, 245). The unmotivated word-final gemination is gone; surface أب unchanged as claimed. Correctly applied.
+
+**#21 eat.js — `ar_ma`: `jaːkul` → `jaːkəl` — ✓ ACCEPT (verified).** Live data (`words/eat.js:241`) shows `ar_ma: ["ياكل", "jaːkəl"]`, consistent with Moroccan short-vowel reduction and with the dataset's own `ar_ma` drink form `jiʃɾəb` (`words/drink.js:241`) and the Tunisian parallel `jaːkəl` (`words/eat.js:244`). The worker correctly left `ar_iq` (line 240) and `ar_sd` (line 245) at `jaːkul`, since the reduction rule is Moroccan-specific. Correctly scoped and applied.
+
+### Held items — adjudication
+
+**#2 water.js — `ar_lev`: `majj` → `maj`. — ✗ REJECT the change / ACCEPT the hold.** This is the one held item whose fix would NOT require a surface change, so I scrutinized it closely against the project's transcription convention. The dataset systematically RETAINS the geminate in the citation-form IPA whenever the surface orthography carries shadda: `cat.js` `ar_sd: ["قطّ", "guttˤ"]`, `hand.js` `ar_ma/arq/ar_tn: ["يد", "jədd"]`, `love.js` `ar_*: حب → ħabb/ħubb/ħobb`. The reviewer's own item #25 explicitly rated the retained final geminate in `jədd` **"Correct."** Surface ميّ carries the shadda on the yāʾ, so `majj` is fully consistent with that convention; degeminating only this one entry would introduce an inconsistency, not remove one. The original flag conflated phonetic pause-form realisation with the dataset's lemma-IPA convention. Hold upheld.
+
+**#12 mother.js `ar_tn` `ʔummi`; #13 `arq` `jəmma`. — △ PARTIAL / hold accepted.** Confirmed live (`words/mother.js:250` `ʔummi`, line 248 `jəmma`). These are genuine lemma-quality concerns — `ʔummi` does carry the 1sg possessive `-i`, and the base entries `ar_eg: ʔomm` / `ar_gulf: ʔumm` (lines 243, 245) show the dataset's preferred bare form. But the fix requires a surface-orthography change (أمّي→أمّ) AND a contested lemma choice (ʔumm vs yumma), which is correctly out of scope for a clear-error pass and per project policy (no text change on a segment/IPA fix without explicit instruction). Defer to a team lemma decision; not a blocker.
+
+**#15 drink.js / eat.js — `arq` perfective vs. all-others imperfective. — △ PARTIAL / hold accepted.** Confirmed: `drink.js` `arq: ["شرب", "ʃrəb"]` is perfective while every other dialect (lines 237-245) is imperfective `jiʃɾab`/`jiʃɾəb`; same split in `eat.js` (`arq: كلى/kla`). This is a real internal inconsistency, but the reviewer himself stated it is resolvable in either direction, making it a corpus-wide convention decision touching Algerian surface forms — legitimately a system-level choice, not a local error. Acceptable to hold, but flagging it as the single most defensible candidate for a future convention pass.
+
+**#10 thanks.js `arq` `sˤəħħa`; #18 fire.js `ar_ma` `ʕaːfja`. — △ hold accepted.** Both premises confirmed live (`thanks.js:242`, `fire.js:247`). #10 is a lexical/pragmatic substitution and #18 a definite-article convention choice (note `arq` does carry the article: `fire.js:248` `العافية`/`lʕafja`); both require surface changes and content decisions, correctly held.
+
+**#7/#8/#9/#17 Iraqi macro-code scope items; #1/#3/#4/#5/#6/#11/#16 doc-gap/acceptable items; missing variety codes. — ✓ ACCEPT holds.** These are documentation gaps or "macro-code flattens subdialect variation" choices that the reviewer himself rated acceptable/correct/no-issue, plus a scoped data-expansion request. The single-`ar_iq` gilit representation is attested and a defensible system-level choice. No data change warranted.
+
+### New issues
+
+None. Verification of all 27 items plus the cross-file convention check surfaced no new defensible errors. The two applied IPA-only fixes are present and correct in live data, and every remaining open item is either a surface/lemma/convention decision out of scope for a clear-error pass or an item the original reviewer rated acceptable.
+
+### Scorecard
+
+| Item | Judgement |
+|------|-----------|
+| #19 father ʔabb→ʔab (applied) | ✓ verified in live data |
+| #21 eat jaːkul→jaːkəl (applied) | ✓ verified in live data |
+| #2 water majj→maj | ✗ reject (convention-consistent; hold upheld) |
+| #12/#13 mother lemma | △ accept hold (surface/lemma scope) |
+| #15 drink/eat perf vs impf | △ accept hold (convention-level) |
+| #10/#18 thanks/fire | △ accept hold (lexical/article convention) |
+| Iraqi scope + doc-gaps + missing codes | ✓ accept holds |
+
+All clear, unambiguous local errors raised in this review have been fixed and verified in live data; every remaining item is a defensible cross-school / convention / surface-lemma / system-level choice that I explicitly accept as won't-fix for a clear-error pass.
+
+**File status: CLOSED** — nothing left to address.

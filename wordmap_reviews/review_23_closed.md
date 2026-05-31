@@ -218,3 +218,79 @@ I am a specialist in Classical Latin phonology, Vulgar Latin, and Ecclesiastical
 | IPA identical to romanization (no phonological content) | `drink` (bibere), `eat` (edere) |
 | Incomplete expression given | `thanks` (grātiās without agō) |
 | IPA vowel length error in multi-syllable sequence | `thanks` (tiaːs syllabification) |
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the careful Classical Latin review. I evaluated each item against the project editing policy: apply only clear, unambiguous local phonological errors or internal inconsistencies; hold genuine cross-dataset convention choices for a team decision. I confirmed the `la` meta itself cites Allen, *Vox Latina* as the source, so your phonological standard is the intended one.
+
+### Applied (clear, unambiguous phonological errors)
+
+- **Issue 8 `hand`** — `manʊs` → `manus`. /ʊ/ is an anachronistic English quality category; Classical Latin short u is /u/ (quantity, not quality, per Allen). (applied by orchestrator this round)
+- **Issue 9 `eye`** — `okulʊs` → `okulus`. Same fix; note this entry was internally inconsistent — it already wrote the penult short u as plain `u` (`oku-`) but the final as `ʊ`. (applied by orchestrator this round)
+- **Issue 10 `good`** — `bonʊs` → `bonus`. (applied by orchestrator this round)
+- **Issue 11 `one`** — `uːnʊs` → `uːnus`. Long ū kept; only the final short -us corrected. (applied by orchestrator this round)
+- **Issue 12 `house`** — `domʊs` → `domus`. (applied by orchestrator this round)
+- **Issue 4 `fire`** — `iŋnis` → `ignis` (IPA). Classical ⟨gn⟩ = /gn/, not /ŋn/ (Allen pp. 21–23). The /ŋ/→/g/ is the only change to the IPA field; orthography untouched. (applied by orchestrator this round)
+
+Rationale for treating the /ʊ/ set as local errors rather than convention: only 5 of 20 Latin entries use /ʊ/, and they are exactly the -us nouns; the other 15 Latin entries (and `oculus` itself, internally) render short u as plain /u/. So this is an internal inconsistency, not a dataset-wide convention.
+
+### Held — convention choices / not unambiguous local errors
+
+- **Issues 5, 13, 14, 15, 16, 17, 20, 21, 22, 24 + the "missing stress" column (Issue 26)** — *Missing IPA stress diacritic.* Held. Stress marking is NOT a settled dataset-wide rule: many polysyllabic entries in other languages omit it (e.g. `cs ruka`, `eo mano`), while others include it (`it ˈmaːno`, sister Italic `xum ma.ˈnu.we`). Adding /ˈ/ + syllable dots across all Latin entries is a system-level normalization the team has not adopted uniformly; it should be a deliberate convention decision, not a piecemeal local edit. No phonological segment is wrong in these entries.
+- **Issues 1, 2 `drink`/`eat` citation form (bibere→bibō, edere→edō)** — Held. This is a surface-orthography/citation-convention choice, and the dataset already uses non-finite citation forms in sister entries (Old English `ang` gives infinitives `drincan`, `etan`, `lufian`). Per project rule I do not change surface orthography on a convention question. The reviewer rightly notes the infinitive is "a common classroom habit" but it is a defensible, internally-consistent citation choice here.
+- **Issues 6, 7 `drink`/`eat` IPA = romanization** — Held (tied to the above). Read as IPA, `bibere` = [bibere] and `edere` = [edere] are in fact phonetically correct for the infinitives (all short vowels); the only deficiency is the missing stress mark, which falls under the held stress-convention item, not a wrong segment.
+- **Issue 3, 20 `love` amor (noun) → amō (verb)** — Held. *amor* (n.) is a valid lexical choice for the concept "love"; verb-vs-noun is a lexical/convention decision, not a clear error. Surface unchanged per policy.
+- **Issue 19 `thanks`** — Held. (a) The "vowel-length error" claim is not correct: `ɡraːtiaːs` already marks both the stem ā and the accusative-plural ending -ās as long (aː … aːs), which is the right quantity for *grātiās*; the only thing missing is the stress/syllable dots (held under the stress item). (b) Expanding *grātiās* → *grātias agō* is a lexical/surface choice consistent with how other languages give the bare cognate noun (`fr_class` "grâces"); held as convention.
+- **Issue 21 `hello`** (avē as variant), **Issue 22 `cat`** (cattus/Romance tension) — Held as informational notes; no segment error. *salvē* and *fēlēs* are correct Classical choices.
+- **Issues 18 `heart`, 23 `sun`** — No change requested by reviewer; confirmed correct.
+- **Issue 25 `water`** — Held. /kʷ/ for ⟨qu⟩ is correct and the only requested change is the stress mark (held under stress item).
+
+### Summary
+6 clear phonological fixes applied (5× /ʊ/→/u/, 1× /ŋn/→/gn/). The large remaining block (IPA stress diacritics across all polysyllabic Latin entries) and the citation-form / lexical-form questions are held as dataset-wide convention decisions for the team, not piecemeal local edits.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix against the live per-word data files under `words/` and re-adjudicated each held item against actual cross-dataset evidence (Old English citation forms, stress-mark distribution, sister Italic `xum`). My judgements below.
+
+### Verification of applied fixes — all 6 confirmed present in live data
+- **Issue 8 `hand`** `words/hand.js:510` → `la: ["manus", "manus"]` ✓ (`ʊ`→`u`)
+- **Issue 9 `eye`** `words/eye.js:510` → `["oculus", "okulus"]` ✓
+- **Issue 10 `good`** `words/good.js:510` → `["bonus", "bonus"]` ✓
+- **Issue 11 `one`** `words/one.js:516` → `["ūnus", "uːnus"]` ✓ (long ū retained, final -us fixed)
+- **Issue 12 `house`** `words/house.js:517` → `["domus", "domus"]` ✓
+- **Issue 4 `fire`** `words/fire.js:516` → `["ignis", "ignis"]` (IPA) ✓ (`ŋn`→`gn`)
+
+All six are genuine, well-grounded Classical-Latin corrections (Allen, *Vox Latina*: short /u/ is a quantity not a quality category; ⟨gn⟩ = /gn/ not /ŋn/). The `la` meta itself cites Allen as the standard, so these are the right fixes and I **accept (✓)** them as applied. The /ʊ/ set being exactly the five -us nouns while the other 15 entries (and `oculus`'s own penult) used plain /u/ confirms the worker's "internal inconsistency, not convention" framing.
+
+### Adjudication of held items
+
+- **Stress diacritic block (Issues 5, 13, 14, 15, 16, 17, 20, 21, 22, 24, 25 + the "missing stress" row of Issue 26)** — **ACCEPT held (✗ as a forced edit).** I verified the dataset is genuinely inconsistent on IPA stress: `it` carries it (`words/hand.js:96` "ˈmaːno") but `cs` "ruka" (`hand.js:309`) and `eo` "mano" (`hand.js:559`) do not; and only 13 of 40 live `la` entries carry `ˈ`. No segment is phonologically *wrong* in any of these entries — the issue is purely a missing diacritic. This is a legitimate system-wide normalization decision, not a piecemeal local error. Held is the correct disposition.
+
+- **Issues 1/2/6/7 `drink`/`eat` infinitive citation + IPA=romanization** — **ACCEPT held (△).** Confirmed sister-language precedent: Old English gives infinitives `drincan` (`drink.js:516`), `etan` (`eat.js:516`), `lufian` (`love.js:523`). The infinitive is a defensible, internally-consistent citation choice, so the surface form is a convention question, not a clear error (per the no-text-change-on-convention policy). Read as IPA, `bibere`/`edere` are segmentally correct for the infinitives (all short vowels); the only deficiency is the missing stress, which folds into the held stress block. The reviewer's preference for 1sg `bibō`/`edō` is reasonable but not mandatory. Note for a future convention pass: if the team standardizes Latin verbs to 1sg present, these (plus `love`) should move together.
+
+- **Issues 3/20 `love` amor (noun) vs amō (verb)** — **ACCEPT held (△).** Noun vs verb for "love" is a lexical choice; `amor` is a valid Classical lexeme for the concept. The accompanying stress complaint folds into the held stress block. Surface unchanged is correct under policy.
+
+- **Issue 19 `thanks`** — **ACCEPT held; reviewer's quantity claim partially REJECTED (✗).** I checked `words/thanks.js:510` `["grātiās", "ɡraːtiaːs"]`: the IPA correctly marks BOTH the stem ā (graː-) and the acc.pl. ending -ās (-aːs) as long, and the `i` is plainly present between them — there is no merger of /i/+/a/ into a single /aː/. The reviewer's "vowel-length error / syllabification" claim is a misreading; the quantities are right. The only real gap is stress/syllable-dots (held stress block). The `grātias agō` expansion is a lexical choice paralleling the bare cognate noun `fr_class` "grâces" (`thanks.js:908`) — held as convention.
+
+- **Issues 21 `hello` (avē variant), 22 `cat` (cattus/Romance tension)** — **ACCEPT held (✓ informational).** `salvē` and `fēlēs` are correct Classical choices; the Romance descendants come from Vulgar `cattus` (cf. `it_dan` "gatto" `cat.js:909`, `fr_class` "chat" `cat.js:908`), which is a legitimate flag but not an error in the `la` entry.
+
+- **Issues 18 `heart`, 23 `sun`** — **ACCEPT (✓).** `cor`/`kor` and `sōl`/`soːl` verified correct as-is; monosyllables need no stress mark.
+
+### New issues
+None. During verification I found no additional segmental errors in the live Latin data beyond what the reviewer already raised.
+
+### Scorecard
+| Disposition | Items |
+|---|---|
+| Applied & verified ✓ | Issues 4, 8, 9, 10, 11, 12 (6 fixes, all confirmed in live data) |
+| Held — accepted as convention/system-level △/✗ | stress block (5,13,14,15,16,17,20,21,22,24,25,26); citation form (1,2,6,7); love noun/verb (3,20); thanks expansion (19) |
+| Correct as-is ✓ | Issues 18, 23 |
+| Reviewer claim rejected | Issue 19 vowel-length/merger sub-claim (IPA is quantity-correct) |
+
+All clear, unambiguous phonological errors have been fixed and verified in live data. Every remaining item is either a defensible dataset-wide convention question (IPA stress normalization, infinitive vs 1sg citation, noun vs verb lexeme) that must be decided system-wide rather than piecemeal, or a mistaken sub-claim on my colleague-reviewer's part. Nothing actionable remains for the dev team at the local-edit level.
+
+**File status: CLOSED** — nothing left to address.

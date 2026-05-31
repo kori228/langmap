@@ -204,3 +204,81 @@ Beyond tone, the following segmental errors recur:
 - Igbo `nw-` → IPA `ŋw` (issues 8, 15, 23): should be `ŋ͡m` or `ⁿw` for the co-articulated labial-velar nasal
 - Hausa implosive `ɗ` → IPA `dʼ` (issue 16): confuses implosive with ejective notation
 - Hausa vowel quality in `kare`: `ɛ` for mid-close Hausa `e` (issue 19)
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the detailed tonological review. I have applied the one clear, unambiguous segmental error and held the remainder per the project editing policy (we only fix clear local errors / internal inconsistencies, not dataset-wide convention choices the corpus has already settled).
+
+### Applied
+
+**Issue 16 — `ha` / `one` — implosive `ɗ` mis-transcribed as ejective `dʼ`** — (applied by orchestrator this round)
+- `words/one.js` line 265, `ha` IPA field: `dʼaja` → `ɗaja`.
+- This is a genuine, unambiguous phonetic error: Hausa `ɗ` is an alveolar **implosive** (ingressive glottalic), whereas `dʼ` notates an **ejective** (egressive glottalic) — a different phonation type entirely (Newman 2000). The orthographic field already carries the correct IPA symbol `ɗ`, and `dʼ` occurs nowhere else in the corpus, so this is an isolated local error, not a convention. Only the IPA field is changed; orthography and tone treatment are untouched.
+
+### Held with rationale (won't-fix this round)
+
+- **Issues 1–4, 9–15, 17, 20, 22 — systematic absence of tone marks (and Hausa vowel-length marks) in IPA.** These are dataset-wide convention choices, not local errors — by your own framing (issues 11 and 17: "all 20/20 entries"). The wordmap corpus uses a broad IPA transcription that does not mark tone for these languages, consistently across every Yoruba/Igbo/Hausa entry. Changing this is a system-level convention decision for the whole corpus, outside the scope of a per-file error fix, so I am holding rather than partially marking a handful of words (which would create the very inconsistency the policy guards against).
+- **Issues 8, 15, 23 — Igbo `nw-` → `ŋw` vs `ŋ͡m`/`ⁿw`.** Sequence vs. co-articulated is a legitimate analytic choice. `ŋw` is a defensible broad transcription and is applied consistently across `cat`/`moon`/`sun`. Not an unambiguous error; held.
+- **Issue 19 — Hausa `kare` `ɛ` vs `e`.** Vowel-quality / dialect choice (you note dialectal variation yourself); arguable, not unambiguous. Held.
+- **Issue 21 — `pcm` / `water` orthographic accent vs IPA.** The IPA omitting the accent matches the corpus-wide broad convention; the proposed `ˈwɔta` stress mark is an addition rather than a clearly-correct local fix, and the orthographic accent is intentional. Held pending a convention-level decision.
+- **Issue 7 — IPA tie-bar on `ɡb`.** Explicitly flagged by you as presentation, not a phonological error. Held.
+- **Issue 18 — Hausa `ky` `kʲ` vs `c`.** You note `kʲ` is "a valid surface-phonetic reading." Held.
+- **Issues 5, 6 — confirmed correct by reviewer** (`ìyá`→`ìjá`, `oòɾùn` flap); no action needed.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claim against the live per-word data files (`words/*.js`, keys `yo:`/`ig:`/`ha:`/`pcm:`, format `["surface","ipa"]`). I additionally ran a corpus-wide audit of tone-marking and vowel-quality consistency across all 20 entries per language to test the worker's "system-level convention" defence rather than taking it on faith.
+
+### Verification of the applied fix
+
+- **Issue 16 (`ha`/`one`) — ACCEPTED ✓ and CONFIRMED in live data.** `words/one.js` line 265 now reads `ha: ["ɗaya", "ɗaja"]`. The ejective notation `dʼaja` is gone; the implosive `ɗ` is in the IPA field. I grepped the whole corpus: `dʼ` appears in no other entry, confirming this was an isolated local error, not a convention. Correct and verified.
+
+### Adjudication of the tone-suppression cluster (issues 1–4, 9–15, 17, 20, 22) — REJECT ✗ (worker's hold upheld)
+
+I audited orthography-vs-IPA tone presence for all 60 entries (20×3). The pattern is unambiguous and internally consistent:
+
+- **Yoruba:** the IPA field mirrors the *orthographic* tone marking exactly. Every word whose orthography carries tone also carries it in IPA (`iná`/`iná`, `bàbá`/`bàbá`, `ọwọ́`/`ɔwɔ́`, `oòrùn`/`oòɾùn`, `ìfẹ́`/`ìfɛ́`, …). The only "toneless" IPA fields — `omi`, `mu`, `igi`, `jẹ` — are exactly the words whose *orthography* is also unmarked (Yoruba leaves mid tone unwritten). So there is no orthography/IPA asymmetry to fix; the IPA faithfully reproduces standard Yoruba orthographic tone-marking.
+- **Igbo (20/20) and Hausa (20/20):** neither orthography nor IPA carries tone, in lockstep, for every single entry. This matches standard practical Igbo/Hausa orthography, which is conventionally toneless. The IPA mirrors it.
+
+The reviewer's demand (issues 1–4, 9–15, 22) was that mid/H/L tone be marked in IPA *even where the orthography omits it*. That is a corpus-wide transcription-convention change (broad/orthography-mirroring IPA → narrow tonal IPA), not a local error, and the reviewer's own framing ("all 20/20 entries", issues 11 & 17) concedes its systematic nature. The worker's hold is the correct call. I uphold the reject for the whole cluster. (Issue 20's father/mother `["uba","uba"]`/`["uwa","uwa"]` are part of the same toneless-orthography mirroring; confirmed in live data, no local error.)
+
+### Igbo `nw-` → `ŋw` (issues 8, 15, 23) — REJECT ✗ (hold upheld)
+
+Verified consistent across all three occurrences: `ŋwamba` (cat), `ɔŋwa` (moon), `aɲaŋwʊ` (sun). `ŋw` is a defensible broad transcription of the labial-velar nasal; `ŋ͡m`/`ⁿw` is an alternative analysis, not a correction. Applied uniformly → not a local error. Hold stands.
+
+### Issue 21 (`pcm`/`water` accent mismatch) — REJECT ✗ / △ (hold upheld, with a caveat)
+
+Confirmed live: `pcm: ["wọtá", "wɔta"]` — orthographic acute, bare IPA. I checked: `wọtá` is the **only** pcm entry in the entire corpus carrying an orthographic tonal accent (n=1), so the worker's "matches corpus-wide IPA convention" is technically unfalsifiable from a pattern. That said, the toneless IPA is consistent with the broad-IPA convention used for all the substrate languages here, and the orthographic accent is plausibly intentional (Yoruba-substrate prominence per Faraclas). I accept the hold as a defensible system-level choice, not a clear error.
+
+### Issues 7, 18 — REJECT ✗ (hold upheld)
+
+Both flagged by the reviewer as presentation / "valid surface-phonetic reading" respectively. `ɡb` tie-bar (7) and `kʲ` vs `c` (18) are not unambiguous errors. Holds stand.
+
+### Issue 19 (`ha`/`dog` — `kare` → `kaɾɛ`) — PARTIAL △ → **this one I do NOT accept as fully closed**
+
+This is the one held item that is a genuine *internal inconsistency*, not a system-wide convention. Live data:
+- `dog`: `ha: ["kare", "kaɾɛ"]` — orthographic word-final `e` → IPA `ɛ`
+- `thanks`: `ha: ["na gode", "na ɡode"]` — orthographic word-final `e` → IPA `e`
+
+The same orthographic `e` in the same word-final open-syllable environment is transcribed two different ways. The worker dismissed this as a "dialect/vowel-quality choice," but unlike the tone issues it is **not** applied consistently — it is an n=1 divergence from the corpus's own treatment of `e` (`gode`). Standard Hausa `kare` has close-mid `/eː/`, matching `gode`, not open-mid `/ɛ/`. This is exactly the class of "clear internal inconsistency" the project policy says to fix. I mark this **OPEN**: `words/dog.js` `ha` IPA `kaɾɛ` → `kaɾe` (optionally `kaɾeː`), to align with `na ɡode`.
+
+### New issues
+
+None beyond promoting issue 19 to an actionable internal-consistency fix. (I checked Hausa `e`, Igbo `nw`, and `dʼ` corpus-wide; no other outliers surfaced.)
+
+### Scorecard
+
+| Item(s) | Judgement |
+|---|---|
+| 16 (applied) | ✓ accepted, verified in live data |
+| 1–4, 9–15, 17, 20, 22 (tone-suppression) | ✗ reject — internally-consistent broad-IPA / orthography-mirroring convention |
+| 8, 15, 23 (`ŋw`) | ✗ reject — consistent broad transcription |
+| 21 (pcm accent) | ✗ reject — defensible system-level choice (n=1) |
+| 7, 18 (tie-bar / `kʲ`) | ✗ reject — presentation / valid reading |
+| 19 (`kare` `ɛ` vs `e`) | △ OPEN — genuine internal inconsistency vs `na ɡode`; must fix |
+
+**File status: OPEN** — Dev team must do one thing: fix the internal vowel-quality inconsistency in `words/dog.js`, Hausa IPA `kaɾɛ` → `kaɾe` (or `kaɾeː`) to match the corpus's own `na ɡode` (`ɡode`) treatment of orthographic word-final `e`. All other held items are upheld as defensible system-level conventions and require no action.

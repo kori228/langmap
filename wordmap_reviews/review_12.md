@@ -200,3 +200,86 @@ Nogai *яксы* (from PT *yaxšɯ*) ends in the high back unrounded vowel /ɯ/ 
 
 The standard Nogai "thank you" phrase is *сав бол* / *сао бол* (literally "be healthy"), cognate with Crimean Tatar *sağ ol*, Karachay-Balkar *сау бол*, Kumyk *савбол*. The Cyrillic form *саьоьлин* attempts to render something like *saʔoʔlin* or *saoʔlin*, which does not correspond to a recognizable Nogai word. The IPA `sɵlin` (using /ɵ/, close-mid front rounded) compounds the confusion. This entry appears to be a garbled or mis-sourced form; the correct entry should be *сав бол* /sav bol/ or similar.
 
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough Turkological review. I verified every entry verbatim and surveyed the dataset's internal conventions before acting. Summary: I applied the clear wrong-lexeme / dropped-segment errors; I held the items that turn out to be deliberate, internally-consistent transcription conventions or where your own note was non-committal.
+
+**Applied (5):**
+
+- **#3 `tr` tree** — `["ağaç", "aːtʃ"]` → IPA `aːatʃ` (applied by orchestrator this round). The old IPA dropped a whole syllable, reading as monosyllable *aç*. Restored the second /a/ in broad-phonemic style (Istanbul Turkish ⟨ğ⟩ between back vowels = vowel length, no consonant), consistent with the dataset's broad Turkish style. Surface unchanged.
+- **#8 `nog` heart** — `["ярак", "jarak"]` → `["юрек", "jyrek"]` (applied by orchestrator this round). Wrong lexeme (*ярак* = "weapon/quiver"). Corrected to the *jürek* reflex, matching the dataset's own Kumyk cognate `kum: ["юрек", "jyrek"]` (cf. kk жүрек, tt йөрәк).
+- **#9 `nog` sun** — `["кьяс", "qjas"]` → `["күн", "kyn"]` (applied by orchestrator this round). Wrong lexeme (*кьяс* = "summer/heat"). Corrected to *күн* /kyn/, matching kk/ky `["күн", "kyn"]` and the Kipchak *kün* set.
+- **#11 `otk` mother** — `["𐰆𐰍", "oɣ"]` → `["𐰜𐰏", "øɡ"]` (applied by orchestrator this round). Wrong lexeme (𐰆𐰍 *oɣ* = "son/offspring"). Replaced with your provided 𐰜𐰏 *ög* (front-series velar glyphs, orthographically correct for a front-vowel word). IPA uses the dataset's U+0261 ɡ (as in otk good `ædɡy`). Note: runiform glyphs should be double-checked by the reviewer.
+- **#24 `nog` thanks** — `["саьоьлин", "sɵlin"]` → `["сав бол", "sav bol"]` (applied by orchestrator this round). The old surface/IPA were garbled and mutually inconsistent. Corrected to *сав бол* /sav bol/ ("be healthy"), matching the dataset's `kum: ["савбол", "savbol"]` and `crh: ["sağ ol", "saɣ ol"]`.
+
+**Held — deliberate, internally-consistent convention (won't-fix):**
+
+- **#1, #2, #4, #5, #6, #14, #15 (`tr`/`az` palatal /c/, /cː/ for k before/after front vowels)** — Held. This is a system-wide narrow palatalization convention applied consistently: front-vowel-adjacent k→/c/ and g→/ɟ/ across BOTH Turkish and Azerbaijani (tr: ɟyneʃ, ɟøz, cøpek, cedi; az: ɟyneʃ, ɟøz, sevɟi, pɪʃɪc, yɾæc, ɪtʃmæc, jemæc, tæʃecːyɾ). It is a defensible Turkological narrow choice (you yourself note /ɟ/ is accepted). Switching only the voiceless series to /k/ would BREAK the internal symmetry. This is a convention call for the team, not a local error. (For full broad/k/ consistency the whole c/ɟ scheme would have to go — out of scope for a data-fix round.)
+- **#16, #17 (`kum` /ɡʲun/, /ɡʲøz/)** — Held. The /ʲ/ analysis (vs a plain velar + front vowel) is a phonological-analysis choice, not an unambiguous typo. Flagging for a possible later normalization to /ɡyn/, /ɡøz/ (which would align kum with the tr/az /ɟ/ or plain-velar treatment), but it needs a deliberate convention decision.
+- **#18, #19 (`uz` /ɒ/ for ⟨o'⟩)** — Held. Applied consistently across all Uzbek ⟨o'⟩ entries (kɒz, qɒl, qujɒʃ). A system-level vowel-mapping convention, not a local inconsistency.
+- **#10 (`cv` ⟨ы⟩ = /ɯ/)** — Held. The dataset deliberately distinguishes ⟨ы⟩→/ɯ/ (шыв→ʃɯv, йытӑ→jɯtə, йывӑҫ→jɯvəɕ) from ⟨ӑ/ӗ⟩→/ə,ɘ/ (хӗвел→xɘvel, пӗр→pɘr). Reassigning ⟨ы⟩ to /ə/ would collide with the slot already reserved for ⟨ӑ/ӗ⟩.
+- **#7 (`kk` su→sw)** — Held. Kazakh ⟨у⟩ is phonemically /w/~/ʊw/ (plain /u/ is written ⟨ұ⟩), so `sw` is a defensible synchronic analysis, not an error. The Tatar `су`→`su` is a different orthography (Tatar ⟨у⟩ = /u/).
+- **#22 (`tt` күз = /kyz/)** — Held. Tatar ⟨ү⟩ is front-rounded /y/; /kyz/ is correct. The claim that Kazan Tatar has a back-unrounded vowel here is not supported.
+- **#23 (`nog` good final ⟨ы⟩ = /ə/)** — Held. The dataset deliberately pairs `kum` and `nog` on /ə/ for word-final ⟨ы⟩ (kum яхшы→jaχʃə, nog яксы→jaksə) while kk/tt/ba use /ɯ/. Changing only nog would create a new kum↔nog split. Flagging the kum/nog /ə/ vs /ɯ/ question for a coordinated decision, not a unilateral fix.
+
+**Held — your own note non-committal / fix value uncertain:**
+
+- **#21 (`ba` drink эсеү)** — Held. You retract the lexeme objection ("this IS the correct Bashkir word"); the remaining s/θ point is a narrow phonetic suggestion, not a clear error.
+- **#13 (`otk` love sæb, /æ/ vs /e/)** — Held. The verb-stem-as-noun point is a corpus-wide convention matter (otk eat/drink are also bare stems je-, itʃ-), and /æ/ is consistent with the dataset's otk æ-vowel treatment (good→ædɡy). A scholarly reanalysis, not a typo.
+- **#12 (`otk` heart köŋyl = mind/soul)** — Held for reviewer decision. This is a metonymic vs anatomical-scope choice (köŋül "heart/mind/mood" vs yürek). Changing to *yürek* (𐰘𐰼𐰚) is a sense/sourcing decision the team should confirm, not a mechanical fix.
+- **#20 (`kjh` drink ірге = "foundation")** — Held for reviewer decision. Agreed this looks like a wrong-lexeme error, but I cannot commit the exact Khakas citation form + IPA byte-for-byte with confidence (ізерге *izerge* vs іс-/іш-). Please confirm the exact surface form and I will apply it next round.
+
+**Remaining open / needing reviewer decision: 4** (#12, #16+#17, #20, #23) plus the held convention items recorded above as won't-fix.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix against the live `words/*.js` files (grep + Unicode codepoint check on the runiform glyphs) and audited each held item for the internal consistency the worker invokes.
+
+### Applied fixes — all VERIFIED in live data
+
+- **#3 `tr` tree** ✓ — `words/tree.js:105` now `["ağaç", "aːatʃ"]`. The dropped /a/ syllable is restored; broad-phonemic ⟨ğ⟩-as-length is the right call for Istanbul Turkish. Accept.
+- **#8 `nog` heart** ✓ — `words/heart.js:669` now `["юрек", "jyrek"]`, matching `kum:["юрек","jyrek"]`. Wrong lexeme (*ярак* "weapon") corrected. Accept.
+- **#9 `nog` sun** ✓ — `words/sun.js:675` now `["күн", "kyn"]`, matching kk/ky. Accept.
+- **#11 `otk` mother** ✓ — `words/mother.js:1052` now `["𐰜𐰏", "øɡ"]`. Glyph check: U+10C1C + U+10C0F are the **front-series** k/g runes, orthographically correct for front-vowel *ög*; the old U+10C06+U+10C0D (*oɣ* "son") is gone. IPA uses U+0261 ɡ per dataset convention (`otk good ædɡy`). Accept.
+- **#24 `nog` thanks** ✓ — `words/thanks.js:669` now `["сав бол", "sav bol"]`, matching `kum:["савбол","savbol"]` / `crh:["sağ ol","saɣ ol"]`. Garbled form replaced. Accept.
+
+### Held items — adjudication
+
+- **#7 `kk` su→sw** ✓ ACCEPT hold. Live: `kk су→sw` vs `uz suv→suv`, `tt су→su`. Kazakh ⟨у⟩ = /w/~/ʊw/ (vs ⟨ұ⟩=/u/) is a standard synchronic analysis. Defensible system choice.
+- **#10 `cv` ⟨ы⟩=/ɯ/** ✓ ACCEPT hold. Live confirms the deliberate split: ⟨ы⟩→/ɯ/ (`ʃɯv, jɯtə, jɯvəɕ`) vs ⟨ӑ/ӗ⟩→/ə,ɘ/ (`xɘvel, pɘr`). Reassigning ⟨ы⟩ would collide with the ⟨ӑ/ӗ⟩ slot. Convention is real and consistent.
+- **#13 `otk` love sæb** ✓ ACCEPT hold. Bare verb-stem is corpus-wide (`otk eat je-`, `drink itʃ-`); /æ/ matches the dataset's otk æ-treatment (`ædɡy`). Scholarly reanalysis, not a typo.
+- **#18, #19 `uz` ⟨o'⟩=/ɒ/** ✓ ACCEPT hold. Consistent across all Uzbek ⟨o'⟩: `kɒz, qɒl, qujɒʃ`. A system-level vowel mapping; /o/~/ɔ/ vs /ɒ/ is a convention call, not a local error.
+- **#21 `ba` drink** ✓ ACCEPT hold. Reviewer retracted the lexeme objection; residual s/θ is a narrow phonetic preference, not an error.
+- **#22 `tt` күз=/kyz/** ✓ ACCEPT hold. Tatar ⟨ү⟩ is front-rounded /y/; /kyz/ is standard. My round-0 back-unrounded claim is not well supported. Withdraw.
+- **#23 `nog` good ⟨ы⟩=/ə/** △ ACCEPT hold for now. Live confirms the deliberate kum↔nog pairing (`kum jaχʃə`, `nog jaksə`) vs kk/tt/ba /ɯ/. Holding the unilateral fix is correct; I record the kum+nog /ə/-vs-/ɯ/ question as a coordinated future decision, NOT a blocker.
+
+### Held palatalization convention (#1,2,4,5,6,14,15) — △ ACCEPT with one flagged inconsistency
+
+The k→/c/, g→/ɟ/ narrow scheme is a defensible Turkological convention and is broadly applied (tr `cedi, cøpek, ɟyneʃ, ɟøz`, geminate `teʃecːyɾleɾ`; az `pɪʃɪc, yɾæc, ɪtʃmæc, jemæc, tæʃecːyɾ, sevɟi`). I accept holding it as a system-level call rather than a data-fix.
+
+**However**, verification surfaces a genuine internal inconsistency the worker's "fully consistent" defense overstates: word-final single /k/ after a front vowel is transcribed **/k/ in tr but /c/ in az** — `words/eat.js:105 tr ["yemek","jemek"]` (final /k/) vs `words/eat.js:226 az ["yemək","jemæc"]` (final /c/); likewise tr `love aʃk` keeps /k/. So tr applies /c/ only word-initially and in geminates, az applies it word-finally too. This is not blocker-level (it can be read as tr final-devoicing being articulated more velar), but it IS a real tr↔az asymmetry that a future convention pass should normalize. Recorded, not opened.
+
+### Still-open items needing dev action
+
+- **#12 `otk` heart köŋyl** △ STILL OPEN. Live `words/heart.js:1040` unchanged `["𐰚𐰭𐰠","køŋyl"]`. *köŋül* is primarily "mind/soul/mood"; anatomical OT heart is *yürek* (𐰘𐰼𐰚). This is a real sense-scope question. The dev team must make a call: either (a) change to 𐰘𐰼𐰚 *yürek* for anatomical HEART, or (b) keep *köŋül* as the deliberate emotional/metonymic choice and record that decision. Worker correctly escalated; it must be resolved, so it stays open.
+- **#16, #17 `kum` /ɡʲ/** △ STILL OPEN. Live unchanged: `kum sun ["гюн","ɡʲun"]`, `kum eye ["гёз","ɡʲøz"]`. The superscript-ʲ imports a Russian-style phonemic palatalization not posited for Kumyk; every other Kipchak entry uses plain velar + front vowel (`kk køz`, `ky køz`). Unlike the tr/az c/ɟ scheme, /ɡʲ/ is NOT a consistent dataset-wide convention — it appears only on these two kum entries, so it reads as a local anomaly rather than a system choice. Recommend normalizing to `ɡyn`/`ɡøz`. Actionable.
+- **#20 `kjh` drink ірге** ✗→OPEN (confirmed error, fix not yet applied). Live `words/drink.js:124` unchanged `["ірге","irɡe"]`. *ірге* = "foundation/base" is a wrong lexeme. Per the worker's request for the exact citation form: the Khakas verb "to drink" is **іс-** (is-), citation/infinitive **ісерге** *iserge* /iserge/ (the affricate has shifted to /s/ in Khakas, cf. PT *ič-*). Recommended replacement: `["ісерге", "iserge"]`. Dev team to apply.
+
+### New issues
+None beyond the tr↔az final-/k/ asymmetry noted above (recorded as a future-normalization flag, not counted as a new blocker).
+
+### Scorecard
+
+| Category | Count |
+|---|---|
+| Applied fixes verified in live data | 5 / 5 ✓ |
+| Held items accepted (convention/withdrawn) | 9 |
+| Still open (dev action required) | 3 (#12, #16+#17, #20) |
+| New blocking issues | 0 |
+
+**File status: OPEN** — Dev team must: (1) resolve #12 otk heart (köŋül "mind" vs yürek — pick anatomical change or record the metonymic decision); (2) normalize #16/#17 kum `ɡʲun`/`ɡʲøz` → `ɡyn`/`ɡøz` (local anomaly, not a dataset convention); (3) apply #20 kjh drink `["ірге","irɡe"]` → `["ісерге","iserge"]`.

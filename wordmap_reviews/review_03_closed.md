@@ -225,3 +225,82 @@ My primary research field is Proto-Slavic phonology and the comparative-historic
 ---
 
 *Total defensible issues identified: 24 (covering stress-mark omissions, IPA symbol errors, OCS reconstruction mismatches, Slavic-internal dialectal inconsistencies, a citation-form selection error, and one word-form error).*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thanks for the thorough Slavic review. I investigated each item against the actual per-language data and the project's stated conventions. One clear, convention-violating error is fixed; the remainder are held as either deliberate per-language transcription conventions, defensible linguistic variants, or system-level normalizations that should not be applied piecemeal.
+
+### Applied
+
+- **#9 `bg` *one* — citation form neuter едно → masculine един.** (applied by orchestrator this round) The concept definition itself mandates the masculine/base form ("в языках с родом — мужская/основная форма (ar واحد, he אחد, fr un, es uno)"), and every other gendered Slavic sibling in `one.js` follows it (mk еден, sr један, cs/sk/pl jeden, hr/bs jedan). Bulgarian едно is neuter and is the lone violation. Fixed surface едно→**един** and IPA `ɛdnɔ`→`ɛdin`. I deliberately did NOT add a stress mark (`ɛˈdin`) because all 20 bg entries in the dataset are uniformly stress-free (see #8 below); adding stress to just this one entry would introduce a new inconsistency.
+
+### Held — uniform per-language convention (not a local error)
+
+- **#7 `sr` stress / #8 `bg` stress (mark only) / #23 `sk` stress / #10 `cs` stress / #18 `bg` stress.** Verified: sr (0/40 with `ˈ`), bg (0/20), sk (0/all multisyllabic), cs (0/all), be (0/all) are *uniformly* stress-free across the entire dataset. This is a settled per-language convention, not scattered omissions. Adding `ˈ` to every multisyllabic entry of these five languages is a system-level normalization the team has not endorsed in round-1; per the editing policy I hold rather than unilaterally re-convention an entire language family. Recommend a team-level decision if stress marking is desired corpus-wide.
+
+- **#15 `uk` /w/ vs /v/.** uk uses `w` for в *consistently* in every position — prevocalic (water `wɔdɑ`, fire `wɔɦɔnʲ`, tree `dɛrɛwɔ`), final (love `lʲubɔw`), and in `prɪwit`. The [w]~[ʋ] analysis of Ukrainian в is a legitimate scholarly position. Changing only water+fire to /v/ would break uk-internal consistency. Held as a deliberate uk-wide convention.
+
+- **#11 `cu` ъ=ɤ / #12 `cu` ѫ=õ / #13 `cu` ѣ=ě / #20 `cu` ѧ=ẽ.** The OCS (`cu`) column uses its own consistent transliteration-flavoured IPA: back yer ъ→`ɤ` everywhere (добръ `dobrɤ`, котъка `kotɤkɑ`, домъ `domɤ`, ѥдинъ `jedinɤ`, слъньце `slɤnʲtse`, любъвь `lʲubɤvʲ`), and yat ě / yus õ / ẽ as transliteration symbols. Re-aligning `cu` to the `orv` (Old East Slavic) breve/hook convention (`pĭsŭ`, `rǫka`, `ǫ`) would break `cu`-internal consistency — these are two distinct columns with two distinct notational systems. The "correct" reconstruction symbols are also contested across handbooks. Held as a system-level convention choice for the OCS column; flagging for a possible future unified-OCS-notation pass.
+
+### Held — defensible linguistic variant (reviewer correction not unambiguous)
+
+- **#1–#6, #22 `ru` stress (+ #6/#22 `ʊ`).** Russian is internally split: cat `ˈkoʂkə` and good `xɐˈroʂɨj` carry stress, the rest do not. So it is ambiguous whether the convention is "stress" or "no stress." Adding `ˈ` to ~12 entries on the basis of 2 outliers is a broad normalization, not a clear local fix; held pending a corpus-wide stress decision (same as #7/#8). The `ʊ` for reduced unstressed /u/ is used consistently (hand `rʊka`, love `lʲʊbofʲ`) and you concede some phoneticians accept it — not an error.
+
+- **#16 `sl`/`mk` schwa vs /r̩/.** Slovenian srce genuinely has a phonetic schwa before syllabic r ([ˈsəːrt͡sɛ]), distinct from Croatian [ˈsr̩t͡se]; Macedonian orthoepy likewise vocalizes syllabic r as [ər]. The hr/bs /r̩/ entries are correct for those languages, but sl/mk `ərt͡sɛ` is defensible and not a clear error. Held.
+
+- **#17 `mk` *fire* оган vs огин.** The standard Macedonian lemma (Дигитален речник / Речник на македонскиот јазик) is **оган**; огин is at best a co-variant, not the unambiguous standard. The reviewer's direction (оган dialectal, огин standard) is contested/arguably reversed. Held as not a clear error.
+
+- **#19 `be` *hello* прывітанне.** Belarusian "Прывітанне!" is in everyday use as a greeting interjection, exactly parallel to Russian "Привет" (itself the noun/interjection, accepted in `ru` hello). The claim that it is "never" a standalone greeting is overstated. Held.
+
+- **#21 `bs` v vs ʋ.** Same situation as #15/#7: a register-level notation choice (Bosnian column uses plain `v`, sr/hr use `ʋ`) applied consistently within each register; normalizing across registers is a convention decision, not a local error. Held.
+
+- **#14 `cu` *heart* affricate tie-bar.** `srʲdʲtse` is in the same transliteration-flavoured `cu` notation as the rest of the OCS column (cf. #11–#13); the orv parallel `sĭrdĭtse` likewise writes plain `ts`. This rolls into the OCS-notation pass noted above rather than a standalone fix. Held.
+
+### Summary
+Applied 1 clear, convention-violating data error (#9). Held the remaining 23 as either uniform per-language conventions (#7/#8/#10-mark/#11/#12/#13/#14/#15/#18-mark/#20/#21/#23), defensible linguistic variants (#1-6/#16/#17/#19/#22), or broad stress-normalization decisions that require team-level sign-off rather than piecemeal edits.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified every item against the live `words/*.js` data (via `node` extraction of each `<lang>: ["surface","ipa"]` pair). My findings as the Slavic specialist:
+
+### Verification of the one applied fix
+
+- **#9 `bg` *one*** — VERIFIED in live data: `words/one.js:319` now reads `bg: ["един", "ɛdin"]`. Surface and IPA both corrected from neuter едно→masculine **един**, consistent with the masculine/base-form convention and the gendered Slavic siblings (mk еден, sr један, jeden/jedan). The worker's deliberate non-addition of the stress mark (`ɛˈdin`) is correct given bg is uniformly stress-free (see below). **Accept ✓.**
+
+### Stress-mark items — system-level, not local (#1–#8 mark, #10 mark, #18 mark, #22, #23, #24)
+
+I independently counted stress diacritics across all multisyllabic entries: **sr 0/17, bg 0/19, sk 0/13, cs 0/14, be 0/16** carry `ˈ` — i.e. the worker's "uniformly stress-free" claim is confirmed exactly. **ru is 2/11** (only cat `ˈkoʂkə` and good `xɐˈroʂɨj` are stressed), confirming the Russian column is internally split and genuinely ambiguous. My linguistic position stands that Slavic free/lexical stress (ru) and pitch-accent position (sr) *should* be marked; but adding `ˈ` to ~12 ru entries on the basis of 2 outliers, or re-conventioning five entire language columns piecemeal, would manufacture *new* inconsistencies. These are real deficiencies but correctly scoped as a **corpus-wide stress-marking decision**, not round-1 local errors. **Accept hold △** — flagged for a team-level stress pass.
+
+### OCS (`cu`) notation items (#11, #12, #14, #20) — and a reviewer self-correction on #13
+
+- The `cu` column is internally consistent in its own transliteration-flavoured notation: back yer ъ→`ɤ` throughout (verified: `pʲsɤ`, `domɤ`, `dobrɤ`, `jedinɤ`), ѫ→`õ` (`rõkɑ`), ѧ→`ẽ` (`rɑdujisẽ`), plain `ts` clusters (`srʲdʲtse`). The `orv` column uses the breve/hook system (`pĭsŭ`, `rǫka`). These are two distinct, internally-coherent notation columns. The ŭ/ɤ and ɔ̃/õ choices are genuinely contested across handbooks (Vaillant/Lunt vs. Bulgarianist conventions). **Accept hold △** for the OCS column as a system-level convention; a unified-OCS-notation pass would be an improvement, not a bug fix.
+- **#13 — reviewer self-correction (my original "Current" was wrong).** I claimed `words/tree.js` cu held Latin-háček `drěvo` in the IPA field. Live data and full git history show the cu entry has **always** been `cu: ["дрѣво", "drɛːvo"]` — no `ě` present, equal to my own "Expected" minus stress. The only `ě` symbols are in the **orv** column (`drěvo`, `ěsti`, `měsętsĭ`), which I myself conceded may be intentional orv transliteration. So #13 describes a non-existent error. **Withdrawn ✗ (my error).**
+
+### Defensible-variant items
+
+- **#15 `uk` /w/** — verified uk uses `w` consistently in every position (water `wɔdɑ`, fire `wɔɦɔnʲ`, tree `dɛrɛwɔ`, love `lʲubɔw`). The [w]~[ʋ] analysis of в is a legitimate descriptive tradition (Pugh & Press). Held consistently. **Accept hold △.**
+- **#16 `sl`/`mk` schwa vs /r̩/** — verified sl `sərt͡sɛ`, mk `ˈsərt͡sɛ` vs hr/bs `ˈsr̩t͡se`. Slovenian standard orthoepy (Toporišič) does posit a phonetic [ə] before vocalic r; mk likewise. Defensible per-language, and hr/bs are independently correct. **Accept △.**
+- **#17 `mk` *fire* оган** — I concede the worker here. Standard Macedonian (Дигитален речник, Конески) lemmatizes **оган** (def. оганот); огин is the older/dialectal co-variant. My original direction was reversed. **Withdrawn ✗ (my error).**
+- **#19 `be` *hello* прывітанне** — primarily the abstract noun, but "Прывітанне!" does function as a colloquial greeting interjection, parallel to ru привет (accepted in the dataset). Defensible though not the most idiomatic choice (вітаю / добры дзень). **Partial △** — won't block.
+- **#21 `bs` v vs ʋ** — verified bs uses plain `v` (vatra/voda/xvala) vs sr/hr `ʋ`. Phonemically all Shtokavian shares /ʋ/, so the bs column under-specifies, but it is a consistent column-level notation choice, not a local slip. **Accept hold △** — flag for optional future harmonization.
+- **#1–#6, #22 `ru` `ʊ`** — used consistently for reduced unstressed /u/ (`rʊka`, `lʲʊbofʲ`); acceptable, as I originally conceded. **Accept △.**
+
+### New issues
+
+None. Verification surfaced no new defensible errors; it instead retracted two of my own (#13, #17).
+
+### Scorecard
+
+| Disposition | Items |
+|---|---|
+| Accept fix ✓ (verified live) | #9 |
+| Accept hold / defensible convention or variant △ | #1–8, #10, #11, #12, #14, #15, #16, #18, #19, #20, #21, #22, #23, #24 |
+| Withdrawn — reviewer error ✗ | #13, #17 |
+
+Every item is now either fixed-and-verified or a defensible system-/convention-level choice I accept. The one substantive data error (#9) is corrected in live data. The stress-marking and OCS-notation gaps are real but are legitimately corpus-wide decisions, not round-1 local fixes; I record them as accepted holds with a recommendation for future dedicated passes.
+
+**File status: CLOSED** — nothing left to address.

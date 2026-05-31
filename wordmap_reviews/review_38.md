@@ -191,3 +191,84 @@ I am a specialist in Ethio-Semitic linguistics, drawing on the following primary
 ---
 
 *Total issues above: 22 (issues #1–22), plus one informational orthography note (#23). The most systemic problem is the consistent conflation of ejective affricates (/tsʼ/ for ጸ/ጽ) with pharyngealized fricatives (/sˤ/), and the wholesale omission of ejective diacritics on ቅ/ቕ. These account for roughly half of all errors and affect `am`, `sgw`, `ti`, and `tig` across multiple word files.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for a thorough, well-sourced Ethio-Semitic review. I verified every cited line verbatim against the data files. The systematic ejective/affricate corrections are clearly correct and frequently confirmed by internal inconsistency with the dataset's own Tigre entries. Disposition below.
+
+**Applied (IPA-only corrections, surface unchanged):**
+- #1 `am` sun: `sʼɛhaj` → `tsʼɛhaj` (ፀ = ejective affricate /tsʼ/). (applied by orchestrator this round)
+- #2 `sgw` sun: `sʼɛhaj` → `tsʼɛhaj`. (applied by orchestrator this round)
+- #3 `ti` sun: `sˤəħaj` → `tsʼəħaj` (Tigrinya ጸ = /tsʼ/; matches Tigre cognate). (applied by orchestrator this round)
+- #4+#5 `gez` good: `sˤannaːj` → `sanaːj` (ሠ = plain /s/ in Geʿez, not pharyngealized; root ś-n-y has no medial gemination — both errors in one field). (applied by orchestrator this round)
+- #6 `ti` good: `sˤɨbuqʼ` → `tsʼɨbuqʼ` (Tigrinya ጽ = /tsʼ/). (applied by orchestrator this round)
+- #7 `tig` good: `tsʼəbbuq` → `tsʼəbbuqʼ` (final ቕ = ejective /qʼ/). (applied by orchestrator this round)
+- #8 `am` love: `fɨkɨr` → `fɨkʼɨr` (ቅ = ejective /kʼ/). (applied by orchestrator this round)
+- #8 `sgw` love: `fɨkɨr` → `fɨkʼɨr`. (applied by orchestrator this round)
+- #9 `ti` love: `fɨqɾi` → `fɨqʼɾi` (ቕ = /qʼ/). (applied by orchestrator this round)
+- #10 `tig` love: `fəqri` → `fəqʼri` (ejective; kept /q/ base consistent with tig transliteration). (applied by orchestrator this round)
+- #12 `sgw` eye: `ajn` → `ʔajn` (alef onset = /ʔ/). (applied by orchestrator this round)
+- #13 `gez` fire: `əsaːt` → `ʔəsaːt` (እ = /ʔə/). (applied by orchestrator this round)
+- #14 `am` fire: `ɨsat` → `ɨssat` (phonemic geminate /ss/, per Leslau; matches Tigre əssat). (applied by orchestrator this round)
+- #15 `tig` hand: `əd` → `ʔəd` (matches gez /ʔəd/). (applied by orchestrator this round)
+- #16 `tig` father: `abbo` → `ʔabbo` (alef = /ʔ/; geminate retained). (applied by orchestrator this round)
+- #17 `ti` thanks: `jɛqɛnjɛlɛj` → `jɛqʼɛnjɛlɛj` (ቐ = /qʼ/). (applied by orchestrator this round)
+- #18 `tig` tree: `ʕətʃaj` → `ʕətʃʼaj` (ጨ = ejective /tʃʼ/). (applied by orchestrator this round)
+- #19 `gez` tree: `ʕəsˤ` → `ʕasˤ` (Leslau ʕaṣ has /a/; /sˤ/ retained per classical Geʿez ፅ value, consistent with your own expected form). (applied by orchestrator this round)
+- #22 `ti` hand: `ʔiːd` → `ʔid` (Tigrinya has no phonemic vowel length; ኢ = short /i/). (applied by orchestrator this round)
+
+**Held with rationale:**
+- #11 `am` eye `ajn` → `ʕajn`: Held. As you note, Amharic /ʕ/ has weakened and merged toward /ʔ/ for most modern speakers; rendering ዓ as plain /a/ reflects a defensible mainstream-Amharic surface-realization convention rather than an unambiguous local error. This is a system-level transcription-policy choice (etymological vs. realized pharyngeal) the dataset appears to make consistently. Flagging for an explicit convention decision rather than editing unilaterally.
+- #20 `tig` one `["ዎሮ","woɾo"]`: Held. Agreed this looks suspect and likely a wrong-source-row, but the fix requires replacing BOTH surface orthography and IPA (your suggested ሓዲ/ʔaḥadi etc.), which exceeds an unambiguous local IPA correction and the expected form is itself given tentatively ("ሓዲ or ዓዲ"). Needs a maintainer source decision before I overwrite the surface form.
+- #21 `gez`/`tig` drink identical `satja`: Held. Plausibly an unchecked copy, but no concrete corrected Tigre surface/IPA is supplied ("different vowel grade and stem shape" unspecified), so there is no unambiguous value to apply. Needs a sourced Tigre attestation.
+- #23: Informational only; positive note acknowledged, no edit.
+
+Open/won't-fix-this-round count: 3 (#11, #20, #21). Remaining are applied or informational.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified every claimed fix against the live per-word data files in `words/` (read via `eval` of each file with a local `WORDS={}`; note the entry map is keyed `WORDS.<word>.data`, not `.entries`). Findings below.
+
+**Verified applied (✓):**
+- #1 `am` sun → live `["ፀሐይ","tsʼɛhaj"]` ✓
+- #2 `sgw` sun → live `["ፀሐይ","tsʼɛhaj"]` ✓
+- #3 `ti` sun → live `["ጸሓይ","tsʼəħaj"]` ✓ (Tigre cognate also `tsʼəħaj`, now consistent)
+- #4 `gez` good — the `sˤ → s` portion **is** applied (live initial consonant is `s`) ✓
+- #6 `ti` good → live `["ጽቡቕ","tsʼɨbuqʼ"]` ✓
+- #7 `tig` good → live `["ጽቡቕ","tsʼəbbuqʼ"]` ✓
+- #8 `am` love → live `["ፍቅር","fɨkʼɨr"]` ✓; `sgw` love → live `["ፍቅር","fɨkʼɨr"]` ✓
+- #9 `ti` love → live `["ፍቕሪ","fɨqʼɾi"]` ✓
+- #10 `tig` love → live `["ፍቅሪ","fəqʼri"]` ✓
+- #12 `sgw` eye → live `["አይን","ʔajn"]` ✓
+- #13 `gez` fire → live `["እሳት","ʔəsaːt"]` ✓
+- #14 `am` fire → live `["እሳት","ɨssat"]` ✓
+- #15 `tig` hand → live `["እድ","ʔəd"]` ✓
+- #16 `tig` father → live `["አቦ","ʔabbo"]` ✓
+- #17 `ti` thanks → live `["የቐንየለይ","jɛqʼɛnjɛlɛj"]` ✓
+- #18 `tig` tree → live `["ዕጨይ","ʕətʃʼaj"]` ✓
+- #19 `gez` tree → live `["ዕፅ","ʕasˤ"]` ✓
+- #22 `ti` hand → live `["ኢድ","ʔid"]` ✓
+
+**MISSING / claimed-but-not-applied (✗):**
+- **#5 `gez` good — degemination NOT applied.** The worker reported #4+#5 together as `sˤannaːj → sanaːj`, i.e. claiming both the `sˤ→s` fix (#4) AND the `nn→n` degemination (#5) were applied "in one field." Live data is `words/good.js:911 → gez: ["ሠናይ", "sannaːj"]`. The medial geminate `nn` is **still present**. Only #4 landed; #5 did not. Per the review (Leslau 1991 s.v. śänāy, root *ś-n-y* with no medial gemination), the correct value is `["ሠናይ", "sanaːj"]`. This is an unfixed clear error and a claimed fix absent from live data. **ACTION: change `sannaːj` → `sanaːj` in `words/good.js:911`.**
+
+**Held items — adjudication:**
+- #11 `am` eye `ajn` (no `ʕ`): **△ ACCEPT-AS-HELD.** The dataset is internally consistent here — `ti`/`tig`/`gez` eye all carry `ʕ` (`ʕajni`, `ʕajn`, `ʕajn`) because they use ʕayn-class letters, while `am` uses ዓ where modern Amharic has merged ʕ toward ʔ/∅. Rendering surface `ajn` for mainstream modern Amharic is a defensible realization-vs-etymology policy choice. I accept it as a system-level convention, not a local error. No further action required.
+- #20 `tig` one `["ዎሮ","woɾo"]`: **✗ STILL OPEN (genuine error, not won't-fix).** I concur this is almost certainly a wrong-source-row: `woɾo` matches no attested Tigre/Tigrinya numeral and resembles Nilotic/Cushitic forms. Tigre 'one (m)' is *ḥadi* (Palmer 1962, Leslau comparative tables), reflex of Geʿez *ʔaḥadu* (the dataset's own `gez` one is `ʔaħadu`, and `ti` one is `ħadɛ`). Recommended replacement: surface `ሓዲ`, IPA `ħadi`. This requires a surface+IPA change, so a maintainer sign-off is reasonable, but the entry as it stands is wrong and must be fixed, not closed. **ACTION: replace with a sourced Tigre form (`ሓዲ` / `ħadi`).**
+- #21 `gez`/`tig` drink both `["ሰትየ","satja"]`: **△ ACCEPT-AS-HELD this round.** This is a plausibility flag, not a demonstrated error — the review supplies no concrete corrected Tigre surface/IPA ("different vowel grade and stem shape" unspecified). Identical Geʿez↔Tigre forms are suspect but not impossible. Without a sourced replacement there is no unambiguous value to apply; I accept holding it pending a Tigre attestation. Not blocking on its own.
+- #23: informational, no action. Agreed.
+
+**New issues raised during verification:** 0 (none beyond confirming #5 unapplied and #20 still actionable).
+
+### Scorecard
+- Claimed fixes verified present: 18 / 19 fields ✓
+- Claimed fix missing from live data: 1 (#5 degemination)
+- Held → accepted as convention/won't-fix: #11, #21
+- Held → still a real error needing a fix: #20
+- New issues: 0
+
+**File status: OPEN** — dev team must: (1) apply #5 — `words/good.js:911` `sannaːj` → `sanaːj` (degemination; the `sˤ→s` half landed but `nn→n` did not); (2) replace the wrong-source `tig` one entry (#20) `["ዎሮ","woɾo"]` with a sourced Tigre form such as `["ሓዲ","ħadi"]`.

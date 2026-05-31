@@ -326,3 +326,82 @@ Urdu بلی is written without a shadda (gemination mark), so the script form su
 | 23 | one.js | bho | `ek` (short) vs. hi/ur `eːk` (long) — undocumented difference | Low |
 | 24 | good.js | hns | final /a/ should be /aː/ unless Sarnami shortening documented | Low |
 | 25 | cat.js | ur | بلی without shadda inconsistent with IPA bilːiː | Medium |
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Reviewed all 25 issues against the project editing policy (fix only clear, unambiguous local errors / internal inconsistencies; hold register and cross-school convention choices).
+
+**Applied this round (IPA-only, clear errors / internal inconsistencies):**
+
+- **Issue 1 — good.js hi** (applied by orchestrator this round): IPA `at͡ɕt͡ɕʰaː` → `at͡ʃt͡ʃʰaː`. Palatal t͡ɕ is the wrong symbol for Hindi च (postalveolar); the ur entry in the same file already uses t͡ʃ. Surface अच्छा unchanged.
+- **Issue 2 — moon.js hi + ur** (applied by orchestrator this round): IPA `t͡ɕãːd` → `t͡ʃãːd` for both hi and ur. hns in the same file already uses tʃ (`tʃaːnd`), confirming postalveolar is the file convention. Surfaces unchanged.
+- **Issue 9 — tree.js hns** (applied by orchestrator this round): IPA `peɖ` → `peɽ`. ड़ is the retroflex flap ɽ, not the retroflex stop ɖ; hi (`peːɽ`) and bho (`peɽ`) already use ɽ. Romanization `ped` left unchanged (Issue 10 romanization concern held — see below). 
+- **Issue 21 — sun.js hi** (applied by orchestrator this round): IPA `suːɾad͡ʒ` → `suːɾəd͡ʒ`. Standard Hindi schwa in the -रज syllable; bho (`suːɾədʒ`), mai (`suːrəd͡ʒ`), awa (`suːrəd͡ʒ`) in the same file all use ə. Clear internal inconsistency. Surface unchanged.
+- **Issue 22 — sun.js hns** (applied by orchestrator this round): IPA `suːɾadʒ` → `suːɾədʒ`. Same schwa correction, consistent with eastern-dialect entries in the file. Surface/romanization unchanged.
+
+**Held with rationale (not applied):**
+
+- **Issue 3, 4, 5, 6 — drink.js/eat.js hns & bho verb citation forms.** Held. These require changing surface orthography (e.g. pi→piibe/piyab, पिए→पिअल/पियब, khaae→khaabe, खाए→खाइब/खाएब) and the reviewer offers multiple non-equivalent candidates ("piibe or piyab", "पिअल or पियब") explicitly flagged "verify Damsteegt/Mohan". Project policy: do not change surface forms on uncertain attestation. Needs specialist confirmation of the single attested citation form before any change.
+- **Issue 7 — love.js ur mohabːat.** Held. Bundles three debatable changes (o→ʊ/ə vowel; insert pharyngeal ħ; bː→bb notation). The pharyngeal is a documented register choice (colloquial Urdu elides it) and the first-vowel target is itself disputed (/ʊ/ vs /ə/). Not a clean single-field mechanical fix.
+- **Issue 8 — father.js ur vaːlid→waːlid.** Held as convention. v↔w for و is a genuine Hindustani transcription-school choice; the reviewer concedes the /v/~/w/ allophony exists. System-level convention, not a local error.
+- **Issue 10 — tree.js hns romanization length.** Held. Romanization (display) convention, not an error; policy avoids changing surface orthography.
+- **Issue 11 — thanks.js hi schwa/ʋ.** Held. Standard-Hindi-vs-eastern-dialect phonology; reviewer offers two non-equivalent variants and the ʋ→w part is a convention choice. Not unambiguous.
+- **Issue 12 — thanks.js hns b<v.** Held (Flag only). Reviewer asks for a documentation note, not a data change; b<v is plausibly the attested Sarnami form.
+- **Issue 13 — hello.js hns namaste IPA length.** Held. Low-severity convention alignment; final-vowel length in Sarnami greeting is not clearly an error vs. a documented difference.
+- **Issue 14, 15 — hello.js bho register/ɳ.** Held. Register choice (प्रणाम tatsama vs जोहार vernacular) and tatsama ɳ realization — both flagged "Consider/clarify"; system-level convention.
+- **Issue 16 — mother.js hns mai→maai.** Held. Requires surface-orthography change based on diaspora attestation; needs specialist confirmation of the long-vowel form before changing both surface and IPA.
+- **Issue 17 — water.js hns final length.** Held (Flag). Reviewer asks to verify whether Sarnami final iː→i shortening is attested; not confirmed as an error.
+- **Issue 18, 25 — dog.js / cat.js ur shadda.** Held as convention. Urdu routinely omits the shadda in everyday script while pronunciation retains gemination (Hindi cognates कुत्ता/बिल्ली are geminate); the geminate IPA is correct. Changing the Urdu surface script is a convention choice.
+- **Issue 19 — heart.js hi दिल register.** Held (Flag). Documentation-note request; दिल is an endorsed policy choice ("emotional/cognitive heart").
+- **Issue 20 — fire.js bho ɪ vs i.** Held (Flag). Cross-dialect IPA standardization request; ɪ is acceptable per the reviewer, not an error.
+- **Issue 23 — one.js bho ek vs eːk.** Held (Flag). Cross-dialect length standardization; reviewer asks to "standardize or add a note", a system-level choice.
+- **Issue 24 — good.js hns final length.** Held. Reviewer hedges that Sarnami final shortening may be documented; not unambiguous.
+
+Net: 5 IPA-only fixes applied (Issues 1, 2[×2 entries], 9, 21, 22); remaining items held as convention/register choices, documentation-flag-only requests, or surface-form changes needing specialist attestation.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I (the Hindi-Urdu / Hindustani specialist, authorities as listed above) re-verified every claimed fix against the live per-word data files and adjudicated the held items.
+
+### Verification of the 5 applied fixes — all confirmed present in live data
+
+- **Issue 1 — good.js hi** `words/good.js:82` now `hi: ["अच्छा", "at͡ʃt͡ʃʰaː"]`. **✓ Confirmed.** Matches ur (`at͡ʃt͡ʃʰaː`, line 88). Correct postalveolar.
+- **Issue 2 — moon.js hi+ur** `words/moon.js:82,88` now both `t͡ʃãːd`; hns `tʃaːnd` (line 83) consistent. **✓ Confirmed.**
+- **Issue 9 — tree.js hns** `words/tree.js:83` now `hns: ["ped", "peɽ"]`; matches hi `peːɽ` (82) and bho `peɽ` (482). **✓ Confirmed.** Retroflex flap correct.
+- **Issue 21 — sun.js hi** `words/sun.js:82` now `suːɾəd͡ʒ`; consistent with bho/mai/awa schwa. **✓ Confirmed.**
+- **Issue 22 — sun.js hns** `words/sun.js:83` now `suːɾədʒ`. **✓ Confirmed.**
+
+No phantom/claimed-but-missing fixes. The orchestrator did exactly what it reported.
+
+### Adjudication of held items
+
+- **Issues 3, 4, 5, 6 (drink/eat hns & bho citation forms) — ACCEPT HOLD (△→won't-fix this round).** I confirmed the live forms: drink hns `pi`/`pi`, bho `पिए`/`pɪe`; eat hns `khaae`/`kʰaːe`, bho `खाए`/`kʰaːe`. My original review correctly identified these as non-infinitive (bare root / conjunctive participle), but I offered multiple non-equivalent candidate forms and explicitly flagged "verify Damsteegt/Mohan." Per project policy (no surface change on uncertain attestation) the hold is defensible. I am **not** able to assert a single attested citation form with confidence sufficient to mandate a change, so I withdraw these as actionable for now. The bho/mai split (mai `पीयब` is a proper -ब infinitive, bho is not) is a real asymmetry but is a register/morphological-convention question, not a clear typo.
+- **Issue 7 (love.js ur `mohabːat`) — PARTIAL (△), reduced to a genuine flag.** Live data confirmed `["محبت", "mohabːat"]`. The vowel /o/ is, on reflection, defensible as a colloquial-Urdu rendering (محبت is very commonly [moˈɦəbːət]/[mʊ-] in spoken Hindustani); the pharyngeal-insertion and bː↔bb parts are notation/register choices. I accept the hold — not a clean single-field mechanical error. Won't-fix.
+- **Issue 8 (father.js ur `vaːlid`) — ACCEPT HOLD (convention).** Live `["والد", "vaːlid"]`. و = /v/~/w/ is a transcription-school choice and the project evidently uses /v/ for و word-initially elsewhere; system-level convention. Won't-fix.
+- **Issues 10, 11, 12, 13, 17 — ACCEPT HOLD.** All are romanization-display conventions or flag-only documentation requests (no live-data error). Won't-fix.
+- **Issues 14, 15 (hello.js bho register/ɳ) — ACCEPT HOLD (register).** प्रणाम tatsama vs जोहार vernacular and ɳ realization are register choices, explicitly flagged "Consider/clarify." Won't-fix.
+- **Issue 16 (mother.js hns `mai`→`maai`/`maːi`) — PARTIAL (△), accept hold but note real internal asymmetry.** Live: hns `["mai", "mai"]` vs bho `["माई", "maːiː"]` in the **same file** (line 488). The bho entry carries the long vowel in both surface and IPA; the hns entry does not. This is a genuine internal inconsistency, and the long vowel is the diaspora-attested form (Damsteegt). However it requires a surface-orthography change on attestation I flagged as needing confirmation, so the hold is policy-compliant. I am content to leave it won't-fix this round but record it as the strongest of the held items.
+- **Issues 18, 25 (dog/cat ur shadda) — ACCEPT HOLD (convention).** Live: dog ur `["کتا", "kuttaː"]`, cat ur `["بلی", "bilːiː"]`. Urdu everyday script routinely omits shadda while pronunciation keeps gemination; Hindi cognates कुत्ता/बिल्ली are geminate. The geminate IPA is correct; omitting shadda in surface is the standard orthographic convention. Won't-fix. (Minor note: cat.js writes the geminate as hi `billiː` (digraph) vs ur `bilːiː` (length mark) — two notations for the same gemination; harmless, not worth a change.)
+- **Issues 19, 20, 23, 24 — ACCEPT HOLD.** Flag-only / cross-dialect standardization / hedged ("unless Sarnami shortening attested") items; reviewer conceded each is acceptable or a system choice. Won't-fix.
+
+### New issues
+
+None. During verification I checked the surrounding entries in good/moon/tree/sun/drink/eat/mother/father/dog/cat/love and found no new clear errors beyond what was already catalogued.
+
+### Scorecard
+
+| Outcome | Count | Issues |
+|---|---|---|
+| Fixed & verified in live data | 5 | 1, 2, 9, 21, 22 |
+| Accept hold — convention/register/display | 16 | 8, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 23, 24, 25 (+7 partial) |
+| Partial / real-but-held on attestation | 4 | 3/4/5/6 (group), 7, 16 |
+| Rejected | 0 | — |
+| New issues | 0 | — |
+
+All clear, unambiguous local errors flagged in round-1 (the IPA symbol/schwa/flap errors: Issues 1, 2, 9, 21, 22) have been fixed and verified in the live data. Every remaining item is either a transcription-school/orthographic convention, a register choice, a display-only romanization preference, or a surface-form change resting on diaspora attestation that I explicitly flagged as needing confirmation and which I accept holding under project policy. Nothing actionable remains.
+
+**File status: CLOSED** — nothing left to address.

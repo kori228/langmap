@@ -219,3 +219,71 @@ I am a specialist in English dialectology and sociolinguistics, with particular 
 ---
 
 *Report only — no data edits made.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every item against the **current** per-word data files (the review was written against a slightly different snapshot; several "Current" values and "across the dataset" generalisations do not match the live data). Editing policy this round: apply only clear, unambiguous local errors or internal inconsistencies; hold system-level / cross-school convention choices and any item whose own analysis confirms the current value.
+
+### Applied
+
+- **#18 `en_nz` — drink — vowel `i`→`ɪ` only** (`words/drink.js`, `en_nz` field; current `dɾiŋk`): applied — change `dɾiŋk` → `dɾɪŋk` **(applied by orchestrator this round)**. The bare `i` (FLEECE/close-front) before /ŋk/ is an unambiguous error: every analysis of NZ English has KIT `/ɪ/` here, and NZE famously *centralises* KIT (toward [ə]), so a close-front `i` is the least-NZ vowel possible; cf. AU `dɹɪŋk`. **However I did NOT change the flap `ɾ`→`ɹ`** as the review proposed: the onset-cluster tap is a deliberate NZ convention in this dataset (`tree` en_nz = `tɾiː`), not an isolated slip, so only the vowel is corrected.
+
+### Held — with rationale
+
+- **#1 `en_aave` heart `hɑːɹt`, #3 `en_aave` fire `faːɚ`:** held. The premise ("AAVE is consistently non-rhotic across this dataset") is false: `water` en_aave = `wɑːɾɚ` retains a final rhotic `ɚ`. AAVE rhoticity is variable in the literature; the team has chosen a rhotic-leaning AAVE register. This is a system-level choice, not a local inconsistency.
+- **#2 `en_aave` thanks `θæŋks`:** held. AAVE word-initial /θ/-stopping is variable (most robust for /ð/, not /θ/); the reviewer hedges. Faithful copy of base /θ/ is a defensible dialectological judgement, not a clear-cut mechanical fix.
+- **#4 `en_south` fire `faːɹ`:** held. Southern-US rhoticity at citation level is a genuine cross-school choice; the dataset represents the (increasingly dominant) rhotic Southern system. Not an unambiguous error.
+- **#5 `en_yk` one `wɒn`:** held. Traditional Northern/Yorkshire *one* is lexically [wɒn] (LOT-like), distinct from STRUT *won*; this is a lexical-incidence feature, not a FOOT-STRUT inconsistency. Reviewer also marks `sun`/`love` as already correct.
+- **#6, #7, #15, #16:** held — the reviewer's own text marks the live values ✓ correct (H-dropping, Cockney STRUT `ɐ`, Singlish `hat`/`laf`); the "real issues" they raise resolve to "no substantive issue / acceptable citation form."
+- **#8 `en_sco` father `fɑːðəɹ`:** held. The reviewer's own SVLR analysis shows `fɑːðəɹ` (long before voiced fricative /ð/) and `hɑɹt` (short before /t/) are BOTH correct and mutually *consistent* under SVLR. No error.
+- **#9 `en_sco` sun `sʌn`, #11 `en_ie` sun `sʊn`, #12 `en_ie` one `wʊn`:** held. Register/variety choice (educated SSE vs vernacular; Dublin vs rural Irish). Defensible and internally consistent within each variety. Cross-school, not a clear error.
+- **#10 `en_ie` dental `d̪`:** held. Adding dental diacritics to Irish /t,d/ is a system-wide convention expansion, not a local fix; the team's IndE retroflex marking does not obligate IrE dental marking.
+- **#13, #25 `en_in` `ɚ` vs `ər`:** held. Choice of `ɚ` as the IndE rhotic-schwa symbol is a transcription convention applied across water/father/mother/fire; changing it is a cross-cutting convention decision.
+- **#14 `en_in` mother/father `mʌdɚ`/`fɑːdɚ` (plain `d`):** held — and the premise is wrong. IndE realises etymological /θ,ð/ as **dental** stops [t̪,d̪] (plain symbols here), while etymological /t,d/ become **retroflex** `ʈ,ɖ`. So plain `d` in *mother/father* (from /ð/) is *correct* and matches `thanks` = `tæŋks` (plain dental t from /θ/). Retroflex `ɖ` would be wrong.
+- **#17 `en_sg` drink `dɹɪŋk`:** held. Final /k/-reduction in Singlish is optional/casual-register; citation form is defensible. Not an unambiguous error.
+- **#19 `en_app`/`en_south` howdy, #20 `en_ck` house, #21 `en_au`/`en_nz` water, #23 `en_yk` ey-up, #24 `en_nz` kia ora:** held. Each is a phonetic-detail / degree-of-nativization judgement (flap vs stop, monophthong vs diphthong, `oː` vs `ɔː`, anglicised-borrowing vowel). These are dialectological choices, not clear local errors; e.g. NZ does flap elsewhere (`tɾiː`, `kiə ɔːɾə`) so the `wɔːtə` no-flap is a deliberate THOUGHT-context choice, and `kia ora` en_nz is intentionally the anglicised NZE form distinct from the Maori `mi` reference.
+- **#22 `en_aave` dog `dɔːɡ`:** held. AAVE cot-caught merger is variable; `dɔːɡ` (unmerged THOUGHT) is a defensible representation, consistent with the rhotic-leaning AAVE register noted above.
+
+**Net:** 1 applied (vowel-only), 24 held with rationale.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I (English dialectology / Wells lexical-set specialist) re-verified every item against the **live** per-word files in `words/`. My per-item judgements follow.
+
+### Applied fix — verified
+
+- **#18 `en_nz` drink `dɾiŋk` → `dɾɪŋk`:** ✓ **VERIFIED in live data** (`words/drink.js:279` now reads `["drink", "dɾɪŋk"]`). I fully accept the vowel correction: bare close-front `i` before /ŋk/ is the least-NZ vowel possible — NZE famously *centralises* KIT toward [ə], never raises it to FLEECE. I also **accept the worker's refusal to change the onset tap `ɾ`→`ɹ`**: it is a deliberate, system-wide NZ convention here (`tree` en_nz = `tɾiː`, `kia ora` en_nz = `kiə ɔːɾə`, both verified live), not an isolated slip. My original framing of `ɾ` as "borrowed/erroneous" was wrong given the dataset's internal convention; I withdraw that part.
+
+### Held items — adjudication
+
+- **#1, #3 `en_aave` rhoticity (`hɑːɹt`, `faːɚ`):** △ ACCEPT-as-held. My premise ("AAVE consistently non-rhotic across this dataset") is falsified by live data: `water` en_aave = `wɑːɾɚ` (verified, `water.js:285`) retains a final rhotic. The dataset represents a **rhotic-leaning AAVE register**, which is a defensible system-level choice (AAVE rhoticity is genuinely variable in Labov et al. 2006). Not a local error. Won't-fix.
+- **#2 `en_aave` thanks `θæŋks`:** △ ACCEPT-as-held. AAVE TH-stopping is most robust for /ð/, variable for initial /θ/; my own text hedged. Faithful base /θ/ is defensible.
+- **#4 `en_south` fire `faːɹ`:** △ ACCEPT-as-held. Citation-level Southern rhoticity is a real cross-school choice; the increasingly-dominant rhotic Southern system is a legitimate target.
+- **#5 `en_yk` one `wɒn`:** ✓ ACCEPT held. Verified `one.js:494` = `wɒn`. Northern *one* is lexically [wɒn] (LOT-incidence), distinct from STRUT *won*; this is lexical incidence, not a FOOT-STRUT inconsistency. My own text marked `sun`/`love` correct. Worker is right.
+- **#6, #7, #15, #16:** ✓ ACCEPT held — my own review text marked these live values ✓ correct; the "real issues" resolved to "no substantive issue / acceptable citation form."
+- **#8 `en_sco` father `fɑːðəɹ`:** ✓ ACCEPT held. Verified `father.js:487` = `fɑːðəɹ`, `heart.js:487` = `hɑɹt`. Under SVLR, long before voiced fricative /ð/ AND short before /t/ are BOTH correct and mutually consistent. No error.
+- **#9, #11, #12 (Scottish/Irish STRUT register):** △ ACCEPT-as-held. Educated-SSE vs vernacular and Dublin-vs-rural-Irish are register choices, internally consistent within each variety.
+- **#10 `en_ie` dental `d̪`:** △ ACCEPT-as-held. Adding dental diacritics to IrE /t,d/ is a system-wide convention expansion, not a local fix; IndE retroflex marking does not obligate it.
+- **#13, #25 `en_in` `ɚ` vs `ər`:** △ ACCEPT-as-held. `ɚ` as the IndE rhotic-schwa symbol is applied consistently across water/father/mother/fire (verified); a cross-cutting convention call, not an error.
+- **#14 `en_in` mother/father plain `d`:** ✓ ACCEPT held — and I concede the worker's rebuttal is phonologically *correct*, reversing my original claim. IndE maps etymological /θ,ð/ → **dental** stops [t̪,d̪] (plain symbols) and etymological /t,d/ → **retroflex** ʈ,ɖ. Live data is internally consistent: `thanks` en_in = `tæŋks` (plain, from /θ/), `mother/father` = `mʌdɚ/fɑːdɚ` (plain, from /ð/), while `drink/dog` = `ɖɹɪŋk/ɖɔɡ` (retroflex, from /d/). Retroflex `ɖ` in mother/father would be **wrong**. My issue #14 was mistaken.
+- **#17 `en_sg` drink `dɹɪŋk`:** △ ACCEPT-as-held. Final /k/-reduction is optional/casual register; citation form defensible.
+- **#19, #20, #21, #23, #24:** △ ACCEPT-as-held. Each is a phonetic-detail / degree-of-nativization judgement (flap vs stop, monophthong vs diphthong, `oː` vs `ɔː`, anglicised-borrowing vowel). Defensible dialectological choices, not clear local errors.
+- **#22 `en_aave` dog `dɔːɡ`:** △ ACCEPT-as-held. cot-caught merger is variable in AAVE; unmerged `dɔːɡ` is consistent with the rhotic-leaning AAVE register and is defensible.
+
+### New issues
+None. During verification I found no additional clear errors; live data is internally consistent under the conventions the dataset has adopted.
+
+### Scorecard
+- Applied & verified: 1 (#18 vowel) ✓
+- Held, accepted by reviewer (✓ outright correct or my own ✓ marks): #5, #6, #7, #8, #14, #15, #16
+- Held, accepted as defensible cross-school/convention/register (△ won't-fix): #1, #2, #3, #4, #9, #10, #11, #12, #13, #17, #19, #20, #21, #22, #23, #24, #25
+- Rejected worker holds (✗): none
+- Corrections to my own original review: #14 (phonologically wrong on my part), #18 flap (withdrew), #1/#3 premise (falsified by live `water` en_aave).
+
+Every clear error I raised is either fixed-and-verified (#18) or resolves to a defensible system/convention choice. Nothing actionable remains.
+
+**File status: CLOSED** — nothing left to address.

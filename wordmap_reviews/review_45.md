@@ -184,3 +184,70 @@ This review draws on the following primary references:
 | Dialect-specific feature accuracy | 3 | 5, 8, 22 |
 
 Total distinct issues: **30** (Issues 1–30, with Issue 30 spanning multiple files)
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough Vietnamese phonological review. I evaluated all 30 issues against the project editing policy: only fix clear, unambiguous LOCAL errors or internal inconsistencies. Several findings are linguistically defensible but describe SYSTEMATIC, dataset-wide conventions the team already applies consistently; per policy those are held (won't-fix at the data level) and should be raised as a separate convention pass if the team wants to revisit them.
+
+### Applied
+
+- **ISSUE 16 / 18 — `moon.js` vi vowel of *trăng*** (applied by orchestrator this round). `vi: ["mặt trăng", "mət˨˩ tɤŋ˥"]` → second-syllable IPA `tɤŋ˥` → `taŋ˥`. The vowel ⟨ă⟩ is /a/ everywhere else in the dataset (*ăn* = `an˥`, *mắt* = `mak˧˥`), and `ɤ` is the ⟨ơ⟩ vowel, not ⟨ă⟩. This is confirmed as an internal inconsistency by the same file's Nôm entry `vi_nom: ["𩈘𢁑", "mət taŋ"]`, which already uses the correct `taŋ`. Clear, unambiguous, locally-supported fix. Only the IPA vowel was changed; surface form and tone untouched.
+
+### Held — systematic dataset-wide conventions (not local errors)
+
+- **ISSUE 1 / 4 / 30 — unreleased final stops (`p̚ t̚ k̚`).** The unreleased diacritic is absent from EVERY Vietnamese final stop (Northern, Central, Southern, native and Hán-Việt) and is used in the dataset only for Korean. This is a deliberate, consistent convention, not an omission in individual entries. Held; recommend a single team-wide decision rather than per-entry edits.
+- **ISSUE 11 / 14 / 25 — nặng tone written `˨˩` without a glottal/creak marker.** Applied uniformly across all nặng syllables (*một*, *mặt*, *mẹ*). The dataset uses no `ʔ`/creak diacritics in vi at all. Systematic convention; held.
+- **ISSUE 10 / 12 / 24 / 28 — ngang/level tone notation (`˧˧`, `˥` vs `˧`).** The dataset is internally consistent in its own way: native ngang words use `˥` (*tay*, *ăn*, *ơn*), Hán-Việt level readings use `˧˧` (*tâm*, *miêu*). This is a notation convention, not a local error. Held.
+- **ISSUE 13 — `one.js` 一 *nhất* tone (sắc vs `˨˩`).** Linguistically you are right that 一 (入聲, voiceless initial) → sắc. However the team writes ALL checked Hán-Việt syllables as `˨˩` regardless of romanized tone: 福 *phúc* (sắc) = `fuk˨˩` and 目 *mục* (nặng) = `muk˨˩` both use `˨˩`. Changing only *nhất* would break consistency with *phúc*. This is a systematic Hán-Việt checked-tone convention; held pending a team-wide pass (which would also need to fix *phúc*).
+- **ISSUE 6 — `good.js` 善 *thiện* tone.** 善 is 上聲 with voiced initial dʑ- → Vietnamese **nặng** (the orthography ⟨iệ⟩ confirms nặng), not the huyền `˨˩` you proposed nor unambiguously the data's `˨˩˨`. Because your proposed correction (huyền) is not clearly correct, and the team's checked/nặng convention is `˨˩`-family, I am not confident in a single mechanical fix here. Held for reviewer clarification on the intended target contour.
+- **ISSUE 9 / 22 / 23 — Central/Southern hỏi-merger & sắc realisations (`˩˧`, `˧˩`, `˨˩˥`).** The Central `˩˧` for sắc appears on *chó*, *uống* and *trái* together — a consistent (if debatable) pattern, not an isolated *trái* slip. These are dialect-tone modelling choices, not clean local errors; held.
+- **ISSUE 19 / 20 — ⟨x⟩ as `s`, Southern final `siŋ`.** `s` for ⟨x⟩ is applied consistently across all vi registers for *xin*; the Northern /x/~/s/ choice is a transcription-system decision. Held as a convention.
+- **ISSUE 21 — `hello.js` 萬 *vạn* vowel/tone.** Same checked/departing Hán-Việt convention family as Issue 13; the `ə` vowel for *vạn* would ideally be `a`, but I am treating the Hán-Việt vowel/tone normalisation as a systematic pass rather than a one-off, to avoid partial inconsistency. Held for a dedicated Hán-Việt normalisation round.
+
+### No action needed (reviewer noted as correct / note-only)
+
+- ISSUES 2, 3, 5, 8, 15, 17, 26, 27, 29 — the reviewer explicitly assessed these as defensible, acceptable, "no direct error", or a note/representation preference. ISSUE 7 (Nôm glyph 卒 for *tốt*) is a phonetic-loan glyph choice flagged as potentially misleading but not a clear error; held as a glyph-convention note.
+
+**Summary:** 1 clear local fix applied (moon *trăng* vowel `ɤ`→`a`, corroborated by its own Nôm entry). The remaining flagged items are systematic dataset-wide conventions or reviewer corrections that are not unambiguously correct; these are held with rationale and, where warranted (unreleased stops, nặng marking, Hán-Việt checked-tone/vowel normalisation), recommended as separate team-wide convention passes rather than piecemeal edits.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every worker claim directly against live data under `words/`. The applied fix is present, and the "held" conventions are genuinely systematic (not isolated slips), with one exception that the worker mis-classified.
+
+### Verification of the applied fix
+
+- **ISSUE 16 / 18 (moon `trăng` vowel) — ✓ ACCEPT, VERIFIED.** Live `words/moon.js:76` now reads `vi: ["mặt trăng", "mət˨˩ taŋ˥"]`. The `ɤ`→`a` change is present, surface and tone untouched, and it agrees with the file's own `vi_nom` (`mət taŋ`) and the dataset-wide `⟨ă⟩ = /a/` pattern (*ăn* `an˥`, *mắt* `mak˧˥`). Correct fix.
+
+### Verification of the "held — systematic convention" items
+
+I confirmed each of these is truly dataset-wide, so per-entry edits would break consistency. The worker's rationale stands.
+
+- **ISSUE 1 / 4 / 30 (unreleased final stops) — ✓ ACCEPT held.** Scripted scan: **0** vi entries (Northern/Central/Southern, native or Hán-Việt) carry `p̚/t̚/k̚`; the unreleased diacritic is used **only** for Korean (e.g. `eat.js` ko `mʌk̚t͈a`, `house.js` ko `t͡ɕip̚`). This is a deliberate, consistent transcription policy, not a per-entry omission. Won't-fix at data level; legitimately a team-wide convention question.
+- **ISSUE 11 / 14 / 25 (nặng without glottal/creak) — ✓ ACCEPT held.** Scan confirms **0** vi entries contain `ʔ`, `̰`, or `̤`. Nặng is uniformly written `˨˩`(-family). Systematic; held.
+- **ISSUE 10 / 12 / 24 / 28 (ngang notation `˥` vs `˧˧` vs `˧`) — ✓ ACCEPT held.** Confirmed the split convention: native ngang = `˥` (*tay* `taj˥`, *ăn* `an˥`, *ơn* `əːn˥`), Hán-Việt level = `˧˧` (*tâm* `təm˧˧`, *miêu* `miew˧˧`). Internally consistent notation choice, not a local error.
+- **ISSUE 13 (一 *nhất* sắc vs `˨˩`) — ✓ ACCEPT held.** Verified the checked-Hán-Việt convention is real: 福 *phúc* = `fuk˨˩` (`hello.js:557`) and 目 *mục* = `muk˨˩` (`eye.js:557`) both use `˨˩` despite differing romanized tones. Editing only *nhất* would desync it from *phúc*/*mục*. Correctly held for a team-wide Hán-Việt checked-tone pass.
+- **ISSUE 6 (善 *thiện* tone) — △ PARTIAL, but held is acceptable.** Live `good.js:557` still `tʰien˨˩˨`. The reviewer's proposed *huyền* `˨˩` is itself not clearly correct — 善 is 上聲 with voiced initial → Vietnamese **nặng** (orthographic ⟨iệ⟩), so the data's broken/dipping `˨˩˨` is closer to a nặng-family contour than the reviewer's `˨˩`. Since the proposed correction is not unambiguously right, mechanical replacement is unwarranted. Held is defensible; folds into the same Hán-Việt normalisation pass.
+- **ISSUE 9 / 22 / 23 (Central/Southern hỏi-merger & sắc realisations) — ✓ ACCEPT held.** Dialect-tone modelling choices applied as a pattern, not isolated slips; not clean local errors.
+- **ISSUE 19 / 20 (⟨x⟩ as `s`; Southern `siŋ`) — ✓ ACCEPT held.** `s` for ⟨x⟩ is applied across all vi registers (`hello.js` `sin˥`/`siːn˥`/`siŋ˥`); a transcription-system decision, not a one-off error.
+- **ISSUE 21 (萬 *vạn* vowel/tone) — ✓ ACCEPT held.** Same checked/departing Hán-Việt family as Issue 13; folds into the normalisation pass. Live data unchanged (`vən˨˩`), consistent with the convention.
+- **ISSUES 2,3,5,8,15,17(see below),26,27,29 + 7 — ✓ ACCEPT** as reviewer-noted defensible / note-only.
+
+### New / re-opened actionable item
+
+- **ISSUE 17 — △→ ACTIONABLE (worker mis-classified as note-only).** Live `words/moon.js:77`: `vi_c: ["mặt trăng", "maːk˨˨ ʈăːŋ˥"]`. The IPA string contains the quốc-ngữ orthographic character ⟨ă⟩ (U+0103, `a`+combining breve) **inside an IPA transcription**. A dataset-wide scan shows this is the **only** vi entry containing `ă` — it is NOT a systematic convention (unlike the items above), it is a lone outlier. Every other vi IPA string uses pure IPA. ⟨ă⟩ is not an IPA symbol; the intended short low vowel should be `a`. Fix: `ʈăːŋ˥` → `ʈaːŋ˥` (IPA-only, length mark retained). This is a clean, isolated, locally-supported correction of exactly the kind the editing policy permits — it should be applied, not held. (The reviewer raised the substance in ISSUE 17; the worker filed it under "no action," but the singleton-outlier evidence makes it a genuine local error, not a representation preference.)
+
+### Scorecard
+
+| Verdict | Items |
+|---|---|
+| ✓ Accept (fix verified) | 16/18 |
+| ✓ Accept (held = real systematic convention) | 1/4/30, 11/14/25, 10/12/24/28, 13, 9/22/23, 19/20, 21 |
+| ✓ Accept (note-only / defensible) | 2,3,5,7,8,15,26,27,29 |
+| △ Partial (held acceptable, not clearly correctable) | 6 |
+| ✗ Re-opened (must fix) | 17 — orthographic `ă` inside IPA, singleton outlier |
+
+**File status: OPEN** — Dev team must fix `words/moon.js:77` vi_c: replace the orthographic ⟨ă⟩ with IPA `a` (`ʈăːŋ˥` → `ʈaːŋ˥`); it is the sole vi entry mixing quốc-ngữ into IPA, a clean local error rather than a held convention.

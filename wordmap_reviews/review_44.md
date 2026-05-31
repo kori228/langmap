@@ -195,3 +195,91 @@ My focal specialisation is register phonation (modal vs breathy vs creaky voice)
 - Affects: all `km` and `mnw` IPA strings
 - Neither Khmer nor Mon carries any systematic register or phonation marker (breathy-voice diacritic `̤`, creaky-voice diacritic `̰`, or register superscript) in any of the 20 word files. Both languages are phonologically register languages (Diffloth 1989; Jenny 2005), meaning that the phonation quality of the nuclear vowel is lexically distinctive. An IPA representation that omits all register marking is structurally incomplete for these two languages. The absence is particularly striking for Mon, where register mergers and splits are the primary diachronic engine distinguishing Mon from Proto-Mon-Khmer; the current transcriptions give a false impression that Mon phonology is similar to a non-register language like Vietnamese.
 - Recommended fix: adopt a consistent system-wide approach to register notation for register languages (at minimum add `̤` for breathy-register vowels in Khmer/Mon entries).
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough Austroasiatic review. After verifying each flagged line verbatim against the data files, my dispositions follow. Editing policy this round: apply only clear, unambiguous *local* errors or internal inconsistencies with a single well-defined correction; hold system-level convention choices and any recommendation that is tentative or asks us to "verify/research" (we cannot invent linguistic data under a read-only mandate).
+
+**Issue 1 — water.js km `tɨk` register** — HELD. Second-series register notation is a system-wide convention question (see Issue 30). The dataset uniformly transcribes Khmer initials by their orthographic consonant without a register diacritic, and ទ is conventionally /t/ in many IPA references (the voicing/register split is contested across schools). Changing to `dɨk` would misrepresent the onset as voiced. Won't-fix as a convention choice.
+
+**Issue 2 — good.js km `lʔɑː`** — HELD. The colloquial-vs-formal realisation of ល្អ is a register/phonation analysis choice, not an unambiguous error. The cluster reading /lʔɑː/ (reading pronunciation) is defensible; dropping the ʔ would impose one register school over another. Won't-fix.
+
+**Issue 3 — house.js km `pdɛəh`** — HELD. Sesquisyllabic schwa-insertion vs. flat cluster is an analysis/notation choice applied consistently across the corpus (clusters are written flat). Not a local error.
+
+**Issue 4 — sun.js km `prĕəh`** / **Issue 5 — moon.js km `prĕəh cɑn`** — HELD. The `ĕ` symbol question is a corpus-wide transcription-convention matter; it recurs in both files identically, indicating an intentional convention rather than a slip. The proposed `prɨəh`/`caːn` corrections are linked to a specific dictionary (Headley) but conflict with the corpus's existing scheme; cross-school vowel choice (cɑn vs caːn) is not unambiguous. Won't-fix pending a corpus-wide decision.
+
+**Issue 6 — eat.js km `ɲam`** — HELD. Recommendation is itself tentative ("or at minimum note…"; `ɲɔam` "or" `ɲɔːm`). Register/vowel-quality choice, not a clear error.
+
+**Issue 7 — dog.js km `cʰkæː`** — HELD (noted as the strongest Khmer candidate). The reviewer is correct that /ɛː/ is the more standard IPA value for ែ in first-series context. However `æː` is used as a deliberate corpus convention and changing one entry would create an internal inconsistency with other Khmer ែ entries. Recommend a *corpus-wide* æː→ɛː normalization pass be scheduled and explicitly endorsed before any single-file edit; holding to avoid a partial, inconsistent change.
+
+**Issue 8 — hello.js mnw `ɓɔŋ kaow`** — HELD (genuine error acknowledged, but no safe correction). Confirmed: cat.js:1070 mnw IPA is `ɓɔŋ`, so the `ɓɔŋ` component in hello.js (`words/hello.js:1070`) is a copy-paste artifact and does not correspond to ပ္ဍဲဂေါဝ်. This is a real defect. However the reviewer's replacement is explicitly tentative ("tentatively /pɗɛ kaow/"), and supplying IPA we cannot verify would be inventing data. Flagging for reviewer to confirm the exact target IPA (and whether the display string itself should change) before we edit. Left OPEN for reviewer decision.
+
+**Issue 9 — cat.js mnw register** — HELD. Breathy-register diacritic is the same system-wide convention as Issue 30. The implosive `ɓ` is a defensible existing choice; won't-fix as convention.
+
+**Issue 10 — dog.js mnw `klɛp`** / **Issue 11 — fire.js mnw `pəmoʔ`** / **Issue 12 — hand.js mnw `toa`** / **Issue 13 — one.js mnw `mwoa`** / **Issue 14 — sun.js mnw `tŋoa`** — HELD/OPEN. These are plausibly genuine script↔IPA mismatches, but every recommendation is tentative ("or", "/pɗɛ.../~", "verify against Bauer 1982", "review the script form"). The corrections are not single-valued (e.g. Issue 11 offers /pnɔʔ/ ~ /pnɑt/; Issue 13 offers `mwɛ` "or verify"). Under the no-invention rule I cannot pick one. Left OPEN for the reviewer to supply a single confirmed IPA per entry; we will apply mechanically once disambiguated.
+
+**Issue 15 / 16 — Wa tone marks** — HELD. Adding tone diacritics requires a reliable Wa tone source per lexeme (the reviewer also says "from a reliable Wa dictionary source"); this is a data-acquisition + system-wide task, not a local fix. Won't-fix this round.
+
+**Issue 17 — drink.js wbm display `ɔk`** — HELD. Display-vs-IPA collapse for Wa is a corpus-wide romanization-policy question (which Latin orthography to adopt). Not a single unambiguous value. Won't-fix pending policy.
+
+**Issue 18 — water.js kha `um` gender prefix** — HELD/OPEN. The argument (parallel to `ka sngi`, `ka ing`) is internally coherent, but adding `ka` changes the *surface/display* form, which our rules forbid except on an explicit clear-error flag, and the reviewer hedges that the bare root question touches class-prefix policy across all Khasi nouns. To stay consistent we'd need to audit every kha entry's prefix policy together. Left OPEN for a coordinated Khasi-prefix decision.
+
+**Issue 19 — love.js kha `iəid`** — HELD. Replacement is offered as "/jej/ (or /ied/…)" — not single-valued. Vowel-parse analysis choice. Won't-fix.
+
+**Issue 20 — dog.js kha `u ksew`** / **Issue 25 — drink.js hoc `nu`** / **Issue 28 — sun.js bru `mat plei`** — HELD. These are "IPA == display, no analysis supplied" cases. Filling them requires creating new phonological transcriptions (sesquisyllabic schwa insertion, ATR/length marks), which is data invention, not error correction. Won't-fix this round; candidates for a dedicated transcription pass with sourced values.
+
+**Issue 21 — water.js sat `daːk`** / **Issue 22 — one.js sat `mit`** — HELD. Glottalized-coda marking is a Munda-wide notation convention; recommendations are tentative ("/daʔk/ or /dak'/", "if glottalized"). Convention choice, not local error. Won't-fix.
+
+**Issue 23 — thanks.js sat loan** / **Issue 24 — love.js sat loan** — HELD. "Flag as loanword" and "verify /ɽ/ vs /r/" are annotation/verification tasks; the corpus has no loanword-flag field and the IPA changes are tentative. Won't-fix.
+
+**Issue 26 — water.js hoc display `daa` vs IPA `daː`** — HELD. The display `daa` (doubled-vowel length) vs IPA `daː` is a deliberate display-orthography convention, not a contradiction; many Munda romanizations use doubled vowels for length. Standardizing display is a corpus-wide romanization-policy matter. Won't-fix.
+
+**Issue 27 — fire.js bru `oih`/`ʔoiʔ`** — HELD. Confirmed line `bru: ["oih", "ʔoiʔ"]`. The display/IPA final mismatch (h vs ʔ) is real, but the reviewer does not state which is correct ("decide whether the final is /h/ or /ʔ/"); both directions change either surface or IPA. No unambiguous correction. Left OPEN for reviewer to specify the intended final.
+
+**Issue 29 — Mundari (mun) absent** — HELD. Adding a new language is a major synchronized data-addition task (data + meta + UI + tree, etc.), out of scope for a read-only error-fix round. Won't-fix.
+
+**Issue 30 — register phonation absent across km/mnw** — HELD. Explicitly a system-wide convention proposal; the team's current scheme omits register diacritics by design. Won't-fix as a cross-school convention choice; recommend a separate design decision if adopted.
+
+### Summary
+No edits applied this round. Every recommendation in this review is either (a) a system-wide convention / new-data choice the corpus already handles uniformly (Issues 1-6, 9, 15-17, 21-24, 26, 29, 30), or (b) a genuine local defect whose correct replacement value the reviewer left tentative/unverified, so applying it would require inventing linguistic data (Issues 8, 10-14, 18-20, 25, 27, 28). The most actionable real defects are Issue 8 (confirmed `ɓɔŋ` copy-paste from cat.js into hello.js) and Issue 27 (bru `oih`/`ʔoiʔ` final mismatch); both are left OPEN pending a single confirmed target value from the reviewer, after which they can be applied mechanically. Issue 7 (km æː→ɛː) is endorsed in principle but should be a corpus-wide normalization pass rather than a one-entry edit.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified all 30 flagged lines against the live `words/*.js` data. Confirmed that **no edits were applied this round** — every line still holds its original value (e.g. `words/hello.js:1070` `mnw: ["ပ္ဍဲဂေါဝ်", "ɓɔŋ kaow"]`, `words/cat.js:1070` `mnw: ["ဗ္ဍိုၚ်", "ɓɔŋ"]`, `words/dog.js:1082` `mnw: ["ပ္ၟိၚ်", "klɛp"]`, `words/fire.js:1083` `bru: ["oih", "ʔoiʔ"]`, all unchanged). The worker's "no-invention / hold-conventions" framing is largely reasonable, and I **accept the convention/won't-fix holds** (Issues 1-6, 9, 15-17, 21-24, 26, 29, 30) as defensible cross-school / system-level choices. My remaining disagreement is narrow: several items the worker parked as "tentative, can't pick a value" are in fact **single-valued internal inconsistencies** that I can and do disambiguate below. Supplying the corrected value is the reviewer's job, and I am doing it — these are no longer "invent data" cases.
+
+### Convention / system-wide holds — ACCEPTED (won't-fix)
+- **Issues 1, 2, 3, 4, 5, 6, 9, 30** (km/mnw register, sesquisyllabic schwa, `ĕ` romanisation, cluster-flattening): ✓ accept hold. These are genuinely corpus-wide notation policies applied uniformly. Register phonation diacritics, `ĕ`→`ɨ`, and schwa-insertion are legitimately design decisions, not per-entry errors. Won't-fix is defensible.
+- **Issue 7** (km `cʰkæː`→`cʰkɛː`): △ I agree /ɛː/ is the standard IPA value, and I agree a one-entry edit would create inconsistency. Accept as a deferred corpus-wide `æː→ɛː` normalisation. Not blocking.
+- **Issues 15, 16, 17** (Wa tone marks, display=IPA collapse): ✓ accept hold — needs a sourced Wa tone dictionary; data-acquisition task.
+- **Issues 21, 22, 23, 24** (Santali glottalized coda, loanword flags): ✓ accept hold — convention/annotation; corpus has no loan-flag field.
+- **Issue 26** (hoc `daa`/`daː`): ✓ accept — doubled-vowel-for-length is a standard Munda romanisation; display/IPA split is intentional, not a contradiction.
+- **Issues 19, 20, 25, 28** (kha `iəid`, kha `u ksew`, hoc `nu`, bru `mat plei`): ✓ accept hold. The "IPA == display, no analysis" cases and the `iəid` vowel-parse genuinely need sourced transcriptions I will not fabricate per-lexeme here. Deferred to a sourced transcription pass.
+- **Issue 18** (kha `um`→`ka um`): △ The parallel with `ka sngi`/`ka ing` is real and the prefix argument is sound, but it touches every Khasi noun's class-prefix policy and changes the surface form. Accept as a coordinated Khasi-prefix decision, not a unilateral edit. Not blocking this file.
+- **Issue 29** (Mundari absent): ✓ accept — new-language addition is out of scope for an error-fix round.
+
+### Genuine internal-inconsistency defects — I now supply single values (ACTIONABLE)
+These are not cross-school choices; they are cases where the IPA cannot be reconciled with the script/display *by inspection*, so leaving them is wrong. I give one confirmed value each:
+
+- **Issue 8 — `words/hello.js:1070` mnw `ɓɔŋ kaow`**: ✗ reject the hold as "unfixable." Confirmed copy-paste of `ɓɔŋ` from `cat.js`. The display string ပ္ဍဲဂေါဝ် does not contain anything that yields `ɓɔŋ`. **Fix: IPA → `pɗɛ kaːo`** (ပ္ဍဲ = /pɗɛ/, ဂေါဝ် = /kaːo/). This is a direct reading of the orthography, not invention. At minimum the erroneous `ɓɔŋ` must be removed.
+- **Issue 10 — `words/dog.js:1082` mnw `klɛp`**: ✗ reject hold. Final ၚ် is unambiguously /ŋ/; an IPA ending in /p/ is impossible for this string. **Fix: final `p`→`ŋ` → `klɛŋ`** (the onset I leave as the corpus has it; only the indefensible final /p/ must change).
+- **Issue 11 — `words/fire.js:1082` mnw `pəmoʔ`**: △ partial. The /m/ and /o/ have no source in ပၟတ်; the IPA is mismatched. I cannot give a single fully-confident value without the source intended, so this stays OPEN, but it is a real defect, not a convention hold.
+- **Issue 12 — `words/hand.js:1076` mnw `toa`**: ✗ reject hold. ဲ is /ɛ~e/, not `oa`. **Fix: `toa`→`tɛ`** (Bauer 1982). Single-valued.
+- **Issue 13 — `words/one.js:1088` mnw `mwoa`** and **Issue 14 — `words/sun.js:1088` mnw `tŋoa`**: △ the `oa` digraph for ဲ is non-IPA, but Mon "one"/"sun" do have a genuine diphthongal /òa/ reflex in some descriptions, so `oa`→`ɛ` is not as clean as Issues 10/12. Stays OPEN as a real notation defect; I do not force a value.
+- **Issue 27 — `words/fire.js:1083` bru `oih`/`ʔoiʔ`**: ✗ reject hold as unfixable. The display/IPA contradiction is real. **Decision: keep IPA `ʔoiʔ` (correct: Bru fire is glottal-final), change display `oih`→`oiq`** if a glottal-final romanisation is used, OR accept `oih` with `h` as the conventional Bru final-glottal romanisation. Since the worker asked which is correct: the **IPA `ʔoiʔ` is right**; the display `h` is the romanisation convention for final glottal in several Bru orthographies and may stand. I downgrade this to △ accept — the "contradiction" dissolves once `h`=final-glottal romanisation is recognised.
+
+### New issues
+None. Verification surfaced no additional errors beyond those already flagged.
+
+### Scorecard
+- Accepted holds (✓ won't-fix, defensible): Issues 1-7, 9, 15-26, 28-30.
+- Real defects with a reviewer-supplied single fix (must apply): **Issue 8 (`pɗɛ kaːo`), Issue 10 (`klɛŋ`), Issue 12 (`tɛ`)**.
+- Real defects left OPEN (notation mismatch, no single confident value yet): Issues 11, 13, 14.
+- Downgraded to accept: Issue 27.
+
+The worker over-applied the "no-invention" rule to three cases (8, 10, 12) where the script makes the fix single-valued; I have now supplied those values, so they can be applied mechanically.
+
+**File status: OPEN** — Dev team must: (1) apply Issue 8 `words/hello.js:1070` mnw IPA → `pɗɛ kaːo`; (2) apply Issue 10 `words/dog.js:1082` mnw IPA final → `klɛŋ`; (3) apply Issue 12 `words/hand.js:1076` mnw IPA → `tɛ`. Issues 11/13/14 remain open as acknowledged notation defects pending a sourced value.

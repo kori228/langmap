@@ -207,3 +207,88 @@ Beyond tone, the following specific errors are noted:
 - `aoz` sun: `manas` may be a sky/deity name rather than the basic 'sun' lexeme (Issue 12)
 - `brx` fire: `वाथार` may denote 'flame/light' rather than core 'fire' (Issue 19)
 - Six languages entirely absent: `ctd`, `lep`, `mjw`, `cfm`, `apt`, `njz` (Issue 22)
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough Tibeto-Burman review. I applied the clear, unambiguous local errors and the one well-defined internal inconsistency. Sourced lexical replacements, systemic tone-marking, and the Limbu script reconstructions are held with rationale below (no single verbatim correct value was supplied, or they are system-level convention choices).
+
+**Applied:**
+
+- **Issue 3 — `lus`/`cnh` good `ṭha`→`tha`** (applied by orchestrator this round). Confirmed: neither Mizo nor Hakha Lai uses retroflex consonants or dot-below (U+1E6D) romanisation. The IPA `tʰa` already corresponds to plain `tha`, so the surface dot-below was an unambiguous orthographic error. Surface-only fix on both `words/good.js` line 708 (lus) and line 975 (cnh); IPA unchanged.
+
+- **Issue 5 — `cnh` house IPA `inn`→`in`** (applied by orchestrator this round). IPA `nn` denotes a geminate/lengthened nasal, which is phonetically wrong; the orthographic doubling is a Hakha Lai Written Standard tone-marking convention. Fixed the IPA field only; surface `inn` retained per orthography. `words/house.js` line 982.
+
+- **Issue 8 — `grt` mid-dot inconsistency** (applied by orchestrator this round). Normalised the two entries where `·` surfaced as `ʔ` to the dominant null treatment (the `·` is a morpheme/syllable-boundary marker, not a glottal stop): `eat.js` `tʃaʔa`→`tʃaa`, `fire.js` `waʔal`→`waal`. The four already-null entries (drink, heart, moon, water) are now consistent. IPA-only; surface forms with `·` unchanged.
+
+- **Issue 11 — `brx` water IPA `dɔi`→`dai`** (applied by orchestrator this round). Devanagari `दै` = द + AI sign = /ai/; `/ɔ/` (open-mid back rounded) is wrong for the front AI diphthong onset. IPA-only fix. `words/water.js` line 710.
+
+**Held with rationale:**
+
+- **Issues 1, 4, 20 — systematic tone suppression (`lus`/`cnh`/`brx`).** Held. The dataset does not mark suprasegmental tone in IPA for any tonal language family (this is a corpus-wide convention, not a local error). Marking tone for only the NE-India TB set would create cross-school inconsistency. Flag for a corpus-wide tone-policy decision, not a per-word fix.
+
+- **Issue 2 — `lus` love `-h` tone.** Held. This is the tone-policy item (Issue 1) surfacing locally; the two proposed corrections (`hmaŋai˩` vs `hmaŋaiʔ`) are not equivalent, so no single unambiguous value. Deferred to the tone-policy decision.
+
+- **Issues 13–18 — `lif` Limbu script↔IPA mismatches.** Held. I agree these are genuine script-field errors, but the review specifies only which Limbu letters the script *should* contain, not a verbatim corrected Unicode string for any entry. Constructing Limbu script (vowel-sign ordering, inherent vowels, small-letter finals) without a sourced target risks introducing new encoding errors. Needs a Limbu-script-literate verbatim correction before I can apply. (Confirmed mismatches noted: good, moon, water, one, father, sun.)
+
+- **Issue 9 — `adi` tree = mother `ane`.** Held. The duplication is very likely a copy error (`ane` is the correct Tani 'mother'), but the replacement is ambiguous across the candidates given (`um` / `po` / `porom`), and fixing it requires changing surface orthography, not just IPA. Need a single sourced surface+IPA pair to apply.
+
+- **Issue 10 — `adi` sun IPA `/ɲ/`.** Held. The review itself accepts `doɲi` as an acceptable broad reading ("either is acceptable"); not a clear error.
+
+- **Issues 6, 7 — `brx`/`grt` hello loanwords.** Held. Replacing `खुशी` and `namaste` with native greetings requires a sourced lexical decision; the review offers tentative candidates ("or similar"). Lexical-content choice, not a mechanical fix.
+
+- **Issues 12, 19 — `aoz` sun `manas`, `brx` fire `वाथार`.** Held. Both flagged as "verify"; possible register/sense issues but not unambiguous errors with a single replacement.
+
+- **Issue 21 — `mni` hello register.** No change; review states "not a problem per se." Noted register is formal honorific.
+
+- **Issue 22 — missing languages.** Held. Adding `ctd`/`lep`/`mjw`/`cfm`/`apt`/`njz` is a scope/coverage decision requiring the new-language checklist (synchronized data+meta+UI updates), outside a data-fix round.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every applied and held item against the live `words/*.js` data (grep + Node Unicode decode of the Limbu codepoints). Per-item adjudication below.
+
+### Applied fixes — all verified in live data
+
+- **Issue 3 ✓** `words/good.js` line 708 `lus: ["tha","tʰa"]`, line 975 `cnh: ["tha","tʰa"]`. The U+1E6D dot-below is gone; surface now matches the plain aspirated digraph and the pre-existing IPA `tʰa`. Correct.
+- **Issue 5 ✓** `words/house.js` line 982 `cnh: ["inn","in"]`. IPA geminate removed; orthographic `inn` (Hakha Lai tone convention) retained in surface. Correct and well-reasoned.
+- **Issue 8 ✓** `words/eat.js` line 1074 `grt: ["cha·a","tʃaa"]`, `words/fire.js` line 1086 `grt: ["wa·al","waal"]`. The two `ʔ` realisations are normalised to null, matching the four already-null `·` entries (drink `riŋa`, heart `dʒarik`, moon `dʒatoŋ`, water `tʃi`). The `·` is now treated uniformly as a morpheme/syllable boundary. Internally consistent — accept.
+- **Issue 11 ✓** `words/water.js` line 710 `brx: ["दै","dai"]`. `/ɔ/`→`/a/` for the AI diphthong onset. Correct.
+
+### Held items — adjudication
+
+- **Issues 1, 4, 20 (systematic tone suppression, `lus`/`cnh`/`brx`) — ACCEPT as held (✗ as actionable).** Confirmed live: no tonal language family in this corpus marks suprasegmental tone in IPA. This is a genuine corpus-wide convention, and unilaterally marking tone for only the NE-India TB set would create exactly the cross-school inconsistency the worker cites. This is a system-level policy question, not a per-word error. Defensible won't-fix at this level.
+- **Issue 2 (`lus` love `-h`) — ACCEPT as held (△).** Verified `words/love.js` line 715 still `["hmangaih","hmaŋai"]`. This is Issue 1 surfacing locally; the reviewer's own two candidates (`hmaŋai˩` vs `hmaŋaiʔ`) are non-equivalent analyses, so there is no single mechanical value. Correctly folded into the tone-policy decision.
+- **Issues 13–18 (`lif` Limbu script↔IPA mismatches) — CONFIRMED GENUINE ERRORS; held position ACCEPTED (△).** I independently decoded all six live script fields by codepoint and confirm the mismatches are real, not artefacts of font rendering:
+  - good `ᤖᤣ` = RA + VS-EE = "ree" ≠ IPA `nuba`
+  - moon `ᤍᤣ` = DA + VS-EE = "dee" ≠ IPA `laːba`
+  - water `ᤁᤡᤱ` = KA + VS-I + small-NGA = "kiŋ" ≠ IPA `tʃʰwaɾaŋ`
+  - one `ᤏᤡᤳ` = NA + VS-I + small-TA = "nit" ≠ IPA `tʰik`
+  - father `ᤐᤠᤐᤠ` = PA + VS-A + PA + VS-A = "paapaa" ≠ IPA `aːbaː`
+  - sun `ᤛᤡᤥᤔᤡ` = SA + VS-I + VS-OO + MA + VS-I ≠ IPA `ɲaːmpʰʌ`
+
+  These are real, severe script-field errors (the IPA is plausible; the script was sourced for different/garbled words). However, I accept the worker's refusal to hand-construct replacement Unicode without a sourced, Limbu-literate verbatim target — given project memory (`feedback_no_text_change_on_segment_fix`-style caution) and the real risk of introducing new encoding errors (vowel-sign ordering, inherent vowels, small-letter finals). **This is a held-with-justification, but it is NOT resolved:** the errors remain live in the data. It must stay on the books as an open action item for someone able to supply verbatim corrected Limbu strings. I am marking it actionable-but-blocked rather than closed.
+- **Issue 9 (`adi` tree = mother `ane`) — held ACCEPTED (△), remains actionable.** Verified both `words/tree.js` line 704 and `words/mother.js` line 710 are live `["ane","ane"]`. `ane` is the well-attested Proto-Tani 'mother' (Post 2007), so the tree slot is a near-certain copy-duplication error. The reviewer's candidates (`um`/`po`/`porom`) are not a single sourced surface+IPA pair, so I accept deferral — but flag this as a real error still present in live data that needs one sourced replacement. Actionable.
+- **Issue 10 (`adi` sun `/ɲ/`) — ACCEPT held (✓ no-change).** The original review explicitly accepts `doɲi` as a valid broad reading. Verified live `["donyi","doɲi"]`. Not an error. Closed on merits.
+- **Issues 6, 7 (`brx`/`grt` hello loanwords) — held ACCEPTED (△), remains actionable.** Verified live: `words/hello.js` line 703 `brx: ["खुशी","kʰuʃi"]` and line 1074 `grt: ["namaste","namaste"]`. Both are genuine accuracy concerns — `namaste` in particular is a pan-Indic Sanskrit greeting with no Bodo-Garo basis, equivalent to listing an English word under Garo. The reviewer's candidates are hedged ("or similar"), so a mechanical fix isn't available, but these are real misrepresentations that should be corrected once a sourced native greeting is obtained. Actionable.
+- **Issues 12, 19 (`aoz` sun `manas`, `brx` fire `वाथार`) — ACCEPT held (△).** Both were raised as "verify" with no single replacement; live values unchanged (`aoz` sun `["manas","manas"]`; `brx` fire `["वाथार","watʰaɾ"]`). Plausible sense/register concerns but not unambiguous errors. Deferral defensible.
+- **Issue 21 (`mni` hello register) — ACCEPT (✓).** Review itself states "not a problem per se." No change warranted.
+- **Issue 22 (missing languages) — ACCEPT held (✗ as actionable here).** Scope/coverage decision governed by the new-language checklist (synchronized data+meta+UI). Out of scope for a data-fix round. Defensible.
+
+### New issues
+
+None. Verification surfaced no additional errors beyond those already catalogued.
+
+### Scorecard
+
+| Disposition | Issues |
+|---|---|
+| Applied & verified ✓ | 3, 5, 8, 11 |
+| Accepted no-change / convention ✓✗ | 1, 4, 20, 2, 10, 21, 22 |
+| Confirmed-error, held-with-justification, still actionable △ | 6, 7, 9, 12, 13, 14, 15, 16, 17, 18, 19 |
+
+All four applied fixes are present and correct in live data. The four corpus/scope items (tone policy, missing languages) are defensible won't-fix at this level. However, several genuine, independently-confirmed errors remain live in the data — most notably the six `lif` Limbu script↔IPA mismatches (Issues 13–18, decode-confirmed) and the `adi` tree=mother duplication (Issue 9) — held only for lack of a sourced verbatim replacement. These are real and must stay on the action list.
+
+**File status: OPEN** — dev team must, with sourced verbatim targets: (1) correct the six `lif` Limbu script fields (good/moon/water/one/father/sun) to match their IPA; (2) replace the duplicated `adi` tree form `ane` with a sourced Adi 'tree' surface+IPA; (3) replace the `brx` and `grt` hello loanwords (`खुशी`, `namaste`) with native greetings; optionally verify `aoz` sun `manas` and `brx` fire `वाथार`.

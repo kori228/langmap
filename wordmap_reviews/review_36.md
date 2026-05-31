@@ -221,3 +221,102 @@ The two conventions are mixed across the same word pairs (`arc` vs `syc`). IPA g
 4. **Wrong citation forms**: `syc` drink is an inflected verb (Issue 17); `syc` thanks is a liturgical praise-word (Issue 18); `aii` thanks is an adjective (Issue 19).
 
 5. **Gemination and vowel length notation inconsistencies** across `arc`/`syc` pairs for the same etymon (Issues 5, 14–16).
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Policy applied: only clear, unambiguous local IPA errors / internal inconsistencies (frequently corroborated by a sibling `arc`/`syc`/`aii` entry for the same etymon) are fixed. System-level convention choices (script block, vocalization tradition), semantic lemma re-selection, and underdetermined reconstructions are held for a reviewer/team decision. Surface orthography is left untouched per project rule; only IPA fields are edited.
+
+**Applied (orchestrator this round):**
+
+- **Issue 1 — arc water:** `majaː` → `majjaː`. Geminate yod; matches sibling `syc majjaː`. (applied by orchestrator this round)
+- **Issue 3 — arc eat:** `aːχel` → `ʔaːχel`. Adds the aleph glottal stop only. The 2nd-syllable vowel quality (e vs a, Issue 23) is a reconstruction choice and is NOT changed. (applied by orchestrator this round)
+- **Issue 4/5 — arc mother:** `emːaː` → `ʔemmaː`. Adds initial ʔ and normalizes ː-gemination → doubled consonant; matches `syc emmaː` gemination style. (applied by orchestrator this round)
+- **Issue 5 — arc heart:** `lebːaː` → `lebbaː`. Notation normalization; matches `syc lebbaː`. (applied by orchestrator this round)
+- **Issue 5 — arc love:** `ħubːaː` → `ħubbaː`. Notation normalization (consonant doubling, no added length). (applied by orchestrator this round)
+- **Issue 6 — arc tree:** `iːlaːnaː` → `ʔiːlaːnaː`. Adds aleph ʔ; matches `syc ʔiːlaːnaː`. (applied by orchestrator this round)
+- **Issue 7 — arc hand:** `iːðaː` → `ʔiːðaː`. Adds aleph ʔ; matches `syc` initial ʔ. (applied by orchestrator this round)
+- **Issue 9 — syc hand:** `ʔiːdaː` → `ʔiːðaː`. Begadkephat: dālaṯ post-vowel → /ð/; matches `arc iːðaː`. (applied by orchestrator this round)
+- **Issue 10 — syc one:** `ħad` → `ħað`. Begadkephat dālaṯ post-vowel; matches `arc ħað`. (applied by orchestrator this round)
+- **Issue 11 — syc good:** `tˤaːbaː` → `tˤaːβaː`. Begadkephat bēṯ post-vowel; matches `arc tˤaːβaː` notation. (applied by orchestrator this round)
+- **Issue 12 — syc house:** `bajtaː` → `bajθaː`. Begadkephat tāw post-diphthong; matches `aii beθa`. (applied by orchestrator this round)
+- **Issue 13 — syc mother:** `emmaː` → `ʔemmaː`. Adds initial aleph ʔ. (applied by orchestrator this round)
+- **Issue 14 — syc love:** `ħuːbbaː` → `ħubbaː`. Mater-lectionis wāw = short /u/, not /uː/. (applied by orchestrator this round)
+- **Issue 15 — syc cat:** `ʃuːnaːraː` → `ʃunnaːraː`. Short /u/ + geminate /nn/. (applied by orchestrator this round)
+- **Issue 16 — arc cat:** `ʃuːnaːraː` → `ʃunnaːraː`. Same fix as Issue 15. (applied by orchestrator this round)
+
+**Held — needs reviewer/team decision (not a clear local error):**
+
+- **Issue 2 — arc script block (Syriac vs Hebrew/square):** Held. This is a dataset-wide script-encoding convention spanning every `arc` entry in all 20 word files; re-encoding (including vocalization) is a system-level convention call, not a local error. Defer to team convention decision.
+- **Issue 8 — arc sun `ʃemʃaː`→`ʃamʃaː`:** Held. The e/a first-vowel question is a vocalization-tradition reconstruction (Eastern Syriac reading vs reconstructed Imperial */šamšāʾ/). The dataset uses Syriac script+reading throughout `arc`; changing only the vowel here is a convention judgement, not an unambiguous error.
+- **Issue 17 — syc drink (inflected ܐܫܬܝ vs citation ܫܬܐ):** Held. Genuinely a citation-form inconsistency, but the fix requires changing the surface orthography (per project rule, only on explicit instruction) AND choosing among reconstructions (`ʃeθaː` / `ʃtaː`). Needs reviewer sign-off on the replacement lemma + IPA.
+- **Issue 18 — syc thanks (ܫܘܒܚܐ "glory"):** Held. Semantic lemma re-selection (surface + IPA) — a lexical/editorial choice, not a local IPA error.
+- **Issue 19 — aii thanks (ܒܣܝܡܐ "pleasant"):** Held. Same as Issue 18 — lemma re-selection.
+- **Issue 20 — aii one (script/IPA mismatch):** Held. Reviewer states the IPA `xa` is correct and should be retained; the only proposed change is optional modern-orthography re-spelling. No clear IPA error to fix.
+- **Issue 21 — aii drink `ʃtaja`:** Held. Reviewer offers two mutually exclusive targets (`ʃθaːja` verbal noun vs `ʃaːθa` infinitive); the correct one is underdetermined.
+- **Issue 22 — arc drink `ʃtaː`→`ʃeθaː`:** Held. Anaptyptic-vowel insertion + spirantization is an Imperial-period reconstruction choice, not an unambiguous error; the cluster form is valid under the Syriac reading the dataset otherwise uses.
+- **Issue 23 — arc eat vowel harmonization (`ʔaːχal`):** The ʔ portion is applied via Issue 3. The remaining vowel-quality harmonization (el→al) is a reconstruction choice and is held.
+- **Issue 24 — aii father `baba`→`baːba`:** Held. Compensatory lengthening is one realization; short-vowel /baba/ is also widely attested in Assyrian NENA. Not unambiguous.
+
+Net: 15 IPA fixes applied across 13 word files; 10 items held for reviewer/team decision.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix against the live per-word data files under `words/`. All 15 "applied" IPA edits are genuinely present in the live data — no phantom fixes this round.
+
+### Verified applied (✓)
+
+| Issue | File:line (live) | Live value | Verdict |
+|---|---|---|---|
+| 1 arc water | water.js:532 | `majjaː` | ✓ correct, matches syc |
+| 3 arc eat | eat.js:525 | `ʔaːχel` | ✓ ʔ added |
+| 4/5 arc mother | mother.js:531 | `ʔemmaː` | ✓ ʔ + doubled consonant |
+| 5 arc heart | heart.js:525 | `lebbaː` | ✓ |
+| 5 arc love | love.js:532 | `ħubbaː` | ✓ |
+| 6 arc tree | tree.js:525 | `ʔiːlaːnaː` | ✓ |
+| 7 arc hand | hand.js:525 | `ʔiːðaː` | ✓ |
+| 9 syc hand | hand.js:906 | `ʔiːðaː` | ✓ spirantized dālaṯ |
+| 10 syc one | one.js:912 | `ħað` | ✓ |
+| 11 syc good | good.js:906 | `tˤaːβaː` | ✓ spirantized bēṯ |
+| 12 syc house | house.js:913 | `bajθaː` | ✓ spirantized tāw |
+| 13 syc mother | mother.js:912 | `ʔemmaː` | ✓ ʔ added |
+| 14 syc love | love.js:913 | `ħubbaː` | ✓ short u |
+| 15 syc cat | cat.js:906 | `ʃunnaːraː` | ✓ short u + nn |
+| 16 arc cat | cat.js:525 | `ʃunnaːraː` | ✓ |
+
+### Held items — adjudication
+
+- **Issue 2 — arc script block (Syriac vs square/Hebrew):** △ ACCEPT-AS-HELD / won't-fix at item level. This is a legitimate scholarly point (Imperial Aramaic epigraphy is square Aramaic), but it is a genuine dataset-wide encoding+vocalization convention spanning every `arc` entry in all 20 files. Correctly escalated as a system-level convention decision, not a local error. Not blocking.
+- **Issue 8 — arc sun `ʃemʃaː`→`ʃamʃaː`:** △ ACCEPT-AS-HELD. The e/a first-vowel is an Eastern-Syriac-reading vs reconstructed-Imperial */šamšāʾ/ judgement. Because the whole `arc` set is encoded in Syriac script with Syriac reading tradition (see Issue 2), keeping the Eastern reading is internally consistent. Defensible as held; tie to the Issue 2 decision.
+- **Issue 17 — syc drink ܐܫܬܝ (1sg perfect) vs citation ܫܬܐ:** △ ACCEPT-AS-HELD. The reviewer point stands — `ʔeʃtiː` "I drank" is an inflected form, not a citation lemma — but the fix requires a surface-orthography change (forbidden without explicit instruction per project rule) plus a reconstruction choice. Correctly deferred for an editorial sign-off; not a local IPA error.
+- **Issue 18 — syc thanks ܫܘܒܚܐ "glory":** △ ACCEPT-AS-HELD. Real semantic concern, but lemma re-selection (surface + IPA) is an editorial call, not a local IPA fix.
+- **Issue 19 — aii thanks ܒܣܝܡܐ "pleasant":** △ ACCEPT-AS-HELD. Note `basima`/ܒܣܝܡܐ is in fact the routine colloquial "thank you" in spoken Assyrian Neo-Aramaic; the formal ܬܘܕܝ is also valid. Lemma choice, not an error.
+- **Issue 20 — aii one (script/IPA mismatch):** ✓ ACCEPT held. Reviewer's own brief says IPA `xa` is correct and should be retained; the only proposal was optional re-spelling. Nothing to fix in IPA. Settled.
+- **Issue 21 — aii drink `ʃtaja`:** △ ACCEPT-AS-HELD. The two proposed targets (`ʃθaːja` verbal noun vs `ʃaːθa` infinitive) are mutually exclusive and the intended slot is underdetermined; correctly held rather than guessed.
+- **Issue 22 — arc drink `ʃtaː`→`ʃeθaː`:** △ ACCEPT-AS-HELD. Anaptyctic-vowel + spirantization is an Imperial-period reconstruction; under the Syriac reading the dataset otherwise uses, `ʃtaː` is internally valid. Tie to Issue 2.
+- **Issue 23 — arc eat vowel harmonization:** ✓ ACCEPT. The ʔ portion is now live (`ʔaːχel`). The residual el→al vowel-quality harmonization is a reconstruction choice, properly held.
+- **Issue 24 — aii father `baba`→`baːba`:** △ ACCEPT-AS-HELD. Both `baba` and `baːba` are attested across NENA dialects; not unambiguous. Reasonable to hold.
+
+### New issue raised during verification
+
+**NEW-1 — `father` aleph-initial glottal stop dropped in BOTH `arc` and `syc` (and `arc` uses the non-standard ː-gemination notation):**
+- `words/father.js:525` — `arc: ["ܐܒܐ", "abːaː"]`
+- `words/father.js:906` — `syc: ["ܐܒܐ", "abbaː"]`
+
+The display string ܐܒܐ begins with ālap̄ ܐ = /ʔ/ — the identical aleph the worker already added a glottal stop to in `arc` eat/mother/tree/hand (Issues 3,4,6,7) and `syc` mother (Issue 13). By the review's own accepted standard, both father entries should begin with `ʔ`. Additionally, `arc` father `abːaː` uses the ː-after-consonant gemination notation that the worker itself rejected and normalized to doubled consonants in Issue 5 (mother/heart/love). The matching `syc` father already correctly uses `abbaː`.
+
+This word simply was not in the original 24-issue list, but it is the same clear, sibling-corroborated class of error the team accepted everywhere else.
+- **Fix:** `arc` `"abːaː"` → `"ʔabbaː"`; `syc` `"abbaː"` → `"ʔabbaː"`.
+
+### Scorecard
+
+- Applied fixes verified present in live data: 15 / 15 ✓
+- Held items accepted as defensible / settled: 10 / 10
+- New actionable issues: 1 (father ʔ-drop + arc gemination notation, both `arc` and `syc`)
+
+The held items are all correctly escalated convention/editorial/underdetermined calls — I accept them. The only thing blocking closure is NEW-1, which is the exact same error class the team already fixed everywhere else and is sibling-corroborated, so it should be a quick local IPA edit.
+
+**File status: OPEN** — Dev team must apply NEW-1: `words/father.js` arc `"abːaː"` → `"ʔabbaː"` and syc `"abbaː"` → `"ʔabbaː"`.

@@ -238,3 +238,74 @@ Languages covered in this review:
 - **Current:** `["make", "make"]`
 - **Expected:** Display form possibly `"make"` (acceptable as a kinship term), but IPA should be `["make", "maːke"]`
 - **Why:** Swati *make* is a respectful/vocative kin term for 'mother' (direct address or possessive form 'my mother'), comparable to Zulu *mama*. While using *make* is not wrong per se, the word for 'mother' as an independent noun in siSwati is *umake* or *umama*, with class 1a prefix *u-*. More critically, the IPA "make" is identical to the romanisation and provides no phonological information: it omits penultimate vowel lengthening [maːke] in the isolation form, and omits tonal specification. The root vowels /a/ and /e/ both need phonological commitment. This is the only Nguni entry where the IPA is entirely identical to the romanised display form, adding zero phonological value.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Reviewed all 25 issues against the project editing rule (only fix clear, unambiguous local errors / internal inconsistencies; hold genuine cross-school or system-wide convention choices). Applied fixes are the ⟨dl⟩ implosive error and the ⟨ny⟩→[ɲ] error, which are unambiguous and internally inconsistent with the dataset's own conventions. Per the team's "fix all variants together" rule, the identical ⟨dl⟩ error in the `nd` (isiNdebele/Zimbabwe) entries was corrected alongside the in-scope languages, even though `nd` was outside the reviewer's stated scope.
+
+**Applied:**
+
+- **Issue 1 (`zu` one):** `kunje` → `kuɲe`. Clear error: ⟨ny⟩ = palatal nasal /ɲ/, not [nj]. Confirmed by sibling entries `ssw: kuɲe` and `xh: iɲɛ` in the same file — internal inconsistency. (applied by orchestrator this round)
+- **Issues 2–4 (eat, ⟨dl⟩):** `ukuɗla`/`kuɗla` → `ukudɮa`/`kudɮa` for `zu`, `ssw`, `nbl`. [ɗ] is an implosive dental stop; Nguni ⟨dl⟩ is the voiced lateral affricate [dɮ]. Unambiguous symbol error. Fix uses [dɮ], matching the dataset's existing convention (`ts: jindɮu` in house.js). Also applied to `nd: ukuɗla` → `ukudɮa` (same-family variant). (applied by orchestrator this round)
+- **Issues 5–7 (hand, ⟨dl⟩):** `isandla`/`sandla` IPA → `isandɮa`/`sandɮa` for `zu`, `ssw`, `nbl`. The IPA had a bare orthographic [dl] (no IPA affricate); corrected to [dɮ]. Display/surface forms left unchanged. Also applied to `nd: isandla` IPA → `isandɮa`. (applied by orchestrator this round)
+
+**Held (with rationale):**
+
+- **Issue 8 (`zu` good):** Reviewer confirms [ɬ] is correct; only tone is "missing" (covered by Issue 20). No actionable symbol error. Hold.
+- **Issues 9–13 (⟨b⟩ → [ɓ] removal; o→ɔ):** Hold. The implosive analysis of Nguni plain ⟨b⟩ as /ɓ/ (with pulmonic [b] written ⟨bh⟩) is the *standard* Doke description and the dataset's deliberate convention — so [sawuɓona], [ŋijaɓoŋɡa], [uɓaɓa] are defensible, not clear errors. The reviewer's claim that Nguni lacks implosive ⟨b⟩ is contrary to the mainstream analysis. (Note: there is a genuine internal inconsistency in the opposite direction — `zu` father is `ubaba`/`ubaba` (plain) while `nbl`/`nd` father use `uɓaɓa` — but resolving that would be a convention call the reviewer did not request and it cuts against the reviewer's stated expected value, so deferred.) The o→ɔ vowel-quality sub-claims are a system-wide transcription-school choice (see Issue 14). Hold.
+- **Issues 14, 15 ([o]→[ɔ], fire):** System-wide vowel-quality convention; the dataset consistently uses [o] for Nguni /o/. Not a local error. Hold for team convention decision.
+- **Issue 16 (`xh` eat tʲ→cʰ/tʰj):** Aspiration/place analysis of ⟨ty⟩ is genuinely debated; reviewer offers two alternatives. Not unambiguous. Hold.
+- **Issue 17 (`xh` good ŋɡ→ŋk):** Standard Xhosa treats ⟨ng⟩ (vs ⟨nk⟩) as voiced prenasalised [ŋɡ]; the orthography itself distinguishes ng/nk for voicing. Reviewer's [ŋk] correction not clearly correct. Hold.
+- **Issue 18 (`nbl` one, bare `nye`):** Citation-form choice; reviewer self-describes as "borderline". Hold.
+- **Issue 19 (`ssw` water emanti→amanzi):** Hold. *emanti* is the legitimate siSwati class-6 form (siSwati class 6 prefix is *ema-*, and ⟨z⟩→⟨t⟩ in siSwati, giving *emanti*); it is not a Sotho borrowing. The reviewer's substitution is incorrect for siSwati.
+- **Issue 20 (tone, global):** System-wide design choice — the dataset does not mark tone in any language. Won't-fix at the data level; needs a project-level decision. Hold.
+- **Issue 21 ([ŋɡ]→[ᵑɡ] prenasalisation notation):** System-wide notation convention applied consistently across the dataset. Hold.
+- **Issue 22 (`xh` thanks enkosi→ɛŋkʰosi):** Bundles a debatable aspiration claim with [n]→[ŋ]; the reviewer's full expected form is not unambiguous. Hold.
+- **Issue 23 (`ssw` love ʦ / ⟨v⟩→[w]):** Reviewer offers multiple alternatives (ejective vs plain; β vs ʋ); ⟨dv⟩ realisation in siSwati is itself contested. No single unambiguous fix. Hold.
+- **Issue 24 (`nbl` hello penultimate length):** System-wide omission of penultimate lengthening; not a local error. Hold.
+- **Issue 25 (`ssw` mother make / length):** Kin-term/length; reviewer accepts *make* as a valid form. Length omission is the system-wide pattern. Hold.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-read all 25 items and verified every claimed fix against the live per-word data files. The applied fixes are all present and correct in the data.
+
+### Verified-applied fixes
+
+- **Issue 1 (`zu` one):** ✓ Live data `words/one.js:150` = `zu: ["kunye", "kuɲe"]`. The [nj]→[ɲ] palatal-nasal fix is present and consistent with sibling `ssw: ["kunye", "kuɲe"]` (line 803) and `xh: ["inye", "iɲɛ"]` (line 278). Accept.
+- **Issues 2–4 (eat, ⟨dl⟩):** ✓ Live data `words/eat.js` 150/797/798/799 = `ukudɮa` / `kudɮa` / `ukudɮa` / `ukudɮa` for `zu`/`ssw`/`nbl`/`nd`. The implosive [ɗ] is gone; the voiced lateral affricate [dɮ] is now used. The same-family `nd` variant was correctly fixed too. Accept.
+- **Issues 5–7 (hand, ⟨dl⟩):** ✓ Live data `words/hand.js` 150/797/798/799 = `isandɮa` / `sandɮa` / `isandɮa` / `isandɮa`. The bare orthographic [dl] in the IPA is replaced with the affricate [dɮ]; display forms untouched (per the no-text-change rule). `nd` fixed too. Accept.
+
+These were the only unambiguous symbol errors in the file, and all four are now fixed-and-verified. Good.
+
+### Adjudication of held items
+
+- **Issue 8 (`zu` good):** ✓ Accept hold. Live `kuɬe` — [ɬ] is the correct symbol for ⟨hl⟩; the only residual is tone, subsumed under Issue 20.
+- **Issues 9–12 (⟨b⟩→[ɓ], o→ɔ):** ✓ Accept hold on the school-level grounds. The plain-⟨b⟩ = implosive /ɓ/ analysis (with ⟨bh⟩ = pulmonic [b]) is the standard Doke/Nguni convention, and the dataset applies it deliberately. [sawuɓona], [ŋijaɓoŋɡa] are defensible. The o→ɔ vowel-quality sub-claims are a system-wide transcription-school choice, not a local error. Hold accepted.
+- **Issue 13 (`nbl`/`zu` father, ⟨b⟩):** △ PARTIAL. The held *rationale* (⟨b⟩ = [ɓ] is the dataset convention) is sound, but the worker themselves flagged a real internal inconsistency and then deferred it. I verified it in live data: `zu` uses [ɓ] in `thanks.js:150` (`ŋijaɓoŋɡa`) and `hello.js:150` (`sawuɓona`) but plain [b] in `father.js:150` (`ubaba`/`ubaba`), while sibling `nbl`/`nd` father are `uɓaɓa`. Under the dataset's own ⟨b⟩→[ɓ] convention, `zu` father should be `uɓaɓa` to match its own other ⟨b⟩ entries and its Nguni siblings. This is a clear within-convention inconsistency (the kind the project's "fix all variants together" rule targets), not a cross-school judgement call. I am NOT requiring the reviewer's original expected value (`ubaba` plain) — I am requiring internal consistency in the direction the dataset already chose. **Actionable:** set `words/father.js:150` `zu` IPA to `uɓaɓa`. Display form unchanged.
+- **Issues 14–15 (o→ɔ, fire):** ✓ Accept hold. System-wide vowel convention; dataset consistently uses [o] for Nguni /o/.
+- **Issue 16 (`xh` eat ⟨ty⟩):** ✓ Accept hold. Reviewer offered two competing alternatives ([cʰ] vs [tʰj]); genuinely debated, not unambiguous.
+- **Issue 17 (`xh` good ŋɡ→ŋk):** ✓ Accept hold. Xhosa orthography distinguishes ⟨ng⟩ (voiced) from ⟨nk⟩ (voiceless); voiced prenasalised [ŋɡ] for ⟨ng⟩ is defensible.
+- **Issue 18 (`nbl` one bare `nye`):** ✓ Accept hold. Reviewer self-labelled "borderline"; citation-form choice. Verified live `nbl: ["nye", "ɲe"]` (one.js:804); `nd` matches.
+- **Issue 19 (`ssw` water emanti):** ✓ Accept hold — and the worker is correct on the linguistics. siSwati class 6 prefix is *ema-* (not *ama-*) and siSwati has the regular /z/→/t/ shift, yielding *emanti* as the standard form. The reviewer's "amanzi" substitution would impose the Zulu/Xhosa form on siSwati and is wrong. Reject the reviewer's original expected value; hold accepted.
+- **Issue 20 (tone, global):** ✓ Accept hold. Genuine system-wide design choice (no language in the dataset marks tone). Not addressable at the single-file data level.
+- **Issue 21 ([ŋɡ]→[ᵑɡ]):** ✓ Accept hold. Notation convention applied consistently dataset-wide.
+- **Issue 22 (`xh` thanks enkosi):** ✓ Accept hold. Bundles a debatable aspiration claim with [n]→[ŋ]; not a single unambiguous fix.
+- **Issue 23 (`ssw` love ⟨ts⟩/⟨v⟩):** ✓ Accept hold. Reviewer offers multiple alternatives; ⟨dv⟩/⟨ts⟩ realisation in siSwati is contested.
+- **Issue 24 (`nbl` hello penultimate length):** ✓ Accept hold. System-wide omission of penultimate lengthening.
+- **Issue 25 (`ssw` mother make):** ✓ Accept hold. Reviewer accepts *make* as valid; length/tone are system-wide omissions.
+
+### New issues
+
+None beyond the within-convention inconsistency surfaced under Issue 13 (which the worker had already identified but deferred).
+
+### Scorecard
+
+- Applied & verified correct: Issues 1, 2, 3, 4, 5, 6, 7 (7 fixes, all confirmed in live data).
+- Held / accepted as cross-school or system-level: Issues 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25.
+- Outstanding actionable: Issue 13 — `zu` father IPA should be `uɓaɓa` for internal consistency with the dataset's own ⟨b⟩→[ɓ] convention and its `nbl`/`nd` siblings.
+
+**File status: OPEN** — Dev team must set `words/father.js:150` `zu` IPA from `ubaba` to `uɓaɓa` (display form `ubaba` unchanged) to remove the within-dataset ⟨b⟩→[ɓ] inconsistency; all other items are correctly resolved or held.

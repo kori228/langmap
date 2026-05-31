@@ -203,3 +203,90 @@ Swahili has well-documented regional varieties with both lexical and phonologica
 ---
 
 *End of review #09*
+
+## Worker round-1 response (作業者round-1)
+
+Thanks for the thorough Bantu-focused review. Decisions below; applied IPA/orthography fixes are clear local errors or internal inconsistencies confirmed against sibling entries in the same dataset.
+
+**1. `sn` one "potsi" vs "rimwe" — HELD.** Lexical-selection choice. *potsi* ("one/single") is attested as a Shona numeral form in some dialects/registers and the dataset already gives the cognate-correct `rw/rn rimwe`. Changing the headword is a vocabulary decision beyond a mechanical fix; deferring to a Shona lexical source rather than overriding unilaterally.
+
+**2. `lg` sun /eɲɟuba/ — HELD (won't-fix).** Luganda orthographic "j" is standardly the voiced palatal stop /ɟ/ (Ashton 1954), and "ny" = /ɲ/; thus "nj" = prenasalized palatal /ɲɟ/ is a mainstream Luganda analysis, not the Zulu /ndʒ/. The sibling Olugbe entry `olg kaɲɟi` (love) uses /ɲɟ/ consistently. This is a cross-school analysis choice, not a clear error.
+
+**3. `sg` moon /ndʒɛ/ — APPLIED (applied by orchestrator this round).** Internal inconsistency: the other Sango entry `sg nzöni` = /nzøni/ uses /nz/. IPA `ndʒɛ` → `nzɛ`.
+
+**4. `tn` eye ejective /tɬʼ/ — APPLIED (applied by orchestrator this round)**, and per the reviewer's "systematic risk" warning also fixed the parallel `tn tree setlhare`. Tswana has no ejectives; "tlh" is aspirated. `leitɬʼo` → `leitɬʰo` (eye.js), `setɬʼaɾe` → `setɬʰaɾe` (tree.js). Note "tl" (plain) entries `tn ntlo`/`seatla` already correctly use /tɬ/.
+
+**5 & 6. `xh` hand/house "dl" → /ɬ/ — APPLIED (applied by orchestrator this round).** Xhosa "dl" is voiced, not voiceless /ɬ/ (which is written "hl"). The same files give Tsonga "dl" as /ɮ/ (`ts yindlu` = jindɮu), so I corrected to the voiced lateral fricative for dataset consistency: `isandɬa` → `isandɮa` (hand.js), `indɬu` → `indɮu` (house.js).
+
+**7. `ln` water "mai" toneless — APPLIED (surface) (applied by orchestrator this round).** Every other Lingala surface form carries tone marks; "mai" was the lone toneless outlier. Surface `mai` → `máí`. IPA left as `mai` because the Lingala IPA column drops tone throughout this dataset (see #8).
+
+**8. `ln` fire IPA tones — HELD.** The Lingala IPA column systematically omits tone for all 18 entries (mɔ́tɔ→mɔtɔ, tatá→tata, líso→liso, …). Adding tone to one IPA entry breaks that convention; this is a dataset-wide convention, not a local error. The surface `mɔ́tɔ` already correctly marks the H (low default unmarked is standard Lingala orthography).
+
+**9 & 10. `sn` / `tum` tone marks absent (all entries) — HELD (won't-fix).** System-level convention: no tonal Bantu language in the dataset (Shona, Tumbuka, etc.) marks tone. Adding tone to two languages only would be inconsistent. This is a corpus-wide policy decision, not a local error.
+
+**11. `tum` sun "zuva" (= Shona) — HELD, flagged for reviewer.** Strong internal evidence (exact duplicate of `sn zuva` in the same file; Tumbuka elsewhere uses /w/, e.g. `tum woko`) supports "zuwa". This is a surface lexical change I cannot independently confirm doesn't also exist in Tumbuka; leaving for reviewer confirmation rather than applying a lexical edit unilaterally.
+
+**12. `rw` father "papa" loanword — HELD.** Lexical/register choice; "papa" is in widespread real use. Headword selection is a system-level decision.
+
+**13. `ssw` eye "liso" vs "lihlo" — HELD.** Lexical-selection choice for siSwati; deferring to a dedicated siSwati source rather than overriding.
+
+**14. `bem` water /ameɲʃi/ — APPLIED (applied by orchestrator this round).** Bemba "nsh" nasal is alveolar /n/, not palatal /ɲ/ (only `ɲʃ` in the dataset). `ameɲʃi` → `amenʃi`.
+
+**15. `ve` eye "ito" vs "ritho" — HELD.** Lexical-selection choice; held for a dedicated Venda source.
+
+**16. `ts` moon /nʷeti/ — APPLIED (applied by orchestrator this round)**, and also `ts one rin'we` per the reviewer's note. Xitsonga "n'" = velar /ŋ/. `nʷeti` → `ŋweti` (moon.js), `rinʷe` → `riŋwe` (one.js). Consistent with `suk/nym ng'wezi` = ŋweːzi, `ve ṅwedzi` = ŋwedzi in the same files.
+
+**17 & 18. `ki` sun/one nasalized vowels dropped — HELD (won't-fix).** Systematic: ALL 11 Kikuyu IPA entries drop orthographic vowel nasality (kũrĩa→kuɾia, mũtĩ→muti, …). Fixing only two would create inconsistency. This is a dataset-wide IPA convention, not a local error.
+
+**19. `bem` father "bataata" (ba- honorific) — HELD.** Register/headword choice; held as system-level.
+
+**20. `nso` thanks IPA word spacing — APPLIED (applied by orchestrator this round).** Formatting inconsistency vs orthography and vs `tn ke a leboɣa` (spaces preserved). `kealeboɣa` → `ke a leboɣa`.
+
+**21. `sn` augment / noun-class metadata — HELD (won't-fix).** Structural/metadata scope decision for the whole corpus, not a local data error.
+
+**22. `sw_kg/ke/tz` regional Swahili absent — HELD (won't-fix).** Adding new language varieties is a corpus-expansion decision (requires the full new-language synchronization across UI/data), out of scope for a data-correction pass.
+
+Summary: 8 fixes applied across 6 files (sg moon, tn eye+tree, xh hand+house, bem water, ln water surface, ts moon+one, nso thanks). 14 items held — 11 as system-level/convention won't-fix, 1 lexical flagged for reviewer (tum sun), 2 lexical held pending dedicated sources (ssw eye, ve eye).
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed "APPLIED" fix against the live `words/*.js` data and confirmed each worker cross-reference. All 8 applied edits are present and correct in live data.
+
+**Verified-applied (✓), all confirmed in live data:**
+
+- **#3 `sg` moon** `nzë` IPA now `nzɛ` (moon.js:901). ✓ Justification sound — sibling `sg nzöni`=`nzəni` (good.js:895) uses /nz/.
+- **#4 `tn` eye/tree** `leitlho`=`leitɬʰo` (eye.js:593), `setlhare`=`setɬʰaɾe` (tree.js:593). ✓ Ejective→aspirated correct; "tl" plain entries untouched as stated.
+- **#5/#6 `xh` hand/house** `isandla`=`isandɮa` (hand.js:272), `indlu`=`indɮu` (house.js:279). ✓ I accept the choice of voiced /ɮ/ rather than my suggested /dl/: it is internally consistent with `ts yindlu`=`jindɮu` (house.js:602) and correctly removes the spurious voiceless /ɬ/. Defensible.
+- **#7 `ln` water** surface `mai`→`máí` (water.js:282). ✓ Removes the lone toneless Lingala surface outlier; IPA left toneless per dataset-wide convention (see #8).
+- **#14 `bem` water** `ameɲʃi`→`amenʃi` (water.js:604). ✓ Spurious palatal nasal removed.
+- **#16 `ts` moon/one** `nʷeti`→`ŋweti` (moon.js:601), `rinʷe`→`riŋwe` (one.js:601). ✓ Consistent with `suk/nym ng'wezi`=`ŋweːzi` (moon.js:111-112) and `ve ṅwedzi`=`ŋwedzi` (moon.js:602).
+- **#20 `nso` thanks** IPA `kealeboɣa`→`ke a leboɣa` (thanks.js:800). ✓ Now matches orthography and `tn ke a leboɣa`.
+
+**Held — I ACCEPT as defensible (✓ won't-fix):**
+
+- **#2 `lg` sun /eɲɟuba/** — ACCEPT. Confirmed `olg kanyji`=`kaɲɟi` (love.js:700) uses /ɲɟ/ for "nj". The /ɲɟ/ vs /ndʒ/ split is a genuine cross-school analytic difference for Luganda; not a clear error. My original flag is downgraded.
+- **#8 `ln` fire IPA tones** — ACCEPT. Verified `ln` IPA drops tone everywhere (`tatá`=`tata` father.js:275, `líso`=`liso` eye.js:275, `mɔ́tɔ`=`mɔtɔ` fire.js:281). Corpus-wide convention; fixing one entry would break it.
+- **#9/#10 `sn`/`tum` tone marks** — ACCEPT. No Shona entry carries tone in any file (verified across ~20 entries). System-level policy; consistent.
+- **#17/#18 `ki` nasality** — ACCEPT. Verified all Kikuyu IPA drops orthographic nasality (`kũrĩa`=`kuɾia`, `mũtĩ`=`muti`, `ĩmwe`=`imwe`, `rĩũa`=`ɾiwa`). Dataset-wide IPA convention.
+- **#21 augment/noun-class metadata** — ACCEPT. Out-of-scope metadata/structural request, not a data error.
+- **#22 regional Swahili varieties** — ACCEPT. Corpus-expansion request requiring full new-language synchronization; out of scope for a correction pass.
+
+**Held — lexical/register, ACCEPT as defensible headword choices (✓):**
+
+- **#1 `sn` one "potsi"**, **#12 `rw` father "papa"**, **#13 `ssw` eye "liso"**, **#15 `ve` eye "ito"**, **#19 `bem` father "bataata"** — these are headword/register selections. While I would prefer `rimwe`, `se/data`, `lihlo`, `ritho`, and `taata` respectively on descriptive grounds, none is a mechanical IPA/orthography error, and the worker's deferral to dedicated single-language sources is a reasonable editorial stance. ACCEPT as won't-fix for this pass.
+
+**Held but NOT acceptable — clear data error remains (✗):**
+
+- **#11 `tum` sun "zuva" — REJECT the hold. This is a confirmed error, still live.** I verified `tum: ["zuva", "zuva"]` (sun.js:729) is a verbatim duplicate of `sn: ["zuva", "zuva"]` (sun.js:279) in the same file. Tumbuka reflexes of Proto-Bantu *\*-dúbà* are uniformly /w/, not /v/; the worker's own counter-evidence confirms this (`tum woko`=`woko`, hand.js:723 — Tumbuka uses /w/, not /v/, where Shona would diverge). As the Bantu specialist asked to confirm, I confirm: the correct Tumbuka form is **zuwa** (surface and IPA `zuwa`). This is a copy-paste contamination from the Shona row, not a defensible lexical choice. The dev team must apply: `tum: ["zuva", "zuva"]` → `tum: ["zuwa", "zuwa"]` in words/sun.js:729.
+
+**New issues:** none. I did not find additional defensible errors during verification; the rest of the held items are genuine convention/register choices.
+
+### Scorecard
+
+- Applied & verified correct: 8/8 ✓
+- Held & accepted (system-level / cross-school / register): 13 ✓
+- Held but rejected (clear error still live): 1 ✗ — #11 `tum` sun.
+
+**File status: OPEN** — Dev team must apply the one confirmed lexical fix: `words/sun.js:729` `tum: ["zuva","zuva"]` → `tum: ["zuwa","zuwa"]` (copy-paste contamination from the Shona row; Tumbuka reflex is /w/).

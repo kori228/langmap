@@ -200,3 +200,79 @@ I am a specialist in Philippine historical and descriptive linguistics. My prima
 ---
 
 *Total: 24 issues identified. Priority: Issues 6–13 (lexical errors assigning wrong words) are most serious as they misrepresent the language data. Issues 1, 4 (missing stress across all Tagalog/Ilokano entries) are the highest-volume correction. Issues 17–18 (morphological form mismatch in Bikol) and 21 (Kapampangan display/IPA disagreement) are structural. Issues 5, 16 (spurious /ɔ/ phoneme) affect phonological accuracy across eight entries.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough, well-sourced review. Applied the clear, unambiguous local errors and IPA-consistency normalizations; held the lexical substitutions that require choosing new surface orthography for under-documented languages (the file's own convention sometimes conflicts with the suggested form), and held the system-level transcription-convention call on /ɔ/.
+
+**Applied (by orchestrator this round):**
+
+- **#3 `ceb` water** — IPA `tubig` (ASCII g, U+0067) → `tubiɡ` (IPA ɡ, U+0261). Pure encoding fix; matches all sibling Philippine entries. *(applied by orchestrator this round)*
+- **#19 `cbk` eye** — IPA `ˈoxo` → `ˈoho`. Only [x] in any cbk entry; Chavacano lacks the dorsal fricative (Quilis 2002). IPA-only. *(applied by orchestrator this round)*
+- **#21 `pam` heart** — IPA `ˈpusoʔ` → `ˈpusuʔ`. Final-syllable vowel now agrees with display `pusu` and with sibling `pam: asu → ˈʔasu`. IPA-only; surface orthography and the final glottal left unchanged (display-glottal addition is an orthography choice, not a clear local error). *(applied by orchestrator this round)*
+- **#22 `tao` (final ⟨y⟩ = [j])** — normalized [i] → [j] for surface-final ⟨y⟩, applied to ALL five affected tao entries (not only the three flagged), per project rule to fix all variants of the same clear error together: `fire apui→apuj`, `hand kamai→kamaj`, `thanks ajoi→ajoj`, plus `hello akokai→akokaj`, `house vahai→vahaj`. IPA-only. Stress marks NOT added — tao entries carry no stress diacritics anywhere, so adding them would be a new convention, out of scope. *(applied by orchestrator this round)*
+
+**Held — lexical substitutions (strong cognate support, but require editorial/native confirmation of surface form):**
+
+- **#7 `tsg` sun (suga 'lamp' → adlaw)** and **#11 `bto` heart (kublit 'skin' → puso)**: cognate evidence is strong (ceb/hil/war sun = `adlaw`; tl/ilo/bik heart = `puso`) and the target orthography is clean. These are the two most defensible lexical fixes, but they introduce a *new lexeme*, which exceeds "fix a clear local error in an existing field" — per project rule I do not modify/replace surface text without explicit instruction. **Held for reviewer go-ahead**; if you confirm, replacements are `tsg sun: ["adlaw","adlaw"]` and `bto heart: ["puso","puso"]` (no stress/glottal, matching siblings).
+- **#9 `mrw` heart** and **#10 `tsg` heart** (atay/hatay 'liver' → 'heart'): cognate-supported, but the suggested surface `pusù` (grave accent) conflicts with the file's own tsg final-glottal convention (`iruꞌ`, `amaꞌ` → `…ʔ`); and both mrw/tsg use NO stress marks, so `ˈpusuʔ` is wrong for them. Correct target would be `pusuꞌ`/`pusuʔ`. **Held** pending agreement on orthography.
+- **#6 `tsg` fire**, **#8 `tsg` love**, **#12 `mdh` moon**, **#13 `mrw` love**, **#14 `tao` heart**, **#15 `tao` moon**: reviewer flagged these as "probable" / "requires verification" or offered multiple candidate forms. Not unambiguous; **held for native-speaker / dictionary confirmation**.
+
+**Held — system-level / convention calls (not local errors):**
+
+- **#5 `hil`/`war` and #16 `bto` (/ɔ/ for final /o/)**: This is a phonemic-vs-phonetic transcription-convention decision, not a local typo. Note: `hil` is internally *consistent* (all back-mid finals = [ɔ]), so there is no inconsistency to fix there. `war`/`bto` are genuinely split (war [o]×1/[ɔ]×4; bto [o]×1/[ɔ]×2) with the [ɔ] confined to a coherent set (kalayo/kahoy/kamot/inom), suggesting a deliberate phonetic-lowering choice rather than random error. `bik` is the one true internal inconsistency ([o]×8 vs [ɔ]×3 in identical final-/o/ environments: `saro→saɾo` vs `kalayo→kalajɔ`). **Held**; if the team wants `bik` normalized to [o] for internal consistency, I can apply `bik fire kalajɔ→kalajo`, `bik hand kamɔt→kamot`, `bik tree kahɔj→kahoj` — your call.
+- **#1/#4 (`tl`/`ilo` blanket stress marks)** and **#2, #17, #18, #20, #23, #24**: these are corpus-wide convention / morphological-citation / school-orthography decisions (Tagalog/Ilokano never mark stress in this corpus; Bikol citation = patient-voice nominalization throughout; Chavacano `comê` spelling; ceb hiatus analysis; mdh stress rule). They are not isolated local errors and changing them would either touch all 20 entries of a language or override an existing editorial convention. **Held with rationale** per project policy on system-level choices.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed "applied" fix against the live `words/*.js` data and inspected the held items in situ. The worker's distributional and convention analysis is accurate throughout; nothing claimed-applied is missing from live data.
+
+### Verified applied (live-data confirmed)
+
+- **#3 `ceb` water** ✓ — `words/water.js:207` now `["tubig", "tubiɡ"]` (IPA ɡ U+0261). Confirmed.
+- **#19 `cbk` eye** ✓ — `words/eye.js:578` now `["ojo", "ˈoho"]`. Confirmed; [x] eliminated.
+- **#21 `pam` heart** ✓ — `words/heart.js:988` now `["pusu", "ˈpusuʔ"]`. IPA vowel now agrees with display `pusu` and sibling `pam: ʔasu`. Accepted; I withdraw the display-glottal half of #21 — adding `pusuꞌ` to the surface form is an orthography choice, not a clear local error, and the internal IPA/display vowel disagreement (the actual defect) is now resolved.
+- **#22 `tao` final ⟨y⟩=[j]** ✓ — all five confirmed: `fire:1059 apuj`, `hand:1053 kamaj`, `thanks:1047 ajoj`, `hello:1047 akokaj`, `house:1054 vahaj`. Surface ⟨y⟩ forms unchanged. Correctly extended to all variants per the project "fix all variants together" rule. Stress-marks-out-of-scope rationale accepted (tao carries no stress diacritics anywhere).
+
+### Held items — adjudication
+
+**System-level convention calls — ACCEPTED as defensible (won't-fix):**
+
+- **#1/#4 `tl`/`ilo` blanket stress** ✗ (reject as actionable) — Corpus-wide: no Tagalog/Ilokano entry marks stress. Adding it to all 20×2 entries is a new corpus convention, not an error fix. Accepted as a system choice.
+- **#2, #20, #23, #24** △/accept — `tl love` pag-ibig stress, `cbk comê/bebê` orthography + final [ʔ], `ceb maayo` hiatus analysis, `mdh apoy` stress rule: each is either downstream of the no-stress convention (#2), a school-orthography call (#20 — Zamboangueño vs Caviteño spelling is genuinely contested), or an analytical choice (#23 hiatus, #24 stress placement). I accept the worker's held rationale. (#20's final-[ʔ] removal would be defensible as a narrow IPA fix, but it travels with the contested orthography decision; leaving held.)
+- **#17/#18 `bik` eat/drink** △ — `kakanon`/`inumon` are indeed patient-voice nominalizations, but if the whole Bikol column is populated with patient-voice citation forms this is a corpus-wide citation convention, not a local error. Accepted as held.
+- **#5 `hil`/`war`, #16 `bto` (/ɔ/ for final /o/)** ✓ (accept worker's analysis) — Verified live: `hil` is internally fully consistent (every final back-mid = [ɔ]); `war` is [o]×1 (`kaʔon`) vs [ɔ]×4; `bto` similar. The /ɔ/-vs-/o/ choice is a phonemic (Zorc three-vowel) vs phonetic-surface transcription convention, defensibly system-level. Accepted as won't-fix at the convention level.
+
+**The one genuine internal inconsistency — ACTIONABLE (#5/#16 spillover into `bik`):**
+
+- **`bik` final-/o/ mixed [o]/[ɔ]** △ OPEN — Verified live in `words/*.js`: identical final-/o/ environments are transcribed both ways — `saro→saɾo`, `puso→puso`, `harong→haɾoŋ`, `ikos→ikos`, `pagkamoot→…moʔot` (all [o]) vs `kalayo→kalajɔ`, `kahoy→kahɔj`, `kamot→kamɔt` (all [ɔ]). Unlike hil (consistent), this is a true intra-language inconsistency = a local error, not a convention. **Go-ahead given:** normalize the three outliers to [o]: `bik fire kalajɔ→kalajo`, `bik hand kamɔt→kamot`, `bik tree kahɔj→kahoj`. (Do NOT touch hil/war, which are internally coherent.)
+
+**Lexical substitutions — go-ahead on the high-confidence set:**
+
+The worker held all lexical swaps citing the "don't replace surface text without instruction" rule. I am the reviewer; I now give explicit, sourced go-ahead on the unambiguous ones and confirm target orthography to match each language's own file convention (no stress marks for tsg/mrw/mdh/bto; tsg final glottal = `ꞌ`/`ʔ`):
+
+- **#7 `tsg` sun** ✓ go-ahead — `suga` ('lamp') → `["adlaw","adlaw"]`. Cognate-certain (ceb/hil/war/bto all `adlaw`); PAN *qalejaw.
+- **#11 `bto` heart** ✓ go-ahead — `kublit` ('skin') → `["puso","puso"]`. Cognate-certain (tl/ilo/bik `puso`).
+- **#12 `mdh` moon** ✓ go-ahead — `ulan-ulan` ('drizzle', redup. of *ulan* 'rain') → `["bulan","bulan"]`. Strong: `ulan`='rain' is pan-Philippine, and sibling `mrw moon` is already `bolan`. Moon ≠ rain. (Target `bulan` per PAN *bulaN; `olan` acceptable alternative — I confirm `bulan`.)
+- **#15 `tao` moon** ✓ go-ahead — `vehan` → I do NOT confirm `olan` blindly. Verify against Rau & Dong-yi (2006) Yami dict before swap; Batanic moon is `vulan`/`buan`-type. **Leave as held pending dictionary** (lower confidence than #12). △
+- **#9 `mrw` heart** / **#10 `tsg` heart** ✓ go-ahead with corrected orthography — `atay`/`hatay` ('liver') → heart. The reviewer's original `pusù`/`ˈpusuʔ` was wrong for these languages (worker correctly caught it: no stress marks, tsg uses `ꞌ` glottal). Confirmed live: `tsg: iruꞌ→iruʔ`, `amaꞌ→amaʔ`. **Correct targets:** `mrw heart: ["pusoʔ","pusoʔ"]` and `tsg heart: ["pusuꞌ","pusuʔ"]` (no stress diacritic). PAN *pusəq; liver/heart split is well-attested for Danao/Sulu subgroups (Lobel 2013).
+- **#6 `tsg` fire** (`kayu`'wood'→`api`/`apuy`), **#8 `tsg` love** (`lasa`'taste'→`kalayni`), **#13 `mrw` love** (`kalimo`) **#14 `tao` heart** (`paso`→`poso`) △ — remain held for dictionary/native confirmation. Note `mdh love` is live `kalini`, structurally close to mrw `kalimo`; this Danao-internal resemblance weakens the "forgetfulness" reading for #13 — verify before changing.
+
+### New issues
+
+None. Verification surfaced no additional clear errors beyond those already itemized.
+
+### Scorecard
+
+| Class | Count | Disposition |
+|---|---|---|
+| Applied & live-verified | 4 (#3,#19,#21,#22) | ✓ confirmed correct |
+| Convention/system held | #1,#2,#4,#5,#16,#17,#18,#20,#23,#24 | accepted won't-fix |
+| Actionable now (go-ahead) | `bik` /ɔ/ (3 cells) + lexical #7,#9,#10,#11,#12 | dev to apply |
+| Held for dictionary | #6,#8,#13,#14,#15 | verify then apply |
+
+**File status: OPEN** — Dev team to: (1) normalize `bik` outliers `kalajɔ/kamɔt/kahɔj → kalajo/kamot/kahoj` (fire/hand/tree); (2) apply confirmed lexical swaps #7 `tsg sun→adlaw`, #11 `bto heart→puso`, #12 `mdh moon→bulan`, #9 `mrw heart→["pusoʔ","pusoʔ"]`, #10 `tsg heart→["pusuꞌ","pusuʔ"]`; (3) leave #6,#8,#13,#14,#15 held pending dictionary confirmation.

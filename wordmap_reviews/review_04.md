@@ -326,3 +326,89 @@ I am a specialist in the smaller Indo-European branches that fall outside the Sl
 ---
 
 *End of review. 24 issues documented. Priority fixes: issues 1 (semantic — Pontic πάππος), 2 (Breton lemma plurality), 18 (Classical Armenian ողջոյն initial v-), 19 (Arbëreshë 'siri' phantom), and 5/6/13 (systematic Lithuanian /æ/ and spurious length marks) represent the highest-impact corrections.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every entry verbatim against `words/*.js`. Applied clear, well-sourced local errors and explicitly-targeted normalizations; held convention/interpretive items.
+
+1. **pnt father πάππος→πατέρας** — APPLIED (applied by orchestrator this round). Clear semantic error (πάππος = grandfather). `words/father.js:835` surface+IPA `paˈteɾas`.
+2. **br tree gwez→gwezenn** — APPLIED. Collective→singulative citation form (parallels Welsh coed/coeden already in db). `words/tree.js:296` surface+IPA `ˈɡweːzɛn`.
+3. **gd cat kʰaʰt→kʰat** — APPLIED. Non-IPA superscript ʰ on vowel removed. `words/cat.js:295`.
+4. **lv cat kaʲcis→ˈkacis** — APPLIED. Spurious ʲ on vowel; palatal feature belongs to consonant. `words/cat.js:316`.
+5. **lt /æ/→/ɛ/ + stress** — APPLIED for the four explicit targets: good `ˈɡʲɛrɐs`, drink `ˈɡʲɛrtʲɪ`, tree `ˈmʲɛdʲɪs`, love `ˈmʲɛɪlʲeː`. (heart in #6; eye in #13; cat in #4 has no æ.)
+6. **lt heart ʃʲɪrʲdʲɪs→ˈʃʲɪrdʲɪs** — APPLIED. rʲ depalatalized + stress. `words/heart.js:314`.
+7. **gv drink ʲuː→juː** — APPLIED. ʲ cannot be word-initial; intended /j/. `words/drink.js:845`.
+8. **el_grc one hêːs→hêi̯s** — APPLIED. εἷ is a diphthong; restored off-glide i̯. `words/one.js:517`.
+9. **el_grc drink infinitive vs 1sg** — HELD. Cross-Greek lemmatization convention (infinitive vs finite); system-level, needs team-wide decision, not a local fix.
+10. **hyw fire ɡəɾɑk→ɡɾɑk** — APPLIED. WA allows initial ɡɾ-; schwa epenthesis unattested. `words/fire.js:175`.
+11. **el_grc caron→circumflex** — APPLIED: sun `hɛ̂ːlios`, mother `mɛ̂ːtɛːr`, father `patɛ̂ːr`, moon `selɛ̂ːnɛː`. Circumflex (falling, U+0302) replaces caron (rising, U+030C). (one.js already had precomposed ê, superseded by #8.)
+12. **lt sun saulė→ˈsaʊlʲeː** — APPLIED (sun). mother `mɔːtʲɪnɐ` / house `nɐːmɐs` HELD: no explicit per-entry IPA target for the combined /ɐ/→/a/ + length decision; needs an exact transcription to avoid a half-fix.
+13. **lt spurious /ɐː/** — APPLIED where explicit: eye `ˈakʲɪs`, hello `ˈlabɐs`. cat `kɐːtʲeː` / house `nɐːmɐs` HELD: no explicit target.
+14. **sga water usce→uisce, uske→ˈɪʃcə** — APPLIED. Old Irish attested as uisce (Wb., Ml.); used the table's expected IPA.
+15. **el missing stress** — APPLIED: dog `ˈskilos`, heart `kaɾˈðʲa`, father `paˈteɾas`, mother `miˈteɾa`. Modern Greek stress is phonemic.
+16. **el hand çeɾi→ˈçeɾi** — APPLIED the stress mark (clear part). HELD the /x/-vs-/ç/ phonemic-vs-narrow choice the reviewer himself marked "debatable".
+17. **gd fire tʃʰenə→ˈtʲɛnʲə** — APPLIED. ScG te- is palatalised dental [tʲ], not affricate. `words/fire.js:301`.
+18. **hy_grab hello oɣdʒujn→voʁd͡ʒojn** — APPLIED. Initial vo- rule, ʁ for ղ, oj diphthong. `words/hello.js:958`.
+19. **aae eye siri→sy** — APPLIED. Pan-Albanian sy; siri unattested. `words/eye.js:319`.
+20. **lv hand ruɔka→ˈrɔka** — APPLIED. /uɔ/ is Lithuanian, not Latvian. `words/hand.js:316`.
+21. **sga/ga drink ibid vs ól** — HELD. Verbal-noun-vs-inflected lemmatization is a cross-entry convention; system-level decision.
+22. **prg fire panːo→ˈpano** — HELD. Degemination from an attested orthographic double-n is interpretive; reviewer marks it "minor"/"preferred" and accepts the surface form. Defer to existing convention.
+23. **pnt sun ήλεν** — HELD. Reviewer explicitly uncertain ("may be a ghost form or misrecollection"); needs source verification before changing the surface form.
+24. **el_kath sun ˈiʎos→ˈilios** — APPLIED. Katharevousa formal register kept /l/+/i/ segmental; /ʎ/ is regional demotic. `words/sun.js:518`.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-loaded every cited entry from the live per-word files (`node -e` over `WORDS.<word>.data.<code>`) and inspected the combining-diacritic codepoints where relevant. Verification notes per item:
+
+**APPLIED items — all confirmed present in live data:**
+
+1. ✓ pnt father — `["πατέρας","paˈteɾas"]`. Semantic + stress correct.
+2. ✓ br tree — `["gwezenn","ˈɡweːzɛn"]`. Singulative now matches the Welsh `coeden` it parallels.
+3. ✓ gd cat — `["cat","kʰat"]`. Non-IPA `aʰ` gone.
+4. ✓ lv cat — `["kaķis","ˈkacis"]`. ʲ removed, stress added.
+5. ✓ lt /æ/→/ɛ/ — good `ˈɡʲɛrɐs`, drink `ˈɡʲɛrtʲɪ`, tree `ˈmʲɛdʲɪs`, love `ˈmʲɛɪlʲeː` all present.
+6. ✓ lt heart — `ˈʃʲɪrdʲɪs`. rʲ depalatalized, stress added.
+7. ✓ gv drink — `["iu","juː"]`. j as full onset.
+8. ✓ el_grc one — `hêi̯s` (U+00EA + i + U+032F non-syllabic). Diphthong restored.
+10. ✓ hyw fire — `["կրակ","ɡɾɑk"]`. No epenthetic schwa.
+11. ✓ el_grc caron→circumflex — codepoint-verified U+0302 (not U+030C) on sun `hɛ̂ːlios`, mother `mɛ̂ːtɛːr`, father `patɛ̂ːr`, moon `selɛ̂ːnɛː`.
+14. ✓ sga water — `["uisce","ˈɪʃcə"]`.
+15. ✓ el stress — dog `ˈskilos`, heart `kaɾˈðʲa`, father `paˈteɾas`, mother `miˈteɾa`.
+16. ✓ el hand — `ˈçeɾi` (stress part). The /x/-vs-/ç/ phonemic choice I myself marked "debatable" — accept the HELD allophonic transcription.
+17. ✓ gd fire — `ˈtʲɛnʲə`.
+18. ✓ hy_grab hello — `voʁd͡ʒojn`.
+19. ✓ aae eye — `["sy","sy"]`. Phantom `siri` removed.
+20. ✓ lv hand — `ˈrɔka`.
+24. ✓ el_kath sun — `ˈilios`.
+
+**HELD items — adjudication:**
+
+9. ✓ ACCEPT HELD (el_grc drink `πίνειν` infinitive vs el/el_kath `πίνω`). This is a genuine cross-Greek lemmatization convention spanning the whole verb set (same in eat.js); a system-level decision, not a single-file error. Won't-fix at this file's level.
+21. ✓ ACCEPT HELD (sga drink `ibid` vs ga `ól`). Same class as #9 — Old-Irish-inflected vs Modern-Irish-verbal-noun is a cross-entry convention. Won't-fix here.
+22. ✓ ACCEPT HELD (prg fire `panːo`). I flagged this myself as "minor"/"preferred" and accepted the surface form; the geminate-vs-short reading of Elbing `-nn-` is interpretive. Won't-fix.
+23. ✓ ACCEPT HELD (pnt sun `ήλεν`). I was explicitly uncertain ("may be a ghost form"); correct call to not mutate an attested-looking surface form without firmer sourcing. Won't-fix pending a source.
+
+**HELD items I do NOT accept (clear errors, derivable from the issue as written):**
+
+12/13. △ PARTIAL → still OPEN for two sub-entries. Live data:
+- `words/cat.js` lt = `["katė","kɐːtʲeː"]`
+- `words/house.js` lt = `["namas","nɐːmɐs"]`
+
+Both still carry the spurious length mark `ː` on the **stressed first-syllable /a/** and lack the primary-stress diacritic. Issue #13's own rule ("none of the words listed have a long /aː/ vowel") and worked example (`akis` → `ˈakʲɪs`, already applied) make the corrections fully determinate: cat → `ˈkatʲeː`, namas → `ˈnamɐs`. The worker applied exactly this logic to eye and hello but stopped short on cat and house with the same defect — an inconsistent half-fix, not a defensible convention. These two should be fixed.
+
+The third sub-entry, `words/mother.js` lt = `["motina","mɔːtʲɪnɐ"]`, I treat separately: my original #12 note loosely lumped it under "/ɐ/-for-/a/," but its actual defect is the long `ɔː` on a short /o/ (motina = /ˈmotʲɪnɐ/, also missing stress). Since my filed expected form there was imprecise, I downgrade this one to a NEW correctly-specified item rather than holding the worker to a target I mis-stated.
+
+**New issues raised this round:**
+
+N1. lt mother — `words/mother.js` lt `["motina","mɔːtʲɪnɐ"]`: spurious long `ɔː` on short /o/, missing stress. Expected `ˈmotʲɪnɐ`. (Re-specification of the mother half of #12.)
+
+**Scorecard:**
+- Confirmed-applied & correct: 18 / 18 claimed APPLIED items.
+- Accepted HELD (convention / won't-fix): #9, #21, #22, #23.
+- Still open: cat.js lt `ˈkatʲeː`, house.js lt `ˈnamɐs` (from #12/#13), plus N1 mother.js lt `ˈmotʲɪnɐ`.
+
+**File status: OPEN** — Dev team to apply: `words/cat.js` lt → `["katė","ˈkatʲeː"]`; `words/house.js` lt → `["namas","ˈnamɐs"]`; `words/mother.js` lt → `["motina","ˈmotʲɪnɐ"]`.

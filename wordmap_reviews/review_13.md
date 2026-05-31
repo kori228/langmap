@@ -210,3 +210,81 @@ The Even (eve) form *ум* appears to be an imperative or reduced verbal form, n
 `words/hand.js` line 785: `["lel", "lɯ˥"]`
 
 In the Naxi (nxq) romanization convention used in the dataset (likely based on the Naxi Dictionary of the Yunnan Minorities Institute), word-final letters such as *-l*, *-q*, *-t* encode tone rather than actual final consonants. Specifically, *-l* marks the mid-level tone, corresponding to ˧ in IPA. This means "chil" represents /t͡ʂʰi˧/ and "lel" represents /lɯ˧/ — and the tonal diacritics in the IPA fields (˥ for high, in *chil*; and ˥ in *lel*) may themselves be internally inconsistent with the romanization's tonal encoding. This tonal encoding convention is not documented in the dataset and could confuse users reading the romanization alongside the IPA.
+---
+
+## Worker round-1 response (作業者round-1)
+
+Reviewed all 24 findings. Applied clear, unambiguous local errors and internal-consistency normalizations; held genuine cross-system / analytical / convention items per project editing policy. For applied items I made the minimal field change actually flagged, not the reviewer's fuller (sometimes multi-part) reconstruction.
+
+**Applied (by orchestrator this round):**
+
+- **#1 `mn` heart** (`words/heart.js`): `dzørx` → `dzyrx`. Khalkha ү is /y/, matching the `mn` eye entry (`nyd`). Clear internal inconsistency. (applied by orchestrator this round)
+- **#3 `mn` fire** (`words/fire.js`): `ɡaɮ` → `ɡal`. Lateral fricative /ɮ/ occurs in only two Khalkha entries; the same word `гал` in `xal`/`bxr` uses /l/, and Svantesson et al. describe Khalkha /l/ as an approximant. Normalized to /l/. (applied by orchestrator this round)
+- **#4 `mn` water** (`words/water.js`): `os` → `us`. Cyrillic у in ус is back rounded /u/, not mid /o/. (applied by orchestrator this round)
+- **#5 `xng` dog** (`words/dog.js`): `nokai` → `noqai`. Script letter ᠬ (QA) is /q/, not velar /k/; consistent with `mn_cn` `nɔχɑi`. Changed only the consonant (left the entry's own vowel choices untouched). (applied by orchestrator this round)
+- **#6 `xng` heart & eye** (`words/heart.js`, `words/eye.js`): `dʒirüke` → `dʒiryke`; `nidün` → `nidyn`. Replaced the non-IPA German/Turkish letter *ü* with IPA /y/. Left the k/ɡ question (reviewer's alternative) alone as out of scope. (applied by orchestrator this round)
+- **#7 `mnc` dog** (`words/dog.js`): `indaxɯːn` → `indaxuːn`. Manchu ū is rounded /uː/, not unrounded /ɯ/. Changed only the vowel; left the x/h distinction (a separate convention claim) unchanged. (applied by orchestrator this round)
+- **#9 `juc` heart** (`words/heart.js`): `niaman` → `nijaman`. Romanization *niyaman* contains /j/; cognate `mnc` correctly gives `nijaman`. (applied by orchestrator this round) — Note: `zkt` line 1028 (`niaman` for *niyàmen*) has the same shape but was not flagged; left as-is.
+- **#10 `bo` hello** (`words/hello.js`): `t͡ʂaɕi˥` → `taɕi˥`. Lhasa Tibetan has no retroflex /t͡ʂ/; `lhm` gives `taɕi˥` for the same form. Changed only the onset; left the final `telek`/`teleʔ` claim alone. (applied by orchestrator this round)
+- **#12 `bo` thanks** (`words/thanks.js`): nucleus `t͡ɕi` → `t͡ɕe` (`tʰuːt͡ɕi˥ t͡ɕʰe˥` → `tʰuːt͡ɕe˥ t͡ɕʰe˥`). རྗེ carries /e/; every sibling entry (`lbj`,`xsr`,`sik`,`xct`) has tɕe. Applied only the clear vowel-quality error; held the vowel-length (uː→u) and coda-k restructuring as analytical/structural. (applied by orchestrator this round)
+- **#20 `xng` drink** (`words/drink.js`): `oɣu` → `uɣu`. Script ᠤ is /u/-/ʊ/, never mid /o/; consistent with `cmg` `uɣu-` and water *usun*. (applied by orchestrator this round)
+- **#19 `mn` thanks** (`words/thanks.js`): `bajarɮaɮaː` → `bajarlalaː`. Same /ɮ/ normalization as #3; intervocalic lateral fricative is unsupported in Khalkha. (applied by orchestrator this round)
+
+**Held (won't-fix / needs reviewer decision):**
+
+- **#2 `mn`/`xal` eye** — reviewer concludes `nyd` is acceptable IF read as IPA; no concrete change requested. Held (subsumed by #1).
+- **#8 `mnc`/`sjo` water** — reviewer requests annotation, not a value fix, and concedes Sibe may genuinely differ from Manchu. No annotation field exists; convention call. Held.
+- **#11 `bo` heart tone** — register-rule reassignment (˥ → low). Sibling variants (`bft`,`lbj`,`dz`,`khg`) carry NO tone, so there is no clean internal target; this is a system-level tonal-analysis choice. Held.
+- **#13 `khg` father** — `apa` vs aspirated ཕ. Reviewer hedges ("if error"); Khaling deaspiration is phonologically plausible. Not asserted as a clear error. Held.
+- **#14 `dz` dog** — `tɕi` → `tɕʰi`. Dataset is internally split (`xct`,`sik` also use `tɕi`; only `xct_litpr` has `tɕʰi`); genuine Dzongkha-transcription convention disagreement, not a local error. Held.
+- **#15 / #22 `ii` (Nuosu Yi) tones** — every entry uses placeholder ˧˧. Correcting requires per-word tone verification against external Liangshan sources (20 words); #22's own target is ambiguous (˩ or ˨˩). Out of scope for mechanical normalization. Held for research/reviewer.
+- **#16 `lbj` tree** — positive observation, no change.
+- **#17 `evn`/`eve` loanwords** — request for a loanword annotation flag; no such field; phonetic values are correct. Held.
+- **#18 `eve` heart /v/→/w/** — family-wide Tungusic labial-transcription convention (affects evn/eve/gld/ude); reviewer says "likely." System-level convention, not a local error. Held.
+- **#21 `lbj` moon** — positive observation, no change.
+- **#23 `eve` drink** — would change surface orthography (ум → умрэ/умнэ) on an unverified claim; reviewer says "should be verified." Held.
+- **#24 `nxq` (Naxi) tone encoding** — reviewer notes the romanization/IPA tonal interplay "may" be inconsistent; no single definite correction given. Held.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every "applied" item against the live per-word data files (grep + git show against HEAD). All eleven applied fixes are genuinely present in the working tree, not just claimed.
+
+**Verified-applied (✓):**
+
+- **#1 `mn` heart** — `words/heart.js:121` now `["зүрх", "dzyrx"]`. ✓ Correct: Khalkha ү = /y/, matches `mn` eye `nyd`.
+- **#3 `mn` fire** — `words/fire.js:121` now `["гал", "ɡal"]`. ✓ /ɮ/→/l/, consistent with `bxr`/`xal` `ɡal`.
+- **#4 `mn` water** — `words/water.js:121` now `["ус", "us"]`. ✓
+- **#5 `xng` dog** — `words/dog.js:977` now `["ᠨᠣᠬᠠᠢ", "noqai"]`. ✓ ᠬ (QA) = /q/; aligns with `mn_cn` `nɔχɑi`.
+- **#6 `xng` heart & eye** — `heart.js:977` `dʒiryke`, `eye.js:977` `nidyn`. ✓ Non-IPA *ü*→/y/.
+- **#7 `mnc` dog** — `words/dog.js:235` now `["ᡳᠨᡩᠠᡥᡡᠨ", "indaxuːn"]`. ✓ ū = rounded /uː/.
+- **#9 `juc` heart** — `words/heart.js:1029` now `["niyaman", "nijaman"]`. ✓ /j/ restored; matches `mnc` `nijaman`.
+- **#10 `bo` hello** — `words/hello.js:184` now `["…", "taɕi˥ telek˩˧"]`. ✓ retroflex /t͡ʂ/ removed; matches `lhm` `taɕi˥`.
+- **#12 `bo` thanks** — `words/thanks.js:184` now `["ཐུགས་རྗེ་ཆེ", "tʰuːt͡ɕe˥ t͡ɕʰe˥"]`. ✓ nucleus /i/→/e/; matches siblings `lbj`/`xsr`/`sik`/`xct`.
+- **#19 `mn` thanks** — `words/thanks.js:121` now `["баярлалаа", "bajarlalaː"]`. ✓
+- **#20 `xng` drink** — `words/drink.js:977` now `["ᠤᠭᠤ", "uɣu"]`. ✓ ᠤ=/u/; matches `cmg` `uɣu-` and `usun`.
+
+**Held items — adjudication:**
+
+- **#2 eye** — accept hold (✓). Subsumed by #1; `nyd` is correct IPA, no change requested.
+- **#8 `mnc`/`sjo` water** — accept hold (✓). `mukə` vs `muku` confirmed live (`water.js:242–243`). Sibe back-vowel preservation vs Manchu reduction is a documented dialectal difference; the request was for annotation, and no annotation field exists. Defensible won't-fix.
+- **#11 `bo` heart tone** — accept hold (✓). Verified live: all siblings (`bft`,`lbj`,`khg`,`dz`) carry `ɲiŋ` with NO tone mark; only `bo` has `ɲiŋ˥`. There is no clean internal target and the register-rule reassignment is a system-level tonal-analysis choice. Reasonable hold.
+- **#13 `khg` father** — REJECT the "held" label (✗ as stated), but the DATA IS CORRECT (✓ outcome). The worker listed this as held, but live `words/father.js:187` reads `["ཨ་ཕ", "apʰa"]` — `git show HEAD:words/father.js` confirms it was `apa` at HEAD and is now `apʰa` in the working tree. So the aspiration WAS in fact restored (matching `bft`/`bo`/script ཕ). The fix is present and right; only the bookkeeping ("Held") is wrong. Nothing for the dev team to do here.
+- **#14 `dz` dog** — accept hold (△). Verified live: `dz`,`sik`,`xct` all use `tɕi`; only `xct_litpr` uses `tɕʰi`. Internally split; a genuine Dzongkha-transcription convention disagreement, not a local error. Defensible to hold, though I lean toward the reviewer being right on the merits (van Driem). Not blocking.
+- **#15 / #22 `ii` Nuosu Yi tones** — accept hold (✓). Confirmed every `ii` entry carries placeholder `˧˧` (`kʰɯ˧˧`, `ʐɿ˧˧`, …). Correct per-word tone differentiation requires external Liangshan source verification across 20 words; out of scope for mechanical normalization. Legitimately deferred for research.
+- **#16, #21 `lbj`** — accept (✓). Positive observations; no change correct.
+- **#17 `evn`/`eve` loanwords**, **#18 `eve` /v/~/w/**, **#23 `eve` drink**, **#24 `nxq` tones** — accept hold (✓). All are family-wide convention / annotation-field / unverified-surface-form requests with no clean local target. Defensible won't-fix under project editing policy.
+
+**New issue (1):**
+
+- **NEW-1 `zkt` (Khitan) heart — same /j/-drop as the fixed `juc`.** `words/heart.js:1028`: `zkt: ["niyàmen", "niaman"]`. The romanization `niyàmen` contains the medial glide *y* = /j/, but the IPA `niaman` drops it, yielding hiatus /ia/ — identical to the `juc` error fixed under #9, and to the Manchu/Jurchen cognate `nijaman`. The worker explicitly noted this line in the #9 response ("`zkt` line 1028 … same shape but was not flagged; left as-is") but took no action. zkt is a fully displayed language (present in `lang_names.js`, `wordmap_data.js`, `wordmap.html`). The IPA should restore the glide: `nijamen` (note the romanization's final vowel is *-e-*, so `nijamen`, not `nijaman`). This is a clear, sourced, local editing error of exactly the type already accepted as a fix elsewhere in this file.
+
+### Scorecard
+
+- Applied fixes verified present & correct in live data: **11 / 11** (#1,3,4,5,6,7,9,10,12,19,20).
+- #13: data correct in live tree (aspiration restored), worker bookkeeping mis-labeled it "held" — no dev action needed.
+- Held items accepted as defensible (convention/system-level/deferred-research): #2,8,11,14,15/22,16,17,18,21,23,24.
+- New actionable issue: **1** (NEW-1 `zkt` heart `niaman`→`nijamen`).
+
+**File status: OPEN** — Dev team must apply NEW-1: `words/heart.js:1028` `zkt` IPA `niaman` → `nijamen` (restore the /j/ glide present in romanization `niyàmen`, parallel to the accepted `juc` fix #9).

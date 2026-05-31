@@ -201,3 +201,69 @@ I am a specialist in Eastern Romance linguistics, with doctoral-level training i
 ---
 
 *24 issues total. Primary priorities: Issue 17 (semantic inversion rup mother/father), Issue 13 (ruq hello semantic error), Issue 15 (ruq tree/wood semantic error), Issue 11–12 (ruq finite verb forms as citation forms), Issues 4–5 (ro/rup sun/drink orthographic IPA), Issue 1 (missing ruo/mo).*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Editing policy applied: only clear, unambiguous local errors / internal inconsistencies, or reviewer-endorsed mechanical normalizations. Stress-mark-only issues are held because the dataset does NOT consistently carry stress diacritics (e.g. in `sun.js` `uk: ["сонце", "sɔnt͡sɛ"]` has none while `pl` does), so "missing ˈ" is a system-level convention choice, not a local error. Semantic lexeme swaps are held for reviewer confirmation since they replace the headword token.
+
+**Applied (clear errors):**
+
+- **Issue 4 — `ro` sun:** IPA field `"soare"` was a verbatim copy of the orthography (no diphthong, not IPA). Corrected to render the rising diphthong /o̯a/, matching the sister `rup` entry's structure: `"soare"` → `"ˈso̯are"`. (applied by orchestrator this round)
+- **Issue 18 — `rup` sun:** IPA `"ˈsoare"` used the orthographic digraph ⟨oa⟩ in place of IPA. Corrected `"ˈsoare"` → `"ˈso̯are"`. (applied by orchestrator this round)
+- **Issue 5 — `ro` drink:** IPA field `"a bea"` was the orthographic spelling (digraph ⟨ea⟩, no IPA). Corrected to transcribe the falling diphthong /e̯a/: `"a bea"` → `"a be̯a"`. (applied by orchestrator this round)
+- **Issue 10 — `ruq` cat:** Orthographic ⟨ţ⟩ (t-cedilla, U+0163) is the pre-2003 glyph; mechanically normalized to the post-2003 ⟨ț⟩ (t-comma-below, U+021B) per Romanian Academy 2003. IPA unchanged. `"mâţa"` → `"mâța"`. (applied by orchestrator this round)
+- **Issue 24 — `ruq` dog:** Internal inconsistency — the entry's own IPA is [ˈkɨni] (/ɨ/) but the surface used ⟨ă⟩ (=/ə/). Corrected surface to ⟨â⟩ to match the IPA and the sister `rup` form `câni`: `"căni"` → `"câni"`. (applied by orchestrator this round)
+
+**Held (system-level / convention / needs reviewer confirmation):**
+
+- **Issue 1 (missing `ruo`/`mo`):** scope/coverage decision, not a data error in existing files. Held.
+- **Issues 2, 3, 6, 7, 22, 23 (missing stress marks; `okʲ`, `jubire`, `kɨine`, `unu`, `mulțumesc`, `pisikə`):** dataset does not consistently carry stress diacritics, so these are not local errors. The `okʲ` offglide (Issue 2) additionally has multiple competing transcriptions in the report; not unambiguous. Held.
+- **Issue 8 (`bun` masc-only) & Issue 9 (`salut` register):** lemma-citation / register convention choices, system-level. Held.
+- **Issues 11, 12 (`ruq` `mocăm`/`biem` finite vs infinitive):** citation-form normalization across Romance, but the target Megleno-Romanian infinitive is uncertain (reviewer offers candidates, not a confirmed form). Held for reviewer-supplied attested citation form.
+- **Issues 13, 14, 15, 16, 17 (semantic/lexeme issues: `ubavu`, `ublami`, `lemnu`, `ocl`, `dadâ`):** these replace the headword token itself. Although Issue 17 (`dadâ`='father') and Issue 15 (`lemnu`='wood') are well-argued and Issue 17 is corroborated by the parallel `ruq` `mumâ` entry, swapping lexemes is a content decision; held for reviewer sign-off rather than applied unilaterally. Flagged as high-priority for reviewer confirmation.
+- **Issue 19 (thanks stress divergence):** consistency observation, no single correct value supplied. Held.
+- **Issues 20, 21 (`ruq` orthographic tradition / identical-to-`rup` entries):** documentation/verification notes; `apâ`, `lunâ`, `foc`, `unu` are legitimately cognate and identical IPA is plausible. No confirmed differentiated form supplied. Held.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified all five claimed fixes against the live per-word `words/*.js` data and adjudicated every held item.
+
+### Verification of applied fixes (all CONFIRMED in live data)
+
+- **Issue 4 — `ro` sun ✓** `words/sun.js:167` now `ro: ["soare", "ˈso̯are"]`. Diphthong [o̯a] + stress now in IPA; orthographic-copy removed. Accept.
+- **Issue 18 — `rup` sun ✓** `words/sun.js:765` now `rup: ["soare", "ˈso̯are"]`. Accept.
+- **Issue 5 — `ro` drink ✓** `words/drink.js:167` now `ro: ["a bea", "a be̯a"]`. Falling diphthong [e̯a] transcribed. Accept.
+- **Issue 10 — `ruq` cat ✓** `words/cat.js:760` now `ruq: ["mâța", "ˈmɨtsa"]`. Byte check confirms the glyph is U+021B (t-comma-below), not U+0163 (t-cedilla). Accept.
+- **Issue 24 — `ruq` dog ✓** `words/dog.js:760` now `ruq: ["câni", "ˈkɨni"]`, matching IPA /ɨ/ and the sister `rup` form. Accept.
+
+### Held items — adjudication
+
+**Stress-mark-only issues (2, 3, 6, 7, 22, 23) — △ ACCEPT HOLD as system-level.** I verified the worker's premise directly: in `words/sun.js` only ~70 of 523 array-entries carry a `ˈ`, and the cited `uk: ["сонце", "sɔnt͡sɛ"]` (line 163) indeed has no stress mark while `pl: ["słońce", "ˈswɔɲt͡sɛ"]` (line 161) does. Stress diacritics are therefore not a dataset invariant, so a missing `ˈ` is not a local error. These are correctly held. (Note for the record: my Issue 2 also raised a *non-stress* concern — that `ro` "ochi" = `okʲ` lacks any final vocalic element; live data still reads `["ochi", "okʲ"]`. I accept `okʲ` as a defensible mainstream phonemic transcription of *ochi* /okʲ/ and withdraw it as actionable; the competing [i̯]/[i] variants are analyst's-choice, not error.)
+
+**Issues 8 (`bun` masc-only), 9 (`salut` register) — △ ACCEPT HOLD.** Lemma-citation and register conventions; both forms are attested and correct in isolation. Won't-fix as a system-level convention choice.
+
+**Issues 11, 12 (`ruq` `mocăm`/`biem` finite forms) — △ ACCEPT HOLD, but flag asymmetry.** Live data confirms `words/eat.js:760 ruq: ["mocăm", "moˈkɨm"]` and `words/drink.js:760 ruq: ["biem", "biem"]` are 1pl present finite forms, inconsistent with the infinitive citation convention used by `ro` (`a mânca`, `a bea`) and `rup` (`mâcari`, `beari`, verified at `eat.js:759`/`drink.js:759`). I did not supply a single authoritatively-attested Megleno-Romanian infinitive in round-0, so the worker's hold is defensible. I accept the hold; this is a real but non-blocking normalization that needs an attested source form, not a guess.
+
+**Issues 13, 14, 15, 16, 17 (semantic / lexeme swaps) — ✗ HOLD NOT FULLY ACCEPTED for Issue 17.** Live data confirms every disputed value: `rup` mother = `dadâ` (`mother.js:765`), `ruq` hello = `ubavu` (`hello.js:760`), `ruq` love = `ublami` (`love.js:767`), `ruq` tree = `lemnu` (`tree.js:760`), `ruq` eye = `ocl` (`eye.js:760`).
+  - **Issue 17 (`rup` mother `dadâ` = 'father/dad') — this is a genuine semantic error, not a convention choice.** It is internally corroborated by the dataset itself: `ruq` mother = `mumâ` (`mother.js:766`) is the expected Eastern-Romance reflex of Lat. *mamma*, and `rup` should parallel it (`mumâ`/`ˈmumɨ`). Filing 'father/dad' under the 'mother' headword is a content defect that should be fixed, not indefinitely held. I accept that a lexeme swap needs reviewer sign-off — **so I am giving it: replace `rup` mother with `["mumâ", "ˈmumɨ"]`** (Capidan 1932 §94 lists *dadâ* = 'tată/père'). This keeps the file OPEN.
+  - Issues 13, 15, 16 (ubavu/lemnu/ocl) are also well-grounded but I accept holding them this round pending a confirmed attested replacement; I am not forcing them. Issue 14 (`ublami`) remains a verification flag, held.
+
+**Issue 19 (thanks stress divergence) — △ ACCEPT HOLD.** Observation only; no single corrected value. Held.
+
+**Issues 20, 21 (orthographic tradition / identical `rup`≈`ruq` entries) — △ ACCEPT HOLD.** Cognate identity is plausible and no differentiated attested form was supplied. Held as documentation notes.
+
+**Issue 1 (missing `ruo`/`mo`) — △ ACCEPT HOLD.** Scope/coverage decision, not a defect in existing files. Won't-fix at data level.
+
+### New issues
+None. No new defensible errors surfaced during verification.
+
+### Scorecard
+- Applied-and-verified: 5/5 (Issues 4, 5, 10, 18, 24) — all confirmed present in live data.
+- Accepted holds (system-level / convention / won't-fix): Issues 1, 2, 3, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23.
+- Still actionable: **Issue 17** — clear semantic error (`rup` 'mother' = `dadâ` 'father/dad'), reviewer-signed-off fix supplied.
+
+**File status: OPEN** — Dev team must apply Issue 17: in `words/mother.js`, change `rup: ["dadâ", "ˈdadɨ"]` → `rup: ["mumâ", "ˈmumɨ"]` (parallels `ruq` `mumâ`; Capidan 1932 §94).

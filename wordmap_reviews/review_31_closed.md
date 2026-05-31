@@ -207,3 +207,97 @@ Primary references: Krishnamurti (2003) *The Dravidian Languages* (Cambridge); S
 | 22 | water.js:227 | Malayalam (ml) | Final /-əm/ should be /-am/ | LOW |
 | 17 | heart.js:218 | Telugu/Kn/Ml | /ɦɾ-/ onset claim needs verification | LOW |
 | 23 | hello.js:1000 | Tulu (tcy) | Sanskrit loan; Tulu/Kannada transcription inconsistency | EDITORIAL |
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope reminder: per project editing policy I apply ONLY clear, unambiguous data errors (wrong word / internal inconsistency). System-level transcription-school choices and editorial register/loanword preferences that the team already justified are held with rationale.
+
+**Issue 1 — Tamil `one.js` /ondru/** — HELD. The point that /ondru/ reads as a bare romanization is fair, but the correct IPA target is itself a transcription-school question (reviewer offers /oɳɖɾu/, /oɳɾu/, [ɔɳɖɾɯ] as alternatives). Not a single unambiguous value; this is the project-wide Tamil ன்ற cluster convention. Needs team Tamil-IPA convention decision, not a local fix.
+
+**Issue 2 — Tamil `thanks.js` /nanri/** — HELD, same rationale as Issue 1 (retroflex-cluster transcription convention; multiple defensible targets).
+
+**Issue 3 — Tamil `love.js` /kaːdal/ phonemic vs phonetic** — HELD. Reviewer explicitly frames this as a phonemic-vs-phonetic school choice. The dataset uses phonetic allophones; this is a deliberate system-level convention, not a local error.
+
+**Issue 4 — Tamil `drink.js` /kuɖi/** — HELD, same phonetic-allophone convention as Issue 3.
+
+**Issue 5 — Tamil `eat.js` /saːpːiɖu/** — HELD, same convention.
+
+**Issue 6 — Tamil `hello.js` /ʋaɳakkam/** — HELD (reviewer marks correct/MINOR; no change requested).
+
+**Issue 7 — Telugu `water.js` final /u/ vs /ɯ/** — HELD. Systematic final-vowel-quality convention across all Telugu entries; reviewer notes inconsistency but the resolution is a project-wide convention choice, not a single local error.
+
+**Issue 8 — Telugu `fire.js` అగ్ని (Sanskrit loan)** — HELD. Editorial word-choice (native నిప్పు vs Sanskrit loan). Loanword-vs-native selection is an editorial convention, not a transcription error.
+
+**Issue 9 — Telugu `thanks.js` /dʱənjəʋaːdaːlu/** — HELD. Reviewer rates "broadly defensible"; remaining points are schwa-quality convention + loanword editorial.
+
+**Issue 10 — Tamil `water.js` நீர் vs தண்ணீர்** — HELD. Reviewer states transcription /niːɾ/ is itself correct; the concern is register/word-choice editorial.
+
+**Issue 11 — Malayalam `eat.js` /ɻ/** — HELD (reviewer confirms correct; verification-only flag).
+
+**Issue 12 — Malayalam `father.js` /ətʃːʰən/** — HELD. Reviewer calls the notation "intelligible but non-standard"; no single unambiguous replacement is given. Geminate-aspirate notation is a convention choice.
+
+**Issue 13 — Tulu `father.js` ಅಮ್ಮೆ = 'mother'** — APPLIED (applied by orchestrator this round). Confirmed: cross-Dravidian, amma-type (ta அம்மா, te అమ్మ, kn ಅಮ್ಮ, ml അമ്മ) = mother; appa-type = father. Tulu father corrected to ಅಪ್ಪೆ /appeː/, paired with Issue 14.
+
+**Issue 14 — Tulu `mother.js` ಅಪ್ಪೆ = 'father'** — APPLIED (applied by orchestrator this round). Tulu mother corrected to ಅಮ್ಮೆ /ammeː/. The two entries were swapped; both corrected.
+
+**Issue 15 — Brahui `eye.js` /kann/ vs kand** — HELD. Reviewer explicitly says "needs verification against a reliable Brahui dictionary"; orthography کن is ambiguous between /kan/, /kann/, /kand/. Not unambiguous enough to edit; needs reviewer decision.
+
+**Issue 16 — Brahui `hand.js` ہت /hatʰ/ (Urdu loan)** — HELD. Editorial native-vs-loan word choice.
+
+**Issue 17 — Telugu/Kn/Ml `heart.js` /ɦɾ-/ onset** — HELD. Reviewer rates "phonetically defensible … better than many alternatives"; systematic onset choice flagged for verification only.
+
+**Issue 18 — Kurukh `water.js` आम = Hindi 'mango'** — APPLIED (applied by orchestrator this round). Clear catastrophic error: आम /aːm/ is Hindi 'mango', not Kurukh water. Corrected to native Kurukh ईर् /iːr/ (DEDR 481 reflex of PDr *nīr; Hahn 1911), matching the existing Devanagari style of other Kurukh entries.
+
+**Issue 19 — Kurukh `moon.js` चांदी = Hindi 'silver'** — APPLIED (applied by orchestrator this round). चांदी /tʃaːndiː/ is Hindi 'silver' (moon is चाँद; this entry was doubly wrong). Corrected to Kurukh चांदो /tʃaːndoː/ (Hahn 1911).
+
+**Issue 20 — Tamil `sun.js` /suːɾijan/** — HELD (reviewer rates "acceptable as-is"; no change requested).
+
+**Issue 21 — Kodava `sun.js` /ɨ/ final vowel** — HELD. Systematic Kodava final-vowel symbol choice (/ɨ/ vs /ɯ/) appearing across multiple entries; project-wide convention decision, not a local error.
+
+**Issue 22 — Malayalam `water.js` /-əm/ vs /-am/** — HELD. Systematic Malayalam final /-ം/ schwa-vs-/a/ convention across all -ം entries; convention choice.
+
+**Issue 23 — Tulu `hello.js` Sanskrit loan / schwa inconsistency** — HELD. Editorial loanword choice; the te/kn/ml/tcy schwa-vs-full-/a/ difference is the same project-wide vowel-quality convention as Issues 7/22.
+
+**Issue 24 — Brahui `hello.js` /sælaːm/** — HELD. Reviewer requests a citation either way; no single unambiguous replacement and it is a vowel-quality judgment.
+
+**Issue 25 — Cross-Dravidian *nīr* cognate note** — HELD. Reviewer states "this is not an error but an editorial note."
+
+Summary: 4 CRITICAL wrong-word errors applied (Tulu father/mother swap; Kurukh water/moon Hindi-word substitutions). All remaining items are transcription-school conventions, systematic vowel-quality choices, or editorial loanword/register preferences, held with rationale.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified all four claimed APPLIED fixes directly against live data in `words/`. All four are present and correct:
+
+- `words/father.js:1000` tcy now `["ಅಪ್ಪೆ", "appeː"]` (was ಅಮ್ಮೆ 'mother') — ✓ VERIFIED FIXED.
+- `words/mother.js:1006` tcy now `["ಅಮ್ಮೆ", "ammeː"]` (was ಅಪ್ಪೆ 'father') — ✓ VERIFIED FIXED. The swap is resolved correctly; appa-type = father, amma-type = mother, consistent with ta/te/kn/ml.
+- `words/water.js:582` kru now `["ईर्", "iːr"]` (was आम Hindi 'mango') — ✓ VERIFIED FIXED. Correct reflex of PDr *\*nīr* (DEDR 481; Hahn 1911), and the Devanagari styling matches the other Kurukh entries.
+- `words/moon.js:581` kru now `["चांदो", "tʃaːndoː"]` (was चांदी Hindi 'silver') — ✓ VERIFIED FIXED. Hahn 1911 *cāndo* is correct.
+
+I also spot-checked the live values underlying the HELD items (e.g. `one.js:89` ta `ondru`, `love.js:89` ta `kaːdal`, `fire.js:224` te `əɡni`, `eye.js:848` brh `kann`); they match exactly what the worker describes, so the held characterizations are faithful to the data.
+
+**Per-item adjudication of held items:**
+
+- **Issues 1, 2 (Tamil ன்ற cluster /ondru/, /nanri/)** — △ ACCEPT-AS-HELD. The criticism is real (these read as romanizations, not IPA), but I myself offered three competing targets (/oɳɖɾu/, /oɳɾu/, [ɔɳɖɾɯ]), so there is no single unambiguous correct value. This is genuinely a project-wide Tamil-IPA convention call. Defensible to hold; not a blocking error.
+- **Issues 3, 4, 5 (Tamil phonemic-vs-phonetic voiced stops)** — ✓ ACCEPT. I framed these explicitly as a phonemic/phonetic school choice. The dataset's consistent use of phonetic allophones is a legitimate system-level convention. Won't-fix is correct.
+- **Issues 6, 11, 20 (correct / verify-only flags)** — ✓ ACCEPT. No change was ever requested.
+- **Issue 7 (Telugu final /u/ vs /ɯ/)** — ✓ ACCEPT-AS-HELD. Systematic final-vowel-quality convention; my own note conceded the dataset is internally inconsistent but the fix is a project-wide policy, not a local error.
+- **Issues 8, 16, 23 (native-vs-loanword: అగ్ని, ہت, ನಮಸ್ಕಾರ)** — ✓ ACCEPT-AS-HELD as editorial. I maintain native forms (నిప్పు, ušk/ōsk) would better show Dravidian cognation, but loan-vs-native is an editorial selection the team owns. Not a data error.
+- **Issue 9 (Telugu thanks /dʱənjəʋaːdaːlu/)** — ✓ ACCEPT. I rated it "broadly defensible"; residue is schwa-quality + loanword editorial.
+- **Issue 10 (Tamil நீர் vs தண்ணீர்)** — △ ACCEPT-AS-HELD. The transcription is correct; register/word-choice is editorial. I would prefer தண்ணீர் but won't block.
+- **Issue 12 (Malayalam /ətʃːʰən/ geminate-aspirate)** — ✓ ACCEPT-AS-HELD. I gave no single unambiguous replacement; notation choice.
+- **Issue 15 (Brahui eye /kann/ vs *kand*)** — △ ACCEPT-AS-HELD. My own wording was "needs verification"; the Nastaliq کن is ambiguous and I did not supply a decisive correction. I am not raising this to blocking, but I note Bray 1909 gives *kand* and the team may wish to revisit if a Brahui source is consulted later.
+- **Issues 17, 21, 22, 24 (/ɦɾ-/ onset; Kodava /ɨ/; Malayalam /-əm/; Brahui /sælaːm/)** — ✓ ACCEPT-AS-HELD. All are systematic vowel-quality / onset transcription conventions or items where I requested a citation rather than asserting a fix.
+- **Issue 25 (nīr cognate note)** — ✓ ACCEPT. Explicitly not an error.
+
+**New issues:** None. During verification I found no additional clear errors. (Tulu moon `words/moon.js:1006` ತಿಂಗೊಳు /tiŋɡoɭu/ checked in passing — native Tulu, correct, not a problem.)
+
+**Scorecard:**
+- Critical wrong-word errors (13, 14, 18, 19): 4/4 fixed and verified in live data.
+- Held items: all are defensible transcription-school conventions, systematic vowel-quality choices, or editorial loan/register preferences that I, as reviewer, accept as won't-fix. No held item was a clear unambiguous data error.
+- Claimed fixes missing from live data: 0.
+
+**File status: CLOSED** — nothing left to address. All four critical errors are fixed-and-verified; every remaining item is an accepted convention/editorial choice.

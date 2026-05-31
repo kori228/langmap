@@ -185,3 +185,85 @@ I am a specialist in Germanic historical linguistics with a focus on Proto-Germa
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+All 22 findings were verified verbatim against the data files. 14 applied as clear, well-supported IPA-value corrections; 8 held with rationale (convention / register / underspecified). Applied edits below are marked "(applied by orchestrator this round)".
+
+### Applied
+
+- **#1 goh water** — `ˈwatsːar` → `ˈwasːar`. OHG intervocalic ⟨zz⟩ = geminate fricative [sː], not affricate. (applied by orchestrator this round)
+- **#2 goh eat** — `ˈetsːan` → `ˈesːan`. Same intervocalic HGCS reflex. (applied by orchestrator this round)
+- **#3 gmh eat** — `ˈetsːən` → `ˈesːən`. MHG ⟨zz⟩ retains geminate fricative. (applied by orchestrator this round)
+- **#4 gmh water** — `watsːer` → `wasːer`. Affricate→fricative value only; the proposed stress-mark addition (`ˈwasːer`) held as convention (see below). (applied by orchestrator this round)
+- **#5 goh cat** — `ˈkatsːa` → `ˈkasːa`. OHG-stage geminate fricative (NHG affricate is a later development). (applied by orchestrator this round)
+- **#6 de fire** — `fɔʏ̯ɐ` → `fɔɪ̯ɐ`. Standard German /eu/ = [ɔɪ̯]; [ʏ̯] is Southern. Consistent with de_lut `foɪ̯r`. (applied by orchestrator this round)
+- **#7 is love** — `aːust` → `auːst`. á = long diphthong /auː/; old value split the diphthong at the wrong joint. (applied by orchestrator this round)
+- **#8 ang thanks** — `θɑntsiɑn` → `θɑŋkiɑn`. ⟨nc⟩ = [ŋk]; removed the spurious affricate + inserted [t]. (applied by orchestrator this round)
+- **#13 af drink** — `drəŋk` → `drɪŋk`. Stressed closed syllable takes short front /ɪ/, not schwa. (applied by orchestrator this round)
+- **#14 yi one** — `ɛɪns` → `eɪns`. YIVO ⟨ey⟩ = [eɪ]. (applied by orchestrator this round)
+- **#15 yi hello** — `ʃɔləm alɛɪxəm` → `ʃoləm aleɪxəm`. sholem [o]; aleykhem [eɪ]. Stress marks held as convention. (applied by orchestrator this round)
+- **#17 is good** — `ɡouːðʏɹ` → `kouːðʏɹ`. Initial lenis /g/ → voiceless [k]. Justified as an *internal inconsistency*: the dataset already devoices is `drekka` → `trɛhka`. (applied by orchestrator this round)
+- **#18 is father** — `faːðɪɹ` → `faðɪɹ`. Unaccented `a` is short; the [aː] length mark contradicts Icelandic orthography. (applied by orchestrator this round)
+- **#19 nl father** — `faːdər` → `vaːdər`. Standard Dutch initial /v/ = [v]; matches dataset nl `vuur`/`liefde`. (applied by orchestrator this round)
+- **#22 fo good** — `ɡɔuːʊɹ` → `kɔuːʊɹ`. Initial /g/ → [k]; internal inconsistency with fo `drekka` → `tɹɛhka`. (applied by orchestrator this round)
+
+### Held with rationale
+
+- **#9 ang heart**, **#10 ang water**, **#11 non fire**, **#16 goh/gmh/osx fire** — *Held.* These flag IPA fields that repeat the orthography. The defect is real, but the proposed corrections are not single-valued: adding a stress mark and choosing a reduced-vowel value ([ə] vs full vowel, [iu̯]/[yː] for ⟨iu⟩, [ɛ] vs [e] quality) are scholarly-transcription conventions. This is a defensible normalization pass but was not pre-endorsed and is stylistic rather than a clear wrong-value error; deferring to a dedicated convention decision.
+- **#12 sv father/mother** — *Held (won't-fix).* `pappa`/`mamma` vs `far`/`mor` is a headword *register choice*, a system-level decision rather than a local error. The chosen surface forms are valid Swedish; changing them is an editorial policy call for the team.
+- **#20 de hello** — *Held.* The proposed `haˈlo` bundles a stress-convention addition with removal of final-vowel length; the current `haloː` parallels pdc `Hallo` `haloː`. Not an unambiguous single-value fix.
+- **#21 is heart** — *Held.* The dataset deliberately does **not** mark sonorant+stop preaspiration elsewhere (is `hundur` `hʏntʏɹ`, `hönd` `hœnt`, `eldur` `ɛltʏɹ` all lack it); only the geminate in `köttur` is marked. Adding preaspiration to `hjarta` alone would create a new inconsistency, so this is a system-wide convention choice, not a local fix.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified all 15 claimed "applied" edits against the **live** per-word data files (grep over `words/*.js`). Every one is present in the data exactly as claimed:
+
+| # | lang/word | live value | verified |
+|---|-----------|-----------|----------|
+| 1 | goh water (l.917) | `["wazzar", "ˈwasːar"]` | ✓ |
+| 2 | goh eat (l.910) | `["ezzan", "ˈesːan"]` | ✓ |
+| 3 | gmh eat (l.922) | `["ezzen", "ˈesːən"]` | ✓ |
+| 4 | gmh water (l.929) | `["wazzer", "wasːer"]` | ✓ (affricate→fricative; stress held) |
+| 5 | goh cat (l.910) | `["kazza", "ˈkasːa"]` | ✓ |
+| 6 | de fire (l.92) | `["Feuer", "fɔɪ̯ɐ"]` | ✓ |
+| 7 | is love (l.301) | `["ást", "auːst"]` | ✓ |
+| 8 | ang thanks (l.516) | `["þancian", "θɑŋkiɑn"]` | ✓ |
+| 13 | af drink (l.282) | `["drink", "drɪŋk"]` | ✓ |
+| 14 | yi one (l.299) | `["איינס", "eɪns"]` | ✓ |
+| 15 | yi hello (l.293) | `["שלום עליכם", "ʃoləm aleɪxəm"]` | ✓ |
+| 17 | is good (l.294) | `["góður", "kouːðʏɹ"]` | ✓ |
+| 18 | is father (l.294) | `["faðir", "faðɪɹ"]` | ✓ |
+| 19 | nl father (l.160) | `["vader", "vaːdər"]` | ✓ |
+| 22 | fo good (l.495) | `["góður", "kɔuːʊɹ"]` | ✓ |
+
+No phantom/claimed-but-absent fixes. All 15 are clean, correctly-valued corrections — accepted (✓).
+
+### Adjudication of held items
+
+- **#9 ang heart, #10 ang water, #11 non fire, #16 goh/gmh/osx fire — △ ACCEPT THE HOLD.** I confirmed these IPA fields still verbatim-copy the orthography (`ang heart` `heorte`/`heorte` l.516; `ang water` `wæter`/`wæter` l.523; `non fire` `eldr`/`eldr` l.524; `goh/gmh/osx fire` `fiur`/`viur`/`fiur` ll.916/928/932). This is a real defect class, but the proposed corrections are genuinely multi-valued (reduced-vowel choice [ə] vs full vowel; ⟨iu⟩ → [iu̯] vs [yː]; ⟨eo⟩ breaking diphthong notation; whether to mark stress on disyllables the dataset otherwise leaves unmarked). The dataset leaves stress unmarked on essentially all disyllables (e.g. de `faːtɐ`, `vasɐ`, nl `vaːdər`), so a blanket stress-mark addition would itself break convention. I agree this belongs to a dedicated normalization/convention pass rather than a single-value error fix. Defensible hold — not blocking.
+
+- **#12 sv father/mother — ✓ ACCEPT THE HOLD (won't-fix).** Confirmed live: sv `["pappa","papːa"]` / `["mamma","mamːa"]`. `pappa`/`mamma` are valid, extremely common Swedish forms; headword register is an editorial/system-level policy, not a phonetic error. The IPA itself is correct for the chosen surface form. Won't-fix is the right call.
+
+- **#20 de hello — △ ACCEPT THE HOLD.** Confirmed live: de `["Hallo","haloː"]`, and pdc `["Hallo","haloː"]` (l.291) parallels it. The stress-mark omission is consistent with the dataset's disyllable convention, so it is not an isolated error. The final `oː` length is debatable (Duden marks short, but stressed final -o in *Hallo* is frequently realized half-long/long in actual speech). Minor and defensible; not blocking.
+
+- **#21 is heart — ✓ ACCEPT THE HOLD.** Verified the consistency basis: other Icelandic sonorant+voiceless-stop clusters in the dataset are left without preaspiration marking (`eldur` `ɛltʏɹ` confirmed l.300 fire.js); only the `köttur` geminate is marked. Adding preaspiration to `hjarta` alone would introduce a fresh inconsistency. This is a genuine system-wide convention choice; correctly held.
+
+### New issues
+
+None. During verification I scanned the neighbouring Germanic/North-Germanic entries in all 13 touched files and found no additional clear wrong-value errors beyond what the original review already flagged. I deliberately did not pad.
+
+### Scorecard
+
+- Applied & verified in live data: 15 / 15 ✓
+- Held items adjudicated: 4 (all ACCEPTED as defensible convention / register / multi-valued-normalization choices; 2 △ stylistic, 2 ✓ won't-fix)
+- New actionable issues: 0
+- Phantom fixes (claimed but absent): 0
+
+Every clear wrong-value error raised in this file has been fixed and verified against the live data. The remaining open items are all either system-level convention decisions or register/editorial policy that I explicitly accept as defensible non-fixes.
+
+**File status: CLOSED** — nothing left to address.

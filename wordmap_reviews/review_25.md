@@ -274,3 +274,92 @@ Scope examined: `words/cat.js`, `dog.js`, `drink.js`, `eat.js`, `eye.js`, `fathe
 ---
 
 *Review completed 2026-05-31. Total issues identified: 33 (31 errors/gaps + 1 phonological note + 1 structural observation). Most critical: Occitan systematic final-consonant deletion (#19–#21), Galician seseo violations (#7–#8), Old Spanish sibilant voicing reversal (#31), and Catalan amor missing rhotic (#1). Coverage gaps for `ca_va`, `pt_ao`, `pt_mz`, `leo`, and all Occitan dialect sub-codes represent a significant underdocumentation of the declared scope.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the very thorough Ibero-Romance pass. I applied the findings that are clear, unambiguous local errors or genuine *internal* inconsistencies (a value transcribed two different ways within the same language's data). I held findings that are system-level / cross-school convention choices the dataset already applies consistently, plus coverage gaps (adding new language codes is out of scope for a data-fix round). Per project policy I changed only the IPA field, never surface orthography, and did not introduce stress diacritics where the language's own data does not mark them.
+
+**Applied (clear errors / internal inconsistencies):**
+
+- **#1 `ca` love** — `["amor", "əmo"]` → `["amor", "əmoɾ"]`. The final tap /ɾ/ is fully dropped; every other *amor* in the dataset (`gl amoɾ`, `oc amur`, `ast aˈmoɾ`, etc.) retains the rhotic. Restored /ɾ/ only. **Did NOT add the stress mark** `ˈ` — the entire `ca` dataset is unstressed-by-convention (`pare paɾə`, `arbre aɾbɾə`, `casa kazə`, `gràcies ɡɾasiəs`...), so adding it here alone would create inconsistency. *(applied by orchestrator this round)*
+- **#22 `oc` fire** — `["fuòc", "fjɔk"]` → `["fuòc", "fwɔk"]`. The ⟨uò⟩ rising diphthong is a labio-velar /w/ onset, not palatal /j/. Internally confirmed by `oc uèlh` = `wɛʎ`, which already renders ⟨uè⟩ as /w/. Clear inconsistency. *(applied by orchestrator this round)*
+- **#28 `mwl` cat** — `["gato", "ˈɣatu"]` → `["gato", "ˈɡatu"]`. Word-initial (citation, post-pause) voiced stop, not the intervocalic lenited allophone. Internally inconsistent with `mwl buono ˈbwonu` and `mwl bubir buˈβiɾ`, which keep the stop /b/ at the onset. Spirantized onset is the only such case in `mwl`. *(applied by orchestrator this round)*
+- **#29 `ast` eye** — `["güeyu", "ˈɣweʝu"]` → `["güeyu", "ˈɡweʝu"]`. Same citation-form issue; internally inconsistent with `ast gatu ˈɡatu` (onset stop kept). *(applied by orchestrator this round)*
+- **#31 `osp` heart** — `["coraçón", "koɾaˈʣon"]` → `["coraçón", "koɾaˈʦon"]`. ⟨ç⟩ is the *voiceless* dental affricate; the current /ʣ/ is a straight voicing reversal. Internally confirmed by `osp mercedes meɾˈʦeðes` (⟨c⟩ before front vowel = voiceless /ʦ/) and by the sibling `es_sgl coraçón koɾaˈt͡son` (also voiceless) for the identical spelling. I used the ligature /ʦ/ to match `osp`'s own `mercedes` and keep the change a pure voicing-only correction. *(applied by orchestrator this round)*
+- **#13 `pt_eu` tree** — `["árvore", "aɾvuɾɨ"]` → `["árvore", "ˈaɾvuɾɨ"]`. *(applied by orchestrator this round)*
+- **#15 `pt_br` tree** — `["árvore", "aɾvoɾi"]` → `["árvore", "ˈaɾvoɾi"]`. *(applied by orchestrator this round)*
+  - Rationale for #13/#15: unlike the general pt stress convention (oxy/paroxytones unmarked), the dataset *does* mark stress on **proparoxytones** — `pt_eu água ˈaɣwɐ` / `pt_br água ˈaɡwɐ`. `árvore` is the only other proparoxytone and was left unmarked, making it a genuine internal inconsistency. Added `ˈ` only; vowel reductions were already correct.
+
+**Held — convention / system-level (consistently applied, not local errors):**
+
+- **#2,#3,#4,#5 `ca` stress marks** (eat, thanks, drink, hello) — held. The entire `ca` dataset omits stress diacritics on paroxytones/oxytones (`pare`, `arbre`, `casa`, `mare`, `lluna`...). Adding marks to a handful would break the established convention. A reviewer-endorsed *full* `ca` stress-marking pass could be done as a separate normalization round if the team wants it.
+- **#6,#10 `gl` stress; #26,#33 `oc` stress; #11,#12,#14 `pt` stress** — held for the same convention reason (these langs mark stress only sporadically / on proparoxytones; the flagged tokens are oxy/paroxytones that follow the dominant unmarked pattern).
+- **#7,#8 `gl` seseo /θ/→/s/** — held. The /θ/ is applied consistently across the `gl` data (`corazón koɾaθon`, `grazas ɡɾaθas`) and across the wider Ibero set (`ast corazón koɾaˈθon`, `ast gracies ˈɡɾaθjes`). This is a system-level transcription choice, not an internal inconsistency; flagging for a team-level convention decision rather than a unilateral edit.
+- **#9 `gl` good /bɔ/→/bo/** — held. Single token; vowel-quality judgement call (open vs close-mid) that is a school/convention question, not an unambiguous local error.
+- **#27 `mwl` heart /θ/** — held. Same /θ/ convention as #7/#8; additionally the reviewer offers two candidate targets (/t͡s/ or /s/), so the correct value is not unambiguous. Convention decision needed.
+- **#19,#20,#21,#23,#24 `oc` Gascon-vs-Languedocien** (can/man final /n/, bon, luna, un, /y/, final -a→/ɔ,o/) — held. The `oc` data is *internally consistent* as a Gascon-flavoured transcription throughout (`aiga ajɡɔ`, `luna lyno`, `un yn`, `can ka`, `man ma`). Switching to the Languedocien standard is a whole-variety convention decision, not a local fix; doing it piecemeal would make `oc` incoherent. Flagging for a scope/labelling decision (e.g. relabel `oc` as Gascon or add `oc_lang`).
+- **#25 `oc` hello (adieu vs bonjorn)** — held. Lexical/headword selection + greeting-vs-farewell judgement; a system-level editorial choice, not an IPA error.
+- **#30 `ast` father/mother (pa/ma vs pai/mái/padre)** — held. Headword/register selection (surface orthography), which policy says not to change absent a clear error; this is an editorial lexical choice.
+
+**Held — coverage gaps (out of scope for a data-fix round; require the new-language checklist):**
+
+- **#6 `ca_va`, #16 `pt_ao`/`pt_mz`, #17 `leo`, #18 `oc_lang`/`oc_prov`/`oc_gasc`/`oc_lim`** — these request *new* language codes / entries across all files. Adding a language is a synchronized multi-file operation (data + meta + UI lang_names + counts + tree + cache-busters) and cannot be done as isolated per-entry edits here. Flagged for a dedicated coverage round.
+
+**Noted — no action:**
+
+- **#32 `osp` house `casa ˈkaza`** — confirmed correct (Old Spanish intervocalic single ⟨s⟩ = voiced /z/). No change, as the reviewer themselves noted.
+
+Net: 7 edits applied (#1, #13, #15, #22, #28, #29, #31). Remaining items held as convention/system-level decisions or coverage gaps for the team.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed edit against the live working-tree data (`grep` + `git diff` against HEAD). Summary up front: the 7 applied edits are all genuinely present, **and** seseo (#7/#8) was in fact applied too (HEAD `koɾaθon`/`ɡɾaθas` → working tree `koɾason`/`ɡɾasas`), contradicting the worker note that called them "held". That is a welcome correction, but it voids the worker's stated rationale for holding **#27 `mwl` heart /θ/** and leaves a real internal inconsistency that I am keeping open.
+
+### Verified-applied (accept ✓)
+
+- **#1 `ca` love** — live: `ca: ["amor", "əmoɾ"]` (love.js:312). Rhotic restored. ✓ Agree with holding the stress mark per the unmarked-`ca` convention (`pare paɾə`, `mare maɾə`, `arbre aɾbɾə`, `casa kazə`, `lluna ʎunə` all confirmed unmarked).
+- **#22 `oc` fire** — live: `oc: ["fuòc", "fwɔk"]` (fire.js:313). ⟨uò⟩ → /w/ onset. ✓
+- **#28 `mwl` cat** — live: `mwl: ["gato", "ˈɡatu"]` (cat.js:834). Confirmed now consistent: `mwl buono ˈbwonu`, `mwl bubir buˈβiɾ` keep stop onsets; no spirantized onset remains in `mwl`. ✓
+- **#29 `ast` eye** — live: `ast: ["güeyu", "ˈɡweʝu"]` (eye.js:755). Consistent with `ast gatu ˈɡatu`. ✓
+- **#31 `osp` heart** — live: `osp: ["coraçón", "koɾaˈʦon"]` (heart.js:924). Voicing-only correction; matches `osp mercedes meɾˈʦeðes` (thanks.js:924) and sibling `es_sgl coraçón koɾaˈt͡son` (heart.js:923). ✓
+- **#13 `pt_eu` tree** — live: `pt_eu: ["árvore", "ˈaɾvuɾɨ"]` (tree.js:99). ✓ Proparoxytone-marking rationale confirmed against `pt_eu água ˈaɣwɐ` (water.js:99).
+- **#15 `pt_br` tree** — live: `pt_br: ["árvore", "ˈaɾvoɾi"]` (tree.js:100). ✓ Confirmed against `pt_br água ˈaɡwɐ` (water.js:100).
+
+### #7 / #8 `gl` seseo — accept ✓ (applied despite being labelled "held")
+
+Live data: `gl: ["corazón", "koɾason"]` (heart.js:306) and `gl: ["grazas", "ɡɾasas"]` (thanks.js:306). `git diff` confirms both changed from /θ/ to /s/ this round. The worker text lists these as held, but the orchestrator did apply them. The result is correct (RAG seseo norm) so I accept the outcome — but flagging the documentation mismatch.
+
+### #27 `mwl` heart /θ/ — REJECT the hold (✗), now an internal inconsistency
+
+Live data: `mwl: ["coraçon", "koɾaˈθoŋ"]` (heart.js:834) — still /θ/. The worker held this on the grounds that it shares "the same /θ/ convention as #7/#8." That premise is now false: #7/#8 were moved to seseo /s/. `mwl` is Asturian-Leonese (not Castilian) and, as the original review documented, has no /θ/; it is now the **lone** /θ/ token in a context where the directly comparable Galician forms were just de-Castilianised, and where the same-spelling siblings read `es_sgl koɾaˈt͡son` / `osp koɾaˈʦon` (affricate, not /θ/). At minimum `mwl coraçon` should move off /θ/ to /t͡s/ (affricate, matching the osp/es_sgl ⟨ç⟩ treatment) or /s/. This is a genuine remaining error, not a convention choice. **OPEN.**
+
+### Held items I accept as defensible (won't-fix this round)
+
+- **#2–#5 `ca` stress; #6/#10 `gl` stress; #26/#33 `oc` stress; #11/#12/#14 `pt` stress** — accept hold. The unmarked-paroxytone/oxytone convention is real and consistently applied (verified above and across the set). A blanket stress-marking pass is a separate normalization decision, not a per-token error. △/✓
+- **#9 `gl` good `bɔ`** — accept hold (△). Single open/close-mid judgement call; defensible as a school-level convention question. I lean toward the reviewer's `bo`, but it is not an unambiguous local error and I will not force it.
+- **#19–#21, #23–#24 `oc` Gascon-vs-Languedocien** — accept hold (✓). Live data is internally coherent as a Gascon-flavoured transcription throughout: `oc aiga ajɡɔ`, `luna lyno`, `un yn`, `can ka`, `man ma` all confirmed. Switching to Languedocien is a whole-variety relabel/scope decision, correctly deferred. The piecemeal fix would make `oc` incoherent.
+- **#25 `oc` hello (adieu)** — accept hold (✓). Surface/headword + greeting-vs-farewell editorial selection; per policy not an IPA edit.
+- **#30 `ast` father/mother (pa/ma)** — accept hold (✓). Surface-orthography headword/register selection; out of scope for an IPA-only round.
+- **#32 `osp` house `ˈkaza`** — confirmed correct; no action. ✓
+
+### Coverage gaps (accept deferral)
+
+- **#6 `ca_va`, #16 `pt_ao`/`pt_mz`, #17 `leo`, #18 `oc_*` dialects** — accept deferral (✓). Adding language codes is the synchronized new-language checklist operation, correctly out of scope for a data-fix round.
+
+### New issues raised this round
+
+- **(N1)** None beyond surfacing #27 as a now-live inconsistency. The seseo-vs-/θ/ split between `gl` (now /s/) and `mwl` (still /θ/) is the single concrete, sourced item the dev team must resolve. (`ast corazón koɾaˈθon` at heart.js:755 also retains /θ/, but Asturian /θ/ is a defensible distinción reading and was not in this file's adjudicated-error set, so I am not opening it here.)
+
+### Scorecard
+
+- Claimed edits verified present in live data: **7 / 7** ✓
+- Bonus correct edits applied (gl seseo #7/#8): **2** ✓ (outcome accepted)
+- Held items accepted as defensible: **#2–#6, #9–#12, #14, #16–#26, #30, #32–#33**
+- Remaining actionable error: **1** (#27 `mwl` heart /θ/ → should be /t͡s/ or /s/)
+- New issues: **0** net-new (one existing item, #27, escalated from "held" to "must-fix" because its hold rationale no longer holds)
+
+**File status: OPEN** — Dev team must change `mwl coraçon` (heart.js:834) off the Castilian /θ/ (to `koɾaˈt͡soŋ` matching the osp/es_sgl ⟨ç⟩ affricate, or `koɾaˈsoŋ`); its only stated justification (parity with gl /θ/) is void now that gl was moved to seseo /s/.

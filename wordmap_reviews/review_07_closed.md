@@ -230,3 +230,76 @@ Like issue #37, this Cyrillic entry for `mhr` is not Mehri (Modern South Arabian
 - Issue 18: Assyrian Neo-Aramaic "one" — script shows two letters, transcription shows one consonant
 - Issue 32: Assyrian ܒܣܝܡܐ for THANKS — idiomatic usage needs note
 - Issue 33/34: Maltese devoicing correctly handled ✓ (noted for completeness)
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the detailed Semitic-specialist review. I applied the IPA fixes that are clear, unambiguous local errors or internal inconsistencies (a same-file cognate already shows the correct value). I held items that are dialectal-source judgments, project-wide notation conventions, semantic/lexical-choice or code-assignment decisions, or that would require an orthography change.
+
+### Applied (IPA only; orthography untouched)
+
+- **#3 `ar` father** — `words/father.js`: `ar: ["أب", "ab"]` → `["أب", "ʔab"]`. MSA hamzat al-qatʿ is phonemic; same-file `ar_qur` already gives `ʔab`. Clear internal inconsistency. (applied by orchestrator this round)
+- **#4 `ar` mother** — `words/mother.js`: `ar: ["أم", "umm"]` → `["أم", "ʔumm"]`. Same case; same-file `ar_qur` gives `ʔumm`. (applied by orchestrator this round)
+- **#22 `gez` good** — `words/good.js`: `gez: ["ሠናይ", "sˤannaːj"]` → `["ሠናይ", "sannaːj"]`. ሠ (śawt) is the Proto-Semitic lateral-sibilant reflex, merged to a plain sibilant in Geʿez — it is NOT the ṣ-emphatic series (ፀ/ጸ). Marking it /sˤ/ is a flat phonological error; corrected to /s/. (applied by orchestrator this round)
+- **#23 `ti` good** — `words/good.js`: `ti: ["ጽቡቕ", "sˤɨbuqʼ"]` → `["ጽቡቕ", "tsʼɨbuqʼ"]`. Tigrinya ጽ (ṣädäy) is an ejective affricate /tsʼ/, not pharyngealized /sˤ/; same-etymon Tigre `tig` already uses /tsʼ/. Internal inconsistency + factual. (applied by orchestrator this round)
+- **#28 `syc` hand** — `words/hand.js`: `syc: ["ܐܝܕܐ", "ʔiːdaː"]` → `["ܐܝܕܐ", "ʔiːðaː"]`. Post-vocalic dālaṯ undergoes rukkākā spirantization → /ð/; same-display `arc` already has /ð/. The stop /d/ contradicts the BGDKPT rule. Only the medial consonant changed; the (correctly present) initial /ʔ/ on the syc entry is retained. (applied by orchestrator this round)
+
+### Held — with rationale
+
+- **#7 `ar_iq` heart** (`galub` → `galib`): well-referenced (Erwin 1963) Baghdad form, but this is a dialectal vowel-quality choice, not an internal inconsistency, and second-syllable vowel realization varies across Iraqi varieties. Held pending a team dialect-source decision rather than applied as an "unambiguous" fix.
+- **#29 `syc`/`arc` father** (add initial /ʔ/ to `abbaː`/`abːaː`): the corpus is genuinely split on whether to notate word-initial ālap/hamza on Aramaic entries (cf. #28 where `arc hand` has no initial /ʔ/ but `syc hand` does). This is a notation-convention decision, not a clear local error, so I did not apply it unilaterally. Flagging for a convention ruling.
+- **#1/#2 `ar_tn` water**, **#8 `ar_ma` fire**, **#13 `he_mis` eat**, **#31 `akk` thanks**, **#32 `aii` thanks**: these are lexical-choice / semantic / orthography questions (which word or spelling to display, euphemism vs. literal, participle vs. root). Changing them alters the surface form, which is outside the IPA-correction remit and needs an explicit reviewer/team lexical decision.
+- **#12 `he_mis` cat** (`ɑ`→`a`, length): plausible but a fine-grained Tiberian vowel-quality/length reconstruction; held as a non-unambiguous transcription preference.
+- **#24 `am` eye** (add /ʕ/): Amharic widely weakens ʕ to [ʔ]/Ø; whether the plain `am` entry should phonemicize /ʕ/ or reflect actual realization is a register convention. The Geʿez/Tigrinya cognates already retain /ʕ/, so the contrast is intentional. Held as convention.
+- **#27 `phn`/`uga` tsade** (superscript-ʕ notation): a project-wide notation convention spanning multiple entries; not a local error. Held for a corpus-wide notation pass rather than a piecemeal edit.
+- **#36 `hbo` tree** tsade emphatic mark, **#18 `aii` one** script/transcription length mismatch: transcription-precision/notation preferences, held.
+- **#5, #10, #11 documentation notes; #37/#38 `mhr` = Meadow Mari (Uralic) code assignment**: documentation gaps and a deliberate ISO 639-3 code mapping (mhr = Meadow Mari), not data errors actionable in this round. The `mhr` mapping is a system-level decision to track, not fix here.
+
+**remainingOpenCount: items deliberately left open for reviewer/team decision are listed above.**
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-introduce myself as the Semitic specialist (Proto-Semitic phonology, Arabic dialectology, the Aramaic continuum, Ethiopic/MSA). I verified every claimed fix against the live `words/*.js` data.
+
+### Verification of applied fixes — all confirmed in live data
+
+- **#3 `ar` father** — `words/father.js` line 103 now reads `ar: ["أب", "ʔab"]`. ✓ Verified. Phonemic hamzat al-qatʿ restored; consistent with `ar_qur` (`ʔab`) and, I note, the whole Arabic column (`ar_eg`, `ar_lev`, `ar_gulf`, `ar_iq`, `ar_sd` all `ʔab`). Accept.
+- **#4 `ar` mother** — `words/mother.js` line 103 now `ar: ["أم", "ʔumm"]`. ✓ Verified. Accept.
+- **#22 `gez` good** — `words/good.js` line 911 now `gez: ["ሠናይ", "sannaːj"]`. ✓ Verified. The pharyngealized /sˤ/ is gone; ሠ (the *ś lateral-sibilant reflex, not the ṣ-emphatic series) is now a plain sibilant. Correct. Accept.
+- **#23 `ti` good** — `words/good.js` line 246 now `ti: ["ጽቡቕ", "tsʼɨbuqʼ"]`. ✓ Verified. Ejective affricate now matches Tigre `tig: tsʼəbbuqʼ` (line 1005). Accept.
+- **#28 `syc` hand** — `words/hand.js` line 906 now `syc: ["ܐܝܕܐ", "ʔiːðaː"]`. ✓ Verified. Post-vocalic dālaṯ correctly spirantized to /ð/. I further note `arc` (line 525) is now `ʔiːðaː` as well, so the two display-identical Syriac forms are fully harmonized (initial /ʔ/ + /ð/). This incidentally resolves the directionality concern in my original #28. Accept.
+
+All five "applied" claims are genuinely present in the live data. No phantom fixes this round.
+
+### Adjudication of held / deferred items
+
+- **#7 `ar_iq` heart** (`galub`→`galib`): △ partial. Live `words/heart.js` line 240 still `["قلب", "galub"]`. The /u/ second-syllable vowel is a Baghdad-specific dialect-quality call; my original cite (Erwin 1963) gives /galib/, but second-syllable raising/backing does vary, and this is not an internal inconsistency. I **accept holding** it as a dialect-source decision. Not a blocker.
+- **#29 `syc`/`arc` father** (add initial /ʔ/): △. Live `words/father.js` still `arc: ["ܐܒܐ", "abːaː"]` (525) and `syc: ["ܐܒܐ", "abbaː"]` (906) — both lack initial /ʔ/. I note this is now **inconsistent with the same files' hand entries**, where both `arc` and `syc` carry initial /ʔ/ (after the #28 fix). The corpus is therefore internally split on notating word-initial ālap. I will not force a unilateral edit, but I flag that a convention ruling is genuinely needed; as a reviewer I **accept** the worker's deferral to a corpus-wide notation pass. Won't-block.
+- **#1/#2 `ar_tn` water**: ✗→accept-as-held. Live line 251 `ar_tn: ["ماء", "maː"]`. This is a surface-form/register lexical choice (formal ماء vs. colloquial مية). Outside the IPA remit; legitimately a lexical-team decision. Accept holding.
+- **#8 `ar_ma` fire** (عافية): accept-as-held. Live `words/fire.js` line 247 `ar_ma: ["عافية", "ʕaːfja"]`. I reaffirm that عافية /ʕaːfja/ is in fact the **standard everyday Moroccan word for fire** (نار being largely literary/MSA in Moroccan usage), so this is defensible, not an error — and `arq` line 248 corroborates with `العافية`. The euphemism framing in my original note overstated it. I now **accept** this entry on the merits.
+- **#13 `he_mis` eat** (אוכל participle vs root): accept-as-held. Live line 957 `he_mis: ["אוכל", "ʔoχel"]`. Surface-form lexical choice; outside IPA remit. Accept holding pending lexical decision.
+- **#31 `akk` thanks / #32 `aii` thanks**: accept-as-held. Semantic/idiomatic-gloss judgments, not IPA. Accept.
+- **#12 `he_mis` cat** (`ɑ`→`a`, length): accept-as-held. Fine-grained Tiberian reconstruction preference, non-unambiguous. Accept.
+- **#24 `am` eye** (add /ʕ/): accept-as-held. Amharic robustly weakens /ʕ/→[ʔ]/Ø; the plain `am` entry reflecting realization (while Geʿez/Tigrinya cognates keep /ʕ/) is a defensible register convention. Accept.
+- **#27 `phn`/`uga` tsade** superscript-ʕ notation: accept-as-held. A corpus-wide notation convention; a piecemeal edit would create inconsistency. Accept deferral to a notation pass.
+- **#36 `hbo` tree tsade** emphatic mark, **#18 `aii` one** script/length mismatch: accept-as-held. Transcription-precision preferences. Accept.
+- **#5/#10/#11 documentation notes**: accept-as-held. Documentation gaps, not data errors.
+- **#37/#38 `mhr`**: ✗ withdrawn / accept. I verified `lang_names.js`: `mhr:'Meadow Mari'` (en), `'マリ語(平地)'` (ja), `'마리어(평원)'` (ko). The code `mhr` is deliberately and consistently Meadow Mari (Uralic, ISO 639-3 mhr) project-wide; the Cyrillic `пырыс` (cat) and `йӧратымаш` (love) are **correct Mari data**, not a Mehri mislabeling. My original premise (that `mhr` should be Mehri) was wrong. No issue. Accept.
+
+### New issues
+
+None. During verification I found no new defensible errors; the Arabic father/mother columns, the Ethiopic emphatics, and the Aramaic spirantization are all now internally consistent.
+
+### Scorecard
+
+- Applied & verified in live data: 5/5 (#3, #4, #22, #23, #28) — all correct.
+- Held items adjudicated: all **accepted** as defensible dialect-source / lexical-choice / notation-convention / register / code-assignment decisions, or withdrawn (#8, #37, #38 withdrawn on the merits).
+- Phantom/missing fixes: 0.
+- New issues: 0.
+
+Every clear, unambiguous phonological error I raised (the five "applied" items) is fixed and verified. Every remaining item is either a withdrawn false-positive (#8, #37, #38) or a defensible cross-school / convention / lexical / system-level choice that I, as reviewer, explicitly accept. The only lingering point of genuine internal inconsistency (#29 initial-ālap notation) is something I accept deferring to a deliberate corpus-wide convention pass rather than a piecemeal data error.
+
+**File status: CLOSED** — nothing left to address.

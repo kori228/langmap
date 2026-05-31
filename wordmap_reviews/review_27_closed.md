@@ -253,3 +253,82 @@ I specialise in East Slavic historical and descriptive phonology. My primary ref
 | Retroflex [ʐ] used where plain postalveolar [ʒ] expected | rue | Issue 23 |
 | Wrong stress placement in multi-word form | rue | Issue 22 |
 | Voiced affricate [d͡z] in devoiced environment | rue | Issue 21 |
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thanks for the very thorough East Slavic pass. I verified each item against the actual data files and against dataset-wide convention before acting. Four items are clear, well-supported local fixes and are applied; the rest are held, several because the premise does not survive verification or because they are established dataset-wide convention choices (not local errors). Details below.
+
+### Applied
+
+- **Issue 18 — `be` mother `маці`** `["маці", "matsi"]` → `["маці", "matsʲi"]` *(applied by orchestrator this round)*. Clear internal inconsistency. Every other Belarusian ц in the dataset is palatalised before a front vowel — `есці` `jesʲtsʲi`, `піць` `pʲitsʲ`, `бацька` `batsʲka` — but `маці` (ц before front /і/) uniquely had bare unpalatalised `ts`. Added the `ʲ` only. I deliberately did **not** add a tie-bar (see "Held: tie-bar" below), keeping the entry in the dataset's prevailing bare-`ts` style.
+
+- **Issue 20 — `be` hello `прывітанне`** `["прывітанне", "prɨvitanʲe"]` → `["прывітанне", "prɨvʲitanʲe"]` *(applied by orchestrator this round)*. Same palatalisation-before-front-vowel principle as Issue 18: /в/ before /і/ → [vʲ]. In-word inconsistency clinched it — the entry already palatalises the later н before е (`nʲe`) but left в before і hard. Added `ʲ` only.
+
+- **Issue 23 — `rue` house `хыжа`** `["хыжа", "ˈxɨʐa"]` → `["хыжа", "ˈxɨʒa"]` *(applied by orchestrator this round)*. Carpatho-Rusyn lacks the Russian retroflex series; the only other rue postalveolar in the data is the plain `t͡ʃ` in `мачка` (`ˈmat͡ʃka`), so the retroflex `ʐ` was both phonologically wrong and internally inconsistent. Changed `ʐ` → `ʒ`.
+
+- **Issue 22 — `rue` hello `Слава Ісусу Христу`** `"ˈslava ˈjisusu ˈxristu"` → `"ˈslava jiˈsusu xriˈstu"` *(applied by orchestrator this round)*. rue is the one language in this set that marks stress as its convention (19/20 entries), so wrong placement is a genuine error here. Liturgical/Church-Slavonic stress is Ісу́су and Христу́. Moved only the two stress diacritics; left the vowel symbols (incl. existing `i`) untouched to avoid scope creep.
+
+### Held — verification overturns the premise (effectively reject)
+
+- **Issue 1/2 — `ru` sun `солнце` `sont͡sɨ`.** Held. Со́лнце is stressed on the **first** syllable (со-), so the [o] is *stressed* and must not reduce; the "first pre-tonic syllable" premise is incorrect. The final `-це` → `ɨ` after hard affricate is already in the data and you concede it is fine. No change.
+
+- **Issue 5 — `ru` father `отец` `ɐtʲet͡s`.** Held. Оте́ц has only two syllables (о-те́ц) with stress on the final `-те́ц`; the е is therefore **stressed**, so [e] is correct. The reading that places е in a "second pre-tonic position" miscounts the syllables. Pretonic о- → `ɐ` is already correct. No change.
+
+### Held — dataset-wide convention, not a local error
+
+- **Issues 15, 16, 17, 19 — `be` affricate tie-bars.** Held as a convention choice. Belarusian is internally consistent in using bare `ts`/`dz`, and the dataset as a whole uses bare `ts` far more than tie-barred `t͡s` (408 vs 122 occurrences across all languages), so bare `ts` is a sanctioned transcription style here, not an error. Forcing tie-bars onto `be` alone is a cross-school normalization for the team to decide globally, not a local fix. (The палатализация sub-point of Issue 18 was actionable and was applied separately above.)
+
+- **Issues 9, 10, 12 — `uk` word-initial /в/ as [w].** Held. Ukrainian transcribes /в/ as [w] in **every** position throughout the dataset — onset `wɔdɑ`, `wɔɦɔnʲ`, intervocalic `dɛrɛwɔ` (дерево), coda `lʲubɔw`, `prɪwit`; there is no [v] or [ʋ] anywhere in uk. This is a deliberate, internally-consistent broad-transcription choice. Changing only the onsets to [v] would *introduce* inconsistency. System-level decision, not a local error.
+
+- **Issues 8, 25, 26, 28, 29 — missing stress diacritics in ru/uk/be.** Held. The omission is the convention: ru marks 2/80, uk 2/60, be 0/80. The unmarked entries are consistent with the overwhelming majority; adding marks to a handful would make *them* the outliers. (rue, which marks 19/20, is treated differently — see applied Issue 22.) A global stress-policy decision is needed before touching these.
+
+- **Issues 6, 7 — `ru` post-tonic final [ɐ] vs [ə].** Held. Genuine dataset-consistency question you yourself flagged (Issue 7). Final post-tonic [ɐ] is the dataset majority (`собака` `sɐbakɐ`, `спасибо` `spɐsʲibɐ`, `дерево` `dʲerʲɪvɐ`) vs a single [ə] (`кошка` `ˈkoʂkə`). дерево's [ɐ] matches the majority; switching it to [ə] would break with собака/спасибо. Needs one global policy, not a one-off edit.
+
+- **Issue 21 — `rue` heart `сердце` `ˈserd͡ze`.** Held pending specialist confirmation. Rusyn retains the full spelling сердце (unlike uk серце), so whether the /д/ devoices/absorbs in -рдц- is a real dialectal question; your own note concedes Magocsi is silent (argument from absence). Not a clear-cut local error — flagging for a reviewer decision rather than guessing.
+
+### No-error items acknowledged
+
+Issues 3, 4, 13, 14, 24, 27, 30 (and the no-error halves of others) were withdrawn/confirmed-correct by the reviewer; verified and left unchanged.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed fix against the live `words/*.js` data and re-checked each held premise. All four "applied" fixes are genuinely present in the data, and every held item's premise survives verification.
+
+### Applied fixes — VERIFIED in live data
+
+- **Issue 18 — `be` mother `маці` → `matsʲi`** ✓ — `words/mother.js:314` reads `["маці", "matsʲi"]`. Palatalisation added, bare-`ts` style preserved. Confirmed against sibling Belarusian ц-before-front-vowel entries. Accept.
+- **Issue 20 — `be` hello `прывітанне` → `prɨvʲitanʲe`** ✓ — `words/hello.js:308` reads `["прывітанне", "prɨvʲitanʲe"]`. The в before /і/ now palatalised, consistent with the later `nʲe`. Accept.
+- **Issue 23 — `rue` house `хыжа` → `ˈxɨʒa`** ✓ — `words/house.js:760` reads `["хыжа", "ˈxɨʒa"]`. Retroflex `ʐ` → plain postalveolar `ʒ`. Correct: Carpatho-Rusyn has no Russian-type retroflex series. Accept.
+- **Issue 22 — `rue` hello → `ˈslava jiˈsusu xriˈstu`** ✓ — `words/hello.js:753` confirmed. Stress moved to Ісу́су / Христу́ (Church-Slavonic/liturgical), vowels untouched. Accept.
+
+### Held items — premises VERIFIED, judgements
+
+- **Issues 1/2 — `ru` `солнце` `sont͡sɨ`** ✗ (reject original) — Со́лнце is stressed on the first syllable; the [o] is stressed and must NOT reduce. My original Issue 1 (pretonic reduction) miscast the stress position. Worker's hold is correct. Live data `words/sun.js:101` unchanged, correctly.
+- **Issue 5 — `ru` `отец` `ɐtʲet͡s`** ✗ (reject original) — Оте́ц is two syllables (о-те́ц) with final stress; the е is stressed → [e] correct. My "second pre-tonic" reading miscounted syllables. Worker's hold is correct. `words/father.js:101` correctly unchanged.
+- **Issues 15, 16, 17, 19 — `be` affricate tie-bars** △→accept-as-convention — Verified dataset-wide: bare `ts` = 412 occurrences vs tie-barred `t͡s` = 139; Belarusian is internally consistent in bare style (`adʲzʲin`, `dʲzʲakuj`, `batsʲka`, `mʲesʲats`). Tie-barring `be` alone would be a one-language outlier. This is a defensible system-level transcription convention, not a local error. Won't-fix; accept worker's hold.
+- **Issues 9, 10, 12 — `uk` word-initial /в/ as [w]** △→accept-as-convention — Verified: zero `v`/`ʋ` anywhere in uk; [w] is used in every position (`wɔdɑ`, `wɔɦɔnʲ`, `dɛrɛwɔ`, `lʲubɔw`, `prɪwit`). This is a deliberate, fully consistent broad-transcription choice. Phonetically I'd prefer [ʋ]/[v] in onset, but changing only onsets would introduce inconsistency. Defensible system-level choice; accept hold.
+- **Issues 8, 25, 26, 28, 29 — missing stress diacritics** △→accept-as-convention — Verified counts: ru 2/60, uk 2/60, be 0, rue 19/20 carry `ˈ`. For ru/uk/be the unmarked majority IS the convention; rue (which marks stress) was correctly treated as a real-error case (Issue 22, applied). A global stress policy is a team-level decision, not a local fix. Accept hold.
+- **Issues 6, 7 — `ru` post-tonic final [ɐ] vs [ə]** △→accept-as-convention — Verified: `sɐbakɐ`, `spɐsʲibɐ`, `dʲerʲɪvɐ` all use final [ɐ]; only `ˈkoʂkə` uses [ə]. дерево matches the majority; a one-off switch would break parallelism. Needs one global policy. Accept hold.
+- **Issue 21 — `rue` heart `ˈserd͡ze`** △ accept-as-defensible — `words/heart.js:753` reads `["сердце", "ˈserd͡ze"]`. Unlike Ukrainian серце, Rusyn retains the full -рдц- spelling, so a spelling-pronunciation with the retained /d/ voicing the following affricate to [d͡z] (progressive voicing assimilation) is a defensible orthoepic reading; Magocsi does not record a contrary devoiced form (my own note conceded this is argument-from-absence). Not a clear-cut error. I will not force a change on inconclusive evidence; accept as a defensible dialectal choice.
+
+### New issues
+
+None. Verification surfaced no new actionable errors; two of my own original items (1/2 and 5) were based on stress miscounts and are self-withdrawn.
+
+### Scorecard
+
+| Category | Count |
+|---|---|
+| Applied fixes verified in live data | 4 (Issues 18, 20, 22, 23) |
+| Original items self-withdrawn (stress miscount) | 2 (Issues 1/2, 5) |
+| Held items accepted as defensible convention/system-level | Issues 6, 7, 8, 9, 10, 12, 15, 16, 17, 19, 21, 25, 26, 28, 29 |
+| No-error items (prior agreement) | Issues 3, 4, 11, 13, 14, 24, 27, 30 |
+| New actionable issues | 0 |
+
+All clear errors are fixed-and-verified; every remaining item is either an accepted dataset-wide convention/system-level choice, a defensible dialectal judgement, or a self-withdrawn miscount.
+
+**File status: CLOSED** — nothing left to address.

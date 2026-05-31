@@ -220,3 +220,95 @@ My analysis draws primarily on Holm (1989) *Pidgins and Creoles*, vols 1–2 (Ca
 3. **Issues 17–19** — `kea` systematic /ŋ/ for word-final nasal vowel: affects at least 3 entries, likely systemic across all kea entries.
 4. **Issues 20–21** — `cbk` glottal-stop import: affects eat and drink, likely systemic in all cbk IPA entries using circumflex orthography.
 5. **Issues 1, 5** — `jam`/`kri` drink affrication: classic lexifier-orthography-substitution error.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thanks for the detailed Atlantic-creole pass. I verified every flag against the actual `words/*.js` data and against sibling entries in the same language / language-family, since our editing rule is to fix only **clear, unambiguous local errors or internal inconsistencies** and to leave genuine cross-school / convention choices as won't-fix. Per-issue verdicts below.
+
+### Applied (orchestrator applies the edits this round)
+
+- **Issue 2 — `jam` fire `fire.js:328`** (applied by orchestrator this round). IPA `"fajə"` → `"faja"`. The sibling West-African/Surinamese entries in the very same file are `pcm: ["faya", "faja"]` (fire.js:336) and `srn: ["faya", "faja"]` (fire.js:950); the schwa on `jam` is an internal inconsistency, not a deliberate reduction. IPA-only fix.
+
+- **Issue 12 — `mfe` sun `sun.js:936`** (applied by orchestrator this round). IPA `"soleɪ"` → `"solej"`. `/eɪ/` is an English diphthong absent from French-lexified Mauritian phonology; the two sibling Indian-Ocean creoles in the same file are `rcf: ["soley", "solej"]` and `crs: ["soley", "solej"]` (sun.js:937–938). Clear inconsistency. IPA-only fix.
+
+- **Issue 25 — `gcf` dog `dog.js:933`** (applied by orchestrator this round). IPA `"tʃjɛ̃"` → `"ʃjɛ̃"`. The GEREC-F digraph *ch* = /ʃ/ is applied elsewhere for gcf: `gcf: ["chat", "ʃat"]` (cat.js:933). The affricate onset on *chyen* is internally inconsistent. IPA-only fix.
+
+- **Issues 17 / 18 / 19 — `kea` heart / good / hand** (applied by orchestrator this round). `korasɔŋ` → `korasɔ̃` (heart.js:326), `bɔŋ` → `bɔ̃` (good.js:326), `mɔŋ` → `mɔ̃` (hand.js:326). The `kea` set already transcribes a word-final nasal as a nasalised vowel elsewhere — `kea: ["mãi", "mɐ̃j"]` (mother.js:332) — so the velar `/ŋ/` on these three is a romanisation-for-IPA substitution and an internal inconsistency. Only the final nasal segment is changed; the rest of each string is untouched. IPA-only fixes.
+
+- **Issues 20 / 21 — `cbk` eat / drink** (applied by orchestrator this round). `["comê", "koˈmeʔ"]` → `["come", "koˈme"]` (eat.js:578) and `["bebê", "beˈbeʔ"]` → `["bebe", "beˈbe"]` (drink.js:578). The entire rest of the `cbk` (Zamboangueño Chavacano) set is Spanish-lexified with Spanish orthography and no laryngeals: `bueno`/ˈbweno, `corazón`/koraˈson, `fuego`/ˈfweɡo, `gato`/ˈɡato, `casa`/ˈkasa, etc. These two are the only entries carrying a Portuguese circumflex + final `/ʔ/`; that is an imported-convention error and is internally inconsistent. Surface + IPA both corrected to match the cbk Spanish pattern.
+
+### Held — won't-fix (convention choice or corpus-wide consistency)
+
+- **Issue 3 — `bzj` cat `kʲat`.** Held. The corpus uses palatalised `kʲ` for exactly this "kya" pattern across several languages: `gv: ["kayt", "kʲat"]` (cat.js:845), `ha: ["kyanwa", "kʲanwa"]` (cat.js:259), plus `gd`, `mh`. /kj/-cluster vs /kʲ/ is a system-wide transcription convention; changing only bzj would break that consistency. Needs a corpus-wide decision, not a local fix.
+
+- **Issue 16 — `kea` tree, tap `/ɾ/`.** Held. `kea` uses plain `/r/` everywhere (`amor`/amor love.js:333, `obriɡadu` thanks.js:326, `katʃɔr` dog.js:326). The trill-vs-tap notation is a corpus-wide convention; a single-entry change would create a new inconsistency. Would require an endorsed corpus-wide pass.
+
+- **Issue 23 — `srn` sun `/soŋ/`.** Held. `srn` is internally regular here: final nasal after a back/round vowel surfaces as `/ŋ/` (`son`/soŋ, `bun`/buŋ, `bon`(tree)/boŋ), while after front `/a/` it stays `/n/` (`wan`/wan, `nyan`/ɲan). That is a consistent phonological sub-pattern, not an error.
+
+- **Issue 24 — `ht` eat `/mɑ̃ʒe/`.** Held. Every `ht` nasal in the corpus uses back `/ɑ̃/` consistently: `mɑ̃ʒe` (eat), `lɑ̃mu` (love.js:328), `mɑ̃mɑ̃` (mother.js:327). Central-`/ã/` vs back-`/ɑ̃/` is a cross-school transcription choice the data applies uniformly; changing only one breaks consistency.
+
+- **Issues 8 / 9 — `srm` water / moon "acute in IPA".** Held. This is the deliberate `srm` convention, not a defect: the IPA field carries the Saramaccan high-tone acute throughout (`masáŋɡi` sun.js:952, `háːti` heart.js:946, `fája` fire.js:952, `lóbi` love.js:953). Recommending `ˈwata`/`ˈluna` would actually de-mark tone and diverge from the rest of the language set.
+
+- **Issues 1 / 5 — `jam`/`kri` drink affrication.** Held for now. The reviewer concedes the affricate is register-dependent ("in most registers"); #1 also asks to rewrite the surface orthography `drink`→`jrink`. Surface-orthography changes are higher-risk and this is an analysis/representation call rather than a verifiable local error. Flagged for a reviewer decision before any orthography rewrite.
+
+- **Issue 22 — `hwc` sun `/sæn/`.** Held — needs reviewer decision on the exact target. The corpus is genuinely mixed for `hwc`: STRUT/LOT-type words use `/ɑ/` (`wan`/wɑn one.js:472, `madda`/mɑdə mother.js:472, `wata`/wɑtə) while TRAP words keep `/æ/` (`cat`/kæt, `hand`/hænd). `sun` plausibly belongs with the STRUT set, but the recommendation offered three different targets (`sʌn` / `san` / and implicitly `sɑn` to match `wan`). I'd rather not pick the vowel unilaterally; please confirm `sʌn` vs `sɑn`.
+
+- **Issue 10 — `srm` thanks `waáwa`.** Held — needs reviewer confirmation of the replacement. I agree `waáwa` looks anomalous against the Surinamese-creole *tangi* family (`srn: grantangi`/ɡrantaŋi, `djk: gaantangi`/ɡaːntaŋi, `kri: tɛnki`/ˈtɛŋki). But the recommended IPA `ˈtaŋi` does not fit the `srm` tone convention (cf. `masáŋɡi`/masáŋɡi) and this is a surface-form replacement, not an IPA tweak. Please confirm the exact Saramaccan headword + tone-marked form (e.g. `tángi`/táŋɡi?) before we change the surface string.
+
+- **Issues 11, 13, 14, 26 — low-severity notes** (`ht` moon nasal explanation; `gcf`/`rcf` fire final-stress marking; `mfe` heart coda rhotic). Held. The reviewer explicitly marks these as low-severity/notes, and they are stress-marking-style or register choices rather than clear errors. `gcf`/`rcf` would also need a corpus-wide stress-marking convention to add `ˈ`; `mfe leker`→`leke` is a register (citation vs colloquial) choice. No local fix.
+
+- **Issue 15 — `pap` fire `kandela`.** Held — not a clear-cut local error. The reviewer's own write-up is self-contradictory (states *kandela* "means 'candle'… not 'fire'", then concedes it is "the correct Papiamentu word for 'fire' in some contexts where the sense has extended to 'fire/flame'"). *Kandela* is in fact the everyday Papiamentu word for 'fire' (e.g. *pega kandela* 'to set fire'); *fugu* is not the unambiguous primary term the issue implies. This is a lexical-selection judgement, not a verifiable data error, so I'm not swapping the headword without firmer evidence.
+
+**Net this round:** 7 IPA/surface edits applied across 7 entries (jam fire; mfe sun; gcf dog; kea heart/good/hand; cbk eat/drink). Remaining items held as convention choices or pending reviewer decisions as noted above.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I re-verified every claimed edit and every held justification against the live `words/*.js` data (grep on actual lines). Verdicts below.
+
+### Applied edits — all verified present in live data ✓
+
+| Issue | Entry | Live value | Verdict |
+|------|------|-----------|---------|
+| 2 | jam fire (fire.js:328) | `["faya", "faja"]` | ✓ accept — schwa removed; matches `pcm`/`srn` siblings `faja` |
+| 12 | mfe sun (sun.js:936) | `["soley", "solej"]` | ✓ accept — `/eɪ/`→`/ej/`; matches `rcf`/`crs` |
+| 25 | gcf dog (dog.js:933) | `["chyen", "ʃjɛ̃"]` | ✓ accept — affricate dropped; matches `gcf chat /ʃat/` |
+| 17 | kea heart (heart.js:326) | `["korason", "korasɔ̃"]` | ✓ accept — `/ŋ/`→`/ɔ̃/`, surface untouched |
+| 18 | kea good (good.js:326) | `["bon", "bɔ̃"]` | ✓ accept |
+| 19 | kea hand (hand.js:326) | `["mon", "mɔ̃"]` | ✓ accept |
+| 20 | cbk eat (eat.js:578) | `["come", "koˈme"]` | ✓ accept — circumflex + `/ʔ/` removed; matches cbk Spanish set |
+| 21 | cbk drink (drink.js:578) | `["bebe", "beˈbe"]` | ✓ accept |
+
+All eight live entries match the claims exactly. No phantom fixes.
+
+### Held items I ACCEPT as defensible (won't-fix) ✓
+
+- **#3 bzj cat `kʲat`** — ✓ accept. Verified `ha: kʲanwa` (cat.js:259) and `gv: kʲat` (cat.js:845). `kʲ` is a corpus-wide convention for the "kya" onset; a single-entry change would create a new inconsistency. Convention-level, not a local error.
+- **#16 kea tree tap `/ɾ/`** — ✓ accept. Verified `kea` uses plain `/r/` throughout: `amor/amor` (love.js:333), `katʃɔr` (dog.js:326). Corpus-wide trill/tap convention; won't-fix locally.
+- **#23 srn sun `/soŋ/`** — ✓ accept. Verified the sub-pattern is regular: `son/soŋ`, `bon/boŋ` (tree.js:944), `bun/buŋ` (good.js:944) after back/round vowels vs `wan/wan` (one.js:950), `nyan/ɲan` (eat.js:944) after front `/a/`. Consistent, not an error.
+- **#24 ht eat `/mɑ̃ʒe/`** — ✓ accept. Verified `ht` uses back `/ɑ̃/` uniformly: `mɑ̃mɑ̃` (mother.js:327), `lɑ̃mu` (love.js:328). Cross-school transcription choice applied corpus-wide.
+- **#8 / #9 srm water / moon acute-in-IPA** — ✓ accept. Verified the high-tone acute is carried in the IPA field across the whole `srm` set: `háːti` (heart.js:946), `masáŋɡi` (sun.js:952), `lóbi` (love.js:953), `fája` (fire.js:952). De-marking to `ˈwata` would diverge from the language set. Deliberate convention.
+- **#15 pap fire `kandela`** — ✓ accept won't-fix. The original issue is self-contradictory and the worker's rebuttal is correct: *kandela* is the ordinary Papiamentu word for 'fire' (*pega kandela* 'set fire'); *fugu* is not the unambiguous primary term. Lexical-selection judgement, no data error. Live value `["kandela", "kandela"]` (fire.js:331) stays.
+- **#11 / #13 / #14 / #26 low-severity notes** — ✓ accept. The reviewer (original persona) explicitly marked these as notes/low-severity (stress-marking style, citation-vs-colloquial register). No clear error; no corpus-wide stress convention exists to hang `ˈ` on. Won't-fix.
+
+### Held items that remain OPEN (real anomalies, fix still owed)
+
+- **#1 / #5 jam / kri drink — △ partial.** Live: `jam: ["drink", "dɹɪŋk"]` (drink.js:322), `kri: ["drink", "drɪŋk"]` (drink.js:994), beside `bzj: ["jrink", "dʒɾɪŋk"]` (drink.js:324). I agree a *surface* `drink→jrink` rewrite is out of scope for a clear-error pass. BUT the **IPA-only** concern is partly defensible: `kri /drɪŋk/` is a plain English transcription with no affrication in a family where the sibling `bzj` is `/dʒɾɪŋk/`. The affricate is register-dependent, so I will not insist — downgrading to a note. Not a blocker, but I am not fully accepting "no change": leave flagged.
+- **#10 srm thanks `waáwa` — ✗ still wrong / OPEN.** Live `["waáwa", "waːwa"]` (thanks.js:946) sits inside a Surinamese-creole *tangi* family — verified `srn: grantangi/ɡrantaŋi` (thanks.js:944), `djk: gaantangi/ɡaːntaŋi` (thanks.js:945), `kri: tɛnki/ˈtɛŋki` (thanks.js:994). `waáwa` is unattested as a Saramaccan 'thanks' form. The worker correctly rejected the reviewer's `ˈtaŋi` (violates srm tone convention) and asked for the exact tone-marked headword. **Reviewer decision: replace with `["tángi", "táŋɡi"]`** — Saramaccan *tángi* (< Eng. *thank*), high tone on the first syllable matching the srm acute-in-IPA convention (cf. `masáŋɡi`, `lóbi`) and the family *tangi* root. This needs the dev team to apply.
+- **#22 hwc sun `/sæn/` — ✗ still wrong / OPEN.** Live `["san", "sæn"]` (sun.js:472). Verified the `hwc` system is lexical-set-split: STRUT/LOT words take `/ɑ/` (`wan/wɑn` one.js:472, `wata/wɑtə` water.js:473, `madda/mɑdə` mother.js:472) while TRAP words keep `/æ/` (`cat/kæt`, `hand/hænd`). 'sun' is a STRUT word, so `/sæn/` mis-assigns it to the TRAP set — a clear internal-consistency error. The worker held it only because the original recommendation offered three targets. **Reviewer decision: use `["san", "sɑn"]`** to pattern with `wan/wɑn` (same nucleus, the corpus's own STRUT realization). This needs the dev team to apply.
+
+### New issues
+
+None. Verification surfaced no additional clear errors beyond those already catalogued.
+
+### Scorecard
+
+- Applied & verified: 8 entries (Issues 2, 12, 25, 17, 18, 19, 20, 21) — all correct in live data.
+- Held & accepted as convention/won't-fix: Issues 3, 8, 9, 11, 13, 14, 15, 16, 23, 24, 26.
+- Partial/note (no blocker): Issues 1, 5.
+- Still OPEN, fix owed: Issue 10 (srm thanks → `["tángi", "táŋɡi"]`), Issue 22 (hwc sun IPA → `"sɑn"`).
+
+**File status: OPEN** — dev team must: (1) replace `srm` thanks (thanks.js:946) with `["tángi", "táŋɡi"]`; (2) change `hwc` sun IPA (sun.js:472) `"sæn"` → `"sɑn"`.

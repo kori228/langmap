@@ -248,3 +248,78 @@ The most critical systematic errors are:
 6. **Egyptian dog /juːw/ not /juːjuː/** — spurious reduplication (Issue 7)
 
 These six problems alone cover 28+ individual field errors and represent failures at the level of orthographic convention (Somali), phonological typology (Oromo implosives, Hausa tones), and Egyptological reconstruction (Egyptian and Coptic).
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the meticulously sourced review. I applied the clear, unambiguous orthography-/typology-level IPA errors and internal inconsistencies, and held the items that are corpus-wide convention choices or reconstruction-depth decisions. All surface orthography was left untouched per project policy (READ-ONLY surface; IPA-only corrections).
+
+### Applied (applied by orchestrator this round)
+
+- **Issue 1 — Somali `c` = /ʕ/ not /tʃ/.** Fixed 4 IPA fields. `drink.js so` `tʃab`→`ʕab`; `eat.js so` `tʃun`→`ʕun`; `hand.js so` `ɡatʃmo`→`ɡaʕmo`; `love.js so` `dʒatʃajl`→`dʒaʕajl`. Standard Somali orthography (SRC 1972): `c` = pharyngeal /ʕ/. Unambiguous.
+- **Issue 2 — Oromo `dh` = /ɗ/ not /dʱ/.** Fixed 2 IPA fields. `drink.js om` `dʱuɡuː`→`ɗuɡuː`; `mother.js om` `haːdʱa`→`haːɗa`. Qubee `dh` = implosive /ɗ/; /dʱ/ (breathy) is a category error.
+- **Issue 4 — Hausa `ɗ` implosive written with ejective apostrophe.** `one.js ha` `dʼaja`→`ɗaja` (IPA only; surface `ɗaya` already correct). Confirmed `love.js ha ƙauna` = /kʼauna/ is genuinely ejective and left unchanged, as you noted.
+- **Issue 5 — Egyptian hand ꜥrt.** `hand.js egy` `dʒeɾet`→`ʕaːɾat`. 𓂝 (Gardiner D36) is the pharyngeal ꜥ /ʕ/, not /dʒ/; sign-misread. Applied your reconstruction /ˈʕaːɾat/ (sans stress mark, per dataset convention of no stress marks in egy).
+- **Issue 8 — Coptic ⲱ (omega) = /oː/ not /ɔː/.** Fixed 3 IPA fields. `father.js cop` `ejɔːt`→`ejoːt`; `fire.js cop` `krɔːm`→`kroːm`; `drink.js cop` `sɔː`→`soː`. Dataset baseline is Sahidic; /oː/ restores internal consistency.
+- **Issue 10 — Tashawit (shy) `ittij` geminate.** `sun.js shy` `itʃiʒ`→`itːiʒ`. Geminate dental stop /tː/, not affricate /tʃ/; consistent with `kab iṭij` /itˤiʒ/ in the same file.
+- **Issue 11 — Tamasheq (tmh) `aydi` glide.** `dog.js tmh` `aɪdi`→`ajdi`. Matches the four sibling Berber varieties (kab/shi/rif/shy all /ajdi/); diphthong nucleus /ɪ/ was a one-off.
+- **Issue 18 — Tarifit/Tashawit `ijj` geminate glide.** Fixed 2 IPA fields. `one.js rif` `idʒː`→`ijː`; `one.js shy` `idʒː`→`ijː`. Geminate palatal glide /jː/, not voiced affricate /dʒː/.
+
+### Held with rationale (left open / reviewer decision)
+
+- **Issue 3 — Hausa tones absent (all 20 entries).** HELD. No Hausa IPA in the corpus carries tone, and tone marking is a corpus-wide transcription-policy decision rather than a local error. Needs a team/convention decision before a 20-entry tone pass; flagged for maintainers.
+- **Issue 6 — egy water `mw` final /w/.** HELD. /muː/→/muːw/ adds a root consonant; this is a reconstruction-depth choice (dataset may deliberately simplify final glides). Not a clear local error.
+- **Issue 7 — egy dog /juːjuː/.** HELD. The corrected /juːw/ changes both structure and final consonant; reconstruction-level. Reduplication looks anomalous but the fix is not a mechanical orthographic correction. Flagged for egy-reconstruction owner.
+- **Issue 9 — bej water `yam` length.** HELD. Surface orthography is `yam` (single `a`), whereas sibling long-vowel forms in the same dataset spell length doubled (`baab`, `gaal`). IPA /jam/ is consistent with the current surface; correcting to /jaːm/ would require a surface change, which is out of scope.
+- **Issue 12 — Somali pitch accent absent.** HELD. Same class as Issue 3 (suprasegmental corpus-wide policy), and you note Somali is "underspecified" rather than wrong. Needs convention decision.
+- **Issue 13 — rif sun `dhish` lemma.** HELD. You flag it as "source citation needed; at worst wrong" — not unambiguous, and the fix would be a surface/lemma change (out of scope). Flagged for Berber lexical review.
+- **Issue 14 — egy heart jb chronology.** HELD. /jib/ vs /ʔiːb/ is a chronological-stage reconstruction choice, not a local error.
+- **Issue 15 — cop eat ⲟⲩⲱⲙ.** HELD. The /w/ analysis of ⲟⲩ-before-vowel is well-sourced but changes syllabification; I did not flip the omega in isolation (that would yield the orphan /uoːm/). Recommend applying your full /woːm/ as one coordinated edit after reviewer sign-off.
+- **Issue 16 — egy hello `jined`.** HELD. Reconstruction-level; literature gives divergent citation forms.
+- **Issue 17 — sid water `waayyo`.** HELD. Surface `waayyo` (`aa`=long, `yy`=geminate, final `o`) matches current IPA /waːjːo/; your /wajjoː/ contradicts the surface spelling, so this would require a surface change (out of scope).
+- **Issue 19 — Oromo infinitive `-uu`.** HELD (no action). You note this "is not an error per se"; documentation matter only.
+- **Issue 20 — cop cat ⲉⲙⲟⲩ dialect note.** HELD (no action). /emu/ acceptable for Sahidic; documentation request, not a data error.
+- **Issue 21 — egy sun `riːʕa`.** HELD (no action). You call /riːʕa/ "defensible"; period-label is a cross-referencing/documentation suggestion.
+
+---
+
+## Reviewer round-1 response (再評価 round-1)
+
+I verified every claimed "applied" fix against the live data under `words/` (grep on the actual IPA fields). All eight applied fixes are genuinely present in the current data — no phantom fixes this round. Adjudications below.
+
+### Applied fixes — VERIFIED in live data
+
+- **Issue 1 (✓ accept).** `drink.js so` `ʕab`, `eat.js so` `ʕun`, `hand.js so` `ɡaʕmo`, `love.js so` `dʒaʕajl` — all four present. Somali `c` = /ʕ/ is correct.
+- **Issue 2 (✓ accept).** `drink.js om` `ɗuɡuː`, `mother.js om` `haːɗa` — both present. Qubee `dh` = implosive /ɗ/. Correct.
+- **Issue 4 (✓ accept).** `one.js ha` `["ɗaya","ɗaja"]` — IPA now `ɗaja` with implosive ɗ, ejective apostrophe gone. Surface `ɗaya` already had the correct character. Correct.
+- **Issue 5 (✓ accept).** `hand.js egy` `ʕaːɾat` — pharyngeal restored, /dʒ/ sign-misread corrected. Stress mark omitted per egy convention, which I accept.
+- **Issue 8 (✓ accept).** `father.js cop` `ejoːt`, `fire.js cop` `kroːm`, `drink.js cop` `soː` — all three omegas now /oː/. Sahidic baseline restored. Correct. **But see new issue below — the fix is incomplete.**
+- **Issue 10 (✓ accept).** `sun.js shy` `itːiʒ` — geminate /tː/, affricate gone. Consistent with kab `itˤiʒ`. Correct.
+- **Issue 11 (✓ accept).** `dog.js tmh` `ajdi` — glide /j/, matches kab/shi/rif/shy. Correct.
+- **Issue 18 (✓ accept).** `one.js rif` `ijː`, `one.js shy` `ijː` — both geminate glides, affricate gone. Correct.
+
+### Held items — adjudication
+
+- **Issue 3 (△ partial / accept-as-held).** Hausa tone is genuinely absent corpus-wide (verified: `water.js ha` `ɾuːwa`, `sun.js ha` `ɾana`, `fire.js ha` `wuta` — no diacritics). Tone is lexically contrastive in Hausa and its omission is a real linguistic limitation, BUT a 20-entry tone pass across the whole corpus is a maintainer/convention decision, not a local-error fix. I accept holding it as a flagged convention item. Not blocking on its own.
+- **Issue 6 (✗→held, accept).** egy water `muː` — final-/w/ depth choice. Defensible to hold.
+- **Issue 7 (△ held, accept reluctantly).** egy dog `juːjuː` verified present. The reduplication is genuinely anomalous (no Egyptological source attests /juːjuː/ for 𓃡 *iw*), so this is closer to an error than a depth choice. However the fix touches structure, and I accept it staying flagged for the egy-reconstruction owner rather than blocking the file. Logged as a real concern, not won't-fix.
+- **Issue 9 (✓ accept held).** Verified surface `["yam","jam"]` vs sibling `["baab","baːb"]`, `["gaal","ɡaːl"]`. IPA correctly tracks the (short-vowel) surface; fixing length would require a surface change. Out of scope. Accept.
+- **Issue 12 (✓ accept held).** Same suprasegmental-convention class as Issue 3; reviewer noted "underspecified," not wrong. Accept hold.
+- **Issue 13 (✓ accept held).** `sun.js rif` `["dhish","ðiʃ"]` — IPA is internally correct for the surface; the lemma question is surface/lexical and out of IPA scope. Accept hold.
+- **Issue 14 (✓ accept held).** /jib/ vs /ʔiːb/ is a chronological-stage choice. Accept.
+- **Issue 16 (✓ accept held).** egy hello `jined` — reconstruction-level, divergent literature. Accept.
+- **Issue 17 (✓ accept held).** Verified surface `["waayyo","waːjːo"]`: `aa`→`aː`, `yy`→`jː`, final `o`→short. IPA faithfully tracks the surface; my proposed /wajjoː/ contradicts the surface spelling and would need a surface edit. Accept hold.
+- **Issues 19, 20, 21 (✓ accept held).** All documentation/no-action items by the reviewer's own framing. Accept.
+
+### NEW issue raised on verification
+
+- **Issue 15 / NEW (✗ — actionable residual).** `eat.js cop` is still `["ⲟⲩⲱⲙ", "uɔːm"]`. Setting aside the debatable ⲟⲩ=/w/ reanalysis (which I agree is reconstruction-depth and can stay held), the **ⲱ omega in this entry is still transcribed `ɔː`**, while the worker's own Issue 8 fix changed every other Sahidic ⲱ in the corpus to `oː` (`ejoːt`, `kroːm`, `soː`). This is now an internal inconsistency the Issue 8 pass left behind. The worker called `uoːm` an "orphan," but it is not — it is exactly the same single-character omega correction applied in the other three entries, with no surface change and no syllabification change. Minimal fix: `uɔːm` → `uoːm`. This is a clear, mechanical, surface-safe IPA correction of the same class already accepted, so it must be applied.
+
+### Scorecard
+
+- Applied & verified: 8/8 (Issues 1, 2, 4, 5, 8, 10, 11, 18) — all genuinely present in live data.
+- Held & accepted by reviewer: Issues 3, 6, 7, 9, 12, 13, 14, 16, 17, 19, 20, 21.
+- Outstanding actionable: **1** — the residual `ⲟⲩⲱⲙ` omega (`uɔːm`→`uoːm`), a leftover from the Issue 8 fix.
+
+**File status: OPEN** — Dev team must apply the one residual omega fix: `eat.js cop` IPA `uɔːm` → `uoːm` (omega /oː/, matching the Issue 8 corpus baseline; ⲟⲩ analysis itself can remain held).
