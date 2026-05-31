@@ -370,3 +370,56 @@ None. Verification of the four applied edits and the `apwoyo` cluster surfaced n
 
 **File status: OPEN**
 Dev team next step (single remaining item): #25 — `words/thanks.js:973` `ach` IPA `apʷojo` → `apwojo`, to unify all three `apwoyo`-display entries on the corpus-majority plain `pw` rendering.
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+I re-verified the live data before deciding. `grep "apwoyo" words/thanks.js` returns exactly the cluster the reviewer surveyed:
+- `anu` (line 729): `["apwoyo", "apwojo"]` — plain `pw`
+- `laj` (line 972): `["apwoyo", "apwojo"]` — plain `pw`
+- `ach` (line 973): `["apwoyo", "apʷojo"]` — labialized `pʷ` (the lone outlier)
+
+**#25 `ach` thanks — `words/thanks.js:973` `ach: ["apwoyo", "apʷojo"]`** — IPA field `apʷojo` → `apwojo` (applied by orchestrator this round). In round-3 the reviewer committed a single target value, and the corpus itself disambiguates the direction: 2 of 3 identical-display `apwoyo` entries — including the other Southern-Lwo sibling `laj` — use plain `apwojo`; `ach` is the sole 1-of-3 outlier. Aligning the outlier to the corpus-majority plain `pw` rendering is a well-defined internal-consistency fix, not a convention call. Display `apwoyo` unchanged; only the labialization diacritic `ʷ` removed from the IPA. This unifies all three identical surfaces on one IPA.
+
+**Net:** 1 edit applied (#25). All other findings remain as previously adjudicated — #8, #11 (moon + heart), #23 fixed in round-2 and verified by the reviewer; the 20 tone/ATR-convention holds (#1, #2, #4–#7, #9, #10, #12–#22, #24) plus #3 accepted as system-level convention calls. No items remain open.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+I verified the round-3 edit (#25) and re-confirmed all four round-2 edits are still present in the live data — nothing regressed.
+
+### Verification of the #25 fix (the single remaining open item)
+
+`grep "apwoyo" words/thanks.js`:
+- `anu` (line 729): `["apwoyo", "apwojo"]` — plain `pw`
+- `laj` (line 972): `["apwoyo", "apwojo"]` — plain `pw`
+- `ach` (line 973): `["apwoyo", "apwojo"]` — plain `pw` (labializing `ʷ` removed)
+
+The lone `apʷojo` outlier is gone; all three identical `apwoyo` surfaces now map to the corpus-majority plain `apwojo` IPA. ✓ **Verified, accept.** This was a well-defined internal-consistency fix (align the 1-of-3 outlier to the in-corpus majority, including its Southern-Lwo sibling `laj`), not a convention call — correctly applied.
+
+### Re-verification of prior fixes (still live, no regression)
+
+- **#8 `luo` drink — `words/drink.js:730`** — `["madho", "maðo"]`. Breathy `ʱ` still gone; `ð` correct. ✓
+- **#11 `mas` moon — `words/moon.js:737`** — `["olapa", "olapa"]`. ✓
+- **#11 `mas` heart — `words/heart.js:731`** — `["oltau", "oltau"]`. ✓
+- **#23 `sad` thanks — `words/thanks.js:949`** — `["musʼokoyo", "musʼokojo"]`. Ejective `sʼ` retained in IPA. ✓
+
+### Convention holds (unchanged)
+
+Spot-checked the held tone/ATR items remain at their adjudicated values: `din` eat `["cam","tʃam"]`, `nus` eat `["cam","tʃam"]`, `din` water `["piu","piu"]`, `din` heart `["piöu","piɔu"]`, `din` dog `["jɔ̈ŋ","dʒɔŋ"]` — all unchanged. The 20 tone/ATR-convention holds (#1, #2, #4–#7, #9, #10, #12–#22, #24) plus #3 remain accepted as system-level convention calls per round-1 ("African entries omit lexical tone in IPA"). No regressions.
+
+### New issues
+
+None. Verification surfaced no additional errors. Not padding.
+
+### Scorecard
+
+- #8, #11 (moon), #11 (heart), #23: **✓ verified fixed in live data (round-2), still present.**
+- #25: **✓ verified fixed in live data (round-3).** All three `apwoyo` surfaces unified on `apwojo`.
+- Tone/ATR convention holds (#1, #2, #4–#7, #9, #10, #12–#22, #24) + #3: **✓ accept** (system-level convention).
+
+Every clear error has been fixed and verified; every remaining item is an accepted system-level convention call. Nothing is left for the dev team to address.
+
+**File status: CLOSED** — nothing left to address.

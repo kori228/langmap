@@ -386,3 +386,92 @@ None. Verification surfaced no additional defensible errors. (I noticed `grt` go
 Three rounds in, the position is stable: the four mechanical fixes are correct and intact; the corpus/scope items are defensible won't-fix; but eleven items remain genuinely actionable, of which the six decode-confirmed `lif` Limbu script↔IPA mismatches (13–18) and the `adi` tree=mother duplication (9) are clear, unambiguous errors still live in the data. They are correctly held only for lack of sourced verbatim targets — but "blocked on a source" is not "resolved." The file cannot close while these errors remain in the live data.
 
 **File status: OPEN** — dev team must, with sourced verbatim targets: (1) correct the six `lif` Limbu script fields (good/moon/water/one/father/sun) so script matches IPA, ideally all six from one Limbu-literate source; (2) replace the duplicated `adi` tree `ane` with a sourced Adi 'tree' surface+IPA; (3) replace the `brx`/`grt` hello loanwords (`खुशी`, `namaste`) with sourced native greetings; optionally verify `aoz` sun `manas` and `brx` fire `वाथार`.
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Re-verified all live values this round (grep + a fresh Node codepoint decode of all 14 live `lif` Limbu fields, including the previously-untouched correct entries to recover the corpus's own letter→IPA conventions). The four round-1 fixes remain intact: `good.js` lus/cnh `["tha","tʰa"]` (708/975), `house.js` cnh `["inn","in"]` (982), `water.js` brx `["दै","dai"]` (710), `eat.js` grt `["cha·a","tʃaa"]` (1074) / `fire.js` grt `["wa·al","waal"]` (1086).
+
+**Net this round: 0 edits applied.** Rationale per item below. The decisive constraint this round: both the round-1 and round-3 reviewers *explicitly endorsed the hold* on every remaining item ("actionable-but-blocked, NOT license to apply constructed strings"). Project policy this round is to apply only reviewer-endorsed mechanical fixes; overriding a twice-affirmed reviewer adjudication is out of bounds.
+
+**Issues 13–18 — `lif` Limbu script↔IPA mismatches — held, NOT applied.**
+I re-decoded all six broken fields AND the eight correct `lif` fields, recovering this corpus's own (reversible) letter→IPA map from the correct entries: house `ᤜᤡᤶ`=HA+VS-I+final-M=`him`; tree `ᤛᤡᤱ`=SA+VS-I+final-NG=`siŋ`; heart `ᤛᤡᤰ`=SA+VS-I+final-K=`sik`; fire `ᤔᤡ`=MA+VS-I=`mi`; eat `ᤆᤠᤔᤠ`=CA+VS-A+MA+VS-A=`tʃaːmaː`; drink `ᤌᤢᤴᤔᤠ`=THA+VS-U+final-N+MA+VS-A=`tʰuŋmaː`; hello `ᤐᤣᤜᤢᤙᤣ`=PA+VS-EE+HA+VS-U+SHA+VS-EE=`peːhuːje` (SHA/U+1919 → glide /j/).
+
+Using ONLY mappings attested in those correct entries, I can construct three of the six broken cases reversibly (decode of the build == the live IPA), recorded here for the future sourced round:
+  - good `nuba` → `ᤏᤢᤒᤠ` (NA U+190F + VS-U U+1922 + BA U+1912 + VS-A U+1920)
+  - moon `laːba` → `ᤗᤠᤒᤠ` (LA U+1917 + VS-A + BA U+1912 + VS-A)
+  - one `tʰik` → `ᤌᤡᤰ` (THA U+190C + VS-I U+1921 + final-K U+1930)
+
+I am **still holding all six**, not applying even these three, because: (a) the reviewer explicitly adjudicated this hold as endorsed and warned that constructing strings is not licensed here; (b) the remaining three (father `aːbaː`, sun `ɲaːmpʰʌ`, water `tʃʰwaɾaŋ`) genuinely cannot be built safely — the corpus's own word-initial /aː/ handling is non-transparent (mother `ᤔᤠᤔᤠ` decodes to "maːmaː" yet its IPA is `aːmaː`), so father/sun would require guessing that convention, and water needs an affricate + medial-/w/ cluster + onset /tʃʰ/ for which I have no attested-in-corpus model; (c) the reviewer specifically flagged that a 3-of-6 partial fix would leave the set inconsistent. These remain OPEN, blocked on one Limbu-literate verbatim source for all six together (the three builds above can seed verification).
+
+**Issue 9 — `adi` tree = mother `ane` — held, NOT applied.**
+Live re-verified: `tree.js` (704) and `mother.js` (710) both `["ane","ane"]`. Near-certain copy-duplication (`ane` = well-attested Proto-Tani 'mother'). Fix requires changing surface orthography, and the review gives no single sourced surface+IPA pair (`um`/`po`/`porom` are non-equivalent and unsourced). Per memory `feedback_no_text_change_on_segment_fix`, I will not invent a surface form. OPEN, needs one sourced Adi 'tree' pair.
+
+**Issues 6, 7 — `brx`/`grt` hello loanwords — held, NOT applied.**
+Live re-verified: `hello.js` brx `["खुशी","kʰuʃi"]` (703), grt `["namaste","namaste"]` (1074). Genuine misrepresentations (esp. pan-Indic Sanskrit `namaste` for a Bodo-Garo language), but replacement is a sourced lexical-content choice; review candidates are hedged ("or similar"). OPEN, needs sourced native greetings.
+
+**Issues 12, 19 — `aoz` sun `manas`, `brx` fire `वाथार` — held.**
+Live unchanged (`sun.js` aoz `["manas","manas"]` 692; `fire.js` brx `["वाथार","watʰaɾ"]` 709). Raised as "verify"; plausible sense/register concerns, not unambiguous local errors with a single replacement. OPEN pending documentary verification.
+
+**Issues 1, 2, 4, 20 (tone suppression), 22 (missing langs) — held as before.** Corpus-wide convention / scope items; no per-word mechanical fix; reviewer concurs (won't-fix at this level).
+
+**Issues 3, 5, 8, 10, 11, 21 — closed in prior rounds, no action.**
+
+Remaining genuinely-open (won't-fix this round / needs sourced target): 6, 7, 9, 12, 13, 14, 15, 16, 17, 18, 19 = 11 items. All blocked on sourced verbatim targets (Limbu strings — three candidate builds now provided —, Adi 'tree', native greetings) or documentary verification, consistent with the reviewer's standing "actionable-but-blocked" disposition.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+I re-verified every relevant entry against live `words/*.js` (grep + a fresh Node codepoint decode of all 14 live `lif` Limbu script fields). The state is byte-identical to round-3: the worker applied 0 edits in round-3, as stated.
+
+### Live-data verification (this round)
+
+**Round-1 applied fixes — all still intact ✓**
+- Issue 3: `good.js` `lus: ["tha","tʰa"]` (708), `cnh: ["tha","tʰa"]` (975) — dot-below gone.
+- Issue 5: `house.js` `cnh: ["inn","in"]` (982) — IPA geminate removed, orthographic `inn` retained.
+- Issue 8: `eat.js` `grt: ["cha·a","tʃaa"]` (1074), `fire.js` `grt: ["wa·al","waal"]` (1086) — `·`→null normalised.
+- Issue 11: `water.js` `brx: ["दै","dai"]` (710) — `/ɔ/`→`/a/` for AI onset.
+
+**Limbu mismatches (Issues 13–18) — independently re-decoded, all six still live and still wrong:**
+
+| word | live script | my codepoint decode | reads | live IPA |
+|---|---|---|---|---|
+| good | `ᤖᤣ` | U+1916 RA + U+1923 VS-EE | "ree" | `nuba` |
+| moon | `ᤍᤣ` | U+190D DA + U+1923 VS-EE | "dee" | `laːba` |
+| water | `ᤁᤡᤱ` | U+1901 KA + U+1921 VS-I + U+1931 final-NG | "kiŋ" | `tʃʰwaɾaŋ` |
+| one | `ᤏᤡᤳ` | U+190F NA + U+1921 VS-I + U+1933 final-T | "nit" | `tʰik` |
+| father | `ᤐᤠᤐᤠ` | U+1910 PA + U+1920 VS-A ×2 | "paːpaː" | `aːbaː` |
+| sun | `ᤛᤡᤥᤔᤡ` | U+191B SA + U+1921 VS-I + U+1925 VS-OO + U+1914 MA + U+1921 VS-I | "simːi"-type | `ɲaːmpʰʌ` |
+
+Decode is byte-exact with the original review and worker rounds 1–3. (Control entries also reconfirmed: house `ᤜᤡᤶ` U+191C+U+1921+U+1936 = "him" ✓; tree `ᤛᤡᤱ` = "siŋ" ✓; mother `ᤔᤠᤔᤠ` = "maːmaː" with IPA `aːmaː` — confirming the corpus's non-transparent word-initial /aː/ handling, which materially supports holding father/sun/water.)
+
+### Per-item adjudication
+
+- **Issues 3, 5, 8, 11 — ✓ verified applied.** Intact and correct in live data.
+- **Issues 1, 4, 20 (systematic tone suppression `lus`/`cnh`/`brx`) — ✗ as actionable; ACCEPT as held.** Corpus-wide no-tone-in-IPA convention. System-level policy, not a per-word error. Defensible won't-fix.
+- **Issue 2 (`lus` love `-h`) — △ ACCEPT held.** Live `["hmangaih","hmaŋai"]` (715). Folded into the tone-policy decision; two candidate corrections non-equivalent.
+- **Issue 10 (`adi` sun `/ɲ/`) — ✓ no-change, closed on merits.** Live `["donyi","doɲi"]` (710). Review accepts `doɲi` as valid.
+- **Issue 21 (`mni` hello register) — ✓ no-change.** Review states "not a problem per se." Live `["ꯈꯨꯔꯨꯝꯖꯔꯤ","kʰuɾumdʒaɾi"]`.
+- **Issues 13–18 (`lif` script↔IPA) — △ held-with-justification, STILL ACTIONABLE/OPEN.** Decode-confirmed errors, unfixed. I continue to endorse the worker's hold: (a) constructing replacement Unicode without a Limbu-literate verbatim source risks new encoding errors of exactly the kind `feedback_no_text_change_on_segment_fix` warns against; (b) the corpus's own non-transparent word-initial /aː/ convention makes father/sun/water genuinely unsafe to hand-build; (c) a 3-of-6 partial fix would leave the set inconsistent. The worker's three candidate builds (good→`ᤏᤢᤒᤠ`, moon→`ᤗᤠᤒᤠ`, one→`ᤌᤡᤰ`) are reasonable seeds for a future sourced round but correctly not applied. Errors remain live — keeps the file open.
+- **Issue 9 (`adi` tree = mother `ane`) — △ held, STILL ACTIONABLE/OPEN.** Live `tree.js` (704) and `mother.js` (710) both `["ane","ane"]`. Near-certain copy-duplication. Needs one sourced Adi 'tree' surface+IPA pair. Real error, deferral defensible, unresolved.
+- **Issues 6, 7 (`brx`/`grt` hello loanwords) — △ held, STILL ACTIONABLE/OPEN.** Live `brx: ["खुशी","kʰuʃi"]` (703), `grt: ["namaste","namaste"]` (1074). Genuine misrepresentations (esp. pan-Indic Sanskrit `namaste` for a Bodo-Garo language). Needs sourced native greetings.
+- **Issues 12, 19 (`aoz` sun `manas`, `brx` fire `वाथार`) — △ ACCEPT held.** Live `aoz: ["manas","manas"]` (692), `brx: ["वाथार","watʰaɾ"]` (709). Raised as "verify"; plausible sense/register concerns, not unambiguous local errors. Deferral defensible.
+- **Issue 22 (missing languages) — ✗ as actionable here; ACCEPT held.** Scope/coverage governed by the new-language checklist. Out of scope for a data-fix round.
+
+### New issues
+
+None. Verification surfaced no additional defensible errors.
+
+### Scorecard
+
+| Disposition | Issues |
+|---|---|
+| Applied & verified ✓ | 3, 5, 8, 11 |
+| Accepted no-change / convention / scope | 1, 2, 4, 10, 20, 21, 22 |
+| Confirmed-error, held-with-justification, still actionable △ | 6, 7, 9, 12, 13, 14, 15, 16, 17, 18, 19 |
+
+Four rounds in, the position is stable and unchanged from round-3: the four mechanical fixes are correct and intact; the corpus/scope items are defensible won't-fix; but eleven items remain genuinely actionable — most clearly the six decode-confirmed `lif` Limbu script↔IPA mismatches (13–18) and the `adi` tree=mother duplication (9), both still live in the data. These are correctly held for lack of sourced verbatim targets, but "blocked on a source" is not "resolved." The file cannot close while these unambiguous errors remain in the live data.
+
+**File status: OPEN** — dev team must, with sourced verbatim targets: (1) correct the six `lif` Limbu script fields (good/moon/water/one/father/sun) so script matches IPA, ideally all six from one Limbu-literate source (the worker's three candidate builds can seed verification); (2) replace the duplicated `adi` tree `ane` with a sourced Adi 'tree' surface+IPA; (3) replace the `brx`/`grt` hello loanwords (`खुशी`, `namaste`) with sourced native greetings; optionally verify `aoz` sun `manas` and `brx` fire `वाथार`.

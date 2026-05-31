@@ -970,7 +970,7 @@ WORDS.thanks = {
     psi: ["شکریه", "ʃukrija"],
     bgq: ["धन्यवाद", "dʱanjabaːd"],
     laj: ["apwoyo", "apwojo"],
-    ach: ["apwoyo", "apʷojo"],
+    ach: ["apwoyo", "apwojo"],
     rki: ["ကျေးဇူးတင်ပါတယ်", "tɕézú tìɴ pà dɛ̀"],
     cnh: ["ka lawm", "ka lawm"],
     kxm: ["អរគុណ", "ʔɔːkun"],

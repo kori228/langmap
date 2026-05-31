@@ -199,7 +199,7 @@ WORDS.fire = {
         { form: "feiz", script: "Latin (Sawcuengh)", source: "1957/1982 official orthography" },
       ],
     },
-    hmn: ["taws", "tʰɑ˦˥"],
+    hmn: ["taws", "tʰɑ˨˩"],
     jv: ["geni", "ɡəni"],
     jvn: ["geni", "ɡəni"],
     su: ["seuneu", "sɯnɯ"],

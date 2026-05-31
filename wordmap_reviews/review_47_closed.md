@@ -514,3 +514,78 @@ These are exactly the same family of spurious contours (`˦˥`, `˥˩`) that con
 - Accepted holds: 3 (ts/tɕ, hmn→mww, mother form).
 
 **File status: OPEN** — Dev team must restore the three working-tree regressions (and commit them): father `tɕi˧`→`tɕi˨˦ʱ`; fire `tʰɑ˦˥`→`tʰɑ˨˩`; sun `n̥u˥˩`→`n̥u˥˥`. These match the already-committed correct values (59edca2) but the live working tree has reverted them to spurious `˦˥`/`˥˩`/`˧` contours.
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+I re-verified every `hmn` entry verbatim against the live `words/*.js` working tree (grep). Confirmed:
+
+- The 8 round-2 corrections remain intact in live data: cat `mi˨˦ʱ`, dog `tɛ˨˦ʱ`, house `tɕɛ˨˦ʱ`, hand `tʰɛ˨˩`, drink `hɑu˨˩`, one `i˥˥`, heart `ɕia˥˥`, love `ɬu˥˥`. No action needed.
+- The 3 reviewer-flagged regressions are reproduced exactly in the live working tree (spurious `˧`/`˦˥`/`˥˩` contours, matching the same bug family from the round-1 botch). These are clear, unambiguous IPA errors and the reviewer's corrections match both the already-committed-correct values (59edca2) and the RPA tone-letter analysis (Heimbach 1979 / Downer 1973). Restoring all three this round.
+
+**Applied** (verified current live value → corrected value):
+
+- ISSUE 10 / regression father `tɕi˧` → `tɕi˨˦ʱ` (RPA final *v* = mid-rising breathy; restores lost v-tone). (applied by orchestrator this round)
+- ISSUE 15 / regression fire `tʰɑ˦˥` → `tʰɑ˨˩` (RPA final *s* = low; removes spurious high-rising `˦˥`). (applied by orchestrator this round)
+- ISSUE 9 / regression sun `n̥u˥˩` → `n̥u˥˥` (RPA final *b* = high level; removes spurious falling `˥˩`). (applied by orchestrator this round)
+
+**Held with rationale (unchanged, reviewer-accepted):**
+
+- ISSUE 22c / ts→tɕ affricate convention — held; consistently-applied dataset representational choice, defer to team convention decision.
+- ISSUE 23 hmn → mww recode — held; 21-section synchronized meta change, out of scope for a read-only data-value round.
+- ISSUE 8 mother `niã˨˩ˀ` — left as-is; reviewer explicitly declined to block on `ɑ̰` vs `ã`, treating trailing `ˀ` as carrying glottalisation.
+
+Net: 3 working-tree regressions restored (father / fire / sun); 8 prior fixes verified still intact; ts/tɕ and hmn→mww holds unchanged.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+I re-verified every one of the 20 `hmn` entries verbatim against the live `words/*.js` working tree (grep on all 20 files) and checked `git status`.
+
+### Full live-data verification (all 20 entries / 21 surface forms)
+
+| Issue | Word | Target | Live value | Verdict |
+|---|---|---|---|---|
+| 2/3 | water | `tɛ˥˨` | `tɛ˥˨` | ✓ |
+| 4 | eat | `nɔ˥˨` | `nɔ˥˨` | ✓ |
+| 5 | good | `tɕɔː˧` | `tɕɔː˧` | ✓ (ts held) |
+| 6 | tree | `ⁿtɔː˧` | `ⁿtɔː˧` | ✓ |
+| 7 | moon | `ɬi˧` | `ɬi˧` | ✓ |
+| 8 | mother | `niã˨˩ˀ` | `niã˨˩ˀ` | △ accepted hold |
+| 9 | sun | `n̥u˥˥` | `n̥u˥˥` | ✓ regression restored |
+| 10 | father | `tɕi˨˦ʱ` | `tɕi˨˦ʱ` | ✓ regression restored |
+| 11 | cat | `mi˨˦ʱ` | `mi˨˦ʱ` | ✓ |
+| 12 | dog | `tɛ˨˦ʱ` | `tɛ˨˦ʱ` | ✓ |
+| 13 | house | `tɕɛ˨˦ʱ` | `tɕɛ˨˦ʱ` | ✓ (ts held) |
+| 14 | eye | `qʰɔ˨˦ʱmua˦˨ʱ` | `qʰɔ˨˦ʱmua˦˨ʱ` | ✓ |
+| 15 | fire | `tʰɑ˨˩` | `tʰɑ˨˩` | ✓ regression restored |
+| 16 | hand | `tʰɛ˨˩` | `tʰɛ˨˩` | ✓ |
+| 17 | drink | `hɑu˨˩` | `hɑu˨˩` | ✓ |
+| 18 | one | `i˥˥` | `i˥˥` | ✓ |
+| 19 | heart | `ɕia˥˥` | `ɕia˥˥` | ✓ (spurious `ã` gone) |
+| 20 | love | `ɬu˥˥` | `ɬu˥˥` | ✓ |
+| 21 | hello | `ɲɔ˥˥tɕɔː˧` | `ɲɔ˥˥tɕɔː˧` | ✓ |
+| 22 | thanks | `ua˧tɕɑu˦˨ʱ` | `ua˧tɕɑu˦˨ʱ` | ✓ (ts held) |
+
+The three round-3 regressions (father / fire / sun) are now genuinely present in the live working tree. `git status` shows `words/father.js`, `words/fire.js`, `words/sun.js` as modified (uncommitted) carrying the correct `tɕi˨˦ʱ` / `tʰɑ˨˩` / `n̥u˥˥` forms; the other 8 round-2 fixes remain committed and intact. No new regressions in any of the previously-confirmed rows this round — the bug-family contours (`˦˥`, `˥˩`, bare `˧`) are gone from every entry.
+
+### Holds — re-confirmed accepted (won't-fix)
+
+- ISSUE 22c / ts→tɕ affricate convention — accepted as a consistently-applied dataset representational choice. No change.
+- ISSUE 23 hmn → mww recode — accepted as out-of-scope 21-section synchronized meta change. No change.
+- ISSUE 8 mother `niã˨˩ˀ` — not blocking; the trailing `ˀ` on the numeral carries the glottalisation. No change.
+
+### New issues
+
+None. No padding.
+
+### Scorecard
+
+- Verified applied & correct in live data: 19 entries (all ISSUEs 2–7, 9–22).
+- Accepted △ hold: 1 (mother).
+- Accepted won't-fix holds: 2 (ts/tɕ convention; hmn→mww recode).
+- Open errors / missing fixes / new regressions: **0**.
+
+**File status: CLOSED** — nothing left to address. All clear IPA errors are fixed and verified in live data; the three remaining items are reviewer-accepted defensible holds (ts/tɕ convention, hmn→mww meta recode, mother glottalisation form).

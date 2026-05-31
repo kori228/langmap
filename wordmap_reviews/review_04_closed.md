@@ -467,3 +467,51 @@ Note this also means the worker's round-1 claim ("APPLIED: sun `hɛ̂ːlios`, mo
 - New actionable issue: N2 — `words/sun.js` el_grc circumflex→acute.
 
 **File status: OPEN** — Dev team to apply: `words/sun.js` el_grc → `["ἥλιος", "hɛ́ːlios"]` (replace IPA combining circumflex U+0302 with combining acute U+0301, to match the word's actual oxia accent and the already-acute mother/father/moon peers).
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Re-verified the single open item (N2) verbatim against live data via `node` codepoint decode before specifying the edit.
+
+**Applied this round (1 fix):**
+
+- **N2 — el_grc sun (`words/sun.js:517`)** — APPLIED (applied by orchestrator this round). Current `el_grc: ["ἥλιος", "hɛ̂ːlios"]` → `el_grc: ["ἥλιος", "hɛ́ːlios"]`. The Greek surface ἥ is U+1F25 (eta + dasia + **oxia/acute**), so the IPA accent must be combining **acute** U+0301, not combining **circumflex** U+0302. Codepoint decode confirmed the defect: `sun` IPA carried `… 25b **302** 2d0 …` while the three peer el_grc acute-accented entries all carry U+0301 — `mother` `mɛ́ːtɛːr` (`25b 301`), `father` `patɛ́ːr` (`25b 301`), `moon` `selɛ́ːnɛː` (`25b 301`). This is a determinate, reviewer-specified single-character diacritic fix (U+0302→U+0301 on ɛ); surface text and all other characters unchanged. Brings `sun` into line both with its own oxia accent and with the already-acute peer set.
+
+**Still held / won't-fix (unchanged, reviewer-accepted across rounds 1–3):**
+
+- #9 (el_grc drink infinitive vs 1sg — cross-Greek lemmatization convention), #16 (el hand /x/-vs-/ç/ phonemic-vs-narrow, reviewer-marked "debatable"), #21 (sga/ga drink verbal-noun-vs-inflected convention), #22 (prg fire geminate `nː` interpretive, reviewer "minor"/"preferred"), #23 (pnt sun `ήλεν` needs firmer sourcing). No new evidence to reopen any of these; all explicitly ACCEPTED as won't-fix by the reviewer.
+
+**File status after this round:** the single determinate reviewer-specified correction (N2) is applied. Remaining open items are convention / source-pending won't-fix only.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+I re-loaded every cited entry from the live per-word files (`global.WORDS` + `WORDS.<word>.data.<code>`) and decoded the combining-diacritic codepoints for the el_grc accent family. The single round-3 fix (N2) is genuinely present, and a full re-grep confirms no regressions anywhere in the file's scope.
+
+**Round-3 fix — verified present in live data:**
+
+- ✓ N2 `words/sun.js` el_grc = `["ἥλιος", "hɛ́ːlios"]`. Codepoint decode of the IPA: `68 25b **301** 2d0 6c 69 6f 73` — the accent is now combining **acute U+0301** (not circumflex U+0302). This matches the word's actual oxia accent (Greek ἥ = U+1F25, eta + dasia + oxia) and aligns with the three peer el_grc acute entries, all independently re-verified this round: `mother` μήτηρ `mɛ́ːtɛːr` (`25b 301`), `father` πατήρ `patɛ́ːr` (`25b 301`), `moon` σελήνη `selɛ́ːnɛː` (`25b 301`). The genuine περισπωμένη case `one` εἷς `hêi̯s` correctly retains precomposed circumflex (U+00EA). Determinate, correct, complete.
+
+**All earlier-round APPLIED items — re-verified intact, no regressions:**
+
+pnt father `["πατέρας","paˈteɾas"]`; br tree `["gwezenn","ˈɡweːzɛn"]`; gd cat `["cat","kʰat"]`; lv cat `["kaķis","ˈkacis"]`; lt heart `["širdis","ˈʃʲɪrdʲɪs"]`; gv drink `["iu","juː"]`; hyw fire `["կրակ","ɡɾɑk"]`; sga water `["uisce","ˈɪʃcə"]`; gd fire `["teine","ˈtʲɛnʲə"]`; hy_grab hello `["ողջոյն","voʁd͡ʒojn"]` (cps confirm initial `76`=/v/, `281`=/ʁ/, tie-bar affricate `361`, `oj` diphthong); aae eye `["sy","sy"]`; lv hand `["roka","ˈrɔka"]`; el_kath sun `["ἥλιος","ˈilios"]`; el hand `["χέρι","ˈçeɾi"]`; el mother `["μητέρα","miˈteɾa"]`; el father `["πατέρας","paˈteɾas"]`; el heart `["καρδιά","kaɾˈðʲa"]`. Round-2 lt trio also intact: cat `ˈkatʲeː`, house `ˈnamɐs`, mother `ˈmotʲɪnɐ`.
+
+**Convention / source-pending won't-fix items — still ACCEPT, no new evidence:**
+
+- ✓ #9 (el_grc drink `πίνειν` infinitive vs el/el_kath `πίνω` 1sg) — live data confirms `drink/el_grc` = `["πίνειν","píneːn"]`. Cross-Greek lemmatization convention; system-level. ACCEPT.
+- ✓ #16 (el hand /x/-vs-/ç/ narrow-vs-phonemic) — reviewer-marked "debatable"; stress part applied. ACCEPT.
+- ✓ #21 (sga/ga drink verbal-noun-vs-inflected) — cross-entry convention. ACCEPT.
+- ✓ #22 (prg fire geminate `panːo`) — live data confirms `["panno","panːo"]`; reviewer-marked "minor"/"preferred", surface form accepted. ACCEPT.
+- ✓ #23 (pnt sun `ήλεν`) — live data confirms `["ήλεν","ˈilen"]`; reviewer explicitly uncertain ("may be a ghost form"); won't-fix pending firmer sourcing. ACCEPT.
+
+**New issues this round:** none. Codepoint re-decode of the full el_grc acute set is now internally consistent; no further defects surfaced.
+
+**Scorecard:**
+- Round-3 determinate fix (N2) verified present & correct: 1 / 1.
+- All earlier APPLIED items intact, no regressions.
+- Convention / source-pending won't-fix accepted: #9, #16, #21, #22, #23.
+- Still-open actionable items: 0.
+
+**File status: CLOSED** — nothing left to address. Every determinate, sourced error is fixed-and-verified in live data; all remaining items are reviewer-accepted cross-school / convention / source-pending won't-fix calls.

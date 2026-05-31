@@ -380,3 +380,91 @@ None beyond re-stating the three Hmong outliers, which are now wrong relative to
 | New blocking issues | 0 |
 
 **File status: OPEN** — The Hmong layer was re-transcribed into a breathy/phonetic system (-v=˨˦ʱ, -s=˨˩, -b=˥˥) after round-1; the three round-2 edits now contradict their own siblings. Dev team must align the three outliers to the current convention: `fire.js` `taws` → `tʰɑ˨˩`, `father.js` `txiv` → `tɕi˨˦ʱ`, `sun.js` `hnub` → `n̥u˥˥` (or revert all 17 siblings to the round-1 abstract targets — but the minimal consistent fix is the three).
+
+---
+
+## Worker round-3 response (作業者round-3)
+
+Thank you for the decisive round-3 re-grouping. You are right, and the minimal-consistent-fix logic is sound: aligning three lone outliers to their category majority (the deliberate `59edca2` breathy/phonetic notation that is now self-consistent across the other 17 lemmas) is a clear internal-consistency normalization, not a school-of-analysis choice. I re-grepped the full Hmong layer in live data before editing and confirmed every category grouping you reported.
+
+**-v category** (live siblings all `˨˦ʱ`): `cat.js` `miv`=mi˨˦ʱ, `dog.js` `dev`=tɛ˨˦ʱ, `house.js` `tsev`=tɕɛ˨˦ʱ. Outlier confirmed.
+**-s category** (live siblings all `˨˩`): `hand.js` `tes`=tʰɛ˨˩, `drink.js` `haus`=hɑu˨˩. Outlier confirmed.
+**-b category** (live siblings all `˥˥`): `one.js` `ib`=i˥˥, `love.js` `hlub`=ɬu˥˥, `heart.js` `siab`=ɕia˥˥, `hello.js` `nyob`=ɲɔ˥˥. Outlier confirmed.
+
+**Issue 10 tail — `fire.js` hmn `taws` (-s) — APPLIED (applied by orchestrator this round).**
+Live `tʰɑ˦˥` → `tʰɑ˨˩`. Sole `-s` entry not at ˨˩ (siblings `tes`=tʰɛ˨˩, `haus`=hɑu˨˩). Only the tone contour changed; aspiration `tʰ` and vowel `ɑ` preserved verbatim.
+
+**Issue 9 tail — `father.js` hmn `txiv` (-v) — APPLIED (applied by orchestrator this round).**
+Live `tɕi˧` → `tɕi˨˦ʱ`. Sole `-v` entry not at ˨˦ʱ (siblings `miv`=mi˨˦ʱ, `dev`=tɛ˨˦ʱ, `tsev`=tɕɛ˨˦ʱ). Segmental `tɕi` preserved; tone aligned to the breathy `˨˦ʱ` category target.
+
+**Issue 11 tail — `sun.js` hmn `hnub` (-b) — APPLIED (applied by orchestrator this round).**
+Live `n̥u˥˩` → `n̥u˥˥`. Sole `-b` entry not at ˥˥ (siblings `ib`=i˥˥, `hlub`=ɬu˥˥, `siab`=ɕia˥˥, `nyob`=ɲɔ˥˥). Voiceless nasal `n̥` preserved; only the falling endpoint ˥˩ corrected to level ˥˥.
+
+I did NOT revert the 17 siblings (the alternative you noted): that would undo the deliberate phonetic rework in `59edca2` and is a far larger system-level change, not a local consistency fix. Aligning the three outliers to the majority is the minimal, in-convention correction.
+
+**All previously-held items — REMAIN HELD as adjudicated and reviewer-accepted in rounds 1–3.** Nothing new is mechanically fixable:
+- Issue 8 (Lao `fire` faj˩˧) — ˩˧ is internally valid; high-class analysis of ຟ is a school choice. Held.
+- Issues 12, 14 (vi tr-/ch- realisations) — convention/dialect norm calls. Held.
+- Issues 13, 15 (vi_han 一/日 = `ɲət˨˩` Hán-Việt; za `da` = `taː˥`, Zhuang `d`=/t/) — reviewer-rejected own corrections; current data correct. Held.
+- Issues 1, 2, 23 (Thai-dialect identical ˥) — DEFERRED Thai-dialect tone pass; no confident Northern/Southern targets. Not invented here.
+- Issues 16, 17 (Shan / Tai Lue tone gaps) — DEFERRED systematic layer-build; no per-lemma targets.
+- Issues 18, 19 (Mon dog/fire script↔transcription mismatch) — needs authoritative Mon source; not a speculative pick. Held.
+- Issues 20, 21, 22 (Mon hand vowel self-retracted; Lao hello sa˨ compromise; vi_han 水 docs gap) — non-errors / docs items. Held.
+
+Net round-3: 3 Hmong IPA edits applied (`taws`→tʰɑ˨˩, `txiv`→tɕi˨˦ʱ, `hnub`→n̥u˥˥), bringing the layer fully self-consistent under its current `59edca2` convention. Remaining open items are deferred dataset tasks (Thai-dialect pass, Shan + Tai Lue tone builds, Mon source check) — none are mechanical local fixes.
+
+---
+
+## Reviewer round-4 response (再評価 round-4)
+
+I re-verified every round-3 claimed edit against live data and re-grouped the full Hmong layer by RPA tone-final one more time. **All three round-3 fixes are present and now internally consistent** — the three former outliers each match their category majority. This was the one blocking item from round-3, and it is closed.
+
+### Hmong layer — ✓ ALL THREE FIXED AND VERIFIED
+
+Live values (grepped this round):
+
+| RPA final | Siblings (live) | Round-3 entry (live) | Verdict |
+|---|---|---|---|
+| **-v** | `miv` mi˨˦ʱ, `dev` tɛ˨˦ʱ, `tsev` tɕɛ˨˦ʱ | `txiv` tɕi**˨˦ʱ** | ✓ in-line |
+| **-s** | `tes` tʰɛ˨˩, `haus` hɑu˨˩ | `taws` tʰɑ**˨˩** | ✓ in-line |
+| **-b** | `ib` i˥˥, `hlub` ɬu˥˥, `siab` ɕia˥˥, `nyob` ɲɔ˥˥ | `hnub` n̥u**˥˥** | ✓ in-line |
+
+The layer is now fully self-consistent under the `59edca2` breathy/phonetic convention (-v→˨˦ʱ, -s→˨˩, -b→˥˥). No outliers remain. The internal-consistency thread that ran rounds 1→3 is resolved.
+
+### Re-verification of held / deferred items (all confirmed in live)
+
+- **Lao Issues 3–7 — ✓ STILL CORRECT.** `drink` dɯːm˨˩, `mother` mɛː˨˩, `father` pʰɔː˩˧, `one` nɯŋ˩˧, `sun` taː˩˧ ven˩˧. Closed.
+- **Issue 8** Lao `fire` `faj˩˧` — ✓ ACCEPT HOLD. Internally-valid contour; high-class analysis of ຟ is a school choice. Won't-fix.
+- **Issues 12, 14** vi `t͡ɕaj˧˥` / vi_s `ɕɔ˧˥` — ✓ ACCEPT HOLD. Documented N/S realisation conventions. Won't-fix (team norm).
+- **Issues 13, 15** vi_han 一/日 = `ɲət˨˩` (Hán-Việt, not MC); za `da` = `taː˥` (Zhuang `d`=/t/) — ✓ ACCEPT HOLD. Reviewer's original corrections were wrong for these layers. Current data correct.
+- **Issues 1, 2, 23** Thai-dialect identical ˥ across th_isan/th_n/th_s — ✓ ACCEPT HOLD. Live still shows `faj˥`/`mɛːw˥`/`dɯːan˥` identical across all three. Suspect, but no defensible per-dialect Northern/Southern target exists to assign without dedicated field verification; legitimately deferred, not a mechanical fix. I won't force invented values.
+- **Issues 16, 17** Shan / Tai Lue tone gaps — ✓ ACCEPT HOLD. Confirmed segment-only (`shn` `ma`/`mɛw`, `khb` `maː`/`mɛw`). Deferred systematic layer-build; no per-lemma targets ever supplied.
+- **Issue 19** Mon `fire.js` `ပၟတ്` = `pəmoʔ` — ✓ ACCEPT HOLD. Still a script↔transcription mismatch in live, but needs an authoritative Mon source for a single replacement, not a speculative pick. Deferred, not invented.
+- **Issues 21, 22** Lao hello `sa˨`; vi_han 水 `tʰwi˧˩˧` — ✓ ACCEPT HOLD. Compromise / docs-layer items, unchanged.
+
+### Bonus: two Mon items now IMPROVED (beyond what was required)
+
+While re-verifying I noticed the orchestrator's broader passes have actually resolved two held Mon items:
+- **Issue 18** `dog.js` mnw was `["ပ്ၟိၚ്", "klɛp"]`; live is now `["ပ്ၟိၚ്", "klɛŋ"]` — the -ŋ final now matches the script's velar-nasal coda ၚ exactly as the reviewer argued. Effectively RESOLVED.
+- **Issue 20** `hand.js` mnw was `["တဲ", "toa"]`; live is now `["တဲ", "tɛ"]` — the vowel now matches ဲ = /ɛː/. (Issue 20 had been self-retracted/held, but the data is now cleaner.)
+
+These were not blocking; flagging as positive confirmations, not new issues.
+
+### New issues
+
+None. No padding.
+
+### Scorecard
+
+| Category | Count |
+|---|---|
+| Round-3 Hmong edits verified present & now consistent | 3 (taws, txiv, hnub) |
+| Internal-consistency errors still OPEN | 0 |
+| Held — accepted as defensible (analysis/convention/source/docs) | Issues 8, 12–15, 19, 21, 22 |
+| Held — accepted, remains deferred dataset task (won't-fix-now) | Thai-dialect pass (1, 2, 23), Shan (16), Tai Lue (17) |
+| Bonus items independently resolved since round-3 | 2 Mon (18, 20) |
+| New blocking issues | 0 |
+
+The only blocking item across the entire review history — the three Hmong tone outliers — is now fixed and verified in live data. Every remaining item is either a defensible cross-school/convention/source-needed hold I explicitly accept, or a large systematic layer-build task (Thai-dialect tones, Shan, Tai Lue) that is correctly deferred and has no mechanical local fix. Nothing is left for the dev team to mechanically address.
+
+**File status: CLOSED** — nothing left to address.
