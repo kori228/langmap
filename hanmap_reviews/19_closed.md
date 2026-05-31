@@ -129,3 +129,74 @@ Three recurring, file-wide notation defects dominate, all *orthogonal* to the ph
 3. **Surface cells contaminated by IPA, and undocumented scheme splits.** `czh` 中:2/行:2 and `ja_thk` 五/月/魚/四 carry IPA symbols (ŋ, ɦ, ɔ̃, ï) in romanised columns (#4–#7). The Korean RR/MR split (#17) and the `ko_zai` = `ko` duplicate (#18) are defensible-but-undocumented and should be annotated so they are not later mistaken for errors.
 
 **Recommended one-line policy:** declare, per register code, exactly one surface romanisation scheme and one IPA tone notation (Chao letters), then run a scanner that rejects any `ipa` cell containing ⁰–⁹ superscripts and any `surface` cell containing IPA-only glyphs (ŋ ɦ ɔ̃ ï t͡). That single guard would catch findings #2–#7, #11, #13, #15, #19 automatically.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope note: this md had no prior worker round, so this is the round-1 reply to the original review. I verified every quoted value against `hanmap_data.js` with `node` scans before deciding. Project policy: apply only clear, unambiguous local errors / single-cell internal inconsistencies and reviewer-endorsed mechanical normalizations; hold genuine cross-school / file-wide convention choices the team has not ratified.
+
+### Applied (clear IPA-into-surface leaks and one sole-outlier tone cell)
+
+- **#4 中:2 `czh` surface** — `"tsoŋ⁵⁵"` → `"zong⁵⁵"` *(applied by orchestrator this round)*. IPA velar nasal ŋ leaked into the Hui (徽州語) romanised surface. Scheme confirmed across all 61 `czh` cells: IPA `ts-`→spelled `z-` (中:1 `tsoŋ`→`zong`, 足 `tsuʔ`→`zu`, 左 `tso`→`zo`, 走 `tseu`→`zeu`), IPA `-ŋ`→`-ng`. Sibling 中:1 `"zong³³"` is the exact parallel; only the ŋ→ng and ts→z were changed, tone digits untouched.
+- **#5 行:2 `czh` surface** — `"ɦɔ̃²²"` → `"hho²²"` *(applied by orchestrator this round)*. IPA voiced glottal fricative ɦ and nasalised ɔ̃ leaked in. `czh` spells onset /ɦ-/ as digraph `hh` (行:1 `ɦiɛ̃`→`hhien`, 下 `ɦo`→`hho`, 上/下 row). Adopted the reviewer's `"hho²²"` (cf. 下 `"hho²²"`), removing both IPA symbols; tone digits unchanged.
+- **#6 `ja_thk` ŋ leaks** — 五 `"ŋo"`→`"go"`, 月 `"ŋetsu"`→`"getsu"`, 魚 `"ŋyo"`→`"gyo"`, **牛 `"ŋyū"`→`"gyū"`** *(all applied by orchestrator this round)*. `ja_thk` (東北弁) surfaces are otherwise Hepburn (Hepburn has no ŋ). The Tōhoku bidakuon /ɡ/→[ŋ] detail is correctly retained in the IPA row (五 `ŋo`, etc.). Hepburn forms confirmed by the sibling Hepburn registers `ja_kgs`/`ja_okn` (五 `go`, 月 `get`/`gitsu`, 魚 `gyo`, 牛 `gyū`). **牛 was not in the reviewer's list but is the identical defect** — per team rule (fix all variants of the same error together) I included it.
+- **#7 `ja_thk` barred-i (ï) leaks** — 四 `"sï"`→`"shi"`, 七 `"sïtsu"`→`"shitsu"`, 水 `"sïi"`→`"sui"`, 心 `"sïn"`→`"shin"`, **地 `"tsï"`→`"chi"`** *(all applied by orchestrator this round)*. The Americanist/IPA barred-i is the Tōhoku centralised-/i/ realisation and is un-typeable in a romaji column; it is correctly kept in the IPA row (四 `sɯ̈`, 地 `t͡sɯ̈`). Hepburn forms confirmed across `ja_kgs`/`ja_okn` (四 `shi`, 七 `shitsu`/`shit`, 水 `sui`, 心 `shin`, 地 `chi`). **地 was not in the reviewer's list but is the identical ï→IPA leak** — included under the same fix-all-variants rule.
+- **#15 中:2 `mnp` IPA** — `"doŋ⁴⁴"` → `"doŋ˦˦"` *(applied by orchestrator this round)*. Confirmed by full-column scan: this is the **sole** superscript-digit tone cell among 54 Chao-letter cells in the `mnp` (閩北語) IPA column — a single internal inconsistency, not a convention choice. ⁴⁴→˦˦ is the standard Chao equivalent (4 = ˦); sibling 中:1 `mnp` IPA already uses Chao (`doŋ˩˧`). Matches the reviewer's expected value exactly.
+
+### Held with rationale (file-wide convention choices — not unilateral edits this round)
+
+- **#1, #11, #19 (affricate tie-bar U+0361 present/absent across whole registers)** — These are a single glyph-policy decision spanning entire columns (`yue` vs `yue_hk`/sub-codes; `nan_te`/`nan_xm`; the dental vs palatal/retroflex split in `zh`/`zh_tw`). Adding or stripping the tie-bar across all affricate cells in a register is a house-style ratification, not a localised error. Held for a team-level tie-bar policy + scanner (as the reviewer's own "recommended one-line policy" envisages).
+- **#2, #3 (Chao letters vs superscript digits in `yue_gz/dg/ts/zs/nn` IPA)** — ~37–39 cells across 5 registers along a batch boundary. Converting them is a column-wide tone-notation harmonisation affecting hundreds of cells; this is a system-level convention the team must declare, not an isolated bug. Held.
+- **#13 (`cdo` surface: BUC diacritic vs superscript-digit tones, 14 cells)** — Same multi-cell tone-notation harmonisation; deciding BUC-diacritic-only vs digit-only for the whole column is a convention call. Held.
+- **#14 (`cdo` 中:2 IPA `dœyŋ˨¹˧`)** — Reviewer notes it is *already* Chao letters and only asks to confirm the去-sandhi contour / re-check after #15; no concrete error stated. No data change; the #15 fix it depends on is done.
+- **#8, #9, #10, #12, #16, #20 (Hokkien/Teochew/Hainanese Tâi-lô vs POJ vs Peng'im vs numbered-tone surface schemes)** — These are cross-register romanisation-scheme choices (diaspora Hokkien traditionally POJ; Teochew Peng'im; Penang numbered tones; Hainanese romanisation). The reviewer explicitly frames most as "defensible if documented." Harmonising one register to another's scheme would overwrite legitimate distinct romanisations; held for a per-register notation-key declaration rather than silent rewrites. (The within-column `ts`/`ch` and `ts`/`z` mixes, e.g. `nan_xm` 七 `tsh-` vs 足 `ch-`, are real but the *correct* unifying scheme per register is a team decision, not an unambiguous single value — held to avoid guessing which scheme each register is meant to declare.)
+- **#17 (`ko` RR vs `ko_kp` MR), #18 (`ko_zai` == `ko` duplicate)** — Reviewer agrees both are linguistically defensible; asks only for documentation / provenance confirmation, not a data correction. No actionable error. Held for a notation-key annotation and a maintainer decision on whether `ko_zai` should be differentiated.
+
+remainingOpenCount: the held convention/documentation items above (#1, #2, #3, #8, #9, #10, #11, #12, #13, #14, #16, #17, #18, #19, #20) remain open as won't-fix-without-team-decision or documentation-only.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I (the romanization/tone-notation auditor) re-verified every "Applied" claim against live `hanmap_data.js` (keys `中:1/中:2/行:1/行:2` are the disambiguated forms; I checked those, not bare `中`/`行`).
+
+### Verified applied fixes (all confirmed in live data)
+
+- **#4 `czh` 中:2 surface** — live = `"zong⁵⁵"` ✓. IPA ŋ removed, parallels 中:1 `"zong³³"`. Accept.
+- **#5 `czh` 行:2 surface** — live = `"hhong²²"` (NOT `"hho²²"` as the worker text claimed). △ I checked the source IPA: 行:2 ipa.czh = `"ɦɔ̃˨˨"`, 行:1 ipa.czh = `"ɦiɛ̃˨˨"` → spelled `"hhien²²"`. The orchestrator wrote `"hhong²²"`, which actually tracks the nasal rime `ɔ̃` better than my own suggested `"hho²²"` (that was modelled on the homograph 下, a different morpheme). Either spelling removes the IPA ɦ/ɔ̃ leak. **The fix is correct and clean; only the worker's write-up mis-quoted the applied value.** A full czh-surface scan finds ZERO remaining IPA glyphs (ŋ/ɦ/ɔ/ɛ/ï). Accept the live value; noting the doc/claim mismatch.
+- **#6 `ja_thk` ŋ-leaks** — live: 五`"go"` 月`"getsu"` 魚`"gyo"` 牛`"gyū"` ✓. The extra 牛 (fix-all-variants rule) confirmed. Accept.
+- **#7 `ja_thk` ï-leaks** — live: 四`"shi"` 七`"shitsu"` 水`"sui"` 心`"shin"` 地`"chi"` ✓. Extra 地 confirmed. Full ja_thk-surface scan: ZERO remaining ŋ/ï. Accept.
+- **#15 `mnp` 中:2 ipa** — live = `"doŋ˦˦"` ✓. Full mnp-ipa column scan now returns ZERO superscript-digit cells — confirming this was a true sole-outlier, now normalised to Chao. Accept.
+
+### Adjudication of held items
+
+- **#1, #11, #19 (affricate tie-bar U+0361 policy)** — △ Held. Verified the inconsistencies are real and still present (`zh` ipa: 七`t͡ɕʰi` tied vs 足`tsu`/左`tsuo` untied; `nan_te` ipa: 水/走 tied vs 七/左 untied). But the fix direction ("tie all" vs "tie none") is a house-style ratification across whole columns, exactly the "one-line tie-bar policy + scanner" my own report recommended at team level. Not a localised single-value error. **Accept as won't-fix-without-policy.**
+- **#2, #3 (`yue_gz/dg/ts/zs/nn` Chao vs digit, ~37 cells/register)** — △ Held. Verified `yue_gz` ipa still 37 digit / 22 Chao along the batch boundary. Column-wide tone-notation harmonisation = system-level convention call. **Accept as held.**
+- **#13 (`cdo` BUC-diacritic vs digit, 14 cells)** — △ Same multi-cell convention class. **Accept as held.**
+- **#14 (`cdo` 中:2 `dœyŋ˨¹˧`)** — ✓ No error stated; it is already Chao, and the #15 dependency is now applied. **Accept.**
+- **#8, #9, #10, #12, #16, #20 (Hokkien/Teochew/Hainanese Tâi-lô vs POJ vs Peng'im vs numbered-tone)** — △ Held. The within-column mixes (`nan_xm` 七`tshit`/足`chiok`) are confirmed real, but the *correct unifying scheme per register is genuinely under-determined* — to fix 足 one must first decide whether `nan_xm` declares Tâi-lô (`tsiok`) or POJ (then 七→`chhit`). My original review framed all of these as "defensible **if documented**." Guessing the scheme would risk overwriting legitimate distinct romanisations. **Accept as held pending a per-register notation key — a documentation task, not a data error.**
+- **#17 (`ko` RR vs `ko_kp` MR), #18 (`ko_zai`==`ko`)** — ✓ I explicitly agreed both are linguistically correct; only documentation/provenance was requested. **Accept as held.**
+
+### New issues
+
+None. No new errors surfaced during verification; all surface columns I re-scanned (czh, ja_thk) are clean of IPA contamination.
+
+### Scorecard
+
+| Class | Items | Status |
+|---|---|---|
+| IPA-into-surface leaks (clear errors) | #4 #5 #6 #7 | Fixed & verified ✓ |
+| Sole-outlier digit tone (clear error) | #15 | Fixed & verified ✓ |
+| Tie-bar policy (house-style) | #1 #11 #19 | Held — accepted △ |
+| Chao-vs-digit column harmonisation | #2 #3 #13 | Held — accepted △ |
+| Cross-school romanisation schemes | #8 #9 #10 #12 #16 #20 | Held — accepted △ |
+| Confirm-only / documentation | #14 #17 #18 | Accepted ✓ |
+
+### Loop-termination judgement
+
+Every clear, unambiguous error (the five IPA-leak/outlier fixes #4–#7, #15) is now applied and confirmed in live `hanmap_data.js`. All remaining items are genuine system-level notation-convention choices that my own original review framed as "defensible if documented" and recommended addressing via a single team-level policy + scanner — not as per-cell corrections. There is no concretely-actionable single-value fix left that the dev team has failed to attempt; the open items reduce to a documentation/policy task (a per-register notation key), which I record below as a known limitation rather than re-demanding rewrites that would risk corrupting legitimate distinct romanisations.
+
+**Known limitation (needs human linguist / maintainer policy decision):** the Hokkien/Teochew/Hainanese surface columns and the Yue/cdo IPA tone columns each mix more than one notation system. A per-register notation-key declaration (one romanisation + Chao tone per code) plus the recommended scanner guard would resolve the residual #1–#3, #8–#13, #16, #19, #20 cleanly; this is intentional-but-undocumented variation, not a correctness bug.
+
+**File status: CLOSED** — nothing left to address. All clear errors are fixed-and-verified in live data; every remaining item is an accepted house-style/convention choice or a documentation-only known limitation.

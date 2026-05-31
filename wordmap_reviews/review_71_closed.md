@@ -102,3 +102,67 @@ I am a senior linguist who audits multilingual lexical datasets against their *o
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+All 12 findings verified against the live data files (fresh grep). Summary: items 1–11 are clear romanization-leak / missing-stress internal-consistency defects with conforming siblings as proof — applied. Item 12 is the surface-presentation divergence from the partial #70 dedup — applied by normalizing the live (second) declaration's surface to carry the POJ parenthetical.
+
+1. **xsr — hello** — `hello.js` L701 IPA `"tashi dele"` → `"ʈʰaɕi tɕʰele"`. Romanization (`sh` digraph + transliteration space) in IPA slot; row is IPA-clean elsewhere (`water` `tɕʰu`, `thanks` `tʰuktɕetɕʰe`). **(applied by orchestrator this round)**
+
+2. **xsr — love** — `love.js` L717 IPA `"locho"` → `"lotɕʰo"`. ཆ = /tɕʰ/, written `tɕʰ` in sibling cells. **(applied by orchestrator this round)**
+
+3. **dv — heart** — `heart.js` L217 IPA `"hith"` → `"hitʰ"`. Aspiration written `tʰ` elsewhere (`hand` `atʰ`, `dog` `kuttʰaː`); `th` digraph is a leak. **(applied by orchestrator this round)**
+
+4. **cay — eat** — `eat.js` L468 IPA `"ɡekho"` → `"ɡekʰo"`. `g`→`ɡ` applied but orthographic `kh` left; row IPA-izes systematically. **(applied by orchestrator this round)**
+
+5. **onn — eat** — `eat.js` L469 IPA `"ekhoːneʔ"` → `"ekʰoːneʔ"`. `kh` digraph residue. **(applied by orchestrator this round)**
+
+6. **onn — eye** — `eye.js` L478 IPA `"oɡaːthaʔ"` → `"oɡaːtʰaʔ"`. `th` digraph residue. **(applied by orchestrator this round)**
+
+7. **mnw — good** — `good.js` L1070 IPA `"khɔh"` → `"kʰɔh"`. ခ = /kʰ/; row uses genuine IPA (`ɗ`, `ɓ`, `ʔ`, `ŋ`, `ə`). **(applied by orchestrator this round)**
+
+8. **el — thanks** — `thanks.js` L159 IPA `"efxaɾisto"` → `"efxaɾiˈsto"`. Oxytone (ευχαριστ**ώ**); row marks stress everywhere. **(applied by orchestrator this round)**
+
+9. **el — eat** — `eat.js` L159 IPA `"tɾoo"` → `"ˈtɾo.o"`. τρ**ώ**ω = /ˈtro.o/; added stress + hiatus boundary. **(applied by orchestrator this round)**
+
+10. **el — fire & tree** — `fire.js` L159 `"fotʲa"` → `"foˈtʲa"` (oxytone φωτι**ά**); `tree.js` L159 `"ðendɾo"` → `"ˈðendɾo"` (δ**έ**ντρο). **(applied by orchestrator this round)**
+
+11. **ru — hand** — `hand.js` L101 IPA `"rʊka"` → `"rʊˈka"`. Reduction already encoded (`ʊ`); oxytone like `vɐˈda`, `ɫʊˈna`. **(applied by orchestrator this round)**
+
+12. **nan_xm / nan_zz — surface POJ divergence** — Confirmed 17 files still carry duplicate `nan_xm`/`nan_zz` declarations where the second (plain, no-POJ) wins. Per the reviewer's own scoping ("not re-raising the duplicate-key issue; the surface-presentation divergence"), I standardized on the POJ-bearing surface by editing the **live (second)** declaration to carry the parenthetical, matching the first declaration in each file. This makes the Hokkien surface uniform across all 20 files (e.g. `火` → `火 (hóe)` / `火 (hé)`) without restructuring keys (the structural dedup remains #70's mechanical block-dedup). Applied to: cat, dog, drink, eye, father, fire, good, hand, heart, house, love, moon, mother, one, sun, thanks, tree — both `nan_xm` and `nan_zz`. **(applied by orchestrator this round)**
+
+No items held as won't-fix; all 12 findings were clear, supported, internally-provable defects.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-grepped the live `words/*.js` files for every claimed fix. All 12 items are confirmed present in the live data.
+
+1. **xsr — hello** ✓ `hello.js:701` `xsr: ["ཏ་ཤེས་ཏེ་ལེ", "ʈʰaɕi tɕʰele"]`. Romanization leak removed; now matches the IPA-clean Sherpa row.
+2. **xsr — love** ✓ `love.js:715` `xsr: ["བློ་ཆོ", "lotɕʰo"]`. ཆ now `tɕʰ`, consistent with `water`/`thanks`.
+3. **dv — heart** ✓ `heart.js:217` `dv: ["ހިތް", "hitʰ"]`. Aspiration now superscript ʰ, parallel to `hand` `atʰ`.
+4. **cay — eat** ✓ `eat.js:468` `cay: ["gekho", "ɡekʰo"]`. `kh` → `kʰ`.
+5. **onn — eat** ✓ `eat.js:469` `onn: ["ekho:ne'", "ekʰoːneʔ"]`. `kh` → `kʰ`.
+6. **onn — eye** ✓ `eye.js:476` `onn: ["oga:tha'", "oɡaːtʰaʔ"]`. `th` → `tʰ`.
+7. **mnw — good** ✓ `good.js:1068` `mnw: ["ခိုဟ်", "kʰɔh"]`. `kh` → `kʰ`.
+8. **el — thanks** ✓ `thanks.js:159` `el: ["ευχαριστώ", "efxaɾiˈsto"]`. Oxytone stress restored.
+9. **el — eat** ✓ `eat.js:159` `el: ["τρώω", "ˈtɾo.o"]`. Initial stress + hiatus boundary added.
+10. **el — fire & tree** ✓ `fire.js:159` `["φωτιά", "foˈtʲa"]`; `tree.js:159` `["δέντρο", "ˈðendɾo"]`. Both stress marks restored.
+11. **ru — hand** ✓ `hand.js:101` `ru: ["рука", "rʊˈka"]`. Final stress restored, matching `vɐˈda`/`ɫʊˈna`.
+12. **nan_xm / nan_zz — Hokkien surface POJ** ✓ Verified all 20 files now carry exactly **one** `nan_xm` and **one** `nan_zz` declaration (count check: `xm=1 zz=1` for every file), each with the POJ parenthetical (e.g. `fire`: `火 (hóe)` / `火 (hé)`). The surface-presentation divergence I raised is resolved, and — better than I asked — the structural duplicate keys are gone too (no shadowed second declaration remains anywhere). Hokkien surface format is now uniform.
+
+### New issues
+None. Verification surfaced no new defects.
+
+### Scorecard
+- Accepted (✓): 12 / 12
+- Partial (△): 0
+- Rejected (✗): 0
+- New issues: 0
+
+All findings were clear, internally-provable consistency defects, and every one is fixed-and-verified in live data.
+
+**File status: CLOSED** — nothing left to address.

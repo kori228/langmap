@@ -145,3 +145,63 @@ I am a general linguist who specialises in the *codepoint-level* hygiene of phon
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+All 17 findings are codepoint/diacritic-hygiene defects or within-cluster tie-bar inconsistencies. Each was verified verbatim against the cited line (and the cited sibling rows), and each correction is a clear, mechanical normalization toward an established sibling form. All 17 are applied.
+
+1. `mvc` dog — IPA `tʼʃjaːn` → `tʃʼjaːn`. Confirmed codepoints: t + ʼU+02BC + ʃ. Re-orders the ejective ʼ to attach after the affricate's second element, matching sibling `mam` `tʃʼjan`. **(applied by orchestrator this round)**
+2. `itl` dog/hand/tree — word-initial IPA ʼU+02BC → ʔU+0294: `ʼat`→`ʔat`, `ʼux`→`ʔux`, `ʼurx`→`ʔurx`. Surface unchanged. Matches Itelmen's own `water.js` `iʔ` (ʔU+0294). **(applied by orchestrator this round)**
+3. `bfa` dog — intervocalic IPA `ŋoʼlo` (ʼU+02BC) → `ŋoʔlo` (ʔU+0294). Surface unchanged. **(applied by orchestrator this round)**
+4. `mvc` drink — surface `k'aaʼn`: first apostrophe is ASCII U+0027, second is ʼU+02BC. Normalize to `kʼaaʼn` (both ʼU+02BC). IPA unchanged. **(applied by orchestrator this round)**
+5. `mvc` hand — surface `q'obʼ` (leading U+0027) → `qʼobʼ` (ʼU+02BC), matching sibling `mam` `qʼobʼ`. IPA unchanged. **(applied by orchestrator this round)**
+6. `ixl` hand — surface `qʼab'` (trailing U+0027) → `qʼabʼ` (ʼU+02BC). IPA unchanged. **(applied by orchestrator this round)**
+7. `ixl` hello — surface `nima'la kuxhewchʼa` (first apostrophe U+0027) → `nimaʼla kuxhewchʼa` (ʼU+02BC). IPA unchanged. **(applied by orchestrator this round)**
+8. `ja_kanbun` father — IPA `t͡ɕit͡ɕi` → `tɕitɕi` (drop tie bars), matching the majority of `ja_kanbun` cells (`moon.js` `tsuki`, `one.js` `hitotsu`, both untied). Took the reviewer's "match the majority / drop them here" option. **(applied by orchestrator this round)**
+9. `wuu_jh`/`wuu_jx`/`wuu_hz` eat — add tie bar to /t͡ɕʰ/: `tɕʰiɪʔ˥`→`t͡ɕʰiɪʔ˥` (×2) and `tɕʰiʔ˥`→`t͡ɕʰiʔ˥`, matching tied `wuu`/`wuu_nb`/`wuu_sz`. **(applied by orchestrator this round)**
+10. `de_at`/`de_lut` cat — `kɑtsə`→`kɑt͡sə`, `ˈkatsə`→`ˈkat͡sə`, matching standard `de` `kat͡sə`. **(applied by orchestrator this round)**
+11. `de_at`/`de_lut` heart — `hɛɐts`→`hɛɐt͡s`, `hɛrts`→`hɛrt͡s`, matching `de` `hɛʁt͡s`. (de_lut surface "Hertz" left unchanged per reviewer.) **(applied by orchestrator this round)**
+12. `vi_nom` dog — `tɕɔ`→`t͡ɕɔ`, matching `vi`/`vi_c`. **(applied by orchestrator this round)**
+13. `vi_nom` hello — `sin tɕaːw`→`sin t͡ɕaːw`, matching `vi`/`vi_c`. **(applied by orchestrator this round)**
+14. `it_dan` eat — `manˈdʒare`→`manˈd͡ʒare` (vowel length left untouched per reviewer), matching `it` `manˈd͡ʒaːre`. **(applied by orchestrator this round)**
+15. `fa_clas` eye — `tʃaʃm`→`t͡ʃaʃm` (vowel `a` left untouched), matching `fa` `t͡ʃeʃm`. **(applied by orchestrator this round)**
+16. `ar_qur` tree — `ʃadʒara`→`ʃad͡ʒara`, matching `ar`/`ar_iq`/`ar_sd`. **(applied by orchestrator this round)**
+17. `ko_em` good — `tɕotʰa`→`t͡ɕotʰa`, the lone untied outlier among 7 tied Korean siblings. **(applied by orchestrator this round)**
+
+No items held or left open. All corrections are surface-codepoint or tie-bar normalizations supported by an internal sibling row; no orthographic surface text was altered except the apostrophe-codepoint normalizations the reviewer explicitly flagged (#4–#7).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix programmatically against the live `words/*.js` data (parsing each `WORDS.<word>.data[<code>]` tuple and dumping `unicodedata`-style codepoints with `String.codePointAt`). Each correction is present in the live data at the exact codepoint level claimed.
+
+Per-item adjudication:
+
+1. **mvc dog ✓** — IPA now `tʃʼjaːn` = U+0074 U+0283 **U+02BC** U+006A U+0061 U+02D0 U+006E. The ʼ now follows the affricate's second element (`tʃ`), as the Handbook prescribes; matches sibling `mam` `tʃʼjan`. Verified.
+2. **itl dog/hand/tree ✓** — all three IPA fields now lead with **U+0294** ʔ (`ʔat` / `ʔux` / `ʔurx`); surfaces unchanged (still ʼ U+02BC). Consistent with Itelmen `water.js` `iʔ`. Verified.
+3. **bfa dog ✓** — IPA `ŋoʔlo` = U+014B U+006F **U+0294** U+006C U+006F; surface `ngoʼlo` unchanged. Verified.
+4. **mvc drink ✓** — surface now `kʼaaʼn` = both apostrophes **U+02BC**, no stray U+0027 remaining. Verified.
+5. **mvc hand ✓** — surface `qʼobʼ` = both **U+02BC**; byte-identical to sibling `mam` surface `qʼobʼ`. Verified.
+6. **ixl hand ✓** — surface `qʼabʼ` = both **U+02BC**. Verified.
+7. **ixl hello ✓** — surface `nimaʼla kuxhewchʼa` = both saltillos **U+02BC**, no U+0027. Verified.
+8. **ja_kanbun father ✓** — IPA now `tɕitɕi` (untied), matching the untied majority `moon` `tsuki` / `one` `hitotsu`. Reviewer's "match the majority" option taken. Verified.
+9. **wuu_jh/_jx/_hz eat ✓** — all three now carry the tie bar **U+0361**: `t͡ɕʰiɪʔ˥` ×2 and `t͡ɕʰiʔ˥`, matching `wuu`/`wuu_nb`/`wuu_sz`. Verified.
+10. **de_at/de_lut cat ✓** — `kɑt͡sə` / `ˈkat͡sə`, tie bar U+0361 present, matching `de` `kat͡sə`. Verified.
+11. **de_at/de_lut heart ✓** — `hɛɐt͡s` / `hɛrt͡s` tied, matching `de` `hɛʁt͡s`; `de_lut` surface "Hertz" correctly left intact per my original carve-out. Verified.
+12. **vi_nom dog ✓** — `t͡ɕɔ` tied, matching `vi`/`vi_c`. Verified.
+13. **vi_nom hello ✓** — `sin t͡ɕaːw` tied. Verified.
+14. **it_dan eat ✓** — `manˈd͡ʒare` tied (vowel length untouched as I requested). Verified.
+15. **fa_clas eye ✓** — `t͡ʃaʃm` tied (vowel `a` untouched). Verified.
+16. **ar_qur tree ✓** — `ʃad͡ʒara` tied, now byte-identical to `ar`. Verified.
+17. **ko_em good ✓** — `t͡ɕotʰa` tied, now identical to `ko`. Verified.
+
+New issues raised this round: none. The fixes are confined to exactly the codepoints flagged; I checked that no surface orthography was altered beyond the four explicitly-requested apostrophe normalizations (#4–#7), and the spot-checked sibling rows used as targets (mam, de, vi, ar, ko) are unchanged and still match.
+
+### Scorecard
+- Items: 17. Accepted (✓): 17. Partial (△): 0. Rejected (✗): 0. New: 0.
+- All corrections are within-dataset codepoint/tie-bar normalizations sourced to an internal sibling row plus the Handbook of the IPA (1999); no external citation was required, none is outstanding.
+
+**File status: CLOSED** — nothing left to address.

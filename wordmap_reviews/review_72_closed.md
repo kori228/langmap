@@ -129,3 +129,73 @@ I am a comparative dialectologist and lexical-database auditor, and my standing 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every "Current" value verbatim against the live `words/*.js` files and researched the demanded sourced forms where applicable. Summary: 4 findings APPLIED (23 edits total), 11 findings HELD (see rationale below). I am read-only on data; APPLIED items are returned as structured edits for the orchestrator to apply serially.
+
+### Applied
+
+**#1 — `fr_qc`/`fr_be`/`fr_ch` one — /ɛ̃/ → /œ̃/ (applied by orchestrator this round).** IPA-only fix on three lines of `words/one.js` (L502, L504, L505). The /œ̃/→/ɛ̃/ merger of *un* is a hexagonal/Parisian feature; Quebec (Laurentian), Belgian and Swiss French are the conservative varieties that retain nasal front-rounded /œ̃/ and keep *un* /œ̃/ ≠ *brin* /ɛ̃/ (Walker 1984; Detey et al. 2016 PFC; Côté 2012). Flipping the three variant rows to /œ̃/ while leaving parent `fr` /œ̃/ removes the inverted isogloss. Surface unchanged.
+
+**#2 — `fr_qc` moon — `lyn` → `lʏn` (applied by orchestrator this round).** IPA-only fix on `words/moon.js` L502. Laurentian high-vowel laxing /y/→[ʏ] in a closed syllable checked by a non-lengthening consonant; *lune* [lʏn] is the textbook example (Walker 1984 §3.2; Côté 2012). This is an internal inconsistency, not policy: the dataset already laxes the same variety's /i/→[ɪ] in `thanks.js` L496 `fr_qc ["merci","mɛʁsɪ"]` while `fr_be`/`fr_ch` keep tense `mɛʁsi`. Only `fr_qc` is corrected; `fr_af`/`fr_be`/`fr_ch` moon legitimately stay `lyn`.
+
+**#13 — `bm` hello & thanks — IPA `i ni tʃe` → `i ni t͡ʃɛ` (applied by orchestrator this round).** IPA-only fix on `words/thanks.js` L604 and `words/hello.js` L595. Bambara *cɛ* is /t͡ʃɛ/: orthographic *c* is the affricate /t͡ʃ/ (tie bar) and the vowel is open /ɛ/, not /e/. HELD the reviewer's request to differentiate hello from thanks: An ka taa (reputable Bamanankan resource) confirms *i ni ce* is genuinely polysemous — it serves BOTH as a general time-neutral greeting ("like ciao") AND as "thank you / you're welcome", so the hello=thanks surface identity is real polysemy, not a wrong-row paste. Surface "i ni ce" kept (widely-attested romanization). Source: ankataa.com Basic Bambara greetings; masteranylanguage.com Bambara. (Same applies to the analogous `emk` *i ni se* pair — also genuine polysemy, not corrected.)
+
+**#15 — `nan_xm`/`nan_zz` duplicate object keys in 17 files (applied by orchestrator this round).** The deferred #70 mechanical block-dedup, endorsed here. Confirmed the duplicate keys are live in: one, cat, dog, drink, eye, father, fire, good, hand, heart, house, love, moon, mother, sun, thanks, tree (17 files). In every file the **second** (plain, no-POJ-gloss) `nan_xm`/`nan_zz` pair carries IPA byte-identical to the first (POJ-glossed) pair, so removing the second copy and keeping the richer `'… (POJ)'` surface is loss-free. Applied as 17 edits, each deleting the two plain second-copy lines (matched together with the unique preceding `zh_nj` line for uniqueness). The per-variety Xiamen vs Zhangzhou tone split is preserved because the first copies already carry it.
+
+### Held (with rationale)
+
+**#3 — `abq` eye = dog (`ла`/`la`): HELD, current value is actually sourced.** Researched the demanded distinct Abaza "eye" form. Multiple independent sources give Abaza (abq) "eye" as **ла la**: Glosbe en→abq "eye" = ла; the Abaza grammatical sketch (ResearchGate, Arkadiev) attests *la-qʕʷa* "eye-close" (hide-and-seek), i.e. *la* = eye. Abaza "dog" is likewise *la* (Wiktionary; Spoken Corpus of Abaza, Tapanta). So eye and dog are genuine (near-)homophones in Abaza — they differ by **tone** in Tapanta (Chirikba: indefinite *la* HM eye vs *la* H dog), not by segment. The reviewer's expectation that eye must differ in surface is drawn from the Abkhaz pattern (*abla* eye vs *ala* dog), which does NOT carry over to Abaza. No reliable distinct-surface form exists to substitute. Recommendation: keep the surface; the only defensible refinement would be a sourced **tone** mark to make the homophony intentional, but Chirikba's exact Tapanta tone values are not reliably retrievable offline, so I do not guess. Hold with documented caveat. Sources: glosbe.com/en/abq/eye; ResearchGate "Abaza. A grammatical sketch"; en.wiktionary.org/wiki/ла.
+
+**#4 — `dbq` one = mother (`mma`/`mːa`): HELD as unsourceable.** Agree this looks like the jaq mother=one paste signature (*mma* /mːa/ is a transparent mama-type kinship form; `dbq` father is the matching *daa* /daː/). But I could not source the actual Daba (Chadic, Biu-Mandara) cardinal "1" offline — the Kraft (1981) Chadic Wordlists III and ASJP DABA list exist but their numeral rows were not retrievable through available tools. I will not fabricate a Chadic numeral. Recommendation: reviewer escalate to a human linguist with Kraft 1981 / Gravina 2014 Central Chadic reconstructions, OR accept with a documented "suspected wrong-row paste, unverified" caveat. Left open.
+
+**#5/#6 — `nlc` heart=dog (`ngal`), eat=mother (`ne`): HELD as unsourceable.** Both are plausible wrong-row pastes (heart vs dog unrelated; note `nlc` drink `["mi ne"]` suggests *ne* is a real ingest element, making the bare *eat*=*mother* identity suspect). No accessible Nalca (Trans-New-Guinea, Mek) lexicon offline yields confirmed distinct forms for "heart" / disambiguated "eat" vs "mother". Will not guess. Recommendation: escalate or caveat. Left open.
+
+**#7/#8 — `mpt` sun=good (`kep`), love=mother (`na`): HELD as unsourceable.** Fedden (2011) *A Grammar of Mian* is the right source and the gaps are in principle fillable, but the grammar's lexicon is not accessible through available tools, and no reputable Mian wordlist surfaced the specific "sun"/"love" forms. *na* "mother" is a credible mama-type form (so the love cell is the suspect copy), but I will not fabricate the Mian word for sun or love. Recommendation: consult Fedden (2011) lexicon directly. Left open.
+
+**#9 — `agq` one = mother (`mò`/`mo`): HELD.** Lower-confidence by the reviewer's own account — some Ring/Grassfields languages genuinely have numeral "1" of shape *mɔ̀*, so this may be a true near-homophone. The defensible refinement is a sourced **tone**-marked IPA so the identity is intentional, but I could not source the exact Aghem cardinal-vs-kinship tones offline and will not guess. Left open for a tone pass by a human linguist.
+
+**#10/#11/#12 — `mev`/`dnj` Mande tone-stripped collisions (`mi`, `gba`, `kɔ`, `do`): HELD as unsourceable.** Agree in principle: Mano and Dan are register-tone languages where these minimal pairs are kept apart by tone, and the tone-less IPA both violates anti-duplication and drops phonemic info; the /ɡ͡b/ tie bar (#11) is also correct in the abstract. But applying the fix requires the **actual lexical tone of each specific word** (Mano *mi* drink vs eye, *gba* dog vs heart, *kɔ* fire vs hand; Dan *kɔ* hand vs house, *do* one), which I cannot source reliably offline — the reviewer themselves only gives "e.g." illustrative tones. Inventing tone diacritics would be fabricating phonemic data. Recommendation: a sourced Mano (Vydrin/Bearth) and Dan (Vydrin 2016) tone pass by a human linguist. Left open. (Note: the /ɡ͡b/ tie-bar change alone could be applied mechanically, but doing it without the accompanying tone would still leave dog=heart byte-identical, so it does not resolve the finding; deferring the whole pass together.)
+
+**#14 — `ja_oki` moon `t͡ɕit͡ɕi`: HELD — current value is CORRECT, proposed change would introduce an error.** Researched the Okinawan reflex of 月. Authoritative sources confirm Shuri-Naha Okinawan "moon" IS **ちち chichi** /t͡ɕit͡ɕi/: Wiktionary Okinawan Swadesh list entry #148 "moon" = ちち chichi; Wiktionary/kaikki ちち entry "月: moon" citing the 1963 *Okinawa-go Jiten* (National Institute for Japanese Language). The regular Shuri development of *tsuki* both raises/palatalises *tsu-*→*chi-* and palatalises *-ki*→*-chi*, yielding the fully-*chichi* outcome — the reviewer's expected *tsiki* [t͡siki] is not the Shuri reflex. No change. Sources: en.wiktionary.org/wiki/Appendix:Okinawan_Swadesh_list; kaikki.org Okinawan ちち.
+
+**Net:** Applied #1, #2, #13 (IPA only), #15 (dedup). Held #3, #4, #5, #6, #7, #8, #9, #10, #11, #12 (unsourceable offline or genuine homophony — no fabrication) and #14 (current value verified correct).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every "Current" value and every claimed APPLIED fix directly against the live `words/*.js` files (grep, line by line). All four applied fixes are present in live data exactly as claimed; no phantom edits this time.
+
+### Verification of applied fixes (all confirmed in live data)
+
+- **#1 ✓** `one.js`: `fr_qc` L500, `fr_be` L502, `fr_ch` L503 all now `["un", "œ̃"]`; parent `fr` L93 `["un", "œ̃"]`. The inverted isogloss is removed — the conservative QC/BE/CH varieties are no longer more advanced than the standard. Accept.
+- **#2 ✓** `moon.js` L500 `fr_qc ["lune", "lʏn"]`; `fr_af`/`fr_be`/`fr_ch` (L501–503) correctly remain tense `lyn`. Laxing applied to exactly the right row, matching the `thanks.js` `mɛʁsɪ` precedent. Accept.
+- **#13 ✓** `thanks.js` L602 and `hello.js` L595 both now `["i ni ce", "i ni t͡ʃɛ"]` — affricate tie bar + open /ɛ/ fixed. Accept the IPA correction. On the surface-differentiation request I accept the worker's HOLD: *i ni ce* is genuinely polysemous (greeting + thanks) in Bambara, so the surface identity is real polysemy, not a wrong-row paste. This is a defensible convention-level call. Accept.
+- **#15 ✓** All 17 listed files now carry exactly one `nan_xm`/`nan_zz` pair (verified count=1 in each of one, cat, dog, drink, eye, father, fire, good, hand, heart, house, love, moon, mother, sun, thanks, tree). Spot-checked `one.js` (`一 (chi̍t / it)`), `eye.js` (`目睭 (ba̍k-chiu)`), `moon.js` (`月娘 (goe̍h-niû)`) — the richer POJ-glossed surface survived and the Xiamen `˦` vs Zhangzhou `˩˨˩`/`˩˧` per-variety tone split is intact. Loss-free dedup, #70 follow-up completed. Accept.
+
+### Adjudication of held items
+
+- **#3 abq eye=dog (`ла`/`la`) — ACCEPT as genuine homophony (✓).** Live data confirms `ab` distinguishes (eye `абла`/`abla` vs dog `ала`/`aːla`) while `abq` does not. The worker's key point is correct: my "must differ" expectation was imported from the Abkhaz pattern, which does not transfer to Abaza, where *la* is independently attested for "eye" (Glosbe; Arkadiev sketch *la-qʕʷa*). The only refinement would be a Tapanta tone mark, credibly documented as not retrievable offline. Won't-fix; documented limitation.
+- **#14 ja_oki moon (`t͡ɕit͡ɕi`) — ACCEPT, current value is CORRECT (✓).** Sourced to the Okinawan Swadesh list (#148 moon = ちち chichi) and the 1963 *Okinawa-go Jiten*. My proposed *tsiki* is not the Shuri reflex; the fully-*chichi* outcome is regular. My #14 was the error, not the data. Withdrawn.
+- **#4 dbq, #5/#6 nlc, #7/#8 mpt — wrong-row-paste suspicion stands, but unsourceable offline (△, documented limitation).** I still regard these as the likely jaq-style cross-concept pastes (the kinship/father anchors — `dbq` father `daa`, the `nlc` `mi ne` drink decomposition, `mpt` `na` mother — all point to which cell is the copy). The worker made a genuine, documented research effort (Kraft 1981 / Gravina Central Chadic, Nalca/Mek, Fedden 2011) and correctly refused to fabricate Chadic / Trans-New-Guinea / Mountain-Ok forms it could not source. Per round-2 loop-termination, I will NOT keep demanding the impossible. These are accepted as **known limitations requiring a human linguist with offline reference access** — flagged in the data audit, not silently blessed as correct.
+- **#9 agq one=mother (`mò`/`mo`) — △ documented limitation.** My own finding noted this may be a true Ring/Grassfields near-homophone (*mɔ̀* "one"). The defensible refinement is a tone-marked IPA, which the worker could not source offline. Won't-fix without a sourced Aghem tone value; documented limitation.
+- **#10/#11/#12 mev/dnj Mande tone-stripping (`mi`,`gba`,`kɔ`,`do`) — △ documented limitation.** Confirmed all collisions are still live (drink/eye `mi`, dog/heart `gba` for `mev`, etc.). The substance of the finding (register-tone languages need tone-marked IPA; /ɡ͡b/ needs a tie bar) remains valid in the abstract, but applying it requires the actual lexical tone of each specific lexeme, which I myself only illustrated with "e.g." values and which the worker cannot source offline without fabrication. This is genuinely a sourced-data demand the dev team has now credibly attempted and documented as unmeetable offline. Accepted as a **known limitation, needs a sourced Vydrin/Bearth Mano + Vydrin Dan tone pass by a human linguist.** I do not require the bare tie-bar-only change since, as the worker notes, it would leave dog=heart byte-identical and so resolves nothing on its own.
+
+### New issues
+
+None. Verification surfaced no new clear errors; the surviving cross-concept duplicates are exactly the ones already enumerated.
+
+### Scorecard
+
+- Applied & verified in live data: #1, #2, #13 (IPA), #15 — 4 findings, 23 edits, all confirmed present.
+- Accepted as correct-as-is / genuine homophony: #3, #14.
+- Accepted as won't-fix this round, documented known limitations (need human linguist with offline refs): #4, #5, #6, #7, #8, #9, #10, #11, #12.
+- New issues: 0.
+
+Rationale for closing: every clear, mechanically-fixable error I raised (#1, #2, #13, #15) is fixed and verified in live data. #14 was my own error (data is correct, sourced). #3 is genuine Abaza homophony (sourced). The remaining items (#4–#12) are all demands for externally-sourced Chadic / Trans-New-Guinea / Mande tone & numeral data that the dev team has, after a genuine and documented research effort, credibly established as unsourceable through available offline tools. Per the round-2 loop-termination directive I will not keep the file open demanding the impossible; these are recorded as explicit known limitations for a human linguist rather than left as open actionable dev tasks. There is no concretely actionable next step the dev team has not already attempted.
+
+**File status: CLOSED** — nothing left to address. Remaining cross-concept duplicates (#4–#12) are documented known limitations requiring a human linguist with offline reference access; all mechanically-fixable errors are fixed and verified in live data.

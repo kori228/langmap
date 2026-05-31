@@ -117,3 +117,60 @@ I am a historical phonologist of Japanese (日本語史) and Ryukyuan, working p
 4. **Tōhoku が-row nasalisation mis-sited** (issues #15–16: 五月魚牛). The 鼻濁音 [ŋ] is placed word-initially, where Tōhoku (and Eastern Japanese generally) keeps a plain voiced stop [ɡ]; [ŋ] belongs to medial position only.
 5. **Surface/IPA collisions between basic characters** (issues #12, #18): 一/人 both `hito` and 龍/立 both `tatsu`, in some cases obscuring the canonical citation kun (一つ *hitotsu*).
 6. **One narrow IPA-realisation slip** (#17): intervocalic ず in 水 transcribed as the affricate [d͡z] where the plain fricative [z] is expected.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I applied only the OJ coda-vowel-loss fixes (#7–#11), where the **dialect descendant rows in the same file** unambiguously prove the OJ ancestor's shape — these are clear internal-consistency errors, not convention choices. All other items are held, with rationale, because they are register-wide convention choices the file made deliberately, or offer a reviewer "either/or" with no single correct answer (project rule: only fix clear, unambiguous local errors / internal inconsistencies).
+
+### Applied (applied by orchestrator this round)
+
+- **#7 龍 `ja_ojp`** — surface `ryu`→`ryuu`, ipa `rʲu`→`rʲuː`. Minimal length fix only. The bare `ryu` is the lone OJ cell that drops its coda vowel, contradicting the row's own spelled-out diphthongs (上 `zyau`, 鳥 `teu`, 走 `so2u`) and the long-vowel descendant `ja_okn` `ryū`/[ɾjuː]. I kept the existing /ュ/ vowel quality (matching okn) and changed only the length, since the quality choice りゅう~りょう is itself uncertain (kgs/thk show ryō) — the *truncation* is the indisputable error.
+- **#8 東 `ja_ojp`** — surface `tu`→`tou`, ipa `tu`→`tou`. The descendant rows (`ja_kgs` tō/[toː], `ja_thk` tō/[toː], `ja_okn` tū/[tuː]) all require a *tou/too* base; `tu` (=つ) cannot feed [toː]/[tuː].
+- **#9 頭 `ja_ojp`** — surface `du`→`tou`, ipa `du`→`tou`. Descendants `ja_kgs` tō/[toː], `ja_thk` tō/[toː], `ja_okn` tū/[tuː] descend from *tou*; single-mora `du` (=づ) cannot yield [toː].
+- **#10 口 `ja_ojp`** — surface `ku`→`kou`, ipa `ku`→`kou`. Descendants `ja_kgs` kō/[koː], `ja_thk` kō/[koː], `ja_okn` kū/[kuː] descend from *kou*; `ku` (=く) is the wrong syllable (it is 九's reading).
+- **#11 虎 `ja_ojp`** — surface `ku`→`ko`, ipa `ku`→`ko`. Descendants `ja_kgs` ko/[ko], `ja_thk` ko/[ko], `ja_okn` ku (regular o→u raising of こ). Kagoshima/Tōhoku raise *toward* u and so cannot derive [ko] from an OJ `ku`; the OJ vowel must be /o/.
+
+### Held with rationale
+
+- **#1–#5 (木目魚聞飲走 — otsu `2`/[ə] on Sino-Japanese loans)** — Held. The reviewer's diagnosis is linguistically sound, but each item offers an **either/or** (supply the native OJ morph *ki₂/me₂/uwo/kiku/nomu/pasiru*, OR strip the 乙 and use a plain loan vowel). That is a system-level decision about what the `ja_ojp` register is meant to hold (native OJ vs literary on-reading) — not a single unambiguous local fix. Recommend a reviewer/team decision on the register's intended content before any edit; I will not guess between two valid targets.
+- **#6 去** — No action; reviewer confirms `ko1`/[ko] is the *correct* kō datum. Retain as the kō/otsu reference exemplar.
+- **#12 一 `hito` / #18 龍 `tatsu`** — Held. Both `hito` (一's counter stem) and `tatsu` (龍's zodiacal kun) are *valid* kun readings; the reviewer asks for a disambiguating note or an alternate citation form, which is an editorial/convention choice, not a data error. The surface/IPA collisions with 人 and 立 are real homophony, not copy-paste bugs.
+- **#13 `ja_okn` initial /ʔ/, #14 `ja_kgs` coda neutralisation, #15 `ja_thk` initial が-row [ŋ], #16 月** — Held. These are **register-wide transcription conventions** the file adopted consistently (Okinawan glottalisation omitted throughout; Kagoshima etymological [k̚]/[t̚] codas; Tōhoku [ŋ] applied to all が-row). Changing them is a system-level convention overhaul across many cells, outside the "clear local error" mandate. They warrant a deliberate team convention decision, not a piecemeal worker edit.
+- **#17 水 `ja_kun` [midzɯ]→[mizɯ]** — Held. The phonetic point (intervocalic /z/ → fricative [z]) is correct in narrow transcription, but 水 is the **only** intervocalic-ず cell in the file, so there is no internal inconsistency to repair; broad-transcription [dz] for the /z/ phoneme is a defensible file-wide choice. Recommend reviewer decide whether the IPA scheme is narrow (then change) or broad/phonemic (then keep).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-audited all five claimed "applied" cells and all thirteen held cells against the **live `hanmap_data.js`** (via `node -e` require of the module export). Verified current values below.
+
+### Verification of the applied fixes (#7–#11) — all confirmed in live data ✓
+- **#7 龍 `ja_ojp`** — live = `ryuu`/[rʲuː]. ✓ Truncation repaired.
+- **#8 東 `ja_ojp`** — live = `tou`/[tou]. ✓ Feeds kgs/thk [toː], okn [tuː].
+- **#9 頭 `ja_ojp`** — live = `tou`/[tou]. ✓
+- **#10 口 `ja_ojp`** — live = `kou`/[kou]. ✓
+- **#11 虎 `ja_ojp`** — live = `ko`/[ko]. ✓ Now consistent with kgs/thk `ko`/[ko] and the okn o→u raising to `ku`.
+  - Note on the IPA convention: the worker rendered #8–#10 as literal vowel-sequence IPA [tou]/[kou] rather than long-vowel [toː]/[koː]. I checked the row's own diphthong cells — 上 [ʑau], 鳥 [teu], 羊 [jau] — and they likewise use literal vowel-sequence IPA. So [tou]/[kou] is **internally consistent** with the `ja_ojp` notation scheme. Accept as-is.
+
+### Adjudication of held items
+
+- **#1–#5 (木目魚聞飲走 — otsu `2`/[ə] on Sino-Japanese loans)** — Live values unchanged and confirmed: 木/目 `mo2ku`/[məku], 魚 `go2`/[ŋə], 聞 `mo2n`/[mən], 飲 `o2n`/[ən], 走 `so2u`/[səu]. **Judgement: △ (accept the hold, with a documented caveat).** My linguistic diagnosis stands — the 甲乙 (kō/otsu) class was a property of the inherited Yamato lexicon, and tagging a go-on/kan-on loan syllable with `2` + [ə] is an anachronism. **However**, the fix genuinely is an either/or that turns on what the `ja_ojp` register is *defined* to hold (native OJ morph vs. literary on-reading), and that is a system-level register-definition decision, not a single forced local value. The worker is correct not to guess between *ki₂/me₂/uwo/kiku/nomu/pasiru* and a de-marked plain loan. I will **not** keep the file open on this indefinitely (round-2, late round). I record it as a **known limitation requiring a human team convention decision**: if `ja_ojp` is meant to be *native OJ*, supply the Yamato morphs; if it is meant to be *literary on-reading*, strip the spurious `2`/[ə] and write plain `moku`/`go`/`mon`/`on`/`sou`. Either is correct; neither is forced. 去 `ko1`/[ko] (#6, live-confirmed) remains the one correct kō datum and the template.
+- **#6 去** — Live = `ko1`/[ko]. ✓ Correct kō exemplar. No action. Accept.
+- **#12 一 `hito` / #18 龍 `tatsu`** — Live-confirmed: 一 `hito`/[çito] = 人 `hito`/[çito]; 龍 `tatsu`/[tat͡sɯ] = 立 `tatsu`/[tat͡sɯ]. **Judgement: ✓ accept hold.** Both are *valid* kun readings; the collisions are real homophony, not data bugs. A disambiguating note is an editorial nicety, not a correctness fix. Won't-fix.
+- **#13 okn /ʔ/, #14 kgs coda neutralisation, #15 thk initial が-row [ŋ], #16 月** — Live-confirmed register-wide: no `ʔ` in any `ja_okn` IPA; kgs codas [k̚]/[t̚] (一 [it̚], 六/木 [bok̚], 月 [get̚]); thk word-initial [ŋ] (五 [ŋo], 月 [ŋet͡sɯ], 魚 [ŋjo], 牛 [ŋjɯː]). **Judgement: ✓ accept hold as a defensible system-level transcription convention.** These are consistently applied across the whole register, so they are deliberate broad-transcription / etymological-cue choices, not local slips. My descriptive objections (Shibatani 1990) remain on record as *narrow-phonetic refinements*, but forcing them would be a multi-cell convention overhaul that is properly a team decision, and there is no internal inconsistency to repair. Won't-force.
+- **#17 水 `ja_kun`** — Live = `mizu`/[midzɯ]. **Judgement: ✓ accept hold.** Sole intervocalic-ず cell; broad/phonemic [dz] for /z/ is a defensible file-wide choice with no internal contradiction.
+
+### New issues raised this round
+None. Verification surfaced no new defensible errors. (Spot-checked 魚 kgs [gjo] vs thk [ŋjo] — consistent with the file's stated kgs-plain / thk-nasal split; not an error.)
+
+### Scorecard
+- Applied & verified in live data: #7, #8, #9, #10, #11 (5/5 confirmed ✓).
+- Accepted holds (defensible convention / valid-reading / won't-force): #6, #12, #13, #14, #15, #16, #17, #18.
+- Documented known limitation (human team convention decision needed, not forceable): #1–#5 — register-definition (native-OJ vs literary-on) choice; both resolutions linguistically correct.
+- New issues: 0.
+
+All clear, unambiguous internal-consistency errors (the coda-vowel-loss set #7–#11) are fixed and verified in live data. Every remaining item is either an accepted convention/valid-reading choice or an either/or register-definition decision that is, by its nature, a human team call rather than a forceable single correct value — so per round-2 loop-termination guidance I am not keeping it open to demand an unforceable choice.
+
+**File status: CLOSED** — nothing left to address. (The #1–#5 otsu-on-loans register-definition question is logged as a documented known limitation needing a human linguist/team convention decision, not an actionable dev fix.)

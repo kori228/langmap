@@ -121,3 +121,63 @@ I am a historical-linguistics specialist whose daily work sits on the attested-v
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every "Current" value verbatim against the live data files and confirmed each cited cross-reference. All 14 findings are clear, well-sourced corrections (period-pronunciation errors and/or internal inconsistencies the dataset itself disproves). All applied.
+
+1. **`got` one `words/one.js` L525** — `ɛːns` → `ains`. ⟨ai⟩ before /n/ is outside the breaking environment /h ƕ r/; inherited diphthong /ai/. Confirmed internally by `got` *augō* `ɑuɣoː` (eye L519) keeping ⟨au⟩. **(applied by orchestrator this round)**
+2. **`got` hello `words/hello.js` L510** — `hɛːls` → `hails`. ⟨ai⟩ before /l/, not a breaking consonant. ON sibling `non heill` `hɛilː` (L509) keeps its diphthong. **(applied by orchestrator this round)**
+3. **`got` mother `words/mother.js` L525** — `ɛːθiː` → `aiθiː`. ⟨ai⟩ before /þ/, not breaking; final ⟨ei⟩=/iː/ left intact. **(applied by orchestrator this round)**
+4. **`ang` eye `words/eye.js` L516** — `eːɑɣe` → `æːɑɣe`. OE long diphthong ⟨ēa⟩ = /æːɑ/ (Wright & Wright 1925 §50). **(applied by orchestrator this round)**
+5. **`ang` tree `words/tree.js` L516** — `treoːw` → `treːow`. OE ⟨ēo⟩ length on first element /eːo/, matching the macron in the surface ⟨trēow⟩. **(applied by orchestrator this round)**
+6. **`ang` heart `words/heart.js` L516** — `heorte` → `ˈheorte`. IPA was byte-identical to spelling; minimal safe normalization is to mark root-initial stress. Orthography otherwise unchanged (⟨eo⟩ already maps to /eo/). **(applied by orchestrator this round)**
+7. **`cu` heart `words/heart.js` L520** — `srʲdʲtse` → `sɪrɪdɪtse`. Canonical OCS front jers ь = reduced [ɪ] (Lunt 2001 §2.4), not bare palatalization; dataset already vocalizes back jers (`kotɤkɑ`, `jedinɤ`). **(applied by orchestrator this round)**
+8. **`cu` dog `words/dog.js` L520** — `pʲsɤ` → `pɪsɤ`. Front jer ь → /ɪ/; back jer ъ → /ɤ/ already present, so harmonizing both as syllabic. **(applied by orchestrator this round)**
+9. **`cu` father `words/father.js` L520** — `otʲɪtsʲ` → `otɪtsɪ`. Two identical ь treated inconsistently (first vocalized, second not); harmonize on the vocalized [ɪ] the cell already uses. **(applied by orchestrator this round)**
+10. **`sa`/`sa_edu` heart `words/heart.js` L84–85** — `hɾɨdajam` → `hr̩dajam` (both). Vocalic ṛ is syllabic /r̩/, matching the project's own `vsa` `hr̩dajam` (L1037). **(applied by orchestrator this round)**
+11. **`sa`/`sa_edu` tree `words/tree.js` L84–85** — `vɾɨkʂaɦ` → `vr̩kʂaɦ` (both). Same vocalic-ṛ fix; `vsa` `vr̩kʂaɦ` (L1037) is the in-corpus model. **(applied by orchestrator this round)**
+12. **`sa_edu` water `words/water.js` L84** — `dʒalam` → `dʑalam`. ⟨ज⟩ = single alveolo-palatal /dʑ/; matches `sa` (L85) and the dataset's voiceless counterpart च=/tɕ/ (`moon` sa_edu `tɕandɾaɦ`). `sa` left unchanged. **(applied by orchestrator this round)**
+13. **`sa_edu` cat `words/cat.js` L84** — `maːɾdʒaːɾaɦ` → `maːɾdʑaːɾaɦ`. Same ज=/dʑ/ harmonization; `sa` (L85) and `vsa` (L1037) both already /dʑ/. **(applied by orchestrator this round)**
+14. **`el_grc` one `words/one.js` L517** — `hêi̯s` → `hêːs`. Attic *εἷς* ⟨ει⟩ is the spurious (compensatorily-lengthened) diphthong = long monophthong /eː/, not genuine /ei̯/ (Sihler 1995 §201, §229.2). Breathing + circumflex retained. Genuine diphthongs elsewhere (e.g. `house` el_grc `oîkos`) correctly kept. **(applied by orchestrator this round)**
+
+No items held or rejected; all 14 are unambiguous corrections backed by both cited grammars and the dataset's own contradicting cells.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-`eval`/grepped every cited cell in the live data files. All 14 round-1 fixes are present and correct verbatim:
+
+- **#1 `got` one** `words/one.js` L523 = `["𐌰𐌹𐌽𐍃", "ains"]` — ✓ accept. ⟨ai⟩/n outside breaking env; matches `got augō` `ɑuɣoː`.
+- **#2 `got` hello** `words/hello.js` L510 = `["𐌷𐌰𐌹𐌻𐍃", "hails"]`; ON `non heill` L509 `hɛilː` intact — ✓ accept.
+- **#3 `got` mother** `words/mother.js` L523 = `["𐌰𐌹𐌸𐌴𐌹", "aiθiː"]`; final ⟨ei⟩=/iː/ kept — ✓ accept.
+- **#4 `ang` eye** `words/eye.js` L514 = `["ēage", "æːɑɣe"]`; `non auga` L516 `ɑuɣɑ` intact — ✓ accept.
+- **#5 `ang` tree** `words/tree.js` L514 = `["trēow", "treːow"]`; length on first element, matches macron — ✓ accept.
+- **#6 `ang` heart** `words/heart.js` L514 = `["heorte", "ˈheorte"]`; IPA no longer byte-identical to spelling — ✓ accept (minimal stress-marking normalization).
+- **#7 `cu` heart** `words/heart.js` L518 = `["срьдьце", "sɪrɪdɪtse"]` — ✓ accept; both front jers vocalized [ɪ] (Lunt 2001 §2.4).
+- **#8 `cu` dog** `words/dog.js` L518 = `["пьсъ", "pɪsɤ"]` — ✓ accept; front ь→ɪ, back ъ→ɤ harmonized.
+- **#9 `cu` father** `words/father.js` L518 = `["отьць", "otɪtsɪ"]` — ✓ accept; both ь now [ɪ].
+- **#10 `sa`/`sa_edu` heart** `words/heart.js` L84/L85 = `hr̩dajam` (both), matches `vsa` L1035 — ✓ accept.
+- **#11 `sa`/`sa_edu` tree** `words/tree.js` L84/L85 = `vr̩kʂaɦ` (both), matches `vsa` L1035 — ✓ accept.
+- **#12 `sa_edu` water** `words/water.js` L84 = `dʑalam`, matches `sa` L85 — ✓ accept.
+- **#13 `sa_edu` cat** `words/cat.js` L84 = `maːɾdʑaːɾaɦ`, matches `sa` L85 and `vsa` L1035 `maːrdʑaːraɦ` — ✓ accept.
+- **#14 `el_grc` one** `words/one.js` L515 = `["εἷς", "hêːs"]`; spurious-diphthong long monophthong; genuine-diphthong `house el_grc oîkos` untouched — ✓ accept.
+
+### New issues (round-2) — the OCS front-jer fixes left two named instances behind
+
+Issue #8 of round-1 explicitly identified the unvocalized-front-jer defect as "a systematic policy gap, not a one-off" and named **`sun` (`слъньце`→`slɤnʲtse`)** and **`love` (`любъвь`→`lʲubɤvʲ`)** as further instances. The orchestrator fixed only the three filed cells (heart/dog/father); these two named cells were left in the *old* unvocalized state and are now internally inconsistent with the corrected cells. Verified live:
+
+- **NEW-1. `cu` sun — front jer ь before ц left unvocalized** — `words/sun.js` L524 `cu: ["слъньце", "slɤnʲtse"]`. The back jer ъ is vocalized (→ /ɤ/) but the front jer ь before ц is reduced to bare palatalization `nʲ`. To match the now-fixed `heart`/`dog`/`father`, the front jer should surface as [ɪ]: expected `slɤnɪtse`. (Lunt 2001 §2.4; same principle as accepted #7–#9.)
+- **NEW-2. `cu` love — word-final front jer ь left unvocalized** — `words/love.js` L525 `cu: ["любъвь", "lʲubɤvʲ"]`. The back jer ъ is vocalized (→ /ɤ/) but the word-final front jer ь is bare `ʲ`; cf. the accepted `father` cell where word-final ь is `ɪ` (`otɪtsɪ`). Expected `lʲubɤvɪ` (the initial `lʲ` before ю is legitimate palatalization from the front vowel and should stay). Per Lunt 2001 §2.4.
+
+These are not new demands for external data — they are the *same* sourced fix already accepted for #7–#9, applied to the two cells the original reviewer pre-identified. They are concretely actionable.
+
+### Scorecard
+- Round-1 items accepted (✓): 14 / 14, all verified in live data.
+- New actionable issues (round-2): 2 (`cu sun`, `cu love` — front-jer vocalization, completing the systematic OCS fix).
+- Partial / rejected: 0.
+
+**File status: OPEN** — Dev team must vocalize the remaining front jers per round-1 issue #8: `words/sun.js` `slɤnʲtse`→`slɤnɪtse`, and `words/love.js` `lʲubɤvʲ`→`lʲubɤvɪ`.

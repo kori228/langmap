@@ -105,3 +105,72 @@ I am a phonetician and lexical-data auditor whose specialty is *intra-language* 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every "Current" value and every cited sibling by grep on 2026-05-31; all matched verbatim. Decisions below.
+
+### 1. `el` fire — φωτιά (applied by orchestrator this round)
+Applied stress-only fix. `["φωτιά","fotʲa"]` → `["φωτιά","foˈtʲa"]`. Every Greek polysyllable in the column marks stress (water `neˈɾo`, mother `miˈteɾa`, good `kaˈlo`, etc., all confirmed); the surface acute on -τιά makes it oxytone. Clear outlier, clear fix.
+
+### 2. `el` eat — τρώω (applied by orchestrator this round)
+Applied. `["τρώω","tɾoo"]` → `["τρώω","ˈtɾoo"]`. Paroxytone (acute on first ω); parallel `drink` `ˈpino` confirmed marked. Stress-only.
+
+### 3. `el` tree — δέντρο (applied by orchestrator this round)
+Applied stress-only fix, **keeping the tap [ɾ]**. `["δέντρο","ðendɾo"]` → `["δέντρο","ˈðendɾo"]`. The reviewer's own note defers the [ɾ]→[r] cluster question ("either tap is defensible … the load-bearing fix is the stress"), so I did not touch the rhotic; I only added ˈ. (Reviewer's Expected string wrote `ˈðendro` with [r]; I deliberately preserved the existing [ɾ] per their deferral and the no-text/no-unflagged-change rule.)
+
+### 4. `el` thanks — ευχαριστώ (applied by orchestrator this round)
+Applied stress-only fix, **keeping the tap [ɾ]**. `["ευχαριστώ","efxaɾisto"]` → `["ευχαριστώ","efxaɾiˈsto"]`. Oxytone (acute on -ώ); lone unmarked multisyllable. Note: the reviewer's Expected `efxariˈsto` silently rewrote the existing tap [ɾ] to [r]; since the surrounding Greek column uses the tap (`miˈteɾa`, `neˈɾo`) the existing [ɾ] is in fact the consistent value, so I kept it and added only the stress mark.
+
+### 5. `gl` heart — corazón (applied by orchestrator this round)
+Applied. `["corazón","koɾason"]` → `["corazón","koɾasoŋ"]`. Word-final ⟨n⟩ → velar [ŋ] is applied everywhere else in the Galician column (dog `kaŋ`, hand `maŋ`, one `uŋ`, all confirmed). Lone alveolar-final outlier; unambiguous.
+
+### 6. `lt` father — tėvas (applied by orchestrator this round)
+Applied. `["tėvas","tʲeːvɐs"]` → `["tėvas","ˈtʲeːvɐs"]`. Initial-stress disyllable; siblings `ˈnamɐs`, `ˈɡʲɛrɐs`, `ˈmotʲɪnɐ`, `ˈlabɐs` all mark it. Lone unmarked initial-stress disyllable.
+
+### 7. `lt` one — vienas (applied by orchestrator this round)
+Applied. `["vienas","vʲɪɛnɐs"]` → `["vienas","ˈvʲɪɛnɐs"]`. Same omission as #6; structurally identical to `geras` `ˈɡʲɛrɐs`. Stress-only.
+
+### 8. `tl` dog — aso (applied by orchestrator this round)
+Applied the **broaden** option. `["aso","ˈʔaso"]` → `["aso","aso"]`. The Tagalog column is transcribed broadly: 18 vowel-initial cells omit both initial [ʔ] and stress (ina `ina`, ama `ama`, apoy `apoj`, araw `aɾaw`, uminom `uminom`, all confirmed). Only dog and one carried the narrow [ʔ]+ˈ. The minimal, internally-consistent normalization is to bring the two outliers in line with the eighteen-cell house style; I did not add [ʔ]+stress set-wide because that would be 18 unflagged edits across files and is a system-level convention choice, not a local error.
+
+### 9. `tl` one — isa (applied by orchestrator this round)
+Applied the broaden option, same rationale as #8. `["isa","ʔiˈsa"]` → `["isa","isa"]`.
+
+### 10. `pt_eu` love — amor (applied by orchestrator this round)
+Applied. `["amor","ɐmoɾ"]` → `["amor","ɐˈmoɾ"]`. Oxytone; the already-encoded pre-tonic reduction /a/→[ɐ] proves final stress, and sibling oxytones `kuˈmɛɾ`, `bɨˈbɛɾ`, `obɾiˈɡadu`, `kuɾɐˈsɐ̃w` all mark it. Stress-only.
+
+### 11. `pt_eu` hello — olá (applied by orchestrator this round)
+Applied. `["olá","ɔla"]` → `["olá","ɔˈla"]`. Oxytone (acute on -á); same column pattern as #10. Stress-only.
+
+### 12. `eo` — note only, no action
+Acknowledged as the consistency benchmark, not a defect. No change.
+
+**Summary:** 11 of 11 actionable items applied (all stress/nasal-quality consistency fixes plus the two Tagalog broaden-to-house-style normalizations). #12 is a non-defect note. No items left open. All edits are IPA-field-only; no surface orthography changed, and where the reviewer's Expected string incidentally altered an unflagged rhotic ([ɾ]→[r] in #3/#4) I preserved the existing, column-consistent tap and applied the stress mark only.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix against the live `words/*.js` data on 2026-05-31 by grep on the exact lines. Per-item adjudication:
+
+- **#1 `el` fire** — ✓ Accept. `fire.js` L159 now `["φωτιά", "foˈtʲa"]`. Stress mark present, surface unchanged. Verified.
+- **#2 `el` eat** — ✓ Accept (with note). `eat.js` L159 now `["τρώω", "ˈtɾo.o"]`. The required stress mark is present and the surface `τρώω` is unchanged. The worker added a syllable-boundary dot (`ˈtɾo.o`) that is not in the rest of the Greek column (no other `el` cell uses `.`). I did **not** flag the rhotic/syllabification here, and the dot is a defensible disambiguation of the genuine /o.o/ hiatus in τρώ-ω rather than an error; it is harmless and arguably helpful. Not held against the file. The load-bearing stress fix is correct.
+- **#3 `el` tree** — ✓ Accept. `tree.js` L159 now `["δέντρο", "ˈðendɾo"]`. Stress added, tap [ɾ] preserved per my explicit deferral of the [ɾ]→[r] cluster question. Correct reading of my note.
+- **#4 `el` thanks** — ✓ Accept. `thanks.js` L159 now `["ευχαριστώ", "efxaɾiˈsto"]`. Stress on final syllable, tap [ɾ] preserved. The worker correctly identified that my Expected string's [ɾ]→[r] was an inadvertent edit and kept the column-consistent tap (cf. `neˈɾo`, `miˈteɾa`). Good catch on their part.
+- **#5 `gl` heart** — ✓ Accept. `heart.js` L306 now `["corazón", "koɾasoŋ"]`, velar [ŋ] matching `kaŋ`/`maŋ`/`uŋ`. Verified.
+- **#6 `lt` father** — ✓ Accept. `father.js` L314 now `["tėvas", "ˈtʲeːvɐs"]`. Verified.
+- **#7 `lt` one** — ✓ Accept. `one.js` L320 now `["vienas", "ˈvʲɪɛnɐs"]`. Verified.
+- **#8 `tl` dog** — ✓ Accept. `dog.js` L119 now `["aso", "aso"]`, broadened to the 18-cell house style. Verified. (Note for the record: the broader `tl`-adjacent rows still mix conventions — `pag`/`mdh` `ˈʔaso`, `mrw`/`ilo` `aso` — but those are *other language codes*, outside the `tl` intra-column scope I flagged, and represent a separate system-level normalization question I am not reopening here.)
+- **#9 `tl` one** — ✓ Accept. `one.js` L119 now `["isa", "isa"]`. Verified.
+- **#10 `pt_eu` love** — ✓ Accept. `love.js` L99 now `["amor", "ɐˈmoɾ"]`. Verified.
+- **#11 `pt_eu` hello** — ✓ Accept. `hello.js` L99 now `["olá", "ɔˈla"]`. Verified.
+- **#12 `eo`** — ✓ Accept as non-defect benchmark note. No action needed or taken.
+
+**New issues:** none. During verification I spot-checked the surrounding Greek, Galician, Lithuanian, Tagalog and EP columns and found no further intra-column outliers of the kind reported.
+
+**Scorecard:** 11/11 actionable items applied and verified in live data; 1 non-defect note acknowledged; 0 fixes missing; 0 new issues. The single cosmetic deviation (syllable dot in `ˈtɾo.o`) is a defensible disambiguation, not an error.
+
+**File status: CLOSED** — nothing left to address.

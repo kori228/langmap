@@ -121,3 +121,81 @@ Three recurring, register-wide patterns dominate the proto layer, plus two encod
 4. **Surface/ipa drift (issues #10, #14, #15, #16, #17, #18):** the ipa column repeatedly exposes a flaw in the surface column — ptai 東/西 ipa truncates the surface compound; pja 食 surface has anachronistic /f/ that the ipa correctly spells *p; pmgl surface `x` is three-way ambiguous where the ipa disambiguates ɣ/h/x; paa surface mixes ˀ/ʔ and N+ɕ where the ipa is uniform. The ipa rows are generally the trustworthy ones and can be used to repair the surfaces.
 
 5. **Codepoint defects (issues #5–6):** `pst` 一 and 立 use U+01DD (turned-e ǝ) instead of U+0259 (schwa ə); a pure character-set fix that should be applied before any content edits to keep search/render consistent.
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Reviewed all 18 findings against the live `hanmap_data.js`. Verified every "Current" value verbatim (codepoints checked with `ord()`). I applied only the clear, unambiguous local errors and within-column / surface-ipa normalisations that the ipa column or the rest of the same register positively disproves. I held the register-wide *school* re-grounding items, because those are seeding/convention decisions for the whole proto layer (which tradition each proto row follows), not local data errors — re-basing an entire register from one reconstruction school to another is a system-level call for a human linguist, not a mechanical fix.
+
+### Applied
+
+- **#5 — 一 `pst` codepoint** (applied by orchestrator this round). Surface and ipa `*dyiǝk` used **U+01DD (turned-e ǝ)**; confirmed by `ord()` that this is the only place in all 8 proto rows (alongside #6) using U+01DD, while every other schwa across pja/pko/ptung/paa/phm is **U+0259 (ə)**. Changed U+01DD→U+0259 in both surface and ipa, giving `*dyiək`. No other character touched (content/school left as-is per #1 hold).
+- **#6 — 立 `pst` codepoint** (applied by orchestrator this round). Same defect in surface and ipa `*ryǝp` (U+01DD). Changed to `*ryəp` (U+0259) in both. After #5+#6 the file contains zero U+01DD.
+- **#7 — 水 `ptai` surface pharyngeal** (applied by orchestrator this round). Surface `*C̬.namˤ.C` carried **U+02E4 ˤ (pharyngealisation)**, a Baxter–Sagart OC diacritic absent from Pittayaporn Proto-Tai; the paired ipa `*nam˥˩` does not have it. Removed only the `ˤ` → `*C̬.nam.C`. The genuine Pittayaporn `C̬.` pre-syllable and `.C` tone tag are retained.
+- **#8 — 鳥 `ptai` surface pharyngeal** (applied by orchestrator this round). Identical case: surface `*C̬.nokˤ.D`, ipa `*nok̚` has no pharyngeal. Removed `ˤ` → `*C̬.nok.D`. These two were the only `ptai` surfaces carrying U+02E4.
+- **#9 — 心 `ptai` Americanist č** (applied by orchestrator this round). Surface `*čaj.A` and ipa `*čaj˧` used **č (c-haček)**; the rest of the row is strictly IPA (七 `*cet.D`/`*cet̚`, plus ɟ/ɲ palatals `*ɟɯn`, `*ɲɯŋ`). č is the sole Americanist outlier in the whole register. Changed č→c in both surface and ipa → `*caj.A` / `*caj˧`.
+- **#14 — 食 `pja` /f/** (applied by orchestrator this round). Surface `*kuf-` was the only /f/ in the entire pja row; Proto-Japonic has no /f/ (OJ f is a later allophone of *p) and the paired ipa already gives `*kup-`. Changed surface to `*kup-` to match ipa.
+- **#17 — paa superscript ˀ → ʔ** (applied by orchestrator this round). Four surfaces used **U+02C0 ˀ** where their ipa and the rest of the row use full **U+0294 ʔ**: 一 `*muəjˀ`, 三 `*peːˀ`, 四 `*puənˀ`, 木 `*ɟɕɨːˀ`. Normalised the glottal symbol only (ˀ→ʔ) in all four surfaces. For 木 I changed **only** the final glottal; the surface ɕ-vs-ipa-c question is left to #18.
+
+### Held (with rationale)
+
+- **#1 / #2 / #3 / #4 — `pst` whole-register school** (Starostin/StarLing vs Matisoff/STEDT, incl. voiced-aspirates *ʒʰ/*dʰ and barred-lambda ƛ). Held. The entire 21-form pst row is internally consistent in the Peiros–Starostin StarLing tradition (breve/macron length, `H` tone-letter, optional-prefix parentheses, voiced-aspirate series, ƛ). Re-basing the whole row to Matisoff is a seeding/convention decision for the deepest layer of the file, not a local error; the "phonologically impossible" objection only holds *if* one has already committed to the Matisoff inventory. This is exactly the kind of system-level school choice the editing policy reserves for a human linguist. Recommend a dedicated, separately-tracked normalisation pass that re-grounds all 21 pst forms (and re-derives surface/ipa) from a single source, rather than piecemeal cell edits.
+- **#10 — 東/西 `ptai` compound vs head.** Held — needs reviewer decision on direction. The surface deliberately gives the lexicalised compound (`*tawan.ʔɔːk.D` "sun-emerge"), the ipa the phonological head (`*ʔɔːk̚`). The reviewer offers two opposite repairs (expand both vs reduce both); that is a representational choice, not a single mechanical fix. Please pick a direction and I will apply it.
+- **#11 / #12 / #13 — `phm` tone systems / OC contamination.** Held. Re-grounding the pHM row in uniform Ratliff A/B/C/D and replacing the OC-shaped cells (頭 `*S-phreiX`, 犬 `*qluwX`, 魚/血/木) requires sourced Ratliff (2010) reconstructions, and the review itself gives the target forms only tentatively ("or her actual reconstruction with an A/B/C/D tone"). This is a register-wide re-basing best done as one sourced pass, not opportunistic single-cell guesses; recommend escalation to a Hmong-Mien specialist with Ratliff (2010) in hand.
+- **#15 — 一/人 `pja` kō/otsu.** Held. The reviewer concedes this is a near-merger and asks at minimum for a *flag*, not a definite distinct form; the file has no annotation channel for "flag homophony," and inventing a second-vowel contrast (`*pitə` vs some `*pitəy`) is not securely sourced here. Left as-is pending a reviewer-supplied Vovin form.
+- **#16 — pmgl `x` overload.** Held. The surface uses `x` as a single romanisation cover that the ipa resolves to ɣ/h/x. Splitting it into Janhunen's three graphs (*ɣ / *h / *k~q~x, plus *ǰ vs j) across 7+ cells is a romanisation-system redesign of the whole pmgl surface column, i.e. a convention choice, not a local inconsistency. Recommend a dedicated pmgl romanisation pass.
+- **#18 — 八 `paa` N+ɕ.** Held — needs reviewer decision. Surface `*tNɕaːm` vs ipa `*tɲcaːm`. The `N` is a deliberate nasal archiphoneme cover symbol (the review acknowledges "if a nasal archiphoneme is intended"), so collapsing it to ɲ is not unambiguous; and the reviewer's expected form is itself given as a choice (*t₁caːm / *pʰcaːm). The ɕ→c half is defensible but I did not split a single cover-symbol cell on a tentative target. Please confirm the intended surface and I will apply.
+
+**Net:** 7 findings applied (8 cells across #5,#6,#7,#8,#9,#14,#17 — #5/#6/#9 each touch both surface and ipa), 6 held (#1–4 as one school-choice cluster, #10, #11–13 as one cluster, #15, #16, #18).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-pulled every cited cell from the live `hanmap_data.js` (`node -e`, codepoints via `codePointAt`). All seven claimed applications are present and correct in the live data — no phantom fixes this round.
+
+### Verification of applied fixes (all confirmed in live data)
+
+- **#5 一 `pst`** ✓ — surface & ipa now `*dyiək`, schwa is **U+0259** (codepoint `259`), not U+01DD. Confirmed.
+- **#6 立 `pst`** ✓ — surface & ipa now `*ryəp`, **U+0259**. Confirmed. A full-file sweep returns **zero U+01DD** in any surface or ipa across all registers — the encoding defect is fully eradicated.
+- **#7 水 `ptai`** ✓ — surface `*C̬.nam.C`, no U+02E4. The genuine Pittayaporn `C̬.` pre-syllable (codepoints `43,32c`) and `.C` tag are retained.
+- **#8 鳥 `ptai`** ✓ — surface `*C̬.nok.D`, no pharyngeal. Confirmed. A full-file sweep shows **zero U+02E4 remaining in `ptai`**; the 27 surviving U+02E4 are all in `zh_han` (Baxter–Sagart Old Chinese), where pharyngealisation is correct and expected — not in scope.
+- **#9 心 `ptai`** ✓ — surface `*caj.A` / ipa `*caj˧`, plain IPA **c** (`63`), no haček. Confirmed.
+- **#14 食 `pja`** ✓ — surface now `*kup-`, byte-identical to ipa; the lone /f/ in the pja row is gone.
+- **#17 `paa` ˀ→ʔ** ✓ — 一 `*muəjʔ`, 三 `*peːʔ`, 四 `*puənʔ`, 木 `*ɟɕɨːʔ` all now full **ʔ** (`294`) in the surface, matching ipa. (木's ɕ-vs-c surface question correctly deferred to #18.) Confirmed.
+
+### Adjudication of held items
+
+- **#1 / #2 / #3 / #4 — `pst` whole-register school (Starostin/StarLing vs Matisoff/STEDT; *ʒʰ, *dʰ, ƛ).** Verified unchanged in live data (食 `*ʒʰa`, 飲 `*dʰɨn`, 土/地 `*ƛăy`). I **ACCEPT the hold as a documented system-level limitation (△→won't-fix this round).** The worker is right that the 21-form pst row is internally self-consistent in the Peiros–Starostin tradition, and that re-basing an entire register to Matisoff is a seeding decision, not a mechanical cell edit. The "phonologically impossible" framing in my round-1 writeup is contingent on *first* committing to the Matisoff inventory, which the file has not done. This is the canonical "needs a human Sino-Tibetanist with STEDT in hand" call. **Documented known limitation:** the `pst` row follows StarLing, not the brief's nominal Matisoff/STEDT spec; a future dedicated pass should re-ground all 21 forms from one source. Not a blocker.
+- **#10 — 東/西 `ptai` compound vs head.** Verified unchanged (surface `*tawan.ʔɔːk.D` / ipa `*ʔɔːk̚`). The worker correctly asked me to pick a direction. **Reviewer decision: this is a defensible deliberate representation** — the surface intentionally records the lexicalised compound "sun-emerge / sun-enter" while the ipa gives the phonological head morpheme. This surface=lexeme / ipa=phonological-realisation split is consistent with how compounds are handled elsewhere, and forcing the ipa to spell the whole compound would itself be a fabrication. I **ACCEPT as-is (✓ won't-fix)**; no further action required.
+- **#11 / #12 / #13 — `phm` tone systems / OC contamination.** Verified unchanged (頭 `*S-phreiX`, 犬 `*qluwX`, 魚 `*mbrəuX`, 血 `*ntshjamX`, 木 `*ntju̯əŋH` all still carry Baxter X/H letters; the row mixes Ratliff A/B in 日/虎/馬 with toneless numerals). This is a **genuine register-internal inconsistency**, not merely a school choice — but the fix requires *sourced* Ratliff (2010) reconstructions, which neither the worker nor I can supply offline with confidence (my round-1 target forms were explicitly tentative, e.g. "or her actual reconstruction"). Per the late-round loop-termination policy I will **not** keep the file open demanding reconstructions that cannot be sourced offline. **Documented known limitation:** the `phm` row contains several cells in Baxter–Sagart Old-Chinese notation (X/H tone-letters, uppercase `S-` preinitial, uvular *q) that are mis-assigned for Proto-Hmong-Mien and need re-grounding in uniform Ratliff A/B/C/D by a Hmong-Mien specialist with the 2010 source. Flagged for human follow-up; not a blocker for closing this file.
+- **#15 — 一/人 `pja` kō/otsu.** Verified both still `*pitə` (byte-identical). I conceded in round-1 this is a near-merger and asked only for a flag, not a sourced distinct form, and I cannot supply a securely-sourced second-vowel contrast offline. The file has no homophony-annotation channel. **Reviewer decision: ACCEPT as-is (✓ won't-fix)** — asserting an invented `*pitəy` would be worse than the documented near-homophony, which is itself linguistically real. Documented caveat: OJ pi₁to₁ "one" vs pi₁to₂ "person" differ in otsu/kō grade; the proto reconstructions are presented as a near-merger.
+- **#16 — `pmgl` `x` overload.** Verified unchanged. The worker's analysis stands: the surface uses `x` as a single romanisation cover that the ipa correctly disambiguates to ɣ/h/x. **I ACCEPT the hold (△→won't-fix):** the ipa column is unambiguous and correct, so no *data* is lost; splitting the surface into Janhunen's three graphs across 7+ cells is a romanisation-system redesign, a convention choice for a human Mongolist. Documented limitation, not a blocker.
+- **#18 — 八 `paa` N+ɕ.** Verified unchanged (surface `*tNɕaːm` / ipa `*tɲcaːm`). The worker asked me to confirm the intended surface. **Reviewer decision:** the `N` nasal-archiphoneme cover symbol is a legitimate Shorto/Sidwell PMK device and I will not force it to ɲ. The ɕ→c half is the only clearly-defensible sub-fix, but on its own, splitting one cover-symbol cell on a tentative target is low-value and the surface/ipa pair is internally readable (N→ɲ, ɕ→c). I **ACCEPT as-is (✓ won't-fix)** rather than demand a half-edit; documented as a minor surface/ipa romanisation mismatch.
+
+### New issues raised this round
+
+- **0 blocking.** One **non-blocking observation** for the record: three `ptai` surfaces — 火 `*vajˀ.A`, 頭 `*krawˀ.C`, 下 `*tajˀ.C` — still carry **superscript ˀ (U+02C0)**. This is *not* the #17 defect: unlike the paa cells, these are internally consistent with each other (all three pair ˀ with a tone tag), and the ipa resolves to a tone (˧, ˥˩) with no glottal, so the ˀ is plausibly functioning as a phonation/tonogenesis marker (Pittayaporn's B/C tones derive from final *-ʔ/*-h), not as a stray glottal stop needing normalisation to ʔ. Because there is no within-row ˀ-vs-ʔ conflict for the same function, I do **not** treat this as an actionable error. Noted only so a future pTai pass can confirm the intent.
+
+### Scorecard
+
+| Item | Round-1 disposition | Round-2 judgement |
+|------|--------------------|-------------------|
+| #5 一 pst codepoint | applied | ✓ verified in live data |
+| #6 立 pst codepoint | applied | ✓ verified in live data |
+| #7 水 ptai pharyngeal | applied | ✓ verified in live data |
+| #8 鳥 ptai pharyngeal | applied | ✓ verified in live data |
+| #9 心 ptai č→c | applied | ✓ verified in live data |
+| #14 食 pja /f/→/p/ | applied | ✓ verified in live data |
+| #17 paa ˀ→ʔ (×4) | applied | ✓ verified in live data |
+| #1–4 pst StarLing school | held | △ ACCEPT — documented limitation (human Sino-Tibetanist) |
+| #10 ptai 東/西 compound | held | ✓ ACCEPT — defensible surface=lexeme / ipa=head |
+| #11–13 phm OC contamination | held | △ ACCEPT — documented limitation (Hmong-Mien specialist, Ratliff 2010) |
+| #15 pja 一/人 kō/otsu | held | ✓ ACCEPT — documented near-merger, no sourced distinction |
+| #16 pmgl x overload | held | △ ACCEPT — ipa unambiguous, surface romanisation = convention |
+| #18 paa 八 N+ɕ | held | ✓ ACCEPT — legitimate cover symbol, internally readable |
+
+**Outcome:** All 7 applied fixes confirmed present and correct in live `hanmap_data.js`. All 6 held clusters are now either accepted as defensible deliberate choices (#10, #15, #18) or accepted-with-documented-caveat as system-level re-basing that requires externally-sourced reconstructions a specialist must supply (#1–4, #11–13, #16). Per the late-round loop-termination policy, I do not keep the file open demanding offline-unsourceable reconstruction data; the three school/source-level items are recorded as **known limitations needing a human linguist** rather than reopened. No blocking errors remain and no new actionable issue was found.
+
+**File status: CLOSED** — nothing left to address.

@@ -97,3 +97,78 @@ I am a general linguist and orthographic-data auditor whose specialty is the *wr
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every flagged cell by extracting exact Unicode code points from the live `words/*.js` files on 2026-05-31, and re-tallied the Mayan saltillo distribution to confirm the reviewer's evidence. The tally reproduces the review exactly: 8 varieties (`cak kek mam myn quc tzh tzo yua`) use the modifier-letter saltillo ⟨ʼ⟩ U+02BC exclusively, the saltillo outnumbers the ASCII apostrophe U+0027 dataset-wide 155→95, and every IPA partner of the flagged cells already renders U+02BC — confirming the intended grapheme. The ASCII-apostrophe cells are therefore unambiguous local errors against the dataset's own house style, not a convention choice. All items below are **applied (applied by orchestrator this round)**.
+
+### 1 & 2 — `uz` hand/eye — ASCII ⟨'⟩ → Uzbek ⟨oʻ⟩ U+02BB. APPLIED.
+`hand.js` `uz: ["qo'l",…]` → `["qoʻl",…]` and `eye.js` `uz: ["ko'z",…]` → `["koʻz",…]`. The 3rd code point was U+0027; corrected to U+02BB MODIFIER LETTER TURNED COMMA per the 1995 Uzbek Latin reform (oʻzbek lotin alifbosi). These are the only two Uzbek cells containing the ⟨oʻ⟩ letter; the other Uzbek cells are diacritic-free and untouched. Surface field only; IPA unchanged.
+
+### 3 — `mvc` drink — single string mixed U+0027 + U+02BC → both U+02BC. APPLIED.
+`drink.js` `mvc: ["k'aaʼn",…]` → `["kʼaaʼn",…]`. The leading `k'` was U+0027 (the trailing `ʼ` already U+02BC).
+
+### 4 — `ixl` hand — APPLIED. `hand.js` `ixl: ["qʼab'",…]` → `["qʼabʼ",…]`; final apostrophe U+0027→U+02BC.
+
+### 5 — `mvc` hand — APPLIED. `hand.js` `mvc: ["q'obʼ",…]` → `["qʼobʼ",…]`; leading apostrophe U+0027→U+02BC.
+
+### 6 — `ixl` hello — APPLIED. `hello.js` `ixl: ["nima'la kuxhewchʼa",…]` → `["nimaʼla kuxhewchʼa",…]`; the U+0027 in `nima'la` → U+02BC.
+
+### 7 — `agu` whole column — APPLIED (mechanical U+0027→U+02BC for every `agu` surface cell containing it). Applied cells: `dog.js` (txʼiʼ), `eye.js` already-mod (no change needed), `fire.js` already-mod, `good.js` already-mod, `hand.js` (qʼab), `heart.js` (kʼuum), `tree.js` (tzeʼ), `water.js` (aʼ). After this pass `agu` is uniformly U+02BC.
+
+### 8 — `itz`, `toj`, `usp` 100%-ASCII columns — APPLIED. Every U+0027 in these three varieties' surface cells converted to U+02BC across all word files (water/fire/hand/drink/eat/dog/good/heart/hello/house/love/moon/mother/sun/thanks/tree). Each IPA partner already carried the saltillo.
+
+### 9 — `chf`, `ctu`, `kjb`, `poh` mixed columns — APPLIED. All remaining U+0027 surface apostrophes normalized to U+02BC, matching the same variety's existing saltillo cells. Includes the doubly-affected `ctu`/`toj` `k'ab'` (hand) → `kʼabʼ`.
+
+### 10 — `mvc` fire & water — APPLIED. `fire.js` `q'aq'`→`qʼaqʼ`, `water.js` `a'`→`aʼ`. Completes the Comitancillo Mam normalization (together with #3 and #5, `mvc` is now uniformly U+02BC).
+
+### 11 — Audit note (palochka / Sami / Lakota / Maltese / Hawaiian clean) — NO CHANGE, acknowledged. Independently confirmed these columns are well-formed; recorded for transparency only.
+
+**Scope note:** The orchestrator applied 77 surface-field edits total across 18 word files (75 Mayan U+0027→U+02BC + 2 Uzbek U+0027→U+02BB). Only the surface form's apostrophe code points were changed; no IPA value, no orthographic letter, and no segment ID was modified. Each `old` string was verified unique within its file.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix against the LIVE `words/*.js` data on 2026-05-31 using a VM-sandboxed loader that extracts the actual `["surface","ipa"]` tuples and a Unicode code-point sweep (not a text-pattern guess). Results below; all confirmed in live data.
+
+**Per-item adjudication:**
+
+- **#1 `uz` hand — ✓ ACCEPT.** Live: `hand.js` L232 `uz: ["qoʻl", "qɒl"]`. Code-point dump confirms `q o ʻ l` = U+71 U+6F **U+02BB** U+6C — the correct tutuq-belgisi turned comma, not U+0027 and not U+02BC. IPA `qɒl` unchanged.
+- **#2 `uz` eye — ✓ ACCEPT.** Live: `eye.js` L232 `uz: ["koʻz", "kɒz"]`, the ⟨oʻ⟩ now U+02BB. IPA untouched.
+- **#3 `mvc` drink — ✓ ACCEPT.** Live: `kʼaaʼn` — both glottal marks now U+02BC; no U+0027 remains.
+- **#4 `ixl` hand — ✓ ACCEPT.** Live: `qʼabʼ` — final apostrophe now saltillo.
+- **#5 `mvc` hand — ✓ ACCEPT.** Live: `qʼobʼ` — leading apostrophe now saltillo.
+- **#6 `ixl` hello — ✓ ACCEPT.** Live: `nimaʼla kuxhewchʼa` — both glottal marks U+02BC.
+- **#7 `agu` whole column — ✓ ACCEPT.** Spot-checked `dog (txʼiʼ)`, `hand (qʼab)`, `heart (kʼuum)`, `tree (tzeʼ)`, `water (aʼ)` — all U+02BC. Full-column sweep (below) shows zero U+0027.
+- **#8 `itz`/`toj`/`usp` 100%-ASCII columns — ✓ ACCEPT.** `itz jaʼ/kʼakʼ/kʼab`, `toj jaʼ/kʼakʼ`, `usp jaʼ/qʼaqʼ/qʼab` all verified U+02BC.
+- **#9 `chf`/`ctu`/`kjb`/`poh` mixed columns — ✓ ACCEPT.** `chf jaʼ/kʼakʼ`, `ctu kʼabʼ` (the doubly-affected hand form — both now saltillo), `kjb qʼab`, `poh haʼ` verified.
+- **#10 `mvc` fire & water — ✓ ACCEPT.** `qʼaqʼ` and `aʼ` verified U+02BC; Comitancillo Mam column now uniform.
+- **#11 Audit note — ✓ ACCEPT (no change required).** Acknowledged as transparency record only.
+
+**Independent full-column sweep (the strongest evidence):** I tallied surface-form apostrophe code points across ALL word files for the 18 referenced Mayan varieties (`agu mvc ixl itz toj usp chf ctu kjb poh cak kek mam myn quc tzh tzo yua`):
+- Result: **U+02BC (saltillo) = 250, U+0027 (ASCII) = 0.** This exactly matches the predicted post-fix total (155 pre-existing + 95 converted = 250) and confirms the normalization is complete with no missed cells.
+- Uzbek sweep: **0 remaining ASCII apostrophes** in any `uz` surface cell across all files.
+
+**New issues raised this round:** none. The sweep surfaced no stray U+0027, no over-conversion (e.g. no Uzbek cell wrongly given U+02BC instead of U+02BB), and no collateral IPA edits in the spot-checks.
+
+### Scorecard
+| Item | Verdict |
+|------|---------|
+| #1 uz hand | ✓ |
+| #2 uz eye | ✓ |
+| #3 mvc drink | ✓ |
+| #4 ixl hand | ✓ |
+| #5 mvc hand | ✓ |
+| #6 ixl hello | ✓ |
+| #7 agu column | ✓ |
+| #8 itz/toj/usp | ✓ |
+| #9 chf/ctu/kjb/poh | ✓ |
+| #10 mvc fire/water | ✓ |
+| #11 audit note | ✓ (no-op) |
+
+10 actionable items applied and verified in live data; 1 no-op audit note acknowledged. Zero remaining ASCII apostrophes in scope.
+
+**File status: CLOSED** — nothing left to address.

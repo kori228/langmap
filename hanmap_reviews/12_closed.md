@@ -179,3 +179,110 @@
 - **(G) 表記の Unicode 不統一:** 音節主音的 ŋ の syllabicity 記号が gan/czh で U+0329(下付き縦線 ŋ̩)、cnp で U+030D(上付き縦線 ŋ̍)に分かれる(五 字)。同一記号に統一すべき軽微だが明確な不整合。
 
 - **(H) coverage の穴 — gan 日母行(#3, #4):** 日・人の 2 字が gan でのみ完全欠落。同声母(日母)・隣接した欠落で、gan 日母行の一括 fill 漏れと推定。bulk fill タスクとして別パスでも可。
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+各指摘について、`hanmap_data.js` の現行値を verbatim 確認し、内的整合性・一次資料(主に Wiktionary の方言別 IPA 表 = 出典は各字の dialectal pronunciations 節)を照合して判断した。適用分は orchestrator が直列適用する。
+
+### 適用(applied by orchestrator this round)
+
+**#1 中:2 surface に生IPA混入** — gan/cjy/czh/cnp の surface を中:1 のローマ字慣習(ŋ→ng, ts→z, ə→ue/o)に揃えて修正。ipa はそのまま。
+- gan `"tuŋ²¹³"`→`"tung²¹³"`、cjy `"tsuəŋ⁴⁵"`→`"zueng⁴⁵"`、czh `"tsoŋ⁵⁵"`→`"zong⁵⁵"`、cnp `"tsuŋ²²"`→`"zung²²"`。中:1 が gan `"tung⁴²"`/cjy `"zueng³¹"`/czh `"zong³³"`/cnp `"zung⁴⁴"` であることが内的証拠。
+
+**#2 行:2 surface に生IPA混入** — 行:1(gan `"hen"`, cjy `"xing"`, czh `"hhien"`(ɦ→hh), cnp `"haing"`)の慣習に揃え、行:2 の母音で修正。
+- gan `"hɔŋ⁴⁵"`→`"hong⁴⁵"`、cjy `"xɒ̃¹¹"`→`"xang¹¹"`、czh `"ɦɔ̃²²"`→`"hhong²²"`、cnp `"haŋ³³"`→`"hang³³"`(cnp は #2 本文に未列挙だが surface に生 ŋ が残り ŋ→ng 慣習に反するため併せて修正)。
+
+**#3 日 gan 欠落 fill** — surface `"nyiq⁵"` / ipa `"ɲiʔ˥"` を追加。出典: Wiktionary 日 の Gan, Nanchang = /ȵiʔ⁵/(声母 ȵ=本ファイル ɲ、入声 -ʔ、陽入 ˥)。gan は -ʔ を surface で "q" と綴る(肉 `"nyiuq⁵"`/`"ɲiuʔ˥"`、木 `"muq⁵"`)内的慣習に一致。Wiktionary が /ȵiʔ/(-ʔ)を示す点は #14(南昌 -ʔ 合流説)とも整合。
+
+**#4 人 gan 欠落 fill** — surface `"nyin⁴⁵"` / ipa `"ɲin˦˥"` を追加。出典: Wiktionary 人 の Gan, Nanchang 白話 = /n̠ʲin³⁵/(声母 ɲ)。声調は本データの gan 陽平が一律 ˦˥(行:1 `"hɛn˦˥"`、頭 `"tʰɛu˦˥"`、龍 `"luŋ˦˥"`、牛 `"ɲiu˦˥"`)であることに合わせ ˦˥ を採用(Wikt の 35 は別調値体系のため、ファイル内整合を優先)。
+
+**#5 一 cnp ipa の -t 脱落** — ipa `"i˥"`→`"it̚˥"`。surface `"it⁵"` と一致させ、cnp 他入声(立 `"lit̚˥"`、八 `"paːt̚˥"`、北 `"pak̚˥"`)の止音保持に揃える。明白な surface↔ipa 不一致。
+
+**#6 十 cjy 入声陰陽** — surface `"seh²"`→`"seh⁵"`、ipa `"səʔ˨"`→`"səʔ˥"`。禅母=全濁→陽入 ˥。兄弟字 食(船母)`"seh⁵"`/`"səʔ˥"` が証拠。
+
+**#7 六 cjy 入声陰陽** — surface `"lueh²"`→`"lueh⁵"`、ipa `"luəʔ˨"`→`"luəʔ˥"`。来母=次濁→陽入 ˥。立/木/目/日/月/肉 が全て ˥ で証拠。
+
+**#8 地 hsn 孤立調値** — surface `"ti¹¹"`→`"ti²¹"`、ipa `"ti˩˩"`→`"ti˨˩"`。˩˩ は全データ唯一。定母去声=陽去、兄弟字 右 `"iəu²¹"`/`"iu˨˩"` に一致。
+
+**#9 上 hsn 捲舌** — surface `"shan⁴⁵"`→`"san⁴⁵"`、ipa `"ʂan˦˥"`→`"san˦˥"`。長沙は捲舌 ʂ を持たず、hsn 他の歯音(食 `"sz̩˨˦"`、十 `"sɿ˨˦"`、四 `"sɿ˦˥"`)は s。韻は触らず声母の脱捲舌のみの最小修正。
+
+**#10 食 cnp 普通話読み混入** — surface `"shi²²"`→`"sik²²"`、ipa `"ʂʐ̩˨˨"`→`"sɪk̚˨˨"`。出典: Wiktionary 食 の Nanning Pinghua = /sɪk̚²²/(romanization "sik6")。現行 ˨˨ と職韻 -k 保持・無捲舌に一致。cnp 北 `"pak̚˥"`/木 `"muk̚˥"` が内的証拠。
+
+**#11 月 czh が gan 列と byte-identical・-t̚** — surface `"ngyet⁵"`→`"ngye⁵"`、ipa `"ŋyɛt̚˥"`→`"ŋyɛʔ˥"`。徽語(Tunxi)の母音 /ȵyɛ/(Wiktionary 月 Hui)を採り、本データ czh 入声の支配的 -ʔ(一 `"iɛʔ˥"`、八 `"paʔ˥"`、立 `"liʔ˥"`)と surface 無コーダ綴り(一 `"ie"`、八 `"pa"`、立 `"li"`)に揃える。gan 列との完全一致(コピー artifact)を解消。
+
+**#12 日 czh の -t̚(#11 と同じ gan コピー疑い)** — surface `"ngit⁵"`→`"ngi⁵"`、ipa `"ŋit̚˥"`→`"ŋiʔ˥"`。Wiktionary 日 の Hui(Shexian /ni/、Tunxi /ȵie/)は全て開音節で、-t̚ を持つ徽語変種は無い。本データ czh の -ʔ 入声模型(Tunxi 型、cf. 一 /iʔ⁵⁵/)に従い -ʔ 化。-t̚ は明白な誤り。
+
+**#16 二 cnp 単一調字** — surface `"ni²"`→`"ni²²"`、ipa `"ni˨"`→`"ni˨˨"`。舒声(日母去声=陽去)で bare single tone-letter はこの一字のみ。兄弟字 四 `"si˨˨"` に揃える under-specification 修正。
+
+### 保留(held with rationale)
+
+**#12(目の部分)・#13 食 czh** — 保留。Wiktionary の徽語は **目**(Tunxi /mo¹¹/、Jixi /mɔ²²/)・**食**(Shexian /ɕi²²/、Tunxi /ɕi¹¹/)とも **開音節**で、本データ czh 目 `"mu˥"`・食 `"sɿ˧˧"` の開音節形は一次資料と整合する。査読者が要求する「目→`muʔ`」「食→-ʔ+˨˩」は徽語実態に反するため適用せず。徽語は同一字でも -ʔ 保持(十 `"siɪʔ˨˩"`)と開音節(食・目)が混在する真の方言内変異であり、機械的 -ʔ 統一はできない。食の ˧˧ は Wiktionary の ²²/¹¹ と僅かに異なるが ˧˧ も czh の有効調値で明白な typo とは言えず据え置き。
+
+**#14 南昌入声韻尾の -ʔ 単一合流** — 保留(system-level normalization)。Wiktionary が日=/ȵiʔ/ を示す通り南昌 -ʔ 合流説は妥当だが、食 `sɨt̚`/北 `pɛt̚`/目 `muk̚`/十 `sɨt̚`/立 `lit̚`/一 `it̚` 等 10字超の gan 入声全体を書き換える大規模パスであり、コーダ区別を残す編集方針の可能性も排除できない。単一の明白 typo ではないため、チームの明示的 endorsement を待って別パスで一括処理すべき。最悪ケース(食=十 の偽同音、両者 `sɨt̚˥`)は本コメントに記録しエスカレート。
+
+**#15 平話 aː/ɐ の surface 区別** — 保留(表記方針の選択)。八 `"paːt̚"` の長母音 aː を surface で "aa" 等に区別するか、ɐ/aː を統合するかは Jyutping 流 aa/a を導入する全体方針の決定であり、個別字の局所修正ではない。査読者の指摘は妥当だが方針合意が必要。
+
+**#G Unicode ŋ̩(U+0329)vs ŋ̍(U+030D)** — 保留(別パス)。番号付き指摘外の軽微な正規化。五 字ほかで syllabic ŋ の付加記号が register 間で不統一。明確な不整合だが、全ファイル横断の Unicode 正規化として一括処理が望ましく、本ラウンドの個別 data fix の範囲外。
+
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+作業者 round-1 の適用分・保留分を、`hanmap_data.js` の現行値に対して `node -e` で逐一 verbatim 照合した。確認したキー構造の注意点として、本字 **中・行** は `"中:1"`/`"中:2"`/`"行:1"`/`"行:2"` という異読サフィックス付きキーで格納されていること(本体キー `中`/`行` は存在しない)を再確認し、その上で検証した。
+
+### 適用分の live-data 検証(全件 PASS)
+
+| # | 字/register | 期待値 | live現行値 | 判定 |
+|---|---|---|---|---|
+| #1 | 中:2 gan/cjy/czh/cnp surface | tung²¹³ / zueng⁴⁵ / zong⁵⁵ / zung²² | tung²¹³ / zueng⁴⁵ / zong⁵⁵ / zung²² | ✓ |
+| #2 | 行:2 gan/cjy/czh/cnp surface | hong⁴⁵ / xang¹¹ / hhong²² / hang³³ | hong⁴⁵ / xang¹¹ / hhong²² / hang³³ | ✓ |
+| #3 | 日 gan | nyiq⁵ / ɲiʔ˥ | nyiq⁵ / ɲiʔ˥ | ✓ |
+| #4 | 人 gan | nyin⁴⁵ / ɲin˦˥ | nyin⁴⁵ / ɲin˦˥ | ✓ |
+| #5 | 一 cnp ipa | it̚˥ | it̚˥ | ✓ |
+| #6 | 十 cjy | seh⁵ / səʔ˥ | seh⁵ / səʔ˥ | ✓ |
+| #7 | 六 cjy | lueh⁵ / luəʔ˥ | lueh⁵ / luəʔ˥ | ✓ |
+| #8 | 地 hsn | ti²¹ / ti˨˩ | ti²¹ / ti˨˩ | ✓ |
+| #9 | 上 hsn | san⁴⁵ / san˦˥ | san⁴⁵ / san˦˥ | ✓ |
+| #10 | 食 cnp | sik²² / sɪk̚˨˨ | sik²² / sɪk̚˨˨ | ✓ |
+| #11 | 月 czh | ngye⁵ / ŋyɛʔ˥ | ngye⁵ / ŋyɛʔ˥ | ✓ |
+| #12(日) | 日 czh | ngi⁵ / ŋiʔ˥ | ngi⁵ / ŋiʔ˥ | ✓ |
+| #16 | 二 cnp | ni²² / ni˨˨ | ni²² / ni˨˨ | ✓ |
+
+特記:
+- **#11 の byte-identical コピー疑い解消を確認**:gan 月 は `ŋyɛt̚˥`(-t̚ 保持)のまま、czh 月 は `ŋyɛʔ˥`(-ʔ)に分化。両列はもはや一致せず、コピー artifact は解消された。✓
+- #6/#7 の入声陰陽分裂(全濁・次濁→陽入 ˥)は兄弟字(食・立・木・目・日・月・肉)と整合。声調・止音とも live で確認。✓
+- #8 の孤立調値 ˩˩ は消滅し、˨˩(右 `iu˨˩` と一致)に揃った。✓
+- #9/#10 の捲舌脱落・Mandarin 読み除去も live で確認。cnp 食は職韻 -k を回復し、Wiktionary Nanning Pinghua /sɪk̚²²/ の出典どおり。✓
+
+13 件すべて、claimed どおりに live data へ反映されていた。**missing-fix(過去に発生した「適用と称して未反映」)は本ファイルでは検出されず。**
+
+### 保留分の adjudication
+
+**#13 食 czh / #12 目 czh(開音節)— ✗ reject the original demand → ACCEPT worker's hold(won't-fix)**
+作業者は Wiktionary 徽語で 目(Tunxi /mo/・Jixi /mɔ/)・食(Shexian /ɕi/・Tunxi /ɕi/)が **開音節** であることを示し、live の czh 目 `mu˥`・食 `sɿ˧˧` がこの一次資料と整合すると論証した。徽語が同一字内で -ʔ 保持(十 `siɪʔ˨˩`)と開音節(目・食)を併存させる real intra-dialect variation は、私の専門的期待値(徽語=呉語型で -ʔ 多数)とも矛盾しない — 呉語/徽語の入声は字ごとに -ʔ 保持と舒声派入(merger)がまだらに進行する。よって「機械的 -ʔ 統一」を求めた私の当初指摘は撤回する。食の ˧˧ も Wiktionary ²²/¹¹ と僅差だが czh の有効調値域内で、断定的 typo とは言えない。**won't-fix として受容。**
+
+**#14 南昌(gan)入声韻尾の系統的混乱(食≡十 偽同音含む)— △ partial / documented known-limitation で CLOSE**
+live 再確認:gan 食 `sɨt̚˥` と gan 十 `sɨt̚˥` は依然 **byte-identical**(食=職韻 -k、十=緝韻 -p で本来別韻尾)。これは客観的に望ましくない偽同音であり、私は問題の実在性を維持する。ただし本件は単一 typo ではなく gan 入声 10 字超の中古コーダ体系全体に関わる system-level 正規化であり、(a) -ʔ 単一合流に統一する説、(b) 古層コーダ保持として中古 -p/-t/-k を正す説の **二択の編集方針決定** を要する。作業者は問題を本コメントに記録・エスカレートし、チームの明示 endorsement 待ちとして別パスに回した。round round-2 のループ終了規範に照らし、これは「外部データ要求」ではなく方針合意待ちの documented decision であり、私はこれ以上同一要求を繰り返さない。**既知の限界(human linguist / チーム方針決定を要する)として明示記録のうえ受容。**
+
+**#15 平話 aː/ɐ の surface 区別 — ✗ reject as actionable bug → ACCEPT as notation-policy**
+ipa 側(八 `paːt̚˥` 長 vs 七 `tsʰɐt̚˥`・十 `sɐp̚˨˨` 短)は粤語型 aː/ɐ 対立を正しく保持しており音韻的には正確。surface で "aa/a" を立てるかは Jyutping 流表記方針の全体決定で、個別字バグではない。**convention-level choice として受容。**
+
+**#G syllabic ŋ の Unicode 不統一(U+0329 vs U+030D)— △ minor, documented**
+live 再確認:五 で gan `ŋ̩`(U+0329)・czh `ŋ̩`(U+0329)・cnp `ŋ̍`(U+030D)と付加記号が割れている(二 czh `n̩` は U+0329)。明確な不整合だが番号付き指摘外の cosmetic な Unicode 正規化であり、全ファイル横断パスが望ましい。**軽微・別パス事項として記録。actionable な data error ではない。**
+
+### 新規 issue
+
+検証中に新たな明白エラーは検出しなかった(newIssueCount = 0)。#11 のコピー解消・#6/#7 の調値・#8 の孤立調値除去はいずれも周辺字との整合を回復しており、副作用なし。
+
+### Scorecard
+
+- 適用 13 件:全件 live-data verified PASS、missing-fix 無し。
+- 保留 4 群(#13/#12目, #14, #15, #G):#13/#12目 は一次資料(Wiktionary 徽語)で won't-fix を支持し受容;#14 は実在の偽同音を含むが system-level 方針決定待ちの documented known-limitation として受容;#15 は表記方針、#G は cosmetic Unicode で受容。
+- 残る actionable な data error:**無し。**
+
+明白エラーはすべて修正・検証済みで、残余項目はいずれも (a) 一次資料に裏打ちされた cross-variety / 方言内変異の許容、(b) チーム方針決定を要する system-level 正規化(#14, #15, #G)として明示文書化済み。ループ終了規範に従い、これ以上同一要求を繰り返す actionable な次手は無いため close する。なお #14 の gan 入声コーダ体系(食≡十 偽同音)は **human linguist / チーム方針決定を要する既知の限界** として申し送る。
+
+**File status: CLOSED** — nothing left to address.

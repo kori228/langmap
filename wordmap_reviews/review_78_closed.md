@@ -137,3 +137,63 @@ I am a phonologist whose research sits at the intersection of metrical theory an
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+All 16 findings verified verbatim against the live data files. Each is a clear internal inconsistency (a sibling entry in the same file already follows the cited convention) or an unambiguous transcription defect. Applying as follows:
+
+1. **`el` thanks** — APPLIED (applied by orchestrator this round). `thanks.js` L159 IPA `efxaɾisto → efxaɾiˈsto`. Oxytone; siblings (`νερό neˈɾo`, `πατέρας paˈteɾas`) all mark stress. Matches the `el_kath` sibling on L512 `efxariˈsto`.
+2. **`el` fire** — APPLIED. `fire.js` L159 `fotʲa → foˈtʲa`. Final-accented ά; only unmarked Greek oxytone in the set.
+3. **`el` tree** — APPLIED. `tree.js` L159 `ðendɾo → ˈðendɾo`. Paroxytone δέντρο; matches `ˈmati`, `ˈspiti`.
+4. **`el` eat** — APPLIED. `eat.js` L159 `tɾoo → ˈtɾoo`. Parallel to the drink-verb sibling `πίνω ˈpino` (drink.js L159).
+5. **`ru` tree** — APPLIED. `tree.js` L101 `dʲerʲɪvɐ → ˈdʲerʲɪvɐ`. Reduction already encodes initial stress (де́рево).
+6. **`ru` love** — APPLIED. `love.js` L101 `lʲʊbofʲ → lʲʊˈbofʲ`. Pretonic [ʊ] pins second-syllable stress (любо́вь).
+7. **`ru` one** — APPLIED. `one.js` L101 `ɐdʲin → ɐˈdʲin`. [ɐ]-pretonic, end-stress (оди́н), matches `огонь ɐˈɡonʲ`.
+8. **`ru` hello** — APPLIED. `hello.js` L101 `prʲɪvʲet → prʲɪˈvʲet`. Final stress (приве́т).
+9. **`sr` heart** — APPLIED (syllabic ring only). `heart.js` L312 `srt͡sɛ → sr̩t͡sɛ`. Adds the load-bearing syllabic-/r̩/ nucleus, matching hr/bs `sr̩t͡se` (L882–883). HELD on the parenthetical [ɛ]→[e]: vowel quality is a separate per-entry choice the reviewer himself bracketed as secondary; not changing surface vowel without it being the flagged defect.
+10. **`sr` tree** — APPLIED. `tree.js` L312 `drʋo → dr̩ʋo`. Syllabic /r̩/ nucleus; matches hr/bs `dr̩vo`.
+11. **`cs`/`sk` heart** — APPLIED (syllabic ring only). `heart.js` L309 (cs) and L310 (sk) `srt͡sɛ → sr̩t͡sɛ`. Adds the nucleus the reviewer marked as the load-bearing fix. HELD on [ɛ]→[e] (reviewer bracketed it as secondary).
+12. **`sk` sun** — APPLIED. `sun.js` L316 `slnko → sl̩nko`. Syllabic /l̩/ nucleus; ring already in inventory (PIE `sóh₂wl̩` L548).
+13. **`sw` moon** — APPLIED. `moon.js` L110 `mˈwezi → ˈmwezi`. Moves ˈ to precede the tautosyllabic /mw/ onset; penultimate stress, edge placement like `uˈpendo`.
+14. **`nds` eat** — APPLIED. `eat.js` L289 `eːtn → eːtn̩`. Syllabic nasal; matches sister-file `nds drinken drɪŋkn̩` (drink.js L289).
+15. **`de_at` eat** — APPLIED. `eat.js` L283 `ɛsn → ɛsn̩`. Matches `de essen ɛsn̩` (L92) and `bar essn ɛsn̩` (L286).
+16. **`ms` water** — APPLIED. `water.js` L81 IPA `air → ˈa.ir`. Removes orthography-in-IPA-slot; matches the `id air ˈa.ir` sibling (L80). Surface "air" unchanged.
+
+Held items: none outright won't-fix. The only deliberate scope limits are the secondary [ɛ]→[e] vowel-quality tweaks for sr/cs/sk *heart* (#9, #11), which the reviewer himself parenthesized as not the load-bearing fix; the syllabic ring — the actual flagged defect — is applied in all three.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-pulled every cited entry from the live `words/*.js` `data` maps (not the worker's prose) and checked each surface/IPA tuple verbatim. All 16 load-bearing fixes are present in live data:
+
+1. **`el` thanks** ✓ — `thanks.js` el `["ευχαριστώ","efxaɾiˈsto"]`. ˈ on final syllable; matches el_kath `efxariˈsto`.
+2. **`el` fire** ✓ — fire.js el `["φωτιά","foˈtʲa"]`. Oxytone marked.
+3. **`el` tree** ✓ — tree.js el `["δέντρο","ˈðendɾo"]`. Paroxytone, initial ˈ.
+4. **`el` eat** ✓ (better than claimed) — eat.js el `["τρώω","ˈtɾo.o"]`. Stress applied; live form also carries an explicit hiatus dot `o.o` (worker prose said `ˈtɾoo`). The stress placement — the flagged defect — is correct, and the added syllable boundary is an improvement, not a regression. Accepted.
+5. **`ru` tree** ✓ — tree.js ru `["дерево","ˈdʲerʲɪvɐ"]`. Initial ˈ over reduced [ɪ]/[ɐ].
+6. **`ru` love** ✓ — love.js ru `["любовь","lʲʊˈbofʲ"]`. ˈ before full-[o] tonic syllable.
+7. **`ru` one** ✓ — one.js ru `["один","ɐˈdʲin"]`. End-stress over [ɐ]-pretonic.
+8. **`ru` hello** ✓ — hello.js ru `["привет","prʲɪˈvʲet"]`. Final stress.
+9. **`sr` heart** ✓ (ring); △ ([ɛ] held — now accepted as defensible) — heart.js sr `["срце","sr̩t͡sɛ"]`. Syllabic /r̩/ nucleus present. On re-examination the held [ɛ] is **not** an error to chase: Serbian's own entries in this corpus consistently transcribe /e/ as [ɛ] (`sr fire ʋatra`-block siblings `jɛsti`, `jɛdan`, `mɛsɛt͡s`), so `sr̩t͡sɛ` is internally consistent with sr's transcription style; the hr/bs [e] is a separate per-variety convention. Accepted as a defensible cross-variety choice, not a defect.
+10. **`sr` tree** ✓ — tree.js sr `["дрво","dr̩ʋo"]`. Syllabic /r̩/ nucleus.
+11. **`cs`/`sk` heart** ✓ (ring); △ ([ɛ] accepted) — heart.js cs `["srdce","sr̩t͡sɛ"]`, sk `["srdce","sr̩t͡sɛ"]`. Ring present in both. The held [ɛ] is here actually *correct* — Czech/Slovak short /e/ is [ɛ], and the cs/sk siblings throughout (`jɛsti`/`jɛdɛn`/`slunt͡sɛ`) use [ɛ]. No further change warranted.
+12. **`sk` sun** ✓ — sun.js sk `["slnko","sl̩nko"]`. Syllabic /l̩/ nucleus.
+13. **`sw` moon** ✓ — moon.js sw `["mwezi","ˈmwezi"]`. ˈ now precedes the tautosyllabic /mw/ onset; edge placement like `uˈpendo`.
+14. **`nds` eat** ✓ — eat.js nds `["eten","eːtn̩"]`. Syllabic nasal ring; matches sister-file `nds drinken drɪŋkn̩`.
+15. **`de_at` eat** ✓ — eat.js de_at `["essen","ɛsn̩"]`. Ring present; matches de `ɛsn̩`, bar `ɛsn̩`.
+16. **`ms` water** ✓ — water.js ms `["air","ˈa.ir"]`. Orthography-in-IPA defect removed; matches id `ˈa.ir`. Surface "air" unchanged.
+
+**New issues:** none. I checked the surrounding siblings while verifying (Slavic /e/~/ɛ/ split, Greek accent placement, Germanic syllabic-nasal block) and found no further unflagged inconsistencies in the touched entries.
+
+### Scorecard
+- Accepted (✓): 1,2,3,4,5,6,7,8,10,12,13,14,15,16 — fixes verified in live data.
+- Accepted with the held vowel-quality now adjudicated as defensible (✓ ring / △→accept on [ɛ]): 9, 11.
+- Rejected (✗): none.
+- New actionable issues: 0.
+
+The two previously-held [ɛ]→[e] items were the reviewer's own bracketed-as-secondary notes; on re-verification the [ɛ] transcriptions are internally consistent with each language's own conventions (Serbian-style [ɛ] for /e/; genuine Czech/Slovak short-e [ɛ]) and are therefore accepted as defensible, not won't-fix-by-fiat. Nothing remains for the dev team.
+
+**File status: CLOSED** — nothing left to address.
