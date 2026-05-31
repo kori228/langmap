@@ -1,0 +1,189 @@
+# Hanmap data review #6 — Min Chinese dialectology specialist
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+閩語方言学を専門とする研究者として書いている。閩語族の主要 5 分枝（閩南/閩東/閩北/莆仙/閩中）について、文白異讀（literary vs colloquial reading layer）と上古音直系継承の特異性を主軸に評価する。閩語は中古音以前の上古音層を直接継承する痕跡を持ち（例：知母 *t- が他方言で tʂ- 化したのに対し閩語では t- を保持）、これが文読音（中古音由来）と白読音（上古音直系）の系統的二重化を生んでいる。一次資料として『閩南方言大詞典』（周長楫主編 2006）、『廈門市志・方言志』、『汕頭方言詞典』（張暁山 2009）、『福州方言詞典』（馮愛珍 1998）、『莆仙方言詞典』（蔡國妹 2014）。表記体系は POJ（白話字）/ Tâi-lô / 教育部臺羅拼音 / Peng'im（潮州語）を相互変換しながら検証。理論文献は Norman (1988) Chinese §8、Bodman (1980) Proto-Min、Akitani (秋谷裕幸) の閩北語上古音保持についての論文群。海外華僑変種（檳城/シンガポール/マレーシア/タイ/インドネシア福建語）は基底は閩南だがマレー語/タイ語との接触による音素再編成・声調 sandhi 簡略化を考慮する。
+
+**Reviewer perspective:** 文白異讀 in Hokkien, Teochew, Hokchew, Pu-Xian + diaspora variants
+
+---
+
+## Issues found
+
+### 1. 龍 — HAN_VARIANTS nan_xm / nan_qz / nan_zz / nan_pn / nan_sg / nan_id / nan_pera — 文白 labels systematically inverted across seven sub-dialect rows
+
+- Current: all seven sub-dialects have `lêng` = 白讀, `liông` = 文讀
+- Expected: `lêng` = 文讀 (literary); `liông` = 白讀 (colloquial)
+- Why: The `nan` general row correctly assigns `liông` (陽平, 5th tone) as 白讀 and `lêng` as 文讀. In canonical Southern Min, `liông` is the inherited colloquial form preserved from Old Chinese *C.rjoŋ and used in everyday speech (personal names, the animal itself); `lêng` is the Middle Chinese-derived literary stratum form found in 龍蝦, 恐龍, etc. All seven sub-dialect rows invert this established consensus. The `nan` general row is correct; the seven sub-dialect rows need their labels swapped.
+
+---
+
+### 2. 飲 — HAN_VARIANTS nan (general) — 文白 labels inverted
+
+- Current: `ím` = 白讀, `lim` = 文讀 (IPA im˥˧ and lim˥˧ respectively)
+- Expected: `lim` = 白讀; `ím` = 文讀
+- Why: Every other sub-dialect row (nan_xm, nan_qz, nan_zz, nan_pn, nan_sg, nan_pera, nan_my) correctly assigns `lim` as 白讀 and `ím` as 文讀, matching the universally accepted Min analysis: `lim` (< OC *ʔrom via a separate initial) is the everyday colloquial verb "to drink"; `ím` (< regular MC *ʔim derivation) is the literary form used in 飲料, 飲食. The `nan` general row is the odd one out with labels reversed.
+
+---
+
+### 3. 日 — HAN_VARIANTS nan_xm / nan_pn / nan_my / nan_sg — 文白 contrast is a tone-only distinction, not a genuine 文白 pair
+
+- Current: `ji̍t` (entering tone with dot, 8th tone / 陽入) = 白讀; `jit` (4th tone / 陰入) = 文讀; both with identical IPA initials d͡ʑ-
+- Expected: the real 文白 contrast for 日 in Xiamen-type dialects is `ji̍t` vs `li̍t` (initial j- vs l-), not a tone-only split
+- Why: In Southern Min phonology, 文白 is defined by phonemic differences in initial, final, or vowel — not merely by tone register. Both `ji̍t` (8th entering) and `jit` (4th entering) are the same syllable jit in different checked-tone registers; this represents a tonal allomorph of a single reading, not a distinct literary/colloquial pair. The genuine 文/白 opposition already recorded for `nan` general (ji̍t / li̍t with j- vs l-) and for nan_qz / nan_zz (li̍t / jit) is the correct paradigm. The four sub-dialects should either show the j-/l- contrast or mark the character as having a single reading with no 文白 split.
+
+---
+
+### 4. 貓 — HAN_VARIANTS nan (general) — `bâ` listed as 文讀 is unattested
+
+- Current: `niau` = 白讀, `bâ` = 文讀 (IPA ba˨˦)
+- Expected: 貓 has no established literary reading in standard Min phonology; if a 文讀 must be shown it would derive from MC *bjew, yielding *biâu or *biô, never `bâ`
+- Why: `bâ` (ba, 陽平 tone) does not correspond to any historically derivable reading of 貓 (OC *[m]rawʔ). The MC reading bjew would produce a front-vowel form, not an open `a` syllable. `bâ` looks like contamination from 馬 `bé` or a data entry error. No Southern Min dictionary (MOE, 台日大辭典, Douglas) records `bâ` as a reading of 貓. The 文讀 entry should either be removed or corrected to a form like `biâu`.
+
+---
+
+### 5. 足 — HAN_DATA surface nan_sg — `kha` (= 腳) substituted for the character reading of 足
+
+- Current: `nan_sg` surface = `kha`
+- Expected: `tsiok` or `tsok` (the actual character reading of 足 in Singapore Hokkien)
+- Why: `kha` is the everyday Singapore Hokkien word for leg/foot, written with the character 腳, not 足. The `surface` field in HAN_DATA is intended to represent the reading of the character in question. Substituting the colloquial word for a different character (腳) conflates lexical equivalence with character reading. Singapore Hokkien speakers read 足 as tsiok/tsok in compounds (滿足, 足球, etc.), not as kha.
+
+---
+
+### 6. 足 — HAN_VARIANTS nan_my — `kha` labeled as 文讀 is categorically wrong
+
+- Current: `chiok` = 白讀, `kha` = 文讀 (IPA kʰa˧)
+- Expected: `chiok` = 白讀, `tsok` or `chok` = 文讀
+- Why: `kha` is the colloquial word for foot/leg written 腳, not a reading of 足 under any romanization or historical reconstruction. Labeling a completely different character's word as the 文讀 of 足 is a category error. The literary reading of 足 in Malaysian Hokkien should be tsok (unpalatalised, per literary-layer regularisation of OC *[ts]ok), parallel to all other sub-dialects' chok/tsok.
+
+---
+
+### 7. 山 — HAN_DATA surface nan_hai — `dua2` is not a reading of 山
+
+- Current: `nan_hai` surface = `dua2`; IPA not independently given but Hainanese IPA section would reflect the same
+- Expected: `san1` or a similar form derived from MC *srean (standard Hainanese 山)
+- Why: `dua` in Hainanese (and in Southern Min generally) means "big/great" (大). Hainanese 山 is consistently recorded as `san1` (e.g. in Qionghai/Wenchang documentation). `dua2` appears to be a transcription of an entirely different lexeme or a copy error from a phrase like 大山 (big mountain). No Hainanese source attests `dua` as the reading of the character 山.
+
+---
+
+### 8. 去 — HAN_VARIANTS nan_te — identical surface form for both 白讀 and 文讀
+
+- Current: 白讀 = `khu3` (IPA kʰɯ˨˩˧), 文讀 = `khu3` (IPA kʰu˨˩˧) — same surface form, differing only in IPA vowel
+- Expected: either a genuine surface contrast (e.g. `khi3` / `khu3`), or a single entry with no 文白 distinction
+- Why: Both rows display the identical romanization `khu3`. The only difference is in the IPA transcription (ɯ vs u for the vowel), which is a notational inconsistency rather than a documented 文白 pairing. Teochew 去 is typically recorded as `khu3` with a single phonemic value; if there is a sub-dialectal vowel allophony, it should be documented with different surface romanizations, not with the same spelling twice. As written, the data implies two readings that look and sound the same to a reader.
+
+---
+
+### 9. 魚 — HAN_DATA surface nan_te — `hư5` is Hokkien/POJ romanization notation, not Teochew
+
+- Current: `nan_te` surface = `hư5`
+- Expected: `hê5` (standard Teochew Peng'im romanization for 魚)
+- Why: `hư` uses the POJ vowel symbol `ư` (representing /ɯ/), which belongs to the Hokkien romanization tradition. In Teochew/Chaozhou Peng'im, the comparable vowel is written `ê`. The IPA given is hɯ˥˥, but standard Teochew 魚 is phonemically /he˥˥/ (front mid vowel), not /hɯ˥˥/ (back unrounded). Other Teochew entries in the same column (e.g. 龍=leng5, 耳=hĩ5) correctly use Peng'im-adjacent notation; `hư5` is an outlier using a foreign romanization convention for an incorrect vowel.
+
+---
+
+### 10. 羊 — HAN_VARIANTS nan (general) and nan_my — 文讀 `iôⁿ` is a nasalized form, not the literary reading
+
+- Current: nan general: `iûⁿ` = 白讀, `iôⁿ` = 文讀 (IPA iõ˨˦); nan_my: same structure with IPA ĩɔ̃˨˧
+- Expected: 文讀 should be `iông` (non-nasalized vowel + nasal coda -ng), not `iôⁿ` (nasalized vowel + no coda)
+- Why: In Southern Min phonology, the 文讀 tier of characters from the OC *jaŋ rhyme class is characterised by an oral vowel followed by a velar nasal coda: iông. The 白讀 tier shows the colloquial nasalised vocalic outcome: iûⁿ. `iôⁿ` (nasalised -ô- with no coda) is a phonologically intermediate or dialectal colloquial form, not the literary stratum. All other sub-dialects (nan_xm, nan_qz, nan_zz, nan_pn, nan_sg, nan_id, nan_pera) correctly list `iông` as 文讀. Only `nan` general and `nan_my` list the nasalised form `iôⁿ` as literary, which contradicts both the phonological pattern and the other sub-dialect data.
+
+---
+
+### 11. 血 — HAN_VARIANTS nan_my — 文讀 `hueh` with empty IPA; neither reading is the true literary form
+
+- Current: `hoeh` = 白讀 (IPA hueʔ˧˨), `hueh` = 文讀 (IPA `""` — empty)
+- Expected: 文讀 should be `hiat` (the literary reading in all other Southern Min sub-dialects, derived from MC *xet); IPA should be hiat̚˧˨
+- Why: Both `hoeh` and `hueh` are colloquial variants of the 血 colloquial reading (the oe~ue vowel alternation is a well-known Penang/KL vowel merger, not a 文白 split). Labeling `hueh` as 文讀 in Malaysian Hokkien ignores the existence of `hiat`, which Malaysian Hokkien speakers use in formal/literary compounds (血液, 出血). All other sub-dialect rows in this character record `hiat` as 文讀. Furthermore, the empty IPA field for `hueh` is a data quality gap.
+
+---
+
+### 12. 食 — HAN_VARIANTS nan_te — surface romanization `tsiah8` inconsistent with Teochew convention; IPA shows palatal
+
+- Current: `nan_te` 白讀 = `tsiah8`, IPA = t͡ɕiaʔ˥
+- Expected: `ziah8` (Peng'im convention for the Teochew voiced initial), IPA = t͡siaʔ˥ (or d͡ʑiaʔ˥ if palatalised)
+- Why: The sister row `nan_th` (Thai Teochew) correctly uses `ziah8` for the same phoneme. In Teochew Peng'im, the colloquial initial of 食 is voiced `z-` (/t͡s/ or /d͡z/, not the aspirated/affricate `tsh-`), contrasting with `ts-` (voiceless) and `tsh-` (aspirated). `tsiah8` in the surface field looks like a Hokkien POJ form. Additionally the IPA t͡ɕ- (palatal) for `nan_te` contrasts with the t͡s- (alveolar) given for `nan_th`: if both represent the same Teochew phoneme, IPA should be consistent. If the palatalisation is real for `nan_te`, it should be noted and the surface romanization updated accordingly.
+
+---
+
+### 13. 頭 — HAN_VARIANTS nan_pera — 文讀 `tho⁵` has aspirated initial in IPA
+
+- Current: `nan_pera` 文讀 surface = `tho⁵`, IPA = tʰɔ˨˦ (aspirated th-)
+- Expected: IPA = tɔ˨˦ (unaspirated t-)
+- Why: The literary reading of 頭 in Southern Min derives from MC *dəu (平聲), where the initial is historically unaspirated. All other sub-dialects record the 文讀 as `tô͘` with unaspirated t- in IPA. `tho⁵` in Perak romanization could represent either t- or th-; the IPA should clarify unaspirated tɔ, not aspirated tʰɔ. The aspirated form tʰ- would instead correspond to 土 or 討, not 頭.
+
+---
+
+### 14. 頭 — HAN_DATA surface nan_te — `thau5` has aspirated initial, non-standard for Teochew
+
+- Current: `nan_te` surface = `thau5`
+- Expected: `tau5` (unaspirated t-)
+- Why: Teochew 頭 is consistently documented as `tao5` / `tau5` with an unaspirated initial across Peng'im dictionaries and Guangdong Chaozhou phonological studies. The aspirated `thau5` form would belong to 討 (thau2) or 透 (thau3), not 頭 (陽平 tone 5). The initial aspiration appears to be a transcription error. This also creates an internal inconsistency: the HAN_VARIANTS entries for 頭 nan_te (which correctly show thâu for the colloquial form across Hokkien sub-dialects) are being conflated with Teochew data where the aspiration is absent.
+
+---
+
+### 15. 鳥 — HAN_VARIANTS nan (general) and sub-dialects — 文白 assignment likely inverted
+
+- Current: `chiáu` / `tsiáu` = 白讀; `niáu` = 文讀 (across nan, nan_xm, nan_qz, nan_zz, nan_pn, nan_my, nan_sg, nan_id, nan_pera)
+- Expected: `niáu` = 白讀 (colloquial: small bird, sparrow); `chiáu` / `tsiáu` = 文讀 (literary: general term in compounds)
+- Why: In the standard Min phonological analysis (Norman 1988, Bodman), the tsiau-type form retains the OC *[t]ewʔ stop initial directly and functions as the literary layer in formal compounds (鳥巢, 候鳥, etc.). The n-initial `niáu`, requiring a separate sound change pathway from a dialectal or de-affricated OC form, is the colloquial layer used for "small bird / sparrow" in everyday speech. The Taiwanese Ministry of Education dictionary records niáu2 as the colloquial reading and tsiáu2 as the literary reading. The entire column has the assignments reversed.
+
+---
+
+### 16. 人 — HAN_VARIANTS nan_te — `zîng5` uses circumflex accent inconsistent with tone 5 in POJ
+
+- Current: `nan_te` 文讀 = `zîng5`, IPA = d͡ʑĩŋ˥˥
+- Expected: `zîng5` with circumflex implies departing tone (7th tone, 陽去) in POJ conventions, but the suffix `5` marks 陽平 (level tone)
+- Why: In POJ romanization, the circumflex accent (â, ê, î, ô, û) marks the 7th tone (陽去), not the 5th tone (陽平). The 5th tone (陽平) is typically marked with a grave accent in full POJ. Using `zîng5` creates a contradiction: the diacritic implies tone 7 while the number suffix specifies tone 5. If the data is using Teochew Peng'im style tone numbers (1-8) rather than POJ diacritics, then the surface form should drop the circumflex and simply be `zing5` or `zing` with a separate tone marker. The IPA d͡ʑĩŋ˥˥ (tone 5, level high) is internally consistent but conflicts with the circumflex in the romanization.
+
+---
+
+### 17. 立 — HAN_DATA surface nan_hai — `tab5` is unattested as a reading of 立
+
+- Current: `nan_hai` surface = `tab5`
+- Expected: a form derivable from MC *lip (入聲) in Hainanese, likely `lip5` or `lak5`
+- Why: 立 (MC *ljip, 入聲) in Min dialects regularly yields forms with -p or -k final (Southern Min lip, Northern Min lik). Hainanese, being a transitional Min variety, typically has `lip5` or similar. `tab5` (labial stop final with open vowel) does not correspond to any historically expected development of 立 in any Min branch. The -a- vowel and -b final would belong to a completely different Old Chinese rhyme class. This appears to be either a data entry error or a confusion with another character.
+
+---
+
+### 18. 龍 — HAN_DATA surface nan_te and surface entries — `leng5` uses POJ rather than Teochew notation
+
+- Current: `nan_te` surface = `leng5` (HAN_DATA)
+- Expected: `lêng5` (Peng'im with ê vowel) or consistent notation marking
+- Why: Standard Teochew Peng'im writes this vowel as `ê` (indicating /e/). Other Teochew entries in the data (e.g. 耳 `hĩ5`, 食 `sek8`) use Peng'im-adjacent forms. `leng5` without the acute or special vowel diacritic could be misread as representing a different vowel. The HAN_VARIANTS entry for the same dialect correctly uses `lêng` (with circumflex). The surface entry in HAN_DATA should match the romanization style used in HAN_VARIANTS for consistency.
+
+---
+
+### 19. 魚 — HAN_VARIANTS nan_sg — `gî` as 文讀 is inconsistent with all other sub-dialects
+
+- Current: `nan_sg` 文讀 = `gî` (IPA ɡi˨˦)
+- Expected: `gû` (IPA ɡu˨˦), matching nan general, nan_id, and the standard literary form
+- Why: The literary reading of 魚 in Southern Min is `gû` (OC *ŋja, literary Min via MC *ŋɨo). `gû` is attested for `nan` general, `nan_id`, and is consistent with Middle Chinese derivation. `gî` (with high front vowel /i/) has no historical basis as a literary reading of 魚 and does not appear in any authoritative Singapore Hokkien dictionary. The IPA ɡi˨˦ (same tone as ɡu˨˦) suggests this may be a vowel transcription error (i in place of u).
+
+---
+
+### 20. cpx (Pu-Xian Min) — HAN_VARIANTS 手 — surface `tsiû` contradicts IPA `tsʰiu`
+
+- Current: 文讀 surface = `tsiû`, IPA = tsʰiu˧˩
+- Expected: either surface `tsʰiû` / `tshiû` (aspirated, matching IPA), or IPA `tsiu` (unaspirated, matching surface)
+- Why: `tsi-` in Pu-Xian/Hsinghwa romanization convention denotes an unaspirated alveolar affricate /ts-/, while `tsʰ-` in IPA denotes the aspirated counterpart. The surface `tsiû` and IPA `tsʰiu˧˩` are phonemically contradictory. In Pu-Xian Min, the 文讀 form of 手 is typically the aspirated `tsʰiû` (cognate with Hokkien tsʰiú), meaning the IPA is probably correct and the surface romanization is missing the aspiration diacritic. This should be `tshiû` or `tsʰiû` in surface to match the IPA.
+
+---
+
+### 21. 二 — HAN_VARIANTS nan_xm — empty IPA for both 白讀 and 文讀
+
+- Current: `nan_xm` 白讀 `nn̄g` (IPA `""`), 文讀 `jī` (IPA `""`)
+- Expected: IPA for 白讀 = `n̩˨˩` or `ŋ̩˨˩` (syllabic nasal, 7th tone); IPA for 文讀 = `d͡ʑi˨˩`
+- Why: Both IPA fields for `nan_xm` are empty strings `""` while the corresponding nan_zz entry (same character, same readings) correctly supplies `n̩˩˧` and `d͡ʑi˩˧`. The nan_xm empty IPAs represent a data gap. Given that Xiamen and Zhangzhou differ only in tone contour for this character (7th tone ˨˩ vs ˩˧), the IPA transcription is derivable by direct comparison and should be filled.
+
+---
+
+### 22. 行 — HAN_VARIANTS mnp (Northern Min / Jian'ou) — 文讀 `ông` with h-dropping is unexpected and unexplained
+
+- Current: `mnp` 文讀 = `ông` (IPA ɔŋ˧˧, labelled 文讀（行業）)
+- Expected: `hông` or `hɔŋ` with initial h- retained (per Jian'ou / Min Bei documentation of 行業 reading)
+- Why: In Northern Min (Jian'ou dialect, Norma et al. documentation), the literary reading of 行 for the "business/trade" sense is hɔŋ, with initial h- retained. The data's `ông` (ɔŋ without initial consonant) represents a h-initial deletion that is not recorded in standard Min Bei phonological descriptions. While h-dropping occurs in certain Min dialects in specific environments, losing the initial entirely on the literary reading is unusual. The 白讀 `hâing` correctly retains h-. If h-dropping is attested for this form in a specific Northern Min locality, a source should be noted; otherwise `hông` is the expected form.
+
+---
+
+*End of review — 22 issues documented.*

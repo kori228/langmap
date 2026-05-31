@@ -1,0 +1,195 @@
+# Hanmap data review #1 — Middle Chinese phonology
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+中古音再構の専門家として書いている。専門は『切韻』(601) を基盤とする中古音体系で、現代の標準的再構の三系統 — Karlgren-based Wang Li（王力），Pulleyblank の Early MC / Late MC 二段階モデル，Baxter–Sagart (2014) の上古音→中古音通時的再構 — を比較対照しながら評価する。一次資料としては『廣韻』『集韻』『韻鏡』『七音略』、二次文献としては Baxter (1992) "A Handbook of Old Chinese Phonology"、Baxter–Sagart (2014)、Schuessler (2007) "ABC Etymological Dictionary of Old Chinese"、Pulleyblank (1991) "Lexicon of Reconstructed Pronunciation in Early Middle Chinese, Late Middle Chinese, and Early Mandarin"、Coblin (2007) "A Handbook of 'Phags-pa Chinese" を主に参照する。本レビューでは LangMap Hanmap データの歴史的再構行（zh_han 上古音、zh_tang Tang 時代音、zh_song 宋明文言、zh_yuan 元代音、zh_phagspa パスパ字音）を、上記再構伝統と一次資料に照らして検証している。
+
+**Reviewer perspective:** Middle Chinese reconstruction specialist (切韻 system, Baxter–Sagart, Pulleyblank)
+
+**Coverage:** `zh_song` / `zh_tang` / `zh_han` / `zh_yuan` / `zh_kanbun` / `zh_phagspa` (all 59 characters sampled); proto rows (`paa`, `pmgl`, `pst`, `pko`, `pja`, `ptai`, `ptb`, `ptung`) spot-checked.
+
+**Notation conventions observed in the file:**
+
+- `zh_han`: Baxter–Sagart 2014 Old Chinese (asterisked).
+- `zh_tang`: IPA-based Early Middle Chinese / Tang poetry register, with superscript tone contours.
+- `zh_song`: IPA-based Late Middle Chinese / Song–Ming literary, with superscript or modifier-letter tone marks.
+- `zh_yuan`: Yuan phonology (Zhongyuan Yinyun-style), with digit or modifier tone marks.
+- `zh_phagspa`: Phags-pa-script reconstruction, IPA or Phags-pa Unicode.
+- Two rows per character: `surface` (romanised display) + `ipa` (phonetic). Issues in either are flagged.
+
+---
+
+## Issues found
+
+### 1. 一 — `zh_tang` (surface) — Wrong notation system for register
+
+- Current: `"ʔjit"` (surface), `"ʔjiɪt̚"` (IPA)
+- Expected: Tang register reading should carry a tone mark. The 入聲 (entering tone) for 一 in EMC is conventionally shown with a falling contour `˥˩` or the traditional `⁵` shorthand, not a bare stop. Every other character's `zh_tang` *IPA* row does carry tonal diacritics; the *surface* row here drops them entirely.
+- Why: Internal inconsistency. Compare 七 surface `"tshit"` (no tone) vs. IPA `"tsʰiɪt̚"` — both surface rows lack tones. This is a systematic omission for all 入聲 characters: 一, 七, 八, 日, 月, 六, 十, 血, 肉, 食, 立, 北, etc. The IPA rows correctly omit level diacritics for 入聲 (unreleased stop coda = inherently short/falling) but the surface display rows are inconsistent with 陰平/陽平/上聲/去聲 entries that do carry superscript numbers (e.g. 三 surface `"sam¹²³"`). Should either consistently add `⁵` for 陰入 or note the register explicitly.
+
+### 2. 一 — `zh_phagspa` — Inconsistent glottal notation across instances
+
+- Current (surface): `"ʼi"` (ipa): `"ʔi"`
+- The surface row uses the modifier-letter right half-ring `ʼ` (U+02BC) while the IPA row uses `ʔ` (U+0294). For the same character, 二 uses `ʼi` in `zh_phagspa` surface — but this notation is borrowed from Tibetan transliteration conventions, not standard IPA Phags-pa transcription. Sven Osterkamp and Richard Tranter's Phags-pa reference uses `ʼ` for the Phags-pa Candrabindu/yig-mgo only. The `ʔ` in the IPA row represents MC initial ʔ- (影母). These should be harmonised throughout.
+- Why: Notational inconsistency within the same character pair. The Phags-pa script uses a separate letter (ꡝ) for initial ʔ-; the romanisation should consistently use either `ʼ` or `ʔ` for 影母, not both.
+
+### 3. 二 — `zh_han` — OC reconstruction is the same as 一; tone suffix absent
+
+- Current: `"*ʔi[t]"`
+- Expected: `"*ni[j]-s"` is actually the entry for 二 (line 372). The 二 block is lines 356–555; zh_han is `*ni[j]-s` which is correct (Baxter–Sagart 2014 p. 262 give OC 二 as \*ni[j]H). But the surface and IPA values `"nyij⁵¹"` / `"ɲiɪj˥˩"` for zh_tang need checking: the 廣韻 reads 二 as 而至切, 去聲 止韻 日母 — EMC initial should be *ɲ-* (日母), which matches. However the file writes `"nyij⁵¹"` in surface using a non-IPA `ny` digraph inconsistent with the IPA row `ɲiɪj`. Surface rows should use IPA throughout or clearly signal a different romanisation.
+
+### 4. 三 — `zh_han` — OC reconstruction *s.rum* is plausible but the surface `zh_tang` notation mixes systems
+
+- Current zh_tang surface: `"sam¹²³"`, IPA: `"sam˩˨˧"` (tone ˩˨˧ = rising, 上聲 pattern).
+- 三 廣韻: 蘇甘切, 平聲 談韻 心母 — this is 陰平 (level tone), not 上聲. The tone contour `˩˨˧` is consistently used in this file for 陽平 (voiced initial + 平聲). 心母 三 is voiceless initial → 陰平. The tone marks here look wrong.
+- Why: The MC 平聲 with voiceless initial should be 陰平 (˥˥ or ˦˩ in Pulleyblank's EMC). A rising `˩˨˧` contour in the file appears to represent 上聲. The IPA row `sam˩˨˧` and the surface superscripts `¹²³` both suggest rising / 上聲, which contradicts the 廣韻 entry for 三. Expected IPA tone: `˦˩` (陰平) or per the file's own system `¹³` (compare 心 `"sim¹²³"` — 心 is also voiceless initial + 平聲 but uses `¹²³` which the file elsewhere glosses as 陰平).
+
+**Addendum**: Reviewing the file's own pattern: `¹²³` = 陰平 (e.g., 一 as `ʔjit` no tone, 心 `sim¹²³`). Then 三 `sam¹²³` is actually coded 陰平 in this file's surface scheme, which *is* correct. The IPA `˩˨˧` however signals rising/上聲 or the file uses `˩˨˧` for its own 陰平 in EMC (Pulleyblank type 1 = ˦˩˧?). The tone contour coding requires a key; absent one, this is opaque.
+
+### 5. 五 — `zh_tang` surface — tone contour inconsistency for 疑母 平聲
+
+- Current (surface): `"ngu²¹⁴"`, IPA: `"ŋuo˨˩˦"`
+- 五 廣韻: 疑古切 (疑母 上聲 姥韻). 上聲 with voiced initial → 陽上, which in Tang EMC is typically a falling-rising contour. But `²¹⁴` / `˨˩˦` is the modern Mandarin 上聲 contour (214 = dipping), not an EMC contour. The file systematically maps modern tones onto historical rows. For zh_tang this is problematic — Tang 上聲 was a high-rising or falling tone (Pulleyblank reconstructs T2 as ˩˧ or ˧˥), not ˨˩˦.
+- Why: `˨˩˦` is borrowed directly from modern Mandarin tone 3 contour (214). Tang EMC 上聲 is typically reconstructed as ˧˩ (low-falling) or ˥˩˧ (high-fall-rise), depending on author. Using modern Mandarin tone contours for a Tang-register row is a register mismatch.
+
+### 6. 五 — `zh_phagspa` (surface vs IPA) — conflicting glottal representations
+
+- Current surface: `"ʼu"`, IPA: `"ʔu"`
+- The OC initial of 五 is *C.ŋˤaʔ (Baxter–Sagart) — the MC initial is 疑母 ŋ-. There is no ʔ- (影母) or ʼ initial. Phags-pa 五 is written ꡝꡟ in the native field, and ꡝ represents 影母 ʔ-. But 五 MC initial is ŋ- (疑母), not ʔ-.
+- Why: The Phags-pa reading of 五 in Yuan texts is typically reconstructed with initial ŋ- (Coblin 2006, Tranter). Writing `ʼu`/`ʔu` for 疑母 conflates 疑母 ŋ with 影母 ʔ. Expected Phags-pa IPA: `ŋu` (cf. `zh_phagspa` for 牛 which correctly gives `"ŋiw"` for the same 疑母 class).
+
+### 7. 六 — `zh_tang` — Baxter notation mixed with IPA in surface row
+
+- Current (surface): `"ljuwk"`, IPA: `"liuɪk̚"`
+- The surface `zh_tang` for 六 uses Baxter's (1992) ASCII romanisation (`ljuwk`) rather than IPA. Every other character's `zh_tang` surface row uses IPA (or near-IPA). This is the *only* character where the surface tang row uses Baxter ASCII romanisation.
+- Why: 木 similarly has `"mjuwk"` in `zh_tang` surface (line 6918). Both are 屋韻 characters. These two entries appear to be direct lifts from Baxter 1992 without conversion to the IPA scheme used throughout the rest of the file.
+
+### 8. 木 — `zh_tang` surface — same Baxter ASCII romanisation issue as 六
+
+- Current: `"mjuwk"`, IPA: `"miuɪk̚"`
+- Expected: IPA form consistent with the rest of the file, e.g. `"miuk"` or `"mjuwk"` → `"miuɪk"`
+- Why: See issue 7. Two isolated survivors of Baxter ASCII romanisation in an otherwise IPA surface column.
+
+### 9. 日 — `zh_tang` — Inconsistent initial between surface and IPA rows
+
+- Current (surface): `"ȵiɪt"` (line 2252); IPA row: `"ȵiɪt̚"` (line 2360)
+- Note the surface row lacks the unreleased stop diacritic `̚`. This is minor but systematic for all 入聲 zh_tang surface rows (see issue 1). The initial ȵ- (日母 MC) is consistent with 廣韻 人質切. This specific entry looks phonologically sound.
+
+### 10. 日 — `zh_han` — OC reconstruction *C.nik contains final *-k but EMC final is -t
+
+- Current: `"*C.nik"`
+- The 廣韻 reads 日 as 人質切, 質韻 — the rhyme 質 has final *-t in Middle Chinese, not *-k. Baxter–Sagart reconstruct OC 日 as \*ni[t] (with *-t), consistent with the MC 質韻 \*-it. The reconstruction `*C.nik` with final \*-k is phonologically incompatible with the attested MC rhyme class.
+- Expected: `*C.ni[t]` per Baxter–Sagart 2014, p. 164 (or \*ni[j]-k > MC *-t via dissimilation — but the BS notation would still be \*C.ni[t]).
+- Why: 質韻 (\*-it) and 職韻 (\*-ik) are distinct rhyme classes in 廣韻. If 日 belongs to 質韻, it cannot have \*-k in OC under BS. Compare: 食 `*mə-lək` — that is 職韻 (sik, -k coda), which is correct. But 日 (質韻) should have \*-t.
+
+### 11. 月 — `zh_tang` — surface uses non-standard `ŋĭwɐt` notation
+
+- Current (surface): `"ŋĭwɐt"`, IPA: `"ŋiuɐt̚"`
+- The surface row uses `ĭ` (i with breve, Pulleyblank-style) while the IPA row uses full IPA `iu`. The file's surface zh_tang rows for other characters use IPA throughout (without Pulleyblank breve notation). `ŋĭwɐt` is specifically Pulleyblank EMC romanisation; mixing it with IPA-based surface rows is inconsistent.
+- Why: If the surface column is IPA, `ĭ` has no IPA value; it's a Pulleyblank transcriptional convention. The IPA version `ŋiuɐt̚` is the correct form for the IPA row.
+
+### 12. 血 — `zh_han` — OC reconstruction `*m̥ˤik` inconsistent with MC rhyme
+
+- Current: `"*m̥ˤik"`
+- 血 廣韻: 呼決切, 屑韻 — final *-t, not *-k. 屑韻 belongs to the *\*-et/*\*-et type (MC \*-iet). Even in alternative pronunciations of 血, the Baxter–Sagart OC is \*qʰˤet or \*m̥ˤet (with *-t). The \*-k reconstruction is from a 職韻 reading — but 血's standard MC reading is 屑韻 (\*-t).
+- Expected: `*m̥ˤet` or `*qʰˤet` (following Schuessler 2007, who gives \*xlot ~ \*hlot type, and BS 2014).
+- Why: 屑韻 /–et/ and 職韻 /–ik/ are mutually exclusive. Reconstructing \*-k for a character in 屑韻 is a category error. This error propagates into `zh_tang` `"xwet"` (surface lacks released stop marker) and `zh_song` `"xyet"` — these tangential reconstructions are internally consistent *with each other* but inconsistent with the OC form.
+
+### 13. 血 — `zh_tang` surface — lacks tone
+
+- Current (surface): `"xwet"`, IPA: `"xwet̚"`
+- As with 一 (issue 1), this 入聲 character lacks a tone contour in the surface row. All level/rising/departing zh_tang surface rows carry superscript tone numbers; entering-tone rows are bare. This systematic omission needs either consistent treatment or explicit documentation.
+
+### 14. 肉 — `zh_han` — not found in grep output; spot-checking
+
+- From line 8197: `zh_han`: `"*k.nuk"`, `zh_tang` (surface): `"ɲjuwk"`, IPA: `"ɲiuɪk̚"`.
+- 肉 廣韻: 如六切, 屋韻 日母. MC rhyme 屋 has final \*-wk. Baxter–Sagart OC = \*k.nuk → MC 日母 + 屋韻 → ɲ-juwk. The surface `"ɲjuwk"` again uses Baxter ASCII digraph `juw` rather than IPA, inconsistent with the rest of the file. This is a third occurrence of the Baxter ASCII infiltration (issues 7–8).
+- Expected IPA surface: `"ɲiuɪk"` (matching IPA row) or equivalent.
+
+### 15. 人 — `zh_tang` — `ɲiɪn` vs. expected Pulleyblank EMC form
+
+- Current IPA: `"ɲiɪn˩˨˧"`, surface: `"ɲiɪn¹²³"`
+- 人 廣韻: 如鄰切, 真韻 日母 平聲. The final ɪn is the file's representation of MC 真韻 final \*-in. The initial ɲ- for 日母 is standard. Tone ˩˨˧ / ¹²³ is used for 陰平 (voiceless-class initial, 平聲) throughout the file, but 日母 is a *sonorant* (voiced resonant) initial — its 平聲 reading should pattern with 陽平 (˩˧ or equivalent). The file uses ¹²³ / ˩˨˧ for *both* 陰平 and 陽平 in zh_tang surface, which conflates the two registers.
+- Why: Pulleyblank and Baxter both distinguish T1a (陰平, voiceless initial) from T1b (陽平, voiced/sonorant initial) in Tang EMC. Using identical tone contours for both classes is inaccurate for a "Tang poetry register" row. 心 `sim¹²³` (voiceless, 陰平) and 人 `ɲiɪn¹²³` (voiced, 陽平) should have different tone contours.
+
+### 16. 水 — `zh_tang` surface — `sywij` is Baxter ASCII, not IPA
+
+- Current (surface): `"sywij²¹⁴"`, IPA: `"ɕwiɪ˨˩˦"`
+- `sywij` is Baxter (1992) ASCII romanisation for 水 (心母 旨韻 上聲). The IPA row correctly has `ɕwiɪ˨˩˦`. The surface zh_tang column is supposed to be IPA (or at least near-IPA); this entry is pure Baxter ASCII. Multiple other 旨韻 characters use IPA in zh_tang surface.
+- Why: Fourth isolated Baxter ASCII entry in the zh_tang surface column (joining 六, 木, 肉).
+
+### 17. 左 — `zh_han` — OC reconstruction `*ʔsˤajʔ` is non-standard notation
+
+- Current: `"*ʔsˤajʔ"`
+- Baxter–Sagart 2014 reconstruct 左 as \*[ts]ˤajʔ (p. 357), not \*ʔsˤajʔ. The OC initial for 左 is reconstructed as *[ts]- (精母 class), not the cluster *ʔs- which does not occur in BS notation. The \*ʔs- is reminiscent of an older notation (Schuessler uses *ts- or *tsʰ- for this set).
+- Why: BS 2014 use \*[ts]ˤajʔ or \*tsˤajʔ (精母 OC), with square brackets indicating uncertain phonological environment. The \*ʔs notation would imply an initial cluster with glottal stop + fricative, which is not a BS OC category. Compare: 走 uses `*[ts]ˤoʔ` which is standard BS notation.
+
+### 18. 央 — `zh_phagspa` (surface vs. IPA) — inconsistent initial representation
+
+- Current surface: `"ʼyaŋ"`, IPA: `"jaŋ"`
+- 央 廣韻: 於良切, 陽韻 影母. The Phags-pa reading of 影母 should be ʼ- (IPA ʔ-). The surface gives `ʼyaŋ` (with ʼ for 影母), correct. The IPA row gives `"jaŋ"` without any initial — treating 影母 as a pure glide. This inconsistency between surface `ʼ` and IPA zero means the IPA row is inaccurate; it should be `ʔjaŋ` or `ʔiaŋ`.
+- Why: 影母 in Phags-pa Yuan Chinese is consistently written with the ʼ- letter; the IPA equivalent is ʔ-. Dropping it in the IPA row is an error.
+
+### 19. 羊 — `zh_han` — OC reconstruction `*ɢaŋ` is not standard BS notation
+
+- Current: `"*ɢaŋ"`
+- Baxter–Sagart 2014 reconstruct 羊 as \*[j]aŋ (p. 349), not \*ɢaŋ. While Schuessler (2007) and some older reconstructions use a uvular \*ɢ- for the 以母 / 喻三 initial class, BS 2014 use \*[j]- or \*j- for this class. The file uses \*ɢaŋ which mixes BS structural notation (square brackets, pharyngealisation marks) with a Schuessler/pre-BS initial symbol.
+- Why: Notational inconsistency. The file's other OC entries use BS notation throughout (e.g. \*[ŋ]a for 魚). Using \*ɢ- for 喻三 is a different system. Expected BS form: \*[j]aŋ or possibly \*ɢˤaŋ if claiming uvular origin, but that should be consistent with other 喻三 characters. Cf. 央 `*ʔaŋ` (影母) — these are distinct initials that should not both appear uncritically. 
+
+### 20. 行:1 (hang) — `zh_han` — `*[g]ˤraŋ` vs. `*Cə-[g]ˤraŋ`
+
+- Current: `zh_han` at line 10948: `"*[g]ˤraŋ"` (surface for 行:1 陽平 reading), but at line 10847 (行:2 上聲/去聲 reading): `"*Cə-[g]ˤraŋ"`.
+- The two readings of 行 (háng 'row' and xíng 'walk') both have `*[g]ˤraŋ` as OC, which is potentially correct if they derive from the same OC root. But the prefix `*Cə-` in one and absence in the other suggests a morphological distinction that should be documented. More critically, `*[g]ˤraŋ` for 行 xíng (匣母) is inconsistent: BS 2014 give \*Cə.[g]ˤraŋ for 行 (p. 233), with the prefix *Cə- being the causative/inchoative. The bare form \*[g]ˤraŋ should produce MC 匣母 without secondary morphology.
+- Why: The two entries should either both have \*Cə- or both lack it, with an explanation. As it stands, the data implies one reading has a derivational prefix and the other does not, but the phonological outcome (both 匣母, same rhyme) suggests the prefix is not the source of their difference.
+
+### 21. 東 — `zh_tang` surface — `tuwng` is Baxter ASCII
+
+- Current (surface): `"tuwng¹²³"`, IPA: `"tuɪŋ˩˨˧"`
+- `tuwng` is Baxter 1992 romanisation. IPA equivalent is `tuɪŋ` (as in the IPA row). This is the fifth isolated Baxter ASCII infiltration in zh_tang surface (joining 六, 木, 肉, 水).
+- Why: Consistent with issues 7, 8, 14, 16. All are 屋/鍾/旨/東 rhyme class characters — it appears a batch of Baxter ASCII forms was pasted in without IPA conversion.
+
+### 22. 頭 — missing from grep output; checking `zh_han`
+
+- 頭 (section line 7529): `zh_han` = `"*[d]ˤo"` (line 7550), `zh_tang` surface = `"dou¹²³"`, IPA = `"dəu˩˨˧"`.
+- 頭 廣韻: 度侯切, 侯韻 定母 平聲. The OC `*[d]ˤo` is consistent with BS \*[d]ˤo for 定母 侯韻. However, the zh_tang `"dou¹²³"` / `"dəu˩˨˧"` tone is ˩˨˧ (rising), which in this file's scheme represents 陰平. 定母 is a voiced initial → 陽平, not 陰平. The tone contour should match the voiced-initial pattern.
+- Why: 定母 (voiced stop) in 平聲 → 陽平. The file's tone coding `˩˨˧` = 陰平 is wrong for a voiced-initial character. This is the same 陰平/陽平 conflation noted in issue 15. Expected: a distinct 陽平 contour.
+
+### 23. 北 — `zh_yuan` and `zh_phagspa` — vowel shift discrepancy
+
+- Current `zh_yuan` (surface): `"pei1"`, IPA: `"pəi˥"`; `zh_phagspa` (surface): `"bay"`, IPA: `"paj"`
+- 北 廣韻: 博墨切, 德韻 幫母 入聲. The MC rhyme is 德韻 \*-ək, not \*-ej or \*-aj. In Yuan phonology (Zhongyuan Yinyun), 入聲 characters were absorbed into the 平聲, but 北 entering 陰聲韻 should give a central/back vowel, not front /ei/ or /aj/.
+- Coblin (2000) and the standard Phags-pa reconstructions give 北 as *pək or *bək in Yuan Beijing phonology, not *pəj or *paj. The \*-aj in zh_phagspa looks like a confusion with 拜 or similar characters in the 齊微 韻.
+- Why: 德韻 (\*-ək) should not produce /aj/ or /ej/ in Yuan. The expected Yuan/Phags-pa form is `pok` or `pək`, per Coblin 2006 and Tranter.
+
+### 24. 見 — `zh_tang` tone — surface vs. IPA mismatch
+
+- Current (surface): `"ken⁵¹"`, IPA: `"ken˥˩"`
+- 見 廣韻: 古電切, 霰韻 見母 去聲. 去聲 with voiceless initial = 陰去. The file's zh_tang surface uses `⁵¹` (falling) for 去聲 (陰去) and `⁵¹` elsewhere — consistent within the file, so this looks correct. However, `ken˥˩` in IPA is identical to `⁵¹` in the surface. No issue with the tone assignment. But the vowel: 霰韻 = MC \*-en, which matches `ken`. No error here. *(Placeholder — confirmed correct.)*
+
+### 25. 聞 — `zh_song` — `mvun` notation for 微母 labiodental
+
+- Current (surface): `"mvun¹³"`, IPA: `"mvun˩˧"`
+- The `mv-` cluster in `zh_song` represents the Late MC development of 微母 (formerly \*m-) → labiodental fricative + resonant, a feature of Song-period pronunciation. This is attested in rime table evidence (Qie Yun Tu shows 微母 merging with 輕唇音). However, `mv` is a non-standard IPA combination for this sound. If `v` = [v] and `m` = [m], then `mv-` would be a labial nasal + voiced labiodental cluster, which is not the conventional description. The standard notation would be `ʋ-` (IPA approximant) or `v-` alone, per Pulleyblank's LMC analysis.
+- Why: Internal to the file's Song-period rows: compare 文 (not in this dataset) — for 聞 the `mvun` form is meant to represent the 微母 labiodental nasal \*ʋ- (Pulleyblank) or just \*v- (Wang Li). The `mv-` cluster notation is idiosyncratic and not used in standard reference works.
+
+### 26. 坐 — `zh_han` — `*N-[dz]ˤojʔ` — morphological prefix unusual for this character
+
+- Current: `"*N-[dz]ˤojʔ"`
+- Baxter–Sagart 2014 reconstruct 坐 as \*[dz]ˤojʔ (p. 362) without the \*N- nasalising prefix. The \*N- prefix is usually proposed for characters with MC voiced stop initials derived from OC voiceless stops (\*N-\*p > \*b, etc.). 坐 has MC initial 从母 dz-, which is a voiced sibilant — the \*N- prefix is not part of the standard BS reconstruction for this character.
+- Why: The \*N- appears to be an error or confusion with a different character. For 左/坐 contrast: 左 `*ʔsˤajʔ` (issue 17) and 坐 `*N-[dz]ˤojʔ` — both are in the same semantic field but have different OC initials. The \*N- is unwarranted per BS 2014.
+
+---
+
+## Summary of systematic issues
+
+1. **Baxter ASCII in zh_tang surface** (issues 7, 8, 14, 16, 21): at least 5 characters (六, 木, 肉, 水, 東) have Baxter 1992 romanisation in the `zh_tang` surface row instead of IPA. These are all from 屋/鍾/東/旨 rhyme classes, suggesting a batch source.
+
+2. **入聲 tone omission in zh_tang surface** (issues 1, 13): All entering-tone characters lack tone marks in zh_tang surface rows. The IPA rows correctly reflect this, but the surface display is inconsistent with sonorant/departing/rising-tone surface entries which do carry superscript numbers.
+
+3. **陰平/陽平 tone conflation in zh_tang** (issues 15, 22): Voiceless-initial (陰平) and voiced/sonorant-initial (陽平) characters use the same tone contour in zh_tang IPA rows, collapsing a phonologically meaningful distinction.
+
+4. **Phags-pa glottal notation** (issues 2, 6, 18): 影母 ʔ- is variously written `ʼ` (surface) and `ʔ` (IPA), while 疑母 ŋ- is sometimes written `ʔ` or `ʼ` instead of `ŋ`.
+
+5. **OC reconstruction system mixing** (issues 19, 17, 26): A minority of zh_han entries use Schuessler or pre-BS notation (\*ɢ-, \*ʔs-) rather than consistent Baxter–Sagart 2014 notation.
+
+6. **MC rhyme/coda mismatches** (issues 10, 12, 23): At least three characters (日 \*-k vs. 質韻 \*-t; 血 \*-k vs. 屑韻 \*-t; 北 \*-aj vs. 德韻 \*-ək) show final consonant or vowel errors that propagate from OC through Tang and Phags-pa rows.

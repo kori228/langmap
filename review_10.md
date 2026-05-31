@@ -1,0 +1,229 @@
+# Hanmap data review #10 — Modern Mandarin dialectology specialist
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+Specialist in Modern Mandarin sub-groups per 中國語言地圖集 (CASS 1987/2012) classification (8 groups: 北京/東北/冀魯/膠遼/中原/蘭銀/江淮/西南). Background in Norman (1988) *Chinese*, Hou Jingyi (侯精一) *現代漢語方言概論*, You Rujie (游汝傑) *漢語方言學*, and Hou Jingyi's Jin-yu work. Focus on per-region tone-system documentation in Chao tone-letters, 入聲 fate by sub-group, and the Dungan (東干語) diaspora register in Cyrillic. Consulted also: the 漢語方言地理學 tradition of Zihui surveys and Hashimoto Mantarō's comparative work on SW Mandarin tone systems.
+
+---
+
+## Issues found
+
+### 1. 一 (yī) — `zh_tj` — Tone ⁵⁵ copied from Standard Mandarin; should be Tianjin T4 ⁵³
+
+- Current surface: `"zh_tj": "yi⁵⁵"`  
+- Current IPA: `"zh_tj": "i⁵⁵"`
+- Expected surface: `yi⁵³`; IPA: `i⁵³`
+- Why: Tianjin's T1 (陰平) is **²¹** (low-falling), not ⁵⁵. Every other yin-ping word in this data set (san, tian, mao, dong, yang, xi, zhong, xin…) correctly shows ²¹. For 一, a 入聲 character that entered 陰平 in northern Mandarin, the relevant Tianjin reflex is T4 (去聲 ⁵³), not the Beijing high-level ⁵⁵. The ⁵⁵ form appears to be a direct copy of the Beijing/Putonghua realization accidentally placed in the Tianjin row. The metadata description itself states: "北京の第1声（高平）は天津では低降調で実現され" — contradicting the ⁵⁵ entry.
+
+---
+
+### 2. 日 (rì) — `zh_sc` — Entering-tone marker ⁵ used for SW Mandarin that lost 入聲
+
+- Current surface: `"zh_sc": "ze⁵"`  
+- Current IPA: `"zh_sc": "zəʔ⁵"`
+- Expected: `ze²¹³` / IPA `zəʔ` replaced by `zə²¹³`
+- Why: Sichuan Mandarin (西南官話) fully merged 入聲 into 陽平 (T2 = ²¹³). The sibling sub-dialects confirm: Chengdu `zh_cd` = `zi²¹³`, Chongqing `zh_cq` = `zi²¹³`, Kunming `zh_km` = `ri²¹³`. The SC form `ze⁵` carries a numeric superscript ⁵ resembling an entering-tone level, and the IPA `zəʔ⁵` retains a glottal stop — both inadmissible in SW Mandarin phonology. The correct entry should show 陽平 tone with no glottal stop.
+
+---
+
+### 3. 月 (yuè) — `zh_sc` — Same entering-tone error as 日
+
+- Current surface: `"zh_sc": "yue⁵"`  
+- Current IPA: `"zh_sc": "yɪʔ⁵"`
+- Expected: `yue²¹³` / IPA `ye²¹³`
+- Why: 月 (Middle Chinese 入聲 月韻) should merge into 陽平 in Sichuan Mandarin exactly as in Chengdu (`yue²¹³`) and Chongqing (`yue²¹³`). The glottal stop in the IPA and the ⁵ superscript on the surface form are phonologically impossible for SW Mandarin. Kunming likewise shows `yue²¹³`.
+
+---
+
+### 4. 東 (dōng) — `zh_sc`, `zh_cd`, `zh_cq` — Anomalous tone ⁵ in three SW Mandarin sub-rows
+
+- Current: `"zh_sc": "dong⁵"`, `"zh_cd": "dong⁵"`, `"zh_cq": "dong⁵"`  
+- IPA: `"zh_sc": "toŋ˥"`, `"zh_cd": "toŋ˥"`, `"zh_cq": "toŋ˥"`
+- Expected: SC `dong⁵⁵`, CD `dong⁵⁵`, CQ `dong⁵⁵` or equivalent yin-ping value
+- Why: 東 is 陰平 (T1 in standard Mandarin). Sichuan Mandarin T1 (陰平) is typically ⁵⁵ (high-level) or ⁴⁴. The lone digit ⁵ is not a recognized Chao-tone contour in the data set's notation (compare every other SC 陰平 word: san⁵⁵, tian⁵⁵, mao⁵⁵, yang⁵⁵, etc.). The IPA ˥ represents only the onset of a level 55 tone and needs a second pitch mark. This same ⁵/˥ shorthand appears for 西 (see next issue).
+
+---
+
+### 5. 西 (xī) — `zh_sc`, `zh_cd`, `zh_cq` — Same bare ⁵/˥ tone anomaly as 東
+
+- Current: `"zh_sc": "xi⁵"`, `"zh_cd": "xi⁵"`, `"zh_cq": "xi⁵"`  
+- IPA: `"zh_sc": "ɕi˥"`, `"zh_cd": "ɕi˥"`, `"zh_cq": "ɕi˥"`
+- Expected: SC `xi⁵⁵`, CD `xi⁵⁵`, CQ `xi⁵⁵`
+- Why: 西 (陰平, MC 入聲 昔韻 — although in SW Mandarin 入聲 陰性 typically merges into 陰平 T1, preserving the 陰平 value) should show ⁵⁵ or ⁴⁴ to match the SW T1 contour. The bare ⁵ and ˥ are incomplete and inconsistent with the tone notation used for all other SC T1 entries.
+
+---
+
+### 6. 血 (xuè) — `zh_xa` — Entering tone coded as ⁵⁵ instead of expected ⁴⁴ (Xi'an ruSheng → yinping)
+
+- Current: `"zh_xa": "xueq⁵⁵"` / IPA `"zh_xa": "ɕyə˥˥"`
+- Expected: `xueq⁴⁴` / IPA `ɕyə⁴⁴`
+- Why: Xi'an (Central Plains 關中) merges 入聲 into 陰平 for 陰入 characters and into 陽平 for some 陽入. The dominant Central Plains pattern places former 陰入 into T4 (去聲, which in Xi'an is ⁴⁴). Consistent Xi'an 陰入 items in this dataset: 一 yiq²¹, 七 qiq²¹, 八 baq²¹, 日 riq⁴⁴, 月 yueq⁴⁴, 木 muq⁴⁴, 六 liuq⁴⁴, 立 liq⁴⁴. These go to either ²¹ or ⁴⁴. Blood (血 MC 入聲陰) should follow the same pattern (⁴⁴ or ²¹), not ⁵⁵ which is a tone value absent from Xi'an's four-tone inventory.
+
+---
+
+### 7. 血 (xuè) — `zh_km` — Tone written as bare digit `⁴` instead of contour notation
+
+- Current: `"zh_km": "xue⁴"` / IPA `"zh_km": "ɕyɛʔ˦"`
+- Expected: `xue²¹³` / IPA `ɕyɛ²¹³` (no glottal stop)
+- Why: Every other Kunming entry uses multi-digit tone contour notation (⁴⁴, ³¹, ⁵³, ²¹², ²¹³). A bare superscript `⁴` is a different (numeric tone-category) convention not used elsewhere in this dataset. More critically, the IPA retains a glottal stop `ʔ˦` — contradicting SW Mandarin's loss of 入聲 checked syllables. 血 (陰入) should fall into Kunming's 陽平 = ²¹³, matching 日 `ri²¹³` and 月 `yue²¹³`.
+
+---
+
+### 8. 牛 (niú) — `zh_km` — Wrong tone: ³⁵ instead of Kunming yang-ping ³¹
+
+- Current: `"zh_km": "niu³⁵"` / IPA `"zh_km": "niou³⁵"`
+- Expected: `niu³¹` / IPA `niou³¹`
+- Why: Kunming's 陽平 (T2) is **³¹** (mid-falling). 牛 is undisputedly 陽平 in all Mandarin varieties (MC 陽平 牛韻). Examining the data: Kunming 陽平 words are uniformly ³¹ — qi 七 is ³¹ (陰平/陰入 for 七, but still), ba 八 is ³¹, ren 人 is ³¹, lai 来 is ³¹, ren/xing are ³¹. The ³⁵ contour does not appear in Kunming's described tone inventory. This looks like a data entry error (³¹ → ³⁵).
+
+---
+
+### 9. 羊 (yáng) — `zh_km` — Same wrong ³⁵ for Kunming yang-ping
+
+- Current: `"zh_km": "yang³⁵"` / IPA `"zh_km": "iaŋ³⁵"`
+- Expected: `yang³¹` / IPA `iaŋ³¹`
+- Why: 羊 (陽平) should match Kunming T2 = ³¹. The ³⁵ is identical to the error on 牛. In Xi'an (另一个中原方言) yang is ²⁴, and in Dongbei yang is ³⁵ — the ³⁵ value matches Dongbei's 陽平, not Kunming's.
+
+---
+
+### 10. 目 (mù) — `zh_km` — Kunming 目 shows T3 ⁵³; expected yang-ping ²¹³ (ruSheng merge)
+
+- Current: `"zh_km": "mu⁵³"` (surface and IPA)
+- Expected: `mu²¹³`
+- Why: 目 is a 入聲 character (MC 屋韻). In SW Mandarin including Kunming, the 入聲 陽入 (voiced initial) merges into 陽平 = ²¹³. Compare: 木 `mu²¹³`, 日 `ri²¹³`, 月 `yue²¹³`. The ⁵³ contour is Kunming's T3 (上聲), which is phonologically wrong for a historically 入聲 character. This appears to be confusion with the surface tone of standard Mandarin 目 mù (T4/去聲) rather than the correct SW Mandarin outcome.
+
+---
+
+### 11. 立 (lì) — `zh_hf` — IPA missing glottal stop; tone superscript `⁴` instead of `⁵`
+
+- Current surface: `"zh_hf": "liq⁴"` / IPA: entry not available (absent)
+- Expected: `liq⁵` / IPA `liʔ⁵`
+- Why: All other Hefei 入聲 entries consistently use ⁵ as the entering-tone level (iq⁵, luq⁵, qiq⁵, baq⁵, shiq⁵, ziq⁵, yuq⁵, muq⁵, zuq⁵, xueq⁵, beiq⁵). A bare ⁴ is out of place — likely a typo (⁵ key adjacent to ⁴). Phonologically, Hefei 入聲 is a short high-level checked syllable typically transcribed as ⁵ (55 in Chao notation).
+
+---
+
+### 12. 木 (mù) — `zh_hf` — IPA missing glottal stop
+
+- Current IPA: `"zh_hf": "mu⁵"` (in the IPA block for 木)
+- Expected IPA: `muʔ⁵`
+- Why: The surface form correctly has `muq⁵` (q marks glottal stop per this dataset's convention). The IPA counterpart lacks the `ʔ`. Compare: for 目 in the same block, `zh_hf` = `məʔ⁵` correctly includes `ʔ`; for Nanjing `zh_nj` = `moʔ⁵` is correct. The HF IPA for 木 is inconsistent with both its own surface form and adjacent Jiang-Huai IPA entries.
+
+---
+
+### 13. 六 (liù) — `zh_jh` — Unusual tone ⁵¹ for Jiang-Huai entering tone; standard is ⁵
+
+- Current: `"zh_jh": "liuq⁵¹"` / IPA `"zh_jh": "liu˥˩"`
+- Expected: `liuq⁵` / IPA `liuʔ˥` (short checked syllable, not falling contour)
+- Why: The Jiang-Huai (江淮官話) 入聲 is a short checked syllable with a glottal stop. All other zh_jh entering-tone items in this dataset use ⁵ as the tone mark (qiq⁵, baq⁵, sheq⁵, niq⁵, yoq⁵, zuq⁵, liq⁵¹, etc.). A ⁵¹ falling contour is inappropriate for a checked syllable — it implies phonation length that contradicts the short 入聲 character. The IPA ˥˩ is a full falling tone, not a high-checked short one.
+
+---
+
+### 14. 北 (běi) — `zh_zz` — Zhengzhou 入聲 notation `beiq²` lacks standard tone contour
+
+- Current: `"zh_zz": "beiq²"` / IPA `"zh_zz": "pəʔ˨"`
+- Expected: Per Central Plains 中原官話 pattern, 北 (MC 入聲陰入) should merge into 陰平; Xi'an gives `bei⁵³` and Kaifeng `beiq⁵³`. The bare `²` digit is an anomalous tone marker and the IPA `pəʔ˨` with glottal stop contradicts Central Plains 入聲 loss. Expected: `bei²⁴` or `bei²¹` (no q), with no glottal stop in IPA.
+- Why: Central Plains Mandarin (中原官話) fully lost the 入聲 checked stop. There should be no glottal stop in the Zhengzhou form. The `q` suffix and `ʔ` in IPA represent a Jiang-Huai-type retention that does not apply here. Compare: Kaifeng `beiq⁵³` also uses q, suggesting this may be a systematic mislabeling of Central Plains 入聲 characters as if they retained the checked coda.
+
+---
+
+### 15. 肉 (ròu) — `zh_kf` — Kaifeng shows entering tone `rouq³¹²`; 肉 is not entering-tone in standard phonology
+
+- Current: `"zh_kf": "rouq³¹²"` / IPA `"zh_kf": "ʐəu˧˩˨"`
+- Note: 肉 (MC 入聲 屋韻, OC *nuk) IS a 入聲 character, but in Central Plains Mandarin 入聲 is fully merged. The `q` suffix implies a retained checked coda — phonologically impossible in Kaifeng/Zhengzhou. While the OC/MC reconstruction is correct (entering tone), the synchronic Kaifeng form should show no glottal stop.
+- Expected: `rou³¹²` (no q), IPA `ʐəu˧˩˨`
+- Why: Central Plains 官話 consistently drops all 入聲 codas. The q-suffix in Kaifeng is an inconsistency when compared with non-entering forms like 水 `shui⁵³`, 木 `muq²⁴` (this latter also questionable, see systematic note below).
+
+---
+
+### 16. Systematic: Central Plains (zh_kf, zh_zz, zh_xa) 入聲 `q`-suffix usage requires review
+
+- Current: Multiple entries in `zh_kf`, `zh_xa`, `zh_zz` use the `q` glottal-stop suffix (e.g., yiq²⁴, liuq⁴⁴, qiq²¹, baq²¹, riq⁴⁴, muq⁴⁴, shiq²⁴, rouq³¹², beiq⁵³)
+- The `q` suffix is appropriate for **Jiang-Huai** dialects (zh_hf, zh_nj, zh_jh) where 入聲 is preserved as a glottal stop. For **Central Plains** dialects, it is a conventionally useful diacritic to mark etymological 入聲 membership but should not imply a phonetic glottal coda.
+- Expected: If `q` is used as an etymological marker (not phonetic), the IPA transcriptions should NOT include `ʔ`. Currently several Central Plains IPA entries omit `ʔ` while the surface has `q`, which is the intended convention — but this is inconsistently applied (e.g., zh_xa 血 xueq⁵⁵ IPA has ɕyə˥˥ without ʔ, which is correct; but zh_zz beiq² IPA has pəʔ˨ WITH ʔ, which is wrong for Central Plains).
+
+---
+
+### 17. 中:1 (zhōng) — `zh_xa` — Xi'an shows `feng²¹` with labio-dental onset `pf-`; tone category should be T1 ²¹ ✓ but phoneme annotation needs context
+
+- Current: surface `"zh_xa": "feng²¹"` / IPA `"zh_xa": "pfəŋ²¹"`
+- Note: The Xi'an form of 中 shows a labio-dental affricate onset `pf-` (IPA `pfəŋ²¹`). This is a known but relatively uncommon feature of Guanzhong/Xi'an dialect where certain syllables with historical bilabial+medial-u have developed a `pf-` allophone. This is attested in some descriptions of Xi'an phonology. The tone ²¹ (T1 陰平 in Xi'an) is correct.
+- However, this feature is atypical and should be flagged: most systematic descriptions of Xi'an phonology give `zong` (without pf-) for 中. If this pf- form is attested from a specific survey (e.g., the 西安方言詞典), it should be documented in sources. The tone itself (²¹) is appropriate for T1.
+
+---
+
+### 18. 人 (rén) — `zh_nj` — Nanjing `len²⁴` with initial `l-`; expected `ren` or `yen` per Nanjing phonology
+
+- Current: `"zh_nj": "len²⁴"` / IPA `"zh_nj": "lən˨˦"`
+- Expected: `ren²⁴` / IPA `ʐən²⁴` or `ʐən˨˦`
+- Why: Nanjing Mandarin (Jiang-Huai 下江) preserves retroflex initials (zh-/ch-/sh-/r-) more robustly than SW Mandarin. The `r-` (or `ʐ-`) initial for 人 is standard in Nanjing. A `l-` initial would be characteristic of Wuhan or SW Mandarin's n/l merger. Compare: zh_wh `nen²¹³` uses `n-` (typical SW Mandarin n/l merger), but Nanjing should keep `r-`. The `len` form may conflate the Nanjing register with SW Mandarin phonology.
+
+---
+
+### 19. `cjy` (Jin / 晉語 Taiyuan) — Classified as Mandarin-adjacent but treated inconsistently
+
+- Observation: The metadata correctly identifies cjy as Jin Sinitic with a preserved 入聲 glottal stop. The data entries show `ʔ`-coda forms (ieh², lueh², qhieh², pah², xyueh², mueh⁵, etc.) appropriate to Jin.
+- Issue: Several cjy entries use tone ⁵ (e.g., `cjy` 日 `zeh⁵`, 月 `yueh⁵`, 目 `meh⁵`, 木 `mueh⁵`, 足 `zueh²`) with the entering-tone ʔ preserved — this is correct for Jin. However, the reviewer notes that `cjy` tone 5 (˥ in IPA = `˥`) and tone 2 (˨) form a two-way entering-tone split (陰入/陽入). This split is correctly maintained in the dataset (陰入 = ˥, 陽入 = ˨), which is commendable.
+- Minor: `cjy` 食 `seh⁵` / IPA `səʔ˥` — 食 (MC 入聲 陽入 職韻, voiced initial) should be 陽入 = ˨ rather than ˥ (陰入). Voiced-initial entering-tone characters in Jin go to 陽入. Expected: `seh²` / IPA `səʔ˨`.
+
+---
+
+### 20. `dng` (Dungan) — `nan²` for 南 (T2 = rising ˨˦ ✓) but `byi¹` for 北 conflicts with IPA `pei˨˦`
+
+- Current surface: `"dng": "byi¹"` / IPA: `"dng": "pei˨˦"`
+- Note: The surface form `byi¹` uses tone number ¹ (= T1 high ˦), while the IPA `pei˨˦` is T2 (rising). This is an internal inconsistency: tone number ¹ = ˦ but IPA = ˨˦ (T2).
+- Expected: If 北 in Dungan is T2 (which would reflect its MC 入聲陰入 → NW Mandarin → Dungan T-distribution), the surface should be `bei²` and IPA `pei˨˦`. The native Cyrillic `бый` gives no tone diacritic so cannot resolve this, but the number/IPA mismatch must be corrected.
+
+---
+
+### 21. `dng` (Dungan) — `dis³` for 地; the `-s` suffix is unexplained
+
+- Current: surface `"dng": "dis³"` / IPA `"dng": "ti˥˩"` (T3 = ˥˩)
+- Why: No other Dungan surface form in this dataset uses a trailing `-s` consonant. 地 in standard NW Mandarin (ancestor of Dungan) has no coda. The `-s` in `dis³` appears to be an error or artifact (possibly confusion with a 子 (zi) suffix or a romanization typo). The IPA `ti˥˩` has no coda. The surface should be `di³` (or `dis³` if the -s is historically motivated by a documented Dungan form — but this needs sourcing).
+
+---
+
+### 22. 頭 (tóu) — `zh_tj` — `tour⁴⁵` shows erhua (兒化); confirm this is expected
+
+- Current: `"zh_tj": "tour⁴⁵"` (surface shows erhua -r suffix)
+- Note: Tianjin is documented as a heavy erhua dialect along with Dongbei, so the erhua form for 頭兒 is consistent. However, this is the ONLY entry in the dataset with an explicit erhua -r suffix; all other zh_tj entries lack it. Either erhua should be consistently marked across all applicable zh_tj entries (頭, 耳, etc.), or the -r in 頭 should be removed to maintain internal consistency with the other Tianjin entries which are all bare forms without erhua notation.
+
+---
+
+### 23. `zh_sc` 坐 (zuò) — Tone ¹³ (rising); expected yang-ping-adjacent but unusual
+
+- Current: `"zh_sc": "zuo¹³"` / IPA `"zh_sc": "tso¹³"`
+- Note: Sichuan Mandarin T4 (去聲) is typically ²¹³ and T2 (陽平) is ²¹³. A tone of ¹³ (low-rising) does not appear in any other SC entry in this dataset. Chengdu `zuo¹³` and Xi'an `zuo⁴⁴` both give unexpected values. The standard description of Chengdu 坐 is falling (去聲), not rising. The ¹³ tone for Sichuan is either a marginal variant of T2 (²¹³ with the top pitch dropping out) or an error. Compare: Lanzhou `zuo¹³` also shows ¹³ — this suggests the ¹³ may be a Lanzhou tone accurately assigned but incorrectly also attached to SC.
+
+---
+
+### 24. `zh_db` (Dongbei) — T1 (陰平) represented as ⁵⁵ for most entries but shan 山 shows ⁴⁴
+
+- Current: T1 entries: yi⁵⁵, san⁵⁵, tian⁵⁵, mao⁵⁵, xin⁵⁵, zhong⁵⁵, yang⁵⁵ — all ⁵⁵  
+- But: `"zh_db": "shan⁴⁴"` and `"zh_db": "san⁴⁴"` (in another 山 entry block)
+- Note: Dongbei Mandarin T1 (陰平) is commonly described as ⁴⁴ (mid-high level) in sources like 東北方言詞典, not ⁵⁵ (which is Beijing's T1). If ⁵⁵ is used consistently throughout the db entries, this is an overstatement of T1 height for Dongbei. The shan⁴⁴ / san⁴⁴ minority entries may be correct. The metadata note that "T1 is typically realized lower than in Beijing" is contradicted by the ⁵⁵ notation on the majority of entries. This requires systematic review: if the intended contour is ⁴⁴, all DB T1 entries using ⁵⁵ are mislabeled.
+
+---
+
+### Summary table of highest-priority fixes
+
+| Priority | Character | Row | Issue | Fix |
+|----------|-----------|-----|-------|-----|
+| P1 | 一 | zh_tj | yi⁵⁵ should be yi⁵³ (Tianjin T4) | `yi⁵³` / IPA `i⁵³` |
+| P1 | 日 | zh_sc | ze⁵/zəʔ⁵ — SW Mandarin has no 入聲 | `ze²¹³` / IPA `zə²¹³` |
+| P1 | 月 | zh_sc | yue⁵/yɪʔ⁵ — same SW 入聲 error | `yue²¹³` / IPA `ye²¹³` |
+| P1 | 東,西 | zh_sc/cd/cq | bare ⁵/˥ tone — incomplete contour | `⁵⁵` throughout |
+| P1 | 血 | zh_km | xue⁴ — wrong notation format + IPA ʔ | `xue²¹³` / IPA `ɕyɛ²¹³` |
+| P1 | 血 | zh_xa | xueq⁵⁵ — 55 absent from Xi'an inventory | `xueq⁴⁴` / IPA `ɕyə⁴⁴` |
+| P2 | 牛 | zh_km | niu³⁵ → niu³¹ (KM yang-ping) | `niu³¹` |
+| P2 | 羊 | zh_km | yang³⁵ → yang³¹ | `yang³¹` |
+| P2 | 目 | zh_km | mu⁵³ → mu²¹³ (KM 入聲→yangping) | `mu²¹³` |
+| P2 | 木 | zh_hf | IPA mu⁵ → muʔ⁵ (missing ʔ) | `muʔ⁵` |
+| P2 | 立 | zh_hf | liq⁴ → liq⁵ (tone digit typo) | `liq⁵` |
+| P2 | 北 | dng | surface ¹ / IPA ˨˦ mismatch | align to single tone |
+| P2 | 地 | dng | dis³ unexplained -s coda | `di³` |
+| P3 | 六 | zh_jh | liuq⁵¹ — falling contour on 入聲 | `liuq⁵` |
+| P3 | 北 | zh_zz | beiq² with IPA ʔ — Central Plains lost 入聲 | `bei²¹` / no ʔ |
+| P3 | 食 | cjy | seh⁵ should be seh² (陽入) | `seh²` / IPA `səʔ˨` |
+| P3 | 人 | zh_nj | len²⁴ with l- — Nanjing keeps r- | `ren²⁴` / IPA `ʐən˨˦` |
+| P4 | DB T1 | zh_db | ⁵⁵ vs ⁴⁴ throughout — systematic review | confirm against 東北方言詞典 |
+| P4 | 頭 | zh_tj | tour⁴⁵ erhua — apply consistently or remove | standardize |
+| P4 | 坐 | zh_sc | zuo¹³ — low-rising absent from SC tone inventory | investigate |
