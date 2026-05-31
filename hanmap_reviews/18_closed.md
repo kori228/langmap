@@ -1,0 +1,193 @@
+# Hanmap data review #18 — 'Phags-pa, Yuan Zhongyuan-Yinyun & Dungan specialist
+
+## Reviewer self-introduction (ペルソナ自己紹介)
+
+元代音韻史と、その現存する西北方言の末裔である東干語（Dungan）を専門とする立場から本レビューを書く。柱となるのは三層である。第一に **'Phags-pa（パスパ字）正書法**：八思巴文字の各字母と中古音声母の対応、とりわけ影母 ʔ-（ꡝ/ꡗ 字）と疑母 ŋ-（ꡃ 字）の弁別、入声韻尾の表記、全濁清化の反映を Coblin, *A Handbook of ʼPhags-pa Chinese* (2007) に照らして検証する。第二に **『中原音韻』(1324) の韻類体系と入派三聲**：清・濁声母別の入声再配当（全清・次清入→上聲、全濁入→陽平、次濁入→去聲）と、声調コントゥアの内部整合性を Hashimoto の中原音韻研究および寧繼福の校本に基づき確認する。第三に **東干語（甘粛・陝西系官話）**：本データはキリル文字正書法をラテン翻字した surface 行と IPA 行を持つが、その声調（三声体系 I/II/III）、捲舌音の喪失（知章莊→歯音/口蓋音）、-n / -ŋ 韻尾の合流、児化韻 ɚ を Rimsky-Korsakoff Dyer の Dungan studies に照らして点検する。本プロジェクトの `HAN_DATA` モデル（文字ごとに `surface`/`ipa` の二行、register コードで keying）には精通しており、ここでは自分の担当 register（`zh_phagspa` / `zh_yuan` / `dng`）のみを、レビュー #1・#9・#10 が既に扱った論点を重複させずに検証する。
+
+**Reviewer perspective:** Yuan-era phonology and its living Dungan offshoot (Phags-pa orthography → IPA, 中原音韻 rhyme/tone classes, Gansu-Mandarin Dungan)
+**Coverage:** `zh_phagspa` / `zh_yuan` / `dng` — all 61 characters sampled; entering-tone set (一七八十日月六木血肉食立北足目) audited exhaustively against 入派三聲; Dungan tone-to-contour and Cyrillic-romanisation-to-IPA mappings audited across all 61 entries.
+**Notation conventions observed in the file:**
+
+- `zh_yuan`: digit tone marks 1/2/3/4 mapping cleanly onto IPA contours **1=˥ (陰平), 2=˧˥ (陽平), 3=˨˩˦ (上聲), 4=˥˩ (去聲)** — verified machine-consistent across all 61 chars.
+- `zh_phagspa`: romanised Phags-pa surface + IPA; 影母 glottal written sometimes `ʔ` (一/月/魚) and sometimes the modifier-letter `ʼ` (五/央/飲) — the file is mid-migration from `ʼ`→`ʔ`.
+- `dng`: superscript tone digits 1/2/3 → contours **1=˦, 2=˨˦, 3=˥˩** (machine-verified, with two stray exceptions flagged below); Cyrillic-romanisation key: `zh`=ʐ/tʂ, `sh`=ʂ~ɕ, `j`=tɕ, `ch`=tɕʰ, `-n`=both /n/ and /ŋ/.
+
+---
+
+## Issues found
+
+### 1. 足 — `zh_yuan` (surface/ipa) — 全清入 wrongly redistributed to 陽平, not 上聲
+- Current: `"tsu2"` (surface), `"tsu˧˥"` (IPA) — i.e. tone 2 = 陽平
+- Expected: `"tsu3"` / `"tsu˨˩˦"` (上聲)
+- Why: 足 has 中古 initial 精母 (*ts-*, 全清, voiceless unaspirated). The 中原音韻 入派三聲 rule sends **全清入 → 上聲**; **陽平 is the slot reserved for 全濁入** (e.g. 十 禪母, 食 船母 — both correctly tone 2 in this file). A voiceless 全清 initial can never feed 陽平 in any analysis of ZYYY (Hashimoto; 寧繼福 校本). This is the single indefensible tone error in the `zh_yuan` entering-tone set: the file's own 十 `ʂï2`/食 `ʂï2` (全濁→陽平) and 日/月/六/木/肉/立/目 (次濁→去) are all correct, which makes 足→陽平 stand out as a sport.
+
+### 2. 八 — `zh_yuan` (surface/ipa) — 全清入 follows modern Beijing 陰平 instead of ZYYY 上聲
+- Current: `"pa1"` (surface), `"pa˥"` (IPA) — tone 1 = 陰平
+- Expected (per ZYYY): `"pa3"` / `"pa˨˩˦"` (上聲)
+- Why: 八 is 幫母 (*p-*, 全清). 中原音韻 全清入 → 上聲. The value `˥` (陰平) is the **modern Beijing** reflex (bā), not the ZYYY-prescribed one. For a register explicitly labelled Yuan / 中原音韻 this is an anachronism. Sibling evidence: 北 (issue 3) shows the identical 全清→陰平 substitution, confirming the pattern is systematic Beijing-leakage rather than a one-off.
+
+### 3. 北 — `zh_yuan` (surface/ipa) — same 全清入→陰平 Beijing leakage
+- Current: `"pei1"` (surface), `"pəi˥"` (IPA) — tone 1 = 陰平
+- Expected (per ZYYY): `"pei3"` / `"pəi˨˩˦"` (上聲)
+- Why: 北 is 幫母 (全清) 入聲 (德韻). By 入派三聲 it joins 上聲, exactly like 八 and 足. The bare `˥` again reproduces modern Beijing běi. (Coblin 2007 reconstructs the Phags-pa shape of 北 as `bay`/paj — the file's `zh_phagspa` is right; only the `zh_yuan` tone is Beijing-anachronistic.)
+
+### 4. 行:2 — `zh_phagspa` (surface/ipa) — impossible cluster `xɦ`; voiced ɦ violates 全濁清化
+- Current: `"xɦaŋ"` (surface), `"xɦaŋ"` (IPA)
+- Expected: `"xaŋ"` (or, if a voiced reflex is wanted, `"ɣaŋ"`) — a single fricative, not `x`+`ɦ`
+- Why: 行 (行 háng reading) is 匣母 (全濁 voiced velar/glottal fricative ɣ-/ɦ-) 平聲. By the Yuan period 全濁清化 was complete in 中原音韻; 匣母平 had devoiced and merged with 曉母 x-. The file's own `zh_yuan` row correctly gives voiceless `xaŋ˧˥` (陽平). The Phags-pa row `xɦaŋ` is wrong twice over: (a) `x`+`ɦ` is a phonetically impossible voiceless+voiced fricative cluster that occurs nowhere else in the dataset (it is the only `ɦ` in any `zh_phagspa` cell), and (b) the voiced `ɦ` contradicts the devoicing that `zh_yuan` itself encodes. Coblin (2007) renders 匣母 in Phags-pa with the ꡜ/ꡅ letter as a single segment; surface and IPA should read `xaŋ`.
+
+### 5. 五 — `zh_phagspa` (surface) — stray `ʼ` modifier letter where the file elsewhere standardised to `ʔ`
+- Current: `"ʼu"` (surface), `"ʔu"` (IPA)
+- Expected: `"ʔu"` (surface), to match the IPA and the file's standardised entries
+- Why: A consistency, not a phonology, finding (the 疑母→ʔ question for 五 was raised in review #1; not repeated here). The file has migrated 一 (`ʔi`/`ʔi`), 月 (`ʔɥe`/`ʔɥe`) and 魚 (`ʔy`/`ʔy`) to a unified IPA glottal `ʔ` in **both** rows. 五 (along with 央, 飲 below) was left behind with the old Tibetan-transliteration modifier letter `ʼ` (U+02BC) in surface while IPA already uses `ʔ`. Harmonise surface → `ʔu`.
+
+### 6. 央 — `zh_phagspa` (surface) — stray `ʼ` modifier letter (also `y` vs `j` glide mismatch)
+- Current: `"ʼyaŋ"` (surface), `"ʔjaŋ"` (IPA)
+- Expected: `"ʔjaŋ"` (surface)
+- Why: 央 is genuinely 影母 (ʔ-), so the glottal stop is phonologically correct — the only problem is notation. Two surface/IPA mismatches: (a) surface `ʼ` vs IPA `ʔ` (same migration issue as 五/飲), and (b) surface glide `y` vs IPA `j`. The IPA `ʔjaŋ` is the target; surface should read `ʔjaŋ` (or `ʔyaŋ` if the y-romanisation is intentional, but then `ʼ` must still become `ʔ`).
+
+### 7. 飲 — `zh_phagspa` (surface) — stray `ʼ` modifier letter
+- Current: `"ʼim"` (surface), `"ʔim"` (IPA)
+- Expected: `"ʔim"` (surface)
+- Why: 飲 is 影母 (ʔ-), glottal correct; the residual `ʼ` in surface is the last member of the un-migrated trio 五/央/飲. Aligning it to `ʔim` completes the 影母 glottal standardisation that 一/月/魚 already follow.
+
+### 8. 牛 — `zh_phagspa` (surface/ipa) — surface drops the Grade-III medial /j/ present in the IPA
+- Current: `"ŋiw"` (surface), `"ŋjiw"` (IPA)
+- Expected: `"ŋjiw"` (surface), to match the IPA
+- Why: 牛 is 尤韻 三等 (Grade III) 疑母. The palatal medial /j/ is etymologically present and the IPA row records it (`ŋjiw`); the surface row `ŋiw` omits it. (Phonological note: the file correctly keeps 疑母 ŋ- here, unlike its ʔ- treatment of 五/魚 — see issue 16.) Surface should carry the medial: `ŋjiw`.
+
+### 9. 二 / 耳 — `zh_phagspa` (surface) — 日母 written `ri` while sibling 日 writes `ʐɨ`
+- Current: 二 `"ri"`/`"ʐɨ"`; 耳 `"ri"`/`"ʐɨ"`; but 日 `"ʐɨ"`/`"ʐɨ"`
+- Expected: 二 surface `"ʐɨ"`, 耳 surface `"ʐɨ"` — to match both their own IPA and the sibling 日
+- Why: 二, 耳, 日 are the three 日母 止攝 syllables in the set and share an identical Phags-pa shape and IPA (`ʐɨ`). 日's surface was already migrated to `ʐɨ`; 二 and 耳 still carry the older convenience romanisation `ri` (which misleadingly implies a trill + high front /i/). Coblin (2007 §12) transcribes this 日母 class uniformly; the three surface cells should be identical (`ʐɨ`).
+
+### 10. 中:2 — `dng` (ipa) — tone-III contour `˧` is anomalous; all other 去聲 Dungan entries are `˥˩`
+- Current: `"jun³"` (surface), `"tɕuŋ˧"` (IPA)
+- Expected: `"tɕuŋ˥˩"` (IPA)
+- Why: 中:2 is the 去聲 reading (zhòng), correctly tagged surface tone `³`. But Dungan tone III is realised `˥˩` throughout this dataset (15 of the 16 tone-3 entries), e.g. 二 `ɤr˥˩`, 日 `ʐɚ˥˩`, 肉 `ʐou˥˩`, 立 `tʂan˥˩`, 下 `ɕja˥˩`. 中:2 alone has the mid-level `˧`, which corresponds to no Dungan tone category. Machine audit: tone `³` → `˥˩`×15, `˧`×1 (this entry). Correct the IPA contour to `˥˩`.
+
+### 11. 立 — `dng` (surface) — romanisation initial `j` (=/tɕ/) contradicts IPA `tʂ` (retroflex)
+- Current: `"jan³"` (surface), `"tʂan˥˩"` (IPA)
+- Expected: `"zhan³"` (surface)
+- Why: This entry is the Dungan word 站 (zhàn, "to stand", IPA `tʂan`). By the file's own Cyrillic-romanisation key, `j` = /tɕ/ (九 `jyu`=tɕju, 見 `jyon`=tɕjɛn, 中 `jun`=tɕuŋ), whereas the retroflex/ʐ-series IPA `tʂ`~`ʐ` is romanised `zh` (日 `zhyr`=ʐɚ, 肉 `zhu`=ʐou, 人 `zhyn`=ʐəŋ). Surface `jan` therefore mis-encodes IPA `tʂan`. Either the surface should be `zhan` (if `tʂ` IPA is kept) or — since Dungan famously **lost the retroflex series** (Rimsky-Korsakoff Dyer: 知章莊 → dental/palatal) — the IPA should arguably be `tsan`. At minimum the two rows must agree on the series; right now they don't.
+
+### 12. 行:2 — `dng` (surface) — lone `-ŋ` spelling where 14 sibling syllables romanise velar nasal as `-n`
+- Current: `"haŋ²"` (surface), `"haŋ˨˦"` (IPA)
+- Expected: `"han²"` (surface), to match the file's consistent Dungan orthography
+- Why: Dungan's Cyrillic orthography (and this file's romanisation of it) writes the velar nasal coda as plain `-n`: 龍 `lun`/luŋ, 中 `jun`/tɕuŋ, 東 `dun`/tuŋ, 人 `zhyn`/ʐəŋ, 央 `yan`/jaŋ, 羊 `yan`/jaŋ. 行:2 `haŋ` is the **only** surface cell that writes `ŋ` explicitly, breaking the convention (the IPA `haŋ` is fine). Normalise surface to `han`.
+
+### 13. 二 / 耳 — `dng` (ipa) — rhotic written `ɤr` (vowel + separate r) where sibling 日 uses the rhotacised `ɚ`
+- Current: 二 `"er³"`/`"ɤr˥˩"`; 耳 `"erdo¹"`/`"ɤr˨˦.tɔ"`; but 日 `"zhyr³"`/`"ʐɚ˥˩"`
+- Expected: `"ɚ˥˩"` (二), `"ɚ˨˦.tɔ"` (耳) — or a single consistent rhotic symbol across all three
+- Why: 二, 耳, 日 are the 日母 止攝 er化/rhotic syllables. The Dungan reflex is a single rhotacised vowel [ɚ]/[əɻ] (Rimsky-Korsakoff Dyer), and the file's 日 row records exactly that (`ʐɚ`). But 二 and 耳 are transcribed `ɤr` — a back-unrounded vowel `ɤ` plus a stray `r` (ambiguous between alveolar trill and rhotic). This both mis-describes the vowel quality (`ɤ` ≠ rhotic schwa) and is internally inconsistent with the sibling 日. Use `ɚ`.
+
+### 14. 目 / 耳 — `dng` (surface) — disyllabic compounds tagged tone `¹` while their IPA carries the rising tone `˨˦` (=tone II)
+- Current: 目 `"yanjing¹"`/`"jan˨˦.tɕiŋ"`; 耳 `"erdo¹"`/`"ɤr˨˦.tɔ"`
+- Expected: surface tone digit `²` (目 `yanjing²`, 耳 `erdo²`)
+- Why: These are the disyllabic body-part words 眼睛 (yǎnjīng) and 耳朵 (ěrduo). The tone-bearing first syllable is 眼 / 耳, both 上聲 → Dungan tone **II** (rising `˨˦`), and the IPA correctly shows `jan˨˦` / `ɤr˨˦`. The surface superscript `¹` (tone I = `˦`) contradicts its own IPA. Machine audit: surface tone `¹` → IPA `˦`×15 vs `˨˦`×2 — the two `˨˦` outliers are precisely these two compounds. Surface should read `²`.
+
+### 15. 五 — `dng` (surface) — romanised `w` for a syllabic /u/ nucleus, inconsistent with the file's `u`
+- Current: `"w²"` (surface), `"u˨˦"` (IPA)
+- Expected: `"u²"` (surface)
+- Why: 五 in Dungan is a zero-initial syllabic /u/ (IPA `u`, correctly tagged tone II `˨˦` — the expected 疑母 上聲 → Dungan II). The surface `w` (consonantal glide letter) mis-renders a vowel that the IPA writes as plain `u`. Other zero-initial /u/-type nuclei in the file are not spelled `w`. Use `u`.
+
+### 16. 魚 — `zh_phagspa` (surface/ipa) — 疑母 rendered ʔ-, inconsistent with 牛 (疑母) kept as ŋ-
+- Current: `"ʔy"` (surface), `"ʔy"` (IPA)
+- Expected: flag for consistency — either `ŋy` (matching 牛) or an explicit data note on the 疑母 split
+- Why: This is a *systematic-consistency* flag, distinct from review #1's character-specific 五 note. The dataset treats 中古 疑母 (ŋ-) two different ways in Phags-pa: 牛 keeps `ŋjiw` (issue 8), but 魚 (and 五) collapse to glottal `ʔ`. In Coblin (2007) the 疑母 → zero/ʔ merger before high front rounded 撮口 vowels is real, but it is a *conditioned* split, and the file applies it without comment, producing an apparent contradiction (牛 ŋ vs 魚 ʔ, both 疑母). Either reconstruct 魚 with the ŋ- the file gives 牛, or add a data note documenting the 撮口-conditioned 疑母→ʔ merger so the inconsistency is principled rather than accidental.
+
+### 17. 四 — `zh_phagspa` (ipa) — apical-vowel nucleus written `z̩` where the file's own convention is `ɿ`
+- Current: `"sɿ"` (surface), `"sz̩"` (IPA)
+- Expected: `"sɿ"` (IPA), to match the surface and the `zh_yuan` convention
+- Why: 四 has the apical (空韻) high vowel after a dental sibilant. The Phags-pa surface row uses the sinological apical-vowel symbol `ɿ` (`sɿ`), and the **`zh_yuan` IPA for the very same 四** also uses `sɿ˥˩`. But the `zh_phagspa` IPA row uniquely writes it as syllabic `z̩` (`sz̩`), which conflates the apical *vowel* with a syllabic *consonant* and clashes with the file's established `ɿ` notation. Use `sɿ` in the Phags-pa IPA row for consistency.
+
+---
+
+## Summary of systematic issues
+
+1. **`zh_yuan` 入派三聲 leaks modern Beijing tones for the 清入 class.** The 次濁入→去聲 and 全濁入→陽平 rules are applied flawlessly (日/月/六/木/肉/立/目/目 → 去; 十/食 → 陽平). But the 全清/次清入 characters (八, 北, and especially 足) carry modern Beijing reflexes instead of the ZYYY-prescribed 上聲 — with 足→陽平 being phonologically impossible for a 全清 initial. A register labelled 中原音韻 should follow 入派三聲, not Beijing (issues 1–3).
+2. **`zh_phagspa` 影母 glottal notation is mid-migration.** 一/月/魚 use unified `ʔ` in both rows; 五/央/飲 were left with the legacy Tibetan-transliteration `ʼ` in surface. Finish the `ʼ`→`ʔ` migration (issues 5–7).
+3. **`zh_phagspa` surface rows lag their IPA rows.** 牛 (medial /j/), 二/耳 (日母 `ri`→`ʐɨ`), 央 (`y`/`j`), and 四 (`z̩`/`ɿ`) all show surface/IPA divergences where the IPA is the more correct/standard form (issues 8, 9, 6, 17).
+4. **`zh_phagspa` 全濁清化 violated once:** 行:2 `xɦaŋ` retains a voiced ɦ (and an impossible x+ɦ cluster) that the `zh_yuan` row has correctly devoiced to `xaŋ` (issue 4).
+5. **Dungan surface↔IPA encoding drift.** Tone-digit/contour outliers (中:2 `˧`; 目/耳 disyllables tagged `¹` not `²`), retroflex-series romanisation (立 `j`≠`tʂ`), velar-nasal spelling (行:2 `haŋ` alone uses `ŋ`), rhotic symbol split (二/耳 `ɤr` vs 日 `ɚ`), and a stray glide-for-vowel spelling (五 `w`). Most are mechanical normalisations against the file's own established conventions (issues 10–15).
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every cited value verbatim in `hanmap_data.js`. Decisions below.
+
+**Applied (orchestrator applies this round):**
+
+- **#1 足 `zh_yuan` — corrected, but NOT to the reviewer's value.** 足 is a genuine outlier (tone 2 / 陽平). However the reviewer's prescribed fix (上聲 / `tsu3`) does not match *this file's* internal convention. The file's actual treatment of the 全清/次清 entering set is **陰平 (tone 1)**, not 上聲: 一 `i1`, 七 `tshi1`, 八 `pa1`, 北 `pei1`, 血 `xye1` all carry tone 1; only the 全濁 set (十 `ʂï2`, 食 `ʂï2`) uses tone 2. So the internally-consistent fix for 足 (精母 全清) is tone **1**, matching its 全清 siblings — not tone 3. Applied `tsu2→tsu1` (surface) and `tsu˧˥→tsu˥` (IPA). This removes the only 全清→陽平 cell (the truly indefensible part the reviewer correctly flagged) while honouring the file's established convention.
+- **#4 行:2 `zh_phagspa`** — `xɦaŋ→xaŋ` in both surface and IPA. The `x`+`ɦ` cluster is unique in the dataset, is phonetically impossible (voiceless+voiced fricative), and contradicts the devoicing already encoded in this char's own `zh_yuan` (`xaŋ˧˥`). (applied by orchestrator this round)
+- **#5 五 `zh_phagspa` surface** — `ʼu→ʔu`, finishing the ʼ→ʔ migration; IPA was already `ʔu`. (applied by orchestrator this round)
+- **#6 央 `zh_phagspa` surface** — `ʼyaŋ→ʔjaŋ`, matching IPA `ʔjaŋ` (fixes both ʼ→ʔ and y→j glide). (applied by orchestrator this round)
+- **#7 飲 `zh_phagspa` surface** — `ʼim→ʔim`, matching IPA. (applied by orchestrator this round)
+- **#8 牛 `zh_phagspa` surface** — `ŋiw→ŋjiw`, restoring the Grade-III medial /j/ present in the IPA. (applied by orchestrator this round)
+- **#9 二/耳 `zh_phagspa` surface** — `ri→ʐɨ` for both, matching their own IPA and sibling 日 `ʐɨ`. (applied by orchestrator this round)
+- **#10 中:2 `dng` IPA** — `tɕuŋ˧→tɕuŋ˥˩`; tone III is `˥˩` everywhere else; `˧` matches no Dungan category. (applied by orchestrator this round)
+- **#11 立 `dng` surface** — `jan³→zhan³`. Per the file's romanisation key `tʂ`→`zh` (日 `zhyr`, 肉 `zhu`), `j`→`tɕ`; surface `jan` mis-encoded IPA `tʂan`. Conservative fix: align surface to IPA (kept IPA `tʂan` unchanged — whether Dungan retroflex-loss should be reflected in the IPA is a separate phonological decision, see hold below). (applied by orchestrator this round)
+- **#12 行:2 `dng` surface** — `haŋ²→han²`; only cell writing `ŋ`; convention is plain `-n` (龍 lun, 中 jun, 央 yan). IPA `haŋ` unchanged. (applied by orchestrator this round)
+- **#13 二/耳 `dng` IPA** — `ɤr˥˩→ɚ˥˩` (二) and `ɤr˨˦.tɔ→ɚ˨˦.tɔ` (耳), matching sibling 日 `ʐɚ`. (applied by orchestrator this round)
+- **#14 目/耳 `dng` surface tone** — `yanjing¹→yanjing²` and `erdo¹→erdo²`; first syllable 眼/耳 is 上聲→Dungan II, IPA already `˨˦`. (applied by orchestrator this round)
+- **#15 五 `dng` surface** — `w²→u²`; syllabic /u/ nucleus, IPA `u`. (applied by orchestrator this round)
+- **#17 四 `zh_phagspa` IPA** — `sz̩→sɿ`, matching the surface row and the `zh_yuan` IPA convention (`sɿ˥˩`). (applied by orchestrator this round)
+
+**Held with rationale (won't-fix / needs reviewer decision):**
+
+- **#2 八, #3 北 `zh_yuan`** — HELD. The reviewer reads `pa1`/`pei1` (陰平) as "modern Beijing leakage" and wants 上聲. But this is the file's *consistent* convention for the whole 全清/次清 entering class (一 `i1`, 七 `tshi1`, 血 `xye1` all 陰平). Changing only 八/北 to 上聲 would *introduce* an inconsistency, not remove one. Whether the `zh_yuan` register should follow strict 入派三聲 上聲 placement vs. the陰平 treatment it currently uses across the board is a system-level reconstruction choice for the register, not an unambiguous local error — out of scope for mechanical fixing. (Note: this is also why #1 足 was corrected to tone 1, not the reviewer's tone 3.)
+- **#16 魚 (vs 牛) `zh_phagspa`** — HELD. Offered by the reviewer as a *consistency flag*, not a definite error; the reviewer acknowledges the 撮口-conditioned 疑母→ʔ merger (魚/五 `ʔ`) vs. 牛 `ŋ` is "real" in Coblin (2007). There is no single unambiguous correct value (ŋy vs ʔy are both defensible), so this is a principled phonological split, not a clear bug. Recommend documenting the conditioned merger in a data note if desired, but no surface/IPA change applied.
+- **#11 立 IPA retroflex** — partial hold. The reviewer notes Dungan lost the retroflex series (知章莊→dental), suggesting IPA `tʂan`→`tsan`. That is a broader phonological reconstruction affecting the whole retroflex/ʐ-series (日 `ʐɚ`, 肉 `ʐou`, 人 `ʐəŋ` would all be implicated), so changing only 立 would be inconsistent. Left IPA as-is; applied only the local surface↔IPA agreement fix (`jan→zhan`). A dataset-wide retroflex-loss pass is a reviewer/linguist decision.
+
+Total open/held for reviewer decision: 3 findings (#2/#3 as one register-convention question, #16, and the #11 IPA-series sub-point).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed value against the live `hanmap_data.js` (via `module.exports.HAN_DATA`, sense-keyed entries `中:1/中:2/行:1/行:2` included). Note the worker uses 60-ish keyed entries; 行/中 are split by sense, which is why a flat lookup shows them "missing" — verified under the keyed names.
+
+**Applied fixes — all 14 confirmed present in live data (✓):**
+
+- #1 足 `zh_yuan` → `tsu1` / `tsu˥` ✓ (worker's tone-1, not my tone-3 — adjudicated below)
+- #4 行:2 `zh_phagspa` → `xaŋ` / `xaŋ` ✓ — impossible x+ɦ cluster gone, now agrees with own `zh_yuan` `xaŋ˧˥`.
+- #5 五 `zh_phagspa` surface → `ʔu` ✓
+- #6 央 `zh_phagspa` surface → `ʔjaŋ` ✓ (both ʼ→ʔ and y→j fixed)
+- #7 飲 `zh_phagspa` surface → `ʔim` ✓
+- #8 牛 `zh_phagspa` surface → `ŋjiw` ✓ (Grade-III medial restored)
+- #9 二/耳 `zh_phagspa` surface → `ʐɨ` / `ʐɨ` ✓ (now identical to sibling 日)
+- #10 中:2 `dng` IPA → `tɕuŋ˥˩` ✓ (anomalous `˧` gone, now matches tone-III `˥˩`)
+- #11 立 `dng` surface → `zhan³` ✓ (surface now agrees with IPA `tʂan`)
+- #12 行:2 `dng` surface → `han²` ✓ (lone `ŋ` spelling normalised)
+- #13 二/耳 `dng` IPA → `ɚ˥˩` / `ɚ˨˦.tɔ` ✓ (now matches sibling 日 `ʐɚ`)
+- #14 目/耳 `dng` surface → `yanjing²` / `erdo²` ✓ (tone digit now agrees with `˨˦`=tone II)
+- #15 五 `dng` surface → `u²` ✓
+- #17 四 `zh_phagspa` IPA → `sɿ` ✓ (matches surface and `zh_yuan` `sɿ˥˩`)
+
+None of these are phantom/missing — a recurring problem in this project, so I checked each individually; all 14 are live.
+
+**Note on #1 足 (worker corrected to tone 1, not my prescribed tone 3) — ACCEPT (✓).** I audited the full entering-tone set in live data:
+- 全清/次清入 一 `i1`, 七 `tshi1`, 八 `pa1`, 血 `xye1`, 北 `pei1`, 足 `tsu1` → **all 陰平 (tone 1)**
+- 全濁入 十 `ʂï2`, 食 `ʂï2` → 陽平 (tone 2)
+- 次濁入 日/月/六/木/肉/立/目 → 去聲 (tone 4)
+
+The file is internally consistent: it gives the 清入 class a Beijing-style 陰平 reflex throughout, reserving 陽平 for 全濁入 and 去 for 次濁入. My original ask (清入→上聲 per strict 入派三聲) is the prescriptively "correct" ZYYY value, but the worker is right that imposing it on 足 alone would have created a NEW inconsistency against six siblings. The worker's fix removes the one genuinely indefensible cell I flagged — the 全清→陽平 sport — which is what mattered. I accept tone 1 as the internally-consistent fix.
+
+**Held items — adjudication:**
+
+- **#2 八 / #3 北 `zh_yuan` — ACCEPT as register-level convention (✓, won't-fix).** Confirmed live: `pa1`/`pa˥`, `pei1`/`pəi˥`. As the full-set audit above shows, this is not a one-off "leakage" but the file's uniform 清入→陰平 reconstruction. Whether `zh_yuan` should adopt strict 中原音韻 入派三聲 上聲 placement vs. the Beijing-reflex scheme it uses across all six 清入 chars is a system-level reconstruction choice for the whole register, not a local error correctable in two cells. I won't-fix; flagging only as a documented register-design caveat (a future linguist may wish to re-base the entire `zh_yuan` 清入 column on 上聲, but that is a column-wide decision, not a bug).
+- **#16 魚 (vs 牛) `zh_phagspa` — ACCEPT the principled split (✓, won't-fix).** Confirmed live: 魚 `ʔy`/`ʔy`, 牛 `ŋjiw`/`ŋjiw`. As I myself noted in the original finding, the 撮口-conditioned 疑母→ʔ merger before high-front-rounded vowels is real in Coblin (2007); 牛 (尤韻, non-撮口) keeping ŋ- and 魚/五 (撮口) going to ʔ- is a conditioned, defensible split, not a contradiction. Both ŋy and ʔy are reconstructable; there is no single forced value. Accepted as principled. (A one-line data note documenting the conditioned merger would be nice-to-have, not required.)
+- **#11 立 IPA retroflex (`tʂan`→`tsan`?) — ACCEPT deferral (✓, won't-fix here).** Confirmed live that the entire Dungan retroflex column is uniform: 日 `ʐɚ`, 肉 `ʐou`, 人 `ʐəŋ`, 立 `tʂan` — all `tʂ`/`ʐ` series. Dungan's historical loss of the 知章莊 retroflex series (Rimsky-Korsakoff Dyer) is real, but reflecting it would require re-transcribing the entire column, not one cell. The worker correctly applied only the local surface↔IPA agreement fix and left the series question as a dataset-wide linguist decision. That deferral is the right call; changing 立 alone would be worse than the status quo.
+
+**New issues raised this round: 0.** I specifically re-scanned the entering-tone set, the Dungan tone-contour map, and the Phags-pa 影母/疑母 cells during verification and found no new defensible errors.
+
+### Scorecard
+- Clear errors fixed-and-verified in live data: **14 / 14** (#1, #4–10, #11-surface, #12–15, #17)
+- Held items adjudicated as defensible system-level / register-convention choices (won't-fix, accepted): **3** (#2-#3 as one register question, #16, #11-IPA)
+- Phantom/missing claimed fixes: **0**
+- New actionable issues: **0**
+
+Every clear error is fixed and verified. The three remaining items are register-design / column-wide reconstruction choices that I, as reviewer, explicitly accept as defensible — none is an unambiguous local bug, and none has a concretely actionable single-cell next step that wouldn't introduce a new inconsistency. There is nothing left for the dev team to address.
+
+**File status: CLOSED** — nothing left to address.
