@@ -344,9 +344,6 @@ const HAN_DATA = {
       "ko_hun": "한",
       "vi_nom": "𠬠",
       "dng": "йи",
-      "yue_us": "一",
-      "zh_us": "一",
-      "zh_th": "一",
       "ja_kgs": "イッ",
       "ja_okn": "イツ",
       "ja_thk": "イツ",
@@ -545,9 +542,6 @@ const HAN_DATA = {
       "ko_hun": "두",
       "vi_nom": "𠄩",
       "dng": "әрь",
-      "yue_us": "二",
-      "zh_us": "二",
-      "zh_th": "二",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
       "ja_thk": "ジ",
@@ -752,9 +746,6 @@ const HAN_DATA = {
       "ko_hun": "세",
       "vi_nom": "𠀧",
       "dng": "san",
-      "yue_us": "三",
-      "zh_us": "三",
-      "zh_th": "三",
       "ja_kgs": "サン",
       "ja_okn": "サン",
       "ja_thk": "サン",
@@ -985,11 +976,6 @@ const HAN_DATA = {
       "ko_hun": "네",
       "vi_nom": "𦊚",
       "dng": "сыь",
-      "yue_us": "四",
-      "zh_us": "四",
-      "nan_th": "四",
-      "zh_th": "四",
-      "nan_pera": "四",
       "ja_kgs": "シ",
       "ja_okn": "シ",
       "ja_thk": "シ",
@@ -1190,9 +1176,6 @@ const HAN_DATA = {
       "ko_hun": "다섯",
       "vi_nom": "𠄼",
       "dng": "ўъ",
-      "yue_us": "五",
-      "zh_us": "五",
-      "zh_th": "五",
       "ja_kgs": "ゴ",
       "ja_okn": "グ",
       "ja_thk": "ゴ",
@@ -1393,9 +1376,6 @@ const HAN_DATA = {
       "ko_hun": "여섯",
       "vi_nom": "𦒹",
       "dng": "люь",
-      "yue_us": "六",
-      "zh_us": "六",
-      "zh_th": "六",
       "ja_kgs": "リッ",
       "ja_okn": "リク",
       "ja_thk": "リク",
@@ -1622,11 +1602,6 @@ const HAN_DATA = {
       "ko_hun": "일곱",
       "vi_nom": "𦉱",
       "dng": "chi",
-      "yue_us": "七",
-      "zh_us": "七",
-      "nan_th": "七",
-      "zh_th": "七",
-      "nan_pera": "七",
       "ja_kgs": "シッ",
       "ja_okn": "シツ",
       "ja_thk": "シツ",
@@ -1827,9 +1802,6 @@ const HAN_DATA = {
       "ko_hun": "여덟",
       "vi_nom": "𠔭",
       "dng": "ба",
-      "yue_us": "八",
-      "zh_us": "八",
-      "zh_th": "八",
       "ja_kgs": "ハッ",
       "ja_okn": "ハツ",
       "ja_thk": "ハツ",
@@ -2026,9 +1998,6 @@ const HAN_DATA = {
       "ko_hun": "아홉",
       "vi_nom": "𠃩",
       "dng": "җюъ",
-      "yue_us": "九",
-      "zh_us": "九",
-      "zh_th": "九",
       "ja_kgs": "キュウ",
       "ja_okn": "キュウ",
       "ja_thk": "キュウ",
@@ -2225,9 +2194,6 @@ const HAN_DATA = {
       "ko_hun": "열",
       "vi_nom": "𨒒",
       "dng": "шыъ",
-      "yue_us": "十",
-      "zh_us": "十",
-      "zh_th": "十",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
       "ja_thk": "シュウ",
@@ -2430,11 +2396,6 @@ const HAN_DATA = {
       "ko_hun": "날",
       "vi_nom": "𣈜",
       "dng": "жырь",
-      "yue_us": "日",
-      "zh_us": "日",
-      "nan_th": "日",
-      "zh_th": "日",
-      "nan_pera": "日",
       "ja_kgs": "ジッ",
       "ja_okn": "ジツ",
       "ja_thk": "ジツ",
@@ -2633,9 +2594,6 @@ const HAN_DATA = {
       "ko_hun": "달",
       "vi_nom": "𦝄",
       "dng": "йүәь",
-      "yue_us": "月",
-      "zh_us": "月",
-      "zh_th": "月",
       "ja_kgs": "ゲッ",
       "ja_okn": "ギツ",
       "ja_thk": "ゲツ",
@@ -2839,9 +2797,6 @@ const HAN_DATA = {
       "ko_hun": "메",
       "vi_nom": "𡶀",
       "dng": "сан",
-      "yue_us": "山",
-      "zh_us": "山",
-      "zh_th": "山",
       "ja_kgs": "サン",
       "ja_okn": "サン",
       "ja_thk": "サン",
@@ -3056,10 +3011,6 @@ const HAN_DATA = {
       "ko_hun": "물",
       "vi_nom": "渃",
       "dng": "шўйъ",
-      "yue_us": "水",
-      "zh_us": "水",
-      "nan_th": "水",
-      "zh_th": "水",
       "ja_kgs": "スイ",
       "ja_okn": "スイ",
       "ja_thk": "スイ",
@@ -3286,10 +3237,6 @@ const HAN_DATA = {
       "ko_hun": "불",
       "vi_nom": "𤈜",
       "dng": "хуәъ",
-      "yue_us": "火",
-      "zh_us": "火",
-      "nan_th": "火",
-      "zh_th": "火",
       "ja_kgs": "カ",
       "ja_okn": "カ",
       "ja_thk": "カ",
@@ -3502,11 +3449,6 @@ const HAN_DATA = {
       "ko_hun": "나무",
       "vi_nom": "𣘃",
       "dng": "муь",
-      "yue_us": "木",
-      "zh_us": "木",
-      "nan_th": "木",
-      "zh_th": "木",
-      "nan_pera": "木",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
       "ja_thk": "ボク",
@@ -3733,11 +3675,6 @@ const HAN_DATA = {
       "ko_hun": "흙",
       "vi_nom": "𡐙",
       "dng": "туъ",
-      "yue_us": "土",
-      "zh_us": "土",
-      "nan_th": "土",
-      "zh_th": "土",
-      "nan_pera": "土",
       "ja_kgs": "ト",
       "ja_okn": "ツ",
       "ja_thk": "ト",
@@ -3940,9 +3877,6 @@ const HAN_DATA = {
       "ko_hun": "하늘",
       "vi_nom": "𡗶",
       "dng": "тян",
-      "yue_us": "天",
-      "zh_us": "天",
-      "zh_th": "天",
       "ja_kgs": "テン",
       "ja_okn": "チン",
       "ja_thk": "テン",
@@ -4146,10 +4080,6 @@ const HAN_DATA = {
       "ko_hun": "땅",
       "vi_nom": "𡐙",
       "dng": "дись",
-      "yue_us": "地",
-      "zh_us": "地",
-      "nan_th": "地",
-      "zh_th": "地",
       "ja_kgs": "チ",
       "ja_okn": "チ",
       "ja_thk": "チ",
@@ -4373,11 +4303,6 @@ const HAN_DATA = {
       "ko_hun": "바다",
       "vi_nom": "㴜",
       "dng": "хэъ",
-      "yue_us": "海",
-      "zh_us": "海",
-      "nan_th": "海",
-      "zh_th": "海",
-      "nan_pera": "海",
       "ja_kgs": "カイ",
       "ja_okn": "カイ",
       "ja_thk": "カイ",
@@ -4580,10 +4505,6 @@ const HAN_DATA = {
       "ko_hun": "미르",
       "vi_nom": "𧍰",
       "dng": "лунъ",
-      "yue_us": "龍",
-      "zh_us": "龍",
-      "nan_th": "龍",
-      "zh_th": "龍",
       "ja_kgs": "リョウ",
       "ja_okn": "リュウ",
       "ja_thk": "リョウ",
@@ -4805,11 +4726,6 @@ const HAN_DATA = {
       "ja_kun": "とら",
       "ko_hun": "범",
       "dng": "хуъ",
-      "yue_us": "虎",
-      "zh_us": "虎",
-      "nan_th": "虎",
-      "zh_th": "虎",
-      "nan_pera": "虎",
       "ja_kgs": "コ",
       "ja_okn": "ク",
       "ja_thk": "コ",
@@ -5036,11 +4952,6 @@ const HAN_DATA = {
       "ko_hun": "개",
       "vi_nom": "𤞻",
       "dng": "гўъ",
-      "yue_us": "犬",
-      "zh_us": "犬",
-      "nan_th": "犬",
-      "zh_th": "犬",
-      "nan_pera": "犬",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
       "ja_thk": "ケン",
@@ -5247,10 +5158,6 @@ const HAN_DATA = {
       "ko_hun": "말",
       "vi_nom": "𢵧",
       "dng": "маъ",
-      "yue_us": "馬",
-      "zh_us": "馬",
-      "nan_th": "馬",
-      "zh_th": "馬",
       "ja_kgs": "バ",
       "ja_okn": "バ",
       "ja_thk": "バ",
@@ -5459,10 +5366,6 @@ const HAN_DATA = {
       "ko_hun": "새",
       "vi_nom": "𫈳",
       "dng": "няоъ",
-      "yue_us": "鳥",
-      "zh_us": "鳥",
-      "nan_th": "鳥",
-      "zh_th": "鳥",
       "ja_kgs": "チョウ",
       "ja_okn": "チュウ",
       "ja_thk": "チョウ",
@@ -5691,10 +5594,6 @@ const HAN_DATA = {
       "ko_hun": "물고기",
       "vi_nom": "𩵜",
       "dng": "йүъ",
-      "yue_us": "魚",
-      "zh_us": "魚",
-      "nan_th": "魚",
-      "zh_th": "魚",
       "ja_kgs": "ギョ",
       "ja_okn": "ギュ",
       "ja_thk": "ギョ",
@@ -5897,10 +5796,6 @@ const HAN_DATA = {
       "ko_hun": "소",
       "vi_nom": "𢞖",
       "dng": "нюъ",
-      "yue_us": "牛",
-      "zh_us": "牛",
-      "nan_th": "牛",
-      "zh_th": "牛",
       "ja_kgs": "ギュウ",
       "ja_okn": "ギュウ",
       "ja_thk": "ギュウ",
@@ -6098,10 +5993,6 @@ const HAN_DATA = {
       "ja_kun": "ひつじ",
       "ko_hun": "양",
       "dng": "янъ",
-      "yue_us": "羊",
-      "zh_us": "羊",
-      "nan_th": "羊",
-      "zh_th": "羊",
       "ja_kgs": "ヨウ",
       "ja_okn": "ユウ",
       "ja_thk": "ヨウ",
@@ -6311,11 +6202,6 @@ const HAN_DATA = {
       "ko_hun": "고양이",
       "vi_nom": "𤘽",
       "dng": "мо",
-      "yue_us": "貓",
-      "zh_us": "貓",
-      "nan_th": "貓",
-      "zh_th": "貓",
-      "nan_pera": "貓",
       "zh_phagspa": "ꡏꡠꡓ",
       "ja_kgs": "ビョウ",
       "ja_okn": "ビュウ",
@@ -6522,9 +6408,6 @@ const HAN_DATA = {
       "ko_hun": "사람",
       "vi_nom": "𠊛",
       "dng": "жынъ",
-      "yue_us": "人",
-      "zh_us": "人",
-      "zh_th": "人",
       "ja_kgs": "ジン",
       "ja_okn": "ジン",
       "ja_thk": "ジン",
@@ -6725,10 +6608,6 @@ const HAN_DATA = {
       "ko_hun": "손",
       "vi_nom": "𢬣",
       "dng": "шўъ",
-      "yue_us": "手",
-      "zh_us": "手",
-      "nan_th": "手",
-      "zh_th": "手",
       "ja_kgs": "シュウ",
       "ja_okn": "シュウ",
       "ja_thk": "シュウ",
@@ -6945,11 +6824,6 @@ const HAN_DATA = {
       "ko_hun": "발",
       "vi_nom": "蹎",
       "dng": "җёъ",
-      "yue_us": "足",
-      "zh_us": "足",
-      "nan_th": "足",
-      "zh_th": "足",
-      "nan_pera": "足",
       "ja_kgs": "ソッ",
       "ja_okn": "スク",
       "ja_thk": "ソク",
@@ -7152,10 +7026,6 @@ const HAN_DATA = {
       "ko_hun": "눈",
       "vi_nom": "眜",
       "dng": "янъҗиң",
-      "yue_us": "目",
-      "zh_us": "目",
-      "nan_th": "目",
-      "zh_th": "目",
       "ja_kgs": "ボッ",
       "ja_okn": "ブク",
       "ja_thk": "ボク",
@@ -7364,10 +7234,6 @@ const HAN_DATA = {
       "ko_hun": "귀",
       "vi_nom": "𦖻",
       "dng": "әръдо",
-      "yue_us": "耳",
-      "zh_us": "耳",
-      "nan_th": "耳",
-      "zh_th": "耳",
       "ja_kgs": "ジ",
       "ja_okn": "ジ",
       "ja_thk": "ジ",
@@ -7578,10 +7444,6 @@ const HAN_DATA = {
       "ko_hun": "입",
       "vi_nom": "𠰘",
       "dng": "зўйъ",
-      "yue_us": "口",
-      "zh_us": "口",
-      "nan_th": "口",
-      "zh_th": "口",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
       "ja_thk": "コウ",
@@ -7788,10 +7650,6 @@ const HAN_DATA = {
       "ko_hun": "머리",
       "vi_nom": "頭",
       "dng": "тўъ",
-      "yue_us": "頭",
-      "zh_us": "頭",
-      "nan_th": "頭",
-      "zh_th": "頭",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
       "ja_thk": "トウ",
@@ -8014,11 +7872,6 @@ const HAN_DATA = {
       "ko_hun": "마음",
       "vi_nom": "𢚸",
       "dng": "щин",
-      "yue_us": "心",
-      "zh_us": "心",
-      "nan_th": "心",
-      "zh_th": "心",
-      "nan_pera": "心",
       "ja_kgs": "シン",
       "ja_okn": "シン",
       "ja_thk": "シン",
@@ -8229,10 +8082,6 @@ const HAN_DATA = {
       "ko_hun": "피",
       "vi_nom": "𧖱",
       "dng": "щүәъ",
-      "yue_us": "血",
-      "zh_us": "血",
-      "nan_th": "血",
-      "zh_th": "血",
       "ja_kgs": "ケッ",
       "ja_okn": "キツ",
       "ja_thk": "ケツ",
@@ -8438,10 +8287,6 @@ const HAN_DATA = {
       "ko_hun": "살",
       "vi_nom": "蜐",
       "dng": "жўь",
-      "yue_us": "肉",
-      "zh_us": "肉",
-      "nan_th": "肉",
-      "zh_th": "肉",
       "ja_kgs": "ジッ",
       "ja_okn": "ジク",
       "ja_thk": "ジク",
@@ -8637,10 +8482,6 @@ const HAN_DATA = {
       "ko_hun": "위",
       "vi_nom": "𨕭",
       "dng": "шаңь",
-      "yue_us": "上",
-      "zh_us": "上",
-      "zh_th": "上",
-      "nan_pera": "上",
       "ja_kgs": "ショウ",
       "ja_okn": "シュウ",
       "ja_thk": "ショウ",
@@ -8837,9 +8678,6 @@ const HAN_DATA = {
       "ko_hun": "아래",
       "vi_nom": "𠁑",
       "dng": "щаь",
-      "yue_us": "下",
-      "zh_us": "下",
-      "zh_th": "下",
       "ja_kgs": "カ",
       "ja_okn": "カ",
       "ja_thk": "カ",
@@ -9061,11 +8899,6 @@ const HAN_DATA = {
       "ko_hun": "가운데",
       "vi_nom": "𡎢",
       "dng": "җун",
-      "yue_us": "中",
-      "zh_us": "中",
-      "nan_th": "中",
-      "zh_th": "中",
-      "nan_pera": "中",
       "ja_kgs": "チュウ",
       "ja_okn": "チュウ",
       "ja_thk": "チュウ",
@@ -9275,11 +9108,6 @@ const HAN_DATA = {
       "vi_c": "trúng",
       "vi_s": "trúng",
       "vi_nom": "中",
-      "yue_us": "中",
-      "zh_us": "中",
-      "nan_th": "中",
-      "zh_th": "中",
-      "nan_pera": "中",
       "zh_phagspa": "ꡄꡦꡃ",
       "mnc": "—",
       "juc": "—",
@@ -9471,10 +9299,6 @@ const HAN_DATA = {
       "ko_kp": "앙",
       "ko_zai": "앙",
       "dng": "ян",
-      "yue_us": "央",
-      "zh_us": "央",
-      "nan_th": "央",
-      "zh_th": "央",
       "ja_kgs": "オウ",
       "ja_okn": "ウウ",
       "ja_thk": "オウ",
@@ -9696,11 +9520,6 @@ const HAN_DATA = {
       "ko_hun": "왼",
       "vi_nom": "𢄂",
       "dng": "зуәъ",
-      "yue_us": "左",
-      "zh_us": "左",
-      "nan_th": "左",
-      "zh_th": "左",
-      "nan_pera": "左",
       "ja_kgs": "サ",
       "ja_okn": "サ",
       "ja_thk": "サ",
@@ -9923,11 +9742,6 @@ const HAN_DATA = {
       "ko_hun": "오른",
       "vi_nom": "𠊝",
       "dng": "йўь",
-      "yue_us": "右",
-      "zh_us": "右",
-      "nan_th": "右",
-      "zh_th": "右",
-      "nan_pera": "右",
       "ja_kgs": "ユウ",
       "ja_okn": "ユウ",
       "ja_thk": "ユウ",
@@ -10121,9 +9935,6 @@ const HAN_DATA = {
       "ja_kun": "ひがし",
       "ko_hun": "샛",
       "dng": "дун",
-      "yue_us": "東",
-      "zh_us": "東",
-      "zh_th": "東",
       "ja_kgs": "トウ",
       "ja_okn": "ツウ",
       "ja_thk": "トウ",
@@ -10325,9 +10136,6 @@ const HAN_DATA = {
       "ja_kun": "にし",
       "ko_hun": "하늬",
       "dng": "щи",
-      "yue_us": "西",
-      "zh_us": "西",
-      "zh_th": "西",
       "ja_kgs": "セイ",
       "ja_okn": "シイ",
       "ja_thk": "セイ",
@@ -10544,11 +10352,6 @@ const HAN_DATA = {
       "ja_kun": "みなみ",
       "ko_hun": "맞바",
       "dng": "нанъ",
-      "yue_us": "南",
-      "zh_us": "南",
-      "nan_th": "南",
-      "zh_th": "南",
-      "nan_pera": "南",
       "ja_kgs": "ダン",
       "ja_okn": "ダン",
       "ja_thk": "ダン",
@@ -10770,11 +10573,6 @@ const HAN_DATA = {
       "ja_kun": "きた",
       "ko_hun": "뇟",
       "dng": "бый",
-      "yue_us": "北",
-      "zh_us": "北",
-      "nan_th": "北",
-      "zh_th": "北",
-      "nan_pera": "北",
       "ja_kgs": "ホッ",
       "ja_okn": "フク",
       "ja_thk": "ホク",
@@ -10995,11 +10793,6 @@ const HAN_DATA = {
       "ko_hun": "다닐",
       "vi_nom": "𠫾",
       "dng": "зўъ",
-      "yue_us": "行",
-      "zh_us": "行",
-      "nan_th": "行",
-      "zh_th": "行",
-      "nan_pera": "行",
       "ja_kgs": "コウ",
       "ja_okn": "クウ",
       "ja_thk": "コウ",
@@ -11203,9 +10996,6 @@ const HAN_DATA = {
       "vi_c": "hàng",
       "vi_s": "hàng",
       "vi_nom": "行",
-      "yue_us": "行",
-      "zh_us": "行",
-      "zh_th": "行",
       "mnc": "—",
       "juc": "—",
       "zkt": "—",
@@ -11417,11 +11207,6 @@ const HAN_DATA = {
       "ko_hun": "올",
       "vi_nom": "𦤾",
       "dng": "лэъ",
-      "yue_us": "来",
-      "zh_us": "来",
-      "nan_th": "来",
-      "zh_th": "来",
-      "nan_pera": "来",
       "ja_kgs": "ライ",
       "ja_okn": "ライ",
       "ja_thk": "ライ",
@@ -11616,9 +11401,6 @@ const HAN_DATA = {
       "ko_hun": "갈",
       "vi_nom": "𠫾",
       "dng": "чиь",
-      "yue_us": "去",
-      "zh_us": "去",
-      "zh_th": "去",
       "ja_kgs": "キョ",
       "ja_okn": "キュ",
       "ja_thk": "キョ",
@@ -11817,10 +11599,6 @@ const HAN_DATA = {
       "ko_hun": "볼",
       "vi_nom": "𧡊",
       "dng": "җёнь",
-      "yue_us": "見",
-      "zh_us": "見",
-      "zh_th": "見",
-      "nan_pera": "見",
       "ja_kgs": "ケン",
       "ja_okn": "キン",
       "ja_thk": "ケン",
@@ -12023,9 +11801,6 @@ const HAN_DATA = {
       "ko_hun": "들을",
       "vi_nom": "𦖑",
       "dng": "тиң",
-      "yue_us": "聞",
-      "zh_us": "聞",
-      "zh_th": "聞",
       "ja_kgs": "ブン",
       "ja_okn": "ブン",
       "ja_thk": "ブン",
@@ -12220,9 +11995,6 @@ const HAN_DATA = {
       "ko_hun": "먹을",
       "vi_nom": "𩛖",
       "dng": "чы",
-      "yue_us": "食",
-      "zh_us": "食",
-      "zh_th": "食",
       "ja_kgs": "ショッ",
       "ja_okn": "シュク",
       "ja_thk": "ショク",
@@ -12433,10 +12205,6 @@ const HAN_DATA = {
       "ko_hun": "마실",
       "vi_nom": "㕵",
       "dng": "хә",
-      "yue_us": "飲",
-      "zh_us": "飲",
-      "nan_th": "飲",
-      "zh_th": "飲",
       "ja_kgs": "イン",
       "ja_okn": "イン",
       "ja_thk": "イン",
@@ -12641,10 +12409,6 @@ const HAN_DATA = {
       "ko_hun": "달릴",
       "vi_nom": "𧼋",
       "dng": "пхоъ",
-      "yue_us": "走",
-      "zh_us": "走",
-      "nan_th": "走",
-      "zh_th": "走",
       "ja_kgs": "ソウ",
       "ja_okn": "スウ",
       "ja_thk": "ソウ",
@@ -12851,10 +12615,6 @@ const HAN_DATA = {
       "ko_hun": "앉을",
       "vi_nom": "𡎜",
       "dng": "зуәь",
-      "yue_us": "坐",
-      "zh_us": "坐",
-      "nan_th": "坐",
-      "zh_th": "坐",
       "ja_kgs": "サ",
       "ja_okn": "サ",
       "ja_thk": "サ",
@@ -13065,10 +12825,6 @@ const HAN_DATA = {
       "ko_hun": "설",
       "vi_nom": "𥪝",
       "dng": "җань",
-      "yue_us": "立",
-      "zh_us": "立",
-      "nan_th": "立",
-      "zh_th": "立",
       "ja_kgs": "リッ",
       "ja_okn": "リツ",
       "ja_thk": "リツ",
@@ -25852,285 +25608,6 @@ const HAN_VARIANTS = {
     "yue": [
       {
         "native": "",
-        "surface": "hang⁴",
-        "ipa": "hɐŋ˨˩",
-        "label": "行走・行動（歩く walk/go）"
-      },
-      {
-        "native": "",
-        "surface": "hong⁴",
-        "ipa": "hɔːŋ˨˩",
-        "label": "行業・銀行（商行 trade/profession）"
-      }
-    ],
-    "zh": [
-      {
-        "native": "",
-        "surface": "xíng³⁵",
-        "ipa": "ɕiŋ˧˥",
-        "label": "行走・行為・可以"
-      },
-      {
-        "native": "",
-        "surface": "háng³⁵",
-        "ipa": "xɑŋ˧˥",
-        "label": "行業・銀行・行列"
-      }
-    ],
-    "hak_cn": [
-      {
-        "native": "",
-        "surface": "hong",
-        "ipa": "hoŋ˨˦",
-        "label": "白讀 (商行)"
-      },
-      {
-        "native": "",
-        "surface": "hang",
-        "ipa": "haŋ˨˦",
-        "label": "文讀 (行走)"
-      }
-    ],
-    "cjy": [
-      {
-        "native": "",
-        "surface": "ɕiŋ³⁵",
-        "ipa": "ɕiŋ˧˥",
-        "label": "文讀 (行走)"
-      },
-      {
-        "native": "",
-        "surface": "xɒ̃¹¹",
-        "ipa": "xɒ̃˩˩",
-        "label": "白讀 (行業)"
-      }
-    ],
-    "czh": [
-      {
-        "native": "",
-        "surface": "ɦiɛ̃²²",
-        "ipa": "ɦiɛ̃˨˨",
-        "label": "文讀 (行走)"
-      },
-      {
-        "native": "",
-        "surface": "ɦɔ̃²²",
-        "ipa": "ɦɔ̃˨˨",
-        "label": "白讀 (行業)"
-      }
-    ],
-    "hsn": [
-      {
-        "native": "",
-        "surface": "ɕin¹³",
-        "ipa": "ɕin˩˧",
-        "label": "文讀 (行走)"
-      },
-      {
-        "native": "",
-        "surface": "xan¹³",
-        "ipa": "xan˩˧",
-        "label": "白讀 (行業)"
-      }
-    ],
-    "gan": [
-      {
-        "native": "",
-        "surface": "hɛn⁴⁵",
-        "ipa": "hɛn˦˥",
-        "label": "文讀 (行走)"
-      },
-      {
-        "native": "",
-        "surface": "hɔŋ⁴⁵",
-        "ipa": "hɔŋ˦˥",
-        "label": "白讀 (行業)"
-      }
-    ],
-    "ko": [
-      {
-        "native": "행",
-        "surface": "haeng",
-        "ipa": "hɛŋ",
-        "label": "行爲 (行動)"
-      },
-      {
-        "native": "항",
-        "surface": "hang",
-        "ipa": "haŋ",
-        "label": "行列 (줄·항렬)"
-      }
-    ],
-    "cdo": [
-      {
-        "native": "",
-        "surface": "giàng",
-        "ipa": "kiaŋ˩˧",
-        "label": "白讀（行走）"
-      },
-      {
-        "native": "",
-        "surface": "hèng",
-        "ipa": "xeŋ˩˧",
-        "label": "文讀（行業）"
-      }
-    ],
-    "cpx": [
-      {
-        "native": "",
-        "surface": "giá",
-        "ipa": "kia˩˧",
-        "label": "白讀（行走）"
-      },
-      {
-        "native": "",
-        "surface": "héng",
-        "ipa": "xeŋ˩˧",
-        "label": "文讀（行業）"
-      }
-    ],
-    "mnp": [
-      {
-        "native": "",
-        "surface": "hâing",
-        "ipa": "haiŋ˧˧",
-        "label": "白讀（行走）"
-      },
-      {
-        "native": "",
-        "surface": "hông",
-        "ipa": "hɔŋ˧˧",
-        "label": "文讀（行業）"
-      }
-    ],
-    "wuu": [
-      {
-        "native": "",
-        "surface": "hhang²³",
-        "ipa": "ɦɑ̃²³",
-        "label": "行走 (walk)"
-      },
-      {
-        "native": "",
-        "surface": "hhang²³",
-        "ipa": "ɦɑ̃²³",
-        "label": "行業 (trade/business)"
-      }
-    ],
-    "yue_gz": [
-      {
-        "native": "",
-        "surface": "hɐŋ²¹",
-        "ipa": "hɐŋ²¹",
-        "label": "行走（歩く）"
-      },
-      {
-        "native": "",
-        "surface": "hɔːŋ²¹",
-        "ipa": "hɔːŋ²¹",
-        "label": "商行（銀行）"
-      }
-    ],
-    "yue_ts": [
-      {
-        "native": "",
-        "surface": "hang³",
-        "ipa": "haŋ³³",
-        "label": "行走（歩く）"
-      },
-      {
-        "native": "",
-        "surface": "hong³",
-        "ipa": "hɔŋ³³",
-        "label": "商行（銀行）"
-      }
-    ],
-    "yue_dg": [
-      {
-        "native": "",
-        "surface": "hɐŋ²¹",
-        "ipa": "hɐŋ²¹",
-        "label": "行走（歩く）"
-      },
-      {
-        "native": "",
-        "surface": "hɔːŋ²¹",
-        "ipa": "hɔːŋ²¹",
-        "label": "商行（銀行）"
-      }
-    ],
-    "yue_nn": [
-      {
-        "native": "",
-        "surface": "haŋ²¹",
-        "ipa": "haŋ²¹",
-        "label": "行走（歩く）"
-      },
-      {
-        "native": "",
-        "surface": "hɔːŋ²¹",
-        "ipa": "hɔːŋ²¹",
-        "label": "商行（銀行）"
-      }
-    ],
-    "yue_zs": [
-      {
-        "native": "",
-        "surface": "hɐŋ²¹",
-        "ipa": "hɐŋ²¹",
-        "label": "行走（歩く）"
-      },
-      {
-        "native": "",
-        "surface": "hɔːŋ²¹",
-        "ipa": "hɔːŋ²¹",
-        "label": "商行（銀行）"
-      }
-    ],
-    "ja": [
-      {
-        "native": "コウ",
-        "surface": "kō",
-        "ipa": "koː",
-        "label": "漢音 / Kan-on"
-      },
-      {
-        "native": "ギョウ",
-        "surface": "gyō",
-        "ipa": "gjoː",
-        "label": "呉音 / Go-on"
-      },
-      {
-        "native": "アン",
-        "surface": "an",
-        "ipa": "aɴ",
-        "label": "唐音 / Tō-on"
-      }],
-    "vi": [
-      {
-        "native": "",
-        "surface": "hành",
-        "ipa": "haɲ˨˩",
-        "label": "đi, làm (walk/act)"
-      }
-    ],
-    "yue": [
-      {
-        "native": "",
-        "surface": "hang4",
-        "ipa": "hɐŋ˨˩",
-        "label": "文讀"
-      },
-      {
-        "native": "",
-        "surface": "haang4",
-        "ipa": "haːŋ˨˩",
-        "label": "白讀"
-      }
-    ],
-    "yue_hk": [
-      {
-        "native": "",
         "surface": "hang4",
         "ipa": "hɐŋ˨˩",
         "label": "文讀"
@@ -26156,6 +25633,20 @@ const HAN_VARIANTS = {
         "label": "白讀"
       }
     ],
+    "yue_hk": [
+      {
+        "native": "",
+        "surface": "hang4",
+        "ipa": "hɐŋ˨˩",
+        "label": "文讀"
+      },
+      {
+        "native": "",
+        "surface": "haang4",
+        "ipa": "haːŋ˨˩",
+        "label": "白讀"
+      }
+    ],
     "yue_mo": [
       {
         "native": "",
@@ -26169,9 +25660,127 @@ const HAN_VARIANTS = {
         "ipa": "haːŋ˨˩",
         "label": "白讀"
       }
-    ]
-  },
-  "行:2": {
+    ],
+    "zh": [
+      {
+        "native": "",
+        "surface": "xíng³⁵",
+        "ipa": "ɕiŋ˧˥",
+        "label": "行走・行為・可以"
+      }
+    ],
+    "ko": [
+      {
+        "native": "행",
+        "surface": "haeng",
+        "ipa": "hɛŋ",
+        "label": "行爲 (行動)"
+      }
+    ],
+    "cjy": [
+      {
+        "native": "",
+        "surface": "ɕiŋ³⁵",
+        "ipa": "ɕiŋ˧˥",
+        "label": "文讀 (行走)"
+      }
+    ],
+    "czh": [
+      {
+        "native": "",
+        "surface": "ɦiɛ̃²²",
+        "ipa": "ɦiɛ̃˨˨",
+        "label": "文讀 (行走)"
+      }
+    ],
+    "hsn": [
+      {
+        "native": "",
+        "surface": "ɕin¹³",
+        "ipa": "ɕin˩˧",
+        "label": "文讀 (行走)"
+      }
+    ],
+    "gan": [
+      {
+        "native": "",
+        "surface": "hɛn⁴⁵",
+        "ipa": "hɛn˦˥",
+        "label": "文讀 (行走)"
+      }
+    ],
+    "yue_ts": [
+      {
+        "native": "",
+        "surface": "hang³",
+        "ipa": "haŋ³³",
+        "label": "行走（歩く）"
+      }
+    ],
+    "yue_dg": [
+      {
+        "native": "",
+        "surface": "hɐŋ²¹",
+        "ipa": "hɐŋ²¹",
+        "label": "行走（歩く）"
+      }
+    ],
+    "yue_nn": [
+      {
+        "native": "",
+        "surface": "haŋ²¹",
+        "ipa": "haŋ²¹",
+        "label": "行走（歩く）"
+      }
+    ],
+    "yue_zs": [
+      {
+        "native": "",
+        "surface": "hɐŋ²¹",
+        "ipa": "hɐŋ²¹",
+        "label": "行走（歩く）"
+      }
+    ],
+    "wuu": [
+      {
+        "native": "",
+        "surface": "hhang²³",
+        "ipa": "ɦɑ̃²³",
+        "label": "行走 (walk)"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "giàng",
+        "ipa": "kiaŋ˩˧",
+        "label": "白讀（行走）"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "giá",
+        "ipa": "kia˩˧",
+        "label": "白讀（行走）"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "hâing",
+        "ipa": "haiŋ˧˧",
+        "label": "白讀（行走）"
+      }
+    ],
+    "hak_cn": [
+      {
+        "native": "",
+        "surface": "hang",
+        "ipa": "haŋ˨˦",
+        "label": "文讀 (行走)"
+      }
+    ],
     "ja": [
       {
         "native": "コウ",
@@ -26184,14 +25793,20 @@ const HAN_VARIANTS = {
         "surface": "gyō",
         "ipa": "gjoː",
         "label": "呉音 / Go-on"
+      },
+      {
+        "native": "アン",
+        "surface": "an",
+        "ipa": "aɴ",
+        "label": "唐音 / Tō-on"
       }
     ],
     "vi": [
       {
         "native": "",
-        "surface": "hàng",
-        "ipa": "haŋ˨˩",
-        "label": "hàng ngũ, thương hàng (row/business)"
+        "surface": "hành",
+        "ipa": "haɲ˨˩",
+        "label": "đi, làm (walk/act)"
       }
     ],
     "nan_th": [
@@ -26248,6 +25863,150 @@ const HAN_VARIANTS = {
         "surface": "heng⁵",
         "ipa": "heŋ˨˦",
         "label": "文讀"
+      }
+    ]
+  },
+  "行:2": {
+    "zh": [
+      {
+        "native": "",
+        "surface": "háng³⁵",
+        "ipa": "xɑŋ˧˥",
+        "label": "行業・銀行・行列"
+      }
+    ],
+    "ko": [
+      {
+        "native": "항",
+        "surface": "hang",
+        "ipa": "haŋ",
+        "label": "行列 (줄·항렬)"
+      }
+    ],
+    "cjy": [
+      {
+        "native": "",
+        "surface": "xɒ̃¹¹",
+        "ipa": "xɒ̃˩˩",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "czh": [
+      {
+        "native": "",
+        "surface": "ɦɔ̃²²",
+        "ipa": "ɦɔ̃˨˨",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "hsn": [
+      {
+        "native": "",
+        "surface": "xan¹³",
+        "ipa": "xan˩˧",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "gan": [
+      {
+        "native": "",
+        "surface": "hɔŋ⁴⁵",
+        "ipa": "hɔŋ˦˥",
+        "label": "白讀 (行業)"
+      }
+    ],
+    "yue_ts": [
+      {
+        "native": "",
+        "surface": "hong³",
+        "ipa": "hɔŋ³³",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_dg": [
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_nn": [
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "yue_zs": [
+      {
+        "native": "",
+        "surface": "hɔːŋ²¹",
+        "ipa": "hɔːŋ²¹",
+        "label": "商行（銀行）"
+      }
+    ],
+    "wuu": [
+      {
+        "native": "",
+        "surface": "hhang²³",
+        "ipa": "ɦɑ̃²³",
+        "label": "行業 (trade/business)"
+      }
+    ],
+    "cdo": [
+      {
+        "native": "",
+        "surface": "hèng",
+        "ipa": "xeŋ˩˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "cpx": [
+      {
+        "native": "",
+        "surface": "héng",
+        "ipa": "xeŋ˩˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "mnp": [
+      {
+        "native": "",
+        "surface": "hông",
+        "ipa": "hɔŋ˧˧",
+        "label": "文讀（行業）"
+      }
+    ],
+    "hak_cn": [
+      {
+        "native": "",
+        "surface": "hong",
+        "ipa": "hoŋ˨˦",
+        "label": "白讀 (商行)"
+      }
+    ],
+    "ja": [
+      {
+        "native": "コウ",
+        "surface": "kō",
+        "ipa": "koː",
+        "label": "漢音 / Kan-on"
+      },
+      {
+        "native": "ギョウ",
+        "surface": "gyō",
+        "ipa": "gjoː",
+        "label": "呉音 / Go-on"
+      }
+    ],
+    "vi": [
+      {
+        "native": "",
+        "surface": "hàng",
+        "ipa": "haŋ˨˩",
+        "label": "hàng ngũ, thương hàng (row/business)"
       }
     ]
   },
@@ -27512,9 +27271,26 @@ const HAN_VARIANTS = {
         "surface": "chū",
         "ipa": "t͡ɕɯː",
         "label": "呉音 / Go-on"
-      }]
+      }
+    ],
+    "vi": [
+      {
+        "native": "",
+        "surface": "trung",
+        "ipa": "ʈuŋ͡m˧",
+        "label": "trung tâm (center/middle)"
+      }
+    ]
   },
   "中:2": {
+    "vi": [
+      {
+        "native": "",
+        "surface": "trúng",
+        "ipa": "ʈuŋ͡m˧˥",
+        "label": "trúng đích (to hit/strike)"
+      }
+    ],
     "ja": [
       {
         "native": "チュウ",
@@ -27527,19 +27303,6 @@ const HAN_VARIANTS = {
         "surface": "chū",
         "ipa": "t͡ɕɯː",
         "label": "呉音 / Go-on"
-      }],
-    "vi": [
-      {
-        "native": "",
-        "surface": "trung",
-        "ipa": "ʈuŋ͡m˧",
-        "label": "trung tâm (center/middle)"
-      },
-      {
-        "native": "",
-        "surface": "trúng",
-        "ipa": "ʈuŋ͡m˧˥",
-        "label": "trúng đích (to hit/strike)"
       }
     ]
   },
