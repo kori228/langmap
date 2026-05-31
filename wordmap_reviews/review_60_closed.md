@@ -155,3 +155,74 @@ I am a phonologist specialising in the Continental West Germanic dialect continu
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Editing policy applied: only clear, unambiguous local errors / internal inconsistencies are fixed. Stress/length-marking flags that the reviewer explicitly frames as system-wide policy choices ("one policy should be applied") are held — they are convention decisions for the editors, not local data bugs.
+
+**1. `af` eat — `eet` [iːt] → [eːt]** — APPLIED (applied by orchestrator this round). Afrikaans ⟨ee⟩ = /eː/, never /iː/ (Donaldson 1993; Lass). Confirmed internally: the nl cognate in the same file (`eat.js` nl `eten` = `eːtə`) uses [eː]. Clear vowel-quality error. Only the IPA nucleus changed.
+
+**2. `af` one — `een` [iːn] → [eːn]** — APPLIED (applied by orchestrator this round). Numeral *één* = /eːn/. Confirmed against nl cognate `one.js` line 160 `een` = `eːn`. IPA nucleus only.
+
+**3. `af` tree — `boom` [buːm] → [boːm]** — APPLIED (applied by orchestrator this round). Afrikaans ⟨oo⟩ = /oː/; [uː] belongs to ⟨oe⟩. Confirmed against nl `boom` = `boːm` (same file line 160). I applied the plain monophthong [boːm] (the reviewer's primary value) rather than the optional diphthong [bʊəm], matching the nl treatment. IPA nucleus only.
+
+**4. `af` eye — `oog` [uːx] → [oːx]** — APPLIED (applied by orchestrator this round). Same ⟨oo⟩=/oː/ error. Final [x] kept (correct). Confirmed against nl `oog` = `oːx` (same file line 160). IPA nucleus only.
+
+**5. `nds` drink — `drinken` [dɹɪŋkn] → [drɪŋkn̩]** — APPLIED (applied by orchestrator this round). The English approximant [ɹ] is a stray Anglicism: every other nds /r/ in the corpus is [r]/[ɐ], and the de cognate in the very same file (`drink.js` line 92 `de` `trinken` = `tʁɪŋkn̩`) carries the syllabic-nasal diacritic. Applied both fixes: [ɹ]→[r] and added the syllabicity diacritic on the final nasal to match the de cognate. Surface unchanged.
+
+### Held items
+
+**6, 9, 10, 12, 13, 15, 18, 19 (stress/length/gemination harmonisation across fy/li/frr/ksh/gsw/vmf/bar/stq water+good rows)** — HELD. These are explicitly framed by the reviewer as a systemic stress/length-marking policy ("add to all or to none"). That is a cross-row convention decision for the editors, not a local unambiguous error; per project rule I do not invent a corpus-wide normalization the team has not endorsed. No current value is internally wrong on its own.
+
+**7, 8** — HELD (reviewer self-marked "no change needed / correct"). Consistency QA notes only; nl *vader* [v], af *water* [ɑː] vs nl [aː] are all correct as stated.
+
+**11 (`pdt` water `Wota` [vɔta])** — HELD. The long-vowel claim ([voːta]) is a plausible but contested phonetic refinement, not an unambiguous error; vowel length in Plautdietsch *Wota* varies by sub-dialect. Recommend reviewer escalate to a Plautdietsch source if a length change is desired.
+
+**14 (`fy` fire `fjoer` [fjuːr] → [fjuər])** — HELD. Monophthong-vs-diphthong refinement; the ⟨oe⟩=[uə] reading is reasonable (Tiersma) but is a transcription-granularity choice consistent with how other monophthongal ⟨oe⟩ entries are handled here. Not a clear local error; left for an editor diphthong-policy pass.
+
+**16 (`pdc` love `liewe`) & 17 (`pdt` love `leewen`) — noun/verb sense** — HELD. The row's own label note (`love.js` line 32/41) explicitly states: *"Basic word/root for love or affection — noun or verb citation form depending on language."* The dataset therefore deliberately permits a verb citation form, so a verb infinitive in this slot is sanctioned by the stated convention, not an error. I confirmed via authoritative sources that the *nouns* do exist (PA German noun "love" = *Luff*, HG "die Liebe", per the pdc.wikipedia English/PG/HG dictionary; Plautdietsch noun = *Leew*/*Leefta*, per Herman Rempel, *Kjenn Jie Noch Plautdietsch?*, ereimer.net English-to-Plautdietsch). But replacing the current verb forms would (a) override an explicit row-level convention and (b) for pdc break the lexeme family (the attested noun *Luff* is an English loan, a different etymon than *liewe*). Per project rule I hold rather than override a justified convention. If the editors decide the row should be noun-only for the Germanic cluster, the supported replacements are: pdt `["Leew", "leːf"]` (matches sibling nds/ksh `Leev` [leːf] exactly) and pdc noun `["Luff", ...]` (loan) — flagged for an editor decision.
+
+**20 (`af` hello `hallo` [ɦaləu])** — HELD. *hallo* is a borrowed greeting whose final vowel realisation varies; [əu]/[oː] both occur and the proposed change also entails restructuring stress to [ɦaˈloː]. Not a clear-cut single-segment local error; left for editor review.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I verified every applied fix against the live per-word data files (`grep`/`Read` on the current tree, not the review-date snapshot). All five "APPLIED" claims are genuinely present:
+
+| # | Word | Code | Claimed | Live data | Verdict |
+|---|------|------|---------|-----------|---------|
+| 1 | eat | af | `eet` → `eːt` | `eat.js:282 af: ["eet", "eːt"]` | ✓ verified |
+| 2 | one | af | `een` → `eːn` | `one.js:288 af: ["een", "eːn"]` | ✓ verified |
+| 3 | tree | af | `boom` → `boːm` | `tree.js:282 af: ["boom", "boːm"]` | ✓ verified |
+| 4 | eye | af | `oog` → `oːx` | `eye.js:282 af: ["oog", "oːx"]` | ✓ verified |
+| 5 | drink | nds | `dɹɪŋkn` → `drɪŋkn̩` | `drink.js:289 nds: ["drinken", "drɪŋkn̩"]` | ✓ verified |
+
+The four Afrikaans ⟨ee⟩/⟨oo⟩ vowel-quality corrections and the nds Anglicism+syllabicity fix are exactly what I asked for and match their nl cognates (`nl eːtə`, `eːn`, `boːm`, `oːx` and the de `tʁɪŋkn̩` syllabic-nasal model). These five were the only items I raised as clear, unambiguous local errors, and they are all closed.
+
+**Adjudication of held items:**
+
+- **6, 9, 10, 12, 13, 15, 18, 19 (stress/length/gemination harmonisation)** — ✓ ACCEPT the hold. I verified the inconsistency is real: `water.js:1100 stq ["Woater","ˈvɔːtɐ"]` carries the primary-stress mark while `fy/frr/li/gsw/gsw_w/wae/vmf/bar` (lines 489–491, 291, 293–295, 381) do not. But this is precisely the "add stress to all or to none" cross-row convention I myself framed as an editor policy decision, not a local data bug — no single value is wrong on its own. Holding is correct; I record it as a **known systemic limitation** (corpus-wide stress/length normalisation) for a future dedicated editor pass, not a blocker.
+
+- **7, 8** — ✓ ACCEPT. I self-marked these "no change needed"; `father.js:160 nl ["vader","vaːdər"]` and `water.js:289 af ["water","vɑːtər"]` are correct as stated. QA notes only.
+
+- **11 (`pdt` water `vɔta`)** — △ ACCEPT the hold as a documented limitation. The long-vowel reading [voːta] is a plausible Mennonite-Low-German refinement but is genuinely sub-dialect-variable (Cox/Driedger vs. spelling-pronunciation norms) and not offline-resolvable to a single authoritative value. Per late-round loop-termination, I will not re-demand impossible external sourcing; flagged as **needs-human-Plautdietsch-linguist**, not a blocker.
+
+- **14 (`fy` fire `fjuːr`)** — △ ACCEPT the hold. Monophthong-vs-diphthong granularity for ⟨oe⟩; the [uə] reading (Tiersma) is reasonable but is a transcription-granularity policy consistent with other monophthongal ⟨oe⟩ entries here. Won't-fix-grade.
+
+- **16, 17 (pdc/pdt love noun-vs-verb)** — ✓ ACCEPT the hold. I confirmed the row's own definition note in live data (`love.js:32`): *"noun or verb citation form depending on language."* A verb infinitive in this slot is therefore sanctioned by the explicit row-level convention, not an error. The worker also correctly preserved the lexeme family (the attested pdc noun *Luff* is an English loan, a different etymon). Defensible convention choice.
+
+- **20 (`af` hello `ɦaləu`)** — △ ACCEPT the hold. Borrowed greeting with variable final-vowel realisation; the proposed change also restructures stress. Editor-review item, won't-fix-grade.
+
+**New issues:** none. During verification I found no new errors; all entries are in the state described and the love.js convention is genuine.
+
+### Scorecard
+- Clear local errors raised: 5 (#1–5) — **all fixed and verified in live data.**
+- Held items: all are either (a) reviewer-self-framed system-wide convention decisions, (b) reviewer-self-marked correct, (c) sub-dialect-variable refinements not offline-resolvable, or (d) sanctioned by an explicit row-level label convention. **None is a clear unfixed local error.**
+- Remaining systemic note (non-blocking): corpus-wide stress/length-mark normalisation across the Frisian/Alemannic/Low-German rows — a future editor pass, documented as a known limitation.
+
+Nothing remains that the dev team can concretely act on without making a corpus-wide convention decision (out of scope for this file) or sourcing sub-dialect data that is not offline-resolvable. Per late-round loop-termination, I close with the documented limitations above rather than re-demanding the impossible.
+
+**File status: CLOSED** — nothing left to address.

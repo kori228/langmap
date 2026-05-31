@@ -168,3 +168,77 @@ I am a Uralic linguist specialising in Hungarian and the two Ob-Ugric languages,
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the thorough Uralic-specialist review. I applied the clear, unambiguous local/IPA fixes and the endorsed kca breve-vowel normalization pass; I held the genuine convention/sense/stress items with rationale. All edits below are returned as structured edits and applied serially by the orchestrator (we do not edit shared data files in parallel).
+
+### Applied (IPA / mechanical normalization only — surfaces untouched)
+
+- **#1 `kca` cat — `words/cat.js`** `koʂka` → `koʃka` **(applied by orchestrator this round)**. I could not source a reliable native non-loan Khanty form (`кеши` is not attestable in the dictionaries I could reach offline/online), so per your "at minimum not the bare Russian / Khanty ⟨ш⟩ is plain [ʃ]" guidance I kept the surface and corrected only the IPA: the Russian retroflex [ʂ] is impossible in Khanty, ⟨ш⟩ = postalveolar [ʃ]. Surface left as is and flagged for editors to source a native form.
+- **#2 `mns` cat — `words/cat.js`** `koʂka` → `koʃka` **(applied by orchestrator this round)**. Exactly your endorsed adapted form `[koʃka]`; Mansi /s ʃ ɕ/ has no retroflex (Riese 2001).
+- **#3 `ohu` cat — `words/cat.js`** `matʃka` → `mɒt͡ʃkɒ` **(applied by orchestrator this round)**. Both ⟨a⟩ = open back rounded [ɒ] (matching `hu` line 157), and ⟨cs⟩ = single affricate [t͡ʃ] with tie bar. Clear internal inconsistency.
+- **#5 `ohu` love — `words/love.js`** `sɛɾeːlm` → `sɛreːlm` **(applied by orchestrator this round)**. Hungarian /r/ is the alveolar trill [r]; tap [ɾ] is not in the inventory (Siptár & Törkenczy 2000). Matches modern `hu` [sɛrɛlɛm].
+- **#7 `hu` hello — `words/hello.js`** `siɒ` → `sijɒ` **(applied by orchestrator this round)**. Hiatus-filling palatal glide [j] is regular in *szia*; bare `siɒ` mis-collapses the two syllables.
+- **#9 `kca` heart — `words/heart.js`** `sam` → `sɐm` **(applied by orchestrator this round)**. Breve ⟨ӑ⟩ = reduced vowel [ɐ], not full [a].
+- **#10 `kca` mother — `words/mother.js`** `aŋki` → `ɐŋki` **(applied by orchestrator this round)**.
+- **#20 `kca` thanks — `words/thanks.js`** `pasive` → `pɐsive` **(applied by orchestrator this round)**.
+- **`kca` house — `words/house.js`** `xat` → `xɐt` **(applied by orchestrator this round)**. Not in your list but caught by the endorsed global ⟨ӑ⟩→[ɐ] pass: `["хӑт", "xat"]` had the same flattening (per our "fix all variants together" rule). This completes the kca breve normalization across heart, mother, thanks, and house. (`sun`/`хатәл` already correctly uses [ə] for ⟨ә⟩.)
+
+### Held with rationale (won't-fix this round / needs reviewer or editor decision)
+
+- **#4 `ohu` dog (`kuvasz`)** — held. Agreed *kuvasz* is a breed term, a real sense mismatch, but the only "fix" offered (`kutya`/[kucɒ]) is the modern `hu` form copied into the `ohu` slot, which would just duplicate line 157. Changing the chosen archaic lexeme is a reconstruction/lexical-choice call. Recommend editors pick an *attested* Old Hungarian generic; I will not invent/guess one. Surface orthography is not a clear local error.
+- **#6 `ohu` love final `/lm/`** — held. Requires a surface change (`szèrēlm` → `szèrēlëm`), i.e. altering the reconstructed Old-Hungarian shape. That is a reconstruction decision, not a local IPA bug; out of scope for mechanical fixes.
+- **#8 `ohu` hello (`isten hozott`)** — held. You confirm the segmental IPA is defensible; the only issue is a clause-vs-lexeme register mismatch. Flag for editors, no transcription change.
+- **#12 `ohu` father stress** — held. You yourself mark this a consistency note, not an error; initial [ˈ] is unmarked across many ohu cells, so adding it to one would create new inconsistency. Defer to a global stress-policy decision.
+- **#13 `ohu` moon (`hȍld`/`hold`)** + **#14 `ohu` good (`jȍw`/`joːw`)** — held as a pair. This is the undocumented double-grave ⟨ȍ⟩ length convention you flag in #15 as ambiguous. The two cells disagree, but with no documented key I cannot determine which direction is canonical; "resolve the convention" is a system-level editor decision, not a clear local error. Recommend the editors add the ⟨ȍ/è/ē/ī⟩ key to docs and then normalize.
+- **#15 `ohu` mother, #11 `mns` father** — positive controls, no change requested; agreed, left as is.
+- **#16 `mns` moon (`эрь`)** — held after research. `эрь` is not attestable as 'moon'; Northern Mansi *этпос* is reliably attested as 'month' (and Mansi, like many Uralic languages, shares the moon/month lexeme) — sources: Wikivoyage Mansi phrasebook months list and the Wiktionary Northern Mansi lemma `во̄ртур э̄тпос`. However you yourself hedged the replacement ("*этпос* / *ёнгхып* type ... needs verification") and I could **not** source a single authoritative surface+IPA pair (length/vowel quality of *этпос* varies by dialect and I will not guess the IPA). Per the no-guess rule I leave the cell unchanged and recommend the reviewer/editor either confirm a dialect-specific *этпос*/*ёнгхып* form with IPA or escalate to a Mansi lexicographer. Strong candidate for a sourced fix next round once a citation form is fixed.
+- **#17 `kca` love (`наматты`), #18 `mns` love (`эрыглыктэ`)** — held. You confirm both IPAs are internally consistent; the concern is noun-vs-verb sense alignment across the love.js row. That is a cross-row editorial reconciliation, not a local transcription error.
+- **#19 `hu` thanks stress** — held, same rationale as #12 (consistency note, defer to global stress policy).
+
+### Summary
+9 edits applied (all IPA-only / mechanical; no surface orthography changed): cat ×3, love ×1, hello ×1, and the kca breve-vowel pass ×4 (heart, mother, thanks, house). 11 findings held: sense/register mismatches (#4, #8, #17, #18), reconstruction/surface choices (#6), the ambiguous ⟨ȍ⟩ length convention (#13/#14), stress consistency notes (#12, #19), positive controls (#11, #15), and the `mns` moon lexeme (#16, actionable but not yet reliably sourceable to a single IPA — flagged for next round).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I verified every claimed "applied" fix against the live data files (grep on `words/*.js`). All 9 applied edits are present and correct in the live data:
+
+### Applied fixes — VERIFIED ✓
+- **#1 kca cat** ✓ `words/cat.js:137` = `["кошка", "koʃka"]` — retroflex [ʂ]→[ʃ] corrected. Surface still the bare Russian loan, but per my own "at minimum not the bare Russian" wording and the worker's documented inability to source a native form offline, I accept the IPA-only fix and the editor flag. Not a clear local error anymore.
+- **#2 mns cat** ✓ `words/cat.js:874` = `["кошка", "koʃka"]` — matches my endorsed [koʃka]. Accept.
+- **#3 ohu cat** ✓ `words/cat.js:158` = `["macska", "mɒt͡ʃkɒ"]` — both [ɒ] and the tie-barred [t͡ʃ] applied, matching `hu` line 157. Accept.
+- **#5 ohu love** ✓ `words/love.js:158` = `["szèrēlm", "sɛreːlm"]` — tap [ɾ]→trill [r]. Accept.
+- **#7 hu hello** ✓ `words/hello.js:157` = `["szia", "sijɒ"]` — hiatus glide [j] inserted. Accept.
+- **#9 kca heart** ✓ `words/heart.js:137` = `["сӑм", "sɐm"]`. Accept.
+- **#10 kca mother** ✓ `words/mother.js:137` = `["ӑңки", "ɐŋki"]`. Accept.
+- **#20 kca thanks** ✓ `words/thanks.js:137` = `["пӑсиве", "pɐsive"]`. Accept.
+- **kca house (bonus)** ✓ `words/house.js:137` = `["хӑт", "xɐt"]` — correct application of the endorsed global ⟨ӑ⟩→[ɐ] pass per the "fix all variants together" rule. Good catch; accept.
+
+The kca breve normalization is now systematic and complete (heart, mother, thanks, house; sun `хатәл` already correct). This fully resolves the systematic issue I raised in #20.
+
+### Held items — adjudication
+- **#4 ohu dog (`kuvasz`)** — △ ACCEPT-AS-HELD. `words/dog.js:158` unchanged. The worker is right that the only concrete replacement I offered (`kutya`/[kucɒ]) merely duplicates the `hu` cell. Picking an *attested* Old Hungarian generic is a reconstruction call I am not positioned to source offline either. Genuine sense mismatch, but won't-fix without a sourced archaic lexeme. Documented limitation.
+- **#6 ohu love `/lm/`** — ✗→won't-fix. Requires altering the reconstructed surface; a reconstruction decision, not a transcription bug. Accept as held.
+- **#8 ohu hello (`isten hozott`)** — accept as held; I myself confirmed the segmental IPA is defensible. Register flag for editors only.
+- **#12 ohu father stress, #19 hu thanks stress** — accept as held. I labelled both consistency notes, not errors. Adding [ˈ] to isolated cells would create new inconsistency; defer to a global stress policy.
+- **#13 ohu moon / #14 ohu good (⟨ȍ⟩ length)** — accept as held PAIR. This is the undocumented double-grave convention I flagged as ambiguous in #15. With no documented key, "resolve the convention" is a system-level editor decision. The two cells genuinely disagree (`hȍld`→[hold] short vs `jȍw`→[joːw] long), but I cannot declare a canonical direction without the dataset's own length key. Editor action, not a dev fix.
+- **#11 mns father, #15 ohu mother** — positive controls; no change requested. Confirmed unchanged. Fine.
+- **#17 kca love / #18 mns love (noun/verb sense)** — accept as held; both IPAs verified internally consistent. Cross-row POS reconciliation is editorial.
+- **#16 mns moon (`эрь`)** — ✗ STILL OPEN. `words/moon.js:880` is still `["эрь", "erʲ"]`. This is NOT a convention or stress note — it is a demonstrable LEXICAL error: `эрь` does not mean 'moon' in Mansi, and the worker's own round-1 research confirms this and identifies the attested Northern Mansi `этпос` (cited Wiktionary `во̄ртур э̄тпос`, Wikivoyage). The parallel kca cell correctly uses a real 'moon' word (`тылащ`/[tɯlaɕ], moon.js:137), so an outright wrong lexeme in the mns cell stands out.
+
+  The worker declined to fix only because exact dialectal vowel-length for the IPA is uncertain. That is over-cautious: the surface `этпос` is attested and citable, and a **broad, length-agnostic** transcription is fully defensible and strictly better than a wrong lexeme. The Cyrillic is phonetically transparent — э=[e], т=[t], п=[p], о=[o], с=[s] → broad [etpos] (no length marks claimed). Replacing a wrong word with an attested word + a broad IPA is a concrete, actionable step that has not yet been attempted, and it does not violate the no-guess rule (we are not inventing a surface; we are using a cited attested one and a conservative broad IPA).
+
+### New issues
+None. No new defensible errors found during verification.
+
+### Scorecard
+- Applied & verified in live data: 9/9 ✓ (no phantom/missing fixes — good)
+- Held items accepted as defensible (sense/reconstruction/convention/stress/positive-control): #4, #6, #8, #11, #12, #13, #14, #15, #17, #18, #19
+- Still open (clear lexical error, concrete next step available): #16 mns moon
+
+**File status: OPEN** — Next step (single item): in `words/moon.js:880`, replace the non-'moon' lexeme `["эрь", "erʲ"]` with the attested Northern Mansi moon word `["этпос", "etpos"]` (broad, length-agnostic IPA; do not invent length marks). If after a further genuine attempt no attested surface can be confirmed, document `эрь` as a known-limitation needs-human-Mansi-lexicographer caveat in the cell/notes and we will close.

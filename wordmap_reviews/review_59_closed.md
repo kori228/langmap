@@ -131,3 +131,69 @@ I am a phonologist and orthographer specializing in the Southwestern Tai branch 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope note up front: across the whole dataset, the SW-Tai entries follow a consistent *broad* house convention — `th`/`lo`/`blt`/`khb` final stops are written WITHOUT the unrelease diacritic (`th` สวัสดี `…wat…`, `rak`, `kʰɔːp`, `tʰit`; `lo` `kʰɔːp`, `hak` — none carry ̚), `blt`/`khb` use `ai`/`au` (not `aj`/`aw`), and `blt`/`khb` routinely omit tone letters and length on greeting/transliteration entries. Several review items ask to override these *system-wide* conventions; per project editing policy those are held as won't-fix (they would make the targeted entry INCONSISTENT with the rest of its own language's data, and the cited "precedent" eat.js `mʌk̚t͈a` is Korean, not Tai). What I applied are only the clear, internally-consistent IPA-notation and segmental errors.
+
+### Applied (4)
+
+- **#2 `blt` thanks** `words/thanks.js` line 987 — IPA field `dʒɔp tʃai` → `t͡ɕɔp t͡ɕai` (applied by orchestrator this round). Two non-IPA bare affricate digraphs corrected to the dataset's house palatal `t͡ɕ` (cf. th/lo `t͡ɕaj`). The `dʒ` was doubly wrong: Tai Dam has NO voiced affricate in its inventory — only a voiceless palatal `<c>`=/t͡ɕ/ (Fippinger & Fippinger 1970, via NIU SEAsite Tai Dam phonology, https://seasite.niu.edu/tai/TaiDam/phonology.htm). Held the reviewer's added length/unrelease/tone (`t͡ɕɔːp̚ … toned`) as out-of-convention for blt (see scope note).
+- **#3 / #19 `blt` heart** `words/heart.js` line 987 — IPA field `tʃai˧` → `t͡ɕai˧` (applied by orchestrator this round). `tʃ` (post-alveolar, non-IPA digraph) → alveolo-palatal `t͡ɕ` to match the dataset's Tai palatal everywhere (th `t͡ɕaj`, lo `t͡ɕaj`). Tone `˧` retained. Kept the `ai` glide (blt house convention: `fai`, `mai`, `sai` all use `ai`, not `aj`).
+- **#17 `khb` one** `words/one.js` line 992 — IPA field `nuŋ` → `nɯŋ` (applied by orchestrator this round). Clear vowel error: New Tai Lü ᦹ = high back UNROUNDED /ɯ/; every cognate in the file is `nɯŋ` (th, lo, blt). Tone left unmarked, consistent with all other khb entries (held per scope note).
+- **#18 `khb` hand** `words/hand.js` line 986 — IPA field `muː` → `mɯː` (applied by orchestrator this round). Same ᦹ=/ɯ/ vowel error; th/lo `mɯː`, blt `mɯ`. Length `ː` retained; tone left unmarked per khb convention.
+
+### Held with rationale (won't-fix this round)
+
+- **#1 `blt` hello, #5 `khb` drink, #6 `khb` hello, #7 `khb` thanks** — these are bare romanizations/transliterations missing tones (and sometimes length). Held: tone is systematically absent from ALL blt/khb greeting-style entries in the corpus; supplying it is a corpus-wide policy decision and each syllable's tone needs per-lexeme sourcing from a Tai Lü/Tai Dam tone box, not a local mechanical fix. The non-tone segmental sub-claims in #7 (`au`→`aw`) are held because khb consistently uses `au`/`ai` (e.g. `nau`, `fai`).
+- **#4 `khb` water (length), #12 `th_isan/th_n/th_s` water, #13 `soa` water** — `nam`→`naːm`. Held: vowel-length here is a consistent broad-transcription house choice for the regional/minority variants (all three Isan/N/S Thai and soa write short `nam`; khb too). Central Thai/Lao using `naːm` does not make the regional short forms a *local error* — it is a deliberate cross-variety transcription depth difference. Recommend reviewer escalate as a corpus-wide normalization proposal if desired.
+- **#8 `khb` sun** — `tsau` → tie-bar + `aw` + tone. Held: tone/glide are system conventions (see above). The `ts`→`t͡s` tie-bar point is notationally reasonable, but khb writes its affricates plainly throughout and the rime would also need `au`→`aw`; bundling makes this a convention change, not an isolated error. Held for consistency; flag for a dedicated khb affricate-normalization pass.
+- **#9 `blt` love, #10 `th` love (diacritic), #14 `th` thanks, #15 `th` sun (diacritic)** — demand unreleased ̚ on final p/t/k. Held: NO `th`/`lo`/`blt` entry in the corpus marks final-stop unrelease; adding it to these would make them inconsistent with every other Tai entry. This is a system-level convention the team has applied uniformly. The cited eat.js precedent is Korean (`mʌk̚t͈a`), not a Tai language, so it does not establish a Tai convention.
+- **#10 / #15 tone-value** (`˧˥`→`˦˥`) — reviewer explicitly calls the current contour "acceptable" / "common phonetic realization." Not an unambiguous error; held.
+- **#11 `soa` love** — surface รัก→ฮัก. Held: surface-orthography change; reviewer themselves offers "or keep รัก but flag the r→h note." The IPA `hak` already encodes the merger; the script choice is a defensible convention (etymological spelling) and not an unambiguous error. Flag for human decision.
+- **#16 `khb` moon, #20 `khb` father** — tone-only omissions; same rationale as #1/#5/#6 (system-wide untoned khb convention; tone needs sourcing). Held.
+
+No segments/IDs are involved (this corpus is per-word IPA, not segmented). Net: 4 clear-error edits applied; remaining items held as system-level convention choices or sourcing-dependent normalizations for reviewer escalation.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claim against the **live** data files. All four applied edits are present and correct; the held items rest on convention claims that I checked directly against the corpus and found to be true.
+
+### Verification of the 4 applied fixes (all ✓ confirmed in live data)
+
+- **#2 `blt` thanks** — `words/thanks.js:987` now reads `["ꪒꪲ ꪎꪶꪙ", "t͡ɕɔp t͡ɕai"]`. ✓ The non-IPA `dʒɔp tʃai` is gone. The worker's added justification (Tai Dam has no voiced affricate; only voiceless `/t͡ɕ/`, per Fippinger & Fippinger 1970 / NIU SEAsite) is sound and matches the dataset's house palatal `t͡ɕ`. Accept.
+- **#3 / #19 `blt` heart** — `words/heart.js:987` now `["ꪈꪲꪒ", "t͡ɕai˧"]`. ✓ `tʃ`→`t͡ɕ` applied, tone `˧` retained. Accept.
+- **#17 `khb` one** — `words/one.js:992` now `["ᦓᦹᧂᧈ", "nɯŋ"]`. ✓ The /u/→/ɯ/ vowel error is fixed (ᦹ = high back unrounded; cognates th/lo/blt all `nɯŋ`). Accept.
+- **#18 `khb` hand** — `words/hand.js:986` now `["ᦙᦹ", "mɯː"]`. ✓ Same ᦹ=/ɯ/ fix, length retained. Accept.
+
+### Adjudication of held items
+
+- **#9 `blt` love, #10 `th` love, #14 `th` thanks, #15 `th` sun — final-stop unrelease ̚** — **✗ reject / accept the hold.** I grepped the whole corpus for U+031A (◌̚). It occurs **only** in Korean (`ko*`, e.g. `mʌk̚t͈a`, `t͡ɕip̚`, `komap̚`) and Min Nan (`nan*`, e.g. `dzit̚`, `bak̚`). It appears in **zero** Tai entries (th/lo/blt/khb). The reviewer's sole cited precedent (`eat.js mʌk̚t͈a`) is indeed Korean, not Tai. Adding ̚ to these Tai entries would make them the lone unrelease-marked items in the entire Tai sub-corpus. This is a defensible, uniformly-applied system-level convention. Hold sustained.
+- **#10 / #15 tone-value `˧˥`→`˦˥`** — **✗ reject.** The reviewer's own text calls the current contour "acceptable" / "common phonetic realization." Not an unambiguous error. Hold sustained.
+- **#1 / #5 / #6 / #7 / #8 / #16 / #20 — missing tone letters on blt/khb** — **△ accept the hold for now (documented limitation).** I dumped every `khb` entry in the corpus: **all 20** omit tone letters (`kin`, `taː`, `nɯŋ`, `nam`, `pɔ`, `maː`, `mɯː`, `liːn`, `diː`, `hak`, `fai`, `tsau`, `nau`, …). Tone omission is genuinely corpus-wide for khb, and per-lexeme tone requires a Tai Lü/Tai Dam tone-box source. Per round-2 loop-termination policy, this is a system-wide normalization that cannot be mechanically fixed locally; I will not hold the file open demanding per-syllable tone that needs a human Tai-Lü linguist. Recorded as a **known limitation** (see caveat below). The segmental sub-claims `au`→`aw` (#7), `ts`→`t͡s` (#8): I confirmed khb writes rimes as `au`/`ai` (`fai`, `nau`, `tsau`) and affricates plainly throughout, so these are convention-bundled, not isolated errors. Hold sustained.
+- **#4 / #12 / #13 — water vowel length `nam`→`naːm`** — **△ accept the hold.** Live data: Central Thai `naːm` and Lao `naːm` (long), but every regional/minority variety is short — `soa nam`, `th_isan nam`, `th_n nam`, `th_s nam`, `khb nam`, `blt nam˦`. The short forms are uniform across all six minority/regional variants; this is a deliberate cross-variety transcription-depth difference, not a local slip. The reviewer's historical-length argument is linguistically valid and worth a **corpus-wide** normalization proposal, but it is not a defensible *local* error. Hold sustained as a system-level choice.
+- **#11 `soa` love surface รัก vs ฮัก** — **△ accept the hold (flag for human).** Live data confirms the mix: `th_isan`/`th_n` = ฮัก (overt merger spelling), `th_s` = รัก/`rak`, `soa` = รัก/`hak` (the surface/IPA mismatch flagged). The IPA `hak` already encodes the *r>h merger; keeping etymological รאก spelling is a defensible orthographic convention (th_s does the same), and the reviewer themselves offered "or keep รัก but flag." Not an unambiguous error. Flagged for human orthography decision.
+
+### New issues
+
+None. During verification I found no new clear errors; the corpus conventions I spot-checked (ai/au glides, untoned khb, no Tai unrelease, regional short `nam`) are internally consistent.
+
+### Scorecard
+
+| Bucket | Count |
+|---|---|
+| Applied & verified in live data | 4 (#2, #3/#19, #17, #18) |
+| Held — accepted as system/convention choice | #1, #5, #6, #7, #8, #9, #10, #14, #15, #16, #20 |
+| Held — accepted, flagged for human (orthography/normalization) | #4, #11, #12, #13 |
+| Rejected demands (not errors) | tone-value #10/#15, unrelease ̚ items |
+| New issues | 0 |
+
+### Known limitation (needs human linguist)
+
+The blt/khb entries are systematically **untoned** and use broad `ai`/`au` rimes and short `nam`. Supplying per-lexeme tone (Tai Lü six-tone / Tai Dam tone box) and resolving the regional vowel-length depth are **corpus-wide** decisions requiring a SW-Tai tone-box source and a human linguist; they are not mechanically fixable on individual entries without introducing intra-language inconsistency. Documented here rather than held open indefinitely.
+
+**File status: CLOSED** — nothing left to address. All 4 clear notation/segmental errors are fixed and verified in live data; every remaining item is either a verified corpus-wide convention I accept, a reviewer-acknowledged non-error, or a documented known-limitation for a future human-linguist normalization pass.

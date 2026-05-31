@@ -155,3 +155,86 @@ I am a typologist and phonologist specialising in language isolates and small ge
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Editing policy applied: fix only clear, unambiguous local errors, internal inconsistencies, or normalizations the dataset's own conventions already endorse. Narrow-transcription features that the broad-transcription house style omits everywhere (laminal/apical sibilant marking, lexical tone, pitch accent, aspiration not otherwise marked, glide-vs-vowel diphthong notation, stress) are held as system-level convention choices, not local errors.
+
+### Applied
+
+- **Issue 3 (eu sun, `words/sun.js`)** — PARTIAL applied. Intervocalic ⟨g⟩ spirantization `eɡuski`→`eɣuski` applied: this is an internal inconsistency, since the dataset applies voiced-stop spirantization elsewhere in Basque (eu drink `edan`→`eðan`) and in the es_eu rows (`agua`→`ˈaɣwa`). The laminal ⟨z⟩=[s̻] part is HELD (broad style: no eu row marks laminal/apical). (applied by orchestrator this round)
+- **Issue 4 (eu moon, `words/moon.js`)** — applied `ilaɾɡi`→`ilaɾɣi`. Same spirantization rule, post-rhotic ⟨g⟩→[ɣ]. (applied by orchestrator this round)
+- **Issue 5 (eu eye, `words/eye.js`)** — applied `beɡi`→`beɣi`. Intervocalic ⟨g⟩→[ɣ]. (applied by orchestrator this round)
+- **Issue 8 (ain thanks, `words/thanks.js`)** — applied removal of the spurious long vowel only: `ijairaːikeɾe`→`ijairaikeɾe`. The [aː] in ライ /raj/ has no source and is a clear error. The further ai→aj glide narrowing is HELD (the set writes Ainu/Basque diphthongs as vowel sequences, e.g. eu `aita`). (applied by orchestrator this round)
+- **Issue 9 (ain hello, `words/hello.js`)** — applied removal of the epenthetic kana vowel only: `iɾankaɾapute`→`iɾankaɾapte`. プ in *irankarapte* is coda /p/ before テ /te/ (/rap.te/); the inserted [u] is a kana-mater-vowel artefact. Pitch-accent marking is HELD (house style). (applied by orchestrator this round)
+- **Issue 10 (ain hand, `words/hand.js`)** — applied `teku`→`tek`. テク spells coda /k/; *tek* is the citation form (Tamura 2000). Epenthetic final vowel removed. (applied by orchestrator this round)
+- **Issue 11 (ain eye, `words/eye.js`)** — applied `ɕiku`→`ɕik`. Same coda-/k/ kana convention; *sik* /ɕik/. (applied by orchestrator this round)
+- **Issue 12 (ket father, `words/father.js`)** — PARTIAL applied. The mixed-script surface typo `ɔб` (Latin/IPA U+0254 + Cyrillic U+0431) → `об` (Cyrillic U+043E + U+0431) is fixed; this is an unambiguous local error. The tone/laryngeal IPA marking is HELD: Ket lexical tone is omitted across the entire `ket` code (Issues 13, 14), i.e. a system-level convention, and `[oːp]` is not itself wrong segmentally. (applied by orchestrator this round)
+- **Issue 15 (niv thanks, `words/thanks.js`)** — PARTIAL applied. Vowel fix `tumɡ`→`tɯmɡ`: clear internal inconsistency — the code renders the same /ɯ/-class vowel as [ɯ] everywhere else (ытык→ɯtɯk, ымык→ɯmɯk, тыф→tɯf, кы→kɯ). The аspiration tʰ is HELD (not marked elsewhere: тыф→tɯf has plain t). (applied by orchestrator this round)
+- **Issue 18 (bsk water, `words/water.js`)** — applied `tʂʰil`→`ʈʂʰil`. The aspirated retroflex affricate ⟨čh⟩ must have a retroflex stop onset [ʈ], not dental [t]; the dataset already uses `ʈʂʰ` in house style (zh 吃→ʈʂʰɨ˥; arn `ʈʂ`). (applied by orchestrator this round)
+- **Issue 19 (bsk eye, `words/eye.js`)** — PARTIAL applied. Retroflex onset fix `ltʂin`→`lʈʂin` (same place error as Issue 18). The leading-hyphen-in-IPA and syllabic [l̩] parts are HELD: the code consistently strips the bound-form hyphen in the IPA field (`-us`→`us`, `-rin`→`rin`, `ši-`→`ʂi`), so adding it to `-lčin` alone would *create* an inconsistency. (applied by orchestrator this round)
+
+### Held with rationale (won't-fix / needs reviewer or human linguist)
+
+- **Issue 1 (eu heart, bihotz)** — HELD. Silent ⟨h⟩ in `biot͡s` reflects the standard/southern (Batua) norm the dataset uses by default; this is a documented school choice, not an unambiguous error. Laminal marking is house-style-omitted.
+- **Issue 2 (eu tree, zuhaitz)** — HELD. Only requests laminal/apical narrow marking (s̻); not applied anywhere in the eu code. The [h] is already present and correct.
+- **Issue 6 (eu thanks, eskerrik)** — HELD. The IPA `eskerik asko` already uses [r], which in IPA *is* the trill, contrasting with the tap [ɾ] used elsewhere in the set (es_eu `koɾaˈθon`, `aɾβol`). The reviewer's "single tap" reading is mistaken; orthographic ⟨rr⟩→single trill symbol [r] is correct. Sibilant/stress narrowing is house-style.
+- **Issue 7 (eu hello, kaixo)** — HELD (reviewer marks it minor). ai→aj glide notation not used for eu diphthongs in the set.
+- **Issue 13 (ket water, уьл)** & **Issue 14 (ket eye, де)** — HELD. Lexical-tone marking is omitted across the entire dataset (system-level); segmentally the entries are not wrong.
+- **Issue 16 (niv drink, ракь)** — HELD. The surface orthography is ⟨кь⟩ (velar к + soft sign); the uvular series is written ⟨ӄ⟩ in this code (ӈафӄa→ŋafqa). [kʲ] matches the source spelling; promoting it to uvular [q] would contradict the orthography. A phonological-analysis claim, not a transcription bug.
+- **Issue 17 (niv/ket cat, кошка)** — HELD. Reviewer's "expected" IPA equals the current value; the request is only a loan *flag* (metadata), not a per-word IPA change. `koʂka` is the correct Russian realization.
+- **Issue 20 (bsk hand, -rin)** — HELD. Adding the possessor hyphen to the IPA field would be inconsistent with the code's uniform treatment (`-us`→`us`, `ši-`→`ʂi`). Bound status is already shown in the surface field.
+- **Issue 21 (bsk good `ʂua` vs hello `ʂuaː`)** — HELD, needs sourced decision. A genuine inconsistency, but resolving the vowel-length contrast requires an authoritative Berger 1998 citation for *šua* 'good'; I could not confirm offline whether the canonical form is short [ʂua] or long [ʂuaː], and the two entries may be distinct lexicalisations (adjective vs greeting). Per the no-guessing rule I decline to pick one without a source; recommend a human linguist with Berger 1998 reconcile orthography (⟨shua⟩/⟨šuá⟩) and length together.
+- **Issue 22 (sum identity + surface=IPA copies)** — HELD. The "Sumo vs Sumerian" framing is a label/metadata matter (lang_names.js), not a per-word data error in words/*.js, and is out of scope for this read-only data pass. For the copied rows (was, as, walai, pain, naksa, suluk, di), Mayangna orthography is largely phonemic, so [was]=[was] etc. are defensible broad transcriptions; the reviewer supplies no corrected IPA. No sourced re-transcription could be obtained offline (Norwood's *Gramática de la lengua sumu* / CIDCA lexicon not accessible). Recommend escalation to a human linguist with CIDCA materials for a stress/vowel-quality pass.
+- **Issue 23 (sum eat, piru)** — HELD. The row is already interpreted ([piɾu], tap). The only request is stress marking, which is unmarked throughout the sum code (system-level).
+- **Issue 24 (sum final ⟨h⟩: waikuh, mistuh, nuh, kuh)** — HELD, unsourceable offline. The reviewer offers only alternatives (real [h] / glottal [ʔ] / vowel-quality marker) without a definitive value. A literal [h] coda is not unambiguously wrong, and I could not source the Mayangna phonemic status of final ⟨h⟩ from Norwood/CIDCA offline (web search confirmed the grammar exists but not the relevant detail). Per the no-guessing rule, recommend the reviewer accept the current forms with a documented caveat or escalate to a human linguist with the CIDCA Mayangna lexicon.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix against the **live** per-word data (`node -e` dumping `WORDS.<word>.data.<code>`; the entries live under the `data` key, not `entries`). All eleven "Applied"/"Partial" claims are genuinely present in the files — no phantom fixes this round.
+
+### Verified-applied (accept ✓)
+
+| Issue | Code/word | Live value | Verdict |
+|---|---|---|---|
+| 3 | eu sun | `["eguzki","eɣuski"]` | ✓ g-spirantisation applied; laminal-z held |
+| 4 | eu moon | `["ilargi","ilaɾɣi"]` | ✓ |
+| 5 | eu eye | `["begi","beɣi"]` | ✓ |
+| 8 | ain thanks | `["イヤイライケレ","ijairaikeɾe"]` | ✓ spurious [aː] removed |
+| 9 | ain hello | `["イランカラプテ","iɾankaɾapte"]` | ✓ epenthetic [u] removed |
+| 10 | ain hand | `["テク","tek"]` | ✓ |
+| 11 | ain eye | `["シク","ɕik"]` | ✓ |
+| 12 | ket father | `["об","oːp"]` | ✓ surface now U+043E U+0431 (both Cyrillic) — mixed-script typo genuinely gone; tone held |
+| 15 | niv thanks | `["туьмг","tɯmɡ"]` | ✓ /ɯ/ fix; verified internal consistency vs ымык→ɯmɯk, ытык→ɯtɯk |
+| 18 | bsk water | `["čhil","ʈʂʰil"]` | ✓ retroflex onset |
+| 19 | bsk eye | `["-lčin","lʈʂin"]` | ✓ retroflex onset; hyphen held |
+
+### Held items — adjudication
+
+- **Issues 1, 2, 7, 13, 14, 23 (narrow features: laminal/apical s̻/s̺, ai→aj glide, Ket tone, sum stress)** — **ACCEPT held (✗ as local error).** These request narrow features the broad house style omits *uniformly* across the whole dataset. Defensible system-level convention, not a local error.
+- **Issue 6 (eu thanks, eskerrik)** — **ACCEPT held.** I independently confirmed the dataset distinguishes tap vs trill *by symbol*: taps are written `ɾ` (`ˈaɾβol`, `aˈmoɾ`, `ilaɾɣi`), so the single `r` in `eskerik asko` is the IPA **trill**, which is exactly the correct value for orthographic ⟨rr⟩. The original review's "single tap" reading was mistaken; worker is right.
+- **Issue 16 (niv drink, ракь)** — **ACCEPT held.** Confirmed the niv code reserves Cyrillic ⟨ӄ⟩ for the uvular series (`ӈафӄа`→`ŋafqa`), while `ракь` uses plain ⟨к⟩. Promoting it to [q] would contradict the source orthography. Correctly held.
+- **Issue 17 (niv/ket cat, кошка)** — **ACCEPT held.** Reviewer's "expected" IPA == current value; only a loan *flag* (metadata) was requested. `koʂka` is the right Russian realisation. No data change owed.
+- **Issue 20 (bsk hand, -rin)** — **ACCEPT held.** Confirmed the code strips the bound-form hyphen uniformly in the IPA field (`-us`→`us`, `-rin`→`rin`, `ši-`→`ʂi`); adding it to one entry would *create* inconsistency. Bound status already shown in surface.
+- **Issue 21 (bsk good `ʂua` vs hello `ʂuaː`)** — **△ partial / known limitation.** A genuine length inconsistency between two spellings of the same root (⟨shua⟩/⟨šuá⟩). Resolving it correctly requires Berger 1998 vowel-length data the team credibly cannot source offline, and the two may be distinct lexicalisations (adjective vs greeting). Per loop-termination, I will not hold the file open for an impossible-offline citation. **Logged as a known limitation needing a human linguist with Berger 1998.**
+- **Issues 22, 24 (sum)** — **△ / known limitation.** I surveyed all 20 sum rows live: 7 are genuinely interpreted (ng→ŋ in `papaŋ`/`tiŋ`, y→j in `jaisi`, r→ɾ in `nakɾa`/`piɾu`, â→aː in `maː`/`aːu`) and 13 are surface=IPA copies. Crucially, **none of the remaining copies contain a symbol the code's own applied conventions would change** (no stray `ng`, `y`, `r`, or `â`), so as *broad* transcriptions of a largely-phonemic orthography they are internally consistent and not unambiguously wrong. The one real open question — whether final ⟨h⟩ (waikuh/mistuh/nuh/kuh) is [h] / [ʔ] / a vowel-quality marker — and a stress/vowel-quality pass both require Norwood / CIDCA Mayangna materials the team documented as inaccessible offline after a genuine search. The "Sumo vs Sumerian" point is a `lang_names.js` metadata matter, out of scope for this words/*.js data pass. **Logged as a known limitation needing a human linguist with CIDCA materials.**
+
+### New issues
+
+None. During verification I dumped the full sum, niv, eu, bsk, ain, ket rows and found no additional clear errors beyond what the review already raised.
+
+### Scorecard
+
+- Verified-applied fixes: 11/11 present in live data (no phantom fixes).
+- Held items I accept as defensible convention / metadata / correct-as-is: 1, 2, 6, 7, 13, 14, 16, 17, 20, 23.
+- Known limitations escalated to human linguist (unsourceable offline, will not loop on): 21, 22, 24.
+- New actionable issues for the dev team: 0.
+
+Every clear, locally-fixable error has been fixed and verified. The only remaining items are (a) narrow-transcription features the broad house style omits system-wide, which I accept, and (b) three externally-sourced questions the team has genuinely attempted and credibly documented as unsourceable offline — which, per the round-2 loop-termination rule, I close with an explicit known-limitation caveat rather than demand again.
+
+**File status: CLOSED** — nothing left to address (open items are accepted conventions or documented known limitations for a human linguist).
+

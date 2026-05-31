@@ -137,3 +137,89 @@ I am a descriptive phonologist of the non-Mandarin Sinitic topolects, with prima
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every cited line verbatim against the current `words/*.js` files. Applied the clear, unambiguous local errors and the internal-consistency / toneless-completion fixes. Where the reviewer's correction was a genuine cross-school contour judgement, a sandhi call the reviewer flagged as low-confidence, or a rime restructuring I could not source offline, I held with rationale. Fixes are returned as structured edits for the orchestrator to apply serially (data files are read-only to me).
+
+**1 + 2. `wuu` sun 太阳 `da˩jã˩` → `tʰa˧˧ɦiã˩˩` — applied (applied by orchestrator this round).** Two real local errors on one string: 太 is 透母 (MC voiceless aspirated) and must be `tʰ`, never voiced `d` (cf. `wuu_sz` `tʰɛ˧˧`); 阳 is a yang-register 以母 syllable that surfaces with the breathy `ɦ`-onset that defines the Wu yang series across the whole cohort. Replaced as one edit.
+
+**2b. `wuu` eat 吃 `t͡ɕʰiʔ˧` → `t͡ɕʰiʔ˥` — applied.** 阴入 (yin-ru) is high-short ˥ uniformly across the cohort (`wuu_sz ˥˥`, `wuu_hz ˥`, `wuu_jx/jh ˥`). Tone-only change.
+
+**3. `wuu` one 一 `iʔ˧` → `iʔ˥` — applied.** Same yin-ru category fix; `wuu` was the lone ˧ outlier.
+
+**4. `wuu` drink 喝 `huəʔ˧` → `huəʔ˥` — applied (tone only).** Yin-ru ˥ is the load-bearing fix and is unambiguous. I deliberately did NOT alter the medial `uə`→`ʌ`: the vowel quality is a transcription-grain choice the reviewer himself softened ("the load-bearing error is the tone"), not a clear error.
+
+**5. `wuu` house 屋里 `oʔ˧li` → `oʔ˥li` — applied.** 屋 yin-ru ˥ (cf. `wuu_nb oʔ˥˥li`, `wuu_jx/jh oʔ˥li`).
+
+**6. `wuu` moon 月亮 `ɲyəʔ˧liã˩` → `ɲyəʔ˩˨liã˩` — applied (月 tone only).** 月 is 阳入 (low-short 12); the current ˧ is a non-existent mid checked tone (cf. `wuu_nb ɲyəʔ˩˨`). Fixed the checked syllable; left 亮 `˩` unchanged, matching the reviewer's own expected string.
+
+**7. `wuu` thanks 谢谢 `ʑia˩ʑia` — HELD.** The reviewer offers two alternatives (sandhi'd contour vs citation ˨˧) and the choice depends on a left-dominant sandhi-domain decision not settled uniformly in the cohort (`wuu_sz ʑia˨˧˩ʑia` vs `wuu_jx zia˨˨˧zia˨˨˧`). Not a single unambiguous target; deferred for a reviewer-endorsed convention.
+
+**8. `wuu` tree 树 `zɿ˩` → `zz̩˩` — applied (Sinological→IPA only).** `ɿ`→`z̩` is the reviewer-endorsed mechanical normalization to match the cohort's true-IPA apical rime (`wuu_jx zz̩`). I held the tone (`˩` not rewritten to a fuller departing contour): the cohort is not uniform on the contour value and that is a grain judgement, not a clear error.
+
+**9. `wuu` water 水 `sɿ˧˩` → `sz̩˧˩` — applied (Sinological→IPA only).** Same `ɿ`→`z̩` normalization (cf. `wuu_jx sz̩`, `wuu_jh sz̩`). I held the tone contour: the granular points themselves disagree (`wuu_jx ˧˩˧`, `wuu_sz ˥˨`), so "the falling ˧˩ is wrong" is a cross-school contour call, not an unambiguous local fix.
+
+**10. `wuu` heart 心 `ɕin˥` — HELD.** Reviewer explicitly "minor", and the in-dataset Wu points use a level high tone (`wuu_nb siɴ˦˦`, `wuu_sz ɕin˦˦`). 阴平 53-vs-high-level is a system-wide convention choice the project has applied consistently; not a local error.
+
+**11. `cjy` Jin entering-tone register — applied (yang-ru only): sun 日头 `ʐəʔ˨tʰəu˩` → `ʐəʔ˥˦tʰəu˩`; moon 月亮 `yəʔ˨liɔ̃˩` → `yəʔ˥˦liɔ̃˩`.** Taiyuan splits 入声 into 阴入 (low-short 2) and 阳入 (high-short 54); writing 月/日 (yang-ru) as ˨ collapses the contrast. Corrected the two yang-ru syllables to ˥˦ (54), the standard Taiyuan 阳入 value (汉语方音字汇, Taiyuan column; cf. Norman 1988 on the ru register split). Left 一/吃/喝 (yin-ru) at ˨, which is correct.
+
+**12. `cjy` tree 树 `su˨˩˧` → `su˦˥` — applied.** 树 is 去声; Taiyuan 去声 is high-rising 45, while ˨˩˧ (213) is the 上声 contour (the dataset uses ˨˩˧ for 上声 elsewhere). Reassigned to the correct departing-tone value 45 (汉语方音字汇, Taiyuan tone classes).
+
+**13. `gan` eat 吃 `t͡ɕʰiat˥` — HELD.** The reviewer's coda claim (`-t`→`-ʔ`) actually contradicts the dataset's own Nanchang coda scheme, which uses true stop codas (一`it`, 喝`hot`, 屋`uk`, 月`ŋyot`), so `-t` is internally consistent. The only possibly-clear part is the vowel `ia`→`iɛ`, which I could not confirm against an authoritative Nanchang source offline (web search did not surface the 汉语方音字汇 Nanchang reading). Per the no-guess rule: unsourceable offline — recommend the reviewer supply the cited Nanchang form or accept the current value with a caveat.
+
+**14. `gan` eye 眼睛 `ŋan˨˩t͡sin` → `ŋan˨˩t͡sin˦˨` — applied.** 睛 was left toneless; 睛 is 阴平 and the `gan` cohort writes 阴平 as ˦˨ (42) (cf. `gan` 心 `ɕin˦˨`). Toneless-completion with the variety's own value.
+
+**16. `cjy` eye 眼睛 `niæ˨˩˧t͡ɕiŋ` → `niæ˨˩˧t͡ɕiŋ˩` — applied.** Reviewer's comparative note: 睛 toneless. Taiyuan 阴平 is 11 (˩), as `cjy` heart `ɕiŋ˩` confirms. Toneless-completion. (The `hsn` 眼睛 part of #16 needs no change — already toned ˧.)
+
+**15. `hsn` water 水 `ɕy˦˩` — HELD.** Restoring an `-ei` offglide (`ɕy`→`ɕyei`) to de-merge 水/树 is a rime restructuring, not a local typo. The exact Changsha rime quality varies by source and I could not confirm `ɕyei` against an authoritative Changsha reference offline. Per the no-guess rule: unsourceable offline — recommend reviewer supply the cited 汉语方音字汇 Changsha form or escalate.
+
+**17. `zh_jh` eat 吃 `tʂʰʔ˥˥` → `tʂʰʅ˥˥` — applied.** `tʂʰʔ` has a retroflex affricate followed directly by a glottal stop with no nucleus — phonotactically impossible. Restored the apical retroflex rime `ʅ` (cf. `zh_zz` 吃 `tʂʰʅ˨˦`). Clear dropped-nucleus typo.
+
+**18. `zh_jh` moon 月亮 `yeʔ liaŋ` → `yeʔ˥˥liaŋ˦˦` — applied (variety-internal tones).** Removed the stray literal space (appears nowhere else in the column) and supplied the missing tones using this variety's OWN system rather than the reviewer's suggested ˥/˨˦: checked syllables here are ˥˥ (cf. 一`iʔ˥˥`, 喝`xəʔ˥˥`, 吃`˥˥`) and 去声 is ˦˦ (cf. 爱`ɛ˦˦`, 树`sɿ˦˦`, 谢`ɕje˦˦`), so 月→˥˥, 亮→˦˦.
+
+**19. `zh_jh` eye 眼 `jɛn˨˩˦` — HELD.** Expanding the monosyllable 眼 to disyllabic 眼睛 changes the surface lexeme and requires a sourced 睛 reading for this specific variety, which I could not obtain offline. This is a word-sense / lexicalization question (the reviewer himself notes it may be genuine and merely needs a footnote), not a clear typo. Recommend reviewer decision: footnote 眼 as the variety's lexeme, or supply the cited 眼睛 form.
+
+**20. `wuu_hz` thanks 谢谢 `ziɑ˩˩ziɑ˨˩` — HELD.** Reviewer explicitly flagged this as "Lower-confidence than 1–19; raised for the editor's check." The two-tone pattern is a reduplication-sandhi judgement with no single unambiguous target; deferred.
+
+**Summary:** Applied 12 edits across 9 files (findings 1+2 merged into one edit; 2b, 3, 4, 5, 6, 8, 9, 11×2, 12, 14, 16, 17, 18). Held 7 items (7, 10, 13, 15, 19, 20, and the comparative-only halves of 16) as either cross-school convention won't-fix, low-confidence sandhi, or rime/lexeme changes that are unsourceable offline and need a cited form or reviewer decision.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed edit against the live `words/*.js` data and checked each held item against its cited cohort references. All 12 "applied" fixes are genuinely present in the live files — no phantom edits this round.
+
+**Verified-applied (✓ accepted):**
+
+- **1+2 `wuu` sun** — live `words/sun.js:74` = `["太阳", "tʰa˧˧ɦiã˩˩"]`. ✓ 透母 aspiration restored, yang-register ɦ-onset restored. Matches `wuu_sz` `tʰɛ˧˧ɦiɔ̃˨˧`. Correct.
+- **2b `wuu` eat** — `eat.js:74` = `t͡ɕʰiʔ˥`. ✓ yin-ru high-short.
+- **3 `wuu` one** — `one.js:74` = `iʔ˥`. ✓
+- **4 `wuu` drink** — `drink.js:74` = `huəʔ˥`. ✓ Tone fixed; worker correctly declined the `uə`→`ʌ` vowel rewrite, which I had myself softened as non-load-bearing. Accepted.
+- **5 `wuu` house** — `house.js:74` = `oʔ˥li`. ✓
+- **6 `wuu` moon** — `moon.js:74` = `ɲyəʔ˩˨liã˩`. ✓ 阳入 12 restored on 月; 亮 ˩ left per my own expected string. Accepted.
+- **8 `wuu` tree** — `tree.js:74` = `zz̩˩`. ✓ Sinological `ɿ`→IPA `z̩` done. Tone held — accepted as a grain call (cohort disagrees on the departing contour).
+- **9 `wuu` water** — `water.js:74` = `sz̩˧˩`. ✓ `ɿ`→`z̩` done; contour held. Accepted (granular points genuinely disagree: `wuu_jx ˧˩˧` vs `wuu_sz ˥˨`).
+- **11 `cjy`** — `sun.js:571` = `ʐəʔ˥˦tʰəu˩`, `moon.js:571` = `yəʔ˥˦liɔ̃˩`; yin-ru 一/吃/喝 left at ˨. ✓ Yang-ru 54 split now distinct from yin-ru 2 — the diagnostic Jin register contrast is restored. Correct.
+- **12 `cjy` tree** — `tree.js:565` = `su˦˥`. ✓ 去声 45 now distinct from the 上声 213 shape (`好 xau˨˩˧` confirmed at `good.js:565`). Correct.
+- **14 `gan` eye** — `eye.js:567` = `ŋan˨˩t͡sin˦˨`. ✓ 睛 toned with the variety's own 阴平 value (`gan 心 ɕin˦˨` confirmed). Correct.
+- **16 `cjy` eye** — `eye.js:565` = `niæ˨˩˧t͡ɕiŋ˩`. ✓ 睛 toned with Taiyuan 阴平 11 (`cjy 心 ɕiŋ˩` confirmed). Correct.
+- **17 `zh_jh` eat** — `eat.js:738` = `tʂʰʅ˥˥`. ✓ Dropped apical nucleus restored; the phonotactically-impossible `tʂʰʔ` is gone.
+- **18 `zh_jh` moon** — `moon.js:753` = `yeʔ˥˥liaŋ˦˦`. ✓ Stray space removed; tones supplied from this variety's OWN system (checked ˥˥, 去声 ˦˦ — both confirmed against `一 iʔ˥˥`, `tree 树 sɿ˦˦`). Using the variety's internal system over my suggested values is the right call. Accepted.
+
+**Held items — adjudication:**
+
+- **7 `wuu` thanks `ʑia˩ʑia` — ✗ won't-fix / ACCEPT as held.** I offered two non-identical alternatives and the cohort itself is split (`wuu_sz ʑia˨˧˩ʑia` vs `wuu_jx zia˨˨˧zia˨˨˧`). No single unambiguous target exists; this is a reduplication-sandhi convention call, not a local error. Accepting the hold.
+- **10 `wuu` heart `ɕin˥` — ✗ won't-fix / ACCEPT.** I flagged this myself as "minor." The in-dataset Wu points use a level high tone (`wuu_nb siɴ˦˦`, `wuu_sz ɕin˦˦`) and the project applies a consistent 阴平 convention. System-level choice; not a defensible local error.
+- **13 `gan` eat `t͡ɕʰiat˥` — △ partial / ACCEPT with documented caveat.** The worker is right that the `-t` coda is internally consistent with Nanchang's stop-coda scheme (一`it`, 喝`hot`, 屋`uk`, 月`ŋyot`), so my `-t`→`-ʔ` suggestion was wrong — withdrawn. The residual is only the `ia`→`iɛ` vowel quality, which the worker reports unsourceable offline. This is a single-vowel grain question on an already-coherent rime, not a clear error. Per round-2 loop-termination: ACCEPT current value with a known-limitation note (needs human linguist with 汉语方音字汇 Nanchang to confirm `iat` vs `iɛʔ`).
+- **15 `hsn` water `ɕy˦˩` — △ ACCEPT with documented caveat.** The 水/树 segmental de-merge (`ɕy`→`ɕyei`) is a rime restructuring, not a typo, and the worker documented a genuine offline-research failure to confirm the Changsha `-ei` offglide. This is exactly the loop-termination case: a real but unsourceable-offline question. ACCEPT with known-limitation note (needs human linguist; 水/树 may be segmentally homophonous-but-for-tone in the current data pending a cited Changsha source). Not keeping open over impossible-offline data.
+- **19 `zh_jh` eye `眼` — ✗ won't-fix / ACCEPT.** Expanding 眼→眼睛 changes the surface lexeme and requires a sourced 睛 reading for this variety. I myself noted 眼 may be the genuine lexeme. This is a footnote/word-sense decision for the editor, not a data error. Accepting the hold.
+- **20 `wuu_hz` thanks `ziɑ˩˩ziɑ˨˩` — ✗ won't-fix / ACCEPT.** I explicitly flagged this as "lower-confidence, raised for the editor's check." No single sandhi target; deferred reasonably.
+
+**New issues:** none. (I checked the `zh_jh` column's own use of `ɿ`/`ʅ` — e.g. `tree 树 sɿ˦˦` — and it is internally consistent with that variety's romanization standard; the Sinological→IPA concern in issues 8–9 was scoped to the Wu cohort whose standard is true IPA, so it does not propagate to `zh_jh`. Not raising it.)
+
+**Scorecard:** 12/12 applied fixes verified present and correct in live data. 7 held items all adjudicated as accept/won't-fix or accept-with-documented-caveat. Of the held, 5 are defensible convention/sandhi/lexeme calls and 2 (13, 15) are genuine offline-unsourceable data questions now documented as known limitations needing a human linguist. Nothing concretely actionable remains.
+
+**File status: CLOSED** — nothing left to address. All clear errors fixed-and-verified; remaining items accepted as convention/won't-fix or documented known-limitations (13 `gan` 吃 vowel, 15 `hsn` 水 rime) needing a human linguist with the 汉语方音字汇 source.

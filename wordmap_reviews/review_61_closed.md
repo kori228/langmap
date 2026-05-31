@@ -169,3 +169,55 @@ I am a phonologist of the North Germanic (Scandinavian) languages, covering the 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the careful, well-sourced North Germanic review. I confirmed every "Current" value verbatim against the data files and surveyed the relevant cross-corpus conventions before deciding. Summary: 3 applied, the rest held as system-level convention choices or curation decisions, with rationale below.
+
+**Applied (3):**
+
+- **#1 `fo` sun — `souːl` → `sɔuːl` (applied by orchestrator this round).** Clear internal inconsistency. Faroese ⟨ó⟩ is rendered [ɔu] elsewhere in the same file family (`fo` good `kɔuːʊɹ` good.js l.495; `fo` máni `mɔaːnɪ` moon.js l.501), so the close [ou] in `souːl` is a local slip. Single-character fix (o→ɔ in the diphthong); surface form unchanged.
+- **#13 `da` eat — `sbiːsə` → `sb̥iːsə` (applied by orchestrator this round).** Internal inconsistency. The dataset already marks the devoiced-lenis under-ring on the parallel Danish stop `d̥` in the same code (cat.js `da` `kʰæd̥` l.166; heart.js `da` `jæɐ̯d̥ə` l.166). Extending the established under-ring to the lenis ⟨sp⟩ stop `b̥` is the mechanical, well-supported normalization (Grønnum 2005). Only the IPA changed.
+- **#14 `da` thanks — `tʰaɡ` → `tʰaɡ̊` (applied by orchestrator this round).** Same internal-consistency rationale as #13: final lenis ⟨k⟩ → voiceless-lenis [ɡ̊], parallel to the dataset's own `d̥` notation in cat/heart (Grønnum 2005). Diacritic added; surface form unchanged.
+
+**Held — system-level convention choices the dataset applies consistently (not local errors):**
+
+- **#2 `is` water `vahtn`, #3 `is` one `ɛitn`, #16 `is` fire `ɛltʏɹ`, #17 `is` mother `mouːðɪɹ`, #19 `fo` mother `mɔuːɪɹ` (sonorant devoicing [n̥]/[r̥] and ɹ→r).** Held. Survey of the whole corpus shows the devoiced-sonorant diacritics `n̥`/`r̥`/`l̥` are used **only** in Hmong, Burmese, Xibe, Old Chinese and PIE reconstructions — **never** in any Icelandic, Faroese or Old Norse entry. Every Icelandic final rhotic uses ⟨ɹ⟩ as the base symbol (ɛltʏɹ, kouːðʏɹ, faðɪɹ, hʏntʏɹ, kʰœʰtʏɹ, mouːðɪɹ). The dataset has thus made a deliberate, system-wide transcription choice to (a) not mark Insular sonorant devoicing and (b) use ⟨ɹ⟩ for the Insular rhotic. Your phonology is correct (Árnason 2011), but converting these would be a whole-branch convention change spanning dozens of entries, not a local fix — out of scope for this editing pass. Recommend escalating as a single coordinated transcription-policy decision if the team wants to adopt [r]/[r̥].
+- **#7 `non` heart `hjɑrtɑ`, #8 `non` eat `etɑ` (ON ⟨a⟩ = [ɑ], short ⟨e⟩ = [e]).** Held. ON ⟨a⟩ is transcribed [ɑ] consistently across the Old Norse set (vatn `vɑtn`, faðir `fɑðir`, ást `ɑːst`, auga `ɑuɣɑ`, máni `mɑːni`), and short ⟨e⟩ as [e] (drekka `drekːɑ`, eta `etɑ`). These are internally consistent ON-school choices, not local inconsistencies. The fo/is cognate comparison does not establish an error because each language uses its own consistent vowel inventory. #6 (`non` drink `drekːɑ`→`drɛkːɑ`) held for the same reason.
+- **#18 `non` mother `moːðir`, #11 `sv` water `vatːɛn`, #12 `no` water `vɑnː`, #20 `sv` love `ɕæːɭɛk` (add ˈ / accent-2 mark).** Held. No Old Norse entry in the corpus carries a leading `ˈ` (móðir `moːðir`, auga `ɑuɣɑ`, etc.), and the Swedish/Norwegian entries likewise do not lead with `ˈ` or the accent-2 superscript as a standing convention. Adding stress/tone marks here would be a prosodic-notation policy change across the Continental and ON sets, not a per-entry fix. Held for a coordinated convention decision.
+
+**Held — curation / register choice (not an error):**
+
+- **#9 `sv` mother `mamma`, #10 `sv` father `pappa`.** Held. This is a deliberate lexical/register curation choice (child-register hypocoristic vs. neutral *mor*/*far*), and the demanded fix changes the **surface orthography**, which the editing policy reserves for clear errors only. The team's parental-term register selection per language is a genuine cross-school decision; `mamma`/`pappa` are valid, high-frequency Swedish forms. The inconsistency you note (sv child-register vs. no/da neutral) is real but is a curation question for the reviewer/maintainer to settle, not an unambiguous data error. Recommend a human decision on whether the whole Scandinavian row should be neutral (*mor/far*, *mamma* on all) — I did not unilaterally relexify.
+
+**Confirmation-only items (no change requested):** #4 `is` hand `hœnt`, #5 `non` fire `["eldr","eldr"]`, #15 `fo` drink `tɹɛhka` — agreed as-is. Note on #5: the IPA `eldr` is not a placeholder bug under the dataset's own ON conventions — ⟨e⟩=[e], ⟨l⟩=[l], ⟨d⟩=[d], plain final ⟨-r⟩=[r] (cf. good `ɡoːðr`, cat `kɔtːr`), so the convention-correct transcription genuinely coincides with the orthography here (the same is true of `non` dog `["hundr","hundr"]`). The reviewer's `ˈeldr̩` only differs by the stress/syllabic marks the dataset systematically omits (see #18), so no change.
+
+*Items left open for reviewer/maintainer decision: 2 (#9/#10 register as one curation call; the Insular [r̥]/[n̥]/[ɹ→r] and the prosodic-mark sets as standing convention-policy questions).*
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claim against the live `words/` data. Methodology: grepped the relevant entries plus did corpus-wide sweeps to test the worker's three system-level convention assertions empirically (not just take them on assertion). Findings below.
+
+**Applied fixes — all three verified present in live data (✓):**
+- **#1 `fo` sun** — `words/sun.js:501` now `["sól", "sɔuːl"]`. ✓ Correct, and consistent with `fo` good `kɔuːʊɹ` / máni `mɔaːnɪ`. Accept.
+- **#13 `da` eat** — `words/eat.js:166` now `["spise", "sb̥iːsə"]`. ✓ Devoiced-lenis under-ring applied, matching the dataset's own `kʰæd̥`/`jæɐ̯d̥ə`. Accept.
+- **#14 `da` thanks** — `words/thanks.js:166` now `["tak", "tʰaɡ̊"]`. ✓ Voiceless-lenis ring applied. Accept.
+
+**Held convention items — I verified the worker's corpus-wide claims and they hold (✗ reject as actionable errors; accepted as system conventions):**
+- **#2/#3/#16/#17/#19 (Insular sonorant devoicing [n̥]/[r̥] and ɹ→r).** Verified: a full sweep for combining voiceless-sonorant diacritics (`n̥ r̥ l̥ m̥ ŋ̥`) returns **zero** is/fo/non entries; the 17 Insular rhotic finals all use base ⟨ɹ⟩, the only base-⟨r⟩ uses being pre-consonantal trills (`trɛhka`, `pɔrða`). My phonology (Árnason 2011) is right, but adopting it is a whole-branch transcription-policy change, not a per-entry fix. Accept the worker's hold as a defensible system-level convention; this is correctly flagged for a future coordinated policy pass, not a data error. ✗ (not actionable now)
+- **#6/#7/#8 (ON ⟨a⟩=[ɑ], short ⟨e⟩=[e]).** Verified internally consistent across the ON set (`mɑːni, kɔtːr, drekːɑ, hjɑrtɑ, etɑ, vɑtn`). This is an ON-school transcription choice applied uniformly; the fo/is cognate comparison cannot establish a *local* error against a self-consistent ON inventory. Accept hold. △ (my reconstruction is defensible scholarship but the dataset's choice is internally coherent — won't-fix at the per-entry level.)
+- **#11/#12/#18/#20 (add ˈ / accent-2 mark).** Verified: **no** non/sv/no/nn entry anywhere carries a leading `ˈ`, `²`, or `¹`. The absence is a standing prosodic-notation convention, not a local omission. Accept hold. ✗ (not actionable now)
+- **#5 `non` fire `["eldr","eldr"]`.** Accept the worker's analysis. Verified `non` dog `["hundr","hundr"]` (dog.js:518) and `non` good `["góðr","ɡoːðr"]` — under the dataset's ON convention (plain final ⟨-r⟩=[r], ⟨e⟩=[e], ⟨l⟩=[l], ⟨d⟩=[d]) the transcription legitimately coincides with the orthography. Not a placeholder bug. ✗ (no change)
+
+**Curation item — accepted as a maintainer call (△):**
+- **#9/#10 `sv` mamma/pappa.** Verified: `words/mother.js:164` `["mamma","mamːa"]`, `words/father.js:164` `["pappa","papːa"]`, while no/da/nn give neutral mor/far (mother.js:165/166/500, father.js:165/166/494). The cross-row register inconsistency is **real**, but the fix changes surface orthography, which the editing policy reserves for the maintainer on register questions. `mamma`/`pappa` are valid high-frequency Swedish forms (and arguably the *more* emblematic Swedish parental terms), so this is a defensible curation choice, not an unambiguous error. I accept it as a won't-fix curation decision and flag it as a documented known inconsistency for the maintainer's optional attention — not a blocking data error.
+
+**New issues:** none. Nothing surfaced during verification beyond the items already adjudicated.
+
+**Scorecard:** 3 applied & verified (#1, #13, #14); 0 missing/false-claimed; 11 held items all confirmed against live data as genuine system-level conventions or a defensible curation choice; 2 confirmation-only items (#4, #15) agreed. The held phonological points (Insular devoicing, ON vowel quality, prosodic marks) are correct linguistics but represent whole-branch policy questions documented here for an optional future coordinated pass — there is no concretely actionable per-entry next step the dev team has failed to do.
+
+**File status: CLOSED** — nothing left to address. All three clear internal-consistency errors are fixed-and-verified in live data; every remaining item is an accepted system-level transcription convention or a defensible maintainer curation choice (with the sv register inconsistency logged as a documented known limitation for optional human review).

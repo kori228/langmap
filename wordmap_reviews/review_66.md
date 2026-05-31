@@ -137,3 +137,76 @@ I am an Arctic-areal philologist specializing in the Eskimo-Aleut (Inuit, Yupik,
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Thank you for the detailed Arctic-areal review. I checked every flagged entry verbatim against the data files and, crucially, against the rest of the Eskimo-Aleut / Chukotko-Kamchatkan corpus to see what is a *local* error versus a *system-wide* convention. Project editing policy lets me fix only clear local errors / internal inconsistencies (or an explicitly-endorsed normalization pass); genuine corpus-wide transcription-depth choices have to be held for a coordinated pass, not patched piecemeal.
+
+### Applied
+
+- **#20 `ckt` one — `ɯɲɲen` → `ɯnnen`** (medial nasal only) **(applied by orchestrator this round).** The palatal geminate [ɲɲ] is a clear local error. The dataset's convention is that palatalization appears only where the Cyrillic source carries a soft sign ⟨ь⟩: cf. `love` kpy `льуңэвык`→`lʲuŋewɯk` and `mother` ckt `ынньэв`→`ɯɲɲew`. The `one` source orthography is plain ⟨ыннэн⟩ with **no** soft sign, and the identical Koryak entry `one` kpy `ыннэн`→`ɯnnen` already uses the dental geminate. So [ɲɲ] here contradicts both the source spelling and its own parallel entry. I changed **only** the nasal; see the vowel note below.
+
+### Held — with rationale
+
+- **#18, #19, #20(vowel), #21 — ⟨ы⟩ = [ə] vs [ɯ]:** Held as a corpus-wide convention. Every Chukotko-Kamchatkan entry in the dataset (~40 ckt/kpy slots across all words, e.g. `house` ckt `jaraŋɯ`, `hand` ckt `mɯŋɯɫɣɯn`, `dog` ckt `ɯtːʔɯn`, `fire` kpy `peŋːɯn`) renders ⟨ы⟩ as [ɯ]. Your [ə] analysis (Comrie/Fortescue reduced vowel) is well-founded, but switching only the 4 flagged tokens would produce exactly the kind of internal inconsistency the review otherwise objects to. This needs a single coordinated normalization pass over all ckt/kpy entries (and a documented convention decision), which I am flagging for the team rather than patching locally.
+
+- **#1, #2, #3, #9, #10, #11 — Inuit uvular lowering /i u/→[e o] + stress:** Held. The corpus does **not** apply uvular lowering consistently: it keeps unlowered high vowels next to uvulars in many places (`dog` iu `qimːiq`, ipk `qimːiq`; `moon` iu `taqqiq`, ipk `tatqiq`; `eat` ipk `niʁiruq`). Applying the lowering rule to only the flagged tokens would make the iu/ipk transcriptions internally inconsistent. This is a system-level transcription-depth choice for the whole Inuit subset, not a local error.
+
+- **#1, #4–#8, #15 — add primary-stress [ˈ] / surface=ipa duplicates:** Held. **No** iu/kl/ipk/esu entry anywhere in the corpus carries a stress mark; the established convention for this language group is stress-unmarked transcription. Adding [ˈ] to the flagged tokens alone would break that convention. The romanization-as-IPA duplication is real but, absent a phonetic change, amounts to a depth/style choice for the subset rather than a clear error.
+
+- **#12 `ipk` eye — ⟨r⟩ = [ʁ]:** Held. Your point that North-Slope ⟨r⟩ is the uvular/retroflex continuant is linguistically correct, but the dataset has made a consistent orthography-mapping choice: ⟨ġ⟩→[ʁ] vs ⟨r⟩→[r] (`eat` ipk `niġiruq`→`niʁiruq` keeps the second ⟨r⟩ as [r]; `good` `nakuːruq`; `hand` `arɡak`; `eye` `iri`). Editing only `iri` would make ⟨r⟩ inconsistent with `niʁiruq`/`nakuːruq`/`arɡak`. This is a corpus-wide ⟨r⟩-mapping convention, to be revisited as a set.
+
+- **#13, #14 — `esu` ⟨e⟩ = schwa [ə]:** Held. The corpus consistently maps Central Yup'ik ⟨e⟩→[e] (`water` esu `meq`→`meq`, `love` `kenka`, `fire` `keneq`, `house` `ena`, `eat` `nerʔuq`). Your ⟨e⟩=[ə] (Jacobson) reading is correct, but it is a corpus-wide Yup'ik vocalism decision affecting every esu ⟨e⟩, not a local fix.
+
+- **#16 `ess` fire — final ⟨г⟩ = [ɣ]:** Held. Plausible (CSY intervocalic/final ⟨g⟩ is the continuant), but there is only one `ess` token in the whole corpus, so there is no internal-consistency anchor, and phonemic stop [ɡ] vs allophonic [ɣ] is a transcription-depth judgement. I prefer not to introduce a one-off depth change with no corpus support. Recommend the reviewer confirm the intended ess depth convention.
+
+- **#17 `yux` fire — `lóʧil` → `ˈlot͡ʃil`:** This is the most tempting one (you are right that ⟨ʧ⟩ is the deprecated ligature while the rest of yux uses the tie-bar — `heart` yux `t͡ʃuɣe`, `tree` yux `t͡ʃald͡ʒe`), but the requested fix also moves the acute-stress into an IPA [ˈ] mark, and no yux entry currently carries a [ˈ] stress mark (`t͡ʃuɣe`, `t͡ʃald͡ʒe` are unstressed). To stay within "change only the clearly-erroneous field," the unambiguous part is the ligature→tie-bar normalization; the stress-notation addition is a convention change. Held pending a reviewer decision on whether to (a) apply just the tie-bar normalization `lóʧil`→`lót͡ʃil`, or (b) adopt IPA stress marks for yux corpus-wide. If you confirm (a) I will apply the ligature fix in the next round as a pure normalization.
+
+**Net:** 1 fix applied (#20 nasal). 9 findings held as corpus-wide convention/depth choices requiring a coordinated pass or a reviewer convention decision (#1–#19 vowel parts, #12, #13, #14, #16, #17), plus the ⟨ы⟩ schwa group.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claim against the **live** data files. Summary of verification:
+
+- **#20 `ckt` one — VERIFIED ✓ applied.** `words/one.js:138` now reads `ckt: ["ыннэн", "ɯnnen"]` — the spurious palatal geminate [ɲɲ] is gone. The worker's rationale is sound and confirmed in live data: `words/mother.js:138` correctly retains `ckt ["ынньэв", "ɯɲɲew"]` (source has soft sign ⟨ь⟩) and `words/love.js:139` retains `kpy lʲuŋewɯk` (soft sign), while `kpy one` `ыннэн` already used dental `ɯnnen`. Local-error fix accepted.
+
+### Held items — adjudication
+
+- **#18, #19, #20(vowel), #21 — ⟨ы⟩ = [ə] vs [ɯ]: ACCEPT as held (✓ won't-fix this round).** Verified the convention is genuinely corpus-wide: `hand` ckt `mɯŋɯɫɣɯn`/kpy `miŋɯɫɣɯn`, `dog` ckt `ɯtːʔɯn`, `house` ckt `jaraŋɯ`, `fire` kpy `peŋːɯn` all map ⟨ы⟩→[ɯ]. My [ə] analysis (Comrie 1981; Fortescue 1998) remains linguistically correct and I record it as a **known limitation** — the dataset has chosen a cardinal-symbol transcription for the Chukchi reduced vowel. Patching only 4 tokens would manufacture the very inconsistency this review otherwise flags. This is a defensible system-level convention; needs a single coordinated normalization pass + documented decision, not a piecemeal fix. Not actionable as an isolated error.
+
+- **#1, #2, #3, #9, #10, #11 — Inuit uvular lowering /i u/→[e o]: ACCEPT as held (✓).** Verified non-application is corpus-wide: `dog` iu/ipk `qimːiq`, `moon` iu `taqqiq` / ipk `tatqiq` all keep unlowered high vowels adjacent to uvulars. Lowering is a genuine surface fact (Fortescue 1984 §1.2; Kaplan 1981) but applying it to only the flagged tokens would break internal consistency. System-level transcription-depth choice; documented as a known limitation for a future coordinated Inuit pass.
+
+- **#1, #4–#8, #15 — stress marks / surface=ipa duplicates: ACCEPT as held (✓).** Confirmed: a grep for [ˈ] across all iu/kl/ipk/esu/yux entries returns nothing — the entire language group is stress-unmarked. Adding [ˈ] to flagged tokens alone is the same consistency violation. Where the IPA cell duplicates the orthography but the orthography already encodes the relevant phonetics (e.g. kl `seqineq`, `imeq` already write the lowered ⟨e⟩), no phonetic information is actually lost; the residual issue is depth/style, not error. Won't-fix.
+
+- **#12 `ipk` eye — ⟨r⟩=[ʁ]: ACCEPT as held (✓).** Verified the ⟨r⟩→[r] vs ⟨ġ⟩→[ʁ] split is consistent: `eat` ipk `niʁiruq` keeps the second ⟨r⟩ as [r], `hand` `arɡak`, `good` `nakuːruq`, `eye` `iri`. My phonetic point stands (Kaplan 1981) but it is a corpus-wide orthography-mapping convention, revisable only as a set.
+
+- **#13, #14 — `esu` ⟨e⟩=schwa [ə]: ACCEPT as held (✓).** Verified ⟨e⟩→[e] is uniform across esu: `water meq`, `love kenka`, `fire keneq`, `house ena`, `eat nerʔuq`. Corpus-wide Yup'ik vocalism decision; documented limitation, not a local fix.
+
+- **#16 `ess` fire — final ⟨г⟩=[ɣ]: ACCEPT as held (△→✓ won't-fix).** Confirmed there is only one `ess` token in the corpus, so no internal anchor, and stop [ɡ] vs continuant [ɣ] is a transcription-depth judgement. With no corpus support and no live human linguist sign-off, a one-off depth change is not warranted. Recorded as a known limitation (CSY intervocalic/final ⟨g⟩ is plausibly the continuant; needs human confirmation of the intended `ess` depth convention).
+
+### Still actionable
+
+- **#17 `yux` fire — INTERNAL INCONSISTENCY still live (△ partial).** `words/fire.js:142` still reads `yux: ["ло́чил", "lóʧil"]`. The IPA uses the deprecated ligature ⟨ʧ⟩ while every other yux affricate uses the tie-bar — verified `heart` yux `t͡ʃuɣe`, `tree` yux `t͡ʃald͡ʒe`. This is a clear, defensible internal-consistency error, not a depth/convention choice. The worker explicitly offered option (a): a pure ligature→tie-bar normalization `lóʧil` → `lót͡ʃil` (leaving the acute-stress notation untouched, consistent with the stress-unmarked yux convention). **I confirm option (a).** The stress-mark portion of my original #17 (move acute → [ˈ]) I withdraw as a convention change, consistent with my acceptance of the stress-unmarked convention above. Dev team: apply `lóʧil` → `lót͡ʃil` only.
+
+### New issues
+
+None. Verification surfaced no additional defensible errors beyond #17.
+
+### Scorecard
+
+| Item | Judgement |
+|------|-----------|
+| #20 nasal | ✓ applied & verified |
+| #18/#19/#20v/#21 (ы=ə) | ✓ accept held (known limitation) |
+| #1–3,#9–11 (uvular lowering) | ✓ accept held (known limitation) |
+| #1,#4–8,#15 (stress / dup) | ✓ accept held (convention) |
+| #12 (ipk r) | ✓ accept held (convention) |
+| #13,#14 (esu e) | ✓ accept held (convention) |
+| #16 (ess г) | ✓ accept held (known limitation) |
+| #17 (yux ʧ→t͡ʃ) | △ still live — one concrete fix outstanding |
+
+**File status: OPEN** — one concrete actionable step remains: apply the pure ligature→tie-bar normalization in `words/fire.js` `yux` `lóʧil` → `lót͡ʃil` (do not add a stress mark). All other items are accepted as defensible corpus-wide conventions / documented known limitations.

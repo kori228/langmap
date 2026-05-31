@@ -131,3 +131,72 @@ I am a descriptive linguist working on the languages of New Guinea, with field a
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Verified every cited entry verbatim against the current data files (line numbers confirmed). Project rule for this round: only apply clear, unambiguous IPA errors or internal inconsistencies; do not invent stress/accent content (an IPA field that equals the orthography is under-specified, but adding a stress mark asserts new analysis and is enrichment, not error-correction — held for those).
+
+### Applied (clear wrong-symbol / internal-inconsistency fixes)
+
+- **#10 `ho` water** `["ranu", "ranu"]` → `["ranu", "ɾanu"]` *(applied by orchestrator this round)*. Same Motu etymon as `meu` (line 846 = `ɾanu`); Motu has a single alveolar tap. Internal inconsistency confirmed by survey (only meu/ho rhotic forms are ranu/ruma).
+- **#12 `ho` heart** `kudoʊna` → `kudouna` *(applied)*. English lax [ʊ] removed; `meu` heart (line 839) is plain `kudouna`. Wrong vowel inventory + internal inconsistency.
+- **#13 `ho` love** `lalokaʊ` → `lalokau` *(applied — vowel only)*. [ʊ]→[u]; `meu` (line 846) has plain `u`. **Stress not added** (held: enrichment).
+- **#14 `ho` thanks** `tanikiʊ` → `tanikiu` *(applied — vowel only)*. [ʊ]→[u], consistent with #12/#13/#15. **Stress not added** (held).
+- **#15 `ho` tree** `aʊ` → `au` *(applied)*. `meu` tree (line 839) = `au`; English MOUTH diphthong removed.
+- **#16 `aau` sun** `eɪ` → `ej` (both lines 382 and 424) *(applied)*. ⟨y⟩ = [j] everywhere else in aau (japɾɛ, jiha, jɛn, ja, jɛn) and mother.js aau is `ˈipej` — so `ej` (not [ei̯]) matches the existing convention exactly.
+- **#17 `aau` one** `rin` → `ɾin` (both lines 382 and 424) *(applied)*. Only other aau rhotic in the corpus is `japɾɛ` (tap [ɾ]); single-language consistency.
+- **#18 `aau` eat** `ra` → `ɾa` (both lines 376 and 418) *(applied)*. Same rhotic-consistency basis as #17.
+
+### Held with rationale
+
+- **#1 `hui` eat na, #2 good poke, #3 thanks wei, #4 one mendene, #5 house anda, #6 heart hambu** — held. These ask to add tone/accent marks or commit to a prenasalised reading ([ⁿd]/[ᵐb]). I have no authoritative Huli source offline (Rule/Lomas) giving the per-lexeme pitch or confirming prenasalisation for these specific roots. Adding `ˈ`/tone/`ⁿ` would be guessed analysis, not error-correction. Recommend a Huli specialist supply sourced values; under-specification noted but not a clear bug.
+- **#7 `meu` love, #8 eat, #9 drink, #11 house** — held. Motu penultimate stress is a real pattern, but mechanically adding `ˈ` to every Motu word is enrichment/convention beyond "fix clear errors." The current IPA is not *wrong*, only under-marked. Defer pending a team decision to run a uniform Motu stress-marking pass (would then also cover meu/ho house, hello, etc.).
+- **#19 `aau` water hu** — held. Reviewer's own "expected" keeps `["hu","hu"]` unless tone/length is confirmed; no sourced Abau tone value available offline, so no actionable change.
+- **#20 `ygr` (nemo / nofa / kahene / kena)** — held. Yagaria word-accent additions require Renck's dictionary; not sourceable offline. Same enrichment-vs-error reasoning as the Huli/Motu accent items.
+
+Items left open for reviewer decision (won't-fix this round): #1–#9, #11, #13(stress), #14(stress), #19, #20.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix against the **live** per-word data files (`words/*.js`, `WORDS.<word>.data.<lang>`). All eight "applied" wrong-symbol / internal-inconsistency fixes are genuinely present in the data, and I confirmed the consistency basis used (aau `japɾɛ` = tap [ɾ] + [j], aau mother = `ˈipej`).
+
+### Applied fixes — VERIFIED in live data (✓ accept)
+
+| # | lang/word | live value | verdict |
+|---|-----------|-----------|---------|
+| 10 | ho water | `["ranu","ɾanu"]` | ✓ now matches meu `ɾanu`; single Motu tap. Correct. |
+| 12 | ho heart | `["kudouna","kudouna"]` | ✓ lax [ʊ] removed; matches meu. Correct. |
+| 13 | ho love | `["lalokau","lalokau"]` | ✓ vowel [ʊ]→[u] fixed; matches meu. Stress not added — accepted (see below). |
+| 14 | ho thanks | `["tanikiu","tanikiu"]` | ✓ vowel [ʊ]→[u] fixed. Stress not added — accepted. |
+| 15 | ho tree | `["au","au"]` | ✓ MOUTH diphthong removed; matches meu. Correct. |
+| 16 | aau sun | `["ey","ej"]` | ✓ [ej] matches the language's own ⟨y⟩=[j] convention (japɾɛ, ipej). Correct — and `ej` over `ei̯` is the right call for internal consistency. |
+| 17 | aau one | `["rin","ɾin"]` | ✓ tap [ɾ] now consistent with japɾɛ. Correct. |
+| 18 | aau eat | `["ra","ɾa"]` | ✓ tap [ɾ] consistent. Correct. |
+
+Every clear wrong-symbol error and internal inconsistency I raised has been fixed and is live. Good work; the rhotic-unification and the de-Anglicisation of the Oceanic /a.u/, /o.u/ sequences are exactly right.
+
+### Held items — adjudication
+
+- **#1 hui eat, #2 good, #3 thanks, #4 one, #5 house, #6 heart** (tone / accent / prenasalisation): △ **accept the hold as a documented known-limitation.** These ask the IPA to add lexical-pitch marks (Huli is pitch-accent) or to commit ⟨nd⟩/⟨mb⟩ to a prenasalised reading [ⁿd]/[ᵐb]. Both require a per-lexeme Huli source (Rule / Lomas) that the team does not have offline. I will not demand an offline-unsourceable value at round-2. The IPA-equals-surface state is under-specified, not wrong-symbol. **Caveat recorded:** needs a Huli specialist with Rule/Lomas to (a) mark lexical tone and (b) decide prenasalisation; until then these entries are knowingly conservative transcriptions, not errors.
+- **#7 meu love, #8 eat, #9 drink, #11 house** (Motu penultimate stress): △ **accept hold.** Motu stress is regular and predictable, so adding `ˈ` would be a defensible *systematic* pass rather than per-lexeme guesswork — but it is a convention/enrichment decision affecting the entire Motu (meu/ho) set, not a clear error in these specific cells. I accept it as a system-level choice to defer to a uniform Motu stress-marking pass, not a blocker.
+- **#13 / #14 stress:** ✓ vowel errors fixed (the actual bug); stress omission accepted as above.
+- **#19 aau water hu** `["hu","hu"]`: ✓ **accept as-is / won't-fix.** My own "Expected" kept `["hu","hu"]` absent confirmed tone/length; no sourced Abau tone value offline. The vowel [u] is correct. Not an error.
+- **#20 ygr nemo/nofa/kahene/kena:** △ **accept hold as known-limitation.** Yagaria word-accent requires Renck's dictionary, unsourceable offline. Same conservative-transcription reasoning. Verified live values are unchanged surface-copies (`["nemo","nemo"]`, `["kena","kena"]`, `["kahene","kahene"]`) — under-specified but not wrong-symbol.
+
+### New issues
+
+None. During verification I checked aau tree (`["nɔw","nɔw"]`) and the meu/ho parallels; no new defensible errors surfaced.
+
+### Scorecard
+
+- Clear wrong-symbol / internal-inconsistency errors raised: 8 (#10, #12, #13-vowel, #14-vowel, #15, #16, #17, #18) — **8/8 fixed and verified live.**
+- Held items (accent / tone / prenasalisation / stress): all are enrichment or offline-unsourceable analysis — accepted as defensible holds with a recorded known-limitation caveat, per round-2 loop-termination guidance.
+- New issues: 0.
+
+There is no concretely actionable, offline-achievable next step remaining: every clear error is fixed-and-verified, and the residual items are either (a) system-level convention decisions explicitly accepted as won't-fix, or (b) per-lexeme tone/accent/prenasalisation values credibly documented as unsourceable offline (Huli pitch, Yagaria accent, Abau tone) — these are recorded as a **known limitation needing a human area-specialist linguist**, not a demand to repeat.
+
+**File status: CLOSED** — nothing left to address.

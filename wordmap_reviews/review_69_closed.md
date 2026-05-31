@@ -107,3 +107,86 @@ I am a lexical-typology and word-sense / glossing specialist. My work concerns t
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every flagged line verbatim against the `words/*.js` data and resolved the language identity of each ISO code in `wordmap_meta.js`. Applying only clear, well-sourced fixes; holding the rest per the project editing policy (do not invent replacements for collisions where no single replacement form can be reliably sourced).
+
+### Applied
+
+- **#1 vai — cat / heart (placeholder glyph).** Confirmed: the glyph in both slots is **ꖢ = U+A5A2 VAI SYLLABLE FU** (verified via `unicodedata`), a placeholder unrelated to either reading. Vai is a syllabary, so each disyllable needs two syllabograms. Corrected:
+  - cat.js `vai: ["ꖢ", "musu"]` → `["ꖷꖬ", "musu"]` (ꖷ = U+A5B7 SYLLABLE MU + ꖬ = U+A5AC SYLLABLE SU). *(applied by orchestrator this round)*
+  - heart.js `vai: ["ꖢ", "sɛni"]` → `["ꔖꕇ", "sɛni"]` (ꔖ = U+A516 SYLLABLE SEE = /sɛ/, the open-vowel EE series + ꕇ = U+A547 SYLLABLE NI). *(applied by orchestrator this round)*
+  IPA left unchanged. Code points confirmed authoritative via Python `unicodedata.name`.
+
+- **#2 kjb — good (wrong-sense 'eye' lexeme).** Confirmed: good.js `kjb: ["sat","sat"]` is identical to eye.js `kjb: ["sat","sat"]`; Mayan siblings in good.js use the *utz/watxʼ* field (quc/cak `utz`, kek `us`, ctu `utsat`). Q'anjob'al 'good' = **watxʼ** (confirmed: watx' "Good!", phrase *watx' mi ha-kul?*). Corrected good.js `kjb: ["sat","sat"]` → `["watxʼ","watʃʼ"]` (⟨txʼ⟩ = ejective /tʃʼ/). *(applied by orchestrator this round)* Source: Q'anjob'al lexicography / mayanlanguages.net; Buck §16.71.
+
+- **#13 aja — mother (open vowel).** Confirmed aja mother = `["no","no"]` collides with aja drink = `["no","no"]`. The dataset's own Fon entry is mother `["nɔ","nɔ"]` (open) vs drink `["nu","nu"]` (close); Ewe likewise has 'mother' /nɔ/. Corrected mother.js `aja: ["no","no"]` → `["nɔ","nɔ"]`. *(applied by orchestrator this round)* Source: Capo, *Comparative Phonology of Gbe*; Fon cognate in-file; Ewe 'mother' = no/nɔ.
+
+- **#14 aja — drink (close vowel).** Pan-Gbe 'to drink' = nù/nú; dataset's Fon drink = `["nu","nu"]`. Corrected drink.js `aja: ["no","no"]` → `["nu","nu"]`. *(applied by orchestrator this round)* This also removes the false-friend overlap with 'mother' (now nɔ vs nu). Source: Capo; Fon cognate in-file.
+
+### Held — collisions that are plausibly real bugs but lack a reliably sourceable single replacement, OR where the reviewer mis-identified the language
+
+- **#3 dsh moon=house 'mar'.** Real-looking collision (house [maɾ] vs moon [mar], internally inconsistent IPA). But I could not source a specific Daasanach 'moon' form (Tosco 2001 is print-only; no online attestation found). The reviewer's "arrab/ʔar-type" is a hedge, not a citation. Holding — recommend reviewer supply the exact Tosco moon entry or escalate to a human linguist. Not guessing.
+
+- **#4 spp good=drink 'nyaha'.** Supyire confirmed (spp). But the reviewer's own "expected" `nyahã/ɲãhã` merely nasalizes the same root, i.e. not a clearly different lexeme — weak evidence that 'good' is wrong rather than 'drink'. Carlson's grammar is print-only; could not source the attributive 'good' adjective online. Holding pending a sourced adjective form.
+
+- **#5 wbt mother=house 'ngurra'.** *ngurra* 'camp/home/country' in 'mother' is suspicious, but I could not confirm the exact ISO `wbt` lect's kin term online (the reviewer's "ngamardi/ngamaji-type" is generic Western-Desert, hedged). Holding — needs a sourced kin term for the specific lect.
+
+- **#6 / #7 xul one=sun 'guma', hand=heart 'mara'.** **Reviewer mis-identified the language.** `xul` here is **Ngunnawal** (Yuin-Kuric, ACT), a revived language with sparse documentation — not a generic Pama-Nyungan lect. The collisions are suspicious, but Ngunnawal lexical sources are too thin to source a confident replacement for 'sun' or 'heart' offline. Holding — escalate to a human linguist with access to ACT Aboriginal Language Centre / Ngunnawal materials.
+
+- **#8 / #9 mpt love=mother 'na', good=sun 'kep'.** Mian (mpt) confirmed. Collisions are suspicious, but I could not source distinct Mian forms for 'mother'/'sun' online (Fedden's Mian grammar is print-only). Holding pending sourced forms.
+
+- **#10 dnj hand=house 'kɔ'.** Dan (dnj) confirmed. 'hand'=kɔ is likely correct; 'house' sharing it is suspicious, but I could not source the specific Dan 'house' lexeme with confidence (Dan is heavily tonal; an untoned `kɔ` could be a real near-homophone). Holding — not guessing.
+
+- **#11 mev dog=heart 'gba'.** Mano (mev) confirmed (reviewer's "Maan/Mann" ≈ Mano). Suspicious, but no reliable online source for distinct Mano 'dog' vs 'heart' forms. Holding.
+
+- **#12 nlc eat=mother 'ne'.** **Reviewer mis-identified the language:** `nlc` is **Nalca / Nalca (Mek family, Papua Indonesia)**, NOT Nalik. The reviewer's "Volker, Nalik Grammar" and "tina/nana-type" do not apply. The collision is real-looking, but the correct Nalca kin term is not sourceable online. Holding — escalate.
+
+- **#15 enq fire=tree 'ita'.** Enga (enq) confirmed. Suspicious collision, but no reliable online source distinguishing Enga 'fire' vs 'tree' to the point of confidently replacing one. Holding (Lang's *Enga Dictionary* is print-only).
+
+- **#16 kmu drink=eat 'ne'.** **Reviewer mis-identified the language:** `kmu` is **Kanite (Trans-New Guinea, Kainantu, PNG)**, NOT Khmu (Austroasiatic). The reviewer's Khmu forms (*cìa/ʔɔ̀ːk*, "Suwilai Premsrirat") are the wrong language entirely. The eat=drink collision may still be a real bug, but the proposed fix is invalid and no Kanite source was found. Holding — escalate with corrected language identity.
+
+### Note to reviewer
+Two findings (#12, #16) rest on incorrect language identifications (Nalik→actually Nalca; Khmu→actually Kanite), and #6/#7 assume a generic Pama-Nyungan lect when `xul` is the revived language Ngunnawal. The proposed replacement forms for those cannot be applied as written. For the remaining held collisions, the underlying same-form-in-two-slots observation is sound and worth a dedicated sourcing pass, but I declined to substitute guessed lexemes into shared data files per the project's no-guessing rule. Recommend the reviewer either supply exact dictionary/grammar citations (page-level) for the replacement forms or route these to a human linguist with print-source access.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every applied fix against the **live** `words/*.js` data and confirmed each disputed language identity against `wordmap_meta.js`. Verification log:
+
+**Applied fixes — all confirmed present and correct in live data:**
+
+- **#1 vai (cat/heart) — ✓ ACCEPT.** Live: `cat.js:807 vai: ["ꖷꖬ","musu"]`, `heart.js:807 vai: ["ꔖꕇ","sɛni"]`. Code points verified via Python `unicodedata`: ꖷ=U+A5B7 VAI SYLLABLE MU, ꖬ=U+A5AC SU, ꔖ=U+A516 SEE (/sɛ/, open-vowel EE series), ꕇ=U+A547 NI. The old placeholder ꖢ was indeed U+A5A2 VAI SYLLABLE FU — unrelated to both readings. The disyllabic glyph-strings now correctly match their IPA. Good syllabary-aware fix.
+- **#2 kjb (good) — ✓ ACCEPT.** Live: `good.js:1080 kjb: ["watxʼ","watʃʼ"]`; `eye.js:1086` still correctly holds `["sat","sat"]`. The wrong-sense 'eye' lexeme is removed from the 'good' slot; ⟨txʼ⟩→/tʃʼ/ ejective is right; consistent with Mayan siblings' utz/watxʼ field. Correct.
+- **#13 aja (mother) — ✓ ACCEPT.** Live: `mother.js:797 aja: ["nɔ","nɔ"]`, matching in-file Fon `mother.js:999 fon: ["nɔ","nɔ"]`. Open-vowel contrast restored.
+- **#14 aja (drink) — ✓ ACCEPT.** Live: `drink.js:791 aja: ["nu","nu"]`, matching in-file Fon `drink.js:993 fon: ["nu","nu"]`. The false-friend overlap with 'mother' (now nɔ vs nu) is resolved. Both Gbe fixes are well-grounded in the dataset's own Fon cognates.
+
+**Held / mis-ID items:**
+
+- **#6 / #7 xul (Ngunnawal) — △ ACCEPT WORKER'S HOLD.** Confirmed `wordmap_meta.js:338` LANG_DATA['xul'] = Ngunnawal, a revived ACT heritage language (~5K heritage learners), Glottolog "Ngunnawal" / Ethnologue xul. My round-1 "moon=birrang, water=kungal, mil" forms assumed a generic well-documented Pama-Nyungan lect and are not reliable for revived Ngunnawal. The same-form collisions (one=sun guma, hand=heart mara) remain genuinely suspicious, but no offline-sourceable Ngunnawal replacement exists. Documented limitation, not an actionable dev fix.
+- **#12 nlc (Nalca) — △ ACCEPT WORKER'S CORRECTION.** Confirmed `wordmap_meta.js:378` LANG_DATA['nlc'] = Nalca (Mek/Trans-New Guinea, Papua Indonesia), Glottolog nalc1238. My "Nalik / Volker / tina-nana" identification was wrong — Nalik is a different ISO code. My proposed fix is withdrawn. eat=mother 'ne' may still be a real collision but is not sourceable for Nalca offline.
+- **#16 kmu (Kanite) — △ ACCEPT WORKER'S CORRECTION.** Confirmed `wordmap_meta.js:396` LANG_DATA['kmu'] = Kanite (Trans-New Guinea, Kainantu, PNG), Glottolog "Kanite". My Khmu forms (cìa/ʔɔ̀ːk, Suwilai Premsrirat) were the wrong language. Proposed fix withdrawn.
+- **#3 dsh, #4 spp, #5 wbt, #8/#9 mpt, #10 dnj, #11 mev, #15 enq — △ ACCEPT HOLD as documented offline-unsourceable.** For each, the worker confirmed the language ID and confirmed the same-form-in-two-slots collision is real-looking, but the authoritative sources (Tosco 2001 Dhaasanac; Carlson Supyire; Laughren Warlpiri; Fedden Mian; Vydrin Dan; Mano; Lang Enga) are all print-only with no online attestation of the needed replacement lexeme. I verified the contextual sibling values cited (e.g. `dnj` eye ŋkɛ̃ / water yi / eat dɛ distinct from hand/house kɔ; `mev` eye/drink mi vs dog/heart gba) — they are accurate, which keeps the collisions suspicious but does not by itself yield a sourced replacement. I did not invent forms in round-1; I will not demand the worker invent them in round-2.
+
+**Adjudication on loop-termination:** Per the round-2 late-round rule, the only remaining open items are exactly the class "needs externally-sourced data the dev team has, after genuine effort, credibly documented as unsourceable offline" (or where I myself mis-identified the language). There is no concretely actionable next step the dev team has not attempted: the four cleanly-sourceable errors (#1, #2, #13, #14) are fixed-and-verified in live data, and the remainder are honest print-source / revived-language gaps plus two of my own mis-IDs. I therefore CLOSE with a documented known-limitation caveat rather than demanding the impossible.
+
+**Known limitation (for a future human linguist with print-source access):** the following same-surface-form collisions are flagged as probable wrong-slot duplications but could not be confirmed/repaired offline — #3 dsh house=moon 'mar', #4 spp good=drink 'nyaha', #5 wbt mother=house 'ngurra', #6/#7 xul one=sun 'guma' / hand=heart 'mara' (Ngunnawal, revived), #8/#9 mpt love=mother 'na' / good=sun 'kep', #10 dnj hand=house 'kɔ', #11 mev dog=heart 'gba', #12 nlc eat=mother 'ne' (Nalca), #15 enq fire=tree 'ita', #16 kmu eat=drink 'ne' (Kanite). Each needs a page-level dictionary/grammar citation to resolve.
+
+### Scorecard
+| Item | Verdict |
+|---|---|
+| #1 vai | ✓ fixed & verified |
+| #2 kjb | ✓ fixed & verified |
+| #13 aja mother | ✓ fixed & verified |
+| #14 aja drink | ✓ fixed & verified |
+| #3,#4,#5,#8,#9,#10,#11,#15 | △ held — offline-unsourceable (documented limitation) |
+| #6,#7 (Ngunnawal) | △ held — wrong-lect assumption + unsourceable |
+| #12,#16 | △ my mis-ID corrected; collision unsourceable |
+
+New issues raised this round: 0.
+
+**File status: CLOSED** — nothing left to address. Four cleanly-sourceable errors are fixed and verified in live data; all remaining items are accepted as offline-unsourceable known limitations (flagged for a human linguist) or were based on my own corrected language mis-identifications.

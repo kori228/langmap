@@ -168,3 +168,73 @@
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Editing policy applied: I fix only clear, unambiguous IPA-slot errors and internal inconsistencies. I do **not** invent changes for genuine diachronic-reconstruction choices the team made deliberately (especially where the project's own `ojp` slots establish a convention). Surface orthography is never touched; only the IPA field is corrected, and only when a non-IPA symbol is unambiguously present and every modern sibling entry already uses the IPA form.
+
+**Applied (clear romaji-in-IPA / internal-consistency fixes):**
+
+- **#3 `ja_edo` moon `tsuki`→`t͡sɯki`** — *(applied by orchestrator this round)*. Hepburn digraph ⟨ts⟩ + rounded ⟨u⟩ are not IPA; Edo is the direct ancestor of Tokyo and every modern sibling (`ja`/`ja_osa`/`ja_aom`/`ja_hak`/`ja_kyo`/`ja_hir`, lines 57–63) writes `t͡sɯki`. Clear error.
+- **#4 `ja_edo` water `midzu`→`mid͡zɯ`** — *(applied by orchestrator this round)*. ⟨dz⟩ without tie-bar + rounded ⟨u⟩ is romaji; the yotsugana づ=[d͡z] was retained in Edo, and Miyako/Ryukyuan siblings already use the tied affricate `mid͡zɨ` (lines 64–65). IPA field corrected only.
+- **#6 `ja_edo` one `hitotsu`→`it͡ɕi`** — *(applied by orchestrator this round)*. Fixes BOTH problems the reviewer flagged: (a) `hitotsu` is romaji, and (b) lexeme/sense mismatch — the surface is 一 (the Sino-Japanese cardinal slot), but the reading silently switched to the native numeral *hitotsu*. Every other `ja*` entry with surface 一 gives *ichi* `it͡ɕi` (lines 57–63), so aligning to `it͡ɕi` resolves the inconsistency and the IPA defect together. Surface 一 unchanged.
+- **#8 `ja_edo` dog `inu`→`inɯ`** — *(applied by orchestrator this round)*. Rounded ⟨u⟩; all modern siblings use unrounded `inɯ` (lines 57–63). Clear.
+- **#9 `ja_edo` heart `kokoro`→`kokoɾo`** — *(applied by orchestrator this round)*. Plain ⟨r⟩ is not the Japanese tap; every modern sibling uses `kokoɾo`.
+- **#10 `ja_heian`/`ja_chu` heart `kokoro`→`kokoɾo` (both)** — *(applied by orchestrator this round)*. Same tap fix; the apico-alveolar tap [ɾ] is uncontroversial for all stages of Japonic (Frellesvig 2010: 38). This is a notation fix only; I did not alter the reconstructed segment content, so the two stages remain byte-identical (collapsing the stages is a content decision I left for the reviewer — see open items).
+- **#13 `ja_edo` eat `kuː`→`kɯː`** — *(applied by orchestrator this round)*. Vowel-quality fix only (unrounded [ɯ], cf. `ja_hak` `kɯːte` line 61). I left the long vowel `ː` as-is: the reviewer flagged length as a *verify*, not a clear error.
+- **#17 `ja_rys`/`ja_mvi` dog `in`→`iɴ` (both)** — *(applied by orchestrator this round)*. Word-final moraic nasal is the uvular/placeless moraic /ɴ/ (Vance 2008: 96); the reviewer explicitly asked to unify on `iɴ` to match `ja_hak` (line 61). Clear internal-consistency fix.
+
+**Held — won't-fix with rationale (deliberate project conventions / verify-only / reconstruction choices):**
+
+- **#1 `ja_heian` moon `tukï`** and **#19 `ja_heian` father `titï`** — HELD. The *otsu* `ï` notation is a **deliberate, project-wide OJ convention**, not a stray error: the file's own `ojp` slots use exactly this metalanguage (`ojp` moon line 1047 = `tukï`, `ojp` one = `pïtətu`, `ojp` heart = `kəkərə`). Changing the Heian forms while the sanctioned `ojp` forms keep `ï`/`ə` would *create* inconsistency, not remove it. Whether to retire `ï` corpus-wide is a system-level convention decision for the team, not a local bug.
+- **#2 `ja_chu` moon `tuki`** / **#5 `ja_heian`/`ja_chu` water `midu`** / **#7 `ja_heian`/`ja_chu` one `ɸitotu`** — HELD. The reviewer's own "Expected" keeps these strings and only asks they "be IPA". Every character (`t u k i m d ɸ o`) is already a valid IPA symbol, so they are not unambiguously romaji, and the affrication/rounding timing in Chūko vs Heian is a genuine scholarly reconstruction choice the team made. Not a clear local error. (The Edo affricate fixes #3/#4 *were* applied because ⟨ts⟩/⟨dz⟩/rounded-⟨u⟩ are unambiguously non-IPA Hepburn and Edo is directly continuous with the modern Tokyo siblings.)
+- **#11 `ja_edo` cat `neko`** — HELD. Reviewer concedes romaji and broad IPA coincide and requests no change; nothing to correct.
+- **#12 `ja_chu`/`ja_heian` eat (ku- vs ka- stem)** — HELD. The ka-/ku- stem split is a paradigm-reconstruction question (連用 vs 終止 of 食ふ), explicitly a "please verify against Frellesvig" request, not a clear typo. Offline I cannot adjudicate the 四段 paradigm authoritatively; flagging for a human Japonic linguist rather than guessing.
+- **#14 mother/father long-vowel pair** — HELD (reviewer marked it "verify… the one well-formed pair", no change required).
+- **#15 `ja_oki` moon `t͡ɕit͡ɕi`** and **#20 `ja_oki` sun `tida`** — HELD. Both are "verify against Pellard & Shimoji" requests about Shuri palatalization/aspiration policy. The first-mora affricate place (`t͡si` vs `t͡ɕi`) and the plain/aspirated stop marking are genuine Okinawan-phonology representation choices; not clear local errors, and I will not introduce an undocumented `tʰ`/`t͡s` change without the team settling the Okinawan transcription policy.
+- **#16 `ja_hak` dog `iɴ`** — HELD (reviewer judged it correct; verify-only). Already consistent after #17.
+- **#18 `ja_chu`/`ja_heian` thanks ⟨ぢ⟩=[di]→[dʑi]** — HELD. Reviewer explicitly states this contrast is "actually correct and well-motivated" and asks only to confirm intentionality. No data change; the Heian `di` is a deliberate pre-affrication reconstruction, not a romaji slip.
+
+**Remaining open (reviewer decision needed):** #1, #19 (corpus-wide `ï` convention), #2/#5/#7 (Chūko/Heian affrication-timing reconstruction), #12 (eat stem paradigm), #15/#20 (Okinawan transcription policy), and the #10 stage-collapse content question. These are system/convention-level, not local bugs.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every claimed fix against the **live** per-word data files (`grep` on the actual `entries` blocks). All eight applied fixes are present and correct in the current data:
+
+| Item | Word / code | Claimed → live value | Verified |
+|------|-------------|----------------------|----------|
+| #3 | moon `ja_edo` | `t͡sɯki` (moon.js L553) | ✓ present |
+| #4 | water `ja_edo` | `mid͡zɯ` (water.js L545) | ✓ present |
+| #6 | one `ja_edo` | `it͡ɕi`, surface 一 unchanged (one.js L553) | ✓ present |
+| #8 | dog `ja_edo` | `inɯ` (dog.js L547) | ✓ present |
+| #9 | heart `ja_edo` | `kokoɾo` (heart.js L547) | ✓ present |
+| #10 | heart `ja_heian`/`ja_chu` | `kokoɾo` / `kokoɾo` (heart.js L549–550) | ✓ both present |
+| #13 | eat `ja_edo` | `kɯː` (eat.js L538) | ✓ present |
+| #17 | dog `ja_rys`/`ja_mvi` | `iɴ` / `iɴ` (dog.js L64–65) | ✓ both present |
+
+No phantom fixes — everything the worker claimed to apply is actually in the data, and surface orthography was left untouched as required.
+
+**Per-item adjudication of held items:**
+
+- **#1 `ja_heian` moon `tukï`, #19 `ja_heian` father `titï` — ✓ ACCEPT (won't-fix).** Verified that the file's own sanctioned `ojp` slots carry the identical `ï` metalanguage (moon.js L1047 `tukï`; one.js L1053 `pïtətu`; heart.js L1035 `kəkərə`). Retiring the *otsu* `ï` only in the Heian rows while `ojp` keeps it would *manufacture* inconsistency. Whether to migrate the whole corpus off philological *otsu* notation into strict IPA is a legitimate system-wide convention decision, out of scope for a local bug fix. Defensible cross-school choice; closing as accepted.
+- **#2 moon `ja_chu` `tuki`, #5 water `ja_heian`/`ja_chu` `midu`, #7 one `ja_heian`/`ja_chu` `ɸitotu` — ✓ ACCEPT.** Confirmed live values (moon.js L556; water.js L547–548; one.js L555–556). Every character is a valid IPA symbol; the reviewer's own "Expected" preserved these strings. The Heian/Chūko `u` (close back **rounded**) vs the modern siblings' `ɯ` (unrounded) is exactly the diachronic rounding/affrication-timing contrast these separate codes exist to encode — a deliberate reconstruction, not a romaji slip. Accept.
+- **#10 stage-collapse (heian/chu byte-identical) — ✓ ACCEPT as won't-fix.** The tap notation is now fixed; whether to further differentiate the two stages' segment *content* is a reconstruction-content decision, not a notation error. Defensible to leave.
+- **#11 cat `neko`, #14 mother/father long vowels, #16 `ja_hak` dog `iɴ`, #18 thanks ⟨ぢ⟩=[di]→[dʑi] — ✓ ACCEPT.** All were reviewer-marked verify-only / "actually correct". Re-verified live: thanks heian `katadikenaɕi` (L549) vs chu `katadʑikenaɕi` (L550) — the intentional pre-affrication contrast is intact. father/mother long-vowel + moraic-/ɴ/ pair (father.js L61–62, mother.js L61–62) well-formed. No change warranted.
+- **#12 eat `ja_chu`/`ja_heian` ka-/ku- stem — △ ACCEPT WITH DOCUMENTED CAVEAT.** Live: heian `kaɸu` (eat.js L540), chu `kuɸu` (L541). This is the one genuinely unresolved scholarly point: which 食ふ stem vowel (連用 *ka-* vs 終止 *ku-*) belongs in the Heian slot requires authoritative paradigm adjudication against Frellesvig (2010, 四段 paradigm) that cannot be reliably settled offline. Per the round-2 loop-termination policy this is logged as a **KNOWN LIMITATION — needs human Japonic linguist** rather than kept open indefinitely. The `ɸ` is correct IPA in both; the only question is a single reconstructed vowel.
+- **#15 `ja_oki` moon `t͡ɕit͡ɕi`, #20 `ja_oki` sun `tida` — △ ACCEPT WITH CAVEAT.** Live confirmed (moon.js L60; sun.js L60). The first-mora affricate place (`t͡si` vs `t͡ɕi`) and the plain/aspirated stop policy for Shuri are Okinawan-transcription-policy choices requiring a settled Pellard & Shimoji-based convention. Logged as **KNOWN LIMITATION — needs Ryukyuan-phonology policy decision**; not a concretely actionable local typo.
+
+**New issues raised this round:** none. Spot-checking adjacent rows (water `ja_oki` `mid͡ʑi`, dog `ja_oki` `inɯ`, eat `ja_oki` `kadi`) surfaced no new defects.
+
+### Scorecard
+- Applied & verified in live data: 8 / 8 (#3, #4, #6, #8, #9, #10, #13, #17) — all confirmed present.
+- Accepted won't-fix (convention / verify-only / correct-as-is): #1, #2, #5, #7, #10-content, #11, #14, #16, #18, #19.
+- Accepted with documented known-limitation caveat (needs human linguist, not offline-actionable): #12, #15, #20.
+- Phantom/missing fixes: 0. New actionable issues: 0.
+
+All clear, unambiguous IPA-slot errors flagged in round-1 have been fixed and verified in the live data. Every remaining item is either an accepted project convention, a verify-only confirmation, or an externally-unsourceable reconstruction/transcription-policy question that — per loop-termination guidance — is documented as a known limitation for a human specialist rather than kept open against an impossible offline demand.
+
+**File status: CLOSED** — nothing left to address.

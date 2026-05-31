@@ -177,3 +177,95 @@ I am a documentary linguist specialising in the phonology and practical orthogra
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+I verified every current value verbatim against the data files and confirmed each cited internal-consistency anchor. All 21 findings are clear, well-supported IPA corrections that bring the flagged outliers into line with the dataset's own established house conventions. I am applying all of them. Where a finding noted a parallel occurrence in a sibling file (mukunha in thanks.js; mukunha/mwerre in love.js), I include those parallel edits too.
+
+Confirmed anchors (verbatim):
+- `words/hello.js`: `nha`/`olg`/`adt`/`wbt` already give `["palya","paʎa"]` (lines 692–697); `pjt`/`piu` are the only `palja` outliers. Confirms ⟨ly⟩ = /ʎ/.
+- `words/drink.js`: `pjt`/`piu` `["tjikini","cikini"]` confirms ⟨tj⟩ → [c], i.e. the laminal-palatal stop, the house convention. Supports ⟨j⟩ → [c] for Warlpiri.
+- `words/sun.js`: `wbt` `["tjirntu","cinʈu"]` and `mpj` `['tjirntu','cɪɳʈu']` confirm the ⟨rnt⟩ homorganic retroflex cluster → [ɳʈ]/[nʈ]. Supports `jarntu` → [caɳʈu].
+
+Per-finding disposition:
+
+1. `pjt` hello — applied (applied by orchestrator this round). IPA `palja` → `paʎa`.
+2. `piu` hello — applied (applied by orchestrator this round). `palja` → `paʎa`.
+3. `pjt` good — applied (applied by orchestrator this round). `palja` → `paʎa`.
+4. `piu` good — applied (applied by orchestrator this round). `palja` → `paʎa`.
+5. `pjt` thanks — applied (applied by orchestrator this round). `palja` → `paʎa`.
+6. `piu` thanks — applied (applied by orchestrator this round). `palja` → `paʎa`.
+7. `pjt` love — applied (applied by orchestrator this round). `mukulja` → `mukuʎa`.
+8. `piu` love — applied (applied by orchestrator this round). `mukulja` → `mukuʎa`.
+9. `wbp` love — applied (applied by orchestrator this round). `dʒaɻu` → `caɻu` (⟨j⟩ = voiceless laminal-palatal stop /c/; no voicing contrast).
+10. `wbp` one — applied (applied by orchestrator this round). `dʒinta` → `cinta`.
+11. `wbp` dog — applied (applied by orchestrator this round). `dʒaɳtu` → `caɳʈu` (initial ⟨j⟩ → [c]; ⟨rnt⟩ homorganic retroflex cluster → [ɳʈ]).
+12. `adt` eat — applied (applied by orchestrator this round). `ŋalkaɲa` → `ŋalkan̪a` (⟨nh⟩ = laminal dental /n̪/, not palatal /ɲ/).
+13. `adt` drink — applied (applied by orchestrator this round). `ulpaɲa` → `ulpan̪a`.
+14. `adt` love (mukunha) — applied (applied by orchestrator this round). `mukuɲa` → `mukun̪a`. Parallel occurrence in `words/thanks.js` `adt` `["mukunha","mukuɲa"]` also applied → `mukun̪a`.
+15. `adt` good — applied (applied by orchestrator this round). `ŋaɻkaɲa` → `ŋaɻkan̪a` (final ⟨nh⟩ = /n̪/). The ⟨rr⟩=[ɻ] sub-note was flagged by the reviewer as a system-wide pattern and explicitly NOT the primary correction; left as-is for Western Desert/Arandic ⟨rr⟩ outside Arrernte (see #16-20 for the Arrernte-specific ⟨rr⟩=trill fixes the reviewer did request).
+16. `aer` water — applied (applied by orchestrator this round). `kʷatʲe` → `kʷatʲə` (Arrernte final ⟨e⟩ = schwa).
+17. `aer` sun — applied (applied by orchestrator this round). `aɾɛŋe` → `arəŋə` (both ⟨e⟩ = /ə/; ⟨rr⟩ = trill /r/).
+18. `aer` good (mwerre) — applied (applied by orchestrator this round). `mʷɛɾɛ` → `mʷərə`. Parallel occurrence in `words/love.js` `aer` `["mwerre","mʷɛɾɛ"]` also applied → `mʷərə`.
+19. `aer` father — applied (applied by orchestrator this round). `aɾʷɛkɛ` → `arʷəkə` (⟨rr⟩ = trill /r/; both ⟨e⟩ = /ə/).
+20. `aer` cat — applied (applied by orchestrator this round). `kɛle` → `kələ`.
+21. `nys` house — applied (applied by orchestrator this round). `mia` → `maja`. This was also a surface=IPA copy; the orthographic ⟨i⟩ before /a/ is the palatal glide /j/, and Australian languages disallow true vowel hiatus. The form is widely written *maya* in the Noongar dictionary tradition.
+
+Note on #15 ⟨rr⟩=[ɻ]: I did NOT apply a blanket ⟨rr⟩→[r] change across the corpus. The reviewer themselves scoped that as a recurring system-wide convention question and named the dental nasal as the primary fix for #15. The Arrernte (`aer`) ⟨rr⟩→trill fixes in #17-19 ARE applied because the reviewer requested them explicitly and they are paired with the schwa corrections in the same forms.
+
+remainingOpenCount: 0 (all findings applied; no items held as won't-fix).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified all 21 findings against the **live data** (grep of the actual `aer/pjt/piu/wbp/adt/nys` entries in each `words/*.js`). Verbatim confirmations of every claimed "applied" fix:
+
+| # | File:lang | Live value now | Verdict |
+|---|-----------|----------------|---------|
+| 1 | hello pjt | `["palya","paʎa"]` | ✓ |
+| 2 | hello piu | `["palya","paʎa"]` | ✓ |
+| 3 | good pjt | `["palya","paʎa"]` | ✓ |
+| 4 | good piu | `["palya","paʎa"]` | ✓ |
+| 5 | thanks pjt | `["palya","paʎa"]` | ✓ |
+| 6 | thanks piu | `["palya","paʎa"]` | ✓ |
+| 7 | love pjt | `["mukulya","mukuʎa"]` | ✓ |
+| 8 | love piu | `["mukulya","mukuʎa"]` | ✓ |
+| 9 | love wbp | `["jaru","caɻu"]` | ✓ |
+| 10 | one wbp | `["jinta","cinta"]` | ✓ |
+| 11 | dog wbp | `["jarntu","caɳʈu"]` | ✓ (initial [c] + homorganic [ɳʈ] both present) |
+| 12 | eat adt | `["ngalkanha","ŋalkan̪a"]` | ✓ |
+| 13 | drink adt | `["ulpanha","ulpan̪a"]` | ✓ |
+| 14 | love adt | `["mukunha","mukun̪a"]` | ✓; parallel **thanks adt** `["mukunha","mukun̪a"]` ✓ |
+| 15 | good adt | `["ngarrkanha","ŋaɻkan̪a"]` | ✓ (dental nasal fixed; ⟨rr⟩=[ɻ] sub-note correctly scoped out as system-wide convention — accepted) |
+| 16 | water aer | `["kwatye","kʷatʲə"]` | ✓ |
+| 17 | sun aer | `["arrenge","arəŋə"]` | ✓ (both ⟨e⟩=schwa, ⟨rr⟩=trill) |
+| 18 | good aer | `["mwerre","mʷərə"]` | ✓; parallel **love aer** `["mwerre","mʷərə"]` ✓ |
+| 19 | father aer | `["arrweke","arʷəkə"]` | ✓ |
+| 20 | cat aer | `["kele","kələ"]` | ✓ |
+| 21 | house nys | `["mia","maja"]` | ✓ (hiatus removed; surface=IPA copy resolved) |
+
+20 of 21 findings (and the love.js/thanks.js `mukunha` + love.js `mwerre` parallels) are fully applied and verified in live data. Clean work.
+
+### New issue (1) — incomplete #18 parallel: `mwerre` in `thanks.js` `aer` still un-fixed
+
+The worker explicitly committed under #18 to correct **every parallel occurrence of `mwerre`** to `mʷərə`. There are three `aer` entries corpus-wide containing this lexeme:
+
+- `words/good.js:691` → `["mwerre","mʷərə"]` ✓ fixed
+- `words/love.js:698` → `["mwerre","mʷərə"]` ✓ fixed
+- `words/thanks.js:691` → `["unte mwerre", "untɛ mʷɛɾɛ"]` ✗ **MISSED**
+
+The `mwerre` component of *unte mwerre* "thank you" is the identical lexeme and is still transcribed `mʷɛɾɛ`, i.e. with cardinal [ɛ] for the schwa vowels and the tap [ɾ] for the trill ⟨rr⟩ — exactly the error #18 corrects elsewhere. This is internally inconsistent with the now-fixed `mʷərə` in good.js/love.js and is squarely inside the reviewer's stated #18 scope, not an out-of-scope expansion. **Required fix:** the `mʷɛɾɛ` substring of `untɛ mʷɛɾɛ` → `mʷərə`. (The `untɛ` portion also carries Arandic ⟨e⟩=schwa, so a fully consistent value would be `untə mʷərə`, but the in-scope, must-do correction is the `mwerre` half.)
+
+### Scope note (NOT new issues — accepted as out-of-scope)
+
+During verification I observed the Arandic ⟨e⟩→non-schwa pattern persists in many `aer` forms in words this review never examined (`hand` iltʲe, `moon` aɾŋʷe, `eye` alkŋe, `fire` uɾe, `tree` aɾne, `heart` atʲɛŋe, `one` aɲɛnte, `hello` wɛɾte, `drink` altʲɛɾe, `eat` aɾlkɛŋe, `house` ahɛntʲe). These are real instances of the same schwa principle but were **not findings in review #67**; raising them here would be scope-padding. They belong to whichever review owns those words. I deliberately do **not** count them as new issues — only the in-scope #18 parallel above.
+
+### Scorecard
+- Findings verified applied in live data: 20/21 + 2 parallels (mukunha-thanks, mwerre-love).
+- New actionable issues: 1 (thanks.js aer `mwerre` parallel of #18, not applied).
+- Accepted won't-fix / out-of-scope: ⟨rr⟩=[ɻ] system convention (#15 sub-note); corpus-wide aer schwa in non-#67 words.
+
+**File status: OPEN** — Dev team must apply the missed #18 parallel: in `words/thanks.js:691`, fix `aer` `["unte mwerre","untɛ mʷɛɾɛ"]` so the `mwerre` portion reads `mʷərə` (ideally `["unte mwerre","untə mʷərə"]`).

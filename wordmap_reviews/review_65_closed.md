@@ -116,3 +116,71 @@ I am a historical-comparative linguist specializing in the languages of Mesoamer
 - **Why:** Huave orthographic *j* word-finally is the glottal fricative [h], which the IPA correctly shows, so this row is in fact **consistent** — I flag it only to record that the [ts] here is plain (no ejective), correctly distinguishing Huave from the Mayan ejective rows above. No change required; included for the reviewer's audit trail of the [ts]/[tsʼ] contrast across my scope.
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Convention note: the established IPA convention in these files renders the Nahuan lateral affricate as **`tɬ` (no tie bar)** — every Classical `nci` row the reviewer cites as correct uses `tɬ`/`tɬeːtɬ`/`itskʷiːntɬi`. To preserve internal consistency I apply `tɬ` (not the reviewer's `t͡ɬ`); likewise `tʃʼ` (not `t͡ʃʼ`) for Ixil, since plain `tʃ` dominates `dog.js`. Per the standing "fix all variants together" rule I also fixed flagged-class errors in sister rows (`nhe`) the reviewer did not enumerate but which share the identical defect.
+
+1. **`nch` water** — applied (by orchestrator this round). IPA `atl`→`aːtɬ` (matches long-voweled `nci` `aːtɬ`). Surface kept (valid Nahuatl orthography).
+2. **`nhw` water** — applied. IPA `atl`→`atɬ`.
+3. **`nhe` water** — applied. IPA `atl`→`atɬ`.
+4. **`nch` fire** — applied. IPA `tlitl`→`tɬitɬ` (both `tl` → lateral affricate).
+5. **`nhw` fire** — applied. IPA `tlitl`→`tɬitɬ`.
+   - Also fixed (fix-all-variants): **`nhe` fire** `["titl","titl"]` IPA `titl`→`titɬ` — same final-`tl` affricate defect, not separately enumerated by reviewer.
+6. **`nch` eat** — applied. IPA `tlakʷa`→`tɬakʷa`. Also applied to sister rows **`nhw`** and **`nhe`** (identical `tlakʷa`), per fix-all-variants.
+7. **`ngu` eat** — applied. IPA `tlakwa`→`tɬakʷa` (initial lateral affricate + labiovelar `kʷ`). Surface `tlakua` kept.
+8. **`nch` love** — applied. IPA `tlasoʔtla`→`tɬasoʔtɬa`. Also applied to **`nhw`**, **`nhe`**, **`ngu`** (identical `tlasoʔtla`), per fix-all-variants. Saltillo `ʔ` retained.
+9. **`ngu` dog** — applied. Both fields corrected to `["itzcuintli","itskʷintli"]`, aligning with sister rows `nch`/`nhw`/`nhe`. The current `["tsʼkuintli","tsʼkʷintli"]` dropped the initial *i-* and carried a non-existent Nahuatl ejective `tsʼ`; *itzcuīntli* with plain `ts` is the correct reflex.
+10. **`kek` fire** — applied. Surface `xamʼ`→`xam`; the trailing saltillo glyph had no IPA correspondent and a word-final `ʔ` after a nasal is not motivated for Q'eqchi' *xam* 'fire' (Campbell 1997 / Kaufman). IPA `ʃam` unchanged.
+11. **`ixl` dog** — applied. IPA `tʼʃʼiʔ`→`tʃʼiʔ`: collapses two stacked ejectives into the single ejective postalveolar affricate `tʃʼ` (file convention: no tie bar). Cf. `ctu`/`toj` `tsʼiʔ`.
+12. **`zap` dog** — applied. IPA `biʔkʼuʔ`→`biʔkuʔ`: removed spurious ejective; Isthmus Zapotec (Oto-Manguean) lacks an ejective series. Matches neighbor `zts` `bikuʔ`.
+13. **`mam` moon** — applied. IPA `ʃhaw`→`ʃaw`: removed the stray `h` (the digraph *x* = `ʃ`; the *j* is not a separate segment here).
+14. **`ote` moon** — held (won't-fix). The reviewer explicitly allows this row to stand if prenasalization is out of scope. Adding `ⁿz`/`nz` is a dialect/system-level normalization, not a clear local error; the nasal vowels are already correct. Holding.
+15. **`ote` fire** — applied. IPA `tsʼibi`→`tsibi`: removed spurious ejective (Otomí has no ejective series; surface shows plain *ts*).
+16. **`otq` fire** — applied. IPA `tsʼibi`→`tsibi` (same as 15, Querétaro Otomí).
+17. **`nch` moon** — applied. IPA `metstli`→`metstɬi` (final `tl` → lateral affricate; `tz`=`ts` already correct). Also applied to **`nhw`** and **`nhe`** (identical `metstli`), per fix-all-variants.
+18. **`huv` eat** — no change required (reviewer audit-trail item; `atsaj`/`atsah` already consistent, plain `ts` correct for Huave).
+
+Open/won't-fix count: 1 (issue 14, `ote` moon prenasalization — reviewer-permitted to stand, out of scope as a system-level choice).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-read every cited array directly from disk on 2026-05-31 and confirmed each "applied" claim against the live values. All eighteen items check out.
+
+**Convention adjudication (tie bar).** The worker rendered the Nahuan lateral affricate as `tɬ` (no tie bar) rather than my `t͡ɬ`, and the Ixil ejective affricate as `tʃʼ` rather than `t͡ʃʼ`. I accept this. The word files use `tɬ` 57× vs `t͡ɬ` 3×, and the only three tie-bar instances are Klingon (`tlh`) aspirated laterals in `drink.js`/`thanks.js`, not Nahuan. Every `nci` Classical reference row I myself cited as correct (e.g. `tɬeːtɬ`, `itskʷiːntɬi`) uses the no-tie-bar form. Internal consistency is the right tie-breaker here; the phonological content (single lateral-affricate segment) is faithfully represented either way. ✓ accepted as a defensible system-level convention.
+
+Per-item verification:
+1. `nch` water — `["atl","aːtɬ"]` (line 532). ✓ matches long-vowel `nci` `aːtɬ` (line 530).
+2. `nhw` water — `["atl","atɬ"]` (line 533). ✓
+3. `nhe` water — `["atl","atɬ"]` (line 534). ✓
+4. `nch` fire — `["tlitl","tɬitɬ"]` (line 540). ✓ both `tl`→`tɬ`.
+5. `nhw` fire — `["tlitl","tɬitɬ"]` (line 541). ✓ Bonus: `nhe` fire `["titl","titɬ"]` (line 542) — final `tl`→`tɬ` fixed; surface `titl` (no initial `tl`) left intact, correct. ✓
+6. `nch` eat — `["tlacua","tɬakʷa"]` (line 525); `nhw`/`nhe` identical (526/527). ✓
+7. `ngu` eat — `["tlakua","tɬakʷa"]` (line 529): initial lateral affricate + labiovelar `kʷ` both correct now. ✓
+8. `nch` love — `["tlazohtla","tɬasoʔtɬa"]` (line 541); `nhw`/`nhe`/`ngu` identical (542/543/545), saltillo `ʔ` retained. ✓
+9. `ngu` dog — `["itzcuintli","itskʷintli"]` (line 538): restored initial *i-*, removed the non-existent Nahuatl ejective `tsʼ`, now aligned with `nch`/`nhw`/`nhe`. ✓
+10. `kek` fire — `["xam","ʃam"]` (line 1090): spurious trailing saltillo deleted from surface, IPA agrees. ✓
+11. `ixl` dog — `["tx'i'","tʃʼiʔ"]` (line 1099): two stacked ejectives collapsed to single ejective postalveolar affricate; contrasts correctly with `ctu`/`toj` `tsʼiʔ` (1093/1094). ✓
+12. `zap` dog — `["bi'cu'","biʔkuʔ"]` (line 624): spurious `kʼ` removed; matches neighbor `zts` `bikuʔ` (line 625). ✓ (Oto-Manguean, no ejective series.)
+13. `mam` moon — `["xjaw","ʃaw"]` (line 1100): stray `h` removed; `x`=`ʃ` digraph stands. ✓
+14. `ote` moon — `["zänä","zãnã"]` (line 1020), unchanged; `otq` identical (1021). △ held, reviewer-permitted. I explicitly allowed this row to stand if prenasalization is out of scope; the nasal vowels are correct. Prenasalized `ⁿz` is a cross-variety normalization, not a clear local error. I accept the hold as a defensible system-level choice — it is NOT a residual error.
+15. `ote` fire — `["tsibi","tsibi"]` (line 1020): spurious ejective removed, IPA now matches plain-*ts* surface. ✓
+16. `otq` fire — `["tsibi","tsibi"]` (line 1021). ✓
+17. `nch` moon — `["metztli","metstɬi"]` (line 540): final `tl`→`tɬ`, `tz`=`ts` already correct; `nhw`/`nhe` identical (541/542). ✓
+18. `huv` eat — `["atsaj","atsah"]` (line 621): audit-trail item, correctly left unchanged; plain `ts` distinguishes Huave from the Mayan ejective rows. ✓
+
+**New issues:** none. While verifying I scanned the surrounding Nahuan/Mayan/Oto-Manguean rows in all six files and found no further orthography-copied-into-IPA, spurious-ejective, or mis-segmented-affricate cases beyond those already handled.
+
+### Scorecard
+- Items verified applied in live data: 16 (issues 1–13, 15–17) plus 1 correct no-op (18) = 17 resolved.
+- Held / won't-fix, reviewer-accepted: 1 (issue 14, `ote`/`otq` moon prenasalization — defensible out-of-scope normalization).
+- Convention deviations accepted: `tɬ`/`tʃʼ` no-tie-bar (matches 57:3 file convention and cited `nci` references).
+- New issues raised: 0.
+
+Nothing remains for the dev team to address: every clear error is fixed-and-verified, and the single held item is one I explicitly accept as a system-level choice.
+
+**File status: CLOSED** — nothing left to address.

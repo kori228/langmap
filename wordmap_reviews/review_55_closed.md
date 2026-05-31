@@ -131,3 +131,85 @@ I am a phonologist and lexicographer specialising in the Yue (粵) dialect group
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Note on duplicate blocks: several files (e.g. `eye.js`, `heart.js`, `love.js`) carry the same variant key twice in two near-identical appended `data:` sub-blocks. Where a fix targets such a key, BOTH occurrences are corrected identically.
+
+### Applied
+
+- **#1 — `yue` hello 你 tone** (applied by orchestrator this round). `words/hello.js` L72: `neːi˧˩hɔːu˧˥` → `neːi˩˧hou˧˥`. The 你 *nei5* contour ˧˩ (tone 4, 陽平/low-falling) is a clear tone-category error for 陽上 low-rising 13 = ˩˧; every sister (`yue_zs/dg/nn` = `nei˩˧`) agrees. Tone fix applied. The 好 rime is also corrected per #2 in the same value (see below). I deliberately left the prestige-register long nucleus `neːi` untouched (that is a register-wide convention question, not a local error — see held #13).
+- **#2 — `yue` hello 好 rime** (applied by orchestrator this round). Folded into #1's new value: `hɔːu` → `hou`. All four sisters (`yue_zs/dg/nn/gz`) give `hou˧˥`; the long open-mid `ɔːu` before the off-glide is not an LSHK rime. Clear within-variety-group inconsistency.
+- **#3 — `yue` good 好 rime** (applied by orchestrator this round). `words/good.js` L72: `hɔːu˧˥` → `hou˧˥`. Same 好 *hou2*; within this one file the rime is written three ways and the LSHK/sister value is `ou`.
+- **#4 — `yue_gz` good 好 rime** (applied by orchestrator this round). `words/good.js` L985: `hɔu˧˥` → `hou˧˥`. Guangzhou = prestige norm for this rime; matches `hou˧˥` already used at L412/413.
+- **#5 — `yue_gz` hello 你 tone + 好 rime** (applied by orchestrator this round). `words/hello.js` L985: `nei˧˥hɔu˧˥` → `nei˩˧hou˧˥`. 你 *nei5* is 陽上 ˩˧, not 陰上 ˧˥; the ˧˥ erases the 上聲 register split. 好 rime `ɔu`→`ou` per #4.
+- **#6 — `yue_ts` water 水 /ɬ/** (applied by orchestrator this round). `words/water.js` L751: `lui˧˧` → `ɬui˧˧`. Overwhelming internal evidence: this variety renders MC *s-/*ɕ- as /ɬ/ throughout (食 `ɬik`, 心 `ɬim`, 手 `ɬau`, 树 `ɬi`, 谢 `ɬɛ`); neighbouring `yue_nn` water is `ɬɵy`. Plain /l/ on 水 (MC ɕ-) is the lone outlier and neutralises the Sei-yap hallmark. (Yiu 2009; Him Mark Lai.)
+- **#7 — `yue_ts` father 爸 missing tone** (applied by orchestrator this round). `words/father.js` L744: `a˧˧pa` → `a˧˧pa˥˥`. Untoned syllable is invalid here; sister `yue_dg` 阿爸 is `a˧˧pa˥˥`, so ˥˥ adopted for consistency.
+- **#8 — `yue_ts` mother 妈 missing tone** (applied by orchestrator this round). `words/mother.js` L750: `a˧˧ma` → `a˧˧ma˥˥`. Parallel to #7; sister `yue_dg` 阿妈 is `a˧˧ma˥˥`.
+- **#10 — `yue_ts` thanks 多 dropped /t/ onset** (applied by orchestrator this round). `words/thanks.js` L744: `ɔ˨˨ɬɛ˧˨` → `tɔ˨˨ɬɛ˧˨`. Clear typo — every sister keeps the /t/ (`tɔː`/`tɔ`). I restored only the onset and left the ˨˨ tone unchanged (the reviewer flagged the tone as merely "questionable", and Sei-yap tone values are variety-specific — held).
+- **#15 — `yue_ts` eye 眼 length** (applied by orchestrator this round). `words/eye.js` L744: `ŋan˧˧` → `ŋaːn˧˧`. The /aːn/ vs /ɐn/ length contrast is phonemic; sisters `yue_zs/dg/gz` all have `ŋaːn`. Only the vowel length is corrected; the ˧˧ tone is left as a variety-specific value (not a clear error).
+- **#16 — `yue_nn` eye 眼 length (×2 blocks)** (applied by orchestrator this round). `words/eye.js` L413 and L453: `ŋan˩˧` → `ŋaːn˩˧`. Same length fix; tone ˩˧ is already correct. Both duplicate occurrences corrected.
+- **#18a — `yue_gz` sun 日 entering-tone** (applied by orchestrator this round). `words/sun.js` L991: `jɐt˥˥tʰɐu˧˧` → `jɐt˨tʰɐu˧˧`. 日 *jat6* is 陽入 (low entering); within `yue_gz` itself the parallel 陽入 syllables 食 and 树 are `˨˨`, so the ˥˥ on 日 is a clear within-variety inconsistency. I corrected ONLY the 日 tone to ˨ (matching prestige `yue` `jɐt˨`; single letter per checked-tone brevity). I left 頭 `˧˧` (#18b) untouched — see held below.
+
+### Held with rationale (won't-fix this round / needs reviewer decision or source)
+
+- **#9 — `yue_ts` sun 頭 initial/tone.** Held. The reviewer is himself uncertain ("/h/ only if 頭 has lenited; otherwise /tʰau/ … at minimum the tone is wrong"). The correct Sei-yap initial AND tone value cannot be settled from internal evidence, and I could not source an authoritative Taishanese 日頭 transcription offline. Recommend reviewer supply a sourced Taishan form (Yiu 2009) or accept current with caveat.
+- **#11 — `yue_dg` water 水 /sui/ vs /sɵy/.** Held. Plausible, but the reviewer explicitly conditions the fix on sourcing ("if Dongguan genuinely monophthong-shifts here it must be sourced"). Dongguan Cantonese is independently reported to have distinctive vowel mergers, so I will not assume `sui` is an error without a source. Needs a sourced Dongguan *seoi2* form before changing.
+- **#12 — `yue_zs` heart 心 tone ˥˧.** Held. This is an internal-consistency *flag*, not an unambiguous error; the reviewer offers two valid readings (genuinely falling 陰平 vs ˥). The Zhongshan 石岐 citation-tone system is a variety-wide convention choice (note `yue_zs` 多 is also `tɔ˥˧`, 貓 `maːu˥˧` — a consistent falling-陰平 pattern WITHIN the variety). Changing it would impose the HK norm on a documented sub-variety. Needs a sourced Zhongshan tone decision.
+- **#13 — `yue` ˥ vs ˥˥ notation.** Held. System-level notation convention (one- vs two-letter 陰平), not a local data error. Should be resolved by a corpus-wide normalization pass, not piecemeal here.
+- **#14 — `yue_nn` love 爱 /ŋ-/ onset.** Held. Nanning Cantonese is independently noted for productive ng-/zero alternation; the reviewer concedes a sourced /ŋ-/ may be legitimate. Without an authoritative Nanning 影母 source I will not strip the onset. Needs source (Guangxi Yue survey).
+- **#17 — `yue_ts` cat 猫.** Held. Reviewer explicitly "flagging for source check"; the rime and tone reconciliation requires sourced Sei-yap data I could not obtain offline.
+- **#18b — `yue_gz` sun 頭 ˧˧.** Held. 頭 *tau4* 陽平 Chao value legitimately varies across Yue sub-varieties; ˧˧ is not internally contradicted within `yue_gz` (no other 陽平 syllable in `yue_gz` to compare). A cross-variety tone-realization choice, not a clear local error. (Note `yue_ts` 頭 is also `˧˧`.)
+- **#19 — `yue_dg` sun 日 ˨˨ vs ˨.** Held. Checked-tone single- vs double-letter notation is a corpus-wide convention question (same family as #13), not a substantive error. Better handled as a normalization pass.
+- **#20 — `yue_ts` moon 月光 tones/rime.** Held. Both the rime (/ut/ vs /yt/) and the apparent tone-swap need sourced Sei-yap data; I could not source an authoritative Taishan 月光 transcription offline. Recommend escalation to the Sei-yap source set.
+
+**Remaining open (deliberately left): 9** — #9, #11, #12, #13, #14, #17, #18b, #19, #20.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified every "applied" fix against the LIVE per-word data files (`node -e` extraction of `WORDS.<word>.data`, plus `grep` for duplicate variant blocks). All eleven claimed fixes are genuinely present in the data — no phantom "applied" entries this round.
+
+### Verified-applied (✓ confirmed in live data)
+
+- **#1 + #2 — `yue` hello.** Live: `yue: ["你好","neːi˩˧hou˧˥"]`. 你 tone now ˩˧ (陽上) and 好 rime now `hou`. ✓ Both fixed. (Prestige-register long `neːi` deliberately retained — see #13.)
+- **#3 — `yue` good.** Live: `["好","hou˧˥"]`. ✓
+- **#4 — `yue_gz` good.** Live: `["好","hou˧˥"]`. ✓
+- **#5 — `yue_gz` hello.** Live: `["你好","nei˩˧hou˧˥"]`. ✓ Both 你 tone and 好 rime fixed.
+- **#6 — `yue_ts` water.** Live: `["水","ɬui˧˧"]`. ✓ Confirmed the /ɬ/ pattern is now corpus-consistent across `yue_ts`: 水 `ɬui`, 食 `ɬik`, 手 `ɬau`, 心 `ɬim`, 树 `ɬi`, 谢 `ɬɛ`. Strong fix.
+- **#7 — `yue_ts` father.** Live: `["阿爸","a˧˧pa˥˥"]`. ✓ (matches sister `yue_dg` `a˧˧pa˥˥`).
+- **#8 — `yue_ts` mother.** Live: `["阿妈","a˧˧ma˥˥"]`. ✓ (matches `yue_dg` `a˧˧ma˥˥`).
+- **#10 — `yue_ts` thanks.** Live: `["多谢","tɔ˨˨ɬɛ˧˨"]`. ✓ /t/ onset restored. I accept leaving the ˨˨ tone (variety-specific; original flag was only "questionable").
+- **#15 — `yue_ts` eye.** Live: `["眼","ŋaːn˧˧"]`. ✓ long /aː/ restored.
+- **#16 — `yue_nn` eye.** Live: BOTH duplicate blocks (L413, L453) = `["眼","ŋaːn˩˧"]`. ✓ Both occurrences fixed.
+- **#18a — `yue_gz` sun.** Live: `["日头","jɐt˨tʰɐu˧˧"]`. ✓ 日 corrected to ˨ (陽入); matches prestige `yue` `jɐt˨`.
+
+### Held items — adjudication
+
+- **#9 `yue_ts` sun 頭 — ✗ won't-fix / accept as known limitation.** My own original wording was genuinely uncertain on both initial and tone; neither can be settled from internal data and the worker reports no offline Taishanese 日頭 source. Accepted as a documented limitation needing a human Sei-yap source.
+- **#11 `yue_dg` water `sui` vs `sɵy` — △ accept-as-limitation.** Verified `yue_dg` `sui` is the lone variant lacking the rounded `ɵ` nucleus (yue/zs `sɵy`, gz `sɵi`, nn `ɬɵy`). However 水 is the ONLY *eoi*-rime word in the corpus for `yue_dg`, so there is no internal precedent to force the fix, and Dongguan is independently reported to have idiosyncratic vowel mergers. I will not demand an offline source again at round-2. Documented as a likely-error-but-unsourced caveat.
+- **#12 `yue_zs` heart 心 ˥˧ — ✓ accept hold (won't-fix).** VERIFIED internally consistent: `yue_zs` uses falling ˥˧ for ALL 陰平 syllables — 多 `tɔ˥˧`, 貓 `maːu˥˧`, 心 `sɐm˥˧`, and 光 in 月光 `kwɔŋ˥˧`. This is a deliberate, uniform Zhongshan (石岐) citation-tone convention, not an outlier. Imposing HK ˥ would be wrong. Accepted.
+- **#13 `yue` ˥ vs ˥˥ notation — ✓ accept hold.** System-level one-letter vs two-letter 陰平 notation; corpus-wide normalization concern, not a local data error. Accepted as won't-fix-here.
+- **#14 `yue_nn` love 爱 /ŋ-/ — △ accept-as-limitation.** Both duplicate blocks live = `ŋɔi˧˧`. My original conceded a sourced Nanning /ŋ-/ may be legitimate (productive ng-/zero alternation in Nanning Cantonese). Without a Guangxi-Yue source to confirm 影母-prothesis, I will not force-strip the onset at round-2. Documented caveat.
+- **#17 `yue_ts` cat 猫 `miau˨˨` — △ accept-as-limitation.** Original was an explicit "flagging for source check." The /-iau-/ rime vs `yue_nn` `meu` reconciliation needs Sei-yap source data the worker could not obtain offline. Documented caveat.
+- **#18b `yue_gz` sun 頭 ˧˧ — ✓ accept hold.** Verified there is NO other 陽平 syllable in the `yue_gz` set to contradict ˧˧; cross-variety 陽平 realization legitimately varies. Soft flag, not a hard error. Accepted.
+- **#19 `yue_dg` sun 日 ˨˨ vs ˨ — △ accept-as-notation.** NEW verification detail: within `yue_dg` the checked syllables 食 `sɪk˨` and 月 `jyt˨` use a single letter, but 日 uses `jɐt˨˨` — a real internal notational inconsistency (same Chao value 2, different letter count). This is purely notational (no phonological/tone-category error) and belongs to the same corpus-wide checked-tone normalization pass as #13. Accepted as won't-fix-here, but noted as a concrete normalization target for a future pass.
+- **#20 `yue_ts` moon 月光 ˧˧/˨˨ — ✗ accept hold.** I checked the internal-consistency angle and it does NOT cleanly show an error: within `yue_ts`, two of the three 陽入 syllables agree on mid ˧˧ (月 `ɲut˧˧`, 食 `ɬik˧˧`); only 日 `ɲit˨˨` differs. Taishanese historically has multiple entering-tone categories (a 陽入 register/length split), so 食/月 ˧˧ vs 日 ˨˨ may reflect a genuine split rather than an error. Resolving the rime (/ut/ vs /yt/) and tone needs sourced Sei-yap data. Accepted as a documented limitation.
+
+### New issues
+
+None. I checked the 食/月/日 entering-tone split, the *eoi*-rime distribution, and the yue_zs 陰平 pattern specifically looking for new clear errors; all apparent anomalies are either already-flagged held items or defensible variety conventions.
+
+### Scorecard
+
+- Hard/clear errors raised: 11 (#1–#8, #10, #15, #16, #18a). All 11 fixed AND verified in live data. ✓
+- Held items: 9. Adjudicated — 3 accepted as variety/system conventions (#12, #13, #18b), 1 notational (#19), 5 accepted as documented known-limitations needing a human dialect specialist with offline Sei-yap/Dongguan/Nanning sources (#9, #11, #14, #17, #20).
+- New issues: 0.
+- Phantom/missing applied fixes: 0.
+
+Per the round-2 loop-termination policy: every clear error is fixed-and-verified; the only remaining items are either defensible convention choices or genuinely unsourceable-offline dialect data that the team made a real effort to obtain. I will not demand the impossible again. The five source-dependent items are recorded here as known limitations for a future human Yue/Sei-yap linguist.
+
+**File status: CLOSED** — nothing left to address. (5 items recorded as documented known-limitations needing offline dialect sources; nothing actionable remains for the dev team.)

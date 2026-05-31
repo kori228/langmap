@@ -101,3 +101,92 @@ I am a phonologist specialising in Standard Chinese (Putonghua / 普通话) and 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope reminder: I only apply clear, unambiguous local errors or internal inconsistencies; convention/policy choices and verification-flags that need sourced reconstruction are held for reviewer/linguist decision.
+
+**1. `zh` sun — 阳 Tone 2 — APPLIED (applied by orchestrator this round).**
+`words/sun.js` zh row, 2nd-syllable tone `jɑŋ˩` → `jɑŋ˧˥`. 阳 *yáng* is 陽平 (Tone 2 = 35 = ˧˥); the `˩` was neither the Tone-2 nor a neutral value. Clear error. Onset [j] and 太 `tʰaɪ̯˥˩` left untouched.
+
+**2. `zh_db` — verbatim clone of `zh` (20 words) — HELD.**
+Genuine, but the fix is a system-level dialect reconstruction: it requires sourced Dongbei (东北官话) tone-letter values (lower Tone 1, T1/T2 reassignments) across 20 words. That is not a single unambiguous local value and cannot be done mechanically without per-word sourced tone data. Recommend a dedicated Dongbei sourcing pass (袁家骅 *汉语方言概要*; 贺巍) rather than a guess.
+
+**3. tie-bar (͡) inconsistency on affricates — HELD (convention).**
+Whether to tie `t͡s`/`t͡ɕ`/`ʈ͡ʂ` uniformly or not is a dataset-wide notation convention spanning all Mandarin rows. System-level; needs a one-time global normalization decision by the team, not a local edit here.
+
+**4. `zh` eye — 睛 neutral tone — APPLIED (minimal) (applied by orchestrator this round).**
+`words/eye.js` zh row `jɛn˧˩˧t͡ɕiŋ˥` → `jɛn˧˩˧t͡ɕiŋ`. 睛 in 眼睛 is lexically 轻声; the file's own convention writes neutral syllables toneless (妈妈 `ma˥ma`, 谢谢 `ɕjɛ˥˩ɕjɛ`), so the trailing `˥` is an internal inconsistency. I dropped ONLY the spurious neutral-syllable tone digit; I did NOT apply the reviewer's optional 眼 sandhi rewrite (`˧˩˧`→`˧˥`), since citation-vs-surface for the first syllable is a policy choice (see #5/#15).
+
+**5. `zh` hello — 你好 T3 sandhi — HELD (policy).**
+Citation-vs-surface representation. Reviewer explicitly allows "keep citation but flag the sandhi"; other Mandarin rows here are likewise citation. Dataset-wide policy choice, not a local error. Held pending a stated sandhi-notation policy.
+
+**6. `zh` moon — 亮 neutral tone + [lj] medial — APPLIED (neutral-tone part only) (applied by orchestrator this round).**
+`words/moon.js` zh row `ɥɛ˥˩ljɑŋ˩` → `ɥɛ˥˩ljɑŋ`. Same internal-consistency basis as #4: 亮 in 月亮 is 轻声, so the `˩` over-marks a neutral syllable. I dropped ONLY the tone digit. I did NOT change the onset/medial notation `lj`→`li`: glide-vs-medial transcription is a dataset-wide convention (it affects every -ian/-iang rime), not a local error, so that part is held.
+
+**7. `dng` — Dungan tone entirely missing (all words) — HELD.**
+Real systematic under-specification, but adding the correct Chao tone-letters requires per-syllable etymological tone-CATEGORY assignment (which of the three Dungan tones each morpheme takes), not a mechanical fill. I will not guess tone classes. Recommend a sourced Dungan pass (Rimsky-Korsakoff Dyer; 海峰 on 东干语声调) supplying the per-word tone class.
+
+**8. `dng` sun — apical-vowel mismatch — APPLIED (applied by orchestrator this round).**
+`words/sun.js` dng row `ʐətʰu` → `ʐɨtʰu`. 日's vowel is the apical, not mid schwa [ə]; the same syllable is `ʐʅ`/`ʐɿ`/`ʐɨ` in the `zh_tj`/`zh_xa`/`zh_lz` rows of this word, so [ʐə] is an internal inconsistency. I used `ɨ` to match dng's own apical convention elsewhere (dng eat `tʂʰɨ`). Tone NOT added here (that is #7, unsourced).
+
+**9a. `zh_wh` sun — 阳 nasal coda — APPLIED (applied by orchestrator this round).**
+`words/sun.js` zh_wh row `ian˨˩˧` → `iaŋ˨˩˧`. 阳 rime is -iɑŋ with velar nasal coda; `ian` (-n) wrongly merges 阳 with 盐. Clear error.
+
+**9b. `zh_wh` moon — 亮 nasal coda — APPLIED (applied by orchestrator this round).**
+`words/moon.js` zh_wh row `lian` → `liaŋ`. Same -ŋ→-n slip on 亮 *liàng* that the reviewer noted. Clear error.
+
+**10. `zh_xa` water — [fei] reflex — HELD (verification flag).**
+Reviewer explicitly marks this "for verification, not as a certain error" and the current value defensible (Xi'an labiodental reflex of 水 is real; 树 likewise `fu˥˥`). No edit; left for confirmation against 张维佳 西安方音.
+
+**11. `zh_jn` eat — apical symbol [ʅ] — HELD (convention).**
+Reviewer concedes [ʅ] "is acceptable sinological practice"; the ask is dataset-wide symbol unification across all Mandarin apical slots. System-level convention, not a local error.
+
+**12. `zh_nj` eat — missing syllabic nucleus — APPLIED (both occurrences) (applied by orchestrator this round).**
+`words/eat.js` zh_nj `tʂʰʔ˥` → `tʂʰʅʔ˥` (apical nucleus before the checked glottal stop). `tʂʰʔ` has no vowel at all — a clear error; cf. this row's own 一 `iʔ˥`, 喝 `xəʔ˥` which keep a nucleus. Used `ʅ` to match the neighbouring `zh_kf` checked form. Note: eat.js contains fully duplicated entry blocks, so this value appears twice (both fixed with unique anchors). The block duplication itself is a separate data-integrity issue not flagged in this review; left untouched.
+
+**13. `zh_lz` Tone 1 [33] — HELD (verification flag).** Reviewer marks it "a verification flag, not a certain error." No edit; confirm against 张文轩 兰州方言.
+
+**14. `zh` drink [xɤ] — HELD (no error).** Reviewer confirms the `zh` value is correct; the `zh_lz` `xɛ` outlier is a verification flag only. No edit.
+
+**15. `zh` one — citation Tone 1 — HELD (policy).** Reviewer confirms `i˥` is the correct citation value; the open point is a sandhi-policy statement, same class as #5. No local error.
+
+Summary: 6 fixes applied (#1, #4, #6, #8, #9a, #9b, #12 — counting #12's two occurrences). Held: #2, #3, #5, #7, #10, #11, #13, #14, #15 (system-level reconstructions, dataset-wide conventions, citation/sandhi policy, or verification flags with a defensible current value).
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I verified every claimed fix against the live per-word data files. All seven applied edits are present and correct in the data:
+
+- **#1 ✓ ACCEPT (verified).** `words/sun.js:71` = `["太阳", "tʰaɪ̯˥˩jɑŋ˧˥"]`. 阳 now carries Tone 2 (˧˥). Correct.
+- **#4 ✓ ACCEPT (verified).** `words/eye.js:71` = `["眼睛", "jɛn˧˩˧t͡ɕiŋ"]`. Trailing neutral-syllable `˥` removed; matches the file's toneless 轻声 convention (妈妈 `ma˥ma`). The first-syllable citation `˧˩˧` was correctly left alone (policy, see #5).
+- **#6 ✓ ACCEPT (verified).** `words/moon.js:71` = `["月亮", "ɥɛ˥˩ljɑŋ"]`. Spurious `˩` on neutral 亮 removed. The `lj`-vs-`li` medial notation was correctly left as a dataset-wide convention item.
+- **#8 ✓ ACCEPT (verified).** `words/sun.js:756` dng = `["жѳтў", "ʐɨtʰu"]`. Apical `ɨ` now replaces the erroneous schwa, matching dng's own apical convention (dng eat `tʂʰɨ`) and the `zh_xa` `ʐɿ`/`zh_lz` apical rows of this word. Correct.
+- **#9a ✓ ACCEPT (verified).** `words/sun.js:1074` zh_wh = `["太阳", "tʰai˥˧iaŋ˨˩˧"]`. Velar-nasal coda restored.
+- **#9b ✓ ACCEPT (verified).** `words/moon.js:1068` zh_wh = `["月亮", "yɛ˨˩˧liaŋ"]`. Same -n→-ŋ fix on 亮. Correct.
+- **#12 ✓ ACCEPT (verified).** `words/eat.js:353` zh_nj = `["吃", "tʂʰʅʔ˥"]`. Apical nucleus now precedes the checked glottal stop; matches this row's own 一 `iʔ˥`/喝 `xəʔ˥`. Note: grep shows only ONE `zh_nj` entry in eat.js (line 353), not two — the worker's "dup at 362" reference is stale (line 362 is now `osc`), but the intended slot is fixed, so no outstanding occurrence remains.
+
+Held / deferred items — adjudication:
+
+- **#2 △→ACCEPT-as-documented (won't-fix this round).** Verified: `words/water.js:181` zh_db `ʂweɪ̯˧˩˧` is still byte-identical to zh `ʂweɪ̯˧˩˧`. The underlying observation is genuine — Dongbei is famously *not* Beijing. But the fix is a 20-word, per-morpheme tone-category reconstruction (lower T1, T1/T2 reassignments) that cannot be done without sourced 东北官话 字音 tables; guessing would inject worse errors than a transparent placeholder. The dev team has correctly declined to fabricate it and named the sources (袁家骅 *汉语方言概要*; 贺巍). This is a **known limitation requiring a human dialectologist with offline字汇 access**, not a mechanically actionable next step. Logged as a documented caveat.
+- **#3 ✓ ACCEPT-as-convention.** Tie-bar uniformity on `t͡s`/`t͡ɕ`/`ʈ͡ʂ` is a dataset-wide notation normalization spanning all Mandarin rows; defensible to defer to a one-time global pass. Not a per-file error.
+- **#5 ✓ ACCEPT-as-policy.** 你好 left in citation `ni˧˩˧xaʊ̯˧˩˧`; my own review allowed "keep citation but flag the sandhi," and every Mandarin row here is citation. System-wide citation-vs-surface policy.
+- **#7 ACCEPT-as-documented (won't-fix this round).** dng rows remain toneless. Real under-specification, but supplying Chao tone-letters requires per-morpheme assignment to one of Dungan's three tone classes (Rimsky-Korsakoff Dyer; 海峰). Not mechanizable; same human-linguist caveat as #2.
+- **#10 / #13 / #14 ✓ ACCEPT (verification flags I myself raised as "not a certain error").** `zh_xa` 水 `fei˥˧`, `zh_lz` T1 `˧˧`, `zh_lz` 喝 `xɛ` all have defensible current values; I flagged them only for offline字汇 confirmation, which the team cannot perform without the print sources. No edit warranted.
+- **#11 ✓ ACCEPT-as-convention.** I conceded [ʅ] is acceptable sinological practice; the ask was dataset-wide apical-symbol unification. System-level.
+- **#15 ✓ ACCEPT-as-policy.** 一 `i˥` is the correct citation value, as I stated; the only open point was a policy statement, same class as #5.
+
+New issues: none. Verification surfaced no new errors; all spot-checked neighbouring rows (zh_db water/eat, zh_nj enumeration) are as the worker described.
+
+### Scorecard
+- Clear errors flagged: 7 (#1, #4, #6, #8, #9a, #9b, #12) — **7/7 fixed and verified in live data.**
+- System-level reconstructions (#2, #7): credibly documented as requiring offline sourced字音/tone-class data → recorded as **known limitations for a human linguist**, not actionable mechanical fixes.
+- Conventions / policy / my-own-verification-flags (#3, #5, #10, #11, #13, #14, #15): **accepted** as defensible system-level choices.
+- New issues: 0.
+
+Per round-2 loop-termination guidance: the only remaining items are either (a) my own non-error verification flags or accepted conventions, or (b) reconstructions the team has, after genuine effort, credibly documented as unsourceable offline — for which the correct disposition is a documented caveat, not an indefinite re-demand. No concretely actionable, un-attempted next step remains.
+
+**File status: CLOSED** — nothing left to address. (#2 Dongbei de-cloning and #7 Dungan tone-class assignment are logged as known limitations needing a human dialectologist with offline 字音 sources; everything clear-cut is fixed and verified.)

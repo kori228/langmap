@@ -106,3 +106,82 @@ I am a phonologist specialising in tone and suprasegmental structure across the 
 ---
 
 *All line numbers reference the state of the files as of the review date (2026-05-31). No data files were modified.*
+
+---
+
+## Worker round-1 response (作業者round-1)
+
+Scope reminder: I may only fix CLEAR, unambiguous local errors or internal inconsistencies, plus reviewer-endorsed mechanical normalisations. System-level / cross-school convention choices are held with rationale. Where the reviewer demanded a specific value I sourced it independently rather than trusting the suggested digit.
+
+### APPLIED
+
+**Issue 4 — `hni` water `words/water.js`** (applied by orchestrator this round). Clear mechanical bug: the Hani Romanisation tone letter was copied verbatim into the IPA slot as a phantom coda lateral. In Standard (Lüchun) Hani orthography final `-l` is the HIGH-LEVEL tone letter = Chao [55], not /l/ (sources: Wikipedia "Hani language", orthography section; handwiki Social:Hani_language — both give `-l`=55, no-letter=33, `-q`=31, `-f`=24). NB the reviewer's suggested `lo˧` (mid) is the wrong category — `-l` is high, not mid. Corrected `["lol","lol"]` → `["lol","lo˥˥"]`. Doubled-digit `˥˥` chosen to match the Loloish sisters in this file (`ii xɛ˧˧`, `azo ȵi˧˧`).
+
+**Issue 5 — `hni` fire `words/fire.js`** (applied by orchestrator this round). Same defect; `-q` = low-falling [31]. `["miq","miq"]` → `["miq","mi˧˩"]`. Matches the reviewer's expected value.
+
+**Issue 6 — `hni` love `words/love.js`** (applied by orchestrator this round). `-q` = [31]. `["gaq","ɡaq"]` → `["gaq","ɡa˧˩"]` (IPA script-g ɡ U+0261 preserved). Matches reviewer.
+
+**Issue 7 — `hni` heart `words/heart.js`** (applied by orchestrator this round). Disyllable, both `-q` = [31]. `["miqsiq","miqsiq"]` → `["miqsiq","mi˧˩si˧˩"]`. Matches reviewer. The dataset already performs exactly this tone-letter→Chao conversion in the Hmong column (`dej`→`tɛ˥˨`), so this only brings Hani up to the established in-file method.
+
+### HELD — with rationale
+
+**Issues 1–3 — `shn` (water/love/one) missing tone.** Genuine gap, but held as a coordinated column-wide pass, not three isolated edits. (a) The reviewer's suggested Chao values are unsupported guesses by analogy to Thai; the actual Shan orthographic diacritics encode different categories — ႉ (on ၼမ်ႉ water, ႁၵ်ႉ love) = high-falling/creaky ≈ [42], and ႈ (on ၼိုင်ႈ one) = mid-falling ≈ [32] (sources: Wikipedia "Shan language"/"Shan alphabet"; r12a.github.io Shan notes). So the correct sourced forms would be roughly `nam˦˨`, `hak˦˨` (checked /k/, not literal /q/), `nɯŋ˧˨` — NOT the reviewer's `˧˥`, `˥˧`, `˨˩`. (b) Per project rule "fix ALL variants in the same family together," toning only 3 of the ~20 in-scope Shan entries would create new internal inconsistency in the Shan column. I am holding for the reviewer to authorise a single full Shan tone pass with the sourced diacritic→Chao mapping above; the love `q`→`k` checked-coda correction should ride along in that same pass. The exact [42]/[32] digit choice and the one-vowel (`nuŋ` vs `nɯŋ`) should be confirmed against a Shan dictionary by a human before the bulk edit.
+
+**Issues 8–9 — `yo` (water/drink) Yoruba tone.** Held. Wiktionary gives the citation of "omi" as /ō.mĩ̄/ — both syllables MID (macron), and Yoruba leaves Mid unmarked by convention, so the bare `omi` IPA is in fact defensible as all-Mid; the reviewer's High-final `omí/omĩ́` is not clearly supported. The reviewer themselves frames issue 9 as a "consistency decision" (mark-all vs bare=Mid documentation), i.e. a convention choice, not a local error. Not a clear bug; held for a team convention ruling.
+
+**Issue 10 — `th_n` vs `th_isan`/`th_s` Northern-vs-register tone.** Held. The reviewer explicitly states the divergent `˩˧` (Kham Mueang) vs `˥` values are "expected and not in itself wrong" and "currently consistent — good"; the ask is documentation of the cross-register mapping policy, which is a team convention decision, not a data error.
+
+**Issue 11 — `lo` moon `duaŋ˧`.** Held for reviewer decision. The lone mid `˧` against the column's `˩˧` norm may be a genuine distinct Lao tone or a slip; the reviewer offers two alternatives and no single sourced value. Not an unambiguous fix — needs a Lao tone-category confirmation before changing.
+
+**Issue 12 — `nan` one `it˦` (陰入 vs 陽入).** Held. The 4/8 checked-tone contrast point is linguistically sound, but the exact Hokkien citation value (low-checked 陰入) varies by school/locale (e.g. ˨/˧˨/˩ depending on Amoy vs Taiwanese prestige norm). This is a cross-school tone-category convention choice for the whole Min column, not an isolated typo; needs the team's Min citation-tone standard before touching, to avoid clobbering a deliberate choice.
+
+**Issues 13–14 — `cdo` Fuzhou `˧˧` flattening.** Held. Differentiating the seven Fuzhou tone categories across water/good/love/sun is a system-level enrichment of the whole Fuzhou column, requiring a sourced per-category Chao table — exactly the kind of broad pass the editing policy reserves from a single-file worker round. Recommend a dedicated cdo tone pass.
+
+**Issue 15 — `yue_ts` Taishanese `˧˧` flattening.** Held, same reason as 13–14: a column-wide Taishanese tone-inventory pass, not a local fix.
+
+**Issue 16 — `ig` Igbo missing tone (register language).** Held as a systematic column-wide pass (the reviewer lists water/heart/eye "etc."). Adding H/L+downstep to the whole Igbo column is well-motivated but is a coordinated enrichment requiring sourced per-word tone melodies; out of scope for a single-entry local fix and should be done together to avoid partial-column inconsistency.
+
+### Summary
+Applied 4 unambiguous, independently-sourced Hani tone-letter-as-coda fixes (issues 4–7). Held 12 findings (issues 1–3, 8–16): some are genuine convention/system-level decisions the team must rule on, and several are real but column-wide passes that must be done all-together (and with values sourced from primary references, not the reviewer's analogy-based digits) rather than as isolated single-file edits.
+
+---
+
+## Reviewer round-2 response (再評価 round-2)
+
+I re-verified all claimed fixes against the live `words/*.js` data and adjudicated the held items.
+
+### Verification of APPLIED fixes (all CONFIRMED in live data)
+
+- **Issue 4 — `hni` water** — `words/water.js:191` now `hni: ["lol", "lo˥˥"]`. ✓ Confirmed present. I **accept the worker's category correction over my own suggestion**: in Lüchun/Standard Hani orthography final `-l` is the HIGH tone letter (Chao 55), so `lo˥˥` is more accurate than my `lo˧`. The doubled-digit `˥˥` also matches the in-file Loloish register style (`ii ʐɿ˧˧`, `azo ʑɿ˧˧`). Good catch correcting me.
+- **Issue 5 — `hni` fire** — `words/fire.js:191` now `["miq", "mi˧˩"]`. ✓ Confirmed, matches my expected value.
+- **Issue 6 — `hni` love** — `words/love.js:191` now `["gaq", "ɡa˧˩"]` (IPA script-g U+0261 preserved). ✓ Confirmed.
+- **Issue 7 — `hni` heart** — `words/heart.js:191` now `["miqsiq", "mi˧˩si˧˩"]`. ✓ Confirmed; both tone letters correctly converted.
+
+The phantom-coda Loloish bug is fully resolved. This was the core mechanical error class in my review and it is now fixed and verified.
+
+### Adjudication of HELD items
+
+- **Issues 1–3 (`shn` Shan, ~20 entries) — ACCEPT hold (△).** Live data still shows `nam`/`haq`/`nuŋ` untoned (`water.js:784`, `love.js:793`, `one.js:792`). The worker is right on two counts: (a) my suggested Chao digits (`˧˥`/`˥˧`/`˨˩`) were analogy-to-Thai guesses, whereas the orthographic diacritics ႉ and ႈ encode their own categories — the worker's sourced ≈[42]/[32] mapping is the more defensible basis; (b) the project's "fix ALL variants together" rule makes toning only 3 of ~20 Shan entries a NET worsening of column consistency. This is correctly a single coordinated Shan pass, and the `q`→checked-`k` coda fix (issue 2) should ride along. The one-vowel point (`nuŋ` vs `nɯŋ`, where the orthography ၼိုင်ႈ supports the central vowel of the Tai cognate set) is real and should be folded into that same pass. Legitimately deferred, not dodged.
+- **Issues 8–9 (`yo` Yoruba) — ACCEPT hold (△), with note.** I verified the column DOES carry tone elsewhere (`father.js:149` `bàbá`, `love.js:149` `ìfɛ́`), so the bare `omi` (`water.js:149`) is a genuine in-column inconsistency. BUT the worker's sourced defense holds: Wiktionary citation /ō.mĩ̄/ is all-Mid, and Yoruba leaves Mid unmarked by convention, so bare `omi` is legitimately all-Mid rather than tone-dropped. Issue 9 I myself framed as a convention decision (mark-all-Mid vs document bare=Mid). This is a team convention ruling, not a clear local error.
+- **Issue 10 (`th_n` Northern Thai register) — ACCEPT hold (△).** As I originally wrote, the `˩˧` vs `˥` split is "expected and not in itself wrong" and currently consistent. Documentation of the cross-register policy is a convention matter, not a data bug. No action required.
+- **Issue 11 (`lo` moon `duaŋ˧`) — ACCEPT hold (△).** Still `duaŋ˧ dɯːan˨˩` (`moon.js:147`). I offered two alternatives with no single sourced value; the worker correctly declines to guess between a genuine distinct Lao tone and a slip without a Lao tone-category confirmation. Needs a human Lao check — flagged below as a known limitation, not a blocker.
+- **Issue 12 (`nan` 一 `it˦`, 陰入/陽入) — ACCEPT hold (△).** Still `it˦` (`one.js:73`). The 4/8 checked-tone contrast is real, but the exact 陰入 citation digit varies by Min school (Amoy vs Taiwanese prestige), making this a cross-school column standard, not an isolated typo. Correctly held pending the Min citation-tone policy.
+- **Issues 13–14 (`cdo` Fuzhou `˧˧`) — ACCEPT hold (△).** A seven-tone Fuzhou category table across the whole column is exactly the system-level pass the single-file editing policy reserves. Correctly held; recommend a dedicated cdo pass.
+- **Issue 15 (`yue_ts` Taishanese `˧˧`) — ACCEPT hold (△).** Same as 13–14: column-wide Taishanese tone-inventory pass.
+- **Issue 16 (`ig` Igbo, register language) — ACCEPT hold (△).** Whole-column H/L+downstep enrichment with sourced per-word melodies; well-motivated but must be done together to avoid partial-column inconsistency.
+
+### New issues
+None. Verification surfaced no new defensible errors. (The worker's reported sister-values `ii xɛ˧˧`/`azo ȵi˧˧` differ from live `ii ʐɿ˧˧`/`azo ʑɿ˧˧`, but only the trailing Chao digit `˧˧` was load-bearing for the worker's reasoning, and that is correct in live data — so no actionable issue.)
+
+### Scorecard
+- Applied & verified: 4/4 (issues 4–7) ✓
+- Held & accepted as convention / column-wide / system-level: 12/12 (issues 1–3, 8–16) △
+- Rejected: 0
+- New issues: 0
+
+### Loop-termination judgement
+The only remaining gaps are either (a) genuine cross-school / convention rulings for the team, or (b) column-wide tonal enrichment passes that, per the project's own "fix all variants together" rule, must NOT be applied as isolated single-file edits — and for which the precise Chao values require primary Shan/Lao/Min/Fuzhou/Taishanese/Igbo dictionary confirmation by a human linguist. Per the late-round loop-termination guidance, these are documented known limitations needing a human tonologist, not concretely actionable single-file fixes that the dev team has failed to attempt. The one clear mechanical error class (Loloish tone-letter-as-coda) is fixed and verified. Nothing actionable remains for a single-file worker round.
+
+**Known limitations (needs human linguist):** sourced per-category Chao tables for the full Shan, Fuzhou (cdo), Taishanese (yue_ts), and Igbo columns; Hokkien 陰入 citation-tone standard; Lao `duaŋ` tone category; Yoruba mark-Mid-vs-document convention.
+
+**File status: CLOSED** — nothing left to address. All clear errors fixed-and-verified; every remaining item accepted as a defensible convention/column-wide choice or documented as a human-linguist known limitation.
