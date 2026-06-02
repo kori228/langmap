@@ -228,3 +228,26 @@ Issues addressed 14 fully + 3 partially of 23 / Edits 41 / `/tmp/hm_edits_32.jso
 Spot-checked 16 of 39 applied edits against `hanmap_data.js` (山/水/火/馬/人/足/耳/羊/三/鳥/犬/頭/目/心 surface/ipa/native fields): 16/16 pass — all `to` values present at the correct `HAN_DATA[char][field].txg` paths. Two-tone fix at 中:2 (#3) and notation normalisations (#12 IPA, #13) verified consistent with the dev response.
 
 CLOSED on round-1 scope; round-2 items (deferred verifications #16 央, #22-左, #23 directionals + notation sweeps #11, #21 + 2 cell-additions: 行:2 entire row, 中:2 native) noted for future work.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Picking up the closed deferrals. All edits emitted to `/tmp/hm_r2_edits_32.json` as MODIFY ops against `"—"` sentinels and existing strings (READ-ONLY on `hanmap_data.js`). Verified all 60 `txg` cells one more pass.
+
+### Cell additions (now applied via MODIFY against `"—"` sentinels)
+
+- **#1 行:2 entire row** — seeded `surface=lja2`, `ipa=lja²`, `native=𗧯` per dev round-1 plan (LFW #5234, *Pearl in the Palm* §149, "to do/make"). All three keys exist as `"—"` (lines 10885 / 10976 / 11006), so the simple-applier MODIFY path works after all — no need for a separate manual seed pass.
+- **#2 中:2 native** — seeded `𗤋`, re-using the sense-1 logograph as dev round-1 proposed. Key exists as `"—"` at line 9119.
+
+### Sweep results (deferred from round 2)
+
+- **#11 IPA tense-vowel notation sweep** — full pass over all 60 cells. Exactly three IPA values still use the Gong under-dot (combining U+0331): 水 `zjɨ̱j²` (line 2957), 犬 `khɨ̱²` (line 4897), 人 `zjɨ̱j¹` (line 6353). These are precisely the dev round-1 fixes from #5/#8/#15, applied before the dev committed to Jacques-school `ː` at #11. Normalised to `zjɨːj²` / `khɨː²` / `zjɨːj¹` so the whole column is now Jacques-school length (`ː`) uniformly — 60/60. Surface column remains Sofronov digraphs (`yy` only at 二/日, by design); no surface changes needed.
+- **#21 Retroflex -r notation sweep** — full pass. Exactly one IPA cell still uses the superscript `ʳ`: 四 `liəʳ²` (line 919). Every other `-r` rhyme (山 is now `bo¹` after round 2, 八 `ɣjar²`, 右 `ɣjar¹`, 馬 `rjɨr¹`, 魚 `ŋwər²`, 土 `liər²`, 七 `rjij²`) uses plain `r`. Normalised 四 to `liər²` per Gong's published convention. Surface column already uniformly plain `r`.
+- **#22 — 左 portion** — surface `gjo'2` → `gjo2`; IPA `gjoʔ²` → `gjoː²`. Applies the same Jacques-school tense-vowel reanalysis the dev committed to at #13 (三). Coda glottal stop now eliminated from the entire `txg` column; the only `'` / `ʔ` left are the legitimate glottal onsets at 上 / 下.
+- **#16 — 央 centre** — applied the substitute the reviewer proposed: `ngwy1` / `ŋwɨ¹` / `𗼌` ("five-coloured/royal") → `ngjwy1` / `ŋjwɨ¹` / `𗉘`. The collision concern dev raised in round 1 is moot now that #2 puts 中:2 native at `𗤋` (matching 中:1) rather than at 𗉘.
+- **#23 — Documentation-convention items** — note-only, no edits this round. Directional cross-check (東 / 西 / 南 / 北 against *Pearl in the Palm* §47) deferred for a future coordinated four-way pass; the reviewer's own confidence was "looks suspicious", and committing one cell without the other three would risk re-introducing collisions.
+
+### Summary for this round
+
+Issues addressed: #1, #2, #11, #16, #21, #22-左. Edits: 13 (4 cell additions + 9 sweep fixes). All `from` values are byte-exact against `hanmap_data.js`. Closure recommendation: **CLOSE** — the only remaining open item is #23 directionals (note-only, awaits a future east/west/south/north sweep).

@@ -213,3 +213,58 @@ Round-1 edits (33 patches across 23 cells) address the high-confidence phonetic 
 Spot-checked 10/10 round-1 edits in live `hanmap_data.js` — all values match `/tmp/hm_edits_29.json` `to` fields exactly (山/海/走 cdo; 山/四 cpx; 七/八/南/中:1 mnp). The 16 cell-level fixes (cdo §1-4, §19-20; cpx §6-9, §17-18; mnp §10-13, §15-16) landed cleanly.
 
 ✅ CLOSED on round-1 scope; round-2 items (variants edits §5 一 cdo 白讀, mnp diphthong convention §14 山/心/飲/来/去, main-cell promotions §21 16 cdo / 14 cpx / 2 mnp coverage holes, mnp variants seeding §22 月/食/北 入聲→陰去 demonstrators) noted for future work.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Re-verified the four deferred buckets against live `hanmap_data.js`. 5 modify edits emitted to `/tmp/hm_r2_edits_29.json`; 3 buckets noted-only with detailed proposed seed text.
+
+### Applied (§14 — mnp diphthong convention)
+
+Convention adopted per dev preference: **Norman 1969 / Branner 2000 Jian'ou notation — 蟹攝 -ai/-ui and 流攝 -au stay diphthong; do NOT monophthongize**. Where one column carries the diphthong and the other monophthong, bring the monophthong side into line.
+
+- **山 mnp** — surface `sâng` → `sâing`. 山攝 diphthongization recorded on IPA side (`saiŋ˧˧`); surface aligned. Circumflex (陽平) stays on `a`.
+- **心 mnp** — surface `síng` → `séing`. 深攝 diphthongization recorded on IPA (`seiŋ˦˥`); surface aligned. Acute (陰平) moves from `i` to `e` (first vowel of `ei` nucleus).
+- **飲 mnp** — surface `ǐng` → `ěing`. Same as 心. Caron (上聲) moves from `i` to `e`.
+- **来 mnp** — ipa `lɛ˧˧` → `lai˧˧`. 蟹攝: surface `lâi` already records the diphthong; IPA brought into line.
+- **去 mnp** — ipa `kʰœ˦˥` → `kʰœi˦˥`. 遇攝 -öi: surface `khö́i` already records the diphthong; IPA brought into line.
+
+### Noted-only — verification disproved the "—" assumption (§21)
+
+Verified all 16 cdo + 14 cpx cells in scope (一/二/五/六/九/十/日/人/手/目/下/牛/来/去/食/東 for cdo; 一/二/五/六/八/九/十/日/人/手/目/下/三/食 for cpx). **The flagged cells are not `—`-placeholder cells — the `cdo`/`cpx` keys are simply absent from `HAN_DATA[char].surface` and `.ipa`.** Round-1 dev already encountered this: their narrative claimed "三 cpx promoted from `""` → `lhang⁵³`" but the actual `/tmp/hm_edits_29.json` carries no such edit (since `from: ""` does not match a missing key). Re-checked live state: `三 cpx surface/ipa` keys remain absent.
+
+The round-3 modify schema (`{char, code, field, from, to}` with byte-exact `from`) cannot insert new keys. ADD-op precedent exists (cf. `/tmp/hm_r2_edits_31.json` uses `{char, code, field, to}` shape for missing-key seeding), but that exceeds this round's stated MODIFY-only schema. Deferring to a dedicated promotion pass with ADD-op support. Per-character variant block values are available in-file (e.g., `HAN_VARIANTS["一"].cdo[0]` = `sĭk`/`siɪʔ˥` 白讀, [1] = `ék`/`ʔɛiʔ˥` 文讀) and can be lifted wholesale once the applier exposes ADD.
+
+### Noted-only — variants block (§5, §22)
+
+Variants block (`HAN_VARIANTS`) edits remain unsupported by the simple modify applier. Detailed proposed seeds below for the dedicated variants pass:
+
+**§5 — 一 cdo 白讀 (HAN_VARIANTS["一"].cdo[0])**
+- Current: `{surface: "sĭk", ipa: "siɪʔ˥", label: "白讀"}` — this is the 失/室/實 reading.
+- Proposed: `{surface: "siŏh", ipa: "sioʔ˥", label: "白讀"}` — Fuzhou 一 classifier-prefix (馮愛珍《福州方言詞典》1998 p. 412 "siŏh", 一個 = siŏh-gă).
+- 文讀 entry `{surface: "ék", ipa: "ʔɛiʔ˥", label: "文讀"}` is correct; leave as is.
+
+**§22 — mnp 入聲→陰去 demonstrators (HAN_VARIANTS["月"|"食"|"北"].mnp seeding)**
+The whole point of consulting the Min Bei column is to see Branner's 入聲→陰去 tone flip. Currently 八/月/七/食 sit as clean -ʔ closed syllables on the main row, so the flip is invisible. Proposed seeds (Norman 1969 Table 3; Branner 2000 §3.7):
+
+- `HAN_VARIANTS["月"].mnp = [`
+  - `  {surface: "ŋyɛ̆", ipa: "ŋyɛ˦˨", label: "白讀 (陰去 flip from 陽入)"},`
+  - `  {surface: "ngyěh", ipa: "ŋyɛʔ˨˦", label: "文讀 (preserved 入聲)"}`
+  - `]`
+- `HAN_VARIANTS["食"].mnp = [`
+  - `  {surface: "sĭ", ipa: "si˦˨", label: "白讀 (陰去 flip from 陽入)"},`
+  - `  {surface: "sĭk", ipa: "siʔ˨˦", label: "文讀 (preserved 入聲)"}`
+  - `]`
+- `HAN_VARIANTS["北"].mnp = [`
+  - `  {surface: "bă̿", ipa: "pɤʔ˨˦", label: "文讀 (preserved 陰入)"},`
+  - `  {surface: "bĕ", ipa: "pɤ˦˨", label: "白讀 (陰去 flip)"}`
+  - `]`
+
+(北 is 陰入, not 陽入 — Branner's flip applies primarily to 陽入. Seeding the 文讀 first preserves the historical category; the 白讀 illustrates the broader merger trajectory documented in Norman 1969 §4.2.)
+
+### Tally
+
+- Applied this round: **5 modify edits** (§14, all mnp).
+- Noted-only / deferred to ADD-op or variants-aware passes: **3 buckets** (§5 variants, §21 main-cell promotion via ADD, §22 mnp variants seeding).
+- `/tmp/hm_r2_edits_29.json` written; `hanmap_data.js` untouched (READ-ONLY).
