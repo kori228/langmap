@@ -3057,7 +3057,7 @@
     })();
     </script>
     <script src="wordmap_data.js?v=221"></script>
-    <script src="hanmap_data.js?v=83"></script>
+    <script src="hanmap_data.js?v=84"></script>
     <script>
         // Hanmap stubs: replace the per-word loader. wordmap.html loads
         // ~20 individual JS files under words/<id>.js (one per concept) and
@@ -7003,9 +7003,28 @@
                 }
                 return Infinity;
             };
+            // Experiment toggles (try via DevTools console then re-render
+            // with `updateMarkers(currentWord)`):
+            //   window.__hanmapPreserveSolo  — solo-in-cellGroup codes
+            //     stay at their TRUE lat/lng. Grouped codes still get
+            //     zigzag + collision avoidance, and treat solo positions
+            //     as obstacles so they don't end up sitting on top.
+            //   window.__hanmapNoSA          — skip the simulated-anneal
+            //     refinement after the greedy pass.
+            const _preserveSolo = window.__hanmapPreserveSolo === true;
             for (const code of _collisionOrder) {
                 const pt = ppx[code];
                 const off = offsets[code];
+                const cellKey = codeToCell[code];
+                const group = cellKey != null ? cellGroups[cellKey] : null;
+                const isSolo = !group || group.length <= 1;
+                if (_preserveSolo && isSolo) {
+                    // Pin to true position; still register as an obstacle
+                    // so subsequent placements don't sit on top.
+                    _placedBoxes.push({ cx: pt.x, cy: pt.y });
+                    offsets[code] = { x: 0, y: 0 };
+                    continue;
+                }
                 const cx = pt.x + off.x;
                 const cyTarget = pt.y + off.y;
                 // Try both directions and take the smaller displacement.
@@ -7044,10 +7063,11 @@
                 if (!ppx[code]) continue;
                 _saCodes.push(code);
             }
-            const _saMs = _hmRefineOffsetsSA(
-                _saCodes, ppx, offsets, labelW, labelH,
-                wordId, zoom
-            );
+            const _saMs = (window.__hanmapNoSA === true) ? 0 :
+                _hmRefineOffsetsSA(
+                    _saCodes, ppx, offsets, labelW, labelH,
+                    wordId, zoom
+                );
             if (_saMs > 0 && typeof window !== 'undefined' && window._hmSaLogTiming) {
                 console.log('[hanmap SA]', _saCodes.length, 'labels in', _saMs.toFixed(1), 'ms');
             }
@@ -7067,6 +7087,14 @@
                     hiddenCodes.add(code);
                 }
             }
+
+            // Offset debug overlay: when enabled, every label gets a red
+            // dot at its TRUE lat/lng plus a thin connector to the visual
+            // (offset) label position. Lets the user verify whether the
+            // pretty-placement is hiding real geography. Toggle via URL
+            // ?debug=offsets, or set window.__hanmapShowOffsets = true.
+            const _showOffsetDebug = (window.__hanmapShowOffsets === true)
+                || (new URLSearchParams(location.search).get('debug') || '').includes('offsets');
 
             // Single render loop for both attested and unattested langs.
             // Skip codes that the collision pass couldn't place.
@@ -7099,6 +7127,33 @@
                 marker.on('click', () => showLangInfo(code));
                 marker.addTo(map);
                 markers.push(marker);
+
+                // ---- Offset debug overlay ----
+                // Red dot at true (lat, lng); thin connector to offset label
+                // centre. Only when the offset is actually non-trivial
+                // (> 2 px) — otherwise the dot would sit on top of the label
+                // and just clutter.
+                if (_showOffsetDebug && (Math.abs(off.x) > 2 || Math.abs(off.y) > 2)) {
+                    const truePt = map.latLngToContainerPoint([lang.lat, lang.lng]);
+                    const labelPt = truePt.add(L.point(off.x, off.y));
+                    const labelLatLng = map.containerPointToLatLng(labelPt);
+                    const line = L.polyline([[lang.lat, lang.lng], labelLatLng], {
+                        color: '#c0392b',
+                        weight: 1,
+                        opacity: 0.55,
+                        interactive: false,
+                        dashArray: '2 3',
+                    }).addTo(map);
+                    const dot = L.circleMarker([lang.lat, lang.lng], {
+                        radius: 3,
+                        color: '#c0392b',
+                        weight: 1.5,
+                        fillColor: '#e74c3c',
+                        fillOpacity: 0.9,
+                        interactive: false,
+                    }).addTo(map);
+                    markers.push(line, dot);
+                }
             }
             // Re-apply selected highlight + connector after re-render
             // (markers are torn down and re-added each updateMarkers call).
