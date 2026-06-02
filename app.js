@@ -1220,7 +1220,10 @@ function render() {
             // Handle compound segments (e.g. "B|D")
             const subIds = segId.split('|');
             const isCompound = subIds.length > 1;
-            const isEgyDual = code === 'egy' && text.includes('|');
+            // Dual-script display (native script above, Latin transliteration
+            // below). Triggers for egy (Ancient Egyptian hieroglyphs) and
+            // sux (Sumerian cuneiform) — both store as "native|translit".
+            const isEgyDual = (code === 'egy' || code === 'sux') && text.includes('|');
             const compoundColors = isCompound
                 ? subIds.map(id => sentence.segments[id]?.color || '#666')
                 : null;
@@ -1577,6 +1580,9 @@ async function fetchGoogleFontBase64(familyParam, label) {
 function fetchHieroFontBase64() {
     return fetchGoogleFontBase64('Noto+Sans+Egyptian+Hieroglyphs', 'hieroglyph');
 }
+function fetchCuneiformFontBase64() {
+    return fetchGoogleFontBase64('Noto+Sans+Cuneiform', 'cuneiform');
+}
 function fetchTibetanFontBase64() {
     // Single default weight only — the helper's regex grabs the first
     // url(...) and we don't want to deal with multi-weight CSS responses.
@@ -1671,14 +1677,22 @@ async function buildExportSVG() {
     // Without this, PNG export (SVG → <img> → canvas) renders these
     // codepoints via OS LastResort because the SVG-as-image context
     // can't see the page's Google Fonts <link>.
-    const hasHiero = container.querySelector('.segment-dual') !== null;
+    const hasDualScript = container.querySelector('.segment-dual') !== null;
     const containerText = container.textContent || '';
+    const hasHieroChars = /[\u{13000}-\u{1342F}]/u.test(containerText);
+    const hasCuneiformChars = /[\u{12000}-\u{123FF}]/u.test(containerText);
     const hasTibetan = /[ༀ-࿿]/.test(containerText);
     let fontFaces = '';
-    if (hasHiero) {
+    if (hasDualScript && hasHieroChars) {
         const fontBase64 = await fetchHieroFontBase64();
         if (fontBase64) {
             fontFaces += `@font-face { font-family: 'Noto Sans Egyptian Hieroglyphs'; src: url(data:font/woff2;base64,${fontBase64}) format('woff2'); }`;
+        }
+    }
+    if (hasDualScript && hasCuneiformChars) {
+        const fontBase64 = await fetchCuneiformFontBase64();
+        if (fontBase64) {
+            fontFaces += `@font-face { font-family: 'Noto Sans Cuneiform'; src: url(data:font/woff2;base64,${fontBase64}) format('woff2'); }`;
         }
     }
     if (hasTibetan) {
