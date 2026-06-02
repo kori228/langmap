@@ -187,3 +187,32 @@ CLOSED.
 - Coverage verified across all 18 accepted issues: #1 (zh_hf de-retroflex on 山/水/上/手/十/食/人/中:1/中:2), #2 (三/貓/央 ²¹²→²¹), #3 (中:2 ⁴¹→⁵³), #4 (坐 tsʮ→tsuo), #5 (南 læŋ→næn), #6 (中:1/中:2 zh_nj ts→tʂ), #7 (手 zh_nj s→ʂ), #8 (人 zh_nj l→ʐ), #10 (見 jian⁵→jian⁵³, iĩ→iẽ), #11 (七 zh_nj qiq→ciq), #12 (土/目/肉/月/血/牛 surface-IPA reconciliation), #13 (zh_hf 入聲 ⁵→⁴ across 一/六/七/八/十/日/月/木/北/血/肉/足/目/食/立), #14 (行:2 xan→xaŋ), #15 (左 tsoʊ→tsuo), #16 (七 tsʰiəʔ→tsʰiʔ), #17/#18 (一 folded into #13), #20 (羊 iaŋ→iɑ̃).
 - Deferred #9 (Hefei 宕/通攝 coda house-style) and certified-no-edit #19 (二/耳 ɚ) are acknowledged.
 - No regressions detected. Closing.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Picks up the round-1 deferral on issue #9 (Hefei 宕/通攝 coda treatment).
+
+### Deferral — Hefei 宕/通攝 coda house-style
+
+Per reviewer Gù Huái-shēng's citation of **孫宜志《安徽江淮官話語音研究》(2006) §3.4**: Hefei merges 宕攝 → nasalized vowel (no coda) but **keeps 通攝 -ŋ**. Adopting this as house-style and auditing the seven candidate cells:
+
+| char | 攝 | current zh_hf ipa | decision | edit |
+|------|-----|-------------------|----------|------|
+| 上 | 宕 | `sɑ̃⁵³` | nasalized ✓ (already correct from round-1) | none |
+| 央 | 宕 | `iã²¹` | nasalized ✓ (round-1 #2 already landed) | none |
+| 羊 | 宕 | `iɑ̃⁵⁵` | nasalized ✓ (round-1 #20 already landed) | none |
+| 中:1 | 通 | `tsəŋ²¹` | keep -ŋ ✓ (round-1 #1 already correct) | none |
+| 中:2 | 通 | `tsəŋ⁵³` | keep -ŋ ✓ (round-1 #1+#3 already correct) | none |
+| 龍 | 通 | `lən⁵⁵` | should keep -ŋ → `ləŋ˥˥` (also folds in tone-letter conversion ⁵⁵→˥˥) | **1 edit** |
+| 東 | 通 | `tən˨˩` | should keep -ŋ → `təŋ˨˩` | **1 edit** |
+| 立 | 深攝 -p入 (out of 宕/通 scope) | `liɪʔ⁴` | unchanged — entering coda /ʔ/, not nasal | none |
+
+The 宕攝 side is already consistent (nasalized /-ɑ̃/, /-ã/) thanks to round-1. Only the 通攝 side had two outliers (龍, 東) where the round-1 edits stopped at the initial-onset / tone-numeric layer and left the coda /-n/ in place. House-style now: 通攝 → -ŋ in zh_hf.
+
+### Output
+
+- JSON path: `/tmp/hm_r2_edits_25_26.json` (combined with #25 round-3 edits)
+- This-review's edit count: **2** modify edits (龍 zh_hf, 東 zh_hf)
+- Deferrals from this round: **none**. Issue #9 now closed; the 宕/通攝 split is consistent across all eight candidate cells per 孫宜志 2006.

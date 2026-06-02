@@ -342,3 +342,40 @@ Dev disposition (22/23 addressed in round 1, with #11 partial and #23 rejected a
 - **来 alternative `kulə` (Kane #592)** — staying with `ji-` for cross-file Möllendorff consistency.
 
 Outstanding round-1 scope: none. Closing.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+**Scope:** Re-examination of the round-1/round-2 deferrals on `native.zkt` backfill for 12 concepts (二/三/四/五/六/七/八/九/十/人/天/火) and the `native.juc` "未編碼" schema-marker proposal.
+
+**Decision: emit zero new edits in this round.** Edits JSON: `/tmp/hm_r2_edits_33.json` = `[]` (0 edits).
+
+### Why no `native.zkt` glyphs were committed
+
+Round-1 conservatively filled three native cells where the Kane↔Unicode codepoint identification is unambiguous in the published handbooks:
+
+- 一 → `𘬺` (U+18B3A, Kane sign 339 / *om*)
+- 馬 → `𘭤𘭞` (U+18B64 + U+18B5E, Wu/Janhunen *mo-ri*)
+- 月 → `𘭖𘭚𘭯` (U+18B56 + U+18B5A + U+18B6F, *sa-ir*)
+
+Round-1's own disposition note for #1 stated: "deferring 二/三/四/五/六/七/八/九/十/人/天/火 to a future round so we can cross-check sign-codepoint identity against Kane 2009 plates and Wu/Janhunen 2010 ch. 3 before committing." The 12 deferred concepts fall into three categories under that cross-check requirement, and **none** of them clear the high-confidence bar required for a data commit at this time:
+
+1. **Numerals 二–十** (二/三/四/五/六/七/八/九/十). The reviewer cited Kane (2009) §4.2 sign numbers (245, 244, 339, 209, 222, 254, etc.) but did *not* supply Unicode codepoints — and the round-1 reviewer-to-codepoint correspondence relies on the Kane sign-list ↔ U+18B00 cross-reference table that the dev specifically wanted to verify against plates before committing. Provisional candidates circulating in secondary literature (e.g. 二 ≈ 𘭘 U+18B58, 三 ≈ 𘬮 U+18B2E, etc.) are not consistently attributed across Aisin Gioro 2004, Kane 2009, and Wu/Janhunen 2010, and several would require a multi-graph cluster rather than a single sign (e.g. *tabu* 五 likely *ta-bu* two-sign cluster). Conservatism > coverage: leaving these as `—` is the correct call until a single source can be cited per cell.
+
+2. **人 (*küü*)** — Kane 2009: 165 sign 058 reads *küü* in bilingual context. Sign 058's Unicode codepoint identification is genuinely uncertain in the secondary literature; not committing.
+
+3. **天 (*teŋri*)** — The reviewer explicitly flagged this as an open glyph-choice question: "attested both alphabetically (small script) and logographically (large script sign 𘭡 read *t'ien* in Sino-Khitan contexts)" — i.e. either the three-sign *teŋ-ri* alphabetic cluster (the reviewer's candidate 𘬇𘭯𘭎 = U+18B07 + U+18B6F + U+18B4E) OR the single Khitan **large**-script logograph 𘭡, which is in the Khitan **small** script block (U+18B61) by codepoint but cited as large-script in the philology. Round-1's deferral note acknowledges this exact choice. Mixing large-script and small-script glyphs in a column whose other entries are uniformly small-script would violate the schema; leaving as `—` is correct until a small-script-only or large-script-only convention is set across the column.
+
+4. **火 (*gal*)** — Reviewer's evidence (#14) is a Sino-Khitan transcription 葛黎, not a small-script sign identification. No Unicode codepoint is supplied by any of the cited handbooks for the bare 'fire' lexeme. Not committing.
+
+### `native.juc` — staying `—`
+
+Per round-1 reviewer concession ("the em-dash is defensible — no Unicode block for Jurchen large script yet") and round-1 dev disposition ("the 未編碼 vs `—` documentation-convention change is out of scope for a data edit"), all 59 `native.juc` cells remain `—`. The "未編碼" schema marker is a project-wide convention change that would touch every language column in the dataset, not just juc; it is correctly tracked separately and not actioned here.
+
+### Summary
+
+- Round-3 edits: **0**
+- `native.zkt` cells left as `—`: **12** (二/三/四/五/六/七/八/九/十/人/天/火) — codepoint↔sign identification not securely attested in a single cited source per cell
+- `native.juc` cells left as `—`: **all 59** — no Unicode block yet exists; schema-marker change is out of scope
+- Closure status: **remains closed.** Round-3 ratifies the round-1/round-2 deferral as the correct conservative position; no new linguistic evidence has surfaced that would warrant relaxing the conservatism > coverage rule.

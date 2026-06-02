@@ -195,3 +195,42 @@ Verified every "Current" cell against live `hanmap_data.js` via node REPL. Revie
 - 立 zh_zz ipa = `li˨˦` ✓
 
 **Summary:** All 82 edits applied as specified. Dev accepted all 21 reviewer findings (入派陰平 corrections across zh_xa/zh_kf/zh_zz, Jin-import removals 中/水, SW l/n removal 龍, out-of-inventory contour fixes, 老派 register normalization, surface↔IPA mismatches). Two transform-pass items (mass IPA tone-letter normalization; entering-final `q` policy beyond the enumerated cells) explicitly deferred. No counter-proposals or open items. Central Plains Mandarin columns now align with 中原官話 isogloss bundle per Norman 1988 / 张光宇 2009 / 王临惠 / 《地圖集》.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Picks up the two round-1 deferrals that were explicitly tagged as transform-pass work.
+
+### Deferral A — mass numeric → Chao tone-letter IPA normalization (sweep)
+
+Scope confirmed by full enumeration of `HAN_DATA[*].ipa.{zh_xa,zh_kf,zh_zz}`:
+- **zh_xa:** 37 IPA cells carry superscript-numeric tones.
+- **zh_kf:** 33 IPA cells.
+- **zh_zz:** 25 IPA cells (additional 龍 zh_hf cell handled in #26 round-3).
+
+Unique numeric tone patterns present across the three columns: `²¹`, `²⁴`, `³¹²`, `⁴²`, `⁴⁴`, `⁵³`, `⁵⁵` — clean 7-pattern inventory, no ambiguous fragments, no truncated forms. Conversion table applied:
+
+| numeric | Chao letter |
+|---------|-------------|
+| `²¹` | `˨˩` |
+| `²⁴` | `˨˦` |
+| `³¹²` | `˧˩˨` |
+| `⁴²` | `˦˨` |
+| `⁴⁴` | `˦˦` |
+| `⁵³` | `˥˧` |
+| `⁵⁵` | `˥˥` |
+
+Each edit only mutates the trailing tone span; segmental IPA preserved byte-exact. Surface (Pinyin) cells unchanged — they continue to carry numeric tone superscripts per the file's surface convention. Per Hou Yongchang's #20 note, yue/wuu/hak columns use Chao tone-letter style; the Central Plains columns now match.
+
+Total numeric→Chao edits: **95** (zh_xa 37 + zh_kf 33 + zh_zz 25). All `from` strings byte-verified against live `HAN_DATA` via node REPL prior to emit; no ambiguous/skipped cells.
+
+### Deferral B — `q` reuse policy in zh_kf
+
+Reaffirmed per round-1 fix #8: the 15 entering-final `q` markers in `zh_kf` (and 北 in `zh_zz`) stay **stripped**. 中原官話's 郑汴片 has completely merged 入聲 into 舒聲; using `q` would re-introduce a category 開封/鄭州 categorically lacks. The round-1 surface fixes (e.g. `muq²⁴` → `mu²⁴`) are the canonical policy. No further edits needed; this is a documentation reaffirmation only.
+
+### Output
+
+- JSON path: `/tmp/hm_r2_edits_25_26.json` (combined with #26 round-3 edits)
+- This-review's edit count: 95 modify edits
+- Deferrals from this round: **none**. Sweep is complete for the three Central Plains columns. No new findings, no counter-proposals.

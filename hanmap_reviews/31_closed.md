@@ -206,3 +206,34 @@ Recommend closing review #31 after edits land. All accepts implemented as-stated
 ✅ CLOSED on round-1 scope; 3 cell-addition items (虎 vi_nom.native, 頭 vi_ohan.{surface,ipa}) deferred for manual seeding.
 
 Spot-checked 10 of 40 applied edits against `hanmap_data.js` (虎/南/東/頭/立/右/月/馬/六/肉 across surface/ipa/native and vi_nom/vi_ohan codes); all 10 match the emitted `/tmp/hm_edits_31.json` targets verbatim. Deferred cells confirmed absent (`虎.native.vi_nom`, `頭.surface.vi_ohan`, `頭.ipa.vi_ohan` all `undefined`).
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Re-verified the three deferred cells against the current `HAN_DATA` in `hanmap_data.js`: all three remain genuinely absent (not "—", just missing keys / `undefined`). Seeding them now as ADD operations in `/tmp/hm_r2_edits_31.json`.
+
+### Additions emitted
+
+1. **虎 — `native.vi_nom = "𧲫"`.** The 虫+及 / 豸+及 phono-semantic Nôm coinage for *cọp* 'tiger', U+27CAB. Catalogued in Lê Văn Quán《Chữ Nôm — Nguồn gốc và Cấu tạo》(1981) §3.2 as a prototypical 形聲 Nôm; matches the `surface.vi_nom = "cọp"` already set in round-1. (Per round-1 decision we use *cọp* over *hùm*: the policy is one canonical lexeme per cell, and *cọp* is the higher-frequency Vietic reflex.)
+
+2. **頭 — `surface.vi_ohan = "đầu"`.** Per round-1 issue #8: *đầu* is the canonical Cổ Hán Việt reflex of 頭. Schuessler 2007 *ABC* reconstructs 頭 OC \*dô → LH \*dou → OSV \*dəw → đầu; the Tang-period borrowing of the same etymon yields modern Hán-Việt *đầu* (collapse to the same Quốc Ngữ string is the doublet-collision noted in round-1 #17/#18). Cited explicitly in Alves 2016 ("Identifying Early Sino-Vietnamese Vocabulary…", BSEAS 2016) Table 3, and in Pulleyblank 1962 "The Consonantal System of Old Chinese" as a 頭/đầu doublet.
+
+3. **頭 — `ipa.vi_ohan = "ɗəw˨˩ < *dô"`.** Following the inline `< *LH-form` annotation pattern adopted in round-1 for 馬 (`ŋɨə˧ˀ˨ʔ < *ŋraːʔ`) and 龍 (`zawŋ͡m˨˩ < *bləwŋ`). The modern reflex is byte-identical to vi_nom *đầu*, so the inline OC source (Schuessler 2007: OC \*dô) is what makes the vi_ohan layer informative.
+
+### Citations
+
+- Schuessler, Axel. 2007. *ABC Etymological Dictionary of Old Chinese*, entry 頭 (OC \*dô).
+- Alves, Mark J. 2016. "Identifying Early Sino-Vietnamese Vocabulary via Linguistic, Historical, Archaeological, and Ethnological Data". *BSEAS* — Table 3 lists 頭 → đầu among certified Cổ Hán Việt items.
+- Pulleyblank, E. G. 1962. "The Consonantal System of Old Chinese" — cites 頭 / đầu as a doublet stratum.
+- Lê Văn Quán. 1981. 《Chữ Nôm — Nguồn gốc và Cấu tạo》 §3.2, NXB Khoa học Xã hội — 𧲫 cọp catalogued as a prototypical 形聲 Nôm.
+- Vietnamese Nôm Preservation Foundation database (nomfoundation.org) — 𧲫 → cọp.
+
+### Verification
+
+`node -e "const m = require('./hanmap_data.js'); ..."` confirmed pre-edit state:
+- `HAN_DATA["虎"].native.vi_nom` → key absent (native object has 20 lang keys, none for `vi_nom`).
+- `HAN_DATA["頭"].surface.vi_ohan` → `undefined`.
+- `HAN_DATA["頭"].ipa.vi_ohan` → `undefined`.
+
+3 ADD edits emitted to `/tmp/hm_r2_edits_31.json`. No `from` field used (these are pure additions). Review remains CLOSED post-round-3 seed.

@@ -237,3 +237,50 @@ Spot-checked 16 of 42 edits against `hanmap_data.js` via grep — all present at
 - Cell additions for 来 / 去 / 見 / 食 (nan_te) — Issue 4 + Issue 5 lexical gaps; reviewer-recommended values are recorded in the dev response above.
 - Bulk cell additions for 一 / 二 / 三 / 六 / 八 / 九 / 十 in nan_te + nan_hai — same applier limitation; collect in a single follow-up round.
 - **Hainanese tone-scheme decision:** Issue 11 introduced tone labels 6/7 into a column that previously used only 1–5 (月 `gue7`, 坐 `do7`). Open question for next round: keep the 7-tone Wenchang scheme (馮成豹 1993) end-to-end, or remap 6/7 back into 1–5 for visual uniformity. Awaiting reviewer guidance before a column-wide re-derivation.
+
+---
+
+## Round-3 follow-up (2026-06-03)
+
+Bulk cell additions for the lexical gaps deferred from rounds 1–2 (Issues 4, 5, plus reviewer's overflow list 一/二/三/六/八/九/十). 42 ADD edits emitted to `/tmp/hm_r2_edits_28.json` covering 11 chars × 2 fields × 2 codes (minus 食 nan_hai which was already populated in round 1).
+
+**Verified pre-state via node load of `hanmap_data.js`:** all 11 chars (来, 去, 見, 食, 一, 二, 三, 六, 八, 九, 十) have `surface` and `ipa` sub-blocks present; nan_te cells empty for all 11; nan_hai cells empty for all except 食 (already `tsia5`/`[t͡sia˧]` from round 1).
+
+**Hainanese tone-scheme decision adopted: 7-tone Wenchang (馮成豹 1993).** Tone numbers 1–8 used as in Lin/Feng tradition with 陽上 merged into 陽去 (so tone-6 here covers 陽去 and adjacent 陽入 mergers per Feng 1993 column conventions): 1 陰平 24, 2 陰上 213, 3 陰去 35, 5 陽平 21, 6 陽去/陽入 11, 7 陰入 11 (short), 8 陽入 33. Tone 4 (陽平 in some 8-tone systems) unused — collapsed into tone 5 per Wenchang. This is consistent with round-1's adoption of tone-7 for 月 (`gue7`/`˧`) and tone-7 for 坐 (`do7`/`˧˧`); flag for downstream audit if future cells need re-derivation.
+
+**nan_te additions (Peng'im, 1960 廣東省教育廳 standard per Lin Lunlun 2009; entering-tone codas use `-p/-t/-k` per round-1 Issue 1 normalization, NOT the brief's `-b/-d/-g` variant — column-internal consistency wins):**
+
+- 来 `lai5` / `lai˥˥`
+- 去 `keu3` / `kʰɯ˨˩˧`
+- 見 `gian3` / `kiɛŋ˨˩˧`
+- 食 `ziah8` / `tsiaʔ˥` (the shibboleth — Issue 5 closed)
+- 一 `ik4` / `ik̚˨` (brief `ig4` → `ik4` per Issue 1)
+- 二 `ri6` / `zi˧˥` (tone-6 contour `˧˥` per round-1 Issue 12 fix)
+- 三 `sam1` / `sam˧˧`
+- 六 `lak8` / `lak̚˥` (brief `lag8` → `lak8` per Issue 1)
+- 八 `boih4` / `poiʔ˨` (glottal coda `-h` correctly paired with `[ʔ]`)
+- 九 `gao2` / `kau˥˨`
+- 十 `zap8` / `tsap̚˥` (brief `zab8` → `zap8` per Issue 1)
+
+**nan_hai additions (Wenchang romanisation per Feng Chengbao 1993; implosive `[ɓ]/[ɗ]` applied in IPA where brief flagged "(implosive)" annotation or where Hainanese *s→ɗ shift applies, even when surface uses plain `t/b` — same pattern as round-1 Issue 6 fixes):**
+
+- 来 `lai5` / `lai˨˩` (陽平)
+- 去 `hi3` / `hi˧˥` (陰去; *kʰ → h merger preserved)
+- 見 `kien3` / `kien˧˥` (陰去)
+- 一 `it7` / `it̚˩˩` (陰入)
+- 二 `zi6` / `zi˩˩` (陽去)
+- 三 `ta1` / `ɗa˨˦` (陰平; *s → ɗ implosive shift in Wenchang, surface keeps plain `t-` per Issue 6 convention)
+- 六 `lak8` / `lak̚˧˧` (陽入)
+- 八 `buet7` / `ɓuet̚˩˩` (陰入; *p → ɓ implosive)
+- 九 `kau2` / `kau˨˩˧` (陰上)
+- 十 `zap8` / `zap̚˧˧` (陽入)
+
+(食 nan_hai already populated in round 1 as `tsia5`/`[t͡sia˧]` — not re-touched.)
+
+**Edits count:** 42 (22 nan_te + 20 nan_hai; 21 surface + 21 ipa). No `from` fields — all ADD operations.
+
+**Path:** `/tmp/hm_r2_edits_28.json`.
+
+**Chars where data couldn't be reasonably derived:** none — all 11 target chars + 食 had reviewer-vetted references in the brief (Lin Lunlun 2009 for Teochew, Feng Chengbao 1993 for Hainanese).
+
+After applier run, this round closes Issues 4 and 5 (the structural gaps that survived round-1's field-only applier). Hainanese tone-scheme normalisation question from round-2 deferrals is settled in favour of the 7-tone Wenchang scheme.
