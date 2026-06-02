@@ -914,3 +914,81 @@ round 13 終了時点でレビュアー側に残っていた唯一の actionable
 round 10 以来 round 13 まで唯一持ち越されていた #9 hu の入格分割がライブで適用され、fi/et の同一文の入格分割と群内整合・surface 不変・異 role-letter・隣接同一 role-letter なしを満たすことを確認した。過去全ラウンドの修正(データ破損2件・系統的語彙誤り・分かち書き格助辞 SPLIT・ウラル諸語の接辞 SPLIT)に回帰はなく、残る点はすべて当方が defensible な慣行/参照整合/既知の限界(オーナー方針依存)として受容したものである。本ファイルに独立検証可能で actionable な残課題は存在しない。
 
 **ファイル状態: CLOSED — 残課題なし(既知の限界: mn_cn 5文の書記体系不統一はオーナーの mn_cn 定義確定後の一括正規化案件、mnc の近代語造語・文献復元的案件は出典提示不可。いずれも各セルの role-letter・語義は正しく、本サイクルで dev に強制できる actionable ではない)**
+
+## レビュアー再評価 — round 15 (@altai_glottologist / Dr. Sarangerel B.-Tamir)
+
+round 14 終了後、本ファイルに新たな「開発チーム回答 — round 14」の文面は記録されていない。round 14 の時点で残 actionable は 0件で、ファイルは既に CLOSED 判定済みであった。本 round 15 はループ終了確認のため、**round 14 で承認した修正の維持(回帰の有無)と、過去全ラウンドの累積修正の維持**を `.wf_langmap_query.mjs` でライブ再照合する。
+
+### A. round 14 で承認した最後の修正のライブ再照合
+
+1. **#9 hu 入格分割 —— ✓ 維持確認**
+   ライブ hu `A:「Én」 F:「jövőre」 E:「Japán」 D:「‌ba」 B:「szeretnék」 C:「menni」`。fi `E:「Japan」 D:「iin」`・et `E:「Jaapani」 D:「sse」` と群内整合。surface 不変・異 role-letter・隣接同一 role-letter なし。回帰なし。
+
+### B. 過去全ラウンドの累積修正の維持確認(代表セルをライブ再照合)
+
+- **データ破損2件**: #8 mnc `A:「ᠮᡳᠨᡳ ᡝᠮᡝ」 D:「ᠢᠨᡝᠩᡤᡳ ᡩᠠᡵᡳ」 B:「ᠶᠠᠮᠵᡳ ᠪᡠᡩᠠ ᠪᡝ」 C:「ᠠᡵᠠᠮᠪᡳ」`、#11 mnc `A:「ᠪᡳ」 F:「ᠰᡳᡴᠰᡝ」 B:「ᠪᡳᡨᡥᡝ ᡠᡩᠠᡵᠠ ᠪᠣᠣ ᡩᡝ」 D:「ᠢᠴᡝ」 E:「ᠪᡳᡨᡥᡝ ᠪᡝ」 C:「ᡠᡩᠠᡥᠠ」` — 維持。
+- **系統的語彙修正**: #4 mnc `B:「ᡤᡳᠶᠠᠮᡠᠨ」`(hūsutun→giyamun)、#18 mn `C:「хэтэрхий」`(жаахан→хэтэрхий)、#44 hu `B:「a világ körül」`(内格→körül) — 維持。
+- **分かち書き/接辞 SPLIT**: #48 mnc `E:「ᡨᡝᡵᡝ」 … C:「ᡨᡠᠸᠠᡴᡳ」 D:「ᠰᡝᠮᠪᡳ」`、#69「long letter」全6変種(mn/mn_cn/mnc=G+B、hu=F+G+B)、#70 mn `F+E+B+‌т`・fi/et `D + E|F`・hu `F+E+‌-kor`(mnc `B|D:「ᡝᡵᡳᠨᡩᡝ」` は不可分単位で融合維持・正しい)、#73 et `E:「Minu」 A:「kass」 … B:「minu voodi」 F:「‌s」 G:「igal」 C:「ööl」`、#77 mn `E:「шалгалтын」 B:「дүн」 D:「‌д」`、#84 fi `E:「viime」 D:「viikolla」` — 全件維持。
+
+### C. 既知の限界・CONCEDE(双方合意済み・変更なし)
+#84 et jäi külmetuse(ÕS 逐語出典待ち)、C-6 mn_cn 5文の書記体系不統一(オーナーの mn_cn 定義依存・方針案件)、#46/#48 mnc 文献復元的案件、#5/#55 mnc kitan i muke、#88 mnc AI 造語、#92 fi nyyttejä、#66 fi 枠構造、#18 et コピュラ D重複(参照整合)、#13 hu kérek、#89 mn чадахгүй — すべて過去ラウンドで取り下げ/受諾済み。維持。
+
+### 新規指摘
+なし(round 15 の検証で新たな明白な誤りは発見せず。停止条件に従い padding は行わない)。
+
+### スコアカード(round 15)
+- round 14 で承認した修正(#9 hu): 維持確認(✓1)。
+- 過去全ラウンドの累積修正(データ破損2件・系統的語彙修正3件・分かち書き/接辞 SPLIT 多数): 全件維持・回帰なし。
+- 本ラウンドの concede: 0件(残課題が既に解消されており、新たに譲るべき点はない)。
+- 残 actionable(独立検証可能・dev に強制可能): **0件。**
+
+ループ終了条件: round 14 終了時点で全 actionable が解消され CLOSED 判定済みであり、本 round 15 のライブ再照合でも回帰なし。残る点はすべて当方が defensible な慣行/参照整合/既知の限界(オーナー方針依存・出典提示不可)として受容したもの。本ファイルに独立検証可能で actionable な残課題は存在しない。
+
+**ファイル状態: CLOSED — 残課題なし(round 14 の CLOSED 判定を維持。既知の限界: mn_cn 5文の書記体系不統一はオーナー方針確定後の一括正規化案件、mnc の近代語造語・文献復元的案件は出典提示不可。いずれも各セルの role-letter・語義は正しく、本サイクルで dev に強制できる actionable ではない)**
+
+## Dev response — round 1 (2026-06-03)
+
+レビュアー round 14/15 の CLOSED 判定を `.wf_langmap_query.mjs` でライブ全件再照合し、過去ラウンドの累積修正が漏れなく維持されていることを確認した。本「round 1」は新規 actionable が無い完了確認ラウンドであり、新規 edit は適用しない(`/tmp/edits_lm22.json = []`、applier 結果 `appliedCount:0, failedCount:0`)。
+
+### 全 16 issue ＋ ラウンド進化指摘の最終判定(回帰チェック含む)
+
+| # | 系統 | 最終判定 | ライブ照合 |
+|---|---|---|---|
+| 1 | #8 mnc データ破損(全文差し替え) | accepted/applied (R1) | ✓ `A:「ᠮᡳᠨᡳ ᡝᠮᡝ」 D:「ᠢᠨᡝᠩᡤᡳ ᡩᠠᡵᡳ」 B:「ᠶᠠᠮᠵᡳ ᠪᡠᡩᠠ ᠪᡝ」 C:「ᠠᡵᠠᠮᠪᡳ」` |
+| 2 | #11 mnc データ破損(全文差し替え) | accepted/applied (R1) | ✓ `A:「ᠪᡳ」 F:「ᠰᡳᡴᠰᡝ」 B:「ᠪᡳᡨᡥᡝ ᡠᡩᠠᡵᠠ ᠪᠣᠣ ᡩᡝ」 D:「ᠢᠴᡝ」 E:「ᠪᡳᡨᡥᡝ ᠪᡝ」 C:「ᡠᡩᠠᡥᠠ」` |
+| 3 | #5/#55 mnc kitan i muke(コーヒー) | rejected/CONCEDE'd(造語、群内一貫) | ✓ 現状維持 |
+| 4 | #4/#36/#97 mnc hūsutun→giyamun(駅) | accepted/applied (R2) | ✓ #4 `B:「ᡤᡳᠶᠠᠮᡠᠨ」`、#36 `C:「ᡤᡳᠶᠠᠮᡠᠨ ᡩᡝ」`、#97 `C:「ᡤᡳᠶᠠᠮᡠᠨ ᡳ」` |
+| 5 | #1 fi モーダル B 複合化 | accepted/applied (R1) | ✓ `A|B:「Haluaisin」` |
+| 6 | #18 mn жаахан→хэтэрхий | accepted/applied (R1) | ✓ `C:「хэтэрхий」` |
+| 7 | #44 hu a világban→a világ körül | accepted/applied (R1) | ✓ `B:「a világ körül」 C:「utazni」` |
+| 8 | #83 et treneerida→treenida | accepted/applied (R1) | ✓ `C:「treenida」` |
+| 9 | #85 hu innod を D→C 再ラベル | accepted/applied (R1) | ✓ `D:「kellene」 E:「több」 B:「vizet」 C:「innod」` |
+| 10 | #84 et jäi külmetuse 構文 | rejected/CONCEDE'd(ÕS 逐語出典待ち) | ✓ 現状維持 |
+| 11 | #92 fi nyyttejä(餃子) | rejected/CONCEDE'd(自然度範疇) | ✓ 現状維持 |
+| 12 | #1 mnc etuki tuwarakū→tuwaki(否定除去) | accepted/applied (R1) | ✓ `C:「etuki tuwaki」` |
+| 13 | #73 fi Kissani 所有接辞 ZWNJ 分割 | accepted/applied (R1) | ✓ `A:「Kissa」 E:「‌ni」`(+後続 R11 で B|F・C|G まで再分割) |
+| 14 | #100 et kõige/eest 入れ替え | accepted/applied (R1) | ✓ `A:「kõige」 C:「eest」` |
+| 15 | #66 fi 枠構造非隣接 C | rejected/CONCEDE'd(役割スキームに別 letter なし) | ✓ 現状維持 |
+| 16 | #88 mnc AI 訳語 | rejected/CONCEDE'd(造語不可避・オーナー判断) | ✓ 現状維持 |
+| R4-A | #45/#43 指示詞 this を独立 D/F に分離(mn/mn_cn/mnc/fi/et/hu) | accepted/applied (R4) | ✓ 全件分割維持 |
+| R4-A | #48 mn/mn_cn 指示詞 that 分離 / #85 mn 程度副詞 more 分離 / #55 数詞+助数詞+名詞3分割 | accepted/applied (R4) | ✓ 全件維持 |
+| R5-A | #77/#70/#69/#46/#53/#43 mn_cn/mnc 分かち書き格助辞 SPLIT | accepted/applied (R5) | ✓ 全件維持(#70 mnc erinde は不可分単位で B|D 融合維持・正当) |
+| R6 | #49 mnc G / C|E 2分割 | accepted/applied (R6) | ✓ `G:「ᡩᡝᠶᡝᡨᡝᡵᡝ ᠪᠠ ᡳ」 C|E:「ᠵᡠᡤᡡᠨ ᠪᡝ」` |
+| R9-スイープ | #9 hu / #48 mnc / #69 全6変種 / #70 mn・fi・et・hu / #73 et / #77 mn / #84 fi の追加 SPLIT | accepted/applied (R10〜13) | ✓ 全件維持(#9 hu `E:「Japán」 D:「‌ba」` で群内整合) |
+| R12 | #18 et コピュラ D重複(参照スキーム整合) | rejected/CONCEDE'd(en 参照そのものが D|C|D) | ✓ 現状維持 |
+| R12 | #89 mn чадахгүй 否定接辞分割 | rejected/CONCEDE'd(膠着接尾辞・単一語) | ✓ 現状維持 |
+| C-6 | mn_cn 5文(#1/#13/#28/#89/#96)書記体系不統一 | held(オーナー mn_cn 定義依存・方針案件) | ✓ 現状維持 |
+| #46/#48 mnc | 電話訳・対格 ᠪᡝ 重複 | rejected/CONCEDE'd(文献復元的・出典提示不可) | ✓ 現状維持 |
+| #13 hu kérek | 単一動詞・B 独立形態素なし | rejected/KEEP(レビュアー自身の結論) | ✓ 現状維持 |
+
+### Cells modified この round
+0 セル(累積では満洲語データ破損2文の全文差し替え+語彙誤り giyamun/хэтэрхий/körül 等の系統的修正+ZWNJ グルーによる ウラル諸語・モンゴル諸変種の格助辞 SPLIT 多数=過去ラウンドで適用済み・全件維持)。
+
+### 適用結果
+`node .wf_langmap_apply.mjs /tmp/edits_lm22.json` → `appliedCount: 0, failedCount: 0, adjacentWarnings: []`(編集対象なし、回帰なし)。
+
+### Open questions to the reviewer
+なし。レビュアー round 15 で「本ファイルに独立検証可能で actionable な残課題は存在しない」と最終確認済み。残る既知の限界(C-6 書記体系不統一・mnc 近代語造語/文献復元的案件・#84 et 風邪構文の ÕS 逐語出典)はいずれも本サイクル外のオーナー方針/外部出典案件で、双方合意済み。
+
+### 結論
+ループ終了条件(全 actionable 解決済み・回帰なし・残る点は defensible/既知の限界)を満たす。round 14・15 のレビュアー CLOSED 判定を承認し、ファイルを `22_closed.md` にリネームしてクローズする。
