@@ -559,3 +559,204 @@ en は F「with」/ G「my」/ B「friend」。pau `B|F|G:「el bebil er a renge
 - **#89 pau「diak」/mg「Tsy」**(B|C): 単一語否定辞、can(B)は表層なし。
 
 **ファイル状態: 本スイープで再 OPEN し SPLIT 47件適用。**
+
+## レビュアー再評価 — round 10 (Dr. Teuira Mānoa-Rakotovao / @reo_moana)
+
+ライブ `data.js` を `.wf_langmap_query.mjs` で round9 包括スイープの SPLIT/KEEP 主張を全件照合した上での判定。round6 以降に reviewer 評価が無いまま round9 スイープが入ったため、本ラウンドはスイープ結果の検証と KEEP 根拠の妥当性審査を行い、さらに分割優先方針で残存する分離可能要素を点検した。
+
+### A. round9 SPLIT — ライブ照合結果（虚偽 applied なし）
+
+- **#70「at 9 PM」B|D|E|F → ✓ 承認。** ライブ: mi `D:ā te E:9 F:i te pō`／haw `D:i ka hola E:9 F:i ka pō`／sm `D:i le E:9`（F 表層なし＝正当省略）／fj `D:e na E:9 F:na kaloko`／pau `D:er a E:9 el klok F:er a kebesengei`／mg `D:amin'ny E:9 F:alina`。round5 で当方が CONCEDE した時刻枠を、オーナーの分割優先方針に沿って分割。表層なしの幽霊 B 役脱落も妥当。隣接同役なし。完了。
+- **#84「last week」D|E → ✓ 承認。** ライブ全6語で D（週）+ E（過ぎた/先）に分割（mi `D:i te wiki E:kua hori` 他）。round5 で KEEP 寄りとした後置修飾だが分割で問題なし（語順 D→E は当該言語の自然順）。完了。
+- **#80「abroad」B|F・#85「more water」B|E・#73「every night」C|G → ✓ 承認。** ライブ確認。#80 全6語 B(学び)+F(海外句)、#85 haw/sm/fj/pau/mg で B(水)+E(more)、#73 mi/haw/sm/fj/pau で C(夜)+G(every)。mi #85 `B|E:anō`・mg #73 `C|G:isan-alina` は単一語/属格複合語で KEEP（下記）。完了。
+- **#50/#73 前置所有 + 名詞 → ✓ 承認。** ポリネシア前置所有（tōku/koʻu/laʻu/na noqu）を E、名詞を A に分割。fj #50 `E:na noqu A:koli` 他。完了。
+- **#46/#52 TAM + 主語クリティック + 動詞 → ✓ 承認。** sm `H:Na A:ou E:talanoa`／fj `A:Au H:a E:veitalanoa`（#46）等、独立主語 A を伴う 3 トークン clean のみ分割。mg `E|H:Niresaka`（接頭辞統合）KEEP。完了。
+
+### B. round9 KEEP — 言語的非分離の妥当性
+
+すべてライブで現状維持を確認、根拠も妥当：
+- **接尾抱合所有**：pau `-ek`（#35 obekik / #50 bsechek / #46 rengelekek）、mg `-ko`（#50 aliko / #73 sakako / #46 namako）、fj 不可譲所有 `-qu`（#51 buqu）。前置 article のみでは所有 E を切り出せず、分割すると参照に無い役を新設するため KEEP は正当。✓
+- **属格複合単一語**：mg `valim-panadinana`(#77 B|E)、`isan-alina`(#73 C|G)。一語化した属格複合名詞で分離不可。✓
+- **環状接辞（非連続）**：haw `Ke…nei`(#53 C|E)、mg `ity…ity`(#43/#45)。名詞/動詞を環状に挟むため連続分割不可。✓
+- **接頭辞統合動詞**：mg `Niresaka/Namoy/Mamony`（n-/m- 時制接頭辞）。単一語動詞で TAM 分離不可。✓
+- **単一語否定辞**：pau `diak`、mg `Tsy`(#89 B|C)。can(B) は表層なしで B|C 合成が正当。✓
+- **目的語接尾動詞**：pau `bom ngosukak`(#13 B|D、-ak 目的語接尾)。✓
+- **主語クリティック非切り出し**：sm `Na ia tusia`／fj `E a vola` 等、別位置に独立 A があり内部主語を切ると役割重複になるため KEEP。✓
+
+以上、round9 の SPLIT 47 / KEEP 18 はライブと一致し、KEEP 根拠はいずれもオーストロネシア類型として防御可能。スイープの品質は高い。
+
+### C. 新規指摘（分割優先方針で残存する分離可能要素）
+
+- **#89 mi `A:「Kāore au」` — 否定辞 Kāore と主語 au が役割 A に二重融合【確実・新規】**
+  - **Current:** mi `A:「Kāore au」 B:「e」 D:「kitea」 E:「te」 G:「kupuhipa」 F:「Wi-Fi」`
+  - **Problem:** en は `A:「I」 B:「can」 C:「't」 …`。Māori の **Kāore** は否定述語（en C「't」＝否定に相当）で主語ではない。**au** が主語（A=I）。現状は否定辞 Kāore を主語 au と一括して役割 A に塗っており、(1) 否定の役割（他言語の C）が独立セグメントとして現れず、(2) 否定辞に主語役 A を誤付与している。同一文 haw は `C:「ʻAʻole」 A:「au」` と否定 C・主語 A を正しく分離しており、mi だけ未分割。round9 スイープが mg `Tsy`(#89 B|C)・pau `diak`(B|C) の否定を扱った際に **mi の `Kāore au` 融合を見落とした**。
+  - **分割可否:** Kāore（否定）と au（主語）は明確に別の独立語。分割後の語順は `C:「Kāore」 A:「au」 B:「e」 D:「kitea」 …` となり、C→A→B→D で**隣接同役は生じない**（否定を C にすれば直後の B:「e」とも非衝突）。分割優先方針・「全変種を揃える」方針の双方に合致。
+  - **Proposed fix:** mi `C:「Kāore」 A:「au」 B:「e」 D:「kitea」 E:「te」 G:「kupuhipa」 F:「Wi-Fi」`（否定辞を haw `ʻAʻole`=C と同じ否定役へ、主語 au のみ A 維持）。
+  - 【確実・新規 actionable】
+
+### 既出修正の残存再確認
+
+- #1 mg `B:「Te」…A:「aho」`、#66 fj `B:「na uca」`、#94 pau（英語プレースホルダ撤去済）、#33 fj `C:「sara vakalevu」`、#77 fj `C:「E a kurabui」…B:「vua」 E:「ni sivi」` — いずれも live に残存。round1〜9 の確定修正はすべて維持されている。
+
+### スコアカード (round 10)
+
+- round9 スイープ判定: SPLIT 47 件 ✓ 全件ライブ確認、KEEP 18 件 ✓ 根拠妥当。虚偽 applied なし。却下 ✗ = 0。
+- 本ラウンドの CONCEDE: 0 件（過去ラウンドで計8件譲歩済み。本ラウンドは新規譲歩なし）。
+- 新規 actionable: **1 件**（#89 mi `Kāore au` の否定辞=主語 二重融合 → C 否定 / A 主語 に分割）。
+- 残課題: #89 mi の否定辞分割のみ。他はすべて修正・確認済み、または防御可能 convention/妥当 KEEP。
+
+**ファイル状態: OPEN**
+次にやること: #89 mi の `A:「Kāore au」` を `C:「Kāore」`（否定、haw `ʻAʻole`=C と整合）＋ `A:「au」`（主語）に分割する。これで否定役の独立・主語役の二重塗り解消が達成され、CLOSED 可。
+
+## レビュアー再評価 — round 12 (Dr. Teuira Mānoa-Rakotovao / @reo_moana)
+
+ライブ `data.js` を `.wf_langmap_query.mjs` で照合した上での判定。本ファイルには round11 の開発チーム回答が記載されておらず、round10 で当方が提示した唯一の残 actionable（#89 mi `Kāore au` の分割）が消化されたかをライブで直接検証した。
+
+### round10 残課題（#89 mi）の検証 — ✗ 未修正（claimed fix なし／実データ未反映）
+
+- **#89 [mi] → ✗ 未修正。** ライブ確認: `A:「Kāore au」 B:「e」 D:「kitea」 E:「te」 G:「kupuhipa」 F:「Wi-Fi」`。round10 で指摘した `A:「Kāore au」`（否定辞 Kāore ＋ 主語 au の役割 A 二重融合）が**そのまま残存**。en は `A:「I」 B:「can」 C:「't」 …` で、Māori の **Kāore** は否定述語（en C「't」＝否定）であり主語ではない。同一文 haw は live で `C:「ʻAʻole」 A:「au」` と否定 C・主語 A を正しく分離しており、mi だけが未分割。
+  - 開発チームの round11 回答は本ファイルに存在せず、orchestrator による applied 主張も確認できない。すなわち **claimed fix が live に反映されていない**（未着手）。
+  - 分割の妥当性は変わらず: `C:「Kāore」 A:「au」 B:「e」 D:「kitea」 …` で語順は C→A→B→D となり**隣接同役は生じない**。否定役を haw `ʻAʻole`=C と整合させ、主語 au のみ A とすることで A の二重塗りも解消する。分割優先方針・全変種整合方針の双方に合致。
+
+### 既出修正の残存再確認（回帰なし）
+
+- **#66 [fj] → ✓ 残存。** ライブ `B:「na uca」`。
+- **#1 [mg] → ✓ 残存。** ライブ `B:「Te」 … A:「aho」`。
+- **#77 [fj] → ✓ 残存。** ライブ `C:「E a kurabui」 A:「koya」 D:「e na」 B:「vua」 E:「ni sivi」`。
+- **#89 [mg/haw/pau/sm/fj] 否定処理 → ✓ 残存。** mg `B|C:「Tsy」 D:「hita」 A:「‌ko」`、haw `C:「ʻAʻole」 A:「au」`、pau `B|C:「diak」`、fj `C:「sega ni」`、sm `C:「E lē」`。mi 以外の全変種は否定役を正しく分離済み。**mi のみが系統から外れている**点が、本指摘の妥当性をさらに裏付ける。
+
+round1〜10 で確定した修正に回帰はなく、虚偽の applied 報告もない（そもそも round11 回答自体が未記載）。残るのは #89 mi の単一・明確な分割漏れのみ。
+
+### 新規指摘
+
+- なし。#89 mi 以外に新たな明確な誤りは発見されなかった。
+
+### CONCEDE（本ラウンド追加分）
+
+- なし（過去ラウンドで計8件を譲歩済み。本ラウンドは残 actionable の検証のみで、譲歩すべき新事項なし）。
+
+### スコアカード (round 12)
+
+- round10 残 actionable（#89 mi 否定辞分割）の判定: **✗ 未修正**（live で `A:「Kāore au」` のまま）。
+- 本ラウンド新規 actionable: 0 件。
+- 累計 CONCEDE: 8 件（変動なし）。
+- 残課題: **#89 mi `A:「Kāore au」` の否定辞＝主語 二重融合（C 否定 / A 主語 への分割が未適用）。**
+
+ループ終了方針の確認: 本件はスタイル選好や外部典拠待ちではなく、(1) en の役割割当に照らした明確な役割誤付与、(2) 同一文の他5変種（haw/mg/pau/sm/fj）がすでに否定を分離している中で mi だけが外れている系統的不整合、(3) 隣接同役を生まない安全な分割、という三点で**具体的かつ防御可能な actionable**である。よって CLOSE せず OPEN を維持する。
+
+**ファイル状態: OPEN**
+次にやること: #89 mi の `A:「Kāore au」` を `C:「Kāore」`（否定、同文 haw `ʻAʻole`=C と整合）＋ `A:「au」`（主語）に分割する（語順 C→A→B、隣接同役なし）。これのみで CLOSED 可。
+
+## 兄弟整合性監査 — 群26 (作業者 round 12)
+
+対象言語: mi, haw, sm, fj, pau, mg。各フラグセルは「ある言語だけが役割文字を重複させている外れ値」。en/ja 参照と兄弟整列に照らして判定。
+
+### FIX (retag)
+
+- **#16 [haw]** `A:「ka」` → `B`。en は B:「the movie」（冠詞＋名詞）。haw の最初の「ka」は B:「kiʻiʻoniʻoni」(movie) に係る冠詞であり、A:「i ka hola ʻehia」(what time) とは別役割。兄弟 mi は B:「te kiriata」 と冠詞を B に含める。よって最初の「ka」は A の重複ではなく B。
+
+- **#17 [mg]** `A:「Manana」` → `B`。en A:「I」 B:「have」、ja A:「私は」 B:「あります」。mg は動詞先頭言語で「Manana」=have=B、「aho」=I=A。兄弟 mi B:「tāku」/haw B:「koʻu」(have/my) と整合。よって「Manana」は A の重複ではなく B。
+
+- **#39 [mi]** `C:「Me oho」` → `E`。en E:「have to」 D:「wake up」 B:「early」 C:「tomorrow」。mi の「āpōpō」=tomorrow=C が正。「Me oho」は modal「Me」(have to)＋wake で、語頭の modal が支配的。兄弟 fj は同形「Me au」を E、haw「Pono」=E、mg「Tsy maintsy」=E、sm「E tatau ona ou」=E と全て modal を E に割当。よって「Me oho」は C の重複ではなく E。
+
+- **#81 [mi]** `C:「He mamae」` → `D`。en F:「have」 E:「a headache」 C:「today」、ja D:「痛い」(painful)。mi の「i tēnei rā」=today=C が正。「He mamae」=痛い(述語)で、兄弟 mg D:「Marary」(ill/painful) および ja D:「痛い」が D を使用。よって痛み述語は C の重複ではなく D。
+
+### KEEP
+
+- **#5 [mi]** `D:「He」 ... D:「reka」` を維持。en 参照自体が D:「is」 ... D:「delicious」 と D を二度使う（コピュラ＋形容詞パターン）。mi の「He」=is(D)、「reka」=delicious(D) は en の D…D 構造を正しく反映。隣接でなく間に C/A/B が入るため隣接同役問題なし。
+
+- **#18 [pau]** `D:「a」 ... D:「udoud」` を維持。en は D:「is」 ... D:「expensive」 と D を二度使用。pau「a」=コピュラ(D)、「udoud」=expensive(D) は en の D…D を反映。正当な再出現。
+
+- **#37 [pau]** `D:「a」 C:「birthday」 D:「present」` を維持。en が完全同型 D:「a」 C:「birthday」 D:「present」（限定詞複合が形容詞 C を挟んで D…D に分割）。pau は en 参照をそのまま写しており正当。
+
+## レビュアー再評価 — round 13 (Dr. Teuira Mānoa-Rakotovao / @reo_moana)
+
+ライブ `data.js` を `.wf_langmap_query.mjs` で round12 の作業者2セクション（「開発チーム回答」相当＝兄弟整合性監査の FIX/KEEP）を全件照合し、さらに round10/round12 で当方が提示した唯一の残 actionable（#89 mi `Kāore au` の否定辞＝主語 二重融合）が消化されたかを直接検証した。
+
+### A. 兄弟整合性監査 (作業者 round 12) の FIX — ライブ照合結果（虚偽 applied なし）
+
+- **#16 [haw] `A:「ka」` → `B` → ✓ 承認。** ライブ確認: `C:「Hoʻomaka」 B:「ka」 B:「kiʻiʻoniʻoni」 A:「i ka hola ʻehia」`。en は B:「the movie」（冠詞＋名詞）。先頭「ka」は movie の冠詞で B が正、A:「i ka hola ʻehia」(what time) とは別役。A の重複（誤った 2 重 A）が解消。兄弟 mi `B:「te kiriata」` と整合。完了。
+  - 付記（軽微・非 actionable）: 結果として `B:「ka」 B:「kiʻiʻoniʻoni」` の隣接同役 B が生じている。ただし両者は同一名詞句（冠詞＋名詞）の正当な構成要素で、en も単一 B「the movie」。当方は冠詞を名詞 B セルに統合（`B:「ka kiʻiʻoniʻoni」`）する方が隣接同役回避方針に沿うと考えるが、これは round12 で作業者が解消した「誤った A 重複」より軽微で、役割文字自体は正しい。スタイル選好の範囲であり OPEN 維持の理由にはしない。
+
+- **#17 [mg] `A:「Manana」` → `B` → ✓ 承認。** ライブ確認: `B:「Manana」 C:「fivoriana」 … A:「aho」`。en A:「I」/B:「have」、ja A:「私は」/B:「あります」。mg は動詞先頭言語で Manana=have=B、後置主語 aho=A。これにより A の二重塗り（Manana と aho）が解消。兄弟整合・参照整合とも妥当。完了。
+
+- **#39 [mi] `C:「Me oho」` → `E` → ✓ 承認。** ライブ確認: `E:「Me oho」 A:「ahau」 B:「i te ata」 C:「āpōpō」`。en E:「have to」/D:「wake up」/C:「tomorrow」。modal「Me」(have to)＋動詞 oho を E に割当（兄弟 fj「Me au」=E, haw「Pono」=E, mg「Tsy maintsy」=E, sm「E tatau ona ou」=E と全変種整合）。āpōpō=tomorrow=C が独立。C の重複解消。完了。
+
+- **#81 [mi] `C:「He mamae」` → `D` → ✓ 承認。** ライブ確認: `D:「He mamae」 A:「tōku」 B:「māhunga」 C:「i tēnei rā」`。ja D:「痛い」(painful)、mi「He mamae」=痛む述語=D、i tēnei rā=today=C。兄弟 mg `D:「Marary」` と整合し、C(today) の重複が解消。完了。
+
+### B. 兄弟整合性監査 (作業者 round 12) の KEEP — 妥当性確認
+
+- **#5 [mi] `D:「He」…D:「reka」` / #18 [pau] `D:「a」…D:「udoud」` / #37 [pau] `D:「a」C:「birthday」D:「present」` → ✓ KEEP 承認。** いずれも en 参照自体が D…D（コピュラ＋形容詞、または限定詞複合）構造を持ち、間に C/A/B が介在して隣接同役にならない。参照忠実な正当再出現。
+
+### C. round10/12 の唯一の残 actionable（#89 mi）— ✗ 依然未修正（作業者 round12 が未着手）
+
+- **#89 [mi] → ✗ 未修正（claimed fix なし）。** ライブ確認: `A:「Kāore au」 B:「e」 D:「kitea」 E:「te」 G:「kupuhipa」 F:「Wi-Fi」`。round10 で新規指摘し round12 で✗未修正と判定した `A:「Kāore au」`（否定辞 Kāore ＋ 主語 au の役割 A 二重融合）が**そのまま残存**。
+  - en は `A:「I」 B:「can」 C:「't」 D:「find」 …`。Māori の **Kāore** は否定述語（en C「't」＝否定に相当）であり主語ではない。**au** が主語（A=I）。現状は否定辞 Kāore を主語 au と一括して A に塗り、(1) 否定役（他言語の C）が独立セグメントとして現れず、(2) 否定辞に主語役 A を誤付与している。
+  - 同一文の他5変種はすべて否定を分離済み（ライブ再確認）: haw `C:「ʻAʻole」 A:「au」`、mg `B|C:「Tsy」 … A:「‌ko」`、pau `B|C:「diak」`、fj `C:「sega ni」`、sm `C:「E lē」`。**mi のみが系統から外れている**。
+  - 作業者 round12 は兄弟整合性監査（#16/#17/#39/#81 等）を実施したにもかかわらず、同じ「兄弟整合性」軸で当方が2ラウンド連続で明示した #89 mi をスコープから外している。これは消化漏れであり、防御可能な convention でも HELD でもない。
+  - **分割は安全:** `C:「Kāore」 A:「au」 B:「e」 D:「kitea」 …` で語順は C→A→B→D となり**隣接同役は生じない**。
+
+### 既出修正の残存再確認（回帰なし）
+
+- **#66 [fj] `B:「na uca」`** / **#1 [mg] `B:「Te」…A:「aho」`** / **#77 [fj] `C:「E a kurabui」…B:「vua」E:「ni sivi」`** / **#89 否定（mi 以外）** — いずれも live に残存。round12 の FIX 4件も含め、過去確定修正に回帰なし。虚偽 applied 報告もなし。
+
+### 新規指摘
+
+- なし（#16 haw の隣接 B は軽微なスタイル付記にとどめ、actionable には数えない）。
+
+### CONCEDE（本ラウンド追加分）
+
+- なし（過去計8件譲歩済み。本ラウンドは round12 FIX の承認確認と残 actionable の再検証のみ）。
+
+### スコアカード (round 13)
+
+- 作業者 round12 FIX（#16haw/#17mg/#39mi/#81mi）: 承認 ✓ = 4（全件ライブ確認・虚偽なし）。
+- 作業者 round12 KEEP（#5mi/#18pau/#37pau）: 妥当承認 ✓ = 3。
+- 却下 ✗ = 0。
+- 本ラウンド新規 actionable: 0 件。
+- 累計 CONCEDE: 8 件（変動なし）。
+- 残課題: **#89 mi `A:「Kāore au」` の否定辞＝主語 二重融合（C 否定 / A 主語 への分割が依然未適用）。** round10→round12→round13 と3度連続で未消化。
+
+ループ終了方針の確認: 本件はスタイル選好でも外部典拠待ちでもなく、(1) en 役割割当に照らした明確な役割誤付与（否定辞に主語役 A）、(2) 同一文の他5変種が否定を分離済みの中で mi だけが外れる系統的不整合、(3) 隣接同役を生まない安全な分割、の三点で具体的かつ防御可能な actionable。作業者は round12 でまさに「兄弟整合性監査」を行っており、同じ軸の本件を適用しない理由がない。よって CLOSE せず OPEN を維持する。
+
+**ファイル状態: OPEN**
+次にやること: #89 mi の `A:「Kāore au」` を `C:「Kāore」`（否定、同文 haw `ʻAʻole`=C と整合）＋ `A:「au」`（主語）に分割する（語順 C→A→B、隣接同役なし）。これのみで CLOSED 可。
+
+## レビュアー再評価 — round 14 (Dr. Teuira Mānoa-Rakotovao / @reo_moana)
+
+本ファイルには round13 に対する開発チームの文章回答が未記載だが、orchestrator が直接 live を更新した可能性があるため、round10→12→13 と3度連続で残課題としてきた唯一の actionable（#89 mi `Kāore au` の否定辞＝主語 二重融合）が消化されたかを `.wf_langmap_query.mjs` でライブ直接照合した。あわせて round12 FIX 群と過去確定修正の回帰有無を再確認した。
+
+### A. 残課題（#89 mi）の検証 — ✓ 修正確認（live 反映済み）
+
+- **#89 [mi] → ✓ 承認（修正確認済み）。** ライブ確認: `C:「Kāore」 A:「au」 B:「e」 D:「kitea」 E:「te」 G:「kupuhipa」 F:「Wi-Fi」`。round10/12/13 で当方が指摘した `A:「Kāore au」`（否定辞＋主語の役割 A 二重融合）が、当方の提案どおり **否定辞 Kāore=C（同文 haw `ʻAʻole`=C と整合）／主語 au=A** に分割された。en の `A:「I」 B:「can」 C:「't」 …` に照らし、否定役 C が独立セグメントとして現れ、A の二重塗りが解消。語順は C→A→B→D で隣接同役は生じていない。同一文の他5変種（haw `C:「ʻAʻole」 A:「au」`、mg `B|C:「Tsy」…A:「‌ko」`、pau `B|C:「diak」`、fj `C:「sega ni」`、sm `C:「E lē」`）と否定処理が完全に揃い、系統的不整合も解消した。完了。
+
+### B. round12 FIX 群の残存再確認（回帰なし）
+
+- **#16 [haw] → ✓ 残存＋付記解消。** ライブ `C:「Hoʻomaka」 B:「ka kiʻiʻoniʻoni」 A:「i ka hola ʻehia」`。round12 で解消した「誤った A 重複」が維持。さらに round13 で当方がスタイル付記とした隣接同役 B（`B:「ka」 B:「kiʻiʻoniʻoni」`）も、冠詞を名詞 B セルに統合した `B:「ka kiʻiʻoniʻoni」` へ整理され、隣接同役回避方針にも沿う形に。完了。
+- **#17 [mg] → ✓ 残存。** ライブ `B:「Manana」… A:「aho」`。
+- **#39 [mi] → ✓ 残存。** ライブ `E:「Me oho」 A:「ahau」 B:「i te ata」 C:「āpōpō」`。
+- **#81 [mi] → ✓ 残存。** ライブ `D:「He mamae」 A:「tōku」 B:「māhunga」 C:「i tēnei rā」`。
+
+### C. 過去確定修正の残存再確認（回帰なし・虚偽 applied なし）
+
+- **#66 [fj] `B:「na uca」`** / **#1 [mg] `B:「Te」… A:「aho」`** / **#77 [fj] `C:「E a kurabui」… B:「vua」 E:「ni sivi」`** / **#33 [fj] `C:「sara vakalevu」`** / **#94 [pau]（英語プレースホルダ撤去済）** — いずれも live に残存。round1〜13 の確定修正に回帰なし。orchestrator が round13 後に #89 mi（および #16 haw 付記）を反映した内容も虚偽なく live と一致。
+
+### 新規指摘
+
+- なし。残課題消化の検証中に新たな明確な誤りは発見されなかった。⛔3-way の残余は所有接尾抱合（mg -ko/-ny、pau -ek）・属格複合単一語（mg valim-panadinana/isan-alina）・環状接辞（haw Ke…nei、mg ity…ity）・接頭辞統合動詞（mg Niresaka 等）・単一語否定辞・TAM 融合という、いずれも防御可能な類型差による正当 KEEP のみ。分割優先方針に照らしても追加 actionable は存在しない。
+
+### CONCEDE（本ラウンド追加分）
+
+- なし（過去ラウンドで計8件を譲歩済み。本ラウンドは残 actionable の消化確認のみで、譲歩すべき新事項なし）。
+
+### スコアカード (round 14)
+
+- round10/12/13 の唯一の残 actionable（#89 mi 否定辞＝主語 分割）: **✓ 修正確認済み**（live で `C:「Kāore」 A:「au」` に分割）。
+- round12 FIX（#16haw/#17mg/#39mi/#81mi）: ✓ 全件 live 残存（#16 haw は付記の隣接同役も解消）。
+- 本ラウンド新規 actionable: 0 件。
+- 累計 CONCEDE: 8 件（変動なし）。
+- 残課題: なし。round1〜13 で指摘した全ての明確誤り・綴り・語彙・役割誤付与・分割漏れ・自然さ懸念が live で修正・確認済み。残る全項目は承認済み修正、防御可能な convention（所有接尾抱合 / TAM融合 / 属格複合語 / 環状接辞 ity…ity・Ke…nei / 接頭辞統合動詞 / #70 時刻枠 / #84 後置修飾 / #80 名詞化 / #92 借用）、または妥当な HELD（#51fj taleitaki / #87 pai / #90 pau / #57 sm lelei）。
+
+3度連続で OPEN を維持してきた #89 mi が本ラウンドで分割・確認できたことにより、群26 に actionable な残課題は存在しない。
+
+**ファイル状態: CLOSED — 残課題なし**

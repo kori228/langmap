@@ -474,3 +474,156 @@ en ロール: E:two / F:cups of / B:coffee。**数詞・「杯」・名詞は全
 - **格による「with」+所有 (#46 B|F / B|F|G)**: ine「*priH-yóh₁-bʰi」(具格 -bʰi=with), hit「ḫandantiyaš-šum-it」(friend+my+with すべて接尾) → KEEP。
 
 合計: SPLIT 38 / KEEP 23。
+
+## レビュアー再評価 — round 10 (Dr. Ásgeir Vinstr-Hallsson / @philolog_pie)
+
+開発チームの round 9「包括スイープ」(SPLIT 38 / KEEP 23)を受け、`.wf_langmap_query.mjs` で申告セルを全件ライブ照合した。結論として、申告された 38 件の SPLIT はすべてライブデータに反映済みであることを確認した一方、**スイープが取りこぼした fix-all-variants の確実な分割誤りを 1 件(got・non)新たに検出**したため、本ファイルは OPEN とする。
+
+### 適用済み SPLIT の検証(round 9 申告)→ ✓ ACCEPT(ライブ反映確認)
+ライブ照合で以下を一件ずつ確認。隣接同一ロール重複は新たに発生していない。
+- **#35 [el_grc]** `E:「ὁ ἀδελφός」 A:「μου」`(brother=E / my=A)分割済み。
+- **#50 [la/ine/got/el_grc/cu/non]** dog+possessive を A/E に分割済み(例 la `E:「Meus」 A:「canis」`、got `A:「𐌷𐌿𐌽𐌳𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」`、non `A:「Hundr」 E:「minn」`)。hit `A|E:「UR.GI₇-aš-maš」` は接尾所有 -maš → KEEP 妥当。
+- **#51 [la/ine/got/el_grc/cu/non]** grandmother+possessive 分割済み(例 got `A:「𐌰𐍅𐍉」 E:「𐌼𐌴𐌹𐌽𐌰」`)。hit `A|E:「ḫannaš-maš」` KEEP 妥当。
+- **#69 [got/non]** `H:「to」 C:「parents」` 分割、long/letter は G/B 分割済み。la/ine/el_grc/cu/hit の C|H は与/具格語尾 → KEEP 妥当。
+- **#84 [全7言語]** last/week を E/D に分割済み(例 la `E:「praeterita」 D:「hebdomade」`、hit `E:「EGIR-pa」 D:「šiuatti-7」`)。
+- **#70 [hit/ine]** `E:「9」 F:「PM/night」` 分割済み(hit `E:「9 mēḫur-az」 F:「ešpanti」`、ine `E:「*h₁néwn̥」 F:「noḱt-éh₂」`)。
+- **#77 [la/ine/hit/cu]** result/test を B/E に分割、non `D:「Af」 B|E:「prófúrslitiinum」` 前置詞分離済み。
+- **#49 [ine]** `E:「*póntoh₁m」 G:「h₂ewi-dheh₁」` 分割済み(他変種と fix-all-variants 成立)。
+- **#73 [la/ine/el_grc/cu]** cat+possessive を A/E に分割済み(例 la `E:「Mea」 A:「feles」`、cu `A:「Котъ」 E:「мои」`)、後置詞 B|F(ine `B:「*stróh₃-mn̥ mene」 F:「upéri」`、hit `B:「šešti-mi」 F:「šēr」`)・C|G(night/every)も分割済み。
+
+### KEEP の検証(round 9 申告)→ ✓ ACCEPT(正当な非分離)
+- **接尾所有 hit -maš**(#35/#50/#51/#73 の `A|E:…-maš`): 格接尾辞に所有が膠着、形態素切断不可 → KEEP 妥当。
+- **格による to/by/with +所有**(#69 C|H、#46 B|F、#77 la/cu/hit/ine): 独立前置詞語を欠く与/具/奪格 → KEEP 妥当。
+- **綜合動詞 E|H / C|E / C|H / D|E**(#46/#52/#53/#69)、**一語副詞**(#34 hægar、#38 from-here、#96 non næstu): いずれも round1–7 で確定済みの正当な非分離 → 維持。
+
+### 新規指摘 — #73 [got/non] cat+possessive の A|E が fix-all-variants 取りこぼし → ✗(確実な未分割誤り)
+ライブ: got `A|E:「𐌺𐌰𐍄𐍄𐌿𐍃 𐌼𐌴𐌹𐌽𐍃」`、non `A|E:「kǫttr minn」`(いずれも cat=A + my=E の融合)。
+**問題:** 開発側 round 9 の #73 分割は「la/ine/el_grc/cu」のみを対象とし、**got・non の cat+possessive を A|E のまま残置**している。しかしこの 2 言語は、まさに同型の animal/relative + possessive を:
+- #50 で got `A:「𐌷𐌿𐌽𐌳𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」`、non `A:「Hundr」 E:「minn」`
+- #51 で got `A:「𐌰𐍅𐍉」 E:「𐌼𐌴𐌹𐌽𐌰」`、non `A:「Amma」 E:「mín」`
+- #35 で non `E:「bróðir」 A:「minn」`
+
+と **既に分割済み**である。所有代名詞 𐌼𐌴𐌹𐌽𐍃 / minn は #50/#51/#35 で実際に独立語として切り出された、まさに同じ separable な語であり、#73 でのみ融合させておく言語的根拠がない。これは典型的な fix-all-variants 違反(同族のどれかが既に割っている同型を全部割る)であり、オーナーの分割優先方針にも反する。
+**修正:** got `A|E:「𐌺𐌰𐍄𐍄𐌿𐍃 𐌼𐌴𐌹𐌽𐍃」` → `A:「𐌺𐌰𐍄𐍄𐌿𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」`(後続 C:𐌽𐌰𐌷𐍄 と隣接重複なし)。non `A|E:「kǫttr minn」` → `A:「kǫttr」 E:「minn」`(後続 F:í と隣接重複なし)。役割は A≠E で異なり、隣接同一ロール重複は生じない。【確実】
+
+### 副次指摘 — #35 [la/ine/got/cu] の E-A-E 融合(将来 SPLIT 候補・本ラウンドは非ブロッキング)
+la `A|E:「Frater meus maior」`(brother=E / my=A / older=E)、ine `A|E:「*bʰréh₂tēr mene sénos」`、got `A|E:「𐌱𐍂𐍉𐌸𐌰𐍂 𐌼𐌴𐌹𐌽𐍃 𐌼𐌰𐌹𐌶𐌰」`、cu `A|E:「Братъ мои старѣишии」`。開発側は round 9 で「E-A-E 非連続=連続規則違反 → KEEP」とした。しかし E:brother / A:my / E:older の 3 分割は **A が 2 つの E を隔てるため隣接同一ロール重複を生じない**(本データが許容する不連続同役割。dev 自身が #80 el_grc で B…F…B、#5 en で D…D を許容済み)。同型 μου を el_grc では既に分割しており、厳密には fix-all-variants 上 la/ine/got/cu も 3 分割しうる。ただし #73 ほど明白な「同型を既に割った前例の単純取りこぼし」ではなく、所有形容詞を保持する慣例(round4–5 で確認)との兼ね合いもあるため、本ラウンドは**ブロッキングとせず将来候補として記録**するに留める。本指摘の解消はクローズ条件にしない。
+
+### スコアカード(round 10)
+- round 9 申告 SPLIT 38 件: **全件ライブ反映確認(✓)**
+- round 9 申告 KEEP 23 件: **全件正当な非分離として ACCEPT(✓)**
+- 新規 actionable 課題: **1**(#73 got/non の cat+possessive A|E 未分割=fix-all-variants 取りこぼし、確実)
+- 副次(非ブロッキング): #35 la/ine/got/cu の E-A-E 3 分割候補(将来任意)
+- 本ラウンド CONCEDE: **0**(round 9 に当方への反論項目はなく、開発側スイープを概ね是とした。係争点は新規検出の #73 のみで撤回せず保持)
+
+総括: round 9 の包括スイープは網羅的かつ正確で、申告 38 SPLIT / 23 KEEP はすべてライブに正しく反映されていた。しかしスイープは #73 の cat+possessive について got・non を分割対象から漏らしており、これは同 2 言語が #35/#50/#51 で同型をすでに分割済みであることに照らせば確実な fix-all-variants 違反である。この 1 件が残るため本ファイルはクローズできない。
+
+**ファイル状態: OPEN**
+次に開発が行うべきこと: #73 の got `A|E:「𐌺𐌰𐍄𐍄𐌿𐍃 𐌼𐌴𐌹𐌽𐍃」` を `A:「𐌺𐌰𐍄𐍄𐌿𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」` に、non `A|E:「kǫttr minn」` を `A:「kǫttr」 E:「minn」` に分割する(#50/#51/#35 と同型、隣接同一ロール重複なし)。これ 1 件で本群の残 actionable はゼロになる。
+
+## 開発チーム回答 — round 11 (作業者)
+
+### #73 [got/non] cat+possessive の A|E 未分割(fix-all-variants 取りこぼし)→ APPLIED
+
+ライブ全件照合で残課題を確認:
+- got `A|E:「𐌺𐌰𐍄𐍄𐌿𐍃 𐌼𐌴𐌹𐌽𐍃」`(後続 C:「𐌽𐌰𐌷𐍄」)
+- non `A|E:「kǫttr minn」`(後続 F:「í」)
+
+レビュアーの fix-all-variants 指摘は妥当。同じ所有代名詞 𐌼𐌴𐌹𐌽𐍃 / minn は同族の同型(動物・親族+所有)で既に独立語として分離済みであることをライブ確認した:
+- #50 got `A:「𐌷𐌿𐌽𐌳𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」`、non `A:「Hundr」 E:「minn」`
+- #51 got `A:「𐌰𐍅𐍉」 E:「𐌼𐌴𐌹𐌽𐌰」`
+- #35 non `E:「bróðir」 A:「minn」`
+
+𐌼𐌴𐌹𐌽𐍃 / minn は明確に分離可能な独立語であり、#73 でのみ融合させておく言語的根拠はない。オーナーの分割優先方針および fix-all-variants(同族のどれかが既に割っている同型は全部割る)に合致。分割後の隣接ロールはいずれも相違(got: A→E→C、non: A→E→F)で、隣接同一ロール重複は生じない。表層トークンは空白区切りの2語ゆえ display も不変。**(applied by orchestrator this round)**
+- got → `A:「𐌺𐌰𐍄𐍄𐌿𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」 C:「𐌽𐌰𐌷𐍄」 G:「𐍈𐌰𐍂𐌾𐌰𐌽𐌰𐌽𐌴」 F:「𐌹𐌽」 B:「𐌱𐌰𐌳𐌹 𐌼𐌴𐌹𐌽𐌰𐌼𐌼𐌰」 D:「𐍃𐌻𐌴𐍀𐌹𐌸」`
+- non → `G:「Hvert」 C:「kveld」 D:「sefr」 A:「kǫttr」 E:「minn」 F:「í」 B:「rekkju minni」`
+
+### 副次指摘 — #35 [la/ine/got/cu] の E-A-E 3分割候補 → HELD(非ブロッキング、現状維持)
+
+レビュアー自身が round 10 で「ブロッキングとせず将来候補として記録」「本指摘の解消はクローズ条件にしない」と明記しているとおり、本ラウンドでは据え置く。la `A|E:「Frater meus maior」` 等は brother(E)+my(A)+older(E) の E-A-E 構造で、所有形容詞を保持する round4–5 確定慣例との兼ね合いがあり、#73 のような「同型を既に割った前例の単純取りこぼし」とは性質が異なる。所有を分割すると比較情報を担う後置形容詞(maior 等)が E として残り E…A…E の不連続同役割になるが、これは許容範囲内とはいえ #73 ほど明白な誤りではないため、レビュアーの非ブロッキング判定に従い HELD とする。
+
+これにより本群の残 actionable はゼロ。round 10 唯一の確実な課題 #73 got/non は本ラウンドで分割適用済み。
+
+## レビュアー再評価 — round 12 (Dr. Ásgeir Vinstr-Hallsson / @philolog_pie)
+
+開発チームの round 11 回答(round 10 唯一の確実な残課題 #73 got/non の cat+possessive A|E 分割、および #35 E-A-E 副次の HELD)を受け、`.wf_langmap_query.mjs` で #73 を全件ライブ照合し、併せて根拠とした同型先例(#50/#51/#35)と過去ラウンドの主要修正(#80 el_grc)に退行が生じていないか再確認した。
+
+### #73 [got/non] cat+possessive の A|E 分割 → ✓ ACCEPT(適用確認)
+ライブ:
+- got `A:「𐌺𐌰𐍄𐍄𐌿𐍃」 E:「𐌼𐌴𐌹𐌽𐍃」 C:「𐌽𐌰𐌷𐍄」 G:「𐍈𐌰𐍂𐌾𐌰𐌽𐌰𐌽𐌴」 F:「𐌹𐌽」 B:「𐌱𐌰𐌳𐌹 𐌼𐌴𐌹𐌽𐌰𐌼𐌼𐌰」 D:「𐍃𐌻𐌴𐍀𐌹𐌸」`
+- non `G:「Hvert」 C:「kveld」 D:「sefr」 A:「kǫttr」 E:「minn」 F:「í」 B:「rekkju minni」`
+
+融合していた cat=A + my=E が独立2語に分離された。隣接ロール列を確認:got は A→E→C→G→F→B→D、non は G→C→D→A→E→F→B で、いずれも隣接同一ロール重複なし。所有代名詞 𐌼𐌴𐌹𐌽𐍃 / minn は #50(got `A:𐌷𐌿𐌽𐌳𐍃 E:𐌼𐌴𐌹𐌽𐍃`、non `A:Hundr E:minn`)・#51(got `A:𐌰𐍅𐍉 E:𐌼𐌴𐌹𐌽𐌰`)・#35(non `E:bróðir A:minn`)で実際に独立語として切り出された同一の separable な語であり、#73 でこれと完全に揃って fix-all-variants が成立した。**round 10 唯一の確実な分割誤りは正しく解消された。**
+
+### 退行チェック(過去ラウンド適用分の維持確認)
+- **#50** got `A:𐌷𐌿𐌽𐌳𐍃 E:𐌼𐌴𐌹𐌽𐍃`、non `A:Hundr E:minn` — 維持。
+- **#51** got `A:𐌰𐍅𐍉 E:𐌼𐌴𐌹𐌽𐌰` — 維持。
+- **#80 el_grc** `B:τὸ F:ξένῃ B:μανθάνειν`(round6 適用の不連続 B…F…B)— 維持、退行なし。
+- いずれの文も新たな隣接同一ロール重複は発生していない。
+
+### 副次指摘 — #35 [la/ine/got/cu] の E-A-E 3分割候補 → △ 据え置きを是認(非ブロッキング)
+ライブ: la `A|E:「Frater meus maior」`、ine `A|E:「*bʰréh₂tēr mene sénos」`、got `A|E:「𐌱𐍂𐍉𐌸𐌰𐍂 𐌼𐌴𐌹𐌽𐍃 𐌼𐌰𐌹𐌶𐌰」`、cu `A|E:「Братъ мои старѣишии」`。当方が round 10 で明示的に「ブロッキングとせず将来候補として記録」「本指摘の解消はクローズ条件にしない」と述べたとおり、これはクローズ条件外の任意改善である。開発側の HELD は当方の非ブロッキング判定にそのまま従ったものであり妥当。所有形容詞保持の確定慣例(round4–5)との兼ね合いもあり、#73 のような「同型を既に割った前例の単純取りこぼし」とは性質が異なる。**据え置きを是認し、クローズの障害とはしない(将来の任意 SPLIT 候補として記録継続)。**
+
+### 新規指摘
+本ラウンドのライブ照合で、新たな actionable な構造的・分割的誤りは検出されなかった。round 11 適用分(#73)に隣接同一ロール重複はなく、過去ラウンドの SPLIT/KEEP 判定にも退行はない。
+
+### スコアカード(round 12)
+- #73 got/non cat+possessive(round 10 唯一の確実な残課題): **APPLIED・ライブ検証済み(✓)**
+- #50 / #51 / #35 / #80 el_grc 退行チェック: 維持確認(✓)
+- #35 E-A-E 3分割(副次・非ブロッキング): 据え置き是認(△、クローズ条件外)
+- 新規 actionable 課題: **0**
+- 本ラウンド CONCEDE: **0**(係争点なし。round 10 の #73 指摘は撤回せず、開発側がそのとおり適用したため決着)
+
+総括: round1–11 を通じて、(1) 確実な構造的誤り(#79 non の C 重複、#5 non の性不一致、#94 cu の語順・格)、(2) #52 の先例に基づく型依存の系統的前置詞・指示詞・所有・数詞・形容詞・動詞分割(#43/#45/#46/#49/#53/#55/#69/#70/#73/#77/#80/#84/#85/#48)、(3) round 9 包括スイープの SPLIT 38 / KEEP 23、(4) round 10 で検出した #73 got/non の fix-all-variants 取りこぼし——これらすべてが適用・ライブ検証済みである。語彙の時代妥当性(cu роулетъ/пельмени、non glas、el_grc καφφές の変化型)は典拠未確定の既知の限界として収束済み、#34 non の hægar ポートマントーはデータ慣例に基づき CONCEDE 済み。唯一の非ブロッキング副次項目 #35 E-A-E は当方自身がクローズ条件外と明記済み。actionable な残課題はゼロ。
+
+**ファイル状態: CLOSED — 残課題なし(語彙の時代妥当性は round1–2 で既知の限界として留保済み;#34 non hægar は round5 で CONCEDE 済み;#35 E-A-E 3分割は非ブロッキングの将来任意候補として記録継続)**
+
+## 兄弟整合性監査 — 群10 (作業者 round 12)
+
+### FIX
+- **#80 el_grc** `τὸ`: B → I。`τὸ` は不定詞 `μανθάνειν` を名詞化する定冠詞であり、冠詞役は参照 en/de/fr/hi/vi 等がすべて役割 I（"a"/"une"/"एक"/"một"…）を使用。el_grc は `B:τὸ` + `B:μανθάνειν` と B を重複していたが、冠詞 `τὸ` を I に retag することで重複解消＋参照整合。I は本文の segments に定義済み。surface 不変。
+
+### KEEP
+- **#5 non** `D:er`(コピュラ)+`D:gott`(形容詞): 参照 en 自身が D:「is」と D:「delicious」の両方を D としている。non は語順上コピュラと形容詞を分離記述するだけで、両者とも正当に D。KEEP。
+- **#18 non** `D:er`+`D:dýr`: 同上。en が D:「is」D:「expensive」と両方 D。KEEP。
+- **#21 non** `E:mun`(助動詞 will)+`E:eta`(eat): en は E:「will have」を単一 E とする動詞複合。non は助動詞と本動詞を分離記述、両者とも動詞複合の E。KEEP。
+- **#27 non** `D:hefr`+`D:farit`(完了 "have gone"): en D:「have been」は助動詞+分詞の完了複合。non は hefr/farit を分離、両者とも D。KEEP。
+- **#66 non** `C:er`+`C:hulið`("is covered"): en C:「is covered」はコピュラ+分詞の受動複合。non は er/hulið を分離、両者とも C。KEEP。
+- **#74 non** `C:hefr`+`C:beðit`("have waited"): en C:「been waiting」は助動詞+分詞。non は hefr/beðit を分離、両者とも C。KEEP。
+
+## レビュアー再評価 — round 13 (Dr. Ásgeir Vinstr-Hallsson / @philolog_pie)
+
+開発チームの round 12「兄弟整合性監査」(FIX 1 件 / KEEP 6 件)を受け、`.wf_langmap_query.mjs` で申告セルを全件ライブ照合した。FIX(#80 el_grc τὸ の B→I retag)は適用済みを確認し、KEEP 6 件は参照 en のロール付与に照らして妥当性を判定した。併せて主要過去修正(#80 の不連続 B…F…B、#73 cat+possessive 分割)に退行がないか再確認した。
+
+### FIX. #80 [el_grc] `τὸ` B→I retag → ✓ ACCEPT(適用確認)
+ライブ: `A:「ἐγὼ」 E:「νομίζω」 I:「τὸ」 F:「ξένῃ」 B:「μανθάνειν」 G:「τιμίαν」 C:「ἐμπειρίαν」 D:「εἶναι」`。冠詞付き不定詞の定冠詞 `τὸ` がロール I に retag され、round6 で発生していた `B:τὸ … B:μανθάνειν` の不連続 B 重複が解消された。表層形は不変。参照整合をライブで裏取り:en `I:「a」`、de `I:「eine」`、fr `I:「une」`、vi/hi/gu/kn/ne もすべて冠詞を I で標識しており、ロール I は本文 segments に定義済み。ギリシア語の名詞化定冠詞 `τὸ` は機能的に冠詞スロットを占めるため、I への割当は参照群と内部整合的かつ B 重複を正しく解消する妥当な是正である。残る B は `μανθάνειν` の単独で、隣接ロール列 I→F→B に同一ロール隣接重複なし。**正しく反映され、構造改善になっている。**
+
+### KEEP 6 件(#5/#18/#21/#27/#66/#74 non の同ロール非隣接二分)→ ✓ ACCEPT(全件正当)
+各文の non と参照 en をライブ照合し、non の二重ロールが en 自身の同一ロール付与と並行していることを確認した。いずれも繋辞+述語・助動詞+本動詞・繋辞+分詞の分析的構造で、両構成要素を参照ロールに揃える本プロジェクトの確立方針(round1–2 で確定)に合致する。
+- **#5 non** `D:「er」…D:「gott」` ↔ en `D:「is」…D:「delicious」`。間に C:「mjǫk」が介在し非隣接。✓
+- **#18 non** `D:「er」…D:「dýr」` ↔ en `D:「is」…D:「expensive」`。間に C:「of」介在、非隣接。✓
+- **#21 non** `E:「mun」…E:「eta」` ↔ en `E:「will have」`(動詞複合)。間に A:「ek」D:「náttverð」介在、非隣接。✓
+- **#27 non** `D:「hefr」…D:「farit」` ↔ en `D:「have been」`(完了複合)。間に A:「ek」介在、非隣接。✓
+- **#66 non** `C:「er」…C:「hulið」` ↔ en `C:「is covered」`(受動複合)。間に A:「fjallit」介在、非隣接。✓
+- **#74 non** `C:「hefr」…C:「beðit」` ↔ en `C:「been waiting」`(助動詞+分詞)。間に A:「ek」介在、非隣接。✓
+
+いずれも独立繋辞語・独立助動詞を本動詞=参照ロールに合わせた正当な分割であり、同ロール隣接重複は一切生じていない。MERGE すべき過分割ではなく、むしろ分割優先方針に合致した望ましい細分化。**全件 KEEP 妥当。**
+
+### 退行チェック(過去ラウンド適用分の維持確認)
+- **#80 el_grc** の不連続 `I:τὸ → F:ξένῃ → B:μανθάνειν` は今回の retag でさらに整理され、退行なし。
+- **#73 got/non** cat+possessive の `A/E` 分割(round11 適用)維持を前提に、本ラウンドの FIX は別文(#80)であり相互干渉なし。
+- 群全体で #80 のロール I は en/de/fr/vi/hi 等と整合し、新たな隣接同一ロール重複は発生していない。
+
+### 新規指摘
+本ラウンドのライブ照合で、新たな actionable な構造的・分割的誤りは検出されなかった。round 12 の retag(#80 τὸ)で残存していた B 重複が解消され、KEEP 6 件はすべて参照 en と並行する正当な非隣接二分である。唯一の非ブロッキング副次項目 #35 E-A-E 3 分割は round 10 で当方自身がクローズ条件外と明記済みで、将来の任意候補として記録継続する。
+
+### スコアカード(round 13)
+- #80 el_grc τὸ B→I retag(round 12 FIX): **APPLIED・ライブ検証済み(✓)**
+- KEEP 6 件(#5/#18/#21/#27/#66/#74 non の同ロール非隣接二分): **全件参照整合の正当な分割として ACCEPT(✓)**
+- 退行チェック(#80/#73): 維持確認(✓)
+- 新規 actionable 課題: **0**
+- 本ラウンド CONCEDE: **0**(係争点なし。開発側 FIX は B 重複の正しい解消、KEEP は参照根拠が明確で異議なし)
+
+総括: round 12 の兄弟整合性監査は的確で、#80 el_grc の `τὸ` を冠詞ロール I に retag したことで round6 由来の B 重複が参照群(en/de/fr 等の I)と整合する形で解消された。KEEP 6 件はいずれも参照 en が同一ロールを二度付与する分析的構造に並行した正当な分割であり、MERGE 対象の過分割ではない。round1–12 の確実な構造的誤り・型依存系統分割・包括スイープ・fix-all-variants 取りこぼしはすべて適用・ライブ検証済みで、語彙の時代妥当性(cu роулетъ/пельмени、non glas、el_grc καφφές 変化型)は既知の限界として収束、#34 non hægar は CONCEDE 済み、#35 E-A-E はクローズ条件外の任意候補。actionable な残課題はゼロ。
+
+**ファイル状態: CLOSED — 残課題なし(語彙の時代妥当性は round1–2 で既知の限界として留保済み;#34 non hægar は round5 で CONCEDE 済み;#35 E-A-E 3分割は非ブロッキングの将来任意候補として記録継続)**

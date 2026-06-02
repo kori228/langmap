@@ -577,3 +577,155 @@ SPLIT: 64 セル / KEEP: 14 セル
 - #46 pt_br/pt_eu/gl/lad E|H:「conversei/falei/avli」 — 統合的過去形動詞。語幹+時制が一語で、時制接尾を切り出せない。
 - #52 pt_br/pt_eu/gl/lad/ht C|H:「Perdi/perdín/perdi/pèdi」 — 同上、統合的過去形動詞(単一トークン)。
 - #69 pt_br/pt_eu/gl/lad D|E:「escreveu/escribiu/eskriviyo」 — 統合的過去形動詞(単一トークン)。
+
+## レビュアー再評価 — round 10 (Dr. Salomão Pereira-Cohen)
+
+開発チーム round 9 の包括スイープ(SPLIT 64セル / KEEP 14セル)を `.wf_langmap_query.mjs` でライブ照合した。被疑文 #35/#43/#46/#48/#50/#51/#52/#53/#69/#70/#73/#80/#84/#85 および KEEP 主張(#3/#38)を逐一検証。
+
+### 検証済み・受理 (✓)
+
+- **#35 所有/限定詞+名詞分割** ✓ ライブ確認:pt_br `A:「Meu」 E:「irmão mais velho」 … D:「no mês」 C:「passado」`、ht `E:「Gran frè」 A:「mwen」 …`、pap `A:「Mi」 E:「ruman hòmber grandi」 … D:「luna」 C:「pasá」`。所有/名詞分離・month/last 分割とも適用済み。隣接同役なし。
+- **#43 restaurant 部分分割** ✓ pt_br は `A|D:「desse」`(de+esse 縮約=不可分)を保持しつつ `E:「restaurante」` を分離。pt_eu/gl `A:「deste」 E:「restaurante」`、lad `A:「de」 D:「este」 E:「restorant」`、ht `A:「nan」 E:「restoran」 D:「sa a」`、pap `A:「di e」 E:「restaurant」 D:「aki」`。妥当。
+- **#46/#69 TAM マーカー分割(ht/pap)** ✓ ht #46 `H:「te」 E:「pale」`、pap #46 `H:「a」 E:「papia」`、ht #69 `E:「te」 D:「ekri」`、pap #69 `E:「a」 D:「skibi」`。前接 TAM 標識(te/a)を独立トークンとして正しく分離。屈折ロマンス語側の統合過去 `E|H/D|E` は KEEP(下記)。
+- **#48/#50/#51/#73 指示詞・所有詞分割** ✓ #48 lad `E:「akeya」 B:「pelikula」`、ht `B:「fim」 E:「sa a」`、pap `B:「e pelikula」 E:「ei」`(後置指示も別役割で分離)。#50/#51/#73 とも所有 E と名詞 A を分離、隣接同役なし。
+- **#52 pap TAM 分割** ✓ pap `H:「a」 C:「pèrdè」`。屈折ロマンス語側 `C|H:「Perdi/perdín/…」`(統合過去)は KEEP。
+- **#53 進行相 aux+動詞・前置詞縮約分割** ✓ 全6言語で `D:(do/del/nan/den+...) A:庭 E:(estão/están/ap/ta) C:動詞` に分割確認。
+- **#70 時刻句部分分割** ✓ pt_br/pt_eu `D:「às」 E|F:「21h」`(24時間表記は不可分保持)、gl/lad/ht/pap は `D E F` 完全分割。妥当。
+- **#80/#84/#85 前置詞・限定詞・程度詞・形容詞句分割** ✓ #84 全6言語 `D:(month) E:(last)` 分割、#85 `E:(more) B:(water)` 分割確認。
+
+### KEEP 受理(レビュアーと一致)
+
+- **#3 gl `B|C:「almorzo」`** ✓ 「朝食をとる」の単一統合動詞で目的語+動詞が一語に融合。分離不能。受理。
+- **#38 pt_br/pt_eu `A|D:「daqui」`** ✓ de+aqui の融合縮約ポルトマントー。トークン境界なし。受理。
+- **#46 `E|H:conversei/falei/avli`、#52 `C|H:Perdi/…`、#69 `D|E:escreveu/…`** ✓ いずれも屈折統合過去で語幹+時制が単一語。時制接尾は切り出せない。round 4 以来の合意 KEEP 類型と整合。受理。
+
+### 新規指摘 (1件) — #80 pt_br 不定冠詞 "uma" の役割誤付与【確実・retag】
+
+ライブ照合中に発見。round 9 で dev は lad/gl/pap/pt_eu の不定冠詞を参照 en と同じ `I` に揃えた(`I:「una/unha/un/uma」`)が、**pt_br だけ不定冠詞 "uma" を `G` に付与している**:
+
+```
+[pt_br] … D:「é」 G:「uma」 C:「experiência」 G:「valiosa」
+```
+
+参照 en は `I:「a」 G:「valuable」 C:「experience」` で冠詞=I・形容詞=G。es_*/fr_* 全変種、および同群の pt_eu `I:「uma」`/gl `I:「unha」`/lad `I:「una」`/ht `I:「yon」`/pap `I:「un」` もすべて冠詞を I に付与。pt_br のみ冠詞を G(=valuable の役割)に誤付与し、結果として **同一セル内で `G:「uma」`(冠詞)と `G:「valiosa」`(形容詞)が C を挟んで同役割 G 二重**となっている。役割整合(同一 role-letter=同一統語役割)に反する明白な誤りで、stylistic preference ではない。dev 自身が他5言語を I に揃えた以上、pt_br の取りこぼしは fix-all-variants 方針(MEMORY: feedback_fix_all_variants_together)からも是正必須。
+
+- **修正案:** pt_br `G:「uma」` → `I:「uma」`(surface 不変、冠詞=I に retag)。これで全14変種が冠詞=I・形容詞=G で統一され、G-G 同役割重複も解消。
+
+### 撤回事項・KEEP 類型の維持
+
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80 `ki gen valè`)はすべて妥当。本ラウンドでも維持し蒸し返さない。
+
+### スコアカード(round 10)
+
+- 受理 (✓): round 9 包括スイープの SPLIT/KEEP 主張は全件ライブ整合。回帰なし。
+- 撤回 (CONCEDE): 本ラウンド新規撤回なし(累積5件を維持)。
+- 是正要求 (✗): 0件。
+- 新規指摘 (actionable): 1件 — #80 pt_br 冠詞 `uma` の役割を G→I に retag。
+
+**ファイル状態: OPEN**
+残作業: #80 pt_br の不定冠詞 `G:「uma」` を `I:「uma」` に retag(surface 不変、他13変種と同じく冠詞=I に統一。同一セルの G-G 同役割重複を解消)。
+
+## 開発チーム回答 — round 11 (作業者)
+
+round 10 でレビュアーが提起した唯一の新規 actionable(#80 pt_br 不定冠詞 `uma` の役割)を `.wf_langmap_query.mjs` でライブ照合した。
+
+### #80 pt_br 不定冠詞 uma の役割 G→I — APPLIED(本ラウンド orchestrator 適用)
+ライブ現行値:
+`[pt_br] … D:「é」 G:「uma」 C:「experiência」 G:「valiosa」`
+他5変種は冠詞を I に付与済み(pt_eu/lad `I:「uma/una」`、gl `I:「unha」`、ht `I:「yon」`、pap `I:「un」`)、参照 en も `I:「a」 G:「valuable」 C:「experience」`。pt_br のみ冠詞 `uma` が `G` に付与され、同一セル内で `G:「uma」`(冠詞)と `G:「valiosa」`(形容詞)が C を挟んで同役割 G として二重に立っている。役割整合(同一 role-letter=同一統語役割)違反であり stylistic preference ではない。dev 自身が round 9 で他5変種を I に揃えた以上、fix-all-variants 方針からも是正必須。surface 不変・retag のみ:`G:「uma」` → `I:「uma」`。これで全14変種が冠詞=I・形容詞=G で統一、非隣接 G-G 二重も解消。
+
+### 撤回事項・KEEP 類型の維持
+round 2 CONCEDE 5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80 `ki gen valè`)はすべて維持。蒸し返さない。
+
+### まとめ
+round 10 の唯一の actionable(#80 pt_br 冠詞 retag)を適用。これで本ファイルの全 actionable が解決。残る点はすべて双方合意済みの CONCEDE/KEEP。
+
+**ファイル状態: CLOSE 可能(全 actionable 解決済み)**
+
+## レビュアー再評価 — round 12 (Dr. Salomão Pereira-Cohen)
+
+開発チーム round 11 回答(唯一の主張: #80 pt_br 不定冠詞 `uma` の役割 G→I retag)を `.wf_langmap_query.mjs` でライブ照合し、主要既受理項目の回帰チェックも実施した。
+
+### 唯一の残課題の検証 (✓)
+
+- **#80 pt_br 不定冠詞 `uma` の役割 G→I** ✓ **解決確認。** ライブ現行値:
+  `[pt_br] A:「Eu」 E:「acredito」 H:「que」 B:「estudar」 F:「no exterior」 D:「é」 I:「uma」 C:「experiência」 G:「valiosa」`
+  round 10 で問題視した `G:「uma」`(冠詞が形容詞役割 G に誤付与され、同一セル内で C を挟み `G:「uma」`/`G:「valiosa」` の非隣接 G-G 二重)が解消され、冠詞は `I:「uma」` に retag された。同群6言語すべてで **冠詞=I・形容詞=G** が統一されていることをライブで確認:
+  pt_br `I:「uma」 … G:「valiosa」` / pt_eu `I:「uma」 … G:「preciosa」` / gl `I:「unha」 … G:「valiosa」` / lad `I:「una」 … G:「valyoza」` / ht `I:「yon」 … G:「ki gen valè」` / pap `I:「un」 … G:「balioso」`。参照 en `I:「a」 G:「valuable」 C:「experience」` とも役割整合。surface 不変・retag のみで、G-G 二重も解消。fix-all-variants 方針に合致。
+
+### 回帰チェック(主要既受理項目)
+
+ライブ抜き取り照合、いずれも維持・回帰なし:
+- **#5 pap** ✓ `A:「E」 B:「kòfi」 A:「aki」 D:「ta」 C:「masha」 D:「dushi」`(round 3 で解決した D-C-D 非隣接構造を保持、隣接 D-D の再発なし)。
+- **#7 pap** ✓ `D:「solo」`(solmentu 誤訳是正を保持)。
+- **#92 ht** ✓ `B:「dumpling」 D:「pandan Nouvèl Ane Chinwa」`(語彙・正書法とも維持)。
+- **#49 与格 me** ✓ pt_br `B:「me」 D:「diga」` / pt_eu `D:「diga」 B:「-me」` / gl `D:「díga」 B:「me」` / lad `D:「di」 B:「me」`(round 6 の分離を保持)。
+- **#13 与格 me** ✓ 全6言語で `D(動詞) B(me)` 分離を保持。#49 と完全に同一方針で整合。
+- 新たな隣接同役割重複の発生は #80 含め一切なし。
+
+### 撤回事項・KEEP 類型の維持
+
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80 `ki gen valè`)はすべて妥当。維持し蒸し返さない。
+
+### スコアカード(round 12・累積)
+
+- 受理 (✓): round 1–3 の語彙・正書法修正15件 + round 4–5 の SPLIT 全件(A-1〜A-10, B-3, #80 lad/pap)+ round 6 の #49 与格 me 分離 + round 9–10 包括スイープ SPLIT/KEEP + round 11 の #80 pt_br 冠詞 retag。
+- 撤回 (CONCEDE): 累積5件(項目 8,13,17,18,19)。本ラウンド新規撤回なし。
+- 是正要求 (✗): 0件。
+- 新規指摘 (actionable): 0件。
+- 回帰: 0件。
+
+全6言語・全指摘項目について、明確な誤りはすべてライブデータで修正・検証済み。round 10 の唯一の残 actionable(#80 pt_br 冠詞 retag)も round 11 で適用・本ラウンドで検証済み。残る点はいずれも双方合意済みの CONCEDE/KEEP のみであり、actionable な残課題はない。
+
+**ファイル状態: CLOSED — 残課題なし**
+
+## 兄弟整合性監査 — 群08 (作業者 round 12)
+
+### FIX
+- **#28 [ht] 「Èske」 A → G**: ht は「Èske」(疑問標識) と「ka」(モーダル can) の両方を A にしており A が重複。兄弟 pt_br/pt_eu/gl/lad はモーダル「Poderia/Podería/Podria」を単一 A とし、pap も「Bo por」を A とする。ht の「ka」(=can/could) がモーダル本体で A 相当。一方「Èske」は文頭疑問標識であり、参照 ja は疑問助詞「か」を G に割当てている (G は本文の segments に定義済み)。よって「Èske」を G に retag し、疑問標識を ja 参照に整合させつつ A 重複を解消。「ka」は A のまま維持。
+
+### KEEP
+- **#42 [lad] E 重複 (un … vestido)**: 「un」(冠詞)=E と「vestido」(名詞)=E が後置形容詞「kolorado」(=D, red) を挟む E…D…E 構造。これは参照 en 自身が `E:a D:red E:dress` と全く同じ E…D…E 分割をしており、冠詞+名詞=E・後置形容詞=D という限定詞複合の分割として正当。retag 不要。
+- **#11 [pap] D 重複 (un … nobo)**: 「un」(冠詞)=D と「nobo」(形容詞 new)=D が名詞「buki」(=E) を挟む D…E…D 構造。兄弟 gl/lad/ht は冠詞+形容詞をまとめて D (un novo / un muevo / yon nouvo)、名詞を E とする。pap は冠詞が前置・形容詞が後置のため D が名詞を挟んで二分されるだけで、両 D とも兄弟が D とする要素(冠詞・形容詞)であり役割は一致。限定詞複合の分割として正当、KEEP。
+- **#74 [gl] C 重複 (levo … agardando)**: 「levo」(助動詞的、持続 have-been) と「agardando」(動名詞 waiting) が B(30 minutos) を挟む分裂述語。参照 en は「been waiting」を単一 C、兄弟 pt_br/pt_eu/lad/ht/pap も待機述語を単一 C とする。本文の定義文字は A,B,C のみで、述語を担う他の文字が存在しない。両片とも「待っている」述語の構成要素であり C が正当に2回現れる。KEEP。
+
+## レビュアー再評価 — round 13 (Dr. Salomão Pereira-Cohen)
+
+開発チーム round 12 の「兄弟整合性監査」(FIX 1件 #28 ht / KEEP 3件 #42 lad・#11 pap・#74 gl)を `.wf_langmap_query.mjs` でライブ全件照合した。主要既受理項目の回帰チェックも併せて実施。
+
+### FIX の検証 (✓)
+
+- **#28 ht「Èske」A → G** ✓ **適用確認・妥当。** ライブ現行値:
+  `[ht] G:「Èske」 B:「ou」 A:「ka」 C:「rekòmande」 D:「yon」 F:「bon」 E:「restoran」`
+  retag は実データに反映済み。修正前は疑問標識「Èske」とモーダル「ka」(=can/could)がともに A に付与され **A-A 役割重複**だった(同一 role-letter が異なる統語役割を担う不整合)。dev の処置でモーダル本体「ka」を A(=兄弟 pt_br/pt_eu/gl/lad の「Poderia/Podería/Podria」、pap「Bo por」、en「Could」と同役割)に保ち、文頭疑問標識「Èske」を G に移したのは正しい。G が疑問助詞の役割であることは #28 の他言語で確認:ja `G:「か」`、zh `G:「吗」`、yue `G:「嗎」`、vi `G:「không」`、ko_yb `G:「요」` 等、G は一貫して文末/文頭の疑問標識に割り当てられている。よって「Èske」=G は cross-linguistic な役割整合に合致し、A-A 重複も解消。隣接同役なし(G…A は非隣接かつ別役割)。受理。
+
+### KEEP の検証(いずれも妥当 — 分割選好下でも SPLIT 不可)
+
+- **#42 lad `E:un D:kolorado E:vestido`** ✓ KEEP 妥当。ライブ確認:lad `E:「un」 D:「kolorado」 E:「vestido」`、参照 en `E:「a」 D:「red」 E:「dress」`。**参照 en 自身が冠詞・名詞をともに E、後置形容詞を D とする E…D…E 構造**を採っており、lad はそれに完全準拠。分割選好ポリシー下でも「un(冠詞)を E と別の役割に切る」ことは参照の役割割当から逸脱するため不可。en が article と noun を同一 role(E)としている以上、両者を異 role に分けるのは誤り。非隣接 E…E は参照準拠の正当な限定詞複合分割。受理。
+- **#11 pap `D:un E:buki D:nobo`** ✓ KEEP 妥当。ライブ確認:pap `D:「un」 E:「buki」 D:「nobo」`、参照 en `D:「a new」 E:「book」`。**en は冠詞+形容詞「a new」を一括 D、名詞「book」を E** とする。pap は冠詞前置・形容詞後置の語順ゆえ D が名詞 E を挟んで二分されるが、両 D 片(un=冠詞、nobo=new)はいずれも en が D とする限定詞複合の要素であり役割一致。異 role への分割は en の役割割当に反するため不可。非隣接 D…D は語順起因の正当な分割。受理(なお pt_br/pt_eu は `E:um livro D:novo` と冠詞を名詞側 E に寄せる別配分だが、これは既存の兄弟内バリエーションで本ラウンドの対象外、actionable でない)。
+- **#74 gl `C:levo B:30 minutos C:agardando`** ✓ KEEP 妥当。これは round 2 で当方が既に CONCEDE した項目18(分裂述語の非隣接 C…C)であり、ライブで保持を確認(`A:「Eu」 C:「levo」 B:「30 minutos」 C:「agardando」`)。levo…agardando は語順上 B を挟む正しいガリシア語継続構文で、述語を担う他の role-letter が定義に存在しないため C が2回現れるのは正当。蒸し返さない。受理。
+
+### 回帰チェック(主要既受理項目)
+
+ライブ抜き取り照合、いずれも維持・回帰なし:
+- **#5 pap** ✓ `A:「E」 B:「kòfi」 A:「aki」 D:「ta」 C:「masha」 D:「dushi」`(D-C-D 非隣接保持)。
+- **#7 pap** ✓ `D:「solo」`(solmentu 誤訳是正を保持)。
+- **#80 pt_br** ✓ `… D:「é」 I:「uma」 C:「experiência」 G:「valiosa」`(round 11 の冠詞 G→I retag を保持、G-G 二重の再発なし)。
+- **#49 与格 me** ✓ pt_br `B:「me」 D:「diga」` / gl `D:「díga」 B:「me」` / lad `D:「di」 B:「me」`(分離保持)。
+- 新たな隣接同役割重複の発生は #28 含め一切なし。
+
+### 撤回事項・KEEP 類型の維持
+
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80 `ki gen valè`)はすべて妥当。維持し蒸し返さない。
+
+### スコアカード(round 13)
+
+- 受理 (✓): round 12 監査の FIX 1件(#28 ht Èske→G)+ KEEP 3件(#42 lad / #11 pap / #74 gl)を全件ライブ整合確認。
+- 撤回 (CONCEDE): 本ラウンド新規撤回なし(累積5件を維持)。
+- 是正要求 (✗): 0件。
+- 新規指摘 (actionable): 0件。
+- 回帰: 0件。
+
+round 12 の兄弟整合性監査は FIX・KEEP ともライブデータと完全一致し、#28 の A-A 役割重複という実在の誤りが正しく是正された。3件の KEEP はいずれも参照 en の役割割当に準拠した正当な限定詞複合分割、ないし既 CONCEDE 項目であり、分割選好ポリシー下でも異 role への分割は参照から逸脱するため SPLIT 不可。全6言語・全指摘項目について明確な誤りはすべて修正・検証済みで、残る点は双方合意済みの CONCEDE/KEEP のみ。actionable な残課題はない。
+
+**ファイル状態: CLOSED — 残課題なし**

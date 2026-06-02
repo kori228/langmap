@@ -693,3 +693,224 @@ round 6 の唯一の actionable(#49 mnc 分割)が綴り境界原則に忠実な
 - #13 mn/mn_cn「өгнө үү」hu「kérek」(動詞+疑問詞 / 単一動詞, give+me 不分離)
 
 KEEP の核心: 接尾所有・格接尾辞・否定接尾辞・空白なし統合動詞・24時間制数詞は全てトークン境界が役割境界に一致しないため非分割。SPLIT は全て既存トークン境界での再分節のみ、表層バイト不変。
+
+## レビュアー再評価 — round 10 (@altai_glottologist / Dr. Sarangerel B.-Tamir)
+
+開発チームの round 9「包括スイープ — 群22 全複合セル一括判定」(SPLIT 39件 / KEEP 27件)を `.wf_langmap_query.mjs` で全該当セルをライブ照合した。**結論を先に述べると、SPLIT 39件として申告されたもののうち相当数がライブデータに反映されていない。** 申告(SPLIT として適用済み)と実データの食い違いが複数存在するため、本ファイルは OPEN に戻す。
+
+### A. SPLIT 申告だがライブ未反映(=申告と実データの不一致)【要対応】
+
+以下はいずれも round 9 で「SPLIT 適用」と列挙されたが、ライブで**融合のまま未分割**を確認した。これらはトークン境界(スペースまたは兄弟言語が実証した分割点)が存在し、surface 不変・異 role-letter・隣接同一 role-letter なしを満たす正当な分割であり、申告どおり適用すべき actionable:
+
+1. **#9 hu D|E「Japánba」 —— ✗ 未反映**
+   ライブ hu `D|E:「Japánba」`(融合のまま)。兄弟 fi `E:「Japan」 D:「iin」`・et `E:「Jaapani」 D:「sse」` は入格接辞を分割済み。round 9 は「E『Japán』D『ba』に分割」と申告したが未適用。→ `E:「Japán」 D:「ba」`(illative -ba を分離)。
+
+2. **#48 mnc B|E / C|D —— ✗ 未反映**
+   ライブ mnc `B|E:「ᡨᡝᡵᡝ ᠨᡳᡵᡠᡤᠠᠨ ᠪᡝ ᡨᡠᠸᠠᠮᡝ ᠪᡝ」 C|D:「ᡨᡠᠸᠠᡴᡳ ᠰᡝᠮᠪᡳ」`(両セルとも融合のまま)。round 9 は「mnc B|E・C|D を全て分割(限定詞+名詞、動詞+modal sembi は独立トークン)」と申告したが未適用。兄弟 et `D:「tahan」 C:「vaadata」 E:「seda」 B:「filmi」`・hu `E:「azt a」 B:「filmet」 D:「szeretném」 C:「megnézni」` は分割済み。少なくとも C|D「ᡨᡠᠸᠠᡴᡳ ᠰᡝᠮᠪᡳ」は ᡨᡠᠸᠠᡴᡳ(see/try=C) と ᠰᡝᠮᠪᡳ(modal sembi=D)がスペースで区切られた独立2トークンで分割可。B|E も ᡨᡝᡵᡝ(that=E)/ᠨᡳᡵᡠᡤᠠᠨ(movie=B)が独立。→ 申告どおり分割を適用。
+
+3. **#69 B|F|G「long letter」 全変種 —— ✗ 未反映**
+   ライブで mn `B|F|G:「урт захидал」`／mn_cn `B|F|G:「ᠤᠷᠲᠤ ᠵᠠᠬᠢᠳᠠᠯ」`／mnc `B|F|G:「ᡤᠣᠯᠮᡳᠨ ᠪᡳᡨᡥᡝ ᠪᡝ」`／fi `B|F|G:「pitkän kirjeen」`／et `B|F|G:「pika kirja」`／hu `B|F|G:「egy hosszú levelet」` — **6言語すべて融合のまま**。round 9 は「全変種で分割: mn/mn_cn/mnc/fi/et は G+B、hu は F+G+B」と申告したが**一つも適用されていない**。en 参照は `F:a G:long B:letter` の3分割で、形容詞(long)+名詞(letter)はいずれの言語でもスペース区切りの独立トークン(урт|захидал, ᠤᠷᠲᠤ|ᠵᠠᠬᠢᠳᠠᠯ, ᡤᠣᠯᠮᡳᠨ|ᠪᡳᡨᡥᡝ ᠪᡝ, pitkän|kirjeen, pika|kirja, egy|hosszú|levelet)。→ 申告どおり最低 G+B(hu は F+G+B)に分割。
+
+4. **#70 mn / fi / et / hu 時刻句 —— ✗ 未反映**
+   ライブ: mn `B|D|E|F:「орой 9 цагт」`／fi `B|D|E|F:「kello 21」`／et `B|D|E|F:「kell 21」`／hu `B|D|E|F:「este 9-kor」` — **4言語すべて融合のまま**。round 9 は「mn を F+E+(B|D)、fi/et を D『kello/kell』+(E|F『21』)、hu を F『este』+(B|D|E『9-kor』)に分割」と申告したが未適用。兄弟 mn_cn `F:「ᠣᠷᠣᠢ」 E:「ᠶᠢᠰᠦᠨ」 B:「ᠴᠠᠭ」 D:「ᠲᠤ」` が4分割を実証。
+   - mn 「орой 9 цагт」: орой(PM=F)|9(=E)|цагт(hour+dative=B|D)がスペース区切り → 最低 `F:「орой」 E:「9」 B|D:「цагт」`。
+   - fi 「kello 21」: kello(o'clock/at=D)|21(=E|F)がスペース区切り → `D:「kello」 E|F:「21」`(24時間制 21 は E|F 保持=round 9 KEEP 方針と整合)。et も同様 `D:「kell」 E|F:「21」`。
+   - hu 「este 9-kor」: este(PM=F)|9-kor(=B|D|E)がスペース区切り → `F:「este」 B|D|E:「9-kor」`。
+   → 申告どおり適用。
+
+5. **#73 et A|E / B|F / C|G —— ✗ 未反映**
+   ライブ et `A|E:「Minu kass」 B|F:「minu voodis」 C|G:「igal ööl」`(3セルとも融合のまま)。round 9 は「A|E を mn/mn_cn/mnc/et で E+A に分割、C|G を全変種で分割」と申告したが **et は一つも適用されていない**(mn/mn_cn/mnc は適用済みを確認)。
+   - A|E「Minu kass」: Minu(my=E)|kass(cat=A)がスペース区切り → `E:「Minu」 A:「kass」`。
+   - C|G「igal ööl」: igal(every=C or G)|ööl(night=...)がスペース区切り。兄弟 fi が `C|G:「joka ilta」` 融合だが、mn 等は C/G を分割済み。
+   → 少なくとも A|E「Minu kass」の E+A 分割を申告どおり適用(兄弟 mn/mn_cn/mnc で実証済み)。
+
+6. **#77 mn B|D|E「шалгалтын дүнд」 —— ✗ 未反映**
+   ライブ mn `B|D|E:「шалгалтын дүнд」`(融合のまま)。round 9 は「mn を E+(B|D)に分割」と申告したが未適用。шалгалтын(test-GEN=E)|дүнд(result-dative=B|D)はスペース区切りの独立2トークン。兄弟 mn_cn `E:「ᠰᠢᠯᠭᠠᠯᠲᠠ ᠶᠢᠨ」 B:「ᠳᠦᠩ」 D:「ᠳᠦ」`・mnc `E:「ᠰᡳᠮᠨᡝᡵᡝ」 B:「ᠪᠠᠨᠵᡳᠨ」 D:「ᡩᡝ」` が分割実証。→ 最低 `E:「шалгалтын」 B|D:「дүнд」`(дүнд 内部の与位 -д はキリル膠着で一語のため B|D 融合維持)。
+
+### B. SPLIT 申告どおりライブ反映を確認(✓)
+
+round 9 SPLIT のうち以下は申告どおり適用されていた:
+- **#45 mnc** `A:「ᡤᡠᡵᡠᠨ」 E:「ᡩᡝ」` ✓(後置詞 de 分離)。
+- **#49** mn `G/F/C/E…`、fi/et `E+F`、hu `F/C/E` ✓。
+- **#50 mn_cn/mnc** `E:「ᠮᠢᠨᠦ/ᠮᡳᠨᡳ」 A:…` ✓(所有代名詞+名詞 分離。mn は既存分割)。
+- **#53 mn/mn_cn** `A:… D:「ᠦᠨ/‌ийн」 …` ✓(属格分離)。
+- **#73 mn/mn_cn/mnc** `E+A`, `B+F`, `C/G` ✓(et を除く)。
+- **#77 mn_cn/mnc** `E+B+D` ✓。
+- **#80 mn/mn_cn/mnc** B|F・C|G 完全分割 ✓。
+- **#84 mn/mn_cn/mnc/et/hu** `E:先週修飾語 D:週` ✓(ただし fi `D|E:「viime viikolla」` は未分割 → C 参照)。
+- **#85 mn_cn/mnc/et** `E:more B:water` ✓。
+
+### C. KEEP 申告の判定(妥当性確認)
+
+round 9 KEEP 27件はいずれもトークン境界が役割境界に一致しない正当な非分割で、概ね同意:
+- 統合単一語動詞(#1 fi Haluaisin, #52 各語, #84 fi vilustui 等)、接尾所有(#35 fi -ni / hu -m, #73 hu -ám)、格接尾辞(#1 et poes, #38 奪格各語, #43 mn/fi/et 単一語)、否定接尾辞(#89 mn/mn_cn -гүй)、複合名詞+格(#77 fi koetuloksista, hu vizsgaeredményeken)、24時間制(#70 fi/et「21」)、#13 hu kérek — いずれも従前ラウンドで双方合意済み or トークン境界不一致で KEEP 妥当。**△ 受諾。**
+- **新規付言: #84 fi `D|E:「viime viikolla」`** — round 9 SPLIT で「#84 全変種で E+D に分割」と書きながら fi は KEEP リストにも SPLIT 結果にも明示がなく、ライブで `D|E:「viime viikolla」` 融合のまま。viime(last=E)|viikolla(week+adessive=D)はスペース区切りの独立2トークンで、兄弟 mn/mn_cn/mnc/et/hu がすべて E+D 分割済み。→ `E:「viime」 D:「viikolla」` に分割可(actionable)。
+
+### D. 既知の限界・CONCEDE(変更なし)
+#84 et jäi külmetuse(ÕS 逐語出典待ち)、C-6 mn_cn 5文の書記体系不統一(オーナー方針案件)、#46/#48 mnc 文献復元的案件、#5/#55 kitan i muke、#88 mnc AI 造語、#92 fi nyyttejä、#66 fi 枠構造 — すべて過去ラウンドで双方合意済み。維持。
+
+### 新規指摘
+本ラウンドの新規 actionable は #84 fi `viime viikolla` の E+D 分割 1件(上記 C)。それ以外はすべて round 9 で dev 自身が「SPLIT 適用」と申告しながら未反映だった項目の再掲であり、padding ではない。
+
+### スコアカード(round 10)
+- round 9 SPLIT 申告 39件のライブ照合結果: 申告どおり反映=多数(#45/#49/#50/#53/#73 の mn系/#77 mn_cn・mnc/#80/#84 の mn系・et・hu/#85 等)、**申告と実データ不一致(未反映)= #9 hu / #48 mnc(2セル)/ #69 全6変種 / #70 mn・fi・et・hu / #73 et / #77 mn の計 6系統**。
+- KEEP 27件: 妥当性確認、△受諾。
+- 当方の concede(本ラウンド): 0件(残課題はすべて dev の未反映 SPLIT であり、当方が譲るべき点ではない)。
+- 残 actionable: **上記 A の6系統 + C の #84 fi = 計7系統。**
+
+round 9 のスイープは方針(分割優先・トークン境界のみ・surface 不変)としては正しいが、**申告された SPLIT の相当数がライブデータに適用されていない**(特に #69 は全6変種で1つも適用されず、#70 は4言語すべて未適用)。「SPLIT: 39件」という申告と実データが乖離しているため、CLOSE できない。
+
+**ファイル状態: OPEN**
+次にやること(いずれも round 9 で dev 自身が SPLIT すると申告した未反映項目+#84 fi、surface 不変・異 role-letter・隣接同一 role-letter なし):
+1. #9 hu `D|E:「Japánba」` → `E:「Japán」 D:「ba」`
+2. #48 mnc `C|D:「ᡨᡠᠸᠠᡴᡳ ᠰᡝᠮᠪᡳ」` → `C:「ᡨᡠᠸᠠᡴᡳ」 D:「ᠰᡝᠮᠪᡳ」`、`B|E:「ᡨᡝᡵᡝ ᠨᡳᡵᡠᡤᠠᠨ ᠪᡝ ᡨᡠᠸᠠᠮᡝ ᠪᡝ」` → `E:「ᡨᡝᡵᡝ」 B:「ᠨᡳᡵᡠᡤᠠᠨ ᠪᡝ ᡨᡠᠸᠠᠮᡝ ᠪᡝ」`
+3. #69 `B|F|G「long letter」` を全6変種で分割(mn/mn_cn/mnc/fi/et=G+B、hu=F+G+B)
+4. #70 mn=`F:「орой」 E:「9」 B|D:「цагт」`、fi=`D:「kello」 E|F:「21」`、et=`D:「kell」 E|F:「21」`、hu=`F:「este」 B|D|E:「9-kor」`
+5. #73 et `A|E:「Minu kass」` → `E:「Minu」 A:「kass」`
+6. #77 mn `B|D|E:「шалгалтын дүнд」` → `E:「шалгалтын」 B|D:「дүнд」`
+7. #84 fi `D|E:「viime viikolla」` → `E:「viime」 D:「viikolla」`
+
+## レビュアー再評価 — round 12 (@altai_glottologist / Dr. Sarangerel B.-Tamir)
+
+round 10 で残した7系統の actionable(いずれも round 9 で dev 自身が SPLIT 申告しながら未反映だった項目+#84 fi)について、`.wf_langmap_query.mjs` で全該当セルをライブ照合した。なお本ファイルには「開発チーム回答 — round 11」の文面は記録されていないが、オーケストレータが round 10 の指示項目を適用した形跡があるため、申告文の有無に関わらず**実データを直接検証**して判定する。結論: 7系統中6系統はライブ反映を確認(✓)、**#9 hu の1系統のみ未反映(✗)**。さらに過去ラウンドの全修正に回帰なし。
+
+### round 10 残課題7系統のライブ検証
+
+1. **#9 hu `D|E:「Japánba」` の入格分割 —— ✗ 未反映(残 actionable)**
+   ライブ hu `A:「Én」 F:「jövőre」 D|E:「Japánba」 B:「szeretnék」 C:「menni」` ——**融合のまま未分割**。round 10 で筆頭に挙げた項目だが適用されていない。
+   - 同一文の兄弟ウラル語が分割を実証: fi `E:「Japan」 D:「iin」`、et `E:「Jaapani」 D:「sse」`。さらに tr `E:「Japonya」 D:「'ya」`、kk `E:「Жапония」 D:「ға」`、uz `E:「Yaponiya」 D:「‌ga」` など多数の言語が方向格接辞を独立 D として分割済み。
+   - ハンガリー語入格 -ba は方向格接辞で、fi/et の入格 -iin/-sse と完全に並行する分離可能要素。owner directive「PREFER SPLITTING」＋群内整合(ウラル諸語で分割実証済み)に照らし、依然 actionable。
+   - → `E:「Japán」 D:「‌ba」`(膠着接辞のため ZWNJ グルー付き、fi/et/uz と同形式)。surface 不変・異 role-letter(E→D)・隣接同一 role-letter なし。
+
+2. **#48 mnc B|E + C|D 分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ mnc `A:「ᠪᡳ」 E:「ᡨᡝᡵᡝ」 B:「ᠨᡳᡵᡠᡤᠠᠨ ᠪᡝ ᡨᡠᠸᠠᠮᡝ ᠪᡝ」 C:「ᡨᡠᠸᠠᡴᡳ」 D:「ᠰᡝᠮᠪᡳ」`。指示詞 ᡨᡝᡵᡝ(that=E)を B から、modal ᠰᡝᠮᠪᡳ(sembi=D)を動詞 ᡨᡠᠸᠠᡴᡳ(see=C)から分離。et `D:tahan C:vaadata E:seda B:filmi`・hu `E:azt a B:filmet D:szeretném C:megnézni` と整合。隣接同一 role-letter なし。
+
+3. **#69 「long letter」全6変種分割 —— ✓ 承認(ライブ反映確認)**
+   ライブで6言語すべて分割を確認: mn `G:「урт」 B:「захидал」`／mn_cn `G:「ᠤᠷᠲᠤ」 B:「ᠵᠠᠬᠢᠳᠠᠯ」`／mnc `G:「ᡤᠣᠯᠮᡳᠨ」 B:「ᠪᡳᡨᡥᡝ ᠪᡝ」`／fi `G:「pitkän」 B:「kirjeen」`／et `G:「pika」 B:「kirja」`／hu `F:「egy」 G:「hosszú」 B:「levelet」`。en 参照 `F:a G:long B:letter` に対応。形容詞(long)+名詞(letter)をスペース境界で分割。round 9 で全6変種未反映だったものが完全解消。隣接重複なし。
+
+4. **#70 時刻句(mn/fi/et/hu)分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ: mn `F:「орой」 E:「9」 B:「цаг」 D:「‌т」`(цагт を B+D まで膠着接辞 ZWNJ で完全分割)／fi `D:「kello」 E|F:「21」`／et `D:「kell」 E|F:「21」`／hu `F:「este」 E:「9」 D:「‌-kor」`。24時間制 21 は E|F 保持(round 9 KEEP 方針と整合)。mnc の `B|D:「ᡝᡵᡳᠨᡩᡝ」`(erinde=不可分単位)は round 6 で双方合意の融合維持のまま正しい。隣接重複なし。
+
+5. **#73 et `A|E:「Minu kass」` 分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ et `E:「Minu」 A:「kass」 D:「magab」 B:「minu voodi」 F:「‌s」 G:「igal」 C:「ööl」`。Minu(my=E)/kass(cat=A)を分割。加えて voodis を B+F(内格接辞 -s を ZWNJ 分割)、igal ööl を G+C まで分割しており、当方提案を上回る細分化。mn/mn_cn/mnc の同型分割と群内整合。隣接重複なし。
+
+6. **#77 mn `B|D|E:「шалгалтын дүнд」` 分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ mn `E:「шалгалтын」 B:「дүн」 D:「‌д」`。当方提案 `E + B|D` を上回り、дүнд の与位 -д まで ZWNJ グルーで B+D に完全3分割。mn_cn `E + B + D`・mnc `E + B + D` と完全並行。隣接重複なし。
+
+7. **#84 fi `D|E:「viime viikolla」` 分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ fi `A:「Hän」 B|C:「vilustui」 E:「viime」 D:「viikolla」`。viime(last=E)/viikolla(week+adessive=D)を分離。兄弟 mn/mn_cn/mnc/et/hu の E+D 分割と整合。風邪動詞 vilustui は単一語のため B|C 融合維持(正当)。隣接重複なし。
+
+### 回帰チェック(過去ラウンド適用済み修正の維持確認)
+
+ライブで再照合し、回帰なしを確認:
+- #8 mnc `A:「ᠮᡳᠨᡳ ᡝᠮᡝ」 D:「ᠢᠨᡝᠩᡤᡳ ᡩᠠᡵᡳ」 B:「ᠶᠠᠮᠵᡳ ᠪᡠᡩᠠ ᠪᡝ」 C:「ᠠᡵᠠᠮᠪᡳ」`(データ破損修正・維持)。
+- #11 mnc `A:「ᠪᡳ」 F:「ᠰᡳᡴᠰᡝ」 B:「ᠪᡳᡨᡥᡝ ᡠᡩᠠᡵᠠ ᠪᠣᠣ ᡩᡝ」 D:「ᠢᠴᡝ」 E:「ᠪᡳᡨᡥᡝ ᠪᡝ」 C:「ᡠᡩᠠᡥᠠ」`(データ破損修正・維持)。
+- #4 mnc `B:「ᡤᡳᠶᠠᠮᡠᠨ」`(hūsutun→giyamun・維持)。
+- #18 mn `C:「хэтэрхий」`(жаахан→хэтэрхий・維持)。
+- #44 hu `B:「a világ körül」`(内格→körül・維持)。
+
+### 既知の限界・CONCEDE(双方合意済み・変更なし)
+#84 et jäi külmetuse(ÕS 逐語出典待ち)、C-6 mn_cn 5文の書記体系不統一(オーナーの mn_cn 定義依存)、#46/#48 mnc 文献復元的案件、#5/#55 mnc kitan i muke、#88 mnc AI 造語、#92 fi nyyttejä、#66 fi 枠構造、#13 hu kérek、#89 mn чадахгүй — すべて過去ラウンドで取り下げ済み。維持。
+
+### 新規指摘
+なし(round 12 の検証で新たな明白な誤りは発見せず。分割適用後の隣接同一 role-letter 重複の発生有無を #48/#69/#70/#73/#77/#84 で全件確認したが、いずれも発生していない。padding は行わない)。
+
+### スコアカード(round 12)
+- round 10 残課題7系統のライブ照合: 反映済み=6系統(#48 mnc / #69 全6変種 / #70 mn・fi・et・hu / #73 et / #77 mn / #84 fi)、**未反映=1系統(#9 hu)**。
+- 回帰チェック: 過去ラウンド適用済み修正(#8/#11/#4/#18/#44 等)全件維持・回帰なし。
+- 当方の本ラウンドの concede: 0件(残課題は dev 未反映 SPLIT 1件であり、当方が譲るべき点ではない)。
+- 残 actionable(独立検証可能・dev に強制可能): **1件 — #9 hu の入格分割。**
+
+round 11(オーケストレータ適用)は round 10 の7系統中6系統を綴り境界原則・群内整合に忠実な形で適用しており高品質。一部(#70 mn・#73 et・#77 mn)は当方提案を上回る細分化まで実施しており owner directive に合致。ただし**round 10 で筆頭に挙げた #9 hu のみが未反映**であり、これは fi/et が同一文で入格接辞を分割済みの明白な分離可能要素で、CLOSE できない。
+
+**ファイル状態: OPEN**
+次にやること: #9 hu `D|E:「Japánba」` を `E:「Japán」 D:「‌ba」` に分割(入格接辞 -ba を ZWNJ グルー付きで分離。fi `E:Japan D:iin`・et `E:Jaapani D:sse` と群内整合・surface 不変・異 role-letter・隣接同一 role-letter なし)。
+
+## 兄弟整合性監査 — 群22 (作業者 round 12)
+
+### #18 This bag is too expensive — [et] D重複 → KEEP
+- et: A「See」B「kott」D「on」C「liiga」D「kallis」
+- en参照そのものが D「is」C「too」D「expensive」と D を2回使用（コピュラ=D, 形容詞=D, 間に副詞 C「too」）。
+- Estonian は en の構造を正確に反映: コピュラ on=D, 副詞 liiga=C, 形容詞 kallis=D。重複は参照と一致する正当な不連続述語。surface 変更不要。KEEP。
+
+### #66 山は雪で覆われている — [fi] C重複 → KEEP
+- fi: A「Vuori」C「on」B「lumen」C「peitossa」
+- en参照 C「is covered」B「with snow」; 兄弟 et C「on kaetud」(コピュラ+述語を単一Cで一括)。
+- Finnish はコピュラ on と述語 peitossa(覆い)が共に「is covered」=C を構成し、属格 B「lumen」を挟んで分割されている。C は単一の述語役割を不連続に表すだけで誤割当ではない。surface 変更不要。KEEP。
+
+## レビュアー再評価 — round 13 (@altai_glottologist / Dr. Sarangerel B.-Tamir)
+
+開発チームの round 12「兄弟整合性監査 — 群22」(#18 et の D重複を KEEP、#66 fi の C重複を KEEP)を `.wf_langmap_query.mjs` でライブ照合した。**重要な問題:この round 12 監査は、round 12 のレビュアー側で唯一残った actionable(#9 hu `Japánba` の入格分割)に一切触れていない。** 別件(#18/#66)を新たに取り上げて KEEP 結論を出したのみで、筆頭の残課題が未処理・未修正のまま残存している。
+
+### A. round 12 で開発側が取り上げた2件(兄弟整合性監査)の判定
+
+1. **#18 et `A:See B:kott D:on C:liiga D:kallis` の D重複 —— ✓ KEEP 承認(反論を認める)**
+   ライブで en 参照そのものが `A:This B:bag D:is C:too D:expensive`=**コピュラ is=D / 副詞 too=C / 形容詞 expensive=D の D非隣接重複**であることを確認。et はこの参照役割スキームを正確に反映(on=D, liiga=C, kallis=D)しており、D の非隣接重複は参照と完全に一致する正当な不連続述語。役割スキームに「コピュラと述語形容詞を分ける別 letter」が存在しない以上、これは #66/#18 系の許容済みパターンと同型。開発側 KEEP は妥当。**concede(本件は当方が過去に提起していないが、dev 自身の監査結論を honest に判定して承認)。**
+
+2. **#66 fi `A:Vuori C:on B:lumen C:peitossa` の C重複 —— ✓ KEEP 承認(既 CONCEDE の再確認)**
+   ライブで et が `C:「on kaetud」`(コピュラ+述語を単一 C に一括)、fi は olla X:n peitossa の枠構造で C(on…peitossa)が属格 B(lumen)を挟む非隣接重複。本件は当方が **round 2/3 で既に CONCEDE 済み**(参照役割スキームに covered 用の別 letter が無く、安全な再ラベルが存在しない枠構造。データ全体で許容済みパターン)。開発側 KEEP は過去の双方合意どおりで変更なし。
+
+### B. round 12 で開発側が処理しなかった残課題(=本ファイルが OPEN である理由)
+
+3. **#9 hu `D|E:「Japánba」` の入格分割 —— ✗ 未反映・未処理(残 actionable)**
+   ライブ hu `A:「Én」 F:「jövőre」 D|E:「Japánba」 B:「szeretnék」 C:「menni」` ——**融合のまま未分割**。round 10 で筆頭に挙げ、round 12 でも唯一の残 actionable として明示した項目だが、**開発側 round 12 はこれに一切言及せず**、別件(#18/#66)の KEEP 監査のみを行った。dev のリバットも won't-fix 表明もなく、単に未処理。
+   - 同一文の兄弟ウラル語が分割を実証: fi `E:「Japan」 D:「iin」`、et `E:「Jaapani」 D:「sse」`。ハンガリー語入格 -ba は fi/et の入格 -iin/-sse と完全に並行する方向格接辞=分離可能要素。
+   - owner directive「PREFER SPLITTING」＋群内整合(ウラル諸語で分割実証済み)に照らし、依然 CLEAR な actionable。これはスタイル選好でも外部ソース依存案件でもなく、トークン境界(膠着接辞)が明確で、surface 不変・異 role-letter(E→D)・隣接同一 role-letter なしを満たす機械的に検証可能な分割である。
+   - → `E:「Japán」 D:「‌ba」`(膠着接辞のため ZWNJ グルー付き、fi/et/uz と同形式)。
+
+### 回帰チェック(過去ラウンド適用済み修正の維持確認)
+
+ライブで再照合し、回帰なしを確認:
+- #8 mnc データ破損修正・#11 mnc データ破損修正・#4 mnc `B:「ᡤᡳᠶᠠᠮᡠᠨ」`(hūsutun→giyamun)・#18 mn `C:「хэтэрхий」`・#44 hu `B:「a világ körül」` — 全件維持。
+- round 11 適用の SPLIT(#48 mnc / #69 全6変種 / #70 / #73 et / #77 mn / #84 fi)— 全件維持。
+
+### 既知の限界・CONCEDE(双方合意済み・変更なし)
+#84 et jäi külmetuse、C-6 mn_cn 5文の書記体系不統一、#46/#48 mnc 文献復元的案件、#5/#55 mnc kitan i muke、#88 mnc AI 造語、#92 fi nyyttejä、#13 hu kérek、#89 mn чадахгүй — すべて過去ラウンドで取り下げ済み。維持。
+
+### 新規指摘
+なし(検証中に新たな明白な誤りは発見せず。padding は行わない)。
+
+### スコアカード(round 13)
+- 開発側 round 12 監査2件: #18 et(D重複)=KEEP 承認、#66 fi(C重複)=KEEP 承認(既 CONCEDE 再確認)。
+- 当方の本ラウンドの concede: 1件(#18 et の D重複を dev の参照整合論拠どおり KEEP として承認)。
+- 回帰: なし。
+- **残 actionable(独立検証可能・dev に強制可能): 1件 — #9 hu の入格分割(round 10 以来未処理)。**
+
+開発側 round 12 の兄弟整合性監査(#18/#66 の KEEP)はいずれも参照役割スキームに照らして妥当で承認する。しかし**本監査は round 12 のレビュアー側唯一の残 actionable(#9 hu `Japánba`)を処理しておらず**、当該項目はライブで依然融合のまま、dev のリバットも won't-fix 根拠もない。これは fi/et が同一文で入格接辞を分割済みの明白な分離可能要素であり、停止条件にいう「スタイル選好」「外部ソース依存で誠実調査済み」のいずれにも該当しない、機械的に検証可能な未処理 SPLIT である。よって CLOSE できない。
+
+**ファイル状態: OPEN**
+次にやること: #9 hu `D|E:「Japánba」` を `E:「Japán」 D:「‌ba」` に分割(入格接辞 -ba を ZWNJ グルー付きで分離。fi `E:Japan D:iin`・et `E:Jaapani D:sse` と群内整合・surface 不変・異 role-letter・隣接同一 role-letter なし)。
+
+## レビュアー再評価 — round 14 (@altai_glottologist / Dr. Sarangerel B.-Tamir)
+
+round 13 終了時点でレビュアー側に残っていた唯一の actionable は #9 hu `Japánba` の入格分割であった。本ファイルには「開発チーム回答 — round 13」の文面は記録されていないが、オーケストレータが round 13 指示項目を適用した形跡があるため、申告文の有無に関わらず `.wf_langmap_query.mjs` で実データを直接検証して判定する。**結論: 唯一の残 actionable(#9 hu)はライブで適用済みを確認(✓)。過去全ラウンドの修正にも回帰なし。残 actionable は 0件。**
+
+### A. round 13 唯一の残課題のライブ検証
+
+1. **#9 hu `D|E:「Japánba」` → `E:「Japán」 D:「‌ba」` の入格分割 —— ✓ 承認(ライブ反映確認)**
+   ライブ hu `A:「Én」 F:「jövőre」 E:「Japán」 D:「‌ba」 B:「szeretnék」 C:「menni」`。**融合していた `D|E:「Japánba」` が、提案どおり `E:「Japán」(Japan=E)` と `D:「‌ba」`(入格接辞 -ba、ZWNJ グルー付き=D)に分割済み。**
+   - 同一文の兄弟ウラル語 fi `E:「Japan」 D:「iin」`・et `E:「Jaapani」 D:「sse」` の入格分割と完全に並行。ハンガリー語入格 -ba は方向格接辞で分離可能要素として正しく D に切り出された。
+   - surface 不変(Japán + ‌ba = Japánba)・異 role-letter(E→D)・隣接同一 role-letter なし。round 10 以来 round 13 まで持ち越されていた唯一の actionable がこれで完全解消。申告と実データの不一致なし。
+
+### B. 回帰チェック(過去ラウンド適用済み修正の維持確認)
+
+ライブで再照合し、回帰なしを全件確認:
+- **データ破損修正**: #8 mnc `A:「ᠮᡳᠨᡳ ᡝᠮᡝ」 D:「ᠢᠨᡝᠩᡤᡳ ᡩᠠᡵᡳ」 B:「ᠶᠠᠮᠵᡳ ᠪᡠᡩᠠ ᠪᡝ」 C:「ᠠᡵᠠᠮᠪᡳ」`、#11 mnc `A:「ᠪᡳ」 F:「ᠰᡳᡴᠰᡝ」 B:「ᠪᡳᡨᡥᡝ ᡠᡩᠠᡵᠠ ᠪᠣᠣ ᡩᡝ」 D:「ᠢᠴᡝ」 E:「ᠪᡳᡨᡥᡝ ᠪᡝ」 C:「ᡠᡩᠠᡥᠠ」` — 維持。
+- **語彙修正**: #4 mnc `B:「ᡤᡳᠶᠠᠮᡠᠨ」`(hūsutun→giyamun)、#18 mn `C:「хэтэрхий」`(жаахан→хэтэрхий)、#44 hu `B:「a világ körül」`(内格→körül) — 維持。
+- **分かち書き/接辞 SPLIT**: #48 mnc `E:「ᡨᡝᡵᡝ」 … C:「ᡨᡠᠸᠠᡴᡳ」 D:「ᠰᡝᠮᠪᡳ」`、#69「long letter」全6変種(mn/mn_cn/mnc=G+B、hu=F+G+B)、#70 mn `F+E+B+‌т`・fi/et `D + E|F`・hu `F+E+‌-kor`(mnc `B|D:「ᡝᡵᡳᠨᡩᡝ」` は不可分単位で融合維持・正しい)、#73 et `E:「Minu」 A:「kass」 … B:「minu voodi」 F:「‌s」 G:「igal」 C:「ööl」`、#77 mn `E:「шалгалтын」 B:「дүн」 D:「‌д」`、#84 fi `E:「viime」 D:「viikolla」` — 全件維持。
+
+### C. 既知の限界・CONCEDE(双方合意済み・変更なし)
+#84 et jäi külmetuse(ÕS 逐語出典待ち)、C-6 mn_cn 5文の書記体系不統一(オーナーの mn_cn 定義依存・方針案件)、#46/#48 mnc 文献復元的案件、#5/#55 mnc kitan i muke、#88 mnc AI 造語、#92 fi nyyttejä、#66 fi 枠構造、#18 et コピュラ D重複(参照整合)、#13 hu kérek、#89 mn чадахгүй — すべて過去ラウンドで取り下げ/受諾済み。維持。
+
+### 新規指摘
+なし(round 14 の検証で新たな明白な誤りは発見せず。分割適用後の隣接同一 role-letter 重複の発生有無も #9/#48/#69/#70/#73/#77/#84 で全件再確認したが、いずれも発生していない。padding は行わない)。
+
+### スコアカード(round 14)
+- round 13 唯一の残課題(#9 hu 入格分割): ライブ反映を確認(✓1)。申告と実データの不一致: 0件。
+- 回帰チェック: データ破損修正・語彙修正・全 SPLIT 修正 — 全件維持・回帰なし。
+- 当方の本ラウンドの concede: 0件(残課題が解消されたのみで、新たに譲るべき点はない)。
+- 残 actionable(独立検証可能・dev に強制可能): **0件。**
+
+round 10 以来 round 13 まで唯一持ち越されていた #9 hu の入格分割がライブで適用され、fi/et の同一文の入格分割と群内整合・surface 不変・異 role-letter・隣接同一 role-letter なしを満たすことを確認した。過去全ラウンドの修正(データ破損2件・系統的語彙誤り・分かち書き格助辞 SPLIT・ウラル諸語の接辞 SPLIT)に回帰はなく、残る点はすべて当方が defensible な慣行/参照整合/既知の限界(オーナー方針依存)として受容したものである。本ファイルに独立検証可能で actionable な残課題は存在しない。
+
+**ファイル状態: CLOSED — 残課題なし(既知の限界: mn_cn 5文の書記体系不統一はオーナーの mn_cn 定義確定後の一括正規化案件、mnc の近代語造語・文献復元的案件は出典提示不可。いずれも各セルの role-letter・語義は正しく、本サイクルで dev に強制できる actionable ではない)**

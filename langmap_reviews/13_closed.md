@@ -403,3 +403,192 @@ round5 で「最小修正は B 単独化、理想は den を D から切出し E
 - **#80 B|F「Auslandsstudium」** (de_at) / 「es Uslandstudium」(de_gsw 残部): 空白なき閉鎖複合名詞 (単一トークン概念)。de は Auslands|studium と分けるが当該変種は一語 → KEEP (de_gsw は dass のみ分離後 B|F 保持)。
 
 合計: SPLIT 38 / KEEP 8。
+
+## レビュアー再評価 — round 10 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 9 の包括スイープ（作業者）の SPLIT 38件・KEEP 8件を `.wf_langmap_query.mjs` で全件実データ照合した。大半は適用済みだが、**#53 の A|D 分割が「SPLIT」と明記されながら実データに反映されていない**ことを確認した。以下、項目別判定。
+
+### SPLIT 適用確認 ✓
+- **#50 A|E→E+A** 全変種で `E:Mei A:Hund`／`E:My A:hond`／`E:Myn A:hûn` 等に分割済み。de モデル `E:Mein A:Hund` と整列。✓
+- **#51 A|E→E+A** 全変種で `E:Mei A:Oma`／`E:My A:ouma`／`E:Myn A:beppe` 等に分割済み。✓
+- **#52 fy C|H→H+C** 実データ `H:「bin」 C:「kwyt」` を確認。助動詞 bin＝H／分詞 kwyt＝C に分離済み。de（H:habe…C:verloren）と整合。✓
+- **#73 A|E/B|F/C|G** de_by/de_gsw/nds/af/fy は `E:所有 A:名詞`／`F:前置詞 B:名詞`／`G:every C:名詞` に分割済み。de_at の `B|F:「auf meim Bett」` のみ融合保持だが、これは round7 で「過分割回避・参照横断で正当」と判定済みの既知の限界。✓（de_at B|F は KEEP 継続）
+- **#80** de_by `F:im Ausland B:studiern`＋`H:dass`、fy `B:studearjen F:yn it bûtenlân`、de_gsw `H:dass`＋複合名詞 B|F 保持、いずれも実データ確認。✓
+- **#84 D|E→E+D / B|C 再分類** de_at `E:letzte D:Woch`、de_gsw `E:letscht D:Wuche C:hät sich B:erkältet`、nds `C:hett sick B:verköölt`、nl `C:heeft zich B:verkouden` を確認。時の副詞句の last＝E／week＝D 分割、完了枠 C/B 純化が de モデルと整合。✓
+- **#85 B|E→E+B** 全変種で `E:mehr B:Wasser`／`E:meer B:water` 等に分割済み。de_at も `A:Du solltast E:mehr B:Wasser` で E は欠落しておらず分割済み。✓
+
+### SPLIT 取りこぼし ✗
+#### R10-1. #53 de_by/de_gsw/nds/af/fy — A|D（前置詞縮約＋名詞）が未分割 ✗【確実】
+round 9 で「SPLIT … D(前置詞, ZWNJ接頭) + A(名詞句)」と明記されたが、実データは依然として融合のまま：
+- de_by `A|D:「im Gartn」`
+- de_gsw `A|D:「im Garte」`
+- nds `A|D:「in'n Gaarn」`
+- af `A|D:「in die tuin」`
+- fy `A|D:「yn de tún」`
+一方 de/de_at/nl は既に `D:‌im A:Garten`／`D:‌in A:de tuin` に分割済み。同一構造の上記5変種だけ取りこぼしている。前置詞（縮約 im=in+dem 含む）は独立要素で、兄弟言語が既に分割している以上 SPLIT すべき。分割案（兄弟と整合、ZWNJ 接頭で agglutination マーカ整合）：
+- de_by **D:「‌im」 A:「Gartn」**
+- de_gsw **D:「‌im」 A:「Garte」**
+- nds **D:「‌in'n」 A:「Gaarn」**
+- af **D:「in」 A:「die tuin」**
+- fy **D:「yn」 A:「de tún」**
+いずれも前 B（Die Blumen）・後 C|E（blühen）に挟まれ、隣接同役なし。確実な取りこぼし。
+
+### KEEP 妥当性確認 ✓（譲歩なし／同意）
+- **#3 B|C frühstücke**（de/de_at/de_by）：実データ確認。朝食を内包する denominal verb の単一トークンで、空白なき不可分形。兄弟（de_gsw/nds/nl/af/fy）は別語「eat＋breakfast」だが当該3変種は一語統合。分割不可＝KEEP 妥当。
+- **#34 B|D langsamer/stadiger/langzamer**：実データ確認。more＋slowly が単一比較級副詞（portmanteau 単一トークン）。分割不可＝KEEP 妥当。
+- **#53 C|E blühen 等**：分離可能な繋辞（are）を持たぬ統合定形動詞。付随する grad/graad は役スキーム外副詞。KEEP 妥当。
+- **#69 D|E schrieb（de）/ schreef（nl）/ skreau（fy）**：単一綜合過去形（接尾辞融合）。KEEP 妥当。一方 de_at/de_by/de_gsw/nds/af は迂言完了で D（助動詞）＋E（過去分詞）に正しく分割済みを確認。
+- **#80 B|F Auslandsstudium（de_at）/ es Uslandstudium（de_gsw）**：空白なき閉鎖複合名詞。KEEP 妥当。
+これら8件の KEEP 判断はいずれも言語学的に正当で、当方も同意する（譲歩＝0：当方が以前主張した分割を取り下げた項目はなく、もともと KEEP 同意の領域）。
+
+### 新規指摘
+全件照合で R10-1 以外の新たな明白誤りは発見されなかった（純粋な新規 0件）。R10-1 は round 9 提案に含まれていた SPLIT の未適用＝取りこぼしであり、厳密には新規ではない。
+
+### スコアカード（round 10）
+- round 9 SPLIT のうち #50/#51/#52/#73/#80/#84/#85：適用・実データ確認済み ✓
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）：言語的に正当と同意 ✓
+- 取りこぼし：**#53 ×5変種（de_by/de_gsw/nds/af/fy）の A|D 未分割**（R10-1）
+- 譲歩（concede）：0
+- 新規明白誤り：0（R10-1 は round9 提案の未適用）
+
+**ファイル状態: OPEN**
+次にやること: #53 の de_by/de_gsw/nds/af/fy で `A|D` を `D:前置詞（縮約は ZWNJ 接頭, de/nl と整合）` ＋ `A:名詞句` に分割（de_by D:‌im A:Gartn／de_gsw D:‌im A:Garte／nds D:‌in'n A:Gaarn／af D:in A:die tuin／fy D:yn A:de tún）。
+
+## レビュアー再評価 — round 12 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 11 の明示的な開発回答セクションはファイル末尾に未記載だが、round 10 で OPEN とした唯一の残課題（#53 の A|D 分割×5変種）を `.wf_langmap_query.mjs` で実データ照合した。**分割そのものは全5変種で適用済み**であることを確認したが、round 10 の指令に明記した「縮約前置詞への ZWNJ 接頭」が3変種で欠落している。
+
+### R10-1. #53 de_by/de_gsw/nds/af/fy — A|D の分割 → △ 部分承認
+実データ:
+- de_by `B:「De Bleamln」 D:「im」 A:「Gartn」 C:「bliahn」 E:「grad」`
+- de_gsw `B:「D Blueme」 D:「im」 A:「Garte」 C:「blüehed」`
+- nds `B:「De Blomen」 D:「in'n」 A:「Gaarn」 C:「blöht」 E:「graad」`
+- af `B:「Die blomme」 D:「in」 A:「die tuin」 C:「blom」`
+- fy `B:「De blommen」 D:「yn」 A:「de tún」 C:「bloeie」`
+
+分割（D:前置詞 ＋ A:名詞句）は全5変種で正しく適用され、隣接同役なし・前 B／後 C で挟まれ整合。SPLIT 本体は ✓。
+
+ただし **縮約前置詞への ZWNJ（U+200C）接頭が de_by「im」・de_gsw「im」・nds「in'n」で欠落**している。同一文 #53 の兄弟参照行 de「‌im」(U+200C+im)・de_at「‌im」・nl「‌in」は ZWNJ を保持しており、縮約形（im=in+dem, in'n=in+den）を切り出した際は agglutination マーカとして ZWNJ を付すのが本プロジェクトの規約（記憶 feedback_glue_marker）。よって de_by/de_gsw/nds の3行だけ family 内不整合となっている。
+- de_by `D:「im」` → `D:「‌im」`（U+200C 接頭）
+- de_gsw `D:「im」` → `D:「‌im」`
+- nds `D:「in'n」` → `D:「‌in'n」`
+- af `D:「in」`／fy `D:「yn」` は**非縮約の単純前置詞**のため ZWNJ 不要＝現状で正しい（✓）。
+
+### 既存判断の維持
+- #73 de_at の `B|F:「auf meim Bett」` 融合は round7/round10 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（純粋な新規 0件）。ZWNJ 欠落は round 10 指令に明記済みの未完了分であり、新規ではない。
+
+### スコアカード（round 12）
+- #53 A|D 分割本体：全5変種 適用・実データ確認済み ✓
+- #53 縮約前置詞 ZWNJ：de_by/de_gsw/nds の3行で欠落（af/fy は不要で正しい）△
+- 譲歩（concede）：0
+- 新規明白誤り：0
+
+**ファイル状態: OPEN**
+次にやること: #53 の縮約前置詞 D セルに ZWNJ(U+200C) を接頭し兄弟行(de/de_at/nl の「‌im」)と整合させる — de_by `D:「im」→「‌im」`／de_gsw `D:「im」→「‌im」`／nds `D:「in'n」→「‌in'n」`（af `in`・fy `yn` は非縮約のため変更不要）。
+
+## 兄弟整合性監査 — 群13 (作業者 round 12)
+
+外れ値として旗を立てられた5セルを精査。いずれも当該言語の正当な文法構造による役割反復であり、retag せず KEEP と判定。
+
+- #21 [af] `E:「sal」 … E:「hê」` → **KEEP**。未来助動詞 "sal"（will）＋本動詞 "hê"（have）の不連続述語。両者とも述語役 E。en は "will have" を単一 E とし、af は語順上分割されるが同一の動詞句役。他の defined letter（B/C/D）はいずれも合致せず、E が唯一妥当。
+- #37 [fy] `D:「‌in」 … D:「kado」` → **KEEP**。en 参照自体が `D:「a」 … D:「present」` と冠詞＋名詞を共に D とし、間に C:「birthday/jierdeis-」を挟む。fy "in"（a）＋"kado"（present）は en の D…D パターンに完全一致。
+- #60 [af] `C:「om」 … C:「te kook」` → **KEEP**。アフリカーンス語の不定詞環状構造 "om … te kook"（to cook）。目的語 B:「Koreaanse kos」を挟んで不定詞句が分割されるが、両部分とも不定詞動詞句役 C。en は "to cook" を単一 C とし、fy も単一 C。
+- #65 [af] `E:「het」 … E:「gegee」` → **KEEP**。完了時制の助動詞 "het"（has）＋過去分詞 "gegee"（given）の不連続述語。両者とも述語役 E。en の単一 E "gave" に対応。間接目的語 B・直接目的語 C/D を挟む語順による分割。
+- #89 [af] `C:「nie」 … C:「nie」` → **KEEP**。アフリカーンス語の義務的二重否定（"nie … nie"）。両否定辞とも否定役 C。en の単一 C "'t" に対応する言語固有の文法現象であり、重複は正当。
+
+FIX: 0／KEEP: 5。役割文字の誤割当は認められず。
+
+## レビュアー再評価 — round 13 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 12 で OPEN とした唯一の残課題（#53 縮約前置詞への ZWNJ 接頭欠落）と、作業者 round 12 の「兄弟整合性監査」(#21/#37/#60/#65/#89 の KEEP 判定) を `.wf_langmap_query.mjs` でバイト単位照合した。
+
+### R10-1 / #53 縮約前置詞の ZWNJ — ✗ 未修正（残課題として保持）
+バイト照合（U+200C = E2 80 8C）の結果：
+
+| 言語 | D セル | ZWNJ | 判定 |
+|---|---|---|---|
+| de | `‌im` | あり | ✓ 参照 |
+| de_at | `‌im` | あり | ✓ 参照 |
+| nl | `‌in` | あり | ✓ 参照 |
+| de_by | `im` | **なし** | ✗ |
+| de_gsw | `im` | **なし** | ✗ |
+| nds | `in'n` | **なし** | ✗ |
+| af | `in` | なし | ✓（非縮約のため不要） |
+| fy | `yn` | なし | ✓（非縮約のため不要） |
+
+縮約前置詞（im=in+dem, in'n=in+den）を切り出した D セルには agglutination マーカとして ZWNJ を付すのが本プロジェクト規約（記憶 feedback_glue_marker）であり、同一文 #53 の兄弟参照 de/de_at/nl は ZWNJ を保持している。にもかかわらず de_by/de_gsw/nds の3行は依然 ZWNJ を欠き、family 内不整合のまま。round 11/12 の開発作業でこの3セルは触られておらず、**round 12 指令の未完了分が live に残っている**ことを確認した。これは文体的選好ではなく、プロジェクト規約に基づく具体的・アクション可能な是正であり、保持する。
+- de_by `D:「im」` → `D:「‌im」`（U+200C 接頭）
+- de_gsw `D:「im」` → `D:「‌im」`
+- nds `D:「in'n」` → `D:「‌in'n」`
+- af `in`／fy `yn` は非縮約のため変更不要（現状 ✓）。
+
+### 作業者 round 12「兄弟整合性監査」(#21/#37/#60/#65/#89) — ✓ 全件 KEEP に同意
+実データ照合の上、5件すべての KEEP 判定が言語学的に妥当であることを確認。譲歩というより、いずれも当方が以前から争っていない領域：
+- **#89 af** `C:「nie」… C:「nie」`：アフリカーンス語の義務的二重否定。en 単一 C "'t" に対応する言語固有現象で、非隣接 C 反復は正当。✓
+- **#60 af** `C:「om」… C:「te kook」`：不定詞環状構造（om…te）。en 単一 C "to cook" に対応、目的語 B を挟む分割は正当。✓
+- **#65 af** `E:「het」… E:「gegee」`：迂言完了の不連続述語（助動詞＋過去分詞）。en 単一 E "gave" に対応、両部とも述語役 E。✓
+- **#21 af** `E:「sal」… E:「hê」`：未来迂言（will have）の不連続述語。en `E:「will have」` に対応、両部とも E。✓
+- **#37 fy** `D:「‌in」… D:「kado」`：en 参照自体が `D:「a」… D:「present」` と冠詞＋名詞を共に D とし間に C:birthday を挟む。fy の D…D は en パターンに完全一致。✓（なお fy の `D:「‌in」` は不定冠詞であり、これは ZWNJ 付与済み＝整合）
+
+### 既存判断の維持
+- #73 de_at `B|F:「auf meim Bett」` 融合は round7/10/12 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（純粋な新規 0件）。
+
+### スコアカード（round 13）
+- #53 縮約前置詞 ZWNJ：de_by/de_gsw/nds の3行で依然欠落 ✗（round 12 指令の未完了分）
+- 作業者 round 12 KEEP 5件（#21/#37/#60/#65/#89）：全件同意 ✓
+- 譲歩（concede）：0（争っていた当方の指摘の取り下げはなし）
+- 新規明白誤り：0
+
+**ファイル状態: OPEN**
+次にやること: #53 の縮約前置詞 D セルに ZWNJ(U+200C) を接頭し兄弟行(de/de_at/nl の「‌im」/「‌in」)と整合させる — de_by `D:「im」→「‌im」`／de_gsw `D:「im」→「‌im」`／nds `D:「in'n」→「‌in'n」`（af `in`・fy `yn` は非縮約のため変更不要）。
+
+## レビュアー再評価 — round 14 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 13 で OPEN とした唯一の残課題（#53 縮約前置詞への ZWNJ 接頭欠落 — de_by/de_gsw/nds の3行）を `.wf_langmap_query.mjs` でバイト単位再照合した。ファイル末尾に明示的な `## 開発チーム回答 — round 13` セクションは未記載だが、当該3セルへの修正は無言で live に適用済みであることを確認した。
+
+### R10-1 / #53 縮約前置詞の ZWNJ — ✓ 承認（解決確認）
+バイト照合（U+200C = E2 80 8C）の結果、round 13 で欠落していた3行すべてに ZWNJ 接頭が付与済み：
+
+| 言語 | D セル | バイト列 | ZWNJ | 判定 |
+|---|---|---|---|---|
+| de_by | `‌im` | `e2 80 8c 69 6d` | あり | ✓ |
+| de_gsw | `‌im` | `e2 80 8c 69 6d` | あり | ✓ |
+| nds | `‌in'n` | `e2 80 8c 69 6e 27 6e` | あり | ✓ |
+| af | `in` | `69 6e` | なし | ✓（非縮約のため不要） |
+| fy | `yn` | `79 6e` | なし | ✓（非縮約のため不要） |
+
+兄弟参照 de/de_at `‌im`・nl `‌in` と完全に整合。縮約前置詞（im=in+dem, in'n=in+den）の agglutination マーカ（記憶 feedback_glue_marker）が family 内で統一された。round 12 指令の未完了分は完全に解消。これがファイルに残っていた唯一のアクション可能課題であった。
+
+### 回帰チェック ✓
+過去ラウンドで確定済みの主要修正をスポット照合し、回帰がないことを確認：
+- #33 de `E:「Das Zimmer」 A:「des Hotels」 B:「war」 C:「sehr」 D:「sauber」`（属格分割維持）✓
+- #88 nl `C:「verandert」`（d/dt 誤り解消維持）✓
+- #16 nl `A:「Wanneer」 C:「begint」 B:「de film」`（偽分離 aan 削除維持）✓
+- #53 分割本体（D:前置詞＋A:名詞句）全5変種維持 ✓
+
+### 既存判断の維持
+- #73 de_at `B|F:「auf meim Bett」` 融合は round7/10/12/13 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+- 作業者 round 12「兄弟整合性監査」5件（#21/#37/#60/#65/#89）は round 13 で全件 KEEP に同意済み。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（新規 0件）。
+
+### スコアカード（round 14）
+- #53 縮約前置詞 ZWNJ（de_by/de_gsw/nds）：全3行 適用・バイト単位確認済み ✓
+- 回帰：なし
+- 譲歩（concede）：0
+- 新規明白誤り：0
+- 残課題：なし
+
+累計（rounds 1〜14）：語彙・綴りの明白誤り（#33/#88/#16/#64/#99/#37 他）全消、Satzklammer/完了枠の役ラベル整理（#56/#80/#84/#69 他）全処理、名詞句・前置詞句レベルの過融合（⛔3+way: #43/#45/#46/#49/#55/#69/#70/#77/#35/#48/#53）全分割、agglutination マーカ（ZWNJ）整合完了、HELD 2件（#47/#74）は妥当として譲歩済み。残る融合（#73 等）は参照言語横断で正当な類型差／過分割回避の既知の限界。アクション可能な確実誤りは存在しない。
+
+**ファイル状態: CLOSED — 残課題なし（#73 の所有詞句融合等は参照言語横断で正当な既知の限界として保持）**

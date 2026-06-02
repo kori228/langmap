@@ -501,3 +501,117 @@ Live: `[jv] A:「Aku」 E|H:「ngomong」 B|F|G:「karo kanca」 C:「ing telepo
 - **接尾所有の単一語 (#51 jv:「Mbahku」, #73 ilo:「Ti pusakko」)**: 祖母/猫+接尾 -ku/-ko が語内融合。「Ti」冠詞は別だが本体 pusakko/Mbahku は不可分。
 - **重複語 (#73 tl:「gabi-gabi」)**: 「毎晩」が night-night 重複で表現、G(every) は分離不能。
 - **#49 ilo C|E|F|G:「ta ibagam」**: 道/空港は別セル(B/D)にあり、当該セルは「ta(〜よう)+ibagam(告げよ)」の統合動詞句。E/F/G に分解不能。
+
+---
+
+## レビュアー再評価 — round 10 (@nusantara_morph / Dr. R. S. Nugroho)
+
+`.wf_langmap_query.mjs` で round 9 の「包括スイープ」判定を全件ライブ照合した。round 9 は APPLIED マーカーを持たず、実体は**既存状態の確認的判定（一括 SPLIT/KEEP の棚卸し）**である。dev が SPLIT と判定した約60件は、いずれも round 4〜7 で既に live に分割済みであり、追加で融合が残っているセルは検出されなかった（=判定と live が一致）。退行も無し。ただし dev が **KEEP として処理した ilo #52 に、granularity ではなく役割レター付与そのものの誤り**が残存していることを発見した。
+
+### A. round 9 SPLIT 判定 — ライブ照合（いずれも既に分割済み＝判定妥当）
+
+- **名詞+所有 A|E（#35/#50/#51/#73）— ✓ ACCEPT.** live 全て A/E 分離済み（#35 ms `E:Abang A:saya`、#50 jv `A:Anjing E:aku`、#51 id `A:Nenek E:saya`、#73 id `A:Kucing E:saya`）。新たな融合なし。
+- **指示詞+名詞（#43 ceb / #45 tl / #48）— ✓ ACCEPT.** live #43 ceb `A:ni D:ining E:restoran`、#45 tl `A:bansang F:ito`、#48 jv `B:film E:iku`・tl `B:ang pelikulang E:iyon`・ilo `E:dayta a B:pelikula` いずれも分離済み。
+- **前置詞+名詞 D|A（#53）/ 進行詞+動詞 C|E（#53 jv/su）— ✓ ACCEPT.** live #53 jv `D:ing A:taman … E:lagi C:mekar`、su `D:di A:kebon … E:keur C:mekar` 分離済み。tl/ceb/ilo の `C|E` 統合動詞 KEEP も妥当。
+- **多役割場所句 C|E|F|G（#49 su/tl/ceb）— ✓ ACCEPT.** live su `E:jalan F:ka G:bandara`、tl `E:daan F:papuntang G:paliparan`、ceb `E:dalan F:paingon sa G:airport` 分離済み。ilo `C|E|F|G:ta ibagam` の KEEP（統合動詞句）も妥当。
+- **数量詞/形容詞+名詞・先週系 D|E（#85/#80/#73 G+C/#84）— ✓ ACCEPT.** live #85 全分離、#80 `B:belajar F:di luar negeri` 分離、#73 `G:setiap C:bengi` 分離、#84 `D:minggu E:lalu` 分離。
+- **#46 tl `kaibigan ko` → B:kaibigan F|G:ko — ✓ ACCEPT.** live tl `B:kaibigan F|G:ko` 分離済み。名詞のみ切り出し、無標前置詞は残部同居で妥当。
+
+### B. round 9 KEEP 判定 — 照合
+
+- **E|H 統合動詞（#46 全7言語）/ D|E 統合動詞（#69）/ B|C 統合動詞（#84 su/tl/ceb/ilo）/ C|E 統合動詞（#53 tl/ceb/ilo）/ #51 jv Mbahku / #73 tl gabi-gabi / #49 ilo ta ibagam — ✓ KEEP 同意.** いずれも態/相/重複が語内融合した単一トークンで、独立した分割対象トークンが存在しない。類型的に正当。
+- **#52 C|H 統合動詞（id/ms/jv/su/tl/ceb）— ✓ KEEP 同意.** kehilangan/kelangan/leungit/Nawala は「なくす」一語動詞。tl/ceb `Nawala` は C|H として正しい位置に付与されている（live 照合）。
+- **#52 ilo — ✗ REJECT（KEEP 判定が誤り／役割レター scramble）.** dev は round 9 で「ilo の C|H:『ti pitakak』, D|F:『tiangge』 は単一トークンで分割不能」として KEEP したが、これは**問題のすり替え**。実際の欠陥は分割可否ではなく、**役割レターが誤ったトークンに付与されている**点である。
+
+### C. 新規 actionable（round 10 で検出）
+
+- **NEW-3. #52 [ilo] 役割レター scramble 【確実・actionable】**
+  live: `[ilo] A:「Napukaw」 C|H:「ti pitakak」 B:「iti」 D|F:「tiangge」`。
+  - `Napukaw` = na-(完了) + pukaw =「なくなった/失われた」の**動詞** → 正しくは **C|H**。現状 A（主語）は誤り（この actor-focus 文に明示主語はなく pro-drop、A は不在が正しい）。
+  - `ti pitakak` = ti(冠詞) + pitaka + -k(=私の) =「私の財布」の**目的語** → 正しくは **B**。現状 C|H は誤り。
+  - `iti` = 斜格マーカー（at/in）→ 正しくは **F**。現状 B は誤り。
+  - `tiangge` =「市場」→ 正しくは **D**。現状 D|F は F を取り込んでいるが F は `iti` 側にある。
+  同族 tl `C|H:Nawala B:pitaka F:sa D:palengke`／ceb `C|H:Nawala B:pitaka F:sa D:merkado` と比較すれば、ilo だけ動詞・目的語・前置詞・場所のレターが系統的にずれているのが明白。granularity 以前の整合問題。
+  **Fix:** `C|H:「Napukaw」 B:「ti pitakak」 F:「iti」 D:「tiangge」`（書字順 C|H, B, F, D。隣接同一 letter なし、en `C|H…B…F…D` と整合、A は pro-drop で不在）。
+
+### 回帰チェック（退行なし）
+- #96 jv `B:belok nengen F:prapatan`、#84 jv `D:minggu E:wingi`、#91 ilo `C:maysa a tradision B:a Hapones`、#38 jv `B:Srengéngé surup D:kéné`、#73 jv `F:ing B:tempat tidur aku`、#46 jv `F:karo B:kanca` いずれも維持。退行なし。
+
+### スコアカード（round 10）
+- ✓ ACCEPT（round 9 SPLIT/KEEP 判定の妥当性確認）: A 節6類型 + B 節 KEEP 群
+- ✗ REJECT（KEEP 判定誤り）: 1（#52 ilo — 役割 scramble）
+- 新規 actionable: 1（NEW-3 #52 ilo 役割レター是正）
+- 本ラウンド CONCEDE: 0
+- 累積 CONCEDE（既往）: 2（#11 su turun, #14 ilo makatulong）
+- △ 既知の限界（CLOSE 対象外要件にしない）: 1（#80 jv/su berharga 等、語彙選好・典拠未確定）
+- 退行: なし
+
+総評: round 9 の一括スイープは、過去ラウンドで適用済みの分割を確認的に追認したもので、新たな取りこぼし融合は無く健全。ただし dev が KEEP として通した **ilo #52 に役割レター scramble が残存**している（動詞 Napukaw が A、目的語 pitakak が C|H に誤付与）。これは「単一トークンゆえ分割不能」という KEEP 理由では救済できない別種の明白誤りであり、同族 tl/ceb と照合すれば一義的に是正可能。確実・低コストの actionable として OPEN とする。
+
+**ファイル状態: OPEN**
+次にやること: #52 [ilo] を `C|H:「Napukaw」 B:「ti pitakak」 F:「iti」 D:「tiangge」` に役割レター是正（A は pro-drop で削除、D|F の F 取り込みを解消して iti を F に）。
+
+## 開発チーム回答 — round 11 (作業者)
+
+round 10 で唯一残った actionable（NEW-3 #52 ilo の役割レター scramble）を `.wf_langmap_query.mjs` でライブ照合し適用した。
+
+### NEW-3. #52 [ilo] 役割レター是正 — APPLIED（本ラウンドでオーケストレータ適用）
+
+ライブ照合: `[ilo] A:「Napukaw」 C|H:「ti pitakak」 B:「iti」 D|F:「tiangge」`。
+これは granularity ではなく役割レターが誤ったトークンに付与された scramble。同族 tl `C|H:Nawala A:ko ang B:pitaka F:sa D:palengke`／ceb `C|H:Nawala A:nako ang B:pitaka F:sa D:merkado` と照合すれば、ilo だけ動詞・目的語・前置詞・場所のレターが系統的にずれているのが明白。
+
+- `Napukaw` = na-(完了)+pukaw =「失われた」の動詞 → 正しくは C|H（現状 A は誤り）
+- `ti pitakak` = ti(冠詞)+pitaka+-k(私の) =「私の財布」の目的語 → 正しくは B（現状 C|H は誤り）
+- `iti` = 斜格マーカー(at) → 正しくは F（現状 B は誤り）
+- `tiangge` = 市場 → 正しくは D（現状 D|F の F 取り込みを解消、F は iti 側へ）
+
+actor-focus 文に明示主語はなく pro-drop のため A は不在が正しい。レビュアー提案どおり **`C|H:「Napukaw」 B:「ti pitakak」 F:「iti」 D:「tiangge」`** に是正（書字順 C|H, B, F, D、隣接同一 letter なし、surface 不変、en `C|H…B…F…D` と整合）。
+
+これで本ファイルの actionable な残課題は解消。#80 jv/su berharga 等は既知の限界（語彙選好・典拠未確定）として CLOSE 対象外要件にしない方針を維持。
+
+---
+
+## レビュアー再評価 — round 12 (@nusantara_morph / Dr. R. S. Nugroho)
+
+`.wf_langmap_query.mjs` で round 11 の唯一の APPLIED 主張（NEW-3 #52 ilo 役割レター是正）をライブ照合し、あわせて主要セルの回帰チェックを実施した。dev の APPLIED 主張は実データに正しく反映されている。
+
+### 検証済み項目の判定
+
+- **NEW-3. #52 [ilo] 役割レター scramble 是正 — ✓ ACCEPT.**
+  ライブ `[ilo] C|H:「Napukaw」 B:「ti pitakak」 F:「iti」 D:「tiangge」` を確認。round 10 で指摘した scramble（動詞 Napukaw が A、目的語 pitakak が C|H、斜格 iti が B、市場 tiangge が D|F に誤付与）が一義的に是正されている：
+  - `Napukaw`（動詞「失われた」）→ **C|H**（旧 A 削除、pro-drop で明示主語なしも正しく反映）
+  - `ti pitakak`（目的語「私の財布」）→ **B**
+  - `iti`（斜格マーカー）→ **F**（D|F の F 取り込みを解消）
+  - `tiangge`（市場）→ **D**
+  同族 tl `C|H:Nawala A:ko ang B:pitaka F:sa D:palengke`／ceb `C|H:Nawala A:nako ang B:pitaka F:sa D:merkado` とレター列が完全に整合。書字順 C|H, B, F, D で隣接同一 letter なし。surface 不変、en の `C|H…B…F…D` とも一致。granularity 以前の役割整合問題が解消された。
+
+### 回帰チェック（退行なし）
+
+- #96 jv `B:「belok nengen」 F:「prapatan」`（右/十字路）維持。
+- #84 jv `A:「Dhèwèké」 D:「minggu」 E:「wingi」` / id `D:「minggu」 E:「lalu」`（先週語順・native 3sg）維持。
+- #91 ilo `C:「maysa a tradision」 B:「a Hapones」`（C…B…C 解消・kadaanan 削除）維持。
+- #38 jv `B:「Srengéngé surup」 D:「kéné」 C:「éndah banget」` 維持。
+- #73 jv `F:「ing」 B:「tempat tidur aku」`（前置詞分離）維持。
+- #46 jv `F:「karo」 B:「kanca」`（前置詞分離）維持。
+- #60 jv `C:「masak」`（memasak→masak）維持。
+退行は検出されなかった。
+
+### 残課題の扱い
+
+- **#80 jv/su berharga 等 — △ 既知の限界として CLOSE.** round4 時点で当方が【要検討・語彙選好の幅あり・確証中】と明記した項目。luar negeri→manca negara／berharga→aji 系は典拠（Robson/Horne の優先形）の確定的裏付けに乏しく語彙選好の域を出ない。ループ終了方針（round 12、外部典拠未確定の純粋選好でファイルを開け続けない）に従い、actionable な誤りではない既知の限界として明示し、OPEN 維持の根拠にはしない。将来 native 優先形の典拠が確定すれば随時 native 化を推奨する注記に留める。
+- **CONCEDE 済み（再対応不要）:** #11 su turun 欠落、#14 ilo makatulong。いずれも dev の妥当な判断として確定済み。
+
+### スコアカード（round 12）
+
+- ✓ ACCEPT: 1（NEW-3 #52 ilo 役割レター是正 — ライブ反映確認）
+- ✗ REJECT: 0
+- 新規 actionable: 0
+- 本ラウンド CONCEDE: 0
+- 累積 CONCEDE（既往）: 2（#11 su turun, #14 ilo makatulong）
+- △ 既知の限界（CLOSE 対象外要件にしない）: 1（#80 jv/su berharga 等、語彙選好・典拠未確定）
+- 退行: なし
+
+総評: round 10 で唯一残った actionable（#52 ilo の役割レター scramble）が、本ラウンドで確実に live へ是正・検証された。これで群25全体について、jv のインドネシア語汚染（語彙・意味誤り・所有形・meN- 動詞・代名詞・語順）、フィリピン型の方向/役割誤り（#91/#74/#43/#52 ilo）、su/ceb の細部、そして全言語の構造分割粒度（前置詞・指示詞・形容詞・数詞・場所句）まで、actionable な明白誤りはすべて是正・検証済みである。残る #80 は語彙選好・典拠未確定の known limitation で、ループ終了方針に照らし OPEN 維持の根拠にはならない。
+
+**ファイル状態: CLOSED — 残課題なし**
+（既知の限界: #80 jv/su の berharga/luar negeri 等は native 優先形の典拠が確定し次第 native 化を推奨。actionable な誤りではない。）

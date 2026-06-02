@@ -596,3 +596,236 @@ es_eu が `C:cogió B:un resfriado` と分割済み（内的証拠）。cogió(C
 - **#84 B|C:「se resfrió / se ha rehfriao」** — 再帰動詞 resfriarse「風邪をひく」。風邪(B)と動作(C)が動詞語根に組込まれ分離名詞トークンなし。mx/cu/eu の「se agarró/cogió un resfriado」は別名詞ありで対象外。
 
 SPLIT 計: #35×8 + #51×2 + #77×1 = 11 edits。
+
+## レビュアー再評価 — round 10 (Dra. Magdalena Soto-Quispe / @dialectomx)
+
+開発チーム round-9「包括スイープ」の SPLIT/KEEP 全項目を `.wf_langmap_query.mjs` でライブ照合した（#35, #51, #77, #3, #13, #46, #50, #52, #53, #55, #69, #84）。あわせて過年度修正の非退行（#1, #38, #80, #86, #92, #84-N3）も再検証した。
+
+### SPLIT 主張のライブ検証
+
+1. **#35 `A|E:「Mi hermano mayor」`→`A:「Mi」 E:「hermano mayor」`（8変種） — ✓ 承認**
+   ライブ確認: mx/ar/cl/co/pe/cu/eu すべて `A:「Mi」 E:「hermano mayor」`、an `A:「Mi」 E:「hermano mayó」`。所有限定詞 A(My)+名詞句 E(older brother) の det+noun 分割は en/de/fr/it 等の兄弟群と同型。隣接同役なし。分割そのものは適切。
+
+2. **#51 `A|E`（es_pe/es_an）分割 — ✓ 承認**
+   ライブ確認: es_pe `E:「Mi」 A:「abuelita」`、es_an `E:「Mi」 A:「agüela」`。同文 mx/ar/cl/co/cu/eu の `E:「Mi」 A:「abuela」` と同型化済み。所有 E+名詞 A の連続分割で隣接同役なし。音写 agüela・方言縮小辞 abuelita 保持。
+
+3. **#77 es_cl `B|D|E`→3分割 — ✓ 承認**
+   ライブ確認: es_cl `C:「quedó pa' dentro」 D:「con」 B:「los resultados」 E:「de la prueba」`。同文の他7変種と同じ D/B/E 粒度に到達。チレ口語 `quedó pa' dentro`（面食らった）・`la prueba`（=試験、チレ語彙）保持。
+
+### KEEP 主張の検証 — 全件 ✓ 妥当
+
+- **#3 `B|C:「desayuno/dezayuno」`** — 「朝食をとる」統合動詞。分離形態素なし。cl/pe の `C:tomo B:desayuno` は別動詞採用で対象外。KEEP 妥当。
+- **#13 `B|D:「deme/dame/regáleme」`** — 動詞+接尾接語（enclitic me）、正書法上一語。KEEP 妥当。
+- **#46 `E|H` 屈折融合** — 点過去屈折/迂言の時制が語幹に融合。KEEP 妥当。
+- **#50 `A|E:「A mi perro」`（mx/ar/cl/co/eu）** — 与格前置詞 a が E(mi) を跨いで A(perro) を標示する wrap 構造で、a に独立対応役割なし。pe/cu/an は a 無し主題化で `E:「Mi」 A:「perro」` 分割済み。a 付き変種の KEEP は round 4 で既に accept 済み。妥当。
+- **#52 `C|H` 統合過去/無意志構文（Se me perdió）** — 接語 se/me に en/ja 独立対応なし。KEEP 妥当。
+- **#53 `A|D:「del/der jardín」`（ar/cl/pe/cu/an）** — de+el の義務的縮約 portmanteau、文字改変なしに分離不可。mx/co/eu の非縮約 `D:en A:el jardín` は分割済み。S8 で `E:están C:floreciendo` も分割済みを再確認。KEEP 妥当。
+- **#55 `B|F:「tintos」`（es_co）** — コロンビア語「(杯の)ブラックコーヒー」の語彙的融合。`E:dos` のみ分離済み。KEEP 妥当。
+- **#69 `D|E:「escribió系」`** — 統合過去動詞、le/les は間接目的接語で D/E 要素ではない。S1 の F/B/G・H/C 分割は維持。KEEP 妥当。
+- **#84 `B|C:「se resfrió/se ha rehfriao」`** — 再帰一語動詞 resfriarse。cu/eu の `C:cogió B:un catarro/resfriado`（別名詞あり）は S11 で分割済みを再確認。KEEP 妥当。
+
+### 過年度修正の非退行確認 — ✓
+
+- #1 es_cu/es_an `J:「frente al」/「frente ar」`
+- #38 es_an `C:「eh preciosa」`（単数女性一致）
+- #80 全8変種 `E:creo H:que B:estudiar/ehtudiá F:場所句 D:es/e/eh I:una C:experiencia G:valiosa`（N1=H, N2=B/F 維持）
+- #86 es_pe `C:「uso pe」`／es_cu `B:「el celulá mío」`／es_an `B:「el móvil mío」`（A=todos los días 系維持、誤 A 除去維持）
+- #92 es_cu `B:「gyoza」`／es_an `B:「gyoza」`
+- #84-N3 es_an `D:「la semana」 E:「pasá」`（S11 cu `C:cogió B:un catarro` も維持）
+いずれもライブで維持を確認。退行なし。
+
+### 新規指摘（round-9 の #35 分割で生じた表層エラー）
+
+**N4. #35 es_cu / es_an — 「先月」の冠詞が誤った分節に付与され、表層が非文法的【確実・役割/表層エラー】**
+- **Current（ライブ）:** es_cu `… B:「se casó」 D:「me」 C:「el pasado」`、es_an `… B:「se ha casao」 D:「meh」 C:「el pasao」`
+- **Problem:** 原句は「el mes pasado」（先月）。担当の他6変種はすべて `D:「el mes」 C:「pasado」`（冠詞 el は名詞 mes＝月=D に付く）。ところが es_cu/es_an では冠詞 `el` が形容詞側 `C:「el pasado」`（=last=C）へ移り、名詞側は `D:「me」/「meh」`（=mes の -s 脱落形だが裸）になっている。各変種の分節列をそのまま連結すると es_cu は「…se casó **me el pasado**」、es_an は「…se ha casao **meh el pasao**」となり、実在のスペイン語「el mes pasado」になっていない。これは round 9 の #35 分割（cu/an も `A:Mi E:hermano mayor` に統一）作業の際、文末の「el mes pasado」部分の冠詞付与位置を取り違えたために生じた表層・役割エラーであって、音写規約（-s 脱落）の問題ではない。冠詞 `el` は名詞 `mes`（D=month）を限定するのであり、形容詞 `pasado`（C=last）には付かない。
+- **Proposed fix:** es_cu `D:「el me」 C:「pasado」`、es_an `D:「el meh」 C:「pasao」`（冠詞 el を名詞 D 側へ戻し、surface を「el me(h) pasao/pasado」＝正しい語順「el mes pasado」の -s 脱落音写に整える）。役順 B→D→C で隣接同役なし。他6変種の D=「el mes」と同じく冠詞は D に属する。
+
+### スコアカード（round 10）
+
+| 項目 | 判定 |
+|---|---|
+| #35 `A|E` 分割（8変種） | ✓ ライブ検証済み（ただし cu/an の文末に N4 の別エラー） |
+| #51 `A|E`（pe/an） | ✓ |
+| #77 es_cl `B|D|E` | ✓ |
+| KEEP #3/#13/#46/#50/#52/#53/#55co/#69/#84 | ✓ 全件妥当 |
+| 過年度 #1/#38/#80/#86/#92/#84-N3 非退行 | ✓ 維持確認 |
+| 譲歩済み #99/#39 | 取り下げ維持 |
+| **N4 #35 cu/an 冠詞誤付与（表層非文法）** | ✗ 新規・要修正 |
+
+round-9 の SPLIT（#35/#51/#77）・KEEP 判定はいずれも妥当でライブ検証済み、過年度修正にも退行なし。ただし #35 の cu/an 分割作業で文末「el mes pasado」の冠詞が名詞 D ではなく形容詞 C へ誤付与され、連結表層が「me el pasado」「meh el pasao」という非実在の語順になっている確実なエラーを新たに確認した。これは音写・様式の問題ではなく、他6変種・参照言語と照らして客観的に誤りであるため CLOSED にできない。
+
+**ファイル状態: OPEN**
+次にやること: #35 で es_cu を `D:「el me」 C:「pasado」`、es_an を `D:「el meh」 C:「pasao」` に修正し（冠詞 el を名詞 D=mes 側へ戻す）、surface を正しい「el mes pasado」の音写に揃える。他6変種の `D:「el mes」 C:「pasado」` と冠詞付与位置を一致させる。
+
+## 開発チーム回答 — round 11 (作業者)
+
+ライブ値を `.wf_langmap_query.mjs 35 es_cu es_an es_mx es_ar es_eu` で全変種一括確認した上で判断した。
+
+### N4. #35 es_cu / es_an — 「el mes pasado」の冠詞誤付与（表層非文法） — APPLIED (applied by orchestrator this round)
+
+ライブ確認:
+- es_cu `A:「Mi」 E:「hermano mayor」 B:「se casó」 D:「me」 C:「el pasado」`
+- es_an `A:「Mi」 E:「hermano mayó」 B:「se ha casao」 D:「meh」 C:「el pasao」`
+- 担当の他6変種（決定的内的証拠）: es_mx/es_ar/es_eu いずれも `D:「el mes」 C:「pasado」`（cl/co/pe も同型）
+
+原句は「el mes pasado」（先月）。定冠詞 `el` は名詞 `mes`（D=月/month）を限定するのであり、形容詞 `pasado`（C=last/先）には付かない。現状は round 9 の #35 分割作業の際に文末「el mes pasado」部分の冠詞付与位置を取り違えたもので、各変種の分節列をそのまま連結すると es_cu「…se casó **me el pasado**」、es_an「…se ha casao **meh el pasao**」となり、実在のスペイン語「el mes pasado」になっていない。これは音写規約（-s 脱落）の問題ではなく、他6変種・参照言語（en `D:last … month`、ja `D:先月`）と照らして客観的に表層・役割が誤っている確実なエラー。
+
+冠詞 `el` を名詞 D 側へ戻す。役割文字（D/C）はそのまま、surface のみ訂正（settext）:
+- es_cu: D の surface `me`→`el me`、C の surface `el pasado`→`pasado` ⇒ `D:「el me」 C:「pasado」`（連結「el me pasado」＝「el mes pasado」の -s 脱落音写）
+- es_an: D の surface `meh`→`el meh`、C の surface `el pasao`→`pasao` ⇒ `D:「el meh」 C:「pasao」`（連結「el meh pasao」）
+
+役順は B→D→C で隣接同一役割の重複なし。他6変種の `D:「el mes」 C:「pasado」` と冠詞付与位置が一致する。レビュアー N4 は内的証拠・参照配色に支えられた確実な表層エラーであり全面適用。
+
+これで #07 の残 actionable は解消。本ラウンド HELD/REBUTTED なし。
+
+## レビュアー再評価 — round 12 (Dra. Magdalena Soto-Quispe / @dialectomx)
+
+開発チーム round-11 回答（N4 #35 es_cu/es_an の冠詞付与位置修正）を `.wf_langmap_query.mjs 35`（担当8変種一括）でライブ照合し、あわせて過年度修正の非退行（#1, #38, #80(N1/N2), #84(N3/S11), #86, #92）を再検証した。
+
+### N4. #35 es_cu / es_an — 「el mes pasado」冠詞の名詞 D 側への復帰 — ✓ 承認（ライブ検証済み）
+
+ライブ確認:
+- es_cu `A:「Mi」 E:「hermano mayor」 B:「se casó」 D:「el me」 C:「pasado」`
+- es_an `A:「Mi」 E:「hermano mayó」 B:「se ha casao」 D:「el meh」 C:「pasao」`
+- 担当の他6変種（決定的内的証拠）: es_mx/es_ar/es_eu/es_cl/es_co/es_pe いずれも `D:「el mes」 C:「pasado」`
+
+定冠詞 `el` が名詞 `mes`（D=月/month）側へ正しく戻り、形容詞 `pasado`（C=last/先）には付かない構造に是正された。各変種の分節列をそのまま連結すると es_cu「…se casó **el me pasado**」、es_an「…se ha casao **el meh pasao**」となり、実在語「el mes pasado」の -s 脱落音写として正しい語順に整った（round 10 で指摘した「me el pasado」「meh el pasao」の非実在語順は解消）。役割文字（D/C）は不変、surface のみ訂正で他テキスト改変なし。役順は B→D→C で隣接同一役割の重複なし。他6変種・参照（en `D:month`/`C:last`、ja `D:先月`）と冠詞付与位置が一致。私の N4 指摘は完全に解消。
+
+### 過年度修正の非退行確認 — ✓
+
+- #1 es_cu `J:「frente al」`／es_an `J:「frente ar」`
+- #38 es_an `C:「eh preciosa」`（単数女性一致）
+- #80 全8変種 `E:creo H:que B:estudiar/ehtudiá F:場所句 D:es/e/eh I:una C:experiencia G:valiosa`（N1=H, N2=B/F 維持）
+- #84 es_an `D:「la semana」 E:「pasá」`（N3）／es_cu `C:「cogió」 B:「un catarro」`（S11）／es_co `B|C:「se resfrió」`
+- #86 es_pe `C:「uso pe」`／es_cu `B:「el celulá mío」`／es_an `B:「el móvil mío」`（誤 A 除去維持）
+- #92 es_cu `B:「gyoza」`／es_an `B:「gyoza」`
+いずれもライブで維持を確認。退行なし。N4 の #35 surface 訂正によって #35 の他分節（A:Mi / E:hermano mayor / B:se casó）にも副作用は生じていない。
+
+### 新規指摘
+
+新規の actionable はなし。round 4–10 の機械抽出疑いセル集中監査（S1–S11）・補文標識 H（N1）・不定詞句 B/F（N2）・「先週」D/E（N3）・「先月」冠詞（N4）で、同一文内に分割済み変種という内的証拠を伴う融合・誤付与はすべて切り出し／是正済み。担当8変種の分割粒度・冠詞付与は参照言語群と整合し、これ以上の分離可能要素は確認できない。譲歩済み2件（#99 recueddo 音写・#39 mañana 話題化前置）は round 2 で開発側論拠が妥当として取り下げ済み、蒸し返さない。KEEP 判定（#3/#13/#46/#50/#52/#53/#55co/#69/#84 再帰一語動詞）も言語学的に正当で維持。
+
+### スコアカード（round 12）
+
+| 項目 | 判定 |
+|---|---|
+| N4 #35 es_cu/es_an 冠詞 D 側復帰 | ✓ 承認・ライブ検証済み |
+| 過年度 #1/#38/#80(N1,N2)/#84(N3,S11)/#86/#92 非退行 | ✓ 維持確認 |
+| 新規 actionable | なし |
+| 譲歩済み #99/#39 | 取り下げ維持 |
+
+確実な誤り（綴り崩れ・非実在語・役割誤割当・性数一致ミス・冠詞誤付与）、補文標識 H・不定詞句 B/F・各種複合融合（S1–S11）・「先週」D/E・「先月」冠詞のすべてが是正・ライブ検証済み。残る actionable はなく、様式的選好や外部典拠の無い要求で開け続ける理由もない。担当8変種（es_mx, es_ar, es_cl, es_co, es_pe, es_cu, es_an, es_eu）のデータは方言語彙・音写・性数一致・voseo・役割語順・分割粒度のいずれの観点でも参照言語群と整合する。
+
+**ファイル状態: CLOSED — 残課題なし**
+
+## 兄弟整合性監査 — 群07 (作業者 round 12)
+
+外れ値として旗を立てられた3セルをライブ検証（`node .wf_langmap_query.mjs`）し、兄弟整列と en/ja 参照と照合した。
+
+### KEEP
+
+- **#11 es_cl** `C:Compré D:un E:libro D:nuevo B:en la librería F:ayer`
+  D の重複（「un」と「nuevo」）は誤りではない。en 参照は D:「a new」と冠詞+形容詞を一括して D に割り当てており、兄弟多数（es_ar/es_co/es_pe/es_cu/es_an）も D:「un nuevo」を採用。es_cl は冠詞「un」と形容詞「nuevo」の間に名詞 E:「libro」が挟まる語順のため、限定詞複合 D が名詞を挟んで D…E…D に分裂しているだけ。参照の D="a new" と整合的で正しい。→ KEEP。
+
+### FIX (retag, surface 不変)
+
+- **#25 es_cl** `C:una D:empresa C:grande` → 「grande」の C を F へ。
+  C は冠詞（una）。形容詞「grande」(big) は兄弟多数 es_mx/es_ar/es_co/es_an/es_eu の F:「gran」、および es_pe/es_cu の D:「grande」が示すとおり「big」役割であり、冠詞 C ではない。en 参照は F:「big」。当文では F が定義済み（en/他兄弟が使用）。冠詞 C と形容詞を区別するため「grande」→ F に修正。
+
+- **#42 es_ar** `C:usa D:un E:vestido D:rojo` → 「un」の D を E へ。
+  D の重複「un」と「rojo」。en 参照は E:「a」 D:「red」 E:「dress」と、冠詞「a」を E（名詞句）に割り当て、形容詞「red」のみ D とする。兄弟全変種は E:「un vestido」と冠詞+名詞を一括 E にしている。es_ar だけ冠詞「un」を D（形容詞役割）に誤割当しているのが外れ値。参照・兄弟に合わせ「un」→ E に修正（E は当文で定義済み）。
+
+## レビュアー再評価 — round 13 (Dra. Magdalena Soto-Quispe / @dialectomx)
+
+開発チーム round-12「兄弟整合性監査」（#11 KEEP / #25 es_cl FIX / #42 es_ar FIX）の全項目を `.wf_langmap_query.mjs` でライブ照合した。あわせて過年度修正の非退行（#1, #38, #80(N1/N2), #84(N3/S11), #86, #92, #35(N4)）を再検証した。
+
+### #25 es_cl — 「grande」C→F retag — ✓ 承認（ライブ検証済み）
+
+ライブ確認: es_cl `A:「Mi papá」 E:「trabaja」 B:「en」 C:「una」 D:「empresa」 F:「grande」`。
+- 冠詞 `una` は C（en 参照 `C:「a」`）、形容詞 `grande` は F（en 参照 `F:「big」`）に正しく分離された。round-9 以前の「grande を C に重複付与」は解消。
+- 兄弟群との整合: es_mx/es_ar/es_co/es_an/es_eu は `F:「gran」`、es_pe/es_cu は `D:「grande」`（後置）。es_cl は名詞後置語順 `empresa grande` のため D→F の並びで F=grande を切り出すのが妥当。役順 C→D→F で隣接同役なし。指摘どおり是正済み。
+
+### #11 es_cl — KEEP — ✓ 承認（妥当）
+
+ライブ確認: es_cl `C:「Compré」 D:「un」 E:「libro」 D:「nuevo」 B:「en la librería」 F:「ayer」`。
+- D（un / nuevo）の非隣接重複は、限定詞複合 D=「a new」が名詞 E=「libro」を挟む es_cl の語順（un libro nuevo）を正しく反映したもの。en 参照 `D:「a new」 E:「book」` と整合。間に E が入るため隣接同役の重複ではない。KEEP 妥当。
+
+### #42 es_ar — 「un」D→E retag — ✗ 却下（隣接同一役割の重複を新たに生成）
+
+ライブ確認: es_ar `A:「Ella」 B:「siempre」 C:「usa」 **E:「un」 E:「vestido」** D:「rojo」`。
+- 開発側の意図（冠詞 un を D から E へ移し、兄弟の `E:「un vestido」` に揃える）は方向として正しい。**しかし実装が誤っている。** 「un」を D から E に retag した結果、`E:「un」` と既存の `E:「vestido」` が**隣接した同一役割文字の重複**になっている。
+- これはオーナーの明示方針「隣接する同一セグメント ID を作るな、必ずマージせよ」に正面から反する。兄弟の全変種（mx/cl/co/pe/cu/an/eu）はいずれも **単一の `E:「un vestido」`**（一つの E セグメント）であり、es_ar だけが `E:「un」 E:「vestido」` と2分割・隣接重複している外れ値のまま。retag ではなく **2つの E を1つの `E:「un vestido」` にマージ**すべきだった。
+- なお round-12 監査は #42 のもう一つの D 重複（`D:「un」` と `D:「rojo」`）の是正を狙ったものだが、現状 D は `D:「rojo」` 一つだけになっており D 重複自体は解消している。問題は E 側に隣接重複を作ってしまった点。
+- **Proposed fix:** es_ar の `E:「un」 E:「vestido」` を単一の `E:「un vestido」` にマージする（表層テキストは「un vestido」で兄弟と一致、surface 改変なし、隣接同役重複を解消）。最終形: `A:「Ella」 B:「siempre」 C:「usa」 E:「un vestido」 D:「rojo」`（es_co/es_eu と完全同型）。
+
+### 過年度修正の非退行確認 — ✓
+
+- #1 es_cu `J:「frente al」`／es_an `J:「frente ar」`
+- #38 es_an `C:「eh preciosa」`（単数女性一致）
+- #80 全8変種 `E:creo H:que B:estudiar/ehtudiá F:場所句 D:es/e/eh I:una C:experiencia G:valiosa`（N1=H, N2=B/F 維持）
+- #84 es_an `D:「la semana」 E:「pasá」`（N3）／es_cu `C:「cogió」 B:「un catarro」`（S11）／es_co `B|C:「se resfrió」`
+- #86 es_pe `C:「uso pe」`／es_cu `B:「el celulá mío」`／es_an `B:「el móvil mío」`（誤 A 除去維持）
+- #92 es_cu/es_an `B:「gyoza」`
+- #35 es_cu `D:「el me」 C:「pasado」`／es_an `D:「el meh」 C:「pasao」`（N4 冠詞 D 側復帰維持）
+いずれもライブで維持を確認。退行なし。
+
+### スコアカード（round 13）
+
+| 項目 | 判定 |
+|---|---|
+| #25 es_cl grande C→F | ✓ 承認・ライブ検証済み |
+| #11 es_cl D 非隣接重複 KEEP | ✓ 妥当 |
+| **#42 es_ar 「un」D→E retag** | ✗ 却下（`E:「un」 E:「vestido」` の隣接同役重複を新生成。単一 E にマージすべき） |
+| 過年度 #1/#38/#80/#84/#86/#92/#35 非退行 | ✓ 維持確認 |
+| 譲歩済み #99/#39 | 取り下げ維持 |
+
+開発側の #25・#11 判定は妥当でライブ検証済み、過年度修正にも退行なし。ただし #42 es_ar の「un」D→E 修正が、冠詞 un を単独 E セグメントとして残したまま既存 E:vestido に隣接させ、**隣接同一役割文字の重複 `E:「un」 E:「vestido」`** を新たに作ってしまった。これはオーナーの「隣接同一セグメントを作らずマージせよ」方針への明確な違反であり、兄弟全変種が単一 `E:「un vestido」` である点と照らして客観的な誤り（様式的選好ではない）。よって CLOSED にできない。
+
+**ファイル状態: OPEN**
+次にやること: #42 es_ar の `E:「un」 E:「vestido」` を単一 `E:「un vestido」` にマージする（surface「un vestido」、隣接同役重複を解消、es_co/es_eu と同型化）。
+
+## レビュアー再評価 — round 14 (Dra. Magdalena Soto-Quispe / @dialectomx)
+
+開発チームからの round-13 テキスト回答はファイルに追記されていないが、過去ラウンド（round 3/6/11）と同様、オーケストレーターが round-13 の唯一の actionable（N5: #42 es_ar の `E:「un」 E:「vestido」` 隣接同役重複）の修正をライブデータへ直接適用済みであることを `.wf_langmap_query.mjs 42`（担当8変種一括）で確認した。あわせて過年度修正の全面非退行も再検証した。
+
+### N5（round-13 actionable）. #42 es_ar — `E:「un」 E:「vestido」` の単一 E へのマージ — ✓ 承認（ライブ検証済み）
+
+ライブ確認: es_ar `A:「Ella」 B:「siempre」 C:「usa」 E:「un vestido」 D:「rojo」`。
+- round-10/12 監査由来の隣接同役重複 `E:「un」 E:「vestido」` が**単一の `E:「un vestido」`** にマージされ、オーナーの「隣接同一セグメントを作るな／マージせよ」方針に適合した。
+- 兄弟群との完全同型を確認: es_co/es_eu/es_mx も `E:「un vestido」`（同一 E 単位）。es_cl `C:「anda con」`、es_pe `C:「se pone」`、es_cu `C:「se vite」`、es_an `C:「se pone」 E:「un vehtido」` も動詞語彙・音写差を保ちつつ E は単一。
+- surface「un vestido」で兄弟と一致、テキスト改変なし。役順 C→E→D で隣接同役重複なし。私の round-13 指摘 N5 は完全に解消。冠詞 un の D（形容詞役割）誤割当も同時に解消（D は `D:「rojo」` 単独）。
+
+### 過年度修正の非退行確認 — ✓ 全件維持
+
+- #1 es_cu `J:「frente al」`／es_an `J:「frente ar」`
+- #38 es_an `C:「eh preciosa」`（単数女性一致）
+- #80 全8変種 `E:creo H:que B:estudiar/ehtudiá F:場所句 D:es/e/eh I:una C:experiencia G:valiosa`（N1=H, N2=B/F 維持）
+- #84 es_an `D:「la semana」 E:「pasá」`（N3）／es_cu `C:「cogió」 B:「un catarro」`（S11）／es_co `B|C:「se resfrió」`
+- #86 es_pe `C:「uso pe」`／es_cu `B:「el celulá mío」`／es_an `B:「el móvil mío」`（誤 A 除去維持）
+- #92 es_cu/es_an `B:「gyoza」`
+- #35 es_cu `D:「el me」 C:「pasado」`／es_an `D:「el meh」 C:「pasao」`（N4 冠詞 D 側復帰維持）
+- #25 es_cl `C:「una」 D:「empresa」 F:「grande」`／#11 es_cl 非隣接 D 重複（KEEP）
+いずれもライブで維持を確認。退行なし。
+
+### 隣接同役重複の追加スイープ — ✓ 検出なし
+
+round 13 の #42 で隣接同役重複が一度発生したことを踏まえ、本ラウンドでは過去に重い分割を施した文（#69, #77, #43, #70, #49, #46, #55, #53, #73, #85, #51）を担当8変種一括で再走査し、隣接同一役割文字の重複が**新たに存在しないこと**を確認した。各文の役順は分離可能要素を別役割文字に切り出しつつ、隣接重複なく当該変種の実語順を反映している（例: #69 F→B→G→H→C、#73 G→C、#55 E→F→B）。#11 es_cl の D…E…D は名詞を挟む非隣接重複であり許容（round 10/13 で確認済み）。
+
+### 新規指摘
+
+新規の actionable はなし。round 1–13 を通じ、確実な誤り（綴り崩れ・非実在語・役割誤割当・性数一致ミス・冠詞誤付与・隣接同役重複）はすべて是正・ライブ検証済み。補文標識 H（N1）・不定詞句 B/F（N2）・各種複合融合（S1–S11）・「先週」D/E（N3）・「先月」冠詞（N4）・#42 の E マージ（N5）の分割／是正もすべて解消。担当8変種の分割粒度・冠詞付与・役割語順は参照言語群・近縁ロマンス諸語と整合し、これ以上の分離可能要素（particle/clitic/auxiliary/suffix/複数役割を覆う融合語）は確認できない。譲歩済み2件（#99 recueddo 音写・#39 mañana 話題化前置）は round 2 で開発側論拠が妥当として取り下げ済み、蒸し返さない。KEEP 判定（#3 desayuno 一語動詞・#13 deme 接語融合・#46/#52 屈折/無意志構文融合・#50 A mi perro wrap・#53 del 義務的縮約・#55co tintos 語彙融合・#69 屈折過去・#84 再帰一語動詞）も言語学的に正当で維持。
+
+### スコアカード（round 14）
+
+| 項目 | 判定 |
+|---|---|
+| N5 #42 es_ar `E:un E:vestido`→単一 `E:un vestido` マージ | ✓ 承認・ライブ検証済み |
+| 過年度 #1/#38/#80(N1,N2)/#84(N3,S11)/#86/#92/#35(N4)/#25/#11 非退行 | ✓ 維持確認 |
+| 隣接同役重複 追加スイープ | ✓ 検出なし |
+| 新規 actionable | なし |
+| 譲歩済み #99/#39 | 取り下げ維持 |
+
+開発側（オーケストレーター適用）の N5 修正は方向・実装ともに正しく、兄弟全変種が単一 `E:「un vestido」` である点と完全に一致し、隣接同役重複は解消された。過年度修正にも退行なく、追加スイープでも新たな隣接重複・分離可能要素は検出されなかった。残る actionable はなく、様式的選好や外部典拠の無い要求で開け続ける理由もない。担当8変種（es_mx, es_ar, es_cl, es_co, es_pe, es_cu, es_an, es_eu）のデータは方言語彙・音写・性数一致・voseo・役割語順・分割粒度・隣接重複回避のいずれの観点でも参照言語群と整合する。
+
+**ファイル状態: CLOSED — 残課題なし**

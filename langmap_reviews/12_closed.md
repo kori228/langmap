@@ -471,3 +471,108 @@ round 5 で残した唯一の actionable（#46 sco の3-way融合）について
 5. **融合否定縮約 (語幹改変・接語)**: #89 B|C cain't/cannae/cyaan — 否定が接語的に法助動詞へ融合し語幹も改変 (cain-/canna-/cyaa-)。ref の can+'t はアポストロフィ境界に依存するが方言形はその境界を喪失・改変しており、接語融合として KEEP。
 
 隣接同一役割の新規発生: なし (全 SPLIT は連続かつ役割相違を確認)。
+
+## レビュアー再評価 — round 10 (@creolemorphsyn)
+
+開発チームの round 9 包括スイープ (SPLIT 38 / KEEP 13) について、代表的な全型を `.wf_langmap_query.mjs` でライブ照合しました。**SPLIT 38 件はすべて実機に正しく反映済み**で、**KEEP 13 件の言語的非分離理由もいずれも妥当**です。退行 (regression) は検出されませんでした。ただし精査の過程で、スイープが「過去形 C|H の KEEP」のみを判定して見落とした **#52 の所有詞融合 (enm/en_ang/sco/jam)** を新規 actionable として提起します。
+
+### SPLIT 38 件 — 実機検証 (✓ 全件反映)
+
+- **限定詞+名詞**: #48 ✓ `E:that B:picture show/pleye/scēawunge/film` (en_app/enm/en_ang/sco)。#73 ✓ `G:ever'/every/ǣlce/ilka C:night/nyght/nihte/nicht`。#84 ✓ `E:last/ǣrre D:wike/wucan` (enm/en_ang)。**ACCEPT。**
+- **所有+名詞**: #51 en_aave ✓ `E:My A:grandmama`。**ACCEPT。**
+- **前置詞+名詞**: #53 ✓ `D:in/on/for A:the garden/þǣm gearde/the garden` (enm/en_ang/sco/pcm)。#69 ✓ `H:to/tō/tae/give C:his folks/...` (en_aave/en_app/en_south/enm/en_ang/sco)。#73 ✓ `F:on/upon/for B:my bed/...` (enm/en_ang/sco/pcm)。**ACCEPT。**
+- **数量詞+名詞**: #85 ✓ `E:māre/mair B:wæter/watter` (en_ang/sco)。**ACCEPT。**
+- **助動詞/相マーカー+動詞**: #53 ✓ `E:are/ben/are/don C:a-bloomin'/blosmynge/bloomin/open` (en_app/en_south/enm/sco/pcm)。en_ang `C|E:blōwaþ` (総合動詞)・en_aave `C|E:bloomin'` (ゼロコピュラ) は KEEP で正当。**ACCEPT。**
+- **動詞/動名詞+場所句**: #80 ✓ `B:studyin'/leornian/to studie F:abroad/on ūtlande/in strange londes` (en_aave/en_app/en_south/enm/en_ang/sco)。**ACCEPT。**
+- **冠詞+形容詞+名詞**: #80 ✓ `I:a G:real valuable/right good/right valuable/precious/valuable C:experience` (en_aave/en_app/en_south/enm/sco)、en_ang は冠詞なしで `G:dēorwyrðe C:āfandung`。**ACCEPT。**
+
+### KEEP 13 件 — 再評価 (✓ 全件妥当)
+
+- **総合的過去形動詞** (#46 E|H spak/sprǣc・#52 C|H lost/loste/forlēas/laas/lose・#69 D|E wrote/wroot/wrāt/rait/write): ライブ確認。母音交替型の総合単一語で分離可能な時制接尾辞なし。pcm 無屈折形も単一トークン。en 参照も同融合。**KEEP に同意。** (なお #46 sco `E:talk H:ed`・jam `H:did E:taak`、#52 en_south `H:done C:lost` は分析的形で正しく分離されており整合。)
+- **古英語 portmanteau** (#38 en_ang `A|D:heonan` = from+here の一語副詞・#53 en_ang `C|E:blōwaþ`): ライブ確認。分離可能トークンなし。**KEEP に同意。**
+- **AAVE ゼロコピュラ欠落** (#53 en_aave `C|E:bloomin'`): be が型論的省略。分離すべきトークンが存在しない。**KEEP に同意。**
+- **複合名詞** (#77 en_ang `E|B:þǣm costnungāgieldum`、前置詞 `D:be` は分離済): costnung-āgieldum は test+results を一語化した OE 複合名詞で内部分離不能。**KEEP に同意。**
+- **融合否定縮約** (#89 `B|C:cain't/cannae/cyaan`): 否定が接語的に法助動詞へ融合し語幹改変。`B:no C:fit` (pcm)・`B:ne C:mæg` (en_ang)・`B:kan C:nat` (enm) は2語で正しく分離済。**KEEP に同意。**
+
+### 【新規・確実】#52 enm/en_ang/sco/jam — 所有詞 `my/mīnne/ma/mi` が名詞 B に融合 (分離可能・兄弟が分割済)
+
+- **Current:** enm `B:「my purs」`／en_ang `B:「mīnne wǣdpung」`／sco `B:「ma wallet」`／jam `B:「mi walit」` (いずれも所有詞+名詞を B 1セルに融合)。
+- **Problem:** 同一文 #52 で en 参照および sibling 変種 en_aave/en_app/en_south/pcm はすべて `E:「my」 B:「wallet」` と所有詞を E に分離済み (ライブ確認)。所有詞 `my/mīnne/ma/mi` はいずれも独立語であり分離可能。round 9 スイープは #52 については「過去形 C|H の KEEP」のみを判定し、この所有詞融合 (E|B 相当) を判定対象から落としている。**分割優先方針 (owner directive) に照らし、分離可能な所有詞が隣接名詞に膠着している以上、SPLIT が必須。** 分割後は `…C|H:loste E:my B:purs F:at…` のように異なる role-letter (E≠B) となり、隣接同一役割は生じず surface も不変。
+  - 補足: round 4 で本件を【要検討・強制せず】としたが、それは「所有詞を名詞句に含める設計でも一貫していれば許容」という条件付きであった。実機では群内多数 (en_aave/en_app/en_south/pcm) が分離しており設計は分離側に統一されているため、enm/en_ang/sco/jam の融合は一貫性を欠く未分割であり、許容条件を満たさない。
+- **Proposed fix:** enm `E:「my」 B:「purs」`／en_ang `E:「mīnne」 B:「wǣdpung」`／sco `E:「ma」 B:「wallet」`／jam `E:「mi」 B:「walit」`。
+
+### スコアカード (round 10)
+
+- round 9 SPLIT 38 件: 代表全型を実機照合し全件反映を確認 — ✓
+- round 9 KEEP 13 件: 言語的非分離理由いずれも妥当 — ✓ (dev と一致)
+- 退行 (regression): なし
+- 新規 actionable 指摘: **1件** (#52 enm/en_ang/sco/jam 所有詞融合の分割)
+- 私の追加 CONCEDE: 0件
+- 隣接同一役割の残存: なし
+
+dev の分割作業は全件正確かつ低リスクで質が高い。残る唯一の actionable は、過去ラウンドで【要検討】に留めたまま双方が確定処理を怠った **#52 の所有詞融合** で、群内多数が既に分離済み・所有詞は分離可能語・分割優先方針に明確に合致するため、修正必須と判断します。
+
+**ファイル状態: OPEN**
+次の1点のみ: #52 で所有詞を名詞 B から分離し E に移す — enm `E:my B:purs`／en_ang `E:mīnne B:wǣdpung`／sco `E:ma B:wallet`／jam `E:mi B:walit` (en/en_aave/en_app/en_south/pcm と統一)。
+
+## 開発チーム回答 — round 11 (作業者)
+
+round 10 で唯一残った actionable（#52 enm/en_ang/sco/jam の所有詞融合）を `.wf_langmap_query.mjs` でライブ照合し、分割優先方針に基づき適用した。
+
+### #52 enm/en_ang/sco/jam — 所有詞 my/mīnne/ma/mi を名詞 B から分離し E へ — APPLIED（本ラウンドでオーケストレータ適用）
+
+ライブ照合:
+- enm `A:I C|H:loste B:my purs F:at D:the chepyng`
+- en_ang `A:Ic C|H:forlēas B:mīnne wǣdpung F:æt D:þǣm cēape`
+- sco `A:A C|H:lost B:ma wallet F:at D:the mercat`
+- jam `A:Mi C|H:laas B:mi walit F:a D:di maakit`
+
+同一文の参照 en および sibling 変種 en_aave/en_app/en_south/pcm はいずれも `E:my B:wallet` と所有詞を E に分離済み（ライブ確認）。所有詞 my/mīnne/ma/mi はいずれも独立語で分離可能、E≠B で隣接同一役割を生まず、surface も不変。群内多数が分離側に統一されており、enm/en_ang/sco/jam の融合は一貫性を欠く未分割であるため、レビュアーの SPLIT 必須判定に同意し適用。
+
+- enm → `A:I C|H:loste E:my B:purs F:at D:the chepyng`
+- en_ang → `A:Ic C|H:forlēas E:mīnne B:wǣdpung F:æt D:þǣm cēape`
+- sco → `A:A C|H:lost E:ma B:wallet F:at D:the mercat`
+- jam → `A:Mi C|H:laas E:mi B:walit F:a D:di maakit`
+
+過去形 C|H（loste/forlēas/lost/laas、屈折語内融合）は en 同様 KEEP で維持。残る actionable はこれで解消。
+
+## レビュアー再評価 — round 12 (@creolemorphsyn)
+
+開発チーム回答 round 11 で APPLIED とされた #52 所有詞分割（enm/en_ang/sco/jam）を `.wf_langmap_query.mjs` でライブ全件照合し、あわせて過去ラウンドの確実案件・分割案件を退行(regression)チェックしました。**round 10 で唯一残した actionable（#52 所有詞融合）は4言語すべて実機に正しく反映済み**で、退行は皆無、新規 actionable はゼロです。
+
+### round 10 残課題 — #52 所有詞 E|B 分割 → ✓ ACCEPT（4件すべて解消確認）
+
+ライブ実値:
+- **enm** ✓ `A:I C|H:loste E:my B:purs F:at D:the chepyng` — 所有詞 `my` を E に分離、B は `purs` 単独。
+- **en_ang** ✓ `A:Ic C|H:forlēas E:mīnne B:wǣdpung F:æt D:þǣm cēape` — `mīnne`(対格所有詞)を E に分離。
+- **sco** ✓ `A:A C|H:lost E:ma B:wallet F:at D:the mercat` — `ma` を E に分離。
+- **jam** ✓ `A:Mi C|H:laas E:mi B:walit F:a D:di maakit` — `mi`(所有詞)を E に分離。
+
+いずれも (i) E≠B で異なる role-letter、(ii) 隣接同一役割なし、(iii) surface 不変、(iv) 同文の en/en_aave/en_app/en_south/pcm の `E:my B:wallet` と群内整合。所有詞 my/mīnne/ma/mi は分離可能な独立語であり、分割優先方針(owner directive)に完全合致。**全件 ACCEPT。** 過去形 C|H（loste/forlēas/lost/laas、母音交替・屈折語内融合）は en 同様 KEEP のまま維持されており正当。
+
+### 退行チェック（過去ラウンドの確実・分割案件を全件再照合）
+
+- **jam 否定助動詞**: #10 `D:kyan`／#30 `E:kyan`／#68 `A:Mi D:kyan`（肯定形＋主語助動詞分割）— 維持。✓
+- **#81 jam セル破損**: `B:Mi hed D:a hat mi C:tide`（役割 A 重複解消・`ed→hed`）— 維持。✓
+- **#94 en_ang**: `A:Geþēode`（tungol=星 の誤用解消）— 維持。✓
+- **#36 jam 存在文**: `A:Nuf B:piipl C:a di stieshan`（Nuf を A へ）— 維持。✓
+- **#33 pcm／#5 jam 畳語 well well**: `C:well well` 単一セル化・D 重複解消 — 維持。✓
+- **#46 sco 3-way 融合**: `F:wi G:ma B:freend` — 維持。enm `F:with G:my B:felawe`／en_ang `F:mid G:mīnum B:frēonde` とも整合。✓
+- **#89 否定辞2語**: pcm `B:no C:fit`／en_ang `B:ne C:mæg` — 維持。sco `cannae`/jam `cyaan`/en_app `cain't` 単一語融合は KEEP で正当。✓
+- **#70 前置詞句3-way**: enm `D:at E:nyne of the clokke F:at even`／en_ang `D:æt E:9 F:ǣfentīdum`／pcm `D:for E:nine o'clock F:night` — 維持。✓
+
+### 新規 actionable 指摘
+
+精査の結果、新たな明白エラー・未分割の分離可能要素は検出されませんでした（**0件**）。#52 の `D:the chepyng`(enm)／`D:di maakit`(jam) 等の冠詞＋名詞は、参照 en も `D:the market` を1セルで保持しており群内整合が取れているため、過剰分割は不要。担当8変種すべてで、分離可能な助動詞・前置詞・所有詞・畳語・否定辞は分割済みであり、残る融合（過去形屈折・OE 複合名詞 costnungāgieldum・単一語否定 cannae/cyaan/cain't・heonan 等）はいずれも分離不能な正当融合です。
+
+### スコアカード（round 12）
+
+- round 10 残課題（#52 所有詞 E|B 分割、enm/en_ang/sco/jam の4件）: ✓ 全件実機反映を確認・解消
+- 過去ラウンドの確実案件・分割案件: 退行なし（全件維持）
+- 新規 actionable 指摘: 0件
+- 私の追加 CONCEDE: 0件（既存の譲歩で確定済み）
+- 隣接同一役割の残存: なし
+
+dev の round 11 適用は4件すべて正確かつ低リスクで、全要求が実機で満たされています。担当8変種について、確実エラー・分割粒度の統一・方言/古英語/クレオールの自然さのいずれの観点でも、actionable な残課題は存在しません。
+
+**ファイル状態: CLOSED — 残課題なし**

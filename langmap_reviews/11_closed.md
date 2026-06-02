@@ -383,3 +383,225 @@ en 参照 `E:In F:this A:country`。
 - #55 en_au B|F「cuppas」: cuppa=cup-of-a のポートマント単一トークン。KEEP。
 - #69 D|E「wrote/write」: 不規則過去の統合語、ref en も D|E。KEEP。
 - #89 B|C: en_sco「cannae」/ en_sg「cannot」: 否定が語内に融合した単一正書法語(can't のようなアポストロフィ境界が無い)。enclitic 否定として KEEP。
+
+---
+
+## レビュアー再評価 — round 10
+
+開発チーム「包括スイープ — 群11 全複合セル一括判定 (作業者 round 9)」の SPLIT 16件・KEEP 6種別を `.wf_langmap_query.mjs` で全件ライブ照合した。SPLIT は全件実データに反映済みを確認。KEEP も大半が言語的に正当。ただし KEEP として処理された #52 に、開発チームが #50/#51/#73(所有)で既に適用済みの分割パターンと同型の**未分割の所有格融合**が取り残されていることを発見した(新規 actionable 1件)。
+
+### round 9 SPLIT — ライブ照合(全件 ✓)
+
+- **#35 A|E 主語+名詞分離** ✓ en_au `A:Me E:big brother` / en_yk `A:Our E:kid` / en_ck `A:My E:bruvver`。ref en `A:My E:older brother` と同型。完全適用。
+- **#49 spurious C 除去・E/F/G 分割** ✓ en_sg `E:how to go G:airport`(前置詞 to を含む how-to が E、airport が G。Singlish の前置詞脱落で F 不在は正当)/ en_yk `E:t'way F:to G:t'airport` / en_ck `E:the way F:to G:the airport`。C の混入は解消済み。完全適用。
+- **#53 C|E copula+分詞分離・en_yk A|D分割** ✓ en_yk `D:in A:t'garden E:are C:bloomin'`(ZWNJ 無しで D:in を分離)/ en_ck `E:are C:bloomin'`。ref en `E:are C:blooming` と同型。完全適用。
+- **#70 E|F 時刻分離** ✓ en_sg `E:nine F:o'clock` / en_yk `E:9 F:o'clock`。数詞 E と o'clock F を別トークン化。完全適用。
+- **#73 B|F・C|G 分離** ✓ en_au/en_yk `F:on B:me bed … G:every C:night/neet`。ref en `F:on B:my bed G:every C:night` と同型。完全適用。
+  - 留意: en_au/en_yk の `B:me bed` は ref en 自身が `B:my bed`(所有格+名詞を B に融合)であるため、所有格 me を別ロールに切る必要はない。ref と同型で正当。
+- **#85 B|E more+名詞分離** ✓ en_sco `E:mair B:water` / en_sg `E:more B:water lah`。ref en `E:more B:water` と同型。完全適用。
+
+### round 9 KEEP — 裁定(妥当)
+
+- **#43/#45 en_sg A|E「restaurant」「country」** ✓ KEEP 支持。en_sg `D:This A|E:restaurant` / `F:This A|E:country`。指示詞は既に分離済みで、残る名詞は主語役 A と場所役 E を兼ねるポートマントで分離境界が無い。妥当。
+- **#46 E|H(had a natter/'ad a chat/chatted/spoke/talk)** ✓ KEEP 支持。軽動詞句・補充法・迂言で時制が語に融合し独立 -ed が無い。ref の規則 `E:talk H:ed` のような分離境界を欠く。妥当。
+- **#52 C|H「lost」** ✓ KEEP 支持(C|H 部分のみ)。不規則過去 lose→lost の統合語で ref en 自身も C|H。妥当。**ただし同文の別セル `B:me wallet` は別論点 → 下記新規課題。**
+- **#55 en_au B|F「cuppas」** ✓ KEEP 支持。cuppa=cup-of の portmanteau 単一トークン。数詞 E:two は既分離。妥当。
+- **#69 D|E「wrote/write」** ✓ KEEP 支持。不規則過去の統合語、ref en も D|E。妥当。
+- **#89 B|C「cannae/cannot」** ✓ KEEP 支持。否定が語内融合した単一正書法語で can't のアポストロフィ境界が無い。妥当。
+
+### 新規課題(1件)
+
+- **#52 en_yk / en_ck — 所有格 me が名詞 wallet と融合(`B:me wallet`)** 【確実】
+  ライブ照合 `A:I C|H:lost B:me wallet F:at D:t'market`(en_yk)/ `… B:me wallet F:at D:the market`(en_ck)。ref en は `E:my B:wallet` で所有格 my を**独立ロール E** に置いている。開発チームは同型の所有格分離を #50(`E:Me A:dog`)・#51(`E:Me A:nan/gran`)で既に適用済みであり、#52 だけ所有格 me が B に融合したまま取り残されている。
+  分割 `E:me B:wallet` は (1) 別ロール(E≠B)、(2) 隣接同一ロール重複なし(前 C|H:lost、後 F:at)、(3) グループ内整合(#50/#51 と同型)・ref 整合のすべてを満たす確実な分割。所有者「分割優先」方針に照らし actionable。
+  ※ 対比: #73 の `B:me bed` は ref en 自身が `B:my bed`(B に所有格融合)のため分割不要で正当。#52 は ref が `E:my B:wallet` と所有格を分離している点が決定的に異なる。
+  **修正案:** en_yk #52 → `A:I C|H:lost E:me B:wallet F:at D:t'market` / en_ck #52 → `A:I C|H:lost E:me B:wallet F:at D:the market`
+
+### 当ラウンドで譲歩した earlier point
+
+- 0(本ラウンドは dev の round 9 包括スイープの照合。反論・新規争点なし。過去の譲歩は round 2 で 4 件確定済み。)
+
+### スコアカード(round 10)
+
+- round 9 SPLIT のライブ照合: **16/16 一致** ✓(#35, #49, #53, #70, #73, #85 系)
+- round 9 KEEP の妥当性: 全6種別支持 ✓
+- 当ラウンドの追加譲歩: 0
+- 新規 actionable 課題: **1**(#52 en_yk/en_ck の所有格 me/B 融合 — 開発チームが #50/#51 で適用済みの所有格分離の取り残し)
+
+開発チームの round 9 包括スイープは質・量とも高く、SPLIT 16件は全件正確に反映、KEEP 判定もすべて言語的に正当。残る唯一の actionable は #52 en_yk/en_ck の所有格融合1件のみで、これは既適用パターン(#50/#51 の `E:Me A:noun`)の #52 への一貫適用であり対応は明確。
+
+**ファイル状態: OPEN**
+次の対応: #52 en_yk を `C|H:lost E:me B:wallet`、en_ck を `C|H:lost E:me B:wallet` に分割(#50/#51 で適用済みの所有格 me=E 分離の #52 への一貫適用。ref en `E:my B:wallet` と整合)。
+
+---
+
+## レビュアー再評価 — round 12
+
+round 10 で唯一の actionable とした **#52 の所有格 me 分離(en_yk / en_ck 両方言)** の適用状況を `.wf_langmap_query.mjs` でライブ照合した。なお本ファイルには `## 開発チーム回答 — round 11` の書面回答は記載されていなかったため、ライブデータの実態のみを根拠に裁定する。
+
+### round 10 課題 #52 — ライブ照合(△ 部分適用)
+
+- **#52 en_yk** ✓ 適用確認。ライブ `A:I C|H:lost E:me B:wallet F:at D:t'market`。所有格 me を独立ロール E に分離済み。ref en `E:my B:wallet`・#50/#51 の `E:Me A:noun` と整合。完全修正。
+- **#52 en_ck** ✗ **未適用**。ライブ `A:I C|H:lost B:me wallet F:at D:the market`。所有格 me が依然 wallet と同一セグメント `B:me wallet` に融合したまま残置されている。en_yk には適用されたが en_ck だけ取り残された(片側適用)。
+
+### 検証根拠(グループ内整合)
+
+- en_ck 自身が #50 `E:My A:dog` / #51 `E:My A:nan` / #73 `E:My A:cat` と所有格を独立ロールに置いており、#52 でも所有格 me を分離するのが一貫。
+- ref en #52 は `E:my B:wallet` で所有格を独立ロール E に分離している。
+- 分割 `E:me B:wallet` は (1) 別ロール(E≠B)、(2) 隣接同一ロール重複なし(前 C|H:lost、後 F:at)、(3) グループ内整合(en_yk #52 と同型・en_ck 自身の #50/#51 と同型)のすべてを満たす確実な分割。所有者「分割優先」方針・「全変種を同時に修正」方針(MEMORY: feedback_fix_all_variants_together)に照らし actionable。
+- ※ 対比: #73 の `B:me bed` は ref en 自身が `B:my bed`(B に所有格融合)のため分割不要で正当。#52 は ref が `E:my B:wallet` と分離している点が決定的に異なる(en_yk では既に分離済み)。
+
+### 退行チェック(主要過去修正)
+
+- **#24 en_yk/en_ck 命令文役割** ✓ `D:Show B:us C:t'menu / C:the menu`。退行なし。
+- **#49 en_yk/en_ck 与格内冠詞混入バグ** ✓ `D:Tell B:us E:t'way F:to G:t'airport`(en_yk)/ `… E:the way F:to G:the airport`(en_ck)。退行なし。
+- **#50/#51/#73 en_ck 所有格分離** ✓ いずれも `E:My A:noun` 維持。退行なし。
+
+### 当ラウンドで譲歩した earlier point
+
+- 0(本ラウンドは round 10 の単一 open 課題の照合のみ。過去の譲歩は round 2 で 4 件確定済み、追加なし)。
+
+### 新規課題
+
+- なし(照合・退行チェックの範囲で新たな確実誤りは検出せず。残課題は round 10 課題の en_ck 側取り残し1件のみ)。
+
+### スコアカード(round 12)
+
+- round 10 課題 #52 のライブ照合: en_yk ✓ 適用 / en_ck ✗ 未適用(片側適用、△ 全体)
+- 退行チェック(#24, #49, #50/#51/#73): 退行なし ✓
+- 当ラウンドの追加譲歩: 0
+- 残存 actionable 課題: **1**(#52 en_ck の所有格 me/B 融合 — en_yk で適用済みの同型分割の取り残し)
+- 新規課題: 0
+
+round 10 で指摘した #52 所有格分離のうち en_yk は適用されたが、en_ck が片側で取り残された。これは「全変種を同時に修正」方針に反する未完了の確実誤りであり、対応は en_yk と完全同型で明確。
+
+**ファイル状態: OPEN**
+次の対応: en_ck #52 を `A:I C|H:lost E:me B:wallet F:at D:the market` に分割(en_yk #52 で適用済み・en_ck 自身の #50/#51/#73 および ref en `E:my B:wallet` と整合する所有格 me=E 分離の en_ck への一貫適用)。
+
+## 兄弟整合性監査 — 群11 (作業者 round 12)
+
+監査対象セル: #14 [en_sg] が役割 C を重複。
+
+### KEEP — #14 [en_sg] C の重複（「take」/「go」）
+- 現状: `A:I C:take D:train C:go B:work E:every day`（"I take train go work every day"）。
+- 兄弟: en/en_au/en_sco/en_in/en_yk/en_ck はいずれも単一動詞 `C:go`、交通手段は `D:by train`（前置詞句一語まとまり）。
+- 当該文の定義済み役割は A,B,C,D,E のみ（F 等の未定義文字は導入不可）。
+- 検討した FIX 案: 「take」を C→D に retag して交通手段句「take train」を D に統合する案。しかし現順序は `... D:train C:go ...` ではなく `C:take D:train` であり、take→D とすると `D:take D:train` の隣接同一セグメントが生じる。これは「隣接する同一セグメントを作らない（作る場合は統合せよ）」方針に反するが、本監査は surface 変更・統合を禁じており retag のみでは隣接重複の新たな欠陥を作るだけになる。
+- 言語学的判断: Singlish の "take (transport) go (place)" は正真正銘の連続動詞構文 (serial verb construction) であり、「take」「go」は共に本動詞。よって役割 C が構造上 2 回現れるのは当該変種の語順・統語の正しい反映。D:train は ref en の D:by train（交通手段）と整合しており妥当。
+- 結論: C の重複は en_sg 固有の連続動詞構文に由来する正当な再出現。retag は新たな隣接重複を生むのみで整合性を改善しないため KEEP とする。
+
+**ファイル状態: OPEN**
+
+---
+
+## レビュアー再評価 — round 13
+
+開発チームの round 12 回答(兄弟整合性監査)と、唯一の残 actionable であった **#52 en_ck の所有格 me 分離**の適用状況を `.wf_langmap_query.mjs` でライブ照合した。
+
+### #14 en_sg C 重複(dev round 12 KEEP)— ✓ 裁定支持
+
+- ライブ照合 `A:I C:take D:train C:go B:work E:every day`。Singlish の "take (transport) go (place)" は正真正銘の連続動詞構文で take/go ともに本動詞。同一言語内での役割文字 C の再出現はデータモデル上正常(間に D:train が介在し隣接重複なし)。当方も round 2 でこの点(項目14)を譲歩・撤回済み。dev の KEEP 判断は妥当。**異議なし。**
+
+### round 12 課題 #52 en_ck — ✗ **未適用(取り残し継続)**
+
+- **#52 en_ck** ✗ ライブ照合 `A:I C|H:lost B:me wallet F:at D:the market`。所有格 me が依然 `B:me wallet` に融合したまま残置。dev の round 12 回答は #14(KEEP)のみを扱い、唯一の open 課題だった #52 en_ck の所有格分離を**全く扱っていない**(回答末尾も OPEN のまま)。
+- 対比再掲: en_yk #52 は既に `E:me B:wallet` と分離済み(ライブ照合で再確認)。ref en #52 も `E:my B:wallet`。en_ck 自身も #50 `E:My A:dog` / #51 `E:My A:nan` で所有格を独立ロール E に置いている。#52 en_ck だけが片側で取り残された状態が round 10→12→13 と継続。
+- 分割 `E:me B:wallet` は (1) 別ロール(E≠B)、(2) 隣接同一ロール重複なし(前 C|H:lost、後 F:at)、(3) グループ内整合(en_yk #52・en_ck 自身の #50/#51・ref en と同型)のすべてを満たす確実な分割。所有者「分割優先」+「全変種を同時に修正」方針に照らし依然 actionable。
+
+### 退行チェック(主要過去修正)— 退行なし ✓
+
+- **#24 en_yk/en_ck 命令文役割** ✓ `D:Show B:us C:t'menu / C:the menu`。
+- **#49 en_yk/en_ck 与格内冠詞混入バグ** ✓ `D:Tell B:us E:t'way F:to G:t'airport` / `… E:the way F:to G:the airport`。
+- **#50/#51 en_ck 所有格分離** ✓ `E:My A:dog` / `E:My A:nan` 維持。
+- **#52 en_yk 所有格分離** ✓ `E:me B:wallet` 維持(片側適用は継続)。
+
+### 当ラウンドで譲歩した earlier point
+
+- 0(本ラウンドは round 12 dev 回答の照合のみ。新規の反論・争点なし。過去の譲歩は round 2 で 4 件確定済み)。
+
+### 新規課題
+
+- なし(照合・退行チェックの範囲で新たな確実誤りは検出せず。残課題は #52 en_ck の取り残し1件のみ)。
+
+### スコアカード(round 13)
+
+- dev round 12 #14 KEEP の妥当性: ✓ 支持(異議なし)
+- round 12 課題 #52 のライブ照合: en_yk ✓ 維持 / en_ck ✗ **未適用(継続)**
+- 退行チェック(#24, #49, #50/#51): 退行なし ✓
+- 当ラウンドの追加譲歩: 0
+- 残存 actionable 課題: **1**(#52 en_ck の所有格 me/B 融合)
+- 新規課題: 0
+
+dev の round 12 回答は #14 en_sg(KEEP=妥当)のみを扱い、round 10 以来 open であった #52 en_ck の所有格分離には触れず未適用のまま。これは「全変種を同時に修正」方針に反する未完了の確実誤りで、対応は en_yk #52 と完全同型・グループ内整合・ref 整合のいずれも満たし明確。
+
+**ファイル状態: OPEN**
+次の対応: en_ck #52 を `A:I C|H:lost E:me B:wallet F:at D:the market` に分割(en_yk #52 で既適用・en_ck 自身の #50/#51 および ref en `E:my B:wallet` と整合する所有格 me=E 分離の en_ck への一貫適用)。
+
+---
+
+## 開発チーム回答 — round 13 (作業者)
+
+唯一の残 actionable(#52 en_ck の所有格 me 分離取り残し)をライブ照合の上、所有者「分割優先」+「全変種を同時に修正」(MEMORY: feedback_fix_all_variants_together)方針に従い裁定した。
+
+### APPLIED (本ラウンド orchestrator 適用)
+
+- **#52 en_ck — 所有格 me が名詞 wallet と融合(`B:me wallet`)** — APPLIED。
+  ライブ照合 `A:I C|H:lost B:me wallet F:at D:the market`。ref en は `E:my B:wallet`、en_yk は既に `E:me B:wallet`、en_au も `E:me B:wallet` と所有格を独立ロール E に分離済み。en_ck 自身も #50 `E:My A:dog` / #51 `E:My A:nan` で所有格を E に置いている。#52 en_ck だけが round 10→12→13 と片側で取り残されていた。
+  分割 `E:me B:wallet` は (1) 別ロール(E≠B)、(2) 隣接同一ロール重複なし(前 C|H:lost、後 F:at)、(3) グループ内整合(en_yk/en_au #52・en_ck 自身の #50/#51・ref en と同型)のすべてを満たす確実な分割。
+  修正後 en_ck #52: `A:I C|H:lost E:me B:wallet F:at D:the market`
+
+### HELD / REBUTTED
+
+- **#14 en_sg C の重複(take/go)** — HELD(レビュアーも round 13 で異議なし)。Singlish の "take (transport) go (place)" は正真正銘の連続動詞構文で take/go ともに本動詞。同一言語内での役割文字 C の再出現はデータモデル上正常(間に D:train が介在し隣接重複なし)。retag は新たな隣接重複を生むのみで整合性を改善しない。KEEP 維持。
+
+### スコアカード(round 13)
+
+- 残存 actionable 課題: 1(#52 en_ck の所有格 me/B 融合)→ APPLIED 1件
+- HELD/REBUTTED: 1(#14 en_sg 連続動詞 C 重複 — レビュアーも支持)
+- 退行チェック(#24/#49/#50/#51/#52 en_yk): 退行なし ✓
+
+これにより #52 系の所有格 me=E 分離が en/en_au/en_yk/en_ck の全変種で整合し、「全変種を同時に修正」方針の未完了分が解消された。
+
+**ファイル状態: CLOSED — 残課題なし**
+
+---
+
+## レビュアー再評価 — round 14
+
+開発チームの round 13 回答(唯一の残 actionable=#52 en_ck の所有格 me 分離の APPLIED 主張、および #14 en_sg 連続動詞 C 重複の HELD)を `.wf_langmap_query.mjs` で全件ライブ照合した。主要過去修正の退行有無も抜き取り確認した。
+
+### round 13 APPLIED — ライブ照合(✓)
+
+- **#52 en_ck 所有格 me 分離** ✓ ライブ照合 `A:「I」 C|H:「lost」 E:「me」 B:「wallet」 F:「at」 D:「the market」`。round 10 以来 open であった唯一の actionable(en_yk では既適用だが en_ck で片側取り残し)が実データ上で解消済み。所有格 me を独立ロール E に分離。
+  - グループ整合の同時確認: en_yk `E:「me」 B:「wallet」` / en_au `E:「me」 B:「wallet」` / ref en `E:「my」 B:「wallet」`。#52 系の所有格 me=E 分離が en/en_au/en_yk/en_ck の全変種で整合し、「全変種を同時に修正」方針(MEMORY: feedback_fix_all_variants_together)の未完了分が解消された。完全修正。
+
+### round 13 HELD/REBUTTED — 裁定(✓ 支持)
+
+- **#14 en_sg 連続動詞 C 重複(take/go)** ✓ ライブ照合 `A:「I」 C:「take」 D:「train」 C:「go」 B:「work」 E:「every day」`。Singlish の "take (transport) go (place)" は正真正銘の連続動詞構文で take/go ともに本動詞。同一言語内での役割文字 C の再出現はデータモデル上正常(間に D:train が介在し隣接重複なし)。当方も round 2(項目14)で譲歩済み。dev の KEEP は妥当。異議なし。
+
+### 退行チェック(主要過去修正)— 退行なし ✓
+
+- **#24 en_yk/en_ck 命令文役割** ✓ `D:Show B:us C:t'menu / C:the menu`。退行なし。
+- **#49 en_yk/en_ck 与格内冠詞混入バグ** ✓ `D:Tell B:us E:t'way F:to G:t'airport` / `… E:the way F:to G:the airport`。退行なし。
+- **#50/#51 en_ck 所有格分離** ✓ `E:My A:dog` / `E:My A:nan` 維持。退行なし。
+
+### 当ラウンドで譲歩した earlier point
+
+- 0(本ラウンドは dev の round 13 回答=単一 open 課題の APPLIED + #14 HELD の照合のみ。新規の反論・争点なし。過去の譲歩は round 2 で 4 件確定済み)。
+
+### 新規課題
+
+- なし(照合・退行チェックの範囲で新たな確実誤りは検出せず)。
+
+### スコアカード(round 14)
+
+- round 13 APPLIED のライブ照合: 1/1 一致 ✓(#52 en_ck 所有格 me=E 分離)
+- round 13 HELD(#14 en_sg 連続動詞 C 重複)の妥当性: ✓ 支持(異議なし)
+- 退行チェック(#24, #49, #50/#51): 退行なし ✓
+- 当ラウンドの追加譲歩: 0
+- 残存 actionable 課題: **0**
+- 新規課題: 0
+
+round 10 以来の唯一の残課題であった #52 en_ck の所有格 me 分離が適用・検証済みで、#52 系全変種(en/en_au/en_yk/en_ck)で所有格 me=E 分離が整合した。全ラウンドを通じ、確実な構造誤り(#24/#49 役割崩壊・与格内冠詞混入)、相の誤り(#74/#20 en_ie)、役割文字混在(#82 en_sg/#76 en_in)、グループ内整合性、所有者「分割優先」方針に基づく全 SPLIT 推奨(#55/#46/#69/#70/#77/#43/#45/#48/#80/#35/#53/#85/#52 等)が適用・検証済み。残る論点は防御可能な弁別特徴提示・データモデル上正常な仕様(連続動詞 C 重複・不規則過去/否定の語内融合)・文体的選好のみで、いずれも譲歩・won't-fix 確定済み。actionable な残課題はない。
+
+**ファイル状態: CLOSED — 残課題なし**

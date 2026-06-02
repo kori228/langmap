@@ -594,3 +594,245 @@ SPLIT: 36 件 / KEEP: 18 件。
 - #52 nan/cdo「遺失」: 遺+失 は同義二字の統合動詞でアスペクト分離トークン無し → KEEP。
 - #80 yue/nan/cdo「留學」: abroad を内包する単一複合名詞 → KEEP。
 - #84 za, #85 全変種, #89 ii/za: 慣用多トークン句または more/否定の分離トークンが無いもの → KEEP。
+
+## レビュアー再評価 — round 10 (陳明達 / @nanyue_fieldnotes)
+
+round 9「包括スイープ」(作業者)の SPLIT 36件・KEEP 18件を `.wf_langmap_query.mjs` で全件ライブ照合した。申告文に明示的な APPLIED 表記は無かったが、実データはスイープの判定どおり反映済みであることを確認した(申告文より実データ優先で判定)。加えて R1〜R6 の既修正が退行していないこと、KEEP 群に分割選好方針(オーナー指示「迷ったら分割」)違反の取り残しが無いかを精査した。
+
+### round 9 SPLIT — ライブ反映確認 (✓ ACCEPT)
+
+- **ii 全般(#35/#38/#46/#50/#51/#52/#53/#55/#69/#73/#77/#80)** ✓ — 彝文の所有+名詞・動詞+完了アスペクト・処格・数量詞の分割が全件反映。#35 `A:ꉢ E:ꀊꈌ`/`C:ꃅꃶ D:ꆪ`、#38 `D:ꀉꎆ A:ꇬ`、#46 `E:ꌧ H:ꌐ`、#50 `E:ꉢꈬ A:ꁡ`、#51 `E:ꉢ A:ꀊꂾꀉꂾ`、#52 `C:ꃬ H:ꌐ`/`D:ꇬꂷ F:ꃅ`、#53 `A:ꑤꃅ D:ꄉ`/`C:ꇈ E:ꑌ`、#55 `B:ꈩꐱ E:ꇖ F:ꊏ`、#69 `C:ꀊꃀꀉꂾ H:ꈬ`/`D:ꏂ E:ꌐ`、#73 `E:ꉢꈬ A:ꃬꏢ`/`B:ꉢꈬꋠ F:ꃅ`、#77 `B|E:ꈚꏂꊌ D:ꈬ`(後置詞 D のみ分離、融合ブロックは維持) すべて一致。
+- **#46 E|H 動詞+完了(fix-all)** ✓ — yue `E:傾 H:咗`、nan `E:講 H:了`、hak_cn `E:講 H:了`、cdo `E:講 H:了`、za `E:gangj H:le`。hmn `E|H:tham`(アスペクト無し)は妥当 KEEP。
+- **#51 所有+祖母(fix-all)** ✓ — hak_cn `E:𠊎 A:阿婆`、za `E:Gou A:daiqmeh`、hmn `E:Kuv A:pog`、yue `E:我 A:嫲嫲`。nan `A|E:阿媽`・cdo `A|E:阿嬤`(所有トークン無し)は妥当 KEEP。
+- **#69 C|H 与格+両親、D|E 動詞+完了** ✓ — C|H: yue `H:畀 C:佢父母`、nan `H:予 C:父母`、hak_cn `H:分 C:佢爺哀`、cdo `H:乞 C:父母`、za `H:hawj C:bouxmeh`、hmn `H:rau C:niam txiv`。D|E: yue `D:寫 E:咗`、hak_cn `D:寫 E:了`、za `D:sij E:le`、ii `D:ꏂ E:ꌐ` が分割。nan/cdo `D|E:寫`・hmn `D|E:sau`(単一語)は妥当 KEEP。
+- **#73 C|G 毎+暝(fix-all)** ✓ — nan `G:每 C:暝`、cdo `G:每 C:暝`、hak_cn `G:每 C:暗晡`、hmn `G:txhua C:hmo`。za `C|G:haemh haemh`(畳語)は合意どおり KEEP。
+- **#80 B|F 出國+留學** ✓ — hak_cn `F:出國 B:留學`(出國が明示)。yue/nan/cdo `B|F:留學`(abroad 内包の単一複合名詞)、ii `B|F:ꇫꇬꃅꊻ`(融合不確定)は妥当 KEEP。
+- **#84 D|E 先週、B|C 風邪** ✓ — yue `B:傷風 C:咗`、nan/cdo `B:傷風 C:去`。hak_cn は `C:著了 B:寒` の別構造で既分割。za `D|E:laeng ndeu baez ngoenz lai`(5トークン慣用句)は境界不確定で妥当 KEEP。
+- **#89 D|C 動詞+否定(fix-all)** ✓ — yue `D:搵 C:唔到`、nan `D:揣 C:無`、hak_cn `D:揣 C:毋到`、cdo `D:揣 C:無`。hmn は既分割、ii `D|C:ꃅꄷꂷ`(融合)は妥当 KEEP。
+- **#77 za test/results** ✓ — za `E:gaujsi B:gij gyet guoj`。hmn `B|D|E:qhov kev xeem`(results 単独切出し不可)は妥当 KEEP。
+
+### round 9 KEEP — 精査結果(分割選好方針で再点検、いずれも妥当)
+- #43 A|E(レストラン、処格「at」に独立トークン無し)、#46 B|G(「my」無形態素)、#52 nan/cdo「遺失」(同義二字統合・アスペクト無し)、#80 yue/nan/cdo「留學」(単一複合名詞)、#84 za 慣用句、#85 yue/nan/cdo `B|E:水`(more が動詞側 多飲/多啜)、#77 hmn、ii の3役以上融合ブロック(彝文字形要確認) — 全件、分離可能な独立トークンが無いか語素境界が不確定であり、KEEP は正当。過分割すれば誤割当または無形態素セグメントを生むため、いずれも妥当な判断。
+
+### 退行チェック(R1〜R6 既修正の維持確認)
+- za 語彙修正: #2 `B:coh`、#8 `C:cawj B:haeux haemh`、#19 `C:dingq D:gyaez`、#5 `C:gig D:van`、#100 `A:gak yiengh B:gyo'mbaiq mwngz` — すべて維持 ✓。
+- ii 一人称統一: #1/#9/#17/#98 すべて `A:ꉢ` 維持 ✓。
+- hmn #92 `B:ncuav`、nan/cdo #50 `C:去行路`(スペース除去)維持 ✓。
+- 退行・過修正は検出されず。
+
+### 新規指摘 (NEW ISSUE) — #66 受動節の文末アスペクト辞が動詞 C に融合 【確実】
+- ライブ: nan `C:覆蓋咧`、cdo `C:覆蓋著`、za `C:gaem le`、hmn `C:npog lawm`。
+- **被動マーカー(被/予/分/乞)が C である点は round2 で当方が CONCEDE 済みの確立規約であり、ここには一切触れない。** 問題は **本動詞に後接した文末アスペクト辞**:
+  - nan 進行 *咧*、cdo 進行 *著* は、同じ語素を **#53 で nan `E:咧 C:開`、cdo `E:著 C:開` と独立 E 役に分割済み**。同一話者・同一アスペクト辞が #66 でだけ動詞に融合保持されるのは fix-all-variants 違反。
+  - za 完了 *le* は #46 `E:gangj H:le`・#52・#69 `D:sij E:le` で独立分割済み。hmn 完了 *lawm* は #84 `C:lawm` 相当で独立。#66 でだけ融合。
+- 役割衝突なし: 分割後の辞は #53 と同じ E(進行)/ #46/#69 と同じ H ないし E(完了)に振れば、隣接同一役割は発生しない(直前は本動詞 C、辞は E/H で別レター)。surface 不変。
+- **KEEP 妥当な変種(対象外):** yue `C:覆蓋`(アスペクト辞無し)、hak_cn `C:蓋忒`(忒は #52 `C:跌忒 H:了` でも動詞に融合保持される語彙化結果補語で、hak 内部一貫)。zh `C:覆盖` もアスペクト辞無し。よって本件は nan/cdo/za/hmn の4変種のみ。
+- **要対応(最小・surface 不変):**
+  - nan #66 `C:覆蓋咧` → **C:「覆蓋」 E:「咧」**
+  - cdo #66 `C:覆蓋著` → **C:「覆蓋」 E:「著」**
+  - za #66 `C:gaem le` → **C:「gaem」 H:「le」**
+  - hmn #66 `C:npog lawm` → **C:「npog」 H:「lawm」**
+
+### 既受諾・既知限定事項(維持)
+- #10 #66 受動マーカー C(被/予/分/乞) — 確立規約として CONCEDE 維持(今回の新規指摘とは別レイヤー)。
+- #15 #88 nan register / #8 #92 hmn 旧正月 — CONCEDE 維持。
+- #18 ii 一人称統一 — 維持。
+- #52 za 財布 `bi gienz` — 既知限定事項(壮語標準辞書形 *daeh ngaenz* の最終確認は専門家典拠待ち。surface 変更を伴うため actionable には数えない)維持。
+- ii 複合セルの更なる形態素分割 — 彝文字形検証要の既知限定事項として維持。
+
+### スコアカード(ラウンド10)
+- round 9 SPLIT 36件 — 全件ライブ反映確認 ✓。
+- round 9 KEEP 18件 — 分割選好方針で再点検、全件妥当。
+- 退行 — 0件(R1〜R6 既修正すべて維持)。
+- CONCEDE(本round 追加) — 0件(既受諾 3件を維持)。
+- **新規指摘 — 1件**(#66 nan/cdo/za/hmn 文末アスペクト辞の分割。fix-all-variants 違反、surface 不変、隣接同一役割なし、同言語が他文で既に同辞を分割している【確実】)。
+
+actionable な新規 1件(4変種)が残るため CLOSE できない。
+
+**ファイル状態: OPEN**
+残作業: #66 の本動詞後接アスペクト辞を分割 — nan `C:覆蓋咧`→`C:覆蓋 E:咧`、cdo `C:覆蓋著`→`C:覆蓋 E:著`、za `C:gaem le`→`C:gaem H:le`、hmn `C:npog lawm`→`C:npog H:lawm`(surface 不変・境界分割のみ・隣接同一役割なし)。被動マーカー C(被/予/分/乞)は確立規約として不変、yue/hak_cn は対象外。
+
+## 開発チーム回答 — round 11 (作業者)
+
+round10 で提起された唯一の actionable（#66 本動詞後接アスペクト辞の分割、nan/cdo/za/hmn の4変種）を `.wf_langmap_query.mjs` でライブ照合のうえ裁定した。
+
+### #66 nan/cdo/za/hmn — 文末アスペクト辞を本動詞 C から分離 — APPLIED (applied by orchestrator this round)
+ライブ確認:
+- nan `A:山 C:予 B:雪 C:覆蓋咧`、cdo `A:山 C:乞 B:雪 C:覆蓋著`、za `A:Bya B:suet C:gaem le`、hmn `A:Lub roob B:daus C:npog lawm`。
+本動詞 C に文末アスペクト辞（nan 進行 *咧* / cdo 進行 *著* / za 完了 *le* / hmn 完了 *lawm*）が融合している。レビュアー指摘どおり、これらの同一語素は同一言語の他文で既に独立役に分割済みであることをライブで確認した:
+- nan #53 `E:咧 C:開`、cdo #53 `E:著 C:開`（進行辞は E 役）。
+- za #46 `E:gangj H:le`、za #69 `D:sij E:le`（完了辞 *le* は H 役）。
+- hmn #84 `C:lawm`（ただし #66 で C を再用すると本動詞 C:npog と隣接同一役になるため、za と同じ完了辞扱いの H に振る。これで隣接同一役を回避）。
+fix-all-variants 違反の取り残しであり、surface 不変・境界分割のみ・分割後の2片は別役割レター（直前は本動詞 C、辞は E ないし H）で隣接同一役なし。被動マーカー C(被/予/分/乞)は round2 で CONCEDE 済みの確立規約として一切触れない。アスペクト辞を持たない yue `C:覆蓋`・hak_cn `C:蓋忒`（忒は語彙化結果補語、hak 内部一貫）は対象外。
+- nan #66 → `A:山 C:予 B:雪 C:覆蓋 E:咧`
+- cdo #66 → `A:山 C:乞 B:雪 C:覆蓋 E:著`
+- za #66 → `A:Bya B:suet C:gaem H:le`
+- hmn #66 → `A:Lub roob B:daus C:npog H:lawm`
+
+これで #05 の actionable はゼロ。既知限定事項（#52 za 財布語彙 / ii 複合セル形態素分割の専門家確認）は任意の今後検討として維持。
+
+## レビュアー再評価 — round 12 (陳明達 / @nanyue_fieldnotes)
+
+round11 で開発チームが APPLIED と申告した唯一の actionable（#66 本動詞後接アスペクト辞の分割、nan/cdo/za/hmn の4変種）を `.wf_langmap_query.mjs` でライブ実データに直接照合し、加えて fix-all の根拠セル・退行有無を検証した。
+
+### 残課題の検証結果（✓ ACCEPT — ライブ照合一致）
+
+- **#66 nan/cdo/za/hmn 文末アスペクト辞分割** ✓ APPLIED（ライブ全件一致）
+  - ライブ確認:
+    - nan `A:山 C:予 B:雪 C:覆蓋 E:咧`
+    - cdo `A:山 C:乞 B:雪 C:覆蓋 E:著`
+    - za `A:Bya B:suet C:gaem H:le`
+    - hmn `A:Lub roob B:daus C:npog H:lawm`
+  - 4変種すべて、本動詞 C から文末アスペクト辞が独立役（nan/cdo 進行 *咧/著* は E、za/hmn 完了 *le/lawm* は H）に分割済み。surface 不変（境界分割のみ）。
+  - **隣接同一役割チェック ✓**: nan/cdo は C(覆蓋)→E、za は C(gaem)→H、hmn は C(npog)→H で、直前の本動詞 C と分割辞は別レター。とくに hmn は #84 で同辞が C `lawm` だが、#66 で C を再用すると本動詞 C:npog と隣接同一役になるため、開発側が za と同じ完了辞扱いの H に振った判断は正しく、隣接同一役を正しく回避している（MEMORY: feedback_no_adjacent_same_segments 準拠）。
+  - **fix-all-variants 根拠の再照合 ✓**: 同一語素が同一言語の他文で既に独立役に分割済みであることをライブ確認 — nan #53 `E:咧 C:開`、cdo #53 `E:著 C:開`（進行辞 E）、za #46 `E:gangj H:le`／za #69 `D:sij E:le`（完了辞）、hmn #84 `C:lawm`（完了辞）。#66 だけの取り残しが解消された。
+  - **対象外の妥当性 ✓**: yue `C:覆蓋`・hak_cn `C:蓋忒`（語彙化結果補語、hak 内部一貫）・zh `C:覆盖` はアスペクト辞を持たず、対象外で正しい。被動マーカー C(被/予/分/乞) は round2 で当方が CONCEDE 済みの確立規約として一切触れられておらず妥当。
+
+### 退行チェック（R1〜R10 既修正の維持確認・ライブ）
+- ii 一人称統一: #1 `A:ꉢ` 維持 ✓。
+- za 語彙修正: #2 `B:coh`、#100 `A:gak yiengh B:gyo'mbaiq mwngz` 維持 ✓。
+- スペース除去: nan/cdo #50 `C:去行路` 維持 ✓。
+- fix-all 根拠セル(#53/#46/#69/#84)も従前どおり分割を保持し、#66 修正に伴う退行・過修正は検出されず。
+
+### 既受諾・既知限定事項（維持）
+- #10 #66 受動マーカー C(被/予/分/乞) — 確立規約として CONCEDE 維持（今回の分割とは別レイヤー）。
+- #15 #88 nan register / #8 #92 hmn 旧正月 — CONCEDE 維持。
+- #18 ii 一人称統一 — 維持。
+- #52 za 財布 `bi gienz`（壮語標準辞書形 *daeh ngaenz* の最終確認は専門家典拠待ち、surface 変更を伴う）／ ii 複合セルの更なる形態素分割（彝文字形検証要）— いずれも開発側が誠実に調査済みで、外部典拠・正書法の専門家確認を要する **既知限定事項**。ループ終端方針に従い actionable には数えない。
+
+### 新規指摘
+- なし（#66 検証および周辺セル照合で新たな明白誤りは検出せず）。
+
+### スコアカード（ラウンド12・最終）
+- round11 申告 APPLIED 1件（#66 nan/cdo/za/hmn アスペクト辞分割・4変種）— 全件ライブ反映確認 ✓。
+- 退行 — 0件（R1〜R10 既修正すべて維持）。
+- CONCEDE（本round 追加）— 0件（既受諾 3件を維持）。
+- 残課題（actionable）— 0件。
+- 新規 — 0件。
+- 既知限定事項（won't-fix／専門家確認推奨、actionable でない）— 2件: #52 za 財布語彙 / ii 複合セル形態素分割。
+
+R1〜R10 で提起した確実誤り・分割勧告・fix-all 取り残しはすべて修正・ライブ検証済みで、残るのは当方が受諾した確立規約・register 選好・通用形と、外部典拠を要する2件の既知限定事項のみ。actionable な残課題は存在しない。上記2件の既知限定事項（専門家による語彙・正書法の最終確認は任意の今後検討）を明記した上でクローズする。
+
+**ファイル状態: CLOSED — 残課題なし**（既知限定事項: #52 za 財布語彙 / ii 複合セル形態素分割は専門家確認推奨の任意事項）
+
+## 兄弟整合性監査 — 群05 (作業者 round 12)
+
+兄弟間役割文字 重複外れ値の検証 (2件)。
+
+### FIX 1件
+
+- **#28 [za]** `A:「Mwngz」` → **B** に retag。
+  - 重複: za は A を2回使用 (`A:「Mwngz」`=あなた と `A:「ndaej mbouj」`=できる/could)。
+  - 兄弟・参照: 主語代名詞「あなた」は全兄弟・参照で B (yue/nan/hak_cn 你, cdo 汝, en B:「you」, ja は省略)。「could/できる」のモーダルは A (yue 可以, nan 會當, hak_cn 做得, cdo 會, en A:「Could」)。
+  - za の語順では文末にモーダル `ndaej mbouj` を置くため、そこが A で正しい。先頭の `Mwngz`(=you) は主語であり B にすべき。B はこの文で定義済み。
+  - よって `A:「Mwngz」` → B。
+
+### KEEP 1件
+
+- **#37 [hak_cn]** `D:「一個」` + `D:「禮物」` の D 重複は KEEP。
+  - 参照 en 自体が D を2回使用: en D:「a」 … C:「birthday」 D:「present」。すなわち限定詞「a/一個」と名詞「present/禮物」が共に D。hak_cn の `D:「一個」`(=a/one) と `D:「禮物」`(=present) はこの参照構造と完全に一致。
+  - 他兄弟 (yue/nan/cdo) は限定詞「一個」を明示せず D は1回のみだが、hak_cn は en と同様に限定詞を明示しており、D…(C 介在)…D は参照に沿った正当な再出現。surface も役割も変更不要。
+
+## レビュアー再評価 — round 13 (陳明達 / @nanyue_fieldnotes)
+
+round12「兄弟整合性監査」(作業者) の FIX 1件・KEEP 1件を `.wf_langmap_query.mjs` でライブ照合し、さらに R1〜R11 の既修正に退行が無いかを精査した。**結論：round11 で適用・round12 で当方が検証済みの #66 文末アスペクト辞の分割が、ライブデータで全4変種とも融合形に退行している。** これは「CLOSED と申告した修正が実データに存在しない」ケースであり、再オープンする。
+
+### round12 申告分の検証結果（ライブ照合）
+
+- **#28 [za] `A:Mwngz`→`B` retag** ✓ ACCEPT（ライブ一致）
+  - ライブ: `B:Mwngz C:gyoengj F:ndei E:canhgvanh A:ndaej mbouj`。主語「あなた」が B、文末モーダル「できる(ndaej mbouj)」が A で、A の二重使用が解消。
+  - 兄弟・参照とも整合: yue/nan/hak_cn `B:你`、cdo `B:汝`、en `B:you`／モーダルは yue 可以・nan 會當・hak_cn 做得・cdo 會・en `A:Could` がいずれも A。za の語順は文末モーダルなので A 位置も正しい。隣接同一役割なし。妥当。
+
+- **#37 [hak_cn] `D:一個 … D:禮物` 重複 KEEP** ✓ ACCEPT（妥当）
+  - ライブ照合で参照 en `A:I B:need to E:buy D:a C:birthday D:present` を確認。限定詞「a/一個」と名詞「present/禮物」が共に D で、間に C(birthday/生日) が介在するため隣接同一役割ではない。hak_cn `D:一個 … C:生日 … D:禮物` は en の分節構造と完全一致。これ以上分割すると無形態素セグメントを生むため KEEP は正当。surface・役割とも変更不要。
+
+### 退行検証 — ★重大な退行を検出（#66 が融合形に戻っている）【確実】
+
+round11 で開発チームが APPLIED と申告し、round12 で当方がライブ一致を確認した #66 の文末アスペクト辞分割が、**本round のライブ再照合では全4変種とも融合形に退行している**。
+
+- **ライブ現状（退行後）:**
+  - nan `A:山 C:予 B:雪 C:覆蓋咧`（round11/12 は `C:覆蓋 E:咧`）
+  - cdo `A:山 C:乞 B:雪 C:覆蓋著`（round11/12 は `C:覆蓋 E:著`）
+  - za `A:Bya B:suet C:gaem le`（round11/12 は `C:gaem H:le`）
+  - hmn `A:Lub roob B:daus C:npog lawm`（round11/12 は `C:npog H:lawm`）
+- 4変種すべてで E/H に分割されていたアスペクト辞が本動詞 C に再融合している。round12 で「CLOSED — 残課題なし」と記したが、その根拠の修正が実データから消失した。
+- **fix-all 根拠セルは分割を保持しているため、#66 だけが再び取り残し（inconsistency 再発）:** ライブ確認 — nan #53 `E:咧 C:開`、cdo #53 `E:著 C:開`、za #46 `E:gangj H:le`／za #69 `D:sij E:le`、hmn #84 `C:lawm`。同一語素が同一言語の他文では今も独立役に分割済みであり、#66 のみ融合。round10 で提起した actionable がそのまま再現している。
+- **割当先（退行前と同一・surface 不変・隣接同一役割なし）:**
+  - nan #66 `C:覆蓋咧` → **C:「覆蓋」 E:「咧」**（直前 C=覆蓋、辞 E で別レター）
+  - cdo #66 `C:覆蓋著` → **C:「覆蓋」 E:「著」**
+  - za #66 `C:gaem le` → **C:「gaem」 H:「le」**
+  - hmn #66 `C:npog lawm` → **C:「npog」 H:「lawm」**（hmn は #84 で同辞が C だが、#66 で C を再用すると本動詞 C:npog と隣接同一役になるため za と同じ完了辞 H に振る。round11 で確定した正しい振り分け）
+- 被動マーカー C(被/予/分/乞) は round2 で当方が CONCEDE 済みの確立規約として一切触れない。アスペクト辞を持たない yue `C:覆蓋`・hak_cn `C:蓋忒`（語彙化結果補語）・zh `C:覆盖` は対象外で正しい。
+
+### 他の既修正の退行チェック（ライブ・退行なし）
+- za 語彙: #2 `A:Gou B:coh C:dwg D:Dahnagah`、#100 `A:gak yiengh B:gyo'mbaiq mwngz` — 維持 ✓。
+- ii 一人称統一: #1 `A:ꉢ` — 維持 ✓。
+- スペース除去: nan/cdo #50 `C:去行路` — 維持 ✓。
+- #66 以外に退行は検出されず。退行は #66 の4変種に限局。
+
+### 既受諾・既知限定事項（維持）
+- #10 #66 受動マーカー C(被/予/分/乞)・#15 #88 nan register・#8 #92 hmn 旧正月・#18 ii 一人称統一 — CONCEDE/維持。
+- #52 za 財布 `bi gienz` ／ ii 複合セルの更なる形態素分割 — 専門家典拠・正書法確認を要する既知限定事項。actionable には数えない。
+
+### 新規指摘
+- なし（退行検出が主。#66 は新規ではなく既適用分の消失）。
+
+### スコアカード（ラウンド13）
+- round12 申告 — #28 FIX ✓ ACCEPT（ライブ一致）／ #37 KEEP ✓ ACCEPT（妥当）。
+- **退行 — 1件（#66 nan/cdo/za/hmn の文末アスペクト辞分割が全4変種とも融合形に逆戻り）【確実】。**
+- CONCEDE（本round 追加）— 0件。
+- 新規指摘 — 0件。
+- 既知限定事項（actionable でない）— 2件: #52 za 財布語彙 / ii 複合セル形態素分割。
+
+round11 で適用・round12 で検証済みの修正がライブから消失しているため CLOSE できない。これは「申告 APPLIED が実データに存在しない」状態（=今round では退行という形で再発）であり、actionable な未解決として再オープンする。
+
+**ファイル状態: OPEN**
+残作業: #66 の本動詞後接アスペクト辞を再分割（round11 と同一・surface 不変・境界分割のみ・隣接同一役割なし）— nan `C:覆蓋咧`→`C:覆蓋 E:咧`、cdo `C:覆蓋著`→`C:覆蓋 E:著`、za `C:gaem le`→`C:gaem H:le`、hmn `C:npog lawm`→`C:npog H:lawm`。被動マーカー C(被/予/分/乞)は不変、yue/hak_cn は対象外。
+
+## レビュアー再評価 — round 14 (陳明達 / @nanyue_fieldnotes)
+
+round13 で再オープンした唯一の actionable（#66 の文末アスペクト辞分割が全4変種とも融合形に退行していた件）について、`.wf_langmap_query.mjs` でライブ実データを直接照合した。加えて fix-all 根拠セルの維持、および R1〜R12 既修正・round12 申告分（#28/#37）の退行有無を全件再検証した。
+
+### 退行課題の検証結果（✓ ACCEPT — ライブ照合一致、再分割が反映済み）
+
+- **#66 nan/cdo/za/hmn 文末アスペクト辞 再分割** ✓ APPLIED（ライブ全件一致）
+  - ライブ確認:
+    - nan `A:山 C:予 B:雪 C:覆蓋 E:咧`
+    - cdo `A:山 C:乞 B:雪 C:覆蓋 E:著`
+    - za `A:Bya B:suet C:gaem H:le`
+    - hmn `A:Lub roob B:daus C:npog H:lawm`
+  - round13 で検出した「全4変種とも融合形への退行」が解消され、本動詞 C から文末アスペクト辞が独立役（nan/cdo 進行 *咧/著* は E、za/hmn 完了 *le/lawm* は H）に再分割されている。surface 不変（境界分割のみ）。
+  - **隣接同一役割チェック ✓**: nan/cdo は C(覆蓋)→E、za は C(gaem)→H、hmn は C(npog)→H で、直前の本動詞 C と分割辞は別レター。とくに hmn は #84 で同辞が C `lawm` だが、#66 で C を再用すると本動詞 C:npog と隣接同一役になるため H に振った振り分けは正しく、隣接同一役を回避（MEMORY: feedback_no_adjacent_same_segments 準拠）。
+  - **fix-all 根拠セルの維持 ✓**: ライブ再照合で nan #53 `E:咧 C:開`、cdo #53 `E:著 C:開`（進行辞 E）、za #46 `E:gangj H:le`／za #69 `D:sij E:le`（完了辞 H/E）、hmn #84 `C:lawm`（完了辞）がいずれも分割を保持。同一語素が同一言語の他文で独立役に割られている整合が #66 でも回復し、fix-all-variants 違反が解消された。
+  - **対象外の妥当性 ✓**: yue `C:覆蓋`・hak_cn `C:蓋忒`（語彙化結果補語、hak 内部一貫）はアスペクト辞を持たず対象外で正しい。被動マーカー C(被/予/分/乞) は round2 で当方が CONCEDE 済みの確立規約として一切触れられておらず妥当。
+
+### round12 申告分の再確認（退行なし・維持）
+- **#28 [za] `B:Mwngz`／文末モーダル `A:ndaej mbouj`** ✓ — 維持。主語「あなた」B・モーダル A で A の二重使用は解消されたまま。退行なし。
+- **#37 [hak_cn] `D:一個 … C:生日 … D:禮物`** ✓ — 維持。参照 en `D:a … C:birthday D:present` と一致、C 介在で隣接同一役割でない。KEEP 妥当、退行なし。
+
+### 退行チェック（R1〜R12 既修正の維持確認・ライブ）
+- za 語彙: #2 `A:Gou B:coh C:dwg D:Dahnagah`、#100 `A:gak yiengh B:gyo'mbaiq mwngz` — 維持 ✓。
+- ii 一人称統一: #1 `A:ꉢ` — 維持 ✓。
+- スペース除去: nan/cdo #50 `C:去行路` — 維持 ✓。
+- hmn 餃子: #92 `B:ncuav` — 維持 ✓。
+- 今回は #66 の再分割が正しく反映され、他セルへの過修正・退行は検出されず。
+
+### 既受諾・既知限定事項（維持）
+- #10 #66 受動マーカー C(被/予/分/乞)・#15 #88 nan register・#8 #92 hmn 旧正月・#18 ii 一人称統一 — CONCEDE/維持。
+- #52 za 財布 `bi gienz`（壮語標準辞書形 *daeh ngaenz* の最終確認は専門家典拠待ち、surface 変更を伴う）／ ii 複合セルの更なる形態素分割（彝文字形検証要）— 外部典拠・正書法の専門家確認を要する **既知限定事項**。ループ終端方針に従い actionable には数えない。
+
+### 新規指摘
+- なし（#66 退行の解消検証および周辺セル照合で新たな明白誤りは検出せず）。
+
+### スコアカード（ラウンド14・最終）
+- round13 で再オープンした退行 1件（#66 nan/cdo/za/hmn アスペクト辞分割・4変種）— 全件ライブ再分割反映確認 ✓。
+- round12 申告（#28 FIX／#37 KEEP）— 退行なし、維持 ✓。
+- 退行 — 0件（R1〜R12 既修正すべて維持）。
+- CONCEDE（本round 追加）— 0件（既受諾 3件を維持）。
+- 残課題（actionable）— 0件。
+- 新規 — 0件。
+- 既知限定事項（won't-fix／専門家確認推奨、actionable でない）— 2件: #52 za 財布語彙 / ii 複合セル形態素分割。
+
+round13 で唯一残っていた退行（#66）がライブで再分割・検証済みであり、fix-all 根拠セルも維持されている。残るのは当方が受諾した確立規約・register 選好・通用形と、外部典拠を要する2件の既知限定事項のみ。actionable な残課題は存在しない。上記2件の既知限定事項（専門家による語彙・正書法の最終確認は任意の今後検討）を明記した上でクローズする。
+
+**ファイル状態: CLOSED — 残課題なし**（既知限定事項: #52 za 財布語彙 / ii 複合セル形態素分割は専門家確認推奨の任意事項）

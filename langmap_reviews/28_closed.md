@@ -423,3 +423,100 @@ Tok Pisin の述語標識 "i" 同型バグ(#5/#18/#87)、役割色ずれ(#2)、r
 - **#52 tpi `C|H:「lusim」`**: lusim = lus(失う, C)+ 他動詞接尾辞 -im。-im は他動性標識であり過去標識ではない。過去(H)の overt な実現がなく、切り出せる時制トークンが無い。接尾辞 -im を C から剥がしても H には対応しないため KEEP。
 - **#69 tpi `D|E:「raitim」`**: raitim = rait(書く, D)+ 他動詞接尾辞 -im。#52 と同型。過去(E)の overt トークンが無く、-im は時制ではないため分割不能。KEEP。
 - **#96 tpi `D|E:「neks」`**: neks は「次の」(E)を表す単一トークン。限定詞 the(D)は Tok Pisin の "neks rot bung" に overt な冠詞として現れない(類型的欠落)。一語を二役割に割れないため KEEP。
+
+---
+
+## レビュアー再評価 — round 10 (@chunom_hanh)
+
+round 9 の包括スイープ(SPLIT 2件・KEEP 4件)を `.wf_langmap_query.mjs` で全件ライブ照合し、SPLIT は en/兄弟言語の役割色との整合、KEEP は分離可能トークンの実在有無を再検証した。
+
+### SPLIT 検証 (全件✓)
+
+- **#53 tpi** ✓ ライブ: `B:「Ol plaua」 D:「long」 A:「gaden」 C:「i kamap」 E:「pinis」`。完了相標識 pinis を E に分離、述語標識 i は #5/#18/#87 の慣例どおり動詞 kamap 側(C)に残置。参照 en `E:「are」 C:「blooming」`・hwc `E:「stay」 C:「blooming」` と相(E)/動詞(C)の役割色が一致。role 列 B,D,A,C,E に隣接同役割の重複なし。正しい。
+- **#89 hwc** ✓ ライブ: `A:「I」 C:「no」 B:「can」 D:「find」 E:「‌da」 F:「Wi-Fi」 G:「password」`。否定辞 no(C)と法助動詞 can(B)を分離。参照 en `B:「can」 C:「't」` の否定/法の役割色に整合し、同群 tpi の既分割 `C:「no」 B:「ken」` とも揃った(fix-all-variants 方針に合致)。role 列 A,C,B,D,E,F,G に隣接同役割の重複なし。正しい。
+
+### KEEP 検証 (全件✓ — 真の不可分性に同意)
+
+- **#46 tpi `E|H:「toktok」`** ✓ ライブ確認。裸動詞単一語、過去標識(bin)を伴わず H に対応する overt 形態素なし。分離すべき第2トークンが物理的に存在しない。KEEP 妥当。
+- **#52 tpi `C|H:「lusim」`** ✓ ライブ確認。lus(失う)+他動詞接尾辞 -im。-im は他動性標識であって過去標識ではなく、H の overt 実現なし。剥がしても H に対応しないため分割不能。KEEP 妥当。
+- **#69 tpi `D|E:「raitim」`** ✓ ライブ確認。rait(書く)+他動詞接尾辞 -im。#52 と同型、過去(E)の overt トークンなし。KEEP 妥当。
+- **#96 tpi `D|E:「neks」`** ✓ ライブ確認。neks=「次の」単一トークン、限定詞 the(D)が overt な冠詞として現れない類型的欠落。一語を二役割に割れない。KEEP 妥当。
+
+### 回帰チェック
+
+round 7 までに検証済みの主要修正がライブで維持されていることを再確認: #73 tpi `A:「Pusi」 E:「bilong mi」`、#50 `A:「Dok」 E:「bilong mi」`、#85 tpi `E:「planti」 B:「wara」 E:「moa」`、#46 tpi の所有分離 `F:「wantaim」 B:「pren」 G:「bilong mi」` いずれも維持。今回の2分割により隣接同役割の重複が新規に生じていないことも全件確認した。
+
+### 新規指摘
+
+なし。残存複合セルは round 9 スイープで全7件が SPLIT/KEEP のいずれかに裁定済みで、SPLIT 2件はライブ反映を確認、KEEP 4件は分離可能トークン不在の真の不可分性として同意する。
+
+### スコアカード
+
+- round 9 SPLIT 主張: 2件 → 2件ともライブ照合で✓(欠落・未反映ゼロ)。
+- round 9 KEEP 主張: 4件 → 4件とも真の不可分性として同意。
+- 本ラウンドで撤回(CONCEDE)した自分の過去指摘: 0件(round 9 は開発側の包括スイープで、本ラウンドに新たな反論なし)。
+- 新規指摘: 0件。
+- 残課題(actionable): なし。
+
+群28 は round 1〜9 を通じ、Tok Pisin の述語標識 "i" 同型バグ(#5/#18/#87)、役割色ずれ(#2)、restaurant 訳語統一(#28/#43)、余分 mani(#99)、hevi 語義(#47)、ベトナム語南部方言の đã 分節(#46/#69)、vi_c lắm(#36)、las wik 分割(#84)、クレオールの ⛔ 複合分割(hwc/tpi 多数)、主語所有句の分離(#50/#51/#73)、相標識 pinis 分離(#53)、否定/法分離(#89 hwc)がすべて修正・検証済み。残る融合は全て分離可能トークンを持たない真の不可分性(裸動詞=過去標識 overt なし、冠詞 overt なし)であり、actionable な確実誤りは残っていない。
+
+**ファイル状態: CLOSED — 残課題なし**(#7 の二重主語的構造は外部典拠が得られれば再検討する既知の限界として引き続き記録)
+
+## 兄弟整合性監査 — 群28 (作業者 round 12)
+
+対象フラグ: #18 [hwc] が役割 D を重複（"stay"=コピュラ, "expensive"=形容述語）。
+
+- **KEEP** #18 [hwc] D:「stay」 / D:「expensive」
+  理由: en 参照自体が D を二重使用している（en A:This B:bag D:is C:too D:expensive）。コピュラと形容述語の双方が D を担うのは英語基盤の参照パターンそのもの。最近兄弟 pcm も同型（D:「dey」… D:「cost well well」）、英語系方言群 en_south/en_ie/en_sco/en_app/jam/sco/en_au 等も一様に D…D。よって hwc の D 重複は参照・近兄弟と完全整合し、誤割当ではない。D は当該文の segment set に定義済み。retag 不要。
+  （フラグは vi 族＋tpi の狭い兄弟集合内での外れ値判定にすぎず、en/ja 参照を含めれば外れ値ではない。）
+
+FIX: 0 / KEEP: 1
+
+---
+
+## レビュアー再評価 — round 13 (@chunom_hanh)
+
+round 12 で開発側が判定した唯一の項目(#18 hwc の役割 D 重複=KEEP)を `.wf_langmap_query.mjs` でライブ照合し、en 参照および近兄弟との整合を再検証した。あわせて round 1〜10 で確定した主要修正の回帰チェックも実施した。
+
+### 判定対象 — #18 hwc 役割 D 重複 → ✓ ACCEPT(KEEP に同意)
+
+**ライブ確認:**
+- en: `A:「This」 B:「bag」 D:「is」 C:「too」 D:「expensive」`
+- hwc: `A:「Dis」 B:「bag」 D:「stay」 C:「too」 D:「expensive」`
+- pcm(近兄弟): `A:「Dis」 B:「bag」 D:「dey」 C:「too」 D:「cost well well」`
+- tpi: `A:「Dispela」 B:「bek」 D:「i dia」 C:「tumas」`
+- vi: `B:「Cái túi」 A:「này」 C:「quá」 D:「đắt」`
+
+開発側の KEEP 理由は妥当。en 参照自体が D を二重使用(コピュラ "is" + 形容述語 "expensive")しており、hwc の `D:「stay」 … D:「expensive」` はこのコピュラ+形容述語の二重 D パターンを忠実に写したもの。近兄弟 pcm も同型(`D:「dey」… D:「cost well well」`)。これは role 列上の非隣接同役割であって隣接重複ではなく、round 2 で許容を確認した非隣接同役割パターン(#85 tpi 等)・en 参照そのものに完全整合する。誤割当ではないため retag 不要、KEEP に同意する。元のフラグは「vi 族 + tpi」という狭い兄弟集合内での外れ値判定にすぎず、en/pcm を含めれば外れ値ではないという開発側の指摘も正しい。
+
+### 回帰チェック(全件ライブ維持を確認)
+
+round 1〜10 で確定した主要修正がすべて維持されていることをライブで再確認:
+- #5 tpi `D:「i gutpela」 C:「tru」`、#87 tpi `D:「i gutpela」 C:「tru」`(述語標識 i の D 側残置)
+- #2 tpi `B:「Nem」 A:「bilong mi」 D:「Tanaka」`(役割色ずれ修正)
+- #99 tpi `D:「em i」 C:「hamas」`(余分 mani 削除済み)
+- #73 tpi `A:「Pusi」 E:「bilong mi」`(主語所有句分離)
+- #89 hwc `C:「no」 B:「can」`(否定/法分離)
+- #53 tpi `C:「i kamap」 E:「pinis」`(相標識 pinis 分離)
+- #46 vi_s `H:「đã」 E:「nói chuyện」`(過去標識 đã 復元)、#36 vi_c `A:「nhiều」`(lắm 削除済み、非隣接二重 A 解消)
+いずれも回帰なし。新たな隣接同役割の重複も生じていない。
+
+### 新規指摘
+
+なし。残存複合セルは round 9 の包括スイープで全件 SPLIT/KEEP 裁定済み、round 12 の #18 hwc も KEEP が妥当。actionable な確実誤りは検出されなかった。
+
+### 撤回(CONCEDE)
+
+本ラウンドで撤回した自分の過去指摘: **0件**(round 12 は開発側の兄弟整合性監査による KEEP 判定で、本ラウンドに新たな反論・撤回対象なし)。なお過去ラウンドで撤回済みの指摘は #85(不連続 E、分割選好に逆行する併合提案)・#7(二重主語=外部典拠待ちの既知の限界)・#93(季節語の自然な非対称)・#100(任意の方言強化)の計4件で、いずれも開発側の妥当な反論を受け入れたもの。
+
+### スコアカード
+
+- round 12 判定: #18 hwc KEEP 1件 → ライブ照合で✓、KEEP に同意。
+- 本ラウンドで撤回(CONCEDE)した自分の過去指摘: **0件**。
+- 新規指摘: **0件**。
+- 回帰: **0件**(主要修正すべて維持)。
+- 残課題(actionable): **なし**。
+
+群28 は round 1〜12 を通じ、Tok Pisin の述語標識 "i" 同型バグ(#5/#18/#87)、役割色ずれ(#2)、restaurant 訳語統一(#28/#43)、余分 mani(#99)、hevi 語義(#47)、ベトナム語南部方言の đã 分節(#46/#69)、vi_c lắm(#36)、las wik 分割(#84)、クレオールの ⛔ 複合分割(hwc/tpi 多数)、主語所有句の分離(#50/#51/#73)、相標識 pinis 分離(#53)、否定/法分離(#89 hwc)がすべて修正・検証済み。残る融合・重複はすべて分離可能トークンを持たない真の不可分性(裸動詞=過去標識 overt なし、冠詞 overt なし)か、en 参照そのものに整合する非隣接同役割(#18 hwc の D…D)であり、actionable な確実誤りは残っていない。
+
+**ファイル状態: CLOSED — 残課題なし**(#7 の二重主語的構造は外部典拠が得られれば再検討する既知の限界として引き続き記録)
