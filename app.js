@@ -1219,38 +1219,87 @@ function render() {
             seg.dataset.lang = code;
             // Handle compound segments (e.g. "B|D")
             const subIds = segId.split('|');
-            const segColor = subIds.length > 1
+            const isCompound = subIds.length > 1;
+            const isEgyDual = code === 'egy' && text.includes('|');
+            const compoundColors = isCompound
+                ? subIds.map(id => sentence.segments[id]?.color || '#666')
+                : null;
+            const segColor = isCompound
                 ? null  // handled via gradient below
                 : (sentence.segments[segId]?.color || '#666');
-            if (subIds.length > 1) {
-                const colors = subIds.map(id => sentence.segments[id]?.color || '#666');
-                seg.style.backgroundImage = `linear-gradient(90deg, ${colors.join(', ')})`;
-                seg.style.webkitBackgroundClip = 'text';
-                seg.style.backgroundClip = 'text';
-                seg.style.color = 'transparent';
+            if (isCompound) {
                 seg.classList.add('segment-compound');
+                if (isEgyDual) {
+                    // For compound egy segments the gradient must be applied
+                    // on each .segment-hiero child individually (see below).
+                    // The .segment-compound CSS class sets
+                    // -webkit-text-fill-color:transparent which would inherit
+                    // into the child .segment-translit and blank it out, so
+                    // we override BOTH color and -webkit-text-fill-color on
+                    // the parent to a visible grey; the hiero spans then
+                    // re-override -webkit-text-fill-color to transparent so
+                    // the gradient bleeds through their glyphs.
+                    seg.style.color = '#666';
+                    seg.style.webkitTextFillColor = '#666';
+                } else {
+                    seg.style.backgroundImage = `linear-gradient(90deg, ${compoundColors.join(', ')})`;
+                    seg.style.webkitBackgroundClip = 'text';
+                    seg.style.backgroundClip = 'text';
+                    seg.style.color = 'transparent';
+                }
             } else {
                 seg.style.color = segColor;
             }
             seg.dataset.rawText = text;
-            if (code === 'egy' && text.includes('|')) {
+            const applyCompoundGradient = (hieroSpan) => {
+                if (!isCompound) return;
+                hieroSpan.style.backgroundImage = `linear-gradient(90deg, ${compoundColors.join(', ')})`;
+                hieroSpan.style.webkitBackgroundClip = 'text';
+                hieroSpan.style.backgroundClip = 'text';
+                hieroSpan.style.color = 'transparent';
+                hieroSpan.style.webkitTextFillColor = 'transparent';
+            };
+            if (isEgyDual) {
                 const [hiero, translit] = text.split('|');
                 seg.classList.add('segment-dual');
                 const hieroWords = hiero.split(' ');
                 const translitWords = translit.split(' ');
-                hieroWords.forEach((hw, wi) => {
+                // Per-word pairing only when both sides have the SAME word
+                // count. Otherwise translit/hiero word counts differ (e.g.
+                // hiero "𓋴𓅓𓂋𓇋" but translit "n p.j" because one of the
+                // glyphs encodes 2 morphemes, or compound segments mixing
+                // grammatical particles) and pairing by index hides the
+                // overflow. Fall back to a single hiero row + single
+                // transliteration row so nothing is dropped from view.
+                if (hieroWords.length === translitWords.length) {
+                    hieroWords.forEach((hw, wi) => {
+                        const pair = document.createElement('span');
+                        pair.className = 'hiero-pair';
+                        const hieroSpan = document.createElement('span');
+                        hieroSpan.className = 'segment-hiero';
+                        hieroSpan.textContent = hw;
+                        applyCompoundGradient(hieroSpan);
+                        const translitSpan = document.createElement('span');
+                        translitSpan.className = 'segment-translit';
+                        translitSpan.textContent = translitWords[wi] || '';
+                        pair.appendChild(hieroSpan);
+                        pair.appendChild(translitSpan);
+                        seg.appendChild(pair);
+                    });
+                } else {
                     const pair = document.createElement('span');
                     pair.className = 'hiero-pair';
                     const hieroSpan = document.createElement('span');
                     hieroSpan.className = 'segment-hiero';
-                    hieroSpan.textContent = hw;
+                    hieroSpan.textContent = hiero;
+                    applyCompoundGradient(hieroSpan);
                     const translitSpan = document.createElement('span');
                     translitSpan.className = 'segment-translit';
-                    translitSpan.textContent = translitWords[wi] || '';
+                    translitSpan.textContent = translit;
                     pair.appendChild(hieroSpan);
                     pair.appendChild(translitSpan);
                     seg.appendChild(pair);
-                });
+                }
             } else {
                 seg.textContent = text;
             }

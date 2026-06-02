@@ -15,7 +15,22 @@ export const meta = {
 // NOTE: args is unreliable for scriptPath invocations in this harness — it can
 // silently fall back to defaults. So FORCE below is the source of truth; EDIT IT
 // before each launch. args, if delivered, still overrides.
-const FORCE = { mode: 'cycle', round: 13, files: [5, 7, 9, 11, 13, 17, 22, 24, 26] }
+const FORCE = { mode: 'cycle', round: 14, files: [22, 24] }
+// Round 14 — user-reported issues:
+//   #22 Mongolic/Tungusic: mn_cn and mnc both have 10 sentences (IDs
+//       1, 9, 13, 17, 28, 89, 93, 94, 96, 98) where the surface is
+//       Cyrillic (mn_cn) or Möllendorff Latin (mnc) instead of the
+//       proper Mongol Bichig / Manchu script (Unicode U+1800–U+18AF).
+//   #24 Other Semitic + Ancient Near East: egy has:
+//       - #26 seg3 surface = "𓅓" with no |transliteration (single glyph)
+//       - 8 multi-element compound segIDs (3+ parts) at #43 A|D|E,
+//         #45 A|E|F, #46 B|F|G, #49 C|E|F|G (4-way), #55 B|E|F,
+//         #69 B|F|G, #70 B|D|E|F (4-way), #77 B|D|E — need expert
+//         review whether the merges are necessary or over-aggressive
+//       - User-reported suspect sentences: #54 (chars in trans?),
+//         #68 (short trans for "here"?), #69 (compound-trans mismatch?),
+//         #72, #76 — please verify Egyptological transliteration
+//         actually reflects the glyphs and isn't truncated.
 const mode = (args && args.mode) || FORCE.mode
 const round = (args && args.round) || FORCE.round
 const onlyFiles = (args && Array.isArray(args.files)) ? args.files : (Array.isArray(FORCE.files) ? FORCE.files : null)
