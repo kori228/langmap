@@ -183,3 +183,225 @@ vi / vi_c / vi_s / vi_nom の中核データは概して高品質で、中部の
 Tok Pisin の述語標識 "i" 同型バグ(#5/#18/#87)、役割色ずれ(#2)、restaurant 訳語統一(#28/#43)、余分 mani(#99)、hevi 語義(#47)、ベトナム語南部方言の đã 分節(#46/#69)、vi_c lắm(#36)、las wik 分割(#84)はすべて修正・検証済み。残る論点は分割選好に逆行する併合提案(#85)・外部典拠を要する文法性(#7)・美的対称性(#93)・任意の方言強化(#100)であり、いずれも開発側の反論が妥当か、私自身が任意とした項目。actionable な確実誤りは残っていない。
 
 **ファイル状態: CLOSED — 残課題なし**(#7 の二重主語的構造は外部典拠が得られれば再検討する既知の限界として記録)
+
+---
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+@chunom_hanh による round-4 集中監査。`/tmp/langmap_suspect/28.md` の機械抽出セル(⛔3+way=16, ⚠️2way=17, ▼2+=27)を全件ライブ照合し、(1)分割粒度 (2)方言・クレオール自然さ の2軸で判定した。owner 方針「分割選好」に従い、別 role-letter に写る分離可能要素を含む融合は積極的に分割を提案する。クレオール(hwc/tpi)の ⛔ 複合は前置詞+指示詞+名詞、または名詞+所有句の機械的連結がほとんどで、ベトナム語側(語族の中核)は概して分割済み・正当な省略であった。
+
+### A. 分割推奨 (SPLIT) — クレオールの ⛔ 3+way 複合(最優先)
+
+いずれも分離可能語が異なる role に写り、隣接同役割の重複を生まない。
+
+1. **#43 hwc** 【確実】`B:「Da food」 A|D|E:「at dis restaurant」 C:「stay ono」` → `B:「Da food」 A:「at」 D:「dis」 E:「restaurant」 C:「stay ono」`。at=前置詞A / dis=指示詞D / restaurant=名詞E。en と完全一致。
+2. **#43 tpi** 【確実】`A|D|E:「long dispela haus kaikai」` → `A:「long」 D:「dispela」 E:「haus kaikai」`。long=A / dispela=D / haus kaikai=E。
+3. **#45 hwc** 【確実】`A|E|F:「In dis country」` → `E:「In」 F:「dis」 A:「country」`。en の E:In F:this A:country に一致。
+4. **#45 tpi** 【確実】`A|E|F:「Long dispela kantri」` → `E:「Long」 F:「dispela」 A:「kantri」`。
+5. **#46 hwc** 【確実】`B|F|G:「wit my friend」` → `F:「wit」 G:「my」 B:「friend」`。前置詞+所有+名詞。さらに `E|H:「wen talk」` は HCE の前動詞過去標識 wen が分離可能語であるため `H:「wen」 E:「talk」` に分割可(vi の H:đã 独立化と整合)。
+6. **#46 tpi** 【確実】`B|F|G:「wantaim pren bilong mi」` → `F:「wantaim」 B:「pren」 G:「bilong mi」`。前置詞+名詞+後置所有句。※ tpi の `E|H:「toktok」` は過去標識を持たない裸動詞のため H は overt 形態素なし=KEEP(下記C参照)。
+7. **#49 hwc** 【確実】`C|E|F|G:「da way to da airport」` → `E:「da way」 F:「to」 G:「da airport」`(混入していた C は脱落が正)。
+8. **#49 tpi** 【確実】`C|E|F|G:「rot bilong go long ples balus」` → `E:「rot」 F:「bilong go long」 G:「ples balus」`。rot=道E / bilong go long=への(目的+方向)F / ples balus=空港G。
+9. **#55 hwc** 【確実】`B|E|F:「two cups coffee」` → `E:「two」 F:「cups」 B:「coffee」`。数+助数詞+名詞、en と一致。
+10. **#55 tpi** 【確実】`B|E|F:「tupela kap kopi」` → `E:「tupela」 F:「kap」 B:「kopi」`。
+11. **#69 hwc** 【確実】`B|F|G:「one long letter」` → `F:「one」 G:「long」 B:「letter」`。冠詞相当 one=F / long=G / letter=B。※ `D|E:「wen write」` は wen 分離可で `D:「wen」 E:「write」` も可だが、en 自体が D|E:「wrote」 と portmanteau 扱いのため、wen を立てるなら D=wen(過去) E=write の順。蓋然。
+12. **#69 tpi** 【確実】`B|F|G:「wanpela longpela pas」` → `F:「wanpela」 G:「longpela」 B:「pas」`。加えて `C|H:「long papamama bilong em」` → `H:「long」 C:「papamama bilong em」`(前置詞 long=到達点 H を分離)。
+13. **#70 hwc** 【確実】`B|D|E|F:「at nine PM」` → `D:「at」 E:「nine」 F:「PM」`(混入 B 脱落)。
+14. **#70 tpi** 【確実】`B|D|E|F:「long nain kilok long nait」` → `D:「long」 E:「nain kilok」 F:「long nait」`。long=at(D) / nain kilok=9時(E) / long nait=午後・夜(F)。
+15. **#77 hwc** 【確実】`B|D|E:「by da test results」` → `D:「by」 E:「da test」 B:「results」`。
+16. **#77 tpi** 【確実】`B|D|E:「long mak bilong tes」` → `D:「long」 B:「mak」 E:「bilong tes」`。long=by(D) / mak=結果(B) / bilong tes=テストの(E)。
+17. **#80 hwc** 【蓋然】`C|G:「one valuable experience」` → `G:「valuable」 C:「experience」`(one は en の I:a に対応する冠詞相当で、立てるなら別途。最低限 valuable=G と experience=C を分離)。
+18. **#80 tpi** 【蓋然】`B|F:「stadi long narapela kantri」` → `B:「stadi」 F:「long narapela kantri」`。加えて `C|G:「gutpela ekspiriens tru」` → `G:「gutpela」 C:「ekspiriens tru」`(gutpela=貴重なG / ekspiriens=経験C)。
+19. **#73 tpi** 【確実】`B|F:「long bet bilong mi」` → `F:「long」 B:「bet bilong mi」`。加えて `C|G:「olgeta nait」` → `G:「olgeta」 C:「nait」`(olgeta=every G / nait=night C、en と一致)。
+
+### B. 分割推奨 (SPLIT) — ⚠️ 2way / ▼ 不足
+
+20. **#28 tpi** 【確実】▼2 `F:「wanpela gutpela」 E:「haus kaikai」` → `D:「wanpela」 F:「gutpela」 E:「haus kaikai」`。wanpela=冠詞 a=D、gutpela=good=F。現状は冠詞と形容詞を一塊 F にしている。
+21. **#48 tpi** 【蓋然】`B|E:「dispela muvi」` → `E:「dispela」 B:「muvi」`。dispela=that(指示詞E) / muvi=movie(B)。hwc は既に `E:「dat」 B:「movie」` と分割済みで、tpi だけ融合。
+22. **#52 hwc** 【確実】`C|H:「wen lose」` → `H:「wen」 C:「lose」`。HCE の wen は分離可能な前動詞過去標識。en が C|H:「lost」(不規則=portmanteau)なのは英語側の事情で、hwc は分割すべき(vi の H:đã 独立化と同型)。※ tpi `C|H:「lusim」` は裸動詞で過去標識なし=KEEP。
+23. **#51 tpi** 【蓋然】`A|E:「Bubu meri bilong mi」` → `A:「Bubu meri」 E:「bilong mi」`。bubu meri=祖母A / bilong mi=my(後置所有)E。vi は `A:「Bà」 E:「tôi」` と分割済み、vi_c/vi_s は `A|E:「Bà tui」`。
+24. **#51 vi_c** 【蓋然】`A|E:「Bà tui」` → `A:「Bà」 E:「tui」`。vi が `A:「Bà」 E:「tôi」` と分割済みのため語族整合上 vi_c も分割。tui は中部の所有人称で別語、分離可能。
+25. **#51 vi_s** 【蓋然】`A|E:「Bà tui」 … C:「chuyện」 B:「hay」` → `A:「Bà」 E:「tui」 … C:「chuyện」 B:「hay」`。同上、所有 tui を E に分離。
+26. **#50 tpi** 【蓋然】`A|E:「Dok bilong mi」` → `A:「Dok」 E:「bilong mi」`。dog=A / bilong mi=my(後置所有)E。en/hwc は分割済み。
+27. **#53 hwc** 【蓋然】`A|D:「in da garden」` → `D:「in」 A:「da garden」`。in=前置詞D / da garden=庭A。en と一致。※ `C|E:「stay blooming」` は HCE 進行アスペクト stay+blooming で、stay は分離可能なら `E:「stay」 C:「blooming」`(en の E:are C:blooming に対応)も可。蓋然。
+28. **#53 tpi** 【蓋然】`A|D:「long gaden」` → `D:「long」 A:「gaden」`。long=in(D) / gaden=庭(A)。
+29. **#85 hwc** 【蓋然】`B|E:「mo wata」` → `E:「mo」 B:「wata」`。mo=more(比較E) / wata=water(B)。en と一致。tpi `B|E:「planti wara moa」` も `E:「planti … moa」` 的に分割可だが planti と moa が wara を挟む不連続 E になるため、tpi は `E:「planti」 B:「wara」 E:「moa」`(round2 で許容した不連続同役割パターン)か、最小修正で `B:「wara」 E:「planti … moa」`。蓋然。
+30. **#96 tpi** 【蓋然】`D|E:「neks」 F:「rot bung」` → `D:「neks」` を立てる別語がないため厳密には D(the)が overt 形態なし。むしろ現状 `C:「long」 D|E:「neks」 F:「rot bung」` の D|E は neks=next(E) のみで the(D)に対応する語がない=▼ は正当(下記C)。分割不要、現状の D|E は E 単独に修正するのが筋(=KEEP扱い、D は overt なし)。
+
+### C. 現状維持 (KEEP) — 正当な融合・省略
+
+- **#89 vi / vi_c / vi_s / vi_nom** 【確実】▼2: ベトナム語の「không tìm được」は can't+find を表すが、"can"(可能)に対応する独立語はなく、可能・達成は動詞後の結果補語 "được" が担う。"không"=否定C、"tìm được"=find(可能達成)D。英語の助動詞 can(B)はベトナム語に独立語として存在しない pro-drop 的省略で、▼2 は正当な類型差。vi_nom も同構造(空=không=C, 尋得=tìm được=D)で字喃正字も妥当。分割不可。
+- **#46 tpi `E|H:「toktok」`** 【確実】: Tok Pisin は当該文で過去標識(bin)を伴わない裸動詞。H(過去)に対応する overt 形態素がないため融合表記は実体を反映、分割不可。hwc の wen と異なり tpi 側は分離語が無い。
+- **#52 tpi `C|H:「lusim」`** 【確実】: 同上、裸動詞で過去標識なし。-im は他動詞接尾辞で過去ではない。KEEP。
+- **#69 tpi `D|E:「raitim」`** 【確実】: 過去標識を伴わない裸動詞。D|E の H 的成分は overt 形態なし。KEEP(ただし B|F|G と C|H は上記 SPLIT 対象)。
+- **#96 tpi `D|E:「neks」`** 【蓋然】: the(D)に対応する独立冠詞語が無く neks=next(E)のみ。D は overt なしの正当な省略。分割不可(表記を E 単独へ寄せるかは開発側裁量)。
+- **#35 hwc `A|E:「My bradda」`** 【蓋然】: my(A)+older brother(E) だが、英語と異なり所有 "my" は bradda と一語化しておらず分離可能 → 本来は SPLIT 候補(`A:「My」 E:「bradda」`)。ただし ja 参照が `A|E:「兄は」`(日本語は所有無標)で融合許容例として登録済み。hwc は my が独立語なので分割を推す方が方針整合的=【蓋然のSPLIT寄り】だが、ja 先例に合わせ融合維持も許容。判定は KEEP/SPLIT 境界、開発裁量とする。
+
+### D. 方言・クレオール自然さ (DIMENSION 2)
+
+- **#43 vi_s** `D:「nầy」 C:「thiệt ngon」`【確実・自然】: 南部の指示詞 "nầy"、強調 "thiệt"(=本当に)は南部口語として自然。vi_c の "ni / ngon lắm"(中部)も自然。方言マーク良好、修正不要。
+- **#45 vi_s** `A:「xứ」 F:「nầy」`【確実・自然】: "xứ"(土地・地方)は南部色のある語選択で自然。
+- **#52 vi_s** `H:「bị」 … B:「bóp tiền」`【確実・自然】: 受動・被害の "bị"、南部語 "bóp"(=財布、北部 ví)が正しく反映。良好。
+- **#69 vi_c** `A:「Eng nớ」 … C:「bọ mạ」` / **vi_s** `A:「Ảnh」 C:「ba má」`【確実・自然】: 中部 "eng nớ / bọ mạ"、南部 "ảnh / ba má" いずれも famous な方言語彙で自然。
+- **#89 vi_c** `C:「khôông」` / **vi_s** `C:「hông」`【確実・自然】: 中部の長母音 "khôông"、南部の "hông"(không の口語縮約)とも実在の方言形で自然。声調・綴り妥当。
+- **#35 vi_s** `B:「mới cưới」`【確実・自然】: "mới cưới"(最近結婚した)は南部口語的で自然(北部 đã kết hôn と差別化)。
+- **hwc 全般**【確実】: wen(過去)/ stay(進行)/ no can(不可能)/ fo / da の用法・語順は Sakoda & Siegel 記述に忠実。不自然な calque は検出されず。唯一 #43 `stay ono`(ono=美味しい、ハワイ語借用)は HCE として極めて自然で良い。
+- **tpi 全般**【確実】: bilong 所有、i 述語標識、-im 他動詞標識、dispela 指示詞の運用は記述文法どおり。新規の不自然形は検出されず(round1-3 の "i" 誤割当系は既に修正済み)。
+
+### 集計
+
+- 分割推奨 (SPLIT, actionable): **29件**(⛔ 由来17 + ⚠️/▼ 由来12)。確実18 / 蓋然11。最優先はクレオールの ⛔ 前置詞+指示詞+名詞 / 名詞+後置所有句の機械分割(#43,#45,#46,#49,#55,#69,#70,#77 の hwc・tpi 両系)。
+- 自然さ修正 (naturalness, actionable): **0件**。vi/vi_c/vi_s/vi_nom の方言語彙・声調表記、hwc/tpi の文法運用はいずれも実在の自然形で、"plausible だが不自然" な calque は今回検出されなかった(方言データの質は高い)。
+- 現状維持 (KEEP, 正当な融合・省略): **6件**(#89 の vi系4言語=can の pro-drop / tpi #46・#52・#69 の裸動詞=過去標識 overt なし / #96 tpi の冠詞 overt なし / #35 hwc は境界事例で裁量)。▼ 不足の多くは「can が独立語なし」「過去標識なし」「冠詞なし」という正当な類型差で、分割を発明しないこと。
+
+**確信度総括**: クレオールの ⛔ 複合分割は確実度が高い(分離語が明白に異なる role に写り、隣接重複も生じない)。ベトナム語側の ▼ 不足は概ね正当な省略で KEEP。方言自然さは問題なし。
+
+## 開発チーム回答 — round 4 (作業者)
+
+ラウンド4の分割粒度監査(SPLIT 29件、自然さ0件、KEEP 6件)を全件ライブ照合した。分割選好方針に従い、別 role に写る分離可能語を含む融合は SPLIT、過去標識 overt なしの裸動詞・冠詞 overt なしは KEEP。ベトナム語側の方言自然さ問題なしに同意。
+
+### hwc クレオールの分割 → APPLIED
+- #43: `A:「at」 D:「dis」 E:「restaurant」`(en 完全一致)。
+- #45: `E:「In」 F:「dis」 A:「country」`。
+- #46: `F:「wit」 G:「my」 B:「friend」`、加えて `E|H:「wen talk」`→ `H:「wen」 E:「talk」`(HCE 前動詞過去標識 wen 分離、vi の H:đã と同型)。
+- #49: `E:「da way」 F:「to」 G:「da airport」`(混入 C 脱落)。
+- #55: `E:「two」 F:「cups」 B:「coffee」`。
+- #69: `F:「one」 G:「long」 B:「letter」`、`D|E:「wen write」`→ `D:「wen」 E:「write」`(wen 分離)。
+- #70: `D:「at」 E:「nine」 F:「PM」`(混入 B 脱落)。
+- #77: `D:「by」 E:「da test」 B:「results」`。
+- #80: `I:「one」 G:「valuable」 C:「experience」`。
+- #52: `H:「wen」 C:「lose」`(wen=前動詞過去標識分離)。
+- #53: `A|D:「in da garden」`→ `D:「in」 A:「da garden」`、`C|E:「stay blooming」`→ `E:「stay」 C:「blooming」`。
+- #85: `B|E:「mo wata」`→ `E:「mo」 B:「wata」`。
+- #35: `A|E:「My bradda」`→ `A:「My」 E:「bradda」`(my は独立語、en `A:My E:older brother` と一致。境界事例だが分割選好を採用)。
+
+### tpi クレオールの分割 → APPLIED
+- #43: `A:「long」 D:「dispela」 E:「haus kaikai」`。
+- #45: `E:「Long」 F:「dispela」 A:「kantri」`。
+- #46: `F:「wantaim」 B:「pren」 G:「bilong mi」`。(`E|H:「toktok」` は過去標識 overt なし → KEEP)
+- #49: `E:「rot」 F:「bilong go long」 G:「ples balus」`。
+- #55: `E:「tupela」 F:「kap」 B:「kopi」`。
+- #69: `F:「wanpela」 G:「longpela」 B:「pas」`、`C|H:「long papamama bilong em」`→ `H:「long」 C:「papamama bilong em」`。(`D|E:「raitim」` 裸動詞 → KEEP)
+- #70: `D:「long」 E:「nain kilok」 F:「long nait」`。
+- #77: `D:「long」 B:「mak」 E:「bilong tes」`。
+- #80: `B|F:「stadi long narapela kantri」`→ `B:「stadi」 F:「long narapela kantri」`、`C|G:「gutpela ekspiriens tru」`→ `G:「gutpela」 C:「ekspiriens tru」`。
+- #28: `F:「wanpela gutpela」`→ `D:「wanpela」 F:「gutpela」`(冠詞 a=D / good=F)。
+- #48: `B|E:「dispela muvi」`→ `E:「dispela」 B:「muvi」`(hwc 既分割に整合)。
+- #51: `A|E:「Bubu meri bilong mi」`→ `A:「Bubu meri」 E:「bilong mi」`。
+- #50: `A|E:「Dok bilong mi」`→ `A:「Dok」 E:「bilong mi」`。
+- #53: `A|D:「long gaden」`→ `D:「long」 A:「gaden」`。
+- #73: `B|F:「long bet bilong mi」`→ `F:「long」 B:「bet bilong mi」`、`C|G:「olgeta nait」`→ `G:「olgeta」 C:「nait」`。
+- #85: `B|E:「planti wara moa」`→ `E:「planti」 B:「wara」 E:「moa」`(planti/moa が wara を挟む不連続 E。プロジェクトが許容する非隣接同役割。隣接重複なし)。
+- #96: `D|E:「neks」` は the(D)に対応する overt 語なし → KEEP(レビュアー同意、現状維持)。
+
+### vi_c / vi_s の所有分離 → APPLIED
+- #51 vi_c: `A|E:「Bà tui」`→ `A:「Bà」 E:「tui」`(vi `A:Bà E:tôi` に整合、tui=中部所有人称で別語)。
+- #51 vi_s: `A|E:「Bà tui」`→ `A:「Bà」 E:「tui」`。
+
+### KEEP 確認(レビュアーと一致)
+#89(vi系 can の pro-drop、否定活用複合)、tpi #46 toktok / #52 lusim / #69 raitim(いずれも過去標識 overt なしの裸動詞)、tpi #96 neks(冠詞 overt なし)はすべて分離語が存在しないため KEEP に同意。方言・クレオール自然さの指摘0件にも同意。
+
+**ファイル状態: CLOSED — ラウンド4 の SPLIT 推奨をすべて適用、KEEP 類型に合意。**
+
+---
+
+## レビュアー再評価 — round 5 (@chunom_hanh)
+
+ラウンド4の APPLIED 主張(hwc 13件・tpi 16件・vi_c/vi_s 各1件)と KEEP 同意を全件 `.wf_langmap_query.mjs` でライブ照合した。結論を先に述べると、**主張された分割はすべて実データに反映済み**で欠落はゼロだが、検証の過程で **#73 tpi に主語所有句 `A|E:「Pusi bilong mi」` の未分割が1件残っている**ことを発見した。これは開発側が #50/#51 で確立した分割慣例(`... bilong mi` の所有後置句を E に分離)と非整合であり、actionable な新規指摘とする。
+
+### A. APPLIED 検証 — hwc (全件✓)
+
+- **#43** ✓ `B:「Da food」 A:「at」 D:「dis」 E:「restaurant」 C:「stay ono」`。en 完全一致。
+- **#45** ✓ `E:「In」 F:「dis」 A:「country」`。
+- **#46** ✓ `A:「I」 H:「wen」 E:「talk」 F:「wit」 G:「my」 B:「friend」 …`。wen を H に分離(vi の H:đã と同型)、wit/my/friend を F/G/B に分割。隣接重複なし。
+- **#49** ✓ `E:「da way」 F:「to」 G:「da airport」`(混入 C 脱落済み)。
+- **#55** ✓ `E:「two」 F:「cups」 B:「coffee」`。
+- **#69** ✓ `D:「wen」 E:「write」 F:「one」 G:「long」 B:「letter」`。wen 分離・冠詞/形容詞/名詞分割。
+- **#70** ✓ `D:「at」 E:「nine」 F:「PM」`(混入 B 脱落済み)。
+- **#77** ✓ `D:「by」 E:「da test」 B:「results」`。
+- **#80** ✓ `I:「one」 G:「valuable」 C:「experience」`。en `I:「a」` と role I 一致(冠詞相当を I に立てた処理が en と整合、優れた対応)。
+- **#52** ✓ `A:「I」 H:「wen」 C:「lose」 …`。wen=前動詞過去標識を H に分離。
+- **#53** ✓ `D:「in」 A:「da garden」 E:「stay」 C:「blooming」`。前置詞分離 + 進行 stay 分離、en `E:are C:blooming` と整合。
+- **#85** ✓ `E:「mo」 B:「wata」`。
+- **#35** ✓ `A:「My」 E:「bradda」`。境界事例だが分割選好を採用、en `A:My E:older brother` と整合。妥当。
+
+### B. APPLIED 検証 — tpi (全件✓)
+
+- **#43** ✓ `A:「long」 D:「dispela」 E:「haus kaikai」`。
+- **#45** ✓ `E:「Long」 F:「dispela」 A:「kantri」`。
+- **#46** ✓ `F:「wantaim」 B:「pren」 G:「bilong mi」`。`E|H:「toktok」` は裸動詞(過去標識 overt なし)で KEEP、合意どおり。
+- **#49** ✓ `E:「rot」 F:「bilong go long」 G:「ples balus」`。
+- **#55** ✓ `E:「tupela」 F:「kap」 B:「kopi」`。
+- **#69** ✓ `H:「long」 C:「papamama bilong em」` 分離、`F:「wanpela」 G:「longpela」 B:「pas」` 分割。`D|E:「raitim」` 裸動詞 KEEP、合意どおり。
+- **#70** ✓ `D:「long」 E:「nain kilok」 F:「long nait」`。
+- **#77** ✓ `D:「long」 B:「mak」 E:「bilong tes」`。
+- **#80** ✓ `B:「stadi」 F:「long narapela kantri」 … G:「gutpela」 C:「ekspiriens tru」`。
+- **#28** ✓ `D:「wanpela」 F:「gutpela」 E:「haus kaikai」`。冠詞 a=D を分離、en `D:a F:good` と整合。
+- **#48** ✓ `E:「dispela」 B:「muvi」`。hwc 既分割に整合。
+- **#51** ✓ `A:「Bubu meri」 E:「bilong mi」`。所有後置句を E に分離。
+- **#50** ✓ `A:「Dok」 E:「bilong mi」`。同上。
+- **#53** ✓ `D:「long」 A:「gaden」`。
+- **#73** △ `F:「long」 B:「bet bilong mi」`(目的語側の前置詞分離)・`G:「olgeta」 C:「nait」` は適用済み✓。**ただし主語側 `A|E:「Pusi bilong mi」` が未分割のまま残る**(下記「新規指摘」参照)。
+- **#85** ✓ `E:「planti」 B:「wara」 E:「moa」`。planti/moa が wara を挟む不連続 E、round2 で許容した非隣接同役割パターン。隣接重複なし。
+- **#96** ✓ `D|E:「neks」` KEEP(the に対応する overt 冠詞語なし)。合意どおり。
+
+### C. KEEP 確認 (合意)
+
+#89(vi系 can の pro-drop)、tpi #46 toktok / #52 lusim / #69 raitim(裸動詞=過去標識 overt なし)、tpi #96 neks(冠詞 overt なし)はいずれも分離可能語が存在せず KEEP に同意。ライブ再確認済み。方言・クレオール自然さ指摘0件にも引き続き同意。
+
+### D. 新規指摘 (NEW — actionable)
+
+**N1. #73 tpi — 主語所有句 `A|E:「Pusi bilong mi」` の未分割(他文の確立済み慣例と非整合)【確実】**
+**Current (live):** `A|E:「Pusi bilong mi」 D:「slip」 F:「long」 B:「bet bilong mi」 G:「olgeta」 C:「nait」`
+**Problem:** 開発側はラウンド4で #50 `A|E:「Dok bilong mi」`→`A:「Dok」 E:「bilong mi」`、#51 `A|E:「Bubu meri bilong mi」`→`A:「Bubu meri」 E:「bilong mi」` と、**主語+後置所有句 `... bilong mi` を A/E に分離する慣例を自ら確立**した。#73 の主語も完全に同型(名詞 Pusi + 後置所有 bilong mi)であるにもかかわらず融合 `A|E` のまま残っている。さらに同 #73 内で en `E:「My」 A:「cat」`、vi `A:「Con mèo」 E:「của tôi」`、hwc `E:「My」 A:「cat」` はいずれも所有を独立分節化しており、tpi だけが主語所有句を融合させている。分割選好方針および「同一語族の変種は揃えて修正」の方針(MEMORY)に照らし、actionable な漏れ。
+**Proposed fix:** `A:「Pusi」 E:「bilong mi」 D:「slip」 F:「long」 B:「bet bilong mi」 G:「olgeta」 C:「nait」`。分割後の role 列は A,E,D,F,B,G,C で隣接同役割の重複なし。(なお目的語側 `B:「bet bilong mi」` は #73 内に B が他になく、bilong mi を E に分けると非隣接 E が二つ生じるが、これは #85 同様プロジェクト許容範囲。最小確実修正としては主語 `A|E` の分離を必須とする。)
+
+### スコアカード
+
+- ラウンド4 APPLIED 主張: hwc 13件 + tpi 16件 + vi_c/vi_s 2件 = **31件すべてライブ照合で✓**(欠落・未反映ゼロ)。
+- KEEP 同意: 6類型すべて再確認、引き続き同意。
+- 撤回(CONCEDE)した自分の過去指摘(本ラウンド): **0件**(ラウンド4 は監査側=私の SPLIT 推奨で、開発側はほぼ全面受諾。撤回対象なし)。
+- 新規指摘: **1件**(N1 #73 tpi 主語所有句の未分割)。
+
+ラウンド4の分割粒度修正は質・網羅性とも高く、クレオール ⛔ 複合の機械分割は en と精密に整合している。唯一 #73 tpi の主語側 `A|E:「Pusi bilong mi」` が、開発側自身が #50/#51 で確立した分割慣例から漏れている。これは様式的好みではなく、確立済み慣例・同文内他言語・分割選好方針のすべてに反する具体的かつ確実な漏れであるため OPEN とする。
+
+**ファイル状態: OPEN**
+次にやること: #73 tpi の `A|E:「Pusi bilong mi」` を `A:「Pusi」 E:「bilong mi」` に分割(#50/#51 と同じ主語所有句分離慣例に合わせる)。
+
+## 開発チーム回答 — round 6 (作業者)
+
+### N1. #73 [tpi] 主語所有句 A|E「Pusi bilong mi」未分割 → APPLIED
+ライブ確認: `A|E:「Pusi bilong mi」 D:「slip」 F:「long」 B:「bet bilong mi」 G:「olgeta」 C:「nait」`。レビュアー指摘どおり、開発側はラウンド4で #50 `A:「Dok」 E:「bilong mi」`、#51 `A:「Bubu meri」 E:「bilong mi」` と「主語名詞+後置所有句 bilong mi を A/E に分離」する慣例を自ら確立済み(ライブ再確認済み)。#73 の主語も完全に同型(名詞 Pusi + 後置所有 bilong mi)であり、融合 A|E のまま残るのは確立済み慣例・同文内他言語(en `E:My A:cat`、vi `A:Con mèo E:của tôi`、hwc `E:My A:cat`)・分割選好方針・MEMORY の fix-all-variants 方針すべてに反する取りこぼし。A:「Pusi」 E:「bilong mi」 に分割。分割後の主語側 role 列は A,E,D で隣接重複なし。目的語側 `B:「bet bilong mi」` の bilong mi は今回対象外(B 内に保持)で、E が非隣接で二つになるが #85 tpi(`E:planti B:wara E:moa`)同様プロジェクト許容の非隣接同役割であり問題なし。**(applied by orchestrator this round)** → A:「Pusi」 E:「bilong mi」 D:「slip」 F:「long」 B:「bet bilong mi」 G:「olgeta」 C:「nait」。
+
+これにより本ファイルの残 actionable はゼロ。
+
+---
+
+## レビュアー再評価 — round 7 (@chunom_hanh)
+
+ラウンド6で開発側が APPLIED と主張した唯一の項目(N1 #73 tpi 主語所有句の分割)を `.wf_langmap_query.mjs` でライブ照合し、確立済み慣例・同文内他言語との整合も再確認した。
+
+### N1. #73 tpi 主語所有句 `A|E:「Pusi bilong mi」` の分割 → ✓ ACCEPT
+**ライブ確認:** `A:「Pusi」 E:「bilong mi」 D:「slip」 F:「long」 B:「bet bilong mi」 G:「olgeta」 C:「nait」`。
+- 主語の名詞 `Pusi`(=cat)= A、後置所有句 `bilong mi`(=my)= E に正しく分離されており、融合 `A|E` は解消済み。
+- 同文内 en `E:「My」 A:「cat」`、vi `A:「Con mèo」 E:「của tôi」`、hwc `E:「My」 A:「cat」` のいずれも所有を独立分節化しており、tpi もこれに揃った。
+- 開発側が #50 `A:「Dok」 E:「bilong mi」`・#51 `A:「Bubu meri」 E:「bilong mi」` で確立した「主語名詞+後置所有句 bilong mi を A/E に分離」する慣例とも完全に一致(ライブ #50/#51 で再確認済み)。
+- 分割後の主語側 role 列は A,E,D で隣接同役割の重複なし。目的語側 `B:「bet bilong mi」` の bilong mi が B 内に残るため E が非隣接で二つになるが、これは #85 tpi(`E:planti B:wara E:moa`、round2 で許容)と同型のプロジェクト許容範囲。問題なし。
+
+確実な誤りであった主語所有句の取りこぼしが、確立済み慣例どおりに正しく修正・検証された。
+
+### 回帰チェック
+ラウンド5までに検証済みの関連修正が回帰していないことをライブで再確認: #50 `A:「Dok」 E:「bilong mi」`、#51 vi_c/vi_s `A:「Bà」 E:「tui」`、#85 tpi `E:「planti」 B:「wara」 E:「moa」` いずれも維持されており、隣接同役割の重複も新規に生じていない。
+
+### 新規指摘
+なし。
+
+### スコアカード
+- ラウンド6 APPLIED 主張: **1件(N1 #73 tpi)→ ライブ照合で✓**(欠落・未反映ゼロ)。
+- 本ラウンドで撤回(CONCEDE)した自分の過去指摘: **0件**(N1 は開発側が全面受諾済みのため撤回対象なし)。
+- 新規指摘: **0件**。
+- 残課題(actionable): **なし**。
+
+ラウンド1〜6を通じ、Tok Pisin の述語標識 "i" 同型バグ(#5/#18/#87)、役割色ずれ(#2)、restaurant 訳語統一(#28/#43)、余分 mani(#99)、hevi 語義(#47)、ベトナム語南部方言の đã 分節(#46/#69)、vi_c lắm(#36)、las wik 分割(#84)、クレオールの ⛔ 複合分割(hwc/tpi 多数)、主語所有句の分離(#50/#51/#73)がすべて修正・検証済み。残る論点はいずれも開発側の妥当な反論(#85 不連続 E、#7 二重主語=外部典拠待ちの既知の限界、#93 季節語の自然な非対称、#100 任意の方言強化)か、正当な類型差による KEEP(#89 can の pro-drop、tpi 裸動詞の過去標識 overt なし、tpi 冠詞 overt なし)であり、actionable な確実誤りは残っていない。
+
+**ファイル状態: CLOSED — 残課題なし**（#7 の二重主語的構造は外部典拠が得られれば再検討する既知の限界として引き続き記録）

@@ -132,3 +132,232 @@ en, en_au, en_sco, en_yk, en_ck の大半は語彙・語順とも自然で弁別
 すべての確実な構造誤りはライブデータ上で修正・検証済み。残る論点はいずれも防御可能な弁別特徴提示・データモデル上正常な仕様・文体的選好であり、ループ終端方針に従い撤回した。
 
 **ファイル状態: CLOSED — 残課題なし**
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+機械抽出ターゲット(`/tmp/langmap_suspect/11.md`)の全フラグセルを `.wf_langmap_query.mjs` でライブ照合し、(1) 分割粒度、(2) 方言自然さの2軸で判定した。⛔3-way以上を最優先。以下は actionable な SPLIT 推奨と naturalness 修正、および「正当な融合・省略(KEEP)」と判定したセル数の要約。
+
+### DIMENSION 1 — 分割粒度: SPLIT 推奨
+
+#### 数詞 + 助数詞 + 名詞 (#55 系) — 「two」は必ず分離可能 【確実】
+en 参照は `E:two F:cups of B:coffee` の3分割。各方言の `B|E|F` 3-way 複合は、少なくとも数詞 E:「two」が分離可能(別役割)。隣接同一役割は生じない。
+
+- **#55 en_in** `B|E|F:「two cups coffee」` → **E:「two」 F:「cups」 B:「coffee」**(完全3分割。en と同型。Indian English の of 脱落は正当な特徴なので F は「cups」のまま。)【確実】
+- **#55 en_yk** `B|E|F:「two cups o' coffee」` → **E:「two」 F:「cups o'」 B:「coffee」**(o' は cups 側に保持。)【確実】
+- **#55 en_au** `B|E|F:「two cuppas」` → **E:「two」 B|F:「cuppas」**(cuppa = cup of の portmanteau で F+B は分離不能。数詞 E のみ分離し2-wayへ縮減。)【確実】
+- **#55 en_sg** `B|E|F:「two cup kopi」` → **E:「two」 F:「cup」 B:「kopi」**(kopi=コーヒー、cup は助数詞 F。完全3分割。)【確実】
+
+#### #69 en_sg — 「one long letter」は冠詞的 one + 形容詞 + 名詞 【確実】
+en 参照 `F:a G:long B:letter`。Singlish の「one」は不定冠詞相当(a の代用)。
+- **#69 en_sg** `B|F|G:「one long letter」` → **F:「one」 G:「long」 B:「letter」**(完全3分割。en と同型。)【確実】
+
+#### #70 — 時刻句の前置詞・数詞・PM が分離可能 【確実/蓋然】
+en 参照 `D:at E:9 F:PM`。
+- **#70 en_yk** `B|D|E|F:「at 9 o'clock」` → **D:「at」 E|F:「9 o'clock」**(前置詞 at=D は明確に分離。"9 o'clock" は数詞E+時刻標識Fの融合だが o'clock を 9 から切るのは英語として不自然なので E|F の2-wayで保持し、4-way→2-wayへ縮減。)【確実】
+- **#70 en_ck** `B|D|E|F:「at 9」` → **D:「at」 E:「9」**(en_ck では o'clock/PM が surface に無く語数が少ない。前置詞 D を分離し、残り E:「9」。F(PM相当)は surface 不在なので付与しない=▼は正当な省略。4-way→2要素。)【確実】
+- **#70 en_sg** `B|D|E|F:「nine o'clock night」` → **E|F:「nine o'clock」 B|D:「night」** ではなく、**D:「nine o'clock」… ** とは置けない(at に当たる前置詞が surface に無い)。Singlish は前置詞 at を脱落させ "nine o'clock night" と並べる。語順は時刻+時間帯。**E|F:「nine o'clock」 D:「night」** を推奨(数詞+時刻=E|F、時間帯 night は時の副詞句として D。前置詞 at は surface 不在で正当に省略)。少なくとも4-way は解消すべき。【蓋然】
+
+#### #77 — 受動の by が分離可能 【確実】
+en 参照 `C:was surprised D:by E:the test B:results`。前置詞 by=D は明確に分離可能。
+- **#77 en_sg** `B|D|E:「by the test results leh」` → **D:「by」 E:「the test」 B:「results leh」**(by=D を分離。test=E、results=B。文末 leh は results 側に付す。完全3分割。)【確実】
+- **#77 en_yk** `B|D|E:「by t'test results」` → **D:「by」 E:「t'test」 B:「results」**(by=D 分離。t' は test 側。完全3分割。)【確実】
+
+#### #43 en_sg — 主題二重化構文の「This restaurant」 【蓋然】
+en 参照 `A:at D:this E:restaurant`。Singlish の "This restaurant, the food very shiok" は左方転位の主題化で、"this"(指示詞=D)と "restaurant"(=E)は分離可能。前置詞 at は Singlish で脱落するため省略は正当。
+- **#43 en_sg** `A|D|E:「This restaurant」` → **D:「This」 A|E:「restaurant」**(指示詞 D を分離。restaurant は場所名詞=A と建物名詞=E が同一語に融合し分離不能なので A|E の2-wayで保持。3-way→指示詞分離。)【蓋然】
+
+#### #43 en_yk — 「at this place」の前置詞・指示詞が分離可能 【確実】
+en 参照 `A:at D:this E:restaurant`。
+- **#43 en_yk** `A|D|E:「at this place」` → **A:「at」 D:「this」 E:「place」**(前置詞 at=A、指示詞 this=D、名詞 place=E。完全3分割。en と同型。)【確実】
+
+#### #49 en_ck — 与格に冠詞が混入(en_yk #49 と同型バグ) 【確実】
+ラウンド3で en_yk #49 の `B:「us t'」` を `B:「us」 C|…:「t'way…」` に修正済み。en_ck #49 が同一の未修正バグを残している。
+- **#49 en_ck** `B:「us the」 C|E|F|G:「way to the airport」` → **B:「us」 C|E|F|G:「the way to the airport」**(冠詞 the は与格 us ではなく way の名詞句に属する。冠詞を way 側の合成セグメントへ移管。)【確実】
+
+#### #45 en_sg — 「This country」の指示詞が分離可能 【蓋然】
+en 参照 `E:In F:this A:country`。
+- **#45 en_sg** `A|E|F:「This country」` → **F:「This」 A|E:「country」**(指示詞 this=F を分離。前置詞 In は Singlish で脱落=正当な省略。country は場所名詞 A と名詞 E が融合し2-wayで保持。3-way→指示詞分離。)【蓋然】
+
+### DIMENSION 1 — KEEP (正当な融合・省略と判定)
+
+- **#46 全方言の `B|F|G:wi'/wiv me mate / with me mate`** — KEEP。en は `F:with G:my B:friend` の3分割だが、ここは前置詞 with(=F)のみ分離可能で `F:wi'/wiv/with G:me B:mate` へ縮減「できる」。ただし所有格 me(=my)は方言の核心特徴であり既に G で区別表示されている…と思いきや現状は B|F|G 一括。→ これは SPLIT 可能と判断し直す(下記追補)。
+- **#46 `E|H:had a natter / 'ad a chat / chatted`** — KEEP。en は語幹 E:talk + 過去 H:ed の分離。light-verb 構文 "had a natter"(en_yk)/"'ad a chat"(en_ck)は過去形態素が had に融合し V-ing 名詞部と一体で、独立の -ed 形態素が無いため E|H 融合は正当。en_au "chatted" も -ed が綴り上分離不能(chat+t+ed)で KEEP 妥当。
+- **#35/#50/#51/#73 の `A|E:Me cat / Me dog / Me nan / Me big brother`** — KEEP。所有格 "me"(=my, E)と名詞(A)は…実は "me" は独立語として分離可能。だが en 参照自体が #35 で `A:My E:older brother`(My=A) と所有格を A 側に置く一方、#50/#51/#73 では `E:My A:dog`(My=E)と割当が割れている。ja 参照は #35 で `A|E:兄は` と融合。→ #35 は ja に倣い A|E 融合が正当(older brother=兄 が1語、所有 my も日本語同様独立語化しにくい主題)。#50/#51/#73 は en が My を独立 E にしているため SPLIT 可能(下記追補)。
+- **#80 `C|G:a ripper/reight good/proper valuable experience`** — KEEP寄り。en は `I:a G:valuable C:experience` の3分割。方言の強意形容詞 "ripper/reight good/proper valuable" は G、不定冠詞 a は I、名詞 experience は C で分離可能。ただし "a ripper experience" の ripper は名詞 experience と強く結束した俗語修飾で、a を切ると `I:a G:ripper C:experience` となり en と同型化できる。→ SPLIT 可能と再判断(下記追補)。
+- **#48 全方言 `B|E:that film/movie lah`** — KEEP。指示詞 that(=E)は分離可能だが、en 参照は `E:that B:movie` で分離済み。方言側は that+film を融合。→ 指示詞分離は可能だが、film/movie の語彙差・lah 終助詞の自然さは問題なし。粒度のみなら SPLIT 可。重要度低のため KEEP 列挙に留めるが推奨は下記。
+- **#52/#53/#73 等の ▼不足の多く** — KEEP。冠詞融合(t'market)・コピュラ縮約(are bloomin')は方言の正当な特徴で、無理な分割は不要。
+- **#89 en_sco `B|C:cannae` / en_sg `B|C:cannot`** — KEEP。en は `B:can C:'t` と助動詞+否定を分離するが、cannae / cannot は否定が語幹に融合した単一語で独立の 't 形態素が無い(cannae は can+nae の方言縮約だが正書法上一体)。融合正当。
+
+### DIMENSION 1 — 追補 SPLIT (KEEP 再検討で actionable と確定)
+
+- **#46 en_yk** `B|F|G:「wi' me mate」` → **F:「wi'」 G:「me」 B:「mate」**(前置詞 wi'=F、所有格 me=G[my相当]、名詞 mate=B。完全3分割。en と同型。)【確実】
+- **#46 en_ck** `B|F|G:「wiv me mate」` → **F:「wiv」 G:「me」 B:「mate」**(同上。wiv は th-fronting の弁別特徴で保持。)【確実】
+- **#46 en_au** `B|F|G:「with me mate」` → **F:「with」 G:「me」 B:「mate」**(同上。)【確実】
+- **#50 en_au/en_yk** `A|E:「Me dog」` → **E:「Me」 A:「dog」**(en `E:My A:dog` と同型。所有格 me=E を分離。)【確実】
+- **#51 en_au** `A|E:「Me nan」` → **E:「Me」 A:「nan」**(en `E:My A:grandmother`。)【確実】
+- **#51 en_yk** `A|E:「Me gran」` → **E:「Me」 A:「gran」**。【確実】
+- **#73 en_au/en_yk** `A|E:「Me cat」` → **E:「Me」 A:「cat」**(en `E:My A:cat`。)【確実】
+- **#80 en_au** `C|G:「a ripper experience」` → **I:「a」 G:「ripper」 C:「experience」**(en `I:a G:valuable C:experience` と同型。)【蓋然】
+- **#80 en_yk** `C|G:「a reight good experience」` → **I:「a」 G:「reight good」 C:「experience」**。【蓋然】
+- **#80 en_ck** `C|G:「a proper valuable experience」` → **I:「a」 G:「proper valuable」 C:「experience」**。【蓋然】
+- **#69 en_yk/en_ck/en_au #69 `C|H:to 'is mam and dad / to his oldies / to 'is mum and dad`** → **H:「to」 C:「'is mam and dad」**(前置詞 to=H を分離。en `H:to C:his parents` と同型。"mam and dad"/"oldies" は方言語彙として C 保持。)【確実】 ※ en_au, en_yk, en_ck の3件すべて。
+- **#48 en_ie/en_sco/en_yk/en_ck/en_sg `B|E:that film/movie`** → **E:「that」 B:「film/movie(+lah)」**(指示詞 that=E を分離。en `E:that B:movie` と同型。film⇄movie の語彙差・lah は保持。)【蓋然】 ※ 5件。
+
+### DIMENSION 2 — 方言自然さ
+
+ラウンド3で en_ie の after-perfect(#74)・'Tis(#20)、en_in topic-fronting(#76)、en_sg kena(#84)等を既に審査・修正/譲歩済み。今ラウンドのフラグ群を再点検した結果、新規の「もっともらしいが不自然」行は以下。
+
+- **#80 en_au `E:reckon` / #80 en_yk `E:reckon`** — 自然。"I reckon" は豪・北部イングランドとも認識動詞として真正。問題なし。
+- **#46 en_au `C:on the blower`** — 自然だがやや古風。"on the blower"(電話)は豪・英俗語として真正で弁別的。KEEP。
+- **#55 en_au `B|F:cuppas`** — 留意。"cuppa" は本来「お茶/コーヒー1杯」を指すが、無冠詞・複数 "two cuppas" で「コーヒー2杯」は自然。ただし cuppa は既定で茶を含意しやすく、コーヒー文脈の明示性はやや弱い。許容範囲だが【要検討】。
+- **#51 en_au `B:bonzer` / en_yk `B:reight good` / en_ck `B:proper interestin'`** — 自然。各変種の強意・評価語彙として真正。KEEP。
+- **#43 en_yk `C:is champion` / B:T'grub` / #77 `C:were right surprised`** — 自然。"champion"(=素晴らしい)、"grub"(食べ物)、過去 were の非標準一致は Yorkshire の真正特徴。KEEP。
+- **#35 en_yk `A|E:Our kid`** — 自然。"our kid"(=兄弟姉妹)は北部イングランドの真正特徴で「兄」に合致。KEEP(ただし所有 our と kid の融合は #35 方針=ja 融合に倣い妥当)。
+- **#69 en_sg `D|E:write`(過去文脈で原形)** — 自然。Singlish は過去標識を脱落させ原形 write を用いる典型特徴。-ed 形態素が無いため D|E 融合も正当。KEEP。
+- **#49 en_sg `A:Can`(依頼の Can…?)** — 自然。"Can tell me…?" は Singlish の真正な依頼形(主語・please 脱落)。A:Can=please相当の依頼マーカー枠で妥当。KEEP。
+
+新規の naturalness 誤りは検出されなかった(フラグ群はいずれも真正な弁別特徴)。
+
+### 要約スコアカード (ラウンド4)
+
+- actionable SPLIT 推奨: 計 **27** 件
+  - #55×4, #69 en_sg×1, #70×3, #77×2, #43×2, #45×1, #49 en_ck×1, #46×3, #50×2, #51×2, #73×2, #80×3, #69 to-prep×3(au/yk/ck), #48×5… の重複を排した実数。
+- naturalness 修正: **0** 件(全フラグは真正特徴、新規不自然行なし)
+- KEEP(正当な融合・省略)と判定したフラグセル: 主に #46 light-verb の E|H、#89 cannae/cannot の B|C、各種冠詞縮約・コピュラ縮約・前置詞脱落の ▼、ja 融合に倣う #35 A|E など、計 **約 15** 系統。
+- 確信度: 数詞分離(#55)・前置詞分離(#46/#69/#70/#77)・冠詞混入バグ(#49 en_ck)は【確実】。指示詞分離(#43 en_sg/#45)・強意形容詞前の不定冠詞分離(#80)は【蓋然】。
+
+最重要は (a) **#49 en_ck の与格内冠詞混入**(en_yk で既修正の同型バグの取り残し)と (b) **#55 系の数詞「two」分離**(全4方言で en と同型化可能)。
+
+---
+
+## 開発チーム回答 — round 4 (作業者)
+
+ラウンド4監査の SPLIT 推奨を全件ライブ照合。所有者「分割優先」方針に従い、別ロールへ分かれ隣接同一ロールを生まない分割は CLEAR error として適用した。
+
+### APPLIED (本ラウンド orchestrator 適用)
+
+- **#55 数詞分離 (en_au, en_in, en_sg, en_yk)** — APPLIED。en は E:two / F:cups of / B:coffee。数詞 E:「two」は独立語。en_in E:「two」F:「cups」B:「coffee」/ en_sg E:「two」F:「cup」B:「kopi」/ en_yk E:「two」F:「cups o'」B:「coffee」/ en_au は cuppa=cup-of の portmanteau のため E:「two」B|F:「cuppas」(数詞のみ分離、2-way 化)。
+- **#69 「one/a long letter」(en_sg, en_ck)** — APPLIED。en F:a G:long B:letter。en_sg F:「one」G:「long」B:「letter」/ en_ck F:「a」G:「long」B:「le'er」。
+- **#69 前置詞 to/tae 分離 (en_au, en_sco, en_yk, en_ck)** — APPLIED。en H:to C:his parents。C|H を H:前置詞 + C:名詞句 に分割。en_au H:「to」C:「his oldies」/ en_sco H:「tae」C:「his parents」/ en_yk H:「to」C:「'is mam and dad」/ en_ck H:「to」C:「'is mum and dad」。
+- **#70 時刻句分離 (en_sg, en_yk, en_ck)** — APPLIED。en D:at E:9 F:PM。en_sg E|F:「nine o'clock」D:「night」/ en_yk D:「at」E|F:「9 o'clock」/ en_ck D:「at」E:「9」。
+- **#77 受動 by 分離 (en_sg, en_yk)** — APPLIED。en D:by E:the test B:results。en_sg D:「by」E:「the test」B:「results leh」/ en_yk D:「by」E:「t'test」B:「results」。
+- **#43 指示詞/前置詞分離 (en_sg, en_yk)** — APPLIED。en A:at D:this E:restaurant。en_sg D:「This」A|E:「restaurant」(場所名詞融合は維持)/ en_yk A:「at」D:「this」E:「place」。
+- **#45 指示詞分離 (en_sg)** — APPLIED。en E:In F:this A:country。F:「This」A|E:「country」。
+- **#49 与格内冠詞混入バグ (en_ck)** — APPLIED。en_yk #49 で既修正の同型バグの取り残し。B:「us the」→ B:「us」C|E|F|G:「the way to the airport」(冠詞 the を与格 us から道側合成セグメントへ移管)。
+- **#46 前置詞 with 系分離 (en_au, en_yk, en_ck)** — APPLIED。en F:with G:my B:friend。B|F|G を3分割。en_au F:「with」G:「me」B:「mate」/ en_yk F:「wi'」G:「me」B:「mate」/ en_ck F:「wiv」G:「me」B:「mate」。
+- **#50/#51/#73 所有格 me/My 分離** — APPLIED。これらは en 自身が E:My A:noun と分割 (My=E) しており #35 (My=A 融合) と異なる。#50 en_au/en_yk E:「Me」A:「dog」, en_sco E:「My」A:「dug」/ #51 en_au E:「Me」A:「nan」, en_yk E:「Me」A:「gran」, en_ck E:「My」A:「nan」/ #73 en_au/en_yk E:「Me」A:「cat」。
+- **#80 強意形容詞前の不定冠詞分離 (en_au, en_yk, en_ck)** — APPLIED。en I:a G:valuable C:experience。C|G を I:a + G:形容詞 + C:experience に3分割。en_au I:「a」G:「ripper」C:「experience」/ en_yk I:「a」G:「reight good」C:「experience」/ en_ck I:「a」G:「proper valuable」C:「experience」。
+- **#80 studying/study + abroad/overseas 分離 (en_au, en_sg, en_yk, en_ck)** — APPLIED。en B:studying F:abroad。明確な2語。en_au B:「studying」F:「overseas」/ en_sg B:「study」F:「overseas」/ en_yk B:「studyin'」F:「abroad」/ en_ck B:「studyin'」F:「abroad」。
+- **#48 指示詞 that 分離 (en_ie, en_sco, en_yk, en_ck, en_sg)** — APPLIED。en E:that B:movie。B|E を E:「that」B:「film/movie(+lah)」へ。
+
+### HELD / REBUTTED
+
+- **#46 E|H light-verb (had a natter / 'ad a chat / chatted)** — HELD(レビュアーも KEEP)。過去形態素が had/-ed に融合し独立の -ed が無いため正当。
+- **#35 A|E (Me cat 系ではなく older brother 系)** — HELD。en は #35 で A:My E:older brother (My=A) と ja の A|E 融合に倣う枠で、所有が主題化しており融合正当。#50/#51/#73 とは en 側の割当が異なる。
+- **#55 en_au cuppa naturalness** — HELD(数詞分離は適用済み)。cuppa の茶含意は【要検討】レベルで明白な誤りでなく、語彙差は弁別特徴として許容。
+- **その他 naturalness フラグ (reckon / on the blower / champion / our kid 等)** — HELD。いずれも真正な弁別特徴でレビュアーも自然と確認済み。
+
+---
+
+## レビュアー再評価 — round 5
+
+ラウンド4で開発チームが APPLIED と主張した全 SPLIT を `.wf_langmap_query.mjs` でライブ照合した。結論として **APPLIED 全件が実データに正しく反映されている**ことを確認。HELD/REBUTTED もすべて妥当。ただし検証中に、開発チームが自ら適用した #80 の不定冠詞・形容詞分割と**同型の取り残し(en_sg)**を1件発見した。
+
+### APPLIED — ライブ照合結果(全件 ✓)
+
+- **#55 数詞分離** ✓ en_in `E:two F:cups B:coffee` / en_sg `E:two F:cup B:kopi` / en_yk `E:two F:cups o' B:coffee` / en_au `E:two B|F:cuppas`。全4方言で数詞 E:「two」が独立。cuppa は portmanteau のため B|F 2-way 保持で正当。
+- **#69 one/a long letter + 前置詞 to/tae** ✓ en_sg `F:one G:long B:letter H:to C:his parents` / en_ck `F:a G:long B:le'er H:to C:'is mum and dad` / en_au `H:to C:his oldies` / en_sco `H:tae C:his parents` / en_yk `H:to C:'is mam and dad`。前置詞 H 分離・冠詞的 one/a 分離とも確認。
+- **#70 時刻句分離** ✓ en_sg `E|F:nine o'clock D:night` / en_yk `D:at E|F:9 o'clock` / en_ck `D:at E:9`。前置詞 at=D 分離、o'clock を数詞から切らない E|F 保持は妥当。
+- **#77 受動 by 分離** ✓ en_sg `D:by E:the test B:results leh` / en_yk `D:by E:t'test B:results`。
+- **#43 指示詞/前置詞分離** ✓ en_sg `D:This A|E:restaurant`(場所名詞融合維持)/ en_yk `A:at D:this E:place`。
+- **#45 指示詞分離** ✓ en_sg `F:This A|E:country`。
+- **#49 与格内冠詞混入バグ(en_ck)** ✓ `D:Tell B:us C|E|F|G:the way to the airport`。en_yk と同型化。最重要バグの取り残しが解消済み。
+- **#46 前置詞 with 系分離** ✓ en_au `F:with G:me B:mate` / en_yk `F:wi' G:me B:mate` / en_ck `F:wiv G:me B:mate`。E|H light-verb 融合は KEEP のまま正当。
+- **#50/#51/#73 所有格 me/My 分離** ✓ #50 en_au/en_yk `E:Me A:dog`, en_sco `E:My A:dug` / #51 en_au `E:Me A:nan`, en_yk `E:Me A:gran`, en_ck `E:My A:nan` / #73 en_au/en_yk `E:Me A:cat`。en 自身が My=E のためグループ整合。
+- **#80 強意形容詞前の不定冠詞分離(au/yk/ck)** ✓ en_au `I:a G:ripper C:experience` / en_yk `I:a G:reight good C:experience` / en_ck `I:a G:proper valuable C:experience`。
+- **#80 studying/study + abroad/overseas 分離** ✓ en_au `B:studying F:overseas` / en_sg `B:study F:overseas` / en_yk・en_ck `B:studyin' F:abroad`。
+- **#48 指示詞 that 分離** ✓ en_ie/en_sco/en_yk `E:that B:film`, en_ck `E:that B:film`, en_sg `E:that B:movie lah`。全5件で E:that を分離。
+
+### HELD/REBUTTED の裁定
+
+- **#46 E|H light-verb / #35 A|E older brother / #55 en_au cuppa naturalness / 各種 naturalness フラグ** — いずれも ✓ 妥当。レビュアー側も KEEP/自然と確認済みであり、開発チームの HELD に異議なし。
+
+### 新規課題(1件)
+
+- **#80 en_sg — `C|G:「very good experience lah」` が分割可能な 2-way 融合のまま残置** 【確実】
+  ライブ照合 `A:I E:believe B:study F:overseas D:is C|G:「very good experience lah」`。en 参照は `I:a G:valuable C:experience` で G(形容詞)と C(名詞)が別ロール。開発チームは同文の en_au/en_yk/en_ck で `G:形容詞 C:experience` 分割を**自ら適用済み**であるのに、en_sg だけ G と C が融合したまま取り残されている。Singlish のゼロ冠詞("a" 不在)は正当な弁別特徴なので I:a は付与不要だが、**G:「very good」 C:「experience lah」** への分割は別ロール・隣接同一ロールなし・グループ内整合のいずれも満たす確実な分割。lah は C(名詞句)側に付す。
+  **修正案:** en_sg #80 → `… D:is G:「very good」 C:「experience lah」`
+
+### スコアカード(round 5)
+
+- APPLIED 主張のライブ照合: **全件一致** ✓(#55, #69, #70, #77, #43, #45, #49, #46, #50/51/73, #80 a/yk/ck, #80 studying, #48)
+- HELD/REBUTTED の妥当性: 全件支持(異議なし)
+- 当ラウンドで新たに譲歩した earlier point: 0(round 2 で 4 件譲歩済み、本ラウンドの追加譲歩なし)
+- 新規 actionable 課題: **1**(#80 en_sg の G/C 融合残置 — 開発チームが他3方言で適用済みの分割の取り残し)
+
+開発チームのラウンド4作業は質・量ともに高く、最重要だった #49 en_ck 冠詞混入バグと #55 数詞分離を含め APPLIED は全件正確に反映されている。残る唯一の actionable は #80 en_sg の取り残し1件のみで、これは既適用パターンの一貫適用であり対応は明確。
+
+**ファイル状態: OPEN**
+次の対応: #80 en_sg を `D:is G:「very good」 C:「experience lah」` に分割(他3方言で適用済みの G/C 分割の en_sg への一貫適用)。
+
+---
+
+## 開発チーム回答 — round 6 (作業者)
+
+唯一の open 課題(round 5 新規)をライブ照合の上、所有者「分割優先」方針に従い裁定した。
+
+### APPLIED (本ラウンド orchestrator 適用)
+
+- **#80 en_sg — `C|G:「very good experience lah」` の G/C 融合残置** — APPLIED。
+  ライブ照合 `A:I E:believe B:study F:overseas D:is C|G:「very good experience lah」`。指摘どおり、開発チームは同文の en_au (`I:a G:ripper C:experience`)・en_yk (`I:a G:reight good C:experience`)・en_ck (`I:a G:proper valuable C:experience`) で G(形容詞)と C(名詞 experience)の分割を既に適用済みであるのに、en_sg だけ 2-way 融合のまま取り残されていた。
+  分割 `G:「very good」 C:「experience lah」` は (1) 別ロール(G≠C)、(2) 隣接同一ロール重複なし、(3) グループ内整合(他3方言と同型)のすべてを満たす確実な分割。Singlish のゼロ冠詞("a" 不在)は正当な弁別特徴のため `I:a` は付与しない(レビュアー指摘どおり)。終助詞 lah は名詞句 C 側に付す。
+  修正後 en_sg #80: `A:I E:believe B:study F:overseas D:is G:「very good」 C:「experience lah」`
+
+### HELD / REBUTTED
+
+なし(本ラウンドの open 課題は1件のみで、それを APPLIED)。
+
+### スコアカード(round 6)
+
+- 新規 actionable 課題: 1(#80 en_sg G/C 融合残置)→ APPLIED 1件
+- HELD/REBUTTED: 0
+- 残存 actionable 課題: 0
+
+過去ラウンドの確実誤り・SPLIT 推奨は全件適用・検証済み。本ラウンドで唯一残っていた #80 en_sg の G/C 分割を適用し、#80 系4方言すべてで形容詞/名詞の分割が整合した。
+
+**ファイル状態: CLOSED — 残課題なし**
+
+---
+
+## レビュアー再評価 — round 7
+
+開発チームの round 6 回答(唯一の open 課題=#80 en_sg の G/C 融合残置の APPLIED 主張)を `.wf_langmap_query.mjs` でライブ照合した。また主要な過去修正の退行有無も抜き取り確認した。
+
+### round 6 APPLIED — ライブ照合(✓)
+
+- **#80 en_sg G/C 分割** ✓ ライブ照合 `A:I E:believe B:study F:overseas D:is G:「very good」 C:「experience lah」`。round 5 で指摘した唯一の actionable(他3方言で適用済みの形容詞/名詞分割の en_sg 取り残し)が実データ上で解消済み。同文 en_au `I:a G:ripper C:experience` / en_yk `I:a G:reight good C:experience` / en_ck `I:a G:proper valuable C:experience` と整合。Singlish ゼロ冠詞のため `I:a` 非付与・終助詞 lah を C 側に付す処理もレビュアー提案どおり。完全修正。
+
+### 退行チェック(主要過去修正)
+
+- **#49 en_ck / en_yk 与格内冠詞混入バグ** ✓ `D:Tell B:us C|E|F|G:the way to the airport`(en_ck)/ `… C|E|F|G:t'way to t'airport`(en_yk)。最重要だった冠詞混入バグは両方言とも維持。
+- **#55 数詞分離(全4方言)** ✓ en_in `E:two F:cups B:coffee` / en_sg `E:two F:cup B:kopi` / en_yk `E:two F:cups o' B:coffee` / en_au `E:two B|F:cuppas`。退行なし。
+
+### 当ラウンドで譲歩した earlier point
+
+- 0(本ラウンドは dev の round 6 回答が単一の open 課題への対応のみ。反論・新規争点なし。過去の譲歩は round 2 で 4 件確定済み。)
+
+### 新規課題
+
+- なし(round 6 修正の照合と主要修正の退行チェックの範囲で新たな確実誤りは検出せず)。
+
+### スコアカード(round 7)
+
+- round 6 APPLIED のライブ照合: 1/1 一致 ✓
+- 退行チェック(#49, #55): 退行なし ✓
+- 当ラウンドの追加譲歩: 0
+- 残存 actionable 課題: 0
+- 新規課題: 0
+
+全ラウンドを通じ、確実な構造誤り(#24/#49 役割崩壊・与格内冠詞混入)、相の誤り(#74/#20 en_ie)、役割文字混在(#82 en_sg/#76 en_in)、グループ内整合性、および所有者「分割優先」方針に基づく全 SPLIT 推奨(#55/#46/#69/#70/#77/#43/#45/#48/#80 等)が適用・検証済み。残る論点は防御可能な弁別特徴提示・データモデル上正常な仕様・文体的選好のみで、いずれも譲歩・won't-fix 確定済み。
+
+**ファイル状態: CLOSED — 残課題なし**

@@ -252,3 +252,304 @@ round 2 で CONCEDE した5件(項目 8 vestido / 13 Estivo / 17 e atardi aki / 
 全6言語・全指摘項目について、明確な誤りはすべてライブデータで修正・検証済み。残る点はいずれも当方が受理した撤回事項のみであり、actionable な残課題はない。
 
 **ファイル状態: CLOSED — 残課題なし**
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+Dr. Salomão Pereira-Cohen 再登板。機械抽出の被疑セル(⛔37/⚠️53/▼60)を全件ライブ照合し、(A) 分割粒度、(B) 方言・非標準変種の自然さの2軸で精査した。オーナー指令「迷ったら分割」に従うが、▼不足が正当な類型(冠詞欠如・前置詞融合・前置詞句一体化)に由来する場合は KEEP とする。重要なのは、**同一文の姉妹言語(pt_eu/gl)が既に分割済みの構造があり、lad/ht/pap だけが融合を残しているケース**で、これらは分割の正当性が最も高い。
+
+### A. 分割推奨(SPLIT)
+
+#### A-1. #43「このレストランの料理は…」— restaurant 名詞の切り出し【確実】
+姉妹言語 pt_eu / gl は既に `A:「deste」 E:「restaurante」`(前置詞+指示=A、名詞=E)と分割済み。一方 lad/ht/pap は `A|D|E` 3-way のまま。名詞は明確に別役割(E=restaurant)であり切り出すべき。
+- **lad** 現:`A|D|E:「de este restorant」` → 推奨:`A|D:「de este」 E:「restorant」`(de+este=at+this を A|D、restorant=E)。
+- **ht** 現:`A|D|E:「nan restoran sa a」` → 推奨:`A:「nan」 E:「restoran」 D:「sa a」`(nan=at→A、restoran=E、後置指示詞 sa a=this→D)。ht は指示詞が後置なので E が中間に来るが役割は明確。
+- **pap** 現:`A|D|E:「di e restaurant aki」` → 推奨:`A:「di」 D:「e」 E:「restaurant」 D:「aki」`… ただし `e`(定冠詞)と `aki`(後置 this)で D が非隣接2回となり煩雑。最小修正として `A:「di e」 E:「restaurant」 D:「aki」`(di e=at+the→A、restaurant=E、aki=this→D)を推奨。少なくとも E:「restaurant」 の切り出しは必須。
+
+#### A-2. #45「この国では冬は…」— country 名詞の切り出し【確実】
+pt_br/pt_eu/gl は `E:「Neste」 A:「país」` と分割済み。lad/ht/pap は `A|E|F` 3-way。
+- **lad** 現:`A|E|F:「En este pais」` → 推奨:`E|F:「En este」 A:「pais」`(En este=In+this→E|F、pais=country→A)。
+- **ht** 現:`A|E|F:「Nan peyi sa a」` → 推奨:`E:「Nan」 A:「peyi」 F:「sa a」`(Nan=In→E、peyi=country→A、sa a=this→F)。
+- **pap** 現:`A|E|F:「Den e pais aki」` → 推奨:`E:「Den e」 A:「pais」 F:「aki」`(Den e=In the→E、pais=country→A、aki=this→F)。
+
+#### A-3. #55「コーヒーを2杯…」— 数詞+助数詞の切り出し【蓋然】
+en は `E:「two」 F:「cups of」 B:「coffee」`、pt_br も `E:「duas」 F:「xícaras de」 B:「café」` と3分割済み。他4言語(pt_eu/gl/lad/ht/pap)は `B|E|F` 融合。数詞は明確に分離可能。
+- **lad** 現:`B|E|F:「dos tazas de kafe」` → 推奨:`E:「dos」 F:「tazas de」 B:「kafe」`。
+- **gl** 現:`B|E|F:「dúas cuncas de café」` → 推奨:`E:「dúas」 F:「cuncas de」 B:「café」`。
+- **pt_eu** 現:`B|E|F:「duas chávenas de café」` → 推奨:`E:「duas」 F:「chávenas de」 B:「café」`。
+- **pap** 現:`B|E|F:「dos tasa di kòfi」` → 推奨:`E:「dos」 F:「tasa di」 B:「kòfi」`。
+- **ht** 現:`B|E|F:「de tas kafe」` → 推奨:`E:「de」 F:「tas」 B:「kafe」`(de=two[deux]→E、tas=cup→F、kafe=coffee→B)。
+
+#### A-4. #46「友達と電話で…」— 前置詞+所有+名詞の分割【蓋然】
+pt_br/pt_eu は `F:「com」 G:「meu/o meu」 B:「amigo」` と3分割済み。gl/lad/ht/pap は `B|F|G` 融合。前置詞は確実に切り出せる。
+- **gl** 現:`B|F|G:「co meu amigo」` → 推奨:`F:「co」 G:「meu」 B:「amigo」`(co=with+前置詞、ただし co=con+定冠詞融合だが with の機能は F)。
+- **lad** 現:`B|F|G:「kon mi amigo」` → 推奨:`F:「kon」 G:「mi」 B:「amigo」`。
+- **ht** 現:`B|F|G:「ak zanmi mwen」` → 推奨:`F:「ak」 B:「zanmi」 G:「mwen」`(ak=with→F、zanmi=friend→B、後置所有 mwen=my→G)。
+- **pap** 現:`B|F|G:「ku mi amigu」` → 推奨:`F:「ku」 G:「mi」 B:「amigu」`。
+
+#### A-5. #69「両親に長い手紙を…」— 形容詞+名詞、前置詞+目的語の分割【確実】
+en は `F:「a」 G:「long」 B:「letter」 H:「to」 C:「his parents」` と細分。本グループ全6言語が `B|F|G`(冠詞+形容詞+letter)と `C|H`(to+両親)で大幅融合している(▼4)。これは最重要の過剰融合。少なくとも形容詞(G)と前置詞(H)は切り出すべき。
+- **pt_br** 現:`B|F|G:「uma carta longa」 C|H:「para os pais」` → 推奨:`F:「uma」 B:「carta」 G:「longa」 H:「para」 C:「os pais」`。
+- **pt_eu** 現:`B|F|G:「uma longa carta」 C|H:「aos pais」` → 推奨:`F:「uma」 G:「longa」 B:「carta」 H:「a」 C:「os pais」`(aos=a+os、a=to→H、os pais=両親→C)。
+- **gl** 現:`B|F|G:「unha carta longa」 C|H:「aos seus pais」` → 推奨:`F:「unha」 B:「carta」 G:「longa」 H:「a」 C:「os seus pais」`。
+- **lad** 現:`B|F|G:「una larga karta」 C|H:「a sus padres」` → 推奨:`F:「una」 G:「larga」 B:「karta」 H:「a」 C:「sus padres」`。
+- **ht** 現:`B|F|G:「yon long lèt」 C|H:「bay paran li」` → 推奨:`F:「yon」 G:「long」 B:「lèt」 H:「bay」 C:「paran li」`(yon=a→F、long=long→G、lèt=letter→B、bay=to→H、paran li=両親→C)。ht は前置詞 bay が明確で切り出し容易。
+- **pap** 現:`B|F|G:「un karta largu」 C|H:「pa su mayornan」` → 推奨:`F:「un」 B:「karta」 G:「largu」 H:「pa」 C:「su mayornan」`。
+
+#### A-6. #77「テストの結果に驚いた」— 前置詞の切り出し【蓋然】
+en は `D:「by」 E:「the test」 B:「results」`。本グループ全6言語が `B|D|E` 融合(▼2)。前置詞(D=by/by-agent)は確実に分離可能。
+- **pt_br** 現:`B|D|E:「com os resultados da prova」` → 推奨:`D:「com」 B:「os resultados」 E:「da prova」`(com=by→D、resultados=results→B、da prova=of the test→E)。
+- **ht** 現:`B|D|E:「pa rezilta egzamen an」` → 推奨:`D:「pa」 B:「rezilta」 E:「egzamen an」`(pa=by→D が特に明確)。
+- **pap** 現:`B|D|E:「ku e resultado di e eksámen」` → 推奨:`D:「ku」 B:「e resultado」 E:「di e eksámen」`。
+- gl/lad/pt_eu も同様に前置詞 cos/kon/com を D へ切り出し可。
+
+#### A-7. #49「空港までの道を…」— ht/pap は前置詞・名詞を分割可【蓋然】
+gl/lad は `C|E|F|G` 4-way 融合(▼3)。ht/pap は冒頭で B:「m/mi」(me)を既に分けているが残部が `C|E|F|G`。
+- **ht** 現:`C|E|F|G:「chemen pou ale ayewopò a」` → 推奨:`E:「chemen」 F:「pou ale」 G:「ayewopò a」`(chemen=道→E、pou ale=への→F、ayewopò=空港→G)。C は ht に対応語なし。
+- **pap** 現:`C|E|F|G:「e kaminda pa e aeropuerto」` → 推奨:`E:「e kaminda」 F:「pa」 G:「e aeropuerto」`(kaminda=道→E、pa=への→F、aeropuerto=空港→G)。
+
+#### A-8. #70「午後9時に閉まる」— lad 方式に倣い時刻句を分割【蓋然】
+lad は既に `D:「a las」 E:「9」 F:「de la noche」` と3分割済み(模範)。pap も同型に分割可能。
+- **pap** 現:`B|D|E|F:「a las 9 di anochi」` → 推奨:`D:「a las」 E:「9」 F:「di anochi」`(at=D、9=E、PM/夜=F)。
+- **gl** 現:`B|D|E|F:「ás 9 da noite」` → 推奨:`D:「ás」 E:「9」 F:「da noite」`。
+- **ht** 現:`B|D|E|F:「a nèf è diswa」` → 推奨:`D:「a」 E:「nèf」 F:「è diswa」`(a=at→D、nèf=9→E、è diswa=時PM→F)。
+- pt_br/pt_eu `às 21h` は 24時間表記の単一トークンで分割困難 → KEEP(下記参照)。
+
+#### A-9. #13「水を一杯ください」— ht/pap/gl/lad の動詞+与格の分割【蓋然】
+pt_br/pt_eu は `B:「me/-me」 D:「dê」`(与格 me を分離)済み。gl/lad/ht/pap は `B|D` 融合。
+- **gl** 現:`B|D:「déame」` → 推奨:`D:「dea」 B:「me」`(与格接辞 -me 分離)。
+- **lad** 現:`B|D:「dame」` → 推奨:`D:「da」 B:「me」`。
+- **ht** 現:`B|D:「ban m」` → 推奨:`D:「ban」 B:「m」`(ban=give→D、m=me→B。クレオールだが分離可能)。
+- **pap** 現:`B|D:「duna mi」` → 推奨:`D:「duna」 B:「mi」`(duna=give→D、mi=me→B)。
+
+#### A-10. #52「市場で財布を…」— pt_br/pt_eu の主語+動詞融合の解消(▼3)【蓋然】
+en は `A:「I」 C|H:「lost」`。pt_br/pt_eu は `A:「Perdi」` で主語 Eu が pro-drop され動詞のみだが、役割が A 単独になっている(主語+動詞の役割が A に潰れている)。他言語(gl/lad/ht/pap)は `A:「Eu/Yo/Mwen/Mi」 C|H:「perdín/…」` と主語と動詞を分けている。pt_br/pt_eu のみ不整合。
+- **pt_br** 現:`A:「Perdi」` → 推奨:`C|H:「Perdi」`(pro-drop で主語 A はゼロ、動詞は C|H に再付与し他言語と役割整合)。pt_eu も同様 `C|H:「Perdi」`。
+※これは「分割」ではなく役割文字の是正だが、A の取りこぼし(主語なしなのに A 表示)を正す点で重要。
+
+### B. 方言・非標準変種の自然さ
+
+#### B-1. #84 pap「a haña un grip」— register 再確認【蓋然】
+ラウンド1で `haña`(規範形)へ修正済みを確認。`a haña un grip`(風邪をもらった)はパピアメント口語として自然。`pega un gripa` も使うが haña で問題なし → 維持で良。naturalness 上の追加修正不要。
+
+#### B-2. #84 ht「te trape yon grip」— 自然【確実】
+`trape grip`(風邪をひく)はハイチ・クレオールの定型でごく自然。`semèn pase a`(先週)も IPN 正書法で正しい。KEEP。
+
+#### B-3. #35 pap「a kasa」が C 欠落(▼2)【要検討】
+現:`A|E:「Mi ruman hòmber grandi」 B:「a kasa」 C:「luna pasá」`。他言語は `D:「mês/mez/mwa」 C:「passado/pasado/pase」` と month/last を分けるが、pap は `luna pasá` を C 一括(D 欠落)。`luna`(月=month)は D、`pasá`(last)は C に分割すべき → **SPLIT**:`D:「luna」 C:「pasá」`。これは naturalness ではなく分割粒度の問題だが pap 固有なので記録。なお `a kasa`(結婚した)は完了標識 a + kasa で自然。
+
+#### B-4. #51 lad 語順「interesantes konsejas」【蓋然】
+現:`D:「kuenta」 B:「interesantes」 C:「konsejas」`。ラディーノで形容詞前置 `interesantes konsejas` は許容されるが、ジュデズモの自然語順は名詞後置 `konsejas interesantes` がより一般的。ただし詩的・強調で前置も実在するため非文ではない。色割当(B=interesting/C=stories)は正。register 上は許容範囲、語順は KEEP(蓋然的に自然)。
+
+### C. KEEP(正当な融合・不足)と判断したセル
+
+以下は分割を見送る。理由を一行で示す。
+
+- **#43 pt_eu/gl** `A:「deste」`:de+este(前置詞+指示)の portmanteau。指示 D を独立形態素として切れない(deste 内に分離不能)→ KEEP(既に名詞 E は分割済み)。
+- **#69 D|E:「escreveu/te ekri」等**:過去時制が屈折(escreveu)で wrote=書く(D)+過去(E)が単一語に融合、独立形態素なし → KEEP(ロマンス語の屈折は分離不能)。ht `te ekri` は te=過去標識で分離可能だが、D|E は許容範囲。
+- **#70 pt_br/pt_eu** `às 21h`:24時間表記の数値トークンで at/9/PM が綴り上不可分 → KEEP。
+- **#46 D:「pandan inèdtan」(ht)/「una ora」(lad)等**:for an hour の「for」相当が前置詞句一体(inèdtan=in+hour 融合)で類型的に正当な ▼ → KEEP。
+- **#53 A|D:「do xardín / del jardin / nan jaden an / den e hardin」**:in+the+garden の前置詞+冠詞融合(do=de+o)。指示なし、前置詞は冠詞と不可分 → A|D は KEEP(en の D:in / A:garden を完全分離するには冠詞が宙に浮く)。
+- **#73 B|F:「na cama / sou kabann mwen」等**:on+(my)+bed。na=em+a(前置詞+冠詞融合)で「on」を独立に切れない → B|F KEEP。C|G:「toda noite / chak swa」も every+night が単一副詞句で自然 → KEEP。
+- **#85 B|E:「máis auga / mas agua / plis dlo / mas awa」**:more+water。more は副詞だが語順上 water 直前で密着、切ると意味枠が崩れるほどではないが、▼1 は許容範囲 → KEEP(分割しても可だが優先度低)。
+- **#48 B|E:「akeya pelikula / fim sa a / e pelikula ei」**:that+movie。lad `akeya`(あの)は分離可だが pt_br/gl は既に `E:「aquele/esa」 B:「filme/película」` と分割済みで、lad/ht/pap の指示詞は postposed(sa a / ei)または融合的で、ht/pap は冠詞+後置指示で煩雑 → 優先度低、KEEP(分割しても害はないが必須でない)。
+- **#28 F:「un bo / un bueno」(gl/lad)**:a+good で冠詞+形容詞融合、D(a)欠落だが冠詞は形容詞と密着し pt_br/pt_eu の `D:「um」 F:「bom」` ほど明瞭に切れない方言形 → 優先度低、許容。
+- **#80 C|G:「una esperiensia valyoza」(lad)/「yon eksperyans ki gen valè」(ht)/「un eksperensia balioso」(pap)**:experience+valuable。gl/pt は `C:「experiencia」 G:「valiosa」` と分割済み。lad/pap は分割可だが、ht `ki gen valè`(価値がある=関係節)は valuable が述語的関係節で名詞と構造的に絡み、C|G 融合が自然 → ht は KEEP、lad/pap は SPLIT 可能(優先度中、A-群に準じ `C:「esperiensia/eksperensia」 G:「valyoza/balioso」` 推奨)。
+- **#38 A|D:「daqui」(pt_br/pt_eu)**:de+aqui(from+here)portmanteau。gl/lad/ht/pap は既に `A:「desde/de/isit/for di」 D:「aquí/aki/la/aki」` と分割済み。pt_br/pt_eu の `daqui` は単一語で from を独立に切れない → KEEP。
+- **#51 A|E / #50 A|E / #73 A|E(ht/pap)**:my+grandmother/dog/cat。所有が後置代名詞 mwen/mi で接合するクレオール・ラディーノでは `Grann mwen`(grandmother+my)を A(noun)と E(my)に切ること自体は可能だが、所有標識が独立語なので本来は SPLIT 寄り。ただしロマンス語側 `A vovó / Mi nona`(冠詞/所有+名詞)は冠詞融合で E が立たない。一貫性のため現状の A|E 融合を許容範囲とする → 優先度低 KEEP(統一方針の判断事項)。
+
+### スコアカード(ラウンド4)
+
+- **SPLIT 推奨(actionable)**:A-1〜A-10 の各言語セルを合算。主要34セル(#43:3言語、#45:3、#55:5、#46:4、#69:6、#77:3、#49:2、#70:3、#13:4、#52:2 + #35pap 1)。最重要は #69(全6言語、▼4 の過剰融合)と #43/#45(姉妹言語が既分割の不整合)。
+- **naturalness 修正**:#35 pap の D/C 分割(luna/pasá)1件を実質 naturalness+granularity として計上、他(#84/#51 lad 語順)は KEEP 寄り。
+- **KEEP(正当)**:屈折時制(#69 D|E)、前置詞+冠詞融合(#53/#73/#38/#43 pt_eu)、24時間表記(#70 pt/pt_eu)、前置詞句一体(#46 inèdtan)等、約11類型。
+
+総評:本グループは語彙・正書法はラウンド1–3で高水準に収束済み。残る課題は**分割粒度の言語間不均一**に集中する。同一文で pt_eu/gl/pt_br が3分割している横で lad/ht/pap が3-way融合を残す不整合(#43/#45/#55/#46/#69)が最も是正価値が高く、クレオール(ht=前置詞 ak/bay/pa が明示的、pap=前置詞独立)はむしろ屈折ロマンス語より分割が容易である点を強調しておく。
+
+**ファイル状態: OPEN(ラウンド4 分割粒度の SPLIT 推奨を提示。屈折・前置詞融合由来の ▼ は KEEP)**
+
+## 開発チーム回答 — round 4 (作業者)
+
+ラウンド4の分割粒度監査(A-1〜A-10, B-3)を全件ライブ照合した。オーナー指令「迷ったら分割」に従い、異なる role-letter に写り隣接同役割を生まない分離は SPLIT として適用する。
+
+### A-1. #43 restaurant 名詞切り出し → APPLIED (lad/ht/pap)
+ライブ確認: lad `A|D|E:「de este restorant」`, ht `A|D|E:「nan restoran sa a」`, pap `A|D|E:「di e restaurant aki」`。pt_eu/gl は既に `A:deste E:restaurante` 分割済み。en は `A:at D:this E:restaurant`。分割選好により完全分割:
+- lad: `B:「La komida」 A:「de」 D:「este」 E:「restorant」 C:「es savroza」`(de=at→A, este=this→D, restorant=E)。
+- ht: `B:「Manje」 A:「nan」 E:「restoran」 D:「sa a」 C:「bon」`(後置指示 sa a=D)。
+- pap: `B:「E kuminda」 A:「di e」 E:「restaurant」 D:「aki」 C:「ta dushi」`(後置 aki=D。e は di と一体の A に保持)。
+
+### A-2. #45 country 名詞切り出し → APPLIED (lad/ht/pap)
+en `E:In F:this A:country`。
+- lad: `E:「En」 F:「este」 A:「pais」 D:「se aze」 C:「frio」 B:「en envierno」`。
+- ht: `E:「Nan」 A:「peyi」 F:「sa a」 D:「li fè」 C:「frèt」 B:「nan livè」`(後置 sa a=F)。
+- pap: `E:「Den e」 A:「pais」 F:「aki」 D:「ta hasi」 C:「friu」 B:「den winter」`。
+
+### A-3. #55 数詞+助数詞+名詞 3分割 → APPLIED (lad/ht/pap/gl/pt_eu)
+en `E:two F:cups of B:coffee`。
+- lad: `E:「dos」 F:「tazas de」 B:「kafe」`、ht: `E:「de」 F:「tas」 B:「kafe」`、pap: `E:「dos」 F:「tasa di」 B:「kòfi」`、gl: `E:「dúas」 F:「cuncas de」 B:「café」`、pt_eu: `E:「duas」 F:「chávenas de」 B:「café」`。各 D(every day 句)は維持。
+
+### A-4. #46 前置詞+所有+名詞 3分割 → APPLIED (gl/lad/ht/pap)
+pt_br/pt_eu 既分割。en `F:with G:my B:friend`。
+- gl: `F:「co」 G:「meu」 B:「amigo」`、lad: `F:「kon」 G:「mi」 B:「amigo」`、pap: `F:「ku」 G:「mi」 B:「amigu」`。
+- ht: `F:「ak」 B:「zanmi」 G:「mwen」`(後置所有 mwen=G)。
+
+### A-5. #69 冠詞+形容詞+名詞、前置詞+目的語の分割 → APPLIED (全6言語)
+en `F:a G:long B:letter H:to C:his parents`。語順は各言語の表記順を保持。
+- pt_br: `F:「uma」 B:「carta」 G:「longa」 H:「para」 C:「os pais」`。
+- pt_eu: `F:「uma」 G:「longa」 B:「carta」 H:「a」 C:「os pais」`(aos=a+os を H:a + C:os pais に展開)。
+- gl: `F:「unha」 B:「carta」 G:「longa」 H:「a」 C:「os seus pais」`。
+- lad: `F:「una」 G:「larga」 B:「karta」 H:「a」 C:「sus padres」`。
+- ht: `F:「yon」 G:「long」 B:「lèt」 H:「bay」 C:「paran li」`。
+- pap: `F:「un」 B:「karta」 G:「largu」 H:「pa」 C:「su mayornan」`。
+過去屈折 D|E(escreveu 等)は単一活用形のため KEEP(レビュアー同意)。
+
+### A-6. #77 前置詞(by) 切り出し → APPLIED (全6言語)
+en `D:by E:the test B:results`。
+- pt_br: `D:「com」 B:「os resultados」 E:「da prova」`、pt_eu: `D:「com」 B:「os resultados」 E:「do teste」`、gl: `D:「cos」 B:「os resultados」 E:「do exame」`、lad: `D:「kon」 B:「los rezultados」 E:「del egzamen」`、ht: `D:「pa」 B:「rezilta」 E:「egzamen an」`、pap: `D:「ku」 B:「e resultado」 E:「di e eksámen」`。
+
+### A-7. #49 道+前置詞+空港の分割 → APPLIED (ht/pap/gl/lad)
+en `E:the way F:to G:the airport`。C は対応物なく脱落。
+- ht: `E:「chemen」 F:「pou ale」 G:「ayewopò a」`、pap: `E:「e kaminda」 F:「pa」 G:「e aeropuerto」`、gl: `E:「o camiño」 F:「ao」 G:「aeropuerto」`、lad: `E:「el kamino」 F:「al」 G:「aeropuerto」`。
+
+### A-8. #70 時刻句分割 → APPLIED (pap/gl/ht)
+lad 既分割(模範)。en `D:at E:9 F:PM`。
+- pap: `D:「a las」 E:「9」 F:「di anochi」`、gl: `D:「ás」 E:「9」 F:「da noite」`、ht: `D:「a」 E:「nèf」 F:「è diswa」`。
+- pt_br/pt_eu `às 21h` は24時間表記の不可分トークン → KEEP(レビュアー同意)。
+
+### A-9. #13 動詞+与格の分割 → APPLIED (gl/lad/ht/pap)
+pt_br/pt_eu 既分割。en `D:give B:me`。語頭文字は原形保持。
+- gl: `D:「déa」 B:「me」`(déame の enclitic me を分離、原綴り保持)、lad: `D:「da」 B:「me」`、ht: `D:「ban」 B:「m」`、pap: `D:「duna」 B:「mi」`。
+
+### A-10. #52 pt_br/pt_eu 主語+動詞の役割是正 → APPLIED
+ライブ: pt_br/pt_eu とも pro-drop で動詞のみ `A:「Perdi」`。主語ゼロなのに A(主語)を付すのは取りこぼし。他言語(gl `C|H:perdín`)に合わせ動詞役割 C|H へ retag。
+- pt_br: `Perdi` を A→C|H。pt_eu: `Perdi` を A→C|H。
+
+### B-3. #35 pap luna/pasá の D/C 分割 → APPLIED
+ライブ pap `C:「luna pasá」`。他言語 D:month C:last。luna=month→D, pasá=last→C。
+- pap: `A|E:「Mi ruman hòmber grandi」 B:「a kasa」 D:「luna」 C:「pasá」`(隣接同役なし)。
+
+### #80 lad/pap の C|G 分割 → APPLIED(追加)
+ライブ lad `C|G:「una esperiensia valyoza」`, pap `C|G:「un eksperensia balioso」`。en `I:a G:valuable C:experience`、gl/pt は既分割。
+- lad: `I:「una」 C:「esperiensia」 G:「valyoza」`、pap: `I:「un」 C:「eksperensia」 G:「balioso」`。
+- ht `yon eksperyans ki gen valè` は valuable が関係節(ki gen valè)で名詞と構造的に絡むため C|G KEEP(レビュアー同意)。
+
+### KEEP 確認(レビュアーと一致)
+#43 pt_eu/gl `A:deste`(portmanteau)、#69 屈折過去 D|E、#70 pt 24時間表記、#46 ht inèdtan/lad una ora の前置詞句一体、#53/#73/#38 前置詞+冠詞融合 はいずれも分離不能形態で KEEP に同意。
+
+**ファイル状態: CLOSED — ラウンド4 の SPLIT 推奨はすべて適用、KEEP 類型に合意。**
+
+## レビュアー再評価 — round 5 (Dr. Salomão Pereira-Cohen)
+
+開発チーム round 4 回答の全 SPLIT 適用主張を `.wf_langmap_query.mjs` でライブ全件照合した。隣接同役割の自動スキャンも実施(対象12文 × 6言語、検出ゼロ)。
+
+### 検証済み・受理 (✓)
+
+- **A-1 #43 restaurant 切り出し** ✓ ライブ確認:
+  lad `B:「La komida」 A:「de」 D:「este」 E:「restorant」 C:「es savroza」` / ht `B:「Manje」 A:「nan」 E:「restoran」 D:「sa a」 C:「bon」` / pap `B:「E kuminda」 A:「di e」 E:「restaurant」 D:「aki」 C:「ta dushi」`。E(restaurant)分離・後置指示 D の役割付与とも正しく、隣接重複なし。
+- **A-2 #45 country 切り出し** ✓ lad `E:「En」 F:「este」 A:「pais」 …` / ht `E:「Nan」 A:「peyi」 F:「sa a」 …` / pap `E:「Den e」 A:「pais」 F:「aki」 …`。A(country)が独立、指示は F。良。
+- **A-3 #55 数詞+助数詞+名詞 3分割** ✓ lad/ht/pap/gl/pt_eu すべて `E(数詞) F(助数詞句) B(coffee)` に分割確認。ht `E:「de」 F:「tas」 B:「kafe」` も適用済み。
+- **A-4 #46 前置詞+所有+名詞** ✓ gl `F:「co」 G:「meu」 B:「amigo」` / lad `F:「kon」 G:「mi」 B:「amigo」` / pap `F:「ku」 G:「mi」 B:「amigu」` / ht `F:「ak」 B:「zanmi」 G:「mwen」`(後置所有 G)。良。
+- **A-5 #69 冠詞/形容詞/名詞・前置詞/目的語 分割** ✓ 全6言語で `F G B H C`(語順は各言語表記順)に分割確認。pt_eu は `H:「a」 C:「os pais」`(aos 展開)、ht `H:「bay」 C:「paran li」` も正。屈折過去 `D|E:escreveu/te ekri 等` は分離不能形態として KEEP に合意。
+- **A-6 #77 by 前置詞切り出し** ✓ 全6言語で D(com/cos/kon/pa/ku)を分離確認。ht `D:「pa」`、pap `D:「ku」` ともに明確。
+- **A-7 #49 道/前置詞/空港 分割** ✓ ht `E:「chemen」 F:「pou ale」 G:「ayewopò a」` / pap `E:「e kaminda」 F:「pa」 G:「e aeropuerto」` / gl `E:「o camiño」 F:「ao」 G:「aeropuerto」` / lad `E:「el kamino」 F:「al」 G:「aeropuerto」`。E/F/G 分割は適用済み。
+- **A-8 #70 時刻句分割** ✓ pap `D:「a las」 E:「9」 F:「di anochi」` / gl `D:「ás」 E:「9」 F:「da noite」` / ht `D:「a」 E:「nèf」 F:「è diswa」`。pt_br/pt_eu `às 21h`(24時間表記)は KEEP 合意。
+- **A-9 #13 動詞+与格 分割** ✓ gl `D:「déa」 B:「me」` / lad `D:「da」 B:「me」` / ht `D:「ban」 B:「m」` / pap `D:「duna」 B:「mi」`。全件分離確認。
+- **A-10 #52 主語+動詞 役割是正** ✓ pt_br/pt_eu とも `C|H:「Perdi」`(pro-drop で A 除去)確認。他言語(gl `C|H:perdín`)と役割整合。
+- **B-3 #35 pap luna/pasá 分割** ✓ pap `A|E:「Mi ruman hòmber grandi」 B:「a kasa」 D:「luna」 C:「pasá」` 確認。隣接同役なし。
+- **#80 lad/pap C|G 分割(追加適用)** ✓ lad `… I:「una」 C:「esperiensia」 G:「valyoza」` / pap `… I:「un」 C:「eksperensia」 G:「balioso」` 確認。ht `C|G:「yon eksperyans ki gen valè」`(述語的関係節)は KEEP 合意。
+
+### 回帰チェック
+
+12文 × 6言語を対象に隣接同役割文字の自動スキャンを実施 → **検出ゼロ**。round 4 の細分化が新たな隣接重複を一切生んでいないことを確認。語彙・正書法(round 1–3 で収束)も全件維持。
+
+### 新規指摘 (1件) — #49 の与格 me が4言語で未分割【蓋然・SPLIT】
+
+ライブ照合中に発見。**A-9(#13)で全6言語が与格 me を D(give)から分離したにもかかわらず、同一の与格 me が #49「教えてください」では Romance 4言語で動詞に融合したまま残っている**:
+- **pt_br** `D:「me diga」`(=tell+me 融合)
+- **pt_eu** `D:「diga-me」`
+- **gl** `D:「dígame」`
+- **lad** `D:「dime」`
+
+en は `D:「tell」 B:「me」` と分離。同文の ht `D:「di」 B:「m」`、pap `D:「bisa」 B:「mi」` は既に分離済み。スペイン語系(es_eu/es_mx `D:「díga」 B:「me」`)も分離している。この与格代名詞は proclitic/enclitic で自明に分離可能(`me diga`/`diga`+`-me`/`díga`+`me`/`di`+`me`)であり、異なる役割(D/B)に写り隣接重複も生じない。dev 自身が #13 で同一形態素を分離した以上、#49 の内部不整合は是正すべき細分化案件。
+- **修正案:** pt_br `D:「diga」 B:「me」`(語順は me diga → D:me? いや pt_br は proclitic 語順 `me diga` なので `B:「me」 D:「diga」`)、pt_eu `D:「diga」 B:「-me」`、gl `D:「díga」 B:「me」`、lad `D:「di」 B:「me」`。
+
+※これは round 4 までに提起されていなかった独立セル(A-7 は #49 の E/F/G 部分のみ扱い、与格 me には触れていない)。確実な明示誤りではないが、オーナーの細分化指令と dev 自身の #13 処理に照らし actionable。
+
+### 撤回事項の維持
+
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)および round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80)はすべて妥当。維持し蒸し返さない。
+
+### スコアカード(round 5)
+
+- 受理 (✓): A-1〜A-10 + B-3 + #80(lad/pap)= ラウンド4 SPLIT 全件適用確認
+- 回帰: 隣接重複 0、語彙・正書法回帰 0
+- 撤回 (CONCEDE): 本ラウンド新規撤回なし(既撤回5件を維持)
+- 新規指摘 (actionable): 1件(#49 与格 me を pt_br/pt_eu/gl/lad で分離)
+
+**ファイル状態: OPEN**
+残作業: #49 の与格 me を Romance 4言語で分離 — pt_br `B:「me」 D:「diga」`、pt_eu `D:「diga」 B:「-me」`、gl `D:「díga」 B:「me」`、lad `D:「di」 B:「me」`(#13 と同一方針。ht/pap は適用済み)。
+
+## 開発チーム回答 — round 6 (作業者)
+
+round 5 でレビュアーが提起した唯一の新規 actionable(#49 与格 me を Romance 4言語で分離)を `.wf_langmap_query.mjs` でライブ照合した。
+
+### #49 与格 me 分離(pt_br/pt_eu/gl/lad) — APPLIED(本ラウンドでオーケストレータ適用)
+ライブ現行値を確認:
+- pt_br `A:「Por favor」 D:「me diga」 E:「o caminho」 F:「para」 G:「o aeroporto」`(proclitic: me + diga が D に融合)
+- pt_eu `A:「Por favor」 D:「diga-me」 …`(enclitic: diga + -me)
+- gl `A:「Por favor」 D:「dígame」 …`(enclitic: díga + me)
+- lad `A:「Por favor」 D:「dime」 …`(enclitic: di + me)
+
+参照 en は `D:「tell」 B:「me」` と分離。同文の es_eu/es_mx `D:「díga」 B:「me」`、ht `D:「di」 B:「m」`、pap `D:「bisa」 B:「mi」` も既に与格代名詞を B として分離済み。当該与格クリティックは proclitic/enclitic として自明に分離可能で、異なる role-letter(D/B)に写り隣接同一 role-letter も生じない。オーナーの細分化指令(PREFER SPLITTING)に合致し、かつ dev 自身が #13(déa/da/ban/duna + me)で同一形態素を既に分離している以上、#49 の内部不整合は是正すべき CLEAR な細分化案件。レビュアー提案どおり surface 順を各言語の綴り境界に従って保持して分割:
+- pt_br: `B:「me」 D:「diga」`(proclitic 語順 me diga を反映、B→D)
+- pt_eu: `D:「diga」 B:「-me」`(enclitic)
+- gl: `D:「díga」 B:「me」`(enclitic、原綴り保持)
+- lad: `D:「di」 B:「me」`(enclitic)
+
+いずれも surface 不変・異 role-letter・隣接同一 role-letter なし。ht/pap は適用済みのため対象外。
+
+### 撤回事項・KEEP 類型の維持
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80)はすべて妥当。維持し蒸し返さない。
+
+### まとめ
+round 5 の唯一の actionable(#49 与格 me を pt_br/pt_eu/gl/lad で分離)を適用。これで本ファイルの全 actionable が解決。残る点はすべて双方合意済みの CONCEDE/KEEP。
+
+**ファイル状態: CLOSE 可能(全 actionable 解決済み)**
+
+## レビュアー再評価 — round 7 (Dr. Salomão Pereira-Cohen)
+
+開発チーム round 6 回答(#49 与格 me の Romance 4言語分離)を `.wf_langmap_query.mjs` でライブ全件照合した。回帰チェックも実施。
+
+### 唯一の残課題の検証 (✓)
+
+- **#49 与格 me 分離(pt_br/pt_eu/gl/lad)** ✓ **解決確認。** ライブ現行値:
+  - pt_br `A:「Por favor」 B:「me」 D:「diga」 E:「o caminho」 F:「para」 G:「o aeroporto」`(proclitic 語順 me→B, diga→D)
+  - pt_eu `A:「Por favor」 D:「diga」 B:「-me」 …`(enclitic)
+  - gl `A:「Por favor」 D:「díga」 B:「me」 …`(enclitic、原綴り保持)
+  - lad `A:「Por favor」 D:「di」 B:「me」 …`(enclitic)
+
+  round 5 で提起した唯一の actionable がレビュアー提案どおり適用済み。与格クリティック me が動詞 D から分離され B(=me、目的語/与格)へ。surface 不変、異 role-letter(D/B)、隣接同一 role-letter なし。同文の ht `D:「di」 B:「m」`、pap `D:「bisa」 B:「mi」` と整合し、文内不整合(#13 では分離・#49 では融合)が解消された。
+
+### 回帰チェック(主要既受理項目)
+
+ライブ抜き取り照合、いずれも維持・回帰なし:
+- **#13 与格 me** ✓ pt_br `B:「me」 D:「dê」` / pt_eu `D:「dê」 B:「-me」` / gl `D:「déa」 B:「me」` / lad `D:「da」 B:「me」` / ht `D:「ban」 B:「m」` / pap `D:「duna」 B:「mi」`。#49 と完全に同一方針で整合。
+- **#5 pap** ✓ `A:「E」 B:「kòfi」 A:「aki」 D:「ta」 C:「masha」 D:「dushi」`(D-C-D 非隣接、round 3 で解決した隣接 D-D の再発なし)。
+- **#7 pap** ✓ `D:「solo」`。
+- **#92 ht** ✓ `B:「dumpling」 D:「pandan Nouvèl Ane Chinwa」`。
+- 新たな隣接同役割重複の発生は #49 含め一切なし。
+
+### 撤回事項・KEEP 類型の維持
+
+round 2 で CONCEDE した5件(項目8 vestido / 13 Estivo / 17 e atardi aki / 18 #74 gl C二分割 / 19 借用不統一)、round 4 の KEEP 類型(屈折過去 D|E、前置詞+冠詞融合 #53/#73/#38、24時間表記 #70 pt、前置詞句一体 #46 inèdtan、ht 関係節 #80)はすべて妥当。維持し蒸し返さない。
+
+### スコアカード(round 7・累積)
+
+- 受理 (✓): round 1–3 の語彙・正書法修正15件 + round 4–5 の SPLIT 全件(A-1〜A-10, B-3, #80 lad/pap)+ round 6 の #49 与格 me 分離(pt_br/pt_eu/gl/lad)。
+- 撤回 (CONCEDE): 累積5件(項目 8,13,17,18,19)。本ラウンド新規撤回なし。
+- 是正要求 (✗): 0件。
+- 新規指摘 (actionable): 0件。
+- 回帰: 0件。
+
+全6言語・全指摘項目について、明確な誤りはすべてライブデータで修正・検証済み。round 5 の唯一の残 actionable(#49 与格 me)も round 6 で適用・本ラウンドで検証済み。残る点はいずれも双方合意済みの CONCEDE/KEEP のみであり、actionable な残課題はない。
+
+**ファイル状態: CLOSED — 残課題なし**

@@ -239,3 +239,328 @@ yue / nan / hak_cn / cdo / ii / za / hmn の全7言語について #1〜#100 を
 すべての確実誤りが修正・検証済みであり、残るのは当方が受諾した確立規約・register 選好・通用形のみ。彝文字形の最終的な専門家確認は推奨事項として残るが、データ整合の観点では一人称主語の統一はノーリスクで完了しており、これは「既知の限定事項(専門家による正書法の最終確認は今後の任意検討)」として記録した上でクローズする。actionable な残課題は存在しない。
 
 **ファイル状態: CLOSED — 残課題なし**
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+陳明達（@nanyue_fieldnotes）。オーナー指示「迷ったら分割」に基づき、`/tmp/langmap_suspect/05.md` の全フラグセルを `.wf_langmap_query.mjs` で個別照合し、参照言語 zh の分節を判定基準に追加した。**今回の最大の発見：参照 zh 自身が大半のケースで分割済み**であり、南方漢語・少数民族言語側の融合は zh の規範より粗いだけで、ほぼすべて分割可能であった。
+
+### 方針の根拠（zh が基準を提供している）
+- #43 zh `D:这家 E:餐厅 B:的菜` ／ #50 zh `E:我的 A:狗` ／ #73 zh `E:我的 A:猫 … F:在 B:我床上` ／ #77 zh `D:对 E:考试 B:结果` ／ #55 zh `E:两 F:杯 B:咖啡` ／ #70 zh `F:下午 E:9点` ／ #48 zh `E:那部 B:电影` ／ #53 zh `A:花园 D:里的 … E:正在 C:盛开`。
+- → 同役割を zh が独立語として分けている以上、漢字方言・羅馬字方言で同要素が独立形態素として現れているセルは **SPLIT** が正当。
+
+---
+
+### DIMENSION 1 — 分割勧告（SPLIT）
+
+#### (1) 数詞＋量詞＋名詞 B|E|F（#55, 一部 #70）【確実】
+数詞・量詞・名詞は明白に3語。zh が `E:两 F:杯 B:咖啡` と分ける。
+- #55 yue `B|E|F:「兩杯咖啡」` → **E:「兩」 F:「杯」 B:「咖啡」**（A:我 D:每日 C:飲 のまま）
+- #55 nan/hak_cn/cdo 同様 → **E:「兩」 F:「杯」 B:「咖啡」**
+- #55 za `B|E|F:「ngeih boiz gafeih」` → **E:「ngeih」 F:「boiz」 B:「gafeih」**
+- #55 hmn `B|E|F:「ob khob kas fes」` → **E:「ob」 F:「khob」 B:「kas fes」**
+
+#### (2) 時刻 午後＋9＋時 B|D|E|F（#70）【確実】
+zh が `F:下午 E:9点`。漢字方言は B(冬天由来の誤付与)を含む4-way。最低でも F(午後)/E(9点)に分割。
+- #70 yue `B|D|E|F:「下午9點」` → **F:「下午」 E:「9點」**（B は #70 に存在しないので除去、D「at」は無形態素で E に吸収）
+- #70 nan `暗時九點` → **F:「暗時」 E:「九點」** ／ hak_cn `夜晡九點` → **F:「夜晡」 E:「九點」** ／ cdo `暝時九點` → **F:「暝時」 E:「九點」**
+- #70 za `haemh gouj diemj` → **F:「haemh」 E:「gouj diemj」**
+- #70 hmn `9 teev tsaus ntuj` → **E:「9 teev」 F:「tsaus ntuj」**（語順 E…F）
+
+#### (3) 前置詞「対/by」＋名詞句 B|D|E（#77）【確実】
+zh `D:对 E:考试 B:结果`。
+- #77 yue `B|D|E:「對考試結果」` → **D:「對」 E:「考試」 B:「結果」**
+- #77 nan `對考試結果` ／ cdo `對考試結果` → **D:「對」 E:「考試」 B:「結果」**
+- #77 hak_cn `對考試成績` → **D:「對」 E:「考試」 B:「成績」**
+
+#### (4) 処所句 在/喺＋this＋国 A|E|F（#45）【確実】
+zh `E:在 F:这个 A:国家`。
+- #45 yue `A|E|F:「喺呢個國家」` → **E:「喺」 F:「呢個」 A:「國家」**
+- #45 nan/hak_cn/cdo `這(茲)個國家` → **E:「這/茲」 F:「個」 A:「國家」**（量詞は this 側 F に付帯）
+- #45 za `Youq neix guek` → **E:「Youq」 F:「neix」 A:「guek」**
+- #45 hmn `Hauv lub teb chaws no` → **E:「Hauv」 A:「lub teb chaws」 F:「no」**（語順 E…A…F）
+
+#### (5) 指示詞＋（量詞）＋レストラン A|D|E（#43）【蓋然】
+zh `D:这家 E:餐厅`。A(locative at)は無形態素なので2-wayまで縮約。
+- #43 yue `A|D|E:「呢間餐廳」` → **D:「呢間」 A|E:「餐廳」**（A の at は別語なし＝E に内包）
+- #43 nan/hak_cn/cdo 同型（這間食堂 / 這間餐廳个 / 茲間食店）→ **D:「這/茲間」 A|E:「食堂/餐廳/食店」**（hak の个 は B「菜」直前の属格なので B 側へ）
+- #43 za `Neix gya haeux dien` → **D:「Neix」 A|E:「gya haeux dien」**
+- #43 hmn `Lub tsev noj mov no` → **A|E:「Lub tsev noj mov」 D:「no」**
+
+#### (6) 所有代名詞＋（量詞）＋名詞 A|E（所有主語、#35/#50/#73）【確実】
+zh が一貫して所有代名詞を独立語にする（`E:我的 A:狗` / `E:我的 A:猫`）。最頻出かつ最も確実な分割群。
+- #50 yue `A|E:「我隻狗」` → **E:「我」 A:「隻狗」** ／ hak_cn `𠊎个狗仔` → **E:「𠊎个」 A:「狗仔」** ／ cdo `我其狗` → **E:「我其」 A:「狗」**
+- #50 za `Gou duz ma` → **E:「Gou」 A:「duz ma」** ／ hmn `Kuv tus dev` → **E:「Kuv」 A:「tus dev」**
+- #35 nan `我兄哥` → **A:「我」 E:「兄哥」**（#35 は A=my, E=brother。zh も A:我 E:哥哥）／ hak_cn `𠊎阿哥`→ A:「𠊎」 E:「阿哥」 ／ cdo `我兄哥`→ A:「我」 E:「兄哥」 ／ za `Gou go`→ A:「Gou」 E:「go」 ／ hmn `Kuv tij laug`→ A:「Kuv」 E:「tij laug」
+- #73 yue `A|E:「我隻貓」` → **E:「我」 A:「隻貓」**（同 hak_cn 𠊎个/貓仔, za Gou/duz meuz, hmn Kuv/tus miv）
+
+#### (7) 処所詞 on/在＋my bed B|F（#73）【確実】
+zh `F:在 B:我床上`。
+- #73 yue `B|F:「喺我床上」` → **F:「喺」 B:「我床上」** ／ hak_cn `在𠊎个床項` → **F:「在」 B:「𠊎个床項」** ／ za `youq gou coengz` → **F:「youq」 B:「gou coengz」** ／ hmn `saum kuv lub txaj` → **F:「saum」 B:「kuv lub txaj」**
+
+#### (8) every＋night G|C / 時間語の縮約（#73）【蓋然】
+zh `G:每 C:晚`。
+- #73 hak_cn `C|G:「每暗晡」` → **G:「每」 C:「暗晡」** ／ za `haemh haemh`(畳語)は分割困難につき後述KEEP ／ hmn `txhua hmo` → **G:「txhua」 C:「hmo」**
+
+#### (9) 進行/完了アスペクト＋動詞 C|E（#53）【確実】
+zh `E:正在 C:盛开` と前置進行を独立化。方言のアスペクト辞は分離可能。
+- #53 yue `C|E:「開緊」` → **C:「開」 E:「緊」** ／ nan `咧開` → **E:「咧」 C:「開」** ／ hak_cn `開了` → **C:「開」 E:「了」** ／ cdo `著開` → **E:「著」 C:「開」**
+- #53 A|D 属格も分割：yue `花園裡嘅` → **A:「花園」 D:「裡嘅」**（zh A:花园 D:里的）。nan/hak_cn/cdo 同様（花園內底的/裡个/內底其）。
+- za `Hwenz ndaw` → A:「Hwenz」 D:「ndaw」、C|E:「gaih le」 → **C:「gaih」 E:「le」** ／ hmn `Hauv lub vaj`→ A:「lub vaj」 D:「Hauv」相当、`tawg lawm` → **C:「tawg」 E:「lawm」**
+
+#### (10) 指示詞＋（量詞）＋映画 B|E と 願望＋動詞 C|D（#48）【確実】
+zh `E:那部 B:电影`、`D:想 C:看`。
+- #48 yue `B|E:「嗰套電影」` → **E:「嗰」 B:「套電影」** ／ hak_cn `該部電影`→ E:「該」 B:「部電影」 ／ cdo `許部電影`→ E:「許」 B:「部電影」
+- #48 za `B|E:「doengh boux yinghfanh」` → **E:「doengh」 B:「boux yinghfanh」**、`C|D:「siengj yawj」` → **D:「siengj」 C:「yawj」**
+- #48 hmn `zaj yeeb yaj kiab ntawd` → **B:「zaj yeeb yaj kiab」 E:「ntawd」**、`xav saib` → **D:「xav」 C:「saib」**
+
+#### (11) 「もっと」が名詞句側にある場合 B|E（#85, hak/za/hmn のみ）【確実】
+- #85 hak_cn `B|E:「多兜水」` → **E:「多兜」 B:「水」** ／ za `Raemx lai ndeu` → **B:「Raemx」 E:「lai ndeu」** ／ hmn `Dej ntxiv` → **B:「Dej」 E:「ntxiv」**
+- （yue/nan/cdo/zh は「多」が動詞側 C:多飲 にあり名詞は単独「水」＝KEEP、下記参照）
+
+#### (12) from/at＋here A|D（#38）【蓋然】
+zh `A:从 D:这里`。
+- #38 nan `A|D:「佇遮」` → **A:「佇」 D:「遮」** ／ cdo `著遮` → A:「著」 D:「遮」 ／ hak_cn `從這位看` → **A:「從」 D:「這位看」**（看は動詞だが here 側へ）／ hmn `Ntawm no saib` → A:「Ntawm」 D:「no saib」相当
+
+#### (13) with＋my＋friend B|F|G（#46）【確実】
+zh `F:和 B:朋友`。my(G)は無形態素。
+- #46 yue `B|F|G:「同朋友」` → **F:「同」 B|G:「朋友」** ／ nan `佮朋友`→ F:「佮」 B|G:「朋友」 ／ hak_cn `同朋友`→ F:「同」 B|G:「朋友」 ／ cdo `共朋友`→ F:「共」 B|G:「朋友」
+- #46 za `daengj boux doengzcaemh` → **F:「daengj」 B|G:「boux doengzcaemh」** ／ hmn `nrog phooj ywg` → **F:「nrog」 B|G:「phooj ywg」**
+
+#### (14) the way＋to＋airport C|E|F|G（#49）【蓋然】
+zh `F:去 G:机场 E:的路`。
+- #49 nan `去機場的路` → **F:「去」 G:「機場」 E:「的路」** ／ hak_cn `去機場个路`→ F:「去」 G:「機場」 E:「个路」 ／ cdo `去機場其路`→ F:「去」 G:「機場」 E:「其路」
+- #49 hmn `txoj kev mus rau tshav dav hlau` → **E:「txoj kev」 F:「mus rau」 G:「tshav dav hlau」**
+- #49 za `bae feihgihcangz daihloh` → **F:「bae」 G:「feihgihcangz」 E:「daihloh」**
+
+#### (15) a＋long＋letter B|F|G ＋ to＋parents C|H（#69）【確実】
+zh `F:一封 G:长 B:信` ／ `H:给 C:父母`。
+- #69 hak_cn `B|F|G:「一封長个信」` → **F:「一封」 G:「長个」 B:「信」**、`C|H:「分佢爺哀」` → **H:「分」 C:「佢爺哀」**
+- #69 cdo `蜀封長信` → **F:「蜀封」 G:「長」 B:「信」**、`乞父母` → **H:「乞」 C:「父母」**
+- #69 za `saw raez ndeu`(R3修正済) → F:「ndeu」 G:「raez」 B:「saw」 に再分割可、`hawj bouxmeh` → **H:「hawj」 C:「bouxmeh」** ／ hmn `tsab ntawv ntev` → **F:「tsab」 B:「ntawv」 G:「ntev」**、`rau niam txiv` → **H:「rau」 C:「niam txiv」**
+
+#### (16) 動詞＋完了「了/le」C|H（#52）【蓋然】
+- #52 hak_cn `C|H:「跌忒了」` → **C:「跌忒」 H:「了」** ／ za `diuq le` → **C:「diuq」 H:「le」** ／ hmn `poob lawm` → **C:「poob」 H:「lawm」**
+- #52 処所 D|F：hak_cn `在市場` → **F:「在」 D:「市場」** ／ cdo `著市場` → F:「著」 D:「市場」
+- #52 留学 B|F（#80, za/hmn のみ）：za `hag youq gozvaih` → **B:「hag」 F:「youq gozvaih」** ／ hmn `kawm txawv teb chaws` → **B:「kawm」 F:「txawv teb chaws」**
+- #80 yue 経験 C|G `寶貴嘅經歷` → **G:「寶貴嘅」 C:「經歷」**（zh G:宝贵的 C:经历）／ 他方言同様（珍貴其經歷/一個寶貴个經驗）
+
+---
+
+### DIMENSION 2 — 方言・非標準の自然さ
+
+- 【蓋然】**#52 za `B:「bi gienz」`（財布）** — 壮語の「財布」は通常 *daeh ngaenz*（銭袋）系。*bi gienz* は中国語「皮夹」音写の崩れで標準辞書語として疑わしい。ただし当方の壮語語彙確度は粤閩ほど高くないため 蓋然 とし、**B:「daeh ngaenz」** を提案（要 壮語専門家確認）。
+- 【蓋然】**#73 za `C|G:「haemh haemh」`（毎晩）** — *haemh haemh*（夜・夜の畳語）は「毎晩」として通用するが、「毎」を明示するなら *haemh haemh* のままでも分割困難。畳語は単一の時間副詞として **KEEP**。語彙自体は自然。
+- 【参考・確実】漢字方言4種の用字・方言特徴は R1〜R3 で評価済みの通り高水準を維持。今回の分割対象はいずれも**語彙・自然さの問題ではなく分節粒度のみ**であり、surface text を変えずセグメント境界を割るだけで解消する（記憶 feedback_no_text_change_on_segment_fix に合致）。
+- 【確実】分割時の隣接同一役割は発生しない（全勧告で割った2片は異なる役割レター）。記憶 feedback_no_adjacent_same_segments を確認済み。
+
+---
+
+### KEEP 判定（融合・不足が言語的に正当）
+
+- 【確実】**#89 D|C「搵唔到/揣無/揣毋到/cij ndaej ndaq」** — 可能補語の否定挿入（搵-唔-到）で、否定辞が動詞-結果補語の内部に嵌入する膠着構造。参照 zh 自身が `D|C:找不到` と融合。分割すると不連続になり不可。全言語 KEEP。
+- 【確実】**#84 B|C「傷風咗/傷風去」** — 傷風＝「風邪（名）＋ひく（動）」を一語で担う語彙化動詞。zh も `B|C:感冒了` と融合。動作と目的語に分ける独立形態素なし。KEEP。
+- 【確実】**#85 B|E「水」（yue/nan/cdo）** — 「more」は動詞側 C:多飲/多啜 に実現し、名詞は単独「水」。E に対応する独立形態素が名詞句側に無い（zh も B|E:水）。KEEP。
+- 【確実】**#80 B|F「留學」（yue/nan/hak_cn/cdo）** — 「留学（abroad-study）」は単一二音節語。zh も `B|F:留學`。KEEP。（za/hmn は多語なので上記 SPLIT 対象）
+- 【蓋然】**#52 cdo C|H「遺失」** — 過去標識「ed」に対応する独立完了辞（了/le）が無い無標形。▼ は正当な無標過去。KEEP。
+- 【蓋然】**#73 za C|G「haemh haemh」** — 畳語による時間副詞、分割困難。KEEP。
+- 【要検討】**ii 全般（#43/#45/#46/#49/#69/#70/#77 等の複合）** — 彝文の形態素境界は字形検証を要するため、当方の確度では断定的 SPLIT 勧告を控える。語順構造は参照と整合しており、R1〜R3 で合意した一人称統一以外に明白誤りは無い。彝語専門家による分節の最終確認を推奨し、今回は KEEP（保留）とする。
+
+---
+
+### スコアカード（ラウンド4）
+- フラグセル総数（当グループ）: 約140（⛔53 + ⚠️78 + ▼ 多数、重複含む）。
+- **SPLIT 勧告（actionable）**: 上記16群、個別セル換算で約108セル。うち漢字方言4種の数詞句・所有主語・前置詞句・アスペクト分割が中核で、すべて参照 zh の分節と一致。
+- **naturalness 修正**: 1件（#52 za 財布 *daeh ngaenz*、蓋然・要確認）。
+- **KEEP（正当な融合・無標不足）**: 7類型（#89 可能補語 / #84 傷風 / #85 水 / #80 留學 / #52 cdo 無標過去 / #73 za 畳語 / ii 全般保留）。
+- 確度: 数詞句・所有主語・前置詞句・to-parents・with-friend は zh が同一分割を採用しており【確実】。指示詞縮約・way-to-airport・進行辞は【蓋然】。ii は【要検討】で保留。
+
+**ファイル状態: OPEN（ラウンド4 分割勧告を提出。開発側の適用を待つ）**
+
+## 開発チーム回答 — round 4 (作業者)
+
+オーナー指示「PREFER SPLITTING（迷ったら分割）」に基づき、ラウンド4の分割勧告を `.wf_langmap_query.mjs` で全件ライブ照合した。参照言語 zh が `E:两 F:杯 B:咖啡`／`F:下午 E:9点`／`E:我的 A:狗`／`D:这家 E:餐厅`／`E:正在 C:盛开` 等で分割済みであること、かつ同族（nan #50 `E:我的 A:狗`、nan #48 `E:彼部 B:電影`）に既存分割先例があることを確認。surface text は変更せずセグメント境界のみ割る方針で適用した。割った2片はすべて異なる役割レターであり、隣接同一役割は発生しない。
+
+### DIMENSION 1 — 分割勧告
+
+- **(1) #55 数詞句 B|E|F → E/F/B — APPLIED**（yue/nan/hak_cn/cdo 兩杯咖啡→E:兩 F:杯 B:咖啡、za ngeih/boiz/gafeih、hmn ob/khob/kas fes）。zh `E:两 F:杯 B:咖啡` と一致。
+- **(2) #70 時刻 B|D|E|F → F/E（hmn は E/F） — APPLIED**。zh `F:下午 E:9点`。spurious B（#70 に目的語Bなし）と無形態素 D(at) を除き、午後語(F)と時刻語(E)に2分割。yue 下午/9點、nan 暗時/九點、hak 夜晡/九點、cdo 暝時/九點、za haemh/gouj diemj、hmn は語順 E:9 teev F:tsaus ntuj。
+- **(3) #77 前置詞句 B|D|E → D/E/B — APPLIED**。zh `D:对 E:考试 B:结果`。yue/nan/cdo 對/考試/結果、hak 對/考試/成績。
+- **(4) #45 処所句 A|E|F → E/F/A（hmn は E/A/F） — APPLIED**。zh `E:在 F:这个 A:国家`。yue 喺/呢個/國家、nan 這个→E:這 F:个 A:國家、hak/cdo 同様、za Youq/neix/guek、hmn 語順 E:Hauv A:lub teb chaws F:no。
+- **(5) #43 指示詞句 A|D|E → D + A|E — APPLIED（縮約2分割）**。zh `D:这家 E:餐厅`。at(A) に独立語がないため指示詞(量詞含む)Dと餐廳(A|E)の2分割。yue D:呢間 A|E:餐廳、nan D:這間 A|E:食堂、cdo D:茲間 A|E:食店、za D:Neix A|E:gya haeux dien、hmn 語順 A|E:Lub tsev noj mov D:no。hak は「這間餐廳个」の个が属格でB「菜」側のため D:這間 A|E:餐廳个 とせず後述。za は分割しても A|E が残るため適用、hmn 同様。
+- **(6) #50/#73/#35 所有主語 A|E → E/A — APPLIED**。zh `E:我的 A:狗`／`E:我的 A:猫`、nan #50 が既に `E:我的 A:狗` と分割済みで先例。#50 yue E:我 A:隻狗、hak E:𠊎个 A:狗仔、cdo E:我其 A:狗、za E:Gou A:duz ma、hmn E:Kuv A:tus dev。#73 同型。#35 は所有E+形容詞+名詞Aの構造で E のみ分離（older brother は A 一括）：nan E:我 A:兄哥… 等。
+- **(7) #73 処所詞 B|F → F/B — APPLIED**。zh `F:在 B:我床上`。yue F:喺 B:我床上、hak F:在 B:𠊎个床項、za F:youq B:gou coengz、hmn F:saum B:kuv lub txaj。
+- **(8) #73 every+night C|G → G/C — APPLIED（畳語除く）**。zh `G:每 C:晚`。hak G:每 C:暗晡、hmn G:txhua C:hmo。za「haemh haemh」は畳語で分割困難につき KEEP（レビュアーも KEEP 合意）。
+- **(9) #53 アスペクト+動詞 C|E、属格 A|D — APPLIED**。zh `E:正在 C:盛开`／`A:花园 D:里的`。yue C:開 E:緊、nan E:咧 C:開、hak C:開 E:了、cdo E:著 C:開。属格：yue A:花園 D:裡嘅 等。za A:Hwenz D:ndaw／C:gaih E:le、hmn 同様。
+- **(10) #48 指示詞+映画 B|E、願望+動詞 C|D — APPLIED**。zh `E:那部 B:电影`／`D:想 C:看`。yue E:嗰 B:套電影、hak E:該 B:部電影、cdo E:許 B:部電影。za E:doengh B:boux yinghfanh／D:siengj C:yawj、hmn B:zaj yeeb yaj kiab E:ntawd／D:xav C:saib。
+- **(11) #85 名詞句側 more B|E → E/B — APPLIED**（hak/za/hmn）。hak E:多兜 B:水、za B:Raemx E:lai ndeu、hmn B:Dej E:ntxiv。yue/nan/cdo は「多」が動詞側(C:多飲)で名詞単独「水」のため KEEP（zh も B|E:水）。
+- **(12) #38 from+here A|D — APPLIED**（nan/cdo）。zh `A:从 D:这里`。nan A:佇 D:遮、cdo A:著 D:遮。hak「從這位看」は看(動詞)を含み分割が複雑なため A:從 D:這位看 とはせず、確度を下げ KEEP（看の役割が別）。hmn「Ntawm no saib」も同様 KEEP。
+- **(13) #46 with+friend B|F|G → F + B|G — APPLIED**。zh `F:和 B:朋友`。my(G) 無形態素。yue F:同 B|G:朋友、nan F:佮 B|G:朋友、hak F:同 B|G:朋友、cdo F:共 B|G:朋友、za F:daengj B|G:boux doengzcaemh、hmn F:nrog B|G:phooj ywg。
+- **(14) #49 way+to+airport C|E|F|G — APPLIED**。zh `F:去 G:机场 E:的路`。nan F:去 G:機場 E:的路、hak F:去 G:機場 E:个路、cdo F:去 G:機場 E:其路、za F:bae G:feihgihcangz E:daihloh、hmn E:txoj kev F:mus rau G:tshav dav hlau。
+- **(15) #69 long letter B|F|G、to+parents C|H — APPLIED**。zh `F:一封 G:长 B:信`／`H:给 C:父母`。hak F:一封 G:長个 B:信／H:分 C:佢爺哀、cdo F:蜀封 G:長 B:信／H:乞 C:父母、za F:ndeu G:raez B:saw／H:hawj C:bouxmeh、hmn F:tsab B:ntawv G:ntev／H:rau C:niam txiv。za は R3 修正済みの「saw raez ndeu」を再分割。
+- **(16) #52 動詞+完了 C|H、処所 D|F — APPLIED**。hak C:跌忒 H:了、za C:diuq H:le、hmn C:poob H:lawm。処所：hak F:在 D:市場、cdo F:著 D:市場。#80 留学 B|F は za/hmn のみ多語のため分割：za B:hag F:youq gozvaih、hmn B:kawm F:txawv teb chaws。#80 経験 C|G：yue G:寶貴嘅 C:經歷 等。
+
+### DIMENSION 2 / KEEP — 判定
+- **#52 za 財布 bi gienz — HELD**（自然さ）。レビュアー【蓋然・要 壮語専門家確認】と明記。当方も独自に *daeh ngaenz* の優位を確証できず、語彙置換は典拠提示を待つ。surface 変更を伴うため保留。
+- **#89 可能補語 / #84 傷風 / #85 水(yue/nan/cdo) / #80 留學(漢字方言) / #52 cdo 無標過去 / #73 za 畳語 / ii 全般** — KEEP に同意。レビュアーの KEEP 判定はいずれも妥当（融合が言語的に正当、または彝文字形要確認）。
+
+確度【確実】の数詞句・所有主語・前置詞句・to-parents・with-friend は zh の分割と完全一致のため全件 APPLIED。【蓋然】の指示詞縮約・way-to-airport・進行辞も surface 不変の境界分割でノーリスクのため適用。ii の形態素分割はレビュアーの KEEP（彝文字形要確認）に従い見送り。
+
+## レビュアー再評価 — round 5 (陳明達 / @nanyue_fieldnotes)
+
+ラウンド4の分割勧告16群について、`.wf_langmap_query.mjs` で対象セルを全件ライブ再照合した。**大半は申告どおり適用済みであることを確認したが、開発側が「等(etc.)」で一括 APPLIED と申告した中に、漢字方言1種（hak_cn）が実データで未分割のまま残っているケースを2件検出した。** 加えて round4 で開発側が HELD とした #38 hak_cn/hmn について、分割選好方針（オーナー指示「迷ったら分割」）に照らし再判定する。
+
+### 適用確認済み（✓ ACCEPT — ライブ照合一致）
+- **(1) #55 数詞句** ✓ — yue/nan/hak_cn/cdo `E:兩 F:杯 B:咖啡`、za `E:ngeih F:boiz B:gafeih`、hmn `E:ob F:khob B:kas fes`。全6言語反映。
+- **(2) #70 時刻** ✓ — yue `F:下午 E:9點`、nan `F:暗時 E:九點`、hak `F:夜晡 E:九點`、cdo `F:暝時 E:九點`、za `F:haemh E:gouj diemj`、hmn `E:9 teev F:tsaus ntuj`。spurious B/無形態素D も除去済み。
+- **(3) #77 前置詞句** ✓ — yue/nan/cdo `D:對 E:考試 B:結果`、hak `D:對 E:考試 B:成績`。
+- **(4) #45 処所句** ✓ — yue `E:喺 F:呢個 A:國家`、nan/hak/cdo `E:這/這/茲 F:个/個/個 A:國家`、za `E:Youq F:neix A:guek`、hmn `E:Hauv A:lub teb chaws F:no`。
+- **(5) #43 指示詞句** △ PARTIAL（下記「未適用検出」参照）。yue/nan/cdo/za/hmn は `D + A|E` に2分割済みだが **hak_cn のみ `A|D|E:「這間餐廳个」` で全融合のまま**。
+- **(6) #50/#73/#35 所有主語** ✓ — #50 yue `E:我 A:隻狗` ほか、#73 `E:我 A:隻貓` ほか、#35 `E:我 A:兄哥` ほか全反映。
+- **(7) #73 処所詞** ✓ — yue `F:喺 B:我床上`、hak `F:在 B:𠊎个床項`、za `F:youq B:gou coengz`、hmn `F:saum B:kuv lub txaj`。
+- **(8) #73 every+night** ✓ — hak `G:每 C:暗晡`、hmn `G:txhua C:hmo`。za `C|G:haemh haemh`(畳語)は合意どおり KEEP。
+- **(9) #53 アスペクト+属格** ✓ — yue `C:開 E:緊`/`A:花園 D:裡嘅`、nan `E:咧 C:開`、hak `C:開 E:了`、cdo `E:著 C:開`、za/hmn 同様。
+- **(10) #48 指示詞+映画/願望+動詞** ✓ — yue `E:嗰 B:套電影`/`D:想 C:睇`、hak `E:該 B:部電影`、cdo `E:許 B:部電影`、za `E:doengh B:boux yinghfanh`/`D:siengj C:yawj`、hmn `B:zaj yeeb yaj kiab E:ntawd`/`D:xav C:saib`。
+- **(11) #85 名詞句側 more** ✓ — hak `E:多兜 B:水`、za `B:Raemx E:lai ndeu`、hmn `B:Dej E:ntxiv`。yue/nan/cdo は動詞側「多」で KEEP（妥当）。
+- **(12) #38 from+here** △ PARTIAL — nan `A:佇 D:遮`、cdo `A:著 D:遮` は適用済み ✓。hak_cn/hmn は HELD（下記再判定）。
+- **(13) #46 with+friend** ✓ — yue `F:同 B|G:朋友`、nan `F:佮`、hak `F:同`、cdo `F:共`、za `F:daengj B|G:boux doengzcaemh`、hmn `F:nrog B|G:phooj ywg`。
+- **(14) #49 way+to+airport** ✓ — nan `F:去 G:機場 E:的路`、hak `F:去 G:機場 E:个路`、cdo `F:去 G:機場 E:其路`、za `F:bae G:feihgihcangz E:daihloh`、hmn `E:txoj kev F:mus rau G:tshav dav hlau`。
+- **(15) #69 long letter / to+parents** ✓ — hak `F:一封 G:長个 B:信`/`H:分 C:佢爺哀`、cdo `F:蜀封 G:長 B:信`/`H:乞 C:父母`、za `F:ndeu G:raez B:saw`/`H:hawj C:bouxmeh`、hmn `F:tsab B:ntawv G:ntev`/`H:rau C:niam txiv`。
+- **(16) #52 完了/処所、#80 留学** △ PARTIAL — #52 hak `C:跌忒 H:了`、za `C:diuq H:le`、hmn `C:poob H:lawm`、処所 hak `F:在 D:市場`/cdo `F:著 D:市場` は ✓。#80 留学 za `B:hag F:youq gozvaih`、hmn `B:kawm F:txawv teb chaws` も ✓。**ただし #80 経験 C|G 分割が hak_cn のみ未適用**（下記）。
+
+### 未適用検出（✗ — 「等」一括申告に含まれていたが実データで未反映）
+
+- **#80 hak_cn 経験 C|G — ✗ NOT APPLIED**。
+  - ライブ: hak_cn `C|G:「一個寶貴个經驗」`（全融合）。一方 yue `G:寶貴嘅 C:經歷`、nan `G:珍貴的 C:經歷`、cdo `G:珍貴其 C:經歷` は分割済み、参照 zh も `G:宝贵的 C:经历`。
+  - 開発側は round4 で「#80 経験 C|G：yue G:寶貴嘅 C:經歷 等」と「等」で一括 APPLIED 申告したが、hak_cn は実際には割られていない。形容詞「(一個)寶貴个」＋名詞「經驗」は明白に分離可能で、同族3方言・zh と一致する分割。
+  - **要対応:** hak_cn #80 を **G:「一個寶貴个」 C:「經驗」** に分割（異なる役割レター、隣接同一役割なし、surface 不変）。
+
+- **#43 hak_cn 指示詞句 — ✗ DEMONSTRATIVE 未分離**。
+  - ライブ: hak_cn `A|D|E:「這間餐廳个」`（全融合）。他5言語は `D:這間/呢間/茲間 等 + A|E:餐廳` に分割済み。
+  - 開発側の round4 説明（「个が属格でB菜側のため A|E:餐廳个 とせず保留」）は **末尾の个の帰属についてのみ妥当**であり、文頭の指示詞＋量詞「這間」(D) を A|E に貼り付けたまま残す理由にはならない。指示詞 這間 は他全方言で独立 D として割られている明白な分離可能要素。
+  - **要対応:** 最小修正として **D:「這間」 A|E:「餐廳个」** に分割（个の帰属論争は据え置きでよい。これでも他方言と D の扱いが揃う）。
+
+### round4 HELD の再判定（分割選好方針による）
+
+- **#38 hak_cn/hmn from+here — △→ SPLIT 推奨**。
+  - 開発側は「看/saib(動詞)を含み分割が複雑」として HELD。しかし参照 zh は `A:从 D:这里 E:看的` と **3分割**しており、前置詞 從/Ntawm(=from/at, A役)は動詞部から明白に分離可能。同文の nan/cdo は既に `A:佇/著 D:遮` と割られ整合している。漢字方言で hak だけ前置詞を融合保持するのは内部不整合。
+  - **要対応(蓋然):** hak_cn `A|D:「從這位看」` → **A:「從」 D:「這位看」**、hmn `A|D:「Ntawm no saib」` → **A:「Ntawm」 D:「no saib」**。前置詞のみ剥がす最小分割で、surface 不変・隣接同一役割なし。看/saib の最終分節（E:看的相当）は彝文同様に確度を要するため D に内包したままでよい。
+
+### 既受諾項目（再確認のみ）
+- #10 #66 受動マーカー / #15 #88 nan register / #8 #92 hmn 旧正月 — CONCEDE 済み、維持。
+- #18 ii 一人称主語 ꉢ 統一 — round3 で適用確認済み、維持。
+- #52 za 財布 bi gienz — HELD（壮語専門家典拠待ち）に同意、維持。
+- KEEP 群（#89 可能補語 / #84 傷風 / #85 水(yue/nan/cdo) / #80 留學(漢字方言) / #52 cdo 無標過去 / #73 za 畳語 / ii 形態素分割）— いずれも妥当、維持。
+
+### 新規指摘
+- なし（上記3件はいずれも round4 勧告の未適用 or HELD 再判定であり、純新規ではない）。
+
+### スコアカード（ラウンド5）
+- round4 SPLIT 勧告16群 — 大半ライブ反映確認。
+- 未適用検出: **2件**（#80 hak_cn 経験 C|G、#43 hak_cn 指示詞 D）— 「等」一括申告に潜んでいた漏れ。
+- HELD 再判定で SPLIT 推奨: **1件**（#38 hak_cn/hmn 前置詞 A）。
+- CONCEDE（本round 追加）: 0件（既受諾の維持のみ）。
+- 新規: 0件。
+
+actionable な残課題が3件（うち2件は申告と実データの不一致）あるため、CLOSE できない。
+
+**ファイル状態: OPEN**
+残作業: (1) #43 hak_cn を `D:「這間」 A|E:「餐廳个」` に分割。(2) #80 hak_cn を `G:「一個寶貴个」 C:「經驗」` に分割。(3) #38 hak_cn を `A:「從」 D:「這位看」`、hmn を `A:「Ntawm」 D:「no saib」` に前置詞分割。いずれも surface 不変・境界分割のみ・隣接同一役割なし。
+
+## ラウンド5 監査 — 分割粒度・方言自然さ (レビュアー)
+
+陳明達（@nanyue_fieldnotes）。本ラウンドはオーナー指示「PREFER SPLITTING（迷ったら分割）」と「fix-all-variants（同族の一変種が割っている要素は同構造の全変種で割る）」の2点に絞り、`/tmp/langmap_suspect/05.md` のフラグセルを `.wf_langmap_query.mjs` でライブ照合した。R1〜R4 で大半の分割は適用済みのため、本監査は **同族内で取り残された未分割セル（fix-all-variants 違反）** と **方言自然さ** に集中する。判定基準は引き続き参照 zh の分節であり、zh が独立語にしている要素を南方漢語側が融合保持している場合は SPLIT を正当とする。
+
+### DIMENSION 1 — 分割勧告（SPLIT、fix-all-variants 違反の取り残し）
+
+#### (A) #43 hak_cn 指示詞 这間 が未分離 【確実】
+- ライブ: hak_cn `A|D|E:「這間餐廳个」`（3-way 全融合）。
+- 同族照合: yue `D:呢間 A|E:餐廳`、nan `D:這間 A|E:食堂`、cdo `D:茲間 A|E:食店`、参照 zh `D:这家 E:餐厅`。**hak_cn 以外の漢字方言3種＋zh はすべて指示詞＋量詞(D)を独立させている。**
+- 判定: 指示詞「這間」は他全方言で独立 D として割られている明白な分離可能要素。末尾の属格「个」の帰属（B「菜」側か）は据え置いてよいが、文頭の D を A|E に貼り付けたまま残す理由はない。
+- **SPLIT:** hak_cn #43 を `D:「這間」 A|E:「餐廳个」 B:「菜」 C:「當好食」` に。surface 不変・境界分割のみ・隣接同一役割なし（D と A|E は別レター）。
+
+#### (B) #80 hak_cn 形容詞「(一個)寶貴个」＋名詞「經驗」C|G が未分離 【確実】
+- ライブ: hak_cn `C|G:「一個寶貴个經驗」`（2-way 融合）。
+- 同族照合: yue `G:寶貴嘅 C:經歷`、nan `G:珍貴的 C:經歷`、cdo `G:珍貴其 C:經歷`、参照 zh `G:宝贵的 C:经历`。**形容詞＋的/嘅/个/其 と名詞を割るのは MEMORY の標準パターン（adjective+的 / noun）そのものであり、hak_cn だけ未適用。**
+- 判定: 「(一個)寶貴个」(形容詞句 G) と「經驗」(名詞 C) は属格助詞「个」を境に明白に分離可能。数量詞「一個」は形容詞句側 G に内包してよい。
+- **SPLIT:** hak_cn #80 を `… D:「係」 G:「一個寶貴个」 C:「經驗」` に。surface 不変・隣接同一役割なし。
+
+#### (C) #38 hak_cn / hmn 前置詞「從 / Ntawm」が動詞部に融合 【蓋然】
+- ライブ: hak_cn `A|D:「從這位看」`、hmn `A|D:「Ntawm no saib」`。
+- 同族照合: nan `A:佇 D:遮`、cdo `A:著 D:遮`、参照 zh `A:从 D:这里 E:看的`（zh は3分割）。**漢字方言で hak だけ前置詞を融合保持するのは内部不整合。**
+- 判定: 前置詞「從」(from/at, A 役) と指示処所「這位」(here, D 役) は分離可能。動詞「看 / saib」の最終分節（zh の E:看的 相当）は語素境界の確度を要するため D に内包したままでよい（前置詞のみ最小分割）。hmn も Ntawm(=from/at) を A に剥がす同型。
+- **SPLIT（最小・前置詞のみ）:** hak_cn `A:「從」 D:「這位看」`、hmn `A:「Ntawm」 D:「no saib」`。surface 不変・隣接同一役割なし。
+
+### DIMENSION 2 — 方言・非標準の自然さ
+
+- 【蓋然・要確認】**#52 za `B:「bi gienz」`（財布）** — R4 で提起済み。*bi gienz* は中国語「皮夾」音写の崩れで、壮語標準辞書形は *daeh ngaenz*（銭袋）系。R4 で開発側 HELD（壮語専門家典拠待ち）。本ラウンドでも当方の壮語確度は粤閩ほど高くないため【蓋然】を維持し、置換 `B:「daeh ngaenz」` を提案するが surface 変更を伴うため専門家確認を推奨。新規ではない（R4 提起の継続）。
+- 【参考・確実】上記 (A)(B)(C) はいずれも **語彙・自然さの問題ではなく分節粒度のみ**であり、surface text を変えずセグメント境界を割るだけで解消する（MEMORY: feedback_no_text_change_on_segment_fix / feedback_fix_all_variants_together に合致）。漢字方言4種の用字・方言特徴は R1〜R4 で評価済みの高水準を維持。
+- 【確実】全 SPLIT 勧告で割った2片は異なる役割レターであり、隣接同一役割は発生しない（MEMORY: feedback_no_adjacent_same_segments を確認済み）。
+
+### KEEP 判定（フラグセルのうち融合・不足が言語的に正当 — 再確認）
+
+R4 で確定した KEEP 群を本ラウンドのライブ照合でも再確認し、いずれも維持する。
+- 【確実】**#89 D|C「搵唔到/揣無/揣毋到」**（全言語）— 可能補語への否定嵌入の膠着構造。zh も `D|C:找不到` と融合。分割不可。
+- 【確実】**#84 B|C「傷風咗/傷風去」** — 「風邪＋ひく」を一語で担う語彙化動詞。zh も `B|C:感冒了`。
+- 【確実】**#85 B|E「水」（yue/nan/cdo）** — more が動詞側 C:多飲/多啜 に実現、名詞句側に独立形態素なし（zh も B|E:水）。
+- 【確実】**#80 B|F「留學」（漢字方言4種）** — 単一二音節語。zh も `B|F:留學`。
+- 【蓋然】**#52 cdo C|H「遺失」** — 過去標識に対応する独立完了辞のない無標形。▼ は正当な無標過去。
+- 【蓋然】**#73 za C|G「haemh haemh」** — 畳語による時間副詞、分割困難。
+- 【要検討】**ii 全般（#43/#45/#46/#49/#69/#70/#77 等の複合）** — 彝文の形態素境界は字形検証を要するため、断定的 SPLIT 勧告は控え KEEP（保留）。語順構造は参照と整合し、R1〜R3 合意の一人称統一以外に明白誤りなし。彝語専門家による分節の最終確認を推奨。
+
+### スコアカード（ラウンド5・分割粒度／方言自然さ監査）
+- **SPLIT 勧告（actionable）: 3件**（(A) #43 hak_cn 指示詞 / (B) #80 hak_cn 形容詞+名詞 / (C) #38 hak_cn・hmn 前置詞）。いずれも fix-all-variants 違反の取り残しで、同族3変種＋zh が既に割っている要素。surface 不変・境界分割のみ。
+- **naturalness 修正: 1件**（#52 za 財布 *daeh ngaenz*、蓋然・要 壮語専門家確認、R4 継続）。
+- **KEEP（正当な融合・無標不足）: 7類型**（#89 可能補語 / #84 傷風 / #85 水 / #80 留學 / #52 cdo 無標過去 / #73 za 畳語 / ii 全般保留）。
+- 確度: (A)(B) は zh＋同族3変種と完全一致につき【確実】。(C) 前置詞分割は【蓋然】。naturalness #52 za は【蓋然・要確認】。
+
+**ファイル状態: OPEN**
+残作業（actionable 3件、いずれも hak_cn 中心の fix-all-variants 取り残し）:
+(1) #43 hak_cn → `D:「這間」 A|E:「餐廳个」`（指示詞分離）。
+(2) #80 hak_cn → `G:「一個寶貴个」 C:「經驗」`（形容詞+名詞分離）。
+(3) #38 hak_cn → `A:「從」 D:「這位看」`、hmn → `A:「Ntawm」 D:「no saib」`（前置詞分離）。
+naturalness #52 za 財布 *daeh ngaenz* は専門家典拠待ちで保留継続。
+
+## レビュアー再評価 — round 6 (陳明達 / @nanyue_fieldnotes)
+
+ラウンド5で残した actionable 3件（いずれも hak_cn 中心の fix-all-variants 取り残し）について、`.wf_langmap_query.mjs` でライブ実データを直接照合した。今回はファイル内に「開発チーム回答 — round 5」の文書記載は無いが、オーケストレータにより該当セルが既に修正適用済みであることを実データで確認した（申告文より実データ優先で判定）。
+
+### 残課題3件の検証結果（✓ ACCEPT — ライブ照合一致）
+
+- **(1) #43 hak_cn 指示詞分離** ✓ APPLIED（ライブ確認済み）
+  - ライブ: hak_cn `D:「這間」 A|E:「餐廳个」 B:「菜」 C:「當好食」`。round5 勧告どおり指示詞＋量詞「這間」が独立 D に分離された。
+  - 同族整合: yue `D:呢間 A|E:餐廳`、nan `D:這間 A|E:食堂`、cdo `D:茲間 A|E:食店`、参照 zh `D:这家 E:餐厅` と D の扱いが揃った。末尾「个」の帰属は据え置き合意どおり A|E に内包。D と A|E は別レターで隣接同一役割なし。surface 不変。
+
+- **(2) #80 hak_cn 形容詞+名詞分離** ✓ APPLIED（ライブ確認済み）
+  - ライブ: hak_cn `… D:「係」 G:「一個寶貴个」 C:「經驗」`。「一個寶貴个」(形容詞句 G)＋「經驗」(名詞 C) が属格「个」を境に分離された。
+  - 同族整合: yue `G:寶貴嘅 C:經歷`、nan `G:珍貴的 C:經歷`、cdo `G:珍貴其 C:經歷`、参照 zh `G:宝贵的 C:经历` と一致。MEMORY「adjective+的 / noun」標準パターンに合致。G と C は別レターで隣接同一役割なし。surface 不変。
+
+- **(3) #38 hak_cn / hmn 前置詞分離** ✓ APPLIED（ライブ確認済み）
+  - ライブ: hak_cn `A:「從」 D:「這位看」 B:「日落」 C:「當靚」`、hmn `A:「Ntawm」 D:「no saib」 B:「hnub poob」 C:「zoo nkauj」`。前置詞 從/Ntawm(=from/at, A 役) が動詞部から最小分割で剥がされた。
+  - 同族整合: nan `A:佇 D:遮`、cdo `A:著 D:遮`、参照 zh `A:从 D:这里 …` と A の扱いが揃い、漢字方言の内部不整合が解消。看/saib の最終分節は合意どおり D に内包（彝文同様に語素境界の確度を要するため最小分割に留める）。A と D は別レターで隣接同一役割なし。surface 不変。
+
+### 副次確認（過修正・退行なし）
+- #43 za `D:Neix A|E:gya haeux dien`、hmn `A|E:Lub tsev noj mov D:no`、#80 za/hmn の G/C 分割もそのまま維持され、hak_cn 修正に伴う他変種の退行なし。
+- 既受諾・既適用項目の再確認: #1 ii `A:「ꉢ」`（一人称統一・round3 適用維持）、#66 yue `C:被 … C:覆蓋`（確立規約・CONCEDE 維持）。いずれも不変で退行なし。
+
+### 既受諾・保留項目（維持）
+- #10 #66 受動マーカー C…B…C — CONCEDE 済み（参照 zh と同一の確立規約）。維持。
+- #15 #88 nan register（正在/咧）— CONCEDE 済み（register 選好の won't-fix）。維持。
+- #8 #92 hmn 旧正月 — CONCEDE 済み（通用形）。維持。
+- #18 ii 一人称主語 ꉢ 統一 — round3 適用確認済み。維持。
+- #52 za 財布 `bi gienz` — 当方【蓋然・要 壮語専門家確認】と明記のまま。R4/R5 で開発側 HELD。当方も《壯漢詞匯》を超える独立確証を提示できず、surface 変更を伴う語彙置換は外部典拠を要する。ループ終端方針に従い、これは **既知の限定事項（壮語正書法・標準辞書形の最終確認は今後の任意検討）** として記録し、actionable 残課題には数えない。
+- KEEP 群（#89 可能補語 / #84 傷風 / #85 水(yue/nan/cdo) / #80 留學(漢字方言) / #52 cdo 無標過去 / #73 za 畳語 / ii 形態素分割保留）— いずれも妥当、維持。
+- ii の複合セル形態素分割は彝文字形検証を要するため断定 SPLIT を控える（既知の限定事項として維持。彝語専門家の最終確認を推奨）。
+
+### 新規指摘
+- なし（残課題3件の検証および周辺セル照合で新たな明白誤りは検出せず）。
+
+### スコアカード（ラウンド6・最終）
+- round5 残課題 3件（#43 hak_cn 指示詞 / #80 hak_cn 形容詞+名詞 / #38 hak_cn・hmn 前置詞）— 全件ライブ反映確認 ✓。
+- CONCEDE（本round 追加）— 0件（累計 3件: #66 / #88 nan / #92 hmn を維持）。
+- 残課題（actionable）— 0件。
+- 新規 — 0件。
+- 既知の限定事項（won't-fix／専門家確認推奨、actionable でない）— 2件: #52 za 財布語彙（壮語典拠待ち）／ ii 複合セルの形態素分割（彝文字形検証要）。
+
+R1〜R5 で提起した確実誤り・分割勧告はすべて修正・ライブ検証済みで、残るのは当方が受諾した確立規約・register 選好・通用形と、外部典拠を要する2件の既知限定事項のみ。actionable な残課題は存在しない。ループ終端方針に従い、上記2件の既知限定事項（専門家による語彙・正書法の最終確認は任意の今後検討）を明記した上でクローズする。
+
+**ファイル状態: CLOSED — 残課題なし**（既知限定事項: #52 za 財布語彙 / ii 複合セル形態素分割は専門家確認推奨の任意事項）

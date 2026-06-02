@@ -159,3 +159,158 @@ tr・az・kk・ky・tk の基本動詞形態・母音調和・格接尾辞は全
 総評: ug に集中していた語彙取り違え・正書法・代名詞重複・語順破綻はすべて解消され、tr/az の役割分割と未定義役割も是正された。残る要検討項目は分割対象が存在しないか確立した語彙・文体差であり、概念的に actionable な残課題はない。テュルク群 7 言語のデータは現状で公開水準に達している。
 
 **ファイル状態: CLOSED — 残課題なし**
+
+---
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+オーナー指示「分割優先 (PREFER SPLITTING)」に従い、機械抽出の被疑セル（⛔3+way=48, ⚠️2way=39, ▼=86）を全件ライブ照合し直しました。ラウンド2では「グループ内一貫性」を理由に多くの融合を温存しましたが、本ラウンドは**方針が転換**しています。テュルク諸語は膠着的で、被疑セルの大半は「独立した別語（数詞・類別詞・指示詞・形容詞・関係分詞・後置詞・疑問クリティック）」を含み、それぞれ別の役割文字に対応します。したがって**ラウンド2で KEEP とした多くのセルは、新方針では SPLIT が正当**です。以下、全7言語に横断適用される分割パターンとして提示します（surface はライブ確認済み。代表として az/uz/kk を明示、他言語も同型）。
+
+### A. 数詞＋類別詞＋名詞 — #55 `B|E|F`（全7言語）【確実】
+- Current: az `B|E|F:「iki fincan qəhvə」` / uz `B|E|F:「ikki piyola qahva」` / ug `B|E|F:「ئىككى ئىستاكان قەھۋە」`
+- 3語が完全に分かち書きされており融合の必然性なし。en ref も E:two F:cups of B:coffee と3分割。
+- Proposed: E:「iki」 F:「fincan」 B:「qəhvə」（uz: E:「ikki」 F:「piyola」 B:「qahva」／ug: E:「ئىككى」 F:「ئىستاكان」 B:「قەھۋە」）。語順 E→F→B、隣接同一役割なし。az/kk/ky/uz/tk/ug の6言語に同型適用。※MEMORY「数詞+名詞は単一Bに併合」は**類別詞を挟まない**場合の規則であり、ここは number+classifier+noun の3語なので別扱い。
+
+### B. 副詞＋類別詞名詞＋格接尾辞 — #70 `B|D|E|F`（全7言語）【確実】
+- Current: az `B|D|E|F:「axşam saat 9-da」` / uz `B|D|E|F:「kechki soat 9 da」`
+- F:axşam(PM)／E:9／D:格接尾辞-da(at) が明瞭に分離可能。「saat(時)」は en に対応文字がないため E「saat 9」に含めるのが自然。
+- Proposed: F:「axşam」 E:「saat 9」 D:「‌da」（ZWNJ 付き格接尾辞）。uz: F:「kechki」 E:「soat 9」 D:「‌da」。少なくとも4-way→3要素のクリーン分割。
+
+### C. 関係分詞句「空港への道を」 — #49 `C|E|F|G`（全7言語）【確実】
+- Current: az `C|E|F|G:「hava limanına gedən yolu」` / ky `C|E|F|G:「аэропортко жолду」`
+- az/tk/uz は G:与格名詞(airport+ga/-na) F:関係分詞(gedən/barýan=going→to) E:yol+対格(way) と3語に分離可能。
+- Proposed (az): G:「hava limanına」 F:「gedən」 E:「yolu」（tk: G:「howa menziline」 F:「barýan」 E:「ýoly」／uz: G:「aeroportga」 E:「yo'lni」※uzは分詞なしなのでG+Eの2分割）。
+- ky/kk は分詞を持たず与格だけで「への」を表すため `G:「аэропортко」 E:「жолду」` の2分割が限界（Fは典型的な格接尾辞による省略＝正当な▼）。
+
+### D. 「テストの結果に(から)」 — #77 `B|D|E`（全7言語）【確実】
+- Current: az `B|D|E:「imtahan nəticələrindən」`
+- E:imtahan(test／無標の修飾名詞) B:nəticələri(results) D:出格/与格接尾辞 に分離可能。
+- Proposed (az): E:「imtahan」 B:「nəticələri」 D:「‌ndən」（uz: E:「test」 B:「natijalari」 D:「‌dan」／ky: E:「сынактын」 B:「жыйынтыгына」※kyは属格＋与格で D を切るならさらに細分可）。
+
+### E. 「このレストランの」属格 — #43 `A|D|E`（kk/ky/uz/tk/ug）【確実】
+- Current: uz `A|D|E:「Bu restoranning」`
+- D:Bu(this) は完全に独立した別語。最低限これを切り出すべき。
+- Proposed: D:「Bu」 E:「restoran」 A:「‌ning」（属格を A としてZWNJ後置）。3-way を解消し en（D:this E:restaurant A:at）と並行。
+
+### F. 「この国では」 — #45 `A|E|F`（kk/ky/uz/tk/ug）【確実】
+- Current: uz `A|E|F:「Bu mamlakatda」`
+- F:Bu(this) は独立語。Proposed: F:「Bu」 A:「mamlakat」 E:「‌da」。en（E:in F:this A:country）と並行。
+
+### G. 「長い手紙(を)」 — #69 `B|F|G`（az/kk/ky/uz/tk/ug）【確実】
+- Current: az `B|F|G:「uzun məktub」`
+- G:uzun(long) と B:məktub(letter) は別語。F(冠詞a)は surface 無し（無冠詞＝正当な省略）。tr は既に G/F/B 分割済み。
+- Proposed (az): G:「uzun」 B:「məktub」（ug は `ئۇزۇن بىر خەت` なので G:「ئۇزۇن」 F:「بىر」 B:「خەت」 と冠詞 bir まで3分割可）。
+
+### H. 「毎晩・私のベッドで」 — #73 `C|G`＋`B|F`（az/kk/ky/uz/tk/ug）【確実】
+- Current: az `C|G:「hər gecə」` `B|F:「mənim yatağımda」`
+- C|G:hər(every=G)＋gecə(night=C) は2語、分割必須。B|F:yatağım(my bed=B)＋-da(on=F) は格接尾辞分離。tr は既に G:her C:gece／B|F のうち位格分離未了だが C/G は分割済み。
+- Proposed (az): G:「hər」 C:「gecə」 ／ B:「mənim yatağım」 F:「‌da」。kk: G:「әр」 C:「түні」／B:「төсегім」 F:「‌де」。
+
+### I. 「あの映画を」「もっと水を」 — #48 `B|E`／#85 `B|E`（指示詞・比較副詞＋名詞）【確実】
+- #48 Current: uz `B|E:「o'sha filmni」`→ E:「o'sha」 B:「filmni」（指示詞 o'sha=E は独立語）。kk/ky/tk/ug 同型（kk E:「сол」 B:「фильмді」）。
+- #85 Current: uz `B|E:「ko'proq suv」`→ E:「ko'proq」 B:「suv」（比較副詞=E は独立語）。全6言語同型。
+
+### J. 「留学は…貴重な経験」 — #80 `B|F`＋`C|G`（kk/ky/uz/tk/ug）【確実】
+- Current: uz `B|F:「chet elda o'qish」` `C|G:「qimmatli tajriba」`
+- B|F: chet elda(abroad=F)＋o'qish(studying=B) は2語。C|G: qimmatli(valuable=G)＋tajriba(experience=C) は2語。いずれも分割必須。
+- Proposed (uz): F:「chet elda」 B:「o'qish」 ／ G:「qimmatli」 C:「tajriba」。ky/kk/tk/ug 同型。
+
+### K. 疑問クリティック -mI の分割 — #28 `C`（ky/uz/tk）【蓋然】
+- Current: ky `C:「сунуш кыла аласызбы」` / uz `C:「tavsiya qila olasizmi」` / tk `C:「maslahat berip bilersiňizmi」`
+- tr/az/kk は疑問・丁寧辞を独立役割（tr A:「misiniz」, az A:「mi」, kk A:「ба」）として既に分離。ky/uz/tk のみ -bı/-mi/-mı を動詞に飲み込ませており、グループ内・en（A:Could）双方と不整合。
+- Proposed: ky C:「сунуш кыла аласыз」 A:「‌бы」／uz C:「tavsiya qila olasiz」 A:「‌mi」／tk C:「maslahat berip bilersiňiz」 A:「‌mi」。ラウンド1の #49 tr（H→A 是正）と同じ思想。
+
+### 形態的に分割不能で KEEP とするもの【確実】
+- **#89 tr `B|C|D:「bulamıyorum」`**: bul-a-mı-yor-um は単一語内で語幹+可能+否定+時制が融合し、語境界（分かち書き）が存在しない。KEEP。ただし az/kk/ky/uz/tk/ug の `tapa bilmirəm / topa olmayapman / تاپالمىدىم` は「tap-a＋bil-/ol-」で**補助動詞が分かち書きされる**ため、D:「tapa」 B|C:「bilmirəm」 の2要素には縮約可能（3-way→D＋2way）。ug `تاپالمىدىم` は1語融合のため KEEP。
+- **#35 `A|E:「Agam/Akam」` 等の親族名詞＋所有接尾辞**: 「兄＝(私の)兄」で「私の」に独立語がない（所有は接尾辞 -m のみ、ja 兄=my older brother と同型）。MEMORY の KEEP 事例そのもの。KEEP。
+- **#31 ▼2 `B:「кېлەр دۈشەنبە」`(ug)/`келесі дүйсенбіде`(kk)**: コピュラ「だ(C)」と曜日「月曜(D)」の不足は、テュルク語のゼロコピュラ＋語彙融合（「来週の月曜」を kelesi+曜日で表す）による正当な省略。KEEP。
+- **#76 ▼2(tr/kk/ug)**: 「聴くと」の従属節主語(E:I)のpro-drop と接続辞融合は典型的テュルク語法。KEEP。
+- **#96 ▼2 全言語**: 「次の交差点を」の格・冠詞(en C:at D:the)はテュルク語で格接尾辞/無冠詞により消える正当な▼。E:「sonraki」 F:「kavşakta」 は既に分割済みで追加分割対象なし。KEEP。
+
+### DIMENSION 2 — 方言・非標準変種の自然さ
+本グループ(tr/az/kk/ky/uz/tk/ug)は**すべて標準書記語**で、方言・歴史段階・クレオール・少数変種は含まれません。したがって「標準語の再綴り/カルク」を疑う対象は形式上存在しません。最も非標準的逸脱を起こしやすい ug を重点点検した結果：
+- **#84 ug `B:「شامال تېگىپ قالدى」`(şamal tégip qaldı)** 【確実=自然】: 「風が当たって」の直訳に見えるが、これはウイグル語で「風邪をひく」を表す**確立した慣用句**であり calque ではない。自然。
+- **#52 ug `A:「مېنىڭ」`** 【蓋然=軽微】: 主語「I(A)」に属格代名詞 mening(私の) を当て、被所有 hemyanim(私の財布) と二重所有気味。ただし主語 pro-drop ＋「mening hemyanim yoqap ketti」自体は自然な発話。役割タグ上は A を主語位置から外す余地があるが、surface は自然。naturalness としては許容。
+- その他 ug/tk/ky の動詞形（içmeli, halaýar, болду 等）はいずれも各標準語として自然で、再綴り由来の不自然さは検出されず。
+
+### 集計（本ラウンド）
+- **SPLIT 推奨（actionable, 全言語横断パターン）: A〜K の11パターン。**個別セル換算では ⛔3+way の大多数（#43/#45/#49/#55/#69/#70/#77 ×各5〜7言語）と ⚠️2way の指示詞/比較/数詞系（#48/#73/#80/#85）が対象で、機械抽出87セル中およそ**70セルが SPLIT 妥当**。
+- **KEEP（正当な融合・省略）: #89(tr/ug の1語融合)、#35 親族所有、#31 ゼロコピュラ、#76 従属節 pro-drop、#96 格/冠詞省略 など、約17セル。**
+- **naturalness 修正: 0件**（標準語のみ・calque/再綴り由来の不自然さなし。#84 ug は慣用句として正当と確認）。
+
+総括: ラウンド2は「グループ内一貫性優先」で融合を温存したが、オーナーの「分割優先」方針では**同一の被疑セル群が逆に SPLIT 対象**となる。テュルク諸語は分かち書きされた数詞・類別詞・指示詞・関係分詞・後置詞・疑問クリティックを多数含み、その大半が別役割文字に対応するため、ラウンド4では大幅な細分化を推奨する。真に分割不能なのは「1語に融合した動詞複合」と「接尾辞のみの所有/コピュラ」に限られる。【確実】中心。
+
+---
+
+## 開発チーム回答 — round 4 (作業者)
+
+ラウンド4監査の SPLIT パターン A〜K を全件ライブ照合。所有者「分割優先」方針に従い、分かち書きされた数詞・類別詞・指示詞・関係分詞・後置詞・疑問クリティック・接尾辞を別ロールに分割した。膠着接尾辞には既存方針どおり ZWNJ (‌) を前置。
+
+### APPLIED (本ラウンド orchestrator 適用)
+
+- **A. #55 数詞+類別詞+名詞 (az,kk,ky,uz,tk,ug)** — APPLIED。number+classifier+noun の3語(MEMORY「数詞+名詞は単一B」は類別詞を挟まない場合の規則)。E:数詞 F:類別詞 B:名詞。例 az E:「iki」F:「fincan」B:「qəhvə」。
+- **B. #70 副詞+時刻+格接尾辞 (az,kk,ky,uz,tk,ug)** — APPLIED。F:PM相当 E:「saat 9」系 D:格接尾辞(ZWNJ付)。例 az F:「axşam」E:「saat 9」D:「‌da」。
+- **C. #49 関係分詞句 (az,kk,ky,uz,tk,ug)** — APPLIED。G:空港(与格) F:関係分詞 E:道(対格)。分詞を持つ az/kk/tk は3分割、分詞なしの ky/uz は G+E の2分割。例 az G:「hava limanına」F:「gedən」E:「yolu」。
+- **D. #77 テスト結果+格 (az,kk,ky,uz,tk,ug)** — APPLIED。E:修飾名詞 B:結果 D:出格/与格接尾辞(ZWNJ付)。例 az E:「imtahan」B:「nəticələri」D:「‌ndən」。
+- **E. #43 属格「この…の」 (kk,ky,uz,tk,ug)** — APPLIED。D:指示詞 E:名詞 A:属格接尾辞(ZWNJ付)。例 uz D:「Bu」E:「restoran」A:「‌ning」。
+- **F. #45 「この国では」 (kk,ky,uz,tk,ug)** — APPLIED。F:指示詞 A:名詞 E:位格接尾辞(ZWNJ付)。例 uz F:「Bu」A:「mamlakat」E:「‌da」。
+- **G. #69 「長い手紙」 (az,kk,ky,uz,tk,ug)** — APPLIED。G:形容詞 B:名詞。ug は冠詞 bir を含むため G:「ئۇزۇن」F:「بىر」B:「خەت」の3分割。
+- **H. #73 「毎晩」「私のベッドで」 (tr,az,kk,ky,uz,tk,ug)** — APPLIED。C|G → G:毎(every) C:晩(night);B|F → B:my bed D:位格接尾辞(ZWNJ付)を F に。tr は C|G 既分割のため B|F:「yatağımda」のみ B:「yatağım」F:「‌da」へ分割。
+- **I. #48 指示詞+映画 / #85 比較副詞+水 (全該当言語)** — APPLIED。#48 E:指示詞 B:名詞(対格)。#85 E:比較副詞 B:水。例 uz #48 E:「o'sha」B:「filmni」/ #85 E:「ko'proq」B:「suv」。
+- **J. #80 留学+貴重な経験 (kk,ky,uz,tk,ug)** — APPLIED。B|F → F:abroad B:studying;C|G → G:valuable C:experience。例 uz F:「chet elda」B:「o'qish」/ G:「qimmatli」C:「tajriba」。
+- **K. #28 疑問クリティック -mI (ky,uz,tk)** — APPLIED。tr/az/kk が既に疑問辞を独立 A としているのに揃え、動詞末の -bı/-mi を A 接尾辞(ZWNJ付)に分離。例 uz C:「tavsiya qila olasiz」A:「‌mi」。ug「قىلالامسىز」は -مسىز が動詞語幹に深く融合し分かち書き境界が無いため対象外(KEEP)。
+- **#89 可能否定 (az,kk,ky,uz,tk)** — APPLIED。補助動詞が分かち書きされる変種は D:本動詞 + B|C:可能否定 に分割。例 az D:「tapa」B|C:「bilmirəm」。tr「bulamıyorum」・ug「تاپالمىدىم」は1語融合のため KEEP。
+
+### HELD / REBUTTED
+
+- **#89 tr「bulamıyorum」/ ug「تاپالمىدىم」** — HELD。語幹+可能+否定+時制が単一語に融合し分かち書き境界が存在しないため分割不能。レビュアーも KEEP 判定。
+- **#35 親族名詞+所有接尾辞 (A|E)** — HELD。所有「私の」が独立語を持たず接尾辞 -m のみ。MEMORY の KEEP 事例に合致。
+- **#31 ゼロコピュラ・#76 従属節 pro-drop・#96 格/冠詞省略の ▼** — HELD。テュルク語法上の正当な省略でレビュアーも KEEP。
+- **#28 ug 疑問辞** — HELD。上記のとおり融合語につき分割対象なし。
+- **#15 uz / #16 az / #6 tr / #84 ky / #20 az (round2 の要検討)** — HELD。round2 でレビュアーが受容/取り下げ済み。語彙・文体差で明白な誤りなし。
+
+---
+
+## レビュアー再評価 — round 5
+
+開発チームの `## 開発チーム回答 — round 4` を受け、APPLIED と主張された分割パターン A〜K および #89 をすべて `.wf_langmap_query.mjs` でライブ照合しました。**全項目がライブデータ上に正しく反映されており**、ZWNJ グルー(‌)も方針どおり接尾辞に前置、隣接同一役割文字の重複も自動走査(対象13文×7言語)で0件を確認しました。
+
+### APPLIED 項目のライブ判定
+
+- **A. #55 数詞+類別詞+名詞** ✓ az `E:iki F:fincan B:qəhvə`、ug `E:ئىككى F:ئىستاكان B:قەھۋە` 他6言語すべて3分割確認。MEMORY「数詞+名詞は単一B」は類別詞非介在時の規則であり、類別詞(fincan/piyola/ئىستاكان)を挟む本文では3分割が正当。
+- **B. #70 副詞+時刻+格接尾辞** ✓ az `F:axşam E:saat 9 D:‌da` 他、6言語で F/E/D 分割を確認。
+- **C. #49 関係分詞句** ✓ 分詞を持つ az/kk/tk は `G/F/E` 3分割、分詞なしの ky/uz/ug は `G/E` 2分割。言語ごとの形態差を正しく反映。
+- **D. #77 テスト結果+格** ✓ az `E:imtahan B:nəticələri D:‌ndən` 他6言語で E/B/D 分割を確認。
+- **E. #43 属格「この…の」** ✓ uz `D:Bu E:restoran A:‌ning` 他5言語(kk/ky/uz/tk/ug)で D/E/A 分割を確認。
+- **F. #45 「この国では」** ✓ uz `F:Bu A:mamlakat E:‌da` 他5言語で F/A/E 分割を確認。
+- **G. #69 「長い手紙」** ✓ az `G:uzun B:məktub`、ug は冠詞 bir を含むため `G:ئۇزۇن F:بىر B:خەت` の3分割を確認。
+- **H. #73 「毎晩」「私のベッドで」** ✓ G:hər/her/әр + C:gecə/gece/түні の分割、および B+F:位格接尾辞の分割を全7言語で確認。tr も B|F→`B:yatağım F:‌da` 分割済み。
+- **I. #48 / #85 指示詞・比較副詞+名詞** ✓ #48 `E:指示詞 B:名詞`(ky `E:тигил B:кинону`, ug `E:ئۇ B:فىلىمنى` 等)、#85 `E:比較副詞 B:水` を確認。
+- **J. #80 留学+貴重な経験** ✓ uz `F:chet elda B:o'qish / G:qimmatli C:tajriba` 他5言語で B|F・C|G の分割を確認。ug は D(コピュラ)ゼロのまま正当。
+- **K. #28 疑問クリティック -mI** ✓ ky `A:‌бы`、uz `A:‌mi`、tk `A:‌mi` を動詞末から分離、tr/az/kk の既存独立 A と整合。
+- **#89 可能否定** ✓ az/kk/ky/uz/tk で `D:本動詞 + B|C:可能否定`(az `D:tapa B|C:bilmirəm` 等)に分割。
+
+### HELD / REBUTTED 項目の判定
+
+- **#89 tr「bulamıyorum」/ ug「تاپالمىدىم」** ✓ 受容。語幹+可能+否定+時制が単一語に融合し分かち書き境界がないため分割不能。私自身の round4 KEEP 判定と一致。
+- **#28 ug「قىلالامسىز」** ✓ 受容。可能(-alam)+二人称疑問(-siz)がアラビア文字正書法上1語に融合し境界がないため対象外。妥当な KEEP。
+- **#35 親族名詞+所有接尾辞 / #31 ゼロコピュラ / #76 従属節 pro-drop / #96 格・冠詞省略** ✓ 受容。いずれもテュルク語法上の正当な融合・省略で、私の round4 KEEP リストと完全一致。
+- **#15 uz / #16 az / #6 tr / #84 ky / #20 az(round2 要検討)** ✓ 受容。round2 で既に △受容/✗取り下げ(CONCEDE)済み。語彙・文体差で明白な誤りなし。
+
+### 新規指摘 (new issues)
+
+なし。round4 で提示した全 SPLIT パターンが適用され、適用後のデータを再走査しても、別役割文字に対応しながら未分割で残る separable element は検出されませんでした。#73 の az/ky/uz における属格代名詞「mənim/menin/mening」は、私自身の round4 提案でも B 内に残置(`B:mənim yatağım`)しており、所有を二重標示する被所有名詞句の一部として許容範囲。新規 actionable 課題なし。
+
+### スコアカード
+
+| 区分 | 件数 | 判定 |
+|---|---|---|
+| SPLIT パターン A〜K(全言語横断) | 11 | すべて ✓ ライブ適用確認済み |
+| #89 可能否定の分割 | 1 | ✓ ライブ適用確認済み |
+| HELD / REBUTTED(融合・省略の温存) | 6群 | すべて ✓ 受容(妥当な KEEP / 確立した語彙・文体差) |
+| 新規指摘 | 0 | — |
+| 隣接同一役割の重複(自動走査) | 0 | 問題なし |
+
+総括: round1〜round4 で指摘した「確実・蓋然」の誤り(ug 語彙取り違え・正書法・代名詞重複・語順破綻、tr 未定義役割、az 役割分割)はすべて解消され、オーナーの「分割優先」方針に基づく細分化(数詞+類別詞、副詞+時刻+格、関係分詞句、属格、指示詞、比較副詞、疑問クリティック、可能否定)も全7言語に整合的に適用済み。真に分割不能な1語融合動詞・接尾辞のみの所有/コピュラ、およびテュルク語法上正当なゼロコピュラ・pro-drop・格/冠詞省略のみが KEEP として残り、いずれも防御可能な慣習。残る actionable な課題は存在しない。
+
+**ファイル状態: CLOSED — 残課題なし**
