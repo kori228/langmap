@@ -1,0 +1,594 @@
+# LangMap データレビュー #13 — West-Germanic — continental
+
+## レビュアー自己紹介 (ペルソナ)
+
+私は **Dr. Wiebke Tjarks-Vandenberghe**（ハンドル: @niederrhein_phil）、フローニンゲン大学およびハンブルク大学で西ゲルマン諸語の比較統語論を専攻した言語学者です。標準ドイツ語については *Duden – Die Grammatik* (9. Aufl.) と *Helbig/Buscha: Deutsche Grammatik* を、オランダ語については *Algemene Nederlandse Spraakkunst (ANS)* と Van Dale を、低地ドイツ語については Sass の *Plattdeutsche Grammatik* と SASS-Wörterbuch を、フリジア語については *Tiersma: Frisian Reference Grammar* と Frysk Wurdboek を、アフリカーンス語については *Donaldson: A Grammar of Afrikaans* を主要な典拠としています。方言（オーストリア・バイエルン・スイスドイツ語）は Variantenwörterbuch des Deutschen と Schweizerisches Idiotikon に依拠して判定しました。とりわけ私が最も権威を持つのは **nl / nds / fy** の三言語と、ドイツ語の動詞末（V2 / Satzklammer）構造の整合性チェックです。本レビューでは「文末枠（Satzklammer）に置かれるべき本動詞・分離前綴り・過去分詞」が正しく最終位置に分節化されているか、を最重視しました。
+
+## 検証範囲
+
+- 全100文 × 8言語（de, de_at, de_by, de_gsw, nds, nl, af, fy）を通読。
+- 特に、完了形・分離動詞・話法動詞による Satzklammer（動詞枠）構造（#1, #11, #16, #29, #47, #56, #65, #69, #72, #90 など）と、方言行の語彙的弁別性（#33, #59, #74 など）を重点的に検証。
+- 疑わしいセルは `node .wf_langmap_query.mjs` で実データと照合済み（#33, #37, #60, #58, #64, #80, #84, #88, #99）。
+
+## 指摘事項 (Issues found)
+
+### 1. #33 [de] — 「部屋」の名詞句が壊れている 【確実】
+**Current:** `E:「Das Zimmer」 A:「Hotel」 B:「war」 C:「sehr」 D:「sauber」`
+**Problem:** 他の全変種（de_at「Des Zimmer / im Hotel」、de_gsw「S Hotelzimmer」、nl「De hotelkamer」、fr「La chambre / d'hôtel」）は「ホテルの＋部屋」を属格・複合語・前置詞句で表すが、de だけ `A:「Hotel」` が裸で宙に浮いており、ドイツ語として非文。「Das Zimmer ... Hotel ... war sauber」という語順・形態は成立しない。元来は複合語 *Hotelzimmer* か属格 *Zimmer des Hotels* であるべき。
+**Proposed fix:** de_gsw に倣い複合語化が最も自然: `A:「Das Hotel」 E:「zimmer」 B:「war」 C:「sehr」 D:「sauber」`（A=ホテル, E=部屋）。または属格分割で `E:「Das Zimmer」 A:「des Hotels」 B:「war」 C:「sehr」 D:「sauber」`。
+
+### 2. #88 [nl] — 動詞の綴り誤り（過去分詞形になっている）【確実】
+**Current:** `A:「AI」 C:「veranderd」 B:「de wereld」`
+**Problem:** 「変えつつある（現在的）」の主動詞は直説法現在3人称単数 *verandert* であるべき。`veranderd` は過去分詞（-d）で、ここでは非文。他の全ゲルマン変種は現在形（de「verändert」, af「verander」, fy「feroaret」）。オランダ語の悪名高い *d/dt* スペリング誤りそのもの。
+**Proposed fix:** `A:「AI」 C:「verandert」 B:「de wereld」`
+
+### 3. #16 [nl] — 存在しない分離形 *begint … aan* 【確実】
+**Current:** `A:「Wanneer」 C:「begint」 B:「de film」 C:「aan」`
+**Problem:** オランダ語の「（映画が）始まる」は *beginnen*（分離前綴りなし）。`begint ... aan` という分離形は存在しない（*aanvangen* なら *vangt ... aan* だが *beginnen* に *aan* は付かない）。ドイツ語 *anfangen* (`fängt ... an`) を機械的に写した calque で、C 役の二分割（begint / aan）自体が誤り。
+**Proposed fix:** `A:「Wanneer」 C:「begint」 B:「de film」`（aan を削除、C は一つ）。
+
+### 4. #64 [fy] — フリジア語動詞の綴り誤り 【蓋然】
+**Current:** `A:「Ik」 D:「moat」 B:「myn telefoan」 C:「oplaadze」`
+**Problem:** 「充電する」のフリジア語不定詞は *oplade*（語幹 lade）。`oplaadze` は Frysk Wurdboek にない綴りで、おそらく *-ze* 語尾の過剰一般化。標準フリジア語では *oplade*（口語 *opladen* も可）。
+**Proposed fix:** `C:「oplade」`
+
+### 5. #99 [af] — 「お土産」の語彙が文脈とずれている 【蓋然】
+**Current:** `C:「Hoeveel」 D:「kos」 A:「hierdie」 B:「geskenk」`
+**Problem:** *geskenk* は「贈り物・プレゼント」。土産物店で値段を尋ねる「souvenir（記念品＝お土産）」には *aandenking* または *souvenir* が適切。他言語は de「Souvenir」, nl「souvenir」, fy「oantinken（記念品）」を使う。af だけ *geskenk*（gift）で、購入対象としての「土産」とは語義がずれる。
+**Proposed fix:** `B:「aandenking」`（または `B:「souvenir」`）。
+
+### 6. #37 [af] — 複合語の不自然なハイフン分割 【蓋然】
+**Current:** `A:「Ek」 B:「moet」 C:「'n verjaardag-」 D:「geskenk」 E:「koop」`
+**Problem:** アフリカーンス語の「誕生日プレゼント」は一語の複合語 *verjaardaggeskenk*。表示用に `verjaardag-` とハイフンで切って語末ハイフンが宙吊りになっている。de は `C:「ein Geburtstagsgeschenk」` と一括。af の *verjaardaggeskenk* は完全融合語なので分割の正当性が弱い。
+**Proposed fix:** `A:「Ek」 B:「moet」 C|D:「'n verjaardaggeskenk」 E:「koop」`。分割を残すなら少なくとも語末ハイフンを除き `C:「'n verjaardag」 D:「geskenk」`。
+
+### 7. #47 [de] — 副詞 *deutlich* の語彙適切性 【蓋然】
+**Current:** `A:「Der Lehrer」 D:「erklärte」 B:「das Problem」 C:「deutlich」`
+**Problem:** 「わかりやすく説明した」に対し *deutlich*（明瞭に・はっきりと）はやや「明確さ・滑舌」寄り。「理解しやすく」は *verständlich* がより的確で、実際 de_at が `C:「verständlich」` を採用。de だけ *deutlich* で家族内不整合。
+**Proposed fix:** `C:「verständlich」` に統一を推奨。
+
+### 8. #56 [nds] — 役ラベルの取り違え（「今夜」が D になっている）【蓋然】
+**Current:** `A:「Dat Konzert」 C:「fangt」 D:「hüüt Avend」 B:「üm acht Uhr」 C:「an」`
+**Problem:** en は `D:「starts」 B:「at 8 o'clock」 C:「tonight」`、ja は C=今夜・B=8時。よって「今夜(hüüt Avend)」=C, 「8時に(üm acht Uhr)」=B であるべき。他の独語変種も「今夜」を C としている。nds だけ「hüüt Avend」を D とラベルしており、役対応がずれる。
+**Proposed fix:** D を C に修正: `A:「Dat Konzert」 C:「fangt」 C:「hüüt Avend」 B:「üm acht Uhr」 C:「an」`（C 連続が問題なら時刻句の配置を再整理）。
+
+### 9. #80 [de_by] — 従属節接続詞 *dass* の欠落と動詞位置 【要検討】
+**Current:** `A:「I」 E:「glaab」 B|F:「im Ausland studiern」 D:「is」 I:「a」 G:「wertvolle」 C:「Erfahrung」`
+**Problem:** 標準 de は `H:「dass」` を立て従属節動詞を文末に置くが、de_by は H を欠いたまま `D:「is」` が中位に来る中途半端な構造。バイエルン語でも「I glaab, dass im Ausland studiern a wertvolle Erfahrung is」のように *dass* ＋ 文末動詞が自然。
+**Proposed fix:** *dass* を補い動詞を末尾へ: `A:「I」 E:「glaab」 H:「dass」 B|F:「im Ausland studiern」 I:「a」 G:「wertvolle」 C:「Erfahrung」 D:「is」`。
+
+### 10. #84 [de] — 完了枠の複合役ラベルの過剰付与 【要検討】
+**Current:** `A:「Sie」 B|C:「hat sich」 E:「letzte」 D:「Woche」 B|C:「erkältet」`
+**Problem:** *hat sich … erkältet* の Satzklammer 構造自体は妥当だが、助動詞 *hat sich* と過去分詞 *erkältet* の双方に `B|C` を振っており、同一複合役の非隣接重複になっている。en は `C:「caught」 B:「a cold」`。助動詞側と本動詞側でラベルを分けるのが望ましい。
+**Proposed fix:** `A:「Sie」 C:「hat sich」 E:「letzte」 D:「Woche」 B:「erkältet」`（C=完了助動詞＋再帰, B=本動詞）。要判断。
+
+### 11. #69 [af] — 過去分詞への役ラベル重複 【要検討】
+**Current:** `A:「Hy」 D|E:「het」 B|F|G:「'n lang brief」 C|H:「aan sy ouers」 D:「geskryf」`
+**Problem:** 完了枠 *het … geskryf* は正しいが、助動詞側 `D|E:「het」` と本動詞側 `D:「geskryf」` で役 D が重複している。en は単一過去 `D|E:「wrote」`。af は迂言完了なので助動詞と本動詞に分かれるのは妥当だが、両方に D を振ると非隣接重複となり整合性が落ちる。
+**Proposed fix:** `A:「Hy」 D:「het」 B|F|G:「'n lang brief」 C|H:「aan sy ouers」 E:「geskryf」`（助動詞=D, 本動詞=E）。要整理。
+
+### 12. #74 [de_gsw] — 方言行の弁別性が薄い 【要検討】
+**Current:** `A:「Ich」 C:「warte」 B:「sit 30 Minute」`
+**Problem:** de_at/de_by は「30分」を *a halbe Stund*（＝半時間）と自然に言い換えるのに対し、de_gsw は標準語的に *30 Minute* のまま。スイスドイツ語の口語では *e halbi Stund* が圧倒的に自然で、方言行としての famous distinctive feature が出ていない。
+**Proposed fix:** `A:「Ich」 C:「warte」 B:「scho e halbi Stund」` 程度が自然。標準語併用も許容されうるため要検討。
+
+## 総評
+
+de/nl/nds/fy/af の大半のセルは語順（V2・Satzklammer・SOV 従属節）と分節が概ね正確で、特に話法動詞＋文末不定詞（#9, #22, #62 など）の枠構造、完了形の助動詞前置＋過去分詞後置（#11, #29, #72）はよく整理されている。最も確実な修正対象は **#33 de（壊れた名詞句）**、**#88 nl（veranderd→verandert）**、**#16 nl（存在しない分離形 begint…aan）** の3点。残りは語彙選択・方言弁別性・複合役ラベルの整理に関する蓋然/要検討事項である。
+
+## 開発チーム回答 — round 1 (作業者)
+
+`.wf_langmap_query.mjs` で全件照合の上で判定。
+
+### 1. #33 de 壊れた名詞句 → APPLIED
+現値 E:「Das Zimmer」 A:「Hotel」 B:「war」… を確認。裸の「Hotel」が宙に浮き非文。fr の役割整列(E:chambre, A:d'hôtel)に合わせ属格分割で **E:「Das Zimmer」 A:「des Hotels」 B:「war」 C:「sehr」 D:「sauber」**(replace、適用)。文法的に成立し E→A の役順も維持。
+
+### 2. #88 nl 過去分詞綴り誤り → APPLIED
+現値 C:「veranderd」を確認。現在3sg は verandert。**C:「verandert」**(settext、適用)。
+
+### 3. #16 nl 存在しない分離形 begint…aan → APPLIED
+現値 C:「begint」 B:「de film」 C:「aan」を確認。beginnen に分離前綴り aan は付かない(独 anfangen の calque)。末尾 **C:「aan」を削除**(remove、適用)。残る C は単一。
+
+### 4. #64 fy 綴り誤り → APPLIED
+現値 C:「oplaadze」を確認。標準フリジア語不定詞は oplade(語幹 lade)。**C:「oplade」**(settext、適用)。
+
+### 5. #99 af 「お土産」語彙 → APPLIED
+現値 B:「geskenk」(=贈り物)を確認。de「Souvenir」/nl「souvenir」/fy「oantinken」が記念品を指すのに対し geskenk は gift で語義ずれ。**B:「aandenking」**(記念品、settext、適用)。
+
+### 6. #37 af 宙吊りハイフン → APPLIED
+現値 C:「'n verjaardag-」 D:「geskenk」を確認。分割自体は SPLIT 方針上維持してよいが、語末ハイフンが非語。**C:「'n verjaardag」**(末尾ハイフン除去、settext、適用)。分割は保持。
+
+### 7. #47 de deutlich vs verständlich → HELD
+deutlich は「わかりやすく」の訳として十分自然な独語で誤りではない。家族内で de_at が verständlich を使うのは許容される変異。語彙選択の領域につき不変更。
+
+### 8. #56 nds 役ラベル取り違え → APPLIED(レビュアー案を改良)
+現値 A:「Dat Konzert」 C:「fangt」 D:「hüüt Avend」 B:「üm acht Uhr」 C:「an」を確認。en/de では「動詞=D, 今夜=C」。nds は動詞 fangt/an を C、今夜を D と二重に取り違えている。レビュアー案(D→C)だけだと C:fangt と C:hüüt Avend が隣接重複してしまうため、動詞側も D に直す:**A:「Dat Konzert」 D:「fangt」 C:「hüüt Avend」 B:「üm acht Uhr」 D:「an」**(replace、適用)。隣接重複なし、verb=D/tonight=C/time=B が en・de と一致。
+
+### 9. #80 de_by dass 欠落・動詞位置 → APPLIED
+現値 …D:「is」が中位、H:「dass」欠落を確認。標準 de に倣い dass を補い動詞を文末へ:**A:「I」 E:「glaab」 H:「dass」 B|F:「im Ausland studiern」 I:「a」 G:「wertvolle」 C:「Erfahrung」 D:「is」**(replace、適用)。
+
+### 10. #84 de 複合役の非隣接重複 → APPLIED
+現値 B|C:「hat sich」 … B|C:「erkältet」を確認。同一複合役 B|C の非隣接重複。助動詞=C, 本動詞=B に分離:**A:「Sie」 C:「hat sich」 E:「letzte」 D:「Woche」 B:「erkältet」**(replace、適用)。
+
+### 11. #69 af 役 D の重複 → APPLIED
+現値 D|E:「het」 … D:「geskryf」で D が非隣接重複を確認。迂言完了の助動詞=D, 過去分詞=E に分離:**A:「Hy」 D:「het」 B|F|G:「'n lang brief」 C|H:「aan sy ouers」 E:「geskryf」**(replace、適用)。
+
+### 12. #74 de_gsw 方言弁別性 → HELD
+現値 B:「sit 30 Minute」を確認。「30 Minute」はスイス独語として誤りではなく、弁別性が弱いという指摘は文体的選好。明白な誤りでないため不変更(「e halbi Stund」案は記録に留める)。
+
+## レビュアー再評価 — round 2 (Dr. Wiebke Tjarks-Vandenberghe)
+
+`.wf_langmap_query.mjs` で全12件の主張を実データと照合した。APPLIED 10件はすべて実データに反映済みであることを確認。HELD 2件の論拠も検討した。
+
+### 1. #33 de 壊れた名詞句 → ✓ 承認
+実データ `E:「Das Zimmer」 A:「des Hotels」 B:「war」 C:「sehr」 D:「sauber」` を確認。属格分割で文法的に成立し、E→A の役順も保持。fr の役整列と一致。確実な修正が正しく適用済み。
+
+### 2. #88 nl veranderd→verandert → ✓ 承認
+実データ `C:「verandert」` を確認。直説法現在3sg として正しい。d/dt 誤りは解消。
+
+### 3. #16 nl 存在しない分離形 begint…aan → ✓ 承認
+実データ `A:「Wanneer」 C:「begint」 B:「de film」` を確認。末尾の偽分離 `C:「aan」` は削除され、C は単一。beginnen に aan は付かないという指摘どおりに修正済み。
+
+### 4. #64 fy oplaadze→oplade → ✓ 承認
+実データ `C:「oplade」` を確認。標準フリジア語不定詞として正しい綴り。
+
+### 5. #99 af geskenk→aandenking → ✓ 承認
+実データ `B:「aandenking」` を確認。de「Souvenir」/nl「souvenir」/fy「oantinken」と語義（記念品）が整合。土産物の文脈に適合。
+
+### 6. #37 af 宙吊りハイフン → ✓ 承認
+実データ `C:「'n verjaardag」 D:「geskenk」` を確認。語末ハイフンは除去済み。分割保持はオーナーの SPLIT 選好方針に合致し、C/D で異役・隣接重複なし。妥当な決着。
+
+### 7. #47 de deutlich vs verständlich → ✓ 承認（譲歩）
+deutlich は「わかりやすく説明する」の独語として標準的に成立し、de_at が verständlich を使うのは家族内の許容変異。これは文体的選好の領域であり、開発側の HELD 判断は妥当。当方の指摘を取り下げる。
+
+### 8. #56 nds 役ラベル取り違え → ✓ 承認
+実データ `A:「Dat Konzert」 D:「fangt」 C:「hüüt Avend」 B:「üm acht Uhr」 D:「an」` を確認。verb=D / tonight=C / time=B が en・de と一致。分離前綴り fangt…an は両方 D だが非隣接（間に C・B が入る）で重複問題なし。当方の素案を超える正しい改良。
+
+### 9. #80 de_by dass 補充・動詞末尾 → ✓ 承認
+実データ `…H:「dass」… C:「Erfahrung」 D:「is」` を確認。dass 従属節で本動詞 is が文末（Satzklammer）に正しく移動。標準 de の構造と整合。
+
+### 10. #84 de 完了枠の複合役分離 → ✓ 承認
+実データ `A:「Sie」 C:「hat sich」 E:「letzte」 D:「Woche」 B:「erkältet」` を確認。非隣接 B|C 重複は解消。完了助動詞＋再帰=C、過去分詞=B の分離は妥当。
+
+### 11. #69 af 役 D の重複 → ✓ 承認
+実データ `A:「Hy」 D:「het」 B|F|G:「'n lang brief」 C|H:「aan sy ouers」 E:「geskryf」` を確認。迂言完了の助動詞=D / 過去分詞=E に分離され D の非隣接重複は解消。
+
+### 12. #74 de_gsw 方言弁別性 → ✓ 承認（譲歩 / 既知の限界として）
+実データ `B:「sit 30 Minute」` を確認。de_at「a halbe Stund」/de_by「a holbe Stund」と並べると弁別性は確かに弱いが、「30 Minute」はスイス独語として誤りではなく、弁別性は文体的選好の領域。明白な誤りではないため開発側の HELD を尊重し、既知の限界（既存の e halbi Stund 案は記録に保持）として取り下げる。
+
+### 新規指摘
+今回の照合で新たな明白な誤りは発見されなかった（新規 0件）。
+
+### スコアカード
+- 確実3件（#33, #88, #16）：全て修正・実データ確認済み ✓
+- 蓋然/要検討で適用された7件（#64, #99, #37, #56, #80, #84, #69）：全て妥当に解決 ✓
+- HELD 2件（#47, #74）：開発側の論拠を妥当と認め譲歩 ✓✓
+- 承認 12 / 12、譲歩 2、却下 0、新規 0
+- 残課題：なし
+
+**ファイル状態: CLOSED — 残課題なし**
+
+## ラウンド4 監査 — 分割粒度・方言自然さ (レビュアー)
+
+私 Dr. Wiebke Tjarks-Vandenberghe が、機械抽出ターゲット（⛔3+way=48, ⚠️2way=66, ▼2+=63）を `.wf_langmap_query.mjs` で全件再照合し、オーナー指令「迷ったら分割」に従って判定した。本ラウンドは **分割粒度** と **方言自然さ** の2軸に絞る。結論として、本グループの多数の融合セルは「内部に独立語として存在する別役の要素」を含んでおり、分割すべきものが大半である。一方、▼不足の多くは語順・無冠詞・前置詞融合といった正当な類型差であった。
+
+### A. 分割推奨（SPLIT）— 前置詞句・冠詞・形容詞の融合
+
+#### A-1. #43 `A|D|E` 前置詞＋指示詞＋名詞 → 3分割 【確実】
+en は `A:at / D:this / E:restaurant` と3語。本グループは全変種が前置詞・指示詞・名詞を **独立語** として持つので、3way融合は不要。
+- [de_at] `A|D|E:「in dem Restaurant」` → **A:「in」 D:「dem」 E:「Restaurant」**
+- [de_by] `A|D|E:「in dem Wirtshhaus」` → **A:「in」 D:「dem」 E:「Wirtshhaus」**
+- [de_gsw] `A|D|E:「i dem Restaurant」` → **A:「i」 D:「dem」 E:「Restaurant」**
+- [nds] `A|D|E:「in dat Restaurant」` → **A:「in」 D:「dat」 E:「Restaurant」**
+- [fy] `A|D|E:「yn dit restaurant」` → **A:「yn」 D:「dit」 E:「restaurant」**
+- [af] `A|D|E:「by hierdie restaurant」` → **A:「by」 D:「hierdie」 E:「restaurant」**
+すべて隣接同役なし（A→D→E）。確実。
+
+#### A-2. #70 `B|D|E|F` 時刻句 → 分割 【蓋然〜確実】
+en は `D:at / E:9 / F:PM`。"um/om" が前置詞(D)、数詞(E)、時間帯語(F)。
+- [de_at] `B|D|E|F:「um neune am Abend」` → **D:「um」 E:「neune」 F:「am Abend」**（B付与の数量根拠は薄く、B除去が妥当）
+- [de_by] `B|D|E|F:「um neune am Obnd」` → **D:「um」 E:「neune」 F:「am Obnd」**
+- [nds] `B|D|E|F:「üm negen Uhr avends」` → **D:「üm」 E:「negen Uhr」 F:「avends」**
+- [nl] `B|D|E|F:「om 21 uur」` → **D:「om」 E:「21 uur」**（"21 uur" が午後9時を内包、F相当の独立語なし＝この行はFを立てず2分割で可）【蓋然】
+- [af] `B|D|E|F:「om 9 nm.」` → **D:「om」 E:「9」 F:「nm.」**
+- [fy] `B|D|E|F:「om 9 oere jûns」` → **D:「om」 E:「9 oere」 F:「jûns」**
+nl/nds は時間帯語が独立しない場合があり、その行はF省略の▼1が正当。
+
+#### A-3. #69 `B|F|G` 不定冠詞＋形容詞＋名詞 / `C|H` 前置詞＋名詞句 → 分割 【確実】
+en は `F:a / G:long / B:letter` と `H:to / C:his parents`。全変種が3語＋2語を独立語で持つ。
+- [de_at] `B|F|G:「an langen Brief」 C|H:「an seine Eltern gschrieben」` → **F:「an」 G:「langen」 B:「Brief」** ＋ **H:「an」 C:「seine Eltern」 E:「gschrieben」**（過去分詞 gschrieben は本動詞=E に分離、助動詞 hat=D。現状 D|E:hat も D に純化）
+- [de_gsw] `B|F|G:「en lange Brief」 C|H:「a sini Eltere」` → **F:「en」 G:「lange」 B:「Brief」** ＋ **H:「a」 C:「sini Eltere」**（D|E:「hät gschribe」は D:「hät」＋E:「gschribe」に分離）
+- [nds] `B|F|G:「een langen Breev」 C|H:「an sien Öllern schreven」` → **F:「een」 G:「langen」 B:「Breev」** ＋ **H:「an」 C:「sien Öllern」 E:「schreven」**
+- [nl] `B|F|G:「een lange brief」 C|H:「aan zijn ouders」` → **F:「een」 G:「lange」 B:「brief」** ＋ **H:「aan」 C:「zijn ouders」**
+- [fy] `B|F|G:「in lange brief」 C|H:「oan syn âlden」` → **F:「in」 G:「lange」 B:「brief」** ＋ **H:「oan」 C:「syn âlden」**
+- [af] `B|F|G:「'n lang brief」 C|H:「aan sy ouers」` → **F:「'n」 G:「lang」 B:「brief」** ＋ **H:「aan」 C:「sy ouers」**（af は既に E:geskryf 分離済み、良好）
+※ round2 で #69 af の D/E 重複は解消済みだが、名詞句 `B|F|G`・`C|H` の融合は手付かずだった。これらこそ最優先の⛔。確実。
+
+#### A-4. #46 `B|F|G` 前置詞＋所有詞＋名詞 → 分割 【確実】
+en `F:with / G:my / B:friend`。
+- [de_at] `B|F|G:「mit meim Freund」` → **F:「mit」 G:「meim」 B:「Freund」**
+- [de_by] `B|F|G:「mitn Freind」` → **F:「mit」 G:「'n」 B:「Freind」**（"mitn"=mit+'n、portmanteau 切出し可）【蓋然】
+- [de_gsw] `B|F|G:「mit mim Fründ」` → **F:「mit」 G:「mim」 B:「Fründ」**
+- [nds] `B|F|G:「mit mien Fründ」` → **F:「mit」 G:「mien」 B:「Fründ」**
+- [af] `B|F|G:「met my vriend」` → **F:「met」 G:「my」 B:「vriend」**
+- [fy] `B|F|G:「mei myn freon」` → **F:「mei」 G:「myn」 B:「freon」**（加えて fy の `E|H:「haw praat」` は助動詞 haw=H／本動詞 praat=E に分離推奨【蓋然】）
+
+#### A-5. #49 `C|E|F|G` 方向句 → 分割 【確実】
+en `E:the way / F:to / G:the airport`。"道(E)＋への(F)＋空港(G)"。C(似た文脈付与)は不要。
+- [de_at] `C|E|F|G:「zum Flughafen」` は前置部に既に E:「den Weg」があるため、この末尾句は **F:「zum」 G:「Flughafen」** の2分割で十分（"zum"=zu+dem portmanteau だが F として一括許容）。C/E 重複付与を除去。
+- [de_gsw] `C|E|F|G:「de Wäg zum Flughafe」` → **E:「de Wäg」 F:「zum」 G:「Flughafe」**（3分割、Cは削除）
+- [de_by] `C|E|F|G:「zum Flughofn」`（前に E:「mir den Weg」が B扱い）→ **F:「zum」 G:「Flughofn」**
+- [nds] `C|E|F|G:「to'n Flughaven」` → **F:「to'n」 G:「Flughaven」**
+- [af] `C|E|F|G:「die pad na die lughawe」` → **E:「die pad」 F:「na」 G:「die lughawe」**
+- [fy] `C|E|F|G:「de wei nei it fleanfjild」` → **E:「de wei」 F:「nei」 G:「it fleanfjild」**
+
+#### A-6. #45 `A|E|F` 前置詞＋指示詞＋名詞 → 分割 【確実】
+en `E:In / F:this / A:country`。
+- [de_by] `A|E|F:「In dem Land」` → **E:「In」 F:「dem」 A:「Land」**
+- [nds] `A|E|F:「In dat Land」` → **E:「In」 F:「dat」 A:「Land」**
+- [af] `A|E|F:「In hierdie land」` → **E:「In」 F:「hierdie」 A:「land」**
+- [fy] `A|E|F:「Yn dit lân」` → **E:「Yn」 F:「dit」 A:「lân」**
+- [de_at] は現状 `A:「In dem Land」` 単一Aで▼2。同様に **E:「In」 F:「dem」 A:「Land」** に分割推奨。
+
+#### A-7. #55 `B|E|F` 数詞＋助数＋名詞 → 分割 【確実】
+en `E:two / F:cups of / B:coffee`。記憶 feedback_number_noun_merge_into_B は「数詞＋名詞」の話で、ここは "数詞(E)＋杯(F)＋コーヒー(B)" の3語。ja も E:2／F:杯／B:コーヒー と3分。
+- [de_at] `B|E|F:「zwei Häferl Kaffee」` → **E:「zwei」 F:「Häferl」 B:「Kaffee」**
+- [de_by] `B|E|F:「zwoa Hafal Kaffee」` → **E:「zwoa」 F:「Hafal」 B:「Kaffee」**
+- [de_gsw] `B|E|F:「zwöi Tasse Kafi」` → **E:「zwöi」 F:「Tasse」 B:「Kafi」**
+- [nds] `B|E|F:「twee Tassen Koffie」` → **E:「twee」 F:「Tassen」 B:「Koffie」**
+- [nl] `B|E|F:「twee koppen koffie」` → **E:「twee」 F:「koppen」 B:「koffie」**
+- [af] `B|E|F:「twee koppies koffie」` → **E:「twee」 F:「koppies」 B:「koffie」**
+- [fy] `B|E|F:「twa koppen kofje」` → **E:「twa」 F:「koppen」 B:「kofje」**
+
+#### A-8. #77 `B|D|E` 前置詞＋名詞 → 部分分割 【蓋然】
+en `D:by / E:the test / B:results`。但し "Prüfungsergebnis / Pröövergebnis / toetsresultate" は **一語の複合名詞** で E(test)＋B(results) は形態素で不可分。よって前置詞 D のみ切出す2分割が上限。
+- [de_at] `B|D|E:「vom Prüfungsergebnis」` → **D:「vom」 B|E:「Prüfungsergebnis」**（"vom"=von+dem portmanteau を D として切出し）
+- [de_gsw] `B|D|E:「vo de Teschtresultat」` → **D:「vo de」 B|E:「Teschtresultat」**
+- [nds] `B|D|E:「vun dat Pröövergebnis」` → **D:「vun dat」 B|E:「Pröövergebnis」**
+- [af] `B|D|E:「oor die toetsresultate」` → **D:「oor die」 B|E:「toetsresultate」**
+- [fy] `B|D|E:「troch de toetsresultaten」` → **D:「troch de」 B|E:「toetsresultaten」**
+※ E/B の融合維持は KEEP（複合名詞は分割不可）。前置詞 D の切出しのみ SPLIT。
+
+#### A-9. #35 `A|E` 所有詞＋名詞句 → 分割 【蓋然】
+en `A:My / E:older brother`。ゲルマン諸語は所有詞が独立語（Japanese 兄 と異なり "my" に対応語がある）。
+- [de_at] `A|E:「Mei großer Bruder」` → **A:「Mei」 E:「großer Bruder」**（他変種 de_by/gsw/nds/fy/af も同型に分割可）
+※ なお #35 の `B:hat … B:gheirat`（独語完了枠）は非隣接で問題なし。ただし完了枠を厳密に割るなら助動詞=別役が望ましいが、現状の B 反復(枠)は許容範囲。
+
+### B. KEEP（正当な融合・省略）
+
+- **#77 の E|B（複合名詞 Prüfungsergebnis 等）**：一語化しており分割不可。前置詞のみ切出す（上記A-8）。
+- **#73 `A|E:「Mei Katz」` `B|F:「auf meim Bett」`**：en は My/cat, on/my bed と割るが、所有詞は確かに独立語なので原理上分割可。ただし `B|F` は "前置詞＋所有詞＋名詞" の3語であり、むしろ #46 同型で **F:「auf」 G相当なし→ B:所有詞付き名詞** の整理が要る。ここは▼が語順由来でもあり、最小限「A|E→A:Mei＋E:Katz」「B|F→F:auf＋B:meim Bett」の2分割を蓋然で推奨するに留める（過分割回避）。
+- **#50 `C:「geht」…C:「spazieren」`**：独語の慣用「spazieren gehen」の枠構造で、非隣接の C 反復は枠として正当。KEEP。
+- **#48 de_at/de_by/nds の `B|E:「Film」`**：指示詞 "den/de" は前のモーダル句 `D:「möcht den」` 側に入っているため、"Film" 自体は B のみ。E(指示詞)はこの語に無い → **B|E はラベル誤りで、B 単独にすべき**（指示詞はDから分離して E:「den」を立てるのが理想だが、最小修正は B 単独化）。これは分割というより役ラベル是正。【蓋然】 一方 nl/af/fy/gsw は指示詞が名詞側（deze film 等）にあるので **E:指示詞＋B:名詞** に分割すべき SPLIT。
+- **▼N の多く（#45/#53/#73 等の不足）**：V2語順・前置詞融合・無冠詞による正当な類型差で、無理な分割はしない。
+
+### C. 方言自然さ（DIMENSION 2）
+
+ラウンド1〜2で #74 de_gsw（30 Minute→e halbi Stund）等は決着済み。今回の追加点：
+
+- **#43 [de_by] `Wirtshhaus`** 【確実・誤字】：綴り誤り。正しくは **Wirtshaus**（h 重複）。なお語彙としてバイエルン語で "Wirtshaus" を使うのは自然で良い。
+- **#46 [de_at]/[de_by] `am Telefon` + `gredt`**：自然。bairisch/österr. として妥当。
+- **#48 [de_by] `oschaung`**（anschauen の bair. 形）/ [de_gsw] `luege`：いずれも自然。
+- **#84 [de_at]/[de_by] `hat/hot sich a Verkühlung gholt`**：オーストリア・バイエルンで "Verkühlung"＋"holen" は非常に自然（標準独語の "erkälten" より方言的に的確）。良好。ただし `B|C` で「a Verkühlung gholt」全体を融合しているのは過融合 → **B:「a Verkühlung」（風邪）＋C:「hat sich…gholt」（枠）** に分割推奨【蓋然】。en も C:caught／B:a cold と割る。
+- **#50 [af] `hou daarvan` / [fy] `hâldt fan`**：自然な慣用句。KEEP。
+- 全体として de_at/de_by/de_gsw/nds の方言行は概ね「標準語の写し」ではなく、語彙（Häferl/Hafal/Häferl, koid/koud, Bleamln, Gschichtn）・音韻・形態がその変種らしい。明白な不自然calque は #43 by の綴り誤りを除き新規発見なし。
+
+### 集計・所見
+- **SPLIT 推奨**（実質的に分割すべき融合セル）：#43×6, #70×6, #69×名詞句11(B|F|G 6 + C|H 5 ※af名詞句は別途), #46×6, #49×6, #45×5(+de_at 1), #55×7, #77 前置詞切出し×5, #35×1(代表), #48 nl/af/fy/gsw 指示詞分割×4, #84 B/C分割×2 などを含め多数。本ラウンドのアクション可能 SPLIT は約 **58** 件。
+- **KEEP（正当）**：#77 の複合名詞 E|B（5）、#50 spazieren 枠（4〜6）、各種▼の語順/無冠詞由来（多数のうち代表 7）、#73 過分割回避分など、合わせて約 **16** 件を正当と判断。
+- **方言自然さ修正**：#43 by `Wirtshhaus→Wirtshaus`（綴り）、#84 at/by の B/C 過融合分離、計 **3** 件（綴り1＋過融合2）。
+- 確信度：前置詞＋冠詞＋名詞／不定冠詞＋形容詞＋名詞／数詞＋助数＋名詞の3way融合分割は【確実】。portmanteau（vom/zum/mitn）切出しと所有詞分割は【蓋然】。#73 の B|F 内部整理は【要検討】。
+
+総括：本グループは round1〜2 で語彙・綴りの明白誤りはほぼ潰れたが、**名詞句・前置詞句レベルの過融合（⛔3+way）が体系的に未処理**で残っていた。オーナーの「分割優先」方針下では上記 A 群を一括適用すべきである。
+
+## レビュアー再評価 — round 5 (Dr. Wiebke Tjarks-Vandenberghe)
+
+開発チームによる round4 への明示的な回答セクションは未記載だが、実データを `.wf_langmap_query.mjs` で全件照合したところ、round4 の SPLIT 提案の **大半が無言で適用済み**であることを確認した。適用分を ✓ で承認しつつ、**確実カテゴリで取りこぼされた具体的なセル**を以下に列挙する。これらは「分割優先」方針下で明白にアクション可能な残課題である。
+
+### 適用確認 ✓（承認）
+- **A-1 #43** 全6変種 `A|D|E`→A/D/E に分割済み。さらに方言自然さ指摘の **de_by `Wirtshhaus→Wirtshaus`**（h重複）も修正確認。✓✓
+- **A-2 #70** de_at/de_by/de_gsw/nds/af/fy で D/E/F（または D/E）に分割、誤付与の B も除去済み。nl は `D:om E:21 uur` の2分割で F 省略＝正当。✓
+- **A-3 #69** de_at・de_gsw・nds・af・fy は F/G/B＋H/C＋（過去分詞）E に分割済み。完了枠の助動詞=D／本動詞=E 純化も確認。✓（**ただし de_by 未処理＝下記残課題**）
+- **A-4 #46** 全変種 F/G/B に分割、fy の `E|H:「haw praat」` も H:haw／E:praat に分離確認。✓
+- **A-5 #49** 末尾方向句 F/G（de_gsw は E/F/G）に分割確認。✓
+- **A-7 #55** 全7変種 E/F/B に分割確認。記憶 feedback_number_noun_merge_into_B は「数詞＋名詞」限定で、ここは数詞＋助数（杯）＋名詞の3語＝正当な3分割。✓
+- **A-8 #77** de_at/de_gsw/nds/af/fy で前置詞 D 切出し済み、複合名詞 E|B は KEEP（正当）。nl は D/E/B の3分割で良好。✓（**de_by 未処理＝下記残課題**）
+- **C #84** de_at/de_by で `B:a Verkühlung`＋`C:hat sich…gholt` に過融合分離済み、en（C:caught／B:a cold）と整合。✓
+
+### 残課題 ✗（確実カテゴリの取りこぼし）
+
+#### R5-1. #69 de_by — 名詞句・完了枠が丸ごと未分割 ✗【確実】
+実データ `A:「Er」 D|E:「hot」 B|F|G:「an longn Brief」 C|H:「an seine Oidn gschriebn」`。他の全変種が分割済みの中、de_by だけ手付かず。de_at（`D:hat F:an G:langen B:Brief H:an C:seine Eltern E:gschrieben`）に倣い分割すべき:
+**A:「Er」 D:「hot」 F:「an」 G:「longn」 B:「Brief」 H:「an」 C:「seine Oidn」 E:「gschriebn」**
+（助動詞 hot=D／不定冠詞 an=F／形容詞 longn=G／名詞 Brief=B／前置詞 an=H／名詞句 seine Oidn=C／過去分詞 gschriebn=E。D|E 非隣接重複も解消。隣接同役なし。）
+
+#### R5-2. #77 de_by — 前置詞 vom が未切出し ✗【確実】
+実データ `A:「Er」 C:「wor überrascht」 B|D|E:「vom Prüfungsresultat」`。他変種は前置詞 D を切出し済み。de_at（`D:vom B:Prüfungsergebnis`）同型に:
+**D:「vom」 B|E:「Prüfungsresultat」**（複合名詞 Prüfungsresultat は KEEP、前置詞 vom のみ SPLIT）。
+
+#### R5-3. #45 de_gsw — `I dem Land` が未分割 ✗【確実】
+実データ `A:「I dem Land」`。他の全変種（de_at/de_by/nds/nl/af/fy）は E/F/A に分割済み。de_gsw も同一構造（前置詞 i＋指示詞 dem＋名詞 Land）なので:
+**E:「I」 F:「dem」 A:「Land」**（隣接同役なし）。
+
+#### R5-4. #35 de_by/de_gsw/nds/af/fy — 所有詞＋名詞句 `A|E` が未分割 △→✗【蓋然〜確実】
+実データはいずれも `A|E:「Mei großa Bruada」` 等で融合。de_at（`A:Mei E:großer Bruder`）と nl（`A:Mijn E:oudere broer`）は分割済みだが、残り5変種が未処理。en は A:My／E:older brother と明確に2語。所有詞はゲルマン諸語で独立語なので分割すべき:
+- de_by **A:「Mei」 E:「großa Bruada」**
+- de_gsw **A:「Min」 E:「älter Brüeder」**
+- nds **A:「Mien」 E:「ool Broder」**
+- af **A:「My」 E:「ouer broer」**
+- fy **A:「Myn」 E:「âldere broer」**
+（af/fy の完了枠 `B:het getrou`／`B:is troud` は en が単一 B:got married なので KEEP 許容。）
+
+#### R5-5. #48 de_at/de_by/nds — `B|E:「Film」` の役ラベル誤り ✗【蓋然】
+実データ de_at `D:「möcht den」 B|E:「Film」`、de_by `D:「mecht den」 B|E:「Film」`、nds `D:「will den」 B|E:「Film」`。指示詞 "den" は既に D 側（möcht den 等）に融合しており、"Film" 自体は指示詞を含まないため **E（指示詞）役を Film に付けるのは誤り**。理想は指示詞 den を D から切出し E:「den」を立て B:「Film」とすること。最小修正でも `B|E:Film`→`B:Film` 単独化が必要。nl/af/fy/de_gsw は既に E:指示詞＋B:名詞 に分割済みで良好。
+
+### 新規指摘
+上記 R5-3（de_gsw #45）と R5-5（de_at/de_by/nds #48 のラベル誤り）は round4 提案に含まれていたが未適用であり、厳密には「取りこぼし」。純粋な新規の明白誤りは発見なし（新規 0件）。
+
+### スコアカード（round 5）
+- round4 SPLIT 提案：約8グループ（#43/#70/#46/#49/#55/#77 大半/#69 大半/#84）が適用済み ✓
+- 残課題：#69 de_by（R5-1）、#77 de_by（R5-2）、#45 de_gsw（R5-3）、#35 ×5変種（R5-4）、#48 ×3変種ラベル（R5-5）
+- 確実な未処理：R5-1〜R5-3、R5-5（計 5変種ぶんのセル）／蓋然：R5-4（5変種）
+- 譲歩（concede）：0（round4 提案の取り下げなし。すべて適用 or 残課題として保持）
+
+**ファイル状態: OPEN**
+次にやること: (1) #69 de_by を D/F/G/B/H/C/E に分割、(2) #77 de_by の vom を D に切出し、(3) #45 de_gsw を E:I/F:dem/A:Land に分割、(4) #35 de_by/de_gsw/nds/af/fy の A|E を A:所有詞＋E:名詞句に分割、(5) #48 de_at/de_by/nds の B|E:Film を B 単独化（理想は den を E に切出し）。
+
+## レビュアー再評価 — round 7 (Dr. Wiebke Tjarks-Vandenberghe)
+
+開発チームによる round6 の明示的な回答セクションは未記載だが、round5 で OPEN とした残課題5件を `.wf_langmap_query.mjs` で全件実データ照合した。**5件すべてが（多くは round5 の最善案どおりに）適用済み**であることを確認した。以下、項目別判定。
+
+### R5-1. #69 de_by — 名詞句・完了枠の分割 → ✓ 承認
+実データ `A:「Er」 D:「hot」 F:「an」 G:「longn」 B:「Brief」 H:「an」 C:「seine Oidn」 E:「gschriebn」` を確認。助動詞 hot=D／不定冠詞 an=F／形容詞 longn=G／名詞 Brief=B／前置詞 an=H／名詞句 seine Oidn=C／過去分詞 gschriebn=E に完全分割済み。D|E 非隣接重複も解消、隣接同役なし。de_at の整列と一致。確実な取りこぼしが正しく解消。
+
+### R5-2. #77 de_by — 前置詞 vom の切出し → ✓ 承認
+実データ `A:「Er」 C:「wor überrascht」 D:「vom」 B:「Prüfungsresultat」` を確認。前置詞 vom=D を切出し済み。複合名詞 Prüfungsresultat は KEEP（形態素不可分のため正当）。round5 案では `B|E` 表記としたが、live は単一 B：これは E(test)＋B(results) が一語化した複合名詞で内部に独立した E 相当語がないため、B 単独付与の方がむしろ正確であり妥当。
+
+### R5-3. #45 de_gsw — `I dem Land` の分割 → ✓ 承認
+実データ `E:「I」 F:「dem」 A:「Land」 D:「wirds」 B:「im Winter」 C:「chalt」` を確認。前置詞 i=E／指示詞 dem=F／名詞 Land=A に分割済み。他の全変種と整列一致、隣接同役なし。
+
+### R5-4. #35 de_by/de_gsw/nds/af/fy — 所有詞＋名詞句 `A|E` の分割 → ✓ 承認
+実データを確認：
+- de_by `A:「Mei」 E:「großa Bruada」`
+- de_gsw `A:「Min」 E:「älter Brüeder」`
+- nds `A:「Mien」 E:「ool Broder」`
+- af `A:「My」 E:「ouer broer」`
+- fy `A:「Myn」 E:「âldere broer」`
+全5変種が A:所有詞＋E:名詞句に分割済み。en（A:My／E:older brother）と整合。完了枠の B 反復（de_by/de_gsw/nds/de_at）は C・D を挟む非隣接で問題なし。af `B:het getrou`／fy `is troud` は en 単一 B:got married に対応する KEEP で許容。
+
+### R5-5. #48 de_at/de_by/nds — `B|E:「Film」` のラベル是正 → ✓ 承認（最善案で適用）
+実データ：
+- de_at `D:「möcht」 E:「den」 B:「Film」`
+- de_by `D:「mecht」 E:「den」 B:「Film」`
+- nds `D:「will」 E:「den」 B:「Film」`
+round5 で「最小修正は B 単独化、理想は den を D から切出し E を立てる」と述べたが、開発側は**理想案**を採用：指示詞 den を話法動詞句から切り離して E:「den」を独立させ、B:「Film」を純化した。nl/de_gsw/af/fy（E:指示詞＋B:名詞）と完全に整列。隣接同役なし。最善の決着。
+
+### 既存判断の維持
+- #73（西ゲルマン大陸諸行の `A|E`／`B|F` 融合）は round4 で「過分割回避・蓋然」とした要検討項目。多数の参照言語（it/pt/de_gsw など）も同箇所を `A|E`／`B|F` で融合保持しており、明白誤りでないため引き続き KEEP（既知の限界）。
+- #84 de_at/de_by の `D|E:letzte Woch`（時の副詞句）は副詞句内部の語順差に由来する軽微な融合で、round5 で ✓ 承認済み。明白誤りではないため KEEP。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（新規 0件）。
+
+### スコアカード（round 7）
+- round5 残課題5件（R5-1〜R5-5）：**全て適用・実データ確認済み ✓**
+- うち R5-2/R5-5 は round5 案を上回る最善形で適用
+- 譲歩（concede）：0（round5 の指摘はすべて適用され、取り下げ不要）
+- 新規：0／却下：0／残課題：なし
+- 累計（rounds 1〜7）：確実誤り（#33/#88/#16/綴り各種）全消、SPLIT 過融合（#43/#46/#49/#55/#69/#70/#77/#45/#35/#48）全処理、HELD 2件（#47/#74）は妥当と認め譲歩済み
+
+本グループは語彙・綴りの明白誤り、Satzklammer 構造、名詞句・前置詞句レベルの過融合（⛔3+way）がすべて解消された。残る融合（#73 等）は参照言語横断で正当な類型差／過分割回避に該当する既知の限界であり、アクション可能な確実誤りは存在しない。
+
+**ファイル状態: CLOSED — 残課題なし（#73 の所有詞句融合等は参照言語横断で正当な既知の限界として保持）**
+
+## 包括スイープ — 群13 全複合セル一括判定 (作業者 round 9)
+
+方針: 分割優先 (PREFER SPLITTING)。全複合セルをライブ照会し、語境界での再分割可否を判定。
+
+### SPLIT (38件)
+- **#50 A|E (所有+名詞)** de_at/de_by「Mei Hund」, de_gsw「Min Hund」, nds「Mien Hund」, af「My hond」, fy「Myn hûn」 → E(所有)+A(名詞)。de が E:Mein A:Hund と分割済 (fix-all-variants)。
+- **#51 A|E (所有+名詞)** de_at/de_by「Mei Oma」, de_gsw「Mini Grossmueter」, nds「Mien Grootmudder」, af「My ouma」, fy「Myn beppe」 → E+A。de/nl 分割済。
+- **#52 C|H fy「bin kwyt」** → H:bin(助動詞) C:kwyt(失う分詞)。二語。ja/de が C/H 分割。
+- **#53 A|D (前置詞縮約+名詞)** de_by「im Gartn」, de_gsw「im Garte」, nds「in'n Gaarn」, af「in die tuin」, fy「yn de tún」 → D(前置詞, ZWNJ接頭で兄弟と整合) + A(名詞句)。de/de_at/nl が D:‌im A:Garten 分割済。
+- **#73 A|E/B|F/C|G** de_by/de_gsw/nds/af/fy の所有+名詞(A|E)、前置詞+所有名詞(B|F→F+B)、every+名詞(C|G→G+C) を全分割。de が全て分割済。
+- **#80** de_by「im Ausland studiern」(B|F→F+B 二語), fy「studearjen yn it bûtenlân」(B|F→B+F) と「in weardefolle ûnderfining」(C|G実体は I+G+C→I:in G:weardefolle C:ûnderfining), de_gsw は補文標識「dass」を H に分離。
+- **#84 D|E (last+week)** de_at/de_by「letzte Woch」, de_gsw「letscht Wuche」, nds「letzt Week」, af「verlede week」, fy「ferline wike」 → E(last)+D(week)。**B|C 再分類** de_gsw「hät sich」=C/「erkältet」=B, nds「hett sick verköölt」→C:hett sick B:verköölt, nl「heeft zich」=C/「verkouden」=B (de モデル: C:hat sich B:erkältet に整合)。
+- **#85 B|E (more+water)** de_at「Wasser」(E欠落?実体は D:mehr が E, B:Wasser…)→ E(more)+B(water): de_at/de_by/de_gsw/nds/fy。de:E:mehr B:Wasser 分割済。
+
+### KEEP (8件) — 言語的不可分
+- **#3 B|C「frühstücke/frühstück」** (de/de_at/de_by): 朝食を内包する単一統合動詞 (denominal verb)。空白なき単一トークン。兄弟 (de_gsw/nds/nl/af/fy) は別語「eat+breakfast」を使うが、当該変種は一語に統合済 → 不可分。
+- **#34 B|D「langsamer/langzamer/stadiger」** (de/de_at/de_gsw/nl/af/fy): 単一比較級副詞 (more+slowly が一語)。ポルトマント単一トークン → KEEP。
+- **#53 C|E「blühen(/grad)」等 全変種**: 単一定形動詞 (bloom+現在)。分離可能な繋辞 (are) を持たぬ統合形。付随する「grad/graad」は役割スキーム外副詞で分離対象役割なし → KEEP。
+- **#69 D|E「schrieb」** (de): 単一統合過去形 (write+過去)。接尾辞融合 → KEEP。
+- **#80 B|F「Auslandsstudium」** (de_at) / 「es Uslandstudium」(de_gsw 残部): 空白なき閉鎖複合名詞 (単一トークン概念)。de は Auslands|studium と分けるが当該変種は一語 → KEEP (de_gsw は dass のみ分離後 B|F 保持)。
+
+合計: SPLIT 38 / KEEP 8。
+
+## レビュアー再評価 — round 10 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 9 の包括スイープ（作業者）の SPLIT 38件・KEEP 8件を `.wf_langmap_query.mjs` で全件実データ照合した。大半は適用済みだが、**#53 の A|D 分割が「SPLIT」と明記されながら実データに反映されていない**ことを確認した。以下、項目別判定。
+
+### SPLIT 適用確認 ✓
+- **#50 A|E→E+A** 全変種で `E:Mei A:Hund`／`E:My A:hond`／`E:Myn A:hûn` 等に分割済み。de モデル `E:Mein A:Hund` と整列。✓
+- **#51 A|E→E+A** 全変種で `E:Mei A:Oma`／`E:My A:ouma`／`E:Myn A:beppe` 等に分割済み。✓
+- **#52 fy C|H→H+C** 実データ `H:「bin」 C:「kwyt」` を確認。助動詞 bin＝H／分詞 kwyt＝C に分離済み。de（H:habe…C:verloren）と整合。✓
+- **#73 A|E/B|F/C|G** de_by/de_gsw/nds/af/fy は `E:所有 A:名詞`／`F:前置詞 B:名詞`／`G:every C:名詞` に分割済み。de_at の `B|F:「auf meim Bett」` のみ融合保持だが、これは round7 で「過分割回避・参照横断で正当」と判定済みの既知の限界。✓（de_at B|F は KEEP 継続）
+- **#80** de_by `F:im Ausland B:studiern`＋`H:dass`、fy `B:studearjen F:yn it bûtenlân`、de_gsw `H:dass`＋複合名詞 B|F 保持、いずれも実データ確認。✓
+- **#84 D|E→E+D / B|C 再分類** de_at `E:letzte D:Woch`、de_gsw `E:letscht D:Wuche C:hät sich B:erkältet`、nds `C:hett sick B:verköölt`、nl `C:heeft zich B:verkouden` を確認。時の副詞句の last＝E／week＝D 分割、完了枠 C/B 純化が de モデルと整合。✓
+- **#85 B|E→E+B** 全変種で `E:mehr B:Wasser`／`E:meer B:water` 等に分割済み。de_at も `A:Du solltast E:mehr B:Wasser` で E は欠落しておらず分割済み。✓
+
+### SPLIT 取りこぼし ✗
+#### R10-1. #53 de_by/de_gsw/nds/af/fy — A|D（前置詞縮約＋名詞）が未分割 ✗【確実】
+round 9 で「SPLIT … D(前置詞, ZWNJ接頭) + A(名詞句)」と明記されたが、実データは依然として融合のまま：
+- de_by `A|D:「im Gartn」`
+- de_gsw `A|D:「im Garte」`
+- nds `A|D:「in'n Gaarn」`
+- af `A|D:「in die tuin」`
+- fy `A|D:「yn de tún」`
+一方 de/de_at/nl は既に `D:‌im A:Garten`／`D:‌in A:de tuin` に分割済み。同一構造の上記5変種だけ取りこぼしている。前置詞（縮約 im=in+dem 含む）は独立要素で、兄弟言語が既に分割している以上 SPLIT すべき。分割案（兄弟と整合、ZWNJ 接頭で agglutination マーカ整合）：
+- de_by **D:「‌im」 A:「Gartn」**
+- de_gsw **D:「‌im」 A:「Garte」**
+- nds **D:「‌in'n」 A:「Gaarn」**
+- af **D:「in」 A:「die tuin」**
+- fy **D:「yn」 A:「de tún」**
+いずれも前 B（Die Blumen）・後 C|E（blühen）に挟まれ、隣接同役なし。確実な取りこぼし。
+
+### KEEP 妥当性確認 ✓（譲歩なし／同意）
+- **#3 B|C frühstücke**（de/de_at/de_by）：実データ確認。朝食を内包する denominal verb の単一トークンで、空白なき不可分形。兄弟（de_gsw/nds/nl/af/fy）は別語「eat＋breakfast」だが当該3変種は一語統合。分割不可＝KEEP 妥当。
+- **#34 B|D langsamer/stadiger/langzamer**：実データ確認。more＋slowly が単一比較級副詞（portmanteau 単一トークン）。分割不可＝KEEP 妥当。
+- **#53 C|E blühen 等**：分離可能な繋辞（are）を持たぬ統合定形動詞。付随する grad/graad は役スキーム外副詞。KEEP 妥当。
+- **#69 D|E schrieb（de）/ schreef（nl）/ skreau（fy）**：単一綜合過去形（接尾辞融合）。KEEP 妥当。一方 de_at/de_by/de_gsw/nds/af は迂言完了で D（助動詞）＋E（過去分詞）に正しく分割済みを確認。
+- **#80 B|F Auslandsstudium（de_at）/ es Uslandstudium（de_gsw）**：空白なき閉鎖複合名詞。KEEP 妥当。
+これら8件の KEEP 判断はいずれも言語学的に正当で、当方も同意する（譲歩＝0：当方が以前主張した分割を取り下げた項目はなく、もともと KEEP 同意の領域）。
+
+### 新規指摘
+全件照合で R10-1 以外の新たな明白誤りは発見されなかった（純粋な新規 0件）。R10-1 は round 9 提案に含まれていた SPLIT の未適用＝取りこぼしであり、厳密には新規ではない。
+
+### スコアカード（round 10）
+- round 9 SPLIT のうち #50/#51/#52/#73/#80/#84/#85：適用・実データ確認済み ✓
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）：言語的に正当と同意 ✓
+- 取りこぼし：**#53 ×5変種（de_by/de_gsw/nds/af/fy）の A|D 未分割**（R10-1）
+- 譲歩（concede）：0
+- 新規明白誤り：0（R10-1 は round9 提案の未適用）
+
+**ファイル状態: OPEN**
+次にやること: #53 の de_by/de_gsw/nds/af/fy で `A|D` を `D:前置詞（縮約は ZWNJ 接頭, de/nl と整合）` ＋ `A:名詞句` に分割（de_by D:‌im A:Gartn／de_gsw D:‌im A:Garte／nds D:‌in'n A:Gaarn／af D:in A:die tuin／fy D:yn A:de tún）。
+
+## レビュアー再評価 — round 12 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 11 の明示的な開発回答セクションはファイル末尾に未記載だが、round 10 で OPEN とした唯一の残課題（#53 の A|D 分割×5変種）を `.wf_langmap_query.mjs` で実データ照合した。**分割そのものは全5変種で適用済み**であることを確認したが、round 10 の指令に明記した「縮約前置詞への ZWNJ 接頭」が3変種で欠落している。
+
+### R10-1. #53 de_by/de_gsw/nds/af/fy — A|D の分割 → △ 部分承認
+実データ:
+- de_by `B:「De Bleamln」 D:「im」 A:「Gartn」 C:「bliahn」 E:「grad」`
+- de_gsw `B:「D Blueme」 D:「im」 A:「Garte」 C:「blüehed」`
+- nds `B:「De Blomen」 D:「in'n」 A:「Gaarn」 C:「blöht」 E:「graad」`
+- af `B:「Die blomme」 D:「in」 A:「die tuin」 C:「blom」`
+- fy `B:「De blommen」 D:「yn」 A:「de tún」 C:「bloeie」`
+
+分割（D:前置詞 ＋ A:名詞句）は全5変種で正しく適用され、隣接同役なし・前 B／後 C で挟まれ整合。SPLIT 本体は ✓。
+
+ただし **縮約前置詞への ZWNJ（U+200C）接頭が de_by「im」・de_gsw「im」・nds「in'n」で欠落**している。同一文 #53 の兄弟参照行 de「‌im」(U+200C+im)・de_at「‌im」・nl「‌in」は ZWNJ を保持しており、縮約形（im=in+dem, in'n=in+den）を切り出した際は agglutination マーカとして ZWNJ を付すのが本プロジェクトの規約（記憶 feedback_glue_marker）。よって de_by/de_gsw/nds の3行だけ family 内不整合となっている。
+- de_by `D:「im」` → `D:「‌im」`（U+200C 接頭）
+- de_gsw `D:「im」` → `D:「‌im」`
+- nds `D:「in'n」` → `D:「‌in'n」`
+- af `D:「in」`／fy `D:「yn」` は**非縮約の単純前置詞**のため ZWNJ 不要＝現状で正しい（✓）。
+
+### 既存判断の維持
+- #73 de_at の `B|F:「auf meim Bett」` 融合は round7/round10 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（純粋な新規 0件）。ZWNJ 欠落は round 10 指令に明記済みの未完了分であり、新規ではない。
+
+### スコアカード（round 12）
+- #53 A|D 分割本体：全5変種 適用・実データ確認済み ✓
+- #53 縮約前置詞 ZWNJ：de_by/de_gsw/nds の3行で欠落（af/fy は不要で正しい）△
+- 譲歩（concede）：0
+- 新規明白誤り：0
+
+**ファイル状態: OPEN**
+次にやること: #53 の縮約前置詞 D セルに ZWNJ(U+200C) を接頭し兄弟行(de/de_at/nl の「‌im」)と整合させる — de_by `D:「im」→「‌im」`／de_gsw `D:「im」→「‌im」`／nds `D:「in'n」→「‌in'n」`（af `in`・fy `yn` は非縮約のため変更不要）。
+
+## 兄弟整合性監査 — 群13 (作業者 round 12)
+
+外れ値として旗を立てられた5セルを精査。いずれも当該言語の正当な文法構造による役割反復であり、retag せず KEEP と判定。
+
+- #21 [af] `E:「sal」 … E:「hê」` → **KEEP**。未来助動詞 "sal"（will）＋本動詞 "hê"（have）の不連続述語。両者とも述語役 E。en は "will have" を単一 E とし、af は語順上分割されるが同一の動詞句役。他の defined letter（B/C/D）はいずれも合致せず、E が唯一妥当。
+- #37 [fy] `D:「‌in」 … D:「kado」` → **KEEP**。en 参照自体が `D:「a」 … D:「present」` と冠詞＋名詞を共に D とし、間に C:「birthday/jierdeis-」を挟む。fy "in"（a）＋"kado"（present）は en の D…D パターンに完全一致。
+- #60 [af] `C:「om」 … C:「te kook」` → **KEEP**。アフリカーンス語の不定詞環状構造 "om … te kook"（to cook）。目的語 B:「Koreaanse kos」を挟んで不定詞句が分割されるが、両部分とも不定詞動詞句役 C。en は "to cook" を単一 C とし、fy も単一 C。
+- #65 [af] `E:「het」 … E:「gegee」` → **KEEP**。完了時制の助動詞 "het"（has）＋過去分詞 "gegee"（given）の不連続述語。両者とも述語役 E。en の単一 E "gave" に対応。間接目的語 B・直接目的語 C/D を挟む語順による分割。
+- #89 [af] `C:「nie」 … C:「nie」` → **KEEP**。アフリカーンス語の義務的二重否定（"nie … nie"）。両否定辞とも否定役 C。en の単一 C "'t" に対応する言語固有の文法現象であり、重複は正当。
+
+FIX: 0／KEEP: 5。役割文字の誤割当は認められず。
+
+## レビュアー再評価 — round 13 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 12 で OPEN とした唯一の残課題（#53 縮約前置詞への ZWNJ 接頭欠落）と、作業者 round 12 の「兄弟整合性監査」(#21/#37/#60/#65/#89 の KEEP 判定) を `.wf_langmap_query.mjs` でバイト単位照合した。
+
+### R10-1 / #53 縮約前置詞の ZWNJ — ✗ 未修正（残課題として保持）
+バイト照合（U+200C = E2 80 8C）の結果：
+
+| 言語 | D セル | ZWNJ | 判定 |
+|---|---|---|---|
+| de | `‌im` | あり | ✓ 参照 |
+| de_at | `‌im` | あり | ✓ 参照 |
+| nl | `‌in` | あり | ✓ 参照 |
+| de_by | `im` | **なし** | ✗ |
+| de_gsw | `im` | **なし** | ✗ |
+| nds | `in'n` | **なし** | ✗ |
+| af | `in` | なし | ✓（非縮約のため不要） |
+| fy | `yn` | なし | ✓（非縮約のため不要） |
+
+縮約前置詞（im=in+dem, in'n=in+den）を切り出した D セルには agglutination マーカとして ZWNJ を付すのが本プロジェクト規約（記憶 feedback_glue_marker）であり、同一文 #53 の兄弟参照 de/de_at/nl は ZWNJ を保持している。にもかかわらず de_by/de_gsw/nds の3行は依然 ZWNJ を欠き、family 内不整合のまま。round 11/12 の開発作業でこの3セルは触られておらず、**round 12 指令の未完了分が live に残っている**ことを確認した。これは文体的選好ではなく、プロジェクト規約に基づく具体的・アクション可能な是正であり、保持する。
+- de_by `D:「im」` → `D:「‌im」`（U+200C 接頭）
+- de_gsw `D:「im」` → `D:「‌im」`
+- nds `D:「in'n」` → `D:「‌in'n」`
+- af `in`／fy `yn` は非縮約のため変更不要（現状 ✓）。
+
+### 作業者 round 12「兄弟整合性監査」(#21/#37/#60/#65/#89) — ✓ 全件 KEEP に同意
+実データ照合の上、5件すべての KEEP 判定が言語学的に妥当であることを確認。譲歩というより、いずれも当方が以前から争っていない領域：
+- **#89 af** `C:「nie」… C:「nie」`：アフリカーンス語の義務的二重否定。en 単一 C "'t" に対応する言語固有現象で、非隣接 C 反復は正当。✓
+- **#60 af** `C:「om」… C:「te kook」`：不定詞環状構造（om…te）。en 単一 C "to cook" に対応、目的語 B を挟む分割は正当。✓
+- **#65 af** `E:「het」… E:「gegee」`：迂言完了の不連続述語（助動詞＋過去分詞）。en 単一 E "gave" に対応、両部とも述語役 E。✓
+- **#21 af** `E:「sal」… E:「hê」`：未来迂言（will have）の不連続述語。en `E:「will have」` に対応、両部とも E。✓
+- **#37 fy** `D:「‌in」… D:「kado」`：en 参照自体が `D:「a」… D:「present」` と冠詞＋名詞を共に D とし間に C:birthday を挟む。fy の D…D は en パターンに完全一致。✓（なお fy の `D:「‌in」` は不定冠詞であり、これは ZWNJ 付与済み＝整合）
+
+### 既存判断の維持
+- #73 de_at `B|F:「auf meim Bett」` 融合は round7/10/12 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（純粋な新規 0件）。
+
+### スコアカード（round 13）
+- #53 縮約前置詞 ZWNJ：de_by/de_gsw/nds の3行で依然欠落 ✗（round 12 指令の未完了分）
+- 作業者 round 12 KEEP 5件（#21/#37/#60/#65/#89）：全件同意 ✓
+- 譲歩（concede）：0（争っていた当方の指摘の取り下げはなし）
+- 新規明白誤り：0
+
+**ファイル状態: OPEN**
+次にやること: #53 の縮約前置詞 D セルに ZWNJ(U+200C) を接頭し兄弟行(de/de_at/nl の「‌im」/「‌in」)と整合させる — de_by `D:「im」→「‌im」`／de_gsw `D:「im」→「‌im」`／nds `D:「in'n」→「‌in'n」`（af `in`・fy `yn` は非縮約のため変更不要）。
+
+## レビュアー再評価 — round 14 (Dr. Wiebke Tjarks-Vandenberghe)
+
+round 13 で OPEN とした唯一の残課題（#53 縮約前置詞への ZWNJ 接頭欠落 — de_by/de_gsw/nds の3行）を `.wf_langmap_query.mjs` でバイト単位再照合した。ファイル末尾に明示的な `## 開発チーム回答 — round 13` セクションは未記載だが、当該3セルへの修正は無言で live に適用済みであることを確認した。
+
+### R10-1 / #53 縮約前置詞の ZWNJ — ✓ 承認（解決確認）
+バイト照合（U+200C = E2 80 8C）の結果、round 13 で欠落していた3行すべてに ZWNJ 接頭が付与済み：
+
+| 言語 | D セル | バイト列 | ZWNJ | 判定 |
+|---|---|---|---|---|
+| de_by | `‌im` | `e2 80 8c 69 6d` | あり | ✓ |
+| de_gsw | `‌im` | `e2 80 8c 69 6d` | あり | ✓ |
+| nds | `‌in'n` | `e2 80 8c 69 6e 27 6e` | あり | ✓ |
+| af | `in` | `69 6e` | なし | ✓（非縮約のため不要） |
+| fy | `yn` | `79 6e` | なし | ✓（非縮約のため不要） |
+
+兄弟参照 de/de_at `‌im`・nl `‌in` と完全に整合。縮約前置詞（im=in+dem, in'n=in+den）の agglutination マーカ（記憶 feedback_glue_marker）が family 内で統一された。round 12 指令の未完了分は完全に解消。これがファイルに残っていた唯一のアクション可能課題であった。
+
+### 回帰チェック ✓
+過去ラウンドで確定済みの主要修正をスポット照合し、回帰がないことを確認：
+- #33 de `E:「Das Zimmer」 A:「des Hotels」 B:「war」 C:「sehr」 D:「sauber」`（属格分割維持）✓
+- #88 nl `C:「verandert」`（d/dt 誤り解消維持）✓
+- #16 nl `A:「Wanneer」 C:「begint」 B:「de film」`（偽分離 aan 削除維持）✓
+- #53 分割本体（D:前置詞＋A:名詞句）全5変種維持 ✓
+
+### 既存判断の維持
+- #73 de_at `B|F:「auf meim Bett」` 融合は round7/10/12/13 で「過分割回避・参照横断で正当」とした既知の限界として KEEP 継続。
+- round 9 KEEP 8件（#3/#34/#53 C|E/#69 D|E/#80 B|F 他）は引き続き言語的に正当と同意。
+- 作業者 round 12「兄弟整合性監査」5件（#21/#37/#60/#65/#89）は round 13 で全件 KEEP に同意済み。
+
+### 新規指摘
+全件照合で新たな明白誤りは発見されなかった（新規 0件）。
+
+### スコアカード（round 14）
+- #53 縮約前置詞 ZWNJ（de_by/de_gsw/nds）：全3行 適用・バイト単位確認済み ✓
+- 回帰：なし
+- 譲歩（concede）：0
+- 新規明白誤り：0
+- 残課題：なし
+
+累計（rounds 1〜14）：語彙・綴りの明白誤り（#33/#88/#16/#64/#99/#37 他）全消、Satzklammer/完了枠の役ラベル整理（#56/#80/#84/#69 他）全処理、名詞句・前置詞句レベルの過融合（⛔3+way: #43/#45/#46/#49/#55/#69/#70/#77/#35/#48/#53）全分割、agglutination マーカ（ZWNJ）整合完了、HELD 2件（#47/#74）は妥当として譲歩済み。残る融合（#73 等）は参照言語横断で正当な類型差／過分割回避の既知の限界。アクション可能な確実誤りは存在しない。
+
+**ファイル状態: CLOSED — 残課題なし（#73 の所有詞句融合等は参照言語横断で正当な既知の限界として保持）**
