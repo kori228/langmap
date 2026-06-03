@@ -3075,7 +3075,45 @@
     <script src="hanmap_trivia.js?v=7"></script>
     <script src="meta_i18n_ext.js?v=15"></script>
     <script src="meta_i18n_coverage.js?v=10"></script>
-    <script src="lang_names.js?v=118"></script>
+    <script src="lang_names.js?v=119"></script>
+    <script>
+    // HanMap-specific display-name overrides.
+    // lang_names.js carries the WordMap/LangMap-canonical name (e.g. ko_mid =
+    // "中世韓国語" — Middle Korean LANGUAGE for sentence/word data). HanMap's
+    // ko_mid column is the Sino-Korean reading layer (Donggukjeongun), so we
+    // re-suffix the language name on this page only via a monkey-patch of
+    // LANG_NAMES right after it loads. Add additional ko_mid-style "this-code-
+    // means-something-different-on-HanMap" entries here.
+    (function applyHanmapNameOverrides() {
+      if (typeof LANG_NAMES !== 'object' || !LANG_NAMES) return;
+      const OV = {
+        ja:   { ko_mid: '中世韓国語漢字音 (東国正韻)' },
+        en:   { ko_mid: 'Middle Korean Sino-reading' },
+        ko:   { ko_mid: '중세 한국 한자음 (동국정운)' },
+        zh:   { ko_mid: '中世韩国汉字音 (东国正韵)' },
+        fr:   { ko_mid: 'sino-coréen moyen' },
+        de:   { ko_mid: 'mittelkoreanisch (Sino)' },
+        es:   { ko_mid: 'sino-coreano medio' },
+        ru:   { ko_mid: 'Среднекорейское сино-чтение' },
+        ar:   { ko_mid: 'السينو-كورية الوسطى' },
+        he:   { ko_mid: 'סינו-קוריאנית ביניימית' },
+        sw:   { ko_mid: 'Sinokoria cha Kati' },
+        'zh-hant': { ko_mid: '中世韓國漢字音 (東國正韻)' },
+        yue:  { ko_mid: '中世韓國漢字音 (東國正韻)' },
+        vi:   { ko_mid: 'Hán âm Triều Tiên trung đại' },
+        th:   { ko_mid: 'อักษรจีนเกาหลีกลาง' },
+        id:   { ko_mid: 'Sino-Korea Pertengahan' },
+        ms:   { ko_mid: 'Sino-Korea Pertengahan' },
+        hi:   { ko_mid: 'मध्य-कोरियाई सिनो' },
+        pt:   { ko_mid: 'sino-coreano médio' },
+        uk:   { ko_mid: 'Середньокорейське сіно-читання' },
+      };
+      for (const [ui, m] of Object.entries(OV)) {
+        if (!LANG_NAMES[ui]) LANG_NAMES[ui] = {};
+        Object.assign(LANG_NAMES[ui], m);
+      }
+    })();
+    </script>
     <script>
     // ============================================================
     //  senseSplit utility — handle compound IDs like "行:1"
