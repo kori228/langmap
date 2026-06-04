@@ -1418,10 +1418,10 @@ function render() {
         const mobileBar = document.createElement('div');
         mobileBar.className = 'mobile-action-bar';
         const mEditBtn = document.createElement('button');
-        mEditBtn.innerHTML = '✏️ ' + t('edit');
+        mEditBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>' + t('edit');
         mEditBtn.addEventListener('click', (e) => { e.stopPropagation(); enterEditMode(row, code); });
         const mCopyBtn = document.createElement('button');
-        mCopyBtn.innerHTML = '📋 ' + t('copyText');
+        mCopyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' + t('copyText');
         mCopyBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             const text = buildFullText(sentence, code);
