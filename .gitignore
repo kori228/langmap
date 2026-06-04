@@ -10,3 +10,4 @@ data_*.py
 __pycache__/
 submissions/*.json
 wordmap_data.js.pre-split
+server.log
