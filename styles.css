@@ -707,7 +707,15 @@ select:focus { border-color: #4a90d9; outline: none; }
      * bft / xkz / xct_litpr sentence segments need this chain.
      * Inherits everything else from body, then appends Tibetan
      * options for codepoints body's chain doesn't cover. */
+    /* System sans (covers Latin / Greek / Cyrillic) MUST precede
+       'Noto Serif Tibetan': that webfont is loaded for Tibetan but also
+       carries SERIF Latin glyphs, so on iOS — where 'Segoe UI' / 'Noto Sans
+       JP'… are absent — Latin was falling through to it and rendering serif,
+       while Greek/Cyrillic (not in Noto Serif Tibetan) dropped to the system
+       sans. Inserting -apple-system etc. here keeps all alphabetic scripts
+       uniformly sans-serif; only Tibetan reaches the serif Tibetan fallback. */
     font-family: 'Segoe UI', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai',
+        -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', 'Arial',
         'Noto Serif Tibetan', 'Kailasa', 'Microsoft Himalaya', 'Jomolhari', 'Tibetan Machine Uni',
         sans-serif;
     font-size: 20px;
