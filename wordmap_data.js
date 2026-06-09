@@ -5112,6 +5112,24 @@ const HIST_DESCENDANT = {
     tue:null,    // Tuyuca — obligatory evidentiality
     ncs:null,    // Nicaraguan Sign Language — spontaneous emergence
     uby:null,    // Ubykh — extinct sister branch of NW Caucasian (no direct descendant)
+    // 2026-06-09: 12 extinct languages added to EXCLUDED_CODES also need
+    // HIST_DESCENDANT entries so the era-counter classifies them as
+    // Historical (HIST_CODE_SET is derived from this map) and they
+    // appear in historical mode. `null` = no direct living linguistic
+    // descendant; otherwise the closest modern relative present in our
+    // data.
+    xum:null,    // Umbrian — Sabellic, displaced by Latin
+    osc:null,    // Oscan — Sabellic, displaced by Latin
+    xfa:null,    // Faliscan — Italic, displaced by Latin
+    xve:null,    // Venetic — Italic, displaced by Latin
+    xpg:null,    // Phrygian — IE isolate branch, no living descendant
+    oar:null,    // Old Aramaic — ancestor of arc (which → he)
+    tup:'yrl',   // Tupinambá — Nheengatu (yrl) is its direct continuation
+    yug:'ket',   // Yug — Ket is the only other surviving Yeniseian language
+    xib:null,    // Iberian — Paleo-Hispanic isolate, undeciphered
+    xli:null,    // Liburnian — extinct Adriatic, no living descendant
+    xag:'udi',   // Caucasian Albanian — Udi is the direct living descendant
+    bzg:null,    // Babuza — extinct Formosan, no living descendant
 };
 
 // Six-color palette for country fills (pastel, semi-transparent)
