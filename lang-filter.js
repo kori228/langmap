@@ -966,20 +966,24 @@
         const myId = ++lastApplyId;
         const active = anyFilterActive();
         const labels = document.querySelectorAll('.lang-label, .globe-label');
-        let matched = 0, total = 0;
         labels.forEach(el => {
             const code = el.dataset.code;
             if (!code) return;
-            total++;
             const ok = !active || passesFilter(code);
-            if (ok) matched++;
             // Touch the wrapping element (label root with the "vertical" class etc.)
             el.classList.toggle('lf-dimmed', active && !ok);
         });
-        // Update counter
+        // Counter must reflect the full era cohort (not just labels currently
+        // rendered on the viewport — zoom gating hides most labels at low
+        // zoom and gave misleading "59 languages" totals).
         if (myId !== lastApplyId) return;
         const counter = document.querySelector('.lf-counter');
         if (counter) {
+            const cohort = (window.__langmap && typeof window.__langmap.getActiveCodes === 'function')
+                ? [...window.__langmap.getActiveCodes()]
+                : [...document.querySelectorAll('.lang-label, .globe-label')].map(el => el.dataset.code).filter(Boolean);
+            const total = cohort.length;
+            const matched = active ? cohort.filter(c => passesFilter(c)).length : total;
             if (active) counter.textContent = t('count_active', { m: matched, n: total });
             else counter.textContent = t('count_total', { n: total });
         }
