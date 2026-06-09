@@ -4164,7 +4164,24 @@
             const zoom = map.getZoom();
             const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
 
-            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
+            let { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, zoom);
+
+            // When a typology filter is active, languages that don't pass the
+            // filter should not be plotted at all (per user request: "フィルター
+            // から外された言語はプロット自体しないように"). Previously they were
+            // rendered with .lf-dimmed and 0.12 opacity, which kept them
+            // taking visual / collision space. Drop them here so they never
+            // enter the layout, collision, or render pipeline.
+            {
+                const _filterActive = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                    && window.__langmap.anyFilterActive();
+                const _passes = (window.__langmap && window.__langmap.passesFilter)
+                    || (() => true);
+                if (_filterActive) {
+                    visibleLangs    = visibleLangs.filter(c => _passes(c));
+                    unattestedLangs = unattestedLangs.filter(c => _passes(c));
+                }
+            }
 
             // --- Pixel-grid-based grouping ---
             // Project every visible marker to container pixel coords at the
@@ -4590,7 +4607,19 @@
             // displayed set refreshes when the user finishes a zoom.
             const _pov3D = (globe.pointOfView && globe.pointOfView()) || { altitude: 1.0 };
             const _equivZoom = altitudeToZoom(_pov3D.altitude);
-            const { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, _equivZoom);
+            let { visibleLangs, unattestedLangs, descendantCodes } = getVisibleLangs(wordId, _equivZoom);
+
+            // Same filter-prune as the 2D map: drop filtered-out languages
+            // before they enter any layout / collision / render logic.
+            {
+                const _fa = (window.__langmap && typeof window.__langmap.anyFilterActive === 'function')
+                    && window.__langmap.anyFilterActive();
+                const _pf = (window.__langmap && window.__langmap.passesFilter) || (() => true);
+                if (_fa) {
+                    visibleLangs    = visibleLangs.filter(c => _pf(c));
+                    unattestedLangs = unattestedLangs.filter(c => _pf(c));
+                }
+            }
             const labelScale = parseInt(fontSizeSlider.value, 10) / 100;
             // Globe altitude in [0.1, 6]; lower = zoomed-in, labels appear
             // larger relative to globe, so they need MORE degree separation.
