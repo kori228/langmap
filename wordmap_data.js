@@ -72,6 +72,19 @@ const EXCLUDED_CODES = new Set([
   //   tup — Tupinambá (extinct as L1 ~1700s; basis of Língua Geral/Nheengatu)
   //   yug — Yug (Yeniseian, last L1 speaker died early 2000s)
   'xum', 'osc', 'xfa', 'xve', 'xpg', 'oar', 'tup', 'yug',
+  // 2026-06-09 follow-up: 4 more extinct langs missed by the first sweep
+  // (they use the '†extinct' dagger-prefixed speakers value or 'Extinct'
+  // without the leading '0', which the initial filter missed).
+  //   xib — Iberian (Paleo-Hispanic isolate, †extinct ~1c CE)
+  //   xli — Liburnian (Adriatic Italic-area, †extinct ~1c CE, Romanized)
+  //   xag — Caucasian Albanian (†extinct as literary language ~12c CE;
+  //         modern descendant Udi `udi` remains living)
+  //   bzg — Babuza/Favorlang (Formosan, dormant since early 20c.)
+  // prg (Old Prussian) is intentionally *not* added — it's classified
+  // historical via dataStatus:'fragmentary', the other exclusion path.
+  // mer (Meru) is a living Bantu language; its meta is wrongly stamped
+  // with Meroitic info — separate data bug, fixed in wordmap_meta.js.
+  'xib', 'xli', 'xag', 'bzg',
 ]);
 
 const LANG_DATA = {
