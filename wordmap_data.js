@@ -61,6 +61,17 @@ const EXCLUDED_CODES = new Set([
   // historical (fragmentary) — keep separate from EXCLUDED_CODES if it's marked
   // fragmentary elsewhere; ang/ohu/myz are well-attested.
   'ang', 'ohu', 'myz',
+  // 2026-06-09: 8 extinct languages that were still defaulting to modern.
+  // All have speakers:'0 ...' or 'Extinct ...' in wordmap_meta.js.
+  //   xum — Umbrian (Sabellic, extinct ~1c CE; Iguvine Tablets)
+  //   osc — Oscan (Sabellic, extinct by ~1c CE; Pompeii inscriptions)
+  //   xfa — Faliscan (Italic, extinct ~150 BCE)
+  //   xve — Venetic (Italic, extinct ~1c BCE)
+  //   xpg — Phrygian (Indo-European isolate branch, extinct ~5c CE)
+  //   oar — Old Aramaic (ancestor of Imperial Aramaic)
+  //   tup — Tupinambá (extinct as L1 ~1700s; basis of Língua Geral/Nheengatu)
+  //   yug — Yug (Yeniseian, last L1 speaker died early 2000s)
+  'xum', 'osc', 'xfa', 'xve', 'xpg', 'oar', 'tup', 'yug',
 ]);
 
 const LANG_DATA = {
