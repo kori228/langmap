@@ -1059,7 +1059,7 @@ WORDS.fire = {
     szy: ["lamal", "lamal"],
     ssf: ["azpu", "azpu"],
     hak_tw: ["火", "fo˧˩"],
-    wuu_sz: ["火", "hu˥˨"],
+    wuu_sz: ["火", "həu˥˩"],
     wuu_wz: ["火", "hu˧˥"],
     nan_qz: ["火", "hə˧˥"],
     nan_hai: ["火", "hə˨˩˧"],
