@@ -1053,7 +1053,7 @@ WORDS.father = {
     szy: ["ama", "ama"],
     ssf: ["ama", "ama"],
     hak_tw: ["阿爸", "a˨˦ pa˨"],
-    wuu_sz: ["爹爹", "tia˧˧tia"],
+    wuu_sz: ["爹爹", "tiɑ˥ tiɑ˨˩"],
     wuu_wz: ["阿爸", "a˧˩pa˧˧"],
     nan_qz: ["老父", "lau˦˩pɛ˧˧"],
     nan_hai: ["父", "ba˨˨"],
