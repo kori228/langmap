@@ -1047,7 +1047,7 @@ WORDS.heart = {
     szy: ["gawang", "ɡawaŋ"],
     ssf: ["putul", "putul"],
     hak_tw: ["心臟", "sim˨ t͡sʰoŋ˥"],
-    wuu_sz: ["心", "ɕin˦˦"],
+    wuu_sz: ["心", "sin˥"],
     wuu_wz: ["心", "saŋ˧˧"],
     nan_qz: ["心", "sim˨˨"],
     nan_hai: ["心", "sim˨˩"],

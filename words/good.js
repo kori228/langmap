@@ -1047,7 +1047,7 @@ WORDS.good = {
     szy: ["kapah", "kapah"],
     ssf: ["kapah", "kapah"],
     hak_tw: ["好", "ho˧˩"],
-    wuu_sz: ["好", "hɔ˥˨"],
+    wuu_sz: ["好", "hæ˥˩"],
     wuu_wz: ["好", "hau˧˥"],
     nan_qz: ["好", "ho˧˥"],
     nan_hai: ["好", "ho˨˩˧"],

@@ -1040,7 +1040,7 @@ WORDS.eat = {
     szy: ["hekal", "hekal"],
     ssf: ["kuman", "kuman"],
     hak_tw: ["食", "sit˨"],
-    wuu_sz: ["吃", "t͡ɕʰiɪʔ˥˥"],
+    wuu_sz: ["吃", "t͡ɕʰiəʔ˥"],
     wuu_wz: ["食", "d͡zai˨˩˧"],
     nan_qz: ["食", "t͡siaʔ˨˦"],
     nan_hai: ["食", "tʰeʔ˥˥"],

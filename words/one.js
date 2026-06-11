@@ -1065,7 +1065,7 @@ WORDS.one = {
     szy: ["cacay", "tʃatʃai"],
     ssf: ["tata", "tata"],
     hak_tw: ["一", "jit˨"],
-    wuu_sz: ["一", "iɪʔ˥˥"],
+    wuu_sz: ["一", "iəʔ˥"],
     wuu_wz: ["一", "iai̯˥"],
     nan_qz: ["一", "it˨˨"],
     nan_hai: ["一", "it˥˥"],

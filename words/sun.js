@@ -1065,7 +1065,7 @@ WORDS.sun = {
     szy: ["cidal", "tʃidal"],
     ssf: ["fitulha", "fituʎa"],
     hak_tw: ["日頭", "ŋit˨ tʰeu˩˩"],
-    wuu_sz: ["太阳", "tʰɛ˧˧ɦiɔ̃˨˧"],
+    wuu_sz: ["太阳", "tʰɑ˥ ɦiã˨˩"],
     wuu_wz: ["日头", "zai˨˩˧dau˧˩"],
     nan_qz: ["日頭", "d͡ʑit˨˨tʰau˨˦"],
     nan_hai: ["日头", "dit˨˨tʰau˨˦"],

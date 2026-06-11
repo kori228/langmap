@@ -1053,7 +1053,7 @@ WORDS.water = {
     szy: ["nanum", "nanum"],
     ssf: ["nanum", "nanum"],
     hak_tw: ["水", "sui˧˩"],
-    wuu_sz: ["水", "sɿ˥˨"],
+    wuu_sz: ["水", "sʮ˥˩"],
     wuu_wz: ["水", "sɿ˧˥"],
     nan_qz: ["水", "t͡sui˧˥"],
     nan_hai: ["水", "zui˨˩˧"],

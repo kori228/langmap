@@ -1047,7 +1047,7 @@ WORDS.thanks = {
     szy: ["lalumahan", "lalumahan"],
     ssf: ["mihu", "mihu"],
     hak_tw: ["承蒙你", "sin˩˩ muŋ˩˩ ŋi˩˩"],
-    wuu_sz: ["谢谢", "ʑia˨˧˩ʑia"],
+    wuu_sz: ["谢谢", "ziɑ˩ ziɑ˧"],
     wuu_wz: ["谢谢", "zia˨˩˧zia"],
     nan_qz: ["多謝", "to˨˨sia˦˩"],
     nan_hai: ["多谢", "to˨˩zia˨˨"],

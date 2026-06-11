@@ -1054,7 +1054,7 @@ WORDS.house = {
     szy: ["luma", "luma"],
     ssf: ["kayan", "kajan"],
     hak_tw: ["屋", "vuk˨"],
-    wuu_sz: ["屋里", "oʔ˦˦li˥˨"],
+    wuu_sz: ["屋里", "oʔ˥ li˥˩˧"],
     wuu_wz: ["屋", "au˧˩"],
     nan_qz: ["厝", "t͡sʰu˦˩"],
     nan_hai: ["厝", "tsʰu˨˩"],
