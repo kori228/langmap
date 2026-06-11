@@ -172,7 +172,7 @@ WORDS.fire = {
     lzz: ["დაჩხური", "dat͡ʃxuri"],
     sva: ["ლემესგ", "lemesɡ"],
     hy: ["կրակ", "kɾɑk"],
-    hyw: ["կրակ", "ɡɾɑk"],
+    hyw: ["կրակ", "ɡɾɑɡ"],
     nv: ["kǫʼ", "kõːʔ"],
     koy: ["konh", "konh"],
     haw: ["ahi", "ahi"],
