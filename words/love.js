@@ -1054,7 +1054,7 @@ WORDS.love = {
     szy: ["kapah", "kapah"],
     ssf: ["suka", "suka"],
     hak_tw: ["惜", "siak˨"],
-    wuu_sz: ["爱", "ɛ˥˨"],
+    wuu_sz: ["爱", "ᴇ˥˩˧"],
     wuu_wz: ["爱", "ai˦˨"],
     nan_qz: ["愛", "ai˦˩"],
     nan_hai: ["爱", "ai˨˩"],
