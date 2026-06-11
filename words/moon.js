@@ -1059,7 +1059,7 @@ WORDS.moon = {
     szy: ["ʔulalalalal", "ʔulalal"],
     ssf: ["lhmiat", "ʎmiat"],
     hak_tw: ["月光", "ŋiet˨ koŋ˨"],
-    wuu_sz: ["月亮", "ɦyɪʔ˧˧liɑ̃˨˧"],
+    wuu_sz: ["月亮", "ŋəʔ˧ liã˥˩"],
     wuu_wz: ["月光", "ɦyø˨˩˧kuɔ˧˧"],
     nan_qz: ["月", "ɡə˦˦"],
     nan_hai: ["月", "ŋet˨˨"],
