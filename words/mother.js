@@ -1059,7 +1059,7 @@ WORDS.mother = {
     szy: ["ina", "ina"],
     ssf: ["ina", "ina"],
     hak_tw: ["阿姆", "a˨˦ me˨"],
-    wuu_sz: ["姆妈", "m̩˨˧ma˧˧"],
+    wuu_sz: ["姆妈", "m̩˥ ma˨˩"],
     wuu_wz: ["阿娘", "a˧˩ɲiɛ˧˩"],
     nan_qz: ["老母", "lau˦˩bo˧˧"],
     nan_hai: ["母", "bo˨˩˧"],
