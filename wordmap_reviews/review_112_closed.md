@@ -207,3 +207,47 @@ None. No applied fix regressed; no new clear error surfaced during verification.
 The yux heart cell is a concretely-fixable, source-backed error the dev team has not yet acted on, so the file cannot close.
 
 **File status: OPEN** — Dev team must replace yux heart `["чугэ","t͡ʃuɣe"]` (verified = KY 'path/road') with the sourced KY 'heart' form `["шубэжэ","ʃubeʒe"]` (*šubeže*, Wiktionary Paleosiberian Swadesh #90) or remove the wrong lexeme. yux dog is accepted as a documented known-limitation (needs human linguist; sources split *laame* vs. a distinct lexeme) and is not blocking.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+- **112-8b** yux heart `["чугэ","t͡ʃuɣe"]` → `["шубэжэ","ʃubeʒe"]` — applied by orchestrator this round. The reviewer confirmed via Schmalz (2013) comparative list item 85 that `чугэ`/*čuge* is the Kolyma word for 'path/road' (verified hard wrong-lexeme error). The sourced KY 'heart' replacement *šubeže* is from Wiktionary Appendix:Paleosiberian Swadesh lists entry 90, cited by the reviewer. Cyrillic rendering `шубэжэ`, IPA `ʃubeʒe` per the reviewer's documented recommendation.
+
+- **112-7b** yux dog `["таҥжэ","taŋʒe"]` — HELD. Reviewer accepted this as a documented known-limitation: Wiktionary Paleosiberian Swadesh gives KY dog = *la:me* (= TY *laame*) while the original reviewer asserted a distinct KY lexeme (citing Jochelson/Nikolaeva). With two reputable sources in conflict and no decisive offline tie-breaker, the policy of not guessing applies. The intra-code ҥ(U+04A5)/ӈ(U+04C8) inconsistency and the unverifiable lexeme are logged as known limitations requiring a human Yukaghirologist. Not blocking.
+
+Remaining open (won't-fix this round): 1 — **yux dog** (sources conflict; human linguist needed for lexeme choice and letter normalization).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Verified the one outstanding actionable item and confirmed no regressions in previously accepted fixes.
+
+### 112-8b yux heart — ✓ ACCEPTED
+
+Live data check: `words/heart.js` line 142 now reads `yux: ["шубэжэ", "ʃubeʒe"]`. The wrong-lexeme error (`чугэ`/*čuge* = KY 'path/road') has been removed and the sourced KY 'heart' form *šubeže* (Wiktionary Paleosiberian Swadesh #90, cited by this reviewer in round-2) is correctly applied. Cyrillic `шубэжэ` and IPA `ʃubeʒe` match the recommendation verbatim.
+
+### 112-7b yux dog — Documented known-limitation (accepted, not blocking)
+
+Live data: `words/dog.js` line 142 retains `yux: ["таҥжэ","taŋʒe"]`, unchanged as agreed. The loop-termination condition from round-2 stands: two reputable sources conflict on the KY 'dog' lexeme (*laame* per Wiktionary Paleosiberian Swadesh vs. a distinct lexeme per Jochelson/Nikolaeva), and no decisive offline tie-breaker is available. The intra-code ҥ/ӈ letter inconsistency is a co-dependent issue that resolves only once the lexeme is settled. This is logged as a **known limitation requiring a human Yukaghirologist** and explicitly does not block closure.
+
+### Spot-check regressions
+
+Selected previously verified fixes re-checked and intact: `ket good` → `["аӄта","aqta"]` (good.js:144), `ket one` → `["ӄусь","qusʲ"]` (one.js:144), `ket moon` → `["ӄип","qip"]` (moon.js:144). No regressions found.
+
+### New issues
+
+None. No new errors surfaced during round-3 verification.
+
+### Scorecard
+
+| Status | Count | Items |
+|--------|-------|-------|
+| Verified applied (✓) | 15 | 112-1 through 112-16 (excl. 7b/8b) + 112-8b |
+| Accepted known-limitation | 2 | ykg eye lexeme (soft-flag, round-2); yux dog (sources conflict, human linguist needed) |
+| Outstanding actionable errors | 0 | — |
+
+All clear errors are fixed and verified in live data. The sole remaining unresolved item (yux dog) has been adjudicated by this reviewer as a documented, unsourceable-offline known limitation — the dev team made a genuine research effort and documented the conflict. Continued demand for resolution would require the impossible.
+
+**File status: CLOSED** — nothing left to address.

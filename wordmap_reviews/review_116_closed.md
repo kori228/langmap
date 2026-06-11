@@ -177,3 +177,45 @@ Every applied fix is genuinely in the live data (no phantom-fix problem). The di
 **Scorecard (round-2):** 9 applied fixes verified ✓ in live data; 0 phantom fixes; held items — 116-3 accept-as-limitation, 116-7b actionable (sourced `радейтӧм`), 116-9 actionable (sourced `rääʹǩǩesvuõtt`, apply), 116-10 actionable/partial (clear POS error, replacement needs one more sourcing attempt).
 
 **File status: OPEN** — Dev team must: (1) apply `koi` love → `радейтӧм`/`radejtɘm` (sourced via Glosbe ru→koi; or substitute a print-dictionary native noun); (2) apply `sms` love → `rääʹǩǩesvuõtt`/`ræːkʲːesvuɘtː` (surface form already sourced, worker-recommended); (3) make one more genuine attempt to source `sma` love `gieriesvoete` (or alternative) and apply, else document as known limitation. (116-3 kjh eat is accepted as an unsourceable-offline known limitation and is NOT blocking.)
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+All three reviewer-actionable items (116-7b, 116-9, 116-10) are applied this round. 116-3 is held as accepted-limitation per the reviewer's own adjudication.
+
+**Applied:**
+
+- **116-7b `koi` love `радейтны`/`radejtnɨ` → `радейтӧм`/`radejtɵm`** — APPLIED (applied by orchestrator this round). Reviewer-sourced replacement `радейтӧм` confirmed from Glosbe ru→koi (любовь → радейтӧм). -тӧм is the Komi-Permyak deverbal nominalization suffix, so this is a POS-correct noun. IPA: `ɵ` for ⟨ӧ⟩ per the koi column convention — `аттьӧ`→`atʲtʲɵ` (thanks.js:761) and `сьӧлӧм`→`sʲɵlɵm` (heart.js:761) both use `ɵ`; reviewer's `ɘ` adjusted to `ɵ` to maintain intra-column consistency.
+
+- **116-9 `sms` love `rääʹǩǩes`/`ræːkʲːes` → `rääʹǩǩesvuõtt`/`ræːkʲːesvuɘtː`** — APPLIED (applied by orchestrator this round). Surface form `rääʹǩǩesvuõtt` was already sourced by round-1 worker (Barents Observer 2024, chapter title "Rääʹǩǩesvuõtt ja ǩiõll" = "Love and language") and confirmed by reviewer as sourced. IPA `ræːkʲːesvuɘtː` (reviewer-accepted as internally consistent with sms column conventions: ⟨õ⟩=[ɘ], final geminate per water `tʃæːtsː`, heart `vuemː`).
+
+- **116-10 `sma` love `vïddedh`/`viːdːəh` → `gieriesvoete`/`ɡieriesvuəte`** — APPLIED (applied by orchestrator this round). Additional sourcing completed this round: Avisa Hemnes (2021-07) states directly "En fellesnevner er kjærlighet, eller «Gieriesvoete» på samisk" ("A common denominator is love, or 'Gieriesvoete' in Saami"), and NRK Sápmi published a tri-lingual short-story competition with the theme "Gieriesvoete Saepmesne" = "Love in Sápmi" (nrk.no/sapmi/samisk-novellekonkurranse). Both are authoritative South Saami-language sources confirming `gieriesvoete` = kjærlighet/love. IPA `ɡieriesvuəte` per reviewer's proposed form, consistent with sma column convention (⟨oe⟩=[uə] per the sma column; no stress mark, matching sma one `aktə`, thanks `kæjhtoe`).
+
+**Held:**
+
+- **116-3 `kjh` eat `чиир`/`tɕiːr`** — HELD as accepted-limitation per reviewer's own round-2 adjudication. The morphological ambiguity (чирге vs чиирге for vowel-final stem чи- + =рге) could not be resolved offline; dict.khakbooks.ru is not fetchable. Reviewer explicitly marked this "accept-as-limitation — needs a Khakas lexicographer" and stated it is NOT blocking.
+
+**Remaining open items deliberately left: 1** (116-3 kjh eat — accepted unsourceable-offline limitation, not blocking per reviewer).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+All three round-2 actionable items were verified verbatim against live data:
+
+| # | Cell | Live value | Verdict |
+|---|------|-----------|---------|
+| 116-7b | `koi` love (love.js:768) | `["радейтӧм", "radejtɵm"]` | ✓ confirmed |
+| 116-9 | `sms` love (love.js:476) | `["rääʹǩǩesvuõtt", "ræːkʲːesvuɘtː"]` | ✓ confirmed |
+| 116-10 | `sma` love (love.js:473) | `["gieriesvoete", "ɡieriesvuəte"]` | ✓ confirmed |
+
+**Note on `radejtɵm` vs `radejtɘm`:** The worker correctly adjusted the IPA symbol from reviewer-suggested `ɘ` to `ɵ` for koi ⟨ӧ⟩, matching the koi column convention (`аттьӧ`→`atʲtʲɵ`, thanks.js:761; `сьӧлӧм`→`sʲɵlɵm`, heart.js:761). This is the right call.
+
+**116-3 `kjh` eat `чиир`/`tɕiːr`:** Confirmed still at old value (eat.js:124) — expected. The inconsistency with the `ісерге` drink sibling (drink.js:124) persists, but per round-2 adjudication this is accepted as an unsourceable-offline known limitation requiring a Khakas lexicographer. It is NOT blocking.
+
+**New issues:** none.
+
+**Scorecard (round-3):** 12 original findings; 11 fully applied and verified in live data (116-1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12); 1 accepted known limitation (116-3, kjh eat — Khakas infinitive surface form for vowel-final stem unresolvable offline). No phantom fixes. No new issues.
+
+**File status: CLOSED** — nothing left to address. (116-3 is explicitly documented as a known limitation requiring a Khakas lexicographer; all other findings are applied and verified.)

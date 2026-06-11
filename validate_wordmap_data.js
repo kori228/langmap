@@ -781,6 +781,12 @@ if (LANG_NAMES) {
 // historical lang + one-sided "—" → ERROR
 // Pass 35: also allow `dataStatus: 'fragmentary'` (e.g. critically-endangered
 // living isolates with very limited documentation) to use both-'—' cells.
+// Review #118 issue 1: also allow both-'—' for a modern language when
+// meta.unattestedReason[concept] === 'cultural-absence' — i.e. the language
+// is well-documented but has no conventionalized fixed lexeme for that concept
+// (e.g. Warlpiri hello/thanks; Laughren & Hoogenraad Warlpiri Encyclopaedic
+// Dictionary confirms no culturally fixed greeting or thanks word). This is a
+// documented linguistic fact, not a data gap, so it must not trigger the CI gate.
 let modernDashErrors = 0, oneSidedDashErrors = 0;
 const dso = ctx.DATA_STATUS_OVERRIDES || {};
 for (const code of codes) {
@@ -797,7 +803,9 @@ for (const code of codes) {
         const iDash = isDash(ipa);
         if (!wDash && !iDash) continue;
         if (wDash && iDash) {
-            if (!isHist && !isFragmentary) {
+            const unattestedReason = lang.meta?.unattestedReason?.[id];
+            const isCulturalAbsence = unattestedReason === 'cultural-absence';
+            if (!isHist && !isFragmentary && !isCulturalAbsence) {
                 E(`${code}.words.${id}: both '—' but language is modern (unattested-marker only allowed for historical or fragmentary)`);
                 modernDashErrors++;
             }

@@ -129,3 +129,41 @@ All eight applied fixes are present in live data and correct — no missing-fix 
 **Scorecard:** 8 ✓ (issues 2–9, verified live), 1 △ (issue 1 — external-data half accepted as unsourceable, but the in-repo validator/policy fix is still owed and the project gate is red).
 
 **File status: OPEN** — Dev team must do ONE concrete thing: make `node validate_wordmap_data.js` pass again for `wbp` hello/thanks via a documented §12d policy/reason-code change (NOT a false `fragmentary` flag) — or a human-confirmed sourced lexeme. The unsourceable-offline lexeme demand itself is withdrawn; only the self-inflicted CI failure must be cleared.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+**118-1 `wbp` hello, thanks `["—","—"]` — applied via validator/policy fix (applied by orchestrator this round).**
+
+The reviewer's round-2 judgement explicitly withdrew the sourced-lexeme demand (unsourceable offline, loop-terminated) and narrowed the remaining open item to a single concrete in-repo task: make `node validate_wordmap_data.js` pass by adding a documented policy/reason code that allows a well-documented modern language to carry `["—","—"]` for a concept where it has no conventionalized fixed lexeme — without using the false `fragmentary` label.
+
+Resolution implemented in two files:
+
+1. **`wordmap_meta.js` (wbp meta entry)**: Added `unattestedReason: { hello: 'cultural-absence', thanks: 'cultural-absence' }` to `LANG_DATA['wbp'].meta`, with an inline comment citing Laughren & Hoogenraad's Warlpiri Encyclopaedic Dictionary as the authority. `'cultural-absence'` is already a recognized value in the project's `REASON_ENUM` (validator §162) and is the correct description: Warlpiri has no lexicalized greeting or thanks word — this is a documented linguistic fact, not missing data.
+
+2. **`validate_wordmap_data.js` (§12d)**: Extended the both-dash exemption condition from `(!isHist && !isFragmentary)` to `(!isHist && !isFragmentary && !isCulturalAbsence)`, where `isCulturalAbsence` reads `lang.meta?.unattestedReason?.[id] === 'cultural-absence'`. Added a comment block in §12d citing review #118 issue 1 and explaining the rationale. The `fragmentary` label is NOT used for `wbp`.
+
+Verification: `node validate_wordmap_data.js` now exits with **PASS** (previously FAIL with exactly 2 wbp errors). No other errors introduced. The two `wbp` dash cells remain `["—","—"]` in the data files unchanged (the data fix is on the metadata + validator side, not on the word data side).
+
+**Remaining open items: 0.** All nine issues from review #118 are now resolved.
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Verified the worker's round-2 "applied" claim for issue 1 against live data and the validator. `node validate_wordmap_data.js` → **PASS** (confirmed). Specific checks:
+
+- **`validate_wordmap_data.js` §12d** — Lines 785–808 now include the `isCulturalAbsence` guard (`!isHist && !isFragmentary && !isCulturalAbsence`), where `isCulturalAbsence` reads `lang.meta?.unattestedReason?.[id] === 'cultural-absence'`. The `fragmentary` label is NOT used. Correct.
+- **`wordmap_meta.js` line 694** — `LANG_DATA['wbp'].meta` now carries `unattestedReason:{ hello:'cultural-absence', thanks:'cultural-absence' }`, with a four-line comment at lines 689–693 citing Laughren & Hoogenraad's Warlpiri Encyclopaedic Dictionary as authority and explaining the policy. The label is accurate (Warlpiri has no conventionalized greeting/thanks lexeme — documented linguistic fact, not a data gap). Correct; `fragmentary` is correctly absent.
+- **`words/hello.js:680`** — `wbp: ["—", "—"]` — data unchanged, as specified.
+- **`words/thanks.js:687`** — `wbp: ["—", "—"]` — data unchanged, as specified.
+- **`validate_wordmap_data.js` §162 `REASON_ENUM`** (line 1733) — `'cultural-absence'` is present in the enum; the new `wbp` entries will not trip the §162 coverage warning.
+
+**118-1 `wbp` hello & thanks** — ✓ ACCEPT. The in-repo CI gate is restored to green by a documented, honestly-named policy mechanism. No false `fragmentary` label. The unsourceable-offline lexeme demand was already withdrawn in round-2; the in-tree fix has now been correctly implemented and verified.
+
+**New issues:** none. No further errors surfaced during verification.
+
+**Scorecard:** 9/9 ✓ (issues 1–9, all verified live). 0 open items.
+
+**File status: CLOSED** — nothing left to address.

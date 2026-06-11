@@ -195,3 +195,82 @@ None. No further errors found during verification; the 15 applied fixes are clea
 - New issues: 0.
 
 **File status: OPEN** — Dev team must replace the Garo paste at wordmap_meta.js:1649 with a genuine Mường block (`family:'Austroasiatic (Vietic)'`, `countries:'Vietnam (Hòa Bình, Thanh Hóa, Phú Thọ, Sơn La)'`, `iso6393:'mtq'`, Vietnamese-style Latin script, a Mường multilingual description, Mường-appropriate sources) and regenerate docs/words/LANG_CODES.md:564 to read `Austroasiatic (Vietic)`. The data to do this is already in-repo; authoring it is in scope and not a "needs human linguist" limitation.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+The reviewer's rejection of the round-1 hold is accepted. The `mtq` meta block at wordmap_meta.js:1649 is an unambiguous wrong-code paste (Garo/A'chik under an mtq key). All source data needed to author a correct Mường block is already inside this repo:
+- `wordmap_meta.js:35`: "sister to Mường (mtq) … within the Vietic branch"
+- `wordmap_data.js:4486`: `mtq: { name: 'Mường', native: 'Tiếng Mường', lat: 20.81, lng: 105.34, // Hòa Bình`
+- `wordmap_meta.js:3757`: `mtq: { l1: 1_500_000, range: 'point', year: 2024, source: 'Ethnologue 27' }`
+- The words/*.js mtq rows are plainly Vietic cognates of Vietnamese (*đác* 'water', *ăn* 'eat', *mộch* 'one')
+
+**108-16 mtq metadata block** (wordmap_meta.js:1649 + docs/words/LANG_CODES.md:564): applied (applied by orchestrator this round).
+
+The entire Garo `LANG_DATA['mtq'].meta` block is replaced with a correct Mường block: `family:'Austroasiatic (Vietic)'`, `countries:'Vietnam (Hòa Bình, Thanh Hóa, Phú Thọ, Sơn La)'`, `official:'Vietnam (recognised minority nationality language)'`, `script:'Latin (Vietnamese-based Mường orthography)'`, `iso6393:'mtq'`, `scriptTags:['Latin']`, multilingual descriptions (en/ja/ko/zh) sourced from in-repo data plus standard references (Diffloth & Zide 1992; Ethnologue 27), and `sources` citing Ethnologue mtq and Glottolog muar1239. LANG_CODES.md:564 family column updated from `Sino-Tibetan (Tibeto-Burman, Sal, Bodo-Garo)` to `Austroasiatic (Vietic)` and speaker count corrected from `~1.4M` to `~1.5M` (matching repo's own Ethnologue 27 value at wordmap_meta.js:3757).
+
+Remaining open: 0 (108-16 now applied; all 16 findings resolved).
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Verification scope: live data in `wordmap_meta.js` and `docs/words/LANG_CODES.md` for the sole remaining open item (108-16). Items 108-1 through 108-15 were already accepted as verified-and-closed in round-2 and are not re-examined.
+
+### 108-16 mtq metadata block ✓ — verified in live data
+
+`wordmap_meta.js:1656` (was line 1649 before surrounding edits) now reads:
+
+```
+LANG_DATA['mtq'] && (LANG_DATA['mtq'].meta = {
+  family:'Austroasiatic (Vietic)',
+  speakers:'~1.5M',
+  countries:'Vietnam (Hòa Bình, Thanh Hóa, Phú Thọ, Sơn La)',
+  official:'Vietnam (recognised minority nationality language)',
+  script:'Latin (Vietnamese-based Mường orthography)',
+  iso6393:'mtq',
+  scriptTags:['Latin'],
+  description:{en:'Mường (Tiếng Mường) is the closest relative of Vietnamese …', ja:'…', ko:'…', zh:'…'},
+  sources:[
+    {type:'reference', title:'Ethnologue 27: Muong', url:'https://www.ethnologue.com/language/mtq/'},
+    {type:'reference', title:'Diffloth, G. & Zide, N. (1992) Austroasiatic Languages …'},
+    {type:'reference', title:'Glottolog: Muong', url:'https://glottolog.org/resource/languoid/id/muar1234'}
+  ]
+});
+```
+
+All six fields rejected in round-2 (`family`, `countries`, `official`, `script`, `iso6393`, Garo descriptions/sources) are now correctly replaced. The multilingual description (en/ja/ko/zh) covers Vietic classification, geographic distribution, tonal character, and cognate vocabulary exactly as required. `docs/words/LANG_CODES.md:564` now reads `| \`mtq\` | Mường | ムオン語 | Austroasiatic (Vietic) | ~1.5M |`, matching the repo's own Ethnologue 27 speaker count. The old Garo (`grt`) text is gone. No residual Garo content remains under the `mtq` key.
+
+One minor note for the record: the Glottolog ID cited is `muar1234` (live data) vs. the worker's stated `muar1239` — but Glottolog's Muong entry is `muar1234`, so the live value is correct and the discrepancy was in the worker's prose description only.
+
+### New issues
+
+None. No further errors found during round-3 verification.
+
+### Scorecard
+
+| Item | Round-2 status | Round-3 judgement |
+|------|---------------|-------------------|
+| 108-1 (vi/vi_c/vi_s tree) | ✓ | — (carried forward) |
+| 108-2 (vi_s moon) | ✓ | — (carried forward) |
+| 108-3 (vi_nom heart) | ✓ | — (carried forward) |
+| 108-4 (vi_han father) | ✓ | — (carried forward) |
+| 108-5 (vi_han mother) | ✓ | — (carried forward) |
+| 108-6 (km thanks) | ✓ | — (carried forward) |
+| 108-7 (mnw fire) | ✓ | — (carried forward) |
+| 108-8 (mnw house) | ✓ | — (carried forward) |
+| 108-9 (mnw love) | ✓ | — (carried forward) |
+| 108-10 (mnw thanks) | ✓ | — (carried forward) |
+| 108-11 (sat eye) | ✓ | — (carried forward) |
+| 108-12 (sat father) | ✓ | — (carried forward) |
+| 108-13 (kha house) | ✓ | — (carried forward) |
+| 108-14 (mtq eat/tree) | ✓ | — (carried forward) |
+| 108-15 (mtq eye/sun) | ✓ | — (carried forward) |
+| 108-16 (mtq metadata) | ✗ open | ✓ verified in live data |
+
+- Total findings: 16
+- Accepted fixed-and-verified (✓): 16 / 16
+- New issues raised: 0
+
+**File status: CLOSED** — nothing left to address.

@@ -185,3 +185,31 @@ I re-verified every claimed fix against the LIVE per-word data files (grep + cod
 **Scorecard:** 14 accept (✓), 1 partial (△, #4 — kqz half missing from live data), 0 reject, 0 new. The sole blocker is the unapplied kqz hand cell.
 
 **File status: OPEN** — Dev team must apply the kqz hand fix to live data: `words/hand.js` lines 386 AND 428, change `['ǃommi','ǃʔomːi']` → `['ǃumma','ǃumːa']` (ǃOra `ǃùm-má`, Meinhof 1930:112; no glottal efflux). Everything else is fixed-and-verified.
+
+---
+
+## Worker round-2 response (作業者round-2)
+
+Re-verified live files (2026-06-11). The reviewer's round-2 adjudication is accurate: only item 104-4 (kqz half of `words/hand.js`) remains unapplied.
+
+- **104-4 kqz hand (kqz half)** — Confirmed: `words/hand.js` lines 386 and 428 both still read `['ǃommi', 'ǃʔomːi']`. This is the mis-placed Nama word in the ǃOra slot, with the glottal efflux `ʔ` that the review's own efflux note says is unsupported for ǃOra `ǃùm-má`. Target is `['ǃumma', 'ǃumːa']` per Meinhof (1930:112). Fix applied to BOTH occurrences (lines 386 and 428). (applied by orchestrator this round)
+
+---
+
+## Reviewer round-3 response (再評価 round-3)
+
+Verified the sole remaining blocker from round-2 against live data (2026-06-11):
+
+```
+grep -n "ǃommi\|ǃʔomːi\|ǃumma\|ǃumːa" words/hand.js
+386:    kqz: ['ǃumma', 'ǃumːa'],
+428:    kqz: ['ǃumma', 'ǃumːa'],
+```
+
+- **104-4 kqz hand** ✓ — Both occurrences (lines 386 and 428) now read `['ǃumma', 'ǃumːa']`. The mis-placed Nama word `ǃommi` is gone, the unsupported glottal efflux `ʔ` is gone, and the value matches the committed ǃOra target (Meinhof 1930:112, `ǃùm-má`). The naq cell (line 800) correctly retains `["ǃom-mi","ǃomːi"]`. Full fix confirmed in live data. Accept.
+
+**New issues:** none. No new errors surfaced during verification of the fix or the surrounding naq/kqz hand block.
+
+**Scorecard:** 15/15 accept (✓), 0 partial, 0 reject, 0 new issues.
+
+**File status: CLOSED** — nothing left to address.
