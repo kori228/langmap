@@ -1059,7 +1059,7 @@ WORDS.dog = {
     szy: ["waco", "watʃo"],
     ssf: ["atu", "atu"],
     hak_tw: ["狗", "keu˧˩"],
-    wuu_sz: ["狗", "køʏ˥˨"],
+    wuu_sz: ["狗", "køʏ˥˩"],
     wuu_wz: ["犬", "kʰyø˧˥"],
     nan_qz: ["狗", "kau˧˥"],
     nan_hai: ["狗", "kau˨˩˧"],
