@@ -1047,7 +1047,7 @@ WORDS.drink = {
     szy: ["mihecak", "mihetʃak"],
     ssf: ["naqayan", "naqajan"],
     hak_tw: ["啉", "lim˩˩"],
-    wuu_sz: ["喝", "xəʔ˥˥"],
+    wuu_sz: ["喝", "həʔ˥"],
     wuu_wz: ["吃", "kʰa˧˧"],
     nan_qz: ["啉", "lim˨˦"],
     nan_hai: ["啉", "lim˨˦"],
