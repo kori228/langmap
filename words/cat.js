@@ -1047,7 +1047,7 @@ WORDS.cat = {
     szy: ["posi", "posi"],
     ssf: ["posi", "posi"],
     hak_tw: ["貓仔", "meu˨˦ e˧˩"],
-    wuu_sz: ["猫", "mæ˥"],
+    wuu_sz: ["猫", "mæ˩˩˧"],
     wuu_wz: ["猫", "mau˧˧"],
     nan_qz: ["貓", "niau˨˨"],
     nan_hai: ["猫", "ŋiau˥˥"],
