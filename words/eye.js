@@ -1053,7 +1053,7 @@ WORDS.eye = {
     szy: ["mata", "mata"],
     ssf: ["mata", "mata"],
     hak_tw: ["目珠", "muk˨ t͡su˨"],
-    wuu_sz: ["眼睛", "ŋɛ˨˧˩t͡ɕin˦˦"],
+    wuu_sz: ["眼睛", "ŋᴇ˨ tsin˧"],
     wuu_wz: ["眼睛", "ŋa˨˩˧t͡saŋ˧˧"],
     nan_qz: ["目", "bak˦˦"],
     nan_hai: ["目", "bak˨˨"],
