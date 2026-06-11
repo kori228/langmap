@@ -1053,7 +1053,7 @@ WORDS.hand = {
     szy: ["kamay", "kamai"],
     ssf: ["lima", "lima"],
     hak_tw: ["手", "su˧˩"],
-    wuu_sz: ["手", "sɤ˥˨"],
+    wuu_sz: ["手", "søʏ˥˩"],
     wuu_wz: ["手", "ɕiu˧˥"],
     nan_qz: ["手", "t͡sʰiu˧˥"],
     nan_hai: ["手", "tsʰiu˨˩˧"],
