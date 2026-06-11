@@ -75,7 +75,7 @@ WORDS.moon = {
     hak_cn: ["月光", "ŋiat˧koŋ˥"],
     vi: ["mặt trăng", "mət˨˩ t͡ɕaŋ˥"],
     vi_c: ["mặt trăng", "maːk˨˨ ʈaːŋ˥"],
-    vi_s: ["mặt trăng", "mak˨˩˨ taŋ˥"],
+    vi_s: ["mặt trăng", "mak˨˩˨ ʈaŋ˥"],
     th: ["ดวงจันทร์", "duaŋ˧t͡ɕan˧"],
     id: ["bulan", "bulan"],
     ms: ["bulan", "bulan"],

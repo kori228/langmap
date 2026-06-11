@@ -75,7 +75,7 @@ WORDS.sun = {
     hak_cn: ["日头", "ŋit˧tʰeu˧˥"],
     vi: ["mặt trời", "mət˨˩ t͡ɕɤːj˨˩"],
     vi_c: ["mặt trời", "maːk˨˨ ʈɤːj˧˨"],
-    vi_s: ["mặt trời", "mak˨˩˨ tɤːj˨˩"],
+    vi_s: ["mặt trời", "mak˨˩˨ ʈɤːj˨˩"],
     th: ["ดวงอาทิตย์", "duaŋ˧ʔaː˧tʰit˧˥"],
     id: ["matahari", "matahari"],
     ms: ["matahari", "matahari"],
