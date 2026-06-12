@@ -4471,7 +4471,22 @@
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
             // misleading geographic position.
-            const MAX_PUSH = collisionBudgetH * 1.5;
+            //
+            // The push budget is in PIXELS, but a constant pixel push maps
+            // to a much LARGER geographic distance when zoomed out (the
+            // whole world is compressed into the viewport). So at low zoom
+            // a label could end up rendered hundreds of km from its true
+            // lat/lng — user report: "Zoomアウトすると必要以上に本来の位置
+            // より離れてしまう". Tighten the budget as we zoom out so a
+            // label that can't fit within the smaller (geographically
+            // tighter) budget is HIDDEN rather than relocated to a
+            // misleading position. (Zoomed in, the projection is generous
+            // enough that the full budget stays geographically small.)
+            const _pushZoomFactor = zoom <= 3 ? 0.5
+                                  : zoom <= 4 ? 0.65
+                                  : zoom <= 5 ? 0.8
+                                  : 1;
+            const MAX_PUSH = collisionBudgetH * 1.5 * _pushZoomFactor;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {
@@ -4560,6 +4575,43 @@
                 if (!off) continue;
                 if (Math.abs(off.x) + Math.abs(off.y) > MAX_PUSH * 2.2) {
                     hiddenCodes.add(code);
+                }
+            }
+
+            // Snap-back pass: SA optimizes over the FULL visible set (incl.
+            // speaker-thinned labels that are never drawn), so it can shove a
+            // RENDERED label far from its anchor to dodge a neighbour the user
+            // can't even see — leaving an isolated label stranded in empty
+            // space (user report 2026-06-12: Belarusian label far from its pin
+            // with no visible neighbours). For every rendered label, if
+            // placing it back AT its true anchor wouldn't collide with any
+            // other rendered label's final box, pull it home. This only ever
+            // moves a label into provably-empty space, so it cannot introduce
+            // overlap. Two passes resolve short displacement chains.
+            {
+                const _rendered = allRenderable.filter(c => ppx[c] && isActive(c) && !hiddenCodes.has(c));
+                const _ctr = {};
+                for (const c of _rendered) {
+                    const o = offsets[c] || { x: 0, y: 0 };
+                    _ctr[c] = { x: ppx[c].x + o.x, y: ppx[c].y + o.y };
+                }
+                const _clrW = _bbHalfW * 2, _clrH = _bbHalfH * 2;
+                for (let pass = 0; pass < 2; pass++) {
+                    for (const c of _rendered) {
+                        const off = offsets[c];
+                        if (!off || (Math.abs(off.x) + Math.abs(off.y) < 4)) continue;
+                        const ax = ppx[c].x, ay = ppx[c].y;
+                        let collides = false;
+                        for (const o of _rendered) {
+                            if (o === c) continue;
+                            const p = _ctr[o];
+                            if (Math.abs(p.x - ax) < _clrW && Math.abs(p.y - ay) < _clrH) { collides = true; break; }
+                        }
+                        if (!collides) {
+                            offsets[c] = { x: 0, y: 0 };
+                            _ctr[c] = { x: ax, y: ay };
+                        }
+                    }
                 }
             }
 
