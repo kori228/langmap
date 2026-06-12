@@ -7050,7 +7050,17 @@
             // current labelH made the cap shrink when the user turned
             // off rows, and the post-SA hide threshold (MAX_PUSH * 2.2)
             // then hid labels that fit fine when more rows were on.
-            const MAX_PUSH = collisionBudgetH * 1.5;
+            //
+            // The budget is in PIXELS, but a constant pixel push maps to a
+            // much larger GEOGRAPHIC distance when zoomed out, so a label
+            // could render far from its lat/lng. Tighten the budget as we
+            // zoom out (a label that no longer fits is hidden, not moved to
+            // a misleading spot).
+            const _pushZoomFactor = zoom <= 3 ? 0.5
+                                  : zoom <= 4 ? 0.65
+                                  : zoom <= 5 ? 0.8
+                                  : 1;
+            const MAX_PUSH = collisionBudgetH * 1.5 * _pushZoomFactor;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {
@@ -7158,6 +7168,62 @@
                 if (!off) continue;
                 if (Math.abs(off.x) + Math.abs(off.y) > MAX_PUSH * 2.2) {
                     hiddenCodes.add(code);
+                }
+            }
+
+            // Priority pull-home pass (mirrors wordmap). SA optimizes over the
+            // FULL visible set (incl. speaker-thinned labels never drawn) and
+            // spreads co-located pairs symmetrically, so it can leave a drawn
+            // label far from its anchor even when there's room to draw it home.
+            // Re-place rendered labels greedily in speaker-priority order
+            // (focused / spotlight first): each takes the point CLOSEST to its
+            // true anchor that's free of an already-placed higher-priority
+            // label (a fine spiral, so the move is the minimum needed). A major
+            // language claims its pin and evicts a tiny co-located neighbour,
+            // isolated labels return home, and nothing overlaps.
+            {
+                const _rendered = allRenderable.filter(c => ppx[c] && isActive(c) && !hiddenCodes.has(c));
+                _rendered.sort((a, b) => {
+                    if (_focusedCode) {
+                        if (a === _focusedCode && b !== _focusedCode) return -1;
+                        if (b === _focusedCode && a !== _focusedCode) return 1;
+                    }
+                    if (_spotlight) {
+                        const aS = _spotlight.has(a) ? 0 : 1, bS = _spotlight.has(b) ? 0 : 1;
+                        if (aS !== bS) return aS - bS;
+                    }
+                    const sa = langSpeakerCount(a) || 0, sb = langSpeakerCount(b) || 0;
+                    if (sb !== sa) return sb - sa;
+                    return a < b ? -1 : a > b ? 1 : 0;
+                });
+                const _cw = _bbHalfW * 2, _ch = _bbHalfH * 2;
+                const _placed = [];
+                const _free = (x, y) => {
+                    for (const p of _placed) {
+                        if (Math.abs(p.x - x) < _cw && Math.abs(p.y - y) < _ch) return false;
+                    }
+                    return true;
+                };
+                const _ringStep = Math.max(4, _ch * 0.13), _maxR = MAX_PUSH * 2.2;
+                for (const c of _rendered) {
+                    const ax = ppx[c].x, ay = ppx[c].y;
+                    let chosen = null;
+                    if (_free(ax, ay)) {
+                        chosen = { x: ax, y: ay };
+                    } else {
+                        outer:
+                        for (let r = _ringStep; r <= _maxR; r += _ringStep) {
+                            const n = Math.max(8, Math.round((2 * Math.PI * r) / _ringStep));
+                            for (let k = 0; k < n; k++) {
+                                const rad = (2 * Math.PI * k) / n;
+                                const x = ax + Math.cos(rad) * r, y = ay + Math.sin(rad) * r;
+                                if (_free(x, y)) { chosen = { x, y }; break outer; }
+                            }
+                        }
+                    }
+                    if (!chosen) { hiddenCodes.add(c); continue; }
+                    _placed.push(chosen);
+                    offsets[c] = { x: chosen.x - ax, y: chosen.y - ay };
                 }
             }
 
