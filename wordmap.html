@@ -345,12 +345,14 @@
         }
         .toggle-btn.active:hover { background: #444; }
         /* Red swatch on the Pins toggle = a preview of the map dot it shows,
-           so the control reads at a glance. Dim when off, vivid when on. */
+           so the control reads at a glance. Sits inline before the label on
+           the same row (the button itself is a flex column: label-row above,
+           ON/OFF below). Dim when off, vivid when on. */
+        #toggle-pins .pin-label-row { display: inline-flex; align-items: center; gap: 3px; }
         #toggle-pins .pin-swatch {
-            display: inline-block; width: 9px; height: 9px;
+            flex: 0 0 auto; width: 5px; height: 5px;
             border-radius: 50%; background: #e02424;
             box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
-            vertical-align: middle; margin: -2px 5px 0 0;
             opacity: 0.4; transition: opacity 0.25s ease;
         }
         #toggle-pins.active .pin-swatch { opacity: 1; }
@@ -2151,7 +2153,7 @@
             <!-- Red location pins: default OFF. When ON, a small red dot is
                  drawn at each language's true lat/lng so the de-cluttered
                  (offset) label can be related back to its real location. -->
-            <button class="toggle-btn" id="toggle-pins" aria-pressed="false" aria-label="Toggle location pins"><span class="pin-swatch" aria-hidden="true"></span><span class="label">Pins</span><span class="onoff">OFF</span></button>
+            <button class="toggle-btn" id="toggle-pins" aria-pressed="false" aria-label="Toggle location pins"><span class="pin-label-row"><span class="pin-swatch" aria-hidden="true"></span><span class="label">Pins</span></span><span class="onoff">OFF</span></button>
             <div class="size-slider-wrap">
                 <!-- + on top, − on bottom; the hidden range input keeps the
                      existing JS surface (fontSizeSlider.value, input/change
