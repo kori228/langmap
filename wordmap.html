@@ -4620,40 +4620,74 @@
                 }
             }
 
-            // Snap-back pass: SA optimizes over the FULL visible set (incl.
-            // speaker-thinned labels that are never drawn), so it can shove a
-            // RENDERED label far from its anchor to dodge a neighbour the user
-            // can't even see — leaving an isolated label stranded in empty
-            // space (user report 2026-06-12: Belarusian label far from its pin
-            // with no visible neighbours). For every rendered label, if
-            // placing it back AT its true anchor wouldn't collide with any
-            // other rendered label's final box, pull it home. This only ever
-            // moves a label into provably-empty space, so it cannot introduce
-            // overlap. Two passes resolve short displacement chains.
+            // Priority pull-home pass. SA optimizes over the FULL visible set
+            // (incl. speaker-thinned labels that are never drawn) and spreads
+            // co-located pairs symmetrically, so it can leave a RENDERED label
+            // far from its anchor even when there's room to draw it home —
+            // either dodging a neighbour the user can't see, or splitting a
+            // tiny micro-language sitting on top of a major one (user reports
+            // 2026-06-12: Belarusian stranded with no visible neighbour; at z5
+            // Silesian shoved aside by Wymysorys ~13px away; Rusyn over-moved).
+            //
+            // Re-place rendered labels greedily in speaker-priority order: each
+            // takes the position CLOSEST to its true anchor that doesn't
+            // overlap an already-placed (higher-priority) label. So a major
+            // language claims its pin and evicts a tiny co-located neighbour,
+            // an isolated label returns home, and nothing overlaps. A label
+            // that can't fit within the hide threshold is dropped.
             {
                 const _rendered = allRenderable.filter(c => ppx[c] && isActive(c) && !hiddenCodes.has(c));
-                const _ctr = {};
+                _rendered.sort((a, b) => {
+                    // Focused (open modal) and trivia-spotlight langs claim
+                    // their pin first — same precedence as the greedy pass.
+                    if (_focusedCode) {
+                        if (a === _focusedCode && b !== _focusedCode) return -1;
+                        if (b === _focusedCode && a !== _focusedCode) return 1;
+                    }
+                    if (_spotlight) {
+                        const aS = _spotlight.has(a) ? 0 : 1, bS = _spotlight.has(b) ? 0 : 1;
+                        if (aS !== bS) return aS - bS;
+                    }
+                    const sa = langSpeakerCount(a) || 0, sb = langSpeakerCount(b) || 0;
+                    if (sb !== sa) return sb - sa;
+                    return a < b ? -1 : a > b ? 1 : 0;
+                });
+                const _cw = _bbHalfW * 2, _ch = _bbHalfH * 2;
+                const _placed = [];
+                const _free = (x, y) => {
+                    for (const p of _placed) {
+                        if (Math.abs(p.x - x) < _cw && Math.abs(p.y - y) < _ch) return false;
+                    }
+                    return true;
+                };
                 for (const c of _rendered) {
-                    const o = offsets[c] || { x: 0, y: 0 };
-                    _ctr[c] = { x: ppx[c].x + o.x, y: ppx[c].y + o.y };
-                }
-                const _clrW = _bbHalfW * 2, _clrH = _bbHalfH * 2;
-                for (let pass = 0; pass < 2; pass++) {
-                    for (const c of _rendered) {
-                        const off = offsets[c];
-                        if (!off || (Math.abs(off.x) + Math.abs(off.y) < 4)) continue;
-                        const ax = ppx[c].x, ay = ppx[c].y;
-                        let collides = false;
-                        for (const o of _rendered) {
-                            if (o === c) continue;
-                            const p = _ctr[o];
-                            if (Math.abs(p.x - ax) < _clrW && Math.abs(p.y - ay) < _clrH) { collides = true; break; }
-                        }
-                        if (!collides) {
-                            offsets[c] = { x: 0, y: 0 };
-                            _ctr[c] = { x: ax, y: ay };
+                    const ax = ppx[c].x, ay = ppx[c].y;
+                    const off = offsets[c] || { x: 0, y: 0 };
+                    let chosen = null;
+                    // 1) Closest-to-anchor free point along anchor -> SA-center
+                    //    (t=0 is home, t=1 is the SA-optimized position).
+                    for (let i = 0; i <= 10; i++) {
+                        const t = i / 10;
+                        const x = ax + off.x * t, y = ay + off.y * t;
+                        if (_free(x, y)) { chosen = { x, y }; break; }
+                    }
+                    // 2) Even the SA position now overlaps a higher-priority
+                    //    label that moved home — spiral out from the anchor for
+                    //    the nearest free slot, bounded by the hide threshold.
+                    if (!chosen) {
+                        const ring = Math.max(8, _ch * 0.6), maxR = MAX_PUSH * 2.2;
+                        outer:
+                        for (let r = ring; r <= maxR; r += ring) {
+                            for (let deg = 0; deg < 360; deg += 30) {
+                                const rad = deg * Math.PI / 180;
+                                const x = ax + Math.cos(rad) * r, y = ay + Math.sin(rad) * r;
+                                if (_free(x, y)) { chosen = { x, y }; break outer; }
+                            }
                         }
                     }
+                    if (!chosen) { hiddenCodes.add(c); continue; }
+                    _placed.push(chosen);
+                    offsets[c] = { x: chosen.x - ax, y: chosen.y - ay };
                 }
             }
 
