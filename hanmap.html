@@ -3336,10 +3336,15 @@
         // Sino-loan readings on first load and opts in via the toggles.
         const KUN_DEFAULT_OFF = KUN_CODES;
         const ANCIENT_DEFAULT_OFF = ANCIENT_SINO_CODES;
-        // Codes governed by the 古代語 / 訓読み switches. The すべて選択 /
-        // すべて解除 buttons must NOT disturb these — they're toggled only by
-        // their own switches (user request 2026-06-12).
-        const SWITCH_CODES = new Set([...KUN_CODES, ...ANCIENT_SINO_CODES]);
+        const ANCIENT_SET = new Set(ANCIENT_SINO_CODES);
+        const KUN_SET = new Set(KUN_CODES);
+        // The 古代語 / 訓読み switches are INDEPENDENT toggle state — NOT
+        // derived from the selection — so すべて選択 / すべて解除 can change
+        // which languages are selected (incl. clearing the ancient ones)
+        // without flipping the switches; a switch moves only when its own
+        // control is pressed (user request 2026-06-12). Seeded from the
+        // persisted selection in loadState().
+        let ancientOn = false, kunOn = false;
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -3581,6 +3586,9 @@
                     const arr = JSON.parse(raw);
                     if (Array.isArray(arr)) {
                         selected = new Set(arr.filter(c => offered.has(c)));
+                        // Seed switch state from the restored selection.
+                        ancientOn = ANCIENT_SINO_CODES.some(c => selected.has(c));
+                        kunOn     = KUN_CODES.some(c => selected.has(c));
                         return;
                     }
                 }
@@ -3593,6 +3601,7 @@
             selected = new Set(offered);
             for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
             for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
+            ancientOn = false; kunOn = false;
         }
 
         function saveState() {
@@ -3739,8 +3748,11 @@
                     }
                     return any;   // false if set is empty
                 };
-                setBtnActive('toggle-ancient', allInSetSelected(ANCIENT_SINO_CODES));
-                setBtnActive('toggle-kun',     allInSetSelected(KUN_CODES));
+                // Switch visuals follow the independent toggle state, not the
+                // selection — so すべて選択 / すべて解除 don't move them.
+                void allInSetSelected;
+                setBtnActive('toggle-ancient', ancientOn);
+                setBtnActive('toggle-kun',     kunOn);
             }
 
             body.innerHTML = '';
@@ -3819,8 +3831,8 @@
             // A chip is "disabled" when its category-master switch is OFF
             // (i.e. NO code in that category is currently selected). The
             // user can re-enable the whole category from the switch above.
-            const ancientOff = ANCIENT_SINO_CODES.every(c => !selected.has(c) || !offered.has(c));
-            const kunOff     = KUN_CODES.every(c => !selected.has(c) || !offered.has(c));
+            const ancientOff = !ancientOn;
+            const kunOff     = !kunOn;
             const isDisabled = (code) => {
                 if (ancientOff && ANCIENT_SINO_CODES.includes(code)) return true;
                 if (kunOff && KUN_CODES.includes(code)) return true;
@@ -3911,36 +3923,39 @@
                 const offered = offeredCodes();
                 const act = b.getAttribute('data-act');
                 if (act === 'all') {
-                    // Select every offered language, but leave the 古代語/訓読み
-                    // sets exactly as they are — those are owned by their own
-                    // switches, not by すべて選択.
-                    const keep = new Set([...selected].filter(c => SWITCH_CODES.has(c)));
-                    selected = new Set([...offered].filter(c => !SWITCH_CODES.has(c)));
-                    for (const c of keep) selected.add(c);
+                    // Select every offered language, but include the 古代語 /
+                    // 訓読み sets only if their switch is currently on. The
+                    // switches themselves are NOT changed.
+                    selected = new Set([...offered].filter(c => {
+                        if (ANCIENT_SET.has(c)) return ancientOn;
+                        if (KUN_SET.has(c))     return kunOn;
+                        return true;
+                    }));
                 } else if (act === 'reset') {
-                    // Reset to default: only modern Sino-loan readings.
+                    // Reset to default: only modern Sino-loan readings, and
+                    // both switches back off.
                     selected = new Set(offered);
                     for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
                     for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
+                    ancientOn = false; kunOn = false;
                 } else if (act === 'none') {
-                    // Clear everything EXCEPT the switch-governed sets, which
-                    // keep their current state.
-                    selected = new Set([...selected].filter(c => SWITCH_CODES.has(c)));
+                    // Clear the whole selection — including the ancient/kun
+                    // languages — but leave the switch positions untouched.
+                    selected = new Set();
                 } else if (act === 'toggle-ancient') {
-                    // Toggle the Sino-loan historical set only. Native-
-                    // word ancient codes (juc/txg/zkt/protos) go through
-                    // the 訓読 toggle, never this one.
-                    let anyMissing = false;
-                    for (const c of ANCIENT_SINO_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
-                    if (anyMissing) { for (const c of ANCIENT_SINO_CODES) if (offered.has(c)) selected.add(c); }
-                    else            { for (const c of ANCIENT_SINO_CODES) selected.delete(c); }
+                    // Independent toggle: flip the switch and add/remove its
+                    // Sino-loan historical set. Native-word ancient codes
+                    // (juc/txg/zkt/protos) go through 訓読, never this one.
+                    ancientOn = !ancientOn;
+                    if (ancientOn) { for (const c of ANCIENT_SINO_CODES) if (offered.has(c)) selected.add(c); }
+                    else           { for (const c of ANCIENT_SINO_CODES) selected.delete(c); }
                 } else if (act === 'toggle-kun') {
-                    // Toggle all native-word codes (explicit kun layers
-                    // + non-Sino langs + proto reconstructions).
-                    let anyMissing = false;
-                    for (const c of KUN_CODES) if (offered.has(c) && !selected.has(c)) { anyMissing = true; break; }
-                    if (anyMissing) { for (const c of KUN_CODES) if (offered.has(c)) selected.add(c); }
-                    else            { for (const c of KUN_CODES) selected.delete(c); }
+                    // Independent toggle: flip the switch and add/remove all
+                    // native-word codes (explicit kun layers + non-Sino langs
+                    // + proto reconstructions).
+                    kunOn = !kunOn;
+                    if (kunOn) { for (const c of KUN_CODES) if (offered.has(c)) selected.add(c); }
+                    else       { for (const c of KUN_CODES) selected.delete(c); }
                 }
                 renderPanel(); refreshTriggers();
             });
