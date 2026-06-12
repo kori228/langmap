@@ -551,6 +551,20 @@
             width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        /* Red location pin (opt-in via the Pins toggle). Sits at the marker
+           anchor — the true lat/lng — regardless of how far the label text
+           is offset for de-cluttering. left/top:50% of the 0-size divIcon
+           container resolves to the anchor; the negative margin centers the
+           6px dot on it. */
+        .lang-pin-dot {
+            position: absolute; left: 50%; top: 50%;
+            width: 6px; height: 6px; margin: -3px 0 0 -3px;
+            border-radius: 50%;
+            background: #e02424;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
+            pointer-events: none;
+            z-index: 5;
+        }
         /* When the label is already selected (white card), plain
            background-on-hover is invisible. Switch the text color to the
            selection blue so hover state is still readable. */
@@ -2121,6 +2135,10 @@
                 <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
                 <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
             </div>
+            <!-- Red location pins: default OFF. When ON, a small red dot is
+                 drawn at each language's true lat/lng so the de-cluttered
+                 (offset) label can be related back to its real location. -->
+            <button class="toggle-btn" id="toggle-pins" aria-pressed="false" aria-label="Toggle location pins"><span class="label">Pins</span><span class="onoff">OFF</span></button>
             <div class="size-slider-wrap">
                 <!-- + on top, − on bottom; the hidden range input keeps the
                      existing JS surface (fontSizeSlider.value, input/change
@@ -3168,15 +3186,19 @@
             setNavText(document.getElementById('nav-tree-label'), NAV_TREE[uiLang] || NAV_TREE.en);
             const sizeEl = document.getElementById('size-label');
             if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
-            ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
+            ['toggle-word','toggle-ipa','toggle-name','toggle-pins'].forEach(id => {
                 const key = id.replace('toggle-','');
                 const el = document.getElementById(id);
+                if (!el) return;
                 const text = wt(key);
                 const lbl = el.querySelector('.label');
                 if (lbl) lbl.textContent = text;
                 // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
+                // toggle-pins isn't covered by the ariaTargets table below, so
+                // localize its aria-label here off the same short label.
+                if (id === 'toggle-pins') el.setAttribute('aria-label', text);
                 // Refresh the ON/OFF text in the user's UI language.
                 if (typeof updateOnOff === 'function') {
                     updateOnOff(el, el.classList.contains('active'));
@@ -3383,10 +3405,12 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
+        let showPins = false;
         let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
+        const btnPins = document.getElementById('toggle-pins');
         const nameNative = document.getElementById('name-native');
         const nameTranslated = document.getElementById('name-translated');
         const eraModern = document.getElementById('era-modern');
@@ -3437,6 +3461,7 @@
         setupToggle(btnWord, () => showWord, v => showWord = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
+        if (btnPins) setupToggle(btnPins, () => showPins, v => showPins = v);
 
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
@@ -4636,7 +4661,11 @@
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
-                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
+                // Opt-in red dot at the true lat/lng (anchor), independent of
+                // the label's de-clutter offset. Prepended so it renders under
+                // the label text.
+                const pinHtml = showPins ? '<div class="lang-pin-dot"></div>' : '';
+                const icon = L.divIcon({ className: '', html: pinHtml + labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
