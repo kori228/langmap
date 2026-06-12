@@ -3336,6 +3336,10 @@
         // Sino-loan readings on first load and opts in via the toggles.
         const KUN_DEFAULT_OFF = KUN_CODES;
         const ANCIENT_DEFAULT_OFF = ANCIENT_SINO_CODES;
+        // Codes governed by the 古代語 / 訓読み switches. The すべて選択 /
+        // すべて解除 buttons must NOT disturb these — they're toggled only by
+        // their own switches (user request 2026-06-12).
+        const SWITCH_CODES = new Set([...KUN_CODES, ...ANCIENT_SINO_CODES]);
 
         // Group taxonomy. Each leaf is a code that *may* exist in
         // HAN_LANGS; we filter at render time so proto-langs still
@@ -3907,14 +3911,21 @@
                 const offered = offeredCodes();
                 const act = b.getAttribute('data-act');
                 if (act === 'all') {
-                    selected = new Set(offered);
+                    // Select every offered language, but leave the 古代語/訓読み
+                    // sets exactly as they are — those are owned by their own
+                    // switches, not by すべて選択.
+                    const keep = new Set([...selected].filter(c => SWITCH_CODES.has(c)));
+                    selected = new Set([...offered].filter(c => !SWITCH_CODES.has(c)));
+                    for (const c of keep) selected.add(c);
                 } else if (act === 'reset') {
                     // Reset to default: only modern Sino-loan readings.
                     selected = new Set(offered);
                     for (const c of KUN_DEFAULT_OFF)     selected.delete(c);
                     for (const c of ANCIENT_DEFAULT_OFF) selected.delete(c);
                 } else if (act === 'none') {
-                    selected = new Set();
+                    // Clear everything EXCEPT the switch-governed sets, which
+                    // keep their current state.
+                    selected = new Set([...selected].filter(c => SWITCH_CODES.has(c)));
                 } else if (act === 'toggle-ancient') {
                     // Toggle the Sino-loan historical set only. Native-
                     // word ancient codes (juc/txg/zkt/protos) go through
