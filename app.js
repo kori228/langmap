@@ -661,9 +661,11 @@ function applyUILang() {
         }
     }
     const trLabels = {ja:'系統樹',ko:'계통수',zh:'谱系树',yue:'譜系樹',vi:'Cây phả hệ',th:'แผนภูมิ',id:'Pohon',hi:'वृक्ष',en:'Tree',de:'Stammbaum',fr:'Arbre',it:'Albero',es:'Árbol',pt:'Árvore',ru:'Древо',uk:'Дерево',ar:'الشجرة',he:'אילן',sw:'Mti'};
+    const hanLabels = {ja:'漢字マップ',ko:'한자 맵',zh:'汉字地图',yue:'漢字地圖',vi:'Bản đồ Hán tự',th:'แผนที่ตัวอักษร',id:'Peta Hanzi',hi:'हान्ज़ी मानचित्र',en:'HanMap',de:'HanMap',fr:'Carte des hanzi',it:'Mappa hanzi',es:'Mapa de hanzi',pt:'Mapa de hanzi',ru:'Карта иероглифов',uk:'Карта ієрогліфів',ar:'خريطة الحروف',he:'מפת תווים',sw:'Ramani ya hanzi'};
     setNavText(document.getElementById('navWordOrder'), woLabels[currentUILang] || woLabels.en);
     setNavText(document.getElementById('navToWordMap'), wmLabels[currentUILang] || wmLabels.en);
     setNavText(document.getElementById('navToTree'), trLabels[currentUILang] || trLabels.en);
+    setNavText(document.getElementById('navToHanMap'), hanLabels[currentUILang] || hanLabels.en);
     const creditEl = document.getElementById('siteCredit');
     if (creditEl) creditEl.innerHTML = t('creditText');
     const disclaimerEl = document.getElementById('disclaimer');
