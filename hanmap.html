@@ -2504,7 +2504,7 @@
                 <span class="nav-sep">/</span>
                 <a href="wordmap.html" class="header-nav-link" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</a>
                 <span class="nav-sep">/</span>
-                <span class="header-nav-current"><span style="display:inline-block;font-family:&apos;Noto Serif JP&apos;,&apos;Noto Serif SC&apos;,&apos;Noto Serif TC&apos;,&apos;Noto Serif KR&apos;,serif;font-weight:700;vertical-align:-1px;margin-right:3px;font-size:13px">字</span>漢字マップ</span>
+                <span class="header-nav-current" id="navHanMap"><span style="display:inline-block;font-family:&apos;Noto Serif JP&apos;,&apos;Noto Serif SC&apos;,&apos;Noto Serif TC&apos;,&apos;Noto Serif KR&apos;,serif;font-weight:700;vertical-align:-1px;margin-right:3px;font-size:13px">字</span>漢字マップ</span>
                 <span class="nav-sep">/</span>
                 <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
             </nav>
@@ -4330,6 +4330,17 @@
             ru:'Древо', uk:'Дерево', ar:'الشجرة',
             he:'אילן', sw:'Mti',
         };
+        // Current-page nav label (this is the HanMap page). The leading 字
+        // glyph is a sibling span kept intact by setNavText (text node only).
+        const NAV_HAN = {
+            ja:'漢字マップ', ko:'한자 맵', zh:'汉字地图', yue:'漢字地圖', vi:'Bản đồ Hán tự',
+            th:'แผนที่ตัวอักษร', id:'Peta Hanzi', hi:'हान्ज़ी मानचित्र', en:'HanMap',
+            de:'HanMap', fr:'Carte des hanzi', it:'Mappa hanzi',
+            es: 'Mapa de hanzi',
+            pt: 'Mapa de hanzi',
+            ru:'Карта иероглифов', uk:'Карта ієрогліфів', ar:'خريطة الحروف',
+            he:'מפת תווים', sw:'Ramani ya hanzi',
+        };
 
         // Audit i18n: centralized localized UI strings. Moved here (before
         // applyUILang) so the i18n() helper is available during initial
@@ -4386,6 +4397,16 @@
             modernLangTooltip: { en:'modern lang', ja:'現代言語', ko:'현대어', zh:'现代语言', yue:'現代語言', vi:'ngôn ngữ hiện đại', th:'ภาษาสมัยใหม่', id:'bahasa modern', hi:'आधुनिक भाषा', de:'moderne Sprache', fr:'langue moderne', it:'lingua moderna', es:'idioma moderno', pt:'idioma moderno', ru:'современный язык', uk:'сучасна мова', ar:'لغة حديثة', he:'שפה מודרנית', sw:'lugha ya kisasa' },
             historicalLangTooltip: { en:'historical lang', ja:'歴史言語', ko:'역사 언어', zh:'历史语言', yue:'歷史語言', vi:'ngôn ngữ lịch sử', th:'ภาษาประวัติศาสตร์', id:'bahasa historis', hi:'ऐतिहासिक भाषा', de:'historische Sprache', fr:'langue historique', it:'lingua storica', es:'idioma histórico', pt:'idioma histórico', ru:'исторический язык', uk:'історична мова', ar:'لغة تاريخية', he:'שפה היסטורית', sw:'lugha ya kihistoria' },
             ariaRandomLang:    { en:'Random language', ja:'ランダムな言語', ko:'무작위 언어', zh:'随机语言', yue:'隨機語言', vi:'Ngôn ngữ ngẫu nhiên', th:'ภาษาแบบสุ่ม', id:'Bahasa acak', hi:'यादृच्छिक भाषा', de:'Zufällige Sprache', fr:'Langue aléatoire', it:'Lingua casuale', es:'Idioma aleatorio', pt:'Idioma aleatório', ru:'Случайный язык', uk:'Випадкова мова', ar:'لغة عشوائية', he:'שפה אקראית', sw:'Lugha ya nasibu' },
+            // HanMap-specific control labels (aria / title) — full 19-lang coverage.
+            ariaSelectChar:    { en:'Select character', ja:'漢字を選択', ko:'한자 선택', zh:'选择汉字', yue:'選擇漢字', vi:'Chọn chữ Hán', th:'เลือกตัวอักษร', id:'Pilih karakter', hi:'अक्षर चुनें', de:'Zeichen wählen', fr:'Choisir un caractère', it:'Seleziona carattere', es:'Seleccionar carácter', pt:'Selecionar caractere', ru:'Выбрать иероглиф', uk:'Вибрати ієрогліф', ar:'اختر حرفًا', he:'בחר תו', sw:'Chagua herufi' },
+            ariaRandomChar:    { en:'Random character', ja:'ランダムな漢字', ko:'무작위 한자', zh:'随机汉字', yue:'隨機漢字', vi:'Chữ Hán ngẫu nhiên', th:'ตัวอักษรแบบสุ่ม', id:'Karakter acak', hi:'यादृच्छिक अक्षर', de:'Zufälliges Zeichen', fr:'Caractère aléatoire', it:'Carattere casuale', es:'Carácter aleatorio', pt:'Caractere aleatório', ru:'Случайный иероглиф', uk:'Випадковий ієрогліф', ar:'حرف عشوائي', he:'תו אקראי', sw:'Herufi ya nasibu' },
+            ariaFilterLangs:   { en:'Filter languages', ja:'言語で絞り込み', ko:'언어 필터', zh:'按语言筛选', yue:'按語言篩選', vi:'Lọc ngôn ngữ', th:'กรองภาษา', id:'Saring bahasa', hi:'भाषाएँ फ़िल्टर करें', de:'Sprachen filtern', fr:'Filtrer les langues', it:'Filtra lingue', es:'Filtrar idiomas', pt:'Filtrar idiomas', ru:'Фильтр языков', uk:'Фільтр мов', ar:'تصفية اللغات', he:'סינון שפות', sw:'Chuja lugha' },
+            ariaClose:         { en:'Close', ja:'閉じる', ko:'닫기', zh:'关闭', yue:'關閉', vi:'Đóng', th:'ปิด', id:'Tutup', hi:'बंद करें', de:'Schließen', fr:'Fermer', it:'Chiudi', es:'Cerrar', pt:'Fechar', ru:'Закрыть', uk:'Закрити', ar:'إغلاق', he:'סגור', sw:'Funga' },
+            ariaToggleScript:  { en:'Toggle native script display', ja:'現地表記の表示切替', ko:'고유 문자 표시 전환', zh:'切换本地文字显示', yue:'切換本地文字顯示', vi:'Bật/tắt chữ viết bản địa', th:'สลับการแสดงอักษรพื้นเมือง', id:'Alih tampilan aksara asli', hi:'मूल लिपि प्रदर्शन बदलें', de:'Native Schrift umschalten', fr:'Basculer l\'écriture native', it:'Alterna scrittura nativa', es:'Alternar escritura nativa', pt:'Alternar escrita nativa', ru:'Переключить родное письмо', uk:'Перемкнути рідне письмо', ar:'تبديل عرض النص الأصلي', he:'החלף תצוגת כתב מקורי', sw:'Badilisha hati asilia' },
+            ariaSettings:      { en:'Display settings', ja:'表示設定', ko:'표시 설정', zh:'显示设置', yue:'顯示設定', vi:'Cài đặt hiển thị', th:'การตั้งค่าการแสดงผล', id:'Pengaturan tampilan', hi:'प्रदर्शन सेटिंग्स', de:'Anzeigeeinstellungen', fr:'Paramètres d\'affichage', it:'Impostazioni di visualizzazione', es:'Ajustes de visualización', pt:'Configurações de exibição', ru:'Настройки отображения', uk:'Налаштування відображення', ar:'إعدادات العرض', he:'הגדרות תצוגה', sw:'Mipangilio ya onyesho' },
+            ariaFontInc:       { en:'Increase label font size', ja:'ラベル文字を大きく', ko:'라벨 글꼴 크게', zh:'增大标签字体', yue:'放大標籤字體', vi:'Tăng cỡ chữ nhãn', th:'เพิ่มขนาดอักษรป้าย', id:'Perbesar huruf label', hi:'लेबल फ़ॉन्ट बड़ा करें', de:'Schriftgröße vergrößern', fr:'Agrandir la police', it:'Aumenta carattere etichetta', es:'Aumentar fuente', pt:'Aumentar fonte', ru:'Увеличить шрифт', uk:'Збільшити шрифт', ar:'تكبير خط التسمية', he:'הגדל גופן תווית', sw:'Ongeza saizi ya fonti' },
+            ariaFontDec:       { en:'Decrease label font size', ja:'ラベル文字を小さく', ko:'라벨 글꼴 작게', zh:'减小标签字体', yue:'縮小標籤字體', vi:'Giảm cỡ chữ nhãn', th:'ลดขนาดอักษรป้าย', id:'Perkecil huruf label', hi:'लेबल फ़ॉन्ट छोटा करें', de:'Schriftgröße verkleinern', fr:'Réduire la police', it:'Riduci carattere etichetta', es:'Reducir fuente', pt:'Diminuir fonte', ru:'Уменьшить шрифт', uk:'Зменшити шрифт', ar:'تصغير خط التسمية', he:'הקטן גופן תווית', sw:'Punguza saizi ya fonti' },
+            ariaMenu:          { en:'Menu', ja:'メニュー', ko:'메뉴', zh:'菜单', yue:'選單', vi:'Menu', th:'เมนู', id:'Menu', hi:'मेन्यू', de:'Menü', fr:'Menu', it:'Menu', es:'Menú', pt:'Menu', ru:'Меню', uk:'Меню', ar:'القائمة', he:'תפריט', sw:'Menyu' },
             // Audit Task 112: era legend explanation. Modern mode shows
             // only modern languages; historical mode adds historical
             // entries plus their modern descendants as cross-reference
@@ -4629,6 +4650,7 @@
             setNavText(document.getElementById('nav-order-label'), NAV_ORDER[uiLang] || NAV_ORDER.en);
             setNavText(document.getElementById('navWordMap'), NAV_MAP[uiLang] || NAV_MAP.en);
             setNavText(document.getElementById('nav-tree-label'), NAV_TREE[uiLang] || NAV_TREE.en);
+            setNavText(document.getElementById('navHanMap'), NAV_HAN[uiLang] || NAV_HAN.en);
             const sizeEl = document.getElementById('size-label');
             if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
             ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
@@ -4668,6 +4690,19 @@
                 ['era-switch',      'ariaEraGroup',    'aria-label'],
                 ['lang-random',     'ariaRandomLang',  'aria-label'],
                 ['lang-random',     'ariaRandomLang',  'title'],
+                // HanMap-specific controls (previously hardcoded English).
+                ['char-current-btn','ariaSelectChar',  'title'],
+                ['char-random-btn', 'ariaRandomChar',  'aria-label'],
+                ['char-random-btn', 'ariaRandomChar',  'title'],
+                ['char-modal-close','ariaClose',       'aria-label'],
+                ['hm-lang-filter-btn',  'ariaFilterLangs', 'aria-label'],
+                ['hm-lang-filter-btn',  'ariaFilterLangs', 'title'],
+                ['hm-lang-filter-close','ariaClose',   'aria-label'],
+                ['toggle-script',   'ariaToggleScript','aria-label'],
+                ['settings-toggle', 'ariaSettings',    'aria-label'],
+                ['size-up',         'ariaFontInc',     'aria-label'],
+                ['size-down',       'ariaFontDec',     'aria-label'],
+                ['hdr-menu-toggle', 'ariaMenu',        'aria-label'],
             ];
             for (const [id, key, attr] of ariaTargets) {
                 const el = document.getElementById(id);
@@ -8252,10 +8287,26 @@
                     if (rt) html += `<div style="margin:6px 0 4px;font-size:12px;color:#4a6cf7;font-weight:600">${escapeHtml(rt)}</div>`;
                 }
                 if (hanMeta.family) {
-                    html += `<div style="margin:2px 0;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '系統' : uiBase === 'ko' ? '계통' : uiBase === 'zh' || uiBase === 'yue' ? '语系' : 'Family')}:</b> ${escapeHtml(hanMeta.family)}</div>`;
+                    const famLabel = {
+                        en: 'Family', ja: '系統', ko: '계통',
+                        zh: '语系', yue: '語系', vi: 'Ngữ hệ', th: 'ตระกูลภาษา',
+                        id: 'Rumpun', hi: 'भाषा परिवार',
+                        de: 'Sprachfamilie', fr: 'Famille', it: 'Famiglia',
+                        es: 'Familia', pt: 'Família', ru: 'Семья',
+                        uk: 'Сім\'я', ar: 'العائلة', he: 'משפחה', sw: 'Familia',
+                    }[uiBase] || 'Family';
+                    html += `<div style="margin:2px 0;font-size:11px;color:#666"><b>${escapeHtml(famLabel)}:</b> ${escapeHtml(hanMeta.family)}</div>`;
                 }
                 if (hanMeta.region) {
-                    html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(uiBase === 'ja' ? '地域' : uiBase === 'ko' ? '지역' : uiBase === 'zh' || uiBase === 'yue' ? '地区' : 'Region')}:</b> ${escapeHtml(hanMeta.region)}</div>`;
+                    const regLabel = {
+                        en: 'Region', ja: '地域', ko: '지역',
+                        zh: '地区', yue: '地區', vi: 'Khu vực', th: 'ภูมิภาค',
+                        id: 'Wilayah', hi: 'क्षेत्र',
+                        de: 'Region', fr: 'Région', it: 'Regione',
+                        es: 'Región', pt: 'Região', ru: 'Регион',
+                        uk: 'Регіон', ar: 'المنطقة', he: 'אזור', sw: 'Eneo',
+                    }[uiBase] || 'Region';
+                    html += `<div style="margin:2px 0 6px;font-size:11px;color:#666"><b>${escapeHtml(regLabel)}:</b> ${escapeHtml(hanMeta.region)}</div>`;
                 }
                 if (hanMeta.speakers) {
                     // 話者数 (speaker count) row — sourced figure with
