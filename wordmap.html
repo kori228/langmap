@@ -4660,26 +4660,27 @@
                     }
                     return true;
                 };
+                // Fine ring step (~6px) so a label nicked at the clearance
+                // edge settles just past it rather than a whole label-height
+                // away.
+                const _ringStep = Math.max(4, _ch * 0.13), _maxR = MAX_PUSH * 2.2;
                 for (const c of _rendered) {
                     const ax = ppx[c].x, ay = ppx[c].y;
-                    const off = offsets[c] || { x: 0, y: 0 };
                     let chosen = null;
-                    // 1) Closest-to-anchor free point along anchor -> SA-center
-                    //    (t=0 is home, t=1 is the SA-optimized position).
-                    for (let i = 0; i <= 10; i++) {
-                        const t = i / 10;
-                        const x = ax + off.x * t, y = ay + off.y * t;
-                        if (_free(x, y)) { chosen = { x, y }; break; }
-                    }
-                    // 2) Even the SA position now overlaps a higher-priority
-                    //    label that moved home — spiral out from the anchor for
-                    //    the nearest free slot, bounded by the hide threshold.
-                    if (!chosen) {
-                        const ring = Math.max(8, _ch * 0.6), maxR = MAX_PUSH * 2.2;
+                    // Prefer the true anchor; otherwise take the point CLOSEST
+                    // to it that's free of already-placed (higher-priority)
+                    // labels — a fine spiral so the displacement is the minimum
+                    // needed to clear the overlap (a label only nicked by a
+                    // neighbour at the clearance edge moves just a few px, not
+                    // tens). Bounded by the hide threshold.
+                    if (_free(ax, ay)) {
+                        chosen = { x: ax, y: ay };
+                    } else {
                         outer:
-                        for (let r = ring; r <= maxR; r += ring) {
-                            for (let deg = 0; deg < 360; deg += 30) {
-                                const rad = deg * Math.PI / 180;
+                        for (let r = _ringStep; r <= _maxR; r += _ringStep) {
+                            const n = Math.max(8, Math.round((2 * Math.PI * r) / _ringStep));
+                            for (let k = 0; k < n; k++) {
+                                const rad = (2 * Math.PI * k) / n;
                                 const x = ax + Math.cos(rad) * r, y = ay + Math.sin(rad) * r;
                                 if (_free(x, y)) { chosen = { x, y }; break outer; }
                             }
