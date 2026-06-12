@@ -555,6 +555,16 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
         .toggle-btn.active:hover { background: #444; }
+        /* Red swatch on the Pins toggle = a preview of the map dot it shows.
+           Inline before the label on the same row; dim when off, vivid on. */
+        #toggle-pins .pin-label-row { display: inline-flex; align-items: center; gap: 3px; }
+        #toggle-pins .pin-swatch {
+            flex: 0 0 auto; width: 5px; height: 5px;
+            border-radius: 50%; background: #e02424;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
+            opacity: 0.4; transition: opacity 0.25s ease;
+        }
+        #toggle-pins.active .pin-swatch { opacity: 1; }
         /* Hanmap: 3D globe view is hidden (user request 2026-05-28).
            Globe.gl is still loaded and the toggle markup remains in the
            DOM so wordmap-inherited init paths don't crash; only the
@@ -827,6 +837,18 @@
             width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        /* Red location pin (opt-in via the Pins toggle). Sits at the marker
+           anchor — the true lat/lng — behind the label glyphs (z-index -1,
+           still above the map tiles), regardless of the label's offset. */
+        .lang-pin-dot {
+            position: absolute; left: 50%; top: 50%;
+            width: 6px; height: 6px; margin: -3px 0 0 -3px;
+            border-radius: 50%;
+            background: #e02424;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
+            pointer-events: none;
+            z-index: -1;
+        }
         /* When the label is already selected (white card), plain
            background-on-hover is invisible. Switch the text color to the
            selection blue so hover state is still readable. */
@@ -2697,6 +2719,10 @@
             <button class="toggle-btn active" id="toggle-script" aria-pressed="true" aria-label="Toggle native script display"><span class="label">字</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-ipa" aria-pressed="true" aria-label="Toggle pronunciation / IPA / transcription display"><span class="label">Pron.</span><span class="onoff">ON</span></button>
             <button class="toggle-btn active" id="toggle-name" aria-pressed="true" aria-label="Toggle language-name display"><span class="label">Name</span><span class="onoff">ON</span></button>
+            <!-- Red location pins: default OFF. When ON, a red dot marks each
+                 language's true lat/lng so an offset label can be related back
+                 to its real position. -->
+            <button class="toggle-btn" id="toggle-pins" aria-pressed="false" aria-label="Toggle location pins"><span class="pin-label-row"><span class="pin-swatch" aria-hidden="true"></span><span class="label">Pins</span></span><span class="onoff">OFF</span></button>
             <div class="radio-switch radio-switch-v" id="name-switch" role="radiogroup" aria-label="Name display (native / translated)">
                 <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
                 <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
@@ -4653,15 +4679,19 @@
             setNavText(document.getElementById('navHanMap'), NAV_HAN[uiLang] || NAV_HAN.en);
             const sizeEl = document.getElementById('size-label');
             if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
-            ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
+            ['toggle-word','toggle-ipa','toggle-name','toggle-pins'].forEach(id => {
                 const key = id.replace('toggle-','');
                 const el = document.getElementById(id);
+                if (!el) return;
                 const text = wt(key);
                 const lbl = el.querySelector('.label');
                 if (lbl) lbl.textContent = text;
                 // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
+                // toggle-pins isn't in the ariaTargets table below — localize
+                // its aria-label off the same short label here.
+                if (id === 'toggle-pins') el.setAttribute('aria-label', text);
                 // Refresh the ON/OFF text in the user's UI language.
                 if (typeof updateOnOff === 'function') {
                     updateOnOff(el, el.classList.contains('active'));
@@ -5214,11 +5244,13 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false, showScript = true;
+        let showPins = false;
         let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
         const btnScript = document.getElementById('toggle-script');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
+        const btnPins = document.getElementById('toggle-pins');
         const nameNative = document.getElementById('name-native');
         const nameTranslated = document.getElementById('name-translated');
         const eraModern = document.getElementById('era-modern');
@@ -5284,6 +5316,10 @@
         setupToggle(btnScript, () => showScript, v => showScript = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
+        if (btnPins) setupToggle(btnPins, () => showPins, v => showPins = v);
+        // Persist the pin toggle in the URL hash (setupToggle flips showPins
+        // first, so this listener serializes the new value).
+        if (btnPins) btnPins.addEventListener('click', () => updateHash());
         updateTopLeftVisibility();
 
         function updateNameSwitch() {
@@ -7260,7 +7296,9 @@
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
-                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
+                // Opt-in red dot at the true lat/lng (anchor), behind the label.
+                const pinHtml = showPins ? '<div class="lang-pin-dot"></div>' : '';
+                const icon = L.divIcon({ className: '', html: pinHtml + labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
@@ -7450,6 +7488,7 @@
             if (!showScript) params.set('w_script', '0');
             if (!showIpa)    params.set('w_ipa', '0');
             if (!showName)   params.set('w_name', '0');
+            if (showPins)    params.set('pin', '1');   // default OFF — emit only when on
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
             if (is3D && globe) params.set('alt', globe.pointOfView().altitude.toFixed(2));
@@ -7537,6 +7576,14 @@
             _applyToggleFromHash('w_script', btnScript, v => showScript = v);
             _applyToggleFromHash('w_ipa',    btnIpa,    v => showIpa = v);
             _applyToggleFromHash('w_name',   btnName,   v => showName = v);
+            // Pins is default-OFF, so the URL carries pin=1 when ON (inverse
+            // of the four above) — restore it explicitly.
+            if (params.get('pin') === '1' && btnPins) {
+                showPins = true;
+                btnPins.classList.add('active');
+                btnPins.setAttribute('aria-pressed', 'true');
+                if (typeof updateOnOff === 'function') updateOnOff(btnPins, true);
+            }
             // Re-evaluate all-OFF state for top-left visibility.
             if (typeof updateTopLeftVisibility === 'function') updateTopLeftVisibility();
             const ui = _normalizeUiLang(params.get('ui'));
