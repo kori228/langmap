@@ -563,7 +563,10 @@
             background: #e02424;
             box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
             pointer-events: none;
-            z-index: 5;
+            /* Sit BEHIND the label text (user request). Negative z-index keeps
+               the dot inside the marker's stacking context — behind the label
+               glyphs but still above the map tiles. */
+            z-index: -1;
         }
         /* When the label is already selected (white card), plain
            background-on-hover is invisible. Switch the text color to the
@@ -3472,6 +3475,10 @@
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
         if (btnPins) setupToggle(btnPins, () => showPins, v => showPins = v);
+        // Persist the pin toggle in the URL hash (unlike the form/pron/name
+        // toggles). setupToggle's own click listener flips showPins first, so
+        // this runs after and serializes the new value.
+        if (btnPins) btnPins.addEventListener('click', () => updateHash());
 
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
@@ -4836,6 +4843,7 @@
             params.set('lng', lng.toFixed(2));
             params.set('nat', showNative ? '1' : '0');
             params.set('hist', showHistorical ? '1' : '0');
+            params.set('pin', showPins ? '1' : '0');
             params.set('fs', String(fontSizeSlider.value));
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
@@ -4894,6 +4902,13 @@
                 eraHistorical.classList.toggle('active', showHistorical);
                 eraModern.setAttribute('aria-checked', String(!showHistorical));
                 eraHistorical.setAttribute('aria-checked', String(showHistorical));
+            }
+            const pin = params.get('pin');
+            if ((pin === '0' || pin === '1') && btnPins) {
+                showPins = pin === '1';
+                btnPins.classList.toggle('active', showPins);
+                btnPins.setAttribute('aria-pressed', String(showPins));
+                if (typeof updateOnOff === 'function') updateOnOff(btnPins, showPins);
             }
             const fs = parseInt(params.get('fs'));
             if (Number.isFinite(fs) && fs >= 50 && fs <= 200) {
