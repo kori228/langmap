@@ -56,8 +56,8 @@
             gtag('config', 'G-JZ7JJBCCHG');
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=104">
-    <link rel="stylesheet" href="styles.css?v=104">
+    <link rel="stylesheet" href="styles.css?v=107">
+    <link rel="stylesheet" href="styles.css?v=107">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Webfonts for ancient/rare scripts (Tangut, Old Turkic Orkhon, Mongolian,
          Sogdian, Phags-Pa, Khitan Small Script, Manichaean). Without these the
@@ -344,6 +344,18 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
         .toggle-btn.active:hover { background: #444; }
+        /* Red swatch on the Pins toggle = a preview of the map dot it shows,
+           so the control reads at a glance. Sits inline before the label on
+           the same row (the button itself is a flex column: label-row above,
+           ON/OFF below). Dim when off, vivid when on. */
+        #toggle-pins .pin-label-row { display: inline-flex; align-items: center; gap: 3px; }
+        #toggle-pins .pin-swatch {
+            flex: 0 0 auto; width: 5px; height: 5px;
+            border-radius: 50%; background: #e02424;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
+            opacity: 0.4; transition: opacity 0.25s ease;
+        }
+        #toggle-pins.active .pin-swatch { opacity: 1; }
         .toggle-3d-btn {
             width: 40px; height: 40px; min-width: 40px; max-width: 40px;
             border-radius: 50%; font-size: 12px; font-weight: 700;
@@ -551,6 +563,23 @@
             width: auto; min-width: 0; margin-right: 0; flex-shrink: unset;
         }
         .lang-label:hover { background: rgba(255,255,255,0.7); border-radius: 4px; }
+        /* Red location pin (opt-in via the Pins toggle). Sits at the marker
+           anchor — the true lat/lng — regardless of how far the label text
+           is offset for de-cluttering. left/top:50% of the 0-size divIcon
+           container resolves to the anchor; the negative margin centers the
+           6px dot on it. */
+        .lang-pin-dot {
+            position: absolute; left: 50%; top: 50%;
+            width: 6px; height: 6px; margin: -3px 0 0 -3px;
+            border-radius: 50%;
+            background: #e02424;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
+            pointer-events: none;
+            /* Sit BEHIND the label text (user request). Negative z-index keeps
+               the dot inside the marker's stacking context — behind the label
+               glyphs but still above the map tiles. */
+            z-index: -1;
+        }
         /* When the label is already selected (white card), plain
            background-on-hover is invisible. Switch the text color to the
            selection blue so hover state is still readable. */
@@ -1982,7 +2011,7 @@
                 <span class="nav-sep">/</span>
                 <span class="header-nav-current" id="navWordMap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Word Map</span>
                 <span class="nav-sep">/</span>
-                <a href="hanmap.html" class="header-nav-link"><span style="display:inline-block;font-family:&apos;Noto Serif JP&apos;,&apos;Noto Serif SC&apos;,&apos;Noto Serif TC&apos;,&apos;Noto Serif KR&apos;,serif;font-weight:700;vertical-align:-1px;margin-right:3px;font-size:13px">字</span>漢字マップ</a>
+                <a href="hanmap.html" class="header-nav-link" id="nav-han"><span style="display:inline-block;font-family:&apos;Noto Serif JP&apos;,&apos;Noto Serif SC&apos;,&apos;Noto Serif TC&apos;,&apos;Noto Serif KR&apos;,serif;font-weight:700;vertical-align:-1px;margin-right:3px;font-size:13px">字</span>HanMap</a>
                 <span class="nav-sep">/</span>
                 <a href="tree.html" class="header-nav-link" id="nav-tree-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="4" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/><path d="M12 6v2M12 8h-6M12 8h6M6 14v4M18 14v4"/></svg>Tree</a>
             </nav>
@@ -2121,6 +2150,10 @@
                 <button class="radio-opt" id="name-native" role="radio" aria-checked="false"></button>
                 <button class="radio-opt active" id="name-translated" role="radio" aria-checked="true"></button>
             </div>
+            <!-- Red location pins: default OFF. When ON, a small red dot is
+                 drawn at each language's true lat/lng so the de-cluttered
+                 (offset) label can be related back to its real location. -->
+            <button class="toggle-btn" id="toggle-pins" aria-pressed="false" aria-label="Toggle location pins"><span class="pin-label-row"><span class="pin-swatch" aria-hidden="true"></span><span class="label">Pins</span></span><span class="onoff">OFF</span></button>
             <div class="size-slider-wrap">
                 <!-- + on top, − on bottom; the hidden range input keeps the
                      existing JS surface (fontSizeSlider.value, input/change
@@ -2867,6 +2900,15 @@
             ru:'Древо', uk:'Дерево', ar:'الشجرة',
             he:'אילן', sw:'Mti',
         };
+        const NAV_HAN = {
+            ja:'漢字マップ', ko:'한자 맵', zh:'汉字地图', yue:'漢字地圖', vi:'Bản đồ Hán tự',
+            th:'แผนที่ตัวอักษร', id:'Peta Hanzi', hi:'हान्ज़ी मानचित्र', en:'HanMap',
+            de:'HanMap', fr:'Carte des hanzi', it:'Mappa hanzi',
+            es: 'Mapa de hanzi',
+            pt: 'Mapa de hanzi',
+            ru:'Карта иероглифов', uk:'Карта ієрогліфів', ar:'خريطة الحروف',
+            he:'מפת תווים', sw:'Ramani ya hanzi',
+        };
 
         // Audit i18n: centralized localized UI strings. Moved here (before
         // applyUILang) so the i18n() helper is available during initial
@@ -3166,17 +3208,22 @@
             setNavText(document.getElementById('nav-order-label'), NAV_ORDER[uiLang] || NAV_ORDER.en);
             setNavText(document.getElementById('navWordMap'), NAV_MAP[uiLang] || NAV_MAP.en);
             setNavText(document.getElementById('nav-tree-label'), NAV_TREE[uiLang] || NAV_TREE.en);
+            setNavText(document.getElementById('nav-han'), NAV_HAN[uiLang] || NAV_HAN.en);
             const sizeEl = document.getElementById('size-label');
             if (sizeEl) sizeEl.textContent = wt('size') || 'Font Size';
-            ['toggle-word','toggle-ipa','toggle-name'].forEach(id => {
+            ['toggle-word','toggle-ipa','toggle-name','toggle-pins'].forEach(id => {
                 const key = id.replace('toggle-','');
                 const el = document.getElementById(id);
+                if (!el) return;
                 const text = wt(key);
                 const lbl = el.querySelector('.label');
                 if (lbl) lbl.textContent = text;
                 // Hover tooltip uses the longer audit-recommended form (wordCol/ipaCol)
                 // when available, falling back to the short label.
                 el.title = wt(key + 'Col') || text;
+                // toggle-pins isn't covered by the ariaTargets table below, so
+                // localize its aria-label here off the same short label.
+                if (id === 'toggle-pins') el.setAttribute('aria-label', text);
                 // Refresh the ON/OFF text in the user's UI language.
                 if (typeof updateOnOff === 'function') {
                     updateOnOff(el, el.classList.contains('active'));
@@ -3383,10 +3430,12 @@
 
         // --- Toggle buttons ---
         let showWord = true, showIpa = true, showName = true, showNative = false;
+        let showPins = false;
         let showHistorical = false;
         const btnWord = document.getElementById('toggle-word');
         const btnIpa = document.getElementById('toggle-ipa');
         const btnName = document.getElementById('toggle-name');
+        const btnPins = document.getElementById('toggle-pins');
         const nameNative = document.getElementById('name-native');
         const nameTranslated = document.getElementById('name-translated');
         const eraModern = document.getElementById('era-modern');
@@ -3437,6 +3486,11 @@
         setupToggle(btnWord, () => showWord, v => showWord = v);
         setupToggle(btnIpa, () => showIpa, v => showIpa = v);
         setupToggle(btnName, () => showName, v => showName = v);
+        if (btnPins) setupToggle(btnPins, () => showPins, v => showPins = v);
+        // Persist the pin toggle in the URL hash (unlike the form/pron/name
+        // toggles). setupToggle's own click listener flips showPins first, so
+        // this runs after and serializes the new value.
+        if (btnPins) btnPins.addEventListener('click', () => updateHash());
 
         function updateNameSwitch() {
             nameNative.classList.toggle('active', showNative);
@@ -4471,7 +4525,22 @@
             // cellGroups-assigned target. Beyond this the label is hidden
             // (kept off the map) rather than visually relocated to a
             // misleading geographic position.
-            const MAX_PUSH = collisionBudgetH * 1.5;
+            //
+            // The push budget is in PIXELS, but a constant pixel push maps
+            // to a much LARGER geographic distance when zoomed out (the
+            // whole world is compressed into the viewport). So at low zoom
+            // a label could end up rendered hundreds of km from its true
+            // lat/lng — user report: "Zoomアウトすると必要以上に本来の位置
+            // より離れてしまう". Tighten the budget as we zoom out so a
+            // label that can't fit within the smaller (geographically
+            // tighter) budget is HIDDEN rather than relocated to a
+            // misleading position. (Zoomed in, the projection is generous
+            // enough that the full budget stays geographically small.)
+            const _pushZoomFactor = zoom <= 3 ? 0.5
+                                  : zoom <= 4 ? 0.65
+                                  : zoom <= 5 ? 0.8
+                                  : 1;
+            const MAX_PUSH = collisionBudgetH * 1.5 * _pushZoomFactor;
             const _placedBoxes = [];
             const hiddenCodes = new Set();
             const _findFreeY = (cx, startY, _placed, dir) => {
@@ -4563,6 +4632,78 @@
                 }
             }
 
+            // Priority pull-home pass. SA optimizes over the FULL visible set
+            // (incl. speaker-thinned labels that are never drawn) and spreads
+            // co-located pairs symmetrically, so it can leave a RENDERED label
+            // far from its anchor even when there's room to draw it home —
+            // either dodging a neighbour the user can't see, or splitting a
+            // tiny micro-language sitting on top of a major one (user reports
+            // 2026-06-12: Belarusian stranded with no visible neighbour; at z5
+            // Silesian shoved aside by Wymysorys ~13px away; Rusyn over-moved).
+            //
+            // Re-place rendered labels greedily in speaker-priority order: each
+            // takes the position CLOSEST to its true anchor that doesn't
+            // overlap an already-placed (higher-priority) label. So a major
+            // language claims its pin and evicts a tiny co-located neighbour,
+            // an isolated label returns home, and nothing overlaps. A label
+            // that can't fit within the hide threshold is dropped.
+            {
+                const _rendered = allRenderable.filter(c => ppx[c] && isActive(c) && !hiddenCodes.has(c));
+                _rendered.sort((a, b) => {
+                    // Focused (open modal) and trivia-spotlight langs claim
+                    // their pin first — same precedence as the greedy pass.
+                    if (_focusedCode) {
+                        if (a === _focusedCode && b !== _focusedCode) return -1;
+                        if (b === _focusedCode && a !== _focusedCode) return 1;
+                    }
+                    if (_spotlight) {
+                        const aS = _spotlight.has(a) ? 0 : 1, bS = _spotlight.has(b) ? 0 : 1;
+                        if (aS !== bS) return aS - bS;
+                    }
+                    const sa = langSpeakerCount(a) || 0, sb = langSpeakerCount(b) || 0;
+                    if (sb !== sa) return sb - sa;
+                    return a < b ? -1 : a > b ? 1 : 0;
+                });
+                const _cw = _bbHalfW * 2, _ch = _bbHalfH * 2;
+                const _placed = [];
+                const _free = (x, y) => {
+                    for (const p of _placed) {
+                        if (Math.abs(p.x - x) < _cw && Math.abs(p.y - y) < _ch) return false;
+                    }
+                    return true;
+                };
+                // Fine ring step (~6px) so a label nicked at the clearance
+                // edge settles just past it rather than a whole label-height
+                // away.
+                const _ringStep = Math.max(4, _ch * 0.13), _maxR = MAX_PUSH * 2.2;
+                for (const c of _rendered) {
+                    const ax = ppx[c].x, ay = ppx[c].y;
+                    let chosen = null;
+                    // Prefer the true anchor; otherwise take the point CLOSEST
+                    // to it that's free of already-placed (higher-priority)
+                    // labels — a fine spiral so the displacement is the minimum
+                    // needed to clear the overlap (a label only nicked by a
+                    // neighbour at the clearance edge moves just a few px, not
+                    // tens). Bounded by the hide threshold.
+                    if (_free(ax, ay)) {
+                        chosen = { x: ax, y: ay };
+                    } else {
+                        outer:
+                        for (let r = _ringStep; r <= _maxR; r += _ringStep) {
+                            const n = Math.max(8, Math.round((2 * Math.PI * r) / _ringStep));
+                            for (let k = 0; k < n; k++) {
+                                const rad = (2 * Math.PI * k) / n;
+                                const x = ax + Math.cos(rad) * r, y = ay + Math.sin(rad) * r;
+                                if (_free(x, y)) { chosen = { x, y }; break outer; }
+                            }
+                        }
+                    }
+                    if (!chosen) { hiddenCodes.add(c); continue; }
+                    _placed.push(chosen);
+                    offsets[c] = { x: chosen.x - ax, y: chosen.y - ay };
+                }
+            }
+
             // Single render loop for both attested and unattested langs.
             // Skip codes that the collision pass couldn't place.
             for (const code of allRenderable) {
@@ -4584,7 +4725,11 @@
                 const cssClass = isUna ? 'lang-label unattested' : 'lang-label';
                 const html = buildLabelHtml(code, word, ipa, displayName, descColor, cssClass);
                 const labelHtml = html.replace('>', ` style="transform:translate(calc(-50% + ${off.x}px),calc(-50% + ${off.y}px))">`);
-                const icon = L.divIcon({ className: '', html: labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
+                // Opt-in red dot at the true lat/lng (anchor), independent of
+                // the label's de-clutter offset. Prepended so it renders under
+                // the label text.
+                const pinHtml = showPins ? '<div class="lang-pin-dot"></div>' : '';
+                const icon = L.divIcon({ className: '', html: pinHtml + labelHtml, iconSize: [0, 0], iconAnchor: [0, 0] });
                 const marker = L.marker([lang.lat, lang.lng], { icon, interactive: true });
                 marker._langCode = code;
                 marker.on('click', () => showLangInfo(code));
@@ -4745,6 +4890,7 @@
             params.set('lng', lng.toFixed(2));
             params.set('nat', showNative ? '1' : '0');
             params.set('hist', showHistorical ? '1' : '0');
+            params.set('pin', showPins ? '1' : '0');
             params.set('fs', String(fontSizeSlider.value));
             params.set('ui', uiLang);
             params.set('g3d', is3D ? '1' : '0');
@@ -4803,6 +4949,13 @@
                 eraHistorical.classList.toggle('active', showHistorical);
                 eraModern.setAttribute('aria-checked', String(!showHistorical));
                 eraHistorical.setAttribute('aria-checked', String(showHistorical));
+            }
+            const pin = params.get('pin');
+            if ((pin === '0' || pin === '1') && btnPins) {
+                showPins = pin === '1';
+                btnPins.classList.toggle('active', showPins);
+                btnPins.setAttribute('aria-pressed', String(showPins));
+                if (typeof updateOnOff === 'function') updateOnOff(btnPins, showPins);
             }
             const fs = parseInt(params.get('fs'));
             if (Number.isFinite(fs) && fs >= 50 && fs <= 200) {
