@@ -24093,6 +24093,8 @@ const HAN_VARIANTS = {
         "surface": "er6",
         "ipa": "əl²³¹",
         "label": "文讀"
+      }
+    ]
   },
   "口": {
     "nan": [
