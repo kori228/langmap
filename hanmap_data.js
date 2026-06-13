@@ -21092,14 +21092,14 @@ const HAN_VARIANTS = {
     "wuu": [
       {
         "native": "",
-        "surface": "zeq¹²",
-        "ipa": "zəʔ¹²",
+        "surface": "niq¹²",
+        "ipa": "ȵiɪʔ¹²",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "niq¹²",
-        "ipa": "ȵiɪʔ¹²",
+        "surface": "zeq¹²",
+        "ipa": "zəʔ¹²",
         "label": "文讀"
       }
     ],
@@ -21120,42 +21120,42 @@ const HAN_VARIANTS = {
     "wuu_nb": [
       {
         "native": "",
-        "surface": "zeq²¹³",
-        "ipa": "zəʔ²¹³",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "nyiq²¹³",
-        "ipa": "ȵiɪʔ²¹³",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
         "label": "文讀"
       }
     ],
     "wuu_hz": [
       {
         "native": "",
-        "surface": "zeq²¹³",
-        "ipa": "zəʔ²¹³",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "nyiq²¹³",
-        "ipa": "ȵiɪʔ²¹³",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
         "label": "文讀"
       }
     ],
     "wuu_jx": [
       {
         "native": "",
-        "surface": "zeq²¹³",
-        "ipa": "zəʔ²¹³",
+        "surface": "nyiq²¹³",
+        "ipa": "ȵiɪʔ²¹³",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "nyiq²¹³",
-        "ipa": "ȵiɪʔ²¹³",
+        "surface": "zeq²¹³",
+        "ipa": "zəʔ²¹³",
         "label": "文讀"
       }
     ],
