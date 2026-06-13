@@ -15200,13 +15200,15 @@ const HAN_LANG_META = {
       "sw": "Wu ya Suzhou ni kiwango cha fasihi na opera cha Wu ya kaskazini, maarufu kupitia opera ya Kunqu (muziki wa kifahari wa enzi ya Ming). Inachukuliwa kuwa lahja ya Wu 'laini' zaidi, yenye mstari wa melodia laini na wa kupendeza. Inahifadhi kikamilifu sauti za kwanza za sauti za Kichina cha Kati, ina mfumo wa toni 7, na mstari wa melodia wa ustadi mkubwa."
     },
     "sources": [
+      "汪平 (1996 蘇州方言語音研究, 2011 蘇州方言研究)",
+      "葉祥苓 (1993 蘇州方言詞典,1988 蘇州方言志)",
+      "Wugniu.com",
       "Wiktionary (Suzhou Wu)",
-      "蘇州方言詞典"
     ],
     "romanization": {
-      "name": "Suzhou Romanisation",
-      "authority": "Wang Ping & Suzhou linguistic society",
-      "year": 1991
+      "name": "Wugniu",
+      "authority": "Wugniu.com",
+      "year": "~2016"
     },
     "speakers": "約700万人 (蘇州市域・太湖片)",
     "speakersSource": "Wikipedia (英語版「Suzhou dialect」, 2026-05-30閲覧)"
