@@ -7195,7 +7195,6 @@ const HAN_DATA = {
       "mnp": "nǐ",
       "wuu": "hher²³",
       "wuu_nb": "hher²¹³",
-      "wuu_sz": "er6",
       "wuu_wz": "ngai³¹",
       "wuu_hz": "hher²¹³",
       "wuu_jx": "hher²³",
@@ -7303,7 +7302,6 @@ const HAN_DATA = {
       "mnp": "ni˧˩",
       "wuu": "ɦɚ²³",
       "wuu_nb": "ɦɚ²¹³",
-      "wuu_sz": "ɦəl²³¹",
       "wuu_wz": "ŋai³¹",
       "wuu_hz": "ɦɚ²¹³",
       "wuu_jx": "ɦɚ²³",
@@ -11813,7 +11811,6 @@ const HAN_DATA = {
       "mnp": "āng",
       "wuu": "ven²³",
       "wuu_nb": "veng²¹³",
-      "wuu_sz": "ven2",
       "wuu_wz": "vang³¹",
       "wuu_hz": "ven²¹",
       "wuu_jx": "ven²²",
@@ -11917,7 +11914,6 @@ const HAN_DATA = {
       "mnp": "aŋ˧˧",
       "wuu": "vən²³",
       "wuu_nb": "vəŋ²¹³",
-      "wuu_sz": "vən²²³",
       "wuu_wz": "vaŋ³¹",
       "wuu_hz": "vən²¹",
       "wuu_jx": "vən²²",
@@ -21096,28 +21092,28 @@ const HAN_VARIANTS = {
     "wuu": [
       {
         "native": "",
-        "surface": "zeq¹²",
-        "ipa": "zəʔ¹²",
+        "surface": "niq¹²",
+        "ipa": "ȵiɪʔ¹²",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "niq¹²",
-        "ipa": "ȵiɪʔ¹²",
+        "surface": "zeq¹²",
+        "ipa": "zəʔ¹²",
         "label": "文讀"
       }
     ],
     "wuu_sz": [
       {
         "native": "",
-        "surface": "zeq8",
-        "ipa": "zəʔ²³",
+        "surface": "gniq8",
+        "ipa": "ȵiəʔ²³",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "gniq8",
-        "ipa": "ȵiəʔ²³",
+        "surface": "zeq8",
+        "ipa": "zəʔ²³",
         "label": "文讀"
       }
     ],
@@ -21324,7 +21320,7 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "ngeq8",
         "ipa": "ŋəʔ²³",
-        "label": "白讀 (moon/month)"
+        "label": "白讀"
       },
       {
         "native": "",
@@ -24084,7 +24080,19 @@ const HAN_VARIANTS = {
         "ipa": "ni˨˩",
         "label": "文讀"
       }
-    ]
+    ],
+    "wuu_sz": [
+      {
+        "native":"",
+        "surface": "gni6",
+        "ipa": "ɲi²³¹",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "er6",
+        "ipa": "əl²³¹",
+        "label": "文讀"
   },
   "口": {
     "nan": [
@@ -26798,16 +26806,10 @@ const HAN_VARIANTS = {
     "wuu_sz": [
       {
         "native": "",
-        "surface": "zeq²³",
+        "surface": "zeq8",
         "ipa": "zəʔ²³",
-        "label": "白讀 (eat)"
+        "label": ""
       },
-      {
-        "native": "",
-        "surface": "seq⁴",
-        "ipa": "səʔ⁴³",
-        "label": "文讀 (food)"
-      }
     ],
     "wuu_nb": [
       {
@@ -27652,6 +27654,20 @@ const HAN_VARIANTS = {
         "native": "",
         "surface": "bun⁵",
         "ipa": "bun˨˦",
+        "label": "文讀"
+      }
+    ],
+    "wuu_sz": [
+      {
+        "native": "",
+        "surface": "men2",
+        "ipa": "mən²²³",
+        "label": "白讀"
+      },
+      {
+        "native": "",
+        "surface": "ven2",
+        "ipa": "vən²²³",
         "label": "文讀"
       }
     ]
