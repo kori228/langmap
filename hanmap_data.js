@@ -3612,7 +3612,7 @@ const HAN_DATA = {
       "mnp": "thǔ",
       "wuu": "thu³⁵",
       "wuu_nb": "thu³⁵",
-      "wuu_sz": "thəu3",
+      "wuu_sz": "thou3",
       "wuu_wz": "thou³⁵",
       "wuu_hz": "thu⁵³",
       "wuu_jx": "thu³⁵",
