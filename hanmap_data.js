@@ -10763,7 +10763,6 @@ const HAN_DATA = {
       "mnp": "hâing",
       "wuu": "hhang²³",
       "wuu_nb": "hhang²¹³",
-      "wuu_sz": "ghan2",
       "wuu_wz": "hha³¹",
       "wuu_hz": "hhang²¹³",
       "wuu_jx": "hhang²³",
@@ -10879,7 +10878,6 @@ const HAN_DATA = {
       "mnp": "haiŋ˧˧",
       "wuu": "ɦɑ̃²³",
       "wuu_nb": "ɦɑ̃²¹³",
-      "wuu_sz": "ɦã²²³",
       "wuu_wz": "ɦa³¹",
       "wuu_hz": "ɦɑ̃²¹³",
       "wuu_jx": "ɦɑ̃²³",
@@ -25919,6 +25917,20 @@ const HAN_VARIANTS = {
         "label": "行走 (walk)"
       }
     ],
+    "wuu_sz": [
+      {
+        "native": "",
+        "surface": "ghan2",
+        "ipa": "ɦã²²³",
+        "label: "白讀",
+      },
+      {
+        "native": "",
+        "surface": "yin2",
+        "ipa": "ɦin²²³",
+        "label": "文讀：行動"
+      }
+      ]
     "cdo": [
       {
         "native": "",
