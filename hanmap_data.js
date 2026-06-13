@@ -21092,14 +21092,14 @@ const HAN_VARIANTS = {
     "wuu": [
       {
         "native": "",
-        "surface": "niq¹²",
-        "ipa": "ȵiɪʔ¹²",
+        "surface": "zeq¹²",
+        "ipa": "zəʔ¹²",
         "label": "白讀 (sun/day)"
       },
       {
         "native": "",
-        "surface": "zeq¹²",
-        "ipa": "zəʔ¹²",
+        "surface": "niq¹²",
+        "ipa": "ȵiɪʔ¹²",
         "label": "文讀"
       }
     ],
